@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: e6b299b5befec93f21e9e8476d0cc74710612d66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c6282f487d6a20de4654118df94c8bfac8a441d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323799"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075920"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入門：使用 Java 服務 SDK 向 IoT 中樞裝置佈建服務註冊 TPM 裝置
 
@@ -27,7 +27,7 @@ ms.locfileid: "91323799"
 - 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
 - 完成[從 TPM 裝置讀取密碼編譯金鑰](quick-create-simulated-device.md#simulatetpm)。
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 本快速入門會在下面安裝 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 其同時適用於 Windows 和 Linux。 本快速入門會使用 Windows。
+- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 本快速入門會在下面安裝 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 其同時適用於 Windows 和 Linux。 本快速入門會使用 Windows。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91323799"
 
 本節說明如何將 TPM 裝置的佈建詳細資料新增至範例程式碼。 
 
-1. 開啟命令提示字元。 使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 來複製裝置註冊程式碼範例的 GitHub 存放庫：
+1. 開啟命令提示字元。 使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) 來複製裝置註冊程式碼範例的 GitHub 存放庫：
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -77,7 +77,7 @@ ms.locfileid: "91323799"
 
            ![從入口網站取得佈建連接字串](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-       4. 在範例程式碼檔案 _ServiceEnrollmentSample.java_  中，將 `[Provisioning Connection String]` 取代為**主索引鍵連接字串**。
+       4. 在範例程式碼檔案 _ServiceEnrollmentSample.java_  中，將 `[Provisioning Connection String]` 取代為 **主索引鍵連接字串** 。
     
            ```Java
            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -130,7 +130,7 @@ ms.locfileid: "91323799"
     mvn install -DskipTests
     ```
 
-   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 的二進位檔。 
+   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) 的二進位檔。 
 
 3. 在命令視窗中使用這些命令來執行此範例：
 

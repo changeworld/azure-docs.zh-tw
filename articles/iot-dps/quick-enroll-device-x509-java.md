@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 924cf1e1b5bc155bfdbd2f5f766c5459d599fed5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276181"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094637"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入門：使用 Java 向裝置佈建服務註冊 X.509 裝置
 
@@ -26,7 +26,7 @@ ms.locfileid: "91276181"
 
 - 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 本快速入門會在下面安裝 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 其同時適用於 Windows 和 Linux。 本快速入門會使用 Windows。
+- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 本快速入門會在下面安裝 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 其同時適用於 Windows 和 Linux。 本快速入門會使用 Windows。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91276181"
 
 下列步驟說明如何將 X.509 裝置的佈建詳細資料新增至範例程式碼。 
 
-1. 開啟命令提示字元。 使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 來複製裝置註冊程式碼範例的 GitHub 存放庫：
+1. 開啟命令提示字元。 使用 [Java 服務 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) 來複製裝置註冊程式碼範例的 GitHub 存放庫：
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -56,13 +56,13 @@ ms.locfileid: "91276181"
 
             ![從入口網站取得佈建連接字串](./media/quick-enroll-device-x509-java/provisioning-string.png)  
 
-        4. 在範例程式碼檔案 **_ServiceEnrollmentGroupSample.java_** 中，將 `[Provisioning Connection String]` 取代為**主索引鍵連接字串**。
+        4. 在範例程式碼檔案 **_ServiceEnrollmentGroupSample.java_** 中，將 `[Provisioning Connection String]` 取代為 **主索引鍵連接字串** 。
 
             ```Java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    2. 新增裝置群組的根憑證。 如果您需要範例根憑證，請使用 _X.509 憑證產生器_工具，如下所示：
+    2. 新增裝置群組的根憑證。 如果您需要範例根憑證，請使用 _X.509 憑證產生器_ 工具，如下所示：
         1. 在命令視窗中，瀏覽至資料夾 _azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_  。
         2. 執行下列命令來建置工具：
 
@@ -77,10 +77,10 @@ ms.locfileid: "91276181"
             java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
             ```
 
-        5. 出現提示時，您可以選擇輸入憑證的_一般名稱_。
-        6. 此工具會在本機產生**用戶端憑證**、**用戶端憑證私密金鑰**和**根憑證**。
-        7. 複製**根憑證**，包括 **_-----BEGIN CERTIFICATE-----_** 和 **_-----END CERTIFICATE-----_** 行。 
-        8. 將**根憑證**的值指定為參數 **PUBLIC_KEY_CERTIFICATE_STRING**，如下所示：
+        5. 出現提示時，您可以選擇輸入憑證的 _一般名稱_ 。
+        6. 此工具會在本機產生 **用戶端憑證** 、 **用戶端憑證私密金鑰** 和 **根憑證** 。
+        7. 複製 **根憑證** ，包括 **_-----BEGIN CERTIFICATE-----_** 和 **_-----END CERTIFICATE-----_** 行。 
+        8. 將 **根憑證** 的值指定為參數 **PUBLIC_KEY_CERTIFICATE_STRING** ，如下所示：
 
             ```Java
             private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -98,7 +98,7 @@ ms.locfileid: "91276181"
             "-----END CERTIFICATE-----\n";
             ```
 
-        9. 關閉命令視窗，或在出現提示要求「驗證碼」  時，輸入 **n**。 
+        9. 關閉命令視窗，或在出現提示要求「驗證碼」  時，輸入 **n** 。 
  
     3. (選擇性) 您可以透過範例程式碼來設定佈建服務：
         - 若要將此設定新增至範例，請遵循下列步驟：
@@ -146,7 +146,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     mvn install -DskipTests
     ```
 
-   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置之 Java 服務 SDK 的二進位檔。 如果您已執行上一節中的 _X.509 憑證產生器_工具，此套件就已下載至您的電腦上。 
+   這個命令會將 Maven 套件 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下載到您的電腦。 此套件包含範例程式碼需要建置之 Java 服務 SDK 的二進位檔。 如果您已執行上一節中的 _X.509 憑證產生器_ 工具，此套件就已下載至您的電腦上。 
 
 3. 在命令視窗中使用這些命令來執行此範例：
 
@@ -165,14 +165,14 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 若要註冊單一 X.509 裝置，請修改[使用 Java 服務 SDK 向 IoT 中樞裝置佈建服務註冊 TPM 裝置](quick-enroll-device-tpm-java.md#javasample)中使用的個別註冊  範例程式碼，如下所示：
 
-1. 將 X.509 用戶端憑證的一般名稱  複製到剪貼簿。 如果您要使用[上述範例程式碼區段](#javasample)中所示的 _X.509 憑證產生器_工具，請輸入憑證的_一般名稱_，或是使用預設的 **microsoftriotcore**。 使用這個**一般名稱**作為 REGISTRATION_ID  變數的值。 
+1. 將 X.509 用戶端憑證的一般名稱  複製到剪貼簿。 如果您要使用 [上述範例程式碼區段](#javasample)中所示的 _X.509 憑證產生器_ 工具，請輸入憑證的 _一般名稱_ ，或是使用預設的 **microsoftriotcore** 。 使用這個 **一般名稱** 作為 REGISTRATION_ID  變數的值。 
 
     ```Java
     // Use common name of your X.509 client certificate
     private static final String REGISTRATION_ID = "[RegistrationId]";
     ```
 
-2. 將變數 TPM_ENDORSEMENT_KEY  重新命名為 PUBLIC_KEY_CERTIFICATE_STRING  。 從 _X.509 憑證產生器_工具的輸出複製用戶端憑證或**用戶端憑證**，作為 PUBLIC_KEY_CERTIFICATE_STRING  變數的值。 
+2. 將變數 TPM_ENDORSEMENT_KEY  重新命名為 PUBLIC_KEY_CERTIFICATE_STRING  。 從 _X.509 憑證產生器_ 工具的輸出複製用戶端憑證或 **用戶端憑證** ，作為 PUBLIC_KEY_CERTIFICATE_STRING  變數的值。 
 
     ```Java
     // Rename the variable *TPM_ENDORSEMENT_KEY* as *PUBLIC_KEY_CERTIFICATE_STRING*

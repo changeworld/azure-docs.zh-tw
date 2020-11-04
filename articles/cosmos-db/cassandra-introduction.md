@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
-ms.openlocfilehash: 6e31150a15996d9c6e77c772e6d703a39adfa91f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: dc2bf5126ba85eeaec2e66bae8b15c7821805e32
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278920"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087667"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 簡介
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB Cassandra API 可供針對 [Apache Cassandra](https://cassandra.apache.org) 撰寫的應用程式作為資料存放區。 這表示，藉由使用符合 CQLv4 的現有 [Apache 驅動程式](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)，您現有的 Cassandra 應用程式現在可以與 Azure Cosmos DB Cassandra API 通訊。 在許多情況下，只需變更連接字串，您就可以從使用 Apache Cassandra 切換為使用 Azure Cosmos DB 的 Cassandra API。 
 

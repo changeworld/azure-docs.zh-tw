@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 076cb892740b99971400fbc34f60dc1083554555
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ee30af3f07c8b350393822f01833feec6e3b52e2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532200"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099805"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>建置 JAVA 應用程式來管理 Azure Cosmos DB Cassandra API 資料 (v4 驅動程式)
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -151,29 +152,29 @@ ms.locfileid: "90532200"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 連接字串詳細資料可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]****。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="從 Azure 入口網站 [連接字串] 頁面檢視及複製使用者名稱":::
 
 2. 使用畫面右側的 :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: 按鈕來複製 CONTACT POINT 值。
 
-3. 從 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources** 資料夾開啟 config.properties** 檔案。 
+3. 從 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources 資料夾開啟 config.properties 檔案。 
 
 3. 從入口網站將 [連絡點] 值貼到 `<Cassandra endpoint host>` 的行 2。
 
-    config.properties** 的第 2 行現在看起來應該類似於 
+    config.properties 的第 2 行現在看起來應該類似於 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. 返回入口網站，並複製 [使用者名稱] 值。 從入口網站將 [使用者名稱] 值貼到 `<cassandra endpoint username>` 的行 4。
 
-    config.properties** 的第 4 行現在看起來應該類似於 
+    config.properties 的第 4 行現在看起來應該類似於 
 
     `cassandra_username=cosmos-db-quickstart`
 
 4. 返回入口網站，並複製 [密碼] 值。 從入口網站將 [密碼] 值貼到 `<cassandra endpoint password>` 的行 5。
 
-    config.properties** 的第 5 行現在看起來應該類似於 
+    config.properties 的第 5 行現在看起來應該類似於 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
@@ -187,7 +188,7 @@ ms.locfileid: "90532200"
 
     這是因為 v.4x 驅動程式只允許一個本機 DC 與該連絡人點配對。 如果您想要新增預設以外的區域 (這是第一次建立 Cosmos DB 帳戶時所指定的區域)，則在新增連絡人點 (例如 `host-westus.cassandra.cosmos.azure.com`) 時，您必須使用區域尾碼。
 
-8. 儲存 config.properties** 檔案。
+8. 儲存 config.properties 檔案。
 
 ## <a name="run-the-java-app"></a>執行 Java 應用程式
 
@@ -213,9 +214,9 @@ ms.locfileid: "90532200"
 
     按 Ctrl+C 來停止執行程式，並關閉主控台視窗。
 
-4. 在 Azure 入口網站中，開啟 [資料總管]**** 以查詢、修改及使用這個新資料。 
+4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
-    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="從 Azure 入口網站 [連接字串] 頁面檢視及複製使用者名稱":::
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="在資料總管中檢視資料 - Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

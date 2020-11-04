@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fe017476993872a989fc10564caa94983b9071c5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b05e8fbd2f688b4dd5611302c8df1b1deb16ab3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164273"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099788"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入門：使用 Node.js SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -212,11 +213,11 @@ ms.locfileid: "92164273"
 > 
 > 按兩下 .crt 檔案，將其開啟到憑證顯示中。 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="顯示 [憑證] 視窗的螢幕擷取畫面。":::
 >
 > 在 [憑證精靈] 上按 [下一步]。 選取 [Base-64 編碼的 x.509] (.CER)，然後按 [下一步]。
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="顯示 Base-64 編碼 X.509 (.CER) 選項的螢幕擷取畫面。":::
 >
 > 選取 [瀏覽] (尋找目的地) 並輸入檔案名稱。
 > 選取 [下一步] 後即可完成。
@@ -237,13 +238,13 @@ ms.locfileid: "92164273"
 
 4. 從命令列確認結果符合預期。
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="檢視並確認輸出":::
 
     按 CTRL+C 來停止執行程式，並關閉主控台視窗。 
 
 5. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="在資料總管中檢視資料"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

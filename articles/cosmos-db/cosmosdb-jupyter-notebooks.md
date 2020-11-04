@@ -6,14 +6,15 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88588150"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097612"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB 中的內建 Jupyter Notebooks 支援 (預覽)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Jupyter Notebook 是一個開放原始碼 Web 應用程式，可讓您建立及共用含有即時程式碼、方程式、視覺效果和敘事文字的文件。 
 
@@ -23,7 +24,7 @@ Azure Cosmos DB 內建的 Jupyter Notebooks 會直接整合到 Azure 入口網�
 
 Azure Cosmos DB 支援適用於所有 API 的 C# 和 Python 筆記本，包括 Core (SQL)、Cassandra、Gremlin、Table 和適用於 MongoDB 的 API。 在筆記本中，您可以利用內建的命令和功能，輕鬆地建立 Azure Cosmos DB 資源、上傳資料，以及在 Azure Cosmos DB 中查詢並將資料視覺化。 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 中的 Jupyter Notebooks 視覺效果":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 中的 Jupyter Notebooks 支援":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Jupyter Notebooks 的優點
 

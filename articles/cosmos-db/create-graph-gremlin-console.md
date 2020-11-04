@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be93df10614e32fb14e5ca7497461f0f2d6fc93e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409386"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099703"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入門：使用 Gremlin 主控台建立、查詢和周遊 Azure Cosmos DB 圖形資料庫
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin 主控台](create-graph-gremlin-console.md)
@@ -56,7 +57,7 @@ Gremlin 主控台是以 Groovy/Java 為基礎並且在 Linux、Mac 和 Windows �
 
     設定|建議的值|描述
     ---|---|---
-    主機|[*account-name*.**gremlin**.cosmos.azure.com]|請參閱下列螢幕擷取畫面。 這是 Azure 入口網站的 [概觀] 頁面上的 **Gremlin URI** 值，此值以方括號括住，並已移除尾端的 :443/。 注意:請務必使用 Gremlin 值，而**不要**使用以 [*account-name*.documents.azure.com] 結尾的 URI，因為這樣可能會導致後續在嘗試執行 Gremlin 查詢時發生「主機未及時回應」的例外狀況。 
+    主機|[ *account-name*. **gremlin**.cosmos.azure.com]|請參閱下列螢幕擷取畫面。 這是 Azure 入口網站的 [概觀] 頁面上的 **Gremlin URI** 值，此值以方括號括住，並已移除尾端的 :443/。 注意:請務必使用 Gremlin 值，而 **不要** 使用以 [ *account-name*.documents.azure.com] 結尾的 URI，因為這樣可能會導致後續在嘗試執行 Gremlin 查詢時發生「主機未及時回應」的例外狀況。 
     連接埠|443|設為 443。
     username|您的使用者名稱|`/dbs/<db>/colls/<coll>` 表單的資源，其中 `<db>` 是您的資料庫名稱，而 `<coll>` 是您的集合名稱。
     密碼|您的主要金鑰| 請看下方的第二個螢幕擷取畫面。 這是您的主要金鑰，可以從 Azure 入口網站 [金鑰] 頁面的 [主鑰金鑰] 方塊中擷取。 使用方塊左側的 [複製] 按鈕來複製此值。
@@ -65,11 +66,11 @@ Gremlin 主控台是以 Groovy/Java 為基礎並且在 Linux、Mac 和 Windows �
 
    對於主機值，從 [概觀] 頁面複製 [Gremlin URI] 值：
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Apache Gremlin 主控台中的 Azure Cosmos DB":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="在 Azure 入口網站的 [概觀] 頁面上檢視和複製 Gremlin URI 值":::
 
    對於密碼值，從 [金鑰] 頁面複製 [主要金鑰]：
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Apache Gremlin 主控台中的 Azure Cosmos DB":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中檢視並複製主要金鑰":::
 
    remote-secure.yaml 檔案看起來應該像這樣：
 

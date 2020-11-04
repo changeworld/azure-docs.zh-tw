@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126768"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289781"
 ---
 # <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -44,7 +44,7 @@ Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 
 
 可定址的金鑰會變成與不可匯出的 KV 憑證有較高相關性。 用來建立 KV 憑證的 KV 憑證原則欄位 keyusage  ，會對應至可定址 KV 金鑰的作業。  
 
- - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
+ - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
 
 
 ## <a name="certificate-attributes-and-tags"></a>憑證屬性與標記
@@ -82,11 +82,11 @@ Key Vault 憑證具有下列屬性：
 
 從頭建立 Key Vault 憑證時，必須提供原則。 原則會指定如何建立此 Key Vault 憑證版本，或下一個 Key Vault 憑證版本。 原則建立之後，在後續版本的建立作業中就不需要再次建立原則。 所有 Key Vault 憑證版本只會有一個原則執行個體。  
 
-概括而言，憑證原則包含下列資訊 (其定義可在[這裡](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到)：  
+概括而言，憑證原則包含下列資訊 (其定義可在[這裡](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到)：  
 
 -   X509 憑證屬性：包含主體名稱、主體替代名稱，以及其他用來建立 X509 憑證要求的屬性。  
 -   金鑰屬性：包含金鑰類型、金鑰長度、可匯出和 ReuseKeyOnRenewal 欄位。 這些欄位會指示金鑰保存庫如何產生金鑰。 
-     - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 
+     - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 
 -   秘密屬性：包含用來產生秘密值的秘密屬性，例如可定址秘密的內容類型，進而擷取憑證作為秘密。  
 -   存留期動作：包含 KV 憑證的存留期動作。 每個存留期動作包含：  
 
@@ -133,7 +133,7 @@ Key Vault 憑證物件會保存用來與所選憑證簽發者之提供者通訊�
 
     -   提供組態，以用來建立金鑰保存庫中提供者的簽發者物件  
 
-如需有關從憑證入口網站建立簽發者物件的詳細資訊，請參閱 [Key Vault 憑證部落格](https://aka.ms/kvcertsblog)  
+如需有關從憑證入口網站建立簽發者物件的詳細資訊，請參閱 [Key Vault 憑證部落格](/archive/blogs/kv/manage-certificates-via-azure-key-vault)  
 
 Key Vault 可讓您以不同簽發者的提供者組態，來建立多個簽發者物件。 簽發者物件建立之後，其名稱可以在一個或多個憑證原則中進行參考。 在建立與更新憑證期間，從 CA 提供者中要求 x509 憑證時，參考簽發者物件會指示 Key Vault 使用簽發者物件中所指定的組態。  
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126221"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 串流分析作業
 
@@ -77,7 +77,7 @@ ms.locfileid: "92742740"
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    建立 IoT 中樞後，使用 [az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) 命令來取得 IoT 中樞連接字串。 複製整個連接字串並加以儲存，以便在將 IoT 中樞當作輸入新增至 Stream Analytics 作業時使用。
+    建立 IoT 中樞後，使用 [az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest) 命令來取得 IoT 中樞連接字串。 複製整個連接字串並加以儲存，以便在將 IoT 中樞當作輸入新增至 Stream Analytics 作業時使用。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -124,7 +124,7 @@ ms.locfileid: "92742740"
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. 使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。 您可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](/azure/storage/common/authorize-data-operations-cli)。
+3. 使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。 您可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](../storage/common/authorize-data-operations-cli.md)。
 
    ```azurecli
    az storage container create \

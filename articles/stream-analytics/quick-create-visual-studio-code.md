@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f53ff85dd118774b86a0ec25c89f912798a6418d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125847"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業 (預覽)
 
@@ -33,9 +33,9 @@ ms.locfileid: "90943999"
 
 1. 開啟 Visual Studio Code。
 
-2. 從左窗格中的 [擴充功能]  搜尋**串流分析**，然後選取 **Azure 串流分析工具**擴充功能上的 [安裝]  。
+2. 從左窗格中的 [擴充功能]  搜尋 **串流分析** ，然後選取 **Azure 串流分析工具** 擴充功能上的 [安裝]  。
 
-3. 在安裝擴充功能後，確認 **Azure 串流分析工具**顯示於 [已啟用的擴充功能]  中。
+3. 在安裝擴充功能後，確認 **Azure 串流分析工具** 顯示於 [已啟用的擴充功能]  中。
 
    ![在 Visual Studio Code 中顯示於已啟用的擴充功能下的 Azure 串流分析工具](./media/quick-create-visual-studio-code/enabled-extensions.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "90943999"
 
 4. 完成時，選取 [下一步:  設定大小與級別]。
 
-5. 選取**定價和級別層**。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如果無法使用免費層，請選擇可用的最低層。 如需詳細資訊，請參閱 [Azure IoT 中樞價格](https://azure.microsoft.com/pricing/details/iot-hub/)。
+5. 選取 **定價和級別層** 。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如果無法使用免費層，請選擇可用的最低層。 如需詳細資訊，請參閱 [Azure IoT 中樞價格](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
    ![調整 IoT 中樞的大小與級別](./media/quick-create-visual-studio-code/iot-hub-size-and-scale.png)
 
@@ -114,26 +114,26 @@ ms.locfileid: "90943999"
 
 ## <a name="create-a-stream-analytics-project"></a>建立串流分析專案
 
-1. 在 Visual Studio Code 中選取 **Ctrl+Shift+P**，以開啟命令選擇區。 然後，輸入 **ASA**，並選取 **[ASA：建立新專案]** 。
+1. 在 Visual Studio Code 中選取 **Ctrl+Shift+P** ，以開啟命令選擇區。 然後，輸入 **ASA** ，並選取 **[ASA：建立新專案]** 。
 
    ![建立新專案](./media/quick-create-visual-studio-code/create-new-project.png)
 
-2. 輸入您的專案名稱 (例如 **myASAproj**)，然後選取專案的資料夾。
+2. 輸入您的專案名稱 (例如 **myASAproj** )，然後選取專案的資料夾。
 
     ![建立專案名稱](./media/quick-create-visual-studio-code/create-project-name.png)
 
-3. 新專案會新增至您的工作區。 串流分析專案包含三個資料夾：**輸入**、**輸出**和**函式**。 此外也包含查詢指令碼 **(*.asaql)** 、**JobConfig.json** 檔案和 **asaproj.json** 組態檔。
+3. 新專案會新增至您的工作區。 串流分析專案包含三個資料夾： **輸入** 、 **輸出** 和 **函式** 。 此外也包含查詢指令碼 **(*.asaql)** 、 **JobConfig.json** 檔案和 **asaproj.json** 組態檔。
 
     **asaproj.json** 組態檔包含將串流分析作業提交至 Azure 所需的輸入、輸出和作業組態檔資訊。
 
     ![Visual Studio Code 中的串流分析專案檔](./media/quick-create-visual-studio-code/asa-project-files.png)
 
 > [!Note]
-> 當您從命令選擇區新增輸入和輸出時，對應的路徑會自動新增至 **asaproj.json**。 如果您直接在磁碟上新增或移除輸入或輸出，您必須手動從 **asaproj.json** 加以新增或移除。 您可以選擇將輸入和輸出放在某個位置，然後在每個 **asaproj.json** 檔案中指定路徑，以在不同的作業中參考這些輸入和輸出。
+> 當您從命令選擇區新增輸入和輸出時，對應的路徑會自動新增至 **asaproj.json** 。 如果您直接在磁碟上新增或移除輸入或輸出，您必須手動從 **asaproj.json** 加以新增或移除。 您可以選擇將輸入和輸出放在某個位置，然後在每個 **asaproj.json** 檔案中指定路徑，以在不同的作業中參考這些輸入和輸出。
 
 ## <a name="define-the-transformation-query"></a>定義轉換查詢
 
-1. 從您的專案資料夾開啟 **myASAproj.asaql**。
+1. 從您的專案資料夾開啟 **myASAproj.asaql** 。
 
 2. 新增下列查詢：
 
@@ -146,11 +146,11 @@ ms.locfileid: "90943999"
 
 ## <a name="define-a-live-input"></a>定義即時輸入
 
-1. 以滑鼠右鍵按一下您串流分析專案中的**輸入**資料夾。 然後，從操作功能表中選取 **[ASA：新增輸入]** 。
+1. 以滑鼠右鍵按一下您串流分析專案中的 **輸入** 資料夾。 然後，從操作功能表中選取 **[ASA：新增輸入]** 。
 
     ![從 [輸入] 資料夾新增輸入](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-    或者，選取 **Ctrl+Shift+P** 以開啟命令選擇區，並輸入 **ASA：新增輸入**。
+    或者，選取 **Ctrl+Shift+P** 以開啟命令選擇區，並輸入 **ASA：新增輸入** 。
 
    ![在 Visual Studio Code 中新增串流分析輸入](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "90943999"
    |IotHubNamespace|MyASAIoTHub|選擇或輸入 IoT 中樞的名稱。 系統會自動偵測建立在相同訂用帳戶中的 IoT 中樞名稱。|
    |SharedAccessPolicyName|iothubowner| |
 
-   您可以利用 CodeLens 功能來輸入字串、從下拉式清單中選取，或直接在檔案中變更文字。 下列螢幕擷取畫面顯示**從您的訂用帳戶選取**作為範例。 認證會自動列出並儲存在本機認證管理員中。
+   您可以利用 CodeLens 功能來輸入字串、從下拉式清單中選取，或直接在檔案中變更文字。 下列螢幕擷取畫面顯示 **從您的訂用帳戶選取** 作為範例。 認證會自動列出並儲存在本機認證管理員中。
 
    ![在 Visual Studio Code 中設定輸入](./media/quick-create-visual-studio-code/configure-input.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "90943999"
 
 ## <a name="define-an-output"></a>定義輸出
 
-1. 選取 **Ctrl+Shift+P** 以開啟命令選擇區。 然後輸入 **ASA：新增輸出**。
+1. 選取 **Ctrl+Shift+P** 以開啟命令選擇區。 然後輸入 **ASA：新增輸出** 。
 
    ![在 Visual Studio Code 中新增串流分析輸出](./media/quick-create-visual-studio-code/add-output.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "90943999"
 
 4. 輸入 **BlobStorage** 作為輸出檔案名稱。
 
-5. 使用下列值編輯 **BlobStorage**。 請將此處未提及的欄位保留為預設值。 利用 CodeLens 功能從下拉式清單中選取或輸入字串。
+5. 使用下列值編輯 **BlobStorage** 。 請將此處未提及的欄位保留為預設值。 利用 CodeLens 功能從下拉式清單中選取或輸入字串。
 
    |設定|建議的值|描述|
    |-------|---------------|-----------|
@@ -219,11 +219,11 @@ ms.locfileid: "90943999"
 
    ![使用 Visual Studio Code 命令選擇區編譯指令碼](./media/quick-create-visual-studio-code/compile-script1.png)
 
-- 以滑鼠右鍵按一下指令碼，然後選取 **ASA：Compile Script**。
+- 以滑鼠右鍵按一下指令碼，然後選取 **ASA：Compile Script** 。
 
     ![以滑鼠右鍵按一下要編譯的串流分析指令碼](./media/quick-create-visual-studio-code/compile-script2.png)
 
-編譯完成後，您會看到有兩個 Azure Resource Manager 範本產生在您專案的**部署**資料夾中。 這兩個檔案會用於自動部署。
+編譯完成後，您會看到有兩個 Azure Resource Manager 範本產生在您專案的 **部署** 資料夾中。 這兩個檔案會用於自動部署。
 
 ![在檔案總管中的串流分析部署範本](./media/quick-create-visual-studio-code/deployment-templates.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "90943999"
 
 3. 選擇 [選取作業]  。 然後，選擇 [建立新的作業]  。
 
-4. 輸入您的作業名稱 **myASAjob**。 然後，依照指示選擇資源群組和位置。
+4. 輸入您的作業名稱 **myASAjob** 。 然後，依照指示選擇資源群組和位置。
 
 5. 選取 [提交至 Azure]  。 您可以在輸出視窗中找到記錄。 
 
@@ -247,7 +247,7 @@ ms.locfileid: "90943999"
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>啟動串流分析工作並查看輸出
 
-1. 在 Visual Studio Code 中開啟 [串流分析總管]  ，並尋找您的作業 **myASAJob**。
+1. 在 Visual Studio Code 中開啟 [串流分析總管]  ，並尋找您的作業 **myASAJob** 。
 
 2. 以滑鼠右鍵按一下作業名稱。 然後，從快顯功能表中選取 [啟動]  。
 
@@ -281,4 +281,4 @@ ms.locfileid: "90943999"
 
 * [使用 Visual Studio Code 檢視 Azure 串流分析作業](visual-studio-code-explore-jobs.md)
 
-* [使用 npm 套件來設定 CI/CD 管線](setup-cicd-vs-code.md)
+* [使用 npm 套件來設定 CI/CD 管線](./cicd-overview.md)

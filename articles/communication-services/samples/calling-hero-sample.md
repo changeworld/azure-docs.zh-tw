@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461136"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233928"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>開始使用群組通話 Hero 範例
 
@@ -75,7 +75,7 @@ Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊�
 ## <a name="before-running-the-sample-for-the-first-time"></a>第一次執行範例之前
 
 1. 開啟 [PowerShell]、[Windows 終端機]、[命令提示字元] 或 [對等] 的執行個體，然後瀏覽至您想要將範例複製到其中的目錄。
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
 3. 從 Azure 入口網站取得 `Connection String`。 如需連接字串的詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)
 4. 取得 `Connection String` 之後，請將連接字串新增至在服務 .NET 資料夾底下的 **Calling/appsetting.json** 檔案。 在變數中輸入您的連接字串：`ResourceConnectionString`。
 

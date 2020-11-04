@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13706b900c64b1d0aa5ce03fc95442e8dfc41051
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099822"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -36,7 +37,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
 
 此外，您需要： 
-* 如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+* 如果尚未安裝 Visual Studio 2019，您可以下載並使用 **免費** 的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發** 。
 * 安裝 [Git](https://www.git-scm.com/) 來複製範例。
 
 <a id="create-account"></a>
@@ -97,7 +98,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 * 使用 IMapper 物件搭配連線到 uprofile keyspace 的新工作階段來插入使用者實體。
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * 取得所有使用者資訊的查詢。
@@ -158,13 +159,13 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     ```
 3. 按 CTRL + F5 來執行應用程式。 您的應用程式會顯示在主控台視窗中。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="檢視並確認輸出":::
 
     按 CTRL + C 來停止執行程式，並關閉主控台視窗。 
     
 4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在資料總管中檢視資料":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

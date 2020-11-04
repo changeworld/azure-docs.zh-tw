@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 97bb7db434322609630d97b7eff84e08da72c11c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 127b491da3e01e88c90e689e7dbcc9052ae4392f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099737"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入門：從 Azure 入口網站建立 Azure Cosmos 帳戶、資料庫、容器和項目
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](create-cosmosdb-resources-portal.md)
@@ -70,17 +71,17 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 > - 異地備援
 > - 多區域寫入
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure 入口網站資料庫窗格":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB 的新帳戶頁面":::
 
 1. 選取 [檢閱 + 建立]。 您可以略過 [網路] 和 [標記] 區段。
 
 1. 檢閱帳戶設定，然後選取 [建立]。 建立帳戶需要幾分鐘的時間。 等候入口網站頁面顯示 [您的部署已完成] 訊息。 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure 入口網站資料庫窗格":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure 入口網站的 [通知] 窗格":::
 
 1. 選取 [移至資源] 以移至 Azure Cosmos DB 帳戶頁面。 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Azure 入口網站資料庫窗格":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Azure Cosmos DB 帳戶頁面":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>新增資料庫和容器 
@@ -91,7 +92,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
     
     您可能需要向右捲動才能看到 [新增集合] 視窗。
     
-    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Azure 入口網站資料庫窗格":::
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
     
 1.  在 [新增容器] 窗格上，輸入新容器的設定。
     
@@ -113,7 +114,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 1. 在 [資料總管] 中，展開 **ToDoList** 資料庫，然後展開 **Items** 容器。 接下來，選取 [Items]，然後選取 [新增項目]。 
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Azure 入口網站資料庫窗格":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="在 Azure 入口網站的 [資料總管] 中建立新文件":::
    
 1. 在 [文件] 窗格右邊的文件中新增下列結構：
 
@@ -129,7 +130,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 1. 選取 [儲存]。
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Azure 入口網站資料庫窗格":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="將 json 資料複製在 Azure 入口網站的 [資料總管] 中並選取 [儲存]":::
    
 1. 再次選取 [新增文件]，然後使用唯一 `id` 以及任何其他您想要的屬性和值來建立和儲存另一個文件。 文件可擁有任何結構，因為 Azure Cosmos DB 不會對您的資料強加任何結構描述。
 

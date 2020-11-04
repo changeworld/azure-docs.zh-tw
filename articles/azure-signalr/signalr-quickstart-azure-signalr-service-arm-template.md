@@ -1,18 +1,18 @@
 ---
 title: 快速入門：建立 Azure SignalR 服務 - ARM 範本
 description: 在本快速入門中，您會了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure SignalR 服務。
-author: mgblythe
+author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487818"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289911"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>快速入門：使用 ARM 範本來部署 Azure SignalR 服務
 

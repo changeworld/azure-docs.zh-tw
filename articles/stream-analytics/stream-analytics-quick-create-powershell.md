@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746878"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124521"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立串流分析作業
 
@@ -26,9 +26,9 @@ ms.locfileid: "92746878"
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-* 本快速入門需要 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 來尋找本機電腦上所安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* 本快速入門需要 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 來尋找本機電腦上所安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.70 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
+* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.70 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -52,7 +52,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
@@ -68,9 +68,9 @@ New-AzResourceGroup `
 
 下列 Azure CLI 程式碼區塊會執行許多命令，以準備作業所需的輸入資料。 檢閱區段以了解程式碼。
 
-1. 在 PowerShell 視窗中執行 [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 命令，以登入您的 Azure 帳戶。
+1. 在 PowerShell 視窗中執行 [az login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 命令，以登入您的 Azure 帳戶。
 
-    當您成功登入時，Azure CLI 會傳回您的訂用帳戶清單。 複製您用於此快速入門的訂用帳戶，然後執行 [az account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) 命令來選取該訂用帳戶。 選擇您在上一節中使用 PowerShell 選取的相同訂用帳戶。 務必要以您的訂用帳戶名稱取代 `<your subscription name>`。
+    當您成功登入時，Azure CLI 會傳回您的訂用帳戶清單。 複製您用於此快速入門的訂用帳戶，然後執行 [az account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) 命令來選取該訂用帳戶。 選擇您在上一節中使用 PowerShell 選取的相同訂用帳戶。 務必要以您的訂用帳戶名稱取代 `<your subscription name>`。
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ New-AzResourceGroup `
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    建立 IoT 中樞後，使用 [az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) 命令來取得 IoT 中樞連接字串。 複製整個連接字串並加以儲存，以便在將 IoT 中樞當作輸入新增至 Stream Analytics 作業時使用。
+    建立 IoT 中樞後，使用 [az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest) 命令來取得 IoT 中樞連接字串。 複製整個連接字串並加以儲存，以便在將 IoT 中樞當作輸入新增至 Stream Analytics 作業時使用。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -112,11 +112,11 @@ New-AzResourceGroup `
 
 下列 Azure PowerShell 程式碼區塊會使用命令來建立用於作業輸出的 Blob 儲存體。 檢閱區段以了解程式碼。
 
-1. 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) Cmdlet 來建立標準的一般用途儲存體帳戶。  這個範例會建立名為 **myasaquickstartstorage** 的儲存體帳戶，並含有本機備援儲存體 (LRS) 和 Blob 加密 (預設會啟用)。
+1. 使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) Cmdlet 來建立標準的一般用途儲存體帳戶。  這個範例會建立名為 **myasaquickstartstorage** 的儲存體帳戶，並含有本機備援儲存體 (LRS) 和 Blob 加密 (預設會啟用)。
 
 2. 取出儲存體帳戶內容 `$storageAccount.Context`，定義要使用的儲存體帳戶。 使用儲存體帳戶時，會參考內容而非重複提供認證。
 
-3. 使用 [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) 建立儲存體容器。
+3. 使用 [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) 建立儲存體容器。
 
 4. 複製程式碼所輸出的儲存體金鑰，並儲存該金鑰，以便稍後建立串流作業的輸出。
 
@@ -146,7 +146,7 @@ New-AzResourceGroup `
 
 ## <a name="create-a-stream-analytics-job"></a>建立串流分析作業
 
-使用 [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) Cmdlet 建立串流分析作業。 此 Cmdlet 會採用作業名稱、資源群組名稱和作業定義來作為參數。 作業名稱可以是任何可識別作業的易記名稱。 只能有英數字元、連字號與底線，且其長度必須介於 3 到 63 個字元之間。 作業定義是 JSON 檔案，其中包含建立作業所需的屬性。 在本機電腦上，建立名為 `JobDefinition.json` 的檔案，並於其中新增下列 JSON 資料：
+使用 [New-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) Cmdlet 建立串流分析作業。 此 Cmdlet 會採用作業名稱、資源群組名稱和作業定義來作為參數。 作業名稱可以是任何可識別作業的易記名稱。 只能有英數字元、連字號與底線，且其長度必須介於 3 到 63 個字元之間。 作業定義是 JSON 檔案，其中包含建立作業所需的屬性。 在本機電腦上，建立名為 `JobDefinition.json` 的檔案，並於其中新增下列 JSON 資料：
 
 ```json
 {
@@ -176,7 +176,7 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>設定作業的輸入
 
-使用 [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) Cmdlet 新增作業的輸入。 此 Cmdlet 會採用作業名稱、作業輸入名稱、資源群組名稱和作業輸入定義來作為參數。 作業輸入定義是 JSON 檔案，其中包含設定作業輸入所需的屬性。 在此範例中，您會建立 blob 儲存體作為輸入。
+使用 [New-AzStreamAnalyticsInput](/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) Cmdlet 新增作業的輸入。 此 Cmdlet 會採用作業名稱、作業輸入名稱、資源群組名稱和作業輸入定義來作為參數。 作業輸入定義是 JSON 檔案，其中包含設定作業輸入所需的屬性。 在此範例中，您會建立 blob 儲存體作為輸入。
 
 在本機電腦上，建立名為 `JobInputDefinition.json` 的檔案，並於其中新增下列 JSON 資料。 務必以您在上一節中儲存的 IoT 中樞裝置連接字串的 `SharedAccessKey` 部分，取代 `accesspolicykey` 的值。
 
@@ -223,7 +223,7 @@ New-AzStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>設定作業的輸出
 
-使用 [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) Cmdlet 新增作業的輸出。 此 Cmdlet 會採用作業名稱、作業輸出名稱、資源群組名稱和作業輸出定義來作為參數。 作業輸出定義是 JSON 檔案，其中包含設定作業輸出所需的屬性。 這個範例會使用 blob 儲存體作為輸出。
+使用 [New-AzStreamAnalyticsOutput](/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) Cmdlet 新增作業的輸出。 此 Cmdlet 會採用作業名稱、作業輸出名稱、資源群組名稱和作業輸出定義來作為參數。 作業輸出定義是 JSON 檔案，其中包含設定作業輸出所需的屬性。 這個範例會使用 blob 儲存體作為輸出。
 
 在本機電腦上，建立名為 `JobOutputDefinition.json` 的檔案，並於其中新增下列 JSON 資料。 務必要將 `accountKey` 的值取代為儲存體帳戶的存取金鑰 (也就是 $storageAccountKey 值內所儲存的值)。
 
@@ -272,7 +272,7 @@ New-AzStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>定義轉換查詢
 
-使用 [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) Cmdlet 新增作業的轉換。 此 Cmdlet 會採用作業名稱、作業轉換名稱、資源群組名稱和作業轉換定義來作為參數。 在本機電腦上，建立名為 `JobTransformationDefinition.json` 的檔案，並於其中新增下列 JSON 資料。 JSON 檔案包含可定義轉換查詢的查詢參數：
+使用 [New-AzStreamAnalyticsTransformation](/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) Cmdlet 新增作業的轉換。 此 Cmdlet 會採用作業名稱、作業轉換名稱、資源群組名稱和作業轉換定義來作為參數。 在本機電腦上，建立名為 `JobTransformationDefinition.json` 的檔案，並於其中新增下列 JSON 資料。 JSON 檔案包含可定義轉換查詢的查詢參數：
 
 ```json
 {
@@ -310,7 +310,7 @@ New-AzStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>啟動串流分析工作並查看輸出
 
-使用 [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) Cmdlet 啟動作業。 此 Cmdlet 會採用作業名稱、資源群組名稱、輸出啟動模式和啟動時間來作為參數。 `OutputStartMode` 可接受 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。 若要了解這些值各自代表什麼，請參閱 PowerShell 文件中的[參數](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)一節。
+使用 [Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) Cmdlet 啟動作業。 此 Cmdlet 會採用作業名稱、資源群組名稱、輸出啟動模式和啟動時間來作為參數。 `OutputStartMode` 可接受 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。 若要了解這些值各自代表什麼，請參閱 PowerShell 文件中的[參數](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)一節。
 
 執行下列 Cmdlet 後，如果作業啟動，它會在輸出中傳回 `True`。 在儲存體容器中，建立的輸出資料夾包含已轉換的資料。
 

@@ -23,7 +23,7 @@ ms.locfileid: "88031767"
 docker pull hello-world
 ```
 
-您必須使用登錄登入伺服器的完整名稱來標記映像，才能將映像推送至您的登錄。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry.azurecr.io*。
+您必須使用登錄登入伺服器的完整名稱來標記映像，才能將映像推送至您的登錄。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry.azurecr.io* 。
 
 使用 [docker tag][docker-tag] 命令來標記映像。 將 `<login-server>` 取代為 ACR 執行個體的登入伺服器名稱。
 

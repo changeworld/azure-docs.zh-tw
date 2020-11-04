@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489314"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073095"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以透過 CQL 二進位通訊協定 v4 [有線通訊協定](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)合規性開放原始碼 Cassandra 用戶端[驅動程式](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)與 Azure Cosmos DB Cassandra API 通訊。 
 
@@ -199,7 +200,7 @@ Azure Cosmos DB Cassandra API 是受控服務平台。 它不會造成任何管�
 
 您可以直接從 [Azure 入口網站](data-explorer.md)中的資料總管或 [Azure Cosmos 總管](https://cosmos.azure.com/)，開啟裝載的原生 Cassandra Shell (CQLSH v5.0.1)。 啟用 CQL Shell 之前，您必須先在帳戶中[啟用筆記本](enable-notebooks.md)功能 (如果尚未啟用，在按一下 `Open Cassandra Shell` 時將會出現提示)。 查看[為 Azure Cosmos DB 帳戶啟用筆記本](enable-notebooks.md)中反白顯示的附註，以了解支援的 Azure 區域。
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="開啟 CQLSH&quot;:::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="開啟 CQLSH":::
 
 您也可以使用本機電腦上安裝的 CQLSH 連線至 Azure Cosmos DB 中的 Cassandra API。 其中隨附 Apache Cassandra 3.1.1，且只需設定環境變數即可立即運作。 以下幾節包含相關指示，可引導您在 Windows 或 Linux 上使用 CQLSH 安裝、設定及連線至 Azure Cosmos DB 中的 Cassandra API。
 
@@ -223,7 +224,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra

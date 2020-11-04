@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 41c90bb58e6ece968f8e2bf211a14e4e4e98211f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047755"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910860"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立內部負載平衡器以平衡 VM 的負載
 
@@ -21,7 +21,11 @@ ms.locfileid: "92047755"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>先決條件：
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -49,7 +53,7 @@ ms.locfileid: "92047755"
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupLB"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -64,11 +68,11 @@ az deployment group create \
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取左側面板中的 [資源群組]****。
+1. 選取左側面板中的 [資源群組]。
 
-3. 選取您在上一節中建立的資源群組。 預設的資源群組名稱為 **myResourceGroupLB**
+1. 選取您在上一節中建立的資源群組。 預設的資源群組名稱為 **myResourceGroupLB**
 
-4. 確認下列資源是在資源群組中建立的：
+1. 確認下列資源是在資源群組中建立的：
 
 :::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="使用者 Azure 入口網站以確認資源的建立。" border="true":::
 
@@ -76,7 +80,7 @@ az deployment group create \
 
 若不再需要，您可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令來移除資源群組及其內含的所有資源。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupLB
 ```
@@ -86,4 +90,4 @@ az deployment group create \
 如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> 建立及部署您的第一個 ARM 範本[
+> [教學課程：建立及部署您的第一個 ARM 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
