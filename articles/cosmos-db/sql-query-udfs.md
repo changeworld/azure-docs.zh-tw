@@ -3,16 +3,17 @@ title: Azure Cosmos DB 中 (Udf) 的使用者定義函數
 description: 瞭解 Azure Cosmos DB 中的使用者定義函數。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 82251cf803168c282e55438ca801ae1f30a2d019
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c7050042d59156e1203b5830d710e61bd8eb382
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093702"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341883"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中 (Udf) 的使用者定義函數
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -139,7 +140,7 @@ API 會擴充 SQL 語法，以支援使用 Udf 的自訂應用程式邏輯。 �
 
 如先前的範例所示，Udf 將 JavaScript 語言的強大功能與 SQL API 整合。 Udf 提供豐富的可程式化介面，可透過內建的 JavaScript 執行時間功能來進行複雜的程式化條件式邏輯。 SQL API 會針對目前 WHERE 或 SELECT 子句階段處理的每個來源專案，提供 Udf 的引數。 結果會在整體執行管線中順暢地合併。 總而言之，Udf 是很棒的工具，可在查詢過程中進行複雜的商務邏輯。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [系統函數](sql-query-system-functions.md)

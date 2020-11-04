@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521300"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341853"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 |  支援所有股票 SUSE 15 和15�
 **設定** | **支援** | **詳細資料**
 --- | --- | ---
 大小 | 至少具有兩個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小 | 確認 [Azure 虛擬機器大小](../virtual-machines/sizes-general.md)。
-可用性設定組 | 目前不支援 | 如果您使用預設選項將具有可用性設定組的 Azure VM 新增至移動集合，則準備程式會失敗。 您可以選擇將 VM 移至可用性區域，或將它移動為單一實例 VM。 您可以在 [編輯目標屬性] 頁面中修改這些設定。
+可用性設定組 | 支援 | 支援。
 可用性區域 | 支援 | 支援，視目的地區域支援而定。
 Microsoft)  (發佈的 Azure 資源庫影像 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 協力廠商)  (發佈的 Azure 資源庫影像  | 支援 | 只要 VM 在支援的作業系統上執行即支援。

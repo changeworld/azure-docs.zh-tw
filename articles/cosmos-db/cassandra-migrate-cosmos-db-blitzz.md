@@ -3,16 +3,17 @@ title: 使用 Blitzz 將將資料從 Cassandra 遷移至 Azure Cosmos DB Cassand
 description: 瞭解如何使用 Blitzz 將將資料從 Apache Cassandra 資料庫移轉至 Azure Cosmos DB Cassandra API。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092410"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339980"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 將將資料從 Cassandra 遷移至 Azure Cosmos DB Cassandra API 帳戶
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -55,7 +56,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz 將 replicant tool 下載":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz 將 replicant 檔":::
 
 1. 從 CLI 終端機，設定源資料庫設定。 使用命令開啟設定檔， **`vi conf/conn/cassandra.yml`** 並新增 Cassandra 節點的 IP 位址清單（以逗號分隔）、埠號碼、使用者名稱、密碼，以及任何其他必要的詳細資料。 以下是設定檔中的內容範例：
 
@@ -72,9 +73,9 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="開啟 Cassandra 連接編輯器":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Cassandra 連線設定":::
 
    填寫設定詳細資料之後，請儲存並關閉檔案。
 
@@ -93,7 +94,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
 1. 在遷移資料之前，請將容器輸送量增加到您的應用程式快速遷移所需的數量。 例如，您可以將輸送量增加到 100000 ru。 在開始遷移之前調整輸送量，可協助您以較短的時間遷移資料。
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="整個調整 Azure Cosmos 容器":::
 
    完成遷移之後，請降低輸送量。 根據每項作業所需的儲存資料量和 ru 數目，您可以估計資料移轉之後所需的輸送量。 若要深入瞭解如何估計所需的 RU，請參閱使用 Azure Cosmos DB 容量規劃文章，在 [容器和資料庫上](set-throughput.md) 布建輸送量，並 [預估 RU/秒](estimate-ru-with-capacity-planner.md) 。
 
@@ -129,7 +130,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
    Replicant UI 會顯示覆寫進度。 完成架構遷移和快照集作業之後，進度會顯示100%。 完成遷移之後，您可以驗證目標 Azure Cosmos 資料庫上的資料。
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Cassandra 資料移轉輸出":::
 
 
 1. 因為您已使用完整模式來進行遷移，所以您可以執行作業，例如插入、更新或刪除來源 Apache Cassandra 資料庫上的資料。 稍後會驗證它們是否已在目標 Azure Cosmos 資料庫上即時複寫。 遷移之後，請務必減少為 Azure Cosmos 容器設定的輸送量。
@@ -142,7 +143,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
 若要深入瞭解資料移轉至目的地、即時移轉的詳細資訊，請參閱 [blitzz 將 replicant 示範](https://www.youtube.com/watch?v=fsUhF9LUZmM)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在容器和資料庫中佈建輸送量](set-throughput.md) 
 * [分割區索引鍵的最佳作法](partitioning-overview.md#choose-partitionkey)

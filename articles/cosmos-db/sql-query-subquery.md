@@ -3,15 +3,16 @@ title: Azure Cosmos DB 的 SQL 子查詢
 description: 深入瞭解 SQL 子查詢，以及它們在 Azure Cosmos DB 中的常見使用案例和不同類型的子查詢
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 16be1b91d007ca2dbc88405cfc55ff519f51ee41
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081530"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340850"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查詢範例
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -518,7 +519,7 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 ]
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文件資料](modeling-data.md)

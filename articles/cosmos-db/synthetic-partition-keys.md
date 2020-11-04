@@ -2,16 +2,17 @@
 title: 在 Azure Cosmos DB 中建立綜合分割區索引鍵
 description: 瞭解如何使用 Azure Cosmos 容器中的綜合分割區索引鍵，將資料和工作負載平均分散到分割區索引鍵
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: d6868859247fc430ee96581ae85fb7077af04999
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098020"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340646"
 ---
 # <a name="create-a-synthetic-partition-key"></a>建立綜合分割區索引鍵
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

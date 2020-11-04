@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148769"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341836"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派使用者註冊和產品訂閱
 
@@ -37,14 +37,14 @@ ms.locfileid: "92148769"
 3. 委派端點轉而重新導向或呈現 UI，要求使用者登入或註冊
 4. 成功時，將使用者重新導向回到他們所來自的 API 管理開發人員入口網站頁面
 
-首先，請設定 API 管理透過委派端點來傳遞要求。 在 Azure 入口網站中，請在 API 管理資源中搜尋**安全性**，然後按一下 [委派] 項目。 按一下核取方塊以啟用 [委派登入和註冊]。
+首先，請設定 API 管理透過委派端點來傳遞要求。 在 Azure 入口網站中，請在 API 管理資源中搜尋 **安全性** ，然後按一下 [委派] 項目。 按一下核取方塊以啟用 [委派登入和註冊]。
 
 ![Delegation page][api-management-delegation-signin-up]
 
 * 決定特殊委派端點的 URL，並在 [ **Delegation endpoint URL** ] 欄位中輸入。 
 * 在 [委派驗證金鑰] 欄位中輸入密碼，用來計算提供給您驗證的簽章，以確定要求確實來自 Azure API 管理。 您可以按一下 [產生] 按鈕，讓 API 管理為您隨機產生金鑰。
 
-現在您需要建立「 **委派端點**」。 必須執行一些動作：
+現在您需要建立「 **委派端點** 」。 必須執行一些動作：
 
 1. 接收下列形式的要求：
    
@@ -52,18 +52,18 @@ ms.locfileid: "92148769"
    
     登入/註冊案例的查詢參數：
    
-   * **operation**：識別委派要求的類型 - 在此案例中只能是 **SignIn**
-   * **returnUrl**：使用者按一下登入或註冊連結後所出現頁面的 URL
-   * **salt**：特殊 salt 字串，用於計算安全性雜湊
-   * **sig**：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
+   * **operation** ：識別委派要求的類型 - 在此案例中只能是 **SignIn**
+   * **returnUrl** ：使用者按一下登入或註冊連結後所出現頁面的 URL
+   * **salt** ：特殊 salt 字串，用於計算安全性雜湊
+   * **sig** ：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
 2. 確認要求來自 Azure API 管理 (選擇性，但基於安全性理由，強烈建議這麼做)
    
-   * 根據 **returnUrl** 和 **salt** 查詢參數，計算字串的 HMAC-SHA512 雜湊 ([以下提供範例程式碼])：
+   * 根據 **returnUrl** 和 **salt** 查詢參數，計算字串的 HMAC-SHA512 雜湊 ( [以下提供範例程式碼])：
      
-     > HMAC(**salt** + '\n' + **returnUrl**)
+     > HMAC( **salt** + '\n' + **returnUrl** )
 
    * 比較以上計算的雜湊和 **sig** 查詢參數的值。 如果兩個雜湊相符，則繼續下一步，否則拒絕要求。
-3. 確認您收到登入/註冊的要求：**operation** 查詢參數會設為 "**SignIn**"。
+3. 確認您收到登入/註冊的要求： **operation** 查詢參數會設為 " **SignIn** "。
 4. 向使用者顯示用於登入或註冊的 UI
 5. 如果使用者要註冊，您必須在 API 管理中為他們建立對應的帳戶。 使用 API Management REST API [建立使用者]。 這樣做時，請確定您所設定的使用者識別碼與使用者存放區中的值相同，或設為您可追蹤的識別碼。
 6. 成功驗證使用者之後：
@@ -71,7 +71,7 @@ ms.locfileid: "92148769"
    * 透過 API 管理[要求共用存取權杖]REST API
    * 將 returnUrl 查詢參數附加至您從上述 API 呼叫所收到的 SSO URL：
      
-     > 例如，`https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     > 例如，`https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
    * 將使用者重新導向至上述產生的 URL
 
@@ -84,10 +84,10 @@ ms.locfileid: "92148769"
 
 您必須傳遞下列查詢參數，供帳戶管理作業使用。
 
-* **operation**：識別委派要求的類型 (ChangePassword、ChangeProfile 或 CloseAccount)
-* **userId**：使用者 ID，代表要管理的帳戶
-* **salt**：特殊 salt 字串，用於計算安全性雜湊
-* **sig**：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
+* **operation** ：識別委派要求的類型 (ChangePassword、ChangeProfile 或 CloseAccount)
+* **userId** ：使用者 ID，代表要管理的帳戶
+* **salt** ：特殊 salt 字串，用於計算安全性雜湊
+* **sig** ：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"></a>委派產品訂閱
 
@@ -108,21 +108,21 @@ ms.locfileid: "92148769"
    
     產品訂閱案例的查詢參數：
    
-   * **operation**：識別委派要求的類型。 對於產品訂閱要求，有效的選項包括：
+   * **operation** ：識別委派要求的類型。 對於產品訂閱要求，有效的選項包括：
      * "Subscribe"：為使用者訂閱具有提供之識別碼的 (請參閱下面) 指定產品的要求
      * "Unsubscribe"：將為使用者取消訂閱產品的要求
      * "Renew"：訂閱續訂要求 (例如，可能過期)
-   * **productId**： *訂閱* 時-使用者要求訂閱之產品的識別碼
-   * **subscriptionId**：在 [取消訂閱] 和 [更新] 上 - 產品訂閱的識別碼
-   * **userId**： *訂閱* 時-提出要求之使用者的識別碼
-   * **salt**：特殊 salt 字串，用於計算安全性雜湊
-   * **sig**：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
+   * **productId** ： *訂閱* 時-使用者要求訂閱之產品的識別碼
+   * **subscriptionId** ：在 [取消訂閱] 和 [更新] 上 - 產品訂閱的識別碼
+   * **userId** ： *訂閱* 時-提出要求之使用者的識別碼
+   * **salt** ：特殊 salt 字串，用於計算安全性雜湊
+   * **sig** ：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
 
 2. 確認要求來自 Azure API 管理 (選擇性，但基於安全性理由，強烈建議這麼做)
    
-   * 根據 **productId**、**userId** 和 **salt** 查詢字串，計算字串的 HMAC-SHA512：
+   * 根據 **productId** 、 **userId** 和 **salt** 查詢字串，計算字串的 HMAC-SHA512：
      
-     > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
+     > HMAC( **salt** + '\n' + **productId** + '\n' + **userId** )
      > 
      > 
    * 比較以上計算的雜湊和 **sig** 查詢參數的值。 如果兩個雜湊相符，則繼續下一步，否則拒絕要求。

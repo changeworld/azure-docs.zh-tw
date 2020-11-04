@@ -3,16 +3,17 @@ title: 針對 Cosmos DB 使用 Azure Functions 觸發程式時的問題進行疑
 description: 使用 Cosmos DB 的 Azure Functions 觸發程式時的常見問題、因應措施和診斷步驟
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9da07dc76bdd9273b70f68ee1abcddfa04519fda
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101029"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340521"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>針對 Cosmos DB 使用 Azure Functions 觸發程式時，診斷和疑難排解問題
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -120,7 +121,7 @@ Azure 函式失敗，並出現錯誤訊息：「資料庫 ' 資料庫名稱 ' �
 
 如稍早所述， [我的變更花費的時間太長](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)，Azure 函式會在檢查是否有新的 (變更之前，將可設定的時間)  (5 秒，以避免) 的高 RU 耗用量。 您可以在觸發程序[設定](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中透過 `FeedPollDelay/feedPollDelay` 設定來設定此睡眠時間 (值應以毫秒為單位)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [為您的 Azure Functions 啟用監視](../azure-functions/functions-monitoring.md)
 * [Azure Cosmos DB .NET SDK 疑難排解](./troubleshoot-dot-net-sdk.md)

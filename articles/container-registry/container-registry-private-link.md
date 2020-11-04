@@ -3,12 +3,12 @@ title: 設定私人連結
 description: 在容器登錄上設定私人端點，並透過本機虛擬網路中的私人連結來啟用存取。 Private link 存取是 Premium 服務層級的功能。
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: d5193efc1b1def2dc51411630ab6a2305d369cf4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026117"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342295"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 私下連接到 Azure container registry
 
@@ -387,7 +387,12 @@ az acr private-endpoint-connection list \
 
 此範例中的私人端點會與基本虛擬網路相關聯的私人 DNS 區域整合。 此安裝程式會直接使用 Azure 提供的 DNS 服務，將登錄的公用 FQDN 解析為虛擬網路中的私人 IP 位址。 
 
-Private link 支援使用私人區域的其他 DNS 設定案例，包括自訂 DNS 解決方案。 例如，您可能會在虛擬網路中部署自訂 DNS 解決方案，或在網路中使用 VPN 閘道來連線到虛擬網路的內部部署。 若要將登錄的公用 FQDN 解析為這些案例中的私人 IP 位址，您必須將伺服器層級轉寄站設定為 Azure DNS 服務 (168.63.129.16) 。 確切的設定選項和步驟取決於您現有的網路和 DNS。 如需範例，請參閱 [Azure 私人端點 DNS](../private-link/private-endpoint-dns.md)設定。
+Private link 支援使用私人區域的其他 DNS 設定案例，包括自訂 DNS 解決方案。 例如，您可能會在虛擬網路中部署自訂 DNS 解決方案，或在網路中使用 VPN 閘道或 Azure ExpressRoute 連線到虛擬網路的內部部署。 
+
+若要將登錄的公用 FQDN 解析為這些案例中的私人 IP 位址，您必須將伺服器層級轉寄站設定為 Azure DNS 服務 (168.63.129.16) 。 確切的設定選項和步驟取決於您現有的網路和 DNS。 如需範例，請參閱 [Azure 私人端點 DNS](../private-link/private-endpoint-dns.md)設定。
+
+> [!IMPORTANT]
+> 如果您在數個區域中建立了私人端點，則建議您在每個區域中使用個別的資源群組，並將虛擬網路和相關聯的私人 DNS 區域放在其中。 這項設定也可防止因共用相同私人 DNS 區域而造成無法預期的 DNS 解析。
 
 ## <a name="clean-up-resources"></a>清除資源
 

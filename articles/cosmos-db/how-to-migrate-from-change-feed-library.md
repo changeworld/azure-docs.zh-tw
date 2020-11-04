@@ -3,16 +3,17 @@ title: 從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
 description: 瞭解如何將您的應用程式從使用變更摘要處理器程式庫遷移至 Azure Cosmos DB SDK V3
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e19c2a8711a9862bb72b29045c65ecd1bd5b5d20
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce2d4d3ad3ae349718f01584ec077b18e11e4f8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075496"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341258"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

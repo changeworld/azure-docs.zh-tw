@@ -3,15 +3,16 @@ title: 使用 Azure Cosmos DB Python 筆記本 (預覽) 中的內建筆記本命
 description: 了解如何透過 Azure Cosmos DB 的內建 Python 筆記本，使用內建的命令和功能來執行一般作業。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 32c433455e1075045323dc466b41ad19ac68f454
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074347"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340408"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>使用 Azure Cosmos DB Python 筆記本 (預覽) 中的內建筆記本命令和功能
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -201,7 +202,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>重設筆記本工作區
 若要將筆記本工作區重設為預設設定，請在命令列上選取 [重設工作區]。 這會移除任何已安裝的自訂套件，並重新啟動 Jupyter 伺服器。 筆記本、檔案和 Azure Cosmos 資源將不受影響。  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract 資料總管":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="重設筆記本工作區":::
 
 ## <a name="next-steps"></a>後續步驟
 

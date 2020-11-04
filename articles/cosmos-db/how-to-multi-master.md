@@ -3,16 +3,17 @@ title: 如何在 Azure Cosmos DB 中設定多重區域寫入
 description: 瞭解如何使用 Azure Cosmos DB 中的不同 Sdk 來為您的應用程式設定多重區域寫入。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317121"
+ms.locfileid: "93341999"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>在您的應用程式中設定使用 Azure Cosmos DB 的多重區域寫入
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

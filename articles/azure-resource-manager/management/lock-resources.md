@@ -2,18 +2,18 @@
 title: 鎖定資源以防止變更
 description: 透過將鎖定套用到所有使用者和角色，防止使用者更新或刪除重要的 Azure 資源。
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281743"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340136"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 
-身為系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 您可以將鎖定層級設定為 **CanNotDelete** 或 **ReadOnly**。 在入口網站中，鎖定分別名為 [刪除] 和 [唯讀]。
+身為系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 您可以將鎖定層級設定為 **CanNotDelete** 或 **ReadOnly** 。 在入口網站中，鎖定分別名為 [刪除] 和 [唯讀]。
 
 * **CanNotDelete** 表示經過授權的使用者仍然可以讀取和修改資源，但無法刪除資源。
 * **ReadOnly** 表示經過授權的使用者可以讀取資源，但無法刪除或更新資源。 套用這個鎖定類似於限制所有經過授權使用者的權限是由「讀取者」角色所授與。
@@ -24,23 +24,23 @@ ms.locfileid: "92281743"
 
 不同於角色型存取控制，您可以使用管理鎖定來對所有使用者和角色套用限制。 若要瞭解如何設定使用者和角色的許可權，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。
 
-Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳送至 `https://management.azure.com` 的作業。 鎖定並不會限制資源執行自己函式的方式。 限制資源的變更，但沒有限制資源的作業。 例如，SQL Database 上的唯讀鎖定會防止您刪除或修改資料庫。 它不會防止您建立、更新或刪除資料庫中的資料。 允許資料的交易，因為這些作業不會傳送到 `https://management.azure.com`。
+Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳送至 `https://management.azure.com` 的作業。 鎖定並不會限制資源執行自己函式的方式。 限制資源的變更，但沒有限制資源的作業。 例如，SQL Database 邏輯伺服器上的 ReadOnly 鎖定可防止您刪除或修改伺服器。 它不會讓您無法在該伺服器上的資料庫中建立、更新或刪除資料。 允許資料的交易，因為這些作業不會傳送到 `https://management.azure.com`。
 
 ## <a name="considerations-before-applying-locks"></a>套用鎖定前的考量
 
 套用鎖可能導致意外的結果，因為某些看來不會修改資源的作業實際上需要執行被鎖定阻止的動作。 鎖定阻止的動作常見範例像是：
 
-* **儲存體帳戶**上的唯讀鎖定會防止所有使用者列出金鑰。 清單金鑰作業是透過 POST 要求進行處理，因為傳回的金鑰可用於寫入作業。
+* **儲存體帳戶** 上的唯讀鎖定會防止所有使用者列出金鑰。 清單金鑰作業是透過 POST 要求進行處理，因為傳回的金鑰可用於寫入作業。
 
 * **App Service** 資源上的唯讀鎖定會防止 Visual Studio 伺服器總管顯示該資源的檔案，因為該互動需要寫入存取權。
 
-* 包含**虛擬機器**的**資源群組**上的唯讀鎖定，會防止所有使用者啟動或重新開機虛擬機器。 這些作業需要 POST 要求。
+* 包含 **虛擬機器** 的 **資源群組** 上的唯讀鎖定，會防止所有使用者啟動或重新開機虛擬機器。 這些作業需要 POST 要求。
 
 * 無法刪除 **資源群組** 上的鎖定，可防止 Azure Resource Manager [自動刪除](../templates/deployment-history-deletions.md) 歷程記錄中的部署。 如果您在歷程記錄中到達800部署，您的部署將會失敗。
 
-* **Azure 備份服務**所建立之**資源群組**上的無法刪除鎖定會導致備份失敗。 服務最多支援 18 個還原點。 當鎖定時，備份服務無法清除還原點。 如需詳細資訊，請參閱[常見問題 - 備份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
+* **Azure 備份服務** 所建立之 **資源群組** 上的無法刪除鎖定會導致備份失敗。 服務最多支援 18 個還原點。 當鎖定時，備份服務無法清除還原點。 如需詳細資訊，請參閱[常見問題 - 備份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
 
-* **訂用帳戶**上的唯讀鎖定會阻止 **Azure Advisor** 正常運作。 Advisor 無法儲存其查詢的結果。
+* **訂用帳戶** 上的唯讀鎖定會阻止 **Azure Advisor** 正常運作。 Advisor 無法儲存其查詢的結果。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰可以建立或刪除鎖定
 
@@ -58,7 +58,7 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 ![選取服務](./media/lock-resources/select-service.png)
 
-請注意，此服務包含**受控資源群組**的連結。 該資源群組會保留基礎結構並加以鎖定。 無法將其直接刪除。
+請注意，此服務包含 **受控資源群組** 的連結。 該資源群組會保留基礎結構並加以鎖定。 無法將其直接刪除。
 
 ![顯示受控群組](./media/lock-resources/show-managed-group.png)
 
@@ -76,17 +76,17 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 使用 Resource Manager 範本部署鎖定時，您可以根據鎖定的範圍，使用不同的名稱和類型值。
 
-將鎖定套用至**資源**時，請使用下列格式：
+將鎖定套用至 **資源** 時，請使用下列格式：
 
 * name - `{resourceName}/Microsoft.Authorization/{lockName}`
 * type - `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-將鎖定套用至**資源群組**或**訂用帳戶**時，請使用下列格式：
+將鎖定套用至 **資源群組** 或 **訂用帳戶** 時，請使用下列格式：
 
 * name - `{lockName}`
 * type - `Microsoft.Authorization/locks`
 
-下列範例示範建立應用程式服務方案的範本、網站和網站上的鎖定。 鎖定的資源類型為要鎖定之資源的資源類型和 **/providers/locks**。 鎖定名稱的建立方式是串連資源名稱與 **/Microsoft.Authorization/** 和鎖定的名稱。
+下列範例示範建立應用程式服務方案的範本、網站和網站上的鎖定。 鎖定的資源類型為要鎖定之資源的資源類型和 **/providers/locks** 。 鎖定名稱的建立方式是串連資源名稱與 **/Microsoft.Authorization/** 和鎖定的名稱。
 
 ```json
 {
@@ -237,7 +237,7 @@ az lock delete --ids $lockid
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-範圍可以是訂用帳戶、資源群組或資源。 lock-name 是您想要命名鎖定的任何名稱。 api-version 請使用 **2016-09-01**。
+範圍可以是訂用帳戶、資源群組或資源。 lock-name 是您想要命名鎖定的任何名稱。 api-version 請使用 **2016-09-01** 。
 
 在要求中，包含指定鎖定屬性的 JSON 物件。
 

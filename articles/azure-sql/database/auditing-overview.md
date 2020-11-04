@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8fd794822e9e4fe282d6ef8a8ccf1eb908c03560
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321670"
+ms.locfileid: "93340028"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,6 +104,13 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
   >  (預覽版的 Microsoft 支援作業審核) 不支援儲存體帳戶目的地。 若要啟用此功能，必須設定 Log Analytics 工作區或事件中樞目的地。
 
 ![Microsoft 支援服務作業的螢幕擷取畫面](./media/auditing-overview/support-operations.png)
+
+若要在 Log Analytics 工作區中檢查 Microsoft 支援服務作業的審核記錄，請使用下列查詢：
+
+```kusto
+AzureDiagnostics
+| where Category == "DevOpsOperationsAudit"
+```
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>對儲存體目的地進行審核
 
@@ -205,9 +212,7 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 - 其他方法：
 
   - 下載多個檔案或包含記錄檔的子資料夾後，可以在本機合併這些檔案，如先前所述的 SSMS 合併稽核檔案指示中所述。
-  - 以程式設計方式檢視 Blob 稽核記錄：
-
-    - 使用 PowerShell [查詢擴充事件檔案](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
+  - 以程式設計方式查看 blob 審核記錄：使用 PowerShell [查詢擴充的事件](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) 檔案。
 
 ## <a name="production-practices"></a><a id="production-practices"></a>實際作法
 

@@ -3,23 +3,24 @@ title: Azure Cosmos DB 查詢語言的系統函數
 description: 瞭解 Azure Cosmos DB 中內建和使用者定義的 SQL 系統函數。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fc8473f1caf4a17aea926d2729e7db7918db40d7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b8883d7040ad5c73a376838f7cb1aaa1b558bfbd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094042"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340817"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>系統函式 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Cosmos DB 提供許多內建 SQL 函式。 內建函式的分類如下所示。  
   
-|函式群組|描述|Operations|  
+|函式群組|描述|作業|  
 |--------------|-----------------|-----------------| 
 |[陣列函數](sql-query-array-functions.md)|下列陣列函式會對陣列輸入值執行作業，並傳回數值、布林值或陣列值。 | [ARRAY_CONCAT](sql-query-array-concat.md)、 [ARRAY_CONTAINS](sql-query-array-contains.md)、 [ARRAY_LENGTH](sql-query-array-length.md)、 [ARRAY_SLICE](sql-query-array-slice.md) |
 |[日期和時間函數](sql-query-date-time-functions.md)|日期和時間函數可讓您以兩種形式取得目前的 UTC 日期和時間;數值時間戳記，其值為 Unix epoch （以毫秒為單位），或為符合 ISO 8601 格式的字串。 | [GetCurrentDateTime](sql-query-getcurrentdatetime.md)、 [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -36,7 +37,7 @@ ms.locfileid: "93094042"
 
 Cosmos DB 函式和 ANSI SQL 函數之間的主要差異在於，Cosmos DB 函數是設計來搭配無架構和混合架構資料使用。 例如，如果屬性遺失或具有非數值的值 `unknown` ，則會略過該專案，而不會傳回錯誤。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [陣列函數](sql-query-array-functions.md)

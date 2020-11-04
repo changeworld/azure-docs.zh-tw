@@ -4,16 +4,18 @@ description: 瞭解如何在 Azure Cosmos DB .NET SDK 中使用 TransactionalBat
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c27eb2b4e0dc0d269e1cffc9e213cebeb93443e2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93328680"
+ms.locfileid: "93340552"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>使用 .NET SDK Azure Cosmos DB 中的交易式批次作業
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 交易式批次描述一組需要成功或失敗的點運算，以及容器中的相同分割區索引鍵。 在 .NET SDK 中， `TranscationalBatch` 類別是用來定義此批次作業。 如果所有作業都依照交易式批次作業中的描述順序成功，就會認可交易。 但是，如果有任何作業失敗，則會回復整個交易。
 

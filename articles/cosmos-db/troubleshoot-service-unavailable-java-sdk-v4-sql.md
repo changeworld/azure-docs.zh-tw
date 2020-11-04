@@ -3,18 +3,20 @@ title: 使用 JAVA v4 SDK 進行 Azure Cosmos DB 服務無法使用例外狀況�
 description: 瞭解如何使用 JAVA v4 SDK 診斷和修正 Azure Cosmos DB 服務無法使用的例外狀況。
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: bba6465b8978b58fa3ef7be2a7575018828eabb2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 03c899307b00010ca87b279ed720b92946d3673c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102885"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340053"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-service-unavailable-exceptions"></a>Azure Cosmos DB JAVA v4 SDK 服務無法使用例外狀況進行診斷和疑難排解
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 JAVA v4 SDK 無法連接至 Azure Cosmos DB。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟

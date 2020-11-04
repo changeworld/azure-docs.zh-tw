@@ -4,15 +4,16 @@ description: 瞭解如何定義和使用 Azure Cosmos 資料庫的唯一金鑰�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3128f6783dc96fffb577a378cd1aaea4e58c7a4f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3c42146ba93115e257924c23dc34785c8258533
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099176"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340442"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一索引鍵限制式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,7 +55,7 @@ ms.locfileid: "93099176"
 
 * 唯一索引鍵名稱會區分大小寫。 例如，請考慮將 unique key 條件約束設為的容器 `/address/zipcode` 。 如果您的資料中有一個名為的欄位 `ZipCode` ，Azure Cosmos DB 插入 "null" 作為唯一索引鍵，因為與 `zipcode` 不相同 `ZipCode` 。 由於這個區分大小寫的緣故，因此，無法插入包含 ZipCode 的所有其他記錄，因為重複的 "null" 違反唯一索引鍵限制式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [邏輯分區](partitioning-overview.md)
 * 探索如何在建立容器時[定義唯一索引鍵](how-to-define-unique-keys.md)

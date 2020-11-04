@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 TicksToDateTime
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 TicksToDateTime。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 12d286fb5c8cf6d602d95da53ef8de376f9a49cf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093855"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340785"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +70,7 @@ SELECT TicksToDateTime(15943368134575530) AS DateTime
 ]
 ```  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

@@ -3,16 +3,17 @@ title: 在 Azure Cosmos DB 中使用預存程式、觸發程式和 Udf
 description: 本文說明 Azure Cosmos DB 中的預存程序、觸發程序及使用者定義函數等概念。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101301"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340697"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>預存程序、觸發程序和使用者定義函式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -3,15 +3,16 @@ title: 有關 Azure Cosmos DB 之 Cassandra API 的常見問題
 description: 取得 Azure Cosmos DB 的 Cassandra API 常見問題的解答。
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b467e191a8f009b85abb4866821dd64fc87ce657
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3436a0edf69efc71d3528bffaefd613668426fad
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092376"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339932"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>關於 Cassandra API 的常見問題 Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -86,7 +87,7 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 Azure Cosmos DB 是以服務等級協定為基礎的系統， (SLA) 。 它提供無限制的調整，並保證延遲、輸送量、可用性及一致性。 這種無限制的儲存體是以水準相應放大的資料為基礎，使用資料分割作為主要概念。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partitioning-overview.md)一文。
 
-您應遵循每個邏輯分割區的實體或專案數目的 20 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」  建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有一個資料分割索引鍵的大量資料 (20 GB 以上的) 。 您可以使用儲存體入口網站來尋找資料的分佈。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要 (分割區索引鍵) ，以便更妥善地散發資料。
+您應遵循每個邏輯分割區的實體或專案數目的 20 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有一個資料分割索引鍵的大量資料 (20 GB 以上的) 。 您可以使用儲存體入口網站來尋找資料的分佈。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要 (分割區索引鍵) ，以便更妥善地散發資料。
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>我可以使用 Cassandra API 做為具有上百萬或數十億個分割區索引鍵的索引鍵值存放區嗎？
 
@@ -190,6 +191,6 @@ Cassandra API 從 Azure Cosmos DB 的全域分散式平臺借用。 為確保您
 [azure-portal]: https://portal.azure.com
 [query]: ./sql-query-getting-started.md
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 開始使用 [彈性調整 Azure Cosmos DB Cassandra API 帳戶](manage-scale-cassandra.md)。

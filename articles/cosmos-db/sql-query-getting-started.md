@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中的 SQL 查詢入門
 description: 瞭解如何使用 SQL 查詢來查詢 Azure Cosmos DB 中的資料。 您可以將範例資料上傳至 Azure Cosmos DB 中的容器，並進行查詢。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: ee38e076e76111f4f4e6bf3b8fa8dde8c3debcfc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100808"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341904"
 ---
 # <a name="getting-started-with-sql-queries"></a>開始使用 SQL 查詢
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -179,7 +180,7 @@ Azure Cosmos DB 上大部分的大量讀取工作負載都會使用點讀取和 
 
 * Cosmos 容器是 JSON 專案的無架構集合。 容器專案內和跨容器專案的關聯性會由內含專案（而非主鍵和外鍵關聯）隱含地捕捉。 這項功能對於本文稍後討論的專案內聯接很重要。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)

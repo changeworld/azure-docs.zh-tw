@@ -4,16 +4,15 @@ description: 本文說明 Azure Cosmos DB 資源模型，其中包含 Azure Cosm
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 23adbd289ae2be484f1aef86b2224097c6ba489c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 37f1c9f59b6ffb45e1b874d2a6969bf263d2d5eb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087922"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341360"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB 資源模型
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +33,7 @@ Azure Cosmos 容器是擴充性的基礎單位。 您在容器上可佈建的輸
 
 下圖顯示 Azure Cosmos DB 帳戶中不同實體的階層：
 
-:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帳戶的階層" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帳戶項目" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos 資料庫
 

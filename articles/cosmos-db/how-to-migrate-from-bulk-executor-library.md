@@ -3,16 +3,17 @@ title: 從大量執行程式程式庫遷移至 Azure Cosmos DB .NET V3 SDK 的�
 description: 瞭解如何使用大量執行程式程式庫，將您的應用程式遷移至 Azure Cosmos DB SDK V3 中的大量支援
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f7f51f6944de48e58ff53e7685164df3a04afe56
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 24d6b475964e4bf7745495e9c41d0e89bb76f7e9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075580"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341275"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>從大量執行程式程式庫遷移至 Azure Cosmos DB .NET V3 SDK 的大量支援
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -95,7 +96,7 @@ SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數�
 
 只有當您使用的資料本質與位元組資料流程的本質相符時，才可能使用 stream Api (例如，) 的檔案資料流程。 在這種情況下，使用 `CreateItemStreamAsync` 、 `ReplaceItemStreamAsync` 或 `DeleteItemStreamAsync` 方法，並使用 `ResponseMessage` (而不是 `ItemResponse`) 會提高可達到的輸送量。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解 .NET SDK 版本，請參閱 [AZURE COSMOS DB sdk](sql-api-sdk-dotnet.md) 文章。
 * 從 GitHub 取得完整的 [遷移原始碼](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) 。

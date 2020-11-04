@@ -3,15 +3,16 @@ title: 防止刪除或變更 Azure Cosmos DB 資源
 description: 使用 Azure 資源鎖定來防止 Azure Cosmos DB 資源遭到刪除或變更。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6db7bbf03b023a80032a4ed15f2f4f82dd2b0b98
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341955"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>防止刪除或變更 Azure Cosmos DB 資源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,6 +114,6 @@ az lock create --name $lockName \
 ]
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Resource Manager 鎖定的總覽](../azure-resource-manager/management/lock-resources.md)

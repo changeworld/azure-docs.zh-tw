@@ -3,15 +3,16 @@ title: 在 Azure Cosmos DB 中彈性調整 Cassandra API
 description: 了解可用來調整 Azure Cosmos DB Cassandra API 帳戶的選項及其優點/缺點
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088670"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340935"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>彈性調整 Azure Cosmos DB Cassandra API 帳戶
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]

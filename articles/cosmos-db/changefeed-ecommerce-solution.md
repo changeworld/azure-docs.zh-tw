@@ -3,17 +3,18 @@ title: 使用 Azure Cosmos DB 變更摘要以視覺方式呈現即時資料分�
 description: 本文說明零售公司如何使用變更摘要瞭解使用者模式、執行即時資料分析和視覺效果
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 1206d67b6a9d3823220b1ce1b7bd5b4b45e672fe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072700"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342159"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 變更摘要以視覺方式呈現即時資料分析
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +56,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 7. **Power BI：** Power BI 可以視覺方式呈現 Azure 串流分析所傳送的資料。 您可以建置儀表板，以即時查看計量的變化。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Microsoft .NET Framework 4.7.1 或更新版本
 
@@ -394,6 +395,6 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
 
 若要刪除您在此實驗室中建立的資源，請流覽至 [Azure 入口網站](https://portal.azure.com/)上的資源群組，然後從頁面頂端的功能表中選取 [ **刪除資源群組** ]，並依照提供的指示進行。
 
-## <a name="next-steps"></a>下一步 
+## <a name="next-steps"></a>後續步驟 
   
 * 若要深入了解變更摘要，請參閱[使用 Azure Cosmos DB 中的變更摘要支援](change-feed.md)

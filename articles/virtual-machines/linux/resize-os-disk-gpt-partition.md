@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 30a960c3ed76788158b15022947fec49a95ae299
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa260e911673ea99b292ab5dc9895840d0098ef
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375205"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340297"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>調整具有 GPT 分割區的 OS 磁碟大小
 
@@ -34,7 +34,7 @@ ms.locfileid: "89375205"
 
 ### <a name="mbr-partition"></a>MBR 磁碟分割
 
-在下列輸出中，**Partition Table** 顯示 **msdos.sys** 值。 此值表示 MBR 磁碟分割。
+在下列輸出中， **Partition Table** 顯示 **msdos.sys** 值。 此值表示 MBR 磁碟分割。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT 磁碟分割
 
-在下列輸出中，**Partition Table** 顯示 **gpt** 值。 此值表示 GPT 磁碟分割。
+在下列輸出中， **Partition Table** 顯示 **gpt** 值。 此值表示 GPT 磁碟分割。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -82,7 +82,7 @@ Number  Start   End     Size    File system  Name                  Flags
 
 1. 停止 VM。
 1. 從入口網站增加 OS 磁碟的大小。
-1. 重新開機 VM，然後以**根**使用者的身分登入 VM。
+1. 重新開機 VM，然後以 **根** 使用者的身分登入 VM。
 1. 確認 OS 磁碟現在顯示增加的檔案系統大小。
 
 如下列範例所示，已從入口網站將 OS 磁碟調整為 100 GB。 / 上掛接的 **/dev/sda1** 檔案系統現在顯示 97 GB。
@@ -112,7 +112,7 @@ user@myvm:~#
 
 當 VM 重新開機後，執行下列步驟：
 
-1. 使用下列命令，以**根**使用者身分存取您的 VM：
+1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
 
    ```
    # sudo -i
@@ -177,7 +177,7 @@ user@myvm:~#
 
 1. 根據檔案系統類型，使用適當的命令來調整檔案系統的大小。
    
-   針對 **xfs**，使用下列命令：
+   針對 **xfs** ，使用下列命令：
    
    ```
    #xfs_growfs /
@@ -200,7 +200,7 @@ user@myvm:~#
    data blocks changed from 7470331 to 12188923
    ```
    
-   針對 **ext4**，使用下列命令：
+   針對 **ext4** ，使用下列命令：
    
    ```
    #resize2fs /dev/sda4
@@ -231,7 +231,7 @@ user@myvm:~#
    
    在上述範例中，我們可以看到 OS 磁碟的檔案系統大小已增加。
 
-### <a name="rhel"></a>RHEL
+### <a name="rhel-lvm"></a>RHEL LVM
 
 使用 LVM 增加 RHEL 7.x 中的 OS 磁碟大小：
 
@@ -241,7 +241,7 @@ user@myvm:~#
 
 當 VM 重新開機後，執行下列步驟：
 
-1. 使用下列命令，以**根**使用者身分存取您的 VM：
+1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
  
    ```
    #sudo su
@@ -351,6 +351,129 @@ user@myvm:~#
 
 > [!NOTE]
 > 若要使用相同程序來調整任何其他邏輯磁碟區的大小，請變更步驟 7 中的 **lv** 名稱。
+
+### <a name="rhel-raw"></a>RHEL RAW
+>[!NOTE]
+>請一律先建立 VM 的快照集，再增加 OS 磁片大小。
+
+若要使用原始磁碟分割增加 RHEL 中的 OS 磁片大小：
+
+停止 VM。
+從入口網站增加 OS 磁碟的大小。
+啟動 VM。
+當 VM 重新開機後，執行下列步驟：
+
+1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
+ 
+   ```
+   sudo su
+   ```
+
+1. 安裝 **gptfdisk** 套件，這是增加 OS 磁碟大小所需的套件。
+
+   ```
+   yum install gdisk -y
+   ```
+
+1.  若要查看磁片上的所有可用磁區，請執行下列命令：
+    ```
+    gdisk -l /dev/sda
+    ```
+
+1. 您將會看到通知資料分割類型的詳細資料。 確定它是 GPT。 識別根磁碟分割。 請勿變更或刪除開機磁碟分割 (BIOS 開機磁碟分割) 和系統磁碟分割 ( 「EFI 系統磁碟分割」 ) 
+
+1. 使用下列命令，以在第一次啟動資料分割。 
+    ```
+    gdisk /dev/sda
+    ```
+
+1. 現在您會看到一則訊息，要求下一個命令 ( ' Command：？ 如需協助，請 ) 。 
+
+   ```
+   w
+   ```
+
+1. 您會收到一則警告，指出「警告！ 磁片上的次要標頭太早放置了！ 您要更正這個問題嗎？  (Y/N) ： "。 您必須按 ' Y '
+
+   ```
+   Y
+   ```
+
+1. 您應該會看到一則訊息，告知最後的檢查已完成並要求確認。 按 ' Y '
+
+   ```
+   Y
+   ```
+
+1. 使用 partprobe 命令檢查所有專案是否都正確發生
+
+   ```
+   partprobe
+   ```
+
+1. 上述步驟確保將次要 GPT 標頭放置於結尾。 下一步是使用 gdisk 工具再次開始調整大小的程式。 使用下列命令。
+
+   ```
+   gdisk /dev/sda
+   ```
+1. 在命令功能表中，按 ' p ' 以查看磁碟分割清單。 識別步驟中 (的根磁碟分割，sda2 會被視為根磁碟分割) 和步驟中 (的開機分割區，並將 sda3 視為開機磁碟分割)  
+
+   ```
+   p
+   ```
+    ![根磁碟分割和開機磁碟分割](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+
+1. 按 [刪除] 以刪除分割區，並選取指派給開機 (的分割區編號，在此範例中為 ' 3 ' ) 
+   ```
+   d
+   3
+   ```
+1. 按 [刪除] 以刪除分割區，並選取指派給開機 (的資料分割編號。在此範例中為 ' 2 ' ) 
+   ```
+   d
+   2
+   ```
+    ![刪除根磁碟分割和開機磁碟分割](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+
+1. 若要重新建立具有增加大小的根磁碟分割，請按 [n]，輸入您先前為此) 範例中的根 ( ' 2 ' 所刪除的分割區編號，然後選擇第一個磁區為「預設值」、最後一個磁區為「最後磁區值-開機大小磁區」 ( ' 4096 在此案例中對應到2MB 的開機) 8300，
+   ```
+   n
+   2
+   (Enter default)
+   (Calculateed value of Last sector value - 4096)
+   8300
+   ```
+1. 若要重新建立開機磁碟分割，請按 [n]，輸入您先前在此範例中為開機 ( ' 3 ' 所刪除的分割區編號) 然後選擇第一個磁區為 [預設值]、最後一個磁區為 [預設值]，並將 [十六進位碼] 設為 [EF02]
+   ```
+   n
+   3
+   (Enter default)
+   (Enter default)
+   EF02
+   ```
+
+1. 使用 ' w ' 命令寫入變更，然後按 ' Y ' 以確認
+   ```
+   w
+   Y
+   ```
+1. 執行 ' partprobe ' 命令以檢查磁片穩定性
+   ```
+   partprobe
+   ```
+1. 重新開機 VM，根磁碟分割大小會增加
+   ```
+   reboot
+   ```
+
+   ![新的根磁碟分割和開機磁碟分割](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+
+1. 在磁碟分割上執行 xfs_growfs 命令以調整其大小
+   ```
+   xfs_growfs /dev/sda2
+   ```
+
+   ![XFS 成長 FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>後續步驟
 

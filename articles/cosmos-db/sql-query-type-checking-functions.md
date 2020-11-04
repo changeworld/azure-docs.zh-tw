@@ -3,23 +3,24 @@ title: Azure Cosmos DB 查詢語言中的類型檢查函式
 description: 瞭解如何在 Azure Cosmos DB 中檢查 SQL 系統函數的類型。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bafc599ddb502d5714b08ff58ed942e9c17557a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 96fea7cb53c89c02583a6dba8434cd33641d6a09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093753"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341496"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>類型檢查函式 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 類型檢查函數可讓您檢查 SQL 查詢中的運算式類型。 您可以使用類型檢查函式，在專案為變數或未知時，即時判斷專案中的屬性類型。 
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 以下是支援的內建類型檢查功能資料表：
 
@@ -34,7 +35,7 @@ ms.locfileid: "93093753"
 * [IS_PRIMITIVE](sql-query-is-primitive.md)
 * [IS_STRING](sql-query-is-string.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

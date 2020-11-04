@@ -3,18 +3,21 @@ title: 針對 JAVA v4 SDK Azure Cosmos DB HTTP 408 或要求超時問題進行�
 description: 瞭解如何使用 JAVA v4 SDK 診斷和修正 JAVA SDK 要求超時例外狀況。
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 45452109582be40f007ae57a00c2a151f216bdb8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102889"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340064"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Azure Cosmos DB JAVA v4 SDK 要求超時例外狀況進行診斷和疑難排解
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 如果 SDK 無法在發生超時限制之前完成要求，就會發生 HTTP 408 錯誤。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
@@ -87,6 +90,6 @@ Azure Cosmos DB 會將整體布建的輸送量平均分散到實體分割區。 
 ### <a name="failure-rate-violates-the-azure-cosmos-db-sla"></a>失敗率違反 Azure Cosmos DB SLA
 請聯絡 [Azure 支援](https://aka.ms/azure-support)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 當您使用 Azure Cosmos DB JAVA v4 SDK 時[，診斷和疑難排解](troubleshoot-java-sdk-v4-sql.md)問題。
 * 瞭解 [JAVA v4](performance-tips-java-sdk-v4-sql.md)的效能指導方針。

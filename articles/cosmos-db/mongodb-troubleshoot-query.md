@@ -4,15 +4,16 @@ description: 瞭解如何識別、診斷 Azure Cosmos DB 的 MongoDB API 查詢�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
+ms.subservice: cosmosdb-mongo
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: ece814ea316fe62bc2b8b64036b08983f65ccbef
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096354"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340884"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>針對使用適用于 MongoDB 的 Azure Cosmos DB API 時的查詢問題進行疑難排解
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -263,7 +264,7 @@ Azure Cosmos DB 的 MongoDB API 中編制索引的最佳作法與 MongoDB 不同
 
 在大部分的情況下，Azure Cosmos DB 適用于 MongoDB 的 API 中的匯總作業將會部分使用索引。 通常，查詢引擎會先套用相等和範圍篩選，並使用索引。 套用這些篩選之後，查詢引擎就可以評估其他篩選條件，並在有需要時，藉由載入其餘文件來計算彙總。 
 
-以下為範例：
+以下是範例：
 
 ```
 db.coll.aggregate( [

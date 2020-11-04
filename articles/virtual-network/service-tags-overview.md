@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d21b59b8822684598ac2fc3fd813278c1cf0c698
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319801"
+ms.locfileid: "93340255"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -84,7 +84,6 @@ ms.locfileid: "93319801"
 | **DataFactory**  | Azure Data Factory | 兩者 | 否 | 否 |
 | **DataFactoryManagement** | Azure Data Factory 的管理流量。 | 輸出 | 否 | 否 |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 行銷電子郵件服務的位址範圍。 | 輸出 | 是 | 否 |
-| **ElasticAFD** | 彈性 Azure Front Door。 | 兩者 | 否 | 否 |
 | **EventHub** | Azure 事件中樞上的事件中樞功能比較。 | 輸出 | 是 | 是 |
 | **GatewayManager** | Azure VPN 閘道和應用程式閘道專用部署的管理流量。 | 輸入 | 否 | 否 |
 | **GuestAndHybridManagement** | Azure 自動化和來賓設定。 | 輸出 | 否 | 是 |

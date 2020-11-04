@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310825"
+ms.locfileid: "93340983"
 ---
 # <a name="query-folders-and-multiple-files"></a>查詢資料夾和多個檔案  
 
@@ -29,7 +29,7 @@ ms.locfileid: "93310825"
 您將使用資料夾 *csv/計程車* 來遵循範例查詢。 它包含從2016年7月到6月2018的 NYC 計程車-黃色計程車行程記錄資料。 *Csv/計程車* 中的檔案會使用下列模式，以年和月命名： yellow_tripdata_ <year> - <month> .csv
 
 ## <a name="read-all-files-in-folder"></a>讀取資料夾中的所有檔案
-    
+
 下列範例會讀取 *csv/計程車* 資料夾中所有 NYC 的黃色計程車資料檔案，並傳回每年乘客和乘車點的總數。 它也會顯示彙總函式的使用方式。
 
 ```sql
@@ -180,6 +180,49 @@ ORDER BY
 > 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構 (例如，資料行的數目和其資料類型) 。
 
 由於您只有一個符合準則的資料夾，因此查詢結果與 [ [讀取資料夾中的所有](#read-all-files-in-folder)檔案] 相同。
+
+## <a name="traverse-folders-recursively"></a>以遞迴方式遍歷資料夾
+
+如果您在路徑結尾指定/* *，無伺服器 SQL 集區可以遞迴方式來進行資料夾。 下列查詢會從位於 *csv* 資料夾的所有資料夾和子資料夾中讀取所有檔案。
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構 (例如，資料行的數目和其資料類型) 。
 
 ## <a name="multiple-wildcards"></a>多個萬用字元
 

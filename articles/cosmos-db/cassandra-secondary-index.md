@@ -3,16 +3,17 @@ title: Azure Cosmos DB Cassandra API 帳戶編制索引
 description: 瞭解 Azure Azure Cosmos DB Cassandra API 帳戶中次要索引的運作方式。
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: fc9c7c2f06b9d39243b8593b20ddeb7ffa2f886c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 98e8f713ad2e4eef47e40d89a23dbf49a98ad67c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092359"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339883"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的次要索引
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -72,6 +73,6 @@ CREATE INDEX ON sampleks.t1 (lastname);
 drop index sampleks.t1_lastname_idx;
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 瞭解 Azure Cosmos DB 中 [自動編制索引](index-overview.md) 的運作方式
 * [Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能](cassandra-support.md)

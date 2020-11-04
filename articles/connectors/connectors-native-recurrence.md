@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: 8706ae12d45b9c6667ae99078d479f0e907840fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: a9c6017ed46853b9dec991fc02097ee88c67a7cb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007550"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342176"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的迴圈觸發程式來建立、排程和執行循環性的工作和工作流程
 
@@ -34,7 +34,7 @@ ms.locfileid: "87007550"
 > [!TIP]
 > 如果您想要觸發邏輯應用程式，並且在未來只執行一次，請參閱 [只執行一次作業](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "87007550"
    | 屬性 | JSON 名稱 | 必要 | 類型 | 說明 |
    |----------|-----------|----------|------|-------------|
    | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p>- 月：1-16 個月 <br>-周：1-71 周 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒<p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
-   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
+   | **頻率** | `frequency` | 是 | String | 重複的時間單位： **秒** 、 **分鐘** 、 **小時** 、 **天** 、 **週** 或 **月** |
    ||||||
 
    > [!IMPORTANT]
@@ -72,13 +72,13 @@ ms.locfileid: "87007550"
 
    ![進階排程選項](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | 屬性 | JSON 名稱 | 必要 | 類型 | 說明 |
+   | 屬性 | JSON 名稱 | 必要 | 類型 | 描述 |
    |----------|-----------|----------|------|-------------|
    | **時區** | `timeZone` | 否 | String | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
-   | **開始時間** | `startTime` | 否 | String | 以下列格式提供開始日期和時間： <p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>舉例來說，如果您想要在2020年9月18日下午2:00，請指定 "2020-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或者，指定 "2020-09-18T14：00： 00Z"，而不使用時區。 <p>**注意：** 此開始時間在未來的時間最多為49年，且必須遵循 [ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) （ [utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)），但不含 [utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
-   | **在這幾天內** | `weekDays` | 否 | 字串或字串陣列 | 如果您選取 [週]，可以選取想要在哪一天或哪幾天執行工作流程：**星期一**、**星期二**、**星期三**、**星期四**、**星期五**、**星期六**和**星期日** |
+   | **開始時間** | `startTime` | 否 | String | 提供開始日期和時間，其未來最多會有49年，且必須遵循 [ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) （ [utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)），但不含 [utc 時差](https://en.wikipedia.org/wiki/UTC_offset)： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>舉例來說，如果您想要在2020年9月18日下午2:00，請指定 "2020-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或者，指定 "2020-09-18T14：00： 00Z"，而不使用時區。 <p><p>**重要事項：** 如果您未選取時區，就必須在結尾加上字母 "Z"，不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 如果您選取 [時區] 值，就不需要在 [ **開始時間** ] 值的結尾加上「Z」。 如果您這樣做，Logic Apps 會忽略時區值，因為 "Z" 表示 UTC 時間格式。 <p><p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **在這幾天內** | `weekDays` | 否 | 字串或字串陣列 | 如果您選取 [週]，可以選取想要在哪一天或哪幾天執行工作流程： **星期一** 、 **星期二** 、 **星期三** 、 **星期四** 、 **星期五** 、 **星期六** 和 **星期日** |
    | **在這幾小時內** | `hours` | 否 | 整數或整數陣列 | 如果您選取 [天] 或 [周]，可以選取從0到23的一或多個整數，做為您想要執行工作流程的當日時間。 <p><p>例如，如果您指定「10」、「12」和「14」，則會在一天中的時數取得上午10點、下午12點和下午2點，但會根據週期開始時間來計算一天中的分鐘數。 若要設定一天中的特定分鐘數（例如，10:00 AM、12:00 PM 和 2:00 PM），請使用 [ **在以下幾分鐘** ] 屬性來指定這些值。 |
-   | **在這幾分鐘內** | `minutes` | 否 | 整數或整數陣列 | 如果您選取 [天] 或 [週]，可以選取從 0 到 59 的一或多個整數，來表示想要在小時的哪幾個分鐘執行工作流程。 <p>例如，您可以指定 "30" 作為分鐘標記，然後使用上個範例代表一天中的整點，這樣就會得出上午 10:30、下午 12:30 及下午 2:30。 <p>**注意**：有時候，觸發執行的時間戳記最多可能會從排程的時間變更為1分鐘。 如果您需要將時間戳記完全按照排程傳遞給後續的動作，您可以使用範本運算式，據以變更時間戳記。 如需詳細資訊，請參閱 [運算式的日期和時間函數](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions)。 |
+   | **在這幾分鐘內** | `minutes` | 否 | 整數或整數陣列 | 如果您選取 [天] 或 [週]，可以選取從 0 到 59 的一或多個整數，來表示想要在小時的哪幾個分鐘執行工作流程。 <p>例如，您可以指定 "30" 作為分鐘標記，然後使用上個範例代表一天中的整點，這樣就會得出上午 10:30、下午 12:30 及下午 2:30。 <p>**注意** ：有時候，觸發執行的時間戳記最多可能會從排程的時間變更為1分鐘。 如果您需要將時間戳記完全按照排程傳遞給後續的動作，您可以使用範本運算式，據以變更時間戳記。 如需詳細資訊，請參閱 [運算式的日期和時間函數](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions)。 |
    |||||
 
    例如，假設今天是2020年9月4日星期五。 下列週期觸發程式不會在開始日期和時間（在2020年9月18日星期五上午8:00 時 *）引發。* 不過，重複排程已設定為只在星期一的上午 10:30、下午 12:30 和下午 2:30。 因此，第一次引發觸發程式並建立邏輯應用程式工作流程實例時，會在星期一上午10:30。 若要深入了解開始時間如何運作，請參閱這些[開始時間範例](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)。
@@ -94,7 +94,7 @@ ms.locfileid: "87007550"
 
 ## <a name="workflow-definition---recurrence"></a>工作流程定義-週期
 
-在邏輯應用程式的基礎工作流程定義中，使用 JSON，您可以使用您選擇的選項來查看 [週期觸發程序定義](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger) 。 若要查看這個定義，請在設計工具的工具列上選擇 [程式 **代碼視圖**]。 若要返回設計工具，請選擇設計工具工具列上的 [ **設計**工具]。
+在邏輯應用程式的基礎工作流程定義中，使用 JSON，您可以使用您選擇的選項來查看 [週期觸發程序定義](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger) 。 若要查看這個定義，請在設計工具的工具列上選擇 [程式 **代碼視圖** ]。 若要返回設計工具，請選擇設計工具工具列上的 [ **設計** 工具]。
 
 這個範例會示範週期性觸發程序定義在基礎工作流程定義中的外觀：
 
@@ -125,7 +125,7 @@ ms.locfileid: "87007550"
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用延遲動作暫停工作流程](../connectors/connectors-native-delay.md)
 * [適用於 Logic Apps 的連接器](../connectors/apis-list.md)

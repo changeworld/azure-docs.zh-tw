@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 TimestampToDateTime
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 TimestampToDateTime。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: c4a37206187d4b042bb69c065310f3a55fd51e37
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: af5e0eeb808835fd4f36a0eda79618f831248ad9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093821"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340765"
 ---
 # <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +70,7 @@ SELECT TimestampToDateTime(1594227912345) AS DateTime
 ]
 ```  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

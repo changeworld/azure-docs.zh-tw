@@ -3,16 +3,17 @@ title: 使用真實世界範例在 Azure Cosmos DB 上建立模型和分割資�
 description: 了解如何使用 Azure Cosmos DB Core API 建立實際範例的模型及加以分割
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100245"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342142"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -138,7 +139,7 @@ ms.locfileid: "93100245"
 
 擷取使用者的作業會藉由從 `users` 容器中讀取對應的項目來完成。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="從使用者容器中擷取單一項目" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -148,7 +149,7 @@ ms.locfileid: "93100245"
 
 類似於 **[C1]** ，我們只需寫入 `posts` 容器即可。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -158,7 +159,7 @@ ms.locfileid: "93100245"
 
 首先我們從 `posts` 容器中擷取對應的文件。 但這樣還不夠，根據我們的規格，我們還必須彙總貼文作者的使用者名稱、此貼文的留言數，和此貼文的按讚數，而為此還需要另行發出 3 個 SQL 查詢。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="擷取貼文並和彙總額外的資料" border="false":::
 
 這些額外的查詢分別會依其各自容器的分割區索引鍵進行篩選，而這正是我們想盡可能提高效能和延展性所需要的。 但我們終究還是需要執行四項作業才能傳回單一貼文，因此我們將下次反覆執行時加以改善。
 
@@ -170,7 +171,7 @@ ms.locfileid: "93100245"
 
 首先，我們必須使用會擷取該名使用者對應貼文的 SQL 查詢，來擷取所需的貼文。 但我們也須發出其他查詢，以彙總作者的使用者名稱以及留言數和按讚數。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="擷取某個使用者的所有貼文並彙總其他資料" border="false":::
 
 此實作有許多缺點：
 
@@ -185,7 +186,7 @@ ms.locfileid: "93100245"
 
 留言可藉由在 `posts` 容器中寫入對應的項目而建立。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -195,7 +196,7 @@ ms.locfileid: "93100245"
 
 首先，我們以查詢擷取該貼文的所有留言，且同樣地，我們也必須個別彙總每個留言的使用者名稱。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="擷取某篇貼文的所有留言並彙總其他資料" border="false":::
 
 雖然主要查詢會依容器的分割區索引鍵進行篩選，但個別彙總使用者仍會導致整體效能下降。 我們將在稍後加以改善。
 
@@ -207,7 +208,7 @@ ms.locfileid: "93100245"
 
 如同 **[C3]** ，我們在 `posts` 容器中建立對應的項目。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -217,7 +218,7 @@ ms.locfileid: "93100245"
 
 如同 **[Q4]** ，我們查詢該貼文的讚，然後彙總其使用者名稱。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="擷取某篇貼文所有的讚並彙總其他資料" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -227,7 +228,7 @@ ms.locfileid: "93100245"
 
 我們查詢依遞減的建立日期排序的 `posts` 容器以擷取最新的貼文，然後彙總每篇貼文的使用者名稱以及留言數和按讚數。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="擷取最新的貼文並彙總其他資料" border="false":::
 
 同樣地，我們的初始查詢不會篩選容器的分割區索引鍵 `posts` ，這會觸發昂貴的展開傳送。當我們以更大的結果集為目標，並使用子句來排序結果時，這項功能會更糟 `ORDER BY` ，因為要求單位的要求單位會更昂貴。
 
@@ -338,7 +339,7 @@ function createComment(postId, comment) {
 
 在此範例中，我們使用 `users` 的變更摘要，以在使用者更新其使用者名稱時做出因應。 發生這種情況時，我們將對 `posts` 容器呼叫另一個預存程序，以傳播變更：
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="將使用者名稱反正規化至貼文容器中" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -378,7 +379,7 @@ function updateUsernames(userId, username) {
 
 現在，反正規化作業已準備就緒，我們只需擷取單一項目來處理該要求即可。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="從貼文容器中擷取單一項目" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -388,7 +389,7 @@ function updateUsernames(userId, username) {
 
 同樣地，我們不需執行額外的要求來擷取使用者名稱，而只需要依分割區索引鍵進行篩選的單一查詢。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="擷取某貼文的所有留言" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -398,7 +399,7 @@ function updateUsernames(userId, username) {
 
 列出讚時的情況完全相同。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="擷取某貼文所有的讚" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -412,7 +413,7 @@ function updateUsernames(userId, username) {
 
 此要求獲益於 V2 導入的改進，因而不需要額外的查詢。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="此圖顯示以簡短形式列出使用者的貼文的查詢。" border="false":::
 
 但其餘查詢仍未依 `posts` 容器的分割區索引鍵進行篩選。
 
@@ -420,7 +421,7 @@ function updateUsernames(userId, username) {
 
 1. 此要求 *必須* 依 `userId` 進行篩選，因為我們想要擷取特定使用者的所有貼文
 1. 其執行效果不佳，因為執行依據為 `posts` 容器，但其分割依據並非 `userId`
-1. 顯而易見，我們會對分割依據為 `userId` 的容器執行此要求，以解決效能問題
+1. 顯而易見，我們會對分割依據為`userId` 的容器執行此要求，以解決效能問題
 1. 而其實我們已有這樣的容器：`users` 容器！
 
 因此，我們藉由將所有貼文複製到 `users` 容器，來導入第二層反正規化。 藉由這麼做，我們有效地取得以不同維度分割的貼文複本，使其能更有效地依 `userId` 擷取。
@@ -456,11 +457,11 @@ function updateUsernames(userId, username) {
 
 為了完成此一反正規化，我們再次使用變更摘要。 這次，我們回應 `posts` 容器的變更摘要，以將任何新的或更新的貼文分派至 `users` 容器。 由於列出貼文並不需要傳回其完整內容，因此我們可以在處理時加以截斷。
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="將貼文反正規化至使用者容器中" border="false":::
 
 我們現在可以將查詢路由到依據容器的分割區索引鍵篩選的 `users` 容器。
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="擷取某使用者的所有貼文" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -470,7 +471,7 @@ function updateUsernames(userId, username) {
 
 在此我們必須處理類似的情況：即使已因 V2 中導入的反正規化而不再需要進行額外的查詢，其餘查詢仍不會依據容器的分割區索引鍵進行篩選：
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="顯示查詢的圖表，列出以簡短形式建立的 x 最新文章。" border="false":::
 
 依循相同的方式，要讓此要求達到最高的效能和延展性，要求必須僅在一個分割區中。 這是可想而知的，因為我們只需要傳回有限數量的項目；若要填入我們部落格平台的首頁，我們只需要取得 100 篇最新的貼文，而不需要將整個資料集分頁。
 
@@ -495,7 +496,7 @@ function updateUsernames(userId, username) {
 
 要完成反正規化，我們只需連結先前導入的變更摘要管線，以將貼文分派到這個新的容器即可。 需留意的一項重點，就是必須確定我們僅儲存了 100 篇最新的貼文；否則，容器的內容可能會超出分割區的大小上限。 每次在容器中新增文件後，您可以藉由呼叫[後置觸發程序](stored-procedures-triggers-udfs.md#triggers)來確認這一點：
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="將貼文反正規化至摘要容器中" border="false":::
 
 以下是會截斷集合的後續觸發程序主體：
 
@@ -546,7 +547,7 @@ function truncateFeed() {
 
 最後一個步驟是將查詢重新路由到新的 `feed` 容器：
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="將單一項目寫入使用者容器" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="擷取最新的貼文" border="false":::
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -583,7 +584,7 @@ function truncateFeed() {
 
 我們用來將更新散佈到其他容器的變更摘要，會持續完整地儲存這些更新。 如此，即使您的系統已有許多資料，您仍可要求容器建立後的所有更新，和以一次性追趕作業的形式啟動反正規化檢視。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在看完這些關於實際資料模型化和分割的簡介之後，您可以查看下列文章，以檢閱我們所說明的概念：
 

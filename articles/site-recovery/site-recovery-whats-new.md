@@ -3,12 +3,12 @@ title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425715"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341343"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -31,6 +31,7 @@ ms.locfileid: "92425715"
 
 [深入瞭解](service-updates-how-to.md) 更新的安裝與支援。
 
+## <a name="updates-october-2020"></a>2020年10月 (更新) 
 
 ### <a name="update-rollup-51"></a>更新彙總套件51
 
@@ -41,7 +42,9 @@ ms.locfileid: "92425715"
 **提供者和代理程式** | Site Recovery 代理程式和提供者的更新，如匯總中所述。
 **問題修正/改善** | 匯總中詳述的一些修正和改進，包括行動服務的新 Linux 支援。
 
-## <a name="update-september-2020"></a>更新 (2020 年 9 月)
+## <a name="updates-september-2020"></a>更新 (2020 年9月) 
+
+### <a name="update-rollup-50"></a>更新彙總套件50
 
 [更新彙總套件 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) 提供下列更新：
 
@@ -199,7 +202,7 @@ Azure 虛擬機器現在支援使用客戶管理的金鑰進行待用加密的 V
 **功能** | **詳細資料**
 --- | ---
 **測試容錯移轉設定** | 設定測試容錯移轉時，您現在可以設定測試容錯移轉 VM 和網路的設定，包括 IP 位址、NSG、內部負載平衡，以及每部電腦 NIC 的公用 IP 位址。 這些設定是選擇性的，不會變更目前的行為。 如果您未設定這些設定，您可以在測試容錯移轉時選擇 Azure VNet。 [深入了解](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/)。
-**復原計畫** | 復原方案現在僅限 100 Vm，以確保容錯移轉的可靠性。
+**復原方案** | 復原方案現在僅限 100 Vm，以確保容錯移轉的可靠性。
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>VMware 至 Azure 災害復原
 
@@ -207,7 +210,7 @@ Azure 虛擬機器現在支援使用客戶管理的金鑰進行待用加密的 V
 
 **功能** | **詳細資料**
 --- | ---
-**復原計畫** | 復原方案現在僅限 100 Vm，以確保容錯移轉的可靠性。
+**復原方案** | 復原方案現在僅限 100 Vm，以確保容錯移轉的可靠性。
 
 
 ## <a name="updates-september-2019"></a>更新 (2019 年9月) 
@@ -478,7 +481,7 @@ Site Recovery 現在支援針對快取儲存體或目標儲存體使用一般用
 **Linux 支援** | 已針對 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 與 Red Hat 相容核心，以及 Unbreakable Enterprise Kernel (UEK) 第5版的支援。
 **Linux BRTFS 檔案系統** | 支援 Azure Vm。
 **可用性區域中的 Azure Vm** | 您可以針對部署于可用性區域中的 Azure Vm 啟用複寫至另一個區域。 現在，您可以為 Azure VM 啟用複寫功能，並將容錯移轉的目標設為單一 VM 執行個體、可用性設定組中的 VM，或可用性區域中的 VM。 此設定不會影響複寫。 [閱讀](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)公告。
-**啟用防火牆的儲存體 (入口網站/PowerShell) ** | 針對 [已啟用防火牆的儲存體帳戶](../storage/common/storage-network-security.md)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫至另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 在入口網站中和使用 PowerShell 支援。
+**啟用防火牆的儲存體 (入口網站/PowerShell)** | 針對 [已啟用防火牆的儲存體帳戶](../storage/common/storage-network-security.md)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫至另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 在入口網站中和使用 PowerShell 支援。
 
 ## <a name="updates-december-2018"></a>2018年12月 (更新) 
 
@@ -519,7 +522,7 @@ Azure Vm 的嚴重損壞修復會產生 VM 授權成本，以及網路和儲存�
 **區域支援** | Site Recovery 新增澳大利亞中部1和澳大利亞中部2的支援。
 **支援磁片加密** | 針對使用 Azure 磁碟加密 (ADE) （使用 Azure AD 應用程式加密）的 Azure Vm 進行嚴重損壞修復新增支援。 [深入了解](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 **磁片排除** | Azure VM 複寫期間現在會自動排除未初始化的磁片。
-**啟用防火牆的儲存體 (PowerShell) ** | 針對 [已啟用防火牆的儲存體帳戶](../storage/common/storage-network-security.md)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫至另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 僅支援使用 PowerShell。
+**啟用防火牆的儲存體 (PowerShell)** | 針對 [已啟用防火牆的儲存體帳戶](../storage/common/storage-network-security.md)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫至另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 僅支援使用 PowerShell。
 
 
 ### <a name="update-rollup-29"></a>更新彙總套件29

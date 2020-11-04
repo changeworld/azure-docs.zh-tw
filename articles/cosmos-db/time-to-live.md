@@ -4,15 +4,16 @@ description: Microsoft Azure Cosmos DB 可讓您利用 TTL 在一段時間後自
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d4815f4be3c8ef1a2c262d6715756776a537eac1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f439fcd8b2aa1c75e1aff2c6b775921beabbcddf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101046"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340544"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的存留時間 (TTL)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,7 +86,7 @@ ms.locfileid: "93101046"
 |ttl =-1   |已啟用 TTL。 專案永遠不會過期。|
 |ttl = 2000 |已啟用 TTL。 專案將在2000秒後過期。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在下列文章中瞭解如何設定存留時間：
 

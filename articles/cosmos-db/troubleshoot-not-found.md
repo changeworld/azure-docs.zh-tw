@@ -3,16 +3,17 @@ title: 針對找不到 Azure Cosmos DB 的例外狀況進行疑難排解
 description: 瞭解如何診斷及修正找不到的例外狀況。
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 94aebd768987a9e56baf31967c13135031172ac5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f0fa8e5923639ea74a83a9a775bd5d580234b7ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081394"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340119"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>針對找不到 Azure Cosmos DB 找不到例外狀況進行診斷和疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -105,6 +106,6 @@ while (invalidItemsIterator.HasMoreResults)
 #### <a name="solution"></a>解決方案：
 連接到 Cosmos DB 時，請務必使用確切的名稱。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。

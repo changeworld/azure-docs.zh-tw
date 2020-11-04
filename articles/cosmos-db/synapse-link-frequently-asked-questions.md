@@ -6,15 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098037"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341281"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 適用於 Azure Cosmos DB 的 Azure Synapse Link 會在 Azure Cosmos DB 與 Azure Synapse Analytics 之間建立緊密的整合。 可讓客戶對其操作資料執行近即時分析，並將分析與交易的工作負載完全隔離，且不需要 ETL (擷取、轉換和下載) 管線。 本文會回答有關 Azure Cosmos DB 的 Synapse Link 常見問題。
 
@@ -157,7 +157,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 交易存放區容器將會以下列圖示表示：
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="啟用分析存放區的 Azure Cosmos DB 容器圖示":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="啟用交易存放區的 Azure Cosmos DB 容器圖示":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>如何從 Azure Synapse Studio 傳遞 Azure Cosmos DB 認證？
 

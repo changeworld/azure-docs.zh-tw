@@ -3,15 +3,16 @@ title: 使用 Azure Cosmos DB 容量規劃工具來預估成本
 description: Azure Cosmos DB 容量規劃工具可讓您估計 (RU/秒的輸送量，) 您的工作負載所需和成本。 本文說明如何使用新版本的容量規劃工具來估計所需的輸送量和成本。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 460f47ce453f183821ec0f49c38865c44b15ba9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 017aeaaa24e8ac2d493d0de81a7abb655bae5611
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096711"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342074"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>使用 Azure Cosmos DB 容量規劃來預估 RU/秒
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,7 +64,7 @@ ms.locfileid: "93096711"
 
 您也可以使用 [ **儲存估價** ] 按鈕來下載包含目前估價的 CSV 檔案。 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="容量規劃基本模式":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="容量規劃的 advanced 模式":::
 
 Azure Cosmos DB 容量規劃工具中所顯示的價格是根據輸送量和儲存體的公開定價費率進行預估。 所有價格均以美元顯示。 請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) ，以依區域查看所有費率。  
 
@@ -73,7 +74,7 @@ Azure Cosmos 容量計算機會假設 (讀取單一專案，例如檔、依識�
 
 例如，如果您的工作負載需要查詢， ``SELECT * FROM c WHERE c.id = 'Alice'`` 每秒執行100次，而且查詢的 RU 費用為 10 ru，則您需要 100 query/sec * 10 RU/query = 1000 RU/秒，才能提供這些要求。 將這些 RU/秒新增至您工作負載中發生的任何讀取或寫入所需的 RU/秒。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [Azure Cosmos DB 的定價模式](how-pricing-works.md)。
 * 建立新的 [Cosmos 帳戶、資料庫和容器](create-cosmosdb-resources-portal.md)。

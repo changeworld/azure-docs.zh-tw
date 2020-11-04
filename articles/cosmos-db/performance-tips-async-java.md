@@ -3,17 +3,18 @@ title: Azure Cosmos DB 非同步 Java SDK v2 的效能祕訣
 description: 了解可用以改善非同步 Java SDK v2 之 Azure Cosmos 資料庫效能的用戶端設定選項
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: c1dec2c8451ddd1feb4b5b0dac9c82e1716079b7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4285571ead30f74f9136ad81687e52d92fdd1c47
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325829"
+ms.locfileid: "93341751"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB 非同步 Java SDK v2 的效能祕訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
