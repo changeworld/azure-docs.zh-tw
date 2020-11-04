@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4b512d0817c56bc2daabff057c8bc4aa1afa1dee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44c9dbb0eed5e8f7a868832af93a3b841f67f784
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310697"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics
 
@@ -68,7 +68,7 @@ ms.locfileid: "91826508"
 
 當您建立新的筆記本時，您可以選擇想要表達商務邏輯的語言核心。 核心支援適用于多種語言，包括 c #。
 
-若要在您的 Azure Synapse Analytics 筆記本中使用適用於Apache Spark 的 .NET，請選取 [.NET Spark (C#)] 作為核心，然後將筆記本連結到現有的 Spark 集區。
+若要在 Azure Synapse Analytics 筆記本中使用 .NET 進行 Apache Spark，請選取 **.Net Spark (c # )** 作為核心，然後將筆記本連接到現有的無伺服器 Apache Spark 集區。
 
 .NET Spark 筆記本會以 .NET 互動體驗為基礎，提供互動式的 C# 體驗，讓您能夠使用預先定義的 Spark 工作階段變數 `spark` 來直接使用適用於 Spark 的 .NET。
 

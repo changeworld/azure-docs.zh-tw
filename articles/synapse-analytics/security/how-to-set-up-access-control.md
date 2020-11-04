@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186615"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312048"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽) 
 
@@ -92,7 +92,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
   - 如果您沒有看到 MSI 已指派，請進行指派。
   - MSI 的名稱與工作區相同。 在案例中，此名稱會是 &quot;WS1&quot;。
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>步驟 5：設定 SQL 集區的理員存取權
+## <a name="step-5-configure-admin-access-for-synapse-sql"></a>步驟5：設定 Synapse SQL 的系統管理員存取權
 
 - 開啟 Azure 入口網站
 - 瀏覽至 WS1
@@ -114,11 +114,11 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 | 數字 | 步驟 | 工作區管理員 | Spark 管理員 | SQL 管理員 |
 | --- | --- | --- | --- | --- |
 | 1 | 將 Parquet 檔案上傳至 CNT1 | YES | YES | YES |
-| 2 | 使用 SQL 隨選讀取 Parquet 檔案 | YES | 否 | YES |
-| 3 | 建立 Spark 集區 | 是 [1] | 是 [1] | 否  |
+| 2 | 使用無伺服器 SQL 集區讀取 parquet 檔案 | YES | 否 | YES |
+| 3 | 建立無伺服器 Apache Spark 集區 | 是 [1] | 是 [1] | 否  |
 | 4 | 使用 Notebook 讀取 Parquet 檔案 | YES | YES | 否 |
 | 5 | 從 Notebook 建立管線並觸發管線立即執行 | YES | 否 | 否 |
-| 6 | 建立 SQL 集區並執行 SQL 指令碼，例如 &quot;SELECT 1&quot; | 是 [1] | 否 | 是 [1] |
+| 6 | 建立專用的 SQL 集區，並執行 SQL 腳本，例如 &quot; SELECT 1&quot; | 是 [1] | 否 | 是 [1] |
 
 > [!NOTE]
 > [1] 若要建立 SQL 或 Spark 集區，使用者在 Synapse 工作區上必須至少擁有「參與者」角色。
@@ -148,8 +148,8 @@ Synapse Studio 的行為會因為使用者角色不同而有所差異。 如果�
 | 資料中樞/查看閱連結的 ADLS Gen2 帳戶和容器 | 是 [1] | 是 [1] | 是 [1] |
 | 資料中樞/查看資料庫 | YES | YES | YES |
 | 資料中樞/查看資料庫中的物件 | YES | YES | YES |
-| 資料中樞/存取 SQL 集區資料庫中的資料 | YES   | 否   | YES   |
-| 資料中樞/存取 SQL 隨選資料庫中的資料 | 是 [2]  | 否  | 是 [2]  |
+| Synapse SQL 資料庫中的資料中樞/存取資料 | YES   | 否   | YES   |
+| 無伺服器 SQL 集區資料庫中的資料中樞/存取資料 | 是 [2]  | 否  | 是 [2]  |
 | 資料中樞/存取 Spark 資料庫中的資料 | 是 [2] | 是 [2] | 是 [2] |
 | 使用開發中樞 | YES | YES | YES |
 | 開發中樞/撰寫 SQL 指令碼 | YES | 否 | YES |
@@ -159,7 +159,7 @@ Synapse Studio 的行為會因為使用者角色不同而有所差異。 如果�
 | 使用協調中樞 | YES | YES | YES |
 | 協調中樞/使用管線 | YES | 否 | 否 |
 | 使用管理中樞 | YES | YES | YES |
-| 管理中樞/SQL 集區 | YES | 否 | YES |
+| 管理中樞/Synapse SQL | YES | 否 | YES |
 | 管理中樞/Spark 集區 | YES | YES | 否 |
 | 管理中樞/觸發程序 | YES | 否 | 否 |
 | 管理中樞/連結服務 | YES | YES | YES |

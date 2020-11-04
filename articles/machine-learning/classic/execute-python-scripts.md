@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 822bb43aaeb3cc1cf5914bb1600ef754441c4206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362379"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310205"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統) 中執行 Python 機器學習服務腳本
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Python 是許多資料科學家的工具胸中的重要工具。 它是用於一般機器學習工作流程的每個階段，包括資料探索、功能解壓縮、模型定型和驗證，以及部署。
@@ -106,7 +106,7 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. 在**儲存體設定**設定索引標籤中停用**需要安全傳輸**
+1. 在 **儲存體設定** 設定索引標籤中停用 **需要安全傳輸**
 
 ![停用 Azure 入口網站所需的安全傳輸](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
@@ -186,5 +186,5 @@ Python 進入點是唯一獲得允許的位置，可以將單一資料框架傳�
 如需詳細資訊，請參閱 [Python 開發人員中心](https://azure.microsoft.com/develop/python/)。
 
 <!-- Module References -->
-[execute-python-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-python-script
-[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[execute-python-script]: /azure/machine-learning/studio-module-reference/execute-python-script
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

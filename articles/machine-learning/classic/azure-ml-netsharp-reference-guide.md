@@ -9,23 +9,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: f3bbab14152f16515c93972e6b41ef34693e1143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f16ed3c455067ff2fa185bff023a6993ccda58c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367949"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311974"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>適用于 Machine Learning Studio (傳統) 的 Net # 類神經網路規格語言指南
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架構，例如，任意維度的深度神經網路或迴旋。 您可以使用複雜的結構來改善影像、視訊或音訊等的資料學習。
 
 您可以在這些內容中使用 Net# 架構規格：
 
-+ Microsoft Azure Machine Learning Studio 中的所有類神經網路模組 (傳統) ：[多元](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)類神經網路、[二級類神經網路和類](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)[神經網路回歸](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server 中的類神經網路功能：適用于 R 語言的 [>neuralnet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [>rxneuralnet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及適用于 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) 。
++ Microsoft Azure Machine Learning Studio 中的所有類神經網路模組 (傳統) ：[多元](/azure/machine-learning/studio-module-reference/multiclass-neural-network)類神經網路、[二級類神經網路和類](/azure/machine-learning/studio-module-reference/two-class-neural-network)[神經網路回歸](/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server 中的類神經網路功能：適用于 R 語言的 [>neuralnet](/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [>rxneuralnet](/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及適用于 Python 的 [rx_neural_network](/machine-learning-server/python-reference/microsoftml/rx-neural-network) 。
 
 
 本文說明使用 Net# 開發自訂類神經網路所需的基本概念和語法：
@@ -40,19 +40,19 @@ Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架
 
 類神經網路的組成結構，包含以層組織的節點，和節點之間的加權連線 (或邊緣)。 這些連線是雙向的，且每個連線都有來源節點和目的地節點。
 
-每個可訓練的層 (隱藏或輸出層) 都有一或多個**連線套組**。 連線套組由來源層和來自該來源層之連線的規格所組成。 一個套件組合中的所有連線會共用來源層和目的地層。 在 Net# 中，連線套組會被視為由套組的目的地層所屬。
+每個可訓練的層 (隱藏或輸出層) 都有一或多個 **連線套組** 。 連線套組由來源層和來自該來源層之連線的規格所組成。 一個套件組合中的所有連線會共用來源層和目的地層。 在 Net# 中，連線套組會被視為由套組的目的地層所屬。
 
 Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層和對應至輸出的方式。
 
-預設或標準套組為**完整套組**；在此類套組中，來源層中的每個節點會分別連接到目的地層中的各個節點。
+預設或標準套組為 **完整套組** ；在此類套組中，來源層中的每個節點會分別連接到目的地層中的各個節點。
 
 此外，Net# 也支援下列四種進階連線套組：
 
-+ **篩選套組**。 您可以使用來源層節點和目的地層節點的位置來定義述詞。 只要述詞為 True，即會連接節點。
++ **篩選套組** 。 您可以使用來源層節點和目的地層節點的位置來定義述詞。 只要述詞為 True，即會連接節點。
 
-+ **卷積**組合。 您可以在來源層中定義小型的節點臨近地區。 目的地層中的每個節點都會連接到來源層中的一個節點鄰區。
++ **卷積** 組合。 您可以在來源層中定義小型的節點臨近地區。 目的地層中的每個節點都會連接到來源層中的一個節點鄰區。
 
-+ **集區套組**和**回應正規化套組**。 這些套組類似於可供使用者在來源層中定義小型節點臨近地區的迴旋套組。 差別在於這些套組中的邊緣加權無法訓練。 因此會將預先定義的函數套用至來源節點值來判斷目的地節點值。
++ **集區套組** 和 **回應正規化套組** 。 這些套組類似於可供使用者在來源層中定義小型節點臨近地區的迴旋套組。 差別在於這些套組中的邊緣加權無法訓練。 因此會將預先定義的函數套用至來源節點值來判斷目的地節點值。
 
 
 ## <a name="supported-customizations"></a>支援的自訂
@@ -80,7 +80,7 @@ Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層
 
 ## <a name="structure-specifications"></a>結構規格
 
-類神經網路結構規格由三個區段所組成：**常數宣告**、**層宣告**和**連線宣告**。 另外還有一個選擇性的**共用宣告**區段。 這幾個部分可依任意順序指定。
+類神經網路結構規格由三個區段所組成： **常數宣告** 、 **層宣告** 和 **連線宣告** 。 另外還有一個選擇性的 **共用宣告** 區段。 這幾個部分可依任意順序指定。
 
 ## <a name="constant-declaration"></a>常數宣告
 
@@ -114,7 +114,7 @@ output Result[2] from Hidden all;
 若要指定讓系統自動決定層中的節點數目，請使用 `auto` 關鍵字。 `auto` 關鍵字的效果會隨著層而不同：
 
 + 在輸入層宣告中，節點數目是輸入資料中的特性數目。
-+ 在隱藏層宣告中，節點數目是**隱藏節點數目**的參數值所指定的數目。
++ 在隱藏層宣告中，節點數目是 **隱藏節點數目** 的參數值所指定的數目。
 + 在輸出層宣告中，雙類別分類的節點數目是 2 個 (1 個用於迴歸)，且等於多類別分類的輸出節點數目。
 
 例如，下列網路定義會讓系統自動決定所有層的大小：
@@ -125,7 +125,7 @@ hidden Hidden auto from Data all;
 output Result auto from Hidden all;
 ```
 
-可訓練層 (隱藏層或輸出層) 的層宣告可選擇性地包含輸出函數 (也稱為啟用函數)，其預設值為適用於分類模型的 **sigmoid** 以及適用於迴歸模型的 **linear**。 即使您使用預設值，您也可以在需要釐清時明確陳述啟用函數。
+可訓練層 (隱藏層或輸出層) 的層宣告可選擇性地包含輸出函數 (也稱為啟用函數)，其預設值為適用於分類模型的 **sigmoid** 以及適用於迴歸模型的 **linear** 。 即使您使用預設值，您也可以在需要釐清時明確陳述啟用函數。
 
 支援的輸出函數如下：
 
@@ -150,11 +150,11 @@ output Result auto from Hidden all;
 
 目前支援五種連線套組：
 
-+ **完整**套件組合，以關鍵字 `all` 指出
-+ **篩選**套件組合，以關鍵字 `where` 指出，其後接著述詞運算式
-+ **迴旋**套件組合，以關鍵字 `convolve` 指出，其後接著迴旋屬性
-+ **集區**套組，以關鍵字 **max pool** 或 **mean pool** 指出
-+ **回應正規化**套組，以關鍵字 **response norm** 指出。
++ **完整** 套件組合，以關鍵字 `all` 指出
++ **篩選** 套件組合，以關鍵字 `where` 指出，其後接著述詞運算式
++ **迴旋** 套件組合，以關鍵字 `convolve` 指出，其後接著迴旋屬性
++ **集區** 套組，以關鍵字 **max pool** 或 **mean pool** 指出
++ **回應正規化** 套組，以關鍵字 **response norm** 指出。
 
 ## <a name="full-bundles"></a>完整套組
 
@@ -176,7 +176,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 您可以選擇性地為篩選套組指定一組加權。 **Weights** 屬性的值必須是長度與套組所定義的連線數目相符之浮點值的 Tuple。 依預設會隨機產生加權。
 
-加權值會依目的地節點索引分組。 也就是說，如果第一個目的地節點連線到 `K` 個來源節點，則**加權** Tuple 的前 K 個項目將會是第一個目的地節點的加權 (依來源索引順序)。 其餘目的地節點也適用相同的原則。
+加權值會依目的地節點索引分組。 也就是說，如果第一個目的地節點連線到 `K` 個來源節點，則 **加權** Tuple 的前 K 個項目將會是第一個目的地節點的加權 (依來源索引順序)。 其餘目的地節點也適用相同的原則。
 
 可以直接指定加權當做常數值。 比方說，如果您先前已了解比重，您可以使用此語法將它們指定為常數：
 
@@ -186,27 +186,27 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 當訓練資料具有同質結構時，迴旋連線通常會用來學習資料的高階特性。 例如，在影像、音訊或視訊資料中，空間或暫時維度可能會相當一致。
 
-迴旋套組採用滑經維度的矩形**核心**。 基本上，每個核心會定義一組在本端鄰區中套用的加權，稱為**核心應用程式**。 每個核心應用程式都會對應至來源層中名為**中心節點**的節點。 一個核心的加權會在許多連線間共用。 在迴旋套組中，每個核心都是矩形，且所有核心應用程式的大小皆相同。
+迴旋套組採用滑經維度的矩形 **核心** 。 基本上，每個核心會定義一組在本端鄰區中套用的加權，稱為 **核心應用程式** 。 每個核心應用程式都會對應至來源層中名為 **中心節點** 的節點。 一個核心的加權會在許多連線間共用。 在迴旋套組中，每個核心都是矩形，且所有核心應用程式的大小皆相同。
 
 迴旋套組支援下列屬性：
 
 **InputShape** 會針對此迴旋套組的用途，定義來源層的維度。 其值必須是正整數的 Tuple。 整數的乘積必須等於來源層中的節點數目，但另一方面並不需要符合為來源層宣告的維度。 此 Tuple 的長度會成為迴旋套組的 **Arity** 值。 Arity 通常會參照一個函式可取用的引數或運算元數目。
 
-若要定義核心的形狀和位置，請使用 **KernelShape**、**Stride**、**Padding**、**LowerPad** 和 **UpperPad** 等屬性：
+若要定義核心的形狀和位置，請使用 **KernelShape** 、 **Stride** 、 **Padding** 、 **LowerPad** 和 **UpperPad** 等屬性：
 
-+ **KernelShape**：(必要) 定義迴旋套組各個核心的維度。 其值必須是長度等於套組 Arity 之正整數的 Tuple。 此 Tuple 的每個元件皆不可大於 **InputShape** 的對應元件。
++ **KernelShape** ：(必要) 定義迴旋套組各個核心的維度。 其值必須是長度等於套組 Arity 之正整數的 Tuple。 此 Tuple 的每個元件皆不可大於 **InputShape** 的對應元件。
 
-+ **Stride**：(選用) 定義迴旋的滑動步階大小 (每個維度的步階大小)，即中心節點之間的距離。 其值必須是長度為套組 Arity 之正整數的 Tuple。 此 Tuple 的每個元件皆不可大於 **KernelShape** 的對應元件。 預設值是所有元件皆等於一的 Tuple。
++ **Stride** ：(選用) 定義迴旋的滑動步階大小 (每個維度的步階大小)，即中心節點之間的距離。 其值必須是長度為套組 Arity 之正整數的 Tuple。 此 Tuple 的每個元件皆不可大於 **KernelShape** 的對應元件。 預設值是所有元件皆等於一的 Tuple。
 
-+ **Sharing**：(選用) 為迴旋的每個維度定義加權共用。 其值可以是單一布林值，或是長度為套組 Arity 之布林值的 Tuple。 單一布林值可擴充為具有正確長度、所有元件皆等於指定值的 Tuple。 預設值是全部由 True 值組成的 Tuple。
++ **Sharing** ：(選用) 為迴旋的每個維度定義加權共用。 其值可以是單一布林值，或是長度為套組 Arity 之布林值的 Tuple。 單一布林值可擴充為具有正確長度、所有元件皆等於指定值的 Tuple。 預設值是全部由 True 值組成的 Tuple。
 
-+ **MapCount**：(選用) 定義迴旋套組的特性對應數目。 其值可以是單一正整數，或是長度為套組 Arity 之正整數的 Tuple。 單一整數值可擴充為具有正確長度、第一個元件皆等於指定值且其餘元件皆等於一的 Tuple。 預設值為 1。 特性對應的總數是 Tuple 元件的乘積。 各個元件的此一總數經過因式分解後，將決定特性對應值在目的地節點中的分組方式。
++ **MapCount** ：(選用) 定義迴旋套組的特性對應數目。 其值可以是單一正整數，或是長度為套組 Arity 之正整數的 Tuple。 單一整數值可擴充為具有正確長度、第一個元件皆等於指定值且其餘元件皆等於一的 Tuple。 預設值為 1。 特性對應的總數是 Tuple 元件的乘積。 各個元件的此一總數經過因式分解後，將決定特性對應值在目的地節點中的分組方式。
 
-+ **Weights**：(選用) 定義套組的初始加權。 其值必須是長度為核心數目乘以每個核心的加權數目之浮點值的 Tuple，如本文稍後的定義。 預設加權會隨機產生。
++ **Weights** ：(選用) 定義套組的初始加權。 其值必須是長度為核心數目乘以每個核心的加權數目之浮點值的 Tuple，如本文稍後的定義。 預設加權會隨機產生。
 
 有兩組屬性控制填補，這些屬性互斥：
 
-+ **Padding**：(選用) 決定是否應使用**預設的填補配置**填補輸入。 其值可以是單一布林值，或是長度為套組 Arity 之布林值的 Tuple。
++ **Padding** ：(選用) 決定是否應使用 **預設的填補配置** 填補輸入。 其值可以是單一布林值，或是長度為套組 Arity 之布林值的 Tuple。
 
     單一布林值可擴充為具有正確長度、所有元件皆等於指定值的 Tuple。
 
@@ -214,14 +214,14 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果維度的值為 False，則在定義核心時，會使每一端排除的節點數目保持相同 (差距不會超過 1 個)。 此屬性的預設值是所有元件皆為 False 的 Tuple。
 
-+ **UpperPad** 和 **LowerPad**：(選用) 更能控制所要使用的填補量。 **重要事項：** 只有在***未***定義上述的 **Padding** 屬性時，才能定義這些屬性。 其值應為長度為套組 Arity 的整數值 Tuple。 在指定這些屬性時，將會在輸入層各個維度的下端和上端新增「虛擬」節點。 在每個維度中的下端和上端新增的節點數目，分別取決於 **LowerPad**[i] 和 **UpperPad**[i]。
++ **UpperPad** 和 **LowerPad** ：(選用) 更能控制所要使用的填補量。 **重要事項：** 只有在上述的 **填補** 屬性 **_不_ 是 _ 定義時，才能定義這些屬性 *。值應為整數值元組，其長度為組合的 arity。當指定這些屬性時，會將「虛擬」節點新增至輸入層之每個維度的下半部和最上層。在每個維度中，新增至下半部和最上層的節點數目，* 分別由 _ LowerPad** [i] 和 **UpperPad** [i] 決定。
 
     若要確定核心只會對應至「實際」節點而非「虛擬」節點，必須要符合下列條件：
   - **LowerPad** 的每個元件皆務必小於 `KernelShape[d]/2`。
   - **UpperPad** 的每個元件皆不可大於 `KernelShape[d]/2`。
   - 這些屬性的預設值是所有元件皆等於 0 的 Tuple。
 
-    **Padding** = true 設定允許可將核心的「中心」保持在「真實」輸入內所需的填補量。 這麼做會略為改變輸出大小的計算方式。 一般而言，輸出大小 D** 的計算方式為 `D = (I - K) / S + 1`，其中 `I` 是輸入大小，`K` 是核心大小，`S` 是分散，而 `/` 是整數除法 (趨近於零)。 如果您設定 UpperPad = [1, 1]，輸入大小 `I` 實際上是 29，因此 `D = (29 - 5) / 2 + 1 = 13`。 不過，當 **Padding** = true 時，基本上 `I` 會藉由 `K - 1` 而提高；因此 `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`。 藉由指定 **UpperPad** 和 **LowerPad** 的值，您對填補的控制權會遠遠超過只設定 **Padding** = true。
+    **Padding** = true 設定允許可將核心的「中心」保持在「真實」輸入內所需的填補量。 這麼做會略為改變輸出大小的計算方式。 一般而言，輸出大小 D 的計算方式為 `D = (I - K) / S + 1`，其中 `I` 是輸入大小，`K` 是核心大小，`S` 是分散，而 `/` 是整數除法 (趨近於零)。 如果您設定 UpperPad = [1, 1]，輸入大小 `I` 實際上是 29，因此 `D = (29 - 5) / 2 + 1 = 13`。 不過，當 **Padding** = true 時，基本上 `I` 會藉由 `K - 1` 而提高；因此 `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`。 藉由指定 **UpperPad** 和 **LowerPad** 的值，您對填補的控制權會遠遠超過只設定 **Padding** = true。
 
 如需迴旋網路及其應用程式的詳細資訊，請參閱下列文章：
 
@@ -230,7 +230,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 ## <a name="pooling-bundles"></a>集區套組
 
-**集區套組**會套用類似於迴旋連線的幾何圖形，但會對來源節點值使用預先定義的函數，以衍生目的地節點值。 因此，集區套組並沒有可訓練的狀態 (加權或偏差)。 集區套組支援 **Sharing**、**MapCount** 和 **Weights** 以外的所有迴旋屬性。
+**集區套組** 會套用類似於迴旋連線的幾何圖形，但會對來源節點值使用預先定義的函數，以衍生目的地節點值。 因此，集區套組並沒有可訓練的狀態 (加權或偏差)。 集區套組支援 **Sharing** 、 **MapCount** 和 **Weights** 以外的所有迴旋屬性。
 
 一般而言，以相鄰集區單元彙總的核心並不會重疊。 如果每個維度中的 Stride[d] 皆等於 KernelShape[d]，則取得的層將會是傳統本端集區層，這通常運用在迴旋類神經網路中。 每個目的地節點都會計算其核心在來源層中的活動數上限或平均值。
 
@@ -258,17 +258,17 @@ hidden P1 [5, 12, 12]
 
 ## <a name="response-normalization-bundles"></a>回應正規化套組
 
-**回應正規化**是一種本端正規化配置，最早是由 Geoffrey Hinton 等人發表於 [ImageNet Classification with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) 報告中。
+**回應正規化** 是一種本端正規化配置，最早是由 Geoffrey Hinton 等人發表於 [ImageNet Classification with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) 報告中。
 
-回應正規化可用來輔助類神經網路中的一般化。 當一個神經元在非常高的啟動層級上引發時，本端回應正規化層將會抑制周遭神經元的啟動層級。 此動作會使用三個參數 (`α`、`β` 和 `k`) 與迴旋結構 (或鄰區分布型態) 來完成。 目的地層中的每個神經元 **y**，會分別對應至來源層中的一個神經元 **x**。 **y** 的啟用層級來自於下列公式，其中，`f` 是神經元的啟用層級，`Nx` 是核心 (或是包含 **x** 的鄰區中各神經元的集合)，如下列迴旋結構所定義：
+回應正規化可用來輔助類神經網路中的一般化。 當一個神經元在非常高的啟動層級上引發時，本端回應正規化層將會抑制周遭神經元的啟動層級。 此動作會使用三個參數 (`α`、`β` 和 `k`) 與迴旋結構 (或鄰區分布型態) 來完成。 目的地層中的每個神經元 **y** ，會分別對應至來源層中的一個神經元 **x** 。 **y** 的啟用層級來自於下列公式，其中，`f` 是神經元的啟用層級，`Nx` 是核心 (或是包含 **x** 的鄰區中各神經元的集合)，如下列迴旋結構所定義：
 
 ![迴旋結構的公式](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-回應正規化套組支援 **Sharing**、**MapCount** 和 **Weights** 以外的所有迴旋屬性。
+回應正規化套組支援 **Sharing** 、 **MapCount** 和 **Weights** 以外的所有迴旋屬性。
 
-+ 如果核心包含與 ***x*** 位於相同對應中的神經元，則正規化配置稱為**相同對應正規化**。 若要定義相同對應正規化，**InputShape** 中的第一個座標必須具有值 1。
++ 如果核心包含與 x _ 相同地圖中的神經 **__ *，則正規化配置稱為 _* 相同對應** 正規化。 若要定義相同對應正規化， **InputShape** 中的第一個座標必須具有值 1。
 
-+ 如果核心包含與 ***x*** 位於相同空間位置中的神經元，但這些神經元位於其他對應中，則此正規化配置稱為**跨對應正規化**。 這種類型的回應正規化會實作實際神經元的類型所衍生出來的一種橫向抑制，而在不同對應上運算的神經元輸出之間產生對大量啟用層級的競用。 若要定義跨對應正規化，第一個座標必須是大於一、且不大於對應數的整數，而其餘座標必須具有值 1。
++ 如果核心包含與 x _ 位於相同空間位置的神經 **__ *，但神經位於其他對應中，則標準化配置* 在對應正規化之間稱為「_** 」。 這種類型的回應正規化會實作實際神經元的類型所衍生出來的一種橫向抑制，而在不同對應上運算的神經元輸出之間產生對大量啟用層級的競用。 若要定義跨對應正規化，第一個座標必須是大於一、且不大於對應數的整數，而其餘座標必須具有值 1。
 
 回應正規化套組會將預先定義的函數套用至來源節點值以決定目的地節點值，因此並不具有可訓練的狀態 (加權或偏差)。
 
@@ -277,9 +277,9 @@ hidden P1 [5, 12, 12]
 
 除了前述的四個屬性以外，回應正規化套組也支援下列屬性：
 
-+ **Alpha**：(必要) 指定在前述公式中對應至 `α` 的浮點值。
-+ **Beta**：(必要) 指定在前述公式中對應至 `β` 的浮點值。
-+ **Offset**：(選用) 指定在前述公式中對應至 `k` 的浮點值。 其預設值為 1。
++ **Alpha** ：(必要) 指定在前述公式中對應至 `α` 的浮點值。
++ **Beta** ：(必要) 指定在前述公式中對應至 `β` 的浮點值。
++ **Offset** ：(選用) 指定在前述公式中對應至 `k` 的浮點值。 其預設值為 1。
 
 下列範例將定義使用這些屬性的回應正規化套組：
 
@@ -463,4 +463,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>通知
 
-自訂類神經網路架構的 Net# 語言是由 Shon Katzenberger (架構、機器學習服務) 和 Alexey Kamenev (軟體工程師、Microsoft Research) 在 Microsoft 開發。 它在內部用於機器學習服務專案與應用程式，範圍從映像偵測到文字分析。 如需詳細資訊，請參閱 [Azure Machine Learning Studio 中的類神經網路 - Net# 簡介](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+自訂類神經網路架構的 Net# 語言是由 Shon Katzenberger (架構、機器學習服務) 和 Alexey Kamenev (軟體工程師、Microsoft Research) 在 Microsoft 開發。 它在內部用於機器學習服務專案與應用程式，範圍從映像偵測到文字分析。 如需詳細資訊，請參閱 [Azure Machine Learning Studio 中的類神經網路 - Net# 簡介](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net)

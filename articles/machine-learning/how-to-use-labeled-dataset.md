@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fad51f5c8ec426792c74b1a14ea80ab47c2d892
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757770"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312291"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>建立和探索具有標籤的 Azure Machine Learning 資料集
 
@@ -27,8 +27,8 @@ ms.locfileid: "91757770"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree) 。
-* [適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)，或 [Azure Machine Learning Studio](https://ml.azure.com/) 的存取權。
-    * 安裝 [azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py&preserve-view=true) 套件
+* [適用於 Python 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，或 [Azure Machine Learning Studio](https://ml.azure.com/) 的存取權。
+    * 安裝 [azure-contrib-dataset](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py) 套件
 * Machine Learning 工作區。 請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 * Azure Machine Learning 資料標記專案的存取權。 如果您沒有標記專案，請遵循[這些步驟](how-to-create-labeling-projects.md)來加以建立。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91757770"
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning 資料集
 
-您可以在 Azure Machine Learning Studio 的 [資料集] 區段中，存取已匯出的 Azure Machine Learning 資料集。 資料集**詳細資料**頁面也會提供從 Python 存取標籤的程式碼範例。
+您可以在 Azure Machine Learning Studio 的 [資料集] 區段中，存取已匯出的 Azure Machine Learning 資料集。 資料集 **詳細資料** 頁面也會提供從 Python 存取標籤的程式碼範例。
 
 ![所匯出的資料集](./media/how-to-create-labeling-projects/exported-dataset.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "91757770"
 
 ### <a name="pandas-dataframe"></a>Pandas 資料框架
 
-您可以使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法，將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Pandas 資料框架。 使用下列殼層命令來安裝類別： 
+您可以使用 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法，將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Pandas 資料框架。 使用下列殼層命令來安裝類別： 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -87,7 +87,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision 資料集
 
-您可以使用 [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) 方法，同樣將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Torchvision 資料集。 若要使用此方法，您必須安裝 [PyTorch](https://pytorch.org/)。 
+您可以使用 [to_torchvision()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) 方法，同樣將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Torchvision 資料集。 若要使用此方法，您必須安裝 [PyTorch](https://pytorch.org/)。 
 
 在下列程式碼中， `animal_labels` 資料集是標記專案先前儲存至工作區的輸出。
 

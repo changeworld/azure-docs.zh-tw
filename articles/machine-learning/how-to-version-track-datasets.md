@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fc9f082a012922a8595c2726764e84be038a26
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302089"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312235"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
 
@@ -32,7 +32,7 @@ ms.locfileid: "91302089"
 
 在本教學課程中，您需要：
 
-- [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 此 SDK 包含 [azureml 資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true) 套件。
+- [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 此 SDK 包含 [azureml 資料集](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) 套件。
     
 - [Azure Machine Learning 工作區](concept-workspace.md)。 藉由執行下列程式碼來取出現有的 [工作區，或建立新的工作區](how-to-manage-workspace.md)。
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>依名稱取得資料集
 
-根據預設，類別上的 [get_by_name ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
+根據預設，類別上的 [get_by_name ( # B1 ](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
 
 下列程式碼會取得資料集的第1版 `titanic_ds` 。
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 針對每個 Machine Learning 實驗，您可以輕鬆地透過實驗物件來追蹤作為輸入的資料集 `Run` 。
 
-下列程式碼會使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) 方法來追蹤哪些輸入資料集與實驗執行搭配使用：
+下列程式碼會使用 [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) 方法來追蹤哪些輸入資料集與實驗執行搭配使用：
 
 ```Python
 # get input datasets
@@ -185,7 +185,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
 
 註冊之後，您可以使用 Python 或移至來查看使用資料集註冊的模型清單 https://ml.azure.com/ 。
 
-下列是來自 [**資產**] 下的 [**資料集**] 窗格。 選取資料集，然後選取 [ **模型** ] 索引標籤，以取得已向資料集註冊的模型清單。 
+下列是來自 [ **資產** ] 下的 [ **資料集** ] 窗格。 選取資料集，然後選取 [ **模型** ] 索引標籤，以取得已向資料集註冊的模型清單。 
 
 ![輸入資料集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

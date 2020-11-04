@@ -1,7 +1,7 @@
 ---
 title: 使用自訂 Docker 映射將模型定型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的自訂 Docker 映射來定型模型。
+description: 瞭解如何使用您自己的 Docker 映射，或從 Microsoft 策劃它們，在 Azure Machine Learning 中將模型定型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6ce0885cce1861b27d6230c3807350831603684b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 23b59c80c8e44cf6473a2de9be9807eaf8a756c6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329112"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310552"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
 
@@ -23,17 +23,17 @@ ms.locfileid: "92329112"
 
 Azure Machine Learning 提供預設的 Docker 基底映射。 您也可以使用 Azure Machine Learning 環境來指定不同的基底映射，例如其中一個已維護的 [Azure Machine Learning 基礎](https://github.com/Azure/AzureML-Containers) 映射或您自己的 [自訂映射](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。 自訂基底映射可讓您在執行定型作業時，密切地管理相依性，並對元件版本保持更緊密的控制權。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行程式碼：
 
 * Azure Machine Learning 計算實例 (不需要下載或安裝) ：
   * 完成「 [設定環境和工作區](tutorial-1st-experiment-sdk-setup.md) 」教學課程，以建立預先載入 SDK 和範例存放庫的專用筆記本伺服器。
-  * 在 Azure Machine Learning[範例存放庫](https://github.com/Azure/azureml-examples)中，前往**筆記本**  >  **fastai**  >  **resnet34. .ipynb**目錄來尋找已完成的筆記本。 
+  * 在 Azure Machine Learning [範例存放庫](https://github.com/Azure/azureml-examples)中，前往 **筆記本**  >  **fastai**  >  **resnet34. .ipynb** 目錄來尋找已完成的筆記本。 
 * 您自己的 Jupyter Notebook server：
   * 建立[工作區組態檔](how-to-configure-environment.md#workspace)。
-  * 安裝 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 
-  * 建立可在網際網路上使用的 [Azure container registry](/azure/container-registry) 或其他 Docker 登錄。
+  * 安裝 [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
+  * 建立可在網際網路上使用的 [Azure container registry](../container-registry/index.yml) 或其他 Docker 登錄。
 
 ## <a name="set-up-a-training-experiment"></a>設定定型實驗
 
@@ -41,7 +41,7 @@ Azure Machine Learning 提供預設的 Docker 基底映射。 您也可以使用
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
 
-[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 它提供集中的位置來處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) 。
+[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 它提供集中的位置來處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 。
 
 `Workspace`從您建立為必要條件的檔案 config.js建立物件。 [prerequisite](#prerequisites)
 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>設定定型作業
 
-在本教學課程中，請使用[GitHub](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py)上的定型腳本*train.py* 。 在實務上，您可以採用任何自訂定型腳本，並以 Azure Machine Learning 的方式執行它。
+在本教學課程中，請使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py)上的定型腳本 *train.py* 。 在實務上，您可以採用任何自訂定型腳本，並以 Azure Machine Learning 的方式執行它。
 
 建立 `ScriptRunConfig` 資源以設定您的作業，以在所需的 [計算目標](how-to-set-up-training-targets.md)上執行。
 
@@ -163,7 +163,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)區存取您的資料。
+> Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)區存取您的資料。
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已使用自訂 Docker 映射來定型模型。 若要深入瞭解 Azure Machine Learning，請參閱下列文章：

@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 16a1c966b3f5a674f0ae1dc9c7ee078f45f8bdc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65553edf61d8e646e7238a5385656fe75a3156f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598228"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311370"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 為您的模型微調超參數
 
 
-使用 Azure Machine Learning [HyperDrive 套件](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py&preserve-view=true)將有效率的超參數微調自動化。 瞭解如何使用 [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)完成微調超參數所需的步驟：
+使用 Azure Machine Learning [HyperDrive 套件](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)將有效率的超參數微調自動化。 瞭解如何使用 [AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)完成微調超參數所需的步驟：
 
 1. 定義參數搜尋空間
 1. 指定要最佳化的主要計量  
@@ -44,7 +44,7 @@ Azure Machine Learning 可讓您將超參數調整自動化，並以平行方式
 
 藉由探索為每個超參數定義的值範圍來調整超參數。
 
-超參數可以是離散或連續的，而且具有由 [參數運算式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py&preserve-view=true)所描述的值分佈。
+超參數可以是離散或連續的，而且具有由 [參數運算式](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py)所描述的值分佈。
 
 ### <a name="discrete-hyperparameters"></a>離散超參數 
 
@@ -101,7 +101,7 @@ Azure Machine Learning 可讓您將超參數調整自動化，並以平行方式
 
 #### <a name="random-sampling"></a>隨機取樣
 
-[隨機取樣](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py&preserve-view=true) 支援離散和連續超參數。 它支援提早終止低效能執行。 有些使用者會進行隨機取樣的初始搜尋，然後精簡搜尋空間來改善結果。
+[隨機取樣](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py) 支援離散和連續超參數。 它支援提早終止低效能執行。 有些使用者會進行隨機取樣的初始搜尋，然後精簡搜尋空間來改善結果。
 
 在隨機取樣中，超參數值會從定義的搜尋空間隨機選取。 
 
@@ -118,7 +118,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>網格取樣
 
-[方格取樣](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py&preserve-view=true) 支援離散超參數。 如果您可以透過預算來對搜尋空間進行徹底搜尋，請使用格線取樣。 支援低效能執行的早期終止。
+[方格取樣](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) 支援離散超參數。 如果您可以透過預算來對搜尋空間進行徹底搜尋，請使用格線取樣。 支援低效能執行的早期終止。
 
 對所有可能的值執行簡單的方格搜尋。 方格取樣只能與超參數搭配使用 `choice` 。 例如，下列空間有六個範例：
 
@@ -134,7 +134,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>貝氏取樣
 
-[貝氏取樣](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py&preserve-view=true) 是以貝氏優化演算法為基礎。 它會根據先前樣本的執行方式來挑選範例，讓新的範例改善主要度量。
+[貝氏取樣](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) 是以貝氏優化演算法為基礎。 它會根據先前樣本的執行方式來挑選範例，讓新的範例改善主要度量。
 
 如果您有足夠的預算可探索超參數空間，建議使用貝氏取樣。 為了獲得最佳結果，我們建議的執行數目上限大於或等於調整超參數數目的20倍。 
 
@@ -156,7 +156,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> 指定主要度量
 
-指定您想要超參數微調優化的 [主要度量](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) 。 每個定型執行會針對此主要計量進行評估。 早期終止原則會使用主要度量來識別低效能的執行。
+指定您想要超參數微調優化的 [主要度量](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?preserve-view=true&view=azure-ml-py) 。 每個定型執行會針對此主要計量進行評估。 早期終止原則會使用主要度量來識別低效能的執行。
 
 為您的主要度量指定下列屬性：
 
@@ -204,7 +204,7 @@ Azure Machine Learning 支援下列提早終止原則：
 
 ### <a name="bandit-policy"></a>Bandit 原則
 
-[Bandit 原則](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py&preserve-view=true#&preserve-view=truedefinition) 是以寬限時間因數/時差和評估間隔為基礎。 相較于效能最佳的執行，Bandit 會終止執行，其中主要計量不在指定的時差係數/時差量內。
+[Bandit 原則](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) 是以寬限時間因數/時差和評估間隔為基礎。 相較于效能最佳的執行，Bandit 會終止執行，其中主要計量不在指定的時差係數/時差量內。
 
 > [!NOTE]
 > 貝氏取樣不支援提早終止。 使用貝氏取樣時，請設定 `early_termination_policy = None` 。
@@ -227,7 +227,7 @@ early_termination_policy = BanditPolicy(slack_factor = 0.1, evaluation_interval=
 
 ### <a name="median-stopping-policy"></a>中位數停止原則
 
-[停用中間](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py&preserve-view=true) 值是一種早期終止原則，以執行所報告之主要計量的平均量為基礎。 此原則會計算所有定型回合的執行平均值，並以比平均中間值更糟的主要計量值終止執行。
+[停用中間](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) 值是一種早期終止原則，以執行所報告之主要計量的平均量為基礎。 此原則會計算所有定型回合的執行平均值，並以比平均中間值更糟的主要計量值終止執行。
 
 此原則接受下列設定參數：
 * `evaluation_interval`：套用原則的頻率 (選擇性參數)。
@@ -243,7 +243,7 @@ early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_eva
 
 ### <a name="truncation-selection-policy"></a>截斷選取原則
 
-[截斷選取範圍](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py&preserve-view=true) 會在每個評估間隔取消效能最低的執行百分比。 執行會使用主要度量進行比較。 
+[截斷選取範圍](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?preserve-view=true&view=azure-ml-py) 會在每個評估間隔取消效能最低的執行百分比。 執行會使用主要度量進行比較。 
 
 此原則接受下列設定參數：
 
@@ -298,7 +298,7 @@ max_concurrent_runs=4
 
 ## <a name="configure-experiment"></a>設定實驗
 
-若要 [設定您的超參數微調](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) 實驗，請提供下列各項：
+若要 [設定您的超參數微調](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) 實驗，請提供下列各項：
 * 定義的超參數搜尋空間
 * 您的提早終止原則
 * 主要度量
@@ -325,7 +325,7 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="submit-experiment"></a>提交實驗
 
-在您定義超參數微調設定之後，請 [提交實驗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-)：
+在您定義超參數微調設定之後，請 [提交實驗](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)：
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -339,8 +339,8 @@ hyperdrive_run = experiment.submit(hd_config)
 
 
 暖開機的處理方式不同于取樣方法：
-- **貝氏取樣**：先前執行的試用版會用來做為挑選新範例的先前知識，以及改善主要度量。
-- **隨機取樣** 或 **方格取樣**：提早終止會使用先前回合的知識，判斷執行效能不佳的執行。 
+- **貝氏取樣** ：先前執行的試用版會用來做為挑選新範例的先前知識，以及改善主要度量。
+- **隨機取樣** 或 **方格取樣** ：提早終止會使用先前回合的知識，判斷執行效能不佳的執行。 
 
 指定您想要暖開機的父執行清單。
 
@@ -382,7 +382,7 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-experiment"></a>視覺化實驗
 
-使用 [筆記本 widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true) 來視覺化定型執行的進度。 您可以在 Jupyter Notebook 中使用下列程式碼片段，在同一個位置視覺化您所有的超參數微調執行：
+使用 [筆記本 widget](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) 來視覺化定型執行的進度。 您可以在 Jupyter Notebook 中使用下列程式碼片段，在同一個位置視覺化您所有的超參數微調執行：
 
 ```Python
 from azureml.widgets import RunDetails

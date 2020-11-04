@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897155"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312544"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
 
-在本文中，您將使用適用于 Python 的 Azure 入口網站或 [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) ，來建立、查看和刪除 [Azure Machine Learning](overview-what-is-azure-ml.md)的 [**Azure Machine Learning 工作區**](concept-workspace.md)
+在本文中，您將使用適用于 Python 的 Azure 入口網站或 [SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) ，來建立、查看和刪除 [Azure Machine Learning](overview-what-is-azure-ml.md)的 [**Azure Machine Learning 工作區**](concept-workspace.md)
 
 當您的需求變更或自動化的需求增加時，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
-* 如果使用 Python SDK，請 [安裝 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+* 如果使用 Python SDK，請 [安裝 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
@@ -105,7 +105,7 @@ ms.locfileid: "92897155"
                              exist_ok=False)
    ```
 
-如需詳細資訊，請參閱 [工作區 SDK 參考](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)。
+如需詳細資訊，請參閱 [工作區 SDK 參考](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)。
 
 如果您在存取訂用帳戶時遇到問題，請參閱 [設定 Azure Machine Learning 資源與工作流程的驗證](how-to-setup-authentication.md)，以及 [Azure Machine Learning 筆記本中的驗證](https://aka.ms/aml-notebook-auth) 。
 
@@ -113,7 +113,7 @@ ms.locfileid: "92897155"
 
 1. 使用您 Azure 訂閱的認證來登入 [Azure 入口網站](https://portal.azure.com/)。 
 
-1. 在 Azure 入口網站的左上角，選取 [+建立資源]  。
+1. 在 Azure 入口網站的左上角，選取 [+建立資源]。
 
       ![建立新的資源](./media/how-to-manage-workspace/create-workspace.gif)
 
@@ -155,7 +155,7 @@ ms.locfileid: "92897155"
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py&preserve-view=true) 類別 [。建立 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) 以建立具有私人端點的工作區。 此類別需要現有的虛擬網路。
+Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) 類別 [。建立 ( # B1 ](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) 以建立具有私人端點的工作區。 此類別需要現有的虛擬網路。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -165,7 +165,7 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 
 1. 在 [ __建立私人端點__ ] 表單上，設定要使用的位置、名稱和虛擬網路。 如果您想要使用端點搭配私人 DNS 區域，請選取 [ __與私人 dns 區域整合__ ]，然後使用 [ __私人 dns 區域__ ] 欄位選取區域。 選取 __[確定]__ 以建立端點。   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點選取":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點建立":::   
 
 1. 當您完成網路的設定時，您可以選取 [ __審核] + [建立__ ]，或前進至選擇性的 [ __Advanced__ configuration]。
 
@@ -183,11 +183,11 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 2. 在 [ __設定__ ] 中，選取 [ __虛擬網路連結__ ]。
 3. 選取 [新增]  。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__ ，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。
 
-如需詳細資訊，請參閱 [Azure 私人端點 DNS](/azure/private-link/private-endpoint-dns)設定。
+如需詳細資訊，請參閱 [Azure 私人端點 DNS](../private-link/private-endpoint-dns.md)設定。
 
 ### <a name="vulnerability-scanning"></a>弱點掃描
 
-Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 您應允許 Azure 資訊安全中心掃描您的資源，並遵循其建議。 如需詳細資訊，請參閱資訊安全中心和[Azure Kubernetes Services 與資訊安全中心整合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)的[Azure Container Registry 映射掃描](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)。
+Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 您應允許 Azure 資訊安全中心掃描您的資源，並遵循其建議。 如需詳細資訊，請參閱資訊安全中心和[Azure Kubernetes Services 與資訊安全中心整合](../security-center/defender-for-kubernetes-introduction.md)的[Azure Container Registry 映射掃描](../security-center/defender-for-container-registries-introduction.md)。
 
 ### <a name="advanced"></a>進階
 
@@ -210,7 +210,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 > 在遵循這些步驟之前，您必須先執行下列動作：   
 >
 > 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權 __Machine Learning 應用程式__ (。  
-> 1. 遵循 [設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk) 的步驟：
+> 1. 遵循 [設定客戶管理的金鑰](../cosmos-db/how-to-setup-cmk.md) 的步驟：
 >     * 註冊 Azure Cosmos DB 提供者
 >     * 建立並設定 Azure Key Vault
 >     * 產生金鑰
@@ -240,11 +240,11 @@ from azureml.core import Workspace
 
 1. 選取 [ __客戶管理的金鑰__ ]，然後選取 [ __按一下以選取金鑰__ ]。
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="私人端點選取":::
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="客戶管理的金鑰":::
 
 1. 在 [ __從 Azure Key Vault 選取金鑰__ ] 表單中，選取現有的 Azure Key Vault、其包含的金鑰，以及金鑰的版本。 此金鑰用來加密 Azure Cosmos DB 中儲存的資料。 最後，使用 [ __選取__ ] 按鈕來使用此索引鍵。
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="私人端點選取":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="選取金鑰":::
 
 ---
 
@@ -262,7 +262,7 @@ ws.write_config()
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀]  區段中，選取 [下載 config.xml]  。  
+如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀] 區段中，選取 [下載 config.xml]。  
 
    ![下載 config.json](./media/how-to-manage-workspace/configure.png)
 
@@ -351,7 +351,7 @@ ws.delete(delete_dependent_resources=False, no_wait=False)
 
 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您要刪除的工作區頂端的 [ **刪除**  ]。
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="私人端點選取":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="刪除工作區":::
 
 ---
 

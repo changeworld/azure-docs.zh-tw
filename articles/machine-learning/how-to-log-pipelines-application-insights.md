@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897492"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309661"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在 Application Insights 中收集警示和偵錯工具的機器學習管線記錄檔
 
@@ -38,7 +38,7 @@ ms.locfileid: "90897492"
 
 本節是從 Azure Machine Learning 管線使用 OpenCensus 的特定簡介。 如需詳細的教學課程，請參閱 [OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-將 PythonScriptStep 新增至您的 Azure ML 管線。 使用 opencensus-ext-azure 的相依性設定您的 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) 。 設定 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境變數。
+將 PythonScriptStep 新增至您的 Azure ML 管線。 使用 opencensus-ext-azure 的相依性設定您的 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) 。 設定 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境變數。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -153,7 +153,7 @@ Application Insights 中的結果會顯示記錄訊息和層級、檔案路徑�
 
 ### <a name="additional-helpful-queries"></a>其他實用的查詢
 
-下列的部分查詢使用 ' customDimensions ' 層級。 這些嚴重性層級會對應到原先傳送的 Python 記錄層級。 如需其他查詢資訊，請參閱 [Azure 監視器記錄查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)。
+下列的部分查詢使用 ' customDimensions ' 層級。 這些嚴重性層級會對應到原先傳送的 Python 記錄層級。 如需其他查詢資訊，請參閱 [Azure 監視器記錄查詢](/azure/data-explorer/kusto/query/)。
 
 | 使用案例                                                               | 查詢                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -166,4 +166,4 @@ Application Insights 中的結果會顯示記錄訊息和層級、檔案路徑�
 
 一旦您的 Application Insights 實例中有記錄，就可以用來根據查詢結果設定 [Azure 監視器警示](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) 。
 
-您也可以將查詢的結果新增至 [Azure 儀表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) ，以取得其他見解。
+您也可以將查詢的結果新增至 [Azure 儀表板](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) ，以取得其他見解。

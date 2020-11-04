@@ -9,24 +9,24 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1bf5dd070ac12878c608f744ff450395de84c48
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883220"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310042"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Web 服務輸入和 Web 服務輸出模組
 
 本文描述 Azure Machine Learning 設計工具中的 Web 服務輸入和 Web 服務輸出模組。
 
-Web 服務輸入模組只能連接到類型為 **DataFrameDirectory**的輸入埠。 Web 服務輸出模組只能從類型為 **DataFrameDirectory**的輸出埠進行連接。 您可以在模組樹狀結構中的 [ **Web 服務** ] 類別下找到這兩個模組。 
+Web 服務輸入模組只能連接到類型為 **DataFrameDirectory** 的輸入埠。 Web 服務輸出模組只能從類型為 **DataFrameDirectory** 的輸出埠進行連接。 您可以在模組樹狀結構中的 [ **Web 服務** ] 類別下找到這兩個模組。 
 
 Web 服務輸入模組會指出使用者資料進入管線的位置。 Web 服務輸出模組指出在即時推斷管線中傳回使用者資料的位置。
 
 ## <a name="how-to-use-web-service-input-and-output"></a>如何使用 Web 服務輸入和輸出
 
-當您從定型管線 [建立即時推斷管線](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline) 時，會自動新增 Web 服務輸入和 Web 服務輸出模組，以顯示使用者資料進入管線的位置，以及傳回資料的位置。 
+當您從定型管線 [建立即時推斷管線](../tutorial-designer-automobile-price-deploy.md#create-a-real-time-inference-pipeline) 時，會自動新增 Web 服務輸入和 Web 服務輸出模組，以顯示使用者資料進入管線的位置，以及傳回資料的位置。 
 
 > [!NOTE]
 > 自動產生即時推斷管線是以規則為基礎的最佳處理常式。 不保證正確性。 
@@ -48,6 +48,6 @@ Web 服務輸入模組會指出使用者資料進入管線的位置。 Web 服�
 >  在上述範例中， **手動輸入資料** 可提供 web 服務輸入的資料結構描述，而且是部署即時端點的必要項。 一般而言，您應該一律將模組或資料集連接至 **Web 服務輸入** 所連接的埠，以提供資料架構。
    
 ## <a name="next-steps"></a>後續步驟
-深入瞭解如何 [部署即時端點](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)。
+深入瞭解如何 [部署即時端點](../tutorial-designer-automobile-price-deploy.md#deploy-the-real-time-endpoint)。
 
 請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

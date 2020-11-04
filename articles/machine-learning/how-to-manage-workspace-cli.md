@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure CLI 建立工作區
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure CLI 建立新的 Azure Machine Learning 工作區。
+description: 瞭解如何使用機器學習的 Azure CLI 擴充功能來建立新的 Azure Machine Learning 工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 42f47ad61c0d90752928a8273872b734574e02c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740793"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312479"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -26,7 +26,7 @@ ms.locfileid: "92740793"
 
 * **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 若要從您的 **本機環境** 使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* 若要從您的 **本機環境** 使用本文件中的 CLI 命令，您需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
     如果您使用 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，CLI 可透過瀏覽器存取，並在雲端運作。
 
@@ -45,7 +45,7 @@ az login
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)。
+如需其他驗證方法，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 ## <a name="install-the-machine-learning-extension"></a>安裝機器學習延伸模組
 
@@ -103,7 +103,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-如需使用資源群組的詳細資訊，請參閱 [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true)。
+如需使用資源群組的詳細資訊，請參閱 [az group](//cli/azure/group?preserve-view=true&view=azure-cli-latest)。
 
 ### <a name="automatically-create-required-resources"></a>自動建立所需的資源
 
@@ -150,7 +150,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-auto-approval`：是否應自動核准工作區的私人端點連接。
 * `--pe-resource-group`：要在其中建立私人端點的資源群組。 必須是包含虛擬網路的相同群組。
 * `--pe-vnet-name`：要在其中建立私人端點的現有虛擬網路。
-* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值為 `default`。
+* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值是 `default`。
 
 如需有關搭配您的工作區使用私人端點和虛擬網路的詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)。
 
@@ -163,7 +163,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 使用 `--cmk-keyvault` 和參數之前 `--resource-cmk-uri` ，您必須先執行下列動作：
 
 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權 __Machine Learning 應用程式__ (。
-1. 遵循 [設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk) 的步驟：
+1. 遵循 [設定客戶管理的金鑰](../cosmos-db/how-to-setup-cmk.md) 的步驟：
     * 註冊 Azure Cosmos DB 提供者
     * 建立並設定 Azure Key Vault
     * 產生金鑰
@@ -226,7 +226,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > 容器登錄必須啟用[管理帳戶](/azure/container-registry/container-registry-authentication#admin-account)，才能搭配 Azure Machine Learning 工作區使用。
+    > 容器登錄必須啟用[管理帳戶](../container-registry/container-registry-authentication.md#admin-account)，才能搭配 Azure Machine Learning 工作區使用。
 
 當有想要用於工作區的資源識別碼之後，請使用基底 `az workspace create -w <workspace-name> -g <resource-group-name>` 命令，並新增現有資源的參數和識別碼。 例如，下列命令會建立使用現有容器登錄的工作區：
 
@@ -282,7 +282,7 @@ az ml workspace list
 ]
 ```
 
-如需詳細資訊，請參閱 [az ml workspace list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-list) 文件。
+如需詳細資訊，請參閱 [az ml workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) 文件。
 
 ## <a name="get-workspace-information"></a>取得工作區資訊
 
@@ -315,7 +315,7 @@ az ml workspace show -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-如需詳細資訊，請參閱 [az ml workspace show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-show) 文件。
+如需詳細資訊，請參閱 [az ml workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) 文件。
 
 ## <a name="update-a-workspace"></a>更新工作區
 
@@ -348,7 +348,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-如需詳細資訊，請參閱 [az ml workspace update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-update) 文件。
+如需詳細資訊，請參閱 [az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) 文件。
 
 ## <a name="share-a-workspace-with-another-user"></a>與其他使用者共用工作區
 
@@ -360,7 +360,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 如需 Azure 角色型存取控制 (Azure RBAC) 搭配 Azure Machine Learning 的詳細資訊，請參閱 [管理使用者和角色](how-to-assign-roles.md)。
 
-如需詳細資訊，請參閱 [az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) 文件。
+如需詳細資訊，請參閱 [az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) 文件。
 
 ## <a name="sync-keys-for-dependent-resources"></a>同步相依資源的金鑰
 
@@ -372,7 +372,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 如需變更金鑰的詳細資訊，請參閱[重新產生儲存體存取金鑰](how-to-change-storage-access-key.md)。
 
-如需詳細資訊，請參閱 [az ml workspace sync-keys](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-sync-keys) 文件。
+如需詳細資訊，請參閱 [az ml workspace sync-keys](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) 文件。
 
 ## <a name="delete-a-workspace"></a>刪除工作區
 
@@ -391,7 +391,7 @@ az ml workspace delete -w <workspace-name> -g <resource-group-name>
 az group delete -g <resource-group-name>
 ```
 
-如需詳細資訊，請參閱 [az ml workspace delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) 文件。
+如需詳細資訊，請參閱 [az ml workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) 文件。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -412,4 +412,4 @@ Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行�
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 機器學習延伸模組的詳細資訊，請參閱 [az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true) 文件。
+如需 Azure CLI 機器學習延伸模組的詳細資訊，請參閱 [az ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) 文件。

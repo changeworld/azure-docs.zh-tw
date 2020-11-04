@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738752"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311137"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (預覽版) 筆記本
 
@@ -86,7 +86,7 @@ Azure Synapse Studio 筆記本支援四種 Apache Spark 語言：
 
 您無法直接在 Synapse Studio 筆記本中的不同語言之間參考資料或變數。 在 Spark 中，可以跨語言參考暫存資料表。 以下範例說明如何使用 Spark 暫存資料表做為因應措施，讀取 `PySpark` 和 `SparkSQL` 中的 `Scala` 資料框架。
 
-1. 在儲存格 1 中，使用 Scala 從 SQL 集區連接器讀取資料框架，並建立暫存資料表。
+1. 在儲存格1中，使用 Scala 從 SQL 集區連接器讀取資料框架並建立臨時表。
 
    ```scala
    %%scala
@@ -112,7 +112,7 @@ Azure Synapse Studio 筆記本支援四種 Apache Spark 語言：
 
 Azure Synapse Studio 與 Monaco 編輯器整合，可將整合式開發環境樣式的 IntelliSense 帶入儲存格編輯器。 語法醒目提示、錯誤標記和自動程式碼完成可協助您更快速地撰寫程式碼及找出問題。
 
-IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢視支援的功能。
+IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查看支援的功能。
 
 |Languages| 語法醒目提示 | 語法錯誤標記  | 語法程式碼完成 | 變數程式碼完成| 系統函數程式碼完成| 使用者函式程式碼完成| 智慧縮排 | 程式碼摺疊功能|
 |--|--|--|--|--|--|--|--|--|
@@ -203,7 +203,7 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢
 
 ### <a name="spark-progress-indicator"></a>Spark 進度指示器
 
-Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼儲存格會從遠端在 Spark 集區上執行。 系統隨即會提供具有即時進度列的 Spark 作業進度列指示器，以協助您瞭解作業執行狀態。
+Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼資料格會從遠端在無伺服器 Apache Spark 集區上執行。 系統隨即會提供具有即時進度列的 Spark 作業進度列指示器，以協助您瞭解作業執行狀態。
 每個作業或階段的工作數目可協助您識別 spark 作業的平行層級。 您也可以透過選取作業 (或階段) 名稱的連結，深入瞭解特定工作的 Spark UI (或階段) 。
 
 
@@ -277,7 +277,7 @@ df = spark.read.option("header", "true") \
 
 表格式結果檢視會提供選項，以建立橫條圖、折線圖、圓形圖、散佈圖和區域圖。 您可以將資料視覺化，而不需要撰寫程式碼。 您可以在 [圖表選項] 中自訂圖表。 
 
-預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架、Pandas 資料框架、清單或具復原功能的分散式資料集上呼叫 (RDD) 函式來產生轉譯的表格視圖。
+預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架、Pandas 資料框架、清單或復原的分散式資料集上呼叫 (RDD) 函數來產生轉譯的資料表視圖。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 

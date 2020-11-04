@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 隨選 (預覽) 查詢 Parquet 巢狀型別
-description: 在本文中，您將瞭解如何使用 SQL 隨選 (預覽) 來查詢 Parquet 的巢狀型別。
+title: '使用無伺服器 SQL 集區查詢 Parquet 的巢狀型別 (preview) '
+description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區 (預覽) 來查詢 Parquet 的巢狀型別。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288251"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312001"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來查詢 Parquet 和 JSON 檔案中的巢狀型別
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>使用無伺服器 SQL 集區在 Parquet 和 JSON 檔案中查詢巢狀型別 (預覽) Azure Synapse Analytics
 
-在本文中，您將瞭解如何使用 Azure Synapse Analytics 中的 SQL 隨選 (預覽版) 來撰寫查詢。 查詢將會讀取 Parquet 的巢狀型別。
+在本文中，您將瞭解如何使用 Azure Synapse Analytics 的無伺服器 SQL 集區 (預覽版) 來撰寫查詢。 查詢將會讀取 Parquet 的巢狀型別。
 巢狀型別是代表物件或陣列的複雜結構。 巢狀型別可以儲存在： 
 - [Parquet](query-parquet-files.md)，您可以在其中包含包含陣列和物件的多個複雜資料行。
 - 階層式 Json 檔案，您可以在其中將複雜 JSON [檔](query-json-files.md)讀取為單一資料行。
 - Azure Cosmos DB 的 (集合目前位於閘道公開預覽) 下，每份檔都可以包含複雜的嵌套屬性。
 
-Azure Synapse SQL 隨選將所有巢狀型別格式化為 JSON 物件和陣列。 因此，您可以使用 JSON 函式來 [解壓縮或修改複雜物件](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函數來剖析 JSON 資料](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
+無伺服器 SQL 集區會將所有的巢狀型別格式化為 JSON 物件和陣列。 因此，您可以使用 JSON 函式來 [解壓縮或修改複雜物件](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函數來剖析 JSON 資料](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
 
 以下是從 [covid-19-19 Open Research 資料集](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON 檔案（其中包含嵌套物件）解壓縮純量和物件值的查詢範例： 
 

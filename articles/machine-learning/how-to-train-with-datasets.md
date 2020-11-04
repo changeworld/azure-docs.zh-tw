@@ -12,19 +12,19 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: aa1ba4aa07ee4cdc097bd4ed3e6e4d7563360a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70fd8796eb4d17662697410bf97caee835e998ab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331789"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311319"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集定型
 
 
-在本文中，您將瞭解如何在訓練實驗中使用 [Azure Machine Learning 資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) 。  您可以使用本機或遠端計算目標中的資料集，而不需要擔心連接字串或資料路徑。
+在本文中，您將瞭解如何在訓練實驗中使用 [Azure Machine Learning 資料集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 。  您可以使用本機或遠端計算目標中的資料集，而不需要擔心連接字串或資料路徑。
 
-Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)、 [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py&preserve-view=true) 和 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）緊密整合。
+Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、 [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）緊密整合。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -34,16 +34,16 @@ Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.13.0) ，其中包含 azureml 資料集套件。
+* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) ，其中包含 azureml 資料集套件。
 
 > [!Note]
-> 某些資料集類別具有 [azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) 封裝的相依性。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+> 某些資料集類別具有 [azureml dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) 封裝的相依性。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
 ## <a name="use-datasets-directly-in-training-scripts"></a>直接在定型腳本中使用資料集
 
 如果您的結構化資料尚未註冊為資料集，請建立 TabularDataset，並直接在您的本機或遠端實驗的定型腳本中使用。
 
-在此範例中，您會建立未註冊的 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) ，並將它指定為 ScriptRunConfig 物件中用於定型的腳本引數。 如果您想要在工作區中重複使用此 TabularDataset 與其他實驗，請參閱 [如何將資料集註冊到您的工作區](how-to-create-register-datasets.md#register-datasets)。
+在此範例中，您會建立未註冊的 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) ，並將它指定為 ScriptRunConfig 物件中用於定型的腳本引數。 如果您想要在工作區中重複使用此 TabularDataset 與其他實驗，請參閱 [如何將資料集註冊到您的工作區](how-to-create-register-datasets.md#register-datasets)。
 
 ### <a name="create-a-tabulardataset"></a>建立 TabularDataset
 
@@ -60,7 +60,7 @@ TabularDataset 物件可讓您將 TabularDataset 中的資料載入 pandas 或 S
 
 ### <a name="access-dataset-in-training-script"></a>存取定型腳本中的資料集
 
-下列 `--input-data` 程式碼會設定您將在設定定型回合時指定的腳本引數 (請參閱下一節) 。 當表格式資料集傳入做為引數值時，Azure ML 會將其解析為資料集的識別碼，然後您可以用它來存取定型腳本中的資料集 (而不需要在腳本) 中，將資料集的名稱或識別碼進行硬式編碼。 然後，它會使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法將該資料集載入至 pandas 資料框架，以便在定型之前進一步進行資料探索和準備。
+下列 `--input-data` 程式碼會設定您將在設定定型回合時指定的腳本引數 (請參閱下一節) 。 當表格式資料集傳入做為引數值時，Azure ML 會將其解析為資料集的識別碼，然後您可以用它來存取定型腳本中的資料集 (而不需要在腳本) 中，將資料集的名稱或識別碼進行硬式編碼。 然後，它會使用 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法將該資料集載入至 pandas 資料框架，以便在定型之前進一步進行資料探索和準備。
 
 > [!Note]
 > 如果您的原始資料來源包含 NaN、空字串或空白值，則當您使用時， `to_pandas_dataframe()` 這些值會被取代為 *Null* 值。
@@ -88,12 +88,12 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-training-run"></a>設定定型回合
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py&preserve-view=true)物件是用來設定和提交定型回合。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py)物件是用來設定和提交定型回合。
 
 此程式碼會建立 ScriptRunConfig 物件， `src` 以指定
 
 * 腳本的腳本目錄。 在此目錄中的所有檔案都會上傳到叢集節點以便執行。
-* 定型腳本 *train_titanic .py*。
+* 定型腳本 *train_titanic .py* 。
 * 定型的輸入資料集， `titanic_ds` 做為腳本引數。 當資料傳遞給腳本時，Azure ML 會將其解析為對應的資料集識別碼。
 * 執行的計算目標。
 * 執行的環境。
@@ -115,7 +115,7 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="mount-files-to-remote-compute-targets"></a>將檔案掛接至遠端計算目標
 
-如果您有非結構化資料，請建立 [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) ，並裝載或下載您的資料檔案，使其可供您的遠端計算目標用於定型。 深入瞭解您的遠端訓練實驗使用 [掛接與下載](#mount-vs-download) 的時機。 
+如果您有非結構化資料，請建立 [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) ，並裝載或下載您的資料檔案，使其可供您的遠端計算目標用於定型。 深入瞭解您的遠端訓練實驗使用 [掛接與下載](#mount-vs-download) 的時機。 
 
 下列範例會建立 FileDataset，並將資料集做為引數傳遞至定型腳本，以將資料集裝載至計算目標。 
 
@@ -222,7 +222,7 @@ print (mounted_path)
 
 ## <a name="directly-access-datasets-in-your-script"></a>直接存取腳本中的資料集
 
-註冊的資料集可在本機和遠端的計算叢集上存取，例如 Azure Machine Learning 計算。 若要跨實驗存取您已註冊的資料集，請使用下列程式碼依名稱存取您的工作區和已註冊的資料集。 根據預設， [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) 類別上的方法 `Dataset` 會傳回已向工作區註冊之資料集的最新版本。
+註冊的資料集可在本機和遠端的計算叢集上存取，例如 Azure Machine Learning 計算。 若要跨實驗存取您已註冊的資料集，請使用下列程式碼依名稱存取您的工作區和已註冊的資料集。 根據預設， [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 類別上的方法 `Dataset` 會傳回已向工作區註冊之資料集的最新版本。
 
 ```Python
 %%writefile $script_folder/train.py

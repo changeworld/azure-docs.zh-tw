@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541708"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312316"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -49,25 +49,25 @@ ms.locfileid: "91541708"
  
  - 您自己的 Jupyter Notebook 伺服器
 
-    - 安裝 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
-    - 安裝 [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true)：`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - 安裝 [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+    - 安裝 [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py)：`pip install --upgrade azureml-contrib-reinforcementlearning`
     - 建立[工作區組態檔](how-to-configure-environment.md#workspace)。
     - 執行虛擬網路[安裝筆記本](https://aka.ms/azure-rl-env-setup)，以開啟用於分散式增強式學習的網路連接埠。
 
 
 ## <a name="how-to-train-a-pong-playing-agent"></a>如何訓練 Pong 遊戲代理程式
 
-增強式學習 (RL) 是機器學習的一種方法，可讓機器學習透過實際進行來學習。 其他機器學習服務技術會被動地取得輸入資料並尋找其中的模式，而 RL 會使用**訓練代理程式**，主動做出決策並從結果中學習。
+增強式學習 (RL) 是機器學習的一種方法，可讓機器學習透過實際進行來學習。 其他機器學習服務技術會被動地取得輸入資料並尋找其中的模式，而 RL 會使用 **訓練代理程式** ，主動做出決策並從結果中學習。
 
-您的訓練代理程式會學習了解如何在**模擬的環境**中玩 Pong。 訓練代理程式會在遊戲的每個畫格上做出決定，以將球拍向上、向下或保持在原處。 其會查看遊戲的狀態 (螢幕的 RGB 影像) 來做出決定。
+您的訓練代理程式會學習了解如何在 **模擬的環境** 中玩 Pong。 訓練代理程式會在遊戲的每個畫格上做出決定，以將球拍向上、向下或保持在原處。 其會查看遊戲的狀態 (螢幕的 RGB 影像) 來做出決定。
 
-RL 會使用**報酬**，告訴代理程式其決策是否成功。 在此環境中，代理程式會在得分時取得正面獎勵，並在未得分時獲得負面獎勵。 經過多次反覆動作之後，訓練代理程式會根據其目前狀態來學習選擇動作，針對預期未來會得到的獎勵總和進行最佳化。
+RL 會使用 **報酬** ，告訴代理程式其決策是否成功。 在此環境中，代理程式會在得分時取得正面獎勵，並在未得分時獲得負面獎勵。 經過多次反覆動作之後，訓練代理程式會根據其目前狀態來學習選擇動作，針對預期未來會得到的獎勵總和進行最佳化。
 
-通常會使用**深度類神經網路** (DNN) 模型，在 RL 中執行這項最佳化。 一開始，學習代理程式的執行效能不佳，但每個遊戲都會產生額外的範例，以進一步改善模型。
+通常會使用 **深度類神經網路** (DNN) 模型，在 RL 中執行這項最佳化。 一開始，學習代理程式的執行效能不佳，但每個遊戲都會產生額外的範例，以進一步改善模型。
 
 當代理程式在訓練期間中達成平均 18 分的奬勵分數時，即結束訓練。 這表示代理程式在最多 21 個回合中，以至少平均 18 點的分數擊敗對手。
 
-逐一查看模擬和重新訓練 DNN 的流程會耗用大量運算資源，而且需要大量資料。 若要改善 RL 作業的效能，其中一種方法是**平行處理工作**，讓多個訓練代理程式可以採取行動並同時學習。 不過，管理分散式 RL 環境是一項複雜的工作。
+逐一查看模擬和重新訓練 DNN 的流程會耗用大量運算資源，而且需要大量資料。 若要改善 RL 作業的效能，其中一種方法是 **平行處理工作** ，讓多個訓練代理程式可以採取行動並同時學習。 不過，管理分散式 RL 環境是一項複雜的工作。
 
 Azure Machine Learning 提供架構來管理這些複雜性，以擴增您的 RL 工作負載。
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>建立增強式學習實驗
 
-建立[實驗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)來追蹤您的增強式學習執行。 在 Azure Machine Learning 中，實驗是相關試用的邏輯集合，用來組織執行記錄、歷程記錄、輸出等等。
+建立[實驗](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)來追蹤您的增強式學習執行。 在 Azure Machine Learning 中，實驗是相關試用的邏輯集合，用來組織執行記錄、歷程記錄、輸出等等。
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -131,7 +131,7 @@ vnet = 'your_vnet'
 
 這個範例會使用具有 GPU 的前端叢集，將深度學習效能最佳化。 前端節點會定型代理程式用來做出決策的類神經網路。 前端節點也會從背景工作節點收集資料點，以進一步將類神經網路定型。
 
-前端計算會使用單一 [`STANDARD_NC6` 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/nc-series) (VM)。 其有 6 個虛擬 CPU，這表示可以將工作分散到 6 個工作 CPU。
+前端計算會使用單一 [`STANDARD_NC6` 虛擬機器](../virtual-machines/nc-series.md) (VM)。 其有 6 個虛擬 CPU，這表示可以將工作分散到 6 個工作 CPU。
 
 
 ```python
@@ -173,7 +173,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>背景工作計算叢集
 
-這個範例會針對背景工作角色計算目標使用四個 [`STANDARD_D2_V2` VM](https://docs.microsoft.com/azure/virtual-machines/nc-series)。 每個背景工作節點都有 2 個可用的 CPU，總共有 8 個可用的 CPU 可平行處理工作。
+這個範例會針對背景工作角色計算目標使用四個 [`STANDARD_D2_V2` VM](../virtual-machines/nc-series.md)。 每個背景工作節點都有 2 個可用的 CPU，總共有 8 個可用的 CPU 可平行處理工作。
 
 背景工作節點不需要 GPU，因為節點不會執行深度學習。 背景工作會執行遊戲模擬並收集資料。
 
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>建立增強式學習估算器
 
-在本節中，您將了解如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true)，將訓練作業提交至 Azure Machine Learning。
+在本節中，您將了解如何使用 [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py)，將訓練作業提交至 Azure Machine Learning。
 
 Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您輕鬆地指定如何設定指令碼執行。 
 
@@ -248,7 +248,7 @@ worker_conf = WorkerConfiguration(
 
 指定正確的 `num_workers` 將會充分利用您的平行處理工作。 將背景工作的數目設定為與可用的 CPU 數目相同。 在此範例中，計算方式如下：
 
-前端節點是具有 6 個 vCPU 的 [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series)。 背景工作叢集為 4 個 [Standard_D2_V2 VMs](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs#dv2-series) 具有 2 個 CPU，總共 8 個 CPU。 不過，您必須從背景工作計數減去 1 個 CPU，因為有 1 個 CPU 必須供前端節點角色專用。 6 個 CPU + 8 個 CPU -1 個前端 CPU = 13 個同時工作的背景工作。 Azure Machine Learning 會使用前端和背景工作叢集來區別計算資源。 不過，Ray 不會區分前端和背景工作，而且所有 CPU 都是可供背景工作執行緒執行的 CPU。
+前端節點是具有 6 個 vCPU 的 [Standard_NC6](../virtual-machines/nc-series.md)。 背景工作叢集為 4 個 [Standard_D2_V2 VMs](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 具有 2 個 CPU，總共 8 個 CPU。 不過，您必須從背景工作計數減去 1 個 CPU，因為有 1 個 CPU 必須供前端節點角色專用。 6 個 CPU + 8 個 CPU -1 個前端 CPU = 13 個同時工作的背景工作。 Azure Machine Learning 會使用前端和背景工作叢集來區別計算資源。 不過，Ray 不會區分前端和背景工作，而且所有 CPU 都是可供背景工作執行緒執行的 CPU。
 
 
 ```python
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>提交執行
 
-[執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 會處理進行中或完成作業的執行歷程記錄。 
+[執行](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 會處理進行中或完成作業的執行歷程記錄。 
 
 ```python
 run = exp.submit(config=rl_estimator)

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5098d87d63d4002c4f219c5d2703ec1375599e00
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289463"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312029"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>對儲存體帳戶的要求強制執行最小必要版本的傳輸層安全性 (TLS) 
 
@@ -89,7 +89,7 @@ StorageBlobLogs
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>設定儲存體帳戶的最小 TLS 版本
 
-若要設定儲存體帳戶的最小 TLS 版本，請設定帳戶的 **MinimumTlsVersion** 版本。 此屬性適用于使用 Azure 公用雲端或 Azure Government 雲端中的 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需 Azure Resource Manager 部署模型的詳細資訊，請參閱 [儲存體帳戶總覽](storage-account-overview.md)。
+若要設定儲存體帳戶的最小 TLS 版本，請設定帳戶的 **MinimumTlsVersion** 版本。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需 Azure Resource Manager 部署模型的詳細資訊，請參閱 [儲存體帳戶總覽](storage-account-overview.md)。
 
 預設不會設定 **MinimumTlsVersion** 屬性，而且在您明確設定之後，才會傳回值。  如果屬性值為 **null** ，則儲存體帳戶將允許以 TLS 1.0 或更高版本傳送的要求。
 

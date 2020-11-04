@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280353"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311473"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>評估自動化機器學習實驗結果
 
@@ -28,7 +28,7 @@ ms.locfileid: "93280353"
 |---|---|
 |<li> [混淆矩陣](#confusion-matrix) <li>[精確度與召回率圖表](#precision-recall-chart) <li> [接收者操作特徵 (或 ROC)](#roc) <li> [升力曲線](#lift-curve)<li> [增益曲線](#gains-curve)<li> [校正圖](#calibration-plot) | <li> [預測與 True](#pvt) <li> [殘差直方圖](#histo)|
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "93280353"
 
 當您的自動化機器學習實驗完成之後，您可以透過 [Azure Machine Learning studio](overview-what-is-machine-learning-studio.md)，在您的 machine learning 工作區中找到執行的歷程記錄。 
 
-針對 SDK 實驗，當您使用 `RunDetails` [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)時，可以在執行期間看到這些相同的結果。
+針對 SDK 實驗，當您使用 `RunDetails` [Jupyter 小工具](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)時，可以在執行期間看到這些相同的結果。
 
 下列步驟和動畫示範如何在 studio 中查看特定模型的執行歷程記錄和效能度量和圖表。
 

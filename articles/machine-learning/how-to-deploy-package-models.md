@@ -1,7 +1,7 @@
 ---
 title: 套件模型
 titleSuffix: Azure Machine Learning
-description: 將模型封裝為 Dockerfile
+description: 封裝模型。 您可以將模型封裝為 docker 映射，然後下載該映射，也可以建立 Dockerfile 並使用它來建立映射。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: edaae4f4c06f038d12267e35a2c356af430e1555
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998831"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312637"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>如何使用 Docker 封裝已註冊的模型
 

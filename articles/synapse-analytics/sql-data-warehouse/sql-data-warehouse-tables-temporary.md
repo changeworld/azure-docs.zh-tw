@@ -1,6 +1,6 @@
 ---
 title: 暫存資料表
-description: 在 Synapse SQL 集區中使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。
+description: 在專用 SQL 集區中使用臨時表的基本指引，並強調說明工作階段層級臨時表的原則。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,30 +10,32 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85414397"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310682"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 集區中的暫存資料表
+# <a name="temporary-tables-in-dedicated-sql-pool"></a>專用 SQL 集區中的臨時表
+
 本文包含使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。 
 
 使用本文中的資訊可協助您將程式碼模組化，以提高重複使用性且維護起來更簡單。
 
 ## <a name="what-are-temporary-tables"></a>什麼是暫存資料表？
-暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 在 SQL 集區中，暫存資料表存在於工作階段層級。  
+
+暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 在專用的 SQL 集區中，臨時表存在於工作階段層級。  
 
 暫存資料表只會出現在建立所在的工作階段中，工作階段登出時就會自動將其卸除。  
 
 暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是它的效能優點。
 
-暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 使用 SQL 集區，暫存資料表存在於工作階段層級。  只有出現在其建立所在的工作階段。 如此一來，當該工作階段登出時，就會自動將其卸除。 
+暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 使用專用的 SQL 集區時，臨時表存在於工作階段層級。  只有出現在其建立所在的工作階段。 如此一來，當該工作階段登出時，就會自動將其卸除。 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL 集區中的暫存資料表
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>專用 SQL 集區中的臨時表
 
-在 SQL 集區資源中，暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是其效能優點。
+在專用的 SQL 集區資源中，臨時表會提供效能優勢，因為它們的結果會寫入本機，而不是遠端儲存體。
 
 ### <a name="create-a-temporary-table"></a>建立暫存資料表
 
@@ -205,7 +207,7 @@ GO
 
 不過，因為預存程序結尾沒有任何 `DROP TABLE`，當預存程序完成時，它會保留建立的資料表，以便能夠從預存程序之外讀取。  
 
-不同於其他 SQL Server 資料庫，在 SQL 集區中，從建立暫存資料表的程序之外能夠使用此暫存資料表。  工作階段內的**任何位置**都可以使用 SQL 集區暫存資料表。 這個功能可以產生更具模組化和更易於管理的程式碼，如下列範例所示：
+在專用的 SQL 集區中，與其他 SQL Server 資料庫不同，您可以在建立該資料表的程式之外使用該臨時表。  專用的 SQL 集區臨時表可以在會話內的 **任何位置** 使用。 這個功能可以產生更具模組化和更易於管理的程式碼，如下列範例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +229,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>暫存資料表限制
-SQL 集區在實作暫存資料表時的確有一些限制。  目前，僅支援工作階段範圍內的暫存資料表。  不支援全域暫存資料表。  
+專用的 SQL 集區在執行臨時表時，會強制執行幾項限制。  目前，僅支援工作階段範圍內的暫存資料表。  不支援全域暫存資料表。  
 
 此外，也無法在暫存資料表上建立檢視。  只能使用雜湊或循環配置資源散發來建立暫存資料表。  不支援複寫的暫存資料表散發。 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解如何開發資料表，請參閱[使用 Synapse SQL 資源設計資料表](sql-data-warehouse-tables-overview.md)一文。
+若要深入瞭解如何開發資料表，請參閱 [使用專用的 SQL 集區設計資料表](sql-data-warehouse-tables-overview.md) 一文。
 

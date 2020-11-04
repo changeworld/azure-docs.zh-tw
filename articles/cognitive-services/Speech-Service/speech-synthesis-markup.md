@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311633"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -218,7 +218,7 @@ speechConfig!.setPropertyTo(
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `style` | 指定說出的樣式。 目前，說話樣式是語音特定的。 | 如果為類神經語音調整說話樣式，則為必要。 如果使用 `mstts:express-as` ，則必須提供樣式。 如果提供的值無效，則會忽略這個元素。 |
-| `styledegree` | 指定說話樣式的濃度。 **接受的值**：0.01 到2（含）。 預設值為1，表示預先定義的樣式濃度。 最小單位為0.01，這會造成目標樣式稍微傾向。 值為2會導致預設樣式濃度加倍。  | 選擇性 (目前 `styledegree` 僅支援 XiaoxiaoNeural。 ) |
+| `styledegree` | 指定說話樣式的濃度。 **接受的值** ：0.01 到2（含）。 預設值為1，表示預先定義的樣式濃度。 最小單位為0.01，這會造成目標樣式稍微傾向。 值為2會導致預設樣式濃度加倍。  | 選擇性 (目前 `styledegree` 僅支援 XiaoxiaoNeural。 ) |
 
 您可以使用此資料表來判斷每個神經語音支援哪些說話樣式。
 
@@ -233,6 +233,7 @@ speechConfig!.setPropertyTo(
 | `en-US-JennyNeural`     | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  |
 |                         | `style="chat"`            | 表示隨意且寬鬆的色調                         |
 |                         | `style="assistant"`       | 表達數位助理的暖和寬鬆語氣    |
+|                         | `style="newscast"`        | 表示一般新聞傳遞的多功能和休閒語氣   |
 | `en-US-GuyNeural`       | `style="newscast"`        | 表示 narrating 新聞的正式和專業語氣 |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 表示 narrating 新聞的正式和專業語氣 |
 |                         | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  |
@@ -538,8 +539,8 @@ speechConfig!.setPropertyTo(
 | `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
 | `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
 | `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
-| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 持續時間僅支援標準語音。| 選擇性 |
-| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選擇性 |
+| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms* 。 持續時間僅支援標準語音。| 選擇性 |
+| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest* 。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選擇性 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -630,7 +631,7 @@ speechConfig!.setPropertyTo(
 | `address` | | 文字是以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法庭華盛頓州 redmond」。 |
 | `cardinal`, `number` | | 文字會以基本數位的形式讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三個替代方案」。 |
 | `characters`, `spell-out` | | 文字會以個別字母的形式讀出 (拼寫) 。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />As "T E S T." |
-| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文字會以日期的形式讀出。 `format`屬性會指定日期格式 (*d = day、m = month 和 y = year*) 。 語音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />「今天是10月第十九個2016」。 |
+| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文字會以日期的形式讀出。 `format`屬性會指定日期格式 ( *d = day、m = month 和 y = year* ) 。 語音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />「今天是10月第十九個2016」。 |
 | `digits`, `number_digit` | | 文字是以個別數位的序列來讀出。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />為 "1 2 3 4 5 6 7 8 9"。 |
 | `fraction` | | 文字會以小數的形式讀出。 語音合成引擎 pronounces：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />「三個八位的三個」。 |
 | `ordinal` | | 文字是以序數的形式讀出。 語音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />作為 [選取第三個選項]。 |
@@ -716,9 +717,9 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值為 `1`。 | 選擇性 |
-| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
-| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值** ： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值** ： `0` 至 `10000` 內含。  | 選擇性 |
+| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值** ： `0` 至 `10000` 內含。  | 選擇性 |
 
 **範例**
 

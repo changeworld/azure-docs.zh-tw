@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195072"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311874"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>資料取得與認知階段的 Team Data Science Process
 
@@ -40,9 +40,9 @@ ms.locfileid: "84195072"
 ## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決三項主要工作︰
 
-   * **內嵌資料**到目標分析環境。
-   * **瀏覽資料**來判斷資料品質是否適合用來回答問題。 
-   * **設定資料管線**來對新資料或定期重新整理的資料進行評分。
+   * **內嵌資料** 到目標分析環境。
+   * **瀏覽資料** 來判斷資料品質是否適合用來回答問題。 
+   * **設定資料管線** 來對新資料或定期重新整理的資料進行評分。
 
 ### <a name="ingest-the-data"></a>內嵌資料
 設定程序以將資料從來源位置移到目標位置，您可以在其中執行訓練和預測等分析作業。 如需如何使用各種 Azure 資料服務來移動資料的技術詳細資料和選項，請參閱[將資料載入至儲存體環境以便進行分析](ingest-data.md)。 
@@ -67,10 +67,10 @@ TDSP 提供自動化公用程式 [IDEAR](https://github.com/Azure/Azure-TDSP-Uti
 以下是此階段的交付項目：
 
    * [資料品質報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md) \(英文\)︰這份報告包含資料摘要、每個屬性與目標之間的關聯性、變數排名等等。 TDSP 中所提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具，可在任何表格式資料集 (例如 CSV 檔案或關聯式資料表) 上快速產生這份報告。 
-   * **方案架構**︰在您建置模型後，方案架構可以是用來對新資料執行評分或預測之資料管線的圖表或描述。 它也包含可根據新資料重新訓練模型的管線。 當您使用 TDSP 目錄結構範本時，請將文件儲存在 [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) 目錄中。
-   * **檢查點決策**：開始進行全功能工程和模型建立之前，您可以重新評估專案，以判斷預期值是否足以繼續進行。 比方說，您可能已準備好繼續、需要收集更多資料，或是因為不存在可以回答問題的資料而放棄專案。
+   * **方案架構** ︰在您建置模型後，方案架構可以是用來對新資料執行評分或預測之資料管線的圖表或描述。 它也包含可根據新資料重新訓練模型的管線。 當您使用 TDSP 目錄結構範本時，請將文件儲存在 [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) 目錄中。
+   * **檢查點決策** ：開始進行全功能工程和模型建立之前，您可以重新評估專案，以判斷預期值是否足以繼續進行。 比方說，您可能已準備好繼續、需要收集更多資料，或是因為不存在可以回答問題的資料而放棄專案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 以下是 TDSP 生命週期中每個步驟的連結：
 
@@ -82,4 +82,4 @@ TDSP 提供自動化公用程式 [IDEAR](https://github.com/Azure/Azure-TDSP-Uti
 
 我們會提供完整的逐步解說，示範適用于特定案例的程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data)。
+如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning]()。

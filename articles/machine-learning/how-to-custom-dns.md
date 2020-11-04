@@ -11,29 +11,29 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097952"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311571"
 ---
-# <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配使用您的工作區與自訂 DNS 伺服器
+# <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配自訂 DNS 伺服器來使用工作區
 
-使用 Azure Machine Learning 搭配虛擬網路時，有 [數種方式可處理 DNS 名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 不過， __使用您自己的自訂 DNS 伺服器時__ ，您必須手動建立工作區的 DNS 專案。
+使用 Azure Machine Learning 搭配虛擬網路時，有 [數種方式可處理 DNS 名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 不過， __使用您自己的自訂 DNS 伺服器時__ ，您必須手動建立工作區的 DNS 專案。
 
 > [!IMPORTANT]
 > 本文僅說明如何尋找 (FQDN 的完整功能變數名稱) 以及這些專案的 IP 位址，而不會提供設定這些專案之 DNS 記錄的相關資訊。 如需有關如何新增記錄的詳細資訊，請參閱您的 DNS 軟體檔。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 使用 [您自己的 DNS 伺服器](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)的 Azure 虛擬網路。
+- 使用 [您自己的 DNS 伺服器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)的 Azure 虛擬網路。
 
 - 具有私人端點的 Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-- 熟悉 [在定型 & 推斷期間使用網路隔離](how-to-enable-virtual-network.md)。
+- 熟悉 [在定型 & 推斷期間使用網路隔離](./how-to-network-security-overview.md)。
 
-- （選擇性） [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- （選擇性） [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="find-the-ip-addresses"></a>尋找 IP 位址
 
@@ -96,6 +96,6 @@ $workspaceDns.CustomDnsConfigs | format-table
 >
 > 針對所有這些 IP 位址，請使用與 `*.api.azureml.ms` 上一個步驟所傳回專案相同的位址。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需搭配虛擬網路使用 Azure Machine Learning 的詳細資訊，請參閱 [虛擬網路總覽](how-to-network-security-overview.md)。

@@ -8,27 +8,27 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487189"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312403"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>將許可權授與工作區受控識別 (預覽) 
 
-本文說明如何在 Azure synapse 工作區中授與受控識別的許可權。 許可權接著允許存取工作區中的 SQL 集區，並透過 Azure 入口網站 ADLS Gen2 儲存體帳戶。
+本文說明如何在 Azure synapse 工作區中授與受控識別的許可權。 許可權接著允許存取工作區中的專用 SQL 集區，並透過 Azure 入口網站 ADLS Gen2 儲存體帳戶。
 
 >[!NOTE]
 >本文件的其餘部分會將此工作區受控識別稱為受控識別。
 
-## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>將受控識別許可權授與 SQL 集區
+## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>將受控識別許可權授與專用的 SQL 集區
 
-受控識別會將許可權授與工作區中的 SQL 集區。 授與許可權之後，您就可以協調執行 SQL 集區相關活動的管線。 當您使用 Azure 入口網站建立 Azure Synapse 工作區時，您可以授與 SQL 集區的受控識別控制許可權。
+受控識別會將許可權授與工作區中的專用 SQL 集區。 授與許可權之後，您就可以協調執行專用 SQL 集區相關活動的管線。 當您使用 Azure 入口網站建立 Azure Synapse 工作區時，可以在專用的 SQL 集區上授與受控識別控制許可權。
 
-當您建立 Azure Synapse 工作區時，請選取 [ **安全性 + 網路** ]。 然後選取 [將 **控制權授與 SQL 集區上的工作區受控識別**]。
+當您建立 Azure Synapse 工作區時，請選取 [ **安全性** ]。 然後選取 **[允許管線 (正在執行作為工作區的系統指派身分識別]) 存取 SQL 集區** 。
 
-![SQL 集區的 CONTROL 許可權](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
+![專用 SQL 集區的 CONTROL 許可權](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>將受控識別許可權授與 ADLS Gen2 儲存體帳戶
 
@@ -40,7 +40,7 @@ ms.locfileid: "92487189"
 
 ![工作區建立流程中的 [基本] 索引標籤](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-選擇 **帳戶名稱** 和 **檔案系統名稱**中的 ADLS Gen2 儲存體帳戶和檔案系統。
+選擇 **帳戶名稱** 和 **檔案系統名稱** 中的 ADLS Gen2 儲存體帳戶和檔案系統。
 
 ![提供 ADLS Gen2 儲存體帳戶詳細資料](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "92487189"
 
 #### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>步驟1：流覽至 Azure 入口網站中的 ADLS Gen2 儲存體帳戶
 
-在 Azure 入口網站中，開啟 ADLS Gen2 儲存體帳戶，然後從左側導覽中選取 **[總覽** ]。 您只需要指派容器或檔案系統層級的 *儲存體 Blob 資料參與者* 角色。 選取 [容器] ****。  
+在 Azure 入口網站中，開啟 ADLS Gen2 儲存體帳戶，然後從左側導覽中選取 **[總覽** ]。 您只需要指派容器或檔案系統層級的 *儲存體 Blob 資料參與者* 角色。 選取 [容器] 。  
 ![ADLS Gen2 儲存體帳戶總覽](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>步驟2：選取容器
@@ -92,25 +92,25 @@ ms.locfileid: "92487189"
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>步驟6：選取 Azure AD 安全性主體
 
-從 [**指派存取權至**] 下拉式清單中選取**Azure AD 使用者、群組或服務主體**。
+從 [ **指派存取權至** ] 下拉式清單中選取 **Azure AD 使用者、群組或服務主體** 。
 
 ![選取 AAD 安全性主體](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-11.png)
 
 #### <a name="step-7-search-for-the-managed-identity"></a>步驟7：搜尋受控識別
 
-受控識別的名稱也是工作區名稱。 在 [ **選取**] 中輸入您的 Azure Synapse 工作區名稱，以搜尋受控識別。 您應該會看到列出的受控識別。
+受控識別的名稱也是工作區名稱。 在 [ **選取** ] 中輸入您的 Azure Synapse 工作區名稱，以搜尋受控識別。 您應該會看到列出的受控識別。
 
 ![尋找受控識別](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-12.png)
 
 #### <a name="step-8-select-the-managed-identity"></a>步驟8：選取受控識別
 
-選取所 **選成員**的受控識別。 選取 [ **儲存** ] 以新增角色指派。
+選取所 **選成員** 的受控識別。 選取 [ **儲存** ] 以新增角色指派。
 
 ![選取受控識別](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-13.png)
 
 #### <a name="step-9-verify-that-the-storage-blob-data-contributor-role-is-assigned-to-the-managed-identity"></a>步驟9：確認儲存體 Blob 資料參與者角色已指派給受控識別
 
-選取 [ **存取控制] (IAM) ** ，然後選取 [ **角色指派**]。
+選取 [ **存取控制] (IAM)** ，然後選取 [ **角色指派** ]。
 
 ![確認角色指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 

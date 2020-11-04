@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440445"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311029"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>使用受控識別搭配 Azure Machine Learning (preview) 
 
-[受控](/azure/active-directory/managed-identities-azure-resources/overview) 識別可讓您使用 *存取資源所需的最低許可權*來設定您的工作區。 
+[受控](../active-directory/managed-identities-azure-resources/overview.md) 識別可讓您使用 *存取資源所需的最低許可權* 來設定您的工作區。 
 
 以值得信任的方式設定 Azure Machine Learning 工作區時，請務必確定與工作區相關聯的不同服務具有正確的存取層級。 例如，在機器學習工作流程期間，工作區需要存取 Azure Container Registry (適用于 Docker 映射的 ACR) ，以及用於定型資料的儲存體帳戶。 
 
@@ -37,16 +37,16 @@ ms.locfileid: "92440445"
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 - [Machine Learning 服務的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)功能
-- [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-- 若要指派角色，您的 Azure 訂用帳戶的登入必須具有 [受控識別操作員](/azure/role-based-access-control/built-in-roles#managed-identity-operator) 角色，或授與必要動作的其他角色 (例如 __擁有__ 者) 。
-- 您必須熟悉如何建立和使用 [受控](/azure/active-directory/managed-identities-azure-resources/overview)識別。
+- [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+- 若要指派角色，您的 Azure 訂用帳戶的登入必須具有 [受控識別操作員](../role-based-access-control/built-in-roles.md#managed-identity-operator) 角色，或授與必要動作的其他角色 (例如 __擁有__ 者) 。
+- 您必須熟悉如何建立和使用 [受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 ## <a name="configure-managed-identities"></a>設定受控識別
 
 在某些情況下，必須禁止系統管理員使用者存取 Azure Container Registry。 例如，您可以共用 ACR，而您必須禁止其他使用者存取系統管理員。 或者，訂用帳戶層級原則不允許以已啟用的系統管理員使用者建立 ACR。
 
 > [!IMPORTANT]
-> 使用 Azure Machine Learning 在 Azure 容器實例上進行推斷時 (ACI) ， __需要__在 ACR 上進行系統管理使用者存取。 如果您打算將模型部署到 ACI 進行推斷，請勿停用它。
+> 使用 Azure Machine Learning 在 Azure 容器實例上進行推斷時 (ACI) ， __需要__ 在 ACR 上進行系統管理使用者存取。 如果您打算將模型部署到 ACI 進行推斷，請勿停用它。
 
 當您建立 ACR 而不啟用系統管理使用者存取權時，會使用受控識別來存取 ACR，以建立和提取 Docker 映射。
 
@@ -56,10 +56,10 @@ ms.locfileid: "92440445"
 
 如果訂用帳戶原則不允許 ACR 管理使用者，您應該先建立不具系統管理員使用者的 ACR，然後將它與工作區產生關聯。 此外，如果您的現有 ACR 已停用系統管理員使用者，您可以將它附加至工作區。
 
-[從 Azure CLI 建立 ACR](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) 而不設定 ```--admin-enabled``` 引數，或從 Azure 入口網站建立，而不啟用系統管理使用者。 然後，在建立 Azure Machine Learning 工作區時，請指定 ACR 的 Azure 資源識別碼。 下列範例示範如何建立新的 Azure ML 工作區，以使用現有的 ACR：
+[從 Azure CLI 建立 ACR](../container-registry/container-registry-get-started-azure-cli.md) 而不設定 ```--admin-enabled``` 引數，或從 Azure 入口網站建立，而不啟用系統管理使用者。 然後，在建立 Azure Machine Learning 工作區時，請指定 ACR 的 Azure 資源識別碼。 下列範例示範如何建立新的 Azure ML 工作區，以使用現有的 ACR：
 
 > [!TIP]
-> 若要取得參數的值 `--container-registry` ，請使用 [az acr show](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az_acr_show) 命令來顯示 acr 的資訊。 `id`欄位包含您 ACR 的資源識別碼。
+> 若要取得參數的值 `--container-registry` ，請使用 [az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) 命令來顯示 acr 的資訊。 `id`欄位包含您 ACR 的資源識別碼。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -106,7 +106,7 @@ az ml workspace create -w <workspace name> \
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用 [AmlComputeProvisioningConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)建立計算叢集時，請使用 `identity_type` 參數來設定受控識別類型。
+使用 [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)建立計算叢集時，請使用 `identity_type` 參數來設定受控識別類型。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -173,8 +173,8 @@ env.python.user_managed_dependencies = True
 
 在此案例中，Azure Machine Learning 服務會在您從私用 ACR 提供的基底映射之上建立定型或推斷環境。 由於「映射組建」工作會在工作空間 ACR 上使用 ACR 工作執行，因此您必須執行其他步驟，才能允許存取。
 
-1. 建立 __使用者指派的受控識別__ ，並將 __私人 ACR__的存取權授與身分識別 ACRPull。  
-1. 從上一個步驟中的__使用者指派受控識別__，將受控識別操作員角色授與工作區__系統指派的受控識別__。 此角色可讓工作區將使用者指派的受控識別指派給 ACR 工作，以建立受控環境。 
+1. 建立 __使用者指派的受控識別__ ，並將 __私人 ACR__ 的存取權授與身分識別 ACRPull。  
+1. 從上一個步驟中的 __使用者指派受控識別__ ，將受控識別操作員角色授與工作區 __系統指派的受控識別__ 。 此角色可讓工作區將使用者指派的受控識別指派給 ACR 工作，以建立受控環境。 
 
     1. 取得工作區系統指派的受控識別的主體識別碼：
 
@@ -190,7 +190,7 @@ env.python.user_managed_dependencies = True
 
         UAI 資源識別碼是使用者指派身分識別的 Azure 資源識別碼，格式為 `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` 。
 
-1. 使用[Workspace.set_connection 方法](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)，在工作區連接中指定__使用者指派受控識別__的外部 ACR 和用戶端識別碼：
+1. 使用 [Workspace.set_connection 方法](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)，在工作區連接中指定 __使用者指派受控識別__ 的外部 ACR 和用戶端識別碼：
 
     ```python
     workspace.set_connection(
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-（選擇性）您可以使用 [RegistryIdentity](https://docs.microsoft.com/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)，在環境定義中指定受控識別資源 URL 和用戶端識別碼。 如果您明確使用登錄身分識別，它會覆寫先前指定的任何工作區連接：
+（選擇性）您可以使用 [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)，在環境定義中指定受控識別資源 URL 和用戶端識別碼。 如果您明確使用登錄身分識別，它會覆寫先前指定的任何工作區連接：
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

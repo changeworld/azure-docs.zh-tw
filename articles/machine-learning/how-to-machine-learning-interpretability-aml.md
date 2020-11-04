@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708249"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311606"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解譯性套件以 Python (preview & 預測來說明 ML 模型) 
 
@@ -354,7 +354,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
    [![實驗中 AzureML studio 的視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **模型** 窗格
-  1. 如果您遵循 [使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟來註冊原始模型，您可以在左窗格中選取 **模型** 來加以查看。
+  1. 如果您遵循 [使用 Azure Machine Learning 部署模型](./how-to-deploy-and-where.md)中的步驟來註冊原始模型，您可以在左窗格中選取 **模型** 來加以查看。
   1. 選取模型，然後選取 [ **說明** ] 索引標籤，以查看說明視覺效果儀表板。
 
 ## <a name="interpretability-at-inference-time"></a>在推斷階段可解譯性
@@ -419,7 +419,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 1. 依照下列步驟，將映射部署到計算目標：
 
-   1. 如有需要，請遵循 [使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟來註冊您的原始預測模型。
+   1. 如有需要，請遵循 [使用 Azure Machine Learning 部署模型](./how-to-deploy-and-where.md)中的步驟來註冊您的原始預測模型。
 
    1. 建立評分檔案。
 
@@ -553,4 +553,3 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 [深入瞭解模型可解譯性](how-to-machine-learning-interpretability.md)
 
 [查看 Azure Machine Learning 可解譯性範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

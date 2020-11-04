@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 9cde7fe32d1b7b13c5f95bf3d99497926f68c88e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494918"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311195"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 
@@ -41,9 +41,9 @@ Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模�
 
 
 > [!TIP]
-> 公開預覽類別和中提供在管線步驟之間傳遞暫存資料的改良體驗  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  這些類別是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) 性預覽功能，而且可能隨時變更。
+> 公開預覽類別和中提供在管線步驟之間傳遞暫存資料的改良體驗  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) 。  這些類別是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性預覽功能，而且可能隨時變更。
 
-`AutoMLStep`是透過物件來設定 `AutoMLConfig` 。 `AutoMLConfig` 是有彈性的類別，如在 [Python 中設定自動化 ML 實驗](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
+`AutoMLStep`是透過物件來設定 `AutoMLConfig` 。 `AutoMLConfig` 是有彈性的類別，如在 [Python 中設定自動化 ML 實驗](./how-to-configure-auto-train.md#configure-your-experiment-settings)中所述。 
 
 會 `Pipeline` 在中執行 `Experiment` 。 在 `Run` 每個步驟中，管線都有子系 `StepRun` 。 自動化 ML 的輸出 `StepRun` 是定型計量和最高效能的模型。
 
@@ -106,7 +106,7 @@ compute_target = ws.compute_targets[compute_name]
 
 資料準備和自動化 ML 步驟之間的中繼資料可以儲存在工作區的預設資料存放區中，因此我們不需要 `get_default_datastore()` 在物件上進行呼叫 `Workspace` 。 
 
-之後，程式碼會檢查 AML 計算目標是否 `'cpu-cluster'` 已存在。 如果不是，我們會指定我們想要以小型 CPU 為基礎的計算目標。 如果您打算使用自動化 ML 的深度學習功能 (例如，具有 DNN 支援的 text 特徵化) 您應該選擇具有強式 GPU 支援的計算，如 [GPU 優化的虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)所述。 
+之後，程式碼會檢查 AML 計算目標是否 `'cpu-cluster'` 已存在。 如果不是，我們會指定我們想要以小型 CPU 為基礎的計算目標。 如果您打算使用自動化 ML 的深度學習功能 (例如，具有 DNN 支援的 text 特徵化) 您應該選擇具有強式 GPU 支援的計算，如 [GPU 優化的虛擬機器大小](../virtual-machines/sizes-gpu.md)所述。 
 
 程式碼會封鎖，直到目標布建完成，然後再列印剛剛建立之計算目標的一些詳細資料。 最後，會從工作區取出命名的計算目標，並將其指派給 `compute_target` 。 
 
@@ -137,7 +137,7 @@ else:
         pin_sdk_version=False)
 ```
 
-上述程式碼顯示兩個處理相依性的選項。 如所示， `USE_CURATED_ENV = True` 在中，設定是以策劃環境為基礎。 策劃環境是「prebaked」，具有常見的相互相依程式庫，而且在線上時可能會大幅加快。 策劃環境已在 [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)中預先建立 Docker 映射。 當您變更 `USE_CURATED_ENV` 以 `False` 顯示明確設定相依性的模式時，所採用的路徑。 在該案例中，將會在資源群組內的 Azure Container Registry 中建立並註冊新的自訂 Docker 映射 (請參閱 [Azure) 中的私人 Docker 容器登錄簡介](https://docs.microsoft.com/azure/container-registry/container-registry-intro) 。 建立和註冊此映射可能需要幾分鐘的時間。 
+上述程式碼顯示兩個處理相依性的選項。 如所示， `USE_CURATED_ENV = True` 在中，設定是以策劃環境為基礎。 策劃環境是「prebaked」，具有常見的相互相依程式庫，而且在線上時可能會大幅加快。 策劃環境已在 [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)中預先建立 Docker 映射。 當您變更 `USE_CURATED_ENV` 以 `False` 顯示明確設定相依性的模式時，所採用的路徑。 在該案例中，將會在資源群組內的 Azure Container Registry 中建立並註冊新的自訂 Docker 映射 (請參閱 [Azure) 中的私人 Docker 容器登錄簡介](../container-registry/container-registry-intro.md) 。 建立和註冊此映射可能需要幾分鐘的時間。 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>準備自動化機器學習的資料
 
@@ -251,11 +251,11 @@ dataprep_step = PythonScriptStep(
 `prepped_data_path`物件的類型為 `PipelineOutputFileDataset` 。 請注意，它是在 `arguments` 和 `outputs` 引數中指定。 如果您檢查上一個步驟，您將會看到在資料準備程式碼中，引數的值 `'--output_path'` 是寫入 Parquet 檔案的檔案路徑。 
 
 > [!TIP]
-> 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 如需使用類別的程式碼範例 `OutputFileDatasetConfig` ，請參閱如何 [建立兩個步驟的 ML 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
+> 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 。 如需使用類別的程式碼範例 `OutputFileDatasetConfig` ，請參閱如何 [建立兩個步驟的 ML 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
 
 ## <a name="train-with-automlstep"></a>使用 AutoMLStep 定型
 
-設定自動化 ML 管線步驟是透過類別來完成 `AutoMLConfig` 。 在 [Python 中設定自動化 ML 實驗](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)中會說明這個彈性類別。 資料輸入和輸出是需要在 ML 管線中特別注意的設定部分。 `AutoMLConfig`以下將詳細討論管線中的輸入和輸出。 除了資料外，ML 管線的優點是能夠針對不同的步驟使用不同的計算目標。 您可以選擇 `ComputeTarget` 針對自動化 ML 程式使用更強大的功能。 這麼做就像為 `RunConfiguration` `AutoMLConfig` 物件的參數指派更強大的功能一樣簡單 `run_configuration` 。
+設定自動化 ML 管線步驟是透過類別來完成 `AutoMLConfig` 。 在 [Python 中設定自動化 ML 實驗](./how-to-configure-auto-train.md)中會說明這個彈性類別。 資料輸入和輸出是需要在 ML 管線中特別注意的設定部分。 `AutoMLConfig`以下將詳細討論管線中的輸入和輸出。 除了資料外，ML 管線的優點是能夠針對不同的步驟使用不同的計算目標。 您可以選擇 `ComputeTarget` 針對自動化 ML 程式使用更強大的功能。 這麼做就像為 `RunConfiguration` `AutoMLConfig` 物件的參數指派更強大的功能一樣簡單 `run_configuration` 。
 
 ### <a name="send-data-to-automlstep"></a>傳送資料至 `AutoMLStep`
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 上述程式碼片段會 `PipelineOutputTabularDataset` 從資料準備步驟的輸出中建立高效能 `PipelineOutputFileDataset` 。
 
 > [!TIP]
-> 公開預覽類別 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 包含 [read_delimited_files ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，可將轉換 `OutputFileDatasetConfig` 成 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 以 AutoML 執行中的耗用量。
+> 公開預覽類別 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 包含 [read_delimited_files ( # B1 ](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，可將轉換 `OutputFileDatasetConfig` 成 [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) 以 AutoML 執行中的耗用量。
 
 另一個選項是使用 `Dataset` 在工作區中註冊的物件：
 
@@ -315,7 +315,7 @@ model_data = PipelineData(name='best_model_data',
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>設定及建立自動化 ML 管線步驟
 
-一旦定義輸入和輸出之後，就可以建立 `AutoMLConfig` 和 `AutoMLStep` 。 設定的詳細資料將取決於您的工作，如在 [Python 中設定自動化 ML 實驗](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)中所述。 針對鐵達尼號生存分類工作，下列程式碼片段示範簡單的設定。
+一旦定義輸入和輸出之後，就可以建立 `AutoMLConfig` 和 `AutoMLStep` 。 設定的詳細資料將取決於您的工作，如在 [Python 中設定自動化 ML 實驗](./how-to-configure-auto-train.md)中所述。 針對鐵達尼號生存分類工作，下列程式碼片段示範簡單的設定。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -353,7 +353,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 - `task` 在此範例中，會設為 `classification` 。 其他有效的值為 `regression` 和。 `forecasting`
 - `path` 並 `debug_log` 描述專案的路徑，以及將用來寫入調試資訊的本機檔案 
 - `compute_target` 是先前定義 `compute_target` 的，在此範例中，是以 CPU 為基礎的較便宜電腦。 如果您使用 AutoML 的深度學習設備，您會想要將計算目標變更為以 GPU 為基礎的
-- `featurization` 設定為 `auto`。 您可以在自動化 ML 設定檔的 [資料特徵化](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) 一節中找到更多詳細資料。 
+- `featurization` 設定為 `auto`。 您可以在自動化 ML 設定檔的 [資料特徵化](./how-to-configure-auto-train.md#data-featurization) 一節中找到更多詳細資料。 
 - `label_column_name` 指出我們想要預測的資料行 
 - `training_data` 設定為 `PipelineOutputTabularDataset` 從資料準備步驟的輸出中所做的物件 
 
@@ -525,4 +525,4 @@ model.get_port_data_reference().download('.')
 - 在使用回歸來預測出租車車資的管線中，執行此 Jupyter 筆記本以顯示[自動化 ML 的完整範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)
 - [無須撰寫程式碼，即可建立自動化 ML 實驗](how-to-use-automated-ml-for-ml-models.md)
 - 探索 [示範自動化 ML 的各種 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
-- 瞭解如何將您的管線整合至 [端對端 MLOps](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) ，或調查 [MLOps GitHub 存放庫](https://github.com/Microsoft/MLOpspython) 
+- 瞭解如何將您的管線整合至 [端對端 MLOps](./concept-model-management-and-deployment.md#automate-the-ml-lifecycle) ，或調查 [MLOps GitHub 存放庫](https://github.com/Microsoft/MLOpspython)

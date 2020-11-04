@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/02/2020
+ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542371"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310496"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure Logic Apps 和企業整合套件來接收和確認 B2B AS2 訊息
 
@@ -39,7 +39,7 @@ ms.locfileid: "91542371"
 
 * 您已在整合帳戶中定義的兩個 [交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md) ，以及適用于這些合作夥伴的 [AS2 和 X12 協定](logic-apps-enterprise-integration-agreements.md) 。
 
-## <a name="add-request-trigger"></a>新增要求觸發程序
+## <a name="add-the-request-trigger"></a>新增「要求」觸發程序
 
 此範例會使用 Azure 入口網站中的邏輯應用程式設計工具，但是您可以針對 Visual Studio 中的邏輯應用程式設計工具，遵循類似的步驟。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91542371"
 
    ![為要求觸發程式所產生的 URL，以接收呼叫](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-## <a name="add-as2-decode-action"></a>新增 AS2 解碼動作
+## <a name="add-the-as2-decode-action"></a>新增 AS2 解碼動作
 
 現在新增您想要使用的 B2B 動作。 此範例使用 AS2 和 X12 動作。
 
@@ -67,17 +67,17 @@ ms.locfileid: "91542371"
 
    ![將另一個步驟新增至邏輯應用程式工作流程](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `as2 decode` ，然後選取 [ **AS2 解碼 (v2) **。
+1. 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，輸入 `as2 decode` ，然後選取 [ **AS2 解碼 (v2)** 。
 
    ![尋找並選取 [AS2 解碼 (v2) ]](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
 1. 在 [ **要** 解碼的訊息] 屬性中，輸入您想要 AS2 動作解碼的輸入，這是 `body` HTTP 要求觸發程式所接收的內容。 您有多種方式可以從動態內容清單或運算式中，將此內容指定為輸入：
 
-   * 若要從顯示可用觸發程式輸出的清單中選取，請在 [要解碼的 **訊息** ] 方塊內按一下。 當動態內容清單出現後，在 **收到 HTTP 要求時**，請選取 [ **主體** 屬性值]，例如：
+   * 若要從顯示可用觸發程式輸出的清單中選取，請在 [要解碼的 **訊息** ] 方塊內按一下。 當動態內容清單出現後，在 **收到 HTTP 要求時** ，請選取 [ **主體** 屬性值]，例如：
 
      ![從觸發程式中選取 [主體] 值](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * 若要輸入參考觸發程式輸出的運算式 `body` ，請在 [ **要** 解碼的訊息] 方塊內按一下。 在動態內容清單出現後，選取 [ **運算式**]。 在 [運算式編輯器] 中，于這裡輸入運算式，然後選取 **[確定]**：
+   * 若要輸入參考觸發程式輸出的運算式 `body` ，請在 [ **要** 解碼的訊息] 方塊內按一下。 在動態內容清單出現後，選取 [ **運算式** ]。 在 [運算式編輯器] 中，于這裡輸入運算式，然後選取 **[確定]** ：
 
      `triggerOutputs()['body']`
 
@@ -91,21 +91,29 @@ ms.locfileid: "91542371"
 
 1. 針對 [ **訊息標頭** ] 屬性，輸入 AS2 動作所需的任何標頭，這些標頭是由 `headers` HTTP 要求觸發程式所接收的內容所描述。
 
-   若要輸入參考觸發程式輸出的運算式 `headers` ，請按一下 [ **訊息標頭** ] 方塊內部。 在動態內容清單出現後，選取 [ **運算式**]。 在 [運算式編輯器] 中，于這裡輸入運算式，然後選取 **[確定]**：
+   1. 若要輸入參考觸發程式輸出的運算式 `headers` ，請選取 [ **將訊息標頭切換至文字模式]** 。
 
-   `triggerOutputs()['Headers']`
+      ![顯示已選取 [將訊息標頭切換至文字模式] 的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   若要以這個標記的形式來解析此運算式，請在設計工具和程式碼視圖之間切換，例如：
+   1. 在 [ **訊息標頭** ] 方塊內按一下。 在動態內容清單出現後，選取 [ **運算式** ]。 在 [運算式編輯器] 中，于這裡輸入運算式，然後選取 **[確定]** ：
 
-   ![觸發程式的已解析標頭輸出](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
+      `triggerOutputs()['Headers']`
+
+      在 AS2 解碼動作中，運算式現在會顯示為標記：
+
+      ![顯示 [ @triggerOutputs 訊息標頭] 方塊中「 ( # A1 [' 標頭 '] "權杖的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
+
+   1. 若要取得要解析成 **標頭** token 的運算式權杖，請在設計工具和程式碼視圖之間切換。 在這個步驟之後，AS2 解碼動作看起來會像這個範例：
+
+      ![觸發程式的已解析標頭輸出](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
 ## <a name="add-response-action-for-message-receipt-notification"></a>新增訊息接收通知的回應動作
 
 若要通知交易夥伴已收到訊息，您可以使用 **回應** 動作，傳回包含 AS2 訊息處置通知 (MDN) 的回應。 藉由在 **AS2** 解碼動作之後立即新增此動作，如果該動作失敗，邏輯應用程式就不會繼續處理。
 
-1. 在 [ **AS2** 解碼] 動作底下，選取 [ **新增步驟**]。
+1. 在 [ **AS2** 解碼] 動作底下，選取 [ **新增步驟** ]。
 
-1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，選取 [ **內建**]。 在搜尋方塊中，輸入 `condition`。 從 [動作] 清單中選取 [條件]。
+1. 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，選取 [ **內建** ]。 在搜尋方塊中，輸入 `condition`。 從 [動作] 清單中選取 [條件]。
 
    ![新增 [條件] 動作](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 
@@ -123,7 +131,7 @@ ms.locfileid: "91542371"
 
 1. 現在，指定傳回 **AS2** 解碼動作是否成功的回應。
 
-   1. 若為 **AS2** 解碼動作成功的情況，請在 [ **若為 true** ] 圖形中選取 [ **新增動作**]。 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `response` ，然後選取 [ **回應**]。
+   1. 若為 **AS2** 解碼動作成功的情況，請在 [ **若為 true** ] 圖形中選取 [ **新增動作** ]。 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，輸入 `response` ，然後選取 [ **回應** ]。
 
       ![尋找並選取 [回應] 動作](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
 
@@ -141,19 +149,19 @@ ms.locfileid: "91542371"
 
       ![用來存取 AS2 MDN 的已解析運算式](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
 
-   1. 若為 **AS2** 解碼動作失敗的情況，請在 [ **若為 false** ] 圖形中選取 [ **新增動作**]。 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `response` ，然後選取 [ **回應**]。 設定 **回應** 動作，以傳回您想要的狀態和錯誤。
+   1. 若為 **AS2** 解碼動作失敗的情況，請在 [ **若為 false** ] 圖形中選取 [ **新增動作** ]。 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，輸入 `response` ，然後選取 [ **回應** ]。 設定 **回應** 動作，以傳回您想要的狀態和錯誤。
 
 1. 儲存您的邏輯應用程式。
 
 ## <a name="add-decode-x12-message-action"></a>新增解碼 X12 訊息動作
 
-1. 現在新增 [解碼 **X12 訊息** ] 動作。 在 [ **回應** ] 動作底下，選取 [ **新增動作**]。
+1. 現在新增 [解碼 **X12 訊息** ] 動作。 在 [ **回應** ] 動作底下，選取 [ **新增動作** ]。
 
-1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `x12 decode` ，然後選取 [將 **X12 訊息**解碼]。
+1. 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，輸入 `x12 decode` ，然後選取 [將 **X12 訊息** 解碼]。
 
    ![尋找並選取 [解碼 X12 訊息] 動作](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
 
-1. 如果 X12 動作提示您輸入連接資訊，請提供連線的名稱，選取您要使用的整合帳戶，然後選取 [ **建立**]。
+1. 如果 X12 動作提示您輸入連接資訊，請提供連線的名稱，選取您要使用的整合帳戶，然後選取 [ **建立** ]。
 
    ![建立與整合帳戶的 X12 連接](./media/logic-apps-enterprise-integration-b2b/create-x12-integration-account-connection.png)
 

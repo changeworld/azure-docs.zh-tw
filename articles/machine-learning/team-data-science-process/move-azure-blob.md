@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5148084fa22266b1352046c7d8737b9804c5f4d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76717582"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311846"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>從 Azure Blob 儲存體來回移動資料
 
@@ -27,14 +27,14 @@ Team Data Science Process 要求將資料內嵌或載入至各種不同的儲存
 下列文章說明如何使用不同的技術，從 Azure Blob 儲存體來回移動資料。
 
 * [Azure 儲存體總管](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-* [Python](move-data-to-azure-blob-using-python.md)
+* [AzCopy](../../storage/common/storage-use-azcopy-v10.md)
+* [Python](../../storage/blobs/storage-quickstart-blobs-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 哪一種方法最適合會取決於您的案例。 [在 Azure 機器學習中的進階分析案例](plan-sample-scenarios.md) 文章可協助您判斷進階分析程序中各種資料科學工作流程所需的資源。
 
 > [!NOTE]
-> 如需 Azure Blob 儲存體的完整介紹，請參閱 [Azure Blob 基本概念](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服務](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 如需 Azure Blob 儲存體的完整介紹，請參閱 [Azure Blob 基本概念](../../storage/blobs/storage-quickstart-blobs-dotnet.md)和 [Azure Blob 服務](/rest/api/storageservices/Blob-Service-Concepts)。
 > 
 > 
 
@@ -53,5 +53,4 @@ Team Data Science Process 要求將資料內嵌或載入至各種不同的儲存
 本文章假設您擁有 Azure 訂用帳戶、儲存體帳戶和該帳戶的對應儲存體金鑰。 上傳/下載資料之前，您必須知道您的 Azure 儲存體帳戶名稱和帳戶金鑰。
 
 * 若要設定 Azure 訂用帳戶，請參閱 [免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。
-* 如需有關建立儲存體帳戶，以及取得帳戶和金鑰資訊的指示，請參閱 [關於 Azure 儲存體帳戶](../../storage/common/storage-create-storage-account.md)。
-
+* 如需有關建立儲存體帳戶，以及取得帳戶和金鑰資訊的指示，請參閱 [關於 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)。

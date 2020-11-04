@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312344"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 實務：使用 Azure HDInsight Hadoop 叢集
 在此逐步解說中，我們在端對端案例中使用 [Team Data Science Process (TDSP)](overview.md)。 我們使用 [Azure HDInsight Hadoop 叢集](https://azure.microsoft.com/services/hdinsight/)，以對 [NYC 計程車車程](https://www.andresmh.com/nyctaxitrips/) \(英文\) 資料集內可公開使用的資料進行儲存、探索和特徵工程設計，並縮減取樣資料。 若要處理二元和多元分類和迴歸預測工作，我們使用 Azure Machine Learning 建置資料的模型。 
@@ -59,14 +59,14 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 加入 trip\_data and trip\_fare 的唯一索引鍵由下列欄位組成：medallion、hack\_license 和 pickup\_datetime。 若要取得特定車程的所有詳細資訊，加入這三個索引鍵便已足夠。
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>預測工作的範例
-根據資料分析判斷您想要進行的預測類型，協助您瞭解所需的處理工作。 以下是我們在這個逐步解說中說明的三個預測問題範例，全都根據 *秘訣 \_ 量*而定：
+根據資料分析判斷您想要進行的預測類型，協助您瞭解所需的處理工作。 以下是我們在這個逐步解說中說明的三個預測問題範例，全都根據 *秘訣 \_ 量* 而定：
 
-- **二元分類**：預測是否已支付某趟車程的小費。 也就是說，大於 $0 的 *tip\_amount* 是正數範例，而 $0 的 *tip\_amount* 是負數範例。
+- **二元分類** ：預測是否已支付某趟車程的小費。 也就是說，大於 $0 的 *tip\_amount* 是正數範例，而 $0 的 *tip\_amount* 是負數範例。
 
   - Class 0: tip_amount = $0
   - 類別1： tip_amount > $0
 
-- **多元分類**：預測針對該趟車程支付的小費金額範圍。 我們將 tip\_amount** 分成五個類別：
+- **多元分類** ：預測針對該趟車程支付的小費金額範圍。 我們將 tip\_amount 分成五個類別：
 
   - Class 0: tip_amount = $0
   - Class 1: tip_amount > $0 and tip_amount <= $5
@@ -74,7 +74,7 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
   - Class 3: tip_amount > $10 and tip_amount <= $20
   - Class 4: tip_amount > $20
 
-- **迴歸工作**：預測已針對某趟車程支付的小費金額。  
+- **迴歸工作** ：預測已針對某趟車程支付的小費金額。  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>設定進階分析的 HDInsight Hadoop 叢集
 > [!NOTE]
@@ -85,10 +85,10 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 您可以採取三個步驟，為利用 HDInsight 叢集的進階分析設定 Azure 環境：
 
 1. [建立儲存體帳戶](../../storage/common/storage-account-create.md)：此儲存體帳戶會用來將資料儲存在 Azure Blob 儲存體中。 HDInsight 叢集中使用的資料也位於此處。
-2. [針對進階分析程序和技術自訂 Azure HDInsight Hadoop 叢集](customize-hadoop-cluster.md)。 這個步驟會建立已在所有節點上安裝 64 位元 Anaconda Python 2.7 的 HDInsight Hadoop 叢集。 自訂 HDInsight 叢集時應注意兩個重要的步驟。
+2. [針對進階分析程序和技術自訂 Azure HDInsight Hadoop 叢集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 這個步驟會建立已在所有節點上安裝 64 位元 Anaconda Python 2.7 的 HDInsight Hadoop 叢集。 自訂 HDInsight 叢集時應注意兩個重要的步驟。
    
    * 建立步驟 1 中的儲存體帳戶時，請務必將之與您的 HDInsight 叢集連結。 這個儲存體帳戶可存取在叢集內處理的資料。
-   * 建立叢集之後，請對叢集的前端節點啟用遠端存取。 瀏覽至 [組態]**** 索引標籤，然後選取 [啟用遠端]****。 這個步驟可指定使用於遠端登入的使用者認證。
+   * 建立叢集之後，請對叢集的前端節點啟用遠端存取。 瀏覽至 [組態] 索引標籤，然後選取 [啟用遠端]。 這個步驟可指定使用於遠端登入的使用者認證。
 3. [建立 Azure Machine Learning 工作區](../classic/create-workspace.md)：您可以使用這個工作區來建置機器學習模型。 使用 HDInsight 叢集完成初始資料探索和縮小取樣之後，會處理這項工作。
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>從公用來源取得資料
@@ -99,7 +99,7 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 
 若要從 [NYC 計程車車程](https://www.andresmh.com/nyctaxitrips/) \(英文\) 資料集的公用位置將該資料集複製到您的電腦，請使用[將資料移進和移出 Azure Blob 儲存體](move-azure-blob.md)中所述的任何一種方法。
 
-我們在這裡說明如何使用 AzCopy 來傳輸含有資料的檔案。 若要下載並安裝 AzCopy，請遵循開始 [使用 AzCopy 命令列公用程式](../../storage/common/storage-use-azcopy.md)的指示。
+我們在這裡說明如何使用 AzCopy 來傳輸含有資料的檔案。 若要下載並安裝 AzCopy，請遵循開始 [使用 AzCopy 命令列公用程式](../../storage/common/storage-use-azcopy-v10.md)的指示。
 
 1. 從命令提示字元視窗中，執行下列 AzCopy 命令， *\<path_to_data_folder>* 以所需的目的地取代：
 
@@ -117,23 +117,23 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 
 在下列 AzCopy 命令中，以建立 Hadoop 叢集和解壓縮資料檔案時指定的實際值取代下列參數。
 
-* ***\<path_to_data_folder>*** 目錄 (以及電腦上包含解壓縮資料檔案的路徑) 。  
-* ***\<storage account name of Hadoop cluster>*** 與您的 HDInsight 叢集相關聯的儲存體帳戶。
-* ***\<default container of Hadoop cluster>*** 叢集所使用的預設容器。 預設容器的名稱通常與叢集本身的名稱相同。 例如，如果叢集稱為 "abc123.azurehdinsight.net"，預設容器即為 abc123。
-* ***\<storage account key>*** 您的叢集所使用之儲存體帳戶的金鑰。
+* ***\<path_to_data_folder>** _ 目錄 (以及電腦上包含解壓縮資料檔案的路徑) 。  
+_ * **\<storage account name of Hadoop cluster>** _ 與您的 HDInsight 叢集相關聯的儲存體帳戶。
+_ * **\<default container of Hadoop cluster>** _ 叢集所使用的預設容器。 預設容器的名稱通常與叢集本身的名稱相同。 例如，如果叢集稱為 "abc123.azurehdinsight.net"，預設容器即為 abc123。
+_ * **\<storage account key>** _ 您的叢集所使用之儲存體帳戶的金鑰。
 
 從命令提示字元或 Windows PowerShell 視窗，執行下列兩個 AzCopy 命令。
 
-這個命令會將車程資料上傳至 Hadoop 叢集之預設容器中的 ***nyctaxitripraw*** 目錄。
+此命令會將行程資料上傳至 Hadoop 叢集之預設容器中的 _*_nyctaxitripraw_*_ 目錄。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
 ```
 
-這個命令會將費用資料上傳至 Hadoop 叢集之預設容器中的 ***nyctaxifareraw*** 目錄。
+此命令會將費用資料上傳至 Hadoop 叢集之預設容器中的 * **nyctaxifareraw** _ 目錄。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
 ```
 
 資料現在應該位於 Blob 儲存體，而且準備好在 HDInsight 叢集內使用。
@@ -144,7 +144,7 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 > 
 > 
 
-若要存取叢集的前端節點以進行資料的探索資料分析和縮小取樣，請遵循[存取 Hadoop 叢集的前端節點](customize-hadoop-cluster.md)中所述的程序進行。
+若要存取叢集的前端節點以進行資料的探索資料分析和縮小取樣，請遵循[存取 Hadoop 叢集的前端節點](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中所述的程序進行。
 
 在本逐步解說中，我們主要是使用 [Hive](https://hive.apache.org/)中撰寫的查詢 (類似 SQL 的查詢語言) 來執行初步資料探索。 Hive 查詢會儲存在 ' hql ' 檔案中。 我們接著會縮小取樣這份資料，以便在 Machine Learning 中用來建置模型。
 
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-這兩個命令會將本逐步解說中所需的所有 ' hql ' 檔案下載至前端節點中的本機目錄 ***C：\temp&#92;*** 。
+這兩個命令會將此逐步解說中所需的所有 ' hql ' 檔案下載至前端節點中的本機目錄 * **C：\temp&#92;** _。
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>建立依月份分割的 Hive 資料庫和資料表
 > [!NOTE]
@@ -182,7 +182,7 @@ cd %hive_home%\bin
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-以下是 **C:\temp\sample \_ hive \_ create \_ db \_ 和 \_ 資料表 hql** 檔案的內容，它會建立 hive 資料庫 **nyctaxidb**，以及資料表的 **往返** 和 **費用**。
+以下是 _ *C:\temp\sample \_ hive \_ create \_ db \_ 和 \_ 資料表. hql* * 檔案的內容，它會建立 hive 資料庫 **nyctaxidb** ，以及資料表的 **往返** 和 **費用** 。
 
 ```hiveql
 create database if not exists nyctaxidb;
@@ -227,8 +227,8 @@ STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.hea
 
 這個 Hive 指令碼會建立兩個資料表：
 
-* **旅程**表包含每個駕駛 (駕駛詳細資料、挑選時間、路程距離和時間) 的行程詳細資料。
-* **費用**資料表包含費用詳細資料 (費用金額、tip 金額、通行費和附加費) 。
+* **旅程** 表包含每個駕駛 (駕駛詳細資料、挑選時間、路程距離和時間) 的行程詳細資料。
+* **費用** 資料表包含費用詳細資料 (費用金額、tip 金額、通行費和附加費) 。
 
 如果您需要這些程序的任何額外協助，或想要調查替代程序，請參閱[從 Hadoop 命令列直接提交 Hive 查詢](move-hive-tables.md#submit)一節。
 
@@ -244,7 +244,7 @@ NYC 計程車資料集會依月份自然分割資料，可讓我們更快速處�
 for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 ```
 
-**範例 hive 會依分割區 \_ \_ 載入 \_ 資料 \_ \_ 。 hql**檔案包含下列**load**命令：
+**範例 hive 會依分割區 \_ \_ 載入 \_ 資料 \_ \_ 。 hql** 檔案包含下列 **load** 命令：
 
 ```hiveql
 LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
@@ -447,7 +447,7 @@ Time taken: 186.683 seconds, Fetched: 1 row(s)
 > 
 > 
 
-此範例會識別在特定期間內超過 100 趟車程的圓形徽章 (計程車數目)。 由於這個查詢受到資料分割變數 **month** 的條件約束，因此使用資料分割資料表會很有幫助。 查詢結果會寫入至前端節點上的本機檔案**queryoutput。** `C:\temp`
+此範例會識別在特定期間內超過 100 趟車程的圓形徽章 (計程車數目)。 由於這個查詢受到資料分割變數 **month** 的條件約束，因此使用資料分割資料表會很有幫助。 查詢結果會寫入至前端節點上的本機檔案 **queryoutput。** `C:\temp`
 
 ```console
 hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
@@ -464,7 +464,7 @@ HAVING med_count > 100
 ORDER BY med_count desc;
 ```
 
-NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以詢問哪些計程車在特定時段超過特定的車程數目，以識別哪些計程車相對忙碌。 下列範例會識別在前三個月中超過幾百趟車程的計程車，並將查詢結果儲存至本機檔案 **C:\temp\queryoutput.tsv**。
+NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以詢問哪些計程車在特定時段超過特定的車程數目，以識別哪些計程車相對忙碌。 下列範例會識別在前三個月中超過幾百趟車程的計程車，並將查詢結果儲存至本機檔案 **C:\temp\queryoutput.tsv** 。
 
 以下是要檢查之 **sample\_hive\_trip\_count\_by\_medallion.hql** 檔案的內容。
 
@@ -491,7 +491,7 @@ hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.
 
 探索資料集時，通常會想要檢查值群組的分佈。 本節提供如何針對 cab 和驅動程式進行這項分析的範例。
 
-**sample\_hive\_trip\_count\_by\_medallion\_license.hql** 檔案會將費用資料集分組成 **medallion** 和 **hack_license**，並傳回每個組合的計數。 以下是其內容：
+**sample\_hive\_trip\_count\_by\_medallion\_license.hql** 檔案會將費用資料集分組成 **medallion** 和 **hack_license** ，並傳回每個組合的計數。 以下是其內容：
 
 ```hiveql
 SELECT medallion, hack_license, COUNT(*) as trip_count
@@ -510,7 +510,7 @@ ORDER BY trip_count desc;
 hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
 ```
 
-查詢結果會寫入本機檔案（ **C:\temp\queryoutput.tsv**）。
+查詢結果會寫入本機檔案（ **C:\temp\queryoutput.tsv** ）。
 
 ### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>探索：藉由檢查無效的經度或緯度記錄來評估資料品質
 > [!NOTE]
@@ -520,7 +520,7 @@ hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\quer
 
 常見的探索資料分析目標是去掉無效或不正確的記錄。 本節的範例會判斷經度或緯度欄位是否包含遠離 NYC 區域的值。 由於這類記錄可能具有錯誤的經度-緯度值，因此我們想要從用來建立模型的任何資料中排除這些錯誤值。
 
-以下是要檢查之 sample\_hive\_quality\_assessment.hql**** 檔案的內容。
+以下是要檢查之 sample\_hive\_quality\_assessment.hql 檔案的內容。
 
 ```hiveql
     SELECT COUNT(*) FROM nyctaxidb.trip
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-查詢結果會寫入 Hadoop 叢集的預設容器下的 9 個 Azure Blob (**queryoutputdir/000000\_0** 至 **queryoutputdir/000008\_0**)。
+查詢結果會寫入 Hadoop 叢集的預設容器下的 9 個 Azure Blob ( **queryoutputdir/000000\_0** 至 **queryoutputdir/000008\_0** )。
 
 為了查看個別 Blob 的大小，我們從 Hive 目錄提示字元執行下列命令：
 
@@ -647,7 +647,7 @@ hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 hdfs dfs -ls wasb:///queryoutputdir
 ```
 
-為了查看指定檔案的內容 (假設是 **000000\_0**)，請使用 Hadoop 的 `copyToLocal` 命令。
+為了查看指定檔案的內容 (假設是 **000000\_0** )，請使用 Hadoop 的 `copyToLocal` 命令。
 
 ```hiveql
 hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
@@ -669,7 +669,7 @@ hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 在探索資料分析階段之後，我們現在已準備好縮小取樣資料，以便在 Machine Learning 中建置模型。 在本節中，我們會示範如何使用 Hive 查詢縮小取樣資料。 Machine Learning 再從[匯入資料][import-data]模組存取它。
 
 ### <a name="down-sampling-the-data"></a>縮小取樣資料
-這個程序包含兩個步驟。 首先，我們會在所有記錄中出現的三個索引鍵上聯結 **nyctaxidb** 和 **nyctaxidb 費用** 資料表： **medallion**、 **駭客 \_ 授權**和 **收取 \_ 日期時間**。 接著產生二元分類標籤 **tipped** 和多元分類標籤 **tip\_class**。
+這個程序包含兩個步驟。 首先，我們會在所有記錄中出現的三個索引鍵上聯結 **nyctaxidb** 和 **nyctaxidb 費用** 資料表： **medallion** 、 **駭客 \_ 授權** 和 **收取 \_ 日期時間** 。 接著產生二元分類標籤 **tipped** 和多元分類標籤 **tip\_class** 。
 
 為了能夠直接從 Machine Learning 中的[匯入資料][import-data]模組使用縮小取樣的資料，應將上述查詢的結果儲存至內部 Hive 資料表。 接下來我們將建立內部 Hive 資料表，並以加入和縮小取樣的資料來填入其內容。
 
@@ -813,24 +813,24 @@ where t.sample_key<=0.01
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-我們現在有內部資料表 **nyctaxidb.nyctaxi_downsampled_dataset**，使用 Machine Learning 中的[匯入資料][import-data]模組即可存取此資料表。 此外，我們可使用這個資料集來建置 Machine Learning 模型。  
+我們現在有內部資料表 **nyctaxidb.nyctaxi_downsampled_dataset** ，使用 Machine Learning 中的 [匯入資料][import-data]模組即可存取此資料表。 此外，我們可使用這個資料集來建置 Machine Learning 模型。  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>使用 Machine Learning 中的「匯入資料」模組來存取縮小取樣的資料
 若要在 Machine Learning 的[匯入資料][import-data]模組發出 Hive 查詢，您需要存取 Machine Learning 工作區。 您也需要存取叢集和其相關聯儲存體帳戶的認證。
 
 以下是[匯入資料][import-data]模組及輸入參數的一些詳細資料：
 
-**HCatalog 伺服器 URI**：如果叢集名稱是 **abc123**，請使用： HTTPs： \/ /abc123.azurehdinsight.net。
+**HCatalog 伺服器 URI** ：如果叢集名稱是 **abc123** ，請使用： HTTPs： \/ /abc123.azurehdinsight.net。
 
-**Hadoop 使用者帳戶名稱**：為叢集選擇的使用者名稱 (不是遠端存取使用者名稱) 。
+**Hadoop 使用者帳戶名稱** ：為叢集選擇的使用者名稱 (不是遠端存取使用者名稱) 。
 
-**Hadoop 使用者帳戶密碼**：為叢集選擇的密碼 (不是遠端存取密碼) 。
+**Hadoop 使用者帳戶密碼** ：為叢集選擇的密碼 (不是遠端存取密碼) 。
 
-**輸出資料的位置**：選擇為 Azure。
+**輸出資料的位置** ：選擇為 Azure。
 
-**Azure 儲存體帳戶名稱**：與叢集相關聯的預設儲存體帳戶名稱。
+**Azure 儲存體帳戶名稱** ：與叢集相關聯的預設儲存體帳戶名稱。
 
-**Azure 容器名稱**：叢集的預設容器名稱，且通常與叢集名稱相同。 針對名為 **abc123**的叢集，此名稱為 abc123。
+**Azure 容器名稱** ：叢集的預設容器名稱，且通常與叢集名稱相同。 針對名為 **abc123** 的叢集，此名稱為 abc123。
 
 > [!IMPORTANT]
 > 任何我們想要使用 Machine Learning 中的[匯入資料][import-data]模組來查詢的資料表，都必須是內部資料表。
@@ -851,18 +851,18 @@ hdfs dfs -ls wasb:///D.db/T
 
 ![匯入資料模組的 Hive 查詢螢幕擷取畫面](./media/hive-walkthrough/1eTYf52.png)
 
-因為我們的低取樣資料位於預設容器中，所以 Machine Learning 所產生的 Hive 查詢很簡單。 它就只是 **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data**。
+因為我們的低取樣資料位於預設容器中，所以 Machine Learning 所產生的 Hive 查詢很簡單。 它就只是 **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data** 。
 
 資料集現在可做為建置 Machine Learning 模型的起點。
 
 ### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>在 Machine Learning 中建置模型
 您現在可在 [Machine Learning](https://studio.azureml.net) 中繼續建置和部署模型。 資料已就緒，可用來解決稍早指出的預測問題：
 
-- **二元分類**：用來預測是否已針對行程支付秘訣。
+- **二元分類** ：用來預測是否已針對行程支付秘訣。
 
   **已使用學習者：** 二元羅吉斯迴歸
 
-  a. 對於這個問題，目標 (或類別) 標籤是 **tipped**。 縮小取樣的原始資料集有幾個資料行會顯示這個分類實驗的目標流失。 尤其是 **秘訣 \_ 類別**、 **秘訣 \_ 數量**和 **總 \_ 金額** 會顯示在測試期間無法使用的目標標籤相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組，從考量範圍中移除這些資料行。
+  a. 對於這個問題，目標 (或類別) 標籤是 **tipped** 。 縮小取樣的原始資料集有幾個資料行會顯示這個分類實驗的目標流失。 尤其是 **秘訣 \_ 類別** 、 **秘訣 \_ 數量** 和 **總 \_ 金額** 會顯示在測試期間無法使用的目標標籤相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組，從考量範圍中移除這些資料行。
 
   下圖顯示我們的實驗，目的是預測是否會支付指定車程的小費：
 
@@ -878,11 +878,11 @@ hdfs dfs -ls wasb:///D.db/T
 
   ![AUC 值圖](./media/hive-walkthrough/8JDT0F8.png)
 
-- **多元分類**：使用先前定義的類別，預測針對該趟車程支付的小費金額範圍。
+- **多元分類** ：使用先前定義的類別，預測針對該趟車程支付的小費金額範圍。
 
   **已使用學習者：** 多元羅吉斯迴歸
 
-  a. 針對這個問題，我們的目標 (或類別) 標籤是 **tip \_ 類別**，它可以採用五個值的其中一個 (0、1、2、3、4) 。 如二元分類案例所示，我們有幾個資料行會顯示這個實驗的目標。 特別是 **tipped**、**tip\_amount** 和 **total\_amount**，可揭示測試時無法取得的目標標籤相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組來移除這些資料行。
+  a. 針對這個問題，我們的目標 (或類別) 標籤是 **tip \_ 類別** ，它可以採用五個值的其中一個 (0、1、2、3、4) 。 如二元分類案例所示，我們有幾個資料行會顯示這個實驗的目標。 特別是 **tipped** 、 **tip\_amount** 和 **total\_amount** ，可揭示測試時無法取得的目標標籤相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組來移除這些資料行。
 
   下圖顯示預測小費可能落在哪個容器的實驗。 容器為：Class 0: tip = $0、Class 1: tip > $0 and tip <= $5、Class 2: tip > $5 and tip <= $10、Class 3: tip > $10 and tip <= $20 及 Class 4: tip > $20。
 
@@ -898,11 +898,11 @@ hdfs dfs -ls wasb:///D.db/T
 
   雖然常見類別上的類別精確度是不錯的，但模型不會在罕見類別上執行「學習」的良好作業。
 
-- **回歸**工作：預測針對行程付費的秘訣量。
+- **回歸** 工作：預測針對行程付費的秘訣量。
 
   **已使用學習者：** 推進式決策樹
 
-  a. 對於這個問題，目標 (或類別) 標籤是 **tip\_amount**。 在本例中，目標流失為：**tipped**, **tip\_class** 及 **total\_amount**。 這所有變數都會揭示測試時通常無法取得的小費金額相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組來移除這些資料行。
+  a. 對於這個問題，目標 (或類別) 標籤是 **tip\_amount** 。 在本例中，目標流失為： **tipped** , **tip\_class** 及 **total\_amount** 。 這所有變數都會揭示測試時通常無法取得的小費金額相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組來移除這些資料行。
 
   下圖顯示預測指定小費金額的實驗：
 
@@ -935,5 +935,5 @@ hdfs dfs -ls wasb:///D.db/T
 [15]: ./media/hive-walkthrough/amlreader.png
 
 <!-- Module References -->
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
