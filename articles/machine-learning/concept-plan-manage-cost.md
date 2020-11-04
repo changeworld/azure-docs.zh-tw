@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233743"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322990"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -33,7 +33,7 @@ ms.locfileid: "93233743"
 * 使用低優先順序的虛擬機器 (VM) 
 * 使用 Azure 保留的 VM 實例
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 
 
@@ -53,11 +53,11 @@ ms.locfileid: "93233743"
 
 ## <a name="get-cost-alerts"></a>取得成本警示
 
-建立 [預算](../cost-management/tutorial-acm-create-budgets.md) 來管理成本並建立 [警示](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) ，以自動通知專案關係人有關消費異常和超支風險。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 不過，預算和警示的功能可能有限，無法管理個別的 Azure 服務成本，因為它們是設計來追蹤較高層級的成本。
+建立 [預算](../cost-management-billing/costs/tutorial-acm-create-budgets.md) 來管理成本並建立 [警示](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md) ，以自動通知專案關係人有關消費異常和超支風險。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 不過，預算和警示的功能可能有限，無法管理個別的 Azure 服務成本，因為它們是設計來追蹤較高層級的成本。
 
 ## <a name="monitor-costs"></a>監視成本
 
-當您搭配 Azure Machine Learning 使用資源時，會產生成本。 Azure 資源使用量單位成本會隨著時間間隔而有所不同， (秒、分鐘、小時和日) 或依要求單位使用量而有所不同。 一旦 Azure Machine Learning 開始使用，就會產生成本。 在 Azure 入口網站的 [ [成本分析](../cost-management/quick-acm-cost-analysis.md) ] 窗格中，查看這些成本。
+當您搭配 Azure Machine Learning 使用資源時，會產生成本。 Azure 資源使用量單位成本會隨著時間間隔而有所不同， (秒、分鐘、小時和日) 或依要求單位使用量而有所不同。 一旦 Azure Machine Learning 開始使用，就會產生成本。 在 Azure 入口網站的 [ [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md) ] 窗格中，查看這些成本。
 
 您可以在圖表和資料表中查看不同時間間隔的成本。 您也可以根據預算和預測成本來查看成本。 隨著時間切換至更長的視圖有助於找出花費趨勢，並查看可能發生超支的位置。 如果您已建立預算，請查看其超出的位置。  
 
@@ -86,7 +86,7 @@ AmlCompute 叢集是設計來根據您的工作負載進行動態調整。 叢�
 + 如果您執行較少的反復實驗，請縮短這段時間來節省成本。
 + 如果您執行高度反復的開發/測試測試，您可能需要增加時間，如此您就不會在每次定型腳本或環境變更之後，支付持續的相應增加和減少。
 
-您可以使用 [AMLCOMPUTE SDK 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)搭配 [REST api](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)，針對 Azure 入口網站中變更的工作負載需求設定 AmlCompute 叢集。
+您可以使用 [AMLCOMPUTE SDK 類別](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) [AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)搭配 [REST api](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)，針對 Azure 入口網站中變更的工作負載需求設定 AmlCompute 叢集。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

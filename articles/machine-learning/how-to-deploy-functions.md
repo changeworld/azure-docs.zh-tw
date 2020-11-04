@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: e93db23b09e933b58d6338646e7fff6fa30bc68e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5e5ab4e3c9332d0daa1acf32edeeba2423c97ac3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736560"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324597"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署至 Azure Functions (preview) 
 
@@ -26,12 +26,12 @@ ms.locfileid: "92736560"
 > [!IMPORTANT]
 > 雖然 Azure Machine Learning 和 Azure Functions 都已正式推出，但從適用于函式的 Machine Learning 服務封裝模型的功能目前為預覽狀態。
 
-使用 Azure Machine Learning，您就可以從已定型的機器學習模型建立 Docker 映射。 Azure Machine Learning 現在有預覽功能可將這些機器學習模型建立至函式應用程式，而這些應用程式可以 [部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)。
+使用 Azure Machine Learning，您就可以從已定型的機器學習模型建立 Docker 映射。 Azure Machine Learning 現在有預覽功能可將這些機器學習模型建立至函式應用程式，而這些應用程式可以 [部署到 Azure Functions](../azure-functions/functions-deployment-technologies.md#docker-container)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](how-to-manage-workspace.md) 文章。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * 在您的工作區中註冊的已定型機器學習模型。 如果您沒有模型，請使用 [影像分類教學課程：定型模型](tutorial-train-models-with-aml.md) 來定型和註冊模型。
 
     > [!IMPORTANT]
@@ -54,16 +54,16 @@ ms.locfileid: "92736560"
     >
     > 如果要求資料的格式不能供您的模型使用，腳本就可以將它轉換成可接受的格式。 它也可能會在回應傳回給用戶端之前轉換回應。
     >
-    > 依預設，封裝函式時，會將輸入視為文字。 如果您有興趣針對 Blob 觸發程式) 使用輸入 (的原始位元組，您應該使用 [AMLRequest 來接受原始資料](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)。
+    > 依預設，封裝函式時，會將輸入視為文字。 如果您有興趣針對 Blob 觸發程式) 使用輸入 (的原始位元組，您應該使用 [AMLRequest 來接受原始資料](./how-to-deploy-advanced-entry-script.md#binary-data)。
 
-如需輸入腳本的詳細資訊，請參閱 [定義評分程式碼](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script)
+如需輸入腳本的詳細資訊，請參閱 [定義評分程式碼](./how-to-deploy-and-where.md#define-an-entry-script)
 
 * 執行輸入腳本或模型所 **需的相依性，例如** helper 腳本或 Python/Conda 套件
 
 這些實體會封裝成 __推斷__ 設定。 推斷設定會參考輸入指令碼和其他相依性。
 
 > [!IMPORTANT]
-> 建立用於 Azure Functions 的推斷設定時，您必須使用 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
+> 建立用於 Azure Functions 的推斷設定時，您必須使用 [環境](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>建立映像
 
-若要建立部署至 Azure Functions 的 Docker 映射，請使用 [contrib](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) ，或您想要使用之觸發程式的特定套件函式。 下列程式碼片段示範如何使用模型和推斷設定中的 blob 觸發程式來建立新的封裝：
+若要建立部署至 Azure Functions 的 Docker 映射，請使用 [contrib](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) ，或您想要使用之觸發程式的特定套件函式。 下列程式碼片段示範如何使用模型和推斷設定中的 blob 觸發程式來建立新的封裝：
 
 > [!NOTE]
 > 程式碼片段假設 `model` 包含已註冊的模型，且其中 `inference_config` 包含推斷環境的設定。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
@@ -113,7 +113,7 @@ print(blob.location)
 若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。
 
 > [!NOTE]
-> 函數的封裝目前支援 HTTP 觸發程式、Blob 觸發程式和服務匯流排觸發程式。 如需觸發程式的詳細資訊，請參閱 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)系結。
+> 函數的封裝目前支援 HTTP 觸發程式、Blob 觸發程式和服務匯流排觸發程式。 如需觸發程式的詳細資訊，請參閱 [Azure Functions](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)系結。
 
 > [!IMPORTANT]
 > 儲存位置資訊，因為它會在部署映射時使用。
@@ -293,12 +293,12 @@ print(blob.location)
 
     命令完成後，開啟檔案。 它包含模型傳回的資料。
 
-如需使用 blob 觸發程式的詳細資訊，請參閱 [建立 Azure blob 儲存體所觸發](/azure/azure-functions/functions-create-storage-blob-triggered-function) 的函式一文。
+如需使用 blob 觸發程式的詳細資訊，請參閱 [建立 Azure blob 儲存體所觸發](../azure-functions/functions-create-storage-blob-triggered-function.md) 的函式一文。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何在 [函數](/azure/azure-functions/functions-create-function-linux-custom-image) 檔中設定函數應用程式。
-* 深入瞭解 Blob 儲存體如何觸發 [Azure blob 儲存體](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)系結。
+* 瞭解如何在 [函數](../azure-functions/functions-create-function-linux-custom-image.md) 檔中設定函數應用程式。
+* 深入瞭解 Blob 儲存體如何觸發 [Azure blob 儲存體](../azure-functions/functions-bindings-storage-blob.md)系結。
 * [將您的模型部署至 Azure App Service](how-to-deploy-app-service.md)。
 * [取用部署為 Web 服務的 ML 模型](how-to-consume-web-service.md)
-* [API 參考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)
+* [API 參考](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py)

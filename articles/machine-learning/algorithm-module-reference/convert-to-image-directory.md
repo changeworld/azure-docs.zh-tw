@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/09/2020
-ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940343"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324898"
 ---
 # <a name="convert-to-image-directory"></a>轉換至映像目錄
 
@@ -49,7 +49,7 @@ ms.locfileid: "91940343"
 
     針對計分，影像資料集資料夾只需要包含未分類的影像。
 
-1. 在您的工作區中[註冊映射資料集做為檔案資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)，因為 [轉換成映射目錄] 模組的輸入必須是檔案**資料集**。
+1. 在您的工作區中 [註冊映射資料集做為檔案資料集](../how-to-create-register-datasets.md)，因為 [轉換成映射目錄] 模組的輸入必須是檔案 **資料集** 。
 
 1. 將已註冊的影像資料集加入至畫布。 您可以在畫布左側的模組清單中，于 [ **資料集** ] 類別目錄中找到已註冊的資料集。 目前的設計工具不支援將影像資料集視覺化。
 
@@ -82,4 +82,4 @@ ms.locfileid: "91940343"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

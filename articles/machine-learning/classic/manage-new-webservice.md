@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37f10cc8eb3d606d99eb5b3f821a486e9e4ea2fe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427566"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322339"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure Machine Learning Studio (傳統) Web 服務入口網站管理 web 服務
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 您可以使用 Microsoft Azure Machine Learning Web 服務入口網站，管理 Machine Learning 新式和傳統 Web 服務。 因為傳統 Web 服務和新式 Web 服務是根據不同的基礎技術，所以各有稍微不同的管理功能。
@@ -32,7 +32,7 @@ ms.locfileid: "92427566"
 * 新增和刪除端點 (僅限傳統)
 
 >[!NOTE]
->您也可以在 [ **web 服務**] 索引標籤上[Machine Learning Studio (傳統) ](https://studio.azureml.net)中管理傳統 web 服務。
+>您也可以在 [ **web 服務** ] 索引標籤上 [Machine Learning Studio (傳統)](https://studio.azureml.net)中管理傳統 web 服務。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>管理以資源管理員為基礎的新 Web 服務的權限
 
@@ -51,7 +51,7 @@ ms.locfileid: "92427566"
 管理新式 Web 服務：
 
 1. 使用您的 Microsoft Azure 帳戶登入 [Microsoft Azure Machine Learning Web 服務入口網站](https://services.azureml.net/quickstart) - 使用與 Azure 訂用帳戶相關聯的帳戶。
-2. 在功能表上，按一下 [Web 服務] ****。
+2. 在功能表上，按一下 [Web 服務] 。
 
 這會針對您的訂用帳戶顯示一份已部署的 Web 服務清單。 
 
@@ -77,37 +77,37 @@ ms.locfileid: "92427566"
 * **平均要求-回應計算時間** 顯示執行收到的要求所需的平均時間。
 * **批次要求數** 顯示服務在選取的一段時間內收到的批次要求總數，以及失敗的數目。
 * **平均作業延遲** 顯示執行收到的要求所需的平均時間。
-* **錯誤數**顯示呼叫 Web 服務時所發生的錯誤彙總數目。
+* **錯誤數** 顯示呼叫 Web 服務時所發生的錯誤彙總數目。
 * **服務成本** 顯示與服務相關聯的計費方案費用。
 
 ### <a name="configuring-the-web-service"></a>設定 Web 服務
-按一下 [設定] **** 功能表選項。
+按一下 [設定]  功能表選項。
 
 您可以更新下列屬性：
 
-* [描述]**** 可讓您輸入 Web 服務的描述。
+* [描述] 可讓您輸入 Web 服務的描述。
 * **標題** 可讓您輸入 Web 服務的標題
 * **金鑰** 可讓您交換您的主要和次要 API 金鑰。
-* **儲存體帳戶金鑰**可讓您為與 Web 服務變更相關聯的儲存體帳戶更新金鑰。 
-* [啟用範例資料]**** 可讓您提供範例資料，用來測試要求-回應服務。 如果您在 Machine Learning Studio (傳統) 中建立 web 服務，範例資料會取自您用來定型模型的資料。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
+* **儲存體帳戶金鑰** 可讓您為與 Web 服務變更相關聯的儲存體帳戶更新金鑰。 
+* [啟用範例資料] 可讓您提供範例資料，用來測試要求-回應服務。 如果您在 Machine Learning Studio (傳統) 中建立 web 服務，範例資料會取自您用來定型模型的資料。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
 
 ### <a name="managing-billing-plans"></a>管理計費方案
-從 Web 服務 [快速入門] 頁面按一下 [方案] **** 功能表選項。 您也可以按一下與特定 Web 服務相關聯的方案來管理該方案。
+從 Web 服務 [快速入門] 頁面按一下 [方案]  功能表選項。 您也可以按一下與特定 Web 服務相關聯的方案來管理該方案。
 
 * **新增** 可讓您建立新的方案。
 * **新增/移除方案執行個體** 可讓您「相應放大」現有的方案以增加容量。
 * **升級/降級** 可讓您「相應增加」現有的方案以增加容量。
 * **刪除** 可讓您刪除方案。
 
-按一下方案可檢視其儀表板。 儀表板可提供所選一段時間的快照或方案使用量。 若要選取時間期間來檢視，請按一下儀表板右上角的 [期間]**** 下拉式清單。 
+按一下方案可檢視其儀表板。 儀表板可提供所選一段時間的快照或方案使用量。 若要選取時間期間來檢視，請按一下儀表板右上角的 [期間] 下拉式清單。 
 
 方案儀表板會提供下列資訊：
 
 * **方案描述** 顯示成本相關資訊和與方案相關聯的容量。
 * **方案使用量** 顯示交易數目和已依方案計費的計算時數。
 * **Web 服務** 會顯示使用此方案的 web 服務數目。
-* **依呼叫數的前幾名 Web 服務**顯示依方案計費進行呼叫的前四個 Web 服務。
-* **依計算時數的前幾名 Web 服務**顯示依方案計費使用計算資源的前四個 Web 服務。
+* **依呼叫數的前幾名 Web 服務** 顯示依方案計費進行呼叫的前四個 Web 服務。
+* **依計算時數的前幾名 Web 服務** 顯示依方案計費使用計算資源的前四個 Web 服務。
 
 ## <a name="manage-classic-web-services"></a>管理傳統 Web 服務
 > [!NOTE]
@@ -118,9 +118,9 @@ ms.locfileid: "92427566"
 管理傳統 Web 服務：
 
 1. 使用您的 Microsoft Azure 帳戶登入 [Microsoft Azure Machine Learning Web 服務入口網站](https://services.azureml.net/quickstart) - 使用與 Azure 訂用帳戶相關聯的帳戶。
-2. 在功能表上，按一下 [傳統 Web 服務]****。
+2. 在功能表上，按一下 [傳統 Web 服務]。
 
-若要管理傳統 Web 服務，請按一下 [傳統 Web 服務]****。 您可以從 [傳統 Web 服務] 頁面上︰
+若要管理傳統 Web 服務，請按一下 [傳統 Web 服務]。 您可以從 [傳統 Web 服務] 頁面上︰
 
 * 按一下 Web 服務以檢視相關聯的端點。
 * 刪除 Web 服務。
@@ -144,16 +144,14 @@ ms.locfileid: "92427566"
 * **平均要求-回應計算時間** 顯示執行收到的要求所需的平均時間。
 * **批次要求數** 顯示服務在選取的一段時間內收到的批次要求總數，以及失敗的數目。
 * **平均作業延遲** 顯示執行收到的要求所需的平均時間。
-* **錯誤數**顯示呼叫 Web 服務時所發生的錯誤彙總數目。
+* **錯誤數** 顯示呼叫 Web 服務時所發生的錯誤彙總數目。
 * **服務成本** 顯示與服務相關聯的計費方案費用。
 
 ### <a name="configuring-the-web-service"></a>設定 Web 服務
-按一下 [設定] **** 功能表選項。
+按一下 [設定]  功能表選項。
 
 您可以更新下列屬性：
 
-* [描述]**** 可讓您輸入 Web 服務的描述。 [描述] 必要欄位。
-* [記錄]**** 可讓您啟用或停用端點上的錯誤記錄。 如需記錄的詳細資訊，請參閱啟用 [Machine Learning web 服務的記錄](web-services-logging.md)。
-* [啟用範例資料]**** 可讓您提供範例資料，用來測試要求-回應服務。 如果您在 Machine Learning Studio (傳統) 中建立 web 服務，範例資料會取自您用來定型模型的資料。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
-
-
+* [描述] 可讓您輸入 Web 服務的描述。 [描述] 必要欄位。
+* [記錄] 可讓您啟用或停用端點上的錯誤記錄。 如需記錄的詳細資訊，請參閱啟用 [Machine Learning web 服務的記錄](web-services-logging.md)。
+* [啟用範例資料] 可讓您提供範例資料，用來測試要求-回應服務。 如果您在 Machine Learning Studio (傳統) 中建立 web 服務，範例資料會取自您用來定型模型的資料。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。

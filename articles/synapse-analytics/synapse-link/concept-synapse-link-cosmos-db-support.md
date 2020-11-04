@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127006"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322591"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽) 支援的功能
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 中有兩種類型的容器：
 | **寫入**   | Azure Synapse 執行時間可以用來將資料寫入 Azure Cosmos DB 容器 | 是 | 否 |
 
 * 如果您將資料從 Spark 寫入 Azure Cosmos DB 容器中，此程式會透過 Azure Cosmos DB 的交易式存放區進行。 它會藉由取用要求單位來影響 Azure Cosmos DB 的交易效能。
-* 目前不支援透過外部資料表的 SQL 集區整合。
+* 目前不支援透過外部資料表進行專用的 SQL 集區整合。
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark 支援的程式碼產生動作
 
@@ -64,4 +64,4 @@ Azure Cosmos DB 中有兩種類型的容器：
 ## <a name="next-steps"></a>後續步驟
 
 * 了解如何[連線至適用於 Azure Cosmos DB 的 Synapse Link](../quickstart-connect-synapse-link-cosmos-db.md)
-* [了解如何使用 Spark 查詢分析存放區](how-to-query-analytical-store-spark.md)
+* [瞭解如何使用 Spark 查詢 Cosmos DB 分析存放區](how-to-query-analytical-store-spark.md)

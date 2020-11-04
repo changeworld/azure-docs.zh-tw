@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 8add203fabf867e22dbfe98b2bc9c632e62018b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 90d059aaa16e24df1e71d4d439cb9aa23b786c77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100519"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323214"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
+# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (Preview) ？
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ Azure Cosmos DB 分析存放區可解決傳統 ETL 管線所發生的複雜性�
 
 下圖顯示 Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區：
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="範例操作表格" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析工作負載的低耦合效能
 
@@ -150,7 +150,7 @@ salary: 1000000
 | Double |  "float64" |    24.99|
 | Array | ". array" |    ["a"，"b"]|
 |Binary | "binary" |0|
-|Boolean    | "bool"   |是|
+|Boolean    | "bool"   |True|
 |Int32  | "int32"  |123|
 |Int64  | "int64"  |255486129307|
 |Null   | ". null"   | null|

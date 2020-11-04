@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908091"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323776"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
 
@@ -187,9 +187,9 @@ ms.locfileid: "90908091"
 
 Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的「經常性存取」或「冷」儲存體類型無法用於機器學習。 傳統儲存體帳戶和建立為「一般用途」的儲存體帳戶都可正常運作。
 
-如果指定了 Blob 的完整路徑，請確認路徑指定為 **container/blobname**，且容器和 Blob 都存在於帳戶中。  
+如果指定了 Blob 的完整路徑，請確認路徑指定為 **container/blobname** ，且容器和 Blob 都存在於帳戶中。  
 
- 路徑不應包含前置斜線。 例如， **/container/blob** 並不正確，而應輸入為 **container/blob**。  
+ 路徑不應包含前置斜線。 例如， **/container/blob** 並不正確，而應輸入為 **container/blob** 。  
 
 
 |例外狀況訊息|
@@ -203,7 +203,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  如果訊息中的資料行索引在兩個輸入資料集中有不同的資料行名稱，您就會在 Azure Machine Learning 中看到此錯誤。  
 
-**解決方案：** 使用[編輯中繼資料](edit-metadata.md)或修改原始資料集，讓指定的資料行索引具有相同的資料行名稱。  
+**解決方案：** 使用 [編輯中繼資料](edit-metadata.md)或修改原始資料集，讓指定的資料行索引具有相同的資料行名稱。  
 
 |例外狀況訊息|
 |------------------------|
@@ -318,7 +318,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  如果傳入兩個或更多個資料集的資料行類型彼此不相容，您就會在 Azure Machine Learning 中看到此錯誤。  
 
-**解決方案：** 使用[編輯中繼資料](edit-metadata.md)或修改原始輸入資料集，<!--, or use [Convert to Dataset](convert-to-dataset.md)--> 以確保資料行的類型相容。  
+**解決方案：** 使用 [編輯中繼資料](edit-metadata.md)或修改原始輸入資料集，<!--, or use [Convert to Dataset](convert-to-dataset.md)--> 以確保資料行的類型相容。  
 
 |例外狀況訊息|
 |------------------------|
@@ -491,7 +491,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
 **解決方案：**
 
-+ 開啟產生錯誤的模組，並確認標籤資料行是否存在。 資料行的名稱或資料類型並不重要，只要資料行包含您嘗試預測的單一結果 (或相依變數) 即可。 如果您不確定哪一個資料行具有標籤，請尋找*類別*或*目標*之類的一般名稱。 
++ 開啟產生錯誤的模組，並確認標籤資料行是否存在。 資料行的名稱或資料類型並不重要，只要資料行包含您嘗試預測的單一結果 (或相依變數) 即可。 如果您不確定哪一個資料行具有標籤，請尋找 *類別* 或 *目標* 之類的一般名稱。 
 +  如果資料集未包含標籤資料行，表示可能已在上游明確或意外刪除了標籤資料行。 此外也可能是因為資料集不是上游評分模組的輸出。
 + 若要明確地將資料行標示為標籤資料行，請新增[編輯中繼資料](edit-metadata.md)模組，並連接資料集。 請選取標籤資料行，然後從 [欄位] 下拉式清單中選取 [標籤]。 
 + 如果選擇了錯誤的資料行作為標籤，您可以從 [欄位] 中選取 [清除標籤]，以修正資料行上的中繼資料。 
@@ -521,7 +521,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  如果多個資料行具有相同的名稱，就會在 Azure Machine Learning 中發生此錯誤。 您會看到此錯誤的狀況之一，是系統在資料集沒有標頭資料列的情況下自動指派了資料行名稱：Col0、Col1 等等。  
 
-**解決方案：** 如果多個資料行具有相同的名稱，請在輸入資料集與模組之間插入[編輯中繼資料](edit-metadata.md)模組。 請使用[編輯中繼資料](edit-metadata.md)中的資料行選取器來選取要重新命名的資料行，然後在 [新的資料行名稱] 文字方塊中輸入新名稱。  
+**解決方案：** 如果多個資料行具有相同的名稱，請在輸入資料集與模組之間插入 [編輯中繼資料](edit-metadata.md)模組。 請使用[編輯中繼資料](edit-metadata.md)中的資料行選取器來選取要重新命名的資料行，然後在 [新的資料行名稱] 文字方塊中輸入新名稱。  
 
 |例外狀況訊息|
 |------------------------|
@@ -553,7 +553,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  當資料行名稱重複 (即不是唯一的) 時，就會在 Azure Machine Learning 中發生此錯誤。  
 
-**解決方案：** 若有任何資料行具有相同的名稱，請在輸入資料集與引發錯誤的模組之間新增[編輯中繼資料](edit-metadata.md)的執行個體。 請使用[編輯中繼資料](edit-metadata.md)中的資料行選取器來選取要重新命名的資料行，然後在 [新的資料行名稱] 文字方塊中輸入新的資料行名稱。 如果您要重新命名多個資料行，請確定您在 [新的資料行名稱] 中輸入的值是唯一的。  
+**解決方案：** 若有任何資料行具有相同的名稱，請在輸入資料集與引發錯誤的模組之間新增 [編輯中繼資料](edit-metadata.md)的執行個體。 請使用[編輯中繼資料](edit-metadata.md)中的資料行選取器來選取要重新命名的資料行，然後在 [新的資料行名稱] 文字方塊中輸入新的資料行名稱。 如果您要重新命名多個資料行，請確定您在 [新的資料行名稱] 中輸入的值是唯一的。  
 
 |例外狀況訊息|
 |------------------------|
@@ -604,7 +604,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  如果選取的資料行數目少於所需，就會在 Azure Machine Learning 中發生此錯誤。  如果未選取所需的最小資料行數目，您就會看到此錯誤。  
 
-**解決方案：** 使用**資料行選取器**，在資料行選取中新增更多資料行。  
+**解決方案：** 使用 **資料行選取器** ，在資料行選取中新增更多資料行。  
 
 |例外狀況訊息|
 |------------------------|
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **解決方案：** 此錯誤由許多狀況所造成，並沒有特定的補救方式。  
  下表包含此錯誤的一般訊息，其後則是條件的具體說明。 
 
- 如果沒有可用的詳細資訊，請參閱 [Microsoft 問答集頁面以傳送意見反應](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)，並提供有關於產生錯誤的模組和相關條件的資訊。
+ 如果沒有可用的詳細資訊，請參閱 [Microsoft 問答集頁面以傳送意見反應](/answers/topics/azure-machine-learning-studio-classic.html)，並提供有關於產生錯誤的模組和相關條件的資訊。
 
 |例外狀況訊息|
 |------------------------|
@@ -862,7 +862,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果用來存取 Azure 儲存體帳戶的金鑰不正確，就會在 Azure Machine Learning 中發生此錯誤。 例如，如果 Azure 儲存體金鑰在複製並貼上時已截斷，或使用了錯誤的金鑰，您就可能看到此錯誤。  
 
- 如需如何取得 Azure 儲存體帳戶金鑰的詳細資訊，請參閱[檢視、複製和重新產生儲存體存取金鑰](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)。  
+ 如需如何取得 Azure 儲存體帳戶金鑰的詳細資訊，請參閱[檢視、複製和重新產生儲存體存取金鑰](../../storage/common/storage-account-create.md)。  
 
 **解決方案：** 重新瀏覽模組，並確認帳戶的 Azure 儲存體金鑰是正確的；如有必須，請從 Azure 傳統入口網站重新複製金鑰。  
 
@@ -1027,7 +1027,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 -   SAS URI 未包含有效 Blob 的名稱。  
 
-**解決方案：** 重新瀏覽擲回例外狀況的模組。 請確認指定的 Blob 確實存在於儲存體帳戶的容器中，且您具有查看 Blob 的權限。 如果您具有使用編碼格式的 Excel 或 CSV，請確認輸入的格式為 **containername/filename**。 確認 SAS URI 包含有效 Blob 的名稱。  
+**解決方案：** 重新瀏覽擲回例外狀況的模組。 請確認指定的 Blob 確實存在於儲存體帳戶的容器中，且您具有查看 Blob 的權限。 如果您具有使用編碼格式的 Excel 或 CSV，請確認輸入的格式為 **containername/filename** 。 確認 SAS URI 包含有效 Blob 的名稱。  
 
 |例外狀況訊息|
 |------------------------|
@@ -1083,9 +1083,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 如需機器學習的 Hive 查詢適用的說明，請參閱下列文章：
 
-+ [建立 Hive 資料表，並從 Azure Blob 儲存體載入資料](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [使用 Hive 查詢來瀏覽資料表的資料](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [針對使用 Hive 查詢之 Hadoop 叢集中的資料建立特性](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [建立 Hive 資料表，並從 Azure Blob 儲存體載入資料](../team-data-science-process/move-hive-tables.md)
++ [使用 Hive 查詢來瀏覽資料表的資料](../team-data-science-process/explore-data-hive-tables.md)
++ [針對使用 Hive 查詢之 Hadoop 叢集中的資料建立特性](../team-data-science-process/create-features-hive.md)
 + [Hive for SQL 使用者功能提要 (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1106,8 +1106,8 @@ For general information about how the Matchbox recommendation algorithm works, a
  直接登入資料庫伺服器並執行查詢，藉以確認查詢可在 Azure ML 外部正常運作。  
 
  如果模組例外狀況回報了 SQL 產生的訊息，請根據回報的錯誤採取動作。 例如，錯誤訊息有時會對可能的錯誤提供特定指引：
-+ *沒有這類資料行或遺失的資料庫*，表示您可能輸入了不正確的資料行名稱。 如果您確定資料行名稱正確無誤，請嘗試使用方括弧或引號括住資料行識別碼。
-+ *SQL 邏輯錯誤附近 \<SQL keyword\> *，表示在指定的關鍵字之前可能會有語法錯誤
++ *沒有這類資料行或遺失的資料庫* ，表示您可能輸入了不正確的資料行名稱。 如果您確定資料行名稱正確無誤，請嘗試使用方括弧或引號括住資料行識別碼。
++ *SQL 邏輯錯誤附近 \<SQL keyword\>* ，表示在指定的關鍵字之前可能會有語法錯誤
 
   
 |例外狀況訊息|
@@ -1164,7 +1164,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 舊版的 Azure Machine Learning 已導入此事件的錯誤處理機制，可支援更多的量化方法自訂。 目前，所有的量化方法均以下拉式清單中的選取為主，因此，在技術上應該不會再發生此錯誤。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |例外狀況訊息|
 |------------------------|
@@ -1199,9 +1199,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 ## <a name="error-0079"></a>錯誤 0079  
  如果未正確指定 Azure 儲存體容器名稱，就會發生例外狀況。  
 
- 如果未正確指定 Azure 儲存體容器名稱，就會在 Azure Machine Learning 中發生此錯誤。 如果您在寫入 Azure Blob 儲存體時未使用**以容器開頭的 Blob 路徑**來指定容器和 Blob (檔案) 名稱，您就會看到此錯誤。  
+ 如果未正確指定 Azure 儲存體容器名稱，就會在 Azure Machine Learning 中發生此錯誤。 如果您在寫入 Azure Blob 儲存體時未使用 **以容器開頭的 Blob 路徑** 來指定容器和 Blob (檔案) 名稱，您就會看到此錯誤。  
 
-**解決方案：** 重新瀏覽[匯出資料](export-data.md)模組，並確認 Blob 的指定路徑包含容器和檔案名稱，格式為 **container/filename**。  
+**解決方案：** 重新瀏覽 [匯出資料](export-data.md)模組，並確認 Blob 的指定路徑包含容器和檔案名稱，格式為 **container/filename** 。  
 
 |例外狀況訊息|
 |------------------------|
@@ -1400,7 +1400,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 如果模組需要標籤資料行，但您的資料行選取中未包含此資料行，或標籤資料行遺漏太多值，就會發生此錯誤。
 
-如果先前的作業變更了資料集，使得可供下游作業使用的資料列不足，也可能會發生此錯誤。 例如，假設您在**資料分割和取樣**模組中使用運算式，以依據值來分割資料集。 如果找不到運算式的相符項目，資料分割所產生的其中一個資料集就會是空的。
+如果先前的作業變更了資料集，使得可供下游作業使用的資料列不足，也可能會發生此錯誤。 例如，假設您在 **資料分割和取樣** 模組中使用運算式，以依據值來分割資料集。 如果找不到運算式的相符項目，資料分割所產生的其中一個資料集就會是空的。
 
 解決方案： 
 
@@ -1516,11 +1516,10 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 提供此錯誤的用意，是為了擷取其他未處理的內部引擎錯誤。 因此，此錯誤的成因可能隨著產生錯誤的模組而有所不同。  
 
-若要取得更多協助，建議您將伴隨錯誤的詳細訊息張貼至 [Azure Machine Learning 論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，以及案例的描述，包括當做輸入使用的資料。 這樣的意見反應可協助我們設定錯誤的優先順序，並找出最重要的問題以進一步處理。  
+若要取得更多協助，建議您將伴隨錯誤的詳細訊息張貼至 [Azure Machine Learning 論壇](/answers/topics/azure-machine-learning.html)，以及案例的描述，包括當做輸入使用的資料。 這樣的意見反應可協助我們設定錯誤的優先順序，並找出最重要的問題以進一步處理。  
 
 |例外狀況訊息|
 |------------------------|
 |程式庫例外狀況。|
 |程式庫例外狀況：{exception}。|
 |未知的程式庫例外狀況：{exception}。 {customer_support_guidance}。|
-

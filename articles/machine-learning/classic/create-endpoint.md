@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 5f06374e67d1aad689662c77084fa593bb09c8ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1032a90a35e60643e2ce937ed457a1fe3493d4d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322891"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>建立部署 Azure Machine Learning Studio (傳統) web 服務的端點
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Web 服務的每個端點都是個別定址、節流以及管理。 每個端點
 > 如果您已在 Web 服務中新增額外的端點，就無法刪除預設端點。
 
 1. 在 Machine Learning Studio (傳統) 的左側導覽列上，按一下 [Web 服務]。
-2. 在 web 服務儀表板底部，按一下 [ **管理端點**]。 Azure Machine Learning Web 服務 入口網站會開啟 Web 服務的端點頁面。
+2. 在 web 服務儀表板底部，按一下 [ **管理端點** ]。 Azure Machine Learning Web 服務 入口網站會開啟 Web 服務的端點頁面。
 3. 按一下 **[新增]** 。
 4. 輸入新端點的名稱和描述。 端點名稱長度不可超過 24 個字元，而且必須由小寫字母或數字組成。 選取記錄層級，以及是否啟用範例資料。 如需記錄的詳細資訊，請參閱 [啟用 Machine Learning web 服務的記錄](web-services-logging.md)。
 

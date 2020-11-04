@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d34748a2b9f46bde187b4f003e210ffdaecd93e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675683"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324822"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -41,13 +41,13 @@ Azure Machine Learning 提供數種方式來定型您的模型，從使用 SDK �
 
 適用於 Python 的 Azure Machine Learning SDK 可讓您使用 Azure Machine Learning 來建置及執行機器學習工作流程。 您可以從互動式 Python 工作階段、Jupyter Notebook、Visual Studio Code 或其他 IDE 與服務互動。
 
-* [什麼是適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
-* [安裝/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [什麼是適用於 Python 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+* [安裝/更新 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
 * [設定 Azure Machine Learning 的開發環境](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>回合組態
 
-您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)來定義具有 Azure Machine Learning 的一般定型作業。 接著會使用腳本回合設定，以及您的定型腳本 () 在計算目標上定型模型。
+您可以使用 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)來定義具有 Azure Machine Learning 的一般定型作業。 接著會使用腳本回合設定，以及您的定型腳本 () 在計算目標上定型模型。
 
 您可以從本機電腦的回合組態開始，然後視需要切換至雲端式計算目標的回合組態。 變更計算目標時只會變更所使用的回合組態。 回合也會記錄定型作業的相關資訊，例如輸入、輸出和記錄。
 
@@ -90,8 +90,8 @@ Azure 訓練生命週期是由下列各項所組成：
 1. 建立或下載 dockerfile 至計算節點 
     1. 系統會計算下列雜湊： 
         - 基底映射 
-        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
-        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](./how-to-deploy-custom-docker-image.md)) 
+        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](./how-to-use-environments.md)) 
     1. 系統會使用此雜湊作為 (ACR Azure Container Registry 工作區查閱中的索引鍵) 
     1. 如果找不到，則會在全域 ACR 中尋找相符的
     1. 如果找不到，系統會建立新的映射， (將會快取並向工作區 ACR 註冊) 
@@ -101,7 +101,7 @@ Azure 訓練生命週期是由下列各項所組成：
 1. 將記錄、模型檔案和其他寫入的檔案儲存到 `./outputs` 與工作區相關聯的儲存體帳戶
 1. 縮小計算範圍，包括移除暫存儲存體 
 
-如果您選擇在本機電腦上定型 ( 「設定為本機執行」 ) ，則不需要使用 Docker。 如果您選擇 (請參閱 [設定 ML 管線](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) 以取得範例) 一節，您可以在本機使用 Docker。
+如果您選擇在本機電腦上定型 ( 「設定為本機執行」 ) ，則不需要使用 Docker。 如果您選擇 (請參閱 [設定 ML 管線](./how-to-debug-pipelines.md) 以取得範例) 一節，您可以在本機使用 Docker。
 
 ## <a name="r-sdk-preview"></a>R SDK (預覽) 
 

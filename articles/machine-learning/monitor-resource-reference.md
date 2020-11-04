@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739150"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323937"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>監視 Azure machine learning 資料參考
 
@@ -22,17 +22,17 @@ ms.locfileid: "92739150"
 
 ## <a name="metrics"></a>計量
 
-此區段會列出針對 Azure Machine Learning 收集的所有自動收集平臺計量。 這些計量的資源提供者是 [MachineLearningServices/工作區](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces)。
+此區段會列出針對 Azure Machine Learning 收集的所有自動收集平臺計量。 這些計量的資源提供者是 [MachineLearningServices/工作區](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces)。
 
 **型號**
 
 | 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
-| 模型部署失敗 | Count | 失敗的模型部署數目。 |
-| 已開始模型部署 | Count | 已啟動的模型部署數目。 |
-| 模型部署成功 | Count | 成功的模型部署數目。 |
-| 模型註冊失敗 | Count | 失敗的模型註冊數目。 |
-| 模型註冊成功 | Count | 成功的模型註冊數目。 |
+| 模型部署失敗 | 計數 | 失敗的模型部署數目。 |
+| 已開始模型部署 | 計數 | 已啟動的模型部署數目。 |
+| 模型部署成功 | 計數 | 成功的模型部署數目。 |
+| 模型註冊失敗 | 計數 | 失敗的模型註冊數目。 |
+| 模型註冊成功 | 計數 | 成功的模型註冊數目。 |
 
 **配額**
 
@@ -40,19 +40,19 @@ ms.locfileid: "92739150"
 
 | 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
-| 使用中核心 | Count | 使用中計算核心的數目。 |
-| 現用節點 | Count | 使用中節點的數目。 |
-| 閒置核心 | Count | 閒置計算核心的數目。 |
-| 閒置節點 | Count | 閒置計算節點的數目。 |
-| 離開核心 | Count | 離開核心的數目。 |
-| 離開節點 | Count | 離開節點的數目。 |
-| 搶先的核心 | Count | 搶先核心的數目。 |
-| 先佔節點 | Count | 搶先節點數目。 |
+| 使用中核心 | 計數 | 使用中計算核心的數目。 |
+| 現用節點 | 計數 | 使用中節點的數目。 |
+| 閒置核心 | 計數 | 閒置計算核心的數目。 |
+| 閒置節點 | 計數 | 閒置計算節點的數目。 |
+| 離開核心 | 計數 | 離開核心的數目。 |
+| 離開節點 | 計數 | 離開節點的數目。 |
+| 搶先的核心 | 計數 | 搶先核心的數目。 |
+| 先佔節點 | 計數 | 搶先節點數目。 |
 | 配額使用率百分比 | 百分比 | 使用的配額百分比。 |
-| 核心總數 | Count | 核心總數。 |
-| 節點總計 | Count | 節點總數。 |
-| 無法使用的核心 | Count | 無法使用的核心數目。 |
-| 無法使用的節點 | Count | 無法使用的節點數目。 |
+| 核心總數 | 計數 | 核心總數。 |
+| 節點總計 | 計數 | 節點總數。 |
+| 無法使用的核心 | 計數 | 無法使用的核心數目。 |
+| 無法使用的節點 | 計數 | 無法使用的節點數目。 |
 
 **Resource**
 
@@ -67,13 +67,13 @@ ms.locfileid: "92739150"
 
 | 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
-| 已完成執行 | Count | 已完成的執行數目。 |
-| 失敗的執行 | Count | 失敗的執行數目。 |
-| 開始執行 | Count | 已開始執行的數目。 |
+| 已完成執行 | 計數 | 已完成的執行數目。 |
+| 失敗的執行 | 計數 | 失敗的執行數目。 |
+| 開始執行 | 計數 | 已開始執行的數目。 |
 
 ## <a name="metric-dimensions"></a>度量維度
 
-如需有關哪些計量維度的詳細資訊，請參閱 [多維度計量](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)。
+如需有關哪些計量維度的詳細資訊，請參閱 [多維度計量](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)。
 
 Azure Machine Learning 具有與其度量相關聯的下列維度。
 
@@ -87,7 +87,7 @@ Azure Machine Learning 具有與其度量相關聯的下列維度。
 | NodeId | 工作執行時所建立的節點識別碼。 僅適用于 CpuUtilization 和 GpuUtilization。 |
 | RunId | 執行/作業的識別碼。 僅適用于 CpuUtilization 和 GpuUtilization。 |
 | ComputeType | 執行所使用的計算類型。 僅適用于已完成的執行、失敗的執行，並開始執行。 |
-| PipelineStepType | 執行中所使用的 [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) 類型。 僅適用于已完成的執行、失敗的執行，並開始執行。 |
+| PipelineStepType | 執行中所使用的 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) 類型。 僅適用于已完成的執行、失敗的執行，並開始執行。 |
 | PublishedPipelineId | 執行中所使用之已發佈管線的識別碼。 僅適用于已完成的執行、失敗的執行，並開始執行。 |
 | RunType | 執行的類型。 僅適用于已完成的執行、失敗的執行，並開始執行。 |
 
@@ -116,7 +116,7 @@ RunType 維度的有效值為：
 
 此區段會列出您可以為 Azure Machine Learning 工作區收集的資源記錄類型。
 
-資源提供者和類型： [Microsoft. MachineLearningServices/workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces)。
+資源提供者和類型： [Microsoft. MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces)。
 
 | 類別 | 顯示名稱 |
 | ----- | ----- |
@@ -228,7 +228,7 @@ RunType 維度的有效值為：
 | TotalE2ETimeInSeconds | 總時間節點為作用中狀態 |
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - 如需監視 Azure Machine Learning 的說明，請參閱 [監視 Azure Machine Learning](monitor-azure-machine-learning.md) 。
-- 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](/azure/azure-monitor/insights/monitor-azure-resource)。
+- 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](../azure-monitor/insights/monitor-azure-resource.md)。

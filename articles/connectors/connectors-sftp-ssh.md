@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 tags: connectors
-ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823619"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324239"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
@@ -40,6 +40,8 @@ ms.locfileid: "91823619"
 如需 SFTP SSH 連接器和 SFTP 連接器之間的差異，請參閱本主題稍後的 [比較 SFTP-ssh 與 sftp](#comparison) 一節。
 
 ## <a name="limits"></a>限制
+
+* SFTP SSH 連接器支援私密金鑰驗證或密碼驗證，而不是兩者都支援。
 
 * SFTP-支援 [區塊](../logic-apps/logic-apps-handle-large-messages.md) 處理的 ssh 動作可以處理高達 1 GB 的檔案，而不支援區塊處理的 sftp ssh 動作則可以處理高達 50 MB 的檔案。 雖然預設區塊大小為 15 MB，但此大小可動態變更（從 5 MB 開始），並根據網路延遲、伺服器回應時間等因素，逐漸增加到 50 MB 的最大值。
 
@@ -68,7 +70,7 @@ ms.locfileid: "91823619"
 
 * SFTP-SSH 觸發程式不支援訊息區塊處理。 在要求檔案內容時，觸發程式只會選取 15 MB 或更小的檔案。 若要取得大於 15 MB 的檔案，請改為遵循此模式：
 
-  1. 使用只會傳回檔案屬性的 SFTP SSH 觸發程式，例如， **在新增或修改檔案時， (屬性只) **。
+  1. 使用只會傳回檔案屬性的 SFTP SSH 觸發程式，例如， **在新增或修改檔案時， (屬性只)** 。
 
   1. 遵循 [SFTP-SSH **取得檔案內容** ] 動作的觸發程式，它會讀取完整的檔案，並隱含地使用訊息區塊處理。
 
@@ -80,11 +82,11 @@ ms.locfileid: "91823619"
 
 * 使用 [SSH.NET 程式庫](https://github.com/sshnet/SSH.NET)，這是可支援 .NET (SSH) 程式庫的開放原始碼安全殼層。
 
-* 提供**建立資料夾**動作，可在 SFTP 伺服器上指定的路徑中建立資料夾。
+* 提供 **建立資料夾** 動作，可在 SFTP 伺服器上指定的路徑中建立資料夾。
 
-* 提供**重新命名檔案**動作，可重新命名 SFTP 伺服器上的檔案。
+* 提供 **重新命名檔案** 動作，可重新命名 SFTP 伺服器上的檔案。
 
-* 可將連線快取至 SFTP 伺服器*最多 1 小時*，這可以改善效能並減少嘗試連線伺服器的次數。 若要設定此快取行為的持續期間，請編輯 SFTP 伺服器 SSH 組態中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性。
+* 可將連線快取至 SFTP 伺服器 *最多 1 小時* ，這可以改善效能並減少嘗試連線伺服器的次數。 若要設定此快取行為的持續期間，請編輯 SFTP 伺服器 SSH 組態中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -94,20 +96,20 @@ ms.locfileid: "91823619"
 
   > [!IMPORTANT]
   >
-  > SFTP-SSH 連接器*只*支援這些私密金鑰格式、演算法和指紋：
+  > SFTP-SSH 連接器 *只* 支援這些私密金鑰格式、演算法和指紋：
   >
-  > * **私用金鑰格式**： RSA (Rivest Shamir Adleman) 和 DSA (數位簽章演算法) OpenSSH 和 ssh.com 格式的金鑰。 如果您的私密金鑰是 ( PuTTY) 檔案格式，請先 [將金鑰轉換為 OpenSSH ( pem) 檔案格式](#convert-to-openssh)。
+  > * **私用金鑰格式** ： RSA (Rivest Shamir Adleman) 和 DSA (數位簽章演算法) OpenSSH 和 ssh.com 格式的金鑰。 如果您的私密金鑰是 ( PuTTY) 檔案格式，請先 [將金鑰轉換為 OpenSSH ( pem) 檔案格式](#convert-to-openssh)。
   >
-  > * **加密演算法**：DES-EDE3-CBC、DES-EDE3-CFB、 DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
+  > * **加密演算法** ：DES-EDE3-CBC、DES-EDE3-CFB、 DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   >
-  > * **指紋**：MD5
+  > * **指紋** ：MD5
   >
-  > 將您想要的 SFTP SSH 觸發程式或動作新增至邏輯應用程式之後，您必須提供 SFTP 伺服器的連線資訊。 當您為此連線提供 SSH 私密金鑰時， ***請勿手動輸入或編輯金鑰***，這可能會導致連線失敗。 相反地，請確定您是從 SSH 私密金鑰檔案 ***複製金鑰*** ，並將該金鑰 ***貼入*** 連線詳細資料。 
+  > 將您想要的 SFTP SSH 觸發程式或動作新增至邏輯應用程式之後，您必須提供 SFTP 伺服器的連線資訊。 當您為此連線提供 SSH 私密金鑰時，* *_請勿手動輸入或編輯索引鍵_* _，這可能會導致連線失敗。 相反地，請確定您是從 SSH 私密金鑰檔案 _*_複製金鑰_*_ ，並將該金鑰 _*_貼入_*_ 連線詳細資料。 
   > 如需詳細資訊，請參閱本文稍後的 [使用 SSH 連接到 SFTP](#connect) 一節。
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+_[如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
-* 您要在其中存取 SFTP 帳戶的邏輯應用程式。 若要開始使用 SFTP-SSH 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
+* 您要在其中存取 SFTP 帳戶的邏輯應用程式。 若要開始使用 SFTP-SSH 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」觸發程序。
 
 ## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH 觸發程序的運作方式
 
@@ -115,8 +117,8 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 | SFTP 用戶端 | 動作 |
 |-------------|--------|
-| Winscp | 移至**選項**  >  **喜好**設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停**用 |
-| FileZilla | 移至 [**傳輸**  >  **保留已傳輸檔案的時間戳記**]  >  **停**用 |
+| Winscp | 移至 **選項**  >  **喜好** 設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停** 用 |
+| FileZilla | 移至 [ **傳輸**  >  **保留已傳輸檔案的時間戳記** ]  >  **停** 用 |
 |||
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
@@ -145,13 +147,13 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 1. 如果您尚未這麼做，請 [下載最新的 PuTTY 產生器 ( # A0) 工具](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)，然後啟動該工具。
 
-1. 在此畫面上，選取 [ **載入**]。
+1. 在此畫面上，選取 [ **載入** ]。
 
    ![選取 [載入]](./media/connectors-sftp-ssh/puttygen-load.png)
 
-1. 以 PuTTY 格式流覽至您的私密金鑰檔案，然後選取 [ **開啟**]。
+1. 以 PuTTY 格式流覽至您的私密金鑰檔案，然後選取 [ **開啟** ]。
 
-1. 從 [ **轉換** ] 功能表選取 [ **匯出 OpenSSH 金鑰**]。
+1. 從 [ **轉換** ] 功能表選取 [ **匯出 OpenSSH 金鑰** ]。
 
    ![選取 [匯出 OpenSSH 金鑰]](./media/connectors-sftp-ssh/export-openssh-key.png)
 
@@ -179,7 +181,7 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
    -或-
 
-   針對現有的邏輯應用程式，請在您要新增動作的最後一個步驟底下，選取 [ **新增步驟**]。 在搜尋方塊中，輸入 `sftp ssh` 作為篩選條件。 在動作清單底下，選取您想要的動作。
+   針對現有的邏輯應用程式，請在您要新增動作的最後一個步驟底下，選取 [ **新增步驟** ]。 在搜尋方塊中，輸入 `sftp ssh` 作為篩選條件。 在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
 
@@ -187,19 +189,19 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
    > [!IMPORTANT]
    >
-   > 當您在 [SSH 私密金鑰]**** 屬性中輸入 SSH 私密金鑰之後，請執行這些額外的步驟，以協助確定您會為這個屬性提供完整且正確的值。 無效的金鑰會導致連線失敗。
+   > 當您在 [SSH 私密金鑰] 屬性中輸入 SSH 私密金鑰之後，請執行這些額外的步驟，以協助確定您會為這個屬性提供完整且正確的值。 無效的金鑰會導致連線失敗。
 
    雖然您可以使用任何文字編輯器，但下列範例步驟會使用 Notepad.exe 作為範例，來示範如何正確地複製並貼上您的金鑰。
 
    1. 在文字編輯器中開啟您的 SSH 私密金鑰檔案。 這些步驟會使用記事本作為範例。
 
-   1. 在 [記事本] 的 [ **編輯** ] 功能表上，選取 [ **全選**]。
+   1. 在 [記事本] 的 [ **編輯** ] 功能表上，選取 [ **全選** ]。
 
-   1. 選取 [**編輯**  >  **複本**]。
+   1. 選取 [ **編輯**  >  **複本** ]。
 
-   1. 在您新增的 SFTP-SSH 觸發程序或動作中，將所複製的「完整」** 金鑰貼到 [SSH 私密金鑰]**** 屬性中，此屬性支援多行。  ***請確定您會貼上***金鑰。 ***請勿手動輸入或編輯此金鑰***。
+   1. 在您新增的 SFTP-SSH 觸發程序或動作中，將所複製的「完整」金鑰貼到 [SSH 私密金鑰] 屬性中，此屬性支援多行。  **_請務必貼_* 上金鑰。 _*_請勿手動輸入或編輯金鑰_*_ 。
 
-1. 當您完成輸入連線詳細資料時，請選取 [ **建立**]。
+1. 當您完成輸入連線詳細資料時，請選取 [_ * 建立 * *]。
 
 1. 現在請為您選取的觸發程序或動作提供必要的詳細資料，並且繼續建置邏輯應用程式的工作流程。
 
@@ -209,11 +211,11 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 若要覆寫區塊使用的預設調適型行為，您可以將固定區塊大小從 5 MB 指定為 50 MB。
 
-1. 在動作的右上角，選取省略號按鈕 (**...**) ，然後選取 [ **設定**]。
+1. 在動作的右上角，選取省略號按鈕 ( **...** ) ，然後選取 [ **設定** ]。
 
    ![開啟 SFTP-SSH 設定](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. 在 [ **內容傳輸**] 下的 [ **區塊大小** ] 屬性中，輸入的整數值 `5` `50` ，例如： 
+1. 在 [ **內容傳輸** ] 下的 [ **區塊大小** ] 屬性中，輸入的整數值 `5` `50` ，例如： 
 
    ![指定要改用的區塊大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
@@ -227,7 +229,7 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 此觸發程序會在 SFTP 伺服器上新增或變更了檔案時，啟動邏輯應用程式工作流程。 舉例來說，您可以新增條件來檢查檔案的內容，並根據內容是否符合指定條件來取得內容。 接著，您可以新增要取得檔案內容的動作，並將該內容放置於 SFTP 伺服器上的資料夾中。
 
-**企業範例**：您可以使用此觸發程序，來監視代表客戶訂單的新檔案 SFTP 資料夾。 然後，您可以使用 SFTP 動作 (例如**取得檔案內容**)，來取得訂單的內容以進一步處理，並將該訂單儲存在訂單資料庫中。
+**企業範例** ：您可以使用此觸發程序，來監視代表客戶訂單的新檔案 SFTP 資料夾。 然後，您可以使用 SFTP 動作 (例如 **取得檔案內容** )，來取得訂單的內容以進一步處理，並將該訂單儲存在訂單資料庫中。
 
 <a name="get-content"></a>
 
@@ -249,25 +251,27 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 如果您無法避免或延遲移動檔案，您可以在檔案建立之後略過讀取檔案的中繼資料，而不是遵循下列步驟：
 
-1. 在 [ **建立** 檔案] 動作中，開啟 [ **加入新的參數** ] 清單，選取 [ **取得所有檔案中繼資料** ] 屬性，並將值設定為 [ **否**]。
+1. 在 [ **建立** 檔案] 動作中，開啟 [ **加入新的參數** ] 清單，選取 [ **取得所有檔案中繼資料** ] 屬性，並將值設定為 [ **否** ]。
 
 1. 如果您稍後需要此檔案中繼資料，您可以使用 [ **取得檔案中繼資料** ] 動作。
 
+<a name="connection-attempt-failed"></a>
+
 ### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504錯誤：「連線嘗試失敗，因為連線的合作物件在一段時間後未正確回應，或是建立連線失敗，因為連線的主機無法回應」或「SFTP 伺服器的要求已超過 ' 00:00:30 ' 秒」
 
-當邏輯應用程式無法成功建立與 SFTP 伺服器的連線時，就會發生此錯誤。 可能有許多不同的原因，我們建議您針對下列各方面的問題進行疑難排解。 
+當您的邏輯應用程式無法成功建立與 SFTP 伺服器的連線時，就會發生此錯誤。 此問題可能有不同的原因，請嘗試下列疑難排解選項：
 
-1. 連接逾時是20秒。 請確定 SFTP 伺服器具有良好的效能，而 intermidiate 裝置（例如防火牆）沒有增加額外負荷。 
+* 連接逾時為20秒。 檢查您的 SFTP 伺服器是否有良好的效能和中繼裝置，例如防火牆，不會增加額外負荷。 
 
-2. 如果有相關的防火牆，請確定 **受管理的連接器 IP** 位址已新增至核准的清單。 您可以在 [**這裡**] 找到邏輯應用程式區域的這些 IP 位址 (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+* 如果您已設定防火牆，請確定您已將 **受管理的連接器 IP** 位址新增至核准的清單。 若要尋找邏輯應用程式區域的 IP 位址，請參閱 [Azure Logic Apps 的限制和](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses)設定。
 
-3. 如果這是間歇性問題，請測試重試設定，以查看是否有比預設4還高的重試計數。
+* 如果此錯誤間歇性發生，請將 SFTP-SSH 動作上的 **重試原則** 設定變更為高於預設四次重試次數的重試計數。
 
-4. 請檢查 SFTP 伺服器是否限制每個 IP 位址的連線數目。 若是如此，您可能需要限制並行邏輯應用程式實例的數目。 
+* 檢查 SFTP 伺服器是否限制每個 IP 位址的連線數目。 如果有限制，您可能必須限制並行邏輯應用程式實例的數目。
 
-5. 將 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性增加為您的 SFTP 伺服器上 SSH 設定中的1小時，以降低連線建立成本。
+* 若要減少連線建立成本，請在 SFTP 伺服器的 SSH 設定中，將 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性增加到大約一小時。
 
-6. 您可以查看 SFTP 伺服器記錄檔，以查看來自邏輯應用程式的要求是否曾到達 SFTP 伺服器。 您也可能會在防火牆和 SFTP 伺服器上進行一些網路追蹤，以深入瞭解連線問題。
+* 檢查 SFTP 伺服器記錄檔，以檢查來自邏輯應用程式的要求是否已到達 SFTP 伺服器。 若要取得連接問題的詳細資訊，您也可以在防火牆和 SFTP 伺服器上執行網路追蹤。
 
 ## <a name="connector-reference"></a>連接器參考
 

@@ -1,6 +1,6 @@
 ---
-title: SQL 集區的最佳做法
-description: 使用 SQL 集區時應該知道的建議和最佳做法。
+title: 專用 SQL 集區的最佳作法
+description: 當您使用專用的 SQL 集區時，您應該知道的建議和最佳作法。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958416"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322702"
 ---
-# <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 SQL 集區的最佳做法
+# <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的最佳作法
 
-此文章提供最佳做法集合，以協助您在 Azure Synapse Analytics 中獲得 SQL 集區的最佳效能。 您將能在下面找到在建置解決方案時應注意的基本指導方針和重要領域。 每一節都會介紹一個概念，並引導您前往能更深入涵蓋該概念的詳細文章。
+本文提供最佳作法的集合，可協助您達到 Azure Synapse Analytics 中專用 SQL 集區的最佳效能。 您將能在下面找到在建置解決方案時應注意的基本指導方針和重要領域。 每一節都會介紹一個概念，並引導您前往能更深入涵蓋該概念的詳細文章。
 
-## <a name="sql-pools-loading"></a>SQL 集區載入
+## <a name="dedicated-sql-pools-loading"></a>專用的 SQL 集區載入
 
-如需 SQL 集區載入指導方針，請參閱[載入資料的指南](data-loading-best-practices.md)。
+如需專用的 SQL 集區載入指引，請參閱 [載入資料的指引](data-loading-best-practices.md)。
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>利用暫停和調整來降低成本
 
@@ -31,7 +31,7 @@ ms.locfileid: "85958416"
 
 ## <a name="maintain-statistics"></a>維護統計資料
 
-雖然 SQL Server 會自動偵測資料行並建立或更新資料行上的統計資料，SQL 集區則需要手動維護統計資料。 您應該維護統計資料以確保 SQL 集區計劃能夠最佳化。  最佳化工具建立的計劃只能利用可用的統計資料。
+雖然 SQL Server 會自動偵測及建立或更新資料行的統計資料，但專用的 SQL 集區需要手動維護統計資料。 您應該維護統計資料以確保 SQL 集區計劃能夠最佳化。  最佳化工具建立的計劃只能利用可用的統計資料。
 
 > [!TIP]
 > 建立每個資料行的範本統計資料是開始使用統計資料的簡單方式。  
@@ -40,13 +40,13 @@ ms.locfileid: "85958416"
 
 若要縮短統計資料維護時間，請仔細選擇具有統計資料，或是最常需要更新的資料行。 例如，您可以更新每天都可能加入新值的日期資料行。 請將焦點擺在取得牽涉聯結的資料行、在 WHERE 子句中使用的資料行，以及在 GROUP BY 中找到之資料行的統計資料。
 
-關於統計資料的其他資訊，可以在[管理資料表統計資料](develop-tables-statistics.md)、[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，以及 [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文章中找到。
+關於統計資料的其他資訊，可以在[管理資料表統計資料](develop-tables-statistics.md)、[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，以及 [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章中找到。
 
 ## <a name="group-insert-statements-into-batches"></a>將 INSERT 陳述式群組為批次
 
 視您的需求而定，使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之類的 INSERT 陳述式對小型資料表進行單次載入可能會是最佳的方法。 不過，如果您一整天都得載入數千或數百萬個資料列，單一 INSERT 可能不是最佳的。
 
-解決此問題的其中一個方法，是開發一個會寫入檔案的處理序，然後再開發另一個會定期載入此檔案的處理序。 請參閱 [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 一文以取得詳細資訊。
+解決此問題的其中一個方法，是開發一個會寫入檔案的處理序，然後再開發另一個會定期載入此檔案的處理序。 請參閱 [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文以取得詳細資訊。
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>使用 PolyBase 將資料快速載入及匯出
 
@@ -64,12 +64,12 @@ SQL 集區支援透過數種工具 (包括 Azure Data Factory、PolyBase 及 BCP
 - [Azure SQL 集區載入模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/) \(英文\)
 - [使用 Azure Data Factory 載入資料](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [使用 Azure Data Factory 移動資料](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [如選取建立資料表 (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="load-then-query-external-tables"></a>載入並查詢外部資料表
 
-PolyBase 並不是查詢的最佳選項。 適用於 SQL 集區的 PolyBase 資料表目前只支援 Azure Blob 檔案和 Azure Data Lake 儲存體。 這些檔案沒有任何支援的計算資源。 因此，SQL 集區無法卸載此工作，且必須將整個檔案載入 tempdb 並加以讀取，才能讀取該資料。
+PolyBase 並不是查詢的最佳選項。 專用 SQL 集區的 Polybase 資料表目前僅支援 Azure blob 檔案和 Azure Data Lake 儲存體。 這些檔案沒有任何支援的計算資源。 因此，專用的 SQL 集區無法卸載此工作，而且必須將整個檔案載入至 tempdb，才能讀取資料。
 
 如果您有數個查詢此資料的查詢，最好單次載入此資料，並讓查詢使用本機資料表。 進一步的 Polybase 指導方針已包含在[使用 PolyBase 的指南](data-loading-best-practices.md)一文中。
 
@@ -89,14 +89,14 @@ PolyBase 並不是查詢的最佳選項。 適用於 SQL 集區的 PolyBase 資�
 - [資料表概觀](develop-tables-overview.md)
 - [資料表散發](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [選取資料表發佈](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)
-- [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="do-not-over-partition"></a>不要過度執行資料分割
 
-雖然分割資料對於透過分割切換來維護資料，或是透過分割消除來最佳化掃描而言可能會很有效，但太多的資料分割會讓查詢變慢。  通常，在 SQL Server 上運作良好的高細微性分割策略，可能無法在 SQL 集區上運作良好。  
+雖然分割資料對於透過分割切換來維護資料，或是透過分割消除來最佳化掃描而言可能會很有效，但太多的資料分割會讓查詢變慢。  很高的資料細微性資料分割策略，在 SQL Server 可能無法在專用的 SQL 集區上運作。  
 
-如果每個資料分割的資料列少於 1 百萬個，太多的資料分割可能會降低叢集資料行存放區索引的效率。 SQL 集區會自動將您的資料分割成 60 個資料庫。 因此，如果您建立具有 100 個分割區的資料表，則結果會是 6000 個分割區。 每個工作負載都不同，因此最佳建議是對資料分割進行實驗，以找出最適合您工作負載的方式。  
+如果每個資料分割的資料列少於 1 百萬個，太多的資料分割可能會降低叢集資料行存放區索引的效率。 專用的 SQL 集區會自動將您的資料分割成60資料庫。 因此，如果您建立具有 100 個分割區的資料表，則結果會是 6000 個分割區。 每個工作負載都不同，因此最佳建議是對資料分割進行實驗，以找出最適合您工作負載的方式。  
 
 其中一個可考慮的選項，是使用低於您利用 SQL Server 所實作的細微性。 例如，考慮使用每週或每月資料分割，而不是每日資料分割。
 
@@ -119,8 +119,8 @@ INSERT、UPDATE 及 DELETE 陳述式都會在交易中執行。 當其失敗時�
 - [了解交易](develop-transactions.md)
 - [最佳化交易](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [資料表分割](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="reduce-query-result-sizes"></a>減少查詢結果大小
 
@@ -130,25 +130,25 @@ INSERT、UPDATE 及 DELETE 陳述式都會在交易中執行。 當其失敗時�
 
 在定義 DDL 時，請使用可支援您的資料的最小資料類型，這麼做將能改善查詢效能。  這建議對 CHAR 和 VARCHAR 資料行尤其重要。  如果資料行中最長的值是 25 個字元，請將您的資料行定義為 VARCHAR(25)。  避免將所有字元資料行定義為較大的預設長度。  此外，請在只需要 VARCHAR 的情況下將資料行定義為 VARCHAR，而非使用 NVARCHAR。
 
-請參閱[資料表預覽](develop-tables-overview.md)、[資料表資料類型](develop-tables-data-types.md)及 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文章，以取得與上述資訊相關之基本概念的詳細檢閱。
+請參閱[資料表預覽](develop-tables-overview.md)、[資料表資料類型](develop-tables-data-types.md)及 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章，以取得與上述資訊相關之基本概念的詳細檢閱。
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>針對暫時性資料使用暫存堆積資料表
 
-當您暫時將資料登陸於 SQL 集區上時，堆積資料表通常能使整體程序更加快速。  如果您只要在執行其他轉換之前暫存載入的資料，則將資料表載入堆積資料表將會遠快於將資料載入叢集資料行存放區資料表。  
+當您暫時將資料登陸到專用的 SQL 集區時，堆積資料表通常會讓整個程式更快速。  如果您只要在執行其他轉換之前暫存載入的資料，則將資料表載入堆積資料表將會遠快於將資料載入叢集資料行存放區資料表。  
 
 將資料載入暫存資料表的載入速度，也會比將資料表載入永久儲存體更快速。  暫存資料表會以 "#" 開頭，且只有建立該資料表的工作階段才能夠加以存取。 因此，其只能在有限的案例下運作。 堆積資料表是在 CREATE TABLE 的 WITH 子句中定義。  如果您使用暫存資料表，請記得也在該暫存資料表上建立統計資料。
 
-如需其他指導方針，請參閱[暫存資料表](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，以及 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文章。
+如需其他指導方針，請參閱[暫存資料表](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，以及 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章。
 
 ## <a name="optimize-clustered-columnstore-tables"></a>將叢集資料行存放區資料表最佳化
 
-叢集資料行存放區索引是將資料儲存在 SQL 集區中最有效率的方式之一。  根據預設，SQL 集區中的資料表會建立為「叢集資料行存放區」。  為了讓資料行存放區資料表的查詢獲得最佳效能，良好的區段品質很重要。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  
+叢集資料行存放區索引是將資料儲存在專用 SQL 集區中最有效率的方式之一。  依預設，專用 SQL 集區中的資料表會建立為叢集資料行存放區。  為了讓資料行存放區資料表的查詢獲得最佳效能，良好的區段品質很重要。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  
 
 可以依壓縮資料列群組中的資料列數目來測量區段品質。 如需偵測和改善叢集資料行存放區資料表區段品質的逐步指示，請參閱[資料表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文中的[資料行存放區索引品質不佳的原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality)。  
 
 由於高品質的資料行存放區區段很重要，因此最好使用中型或大型資源類別中的使用者識別碼來載入資料。 使用較低的[資料倉儲單位](resource-consumption-models.md)，表示您想要將更大型的資源類別指派給正在載入的使用者。
 
-資料行存放區資料表通常不會將資料推送到壓縮的資料行存放區區段中，直到每個資料表都有超過 1 百萬個資料列為止。 每個 SQL 集區資料表都會分割成 60 個資料表。 因此，除非資料表有超過 6 千萬個資料列，否則資料行存放區資料表並無法使查詢受益。  
+資料行存放區資料表通常不會將資料推送到壓縮的資料行存放區區段中，直到每個資料表都有超過 1 百萬個資料列為止。 每個專用的 SQL 集區資料表都會分割成60資料表。 因此，除非資料表有超過 6 千萬個資料列，否則資料行存放區資料表並無法使查詢受益。  
 
 > [!TIP]
 > 對於包含低於 6 千萬個資料列的資料表，具有資料行存放區索引可能不是最佳的解決方案。  
@@ -157,7 +157,7 @@ INSERT、UPDATE 及 DELETE 陳述式都會在交易中執行。 當其失敗時�
 
 如果您的資料表沒有 60 億個資料列，您主要有兩個選項。 您可以減少分割區數目，或考慮改為使用堆積資料表。  使用次要索引搭配堆積資料表 (而非資料行存放區資料表) 也可能是值得進行的實驗，以查看是否可以獲得較佳的效能。
 
-查詢資料行存放區資料表時，如果您只選取您需要的資料行，查詢執行會更快速。  如需資料表和資料行存放區索引的詳細資訊，請參閱[資料表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，以及[重建資料行存放區索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#rebuilding-indexes-to-improve-segment-quality)文章。
+查詢資料行存放區資料表時，如果您只選取您需要的資料行，查詢執行會更快速。  如需資料表和資料行存放區索引的詳細資訊，請參閱[資料表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，以及[重建資料行存放區索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality)文章。
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>使用較大的資源類別來改善查詢效能
 
@@ -171,7 +171,7 @@ SQL 集區會使用資源群組，作為將記憶體配置給查詢的方式。 
 
 如果您在使用者查詢中發現長時間的延遲，您的使用者可能是在較大的資源類別中執行。 此案例會提升並行存取插槽的耗用量，其可能會導致系統將其他查詢排入佇列。  若要判斷系統是否將使用者的查詢排入佇列，請執行 `SELECT * FROM sys.dm_pdw_waits` 以查看是否會傳回任何資料列。
 
-[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md)和 [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文章將能提供詳細資訊。
+[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md)和 [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章將能提供詳細資訊。
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>使用 DMV 對查詢進行監視和最佳化
 
@@ -180,14 +180,14 @@ SQL 集區有數個 DMV 可用來監視查詢執行。  下列監視相關文章
 - [使用 DMV 監視工作負載](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 - [LABEL](develop-label.md)
-- [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="next-steps"></a>後續步驟
 

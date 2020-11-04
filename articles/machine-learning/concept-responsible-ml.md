@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829385"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324849"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>什麼是負責機器學習服務？ (預覽)
 
@@ -73,7 +73,7 @@ AI 系統中的不公平性可能會導致下列非預期的結果：
 
 Homomorphic 加密可讓您在加密資料上進行計算，而不需要存取祕密 (解密) 金鑰。 計算的結果會進行加密，且只能藉由秘密金鑰的擁有者顯示。 使用同態加密時，雲端操作員永遠不會對其儲存和計算的資料進行未加密的存取。 計算是直接在加密資料上執行。 資料隱私權依賴最先進的密碼編譯，而資料擁有者會控制所有資訊的發行。 如需 Microsoft 同態加密的詳細資訊，請參閱 [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/)。
 
-若要開始在 Azure Machine Learning 中使用同態加密，請使用適用于[MICROSOFT 密封](https://github.com/microsoft/SEAL)的[加密推斷](https://pypi.org/project/encrypted-inference/)Python 系結。 Microsoft 密封是開放原始碼同態加密程式庫，可讓您在加密的整數或實數上執行新增和乘法運算。 若要深入瞭解 Microsoft 密封，請參閱 [Azure 架構中心](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) 或 [microsoft Research 專案頁面](https://www.microsoft.com/research/project/microsoft-seal/)。
+若要開始在 Azure Machine Learning 中使用同態加密，請使用適用于[MICROSOFT 密封](https://github.com/microsoft/SEAL)的[加密推斷](https://pypi.org/project/encrypted-inference/)Python 系結。 Microsoft 密封是開放原始碼同態加密程式庫，可讓您在加密的整數或實數上執行新增和乘法運算。 若要深入瞭解 Microsoft 密封，請參閱 [Azure 架構中心](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) 或 [microsoft Research 專案頁面](https://www.microsoft.com/research/project/microsoft-seal/)。
 
 請參閱下列範例，以瞭解 [如何在 Azure Machine Learning 中部署加密的推斷 web 服務](how-to-homomorphic-encryption-seal.md)。
 
@@ -96,5 +96,5 @@ Homomorphic 加密可讓您在加密資料上進行計算，而不需要存取�
 
 ## <a name="additional-resources"></a>其他資源
 
-- 如需詳細資訊，請參閱 [負責任的創新工具](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) 組，以瞭解最佳作法。
+- 如需詳細資訊，請參閱 [負責任的創新工具](/azure/architecture/guide/responsible-innovation/) 組，以瞭解最佳作法。
 - 深入了解機器學習系統文件的 [有關 ML](https://www.partnershiponai.org/about-ml/) 指導方針集 。

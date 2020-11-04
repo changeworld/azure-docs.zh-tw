@@ -9,19 +9,19 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 59343c500f50430530b24fbfb7d747108377efd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84caf1ea684e46eec00f8479bd0e7c4123e731b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342082"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322804"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>複製其他人的工作進行資料科學
 ## <a name="video-5-data-science-for-beginners-series"></a>影片 5：適用於初學者的資料科學系列
 有一個資料科學的商業機密是讓其他人為您工作。 在 Azure AI 資源庫中找一個適合您自己的機器學習服務實驗使用的叢集演算法範例。
 
 > [!IMPORTANT]
-> **Cortana Intelligence Gallery** 已重新命名為 **Azure AI 資源庫**。 如此一來，這個文字記錄中的文字與影像就會和影片稍微不同，因為其中使用的是之前的名稱。
+> **Cortana Intelligence Gallery** 已重新命名為 **Azure AI 資源庫** 。 如此一來，這個文字記錄中的文字與影像就會和影片稍微不同，因為其中使用的是之前的名稱。
 >
 
 若要充分運用這系列影片，請觀賞所有影片。 [瀏覽影片清單](#other-videos-in-this-series)
@@ -32,12 +32,12 @@ ms.locfileid: "91342082"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
-** 是一個資料科學的快速簡介，包含五個簡短影片。
+ 是一個資料科學的快速簡介，包含五個簡短影片。
 
-* 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* 影片 1： [資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * 影片 2： [您的資料已經可以進行資料科學了嗎？](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-* 影片 3：[詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-* 影片 4：[利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* 影片 3： [詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* 影片 4： [利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * 影片 5：複製其他人的工作進行資料科學
 
 ## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>文字記錄：複製其他人的工作進行資料科學
@@ -51,11 +51,11 @@ ms.locfileid: "91342082"
 
 Microsoft 有一個稱為 [Azure Machine Learning Studio (傳統) ](https://azure.microsoft.com/services/machine-learning-studio/)的雲端式服務。 其會提供您工作區，讓您可以試驗不同的機器學習演算法，當您制定您的解決方案時，您可以將其啟動為 Web 服務。
 
-此服務有一個部分稱為 **[Azure AI 資源庫](https://gallery.azure.ai/)**。 它包含的資源包括 Azure Machine Learning Studio (傳統) 實驗或模型的集合，而這些專案是由他們建立並貢獻給其他人使用。 這些實驗是運用思考的好方法，以及是其他人的挑戰，他們會協助您開始您自己的解決方案。 歡迎每個人前往瀏覽。
+此服務有一個部分稱為 **[Azure AI 資源庫](https://gallery.azure.ai/)** 。 它包含的資源包括 Azure Machine Learning Studio (傳統) 實驗或模型的集合，而這些專案是由他們建立並貢獻給其他人使用。 這些實驗是運用思考的好方法，以及是其他人的挑戰，他們會協助您開始您自己的解決方案。 歡迎每個人前往瀏覽。
 
 ![Azure AI 資源庫](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
-如果您按一下頂端的 [實驗] **** ，會看到一些資源庫中最新且受歡迎的實驗。 您可以按一下畫面頂端的 [瀏覽全部] **** ，來搜尋其餘的實驗，而且可以在此輸入搜尋詞彙，並選擇搜尋篩選器。
+如果您按一下頂端的 [實驗]  ，會看到一些資源庫中最新且受歡迎的實驗。 您可以按一下畫面頂端的 [瀏覽全部]  ，來搜尋其餘的實驗，而且可以在此輸入搜尋詞彙，並選擇搜尋篩選器。
 
 ## <a name="find-and-use-a-clustering-algorithm-example"></a>尋找並使用叢集演算法範例
 舉例來說，您可能因為想要查看叢集運作方式的範例，以 **"clustering sweep"** 為關鍵字搜尋。
@@ -70,11 +70,11 @@ Microsoft 有一個稱為 [Azure Machine Learning Studio (傳統) ](https://azur
 
 ![叢集實驗描述頁面](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-請注意 [ **在 Studio 中開啟] (傳統) **的連結。
+請注意 [ **在 Studio 中開啟] (傳統)** 的連結。
 
 ![在 Studio (傳統) 按鈕中開啟](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-我可以按一下它，將它帶給 **Azure Machine Learning Studio (傳統) **的許可權。 其會建立一份實驗副本，並放在我自己的工作區中。 這包括參與者的資料集、他們所做的所有程序、他們使用的所有演算法，以及他們儲存結果的方式。
+我可以按一下它，將它帶給 **Azure Machine Learning Studio (傳統)** 的許可權。 其會建立一份實驗副本，並放在我自己的工作區中。 這包括參與者的資料集、他們所做的所有程序、他們使用的所有演算法，以及他們儲存結果的方式。
 
 ![在 Machine Learning Studio (傳統) 叢集演算法範例中開啟資源庫實驗](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
@@ -91,4 +91,4 @@ Microsoft 有一個稱為 [Azure Machine Learning Studio (傳統) ](https://azur
 
 ## <a name="next-steps"></a>後續步驟
 * [試用 Azure Machine Learning Studio (傳統) 的第一個資料科學實驗 ](create-experiment.md)
-* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/overview-what-is-azure-ml)
+* [在 Microsoft Azure 上取得 Machine Learning 簡介](../overview-what-is-azure-ml.md)

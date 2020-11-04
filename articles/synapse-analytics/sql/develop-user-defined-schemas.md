@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: aebe1d995f3cb6da4663876b8d39d36a1a8b16c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21d2f0debb2ade8e46b0cdb5b3fa5b51f0a180c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030162"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323861"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中的使用者定義架構
 
@@ -27,7 +27,7 @@ ms.locfileid: "90030162"
 相反地，Synapse SQL 會在一個資料庫內執行整個分析工作負載。 不允許跨資料庫聯結。 Synapse SQL 會預期倉儲所使用的所有資料表都會儲存在一個資料庫中。
 
 > [!NOTE]
-> SQL 集區不支援任何種類的跨資料庫查詢。 因此，使用此模式的分析執行將需要修訂。 SQL 隨選 (預覽版) 支援跨資料庫查詢。
+> 專用的 SQL 集區不支援任何種類的跨資料庫查詢。 因此，使用此模式的分析執行將需要修訂。 無伺服器 SQL 集區 (預覽版) 支援跨資料庫查詢。
 
 ## <a name="user-defined-schema-recommendations"></a>使用者定義架構建議
 

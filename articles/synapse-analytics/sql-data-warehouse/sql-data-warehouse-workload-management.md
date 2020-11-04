@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e54e0ed1a3292cee400774d02f61514f54370151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761976741bf794a21182e8f962b274ae32925060
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208530"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324469"
 ---
 # <a name="what-is-workload-management"></a>什麼是工作負載管理？
 
@@ -42,7 +42,7 @@ ms.locfileid: "85208530"
 
 例如，將臨機操作使用者角色成員資格授與 smallrc，可讓該使用者耗用系統上 100% 的記憶體。  使用資源類別，沒有任何方法可以保留並確保資源可用於重要的工作負載。
 
-Azure Synapse 中的 Synapse SQL 集區工作負載管理包含三個高階概念：[工作負載分類](sql-data-warehouse-workload-classification.md)、[工作負載重要性](sql-data-warehouse-workload-importance.md)，以及[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能可讓您更充分控制您的工作負載如何利用系統資源。
+Azure Synapse 中的專用 SQL 集區工作負載管理包含三個高階概念： [工作負載分類](sql-data-warehouse-workload-classification.md)、 [工作負載重要性](sql-data-warehouse-workload-importance.md)和 [工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能可讓您更充分控制您的工作負載如何利用系統資源。
 
 工作負載分類是將要求指派給工作負載群組和設定重要性層級的概念。  在過去，此指派是透過使用 [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) 的角色成員資格來完成。  現在可以透過 [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來完成此動作。  分類功能提供一組更豐富的選項，例如標籤、工作階段和時間來分類要求。
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065483"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323199"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>為您的資料來源建立受控私人端點 (預覽版) 
 
@@ -21,31 +21,30 @@ ms.locfileid: "87065483"
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>步驟1：在 Azure 入口網站中開啟您的 Azure Synapse 工作區
 
-您可以從 Azure Synapse Studio 針對您的資料來源建立受控私人端點。 選取 Azure 入口網站中的 [ **總覽** ] 索引標籤，然後選取 [ **啟動 Synapse Studio**]。
-![啟動 Azure Synapse Studio](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+您可以從 Azure Synapse Studio 針對您的資料來源建立受控私人端點。 選取 Azure 入口網站中的 [ **總覽** ] 索引標籤，然後在 [使用者入門] 區段 **中選取 [開啟 Synapse** Studio 卡片]。
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>步驟2：流覽至 Synapse Studio 中的 [受控虛擬網路] 索引標籤
 
-在 Azure Synapse Studio 中，從左側導覽中選取 [ **管理** ] 索引標籤。 選取 [ **受管理的虛擬網路** ]，然後選取 [ **+ 新增**]。
+在 Azure Synapse Studio 中，從左側導覽中選取 [ **管理** ] 索引標籤。 選取 [ **受管理的私人端點** ]，然後選取 [ **+ 新增** ]。
 ![建立新的受控私人端點](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>步驟3：選取資料來源類型
 
-選取資料來源類型。 在此情況下，目標資料來源是 ADLS Gen2 帳戶。 選取 [繼續]。
+選取資料來源類型。 在此情況下，目標資料來源是 ADLS Gen2 帳戶。 選取 [繼續]  。
 ![選取目標資料來源類型](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步驟4：輸入資料來源的相關資訊
 
-在下一個視窗中，輸入資料來源的相關資訊。 在此範例中，我們要建立 ADLS Gen2 帳戶的受控私人端點。 輸入受控私人端點的 **名稱** 。 提供 **Azure 訂** 用帳戶和 **儲存體帳戶名稱**。 選取 [建立]****。
+在下一個視窗中，輸入資料來源的相關資訊。 在此範例中，我們要建立 ADLS Gen2 帳戶的受控私人端點。 輸入受控私人端點的 **名稱** 。 提供 **Azure 訂** 用帳戶和 **儲存體帳戶名稱** 。 選取 [建立]。
 ![輸入目標資料來源詳細資料](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>步驟5：確認已成功建立您的受控私人端點
 
-提交要求之後，您會看到其狀態。 若要確認是否已建立成功建立受控私人端點，請檢查其布建 *狀態*。 您可能需要等候 1 **分鐘，然後選取 [** 重新整理] 以更新布建狀態。 您可以看到已成功建立 ADLS Gen2 帳戶的受控私人端點。
+提交要求之後，您會看到其狀態。 若要確認是否已建立成功建立受控私人端點，請檢查其布建 *狀態* 。 您可能需要等候 1 **分鐘，然後選取 [** 重新整理] 以更新布建狀態。 您可以看到已成功建立 ADLS Gen2 帳戶的受控私人端點。
 
-您也可以看到 *核准狀態* 為 [ *擱置*中]。 目標資源的擁有者可以核准或拒絕私人端點連接要求。 如果擁有者核准私人端點連線要求，則會建立私人連結。 如果拒絕，則不會建立私人連結。
+您也可以看到 *核准狀態* 為 [ *擱置* 中]。 目標資源的擁有者可以核准或拒絕私人端點連接要求。 如果擁有者核准私人端點連線要求，則會建立私人連結。 如果拒絕，則不會建立私人連結。
 ![受控私人端點建立要求狀態](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解[受控私人端點](./synapse-workspace-managed-private-endpoints.md)

@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651162"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322218"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>使用 Azure Machine Learning 的分散式訓練
 
@@ -24,7 +24,7 @@ ms.locfileid: "89651162"
 
 ## <a name="deep-learning-and-distributed-training"></a>深度學習和分散式訓練 
 
-分散式訓練有兩種主要類型： [資料平行](#data-parallelism) 處理原則和 [模型平行](#model-parallelism)處理。 針對深度學習模型的分散式訓練， [Python 中的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 支援與熱門架構（PyTorch 和 TensorFlow）的整合。 這兩種架構都採用資料平行處理來進行分散式訓練，並可利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 來優化計算速度。 
+分散式訓練有兩種主要類型： [資料平行](#data-parallelism) 處理原則和 [模型平行](#model-parallelism)處理。 針對深度學習模型的分散式訓練， [Python 中的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 支援與熱門架構（PyTorch 和 TensorFlow）的整合。 這兩種架構都採用資料平行處理來進行分散式訓練，並可利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 來優化計算速度。 
 
 * [使用 PyTorch 的分散式訓練](how-to-train-pytorch.md#distributed-training)
 
@@ -51,6 +51,6 @@ ms.locfileid: "89651162"
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何搭配 Python SDK [使用計算目標進行模型定型](how-to-set-up-training-targets.md) 。
-* 如需技術範例，請參閱 [參考架構案例](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)。
+* 如需技術範例，請參閱 [參考架構案例](/azure/architecture/reference-architectures/ai/training-deep-learning)。
 * [使用 TensorFlow 將 ML 模型定型](how-to-train-tensorflow.md)。
-* [使用 PyTorch 將 ML 模型定型](how-to-train-pytorch.md)。 
+* [使用 PyTorch 將 ML 模型定型](how-to-train-pytorch.md)。

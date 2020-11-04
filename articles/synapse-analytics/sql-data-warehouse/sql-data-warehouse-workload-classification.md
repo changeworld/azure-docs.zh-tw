@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212372"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323876"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics 工作負載分類
 
-本文說明如何使用 Azure Synapse 中的 Synapse SQL 集區，將工作負載群組和重要性指派給傳入要求的工作負載分類流程。
+本文說明使用 Azure Synapse 中的專用 SQL 集區，將工作負載群組和重要性指派給傳入要求的工作負載分類流程。
 
 ## <a name="classification"></a>分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "85212372"
 
 ## <a name="classification-process"></a>分類程序
 
-Azure Synapse 中 Synapse SQL 集區的分類現在是藉由將使用者指派給已使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)指派給它的對應資源類別的角色。 在登入資源類別以外的情況下，對要求進行特性描述的能力，會受到這項功能的限制。 [建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法現在提供更豐富的分類方法。  使用此語法時，Synapse SQL 集區使用者可以指派重要性，以及透過參數指派給要求的系統資源數量 `workload_group` 。
+目前，您可以將使用者指派給有對應資源類別（使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的角色，以在 Azure Synapse 中取得專用 SQL 集區的分類。 在登入資源類別以外的情況下，對要求進行特性描述的能力，會受到這項功能的限制。 [建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法現在提供更豐富的分類方法。  使用此語法時，專用的 SQL 集區使用者可以指派重要性，以及透過參數指派給要求的系統資源數量 `workload_group` 。
 
 > [!NOTE]
 > 分類是根據每個要求來評估。 單一會話中的多個要求可以不同的分類。
@@ -69,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 代表您建立的系統分類器提供了遷移至工作負載分類的簡單路徑。 當您開始建立具有重要性的新分類器時，使用具有分類優先順序的資源類別角色對應可能會導致分類誤判。
 
-請考慮下列案例：
+考慮下列案例：
 
 - 現有的資料倉儲具有指派給 largerc 資源類別角色的資料庫使用者 DBAUser。 資源類別指派是使用 sp_addrolemember 完成。
 - 資料倉儲現在已更新工作負載管理。

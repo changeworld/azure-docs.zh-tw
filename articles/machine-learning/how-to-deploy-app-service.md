@@ -1,7 +1,7 @@
 ---
 title: '將 ml 模型部署至 Azure App Service (preview) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 在 Azure App Service 中將模型部署至 Web 應用程式。
+description: 瞭解如何使用 Azure Machine Learning，使用 Azure App Service 將已定型的 ML 模型部署至 Web 應用程式。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 31c9f203a8602b6c078fe2e9c672c539140f9990
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bea3270821888334ed876bb827dab56b4c206b6a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744433"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325234"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署至 Azure App Service (preview) 
 
@@ -28,11 +28,11 @@ ms.locfileid: "92744433"
 
 使用 Azure Machine Learning，您就可以從已定型的機器學習模型建立 Docker 映射。 此影像包含可接收資料的 web 服務，將資料提交至模型，然後傳迴響應。 Azure App Service 可以用來部署映射，並提供下列功能：
 
-* 增強安全性的 Advanced [authentication](/azure/app-service/configure-authentication-provider-aad) 。 驗證方法包括 Azure Active Directory 和多重要素驗證。
-* [自動](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) 調整，而不需要重新部署。
-* 用戶端與服務之間安全通訊的[TLS 支援](/azure/app-service/configure-ssl-certificate-in-code)。
+* 增強安全性的 Advanced [authentication](../app-service/configure-authentication-provider-aad.md) 。 驗證方法包括 Azure Active Directory 和多重要素驗證。
+* [自動](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) 調整，而不需要重新部署。
+* 用戶端與服務之間安全通訊的[TLS 支援](../app-service/configure-ssl-certificate-in-code.md)。
 
-如需 Azure App Service 所提供之功能的詳細資訊，請參閱 [App Service 總覽](/azure/app-service/overview)。
+如需 Azure App Service 所提供之功能的詳細資訊，請參閱 [App Service 總覽](../app-service/overview.md)。
 
 > [!IMPORTANT]
 > 如果您需要能夠記錄部署的模型所使用的評分資料，或是評分的結果，您應該改為部署至 Azure Kubernetes Service。 如需詳細資訊，請參閱 [收集生產模型的資料](how-to-enable-data-collection.md)。
@@ -40,7 +40,7 @@ ms.locfileid: "92744433"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](how-to-manage-workspace.md) 文章。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * 在您的工作區中註冊的已定型機器學習模型。 如果您沒有模型，請使用 [影像分類教學課程：定型模型](tutorial-train-models-with-aml.md) 來定型和註冊模型。
 
     > [!IMPORTANT]
@@ -66,7 +66,7 @@ ms.locfileid: "92744433"
     > [!IMPORTANT]
     > Azure Machine Learning SDK 不提供 web 服務存取資料存放區或資料集的方式。 如果您需要部署的模型來存取儲存在部署外部的資料，例如 Azure 儲存體帳戶中，您必須使用相關的 SDK 開發自訂程式碼解決方案。 例如， [適用于 Python 的 AZURE 儲存體 SDK](https://github.com/Azure/azure-storage-python)。
     >
-    > 另一個可能適用于您的案例的替代方案是 [批次預測](how-to-use-parallel-run-step.md)，可在評分時提供資料存放區存取權。
+    > 另一個可能適用于您的案例的替代方案是 [批次預測](./tutorial-pipeline-batch-scoring-classification.md)，可在評分時提供資料存放區存取權。
 
     如需輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "92744433"
 這些實體會封裝成 __推斷__ 設定。 推斷設定會參考輸入指令碼和其他相依性。
 
 > [!IMPORTANT]
-> 建立用於 Azure App Service 的推斷設定時，您必須使用 [環境](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
+> 建立用於 Azure App Service 的推斷設定時，您必須使用 [環境](//python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ ms.locfileid: "92744433"
 
 ## <a name="create-the-image"></a>建立映像
 
-若要建立部署至 Azure App Service 的 Docker 映射，請使用 [Model. 封裝](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)。 下列程式碼片段示範如何從模型建立新的映射並推斷設定：
+若要建立部署至 Azure App Service 的 Docker 映射，請使用 [Model. 封裝](//python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)。 下列程式碼片段示範如何從模型建立新的映射並推斷設定：
 
 > [!NOTE]
 > 程式碼片段假設 `model` 包含已註冊的模型，且其中 `inference_config` 包含推斷環境的設定。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何在 [Linux 上的 App Service](/azure/app-service/containers/) 檔中設定您的 Web 應用程式。
-* 深入瞭解如何 [在 Azure 中開始使用自動](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)調整規模。
-* [在您的 Azure App Service 中使用 TLS/SSL 憑證](/azure/app-service/configure-ssl-certificate-in-code)。
-* [設定您的 App Service 應用程式以使用 Azure Active Directory 登入](/azure/app-service/configure-authentication-provider-aad)。
+* 深入瞭解如何 [在 Azure 中開始使用自動](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)調整規模。
+* [在您的 Azure App Service 中使用 TLS/SSL 憑證](../app-service/configure-ssl-certificate-in-code.md)。
+* [設定您的 App Service 應用程式以使用 Azure Active Directory 登入](../app-service/configure-authentication-provider-aad.md)。
 * [取用部署為 Web 服務的 ML 模型](how-to-consume-web-service.md)

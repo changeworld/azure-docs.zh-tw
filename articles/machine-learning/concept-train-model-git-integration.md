@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275960"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324762"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning 的 Git 整合
 
@@ -39,7 +39,7 @@ Azure Machine Learning 為工作區中的所有使用者提供共用檔案系統
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>使用 SSH 驗證您的 Git 帳戶
 ### <a name="generate-a-new-ssh-key"></a>產生新的 SSH 金鑰
-1) 在 [Azure Machine Learning 筆記本] 索引標籤中[，開啟終端機視窗](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)。
+1) 在 [Azure Machine Learning 筆記本] 索引標籤中[，開啟終端機視窗](./how-to-run-jupyter-notebooks.md#terminal)。
 
 2) 貼上下列文字，並以您的電子郵件地址取代。
 
@@ -89,9 +89,9 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  從 **步驟 2**開始。
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  從 **步驟 2** 開始。
 
-+ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 從 **步驟 4**開始。
++ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 從 **步驟 4** 開始。
 
 ### <a name="clone-the-git-repository-with-ssh"></a>使用 SSH 複製 Git 存放庫
 
@@ -115,7 +115,7 @@ Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of know
 
 SSH 可能會顯示伺服器的 SSH 指紋，並要求您進行驗證。 您應確認顯示的指紋符合 SSH 公開金鑰頁面中的其中一個指紋。
 
-SSH 會在連線至未知的主機時顯示此指紋，以防止 [攔截式攻擊](https://technet.microsoft.com/library/cc959354.aspx)。 一旦您接受主機的指紋，除非指紋變更，否則 SSH 不會再次提示您。
+SSH 會在連線至未知的主機時顯示此指紋，以防止 [攔截式攻擊](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10))。 一旦您接受主機的指紋，除非指紋變更，否則 SSH 不會再次提示您。
 
 3) 當系統詢問您是否要繼續連接時，請輸入 `yes` 。 Git 將複製存放庫，並設定來源遠端以使用 SSH 連線，以供未來的 Git 命令使用。
 
@@ -153,9 +153,9 @@ Git 資訊會儲存在定型回合的屬性中。 您可以使用 Azure 入口�
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 從 [studio 入口網站](https://ml.azure.com)中，選取您的工作區。
-1. 選取 [ __實驗__]，然後選取您的其中一個實驗。
+1. 選取 [ __實驗__ ]，然後選取您的其中一個實驗。
 1. 從 [ __執行編號__ ] 資料行中選取其中一個執行。
-1. 選取 [ __輸出 + 記錄__]，然後展開 __記錄__ 和 __azureml__ 專案。 選取以__ ### \_ azure__開頭的連結。
+1. 選取 [ __輸出 + 記錄__ ]，然後展開 __記錄__ 和 __azureml__ 專案。 選取以 __### \_ azure__ 開頭的連結。
 
 記錄的資訊包含類似下列 JSON 的文字：
 
@@ -178,7 +178,7 @@ Git 資訊會儲存在定型回合的屬性中。 您可以使用 Azure 入口�
 
 ### <a name="python-sdk"></a>Python SDK
 
-提交定型回合之後，會傳回 [執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 物件。 `properties`此物件的屬性包含已記錄的 git 資訊。 例如，下列程式碼會捕獲認可雜湊：
+提交定型回合之後，會傳回 [執行](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 物件。 `properties`此物件的屬性包含已記錄的 git 資訊。 例如，下列程式碼會捕獲認可雜湊：
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-如需詳細資訊，請參閱 [az ml 執行](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) 參考檔。
+如需詳細資訊，請參閱 [az ml 執行](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) 參考檔。
 
 ## <a name="next-steps"></a>後續步驟
 

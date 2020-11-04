@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6b453b11c892b5d81c41cac9451b07be69aa4d3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285912"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325349"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "93285912"
 > - Azure 容器執行個體 (ACI)
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -47,7 +47,7 @@ ms.locfileid: "93285912"
     - 虛擬網路資源上的「Microsoft. Network/virtualNetworks/join/action」。
     - 子網資源上的「Microsoft. Network/virtualNetworks/subnet/join/action」。
 
-    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)
+    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](../role-based-access-control/built-in-roles.md#networking)
 
 <a id="aksvnet"></a>
 
@@ -86,7 +86,7 @@ ms.locfileid: "93285912"
     若要尋找評分端點的 IP 位址，請查看已部署服務的評分 URI。 如需有關如何查看評分 URI 的詳細資訊，請參閱 [使用部署為 web 服務的模型](how-to-consume-web-service.md#connection-information)。
 
    > [!IMPORTANT]
-   > 為 NSG 保留預設輸出規則。 如需詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的預設安全性規則一節。
+   > 為 NSG 保留預設輸出規則。 如需詳細資訊，請參閱[安全性群組](../virtual-network/network-security-groups-overview.md#default-security-rules)中的預設安全性規則一節。
 
    [![輸入安全性規則](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
@@ -170,7 +170,7 @@ aks_target = ComputeTarget.create(workspace=ws,
     ```azurecli-interactive
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
-如需使用內部負載平衡器搭配 AKS 的詳細資訊，請參閱 [使用內部負載平衡器搭配 Azure Kubernetes Service](/azure/aks/internal-lb)。
+如需使用內部負載平衡器搭配 AKS 的詳細資訊，請參閱 [使用內部負載平衡器搭配 Azure Kubernetes Service](../aks/internal-lb.md)。
 
 #### <a name="enable-private-load-balancer"></a>啟用私人負載平衡器
 
@@ -220,7 +220,7 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 > [!IMPORTANT]
 > 使用 CLI，您只能使用內部負載平衡器來建立 AKS 叢集。 沒有 az ml 命令可升級現有的叢集，以使用內部負載平衡器。
 
-如需詳細資訊，請參閱 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference （建立參考）。
+如需詳細資訊，請參閱 [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference （建立參考）。
 
 ---
 
@@ -261,7 +261,7 @@ aks_target.wait_for_completion(show_output = True)
     > [!IMPORTANT]
     > 在啟用委派時，請使用 `Microsoft.ContainerInstance/containerGroups` 作為 [將子網路委派給服務] 值。
 
-2. 使用 [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) 來部署模型，並使用 `vnet_name` 和 `subnet_name` 參數。 將這些參數設定為啟用委派的虛擬網路名稱和子網路。
+2. 使用 [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) 來部署模型，並使用 `vnet_name` 和 `subnet_name` 參數。 將這些參數設定為啟用委派的虛擬網路名稱和子網路。
 
 ## <a name="limit-outbound-connectivity-from-the-virtual-network"></a> 限制來自虛擬網路的輸出連線能力
 

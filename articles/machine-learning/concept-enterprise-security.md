@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: b45c5cd1a750ee4b3f182920c4ee2f2e47756867
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f9d6f58256ccc21e5121a16a429e0f4c3ff1e485
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899315"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323096"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性和治理
 
@@ -85,7 +85,7 @@ Azure Machine Learning 支援兩種形式的 Web 服務驗證：金鑰和權杖�
 
 每個工作區也有相關聯的系統指派受控識別，其名稱與工作區相同。 受控識別在工作區中使用的連結資源上具有下列權限。
 
-如需受控識別的相關詳細資訊，請參閱[適用於 Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+如需受控識別的相關詳細資訊，請參閱[適用於 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
 | 資源 | 權限 |
 | ----- | ----- |
@@ -118,7 +118,7 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 ### <a name="encryption-at-rest"></a>待用加密
 
 > [!IMPORTANT]
-> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
+> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
 
 旗標會 `hbi_workspace` 控制 [microsoft 針對診斷目的所收集的資料](#microsoft-collected-data) 量，並 [在 microsoft 管理的環境中啟用額外的加密](../security/fundamentals/encryption-atrest.md)。 此外，它也會啟用下列動作：
 
@@ -131,7 +131,7 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 
 Azure Machine Learning 會將快照集、輸出和記錄儲存在與 Azure Machine Learning 工作區和您的訂用帳戶相關聯的 Azure Blob 儲存體帳戶中。 Azure Blob 儲存體中儲存的所有資料，都會使用 Microsoft 受控金鑰進行待用加密。
 
-如需如何針對儲存在 Azure Blob 儲存體中的資料使用您自己的金鑰的相關資訊，請參閱[在 Azure Key Vault 中使用客戶管理金鑰進行 Azure 儲存體加密](../storage/common/storage-encryption-keys-portal.md)。
+如需如何針對儲存在 Azure Blob 儲存體中的資料使用您自己的金鑰的相關資訊，請參閱[在 Azure Key Vault 中使用客戶管理金鑰進行 Azure 儲存體加密](../storage/common/customer-managed-keys-configure-key-vault.md)。
 
 定型資料通常也會儲存在 Azure Blob 儲存體中，以便定型計算目標可以加以存取。 此儲存體不受 Azure Machine Learning 管理，但已作為遠端檔案系統裝載至計算目標。
 
@@ -151,12 +151,12 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 
 * 建立 Azure Machine Learning 工作區時，請使用下列參數。 這兩個參數都是必要的，而且在 SDK、CLI、REST API 和 Resource Manager 範本中都有支援。
 
-    * `resource_cmk_uri`:此參數是金鑰保存庫中客戶管理金鑰的完整資源 URI，包括[金鑰的版本資訊](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)。 
+    * `resource_cmk_uri`:此參數是金鑰保存庫中客戶管理金鑰的完整資源 URI，包括[金鑰的版本資訊](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)。 
 
     * `cmk_keyvault`:此參數是您訂用帳戶中金鑰保存庫的資源識別碼。 此金鑰保存庫必須位於您將用於 Azure Machine Learning 工作區的相同地區和訂用帳戶中。 
     
         > [!NOTE]
-        > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
+        > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -171,7 +171,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 若要使用您自己 (客戶管理) 金鑰來加密您的 Azure Container Registry，您必須建立自己的 ACR，並在佈建工作區時加以連結，或加密在佈建工作區時所建立的預設執行個體。
 
 > [!IMPORTANT]
-> Azure Machine Learning 需要在您的 Azure Container Registry 啟用系統管理員帳戶。 依預設，當您建立容器登錄時，就會停用此設定。 如需啟用系統管理員帳戶的相關資訊，請參閱系統 [管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
+> Azure Machine Learning 需要在您的 Azure Container Registry 啟用系統管理員帳戶。 依預設，當您建立容器登錄時，就會停用此設定。 如需啟用系統管理員帳戶的相關資訊，請參閱系統 [管理員帳戶](../container-registry/container-registry-authentication.md#admin-account)。
 >
 > 為工作區建立 Azure Container Registry 之後，請勿將其刪除。 這樣做將會造成您的 Azure Machine Learning 工作區中斷。
 
@@ -193,7 +193,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 
 如需建立和使用部署設定的相關詳細資訊，請參閱下列文章：
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 參考
+* [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 參考
 * [部署的位置和方式](how-to-deploy-and-where.md)
 * [將模型部署到 Azure 容器執行個體](how-to-deploy-azure-container-instance.md)
 
@@ -222,7 +222,7 @@ Azure Databricks 可以在 Azure Machine Learning 管線中使用。 根據預�
 
 Azure Machine Learning 使用 TLS 來保護各種 Azure Machine Learning 微服務之間的內部通訊。 所有的 Azure 儲存體存取也會透過安全通道進行。
 
-為了保護對評分端點進行的外部呼叫，Azure Machine Learning 使用 TLS。 如需詳細資訊，請參閱[使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service) \(部分機器翻譯\)。
+為了保護對評分端點進行的外部呼叫，Azure Machine Learning 使用 TLS。 如需詳細資訊，請參閱[使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](./how-to-secure-web-service.md) \(部分機器翻譯\)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 
@@ -242,7 +242,7 @@ SSH 密碼和計算目標 (例如 Azure HDInsight 和 VM) 的金鑰會儲存在�
 
 Microsoft 可能會收集非使用者識別資訊，像是資源名稱 (例如資料集名稱或機器學習實驗名稱)，或作業環境變數以供診斷之用。 所有這類資料都是使用 Microsoft 受控金鑰儲存在 Microsoft 擁有之訂用帳戶內裝載的儲存體中，並遵循 [Microsoft 的標準隱私權原則和資料處理標準](https://privacy.microsoft.com/privacystatement)。
 
-Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，當命名 [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 時，請避免包含敏感性資訊，例如使用者名稱或祕密專案名稱。 此資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
+Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，當命名 [run_id](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 時，請避免包含敏感性資訊，例如使用者名稱或祕密專案名稱。 此資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
 
 在佈建工作區時，您可以將 `hbi_workspace` 參數設定為 `TRUE`，以選擇不要收集診斷資料。 使用 AzureML Python SDK、CLI、REST API 或 Azure Resource Manager 範本時，支援此功能。
 
@@ -262,7 +262,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 
 計量包含有關執行、部署和註冊的資訊。
 
-如需詳細資訊，請參閱 [Azure 監視器中的計量](/azure/azure-monitor/platform/data-platform-metrics)。
+如需詳細資訊，請參閱 [Azure 監視器中的計量](../azure-monitor/platform/data-platform-metrics.md)。
 
 ### <a name="activity-log"></a>活動記錄檔
 
@@ -289,7 +289,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 
 ### <a name="vulnerability-scanning"></a>弱點掃描
 
-Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 針對 Azure machine learning，您應該啟用 Azure Container Registry 資源的掃描，並 Azure Kubernetes Service 資源。 請參閱 [Azure Container Registry 的影像掃描（由安全性中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) 和 [Azure Kubernetes Services 與安全性中心整合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)）。
+Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 針對 Azure machine learning，您應該啟用 Azure Container Registry 資源的掃描，並 Azure Kubernetes Service 資源。 請參閱 [Azure Container Registry 的影像掃描（由安全性中心](../security-center/defender-for-container-registries-introduction.md) 和 [Azure Kubernetes Services 與安全性中心整合](../security-center/defender-for-kubernetes-introduction.md)）。
 
 ## <a name="data-flow-diagrams"></a>資料流程圖
 
@@ -364,12 +364,12 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 ## <a name="audit-and-manage-compliance"></a>稽核及管理合規性
 
-[Azure 原則](/azure/governance/policy) 是一種管理工具，可讓您確保 Azure 資源符合您的原則。 您可以使用 Azure Machine Learning 指派下列原則：
+[Azure 原則](../governance/policy/index.yml) 是一種管理工具，可讓您確保 Azure 資源符合您的原則。 您可以使用 Azure Machine Learning 指派下列原則：
 
 * **客戶管理的金鑰** ：無論工作區是否必須使用客戶管理的金鑰，請進行審核或強制執行。
 * **Private link** ： Audit 工作區是否使用私人端點來與虛擬網路通訊。
 
-如需 Azure 原則的詳細資訊，請參閱 [Azure 原則檔](/azure/governance/policy/overview)。
+如需 Azure 原則的詳細資訊，請參閱 [Azure 原則檔](../governance/policy/overview.md)。
 
 如需 Azure Machine Learning 特定原則的詳細資訊，請參閱 [使用 Azure 原則來審核和管理合規性](how-to-integrate-azure-policy.md)。
 
@@ -384,4 +384,4 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 * [搭配使用 Azure Machine Learning 與 Azure 防火牆](how-to-access-azureml-behind-firewall.md)
 * [搭配使用 Azure Machine Learning 與 Azure 虛擬網路](how-to-network-security-overview.md)
 * [建置建議系統的最佳作法](https://github.com/Microsoft/Recommenders)
-* [在 Azure 上建置即時建議 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)
+* [在 Azure 上建置即時建議 API](/azure/architecture/reference-architectures/ai/real-time-recommendation)

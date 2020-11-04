@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302497"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322189"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什麼是 Azure Machine Learning 環境？
 
@@ -35,7 +35,7 @@ Azure Machine Learning 環境是您機器學習訓練發生所在環境的封裝
 
 ## <a name="types-of-environments"></a>環境的類型
 
-環境可廣泛分為三種類別： *策劃*、 *使用者管理*和 *系統管理*。
+環境可廣泛分為三種類別： *策劃* 、 *使用者管理* 和 *系統管理* 。
 
 策劃環境是由 Azure Machine Learning 提供，且預設會在您的工作區中提供。 其目的是要依原樣使用，其中包含 Python 套件和設定的集合，可協助您開始使用各種機器學習架構。 這些預先建立的環境也允許更快的部署時間。 如需完整清單，請參閱 [策劃環境文章](resource-curated-environments.md)。
 
@@ -68,7 +68,7 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
 
 ### <a name="submitting-a-run-using-an-environment"></a>使用環境提交執行
 
-當您第一次使用環境提交遠端執行時，Azure Machine Learning 服務會在與工作區相關聯的 Azure Container Registry (ACR) 上叫用 [Acr 組建](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) 工作。 然後，會在工作空間 ACR 上快取內建的 Docker 映射。 策劃環境是由全域 ACR 中快取的 Docker 映射所支援。 開始執行時，會從相關 ACR 的計算目標抓取影像。
+當您第一次使用環境提交遠端執行時，Azure Machine Learning 服務會在與工作區相關聯的 Azure Container Registry (ACR) 上叫用 [Acr 組建](../container-registry/container-registry-tasks-overview.md) 工作。 然後，會在工作空間 ACR 上快取內建的 Docker 映射。 策劃環境是由全域 ACR 中快取的 Docker 映射所支援。 開始執行時，會從相關 ACR 的計算目標抓取影像。
 
 針對本機執行，會根據環境定義建立 Docker 或 Conda 環境。 然後，腳本會在目標計算上執行-本機執行時間環境或本機 Docker 引擎。
 
@@ -79,13 +79,13 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
  1. 下載基礎映射，並執行任何 Docker 步驟
  2. 根據環境定義中指定的 conda 相依性來建立 conda 環境。
 
-如果您指定 [使用者管理](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)的相依性，則會省略第二個步驟。 在此情況下，您必須負責安裝任何 Python 套件，方法是將它們包含在您的基底映射中，或在第一個步驟中指定自訂的 Docker 步驟。 您也要負責指定 Python 可執行檔的正確位置。 您也可以使用 [自訂的 Docker 基底映射](how-to-deploy-custom-docker-image.md)。
+如果您指定 [使用者管理](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)的相依性，則會省略第二個步驟。 在此情況下，您必須負責安裝任何 Python 套件，方法是將它們包含在您的基底映射中，或在第一個步驟中指定自訂的 Docker 步驟。 您也要負責指定 Python 可執行檔的正確位置。 您也可以使用 [自訂的 Docker 基底映射](how-to-deploy-custom-docker-image.md)。
 
 ### <a name="image-caching-and-reuse"></a>映射快取和重複使用
 
 如果您針對另一次執行使用相同的環境定義，Azure Machine Learning 服務會從工作區 ACR 重複使用快取的影像。 
 
-若要查看快取影像的詳細資料，請使用 [Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) 方法。
+若要查看快取影像的詳細資料，請使用 [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) 方法。
 
 為了判斷要重複使用快取的映射或建立新的映射，此服務會從環境定義中計算 [雜湊值](https://en.wikipedia.org/wiki/Hash_table) ，並將其與現有環境的雜湊進行比對。 雜湊的依據：
  
@@ -103,15 +103,15 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
 ![環境快取作為 Docker 映射的圖表](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> 例如，如果您建立的環境具有取消固定的套件相依性，則 ```numpy``` 該環境會繼續使用在 _建立環境時_所安裝的套件版本。 此外，任何符合定義的未來環境都將繼續使用舊版本。 
+> 例如，如果您建立的環境具有取消固定的套件相依性，則 ```numpy``` 該環境會繼續使用在 _建立環境時_ 所安裝的套件版本。 此外，任何符合定義的未來環境都將繼續使用舊版本。 
 
 若要更新封裝，請指定版本號碼來強制重建映射（例如） ```numpy==1.18.1``` 。 將會安裝新的相依性，包括嵌套的相依性，這可能會中斷先前運作的案例。 
 
 > [!WARNING]
->  此 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) 會重建快取的映射，並有可能的副作用會更新取消固定的封裝，並中斷與該快取映射對應之所有環境定義的重現性。
+>  此 [環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) 會重建快取的映射，並有可能的副作用會更新取消固定的封裝，並中斷與該快取映射對應之所有環境定義的重現性。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何在 Azure Machine Learning 中 [建立和使用環境](how-to-use-environments.md) 。
-* 請參閱 [環境類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)的 Python SDK 參考檔。
+* 請參閱 [環境類別](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)的 Python SDK 參考檔。
 * 請參閱 R SDK 參考檔中的 [環境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)。

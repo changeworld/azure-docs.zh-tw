@@ -2,16 +2,16 @@
 title: 針對 Azure 自動化 Runbook 問題進行疑難排解
 description: 此文章說明如何針對 Azure 自動化 Runbook 問題進行疑難排解及解決問題。
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e173e76b80717d6685e9a6b383ee98eddf910f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904797"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323475"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
 
@@ -42,7 +42,7 @@ ms.locfileid: "87904797"
     * 如果執行身分帳戶已過期，請[更新憑證](../manage-runas-account.md#cert-renewal)。
     * 如果您正嘗試使用過期的 Webhook 來啟動 Runbook，請[更新 Webhook](../automation-webhooks.md#renew-a-webhook)。
     * [檢查作業狀態](../automation-runbook-execution.md#job-statuses)，來判斷目前的 Runbook 狀態及問題的一些可能原因。
-    * [新增其他輸出](../automation-runbook-output-and-messages.md#monitor-message-streams)到 Runbook，以識別暫止 Runbook 之前發生什麼事。
+    * [新增其他輸出](../automation-runbook-output-and-messages.md#working-with-message-streams)到 Runbook，以識別暫止 Runbook 之前發生什麼事。
     * [處理作業擲回的任何例外狀況](../automation-runbook-execution.md#exceptions)。
 
 1. 如果混合式 Runbook 背景工作角色上的 Runbook 作業或環境沒有回應，請執行此步驟。
@@ -147,15 +147,15 @@ Run Login-AzureRMAccount to login.
 
 如果您正嘗試存取另一個訂用帳戶中的資源，請遵循下列步驟來設定權限：
 
-1. 移至自動化執行身分帳戶，然後複製**應用程式識別碼**和**指紋**。
+1. 移至自動化執行身分帳戶，然後複製 **應用程式識別碼** 和 **指紋** 。
 
     ![複製應用程式識別碼和指紋](../media/troubleshoot-runbooks/collect-app-id.png)
 
-1. 移至訂用帳戶的**存取控制**，自動化帳戶「不會」裝載於其中，並新增角色指派。
+1. 移至訂用帳戶的 **存取控制** ，自動化帳戶「不會」裝載於其中，並新增角色指派。
 
     ![存取控制](../media/troubleshoot-runbooks/access-control.png)
 
-1. 新增先前收集到的**應用程式識別碼**。 選取 [參與者] 權限。
+1. 新增先前收集到的 **應用程式識別碼** 。 選取 [參與者] 權限。
 
     ![新增角色指派](../media/troubleshoot-runbooks/add-role-assignment.png)
 
@@ -201,7 +201,7 @@ The subscription named <subscription name> cannot be found.
 遵循下列步驟，以判斷您是否已向 Azure 進行驗證，並取得您嘗試選取之訂用帳戶的存取權：
 
 1. 為了確定您的指令碼能夠獨立運作，請在 Azure 自動化外部進行測試。
-1. 執行 `Select-*` Cmdlet 之前，先確定您的指令碼會執行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) \(英文\) Cmdlet。
+1. 執行 `Select-*` Cmdlet 之前，先確定您的指令碼會執行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) \(英文\) Cmdlet。
 1. 在 Runbook 的開頭加上 `Disable-AzContextAutosave –Scope Process`。 這個 Cmdlet 確保所有認證只會套用到目前 Runbook 的執行。
 1. 如果您仍然看到錯誤訊息，可藉由新增 `Connect-AzAccount` 的 `AzContext` 參數來修改您的程式碼，然後執行程式碼。
 
@@ -398,7 +398,7 @@ Object reference not set to an instance of an object
 
 ### <a name="resolution"></a>解決方案
 
-實作輪詢邏輯，並使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) \(英文\) Cmdlet 來擷取輸出。 這裡定義了此邏輯的範例：
+實作輪詢邏輯，並使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) \(英文\) Cmdlet 來擷取輸出。 這裡定義了此邏輯的範例：
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 ### <a name="cause"></a>原因
 
-從具備許多[詳細資訊資料流](../automation-runbook-output-and-messages.md#monitor-verbose-stream)的 Runbook 中擷取作業輸出時，可能就會發生此錯誤。
+從具備許多[詳細資訊資料流](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream)的 Runbook 中擷取作業輸出時，可能就會發生此錯誤。
 
 ### <a name="resolution"></a>解決方案
 
 執行下列其中一個動作來解決此錯誤：
 
 * 編輯 Runbook，並減少它所發出的作業資料流數目。
-* 減少在執行 Cmdlet 時所要擷取的資料流數目。 若要這樣做，您可以設定 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) \(英文\) Cmdlet 的 `Stream` 參數值，以便僅擷取輸出資料流。 
+* 減少在執行 Cmdlet 時所要擷取的資料流數目。 若要這樣做，您可以設定 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) \(英文\) Cmdlet 的 `Stream` 參數值，以便僅擷取輸出資料流。 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>案例：Runbook 作業因為超過已配置的配額而失敗
 
@@ -522,7 +522,7 @@ The runbook job failed due to a job stream being larger than 1MB, this is the li
 
 因為您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程，所以會發生此錯誤。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 作業輸出資料流程有 1 MB 的限制。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。 針對執行中的混合式 Runbook 背景工作角色，會顯示截斷為 1 MB 的輸出資料流程，而不會出現任何錯誤訊息。
 
@@ -576,7 +576,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 有兩種方法可以解決此錯誤：
 
-* 不使用 [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7) \(英文\)，而是改為使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) \(英文\) 來啟動 Runbook。
+* 不使用 [Start-Job](/powershell/module/microsoft.powershell.core/start-job) \(英文\)，而是改為使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) \(英文\) 來啟動 Runbook。
 * 嘗試在混合式 Runbook 背景工作角色上執行 Runbook。
 
 若要深入了解此行為和 Azure 自動化 Runbook 的其他行為，請參閱 [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)。
@@ -605,8 +605,8 @@ Runbook 的執行時間已超過 Azure 沙箱中公平共用所允許的三小�
 
 啟用子 Runbook 案例的 PowerShell Cmdlet 是：
 
-* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) \(英文\)。 此 Cmdlet 可讓您啟動 Runbook，並將參數傳遞給 Runbook。
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) \(英文\)。 如果有需要在子 Runbook 完成後執行的作業，此 Cmdlet 可讓您檢查每個子項的作業狀態。
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) \(英文\)。 此 Cmdlet 可讓您啟動 Runbook，並將參數傳遞給 Runbook。
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) \(英文\)。 如果有需要在子 Runbook 完成後執行的作業，此 Cmdlet 可讓您檢查每個子項的作業狀態。
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>案例：作業資料流中有關 get_SerializationSettings 方法的錯誤
 
@@ -642,7 +642,7 @@ At line:16 char:1
 
 ### <a name="cause"></a>原因
 
-發生此問題的原因是，Azure 沙箱會阻止存取所有外部處理序 COM 伺服器。 例如，沙箱化的應用程式或 Runbook 無法呼叫 Windows Management Instrumentation (WMI) 或 Windows Installer 服務 (msiserver.exe)。 
+發生此問題的原因是，Azure 沙箱會阻止存取所有外部處理序 COM 伺服器。 例如，沙箱化的應用程式或 Runbook 無法呼叫 Windows Management Instrumentation (WMI) 或 Windows Installer 服務 (msiserver.exe)。
 
 ### <a name="resolution"></a>解決方案
 

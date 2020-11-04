@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791319"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325011"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ RBAC 替代方案：
 
 - 在防火牆上，IP 位址範圍會套用到下列網路項目，但虛擬網路規則不這麼做：
   - [站對站 (S2S) 虛擬私人網路 (VPN)][vpn-gateway-indexmd-608y]
-  - 透過 [ExpressRoute][expressroute-indexmd-744v] 的內部部署
+  - 透過 [ExpressRoute](../../expressroute/index.yml) 的內部部署
 
 ### <a name="considerations-when-using-service-endpoints"></a>使用服務端點時的注意事項
 

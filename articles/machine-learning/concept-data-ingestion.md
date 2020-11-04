@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401398da4d71f32973f720dd0ca5cc9b550892e8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890171"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323043"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning 工作流程的資料內嵌選項
 
@@ -33,7 +33,7 @@ ms.locfileid: "90890171"
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) 為數據內嵌管線提供資料來源監視和觸發程式的原生支援。  
+[Azure Data Factory](../data-factory/introduction.md) 為數據內嵌管線提供資料來源監視和觸發程式的原生支援。  
 
 下表摘要說明針對資料內嵌工作流程使用 Azure Data Factory 的優缺點。
 
@@ -41,11 +41,11 @@ ms.locfileid: "90890171"
 ---|---
 專為解壓縮、載入和轉換資料所建立。|目前提供一組有限的 Azure Data Factory 管線工作 
 可讓您建立資料驅動的工作流程，以大規模協調資料移動和轉換。|建立和維護成本高昂。 如需詳細資訊，請參閱 Azure Data Factory 的 [定價頁面](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) 。
-與各種 Azure 工具整合，例如 [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) 和 [Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | 不會以原生方式執行腳本，而是依賴個別的腳本執行計算 
+與各種 Azure 工具整合，例如 [Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) 和 [Azure Functions](../data-factory/control-flow-azure-function-activity.md) | 不會以原生方式執行腳本，而是依賴個別的腳本執行計算 
 以原生方式支援資料來源觸發的資料內嵌| 
 資料準備和模型定型流程是分開的。|
 Azure Data Factory 資料流程的內嵌資料歷程功能|
-為非腳本方法提供低程式碼體驗[使用者介面](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) |
+為非腳本方法提供低程式碼體驗[使用者介面](../data-factory/quickstart-create-data-factory-portal.md) |
 
 這些步驟和下圖說明 Azure Data Factory 的資料內嵌工作流程。
 
@@ -60,7 +60,7 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
 
 ## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
-使用 [PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)，您可以將資料內嵌工作併入 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md) 步驟中。
+使用 [PYTHON SDK](/python/api/overview/azure/ml)，您可以將資料內嵌工作併入 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md) 步驟中。
 
 下表摘要說明使用 SDK 的優缺點，以及用於資料內嵌工作的 ML 管線步驟。
 

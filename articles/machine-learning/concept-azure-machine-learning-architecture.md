@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276079"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322318"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -53,9 +53,9 @@ ms.locfileid: "91276079"
 
 Azure Machine Learning 引進兩個完全受控的雲端式虛擬機器， (VM) 針對機器學習工作進行設定：
 
-* <a name="compute-instance"></a>**計算實例**：計算實例是 VM，其中包含針對機器學習服務安裝的多個工具和環境。 計算實例的主要用途是針對您的開發工作站。  您可以開始執行範例筆記本，而不需要設定。 計算實例也可用來做為定型和推斷作業的計算目標。
+* <a name="compute-instance"></a>**計算實例** ：計算實例是 VM，其中包含針對機器學習服務安裝的多個工具和環境。 計算實例的主要用途是針對您的開發工作站。  您可以開始執行範例筆記本，而不需要設定。 計算實例也可用來做為定型和推斷作業的計算目標。
 
-* **計算**叢集：計算叢集是具有多節點調整功能的 vm 叢集。 計算叢集較適用于大型作業和生產環境的計算目標。  叢集會在提交作業時自動相應增加。  使用作為定型計算目標或用於開發/測試部署。
+* **計算** 叢集：計算叢集是具有多節點調整功能的 vm 叢集。 計算叢集較適用于大型作業和生產環境的計算目標。  叢集會在提交作業時自動相應增加。  使用作為定型計算目標或用於開發/測試部署。
 
 如需有關定型計算目標的詳細資訊，請參閱 [定型計算目標](concept-compute-target.md#train)。  如需部署計算目標的詳細資訊，請參閱 [部署目標](concept-compute-target.md#deploy)。
 
@@ -100,9 +100,9 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 ### <a name="run-configurations"></a>回合組態
 
-[工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **執行**設定
+[工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **執行** 設定
 
-回合設定會定義如何在指定的計算目標中執行腳本。 您可以使用此設定來指定要執行的腳本、計算目標和 Azure ML 環境、任何分散式工作專屬的設定，以及一些其他屬性。 如需一組完整的可設定選項的詳細資訊，請參閱 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)。
+回合設定會定義如何在指定的計算目標中執行腳本。 您可以使用此設定來指定要執行的腳本、計算目標和 Azure ML 環境、任何分散式工作專屬的設定，以及一些其他屬性。 如需一組完整的可設定選項的詳細資訊，請參閱 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)。
 
 回合設定可保存在包含定型腳本的目錄內的檔案中。   您也可以將它視為記憶體內建物件，用來提交執行。
 
@@ -110,7 +110,7 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 ### <a name="snapshots"></a>快照集
 
-[工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **快照**集
+[工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **快照** 集
 
 提交回合時，Azure Machine Learning 會將包含指令碼的目錄壓縮成 zip 檔案，然後傳送至計算目標。 接著會將 zip 檔案解壓縮並在該處執行指令碼。 Azure Machine Learning 也會將 zip 檔案以快照方式儲存在回合記錄中。 任何擁有工作區存取權的人都能瀏覽回合記錄並下載快照集。
 
@@ -145,7 +145,7 @@ Azure Machine Learning 與架構無關。 在建立模型時，您可以使用�
 
 [工作區](#workspace)  > **模型**
 
-**模型**登錄可讓您追蹤 Azure Machine Learning 工作區中的所有模型。
+**模型** 登錄可讓您追蹤 Azure Machine Learning 工作區中的所有模型。
 
 模型是透過名稱與版本來識別的。 每次註冊與現有模型名稱相同的模型時，登錄都會假設它是一個新版本。 版本會累加，新模型則會以相同的名稱來註冊。
 
@@ -162,9 +162,9 @@ Azure Machine Learning 與架構無關。 在建立模型時，您可以使用�
 
 您會將 [已註冊的模型](#register-model) 部署為服務端點。 您需要下列元件：
 
-* **環境**。 此環境會封裝執行您的模型以進行推斷所需的相依性。
-* **評分程式碼**。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
-* **推斷**設定。 推斷設定會指定將模型當作服務執行所需的環境、輸入腳本和其他元件。
+* **環境** 。 此環境會封裝執行您的模型以進行推斷所需的相依性。
+* **評分程式碼** 。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* **推斷** 設定。 推斷設定會指定將模型當作服務執行所需的環境、輸入腳本和其他元件。
 
 如需這些元件的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
@@ -233,10 +233,10 @@ Studio 也可讓您存取屬於 Azure Machine Learning 一部分的互動式工�
 > 以下是標示 (preview) 的工具目前處於公開預覽狀態。
 > 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-+  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)，與任何 Python 環境中的服務互動。
++  使用[適用於 Python 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，與任何 Python 環境中的服務互動。
 + 使用 [適用于 r](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview) 的 Azure Machine Learning SDK，在任何 R 環境中與服務互動。
 + 使用 [Azure Machine Learning 設計](concept-designer.md) 工具來執行工作流程步驟，而不需要撰寫程式碼。 
-+ 使用 [AZURE MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) 進行自動化。
++ 使用 [AZURE MACHINE LEARNING CLI](./reference-azure-machine-learning-cli.md) 進行自動化。
 + [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
 
 ## <a name="next-steps"></a>後續步驟

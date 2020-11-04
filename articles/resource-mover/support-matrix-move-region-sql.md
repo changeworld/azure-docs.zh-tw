@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652804"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324574"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure SQL 資源
 
@@ -28,7 +28,7 @@ ms.locfileid: "89652804"
 **區域備援** | 支援 |  支援的移動選項：<br/><br/> -支援區域冗余的區域之間。<br/><br/> -不支援區域冗余的區域之間。<br/><br/> -支援區域冗余的區域與不支援區域冗余的區域之間的差異。<br/><br/> -不支援區域冗余的區域與支援區域冗余的區域之間的差異。 
 **資料同步** | 中樞/同步資料庫：不支援<br/><br/> 同步成員：支援。 | 如果已移動同步成員，您必須設定新目標資料庫的資料同步。
 **現有的異地複寫** | 支援 | 現有的地理複本會重新對應到目的地區域中的新主要複本。<br/><br/> 您必須在移動之後初始化植入。 [深入了解](/azure/sql-database/sql-database-active-geo-replication-portal)
-**透明資料加密 (TDE) 攜帶您自己的金鑰 (BYOK) ** | 支援 | [深入瞭解](../key-vault/general/move-region.md) 跨區域移動金鑰保存庫。
+**透明資料加密 (TDE) 攜帶您自己的金鑰 (BYOK)** | 支援 | [深入瞭解](../key-vault/general/move-region.md) 跨區域移動金鑰保存庫。
 **TDE 與服務管理的金鑰** | 支援。 |  [深入瞭解](../key-vault/general/move-region.md) 跨區域移動金鑰保存庫。
 **動態資料遮罩規則** | 支援。 | 在移動過程中，規則會自動複製到目的地區域。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started-portal)。
 **進階資料安全性** | 不支援。 | 因應措施：在目的地區域的 SQL Server 層級進行設定。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
@@ -38,7 +38,7 @@ ms.locfileid: "89652804"
 **自動調整** | 不支援。 | 因應措施：在移動之後設定自動調整設定。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable)。
 **資料庫警示** | 不支援。 | 因應措施：在移動之後設定警示。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal)。
 **Azure SQL Server stretch database** | 不支援 | 無法移動具有資源移動器的 SQL server stretch database。
-**Azure Synapse Analytics** | 不支援 | 無法使用資源移動器將 Synapse Analytics (先前的 Azure SQL 資料倉儲) 。
+**Azure Synapse Analytics** | 不支援 | 無法使用資源移動器將 Synapse Analytics (先前的 SQL 資料倉儲) 。
 ## <a name="next-steps"></a>後續步驟
 
 使用資源移動器嘗試使用 [AZURE SQL 資源](tutorial-move-region-sql.md) 至另一個區域。

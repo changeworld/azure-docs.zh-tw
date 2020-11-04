@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883082"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325451"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具執行批次預測
 
@@ -29,7 +29,7 @@ ms.locfileid: "90883082"
 > * 使用管線端點
 > * 管理端點版本
 
-若要了解如何使用 SDK 來設定批次評分服務，請參閱隨附的[操作說明](how-to-run-batch-predictions.md)。
+若要了解如何使用 SDK 來設定批次評分服務，請參閱隨附的[操作說明](./tutorial-pipeline-batch-scoring-classification.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -45,7 +45,7 @@ ms.locfileid: "90883082"
 
 1. 選取訓練管線，以訓練您要用來進行預測的模型。
 
-1. **提交**管線。
+1. **提交** 管線。
 
     ![提交管線](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "90883082"
 
 在本節中，您將設定手動的管線執行並改變管線參數，以對新資料進行評分。 
 
-1. 部署完成之後，請移至**端點**區段。
+1. 部署完成之後，請移至 **端點** 區段。
 
 1. 選取 [管線端點]。
 
@@ -125,7 +125,7 @@ ms.locfileid: "90883082"
 
 ### <a name="use-the-rest-endpoint"></a>使用 REST 端點
 
-您可以在**端點**區段中，找到如何使用管線端點和已發佈管線的相關資訊。
+您可以在 **端點** 區段中，找到如何使用管線端點和已發佈管線的相關資訊。
 
 您可以在 [執行概觀] 面板中找到管線端點的 REST 端點。 您可以呼叫端點來使用其預設的已發佈管線。
 

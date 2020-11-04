@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fe5eba72b507ebea6bc1012c567de70bc3deb5ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261340"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324543"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的部署階段
 
@@ -39,7 +39,7 @@ ms.locfileid: "91261340"
 ## <a name="how-to-do-it"></a>如何執行此動作
 此階段解決的主要工作︰
 
-**實作模型**︰將模型和管線部署到生產環境或類生產環境以供取用應用程式。
+**實作模型** ︰將模型和管線部署到生產環境或類生產環境以供取用應用程式。
 
 ### <a name="operationalize-a-model"></a>模型運作
 在您擁有一組妥善執行的模型後，就可以運作這些模型，供其他應用程式取用。 預測可根據商業需求，以即時或批次的形式執行。 若要部署模型，您要使用開放的 API 介面公開模型。 介面可讓模型能從各種應用程式輕鬆地取用，例如：
@@ -71,4 +71,4 @@ ms.locfileid: "91261340"
 
 我們會提供完整的逐步解說，示範適用于特定案例的程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
+如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](./index.yml)。

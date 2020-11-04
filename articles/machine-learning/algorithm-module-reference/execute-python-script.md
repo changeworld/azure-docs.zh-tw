@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092988"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323766"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -61,7 +61,7 @@ if spec is None:
 > Excute Python 腳本模組不支援安裝相依于額外原生程式庫的套件，其具有像是 "apt-get" 的命令，例如 JAVA、PyODBC 等等。這是因為此模組是在只預先安裝 Python 且具有非系統管理員許可權的簡單環境中執行。  
 
 ## <a name="upload-files"></a>上傳檔案
-[執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)上傳檔案。
+[執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-)上傳檔案。
 
 下列範例顯示如何在執行 Python 腳本模組中上傳影像檔案：
 
@@ -315,4 +315,4 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

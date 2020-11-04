@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 456e881d84697f4542f972ac0798cc95a3455b3c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86042130"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322405"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>建置和最佳化資料表，以便快速地將資料平行匯入至 Azure VM 上的 SQL Server
 
-本文說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。 若要將大量資料載入/傳輸到 SQL database，請使用資料 *分割資料表和視圖*來改善將資料匯入 sql database 和後續查詢的功能。 
+本文說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。 若要將大量資料載入/傳輸到 SQL database，請使用資料 *分割資料表和視圖* 來改善將資料匯入 sql database 和後續查詢的功能。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>建立新的資料庫和一組檔案群組
-* [建立新的資料庫](https://technet.microsoft.com/library/ms176061.aspx) (如果尚不存在)。
+* [建立新的資料庫](/sql/t-sql/statements/create-database-transact-sql) (如果尚不存在)。
 * 將資料庫檔案群組新增至將用來保留資料分割實體檔案的資料庫。 
-* 這可透過 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) (如果是新的資料庫) 或 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) (如果資料庫已經存在) 來完成。
+* 這可透過 [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql) (如果是新的資料庫) 或 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options) (如果資料庫已經存在) 來完成。
 * 將一或多個檔案 (視需要) 新增至每個資料庫檔案群組。
   
   > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "86042130"
   > 
   > 
 
-下列範例會建立含有三個檔案群組的新資料庫，這三個檔案群組不包括主要和記錄群組，且每個檔案群組中都會包含一個實體檔案。 資料庫檔案建立於預設的 SQL Server [資料] 資料夾中，如 SQL Server 執行個體中所設定。 如需關於預設檔案位置的詳細資訊，請參閱 [SQL Server 的預設和具名執行個體的檔案位置](https://msdn.microsoft.com/library/ms143547.aspx)。
+下列範例會建立含有三個檔案群組的新資料庫，這三個檔案群組不包括主要和記錄群組，且每個檔案群組中都會包含一個實體檔案。 資料庫檔案建立於預設的 SQL Server [資料] 資料夾中，如 SQL Server 執行個體中所設定。 如需關於預設檔案位置的詳細資訊，請參閱 [SQL Server 的預設和具名執行個體的檔案位置](/sql/sql-server/install/file-locations-for-default-and-named-instances-of-sql-server)。
 
 ```sql
    DECLARE @data_path nvarchar(256);
@@ -60,7 +60,7 @@ ms.locfileid: "86042130"
 為了要根據資料結構描述建立資料分割資料表，來對應到上一個步驟建立的資料庫檔案群組，您必須先建立資料分割函數和結構描述。 將資料大量匯入資料分割資料表時，記錄將根據資料分割配置分佈於檔案群組中，如下所述。
 
 ### <a name="1-create-a-partition-function"></a>1. 建立資料分割函數
-[建立資料分割函數](https://msdn.microsoft.com/library/ms187802.aspx)。此函數定義要在每個個別資料分割資料表中包含的值/界限範圍，例如，若要依 2013 年的月份來限制資料分割 (some\_datetime\_field)：
+[建立資料分割函數](/sql/t-sql/statements/create-partition-function-transact-sql)。此函數定義要在每個個別資料分割資料表中包含的值/界限範圍，例如，若要依 2013 年的月份來限制資料分割 (some\_datetime\_field)：
   
 ```sql
    CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -71,7 +71,7 @@ ms.locfileid: "86042130"
 ```
 
 ### <a name="2-create-a-partition-scheme"></a>2. 建立資料分割配置
-[建立資料分割配置](https://msdn.microsoft.com/library/ms179854.aspx)。 此配置會將資料分割函數中的每個資料分割範圍對應至實體檔案群組，例如：
+[建立資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 此配置會將資料分割函數中的每個資料分割範圍對應至實體檔案群組，例如：
   
 ```sql
       CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
@@ -94,24 +94,24 @@ ms.locfileid: "86042130"
 ```
 
 ### <a name="3-create-a-partition-table"></a>3. 建立資料分割資料表
-根據您的資料結構描述來[建立資料分割資料表](https://msdn.microsoft.com/library/ms174979.aspx)，並指定用來為資料表進行資料分割的資料分割配置和條件約束欄位，例如：
+根據您的資料結構描述來[建立資料分割資料表](/sql/t-sql/statements/create-table-transact-sql)，並指定用來為資料表進行資料分割的資料分割配置和條件約束欄位，例如：
   
 ```sql
    CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 ```
 
-如需詳細資訊，請參閱 [建立分割區資料表及索引](https://msdn.microsoft.com/library/ms188730.aspx)。
+如需詳細資訊，請參閱 [建立分割區資料表及索引](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes)。
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>大量匯入每個個別資料分割資料表的資料
 
 * 您可以使用 BCP、BULK INSERT 或其他方法，例如 [SQL Server 移轉精靈](https://sqlazuremw.codeplex.com/)。 所提供的範例會使用 BCP 方法。
-* [修改資料庫](https://msdn.microsoft.com/library/bb522682.aspx)，將交易記錄配置變更為 BULK_LOGGED，以便將記錄額外負荷降到最低，例如：
+* [修改資料庫](/sql/t-sql/statements/alter-database-transact-sql-set-options)，將交易記錄配置變更為 BULK_LOGGED，以便將記錄額外負荷降到最低，例如：
   
    ```sql
       ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
    ```
-* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將海量資料大量匯入 SQL Server 資料庫的秘訣，請參閱 [在1小時以內載入 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
+* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將海量資料大量匯入 SQL Server 資料庫的秘訣，請參閱 [在1小時以內載入 1 TB](/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
 
 下列 PowerShell 指令碼是使用 BCP 平行載入資料的範例。
 
@@ -180,7 +180,7 @@ ms.locfileid: "86042130"
 
 ## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>建立索引以將聯結和查詢效能最佳化
 * 如果您會從多個資料表擷取資料來進行模型化，請在聯結索引鍵上建立索引來提升聯結效能。
-* [建立索引](https://technet.microsoft.com/library/ms188783.aspx) (叢集或非叢集) 會將每個資料分割的目標設定為相同的檔案群組，例如：
+* [建立索引](/sql/t-sql/statements/create-index-transact-sql) (叢集或非叢集) 會將每個資料分割的目標設定為相同的檔案群組，例如：
   
 ```sql
    CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
@@ -198,4 +198,3 @@ ms.locfileid: "86042130"
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>進階分析程序和技術實務範例
 如需搭配使用 Team Data Science Process 與公用資料集的端對端逐步解說範例，請參閱 [Team Data Science Process 實務：使用 SQL Server](sql-walkthrough.md)。
-

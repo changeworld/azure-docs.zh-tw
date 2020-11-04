@@ -6,14 +6,14 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 4975bb2a8ad384b8abc28f1d1835c2c9e98b8c54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95acb028867caf6f497dd99ad3082efcaab09c7b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315419"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325301"
 ---
-輸入指令碼會接收提交給已部署 Web 服務的資料，並將其傳遞給模型。 然後，輸入指令碼會採用模型傳回的回應，並將該回應傳回至用戶端。 *腳本是您的模型特有的*。 它必須瞭解模型預期並傳回的資料。
+輸入指令碼會接收提交給已部署 Web 服務的資料，並將其傳遞給模型。 然後，輸入指令碼會採用模型傳回的回應，並將該回應傳回至用戶端。 *腳本是您的模型特有的* 。 它必須瞭解模型預期並傳回的資料。
 
 您需要在輸入腳本中完成的兩個事項如下：
 
@@ -49,7 +49,7 @@ import os
 model = open(os.path.join('.', 'models', 'model1.onnx'))
 ```
 
-#### <a name="writing-run"></a>撰寫執行 ( # A1
+### <a name="writing-run"></a>撰寫執行 ( # A1
 
 `run()` 每次您的模型收到評分要求時都會執行，而且預期要求的主體必須是具有下列結構的 JSON 檔：
 

@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3bd4953812ec88f28ac16956a85c95afc5bb8a38
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999223"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325571"
 ---
 # <a name="advanced-entry-script-authoring"></a>進階的輸入腳本製作
 
@@ -26,7 +26,7 @@ ms.locfileid: "91999223"
 
 本文假設您已經有想要使用 Azure Machine Learning 部署的已定型機器學習模型。 若要深入瞭解模型部署，請參閱 [此教學](how-to-deploy-and-where.md)課程。
 
-## <a name="automatically-generate-a-swagger-schema"></a>自動產生 Swagger 架構
+## <a name="automatically-generate-a-swagger-schema"></a>自動產生 Swagger 結構描述
 
 若要自動產生 web 服務的架構，請在其中一個已定義的類型物件的函式中提供輸入和/或輸出的範例。 型別和範例會用來自動建立架構。 Azure Machine Learning 接著會在部署期間為 web 服務建立 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 規格。
 
@@ -89,7 +89,7 @@ def run(data):
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI 相容端點 
 
-下列範例示範如何根據上述指令定義 API 圖形。 從 Power BI 使用已部署的 web 服務時，支援此方法。  ([深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。 ) 
+下列範例示範如何根據上述指令定義 API 圖形。 從 Power BI 使用已部署的 web 服務時，支援此方法。  ([深入瞭解如何使用 Power BI 的 web 服務](/power-bi/service-machine-learning-integration)。 ) 
 
 ```python
 import json
@@ -197,7 +197,7 @@ res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'ap
 
 <a id="cors"></a>
 
-## <a name="cross-origin-resource-sharing-cors"></a>跨原始資源分享 (CORS) 
+## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享 (CORS)
 
 跨原始資源分享是一種允許網頁上的資源從另一個網域要求的方式。 CORS 可透過與用戶端要求一起傳送的 HTTP 標頭運作，並隨服務回應傳回。 如需 CORS 和有效標頭的詳細資訊，請參閱維琪百科中的 [跨原始資源分享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 。
 
@@ -312,7 +312,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-當您註冊模型時，您會提供用來管理登錄中模型的模型名稱。 您可以使用此名稱搭配 [Model.get_model_path ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 方法，以抓取本機檔案系統上的模型檔案或檔案的路徑。 如果您註冊資料夾或檔案集合，此 API 會傳回包含這些檔案之目錄的路徑。
+當您註冊模型時，您會提供用來管理登錄中模型的模型名稱。 您可以使用此名稱搭配 [Model.get_model_path ( # B1 ](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 方法，以抓取本機檔案系統上的模型檔案或檔案的路徑。 如果您註冊資料夾或檔案集合，此 API 會傳回包含這些檔案之目錄的路徑。
 
 當您註冊模型時，您會為它命名。 名稱會對應至放置模型的位置，不論是在本機或在服務部署期間。
 

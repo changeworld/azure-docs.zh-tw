@@ -98,7 +98,7 @@
     - name: 端對端 MLOps 範例
       href: 'https://github.com/microsoft/MLOps'
     - name: 開放資料集 (公開)
-      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
+      href: ../open-datasets/samples.md?context=azure%252fmachine-learning%252fcontext%252fml-context
 - name: 概念
   items:
     - name: 規劃和管理成本
@@ -446,7 +446,7 @@
             - name: 使用自訂 Docker 映像
               href: how-to-deploy-custom-docker-image.md
             - name: IoT Edge
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+              href: ../iot-edge/tutorial-deploy-machine-learning.md?context=azure%252fmachine-learning%252fservice%252fcontext%252fml-context
             - name: FPGA 推斷
               href: how-to-deploy-fpga-web-service.md
         - name: 疑難排解與偵錯
@@ -549,7 +549,7 @@
   items:
     - name: Python SDK
       displayName: 'api, core, package, python, class'
-      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+      href: /python/api/overview/azure/ml/intro?view=azure-ml-py
     - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
@@ -557,7 +557,7 @@
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azureml/'
+      href: /rest/api/azureml/
     - name: 設計工具模組參考
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
@@ -588,8 +588,8 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: 使用者論壇
-      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
-    - name: Stack Overflow
+      href: /answers/topics/azure-machine-learning.html
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比較 ML 產品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context

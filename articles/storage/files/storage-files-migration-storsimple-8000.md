@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4aec299e15964d45ad949034ba02729ff43934de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043167"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322200"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>將 StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -56,7 +56,7 @@ Azure 檔案共用會在儲存的檔案（如屬性、許可權和時間戳記�
 
 本文著重于遷移步驟。 如果您想要在遷移之前深入瞭解 Azure 檔案同步，請參閱下列文章：
 
-* [Azure 檔案同步總覽](https://aka.ms/AFS "概觀")
+* [Azure 檔案同步總覽](https://aka.ms/AFS "總覽")
 * [Azure 檔案同步部署指南](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple 服務資料加密金鑰
@@ -145,7 +145,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 您的儲存體帳戶名稱將會成為 URL 的一部分，並具有某些字元限制。 在您的命名慣例中，請考慮儲存體帳戶名稱在世界中必須是唯一的，只允許小寫字母和數位，且必須介於3到24個字元之間，而且不允許使用連字號或底線等特殊字元。 如需詳細資訊，請參閱 [Azure 儲存體資源命名規則](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage)。
 
-#### <a name="location"></a>位置
+#### <a name="location"></a>Location
 
 儲存體帳戶的位置或 Azure 區域非常重要。 如果您使用 Azure 檔案同步，則所有的儲存體帳戶都必須位於與儲存體同步服務資源相同的區域中。 您挑選的 Azure 區域應接近或集中于您的本機伺服器和使用者。 部署資源之後，您就無法變更其區域。
 
@@ -180,7 +180,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 > [!NOTE]
 > 只有 LRS 和 ZRS 冗余類型可與大型 100-TiB 容量 Azure 檔案共用相容。
 
-目前不支援所有變化中的全域冗余儲存體 (GRS) 。 您稍後可以切換您的冗余類型，並在其支援抵達 Azure 時切換至 GRS。
+目前不支援所有變化中的地理區域冗余儲存體 (GRS) 。 您稍後可以切換您的冗余類型，並在其支援抵達 Azure 時切換至 GRS。
 
 #### <a name="enable-100-tib-capacity-file-shares"></a>啟用 100-TiB-容量檔案共用
 
@@ -206,7 +206,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="顯示建立儲存體帳戶 Azure 入口網站中 [Advanced] 索引標籤的影像。":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Azure 入口網站螢幕擷取畫面，其中顯示新的檔案共用 UI。":::
     :::column-end:::
     :::column:::
         </br>**名稱**</br>支援小寫字母、數位及連字號。</br></br>**配額**</br>此處的配額相當於 Windows Server 實例上的 SMB 硬配額。 最佳做法是不要在此設定配額，因為達到配額時，您的遷移和其他服務將會失敗。</br></br>**階層**</br>選取 [針對您的新檔案共用 **優化的交易** ]。 在遷移期間，將會發生許多交易。 更符合成本效益的方式，就是將您的階層變更為最適合您工作負載的層級。
@@ -270,21 +270,21 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 |語義字元          | 意義  |
 |:---------------------------|:---------|
 | **\\**                     | 根層級指標。       |
-| **\>**                     | [來源] 和 [目標對應運算子。     |
+| **\>**                     | [來源] 和 [目標對應] 運算子。     |
 |**\|** 或傳回 (新行)  | 兩個資料夾對應指令的分隔。 </br>或者，您可以省略此字元並選取 **Enter 鍵** ，以在其本身的行上取得下一個對應運算式。        |
 
 ### <a name="examples"></a>範例
 將資料夾 *使用者資料* 的內容移至目標檔案共用的根目錄：
 ``` console
-\User data > \\
+\User data > \
 ```
 將整個磁片區內容移至目標檔案共用上的新路徑：
 ``` console
-\ \> \Apps\HR tracker
+\ > \Apps\HR tracker
 ```
 將源資料夾內容移至目標檔案共用上的新路徑：
 ``` console
-\HR resumes-Backup \> \Backups\HR\resumes
+\HR resumes-Backup > \Backups\HR\resumes
 ```
 將多個來源位置排序為新的目錄結構：
 ``` console
@@ -296,7 +296,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 ### <a name="semantic-rules"></a>語義規則
 
 * 一律指定相對於根層級的資料夾路徑。
-* 使用根層級指標來開始每個資料夾路徑」 \" 。
+* 使用根層級指標 "" 來開始每個資料夾路徑 \\ 。
 * 請勿包含磁碟機號。
 * 指定多個路徑時，來源或目標路徑不能重迭：</br>
    不正確來源路徑重迭範例：</br>
@@ -518,7 +518,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
    :::column-end:::
 :::row-end:::
 
-當您設定 RoboCopy 命令的來源和目標位置時，請務必檢查來源和目標的結構，以確保它們相符。 如果您使用的是遷移作業的目錄對應功能，您的根目錄結構可能與 StorSimple 磁片區的結構不同。 如果是這種情況，您可能需要多個 RoboCopy 作業，每個子目錄各一個。
+當您設定 RoboCopy 命令的來源和目標位置時，請務必檢查來源和目標的結構，以確保它們相符。 如果您使用的是遷移作業的目錄對應功能，您的根目錄結構可能與 StorSimple 磁片區的結構不同。 如果是這種情況，您可能需要多個 RoboCopy 作業，每個子目錄各一個。 如果您不確定命令是否會如預期般執行，您可以使用 */l* 參數，它會模擬命令，而不會實際進行任何變更。
 
 這個 RoboCopy 命令會使用/MIR，因此它不會移動 (階層式檔案相同的檔案，例如) 。 但是，如果您取得來源和目標路徑的錯誤，/MIR 也會在您的 Windows Server 實例或 Azure 檔案共用上，清除 StorSimple 來源路徑上不存在的目錄結構。 它們必須完全符合 RoboCopy 作業，才能達到其預定目標，以在進行遷移時進行最新的變更來更新您的已遷移內容。
 
@@ -547,7 +547,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 開始之前，最好先在生產環境中觀察新的 Azure 檔案同步部署。 這段時間讓您有機會修正您可能遇到的任何問題。 在您觀察到您的 Azure 檔案同步部署至少幾天之後，您就可以開始以下列順序取消布建資源：
 
 1. 透過 Azure 入口網站取消布建您的 StorSimple 資料管理員資源。 將會刪除所有的 DTS 工作。 您將無法輕鬆地取出複製記錄檔。 如果它們對您的記錄而言很重要，請在取消布建之前取出它們。
-1. 確定您的 StorSimple 實體設備已遷移，然後將其取消註冊。 如果您不完全確定它們是否已遷移，請不要繼續進行。 如果您在仍需要時取消布建這些資源，您將無法復原資料或其設定。
+1. 確定您的 StorSimple 實體設備已遷移，然後將其取消註冊。 如果您不完全確定它們是否已遷移，請不要繼續進行。 如果您在仍需要時取消布建這些資源，您將無法復原資料或其設定。<br>（選擇性）您可以先取消布建 StorSimple 磁片區資源，這會清除設備上的資料。 這可能需要數天的時間，而 **不會** 在設備上抽絲剝繭零的資料。 如果這對您很重要，請從資源解除布建和根據您的原則，分別處理磁碟空間。
 1. 如果 StorSimple 裝置管理員中沒有任何已註冊的裝置，您可以繼續移除該裝置管理員資源本身。
 1. 現在您可以在 Azure 中刪除 StorSimple 儲存體帳戶。 同樣地，在您繼續之前，請停止並確認您的遷移已完成，而且沒有任何專案會相依于這項資料。
 1. 從您的資料中心拔下 StorSimple 實體設備。

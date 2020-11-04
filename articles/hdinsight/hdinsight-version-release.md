@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749171"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322386"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概觀
 
@@ -102,5 +102,9 @@ Apache Oozie 4.3.1 隨附於 HDI 4.0，並包含下列變更：
 
 ## <a name="next-steps"></a>後續步驟
 
+* [HBase 遷移指南](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
+* [Hive 遷移指南](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
+* [Kafka 遷移指南](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
+* [Spark 遷移指南](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
 * [Azure HDInsight 文件](index.yml)
 * [版本資訊](hdinsight-release-notes.md)

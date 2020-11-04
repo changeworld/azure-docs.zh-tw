@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691457"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324605"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>配方：利用認知服務取得 Big Data 的預測性維護
 
-此配方說明如何使用 Spark 上的 Azure Synapse Analytics 和認知服務來進行 IoT 裝置的預測性維護。 我們將遵循 [CosmosDB 和 Synapse 連結](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 範例。 為了簡單起見，在此配方中，我們將直接從 CSV 檔案讀取資料，而不是透過 CosmosDB 和 Synapse 連結來取得串流的資料。 強烈建議您查看 Synapse 連結範例。
+此配方會示範如何在 Apache Spark 上使用 Azure Synapse Analytics 和認知服務來進行 IoT 裝置的預測性維護。 我們將遵循 [CosmosDB 和 Synapse 連結](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 範例。 為了簡單起見，在此配方中，我們將直接從 CSV 檔案讀取資料，而不是透過 CosmosDB 和 Synapse 連結來取得串流的資料。 強烈建議您查看 Synapse 連結範例。
 
 ## <a name="hypothetical-scenario"></a>假設案例
 
@@ -31,7 +31,7 @@ ms.locfileid: "88691457"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
-* 使用[Spark 集](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)區設定的[Azure Synapse 工作區](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* 使用[無伺服器 Apache Spark 集](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)區設定的[Azure Synapse 工作區](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
 
 ## <a name="setup"></a>安裝程式
 
@@ -149,6 +149,6 @@ plt.show()
 
 ![異常偵測器繪圖](../media/anomaly-output.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用 Azure 認知服務、Azure Synapse Analytics 和 Azure CosmosDB 大規模進行預測性維護。 如需詳細資訊，請參閱 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples)上的完整範例。

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 700cc461563f145f58e02f7ed9a09b2899a4eb5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fc7fd1f3f7615c0622b684e3da4020c7da601f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342154"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322863"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>建立和共用 Machine Learning Studio (傳統) 工作區
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 若要使用 Azure Machine Learning Studio (傳統) ，您需要有 Machine Learning Studio (傳統的) 工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
 
@@ -33,20 +33,20 @@ ms.locfileid: "91342154"
     >
     > 
 
-2. 按一下 [ **+ 新增**]
+2. 按一下 [ **+ 新增** ]
 
-3. 在 [搜尋] 方塊中，輸入 **Machine Learning Studio (傳統) 工作區** ，然後選取相符的專案。 然後按一下頁面底部的 [建立]****。
+3. 在 [搜尋] 方塊中，輸入 **Machine Learning Studio (傳統) 工作區** ，然後選取相符的專案。 然後按一下頁面底部的 [建立]。
 
 4. 輸入您的工作區資訊：
 
-   - 工作區名稱** 可能最多 260 個字元，結尾不可為空格。 名稱不能包含下列字元︰`< > * % & : \ ? + /`
-   - 會使用您選擇 (或建立) 的 Web 服務方案**，以及您選取的相關聯定價層**，如果您從此工作區中部署 web 服務。
+   - 工作區名稱可能最多 260 個字元，結尾不可為空格。 名稱不能包含下列字元︰`< > * % & : \ ? + /`
+   - 會使用您選擇 (或建立) 的 Web 服務方案，以及您選取的相關聯定價層，如果您從此工作區中部署 web 服務。
 
      ![建立新的 Studio (傳統) 工作區](./media/create-workspace/create-new-workspace.png)
 
-5. 按一下 [建立]。
+5. 按一下頁面底部的 [新增]  。
 
-   機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶未包含其中一個區域，您可能會看到錯誤訊息：「您在允許的區域中沒有任何訂用帳戶」。  為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費]**** 做為問題類型，並遵照提示來提交您的要求。
+   機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶未包含其中一個區域，您可能會看到錯誤訊息：「您在允許的區域中沒有任何訂用帳戶」。  為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費] 做為問題類型，並遵照提示來提交您的要求。
 
 
 > [!NOTE]
@@ -61,7 +61,7 @@ ms.locfileid: "91342154"
 
     ![選取工作區](./media/create-workspace/open-workspace.png)
 
-3. 按一下 [我的實驗]****。
+3. 按一下 [我的實驗]。
 
     ![開啟實驗](./media/create-workspace/my-experiments.png)
 
@@ -84,11 +84,11 @@ ms.locfileid: "91342154"
 
 1. 登入 Machine Learning Studio (傳統) [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. 按一下左面板中的 [設定]****
+2. 按一下左面板中的 [設定]
 
 3. 按一下 [ **使用者** ] 索引標籤
 
-4. 按一下頁面底部的 [邀請更多使用者]****
+4. 按一下頁面底部的 [邀請更多使用者]
 
     ![Studio 設定](./media/create-workspace/settings.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "91342154"
 
 6. 選取您是否想要將使用者新增為擁有者或使用者。
 
-7. 按一下 [確定]**** 核取記號按鈕。
+7. 按一下 [確定] 核取記號按鈕。
 
 您新增的每個使用者會收到一封電子郵件，其中含有如何登入共用工作區的指示。
 
@@ -114,15 +114,15 @@ ms.locfileid: "91342154"
 
 **刪除瀏覽器 Cookie**
 
-1. 如果您是使用 Internet Explorer，請按一下右上角的 [工具]**** 按鈕，然後選取 [網際網路選項]****。  
+1. 如果您是使用 Internet Explorer，請按一下右上角的 [工具] 按鈕，然後選取 [網際網路選項]。  
 
    ![網際網路選項](media/troubleshooting-creating-ml-workspace/screen4.png)
 
-2. 在 [一般]**** 索引標籤下，按一下 [刪除...]****
+2. 在 [一般] 索引標籤下，按一下 [刪除...]
 
    ![一般索引標籤](media/troubleshooting-creating-ml-workspace/screen5.png)
 
-3. 在 [刪除瀏覽歷程記錄]**** 對話方塊中，確定已選取 [Cookie 與網站資料]****，然後按一下 [刪除]****。
+3. 在 [刪除瀏覽歷程記錄] 對話方塊中，確定已選取 [Cookie 與網站資料]，然後按一下 [刪除]。
 
    ![刪除 cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
 

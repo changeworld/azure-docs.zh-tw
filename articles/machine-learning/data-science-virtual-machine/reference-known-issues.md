@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 864b5e519875029149e93df248aa5953f62ec51e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78206515"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322948"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure 資料科學虛擬機器的已知問題和疑難排解
 
@@ -30,7 +30,7 @@ ms.locfileid: "78206515"
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM 上的磁片加密失敗
 
-Ubuntu DSVM 目前不支援 Azure 磁碟加密 (ADE) 。 若要解決此問題，請考慮設定 [Azure 受控磁片的伺服器端加密](../../virtual-machines/windows/disk-encryption.md)。
+Ubuntu DSVM 目前不支援 Azure 磁碟加密 (ADE) 。 若要解決此問題，請考慮設定 [Azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md)。
 
 ## <a name="tool-appears-disabled"></a>工具會顯示為已停用
 
@@ -46,4 +46,3 @@ Hyper-v 最初無法在 Windows 上運作是預期的行為。 針對開機效�
 您的最終畫面看起來應該像這樣：
 
    ![啟用 Hyper-V](./media/workaround/hyperv-enable-dsvm.png)
-

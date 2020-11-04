@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: e422c1a7b333254ed49b53bcdf2d10e65f2846e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341953"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322540"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統) 中解譯模型結果
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 本主題說明如何在 Azure Machine Learning Studio (傳統) 中視覺化及解讀預測結果。 在您訓練好模型並完成其預測 (「模型評分」) 之後，您必須了解和解譯預測結果。
@@ -58,7 +58,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 圖 1. 鳶尾花雙類別分類問題實驗
 
-已執行實驗以解決此問題，如「圖 1」所示。 已訓練及評分雙類別促進式決策樹模型。 您現在可以從[評分模型][score-model]模組將預測結果視覺化，方法是按一下[評分模型][score-model]模組的輸出連接埠，然後按一下 [視覺化]****。
+已執行實驗以解決此問題，如「圖 1」所示。 已訓練及評分雙類別促進式決策樹模型。 您現在可以從[評分模型][score-model]模組將預測結果視覺化，方法是按一下[評分模型][score-model]模組的輸出連接埠，然後按一下 [視覺化]。
 
 ![評分模型模組](./media/interpret-model-results/1_1.png)
 
@@ -80,7 +80,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 圖 3. 鳶尾花雙類別分類問題實驗評分
 
-您現在必須設定 Web 服務的輸入和輸出。 輸入是[評分模型][score-model]的右側輸入連接埠，這是鳶尾花的特徵輸入。 輸出的選擇取決於您是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 此範例假設您對兩者都感到興趣。 若要選取想要的輸出資料行，請使用[選取資料集中的資料行][select-columns]模組。 依序按一下 [選取資料集中的資料行][select-columns] 和 **啟動資料行選取器**，然後選取 [評分標籤]**** 和 [評分機率]****。 設定 [選取資料集中的資料行][select-columns] 的輸出連接埠並再次執行之後，您應該就可以按一下 [發佈 WEB 服務]****，將評分實驗發佈為 Web 服務。 最終實驗如「圖 4」所示。
+您現在必須設定 Web 服務的輸入和輸出。 輸入是[評分模型][score-model]的右側輸入連接埠，這是鳶尾花的特徵輸入。 輸出的選擇取決於您是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 此範例假設您對兩者都感到興趣。 若要選取想要的輸出資料行，請使用[選取資料集中的資料行][select-columns]模組。 依序按一下 [選取資料集中的資料行][select-columns] 和 **啟動資料行選取器** ，然後選取 [評分標籤] 和 [評分機率]。 設定 [選取資料集中的資料行][select-columns] 的輸出連接埠並再次執行之後，您應該就可以按一下 [發佈 WEB 服務]，將評分實驗發佈為 Web 服務。 最終實驗如「圖 4」所示。
 
 ![鳶尾花雙類別分類實驗](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 圖 6. 字母辨識多類別分類問題實驗
 
-從[評分模型][score-model]模組將結果視覺化，方法是按一下[評分模型][score-model]模組的輸出連接埠，然後按一下 [視覺化]****，您應會看見如圖 7 所示的內容。
+從[評分模型][score-model]模組將結果視覺化，方法是按一下[評分模型][score-model]模組的輸出連接埠，然後按一下 [視覺化]，您應會看見如圖 7 所示的內容。
 
 ![評分模型模組](./media/interpret-model-results/7.png)
 
@@ -185,7 +185,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 叢集與分類的不同之處在于訓練資料集本身沒有誠實的標籤。 將訓練資料集執行個體群組至不同的叢集。 在訓練處理期間，模型會為項目加上標籤，方法是學習其特徵之間的差異。 之後，定型模型可進一步用來分類未來的項目。 在叢集問題當中，我們感興趣的結果有兩個部分。 第一個部分是為訓練資料集加上標籤，而第二個部分是使用定型模型來分類新的資料集。
 
-您可以按一下[訓練叢集模型][train-clustering-model]的左側輸出連接埠，然後按一下 [視覺化]****，將結果的第一個部分視覺化。 視覺化如圖 16 所示。
+您可以按一下[訓練叢集模型][train-clustering-model]的左側輸出連接埠，然後按一下 [視覺化]，將結果的第一個部分視覺化。 視覺化如圖 16 所示。
 
 ![叢集結果](./media/interpret-model-results/16.png)
 
@@ -233,7 +233,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 * 尋找指定使用者相關的使用者
 * 尋找指定項目相關的項目
 
-您可以選擇想要執行的動作，方法是從 [推薦預測種類]**** 功能表中的四個選項進行選取。 您可以在這裡逐步完成這四個案例。
+您可以選擇想要執行的動作，方法是從 [推薦預測種類] 功能表中的四個選項進行選取。 您可以在這裡逐步完成這四個案例。
 
 ![Matchbox 推薦](./media/interpret-model-results/19_1.png)
 
@@ -247,7 +247,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 **為指定使用者和項目預測評等**
 
-藉由選取 [推薦預測種類]**** 之下的 [評等預測]****，您會要求推薦系統預測指定使用者和項目的評等。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 21 所示。
+藉由選取 [推薦預測種類] 之下的 [評等預測]，您會要求推薦系統預測指定使用者和項目的評等。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 21 所示。
 
 ![推薦系統的評分結果 - 評等預測](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 **對指定使用者推薦項目**
 
-藉由選取 [推薦預測種類]**** 之下的 [項目推薦]****，您會要求推薦系統對指定使用者推薦項目。 此案例中需要選擇的最後一個參數是「推薦項目選取」**。 選項 [ **從評等項目 (針對模型評估)** ] 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們選擇 [從所有項目] ****。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 22 所示。
+藉由選取 [推薦預測種類] 之下的 [項目推薦]，您會要求推薦系統對指定使用者推薦項目。 此案例中需要選擇的最後一個參數是「推薦項目選取」。 選項 [ **從評等項目 (針對模型評估)** ] 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們選擇 [從所有項目] 。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 22 所示。
 
 ![推薦系統的評分結果 - 項目推薦](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 **尋找指定使用者相關的使用者**
 
-藉由選取 [推薦預測種類]**** 之下的 [相關使用者]****，您會要求推薦系統尋找指定使用者的相關使用者。 相關使用者是具有類似偏好的使用者。 此案例中需要選擇的最後一個參數是「相關使用者選取」**。 **針對模型) 評估， (** 評等專案的使用者選項，主要是用於定型程式期間的模型評估。 對於此預測階段選擇 [從所有使用者]****。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 23 所示。
+藉由選取 [推薦預測種類] 之下的 [相關使用者]，您會要求推薦系統尋找指定使用者的相關使用者。 相關使用者是具有類似偏好的使用者。 此案例中需要選擇的最後一個參數是「相關使用者選取」。 **針對模型) 評估， (** 評等專案的使用者選項，主要是用於定型程式期間的模型評估。 對於此預測階段選擇 [從所有使用者]。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 23 所示。
 
 ![推薦系統的評分結果 - 相關使用者](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 **尋找指定項目相關的項目**
 
-藉由選取 [推薦預測種類]**** 之下的 [相關項目]****，您會要求推薦系統尋找指定項目的相關項目。 相關項目是相同使用者最有可能喜歡的項目。 此案例中需要選擇的最後一個參數是「相關項目選取」**。 選項 [ **從評等項目 (針對模型評估)** ] 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們選擇 [ **從所有項目** ]。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 24 所示。
+藉由選取 [推薦預測種類] 之下的 [相關項目]，您會要求推薦系統尋找指定項目的相關項目。 相關項目是相同使用者最有可能喜歡的項目。 此案例中需要選擇的最後一個參數是「相關項目選取」。 選項 [ **從評等項目 (針對模型評估)** ] 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們選擇 [ **從所有項目** ]。 [評分 Matchbox 推薦][score-matchbox-recommender]輸出的視覺化如圖 24 所示。
 
 ![推薦系統的評分結果 - 相關項目](./media/interpret-model-results/24.png)
 
@@ -304,10 +304,10 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 圖 26. 餐廳推薦問題的 Web 服務結果
 
 <!-- Module References -->
-[assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-matchbox-recommender]: https://msdn.microsoft.com/library/azure/55544522-9a10-44bd-884f-9a91a9cec2cd/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
-[train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
+[assign-to-clusters]: /azure/machine-learning/studio-module-reference/assign-data-to-clusters
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-matchbox-recommender]: /azure/machine-learning/studio-module-reference/score-matchbox-recommender
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-clustering-model]: /azure/machine-learning/studio-module-reference/train-clustering-model
+[train-matchbox-recommender]: /azure/machine-learning/studio-module-reference/train-matchbox-recommender

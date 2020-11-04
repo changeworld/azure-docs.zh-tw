@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542085"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325394"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics 資料管理合作夥伴
 
@@ -27,7 +27,7 @@ ms.locfileid: "91542085"
 | ------- | ----------- | -------------------- |
 | ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity 是一種分析開發工具，可將 Microsoft Synapse 平臺的完整功能放在分析師和工程師的手中。 豐富且直覺的 SQL 開發環境可讓小組成員連接到數十個領先業界的分析平臺，以各種不同的格式內嵌資料，並快速建立複雜的業務計算，以將結果提供給商業智慧及 Machine Learning 使用案例。 整個應用程式是以中央目錄為基礎建立的，讓分析團隊的共同作業得以實現，而精密的管理功能和更細緻的安全性使得治理變得更簡單。 |[產品頁面](https://www.aginity.com/databases/microsoft/) \(英文\)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation 的資料目錄可大幅提升生產力、提高精確度，並為分析人員提供可靠的資料驅動決策。 Alation 的資料目錄可讓您組織中的所有人都能尋找、瞭解及管理資料。 |[產品頁面](https://www.alation.com/product/data-catalog/) \(英文\)<br> |
-| ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon，這是專門用來查詢系統的工具，已有十年的歷史。 Nexus 可作為 Azure Synapse SQL 集區的查詢工具。 請使用 Nexus 查詢內部部署和雲端電腦，並聯結不同平台的資料。 點擊式報告！ |[產品頁面](https://www.coffingdw.com/software/nexus/)<br> |
+| ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon，這是專門用來查詢系統的工具，已有十年的歷史。 在 Azure Synapse Analytics 中，會以查詢工具的形式提供可供使用的專用 SQL 集區。 請使用 Nexus 查詢內部部署和雲端電腦，並聯結不同平台的資料。 點擊式報告！ |[產品頁面](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD 提供您建立精確資料模型、減少資料備援、提升產能及遵守標準所需的工具。 透過使用其根據廣泛使用者體驗所開發的 UI，可讓模型塑造既輕鬆又方便地處理 DB 模型。 透過及時的功能改進和更新，您可以持續享有 MicroERD 最新改善的功能。 |[產品頁面](http://microerd.com/)<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |**Infolibrarian (中繼資料管理伺服器)**<br>InfoLibrarian 能夠歸類、儲存和管理中繼資料，協助您解決資料管理的主要難題。 Infolibrarian 提供了中繼資料管理、資料控管和資產管理解決方案，可從各種不同的工具和技術來管理和發佈中繼資料。 |[產品頁面](http://www.infolibcorp.com/metadata-management/software-tools) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Kyligence 是由 Apache Kylin 的建立者所創立，其目的是要在無任何阻礙下，將資料管理、探索、互動和見解產生自動化，以加速其客戶的生產力。 Kyligence Cloud 能讓您部署叢集、增強資料存取，並大幅加快資料分析的速度。 Kyligence 的 AI 增強巨量資料分析管理平台，可讓您快速且輕鬆地建置企業級資料湖，其通常是個極具挑戰性的任務。|[產品頁面](https://kyligence.io/) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |

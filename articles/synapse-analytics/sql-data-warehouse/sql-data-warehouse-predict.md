@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048001"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325386"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>使用 PREDICT 來評分機器學習模型
 
 Synapse SQL 提供您使用熟悉的 T-sql 語言來評分機器學習模型的功能。 您可以使用 T-sql [預測](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)，讓現有的機器學習模型以歷程記錄資料進行定型，並在資料倉儲的安全界限內進行評分。 PREDICT 函數會採用 [ONNX (Open Neural Network Exchange) ](https://onnx.ai/) 模型和資料作為輸入。 這項功能消除了在資料倉儲外部移動重要資料以進行評分的步驟。 其目標是要讓資料專業人員能夠輕鬆地使用熟悉的 T-sql 介面部署機器學習服務模型，並與資料科學家完美地共同作業，並使用適合其工作的架構。
 
 > [!NOTE]
-> SQL 隨選中目前不支援此功能。
+> 無伺服器 SQL 集區目前不支援此功能。
 
 這項功能需要在 Synapse SQL 之外定型模型。 建立模型之後，請將它載入資料倉儲中，並使用 T-sql Predict 語法來評分，以從資料中取得見解。
 

@@ -1,6 +1,6 @@
 ---
 title: 設計資料表
-description: 在 Synapse SQL 集區中設計資料表的簡介。
+description: 使用 Azure Synapse Analytics 中的專用 SQL 集區來設計資料表的簡介。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,51 +11,51 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3bdf234156c55e3c30df74c672866a118fd2f4f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486934"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323499"
 ---
-# <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中設計資料表
+# <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區來設計資料表
 
-本文提供在 SQL 集區中設計資料表的重要入門概念。
+本文提供在專用 SQL 集區中設計資料表的重要入門概念。
 
 ## <a name="determine-table-category"></a>決定資料表類別
 
 [星狀結構描述](https://en.wikipedia.org/wiki/Star_schema)會將資料分類為事實和維度資料表。 某些資料表用於資料移至事實或維度資料表之前的整合或暫存。 設計資料表時，請決定資料表的資料將屬於事實、維度還是整合資料表。 此決定將使資料表具有適當的結構和散發機制。
 
-- **事實資料表** 包含通常在交易式系統中產生，然後載入至 SQL 集區的量化資料。 例如，零售業務每天都會產生銷售交易，然後將資料載入至 SQL 集區事實資料表以進行分析。
+- **事實資料表** 包含通常在交易式系統中產生的量化資料，然後載入到專用的 SQL 集區。 例如，零售業務每天都會產生銷售交易，然後將資料載入專用的 SQL 集區事實資料表以進行分析。
 
-- **維度資料表**包含可能會變更、但變更頻率通常不高的屬性資料。 例如，客戶的名稱和地址會儲存在維度資料表中，但只有在客戶的設定檔有所變更時，才會更新。 為了將大型事實資料表的大小降至最低，客戶的名稱和位址不需要在事實資料表的每個資料列中。 此時，事實資料表與維度資料表可以共用客戶識別碼。 查詢可以聯結兩個資料表，使客戶的設定檔與交易產生關聯。
+- **維度資料表** 包含可能會變更、但變更頻率通常不高的屬性資料。 例如，客戶的名稱和地址會儲存在維度資料表中，但只有在客戶的設定檔有所變更時，才會更新。 為了將大型事實資料表的大小降至最低，客戶的名稱和位址不需要在事實資料表的每個資料列中。 此時，事實資料表與維度資料表可以共用客戶識別碼。 查詢可以聯結兩個資料表，使客戶的設定檔與交易產生關聯。
 
-- **整合資料表**可用來整合或暫存資料。 您可以建立整合資料表作為一般資料表、外部資料表或暫存資料表。 例如，您可以將資料載入至暫存資料表、對暫存的資料執行轉換，然後將該資料插入生產資料表中。
+- **整合資料表** 可用來整合或暫存資料。 您可以建立整合資料表作為一般資料表、外部資料表或暫存資料表。 例如，您可以將資料載入至暫存資料表、對暫存的資料執行轉換，然後將該資料插入生產資料表中。
 
 ## <a name="schema-and-table-names"></a>結構描述和資料表名稱
 
-架構很適合用來將資料表群組在一起，並以類似的方式使用。  如果您要將多個資料庫從內部內部部署方案遷移至 SQL 集區，最好將所有事實、維度和整合資料表遷移至 SQL 集區中的一個架構。
+架構很適合用來將資料表群組在一起，並以類似的方式使用。  如果您要將多個資料庫從內部內部部署方案遷移至專用的 SQL 集區，最好將所有事實、維度和整合資料表遷移至專用 SQL 集區中的一個架構。
 
-例如，您可以將 [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 範例 SQL 集區中的所有資料表儲存在一個名為 wwi 的架構中。 下列程式碼會建立名為 wwi 的 [使用者定義架構](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
+例如，您可以將 [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 範例專用 SQL 集區中的所有資料表儲存在一個名為 wwi 的架構中。 下列程式碼會建立名為 wwi 的 [使用者定義架構](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-若要在 SQL 集區中顯示資料表的組織，您可以使用事實、維度和 int 作為資料表名稱的前置詞。 下表顯示 WideWorldImportersDW 的一些結構描述和資料表名稱。  
+若要在專用的 SQL 集區中顯示資料表的組織，您可以使用事實、維度和 int 作為資料表名稱的前置詞。 下表顯示 WideWorldImportersDW 的一些結構描述和資料表名稱。  
 
-| WideWorldImportersDW 資料表  | 資料表類型 | SQL 集區 |
+| WideWorldImportersDW 資料表  | 資料表類型 | 專用的 SQL 集區 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
 | 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
 
-資料表會將資料永久儲存在 Azure 儲存體、暫時在 Azure 儲存體中，或儲存在 SQL 集區外部的資料存放區中。
+資料表會將資料永久儲存在 Azure 儲存體、暫時在 Azure 儲存體中，或儲存在專用 SQL 集區外部的資料存放區中。
 
 ### <a name="regular-table"></a>一般資料表
 
-一般資料表會將 Azure 儲存體中的資料儲存為 SQL 集區的一部分。 無論工作階段是否開啟，資料表和資料都會持續保存。  下列範例會建立具有兩個數據行的一般資料表。
+一般資料表會將資料儲存在 Azure 儲存體成為專用 SQL 集區的一部分。 無論工作階段是否開啟，資料表和資料都會持續保存。  下列範例會建立具有兩個數據行的一般資料表。
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -69,17 +69,17 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="external-table"></a>外部資料表
 
-外部資料表會指向位於 Azure 儲存體 blob 或 Azure Data Lake Store 中的資料。 搭配 CREATE TABLE AS SELECT 語句使用時，從外部資料表選取時，會將資料匯入 SQL 集區。
+外部資料表會指向位於 Azure 儲存體 blob 或 Azure Data Lake Store 中的資料。 搭配 CREATE TABLE AS SELECT 語句使用時，從外部資料表選取會將資料匯入到專用的 SQL 集區。
 
 因此，外部資料表很適合用來載入資料。 如需載入教學課程，請參閱 [使用 PolyBase 從 Azure blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="data-types"></a>資料類型
 
-SQL 集區支援最常使用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 參考中 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes)。 如需資料類型的使用指引，請參閱[資料類型](sql-data-warehouse-tables-data-types.md)。
+專用的 SQL 集區支援最常使用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 參考中 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes)。 如需資料類型的使用指引，請參閱[資料類型](sql-data-warehouse-tables-data-types.md)。
 
 ## <a name="distributed-tables"></a>分散式資料表
 
-Synapse SQL 的基本功能，是它 [可以跨散發](massively-parallel-processing-mpp-architecture.md#distributions)套件儲存及運算元據表的方式。 Synapse SQL 支援三種散發資料的方法：迴圈配置資源 (預設) 、雜湊和已複寫。
+專用 SQL 集區的基本功能，是它 [可以跨散發](massively-parallel-processing-mpp-architecture.md#distributions)套件儲存及運算元據表的方式。  專用的 SQL 集區支援三種散發資料的方法：迴圈配置資源 (預設) 、雜湊和已複寫。
 
 ### <a name="hash-distributed-tables"></a>雜湊分散式資料表
 
@@ -119,7 +119,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="columnstore-indexes"></a>資料行存放區索引
 
-根據預設，SQL 集區會將資料表儲存為叢集資料行存放區索引。 這種形式的資料儲存對於大型資料表可達到高度的資料壓縮和查詢效能。  
+根據預設，專用的 SQL 集區會將資料表儲存為叢集資料行存放區索引。 這種形式的資料儲存對於大型資料表可達到高度的資料壓縮和查詢效能。  
 
 叢集資料行存放區索引通常是最佳選擇，但在某些情況下，叢集索引或堆積會是更適當的儲存結構。  
 
@@ -138,28 +138,28 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="primary-key-and-unique-key"></a>主鍵和唯一索引鍵
 
-只有在同時使用非叢集且未強制執行時，才支援 PRIMARY KEY。  使用 UNIQUE 條件約束時，只會使用未強制執行的。  檢查 [SQL 集區資料表條件約束](sql-data-warehouse-table-constraints.md)。
+只有在同時使用非叢集且未強制執行時，才支援 PRIMARY KEY。  使用 UNIQUE 條件約束時，只會使用未強制執行的。  檢查 [專用的 SQL 集區資料表條件約束](sql-data-warehouse-table-constraints.md)。
 
 ## <a name="commands-for-creating-tables"></a>建立資料表的命令
 
 您可以將資料表建立為新的空資料表。 您也可以在建立資料表後填入 Select 陳述式的結果。 以下是用來建立資料表的 T-SQL 命令。
 
-| T-SQL 陳述式 | 說明 |
+| T-SQL 陳述式 | 描述 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 藉由定義所有的資料表資料行和選項，建立空的資料表。 |
-| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 建立外部資料表。 資料表的定義會儲存在 SQL 集區中。 資料表的資料會儲存在 Azure 儲存體或 Azure Data Lake Store 中。 |
+| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 建立外部資料表。 資料表的定義會儲存在專用的 SQL 集區中。 資料表的資料會儲存在 Azure 儲存體或 Azure Data Lake Store 中。 |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 在新的資料表中填入 Select 陳述式的結果。 資料表資料行和資料類型皆以 Select 陳述式的結果為基礎。 若要匯入資料，此陳述式可從外部資料表進行選取。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 藉由將 Select 陳述式的結果匯出至外部位置，建立新的外部資料表。  其位置為 Azure Blob 儲存體或 Azure Data Lake Store。 |
 
-## <a name="aligning-source-data-with-the-sql-pool"></a>將來源資料與 SQL 集區對齊
+## <a name="aligning-source-data-with-dedicated-sql-pool"></a>將來源資料與專用的 SQL 集區對齊
 
-SQL 集區資料表是透過從另一個資料來源載入資料來填入。 若要順利執行載入，來源資料中的資料行數目和資料類型必須與 SQL 集區中的資料表定義一致。 取得相符的資料，可能是設計資料表時最困難的環節。
+您可以從另一個資料來源載入資料，以填入專用的 SQL 集區資料表。 若要順利執行載入，來源資料中的資料行數目和資料類型必須與專用 SQL 集區中的資料表定義一致。 取得相符的資料，可能是設計資料表時最困難的環節。
 
-如果資料來自多個資料存放區，您可以將資料載入至 SQL 集區，並將它儲存在整合資料表中。 一旦資料位於整合資料表中，您就可以使用 SQL 集區的強大功能來執行轉換作業。 資料備妥後，您可以將它插入生產資料表。
+如果資料來自多個資料存放區，您可以將資料載入專用的 SQL 集區，並將它儲存在整合資料表中。 一旦資料位於整合資料表中，您就可以使用專用 SQL 集區的強大功能來執行轉換作業。 資料備妥後，您可以將它插入生產資料表。
 
 ## <a name="unsupported-table-features"></a>不支援的資料表功能
 
-SQL 集區支援其他資料庫所提供的許多資料表功能，但並非全部。  下列清單顯示 SQL 集區中不支援的一些資料表功能：
+專用的 SQL 集區可支援其他資料庫所提供的許多資料表功能，但並非全部。  下列清單顯示專用 SQL 集區中不支援的一些資料表功能：
 
 - Foreign key，Check [Table 條件約束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [計算資料行](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -375,4 +375,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>後續步驟
 
-為您的 SQL 集區建立資料表之後，下一個步驟是將資料載入資料表中。  如需載入教學課程，請參閱 [將資料載入至 SQL 集](load-data-wideworldimportersdw.md)區。
+為您的專用 SQL 集區建立資料表之後，下一個步驟是將資料載入資料表中。  如需載入教學課程，請參閱 [將資料載入專用的 SQL 集](load-data-wideworldimportersdw.md)區。

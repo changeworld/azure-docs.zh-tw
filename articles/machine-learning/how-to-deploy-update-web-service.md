@@ -1,7 +1,7 @@
 ---
 title: 更新 web 服務
 titleSuffix: Azure Machine Learning
-description: 瞭解如何重新整理已在 Azure Machine Learning 中部署的 web 服務
+description: 瞭解如何重新整理已在 Azure Machine Learning 中部署的 web 服務。 您可以更新 [模型]、[環境] 和 [輸入腳本] 等設定。
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 3d468048030cad009171622bed175531834b947d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 703f5e360261c47c443320459d601d65a5503f5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998797"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322430"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 web 服務
 
@@ -27,11 +27,11 @@ ms.locfileid: "91998797"
 
 ## <a name="update-web-service"></a>更新 Web 服務
 
-若要更新 web 服務，請使用 `update` 方法。 您可以將 web 服務更新為使用新的模型、新的輸入腳本，或可在推斷設定中指定的新相依性。 如需詳細資訊，請參閱 Webservice 的檔 [。更新](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-)。
+若要更新 web 服務，請使用 `update` 方法。 您可以將 web 服務更新為使用新的模型、新的輸入腳本，或可在推斷設定中指定的新相依性。 如需詳細資訊，請參閱 Webservice 的檔 [。更新](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-)。
 
-請參閱 [AKS 服務更新方法。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
+請參閱 [AKS 服務更新方法。](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
 
-請參閱 [ACI 服務更新方法。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
+請參閱 [ACI 服務更新方法。](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
 
 > [!IMPORTANT]
 > 當您建立新版本的模型時，必須手動更新您想要使用的每個服務。
@@ -84,9 +84,9 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > 在此範例中，會使用 JSON 檔，將來自註冊命令的模型資訊傳遞給 update 命令。
 >
-> 若要將服務更新為使用新的輸入腳本或環境，請建立 [推斷設定檔](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema) ，並使用參數來指定 `ic` 。
+> 若要將服務更新為使用新的輸入腳本或環境，請建立 [推斷設定檔](./reference-azure-machine-learning-cli.md#inference-configuration-schema) ，並使用參數來指定 `ic` 。
 
-如需詳細資訊，請參閱 [az ml 服務更新](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-service-update) 檔。
+如需詳細資訊，請參閱 [az ml 服務更新](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) 檔。
 
 ## <a name="next-steps"></a>後續步驟
 

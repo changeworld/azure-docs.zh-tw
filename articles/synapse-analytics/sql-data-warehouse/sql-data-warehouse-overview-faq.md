@@ -1,6 +1,6 @@
 ---
 title: Azure Synapse Analytics (先前的 SQL DW) 常見問題
-description: 本文列出從客戶和開發人員 Azure Synapse Analytics (先前的 SQL DW) 的常見問題
+description: 本文列出有關客戶和開發人員先前的 SQL DW) Azure Synapse Analytics (的常見問題。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462644"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323613"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (先前的 SQL DW) 常見問題
 
@@ -29,9 +29,9 @@ Q. Azure SQL 資料倉儲發生什麼事？
 
 A. Azure Synapse 是 Azure SQL 資料倉儲的演進。 我們採用相同產業領先的資料倉儲，以提供全新的效能和功能層級。 您可以使用 Azure Synapse 繼續在生產環境中執行現有的資料倉儲工作負載。 如需詳細資訊，請參閱[什麼是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
-Q. 什麼是 Synapse SQL 集區？
+Q. 什麼是專用的 SQL 集區？
 
-A. Synapse SQL 集區指的是 Azure Synapse 正式推出的企業資料倉儲功能。 如需詳細資訊，請參閱 [Azure Synapse Analytics 的內容](sql-data-warehouse-overview-what-is.md)。
+A. 專用的 SQL 集區指的是 Azure Synapse 正式推出的企業資料倉儲功能。 如需詳細資訊，請參閱 [Azure Synapse Analytics 的內容](sql-data-warehouse-overview-what-is.md)。
 
 Q. 如何? 開始使用 Azure Synapse？
 
@@ -49,7 +49,7 @@ Q. 我可以連接 Power BI 嗎？
 
 A. 可以！ 雖然 Power BI 支援使用 Azure Synapse 的直接查詢，但不適合大量的使用者或即時資料。 若要進一步將 Power BI 效能優化，請考慮在 Azure Analysis Services 或 Analysis Service IaaS 上使用 Power BI。
 
-Q. 什麼是 Synapse SQL 集區容量限制？
+Q. 有哪些專屬的 SQL 集區容量限制？
 
 A. 請參閱我們目前的[容量限制](sql-data-warehouse-service-capacity-limits.md)頁面。
 
@@ -83,15 +83,15 @@ A. 支援許多功能。 在不支援的 [資料表功能](sql-data-warehouse-ta
 
 ## <a name="tooling-and-administration"></a>工具和系統管理
 
-Q. Synapse SQL 集區是否支援 REST Api？
+Q. 專用的 SQL 集區是否支援 REST Api？
 
-A. 是。 Synapse SQL 集區也提供可搭配 SQL Database 使用的大部分 REST 功能。 您可以在 REST 檔頁面或 [資料庫](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 資訊。
+A. 是。 可搭配 SQL Database 的大部分 REST 功能也可搭配專用的 SQL 集區使用。 您可以在 REST 檔頁面或 [資料庫](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 資訊。
 
 ## <a name="loading"></a>載入
 
 Q. 支援哪些用戶端驅動程式？
 
-A. 您可以在 [ [連接字串](../sql/connection-strings.md) ] 頁面上找到 Synapse SQL 集區的驅動程式支援
+A. 您可以在 [ [連接字串](../sql/connection-strings.md) ] 頁面上找到專用 SQL 集區的驅動程式支援
 
 問： PolyBase 支援哪些檔案格式？
 
@@ -107,7 +107,7 @@ A. 您可以在 [ [連接字串](../sql/connection-strings.md) ] 頁面上找到
 
 問︰是否可以連線到 HDI？
 
-答︰HDI 可以使用 ADLS 或 WASB 作為 HDFS 層。 如果您是使用 HDFS 層，則可以將該資料載入至 Synapse SQL 集區。 不過，您無法針對 HDI 執行個體產生下推計算。
+答︰HDI 可以使用 ADLS 或 WASB 作為 HDFS 層。 如果您是使用 HDFS 層，則可以將該資料載入專用的 SQL 集區。 不過，您無法針對 HDI 執行個體產生下推計算。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907919"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323719"
 ---
 # <a name="feature-hashing-module-reference"></a>特徵雜湊模組參考
 
@@ -22,7 +22,7 @@ ms.locfileid: "90907919"
 
 您可以使用「特徵雜湊」模組，將英文文字的資料流程轉換成一組整數特徵。 然後，您可以將此雜湊功能集傳遞至機器學習演算法，以定型文字分析模型。
 
-此課程模組中提供的功能雜湊功能是以 nimbusml 架構為基礎。 如需詳細資訊，請參閱 [NgramHash 類別](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)。
+此課程模組中提供的功能雜湊功能是以 nimbusml 架構為基礎。 如需詳細資訊，請參閱 [NgramHash 類別](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)。
 
 ## <a name="what-is-feature-hashing"></a>什麼是特徵雜湊？
 
@@ -90,7 +90,7 @@ ms.locfileid: "90907919"
     
     預設的位大小為10。 針對許多問題，此值已足夠。 您可能需要更多空間來避免發生衝突，視定型文字中的 n 字母組詞彙大小而定。
     
-1. 若為 **n**字母，請輸入一個數位，以定義要加入至定型字典之 N 字母的最大長度。 N 語法是一系列的 *n* 個單字，視為唯一的單位。
+1. 若為 **n** 字母，請輸入一個數位，以定義要加入至定型字典之 N 字母的最大長度。 N 語法是一系列的 *n* 個單字，視為唯一的單位。
 
     例如，如果您輸入3，則會建立 unigrams、雙字母組和 trigrams。
 
@@ -131,4 +131,4 @@ ms.locfileid: "90907919"
 
 ## <a name="next-steps"></a>後續步驟
             
-查看 [可用的模組集](module-reference.md) Azure Machine Learning 
+查看 [可用的模組集](module-reference.md) Azure Machine Learning

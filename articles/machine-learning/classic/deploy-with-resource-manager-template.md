@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: f5e999e50818ab6374ce09dd6920cb5dc3dabc82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860a52691d4d7fe72cbd7c8989277b224214064
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362430"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322771"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure Resource Manager 部署 Azure Machine Learning Studio (傳統) 工作區
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 使用 Azure Resource Manager 部署範本提供了可擴充的方式來部署具有驗證和重試機制的互連元件，為您節省時間。 例如，若要設定 Azure Machine Learning Studio (傳統) 工作區，您需要先設定 Azure 儲存體帳戶，然後再部署您的工作區。 假想您要對數百個工作區手動進行此動作。 更簡單的替代方式是使用 Azure Resource Manager 範本來部署 Studio (傳統) 工作區及其所有相依性。 這篇文章會帶領您逐步完成此程序。 如需 Azure Resource Manager 的詳細概觀，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 
@@ -145,6 +145,6 @@ Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEa
 * 深入瞭解 [撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。
 * 看看 [Azure 快速入門範本儲存機制](https://github.com/Azure/azure-quickstart-templates)。
 * 觀看這段 [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)影片。
-* 請參閱 [Resource Manager 範本參考說明](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
+* 請參閱 [Resource Manager 範本參考說明](/azure/templates/microsoft.machinelearning/allversions)
 
 <!--Link references-->

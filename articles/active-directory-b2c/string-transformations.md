@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203430"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322158"
 ---
 # <a name="string-claims-transformations"></a>字串宣告轉換
 
@@ -34,7 +34,7 @@ ms.locfileid: "85203430"
 | InputClaim | inputClaim2 | 字串 | 要比較的第二個宣告類型。 |
 | InputParameter | stringComparison | 字串 | 字串比較，其中一個值：Ordinal、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 宣告轉換一律會從[驗證技術設定檔](validation-technical-profile.md)執行，該設定檔會透過[自我判斷技術設定檔](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 來呼叫。 自我判斷技術設定檔的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 中繼資料會控制呈現給使用者的錯誤訊息。 錯誤訊息可以[當地語系化](localization-string-ids.md#claims-transformations-error-messages)。
+**AssertStringClaimsAreEqual** 宣告轉換一律會從 [驗證技術設定檔](validation-technical-profile.md)執行，該設定檔會透過 [自我判斷技術設定檔](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 來呼叫。 自我判斷技術設定檔的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 中繼資料會控制呈現給使用者的錯誤訊息。 錯誤訊息可以[當地語系化](localization-string-ids.md#claims-transformations-error-messages)。
 
 
 ![AssertStringClaimsAreEqual 執行](./media/string-transformations/assert-execution.png)
@@ -80,10 +80,10 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim1**：someone@contoso.com
-  - **inputClaim2**：someone@outlook.com
+  - **inputClaim1** ：someone@contoso.com
+  - **inputClaim2** ：someone@outlook.com
 - 輸入參數：
-  - **stringComparison**：ordinalIgnoreCase
+  - **stringComparison** ：ordinalIgnoreCase
 - 結果：擲回錯誤
 
 ## <a name="changecase"></a>ChangeCase
@@ -115,11 +115,11 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **email**：SomeOne@contoso.com
+  - **email** ：SomeOne@contoso.com
 - 輸入參數：
-    - **toCase**：LOWER
+    - **toCase** ：LOWER
 - 輸出宣告：
-  - **email**：someone@contoso.com
+  - **email** ：someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -146,9 +146,9 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入參數：
-    - **value**：Contoso terms of service...
+    - **value** ：Contoso terms of service...
 - 輸出宣告：
-    - **createdClaim**：TOS ClaimType 包含 "Contoso terms of service..." 值。
+    - **createdClaim** ：TOS ClaimType 包含 "Contoso terms of service..." 值。
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -183,13 +183,13 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim1**：someone@contoso.com
-  - **inputClaim2**：someone@outlook.com
+  - **inputClaim1** ：someone@contoso.com
+  - **inputClaim2** ：someone@outlook.com
 - 輸入參數：
-    - **運算子**：不等於
-    - **ignoreCase**：true
+    - **運算子** ：不等於
+    - **ignoreCase** ：true
 - 輸出宣告：
-    - **outputClaim**：true
+    - **outputClaim** ：true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -223,13 +223,13 @@ ms.locfileid: "85203430"
 
 ### <a name="example"></a>範例
 - 輸入宣告：
-    - **inputClaim1**：v1
+    - **inputClaim1** ：v1
 - 輸入參數：
-    - **compareTo**：V1
-    - **運算子**：EQUAL
-    - **ignoreCase**：true
+    - **compareTo** ：V1
+    - **運算子** ：EQUAL
+    - **ignoreCase** ：true
 - 輸出宣告：
-    - **outputClaim**：true
+    - **outputClaim** ：true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -259,9 +259,9 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入參數：
-    - **randomGeneratorType**：GUID
+    - **randomGeneratorType** ：GUID
 - 輸出宣告：
-    - **outputClaim**：bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+    - **outputClaim** ：bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 下列範例會產生介於 0 到 1000 之間的整數隨機值。 此值會格式化為 OTP_{隨機值}。
 
@@ -282,12 +282,12 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入參數：
-    - **randomGeneratorType**：INTEGER
-    - **maximumNumber**：1000
-    - **stringFormat**：OTP_{0}
-    - **base64**：false
+    - **randomGeneratorType** ：INTEGER
+    - **maximumNumber** ：1000
+    - **stringFormat** ：OTP_{0}
+    - **base64** ：false
 - 輸出宣告：
-    - **outputClaim**：OTP_853
+    - **outputClaim** ：OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -300,7 +300,7 @@ ms.locfileid: "85203430"
 | InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 參數。 此輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。  |
 | OutputClaim | outputClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
 
-使用此宣告轉換，利用一個參數 {0} 來將任何字串格式化。 下列範例會建立 **userPrincipalName**。 所有社交識別提供者技術設定檔 (例如 `Facebook-OAUTH`) 會呼叫 **CreateUserPrincipalName** 來產生 **userPrincipalName**。
+使用此宣告轉換，利用一個參數 {0} 來將任何字串格式化。 下列範例會建立 **userPrincipalName** 。 所有社交識別提供者技術設定檔 (例如 `Facebook-OAUTH`) 會呼叫 **CreateUserPrincipalName** 來產生 **userPrincipalName** 。
 
 ```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -319,11 +319,11 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**：5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim** ：5164db16-3eee-4629-bfda-dcc3326790e9
 - 輸入參數：
-    - **stringFormat**：cpim_{0}@{RelyingPartyTenantId}
+    - **stringFormat** ：cpim_{0}@{RelyingPartyTenantId}
 - 輸出宣告：
-  - **outputClaim**：cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim** ：cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -336,7 +336,7 @@ ms.locfileid: "85203430"
 | InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 和 {1} 參數。 此輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。   |
 | OutputClaim | outputClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
 
-使用此宣告轉換，利用兩個參數 ({0} 和 {1}) 來將任何字串格式化。 下列範例會使用指定的格式來建立 **displayName**：
+使用此宣告轉換，利用兩個參數 ({0} 和 {1}) 來將任何字串格式化。 下列範例會使用指定的格式來建立 **displayName** ：
 
 ```xml
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
@@ -356,12 +356,12 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim1**：Joe
-    - **inputClaim2**：Fernando
+    - **inputClaim1** ：Joe
+    - **inputClaim2** ：Fernando
 - 輸入參數：
-    - **stringFormat**: {0} {1}
+    - **stringFormat** : {0} {1}
 - 輸出宣告：
-    - **outputClaim**：Joe Fernando
+    - **outputClaim** ：Joe Fernando
 
 ## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
@@ -427,10 +427,10 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸出宣告：
-  - **subject**：Contoso account email verification code
-  - **message**:Thanks for verifying your account!
-  - **codeIntro**:Your code is
-  - **signature**:Sincerely
+  - **subject** ：Contoso account email verification code
+  - **message** :Thanks for verifying your account!
+  - **codeIntro** :Your code is
+  - **signature** :Sincerely
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -464,7 +464,7 @@ ms.locfileid: "85203430"
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -472,9 +472,9 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **mapFromClaim**：B2C_V1_90001
+    - **mapFromClaim** ：B2C_V1_90001
 - 輸出宣告：
-    - **restrictionValueClaim**：You cannot sign in because you are a minor.
+    - **restrictionValueClaim** ：You cannot sign in because you are a minor.
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -509,16 +509,16 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputParameterId**：test.com
+    - **inputParameterId** ：test.com
 - 輸入參數：
-    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com**：c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**：false
+    - **contoso.com** ：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com** ：0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com** ：c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup** ：false
 - 輸出宣告：
-    - **outputClaim**:    c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim** :    c7026f88-4299-4cdb-965d-3f166464b8a9
 
-當 `errorOnFailedLookup` 輸入參數設定為 `true` 時，**LookupValue** 宣告轉換一律會從由[自我判斷技術設定檔 ](self-asserted-technical-profile.md)呼叫的[驗證技術設定檔](validation-technical-profile.md)執行，或從 [DisplayConrtol](display-controls.md) 執行。 自我判斷技術設定檔的 `LookupNotFound` 中繼資料會控制呈現給使用者的錯誤訊息。
+當 `errorOnFailedLookup` 輸入參數設定為 `true` 時， **LookupValue** 宣告轉換一律會從由 [自我判斷技術設定檔](self-asserted-technical-profile.md)呼叫的 [驗證技術設定檔](validation-technical-profile.md)執行，或從 [DisplayConrtol](display-controls.md) 執行。 自我判斷技術設定檔的 `LookupNotFound` 中繼資料會控制呈現給使用者的錯誤訊息。
 
 ![AssertStringClaimsAreEqual 執行](./media/string-transformations/assert-execution.png)
 
@@ -544,12 +544,12 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputParameterId**: live.com
+    - **inputParameterId** : live.com
 - 輸入參數：
-    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com**：c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**: true
+    - **contoso.com** ：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com** ：0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com** ：c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup** : true
 - 錯誤：
     - 在輸入參數識別碼的清單中找不到符合的輸入宣告值，而且 errorOnFailedLookup 為 true。
 
@@ -573,9 +573,9 @@ ms.locfileid: "85203430"
 ```
 
 - 輸入宣告：
-    - **outputClaim**：歡迎使用 Contoso 應用程式。 如果您繼續瀏覽並使用此網站，表示您同意遵循並遵守下列條款及條件...
+    - **outputClaim** ：歡迎使用 Contoso 應用程式。 如果您繼續瀏覽並使用此網站，表示您同意遵循並遵守下列條款及條件...
 - 輸出宣告：
-    - **outputClaim**：NULL
+    - **outputClaim** ：NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -602,9 +602,9 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **emailAddress**：joe@outlook.com
+  - **emailAddress** ：joe@outlook.com
 - 輸出宣告：
-    - **domain**：outlook.com
+    - **domain** ：outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
@@ -641,13 +641,13 @@ ms.locfileid: "85203430"
 ```
 
 - 輸入宣告：
-    - **claimToMatch**："64854114520"
+    - **claimToMatch** ："64854114520"
 - 輸入參數：
-    - **matchTo**: "^[0-9]{4,16}$"
-    - **outputClaimIfMatched**:  "isPhone"
+    - **matchTo** : "^[0-9]{4,16}$"
+    - **outputClaimIfMatched** :  "isPhone"
 - 輸出宣告：
-    - **outputClaim**: "isPhone"
-    - **regexCompareResultClaim**: true
+    - **outputClaim** : "isPhone"
+    - **regexCompareResultClaim** : true
 
 ### <a name="example-2"></a>範例 2
 
@@ -672,15 +672,15 @@ ms.locfileid: "85203430"
 ```
 
 - 輸入宣告：
-    - **claimToMatch**: "emily@contoso.com"
+    - **claimToMatch** : "emily@contoso.com"
 - 輸入參數：
-    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched**:  "isEmail"
-    - **extractGroups**: true
+    - **matchTo** : `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched** :  "isEmail"
+    - **extractGroups** : true
 - 輸出宣告：
-    - **outputClaim**: "isEmail"
-    - **regexCompareResultClaim**: true
-    - **mailAlias**: emily
+    - **outputClaim** : "isEmail"
+    - **regexCompareResultClaim** : true
+    - **mailAlias** : emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
@@ -720,16 +720,16 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**：v1
+    - **inputClaim** ：v1
 - 輸入參數：
-    - **matchTo**：V1
-    - **stringComparison**：ordinalIgnoreCase
-    - **stringMatchMsg**：B2C_V1_90005
-    - **stringMatchMsgCode**：TOS 會升級到 v2
+    - **matchTo** ：V1
+    - **stringComparison** ：ordinalIgnoreCase
+    - **stringMatchMsg** ：B2C_V1_90005
+    - **stringMatchMsgCode** ：TOS 會升級到 v2
 - 輸出宣告：
-    - **outputClaim1**：B2C_V1_90005
-    - **outputClaim2**：TOS 會升級到 v2
-    - **stringCompareResultClaim**：true
+    - **outputClaim1** ：B2C_V1_90005
+    - **outputClaim2** ：TOS 會升級到 v2
+    - **stringCompareResultClaim** ：true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
@@ -766,14 +766,14 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **claimToMatch**：Minor
+    - **claimToMatch** ：Minor
 - 輸入參數：
-    - **matchTo**：Minor
-    - **stringComparison**：ordinalIgnoreCase
-    - **outputClaimIfMatched**：B2C_V1_90001
+    - **matchTo** ：Minor
+    - **stringComparison** ：ordinalIgnoreCase
+    - **outputClaimIfMatched** ：B2C_V1_90001
 - 輸出宣告：
-    - **isMinorResponseCode**：B2C_V1_90001
-    - **isMinor**：true
+    - **isMinorResponseCode** ：B2C_V1_90001
+    - **isMinor** ：true
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -807,12 +807,12 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**："Admin, Approver, Editor"
+    - **inputClaim** ："Admin, Approver, Editor"
 - 輸入參數：
-    - **contains**: "admin,"
-    - **ignoreCase**：true
+    - **contains** : "admin,"
+    - **ignoreCase** ：true
 - 輸出宣告：
-    - **outputClaim**：true
+    - **outputClaim** ：true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**: "+1644114520"
+    - **inputClaim** : "+1644114520"
 - 輸入參數：
-    - **startIndex**:0
-    - **length**:2
+    - **startIndex** :0
+    - **length** :2
 - 輸出宣告：
-    - **outputClaim**: "+1"
+    - **outputClaim** : "+1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**: "+164-411-452-054"
+    - **inputClaim** : "+164-411-452-054"
 - 輸入參數：
-    - **oldValue**: "-"
-    - **length**:  ""
+    - **oldValue** : "-"
+    - **newValue** ： ""
 - 輸出宣告：
-    - **outputClaim**: "+164411452054"
+    - **outputClaim** : "+164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
@@ -919,11 +919,11 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim**: [ "Admin", "Author", "Reader" ]
+  - **inputClaim** : [ "Admin", "Author", "Reader" ]
 - 輸入參數：
-  - **delimiter**: ","
+  - **delimiter** : ","
 - 輸出宣告：
-  - **outputClaim**："Admin,Author,Reader"
+  - **outputClaim** ："Admin,Author,Reader"
 
 
 ## <a name="stringsplit"></a>StringSplit
@@ -955,11 +955,11 @@ ms.locfileid: "85203430"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim**："Admin,Author,Reader"
+  - **inputClaim** ："Admin,Author,Reader"
 - 輸入參數：
-  - **delimiter**: ","
+  - **delimiter** : ","
 - 輸出宣告：
-  - **outputClaim**: [ "Admin", "Author", "Reader" ]
+  - **outputClaim** : [ "Admin", "Author", "Reader" ]
 
 ## <a name="string-claim-transformations-expressions"></a>字串宣告轉換運算式
 Azure AD B2C 自訂原則中的宣告轉換運算式會提供有關租用戶識別碼和技術設定檔識別碼的內容資訊。

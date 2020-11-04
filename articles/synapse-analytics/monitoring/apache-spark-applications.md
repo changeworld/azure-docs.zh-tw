@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f55d65b215c03769caa7c812dcda138f8e83595
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387348"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322469"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio 監視您 Apache Spark 的應用程式
 
@@ -35,15 +35,15 @@ ms.locfileid: "87387348"
 
 - Synapse Studio 工作區。 如需相關指示，請參閱 [建立 Synapse Studio 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)。
 
-- Apache Spark 集區。
+- 無伺服器 Apache Spark 集區。
 
 ## <a name="monitor-running-apache-spark-application"></a>監視正在執行 Apache Spark 應用程式
 
-開啟 [ **監視**]，然後選取 [ **Apache Spark 應用程式**]。 若要查看執行中 Apache Spark 應用程式的詳細資料，請選取 [提交 Apache Spark 應用程式]，並查看詳細資料。 如果 Apache Spark 應用程式仍在執行中，您可以監視進度。
+開啟 [ **監視** ]，然後選取 [ **Apache Spark 應用程式** ]。 若要查看執行中 Apache Spark 應用程式的詳細資料，請選取 [提交 Apache Spark 應用程式]，並查看詳細資料。 如果 Apache Spark 應用程式仍在執行中，您可以監視進度。
 
   ![選取正在執行的作業](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. 檢查 **已完成**的工作、 **狀態**和 **總持續時間**。
+1. 檢查 **已完成** 的工作、 **狀態** 和 **總持續時間** 。
 
 2. 取消 Apache Spark 的應用程式。
 
@@ -53,31 +53,31 @@ ms.locfileid: "87387348"
 
 5. 檢查 **摘要** 資訊。
 
-6. 檢查 **記錄**檔。 執行時，記錄檔資訊是空的。
+6. 檢查 **記錄** 檔。 執行時，記錄檔資訊是空的。
 
     ![查看正在執行的作業](./media/how-to-monitor-spark-applications/view-running-job.png)
 
 ## <a name="view-completed-apache-spark-application"></a>查看已完成的 Apache Spark 應用程式
 
-開啟 [ **監視**]，然後選取 [ **Apache Spark 應用程式**]。 若要查看已完成的 Apache Spark 應用程式的詳細資料，請選取 Apache Spark 的應用程式，並查看詳細資料。
+開啟 [ **監視** ]，然後選取 [ **Apache Spark 應用程式** ]。 若要查看已完成的 Apache Spark 應用程式的詳細資料，請選取 Apache Spark 的應用程式，並查看詳細資料。
 
   ![選取已完成的作業](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. 檢查 **已完成**的工作、 **狀態**和 **總持續時間**。
+1. 檢查 **已完成** 的工作、 **狀態** 和 **總持續時間** 。
 
 2. 重新整理記錄查詢。
 
-3. 按一下 [ **Spark 歷程記錄伺服器**]，開啟 Apache Spark 歷程記錄伺服器連結。
+3. 按一下 [ **Spark 歷程記錄伺服器** ]，開啟 Apache Spark 歷程記錄伺服器連結。
 
 4. 按一下圖形中的圖示來檢查 **摘要** 資訊。
 
-5. 檢查 **記錄**檔。 您可以從下拉式清單中選取不同類型的記錄，也可以按一下 [ **下載記錄**檔] 來下載記錄檔資訊。
+5. 檢查 **記錄** 檔。 您可以從下拉式清單中選取不同類型的記錄，也可以按一下 [ **下載記錄** 檔] 來下載記錄檔資訊。
 
-6. 您可以在產生的作業圖形中查看作業的總覽。 依預設，圖表會顯示所有工作。 您可以依 **作業識別碼**篩選此視圖。
+6. 您可以在產生的作業圖形中查看作業的總覽。 依預設，圖表會顯示所有工作。 您可以依 **作業識別碼** 篩選此視圖。
 
-7. 依預設，會選取 **進度** 顯示。 您可以在 [**顯示**] 下拉式清單中選取 [**讀取**] 或 [**寫入**] 來檢查資料流程。
+7. 依預設，會選取 **進度** 顯示。 您可以在 [ **顯示** ] 下拉式清單中選取 [ **讀取** ] 或 [ **寫入** ] 來檢查資料流程。
 
-8. 若要播放作業，請選取 [ **播放**]。 您可以隨時選擇 **停止** 。
+8. 若要播放作業，請選取 [ **播放** ]。 您可以隨時選擇 **停止** 。
 
 9. 您可以使用滑鼠滾輪來放大和縮小作業圖形，或選取 [ **縮放至適當比例** ]，使其符合螢幕大小。
 
@@ -107,35 +107,35 @@ ms.locfileid: "87387348"
 
 ## <a name="view-canceled-apache-spark-application"></a>View Apache Spark 應用程式的已取消
 
-開啟 [ **監視**]，然後選取 [ **Apache Spark 應用程式**]。 若要查看已取消的 Apache Spark 應用程式的詳細資料，請選取 Apache Spark 的應用程式，並查看詳細資料。
+開啟 [ **監視** ]，然後選取 [ **Apache Spark 應用程式** ]。 若要查看已取消的 Apache Spark 應用程式的詳細資料，請選取 Apache Spark 的應用程式，並查看詳細資料。
 
  ![選取取消的作業](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. 檢查 **已完成**的工作、 **狀態**和 **總持續時間**。
+1. 檢查 **已完成** 的工作、 **狀態** 和 **總持續時間** 。
 
 2. 重新整理記錄查詢。
 
-3. 按一下 [ **Spark 歷程記錄伺服器**] 以開啟 [Apache 歷程記錄伺服器] 連結。
+3. 按一下 [ **Spark 歷程記錄伺服器** ] 以開啟 [Apache 歷程記錄伺服器] 連結。
 
 4. 觀看圖形。
 
 5. 檢查 **摘要** 資訊。
 
-6. 檢查 **記錄**檔。 您可以從下拉式清單中選取不同類型的記錄，也可以按一下 [ **下載記錄**檔] 來下載記錄檔資訊。
+6. 檢查 **記錄** 檔。 您可以從下拉式清單中選取不同類型的記錄，也可以按一下 [ **下載記錄** 檔] 來下載記錄檔資訊。
 
    ![查看取消的作業](./media/how-to-monitor-spark-applications/view-cancelled-job.png)
 
 ## <a name="debug-failed-apache-spark-application"></a>Apache Spark 應用程式的偵錯工具失敗
 
-開啟 [ **監視**]，然後選取 [ **Apache Spark 應用程式**]。 若要查看失敗 Apache Spark 應用程式的詳細資料，請選取 Apache Spark 應用程式，並查看詳細資料。
+開啟 [ **監視** ]，然後選取 [ **Apache Spark 應用程式** ]。 若要查看失敗 Apache Spark 應用程式的詳細資料，請選取 Apache Spark 應用程式，並查看詳細資料。
 
 ![選取失敗的作業](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. 檢查 **已完成**的工作、 **狀態**和 **總持續時間**。
+1. 檢查 **已完成** 的工作、 **狀態** 和 **總持續時間** 。
 
 2. 重新整理記錄查詢。
 
-3. 按一下 [ **Spark 歷程記錄伺服器**]，開啟 Apache Spark 歷程記錄伺服器連結。
+3. 按一下 [ **Spark 歷程記錄伺服器** ]，開啟 Apache Spark 歷程記錄伺服器連結。
 
 4. 觀看圖形。
 
@@ -145,6 +145,6 @@ ms.locfileid: "87387348"
 
    ![失敗的作業資訊](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關監視管線執行的詳細資訊，請參閱 [使用 Synapse Studio 的監視器管線執行](how-to-monitor-pipeline-runs.md) 一文。  

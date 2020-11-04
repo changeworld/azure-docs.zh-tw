@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/08/2020
-ms.openlocfilehash: 43e3916e47aa0305209b8e6e32803426ac1ebe3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/02/2020
+ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637559"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325055"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -26,10 +26,14 @@ ms.locfileid: "92637559"
 - Data Factory 服務未包含存放庫，此存放庫會用於儲存變更的 JSON 實體。 若要儲存變更，唯一的方式是透過 [全部發佈] 按鈕，將所有變更直接發佈給資料處理站服務。
 - Data Factory 服務並未針對共同作業和版本控制進行最佳化。
 
-為了提供更好的撰寫體驗，Azure Data Factory 可讓您使用 Azure Repos 或 GitHub 來設定 Git 存放庫。 Git 是一種版本控制系統，可讓您更輕鬆地追蹤變更和共同作業。 本教學課程將概述如何在 Git 存放庫中進行設定和工作，以及重點提示最佳做法和疑難排解指南。
+為了提供更好的撰寫體驗，Azure Data Factory 可讓您使用 Azure Repos 或 GitHub 來設定 Git 存放庫。 Git 是一種版本控制系統，可讓您更輕鬆地追蹤變更和共同作業。 本文將概述如何在 git 存放庫中設定及使用，以及反白顯示最佳作法和疑難排解指南。
 
 > [!NOTE]
 > Azure資料處理站 Git 整合無法在 Azure Government 雲端中使用。
+
+若要深入瞭解 Azure Data Factory 如何與 Git 整合，請參閱下列15分鐘的教學課程影片：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4GNKv]
 
 ## <a name="advantages-of-git-integration"></a>Git 整合的優點
 
@@ -38,7 +42,7 @@ ms.locfileid: "92637559"
 -   **原始檔控制：** 當您的資料處理站工作負載變得更重要時，您可以將您的處理站與 Git 整合，以利用數個原始程式碼控制優點，例如：
     -   追蹤/稽核變更的能力。
     -   還原造成錯誤 (Bug) 之變更的能力。
--   **部分儲存：** 針對資料處理站服務來撰寫時，您無法將變更儲存為草稿，而且所有發佈都必須通過資料處理站驗證。 不論是管線尚未完成，還是您只是不想在電腦當機時遺失變更，Git 整合都能讓您以累加的方式變更資料處理站資源，而不論資源處於什麼狀態。 設定 Git 存放庫可讓您儲存變更，從而讓您只在將變更測試到滿意時才發佈。
+-   **部分儲存：** 針對資料處理站服務來撰寫時，您無法將變更儲存為草稿，而且所有發佈都必須通過資料處理站驗證。 無論您的管線是否未完成，或是您不想要在電腦損毀時遺失變更，git 整合可讓資料處理站資源的累加式變更，不論它們位於何種狀態。 設定 Git 存放庫可讓您儲存變更，從而讓您只在將變更測試到滿意時才發佈。
 -   **共同作業與控制：** 若您有多個參與相同處理站的小組成員，您可以透過程式碼檢閱程序讓您的小組成員彼此共同作業。 您也可以設定處理站，而不讓每個參與者具有相同的權限。 某些小組成員只能透過 Git 進行變更，而且小組中只有特定人員可以將變更發佈到處理站。
 -   **更好的 CI/CD：** 如果您要使用 [持續傳遞程序](continuous-integration-deployment.md)來部署到多個環境，Git 整合可以讓某些動作變得更容易。 其中一些動作包括：
     -   將發行管線設定為會在「開發」處理站有所變更時就自動觸發。
@@ -48,29 +52,45 @@ ms.locfileid: "92637559"
 > [!NOTE]
 > 設定了 Git 存放庫時，Azure Data Factory UX 會停用直接使用 Data Factory 服務來撰寫。 透過 PowerShell 或 SDK 所做的變更會直接發佈至 Data Factory 服務，且不會在 Git 中輸入。
 
+## <a name="connect-to-a-git-repository"></a>連接到 Git 存放庫
+
+有四種不同的方式可將 Git 存放庫連線至您的 data factory，Azure Repos 和 GitHub。 連線到 Git 存放庫之後，您可以在 [ **原始檔控制** ] 區段中的 [ **Git** 設定] 下，于 [管理中樞](author-management-hub.md)內查看及管理您的設定。
+
+### <a name="configuration-method-1-home-page"></a>設定方法1：首頁
+
+在 Azure Data Factory 首頁] 中，選取 [ **設定程式碼存放庫** ]。
+
+![從首頁設定程式碼存放庫](media/author-visually/configure-repo.png)
+
+### <a name="configuration-method-2-authoring-canvas"></a>設定方法2：撰寫畫布
+
+在 Azure Data Factory UX 的撰寫畫布中選取 [Data Factory] 下拉式功能表，然後選取 [設定程式碼存放庫]。
+
+![從撰寫中設定程式碼存放庫設定](media/author-visually/configure-repo-2.png)
+
+### <a name="configuration-method-3-management-hub"></a>設定方法3：管理中樞
+
+移至 ADF UX 中的管理中樞。 在 [ **原始檔控制** ] 區段中，選取 [ **Git** 設定]。 如果您沒有任何已連線的儲存機制，請按一下 [ **設定程式碼存放庫** ]。
+
+![從管理中樞設定程式碼存放庫設定](media/author-visually/configure-repo-3.png)
+
+### <a name="configuration-method-4-during-factory-creation"></a>設定方法4：建立工廠期間
+
+在 Azure 入口網站中建立新的 data factory 時，您可以在 [ **git** 設定] 索引標籤中設定 git 存放庫資訊。
+
+> [!NOTE]
+> 在 Azure 入口網站中設定 git 時，必須以手動方式輸入 [專案名稱] 和 [存放庫名稱] 等設定，而不是下拉式清單的一部分。
+
+![從 Azure 入口網站設定程式碼存放庫設定](media/author-visually/configure-repo-4.png)
+
 ## <a name="author-with-azure-repos-git-integration"></a>使用 Azure Repos Git 整合來進行撰寫
 
 使用 Azure Repos Git 整合來進行視覺化撰寫時，可針對您資料處理站管線上的工作支援原始檔控制和共同作業。 您可以將資料處理站與 Azure Repos Git 組織存放庫建立關聯，以進行原始檔控制、共同作業及版本設定等。 一個 Azure Repos Git 組織可以有多個存放庫，但一個 Azure Repos Git 存放庫只能與一個資料處理站建立關聯。 如果您沒有 Azure Repos 組織或存放庫，請依照[這些指示](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)來建立您的資源。
 
 > [!NOTE]
-> 您可以將指令碼和資料檔案儲存在 Azure Repos Git 存放庫中。 不過，您必須手動將檔案上載至 Azure 儲存體。 Data Factory 管線不會自動將儲存在 Azure Repos Git 存放庫中的指令碼或資料檔案上傳至「Azure 儲存體」。
+> 您可以將指令碼和資料檔案儲存在 Azure Repos Git 存放庫中。 不過，您必須手動將檔案上載至 Azure 儲存體。 Data factory 管線不會自動將 Azure Repos Git 存放庫中儲存的腳本或資料檔案上傳至 Azure 儲存體。
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>設定搭配 Azure Data Factory 的 Azure Repos Git 存放庫
-
-您可以透過兩種方法設定搭配資料處理站的 Azure Repos Git 存放庫。
-
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>設定方法 1：Azure Data Factory 首頁
-
-在 Azure Data Factory 的首頁上選取 [設定程式碼存放庫]。
-
-![設定 Azure Repos 程式碼存放庫](media/author-visually/configure-repo.png)
-
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>設定方法 2：UX 撰寫畫布
-在 Azure Data Factory UX 的撰寫畫布中選取 [Data Factory] 下拉式功能表，然後選取 [設定程式碼存放庫]。
-
-![設定用於 UX 撰寫的程式碼存放庫設定](media/author-visually/configure-repo-2.png)
-
-這兩種方法都會開啟 [存放庫設定] 設定窗格。
+### <a name="azure-repos-settings"></a>Azure Repos 設定
 
 ![設定程式碼存放庫設定](media/author-visually/repo-settings.png)
 
@@ -95,6 +115,9 @@ ms.locfileid: "92637559"
 
 Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶中。 若要指定不同的 Azure AD 租用戶，您必須擁有所用 Azure 訂用帳戶的系統管理員權限。 如需詳細資訊，請參閱 [變更訂用帳戶管理員](../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator)
 
+> [!IMPORTANT]
+> 若要連接到其他 Azure Active Directory，登入的使用者必須是該 Active Directory 的一部分。 
+
 ### <a name="use-your-personal-microsoft-account"></a>使用您的個人 Microsoft 帳戶
 
 若要使用個人 Microsoft 帳戶進行 Git 整合，您可以將個人的 Azure Repos 連結至貴組織的 Active Directory。
@@ -117,27 +140,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 若要設定 GitHub 存放庫，您必須擁有所用 Azure 訂用帳戶的系統管理員權限。
 
-如需此功能的 9 分鐘簡介與示範，請觀看下列影片：
-
-> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
-
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>設定搭配 Azure Data Factory 的 GitHub 存放庫
-
-您可以透過兩種方法設定搭配資料處理站的 GitHub 存放庫。
-
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>設定方法 1：Azure Data Factory 首頁
-
-在 Azure Data Factory 的首頁上選取 [設定程式碼存放庫]。
-
-![設定 Azure Repos 程式碼存放庫](media/author-visually/configure-repo.png)
-
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>設定方法 2：UX 撰寫畫布
-
-在 Azure Data Factory UX 的撰寫畫布中選取 [Data Factory] 下拉式功能表，然後選取 [設定程式碼存放庫]。
-
-![設定用於 UX 撰寫的程式碼存放庫設定](media/author-visually/configure-repo-2.png)
-
-這兩種方法都會開啟 [存放庫設定] 設定窗格。
+### <a name="github-settings"></a>GitHub 設定
 
 ![GitHub 存放庫設定](media/author-visually/github-integration-image2.png)
 
@@ -155,6 +158,38 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 | **將現有的 Data Factory 資源匯入存放庫** | 指定是否要從 UX 撰寫畫布將現有的資料處理站資源匯入到 GitHub 存放庫。 選取此方塊可將您的資料處理站資源以 JSON 格式匯入到相關聯的 Git 存放庫。 此動作會將每個資源個別匯出 (亦即，已連結的服務和資料集會匯出至個別的 JSON)。 若未選取此方塊，則不會匯入現有資源。 | 已選取 (預設值) |
 | **要匯入資源的分支** | 指定要匯入資料處理站資源 (管線、資料集、連結服務等等) 的分支。 您可以將資源匯入下列其中一個分支：a. 共同作業 b. 新建 c. 使用現有的 |  |
 
+### <a name="github-organizations"></a>GitHub 組織
+
+若要連線到 GitHub 組織，組織必須將許可權授與 Azure Data Factory。 具有組織系統管理員許可權的使用者必須執行下列步驟，才能讓 data factory 連接。
+
+#### <a name="connecting-to-github-for-the-first-time-in-azure-data-factory"></a>第一次在 Azure Data Factory 中連接到 GitHub
+
+如果您是第一次從 Azure Data Factory 連接到 GitHub，請遵循下列步驟來連線到 GitHub 組織。
+
+1. 在 [Git 設定] 窗格的 [ *GitHub 帳戶* ] 欄位中，輸入組織名稱。 系統會提示您登入 GitHub。 
+1. 使用您的使用者認證登入。
+1. 系統會要求您將 Azure Data Factory 作為名為 *AzureDataFactory* 的應用程式來授權。 在此畫面上，您會看到授與許可權給 ADF 以存取組織的選項。 如果您沒有看到授與許可權的選項，請要求系統管理員透過 GitHub 手動授與許可權。
+
+遵循這些步驟之後，您的工廠就能連線到您組織內的公用和私人存放庫。 如果您無法連線，請嘗試清除瀏覽器快取，然後再試一次。
+
+#### <a name="already-connected-to-github-using-a-personal-account"></a>已使用個人帳戶連接到 GitHub
+
+如果您已連線至 GitHub，而且只授與存取個人帳戶的許可權，請遵循下列步驟來授與許可權給組織。 
+
+1. 移至 GitHub 並開啟 [ **設定** ]。
+
+    ![開啟 GitHub 設定](media/author-visually/github-settings.png)
+
+1. 選取 **應用程式** 。 在 [ **授權的 OAuth 應用程式** ] 索引標籤中，您應該會看到 *AzureDataFactory* 。
+
+    ![選取 OAuth 應用程式](media/author-visually/github-organization-select-application.png)
+
+1. 選取應用程式，並將應用程式存取權授與您的組織。
+
+    ![授與存取權](media/author-visually/github-organization-grant.png)
+
+遵循這些步驟之後，您的工廠就能連線到您組織內的公用和私人存放庫。 
+
 ### <a name="known-github-limitations"></a>已知的 GitHub 限制
 
 - 您可以將指令碼和資料檔案儲存在 GitHub 存放庫。 不過，您必須手動將檔案上載至 Azure 儲存體。 Data Factory 管線不會自動將 GitHub 存放庫中儲存的指令碼或資料檔案上傳至 Azure 儲存體。
@@ -163,7 +198,6 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 - 僅可以在正式推出的 Data Factory 版本中，使用 GitHub 與 Data Factory 視覺化撰寫工具的整合。
 
-- Azure Data Factory 不支援 GitHub 組織帳戶
 
 - 針對每個資源類型 (例如管線和資料集)，最多可以從單一 GitHub 分支擷取 1,000 個實體。 若達到此限制，則建議您將資源分割成不同處理站。 Azure DevOps Git 沒有此限制。
 
@@ -237,7 +271,7 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 1. 建立提取要求以將變更合併到共同作業分支 
 
 以下是一些可能會導致過時發佈分支的情況範例：
-- 使用者有多個分支。 在一個功能分支中，使用者刪除未與 AKV 相關聯的連結服務 (非 AKV 的連結服務會立即發佈，不論其是否位於 Git 中都會如此)，而且從未將功能分支合併到共同作業分支。
+- 使用者有多個分支。 在一個功能分支中，他們刪除了未 AKV 關聯的已連結服務， (非 AKV 連結服務會立即發行，不論它們是在 Git 中，還是不是) ，而且永遠不會將功能分支合併至共同作業分支。
 - 使用者使用 SDK 或 PowerShell 修改過資料處理站
 - 使用者已將所有資源移到新的分支，並嘗試進行第一次發佈。 請於匯入資源時手動建立連結服務。
 - 使用者以手動方式上傳非 AKV 連結服務或 Integration Runtime JSON。 使用者從另一個資源 (例如資料集、連結服務或管線) 參考該資源。 透過 UX 建立的非 AKV 連結服務會立即發佈，因為認證需要加密。 如果您上傳參考該連結服務的資料集並嘗試發佈，UX 會允許此資料集，因為其存在於 Git 環境中。 此資料集會在發佈時遭到拒絕，因為其不存在於資料處理站服務中。

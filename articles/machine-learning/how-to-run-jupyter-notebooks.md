@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628672"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325404"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -80,11 +80,11 @@ ms.locfileid: "92628672"
 1. 選取 **計算** 目標，或建立一個新的，並等候它正在執行。
 1. 選取 **開啟終端機** 圖示。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="建立新檔案":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="開啟終端機":::
 
 1. 如果您沒有看到此圖示，請選取計算目標右邊的 **...** ，然後選取 [ **開啟終端** 機]。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="建立新檔案":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="從 ... 開啟終端機":::
 
 
 瞭解如何[將 Git 存放庫複製到您的工作區檔案系統](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)。
@@ -116,7 +116,7 @@ ms.locfileid: "92628672"
 1. 在終端機視窗工具列中，選取 [ **焦點模式]** 以開啟焦點模式。 視您的視窗寬度而定，這可能位於工具列的 [ **...** ] 功能表項目底下。
 1. 在焦點模式中，選取 [ **標準] view** 以返回標準視圖。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="建立新檔案":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="切換焦點模式/標準視圖":::
 
 
 ### <a name="use-intellisense"></a>使用 IntelliSense
@@ -136,7 +136,7 @@ ms.locfileid: "92628672"
 1. 執行您所有的筆記本儲存格。
 1. 選取包含您想要新筆記本執行之程式碼的資料格。 例如，提交實驗的程式碼，或可能註冊模型的程式碼。
 1. 選取出現在資料格工具列上的 **收集** 圖示。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="建立新檔案":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="螢幕擷取畫面：選取收集圖示":::
 1. 輸入新「收集的」筆記本的名稱。  
 
 新的筆記本只會包含程式碼儲存格，而且所有儲存格都需要產生與您選取要收集的資料格相同的結果。
@@ -147,7 +147,7 @@ ms.locfileid: "92628672"
 
 在筆記本工具列中，選取功能表，然後選取 **[ &gt; 儲存和檢查點** ] 以手動方式儲存筆記本，它會新增與筆記本相關聯的檢查點檔案。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="建立新檔案":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="筆記本工具列中 [儲存] 工具的螢幕擷取畫面":::
 
 每隔30秒會自動儲存每個筆記本。 [自動儲存] 只會更新初始 *.ipynb* 檔，而不會更新檢查點檔案。
  
@@ -188,7 +188,7 @@ ms.locfileid: "92628672"
 
 ### <a name="view-logs-and-output"></a>檢視記錄和輸出
 
-使用[筆記本小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)檢視執行進度和記錄。 小工具沒有同步，會一直提供更新直到定型完成。 Jupyter 和 JupterLab 也支援 Azure Machine Learning 小工具。
+使用[筆記本小工具](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)檢視執行進度和記錄。 小工具沒有同步，會一直提供更新直到定型完成。 Jupyter 和 JupterLab 也支援 Azure Machine Learning 小工具。
 
 ## <a name="change-the-notebook-environment"></a>變更筆記本環境
 

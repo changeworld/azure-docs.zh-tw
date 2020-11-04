@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: aa58ad09a6db212633e51b89c390ff0330943131
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: be625d99d1b57ff3c66528b8af6fa0273d013ebe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279844"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325456"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 資料整合合作夥伴
 
-若要使用 Azure Synapse 的 Synapse SQL 集區功能來建立資料倉儲解決方案，您可以從各種領先業界的工具中選擇。 本文將重點放在具有可支援 Azure Synapse 官方資料整合解決方案的 Microsoft 合作夥伴公司。
+若要在 Azure Synapse Analytics 中使用專用的 SQL 集區來建立資料倉儲解決方案，您可以從各種領先業界的工具中選擇。 本文將重點放在具有可支援 Azure Synapse 官方資料整合解決方案的 Microsoft 合作夥伴公司。
 
 ## <a name="data-integration-partners"></a>資料整合合作夥伴
 

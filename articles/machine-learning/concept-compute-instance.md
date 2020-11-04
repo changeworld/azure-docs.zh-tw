@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d4ae18b335453f3e1d3512951675afe10c804c8d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7c1bfa618ea0ddddd7666698bc4fffa3ced5079d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094416"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323067"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -35,7 +35,7 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 |主要權益|描述|
 |----|----|
 |生產力|您可以使用整合式筆記本以及下列 Azure Machine Learning studio 中的工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (preview) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。<br/> 您也可以搭配使用 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) 與計算實例。
-|受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>-從 Resource Manager 範本或 Azure Machine Learning SDK 自動布建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
+|受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>-從 Resource Manager 範本或 Azure Machine Learning SDK 自動布建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](../role-based-access-control/overview.md)<br/>- [虛擬網路支援](./how-to-secure-training-vnet.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
 |&nbsp;針對 &nbsp; ML 預先設定|使用已預先設定好的最新 ML 套件、深度學習架構、GPU 驅動程式，節省設定工作的時間。|
 |可完全自訂|廣泛支援各種 Azure VM 類型 (包括 GPU) 和持續性的低層級自訂，例如安裝套件和驅動程式可讓您輕鬆地建置進階案例。 |
 
@@ -77,7 +77,7 @@ Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合
 |Anaconda Python||
 |Jupyter 和擴充功能||
 |Jupyterlab 和擴充功能||
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>從 PyPI|包含大部分的 azureml 額外套件。  若要查看完整清單，請[在計算執行個體上開啟終端機視窗](how-to-run-jupyter-notebooks.md#terminal)並執行 <br/> `conda list -n azureml_py36 azureml*` |
+[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>從 PyPI|包含大部分的 azureml 額外套件。  若要查看完整清單，請[在計算執行個體上開啟終端機視窗](how-to-run-jupyter-notebooks.md#terminal)並執行 <br/> `conda list -n azureml_py36 azureml*` |
 |其他 PyPI 套件|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda 套件|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度學習套件|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -120,7 +120,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * 透過 SSH 連線到計算執行個體。 預設會停用 SSH 存取，但可在建立計算執行個體時加以啟用。 SSH 存取是透過公開/私密金鑰機制來加以控制的。 此索引標籤會提供 SSH 連線的詳細資料，例如 IP 位址、使用者名稱和連接埠號碼。
 * 取得特定計算執行個體的詳細資料，例如 IP 位址和區域。
 
-[AZURE RBAC](/azure/role-based-access-control/overview) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新開機計算實例。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 Azure RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
+[AZURE RBAC](../role-based-access-control/overview.md) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新開機計算實例。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 Azure RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
 
 這些動作可由 Azure RBAC 控制：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*

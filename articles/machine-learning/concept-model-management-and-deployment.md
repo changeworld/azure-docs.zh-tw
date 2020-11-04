@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302412"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324841"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 的模型管理、部署及監視
 
@@ -32,13 +32,13 @@ Machine Learning 作業 (MLOps) 是以提高工作流程效率的 [DevOps](https
 
 Azure Machine Learning 提供下列 MLOps 功能：
 
-- **建立可重現的 ML 管線**。 Machine Learning 管線可讓您針對資料準備、定型和評分程式，定義可重複且可重複使用的步驟。
+- **建立可重現的 ML 管線** 。 Machine Learning 管線可讓您針對資料準備、定型和評分程式，定義可重複且可重複使用的步驟。
 - **建立可重複使用的軟體環境** ，以定型和部署模型。
-- **從任何地方註冊、封裝及部署模型**。 您也可以追蹤使用模型所需的相關中繼資料。
-- **針對端對端 ML 生命週期，捕捉治理資料**。 記錄的資訊可能包括正在發佈模型的人員、進行變更的原因，以及在生產環境中部署或使用模型的時間。
-- **通知並警示 ML 生命週期中的事件**。 例如，實驗完成、模型註冊、模型部署和資料漂移偵測。
-- **監視 ml 應用程式是否有操作和 ML 相關的問題**。 比較定型和推斷之間的模型輸入、探索模型特定的計量，以及提供 ML 基礎結構的監視和警示。
-- **使用 Azure Machine Learning 和 Azure Pipelines 自動化端對端 ML 生命週期**。 使用管線可讓您頻繁地更新模型、測試新模型，以及隨著其他應用程式和服務持續推出新的 ML 模型。
+- **從任何地方註冊、封裝及部署模型** 。 您也可以追蹤使用模型所需的相關中繼資料。
+- **針對端對端 ML 生命週期，捕捉治理資料** 。 記錄的資訊可能包括正在發佈模型的人員、進行變更的原因，以及在生產環境中部署或使用模型的時間。
+- **通知並警示 ML 生命週期中的事件** 。 例如，實驗完成、模型註冊、模型部署和資料漂移偵測。
+- **監視 ml 應用程式是否有操作和 ML 相關的問題** 。 比較定型和推斷之間的模型輸入、探索模型特定的計量，以及提供 ML 基礎結構的監視和警示。
+- **使用 Azure Machine Learning 和 Azure Pipelines 自動化端對端 ML 生命週期** 。 使用管線可讓您頻繁地更新模型、測試新模型，以及隨著其他應用程式和服務持續推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>建立可重現的 ML 管線
 
@@ -46,7 +46,7 @@ Azure Machine Learning 提供下列 MLOps 功能：
 
 ML 管線可以包含從資料準備至功能解壓縮到超參數微調模型評估的步驟。 如需詳細資訊，請參閱 [ML 管線](concept-ml-pipelines.md)。
 
-如果您使用 [設計](concept-designer.md) 工具來建立 ML 管線，您隨時都可以按一下設計工具頁面右上方的 [ **...]** ，然後選取 [ **複製**]。 複製您的管線可讓您反復查看管線設計，而不會遺失舊版本。  
+如果您使用 [設計](concept-designer.md) 工具來建立 ML 管線，您隨時都可以按一下設計工具頁面右上方的 [ **...]** ，然後選取 [ **複製** ]。 複製您的管線可讓您反復查看管線設計，而不會遺失舊版本。  
 
 ## <a name="create-reusable-software-environments"></a>建立可重複使用的軟體環境
 
@@ -70,6 +70,9 @@ Azure Machine Learning 的環境可讓您在專案的軟體相依性演進時追
 
 您無法刪除在使用中部署中使用的已註冊模型。
 如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#registermodel)的註冊模型一節。
+
+> [!IMPORTANT]
+> 當您 `Tags` 在 Azure Machine Learning Studio 的 [模型] 頁面上使用 [篩選依據] 選項，而不是使用客戶時應使用 (，而不需要 `TagName : TagValue` 使用 `TagName=TagValue`) 空間
 
 ### <a name="profile-models"></a>設定檔模型
 
@@ -106,7 +109,7 @@ Azure Machine Learning 可協助您瞭解當您部署模型時，將會建立之
 建立映像時，也會新增 Azure Machine Learning 所需的元件。 例如，執行 Web 服務及與 IoT Edge 互動時所需的資產。
 
 #### <a name="batch-scoring"></a>批次評分
-您可以透過 ML 管線來支援批次評分。 如需詳細資訊，請參閱 [大型資料的批次預測](how-to-use-parallel-run-step.md)。
+您可以透過 ML 管線來支援批次評分。 如需詳細資訊，請參閱 [大型資料的批次預測](./tutorial-pipeline-batch-scoring-classification.md)。
 
 #### <a name="real-time-web-services"></a>即時 web 服務
 
@@ -136,13 +139,13 @@ Azure Machine Learning 可協助您瞭解當您部署模型時，將會建立之
 
 #### <a name="iot-edge-devices"></a>IoT Edge 裝置
 
-您可以透過 **Azure IoT Edge 模組**，使用 IoT 裝置的模型。 IoT Edge 模組會部署到裝置上啟用推斷或模型計分的硬體裝置。
+您可以透過 **Azure IoT Edge 模組** ，使用 IoT 裝置的模型。 IoT Edge 模組會部署到裝置上啟用推斷或模型計分的硬體裝置。
 
 如需詳細資訊，請參閱 [部署模型](how-to-deploy-and-where.md)。
 
 ### <a name="analytics"></a>分析
 
-Microsoft Power BI 支援使用機器學習模型來進行資料分析。 如需詳細資訊，請參閱 [Power BI (preview) 中的 Azure Machine Learning 整合 ](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
+Microsoft Power BI 支援使用機器學習模型來進行資料分析。 如需詳細資訊，請參閱 [Power BI (preview) 中的 Azure Machine Learning 整合 ](/power-bi/service-machine-learning-integration)。
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕捉捕獲端對端 ML 生命週期所需的治理資料
 
@@ -156,9 +159,9 @@ Azure ML 讓您能夠使用中繼資料來追蹤所有 ML 資產的端對端審�
 - [與 Azure 整合](how-to-use-event-grid.md)  可讓您在 ML 生命週期中對事件採取行動。 例如，模型註冊、部署、資料漂移和定型 (執行) 事件。
 
 > [!TIP]
-> 雖然會自動捕獲有關模型和資料集的部分資訊，您也可以使用 __標記__來新增其他資訊。 在您的工作區中尋找已註冊的模型和資料集時，您可以使用標記作為篩選準則。
+> 雖然會自動捕獲有關模型和資料集的部分資訊，您也可以使用 __標記__ 來新增其他資訊。 在您的工作區中尋找已註冊的模型和資料集時，您可以使用標記作為篩選準則。
 >
-> 將資料集與已註冊的模型產生關聯是選擇性步驟。 如需在註冊模型時參考資料集的詳細資訊，請參閱 [模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) 類別參考。
+> 將資料集與已註冊的模型產生關聯是選擇性步驟。 如需在註冊模型時參考資料集的詳細資訊，請參閱 [模型](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) 類別參考。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>針對 ML 生命週期中的事件進行通知、自動化及警示

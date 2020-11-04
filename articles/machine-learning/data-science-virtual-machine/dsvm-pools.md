@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708963"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324384"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>建立共用的資料科學虛擬機器集區
 
@@ -27,7 +27,7 @@ ms.locfileid: "91708963"
 
 整個 AI/資料科學小組所共用的互動式 VM 集區可讓使用者登入 DSVM 的可用執行個體，而不必讓每一組使用者擁有專用的執行個體。 這項設定可提供更佳的可用性和更有效的資源使用率。
 
-您可以使用 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) 技術來建立互動式 VM 集區。 您可以使用擴展集來建立和管理一組負載平衡且可自動調整的相同 VM。
+您可以使用 [Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml) 技術來建立互動式 VM 集區。 您可以使用擴展集來建立和管理一組負載平衡且可自動調整的相同 VM。
 
 使用者會登入主要集區的 IP 或 DNS 位址。 擴展集會自動將工作階段路由傳送至擴展集內的可用 DSVM。 由於使用者想要使用一致且熟悉的環境，不論它們所登入的 VM 為何，擴展集中的 VM 的所有實例都會掛接共用網路磁碟機機，例如 Azure 檔案儲存體共用或網路檔案系統 (NFS) 共用。 使用者的共用工作區通常會保存在已掛接在每個執行個體上的共用檔案存放區。
 
@@ -53,7 +53,7 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 在 GitHub 的 Azure DataScienceVM 存放庫中也可取得[可掛接 Azure 檔案服務共用的指令碼](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh)。 此指令碼會在參數檔案中指定的掛接點掛接 Azure 檔案服務共用。 此指令碼也會在初始使用者的主目錄中建立所掛接磁碟機的軟式連結。 Azure 檔案儲存體共用中的使用者特定筆記本目錄會與目錄進行軟連結， `$HOME/notebooks/remote` 讓使用者可以存取、執行及儲存其 Jupyter 的筆記本。 在虛擬機器上建立其他使用者，以將每個使用者的 Jupyter 工作區指向 Azure 檔案服務共用時，也可以使用相同的慣例。
 
-虛擬機器擴展集支援自動調整。 您可以設定有關何時建立其他實例的規則，以及何時縮小實例的時機。 例如，您可以相應減少為零個執行個體，以在完全不使用 VM 時節省雲端硬體使用成本。 虛擬機器擴展集的文件頁面會提供[自動調整](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)的詳細步驟。
+虛擬機器擴展集支援自動調整。 您可以設定有關何時建立其他實例的規則，以及何時縮小實例的時機。 例如，您可以相應減少為零個執行個體，以在完全不使用 VM 時節省雲端硬體使用成本。 虛擬機器擴展集的文件頁面會提供[自動調整](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)的詳細步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

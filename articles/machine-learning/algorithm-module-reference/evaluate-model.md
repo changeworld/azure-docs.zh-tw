@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323795"
 ---
 # <a name="evaluate-model-module"></a>評估模型模組
 
@@ -30,7 +30,7 @@ ms.locfileid: "92926983"
 
 
 > [!TIP]
-> 如果您是模型評估新手，建議您使用 Stephen Elston 博士的影片系列，這是 EdX 的[機器學習課程](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/)一部分。 
+> 如果您是模型評估新手，建議您使用 Stephen Elston 博士的影片系列，這是 EdX 的[機器學習課程](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials)一部分。 
 
 
 ## <a name="how-to-use-evaluate-model"></a>如何使用評估模型
@@ -142,4 +142,4 @@ ms.locfileid: "92926983"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

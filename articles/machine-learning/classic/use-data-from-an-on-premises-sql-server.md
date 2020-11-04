@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357483"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325704"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>使用 SQL Server 資料庫 Azure Machine Learning Studio (傳統) 執行分析
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 使用內部部署資料的企業通常會想要針對他們的機器學習服務工作負載來利用雲端的範圍和靈活度。 但是他們又不想因為將內部部署資料移至雲端而中斷目前的商務程序和工作流程。 Azure Machine Learning Studio (傳統) 現在支援從 SQL Server 資料庫讀取資料，然後使用此資料對模型進行定型和評分。 您不再需要手動複製和同步處理雲端與內部部署伺服器之間的資料。 相反地，Azure Machine Learning Studio 中的「匯 **入資料** 」模組 (傳統) 現在可以直接從您的 SQL Server 資料庫讀取，以進行定型和評分工作。
 
-本文概要說明如何將 SQL Server 資料輸入 Azure Machine Learning Studio (傳統) 。 它會假設您已熟悉 Studio (傳統) 概念，例如工作區、模組、資料集、實驗 *等等*。
+本文概要說明如何將 SQL Server 資料輸入 Azure Machine Learning Studio (傳統) 。 它會假設您已熟悉 Studio (傳統) 概念，例如工作區、模組、資料集、實驗 *等等* 。
 
 > [!NOTE]
 > 此功能不適用於免費的工作區。 如需機器學習服務定價和層級的詳細資訊，請參閱 [Azure 機器學習服務定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
@@ -79,27 +79,27 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
 第一個步驟是建立並設定閘道，以存取您的 SQL 資料庫。
 
 1. 登入 [Azure Machine Learning Studio (傳統) ](https://studio.azureml.net/Home/) ，然後選取您想要使用的工作區。
-2. 按一下左側的 [設定]**** 刀鋒視窗，然後按一下頂端的 [資料閘道]**** 索引標籤。
-3. 按一下螢幕底部的 [新增資料閘道] **** 。
+2. 按一下左側的 [設定] 刀鋒視窗，然後按一下頂端的 [資料閘道] 索引標籤。
+3. 按一下螢幕底部的 [新增資料閘道]  。
 
     ![新增資料閘道](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. 在 [新增資料閘道]**** 對話方塊中，輸入 [閘道名稱]**** 並選擇性地新增 [描述]****。 按一下右下角的箭號，以移至組態的下一個步驟。
+4. 在 [新增資料閘道] 對話方塊中，輸入 [閘道名稱] 並選擇性地新增 [描述]。 按一下右下角的箭號，以移至組態的下一個步驟。
 
     ![輸入閘道名稱和描述](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
 5. 在 [下載並註冊資料閘道] 對話方塊中，將閘道註冊金鑰複製到剪貼簿。
 
     ![下載並註冊資料閘道](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>如果您還沒有下載並安裝 Microsoft 資料管理閘道，則可按一下 [下載資料管理閘道]****。 這會帶您前往 Microsoft 下載中心，您可以在其中選取所需的閘道器版本，然後下載並安裝它。 您可以在 [利用資料管理閘道在內部部署來源和雲端之間移動資料](../../data-factory/tutorial-hybrid-copy-portal.md)一文的前幾節中，找到有關安裝必要條件、安裝步驟及疑難排解秘訣的詳細資訊。
-7. 安裝閘道之後，隨即開啟 [資料管理閘道組態管理員]，並顯示 [註冊閘道]**** 對話方塊。 貼上您複製到剪貼簿的**閘道註冊金鑰**，然後按一下 [註冊]****。
-8. 如果您已經安裝閘道，請執行「資料管理閘道組態管理員」。 按一下 [變更金鑰]****、貼上您在上一個步驟中複製到剪貼簿的**閘道註冊金鑰**，然後按一下 [確定]****。
-9. 安裝完成時，便會隨即顯示「Microsoft 資料管理閘道組態管理員」的 [註冊閘道] **** 對話方塊。 貼上您在上一個步驟中複製到剪貼簿的「閘道註冊金鑰」，然後按一下 [註冊]****。
+6. <span id="note-1" class="anchor"></span>如果您還沒有下載並安裝 Microsoft 資料管理閘道，則可按一下 [下載資料管理閘道]。 這會帶您前往 Microsoft 下載中心，您可以在其中選取所需的閘道器版本，然後下載並安裝它。 您可以在 [利用資料管理閘道在內部部署來源和雲端之間移動資料](../../data-factory/tutorial-hybrid-copy-portal.md)一文的前幾節中，找到有關安裝必要條件、安裝步驟及疑難排解秘訣的詳細資訊。
+7. 安裝閘道之後，隨即開啟 [資料管理閘道組態管理員]，並顯示 [註冊閘道] 對話方塊。 貼上您複製到剪貼簿的 **閘道註冊金鑰** ，然後按一下 [註冊]。
+8. 如果您已經安裝閘道，請執行「資料管理閘道組態管理員」。 按一下 [變更金鑰]、貼上您在上一個步驟中複製到剪貼簿的 **閘道註冊金鑰** ，然後按一下 [確定]。
+9. 安裝完成時，便會隨即顯示「Microsoft 資料管理閘道組態管理員」的 [註冊閘道]  對話方塊。 貼上您在上一個步驟中複製到剪貼簿的「閘道註冊金鑰」，然後按一下 [註冊]。
 
     ![註冊閘道](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
-10. 當「Microsoft 資料管理閘道組態管理員」中的 [常用] **** 索引標籤中設定了下列值時，閘道組態即已完成︰
+10. 當「Microsoft 資料管理閘道組態管理員」中的 [常用]  索引標籤中設定了下列值時，閘道組態即已完成︰
 
-    * [閘道名稱]**** 和 [執行個體名稱]**** 設定為閘道的名稱。
-    * [註冊]**** 設定為 [已註冊]****。
-    * [狀態]**** 設定為 [已啟動]****。
+    * [閘道名稱] 和 [執行個體名稱] 設定為閘道的名稱。
+    * [註冊] 設定為 [已註冊]。
+    * [狀態] 設定為 [已啟動]。
     * 底部的狀態列會 **連接到資料管理閘道雲端服務** ，並顯示綠色核取記號。
 
       ![資料管理閘道管理員](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
@@ -107,13 +107,13 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
       當註冊成功時，Azure Machine Learning Studio (傳統) 也會更新。
 
     ![閘道註冊成功](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
-11. 在 [下載並註冊資料閘道] **** 對話方塊中，按一下核取記號以完成安裝。 [設定] **** 頁面會將閘道狀態顯示為「線上」。 在右側窗格中，您將會發現狀態和其他有用的資訊。
+11. 在 [下載並註冊資料閘道]  對話方塊中，按一下核取記號以完成安裝。 [設定]  頁面會將閘道狀態顯示為「線上」。 在右側窗格中，您將會發現狀態和其他有用的資訊。
 
     ![閘道設定](./media/use-data-from-an-on-premises-sql-server/gateway-status.png)
-12. 在 [Microsoft 資料管理閘道] Configuration Manager 切換至 [ **憑證** ] 索引標籤。此索引標籤上指定的憑證會用來加密/解密您在入口網站中指定的內部部署資料存放區的認證。 此憑證是預設的憑證。 Microsoft 建議將此憑證變更為您自己在憑證管理系統中備份的憑證。 按一下 [變更] **** 改為使用您自己的憑證。
+12. 在 [Microsoft 資料管理閘道] Configuration Manager 切換至 [ **憑證** ] 索引標籤。此索引標籤上指定的憑證會用來加密/解密您在入口網站中指定的內部部署資料存放區的認證。 此憑證是預設的憑證。 Microsoft 建議將此憑證變更為您自己在憑證管理系統中備份的憑證。 按一下 [變更]  改為使用您自己的憑證。
 
     ![變更閘道憑證](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (選擇性) 如果您想啟用詳細資訊記錄功能來為閘道問題進行疑難排解，請在 [Microsoft 資料管理閘道組態管理員] 中切換到 [診斷]**** 索引標籤，然後選取 [啟用詳細資訊記錄以進行疑難排解]**** 選項。 您可以在 Windows 事件檢視器的 [**應用程式和服務記錄**檔]  - &gt; **資料管理閘道**節點下找到記錄資訊。 您也可以使用 [診斷] **** 索引標籤，使用閘道來測試與內部部署資料來源的連線。
+13. (選擇性) 如果您想啟用詳細資訊記錄功能來為閘道問題進行疑難排解，請在 [Microsoft 資料管理閘道組態管理員] 中切換到 [診斷] 索引標籤，然後選取 [啟用詳細資訊記錄以進行疑難排解] 選項。 您可以在 Windows 事件檢視器的 [ **應用程式和服務記錄** 檔]  - &gt; **資料管理閘道** 節點下找到記錄資訊。 您也可以使用 [診斷]  索引標籤，使用閘道來測試與內部部署資料來源的連線。
 
     ![啟用詳細資訊記錄](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
@@ -127,23 +127,23 @@ Data Factory 自我裝載整合執行階段的必要條件如下：
 
 1. 在 Machine Learning Studio (傳統) 中，選取 [ **實驗** ] 索引標籤，按一下左下角的 [ **+ 新增** ]，然後選取 [ **空白實驗** ] (或選取數個可用的範例實驗中的其中一個) 。
 2. 找出 **匯入模型** 模組，並將它拖曳到實驗畫布。
-3. 按一下畫布下方的 [另存新檔] **** 。 輸入「Azure Machine Learning Studio (傳統) 內部部署 SQL Server 教學課程」作為實驗名稱，選取工作區，然後按一下 [ **確定]** 核取記號。
+3. 按一下畫布下方的 [另存新檔]  。 輸入「Azure Machine Learning Studio (傳統) 內部部署 SQL Server 教學課程」作為實驗名稱，選取工作區，然後按一下 [ **確定]** 核取記號。
 
    ![以新名稱儲存實驗](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
-4. 按一下 [匯入資料]**** 模組來選取它，並在畫布右邊的 [屬性]**** 窗格中，然後選取 [資料來源]**** 下拉式清單中的 [內部部署 SQL Database]。
+4. 按一下 [匯入資料] 模組來選取它，並在畫布右邊的 [屬性] 窗格中，然後選取 [資料來源] 下拉式清單中的 [內部部署 SQL Database]。
 5. 選取您安裝並註冊的 **資料閘道** 。 您可以藉由選取 [(新增資料閘道...)] 來設定其他閘道。
 
    ![從匯入資料模組選取資料閘道](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. 輸入 SQL **Database 伺服器名稱**和**資料庫名稱**，以及您想要執行的 SQL **Database 查詢**。
-7. 按一下 [使用者名稱和密碼]**** 下方的 [輸入值]****，然後輸入資料庫認證。 您可以使用 Windows 整合式驗證或 SQL Server 驗證，視您的 SQL Server 的設定方式而定。
+6. 輸入 SQL **Database 伺服器名稱** 和 **資料庫名稱** ，以及您想要執行的 SQL **Database 查詢** 。
+7. 按一下 [使用者名稱和密碼] 下方的 [輸入值]，然後輸入資料庫認證。 您可以使用 Windows 整合式驗證或 SQL Server 驗證，視您的 SQL Server 的設定方式而定。
 
    ![輸入資料庫認證](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
    「需要值」訊息會變更為「已設定值」並具有綠色核取記號。 除非資料庫資訊或密碼變更，否則您只需輸入認證一次。 Azure Machine Learning Studio (傳統) 會使用您在安裝閘道時所提供的憑證來加密雲端中的認證。 Azure 永遠不會在沒有加密的情況下儲存內部部署認證。
 
    ![匯入資料模組屬性](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
-8. 按一下 [執行] **** 來執行實驗。
+8. 按一下 [執行]  來執行實驗。
 
-當實驗完成執行之後，您可以按一下 [匯 **入資料** ] 模組的輸出埠並選取 [ **視覺化**]，將您從資料庫匯入的資料視覺化。
+當實驗完成執行之後，您可以按一下 [匯 **入資料** ] 模組的輸出埠並選取 [ **視覺化** ]，將您從資料庫匯入的資料視覺化。
 
 當實驗完成開發之後，您就能部署和操作您的模型。 使用批次執行服務時，將會讀取和使用 [匯 **入資料** ] 模組中所設定之 SQL Server 資料庫的資料進行評分。 雖然您可以使用要求回應服務來對內部部署資料進行評分，但是 Microsoft 建議改用 [Excel 增益集](excel-add-in-for-web-services.md) 。 目前，在您的實驗或已發佈的 web 服務中，不支援透過 **匯出資料** 寫入 SQL Server 資料庫。

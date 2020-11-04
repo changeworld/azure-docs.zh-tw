@@ -1,6 +1,6 @@
 ---
-title: T-SQL 語言項目
-description: Synapse SQL 集區中支援的 T-sql 語言元素檔連結。
+title: 專用 SQL 集區的 t-sql 語言元素
+description: Azure Synapse Analytics 中專用 SQL 集區所支援之 T-sql 語言元素的檔連結。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bccbe67c1ea4b93a7a1938fbab6b6f3d06cb5da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966df3be13eda4450608d42890fcfe2240ac61a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289492"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324640"
 ---
-# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Synapse SQL 集區中支援的 t-sql 語言元素
+# <a name="t-sql-language-elements-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的 t-sql 語言元素 
 
-Synapse SQL 集區中支援的 T-sql 語言元素檔連結。
+專用 SQL 集區所支援之 T-sql 語言元素的檔連結。
 
 ## <a name="core-elements"></a>核心元素
 
@@ -35,7 +35,7 @@ Synapse SQL 集區中支援的 T-sql 語言元素檔連結。
 * [表達 式](/sql/t-sql/language-elements/expressions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [KILL](/sql/t-sql/language-elements/kill-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [IDENTITY 屬性因應措施](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [PRINT](/sql/t-sql/language-elements/print-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [列印](/sql/t-sql/language-elements/print-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [USE](/sql/t-sql/language-elements/use-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="batches-control-of-flow-and-variables"></a>批次、流程控制和變數
@@ -50,7 +50,7 @@ Synapse SQL 集區中支援的 T-sql 語言元素檔連結。
 * [TRY...CATCH](/sql/t-sql/language-elements/try-catch-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="operators"></a>操作員
+## <a name="operators"></a>運算子
 
 * [+ (加)](/sql/t-sql/language-elements/add-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [+ (字串串連)](/sql/t-sql/language-elements/string-concatenation-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -290,4 +290,4 @@ Synapse SQL 集區中支援的 T-sql 語言元素檔連結。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需更多的參考資訊，請參閱 [SYNAPSE sql 集](sql-data-warehouse-reference-tsql-statements.md)區中的 t-sql 語句，以及 [Synapse sql 集區中的系統查看](../sql/reference-tsql-system-views.md)。
+如需更多的參考資訊，請參閱 [專用 sql 集](sql-data-warehouse-reference-tsql-statements.md)區中的 t-sql 語句，以及 [專用 sql 集區中的系統查看](../sql/reference-tsql-system-views.md)。

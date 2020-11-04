@@ -1,6 +1,6 @@
 ---
 title: 分散式資料表設計指引
-description: 在 Synapse SQL 集區中設計雜湊分散式資料表和循環配置資源分散式資料表的建議。
+description: 使用 Azure Synapse Analytics 中的專用 SQL 集區來設計雜湊散發和迴圈配置資源分散式資料表的建議。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487002"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323629"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中設計分散式資料表的指引
+# <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來設計分散式資料表的指引
 
-在 Synapse SQL 集區中設計雜湊分散式資料表和循環配置資源分散式資料表的建議。
+在專用 SQL 集區中設計雜湊分散式和迴圈配置資源分散式資料表的建議。
 
-本文假設您已熟悉 Synapse SQL 中的資料散發和資料移動概念。  如需詳細資訊，請參閱 [Azure Synapse Analytics 架構](massively-parallel-processing-mpp-architecture.md)。
+本文假設您已熟悉專用 SQL 集區中的資料散發和資料移動概念。  如需詳細資訊，請參閱 [Azure Synapse Analytics 架構](massively-parallel-processing-mpp-architecture.md)。
 
 ## <a name="what-is-a-distributed-table"></a>什麼是分散式資料表？
 
 分散式資料表會顯示為單一資料表，但資料列實際上會儲存在 60 個散發。 這些資料列是透過雜湊或循環配置資源演算法來散發。  
 
-**雜湊分散式資料表**是本文的重點，其可改善大型事實資料表的查詢效能。 **循環配置資源資料表**可用於改善載入速度。 這些設計選擇對於改善查詢和載入效能有顯著的影響。
+**雜湊分散式資料表** 是本文的重點，其可改善大型事實資料表的查詢效能。 **循環配置資源資料表** 可用於改善載入速度。 這些設計選擇對於改善查詢和載入效能有顯著的影響。
 
 另一個資料表儲存體選項是將小型資料表複寫到所有計算節點。 如需詳細資訊，請參閱[複寫資料表的設計指引](design-guidance-for-replicated-tables.md)。 若要在三個選項中快速做選擇，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)中的分散式資料表。
 
@@ -36,7 +36,7 @@ ms.locfileid: "92487002"
 
 - 資料表的大小為何？
 - 資料表的重新整理頻率為何？
-- 我是否在 Synapse SQL 集區中有事實資料表和維度資料表？
+- 在專用的 SQL 集區中是否有事實和維度資料表？
 
 ### <a name="hash-distributed"></a>雜湊分散式
 
@@ -44,7 +44,7 @@ ms.locfileid: "92487002"
 
 ![分散式資料表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分散式資料表")  
 
-因為相同的值一律會雜湊到相同的散發，所以資料倉儲具有資料列位置的內建知識。 在 Synapse SQL 集區中，會使用此知識來將查詢期間的資料移動降到最低，進而改善查詢效能。
+因為相同的值一律會雜湊到相同的散發，所以資料倉儲具有資料列位置的內建知識。 在專用的 SQL 集區中，這項知識是用來將查詢期間的資料移動降到最低，以改善查詢效能。
 
 雜湊分散式資料表適合用於處理星型結構描述中的大型事實資料表。 這類資料表可能有非常大量的資料列，但仍可達到高效能。 當然，也會有一些設計考量可協助您取得分散式系統設計所要提供的效能。 選擇良好的散發資料行是這類考量的其中一項 (敘述於本文中)。
 
@@ -109,11 +109,11 @@ WITH
 
 - **有許多唯一值。** 資料行可能有一些重複值。 然而，所有具有相同值的資料列都會指派至相同的散發。 由於有 60 個散發，因此資料行應至少有 60 個唯一值。  唯一值的數目通常會更大。
 - **沒有 Null，或只有少數 Null。** 舉一個極端的例子，如果資料行中所有的值都是 NULL，則所有資料列都會指派至相同的散發。 如此一來，查詢處理就會偏斜至某一個散發，因而失去平行處理的好處。
-- **不是日期資料行**。 日期相同的所有資料都會落在同一個散發。 如果以相同的日期上篩選出多位使用者，則 60 個散發中只有 1 個散發會進行所有處理工作。
+- **不是日期資料行** 。 日期相同的所有資料都會落在同一個散發。 如果以相同的日期上篩選出多位使用者，則 60 個散發中只有 1 個散發會進行所有處理工作。
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>選擇可將資料移動降到最低的散發資料行
 
-為了取得正確的查詢結果，查詢可能會在計算節點間移動資料。 當查詢有分散式資料表的聯結和彙總時，通常會發生資料移動。 選取有助於將資料移動降至最低的散發資料行，是讓 Synapse SQL 集區的效能達到最佳化的最重要策略之一。
+為了取得正確的查詢結果，查詢可能會在計算節點間移動資料。 當查詢有分散式資料表的聯結和彙總時，通常會發生資料移動。 選擇可協助將資料移動降至最低的散發資料行，是將專用 SQL 集區的效能優化的最重要策略之一。
 
 若要將資料移動降至最低，請選取具有下列條件的散發資料行：
 
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要建立分散式資料表，請使用下列其中一個陳述式：
 
-- [CREATE TABLE (Synapse SQL 集區)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT (Synapse SQL 集區)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (專用 SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE 選取 (專用 SQL 集區) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

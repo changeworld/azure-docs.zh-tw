@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131933"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325429"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -31,10 +31,10 @@ ms.locfileid: "92131933"
 ## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉下列主題：
-+ [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-+ [IP 網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
++ [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)
++ [IP 網路](../virtual-network/public-ip-addresses.md)
 + [Azure Private Link](how-to-configure-private-link.md)
-+ [網路安全性群組 (NSG)](../virtual-network/security-overview.md)
++ [網路安全性群組 (NSG)](../virtual-network/network-security-groups-overview.md)
 + [網路防火牆](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>範例案例
@@ -43,7 +43,7 @@ ms.locfileid: "92131933"
 
 下表比較服務如何存取 Azure Machine Learning 網路的不同部分，以及 VNet 和沒有 VNet。
 
-| 案例 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
+| 狀況 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
 |-|-|-|-|-|-|
 |**沒有虛擬網路**| 公用 IP | 公用 IP | 公用 IP | 公用 IP |
 |**保護虛擬網路中的資源**| 私人 IP (私人端點)  | 公用 IP (服務端點)  <br> **等於** <br> 私人 IP (私人端點)  | 私人 IP | 私人 IP  | 
@@ -52,7 +52,7 @@ ms.locfileid: "92131933"
 * **相關聯的資源** -使用服務端點或私人端點來連線至工作區資源，例如 azure 儲存體、Azure Key Vault 和 Azure Container service。
     * **服務端點** 會將虛擬網路的身分識別提供給 Azure 服務。 當您在虛擬網路中啟用服務端點之後，您可以新增虛擬網路規則，以保護虛擬網路的 Azure 服務資源。 服務端點會使用公用 IP 位址。
     * **私人端點** 是一種網路介面，可安全地將您連接到 Azure Private Link 提供的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。
-* 使用私人 IP 位址來**訓練計算存取**權定型計算目標，例如 Azure Machine Learning 計算實例，以及 Azure Machine Learning 計算叢集。 
+* 使用私人 IP 位址來 **訓練計算存取** 權定型計算目標，例如 Azure Machine Learning 計算實例，以及 Azure Machine Learning 計算叢集。 
 * **推斷計算存取權** -存取 Azure Kubernetes SERVICES (AKS) 具有私人 IP 位址的計算叢集。
 
 

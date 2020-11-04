@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: e58e9271ad3b6161a1b2c72509ecc4045b75e1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 63089e853be825f9399081f2d39845e22b18ed2a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741979"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325178"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自訂的 Docker 基底映射部署模型
 
@@ -42,10 +42,10 @@ ms.locfileid: "92741979"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](how-to-manage-workspace.md) 文章。
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
-* [Azure Container Registry](/azure/container-registry)或可在網際網路上存取的其他 Docker 登錄。
+* [Azure Container Registry](../container-registry/index.yml)或可在網際網路上存取的其他 Docker 登錄。
 * 本檔中的步驟假設您已熟悉建立和使用 __推斷__ 設定物件作為模型部署的一部分。 如需詳細資訊，請參閱 [部署位置和方式](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-custom-base-image"></a>建立自訂基底映射
@@ -61,9 +61,9 @@ ms.locfileid: "92741979"
 
     使用儲存在 __獨立容器__ 登錄中的映射時，您必須設定至少具有讀取存取權的服務主體。 然後，您可以將服務主體識別碼 (使用者名稱) 和密碼提供給使用登錄中映射的任何人。 例外狀況是您讓容器登錄可公開存取。
 
-    如需建立私人 Azure Container Registry 的詳細資訊，請參閱 [建立私用容器](/azure/container-registry/container-registry-get-started-azure-cli)登錄。
+    如需建立私人 Azure Container Registry 的詳細資訊，請參閱 [建立私用容器](../container-registry/container-registry-get-started-azure-cli.md)登錄。
 
-    如需搭配 Azure Container Registry 使用服務主體的詳細資訊，請參閱 [Azure Container Registry 驗證與服務主體](/azure/container-registry/container-registry-auth-service-principal)。
+    如需搭配 Azure Container Registry 使用服務主體的詳細資訊，請參閱 [Azure Container Registry 驗證與服務主體](../container-registry/container-registry-auth-service-principal.md)。
 
 * Azure Container Registry 和影像資訊：提供映射名稱給任何需要使用它的人。 例如，在 `myimage` `myregistry` `myregistry.azurecr.io/myimage` 使用模型部署的映射時，會參考名為的映射，並將其儲存在名為的登錄中。
 
@@ -91,6 +91,9 @@ Azure ML 會維護一組已發佈至 Microsoft Container Registry 的 CPU 和 GP
 
 CPU 映射是從 ubuntu 16.04 所建立。 Cuda9 的 GPU 映射是從 nvidia/cuda： 9.0-cudnn7->unixodbc-devel-ubuntu 16.04 所建立。 Cuda10 的 GPU 映射是從 nvidia/cuda： 10.0-cudnn7->unixodbc-devel-ubuntu 16.04 所建立。
 <a id="getname"></a>
+
+> [!IMPORTANT]
+> 使用自訂 Docker 映射時，建議您釘選套件版本，以便更妥善地確保重現性。
 
 ### <a name="get-container-registry-information"></a>取得容器登錄資訊
 
@@ -189,9 +192,9 @@ CPU 映射是從 ubuntu 16.04 所建立。 Cuda9 的 GPU 映射是從 nvidia/cud
     Run ID: cda was successful after 2m56s
     ```
 
-如需使用 Azure Container Registry 建立映射的詳細資訊，請參閱 [使用 Azure Container Registry 工作建立和執行容器映射](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
+如需使用 Azure Container Registry 建立映射的詳細資訊，請參閱 [使用 Azure Container Registry 工作建立和執行容器映射](../container-registry/container-registry-quickstart-task-cli.md)
 
-如需將現有映射上傳至 Azure Container Registry 的詳細資訊，請參閱將 [您的第一個映射推送至私人 Docker 容器](/azure/container-registry/container-registry-get-started-docker-cli)登錄。
+如需將現有映射上傳至 Azure Container Registry 的詳細資訊，請參閱將 [您的第一個映射推送至私人 Docker 容器](../container-registry/container-registry-get-started-docker-cli.md)登錄。
 
 ## <a name="use-a-custom-base-image"></a>使用自訂基底映射
 
@@ -231,7 +234,7 @@ Microsoft 在可公開存取的存放庫上提供數個 docker 映射，可與�
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>使用映射搭配 Azure Machine Learning SDK
 
-若要使用儲存在 **您工作區的 Azure Container Registry** 中的映射，或可 **公開存取的容器** 登錄，請設定下列 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) 屬性：
+若要使用儲存在 **您工作區的 Azure Container Registry** 中的映射，或可 **公開存取的容器** 登錄，請設定下列 [環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 屬性：
 
 + `docker.enabled=True`
 + `docker.base_image`：設定為映射的登錄和路徑。
@@ -265,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 您也必須在環境上將 inferencing_stack_version 屬性設定為「最新」，這將會安裝 web 服務所需的特定 apt 套件。 
 
-定義環境之後，請將它與 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) 物件搭配使用，以定義將在其中執行模型和 web 服務的推斷環境。
+定義環境之後，請將它與 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) 物件搭配使用，以定義將在其中執行模型和 web 服務的推斷環境。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -294,7 +297,7 @@ print(service.state)
 > [!IMPORTANT]
 > 目前 Machine Learning CLI 可以針對您的工作區或可公開存取的儲存機制，使用 Azure Container Registry 的映射。 它無法使用獨立私用登錄中的映射。
 
-使用 Machine Learning CLI 部署模型之前，請先建立使用自訂映射的 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) 。 然後建立參考環境的推斷設定檔。 您也可以直接在推斷設定檔中定義環境。 下列 JSON 檔示範如何參考公用容器登錄中的映射。 在此範例中，環境是以內嵌方式定義的：
+使用 Machine Learning CLI 部署模型之前，請先建立使用自訂映射的 [環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 。 然後建立參考環境的推斷設定檔。 您也可以直接在推斷設定檔中定義環境。 下列 JSON 檔示範如何參考公用容器登錄中的映射。 在此範例中，環境是以內嵌方式定義的：
 
 ```json
 {

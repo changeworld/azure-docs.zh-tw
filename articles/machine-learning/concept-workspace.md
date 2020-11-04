@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495708"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324792"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -52,9 +52,9 @@ ms.locfileid: "92495708"
 + 在網站上：
     + [Azure Machine Learning studio ](https://ml.azure.com) 
     + [Azure Machine Learning 設計工具](concept-designer.md) 
-+ 在任何具有 [適用于 python 之 AZURE MACHINE LEARNING SDK 的](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)Python 環境中。
++ 在任何具有 [適用于 python 之 AZURE MACHINE LEARNING SDK 的](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)Python 環境中。
 + 在任何具有 [適用于 r 的 AZURE MACHINE LEARNING SDK (preview) ](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的 r 環境中。
-+ 在命令列上使用 Azure Machine Learning [CLI 擴充](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)功能
++ 在命令列上使用 Azure Machine Learning [CLI 擴充](./reference-azure-machine-learning-cli.md)功能
 + [Azure Machine Learning VS Code 延伸模組](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -103,7 +103,7 @@ ms.locfileid: "92495708"
 + [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)：作為工作區的預設資料存放區使用。  Jupyter 與 Azure Machine Learning 計算實例搭配使用的筆記本也會儲存在這裡。 
   
   > [!IMPORTANT]
-  > 根據預設，儲存體帳戶是一般用途 v1 帳戶。 建立工作區之後，您可以 [將此升級為一般用途 v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) 。 升級至一般用途 v2 之後，請勿在儲存體帳戶上啟用階層式命名空間。
+  > 根據預設，儲存體帳戶是一般用途 v1 帳戶。 建立工作區之後，您可以 [將此升級為一般用途 v2](../storage/common/storage-account-upgrade.md) 。 升級至一般用途 v2 之後，請勿在儲存體帳戶上啟用階層式命名空間。
 
   若要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 工作區的 _預設_ 儲存體帳戶不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
   

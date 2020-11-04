@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330123"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324865"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
 本文說明深度學習與機器學習，以及它們如何融入更廣泛的人工智慧類別中。 瞭解您可以在 Azure Machine Learning 上建立的深度學習解決方案，例如詐騙偵測、語音和臉部辨識、情感分析，以及時間序列預測。
 
-如需有關為您的解決方案選擇演算法的指引，請參閱 Machine Learning 演算法功能提要（適用于 [工作表](algorithm-cheat-sheet.md)）。
+如需有關為您的解決方案選擇演算法的指引，請參閱 Machine Learning 演算法功能提要（適用于 [工作表](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)）。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度學習、機器學習和 AI
 
@@ -29,16 +29,16 @@ ms.locfileid: "91330123"
 
 請考慮下列定義以瞭解深度學習與機器學習與 AI 的比較：
 
-- **深度學習** 是以人工類神經網路為基礎的機器學習的子集。 _學習_程式很_深_，因為人工類神經網路的結構包含多個輸入、輸出和隱藏層。 每一層都包含轉換單位，可將輸入資料轉換成資訊，以供下一層用於特定預測工作。 由於有此結構，機器可以透過自己的資料處理學習。
+- **深度學習** 是以人工類神經網路為基礎的機器學習的子集。 _學習_ 程式很 _深_ ，因為人工類神經網路的結構包含多個輸入、輸出和隱藏層。 每一層都包含轉換單位，可將輸入資料轉換成資訊，以供下一層用於特定預測工作。 由於有此結構，機器可以透過自己的資料處理學習。
 
-- **機器學習** 是人工智慧的子集，其使用 (的技術，例如深度學習) ，可讓電腦使用體驗來改善工作。 _學習_程式是以下列步驟為基礎：
+- **機器學習** 是人工智慧的子集，其使用 (的技術，例如深度學習) ，可讓電腦使用體驗來改善工作。 _學習_ 程式是以下列步驟為基礎：
 
    1. 將資料送入演算法。  (在此步驟中，您可以將其他資訊提供給模型，例如，藉由執行功能解壓縮。 ) 
    1. 使用此資料來定型模型。
    1. 測試及部署模型。
    1. 使用已部署的模型來進行自動化的預測工作。  (換句話說，請呼叫並使用已部署的模型，以接收模型傳回的預測。 ) 
 
-- **人工智慧 (AI) ** 是一種可讓電腦模仿人類智慧的技術。 它包含機器學習服務。 
+- **人工智慧 (AI)** 是一種可讓電腦模仿人類智慧的技術。 它包含機器學習服務。 
  
 藉由使用機器學習和深度學習技術，您可以建立電腦系統和應用程式，以進行通常與人類智慧相關聯的工作。 這些工作包括影像辨識、語音辨識和語言轉譯。
 
@@ -73,7 +73,7 @@ ms.locfileid: "91330123"
 
 物件偵測已用於遊戲、零售、觀光和自我駕駛汽車等產業中。
 
-瞭解如何在 Azure Machine Learning 中使用開放原始碼架構的影像分類模型： [使用 Pytorch 模型分類影像](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+瞭解如何在 Azure Machine Learning 中使用開放原始碼架構的影像分類模型： [使用 Pytorch 模型分類影像](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>產生影像標題
 
@@ -93,7 +93,7 @@ ms.locfileid: "91330123"
 
 公司會使用深度學習來執行文字分析，以偵測內部交易與政府法規的合規性。 另一個常見的例子是保險詐騙：文字分析通常用來分析大量檔，以辨識保險索賠詐騙的機會。 
 
-瞭解如何在 Azure Machine Learning 中使用 TensorFlow 模型： [使用 TensorFlow 模型將手寫數位分類](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+瞭解如何在 Azure Machine Learning 中使用 TensorFlow 模型： [使用 TensorFlow 模型將手寫數位分類](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>人工類神經網路
 
@@ -117,8 +117,8 @@ Feedforward 類神經網路是最簡單的人工類神經網路類型。 在 fee
 
 ## <a name="next-steps"></a>後續步驟
 
-下列文章說明在 [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)中使用開放原始碼深度學習模型的更多選項：
+下列文章說明在 [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri)中使用開放原始碼深度學習模型的更多選項：
 
-- [使用 TensorFlow 估算器和 Keras 分類手寫數位](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [使用 TensorFlow 估算器和 Keras 分類手寫數位](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [使用 Chainer 模型將手寫數位分類](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [使用 Chainer 模型將手寫數位分類](./how-to-set-up-training-targets.md)

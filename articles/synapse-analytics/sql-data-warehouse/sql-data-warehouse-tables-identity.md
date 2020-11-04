@@ -1,6 +1,6 @@
 ---
 title: 使用 IDENTITY 建立代理金鑰
-description: 使用 IDENTITY 屬性在 Synapse SQL 集區中的資料表上建立代理索引鍵的建議和範例。
+description: 使用 IDENTITY 屬性在專用 SQL 集區的資料表上建立代理索引鍵的建議和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876000"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323584"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 建立 Synapse SQL 集區中的代理鍵
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>使用身分識別在 AzureSynapse 分析中使用專用的 SQL 集區建立代理金鑰
 
-在本文中，您將找到使用 IDENTITY 屬性在 Synapse SQL 集區中的資料表上建立代理索引鍵的建議和範例。
+在本文中，您將找到使用 IDENTITY 屬性在專用 SQL 集區的資料表上建立代理索引鍵的建議和範例。
 
 ## <a name="what-is-a-surrogate-key"></a>什麼是代理金鑰
 
@@ -31,7 +31,7 @@ ms.locfileid: "91876000"
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
-IDENTITY 屬性的設計目的是要向外延展 Synapse SQL 集區中的所有散發，而不會影響載入效能。 因此，IDENTITY 的實作便是為了達成這些目標。
+IDENTITY 屬性的設計目的是在專用 SQL 集區的所有散發中向外延展，而不會影響載入效能。 因此，IDENTITY 的實作便是為了達成這些目標。
 
 您在初次建立資料表時，可以使用類似下列陳述式的語法，將資料表定義為具有 IDENTITY 屬性：
 
@@ -53,7 +53,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的配置
 
-識別屬性不保證因為資料倉儲的分散式架構而配置代理值的順序。 IDENTITY 屬性的設計目的是要向外延展 Synapse SQL 集區中的所有散發，而不會影響載入效能。 
+識別屬性不保證因為資料倉儲的分散式架構而配置代理值的順序。 IDENTITY 屬性的設計目的是在專用 SQL 集區的所有散發中向外延展，而不會影響載入效能。 
 
 下列範例將做出說明：
 
@@ -103,7 +103,7 @@ CREATE TABLE AS SELECT (CTAS) 會遵循針對 SELECT..INTO 記錄的相同 SQL S
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>明確地將值插入 IDENTITY 資料行
 
-Synapse SQL 集區支援 `SET IDENTITY_INSERT <your table> ON|OFF` 語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
+專用的 SQL 集區支援 `SET IDENTITY_INSERT <your table> ON|OFF` 語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
 
 許多資料製造模型者喜歡在其維度的特定資料列中使用預先定義的負數值。 其中一個範例為 -1 或「未知的成員」資料列。
 
@@ -126,7 +126,7 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>載入資料
+## <a name="loading-data"></a>正在載入資料
 
 IDENTITY 屬性的存在會對您的資料載入程式碼造成一些影響。 本節會重點說明使用 IDENTITY 將資料載入資料表的一些基本模式。
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 目前在使用 IDENTITY 資料行將資料載入資料表時，並無法使用 `CREATE TABLE AS SELECT`。
 >
 
-如需載入資料的詳細資訊，請參閱 [設計 SYNAPSE SQL 集區的解壓縮、載入和轉換 (ELT) ](design-elt-data-loading.md) ，以及  [載入最佳做法](guidance-for-loading-data.md)。
+如需載入資料的詳細資訊，請參閱 [為專用的 SQL 集區設計解壓縮、載入和轉換 (ELT) ](design-elt-data-loading.md) ，以及  [載入最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系統檢視表
 
@@ -198,7 +198,7 @@ AND     tb.name = 'T1'
 - 資料行也是散發索引鍵時
 - 資料表為外部資料表時
 
-Synapse SQL 集區中不支援下列相關功能：
+專用的 SQL 集區不支援下列相關功能：
 
 - [身分識別 ( # B1 ](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

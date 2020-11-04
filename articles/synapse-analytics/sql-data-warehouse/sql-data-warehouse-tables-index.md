@@ -1,6 +1,6 @@
 ---
 title: 編制資料表索引
-description: 在 Synapse SQL 集區中編制資料表索引的建議和範例。
+description: 在專用 SQL 集區中編制資料表索引的建議和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05551f39203f2c070dd2ede0740135d6963aedcf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797593"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323572"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中編制資料表的索引
+# <a name="indexing-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來編制索引資料表
 
-在 Synapse SQL 集區中編制資料表索引的建議和範例。
+在專用 SQL 集區中編制資料表索引的建議和範例。
 
 ## <a name="index-types"></a>索引類型
 
-Synapse SQL 集區提供數個索引選項，包括叢集資料行存放區 [索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、叢集 [索引和非叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及非索引選項（也稱為 [堆積](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）。  
+專用的 SQL 集區提供數個索引選項，包括叢集資料行存放區 [索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、叢集 [索引和非叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及非索引選項（也稱為 [堆積](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）。  
 
-若要建立含有索引的資料表，請參閱 [CREATE TABLE (SYNAPSE SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 檔。
+若要建立含有索引的資料表，請參閱 [CREATE TABLE (專用 SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 檔。
 
 ## <a name="clustered-columnstore-indexes"></a>叢集資料行存放區索引
 
-根據預設，當資料表上未指定索引選項時，Synapse SQL 集區會建立叢集資料行存放區索引。 叢集資料行存放區資料表提供最高層級的資料壓縮，以及最佳的整體查詢效能。  叢集資料行存放區資料表通常勝過叢集索引或堆積資料表，而且通常是大型資料表的最佳選擇。  基於這些理由，叢集資料行存放區是您不確定如何編製資料表索引時的最佳起點。  
+根據預設，當資料表上未指定索引選項時，專用的 SQL 集區會建立叢集資料行存放區索引。 叢集資料行存放區資料表提供最高層級的資料壓縮，以及最佳的整體查詢效能。  叢集資料行存放區資料表通常勝過叢集索引或堆積資料表，而且通常是大型資料表的最佳選擇。  基於這些理由，叢集資料行存放區是您不確定如何編製資料表索引時的最佳起點。  
 
 若要建立叢集資料行存放區資料表，只要在 WITH 子句中指定 CLUSTERED COLUMNSTORE INDEX，或省略 WITH 子句︰
 
@@ -52,7 +52,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>堆積資料表
 
-當您暫時將資料登陸到 Synapse SQL 集區時，您可能會發現使用堆積資料表可讓整體程式更快。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  載入資料之後，您可以在資料表中建立索引，以加快查詢效能。  
+當您暫時將資料登陸到專用的 SQL 集區時，您可能會發現使用堆積資料表可讓整體程式更快。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  載入資料之後，您可以在資料表中建立索引，以加快查詢效能。  
 
 當超過60000000個數據列時，叢集資料行存放區資料表就會開始達到最佳壓縮。  針對小於60000000資料列的小型查閱資料表，請考慮使用堆積或叢集索引，以加快查詢效能。 
 
@@ -204,13 +204,13 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="small-or-trickle-load-operations"></a>小型或緩慢移動的載入作業
 
-流入 Synapse SQL 集區的小型載入有時也稱為 trickle 載入。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
+流入專用 SQL 集區的小型載入有時也稱為 trickle 負載。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
 
-在這些情況下，最好先將資料登陸到 Azure Blob 儲存體中，並讓它在載入之前累積。 這項技術通常稱為 *微批次處理*。
+在這些情況下，最好先將資料登陸到 Azure Blob 儲存體中，並讓它在載入之前累積。 這項技術通常稱為 *微批次處理* 。
 
 ### <a name="too-many-partitions"></a>太多資料分割
 
-另一個考慮事項是資料分割對於叢集資料行存放區資料表的影響。  在分割之前，Synapse SQL 集區已經將您的資料分割成60資料庫。  進一步分割會分割您的資料。  如果您將資料分割，請考慮到**每個**資料分割需要有至少 1 百萬個資料列，使用叢集資料行存放區索引才會有幫助。  如果您將資料表分割成100分割區，則您的資料表需要至少6000000000個數據列才能受益于叢集資料行存放區索引， (60 散發 *100* 分割區1000000資料列) 。 如果您的 100 個分割資料表沒有 60 億個資料列，請減少資料分割數目，或考慮改用堆積資料表。
+另一個考慮事項是資料分割對於叢集資料行存放區資料表的影響。  在分割之前，專用的 SQL 集區已經將您的資料分割成60資料庫。  進一步分割會分割您的資料。  如果您將資料分割，請考慮到 **每個** 資料分割需要有至少 1 百萬個資料列，使用叢集資料行存放區索引才會有幫助。  如果您將資料表分割成100分割區，則您的資料表需要至少6000000000個數據列才能受益于叢集資料行存放區索引， (60 散發 *100* 分割區1000000資料列) 。 如果您的 100 個分割資料表沒有 60 億個資料列，請減少資料分割數目，或考慮改用堆積資料表。
 
 您的資料表載入一些資料之後，請依照下列步驟來識別並重建具有次佳叢集資料行存放區索引的資料表。
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 Synapse SQL 集區中重建索引是一項離線作業。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中的 ALTER INDEX REBUILD 區段。
+在專用的 SQL 集區中重建索引是一項離線作業。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中的 ALTER INDEX REBUILD 區段。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步驟 3︰確認已改善叢集資料行存放區區段品質
 
@@ -283,8 +283,8 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-如需使用 CTAS 重新建立資料分割的詳細資訊，請參閱 [使用 SYNAPSE SQL 集區中的](sql-data-warehouse-tables-partition.md)資料分割。
+如需使用 CTAS 重新建立資料分割的詳細資訊，請參閱 [使用專用 SQL 集區中的](sql-data-warehouse-tables-partition.md)資料分割。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需開發資料表的詳細資訊，請參閱[開發資料表](sql-data-warehouse-tables-overview.md)。

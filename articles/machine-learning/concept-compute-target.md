@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841934"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322297"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？
 
-*計算目標*是您執行定型腳本或裝載服務部署的指定計算資源或環境。 這個位置可能是您的本機電腦或雲端式計算資源。 使用計算目標可讓您輕鬆地在稍後變更您的計算環境，而不需要變更您的程式碼。
+*計算目標* 是您執行定型腳本或裝載服務部署的指定計算資源或環境。 這個位置可能是您的本機電腦或雲端式計算資源。 使用計算目標可讓您輕鬆地在稍後變更您的計算環境，而不需要變更您的程式碼。
 
 在一般模型開發生命週期中，您可能會：
 
@@ -54,7 +54,7 @@ Azure Machine Learning 在不同計算目標上提供不同的支援。 一般�
 
 * 作為用來定期處理資料批次的 _批次推斷_ 端點。 Batch 推斷會使用 [Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md)叢集。
 
-* _IoT 裝置_ (預覽) 。 部署至 IoT 裝置只依賴 Azure Machine Learning 來建立 Docker 容器。 從該處，它是使用 Azure IoT Edge 來部署。 如需詳細資訊，請參閱 [ (preview) 部署為 IoT Edge 模組 ](/azure/iot-edge/tutorial-deploy-machine-learning)。
+* _IoT 裝置_ (預覽) 。 部署至 IoT 裝置只依賴 Azure Machine Learning 來建立 Docker 容器。 從該處，它是使用 Azure IoT Edge 來部署。 如需詳細資訊，請參閱 [ (preview) 部署為 IoT Edge 模組 ](../iot-edge/tutorial-deploy-machine-learning.md)。
 
 瞭解 [將模型部署至計算目標的位置和方式](how-to-deploy-and-where.md)。
 
@@ -89,7 +89,7 @@ Azure Machine Learning 在不同計算目標上提供不同的支援。 一般�
 
 ### <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 
-當您在 Azure Machine Learning 中為受控計算資源選取節點大小時，您可以從 Azure 提供的選取 VM 大小中選擇。 Azure 針對不同的工作負載提供適用于 Linux 和 Windows 的各種大小。 若要深入瞭解，請參閱 [VM 類型和大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+當您在 Azure Machine Learning 中為受控計算資源選取節點大小時，您可以從 Azure 提供的選取 VM 大小中選擇。 Azure 針對不同的工作負載提供適用于 Linux 和 Windows 的各種大小。 若要深入瞭解，請參閱 [VM 類型和大小](../virtual-machines/sizes.md)。
 
 選擇 VM 大小時有幾個例外狀況和限制：
 
@@ -133,7 +133,7 @@ Azure Machine Learning 計算提供隔離于特定硬體類型的 VM 大小，�
 
 *支援 RDMA
 
-若要深入瞭解隔離，請參閱 [Azure 公用雲端中的隔離](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)。
+若要深入瞭解隔離，請參閱 [Azure 公用雲端中的隔離](../security/fundamentals/isolation-choices.md)。
 
 ## <a name="unmanaged-compute"></a>非受控計算
 

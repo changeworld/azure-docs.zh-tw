@@ -1,32 +1,57 @@
 ---
 title: Microsoft 身分識別平臺檔的新功能
+titleSuffix: Microsoft identity platform
 description: Microsoft 身分識別平臺的新檔和更新的檔。
-ms.date: 10/09/2020
+services: active-directory
+author: mmacy
+manager: CelesteDG
+ms.date: 11/03/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-services: active-directory
-author: mmacy
-manager: CelesteDG
-ms.openlocfilehash: e6b1e16666188b21926d7547d80bda87303bc0f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979420"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322563"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft 身分識別平臺檔：新功能
 
 歡迎使用 Microsoft 身分識別平臺檔中的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="new-articles"></a>新文章
+
+- [快速入門：使用授權碼流程讓使用者登入並取得 Node Web 應用程式中的存取權杖](quickstart-v2-nodejs-webapp-msal.md)
+- [如何：使用 MSAL 在 Android 上啟用跨應用程式的 SSO](msal-android-single-sign-on.md)
+- [在您開發的 mobile apps 中支援單一登入和應用程式保護原則](mobile-sso-support-overview.md)
+- Microsoft 身分識別平臺檔：這篇文章 (的新功能) 
+- [教學課程：從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API](tutorial-blazor-webassembly.md)
+- [Microsoft Identity Web 驗證程式庫](microsoft-identity-web.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) ](active-directory-configurable-token-lifetimes.md)
+- [操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入](howto-convert-app-to-be-multi-tenant.md)
+- [快速入門：修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)
+- [Microsoft 身分識別平台影片](identity-videos.md)
+- [適用于 Android 的 ADAL 至 MSAL 遷移指南](migrate-android-adal-msal.md)
+- [快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API](quickstart-v2-dotnet-native-aspnet.md)
+- [Microsoft 身分識別平台的應用程式驗證憑證認證](active-directory-certificate-credentials.md)
+- [教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-ios.md)
+- [登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API](tutorial-v2-javascript-spa.md)
+- [教學課程：在 Android 應用程式中使用共用裝置模式](tutorial-v2-shared-device-mode.md)
 
 ## <a name="september-2020"></a>2020 年 9 月
 
 ### <a name="new-articles"></a>新文章
 
 - [快速入門：以 Microsoft 身分識別平台保護 ASP.NET Core Web API](quickstart-v2-aspnet-core-web-api.md)
-- [教學課程：建立使用 Microsoft 身分識別平臺進行驗證的 Blazor 伺服器應用程式](tutorial-blazor-server.md)
+- [教學課程：建立使用 Microsoft 身分識別平台進行驗證的 Blazor Server 應用程式](tutorial-blazor-server.md)
 
 ### <a name="updated-articles"></a>更新的文章
 
@@ -62,27 +87,3 @@ ms.locfileid: "91979420"
 - [快速入門：設定應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)
 - [Microsoft 身分識別平台影片](identity-videos.md)
 - [快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API](quickstart-v2-dotnet-native-aspnet.md)
-
-## <a name="july-2020"></a>2020 年 7 月
-
-### <a name="new-articles"></a>新文章
-
-- [將您的應用程式新增至 Azure Active Directory 應用程式資源庫](v2-howto-app-gallery-listing.md)
-- [取得 Azure Active Directory 的 AppSource 認證](v2-howto-get-appsource-certified.md)
-
-### <a name="updated-articles"></a>更新的文章
-
-- [Microsoft 身分識別平台和 OAuth 2.0 代理者流程](v2-oauth2-on-behalf-of-flow.md)
-- [重新導向 URI/回覆 URL 的限制](reply-url.md)
-- [受保護的 web API：程式碼設定](scenario-protected-web-api-app-configuration.md)
-- [受保護的 Web API：驗證範圍和應用程式角色](scenario-protected-web-api-verification-scope-app-roles.md)
-- [呼叫 web Api 的 web API：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)
-- [呼叫 web Api 的 web API：程式碼設定](scenario-web-api-call-api-app-configuration.md)
-- [呼叫 web Api 的 web 應用程式：取得應用程式的權杖](scenario-web-app-call-api-acquire-token.md)
-- [登入使用者的 Web 應用程式：程式碼設定](scenario-web-app-sign-user-app-configuration.md)
-- [Microsoft 身分識別平台概觀](v2-overview.md)
-- [Microsoft 身分識別平台影片](identity-videos.md)
-- [快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式](quickstart-v2-java-webapp.md)
-- [驗證流程](msal-authentication-flows.md)
-- [自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API](tutorial-v2-windows-uwp.md)
-- [使用 MSAL.js初始化用戶端應用程式 ](msal-js-initializing-client-applications.md)

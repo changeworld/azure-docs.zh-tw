@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 50f8768aec12b8bda8d9d489462a8f61e8d83c18
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999174"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325196"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 
@@ -24,17 +24,17 @@ ms.locfileid: "91999174"
 瞭解如何使用 Azure Machine Learning 在 Azure Kubernetes Service (AKS) 上將模型部署為 web 服務。 Azure Kubernetes Service 適用于高規模的生產部署。 如果您需要下列其中一項或多項功能，請使用 Azure Kubernetes service：
 
 - __快速回應時間__
-- 已部署__服務的自動__調整
+- 已部署 __服務的自動__ 調整
 - __Logging__
 - __模型資料收集__
 - __驗證__
 - __TLS 終止__
 - __硬體加速__ 選項，例如 GPU 和可現場程式化閘道陣列 (FPGA) 
 
-部署至 Azure Kubernetes Service 時，您會部署至已 __連線到您工作區__的 AKS 叢集。 如需將 AKS 叢集連線至工作區的相關資訊，請參閱 [建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)叢集。
+部署至 Azure Kubernetes Service 時，您會部署至已 __連線到您工作區__ 的 AKS 叢集。 如需將 AKS 叢集連線至工作區的相關資訊，請參閱 [建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)叢集。
 
 > [!IMPORTANT]
-> 建議您先在本機進行偵錯工具，再部署至 web 服務。 如需詳細資訊，請參閱[本機的調試](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)程式
+> 建議您先在本機進行偵錯工具，再部署至 web 服務。 如需詳細資訊，請參閱[本機的調試](./how-to-troubleshoot-deployment.md#debug-locally)程式
 >
 > 您也可以參考 Azure Machine Learning - [部署至本機筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -44,7 +44,7 @@ ms.locfileid: "91999174"
 
 - 在您的工作區中註冊的機器學習模型。 如果您沒有已註冊的模型，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
+- Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
 
 - 本文中的 __Python__ 程式碼片段假設已設定下列變數：
 
@@ -71,8 +71,8 @@ Kubernetes 和 Azure Machine Learning 中都會使用 "deployment" 這個字。 
 1. 建立或下載 dockerfile 至計算節點 (與 Kubernetes) 
     1. 系統會計算下列雜湊： 
         - 基底映射 
-        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
-        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](./how-to-deploy-custom-docker-image.md)) 
+        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](./how-to-use-environments.md)) 
     1. 系統會使用此雜湊作為 (ACR Azure Container Registry 工作區查閱中的索引鍵) 
     1. 如果找不到，則會在全域 ACR 中尋找相符的
     1. 如果找不到，系統會建立新的映射， (將會快取並推送至工作空間 ACR) 
@@ -87,7 +87,7 @@ Kubernetes 和 Azure Machine Learning 中都會使用 "deployment" 這個字。 
 前端元件 (azureml-fe) 將傳入推斷要求路由至部署的服務會視需要自動調整。 Azureml-fe 的調整是根據 AKS 叢集目的和大小 (節點數目) 。 當您 [建立或附加 AKS](how-to-create-attach-kubernetes.md)叢集時，會設定叢集目的和節點。 每個叢集都有一個 azureml-fe 服務，可能在多個 pod 上執行。
 
 > [!IMPORTANT]
-> 使用設定為 __開發/測試__的叢集時，會 **停用**自我 scaler。
+> 使用設定為 __開發/測試__ 的叢集時，會 **停用** 自我 scaler。
 
 Azureml-fe 會向上延展 (垂直) 以使用更多核心，並 (水準) 以使用更多的 pod。 進行擴大決策時，會使用路由傳入推斷要求所花的時間。 如果這段時間超過臨界值，就會進行相應放大。 如果路由連入要求的時間持續超過閾值，則會發生相應放大。
 
@@ -95,7 +95,7 @@ Azureml-fe 會向上延展 (垂直) 以使用更多核心，並 (水準) 以使�
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
-若要將模型部署至 Azure Kubernetes Service，請建立 __部署__ 設定，以描述所需的計算資源。 例如，核心和記憶體數目。 您也需要 __推斷__設定，其中描述裝載模型和 web 服務所需的環境。 如需有關建立推斷設定的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
+若要將模型部署至 Azure Kubernetes Service，請建立 __部署__ 設定，以描述所需的計算資源。 例如，核心和記憶體數目。 您也需要 __推斷__ 設定，其中描述裝載模型和 web 服務所需的環境。 如需有關建立推斷設定的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 > [!NOTE]
 > 要部署的模型數目限制為每個容器) 每個部署 (1000 個模型。
@@ -121,10 +121,10 @@ print(service.get_logs())
 
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
-* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py&preserve-view=true)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py&preserve-view=true)
-* [模型. 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truewait-for-deployment-show-output-false-)
+* [AksCompute](/python/api/azureml-core/azureml.core.compute.aks.akscompute?preserve-view=true&view=azure-ml-py)
+* [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?preserve-view=true&view=azure-ml-py)
+* [模型. 部署](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice.wait_for_deployment](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -136,7 +136,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-如需詳細資訊，請參閱 [az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-deploy) 參考。
+如需詳細資訊，請參閱 [az ml 模型部署](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 參考。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -152,9 +152,9 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 處理 Azure ML 模型部署自動調整的元件是 azureml-fe，也就是智慧型要求路由器。 因為所有推斷要求都會通過它，所以它具有必要的資料來自動調整已部署的模型 () 。
 
 > [!IMPORTANT]
-> * **請勿啟用模型部署的 Kubernetes 水準 Pod 自動調整程式 (HPA) **。 這麼做會導致兩個自動調整元件互相競爭。 Azureml-fe 是設計用來自動調整 Azure ML 所部署的模型，其中 HPA 必須從一般計量（例如 CPU 使用量或自訂計量設定）猜測或估計模型使用率。
+> * **請勿啟用模型部署的 Kubernetes 水準 Pod 自動調整程式 (HPA)** 。 這麼做會導致兩個自動調整元件互相競爭。 Azureml-fe 是設計用來自動調整 Azure ML 所部署的模型，其中 HPA 必須從一般計量（例如 CPU 使用量或自訂計量設定）猜測或估計模型使用率。
 > 
-> * **Azureml-fe 無法調整 AKS**叢集中的節點數目，因為這可能會導致非預期的成本增加。 相反地，它會在實體叢集界限內 **調整模型的複本數目** 。 如果您需要調整叢集中的節點數目，您可以手動調整叢集或 [設定 AKS 叢集自動調整程式](/azure/aks/cluster-autoscaler)。
+> * **Azureml-fe 無法調整 AKS** 叢集中的節點數目，因為這可能會導致非預期的成本增加。 相反地，它會在實體叢集界限內 **調整模型的複本數目** 。 如果您需要調整叢集中的節點數目，您可以手動調整叢集或 [設定 AKS 叢集自動調整程式](../aks/cluster-autoscaler.md)。
 
 您可以藉由設定 `autoscale_target_utilization` 、 `autoscale_min_replicas` 和來控制 `autoscale_max_replicas` AKS web 服務的自動調整。 下列範例示範如何啟用自動調整：
 
@@ -188,20 +188,20 @@ concurrentRequests = targetRps * reqTime / targetUtilization
 replicas = ceil(concurrentRequests / maxReqPerContainer)
 ```
 
-如需有關設定、和的詳細資訊 `autoscale_target_utilization` `autoscale_max_replicas` ，請 `autoscale_min_replicas` 參閱 [>akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) 模組參考。
+如需有關設定、和的詳細資訊 `autoscale_target_utilization` `autoscale_max_replicas` ，請 `autoscale_min_replicas` 參閱 [>akswebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) 模組參考。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控制的推出 (預覽版，將模型部署到 AKS) 
 
 使用端點以受控制的方式分析和升級模型版本。 您最多可以在單一端點後方部署六個版本。 端點提供下列功能：
 
-* 設定 __傳送至每個端點的評分流量百分比__。 例如，將20% 的流量路由傳送至端點「測試」，而80% 到「生產」。
+* 設定 __傳送至每個端點的評分流量百分比__ 。 例如，將20% 的流量路由傳送至端點「測試」，而80% 到「生產」。
 
     > [!NOTE]
     > 如果您沒有考慮100% 的流量，則會將剩餘的百分比路由傳送至 __預設__ 的端點版本。 例如，如果您將端點版本 ' test ' 設定為取得10% 的流量，而「生產」為30%，則剩餘的60% 會傳送至預設的端點版本。
     >
     > 第一個建立的端點版本會自動設定為預設值。 您可以在 `is_default=True` 建立或更新端點版本時設定此變更。
      
-* 將端點版本戳記為 __控制__ 或 __處理__。 例如，目前的生產端點版本可能是控制，而可能的新模型會部署為處理版本。 在評估處理版本的效能之後，如果其中一個控制項超越目前的控制項，它可能會升級為新的生產/控制項。
+* 將端點版本戳記為 __控制__ 或 __處理__ 。 例如，目前的生產端點版本可能是控制，而可能的新模型會部署為處理版本。 在評估處理版本的效能之後，如果其中一個控制項超越目前的控制項，它可能會升級為新的生產/控制項。
 
     > [!NOTE]
     > 您只能有 __一個__ 控制項。 您可以有多個治療。
@@ -302,7 +302,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true)
+> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>使用權杖進行驗證
 
@@ -324,12 +324,12 @@ print(token)
 >
 > Microsoft 強烈建議您在與 Azure Kubernetes Service 叢集相同的區域中建立 Azure Machine Learning 工作區。 若要使用權杖進行驗證，Web 服務會呼叫 Azure Machine Learning 工作區的建立區域。 如果您的工作區區域無法使用，即使您的叢集與您的工作區位於不同的區域，您也將無法提取 web 服務的權杖。 這實際上會導致權杖型驗證無法使用，直到您的工作區區域再次可供使用為止。 此外，您的叢集區域和工作區區域之間的距離愈大，提取權杖所需的時間就愈長。
 >
-> 若要取得權杖，您必須使用 Azure Machine Learning SDK 或 [az ml 服務取得存取權杖](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
+> 若要取得權杖，您必須使用 Azure Machine Learning SDK 或 [az ml 服務取得存取權杖](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
 
 
 ### <a name="vulnerability-scanning"></a>弱點掃描
 
-Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 您應允許 Azure 資訊安全中心掃描您的資源，並遵循其建議。 如需詳細資訊，請參閱 [Azure Kubernetes Services 與資訊安全中心整合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)。
+Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 您應允許 Azure 資訊安全中心掃描您的資源，並遵循其建議。 如需詳細資訊，請參閱 [Azure Kubernetes Services 與資訊安全中心整合](../security-center/defender-for-kubernetes-introduction.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
