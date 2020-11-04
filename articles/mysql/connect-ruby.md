@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8bedb7177c93eecd13f64d151c56baf5a394e0c2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f370794aafb4a5ac0948c219593e7028ff1b2e55
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896268"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337294"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Ruby 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -39,7 +39,7 @@ ms.locfileid: "90896268"
 5. 執行 `gem -v` 命令以測試 Gem 安裝，進而查看所安裝的版本。
 6. 執行 `gem install mysql2` 命令以使用 Gem 建置適用於 Ruby 的 Mysql2 模組。
 
-### <a name="macos"></a>MacOS
+### <a name="macos"></a>macOS
 1. 執行 `brew install ruby` 命令以使用 Homebrew 安裝 Ruby。 如需其他安裝選項，請參閱 Ruby [安裝文件](https://www.ruby-lang.org/en/documentation/installation/#homebrew)。
 2. 執行 `ruby -v` 命令以測試 Ruby 安裝，進而查看所安裝的版本。
 3. 執行 `gem -v` 命令以測試 Gem 安裝，進而查看所安裝的版本。
@@ -58,7 +58,7 @@ ms.locfileid: "90896268"
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
@@ -224,6 +224,16 @@ ensure
     client.close if client
     puts 'Done.'
 end
+```
+
+## <a name="clean-up-resources"></a>清除資源
+
+若要清除在此快速入門期間使用的所有資源，請使用下列命令刪除資源群組：
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>後續步驟

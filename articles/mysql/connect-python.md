@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a08145ba5ffb5b30eb2c472d3eb8f608703f44a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 8d181483032deed35adfd6eebcbf870b89593407
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743449"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332061"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Python 連線和查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -61,13 +61,13 @@ ms.locfileid: "91743449"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
    
-1. 在入口網站的搜尋列中，搜尋並選取您所建立的「適用於 MySQL 的 Azure 資料庫」伺服器，例如 **mydemoserver**。
+1. 在入口網站的搜尋列中，搜尋並選取您所建立的「適用於 MySQL 的 Azure 資料庫」伺服器，例如 **mydemoserver** 。
    
    :::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
    
 1. 在伺服器的 [概觀] 頁面上，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此頁面重設密碼。
    
-   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="適用於 MySQL 的 Azure 資料庫伺服器名稱 2":::
 
 ## <a name="run-the-python-examples"></a>執行 Python 範例
 
@@ -75,11 +75,11 @@ ms.locfileid: "91743449"
 
 1. 在文字編輯器中建立新的檔案。
 1. 將程式碼範例新增至檔案。 在程式碼中，將 `<mydemoserver>`、`<myadmin>`、`<mypassword>` 和 `<mydatabase>` 預留位置取代為您的 MySQL 伺服器和資料庫的值。
-1. 將副檔名為 *.py* 的檔案儲存到專案資料夾中，例如 *C:\pythonmysql\createtable.py* 或 */home/username/pythonmysql/createtable.py*。
+1. 將副檔名為 *.py* 的檔案儲存到專案資料夾中，例如 *C:\pythonmysql\createtable.py* 或 */home/username/pythonmysql/createtable.py* 。
 1. 若要執行程式碼，請開啟命令提示字元或 `cd pythonmysql` 殼層，並將目錄切換至您的專案資料夾，例如 `bash`。 輸入後面接著檔案名稱的 `python` 命令 (例如 `python createtable.py`)，然後按 Enter 鍵。 
    
    > [!NOTE]
-   > 在 Windows 上，如果找不到 *python.exe*，您可能需要將 Python 路徑新增至 PATH 環境變數中，或提供 *python.exe* 的完整路徑，例如 `C:\python27\python.exe createtable.py`。
+   > 在 Windows 上，如果找不到 *python.exe* ，您可能需要將 Python 路徑新增至 PATH 環境變數中，或提供 *python.exe* 的完整路徑，例如 `C:\python27\python.exe createtable.py`。
 
 ## <a name="create-a-table-and-insert-data"></a>建立資料表及插入資料
 
@@ -270,6 +270,16 @@ else:
   cursor.close()
   conn.close()
   print("Done.")
+```
+
+## <a name="clean-up-resources"></a>清除資源
+
+若要清除在此快速入門期間使用的所有資源，請使用下列命令刪除資源群組：
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136094"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319671"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (先前為 SQL DW) 的速查表
 
@@ -37,7 +37,7 @@ ms.locfileid: "88136094"
 
 ## <a name="data-migration"></a>資料移轉
 
-首先，請將資料載入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 儲存體。 接下來，使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (預覽) 將資料載入暫存表格中。 請使用下列組態︰
+首先，請將資料載入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 儲存體。 接下來，使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (預覽) 將資料載入暫存表格中。 請使用下列組態︰
 
 | 設計 | 建議 |
 |:--- |:--- |
@@ -64,8 +64,8 @@ ms.locfileid: "88136094"
 * 請確定一般雜湊索引鍵具有相同的資料格式。
 * 請勿以 varchar 格式散發。
 * 具有一般雜湊索引鍵的維度資料表到具有頻繁聯結作業的事實資料表，能夠雜湊散發。
-* 使用 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* 分析資料中的任何偏態。
-* 使用 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* 分析查詢背後的資料移動、監視時間廣播並隨機播放作業。 這對檢閱您的散發策略很有幫助。
+* 使用 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* 分析資料中的任何偏態。
+* 使用 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* 分析查詢背後的資料移動、監視時間廣播並隨機播放作業。 這對檢閱您的散發策略很有幫助。
 
 深入了解[複寫資料表](design-guidance-for-replicated-tables.md)和[分散式資料表](sql-data-warehouse-tables-distribute.md)。
 
@@ -109,7 +109,7 @@ ms.locfileid: "88136094"
 
 ## <a name="maintain-statistics"></a>維護統計資料
 
-對您的資料做重大變更  時，同時更新統計資料很重要。 請參閱[更新統計資料](sql-data-warehouse-tables-statistics.md#update-statistics)，判斷是否已發生*重大*變更。 更新的統計資料會將查詢計劃最佳化。 如果您發現維護所有統計資料所需時間太長，可能要更謹慎選擇為哪些資料行統計資料。
+對您的資料做重大變更  時，同時更新統計資料很重要。 請參閱 [更新統計資料](sql-data-warehouse-tables-statistics.md#update-statistics)，判斷是否已發生 *重大* 變更。 更新的統計資料會將查詢計劃最佳化。 如果您發現維護所有統計資料所需時間太長，可能要更謹慎選擇為哪些資料行統計資料。
 
 您也可以定義更新的頻率。 例如，您可能想要更新每天都要加入新值的日期資料行。 對於牽涉聯結的資料行、WHERE 子句中使用的資料行、在 GROUP BY 中找到的資料行，統計資料可以獲得最大效益。
 
@@ -121,7 +121,7 @@ ms.locfileid: "88136094"
 
 如果您注意到查詢時間過長，請檢查您的使用者沒有在大型的資源類別中執行。 大型的資源類別會耗用許多並行處理的位置。 它們會導致其他查詢排入佇列。
 
-最後，藉由使用 [SQL 集區](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)的 Gen2，每個資源類別都會獲得比 Gen1 多 2.5 倍的記憶體。
+最後，藉由使用 [SQL 集區](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)的 Gen2，每個資源類別都會獲得比 Gen1 多 2.5 倍的記憶體。
 
 深入了解如何使用[資源類別與並行處理](resource-classes-for-workload-management.md)。
 

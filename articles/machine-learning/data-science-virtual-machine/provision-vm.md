@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88816349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322445"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入門：設定適用於 Windows 的資料科學虛擬機器
 
@@ -37,13 +37,13 @@ ms.locfileid: "88816349"
 
 1. 填寫 [基本]  索引標籤：
       * 訂用帳戶  ：如果您有多個訂用帳戶，請選取要在其中建立機器及計費的訂用帳戶。 您必須有此訂用帳戶的資源建立權限。
-      * **資源群組**：建立新的群組或使用現有群組。
-      * **虛擬機器名稱**：輸入虛擬機器的名稱。 這就是它在 Azure 入口網站中的顯示方式。
-      * **位置**：選取最適合的資料中心。 如需最快速的網路存取，請選取擁有您大部分資料或是最接近您實際位置的資訊中心。 深入了解 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)。
-      * **映像**：保留預設值。
-      * **Size**：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Windows VM 大小](../../virtual-machines/windows/sizes.md)。
-      * **使用者名稱**：輸入系統管理員的使用者名稱。 這是您將用來登入虛擬機器的使用者名稱，不需要與您的 Azure 使用者名稱相同。
-      * **密碼**：輸入您將用來登入虛擬機器的密碼。    
+      * **資源群組** ：建立新的群組或使用現有群組。
+      * **虛擬機器名稱** ：輸入虛擬機器的名稱。 這就是它在 Azure 入口網站中的顯示方式。
+      * **位置** ：選取最適合的資料中心。 如需最快速的網路存取，請選取擁有您大部分資料或是最接近您實際位置的資訊中心。 深入了解 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)。
+      * **映像** ：保留預設值。
+      * **Size** ：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Windows VM 大小](../../virtual-machines/sizes.md)。
+      * **使用者名稱** ：輸入系統管理員的使用者名稱。 這是您將用來登入虛擬機器的使用者名稱，不需要與您的 Azure 使用者名稱相同。
+      * **密碼** ：輸入您將用來登入虛擬機器的密碼。    
 1. 選取 [檢閱 + 建立]  。
 1. **檢閱 + 建立**
    * 請確認您輸入的所有資訊都正確無誤。 
@@ -56,7 +56,7 @@ ms.locfileid: "88816349"
 
 ## <a name="access-the-dsvm"></a>存取 DSVM
 
-建立並佈建 VM 之後，請遵循所列的步驟來[連線到 Azure 型虛擬機器](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md)。 請使用您在建立虛擬機器的**基本**步驟中設定的管理員帳戶憑證。 
+建立並佈建 VM 之後，請遵循所列的步驟來[連線到 Azure 型虛擬機器](../../marketplace/azure-vm-create-using-approved-base.md)。 請使用您在建立虛擬機器的 **基本** 步驟中設定的管理員帳戶憑證。 
 
 您已準備好開始使用在 VM 上安裝及設定的工具。 許多工具都可透過 [開始]  功能表圖格和桌面圖示來存取。
 
@@ -70,4 +70,3 @@ ms.locfileid: "88816349"
 * 開啟 [開始]  功能表，探索 DSVM 上的工具。
 * 閱讀[什麼是 Azure Machine Learning？](../overview-what-is-azure-ml.md)並試用[教學課程](../index.yml)，以了解 Azure Machine Learning。
 * 閱讀[使用 Azure 中的 Windows 資料科學虛擬機器的資料科學](./vm-do-ten-things.md)一文
-

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495751"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316289"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -43,7 +43,7 @@ Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深�
 Azure Machine Learning 為開發人員和資料科學家提供其機器學習工作流程需要的所有工具，包括：
 + [Azure Machine Learning 設計工具](tutorial-designer-automobile-price-train-score.md)：拖放模組可讓您建立實驗，然後部署管線。
 
-+ Jupyter 筆記本：使用我們的[範例筆記本](https://github.com/Azure/MachineLearningNotebooks)或建立您自己的筆記本，將<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">適用於 Python 的 SDK</a> 範例用於機器學習。 
++ Jupyter 筆記本：使用我們的[範例筆記本](https://github.com/Azure/MachineLearningNotebooks)或建立您自己的筆記本，將<a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">適用於 Python 的 SDK</a> 範例用於機器學習。 
 
 + R 指令碼或筆記本，您可以在其中使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">適用於 R 的 SDK</a> 來撰寫您自己的程式碼，或在設計工具中使用 R 模組。
 
@@ -61,9 +61,9 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 ## <a name="build-ml-models-in-python-or-r"></a>以 Python 或 R 建置 ML 模型
 
-使用 Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>，開始訓練您的本機電腦。 然後可以擴增至雲端。 
+使用 Azure Machine Learning <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>，開始訓練您的本機電腦。 然後可以擴增至雲端。 
 
-透過許多可用的[計算目標](how-to-create-attach-compute-studio.md) (例如 Azure Machine Learning Compute 和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)) 及[進階的超參數微調服務](how-to-tune-hyperparameters.md)，您可以使用雲端功能更快地建置更好的模型。
+透過許多可用的[計算目標](how-to-create-attach-compute-studio.md) (例如 Azure Machine Learning Compute 和 [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks)) 及[進階的超參數微調服務](how-to-tune-hyperparameters.md)，您可以使用雲端功能更快地建置更好的模型。
 
 您也可以使用 SDK，[自動進行模型定型和微調](tutorial-auto-train-models.md)。
 
@@ -92,9 +92,9 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命週期管理
 當您有正確的模型時，您可以在 Web 服務中、在 IoT 裝置上或從 Power BI 輕鬆使用它。 如需詳細資訊，請參閱有關[如何部署和部署位置](how-to-deploy-and-where.md)的文章。
 
-接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
+接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
 
-這些模型可被取用並[即時](how-to-consume-web-service.md)或[非同步](how-to-use-parallel-run-step.md)地傳回大量資料的相關預測。
+這些模型可被取用並[即時](how-to-consume-web-service.md)或[非同步](./tutorial-pipeline-batch-scoring-classification.md)地傳回大量資料的相關預測。
 
 另外，透過進階[機器學習管線](concept-ml-pipelines.md)，您可以在資料準備、模型定型與評估及部署的每個步驟上共同作業。 管線可讓您執行下列作業：
 
@@ -112,7 +112,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也可以與 Git 和 MLFlow 等開放原始碼工具整合。
 
 + 計算目標，例如 __Azure Kubernetes Service__ 、 __Azure 容器執行個體__ 、 __Azure Databricks__ 、 __Azure Data Lake Analytics__ 和 __Azure HDInsight__ 。 如需計算目標的詳細資訊，請參閱[什麼是計算目標？](concept-compute-target.md)。
-+ __Azure 事件方格__ 。 如需詳細資訊，請參閱[取用 Azure Machine Learning 事件](concept-event-grid-integration.md)。
++ __Azure 事件方格__ 。 如需詳細資訊，請參閱[取用 Azure Machine Learning 事件](./how-to-use-event-grid.md)。
 + __Azure 監視器__ 。 如需詳細資訊，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
 + 資料存放區，例如 __Azure 儲存體帳戶__ 、 __Azure Data Lake Storage__ 、 __Azure SQL Database__ 、 __適用於 PostgreSQL 的 Azure 資料庫__ 和 __Azure 開放資料集__ 。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](how-to-access-data.md)和[使用 Azure 開放資料集來建立資料集](how-to-create-register-datasets.md)。
 + __Azure 虛擬網路__ 。 如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。

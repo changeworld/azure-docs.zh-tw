@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458327"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316192"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表格儲存體的效能和延展性檢查清單
 
@@ -153,7 +153,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 若是其他程式設計語言，請參閱該語言的文件以確定如何設定連線限制。  
 
-如需詳細資訊，請參閱部落格文章 [Web 服務：並行連線](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
+如需詳細資訊，請參閱部落格文章 [Web 服務：並行連線](/archive/blogs/darrenj/web-services-concurrent-connections)。  
 
 ### <a name="increase-minimum-number-of-threads"></a>提高執行緒數目上限
 
@@ -171,7 +171,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>用戶端程式庫和工具
 
-為了達到最佳效能，請一律使用 Microsoft 所提供的最新用戶端程式庫和工具。 Azure 儲存體的用戶端程式庫適用於各種不同的語言。 Azure 儲存體也支援 PowerShell 和 Azure CLI。 Microsoft 主動開發以效能為考量的這些用戶端程式庫和工具，透過最新的服務版本將他們保持在最新的狀態，並確保這些工具會在內部處理許多已經實證的效能做法。 如需詳細資訊，請參閱 [Azure 儲存體參考文件](/azure/storage/#reference)。
+為了達到最佳效能，請一律使用 Microsoft 所提供的最新用戶端程式庫和工具。 Azure 儲存體的用戶端程式庫適用於各種不同的語言。 Azure 儲存體也支援 PowerShell 和 Azure CLI。 Microsoft 主動開發以效能為考量的這些用戶端程式庫和工具，透過最新的服務版本將他們保持在最新的狀態，並確保這些工具會在內部處理許多已經實證的效能做法。
 
 ## <a name="handle-service-errors"></a>處理服務錯誤
 
@@ -197,7 +197,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 自儲存體服務版本 2013-08-15 開始，資料表服務支援使用 JSON (而非以 XML 為基礎的 AtomPub 格式) 來轉換資料表資料。 使用 JSON 可降低約 75% 的裝載大小，並可大幅提高您的應用程式效能。
 
-如需詳細資訊，請參閱 [Microsoft Azure 資料表：JSON 簡介](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)和[表格服務作業的裝載格式](https://msdn.microsoft.com/library/azure/dn535600.aspx)。
+如需詳細資訊，請參閱 [Microsoft Azure 資料表：JSON 簡介](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)和[表格服務作業的裝載格式](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations)。
 
 ### <a name="disable-nagle"></a>停用 Nagle
 
@@ -275,8 +275,8 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 您應盡可能地使用資料表 **Upsert** 作業。 **Upsert** 有兩種類型，這兩種類型都會比傳統的 **Insert** 和 **Update** 作業還要有效率：  
 
-- **InsertOrMerge**：當您想要上傳實體屬性的子集，但不確定此實體是否已存在時，請使用此作業。 如果實體已存在，則此呼叫會更新包含在 **Upsert** 作業的屬性，並將所有現有的屬性保留不變，如果實體不存在，則此呼叫會插入新的實體。 這類似於在查詢中使用投射，在此情況下，您只需要上傳正在變更的屬性。
-- **InsertOrReplace**：當您想要上傳全新的實體，但不確定此實體是否已存在時，請使用此作業。 當您知道此全新上傳的實體完全正確時，請使用此作業，因為它會完全覆寫舊的實體。 例如，您想要更新儲存使用者目前位置的實體，而不管應用程式先前是否已儲存使用者的位置資料；新的位置實體已完成，而且您無需任何先前實體的任何資訊。
+- **InsertOrMerge** ：當您想要上傳實體屬性的子集，但不確定此實體是否已存在時，請使用此作業。 如果實體已存在，則此呼叫會更新包含在 **Upsert** 作業的屬性，並將所有現有的屬性保留不變，如果實體不存在，則此呼叫會插入新的實體。 這類似於在查詢中使用投射，在此情況下，您只需要上傳正在變更的屬性。
+- **InsertOrReplace** ：當您想要上傳全新的實體，但不確定此實體是否已存在時，請使用此作業。 當您知道此全新上傳的實體完全正確時，請使用此作業，因為它會完全覆寫舊的實體。 例如，您想要更新儲存使用者目前位置的實體，而不管應用程式先前是否已儲存使用者的位置資料；新的位置實體已完成，而且您無需任何先前實體的任何資訊。
 
 #### <a name="storing-data-series-in-a-single-entity"></a>在單一實體中儲存資料序列
 
