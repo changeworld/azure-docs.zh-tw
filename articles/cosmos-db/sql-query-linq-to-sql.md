@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中的 LINQ to SQL 轉譯
 description: 瞭解支援的 LINQ 運算子，以及 LINQ 查詢如何對應至 Azure Cosmos DB 中的 SQL 查詢。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075396"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332367"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 至 SQL 轉譯
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -343,7 +344,7 @@ SQL .NET SDK 隨附的 LINQ 提供者支援下列運算子：
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文件資料](modeling-data.md)

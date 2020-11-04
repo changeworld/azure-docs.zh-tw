@@ -3,15 +3,16 @@ title: Azure Cosmos DB 的 SQL 聯結查詢
 description: 瞭解如何聯結 Azure Cosmos DB 中的多個資料表來查詢資料
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: b4c754455e2a686274eab8b1f77713b8983251a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100791"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333829"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聯結
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -20,7 +21,7 @@ ms.locfileid: "93100791"
 
 內部聯結是參與聯結之集的完整交叉乘積。 N 方聯結的結果為一組 N 元素 Tuple，其中 Tuple 中的每個值都與參與聯結的別名集相關聯，而且可以透過參考其他子句中的別名加以存取。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 語言支援語法 `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` 。 此查詢會傳回一組具有值的元組 `N` 。 每個 Tuple 所擁有的值，都是將所有容器別名在其個別集合上反覆運算所產生的。 
 

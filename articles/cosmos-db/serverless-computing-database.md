@@ -3,15 +3,16 @@ title: 使用 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
 description: 了解 Azure Cosmos DB 和 Azure Functions 如何一起使用以建立事件驅動無伺服器計算的應用程式。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 5264fb44f8088ae8f942abf95bc8c0ef6d917413
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334051"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,7 +63,7 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 下圖顯示此觸發程序在 Azure 入口網站中撰寫的程式碼。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何整合":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="在 Azure 入口網站中建立 Cosmos DB 的 Azure Functions 觸發程式":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務使用案例 - 計時器觸發程序和輸入繫結
 
@@ -76,9 +77,9 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 下列映像顯示此案例之 Azure 入口網站中的程式碼。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何整合":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="財務案例之計時器觸發程序的 Index.js 檔案":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何整合":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="財務案例之計時器觸發程序的 Run.csx 檔案":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Cosmos DB 的遊戲使用案例 Azure Functions 觸發程式和輸出系結 
 

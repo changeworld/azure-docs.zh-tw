@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 ARRAY_CONTAINS
 description: 瞭解陣列中包含 SQL 系統函數的 Azure Cosmos DB 如何傳回布林值，指出陣列是否包含指定的值
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 35136bbcf8ada90681ea72d8396a58ab1bc02828
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ff88d66ee6d1ceee4f1cf4e7b6501ab323dbc79e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090897"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332656"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

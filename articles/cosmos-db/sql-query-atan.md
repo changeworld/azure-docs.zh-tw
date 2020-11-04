@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 ATAN
 description: 瞭解 Azure Cosmos DB 中的反正切 (ATAN ) SQL 系統函數如何傳回以弧度為單位的角度，其正切函數是指定的數值運算式
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a85967e97668af44c1f896d431c887cba2afb03c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 50c678ad3f382ebdcf23c0ba125a47d7aaa7d7ec
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081709"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332435"
 ---
 # <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +53,7 @@ SELECT ATAN(-45.01) AS atan
 
 這個系統函數將不會使用索引。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

@@ -3,15 +3,16 @@ title: 將您的應用程式從 Amazon DynamoDB 遷移至 Azure Cosmos DB
 description: 了解如何將您的 .NET 應用程式從 Amazon 的 DynamoDB 遷移至 Azure Cosmos DB
 author: manishmsfte
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: c621f11e00d418ca46be1bc04676403e6b0e2357
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9b4b5fca8017a906fa44b02edcf5f0bdcf6166b3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089758"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334220"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>將您的應用程式從 Amazon DynamoDB 遷移至 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

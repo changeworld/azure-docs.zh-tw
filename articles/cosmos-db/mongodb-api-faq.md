@@ -3,15 +3,16 @@ title: Azure Cosmos DB 的 MongoDB API 相關常見問題
 description: 取得 Azure Cosmos DB 的 MongoDB API 相關常見問題的解答
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 03c47b398a715a128a32fb6a6fd9d99564ccb891
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4c93aea5a37fb286b49dabfb97522bf40c8f5429
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096626"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333166"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的 MongoDB API 相關常見問題
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -20,7 +21,7 @@ ms.locfileid: "93096626"
 
 ## <a name="how-do-i-connect-to-my-database"></a>我要如何連線到我的資料庫？
 
-若要使用適用於 MongoDB 的 Azure Cosmos DB API 來連線至 Cosmos 資料庫，最快的方式是直接前往 [Azure 入口網站](https://portal.azure.com)。 移至您的帳戶，然後在左側瀏覽功能表中按一下 [快速入門]  。 快速入門是取得程式碼片段以連接到資料庫的最佳方式。
+若要使用適用於 MongoDB 的 Azure Cosmos DB API 來連線至 Cosmos 資料庫，最快的方式是直接前往 [Azure 入口網站](https://portal.azure.com)。 移至您的帳戶，然後在左側瀏覽功能表中按一下 [快速入門]。 快速入門是取得程式碼片段以連接到資料庫的最佳方式。
 
 Azure Cosmos DB 會強制執行嚴格的安全性需求和標準。 Azure Cosmos DB 帳戶需要透過 TLS 進行驗證和安全通訊，因此請務必使用 Tlsv1.1 1.2。
 
@@ -41,7 +42,7 @@ Azure Cosmos DB 會強制執行嚴格的安全性需求和標準。 Azure Cosmos
 
 是，您可以使用 Simba 的 Mongo ODBC 驅動程式搭配 Azure Cosmos DB 的 MongoDB API
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Cosmos DB 適用于 MongoDB 的 API 建立 .NET web 應用程式](create-mongodb-dotnet.md)
 * [在 Azure Cosmos DB 中使用 Java 和 MongoDB API 建立主控台應用程式](create-mongodb-java.md)

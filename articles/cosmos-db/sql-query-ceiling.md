@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言的上限
 description: 瞭解 Azure Cosmos DB 中的上限 SQL 系統函數如何傳回大於或等於指定之數值運算式的最小整數值。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2ffc1ba208ca6b587354fcce683dc7db3a8ccb64
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8c5fdda416aca698b9ad0a68ef050957f32aef31
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081683"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332401"
 ---
 # <a name="ceiling-azure-cosmos-db"></a> (Azure Cosmos DB) 上限
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

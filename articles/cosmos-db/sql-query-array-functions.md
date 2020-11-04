@@ -3,23 +3,24 @@ title: Azure Cosmos DB 查詢語言中的陣列函數
 description: 瞭解陣列函數如何讓您在 Azure Cosmos DB 中的陣列上執行作業
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e4f656d5ea917f99257ce8cbd8560cebca17eed5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0a180c8325e9b379e919e68afd9a0af6c196b55f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089486"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332605"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>陣列函數 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 陣列函數可讓您在 Azure Cosmos DB 中的陣列上執行作業。
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 下列純量函數會對陣列輸入值執行運算，並傳回數值、布林值或陣列值：
 
@@ -32,7 +33,7 @@ ms.locfileid: "93089486"
   
   
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

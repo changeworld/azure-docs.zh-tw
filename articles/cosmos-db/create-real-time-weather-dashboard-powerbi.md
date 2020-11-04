@@ -4,15 +4,16 @@ description: 瞭解如何使用 Azure Cosmos DB 和 Azure Analysis Services，�
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: fc285599176057c57621dc6bfefbe9188d3badd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096881"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333591"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 建立即時儀表板
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +25,7 @@ ms.locfileid: "93096881"
 有多種方式可針對儲存在 Azure Cosmos DB 中的資料設定報告儀表板。 根據過期需求和資料大小，下表描述每個案例的報告設定：
 
 
-|案例 |安裝程式 |
+|狀況 |安裝程式 |
 |---------|---------|
 |1. 產生臨機操作報表 (沒有重新整理)     |  [使用匯入模式 Power BI Azure Cosmos DB 連接器](powerbi-visualize.md)       |
 |2. 使用定期重新整理來產生特定報表   |  [使用匯入模式 Power BI Azure Cosmos DB 連接器 (排程的定期更新) ](powerbi-visualize.md)       |
@@ -58,13 +59,18 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 1. **設定累加式** 重新整理：依照 Power BI 文章的累加 [式](/power-bi/service-premium-incremental-refresh) 重新整理中的步驟，設定資料集的累加式重新整理。 新增 **RangeStart** 和 **到 rangeend** 參數，如下列螢幕擷取畫面所示：
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Azure Cosmos DB Power BI 連接器" = Table.SelectRows(#"Expanded Document", each [Document.date] > DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd"))
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="設定範圍參數":::
+
+   因為資料集具有文字格式的日期資料行，所以必須將 **RangeStart** 和 **到 rangeend** 參數轉換成使用下列篩選。 在 [ **進階編輯器** ] 窗格中，修改您的查詢新增下列文字，以根據 RangeStart 和到 rangeend 參數篩選資料列：
+
+   ```
+   #"Filtered Rows" = Table.SelectRows(#"Expanded Document", each [Document.date] > DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd"))
    ```
    
    視源資料集中存在的資料行和資料類型而定，您可以據此變更 RangeStart 和到 rangeend 欄位
 
    
-   |屬性  |資料類型  |篩選  |
+   |屬性  |資料類型  |Filter  |
    |---------|---------|---------|
    |_ts     |   數值      |  [_ts] > 持續時間。 TotalSeconds (RangeStart-#datetime (1970、1、1、0、0、0) # A3 和 [_ts] < 持續時間。 TotalSeconds (到 rangeend-#datetime (1970，1，1，0，0，0) # A7 # A8       |
    |日期 (例如：-2019-08-19)      |   String      | [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd" )         |
@@ -73,13 +79,13 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 1. **定義** 重新整理原則：流覽至資料表 **內容** 功能表上的 [累加 **式** 重新整理] 索引標籤，以定義重新整理原則。 將重新整理原則設定為 **每天重新整理，並儲存** 上個月的資料。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="定義重新整理原則":::
 
    略過警告，指出 *無法確認 M 查詢是否要折* 迭。 Azure Cosmos DB 連接器折迭篩選查詢。
 
 1. **載入資料並產生報表** -使用您先前載入的資料，建立要報告溫度和降雨量的圖表。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="載入資料並產生報表":::
 
 1. 將 **報表發行至 Power BI premium** -因為累加式重新整理是僅限 premium 的功能，所以 [發佈] 對話方塊只允許選取 premium 容量上的工作區。 第一次重新整理可能需要較長的時間才能匯入歷程資料。 後續資料重新整理的速度會更快，因為它們會使用累加式重新整理。
 
@@ -96,19 +102,19 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 1. **在 Visual Studio**  -   中建立新的 Analysis Services 表格式專案 [安裝 SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true) ，並在 Visual Studio 中建立 Analysis Services 表格式專案。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="建立 Azure Analysis Services 專案":::
 
    選擇 **整合式工作區** 實例，並將相容性層級設定為 **SQL Server 2017/Azure Analysis Services (1400)**
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Analysis Services 表格式模型設計師":::
 
 1. **加入 Azure Cosmos DB 資料來源** -流覽至 **模型** >  **資料來源** 的  >  **新資料來源** ，並加入 Azure Cosmos DB 資料來源，如下列螢幕擷取畫面所示：
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="新增 Cosmos DB 資料來源":::
 
    提供 **帳戶 URI** 、 **資料庫名稱** 和 **容器名稱** ，以連接到 Azure Cosmos DB。 您現在可以看到 Azure Cosmos 容器中的資料匯入 Power BI。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="預覽 Azure Cosmos DB 資料":::
 
 1. **建立 Analysis Services 模型** -開啟查詢編輯器，執行必要的作業以優化載入的資料集：
 
@@ -138,12 +144,16 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 1. **建立 Azure 分析** 資料分割-在 Azure Analysis Services 中建立資料分割，以將資料集分割成可獨立和不同頻率重新整理的邏輯分割區。 在此範例中，您會建立兩個分割區，將資料集分成最近月份的資料，以及其他所有資料。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Azure Cosmos DB Power BI 連接器" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="建立 analysis services 資料分割":::
+
+   在 Azure Analysis Services 中建立下列兩個磁碟分割：
+
+   * **最新月份** - `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **歷史** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
 1. 將 **模型部署到 azure Analysis Server** -在 azure Analysis Services 專案上按一下滑鼠右鍵，然後選擇 [ **部署** ]。 在 [ **部署伺服器屬性** ] 窗格中加入伺服器名稱。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="部署 Azure Analysis Services 模型":::
 
 1. **設定資料分割重新整理和合併** -Azure Analysis Services 允許獨立處理資料分割。 因為我們想要以最新的資料持續更新 **最新的月份** 資料分割，所以請將重新整理間隔設定為5分鐘。 您可以使用 [REST API](../analysis-services/analysis-services-async-refresh.md)、 [Azure 自動化](../analysis-services/analysis-services-refresh-azure-automation.md)或 [邏輯應用程式](../analysis-services/analysis-services-refresh-logic-app.md)來重新整理資料。 不需要重新整理歷程記錄分割區中的資料。 此外，您還需要撰寫一些程式碼，將最新的月份資料分割合併到歷程記錄分割區，然後建立新的最新月份資料分割。
 
@@ -151,13 +161,13 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 1. **使用 azure Analysis Services Database Connector 連線到 azure Analysis Server** -選擇 **即時模式** 並聯機到 azure Analysis Services 實例，如下列螢幕擷取畫面所示：
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="從 Azure Analysis Services 取得資料":::
 
 1. **載入資料並產生報表** -使用您先前載入的資料，建立可報告溫度和降雨量的圖表。 因為您要建立即時連線，所以應針對您在上一個步驟中部署的 Azure Analysis Services 模型中的資料執行查詢。 將新資料載入 Azure Cosmos DB 後的五分鐘內，就會更新溫度圖表。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Azure Cosmos DB Power BI 連接器":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="載入資料並產生報表":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入了解 Power BI，請參閱 [開始使用 Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
 

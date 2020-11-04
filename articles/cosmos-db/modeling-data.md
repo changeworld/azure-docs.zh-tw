@@ -5,14 +5,15 @@ description: 了解如何在 NoSQL 資料庫中將資料模型化，以及在關
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096643"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333234"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料模型
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -300,7 +301,7 @@ Book documents:
 在關聯式資料庫 *多對多* 關聯性中，通常是與聯結資料表模型化，其只是將記錄從其他資料表聯結在一起。
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="關聯式資料庫模型" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="聯結資料表" border="false":::
 
 您可能會想要使用文件複寫相同的項目，並產生看起來如下所示的資料模型。
 
@@ -433,7 +434,7 @@ Review documents:
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 這篇文章的重點，在於了解資料模型在無結構描述環境中是非常重要的。
 

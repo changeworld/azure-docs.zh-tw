@@ -4,14 +4,15 @@ description: 瞭解如何將您現有的 .NET 應用程式從 v2 SDK 升級為�
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 3cddf76ae0157c6729e6f58e40ee3f1725a9d395
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 514a6c6daccfe63865ae0b2b9f5bf29c5cbedc29
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096660"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334016"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>遷移您的應用程式以使用 Azure Cosmos DB .NET SDK v3
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -639,7 +640,7 @@ private static async Task DeleteItemAsync(DocumentClient client)
 ```
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [建立主控台應用程式](sql-api-get-started.md) ，以使用 v3 SDK 來管理 AZURE COSMOS DB SQL API 資料
 * 深入瞭解[您可以使用 V3 SDK 進行的](sql-api-dotnet-v3sdk-samples.md)作業

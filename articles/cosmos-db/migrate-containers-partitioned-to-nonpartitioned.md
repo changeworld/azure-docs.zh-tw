@@ -3,16 +3,17 @@ title: 將未分割的 Azure Cosmos 容器遷移至已分割的容器
 description: 瞭解如何將所有現有的非資料分割容器遷移至已分割的容器。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffd1ff6d18769998dd3a168992566a376ea1cd27
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080068"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334081"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>將未分割的容器遷移至分割的容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -128,7 +129,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 如果針對分割區索引鍵使用不同的值來插入新專案，在中傳遞適當的金鑰來查詢這類專案計數 `FeedOptions` 將不會有任何問題。 使用分割區索引鍵插入新檔之後，如果您只需要查詢檔計數而沒有分割區索引鍵值，則該查詢可能會再次產生更高的 RU/s，類似于一般分割的集合。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 * [Azure Cosmos DB 中的要求單位](request-units.md)

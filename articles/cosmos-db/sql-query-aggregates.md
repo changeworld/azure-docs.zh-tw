@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中的彙總函式
 description: 深入瞭解 SQL 彙總函式語法、Azure Cosmos DB 所支援的彙總函式類型。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: 8d71b9b888c47847dd4a5f5c40504190e5c1ec84
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7c988f379e94bf2f69854c90d45af42fe2a7ec4f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090931"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332775"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的彙總函式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -70,7 +71,7 @@ SQL API 支援下列彙總函式。 `SUM` 以及 `AVG` 處理數值、 `COUNT` `
 | SUM   | 以運算式傳回所有值的總和。 |
 | 最小值   | 傳回運算式中的最小值。 |
 | 最大值   | 傳回運算式中的最大值。 |
-| 平均   | 以運算式傳回值的平均。 |
+| AVG   | 以運算式傳回值的平均。 |
 
 您也可以對陣列反覆運算的結果進行匯總。
 
@@ -81,7 +82,7 @@ SQL API 支援下列彙總函式。 `SUM` 以及 `AVG` 處理數值、 `COUNT` `
 
 這些匯總系統函數將受益于 [範圍索引](index-policy.md#includeexclude-strategy)。 如果您想要在 `COUNT` `SUM` 屬性上進行、、 `MIN` 、或， `MAX` `AVG` 您應該 [在編制索引原則中包含相關的路徑](index-policy.md#includeexclude-strategy)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [系統函數](sql-query-system-functions.md)
