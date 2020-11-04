@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721824"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309607"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 建立 AI 應用程式的 CI/CD 管線
 
@@ -34,9 +34,9 @@ ms.locfileid: "76721824"
 - [原始程式碼存放庫](https://github.com/Azure/DevOps-For-AI-Apps)派生至您的 GitHub 帳戶
 - [Azure DevOps 的組織](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Azure CLI](/cli/azure/install-azure-cli)
-- [Kubernetes (AKS) ](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)叢集的 Azure Container Service
+- [Kubernetes (AKS) ](/previous-versions/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)叢集的 Azure Container Service
 - 從 AKS 叢集中執行命令及提取設定的[Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
-- [Azure Container Registry (ACR) 帳戶](/azure/container-registry/container-registry-get-started-portal)
+- [Azure Container Registry (ACR) 帳戶](../../container-registry/container-registry-get-started-portal.md)
 
 ## <a name="cicd-pipeline-summary"></a>CI/CD 管線摘要
 
@@ -60,9 +60,9 @@ ms.locfileid: "76721824"
 10. 應用程式的使用者要求會經過 DNS 伺服器。
 11. DNS 伺服器會將要求傳遞至負載平衡器，並將回應傳回給使用者。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Team Data Science Process (TDSP)](./index.yml)
+- [Azure Machine Learning (AML)](../index.yml)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md)

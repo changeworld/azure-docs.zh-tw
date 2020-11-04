@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254751"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307458"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure Machine Learning 中追蹤實驗和部署模型
 
@@ -26,11 +26,11 @@ ms.locfileid: "89254751"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 您必須布建 [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* 您必須布建 [Azure Machine Learning 工作區](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>建立新的 Notebook
 
-Azure Machine Learning 和 MLFlow SDK 會預先安裝在資料科學 VM 上，並可在**azureml_py36_ \* ** conda 環境中存取。 在 Jupyterlab 中，按一下啟動器，然後選取下列核心：
+Azure Machine Learning 和 MLFlow SDK 會預先安裝在資料科學 VM 上，並可在 * *azureml_py36_ \** _ conda 環境中存取。 在 Jupyterlab 中，按一下啟動器，然後選取下列核心：
 
 ![核心選取](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -123,7 +123,7 @@ with mlflow.start_run():
 
 ![Mse](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-如果您按一下執行，您將會在__輸出 + 記錄__檔中看到其他詳細資料和序列化模型
+如果您按一下執行，您將會在 __輸出 + 記錄__ 檔中看到其他詳細資料和序列化模型
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>在 Azure Machine Learning 中部署模型
 
@@ -137,7 +137,7 @@ with mlflow.start_run():
 
 在 [ __新增推斷__ 叢集] 窗格中，填滿詳細資料：
 
-* 計算名稱
+_ 計算名稱
 * Kubernetes 服務-選取 [建立新的]
 * 選取區域
 * 基於本教學課程的目的，請選取 VM 大小 (，Standard_D3_v2 的預設值就已足夠) 
@@ -145,7 +145,7 @@ with mlflow.start_run():
 * 節點數目應等於 __1__
 * 網路設定-基本
 
-接著，按一下 [ __建立__]。
+接著，按一下 [ __建立__ ]。
 
 ![計算詳細資料](./media/how-to-track-experiments/mlflow-experiments-7.png)
 
@@ -159,7 +159,7 @@ with mlflow.start_run():
 
 無程式碼部署表示您可以直接從模型成品進行部署，而不需要指定任何特定的評分腳本。
 
-若要部署糖尿病模型，請移至 [Azure Machine Learning Studio](https://ml.azure.com) 中的左側功能表，然後選取 [ __模型__]。 接著，按一下 [已註冊的 diabetes_model：
+若要部署糖尿病模型，請移至 [Azure Machine Learning Studio](https://ml.azure.com) 中的左側功能表，然後選取 [ __模型__ ]。 接著，按一下 [已註冊的 diabetes_model：
 
 ![選取模型](./media/how-to-track-experiments/mlflow-experiments-3.png)
 
@@ -167,7 +167,7 @@ with mlflow.start_run():
 
 ![部署](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-我們會將模型部署至推斷叢集 (Azure Kubernetes Service 我們在步驟1中建立的) 。 藉由提供服務的名稱，以及在步驟 1) 中建立 (AKS 計算叢集的名稱，填寫下列詳細資料。 此外，我們也建議您將 __CPU 保留容量__ 增加為 1 (從 0.1) ，並將 __記憶體保留容量__ 增加至 0.5) 的 1 (-您可以按一下 [ __Advanced__ ] 並填入詳細資料，以增加這項功能。 然後按一下 [ __部署__]。
+我們會將模型部署至推斷叢集 (Azure Kubernetes Service 我們在步驟1中建立的) 。 藉由提供服務的名稱，以及在步驟 1) 中建立 (AKS 計算叢集的名稱，填寫下列詳細資料。 此外，我們也建議您將 __CPU 保留容量__ 增加為 1 (從 0.1) ，並將 __記憶體保留容量__ 增加至 0.5) 的 1 (-您可以按一下 [ __Advanced__ ] 並填入詳細資料，以增加這項功能。 然後按一下 [ __部署__ ]。
 
 ![部署詳細資料](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,7 +177,7 @@ with mlflow.start_run():
 
 ![取用模型](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-您應該會看到部署狀態從 __轉換__ 成 __狀況良好__。 此外，此詳細資料區段提供 REST 端點和 Swagger Url，可讓應用程式開發人員用來將您的 ML 模型整合至其應用程式。
+您應該會看到部署狀態從 __轉換__ 成 __狀況良好__ 。 此外，此詳細資料區段提供 REST 端點和 Swagger Url，可讓應用程式開發人員用來將您的 ML 模型整合至其應用程式。
 
 您可以使用 [Postman](https://www.postman.com/)來測試端點，也可以使用 AzureML SDK：
 
@@ -204,4 +204,4 @@ print(output)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 [在 AzureML 中部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)
+* 深入瞭解 [在 AzureML 中部署模型](../how-to-deploy-and-where.md)

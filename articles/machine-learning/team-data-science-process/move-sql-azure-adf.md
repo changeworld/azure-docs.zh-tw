@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440013"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309544"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>使用 Azure Data Factory 將資料從 SQL Server 資料庫移至 SQL Database
 
@@ -43,16 +43,16 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 * 將資料從 Azure Blob 儲存體帳戶複製到 Azure SQL Database。
 
 > [!NOTE]
-> 此處所示的步驟已從 ADF 團隊所提供的更詳細教學課程中進行調整： [將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) 的參考，會在適當時提供給該主題的相關章節。
+> 此處所示的步驟已從 ADF 團隊所提供的更詳細教學課程中進行調整： [將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體](../../data-factory/tutorial-hybrid-copy-portal.md) 的參考，會在適當時提供給該主題的相關章節。
 >
 >
 
 ## <a name="prerequisites"></a><a name="prereqs"></a>必要條件
 本教學課程假設您有：
 
-* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，您必須取得用來存取儲存體的帳戶金鑰。 請參閱 [管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
-* 存取 **Azure SQL Database**。 如果您必須設定 Azure SQL Database， [消費者入門與 Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) 的主題會提供如何布建 Azure SQL Database 新實例的相關資訊。
+* **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 儲存體帳戶** 。 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，您必須取得用來存取儲存體的帳戶金鑰。 請參閱 [管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
+* 存取 **Azure SQL Database** 。 如果您必須設定 Azure SQL Database， [消費者入門與 Microsoft Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md) 的主題會提供如何布建 Azure SQL Database 新實例的相關資訊。
 * 已在本機上安裝和設定 **Azure PowerShell** 。 如需指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 > [!NOTE]
@@ -66,12 +66,12 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 您可以將這裡提供的程序調整為自己的資料集，或者遵循上述步驟使用 NYC 計程車資料集。 若要將 NYC 計程車資料集上傳到您的 SQL Server 資料庫，請依照將 [資料大量匯入 SQL Server 資料庫](sql-walkthrough.md#dbload)中所述的程式進行操作。
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> 建立 Azure Data Factory
-用於建立新 Azure Data Factory 的指示及 [Azure 入口網站](https://portal.azure.com/)中的資源群組，已在[建立 Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory) 提供。 將新的 ADF 執行個體命名為 *adfdsp*，並將建立的資源群組命名為 *adfdsprg*。
+用於建立新 Azure Data Factory 的指示及 [Azure 入口網站](https://portal.azure.com/)中的資源群組，已在[建立 Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory) 提供。 將新的 ADF 執行個體命名為 *adfdsp* ，並將建立的資源群組命名為 *adfdsprg* 。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安裝和設定 Azure Data Factory Integration Runtime
 Integration Runtime 是由客戶管理的資料整合基礎結構，Azure Data Factory 用來提供跨不同網路環境的資料整合功能。 此執行階段先前稱為「資料管理閘道」。
 
-若要設定，請 [依照指示來建立管線](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+若要設定，請 [依照指示來建立管線](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>建立連結服務以連接至資料資源
 連結服務定義會定義 Azure Data Factory 所需的資訊，以便連接到資料資源。 此案例中的三個資源都必須使用連結服務：
@@ -87,14 +87,14 @@ Integration Runtime 是由客戶管理的資料整合基礎結構，Azure Data F
 使用下列指令碼型程序，建立指定資料集結構、位置及可用性的資料表。 JSON 檔案可用來定義資料表。 如需這些檔案結構的詳細資訊，請參閱 [資料集](../../data-factory/concepts-datasets-linked-services.md)。
 
 > [!NOTE]
-> 您應該先執行 `Add-AzureAccount` Cmdlet，再執行 [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) Cmdlet，以確認已選取正確的 Azure 訂用帳戶來執行命令。 如需此 Cmdlet 的文件，請參閱 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)。
+> 您應該先執行 `Add-AzureAccount` Cmdlet，再執行 [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) Cmdlet，以確認已選取正確的 Azure 訂用帳戶來執行命令。 如需此 Cmdlet 的文件，請參閱 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)。
 >
 >
 
 資料表中的 JSON 型定義使用下列名稱：
 
 * SQL Server 中的 **資料表名稱** 是 *nyctaxi_data*
-* Azure Blob 儲存體帳戶中的「容器名稱」 **** 為 *containername*
+* Azure Blob 儲存體帳戶中的「容器名稱」  為 *containername*
 
 此 ADF 管線所需的三個資料表定義為：
 
@@ -138,7 +138,7 @@ SQL Server 的資料表定義是在下列 JSON 檔案中指定：
 
 這裡未包含資料行名稱。 您可以在資料行名稱上進行選擇，方法是將它們包含在這裡 (如需詳細資訊，請查看 [ADF 檔](../../data-factory/copy-activity-overview.md) 主題。
 
-將資料表的 JSON 定義複製到名為 *onpremtabledef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\onpremtabledef.json*)。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
+將資料表的 JSON 定義複製到名為 *onpremtabledef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\onpremtabledef.json* )。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp �
 }
 ```
 
-將資料表的 JSON 定義複製到名為 *bloboutputtabledef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\bloboutputtabledef.json*)。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
+將資料表的 JSON 定義複製到名為 *bloboutputtabledef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\bloboutputtabledef.json* )。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ SQL Azure 輸出的資料表定義如下 (此結構描述會對應來自 Blob �
 }
 ```
 
-將資料表的 JSON 定義複製到名為 *AzureSqlTable.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\AzureSqlTable.json*)。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
+將資料表的 JSON 定義複製到名為 *AzureSqlTable.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\AzureSqlTable.json* )。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -217,7 +217,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>定義和建立管線
 指定屬於管線的活動，並使用下列指令碼型程序建立管線。 JSON 檔案是用來定義管線屬性。
 
-* 指令碼假設 **管線名稱** 為 *AMLDSProcessPipeline*。
+* 指令碼假設 **管線名稱** 為 *AMLDSProcessPipeline* 。
 * 此外請注意，我們會設定管線週期以每日執行，並使用預設的作業執行時間 (12 am UTC)。
 
 > [!NOTE]
@@ -294,7 +294,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-將該管線的 JSON 定義複製到名為 *pipelinedef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\pipelinedef.json*)。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立管線：
+將該管線的 JSON 定義複製到名為 *pipelinedef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\pipelinedef.json* )。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立管線：
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

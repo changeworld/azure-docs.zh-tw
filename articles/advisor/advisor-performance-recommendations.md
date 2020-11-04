@@ -3,16 +3,16 @@ title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 使用 Azure Advisor 中的效能建議來改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077808"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308673"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 來改善 Azure 應用程式的效能
 
-Azure Advisor 中的效能建議有助於改善業務關鍵應用程式的速度和回應能力。 您可以在 Advisor 儀表板的 [效能]**** 索引標籤上，取得 Advisor 的效能建議。
+Azure Advisor 中的效能建議有助於改善業務關鍵應用程式的速度和回應能力。 您可以在 Advisor 儀表板的 [效能] 索引標籤上，取得 Advisor 的效能建議。
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>縮短流量管理員設定檔的 DNS 存留時間，以更快速容錯移轉至狀況良好的端點
 
@@ -22,7 +22,7 @@ Azure Advisor 識別已設定較長 TTL 的流量管理員設定檔。 建議您
 
 ## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>使用 SQL Database Advisor (暫時停用，以改善資料庫效能) 
 
-Azure Advisor 可針對所有的 Azure 資源提供一致的合併建議檢視。 它會與 SQL Database Advisor 整合，以提供改進資料庫效能的建議。SQL Database Advisor 藉由分析您的使用量歷程記錄來評估您資料庫的效能。 然後，它會提供最適合用於執行資料庫之一般工作負載的建議。
+Azure Advisor 可針對所有的 Azure 資源提供一致的合併建議檢視。 它會與 SQL Database Advisor 整合，以提供改進資料庫效能的建議。 SQL Database Advisor 藉由分析您的使用量歷程記錄來評估您資料庫的效能。 然後，它會提供最適合用於執行資料庫之一般工作負載的建議。
 
 > [!NOTE]
 > 在您可以取得建議之前，您的資料庫需要大約一周的使用時間，而那一周內需要有一些一致的活動。 相較於隨機蹦出的活動，一致的查詢模式更有利於 SQL Database Advisor 最佳化。
@@ -108,7 +108,7 @@ Advisor 會偵測到您是否可以在載入至資料庫時增加批次大小，
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>共置相同區域中的儲存體帳戶，以將載入時的延遲降至最低
 
-Advisor 會偵測您是否是從不同于 SQL 集區的區域載入。 請考慮從與您的 SQL 集區位於相同區域的儲存體帳戶載入，以將載入資料時的延遲降至最低。 這種變更有助於將延遲降至最低，並提高負載效能。
+Advisor 會偵測您是否是從不同于專用 SQL 集區的區域載入。 請考慮從與您專用的 SQL 集區位於相同區域的儲存體帳戶載入，以將載入資料時的延遲降至最低。 這種變更有助於將延遲降至最低，並提高負載效能。
 
 ## <a name="use-a-supported-kubernetes-version"></a>使用支援的 Kubernetes 版本
 
@@ -120,17 +120,17 @@ Advisor 偵測到不支援的 Kubernetes 版本。
 長時間 CPU 的高使用率可能會導致工作負載的查詢效能變慢。 增加 CPU 大小將有助於優化資料庫查詢的執行時間，並改善整體效能。 Advisor 會識別高 CPU 使用率的伺服器，這些伺服器可能會執行 CPU 限制的工作負載，並建議調整您的計算。
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>降低適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和適用於 MariaDB 的 Azure 資料庫伺服器上的記憶體限制，或移至記憶體優化的 SKU
-低快取點擊率可能會導致查詢效能變慢並增加 IOPS。 這種狀況可能是由不正確的查詢計劃或記憶體密集型工作負載所造成。 修正查詢計劃或增加適用於 PostgreSQL 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫或適用於 MariaDB 的 Azure 資料庫伺服器 [的記憶體](../postgresql/concepts-pricing-tiers.md) ，將有助於將資料庫工作負載的執行優化。 Azure Advisor 識別受此高緩衝集區變換影響的伺服器。 建議您採取下列其中一項動作： 
+低快取點擊率可能會導致查詢效能變慢並增加 IOPS。 這種狀況可能是由不正確的查詢計劃或記憶體密集型工作負載所造成。 修正查詢計劃或增加適用於 PostgreSQL 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫或適用於 MariaDB 的 Azure 資料庫伺服器 [的記憶體](../postgresql/concepts-pricing-tiers.md) ，將有助於將資料庫工作負載的執行優化。 Azure Advisor 識別受此高緩衝集區變換影響的伺服器。 建議您採取下列其中一項動作： 
 - 修正查詢計劃
 - 移至具有更多記憶體的 SKU 
 - 增加儲存體大小以取得更多 IOPS。
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用適用於 MySQL 的 Azure 資料庫或適用於 PostgreSQL 的 Azure 資料庫讀取複本來向外延展讀取大量讀取的工作負載
-建議程式會使用以工作負載為基礎的啟發學習法，例如過去七天內對伺服器寫入的讀取比率，以識別大量讀取的工作負載。 具有較高讀取/寫入比率的適用於 PostgreSQL 的 Azure 資料庫或適用於 MySQL 的 Azure 資料庫資源可能會導致 CPU 或記憶體爭用，並導致查詢效能變慢。 新增 [複本](../postgresql/howto-read-replicas-portal.md) 有助於將讀取向外延展到複本伺服器，並防止主伺服器上的 CPU 或記憶體限制。 Advisor 會識別具有大量讀取工作負載的伺服器，並建議您新增 [讀取複本](../postgresql/concepts-read-replicas.md)   來卸載部分讀取工作負載。
+建議程式會使用以工作負載為基礎的啟發學習法，例如過去七天內對伺服器寫入的讀取比率，以識別大量讀取的工作負載。 具有較高讀取/寫入比率的適用於 PostgreSQL 的 Azure 資料庫或適用於 MySQL 的 Azure 資料庫資源可能會導致 CPU 或記憶體爭用，並導致查詢效能變慢。 新增 [複本](../postgresql/howto-read-replicas-portal.md) 有助於將讀取向外延展到複本伺服器，並防止主伺服器上的 CPU 或記憶體限制。 Advisor 會識別具有大量讀取工作負載的伺服器，並建議您新增 [讀取複本](../postgresql/concepts-read-replicas.md) 來卸載部分讀取工作負載。
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>將您的適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫或適用於 MariaDB 的 Azure 資料庫伺服器調整為較高的 SKU，以防止連接限制
-您資料庫伺服器的每個新連接都會佔用記憶體。 如果您伺服器的連接因為記憶體的 [上限](../postgresql/concepts-limits.md) 而失敗，則資料庫伺服器的效能會降低。 Azure Advisor 識別執行有許多連接失敗的伺服器。 它會建議您執行下列其中一項動作，以升級伺服器的連接限制，以提供更多的記憶體給您的伺服器：
+您資料庫伺服器的每個新連接都會佔用記憶體。 如果您伺服器的連接因為記憶體的 [上限](../postgresql/concepts-limits.md) 而失敗，則資料庫伺服器的效能會降低。 Azure Advisor 識別執行有許多連接失敗的伺服器。 它會建議您執行下列其中一項動作，以升級伺服器的連接限制，以提供更多的記憶體給您的伺服器：
 - 擴大計算。 
 - 使用記憶體優化的 Sku （每個核心有更多計算）。
 

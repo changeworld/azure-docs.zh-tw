@@ -11,16 +11,16 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362834"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308469"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料匯入和資料匯出模組的 Azure Machine Learning Studio (傳統版) Web 服務
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 當您建立預測性實驗時，通常會新增 Web 服務輸入和輸出。 當您部署實驗時，取用者可以透過輸入和輸出傳送和接收 Web 服務的資料。 對於某些應用程式，取用者的資料可能可以從資料摘要獲得，或者資料已經位於外部資料來源 (例如 Azure Blob 儲存體)。 在這些情況下，應用程式就不需要使用 Web 服務的輸入和輸出讀取和寫入資料。 而是可以改用「批次執行服務 (BES)」使用「匯入資料」模組從資料來源讀取資料，然後使用「匯出資料」模組將評分結果寫入不同的資料位置。
@@ -78,14 +78,14 @@ ms.locfileid: "91362834"
 9. 在 [資料表名稱] 欄位中，輸入 dbo.ScoredLabels。 如果資料表不存在，則在執行實驗或呼叫 Web 服務時會建立資料表。
 10. 在 [資料表資料行的逗號分隔清單]  欄位中，輸入 ScoredLabels。
 
-當您撰寫的應用程式呼叫最後一個 Web 服務時，您可能要在執行階段指定不同的輸入查詢或目的地資料表。 若要設定這些輸入和輸出，請使用 Web 服務參數功能設來定「匯入資料」模組的「資料來源」屬性以及「匯出資料」模式資料目的地屬性。  如需有關 Web 服務參數的詳細資訊，請參閱 Cortana Intelligence 與 Machine Learning 部落格上的 [Azure Machine Learning Studio Web 服務參數項目](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) (英文)。
+當您撰寫的應用程式呼叫最後一個 Web 服務時，您可能要在執行階段指定不同的輸入查詢或目的地資料表。 若要設定這些輸入和輸出，請使用 Web 服務參數功能設來定「匯入資料」模組的「資料來源」屬性以及「匯出資料」模式資料目的地屬性。  如需有關 Web 服務參數的詳細資訊，請參閱 Cortana Intelligence 與 Machine Learning 部落格上的 [Azure Machine Learning Studio Web 服務參數項目](/archive/blogs/machinelearning/azureml-web-service-parameters) (英文)。
 
 設定匯入查詢和目的地資料表的 Web 服務參數︰
 
 1. 在「匯入資料」模組的屬性窗格中，按一下 [資料庫查詢] 欄位右上角的圖示，然後選取 [設為 Web 服務參數]。
 2. 在「匯出資料」模組的屬性窗格中，按一下 [資料表名稱] 欄位右上角的圖示，然後選取 [設為 Web 服務參數]。
 3. 在「匯出資料」模組屬性窗格的底部，在 [Web 服務參數] 區段中，按一下 [資料庫查詢] 並將它重新命名為「查詢」。
-4. 按一下 [資料表名稱] 並將它重新命名為**資料表**。
+4. 按一下 [資料表名稱] 並將它重新命名為 **資料表** 。
 
 完成之後，您的實驗看起來應該類似下圖：
 
@@ -152,4 +152,3 @@ ms.locfileid: "91362834"
     };
     ```
 10. 執行應用程式。
-

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
-ms.openlocfilehash: 8ffdd8c15cf225e4f5b99a0b84b71bdbed456234
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 31cb2b2b5411968f1eba71fa9afc7bdc8296407c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130080"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307407"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -204,7 +204,7 @@ ms.locfileid: "93130080"
 
 Azure Machine Learning 提供兩種使用自動化 ML 的體驗：
 
-* 針對有程式碼體驗的客戶，提供 [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 
+* 針對有程式碼體驗的客戶，提供 [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 
 
 * 針對有限/無程式碼體驗客戶，提供 Azure Machine Learning Studio：[https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,8 +289,7 @@ How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如，�
 
 ### <a name="python-sdk-reference"></a>Python SDK 參考
 
-使用 [AutoML 類別參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)，加深 SDK 設計模式與類別規格的專業知識。 
+使用 [AutoML 類別參考檔](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)，加深 SDK 設計模式與類別規格的專業知識。 
 
 > [!Note]
-> 自動化的機器學習功能也可在其他 Microsoft 解決方案中使用，例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
-
+> 自動化的機器學習功能也可在其他 Microsoft 解決方案中使用，例如 [ML.NET](/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

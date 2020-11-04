@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 813f229d414ab911169f404dfc6b3cbf93fa96b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780779"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308834"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database 與 Azure Synapse Analytics 伺服器的資源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -131,7 +131,7 @@ Azure SQL Database 資源治理本質上是階層式的。 從上到下，限制
 
 資料 IO 治理是 Azure SQL Database 中的程式，用來限制對資料庫資料檔案的讀取和寫入實體 IO。 針對每個服務等級設定 IOPS 限制，以最小化「雜訊鄰近」效果，以提供多租使用者服務中的資源配置公平，以及保持在基礎硬體和儲存體的功能內。
 
-針對單一資料庫，工作負載群組限制會套用至資料庫的所有儲存體 IO，而資源集區限制則適用于所有儲存體 IO （針對相同 SQL 集區上的所有資料庫，包括 `tempdb` 資料庫）。 針對彈性集區，工作負載群組限制會套用至集區中的每個資料庫，而資源集區限制會套用至整個彈性集區，包括 `tempdb` 資料庫，該資料庫會在集區中的所有資料庫之間共用。 一般情況下，工作負載可能無法針對資料庫 (單一或集區) 來達成資源集區限制，因為工作負載群組的限制低於資源集區限制，且更快地限制 IOPS/輸送量。 不過，合併的工作負載可能會針對相同集區上的多個資料庫達到集區限制。
+針對單一資料庫，工作負載群組限制會套用至資料庫的所有儲存體 IO，而資源集區限制則適用于所有儲存體 IO （針對相同專用 SQL 集區上的所有資料庫，包括 `tempdb` 資料庫）。 針對彈性集區，工作負載群組限制會套用至集區中的每個資料庫，而資源集區限制會套用至整個彈性集區，包括 `tempdb` 資料庫，該資料庫會在集區中的所有資料庫之間共用。 一般情況下，工作負載可能無法針對資料庫 (單一或集區) 來達成資源集區限制，因為工作負載群組的限制低於資源集區限制，且更快地限制 IOPS/輸送量。 不過，合併的工作負載可能會針對相同集區上的多個資料庫達到集區限制。
 
 例如，如果查詢在沒有任何 IO 資源管理的情況下產生 1000 IOPS，但工作負載群組的最大 IOPS 限制設定為 900 IOPS，則查詢將無法產生超過900的 IOPS。 但是，如果資源集區的最大 IOPS 限制設定為 1500 IOPS，且所有與資源集區相關聯之工作負載群組的 IO 總數超過 1500 IOPS，則相同查詢的 IO 可能會降低到低於 900 IOPS 的工作組限制。
 

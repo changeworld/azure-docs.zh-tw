@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 22e834ccc31e2d01646250c973080848173661de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbc532acf704128e2311f440aabe8f707fc03aea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743772"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307234"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 PyTorch 模型
 
@@ -36,7 +36,7 @@ ms.locfileid: "91743772"
     - 在筆記本伺服器的 [範例深度學習] 資料夾中，流覽至下列目錄以找出已完成和展開的筆記本： **如何使用 azureml > ml-架構 > pytorch > 超參數-pytorch** 資料夾。 
  
  - 您自己的 Jupyter Notebook 伺服器
-    - [安裝 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.15.0) 。
+    - [安裝 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.15.0) 。
     - [建立工作區設定檔](how-to-configure-environment.md#workspace)。
     - [下載範例指令檔](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -63,7 +63,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
 
-[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 其可提供集中式位置以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) 。
+[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 其可提供集中式位置以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 。
 
 從「 `config.json` [必要條件」一節](#prerequisites)中建立的檔案建立工作區物件。
 
@@ -182,7 +182,7 @@ pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1
 
 ### <a name="create-a-scriptrunconfig"></a>建立 ScriptRunConfig
 
-建立 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。 
+建立 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -204,7 +204,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 
 ## <a name="submit-your-run"></a>提交您的執行
 
-當作業正在執行時， [執行物件](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 會提供介面給執行歷程記錄，並在完成後提供。
+當作業正在執行時， [執行物件](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 會提供介面給執行歷程記錄，並在完成後提供。
 
 ```Python
 run = Experiment(ws, name='pytorch-birds').submit(src)
@@ -214,13 +214,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
 執行執行時，它會經歷下列階段：
 
-- **準備**：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
+- **準備** ：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
 
-- **調整**：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
+- **調整** ：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
 
-- 執行**中：腳本**資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
+- 執行 **中：腳本** 資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後續處理**：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
+- **後續處理** ：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
 
 ## <a name="register-or-download-a-model"></a>註冊或下載模型
 
@@ -268,7 +268,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-若要在 Azure ML 上使用 MPI/Horovod 執行分散式作業，您必須對 ScriptRunConfig 函式的參數指定 [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) `distributed_job_config` 。 下列程式碼會設定兩個節點的分散式作業，每個節點執行一個進程。 如果您也想要針對每個節點執行多個進程 (也就是，如果您的叢集 SKU) 有多個 Gpu，請另外 `process_count_per_node` 在 MpiConfiguration 中指定參數 (預設值為 `1`) 。
+若要在 Azure ML 上使用 MPI/Horovod 執行分散式作業，您必須對 ScriptRunConfig 函式的參數指定 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) `distributed_job_config` 。 下列程式碼會設定兩個節點的分散式作業，每個節點執行一個進程。 如果您也想要針對每個節點執行多個進程 (也就是，如果您的叢集 SKU) 有多個 Gpu，請另外 `process_count_per_node` 在 MpiConfiguration 中指定參數 (預設值為 `1`) 。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -286,7 +286,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 如果您使用 PyTorch 的內建 [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) 模組，該模組是使用您定型程式碼中的 **torch 散發** 套件所建立，您也可以透過 Azure ML 啟動分散式作業。
 
-若要使用 DistributedDataParallel 執行分散式 PyTorch 作業，請指定 ScriptRunConfig 函[PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true)式 `distributed_job_config` 之參數的 PyTorchConfiguration。 若要使用 torch 的 NCCL 後端，請 `communication_backend='Nccl'` 在 PyTorchConfiguration 中指定。 下列程式碼將設定2個節點的分散式工作。 NCCL 後端是建議用來 PyTorch 分散式 GPU 訓練的後端。
+若要使用 DistributedDataParallel 執行分散式 PyTorch 作業，請指定 ScriptRunConfig 函[PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)式 `distributed_job_config` 之參數的 PyTorchConfiguration。 若要使用 torch 的 NCCL 後端，請 `communication_backend='Nccl'` 在 PyTorchConfiguration 中指定。 下列程式碼將設定2個節點的分散式工作。 NCCL 後端是建議用來 PyTorch 分散式 GPU 訓練的後端。
 
 針對透過 PyTorchConfiguration 設定的分散式 PyTorch 作業，Azure ML 會在計算目標的節點上設定下列環境變數：
 

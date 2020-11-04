@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8480a0b8722fbfff0f1d8a8fafc1a64f38d21d6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314794"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307209"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>部署深度學習模型以使用 GPU 推斷
 
@@ -26,7 +26,7 @@ ms.locfileid: "92314794"
 推斷（或模型計分）是用來進行預測的已部署模型階段。 使用 Gpu 而非 Cpu 可提供高度可平行計算的效能優勢。
 
 > [!IMPORTANT]
-> 針對 web 服務部署，僅 Azure Kubernetes Service 支援 GPU 推斷。 針對使用 __機器學習管線__的推斷，只有 Azure Machine Learning 計算才支援 gpu。 如需使用 ML 管線的詳細資訊，請參閱 [教學課程：建立批次計分的 Azure Machine Learning 管線](tutorial-pipeline-batch-scoring-classification.md)。 
+> 針對 web 服務部署，僅 Azure Kubernetes Service 支援 GPU 推斷。 針對使用 __機器學習管線__ 的推斷，只有 Azure Machine Learning 計算才支援 gpu。 如需使用 ML 管線的詳細資訊，請參閱 [教學課程：建立批次計分的 Azure Machine Learning 管線](tutorial-pipeline-batch-scoring-classification.md)。 
 
 > [!TIP]
 > 雖然本文中的程式碼片段使用 TensorFlow 模型，但您可以將資訊套用至任何支援 Gpu 的機器學習架構。
@@ -38,7 +38,7 @@ ms.locfileid: "92314794"
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* 已安裝 Azure Machine Learning SDK 的 Python 開發環境。 如需詳細資訊，請參閱 [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。  
+* 已安裝 Azure Machine Learning SDK 的 Python 開發環境。 如需詳細資訊，請參閱 [AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。  
 
 * 使用 GPU 的已註冊模型。
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 如需環境的詳細資訊，請參閱 [建立和管理用於定型和部署的環境](how-to-use-environments.md)。
-如需詳細資訊，請參閱 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)的參考檔。
+如需詳細資訊，請參閱 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)的參考檔。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-如需詳細資訊，請參閱 [模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)的參考檔集。
+如需詳細資訊，請參閱 [模型](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)的參考檔集。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>將範例查詢發出至您的服務
 

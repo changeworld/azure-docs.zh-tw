@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215598"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307474"
 ---
 # <a name="table-design-patterns"></a>資料表設計模式
 本文將說明一些適用於表格服務方案的模式。 此外，您會了解如何有效處理其他表格儲存體設計文章中討論的一些問題和取捨。 下圖摘要說明不同模式之間的關聯性：  
@@ -22,20 +22,20 @@ ms.locfileid: "92215598"
 ![查閱相關資料](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-上方的模式圖強調顯示本指南中提及的模式 (藍色) 與反向模式 (橘色) 之間的一些關聯性。 還有許多其他模式也值得考量。 例如，表格服務的其中一個主要案例是從[命令查詢責任隔離 (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) 模式使用[具體化檢視模式](https://msdn.microsoft.com/library/azure/dn589782.aspx)。  
+上方的模式圖強調顯示本指南中提及的模式 (藍色) 與反向模式 (橘色) 之間的一些關聯性。 還有許多其他模式也值得考量。 例如，表格服務的其中一個主要案例是從[命令查詢責任隔離 (CQRS)](/previous-versions/msp-n-p/jj554200(v=pandp.10)) 模式使用[具體化檢視模式](/previous-versions/msp-n-p/dn589782(v=pandp.10))。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>內部資料分割次要索引模式
 為每個實體儲存多個複本且使用不同 **RowKey** 值 (在相同的資料分割內)，透過使用不同的 **RowKey** 值，就能快速且有效率的查閱和替代排序次序。 複本之間的更新可以使用 EGT 保持一致。  
 
 ### <a name="context-and-problem"></a>內容和問題
-表格服務會使用 **PartitionKey** 和 **RowKey** 值自動編製實體的索引。 這可讓用戶端應用程式使用這些值有效率地擷取實體。 例如，使用如下所示的資料表結構，用戶端應用程式可以使用「部門名稱」和「員工識別碼」 (**PartitionKey** 和 **RowKey** 值) ，藉此使用點查詢來取出個別的員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。
+表格服務會使用 **PartitionKey** 和 **RowKey** 值自動編製實體的索引。 這可讓用戶端應用程式使用這些值有效率地擷取實體。 例如，使用如下所示的資料表結構，用戶端應用程式可以使用「部門名稱」和「員工識別碼」 ( **PartitionKey** 和 **RowKey** 值) ，藉此使用點查詢來取出個別的員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。
 
 ![Image06](media/storage-table-design-guide/storage-table-design-IMAGE06.png)
 
 如果您也想能夠根據其他屬性 (例如電子郵件地址) 的值尋找員工實體，您必須使用效率較低的資料分割掃描來尋找相符項目。 這是因為資料表服務不會提供次要索引。 此外，您無法要求以 **RowKey** 順序以外的不同順序來排序的員工清單。  
 
-### <a name="solution"></a>解決方案
-若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本分別使用不同 **RowKey** 值。 如果您使用如下所示的結構來儲存實體，就能夠根據電子郵件地址或員工識別碼，有效率地擷取員工實體。 **RowKey**"empid_" 和 "email_" 的前置詞值可讓您使用一系列的電子郵件地址或員工識別碼，來查詢單一員工或某個範圍的員工。  
+### <a name="solution"></a>解決方法
+若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本分別使用不同 **RowKey** 值。 如果您使用如下所示的結構來儲存實體，就能夠根據電子郵件地址或員工識別碼，有效率地擷取員工實體。 **RowKey** "empid_" 和 "email_" 的前置詞值可讓您使用一系列的電子郵件地址或員工識別碼，來查詢單一員工或某個範圍的員工。  
 
 ![員工實體](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "92215598"
 * 若要在銷售部門中，找出員工識別碼範圍從 000100 至 000199 的所有員工：請使用 $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199')  
 * 若要在銷售部門中，找出電子郵件地址開頭為字母 'a' 的所有員工：請使用 $filter=(PartitionKey eq 'Sales') and (RowKey ge 'email_a') and (RowKey lt 'email_b')  
   
-  上述範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱[查詢實體](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
+  上述範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱[查詢實體](/rest/api/storageservices/Query-Entities)。  
 
 ### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
@@ -81,7 +81,7 @@ ms.locfileid: "92215598"
 在個別資料分割或個別資料表中為每個實體儲存多個複本且使用不同 **RowKey** 值，透過使用不同的 **RowKey** 值，就能快速且有效率的查閱和替代排序次序。  
 
 ### <a name="context-and-problem"></a>內容和問題
-表格服務會使用 **PartitionKey** 和 **RowKey** 值自動編製實體的索引。 這可讓用戶端應用程式使用這些值有效率地擷取實體。 例如，使用如下所示的資料表結構，用戶端應用程式可以使用「部門名稱」和「員工識別碼」 (**PartitionKey** 和 **RowKey** 值) ，藉此使用點查詢來取出個別的員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。  
+表格服務會使用 **PartitionKey** 和 **RowKey** 值自動編製實體的索引。 這可讓用戶端應用程式使用這些值有效率地擷取實體。 例如，使用如下所示的資料表結構，用戶端應用程式可以使用「部門名稱」和「員工識別碼」 ( **PartitionKey** 和 **RowKey** 值) ，藉此使用點查詢來取出個別的員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。  
 
 ![員工識別碼](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
@@ -89,8 +89,8 @@ ms.locfileid: "92215598"
 
 您預期這些實體會有大量的交易，而且想要將資料表服務對用戶端進行節流的風險降至最低。  
 
-### <a name="solution"></a>解決方案
-若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本分別使用不同的 **PartitionKey** 和 **RowKey** 值。 如果您使用如下所示的結構來儲存實體，就能夠根據電子郵件地址或員工識別碼，有效率地擷取員工實體。 **PartitionKey**、"empid_" 及 "email_" 的前置詞值可讓您識別想要用於查詢的索引。  
+### <a name="solution"></a>解決方法
+若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本分別使用不同的 **PartitionKey** 和 **RowKey** 值。 如果您使用如下所示的結構來儲存實體，就能夠根據電子郵件地址或員工識別碼，有效率地擷取員工實體。 **PartitionKey** 、"empid_" 及 "email_" 的前置詞值可讓您識別想要用於查詢的索引。  
 
 ![主要索引和次要索引](media/storage-table-design-guide/storage-table-design-IMAGE10.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "92215598"
 * 若要在銷售部門中尋找員工識別碼範圍 **000100** 到 **000199** 的所有員工，以員工識別碼順序使用： $filter = (PartitionKey eq ' empid_Sales ' ) 和 (RowKey ge ' 000100 ' ) 和 (RowKey le ' 000199 ' )   
 * 若要在銷售部門中，找出電子郵件地址以 'a' 開頭的所有員工，請使用：$filter=(PartitionKey eq 'email_Sales') and (RowKey ge 'a') and (RowKey lt 'b')  
 
-上述範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱[查詢實體](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
+上述範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱[查詢實體](/rest/api/storageservices/Query-Entities)。  
 
 ### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
@@ -145,25 +145,25 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 ### <a name="solution"></a>解決方法
 藉由使用 Azure 佇列，您可以實作解決方案，提供跨兩個或多個資料分割或儲存系統的最終一致性。
-為了說明這種方法，我們假設您需要能夠封存舊的員工實體。 舊的員工實體很少受到查詢，應從處理目前員工的任何活動中排除。 若要執行此需求，您可以將 **目前** 資料表中的使用中員工以及封存 **資料表中的舊** 員工。 要封存員工，您必須先從**目前**資料表中刪除實體，並將實體加入**封存**資料表，但您無法使用 EGT 來執行這兩項作業。 若要避免因失敗而導致實體同時出現或未出現在這兩個資料表中，封存作業必須最終一致。 下列順序圖說明此作業的步驟。 後續文字提供了例外狀況路徑的詳細資料。  
+為了說明這種方法，我們假設您需要能夠封存舊的員工實體。 舊的員工實體很少受到查詢，應從處理目前員工的任何活動中排除。 若要執行此需求，您可以將 **目前** 資料表中的使用中員工以及封存 **資料表中的舊** 員工。 要封存員工，您必須先從 **目前** 資料表中刪除實體，並將實體加入 **封存** 資料表，但您無法使用 EGT 來執行這兩項作業。 若要避免因失敗而導致實體同時出現或未出現在這兩個資料表中，封存作業必須最終一致。 下列順序圖說明此作業的步驟。 後續文字提供了例外狀況路徑的詳細資料。  
 
 ![Azure 佇列解決方案](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
 
-用戶端會藉由將訊息放在 Azure 佇列來起始封存作業，在此範例中會封存員工 #456。 背景工作角色會輪詢佇列中的新訊息；若找到新訊息，它會讀取訊息，並將隱藏的複本保留在佇列上。 背景工作角色接著會擷取來自**目前**資料表的實體複本、將複本插入**封存**資料表中，然後從**目前**資料表中刪除原始複本。 最後，如果前述步驟沒有任何錯誤，背景工作角色會從佇列中刪除隱藏的訊息。  
+用戶端會藉由將訊息放在 Azure 佇列來起始封存作業，在此範例中會封存員工 #456。 背景工作角色會輪詢佇列中的新訊息；若找到新訊息，它會讀取訊息，並將隱藏的複本保留在佇列上。 背景工作角色接著會擷取來自 **目前** 資料表的實體複本、將複本插入 **封存** 資料表中，然後從 **目前** 資料表中刪除原始複本。 最後，如果前述步驟沒有任何錯誤，背景工作角色會從佇列中刪除隱藏的訊息。  
 
 此範例的步驟 4 會將員工插入 **封存** 資料表。 這可以將員工新增至 Blob 服務中的 Blob 或檔案系統中的檔案。  
 
 ### <a name="recovering-from-failures"></a>從失敗復原
-步驟 **4** 和 **5** 中的作業務必等冪**，免得背景工作角色必須重新啟動封存作業。 使用表格服務時，在步驟 **4** 中，您應使用「插入或取代」作業；在步驟 **5** 中，則應在您使用的用戶端程式庫中使用「如果存在即刪除」作業。 如果您使用其他儲存體系統，您必須使用適當的冪等作業。  
+步驟 **4** 和 **5** 中的作業務必等冪，免得背景工作角色必須重新啟動封存作業。 使用表格服務時，在步驟 **4** 中，您應使用「插入或取代」作業；在步驟 **5** 中，則應在您使用的用戶端程式庫中使用「如果存在即刪除」作業。 如果您使用其他儲存體系統，您必須使用適當的冪等作業。  
 
-如果背景工作角色一直未完成步驟 **6**，則在逾時後，訊息會重新出現在佇列上，可讓背景工作角色嘗試重新加以處理。 背景工作角色可以檢查訊息在佇列上的已讀取次數，如有必要可將其傳送至不同的佇列，以標示為「有害」訊息接受調查。 如需有關讀取佇列訊息和檢查清除佇列計數的詳細資訊，請參閱 [取得訊息](https://msdn.microsoft.com/library/azure/dd179474.aspx)。  
+如果背景工作角色一直未完成步驟 **6** ，則在逾時後，訊息會重新出現在佇列上，可讓背景工作角色嘗試重新加以處理。 背景工作角色可以檢查訊息在佇列上的已讀取次數，如有必要可將其傳送至不同的佇列，以標示為「有害」訊息接受調查。 如需有關讀取佇列訊息和檢查清除佇列計數的詳細資訊，請參閱 [取得訊息](/rest/api/storageservices/Get-Messages)。  
 
 來自資料表和佇列服務的某些錯誤是暫時性的，用戶端應用程式應包含適當的重試邏輯來處理它們。  
 
 ### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
 
-* 此方案不提供交易隔離。 例如，用戶端在在背景工作角色介於步驟 **4** 和 **5** 之間時無法讀取**目前**和**封存**資料表，並且會看見不一致的資料檢視。 資料最終將會一致。  
+* 此方案不提供交易隔離。 例如，用戶端在在背景工作角色介於步驟 **4** 和 **5** 之間時無法讀取 **目前** 和 **封存** 資料表，並且會看見不一致的資料檢視。 資料最終將會一致。  
 * 您必須確定步驟 4 和 5 是等冪，以確保最終一致性。  
 * 您可以使用多個佇列和背景工作角色執行個體來調整方案。  
 
@@ -185,13 +185,13 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 維護索引項目，啟用有效的搜尋以傳回實體清單。  
 
 ### <a name="context-and-problem"></a>內容和問題
-表格服務會使用 **PartitionKey** 和 **RowKey** 值自動編製實體的索引。 這可讓用戶端應用程式使用點查詢有效率地擷取實體。 例如，使用如下所示的資料表結構，用戶端應用程式可以使用 **PartitionKey** 和 **RowKey**)  (部門名稱和員工識別碼，有效率地取得個別的員工實體。  
+表格服務會使用 **PartitionKey** 和 **RowKey** 值自動編製實體的索引。 這可讓用戶端應用程式使用點查詢有效率地擷取實體。 例如，使用如下所示的資料表結構，用戶端應用程式可以使用 **PartitionKey** 和 **RowKey** )  (部門名稱和員工識別碼，有效率地取得個別的員工實體。  
 
 ![員工實體](media/storage-table-design-guide/storage-table-design-IMAGE13.png)
 
 如果您也想能夠根據其他非唯一屬性 (例如其姓氏) 的值擷取員工實體清單，您必須使用效率較低的資料分割掃描來尋找相符項目，而不要使用索引直接加以查閱。 這是因為資料表服務不會提供次要索引。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 若要依照上述實體結構啟用依姓氏查閱，您必須維護員工識別碼的清單。 如果您想要取出具有特定姓氏 (例如 Jones) 的員工實體，則必須先針對姓氏為 Jones 的員工，找出員工識別碼清單，然後取出這些員工實體。 有三個主要的選項可儲存員工識別碼清單：  
 
 * 使用 Blob 儲存體。  
@@ -208,12 +208,12 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 ![員工索引實體](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
 
-**EmployeeIDs**屬性包含**RowKey**中儲存姓氏的員工的員工識別碼清單。  
+**EmployeeIDs** 屬性包含 **RowKey** 中儲存姓氏的員工的員工識別碼清單。  
 
 下列步驟概述您在使用第二個選項並且要新增員工時所應遵循的程序。 在此範例中，我們會將識別碼為000152的員工以及銷售部門中的最後一個名稱：  
 
 1. 擷取具有 **PartitionKey** 值 "Sales" 和 **RowKey** 值 "Jones" 的索引實體。 儲存此實體的 ETag　以在步驟 2 中使用。  
-2. 建立實體群組交易 (也就是批次作業)，插入新的員工實體 (**PartitionKey** 值 "Sales" 和 **RowKey** 值 "000152") 並更新索引實體 (**PartitionKey** 值 "Sales" 和 **RowKey**值 "Jones")，方法是將新員工識別碼加入 EmployeeIDs 欄位中的清單。 如需實體群組交易的詳細資訊，請參閱實體群組交易。  
+2. 建立實體群組交易 (也就是批次作業)，插入新的員工實體 ( **PartitionKey** 值 "Sales" 和 **RowKey** 值 "000152") 並更新索引實體 ( **PartitionKey** 值 "Sales" 和 **RowKey** 值 "Jones")，方法是將新員工識別碼加入 EmployeeIDs 欄位中的清單。 如需實體群組交易的詳細資訊，請參閱實體群組交易。  
 3. 如果實體群組交易因為開放式並行存取錯誤而失敗 (其他人剛修改過索引實體)，您就必須從步驟 1 重新執行。  
 
 如果您使用第二個選項，您可以使用類似的方法來刪除某位員工。 變更員工的姓氏會稍微複雜一點，因為您需要執行會更新三個實體的實體群組交易：員工實體、舊姓氏的索引實體，與新姓氏的索引實體。 您必須先擷取每個實體才能進行變更，以擷取接著可以用來透過開放式並行存取執行更新的 ETag 值。  
@@ -231,7 +231,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 ![不同分割區中的員工索引實體](media/storage-table-design-guide/storage-table-design-IMAGE15.png)
 
 
-**EmployeeIDs**屬性包含**RowKey**中儲存姓氏的員工的員工識別碼清單。  
+**EmployeeIDs** 屬性包含 **RowKey** 中儲存姓氏的員工的員工識別碼清單。  
 
 使用第三個選項時，您無法使用 EGT 來維持一致性，因為索引實體位於與員工實體不同的磁碟分割中。 請確定索引實體與員工實體最終一致。  
 
@@ -302,12 +302,12 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 請注意，使用此方法時，您可以選擇在新的實體中重複某些資訊 (例如名字和姓氏)，以便透過單一要求擷取您的資料。 不過，您無法維護強式一致性，因為您無法使用 EGT 自動更新兩個實體。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 使用具有下列結構的實體，在您的原始資料表中儲存新的實體類型：  
 
 ![員工實體結構的解決方案](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
 
-請注意，**RowKey** 現在是由員工識別碼和考核資料年份所組成的複合索引鍵，可讓您透過單一實體的單一要求擷取員工的績效和考核資料。  
+請注意， **RowKey** 現在是由員工識別碼和考核資料年份所組成的複合索引鍵，可讓您透過單一實體的單一要求擷取員工的績效和考核資料。  
 
 下列範例說明如何擷取特定員工的所有考核資料 (例如銷售部門的員工 000123)：  
 
@@ -316,7 +316,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
 
-* 您應該使用適當的分隔符號字元以便剖析 **RowKey** 值：例如 **000123_2012**。  
+* 您應該使用適當的分隔符號字元以便剖析 **RowKey** 值：例如 **000123_2012** 。  
 * 您也必須將此實體儲存在與包含相同員工之相關資料的其他實體相同的資料分割中，這表示您可以使用 EGT 來維護強式一致性。
 * 您應考量您查詢資料的頻率，以判斷此模式是否適用。  比方說，如果您不會經常存取考核資料和主要員工資料，則應將其保存為個別的實體。  
 
@@ -336,7 +336,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 常見的需求是能夠抓取最近建立的實體，例如員工所提交的10個最新的支出宣告。 資料表查詢支援 **$top** 查詢作業，以從某個集合中傳回前 *n* 個實體：沒有對等的查詢作業可傳回某個集合中的最後 n 個實體。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 儲存使用可自然以反向的日期/時間順序排序的 **RowKey** 的實體，使最新的項目一律排在資料表中的首位。  
 
 例如，若要能夠取出員工所提交的10個最新的費用宣告，您可以使用衍生自目前日期/時間的反向刻度值。 下列 C# 程式碼範例說明如何針對從最新排序到最舊的 **RowKey** 建立適當的「反向刻度」值：  
@@ -372,7 +372,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 許多應用程式刪除用戶端應用程式已無需使用的舊資料，或應用程式已封存至其他儲存媒體的舊資料。 一般而言，您可以依日期來識別這類資料：例如，您需要刪除所有存留期超過 60 天之登入要求的記錄。  
 
-可行的設計之一，就是在 **RowKey**中使用登入要求的日期和時間：  
+可行的設計之一，就是在 **RowKey** 中使用登入要求的日期和時間：  
 
 ![登入嘗試的日期和時間](media/storage-table-design-guide/storage-table-design-IMAGE21.png)
 
@@ -437,7 +437,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 個別實體可以擁有超過 252 個 (不含必要的系統屬性) 屬性，而且無法儲存總計超過 1 MB 的資料。 在關聯式資料庫中，您會通常可藉由新增資料表並對其施行一對一關聯性，來解決任何資料列的大小限制。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 使用資料表服務，可讓您儲存多個實體來代表具有超過 252 個屬性的單一大型商業物件。 例如，如果您想要儲存每個員工在 365 天內傳送的 IM 訊息計數，您可以採用下列設計，使用兩個具有不同結構描述的實體：  
 
 ![多個實體](media/storage-table-design-guide/storage-table-design-IMAGE24.png)
@@ -464,7 +464,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 個別實體無法儲存總計超過 1 MB 的資料。 如果有一或多個屬性所儲存的值會導致您的實體大小總計超過此值，您將無法在資料表服務中儲存整個實體。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 如果您的實體因為一或多個屬性包含大量資料而使大小超過 1 MB，您可以將資料儲存在 Blob 服務，然後將 Blob 的位址儲存在實體的屬性中。 比方說，您可以在 Blob 儲存體中儲存員工的相片，並將相片的連結儲存在員工實體的 **Photo** 屬性中：  
 
 ![相片屬性](media/storage-table-design-guide/storage-table-design-IMAGE25.png)
@@ -494,7 +494,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 
 ![實體結構](media/storage-table-design-guide/storage-table-design-IMAGE26.png)
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 下列替代實體結構可在應用程式記錄事件時避免在任何特定資料分割上產生熱點：  
 
 ![替代的實體結構](media/storage-table-design-guide/storage-table-design-IMAGE27.png)
@@ -533,7 +533,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 
 不過，此結構描述的問題是，若要擷取特定時間範圍內的所有記錄訊息，您必須在資料表中搜尋每個資料分割。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 上一節加強說明了嘗試使用資料表服務來儲存記錄項目的問題，並提供了兩個無法令人滿意的設計。 一個方案會導致熱點資料分割，且具有寫入記錄檔訊息效能不佳的風險；另一個方案會導致查詢效能不佳，因為必須要掃描資料表中的每個資料分割，才能擷取特定時間範圍內的記錄訊息。 Blob 儲存體可為這種類型的案例提供更好的方案，Azure Storage Analytics 就是以此方式來儲存它所收集到的記錄資料。  
 
 本節概述 Storage Analytics 將記錄資料儲存在 Blob 儲存體中的方式，以說明如何以此方法儲存您常會依範圍查詢的資料。  
@@ -560,7 +560,7 @@ Storage Analytics 會在內部緩衝處理記錄訊息，然後定期更新適�
 如查詢的設計一節中所述，最有效率的查詢是點查詢。 但在某些情況下，您可能需要擷取多個實體。 本節說明使用儲存體用戶端程式庫來擷取實體的一些常見方法。  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>使用儲存體用戶端程式庫執行點查詢
-要執行點查詢，最簡單的方式是使用下列 C# 程式碼片段中展示的**擷取**資料表作業，來擷取 **PartitionKey** 值為 "Sales" 和 **RowKey** 值為 "212" 的實體：  
+要執行點查詢，最簡單的方式是使用下列 C# 程式碼片段中展示的 **擷取** 資料表作業，來擷取 **PartitionKey** 值為 "Sales" 和 **RowKey** 值為 "212" 的實體：  
 
 ```csharp
 TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -572,7 +572,7 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-請注意，此範例預期會擷取的實體屬於 **EmployeeEntity**類型。  
+請注意，此範例預期會擷取的實體屬於 **EmployeeEntity** 類型。  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>使用 LINQ 擷取多個實體
 使用 Microsoft Azure Cosmos 資料表標準程式庫時，您可以使用 LINQ 從表格服務中取出多個實體。 
@@ -634,7 +634,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 
 在此類情況下，您務必要完整測試應用程式的效能。  
 
-對資料表服務的查詢一次最多可傳回 1000 個實體，且最長可執行五秒。 如果結果集包含超過 1000 個實體，且查詢未於五秒內完成，或者查詢跨越資料分割界限，則資料表服務會傳回接續權杖，讓用戶端應用程式能夠要求下一組實體。 如需接續權杖如何運作的詳細資訊，請參閱 [查詢超時和分頁](https://msdn.microsoft.com/library/azure/dd135718.aspx)。  
+對資料表服務的查詢一次最多可傳回 1000 個實體，且最長可執行五秒。 如果結果集包含超過 1000 個實體，且查詢未於五秒內完成，或者查詢跨越資料分割界限，則資料表服務會傳回接續權杖，讓用戶端應用程式能夠要求下一組實體。 如需接續權杖如何運作的詳細資訊，請參閱 [查詢超時和分頁](/rest/api/storageservices/Query-Timeout-and-Pagination)。  
 
 如果您使用儲存體用戶端程式庫，它可以在從資料表服務傳回實體時，自動為您處理接續權杖。 下列使用儲存體用戶端程式庫的 C# 程式碼範例會在資料表服務於回應中傳回接續權杖時自動處理接續權杖：  
 
@@ -686,7 +686,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 ### <a name="server-side-projection"></a>伺服器端預測
-單一實體最多可以有 255 個屬性，且大小上限為 1 MB。 當您查詢資料表並擷取實體時，您可能不需要所有屬性，並可以避免不必要地傳送資料 (以利降低延遲和成本)。 您可以使用伺服器端預測，僅傳送您需要的屬性。 下列範例將只會從查詢選取的實體中擷取 **Email** 屬性 (連同 **PartitionKey**、**RowKey**、**Timestamp** 和 **ETag**)。  
+單一實體最多可以有 255 個屬性，且大小上限為 1 MB。 當您查詢資料表並擷取實體時，您可能不需要所有屬性，並可以避免不必要地傳送資料 (以利降低延遲和成本)。 您可以使用伺服器端預測，僅傳送您需要的屬性。 下列範例將只會從查詢選取的實體中擷取 **Email** 屬性 (連同 **PartitionKey** 、 **RowKey** 、 **Timestamp** 和 **ETag** )。  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
@@ -711,7 +711,7 @@ foreach (var e in entities)
 您也應該考量您的設計會如何影響用戶端應用程式處理並行存取和更新作業的方式。  
 
 ### <a name="managing-concurrency"></a>管理並行存取
-根據預設，表格服務會在個別實體的層級上，針對**插入**、**合併**和**刪除**作業實作開放式並行存取檢查，雖然用戶端也可以強制表格服務略過這些檢查。 如需表格服務如何管理並行存取的詳細資訊，請參閱[管理 Microsoft Azure 儲存體中的並行存取](../../storage/common/storage-concurrency.md)。  
+根據預設，表格服務會在個別實體的層級上，針對 **插入** 、 **合併** 和 **刪除** 作業實作開放式並行存取檢查，雖然用戶端也可以強制表格服務略過這些檢查。 如需表格服務如何管理並行存取的詳細資訊，請參閱[管理 Microsoft Azure 儲存體中的並行存取](../../storage/common/storage-concurrency.md)。  
 
 ### <a name="merge-or-replace"></a>合併或取代
 **TableOperation** 類別的 **Replace** 方法一律會取代表格服務中的完整實體。 如果您未在要求中包含某個屬性，而該屬性存在於已儲存的實體中，要求將會從已儲存的實體中移除該屬性。 除非您想要明確地從已儲存的實體中移除屬性，否則即必須在要求中包含每個屬性。  
@@ -719,7 +719,7 @@ foreach (var e in entities)
 您可以使用 **TableOperation** 類別的 **Merge** 方法，減少您想要更新實體時傳送至表格服務的資料量。 **Merge** 方法會將已儲存實體中的任何屬性取代為要求中包含之實體的屬性值，但對於未包含在要求中的已儲存實體，則會完整保留其所有的屬性。 如果您有大型實體，而只需要更新要求中的少數屬性，這就非常有用。  
 
 > [!NOTE]
-> 如果實體不存在，**Replace** 和 **Merge** 方法將會失敗。 如果實體不存在，您可以改用 **InsertOrReplace** 和 **InsertOrMerge** 方法建立新實體。  
+> 如果實體不存在， **Replace** 和 **Merge** 方法將會失敗。 如果實體不存在，您可以改用 **InsertOrReplace** 和 **InsertOrMerge** 方法建立新實體。  
 > 
 > 
 
@@ -813,9 +813,9 @@ foreach (var e in entities)
 </tr>
 </table>
 
-每個實體仍必須要有 **PartitionKey**、**RowKey** 和 **Timestamp** 值，但是可以有任何屬性集。 此外，除非您選擇將實體類型資訊儲存在某處，否則將沒有項目會指出此類型。 有兩個選項可用來識別實體類型：  
+每個實體仍必須要有 **PartitionKey** 、 **RowKey** 和 **Timestamp** 值，但是可以有任何屬性集。 此外，除非您選擇將實體類型資訊儲存在某處，否則將沒有項目會指出此類型。 有兩個選項可用來識別實體類型：  
 
-* 在 **RowKey** (或可能是 **PartitionKey**) 前面加上實體類型。 例如 **EMPLOYEE_000123**，或以 **DEPARTMENT_SALES** 做為 **RowKey** 值。  
+* 在 **RowKey** (或可能是 **PartitionKey** ) 前面加上實體類型。 例如 **EMPLOYEE_000123** ，或以 **DEPARTMENT_SALES** 做為 **RowKey** 值。  
 * 使用個別屬性記錄實體類型，如下表所示。  
 
 <table>
@@ -913,7 +913,7 @@ foreach (var e in entities)
 </tr>
 </table>
 
-如果兩個不同類型的實體可能有相同的索引鍵值，第一個選項 (在 **RowKey**前面加上實體類型) 可能會很有用。 它也會將屬於相同類型的實體分組在資料分割中。  
+如果兩個不同類型的實體可能有相同的索引鍵值，第一個選項 (在 **RowKey** 前面加上實體類型) 可能會很有用。 它也會將屬於相同類型的實體分組在資料分割中。  
 
 本節討論的方法與本指南稍早的[模型化關聯性](table-storage-design-modeling.md)一文，對於[繼承關聯性](table-storage-design-modeling.md#inheritance-relationships)的討論有密切關聯。  
 
@@ -927,7 +927,7 @@ foreach (var e in entities)
 ### <a name="retrieving-heterogeneous-entity-types"></a>擷取異質性實體類型
 在使用儲存體用戶端程式庫時，有三個選項可供您使用多個實體類型。  
 
-如果您知道以特定**RowKey** 和 **PartitionKey** 值儲存的實體類型，則在您擷取實體 (如先前兩個擷取實體類型 **EmployeeEntity** 的範例所說明) 時，將可指定實體類型：[使用儲存體用戶端程式庫執行點查詢](#executing-a-point-query-using-the-storage-client-library)和[使用 LINQ 擷取多個實體](#retrieving-multiple-entities-using-linq)。  
+如果您知道以特定 **RowKey** 和 **PartitionKey** 值儲存的實體類型，則在您擷取實體 (如先前兩個擷取實體類型 **EmployeeEntity** 的範例所說明) 時，將可指定實體類型： [使用儲存體用戶端程式庫執行點查詢](#executing-a-point-query-using-the-storage-client-library)和 [使用 LINQ 擷取多個實體](#retrieving-multiple-entities-using-linq)。  
 
 第二個選項是使用 **DynamicTableEntity** 類型 (屬性包)，而不是具體的 POCO 實體類型 (這個選項也可改善效能，因為不需要將實體序列化和還原序列化成 .NET 類型)。 下列 C# 程式碼可能會從資料表中擷取多個不同類型的實體，但會傳回所有實體做為 **DynamicTableEntity** 執行個體。 然後，它會使用 **EntityType** 屬性來判斷每個實體的類型：  
 
@@ -960,9 +960,9 @@ foreach (var e in entities)
 }  
 ```
 
-若要取得其他屬性，您必須在 **>dynamictableentity**類別的**properties**屬性上使用**TryGetValue**方法。  
+若要取得其他屬性，您必須在 **>dynamictableentity** 類別的 **properties** 屬性上使用 **TryGetValue** 方法。  
 
-第三個選項是使用 **DynamicTableEntity** 類型和 **EntityResolver** 執行個體進行結合。 這可讓您解析為相同查詢中的多個 POCO 類型。 在此範例中，**EntityResolver** 委派會使用 **EntityType** 屬性來區別查詢傳回的兩個實體類型。 **Resolve** 方法會使用 **resolver** 委派，將 **DynamicTableEntity** 執行個體解析為 **TableEntity** 執行個體。  
+第三個選項是使用 **DynamicTableEntity** 類型和 **EntityResolver** 執行個體進行結合。 這可讓您解析為相同查詢中的多個 POCO 類型。 在此範例中， **EntityResolver** 委派會使用 **EntityType** 屬性來區別查詢傳回的兩個實體類型。 **Resolve** 方法會使用 **resolver** 委派，將 **DynamicTableEntity** 執行個體解析為 **TableEntity** 執行個體。  
 
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>

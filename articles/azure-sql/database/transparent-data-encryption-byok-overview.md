@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790877"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308331"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -156,7 +156,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - 在 Azure Active Directory 中刪除伺服器的受控識別
 
-深入瞭解 [資料庫變成無法存取的常見原因](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible)。
+深入瞭解 [資料庫變成無法存取的常見原因](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible)。
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>監視客戶管理的 TDE
 
@@ -179,7 +179,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 若要減輕此問題，請執行目標伺服器的 [AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) 指令程式，或 [AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) 目標受控實例，以傳回可用金鑰的清單，並找出遺漏的金鑰。 為確保可以還原所有備份，請確定還原的目標伺服器可以存取所需的所有金鑰。 這些金鑰不需要標示為 TDE 保護裝置。
 
-若要深入瞭解 SQL Database 的備份復原，請參閱 [SQL Database 中的復原資料庫](recovery-using-backups.md)。 若要深入瞭解 SQL 集區的備份復原，請參閱 [復原 Sql 集](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)區。 如 SQL Server 的原生備份/還原與 SQL 受控執行個體，請參閱 [快速入門：將資料庫還原至 sql 受控執行個體](../managed-instance/restore-sample-database-quickstart.md)
+若要深入瞭解 SQL Database 的備份復原，請參閱 [SQL Database 中的復原資料庫](recovery-using-backups.md)。 若要深入瞭解 Azure Synapse Analytics 中專用 SQL 集區的備份復原，請參閱 [復原專用的 sql 集](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)區。 如 SQL Server 的原生備份/還原與 SQL 受控執行個體，請參閱 [快速入門：將資料庫還原至 sql 受控執行個體](../managed-instance/restore-sample-database-quickstart.md)
 
 記錄檔的其他考慮：已備份的記錄檔仍會以原始 TDE 保護裝置加密，即使已輪替，且資料庫目前使用新的 TDE 保護裝置。  在還原時，必須要有這兩個金鑰才能還原資料庫。  如果記錄檔使用儲存在 Azure Key Vault 中的 TDE 保護裝置，則在還原時將會需要此金鑰，即使在此同時，資料庫已變更為使用服務管理的 TDE 也是一樣。
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 21821bbb41126a53c2b137bf1f5e5684ff1ae267
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: 8c042032fb12e63ae32eb5a51b06e07386e5fbfc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096274"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308852"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,7 +63,7 @@ Azure Cosmos DB 是快速、彈性的分散式資料庫，可透過保證的延�
 > [!NOTE] 
 > 高 CPU 使用率可能會導致延遲增加和要求超時例外狀況。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 <a id="direct-connection"></a>
 
 **原則︰使用直接連接模式**
@@ -256,7 +256,7 @@ SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標
 
 要求費用 (也就是說，指定作業的要求處理成本) 會直接與檔案大小相互關聯。 大型檔的作業成本高於小型檔上的作業。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如需在少數用戶端電腦上用來評估高效能案例 Azure Cosmos DB 的範例應用程式，請參閱 [Azure Cosmos DB 的效能和規模測試](performance-testing.md)。
 
 若要深入了解如何針對規模和高效能設計您的應用程式，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。

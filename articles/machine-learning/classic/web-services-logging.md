@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: b30cd926f6908c26c6f71c1513a8c68c8a46bf43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 154479be1eae01bcc533b556b751ed24aee3da2b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359744"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308567"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>啟用 Azure Machine Learning Studio (傳統) web 服務的記錄功能
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 本檔提供 Machine Learning Studio (傳統) web 服務之記錄功能的相關資訊。 記錄除了錯誤號碼和訊息之外，還提供其他資訊，可協助您對 Machine Learning Studio (傳統) Api 的呼叫進行疑難排解。  
@@ -32,29 +32,29 @@ ms.locfileid: "91359744"
 
    ![新的 Web 服務體驗連結](./media/web-services-logging/new-web-services-experience-link.png)
 
-2. 在頂端的功能表列上，按一下 [Web 服務]**** 以取得新的 Web 服務，或按一下 [傳統 Web 服務]**** 以取得傳統 Web 服務。
+2. 在頂端的功能表列上，按一下 [Web 服務] 以取得新的 Web 服務，或按一下 [傳統 Web 服務] 以取得傳統 Web 服務。
 
    ![選取新的或傳統 Web 服務](./media/web-services-logging/select-web-service.png)
 
 3. 對於新的 Web 服務，按一下 Web 服務名稱。 對於傳統 Web 服務，按一下 Web 服務名稱，然後在下一個頁面中按一下適當的端點。
 
-4. 按一下頂端功能表列上的 [設定]****。
+4. 按一下頂端功能表列上的 [設定]。
 
 5. 將 **[啟用記錄]** 選項設定為 *[錯誤]* \(僅記錄錯誤) 或 *[所有]* \(適用於完整記錄)。
 
    ![選取記錄等級](./media/web-services-logging/enable-logging.png)
 
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案]  。
 
-7. 對於傳統 Web 服務，請建立 **ml-診斷**容器。
+7. 對於傳統 Web 服務，請建立 **ml-診斷** 容器。
 
-   所有的 Web 服務記錄會保存在與 Web 服務相關聯的儲存體帳戶中名為 **ml-診斷**的 blob 容器中。 對於新的 Web 服務，此容器會在您第一次存取 Web 服務時建立。 對於傳統 Web 服務，如果容器不存在，則您需要建立容器。 
+   所有的 Web 服務記錄會保存在與 Web 服務相關聯的儲存體帳戶中名為 **ml-診斷** 的 blob 容器中。 對於新的 Web 服務，此容器會在您第一次存取 Web 服務時建立。 對於傳統 Web 服務，如果容器不存在，則您需要建立容器。 
 
    1. 在 [Azure 入口網站](https://portal.azure.com)中，移至與 Web 服務相關聯的儲存體帳戶。
 
-   2. 在 [ **Blob 服務**] 底下，按一下 [ **容器**]。
+   2. 在 [Blob 服務]  下，按一下 [容器]  。
 
-   3. 如果容器 **ml-診斷**不存在，按一下 [+ 容器]****，將容器命名為「ml-診斷」，[存取型別]**** 選取「Blob」。 按一下 [確定]。
+   3. 如果容器 **ml-診斷** 不存在，按一下 [+ 容器]，將容器命名為「ml-診斷」，[存取型別] 選取「Blob」。 按一下 [確定]  。
 
       ![建立新的容器來儲存您的診斷記錄](./media/web-services-logging/create-ml-diagnostics-container.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "91359744"
 ## <a name="the-effects-of-enabling-logging"></a>啟用記錄的效果
 啟用記錄功能時，web 服務端點的診斷和錯誤會記錄在與使用者工作區連結的 Azure 儲存體帳戶的 **ml 診斷** blob 容器中。 這個容器針對所有與此儲存體帳戶相關聯的工作區，存放所有 Web 服務端點的診斷資訊。
 
-記錄可使用任何可用於探索 Azure 儲存體帳戶的多種工具來檢視。 最簡單的方法就是瀏覽至 Azure 入口網站中的儲存體帳戶，按一下 [容器]****，然後按一下 [ml-診斷]**** 容器。  
+記錄可使用任何可用於探索 Azure 儲存體帳戶的多種工具來檢視。 最簡單的方法就是瀏覽至 Azure 入口網站中的儲存體帳戶，按一下 [容器]，然後按一下 [ml-診斷] 容器。  
 
 ## <a name="log-blob-detail-information"></a>記錄檔 blob 詳細資訊
 在容器中的每個 blob，只會存放下列其中一項動作的診斷資訊：
@@ -81,9 +81,8 @@ ms.locfileid: "91359744"
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-其中的_記錄型別_是下列其中一個值：  
+其中的 _記錄型別_ 是下列其中一個值：  
 
 * 批次  
 * 分數/要求  
-* 分數/初始  
-
+* 分數/初始

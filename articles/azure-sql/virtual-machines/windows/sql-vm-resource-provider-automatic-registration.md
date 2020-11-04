@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d4a2d9e43dadc53008c04b44ea1dda9cb337da99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286125"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308351"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>使用 SQL VM 資源提供者自動註冊
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "93286125"
 
 若要向資源提供者註冊 SQL Server VM，您將需要： 
 
-- [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
+- [Azure 訂](https://azure.microsoft.com/free/)用帳戶和至少[參與者角色](../../../role-based-access-control/built-in-roles.md#all)許可權。
 - Azure 資源模型 [Windows Server 2008 R2 (或更新版本) 虛擬機器](../../../virtual-machines/windows/quick-create-portal.md) ，並將 [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) 部署至公用或 Azure Government 雲端。 不支援 Windows Server 2008。 
 
 

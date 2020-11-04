@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087679c49c3cc025268e6f895757ae5f5c47c917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012401"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309112"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure 資料科學虛擬機器上的機器學習和資料科學工具
 Azure 資料科學虛擬機器 (Dsvm) 有一組豐富的工具和程式庫，適用于適用于熱門語言的機器學習，例如 Python、R 和 Julia。
@@ -24,7 +24,7 @@ Azure 資料科學虛擬機器 (Dsvm) 有一組豐富的工具和程式庫，適
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>適用於 Python 的 Azure Machine Learning SDK
 
-請參閱適用于 [Python AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)的完整參考。
+請參閱適用于 [Python AZURE MACHINE LEARNING SDK](../overview-what-is-azure-ml.md)的完整參考。
 
 | 類別 | 值 |
 | ------------- | ------------- |
@@ -32,7 +32,7 @@ Azure 資料科學虛擬機器 (Dsvm) 有一組豐富的工具和程式庫，適
 | 支援的版本     | Windows (Conda 環境：AzureML)、Linux (Conda 環境：py36)    |
 | 典型的使用案例      | 一般機器學習平臺      |
 | 如何設定或安裝它？      |  搭配 GPU 支援安裝   |
-| 如何使用或執行它      | 作為 Python SDK 和 Azure CLI 中。 啟動至 Conda 環境 `AzureML` (Windows 版)「或」** 啟動至 `py36` (Linux 版)。      |
+| 如何使用或執行它      | 作為 Python SDK 和 Azure CLI 中。 啟動至 Conda 環境 `AzureML` (Windows 版)「或」啟動至 `py36` (Linux 版)。      |
 | 範例的連結      | 範例 Jupyter Notebook 包含在 `AzureML` 目錄中的 Notebook 底下。  |
 | 相關工具      | Visual Studio Code、Jupyter   |
 
@@ -89,7 +89,7 @@ Dsvm 上還有其他幾個機器學習程式庫，例如 `scikit-learn` dsvm 的
 | 這是什麼？   |  適用于資料採礦工作的機器學習演算法集合。 您可以將這些演算法直接套用至資料集，也可以從您自己的 Java 程式碼呼叫它們。 Weka 包含資料前置處理、分類、迴歸、群集、關聯規則和視覺效果的工具。 |
 | 支援的版本     | Windows、Linux     |
 | 典型的使用案例      | 一般機器學習工具     |
-| 如何使用或執行它      | 在 Windows 上，于 [ **開始** ] 功能表中搜尋 Weka。 在 Linux 上，使用 X2Go 登入，然後移至 [**應用程式**  >  **開發**]  >  **Weka**。 |
+| 如何使用或執行它      | 在 Windows 上，于 [ **開始** ] 功能表中搜尋 Weka。 在 Linux 上，使用 X2Go 登入，然後移至 [ **應用程式**  >  **開發** ]  >  **Weka** 。 |
 | 範例的連結      | [Weka 範例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) \(英文\) |
 | 相關工具      |LightGBM、Rattle、XGBoost   |
 
@@ -113,5 +113,3 @@ Dsvm 上還有其他幾個機器學習程式庫，例如 `scikit-learn` dsvm 的
 | 典型的使用案例      |  適用于就地資料探索，而不需要解壓縮、轉換、載入 (ETL) 。 查詢不同的資料來源和格式，包括 CSV、JSON、關聯式資料表和 Hadoop。     |
 | 如何使用和執行      | 桌面快捷方式  <br/> [在 10 分鐘內開始使用深入探詢](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 上的相關工具      |   Rattle、Weka、SQL Server Management Studio      |
-
-

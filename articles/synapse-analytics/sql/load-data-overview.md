@@ -1,6 +1,6 @@
 ---
-title: 設計適用于 SQL 集區的 PolyBase 資料載入策略
-description: " (ELT) 處理常式來載入資料或 SQL 集區，而不是 ETL，請設計解壓縮、載入和轉換。"
+title: 設計適用于專用 SQL 集區的 PolyBase 資料載入策略
+description: " (ELT) 進程載入具有專用 SQL 的資料，而不是 ETL，請設計 ELT 的解壓縮、載入和轉換。"
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a57abd080bdbbaefbe07258a2b241c093dc8c441
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474660"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308734"
 ---
-# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>設計 Azure Synapse SQL 集區的 PolyBase 資料載入策略
+# <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中為專用的 SQL 集區設計 PolyBase 資料載入策略
 
 傳統的 SMP 資料倉儲會使用擷取、轉換和下載 (ETL) 進程來載入資料。 Azure SQL 集區是大量平行處理， (MPP) 架構，利用計算和儲存體資源的擴充性和彈性。 使用「解壓縮」、「載入」和「轉換」 (ELT) 進程可利用內建的分散式查詢處理功能，並在載入前消除轉換資料所需的資源。
 
@@ -29,12 +29,12 @@ ms.locfileid: "92474660"
 
 解壓縮、載入和轉換 (ELT) 是從來源系統解壓縮資料、載入資料倉儲，然後轉換的程式。
 
-針對 SQL 集區執行 PolyBase ELT 的基本步驟如下：
+針對專用 SQL 集區執行 PolyBase ELT 的基本步驟如下：
 
 1. 將來源資料擷取至文字檔。
 2. 讓資料登陸到 Azure Blob 儲存體或 Azure Data Lake Store。
 3. 準備要載入的資料。
-4. 使用 PolyBase 將資料載入 SQL 集區臨時表。
+4. 使用 PolyBase 將資料載入專用的 SQL 集區臨時表。
 5. 轉換資料。
 6. 將資料插入生產資料表。
 
@@ -85,11 +85,11 @@ PolyBase 會從 UTF-8 和 UTF-16 編碼分隔符號文字檔載入資料。 除�
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 服務會增強網路輸送量、效能及可預測性。 ExpressRoute 是一項服務，它會透過專用私人連線將您的資料路由傳送至 Azure。 ExpressRoute 連線不會透過公用網際網路路由傳送資料。 相較於透過公用網際網路的一般連線，這個連線提供更為可靠、速度更快、延遲更低且安全性更高的網際網路連線。
 - [AZCopy 公用程式](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)透過公用網際網路將資料移至 Azure 儲存體。 如果您的資料大小小於 10 TB，就適用這個選項。 若要使用 AZCopy 定期執行載入，請測試網路速度以查看是否可以接受。
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 具有閘道，您可以在本機伺服器上安裝。 然後您可以建立管線，將資料從本機伺服器移至 Azure 儲存體。 若要搭配使用 Data Factory 與 SQL 集區，請參閱將 [資料載入 sql 集](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)區。
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 具有閘道，您可以在本機伺服器上安裝。 然後您可以建立管線，將資料從本機伺服器移至 Azure 儲存體。 若要搭配使用 Data Factory 與專用的 SQL 集區，請參閱將 [資料載入專用的 sql 集](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)區。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.準備要載入的資料
 
-您可能需要先準備和清除儲存體帳戶中的資料，再將其載入至 SQL 集區。 資料準備可以在您的資料是在來源中、當您將資料匯出到文字檔時，或是在資料在 Azure 儲存體之後執行。  盡可能儘早在程序中使用資料最簡單。  
+您可能需要先準備和清除儲存體帳戶中的資料，再將其載入專用的 SQL 集區。 資料準備可以在您的資料是在來源中、當您將資料匯出到文字檔時，或是在資料在 Azure 儲存體之後執行。  盡可能儘早在程序中使用資料最簡單。  
 
 ### <a name="define-external-tables"></a>定義外部資料表
 
@@ -110,7 +110,7 @@ PolyBase 會從 UTF-8 和 UTF-16 編碼分隔符號文字檔載入資料。 除�
 - 將文字檔中的資料格式化，以配合 SQL 集區目的地資料表中的資料行和資料類型。 如果外部文字檔與資料倉儲資料表的的資料類型之間沒有對齊，會導致在載入期間資料列遭到拒絕。
 - 使用結束字元分隔文字檔中的欄位。  請務必使用在來源資料中找不到的字元或字元序列。 搭配 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 使用您指定的結束字元。
 
-## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. 使用 PolyBase 將資料載入 SQL 集區臨時表
+## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. 使用 PolyBase 將資料載入專用的 SQL 集區臨時表
 
 這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也可讓您在將資料插入生產資料表之前，使用 SQL 集區內建的分散式查詢處理功能來轉換資料。
 
@@ -125,7 +125,7 @@ PolyBase 會從 UTF-8 和 UTF-16 編碼分隔符號文字檔載入資料。 除�
 
 ### <a name="non-polybase-loading-options"></a>非 PolyBase 載入選項
 
-如果您的資料與 PolyBase 不相容，您可以使用 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 或 [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 bcp 會直接載入至 SQL 集區，而不需要透過 Azure Blob 儲存體，而且只適用于小型載入。 請注意，這些選項的載入效能會顯著低於 PolyBase。
+如果您的資料與 PolyBase 不相容，您可以使用 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 或 [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 bcp 會直接載入專用的 SQL 集區，而不會透過 Azure Blob 儲存體，而且只適用于小型載入。 請注意，這些選項的載入效能會顯著低於 PolyBase。
 
 ## <a name="5-transform-the-data"></a>5.轉換資料
 

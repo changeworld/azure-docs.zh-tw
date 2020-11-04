@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 52404aa1514dc3189305117181408e25e233fce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc71dc87ca972c52fabb91a6412eec702eee5460
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362396"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307434"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (傳統) Web 服務：部署和耗用量
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 您可以使用 Azure Machine Learning Studio (傳統) ，將機器學習工作流程和模型部署為 web 服務。 然後便可以透過網際網路利用這些 Web 服務從應用程式呼叫機器學習服務模型，進行即時預測或批次模式的預測。 由於 Web 服務為 RESTful，您可以從各種程式設計語言與平台 (如 .NET 與 Java) 和應用程式 (如 Excel) 呼叫它們。
 
@@ -44,7 +44,7 @@ Studio (傳統) 入口網站和 Microsoft Azure Machine Learning Web 服務入�
 
 適用于 web 服務的 Azure Machine Learning Studio (傳統) 資源提供者，可讓您使用 REST API 呼叫來部署和管理 web 服務。 如需詳細資訊，請參閱 [Machine Learning Web 服務 (REST)](/rest/api/machinelearning/index) 參考資料。
 
-<!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
+<!-- [Machine Learning Web Service (REST)](/rest/api/machinelearning/webservices) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>使用 PowerShell Cmdlet
 
@@ -69,7 +69,7 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
 將它們新增至 JSON 範本做為 *Properties* 節點的子系，與 *MachineLearningWorkspace* 節點位於相同層級。
 
-以下為範例：
+以下是範例：
 
 ```json
 "StorageAccount": {
@@ -83,7 +83,7 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
 如需更詳細的資訊，請參閱下列文章和範例程式碼：
 
-* MSDN 上的[Azure Machine Learning Studio (傳統) Cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning)參考
+* MSDN 上的[Azure Machine Learning Studio (傳統) Cmdlet](/powershell/module/az.machinelearning)參考
 
 ## <a name="consume-the-web-services"></a>取用 Web 服務
 
@@ -104,4 +104,4 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
 ### <a name="from-a-rest-based-client"></a>從以 REST 為基礎的用戶端
 
-Azure Machine Learning Web 服務是 RESTful API。 您可以從各種平臺（例如 .NET、Python、R、JAVA 等）使用這些 Api。[Microsoft Azure Machine Learning Web 服務入口](https://services.azureml.net)網站上 web 服務的 [取用] 頁面包含可協助您開始**使用**的範例程式碼。 如需詳細資訊，請參閱 [如何取用 Azure Machine Learning Web 服務](consume-web-services.md)。
+Azure Machine Learning Web 服務是 RESTful API。 您可以從各種平臺（例如 .NET、Python、R、JAVA 等）使用這些 Api。 [Microsoft Azure Machine Learning Web 服務入口](https://services.azureml.net)網站上 web 服務的 [取用] 頁面包含可協助您開始 **使用** 的範例程式碼。 如需詳細資訊，請參閱 [如何取用 Azure Machine Learning Web 服務](consume-web-services.md)。

@@ -12,16 +12,20 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363414"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308782"
 ---
 # <a name="publisher-verification"></a>發行者驗證
 
-發行者驗證可協助系統管理員和終端使用者瞭解應用程式開發人員與 Microsoft 身分識別平臺整合的真實性。 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成[驗證](/partner-center/verification-responses)程序的 [Microsoft 合作夥伴網路 (MPN)](https://partner.microsoft.com/membership) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。 
+發行者驗證可協助系統管理員和終端使用者瞭解應用程式開發人員與 Microsoft 身分識別平臺整合的真實性。 
+
+> [!VIDEO https://www.youtube.com/embed/IYRN2jDl5dc]
+
+當應用程式標示為「發行者已驗證」時，表示發行者已使用完成[驗證](/partner-center/verification-responses)程序的 [Microsoft 合作夥伴網路 (MPN)](https://partner.microsoft.com/membership) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。 
 
 Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」徽章：![同意提示](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -31,9 +35,9 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 發行者驗證提供下列優點：
 - **為客戶提高透明度和降低風險** - 這項功能可協助客戶了解組織中使用的哪些應用程式是由他們信任的開發人員所發行。 
 
-- **改善標章** - 「已驗證」徽章會出現在 Azure AD 的[同意提示](application-consent-experience.md)、企業應用程式頁面，以及使用者和系統管理員所使用的其他 UX 表面。 
+- **改善標章** - 「已驗證」徽章會出現在 Azure AD 的 [同意提示](application-consent-experience.md)、企業應用程式頁面，以及使用者和系統管理員所使用的其他 UX 表面。 
 
-- **企業採用更流暢**-系統管理員可以設定 [使用者同意原則](../manage-apps/configure-user-consent.md)，並將發行者驗證狀態設定為其中一個主要原則準則。
+- **企業採用更流暢** -系統管理員可以設定 [使用者同意原則](../manage-apps/configure-user-consent.md)，並將發行者驗證狀態設定為其中一個主要原則準則。
 
 > [!NOTE]
 > 自2020年11月起，使用者將無法再將同意授與最新註冊的多租使用者應用程式，而不需要經過驗證的發行者。 這會套用至在11月 2020 8 日之後註冊的應用程式，使用 OAuth 2.0 來要求基本登入和讀取使用者設定檔以外的許可權，並要求來自不同租使用者的使用者同意，而不是應用程式註冊所在的租使用者。 同意畫面上會顯示警告，通知使用者這些應用程式具有風險，而且來自未驗證的發行者。    
@@ -62,7 +66,7 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 ## <a name="frequently-asked-questions"></a>常見問題集 
 以下是有關發行者驗證計畫的一些常見問題。 如需有關需求和流程的常見問題集，請參閱[將應用程式標示為發行者已驗證](mark-app-as-publisher-verified.md)。
 
-- **發行者驗證__未__提供哪些資訊？**  當應用程式標示為「發行者已驗證」時，其不會指出應用程式或其發行者是否已完成任何特定認證、遵守業界標準或遵循最佳做法等等。但其他 Microsoft 程式會提供這些資訊，包括 [Microsoft 365 應用程式認證](/microsoft-365-app-certification/overview)。
+- **發行者驗證 __未__ 提供哪些資訊？**  當應用程式標示為「發行者已驗證」時，其不會指出應用程式或其發行者是否已完成任何特定認證、遵守業界標準或遵循最佳做法等等。但其他 Microsoft 程式會提供這些資訊，包括 [Microsoft 365 應用程式認證](/microsoft-365-app-certification/overview)。
 
 - **這會產生多少費用？需要任何授權嗎？** Microsoft 不會向開發人員收取發行者驗證的費用，也不需要任何特定的授權。 
 

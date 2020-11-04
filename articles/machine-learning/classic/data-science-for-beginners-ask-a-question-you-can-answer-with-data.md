@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbac7c8818300ffb09959969e6b79f949177f457
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342102"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307677"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>詢問您可以使用資料回答的問題
 ## <a name="video-3-data-science-for-beginners-series"></a>影片 3：適用於初學者的資料科學系列
@@ -27,13 +27,13 @@ ms.locfileid: "91342102"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
-** 是一個資料科學的快速簡介，包含五個簡短影片。
+ 是一個資料科學的快速簡介，包含五個簡短影片。
 
-* 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* 影片 1： [資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * 影片 2： [您的資料已經可以進行資料科學了嗎？](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
 * 影片 3：詢問您可以使用資料回答的問題
-* 影片 4：[利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
-* 影片 5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* 影片 4： [利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* 影片 5： [複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>文字記錄：詢問您可以使用資料回答的問題
 歡迎觀賞「適用於初學者的資料科學」系列的第三個影片。  
@@ -43,7 +43,7 @@ ms.locfileid: "91342102"
 如果您已先觀賞過本系列中的前兩個影片，則可從這個影片中獲得更多資訊：「5 個資訊科學可以回答的問題」和「已備妥資料來進行資料科學嗎？」
 
 ## <a name="ask-a-sharp-question"></a>詢問明確的問題
-我們已經討論過資料科學是一個程序，可使用名稱 (亦稱為類別或標籤) 和數字來預測問題的答案， 但不能只是任意的問題，它必須是「明確的問題」**。
+我們已經討論過資料科學是一個程序，可使用名稱 (亦稱為類別或標籤) 和數字來預測問題的答案， 但不能只是任意的問題，它必須是「明確的問題」。
 
 含糊不清的問題不需要使用名稱或數字來回答。 必須是明確的問題。
 
@@ -69,9 +69,9 @@ ms.locfileid: "91342102"
 ## <a name="reformulate-your-question"></a>重新制訂您的問題
 有時候您可以重寫問題，以取得更有用的答案。
 
-「這個資料點是 A 或 B？ 」的問題會預測某個項目的類別 (或名稱或標籤)。 我們使用「分類演算法」 ** 來回答問題。
+「這個資料點是 A 或 B？ 」的問題會預測某個項目的類別 (或名稱或標籤)。 我們使用「分類演算法」 來回答問題。
 
-「多少？ 」或「有多少？ 」這類問題會預測數量。 我們使用「迴歸演算法」 ** 來回答問題。
+「多少？ 」或「有多少？ 」這類問題會預測數量。 我們使用「迴歸演算法」 來回答問題。
 
 為了解我們如何轉換這些問題，讓我們看看下列問題：「這位讀者對哪一個新聞報導最感興趣？ 」 它要求從多個可能性中預測單一選擇 (換句話說，就是「這是 A 或 B 或 C 或 D？ 」)，並會使用分類演算法。
 
@@ -91,4 +91,4 @@ ms.locfileid: "91342102"
 
 ## <a name="next-steps"></a>後續步驟
 * [試用 Machine Learning Studio (傳統) 的第一個資料科學實驗 ](create-experiment.md)
-* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/overview-what-is-azure-ml)
+* [在 Microsoft Azure 上取得 Machine Learning 簡介](../overview-what-is-azure-ml.md)

@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 186289826273e85c9faa7f972b6f48d34e38416f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308807"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (傳統) 中的應用程式生命週期管理
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Azure Machine Learning Studio (傳統) 是一種工具，可用於開發在 Azure 雲端平臺中實際運作的機器學習實驗。 它就像是合併到單一平台的 Visual Studio IDE 和可調整的雲端服務。 您可以將標準應用程式生命週期管理 (ALM) 實務，從版本控制各種資產到自動化執行和部署，到 Azure Machine Learning Studio (傳統) 。 本文會討論其中的部分選項和方法。
@@ -28,7 +28,7 @@ Azure Machine Learning Studio (傳統) 是一種工具，可用於開發在 Azur
 有兩個建議方法可控制您的實驗版本。 您可以仰賴內建的執行歷程記錄或以 JSON 格式匯出實驗，以便在外部進行管理。 每種方法都有其優缺點。
 
 ### <a name="experiment-snapshots-using-run-history"></a>使用執行歷程記錄的實驗快照
-在 Azure Machine Learning Studio (傳統) 學習實驗的執行模式中，每當您在實驗編輯器中按一下 [ **執行** ] 時，就會將實驗的不可變快照集提交至工作排程器。 若要檢視這份快照清單，請在實驗編輯器的畫面中，按一下命令列上的 [執行歷程記錄]**** 按鈕。
+在 Azure Machine Learning Studio (傳統) 學習實驗的執行模式中，每當您在實驗編輯器中按一下 [ **執行** ] 時，就會將實驗的不可變快照集提交至工作排程器。 若要檢視這份快照清單，請在實驗編輯器的畫面中，按一下命令列上的 [執行歷程記錄] 按鈕。
 
 ![執行歷程記錄按鈕](./media/version-control/runhistory.png)
 
@@ -46,7 +46,7 @@ Azure Machine Learning Studio (傳統) 是一種工具，可用於開發在 Azur
 JSON 檔案是實驗圖形的文字表示法，但可能在工作區中包含資產的參考，例如資料集或定型模型。 它不會包含資產的序列化版本。 如果您嘗試將 JSON 文件匯回工作區中，所參考的資產必須已經存在且具有實驗中所參考的相同資產識別碼。 否則您無法存取匯入的實驗。
 
 ## <a name="versioning-trained-model"></a>定型模型版本控制
-Azure Machine Learning Studio (傳統) 中的定型模型會序列化為一種格式（稱為 .Ilearner 檔案 (`.iLearner`) ），並儲存在與工作區相關聯的 Azure Blob 儲存體帳戶中。 取得 .iLearner 檔案複本的方法之一是透過重新訓練 API。 [本文](/azure/machine-learning/studio/retrain-machine-learning-model)說明重新訓練 API 的運作方式。 高階步驟：
+Azure Machine Learning Studio (傳統) 中的定型模型會序列化為一種格式（稱為 .Ilearner 檔案 (`.iLearner`) ），並儲存在與工作區相關聯的 Azure Blob 儲存體帳戶中。 取得 .iLearner 檔案複本的方法之一是透過重新訓練 API。 [本文](./retrain-machine-learning-model.md)說明重新訓練 API 的運作方式。 高階步驟：
 
 1. 設定您的訓練實驗。
 2. 將 Web 服務輸出連接埠新增至「訓練模型」模組，或是可產生定型模型的模組，例如「微調模型參數」或「建立 R 模型」。
@@ -78,7 +78,7 @@ Azure Machine Learning Studio (傳統) 中的定型模型會序列化為一種�
 您也可以建立許多相同的 Web 服務端點，然後將不同版本的 .iLearner 檔案修補至端點，以達到類似的效果。 [本文](create-models-and-endpoints-with-powershell.md)更詳細地說明如何完成此項作業。
 
 ### <a name="new-web-service"></a>新的 Web 服務
-如果您建立以 Azure Resource Manager 為基礎的新 Web 服務，就無法再使用端點建構。 相反地，您可以使用 [>export-amlwebservicedefinitionfromexperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell commandlet，或從已部署的 Resource Manager 型 web 服務使用 [*匯出 AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) powershell commandlet，從您的預測性實驗產生 WEB 服務定義 (WSD) 檔案（JSON 格式）。
+如果您建立以 Azure Resource Manager 為基礎的新 Web 服務，就無法再使用端點建構。 相反地，您可以使用 [>export-amlwebservicedefinitionfromexperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell commandlet，或從已部署的 Resource Manager 型 web 服務使用 [*匯出 AzMlWebservice*](/powershell/module/az.machinelearning/export-azmlwebservice) powershell commandlet，從您的預測性實驗產生 WEB 服務定義 (WSD) 檔案（JSON 格式）。
 
 在擁有匯出的 WSD 檔案並對其進行版本控制後，您也可以將 WSD 部署為不同 Azure 區域中不同 Web 服務方案的新 Web 服務。 只要確定您提供適當的儲存體帳戶組態，以及新的 Web 服務方案識別碼。 若要在不同的 .iLearner 檔案中修補，您可以修改 WSD 檔案和更新定型模型的位置參考，並且部署為新的 Web 服務。
 

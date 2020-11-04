@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a8a04d9e1b17c7e65be946cb51bfc41019e0706d
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233982"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309074"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -52,7 +52,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 + Azure 儲存體
 
 > [!IMPORTANT]
-> 限制日後有可能會變更。 如需最新資訊，請參閱 [azure 訂用帳戶和服務限制、配額和](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) 所有 azure 的限制。
+> 限制日後有可能會變更。 如需最新資訊，請參閱 [azure 訂用帳戶和服務限制、配額和](../azure-resource-manager/management/azure-subscription-service-limits.md) 所有 azure 的限制。
 
 ### <a name="virtual-machines"></a>虛擬機器
 每個 Azure 訂用帳戶對於所有服務的虛擬機器數目都有限制。 虛擬機器核心有區域總計限制和每個大小系列的區域限制。 這兩項限制會分別強制執行。
@@ -100,7 +100,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 
 ### <a name="container-instances"></a>Container Instances
 
-如需詳細資訊，請參閱 [容器實例限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)。
+如需詳細資訊，請參閱 [容器實例限制](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits)。
 
 ### <a name="storage"></a>儲存體
 針對每個訂用帳戶，Azure 儲存體的每個區域都有250個儲存體帳戶的限制。 這項限制包括標準和 Premium 儲存體帳戶。
@@ -156,7 +156,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 當您要求增加配額時，請選取您要考慮的服務。 例如，選取 [Azure Machine Learning]、[容器實例] 或 [儲存體]。 針對 Azure Machine Learning 計算，您可以在上一步中查看配額時選取 [ **要求配額** ] 按鈕。
 
 > [!NOTE]
-> [免費試用](https://azure.microsoft.com/offers/ms-azr-0044p) 訂用帳戶不符合限制或配額增加的資格。 如果您有免費試用訂用帳戶，您可以升級為 [隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/) 訂用帳戶。 如需詳細資訊，請參閱 [將 azure 免費試用版升級至隨用隨付](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) 和 [azure 免費帳戶的常見問題](https://azure.microsoft.com/free/free-account-faq)。
+> [免費試用](https://azure.microsoft.com/offers/ms-azr-0044p) 訂用帳戶不符合限制或配額增加的資格。 如果您有免費試用訂用帳戶，您可以升級為 [隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/) 訂用帳戶。 如需詳細資訊，請參閱 [將 azure 免費試用版升級至隨用隨付](../cost-management-billing/manage/upgrade-azure-subscription.md) 和 [azure 免費帳戶的常見問題](https://azure.microsoft.com/free/free-account-faq)。
 
 ## <a name="private-endpoint-and-private-dns-quota-increases"></a>私人端點和私人 DNS 配額增加
 
@@ -172,7 +172,7 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 
 若要要求這些案例的額度，請使用下列步驟：
 
-1. [建立 Azure 支援要求](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) ，並在 [ __基本__ ] 區段中選取下列選項：
+1. [建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) ，並在 [ __基本__ ] 區段中選取下列選項：
 
     | 欄位 | 選取項目 |
     | ----- | ----- |
@@ -187,6 +187,6 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="私人端點和私人 DNS 配額增加要求的螢幕擷取畫面。":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 + [規劃和管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)

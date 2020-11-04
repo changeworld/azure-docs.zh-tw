@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145522"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307765"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
@@ -36,7 +36,7 @@ ms.locfileid: "92145522"
 - [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL Database 和資料倉儲](../../azure-sql/database/conditional-access-configure.md)
+- [Azure SQL Database 和 Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Microsoft Application Insights 分析
 - [Microsoft Azure 資訊保護](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
@@ -125,7 +125,7 @@ Microsoft Azure 管理應用程式包含多項基礎服務。
 
 ## <a name="user-actions"></a>使用者動作
 
-使用者動作是可由使用者執行的工作。 目前唯一支援的動作是**登錄安全性資訊**，可在已啟用合併註冊的使用者嘗試註冊其安全性資訊時，讓條件式存取原則強制執行。 如需詳細資訊，請參閱[合併的安全性資訊註冊](../authentication/concept-registration-mfa-sspr-combined.md)一文。
+使用者動作是可由使用者執行的工作。 目前唯一支援的動作是 **登錄安全性資訊** ，可在已啟用合併註冊的使用者嘗試註冊其安全性資訊時，讓條件式存取原則強制執行。 如需詳細資訊，請參閱[合併的安全性資訊註冊](../authentication/concept-registration-mfa-sspr-combined.md)一文。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2174044a1a913663e255b125f2ea89c312f5e9d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342078"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307709"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>已備妥資料來進行資料科學嗎？
 ## <a name="video-2-data-science-for-beginners-series"></a>影片 2：適用於初學者的資料科學系列
@@ -28,16 +28,16 @@ ms.locfileid: "91342078"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
-** 是一個資料科學的快速簡介，包含五個簡短影片。
+ 是一個資料科學的快速簡介，包含五個簡短影片。
 
-* 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* 影片 1： [資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * 影片 2：您的資料已經可以進行資料科學了嗎？
-* 影片 3：[詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-* 影片 4：[利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
-* 影片 5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* 影片 3： [詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* 影片 4： [利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* 影片 5： [複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>文字記錄：已備妥資料來進行資料科學嗎？
-歡迎觀賞「已備妥資料來進行資料科學嗎？」 這是「適用於初學者的資料科學」** 系列的第二個影片。  
+歡迎觀賞「已備妥資料來進行資料科學嗎？」 這是「適用於初學者的資料科學」系列的第二個影片。  
 
 您必須先提供一些可運用的高品質原始資料，資料科學才能提供您想要的答案。 就像製作比薩，您一開始使用的原料越好，最終產品就越好。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "91342078"
 在資料科學中，有某些要素必須同時提取，包括：
 
 * 相關
-* 已連線
+* 連線
 * 精確
 * 足以使用
 
@@ -103,4 +103,4 @@ ms.locfileid: "91342078"
 
 ## <a name="next-steps"></a>後續步驟
 * [試用 Machine Learning Studio (傳統) 的第一個資料科學實驗 ](create-experiment.md)
-* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/overview-what-is-azure-ml)
+* [在 Microsoft Azure 上取得 Machine Learning 簡介](../overview-what-is-azure-ml.md)
