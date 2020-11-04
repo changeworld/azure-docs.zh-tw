@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04528d28e9f54710cd0a63372e32b099c2e07fb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026163"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321902"
 ---
 # <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure blob 儲存體中的範例資料
 
@@ -25,7 +25,7 @@ ms.locfileid: "86026163"
 **為何要對您的資料進行取樣？**
 如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 取樣有助於資料理解、探索和特徵工程。 它在 Cortana 分析程序中扮演的角色是能夠快速建立資料處理函式與機器學習服務模型的原型。
 
-這個取樣工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
+這個取樣工作是 [Team Data Science Process (TDSP)](./index.yml)中的一個步驟。
 
 ## <a name="download-and-down-sample-data"></a>下載和降低取樣資料
 1. 使用下列 Python 程式碼範例中的 Blob 服務，從 Azure blob 儲存體下載資料： 
@@ -102,7 +102,6 @@ ms.locfileid: "86026163"
         print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
     ```
 
-3. 使用 Azure Machine Learning [匯入資料](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 從 Azure Blob 讀取資料，如下圖所示：
+3. 使用 Azure Machine Learning [匯入資料](/azure/machine-learning/studio-module-reference/import-data) 從 Azure Blob 讀取資料，如下圖所示：
 
 ![讀取器 Blob](./media/sample-data-blob/reader_blob.png)
-

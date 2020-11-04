@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026044"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321881"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>在 Azure HDInsight Hive 資料表中進行資料取樣
 本文說明如何使用 Hive 查詢，對 Azure HDInsight Hive 資料表中儲存的資料向下取樣，以縮減至更適合操控分析的大小。 其中涵蓋三個也就一般使用的取樣方法：
@@ -28,7 +28,7 @@ ms.locfileid: "86026044"
 **為何要對您的資料進行取樣？**
 如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 向下取樣有助於資料的了解、探索和功能工程。 它在 Team Data Science Process 中扮演的角色是，能夠快速建立資料處理函式與機器學習服務模型的原型。
 
-這個取樣工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
+這個取樣工作是 [Team Data Science Process (TDSP)](./index.yml)中的一個步驟。
 
 ## <a name="how-to-submit-hive-queries"></a>如何提交 Hive 查詢
 Hive 查詢可以從 Hadoop 叢集前端節點上的 Hadoop 命令列主控台提交。  登入 Hadoop 叢集的前端節點、開啟 Hadoop Command-Line 主控台，然後從該處提交 Hive 查詢。 如需在 Hadoop 命令列主控台中提交 Hive 查詢的相關指示，請參閱[如何提交 Hive 查詢](move-hive-tables.md#submit)。
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 在此處， `<sample rate, 0-1>` 會指定使用者想要取樣的記錄比例。
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> 依群組隨機取樣
-對類別資料進行取樣時，您可能想要包含或排除類別變數中某些值的所有執行個體。 這種取樣稱為「依群組取樣」。 例如，如果您有一個類別變數 "State"**，擁有 NY、MA、CA、NJ、PA 等值，您想要讓相同狀態的記錄一律在一起，而不論是否要對它們取樣。
+對類別資料進行取樣時，您可能想要包含或排除類別變數中某些值的所有執行個體。 這種取樣稱為「依群組取樣」。 例如，如果您有一個類別變數 "State"，擁有 NY、MA、CA、NJ、PA 等值，您想要讓相同狀態的記錄一律在一起，而不論是否要對它們取樣。
 
 以下是依群組取樣的查詢範例：
 
@@ -105,4 +105,3 @@ where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 ```
 
 如需可在 Hive 中使用的進一步進階取樣方法相關資訊，請參閱 [LanguageManual 取樣](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)。
-

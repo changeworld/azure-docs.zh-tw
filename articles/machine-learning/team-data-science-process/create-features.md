@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250652"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322028"
 ---
 # <a name="feature-engineering-in-data-science"></a>資料科學特徵工程設計
 
 在本文中，您將了解在機器學習中增強資料時的特徵工程及其角色。 從 [Azure Machine Learning Studio (傳統版)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) 實驗中取出的說明範例中學習。 
 
-* **特徵設計**：從原始資料建立新特徵的程序，其可增加學習演算法的預測能力。 經過工程設計的特徵應該會擷取不容易出現在原始特徵集的其他資訊。
-* **特徵選取**：選取主要特徵子集的程序，其可縮小定型問題的維度。
+* **特徵設計** ：從原始資料建立新特徵的程序，其可增加學習演算法的預測能力。 經過工程設計的特徵應該會擷取不容易出現在原始特徵集的其他資訊。
+* **特徵選取** ：選取主要特徵子集的程序，其可縮小定型問題的維度。
 
-通常會先套用**特徵工程**以產生其他特徵，然後執行**特徵選取**以排除不相關、多餘或高度相關的特徵。
+通常會先套用 **特徵工程** 以產生其他特徵，然後執行 **特徵選取** 以排除不相關、多餘或高度相關的特徵。
 
 特徵工程和選取是 Team Data Science Process (TDSP) 的[模型化階段](lifecycle-modeling.md) 一部分。 若要深入了解 TDSP 和資料科學生命週期，請參閱[什麼是 TDSP？](overview.md)
 
@@ -60,7 +60,7 @@ ms.locfileid: "91250652"
 
 ### <a name="feature-engineering-using-studio-classic"></a>使用 SQL 函式設計特徵 (傳統版)
 
-在 Studio (傳統版) 實驗中，這四個定型資料集是透過預先處理的輸入資料集中的分支形成。 除了最左邊的分支以外，每個分支都包含[執行 R 指令碼](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/)模組，衍生特徵 (特徵集 B、C 和 D) 是在此模組中建構並附加至匯入的資料集。
+在 Studio (傳統版) 實驗中，這四個定型資料集是透過預先處理的輸入資料集中的分支形成。 除了最左邊的分支以外，每個分支都包含[執行 R 指令碼](/azure/machine-learning/studio-module-reference/execute-r-script)模組，衍生特徵 (特徵集 B、C 和 D) 是在此模組中建構並附加至匯入的資料集。
 
 下圖示範左邊第二個分支中用來建立特性集 B 的 R 指令碼。
 
@@ -80,9 +80,9 @@ ms.locfileid: "91250652"
 
 ### <a name="feature-hashing"></a>特徵雜湊
 
-為了達成此工作，會套用名為[特性雜湊](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing)的技術，有效地將任意文字特性變成索引。 此方法不會將每個文字特徵 (文字/片語) 關聯至特定索引，而是將雜湊函數套用至特徵，並直接使用其雜湊值作為索引。
+為了達成此工作，會套用名為[特性雜湊](/azure/machine-learning/studio-module-reference/feature-hashing)的技術，有效地將任意文字特性變成索引。 此方法不會將每個文字特徵 (文字/片語) 關聯至特定索引，而是將雜湊函數套用至特徵，並直接使用其雜湊值作為索引。
 
-Studio (傳統版) 中有一個[特徵雜湊](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing)模組，方便建立這些文字/片語特徵。 下圖顯示使用此模組的範例。 輸入資料集包含兩個資料行：1 至 5 的書籍評比，以及實際評論內容。 此模組的目標在於擷取一些新特性，以顯示特定書籍評論中對應文字/片語的發生次數。 若要使用此模組，請完成下列步驟：
+Studio (傳統版) 中有一個[特徵雜湊](/azure/machine-learning/studio-module-reference/feature-hashing)模組，方便建立這些文字/片語特徵。 下圖顯示使用此模組的範例。 輸入資料集包含兩個資料行：1 至 5 的書籍評比，以及實際評論內容。 此模組的目標在於擷取一些新特性，以顯示特定書籍評論中對應文字/片語的發生次數。 若要使用此模組，請完成下列步驟：
 
 * 第一步，選取包含輸入文字的資料行 (此例中的 "Col2")。
 * 第二步，將 "Hashing bitsize" 設定為 8，表示將建立 2^8=256 個特性。 所有文字中的文字/片語會雜湊至 256 個索引。 "Hashing bitsize" 參數的範圍是 1 至 31。 如果將此值設定為較大的數字，文字/片語比較不可能雜湊至相同的索引。

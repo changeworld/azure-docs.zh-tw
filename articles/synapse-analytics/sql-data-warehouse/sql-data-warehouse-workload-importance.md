@@ -1,6 +1,6 @@
 ---
 title: 工作負載重要性
-description: 在 Azure Synapse Analytics 中設定 Synapse SQL 集區查詢重要性的指引。
+description: 針對 Azure Synapse Analytics 中的專用 SQL 集區查詢設定重要性的指引。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b2c71d7bf9e796af77e9a2a4a3a31152f2ca884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212338"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322130"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics 工作負載重要性
 
-本文說明工作負載重要性如何影響 Azure Synapse 中 Synapse SQL 集區要求的執行順序。
+本文說明工作負載重要性如何影響 Azure Synapse 中專用 SQL 集區要求的執行順序。
 
 ## <a name="importance"></a>重要性
 
@@ -38,7 +38,7 @@ ms.locfileid: "85212338"
 
 ### <a name="locking"></a>鎖定
 
-讀取和寫入活動的鎖定存取是自然爭用的一個區域。 [分割切換](sql-data-warehouse-tables-partition.md)或[重新命名物件](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)等活動需要較高的鎖定。  若沒有工作負載重要性，Azure Synapse 中的 Synapse SQL 集區可針對輸送量進行優化。 針對輸送量進行優化表示當執行中和佇列的要求具有相同的鎖定需求，而且有資源可用時，佇列的要求可以略過要求佇列中抵達要求佇列的要求。 一旦工作負載重要性套用至具有較高鎖定需求的要求。 具有較高重要性的要求會在具有較低重要性的要求之前執行。
+讀取和寫入活動的鎖定存取是自然爭用的一個區域。 [分割切換](sql-data-warehouse-tables-partition.md)或[重新命名物件](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)等活動需要較高的鎖定。  若沒有工作負載重要性，Azure Synapse 中的專用 SQL 集區可針對輸送量進行優化。 針對輸送量進行優化表示當執行中和佇列的要求具有相同的鎖定需求，而且有資源可用時，佇列的要求可以略過要求佇列中抵達要求佇列的要求。 一旦工作負載重要性套用至具有較高鎖定需求的要求。 具有較高重要性的要求會在具有較低重要性的要求之前執行。
 
 請考慮下列範例：
 
@@ -50,7 +50,7 @@ ms.locfileid: "85212338"
 
 ### <a name="non-uniform-requests"></a>非統一要求
 
-另一個重要性可協助滿足查詢需求的案例，就是提交具有不同資源類別的要求時。  如同先前所述，在相同的重要性下，Azure Synapse 中的 Synapse SQL 集區可針對輸送量進行優化。 當混合大小要求 (（例如 smallrc 或 mediumrc) ）已排入佇列時，Synapse SQL 集區將會選擇符合可用資源的最早抵達要求。 如果套用工作負載重要性，下一步是排定最高重要性的要求。
+另一個重要性可協助滿足查詢需求的案例，就是提交具有不同資源類別的要求時。  如同先前所述，Azure Synapse 中的專用 SQL 集區可針對輸送量進行優化。 當混合大小要求 (（例如 smallrc 或 mediumrc) ）已排入佇列時，專用的 SQL 集區將會選擇符合可用資源的最早抵達要求。 如果套用工作負載重要性，下一步是排定最高重要性的要求。
   
 在 DW500c 上，請考慮下列範例：
 

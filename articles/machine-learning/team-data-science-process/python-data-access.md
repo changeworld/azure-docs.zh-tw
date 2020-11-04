@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497b8f5598cf7aa7720f47863d465f5e29789b07
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361495"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321961"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure Machine Learning Python 用戶端程式庫利用 Python 存取資料集
 Microsoft Azure Machine Learning Python 用戶端程式庫的預覽能夠從本機 Python 環境安全存取您的 Azure Machine Learning 資料集，並且可在工作區中建立和管理資料集。
@@ -69,15 +69,15 @@ Python 用戶端程式庫讓您以程式設計方式存取執行實驗所得的�
 ### <a name="security-for-data-access"></a><a name="security"></a>資料存取安全性
 Azure Machine Learning Studio 提供的程式碼片段 (傳統) 與 Python 用戶端程式庫搭配使用，包括您的工作區識別碼與授權權杖。 這些項目可提供工作區的完整存取權，且務必加以保護，像是密碼。
 
-基於安全性理由，程式碼片段功能只提供給其角色設定為工作區「擁有者」 **** 的使用者。 您的角色會顯示在 [ **使用者** ] 頁面的 [ **設定**] Azure Machine Learning Studio (傳統) 。
+基於安全性理由，程式碼片段功能只提供給其角色設定為工作區「擁有者」  的使用者。 您的角色會顯示在 [ **使用者** ] 頁面的 [ **設定** ] Azure Machine Learning Studio (傳統) 。
 
 ![螢幕擷取畫面顯示 Azure Machine Learning Studio [使用者] 頁面中的設定。][security]
 
-如果您的角色未設定為 [擁有者] ****，您可以要求重新受邀為擁有者，或要求該工作區的擁有者將程式碼片段提供給您。
+如果您的角色未設定為 [擁有者] ，您可以要求重新受邀為擁有者，或要求該工作區的擁有者將程式碼片段提供給您。
 
 若要取得授權權杖，您可以選擇下列其中一個選項：
 
-* 向擁有者要求權杖。 擁有者可以從 Azure Machine Learning Studio (傳統) 中工作區的 [設定] 頁面存取其授權權杖。 選取左窗格中的 [設定]****，然後按一下 [授權權杖]****，即可看到主要與次要權杖。 雖然主要或次要授權權杖都能用於程式碼片段，但建議擁有者只共用次要授權權杖。
+* 向擁有者要求權杖。 擁有者可以從 Azure Machine Learning Studio (傳統) 中工作區的 [設定] 頁面存取其授權權杖。 選取左窗格中的 [設定]，然後按一下 [授權權杖]，即可看到主要與次要權杖。 雖然主要或次要授權權杖都能用於程式碼片段，但建議擁有者只共用次要授權權杖。
 
    ![授權權杖](./media/python-data-access/ml-python-access-settings-tokens.png)
 
@@ -85,12 +85,12 @@ Azure Machine Learning Studio 提供的程式碼片段 (傳統) 與 Python 用�
 
 一旦開發人員取得工作區識別碼與授權權杖之後，就可以使用程式碼片段來存取工作區，而不論其角色為何。
 
-授權權杖可以在 [設定]**** 下的 [授權權杖]**** 頁面上管理。 您可以重新產生權杖，但這個程序會撤銷上一個權杖的存取權。
+授權權杖可以在 [設定] 下的 [授權權杖] 頁面上管理。 您可以重新產生權杖，但這個程序會撤銷上一個權杖的存取權。
 
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>從本機 Python 應用程式存取資料集
 1. 在 Machine Learning Studio (傳統) 中，按一下左側導覽列中的 [ **資料集** ]。
-2. 選取您想要存取的資料集。 您可以從 [範例]**** 清單的 [我的資料集]**** 清單中，選擇任何資料集。
-3. 按一下底部工具列上的 [產生資料存取程式碼] ****。 如果資料格式與 Python 用戶端程式的不相容，就會停用這個按鈕。
+2. 選取您想要存取的資料集。 您可以從 [範例] 清單的 [我的資料集] 清單中，選擇任何資料集。
+3. 按一下底部工具列上的 [產生資料存取程式碼] 。 如果資料格式與 Python 用戶端程式的不相容，就會停用這個按鈕。
    
     ![螢幕擷取畫面顯示具有產生資料存取碼的資料集。][datasets]
 4. 從出現的視窗中選取程式碼片段，然後複製到剪貼簿。
@@ -126,12 +126,12 @@ Azure Machine Learning Studio 提供的程式碼片段 (傳統) 與 Python 用�
 下列步驟示範說明建立實驗、加以執行，然後群組中繼資料集。
 
 1. 建立新實驗。
-2. 插入 [成人收入普查二進位分類資料集] **** 模組。
+2. 插入 [成人收入普查二進位分類資料集]  模組。
 3. 插入[分割][split]模組，然後將其輸入連接至資料集模組輸出。
 4. 插入[轉換成 CSV][convert-to-csv] 模組，然後將其輸入連接至其中一個[分割][split]模組輸出。
 5. 儲存並執行實驗，並等候作業完成。
 6. 按一下 [轉換成 CSV 模組][convert-to-csv] 上的輸出節點。
-7. 在隨即出現內容功能表，選取 [產生資料存取程式碼]****。
+7. 在隨即出現內容功能表，選取 [產生資料存取程式碼]。
    
     ![操作功能表][experiment]
 8. 選取程式碼片段，然後從出現的視窗中將它複製到剪貼簿。
@@ -364,6 +364,5 @@ print(ws.datasets['existing dataset'].name)    # IndexError
 
 
 <!-- Module References -->
-[convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
+[convert-to-csv]: /azure/machine-learning/studio-module-reference/convert-to-csv
+[split]: /azure/machine-learning/studio-module-reference/split-data
