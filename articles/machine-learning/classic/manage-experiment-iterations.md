@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 374320c0becfecc6691af91b36a1d80b087300e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c958de5e49fbb7519ae71b13e9deba9af0c698de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361938"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312872"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統) 中管理實驗執行
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 開發預測分析模型是一種逐一查看過程 - 您修改實驗的各種函數及參數，結果會不斷收斂，直到您對已訓練的有效模型感到滿意為止。 此程序的關鍵是追蹤實驗參數和組態的各種逐一查看。
@@ -33,12 +33,12 @@ ms.locfileid: "91361938"
 ## <a name="view-the-prior-run"></a>查看先前的執行
 當您開啟已至少執行一次的實驗時，可以藉由按一下內容窗格的 [ **上一次執行** ] 以檢視先前的實驗執行。
 
-例如，假設您建立實驗並且在下列時間執行其版本：11:23、11:42 及 11:55。 如果您開啟最後實驗執行 (11:55) 並且按一下 [ **上一次執行**]，則會開啟您在 11:42 執行的版本。
+例如，假設您建立實驗並且在下列時間執行其版本：11:23、11:42 及 11:55。 如果您開啟最後實驗執行 (11:55) 並且按一下 [ **上一次執行** ]，則會開啟您在 11:42 執行的版本。
 
 ## <a name="view-the-run-history"></a>查看執行歷程記錄
 您可以檢視所有先前的實驗執行，方法是在開啟的實驗中按一下 [ **檢視執行歷程記錄** ]。
 
-例如，假設您建立實驗，其具有[線性迴歸][linear-regression]模組，且您想要觀察在實驗結果中變更**學習速度**值的效果。 您針對此參數以不同值執行實驗多次，如下所示：
+例如，假設您建立實驗，其具有 [線性迴歸][linear-regression]模組，且您想要觀察在實驗結果中變更 **學習速度** 值的效果。 您針對此參數以不同值執行實驗多次，如下所示：
 
 | 學習速度值 | 執行開始時間 |
 | --- | --- |
@@ -47,7 +47,7 @@ ms.locfileid: "91361938"
 | 0.4 |2014/9/11 下午 4:28:36 |
 | 0.5 |2014/9/11 下午 4:33:31 |
 
-如果您按一下 [ **檢視執行歷程記錄**]，您會看見所有執行的清單：
+如果您按一下 [ **檢視執行歷程記錄** ]，您會看見所有執行的清單：
 
 ![範例執行歷程記錄](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
@@ -58,22 +58,22 @@ ms.locfileid: "91361938"
 > 
 > 
 
-Machine Learning Studio (傳統) 的 [ **實驗** ] 索引標籤中的實驗清單，一律會顯示最新的實驗版本。 如果您開啟實驗的上一次執行 (使用 [上一次執行]**** 或 [檢視執行歷程記錄]****)，您可以返回草稿版本，方法是按一下 [檢視執行歷程記錄]**** 並且選取 [狀態]**** 為 [可編輯]**** 的逐一查看。
+Machine Learning Studio (傳統) 的 [ **實驗** ] 索引標籤中的實驗清單，一律會顯示最新的實驗版本。 如果您開啟實驗的上一次執行 (使用 [上一次執行] 或 [檢視執行歷程記錄])，您可以返回草稿版本，方法是按一下 [檢視執行歷程記錄] 並且選取 [狀態] 為 [可編輯] 的逐一查看。
 
 ## <a name="run-a-previous-experiment"></a>執行先前的實驗
-當您按一下 [上一次執行]**** 或 [檢視執行歷程記錄]****，並且開啟上一次執行時，您可以在唯讀模式中檢視完成的實驗。
+當您按一下 [上一次執行] 或 [檢視執行歷程記錄]，並且開啟上一次執行時，您可以在唯讀模式中檢視完成的實驗。
 
-如果想要從您為上一次執行設定的方式開始實驗的逐一查看，您可以藉由開啟執行並且按一下 [ **另存新檔**] 來完成。 這會建立新的實驗，具有新的標題、空白的執行歷程記錄及上一次執行的所有元件和參數值。 這個新的實驗會列在 Machine Learning Studio (傳統) 首頁的 [ **實驗** ] 索引標籤中，您可以修改並執行它，為實驗的這個反復專案起始新的執行歷程記錄。 
+如果想要從您為上一次執行設定的方式開始實驗的逐一查看，您可以藉由開啟執行並且按一下 [ **另存新檔** ] 來完成。 這會建立新的實驗，具有新的標題、空白的執行歷程記錄及上一次執行的所有元件和參數值。 這個新的實驗會列在 Machine Learning Studio (傳統) 首頁的 [ **實驗** ] 索引標籤中，您可以修改並執行它，為實驗的這個反復專案起始新的執行歷程記錄。 
 
-例如，假設您有上一個章節顯示的實驗執行歷程記錄。 您想要觀察當您將 [學習速度]**** 參數設為 0.4，並且針對 [訓練 epoch 數目]**** 參數嘗試不同值時，會發生什麼狀況。
+例如，假設您有上一個章節顯示的實驗執行歷程記錄。 您想要觀察當您將 [學習速度] 參數設為 0.4，並且針對 [訓練 epoch 數目] 參數嘗試不同值時，會發生什麼狀況。
 
 1. 按一下 [ **檢視執行歷程記錄** ] 並且開啟您在下午 4:28:36 執行的實驗逐一查看 (您在其中將參數值設為 0.4)。
-2. 按一下 [ **另存**新檔]。
+2. 按一下 [ **另存** 新檔]。
 3. 輸入新標題，然後按一下 [ **確定** ] 核取方塊。 實驗的新複本隨即建立。
 4. 修改 [ **訓練 epoch 數目** ] 參數。
-5. 按一下 [ **執行**]。
+5. 按一下 [ **執行** ]。
 
 您現在可以繼續修改及執行此實驗版本，建立新的執行歷程記錄以記錄您的工作。
 
 <!-- Module References -->
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression

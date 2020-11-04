@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d17af4f615907ca50b27ce8fa26973e5869608
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890312"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314258"
 ---
 # <a name="score-model"></a>計分模型
 
@@ -48,8 +48,8 @@ ms.locfileid: "90890312"
 
 ## <a name="publish-scores-as-a-web-service"></a>將分數發佈為 web 服務
 
-計分的常見用法是在預測性 web 服務中傳回輸出。 如需詳細資訊，請參閱 [本教學](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) 課程，以瞭解如何在 Azure Machine Learning 表設計工具中根據管線部署即時端點。
+計分的常見用法是在預測性 web 服務中傳回輸出。 如需詳細資訊，請參閱 [本教學](../tutorial-designer-automobile-price-deploy.md) 課程，以瞭解如何在 Azure Machine Learning 表設計工具中根據管線部署即時端點。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

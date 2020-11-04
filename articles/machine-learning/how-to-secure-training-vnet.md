@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 232260ada4d810127584e675480f91d0213e3953
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091492"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314162"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "93091492"
 > - 虛擬機器
 > - HDInsight 叢集
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -47,7 +47,7 @@ ms.locfileid: "93091492"
     - 虛擬網路資源上的「Microsoft. Network/virtualNetworks/join/action」。
     - 子網資源上的「Microsoft. Network/virtualNetworks/subnet/join/action」。
 
-    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)
+    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](../role-based-access-control/built-in-roles.md#networking)
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>計算叢集和執行個體 
@@ -61,7 +61,7 @@ ms.locfileid: "93091492"
 > * 如果您要將多個計算執行個體或叢集放在一個虛擬網路中，您可能必須要求一或多個資源的配額增加。
 > * 如果工作區的 Azure 儲存體帳戶也在虛擬網路中受到保護，則這些帳戶必須位於與 Azure Machine Learning 計算執行個體或叢集相同的虛擬網路中。 
 > * 若要讓計算執行個體 Jupyter 功能能夠運作，請確定您並未停用 Web 通訊端通訊。 請確定您的網路允許 websocket 連接到 *. instances.azureml.net 和 *. instances.azureml.ms。 
-> * 當計算實例部署在私人連結工作區時，只能從虛擬網路中存取。 如果您使用自訂 DNS 或 hosts 檔案，請新增 `<instance-name>.<region>.instances.azureml.ms` 具有工作區私人端點私人 IP 位址的專案。 如需詳細資訊，請參閱 [自訂 DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns) 文章。
+> * 當計算實例部署在私人連結工作區時，只能從虛擬網路中存取。 如果您使用自訂 DNS 或 hosts 檔案，請新增 `<instance-name>.<region>.instances.azureml.ms` 具有工作區私人端點私人 IP 位址的專案。 如需詳細資訊，請參閱 [自訂 DNS](./how-to-custom-dns.md) 文章。
     
 > [!TIP]
 > Machine Learning 計算執行個體或叢集會自動將額外的網路資源配置 __在包含虛擬網路的資源群組中__ 。 針對每個計算執行個體或叢集，服務會配置下列資源：
@@ -71,7 +71,7 @@ ms.locfileid: "93091492"
 > * 一個負載平衡器
 > 
 > 如果是叢集，這些資源會在每次叢集縮小為 0 個節點時遭到刪除 (然後再重新建立)，不過如果是執行個體，資源則會一直保留到執行個體遭到徹底刪除為止 (停止執行個體並不會移除資源)。 
-> 這些資源會被訂用帳戶的[資源配額](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)所限制。
+> 這些資源會被訂用帳戶的[資源配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所限制。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> 所需連接埠
@@ -154,17 +154,17 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 
 ### <a name="forced-tunneling"></a>強制通道
 
-如果您搭配 Azure Machine Learning 的計算使用 [強制通道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) ，您必須允許從包含計算資源的子網與公用網際網路進行通訊。 這項通訊用於工作排程和存取 Azure 儲存體。
+如果您搭配 Azure Machine Learning 的計算使用 [強制通道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) ，您必須允許從包含計算資源的子網與公用網際網路進行通訊。 這項通訊用於工作排程和存取 Azure 儲存體。
 
 您可以透過兩種方式來完成此動作：
 
 * 使用 [虛擬網路 NAT](../virtual-network/nat-overview.md)。 NAT 閘道可為您虛擬網路中的一或多個子網提供輸出網際網路連線能力。 如需詳細資訊，請參閱 [使用 NAT 閘道資源設計虛擬網路](../virtual-network/nat-gateway-resource.md)。
 
-* 將 [使用者定義的路由 (udr) ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) 新增至包含計算資源的子網。 在資源所在的區域中，為 Azure Batch 服務所使用的每個 IP 位址建立一個 UDR。 這些 UDR 可讓 Batch 服務與計算節點通訊，以排程工作。 此外，也請為資源所在的 Azure Machine Learning 服務新增 IP 位址，必須有此 IP 位址才能存取計算執行個體。 若要取得 Batch 服務和 Azure Machine Learning 服務的 IP 位址清單，請使用下列其中一種方法：
+* 將 [使用者定義的路由 (udr) ](../virtual-network/virtual-networks-udr-overview.md) 新增至包含計算資源的子網。 在資源所在的區域中，為 Azure Batch 服務所使用的每個 IP 位址建立一個 UDR。 這些 UDR 可讓 Batch 服務與計算節點通訊，以排程工作。 此外，也請為資源所在的 Azure Machine Learning 服務新增 IP 位址，必須有此 IP 位址才能存取計算執行個體。 若要取得 Batch 服務和 Azure Machine Learning 服務的 IP 位址清單，請使用下列其中一種方法：
 
     * 下載 [Azure IP 範圍和服務標籤](https://www.microsoft.com/download/details.aspx?id=56519)並搜尋檔案中的 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`，其中 `<region>` 是您的 Azure 區域。
 
-    * 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 下載該資訊。 下列範例會下載 IP 位址資訊，並篩選出美國東部 2 區域的資訊：
+    * 使用 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 下載該資訊。 下列範例會下載 IP 位址資訊，並篩選出美國東部 2 區域的資訊：
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -278,9 +278,9 @@ except ComputeTargetException:
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>建立 VM 或 HDInsight 叢集
 
 透過使用 Azure 入口網站或 Azure CLI 來建立 VM 或 HDInsight 叢集，並將叢集放在 Azure 虛擬網路中。 如需詳細資訊，請參閱下列文章：
-* [建立和管理適用於 Linux VM 的 Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+* [建立和管理適用於 Linux VM 的 Azure 虛擬網路](../virtual-machines/linux/tutorial-virtual-network.md)
 
-* [使用 Azure 虛擬網路延伸 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
+* [使用 Azure 虛擬網路延伸 HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
 
 ### <a name="configure-network-ports"></a>設定網路埠 
 
@@ -302,7 +302,7 @@ except ComputeTargetException:
 
 1. 在 [動作] 底下選取 [允許]。
 
-請保留網路安全性群組的預設輸出規則。 如需詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的預設安全性規則一節。
+請保留網路安全性群組的預設輸出規則。 如需詳細資訊，請參閱[安全性群組](../virtual-network/network-security-groups-overview.md#default-security-rules)中的預設安全性規則一節。
 
 如果您不想使用預設輸出規則，而是想要限制虛擬網路的輸出存取，請參閱[限制來自虛擬網路的輸出連線能力](#limiting-outbound-from-vnet)一節。
 

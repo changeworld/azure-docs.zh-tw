@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314234"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
@@ -38,7 +38,7 @@ ms.locfileid: "91996363"
 
 下列是可收集的資料：
 
-* 從 AKS 叢集中部署的 web 服務建立輸入資料的模型。 *不*會收集語音音訊、影像和影片。
+* 從 AKS 叢集中部署的 web 服務建立輸入資料的模型。 *不* 會收集語音音訊、影像和影片。
   
 * 使用生產輸入資料的模型預測。
 
@@ -67,11 +67,11 @@ Blob 中輸出資料的路徑遵循此語法：
 
 - 您需要 AKS 叢集。 如需有關如何建立及部署的詳細資訊，請參閱 [如何部署和位置](how-to-deploy-and-where.md)。
 
-- [設定您的環境](how-to-configure-environment.md) ，並安裝 [Azure Machine Learning 監視 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+- [設定您的環境](how-to-configure-environment.md) ，並安裝 [Azure Machine Learning 監視 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 
 ## <a name="enable-data-collection"></a>啟用資料收集
 
-無論您透過 Azure Machine Learning 或其他工具部署的模型為何，都可以啟用 [資料收集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) 。
+無論您透過 Azure Machine Learning 或其他工具部署的模型為何，都可以啟用 [資料收集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) 。
 
 若要啟用資料收集，您需要：
 
@@ -91,7 +91,7 @@ Blob 中輸出資料的路徑遵循此語法：
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* 是選擇性參數。 如果您的模型不需要，您就不需要使用它。 使用 *CorrelationId* 可協助您更輕鬆地與其他資料（例如 *LoanNumber* 或 *CustomerId*）對應。
+    *CorrelationId* 是選擇性參數。 如果您的模型不需要，您就不需要使用它。 使用 *CorrelationId* 可協助您更輕鬆地與其他資料（例如 *LoanNumber* 或 *CustomerId* ）對應。
     
     稍後會使用 *識別碼* 參數來建立 blob 中的資料夾結構。 您可以使用它來區分原始資料與處理過的資料。
 
@@ -153,13 +153,13 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 下載並開啟 [Power BI Desktop](https://www.powerbi.com)。
 
-1. 選取 [ **取得資料** ]，然後選取 [ [**Azure Blob 儲存體**](https://docs.microsoft.com/power-bi/desktop-data-sources)]。
+1. 選取 [ **取得資料** ]，然後選取 [ [**Azure Blob 儲存體**](/power-bi/desktop-data-sources)]。
 
     [![Power BI blob 安裝程式](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 新增您的儲存體帳戶名稱並輸入您的儲存體金鑰。 您可以藉由選取 blob 中的 [**設定**  >  **存取金鑰**] 來尋找此資訊。
+1. 新增您的儲存體帳戶名稱並輸入您的儲存體金鑰。 您可以藉由選取 blob 中的 [ **設定**  >  **存取金鑰** ] 來尋找此資訊。
 
-1. 選取 **模型資料** 容器，然後選取 [ **編輯**]。
+1. 選取 **模型資料** 容器，然後選取 [ **編輯** ]。
 
     [![Power BI 導覽器](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -175,11 +175,11 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![Power BI 內容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. 選取 [確定]  。 預先載入的資料。
+1. 選取 [確定]。 預先載入的資料。
 
     [![Power BI 合併檔案](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. 選取 [ **關閉並**套用]。
+1. 選取 [ **關閉並** 套用]。
 
 1. 如果您新增了輸入和預測，您的資料表會自動依 **RequestId** 值排序。
 
@@ -187,15 +187,15 @@ Blob 中輸出資料的路徑遵循此語法：
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> 使用 Azure Databricks 分析模型資料
 
-1. 建立 [Azure Databricks 工作區](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
+1. 建立 [Azure Databricks 工作區](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 
 1. 移至 Databricks 工作區。
 
-1. 在 Databricks 工作區中，選取 **[上傳資料**]。
+1. 在 Databricks 工作區中，選取 **[上傳資料** ]。
 
     [![選取 Databricks 上傳資料選項](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. 選取 [**建立新的資料表**]，然後選取 [**其他資料來源**]  >  **Azure Blob 儲存體**  >  **在筆記本中建立資料表**。
+1. 選取 [ **建立新的資料表** ]，然後選取 [ **其他資料來源** ]  >  **Azure Blob 儲存體**  >  **在筆記本中建立資料表** 。
 
     [![建立 Databricks 資料表](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
@@ -210,6 +210,6 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 遵循範本上的步驟來查看和分析您的資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 偵測您所收集資料的[資料漂移](how-to-monitor-datasets.md)。

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: a1c986663c42b87e7e5d4530b26200d48fe612cb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080714"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314271"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 - 針對以 VSTest 為基礎的測試專案，您可以在 **Test**  >  [Visual Studio 測試] 功能表上選取 [測試 **測試設定**  >  **預設處理器架構為 X64** **Test** ] 來變更主處理。
 
-- 針對本機部署的 ASP.NET web 應用程式，您可以在 [  。
+- 針對本機部署的 ASP.NET web 應用程式，您可以在 [ **工具** 選項專案和方案 Web 專案] 下，選取 **[使用適用于網站和專案的64位版本 IIS Express** ] 來變更主機處理  >  **Options**  >  **Projects and Solutions**  >  **** 。
 
 - 針對部署在 Azure 上的 ASP.NET web 應用程式，您可以在 Azure 入口網站的 [ **應用程式設定** ] 中選取 **64** 位平臺，以變更主機處理。
 
@@ -256,7 +256,7 @@ SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標
 
 要求費用 (也就是指定作業的要求處理成本) 直接與檔案大小相互關聯。 大型檔的作業成本高於小型檔上的作業。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需在少數用戶端電腦上用來評估高效能案例 Azure Cosmos DB 的範例應用程式，請參閱 [Azure Cosmos DB 的效能和規模測試](performance-testing.md)。
 

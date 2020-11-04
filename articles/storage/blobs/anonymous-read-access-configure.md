@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7ea0cbfb8ddfa2991e2a362bcb321418428cb16b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288126"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313977"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>設定容器和 blob 的匿名公用讀取權限
 
@@ -51,7 +51,7 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 > [!IMPORTANT]
 > 不允許儲存體帳戶的公用存取會覆寫該儲存體帳戶中所有容器的公用存取設定。 當儲存體帳戶不允許公用存取時，對該帳戶的任何未來匿名要求都將會失敗。 變更此設定之前，請務必瞭解對可能會匿名存取儲存體帳戶中資料的用戶端應用程式所造成的影響。 如需詳細資訊，請參閱 [防止對容器和 blob 進行匿名公用讀取存取](anonymous-read-access-prevent.md)。
 
-若要允許或不允許存取儲存體帳戶的公用存取權，請設定帳戶的 **AllowBlobPublicAccess** 屬性。 此屬性適用于使用 Azure 公用雲端或 Azure Government 雲端中的 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需詳細資訊，請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
+若要允許或不允許存取儲存體帳戶的公用存取權，請設定帳戶的 **AllowBlobPublicAccess** 屬性。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需詳細資訊，請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
 
 預設不會設定 **AllowBlobPublicAccess** 屬性，而且在您明確設定之後，才會傳回值。 當屬性值為 **null** 或 **true** 時，儲存體帳戶允許公用存取。
 

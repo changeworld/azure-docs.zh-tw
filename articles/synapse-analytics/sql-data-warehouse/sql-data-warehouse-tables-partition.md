@@ -1,6 +1,6 @@
 ---
 title: 分割資料表
-description: 在 Synapse SQL 集區中使用資料表資料分割的建議和範例
+description: 在專用 SQL 集區中使用資料表分割的建議和範例
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88763128"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314500"
 ---
-# <a name="partitioning-tables-in-synapse-sql-pool"></a>Synapse SQL 集區中的分割資料表
+# <a name="partitioning-tables-in-dedicated-sql-pool"></a>在專用的 SQL 集區中分割資料表
 
-在 Synapse SQL 集區中使用資料表資料分割的建議和範例。
+在專用 SQL 集區中使用資料表分割的建議和範例。
 
 ## <a name="what-are-table-partitions"></a>什麼是資料表分割？
 
-資料表分割可讓您將資料分割成較小的資料群組。 在大部分情況下，資料表分割都是根據日期資料行建立。 所有 Synapse 的 SQL 集區資料表類型都支援資料分割;包含叢集資料行存放區、叢集索引和堆積。 所有散發類型也也支援資料分割，包括散發的雜湊或循環配置資源。  
+資料表分割可讓您將資料分割成較小的資料群組。 在大部分情況下，資料表分割都是根據日期資料行建立。 所有專用 SQL 集區資料表類型都支援資料分割;包含叢集資料行存放區、叢集索引和堆積。 所有散發類型也也支援資料分割，包括散發的雜湊或循環配置資源。  
 
 資料分割可以提升資料維護和查詢效能。 其具備上述兩個優點，還是只有一個優點，取決於資料的載入方式，以及相同的資料行是否可用於這兩個目的，因為資料分割只能在一個資料行上進行。
 
 ### <a name="benefits-to-loads"></a>載入的優點
 
-Synapse SQL 集區中資料分割的主要優點是藉由使用分割區刪除、切換和合併，來改善載入資料的效率和效能。 在大部分情況下，會依照與資料載入到資料庫的順序密切相關的日期資料行來分割資料。 使用資料分割來維護資料的最大好處之一，就是避免交易記錄。 雖然插入、更新或刪除資料可能是最直接的方法，但只要付出一些關心和努力，在載入處理期間使用資料分割可以大幅改善效能。
+在專用 SQL 集區中分割的主要優點是藉由使用分割區刪除、切換和合併，來改善載入資料的效率和效能。 在大部分情況下，會依照與資料載入到資料庫的順序密切相關的日期資料行來分割資料。 使用資料分割來維護資料的最大好處之一，就是避免交易記錄。 雖然插入、更新或刪除資料可能是最直接的方法，但只要付出一些關心和努力，在載入處理期間使用資料分割可以大幅改善效能。
 
 切換分割區可用於快速移除或取得資料表的某個區段。  例如，銷售事實資料表可能僅包含過去 36 個月的資料。 在每個月月底，便會從資料表刪除最舊月份的銷售資料。  使用 delete 陳述式來刪除最舊月份的資料，即可刪除此資料。 
 
@@ -48,17 +48,17 @@ Synapse SQL 集區中資料分割的主要優點是藉由使用分割區刪除�
 
 若要讓資料分割有所助益，務必要了解使用資料分割的時機，以及要建立的分割區數目。 多少分割區才算太多並無硬性規定，這取決於您的資料以及您同時載入多少分割區。 成功的資料分割配置通常會有數十至數百個資料分割，而不會高達數千個。
 
-在**叢集資料行存放區**資料表上建立分割區時，請務必考慮每個分割區各有多少個資料列。 為了讓叢集資料行存放區資料表達到最佳壓縮和效能，每個散發與分割區都需要至少 100 萬個資料列。 在建立資料分割之前，Synapse SQL 集區已經將每個資料表分割成60的分散式資料庫。 
+在 **叢集資料行存放區** 資料表上建立分割區時，請務必考慮每個分割區各有多少個資料列。 為了讓叢集資料行存放區資料表達到最佳壓縮和效能，每個散發與分割區都需要至少 100 萬個資料列。 在建立資料分割之前，專用的 SQL 集區已經將每個資料表分割成60的分散式資料庫。 
 
-除了散發以外，任何加入至資料表的資料分割都是在幕後建立。 使用此範例時，如果銷售事實資料表包含36個月的資料分割，並假設 Synapse SQL 集區具有60散發套件，則銷售事實資料表每個月應包含60000000個數據列，或擴展所有月份時的2100000000資料列。 如果資料表包含的資料列少於每個分割區建議的最小資料列數，請考慮使用較少的分割區，以增加每個分割區的資料列數目。 
+除了散發以外，任何加入至資料表的資料分割都是在幕後建立。 使用此範例時，如果銷售事實資料表包含36個月的資料分割，並假設專用的 SQL 集區具有60散發套件，則銷售事實資料表每個月應包含60000000個數據列，或擴展所有月份時的2100000000資料列。 如果資料表包含的資料列少於每個分割區建議的最小資料列數，請考慮使用較少的分割區，以增加每個分割區的資料列數目。 
 
 如需詳細資訊，請參閱[索引](sql-data-warehouse-tables-index.md)一文，其中包含可評估叢集資料行存放區索引品質的查詢。
 
 ## <a name="syntax-differences-from-sql-server"></a>與 SQL Server 之間的語法差異
 
-Synapse SQL 集區引進了一種方式，可定義比 SQL Server 更簡單的資料分割。 Synapse SQL 集區中的資料分割函式和配置不會在 SQL Server 中使用。 相反地，您只需要識別已分割的資料行和邊界點。 
+專用的 SQL 集區引進了一種方式，可定義比 SQL Server 更簡單的資料分割。 分割函數和配置不會在專用的 SQL 集區中使用，因為它們在 SQL Server 中。 相反地，您只需要識別已分割的資料行和邊界點。 
 
-雖然資料分割的語法與 SQL Server 稍有不同，但基本概念是一樣的。 SQL Server 和 Synapse SQL 集區支援每個資料表一個分割區資料行，這可以是範圍資料分割。 若要深入了解資料分割，請參閱[分割資料表和索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+雖然資料分割的語法與 SQL Server 稍有不同，但基本概念是一樣的。 SQL Server 和專用的 SQL 集區支援每個資料表一個分割區資料行，這可以是範圍資料分割。 若要深入了解資料分割，請參閱[分割資料表和索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式的下列範例，依據 OrderDateKey 資料行分割 FactInternetSales 資料表︰
 
@@ -88,12 +88,12 @@ WITH
 
 ## <a name="migrating-partitioning-from-sql-server"></a>從 SQL Server 移轉資料分割
 
-將 SQL Server 分割區定義遷移至 Synapse SQL 集區的簡單：
+若要將 SQL Server 分割區定義遷移到專用的 SQL 集區，只需：
 
 - 刪除 SQL Server [資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 - 將[資料分割函式](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)定義新增至您的 CREATE TABLE。
 
-如果您從 SQL Server 執行個體移轉分割資料表，下列 SQL 可協助您找出每個分割區中的資料列數目。 請記住，如果在 Synapse SQL 集區上使用相同的資料分割資料細微性，則每個資料分割的資料列數目會以60的因數減少。  
+如果您從 SQL Server 執行個體移轉分割資料表，下列 SQL 可協助您找出每個分割區中的資料列數目。 請記住，如果在專用的 SQL 集區中使用相同的資料分割資料細微性，則每個資料分割的資料列數目會以60的因數減少。  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>分割切換
 
-Synapse SQL 集區支援分割區分割、合併和切換。 這些功能是使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式執行。
+專用的 SQL 集區支援分割區分割、合併和切換。 這些功能是使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式執行。
 
 若要切換兩個資料表間的分割區，您必須確定分割區對齊其各自的界限，而且資料表定義相符。 因為檢查條件約束不適用於強制資料表中的值範圍，來源資料表必須包含與目標資料表相同的分割區界限。 如果分割區界限不同，則分割區切換將會失敗，因為分割區中繼資料不會同步處理。
 
@@ -253,7 +253,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 若要清除資料分割中的現有資料， `ALTER TABLE` 需要用來切換出資料。  然後需要另一個 `ALTER TABLE` 切換新資料。  
 
-在 Synapse SQL 集區中， `TRUNCATE_TARGET` 命令支援此選項 `ALTER TABLE` 。  With `TRUNCATE_TARGET` 命令會以 `ALTER TABLE` 新資料覆寫分割區中現有的資料。  以下範例會使用， `CTAS` 以現有的資料建立新的資料表、插入新的資料，然後將所有資料切換回目標資料表，以覆寫現有的資料。
+在專用的 SQL 集區中， `TRUNCATE_TARGET` 命令支援此選項 `ALTER TABLE` 。  With `TRUNCATE_TARGET` 命令會以 `ALTER TABLE` 新資料覆寫分割區中現有的資料。  以下範例會使用， `CTAS` 以現有的資料建立新的資料表、插入新的資料，然後將所有資料切換回目標資料表，以覆寫現有的資料。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -279,7 +279,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 ### <a name="table-partitioning-source-control"></a>資料表分割原始檔控制
 
-若要避免您的資料表定義在您的原始檔控制系統中**失效**，您可以考慮下列方法：
+若要避免您的資料表定義在您的原始檔控制系統中 **失效** ，您可以考慮下列方法：
 
 1. 將資料表建立為分割資料表，但沒有分割值
 
@@ -357,6 +357,6 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 使用這個方法時，原始檔控制中的程式碼會保持靜態，而分割區界限值則允許動態;隨著時間隨著資料庫不斷演進。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需開發資料表的詳細資訊，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)一文。

@@ -11,18 +11,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 89bad470d5ead43b79e3691343b53fff796f7abc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: cfa6dcb0b1fc173bdf3612308227b8309491e9fa
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172782"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312729"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>設定 Azure Machine Learning 工作區的 Azure Private Link
 
 在本檔中，您將瞭解如何搭配使用 Azure Private Link 與您的 Azure Machine Learning 工作區。 如需建立 Azure Machine Learning 之虛擬網路的相關資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
 
-Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 然後，您可以將工作區的存取許可權制為只在私人 IP 位址上進行。 Private Link 有助於降低資料遭到外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](/azure/private-link/private-link-overview) 一文。
+Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 然後，您可以將工作區的存取許可權制為只在私人 IP 位址上進行。 Private Link 有助於降低資料遭到外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](../private-link/private-link-overview.md) 一文。
 
 > [!IMPORTANT]
 > Azure Private Link 不會影響 Azure 控制平面 (管理作業) 例如刪除工作區或管理計算資源。 例如，建立、更新或刪除計算目標。 這些作業會正常地在公用網際網路上執行。 資料平面作業（例如使用 Azure Machine Learning studio、Api (包括) 的已發佈管線），或 SDK 使用私人端點。
@@ -39,14 +39,14 @@ Azure Government 區域或 Azure 中國的世紀區域無法使用具有 private
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用私人端點的工作區
 
-使用下列其中一種方法來建立具有私人端點的工作區。 這兩種方法都 __需要現有的虛擬網路__：
+使用下列其中一種方法來建立具有私人端點的工作區。 這兩種方法都 __需要現有的虛擬網路__ ：
 
 > [!TIP]
 > 如果您想要同時建立工作區、私人端點和虛擬網路，請參閱 [使用 Azure Resource Manager 範本來建立 Azure Machine Learning 的工作區](how-to-create-workspace-template.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 類別 [。建立 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) 以建立具有私人端點的工作區。 此類別需要現有的虛擬網路。
+Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 類別 [。建立 ( # B1 ](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) 以建立具有私人端點的工作區。 此類別需要現有的虛擬網路。
 
 ```python
 from azureml.core import Workspace
@@ -64,13 +64,13 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine learning 的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)功能提供[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create)命令。 此命令的下列參數可以用來建立具有私人網路的工作區，但需要現有的虛擬網路：
+[Machine learning 的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)功能提供[az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create)命令。 此命令的下列參數可以用來建立具有私人網路的工作區，但需要現有的虛擬網路：
 
 * `--pe-name`：已建立之私用端點的名稱。
 * `--pe-auto-approval`：是否應自動核准工作區的私人端點連接。
 * `--pe-resource-group`：要在其中建立私人端點的資源群組。 必須是包含虛擬網路的相同群組。
 * `--pe-vnet-name`：要在其中建立私人端點的現有虛擬網路。
-* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值為 `default`。
+* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值是 `default`。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -101,11 +101,11 @@ ws = Workspace.from_config()
 ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
 ```
 
-如需此範例中所使用之類別和方法的詳細資訊，請參閱 [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 和 [Workspace.add_private_endpoint](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-)。
+如需此範例中所使用之類別和方法的詳細資訊，請參閱 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 和 [Workspace.add_private_endpoint](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine learning 的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)[功能提供 az ml 工作區私用端點新增](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add)命令。
+[Machine learning 的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)[功能提供 az ml 工作區私用端點新增](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add)命令。
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -113,10 +113,10 @@ az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取 [ __+ 私人端點__]。 使用欄位來建立新的私人端點。
+從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取 [ __+ 私人端點__ ]。 使用欄位來建立新的私人端點。
 
-* 選取 __區域__時，請選取與您的虛擬網路相同的區域。 
-* 選取 __資源類型__時，請使用 __MachineLearningServices/工作區__。 
+* 選取 __區域__ 時，請選取與您的虛擬網路相同的區域。 
+* 選取 __資源類型__ 時，請使用 __MachineLearningServices/工作區__ 。 
 * 將 __資源__ 設定為您的工作區名稱。
 
 最後，選取 [ __建立__ ] 以建立私人端點。
@@ -129,7 +129,7 @@ az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用 [Workspace.delete_private_endpoint_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) 移除私人端點。
+使用 [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) 移除私人端點。
 
 ```python
 from azureml.core import Workspace
@@ -142,11 +142,11 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine learning 的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)[功能提供 az ml workspace 私用端點刪除](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete)命令。
+[Machine learning 的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)[功能提供 az ml workspace 私用端點刪除](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete)命令。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__連線]，然後選取您想要移除的端點。 最後，選取 [ __移除__]。
+從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取您想要移除的端點。 最後，選取 [ __移除__ ]。
 
 ---
 
@@ -157,7 +157,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 > [!IMPORTANT]
 > 為了避免連線暫時中斷，Microsoft 建議在啟用 Private Link 後，在連線到工作區的電腦上清除 DNS 快取。 
 
-如需 Azure 虛擬機器的詳細資訊，請參閱 [虛擬機器檔](/azure/virtual-machines/)。
+如需 Azure 虛擬機器的詳細資訊，請參閱 [虛擬機器檔](../virtual-machines/index.yml)。
 
 
 ## <a name="next-steps"></a>後續步驟

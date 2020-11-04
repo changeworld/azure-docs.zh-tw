@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deedfacc4ff9caa7a8d8e4559cb29b8c34c2868a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742990"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314475"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 TensorFlow 模型
 
@@ -36,7 +36,7 @@ ms.locfileid: "91742990"
  
  - 您自己的 Jupyter Notebook 伺服器
 
-    - [安裝 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.15.0) 。
+    - [安裝 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.15.0) 。
     - [建立工作區設定檔](how-to-configure-environment.md#workspace)。
     - [下載範例指令檔](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` 和 `utils.py`
      
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
 
-[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 其可提供集中式位置以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) 。
+[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 其可提供集中式位置以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 。
 
 從「 `config.json` [必要條件」一節](#prerequisites)中建立的檔案建立工作區物件。
 
@@ -75,7 +75,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-file-dataset"></a>建立檔案資料集
 
-`FileDataset` 物件會參考您工作區資料存放區中的一個或多個檔案或公用 URL。 檔案可以是任何格式，而類別可讓您將檔案下載或掛接至您的計算。 您可以藉由建立 `FileDataset` 來建立來源位置的參考。 如果您對資料集套用任何轉換，這些轉換也會儲存在資料集中。 資料會保留在現有的位置，因此不會產生額外的儲存成本。 如需詳細資訊，請參閱 `Dataset` 套件上的[操作](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)指南。
+`FileDataset` 物件會參考您工作區資料存放區中的一個或多個檔案或公用 URL。 檔案可以是任何格式，而類別可讓您將檔案下載或掛接至您的計算。 您可以藉由建立 `FileDataset` 來建立來源位置的參考。 如果您對資料集套用任何轉換，這些轉換也會儲存在資料集中。 資料會保留在現有的位置，因此不會產生額外的儲存成本。 如需詳細資訊，請參閱 `Dataset` 套件上的[操作](./how-to-create-register-datasets.md)指南。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -193,7 +193,7 @@ tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudn
 
 ### <a name="create-a-scriptrunconfig"></a>建立 ScriptRunConfig
 
-建立 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。
+建立 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -221,7 +221,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 
 ### <a name="submit-a-run"></a>提交執行
 
-當作業正在執行時， [執行物件](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 會提供介面給執行歷程記錄，並在完成後提供。
+當作業正在執行時， [執行物件](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 會提供介面給執行歷程記錄，並在完成後提供。
 
 ```Python
 run = Experiment(workspace=ws, name='tf-mnist').submit(src)
@@ -230,13 +230,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
 執行執行時，它會經歷下列階段：
 
-- **準備**：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
+- **準備** ：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
 
-- **調整**：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
+- **調整** ：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
 
-- 執行**中：腳本**資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
+- 執行 **中：腳本** 資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後續處理**：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
+- **後續處理** ：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
 
 ## <a name="register-or-download-a-model"></a>註冊或下載模型
 
@@ -290,7 +290,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-若要在 Azure ML 上使用 MPI/Horovod 執行分散式作業，您必須對 ScriptRunConfig 函式的參數指定 [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) `distributed_job_config` 。 下列程式碼會設定兩個節點的分散式作業，每個節點執行一個進程。 如果您也想要針對每個節點執行多個進程 (也就是，如果您的叢集 SKU) 有多個 Gpu，請另外 `process_count_per_node` 在 MpiConfiguration 中指定參數 (預設值為 `1`) 。
+若要在 Azure ML 上使用 MPI/Horovod 執行分散式作業，您必須對 ScriptRunConfig 函式的參數指定 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) `distributed_job_config` 。 下列程式碼會設定兩個節點的分散式作業，每個節點執行一個進程。 如果您也想要針對每個節點執行多個進程 (也就是，如果您的叢集 SKU) 有多個 Gpu，請另外 `process_count_per_node` 在 MpiConfiguration 中指定參數 (預設值為 `1`) 。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -310,7 +310,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 
 如果您在定型程式碼中使用 [原生分散式 TensorFlow](https://www.tensorflow.org/guide/distributed_training) ，例如 TensorFlow 2.X 的 `tf.distribute.Strategy` API，您也可以透過 Azure ML 啟動分散式作業。 
 
-若要這樣做，請將 [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) 指定為 ScriptRunConfig 函式的 `distributed_job_config` 參數。 如果您使用 `tf.distribute.experimental.MultiWorkerMirroredStrategy` ，請 `worker_count` 在 TensorflowConfiguration 中指定對應于定型作業節點數目的。
+若要這樣做，請將 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) 指定為 ScriptRunConfig 函式的 `distributed_job_config` 參數。 如果您使用 `tf.distribute.experimental.MultiWorkerMirroredStrategy` ，請 `worker_count` 在 TensorflowConfiguration 中指定對應于定型作業節點數目的。
 
 ```python
 import os

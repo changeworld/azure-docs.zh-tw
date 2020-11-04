@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841351"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312789"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 連接到資料
 
@@ -31,7 +31,7 @@ ms.locfileid: "91841351"
 
 若要瞭解資料存放區和資料集如何符合 Azure Machine Learning 的整體資料存取工作流程，請參閱 [安全存取資料](concept-data.md#data-workflow) 檔。
 
-如需程式碼優先體驗，請參閱下列文章，以使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) ：
+如需程式碼優先體驗，請參閱下列文章，以使用 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) ：
 * [使用資料存放區連接到 Azure 儲存體服務](how-to-access-data.md)。 
 * [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。 
 
@@ -48,21 +48,21 @@ ms.locfileid: "91841351"
 
 ## <a name="create-datastores"></a>建立資料存放區
 
-您可以從[這些 Azure 儲存體解決方案](how-to-access-data.md#matrix)建立資料存放區。 **針對不支援的儲存體解決方案**，以及在 ML 實驗期間儲存資料輸出成本，您必須 [將資料移](how-to-access-data.md#move) 至支援的 Azure 儲存體解決方案。 [深入瞭解資料存放區](how-to-access-data.md)。 
+您可以從[這些 Azure 儲存體解決方案](how-to-access-data.md#matrix)建立資料存放區。 **針對不支援的儲存體解決方案** ，以及在 ML 實驗期間儲存資料輸出成本，您必須 [將資料移](how-to-access-data.md#move) 至支援的 Azure 儲存體解決方案。 [深入瞭解資料存放區](how-to-access-data.md)。 
 
 
 
 在 Azure Machine Learning studio 的幾個步驟中建立新的資料存放區。
 
 > [!IMPORTANT]
-> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 具有您資料的存取權。 請參閱 [網路隔離 & 隱私權](how-to-enable-virtual-network.md#machine-learning-studio) ，以確保套用適當的設定步驟。
+> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 具有您資料的存取權。 請參閱 [網路隔離 & 隱私權](how-to-enable-studio-virtual-network.md) ，以確保套用適當的設定步驟。
 
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
 1. 在左窗格中，選取 [管理] 底下的 [資料存放區]。
 1. 選取 [+ 新增資料存放區]。
 1. 完成新資料存放區的表單。 此表單會根據您選取的 Azure 儲存體類型和驗證類型，以智慧方式自行更新。 請參閱「 [儲存體存取和許可權」一節](#access-validation) ，以瞭解在哪裡可以找到您需要的驗證認證才能填入此表單。
 
-下列範例示範當您建立 **Azure blob 資料**存放區時，表單看起來的樣子：
+下列範例示範當您建立 **Azure blob 資料** 存放區時，表單看起來的樣子：
 
 ![新資料存放區的表單](media/how-to-connect-data-ui/new-datastore-form.png)
 
@@ -82,11 +82,11 @@ ms.locfileid: "91841351"
 
 若要在 studio 中建立資料集：
 1. 登入 [Azure Machine Learning studio](https://ml.azure.com/)。
-1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。
+1. 在左窗格的 [ **資產** ] 區段中，選取 [ **資料集** ]。
 1. 選取 [ **建立資料集** ] 以選擇資料集的來源。 此來源可以是本機檔案、資料存放區、公用 Url 或 [Azure 開放資料集](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)。
-1. 選取**Tabular** [表格式 **] 或 [** 檔案] 做為資料集類型。
+1. 選取 **Tabular** [表格式 **] 或 [** 檔案] 做為資料集類型。
 1. 選取 **[下一步]** 以開啟資料存放區 **和檔案選取** 表單。 在此表單上，您可以選取要在建立資料集之後保留資料集的位置，以及選取要用於資料集的資料檔案。
-    1. 如果您的資料位於虛擬網路中，請啟用 [略過驗證]。 深入瞭解 [虛擬網路隔離和隱私權](how-to-enable-virtual-network.md#machine-learning-studio)。
+    1. 如果您的資料位於虛擬網路中，請啟用 [略過驗證]。 深入瞭解 [虛擬網路隔離和隱私權](how-to-enable-studio-virtual-network.md)。
     1. 針對表格式資料集，您可以指定 ' 時間序列 ' 特性，以在資料集上啟用時間相關的作業。 瞭解如何 [將時間序列特性新增至資料集](how-to-monitor-datasets.md#studio-dataset)。
 1. 選取 **[下一步]** 以填入 **設定和預覽** 和 **架構** 表單;系統會根據檔案類型，以智慧方式填入它們，而且您可以在建立這些表單之前進一步設定您的資料集。 
 1. 選取 **[下一步]** 以查看 [ **確認詳細資料** ] 表單。 檢查您的選取專案，並為您的資料集建立選擇性的資料設定檔。 深入了解[資料分析](#profile)。
@@ -99,7 +99,7 @@ ms.locfileid: "91841351"
 建立資料集之後，請確認您可以使用下列步驟在 studio 中查看設定檔和預覽。 
 
 1. 登入 [Azure Machine Learning studio](https://ml.azure.com/)
-1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。
+1. 在左窗格的 [ **資產** ] 區段中，選取 [ **資料集** ]。
 1. 選取您要查看的資料集名稱。 
 1. 選取 [瀏覽]  索引標籤。 
 1. 選取 [ **預覽** ] 或 [ **設定檔** ] 索引標籤。 
@@ -136,13 +136,13 @@ ms.locfileid: "91841351"
 
 ### <a name="virtual-network"></a>虛擬網路
 
-如果您的資料儲存體帳戶位於 **虛擬網路**中，則需要額外的設定步驟，以確保 Azure Machine Learning 可以存取您的資料。 請參閱 [網路隔離 & 隱私權](how-to-enable-virtual-network.md#machine-learning-studio) ，以確保當您建立和註冊資料存放區時，會套用適當的設定步驟。  
+如果您的資料儲存體帳戶位於 **虛擬網路** 中，則需要額外的設定步驟，以確保 Azure Machine Learning 可以存取您的資料。 請參閱 [網路隔離 & 隱私權](how-to-enable-studio-virtual-network.md) ，以確保當您建立和註冊資料存放區時，會套用適當的設定步驟。  
 
 ### <a name="access-validation"></a>存取驗證
 
-**在初始資料存放區建立和註冊**程式中，Azure Machine Learning 會自動驗證基礎儲存體服務是否存在，以及使用者提供的主體 (使用者名稱、服務主體或 SAS 權杖，) 可以存取指定的儲存體。
+**在初始資料存放區建立和註冊** 程式中，Azure Machine Learning 會自動驗證基礎儲存體服務是否存在，以及使用者提供的主體 (使用者名稱、服務主體或 SAS 權杖，) 可以存取指定的儲存體。
 
-**建立資料**存放區之後，只會針對需要存取基礎儲存體容器的方法執行這項驗證， **而不** 是每次抓取資料存放區物件。 例如，如果您想要從資料存放區下載檔案，則會進行驗證；如果您只是要變更預設資料存放區，則不會進行驗證。
+**建立資料** 存放區之後，只會針對需要存取基礎儲存體容器的方法執行這項驗證， **而不** 是每次抓取資料存放區物件。 例如，如果您想要從資料存放區下載檔案，則會進行驗證；如果您只是要變更預設資料存放區，則不會進行驗證。
 
 若要驗證您對基礎儲存體服務的存取權，您可以根據您想要建立的資料存放區類型，提供您的帳戶金鑰、共用存取簽章 (SAS) 權杖或服務主體。 [儲存體類型矩陣](how-to-access-data.md#matrix)會列出對應至每個資料存放區類型的支援驗證類型。
 
@@ -153,7 +153,7 @@ ms.locfileid: "91841351"
       1. 針對帳戶金鑰，請移至 [設定] 窗格上的 [存取金鑰]。
       1. 針對 SAS 權杖，請移至 [設定] 窗格上的 [共用存取簽章]。
 
-* 如果您打算使用 [服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 進行驗證，請移至您的 **應用程式註冊** ，然後選取您要使用的應用程式。
+* 如果您打算使用 [服務主體](../active-directory/develop/howto-create-service-principal-portal.md) 進行驗證，請移至您的 **應用程式註冊** ，然後選取您要使用的應用程式。
     * 其對應的 **總覽** 頁面將包含必要的資訊，例如租使用者識別碼和用戶端識別碼。
 
 > [!IMPORTANT]
@@ -161,7 +161,7 @@ ms.locfileid: "91841351"
 
 ### <a name="permissions"></a>權限
 
-針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 
+針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)。 
 
 ## <a name="train-with-datasets"></a>使用資料集定型
 

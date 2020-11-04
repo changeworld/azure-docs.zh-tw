@@ -80,23 +80,23 @@
       href: environment-setup.md
       items:
         - name: Azure 儲存體帳戶
-          href: /azure/storage/common/storage-create-storage-account?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../../storage/common/storage-account-create.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
         - name: 平台和工具
           href: platforms-and-tools.md
         - name: 在 HDInsight 叢集上安裝 R 和 Python
           items:
             - name: Spark on HDInsight 簡介
-              href: /azure/hdinsight/spark/apache-spark-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: 在 Azure HDInsight 中建立 Apache Spark 叢集
-              href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Jupyter Notebook 的 PySpark 核心
-              href: /azure/hdinsight/spark/apache-spark-jupyter-notebook-kernels?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: HDInsight 上的 R 伺服器
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: 開始使用 HDInsight 中的 R Server
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
         - name: Machine Learning Studio (傳統版) 工作區
-          href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../classic/create-workspace.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
     - name: 分析商務需求
       items:
         - name: 識別您的案例
@@ -115,9 +115,9 @@
                 - name: 使用儲存體總管
                   href: move-data-to-azure-blob-using-azure-storage-explorer.md
                 - name: 使用 AzCopy
-                  href: 'https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10'
+                  href: ../../storage/common/storage-use-azcopy-v10.md
                 - name: 使用 Python
-                  href: /azure/storage/blobs/storage-python-how-to-use-blob-storage?context=azure/machine-learning/team-data-science-process/context/ml-context
+                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
                 - name: 使用 SSIS
                   href: move-data-to-azure-blob-using-ssis.md
             - name: 移至 VM 上的 SQL
@@ -185,15 +185,15 @@
         - name: 建立模型並加以定型
           items:
             - name: 選擇演算法
-              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../how-to-select-algorithms.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: 演算法功能提要
-              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../algorithm-cheat-sheet.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
     - name: 在生產環境中部署模型
       href: deploy-models-in-production.md
 - name: 相關參考
   items:
     - name: 認知服務
-      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+      href: ../../cognitive-services/index.yml
     - name: 異常偵測
       href: apps-anomaly-detection-api.md
     - name: 預測性維護
@@ -215,7 +215,7 @@
     - name: 相關的 Microsoft 資源
       items:
         - name: Microsoft 問與答頁面
-          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
+          href: /answers/topics/azure-machine-learning-studio-classic.html
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: 影片

@@ -1,7 +1,7 @@
 ---
 title: 使用 TLS 保護 web 服務
 titleSuffix: Azure Machine Learning
-description: 瞭解如何啟用 HTTPS，以便保護透過 Azure Machine Learning 部署的 web 服務。 Azure Machine Learning 使用 TLS 1.2 版來保護部署為 web 服務的模型。
+description: 瞭解如何啟用 HTTPS 與 TLS 1.2 版，以保護透過 Azure Machine Learning 部署的 web 服務。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: bb6229f602e4171cc88af6a452da69a02d2f7ad6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: dca5d65364d11e96a15913309686bc532d130278
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078181"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313960"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 
@@ -78,7 +78,7 @@ TLS 和 SSL 都依賴 *數位憑證* ，可協助進行加密和身分識別驗�
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>在 AKS 和可現場程式化閘道陣列上部署 (FPGA) 
 
   > [!NOTE]
-  > 當您為設計工具部署安全的 web 服務時，本節中的資訊也適用。 如果您不熟悉如何使用 Python SDK，請參閱 [什麼是適用于 python 的 AZURE MACHINE LEARNING SDK？](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。
+  > 當您為設計工具部署安全的 web 服務時，本節中的資訊也適用。 如果您不熟悉如何使用 Python SDK，請參閱 [什麼是適用于 python 的 AZURE MACHINE LEARNING SDK？](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 
 當您部署至 AKS 時，您可以建立新的 AKS 叢集或附加現有的叢集。 如需有關建立或附加叢集的詳細資訊，請參閱 [將模型部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
   
@@ -130,7 +130,7 @@ TLS 和 SSL 都依賴 *數位憑證* ，可協助進行加密和身分識別驗�
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-如需 *enable_ssl* 的詳細資訊，請參閱 [AksProvisioningConfiguration.enable_ssl ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) 和 [AksAttachConfiguration.enable_ssl ( # B3](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
+如需 *enable_ssl* 的詳細資訊，請參閱 [AksProvisioningConfiguration.enable_ssl ( # B1](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) 和 [AksAttachConfiguration.enable_ssl ( # B3](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
 
 ### <a name="deploy-on-azure-container-instances"></a>在 Azure 容器實例上部署
 
@@ -143,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-如需詳細資訊，請參閱 [AciWebservice.deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)。
+如需詳細資訊，請參閱 [AciWebservice.deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)。
 
 ## <a name="update-your-dns"></a>更新您的 DNS
 
@@ -200,8 +200,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 如需詳細資訊，請參閱下列參考檔：
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py&preserve-view=true)
-* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py&preserve-view=true)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
 
 ### <a name="update-custom-certificate"></a>更新自訂憑證
 
@@ -240,8 +240,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 如需詳細資訊，請參閱下列參考檔：
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py&preserve-view=true)
-* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py&preserve-view=true)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
 
 ## <a name="disable-tls"></a>停用 TLS
 

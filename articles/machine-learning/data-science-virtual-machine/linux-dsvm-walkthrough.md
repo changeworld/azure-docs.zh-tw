@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275977"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315803"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure 中的資料科學與 Ubuntu 資料科學虛擬機器
 
@@ -26,10 +26,10 @@ ms.locfileid: "91275977"
 
 您必須具備下列必要條件，才能使用 Linux DSVM：
 
-* **Azure 訂用帳戶**。 若要取得 Azure 訂用帳戶，請參閱[立即建立您的免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+* **Azure 訂用帳戶** 。 若要取得 Azure 訂用帳戶，請參閱[立即建立您的免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [**Ubuntu 資料科學虛擬機器**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 如需布建虛擬機器的詳細資訊，請參閱布建 [Ubuntu 資料科學虛擬機器](linux-dsvm-intro.md)。
-* [**X2Go**](https://wiki.x2go.org/doku.php)，已安裝在電腦上並已開啟 XFCE 工作階段。 如需詳細資訊，請參閱[安裝與設定 X2Go 用戶端](linux-dsvm-intro.md#x2go)。
+* [**Ubuntu 資料科學虛擬機器**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 如需布建虛擬機器的詳細資訊，請參閱布建 [Ubuntu 資料科學虛擬機器](./release-notes.md)。
+* [**X2Go**](https://wiki.x2go.org/doku.php)，已安裝在電腦上並已開啟 XFCE 工作階段。 如需詳細資訊，請參閱[安裝與設定 X2Go 用戶端](dsvm-ubuntu-intro.md#x2go)。
 * 如需更流暢的捲動體驗，請在 DSVM 的 Firefox 網頁瀏覽器中，切換 `about:config` 中的 `gfx.xrender.enabled` 旗標。 [深入了解](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 也請考慮將 `mousewheel.enable_pixel_scrolling` 設定為 `False`。 [深入了解](https://support.mozilla.org/questions/981140)。
 
 ## <a name="download-the-spambase-dataset"></a>下載 spambase 資料集
@@ -62,7 +62,7 @@ mv headers spambaseHeaders.data
 
 對於每一封電子郵件，資料集都有數種類型的統計資料：
 
-* **word\_freq\__WORD_** 之類的資料行會指出電子郵件中符合 *WORD* 之字詞的百分比。 例如，如果 **word\_freq\_make** 是 **1**，則表示電子郵件的所有文字中有 1% 是 *make*。
+* **word\_freq\__WORD_** 之類的資料行會指出電子郵件中符合 *WORD* 之字詞的百分比。 例如，如果 **word\_freq\_make** 是 **1** ，則表示電子郵件的所有文字中有 1% 是 *make* 。
 * **char\_freq\__CHAR_** 之類的資料行會指出電子郵件的所有字元中 *CHAR* 所佔的百分比。
 * **capital\_run\_length\_longest** 是一連串大寫字母的最長長度。
 * **capital\_run\_length\_average** 是所有連串大寫字母的平均長度。
@@ -213,7 +213,7 @@ accuracy
 
 - [建置端對端解決方案在影像內偵測產品的操作說明指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：影像偵測是一種可在影像內找出並分類物體的技術。 這項技術在許多現實生活商業領域中潛藏龐大的商機。 例如，零售商可以利用這項技術來判斷客戶從貨架上挑選什麼產品。 這項資訊進而有助於商店管理產品庫存。 
 
-- [適用於音訊的深度學習](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：此教學課程說明如何針對[都市音效資料集](https://urbansounddataset.weebly.com/)上的音訊事件偵測定型深度學習模型。 教學課程提供如何使用音訊資料的概觀。
+- [適用於音訊的深度學習](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure)：此教學課程說明如何針對[都市音效資料集](https://urbansounddataset.weebly.com/)上的音訊事件偵測定型深度學習模型。 教學課程提供如何使用音訊資料的概觀。
 
 - [更文字文件的分類](https://github.com/anargyri/lstm_han)：此逐步解說將示範如何建置和定型兩種不同的類神經網路架構：分層注意網路和長短期記憶 (LSTM)。 這些類神經網路會使用深入學習的 Keras API 將文字文件分類。 Keras 是三個最受歡迎深度學習架構的前端：Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
@@ -315,7 +315,7 @@ DSVM 上已安裝數個範例筆記本：
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) 是用於資料採礦的 R 圖形化工具。 Rattle 具有直覺式介面，可讓您輕鬆地載入、瀏覽和轉換資料，以及建置和評估模型。 [Rattle：適用於 R 的資料採礦 GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) 提供了示範其功能的逐步解說。
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *A* nalytical *T* ool *T* o *L* earn *E* asily) 是用於資料採礦的 R 圖形化工具。 Rattle 具有直覺式介面，可讓您輕鬆地載入、瀏覽和轉換資料，以及建置和評估模型。 [Rattle：適用於 R 的資料採礦 GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) 提供了示範其功能的逐步解說。
 
 執行下列命令來安裝和啟動 Rattle：
 
@@ -328,7 +328,7 @@ rattle()
 > [!NOTE]
 > 您不需要在 DSVM 上安裝 Rattle。 不過，當 Rattle 開啟時，系統可能會提示您安裝其他套件。
 
-Rattle 使用索引標籤式介面。 大部分索引標籤會對應至 [Team Data Science Process ](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的步驟，例如載入資料或探索資料。 資料科學程序會由左到右經歷所有索引標籤。 最後一個索引標籤記錄 Rattle 所執行的 R 命令。
+Rattle 使用索引標籤式介面。 大部分索引標籤會對應至 [Team Data Science Process ](../team-data-science-process/index.yml) 中的步驟，例如載入資料或探索資料。 資料科學程序會由左到右經歷所有索引標籤。 最後一個索引標籤記錄 Rattle 所執行的 R 命令。
 
 若要載入和設定資料集︰
 
@@ -346,16 +346,16 @@ Rattle 使用索引標籤式介面。 大部分索引標籤會對應至 [Team Da
 您也可以使用 [探索] 索引標籤來產生更具見解的繪圖。 若要繪製資料的長條圖︰
 
 1. 選取 [分佈] 。
-1. 針對 **word_freq_remove** 和 **word_freq_you**，選取 [長條圖]。
-1. 選取 [執行] 。 您應該會在單一圖形視窗中看到這兩個密度圖，其中清楚顯示 _you_ 這個字在電子郵件中的出現頻率遠高於 _remove_。
+1. 針對 **word_freq_remove** 和 **word_freq_you** ，選取 [長條圖]。
+1. 選取 [執行] 。 您應該會在單一圖形視窗中看到這兩個密度圖，其中清楚顯示 _you_ 這個字在電子郵件中的出現頻率遠高於 _remove_ 。
 
-**相互關聯**圖也很有趣。 若要建立繪圖：
+**相互關聯** 圖也很有趣。 若要建立繪圖：
 
 1. 針對 [類型]，選取 [相互關聯]。
 1. 選取 [執行] 。
 1. Rattle 會警告您，它建議的上限為 40 個變數。 選取 [是]  以檢視此圖。
 
-圖中會浮現一些有趣的相互關聯：例如，_technology_ 與 _HP_ 和 _labs_ 有高度相互關聯性。 其也與 _650_ 有高度相互關聯性，因為資料集捐贈者的區碼是 650。
+圖中會浮現一些有趣的相互關聯：例如， _technology_ 與 _HP_ 和 _labs_ 有高度相互關聯性。 其也與 _650_ 有高度相互關聯性，因為資料集捐贈者的區碼是 650。
 
 文字間相互關聯性的數值可在 [探索] 視窗中取得。 舉例來說，值得注意的是 _technology_ 與 _your_ 和 _money_ 負面相關。
 
@@ -374,7 +374,7 @@ Rattle 也可以執行叢集分析。 讓我們排除部分功能以讓輸出更
 * word_freq_business
 * spam
 
-返回 [叢集] 索引標籤。選取 [Kmeans]，然後將 [叢集數目] 設定為 [4]。 選取 [執行] 。 結果會顯示在輸出視窗中。 有一個叢集具有高頻率的 _george_ 和 _hp_，因此可能是合法的商業電子郵件。
+返回 [叢集] 索引標籤。選取 [Kmeans]，然後將 [叢集數目] 設定為 [4]。 選取 [執行] 。 結果會顯示在輸出視窗中。 有一個叢集具有高頻率的 _george_ 和 _hp_ ，因此可能是合法的商業電子郵件。
 
 若要建置基本的決策樹機器學習模型：
 
@@ -416,7 +416,7 @@ host    all             all             127.0.0.1/32            ident
 host    all             all             ::1/128                 ident
 ```
 
-將 **IPv4 local connections** 文字行變更為使用 **md5** 而非 **ident**，以便可以使用使用者名稱和密碼來登入：
+將 **IPv4 local connections** 文字行變更為使用 **md5** 而非 **ident** ，以便可以使用使用者名稱和密碼來登入：
 
 ```
 # IPv4 local connections:
@@ -467,19 +467,19 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 1. 選取 [Windows] > [檢視驅動程式]。
 1. 以滑鼠右鍵按一下 [PostgreSQL]，然後選取 [修改驅動程式]。
 1. 選取 [額外類別路徑] > [新增]。
-1. 針對 [檔案名稱]，輸入 **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**。
+1. 針對 [檔案名稱]，輸入 **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar** 。
 1. 選取 [開啟] 。
 1. 選取 [列出驅動程式]。 針對 [類別名稱]，選取 [org.postgresql.Driver]，然後選取 [確定]。
 
 若要設定與本機伺服器的連線︰
 
 1. 選取 [Windows] > [檢視別名]。
-1. 選取 **+** 按鈕以建立新的別名。 針對新的別名，輸入 **Spam database**。 
+1. 選取 **+** 按鈕以建立新的別名。 針對新的別名，輸入 **Spam database** 。 
 1. 針對 [驅動程式]，選取 [PostgreSQL]。
-1. 將 URL 設定為 **jdbc:postgresql://localhost/spam**。
+1. 將 URL 設定為 **jdbc:postgresql://localhost/spam** 。
 1. 輸入您的使用者名稱和密碼。
 1. 選取 [確定]。
-1. 若要開啟 [連線] 視窗，請按兩下**垃圾郵件資料庫**別名。
+1. 若要開啟 [連線] 視窗，請按兩下 **垃圾郵件資料庫** 別名。
 1. 選取 [連接]。
 
 若要執行一些查詢︰
@@ -538,5 +538,3 @@ GO
 ```
 
 您也可以使用 SQuirreL SQL 進行查詢。 使用 SQL Server JDBC 驅動程式，遵循類似於 PostgreSQL 的步驟。 JDBC 驅動程式位於 /usr/share/java/jdbcdrivers/sqljdbc42.jar 資料夾中。
-
-

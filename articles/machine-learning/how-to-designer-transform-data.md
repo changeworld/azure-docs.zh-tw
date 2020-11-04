@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983837"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312802"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure Machine Learning 表設計工具中轉換資料
 
 
 在本文中，您將會了解如何在 Azure Machine Learning 設計工具中轉換和儲存資料集，如此即可為機器學習服務準備資料。
 
-您將會使用範例 [Adult Census Income Binary Classification](sample-designer-datasets.md) (成人人口普查收入二元分類) 資料集來準備兩個資料集：其中一個資料集僅包含美國的成人人口普查資訊，另一個資料集則包含非美國成人的人口普查資訊。
+您將會使用範例 [Adult Census Income Binary Classification](./samples-designer.md) (成人人口普查收入二元分類) 資料集來準備兩個資料集：其中一個資料集僅包含美國的成人人口普查資訊，另一個資料集則包含非美國成人的人口普查資訊。
 
 在本文中，您將學會如何：
 
@@ -64,19 +64,19 @@ ms.locfileid: "90983837"
 
 在本節中，您會使用[分割資料模組](algorithm-module-reference/split-data.md)來識別和分割在 "native-country" 資料行中包含 "United-States" 的資料列。 
 
-1. 在畫布左側的模組選擇區中，展開 [資料轉換] 區段，然後尋找**分割資料**模組。
+1. 在畫布左側的模組選擇區中，展開 [資料轉換] 區段，然後尋找 **分割資料** 模組。
 
-1. 將**分割資料**模組拖曳到畫布上，然後將模組放在資料集模組的下方。
+1. 將 **分割資料** 模組拖曳到畫布上，然後將模組放在資料集模組的下方。
 
-1. 將資料集模組連線到**分割資料**模組。
+1. 將資料集模組連線到 **分割資料** 模組。
 
-1. 選取**分割資料**模組。
+1. 選取 **分割資料** 模組。
 
 1. 在畫布右側的模組詳細資料窗格中，將 [分割模式] 設為 [規則運算式]。
 
-1. 輸入**規則運算式**：`\"native-country" United-States`。
+1. 輸入 **規則運算式** ：`\"native-country" United-States`。
 
-    **規則運算式**模式會測試單一資料行的值。 如需分割資料模組的詳細資訊，請參閱相關的[演算法模組參考頁面](algorithm-module-reference/split-data.md)。
+    **規則運算式** 模式會測試單一資料行的值。 如需分割資料模組的詳細資訊，請參閱相關的[演算法模組參考頁面](algorithm-module-reference/split-data.md)。
 
 您的管線應會顯示如下：
 
@@ -85,52 +85,52 @@ ms.locfileid: "90983837"
 
 ## <a name="save-the-datasets"></a>儲存資料集
 
-現在管線已設為分割資料，您需要指定保存資料集的位置。 針對此範例，請使用**匯出資料**模組來將資料集儲存到資料存放區。 如需資料存放區的詳細資訊，請參閱[連線到 Azure 儲存體服務](how-to-access-data.md)
+現在管線已設為分割資料，您需要指定保存資料集的位置。 針對此範例，請使用 **匯出資料** 模組來將資料集儲存到資料存放區。 如需資料存放區的詳細資訊，請參閱[連線到 Azure 儲存體服務](how-to-access-data.md)
 
-1. 在畫布左側的模組選擇區中，展開 [資料輸入和輸出] 區段，然後尋找**匯出資料**模組。
+1. 在畫布左側的模組選擇區中，展開 [資料輸入和輸出] 區段，然後尋找 **匯出資料** 模組。
 
-1. 將兩個**匯出資料**模組拖放到**分割資料**模組下方。
+1. 將兩個 **匯出資料** 模組拖放到 **分割資料** 模組下方。
 
-1. 將每個**分割資料**模組的輸出連接埠連線到不同**匯出資料**模組。
+1. 將每個 **分割資料** 模組的輸出連接埠連線到不同 **匯出資料** 模組。
 
     管線看起來應該會如下：
 
     ![顯示如何連線匯出資料模組的螢幕擷取畫面](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. 選取連線到**分割資料**模組「最左側」連接埠的**匯出資料**模組。
+1. 選取連線到 **分割資料** 模組「最左側」連接埠的 **匯出資料** 模組。
 
-    輸出連接埠的順序會影響**分割資料**模組。 第一個輸出連接埠包含規則運算式為 true 的資料列。 在本案例中，第一個連接埠包含以美國為基礎的收入資料列，且第二個連接埠則包含不是以美國為基礎的收入資料列。
+    輸出連接埠的順序會影響 **分割資料** 模組。 第一個輸出連接埠包含規則運算式為 true 的資料列。 在本案例中，第一個連接埠包含以美國為基礎的收入資料列，且第二個連接埠則包含不是以美國為基礎的收入資料列。
 
 1. 在畫布右側的模組詳細資料窗格中，設定下列選項：
     
-    **資料存放區類型**：Azure Blob 儲存體
+    **資料存放區類型** ：Azure Blob 儲存體
 
-    **資料存放區**：選取現有資料存放區，或選取 [New datastore] \(新增資料存放區\) 來立即建立。
+    **資料存放區** ：選取現有資料存放區，或選取 [New datastore] \(新增資料存放區\) 來立即建立。
 
-    **路徑**：`/data/us-income`
+    **路徑** ：`/data/us-income`
 
-    **檔案格式**：csv
+    **檔案格式** ：csv
 
     > [!NOTE]
     > 本文假設您可存取向目前 Azure Machine Learning 工作區註冊的資料存放區。 如需如何設定資料存放區的指示，請參閱[連線到 Azure 儲存體服務](how-to-connect-data-ui.md#create-datastores)。
 
     如果您沒有資料存放區，則可在此建立一個。 基於範例目的，本文會將資料集儲存到與工作區建立關聯的預設 Blob 儲存體帳戶。 其會將資料集儲存到稱為 `data` 新資料夾中的 `azureml` 容器。
 
-1.  選取連線到**分割資料**模組「最右側」連接埠的**匯出資料**模組。
+1.  選取連線到 **分割資料** 模組「最右側」連接埠的 **匯出資料** 模組。
 
 1. 在畫布右側的模組詳細資料窗格中，設定下列選項：
     
-    **資料存放區類型**：Azure Blob 儲存體
+    **資料存放區類型** ：Azure Blob 儲存體
 
-    **資料存放區**：選取與上方相同的資料存放區
+    **資料存放區** ：選取與上方相同的資料存放區
 
-    **路徑**：`/data/non-us-income`
+    **路徑** ：`/data/non-us-income`
 
-    **檔案格式**：csv
+    **檔案格式** ：csv
 
-1. 確認連線到**分割資料**左側連接埠的**匯出資料**模組具備**路徑** `/data/us-income`。
+1. 確認連線到 **分割資料** 左側連接埠的 **匯出資料** 模組具備 **路徑** `/data/us-income`。
 
-1. 確認連線到右側連接埠的**匯出資料**模組具備**路徑**`/data/non-us-income`。
+1. 確認連線到右側連接埠的 **匯出資料** 模組具備 **路徑**`/data/non-us-income`。
 
     管線和設定應會如下：
     
@@ -152,17 +152,17 @@ ms.locfileid: "90983837"
 
 ## <a name="view-results"></a>檢視結果
 
-在管線完成執行後，您可在 Azure 入口網站中巡覽至 Blob 儲存體來檢視結果。 您也可以檢視**分割資料**模組的中繼結果來確認資料已正確分割。
+在管線完成執行後，您可在 Azure 入口網站中巡覽至 Blob 儲存體來檢視結果。 您也可以檢視 **分割資料** 模組的中繼結果來確認資料已正確分割。
 
-1. 選取**分割資料**模組。
+1. 選取 **分割資料** 模組。
 
 1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出 + 記錄]。 
 
-1. 選取位於**結果資料集 1** 旁邊的視覺化圖示![視覺化圖示](media/how-to-designer-transform-data/visualize-icon.png)。 
+1. 選取位於 **結果資料集 1** 旁邊的視覺化圖示![視覺化圖示](media/how-to-designer-transform-data/visualize-icon.png)。 
 
 1. 驗證 "native-country" 資料行只包含 "United-States" 值。
 
-1. 選取位於**結果資料集 2** 旁邊的視覺化圖示![視覺化圖示](media/how-to-designer-transform-data/visualize-icon.png)。 
+1. 選取位於 **結果資料集 2** 旁邊的視覺化圖示![視覺化圖示](media/how-to-designer-transform-data/visualize-icon.png)。 
 
 1. 驗證 "native-country" 資料行不包含 "United-States" 值。
 

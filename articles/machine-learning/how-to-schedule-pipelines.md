@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: df9447160fe6a0aa2a3ae001ad8a337c3ff488f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d0f822e63bb6eb32b1cd2f211621af8ad1c4b8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275938"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313993"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來排程機器學習管線
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>建立以時間為基礎的排程
 
-此 `ScheduleRecurrence` 函數的必要 `frequency` 引數必須是下列其中一個字串： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它也需要整數 `interval` 引數，以指定 `frequency` 排程開始之間應經過的單位數。 選擇性引數可讓您更明確地瞭解開始時間，如 [SCHEDULERECURRENCE SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py&preserve-view=true)檔中所述。
+此 `ScheduleRecurrence` 函數的必要 `frequency` 引數必須是下列其中一個字串： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它也需要整數 `interval` 引數，以指定 `frequency` 排程開始之間應經過的單位數。 選擇性引數可讓您更明確地瞭解開始時間，如 [SCHEDULERECURRENCE SDK](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py)檔中所述。
 
 建立 `Schedule` ，每隔15分鐘開始執行一次：
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 檔案變更所觸發的管線可能比以時間為基礎的排程更有效率。 例如，您可能想要在檔案變更時，或將新檔案新增至資料目錄時執行前置處理步驟。 您可以監視資料存放區的任何變更，或資料存放區中特定目錄內的變更。 如果您監視特定的目錄，該目錄之子目錄內的變更將 _不_ 會觸發執行。
 
-若要建立檔案回應 `Schedule` ，您必須 `datastore` 在 [排程] 的呼叫中設定參數[。](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 若要監視資料夾，請設定 `path_on_datastore` 引數。
+若要建立檔案回應 `Schedule` ，您必須 `datastore` 在 [排程] 的呼叫中設定參數[。](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 若要監視資料夾，請設定 `path_on_datastore` 引數。
 
 `polling_interval`引數可讓您指定檢查資料存放區是否有變更的頻率（以分鐘為單位）。
 
-如果管線是使用 [資料路徑](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py&preserve-view=true) [>pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true)所建立，您可以藉由設定引數，將該變數設定為已變更之檔案的名稱 `data_path_parameter_name` 。
+如果管線是使用 [資料路徑](/python/api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) [>pipelineparameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py)所建立，您可以藉由設定引數，將該變數設定為已變更之檔案的名稱 `data_path_parameter_name` 。
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -106,7 +106,7 @@ Azure Logic Apps 支援更複雜的工作流程，而且比 Azure Machine Learni
 
 ## <a name="view-your-scheduled-pipelines"></a>查看您的已排程管線
 
-在您的網頁瀏覽器中，流覽至 Azure Machine Learning。 從導覽面板的 [ **端點** ] 區段中，選擇 [ **管線端點**]。 這會帶您前往工作區中發佈的管線清單。
+在您的網頁瀏覽器中，流覽至 Azure Machine Learning。 從導覽面板的 [ **端點** ] 區段中，選擇 [ **管線端點** ]。 這會帶您前往工作區中發佈的管線清單。
 
 ![AML 的管線頁面](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
@@ -153,4 +153,3 @@ stop_by_schedule_id(ws, schedule_id)
 
 * 深入瞭解 [管線](concept-ml-pipelines.md)
 * 深入瞭解如何 [使用 Jupyter 探索 Azure Machine Learning](samples-notebooks.md)
-

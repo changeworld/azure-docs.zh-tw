@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 72124c7e52afcf68f33a8b8a2295448506b0719f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9f2f2386e37dd7dbfe4c41bb3a83fcc46232cf6d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165021"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312727"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -45,16 +45,16 @@ ms.locfileid: "92165021"
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，其中包含 azureml 資料集套件。
+* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，其中包含 azureml 資料集套件。
 
     * 建立 [Azure Machine Learning 計算實例](how-to-create-manage-compute-instance.md)，此實例是完全設定且受管理的開發環境，其中包含已安裝的整合式筆記本和 SDK。
 
     **OR**
 
-    * 使用您自己的 Jupyter 筆記本，並使用 [這些指示](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)自行安裝 SDK。
+    * 使用您自己的 Jupyter 筆記本，並使用 [這些指示](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)自行安裝 SDK。
 
 > [!NOTE]
-> 某些資料集類別具有 [azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) 套件的相依性，其僅與64位 Python 相容。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。 如果您使用不支援的散發版本，請遵循 [本指南](https://docs.microsoft.com/dotnet/core/install/linux) 來安裝 .net Core 2.1 以繼續進行。 
+> 某些資料集類別具有 [azureml dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) 套件的相依性，其僅與64位 Python 相容。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。 如果您使用不支援的散發版本，請遵循 [本指南](/dotnet/core/install/linux) 來安裝 .net Core 2.1 以繼續進行。 
 
 ## <a name="compute-size-guidance"></a>計算大小指引
 
@@ -70,14 +70,14 @@ ms.locfileid: "92165021"
 
 ### <a name="filedataset"></a>FileDataset
 
-[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true)會參考資料存放區或公用 url 中的單一或多個檔案。 如果您的資料已清理，而且準備好在定型實驗中使用，您可以將檔案 [下載或掛接](how-to-train-with-datasets.md#mount-vs-download) 到您的計算中作為 FileDataset 物件。 
+[FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py)會參考資料存放區或公用 url 中的單一或多個檔案。 如果您的資料已清理，而且準備好在定型實驗中使用，您可以將檔案 [下載或掛接](how-to-train-with-datasets.md#mount-vs-download) 到您的計算中作為 FileDataset 物件。 
 
 我們建議您 FileDatasets 機器學習工作流程，因為來源檔案可以採用任何格式，而這可提供更廣泛的機器學習案例，包括深度學習。
 
 使用 [PYTHON SDK](#create-a-filedataset) 或 [Azure Machine Learning studio](how-to-connect-data-ui.md#create-datasets) 建立 FileDataset。
 ### <a name="tabulardataset"></a>TabularDataset
 
-[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)藉由剖析提供的檔案或檔案清單，以表格格式代表資料。 這可讓您將資料具體化為 pandas 或 Spark 資料框架，讓您可以使用熟悉的資料準備和定型程式庫，而不需要離開您的筆記本。 您可以 `TabularDataset` 從 .csv、tsv、parquet、jsonl 檔案，以及從 [SQL 查詢結果](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py&preserve-view=true#&preserve-view=truefrom-sql-query-query--validate-true--set-column-types-none--query-timeout-30-)建立物件。
+[TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)藉由剖析提供的檔案或檔案清單，以表格格式代表資料。 這可讓您將資料具體化為 pandas 或 Spark 資料框架，讓您可以使用熟悉的資料準備和定型程式庫，而不需要離開您的筆記本。 您可以 `TabularDataset` 從 .csv、tsv、parquet、jsonl 檔案，以及從 [SQL 查詢結果](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-sql-query-query--validate-true--set-column-types-none--query-timeout-30-)建立物件。
 
 使用 TabularDatasets，您可以從資料中的資料行或從儲存路徑模式資料的任何位置指定時間戳記，以啟用時間序列特性。 此規格可讓您依時間輕鬆且有效率地進行篩選。 如需範例，請參閱 [表格式時間序列相關的 API 示範與 NOAA 氣象資料](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)。
 
@@ -107,7 +107,7 @@ ms.locfileid: "92165021"
 
 ### <a name="create-a-filedataset"></a>建立 FileDataset
 
-在 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py&preserve-view=true#&preserve-view=truefrom-files-path--validate-true-) 類別上使用方法 `FileDatasetFactory` 來載入任何格式的檔案，以及建立未註冊的 FileDataset。 
+在 [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) 類別上使用方法 `FileDatasetFactory` 來載入任何格式的檔案，以及建立未註冊的 FileDataset。 
 
 如果您的儲存體位於虛擬網路或防火牆後方，請 `validate=False` 在您的方法中設定參數 `from_files()` 。 這會略過初始驗證步驟，並確保您可以從這些安全檔案中建立資料集。 深入瞭解如何 [在虛擬網路中使用資料存放區和資料集](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)。
 
@@ -124,12 +124,12 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 若要在工作區中重複使用並共用實驗中的資料集，請 [註冊您的資料集](#register-datasets)。 
 
 > [!TIP] 
-> 從本機目錄上傳檔案，並使用公用預覽方法在單一方法中建立 FileDataset， [upload_directory ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true#methods)。 此方法是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
+> 從本機目錄上傳檔案，並使用公用預覽方法在單一方法中建立 FileDataset， [upload_directory ( # B1 ](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py#methods)。 此方法是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
 > 
 >  此方法會將資料上傳至您的基礎儲存體，因此會產生儲存體成本。 
 ### <a name="create-a-tabulardataset"></a>建立 TabularDataset
 
-在 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 類別上使用方法 `TabularDatasetFactory` 來讀取 .csv 或 tsv 格式的檔案，以及建立未註冊的 TabularDataset。 如果您要從多個檔案讀取，結果會匯總成單一的表格式標記法。 
+在 [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 類別上使用方法 `TabularDatasetFactory` 來讀取 .csv 或 tsv 格式的檔案，以及建立未註冊的 TabularDataset。 如果您要從多個檔案讀取，結果會匯總成單一的表格式標記法。 
 
 如果您的儲存體位於虛擬網路或防火牆後方，請 `validate=False` 在您的方法中設定參數 `from_delimited_files()` 。 這會略過初始驗證步驟，並確保您可以從這些安全檔案中建立資料集。 深入瞭解如何 [在虛擬網路中使用資料存放區和資料集](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)。
 
@@ -154,7 +154,7 @@ datastore_paths = [(datastore, 'weather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-依預設，當您建立 TabularDataset 時，會自動推斷資料行資料類型。 如果推斷的類型不符合您的預期，您可以使用下列程式碼來指定資料行類型。 參數 `infer_column_type` 只適用于從分隔的檔案建立的資料集。 [深入瞭解支援的資料類型](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py&preserve-view=true)。
+依預設，當您建立 TabularDataset 時，會自動推斷資料行資料類型。 如果推斷的類型不符合您的預期，您可以使用下列程式碼來指定資料行類型。 參數 `infer_column_type` 只適用于從分隔的檔案建立的資料集。 [深入瞭解支援的資料類型](/python/api/azureml-core/azureml.data.dataset_factory.datatype?preserve-view=true&view=azure-ml-py)。
 
 
 ```Python
@@ -169,11 +169,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| (索引) |PassengerId|存活的|Pclass|Name|性|年齡|SibSp|Parch|票證|費用|小屋|著手
+| (索引) |PassengerId|存活的|Pclass|名稱|性|年齡|SibSp|Parch|票證|費用|小屋|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley (Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|是|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+2|3|True|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 若要在工作區中重複使用和共用實驗中的資料集，請 [註冊您的資料集](#register-datasets)。
 
@@ -208,13 +208,13 @@ dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepar
 ```
 
 > [!TIP]
-> 使用具有公用預覽方法和的單一方法，從記憶體中的 spark 或 pandas 資料框架建立和註冊 TabularDataset [`register_spark_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#methods) [`register_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#methods) 。 這些註冊方法是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
+> 使用具有公用預覽方法和的單一方法，從記憶體中的 spark 或 pandas 資料框架建立和註冊 TabularDataset [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) 。 這些註冊方法是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
 > 
 >  這些方法會將資料上傳至您的基礎儲存體，因此會產生儲存體成本。 
 
 ## <a name="register-datasets"></a>註冊資料集
 
-若要完成建立程式，請向工作區註冊您的資料集。 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-workspace--name--description-none--tags-none--create-new-version-false-)您可以使用方法向工作區註冊資料集，以便與其他人共用資料集，並在工作區中的實驗之間重複使用這些資料集：
+若要完成建立程式，請向工作區註冊您的資料集。 [`register()`](/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-workspace--name--description-none--tags-none--create-new-version-false-)您可以使用方法向工作區註冊資料集，以便與其他人共用資料集，並在工作區中的實驗之間重複使用這些資料集：
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

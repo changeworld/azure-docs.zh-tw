@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c65cd4012d29146061183ea13749a0f42c03b1eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091271"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314332"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 的效能秘訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 * **連線模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    JAVA SDK 預設連接模式是 direct。 您可以使用 *directMode ( # B1* 或 *GatewayMode ( # B3* 方法，在用戶端建立器中設定連接模式，如下所示。 若要使用預設值設定任一種模式，請呼叫其中一個沒有引數的方法。 否則，請將設定類別實例傳遞為引數 ( *DirectConnectionConfig* for *DirectMode ( # B2* ，  *GatewayConnectionConfig* for *gatewayMode ( # B4* . ) 。 若要深入瞭解不同的連線選項，請參閱連線 [模式](sql-sdk-connection-modes.md) 文章。
+    JAVA SDK 預設連接模式是 direct。 您可以使用 *directMode ( # B1* 或 *GatewayMode ( # B3* 方法，在用戶端建立器中設定連接模式，如下所示。 若要使用預設值設定任一種模式，請呼叫其中一個沒有引數的方法。 否則，請將設定類別實例傳遞為引數 ( *DirectConnectionConfig* for *DirectMode ( # B2* ，  *GatewayConnectionConfig* for *gatewayMode ( # B4*. ) 。 若要深入瞭解不同的連線選項，請參閱連線 [模式](sql-sdk-connection-modes.md) 文章。
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -151,7 +151,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     * ***直接模式 _ 總覽**
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接模式架構圖例" border="false":::
 
         直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端為每個 DB 複本配置最多 10 _ *通道* *。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本 **服務端點** 的需求動態配置。 當使用者在直接模式下發出要求時， **TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列** 會在服務端點之前對要求進行緩衝處理。
 

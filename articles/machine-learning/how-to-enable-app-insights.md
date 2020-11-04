@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897657"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314208"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
 
@@ -144,12 +144,12 @@ ms.locfileid: "90897657"
 
 1. 登入 studio https://ml.azure.com 。
 1. 移至 [ **模型** ]，然後選取您想要部署的模型。
-1. 選取 [  **+ 部署**]。
+1. 選取 [  **+ 部署** ]。
 1. 填入「 **部署模型** 」表單。
 1. 展開 [ **Advanced** ] 功能表。
 
     ![部署表單](./media/how-to-enable-app-insights/deploy-form.png)
-1. 選取 [ **啟用 Application Insights 診斷和資料收集**]。
+1. 選取 [ **啟用 Application Insights 診斷和資料收集** ]。
 
     ![啟用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 
@@ -178,7 +178,7 @@ Azure 應用程式 Insights 會將您的服務記錄儲存在與 Azure Machine L
 
     [![找出 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 在 Application Insights 中，從 [ **總覽** ] 索引標籤或 [ __監視__ ] 區段中，選取 [ __記錄__]。
+1. 在 Application Insights 中，從 [ **總覽** ] 索引標籤或 [ __監視__ ] 區段中，選取 [ __記錄__ ]。
 
     [![監視的 [總覽] 索引標籤](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -204,9 +204,9 @@ Azure 應用程式 Insights 會將您的服務記錄儲存在與 Azure Machine L
 ## <a name="export-data-for-retention-and-processing"></a>匯出保留和處理的資料
 
 >[!Important]
-> Azure 應用程式 Insights 僅支援匯出至 blob 儲存體。 如需此實作為限制的詳細資訊，請參閱 [從 App Insights 匯出遙測](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)。
+> Azure 應用程式 Insights 僅支援匯出至 blob 儲存體。 如需此實作為限制的詳細資訊，請參閱 [從 App Insights 匯出遙測](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration)。
 
-使用 Application Insights 的 [連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ，將資料匯出至 blob 儲存體帳戶，您可以在其中定義保留設定。 Application Insights 會以 JSON 格式匯出資料。 
+使用 Application Insights 的 [連續匯出](../azure-monitor/app/export-telemetry.md) ，將資料匯出至 blob 儲存體帳戶，您可以在其中定義保留設定。 Application Insights 會以 JSON 格式匯出資料。 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="連續匯出":::
 
@@ -215,8 +215,8 @@ Azure 應用程式 Insights 會將您的服務記錄儲存在與 Azure Machine L
 在本文中，您已瞭解如何啟用 web 服務端點的記錄和查看記錄。 請嘗試下列文章以取得後續步驟：
 
 
-* [如何將模型部署至 AKS 叢集](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [如何將模型部署至 AKS 叢集](./how-to-deploy-azure-kubernetes-service.md)
 
-* [如何將模型部署至 Azure 容器實例](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [如何將模型部署至 Azure 容器實例](./how-to-deploy-azure-container-instance.md)
 
-* [MLOps：使用 Azure Machine Learning 管理、部署及監視模型](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) ，以深入瞭解如何利用從生產環境中的模型收集的資料。 這類資料有助於持續改善您的機器學習程式。
+* [MLOps：使用 Azure Machine Learning 管理、部署及監視模型](./concept-model-management-and-deployment.md) ，以深入瞭解如何利用從生產環境中的模型收集的資料。 這類資料有助於持續改善您的機器學習程式。

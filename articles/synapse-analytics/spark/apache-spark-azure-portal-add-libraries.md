@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737968"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313531"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
-程式庫提供可重複使用的程式碼，您可能會想要將它包含在程式或專案中。 若要讓您的應用程式可以使用協力廠商或本機建立的程式碼，您可以將程式庫安裝到您的其中一個 Spark 集區 (預覽) 。 一旦為 Spark 集區安裝程式庫之後，就可以使用相同集區的所有會話使用該程式庫。 
+程式庫提供可重複使用的程式碼，您可能會想要將它包含在程式或專案中。 若要讓您的應用程式可以使用協力廠商或本機建立的程式碼，您可以將程式庫安裝到您的其中一個無伺服器 Apache Spark 集區 (preview) 。 一旦為 Spark 集區安裝程式庫之後，就可以使用相同集區的所有會話使用該程式庫。 
 
 ## <a name="default-installation"></a>預設安裝
 Azure Synapse Analytics 中的 Apache Spark 有完整的 Anacondas 安裝以及額外的程式庫。 您可以在 [Apache Spark 版本支援](apache-spark-version-support.md)中找到完整的程式庫清單。 
