@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217536"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318504"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
 
@@ -52,9 +52,9 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
 * SQL Server 防火牆存取。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
-    1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
-    1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
-    1. 按一下 [儲存]。 
+    1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器* 。
+    1. 按一下 [ **+ 新增用戶端 IP** ]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
+    1. 按一下 [檔案]  。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -167,9 +167,9 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 * SQL Server 防火牆存取。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
-    1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
-    1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
-    1. 按一下 [儲存]。 
+    1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器* 。
+    1. 按一下 [ **+ 新增用戶端 IP** ]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
+    1. 按一下 [檔案]  。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -179,9 +179,9 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 1. 您可以從電子郵件或直接從 Azure 入口網站開啟邀請。 
 
-   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為**來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
+   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為 **來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請** 。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
 
-   若要直接從 Azure 入口網站開啟邀請，請在 Azure 入口網站中搜尋 **Data Share 邀請**。 這會帶您前往 Data Share 邀請的清單。
+   若要直接從 Azure 入口網站開啟邀請，請在 Azure 入口網站中搜尋 **Data Share 邀請** 。 這會帶您前往 Data Share 邀請的清單。
 
    ![邀請清單](./media/invitations.png "邀請清單") 
 
@@ -204,12 +204,12 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
    同時會帶您前往資料共用帳戶中所接收的共用。 
 
-   如果您不想要接受邀請，請選取 [拒絕]**。 
+   如果您不想要接受邀請，請選取 [拒絕]。 
 
 ### <a name="configure-received-share"></a>設定已接收的共用
 請遵循下列步驟來設定要接收資料的位置。
 
-1. 選取**資料集**索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
+1. 選取 **資料集** 索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
 
    ![對應到目標](./media/dataset-map-target.png "對應到目標") 
 
@@ -228,7 +228,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
    ![觸發快照集](./media/trigger-snapshot.png "觸發快照集") 
 
-1. 當最後一次執行的狀態為「成功」** 時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]****，然後按一下 [目標路徑] 中的連結。 
+1. 當最後一次執行的狀態為「成功」時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]，然後按一下 [目標路徑] 中的連結。 
 
    ![取用者資料集](./media/consumer-datasets.png "取用者資料集對應") 
 
@@ -267,15 +267,15 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 | 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
-| TINYINT |Int16 |
+| tinyint |Int16 |
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |String |
+| xml |String |
 
 >[!NOTE]
 > 1. 針對對應至 Decimal 過渡類型的資料類型，目前快照集最多可支援最多28的精確度。 如果您的資料需要的精確度大於28，請考慮轉換成字串。 
-> 1.  如果您要將資料從 Azure SQL database 共用到 Azure Synapse Analytics，則不支援所有資料類型。 如需詳細資料，請參閱 [SYNAPSE SQL 集區中的資料表資料類型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) 。 
+> 1.  如果您要將資料從 Azure SQL database 共用到 Azure Synapse Analytics，則不支援所有資料類型。 如需詳細資料，請參閱 [專用 SQL 集區中的資料表資料類型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) 。 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted 或動態資料遮罩
 目前，Azure Data Share 不支援已設定 Always Encrypted 的 Azure SQL 資料庫。 

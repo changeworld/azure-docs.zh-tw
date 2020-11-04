@@ -1,7 +1,7 @@
 ---
 title: 使用 REST 來管理 ML 資源
 titleSuffix: Azure Machine Learning
-description: 如何使用 REST Api 來建立、執行和刪除 Azure ML 資源
+description: 如何使用 REST Api 來建立、執行和刪除 Azure Machine Learning 資源，例如工作區或註冊模型。
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322303"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316895"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
 
 
-有數種方式可管理您的 Azure ML 資源。 您可以使用 [入口網站](https://portal.azure.com/)、 [命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)或 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。 或者，您可以選擇 REST API。 REST API 會以標準方式使用 HTTP 動詞命令來建立、取出、更新和刪除資源。 REST API 適用于任何可發出 HTTP 要求的語言或工具。 REST 的簡單結構通常會讓它成為腳本環境及 MLOps 自動化的理想選擇。 
+有數種方式可管理您的 Azure ML 資源。 您可以使用 [入口網站](https://portal.azure.com/)、 [命令列介面](/cli/azure/?preserve-view=true&view=azure-cli-latest)或 [Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。 或者，您可以選擇 REST API。 REST API 會以標準方式使用 HTTP 動詞命令來建立、取出、更新和刪除資源。 REST API 適用于任何可發出 HTTP 要求的語言或工具。 REST 的簡單結構通常會讓它成為腳本環境及 MLOps 自動化的理想選擇。 
 
 在本文中，您將學會如何：
 
@@ -36,9 +36,9 @@ ms.locfileid: "91322303"
 ## <a name="prerequisites"></a>必要條件
 
 - 您擁有系統管理許可權的 **Azure 訂** 用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
-- [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- 系統管理 REST 要求使用服務主體驗證。 依照 [設定 Azure Machine Learning 資源和工作流程的驗證](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) 中的步驟，在您的工作區中建立服務主體
-- **捲曲**的公用程式。 [Windows 子系統 Linux 版](https://aka.ms/wslinstall/)或任何 UNIX 發佈都有提供**捲曲**的程式。 在 PowerShell 中，「 **捲曲** 」是 **WebRequest** 的別名，而且 `curl -d "key=val" -X POST uri` 會成為 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` 。 
+- [Azure Machine Learning 工作區](./how-to-manage-workspace.md)
+- 系統管理 REST 要求使用服務主體驗證。 依照 [設定 Azure Machine Learning 資源和工作流程的驗證](./how-to-setup-authentication.md#service-principal-authentication) 中的步驟，在您的工作區中建立服務主體
+- **捲曲** 的公用程式。 [Windows 子系統 Linux 版](/windows/wsl/install-win10)或任何 UNIX 發佈都有提供 **捲曲** 的程式。 在 PowerShell 中，「 **捲曲** 」是 **WebRequest** 的別名，而且 `curl -d "key=val" -X POST uri` 會成為 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` 。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>取得服務主體驗證權杖
 
@@ -48,7 +48,7 @@ ms.locfileid: "91322303"
 - 您的用戶端識別碼 (將與建立的權杖相關聯) 
 - 您應保護的用戶端密碼 () 
 
-您應該要有這些值，以回應建立服務主體。 [Azure Machine Learning 資源和工作流程的設定驗證](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中會討論取得這些值。 如果您使用的是公司訂用帳戶，您可能沒有建立服務主體的許可權。 在這種情況下，您應該使用 [免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶。
+您應該要有這些值，以回應建立服務主體。 [Azure Machine Learning 資源和工作流程的設定驗證](./how-to-setup-authentication.md#service-principal-authentication)中會討論取得這些值。 如果您使用的是公司訂用帳戶，您可能沒有建立服務主體的許可權。 在這種情況下，您應該使用 [免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶。
 
 若要取出權杖：
 
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-若要建立或覆寫指名的計算資源，您將使用 PUT 要求。 在下列中，除了現在熟悉的、、和的替代項之外，也會取代、、、、 `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` 和的值 `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` `adminUserPassword` 。 如 [Machine Learning Compute-建立或更新 SDK 參考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)的參考中所指定，下列命令會建立專用的單一節點 Standard_D1 (基本的 CPU 計算資源) ，在30分鐘之後縮減：
+若要建立或覆寫指名的計算資源，您將使用 PUT 要求。 在下列中，除了現在熟悉的、、和的替代項之外，也會取代、、、、 `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` 和的值 `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` `adminUserPassword` 。 如 [Machine Learning Compute-建立或更新 SDK 參考](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)的參考中所指定，下列命令會建立專用的單一節點 Standard_D1 (基本的 CPU 計算資源) ，在30分鐘之後縮減：
 
 ```bash
 curl -X PUT \
@@ -271,7 +271,7 @@ curl -X PUT \
 
 ### <a name="create-an-experimental-run"></a>建立實驗執行
 
-若要在實驗內開始執行，您需要包含定型腳本和相關檔案的 ZIP 檔案夾，以及執行定義 JSON 檔案。 Zip 資料夾的根目錄中必須有 Python 專案檔。 例如，將簡單的 Python 程式（如下所示）壓縮成名為 **train.zip**的資料夾。
+若要在實驗內開始執行，您需要包含定型腳本和相關檔案的 ZIP 檔案夾，以及執行定義 JSON 檔案。 Zip 資料夾的根目錄中必須有 Python 專案檔。 例如，將簡單的 Python 程式（如下所示）壓縮成名為 **train.zip** 的資料夾。
 
 ```python
 # hello.py
@@ -279,7 +279,7 @@ curl -X PUT \
 print("Hello, REST!")
 ```
 
-將此下一個程式碼片段儲存為 **definition.js開啟**。 確認「腳本」值符合您剛剛壓縮的 Python 檔案名。 確認「目標」值符合可用計算資源的名稱。 
+將此下一個程式碼片段儲存為 **definition.js開啟** 。 確認「腳本」值符合您剛剛壓縮的 Python 檔案名。 確認「目標」值符合可用計算資源的名稱。 
 
 ```json
 {
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>刪除您不再需要的資源
 
-部分（但非全部）資源支援刪除動詞。 請先檢查 [API 參考](https://docs.microsoft.com/rest/api/azureml/) ，再對刪除使用案例的 REST API 進行認可。 舉例來說，若要刪除模型，您可以使用：
+部分（但非全部）資源支援刪除動詞。 請先檢查 [API 參考](/rest/api/azureml/) ，再對刪除使用案例的 REST API 進行認可。 舉例來說，若要刪除模型，您可以使用：
 
 ```bash
 curl
@@ -422,6 +422,6 @@ Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 探索完整的 [AzureML REST API 參考](https://docs.microsoft.com/rest/api/azureml/)。
-- 瞭解如何使用設計工具，透過 [設計工具預測汽車價格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
-- 探索 [Jupyter 筆記本的 Azure Machine Learning](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。
+- 探索完整的 [AzureML REST API 參考](/rest/api/azureml/)。
+- 瞭解如何使用設計工具，透過 [設計工具預測汽車價格](./tutorial-designer-automobile-price-train-score.md)。
+- 探索 [Jupyter 筆記本的 Azure Machine Learning](..//machine-learning/samples-notebooks.md)。

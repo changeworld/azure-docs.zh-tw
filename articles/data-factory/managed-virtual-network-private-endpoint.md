@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635774"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317074"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路 (預覽) 
 
@@ -51,7 +51,7 @@ ms.locfileid: "92635774"
 
 ![新增受控私人端點](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (PaaS) 服務 (例如 Azure 儲存體、Azure Cosmos DB、Azure Synapse Analytics (先前的 Azure SQL 資料倉儲) # A5。
+Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (PaaS) 服務 (例如 Azure 儲存體、Azure Cosmos DB、Azure Synapse Analytics (先前的 SQL 資料倉儲) # A5。
 
 當您使用 private link 時，資料存放區與受控虛擬網路之間的流量會完全流經 Microsoft 骨幹網路。 Private Link 可保護您免受資料外洩風險。 您可以建立私人端點來建立資源的私人連結。
 
@@ -81,7 +81,7 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 - Azure 檔案
 - Azure Data Lake Gen2
 - Azure SQL Database (不包含 Azure SQL 受控執行個體) 
-- Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)
+- Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
 - Azure CosmosDB SQL
 - Azure 金鑰保存庫
 - Azure Private Link 服務

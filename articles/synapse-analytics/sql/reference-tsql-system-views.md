@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 中支援的系統流覽-工作區預覽
+title: Synapse SQL 中支援的系統檢視
 description: Synapse SQL 中所支援之系統檢視的檔連結。
 author: filippopovic
 ms.service: synapse-analytics
@@ -8,20 +8,21 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7079bbcf3bd7cb7f6073b132cd558386744f6884
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092761"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317323"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL 中支援的系統檢視
+
 Synapse SQL 中所支援 T-sql 語句的檔連結。
 
 > [!NOTE]
-> Synapse SQL 隨選支援僅支援 SQL Server 目錄檢視。  
+> Synapse 無伺服器 SQL 集區僅支援 SQL Server 目錄檢視。  
 
-## <a name="sql-pool-catalog-views"></a>SQL 集區類別目錄檢視
+## <a name="dedicated-sql-pool-and-serverless-sql-pool-catalog-views"></a>專用的 SQL 集區和無伺服器的 SQL 集區類別目錄檢視
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -47,7 +48,7 @@ Synapse SQL 中所支援 T-sql 語句的檔連結。
 * [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview) 
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview) 
 
-## <a name="sql-pool-dynamic-management-views-dmvs"></a> (Dmv) 的 SQL 集區動態管理檢視
+## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a> (Dmv) 專用的 SQL 集區動態管理檢視
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -69,9 +70,9 @@ Synapse SQL 中所支援 T-sql 語句的檔連結。
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-sql-pool"></a>適用于 SQL 集區的 SQL Server Dmv
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>SQL Server 適用于專用 SQL 集區的 Dmv
 
-下列 DMV 適用於 SQL 集區，但必須透過連接到 **master** 資料庫才能執行。
+下列 Dmv 適用于專用的 SQL 集區，但必須藉由連接到 **master** 資料庫來執行。
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -151,16 +152,16 @@ Synapse SQL 中所支援 T-sql 語句的檔連結。
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL 集區中可用的 SQL Server DMV
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>專用 SQL 集區中可用的 SQL Server Dmv
 
-SQL 集區公開許多 SQL Server 動態管理檢視 (DMV)。 在 SQL 集區中查詢這些檢視表時，將會報告分布區域上執行的 SQL Database 狀態。
+SQL 集區公開許多 SQL Server 動態管理檢視 (DMV)。 這些視圖在專用的 SQL 集區中查詢時，會報告散發上執行的 SQL 資料庫狀態。
 
 SQL 集區和 Analytics Platform System 的平行資料倉儲 (PDW) 使用相同的系統檢視。 每個 DMV 都有名為 pdw_node_id 的資料行，這是計算節點的識別碼。
 
 > [!NOTE]
 > 若要使用這些檢視，將 'pdw_nodes_' 插入名稱中，如下表所示：
 
-| SQL 集區中的 DMV 名稱 | SQL Server Transact-SQL 文章|
+| 專用 SQL 集區中的 DMV 名稱 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -222,9 +223,9 @@ SQL 集區和 Analytics Platform System 的平行資料倉儲 (PDW) 使用相同
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL 集區中可用的 SQL Server 2016 PolyBase DMV
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 PolyBase Dmv 可在專用的 SQL 集區中使用
 
-下列 DMV 適用於 SQL 集區，但必須透過連接到 **master** 資料庫才能執行。
+下列 Dmv 適用于專用的 SQL 集區，但必須藉由連接到 **master** 資料庫來執行。
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

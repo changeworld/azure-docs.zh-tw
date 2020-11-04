@@ -1,7 +1,7 @@
 ---
 title: 設定驗證
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure Machine Learning 中設定各種資源和工作流程的驗證。 在服務內設定和使用驗證的方法有很多種，範圍從用於開發或測試用途的簡單 UI 型驗證到完整 Azure Active Directory 服務主體驗證。
+description: 了解如何在 Azure Machine Learning 中設定各種資源和工作流程的驗證。
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318529"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
@@ -38,7 +38,7 @@ ms.locfileid: "93125762"
 ## <a name="interactive-authentication"></a>互動式驗證
 
 > [!IMPORTANT]
-> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括) 協力廠商 cookie。 如果您已停用 cookie，可能會收到「我們無法將您登入」之類的錯誤。 如果您已啟用 [Azure 多重要素驗證](/azure/active-directory/authentication/concept-mfa-howitworks)，也可能會發生此錯誤。
+> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括) 協力廠商 cookie。 如果您已停用 cookie，可能會收到「我們無法將您登入」之類的錯誤。 如果您已啟用 [Azure 多重要素驗證](../active-directory/authentication/concept-mfa-howitworks.md)，也可能會發生此錯誤。
 
 檔和範例中的大部分範例都會使用互動式驗證。 例如，使用 SDK 時，有兩個函式呼叫會自動提示您使用以 UI 為基礎的驗證流程：
 
@@ -77,7 +77,7 @@ ms.locfileid: "93125762"
 >
 > 授與最小存取權的原因是，服務主體會使用密碼進行驗證，而且密碼可能會儲存為自動化腳本的一部分。 如果密碼洩漏，則擁有特定工作所需的最低存取權可將 SP 的惡意使用降至最低。
 
-建立 SP 並授與存取權給工作區的最簡單方式是使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。 若要建立服務主體，並授與它對您工作區的存取權，請使用下列步驟：
+建立 SP 並授與存取權給工作區的最簡單方式是使用 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。 若要建立服務主體，並授與它對您工作區的存取權，請使用下列步驟：
 
 > [!NOTE]
 > 您必須是訂用帳戶的系統管理員，才能執行上述所有步驟。
@@ -92,7 +92,7 @@ ms.locfileid: "93125762"
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)。
+    如需其他驗證方法，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 1. 安裝 Azure Machine Learning 擴充功能：
 
@@ -190,11 +190,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>從 Azure CLI 使用服務主體
 
-您可以使用服務主體來 Azure CLI 命令。 如需詳細資訊，請參閱 [使用服務主體登入](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal)。
+您可以使用服務主體來 Azure CLI 命令。 如需詳細資訊，請參閱 [使用服務主體登入](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal)。
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>使用具有 REST API (預覽的服務主體) 
 
-服務主體也可以用來向 Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (preview) 進行驗證。 您可使用 Azure Active Directory [用戶端認證授與流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，其允許在自動工作流程中進行無周邊驗證的服務對服務呼叫。 這些範例是使用 Python 和 Node.js 中的 [ADAL 程式庫](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)所實作，但您也可以使用任何支援 OpenID Connect 1.0 的開放原始碼程式庫。
+服務主體也可以用來向 Azure Machine Learning [REST API](/rest/api/azureml/) (preview) 進行驗證。 您可使用 Azure Active Directory [用戶端認證授與流程](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)，其允許在自動工作流程中進行無周邊驗證的服務對服務呼叫。 這些範例是使用 Python 和 Node.js 中的 [ADAL 程式庫](../active-directory/azuread-dev/active-directory-authentication-libraries.md)所實作，但您也可以使用任何支援 OpenID Connect 1.0 的開放原始碼程式庫。
 
 > [!NOTE]
 > MSAL.js 是比 ADAL 更新的程式庫，但無法使用 MSAL.js 的用戶端認證來進行服務對服務驗證，因為該認證主要適用於與特定使用者繫結的互動式/UI 驗證用戶端程式庫。 我們建議使用如下所示的 ADAL，以透過 REST API 建置自動工作流程。

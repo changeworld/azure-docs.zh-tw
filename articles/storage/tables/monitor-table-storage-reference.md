@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: e86be87faf6bb0c58674a15882e52dcef43fe42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66155e5dce00caf73af64fb0b8a4ab75f7c948a7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711214"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316634"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Azure 資料表儲存體監視資料參考
 
@@ -34,9 +34,9 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="table-storage"></a>表格儲存體
+#### <a name="table-storage"></a>資料表儲存體
 
-下表顯示 [資料表儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)。
+下表顯示 [資料表儲存體計量](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |

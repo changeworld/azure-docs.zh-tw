@@ -1,5 +1,5 @@
 ---
-title: 自訂 SQL 資訊保護-Azure 資訊安全中心
+title: Azure 資訊安全中心中的 SQL 資訊保護原則
 description: 了解如何在 Azure 資訊安全中心自訂資訊保護原則。
 services: security-center
 documentationcenter: na
@@ -11,76 +11,125 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 6991c222590b52ca4dadb2b9f5a9661bf731c4c4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: aa3492cb67a4ccd1c09a1f1cb55ddc4f2e00953d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318543"
 ---
-# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 資訊安全中心自訂 SQL 資訊保護原則 (預覽)
+# <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 資訊安全中心中的 SQL 資訊保護原則
  
-您可以在 Azure 資訊安全中心中定義和自訂整個 Azure 租使用者的 SQL 資訊保護原則。
+SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-discovery-and-classification-overview.md) 內建于 [AZURE SQL DATABASE](../azure-sql/database/sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 它提供探索、分類、標記和報告資料庫中敏感性資料的先進功能。
 
-資訊保護是先進的安全性功能，可用於探索、分類、標記及報告 Azure 資料資源中的敏感性資料。 探索和分類最敏感的資料 (商務、財務、醫療保健、個人資料等 ) 可以在您的組織資訊保護成長中扮演 pivotal 的角色。 它可以作為下列的基礎結構：
-- 協助符合資料隱私權標準和法規合規性需求
-- 監視 (審核) 的安全性案例，以及對敏感性資料異常存取的警示
-- 對包含高度敏感性資料的資料存放區進行存取控制並強化安全性
- 
-[SQL Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) 會針對 SQL 資料存放區實作此範例，而 Azure SQL Database 目前予以支援。 SQL Information Protection 會自動探索和分類可能的敏感性資料、提供標記機制以使用分類屬性持續標記敏感性資料，並提供詳細儀表板以顯示資料庫的分類狀態。 此外，它還會計算 SQL 查詢的結果集敏感度，以明確地稽核可擷取敏感性資料的查詢，並保護資料。 如需有關 SQL 資訊保護的詳細資訊，請參閱 [Azure SQL Database 資料探索和分類](../azure-sql/database/data-discovery-and-classification-overview.md)。
- 
-分類機制根據構成分類法的兩個主要建構：**標籤**和**資訊類型**。
+分類機制是以組成分類分類的兩個主要結構為基礎：
+
 - **標籤** -主要分類屬性，用來定義資料行中所儲存資料的敏感度層級。 
 - **資訊類型** – 為儲存在資料行中的資料類型提供額外的細微性。
- 
-Information Protection 隨附一組預設會使用的內建標籤和資訊類型。 若要自訂這些標籤和類型，您可以在資訊安全中心自訂資訊保護原則。
- 
-## <a name="customize-the-information-protection-policy"></a>自訂資訊保護原則
-若要自訂 Azure 租用戶的資訊保護原則，您需要具有[租用戶根管理群組的管理權限](security-center-management-groups.md)。 
- 
-1. 在 [資訊安全中心] 主功能表中的 [ **資源安全性** 防護] 下，移至 [ **資料 & 儲存體** ]，然後按一下 [ **SQL 資訊保護** ] 按鈕。
 
-   ![設定資訊保護原則](./media/security-center-info-protection-policy/security-policy.png) 
+資訊安全中心內的資訊保護原則選項提供一組預先定義的標籤和資訊類型，作為分類引擎的預設值。 您可以根據貴組織的需求自訂原則，如下所述。
+
+:::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="顯示您的 SQL 資訊保護原則的頁面":::
  
-2. 在 [ **SQL 資訊保護** ] 頁面中，您可以查看目前的標籤集合。 這些主要分類屬性用來分類資料的敏感度等級。 在這裡，您可以設定租用戶的 [Information protection labels] \(資訊保護標籤\)**** 和 [資訊類型]****。 
+
+
+
+## <a name="how-do-i-access-the-sql-information-protection-policy"></a>如何? 存取 SQL 資訊保護原則？
+
+有三種方式可存取訊號保護原則：
+
+- **(建議的)** 從 [安全性中心] 的 [定價和設定] 頁面。
+- 從安全性建議的「應該將您的 SQL 資料庫中的敏感性資料分類」。
+- 從 Azure SQL DB 的 [資料探索] 頁面。
+
+上述各項都會顯示在下方的相關索引標籤中。
+
+
+
+### <a name="from-security-centers-settings"></a>[**從安全性中心的設定**](#tab/sqlip-tenant)
+
+### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>從安全性中心的 [定價和設定] 頁面存取原則 <a name="sqlip-tenant"></a>
+
+若要自訂 Azure 租用戶的資訊保護原則，您需要具有[租用戶根管理群組的管理權限](security-center-management-groups.md)。 
+
+從資訊安全中心的 [ **定價和設定** ] 頁面，選取 **[SQL 資訊保護** ]。
+
+:::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="從 Azure 資訊安全中心的 [定價和設定] 頁面存取 SQL 資訊保護原則":::
+
+
+
+### <a name="from-security-centers-recommendation"></a>[**從安全性中心的建議**](#tab/sqlip-db)
+
+### <a name="access-the-policy-from-the-security-center-recommendation"></a>從安全性中心建議存取原則 <a name="sqlip-db"></a>
+
+使用「安全性中心」的建議：「您的 SQL 資料庫中的敏感性資料應進行分類」，以查看您資料庫的 [資料探索與分類] 頁面。 在那裡，您也會看到探索到的資料行包含我們建議您分類的資訊。
+
+1. 在 [安全性中心的 **建議** ] 頁面中，搜尋 **您的 SQL 資料庫中應分類的建議機密資料** 。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="尋找可存取 SQL 資訊保護原則的建議":::
+
+1. 在 [建議詳細資料] 頁面中，從 **狀況良好** 或 **狀況不良** 的索引標籤中選取相關的資料庫。
+
+1. [ **資料探索 & 分類** ] 頁面隨即開啟。 選取 [設定]  。 
+
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="從 Azure 資訊安全中心的相關建議開啟 SQL 資訊保護原則":::
+
+
+
+### <a name="from-azure-sql"></a>[**從 Azure SQL**](#tab/sqlip-azuresql)
+
+### <a name="access-the-policy-from-azure-sql"></a>從 Azure SQL 存取原則 <a name="sqlip-azuresql"></a>
+
+1. 從 Azure 入口網站中，開啟 Azure SQL。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/open-azure-sql.png" alt-text="從 Azure 入口網站開啟 Azure SQL":::
+
+1. 選取任何資料庫。
+
+1. 從功能表的 [ **安全性** ] 區域中，開啟 **資料探索 & 分類** 頁面 (1) 然後選取 [ **設定** (2]) 。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-azure-sql.png" alt-text="從 Azure SQL 開啟 SQL 資訊保護原則":::
+
+--- 
+
+
+## <a name="customize-your-information-types"></a>自訂您的資訊類型
+
+若要管理和自訂資訊類型：
+
+1. 選取 [ **管理資訊類型** ]。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="管理資訊保護原則的資訊類型":::
+
+1. 若要新增 [資訊類型]，請選取上層功能表中的 [建立資訊類型]。 您可以設定 [資訊類型] 的名稱、描述和搜尋模式字串。 搜尋模式字串可以選擇性地使用具有萬用字元 (使用 '%' 字元) 的關鍵字，而自動化探索引擎會使用它，以根據資料行的中繼資料來識別您資料庫中的敏感性資料。
  
-### <a name="customizing-labels"></a>自訂標籤
+    :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="為您的資訊保護原則設定新的資訊類型":::
+
+1. 您也可以新增其他搜尋模式字串、停用一些現有字串，或變更描述，以設定內建 [資訊類型]。 您無法刪除內建 [資訊類型] 或編輯其名稱。 
+1. **資訊類型** 會以遞增探索排名順序列出，這表示會先嘗試比對清單中較高的類型。 若要變更資訊類型之間的排名，請將類型拖曳至資料表中的正確位置，或使用 [Move up] \(上移\) 和 [Move down] \(下移\) 按鈕變更順序。 
+1. 當您完成時，請選取 **[確定]** 。
+1. 在您完成資訊類型的管理之後，請務必按一下特定標籤的 [設定]，並視需要新增或刪除資訊類型，以建立相關類型與相關標籤的關聯。
+1. 若要套用變更，請選取 [主要 **標籤** ] 頁面中的 [ **儲存** ]。
  
-1. 您可以編輯或刪除任何現有標籤，或新增標籤。 若要編輯現有標籤，請選取該標籤，然後按一下頂端或右側操作功能表中的 [設定]****。 若要新增標籤，請按一下頂端功能表列或標籤資料表底部的 [建立標籤]****。
-2. 在 [設定敏感度標籤]**** 畫面中，您可以建立或變更標籤名稱和描述。 您也可以開啟或關閉 [已啟用]**** 切換，以設定標籤為使用中還是已停用。 最後，您可以新增或移除與標籤建立關聯的資訊類型。 任何探索到且符合該資訊類型的資料都會在分類建議中自動包含相關聯的敏感度標籤。
-3. 按一下 [確定]。
- 
-   ![設定敏感度標籤](./media/security-center-info-protection-policy/config-sensitivity-label.png)
- 
-4. 標籤會依遞增敏感度列出。 若要變更標籤之間的排名，請拖曳標籤以重新排列它們在資料表中的順序，或使用 [Move up] \(上移\)**** 和 [Move down] \(下移\)**** 按鈕變更順序。 
- 
-    ![標籤清單](./media/security-center-info-protection-policy/move-up.png)
- 
-5. 請務必在您完成時按一下畫面頂端的 [儲存]****。
- 
- 
-## <a name="adding-and-customizing-information-types"></a>新增和自訂資訊類型
- 
-1. 您可以按一下 [管理資訊類型]****，以管理和自訂資訊類型。
-2. 若要新增 [資訊類型]****，請選取上層功能表中的 [建立資訊類型]****。 您可以設定 [資訊類型]**** 的名稱、描述和搜尋模式字串。 搜尋模式字串可以選擇性地使用具有萬用字元 (使用 '%' 字元) 的關鍵字，而自動化探索引擎會使用它，以根據資料行的中繼資料來識別您資料庫中的敏感性資料。
- 
-    ![建立資訊類型](./media/security-center-info-protection-policy/info-types.png)
- 
-3. 您也可以新增其他搜尋模式字串、停用一些現有字串，或變更描述，以設定內建 [資訊類型]****。 您無法刪除內建 [資訊類型]**** 或編輯其名稱。 
-4. **資訊類型**會以遞增探索排名順序列出，這表示會先嘗試比對清單中較高的類型。 若要變更資訊類型之間的排名，請將類型拖曳至資料表中的正確位置，或使用 [Move up] \(上移\)**** 和 [Move down] \(下移\)**** 按鈕變更順序。 
-5. 完成時，請按一下 [確定]****。
-6. 在您完成資訊類型的管理之後，請務必按一下特定標籤的 [設定]****，並視需要新增或刪除資訊類型，以建立相關類型與相關標籤的關聯。
-7. 請務必按一下主要 [標籤]**** 刀鋒視窗中的 [儲存]****，以套用所有變更。
- 
-完整定義和儲存資訊保護原則之後，就會套用至租用戶中所有 Azure SQL 資料庫上的資料分類。
+
+## <a name="exporting-and-importing-a-policy"></a>匯出和匯入原則
+
+您可以使用已定義的標籤和資訊類型來下載 JSON 檔案，在您選擇的編輯器中編輯檔案，然後匯入更新的檔案。 
+
+:::image type="content" source="./media/security-center-info-protection-policy/export-import.png" alt-text="匯出及匯入您的資訊保護原則":::
+
+> [!NOTE]
+> 您將需要租使用者層級的許可權，才能匯入原則檔。 
+
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 資訊保護
 
 - [AzSqlInformationProtectionPolicy：取得](/powershell/module/az.security/get-azsqlinformationprotectionpolicy)有效的租使用者 SQL 資訊保護原則。
 - [AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：設定有效的租使用者 SQL 資訊保護原則。
  
+
 ## <a name="next-steps"></a>後續步驟
  
 在本文中，您已了解在 Azure 資訊安全中心定義 SQL Information Protection 原則。 若要深入了解如何使用 SQL Information Protection 分類和保護 SQL 資料庫中的敏感性資料，請參閱 [Azure SQL Database 的資料探索與分類](../azure-sql/database/data-discovery-and-classification-overview.md)。 

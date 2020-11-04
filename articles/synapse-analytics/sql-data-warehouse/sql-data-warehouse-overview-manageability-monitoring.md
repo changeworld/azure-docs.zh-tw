@@ -1,6 +1,6 @@
 ---
 title: 管理能力和監視-總覽
-description: 使用 Synapse SQL 集區 (備份與還原) 的資源使用率、記錄和查詢活動、建議和資料保護的監視和管理性總覽。
+description: 使用 Azure Synapse Analytics 的專用 SQL 集區，監視和管理資源使用率、記錄和查詢活動、建議和資料保護的總覽 (備份與還原) 。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 19b2b4aecedbaa66c258b9076c517b02034a46fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4792842eddac3e8082be2d3a67736824a02dfebd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200982"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317506"
 ---
-# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Synapse SQL 集區的管理能力和監視
+# <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來管理及監視
 
-Synapse SQL 可讓您透過 SQL 集區布建資料倉儲。 下列文章將協助您管理和監視您的資料倉儲。 您也將瞭解如何將資料倉儲的使用方式和效能優化。
+Synapse SQL 可讓您透過專用的 SQL 集區布建資料倉儲。 下列文章將協助您管理和監視您的資料倉儲。 您也將瞭解如何將資料倉儲的使用方式和效能優化。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 * [深入了解計算管理和彈性](sql-data-warehouse-manage-compute-overview.md)
 * [了解 Azure 入口網站中可取得哪些計量和記錄](sql-data-warehouse-concept-resource-utilization-query-activity.md)
@@ -33,4 +33,4 @@ Synapse SQL 可讓您透過 SQL 集區布建資料倉儲。 下列文章將協�
 
 
 ## <a name="next-steps"></a>後續步驟
-如需作法指南，請參閱 [監視和調整您的 SQL 集](sql-data-warehouse-manage-monitor.md)區。
+如需作法指南，請參閱 [監視和微調您專用的 SQL 集](sql-data-warehouse-manage-monitor.md)區。

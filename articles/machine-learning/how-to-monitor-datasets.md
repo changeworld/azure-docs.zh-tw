@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333863"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317025"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>偵測資料集的資料漂移 (預覽) 
 
@@ -32,18 +32,18 @@ ms.locfileid: "91333863"
 * **監視模型資料** ，瞭解定型和服務資料集之間的差異。  [從從已部署的模型收集模型資料](how-to-enable-data-collection.md)開始。
 * **監視新的資料** 是否有任何基準和目標資料集之間的差異。
 * **分析資料中的功能** ，以追蹤統計屬性隨時間的變更。
-* 針對潛在問題的早期警告，**設定資料漂移的警示**。 
+* 針對潛在問題的早期警告， **設定資料漂移的警示** 。 
 
 使用 [Azure Machine learning 資料集](how-to-create-register-datasets.md) 來建立監視器。 資料集必須包含時間戳記資料行。
 
-您可以使用 Python SDK 或 Azure Machine Learning studio 來查看資料漂移度量。  您可以透過與 Azure Machine Learning 工作區相關聯的 [Azure 應用程式 insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 資源取得其他計量和見解。
+您可以使用 Python SDK 或 Azure Machine Learning studio 來查看資料漂移度量。  您可以透過與 Azure Machine Learning 工作區相關聯的 [Azure 應用程式 insights](../azure-monitor/app/app-insights-overview.md) 資源取得其他計量和見解。
 
 ## <a name="prerequisites"></a>必要條件
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
-* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，其中包含 azureml 資料集套件。
+* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，其中包含 azureml 資料集套件。
 * 結構化 (表格式) 資料，並在資料的檔案路徑、檔案名或資料行中指定時間戳記。
 
 ## <a name="what-is-data-drift"></a>什麼是資料漂移？
@@ -73,7 +73,7 @@ Azure Machine Learning 藉由計算單一計量來簡化漂移偵測，以抽象
 
 資料漂移演算法可提供資料變化的整體量值，並指出哪些功能會負責進一步調查。 資料集監視器會藉由分析資料集中的新資料來產生一些其他度量 `timeseries` 。 
 
-您可以透過 [Azure 應用程式 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)，在監視器產生的所有度量上設定自訂警示。 您可以使用資料集監視器來快速攔截資料問題，並藉由找出可能的原因，縮短偵測問題的時間。  
+您可以透過 [Azure 應用程式 Insights](../azure-monitor/app/app-insights-overview.md)，在監視器產生的所有度量上設定自訂警示。 您可以使用資料集監視器來快速攔截資料問題，並藉由找出可能的原因，縮短偵測問題的時間。  
 
 在概念上，在 Azure Machine Learning 中設定資料集監視器有三個主要案例。
 
@@ -102,7 +102,7 @@ Azure Machine Learning 藉由計算單一計量來簡化漂移偵測，以抽象
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)類別 [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) 方法會定義資料集的時間戳記資料行。
+[`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)類別 [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) 方法會定義資料集的時間戳記資料行。
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-如需使用 `timeseries` 資料集特性的完整範例，請參閱 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) 或 [資料集 SDK 檔](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
+如需使用 `timeseries` 資料集特性的完整範例，請參閱 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) 或 [資料集 SDK 檔](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning studio
 
@@ -145,7 +145,7 @@ dset = dset.register(ws, 'target')
 
 如果您的資料是依日期進行分割，就像這裡的情況一樣，您也可以指定 partition_timestamp。  這可讓您以更有效率的方式處理日期。
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="分割區時間戳記":::
 
 
 ## <a name="create-dataset-monitors"></a>建立資料集監視
@@ -208,18 +208,18 @@ monitor = monitor.enable_schedule()
 
 1. 流覽至 [studio 首頁](https://ml.azure.com)。
 1. 選取左側的 [ **資料集** ] 索引標籤。 
-1. 選取 [ **資料集監視器**]。
+1. 選取 [ **資料集監視器** ]。
    ![監看清單](./media/how-to-monitor-datasets/monitor-list.png)
 
-1. 按一下 [ **+ 建立監視** ] 按鈕，然後按 **[下一步**] 繼續進行嚮導。  
+1. 按一下 [ **+ 建立監視** ] 按鈕，然後按 **[下一步** ] 繼續進行嚮導。  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="建立監視器嚮導":::
 
-* **選取 [目標資料集**]。  目標資料集是具有指定時間戳記資料行的表格式資料集，將會針對資料漂移進行分析。 目標資料集必須具有與基準資料集共通的功能，而且應該是將 `timeseries` 新資料附加至其中的資料集。 您可以分析目標資料集中的歷程記錄資料，也可以監視新的資料。
+* **選取 [目標資料集** ]。  目標資料集是具有指定時間戳記資料行的表格式資料集，將會針對資料漂移進行分析。 目標資料集必須具有與基準資料集共通的功能，而且應該是將 `timeseries` 新資料附加至其中的資料集。 您可以分析目標資料集中的歷程記錄資料，也可以監視新的資料。
 
 * **選取 [基準資料集]。**  選取要當做一段時間的目標資料集比較基準使用的表格式資料集。  基準資料集必須具有與目標資料集共通的功能。  選取時間範圍以使用目標資料集的配量，或指定要做為基準的個別資料集。
 
-* **監視設定**。  這些設定適用于已排程的資料集監視器管線，將會加以建立。 
+* **監視設定** 。  這些設定適用于已排程的資料集監視器管線，將會加以建立。 
 
     | 設定 | 描述 | 提示 | 可變動 | 
     | ------- | ----------- | ---- | ------- |
@@ -230,30 +230,30 @@ monitor = monitor.enable_schedule()
     | 頻率 | 當執行回填時，將用來排程管線作業以及分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 每次執行都會根據頻率來比較目標資料集中的資料： <li>每日：比較目標資料集中最新的完整日期與基準 <li>每週：比較最新的整周 (目標資料集內的星期一-星期日) 和基準 <li>每月：比較目標資料集中的最新完整月份與基準 | 否 | 
     | Latency | 資料抵達資料集所需的時間（以小時為單位）。 比方說，如果資料需要三天的時間抵達 SQL DB 中的資料集封裝，請將延遲設定為72。 | 建立資料集監視之後，無法變更 | 否 | 
     | 電子郵件地址 | 根據資料漂移百分比閾值的缺口來發出警示的電子郵件地址。 | 電子郵件會透過 Azure 監視器傳送。 | 是 | 
-    | 閾值 | 電子郵件警示的資料漂移百分比閾值。 | 您可以在工作區相關聯的 Application Insights 資源中，針對許多其他計量設定進一步的警示和事件。 | 是 |
+    | 臨界值 | 電子郵件警示的資料漂移百分比閾值。 | 您可以在工作區相關聯的 Application Insights 資源中，針對許多其他計量設定進一步的警示和事件。 | 是 |
 
 完成嚮導之後，所產生的資料集監視器將會出現在清單中。 選取它以移至該監視器的詳細資料頁面。
 
 ## <a name="understand-data-drift-results"></a>瞭解資料漂移結果
 
-本節說明監視資料集的結果，可在 Azure studio 的 [**資料**集  /  **監視器**] 頁面中找到。  您可以在此頁面上更新設定，以及分析現有資料的特定時間週期。  
+本節說明監視資料集的結果，可在 Azure studio 的 [ **資料** 集  /  **監視器** ] 頁面中找到。  您可以在此頁面上更新設定，以及分析現有資料的特定時間週期。  
 
 從最上層深入解析到資料漂移的程度，以及要進一步調查的特徵醒目提示。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="漂移總覽":::
 
 
 | 計量 | 描述 | 
 | ------ | ----------- | 
 | 資料漂移的大小 | 基準和目標資料集一段時間之間的漂移百分比。 範圍從0到100，0表示相同的資料集，而100表示 Azure Machine Learning 的資料漂移模型可以完全分辨兩個資料集。 預期所測量的精確百分比雜訊是因為使用機器學習技術來產生此量值所預期。 | 
 | 熱門離開功能 | 顯示資料集內最多漂移的功能，因此會對漂移量度量產生最大影響。 由於 covariate 移位，功能的基礎分佈不一定需要變更為具有相當高的特徵重要性。 |
-| 閾值 | 資料漂移量超過設定的臨界值將會觸發警示。 這可以在 [監視] 設定中設定。 | 
+| 臨界值 | 資料漂移量超過設定的臨界值將會觸發警示。 這可以在 [監視] 設定中設定。 | 
 
 ### <a name="drift-magnitude-trend"></a>漂移幅度趨勢
 
 查看資料集在指定的時間週期內與目標資料集的差異。  接近100%，這兩個資料集的差異越多。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="漂移幅度趨勢":::
 
 ### <a name="drift-magnitude-by-features"></a>依功能變化的漂移
 
@@ -263,7 +263,7 @@ monitor = monitor.enable_schedule()
 
 在 Azure Machine Learning studio 中，按一下圖表中的橫條以查看該日期的功能層級詳細資料。 根據預設，您會看到基準資料集的散發，以及相同功能的最新執行分佈。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="依功能變化的漂移":::
 
 您也可以透過物件上的方法，在 Python SDK 中取出這些計量 `get_metrics()` `DataDriftDetector` 。
 
@@ -271,7 +271,7 @@ monitor = monitor.enable_schedule()
 
 最後，向下滾動以查看每個個別功能的詳細資料。  使用圖表上方的下拉式清單來選取功能，並另外選取您要查看的度量。
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="數值特徵圖形和比較":::
 
 圖表中的計量取決於功能的類型。
 
@@ -288,16 +288,16 @@ monitor = monitor.enable_schedule()
     
     | 計量 | 描述 |  
     | ------ | ----------- |  
-    | Euclidian 距離     |  分類資料行的計算。Euclidean 距離是以兩個向量計算，從兩個資料集的相同類別資料行的實際分佈所產生。0表示經驗分佈沒有任何差異。它偏離0，此資料行的漂移愈多。您可以從這個計量的時間序列圖觀察趨勢，並在發現離開功能時很有説明。  |
+    | Euclidian 距離     |  分類資料行的計算。 Euclidean 距離是以兩個向量計算，從兩個資料集的相同類別資料行的實際分佈所產生。 0表示經驗分佈沒有任何差異。  它偏離0，此資料行的漂移愈多。 您可以從這個計量的時間序列圖觀察趨勢，並在發現離開功能時很有説明。  |
     | 唯一值 | 功能 (基數) 的唯一值數目。 |
 
 在此圖表上，選取單一日期來比較目標與這個日期之間的功能分佈，以顯示的功能。 針對數值功能，這會顯示兩個機率分佈。  如果功能是數值，則會顯示橫條圖。
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="設定時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="選取要與目標比較的日期":::
 
 ## <a name="metrics-alerts-and-events"></a>計量、警示和事件
 
-您可以在與您的 machine learning 工作區相關聯的 [Azure 應用程式 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 資源中查詢計量。 您可以存取 Application Insights 的所有功能，包括設定自訂警示規則和動作群組來觸發動作，例如電子郵件/SMS/Push/Voice 或 Azure Function。 如需詳細資訊，請參閱完整的 Application Insights 檔。 
+您可以在與您的 machine learning 工作區相關聯的 [Azure 應用程式 Insights](../azure-monitor/app/app-insights-overview.md) 資源中查詢計量。 您可以存取 Application Insights 的所有功能，包括設定自訂警示規則和動作群組來觸發動作，例如電子郵件/SMS/Push/Voice 或 Azure Function。 如需詳細資訊，請參閱完整的 Application Insights 檔。 
 
 若要開始使用，請流覽至 [Azure 入口網站](https://portal.azure.com) ，然後選取您工作區的 **[總覽** ] 頁面。  相關聯的 Application Insights 資源位於最右邊：
 
@@ -322,6 +322,6 @@ monitor = monitor.enable_schedule()
 ## <a name="next-steps"></a>後續步驟
 
 * 前往 [Azure Machine Learning studio](https://ml.azure.com) 或 [Python 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) ，以設定資料集監視器。
-* 瞭解如何在 [部署到 Azure Kubernetes Service 的模型](how-to-monitor-data-drift.md)上設定資料漂移。
+* 瞭解如何在 [部署到 Azure Kubernetes Service 的模型](./how-to-enable-data-collection.md)上設定資料漂移。
 * 使用 [事件方格](how-to-use-event-grid.md)設定資料集漂移監視器。 
 * 如果您遇到問題，請參閱這些常見的 [疑難排解秘訣](resource-known-issues.md#data-drift) 。

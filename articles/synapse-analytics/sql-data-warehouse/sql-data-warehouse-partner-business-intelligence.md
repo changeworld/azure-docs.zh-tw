@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 33571283b876506e419ed675dde0988974c3841e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280001"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317871"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics 商業智慧合作夥伴
 
@@ -41,7 +41,7 @@ ms.locfileid: "93280001"
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau 的自助式分析協助任何人查看和了解資料，從一般檔案到資料庫，資料種類包羅萬象。 Tableau 有原生、最佳化的連接器連至 Synapse SQL 集區，支援即時資料和記憶體內部分析。 |[產品頁面](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Decision Suite)**<br>Targit 決策套件提供的 BI 平臺可提供即時儀表板、自助分析、方便使用的報表、絕佳的行動功能，以及簡單的資料探索技術。 單一、一致的解決方案中的所有專案。 Targit 帶給企業行動的勇氣。 |[產品頁面](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
 | ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>使用搜尋來取得數十億個數據列的詳細見解，或讓 AI 從您可能未思考的問題中找出見解。 ThoughtSpot 可協助商務人士瞬間找出埋藏在其公司資料中的見解。 使用搜尋來分析您的資料，並在需要時取得自動化見解。|[產品頁面](https://www.thoughtspot.com)<br>|
-| ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin 是依 BARC 的隨選報告和儀表板排名排名最 _高的 CLOUD_ BI 廠商;BI 問卷。 連接到 Synapse SQL 集區，然後以得獎的共同作業 BI 和位置智慧功能來建立和共用漂亮的報告和儀表板。 |[產品頁面](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
+| ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin 是依 BARC 的隨選報告和儀表板排名排名最 _高的 CLOUD_ BI 廠商;BI 問卷。 連接到 Azure Synapse Analytics 中的專用 SQL 集區，然後使用獲獎的共同作業 BI 和位置智慧功能，建立並分享美觀的報表和儀表板。 |[產品頁面](https://www.yellowfinbi.com/) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

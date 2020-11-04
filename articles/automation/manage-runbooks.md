@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521062"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317090"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -45,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>匯入 Runbook
 
-您可以匯入 PowerShell 或 PowerShell 工作流程 (**ps1**) 指令碼、圖形化 Runbook ( **.graphrunbook**) 或 Python 2 指令碼 ( **.py**) 來製作自己的 Runbook。 您必須指定匯入期間建立的 [Runbook 類型](automation-runbook-types.md)，並考量下列事項。
+您可以匯入 PowerShell 或 PowerShell 工作流程 ( **ps1** ) 指令碼、圖形化 Runbook ( **.graphrunbook** ) 或 Python 2 指令碼 ( **.py** ) 來製作自己的 Runbook。 您必須指定匯入期間建立的 [Runbook 類型](automation-runbook-types.md)，並考量下列事項。
 
 * 您可以將不包含工作流程的 **.ps1** 檔案匯入至 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流程 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 您將其匯入 PowerShell 工作流程 Runbook，其會轉換成工作流程。 在此情況下，Runbook 中會包含註解來描述所做的變更。
 
@@ -53,7 +53,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 * 請勿將包含 PowerShell 工作流程的 **.ps1** 檔案匯入 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks)，因為 PowerShell 指令碼引擎無法加以辨識。
 
-* 只將 **.graphrunbook** 檔案匯入新的[圖形化 Runbook](automation-runbook-types.md#graphical-runbooks)。
+* 只將 **.graphrunbook** 檔案匯入新的 [圖形化 Runbook](automation-runbook-types.md#graphical-runbooks)。
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>從 Azure 入口網站匯入 Runbook
 
@@ -228,7 +228,7 @@ Start-AzAutomationRunbook `
 
 ## <a name="test-a-runbook"></a>測試 Runbook
 
-當您測試 Runbook 時， [草稿版本](#publish-a-runbook) 會執行，而且它執行的任何動作都會完成。 不會建立任何工作歷程記錄，但 [測試輸出] 窗格中會顯示[輸出](automation-runbook-output-and-messages.md#use-the-output-stream)與[警告和錯誤](automation-runbook-output-and-messages.md#monitor-message-streams)串流。 只有將 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 變數設定為 `Continue`，傳送給[詳細資訊串流](automation-runbook-output-and-messages.md#monitor-message-streams)的訊息才會顯示在 [輸出] 窗格中。
+當您測試 Runbook 時， [草稿版本](#publish-a-runbook) 會執行，而且它執行的任何動作都會完成。 不會建立任何工作歷程記錄，但 [測試輸出] 窗格中會顯示[輸出](automation-runbook-output-and-messages.md#use-the-output-stream)與[警告和錯誤](automation-runbook-output-and-messages.md#working-with-message-streams)串流。 只有將 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 變數設定為 `Continue`，傳送給[詳細資訊串流](automation-runbook-output-and-messages.md#write-output-to-verbose-stream)的訊息才會顯示在 [輸出] 窗格中。
 
 即使執行的是草稿版本，Runbook 仍會正常執行，並對環境中的資源執行任何動作。 因此，您只應在非生產資源中測試 Runbook。
 
@@ -237,7 +237,7 @@ Start-AzAutomationRunbook `
 1. 您可以在[文字編輯器](automation-edit-textual-runbook.md)或[圖形化編輯器](automation-graphical-authoring-intro.md)中開啟 Runbook 的草稿版本。
 1. 按一下 [測試] 以開啟 [測試] 頁面。
 1. 如果 Runbook 有參數，其會列在左窗格中，您可以在此提供用於測試的值。
-1. 如果您想要在[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)上執行測試，請將 [執行設定] 變更為 [混合式背景工作角色]，然後選取目標群組的名稱。  否則，請保留預設值 **Azure**，以便在雲端中執行測試。
+1. 如果您想要在[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)上執行測試，請將 [執行設定] 變更為 [混合式背景工作角色]，然後選取目標群組的名稱。  否則，請保留預設值 **Azure** ，以便在雲端中執行測試。
 1. 按一下 [開始] 以開始測試。
 1. 您可以使用 [輸出] 窗格下的按鈕來停止或暫止測試中的 [PowerShell 工作流程](automation-runbook-types.md#powershell-workflow-runbooks)或[圖形化](automation-runbook-types.md#graphical-runbooks) Runbook。 暫停 Runbook 時，它會先完成目前的活動後才暫停。 Runbook 一旦暫停，您可以選擇停止或重新啟動。
 1. 您可以在 [輸出] 窗格中檢查 Runbook 的輸出。
@@ -298,7 +298,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 或者，您可以檢視特定 Runbook 的作業摘要詳細資料，方法是在您的自動化帳戶中，從 [Runbook] 頁面中選取該 Runbook，然後選取 [作業]。 此動作會顯示 [作業] 頁面。 您可以從此處按一下作業記錄，以檢視其詳細資料和輸出。
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="[作業] 頁面的螢幕擷取畫面。":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="[工作] 頁面的螢幕擷取畫面，其中反白顯示 [錯誤] 按鈕。":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>使用 PowerShell 擷取作業狀態
 

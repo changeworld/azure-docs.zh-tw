@@ -10,17 +10,17 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2ed8910db8b903dab3b81d9db6c9b5798d2b6b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7642fe6642c1b938645e520c15ac367e12630f91
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542048"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316672"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure Machine Learning 將實驗執行與計量視覺化
 
 
-在本文中，您會了解如何使用主要 Azure Machine Learning SDK 中的 [`tensorboard` 套件](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py&preserve-view=true)，在 TensorBoard 中檢視您的實驗執行和計量。 檢查過實驗執行之後，您就可以更進一步地微調機器學習模型並加以重新定型。
+在本文中，您會了解如何使用主要 Azure Machine Learning SDK 中的 [`tensorboard` 套件](/python/api/azureml-tensorboard/?preserve-view=true&view=azure-ml-py)，在 TensorBoard 中檢視您的實驗執行和計量。 檢查過實驗執行之後，您就可以更進一步地微調機器學習模型並加以重新定型。
 
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) 是一套 Web 應用程式，可用於檢查和了解您的實驗結構和效能。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91542048"
             * **如何使用 azureml > 追蹤和監視-實驗 > tensorboard > 匯出-執行-歷程記錄至 tensorboard > 匯出-執行-歷程記錄至 tensorboard. .ipynb**
             * **如何使用-azureml > 追蹤和監視-實驗 > tensorboard > tensorboard > tensorboard. .ipynb**
     * 您自己的 Juptyer 筆記本伺服器
-       * [安裝 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) 與 `tensorboard` 額外項目
+       * [安裝 Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 與 `tensorboard` 額外項目
         * [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。  
         * [建立工作區設定檔](how-to-configure-environment.md#workspace)。
 
@@ -166,7 +166,7 @@ run = exp.submit(src)
 
 您可以在執行期間或執行完成後啟動 TensorBoard。 下面，我們會建立 TensorBoard 物件執行個體 `tb`，以在 `run` 中載入實驗執行歷程記錄，然後使用 `start()` 方法來啟動 TensorBoard。 
   
-[TensorBoard 建構函式](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true)會接受執行陣列，因此請務必以單一元素陣列的形式將其傳入。
+[TensorBoard 建構函式](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py)會接受執行陣列，因此請務必以單一元素陣列的形式將其傳入。
 
 ```python
 from azureml.tensorboard import Tensorboard
@@ -247,7 +247,7 @@ for alpha in tqdm(alphas):
 
 ### <a name="export-runs-to-tensorboard"></a>將執行匯出至 TensorBoard
 
-透過 SDK 的 [export_to_tensorboard()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py&preserve-view=true) 方法，我們可以將 Azure 機器學習實驗的執行歷程記錄匯出為 TensorBoard 記錄，以便透過 TensorBoard 來檢視。  
+透過 SDK 的 [export_to_tensorboard()](/python/api/azureml-tensorboard/azureml.tensorboard.export?preserve-view=true&view=azure-ml-py) 方法，我們可以將 Azure 機器學習實驗的執行歷程記錄匯出為 TensorBoard 記錄，以便透過 TensorBoard 來檢視。  
 
 在下列程式碼中，我們會在目前的工作目錄中建立 `logdir` 資料夾。 我們可以從這個資料夾的 `root_run` 中匯出實驗執行歷程記錄和記錄檔，然後將該執行標示為已完成。 
 
@@ -273,7 +273,7 @@ root_run.complete()
 > 您也可以藉由指定執行的名稱 (`export_to_tensorboard(run_name, logdir)`)，將特定執行匯出至 TensorBoard
 
 ### <a name="start-and-stop-tensorboard"></a>啟動和停止 TensorBoard
-一旦匯出此實驗的執行歷程記錄，我們就可以使用 [start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-start-browser-false-) 方法來啟動 TensorBoard。 
+一旦匯出此實驗的執行歷程記錄，我們就可以使用 [start()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-start-browser-false-) 方法來啟動 TensorBoard。 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -285,7 +285,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-當您完成時，請務必呼叫 TensorBoard 物件的 [stop()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestop--) 方法。 否則，TensorBoard 會繼續執行，直到您關閉筆記本核心為止。 
+當您完成時，請務必呼叫 TensorBoard 物件的 [stop()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py#&preserve-view=truestop--) 方法。 否則，TensorBoard 會繼續執行，直到您關閉筆記本核心為止。 
 
 ```python
 tb.stop()
@@ -296,4 +296,4 @@ tb.stop()
 在此操作說明中，您建立了兩個實驗，並已了解如何針對其執行歷程記錄啟動 TensorBoard，以找出可能的微調和重新定型區域。 
 
 * 如果您對模型感到滿意，請前往我們的[如何部署模型](how-to-deploy-and-where.md)一文。 
-* 深入了解[超參數微調](how-to-tune-hyperparameters.md)。 
+* 深入了解[超參數微調](how-to-tune-hyperparameters.md)。

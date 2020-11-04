@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ac134e6a371ea85a20094e688adc57da8550a03d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078980"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318032"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 
@@ -38,7 +38,7 @@ ms.locfileid: "93078980"
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
+* Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
 
 ## <a name="create"></a>建立
 
@@ -82,9 +82,9 @@ except ComputeTargetException:
 
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
-* [ComputeInstance 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance.computeinstance?view=azure-ml-py&preserve-view=true)
-* [ComputeTarget 建立](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeInstance.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false--is-delete-operation-false-)
+* [ComputeInstance 類別](/python/api/azureml-core/azureml.core.compute.computeinstance.computeinstance?preserve-view=true&view=azure-ml-py)
+* [ComputeTarget 建立](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -93,7 +93,7 @@ except ComputeTargetException:
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-如需詳細資訊，請參閱 [az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) reference （建立參考）。
+如需詳細資訊，請參閱 [az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) reference （建立參考）。
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -178,7 +178,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    如需詳細資訊，請參閱 [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    如需詳細資訊，請參閱 [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
 
 * 開始 
 
@@ -186,7 +186,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    如需詳細資訊，請參閱 [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    如需詳細資訊，請參閱 [az ml computetarget start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
 
 * 重新啟動 
 
@@ -194,7 +194,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    如需詳細資訊，請參閱 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    如需詳細資訊，請參閱 [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
 
 * 刪除
 
@@ -202,7 +202,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget delete -n instance -v
     ```
 
-    如需詳細資訊，請參閱 [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-delete)。
+    如需詳細資訊，請參閱 [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -226,7 +226,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ---
 
-[AZURE RBAC](/azure/role-based-access-control/overview) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新開機計算實例。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 Azure RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
+[AZURE RBAC](../role-based-access-control/overview.md) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新開機計算實例。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 Azure RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
 
 這些動作可由 Azure RBAC 控制：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -292,6 +292,6 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-* [提交定型回合](how-to-set-up-training-targets.md) 
+* [提交定型回合](how-to-set-up-training-targets.md)

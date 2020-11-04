@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236330"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316147"
 ---
 # <a name="design-for-querying"></a>查詢的設計
 資料表服務方案可以是讀取密集、寫入密集或兩者混合的方案。 本文主要說明您在設計表格服務以有效地支援讀取作業時應謹記在心的事項。 一般而言，支援有效讀取作業的設計，也可兼顧寫入作業的效率。 不過，設計支援寫入作業時還有其他考量必須牢記在心，這將在[資料修改的設計](table-storage-design-for-modification.md)一文中說明這些考量。
@@ -37,22 +37,22 @@ ms.locfileid: "88236330"
 
 | *資料行名稱* | *Data type* |
 | --- | --- |
-| **PartitionKey** (部門名稱) |字串 |
-| **RowKey** (員工識別碼)  |字串 |
-| **名字** |字串 |
-| **姓氏** |字串 |
+| **PartitionKey** (部門名稱) |String |
+| **RowKey** (員工識別碼)  |String |
+| **名字** |String |
+| **姓氏** |String |
 | **Age** |整數 |
-| **EmailAddress** |字串 |
+| **EmailAddress** |String |
 
-＜[Azure 表格儲存體概觀](table-storage-overview.md) ＞一文將說明某些對查詢設計有直接影響的重要 Azure 表格服務功能。 這些功能產生了設計資料表服務查詢的一般指導方針。 請注意，下列範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱 [查詢實體](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)。  
+＜[Azure 表格儲存體概觀](table-storage-overview.md) ＞一文將說明某些對查詢設計有直接影響的重要 Azure 表格服務功能。 這些功能產生了設計資料表服務查詢的一般指導方針。 請注意，下列範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱 [查詢實體](/rest/api/storageservices/Query-Entities)。  
 
-* ***點查詢***是使用上最有效率的查閱，建議用於高容量查閱或只能容許最低延遲的查閱。 這類查詢使用索引尋找個別實體的效率極高，方法是同時指定 **PartitionKey** 和 **RowKey** 值。 例如：$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')  
-* 次佳的是***範圍查詢***，它使用 **PartitionKey**，並篩選特定範圍的 **RowKey** 值，以傳回多個實體。 **PartitionKey** 值會識別特定的分割，而 **RowKey** 值會識別該分割中實體的子集。 例如：$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'  
-* 再其次是***分割掃描***，它使用 **PartitionKey**，並篩選另一個非索引鍵的，可傳回多個實體。 **PartitionKey** 值會識別特定的分割，而屬性值會選取該分割中實體的子集。 例如：$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'  
-* ***資料表掃描***不包含 **PartitionKey**，且效率極差，因為它會依序在所有組成資料表的分割中搜尋是否有任何相符的實體。 無論您的篩選是否使用 **RowKey**，它都會執行資料表掃描。 例如：$filter=LastName eq 'Jones'  
+* * **Point Query** _ 是最有效率的使用查閱，建議用於高容量的查閱或需要最低延遲的查閱。 這類查詢可透過指定 _ *PartitionKey* * 和 **RowKey** 值，以非常有效率的方式使用索引來尋找個別實體。 例如：$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')  
+* 第二個是 * **範圍查詢** _，此查詢會使用 _ *PartitionKey* * 並篩選某個範圍的 **RowKey** 值，以傳回一個以上的實體。 **PartitionKey** 值會識別特定的分割，而 **RowKey** 值會識別該分割中實體的子集。 例如：$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'  
+* 第三個最佳的是「資料 **分割掃描** _」，其使用 _ *PartitionKey* * 以及其他非索引鍵屬性的篩選，而且可能會傳回一個以上的實體。 **PartitionKey** 值會識別特定的分割，而屬性值會選取該分割中實體的子集。 例如：$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'  
+* * **資料表掃描** _ 不包含 _ *PartitionKey* *，而且效率非常低，因為它會依序搜尋組成資料表的所有分割區，以找出任何相符的實體。 無論您的篩選是否使用 **RowKey** ，它都會執行資料表掃描。 例如：$filter=LastName eq 'Jones'  
 * 傳回多個實體的查詢，在傳回時會以 **PartitionKey** 和 **RowKey** 順序排序。 若要避免重新排序用戶端中的實體，請選擇定義最常見的排序次序的 **RowKey** 。  
 
-請注意，使用 "**or**" 指定以 **RowKey** 值為基礎的篩選條件，會產生資料分割掃描且不被當作範圍查詢。 因此，您應該避免會使用下列篩選條件的搜尋：例如 $filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
+請注意，使用 " **or** " 指定以 **RowKey** 值為基礎的篩選條件，會產生資料分割掃描且不被當作範圍查詢。 因此，您應該避免會使用下列篩選條件的搜尋：例如 $filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
 
 如需使用儲存體用戶端程式庫執行有效率查詢的用戶端程式碼範例，請參閱：  
 
@@ -88,7 +88,7 @@ ms.locfileid: "88236330"
 * [索引實體模式](table-storage-design-patterns.md#index-entities-pattern) - 維護索引實體，啟用有效的搜尋以傳回實體清單。  
 
 ## <a name="sorting-data-in-the-table-service"></a>在表格服務中排序資料
-資料表服務會先根據 **PartitionKey**、再根據 **RowKey** 傳回以遞增方式排序的實體。 這些索引鍵是字串值，若要確保能正確排序數字值，您應該將它們轉換成固定長度，並以零填補它們。 例如，如果您用來作為 **RowKey** 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123**。  
+資料表服務會先根據 **PartitionKey** 、再根據 **RowKey** 傳回以遞增方式排序的實體。 這些索引鍵是字串值，若要確保能正確排序數字值，您應該將它們轉換成固定長度，並以零填補它們。 例如，如果您用來作為 **RowKey** 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123** 。  
 
 許多應用程式都需要使用以不同順序排序的資料：例如，依名稱或加入日期為員工排序。 下列模式可因應如何為您的實體取代排序次序：  
 

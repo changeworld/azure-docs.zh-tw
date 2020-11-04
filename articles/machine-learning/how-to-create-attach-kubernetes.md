@@ -1,7 +1,7 @@
 ---
 title: 建立並附加 Azure Kubernetes Service
 titleSuffix: Azure Machine Learning
-description: Azure Kubernetes Service (AKS) 可以用來將機器學習模型部署為 web 服務。 瞭解如何透過 Azure Machine Learning 建立新的 AKS 叢集。 您也將瞭解如何將現有的 AKS 叢集連結至 Azure Machine Learning 工作區。
+description: 瞭解如何透過 Azure Machine Learning 建立新的 Azure Kubernetes Service 叢集，或如何將現有的 AKS 叢集連結至您的工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791999"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318063"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>建立並附加 Azure Kubernetes Service 叢集
 
@@ -26,25 +26,25 @@ Azure Machine Learning 可以將定型的機器學習模型部署到 Azure Kuber
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-- Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
+- Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
 
-- 如果您打算使用 Azure 虛擬網路來保護您的 Azure ML 工作區與 AKS 叢集之間的通訊，請在 [訓練 & 推斷文章中閱讀網路隔離](how-to-enable-virtual-network.md) 。
+- 如果您打算使用 Azure 虛擬網路來保護您的 Azure ML 工作區與 AKS 叢集之間的通訊，請在 [訓練 & 推斷文章中閱讀網路隔離](./how-to-network-security-overview.md) 。
 
 ## <a name="limitations"></a>限制
 
 - 如果您需要在您的叢集中部署 **Standard Load Balancer (SLB)** ，而不是基本 LOAD BALANCER (BLB) ，請在 AKS 入口網站/CLI/SDK 中建立叢集，然後 **將** 它連結至 AML 工作區。
 
-- 如果您有限制建立公用 IP 位址的 Azure 原則，AKS 叢集建立將會失敗。 AKS 需要公用 IP 來提供輸出 [流量](/azure/aks/limit-egress-traffic)。 輸出流量文章也會提供指引，以透過公用 IP 鎖定來自叢集的輸出流量，但有幾個完整功能變數名稱除外。 有兩種方式可以啟用公用 IP：
+- 如果您有限制建立公用 IP 位址的 Azure 原則，AKS 叢集建立將會失敗。 AKS 需要公用 IP 來提供輸出 [流量](../aks/limit-egress-traffic.md)。 輸出流量文章也會提供指引，以透過公用 IP 鎖定來自叢集的輸出流量，但有幾個完整功能變數名稱除外。 有兩種方式可以啟用公用 IP：
     - 叢集可以使用預設使用 BLB 或 SLB 建立的公用 IP，或
-    - 您可以在不使用公用 IP 的情況下建立叢集，然後使用具有使用者定義路由的防火牆來設定公用 IP。 如需詳細資訊，請參閱 [使用使用者定義的路由自訂](/azure/aks/egress-outboundtype)叢集輸出。
+    - 您可以在不使用公用 IP 的情況下建立叢集，然後使用具有使用者定義路由的防火牆來設定公用 IP。 如需詳細資訊，請參閱 [使用使用者定義的路由自訂](../aks/egress-outboundtype.md)叢集輸出。
     
     AML 控制平面不會與此公用 IP 通訊。 它會與部署的 AKS 控制平面交談。 
 
-- 如果您 **附加** 已 [啟用授權 IP 範圍的 AKS 叢集來存取 API 伺服器](/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 控制平面 IP 範圍。 AML 控制平面會部署在配對的區域，並在 AKS 叢集上部署推斷 pod。 如果沒有 API 伺服器的存取權，則無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域](/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/download/confirmation.aspx?id=56519)。
+- 如果您 **附加** 已 [啟用授權 IP 範圍的 AKS 叢集來存取 API 伺服器](../aks/api-server-authorized-ip-ranges.md)，請啟用 AKS 叢集的 AML 控制平面 IP 範圍。 AML 控制平面會部署在配對的區域，並在 AKS 叢集上部署推斷 pod。 如果沒有 API 伺服器的存取權，則無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域](../best-practices-availability-paired-regions.md)的[ip 範圍](https://www.microsoft.com/download/confirmation.aspx?id=56519)。
 
     授權的 IP 範圍僅適用于 Standard Load Balancer。
 
-- 如果您想要使用私人 AKS 叢集 (使用 Azure Private Link) ，您必須先建立叢集，然後 **將它附加** 至工作區。 如需詳細資訊，請參閱 [建立私人 Azure Kubernetes Service](/azure/aks/private-clusters)叢集。
+- 如果您想要使用私人 AKS 叢集 (使用 Azure Private Link) ，您必須先建立叢集，然後 **將它附加** 至工作區。 如需詳細資訊，請參閱 [建立私人 Azure Kubernetes Service](../aks/private-clusters.md)叢集。
 
 - AKS 叢集的計算名稱在您的 Azure ML 工作區中必須是唯一的。
     - 名稱是必要的，且長度必須介於3到24個字元之間。
@@ -70,7 +70,7 @@ Azure Machine Learning 可以將定型的機器學習模型部署到 Azure Kuber
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service 版本
 
-Azure Kubernetes Service 可讓您使用各種 Kubernetes 版本來建立叢集。 如需可用版本的詳細資訊，請參閱 [Azure Kubernetes Service 中支援的 Kubernetes 版本](/azure/aks/supported-kubernetes-versions)。
+Azure Kubernetes Service 可讓您使用各種 Kubernetes 版本來建立叢集。 如需可用版本的詳細資訊，請參閱 [Azure Kubernetes Service 中支援的 Kubernetes 版本](../aks/supported-kubernetes-versions.md)。
 
 使用下列其中一種方法 **建立** Azure Kubernetes Service 叢集時，您無法在建立的叢集 *版本中選擇* ：
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-如果您想要以程式設計 **方式檢查可用的版本** ，請使用 [容器服務用戶端清單協調器](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API。 若要尋找可用的版本，請查看其中的 `orchestratorType` 專案 `Kubernetes` 。 相關聯的 `orchestrationVersion` 專案包含可 **附加** 至工作區的可用版本。
+如果您想要以程式設計 **方式檢查可用的版本** ，請使用 [容器服務用戶端清單協調器](/rest/api/container-service/container%20service%20client/listorchestrators) REST API。 若要尋找可用的版本，請查看其中的 `orchestratorType` 專案 `Kubernetes` 。 相關聯的 `orchestrationVersion` 專案包含可 **附加** 至工作區的可用版本。
 
 若要尋找透過 Azure Machine Learning **建立** 叢集時所使用的預設版本，請尋找的專案， `orchestratorType` 其中 `Kubernetes` 是 `default` 和 `true` 。 相關聯的 `orchestratorVersion` 值是預設版本。 下列 JSON 程式碼片段顯示一個範例專案：
 
@@ -183,10 +183,10 @@ aks_target.wait_for_completion(show_output = True)
 
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
 * [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget 建立](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
+* [ComputeTarget 建立](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-如需詳細資訊，請參閱 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference （建立參考）。
+如需詳細資訊，請參閱 [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference （建立參考）。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ az ml computetarget create aks -n myaks
 > [!WARNING]
 > 請勿從您的工作區建立多個同時附加至相同 AKS 叢集的附件。 例如，使用兩個不同的名稱將一個 AKS 叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
 >
-> 如果您想要重新附加 AKS 叢集（例如變更 TLS 或其他叢集設定），必須先使用 AksCompute 移除現有的附件 [。 ( # B1 卸離 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--)。
+> 如果您想要重新附加 AKS 叢集（例如變更 TLS 或其他叢集設定），必須先使用 AksCompute 移除現有的附件 [。 ( # B1 卸離 ](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--)。
 
 如需有關使用 Azure CLI 或入口網站建立 AKS 叢集的詳細資訊，請參閱下列文章：
 
-* [建立 AKS 叢集 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
-* [ (入口網站) 建立 AKS 叢集 ](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
+* [建立 AKS 叢集 (CLI)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [ (入口網站) 建立 AKS 叢集 ](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [在 Azure 快速入門範本上建立 AKS 叢集 (ARM 範本) ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 下列範例示範如何將現有的 AKS 叢集連結至您的工作區：
@@ -248,8 +248,8 @@ aks_target.wait_for_completion(show_output = True)
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
 * [AksCompute.attach_configuration ( # B1 ](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute 附加](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
+* [AksCompute 附加](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -271,7 +271,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-如需詳細資訊，請參閱 [az ml computetarget 附加 aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 參考。
+如需詳細資訊，請參閱 [az ml computetarget 附加 aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 參考。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -284,7 +284,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 若要從您的工作區卸離叢集，請使用下列其中一種方法：
 
 > [!WARNING]
-> 使用 Azure Machine Learning studio、SDK 或機器學習服務的 Azure CLI 擴充功能來卸離 AKS 叢集， **並不會刪除 AKS** 叢集。 若要刪除叢集，請參閱搭配 [使用 Azure CLI 與 AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster)。
+> 使用 Azure Machine Learning studio、SDK 或機器學習服務的 Azure CLI 擴充功能來卸離 AKS 叢集， **並不會刪除 AKS** 叢集。 若要刪除叢集，請參閱搭配 [使用 Azure CLI 與 AKS](../aks/kubernetes-walkthrough.md#delete-the-cluster)。
 
 # <a name="python"></a>[Python](#tab/python)
 

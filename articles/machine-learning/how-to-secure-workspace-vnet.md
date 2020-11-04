@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316691"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 工作區
 
@@ -48,7 +48,7 @@ ms.locfileid: "92672859"
     - 虛擬網路資源上的「Microsoft. Network/virtualNetworks/join/action」。
     - 子網資源上的「Microsoft. Network/virtualNetworks/subnet/join/action」。
 
-    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)
+    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](../role-based-access-control/built-in-roles.md#networking)
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>使用私人端點保護工作區
@@ -66,7 +66,7 @@ Azure Machine Learning 支援設定為使用服務端點或私人端點的儲存
 >
 > 建立工作區時便會自動佈建預設儲存體帳戶。
 >
-> 若為非預設儲存體帳戶，[`Workspace.create()` 函式](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) 中的 `storage_account` 參數可讓您依 Azure 資源識別碼來指定自訂儲存體帳戶。
+> 若為非預設儲存體帳戶，[`Workspace.create()` 函式](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) 中的 `storage_account` 參數可讓您依 Azure 資源識別碼來指定自訂儲存體帳戶。
 
 若要在虛擬網路中針對工作區使用 Azure 儲存體帳戶作，請使用下列步驟：
 
@@ -188,7 +188,7 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
 
 若要在虛擬網路內使用 Azure Container Registry，您必須符合下列需求：
 
-* 您的 Azure Container Registry 必須是 Premium 版本。 如需升級的詳細資訊，請參閱[變更 SKU](/azure/container-registry/container-registry-skus#changing-skus)。
+* 您的 Azure Container Registry 必須是 Premium 版本。 如需升級的詳細資訊，請參閱[變更 SKU](../container-registry/container-registry-skus.md#changing-tiers)。
 
 * Azure Container Registry 所在的虛擬網路和子網路必須與用於定型或推斷的儲存體帳戶和計算目標相同。
 
@@ -233,7 +233,7 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
     > [!IMPORTANT]
     > 您的儲存體帳戶、計算叢集和 Azure Container Registry 都必須位於虛擬網路的相同子網路中。
     
-    如需詳細資訊，請參閱 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) 方法參考。
+    如需詳細資訊，請參閱 [update()](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) 方法參考。
 
 1. 套用下列 Azure Resource Manager 範本。 此範本可讓您的工作區與 ACR 通訊。
 
@@ -289,7 +289,7 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
 
     此範本會建立 _私人端點_ ，以從工作區到您的 ACR 進行網路存取。 下列螢幕擷取畫面顯示此私人端點的範例。
 
-    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="工作區的 Azure Container Registry":::
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="ACR 私人端點設定":::
 
     > [!IMPORTANT]
     > 請勿刪除此端點！ 如果您不小心將其刪除，您可以在此步驟中重新套用範本，以建立新的範本。

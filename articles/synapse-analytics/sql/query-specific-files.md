@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288098"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318819"
 ---
-# <a name="use-file-metadata-in-queries"></a>在查詢中使用檔案中繼資料
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>在無伺服器 SQL 集區查詢中使用檔案中繼資料
 
-SQL 隨選可以處理多個檔案和資料夾，如 [查詢資料夾和多個](query-folders-multiple-csv-files.md) 檔案一文所述。 在本文中，您會了解如何在查詢時使用檔案和資料夾名稱的相關中繼資料資訊。
+無伺服器 SQL 集區可以處理多個檔案和資料夾，如 [查詢資料夾和多個](query-folders-multiple-csv-files.md) 檔案一文所述。 在本文中，您會了解如何在查詢時使用檔案和資料夾名稱的相關中繼資料資訊。
 
 有時可能需要知道哪些檔案或資料夾來源與結果集中特定的資料列相互關聯。
 
@@ -26,7 +26,7 @@ SQL 隨選可以處理多個檔案和資料夾，如 [查詢資料夾和多個](
 
 ## <a name="prerequisites"></a>Prerequisites
 
-第一步是**建立資料庫**，其資料來源是參考儲存體帳戶。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+第一步是 **建立資料庫** ，其資料來源是參考儲存體帳戶。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
 ## <a name="functions"></a>函式
 
