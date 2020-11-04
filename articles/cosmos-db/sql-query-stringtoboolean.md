@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 StringToBoolean
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToBoolean。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bb31aa3ba90c54873586cfba35e668cd31e32572
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ad7ca9e2e50395effcc50e776eee3f1740fbb7a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099251"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337909"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

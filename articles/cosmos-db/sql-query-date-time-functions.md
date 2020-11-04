@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言的日期和時間函數
 description: 瞭解 Azure Cosmos DB 中的日期和時間 SQL 系統函數，以執行 DateTime 和 timestamp 作業。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a7f19a7c3cc7337f0e1c53cf387abb35b96d1e38
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d8b6e932f4cd5f4119d93f3fed7db524f65cbc1f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100315"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338946"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日期和時間函式 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +41,7 @@ ms.locfileid: "93100315"
 * [TicksToDateTime](sql-query-tickstodatetime.md)
 * [TimestampToDateTime](sql-query-timestamptodatetime.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

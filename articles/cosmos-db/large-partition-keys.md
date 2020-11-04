@@ -3,16 +3,17 @@ title: 使用大型分割區索引鍵來建立 Azure Cosmos 容器
 description: 瞭解如何使用 Azure 入口網站和不同的 Sdk，在 Azure Cosmos DB 中建立具有大型分割區索引鍵的容器。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a93bf4fe92cc7b2240a7411b093a7bab5a1a275e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098819"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339286"
 ---
 # <a name="create-containers-with-large-partition-key"></a>建立具有大型分割區索引鍵的容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

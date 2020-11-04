@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c72a2b134fc2c24789ebb75f61d9b64d63d3d48e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597909"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339473"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>瞭解 SAML 型單一登入
 
@@ -30,9 +30,9 @@ ms.locfileid: "91597909"
 在 [快速入門系列](add-application-portal-setup-sso.md)中，有一篇文章說明如何設定單一登入。 在其中，您將瞭解如何存取應用程式的 SAML 設定頁面。 [SAML 設定] 頁面包含五個區段。 本文將詳細討論這些章節。
 
 > [!IMPORTANT] 
-> 在某些案例中，在**企業應用**程式中，應用程式的導覽中不會有**單一登入**選項。 
+> 在某些案例中，在 **企業應用** 程式中，應用程式的導覽中不會有 **單一登入** 選項。 
 >
-> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式** ] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
 >
 > 當應用程式裝載于另一個租使用者時，或您的帳戶沒有必要許可權 (全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者) 時，流覽中將遺失 **單一登入** 的情況。 許可權也可能會導致您無法開啟 **單一登入** ，但無法儲存的情況。 若要深入瞭解 Azure AD 系統管理角色，請參閱 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
@@ -46,7 +46,7 @@ ms.locfileid: "91597909"
 
 | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 描述 |
 |:--|:--|:--|:--|
-| **識別碼 (實體識別碼)** | 某些應用程式需要 | 某些應用程式需要 | 可唯一識別應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 輸入使用下列模式的 URL：'https://<subdomain>.contoso.com' *您可在應用程式傳送的  (SAML 要求) 中找到作為 **Issuer** 元素的這個值*。 |
+| **識別碼 (實體識別碼)** | 某些應用程式需要 | 某些應用程式需要 | 可唯一識別應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 輸入使用下列模式的 URL：'https://<subdomain>.contoso.com' *您可在應用程式傳送的  (SAML 要求) 中找到作為 **Issuer** 元素的這個值* 。 |
 | **回覆 URL** | 必要 | 必要 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 您可以使用其他回覆 URL 欄位來指定多個回覆 URL。 例如，您可能需要多個子網域的其他回覆 URL。 或者，基於測試目的，您可以一次指定多個回覆 URL (本機主機和公用 URL)。 |
 | **登入 URL** | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用 URL，從 Microsoft 365 或 Azure AD 我的應用程式啟動應用程式。 若為空白，Azure AD 會在使用者從 Microsoft 365、Azure AD 我的應用程式或 Azure AD SSO URL 啟動應用程式時，進行 IdP 起始的登入。|
 | **轉送狀態** | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
@@ -54,13 +54,13 @@ ms.locfileid: "91597909"
 
 ## <a name="user-attributes-and-claims"></a>使用者屬性和宣告 
 
-當使用者對應用程式進行驗證時，Azure AD 會將 SAML 權杖簽發給應用程式，此權杖具有可唯一識別該應用程式的使用者相關資訊 (或宣告)。 根據預設，此資訊包含使用者的使用者名稱、電子郵件地址、名字和姓氏。 例如，如果應用程式需要特定的宣告值或**名稱**格式，而不是使用者名稱，則您可能需要自訂這些宣告。 
+當使用者對應用程式進行驗證時，Azure AD 會將 SAML 權杖簽發給應用程式，此權杖具有可唯一識別該應用程式的使用者相關資訊 (或宣告)。 根據預設，此資訊包含使用者的使用者名稱、電子郵件地址、名字和姓氏。 例如，如果應用程式需要特定的宣告值或 **名稱** 格式，而不是使用者名稱，則您可能需要自訂這些宣告。 
 
 > [!IMPORTANT]
 > 許多應用程式已預先設定，且在應用程式資源庫中，您不需要擔心如何設定使用者和群組宣告。 [快速入門系列](add-application-portal.md)將逐步引導您新增和設定應用程式。
 
 
-**唯一的使用者識別碼 (名稱識別碼) **識別碼值是必要的宣告，而且很重要。 預設值為*user。* 使用者識別碼可唯一識別應用程式內的每個使用者。 例如，如果電子郵件地址同時是使用者名稱和唯一識別碼，請將此值設定為 *user.mail*。
+**唯一的使用者識別碼 (名稱識別碼)** 識別碼值是必要的宣告，而且很重要。 預設值為 *user。* 使用者識別碼可唯一識別應用程式內的每個使用者。 例如，如果電子郵件地址同時是使用者名稱和唯一識別碼，請將此值設定為 *user.mail* 。
 
 若要深入瞭解自訂 SAML 宣告，請參閱 [如何：自訂企業應用程式的 saml 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。
 
@@ -85,23 +85,26 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您�
 
 檢查憑證以驗證憑證的一些常見事項包括： 
    - *正確的到期日。* 您最多可將到期日設定為未來三年的日期。
-   - *正確憑證的作用中狀態。* 如果狀態處於 [非作用中]，請將狀態變更為 [作用中]。 若要變更狀態，請以滑鼠右鍵按一下憑證的資料列，然後選取 [ **讓憑證變成**使用中]。
+   - *正確憑證的作用中狀態。* 如果狀態處於 [非作用中]，請將狀態變更為 [作用中]。 若要變更狀態，請以滑鼠右鍵按一下憑證的資料列，然後選取 [ **讓憑證變成** 使用中]。
    - *正確的簽署選項和演算法。*
    - *正確的通知電子郵件地址。* 作用中的憑證接近到期日時，Azure AD 會傳送通知到此欄位設定的電子郵件地址。
 
-有時候您可能需要下載憑證。 不過請小心儲存！ 若要下載憑證，請選取 [Base64 格式]、[原始格式] 或 [同盟中繼資料 XML] 的其中一個選項。 Azure AD 也提供**應用程式同盟中繼資料 URL**，您可以在其中以 `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` 格式存取應用程式特定的中繼資料。
+有時候您可能需要下載憑證。 不過請小心儲存！ 若要下載憑證，請選取 [Base64 格式]、[原始格式] 或 [同盟中繼資料 XML] 的其中一個選項。 Azure AD 也提供 **應用程式同盟中繼資料 URL** ，您可以在其中以 `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` 格式存取應用程式特定的中繼資料。
+
+> [!NOTE]
+> 應用程式應該能夠處理在使用時轉譯的 XML 中所呈現的位元組順序標記 https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={app-id} 。 位元組順序標記會以非列印的 ASCII 字元»¿表示，而在十六進位中，則會在檢查 XML 資料時以 EF BB BF 表示。
 
 若要進行憑證變更，請選取 [編輯] 按鈕。 您可以在 [ **SAML 簽署憑證** ] 頁面上執行幾項作業：
-   - 建立新憑證：選取 [ **新增憑證**]，選取 **到期日**，然後選取 [ **儲存**]。 若要啟用憑證，請選取操作功能表 ( **...** )，然後選取 [使憑證為使用中]。
-   - 上傳具有私密金鑰與 pfx 認證的憑證：選取 [匯 **入** 憑證]，然後流覽至憑證。 輸入 **PFX 密碼**，然後選取 [新增]。  
+   - 建立新憑證：選取 [ **新增憑證** ]，選取 **到期日** ，然後選取 [ **儲存** ]。 若要啟用憑證，請選取操作功能表 ( **...** )，然後選取 [使憑證為使用中]。
+   - 上傳具有私密金鑰與 pfx 認證的憑證：選取 [匯 **入** 憑證]，然後流覽至憑證。 輸入 **PFX 密碼** ，然後選取 [新增]。  
    - 設定 advanced certificate 簽署。 如需這些選項的詳細資訊，請參閱 [Advanced certificate 簽署選項](certificate-signing-options.md)。
    - 當作用中的憑證接近到期日時通知其他人：在 [ **通知電子郵件地址** ] 欄位中輸入電子郵件地址。
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>將應用程式設定為使用 Azure AD
 
-[**設定 \<applicationName> ** ] 區段會列出必須在應用程式中設定的值，以便使用 Azure AD 作為 SAML 識別提供者。 您可以在 [應用程式] 網站上的 [設定] 頁面上設定這些值。 例如，如果您要設定 GitHub，則會移至 github.com 網站並設定值。 如果應用程式已預先設定，且在 Azure AD 資源庫中，您將會找到可供 **觀看逐步指示**的連結。 否則，您將需要尋找所要設定之應用程式的檔。 
+[ **設定 \<applicationName>** ] 區段會列出必須在應用程式中設定的值，以便使用 Azure AD 作為 SAML 識別提供者。 您可以在 [應用程式] 網站上的 [設定] 頁面上設定這些值。 例如，如果您要設定 GitHub，則會移至 github.com 網站並設定值。 如果應用程式已預先設定，且在 Azure AD 資源庫中，您將會找到可供 **觀看逐步指示** 的連結。 否則，您將需要尋找所要設定之應用程式的檔。 
 
-**登入 url**和**登出 url**值都會解析為相同的端點，也就是 AZURE AD 租使用者的 SAML 要求處理端點。 
+**登入 url** 和 **登出 url** 值都會解析為相同的端點，也就是 AZURE AD 租使用者的 SAML 要求處理端點。 
 
 [Azure AD 識別碼] 是核發給應用程式的 SAML 權杖中包含的 [簽發者] 值。
 

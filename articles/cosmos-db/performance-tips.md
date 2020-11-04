@@ -3,16 +3,17 @@ title: 適用于 .NET SDK v2 的 Azure Cosmos DB 效能秘訣
 description: 瞭解用戶端設定選項，以改善 Azure Cosmos DB .NET v2 SDK 效能。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: a1c986663c42b87e7e5d4530b26200d48fe612cb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2da2047469f342814ff349cfa059ed61e3adc25
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314271"
+ms.locfileid: "93339677"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

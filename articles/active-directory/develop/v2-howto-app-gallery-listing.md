@@ -1,5 +1,5 @@
 ---
-title: 將您的應用程式發佈至 Azure AD 應用程式資源庫
+title: 將您的應用程式發佈至 Azure Active Directory 應用程式資源庫
 description: 瞭解如何在 Azure Active Directory 應用程式資源庫中列出支援單一登入的應用程式。
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275654"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339424"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -60,11 +60,28 @@ ms.locfileid: "92275654"
 5. 提交您的應用程式。
 6. 加入 Microsoft 合作夥伴網路。
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>什麼是 Azure AD 應用程式庫？
 
-## <a name="prerequisites"></a>先決條件
+- 客戶可找到最佳且適用的單一登入體驗。
+- 應用程式的設定相當簡單且基本。
+- 快速搜尋可在應用程式庫中找到您的應用程式。
+- 免費、基本及進階 Azure AD 的客戶都可使用這項整合。
+- 共同客戶可取得逐步設定教學課程。
+- 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
+
+## <a name="prerequisites"></a>必要條件
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
+- 針對同盟應用程式 (開啟識別碼和 SAML/WS-饋送) ，應用程式必須支援軟體即服務 (SaaS) 模型，才能列在 Azure AD 應用程式庫中。 企業資源庫應用程式必須支援多個客戶設定，而不是任何特定客戶。
+- 針對 Open ID Connect，必須 multitenanted 應用程式，而且必須為應用程式正確地執行 [Azure AD 同意架構](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 。 使用者可以將登入要求傳送至一般端點，讓任何客戶都能為應用程式提供同意。 您可以根據租用戶識別碼和在權杖中收到的使用者 UPN 來控制使用者存取權。
+- 針對 SAML 2.0/WS-送出，您的應用程式必須能夠在 SP 或 IDP 模式下進行 SAML/WS-饋送 SSO 整合。 在您提交要求之前，請確定這項功能是否正常運作。
+- 若為密碼 SSO，請確定您的應用程式支援表單驗證，才能完成密碼保存，讓單一登入能如預期般運作。
+- 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
+
+**如何取得開發人員的 Azure AD？**
+
+您可以取得免費的測試帳戶，其中包含所有 premium Azure AD 功能-90 天免費，只要您使用它進行開發，就可以延長： https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>步驟 1-為您的應用程式選擇正確的單一登入標準
 
@@ -159,9 +176,9 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 擁有租使用者之後，您必須啟用並測試單一登入存取。 
 
-**針對 OIDC 或 Oath 應用**程式，請將 [您的應用程式註冊](quickstart-register-app.md) 為多租使用者應用程式。 在 [支援的帳戶類型] 中，選取 [任何組織目錄中的帳戶及個人 Microsoft 帳戶] 選項。
+**針對 OIDC 或 Oath 應用** 程式，請將 [您的應用程式註冊](quickstart-register-app.md) 為多租使用者應用程式。 在 [支援的帳戶類型] 中，選取 [任何組織目錄中的帳戶及個人 Microsoft 帳戶] 選項。
 
-**針對 saml 和 WS-送出的應用程式**，您可以在 Azure AD 中使用一般 SAML 範本來 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md) 應用程式。
+**針對 saml 和 WS-送出的應用程式** ，您可以在 Azure AD 中使用一般 SAML 範本來 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md) 應用程式。
 
 如有必要，您也可以 [將單一租使用者應用程式轉換為多租](howto-convert-app-to-be-multi-tenant.md) 使用者。
 
@@ -202,9 +219,9 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 如果您收到「無法運作」的訊息，則必須聯絡 [AZURE AD SSO 整合小組](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供您要用來提交要求的電子郵件帳戶。 慣用的商業電子郵件地址 `name@yourbusiness.com` 。 Azure AD 團隊會在 Microsoft 應用程式網路入口網站中新增該帳戶。
 
-如果您看到 [要求存取] 頁面，請填寫商務理由，然後選取 [ **要求存取**]。
+如果您看到 [要求存取] 頁面，請填寫商務理由，然後選取 [ **要求存取** ]。
 
-新增帳戶之後，您可以登入 Microsoft 應用程式網路入口網站，然後在首頁上選取 [ **提交要求 (ISV) ** ] 磚來提交要求。
+新增帳戶之後，您可以登入 Microsoft 應用程式網路入口網站，然後在首頁上選取 [ **提交要求 (ISV)** ] 磚來提交要求。
 
 ![在首頁上提交要求 (ISV) 磚](./media/howto-app-gallery-listing/homepage.png)
 
@@ -236,11 +253,11 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ![列出資源庫中的 OpenID Connect 應用程式](./media/howto-app-gallery-listing/openid.png)
 
-如果您想要使用 **saml 2.0** 或 **ws-addressing**將應用程式新增至資源庫中的清單，請選取 [ **Saml 2.0/ws-送** 出]，如下所示。
+如果您想要使用 **saml 2.0** 或 **ws-addressing** 將應用程式新增至資源庫中的清單，請選取 [ **Saml 2.0/ws-送** 出]，如下所示。
 
 ![在資源庫中列出 SAML 2.0 或 WS-Fed 應用程式](./media/howto-app-gallery-listing/saml.png)
 
-如果您想要使用密碼 SSO 將應用程式新增至資源庫中的清單，請選取 [ **密碼 sso (使用者名稱 & 密碼) ** 如下所示。
+如果您想要使用密碼 SSO 將應用程式新增至資源庫中的清單，請選取 [ **密碼 sso (使用者名稱 & 密碼)** 如下所示。
 
 ![在資源庫中列出密碼 SSO 應用程式](./media/howto-app-gallery-listing/passwordsso.png)
 
@@ -256,6 +273,16 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 > [!NOTE]
 > 如果您有存取權的任何問題，請參閱上一節的建立帳戶。 如果無法運作，請聯絡 [AZURE AD SSO 整合小組](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
+
+### <a name="list-requests-by-customers"></a>列出客戶的要求
+
+客戶可以藉由選取 **客戶**  >  **提交新要求** 的應用程式要求，提交列出應用程式的要求。
+
+![顯示客戶要求的應用程式圖格](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+以下是客戶要求應用程式的流程。
+
+![顯示客戶要求的應用程式流程](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>時間表

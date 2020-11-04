@@ -3,16 +3,17 @@ title: 適用於 Azure Cosmos DB 作為索引鍵值存放區的要求單位費�
 description: 深入了解 Azure Cosmos DB 做為金鑰值存放區時，進行簡單寫入與讀取作業的要求單位費用。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cd80e98d0838cb06228c92c7ea7efeb3fc30a0ed
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9354ae0a22ef2e8ab4ee6a57563d3f3c4c8e4547
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082873"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339292"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB 做為金鑰值存放區–成本總覽
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,6 +47,6 @@ Azure Cosmos DB 的效能取決於 [要求單位中以要求單位](request-unit
 
 大部分基本的 Blob 或物件存放區的服務收費，為每百萬次讀取交易 $0.40，以及每百萬次寫入交易 $5。 如果以最佳方式使用，Cosmos DB 可) 的 1 KB 交易 (，比這些其他解決方案更便宜98%。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 使用 [RU 計算機](https://cosmos.azure.com/capacitycalculator/) 來預估工作負載的輸送量。

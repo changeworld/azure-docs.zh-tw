@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 IS_ARRAY
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_ARRAY。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 06db1ab7af20193d4024b29a122a0b7a424b1abf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: bb78e6c1481cbf8958b064f316ac1e20be2a6440
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101403"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338759"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

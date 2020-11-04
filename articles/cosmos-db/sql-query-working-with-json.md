@@ -3,15 +3,16 @@ title: 在 Azure Cosmos DB 中使用 JSON
 description: 了解如何在 Azure Cosmos DB 中查詢和存取巢狀 JSON 屬性，以及使用特殊字元
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: 1cc79862bccee3253e41ce5f1c6bc8c149d9b3ae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9a9300db1adc3ff238c44887012400702690b0e8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100638"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337824"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用 JSON
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

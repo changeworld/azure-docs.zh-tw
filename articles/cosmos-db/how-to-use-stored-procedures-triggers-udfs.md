@@ -3,16 +3,17 @@ title: 在 Azure Cosmos DB Sdk 中註冊和使用預存程式、觸發程式和�
 description: 了解如何使用 Azure Cosmos DB SDK 來註冊和呼叫預存程序、觸發程序和使用者定義函式
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 56c6327d2ecd3ae3721a7ee33565543405088d1c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 022a45199cfc2d467b1d0d408e86cb5d621070d9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098870"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339839"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中註冊和使用預存程序、觸發程序和使用者定義函式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -708,7 +709,7 @@ results = list(container.query_items(
     'query': 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 了解更多概念，以及如何在 Azure Cosmos DB 中寫入或使用預存程序、觸發程序和使用者定義函式：
 

@@ -4,16 +4,15 @@ description: 瞭解如何使用 Azure 監視器設定 Azure Cosmos DB 的警示�
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 1042638dc622e6675c997bc6db8df1d072824816
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099907"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339524"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>使用 Azure 監視器建立 Azure Cosmos DB 的警示
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,7 +83,7 @@ ms.locfileid: "93099907"
 
    * 提供您的動作名稱，並選取 [ **電子郵件/SMS 訊息/推播/語音** ] 作為 **動作類型** 。 下列螢幕擷取畫面顯示動作類型的詳細資料：
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="設定邏輯以接收速率有限/429 要求的警示":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="設定動作類型，例如接收警示的電子郵件通知":::
 
 1. 填寫 [ **警示規則詳細資料** ] 區段：
 
@@ -103,7 +102,7 @@ ms.locfileid: "93099907"
 * 建立、刪除或更新資料庫或容器時。
 * 當資料庫或容器的輸送量變更時。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如何監視 Azure Cosmos 容器中的 [正規化 RU/s 度量](monitor-normalized-request-units.md) 。
 * 如何在 Azure Cosmos DB 中監視作業的 [輸送量或要求單位使用量](monitor-request-unit-usage.md) 。

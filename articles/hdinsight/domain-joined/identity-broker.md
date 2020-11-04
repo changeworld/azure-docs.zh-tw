@@ -1,20 +1,20 @@
 ---
-title: 使用識別碼代理程式 (預覽) 進行認證管理-Azure HDInsight
+title: 'Azure HDInsight 識別碼代理程式 (HIB) '
 description: 瞭解 Azure HDInsight 識別碼代理程式，以簡化已加入網域之 Apache Hadoop 叢集的驗證。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/03/2020
+ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043265"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337671"
 ---
-# <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview) 
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight 識別碼代理程式 (HIB) 
 
 本文說明如何設定和使用 Azure HDInsight 識別碼訊息代理程式功能。 您可以使用這項功能來取得 Apache Ambari 的新式 OAuth 驗證，同時強制執行多重要素驗證，而不需要 Azure Active Directory Domain Services (Azure AD DS) 中的舊版密碼雜湊。
 
@@ -45,7 +45,7 @@ HDInsight 識別碼代理人提供驗證基礎結構，可讓您從 OAuth (新�
 
 下圖顯示同盟使用者的基本驗證流程。 首先，閘道會嘗試使用 [ROPC 流程](../../active-directory/develop/v2-oauth-ropc.md)來完成驗證。 如果沒有任何密碼雜湊同步處理至 Azure AD，則會切換回以探索 AD FS 端點，並藉由存取 AD FS 端點來完成驗證。
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="顯示 HDInsight 識別碼 Broker 驗證流程的圖表。":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="顯示基本驗證架構的圖表。":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>啟用 HDInsight 識別碼代理程式

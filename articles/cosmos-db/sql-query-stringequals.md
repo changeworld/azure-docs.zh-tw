@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 StringEquals
 description: 了解 Azure Cosmos DB 中的 StringEquals SQL 系統函數如何傳回布林值，指出第一個字串運算式是否符合第二個字串運算式
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a34ea2e2421433777ff1b9dd44d2ffc5599017bc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47d899534de535b5cd6a7c3fb2df78cdadbe11f2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079779"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338028"
 ---
 # <a name="stringequals-azure-cosmos-db"></a>STRINGEQUALS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

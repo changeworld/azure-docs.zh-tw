@@ -3,15 +3,16 @@ title: 使用 Azure CLI 管理 Azure Cosmos DB Core (SQL) API 資源
 description: 使用 Azure CLI 管理 Azure Cosmos DB Core (SQL) API 資源。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e5e5a057d6c88e0963ab674aa7dbf2d420ff21b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e4b112b93a552ff62b08c102e710cd914265ba5c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083897"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339320"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos Core (SQL) API 資源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -541,7 +542,7 @@ lockid=$(az lock show --name $containerLockName \
 az lock delete --ids $lockid
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure CLI 的詳細資訊，請參閱：
 

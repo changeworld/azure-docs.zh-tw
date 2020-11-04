@@ -2,14 +2,14 @@
 title: 使用共用存取簽章 Azure 服務匯流排存取控制
 description: 使用共用存取簽章的服務匯流排存取控制概觀，詳細說明 Azure 服務匯流排之 SAS 授權的相關資訊。
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f71320613682f7d4b9f3b706845e68f581b3dc10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012070"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339405"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共用存取簽章的服務匯流排存取控制
 
@@ -36,7 +36,7 @@ SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設
 
 每個服務匯流排命名空間和每個服務匯流排實體，都有一個由規則組成的共用存取授權原則。 命名空間層級的原則會套用至命名空間內的所有實體，無論其個別的原則組態為何。
 
-對於每個授權原則規則，您會決定三項資訊：**名稱**、**範圍**和**權限**。 **名稱** 只是該範圍內的唯一名稱。 範圍也很簡單：它是發生問題之資源的 URI。 針對服務匯流排命名空間，範圍是完整的網域名稱 (FQDN)，例如 `https://<yournamespace>.servicebus.windows.net/`。
+對於每個授權原則規則，您會決定三項資訊： **名稱** 、 **範圍** 和 **權限** 。 **名稱** 只是該範圍內的唯一名稱。 範圍也很簡單：它是發生問題之資源的 URI。 針對服務匯流排命名空間，範圍是完整的網域名稱 (FQDN)，例如 `https://<yournamespace>.servicebus.windows.net/`。
 
 原則規則所授與的權限可由下列項目組合而成：
 
@@ -48,9 +48,23 @@ SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設
 
 命名空間或實體原則最多可包含 12 個共用存取授權規則，而提供三組規則的空間，每組規則分別涵蓋基本權限以及「傳送」與「接聽」的組合。 此限制強調 SAS 原則存放區不應為使用者或服務帳戶存放區。 如果您的應用程式需要根據使用者或服務身分識別授與服務匯流排的存取權，則應實作會在驗證和存取檢查後發行 SAS 權杖的安全性權杖服務。
 
-授權規則會被指派「主要金鑰」** 和「次要金鑰」**。 這些是密碼編譯增強式金鑰。 請勿遺失或洩漏金鑰 - 它們永遠都可在 [Azure 入口網站][Azure portal]取得。 您可以使用其中一個產生的金鑰，以及您可以隨時重新產生它們。 如果您重新產生或變更原則中的金鑰，所有先前根據該金鑰發行的權杖都將立即無效。 不過，根據這類權杖建立的作用中連線會繼續運作，直到權杖到期。
+授權規則會被指派「主要金鑰」和「次要金鑰」。 這些是密碼編譯增強式金鑰。 請勿遺失或洩漏金鑰 - 它們永遠都可在 [Azure 入口網站][Azure portal]取得。 您可以使用其中一個產生的金鑰，以及您可以隨時重新產生它們。 如果您重新產生或變更原則中的金鑰，所有先前根據該金鑰發行的權杖都將立即無效。 不過，根據這類權杖建立的作用中連線會繼續運作，直到權杖到期。
 
-當您建立服務匯流排命名空間時，系統會自動為命名空間建立名為 **RootManageSharedAccessKey** 的原則規則。 此原則具有整個命名空間的「管理」權限。 建議您將此規則視為系統管理**根**帳戶，且不要將其用於您的應用程式。 您可以在入口網站中命名空間的 [ **設定** ] 索引標籤中，透過 PowerShell 或 Azure CLI 來建立額外的原則規則。
+當您建立服務匯流排命名空間時，系統會自動為命名空間建立名為 **RootManageSharedAccessKey** 的原則規則。 此原則具有整個命名空間的「管理」權限。 建議您將此規則視為系統管理 **根** 帳戶，且不要將其用於您的應用程式。 您可以在入口網站中命名空間的 [ **設定** ] 索引標籤中，透過 PowerShell 或 Azure CLI 來建立額外的原則規則。
+
+## <a name="best-practices-when-using-sas"></a>使用 SAS 時的最佳做法
+當您在應用程式中使用共用存取簽章時，您必須留意兩個潛在風險：
+
+- 如果 SAS 洩漏，則任何取得該 SAS 的人都可以使用它，可能會危害您的事件中樞資源。
+- 如果提供給用戶端應用程式的 SAS 到期，而且應用程式無法從您的服務取得新的 SAS，則可能會妨礙運作應用程式的功能。
+
+下列關於使用共用存取簽章的建議，將可協助您平衡這些風險：
+
+- **如果有需要，用戶端會自動更新 sas** ：用戶端應在到期前更新 sas，以在提供 SAS 的服務無法使用時，允許重試的時間。 如果您的 SAS 適用于少數的立即存留期作業，這些作業預期會在到期期間內完成，則可能不需要更新，因為 SAS 預期不會更新。 不過，如果您有定期透過 SAS 做出要求的用戶端，則到期的可能性便有可能發生。 重要的考慮是平衡 SAS 的需要存留期 (，如先前所述) 需要確保用戶端 (提早要求續約，以避免由於 SAS 在成功更新) 之前過期所造成的中斷。
+- **請小心使用 SAS 開始時間** ：如果您將 sa 的開始時間設定為 [ **現在** ]，則由於時鐘誤差 (根據不同的電腦) 的目前時間有所差異，因此在前幾分鐘內可能會間歇性觀察到失敗。 一般而言，請將開始時間設為至少 15 分鐘之前的時間。 或者，完全不要設定，這會在所有情況下立即生效。 同樣的情況也同樣適用于到期時間。 請記住，您可能會在任何要求的任一方向觀察到最多15分鐘的時鐘誤差。 
+- **請特別針對要存取的資源** 提供：安全性最佳作法是為使用者提供最低的必要許可權。 如果使用者只需要單一實體的讀取存取權，則授與他們該單一實體的讀取存取權，而非授與他們所有實體的讀取/寫入/刪除存取權。 此外，如果 SAS 遭到入侵，它也有助於降低損毀的損毀，因為 SAS 的能力較低。
+- **請勿一律使用 sas** ：有時與事件中樞的特定作業相關聯的風險，會超過 SAS 的優點。 針對這類作業，建立仲介層服務，在商務規則驗證、驗證和審核之後，寫入至您的事件中樞。
+- **一律使用 HTTPs** ：一律使用 HTTPs 來建立或散發 SAS。 如果 SAS 透過 HTTP 傳遞，並被攔截，執行攔截式連接的攻擊者能夠讀取 SAS，然後如同預期的使用者一樣使用它，可能會危及敏感性資料或允許惡意使用者損毀資料。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共用存取簽章驗證的設定
 
@@ -58,7 +72,7 @@ SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-在此圖中，*manageRuleNS*、*sendRuleNS* 和 *listenRuleNS* 授權規則套用至佇列 Q1 和主題 T1，而 *listenRuleQ* 和 *sendRuleQ* 僅套用至佇列 Q1 以及 *sendRuleT* 僅套用至主題 T1。
+在此圖中， *manageRuleNS* 、 *sendRuleNS* 和 *listenRuleNS* 授權規則套用至佇列 Q1 和主題 T1，而 *listenRuleQ* 和 *sendRuleQ* 僅套用至佇列 Q1 以及 *sendRuleT* 僅套用至主題 T1。
 
 ## <a name="generate-a-shared-access-signature-token"></a>產生共用存取簽章權杖
 
@@ -73,7 +87,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -所存取資源的 URI。
 * **`sig`** 信號.
 
-`signature-string`是根據上一節所述的資源 URI (**範圍**來計算的 256 sha-1 雜湊，) 和權杖到期即時的字串表示（以 LF 分隔）。
+`signature-string`是根據上一節所述的資源 URI ( **範圍** 來計算的 256 sha-1 雜湊，) 和權杖到期即時的字串表示（以 LF 分隔）。
 
 雜湊計算看起來類似下列虛擬程式碼，會傳回 256 位元/32 位元組的雜湊值。
 
@@ -85,7 +99,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 資源 URI 是宣告其存取權之服務匯流排資源的完整 URI。 例如，`http://<namespace>.servicebus.windows.net/<entityPath>` 或 `sb://<namespace>.servicebus.windows.net/<entityPath>`；也就是 `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`。 
 
-**URI 必須以 [百分比編碼](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)。**
+**URI 必須以 [百分比編碼](/dotnet/api/system.web.httputility.urlencode)。**
 
 用於簽署的共用存取授權規則必須設定於此 URI 或其中一個階層式上層所指定的實體。 例如，先前範例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
@@ -160,7 +174,7 @@ sendClient.Send(helloMessage);
 
 您也可以直接使用權杖提供者發行權杖，並傳至其他用戶端。
 
-連接字串可包含規則名稱 (*SharedAccessKeyName*) 和規則金鑰 (*SharedAccessKey*) 或先前發行的權杖 (*SharedAccessSignature*)。 當這些名稱出現在傳至任何建構函式的連接字串中，或是接受連接字串的 Factory 方法中時，系統會自動建立 SAS 權杖提供者並填入。
+連接字串可包含規則名稱 ( *SharedAccessKeyName* ) 和規則金鑰 ( *SharedAccessKey* ) 或先前發行的權杖 ( *SharedAccessSignature* )。 當這些名稱出現在傳至任何建構函式的連接字串中，或是接受連接字串的 Factory 方法中時，系統會自動建立 SAS 權杖提供者並填入。
 
 請注意，若要搭配使用 SAS 授權與服務匯流排轉送，您可以使用在服務匯流排命名空間上設定的 SAS 金鑰。 如果您在命名空間 (具有 [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription) 的 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)) 物件上明確建立轉送，您可以設定該轉送的 SAS 規則。 若要搭配使用 SAS 授權與服務匯流排訂用帳戶，您可以使用在服務匯流排命名空間或主題上設定的 SAS 金鑰。
 
@@ -238,16 +252,16 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-上述 `PutCbsToken()` 方法會接收代表服務之 TCP 連線的 *connection* ([AMQP .NET Lite 程式庫](https://github.com/Azure/amqpnetlite)所提供的 AMQP 連接類別執行個體) 以及要做為 SAS 權杖傳送的 sasToken** 參數。
+上述 `PutCbsToken()` 方法會接收代表服務之 TCP 連線的 *connection* ( [AMQP .NET Lite 程式庫](https://github.com/Azure/amqpnetlite)所提供的 AMQP 連接類別執行個體) 以及要做為 SAS 權杖傳送的 sasToken 參數。
 
 > [!NOTE]
-> 請務必以**設為 ANONYMOUS 的 SASL 驗證機制** (而非當您不需要傳送 SAS 權杖時所使用且包含使用者名稱與密碼的預設 PLAIN) 建立連線。
+> 請務必以 **設為 ANONYMOUS 的 SASL 驗證機制** (而非當您不需要傳送 SAS 權杖時所使用且包含使用者名稱與密碼的預設 PLAIN) 建立連線。
 >
 >
 
 接下來，發行者會建立兩個 AMQP 連結來傳送 SAS 權杖，並接受來自服務的回覆 (權杖驗證結果)。
 
-AMQP 訊息包含眾多屬性，以及比簡單訊息更多的資訊。 SAS 權杖是訊息的內文 (使用其建構函式)。 **"ReplyTo"** 屬性設定為在接收者連結上接收驗證結果的節點名稱 (您可以視需要變更它的名稱，而服務將會動態建立它)。 最後三個應用程式/自訂屬性是由服務所使用，以指出它必須執行何種類型的作業。 如 CBS 草稿規格所述，它們必須是**作業名稱** (像是 "put-token")、**權杖類型** (在本案例中為 `servicebus.windows.net:sastoken`)，以及套用權杖之**對象的 "name"** (完整實體)。
+AMQP 訊息包含眾多屬性，以及比簡單訊息更多的資訊。 SAS 權杖是訊息的內文 (使用其建構函式)。 **"ReplyTo"** 屬性設定為在接收者連結上接收驗證結果的節點名稱 (您可以視需要變更它的名稱，而服務將會動態建立它)。 最後三個應用程式/自訂屬性是由服務所使用，以指出它必須執行何種類型的作業。 如 CBS 草稿規格所述，它們必須是 **作業名稱** (像是 "put-token")、 **權杖類型** (在本案例中為 `servicebus.windows.net:sastoken`)，以及套用權杖之 **對象的 "name"** (完整實體)。
 
 在寄件者連結上傳送 SAS 權杖之後，發行者必須在接收者連結上讀取回覆。 回覆是包含名稱為 **"status-code"** 之應用程式屬性的簡單 AMQP 訊息，可用來包含做為 HTTP 狀態碼的相同值
 

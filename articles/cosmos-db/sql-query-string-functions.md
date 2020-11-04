@@ -3,23 +3,24 @@ title: Azure Cosmos DB 查詢語言中的字串函數
 description: 瞭解 Azure Cosmos DB 中的字串 SQL 系統函數。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 26f1a402c4ad070b0834efe545bebea0ee3c2f0a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4516bb9c426355de1fa2ce19befddef896a2de3e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079796"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338096"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>字串函式 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 字串函數可讓您對 Azure Cosmos DB 中的字串執行作業。
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 下列純量函數會對字串輸入值執行運算，並傳回字串、數值或布林值：
   
@@ -48,7 +49,7 @@ ms.locfileid: "93079796"
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

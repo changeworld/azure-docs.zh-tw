@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中的參數化查詢
 description: 瞭解 SQL 參數化查詢如何提供強大的使用者輸入處理和植入，以及防止透過 SQL 資料隱碼意外地公開資料。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: a0f354a0420521ede45740a4eb9c492089e36bda
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 297179b4b3f1479bf0fb9c1ff206890355092615
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089214"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338232"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的參數化查詢
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

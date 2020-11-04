@@ -4,14 +4,15 @@ description: 瞭解分頁概念和接續權杖
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 08f8095670b48fcefccb0a9adf477b83ce2537d3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8219611ac2334594dc826db3c8191102d7383835
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089231"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338266"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分頁
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -70,7 +71,7 @@ FROM c
 ORDER BY c.name
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)

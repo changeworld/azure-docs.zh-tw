@@ -3,16 +3,17 @@ title: 使用變更摘要估算器 - Azure Cosmos DB
 description: 了解如何使用變更摘要估算器來分析變更摘要處理器的進度
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b785479a1f3169c32be0d9fbd7accf37bc7ba8ed
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085778"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339830"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用變更摘要估算器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的包含函式
 description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系統函數如何傳回布林值，指出第一個字串運算式是否包含第二個字串運算式
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 80b651951fe0f18b482fa06e4df9a363749bd3b0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4b6835b22e5cfa4ca703b95d70e20112b8723def
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090829"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339167"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

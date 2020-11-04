@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中的 SQL 常數
 description: 瞭解 Azure Cosmos DB 中的 SQL 查詢常數如何用來表示特定的資料值
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339192"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查詢常數  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -3,12 +3,12 @@ title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314787"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337586"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見問題
 
@@ -42,12 +42,13 @@ Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工�
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>設備如何連接至 Azure？
 
-設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 請確定已針對設備核准這些 [url](./migrate-appliance.md#url-access) ，以連接至 Azure。
+設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 
 
-- 若要將 Azure ExpressRoute 用於 Azure Migrate 複寫流量，必須有 Microsoft 對等互連或現有的公用對等互連 (公用對等互連已針對新的 ER 建立) 淘汰。
-- 不支援透過 Azure ExpressRoute (（僅限已啟用) 私人對等互連）進行複寫。
+- 請確定設備可以連線到這些 [Azure url](./migrate-appliance.md#url-access)。 
+- 您可以使用 ExpressRoute 搭配 Microsoft 對等互連。  公用對等互連已被取代，而且不適用於新的 ExpressRoute 線路。
+- 僅支援私人對等互連。
 
-已設定 Microsoft 對等互連的 Azure ExpressRoute 是建議的複寫流量路由網域。
+
 
 ## <a name="does-appliance-analysis-affect-performance"></a>設備分析是否會影響效能？
 
@@ -65,9 +66,9 @@ Azure Migrate 設備會持續分析內部部署機器，以測量效能資料。
 
 請參閱下列文章，以取得 Azure Migrate 設備在 Vm 上收集之資料的相關資訊：
 
-- **VMWARE VM**： [檢查](migrate-appliance.md#collected-data---vmware) 收集的資料。
-- **HYPER-V VM**： [檢查](migrate-appliance.md#collected-data---hyper-v) 收集的資料。
-- **實體或虛擬伺服器**：[檢查](migrate-appliance.md#collected-data---physical) 收集的資料。
+- **VMWARE VM** ： [檢查](migrate-appliance.md#collected-data---vmware) 收集的資料。
+- **HYPER-V VM** ： [檢查](migrate-appliance.md#collected-data---hyper-v) 收集的資料。
+- **實體或虛擬伺服器** ： [檢查](migrate-appliance.md#collected-data---physical) 收集的資料。
 
 ## <a name="how-is-data-stored"></a>儲存資料的方式
 
@@ -101,7 +102,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 設備是否可以連接到多部 vCenter Server？
 
-不正確。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
+否。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 專案可以有多個設備嗎？
 
@@ -131,11 +132,11 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>我可以在 Azure VM 上設定設備嗎？
 
-不正確。 目前不支援此選項。 
+否。 目前不支援此選項。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上探索嗎？
 
-不正確。 若要探索 VMware Vm，您必須有 vCenter Server。
+否。 若要探索 VMware Vm，您必須有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何? 更新設備？
 

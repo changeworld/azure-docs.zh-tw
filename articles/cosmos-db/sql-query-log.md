@@ -3,16 +3,17 @@ title: 登入 Azure Cosmos DB 查詢語言
 description: 瞭解 Azure Cosmos DB 中的 LOG SQL 系統函數，以傳回指定數值運算式的自然對數
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 30e1f43e283707434adfa48b8754a7b0509b9eed
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 44a9d5b273e13886b0674b3b2e9f5f7a75e72fcc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075342"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338572"
 ---
 # <a name="log-azure-cosmos-db"></a>記錄 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -73,7 +74,7 @@ SELECT EXP(LOG(10)) AS expLog
 [{expLog: 10.000000000000002}]  
 ```  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

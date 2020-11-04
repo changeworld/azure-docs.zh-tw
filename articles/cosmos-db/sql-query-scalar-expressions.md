@@ -3,15 +3,16 @@ title: Azure Cosmos DB SQL 查詢中的純量運算式
 description: 瞭解 Azure Cosmos DB 的純量運算式 SQL 語法。 本文也說明如何使用運算子，將純量運算式合併成複雜運算式。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c40916d975b8acabaa7083cf57259291f09b40a9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082601"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339626"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查詢中的純量運算式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

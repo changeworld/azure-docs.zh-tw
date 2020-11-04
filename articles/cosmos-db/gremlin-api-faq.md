@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中 Gremlin API 的相關常見問題
 description: 在 Azure Cosmos DB 中取得 Gremlin API 相關常見問題的解答
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 8f9e4211b05503f70987b9e476d9a55510bbd520
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078317"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339354"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中 Gremlin API 的相關常見問題
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -145,7 +146,7 @@ Gremlin 連線是透過 WebSocket 連線而產生的。 雖然 WebSocket 連線�
 
 Azure Cosmos DB Gremlin API 尚未支援 Fluent API 呼叫。 Fluent API 呼叫需要稱為位元組程式碼支援的內部格式化功能，目前 Azure Cosmos DB Gremlin API 不支援此功能。 由於相同的原因，最新的 Gremlin-JavaScript 驅動程式目前也不受支援。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Cosmos DB Gremlin 線路通訊協定支援](gremlin-support.md)
 * 使用[Gremlin 主控台](create-graph-gremlin-console.md)建立、查詢 Azure Cosmos DB 圖形資料庫並進行查詢
