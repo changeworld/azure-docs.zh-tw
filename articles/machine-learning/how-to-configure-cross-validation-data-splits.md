@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed11a1b772acb31268f3d0a61fba10301ad62e18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886187"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320470"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
 
@@ -24,7 +24,7 @@ ms.locfileid: "90886187"
 
 在 Azure Machine Learning 中，當您使用 AutoML 來建立多個 ML 模型時，每個子系執行都必須藉由計算該模型的品質計量（例如精確度或 AUC 加權）來驗證相關的模型。 這些計量的計算方式是比較每個模型所做的預測與驗證資料中過去觀察的真實標籤。 
 
-AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)來進一步自訂驗證設定。 
+AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)來進一步自訂驗證設定。 
 
 如需低程式碼或無程式碼的體驗，請參閱 [在 Azure Machine Learning studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。 
 
@@ -47,7 +47,7 @@ AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azur
 
 ## <a name="default--data-splits-and-cross-validation"></a>預設資料分割和交叉驗證
 
-使用 [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 物件來定義您的實驗和定型設定。 在下列程式碼片段中，請注意，只會定義必要的參數，也就是 `n_cross_validation` `validation_ data` **不** 包含或的參數。
+使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 物件來定義您的實驗和定型設定。 在下列程式碼片段中，請注意，只會定義必要的參數，也就是 `n_cross_validation` `validation_ data` **不** 包含或的參數。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -67,7 +67,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|
 |**大於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用定型/驗證資料分割。 預設值是以10% 的初始訓練資料集做為驗證集。 接著，該驗證集會用於計算度量。
-|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列**，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間**，則會使用三個折迭。
+|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列** ，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間** ，則會使用三個折迭。
 
 ## <a name="provide-validation-data"></a>提供驗證資料
 

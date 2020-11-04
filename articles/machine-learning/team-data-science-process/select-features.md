@@ -11,22 +11,22 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940d4c465acb5e8478d2b204ab5b9b18c79254f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76716675"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321322"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) 中的特徵選取
 本文說明機器學習服務的資料增強程序中特徵選取的目的，並提供其角色的範例。 這些範例是根據 Azure Machine Learning Studio 繪製。
 
 特徵的工程設計與選取是[什麼是 Team Data Science Process？](overview.md)中所概述 Team Data Science Process (TDSP) 程序的其中一部分。 特徵工程設計和選取屬於 TDSP 的 **開發特徵** 步驟。
 
-* **特性工程設計**：此程序嘗試從資料中的現有原始特性建立其他相關特性，以及增加學習演算法的預測功效。
-* **特性選取**：此程序嘗試選取主要的原始資料特性子集，以縮小定型問題的維度。
+* **特性工程設計** ：此程序嘗試從資料中的現有原始特性建立其他相關特性，以及增加學習演算法的預測功效。
+* **特性選取** ：此程序嘗試選取主要的原始資料特性子集，以縮小定型問題的維度。
 
-通常會先套用**特性工程設計**以產生其他特定，然後執行**特性選取**步驟以排除不相關、多餘或高度相關的特性。
+通常會先套用 **特性工程設計** 以產生其他特定，然後執行 **特性選取** 步驟以排除不相關、多餘或高度相關的特性。
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>從您的資料篩選特徵 - 特徵選取
 特徵選取可用於分類或回歸工作。 其目的在於從原始資料集中選取一小組特性，使用極小一組的特性來代表資料中的最大變異量，藉此縮小其維度。 特徵子集會用來將模型定型。 特性選取有兩個主要目的。
@@ -64,7 +64,6 @@ Azure Machine Learning Studio 中有針對特性選取而提供的模組。 如�
 您不一定要執行特徵工程設計或特徵選取。 需要與否取決於收集的資料、所選擇的演算法，以及實驗的目標。
 
 <!-- Module References -->
-[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
-[filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
-[fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
-
+[feature-hashing]: /azure/machine-learning/studio-module-reference/feature-hashing
+[filter-based-feature-selection]: /previous-versions/azure/dn905854(v=azure.100)
+[fisher-linear-discriminant-analysis]: /azure/machine-learning/studio-module-reference/fisher-linear-discriminant-analysis

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319416"
 ---
 # <a name="poisson-regression"></a>波氏迴歸
 
@@ -29,7 +29,7 @@ ms.locfileid: "90905253"
 - 波氏分佈是離散分佈;因此，將此方法與非整數搭配使用並沒有意義。
 
 > [!TIP]
-> 如果您的目標不是計數，則波氏迴歸可能不是適當的方法。 [在設計工具中嘗試其他回歸模組](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms)。 
+> 如果您的目標不是計數，則波氏迴歸可能不是適當的方法。 [在設計工具中嘗試其他回歸模組](./module-reference.md#machine-learning-algorithms)。 
 
 設定回歸方法之後，您必須使用包含您想要預測之值範例的資料集來定型模型。 然後，定型的模型就可用來進行預測。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90905253"
 
 ## <a name="how-to-configure-poisson-regression"></a>如何設定波氏回歸
 
-1. 在 [設計師] 中將 [波氏 **回歸** ] 模組新增至您的管線。 您可以在**回歸**分類的**Machine Learning 演算法**下找到此模組。
+1. 在 [設計師] 中將 [波氏 **回歸** ] 模組新增至您的管線。 您可以在 **回歸** 分類的 **Machine Learning 演算法** 下找到此模組。
 
 2. 加入包含正確類型之定型資料的資料集。 
 
@@ -57,13 +57,13 @@ ms.locfileid: "90905253"
 
 3. 在 [波氏 **回歸** ] 模組的右窗格中，藉由設定 [ **建立定型模式]** 選項，指定您要如何定型模型。  
   
-    - **單一參數**：如果您知道要如何設定模型，請提供一組特定值做為引數。
+    - **單一參數** ：如果您知道要如何設定模型，請提供一組特定值做為引數。
   
-    - **參數範圍**：如果您不確定最佳參數，請使用 [微調模型超參數](tune-model-hyperparameters.md) 模組來執行參數清理。 講師會反復查看您指定的多個值，以找出最佳設定。
+    - **參數範圍** ：如果您不確定最佳參數，請使用 [微調模型超參數](tune-model-hyperparameters.md) 模組來執行參數清理。 講師會反復查看您指定的多個值，以找出最佳設定。
   
-4. **優化容錯**：輸入在優化期間定義容錯間隔的值。 值愈小，配適就較慢，但愈精確。
+4. **優化容錯** ：輸入在優化期間定義容錯間隔的值。 值愈小，配適就較慢，但愈精確。
 
-5. **L1 正規化權數** 和 **l2 正規化權數**：輸入用於 L1 和 l2 正規化的值。 *正則化*會將限制加入至與模型各方面有關的演算法，這些方面與定型資料無關。 正則化通常用來避免過度配適。 
+5. **L1 正規化權數** 和 **l2 正規化權數** ：輸入用於 L1 和 l2 正規化的值。 *正則化* 會將限制加入至與模型各方面有關的演算法，這些方面與定型資料無關。 正則化通常用來避免過度配適。 
 
     - 如果目標是讓模型儘可能稀疏，則 L1 正則化很有用。
 
@@ -73,9 +73,9 @@ ms.locfileid: "90905253"
 
     在此模組中，您可以套用 L1 與 L2 正則化的組合。 藉由結合 L1 和 L2 正規化，您可以對參數值的大小造成負面影響。 學習模組會嘗試將懲罰降到最低，以換取最低損失。
 
-    如需 L1 和 L2 正規化的詳細討論，請參閱 [l1 和 L2 正規化的 Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)。
+    如需 L1 和 L2 正規化的詳細討論，請參閱 [l1 和 L2 正規化的 Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)。
 
-6. **L BFGS 的記憶體大小**：指定要保留給模型調整和優化的記憶體數量。
+6. **L BFGS 的記憶體大小** ：指定要保留給模型調整和優化的記憶體數量。
 
      BFGS 是特定的優化方法，根據 Broyden – Fletcher – Goldfarb – Shanno (BFGS) 演算法。 方法會使用有限數量的記憶體 (L) 來計算下一個步驟方向。
 
@@ -83,9 +83,9 @@ ms.locfileid: "90905253"
 
 7. 將訓練資料集和未定型的模型連接到其中一個定型模組： 
 
-    - 如果您將 [ **建立定型模式]** 設定為 [ **單一參數**]，請使用「 [定型模型](train-model.md) 」模組。
+    - 如果您將 [ **建立定型模式]** 設定為 [ **單一參數** ]，請使用「 [定型模型](train-model.md) 」模組。
 
-    - 如果您將 [ **建立定型模式]** 設定為 [ **參數範圍**]，請使用 [ [微調模型超參數](tune-model-hyperparameters.md) ] 模組。
+    - 如果您將 [ **建立定型模式]** 設定為 [ **參數範圍** ]，請使用 [ [微調模型超參數](tune-model-hyperparameters.md) ] 模組。
 
     > [!WARNING]
     > 
@@ -101,8 +101,8 @@ ms.locfileid: "90905253"
 
 定型完成後：
 
-+ 若要儲存定型模型的快照集，請選取定型模組，然後切換至右面板中的 [ **輸出 + 記錄** ] 索引標籤。 按一下圖示 **註冊資料集**。  您可以在模組樹狀結構中，找到儲存的模型作為模組。 
++ 若要儲存定型模型的快照集，請選取定型模組，然後切換至右面板中的 [ **輸出 + 記錄** ] 索引標籤。 按一下圖示 **註冊資料集** 。  您可以在模組樹狀結構中，找到儲存的模型作為模組。 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

@@ -10,17 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289254"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321493"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 的開發最佳做法
+
 本文說明您在開發資料倉儲解決方案時可遵循的指引和最佳做法。 
 
-## <a name="sql-pool-development-best-practices"></a>SQL 集區開發的最佳做法
+## <a name="dedicated-sql-pool-development-best-practices"></a>專用的 SQL 集區開發最佳做法
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>利用暫停和調整來降低成本
 
@@ -55,12 +56,12 @@ ms.locfileid: "91289254"
 另請參閱[資料表概觀](develop-tables-overview.md)、[資料表散發](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[選取資料表散發](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="do-not-over-partition"></a>不要過度執行資料分割
-雖然分割資料可以讓資料維護變得有效率 (透過分割切換或最佳化掃描將分割消除)，但太多的資料分割會讓查詢變慢。  通常在 SQL Server 上運作良好的高資料粒度分割策略，可能無法在 SQL 集區上運作良好。  
+雖然分割資料可以讓資料維護變得有效率 (透過分割切換或最佳化掃描將分割消除)，但太多的資料分割會讓查詢變慢。  很高的資料細微性資料分割策略，在 SQL Server 可能無法在專用的 SQL 集區上運作。  
 
 > [!NOTE]
-> 通常在 SQL Server 上運作良好的高資料粒度分割策略，可能無法在 SQL 集區上運作良好。  
+> 很高的資料細微性資料分割策略，在 SQL Server 可能無法在專用的 SQL 集區上運作。  
 
-如果每個資料分割的資料列少於 1 百萬，太多個資料分割也會減少叢集資料行存放區索引的效率。 SQL 集區會將您的資料分割成 60 個資料庫。 
+如果每個資料分割的資料列少於 1 百萬，太多個資料分割也會減少叢集資料行存放區索引的效率。 專用的 SQL 集區會將您的資料分割成60資料庫。 
 
 因此，如果您建立具有 100 個分割區的資料表，則結果會是 6000 個分割區。  每個工作負載都不同，因此最佳建議是嘗試不同的分割，找出最適合您工作負載的分割。  
 
@@ -95,7 +96,7 @@ ms.locfileid: "91289254"
 
 ### <a name="optimize-clustered-columnstore-tables"></a>將叢集資料行存放區資料表最佳化
 
-叢集資料行存放區索引是將資料儲存在 SQL 集區中最有效率的方式之一。  根據預設，SQL 集區中的資料表會建立為「叢集資料行存放區」。  
+叢集資料行存放區索引是將資料儲存在專用 SQL 集區中最有效率的方式之一。  依預設，專用 SQL 集區中的資料表會建立為叢集資料行存放區。  
 
 為了讓資料行存放區資料表的查詢獲得最佳效能，良好的區段品質很重要。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  
 
@@ -103,7 +104,7 @@ ms.locfileid: "91289254"
 
 由於高品質的資料行存放區區段很重要，因此最好使用中型或大型資源類別中的使用者識別碼來載入資料。 使用較低的[資料倉儲單位](resource-consumption-models.md)，表示您想要將更大型的資源類別指派給正在載入的使用者。
 
-由於資料行存放區資料表通常要等到每個資料表有超過 1 百萬個資料列之後，才會將資料推送到壓縮的資料行存放區區段，而且每個 SQL 集區資料表分割成 60 個資料表，資料行存放區資料表對於查詢沒有好處，除非資料表有超過 6 千萬個資料列。  
+由於資料行存放區資料表通常不會將資料推送至壓縮的資料行存放區區段，直到每個資料表有1000000個以上的資料列，而且每個專用的 SQL 集區資料表都分割成60資料表時，資料行存放區資料表將無法受益于查詢，除非資料表60000000有  
 
 > [!TIP]
 > 對於包含低於 6 千萬個資料列的資料表，具有資料行存放區索引可能不是最佳的解決方案。  
@@ -116,23 +117,23 @@ ms.locfileid: "91289254"
 
 另請參閱[資料表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[重建資料行存放區索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality)。
 
-## <a name="sql-on-demand-development-best-practices"></a>SQL 隨選開發的最佳做法
+## <a name="serverless-sql-pool-development-best-practices"></a>無伺服器 SQL 集區開發最佳做法
 
 ### <a name="general-considerations"></a>一般考量
 
-SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其不具有本機儲存體或內嵌功能，這表示查詢目標的所有檔案都是 SQL 隨選外部。 因此，與從儲存體讀取檔案相關的所有專案，都可能會影響查詢效能。
+無伺服器 SQL 集區可讓您查詢 Azure 儲存體帳戶中的檔案。 它沒有本機儲存體或內嵌功能，這表示查詢目標的所有檔案都是無伺服器 SQL 集區的外部。 因此，與從儲存體讀取檔案相關的所有專案，都可能會影響查詢效能。
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>共置 Azure 儲存體帳戶和 SQL 隨選
+### <a name="colocate-azure-storage-account-and-serverless-sql-pool"></a>共置 Azure 儲存體帳戶和無伺服器 SQL 集區
 
-若要將延遲降至最低，請共置您的 Azure 儲存體帳戶和您的 SQL 隨選端點。 在工作區建立期間佈建的儲存體帳戶和端點都會位於相同區域。
+若要將延遲降至最低，請共置您的 Azure 儲存體帳戶和無伺服器的 SQL 集區端點。 在工作區建立期間佈建的儲存體帳戶和端點都會位於相同區域。
 
-為了達到最佳效能，如果您使用 SQL 隨選存取其他儲存體帳戶，請確定這些帳戶位於相同區域。 否則，從遠端區域到端點區域的資料網路傳輸延遲將會增加。
+為了達到最佳效能，如果您存取無伺服器 SQL 集區的其他儲存體帳戶，請確定它們位於相同的區域中。 否則，從遠端區域到端點區域的資料網路傳輸延遲將會增加。
 
 ### <a name="azure-storage-throttling"></a>Azure 儲存體節流
 
-存取您儲存體帳戶的應用程式和服務可能會有很多個。 當應用程式、服務和 SQL 隨選工作負載所產生的結合 IOPS 或輸送量超過儲存體帳戶的限制時，就會進行儲存體節流。 發生儲存節流時，對查詢效能會有顯著的負面影響。
+存取您儲存體帳戶的應用程式和服務可能會有很多個。 當應用程式、服務和無伺服器的 SQL 集區工作負載所產生的結合 IOPS 或輸送量超過儲存體帳戶的限制時，就會進行儲存體節流。 發生儲存節流時，對查詢效能會有顯著的負面影響。
 
-偵測到節流後，SQL 隨選會有此案例的內建處理方式。 在節流解除之前，SQL 隨選會以較慢的步調對儲存體提出要求。 
+一旦偵測到節流，無伺服器 SQL 集區內建此案例的處理。 無伺服器 SQL 集區會以較慢的步調提出要求，直到節流解決為止。 
 
 不過，為了達到最佳的查詢執行，建議您不要在查詢執行期間，將儲存體帳戶與其他工作負載一起負擔。
 
@@ -140,7 +141,7 @@ SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其不具有本�
 
 可能的話，您可以準備檔案以獲得更好的效能：
 
-- 將 CSV 轉換成 Parquet - Parquet 是單欄式格式。 因為其已壓縮，所以其檔案大小比具有相同資料的 CSV 檔案小，而 SQL 隨選在讀取時需要較少的時間和儲存體要求。
+- 將 CSV 轉換成 Parquet - Parquet 是單欄式格式。 由於它已壓縮，因此它的檔案大小會比具有相同資料的 CSV 檔案小，而且無伺服器 SQL 集區需要較少的時間和儲存體要求來讀取它。
 - 如果查詢是以單一大型檔案為目標，則好處是可將其分割成多個較小的檔案。
 - 請盡可能將 CSV 檔案大小維持在小於 10 GB。
 - 單一 OPENROWSET 路徑或外部資料表 LOCATION 的檔案大小最好相同。
@@ -148,17 +149,17 @@ SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其不具有本�
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>使用 fileinfo 和 filepath 函式以特定的分割區為目標
 
-資料通常會組織成分割區。 您可以指示 SQL 隨選查詢特定的資料夾和檔案。 這麼做會減少查詢需要讀取和處理的檔案數目和資料量。 
+資料通常會組織成分割區。 您可以指示無伺服器 SQL 集區來查詢特定的資料夾和檔案。 這麼做會減少查詢需要讀取和處理的檔案數目和資料量。 
 
 因此，您將可獲得更佳的效能。 如需詳細資訊，請參閱 [filename](query-data-storage.md#filename-function) 和 [filepath](query-data-storage.md#filepath-function) 函式和範例，以了解如何[查詢特定檔案](query-specific-files.md)。
 
 如果您在儲存體中的資料未分割，請考慮將其分割，以便使用這些函式來最佳化以這些檔案為目標的查詢。
 
-在[查詢已分割的 Apache Spark 以從 SQL 隨選取得 Azure Synapse 資料表](develop-storage-files-spark-tables.md)時，查詢只會自動將所需的檔案設為目標。
+從無伺服器的 SQL 集區 [查詢 Azure Synapse 外部資料表的資料分割 Apache Spark](develop-storage-files-spark-tables.md) 時，查詢只會自動以所需的檔案為目標。
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 來增強查詢效能和聯結
 
-[CETAS](develop-tables-cetas.md) 是 SQL 隨選上其中一項最重要的功能。 CETAS 是平行作業，可建立外部資料表中繼資料，並將 SELECT 查詢的結果匯出至儲存體帳戶中的一組檔案。
+[CETAS](develop-tables-cetas.md) 是無伺服器 SQL 集區中最重要的其中一項功能。 CETAS 是平行作業，可建立外部資料表中繼資料，並將 SELECT 查詢的結果匯出至儲存體帳戶中的一組檔案。
 
 您可以使用 CETAS，將經常使用的查詢部分 (例如聯結的參考資料表) 儲存到新的一組檔案。 稍後，您可以聯結至這個單一外部資料表，而不是在多個查詢中重複常見的聯結。 
 
@@ -166,7 +167,7 @@ SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其不具有本�
 
 ### <a name="next-steps"></a>後續步驟
 
-如果您需要本文中未提供的資訊，請使用此頁面左側的 **搜尋 doc** 函式來搜尋所有的 SQL 集區檔。  [SQL 集區的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)頁面可讓您將問題張貼至其他使用者和 SQL 集區產品群組。  
+如果您需要本文中未提供的資訊，請使用此頁面左側的 **搜尋 doc** 函式來搜尋所有的 SQL 集區檔。  您可以 [針對 Azure Synapse Analytics 的 Microsoft 問&問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) ，為其他使用者和 Azure Synapse Analytics 產品群組提出問題。 我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
 
-我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  如果您比較想在 Stack Overflow上詢問您的問題，我們也有 [Azure SQL 集區 Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
+如果您想要在 Stack Overflow 上詢問您的問題，我們也有 [Azure Synapse Analytics Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
  

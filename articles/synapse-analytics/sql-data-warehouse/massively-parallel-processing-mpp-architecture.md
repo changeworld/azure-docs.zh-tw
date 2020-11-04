@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479335"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319663"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (先前稱為 SQL DW) 架構
 
@@ -25,8 +25,8 @@ Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨
 
 - Synapse SQL：完成以 T-SQL 為基礎的分析
 
-  - SQL 集區 (依據佈建的 DWU 付費) - 正式推出
-  - SQL 隨選 (依據處理的 TB 量付費) – (預覽)
+  - 專用的 SQL 集區 (依布建的 DWU 付費) –正式推出
+  - 無伺服器 SQL 集區 (支付每 TB 處理的) – (Preview) 
 - Spark：深入整合的 Apache Spark (預覽)
 - 資料整合：混合式資料整合 (預覽)
 - Studio：整合的使用者體驗。  (預覽)
@@ -35,7 +35,7 @@ Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨
 
 ## <a name="synapse-sql-architecture-components"></a>Synapse SQL 架構元件
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) 會利用擴增架構，將資料的計算處理散發到多個節點。 縮放單位是稱為[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)之計算能力的抽象概念。 計算與儲存體分隔開來，讓您可以在系統中單獨調整資料的計算。
+[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) 會利用擴增架構，將資料的計算處理散發到多個節點。 縮放單位是稱為[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)之計算能力的抽象概念。 計算與儲存體分隔開來，讓您可以在系統中單獨調整資料的計算。
 
 ![Synapse SQL 架構](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
@@ -52,7 +52,7 @@ Synapse SQL 使用以節點為基礎的架構。 應用程式會連線到控制�
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
-Synapse SQL 會利用 Azure 儲存體來保護您使用者資料的安全。  因為您的資料是由 Azure 儲存體儲存及管理的，所以您的儲存體耗用量會分開計費。 資料會分區化到**散發**中，以將系統效能最佳化。 當您定義資料表時，可以選擇要用來散發資料的分區化模式。 支援以下分區化模式：
+Synapse SQL 會利用 Azure 儲存體來保護您使用者資料的安全。  因為您的資料是由 Azure 儲存體儲存及管理的，所以您的儲存體耗用量會分開計費。 資料會分區化到 **散發** 中，以將系統效能最佳化。 當您定義資料表時，可以選擇要用來散發資料的分區化模式。 支援以下分區化模式：
 
 - 雜湊
 - 循環配置資源

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 462cf6cf850885b31588123bac46ff99bf319ee8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93243132"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319637"
 ---
 # <a name="regional-code-names-and-endpoints"></a>區域程式碼名稱和端點
 
@@ -64,6 +64,9 @@ az account list-locations
 
 ### <a name="azure-germany"></a>Azure 德國
 
+> [!NOTE]
+> Azure 德國端點僅適用于德國的主權雲端。
+
 | 服務 | 端點 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
@@ -85,6 +88,6 @@ az account list-locations
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [媒體服務 v3 概觀](media-services-overview.md)

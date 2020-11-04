@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289164"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321448"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 選項
+
 Synapse SQL 可讓您藉由執行不同的群組依據選項來開發解決方案。 
 
-## <a name="what-does-group-by-do"></a>GROUP BY 執行的動作
+## <a name="what-group-by-does"></a>群組依據
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 子句可將資料彙總至摘要的一組資料列。
 
-SQL 隨選支援群組依據選項的整個範圍。 SQL 集區支援的分組依據選項數量有限。
+無伺服器 SQL 集區支援整個群組的選項。 專用的 SQL 集區支援有限的分組依據選項數目。
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL 集區中支援的分組依據選項
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>依專用 SQL 集區支援的選項分組
 
-GROUP BY 有一些 SQL 集區不支援的選項。 這些選項有因應措施，如下所示：
+GROUP BY 具有專用 SQL 集區不支援的一些選項。 這些選項有因應措施，如下所示：
 
 * GROUP BY 搭配 ROLLUP
 * GROUPING SETS

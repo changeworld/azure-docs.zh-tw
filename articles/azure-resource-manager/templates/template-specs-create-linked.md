@@ -2,17 +2,17 @@
 title: 使用連結的範本建立範本規格
 description: 瞭解如何使用連結的範本建立範本規格。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728534"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321591"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格 (預覽) 
 
-瞭解如何使用[連結的範本](linked-templates.md#linked-template)建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的屬性，建立範本規格來封裝主要範本及其連結的範本。
+瞭解如何使用主要範本和[連結的範本](linked-templates.md#linked-template)建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的屬性，建立範本規格來封裝主要範本及其連結的範本。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,7 +27,7 @@ ms.locfileid: "91728534"
 
 若要連結範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，根據父範本的路徑指定連結範本的相對路徑。
 
-連結的範本會 ** 在上呼叫linkedTemplate.js**，並儲存在儲存主要範本的路徑中 **，稱為成品** 的子資料夾。  您可以使用下列其中一個 relativePath 值：
+連結的範本會 **在上呼叫linkedTemplate.js** ，並儲存在儲存主要範本的路徑中 **，稱為成品** 的子資料夾。  您可以使用下列其中一個 relativePath 值：
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
@@ -35,7 +35,7 @@ ms.locfileid: "91728534"
 
 `relativePath`屬性一律相對於宣告的範本檔案 `relativePath` ，因此，如果在上有另一個從 linkedTemplate.js呼叫的 linkedTemplate2.js，而 linkedTemplate2.json 儲存在相同的成品子資料夾中，則在 linkedTemplate.js中指定的 relativePath 就是 `linkedTemplate2.json` 。
 
-1. 使用下列 JSON 建立主要範本。 將主要範本儲存為本機電腦 ** 上的azuredeploy.js** 。 本教學課程假設您已儲存至 **c:\Templates\linkedTS\azuredeploy.js的** 路徑，但您可以使用任何路徑。
+1. 使用下列 JSON 建立主要範本。 將主要範本儲存為本機電腦 **上的azuredeploy.js** 。 本教學課程假設您已儲存至 **c:\Templates\linkedTS\azuredeploy.js的** 路徑，但您可以使用任何路徑。
 
     ```json
     {
@@ -162,7 +162,7 @@ ms.locfileid: "91728534"
 
 ## <a name="create-template-spec"></a>建立範本規格
 
-範本規格會儲存在資源群組中。  建立資源群組，然後使用下列腳本建立範本規格。 範本規格名稱是 **webSpec**。
+範本規格會儲存在資源群組中。  建立資源群組，然後使用下列腳本建立範本規格。 範本規格名稱是 **webSpec** 。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

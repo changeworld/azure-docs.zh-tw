@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c1ecd3a3d29d6876a59a2fa039802966f348a09d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9209b33f23b7f6c836dedb6227d052610a21d9d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089826"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319484"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>交易和開放式並行存取控制
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -58,11 +58,12 @@ Azure Cosmos 容器中儲存的每個項目都有系統定義的 `_etag` 屬性�
 
 `_etag`每次更新專案時，專案的值都會變更。 針對取代專案作業， `if-match` 必須明確表示為要求選項的一部分。 如需範例，請參閱 [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L676-L772) 中的範例程式碼。 `_etag` 系統會針對預存程式觸及的所有寫入專案，以隱含的方式檢查值。 如果偵測到任何衝突，預存程式將會回復交易並擲回例外狀況。 透過此方法，在預存程序內的所有寫入都會自動套用，或全部不會自動套用。 這是應用程式重新套用更新並重試原始用戶端要求的信號。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入了解下列文章中描述的資料庫交易和開放式並行存取控制：
 
 - [使用 Azure Cosmos 資料庫、容器和項目](account-databases-containers-items.md)
 - [一致性層級](consistency-levels.md)
 - [衝突類型和解決原則](conflict-resolution-policies.md)
+- [使用 TransactionalBatch](transactional-batch.md)
 - [預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)

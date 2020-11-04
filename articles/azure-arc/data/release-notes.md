@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2da8bd0b36b553a4b5f85b6f79987ab1a7b8d5a7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286569"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321714"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>版本資訊-Azure Arc 啟用的資料服務 (預覽) 
 
@@ -28,7 +28,7 @@ Azure Data CLI (`azdata`) 版本號碼：20.2.3。 下載時間 [https://aka.ms/
 
 此版本引進了下列重大變更： 
 
-* 于 postgresql 自訂資源定義 (.CRD) 檔會取代該詞彙重新 `shards` 命名為 `workers` 。 這個詞彙 (`workers`) 符合命令列參數名稱。
+* 在於 postgresql 自訂資源定義中 (.CRD) ，此詞彙 `shards` 已重新命名為 `workers` 。 這個詞彙 (`workers`) 符合命令列參數名稱。
 
 * `azdata arc postgres server delete` 在刪除 postgres 實例之前提示您確認。  使用 `--force` 略過提示。
 
@@ -50,15 +50,15 @@ Azure Data CLI (`azdata`) 版本號碼：20.2.3。 下載時間 [https://aka.ms/
 
    * 如果未將任何資料載入 Azure，則會出現一次重試的提示。
 
-* `azdata arc dc debug copy-logs` 現在也會從 `/var/opt/controller/log` 資料夾讀取並收集 postgres 記錄。
+* `azdata arc dc debug copy-logs` 現在也會從 `/var/opt/controller/log` 資料夾讀取，並收集 Linux 上的于 postgresql 引擎記錄。
 
-*   Postgres 建立及還原備份期間，顯示工作指標。
+*   使用於 postgresql 超大規模建立及還原備份時，顯示作用中的指標。
 
 * `azdata arc postrgres backup list` 現在包含備份大小資訊。
 
 * [SQL 受控執行個體管理員名稱] 屬性已新增至 Azure 入口網站中的 [總覽] 分頁的右欄資料行。
 
-* Azure Data Studio 支援設定伺服器群組的背景工作節點、vCore 和記憶體設定數目。 
+* Azure Data Studio 支援設定于 postgresql 超大規模的背景工作節點、vCore 和記憶體設定數目。 
 
 * Preview 支援 Postgres 11 和12版的備份/還原。
 
@@ -80,9 +80,7 @@ Azure Data CLI (`azdata`) 版本號碼：20.2.3。 下載時間 [https://aka.ms/
 - 現在，如果您使用 NFS，則在 `allowRunAsRoot` `true` 建立 Azure Arc 資料控制器之前，您必須在部署設定檔檔案中將設定為。
 - 僅限 SQL 和于 postgresql 登入驗證。  不支援 Azure Active Directory 或 Active Directory。
 - 在 OpenShift 上建立資料控制器需要寬鬆的安全性條件約束。  如需詳細資料，請參閱文件。
-- 不支援調整 PostgresSQL 超大規模背景 _工作節點的_ 數目。
 - 如果您使用 Azure Kubernetes Service 引擎 (AKS 引擎) Azure Stack Hub 使用 Azure Arc 資料控制器和資料庫實例，則不支援升級至較新的 Kubernetes 版本。 升級 Kubernetes 叢集之前，請先卸載 Azure Arc 資料控制器和所有資料庫實例。
-- 預覽不支援 Postgres 11 版引擎的備份/還原。  (于2020年10月解決) 它只支援 Postgres 12 版的備份/還原。
 - Azure Kubernetes Service (AKS) ，Azure Arc 啟用的資料服務目前不支援跨越 [多個可用性區域](../../aks/availability-zones.md) 的叢集。 若要避免這個問題，當您在 Azure 入口網站中建立 AKS 叢集時，如果您選取區域可用的區域，請清除選取專案控制項中的所有區域。 請見下圖：
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="清除每個區域的核取方塊，以指定 [無]。":::
@@ -90,10 +88,11 @@ Azure Data CLI (`azdata`) 版本號碼：20.2.3。 下載時間 [https://aka.ms/
 
 ### <a name="known-issues-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc Enabled 于 postgresql 超大規模的已知問題   
 
+- 預覽不支援于 postgresql 11 版引擎的備份/還原。 它只支援于 postgresql 12 版的備份/還原。
+- `azdata arc dc debug copy-logs` 節點不會在 Windows 上收集于 postgresql 引擎記錄。
 - 以剛刪除之伺服器群組的名稱重新建立伺服器群組可能會失敗或停止回應。 
    - **Workaround** 因應措施當您重新建立伺服器群組或等候先前刪除之伺服器群組的負載平衡器/外部服務時，請勿重複使用相同的名稱。 假設您已刪除的伺服器組名是並裝載 `postgres01` 在命名空間中 `arc` ，則在您重新建立具有相同名稱的伺服器群組之前，請等到 `postgres01-external-svc` kubectl 命令的輸出未顯示 `kubectl get svc -n arc` 。
- 
-- 在 Azure Data Studio 中載入 [總覽] 頁面和 [計算 + 儲存體設定] 頁面的速度很慢。 
+ - 在 Azure Data Studio 中載入 [總覽] 頁面和 [計算 + 儲存體設定] 頁面的速度很慢。 
 
 
 

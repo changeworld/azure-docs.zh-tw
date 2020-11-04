@@ -11,13 +11,13 @@ ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-ms.date: 04/23/2020
-ms.openlocfilehash: 27daa160cc784665a487a0988429e3783257962e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/02/2020
+ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678150"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321629"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 設定 Always Encrypted 
 
@@ -100,8 +100,8 @@ az group create --location $location --name $resourceGroupName
 
 az keyvault create --name $vaultName --resource-group $resourceGroupName --location $location
 
-az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
-az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
+az keyvault set-policy --name $vaultName --key-permissions create get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
+az keyvault set-policy --name $vaultName --key-permissions get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
 ---
@@ -179,7 +179,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 您現在可以加密資料行，或儲存為 PowerShell 指令碼以供日後執行。 針對這個教學課程，請選取 [繼續以立即完成]，然後按 [下一步]。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>總結
 
 確認設定全都正確，然後按一下 [完成]  以完成 [一律加密] 的設定。
 
@@ -596,7 +596,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    
    ![新的主控台應用程式](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 當您的資料庫設定為使用 Always Encrypted 之後，您可能會想要執行下列作業：
 

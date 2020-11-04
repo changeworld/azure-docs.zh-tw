@@ -11,16 +11,16 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18, devx-track-azurecli
-ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: aa84d7cce09b370ab35ef67029f4dbe2ca29cabb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736604"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320848"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
-在本文中，您將瞭解如何管理 Azure Machine Learning 工作區的存取權。 Azure[角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)用來管理對 azure 資源的存取。 您 Azure Active Directory 中的使用者會被指派特定角色，以授與資源的存取權。 Azure 提供內建角色和建立自訂角色的能力。
+在本文中，您將瞭解如何管理 Azure Machine Learning 工作區的存取權。 Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)用來管理對 azure 資源的存取。 您 Azure Active Directory 中的使用者會被指派特定角色，以授與資源的存取權。 Azure 提供內建角色和建立自訂角色的能力。
 
 ## <a name="default-roles"></a>預設角色
 
@@ -34,18 +34,18 @@ Azure Machine Learning 工作區是一項 Azure 資源。 就像其他 Azure 資
 | **自訂角色** | 可讓您自訂工作區中特定控制項或資料平面作業的存取權。 例如，提交執行、建立計算、部署模型或註冊資料集。 |
 
 > [!IMPORTANT]
-> 角色存取範圍可以設定為 Azure 中的多個層級。 例如，具有工作區存取權的人員可能無法擁有包含該工作區之資源群組的擁有者存取權。 如需詳細資訊，請參閱 [AZURE RBAC 的運作方式](/azure/role-based-access-control/overview#how-azure-rbac-works)。
+> 角色存取範圍可以設定為 Azure 中的多個層級。 例如，具有工作區存取權的人員可能無法擁有包含該工作區之資源群組的擁有者存取權。 如需詳細資訊，請參閱 [AZURE RBAC 的運作方式](../role-based-access-control/overview.md#how-azure-rbac-works)。
 
-如需特定內建角色的詳細資訊，請參閱 [Azure 內建角色](/azure/role-based-access-control/built-in-roles)。
+如需特定內建角色的詳細資訊，請參閱 [Azure 內建角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="manage-workspace-access"></a>管理工作區存取
 
 如果您是工作區的擁有者，您可以新增和移除工作區的角色。 您也可以將角色指派給使用者。 使用下列連結來探索如何管理存取：
-- [Azure 入口網站 UI](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
-- [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure 資源管理員範本](/azure/role-based-access-control/role-assignments-template)
+- [Azure 入口網站 UI](../role-based-access-control/role-assignments-portal.md)
+- [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI](../role-based-access-control/role-assignments-cli.md)
+- [REST API](../role-based-access-control/role-assignments-rest.md)
+- [Azure 資源管理員範本](../role-based-access-control/role-assignments-template.md)
 
 如果您已安裝 [AZURE MACHINE LEARNING cli](reference-azure-machine-learning-cli.md)，您可以使用 cli 命令將角色指派給使用者：
 
@@ -65,7 +65,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning 作業
 
-Azure Machine Learning 許多作業和工作的內建動作。 如需完整清單，請參閱 [Azure 資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+Azure Machine Learning 許多作業和工作的內建動作。 如需完整清單，請參閱 [Azure 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)。
 
 ## <a name="mlflow-operations-in-azure-machine-learning"></a>Azure Machine learning 中的 MLflow 作業
 
@@ -135,7 +135,7 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-如需自訂角色的詳細資訊，請參閱 [Azure 自訂角色](/azure/role-based-access-control/custom-roles)。 如需作業的詳細資訊 (動作，而不是) 可與自訂角色搭配使用的動作，請參閱 [資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+如需自訂角色的詳細資訊，請參閱 [Azure 自訂角色](../role-based-access-control/custom-roles.md)。 如需作業的詳細資訊 (動作，而不是) 可與自訂角色搭配使用的動作，請參閱 [資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -165,7 +165,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>Q. 我們是否針對 Machine Learning 服務發佈 Azure 內建角色？
 
-目前未發佈 Machine Learning 服務的 [Azure 內建角色](/azure/role-based-access-control/built-in-roles) 。 內建角色一經發佈，即無法更新，我們仍會根據客戶案例和意見反應來確認角色定義。 
+目前未發佈 Machine Learning 服務的 [Azure 內建角色](../role-based-access-control/built-in-roles.md) 。 內建角色一經發佈，即無法更新，我們仍會根據客戶案例和意見反應來確認角色定義。 
 
 <a id="customroles"></a>
 
@@ -419,7 +419,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 az provider operation show –n Microsoft.MachineLearningServices
 ```
 
-您也可以在 [資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)清單中找到它們。
+您也可以在 [資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)清單中找到它們。
 
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>Q. 使用 Azure RBAC 時有哪些常見的問題？
@@ -427,18 +427,18 @@ az provider operation show –n Microsoft.MachineLearningServices
 當您使用 Azure 角色型存取控制 (Azure RBAC) 時，請注意以下幾點：
 
 - 當您在 Azure 中建立資源（例如，工作區）時，您不會直接是工作區的擁有者。 您的角色會繼承自您在該訂用帳戶中授權的最高範圍角色。 舉例來說，如果您是網路系統管理員，且擁有建立 Machine Learning 工作區的許可權，您將會被指派該工作區的網路管理員角色，而非擁有者角色。
-- 如果有兩個角色指派給相同的 Azure Active Directory 使用者，且動作/NotActions 有衝突的區段，則您在 NotActions 中所列的作業如果也會在另一個角色中列為動作，則可能不會生效。 若要深入瞭解 Azure 如何剖析角色指派，請閱讀 [AZURE RBAC 如何判斷使用者是否有權存取資源](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
+- 如果有兩個角色指派給相同的 Azure Active Directory 使用者，且動作/NotActions 有衝突的區段，則您在 NotActions 中所列的作業如果也會在另一個角色中列為動作，則可能不會生效。 若要深入瞭解 Azure 如何剖析角色指派，請閱讀 [AZURE RBAC 如何判斷使用者是否有權存取資源](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
 - 若要在 VNet 內部署您的計算資源，您需要明確具有下列動作的許可權：
     - VNet 資源上的「Microsoft. Network/virtualNetworks/join/action」。
     - 子網資源上的「Microsoft. Network/virtualNetworks/subnet/join/action」。
     
-    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)。
+    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](../role-based-access-control/built-in-roles.md#networking)。
 
 - 有時，您的新角色指派可能需要最多一小時的時間，才會對整個堆疊的快取許可權生效。
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Q. 使用使用者指派的受控識別搭配我的 Amlcompute 叢集時，需要哪些許可權？
 
-若要在 Amlcompute 叢集上指派使用者指派的身分識別，您必須具有寫入權限，才能建立計算並具有 [受控識別操作員角色](/azure/role-based-access-control/built-in-roles#managed-identity-operator)。 如需 Azure RBAC 與受控識別的詳細資訊，請參閱[如何管理使用者指派](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)的身分識別
+若要在 Amlcompute 叢集上指派使用者指派的身分識別，您必須具有寫入權限，才能建立計算並具有 [受控識別操作員角色](../role-based-access-control/built-in-roles.md#managed-identity-operator)。 如需 Azure RBAC 與受控識別的詳細資訊，請參閱[如何管理使用者指派](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)的身分識別
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Q. 是否支援在 Studio 入口網站上以角色為基礎的存取控制？
@@ -480,4 +480,4 @@ az role definition update --role-definition update_def.json --subscription <sub-
 - [企業安全性概觀](concept-enterprise-security.md)
 - [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
 - [教學課程：訓練模型](tutorial-train-models-with-aml.md)
-- [資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)
+- [資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)

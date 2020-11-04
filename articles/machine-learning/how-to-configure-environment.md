@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743100"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320482"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 
@@ -55,7 +55,7 @@ ms.locfileid: "92743100"
 
 這個 JSON 檔案必須位於包含您的 Python 指令碼或 Jupyter Notebook 的目錄結構中。 可以位於相同的目錄，名為 *aml_config* 的子目錄，或位於父目錄。
 
-若要從您的程式碼使用這個檔案，請使用 [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) 方法。 此程式碼會從檔案載入資訊，並連接到您的工作區。
+若要從您的程式碼使用這個檔案，請使用 [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) 方法。 此程式碼會從檔案載入資訊，並連接到您的工作區。
 
 使用下列其中一種方法來建立工作區設定檔：
 
@@ -67,7 +67,7 @@ ms.locfileid: "92743100"
 
 * Azure Machine Learning Python SDK
 
-    建立腳本以連接到您的 Azure Machine Learning 工作區，然後使用 [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法來產生您的檔案，並將它儲存為 *azureml/config.js* 。 請務必將 `subscription_id` 、和取代為 `resource_group` `workspace_name` 您自己的。
+    建立腳本以連接到您的 Azure Machine Learning 工作區，然後使用 [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法來產生您的檔案，並將它儲存為 *azureml/config.js* 。 請務必將 `subscription_id` 、和取代為 `resource_group` `workspace_name` 您自己的。
 
     ```python
     from azureml.core import Workspace
@@ -97,7 +97,7 @@ ms.locfileid: "92743100"
     > 如果您使用的是 Linux 或 macOS 並使用 bash 以外的殼層 (例如，zsh)，則在執行一些命令時可能會收到錯誤。 若要解決此問題，請使用 `bash` 命令啟動新的 bash 殼層，並在其中執行命令。
 
 1. 啟用新建立的 Python 虛擬環境。
-1. 安裝 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+1. 安裝 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 1. 若要設定您的本機環境以使用您的 Azure Machine Learning 工作區，請 [建立工作區設定檔或使用現有的設定檔](#workspace) 。
 
 現在您已設定本機環境，接下來就可以開始使用 Azure Machine Learning。 請參閱 [Azure Machine Learning Python 快速入門手冊](tutorial-1st-experiment-sdk-setup-local.md) 以開始使用。
@@ -123,7 +123,7 @@ ms.locfileid: "92743100"
 若要開始使用 Azure Machine Learning 和 Jupyter 筆記本，請參閱 [Azure Machine Learning 筆記本存放庫](https://github.com/Azure/MachineLearningNotebooks) 。
 
 > [!NOTE]
-> 您可以在中找到範例的社區導向存放庫 https://github.com/Azure/azureml-examples 。
+> 如需範例的社群導向存放庫，請參閱 https://github.com/Azure/azureml-examples 。
 
 ### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
@@ -223,7 +223,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 ### <a name="set-up-your-databricks-cluster"></a>設定您的 Databricks 叢集
 
-建立 [Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)叢集。 只有當您在 Databricks 上安裝適用于自動化機器學習的 SDK 時，才適用某些設定。
+建立 [Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)叢集。 只有當您在 Databricks 上安裝適用于自動化機器學習的 SDK 時，才適用某些設定。
 **建立叢集將需要幾分鐘的時間。**
 
 使用這些設定：
@@ -260,9 +260,9 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 1. 監視錯誤直到 **附加** 狀態變更為止，這可能需要幾分鐘的時間。  如果此步驟失敗：
 
    請嘗試重新開機您的叢集：
-   1. 在左窗格中，選取 [叢集]  。
+   1. 在左窗格中，選取 [叢集]。
    1. 請選取表格中您的叢集名稱。
-   1. 在 [程式庫]  索引標籤上，選取 [重新啟動]  。
+   1. 在 [程式庫] 索引標籤上，選取 [重新啟動]。
 
    也請考慮：
    + 在 AutoML config 中，使用 Azure Databricks 新增下列參數：
@@ -297,4 +297,4 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 ## <a name="next-steps"></a>後續步驟
 
 - 使用 MNIST 資料集在 Azure Machine Learning 上[定型模型](tutorial-train-models-with-aml.md)
-- 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) \(英文\) 參考
+- 檢視[適用於 Python 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) \(英文\) 參考

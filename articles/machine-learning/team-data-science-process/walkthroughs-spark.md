@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1662af6cd3499fdf851d4e1bd8a0db48da7635b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864140"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320134"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>在 Azure 上使用 PySpark 和 Scala 的 HDInsight Spark 資料科學逐步解說
 
@@ -40,12 +40,11 @@ ms.locfileid: "75864140"
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>在 Azure Spark 上使用 Scala 來預測計程車小費
 
-在 [Azure 上搭配使用 Scala 與 Spark](scala-walkthrough.md) 的逐步解說會預測提示是否付費，以及應支付的金額範圍。 它會說明如何使用 Scala 搭配 Spark 機器學習程式庫 (MLlib) 和 Azure HDInsight Spark 叢集上的 SparkML 套件，處理受監督的機器學習工作。 它會引導您完成構成 [資料科學](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)程式的工作：資料內嵌和探索、視覺化、特徵設計、模型化和模型耗用量。 建立的模型包括羅吉斯和線性迴歸、隨機樹系和漸層停駐推進式決策樹。
+在 [Azure 上搭配使用 Scala 與 Spark](scala-walkthrough.md) 的逐步解說會預測提示是否付費，以及應支付的金額範圍。 它會說明如何使用 Scala 搭配 Spark 機器學習程式庫 (MLlib) 和 Azure HDInsight Spark 叢集上的 SparkML 套件，處理受監督的機器學習工作。 它會引導您完成構成 [資料科學](./index.yml)程式的工作：資料內嵌和探索、視覺化、特徵設計、模型化和模型耗用量。 建立的模型包括羅吉斯和線性迴歸、隨機樹系和漸層停駐推進式決策樹。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 如需 Team Data 科學程式的總覽，請參閱 [Team Data 科學流程總覽](overview.md)。
 
-如需 Team Data 科學程式生命週期的討論，請參閱 [Team Data 科學流程生命週期](lifecycle.md)。 這個生命週期會概述從開始到完成的步驟，專案通常會在執行時執行。 
-
+如需 Team Data 科學程式生命週期的討論，請參閱 [Team Data 科學流程生命週期](lifecycle.md)。 這個生命週期會概述從開始到完成的步驟，專案通常會在執行時執行。

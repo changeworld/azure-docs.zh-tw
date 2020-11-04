@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905266"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319399"
 ---
 # <a name="permutation-feature-importance"></a>排列功能重要性
 
@@ -24,7 +24,7 @@ ms.locfileid: "90905266"
 
 模組傳回的分數代表定型模型在排列之後的效能 *變更* 。 重要功能通常會對跳過程式更敏感，因此會導致重要性較高的分數。 
 
-本文概述排列功能、其理論基礎，以及其在機器學習服務中的應用程式： [排列功能重要性](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)。  
+本文概述排列功能、其理論基礎，以及其在機器學習服務中的應用程式： [排列功能重要性](/archive/blogs/machinelearning/permutation-feature-importance)。  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>如何使用排列功能重要性
 
@@ -36,11 +36,11 @@ ms.locfileid: "90905266"
 
 3.  在右邊的輸入上，串連資料組。 最好是選擇與您用來定型模型的資料集不同的資料集。 此資料集會根據定型的模型來進行評分。 它也可用來在功能值變更之後評估模型。  
 
-4.  針對 [ **隨機種子**]，輸入要做為隨機載入的種子值。 如果您指定 0 (預設) ，則會根據系統時鐘產生數位。
+4.  針對 [ **隨機種子** ]，輸入要做為隨機載入的種子值。 如果您指定 0 (預設) ，則會根據系統時鐘產生數位。
 
      種子值是選擇性的，但如果您想要在相同管線的執行之間重現性，則應該提供一個值。  
 
-5.  針對 **測量效能的計量**，請選取當您在排列之後計算模型品質時要使用的單一度量。  
+5.  針對 **測量效能的計量** ，請選取當您在排列之後計算模型品質時要使用的單一度量。  
 
      Azure Machine Learning 設計工具支援下列計量，取決於您是否正在評估分類或回歸模型：  
 
@@ -69,4 +69,4 @@ ms.locfileid: "90905266"
   
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

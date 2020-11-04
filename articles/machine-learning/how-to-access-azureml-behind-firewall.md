@@ -1,7 +1,7 @@
 ---
 title: 使用防火牆
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 防火牆來控制 Azure Machine Learning 工作區的存取權。 瞭解您必須透過防火牆允許的主機，Azure Machine Learning 才能正確運作。
+description: 使用 Azure 防火牆來控制 Azure Machine Learning 工作區的存取權。 瞭解您必須透過防火牆允許的主機。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 5ba1804630649044d29dd2919ef8375265a69a08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629454"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320881"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火牆後方的工作區進行 Azure Machine Learning
 

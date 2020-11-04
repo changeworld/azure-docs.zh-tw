@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Synapse SQL 在資料表上建立和更新統計資料
-description: 針對 Synapse SQL 集區中的資料表建立和更新查詢優化統計資料的建議和範例。
+title: 在資料表上建立和更新統計資料
+description: 針對專用 SQL 集區中的資料表建立和更新查詢優化統計資料的建議和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,42 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799310"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321062"
 ---
-# <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 集區中的資料表統計資料
+# <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的資料表統計資料
 
-在本文中，您將找到在 SQL 集區中建立及更新資料表之查詢優化統計資料的建議和範例。
+在本文中，您可以找到針對專用 SQL 集區中的資料表建立和更新查詢優化統計資料的建議和範例。
 
 ## <a name="why-use-statistics"></a>為何使用統計資料
 
-有更多的 SQL 集區知道您的資料，它對其執行查詢的速度就愈快。 將資料載入 SQL 集區之後，收集資料的統計資料是最重要的一件事，就是將查詢優化。
+更專用的 SQL 集區知道您的資料，它對其執行查詢的速度會更快。 將資料載入專用的 SQL 集區之後，收集資料的統計資料是優化查詢最重要的一件事。
 
-SQL 集區查詢最佳化工具是以成本為基礎的最佳化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。
+專用的 SQL 集區查詢最佳化工具是以成本為基礎的優化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。
 
 例如，如果最佳化工具評估您的查詢篩選的日期會傳回一個資料列，則會選擇一個方案。 如果最佳化工具評估所選取的日期將傳回 100 萬個資料列，則會傳回不同的方案。
 
 ## <a name="automatic-creation-of-statistic"></a>自動建立統計資料
 
-當資料庫 AUTO_CREATE_STATISTICS 選項為 on 時，SQL 集區會分析傳入的使用者查詢是否有遺漏的統計資料。
+當資料庫 AUTO_CREATE_STATISTICS 選項為 on 時，專用的 SQL 集區會分析傳入的使用者查詢是否有遺漏的統計資料。
 
 如果缺少統計資料，查詢最佳化工具會在查詢述詞或聯結條件中的個別資料行上建立統計資料，以改善查詢計劃的基數估計值。
 
 > [!NOTE]
 > 自動建立統計資料目前依預設開啟。
 
-您可以藉由執行下列命令來檢查您的 SQL 集區是否已 AUTO_CREATE_STATISTICS 設定：
+您可以藉由執行下列命令來檢查專用的 SQL 集區是否 AUTO_CREATE_STATISTICS 設定：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果您的 SQL 集區未設定 AUTO_CREATE_STATISTICS，建議您執行下列命令來啟用此屬性：
+如果您專用的 SQL 集區未設定 AUTO_CREATE_STATISTICS，建議您執行下列命令來啟用此屬性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -72,7 +72,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 建立統計資料時，會以不同的使用者內容登入 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
 
-當自動統計資料建立完成時，會採用以下格式：_WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>。 您可以藉由執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令來查看已建立的統計資料：
+當自動統計資料建立完成時，會採用以下格式： _WA_Sys_ <8 digit column id in Hex>_<8 digit table id in Hex>。 您可以藉由執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令來查看已建立的統計資料：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -82,11 +82,11 @@ Table_name 是包含要顯示之統計資料的資料表名稱。 此資料表�
 
 ## <a name="update-statistics"></a>更新統計資料
 
-其中一個最佳做法，是隨著新增新的日期，每天在日期資料行上更新統計資料。 每次新的資料列載入至 SQL 集區時，就會加入新的載入日期或交易日期。 這些增加項目會造成資料散發變更，並使統計資料過時。
+其中一個最佳做法，是隨著新增新的日期，每天在日期資料行上更新統計資料。 每次將新的資料列載入專用的 SQL 集區時，就會加入新的載入日期或交易日期。 這些增加項目會造成資料散發變更，並使統計資料過時。
 
 客戶資料表中的國家/地區資料行的統計資料可能永遠不需要更新，因為值散發通常不會變更。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
 
-但是，如果您的 SQL 集區只包含一個國家/地區，而您從新的國家/地區導入資料，而導致儲存多個國家/地區的資料，則您需要更新 [國家/地區] 資料行的統計資料。
+但是，如果您專用的 SQL 集區只包含一個國家/地區，而您從新的國家/地區導入資料，而導致儲存多個國家/地區的資料，則您需要更新 [國家/地區] 資料行的統計資料。
 
 以下為更新統計資料的相關建議：
 
@@ -97,11 +97,11 @@ Table_name 是包含要顯示之統計資料的資料表名稱。 此資料表�
 
 為查詢疑難排解時，首先要詢問的問題之一就是「統計資料是最新的嗎？」
 
-這個問題不是可依資料存留期回答的問題。 如果基礎資料並沒有任何實質變更，最新的統計資料物件可能會是舊的。 當資料列數目已顯著變更，或資料行的值散發有實質變更時，就** 應該更新統計資料。 
+這個問題不是可依資料存留期回答的問題。 如果基礎資料並沒有任何實質變更，最新的統計資料物件可能會是舊的。 當資料列數目已顯著變更，或資料行的值散發有實質變更時，就應該更新統計資料。 
 
 沒有動態管理檢視可判斷資料表內的資料自從上次更新統計資料之後是否有所變更。  下列兩個查詢可協助您判斷統計資料是否已過時。
 
-**查詢1：**  找出 [統計資料] (**stats_row_count**) 的資料列計數，以及 (**actual_row_count**) 的實際資料列計數之間的差異。 
+**查詢1：**  找出 [統計資料] ( **stats_row_count** ) 的資料列計數，以及 ( **actual_row_count** ) 的實際資料列計數之間的差異。 
 
 ```sql
 select 
@@ -182,11 +182,11 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，SQL 集區中的**日期資料行**通常需要經常更新統計資料。 每次新的資料列載入至 SQL 集區時，就會加入新的載入日期或交易日期。 這些增加項目會造成資料散發變更，並使統計資料過時。
+例如，專用 SQL 集區中的 **日期資料行** 通常需要經常更新統計資料。 每次將新的資料列載入專用的 SQL 集區時，就會加入新的載入日期或交易日期。 這些增加項目會造成資料散發變更，並使統計資料過時。
 
 相反地，客戶資料表上性別資料行的統計資料可能永遠不需要更新。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
 
-如果您的 SQL 集區只包含一個性別，而新的需求導致多個性別，則您需要更新性別資料行的統計資料。
+如果您專用的 SQL 集區只包含一個性別，而新的需求導致多個性別，則您需要更新性別資料行的統計資料。
 
 如需詳細資訊，請參閱[統計資料](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的一般指引。
 
@@ -214,7 +214,7 @@ WHERE
 
 若要建立資料行的統計資料，請提供統計資料物件的名稱和資料行的名稱。
 
-此語法會使用所有預設選項。 根據預設，SQL 集區在建立統計資料時會取樣 **20%** 的資料表。
+此語法會使用所有預設選項。 根據預設，建立統計資料時，會取樣資料表的 **20%** 。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -282,13 +282,13 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 > [!NOTE]
 > 用來估計查詢結果中資料列數目的長條圖，只適用於統計資料物件定義中所列的第一個資料行。
 
-在此範例中，長條圖位於 *product\_category*。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
+在此範例中，長條圖位於 *product\_category* 。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-因為 product\_category** 和 product\_sub\_category** 之間有關聯性，所以多重資料行統計資料物件在同時存取這些資料行時相當實用。
+因為 product\_category 和 product\_sub\_category 之間有關聯性，所以多重資料行統計資料物件在同時存取這些資料行時相當實用。
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>對資料表中的所有資料行建立統計資料
 
@@ -314,7 +314,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用預存程序對資料庫中的所有資料行建立統計資料
 
-SQL 集區沒有相當於 SQL Server 中 sp_create_stats 的系統預存程式。 此預存程序會對資料庫中還沒有統計資料的每個資料行建立單一資料行統計資料物件。
+專用的 SQL 集區沒有相當於 SQL Server 中 sp_create_stats 的系統預存程式。 此預存程序會對資料庫中還沒有統計資料的每個資料行建立單一資料行統計資料物件。
 
 以下範例會協助您開始進行資料庫設計。 請放心地依照您的需求進行調整。
 
@@ -459,10 +459,10 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS 陳述式易於使用。 只要記住這會更新資料表上的所有** 統計資料，因此可能會執行超出所需的更多工作。 如果效能不成問題，這是確保統計資料為最新狀態的最簡單且最完整的方式。
+UPDATE STATISTICS 陳述式易於使用。 只要記住這會更新資料表上的所有統計資料，因此可能會執行超出所需的更多工作。 如果效能不成問題，這是確保統計資料為最新狀態的最簡單且最完整的方式。
 
 > [!NOTE]
-> 更新資料表上的所有統計資料時，SQL 集區會進行掃描，以針對每個統計資料物件進行資料表取樣。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
+> 更新資料表上的所有統計資料時，專用的 SQL 集區會進行掃描，以針對每個統計資料物件來取樣資料表。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
 
 如需執行程式的相關 `UPDATE STATISTICS` 步驟，請參閱 [臨時表](sql-data-warehouse-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS() 顯示統計資料物件中保存的資料。 此資料�
 有關統計資料的標頭中繼資料。 此長條圖會顯示統計資料物件的第一個索引鍵資料行中的值散發。 密度向量可測量跨資料行關聯性。
 
 > [!NOTE]
-> SQL 集區可使用統計資料物件中的任何資料來計算基數估計值。
+> 專用的 SQL 集區會使用統計資料物件中的任何資料來計算基數估計值。
 
 ### <a name="show-header-density-and-histogram"></a>顯示標頭、密度和長條圖
 
@@ -578,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差異
 
-相較于 SQL Server，在 SQL 集區中，會更嚴格地執行 DBCC SHOW_STATISTICS ( # A1：
+相較于 SQL Server，DBCC SHOW_STATISTICS ( # A1 會更嚴格地在專用的 SQL 集區中執行：
 
 - 不支援未記載的功能。
 - 無法使用 Stats_stream。

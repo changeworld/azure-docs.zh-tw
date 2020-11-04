@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342590"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319029"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤 Azure Databricks ML 實驗) 
 
 在本文中，您將瞭解如何啟用 MLflow 的追蹤 URI 和記錄 API，統稱為 [MLflow 追蹤](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)，以將您的 AZURE DATABRICKS (ADB) 實驗、MLflow 和 Azure Machine Learning。
 
-[MLflow](https://www.mlflow.org) 是一個開放原始碼程式庫，可用於管理機器學習實驗的生命週期。 MLFlow 追蹤是 MLflow 的元件，可記錄及追蹤您的定型回合計量和模型成品。 深入瞭解 [Azure Databricks 與 MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)。 
+[MLflow](https://www.mlflow.org) 是一個開放原始碼程式庫，可用於管理機器學習實驗的生命週期。 MLFlow 追蹤是 MLflow 的元件，可記錄及追蹤您的定型回合計量和模型成品。 深入瞭解 [Azure Databricks 與 MLflow](/azure/databricks/applications/mlflow/)。 
 
 如需其他 MLflow 和 Azure Machine Learning 功能整合，請參閱 [使用 MLflow 和 Azure Machine Learning 來追蹤實驗執行和建立端點](how-to-use-mlflow.md) 。
 
@@ -35,8 +35,8 @@ ms.locfileid: "91342590"
 ## <a name="prerequisites"></a>必要條件
 
 * 安裝 `azureml-mlflow` 套件。 
-    * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，以提供 MLflow 的連線能力以存取您的工作區。
-* [Azure Databricks 工作區和](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)叢集。
+    * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，以提供 MLflow 的連線能力以存取您的工作區。
+* [Azure Databricks 工作區和](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)叢集。
 * [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
 ## <a name="track-azure-databricks-runs"></a>追蹤 Azure Databricks 執行
@@ -70,9 +70,9 @@ ms.locfileid: "91342590"
 
 設定 ADB 叢集之後， 
 1. 在左側流覽窗格中選取 [ **工作區** ]。 
-1. 展開 [工作區] 下拉式功能表，然後選取 [匯**入**]
+1. 展開 [工作區] 下拉式功能表，然後選取 [匯 **入** ]
 1. 拖放或流覽以尋找您的實驗筆記本，以匯入您的 ADB 工作區。
-1. 選取 [匯入]。 您的實驗筆記本會自動開啟。
+1. 選取 [匯入]  。 您的實驗筆記本會自動開啟。
 1. 在左上方的筆記本標題底下，選取要附加至實驗筆記本的叢集。 
 
 ## <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>連結您的 Azure Databricks 和 Azure Machine Learning 工作區
@@ -156,9 +156,9 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 後端追蹤伺服器預設為 Azure Databricks 工作區;除非您選擇 [將 MLflow 追蹤設定為只在 Azure Machine Learning 工作區中追蹤](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)，否則後端追蹤伺服器就是 Azure Machine Learning 工作區。   
 
-* **如果已註冊的模型名稱不存在**，此方法會註冊新的模型、建立第1版，並傳回 ModelVersion MLflow 物件。 
+* **如果已註冊的模型名稱不存在** ，此方法會註冊新的模型、建立第1版，並傳回 ModelVersion MLflow 物件。 
 
-* **如果已有同名的已註冊模型存在**，此方法會建立新的模型版本，並傳回版本物件。 
+* **如果已有同名的已註冊模型存在** ，此方法會建立新的模型版本，並傳回版本物件。 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -234,4 +234,4 @@ display(preds)
 
 * [管理您的模型](concept-model-management-and-deployment.md)。
 * [使用 MLflow 和 Azure Machine Learning 來追蹤實驗執行和建立端點](how-to-use-mlflow.md)。 
-* 深入瞭解 [Azure Databricks 與 MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)。
+* 深入瞭解 [Azure Databricks 與 MLflow](/azure/databricks/applications/mlflow/)。

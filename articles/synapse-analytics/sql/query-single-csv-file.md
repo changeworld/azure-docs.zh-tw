@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 隨選 (預覽) 查詢 CSV 檔案
-description: 在本文中，您將了解如何使用 SQL 隨選 (預覽) 來查詢具有不同檔案格式的單一 CSV 檔案。
+title: '使用無伺服器 SQL 集區來查詢 CSV 檔案 (預覽) '
+description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區 (預覽版) 來查詢具有不同檔案格式的單一 CSV 檔案。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288285"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321461"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
-在本文中，您將了解如何在 Azure Synapse Analytics 使用 SQL 隨選 (預覽) 來查詢單一 CSV 檔案。 CSV 檔案可能會有不同的格式： 
+在本文中，您將瞭解如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢單一 CSV 檔案 (preview) 。 CSV 檔案可能會有不同的格式： 
 
 - 包含和不包含標頭資料列
 - 逗號和定位字元分隔值
@@ -95,7 +95,7 @@ from openrowset(
 
 ## <a name="prerequisites"></a>必要條件
 
-第一個步驟是**建立將在其中建立資料表的資料庫**。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+第一個步驟是 **建立將在其中建立資料表的資料庫** 。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
 ## <a name="windows-style-new-line"></a>Windows 樣式新行
 

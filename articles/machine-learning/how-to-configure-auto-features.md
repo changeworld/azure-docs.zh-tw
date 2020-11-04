@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 229bcbb8c8c429b7fe4e5878b0e57e74dd828b72
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756546"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320660"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>自動化機器學習中的特徵化
+# <a name="featurization-in-automated-machine-learning"></a>自動化機器學習中的特徵工程
 
 
 
@@ -27,7 +27,7 @@ ms.locfileid: "91756546"
 - Azure Machine Learning 提供的特徵化設定。
 - 如何為您的 [自動化機器學習實驗](concept-automated-ml.md)自訂這些功能。
 
-*特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或*AutoML*實驗中*特徵化*。
+*特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *AutoML* 實驗中 *特徵化* 。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -38,7 +38,7 @@ ms.locfileid: "91756546"
 
 ## <a name="configure-featurization"></a>設定特徵化
 
-在每個自動化機器學習實驗中，預設會將 [自動調整和正規化技術](#featurization) 套用至您的資料。 這些技術是特徵化的類型，可協助 *特定* 的演算法，而這些演算法對不同規模的功能很敏感。 不過，您也可以啟用其他特徵化，例如 *遺漏值插補*、 *編碼*和 *轉換*。
+在每個自動化機器學習實驗中，預設會將 [自動調整和正規化技術](#featurization) 套用至您的資料。 這些技術是特徵化的類型，可協助 *特定* 的演算法，而這些演算法對不同規模的功能很敏感。 不過，您也可以啟用其他特徵化，例如 *遺漏值插補* 、 *編碼* 和 *轉換* 。
 
 > [!NOTE]
 > 自動化機器學習特徵化的步驟 (例如功能正規化、處理遺漏的資料，或將文字轉換成數值) 成為基礎模型的一部分。 當您使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
@@ -49,7 +49,7 @@ ms.locfileid: "91756546"
 
 |特徵化設定 | 描述|
 ------------- | ------------- |
-|`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄和特徵化步驟](#featurization) 。 這項設定是預設值。|
+|`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄和特徵化步驟](#featurization) 。 這是預設設定。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指定要使用的自訂特徵化步驟。 [了解如何自訂特徵化](#customize-featurization)。|
 
@@ -64,11 +64,11 @@ ms.locfileid: "91756546"
 
 |特徵化 &nbsp; 步驟| 描述 |
 | ------------- | ------------- |
-|**捨棄高基數或沒有變異數功能*** |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中都具有相同的值，或是具有高基數 (例如，雜湊、識別碼或 Guid) 。|
-|**插補遺漏值*** |若為數值特徵，則會以資料行中的平均值來插補。<br/><br/>針對類別功能，以最頻繁的值插補。|
-|**產生額外的功能*** |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> *針對預測工作，* 會建立這些額外的日期時間功能： ISO 年、半半年、日曆月份，以字串、周、周中的日、每週的日期、年中的日、上午/下午 (0。如果小時是在中午 () 下午12點之前，則 (為 1) ;<br/><br/>針對文字功能：根據 unigrams、雙字母組和 trigrams 的詞彙頻率。 深入瞭解[如何使用 BERT 完成這](#bert-integration)項工作。|
-|**轉換和編碼***|將有幾個唯一值的數值特徵轉換成類別特徵。<br/><br/>一種經常性編碼用於低基數類別功能。 一種熱雜湊編碼用於高基數類別功能。|
-|**字組內嵌**|文字 featurizer 使用預先定型的模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會使用 rest 來匯總，以產生檔功能向量。|
+|卸載 **高基數或沒有** 變異數功能 _ |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中都具有相同的值，或是具有高基數 (例如，雜湊、識別碼或 Guid) 。|
+|_*插補遺漏值**_ |若為數值特徵，則會以資料行中的平均值來插補。<br/><br/>針對類別功能，以最頻繁的值插補。|
+|_*產生額外的功能**_ |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> _For 的預測工作，則會建立這些額外的日期時間功能： ISO 年、半半年、日曆月份，以字串、周、周中的日、日、年中的日、上午/下午、中日、中度、AM/PM (0 （如果小時是在中午 () 下午12：00）) <br/><br/>針對文字功能：根據 unigrams、雙字母組和 trigrams 的詞彙頻率。 深入瞭解[如何使用 BERT 完成這](#bert-integration)項工作。|
+|**轉換和編碼** _|將有幾個唯一值的數值特徵轉換成類別特徵。<br/><br/>一種經常性編碼用於低基數類別功能。 一種熱雜湊編碼用於高基數類別功能。|
+|_ *Word 內嵌**|文字 featurizer 使用預先定型的模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會使用 rest 來匯總，以產生檔功能向量。|
 |**目標編碼**|針對類別功能，此步驟會將每個類別對應至回歸問題的平均目標值，並對應至每個類別的類別機率，以解決分類問題。 會套用以頻率為基礎的加權和 k 折迭交叉驗證，以減少由稀疏資料類別造成的對應和雜訊過度學習。|
 |**文字目標編碼**|針對文字輸入，會使用具備文字袋 (bag-of-words) 的堆疊線性模型來產生每個類別其機率。|
 |**證據權數 (WoE)**|將 WoE 作為類別資料行相互關聯與目標資料行相互關聯的量值計算。 WoE 的計算方式是依類別和類別外機率的比率記錄。 此步驟會針對每個類別產生一個數值特徵資料行，並免除明確插補遺漏值和極端值處理的需求。|
@@ -80,8 +80,8 @@ ms.locfileid: "91756546"
 
 適用資料護欄：
 
-- **針對 SDK 實驗**：當您在 `"featurization": 'auto'` `validation=auto` 物件中指定參數時 `AutoMLConfig` 。
-- **針對 studio 實驗**：啟用自動特徵化時。
+- **針對 SDK 實驗** ：當您在 `"featurization": 'auto'` `validation=auto` 物件中指定參數時 `AutoMLConfig` 。
+- **針對 studio 實驗** ：啟用自動特徵化時。
 
 您可以檢查實驗的資料護欄：
 
@@ -105,25 +105,25 @@ ms.locfileid: "91756546"
 
 護欄|狀態|觸發條件&nbsp;&nbsp;
 ---|---|---
-**遺漏特徵值插補** |已通過 <br><br><br> 完成| 在訓練資料中沒有偵測到任何遺漏特徵值。 深入瞭解 [遺漏值插補。](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> 在定型資料中偵測到遺漏的功能值，而且已插補。
+**遺漏特徵值插補** |已通過 <br><br><br> 完成| 在訓練資料中沒有偵測到任何遺漏特徵值。 深入瞭解 [遺漏值插補。](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> 在定型資料中偵測到遺漏的功能值，而且已插補。
 **高基數特徵處理** |已通過 <br><br><br> 完成| 已分析您的輸入，但未偵測到高基數功能。 <br><br> 在您的輸入中偵測到高基數功能，並已處理。
-**驗證分割處理** |完成| 驗證設定已設定為 `'auto'` ，且定型資料包含 *少於20000個數據列*。 <br> 定型模型的每個反復專案都是使用交叉驗證進行驗證。 深入瞭解 [驗證資料](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)。 <br><br> 驗證設定已設定為 `'auto'` ，且定型資料包含 *20000 個以上*的資料列。 <br> 輸入資料已分割成訓練資料集和驗證資料集，以用於模型驗證。
-**類別平衡偵測** |已通過 <br><br><br><br>警示 <br><br><br>完成 | 已分析輸入，且訓練資料中所有類別都是平衡的。 如果每個類別在資料集中都有良好的標記法（以樣本的數目和比率測量），則會將資料集視為對稱。 <br><br> 在輸入中偵測到不平衡的類別。 若要修正模型偏差，請修正平衡問題。 深入瞭解 [不平衡資料](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)。<br><br> 在您的輸入中偵測到不平衡類別，而且清除的邏輯已判定要套用平衡。
-**記憶體問題偵測** |已通過 <br><br><br><br> 完成 |<br> 選取的值 (範圍、延遲、滾動時間範圍) 已分析，且未偵測到潛在的記憶體不足問題。 深入瞭解時間序列 [預測](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)設定。 <br><br><br>選取的值 (範圍、延遲、滾動時間範圍) 已分析，而且可能會導致您的實驗用盡記憶體。 延遲或滾動視窗設定已關閉。
-**頻率偵測** |已通過 <br><br><br><br> 完成 |<br> 系統會分析時間序列，並將所有資料點與偵測到的頻率對齊。 <br> <br> 分析時間序列，並偵測到未與偵測到的頻率一致的資料點。 這些資料點已從資料集移除。 深入瞭解 [時間序列預測的資料準備](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)。
+**驗證分割處理** |完成| 驗證設定已設定為 `'auto'` ，且定型資料包含 *少於20000個數據列* 。 <br> 定型模型的每個反復專案都是使用交叉驗證進行驗證。 深入瞭解 [驗證資料](./how-to-configure-auto-train.md#training-validation-and-test-data)。 <br><br> 驗證設定已設定為 `'auto'` ，且定型資料包含 *20000 個以上* 的資料列。 <br> 輸入資料已分割成訓練資料集和驗證資料集，以用於模型驗證。
+**類別平衡偵測** |已通過 <br><br><br><br>警示 <br><br><br>完成 | 已分析輸入，且訓練資料中所有類別都是平衡的。 如果每個類別在資料集中都有良好的標記法（以樣本的數目和比率測量），則會將資料集視為對稱。 <br><br> 在輸入中偵測到不平衡的類別。 若要修正模型偏差，請修正平衡問題。 深入瞭解 [不平衡資料](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)。<br><br> 在您的輸入中偵測到不平衡類別，而且清除的邏輯已判定要套用平衡。
+**記憶體問題偵測** |已通過 <br><br><br><br> 完成 |<br> 選取的值 (範圍、延遲、滾動時間範圍) 已分析，且未偵測到潛在的記憶體不足問題。 深入瞭解時間序列 [預測](./how-to-auto-train-forecast.md#configuration-settings)設定。 <br><br><br>選取的值 (範圍、延遲、滾動時間範圍) 已分析，而且可能會導致您的實驗用盡記憶體。 延遲或滾動視窗設定已關閉。
+**頻率偵測** |已通過 <br><br><br><br> 完成 |<br> 系統會分析時間序列，並將所有資料點與偵測到的頻率對齊。 <br> <br> 分析時間序列，並偵測到未與偵測到的頻率一致的資料點。 這些資料點已從資料集移除。 深入瞭解 [時間序列預測的資料準備](./how-to-auto-train-forecast.md#preparing-data)。
 
 ## <a name="customize-featurization"></a>自訂特徵化
 
 您可以自訂特徵化設定，以確保用來定型 ML 模型的資料和功能會產生相關的預測。
 
-若要自訂 featurizations，請  `"featurization": FeaturizationConfig` 在物件中指定 `AutoMLConfig` 。 如果您在實驗中使用 Azure Machine Learning studio，請參閱操作 [說明文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。 若要自訂 forecastings 工作類型的特徵化，請參閱「 [預測操作說明](how-to-auto-train-forecast.md#customize-featurization)」。
+若要自訂 featurizations，請 `"featurization": FeaturizationConfig` 在物件中指定 `AutoMLConfig` 。 如果您在實驗中使用 Azure Machine Learning studio，請參閱操作 [說明文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。 若要自訂 forecastings 工作類型的特徵化，請參閱「 [預測操作說明](how-to-auto-train-forecast.md#customize-featurization)」。
 
 支援的自訂項目包含：
 
 |自訂|定義|
 |--|--|
 |**資料行用途更新**|覆寫指定之資料行的 autodetected 功能類型。|
-|**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (mean、最頻繁和中位數) 和 *HashOneHotEncoder*。|
+|**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (mean、最頻繁和中位數) 和 *HashOneHotEncoder* 。|
 |**卸除資料行** |指定要從特徵化中捨棄的資料行。|
 |**區塊轉換器**| 指定要在特徵化進程中使用的區塊轉換器。|
 
@@ -316,9 +316,9 @@ class_prob = fitted_model.predict_proba(X_test)
 
 AutoML 會採取下列步驟來進行 BERT。 
 
-1. **所有文字資料行的**前置處理和 token 化。 例如，"StringCast" 轉換器可以在最終模型的特徵化摘要中找到。 您可以在 [此筆記本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中找到如何產生模型特徵化摘要的範例。
+1. **所有文字資料行的** 前置處理和 token 化。 例如，"StringCast" 轉換器可以在最終模型的特徵化摘要中找到。 您可以在 [此筆記本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中找到如何產生模型特徵化摘要的範例。
 
-2. 將**所有文字資料行串連成單一文字資料行**，因此 `StringConcatTransformer` 在最終模型中。 
+2. 將 **所有文字資料行串連成單一文字資料行** ，因此 `StringConcatTransformer` 在最終模型中。 
 
     我們的 BERT 會將定型範例的文字長度總計限制為128個權杖。 也就是說，串連所有的文字資料行時，最理想的長度應該是最多128的權杖。 如果有多個資料行存在，則應該將每個資料行剪除，如此就能滿足這種狀況。 否則，針對長度 >128 token 的串連資料行，BERT 的 tokenizer 層會將此輸入截斷為 128 token。
 

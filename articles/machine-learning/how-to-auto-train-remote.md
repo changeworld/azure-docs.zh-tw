@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1f73e3d31e162801e540e4d4ed5881041c4178
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893310"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320783"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
 
@@ -43,9 +43,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>建立資源
 
-[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true)在您的工作區中建立目標 (`ws`) （如果尚未存在）。
+[`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py)在您的工作區中建立目標 (`ws`) （如果尚未存在）。
 
-**預估時間**：建立 AmlCompute 目標大約需要5分鐘的時間。
+**預估時間** ：建立 AmlCompute 目標大約需要5分鐘的時間。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -90,7 +90,7 @@ else:
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函數存取資料
 
-定義 training_data 為 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 和標籤，並在中傳遞給自動化 ML [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 。 `TabularDataset` `from_delimited_files` 根據預設，方法會將設定 `infer_column_types` 為 true，這將會自動推斷資料行類型。 
+定義 training_data 為 [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 和標籤，並在中傳遞給自動化 ML [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 。 `TabularDataset` `from_delimited_files` 根據預設，方法會將設定 `infer_column_types` 為 true，這將會自動推斷資料行類型。 
 
 如果您想要手動設定資料行類型，您可以將 `set_column_types` 引數設定為手動設定每個資料行的類型。 在下列程式碼範例中，資料來自 sklearn 套件。
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>瀏覽結果
 
-您可以使用與[定型教學課程](tutorial-auto-train-models.md#explore-the-results)中所示相同的[Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)，來查看圖表和結果資料表。
+您可以使用與[定型教學課程](tutorial-auto-train-models.md#explore-the-results)中所示相同的[Jupyter 小工具](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)，來查看圖表和結果資料表。
 
 ```python
 from azureml.widgets import RunDetails

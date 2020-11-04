@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320914"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>資料科學虛擬機器上所支援的資料平台
 
@@ -103,5 +103,4 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
 若要讓 DSVM 上的 Spark 實例存取 Blob 儲存體或 Azure Data Lake Storage 中所儲存的資料，您必須 `core-site.xml` 根據 $SPARK _HOME/conf/core-site.xml 範本中找到的範本來建立和設定檔案。 您也必須具有適當的認證，才能存取 Blob 儲存體及 Azure Data Lake Storage。  (請注意，範本檔案使用 Blob 儲存體和 Azure Data Lake Storage 設定的預留位置。 ) 
 
-如需有關建立 Azure Data Lake Storage 服務認證的詳細資訊，請參閱 [使用 Azure Data Lake Storage Gen1 進行驗證](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。 在 core-site.xml 檔案中輸入 Blob 儲存體或 Azure Data Lake Storage 的認證之後，您可以透過 wasb://或 adl://的 URI 前置詞來參考儲存在這些來源中的資料。
-
+如需有關建立 Azure Data Lake Storage 服務認證的詳細資訊，請參閱 [使用 Azure Data Lake Storage Gen1 進行驗證](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)。 在 core-site.xml 檔案中輸入 Blob 儲存體或 Azure Data Lake Storage 的認證之後，您可以透過 wasb://或 adl://的 URI 前置詞來參考儲存在這些來源中的資料。

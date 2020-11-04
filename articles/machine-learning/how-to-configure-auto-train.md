@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09fe93d4e3ba50ced6c8f07d6fe25ace2376c388
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091197"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320523"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
 
-在本指南中，您將了解如何使用 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 定義自動化機器學習實驗的各種組態設定。 自動化機器學習服務會為您挑選演算法和超參數，並產生馬上可進行部署的模型。 有數個選項可用來設定自動化機器學習實驗。
+在本指南中，您將了解如何使用 [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 定義自動化機器學習實驗的各種組態設定。 自動化機器學習服務會為您挑選演算法和超參數，並產生馬上可進行部署的模型。 有數個選項可用來設定自動化機器學習實驗。
 
 若要查看自動化機器學習實驗的範例，請參閱 [教學課程：使用自動化機器學習將分類模型定型](tutorial-auto-train-models.md) ，或 [使用雲端中的自動化機器學習來定型模型](how-to-auto-train-remote.md)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92091197"
     若要安裝 SDK，您可以： 
     * 建立計算實例，此實例會自動安裝 SDK，並針對 ML 工作流程進行預先設定。 如需詳細資訊，請參閱 [建立和管理 Azure Machine Learning 計算實例](how-to-create-manage-compute-instance.md) 。 
 
-    * [自行安裝 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 請務必包含 `automl` 額外的。 
+    * [自行安裝 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 請務必包含 `automl` 額外的。 
 
 ## <a name="select-your-experiment-type"></a>選取您的實驗類型
 
@@ -69,12 +69,12 @@ automl_config = AutoMLConfig(task = "classification")
 - 資料必須是表格形式。
 - 要預測的值 (目標資料行) 必須位於資料中。
 
-**針對遠端實驗**，必須可從遠端計算存取定型資料。 AutoML 只會在處理遠端計算時接受 [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 。 
+**針對遠端實驗** ，必須可從遠端計算存取定型資料。 AutoML 在處理遠端計算時只會接受 [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)。 
 
-Azure Machine Learning 資料集會將功能公開至：
+Azure Machine Learning 資料集會公開功能：
 
 * 輕鬆地將資料從靜態檔案或 URL 來源傳送至您的工作區。
-* 在雲端計算資源上執行時，將您的資料提供給定型腳本。 如需使用類別將資料掛接至遠端計算目標的範例，請參閱如何使用 [資料集進行定型](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` 。
+* 讓您的資料在執行於雲端計算資源時，可供定型指令碼使用。 如需使用類別將資料掛接至遠端計算目標的範例，請參閱如何使用 [資料集進行定型](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` 。
 
 下列程式碼會從 web url 建立 TabularDataset。 如需如何從其他來源（例如本機檔案和資料存放區）建立資料集的程式碼範例，請參閱 [建立 TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) 。
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**針對本機計算實驗**，建議您 pandas 資料框架以加快處理時間。
+**針對本機計算實驗** ，建議您 pandas 資料框架以加快處理時間。
 
   ```python
   import pandas as pd
@@ -103,21 +103,21 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|
 |**大於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用定型/驗證資料分割。 預設值是以10% 的初始訓練資料集做為驗證集。 接著，該驗證集會用於計算度量。
-|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列**，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間**，則會使用三個折迭。
+|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列** ，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間** ，則會使用三個折迭。
 
-目前，您需要提供自己的 **測試資料** 來進行模型評估。 如需將您自己的測試資料用於模型評估的程式碼範例，請參閱[此 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的**test**區段。
+目前，您需要提供自己的 **測試資料** 來進行模型評估。 如需將您自己的測試資料用於模型評估的程式碼範例，請參閱 [此 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的 **test** 區段。
 
 ## <a name="compute-to-run-experiment"></a>要執行實驗的計算
 
-接下來，請決定要在何處訓練模型。 自動化機器學習訓練實驗可在下列計算選項上執行。 瞭解 [本機和遠端計算](concept-automated-ml.md#local-remote) 選項的優缺點。 
+接下來，請決定要在何處訓練模型。 自動化機器學習訓練實驗可在下列計算選項上執行。 了解[本機和遠端計算選項的優缺點](concept-automated-ml.md#local-remote)。 
 
-* 您的 **本機** 電腦，例如本機桌上型電腦或膝上型電腦–通常是當您有小型資料集，而您仍在探索階段時。 請參閱 [此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) 以取得本機計算範例。 
+* 您的 **本機** 電腦，例如本機桌上型電腦或膝上型電腦–通常是當您有小型資料集，而您仍在探索階段時。 如需本機計算範例，請參閱[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)。 
  
 * 雲端中的 **遠端** 電腦- [Azure Machine Learning 受控計算](concept-compute-target.md#amlcompute) 是一項受控服務，可讓您在 Azure 虛擬機器叢集上定型機器學習模型。 
 
-    請參閱 [此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) ，以瞭解使用 Azure Machine Learning 受控計算的遠端範例。 
+    如需使用 Azure Machine Learning 受控計算的遠端範例，請參閱[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 
 
-* Azure 訂用帳戶中的 **Azure Databricks** 叢集。 您可以在這裡找到更多詳細資料- [適用于自動化 ML 的設定 Azure Databricks](how-to-configure-environment.md#aml-databricks)叢集。 如需 Azure Databricks 的筆記本範例，請參閱此 [GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
+* Azure 訂用帳戶中的 **Azure Databricks** 叢集。 您可以在這裡找到更多詳細資料 - [設定用於自動化 ML 的 Azure Databricks 叢集](how-to-configure-environment.md#aml-databricks)。 如需 Azure Databricks 的筆記本範例，請參閱此 [GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
 
 <a name='configure-experiment'></a>
 
@@ -198,10 +198,10 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 [隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[平均感知分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[線上梯度下降迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速線性迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[平均感知分類器](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)|[線上梯度下降迴歸輸入變數](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速線性迴歸輸入變數](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 [隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
-|[線性 SVM 分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
+|[線性 SVM 分類器](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)*||
 
 ### <a name="primary-metric"></a>主要計量
 `primary metric`參數會決定要在模型定型期間用來優化的度量。 可選取的可用計量取決於您所選擇的工作類型，下表顯示每種工作類型的有效主要計量。
@@ -218,13 +218,13 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="data-featurization"></a>資料特徵化
 
-在每個自動化機器學習實驗中，您的資料都會自動調整並標準化，以利易受不同規模的特徵所影響的*特定*演算法能妥善運作。 此調整和正規化稱為特徵化。 如需詳細資訊和程式碼範例，請參閱 [AutoML 中的特徵化](how-to-configure-auto-features.md#) 。 
+在每個自動化機器學習實驗中，您的資料都會自動調整並標準化，以利易受不同規模的特徵所影響的 *特定* 演算法能妥善運作。 此調整和正規化稱為特徵化。 如需詳細資訊和程式碼範例，請參閱 [AutoML 中的特徵化](how-to-configure-auto-features.md#) 。 
 
 在物件中設定您的實驗時 `AutoMLConfig` ，您可以啟用/停用設定 `featurization` 。 下表顯示 [AutoMLConfig 物件](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中特徵化的已接受設定。 
 
 |特徵化設定 | 描述 |
 | ------------- | ------------- |
-|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-configure-auto-features.md#featurization)。 **預設設定**。|
+|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-configure-auto-features.md#featurization)。 **預設設定** 。|
 |`"featurization": 'off'`| 表示特徵化步驟不應自動完成。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指出應使用自訂的特徵化步驟。 [了解如何自訂特徵化](how-to-configure-auto-features.md#customize-featurization)。|
 

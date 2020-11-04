@@ -3,12 +3,12 @@ title: Azure VMware 解決方案上的部署範圍
 description: 瞭解如何在 Azure VMware 解決方案上部署 VMware 的範圍。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369007"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321362"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware 解決方案上的部署範圍 
 
@@ -86,7 +86,7 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 從 Azure 虛擬網路到 Azure 私用雲端/SDDCs 的連線，應使用 ExpressRoute FastPath 進行設定。 下圖顯示基本的範圍 pod 部署。
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure 上的 Azure VMware 解決方案和範圍雲端範圍" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="使用 ExpressPath 快速路徑的一般水準 pod 部署" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解決方案上調整規模範圍的網路連線能力
 
@@ -94,7 +94,7 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware 解決方案上的單一範圍 pod
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure 上的 Azure VMware 解決方案和範圍雲端範圍" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware 解決方案上的單一範圍 pod" border="false":::
 
 單一水準 pod 是最直接的部署案例，因為您只會在美國東部區域部署一個範圍的 pod。  由於每個私用雲端和 SDDC 都已預估為處理4000桌面會話，因此您會部署最大範圍的 pod 大小。  您可以規劃最多三個私用雲端/SDDCs 的部署。
 
@@ -112,7 +112,7 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 此圖顯示如何支援內部部署資源的連線能力。 若要將您的公司網路連線到 Azure 虛擬網路，您需要 ExpressRoute 線路。  您也需要將您的公司網路與每個私用雲端連線，並使用 ExpressRoute 全球接觸來 SDDCs。  它允許從 SDDC 連接到 ExpressRoute 線路和內部部署資源。 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Azure 上的 Azure VMware 解決方案和範圍雲端範圍" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="將您的公司網路連線到 Azure 虛擬網路" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>跨多個區域的 Azure VMware 解決方案上有多個範圍的 pod
 
@@ -120,9 +120,9 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 您會將 Azure 虛擬網路輸入每個區域連線到另一個區域中的私人雲端/SDDCs。 它可讓 CPA 同盟的範圍內連線伺服器連接到管理下的所有桌面。 將其他私人雲端/SDDCs 新增至此設定，可讓您整體調整為24000個會話。 
 
-如果您在相同區域中部署兩個水準 pod，則適用相同的原則。  請務必在 *不同的 Azure 虛擬網路*中部署第二個範圍的 pod。 就像單一 pod 範例一樣，您可以使用 ExpressRoute 和全球接觸來將您的公司網路和內部部署 pod 連線到此多 pod/區域範例。 
+如果您在相同區域中部署兩個水準 pod，則適用相同的原則。  請務必在 *不同的 Azure 虛擬網路* 中部署第二個範圍的 pod。 就像單一 pod 範例一樣，您可以使用 ExpressRoute 和全球接觸來將您的公司網路和內部部署 pod 連線到此多 pod/區域範例。 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Azure 上的 Azure VMware 解決方案和範圍雲端範圍" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text=" 跨多個區域的 Azure VMware 解決方案上有多個範圍的 pod" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>適用于範圍部署的 Azure VMware 解決方案主機大小 
 
@@ -211,3 +211,6 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 | Windows 檔案共用               | D4sv3          |         | *選擇性*                               |
 
 在 \$ 上述範例中，每位使用者每個2000月每位使用者0.36 的基礎結構 VM 成本。 此範例會使用美國東部 Azure 實例2020年6月定價。 根據區域、選取的選項和時間，您的定價可能會有所不同。
+
+## <a name="next-steps"></a>後續步驟
+若要深入瞭解 Azure VMware 解決方案上的 VMware 範圍，請閱讀 [Vmware 範圍常見問題](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)。

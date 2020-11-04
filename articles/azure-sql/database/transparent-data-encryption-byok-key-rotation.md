@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788599"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321416"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>輪替透明資料加密 (TDE) 保護裝置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "92788599"
 本指南將討論用來在伺服器上輪替 TDE 保護裝置的兩個選項。
 
 > [!NOTE]
-> 已暫停的 Azure Synapse Analytics SQL 集區必須在金鑰輪替之前繼續。
+> Azure Synapse Analytics 中的暫停專用 SQL 集區必須在金鑰輪替之前繼續。
 
 > [!IMPORTANT]
 > 在變換之後，請勿刪除舊版本的金鑰。 在金鑰變換後，部分資料仍會以先前的金鑰加密，例如較舊的資料庫備份。

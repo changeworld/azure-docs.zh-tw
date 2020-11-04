@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b708d85e94782ea264432ae3780b2b1f0d240396
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296768"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320805"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 
 
-在本文中，您將瞭解如何在 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)中使用自動化機器學習服務（AutoML）來設定和定型時間序列預測回歸模型。 
+在本文中，您將瞭解如何在 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)中使用自動化機器學習服務（AutoML）來設定和定型時間序列預測回歸模型。 
 
 若要這樣做，您可以： 
 
@@ -102,7 +102,7 @@ test_labels = test_data.pop(label).values
 
 您可以直接在物件中指定個別的定型和驗證集 `AutoMLConfig` 。   深入了解 [AutoMLConfig](#configure-experiment)。
 
-針對時間序列預測，根據預設，只有輪流 **來源交叉驗證 (ROCV) ** 用於驗證。 將定型和驗證資料一起傳遞，並使用中的參數設定交叉驗證折迭數目 `n_cross_validations` `AutoMLConfig` 。 ROCV 會使用原始時間點來將序列分割成定型和驗證資料。 滑動時間原點即會產生交叉驗證摺疊。 此策略可保留時間序列資料的完整性，並消除資料洩漏的風險
+針對時間序列預測，根據預設，只有輪流 **來源交叉驗證 (ROCV)** 用於驗證。 將定型和驗證資料一起傳遞，並使用中的參數設定交叉驗證折迭數目 `n_cross_validations` `AutoMLConfig` 。 ROCV 會使用原始時間點來將序列分割成定型和驗證資料。 滑動時間原點即會產生交叉驗證摺疊。 此策略可保留時間序列資料的完整性，並消除資料洩漏的風險
 
 ![滾動原始來源交叉驗證](./media/how-to-auto-train-forecast/ROCV.svg)
 
@@ -120,7 +120,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ## <a name="configure-experiment"></a>設定實驗
 
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 物件會定義自動化機器學習工作所需的設定和資料。 預測模型的設定類似于設定標準回歸模型，但特定的模型、設定選項和特徵化步驟則特別存在於時間序列資料中。 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 物件會定義自動化機器學習工作所需的設定和資料。 預測模型的設定類似于設定標準回歸模型，但特定的模型、設定選項和特徵化步驟則特別存在於時間序列資料中。 
 
 ### <a name="supported-models"></a>支援的模型
 自動化機器學習會在建立和微調程式的過程中，自動嘗試不同的模型和演算法。 身為使用者，您不需要指定演算法。 針對預測實驗，原生時間序列和深度學習模型都屬於建議系統的一部分。 下表摘要說明此模型子集。 
@@ -138,7 +138,7 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 
 類似於迴歸問題，您可定義標準定型參數，例如工作類型、反覆項目數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 
 
-下表摘要說明這些額外的參數。 如需語法設計模式的 [參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) ，請參閱。
+下表摘要說明這些額外的參數。 如需語法設計模式的 [參考檔](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) ，請參閱。
 
 | 參數名稱&nbsp; | 描述 | 必要 |
 |-------|-------|-------|
@@ -149,10 +149,11 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 |`target_lags`|要根據資料頻率延隔目標值的資料列數目。 延隔會以清單或單一整數來表示。 當獨立變數與相依變數之間的關聯性預設不相符或相互關聯時，應該使用延隔。 ||
 |`feature_lags`| 當 `target_lags` 設定且設定為時，自動化 ML 會自動決定延隔的功能 `feature_lags` `auto` 。 啟用功能延遲可能有助於改善精確度。 功能延遲預設為停用。 ||
 |`target_rolling_window_size`|要用來產生預測值的 *n* 個歷程記錄週期，小於或等於定型集大小。 如果省略，則 *n* 就是完整的定型集大小。 若在將模型定型時只想考慮特定數量的歷程記錄，則請指定此參數。 深入瞭解 [目標滾動視窗匯總](#target-rolling-window-aggregation)。||
+|`short_series_handling`| 啟用簡短的時間序列處理，以避免因為資料不足而在定型期間發生失敗。 預設會將 [短序列處理] 設定為 [True]。|
 
 
 下列程式碼： 
-* 建立 `time-series settings` 做為字典物件。 
+* 利用 `ForecastingParameters` 類別來定義實驗訓練的預測參數
 * 將設定 `time_column_name` 為 `day_datetime` 資料集中的欄位。 
 * 定義的 `time_series_id_column_names` 參數 `"store"` 。 這可確保針對資料建立了 **兩個不同的時間序列群組** ;一個用於 store A 和 B。
 * 將設定 `forecast_horizon` 為50，以便預測整個測試集。 
@@ -161,16 +162,18 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 * 設定 `target_lags` 為建議的 [自動] 設定，這會為您自動偵測此值。
 
 ```python
-time_series_settings = {
-    "time_column_name": "day_datetime",
-    "time_series_id_column_names": ["store"],
-    "forecast_horizon": 50,
-    "target_lags": "auto",
-    "target_rolling_window_size": 10,
-}
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecasting_parameters = ForecastingParameters(
+    time_column_name='day_datetime', 
+    forecast_horizon=50,
+    time_series_id_column_names=["store"],
+    target_lags='auto',
+    target_rolling_window_size=10
+)
 ```
 
-這些 `time_series_settings` 會接著傳遞至您 `AutoMLConfig` 的標準物件，以及工作 `forecasting` 類型、主要度量、結束準則和定型資料。 
+這些 `forecasting_parameters` 會接著傳遞至您 `AutoMLConfig` 的標準物件，以及工作 `forecasting` 類型、主要度量、結束準則和定型資料。 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -271,7 +274,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 例如，假設您想要預測能源需求。 您可能會想要新增三天的滾動視窗功能，以考慮熱空間的熱變更。 在此範例中，請在函式中設定來建立此視窗 `target_rolling_window_size= 3` `AutoMLConfig` 。 
 
-資料表會顯示套用視窗匯總時所產生的特徵工程。 **最小值、最大值**和**總和**的資料行會根據所定義的設定，在三個滑動視窗上產生。 每個資料列都有新的計算功能，在2017年9月8日的時間戳記案例中，上午10:00 最大值、最小值和總和值的計算方式是使用 2017 1 9 月8日的 **需求值** ：上午 10:00-3：上午10:00。 這三個時段會移位以在剩餘的資料列中填入資料。
+資料表會顯示套用視窗匯總時所產生的特徵工程。 **最小值、最大值** 和 **總和** 的資料行會根據所定義的設定，在三個滑動視窗上產生。 每個資料列都有新的計算功能，在2017年9月8日的時間戳記案例中，上午10:00 最大值、最小值和總和值的計算方式是使用 2017 1 9 月8日的 **需求值** ：上午 10:00-3：上午10:00。 這三個時段會移位以在剩餘的資料列中填入資料。
 
 ![目標滾動視窗](./media/how-to-auto-train-forecast/target-roll.svg)
 
@@ -346,4 +349,3 @@ day_datetime,store,week_of_year
 * 深入瞭解 [可解譯性：自動化機器學習中的模型說明 (預覽) ](how-to-machine-learning-interpretability-automl.md)。 
 * 瞭解如何在 [許多模型解決方案加速器](https://aka.ms/many-models)中使用 AutoML 來訓練多個模型。
 * 遵循 [教學](tutorial-auto-train-models.md) 課程，以取得使用自動化機器學習來建立實驗的端對端範例。
-

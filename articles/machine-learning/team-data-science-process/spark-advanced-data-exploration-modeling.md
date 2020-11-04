@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321338"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 進階資料探索和模型化
 
-本逐步解說會使用 HDInsight Spark，在 NYC 計程車車程和費用 2013 資料集的取樣上，使用交叉驗證和超參數最佳化來執行資料探索和定型二進位分類和迴歸模型。 它將引導您逐步完成 [資料科學程序](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)、端對端、使用 HDInsight Spark 叢集處理，並使用 Azure blob 來儲存資料和模型。 程序會探索和視覺化從 Azure 儲存體 Blob 中引進的資料，然後準備資料來建立預測模型。 已使用 Python 來編寫解決方案程式碼，並顯示相關的繪圖。 這些模型是使用 Spark MLlib 工具組來執行二進位分類和迴歸模型工作。 
+本逐步解說會使用 HDInsight Spark，在 NYC 計程車車程和費用 2013 資料集的取樣上，使用交叉驗證和超參數最佳化來執行資料探索和定型二進位分類和迴歸模型。 它將引導您逐步完成 [資料科學程序](./index.yml)、端對端、使用 HDInsight Spark 叢集處理，並使用 Azure blob 來儲存資料和模型。 程序會探索和視覺化從 Azure 儲存體 Blob 中引進的資料，然後準備資料來建立預測模型。 已使用 Python 來編寫解決方案程式碼，並顯示相關的繪圖。 這些模型是使用 Spark MLlib 工具組來執行二進位分類和迴歸模型工作。 
 
 * **二進位分類** 工作可預測是否已支付某趟車程的小費。 
 * **迴歸** 工作可根據其他小費功能來預測小費金額。 
@@ -31,7 +31,7 @@ ms.locfileid: "86027540"
 
 **超參數最佳化** 是選擇用於學習演算法的超參數集的問題所在，通常具有最佳化獨立資料集上演算法效能的測量的目標。 **超參數** 是值，必須在模型定型程序之外指定。 這些值的假設可能會影響模型的彈性和精確度。 決策樹有超參數，例如，想要的深度和樹狀目錄中的分葉數目等。 支援向量機器 (SVM) 需要設定分類誤判損失詞彙。 
 
-此處所使用的執行超參數最佳化常見做法是格線搜尋，或 **參數掃掠**。 這項搜尋會掃描學習演算法的超參數空間子集。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 CV 與超參數掃掠搭配使用，有助於限制問題，例如定型資料模型的過度配適，以便模型會保留容量以套用至從中擷取定型資料的一般集合。
+此處所使用的執行超參數最佳化常見做法是格線搜尋，或 **參數掃掠** 。 這項搜尋會掃描學習演算法的超參數空間子集。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 CV 與超參數掃掠搭配使用，有助於限制問題，例如定型資料模型的過度配適，以便模型會保留容量以套用至從中擷取定型資料的一般集合。
 
 我們使用的模型包括羅吉斯和線性迴歸、隨機樹系和漸層停駐推進式決策樹︰
 
@@ -593,8 +593,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 我們會示範如何以兩種方式使用參數掃掠執行交叉驗證 (CV)︰
 
-1. 使用**泛型**自訂程式碼，可套用至 MLlib 中的任何演算法，以及演算法中的任何參數集。 
-2. 使用 **pySpark CrossValidator 管線函式**。 對於 Spark 1.5.0，CrossValidator 有幾項限制︰ 
+1. 使用 **泛型** 自訂程式碼，可套用至 MLlib 中的任何演算法，以及演算法中的任何參數集。 
+2. 使用 **pySpark CrossValidator 管線函式** 。 對於 Spark 1.5.0，CrossValidator 有幾項限制︰ 
    
    * 無法儲存或保存管線模型供未來使用。
    * 無法用於模型中的每個參數。
@@ -1507,5 +1507,4 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>下一步
 現在已使用 Spark MlLib 建立迴歸和分類模型，您已瞭解如何評分及評估這些模型。
 
-**模型取用量**：若要了解如何評分和評估本主題中所建立的分類和迴歸模型，請參閱[評分及評估 Spark 建置的機器學習模型](spark-model-consumption.md)。
-
+**模型取用量** ：若要了解如何評分和評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置的機器學習模型](spark-model-consumption.md)。

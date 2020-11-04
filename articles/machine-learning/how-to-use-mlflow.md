@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: cf0817ad1e9fae901bfe2b4a174d95a4f673e4c0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676645"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319018"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤實驗執行及部署 ML 模型) 
 
@@ -24,9 +24,9 @@ ms.locfileid: "92676645"
 
 支援的功能包括： 
 
-+ 在您的 [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)中追蹤並記錄實驗計量和構件。 如果您已針對實驗使用 MLflow 追蹤，工作區會提供集中、安全且可擴充的位置來儲存訓練計量和模型。
++ 在您的 [Azure Machine Learning 工作區](./concept-azure-machine-learning-architecture.md#workspace)中追蹤並記錄實驗計量和構件。 如果您已針對實驗使用 MLflow 追蹤，工作區會提供集中、安全且可擴充的位置來儲存訓練計量和模型。
 
-+ 使用 Azure Machine Learning 後端支援 (preview) 的 MLflow 專案提交定型作業。 您可以使用 Azure Machine Learning 追蹤在本機提交作業，或透過 [Azure Machine Learning 計算](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-sdk#amlcompute)將執行遷移至雲端。
++ 使用 Azure Machine Learning 後端支援 (preview) 的 MLflow 專案提交定型作業。 您可以使用 Azure Machine Learning 追蹤在本機提交作業，或透過 [Azure Machine Learning 計算](./how-to-create-attach-compute-cluster.md)將執行遷移至雲端。
 
 + 在 MLflow 和 Azure Machine Learning 模型登錄中追蹤和管理模型。
 
@@ -48,7 +48,7 @@ ms.locfileid: "92676645"
 
  下表摘要說明可以使用 Azure Machine Learning 的不同用戶端，以及各自的函式功能。
 
- MLflow 追蹤提供的計量記錄和成品儲存功能，僅可透過 [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 取得。
+ MLflow 追蹤提供的計量記錄和成品儲存功能，僅可透過 [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 取得。
 
 | 功能 | MLflow 追蹤 & 部署 | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
@@ -65,14 +65,14 @@ ms.locfileid: "92676645"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 安裝 `azureml-mlflow` 套件。 
-    * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，以提供 MLflow 的連線能力以存取您的工作區。
+    * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，以提供 MLflow 的連線能力以存取您的工作區。
 * [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
 ## <a name="track-local-runs"></a>追蹤本機執行
 
 搭配 Azure Machine Learning 的 MLflow 追蹤可讓您將從本機執行中記錄的計量和成品儲存至 Azure Machine Learning 工作區。
 
-匯入 `mlflow` 和 [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true) 類別來存取 MLflow 的追蹤 URI，並設定您的工作區。
+匯入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) 類別來存取 MLflow 的追蹤 URI，並設定您的工作區。
 
 在下列程式碼中，`get_mlflow_tracking_uri()` 方法會將唯一的追蹤 URI 位址指派給工作區 (`ws`)，而 `set_tracking_uri()` 會將 MLflow 追蹤 URI 指向該位址。
 
@@ -119,7 +119,7 @@ dependencies:
     - numpy
 ```
 
-在您的腳本中，使用類別設定您的計算和定型執行環境 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) 。 然後，  [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) 使用您的遠端計算來建立計算目標。
+在您的腳本中，使用類別設定您的計算和定型執行環境 [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 。 然後，  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) 使用您的遠端計算來建立計算目標。
 
 ```Python
 import mlflow
@@ -146,7 +146,7 @@ run = exp.submit(src)
 pip install azureml-mlflow
 ```
 
-匯入 `mlflow` 和 [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true) 類別來存取 MLflow 的追蹤 URI，並設定您的工作區。
+匯入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) 類別來存取 MLflow 的追蹤 URI，並設定您的工作區。
 
 ```Python
 import mlflow
@@ -259,7 +259,7 @@ ws.get_details()
 
 ### <a name="deploy-to-aci"></a>部署到 ACI
 
-使用 [deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
+使用 [deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -290,7 +290,7 @@ webservice.wait_for_deployment(show_output=True)
 
 ### <a name="deploy-to-aks"></a>部署到 AKS
 
-若要部署至 AKS，請先建立 AKS 叢集。 使用 ComputeTarget 建立 AKS 叢集 [。建立 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--provisioning-configuration-) 方法。 建立新的叢集可能需要20-25 分鐘的時間。
+若要部署至 AKS，請先建立 AKS 叢集。 使用 ComputeTarget 建立 AKS 叢集 [。建立 ( # B1 ](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) 方法。 建立新的叢集可能需要20-25 分鐘的時間。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -310,7 +310,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-使用 [deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
+使用 [deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -367,5 +367,5 @@ webservice.wait_for_deployment()
 ## <a name="next-steps"></a>後續步驟
 
 * [管理您的模型](concept-model-management-and-deployment.md)。
-* 監視生產模型是否有[資料漂移](how-to-monitor-data-drift.md)。
-* [使用 MLflow 追蹤 Azure Databricks 執行](how-to-use-mlflow-azure-databricks.md)。 
+* 監視生產模型是否有[資料漂移](./how-to-enable-data-collection.md)。
+* [使用 MLflow 追蹤 Azure Databricks 執行](how-to-use-mlflow-azure-databricks.md)。

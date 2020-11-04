@@ -1,6 +1,6 @@
 ---
 title: 資料載入最佳做法
-description: 將資料載入 Synapse SQL 的建議和效能優化
+description: 將資料載入專用 SQL 集區 Azure Synapse Analytics 的建議和效能優化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289226"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321516"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>用於載入資料以進行資料倉儲作業的最佳做法
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>將資料載入專用 SQL 集區的最佳作法 Azure Synapse Analytics
 
 在本文中，您可以找到載入資料的建議和效能優化。
 
 ## <a name="prepare-data-in-azure-storage"></a>在 Azure 儲存體中準備資料
 
-若要將延遲降至最低，請共置您的儲存層和您的資料倉儲。
+若要將延遲降至最低，請共置您的儲存層和您專用的 SQL 集區。
 
 將資料匯出成 ORC 檔案格式時，如有大量文字資料行，則可能發生 Java 記憶體不足錯誤。 若要解決這項限制，只能匯出部分資料行。
 
@@ -36,13 +36,13 @@ PolyBase 無法載入具有超過1000000個位元組之資料的資料列。 當
 
 ## <a name="run-loads-with-enough-compute"></a>以足夠的計算執行載入
 
-如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
+如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果您預期會有大量載入作業，請考慮在負載前相應增加您專用的 SQL 集區。
 
 若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者指派給特定資源類別或工作負載群組。 若要執行負載，請以其中一個載入使用者的形式登入，然後執行負載。 載入會利用使用者的資源類別來執行。  相較於嘗試變更使用者的資源類別，以符合目前的資源類別需求，這個方法比較簡單。
 
 ### <a name="create-a-loading-user"></a>建立載入使用者
 
-此範例會為 staticrc20 資源類別建立載入使用者。 第一個步驟是**連線到 主要資料庫**並建立登入。
+此範例會為 staticrc20 資源類別建立載入使用者。 第一個步驟是 **連線到 主要資料庫** 並建立登入。
 
 ```sql
    -- Connect to master
@@ -94,7 +94,7 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="manage-loading-failures"></a>管理載入失敗
 
-使用外部資料表的載入可能會失敗，並顯示「查詢已中止 -- 從外部來源讀取時已達最大拒絕閾值」** 錯誤訊息。 此訊息表示您的外部資料包含「錯誤」記錄。 如果資料類型和資料行數不符合外部資料表的資料行定義，或資料不符合指定的外部檔案格式，則會將資料記錄視為「錯誤」。
+使用外部資料表的載入可能會失敗，並顯示「查詢已中止 -- 從外部來源讀取時已達最大拒絕閾值」錯誤訊息。 此訊息表示您的外部資料包含「錯誤」記錄。 如果資料類型和資料行數不符合外部資料表的資料行定義，或資料不符合指定的外部檔案格式，則會將資料記錄視為「錯誤」。
 
 若要修正「錯誤」記錄，請確定您的外部資料表及外部檔案格式定義皆正確，且這些定義與您的外部資料相符。 萬一外部資料記錄的子集有錯誤，您可以使用 CREATE EXTERNAL TABLE 中的拒絕選項，選擇拒絕這些查詢記錄。
 

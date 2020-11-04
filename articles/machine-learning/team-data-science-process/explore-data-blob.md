@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ee92a9eaf9316cbd453ea1ec4def58bb543a5a6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085696"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321141"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 Pandas 瀏覽 Azure blob 儲存體中的資料
 
@@ -28,7 +28,7 @@ ms.locfileid: "86085696"
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
-* 將您的資料儲存在 Azure blob 儲存體帳戶。 如需指示，請參閱 [從 Azure 儲存體來回移動資料](../../storage/common/storage-moving-data.md)
+* 將您的資料儲存在 Azure blob 儲存體帳戶。 如需指示，請參閱 [從 Azure 儲存體來回移動資料](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>將資料載入 Pandas 資料框架
 若要探索和操作資料集，必須先從 Blob 來源將資料集下載至本機檔案，然後將其載入 Pandas 資料框架。 以下是此程序的遵循步驟：
@@ -72,7 +72,7 @@ ms.locfileid: "86085696"
     print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
     ```
 
-1. **檢查**資料集中的前幾個或最後幾個**資料列**：
+1. **檢查** 資料集中的前幾個或最後幾個 **資料列** ：
 
     ```python
     dataframe_blobdata.head(10)

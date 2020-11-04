@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439992"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320226"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
@@ -45,7 +45,7 @@ Microsoft 對於 Windows 和 Linux 所提供的資料科學虛擬機器，包含
 - 適用於 Windows 的 Power BI desktop
 - Windows / Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-其也包含 **ML 和 AI 工具**，例如 xgboost、mxnet 和 Vowpal Wabbit。
+其也包含 **ML 和 AI 工具** ，例如 xgboost、mxnet 和 Vowpal Wabbit。
 
 目前 DSVM 可用於 **Windows** 和 **Linux CentOS** 作業系統。 根據您規劃在上面執行之資料科學專案的需要，選擇 DSVM 的大小(CPU 核心數目和記憶體數量)。 
 
@@ -60,7 +60,7 @@ Apache Spark 是一個開放原始碼平行處理架構，可支援記憶體內�
 
 當您在 HDInsight 中建立 Spark 叢集時，就是建立了已安裝及設定 Spark 的 Azure 計算資源。 在 HDInsight 中建立 Spark 叢集需要約 10 分鐘。 系統會將要處理的資料儲存在 Azure Blob 儲存體。 如需關於搭配叢集使用 Azure Blob 儲存體的詳細資訊，請參閱[在 HDInsight 上搭配 Hadoop 使用 HDFS 相容的 Azure Blob 儲存體](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何使用 Azure HDInsight Spark 叢集來建立資料科學解決方案，其中一個使用 Python，而另一個使用 Scala。 如需 Azure HDInsight **Spark 叢集**的詳細資訊，請參閱[概觀：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 叢集上使用 **Python** 來建立資料科學解決方案，請參閱[在 Azure HDInsight 上使用 Spark 的資料科學概觀](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 叢集上使用 **Scala** 來建立資料科學解決方案，請參閱[在 Azure 上使用 Scala 與 Spark 的資料科學](scala-walkthrough.md)。 
+Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何使用 Azure HDInsight Spark 叢集來建立資料科學解決方案，其中一個使用 Python，而另一個使用 Scala。 如需 Azure HDInsight **Spark 叢集** 的詳細資訊，請參閱 [概觀：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 叢集上使用 **Python** 來建立資料科學解決方案，請參閱 [在 Azure HDInsight 上使用 Spark 的資料科學概觀](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 叢集上使用 **Scala** 來建立資料科學解決方案，請參閱 [在 Azure 上使用 Scala 與 Spark 的資料科學](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
@@ -92,23 +92,23 @@ Hive 可讓您將結構投影在大量非結構化資料上。 定義結構後�
 
 Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，在雲端中提供檔案共用功能的服務。 SMB 2.1 和 SMB 3.0 皆受到支援。 使用 Azure 檔案儲存體時，您可以快速地將依賴檔案共用功能的舊式應用程式移轉至 Azure，而不必浪費成本來重新撰寫程式。 在 Azure 虛擬機器、雲端服務或內部部署中執行的應用程式，可掛接雲端中的檔案共用，就像桌面應用程式掛接一般 SMB 共用一樣。 可同時掛接和存取檔案儲存體共用的應用程式元件數量沒有限制。
 
-對於資料科學專案特別有用的功能是建立 Azure 檔案存放區，作為與專案小組成員共用專案資料的位置。 然後每個成員會存取 Azure 檔案儲存體中資料的相同複本。 他們也可以使用此檔案儲存體，共用在執行專案期間產生的功能集。 如果專案是用戶端參與，您的用戶端可以在他們自己的 Azure 訂用帳戶底下建立 Azure 檔案存放體，與您共用專案資料和功能。 如此一來，用戶端會具有專案資料資產的完整控制權。 如需 Azure 檔案儲存體的詳細資訊，請參閱[在 Windows 上開始使用 Azure 檔案儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)和[如何搭配 Linux 使用 Azure 檔案儲存體](../../storage/files/storage-how-to-use-files-linux.md)。
+對於資料科學專案特別有用的功能是建立 Azure 檔案存放區，作為與專案小組成員共用專案資料的位置。 然後每個成員會存取 Azure 檔案儲存體中資料的相同複本。 他們也可以使用此檔案儲存體，共用在執行專案期間產生的功能集。 如果專案是用戶端參與，您的用戶端可以在他們自己的 Azure 訂用帳戶底下建立 Azure 檔案存放體，與您共用專案資料和功能。 如此一來，用戶端會具有專案資料資產的完整控制權。 如需 Azure 檔案儲存體的詳細資訊，請參閱[在 Windows 上開始使用 Azure 檔案儲存體](../../storage/files/storage-dotnet-how-to-use-files.md)和[如何搭配 Linux 使用 Azure 檔案儲存體](../../storage/files/storage-how-to-use-files-linux.md)。
 
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R 和 Python 服務
 
 R Services (資料庫內) 提供用於開發和部署智慧型應用程式的平台，可以發掘新的見解。 您可以使用豐富且功能強大的 R 語言 (包括 R 社群提供的許多套件) 來建立模型，並為 SQL Server 資料產生預測。 因為 R Services (資料庫內) 會整合 R 語言與 SQL Server，所以分析會貼近資料，這樣可以排除與移動資料相關聯的成本和安全性風險。
 
-R Services (資料庫內) 支援開放原始碼 R 語言與一組完整的 SQL Server 工具和技術。 它們提供更優異的效能、安全性、可靠性及管理能力。 您可以使用方便且熟悉的工具來部署 R 解決方案。 生產應用程式可以使用 Transact-SQL 呼叫 R 執行階段，並且擷取預測和視覺效果。 您也可以使用 ScaleR 程式庫來改善 R 解決方案的規模和效能。 如需詳細資訊，請參閱 [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
+R Services (資料庫內) 支援開放原始碼 R 語言與一組完整的 SQL Server 工具和技術。 它們提供更優異的效能、安全性、可靠性及管理能力。 您可以使用方便且熟悉的工具來部署 R 解決方案。 生產應用程式可以使用 Transact-SQL 呼叫 R 執行階段，並且擷取預測和視覺效果。 您也可以使用 ScaleR 程式庫來改善 R 解決方案的規模和效能。 如需詳細資訊，請參閱 [SQL Server R Services](/sql/advanced-analytics/r/sql-server-r-services)。
 
-Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 SQL Server 2016 R Services 中建置資料科學解決方案：一個適用於 R 程式設計人員，另一個適用於 SQL 開發人員。 若是 **R 程式設計人員**，請參閱[資料科學端對端逐步解說](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 若是 **SQL 開發人員**，請參閱[適用於 SQL 開發人員的資料庫內進階分析 (教學課程)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
+Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 SQL Server 2016 R Services 中建置資料科學解決方案：一個適用於 R 程式設計人員，另一個適用於 SQL 開發人員。 若是 **R 程式設計人員** ，請參閱 [資料科學端對端逐步解說](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 若是 **SQL 開發人員** ，請參閱 [適用於 SQL 開發人員的資料庫內進階分析 (教學課程)](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
 
 
 ## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>附錄：用來設定資料科學專案的工具
 
 ### <a name="install-git-credential-manager-on-windows"></a>在 Windows 上安裝 Git 認證管理員
 
-如果您遵照 **Windows** 上的 TDSP，您需要安裝 **Git 認證管理員 (GCM)** ，以與 Git 存放庫通訊。 若要安裝 GCM，您必須先安裝 **Chocolaty**。 若要安裝 Chocolaty 和 GCM，以**系統管理員**身分在 Windows PowerShell 中執行下列命令：  
+如果您遵照 **Windows** 上的 TDSP，您需要安裝 **Git 認證管理員 (GCM)** ，以與 Git 存放庫通訊。 若要安裝 GCM，您必須先安裝 **Chocolaty** 。 若要安裝 Chocolaty 和 GCM，以 **系統管理員** 身分在 Windows PowerShell 中執行下列命令：  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -153,4 +153,4 @@ sudo yum install git
 
 此外也會提供完整的端對端逐步解說，說明 **特定案例** 之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)主題中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-如需示範如何在 Team Data Science Process 中使用 Azure Machine Learning Studio (傳統版) 執行步驟的範例，請參閱[使用 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 學習路徑。
+如需示範如何在 Team Data Science Process 中使用 Azure Machine Learning Studio (傳統版) 執行步驟的範例，請參閱[使用 Azure ML](./index.yml) 學習路徑。

@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026180"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321365"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 與 Spark 的資料科學
-本文章說明如何使用 Scala 搭配 Spark 可調整 MLlib 和 Azure HDInsight Spark 叢集上的 SparkML 封裝，處理受監督的機器學習工作。 它會引導您進行構成 [資料科學程序](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)的各項工作︰資料擷取和探索、視覺化、特徵設計、模型化和模型取用。 本文中的模型除了兩個常見受監督的機器學習工作之外，還包括羅吉斯和線性迴歸、隨機樹系和梯度推進樹 (GBT)︰
+本文章說明如何使用 Scala 搭配 Spark 可調整 MLlib 和 Azure HDInsight Spark 叢集上的 SparkML 封裝，處理受監督的機器學習工作。 它會引導您進行構成 [資料科學程序](./index.yml)的各項工作︰資料擷取和探索、視覺化、特徵設計、模型化和模型取用。 本文中的模型除了兩個常見受監督的機器學習工作之外，還包括羅吉斯和線性迴歸、隨機樹系和梯度推進樹 (GBT)︰
 
 * 迴歸問題︰計程車車程的小費金額 ($) 預測
 * 二進位分類︰計程車車程的小費或不給小費 (1/0) 預測
@@ -39,9 +39,9 @@ ms.locfileid: "86026180"
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * 您必須擁有 Azure 訂用帳戶。 如果還沒有， [請取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] **** 功能表上設定叢集類型和版本。
+* 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型]  功能表上設定叢集類型和版本。
 
 ![HDInsight 叢集類型組態](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "86026180"
 如需紐約市計程車車程資料的說明以及如何在 Spark 叢集上從 Jupyter Notebook 執行程式碼的指示，請參閱 [在 Azure HDInsight 上使用 Spark 的資料科學概觀](spark-overview.md)中的相關章節。  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>在 Spark 叢集上從 Jupyter Notebook 執行 Scala 程式碼
-您可以從 Azure 入口網站啟動 Jupyter Notebook。 在儀表板上尋找 Spark 叢集，然後按一下該項目以進入您的叢集管理頁面。 接著按一下 [叢集儀表板]****，然後按一下 [Jupyter Notebook]**** 來開啟與 Spark 叢集相關聯的 Notebook。
+您可以從 Azure 入口網站啟動 Jupyter Notebook。 在儀表板上尋找 Spark 叢集，然後按一下該項目以進入您的叢集管理頁面。 接著按一下 [叢集儀表板]，然後按一下 [Jupyter Notebook] 來開啟與 Spark 叢集相關聯的 Notebook。
 
 ![叢集儀表板和 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "86026180"
 
 ![使用叢集名稱移至 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-選取 [Scala] **** 會看到一個目錄，當中有一些使用 PySpark API 的預先封裝 Notebook 的範例。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)上有使用 Scala.ipynb Notebook 的探勘模型化和評分，其中包含此 Spark 主題套件的程式碼範例。
+選取 [Scala]  會看到一個目錄，當中有一些使用 PySpark API 的預先封裝 Notebook 的範例。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)上有使用 Scala.ipynb Notebook 的探勘模型化和評分，其中包含此 Spark 主題套件的程式碼範例。
 
-您可以將 Notebook 直接從 GitHub 上傳至 Spark 叢集上的 Jupyter Notebook 伺服器。 在 Jupyter 首頁上，按一下 [上傳] **** 按鈕。 在檔案總管中，貼上 Scala Notebook 的 GitHub (原始內容) URL，然後按一下 [開啟] ****。 下列 URL 有 Scala Notebook 可供使用：
+您可以將 Notebook 直接從 GitHub 上傳至 Spark 叢集上的 Jupyter Notebook 伺服器。 在 Jupyter 首頁上，按一下 [上傳]  按鈕。 在檔案總管中，貼上 Scala Notebook 的 GitHub (原始內容) URL，然後按一下 [開啟] 。 下列 URL 有 Scala Notebook 可供使用：
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -268,7 +268,7 @@ sqlResultsDF.show(3)
 根據預設，在背景工作節點上保存的工作階段內容中，可取得您從 Jupyter Notebook 執行之任何程式碼片段的輸出。 如果您想要將車程儲存至每個計算的背景工作節點，而且如果在 Jupyter 伺服器節點 (此為前端節點) 的本機上可取得計算所需的所有資料，您可以使用 `%%local` Magic 在 Jupyter 伺服器上執行程式碼片段。
 
 * **SQL 魔術** (`%%sql`) 。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將可在原生模式中使用。
-* `%%local`**魔術**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
+* `%%local`**魔術** 。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查詢資料
 此查詢會依照費用金額、乘客計數和小費金額擷取計程車車程。
@@ -353,7 +353,7 @@ plt.show()
 1. 藉由 **分類收納** 小時進入交通時間值區來建立新功能。
 2. 對分類特徵套用 **索引編製和 one-hot 編碼** 。
 3. **取樣並將資料集分割** 成訓練和測試部分。
-4. **指定訓練變數和特徵**，然後建立已編製索引或已進行 one-hot 編碼的訓練和測試輸入標示點彈性分散式資料集 (RDD) 或資料框架。
+4. **指定訓練變數和特徵** ，然後建立已編製索引或已進行 one-hot 編碼的訓練和測試輸入標示點彈性分散式資料集 (RDD) 或資料框架。
 5. 自動 **分類及向量化特徵和目標** 以做為機器學習模型的輸入。
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>將小時納入流量時間值區以建立新特徵
@@ -552,9 +552,9 @@ val indexedTESTwithCatFeat = indexerModel.transform(indexedTESTregDF)
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二進位分類模型：預測是否應支付小費
 在本節中，您會建立三種類型的二進位分類模型來預測是否應支付小費：
 
-* 使用 Spark ML `LogisticRegression()` 函式的**羅吉斯迴歸模型**
-* 使用 Spark ML `RandomForestClassifier()` 函式的**隨機樹系分類模型**
-* 使用 MLlib `GradientBoostedTrees()` 函式的**梯度推進樹分類模型**
+* 使用 Spark ML `LogisticRegression()` 函式的 **羅吉斯迴歸模型**
+* 使用 Spark ML `RandomForestClassifier()` 函式的 **隨機樹系分類模型**
+* 使用 MLlib `GradientBoostedTrees()` 函式的 **梯度推進樹分類模型**
 
 ### <a name="create-a-logistic-regression-model"></a>建立羅吉斯迴歸模型
 接著，使用 Spark ML `LogisticRegression()` 函式建立羅吉斯迴歸模型。 您會在一系列步驟中建立模型建置程式碼︰
@@ -751,8 +751,8 @@ ROC 曲線夏的領域 = 0.9846895479241554
 ## <a name="regression-model-predict-tip-amount"></a>迴歸模型：預測小費金額
 在本節中，您會建立兩種類型的迴歸模型來預測小費金額︰
 
-* 使用 Spark ML `LinearRegression()` 函式的**正規化線性迴歸模型**。 您將儲存模型，並對測試資料評估模型。
-* 使用 Spark ML `GBTRegressor()` 函式的**梯度推進樹迴歸模型**。
+* 使用 Spark ML `LinearRegression()` 函式的 **正規化線性迴歸模型** 。 您將儲存模型，並對測試資料評估模型。
+* 使用 Spark ML `GBTRegressor()` 函式的 **梯度推進樹迴歸模型** 。
 
 ### <a name="create-a-regularized-linear-regression-model"></a>建立正則化線性迴歸模型
 
@@ -922,11 +922,11 @@ println("Test R-sqr is: " + Test_R2);
 * 利用 Spark ML 的 CrossValidator 函式 (二進位分類)，使用交叉驗證和超參數掃掠來最佳化模型
 * 使用自訂交叉驗證和參數掃掠程式碼，利用任何機器學習函式和參數集來最佳化模型 (線性迴歸)
 
-**交叉驗證** 是一種技術，評估已對一組已知資料訓練過的模型將能多廣泛地預測尚未對其訓練過的資料集特徵。 這種技術背後的基本概念是模型已針對已知資料的資料集訓練，然後針對獨立的資料集測試其預測的精確度。 常見的實作是將資料集分割成 *k*個摺疊，然後以循環配置資源方式對除了一個摺疊的所有摺疊訓練模型。
+**交叉驗證** 是一種技術，評估已對一組已知資料訓練過的模型將能多廣泛地預測尚未對其訓練過的資料集特徵。 這種技術背後的基本概念是模型已針對已知資料的資料集訓練，然後針對獨立的資料集測試其預測的精確度。 常見的實作是將資料集分割成 *k* 個摺疊，然後以循環配置資源方式對除了一個摺疊的所有摺疊訓練模型。
 
 **超參數優化** 是針對學習演算法選擇一組超參數的問題，通常是為了將演算法在獨立資料集上的效能量值優化。 超參數是您在模型訓練程序之外必須指定的值。 對於超參數值的假設可能會影響模型的彈性和精確度。 決策樹有超參數，例如想要的樹深度和葉數目等。 您必須為支援向量機器 (SVM) 設定分類誤判損失詞彙。
 
-執行超參數最佳化一個常見的方法是使用格線搜尋，也稱為 **參數掃掠**。 在格線搜尋中，會對某個學習演算法的超參數空間指定子集的所有值執行詳盡搜尋。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 如果您使用交叉驗證超參數掃掠，可以協助限制例如將模型過度擬合到訓練資料的問題。 如此一來，模型會保留空間來套用到擷取訓練資料的一般資料集。
+執行超參數最佳化一個常見的方法是使用格線搜尋，也稱為 **參數掃掠** 。 在格線搜尋中，會對某個學習演算法的超參數空間指定子集的所有值執行詳盡搜尋。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 如果您使用交叉驗證超參數掃掠，可以協助限制例如將模型過度擬合到訓練資料的問題。 如此一來，模型會保留空間來套用到擷取訓練資料的一般資料集。
 
 ### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>利用超參數掃掠來最佳化線性迴歸模型
 接著，將資料分為訓練集和驗證集，對訓練集使用超參數掃掠來最佳化模型，然後對驗證集進行評估 (線性迴歸)。
@@ -1135,9 +1135,8 @@ val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 執行資料格的時間︰61 秒。
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>透過 Scala 自動取用 Spark 建置的機器學習模型
-如需能引導您完成在 Azure 中構成資料科學程序之工作的主題概觀，請參閱 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
+如需能引導您完成在 Azure 中構成資料科學程序之工作的主題概觀，請參閱 [Team Data Science Process](./index.yml)。
 
 [Team Data Science Process 逐步解說](walkthroughs.md) 說明的其他端對端逐步解說示範 Team Data Science Process 針對特定案例的步驟。 這些逐步解說也示範如何將雲端和內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。
 
 [評分 Spark 建置的機器學習模型](spark-model-consumption.md) 示範如何利用 Spark 內建並儲存於 Azure Blob 儲存體的機器學習模型，使用 Scala 程式碼來自動載入及評分新資料集。 您可以遵循此處提供的指示，只要將本文中的 Python 程式碼取代為 Scala 程式碼，即可自動取用。
-

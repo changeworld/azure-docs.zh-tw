@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319280"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL Database 中建立和管理伺服器和單一資料庫
 
@@ -45,7 +45,7 @@ ms.locfileid: "92791523"
 
 若要管理現有的伺服器，請使用多種方法（例如從特定的資料庫頁面、[ **SQL server** ] 頁面或 [ **所有資源** ] 頁面）來流覽至伺服器。
 
-若要管理現有的資料庫，請流覽至 [ **SQL 資料庫** ] 頁面，然後選取您想要管理的資料庫。 下列螢幕擷取畫面顯示如何從資料庫的 [概觀]  頁面，開始設定資料庫的伺服器層級防火牆。
+若要管理現有的資料庫，請流覽至 [ **SQL 資料庫** ] 頁面，然後選取您想要管理的資料庫。 下列螢幕擷取畫面顯示如何從資料庫的 [概觀] 頁面，開始設定資料庫的伺服器層級防火牆。
 
    ![伺服器防火牆規則](./media/single-database-manage/server-firewall-rule.png)
 
@@ -121,12 +121,12 @@ ms.locfileid: "92791523"
 > [!IMPORTANT]
 > 您無法使用 Transact-SQL 建立或刪除伺服器。
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
-|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|建立新的單一資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |修改資料庫或彈性集區。 |
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|建立新的單一資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |修改資料庫或彈性集區。 |
 |[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|刪除資料庫。|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|針對 Azure SQL Database 或 Azure Synapse Analytics SQL 集區，傳回 (服務層級) 、服務目標 (定價層) 和彈性集區名稱（如果有的話）。 如果 SQL Database 中的伺服器登入 master 資料庫，則會傳回所有資料庫的資訊。 針對 Azure Synapse Analytics，您必須連接到 master 資料庫。|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|針對 Azure SQL Database 或 Azure Synapse Analytics 中的專用 SQL 集區，傳回 (服務層級) 、服務目標 (定價層) 和彈性集區名稱（如果有的話）。 如果 SQL Database 中的伺服器登入 master 資料庫，則會傳回所有資料庫的資訊。 針對 Azure Synapse Analytics，您必須連接到 master 資料庫。|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 傳回 Azure SQL Database 中資料庫的 CPU、IO 和記憶體耗用量。 每15秒會有一個資料列存在，即使資料庫中沒有任何活動。|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|傳回 Azure SQL Database 中資料庫的 CPU 使用量和儲存體資料。 於五分鐘間隔內收集及彙總資料。|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|包含 SQL Database 連接事件的統計資料，提供資料庫連接成功和失敗的總覽。 |
@@ -142,7 +142,7 @@ ms.locfileid: "92791523"
 
 若要建立和管理伺服器、資料庫和防火牆，請使用這些 REST API 要求。
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 |[伺服器-建立或更新](/rest/api/sql/servers/createorupdate)|建立或更新新的伺服器。|
 |[伺服器 - 刪除](/rest/api/sql/servers/delete)|刪除 SQL 伺服器。|

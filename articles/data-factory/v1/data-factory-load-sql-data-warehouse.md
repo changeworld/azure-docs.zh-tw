@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636896"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321100"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>使用 Data Factory 在15分鐘內將 1 TB 載入 Azure Synapse Analytics
 > [!NOTE]
@@ -65,7 +65,7 @@ ms.locfileid: "92636896"
   >
   >
 
-    若要建立具有 6000 Dwu 的 Synapse SQL 集區，請將效能滑杆往上移到右邊：
+    若要建立具有 6000 Dwu 的專用 SQL 集區，請將效能滑杆向右移動：
 
     ![效能滑桿](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 

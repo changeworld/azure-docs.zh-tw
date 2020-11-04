@@ -11,16 +11,16 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428430"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319308"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程 (preview) 
 
-在本文中，您將瞭解如何在 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)偵測到特定條件時，根據 Azure Machine Learning 事件 (例如失敗通知電子郵件、ML 管線執行) 來設定事件驅動的應用程式、程序或 CI/CD 工作流程。
+在本文中，您將瞭解如何在 [Azure 事件方格](../event-grid/index.yml)偵測到特定條件時，根據 Azure Machine Learning 事件 (例如失敗通知電子郵件、ML 管線執行) 來設定事件驅動的應用程式、程序或 CI/CD 工作流程。
 
 Azure Machine Learning 可管理機器學習程序的整個生命週期，包括模型定型、模型部署和監視。 使用新式無伺服器架構，您可以利用事件方格來回應 Azure Machine Learning 事件，例如定型執行完成、模型的註冊和部署、偵測到資料漂移等。 接著，您可以在工作區中訂閱和使用事件，例如執行狀態變更、執行完成、模型註冊、模型部署、資料漂移偵測。
 
@@ -31,7 +31,7 @@ Azure Machine Learning 可管理機器學習程序的整個生命週期，包括
 * 偵測到漂移時觸發 ML 管線
 
 > [!NOTE] 
-> 目前，只有當執行狀態為**失敗**時，才會觸發 runStatusChanged 事件
+> 目前，只有當執行狀態為 **失敗** 時，才會觸發 runStatusChanged 事件
 
 ## <a name="prerequisites"></a>Prerequisites
 若要使用「事件方格」，您需要參與者或擁有者存取權，才能使用您要建立事件的 Azure Machine Learning 工作區。
@@ -42,7 +42,7 @@ Azure 事件方格會從來源 (例如 Azure Machine Learning 和其他 Azure �
 
 ![Azure 事件格線運作模型](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
 
-如需事件來源和事件處理常式的詳細資訊，請參閱 [什麼是事件方格？](/azure/event-grid/overview)。
+如需事件來源和事件處理常式的詳細資訊，請參閱 [什麼是事件方格？](../event-grid/overview.md)。
 
 ### <a name="event-types-for-azure-machine-learning"></a>Azure Machine Learning 的事件類型
 
@@ -58,9 +58,9 @@ Azure Machine Learning 在機器學習服務生命週期的各個點中提供事
 
 ### <a name="filter--subscribe-to-events"></a>篩選及訂閱事件
 
-這些事件會透過 Azure 事件方格發佈。 使用 Azure 入口網站、PowerShell 或 Azure CLI，客戶可以[指定一或多個事件種類以及的篩選條件](/azure/event-grid/event-filtering)，輕鬆地訂閱事件。 
+這些事件會透過 Azure 事件方格發佈。 使用 Azure 入口網站、PowerShell 或 Azure CLI，客戶可以[指定一或多個事件種類以及的篩選條件](../event-grid/event-filtering.md)，輕鬆地訂閱事件。 
 
-設定事件時，您可以只將篩選條件套用至特定事件資料的觸發程序。 在下列範例中，針對執行狀態已變更的事件，您可以依執行類型進行篩選。 只有條件符合時，才會觸發事件。 請參閱 [Azure Machine Learning 事件方格架構](/azure/event-grid/event-schema-machine-learning)，以瞭解您可以篩選的事件資料。 
+設定事件時，您可以只將篩選條件套用至特定事件資料的觸發程序。 在下列範例中，針對執行狀態已變更的事件，您可以依執行類型進行篩選。 只有條件符合時，才會觸發事件。 請參閱 [Azure Machine Learning 事件方格架構](../event-grid/event-schema-machine-learning.md)，以瞭解您可以篩選的事件資料。 
 
 Azure Machine Learning 事件的訂用帳戶會受到 Azure RBAC)  (azure 角色型存取控制的保護。 只有工作區的[參與者和擁有者](how-to-assign-roles.md#default-roles)可以建立、更新、刪除事件訂閱。  可以在事件訂閱的[建立](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)期間或之後，將篩選套用至事件訂閱。 
 
@@ -84,7 +84,7 @@ Azure Machine Learning 事件的訂用帳戶會受到 Azure RBAC)  (azure 角色
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **進階篩選**：Azure 事件方格也支援依據已發佈的事件架構進行進階篩選。 您可以在 [Azure Machine Learning 的 Azure 事件方格事件架構](../event-grid/event-schema-machine-learning.md)中找到 Azure Machine Learning 事件架構的詳細資訊。  以下是執行進階篩選的其中一些範例：
++ **進階篩選** ：Azure 事件方格也支援依據已發佈的事件架構進行進階篩選。 您可以在 [Azure Machine Learning 的 Azure 事件方格事件架構](../event-grid/event-schema-machine-learning.md)中找到 Azure Machine Learning 事件架構的詳細資訊。  以下是執行進階篩選的其中一些範例：
 
   針對 `Microsoft.MachineLearningServices.ModelRegistered` 事件，篩選模型的標記值：
 
@@ -92,7 +92,7 @@ Azure Machine Learning 事件的訂用帳戶會受到 Azure RBAC)  (azure 角色
   --advanced-filter data.ModelTags.key1 StringIn ('value1')
   ```
 
-  若要深入瞭解如何套用篩選，請參閱[事件方格的篩選事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+  若要深入瞭解如何套用篩選，請參閱[事件方格的篩選事件](../event-grid/how-to-filter-events.md)。
 
 ## <a name="consume-machine-learning-events"></a>取用 Machine Learning 事件
 
@@ -133,7 +133,7 @@ Azure 事件方格可讓客戶建立可由 Azure Machine Learning 事件觸發�
 
 ### <a name="set-up-with-the-cli"></a>使用 CLI 進行設定
 
-您可以安裝最新的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，或使用 Azure 訂用帳戶中所提供的 Azure Cloud Shell。
+您可以安裝最新的 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，或使用 Azure 訂用帳戶中所提供的 Azure Cloud Shell。
 
 若要安裝事件方格擴充功能，從 CLI 使用下列命令：
 
@@ -160,7 +160,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 ### <a name="example-send-email-alerts"></a>範例：傳送電子郵件警示
 
-使用 [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) 設定所有事件的電子郵件。 自訂條件，並指定收件者，讓跨小組的共同作業與認知得以實現。
+使用 [Azure Logic Apps](../logic-apps/index.yml) 設定所有事件的電子郵件。 自訂條件，並指定收件者，讓跨小組的共同作業與認知得以實現。
 
 1. 在 Azure 入口網站中，移至您的 Azure Machine Learning 工作區，從左側欄中選取 [事件] 索引標籤。 從這裡選取 [邏輯應用程式]。 
 
@@ -200,9 +200,9 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 開始之前，請執行下列動作：
 
 * 設定資料集監視以[偵測工作區中的資料漂移](how-to-monitor-datasets.md)
-* 建立已發佈的 [Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/)。
+* 建立已發佈的 [Azure Data Factory 管線](../data-factory/index.yml)。
 
-在此範例中，會使用簡單的 Data Factory 管線將檔案複製到 blob 存放區，並執行已發佈的 Machine Learning 管線。 如需此案例的詳細資訊，請參閱如何[在 Azure Data Factory 中設定 Machine Learning 步驟](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)。
+在此範例中，會使用簡單的 Data Factory 管線將檔案複製到 blob 存放區，並執行已發佈的 Machine Learning 管線。 如需此案例的詳細資訊，請參閱如何[在 Azure Data Factory 中設定 Machine Learning 步驟](../data-factory/transform-data-machine-learning-service.md)。
 
 ![螢幕擷取畫面顯示具有複製 data1 饋送 M L 執行 Pipeline1 之 Factory 資源中的定型管線。](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
@@ -242,7 +242,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 Azure Machine Learning 模型物件包含了可以做為部署樞紐的參數，例如模型名稱、版本、標記、屬性。 模型註冊事件可以觸發端點，而您可以使用 Azure Function，根據這些參數的值來部署模型。
 
-如需範例，請參閱 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) 存放庫，並遵循**讀我檔案**中的步驟。
+如需範例，請參閱 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) 存放庫，並遵循 **讀我檔案** 中的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -251,4 +251,3 @@ Azure Machine Learning 模型物件包含了可以做為部署樞紐的參數，
 - [關於 Event Grid](../event-grid/overview.md)
 
 - [Azure Machine Learning 的事件架構](../event-grid/event-schema-machine-learning.md)
-

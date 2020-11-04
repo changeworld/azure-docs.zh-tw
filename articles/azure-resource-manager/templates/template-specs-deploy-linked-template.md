@@ -2,13 +2,13 @@
 title: 將範本規格部署為連結的範本
 description: 瞭解如何在連結的部署中部署現有的範本規格。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: 9755774f79ee4901c8aa691054da749f37756742
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369105"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321577"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教學課程：將範本規格部署為連結的範本 (預覽) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "91369105"
 
 ## <a name="create-the-main-template"></a>建立主要範本
 
-若要在 ARM 範本中部署範本規格，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，指定範本規格的資源識別碼。請使用下列稱為 **azuredeploy.js**的 JSON 建立範本。 本教學課程假設您已儲存至 **c:\Templates\deployTS\azuredeploy.js的** 路徑，但您可以使用任何路徑。
+若要在 ARM 範本中部署範本規格，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，指定範本規格的資源識別碼。請使用下列稱為 **azuredeploy.js** 的 JSON 建立範本。 本教學課程假設您已儲存至 **c:\Templates\deployTS\azuredeploy.js的** 路徑，但您可以使用任何路徑。
 
 ```json
 {
@@ -160,7 +160,10 @@ New-AzResourceGroup `
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
-  -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\deployTS\azuredeploy.json" `
+  -tsResourceGroup templateSpecRg `
+  -tsName storageSpec `
+  -tsVersion 1.0
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -172,8 +175,8 @@ az group create \
 
 az deployment group create \
   --resource-group webRG \
-  --template-file "c:\Templates\deployTS\azuredeploy.json"
-
+  --template-file "c:\Templates\deployTS\azuredeploy.json" \
+  --parameters tsResourceGroup=templateSpecRG tsName=storageSpec tsVersion=1.0
 ```
 
 ---

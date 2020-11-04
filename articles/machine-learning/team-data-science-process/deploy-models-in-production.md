@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a44ead4f0e7c9fcd8dfd19f562b453e600ed6a31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ea1e991df46b4e4d23305b6118980b80c2f917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333746"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321183"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>將模型部署到生產環境以便在進行業務決策時扮演主動角色
 
@@ -26,8 +26,8 @@ ms.locfileid: "91333746"
 有許多方法和平台可將模型置入生產環境。 以下提供一些選項：
 
 - [使用 Azure Machine Learning 部署模型的位置](../how-to-deploy-and-where.md)
-- [在 SQL-Server 中部署模型](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning 伺服器](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [在 SQL-Server 中部署模型](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
 >在部署之前，必須確保模型計分的延遲夠低，以便在生產環境中使用。
@@ -43,4 +43,4 @@ ms.locfileid: "91333746"
  
 ## <a name="next-steps"></a>後續步驟
 
-也會提供逐步解說，說明**特定案例**之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)文章中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。 
+也會提供逐步解說，說明 **特定案例** 之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)文章中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。

@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a1af48d89fbf5d303c2a6b8ef85ca3117debd5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439822"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320083"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>執行 Team Data Science Process 的逐步解說
 
-這些 **詳盡** 的逐步解說會示範 Team Data 科學流程中特定案例的步驟。 這些範例說明如何將雲端、內部部署工具和服務合併為 **智慧型應用程式**的工作流程。 逐步解說是依據它們使用的**平台**來歸納整理。
+這些 **詳盡** 的逐步解說會示範 Team Data 科學流程中特定案例的步驟。 這些範例說明如何將雲端、內部部署工具和服務合併為 **智慧型應用程式** 的工作流程。 逐步解說是依據它們使用的 **平台** 來歸納整理。
 
 
 ## <a name="walkthrough-descriptions"></a>逐步解說描述
@@ -42,5 +42,4 @@ ms.locfileid: "89439822"
 
 如需 Team Data 科學程式生命週期的討論，請參閱 [Team Data 科學流程生命週期](lifecycle.md)。 這個生命週期會概述從開始到完成的步驟，專案通常會在執行時執行。 
 
-如需總覽，請參閱 [資料科學流程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。 
-
+如需總覽，請參閱 [資料科學流程](./index.yml)。

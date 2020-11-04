@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1789f83f048a2ab0fb75aa33635e58b0850b865b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89647329"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319126"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中搭配使用 Azure AD 身分識別與您的機器學習 Web 服務
 
-在此操作說明中，您將瞭解如何在 Azure Kubernetes Service 中，將 Azure Active Directory (AAD) 身分識別指派給已部署的機器學習模型。 [Aad Pod 身分識別](https://github.com/Azure/aad-pod-identity)專案可讓應用程式使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)和 Kubernetes 基本專案，以安全地存取雲端資源。 這可讓您的 web 服務安全地存取您的 Azure 資源，而不需要內嵌認證或直接在腳本中管理權杖 `score.py` 。 本文說明在 Azure Kubernetes Service 叢集中建立和安裝 Azure 身分識別的步驟，並將身分識別指派給已部署的 web 服務。
+在此操作說明中，您將瞭解如何在 Azure Kubernetes Service 中，將 Azure Active Directory (AAD) 身分識別指派給已部署的機器學習模型。 [Aad Pod 身分識別](https://github.com/Azure/aad-pod-identity)專案可讓應用程式使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)和 Kubernetes 基本專案，以安全地存取雲端資源。 這可讓您的 web 服務安全地存取您的 Azure 資源，而不需要內嵌認證或直接在腳本中管理權杖 `score.py` 。 本文說明在 Azure Kubernetes Service 叢集中建立和安裝 Azure 身分識別的步驟，並將身分識別指派給已部署的 web 服務。
 
 ## <a name="prerequisites"></a>必要條件
 
-- [Machine Learning 服務的 Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組、[適用于 PYTHON 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)，或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組。
+- [Machine Learning 服務的 Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組、[適用于 PYTHON 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組。
 
-- 使用命令存取 AKS 叢集 `kubectl` 。 如需詳細資訊，請參閱[連接到](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)叢集
+- 使用命令存取 AKS 叢集 `kubectl` 。 如需詳細資訊，請參閱[連接到](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)叢集
 
 - 部署至 AKS 叢集的 Azure Machine Learning web 服務。
 
@@ -48,7 +48,7 @@ ms.locfileid: "89647329"
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
         ```
     
-    * 如果您的 AKS 叢集 **並未啟用 RBAC**，請使用下列命令：
+    * 如果您的 AKS 叢集 **並未啟用 RBAC** ，請使用下列命令：
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -75,7 +75,7 @@ ms.locfileid: "89647329"
 
 ## <a name="assign-azure-identity-to-machine-learning-web-service"></a>將 Azure 身分識別指派給 machine learning web 服務
 
-下列步驟使用在上一節中建立的 Azure 身分識別，並透過 **選取器標籤**將其指派給您的 AKS web 服務。
+下列步驟使用在上一節中建立的 Azure 身分識別，並透過 **選取器標籤** 將其指派給您的 AKS web 服務。
 
 首先，請在您想要指派 Azure 身分識別的 AKS 叢集中，識別您部署的名稱和命名空間。 您可以藉由執行下列命令來取得此資訊。 命名空間應該是您 Azure Machine Learning 工作區名稱，而您的部署名稱應該是您的端點名稱，如入口網站中所示。
 
@@ -126,7 +126,7 @@ spec:
 
 ## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>將適當的角色指派給您的 Azure 身分識別
 
-[使用適當的角色指派 Azure 受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) ，以存取其他 Azure 資源。 確定您指派的角色具有正確的 **資料動作**。 例如， [儲存體 Blob 資料讀取器角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) 將擁有儲存體 blob 的讀取權限，而一般讀取者 [角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) 可能不會。
+[使用適當的角色指派 Azure 受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) ，以存取其他 Azure 資源。 確定您指派的角色具有正確的 **資料動作** 。 例如， [儲存體 Blob 資料讀取器角色](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) 將擁有儲存體 blob 的讀取權限，而一般讀取者 [角色](../role-based-access-control/built-in-roles.md#reader) 可能不會。
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>使用 Azure 身分識別搭配您的 machine learning web 服務
 
@@ -134,7 +134,7 @@ spec:
 
 ### <a name="access-key-vault-from-your-web-service"></a>從您的 web 服務存取 Key Vault
 
-如果您已將 Azure 身分識別的讀取權限提供給 **Key Vault**內的秘密，您 `score.py` 可以使用下列程式碼來存取它。
+如果您已將 Azure 身分識別的讀取權限提供給 **Key Vault** 內的秘密，您 `score.py` 可以使用下列程式碼來存取它。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,11 +153,11 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> 此範例會使用 DefaultAzureCredential。 若要使用特定的存取原則來授與您的身分識別存取權，請參閱 [使用 Azure CLI 指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-cli)。
+> 此範例會使用 DefaultAzureCredential。 若要使用特定的存取原則來授與您的身分識別存取權，請參閱 [使用 Azure CLI 指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-cli.md)。
 
 ### <a name="access-blob-from-your-web-service"></a>從您的 web 服務存取 Blob
 
-如果您已將 Azure 身分識別讀取權限提供給 **儲存體 Blob**內的資料，您 `score.py` 可以使用下列程式碼來存取它。
+如果您已將 Azure 身分識別讀取權限提供給 **儲存體 Blob** 內的資料，您 `score.py` 可以使用下列程式碼來存取它。
 
 ```python
 from azure.identity import DefaultAzureCredential

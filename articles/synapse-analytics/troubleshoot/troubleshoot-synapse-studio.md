@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287742"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321025"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (預覽版) 疑難排解
 
 此疑難排解指南提供有關在網路連線問題上開啟支援票證時所要提供之資訊的指示。 有了適當的資訊，我們可以更快速地解決問題。
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL 隨選 (預覽版) 服務連線能力問題
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>無伺服器 SQL 集區 (預覽版) 服務連線問題
 
 ### <a name="symptom-1"></a>徵兆1
 
-[連接到] 下拉式清單中的 [SQL 隨選] 選項呈現灰色。
+[連接到] 下拉式清單中的 [無伺服器 SQL 集區] 選項呈現灰色。
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>徵兆2
 
-使用「SQL 隨選」執行查詢可提供「無法建立與伺服器的連接」錯誤訊息。
+使用「無伺服器 SQL 集區」執行查詢可讓您「無法建立與伺服器的連線」錯誤訊息。
 
 ![徵兆2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ ms.locfileid: "91287742"
 
 若要開始進行疑難排解，請重試您在 Azure Synapse Studio 中執行的作業。
 
-- 針對徵兆1，請選取 [SQL 腳本] 索引標籤中 [使用資料庫] 下拉式清單右邊的 [重新整理] 按鈕，並檢查您是否可以看到「SQL 隨選」。
+- 針對徵兆1，請選取 [SQL 腳本] 索引標籤中 [使用資料庫] 下拉式清單右邊的 [重新整理] 按鈕，並檢查您是否可以看到 [無伺服器 SQL 集區]。
 - 針對徵兆2，請試著再次執行查詢，以查看它是否能順利執行。
 
 如果問題仍然存在，請在您的瀏覽器中按 F12 以開啟 [開發人員工具] (DevTools) 。
@@ -61,7 +61,7 @@ ms.locfileid: "91287742"
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-其中 [*A*] 是您的工作區名稱，而 "-ondemand" 可以是 "-sqlod"，其中 [*B*] 應該是資料庫名稱，例如 "master"。 最多隻能有兩個專案具有相同的 URL 值，但有不同的方法值;選項和貼文。 檢查 [狀態] 資料行下的這兩個專案是否有 "200" 或 "20 倍"，其中 "x" 可以是任何單一位數。
+其中 [ *A* ] 是您的工作區名稱，而 "-ondemand" 可以是 "-sqlod"，其中 [ *B* ] 應該是資料庫名稱，例如 "master"。 最多隻能有兩個專案具有相同的 URL 值，但有不同的方法值;選項和貼文。 檢查 [狀態] 資料行下的這兩個專案是否有 "200" 或 "20 倍"，其中 "x" 可以是任何單一位數。
 
 如果其中一個專案有 "20 倍" 以外的專案，而且：
 
@@ -71,7 +71,7 @@ ms.locfileid: "91287742"
 
     - 如果您看到 ERR_NAME_NOT_RESOLVED，並在10分鐘內建立了工作區，請等候10分鐘，然後再試一次，以查看問題是否仍然存在。
     - 如果您看到 ERR_INTERNET_DISCONNECTED 或 ERR_NETWORK_CHANGED，可能表示您的電腦網路連線有問題。 請檢查您的網路連線，然後再次嘗試操作。
-    - 如果您看到 ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR 或其他包含 "SSL" 的錯誤碼，可能表示您的本機 SSL 設定發生問題，或您的網路系統管理員已封鎖對 SQL 隨選伺服器的存取。 開啟支援票證，並在 [描述] 中附加錯誤碼。
+    - 如果您看到 ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR 或其他包含 "SSL" 的錯誤碼，則可能表示您的本機 SSL 設定有問題，或您的網路系統管理員已封鎖無伺服器 SQL 集區伺服器的存取。 開啟支援票證，並在 [描述] 中附加錯誤碼。
     - 如果您看到 ERR_NETWORK_ACCESS_DENIED，您可能需要向系統管理員確認您的本機防火牆原則是否封鎖了 *. database.windows.net 網域或遠端埠1443的存取。
     - （選擇性）在不同的電腦和（或）網路環境上，立即嘗試相同的操作，以排除電腦上的網路設定問題。
 

@@ -1,6 +1,6 @@
 ---
-title: 優化 SQL 集區的交易
-description: 瞭解如何在 SQL 集區中將交易式程式碼的效能優化。
+title: 將專用 SQL 集區的交易優化
+description: 瞭解如何將專用 SQL 集區中的交易程式碼效能優化。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a17e3c80f15bb1e4c5aacba4dc974e363eca285e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288642"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319856"
 ---
-# <a name="optimize-transactions-in-sql-pool"></a>優化 SQL 集區中的交易
+# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來優化交易 
 
-了解如何將 SQL 集區中的交易程式碼效能最佳化，同時將長時間回復的風險降至最低。
+瞭解如何將專用 SQL 集區中的交易程式碼效能優化，同時將長時間回復的風險降至最低。
 
 ## <a name="transactions-and-logging"></a>交易和記錄
 
-交易是關聯式資料庫引擎的重要元件。 SQL 集區會在資料修改期間使用交易。 這些交易可以是明確或隱含的。 單一 INSERT、UPDATE 和 DELETE 陳述式都是隱含交易的範例。 明確交易會使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 當多個修改語句必須系結到單一不可部分完成的單位時，通常會使用明確交易。
+交易是關聯式資料庫引擎的重要元件。 專用的 SQL 集區會在資料修改期間使用交易。 這些交易可以是明確或隱含的。 單一 INSERT、UPDATE 和 DELETE 陳述式都是隱含交易的範例。 明確交易會使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 當多個修改語句必須系結到單一不可部分完成的單位時，通常會使用明確交易。
 
-SQL 集區認可使用交易記錄之資料庫的變更。 每個散發套件都有自己的交易記錄檔。 交易記錄檔寫入是自動的。 不需要任何組態。 不過，雖然此程式可保證寫入作業會造成系統的額外負荷。 您可以藉由撰寫交易式的有效程式碼，將影響降到最低。 交易式的有效程式碼大致分為兩個類別。
+專用的 SQL 集區會使用交易記錄認可資料庫的變更。 每個散發套件都有自己的交易記錄檔。 交易記錄檔寫入是自動的。 不需要任何組態。 不過，雖然此程式可保證寫入作業會造成系統的額外負荷。 您可以藉由撰寫交易式的有效程式碼，將影響降到最低。 交易式的有效程式碼大致分為兩個類別。
 
 * 盡可能使用最低限度的記錄建構
 * 使用已設定範圍的批次處理資料，以避免單數的長時間執行交易
@@ -78,7 +78,7 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 值得注意的是任何更新次要或非叢集索引的寫入一定是完整記錄作業。
 
 > [!IMPORTANT]
-> SQL 集區有 60 種發行版本。 因此，假設所有資料列平均散發，並位於單一分割中，您的批次必須包含 6,144,000 個資料列或更大刑，才能在寫入叢集資料行存放區索引時進行最低限度記錄。 如果資料表已分割，且插入的資料列跨越分割界限，每個假設平均資料散發的分割界限將需要 6,144,000 個資料列。 每個散發套件中的每個分割必須獨立超過 102,400 的資料列臨界值，才能讓插入以最低限度記錄在散發套件中。
+> 專用的 SQL 集區具有60散發套件。 因此，假設所有資料列平均散發，並位於單一分割中，您的批次必須包含 6,144,000 個資料列或更大刑，才能在寫入叢集資料行存放區索引時進行最低限度記錄。 如果資料表已分割，且插入的資料列跨越分割界限，每個假設平均資料散發的分割界限將需要 6,144,000 個資料列。 每個散發套件中的每個分割必須獨立超過 102,400 的資料列臨界值，才能讓插入以最低限度記錄在散發套件中。
 
 利用叢集索引將資料載入非空白資料表中，通常會混合包含完整記錄和最低限度記錄資料列。 叢集索引是頁面的平衡樹狀結構 (b 型樹狀目錄)。 如果寫入的頁面中已包含另一個交易的資料列，則這些寫入將會完整記錄。 不過，如果頁面是空的，則該頁面的寫入將會以最低限度記錄。
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 使用 SQL 集區工作負載管理功能有助於重新建立大型資料表。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> 重新建立大型資料表可受益于使用專用的 SQL 集區工作負載管理功能。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="optimize-with-partition-switching"></a>使用資料分割切換優化
 
@@ -406,20 +406,20 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暫停和調整指引
 
-Azure Synapse Analytics 可讓您視需要[暫停、繼續及調整](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)您的 SQL 集區。 
+Azure Synapse Analytics 可讓您依需求 [暫停、繼續及調整](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 您專用的 SQL 集區。 
 
-當您暫停或調整您的 SQL 集區時，請務必了解任何進行中的交易都會立即終止；導致所有開放的交易都會復原。 
+當您暫停或調整專用的 SQL 集區時，請務必瞭解任何進行中的交易都會立即終止;導致所有開啟的交易都復原。 
 
-如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 此復原作業可能會影響暫停或調整 SQL 集區的時間。 
+如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 這種復原可能會影響暫停或調整專用 SQL 集區所花的時間。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整記錄作業，因此這些復原/重做作業花費的時間可能會比對等的最低限度記錄作業長很多。
 
-最佳案例是在暫停或調整 SQL 集區之前，讓進行中的資料修改交易完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
+最佳案例是在暫停或調整您專用的 SQL 集區之前，先完成資料修改交易。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
 
 * 請使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新撰寫長期執行的作業
 * 將作業分成多個區塊；在資料列子集上運作
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解隔離等級和交易限制，請參閱 [SQL 集區中的交易](develop-transactions.md)。  如需其他最佳做法的概觀，請參閱 [SQL 集區最佳做法](best-practices-sql-pool.md)。
+請參閱 [專用 SQL 集區中的交易](develop-transactions.md) ，以深入瞭解隔離等級和交易限制。  如需其他最佳做法的概觀，請參閱 [SQL 集區最佳做法](best-practices-sql-pool.md)。

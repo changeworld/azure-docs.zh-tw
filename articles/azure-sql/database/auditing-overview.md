@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5c87344c4cd179beae6502901a23b2dace6591a7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8fd794822e9e4fe282d6ef8a8ccf1eb908c03560
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677235"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321670"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,15 +80,15 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 下節描述使用 Azure 入口網站進行稽核的設定。
 
   > [!NOTE]
-  > 不可能在暫停的 Synapse SQL 集區上啟用審核。 若要啟用審核，請取消暫停 Synapse SQL 集區。 深入瞭解 [SYNAPSE SQL 集](../../synapse-analytics/sql/best-practices-sql-pool.md)區。
+  > 不可能在暫停的專用 SQL 集區上啟用審核。 若要啟用審核，請取消暫停專用的 SQL 集區。 深入瞭解 [專用的 SQL 集](../..//synapse-analytics/sql/best-practices-sql-pool.md)區。
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [ **sql database** ] 或 **[sql server** ] 窗格的 [安全性] 標題下，流覽至 [ **審核** ]。
-3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定]  連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則適用于這部伺服器上所有現有和新建立的資料庫。
+3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定] 連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則適用于這部伺服器上所有現有和新建立的資料庫。
 
     ![顯示 [資料庫審核] 頁面上醒目提示 [View server settings] 連結的螢幕擷取畫面。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
-4. 如果您偏向在資料庫層級啟用稽核，請將 [稽核]  切換到 [開啟]  。 如果已啟用伺服器稽核，資料庫設定的稽核將會與伺服器稽核並存。
+4. 如果您偏向在資料庫層級啟用稽核，請將 [稽核] 切換到 [開啟]。 如果已啟用伺服器稽核，資料庫設定的稽核將會與伺服器稽核並存。
 
 5. 您有多個選項可用來設定將寫入 audit 記錄檔的位置。 您可以將記錄寫入至 Azure 儲存體帳戶、使用 Log Analytics 工作區來 Azure 監視器記錄 (預覽) ，或將事件中樞用於使用事件中樞 (preview) 來取用。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。
   
@@ -107,7 +107,7 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>對儲存體目的地進行審核
 
-若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]  ，然後開啟 [儲存體詳細資料]  。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定] 。 比保留期間舊的記錄會遭到刪除。
+若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]，然後開啟 [儲存體詳細資料]。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定] 。 比保留期間舊的記錄會遭到刪除。
 
 - 保留期限的預設值為 0 (無限制的保留) 。 您可以在設定儲存體帳戶進行審核時，藉由在 **儲存體設定** 中移動 **保留 (天)** 滑杆來變更此值。
   - 如果您將保留期間從 0 (無限制的保留) 變更為任何其他值，請注意保留期只會套用至保留值變更之後所寫入的記錄 (設定為無限制的期間所寫入的記錄會予以保留，即使已啟用保留期)。
@@ -127,7 +127,7 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Audit 至 Log Analytics 目的地
   
-若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]  ，然後開啟 [Log Analytics 詳細資料]  。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]  。
+若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]，然後開啟 [Log Analytics 詳細資料]。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]。
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -135,7 +135,7 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Audit 至事件中樞目的地
 
-若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]  ，然後開啟 [事件中樞詳細資料]  。 選取要寫入記錄的事件中樞，然後按一下 [確定]  。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
+若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]，然後開啟 [事件中樞詳細資料]。 選取要寫入記錄的事件中樞，然後按一下 [確定]。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -161,7 +161,7 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 
     ![Log Analytics 安全性見解](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
-- 或者，您也可以從 Log Analytics 刀鋒視窗存取稽核記錄。 開啟 Log Analytics 工作區，然後在 [一般]  區段下，按一下 [記錄]  。 您可以從簡單的查詢開始，例如：「搜尋 "SQLSecurityAuditEvents"」  以檢視稽核記錄。
+- 或者，您也可以從 Log Analytics 刀鋒視窗存取稽核記錄。 開啟 Log Analytics 工作區，然後在 [一般] 區段下，按一下 [記錄]。 您可以從簡單的查詢開始，例如：「搜尋 "SQLSecurityAuditEvents"」以檢視稽核記錄。
     從這裡，您也可以使用 [Azure 監視器記錄](../../azure-monitor/log-query/log-query-overview.md)  ，在您的審核記錄資料上執行 advanced 搜尋。 Azure 監視器的記錄可讓您使用整合式搜尋和自訂儀表板，即時分析您所有工作負載和伺服器上的數百萬筆記錄，以提供即時的營運見解。 如需有關 Azure 監視器記錄搜尋語言和命令的其他實用資訊，請參閱 [Azure 監視器記錄檔搜尋參考](../../azure-monitor/log-query/log-query-overview.md)。
 
 如果您選擇將稽核記錄寫入至事件中樞：
@@ -173,34 +173,34 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 
 - 稽核記錄會在您於設定期間選擇的帳戶中彙總。 您可以使用 [Azure 儲存體總管](https://storageexplorer.com/)之類的工具來探索 audit 記錄檔。 在 Azure 儲存體中，稽核記錄是以 Blob 檔案集合的方式儲存在名為 **sqldbauditlogs** 的容器內。 如需有關儲存體資料夾階層、命名慣例和記錄格式的進一步詳細資訊，請參閱 [SQL Database Audit 記錄檔格式](./audit-log-format.md)。
 
-- 使用 [Azure 入口網站](https://portal.azure.com)。  開啟相關的資料庫。 在資料庫的 [稽核]  頁面頂端，按一下 [檢視稽核記錄]  。
+- 使用 [Azure 入口網站](https://portal.azure.com)。  開啟相關的資料庫。 在資料庫的 [稽核] 頁面頂端，按一下 [檢視稽核記錄]。
 
     ![顯示 [資料庫審核] 頁面上醒目提示 [View audit logs] 按鈕的螢幕擷取畫面。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
-    隨即開啟 [稽核記錄]  ，您可以在其中檢視記錄。
+    隨即開啟 [稽核記錄]，您可以在其中檢視記錄。
 
-  - 您可以按一下 [稽核記錄]  頁面頂端的 [篩選]  來檢視特定日期。
-  - 切換 [稽核來源]  ，即可在由「伺服器稽核原則」  和「資料庫稽核原則」  建立的稽核記錄之間切換。
-  - 如果勾選 [只顯示 SQL 插入的稽核記錄]  核取方塊，只可以檢視 SQL 插入相關的稽核記錄。
+  - 您可以按一下 [稽核記錄] 頁面頂端的 [篩選] 來檢視特定日期。
+  - 切換 [稽核來源]，即可在由「伺服器稽核原則」和「資料庫稽核原則」建立的稽核記錄之間切換。
+  - 如果勾選 [只顯示 SQL 插入的稽核記錄] 核取方塊，只可以檢視 SQL 插入相關的稽核記錄。
 
        ![顯示用來查看審核記錄之選項的螢幕擷取畫面。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - 使用系統函數 **sys.fn_get_audit_file** (T-SQL) 以表格格式傳回稽核記錄資料。 如需使用此函式的詳細資訊，請參閱 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
-- 使用 SQL Server Management Studio (SSMS 17 或更新版本) 中的 [合併稽核檔案]  ：
+- 使用 SQL Server Management Studio (SSMS 17 或更新版本) 中的 [合併稽核檔案]：
     1. 從 SSMS 功能表中 **，選取 [** 檔案  >  **開啟**  >  **合併審核** 檔案]。
 
         ![顯示 [合併審核檔案] 功能表選項的螢幕擷取畫面。](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
-    2. 隨即開啟 [新增稽核檔案]  對話方塊。 選取其中一個 [新增]  選項以選擇是否要從本機磁碟合併稽核檔案，或從 Azure 儲存體匯入稽核檔案。 您將需要提供您的 Azure 儲存體詳細資料和帳戶金鑰。
+    2. 隨即開啟 [新增稽核檔案] 對話方塊。 選取其中一個 [新增] 選項以選擇是否要從本機磁碟合併稽核檔案，或從 Azure 儲存體匯入稽核檔案。 您將需要提供您的 Azure 儲存體詳細資料和帳戶金鑰。
 
-    3. 已新增要合併的所有檔案之後，請按一下 [確定]  以完成合併作業。
+    3. 已新增要合併的所有檔案之後，請按一下 [確定] 以完成合併作業。
 
     4. 合併的檔案會在 SSMS 中開啟，您可以在其中檢視和分析該檔案，以及將其匯出至 XEL 或 CSV 檔案，或是匯出至資料表。
 
 - 使用 Power BI。 您可以在 Power BI 中檢視和分析稽核記錄資料。 如需詳細資訊，以及若要存取可下載的範本，請參閱 [Analyzie audit log data in Power BI](https://techcommunity.microsoft.com/t5/azure-database-support-blog/sql-azure-blob-auditing-basic-power-bi-dashboard/ba-p/368895) (在 Power BI 中分析稽核記錄資料)。
 - 透過入口網站或使用 [Azure 儲存體總管](https://storageexplorer.com/)之類的工具，從您的 Azure 儲存體 blob 容器下載記錄檔。
   - 在您將記錄下載到本機之後，按兩下檔案，以在 SSMS 中開啟、檢視及分析記錄。
-  - 您也可以透過 Azure 儲存體總管同時下載多個檔案。 若要執行這項作業，請以滑鼠右鍵按一下特定子資料夾，然後選取 [另存新檔]  儲存在本機資料夾。
+  - 您也可以透過 Azure 儲存體總管同時下載多個檔案。 若要執行這項作業，請以滑鼠右鍵按一下特定子資料夾，然後選取 [另存新檔] 儲存在本機資料夾。
 
 - 其他方法：
 
@@ -218,7 +218,7 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 
 - 伺服器層級 ( **建議** )：啟動 **主要伺服器** 和 **次要伺服器** 上的稽核 - 將根據其個別的伺服器層級原則對主要和次要資料庫分開進行稽核。
 - 資料庫層級：只能從主要資料庫稽核設定來設定次要資料庫的資料庫層級稽核。
-  - 必須在「主要資料庫本身」  (而不是在伺服器上) 啟用稽核。
+  - 必須在「主要資料庫本身」 (而不是在伺服器上) 啟用稽核。
   - 在主要資料庫上啟用稽核之後，它也會在次要資料庫上變成啟用狀態。
 
     > [!IMPORTANT]
@@ -228,13 +228,13 @@ Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可
 
 在生產中，您可能會定期重新整理儲存體金鑰。 當您將稽核記錄寫入至 Azure 儲存體時，您需要在重新整理金鑰期間重新儲存稽核原則。 此程序如下：
 
-1. 開啟 [儲存體詳細資料]  。 在 [儲存體存取金鑰]  方塊中，選取 [次要]  ，然後按一下 [確定]  。 然後按一下稽核設定頁面頂端的 [儲存]  。
+1. 開啟 [儲存體詳細資料]。 在 [儲存體存取金鑰] 方塊中，選取 [次要]，然後按一下 [確定]。 然後按一下稽核設定頁面頂端的 [儲存]。
 
     ![顯示選取次要儲存體存取金鑰之程式的螢幕擷取畫面。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. 移至儲存體設定頁面，並重新產生主要存取金鑰。
 
     ![瀏覽窗格](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)
-3. 返回稽核設定頁面，將儲存體存取金鑰從次要切換成主要，然後按一下 [確定]  。 然後按一下稽核設定頁面頂端的 [儲存]  。
+3. 返回稽核設定頁面，將儲存體存取金鑰從次要切換成主要，然後按一下 [確定]。 然後按一下稽核設定頁面頂端的 [儲存]。
 4. 返回儲存體設定頁面，並重新產生次要存取金鑰 (為下一個金鑰重新整理週期做準備)。
 
 ## <a name="manage-azure-sql-database-auditing"></a><a id="manage-auditing"></a>管理 Azure SQL Database 的審核

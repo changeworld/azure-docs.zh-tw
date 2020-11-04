@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296751"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320702"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新產生儲存體帳戶存取金鑰
 
@@ -26,13 +26,13 @@ ms.locfileid: "91296751"
 基於安全性考慮，您可能需要變更 Azure 儲存體帳戶的存取金鑰。 當您重新產生存取金鑰時，必須更新 Azure Machine Learning 以使用新的金鑰。 Azure Machine Learning 可能會同時針對模型儲存體和資料存放區使用儲存體帳戶。
 
 > [!IMPORTANT]
-> 使用資料存放區已註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已啟用 Key Vault 的虛 [刪除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) 功能，請務必遵循這篇文章來更新認證。 取消註冊資料存放區，並以相同的名稱重新註冊，將會失敗。
+> 使用資料存放區已註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已啟用 Key Vault 的虛 [刪除](../key-vault/general/soft-delete-overview.md) 功能，請務必遵循這篇文章來更新認證。 取消註冊資料存放區，並以相同的名稱重新註冊，將會失敗。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](how-to-manage-workspace.md) 文章。
 
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 
 * [AZURE MACHINE LEARNING CLI 擴充](reference-azure-machine-learning-cli.md)功能。
 
@@ -110,7 +110,7 @@ for name, ds in datastores.items():
         此命令會自動為工作區所使用的 Azure 儲存體帳戶同步處理新的金鑰。
 
 1. 您可以透過 SDK 或 [Azure Machine Learning studio](https://ml.azure.com)，重新註冊使用儲存體帳戶的資料存放區 (s) 。
-    1. **若要透過 PYTHON SDK 重新註冊資料存放區**，請使用 [ [需要更新的內容](#whattoupdate) ] 區段中的值，以及步驟1中具有下列程式碼的金鑰。 
+    1. **若要透過 PYTHON SDK 重新註冊資料存放區** ，請使用 [ [需要更新的內容](#whattoupdate) ] 區段中的值，以及步驟1中具有下列程式碼的金鑰。 
     
         由於 `overwrite=True` 已指定，此程式碼會覆寫現有的註冊，並將其更新為使用新的金鑰。
     
@@ -132,13 +132,13 @@ for name, ds in datastores.items():
         
         ```
     
-    1. **若要透過 studio 重新註冊資料存放區**，請從 studio 的左窗格中選取 [ **資料存放區** ]。 
+    1. **若要透過 studio 重新註冊資料存放區** ，請從 studio 的左窗格中選取 [ **資料存放區** ]。 
         1. 選取您要更新的資料存放區。
         1. 選取左上方的 [ **更新認證** ] 按鈕。 
-        1. 使用步驟1中的新存取金鑰填入表單，然後按一下 [ **儲存**]。
+        1. 使用步驟1中的新存取金鑰填入表單，然後按一下 [ **儲存** ]。
         
-            如果您要更新 **預設資料**存放區的認證，請完成此步驟，並重複步驟2b 以重新同步處理新的金鑰與工作區的預設資料存放區。 
+            如果您要更新 **預設資料** 存放區的認證，請完成此步驟，並重複步驟2b 以重新同步處理新的金鑰與工作區的預設資料存放區。 
 
 ## <a name="next-steps"></a>後續步驟
 
-如需註冊資料存放區的詳細資訊，請參閱 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true) 類別參考。
+如需註冊資料存放區的詳細資訊，請參閱 [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) 類別參考。
