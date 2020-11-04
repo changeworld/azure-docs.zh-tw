@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 87f3e2014281580cc35f941ad62046dcb24539df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129400"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346596"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自訂還原序列化程式讀取任何格式的輸入
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API 的序列化格式
 
-每個串流分析輸入都有 **序列化格式** 。 如需輸入選項的詳細資訊，請參閱[輸入 REST API](./stream-analytics-define-inputs.md) 文件。
+每個串流分析輸入都有 **序列化格式** 。 如需輸入選項的詳細資訊，請參閱[輸入 REST API](/rest/api/streamanalytics/2016-03-01/inputs) 文件。
 
 下列 Javascript 程式碼是使用 REST API 時的 .NET 還原序列化程式序列化格式的範例：
 

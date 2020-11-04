@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7cf3caa0e309c1640db6ca2817a91f9db71c5110
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 03655e88d4d4c9183bff71e04bf447f470fcf557
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129910"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348401"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>適用于串流分析的 Azure 安全性基準
 
@@ -238,9 +238,9 @@ ms.locfileid: "93129910"
 
 **指導** 方針： Azure AD 有必須明確指派的內建角色。 您可以查詢角色以探索成員資格。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -542,7 +542,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 * [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-* [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription)
 
 * [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -682,7 +682,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 **指導** 方針：在 ">mslearn-streamanalytics" 命名空間中使用 Azure 原則別名來建立自訂原則，以對 Azure 串流分析的設定進行審核或強制執行。 您也可以使用與 Azure 串流分析相關的內建原則定義，例如：應啟用 Azure 串流分析中的診斷記錄
 
-* [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure 原則的內建原則定義](../governance/policy/samples/built-in-policies.md)
 
@@ -724,7 +724,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 **指導** 方針：使用 Azure Repos 安全地儲存和管理您的程式碼，包括自訂 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本、使用者定義函數、查詢。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
-* [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
 * [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
@@ -880,7 +880,7 @@ Azure 儲存體 blob 的虛刪除： https://docs.microsoft.com/azure/storage/bl
 
 客戶管理/提供的金鑰可以在 Azure Key Vault 中使用 Azure CLI 或 PowerShell 進行備份。
 
-* [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure 資訊安全中心監視** ：目前無法使用
 
@@ -940,7 +940,7 @@ Azure 儲存體 blob 的虛刪除： https://docs.microsoft.com/azure/storage/bl
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引** ：進行練習以定期測試系統的事件回應功能，進而協助保護您的 Azure 資源。 找出弱點和落差，並視需要修訂計畫。
+**指導** 方針：進行練習以定期測試系統的事件回應功能，以協助保護您的 Azure 資源。 找出弱點和落差，並視需要修訂計畫。
 
 * [請參閱 NIST 的發行集：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -990,7 +990,7 @@ Azure 儲存體 blob 的虛刪除： https://docs.microsoft.com/azure/storage/bl
 
 * [遵循 Microsoft 的參與規則，以確保您的滲透測試不違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [對於 Microsoft 管理的雲端基礎結構、服務和應用程式，您可在此找到 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行詳細資訊：](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [您可以在這裡找到有關 Microsoft 所管理的雲端基礎結構、服務和應用程式的 Microsoft 策略和執行紅色小組和即時網站滲透測試的詳細資訊](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視** ：不適用
 

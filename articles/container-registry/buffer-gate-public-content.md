@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315820"
+ms.locfileid: "93347517"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>使用 Azure Container Registry 管理公用內容
 
@@ -28,7 +28,7 @@ ms.locfileid: "93315820"
 第一個步驟是，如果您目前從 Docker Hub 提取公用映射作為組建或部署工作流程的一部分，建議您 [使用 Docker Hub 帳戶進行驗證](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) ，而不是發出匿名提取要求。
 
 > [!NOTE]
-> 自2020年11月2日起， [下載速率限制](https://docs.docker.com/docker-hub/download-rate-limit) 適用于從 Docker Free Plan 帳戶 Docker Hub 的匿名和已驗證要求，並由 IP 位址和 Docker ID respecitively 強制執行。 
+> 自2020年11月2日起， [下載速率限制](https://docs.docker.com/docker-hub/download-rate-limit) 適用于從 Docker 免費方案帳戶 Docker Hub 的匿名和已驗證要求，且分別由 IP 位址和 Docker 識別碼強制執行。 
 >
 > 當您在評估提取要求的數目時，請考慮在使用雲端提供者服務或在公司 NAT 後方工作時，會將多個使用者呈現 Docker Hub 在匯總中，做為 IP 位址的子集。 將 Docker 付費帳戶驗證新增至對 Docker Hub 提出的要求，將可避免因速率限制節流而造成的服務中斷。
 >

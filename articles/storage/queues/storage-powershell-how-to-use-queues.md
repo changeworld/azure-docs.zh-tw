@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791132"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345698"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 執行 Azure 佇列儲存體作業
 
@@ -22,12 +22,12 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 
 > [!div class="checklist"]
 >
-> * 建立佇列
-> * 擷取佇列
-> * 新增訊息
-> * 讀取訊息
-> * 刪除訊息
-> * 刪除佇列
+> - 建立佇列
+> - 擷取佇列
+> - 新增訊息
+> - 讀取訊息
+> - 刪除訊息
+> - 刪除佇列
 
 本做法需要 Azure PowerShell 模組 Az 0.7 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
@@ -127,7 +127,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>讀取佇列的訊息，然後刪除它
 
-會嘗試以最佳的先進先出順序讀取訊息。 不保證會採用此作法。 當您從佇列讀取訊息時，查看佇列的其他處理序會看不到它。 這可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。  
+會嘗試以最佳的先進先出順序讀取訊息。 不保證會採用此作法。 當您從佇列讀取訊息時，查看佇列的其他處理序會看不到它。 這可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。
 
 此 **不可見逾時** 定義在重新開放處理前，訊息維持不可見的時間。 預設值為 30 秒。
 
@@ -185,17 +185,17 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 > [!div class="checklist"]
 >
-> * 建立佇列
-> * 擷取佇列
-> * 新增訊息
-> * 讀取下一個訊息
-> * 刪除訊息
-> * 刪除佇列
+> - 建立佇列
+> - 擷取佇列
+> - 新增訊息
+> - 讀取下一個訊息
+> - 刪除訊息
+> - 刪除佇列
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell 儲存體 Cmdlet
 
-* [儲存體 PowerShell Cmdlet](/powershell/module/az.storage)
+- [儲存體 PowerShell Cmdlet](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 儲存體總管
 
-* [Microsoft Azure 儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
+- [Microsoft Azure 儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。

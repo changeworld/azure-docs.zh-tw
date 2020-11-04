@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e72a98ddd5219662c8850326b4f43b25e545177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595831"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348146"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 建立裝載多個網站的應用程式閘道
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路以及名為 myAGSubnet** 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增後端伺服器所需的子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路以及名為 myAGSubnet 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增後端伺服器所需的子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) 來建立應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 
+您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) 來建立應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet 和 myAGPublicIPAddress。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -124,7 +124,7 @@ az network application-gateway address-pool create \
 
 >[!NOTE]
 > 使用應用程式閘道或 WAF v2 SKU，您也可以為每個接聽程式設定最多5個主機名稱，而且可以在主機名稱中使用萬用字元。 如需詳細資訊，請參閱接聽程式 [中的萬用字元主機名稱](multiple-site-overview.md#wildcard-host-names-in-listener-preview) 。
->若要使用 Azure CLI 在接聽程式中使用多個主機名稱和萬用字元，您必須使用 `--host-names` 而不是 `--host-name` 。 使用主機名稱，您最多可以將5個主機名稱視為逗點分隔值。 例如， `--host-names "*.contoso.com,*.fabrikam.com"`
+>若要使用 Azure CLI 在接聽程式中使用多個主機名稱和萬用字元，您必須使用 `--host-names` 而不是 `--host-name` 。 使用主機名稱，您最多可以將五個主機名稱提及為空格分隔值。 例如， `--host-names "*.contoso.com *.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -175,7 +175,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在此範例中，您會建立三個虛擬機器擴展集，以支援應用程式閘道中的三個後端集區。 您所建立的擴展集名為 myvmss1**、myvmss2** 和 myvmss3**。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。
+在此範例中，您會建立三個虛擬機器擴展集，以支援應用程式閘道中的三個後端集區。 您所建立的擴展集名為 myvmss1、myvmss2 和 myvmss3。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

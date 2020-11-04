@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 1c30a9997fcc7ac10b1072d4f164c3e7bfa16f0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5e1c5d696e97ac6e14c1739be2feb93814975586
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130505"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347058"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應項目
 
@@ -223,19 +223,19 @@ ms.locfileid: "93130505"
 
 這會顯示 Azure Marketplace 中的 **供應項目清單** 頁面：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。" :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="說明 Azure Marketplace 中的供應項目清單頁面。" :::
 
 這會顯示 Azure Marketplace 中的搜尋結果：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="說明 Azure Marketplace 中的搜尋結果。":::
 
 這會顯示 Azure 入口網站中的 **供應項目清單** 頁面：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="說明 Azure 入口網站中的供應項目清單頁面。":::
 
 這會顯示 Azure 入口網站中的搜尋結果：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="說明 Azure 入口網站中的搜尋結果。":::
 
 ## <a name="preview"></a>預覽
 
@@ -328,11 +328,11 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 以下是在檢視方案詳細資料時，Azure Marketplace 中的欄位：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="說明在 Azure Marketplace 中檢視方案詳細資料時所看到的欄位。":::
 
 這些是 Azure 入口網站的方案詳細資料：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="說明 Azure 入口網站的方案詳細資料。":::
 
 ### <a name="plan-availability"></a>方案可用性
 
@@ -363,11 +363,11 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure Container Registry** 的系統管理員使用者名稱–提供系統 [管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 與具有容器映射的 Azure Container Registry 連結。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True** 。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
 
-**Azure Container Registry 密碼** - 提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
+**Azure Container Registry 密碼** - 提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](/cli/azure/acr/credential#az-acr-credential-show)。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="說明 [存取金鑰] 功能表。":::
 
 **Azure Container Registry 內的存放庫名稱** 。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，包含存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](../../container-registry/container-registry-repositories.md)。
 

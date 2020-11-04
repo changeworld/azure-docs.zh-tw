@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8f0df92eadc4db132d567e708abe6e28e82642d6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129553"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346038"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用適用於 Kubernetes 的 Azure RBAC 授權 (預覽)
 
@@ -27,7 +27,7 @@ ms.locfileid: "93129553"
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>先決條件 
 - 確定您有 Azure CLI 2.9.0 版版或更新版本
 - 確定已 `EnableAzureRBACPreview` 啟用功能旗標。
 - 確定您已安裝 `aks-preview` [CLI 擴充][az-extension-add] 功能 v 0.4.55 或更高版本
@@ -72,7 +72,6 @@ az extension update --name aks-preview
 - 需要 [受控 Azure AD 整合](managed-aad.md)。
 - 在預覽期間，您無法將適用于 Kubernetes 授權的 Azure RBAC 整合至現有的叢集，但您將可以在正式運作的 (GA) 正式推出。
 - 使用 [kubectl v 1.18.3 +][az-aks-install-cli]。
-- 在預覽期間，您只能透過 Azure CLI 新增 *命名空間層級* 許可權。
 - 如果您有 CRDs，而且正在進行自訂角色定義，則今天要介紹的 CRDs 唯一方法是提供 `Microsoft.ContainerService/managedClusters/*/read` 。 AKS 正在努力為 CRDs 提供更細微的許可權。 針對其餘的物件，您可以使用特定的 API 群組，例如： `Microsoft.ContainerService/apps/deployments/read` 。
 - 新的角色指派最多可能需要5分鐘，才能傳播和更新授權伺服器。
 - 要求設定要進行驗證的 Azure AD 租使用者與保留 AKS 叢集之訂用帳戶的租使用者相同。 

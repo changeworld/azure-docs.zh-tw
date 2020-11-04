@@ -3,12 +3,12 @@ title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653361"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347789"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
@@ -489,11 +489,12 @@ ms.locfileid: "91653361"
 > | azureFirewalls | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | bastionHosts | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | connections | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
-> | dnsZones | 資源群組 | 1-63 個字元<br><br>2-34 個標籤<br><br>每個標籤都是以句號分隔的一組字元。 例如，**contoso.com** 有 2 個標籤。 | 每個標籤都可包含英數字元、底線和連字號。<br><br>每個標籤都以句號分隔。 |
+> | dnsZones | 資源群組 | 1-63 個字元<br><br>2-34 個標籤<br><br>每個標籤都是以句號分隔的一組字元。 例如， **contoso.com** 有 2 個標籤。 | 每個標籤都可包含英數字元、底線和連字號。<br><br>每個標籤都以句號分隔。 |
 > | expressRouteCircuits | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | firewallPolicies | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | firewallPolicies / ruleGroups | 防火牆原則 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | frontDoors | 全域 | 5-64 | 英數字元和連字號。<br><br>以英數字元開頭及結尾。 |
+> | frontdoorWebApplicationFirewallPolicies | 資源群組 | 1-128 | 英數字元。<br><br>以字母開頭。 |
 > | loadBalancers | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | loadBalancers / inboundNatRules | 負載平衡器 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | localNetworkGateways | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
@@ -501,7 +502,7 @@ ms.locfileid: "91653361"
 > | networkSecurityGroups | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | networkSecurityGroups / securityRules | 網路安全性群組 | 1-80 |  英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | networkWatchers | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
-> | privateDnsZones | 資源群組 | 1-63 個字元<br><br>2-34 個標籤<br><br>每個標籤都是以句號分隔的一組字元。 例如，**contoso.com** 有 2 個標籤。 | 每個標籤都可包含英數字元、底線和連字號。<br><br>每個標籤都以句號分隔。 |
+> | privateDnsZones | 資源群組 | 1-63 個字元<br><br>2-34 個標籤<br><br>每個標籤都是以句號分隔的一組字元。 例如， **contoso.com** 有 2 個標籤。 | 每個標籤都可包含英數字元、底線和連字號。<br><br>每個標籤都以句號分隔。 |
 > | privateDnsZones / virtualNetworkLinks | 私人 DNS 區域 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | publicIPAddresses | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | publicIPPrefixes | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
@@ -604,7 +605,7 @@ ms.locfileid: "91653361"
 > | 命名空間 | 全域 | 6-50 | 英數字元和連字號。<br><br>以字母開頭。 以字母或數字結尾。<br><br>如需詳細資訊，請參閱[建立命名空間](/rest/api/servicebus/create-namespace)。 |
 > | namespaces / AuthorizationRules | 命名空間 | 1-50 | 英數字元、句號、連字號和底線。<br><br>以英數字元開頭及結尾。 |
 > | namespaces / disasterRecoveryConfigs | 全域 | 6-50 | 英數字元和連字號。<br><br>以字母開頭。 以英數字元結尾。 |
-> | namespaces / migrationConfigurations | 命名空間 |  | 應該一律為 **$default**。 |
+> | namespaces / migrationConfigurations | 命名空間 |  | 應該一律為 **$default** 。 |
 > | namespaces / queues | 命名空間 | 1-260 | 英數字元、句號、連字號、底線和斜線。<br><br>以英數字元開頭及結尾。 |
 > | namespaces / queues / authorizationRules | queue | 1-50 | 英數字元、句號、連字號和底線。<br><br>以英數字元開頭及結尾。 |
 > | namespaces / topics | 命名空間 | 1-260 | 英數字元、句號、連字號、底線和斜線。<br><br>以英數字元開頭及結尾。 |

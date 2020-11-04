@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336675"
+ms.locfileid: "93345494"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -39,7 +39,7 @@ ms.locfileid: "93336675"
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](overview.md#try-the-speech-service-for-free)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
@@ -49,7 +49,7 @@ ms.locfileid: "93336675"
 如果您打算自訂模型，請依照聲場 [自訂](how-to-customize-acoustic-models.md) 和 [語言自訂](how-to-customize-language-model.md)中的步驟進行。 若要在批次轉譯中使用已建立的模型，您需要其模型位置。 當您檢查模型 (屬性) 的詳細資料時，可以取出模型位置 `self` 。 批次轉譯服務 *不需要* 已部署的自訂端點。
 
 >[!NOTE]
-> 在 REST API 過程中，批次轉譯會有一組 [配額和限制](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource)，我們鼓勵您複習。 若要充分利用批次轉譯功能來有效率地轉譯大量音訊檔案，建議您一律針對每個要求傳送多個檔案，或指向包含要轉譯之音訊檔案的 Blob 儲存體容器。 服務會同時轉譯檔案，以同時減少周轉時間。 在單一要求中使用多個檔案相當簡單明瞭 [，請參閱](#configuration) 設定一節。 
+> 在 REST API 過程中，批次轉譯會有一組 [配額和限制](speech-services-quotas-and-limits.md#batch-transcription)，我們鼓勵您複習。 若要充分利用批次轉譯功能來有效率地轉譯大量音訊檔案，建議您一律針對每個要求傳送多個檔案，或指向包含要轉譯之音訊檔案的 Blob 儲存體容器。 服務會同時轉譯檔案，以同時減少周轉時間。 在單一要求中使用多個檔案相當簡單明瞭 [，請參閱](#configuration) 設定一節。 
 
 ## <a name="batch-transcription-api"></a>批次轉譯 API
 

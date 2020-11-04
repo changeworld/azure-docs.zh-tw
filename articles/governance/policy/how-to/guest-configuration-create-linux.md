@@ -4,12 +4,12 @@ description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305554"
+ms.locfileid: "93346871"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -24,7 +24,11 @@ ms.locfileid: "93305554"
 使用下列動作來建立自己的設定，以驗證 Azure 或非 Azure 電腦的狀態。
 
 > [!IMPORTANT]
-> 需要「來賓設定」擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦上大規模部署擴充功能，請指派下列原則定義： `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 在 Azure Government 和 Azure 中國環境中具有來賓設定的自訂原則定義是預覽功能。
+>
+> 需要客體設定擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦上大規模部署擴充功能，請指派下列原則定義： `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> 請勿在自訂內容套件中使用秘密或機密資訊。
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 
@@ -49,7 +53,9 @@ ms.locfileid: "93305554"
 - Windows
 
 > [!NOTE]
-> 因為對 OMI 的相依性，所以 Cmdlet ' GuestConfigurationPackage ' 需要 OpenSSL 1.0 版。 這會導致 OpenSSL 1.1 或更新版本的任何環境發生錯誤。
+> Cmdlet `Test-GuestConfigurationPackage` 需要 OpenSSL 1.0 版，因為相依于 OMI。 這會導致 OpenSSL 1.1 或更新版本的任何環境發生錯誤。
+>
+> `Test-GuestConfigurationPackage`只有 Windows For Guest 設定模組版本2.1.0 才支援執行 Cmdlet。
 
 客體設定資源模組需要下列軟體：
 
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>原則生命週期
 
-要將更新發行至原則定義，則需要注意兩個欄位。
+若要釋放原則定義的更新，有三個需要注意的欄位。
 
-- **版本** ：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
+> [!NOTE]
+> `version`來賓設定指派的屬性只會影響 Microsoft 所裝載的封裝。 版本控制自訂內容的最佳作法是在檔案名中包含版本。
+
+- **版本** ：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。
+- **contentUri** ：當您執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定封裝位置的 URI。 在檔案名中包含套件版本，可確保每個版本中的這個屬性值都有變更。
 - **contentHash** ：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
 
 發行更新套件的最簡單方式就是重複本文中所述程序，並提供更新的版本號碼。 此程序可確保所有屬性都已正確更新。
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用標籤來篩選客體設定原則
 

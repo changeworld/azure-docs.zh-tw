@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: bbeb1248fef846afbd1641a668c6db3be4870ca6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082091"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348452"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -42,9 +42,9 @@ ms.locfileid: "93082091"
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途儲存體伺服器，最多可達 16 TB 的儲存空間
 
-在 [Azure 區域](/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](/azure/mysql/concepts-pricing-tiers#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
+在 [Azure 區域](/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
 
-在 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](/concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
+在 [Azure 區域](concepts-pricing-tiers.md#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
 
 差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程執行。 差異快照集備份會每隔24小時執行一次，除非 MySQL 中的交易記錄 (binlog) 自上次差異備份起算超過 50 GB。 一天內最多允許六個差異快照集。
 
@@ -126,7 +126,7 @@ ms.locfileid: "93082091"
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解商務持續性，請參閱 [商務持續性概觀](concepts-business-continuity.md)。
 - 若要使用 Azure 入口網站還原到某個時間點，請參閱 [使用 Azure 入口網站將伺服器還原至某個時間點](howto-restore-server-portal.md)。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129740"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346327"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure 串流分析輸出至 Azure SQL Database
 
@@ -35,7 +35,7 @@ Azure 串流分析中的 SQL 輸出支援平行寫入作為選項。 此選項�
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **資料分割資料表及索引** – 使用 [資料分割](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL 資料表及資料表上具有與您分割區索引鍵相同資料行的資料分割索引 (例如 PartitionId) 可大幅減少寫入期間資料分割間的競爭。 針對資料分割資料表，您將需要在 PRIMARY 檔案群組上建立[資料分割函數](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)及[資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)。 這也會在載入新資料時，增加現有資料的可用性。 根據資料分割數可能會到達記錄 IO 限制，您可以透過升級 SKU 來提高此限制。
+- **資料分割資料表及索引** – 使用 [資料分割](/sql/relational-databases/partitions/partitioned-tables-and-indexes) SQL 資料表及資料表上具有與您分割區索引鍵相同資料行的資料分割索引 (例如 PartitionId) 可大幅減少寫入期間資料分割間的競爭。 針對資料分割資料表，您將需要在 PRIMARY 檔案群組上建立[資料分割函數](/sql/t-sql/statements/create-partition-function-transact-sql)及[資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 這也會在載入新資料時，增加現有資料的可用性。 根據資料分割數可能會到達記錄 IO 限制，您可以透過升級 SKU 來提高此限制。
 
 - **避免唯一索引鍵違規** – 若您在 Azure 串流分析活動記錄中收到 [多重索引鍵違規警告訊息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，請確認您的作業並未受到復原案例期間容易發生的唯一條件約束違規影響。 這可透過在您的索引上設定 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 選項來避免。
 
@@ -52,6 +52,6 @@ Azure 串流分析中的 SQL 輸出支援平行寫入作為選項。 此選項�
 
 另一種情況是，寫入非叢集資料行存放區索引時， (NCCI) ，其中較小的大量插入可能會建立太多區段，而可能會損毀索引。 在此情況下，建議您改為使用叢集資料行存放區索引。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 總結來說，針對 SQL 輸出使用 Azure 串流分析中的資料分割輸出功能，利用 Azure SQL Database 中的資料分割資料表來對您的作業進行校準平行化，可大幅改善您的輸送量。 利用 Azure Data Factory 協調資料移動，將資料從記憶體內部資料表移動到以磁碟為基礎的資料表，可為您的輸送量帶來以指數增加的改善。 若可行的話，改善訊息密度也可以在改善整體輸送量中扮演重要角色。

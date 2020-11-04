@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148524"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346990"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
@@ -262,7 +262,8 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您在登錄中 [ (使用者) 或權杖資源的任何範圍對應](./container-registry-repository-scoped-permissions.md) ，請先將其刪除再提出支援票證， (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
 > [!NOTE]
-> 您只能以匿名方式存取提取已知映射所需的 Api。 您可以匿名存取標記清單或存放庫清單等作業的其他 Api。
+> * 您只能以匿名方式存取提取已知映射所需的 Api。 您可以匿名存取標記清單或存放庫清單等作業的其他 Api。
+> * 在嘗試匿名提取作業之前，請先執行， `docker logout` 以確定您已清除任何現有的 Docker 認證。
 
 ## <a name="diagnostics-and-health-checks"></a>診斷和健康情況檢查
 

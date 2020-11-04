@@ -10,12 +10,12 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: queues
-ms.openlocfilehash: 6937f3aa136ee4d5b906492c3f8cffc86acbc2e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785658"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346021"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>使用 Azure AD 認證來執行 PowerShell 命令以存取佇列資料
 
@@ -27,7 +27,7 @@ Azure 儲存體提供 PowerShell 的延伸模組，可讓您以 Azure Active Dir
 
 佇列資料的作業支援 Azure 儲存體擴充功能。 您可以呼叫哪些作業取決於授與您用來登入 PowerShell 的 Azure AD 安全性主體的許可權。 透過 Azure RBAC 指派 Azure 儲存體佇列的許可權。 例如，如果您已獲指派 **佇列資料讀者** 角色，則您可以執行從佇列讀取資料的指令碼命令。 如果您已獲指派 **佇列資料參與者** 角色，則您可以執行指令碼命令，以讀取、寫入或刪除佇列或它們所包含的資料。
 
-如需有關佇列上每個 Azure 儲存體作業所需許可權的詳細資訊，請參閱 [使用 OAuth 權杖呼叫儲存體作業](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
+如需有關佇列上每個 Azure 儲存體作業所需許可權的詳細資訊，請參閱 [使用 OAuth 權杖呼叫儲存體作業](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>使用 Azure AD 認證呼叫 PowerShell 命令
 
@@ -45,7 +45,7 @@ Azure 儲存體提供 PowerShell 的延伸模組，可讓您以 Azure Active Dir
 
     如需使用 PowerShell 登入 Azure 的詳細資訊，請參閱 [使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps)。
 
-1. 藉由呼叫 [New->new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)來建立 Azure 資源群組。 
+1. 藉由呼叫 [New->new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)來建立 Azure 資源群組。
 
     ```powershell
     $resourceGroup = "sample-resource-group-ps"

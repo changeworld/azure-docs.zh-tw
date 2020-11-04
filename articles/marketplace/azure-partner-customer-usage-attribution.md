@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125167"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348333"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -159,7 +159,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
 
 #### <a name="example-the-net-sdk"></a>範例： .NET SDK
 
-針對 .NET，請務必設定使用者代理程式。 您可以使用 c # ) [中的下列](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) 程式碼 (範例來設定使用者代理程式：
+針對 .NET，請務必設定使用者代理程式。 您可以使用 c # ) [中的下列](/dotnet/api/microsoft.azure.management.fluent) 程式碼 (範例來設定使用者代理程式：
 
 ```csharp
 

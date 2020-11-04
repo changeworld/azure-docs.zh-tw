@@ -3,7 +3,7 @@ title: 如何使用 REST 取得媒體處理器執行個體 | Microsoft Docs
 description: 了解如何建立媒體處理器元件，為 Azure 媒體服務的媒體內容進行編碼、格式轉換、加密或解密。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269500"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348486"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何取得媒體處理器執行個體
 
@@ -28,18 +28,18 @@ ms.locfileid: "89269500"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
+
 
 ## <a name="overview"></a>概觀
-媒體處理器是一項元件，可處理特定處理視訊或音訊工作，例如編碼、格式轉換、加密或解密媒體內容。 提交至媒體服務的所有工作都需要媒體處理器，才能編碼、加密或轉換視訊或音訊內容。 
 
-## <a name="azure-media-processors"></a>Azure 媒體處理器 
+媒體處理器是一項元件，可處理特定處理視訊或音訊工作，例如編碼、格式轉換、加密或解密媒體內容。 提交至媒體服務的所有工作都需要媒體處理器，才能編碼、加密或轉換視訊或音訊內容。
+
+## <a name="azure-media-processors"></a>Azure 媒體處理器
 
 下列主題提供媒體處理器的清單：
 
-* [編碼媒體處理器](scenarios-and-availability.md#encoding-media-processors)
-* [分析媒體處理器](scenarios-and-availability.md#analytics-media-processors)
+* [編碼媒體處理器](scenarios-and-availability.md)
+* [分析媒體處理器](scenarios-and-availability.md)
 
 >[!NOTE]
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "89269500"
 
 ## <a name="get-a-media-processor"></a>取得媒體處理器
 
-下列 REST 呼叫示範如何依名稱取得媒體處理器執行個體 (在此案例中，是**媒體編碼器標準**)。 
+下列 REST 呼叫示範如何依名稱取得媒體處理器執行個體 (在此案例中，是 **媒體編碼器標準** )。 
 
 要求：
 

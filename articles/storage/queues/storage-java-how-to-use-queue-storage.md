@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 2f61fef58485a905b96bdada32b915106e60d1a8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2ee32b3ced8fdcd5f9f889c4fd0183e46ad5d8d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425139"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346004"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何使用 Java 的佇列儲存體
 
@@ -22,7 +22,7 @@ ms.locfileid: "92425139"
 
 ## <a name="overview"></a>概觀
 
-本指南將為您示範如何使用 Azure 佇列儲存體服務撰寫一般案例的程式碼。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 案例包括 **插入**、 **查看**、 **取得**和 **刪除** 佇列訊息。 此外也涵蓋 **建立** 和 **刪除** 佇列的程式碼。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
+本指南將為您示範如何使用 Azure 佇列儲存體服務撰寫一般案例的程式碼。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 案例包括 **插入** 、 **查看** 、 **取得** 和 **刪除** 佇列訊息。 此外也涵蓋 **建立** 和 **刪除** 佇列的程式碼。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -34,9 +34,9 @@ ms.locfileid: "92425139"
 
 首先，請確認您的開發系統符合 [Azure 佇列儲存體適用于 JAVA v12 的用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)中所列的必要條件。
 
-若要建立名為「 *佇列-如何-v12*」的 JAVA 應用程式：
+若要建立名為「 *佇列-如何-v12* 」的 JAVA 應用程式：
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash) ，請使用 Maven 來建立新的主控台應用程式，並將其命名 *為佇列-how to-v12*。 鍵入下列 **mvn** 命令，以建立 "Hello world!" Java 專案。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash) ，請使用 Maven 來建立新的主控台應用程式，並將其命名 *為佇列-how to-v12* 。 鍵入下列 **mvn** 命令，以建立 "Hello world!" Java 專案。
 
    ```bash
     mvn archetype:generate \
@@ -152,7 +152,8 @@ final String storageConnectionString =
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
-您可以將此字串儲存在名為 *serviceconfiguration.cscfg*的服務設定檔中。 如果是在 Microsoft Azure 角色內執行的應用程式，請呼叫 **RoleEnvironment >roleenvironment.getconfigurationsettings**來存取連接字串。 以下是從名為*StorageConnectionString*的**設定**元素取得連接字串的範例：
+
+您可以將此字串儲存在名為 *serviceconfiguration.cscfg* 的服務設定檔中。 如果是在 Microsoft Azure 角色內執行的應用程式，請呼叫 **RoleEnvironment >roleenvironment.getconfigurationsettings** 來存取連接字串。 以下是從名為 *StorageConnectionString* 的 **設定** 元素取得連接字串的範例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -168,13 +169,13 @@ String storageConnectionString =
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
-**QueueClient**物件包含與佇列互動的作業。 下列程式碼會建立 **QueueClient** 物件。 使用 **QueueClient** 物件來建立您要使用的佇列。
+**QueueClient** 物件包含與佇列互動的作業。 下列程式碼會建立 **QueueClient** 物件。 使用 **QueueClient** 物件來建立您要使用的佇列。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_CreateQueue":::
 
 # <a name="java-v8"></a>[JAVA v8](#tab/java8)
 
-**CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程式碼將建立 **CloudQueueClient** 物件。 (注意：還有其他方式可建立 **CloudStorageAccount** 物件。如需詳細資訊，請參閱 [Azure 儲存體用戶端 SDK 參考]中的 **CloudStorageAccount**。)
+**CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程式碼將建立 **CloudQueueClient** 物件。 (注意：還有其他方式可建立 **CloudStorageAccount** 物件。如需詳細資訊，請參閱 [Azure 儲存體用戶端 SDK 參考]中的 **CloudStorageAccount** 。)
 
 使用 **CloudQueueClient** 物件來取得想要使用佇列的參照。 如果佇列不存在，您可以建立佇列。
 
@@ -213,7 +214,7 @@ catch (Exception e)
 
 # <a name="java-v8"></a>[JAVA v8](#tab/java8)
 
-若要將訊息插入現有佇列，請先建立新的 **CloudQueueMessage**。 接著，呼叫 **addMessage** 方法。 您可以從 (UTF-8 格式的字串) 或位元組陣列來建立 **>cloudqueuemessage** 。 以下程式碼會建立佇列 (（如果不存在）) 並插入 "Hello，World" 訊息。
+若要將訊息插入現有佇列，請先建立新的 **CloudQueueMessage** 。 接著，呼叫 **addMessage** 方法。 您可以從 (UTF-8 格式的字串) 或位元組陣列來建立 **>cloudqueuemessage** 。 以下程式碼會建立佇列 (（如果不存在）) 並插入 "Hello，World" 訊息。
 
 ```java
 try
@@ -246,7 +247,7 @@ catch (Exception e)
 
 ## <a name="how-to-peek-at-the-next-message"></a>作法：查看下一個訊息
 
-透過呼叫 **peekMessage**，您可以在佇列前面查看訊息，而無需將它從佇列中移除。
+透過呼叫 **peekMessage** ，您可以在佇列前面查看訊息，而無需將它從佇列中移除。
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
@@ -393,13 +394,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
-**GetProperties**方法會要求佇列服務多個目前的值。 其中一個值是佇列中的訊息數目的計數。 計數只是近似值，因為可以在要求之後新增或移除訊息。 **GetApproximateMessageCount**方法會傳回**getProperties**呼叫所抓取的最後一個值，而不需要呼叫佇列服務。
+**GetProperties** 方法會要求佇列服務多個目前的值。 其中一個值是佇列中的訊息數目的計數。 計數只是近似值，因為可以在要求之後新增或移除訊息。 **GetApproximateMessageCount** 方法會傳回 **getProperties** 呼叫所抓取的最後一個值，而不需要呼叫佇列服務。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
 # <a name="java-v8"></a>[JAVA v8](#tab/java8)
 
-**DownloadAttributes**方法會要求佇列服務多個目前的值。 其中一個值是佇列中的訊息數目的計數。 計數只是近似值，因為可以在要求之後新增或移除訊息。 **getApproximateMessageCount** 方法會傳回呼叫 **downloadAttributes** 所擷取的最後一個值，而無需呼叫佇列服務。
+**DownloadAttributes** 方法會要求佇列服務多個目前的值。 其中一個值是佇列中的訊息數目的計數。 計數只是近似值，因為可以在要求之後新增或移除訊息。 **getApproximateMessageCount** 方法會傳回呼叫 **downloadAttributes** 所擷取的最後一個值，而無需呼叫佇列服務。
 
 ```java
 try
@@ -436,13 +437,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
-您的程式碼可以使用兩個步驟來清除佇列訊息。 當您呼叫 **receiveMessage**時，您會取得佇列中的下一則訊息。 從這個佇列中讀取訊息的任何其他程式碼，都會無法看到從 **receiveMessage** 傳回的訊息。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您也必須呼叫 **deleteMessage**。 如果您的程式碼無法處理訊息，此兩步驟程式可確保您可以取得相同的訊息，然後再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage** 。
+您的程式碼可以使用兩個步驟來清除佇列訊息。 當您呼叫 **receiveMessage** 時，您會取得佇列中的下一則訊息。 從這個佇列中讀取訊息的任何其他程式碼，都會無法看到從 **receiveMessage** 傳回的訊息。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您也必須呼叫 **deleteMessage** 。 如果您的程式碼無法處理訊息，此兩步驟程式可確保您可以取得相同的訊息，然後再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage** 。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
 # <a name="java-v8"></a>[JAVA v8](#tab/java8)
 
-您的程式碼可以使用兩個步驟來清除佇列訊息。 呼叫 **retrieveMessage**時，您會取得佇列中的下一個訊息。 從 **retrieveMessage** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您也必須呼叫 **deleteMessage**。 如果您的程式碼無法處理訊息，此兩步驟程式可確保您可以取得相同的訊息，然後再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage** 。
+您的程式碼可以使用兩個步驟來清除佇列訊息。 呼叫 **retrieveMessage** 時，您會取得佇列中的下一個訊息。 從 **retrieveMessage** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您也必須呼叫 **deleteMessage** 。 如果您的程式碼無法處理訊息，此兩步驟程式可確保您可以取得相同的訊息，然後再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage** 。
 
 ```java
 try
@@ -481,13 +482,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
-下列程式碼範例會使用 **>receivemessages** 方法，在一個呼叫中取得20個訊息。 然後，它會使用 **for** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘 (300 秒)。 所有訊息的等候時間都是同時啟動的。 自呼叫 **>receivemessages**後五分鐘之後，任何未刪除的訊息都會重新顯示。
+下列程式碼範例會使用 **>receivemessages** 方法，在一個呼叫中取得20個訊息。 然後，它會使用 **for** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘 (300 秒)。 所有訊息的等候時間都是同時啟動的。 自呼叫 **>receivemessages** 後五分鐘之後，任何未刪除的訊息都會重新顯示。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
 # <a name="java-v8"></a>[JAVA v8](#tab/java8)
 
-下列程式碼範例使用 **retrieveMessages** 方法，在一次呼叫中取得 20 個訊息。 然後，它會使用 **for** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘 (300 秒)。 所有訊息的等候時間都是同時啟動的。 自呼叫 **>retrievemessages**後五分鐘之後，任何未刪除的訊息都會重新顯示。
+下列程式碼範例使用 **retrieveMessages** 方法，在一次呼叫中取得 20 個訊息。 然後，它會使用 **for** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘 (300 秒)。 所有訊息的等候時間都是同時啟動的。 自呼叫 **>retrievemessages** 後五分鐘之後，任何未刪除的訊息都會重新顯示。
 
 ```java
 try
@@ -522,7 +523,7 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
-若要取得目前佇列的清單，請呼叫 **QueueServiceClient. listQueues ( # B1 ** 方法，它會傳回 **QueueItem** 物件的集合。
+若要取得目前佇列的清單，請呼叫 **QueueServiceClient. listQueues ( # B1** 方法，它會傳回 **QueueItem** 物件的集合。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ListQueues":::
 
@@ -561,7 +562,7 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[JAVA v12](#tab/java)
 
-若要刪除佇列及其內含的所有訊息，請呼叫**QueueClient**物件上的**delete**方法。
+若要刪除佇列及其內含的所有訊息，請呼叫 **QueueClient** 物件上的 **delete** 方法。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DeleteMessageQueue":::
 
@@ -600,10 +601,10 @@ catch (Exception e)
 
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
-* [Azure Storage SDK for Java][Azure Storage SDK for Java]
-* [Azure 儲存體用戶端 SDK 參考][Azure Storage Client SDK Reference]
-* [Azure 儲存體服務 REST API][Azure Storage Services REST API]
-* [Azure 儲存體團隊部落格][Azure Storage Team Blog]
+- [Azure Storage SDK for Java][Azure Storage SDK for Java]
+- [Azure 儲存體用戶端 SDK 參考][Azure Storage Client SDK Reference]
+- [Azure 儲存體服務 REST API][Azure Storage Services REST API]
+- [Azure 儲存體團隊部落格][Azure Storage Team Blog]
 
 [Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
 [Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage

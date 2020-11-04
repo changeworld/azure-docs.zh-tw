@@ -5,22 +5,23 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21bbe15a37e95df297f580064beb63ebd5debe57
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9becd6341baad54a74f10ae2f38cf9ccf1fd3037
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899899"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347891"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>在 Azure 入口網站中建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
-若要在 Azure Kubernetes Service (AKS) 叢集中快速地部署工作負載，您可以使用虛擬節點。 透過虛擬節點，您可以快速佈建 Pod，而且只需在節點執行時付費 (以秒計算)。 在調整案例中，您不需要等候 Kubernetes 叢集自動調整程式來部署 VM 計算節點以執行其他 Pod。 僅 Linux Pod 和節點支援虛擬節點。
+本文說明如何使用 Azure 入口網站來建立和設定虛擬網路資源，以及啟用虛擬節點的 AKS 叢集。
 
-本文會示範如何建立和設定啟用虛擬節點的虛擬網路資源與 AKS 叢集。
+> [!NOTE]
+> [本文提供使用](virtual-nodes.md) 虛擬節點的區域可用性和限制總覽。
 
 ## <a name="before-you-begin"></a>開始之前
 
-虛擬節點能在於 Azure 容器執行個體 (ACI) 與 AKS 叢集中執行的 Pod 之間啟用網路通訊。 為了提供此通訊功能，需要建立虛擬網路子網路並指派委派權限。 虛擬節點只能與使用「進階」網路所建立的 AKS 叢集搭配運作。 但根據預設，系統會使用「基本」網路來建立 AKS 叢集。 本文說明如何建立虛擬網路和子網路，然後部署使用進階網路的 AKS 叢集。
+虛擬節點能在於 Azure 容器執行個體 (ACI) 與 AKS 叢集中執行的 Pod 之間啟用網路通訊。 為了提供此通訊功能，需要建立虛擬網路子網路並指派委派權限。 虛擬節點只適用于使用 *advanced* 網路 (Azure CNI) 所建立的 AKS 叢集。 根據預設，系統會使用 *基本* 網路 (kubenet) 來建立 AKS 叢集。 本文說明如何建立虛擬網路和子網路，然後部署使用進階網路的 AKS 叢集。
 
 如果您先前未使用 ACI，請向您的訂用帳戶註冊服務提供者。 您可以使用 [az provider list][az-provider-list] 命令來檢查 ACI 提供者註冊狀態，如下列範例所示：
 
@@ -41,34 +42,6 @@ Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
-
-## <a name="regional-availability"></a>區域可用性
-
-虛擬節點部署支援下列區域：
-
-* 澳大利亞東部 (australiaeast)
-* 美國中部 (centralus)
-* 美國東部 (eastus)
-* 美國東部 2 (eastus2)
-* 日本東部 (japaneast)
-* 北歐 (northeurope)
-* 東南亞 (southeastasia)
-* 美國中西部 (westcentralus)
-* 西歐 (westeurope)
-* 美國西部 (westus)
-* 美國西部 2 (westus2)
-
-## <a name="known-limitations"></a>已知限制
-虛擬節點功能非常依賴 ACI 的功能集。 除了 [Azure 容器實例的配額和限制](../container-instances/container-instances-quotas.md)之外，虛擬節點尚未支援下列案例：
-
-* 使用服務主體來提取 ACR 映像。 [因應措施](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) \(英文\) 是使用 [Kubernetes 祕密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) \(英文\)
-* [虛擬網路限制](../container-instances/container-instances-virtual-network-concepts.md)包括 VNet 對等互連、Kubernetes 網路原則，以及搭配網路安全性群組的網際網路輸出流量。
-* 初始容器
-* [主機別名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/) \(英文\)
-* 適用於 ACI 中 exec 的[引數](../container-instances/container-instances-exec.md#restrictions)
-* [DaemonSet](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不會將 Pod 部署至虛擬節點
-* 虛擬節點支援對 Linux Pod 進行排程。 您可以手動安裝開放原始碼 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) \(英文\) 提供者，以針對 ACI 對 Windows Server 容器進行排程。
-* 虛擬節點需要 AKS 叢集搭配 Azure CNI 網路
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -241,5 +214,5 @@ curl -L http://10.241.0.4
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-list]: /cli/azure/provider&preserve-view=true#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest&preserve-view=true#az-provider-register

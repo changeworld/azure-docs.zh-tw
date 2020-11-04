@@ -2,19 +2,19 @@
 title: 從 Azure VM 啟用 Azure 自動化更新管理
 description: 本文說明如何從 Azure VM 啟用更新管理。
 services: automation
-ms.date: 09/16/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d81b822986f641e64b9211300f83e3b254f316d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222380"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347075"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>從 Azure VM 啟用更新管理
 
-本文說明如何使用 Azure VM 啟用其他機器上的[更新管理](overview.md)功能。 若要大規模啟用 Azure VM，您必須使用更新管理來啟用現有的 VM。
+本文說明如何在 (VM) 的一或多個 Azure 虛擬機器上啟用 [更新管理](overview.md) 功能。 若要大規模啟用 Azure Vm，您必須使用更新管理啟用現有的 Azure VM。
 
 > [!NOTE]
 > 啟用更新管理時，只有特定區域支援連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](../how-to/region-mappings.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "92222380"
 
 2. 選取您要啟用更新管理的 VM。 VM 可能存在於任何區域中，無論您的自動化帳戶位於何處。 您
 
-3. 在 [VM] 頁面的 [ **作業**] 底下，選取 [ **來賓 + 主機更新**]。
+3. 在 [VM] 頁面的 [ **作業** ] 底下，選取 [ **來賓 + 主機更新** ]。
 
     ![從左側窗格中選取 [來賓 + 主機更新]](media/enable-from-vm/select-guest-and-os-updates.png)
 

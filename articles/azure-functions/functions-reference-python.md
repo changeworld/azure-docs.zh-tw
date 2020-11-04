@@ -4,18 +4,22 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108417"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346310"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
 本文是使用 Python 開發 Azure Functions 的簡介。 本文假設您已閱讀過下列 [Azure Functions 開發人員指南](functions-reference.md)。
 
-如需 Python 中的獨立函式範例專案，請參閱 [ython 函式範例](/samples/browse/?products=azure-functions&languages=python)。
+作為 Python 開發人員，您可能也會對下列其中一篇文章感興趣：
+
+| 開始使用 | 概念| 案例/範例 |
+| -- | -- | -- | 
+| <ul><li>[使用 Visual Studio Code 的 Python 函式](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[使用終端機/命令提示字元的 Python 函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[透過 PyTorch 進行影像分類](machine-learning-pytorch.md)</li><li>[Azure 自動化範例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[使用 TensorFlow 進行機器學習](functions-machine-learning-tensorflow.md)</li><li>[流覽 Python 範例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>程式設計模型
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-請使用 [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) 套件中所包含的 Python 註釋，以將輸入和輸出繫結至方法。
+請使用 [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) 套件中所包含的 Python 註釋，以將輸入和輸出繫結至方法。
 
 ## <a name="alternate-entry-point"></a>替代進入點
 
@@ -83,11 +87,11 @@ Python 函式專案的建議資料夾結構看起來像下列範例：
 ```
 主要專案資料夾 (\_\_app\_\_) 可以包含下列檔案：
 
-* *local.settings.json*：在本機執行時用來儲存應用程式設定和連接字串。 此檔案不會發行至 Azure。 若要深入瞭解，請參閱 [local.settings.file](functions-run-local.md#local-settings-file)。
-* *requirements.txt*：包含在發佈至 Azure 時系統安裝的套件清單。
-* *host.json*：包含會對函式應用程式中所有函式產生影響的全域組態選項。 此檔案會發行至 Azure。 在本機執行時，不支援所有選項。 若要深入了解，請參閱[host.json](functions-host-json.md)。
-* *.funcignore*：(選擇性) 宣告不應發佈至 Azure 的檔案。
-* *Dockerfile*：(選擇性) 在[自訂容器](functions-create-function-linux-custom-image.md)中發佈專案時使用。
+* *local.settings.json* ：在本機執行時用來儲存應用程式設定和連接字串。 此檔案不會發行至 Azure。 若要深入瞭解，請參閱 [local.settings.file](functions-run-local.md#local-settings-file)。
+* *requirements.txt* ：包含在發佈至 Azure 時系統安裝的套件清單。
+* *host.json* ：包含會對函式應用程式中所有函式產生影響的全域組態選項。 此檔案會發行至 Azure。 在本機執行時，不支援所有選項。 若要深入了解，請參閱[host.json](functions-host-json.md)。
+* *.funcignore* ：(選擇性) 宣告不應發佈至 Azure 的檔案。
+* *Dockerfile* ：(選擇性) 在 [自訂容器](functions-create-function-linux-custom-image.md)中發佈專案時使用。
 
 每個函式都具有本身的程式碼檔案和繫結設定檔 (function.json)。
 
@@ -194,7 +198,7 @@ def main(req: func.HttpRequest,
 
 若要使用函式的傳回值作為輸出繫結的值，應該將 `function.json` 中的繫結 `name` 屬性設定為 `$return`。
 
-若要產生多個輸出，請使用 [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) 介面提供的 `set()` 方法，將一值指派給繫結。 例如，下列函式可以將訊息推送至佇列，同時也會傳回 HTTP 回應。
+若要產生多個輸出，請使用 [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 介面提供的 `set()` 方法，將一值指派給繫結。 例如，下列函式可以將訊息推送至佇列，同時也會傳回 HTTP 回應。
 
 ```json
 {
@@ -310,7 +314,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 預設設定適用于大部分的 Azure Functions 應用程式。 不過，您可以根據您的工作負載設定檔來採用設定，以改善應用程式輸送量的效能。 第一個步驟是瞭解您正在執行的工作負載類型。
 
-|| I/o 系結工作負載 | CPU 系結的工作負載 |
+|&nbsp;| I/o 系結工作負載 | CPU 系結的工作負載 |
 |--| -- | -- |
 |函數應用程式特性| <ul><li>應用程式需要處理許多並行調用。</li> <li> 應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。</li> </ul>| <ul><li>應用程式會執行長時間執行的計算，例如調整大小的影像。</li> <li>應用程式會進行資料轉換。</li> </ul> |
 |範例| <ul><li>Web API</li><ul> | <ul><li>資料處理</li><li> 機器學習推斷</li><ul>|
@@ -324,7 +328,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 瞭解函數應用程式的工作負載設定檔之後，您可以使用下列設定來改善函式的輸送量效能。
 
-##### <a name="async"></a>非同步處理
+##### <a name="async"></a>Async
 
 因為 [python 是單一執行緒的運行](https://wiki.python.org/moin/GlobalInterpreterLock)時間，所以 python 的主控制項實例一次只能處理一個函式呼叫。 針對處理大量 i/o 事件和/或 i/o 系結的應用程式，您可以透過非同步方式執行函式來大幅改善效能。
 
@@ -381,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符�
 
 ## <a name="context"></a>Context
 
-若要在執行期間取得函式的引動內容，請在其簽章中包含 [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 引數。
+若要在執行期間取得函式的引動內容，請在其簽章中包含 [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 引數。
 
 例如：
 
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python) 類別具有下列字串屬性：
+[**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 類別具有下列字串屬性：
 
 `function_directory` 函式執行所在的目錄。
 
@@ -701,7 +705,7 @@ Python 標準程式庫包含每個 Python 散發套件隨附的內建 Python 模
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python 背景工作相依性
 
-Python 背景工作角色需要一組特定的程式庫。 您也可以在函式中使用這些程式庫，但它們不是 Python 標準的一部分。 如果您的函式依賴任何這些程式庫，則您的程式碼在 Azure Functions 外部執行時可能無法使用這些程式庫。 您可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)檔案的 [**安裝 \_ 需要**] 區段中找到詳細的相依性清單。
+Python 背景工作角色需要一組特定的程式庫。 您也可以在函式中使用這些程式庫，但它們不是 Python 標準的一部分。 如果您的函式依賴任何這些程式庫，則您的程式碼在 Azure Functions 外部執行時可能無法使用這些程式庫。 您可以在 [setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)檔案的 [ **安裝 \_ 需要** ] 區段中找到詳細的相依性清單。
 
 > [!NOTE]
 > 如果函數應用程式的 requirements.txt 包含 `azure-functions-worker` 專案，請將它移除。 函式背景工作會由 Azure Functions 平臺自動管理，並定期以新功能和 bug 修正進行更新。 在 requirements.txt 中手動安裝舊版本的背景工作角色可能會造成未預期的問題。
@@ -724,8 +728,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 執行階段  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 2.x 版 | 延展  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3.x 版 | 剋星 | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 2.x 版 | 延展  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3.x 版 | 剋星 | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨原始資源共用
 
@@ -746,7 +750,7 @@ Python 函式應用程式完全支援 CORS。
 
 如需詳細資訊，請參閱下列資源：
 
-* [Azure Functions 套件 API 文件](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Azure Functions 套件 API 文件](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Azure Functions 的最佳做法](functions-best-practices.md)
 * [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)
 * [Blob 儲存體繫結](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ Python 函式應用程式完全支援 CORS。
 * [計時器觸發程序](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

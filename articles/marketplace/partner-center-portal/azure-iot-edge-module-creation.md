@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 957695892c39dd3ddfd9dc45d60158c89eb22698
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130624"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347477"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -234,15 +234,15 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 3. 支援位址 (連結) 
 4. 條款及條件
 5. 隱私權原則位址 (連結) 
-6. 名稱
-7. 摘要
-8. 描述
+6. Name
+7. 總結
+8. Description
 9. 實用連結
 10. 螢幕擷取畫面/影片
 
 <br>以下範例說明如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊：
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 搜尋結果中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -252,18 +252,18 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 <br>以下是供應專案資訊出現在 Azure 入口網站中的範例：
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="說明這項供應專案如何出現在 Azure 入口網站中。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
-1. 名稱
+1. Name
 2. 描述
 3. 實用連結
 4. 螢幕擷取畫面
 
 <br>以下是如何在 Azure 入口網站搜尋結果中顯示供應專案資訊的範例：
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="說明這項供應專案如何顯示在 Azure 入口網站搜尋結果中。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -362,7 +362,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 以下是 Azure Marketplace 方案詳細資料的範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="說明 Azure Marketplace 計畫詳細資料。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -372,7 +372,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 <br>以下是 Azure 入口網站方案詳細資料的範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="說明 Azure 入口網站計畫詳細資料。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -413,15 +413,15 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure Container Registry** 的系統管理員使用者名稱：提供與擁有容器映射 Azure Container Registry 相關聯的系統 [管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True** 。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
 
 #### <a name="call-out-description"></a>撥出描述
 
 1. 管理使用者
 
-<br>**Azure Container Registry 的密碼** ：提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
+<br>**Azure Container Registry 的密碼** ：提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](/cli/azure/acr/credential#az-acr-credential-show)。
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="說明 Azure 入口網站中的 [存取金鑰] 畫面。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -492,4 +492,4 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [更新商業 Marketplace 中的現有供應項目](//azure/marketplace/partner-center-portal/update-existing-offer) \(部分機器翻譯\)
+- [更新商業 Marketplace 中的現有供應項目](update-existing-offer.md) \(部分機器翻譯\)

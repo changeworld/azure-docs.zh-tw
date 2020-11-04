@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9d5c954be2a6f05e5132a5f57f8169f436719a8d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332265"
+ms.locfileid: "93345426"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -67,12 +67,11 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 **支援** | **詳細資料**
 --- | ---
 **支援的機器** | 應用程式探索目前僅支援 VMware VM。 您可以從每個 Azure Migrate 設備探索最多可在 10000 VMware Vm 上安裝的應用程式。
+**作業系統** | 執行所有 Windows 和 Linux 版本的 Vm 都支援應用程式探索。
+**VM 需求** | 您必須在要探索應用程式的 Vm 上安裝並執行 VMware 工具。 <br/><br/> VMware 工具版本必須為 10.2.0 之後。<br/><br/> VM 必須安裝 PowerShell 2.0 版或更新版本。
 **探索** | 應用程式探索不需要代理程式。 其會使用機器來賓認證，並使用 WMI 和 SSH 呼叫從遠端存取機器。
-**VM 支援** | 執行所有 Windows 和 Linux 版本的 Vm 都支援應用程式探索。
 **vCenter** | 用於評量的 vCenter Server 唯讀帳戶，需要 **虛擬機器**  >  **來賓作業** 啟用的許可權，才能與 VM 互動以進行應用程式探索。
 **VM 存取** | 應用程式探索需要 VM 上的本機使用者帳戶，才能進行應用程式探索。<br/><br/> Azure Migrate 目前支援在所有 Windows 伺服器上使用一個認證，以及為所有 Linux 伺服器使用一個認證。<br/><br/> 請為 Windows VM 建立來賓使用者帳戶，以及為所有 Linux VM 建立常規/一般使用者帳戶 (非 sudo 存取權)。
-**VMware 工具** | 您想要探索的 VM 上必須安裝並執行 VMware 工具。 <br/><br/> VMware 工具版本必須為 10.2.0 之後。
-**PowerShell** | VM 必須安裝 PowerShell 2.0 版或更新版本。
 **連接埠存取** | Azure Migrate 設備必須能夠連線到執行您要探索應用程式之 Vm 的 ESXi 主機上的 TCP 埠443。 VCenter Server 會傳回 ESXI 主機連接，以下載包含應用程式資訊的檔案。
 **限制** | 針對應用程式探索，您最多可以在每個 Azure Migrate 設備上探索 10,000 部 VM。
 

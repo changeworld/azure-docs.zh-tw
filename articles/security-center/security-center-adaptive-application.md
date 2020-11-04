@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339708"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346514"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -61,17 +61,17 @@ ms.locfileid: "92339708"
 
 ## <a name="enable-application-controls-on-a-group-of-machines"></a>在一組電腦上啟用應用程式控制
 
-如果資訊安全中心在您的訂用帳戶中識別出的機器群組一致地執行一組類似的應用程式，系統將會提示您輸入下列建議：您 **應在您的電腦上啟用定義安全應用程式的彈性應用**程式控制。
+如果資訊安全中心在您的訂用帳戶中識別出的機器群組一致地執行一組類似的應用程式，系統將會提示您輸入下列建議：您 **應在您的電腦上啟用定義安全應用程式的彈性應用** 程式控制。
 
 選取建議，或開啟 [自動調整應用程式控制] 頁面，以查看建議的已知安全應用程式和電腦群組的清單。
 
-1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用** 程式控制]。
 
     :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="從 Azure 儀表板開啟自我調整應用程式控制" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     [自動調整 **應用** 程式控制] 頁面隨即開啟，並將您的 vm 分組為下列索引標籤：
 
-    - 已**設定**-已定義應用程式允許清單的電腦群組。 針對每個群組，[已設定] 索引標籤會顯示：
+    - 已 **設定** -已定義應用程式允許清單的電腦群組。 針對每個群組，[已設定] 索引標籤會顯示：
         - 群組中的電腦數目
         - 最近的警示
 
@@ -112,7 +112,7 @@ ms.locfileid: "92339708"
       > 
       > 應用程式是由其發行者定義，如果應用程式沒有發行者資訊 (不帶正負號的) ，則會針對特定應用程式的完整路徑建立路徑規則。
 
-   1. 若要套用規則，請選取 [ **Audit**]。 
+   1. 若要套用規則，請選取 [ **Audit** ]。 
 
 
 
@@ -123,7 +123,7 @@ ms.locfileid: "92339708"
 
 若要編輯一組電腦的規則：
 
-1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用** 程式控制]。
 
 1. 在 [ **已設定** ] 索引標籤中，選取包含您要編輯之規則的群組。
 
@@ -131,11 +131,11 @@ ms.locfileid: "92339708"
 
 1. （選擇性）新增一或多個自訂規則：
 
-   1. 選取 [ **新增規則**]。
+   1. 選取 [ **新增規則** ]。
 
       ![新增自訂規則](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. 如果您要定義已知的安全路徑，請將 **規則類型** 變更為「路徑」。 您可以在路徑中包含萬用字元。
+   1. 如果您要定義已知的安全路徑，請將 **規則類型** 變更為 [路徑]，並輸入單一路徑。 您可以在路徑中包含萬用字元。
    
       > [!TIP]
       > 在路徑中使用萬用字元的某些案例可能很有用：
@@ -145,27 +145,27 @@ ms.locfileid: "92339708"
   
    1. 定義允許的使用者和受保護的檔案類型。
 
-   1. 當您完成定義規則之後，請選取 [ **新增**]。
+   1. 當您完成定義規則之後，請選取 [ **新增** ]。
 
-1. 若要套用變更，請選取 [ **儲存**]。
+1. 若要套用變更，請選取 [ **儲存** ]。
 
 
 ## <a name="review-and-edit-a-groups-settings"></a>檢查和編輯群組的設定
 
-1. 若要查看群組的詳細資料和設定，請選取 [**群組設定**]。
+1. 若要查看群組的詳細資料和設定，請選取 [ **群組設定** ]。
 
     此窗格會顯示可以修改的組名 () 、OS 類型、位置和其他相關詳細資料。
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="從 Azure 儀表板開啟自我調整應用程式控制" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自我調整應用程式控制的 [群組設定] 頁面" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
     > 在 [檔案類型保護模式] 設定中，[ **強制** ] 選項在 **所有** 案例中會呈現灰色。 目前沒有任何強制選項可用。 
     >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="從 Azure 儀表板開啟自我調整應用程式控制":::
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="檔案保護的強制模式會永久呈現灰色。沒有任何強制選項可供使用。":::
 
 1. （選擇性）修改群組的名稱或檔案類型保護模式。
 
-1. 選取 **[** 套用並 **儲存**]。
+1. 選取 **[** 套用並 **儲存** ]。
 
 
 
@@ -181,14 +181,14 @@ ms.locfileid: "92339708"
 
 1. 請參閱 **設定應用程式控制規則** 頁面的各個區段，如在 [一組電腦上啟用](#enable-application-controls-on-a-group-of-machines)自動調整應用程式控制項所述。
 
-1. 若要套用變更，請選取 [ **Audit**]。
+1. 若要套用變更，請選取 [ **Audit** ]。
 
 
 
 
 ## <a name="audit-alerts-and-violations"></a>審核警示和違規
 
-1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用** 程式控制]。
 
 1. 若要查看具有最新警示的電腦群組，請檢查 [ **已設定** ] 索引標籤中列出的群組。
 
@@ -204,17 +204,17 @@ ms.locfileid: "92339708"
 
 當您將機器從某個群組移至另一個群組時，套用至它的應用程式控制原則會變更至您移至的群組設定。 您也可以將電腦從已設定的群組移至未設定的群組，這樣做會移除套用至電腦的任何應用程式控制規則。
 
-1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用** 程式控制]。
 
 1. 從 [ **自我調整應用** 程式控制] 頁面的 [ **已設定** ] 索引標籤中，選取包含要移動之電腦的群組。
 
-1. 開啟  **已設定的電腦**清單。
+1. 開啟  **已設定的電腦** 清單。
 
-1. 從資料列結尾的三個點開啟電腦的功能表，然後選取 [ **移動**]。 [ **將電腦移到不同的群組** ] 窗格隨即開啟。
+1. 從資料列結尾的三個點開啟電腦的功能表，然後選取 [ **移動** ]。 [ **將電腦移到不同的群組** ] 窗格隨即開啟。
 
-1. 選取目的地群組，然後選取 [ **移動電腦**]。
+1. 選取目的地群組，然後選取 [ **移動電腦** ]。
 
-1. 若要儲存變更，請選取 [ **儲存**]。
+1. 若要儲存變更，請選取 [ **儲存** ]。
 
 
 
@@ -235,7 +235,7 @@ REST API 中提供的部分函數：
 * **Put** 會設定您的規則 (使用您 **抓取的 JSON 作為此** 要求) 的主體。
  
    > [!IMPORTANT]
-   > **Put**函式需要的參數少於 Get 命令所傳回的 JSON。
+   > **Put** 函式需要的參數少於 Get 命令所傳回的 JSON。
    >
    > 在 Put 要求中使用 JSON 之前，請先移除下列屬性： recommendationStatus、configurationStatus、問題、位置和 sourceSystem。
 

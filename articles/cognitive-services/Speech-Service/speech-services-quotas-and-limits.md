@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567157"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345392"
 ---
 # <a name="speech-services-quotas-and-limits"></a>語音服務配額和限制
 
@@ -26,20 +26,35 @@ ms.locfileid: "91567157"
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>每個語音資源的語音轉換文字配額和限制
 在下表中，沒有「可調」資料列的參數 **無法** 針對所有定價層進行調整。
 
+#### <a name="online-transcription"></a>線上轉譯
+
 | Quota | 免費 (F0) <sup>1</sup> | 標準 (S0) |
 |--|--|--|
-| **線上轉譯並行要求限制 (基礎和自訂模型) ** |  |  |
-| 預設值 | 1 | 20 |
+| **(基礎和自訂模型的並行要求限制)** | 1 | 20 (預設值)  |
 | 調 | 否<sup>2</sup> | 是<sup>2</sup> |
-| **REST API ([API 管理](../../api-management/api-management-key-concepts.md) 端點的要求限制) ** | 每10秒100個要求 | 每10秒100個要求 |
-| **資料匯入的資料集大小上限** | 2 GB | 2 GB |
-| **批次轉譯的輸入 blob 大小上限** | N/A | 2.5 GB |
-| **批次轉譯的 blob 容器大小上限** | N/A | 5 GB |
-| **批次轉譯的每個容器的 blob 數目上限** | N/A | 10000 |
-| **使用多個內容 Url 做為) 輸入時，每次轉譯要求的檔案數目上限 (** | N/A | 1000  |
-| **批次轉譯同時執行的作業數目上限** | N/A | 2000  |
 
-<sup>1</sup> 代表 **免費 (F0) ** 定價層另請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月額度額度。<br/>
+#### <a name="batch-transcription"></a>批次轉譯
+| Quota | 免費 (F0) <sup>1</sup> | 標準 (S0) |
+|--|--|--|
+| REST API 限制 | F0 無法使用批次轉譯 | 每分鐘300個要求 |
+| 音訊輸入檔大小上限 | N/A | 1 GB |
+| 輸入 blob 大小上限 (可以包含一個以上的檔案，例如 zip 封存中的檔案;請務必記下上面的檔案大小限制)  | N/A | 2.5 GB |
+| Blob 容器大小上限 | N/A | 5 GB |
+| 每個容器的 blob 數目上限 | N/A | 10000 |
+| 使用多個內容 Url 做為輸入時，每個轉譯要求 (的檔案數目上限)  | N/A | 1000  |
+| 同時執行的作業數目上限 | N/A | 2000  |
+
+#### <a name="model-customization"></a>模型自訂
+| Quota | 免費 (F0) <sup>1</sup> | 標準 (S0) |
+|--|--|--|
+| REST API 限制 | 每分鐘300個要求 | 每分鐘300個要求 |
+| 語音資料集的最大數目 | 2 | 500 |
+| 資料匯入的聲場資料集檔案大小上限 | 2 GB | 2 GB |
+| 匯入資料的最大語言資料集檔案大小 | 200 MB | 1.5 GB |
+| 匯入資料的最大發音資料集檔案大小 | 1 KB | 1 MB |
+| `text`在[建立模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/)API 要求中使用參數時的文字大小上限 | 200 KB | 500 KB |
+
+<sup>1</sup> 代表 **免費 (F0)** 定價層另請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月額度額度。<br/>
 <sup>2</sup> 請參閱 [其他說明](#detailed-description-quota-adjustment-and-best-practices)、 [最佳作法](#general-best-practices-to-mitigate-throttling-during-autoscaling)和 [調整指示](#speech-to-text-increasing-online-transcription-concurrent-request-limit)。<br/> 
 
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>每個語音資源的文字轉換語音配額和限制
@@ -47,7 +62,7 @@ ms.locfileid: "91567157"
 
 | Quota | 免費 (F0) <sup>3</sup> | 標準 (S0) |
 |--|--|--|
-| **標準和類神經語音的每秒交易數上限 (TPS) ** | 200<sup>4</sup> | 200<sup>4</sup> |  |
+| **標準和類神經語音的每秒交易數上限 (TPS)** | 200<sup>4</sup> | 200<sup>4</sup> |  |
 | **自訂語音的並行要求限制** |  |  |
 | 預設值 | 10 | 10 |
 | 調 | 否<sup>5</sup> | 是<sup>5</sup> |
@@ -57,10 +72,10 @@ ms.locfileid: "91567157"
 | **Websocket 特定配額** |  |  |
 |每回合產生的最大音訊長度 | 10 分鐘 | 10 分鐘 |
 |每回合的 SSML 訊息大小上限 |64 KB |64 KB |
-| **REST API 要求限制** | 每分鐘20個要求 | 每5秒25個要求 |
+| **REST API 限制** | 每分鐘20個要求 | 每5秒25個要求 |
 
 
-<sup>3</sup> **免費 (F0) ** 定價層另請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月額度額度。<br/>
+<sup>3</sup> **免費 (F0)** 定價層另請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月額度額度。<br/>
 <sup>4</sup> 請參閱 [其他說明](#detailed-description-quota-adjustment-and-best-practices) 和 [最佳作法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。<br/>
 <sup>5</sup> 請參閱 [其他說明](#detailed-description-quota-adjustment-and-best-practices)、 [最佳作法](#general-best-practices-to-mitigate-throttling-during-autoscaling)和 [調整指示](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)。<br/> 
 
@@ -74,7 +89,7 @@ ms.locfileid: "91567157"
 *範例。* 您的應用程式使用文字轉換語音，而您目前的工作負載是每秒)  (筆交易。 接下來，您會將負載增加到20個 TP (四倍以上) 。 服務會立即開始相應增加以滿足新的負載，但可能不會在一秒內完成，因此某些要求會收到回應碼429。   
 - 測試不同的負載增加模式
   - 請參閱 [語音轉換文字範例](#speech-to-text-example-of-a-workload-pattern-best-practice)
-- 在相同或不同區域中建立額外的語音資源，並使用「迴圈配置資源」技術來散發工作負載。 這對 **文字轉換語音的 tp (每秒交易數 ** 特別重要) 參數，每個語音資源設定為200，無法調整  
+- 在相同或不同區域中建立額外的語音資源，並使用「迴圈配置資源」技術來散發工作負載。 這對 **文字轉換語音的 tp (每秒交易數** 特別重要) 參數，每個語音資源設定為200，無法調整  
 
 下一節將說明調整配額的特定案例。<br/>
 跳至 [文字轉換語音。增加自訂語音的轉譯並行要求限制](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
@@ -84,7 +99,7 @@ ms.locfileid: "91567157"
 
 增加並行要求 **限制不會直接影響** 您的成本。 語音服務會使用「使用時付費」模型。 此限制會定義服務在開始節流您的要求之前，可以調整的程度。
 
-**基底**和**自訂**模型的並行要求限制需要**另外**調整。
+**基底** 和 **自訂** 模型的並行要求限制需要 **另外** 調整。
 
 Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行要求限制參數的現有值。 若要確認現有的值，請建立 Azure 支援要求。
 
@@ -92,22 +107,22 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 >[語音容器](speech-container-howto.md) 不需要增加並行要求的限制，因為容器只受限於裝載的硬體 cpu。
 
 #### <a name="have-the-required-information-ready"></a>備妥所需的資訊：
-- 針對 **基底模型**：
+- 針對 **基底模型** ：
   - 語音資源識別碼
   - 區域
-- **自訂模型**： 
+- **自訂模型** ： 
   - 區域
   - 自訂端點識別碼
 
-- **如何 (基底模型) 取得資訊 **：  
+- **如何 (基底模型) 取得資訊** ：  
   - 移至 [Azure 入口網站](https://portal.azure.com/)
   - 選取您要增加並行要求限制的語音資源
-  - 選取 [*資源管理*群組] (的 [*屬性*])  
+  - 選取 [ *資源管理* 群組] (的 [ *屬性* ])  
   - 複製並儲存下欄欄位的值：
     - **資源識別碼**
-    - 端點區域 (**位置**) 
+    - 端點區域 ( **位置** ) 
 
-- **如何 (自訂模型) 取得資訊 **：
+- **如何 (自訂模型) 取得資訊** ：
   - 前往 [Speech Studio](https://speech.microsoft.com/) 入口網站
   - 必要時登入
   - 移至自訂語音
@@ -115,7 +130,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
   - 移至 *部署*
   - 選取所需的端點
   - 複製並儲存下欄欄位的值：
-    - 端點區域 (的**服務區域**) 
+    - 端點區域 (的 **服務區域** ) 
     - **端點識別碼**
   
 #### <a name="create-and-submit-support-request"></a>建立並提交支援要求
@@ -124,7 +139,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 確定您有 [必要的資訊](#have-the-required-information-ready)
 - 移至 [Azure 入口網站](https://portal.azure.com/)
 - 選取您要增加 (的語音資源，或檢查) 並行要求限制
-- 選取 [ *新增支援要求* (*支援 + 疑難排解* ] 群組)  
+- 選取 [ *新增支援要求* ( *支援 + 疑難排解* ] 群組)  
 - 新的視窗隨即出現，其中包含 Azure 訂用帳戶和 Azure 資源的自動填入資訊
 - 輸入 *摘要* (例如「增加 STT 並行要求限制」 ) 
 - 在 [ *問題類型* ] 中，選取 [配額或訂用帳戶問題]
@@ -137,7 +152,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
   - 請注意，要求是關於 **語音轉換文字** 配額
   - **基底** 或 **自訂** 模型
   - 您[之前收集](#have-the-required-information-ready)的 Azure 資源資訊 
-  - 完成輸入必要資訊，然後按一下 [*檢查 + 建立*] 索引標籤中的 [*建立*] 按鈕
+  - 完成輸入必要資訊，然後按一下 [ *檢查 + 建立* ] 索引標籤中的 [ *建立* ] 按鈕
   - 請注意 Azure 入口網站通知中的支援要求號碼。 即將聯繫您以進行進一步的處理
 
 ### <a name="speech-to-text-example-of-a-workload-pattern-best-practice"></a>語音轉換文字：工作負載模式最佳作法的範例
@@ -167,7 +182,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 移至 *部署*
 - 選取所需的端點
 - 複製並儲存下欄欄位的值：
-    - 端點區域 (的**服務區域**) 
+    - 端點區域 (的 **服務區域** ) 
     - **端點識別碼**
   
 #### <a name="create-and-submit-support-request"></a>建立並提交支援要求
@@ -176,7 +191,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 確定您有 [必要的資訊](#prepare-the-required-information)
 - 移至 [Azure 入口網站](https://portal.azure.com/)
 - 選取您要增加 (的語音資源，或檢查) 並行要求限制
-- 選取 [ *新增支援要求* (*支援 + 疑難排解* ] 群組)  
+- 選取 [ *新增支援要求* ( *支援 + 疑難排解* ] 群組)  
 - 新的視窗隨即出現，其中包含 Azure 訂用帳戶和 Azure 資源的自動填入資訊
 - 輸入 *摘要* (例如「增加 TTS 自訂端點並行要求限制」 ) 
 - 在 [ *問題類型* ] 中，選取 [配額或訂用帳戶問題]
@@ -188,6 +203,6 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 在 [ *詳細資料* ] 索引標籤的 [ *描述* ] 欄位中輸入：
   - 請注意，要求是關於 **文字轉換語音** 配額
   - 您[之前收集](#prepare-the-required-information)的 Azure 資源資訊 
-  - 完成輸入必要資訊，然後按一下 [*檢查 + 建立*] 索引標籤中的 [*建立*] 按鈕
+  - 完成輸入必要資訊，然後按一下 [ *檢查 + 建立* ] 索引標籤中的 [ *建立* ] 按鈕
   - 請注意 Azure 入口網站通知中的支援要求號碼。 即將聯繫您以進行進一步的處理
 

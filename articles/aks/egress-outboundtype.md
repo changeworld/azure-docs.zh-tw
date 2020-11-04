@@ -3,15 +3,13 @@ title: 在 Azure Kubernetes Service (AKS) 中自訂使用者定義的路由 (UDR
 description: 了解如何在 Azure Kubernetes Service (AKS) 中定義自訂輸出路由
 services: container-service
 ms.topic: article
-ms.author: juluk
 ms.date: 06/29/2020
-author: jluk
-ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 103d7dc76dee56a336f08f2cc0c7c8489c0bc565
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975279"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348129"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用 User-Defined 路由自訂叢集輸出
 
@@ -28,7 +26,7 @@ ms.locfileid: "90975279"
 * OutboundType 只能在叢集建立時間定義，之後無法更新。
 * 設定 `outboundType` 需要具有 `vm-set-type` `VirtualMachineScaleSets` 和 `load-balancer-sku` `Standard` 的 AKS 叢集。
 * 將 `outboundType` 設定為 `UDR` 值，需要使用者定義的路由，以及適用於叢集的有效連出連線能力。
-* 將 `outboundType` 設定為 `UDR` 值，表示路由傳送到負載平衡器的輸入來源 IP，可能會與叢集的連出輸出目的地位址**不相符**。
+* 將 `outboundType` 設定為 `UDR` 值，表示路由傳送到負載平衡器的輸入來源 IP，可能會與叢集的連出輸出目的地位址 **不相符** 。
 
 ## <a name="overview-of-outbound-types-in-aks"></a>AKS 中連出類型的概觀
 
@@ -74,7 +72,7 @@ AKS 會進行下列設定。
 
 > [!IMPORTANT]
 > UDR 的輸出類型需要路由表中 NVA (網路虛擬裝置) 的 0.0.0.0/0 和下一個躍點目的地的路由。
-> 路由表已有預設的 0.0.0.0/0 至網際網路，而且沒有公用 IP 可將此路由新增至 SNAT，將不會提供輸出。 AKS 會驗證您未建立指向網際網路的 0.0.0.0/0 路由，而是改為 NVA 或閘道等等。使用輸出類型 UDR 時，除非已設定*loadbalancer*類型的服務，否則不會建立**輸入要求**的負載平衡器公用 IP 位址。 如果設定了 UDR 的輸出類型，AKS 絕對不會建立 **輸出要求** 的公用 IP 位址。
+> 路由表已有預設的 0.0.0.0/0 至網際網路，而且沒有公用 IP 可將此路由新增至 SNAT，將不會提供輸出。 AKS 會驗證您未建立指向網際網路的 0.0.0.0/0 路由，而是改為 NVA 或閘道等等。使用輸出類型 UDR 時，除非已設定 *loadbalancer* 類型的服務，否則不會建立 **輸入要求** 的負載平衡器公用 IP 位址。 如果設定了 UDR 的輸出類型，AKS 絕對不會建立 **輸出要求** 的公用 IP 位址。
 
 ## <a name="next-steps"></a>後續步驟
 

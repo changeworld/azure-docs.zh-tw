@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304983"
+ms.locfileid: "93347602"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
@@ -48,7 +48,7 @@ ms.locfileid: "93304983"
 
 若要使用 Syslog 來源與 Syslog 轉寄站之間的 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 請確定您用來作為記錄轉寄站的 Linux 機器正在執行下列其中一個作業系統：
 
@@ -57,7 +57,7 @@ ms.locfileid: "93304983"
   - Amazon Linux 2017.09
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的子版本) 
-  - Debian GNU/Linux 8、9和10
+  - Debian GNU/Linux 8 和 9
   - Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
   - SUSE Linux Enterprise Server 12，15
 
@@ -65,7 +65,7 @@ ms.locfileid: "93304983"
   - CentOS 7 和8，包括不 (6) 的子版本
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的子版本) 
-  - Debian GNU/Linux 8、9和10
+  - Debian GNU/Linux 8 和 9
   - Ubuntu Linux 14.04 LTS 和 16.04 LTS
  
 - Daemon 版本

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c1ee42b5b5884b0ce3491282d256d4bea87f44e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083536"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347636"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -146,9 +146,9 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 建議工具用於查詢中。 建立建議工具之後，請呼叫下列其中一個 Api 來進行搜尋即您的體驗：
 
-+ [建議 REST API](/rest/api/searchservice/suggestions) 
-+ [自動完成 REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync 方法] (/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithHTTPmessagesasync？
++ [建議 REST API](/rest/api/searchservice/suggestions)
++ [自動完成 REST API](/rest/api/searchservice/autocomplete)
++ [SuggestWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
 + [AutocompleteWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 在搜尋應用程式中，用戶端程式代碼應該利用程式庫（例如 [JQUERY UI 自動完成](https://jqueryui.com/autocomplete/) ）來收集部分查詢並提供相符的結果。 如需這項工作的詳細資訊，請參閱 [將自動完成或建議的結果新增至用戶端程式代碼](search-autocomplete-tutorial.md)。
@@ -167,9 +167,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + 使用[c # 建立您的第一個應用程式 (第3課-新增搜尋](tutorial-csharp-type-ahead-and-suggestions.md)型別) 範例示範建議工具結構、建議的查詢、自動完成和多面向導覽。 這個程式碼範例會在沙箱 Azure 認知搜尋服務上執行，並使用預先載入的旅館索引，所以您只需要按 F5 來執行應用程式即可。 不需要訂用帳戶或登入。
 
-+ [>dotnethowtoautocomplete](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) 是包含 c # 和 JAVA 程式碼的較舊範例。 它也會示範建議工具結構、建議的查詢、自動完成和多面向導覽。 這個程式碼範例會使用 hosted [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 範例資料。 
-
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 建議您閱讀下列文章，以深入瞭解要求的表述。
 

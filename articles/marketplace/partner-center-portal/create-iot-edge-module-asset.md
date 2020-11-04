@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: 4d55186874e6f5be67a04e4a04d54a89dc09f9cd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130437"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346769"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
@@ -107,10 +107,10 @@ IoT Edge 模組的所有設定都必須清楚記載。 例如，您必須記錄�
 
 使用 IoT 模組 Sdk 的下列其中一種方法，將 ProductInfo 設定為此識別碼：
 
-- [C#](/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [C#](/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-- [Java](/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
+- [Java](/java/api/com.microsoft.azure.sdk.iot.device.productinfo)
 
 針對未使用 IoT 模組 SDK 的模組，可透過合作夥伴中心取得較不精確的深入解析，例如下載數目。
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: aefd03b9d0ce726e086dff96a648e5f3a6b28e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e5b7ed75f22659a9a38ac761cc61c841102a067
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809210"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345834"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何使用 PHP 的佇列儲存體
 
@@ -38,7 +38,7 @@ ms.locfileid: "84809210"
 ### <a name="install-via-composer"></a>透過編輯器安裝
 
 1. 在專案的根目錄中，建立名為 **composer.js** 的檔案，並在其中新增下列程式碼：
-   
+
     ```json
     {
       "require": {
@@ -46,9 +46,10 @@ ms.locfileid: "84809210"
       }
     }
     ```
+
 2. 將 **[composer.phar][composer-phar]** 下載到專案根目錄中。
 3. 開啟命令提示字元，在專案根目錄中執行下列命令
-   
+
     ```
     php composer.phar install
     ```
@@ -89,8 +90,9 @@ UseDevelopmentStorage=true
 
 若要建立 Azure 佇列服務用戶端，您需要使用 **QueueRestProxy** 類別。 您可以使用下列其中一種方式：
 
-* 直接將連接字串傳遞給它。
-* 使用 Web 應用程式中的環境變數來儲存連接字串。 請參閱 [Azure Web 應用程式組態設定](../../app-service/configure-common.md)文件來設定連接字串。
+- 直接將連接字串傳遞給它。
+- 使用 Web 應用程式中的環境變數來儲存連接字串。 請參閱 [Azure Web 應用程式組態設定](../../app-service/configure-common.md)文件來設定連接字串。
+
 在本文的各範例中，將會直接傳遞連接字串。
 
 ```php
@@ -139,12 +141,10 @@ catch(ServiceException $e){
 
 > [!NOTE]
 > 您不應該倚賴大小寫來區分中繼資料索引鍵。 從服務讀取索引鍵時，所有索引鍵都是視為小寫。
-> 
-> 
 
 ## <a name="add-a-message-to-a-queue"></a>將訊息新增至佇列
 
-若要將訊息新增至佇列，請使用 **QueueRestProxy->createMessage**。 此方法會接受佇列名稱、訊息文字以及訊息選項 (選用)。
+若要將訊息新增至佇列，請使用 **QueueRestProxy->createMessage** 。 此方法會接受佇列名稱、訊息文字以及訊息選項 (選用)。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -223,7 +223,7 @@ else{
 
 ## <a name="de-queue-the-next-message"></a>將下一個訊息清除佇列
 
-您的程式碼可以使用兩個步驟來將訊息從佇列中移除。 首先，您需呼叫 **QueueRestProxy->listMessages**，這會讓從佇列讀取資料的任何其他程式碼無法看見此訊息。 依預設，此訊息會維持 30 秒的不可見狀態。  (如果未在這段期間內刪除訊息，則會再次在佇列中顯示。 ) 若要完成從佇列中移除訊息的作業，您必須呼叫 **>queuerestproxy->deleteMessage**。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage** 。
+您的程式碼可以使用兩個步驟來將訊息從佇列中移除。 首先，您需呼叫 **QueueRestProxy->listMessages** ，這會讓從佇列讀取資料的任何其他程式碼無法看見此訊息。 依預設，此訊息會維持 30 秒的不可見狀態。  (如果未在這段期間內刪除訊息，則會再次在佇列中顯示。 ) 若要完成從佇列中移除訊息的作業，您必須呼叫 **>queuerestproxy->deleteMessage** 。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage** 。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -265,7 +265,7 @@ catch(ServiceException $e){
 
 ## <a name="change-the-contents-of-a-queued-message"></a>變更佇列訊息的內容
 
-透過呼叫 **QueueRestProxy->updateMessage**，您可以在佇列中就地變更訊息的內容。 如果訊息代表工作作業，則您可以使用此功能來更新工作作業的狀態。 下列程式碼將使用新的內容更新佇列訊息，並將可見度逾時設定延長 60 秒。 這可儲存與訊息相關的工作狀態，並提供用戶端多一分鐘的時間繼續處理訊息。 您可以使用此技巧來追蹤佇列訊息上的多步驟工作流程，如果因為硬體或軟體故障而導致某個處理步驟失敗，將無需從頭開始。 通常，您也會保留重試計數，如果訊息重試超過 *n* 次，您就會刪除它。 這麼做可防止每次處理時便觸發應用程式錯誤的訊息。
+透過呼叫 **QueueRestProxy->updateMessage** ，您可以在佇列中就地變更訊息的內容。 如果訊息代表工作作業，則您可以使用此功能來更新工作作業的狀態。 下列程式碼將使用新的內容更新佇列訊息，並將可見度逾時設定延長 60 秒。 這可儲存與訊息相關的工作狀態，並提供用戶端多一分鐘的時間繼續處理訊息。 您可以使用此技巧來追蹤佇列訊息上的多步驟工作流程，如果因為硬體或軟體故障而導致某個處理步驟失敗，將無需從頭開始。 通常，您也會保留重試計數，如果訊息重試超過 *n* 次，您就會刪除它。 這麼做可防止每次處理時便觸發應用程式錯誤的訊息。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -421,12 +421,12 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然已了解 Azure 佇列儲存體的基本概念，請遵循下列連結以了解更複雜的儲存體工作。
 
-* 請瀏覽 [Azure 儲存體 PHP 用戶端程式庫的 API 參考](https://azure.github.io/azure-storage-php/)
-* 請參閱[進階佇列範例](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)。
+- 請瀏覽 [Azure 儲存體 PHP 用戶端程式庫的 API 參考](https://azure.github.io/azure-storage-php/)
+- 請參閱[進階佇列範例](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)。
 
 如需詳細資訊，另請參閱 [PHP 開發人員中心](https://azure.microsoft.com/develop/php/)。
 

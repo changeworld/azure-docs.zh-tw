@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 77c35ae4b9e845cd3c0f638407c0d71c36fcf9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a9fb1a179164d24c84213762ee7e2332a1aa25
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289679"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345936"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>如何使用 Node.js 的 Azure 佇列儲存體
 
@@ -44,7 +44,7 @@ ms.locfileid: "91289679"
 
 1. 在命令視窗中，輸入 **npm 安裝 \@ azure/儲存體-佇列** 。
 
-1. 確認已建立 [ **節點 \_ 模組** ] 資料夾。 在該資料夾內，您會找到** \@ azure/儲存體佇列**套件，其中包含存取儲存體所需的用戶端程式庫。
+1. 確認已建立 [ **節點 \_ 模組** ] 資料夾。 在該資料夾內，您會找到 **\@ azure/儲存體佇列** 套件，其中包含存取儲存體所需的用戶端程式庫。
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
@@ -74,7 +74,7 @@ var azure = require('azure-storage');
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-下列程式碼會取得名為的環境變數值 `AZURE_STORAGE_CONNECTION_STRING` ，並使用它來建立 [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient) 物件。 然後， **QueueServiceClient** 物件會用來建立 [QueueClient](/javascript/api/@azure/storage-queue/queueclient) 物件。 **QueueClient**物件可讓您使用特定佇列。
+下列程式碼會取得名為的環境變數值 `AZURE_STORAGE_CONNECTION_STRING` ，並使用它來建立 [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient) 物件。 然後， **QueueServiceClient** 物件會用來建立 [QueueClient](/javascript/api/@azure/storage-queue/queueclient) 物件。 **QueueClient** 物件可讓您使用特定佇列。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_CreateQueue":::
 
@@ -82,7 +82,7 @@ var azure = require('azure-storage');
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Azure 模組會讀取環境變數 `AZURE_STORAGE_ACCOUNT` `AZURE_STORAGE_ACCESS_KEY` ，或 `AZURE_STORAGE_CONNECTION_STRING` 取得連接到您的 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須在呼叫 **createQueueService**時指定帳戶資訊。
+Azure 模組會讀取環境變數 `AZURE_STORAGE_ACCOUNT` `AZURE_STORAGE_ACCESS_KEY` ，或 `AZURE_STORAGE_CONNECTION_STRING` 取得連接到您的 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須在呼叫 **createQueueService** 時指定帳戶資訊。
 
 下列程式碼會建立一個 **QueueService** 物件，其讓您能夠使用佇列。
 
@@ -160,13 +160,13 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-藉由呼叫 [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)，在佇列中就地變更訊息的內容。 
+藉由呼叫 [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)，在佇列中就地變更訊息的內容。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-藉由呼叫 **updateMessage**，在佇列中就地變更訊息的內容。 
+藉由呼叫 **updateMessage** ，在佇列中就地變更訊息的內容。
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -200,7 +200,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessage":::
 
-根據預設，訊息只會隱藏30秒。 30秒之後，其他用戶端就會看到它。 您可以在呼叫 **>receivemessages**時，藉由設定[visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout)來指定不同的值。
+根據預設，訊息只會隱藏30秒。 30秒之後，其他用戶端就會看到它。 您可以在呼叫 **>receivemessages** 時，藉由設定 [visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout)來指定不同的值。
 
 當佇列中沒有任何訊息時呼叫 **>receivemessages** 不會傳回錯誤。 但是，不會傳回任何訊息。
 
@@ -234,8 +234,8 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 
 自訂從佇列中擷取訊息的方法有兩種：
 
-* [numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) -取出訊息批次 (最多 32. ) 
-* [visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) -設定較長或較短的隱藏 timeout。
+- [numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) -取出訊息批次 (最多 32. ) 
+- [visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) -設定較長或較短的隱藏 timeout。
 
 下列範例會使用 **>receivemessages** 方法，在一個呼叫中取得五個訊息。 接著其會使用 `for` 迴圈處理每個訊息。 另外，對此方法傳回的所有訊息，將隱藏逾時設為五分鐘。
 
@@ -245,8 +245,8 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 
 自訂從佇列中擷取訊息的方法有兩種：
 
-* `options.numOfMessages` - 擷取一批訊息 (最多 32 個)。
-* `options.visibilityTimeout` - 設定較長或較短的隱藏逾時。
+- `options.numOfMessages` - 擷取一批訊息 (最多 32 個)。
+- `options.visibilityTimeout` - 設定較長或較短的隱藏逾時。
 
 下列範例使用 **getMessages** 方法，在一次呼叫中取得 15 個訊息。 接著其會使用 `for` 迴圈處理每個訊息。 另外，對此方法傳回的所有訊息，將隱藏逾時設為五分鐘。
 
@@ -279,7 +279,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-**GetQueueMetadata**方法會傳回有關佇列的中繼資料，包括佇列中等待的大約訊息數。
+**GetQueueMetadata** 方法會傳回有關佇列的中繼資料，包括佇列中等待的大約訊息數。
 
 ```javascript
 queueSvc.getQueueMetadata('myqueue', function(error, results, response){
@@ -295,13 +295,13 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-若要取出佇列清單，請呼叫 [QueueServiceClient. listQueues]()。 若要取得依特定前置詞篩選的清單，請在呼叫**listQueues**時設定[options. 前置](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix)詞。
+若要取出佇列清單，請呼叫 [QueueServiceClient. listQueues]()。 若要取得依特定前置詞篩選的清單，請在呼叫 **listQueues** 時設定 [options. 前置](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix)詞。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ListQueues":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-若要擷取佇列清單，請使用 **listQueuesSegmented**。 若要擷取依特定首碼篩選的清單，請使用 **listQueuesSegmentedWithPrefix**。
+若要擷取佇列清單，請使用 **listQueuesSegmented** 。 若要擷取依特定首碼篩選的清單，請使用 **listQueuesSegmentedWithPrefix** 。
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -319,7 +319,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-若要刪除佇列及其內含的所有訊息，請在**QueueClient**物件上呼叫[deleteQueue](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-)方法。
+若要刪除佇列及其內含的所有訊息，請在 **QueueClient** 物件上呼叫 [deleteQueue](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-)方法。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DeleteQueue":::
 
@@ -337,7 +337,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-若要清除佇列中的所有訊息，而不將其刪除，請呼叫 **clearMessages**。
+若要清除佇列中的所有訊息，而不將其刪除，請呼叫 **clearMessages** 。
 
 ---
 
@@ -347,8 +347,8 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
-* 造訪 [Azure 儲存體 Team Blog][Azure Storage Team Blog] 以瞭解最新功能
-* 造訪 GitHub 上的[適用于 JavaScript 的 Azure 儲存體用戶端程式庫][Azure Storage client library for JavaScript]
+- 造訪 [Azure 儲存體 Team Blog][Azure Storage Team Blog] 以瞭解最新功能
+- 造訪 GitHub 上的[適用于 JavaScript 的 Azure 儲存體用戶端程式庫][Azure Storage client library for JavaScript]
 
 [Azure Storage client library for JavaScript]: https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

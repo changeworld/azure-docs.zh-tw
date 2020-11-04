@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333459"
+ms.locfileid: "93347704"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>預覽：使用客戶管理的金鑰加密映像
 
@@ -23,7 +23,7 @@ ms.locfileid: "93333459"
 
 使用「客戶管理的金鑰」的伺服器端加密，會使用 Azure Key Vault。 您可以將[您的 RSA 金鑰](../key-vault/keys/hsm-protected-keys.md)匯入 Key Vault，或在 Azure Key Vault 中產生新的 RSA 金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文要求您在要將映射複寫到的每個區域中都已有磁片加密集。
 
@@ -134,7 +134,7 @@ New-AzGalleryImageVersion `
 
 ## <a name="cli"></a>CLI 
 
-在公開預覽中，您必須先註冊此功能。
+若為公開預覽版本，您必須先註冊該功能。 註冊需要大約30分鐘的時間。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SIGEncryption

@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88f1c88e721419bf944207b9c748b9250a25f428
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657477"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348061"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立會重複工作流程動作或處理陣列的迴圈
 
-若要處理邏輯應用程式中的陣列，您可以建立 ["Foreach" 迴圈](#foreach-loop)。 這個迴圈會對陣列中的每個項目重複執行一或多個動作。 如需 "Foreach" 迴圈可處理的陣列項目數上限，請參閱[限制和設定](../logic-apps/logic-apps-limits-and-config.md)。 
+若要處理邏輯應用程式中的陣列，您可以建立 ["Foreach" 迴圈](#foreach-loop)。 這個迴圈會對陣列中的每個項目重複執行一或多個動作。 如需 "Foreach" 迴圈可以處理的陣列專案數目限制，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
-若要重複執行動作直到條件符合或狀態改變，您可以建立 ["Until" 迴圈](#until-loop)。 邏輯應用程式會先執行迴圈內的所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 如需一個邏輯應用程式回合中可擁有的 "Until" 迴圈數上限，請參閱[限制和設定](../logic-apps/logic-apps-limits-and-config.md)。 
+若要重複執行動作直到條件符合或狀態改變，您可以建立 ["Until" 迴圈](#until-loop)。 邏輯應用程式會先執行迴圈內的所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 若要讓邏輯應用程式執行的 "Until" 迴圈數目有所限制，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 > [!TIP]
-> 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用 [**SplitOn** 觸發屬性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)將該陣列「解除批次」。 
+> 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用 [**SplitOn** 觸發屬性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)將該陣列「解除批次」。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -32,7 +32,9 @@ ms.locfileid: "89657477"
 
 ## <a name="foreach-loop"></a>"Foreach" 迴圈
 
-"Foreach" 迴圈會對每個陣列項目重複執行一或多個動作，且只能在陣列上運作。 以下是使用 "Foreach" 迴圈時的一些考量：
+"Foreach" 迴圈會在每個陣列專案上重複一或多個動作，且僅適用于陣列。 以下是使用 "Foreach" 迴圈時的一些考量：
+
+* "Foreach" 迴圈可以處理有限數目的陣列專案。 如需此限制，請參閱 [平行存取、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 * 依預設，"Foreach" 迴圈中的反復專案會在相同時間執行，或平行執行。 此行為不同于 [Power Automate 會套用 **至每個** 迴圈](/power-automate/apply-to-each) ，其中反覆運算一次執行一次或依序執行。 不過，您可以 [設定連續的 "Foreach" 迴圈反覆運算](#sequential-foreach-loop)。 例如，如果您想要使用 [Delay 動作](../connectors/connectors-native-delay.md)暫停 "Foreach" 迴圈中的下一個反復專案，您需要將迴圈設定為循序執行。
 
@@ -50,15 +52,15 @@ ms.locfileid: "89657477"
 2. 在 RSS 觸發程序和傳送電子郵件動作之間，新增 "Foreach" 迴圈。 
 
    1. 若要在步驟之間新增迴圈，請將滑鼠指標移至這些步驟之間的箭號上。 
-   選擇所顯示的**加號** ( **+** )，然後選取 [新增動作]。
+   選擇所顯示的 **加號** ( **+** )，然後選取 [新增動作]。
 
       ![選取 [新增動作]](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. 在搜尋方塊下方，選擇 [全部]。 在搜尋方塊中，輸入 "for each" 作為篩選條件。 從 [動作] 清單中，選取此動作：**For each - 控制**
+   1. 在搜尋方塊下方，選擇 [全部]。 在搜尋方塊中，輸入 "for each" 作為篩選條件。 從 [動作] 清單中，選取此動作： **For each - 控制**
 
       ![新增 "For each" 迴圈](media/logic-apps-control-flow-loops/select-for-each.png)
 
-3. 現在建置迴圈。 當**新增動態內容**清單出現後，在 [從上一個步驟中選取輸出] 下，選取 [摘要連結] 陣列，這是來自 RSS 觸發程序的輸出。 
+3. 現在建置迴圈。 當 **新增動態內容** 清單出現後，在 [從上一個步驟中選取輸出] 下，選取 [摘要連結] 陣列，這是來自 RSS 觸發程序的輸出。 
 
    ![從動態內容清單選取](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
 
@@ -122,11 +124,11 @@ ms.locfileid: "89657477"
 
 根據預設，"Foreach" 迴圈中的循環會平行執行。 若要以循序方式執行每個循環，請設定迴圈的 [循序] 選項。 如果您在預期要有可預測結果的迴圈內部具有巢狀迴圈或變數，"Foreach" 迴圈就必須循序執行。 
 
-1. 在迴圈的右上角，選擇**省略符號** ( **...** ) > [設定]。
+1. 在迴圈的右上角，選擇 **省略符號** ( **...** ) > [設定]。
 
    ![在 "Foreach" 迴圈上，選擇 [...] > [設定]](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. 在 [並行控制] 底下，將 [並行控制] 設定改為 [開啟]。 將 [平行處理原則的程度] 滑桿移至 **1**，然後選擇 [完成]。
+1. 在 [並行控制] 底下，將 [並行控制] 設定改為 [開啟]。 將 [平行處理原則的程度] 滑桿移至 **1** ，然後選擇 [完成]。
 
    ![開啟並行控制](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
@@ -150,7 +152,7 @@ ms.locfileid: "89657477"
 
 ## <a name="until-loop"></a>"Until" 迴圈
   
-若要執行並重複動作直到條件符合或狀態改變，請將這些動作放入 "Until" 迴圈。 邏輯應用程式會先執行迴圈內的任何和所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。
+若要執行並重複動作直到條件符合或狀態改變，請將這些動作放入 "Until" 迴圈。 邏輯應用程式會先執行迴圈內的任何和所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 若要讓邏輯應用程式執行的 "Until" 迴圈數目有所限制，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 以下是可以使用 "Until" 迴圈的一些常見案例：
 
@@ -165,7 +167,7 @@ ms.locfileid: "89657477"
 > [請參考這裡的連接器清單](/connectors/)。 如果您使用其他電子郵件帳戶，整體步驟將維持不變，但您的 UI 外觀可能會略有不同。 
 
 1. 建立空白邏輯應用程式。 在邏輯應用程式設計工具中的搜尋方塊底下，選擇 [全部]。 搜尋「週期」。 
-   從觸發程序清單中，選取此觸發程序：**週期 - 排程**
+   從觸發程序清單中，選取此觸發程序： **週期 - 排程**
 
    ![新增「週期 - 排程」觸發程序](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -181,7 +183,7 @@ ms.locfileid: "89657477"
    ||| 
 
 1. 在觸發程序下方，選擇 [新增步驟]。 
-   搜尋「變數」，然後選取此動作：**初始化變數 - 變數**
+   搜尋「變數」，然後選取此動作： **初始化變數 - 變數**
 
    ![新增「初始化變數 - 變數」動作](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -198,22 +200,22 @@ ms.locfileid: "89657477"
 
 1. 在 [初始化變數] 動作下，選擇 [新增步驟]。 
 
-1. 在搜尋方塊下方，選擇 [全部]。 搜尋 "Until"，然後選取此動作：**Until - 控制**
+1. 在搜尋方塊下方，選擇 [全部]。 搜尋 "Until"，然後選取此動作： **Until - 控制**
 
    ![新增 "Until" 迴圈](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. 選取**限制**變數和**等於**運算子，可建置迴圈的結束條件。 
+1. 選取 **限制** 變數和 **等於** 運算子，可建置迴圈的結束條件。 
    輸入 **10** 作為比較值。
 
    ![建置停止迴圈的結束條件](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
 1. 在迴圈中，選擇 [新增動作]。 
 
-1. 在搜尋方塊下方，選擇 [全部]。 搜尋「變數」，然後選取此動作：**遞增變數 - 變數**
+1. 在搜尋方塊下方，選擇 [全部]。 搜尋「變數」，然後選取此動作： **遞增變數 - 變數**
 
    ![新增遞增變數的動作](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-1. 針對 [名稱]，選取**限制**變數。 針對 [值]，輸入 "1"。 
+1. 針對 [名稱]，選取 **限制** 變數。 針對 [值]，輸入 "1"。 
 
      ![以 1 遞增 [限制]](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
@@ -226,14 +228,14 @@ ms.locfileid: "89657477"
 
 1. 如果出現提示，請登入您的電子郵件帳戶。
 
-1. 設定電子郵件動作的屬性。 在主旨上新增**限制**變數。 這樣一來，您可以確認變數的目前值符合您指定的條件，例如：
+1. 設定電子郵件動作的屬性。 在主旨上新增 **限制** 變數。 這樣一來，您可以確認變數的目前值符合您指定的條件，例如：
 
       ![設定電子郵件內容](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
       | 屬性 | 值 | 描述 |
       | -------- | ----- | ----------- | 
       | **若要** | *\<email-address\@domain>* | 收件者的電子郵件地址。 若要進行測試，請使用自己的電子郵件地址。 | 
-      | **主旨** | [限制] 目前的值是**限制** | 指定電子郵件主旨。 在此範例中，請確定您已包含**限制**變數。 | 
+      | **主旨** | [限制] 目前的值是 **限制** | 指定電子郵件主旨。 在此範例中，請確定您已包含 **限制** 變數。 | 
       | **本文** | <*email-content*> | 指定您想要傳送的電子郵件訊息內容。 針對此範例，輸入任何您喜歡的文字。 | 
       |||| 
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: d2a9063a202ba542279efd8017d282fe0aa78d42
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c578febf088148e9e0496d87b715c953c5bd9d36
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348367"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Azure 串流分析的服務匯流排主題輸出
 
@@ -61,11 +61,11 @@ ms.locfileid: "93129859"
 
 下圖是使用 [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)在 EventHub 中檢查的預期輸出訊息屬性。
 
-:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="屬性資料行":::
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="事件自訂屬性":::
 
 ## <a name="system-properties"></a>系統屬性
 
-您可以將查詢資料行當做[系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加至外寄服務匯流排佇列或主題訊息。 這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)。
+您可以將查詢資料行當做[系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)附加至外寄服務匯流排佇列或主題訊息。 這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)。
 支援這些系統屬性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 
 這些資料行的字串值會剖析為對應的系統屬性值類型，而任何剖析失敗都會被視為資料錯誤。

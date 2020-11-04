@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122618"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346106"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
 
@@ -91,7 +91,7 @@ ms.locfileid: "93122618"
 2. 作業會提取目的地資料表的架構。
 3. 作業會根據目的地資料表架構來驗證資料行名稱和類型。
 4. 此作業會從批次中的輸出記錄準備記憶體中的資料表。
-5. 作業會使用 BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1)將資料表寫入至 SQL。
+5. 作業會使用 BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver)將資料表寫入至 SQL。
 
 在這些步驟中，SQL 輸出可能會遇到下列類型的錯誤：
 

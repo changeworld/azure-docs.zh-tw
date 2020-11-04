@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: 40de52773d9f205e3133543f689c9d381776d8ee
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3599052e49b91747580bf506f06ebfb8d2e34423
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130420"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346803"
 ---
 # <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應項目
 
@@ -38,8 +38,8 @@ ms.locfileid: "93130420"
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理容器映像：
 
-- [Azure PowerShell](/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
-- [Azure CLI](/cli/azure/?view=azure-cli-latest)。
+- [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure/)。
 
 建議您將這些工具新增至開發環境：
 

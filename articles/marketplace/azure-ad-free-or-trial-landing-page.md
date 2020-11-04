@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: dfa5d77077b8827bed1cbd8c7a46a5dbf361f139
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 699271316eccec1244db886ed2296f87c52f91ae
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125711"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348350"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>在商業市場中建立免費或試用 SaaS 供應專案的登陸頁面
 
@@ -95,7 +95,7 @@ Microsoft 已提供數個範例應用程式，這些應用程式會使用已啟�
 | surname | 使用者的姓氏。 |
 |||
 
-您可以選取其他屬性（例如使用者的公司名稱或使用者位置 (country) ），以納入要求中。 如需詳細資訊，請參閱 [使用者資源類型的屬性](/graph/api/resources/user?view=graph-rest-1.0#properties)。
+您可以選取其他屬性（例如使用者的公司名稱或使用者位置 (country) ），以納入要求中。 如需詳細資訊，請參閱 [使用者資源類型的屬性](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties)。
 
 大部分向 Azure AD 註冊的應用程式會授與委派的許可權，以讀取其公司 Azure AD 租使用者中的使用者資訊。 針對該資訊 Microsoft Graph 的任何要求都必須伴隨存取權杖作為驗證。 產生存取權杖的特定步驟將取決於您所使用的技術堆疊，但範例程式碼將包含範例。 如需詳細資訊，請參閱 [代表使用者取得存取權](/graph/auth-v2-user)。
 
