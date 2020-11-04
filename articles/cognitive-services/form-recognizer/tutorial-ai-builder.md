@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003354"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912322"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>教學課程：使用 AI Builder 建立表單處理應用程式
 
-[AI Builder](https://docs.microsoft.com/ai-builder/overview) 是一項 Power Platform 功能，可讓您將流程自動化並預測結果，以提升業務效能。 您可以使用 AI Builder 表單處理來建立 AI 模型，以識別並擷來自表單文件的機碼值組和資料表資料。
+[AI Builder](/ai-builder/overview) 是一項 Power Platform 功能，可讓您將流程自動化並預測結果，以提升業務效能。 您可以使用 AI Builder 表單處理來建立 AI 模型，以識別並擷來自表單文件的機碼值組和資料表資料。
 
 > [!NOTE]
-> 此專案也可作為 [Microsoft Learn 模組](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/)。
+> 此專案也可作為 [Microsoft Learn 模組](/learn/modules/get-started-with-form-processing/)。
 
 在本教學課程中，您會了解如何：
 
@@ -32,8 +32,8 @@ ms.locfileid: "88003354"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 一組至少有五種相同類型的表單，可用於訓練/測試資料。 請參閱[為建置訓練資料集](./build-training-data-set.md) (機器翻譯)，以獲得產生訓練資料集的提示和選項。 在本快速入門中，您可以使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2128080)中 **Train** 資料夾底下的檔案。
-* Power Apps 或 Power Automate 授權 - 請參閱[授權指南](https://go.microsoft.com/fwlink/?linkid=2085130)。 授權必須包含 [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)。
+* 一組至少有五種相同類型的表單，可用於訓練/測試資料。 請參閱[為建置訓練資料集](./build-training-data-set.md) (機器翻譯)，以獲得產生訓練資料集的提示和選項。 在本快速入門中，您可以使用 [範例資料集](https://go.microsoft.com/fwlink/?linkid=2128080)中 **Train** 資料夾底下的檔案。
+* Power Apps 或 Power Automate 授權 - 請參閱[授權指南](https://go.microsoft.com/fwlink/?linkid=2085130)。 授權必須包含 [Common Data Service](https://powerplatform.microsoft.com/common-data-service/)。
 * AI Builder [附加元件或試用](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)。
 
 
@@ -69,7 +69,7 @@ ms.locfileid: "88003354"
 > 上傳這些文件後，仍然可以移除部分文件或上傳其他文件。
 
 > [!div class="mx-imgBorder"]
-> ![新增文件網頁](./media/tutorial-ai-builder/add-documents-page.png)
+> ![螢幕擷取畫面：醒目提示 [新增文件] 按鈕。](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>分析您的文件
 
@@ -89,11 +89,11 @@ ms.locfileid: "88003354"
 
     按一下已偵測欄位時，會出現下列資訊：
 
-    - **欄位名稱**：偵測到之欄位的標籤名稱。
-    - **欄位值**：偵測到之欄位的值。
+    - **欄位名稱** ：偵測到之欄位的標籤名稱。
+    - **欄位值** ：偵測到之欄位的值。
 
 > [!div class="mx-imgBorder"]
-> ![新增文件頁面](./media/tutorial-ai-builder/select-fields-page.png)
+> ![標記頁面](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>標記未偵測到的欄位
 
@@ -104,7 +104,7 @@ ms.locfileid: "88003354"
 1. 選取 [下一個]，以檢查您選取的表單欄位。 如果一切看起來都沒問題，請選取 [定型] 以將您的模型定型。
 
     > [!div class="mx-imgBorder"]
-    > ![新增文件頁面](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![定型頁面](./media/tutorial-ai-builder/summary-train-page.png)
 1. 訓練完成時，請選取 [訓練完成] 畫面中的 [移至詳細資料頁面]。
 ## <a name="quick-test-your-model"></a>快速測試您的模型
 
@@ -124,16 +124,16 @@ ms.locfileid: "88003354"
 
 ## <a name="publish-your-model"></a>發佈您的模型
 
-如果您對模型感到滿意，請選取 [發佈] 加以發佈。 當發佈完成時，您的模型會進階為**已發佈**並可供使用。
+如果您對模型感到滿意，請選取 [發佈] 加以發佈。 當發佈完成時，您的模型會進階為 **已發佈** 並可供使用。
 
 > [!div class="mx-imgBorder"]
-> ![新增文件頁面](./media/tutorial-ai-builder/model-page.png)
+> ![發佈模型頁面](./media/tutorial-ai-builder/model-page.png)
 
-發佈表單處理模型後，您可以在 [Power Apps 畫布應用程式](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)或 [Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow) 中使用。
+發佈表單處理模型後，您可以在 [Power Apps 畫布應用程式](/ai-builder/form-processor-component-in-powerapps)或 [Power Automate](/ai-builder/form-processing-model-in-flow) 中使用。
 
 ## <a name="next-steps"></a>後續步驟
 
 請遵循 AI Builder 文件，以了解如何使用表單處理模型。
 
-* [在 Power Apps 中使用表單處理器元件](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [在 Power Automate 中使用表單處理模型](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [在 Power Apps 中使用表單處理器元件](/ai-builder/form-processor-component-in-powerapps)
+* [在 Power Automate 中使用表單處理模型](/ai-builder/form-processing-model-in-flow)
