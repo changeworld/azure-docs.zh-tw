@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: aad1be52ae05573d565d960d914dafdf824a4de9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 44c1e55d60fb35ba510d99535c50c7919b29253e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886493"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918665"
 ---
 開始使用適用於 .NET 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -22,10 +22,10 @@ ms.locfileid: "92886493"
 
 * [偵測影像中的臉部](#detect-faces-in-an-image)
 * [尋找類似臉部](#find-similar-faces)
-* [建立並訓練人員群組](#create-and-train-a-person-group)
+* [建立人員群組](#create-a-person-group)
 * [識別臉部](#identify-a-face)
 
-[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[參考文件](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [範例](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -96,7 +96,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 > [!IMPORTANT]
 > 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 [產品名稱] 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
 >
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_creds)]
 
@@ -110,12 +110,12 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 |名稱|描述|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | 此類別代表可使用臉部服務的授權，需要有此授權才能執行所有臉部功能。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 |
-|[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|此類別會處理可使用人臉來執行的基本偵測和辨識工作。 |
-|[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|此類別代表從影像中單一臉部所偵測到的所有資料。 您可以用此資料來取出該臉部的詳細資訊。|
-|[FaceListOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|此類別會管理儲存於雲端的 **FaceList** 建構，而這些建構會儲存一組混合的臉部。 |
-|[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| 此類別會管理儲存於雲端的 **Person** 建構，而這些建構會儲存一組屬於單一人員的臉部。|
-|[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| 此類別會管理儲存於雲端的 **PersonGroup** 建構，而這些建構會儲存一組混合的 **Person** 物件。 |
+|[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | 此類別代表可使用臉部服務的授權，需要有此授權才能執行所有臉部功能。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 |
+|[FaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|此類別會處理可使用人臉來執行的基本偵測和辨識工作。 |
+|[DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|此類別代表從影像中單一臉部所偵測到的所有資料。 您可以用此資料來取出該臉部的詳細資訊。|
+|[FaceListOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|此類別會管理儲存於雲端的 **FaceList** 建構，而這些建構會儲存一組混合的臉部。 |
+|[PersonGroupPersonExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| 此類別會管理儲存於雲端的 **Person** 建構，而這些建構會儲存一組屬於單一人員的臉部。|
+|[PersonGroupOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| 此類別會管理儲存於雲端的 **PersonGroup** 建構，而這些建構會儲存一組混合的 **Person** 物件。 |
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -124,12 +124,12 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 * [驗證用戶端](#authenticate-the-client)
 * [偵測影像中的臉部](#detect-faces-in-an-image)
 * [尋找類似臉部](#find-similar-faces)
-* [建立並訓練人員群組](#create-and-train-a-person-group)
+* [建立人員群組](#create-a-person-group)
 * [識別臉部](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-在新方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** 物件，並使用該物件與您的端點建立 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 物件。
+在新方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** 物件，並使用該物件與您的端點建立 **[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 物件。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_auth)]
 
@@ -147,16 +147,16 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 ### <a name="get-detected-face-objects"></a>取得偵測到的臉部物件
 
-建立新方法來偵測臉部。 `DetectFaceExtract` 方法會處理指定 URL 上的三個影像，並在程式記憶體中建立 **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** 物件的清單。 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 值的清單會指定要擷取的特徵。 
+建立新方法來偵測臉部。 `DetectFaceExtract` 方法會處理指定 URL 上的三個影像，並在程式記憶體中建立 **[DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** 物件的清單。 **[FaceAttributeType](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 值的清單會指定要擷取的特徵。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 > [!TIP]
-> 您也可以偵測本機影像中的臉部。 請參閱 [IFaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) 方法，例如 **DetectWithStreamAsync** 。
+> 您也可以偵測本機影像中的臉部。 請參閱 [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) 方法，例如 **DetectWithStreamAsync** 。
 
 ### <a name="display-detected-face-data"></a>顯示偵測到的臉部資料
 
-`DetectFaceExtract` 方法的其餘部分會剖析每個偵測到的臉部，並列印屬性資料。 每個屬性必須在原始的臉部偵測 API 呼叫中個別指定 (在 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 清單中)。 下列程式碼會處理每個屬性，但您可能只需要使用一個或幾個屬性。
+`DetectFaceExtract` 方法的其餘部分會剖析每個偵測到的臉部，並列印屬性資料。 每個屬性必須在原始的臉部偵測 API 呼叫中個別指定 (在 **[FaceAttributeType](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 清單中)。 下列程式碼會處理每個屬性，但您可能只需要使用一個或幾個屬性。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
@@ -205,7 +205,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 > [!TIP]
-> 您也可以從本機影像建立 **PersonGroup** 。 請參閱 [IPersonGroupPerson](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) 方法，例如 **AddFaceFromStreamAsync** 。
+> 您也可以從本機影像建立 **PersonGroup** 。 請參閱 [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) 方法，例如 **AddFaceFromStreamAsync** 。
 
 ### <a name="train-the-persongroup"></a>訓練 PersonGroup
 
@@ -261,7 +261,7 @@ dotnet run
 在本快速入門中，您已了解如何使用適用於 .NET 的臉部用戶端程式庫來執行基本臉部辨識工作。 接下來，請瀏覽參考文件來深入了解此程式庫。
 
 > [!div class="nextstepaction"]
-> [臉部 API 參考 (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+> [臉部 API 參考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [什麼是臉部辨識服務？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs) 上找到。

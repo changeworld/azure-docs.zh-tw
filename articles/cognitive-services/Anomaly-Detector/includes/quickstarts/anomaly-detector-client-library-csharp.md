@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: 22732ae10fb328839c47194e0a33faf18514ff45
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 14b361ae2163636864b37d2a063ad10886a9e3c8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018430"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93029425"
 ---
 開始使用適用於 .NET 的 Anomaly Detector 用戶端程式庫。 請依照下列步驟，開始使用服務提供的演算法安裝套件。 Anomaly Detector 服務可藉由自動對時間序列資料使用最適合的模型，而讓您找出其中的異常狀況，不論是什麼產業、情境或資料量都沒問題。
 
@@ -39,7 +39,7 @@ ms.locfileid: "92018430"
 
 ### <a name="create-a-new-net-core-application"></a>建立新的 .NET Core 應用程式
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `anomaly-detector-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" 專案，內含單一 C# 原始程式檔：*Program.cs*。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `anomaly-detector-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" 專案，內含單一 C# 原始程式檔： *Program.cs* 。
 
 ```dotnetcli
 dotnet new console -n anomaly-detector-quickstart
@@ -66,7 +66,7 @@ Build succeeded.
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的 Anomaly Detector 用戶端程式庫：
 
 ```dotnetcli
-dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
+dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector
 ```
 
 從專案目錄中中開啟 program.cs  檔案，並使用 `directives` 新增下列內容：

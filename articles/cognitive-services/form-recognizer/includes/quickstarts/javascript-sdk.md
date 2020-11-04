@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 28fb3cb02d978c0a64884771727f33d01d8a4ceb
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c2a49e10f4407c59a8e4e2bfbb78d889560c7136
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897766"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918672"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
 
-[參考文件](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [套件 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
+[參考文件](../../index.yml) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [套件 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -94,7 +94,7 @@ npm install @azure/ai-form-recognizer
 * 將自訂模型從一個表單辨識器資源複製到另一個。
 
 > [!NOTE]
-> 您也可以使用圖形化使用者介面 (例如[表單辨識器標籤工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)) 將模型定型。
+> 您也可以使用圖形化使用者介面 (例如[表單辨識器標籤工具](../../quickstarts/label-tool.md)) 將模型定型。
 
 
 ## <a name="code-examples"></a>程式碼範例

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: d84fd9e66c03fd92f3824b685bc550c70d4a6340
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886491"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918666"
 ---
 開始使用適用於 Go 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -34,7 +34,7 @@ ms.locfileid: "92886491"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 取得金鑰和端點後，請為名稱分別是 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+* 取得金鑰和端點後，請為名稱分別是 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰及端點[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 ## <a name="setting-up"></a>設定
 
@@ -112,7 +112,7 @@ touch sample-app.go
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
 > [!NOTE] 
-> 本快速入門假設您已分別針對名為 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的臉部金鑰和端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+> 本快速入門假設您已分別針對名為 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的臉部金鑰和端點[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 建立 **main** 函式，並在其中新增下列程式碼，以使用您的端點和金鑰具現化用戶端。 使用金鑰建立 **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** 物件，並使用該物件搭配您的端點來建立 **[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** 物件。 此程式碼也會將內容物件具現化，其為建立用戶端物件所需的物件。 此外，也會定義遠端位置，在其中可找到本快速入門中的一些範例影像。
 

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 8c0aef1817581e2b09297d8807676cf0049e1d3e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5766eb821800568b567350e1360ca4cf5403be6d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169094"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135646"
 ---
 在本快速入門中，您將了解如何使用適用於 Linux 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 目前僅支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。
 
@@ -100,7 +100,7 @@ ms.locfileid: "92169094"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.13.0</version>
+             <version>1.14.0</version>
         </dependency>
     </dependencies>
    ```

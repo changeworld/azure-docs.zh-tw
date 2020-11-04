@@ -11,12 +11,12 @@ ms.date: 9/17/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 臉部辨識, 臉部辨識軟體, 臉部分析, 臉部比對, 臉部辨識應用程式, 依影像進行臉部搜尋, 臉部辨識搜尋
-ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262479"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911438"
 ---
 # <a name="what-is-the-azure-face-service"></a>什麼是 Azure 臉部辨識服務？
 
@@ -34,7 +34,7 @@ Azure 臉部辨識服務會提供 AI 演算法，可偵測、辨識和分析影�
 臉部辨識服務可偵測影像中的人臉，並傳回其位置的矩形座標。 臉部偵測也可以擷取一連串與臉部相關的屬性，例如頭部姿勢、性別、年齡、表情、臉部汗毛和眼鏡。
 
 > [!NOTE]
-> [電腦視覺服務](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)也提供臉部偵測功能。 不過，如果想要使用臉部資料執行進一步的作業，您應該改用此服務。
+> [電腦視覺服務](../computer-vision/overview.md)也提供臉部偵測功能。 不過，如果想要使用臉部資料執行進一步的作業，您應該改用此服務。
 
 ![女性與男性影像，其臉部周圍繪有矩形，並顯示其年齡和性別](./Images/Face.detection.jpg)
 
@@ -48,7 +48,7 @@ Azure 臉部辨識服務會提供 AI 演算法，可偵測、辨識和分析影�
 
 「尋找類似項目 API」會在目標臉部和一組候選臉部之間進行臉部比對，找出看起來與目標臉部相似的一小組臉部。 這適用於依影像執行臉部搜尋。 
 
-目前支援 **matchPerson** 和 **matchFace** 兩種工作模式。 **matchPerson** 模式會在篩選出相同人員後，使用[驗證 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 傳回類似的臉部。 **matchFace** 模式會忽略相同人員的篩選條件。 其會傳回不一定屬於同一人的類似候選臉部清單。
+目前支援 **matchPerson** 和 **matchFace** 兩種工作模式。 **matchPerson** 模式會在篩選出相同人員後，使用 [驗證 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 傳回類似的臉部。 **matchFace** 模式會忽略相同人員的篩選條件。 其會傳回不一定屬於同一人的類似候選臉部清單。
 
 下列範例顯示目標臉部：
 
@@ -58,7 +58,7 @@ Azure 臉部辨識服務會提供 AI 演算法，可偵測、辨識和分析影�
 
 ![五個面帶笑容人員的影像。 影像 a 和 b 顯示同一人。](./Images/FaceFindSimilar.Candidates.jpg)
 
-為了尋找四個相似的臉部，**matchPerson** 模式會傳回 a 和 b，因為其顯示的是與目標臉部相同的人員。 **matchFace** 模式會傳回 a、b、c 和 d 四個候選項目，不過某些項目不是與目標相同的人員，或是相似度較低。 如需詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[尋找類似項目 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 參考文件。
+為了尋找四個相似的臉部， **matchPerson** 模式會傳回 a 和 b，因為其顯示的是與目標臉部相同的人員。 **matchFace** 模式會傳回 a、b、c 和 d 四個候選項目，不過某些項目不是與目標相同的人員，或是相似度較低。 如需詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[尋找類似項目 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 參考文件。
 
 ## <a name="face-grouping"></a>臉部分組
 

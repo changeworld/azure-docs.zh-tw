@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 164b3f9e0426db1f36360fee8f836216d4cad86a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897796"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918669"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
 
-[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[參考文件](/dotnet/api/overview/azure/ai.formrecognizer-readme) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或目前版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
@@ -85,7 +85,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!IMPORTANT]
 > 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的表單辨識器資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
 >
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
@@ -118,7 +118,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 請參閱[將模型定型](#train-a-custom-model)和[管理自訂模型](#manage-custom-models)的範例。
 
 > [!NOTE]
-> 您也可以使用圖形化使用者介面 (例如[表單辨識器標籤工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)) 將模型定型。
+> 您也可以使用圖形化使用者介面 (例如[表單辨識器標籤工具](../../quickstarts/label-tool.md)) 將模型定型。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -139,7 +139,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!IMPORTANT]
 > 從 Azure 入口網站取得您的金鑰和端點。 如果您在 [必要條件] 區段中建立的表單辨識器資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
 >
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure金鑰保存庫](../../../../key-vault/general/overview.md)。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
 

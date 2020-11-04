@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0fae0172467bb4499c2710c49553d9134a32fa9b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169082"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136119"
 ---
 在本快速入門中，您將了解如何使用適用於 Windows 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 針對對話轉譯，只支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 針對其他語音，支援使用提供麥克風陣列幾何的線性麥克風陣列。
 
@@ -74,7 +74,7 @@ ms.locfileid: "92169082"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.13.0</version>
+             <version>1.14.0</version>
         </dependency>
     </dependencies>
    ```

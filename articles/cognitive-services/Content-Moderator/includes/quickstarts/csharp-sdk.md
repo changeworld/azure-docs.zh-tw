@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 2db80cdba778d868d90d5278005791257acb0ed3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548229"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918676"
 ---
 開始使用適用於 .NET 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 NuGet 套件，並試用基本工作的程式碼範例。 
 
@@ -28,7 +28,7 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 * [仲裁影像](#moderate-images)
 * [建立審核](#create-a-review)
 
-[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [範例](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
+[參考文件](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [範例](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -96,7 +96,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 > [!IMPORTANT]
 > 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 Content Moderator 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
 >
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
 
@@ -118,10 +118,10 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 
 |Name|說明|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|所有 Content Moderator 功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
-|[ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|此類別提供對成人內容、個人資訊或人臉的影像進行分析的功能。|
-|[TextModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|此類別提供對語言、粗話、錯誤和個人資訊的文字進行分析的功能。|
-|[審查](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|此類別提供審核 API 的功能，包括建立作業、自訂工作流程和人工審核的方法。|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|所有 Content Moderator 功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
+|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|此類別提供對成人內容、個人資訊或人臉的影像進行分析的功能。|
+|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|此類別提供對語言、粗話、錯誤和個人資訊的文字進行分析的功能。|
+|[審查](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|此類別提供審核 API 的功能，包括建立作業、自訂工作流程和人工審核的方法。|
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -158,10 +158,10 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 ## <a name="moderate-images"></a>仲裁影像
 
-下列程式碼會使用 Content Moderator 用戶端以及 [ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) 物件，來分析遠端影像中是否有成人和猥褻內容。
+下列程式碼會使用 Content Moderator 用戶端以及 [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) 物件，來分析遠端影像中是否有成人和猥褻內容。
 
 > [!NOTE]
-> 您也可以分析本機影像的內容。 如需適用於本機影像的方法和作業，請參閱[參考文件](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)。
+> 您也可以分析本機影像的內容。 如需適用於本機影像的方法和作業，請參閱[參考文件](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)。
 
 ### <a name="get-sample-images"></a>取得範例影像
 
@@ -204,7 +204,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 您可以使用 Content Moderator .NET 用戶端程式庫將內容送至[審核工具](https://contentmoderator.cognitive.microsoft.com)，讓人力仲裁者加以審核。 若要深入了解審核工具，請參閱[審核工具概念指南](../../review-tool-user-guide/human-in-the-loop.md)。
 
-本節中的方法會使用 [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) 類別建立審核、擷取其識別碼，並在透過審核工具的 Web 入口網站接收人工輸入之後，檢查其詳細資料。 它會將這項資訊完整記錄在輸出文字檔中。 
+本節中的方法會使用 [Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) 類別建立審核、擷取其識別碼，並在透過審核工具的 Web 入口網站接收人工輸入之後，檢查其詳細資料。 它會將這項資訊完整記錄在輸出文字檔中。 
 
 ### <a name="get-sample-images"></a>取得範例影像
 
@@ -248,7 +248,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="get-review-details"></a>取得審核詳細資料
 
-下列程式碼會使程式等候使用者輸入。 當您在執行階段進入此步驟時，您可以自行移至[審核工具](https://contentmoderator.cognitive.microsoft.com)、確認範例影像已上傳，並與其互動。 如需如何與審核互動的詳細資訊，請參閱[審核操作指南](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)。 完成作業後，您可以按任意鍵以繼續執行程式，並擷取審核程序的結果。
+下列程式碼會使程式等候使用者輸入。 當您在執行階段進入此步驟時，您可以自行移至[審核工具](https://contentmoderator.cognitive.microsoft.com)、確認範例影像已上傳，並與其互動。 如需如何與審核互動的詳細資訊，請參閱[審核操作指南](../../review-tool-user-guide/review-moderated-images.md)。 完成作業後，您可以按任意鍵以繼續執行程式，並擷取審核程序的結果。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_results)]
 
@@ -296,7 +296,7 @@ dotnet run
 在本快速入門中，您已了解如何使用 Content Moderator .NET 程式庫來執行仲裁工作。 接下來請閱讀概念性指南，以深入了解影像或其他媒體的仲裁。
 
 > [!div class="nextstepaction"]
-> [影像仲裁概念](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+> [影像仲裁概念](../../image-moderation-api.md)
 
 * [什麼是 Azure Content Moderator？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs) 上找到。

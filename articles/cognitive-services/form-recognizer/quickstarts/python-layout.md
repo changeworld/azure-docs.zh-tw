@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 72420019ead1ae47054ae62197d8cc310063a6b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5ea5e352084e379632b88194fd13011879041fd3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969767"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899448"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 與 Python 來擷取文字和版面配置資訊
 
@@ -27,7 +27,7 @@ ms.locfileid: "91969767"
 
 若要完成此快速入門，您必須：
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
-- 表單文件。 您可以從本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)下載影像 (下載 *sample_data .zip* 並將其解壓縮)。
+- 表單文件。 您可以從本快速入門的 [範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)下載影像 (下載 *sample_data .zip* 並將其解壓縮)。
 
 > [!NOTE]
 > 本快速入門使用本機儲存的文件。 如需了解如何使用 URL 存取的遠端文件，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync) (英文)。
@@ -61,7 +61,8 @@ ms.locfileid: "91969767"
     
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        # Change Content-Type as appropriate
+        'Content-Type': 'application/pdf',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -94,7 +95,8 @@ ms.locfileid: "91969767"
     
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        # Change Content-Type as appropriate
+        'Content-Type': 'application/pdf',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -138,7 +140,7 @@ https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b07
 
 ## <a name="get-the-layout-results"></a>取得版面配置結果
 
-呼叫**分析版面配置** API 之後，您可以呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 此資料會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫 **分析版面配置** API 之後，您可以呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 此資料會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10
@@ -172,7 +174,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>檢查回應
 
-指令碼會將回應輸出到主控台，直到**分析版面配置**作業完成。 接著，指令碼會將已擷取的資料以 JSON 格式輸出。 `"readResults"` 節點包含每一行文字，以及各自的周框方塊在頁面上的位置。 `"selectionMarks"` 節點 (在 v2.1 預覽中) 會顯示每個選取標記 (核取方塊、選項標記)，以及其狀態是「已選取」還是「未選取」。 `"pageResults"` 欄位會顯示資料表內的每一段文字，且各自會有其資料列資料行座標。
+指令碼會將回應輸出到主控台，直到 **分析版面配置** 作業完成。 接著，指令碼會將已擷取的資料以 JSON 格式輸出。 `"readResults"` 節點包含每一行文字，以及各自的周框方塊在頁面上的位置。 `"selectionMarks"` 節點 (在 v2.1 預覽中) 會顯示每個選取標記 (核取方塊、選項標記)，以及其狀態是「已選取」還是「未選取」。 `"pageResults"` 欄位會顯示資料表內的每一段文字，且各自會有其資料列資料行座標。
 
 請參閱下列發票影像和其對應的 JSON 輸出。 為了簡單起見，我們已將輸出內容縮短。
 

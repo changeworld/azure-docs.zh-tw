@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 2c20bce35a3b6effcdeea2b82d903db0895d42b2
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1a14c6d5d96726033694d8fc88cc4b6eead87221
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495955"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136248"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -22,6 +22,8 @@ ms.locfileid: "92495955"
 
 這會將 .ZIP 資料夾以 Azure_Digital_Twins_end_to_end_samples.zip 的形式下載至您的電腦。 將資料夾解壓縮並擷取檔案。
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](digital-twins-tutorial-prereq-instance.md)]
+### <a name="prepare-an-azure-digital-twins-instance"></a>準備 Azure Digital Twins 執行個體
+
+[!INCLUDE [Azure Digital Twins: instance prereq](digital-twins-prereq-instance.md)]
 
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](digital-twins-local-credentials-outer.md)]

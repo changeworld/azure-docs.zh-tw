@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: badc3cd372ca992a83678ef8d32ac76966ba9b94
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 873c2048773a8e5a1df79153c9147ea0ed6b3509
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136200"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -37,7 +37,7 @@ ms.locfileid: "92499090"
 import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
 
-SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+SpeechConfig config = SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 ```
 
 您可以透過其他數種方式將 [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) 初始化：
