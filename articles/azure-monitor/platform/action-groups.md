@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367732"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336114"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -20,9 +20,9 @@ ms.locfileid: "92367732"
 
 每個動作是由下列屬性所組成：
 
-* **輸入**：已執行的通知或動作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
-* **Name**：動作群組內的唯一識別碼。
-* **詳細資料**：依 *類型*而異的對應詳細資料。
+* **輸入** ：已執行的通知或動作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
+* **Name** ：動作群組內的唯一識別碼。
+* **詳細資料** ：依 *類型* 而異的對應詳細資料。
 
 如需如何使用 Azure Resource Manager 範本設定動作群組的資訊，請參閱[動作群組 Resource Manager 範本](./action-groups-create-resource-manager-template.md)。
 
@@ -30,25 +30,25 @@ ms.locfileid: "92367732"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [監視器]。 [監視器] 頁面會將您的所有監視設定與資料合併在一個檢視中。
 
-1. 選取 [ **警示**]，然後選取 [ **管理動作**]。
+1. 選取 [ **警示** ]，然後選取 [ **管理動作** ]。
 
     ![管理動作按鈕](./media/action-groups/manage-action-groups.png)
     
-1. 選取 [ **新增動作群組**]，並在嚮導體驗中填寫相關的欄位。
+1. 選取 [ **新增動作群組** ]，並在嚮導體驗中填寫相關的欄位。
 
     ![「新增動作群組」命令](./media/action-groups/add-action-group.PNG)
 
 ### <a name="configure-basic-action-group-settings"></a>設定基本動作群組設定
 
-在 [ **專案詳細資料**] 底下：
+在 [ **專案詳細資料** ] 底下：
 
 選取用來儲存動作群組的 **訂** 用帳戶和 **資源群組** 。
 
 在 [執行個體詳細資料] 下方：
 
-1. 輸入 **動作組名**。
+1. 輸入 **動作組名** 。
 
-1. 輸入 **顯示名稱**。 使用這個群組傳送通知時，會使用顯示名稱來取代完整的動作組名。
+1. 輸入 **顯示名稱** 。 使用這個群組傳送通知時，會使用顯示名稱來取代完整的動作組名。
 
       ![「新增動作群組」對話方塊](./media/action-groups/action-group-1-basics.png)
 
@@ -59,15 +59,15 @@ ms.locfileid: "92367732"
 
 1. 定義觸發警示時要傳送的通知清單。 針對每個通知提供下列各項：
 
-    a. **通知類型**：選取您想要傳送的通知類型。 可用的選項如下：
+    a. **通知類型** ：選取您想要傳送的通知類型。 可用的選項包括：
       * 電子郵件 Azure Resource Manager 角色-傳送電子郵件給指派給特定訂用帳戶層級的 ARM 角色的使用者。
       * 電子郵件/SMS/推送/語音-將這些通知類型傳送給特定收件者。
     
-    b. **名稱**：輸入通知的唯一名稱。
+    b. **名稱** ：輸入通知的唯一名稱。
 
-    c. **詳細資料**：根據選取的通知類型，輸入電子郵件地址、電話號碼等等。
+    c. **詳細資料** ：根據選取的通知類型，輸入電子郵件地址、電話號碼等等。
     
-    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](./alerts-common-schema.md)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
+    d. **一般警示結構描述** ：您可以選擇啟用 [一般警示結構描述](./alerts-common-schema.md)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
 
     ![[通知] 索引標籤](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ ms.locfileid: "92367732"
 
 1. 定義觸發警示時要觸發的動作清單。 針對每個動作提供下列各項：
 
-    a. **動作類型**：選取自動化 Runbook、Azure FUNCTION、ITSM、邏輯應用程式、安全 Webhook、webhook。
+    a. **動作類型** ：選取自動化 Runbook、Azure FUNCTION、ITSM、邏輯應用程式、安全 Webhook、webhook。
     
-    b. **名稱**：輸入動作的唯一名稱。
+    b. **名稱** ：輸入動作的唯一名稱。
 
-    c. **詳細資料**：根據動作類型，輸入 webhook URI、Azure 應用程式、ITSM 連線或自動化 runbook。 針對 ITSM 動作，請額外指定 [工作項目] 與您 ITSM 工具所需的其他欄位。
+    c. **詳細資料** ：根據動作類型，輸入 webhook URI、Azure 應用程式、ITSM 連線或自動化 runbook。 針對 ITSM 動作，請額外指定 [工作項目] 與您 ITSM 工具所需的其他欄位。
     
-    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](./alerts-common-schema.md)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
+    d. **一般警示結構描述** ：您可以選擇啟用 [一般警示結構描述](./alerts-common-schema.md)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
     
     ![[動作] 索引標籤](./media/action-groups/action-group-3-actions.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "92367732"
 您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
 
 ### <a name="email-azure-resource-manager-role"></a>寄送電子郵件給 Azure Resource Manager 角色
-傳送電子郵件給訂用帳戶角色的成員。 只會將電子郵件傳送給 **Azure AD 使用者**角色成員。 不會將電子郵件傳送給 Azure AD 群組或服務主體。
+傳送電子郵件給訂用帳戶角色的成員。 只會將電子郵件傳送給 **Azure AD 使用者** 角色成員。 不會將電子郵件傳送給 Azure AD 群組或服務主體。
 
 通知電子郵件只會傳送到 *主要電子郵件* 位址。
 
@@ -287,21 +287,23 @@ Webhook 會使用下列規則來處理
 
 您在動作群組中可以有有限數量的 Webhook 動作。
 
-### <a name="service-tag"></a>服務標記
+對來源 IP 位址進行頻繁的更新，在 Webhook 中可能相當耗時。 使用 **服務** 標籤進行 *ActionGroup* 有助於將經常更新 IP 位址的複雜性降至最低。 上述共用的來源 IP 位址範圍前置詞是由 Microsoft 自動管理，由 **服務標記** 所包含。
+
+#### <a name="service-tag"></a>服務標記
 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標籤，將頻繁更新 ActionGroup 的網路安全性規則的複雜性降至最低。
 
-1. 在 Azure 入口網站 [搜尋 *網路安全性群組*] 下的 [Azure 服務] 下。
+1. 在 Azure 入口網站 [搜尋 *網路安全性群組* ] 下的 [Azure 服務] 下。
 2. 按一下 [ **新增** ] 並建立網路安全性群組。
 
-   1. 新增資源組名，然後輸入 *實例詳細資料*。
-   1. 按一下 [ **審核 + 建立** ]，然後按一下 [ *建立*]。
+   1. 新增資源組名，然後輸入 *實例詳細資料* 。
+   1. 按一下 [ **審核 + 建立** ]，然後按一下 [ *建立* ]。
    
    :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="如何建立網路安全性群組的範例。"border="true":::
 
 3. 移至 [資源群組]，然後按一下您已建立的 *網路安全性群組* 。
 
-    1. 選取 [ *輸入安全性規則*]。
-    1. 按一下 [ **新增**]。
+    1. 選取 [ *輸入安全性規則* ]。
+    1. 按一下 [ **新增** ]。
     
     :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
 
@@ -311,8 +313,6 @@ Webhook 會使用下列規則來處理
     1.  按一下 [新增]  。
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
-
-使用 **服務** 標籤進行 ActionGroup 有助於將頻繁更新的 IP 位址複雜性降至最低。
 
 ## <a name="next-steps"></a>後續步驟
 * 進一步了解 [SMS 警示行為](./alerts-sms-behavior.md)。  

@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 ST_WITHIN
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 ST_WITHIN。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: da475ced067f19cddd4a20284ba556c8a0b52677
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 565b3429f8e8398a93f981969f96984bdac52db0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079966"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334968"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +58,7 @@ WHERE ST_WITHIN(f.location, {
 
 這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

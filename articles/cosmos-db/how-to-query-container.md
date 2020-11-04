@@ -3,15 +3,16 @@ title: 查詢 Azure Cosmos DB 中的容器
 description: 瞭解如何使用資料分割和跨資料分割查詢，在 Azure Cosmos DB 中查詢容器
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086052"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335886"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查詢 Azure Cosmos 容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -100,7 +101,7 @@ Azure Cosmos DB SDK 1.9.0 和更新版本支援平行查詢執行選項。 跨�
 - 您計畫布建超過 30000 RU
 - 您計畫儲存超過 100 GB 的資料
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列文章，以了解 Azure Cosmos DB 中的資料分割：
 

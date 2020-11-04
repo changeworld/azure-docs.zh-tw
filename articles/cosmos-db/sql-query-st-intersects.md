@@ -3,16 +3,17 @@ title: Azure Cosmos DB 查詢語言中的 ST_INTERSECTS
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 ST_INTERSECTS。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2f39dbfc33bfc34e8f5e339a489d0c74bebb415e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8e440d9e1be8508908336a5e9f90394e310c8562
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082278"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335170"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +58,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

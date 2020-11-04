@@ -2,18 +2,19 @@
 title: Azure Cosmos DB 的進階威脅防護
 description: 了解 Azure Cosmos DB 如何提供加密待用資料，以及其實作方式。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097714"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334407"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的進階威脅防護 (預覽)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -82,16 +83,16 @@ Azure Cosmos DB 進階威脅防護會偵測異常活動，這些活動表示有�
 
 1. 啟動 [Azure 原則-定義] 頁面，然後搜尋 [部署 Cosmos DB 的進階威脅防護] 原則。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="設定 ATP"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="搜尋原則"::: 
 
 1. 按一下 [為 CosmosDB 部署進階威脅防護] 原則，然後按一下 [指派]。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="設定 ATP":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="選取 [訂閱] 或 [群組]":::
 
 
 1. 從 [範圍] 欄位中，按一下三個點，選取 Azure 訂閱或資源群組，然後按一下 [選取] 。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="設定 ATP":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="原則定義頁面":::
 
 
 1. 輸入其他參數，然後按一下 [指派]。
@@ -105,11 +106,11 @@ Azure Cosmos DB 進階威脅防護會偵測異常活動，這些活動表示有�
 
  您可以從 Azure 資訊安全中心的[安全性警示](../security-center/security-center-alerts-overview.md)，檢閱與管理目前的安全性警示。  按一下 [[資訊安全中心]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)的特定警示，檢視可能原因和建議動作的詳細資料，以協助您調查並減輕潛在威脅。 下圖顯示資訊安全中心所提供的警示詳細資料範例。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="設定 ATP":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="威脅詳細資料":::
 
 系統也會傳送包含警示詳細資料和建議動作的電子郵件通知。 下圖顯示警示電子郵件的範例。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="設定 ATP":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="警示詳細資料":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警示
 

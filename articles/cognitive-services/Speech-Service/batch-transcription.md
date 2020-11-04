@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360747"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336675"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -36,8 +36,6 @@ ms.locfileid: "91360747"
 
 您可以檢查並測試詳細的 API，這是以 [Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的形式提供。
 
-此 API 不需要自訂端點，而且沒有平行存取需求。
-
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
@@ -46,15 +44,18 @@ ms.locfileid: "91360747"
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](overview.md#try-the-speech-service-for-free)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
 >[!NOTE]
-> 需要適用于語音服務的標準訂用帳戶 (S0) ，才能使用批次轉譯。 免費的訂用帳戶金鑰 (F0) 無法運作。 如需詳細資訊，請參閱 [定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 需要適用于語音服務的標準訂用帳戶 (S0) ，才能使用批次轉譯。 免費訂用帳戶金鑰 (F0) 將無法運作。 如需詳細資訊，請參閱 [定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 如果您打算自訂模型，請依照聲場 [自訂](how-to-customize-acoustic-models.md) 和 [語言自訂](how-to-customize-language-model.md)中的步驟進行。 若要在批次轉譯中使用已建立的模型，您需要其模型位置。 當您檢查模型 (屬性) 的詳細資料時，可以取出模型位置 `self` 。 批次轉譯服務 *不需要* 已部署的自訂端點。
+
+>[!NOTE]
+> 在 REST API 過程中，批次轉譯會有一組 [配額和限制](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource)，我們鼓勵您複習。 若要充分利用批次轉譯功能來有效率地轉譯大量音訊檔案，建議您一律針對每個要求傳送多個檔案，或指向包含要轉譯之音訊檔案的 Blob 儲存體容器。 服務會同時轉譯檔案，以同時減少周轉時間。 在單一要求中使用多個檔案相當簡單明瞭 [，請參閱](#configuration) 設定一節。 
 
 ## <a name="batch-transcription-api"></a>批次轉譯 API
 
 批次轉譯 API 支援下列格式：
 
-| [格式] | 轉碼器 | 每個樣本的位數 | 採樣速率             |
+| 格式 | 轉碼器 | 每個樣本的位數 | 採樣速率             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
 | MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
@@ -65,12 +66,16 @@ ms.locfileid: "91360747"
 
 ### <a name="configuration"></a>組態
 
-設定參數會以 JSON 形式提供 (一或多個個別檔案) ：
+設定參數會以 JSON 形式提供。
+
+**轉譯一或多個個別檔案。** 如果您有一個以上的檔案要轉譯，建議您在一個要求中傳送多個檔案。 下列範例會使用三個檔案：
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -80,7 +85,7 @@ ms.locfileid: "91360747"
 }
 ```
 
-設定參數提供為 JSON (處理整個儲存體容器) ：
+**處理整個儲存體容器：**
 
 ```json
 {
@@ -93,12 +98,14 @@ ms.locfileid: "91360747"
 }
 ```
 
-下列 JSON 會指定用於批次轉譯的自訂定型模型：
+**在批次轉譯中使用自訂的定型模型。** 此範例使用三個檔案：
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -156,21 +163,21 @@ ms.locfileid: "91360747"
       `channels`
    :::column-end:::
    :::column span="2":::
-      選擇性， `0` `1` 預設為轉譯。 要處理的通道號碼陣列。 您可以指定音訊檔案中可用通道的子集來進行處理， (例如 `0` 僅) 。
+      選擇性， `0` `1` 預設為轉譯。 要處理的通道號碼陣列。 您可以指定音訊檔案中可用通道的子集，以進行處理 (例如 `0` 僅) 。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      選擇性，預設為不刪除。 完成轉譯之後自動刪除轉譯的持續時間。 `timeToLive`很適合用於大量處理轉譯，以確保最終會將它們刪除 (例如 `PT12H` 12 小時) 。
+      選擇性，預設為不刪除。 完成轉譯之後自動刪除轉譯的持續時間。 `timeToLive`很適合用於大量處理轉譯，以確保最終會將它們刪除 (例如， `PT12H`) 的12小時。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      具有服務特定 [SAS](../../storage/common/storage-sas-overview.md) 的選擇性 URL，指向 Azure 中可寫入的容器。 結果會儲存在此容器中。 **不**支援具有預存存取原則的 SAS。 如果未指定，Microsoft 會將結果儲存在 Microsoft 所管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
+      具有服務特定 [SAS](../../storage/common/storage-sas-overview.md) 的選擇性 URL，指向 Azure 中可寫入的容器。 結果會儲存在此容器中。 **不** 支援具有預存存取原則的 SAS。 如果未指定，Microsoft 會將結果儲存在 Microsoft 所管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
 :::row-end:::
 
 ### <a name="storage"></a>儲存體
@@ -323,7 +330,80 @@ Diarization 是在一段音訊中分隔喇叭的流程。 Batch 管線支援 dia
 
 範例程式碼會設定用戶端，並提交轉譯要求。 然後，它會輪詢狀態資訊，並列印轉譯進度的詳細資料。
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
+```csharp
+// get the status of our transcriptions periodically and log results
+int completed = 0, running = 0, notStarted = 0;
+while (completed < 1)
+{
+    completed = 0; running = 0; notStarted = 0;
+
+    // get all transcriptions for the user
+    paginatedTranscriptions = null;
+    do
+    {
+        // <transcriptionstatus>
+        if (paginatedTranscriptions == null)
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync().ConfigureAwait(false);
+        }
+        else
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync(paginatedTranscriptions.NextLink).ConfigureAwait(false);
+        }
+
+        // delete all pre-existing completed transcriptions. If transcriptions are still running or not started, they will not be deleted
+        foreach (var transcription in paginatedTranscriptions.Values)
+        {
+            switch (transcription.Status)
+            {
+                case "Failed":
+                case "Succeeded":
+                    // we check to see if it was one of the transcriptions we created from this client.
+                    if (!createdTranscriptions.Contains(transcription.Self))
+                    {
+                        // not created form here, continue
+                        continue;
+                    }
+
+                    completed++;
+
+                    // if the transcription was successful, check the results
+                    if (transcription.Status == "Succeeded")
+                    {
+                        var paginatedfiles = await client.GetTranscriptionFilesAsync(transcription.Links.Files).ConfigureAwait(false);
+
+                        var resultFile = paginatedfiles.Values.FirstOrDefault(f => f.Kind == ArtifactKind.Transcription);
+                        var result = await client.GetTranscriptionResultAsync(new Uri(resultFile.Links.ContentUrl)).ConfigureAwait(false);
+                        Console.WriteLine("Transcription succeeded. Results: ");
+                        Console.WriteLine(JsonConvert.SerializeObject(result, SpeechJsonContractResolver.WriterSettings));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Transcription failed. Status: {0}", transcription.Properties.Error.Message);
+                    }
+
+                    break;
+
+                case "Running":
+                    running++;
+                    break;
+
+                case "NotStarted":
+                    notStarted++;
+                    break;
+            }
+        }
+
+        // for each transcription in the list we check the status
+        Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
+    }
+    while (paginatedTranscriptions.NextLink != null);
+
+    // </transcriptionstatus>
+    // check again after 1 minute
+    await Task.Delay(TimeSpan.FromMinutes(1)).ConfigureAwait(false);
+}
+```
 
 如需上述呼叫的完整詳細資料，請參閱我們的 [Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)。 如需此處所顯示的完整範例，請前往 `samples/batch` 子目錄中的 [GitHub](https://aka.ms/csspeech/samples)。
 

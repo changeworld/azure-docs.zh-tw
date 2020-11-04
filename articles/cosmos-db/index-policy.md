@@ -3,15 +3,16 @@ title: Azure Cosmos DB 索引編製原則
 description: 瞭解如何在 Azure Cosmos DB 中設定及變更自動編制索引的預設索引編制原則和更高的效能。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: ede2e6b172c867a00f98c6b095381ad5a5f3a323
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 9e62d6c475a4aeb366d034af1c80fc728f1a9211
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285756"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335801"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

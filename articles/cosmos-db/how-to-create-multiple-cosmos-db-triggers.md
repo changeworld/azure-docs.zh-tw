@@ -3,16 +3,17 @@ title: 為 Cosmos DB 建立多個獨立的 Azure Functions 觸發程式
 description: 了解如何設定多個獨立的「Azure Functions 的 Cosmos DB 觸發程序」，以建立事件驅動的架構。
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101539"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336668"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "93101539"
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>最佳化多個觸發程序的容器
 
-考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求  ，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」  。 這表示每個 Azure 函式都需要個別的租用容器嗎？
+考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」。 這表示每個 Azure 函式都需要個別的租用容器嗎？
 
 在此，您有兩個選項：
 
@@ -108,7 +109,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 > [!NOTE]
 > 一律監視在您的共用租用容器上佈建的要求單位。 共用該容器的每個觸發程序都會增加輸送量平均耗用量，因此當您增加使用容器的 Azure 函式數目時，可能需要增加佈建的輸送量。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [Azure Functions 的 Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整組態
 * 請檢查擴充的[範例清單](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)以取得所有語言。

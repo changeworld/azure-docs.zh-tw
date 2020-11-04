@@ -3,15 +3,16 @@ title: Azure Cosmos DB 的 SQL 查詢運算子
 description: 深入瞭解 SQL 運算子，例如 Azure Cosmos DB 所支援的相等、比較和邏輯運算子。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: a2f79e2ca751ce9c1016f32effeca532d6ffe7fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101233"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335429"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的運算子
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,8 +56,8 @@ WHERE 7 = 'a'
 |  | **True** | **False** | **定義** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |是 |否 |未定義 |
-| **定義** |是 |未定義 |未定義 |
+| **False** |True |False |未定義 |
+| **定義** |True |未定義 |未定義 |
 
 **AND 運算子**
 
@@ -64,9 +65,9 @@ WHERE 7 = 'a'
 
 |  | **True** | **False** | **定義** |
 | --- | --- | --- | --- |
-| **True** |是 |否 |未定義 |
+| **True** |True |False |未定義 |
 | **False** |False |False |False |
-| **定義** |未定義 |否 |未定義 |
+| **定義** |未定義 |False |未定義 |
 
 **NOT 運算子**
 
@@ -74,8 +75,8 @@ WHERE 7 = 'a'
 
 |  | **NOT** |
 | --- | --- |
-| **True** |否 |
-| **False** |是 |
+| **True** |False |
+| **False** |True |
 | **定義** |未定義 |
 
 **運算子優先順序**
@@ -119,7 +120,7 @@ WHERE 7 = 'a'
     FROM Families f
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [關鍵字](sql-query-keywords.md)

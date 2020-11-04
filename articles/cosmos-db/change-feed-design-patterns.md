@@ -4,14 +4,15 @@ description: 一般變更摘要設計模式的概觀
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 0c890d50bbfe498f9d90698394b2cc2d373c0d8b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 443d00e61e593daacca04a4451b90bb78cc7d854
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072989"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334560"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 中的摘要設計模式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +40,7 @@ Azure Cosmos DB 變更摘要可以簡化需要觸發通知的案例，或根據�
 Azure Cosmos DB 變更摘要可用於 IoT 的即時串流處理，或在操作資料上的即時分析處理。
 例如，您可能會接收與儲存來自裝置、感應器、基礎結構和應用程式的事件資料，並即時處理這些事件，例如使用 [Spark](../hdinsight/spark/apache-spark-overview.md)。 下圖顯示如何透過變更摘要使用 Azure Cosmos DB 來實作 lambda 架構：
 
-:::image type="content" source="./media/change-feed/lambda.png" alt-text="使用 Azure Cosmos DB 變更摘要來提供即時分析和事件導向的計算案例" border="false":::
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="運用 Azure Cosmos DB 進行擷取和查詢的 lambda 管線" border="false":::
 
 在許多情況下，串流處理實作會先將大量的傳入資料接收到臨時訊息佇列，例如 Azure 事件中樞或 Apache Kafka。 變更摘要是絕佳的替代方案，因為 Azure Cosmos DB 能夠以保證的低讀取和寫入延遲來支援持續性的高速資料擷取。 透過訊息佇列的 Azure Cosmos DB 變更摘要優點包括：
 

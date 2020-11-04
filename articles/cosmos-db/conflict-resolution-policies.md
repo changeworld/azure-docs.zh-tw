@@ -3,16 +3,17 @@ title: Azure Cosmos DB 中的衝突解決類型和解決原則
 description: 本文描述 Azure Cosmos DB 中的衝突類別和衝突解決原則。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: bfe4bd8483485ffc3b09e77e7683d2d0ec38ba75
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090183"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334373"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>使用多個寫入區域時的衝突類型和解決原則
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -47,7 +48,7 @@ Azure Cosmos DB 提供彈性的原則導向機制來解決寫入衝突。 您可
   > [!NOTE]
   > 自訂衝突解決原則只適用於 SQL API 帳戶。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何設定衝突解決原則：
 

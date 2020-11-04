@@ -3,16 +3,17 @@ title: 使用 Blitzz 將將資料從 Oracle 遷移至 Azure Cosmos DB Cassandra 
 description: 瞭解如何使用 Blitzz 將將資料從 Oracle 資料庫移轉至 Azure Cosmos DB Cassandra API。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 263c38e330bad00833bd31bc8a43208c3784bcf4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 15bcd0c54fc5f6614f4d1925759704309048acae
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097476"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336434"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 將將資料從 Oracle 遷移至 Azure Cosmos DB Cassandra API 帳戶
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -57,7 +58,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
    :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz 將 replicant tool 下載":::
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz 將 replicant 檔":::
 
 1. 從 CLI 終端機，設定源資料庫設定。 使用命令開啟設定檔， **`vi conf/conn/oracle.yml`** 然後新增 oracle 節點的 IP 位址清單（以逗號分隔）、埠號碼、使用者名稱、密碼，以及任何其他必要的詳細資料。 下列程式碼顯示範例設定檔案：
 
@@ -76,9 +77,9 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
    use-ssl: false
    ```
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="開啟 Oracle 連接編輯器":::
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Oracle 連接設定":::
 
    填寫設定詳細資料之後，請儲存並關閉檔案。
 
@@ -97,7 +98,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
 1. 在遷移資料之前，請將容器輸送量增加到您的應用程式快速遷移所需的數量。 例如，您可以將輸送量增加到 100000 ru。 在開始遷移之前調整輸送量，可協助您以較短的時間遷移資料。 
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="整個調整 Azure Cosmos 容器":::
 
    完成遷移之後，您必須降低輸送量。 根據每項作業所需的儲存資料量和 ru 數目，您可以估計資料移轉之後所需的輸送量。 若要深入瞭解如何估計所需的 RU，請參閱使用 Azure Cosmos DB 容量規劃文章，在 [容器和資料庫上](set-throughput.md) 布建輸送量，並 [預估 RU/秒](estimate-ru-with-capacity-planner.md) 。
 
@@ -135,7 +136,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
    Replicant UI 會顯示覆寫進度。 完成架構遷移和快照集作業之後，進度會顯示100%。 完成遷移之後，您可以驗證目標 Azure Cosmos 資料庫上的資料。
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Blitzz 將 replicant tool 下載":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Oracle 資料移轉輸出":::
 
 1. 因為您已使用完整模式來進行遷移，所以您可以執行作業，例如在來源 Oracle 資料庫上插入、更新或刪除資料。 稍後您可以驗證它們是否會在目標 Azure Cosmos 資料庫上即時複寫。 遷移之後，請務必減少為 Azure Cosmos 容器設定的輸送量。
 

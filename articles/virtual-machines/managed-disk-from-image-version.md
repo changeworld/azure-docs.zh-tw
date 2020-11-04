@@ -6,27 +6,24 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 10/06/2020
+ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370979"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336056"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>從映射版本建立受控磁片
 
-如有需要，您可以從儲存在共用映射庫中的映射版本建立受控磁片。
+如有需要，您可以從映射版本將作業系統或單一資料磁片從存放在共用映射庫中的映射版本匯出為受控磁片。
 
 
 ## <a name="cli"></a>CLI
 
-將 `source` 變數設定為映射版本的識別碼，然後使用 [az disk create](/cli/azure/disk#az_disk_create) 來建立受控磁片。 
-
-
-您可以使用 [az sig 映射版本清單](/cli/azure/sig/image-version#az_sig_image_version_list)來查看清單映射版本。 在此範例中，我們會在 *>mygalleryrg*映射庫中尋找屬於*myImageDefinition*映射定義一部分的所有映射版本。
+使用 [az sig image-version 清單](/cli/azure/sig/image-version.md#az_sig_image_version_list)來列出資源庫中的映射版本。 在此範例中，我們會在 *>mygalleryrg* 映射庫中尋找屬於 *myImageDefinition* 映射定義一部分的所有映射版本。
 
 ```azurecli-interactive
 az sig image-version list \
@@ -36,28 +33,37 @@ az sig image-version list \
    -o table
 ```
 
+將 `source` 變數設定為映射版本的識別碼，然後使用 [az disk create](/cli/azure/disk.md#az_disk_create) 來建立受控磁片。 
 
-在此範例中，我們會在名為*myResourceGroup*的資源群組中，于*EastUS*區域中建立名為*myManagedDisk*的受控磁片。 
+在此範例中，我們會匯出映射版本的 OS 磁片，以在 *EastUS* 區域中建立名為 *myManagedOSDisk* 的受控磁片（位於名為 *myResourceGroup* 的資源群組中）。 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
 
-az disk create --resource-group myResourceGroup --location EastUS --name myManagedDisk --gallery-image-reference $source 
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedOSDisk --gallery-image-reference $source 
 ```
 
-如果磁片是資料磁片，請新增 `--gallery-image-reference-lun` 以指定 LUN。
+
+
+如果您想要從映射版本匯出資料磁片，請新增 `--gallery-image-reference-lun` 以指定要匯出之資料磁片的 LUN 位置。 
+
+在此範例中，我們會匯出位於映射版本之 LUN 0 的資料磁片，以在名為 *myResourceGroup* 的資源群組中建立名為 *myManagedDataDisk* 的受控磁片（位於 *EastUS* 區域）。 
+
+```azurecli-interactive
+source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
+
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedDataDisk --gallery-image-reference $source --gallery-image-reference-lun 0
+``` 
 
 ## <a name="powershell"></a>PowerShell
 
-您可以使用 [get-azresource](/powershell/module/az.resources/get-azresource)列出所有的映射版本。 
+使用 [get-azresource](/powershell/module/az.resources/get-azresource)列出資源庫中的映射版本。 
 
 ```azurepowershell-interactive
 Get-AzResource `
    -ResourceType Microsoft.Compute/galleries/images/versions | `
    Format-Table -Property Name,ResourceId,ResourceGroupName
 ```
-
-
 
 一旦擁有您需要的所有資訊之後，您就可以使用 [new-azgalleryimageversion](/powershell/module/az.compute/get-azgalleryimageversion) 取得您想要使用的來源映射版本，並將它指派給變數。 在此範例中，我們會取得 `1.0.0` `myImageDefinition` `myGallery` 資源群組中來源資源庫中定義的映射版本 `myResourceGroup` 。
 
@@ -69,29 +75,44 @@ $sourceImgVer = Get-AzGalleryImageVersion `
    -Name 1.0.0
 ```
 
-設定磁片資訊的一些變數。
+將變數設定 `source` 為映射版本的識別碼之後，請使用 [new-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig) 來建立磁片設定，並使用 [>get-azdisk](/powershell/module/az.compute/new-azdisk) 來建立磁片。 
 
-```azurepowershell-interactive
-$location = "East US"
-$resourceGroup = "myResourceGroup"
-$diskName = "myDisk"
-```
+在此範例中，我們會匯出映射版本的 OS 磁片，以在 *EastUS* 區域中建立名為 *myManagedOSDisk* 的受控磁片（位於名為 *myResourceGroup* 的資源群組中）。 
 
-使用來源映射版本識別碼建立磁片設定，然後建立磁片。 若為 `-GalleryImageReference` ，只有在來源是資料磁片時，才需要 LUN。
-
+建立磁片設定。
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
-   -Location $location `
+   -Location EastUS `
    -CreateOption FromImage `
-   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=1}
+   -GalleryImageReference @{Id = $sourceImgVer.Id}
 ```
 
 建立磁片。
 
 ```azurepowershell-interactive
 New-AzDisk -Disk $diskConfig `
-   -ResourceGroupName $resourceGroup `
-   -DiskName $diskName
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedOSDisk
+```
+
+如果您想要匯出映射版本的資料磁片，請將 LUN 識別碼新增至磁片設定，以指定要匯出之資料磁片的 LUN 位置。 
+
+在此範例中，我們會匯出位於映射版本之 LUN 0 的資料磁片，以在名為 *myResourceGroup* 的資源群組中建立名為 *myManagedDataDisk* 的受控磁片（位於 *EastUS* 區域）。 
+
+建立磁片設定。
+```azurepowershell-interactive
+$diskConfig = New-AzDiskConfig `
+   -Location EastUS `
+   -CreateOption FromImage `
+   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=0}
+```
+
+建立磁片。
+
+```azurepowershell-interactive
+New-AzDisk -Disk $diskConfig `
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedDataDisk
 ```
 
 ## <a name="next-steps"></a>後續步驟

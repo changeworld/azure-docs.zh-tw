@@ -3,16 +3,17 @@ title: Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
 description: 瞭解如何使用 Azure Cosmos DB 和 SQL API 建立空間物件。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 10882a0f4daf5c0d9aa1d4aeb53b2f14f9d1dea0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a2e4e14927932575c9da42392329eea279f922fe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100825"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336158"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,7 +214,7 @@ await container.CreateItemAsync( new UserProfile
 
 如果您沒有緯度和經度資訊，但具有實體位址或位置名稱（例如城市或國家/地區），您可以使用地理編碼服務（例如 Bing 地圖服務 REST 服務）來查閱實際的座標。 在 [這裡](/bingmaps/rest-services/)深入了解 Bing Maps 地理編碼。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 既然您已了解如何開始使用 Azure Cosmos DB 中的地理空間支援，您可以接著：
 

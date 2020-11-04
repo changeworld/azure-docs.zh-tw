@@ -3,15 +3,16 @@ title: Azure Cosmos DB 中的 FROM 子句
 description: 深入瞭解 SQL 語法，以及 Azure Cosmos DB 的 FROM 子句範例。 本文也會示範使用 FROM 子句來界定結果範圍，以及取得子專案的範例。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 967e07e55599be0a614e0b6097ae4745f6c7081f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3844a628a8e3773821736324bfdaab3f64ff9da5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100060"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336243"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
