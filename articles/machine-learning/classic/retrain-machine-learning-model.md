@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362328"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325825"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新定型和部署機器學習模型
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型。 本文說明如何在 Studio (傳統) 中，將機器學習模型重新定型和部署為新的 web 服務。 如果是要重新定型傳統的 Web 服務，請[參閱操作說明文章](retrain-classic-web-service.md)。
@@ -27,20 +27,20 @@ ms.locfileid: "91362328"
 
 請按照這些步驟重新定型並部署機器學習新 Web 服務：
 
-1. 部署**重新定型 Web 服務**
-1. 使用您的**重新定型 Web 服務**定型新模型
-1. 更新現有的**預測性實驗**使用新模型
+1. 部署 **重新定型 Web 服務**
+1. 使用您的 **重新定型 Web 服務** 定型新模型
+1. 更新現有的 **預測性實驗** 使用新模型
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-retraining-web-service"></a>部署重新訓練的 Web 服務
 
-重新定型 Web 服務，即可使用一組新的參數 (例如新資料) 來重新定型您的模型，並將模型儲存供稍後使用。 當您將 **Web 服務輸出**連接至**定型模型**時，定型實驗會輸出新模型供您使用。
+重新定型 Web 服務，即可使用一組新的參數 (例如新資料) 來重新定型您的模型，並將模型儲存供稍後使用。 當您將 **Web 服務輸出** 連接至 **定型模型** 時，定型實驗會輸出新模型供您使用。
 
 請按照以下步驟來部署重新定型 Web 服務：
 
 1. 將 **Web 服務輸入** 模組連接至您的資料輸入。 通常，您會想要確保您的輸入資料與原始的訓練資料以相同方式處理。
-1. 將 **Web 服務輸出** 模組連接至**定型模型**的輸出。
+1. 將 **Web 服務輸出** 模組連接至 **定型模型** 的輸出。
 1. 如果您有 **評估模型** 模組，可以連接 **Web 服務輸出** 模組，以輸出評估結果
 1. 執行您的實驗。
 
@@ -50,8 +50,8 @@ ms.locfileid: "91362328"
 
     現在，您可將定型實驗部署為重新定型的 Web 服務，此服務可輸出定型的模型與模型評估結果。
 
-1. 在實驗畫布底端，按一下 [設定 Web 服務] ****
-1. 選取 [部署 Web 服務 [新]]****。 Azure Machine Learning Web Services 入口網站會開啟 [部署 Web 服務]**** 頁面。
+1. 在實驗畫布底端，按一下 [設定 Web 服務] 
+1. 選取 [部署 Web 服務 [新]]。 Azure Machine Learning Web Services 入口網站會開啟 [部署 Web 服務] 頁面。
 1. 輸入您 Web 服務的名稱，然後選擇付款方案。
 1. 選取 [部署]。
 
@@ -61,16 +61,16 @@ ms.locfileid: "91362328"
 
 使用下列步驟呼叫重新定型 API：
 
-1. 在 Visual Studio 中建立 c # 主控台應用程式：**新增**  >  **專案**  >  **Visual c #**  >  **Windows 傳統桌面**  >  **主控台應用程式 ( .NET Framework) **。
+1. 在 Visual Studio 中建立 c # 主控台應用程式： **新增**  >  **專案**  >  **Visual c #**  >  **Windows 傳統桌面**  >  **主控台應用程式 ( .NET Framework)** 。
 1. 登入 Machine Learning Web 服務入口網站。
 1. 按一下您要使用的 Web 服務。
-1. 按一下 [取用] ****。
-1. 在 [取用]**** 頁面底部的 [範例程式碼]**** 區段，按一下 [批次]****。
+1. 按一下 [取用] 。
+1. 在 [取用] 頁面底部的 [範例程式碼] 區段，按一下 [批次]。
 1. 複製可用於批次執行的範例 C# 程式碼，然後貼入 Program.cs 檔案。 請確定命名空間保持不變。
 
 新增 NuGet 套件 Microsoft.AspNet.WebApi.Client，如註解中所述。 若要新增指向 Microsoft.WindowsAzure.Storage.dll 的參考，您可能需要安裝 [Azure 儲存體服務的用戶端程式庫](https://www.nuget.org/packages/WindowsAzure.Storage)。
 
-下列螢幕擷取畫面顯示 Azure Machine Learning Web 服務入口網站的 [取用]**** 頁面。
+下列螢幕擷取畫面顯示 Azure Machine Learning Web 服務入口網站的 [取用]頁面。
 
 ![取用頁面](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -89,14 +89,14 @@ const string apiKey = "abc123"; // Replace this with the API key for the web ser
 BES 範例程式碼會將檔案從本機磁碟機 (例如，C:\temp\CensusInput.csv) 上傳至 Azure 儲存體、加以處理後，再將結果寫回 Azure 儲存體。
 
 1. 登入 Azure 入口網站
-1. 在左側導覽中，按一下 [更多服務]****，搜尋 [儲存體帳戶]****，並加以選取。
+1. 在左側導覽中，按一下 [更多服務]，搜尋 [儲存體帳戶]，並加以選取。
 1. 在儲存體帳戶的清單中，選取要儲存重新定型模型的帳戶。
-1. 在左側導覽中，按一下 [存取金鑰]****。
-1. 複製並儲存 [主要存取金鑰]****。
-1. 在左側導覽欄中，按一下 [ **blob**]。
+1. 在左側導覽中，按一下 [存取金鑰]。
+1. 複製並儲存 [主要存取金鑰]。
+1. 在左側導覽欄中，按一下 [ **blob** ]。
 1. 您可以使用現有容器，或建立新的容器並儲存名稱。
 
-找到 StorageAccountName**、StorageAccountKey**、StorageContainerName** 宣告，更新為您從入口網站儲存的值。
+找到 StorageAccountName、StorageAccountKey、StorageContainerName 宣告，更新為您從入口網站儲存的值。
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -108,7 +108,7 @@ const string StorageContainerName = "mycontainer"; // Replace this with your Azu
 
 ### <a name="specify-the-output-location"></a>指定輸出位置
 
-在要求承載中指定輸出位置時，必須將 RelativeLocation ** 中指定檔案的副檔名指定為 `ilearner`。
+在要求承載中指定輸出位置時，必須將 RelativeLocation  中指定檔案的副檔名指定為 `ilearner`。
 
 ```csharp
 Outputs = new Dictionary<string, AzureBlobDataReference>() {
@@ -130,11 +130,11 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 當您執行應用程式時，輸出會包含存取評估結果所需的 URL 和共用存取簽章權杖。
 
-您可以組合 output2** 輸出結果中的 BaseLocation**、RelativeLocation**、SasBlobToken**，再將完整 URL 貼入瀏覽器網址列，便能看到重新訓練模型的執行結果。
+您可以組合 output2 輸出結果中的 BaseLocation、RelativeLocation、SasBlobToken，再將完整 URL 貼入瀏覽器網址列，便能看到重新訓練模型的執行結果。
 
 查看結果以判斷新定型的模型其效能是否比現有的模型好。
 
-儲存輸出結果中的 BaseLocation**、RelativeLocation**、SasBlobToken**。
+儲存輸出結果中的 BaseLocation、RelativeLocation、SasBlobToken。
 
 ## <a name="update-the-predictive-experiment"></a>更新預測性實驗
 
@@ -144,13 +144,13 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 ### <a name="get-the-web-service-definition-object"></a>取得 Web 服務定義物件
 
-接下來，呼叫 [AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) 指令程式來取得 Web 服務定義物件。
+接下來，呼叫 [AzMlWebService](/powershell/module/az.machinelearning/get-azmlwebservice) 指令程式來取得 Web 服務定義物件。
 
 ```azurepowershell
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 ```
 
-若要判斷現有 web 服務的資源組名，請執行不含任何參數的 Get-AzMlWebService Cmdlet，以在您的訂用帳戶中顯示 web 服務。 找出 Web 服務，再查看其 Web 服務識別碼。 資源群組的名稱是識別碼中的第四個元素，緊接在 resourceGroups ** 元素之後。 在下列範例中，資源群組名稱是 Default-MachineLearning-SouthCentralUS。
+若要判斷現有 web 服務的資源組名，請執行不含任何參數的 Get-AzMlWebService Cmdlet，以在您的訂用帳戶中顯示 web 服務。 找出 Web 服務，再查看其 Web 服務識別碼。 資源群組的名稱是識別碼中的第四個元素，緊接在 resourceGroups  元素之後。 在下列範例中，資源群組名稱是 Default-MachineLearning-SouthCentralUS。
 
 ```azurepowershell
 Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
@@ -161,13 +161,13 @@ Type : Microsoft.MachineLearning/webServices
 Tags : {}
 ```
 
-或者，若要判斷現有 Web 服務的資源群組名稱，登入 Azure Machine Learning Web 服務入口網站。 選取 Web 服務。 資源群組名稱是 Web 服務 URL 的第五個元素，緊接在 resourceGroups ** 元素之後。 在下列範例中，資源群組名稱是 Default-MachineLearning-SouthCentralUS。
+或者，若要判斷現有 Web 服務的資源群組名稱，登入 Azure Machine Learning Web 服務入口網站。 選取 Web 服務。 資源群組名稱是 Web 服務 URL 的第五個元素，緊接在 resourceGroups  元素之後。 在下列範例中，資源群組名稱是 Default-MachineLearning-SouthCentralUS。
 
 `https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237`
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>將 Web 服務定義物件匯出為 JSON
 
-若要修改定型模型的定義以使用新定型的模型，您必須先使用 AzMlWebService 指令 [程式](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) 將它匯出至 JSON 格式檔案。
+若要修改定型模型的定義以使用新定型的模型，您必須先使用 AzMlWebService 指令 [程式](/powershell/module/az.machinelearning/export-azmlwebservice) 將它匯出至 JSON 格式檔案。
 
 ```azurepowershell
 Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
@@ -175,7 +175,7 @@ Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.jso
 
 ### <a name="update-the-reference-to-the-ilearner-blob"></a>將參考更新為 ilearner blob
 
-在資產中，找出 [定型模型]，使用 ilearner blob 的 URI 更新 locationInfo** 節點中的 uri** 值。 URI 的產生方式為結合來自 BES 重新定型呼叫輸出的 BaseLocation** 和 RelativeLocation**。
+在資產中，找出 [定型模型]，使用 ilearner blob 的 URI 更新 locationInfo 節點中的 uri 值。 URI 的產生方式為結合來自 BES 重新定型呼叫輸出的 BaseLocation 和 RelativeLocation。
 
 ```json
 "asset3": {
@@ -194,7 +194,7 @@ Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.jso
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>將 JSON 匯入至 Web 服務定義物件
 
-使用 [AzMlWebService 指令程式](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) 可將修改過的 JSON 檔案轉換回可用來更新預測性實驗的 Web 服務定義物件。
+使用 [AzMlWebService 指令程式](/powershell/module/az.machinelearning/import-azmlwebservice) 可將修改過的 JSON 檔案轉換回可用來更新預測性實驗的 Web 服務定義物件。
 
 ```azurepowershell
 $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
@@ -202,7 +202,7 @@ $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>更新 Web 服務
 
-最後，使用 [AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) 指令 Cmdlet 來更新預測性實驗。
+最後，使用 [AzMlWebService](/powershell/module/az.machinelearning/update-azmlwebservice) 指令 Cmdlet 來更新預測性實驗。
 
 ```azurepowershell
 Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'

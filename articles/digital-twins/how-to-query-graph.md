@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8aad0d9fde30a235903364d57a73c1c53f08ecce
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145781"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325773"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -175,39 +175,41 @@ WHERE IS_NUMBER(T.Temperature)
 
 `IS_OF_MODEL`操作員可以用來根據對應項的 [**模型**](concepts-models.md)進行篩選。
 
-它會考慮 [繼承](concepts-models.md#model-inheritance) 和 [版本排序](how-to-manage-model.md#update-models) 的語法，如果對應項符合下列其中一個條件，則會針對指定的對應項評估為 **true** ：
+它會考慮 [繼承](concepts-models.md#model-inheritance) 和模型 [版本](how-to-manage-model.md#update-models)設定，如果對應項符合下列其中一個條件，則會針對指定的對應項評估為 **true** ：
 
 * 對應項會直接實作為提供的模型 `IS_OF_MODEL()` ，而且對應項上的模型版本號碼 *大於或等於* 提供之模型的版本號碼。
 * 對應項會執行 *擴充* 提供之模型的模型 `IS_OF_MODEL()` ，而且對應項的擴充模型版本號碼會 *大於或等於* 提供之模型的版本號碼。
 
-此方法有數個多載選項。
+比方說，如果您查詢模型的 twins `dtmi:example:widget;4` ，則查詢會傳回所有以 **第4版或更高** 的 **widget** 模型為基礎的 twins，也會根據 **繼承自 widget** 之任何模型的 **第4版或更高** 版本來 twins。
+
+`IS_OF_MODEL` 可以採用數個不同的參數，而本節的其餘部分則是專屬於其不同的多載選項。
 
 最簡單的用法 `IS_OF_MODEL` 只會採用 `twinTypeName` 參數： `IS_OF_MODEL(twinTypeName)` 。
 以下是在此參數中傳遞值的查詢範例：
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
 ```
 
 若要在有多個 (時指定要搜尋的對應項集合，例如 `JOIN` 使用) 時，請新增 `twinCollection` 參數： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
 以下是為此參數新增值的查詢範例：
 
 ```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
 ```
 
 若要執行完全相符的動作，請新增 `exact` 參數： `IS_OF_MODEL(twinTypeName, exact)` 。
 以下是為此參數新增值的查詢範例：
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
 ```
 
 您也可以將這三個引數一起傳遞給： `IS_OF_MODEL(twinCollection, twinTypeName, exact)` 。
 以下是針對所有三個參數指定值的查詢範例：
 
 ```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
 ```
 
 ### <a name="query-based-on-relationships"></a>以關聯性為基礎的查詢
@@ -297,7 +299,7 @@ AND Room.$dtId IN ['room1', 'room2']
 | 比較 |=、！ =、<、>、<=、>= |
 | 包含 | 在中，>NIN |
 
-### <a name="functions"></a>函數
+### <a name="functions"></a>函式
 
 支援下列類型檢查和轉換函數：
 
@@ -407,6 +409,6 @@ catch (RequestFailedException e)
 
 * 屬性名稱和值會區分大小寫，因此請小心使用模型中所定義的確切名稱。 如果屬性名稱的拼寫錯誤或大小寫不正確，則結果集是空的，而且不會傳回任何錯誤。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [Azure 數位 Twins api 和 sdk](how-to-use-apis-sdks.md)，包括用來執行本文中查詢的查詢 API。

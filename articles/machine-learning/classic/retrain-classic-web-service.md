@@ -9,23 +9,23 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362311"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325792"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新定型並部署傳統的 Studio (傳統) web 服務
 
-**適用于：** ![綠色核取記號。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) ![ X 表示不](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用于：** ![綠色核取記號。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) ![ X 表示不 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型機器模型。 本文將說明如何重新定型傳統 Studio (傳統) web 服務。 如需有關如何重新訓練新 Studio (傳統) web 服務的指南，請 [參閱這篇操作說明文章。](retrain-machine-learning-model.md)
 
 ## <a name="prerequisites"></a>必要條件
 
-本文假設您進行過了重新定型實驗和預測性實驗。 [重新定型和部署機器學習模型](/azure/machine-learning/studio/retrain-machine-learning-model)一文有講解這些步驟。 不過，無需將您的機器學習模型部署為新 Web 服務，而是要將預測性實驗部署為傳統 Web 服務。
+本文假設您進行過了重新定型實驗和預測性實驗。 [重新定型和部署機器學習模型](./retrain-machine-learning-model.md)一文有講解這些步驟。 不過，無需將您的機器學習模型部署為新 Web 服務，而是要將預測性實驗部署為傳統 Web 服務。
      
 ## <a name="add-a-new-endpoint"></a>新增端點
 
@@ -47,8 +47,8 @@ ms.locfileid: "91362311"
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>使用 Azure Web 服務入口網站新增端點
 
 1. 在 Machine Learning Studio (傳統) 的左側導覽列上，按一下 [Web 服務]。
-1. 在 web 服務儀表板底部，按一下 [ **管理端點預覽**]。
-1. 按一下 [新增] 。
+1. 在 web 服務儀表板底部，按一下 [ **管理端點預覽** ]。
+1. 按一下 [新增]  。
 1. 輸入新端點的名稱和描述。 選取記錄層級，以及是否啟用範例資料。 如需記錄的詳細資訊，請參閱 [啟用 Machine Learning web 服務的記錄](web-services-logging.md)。
 
 ## <a name="update-the-added-endpoints-trained-model"></a>更新新增端點的定型模型
@@ -58,11 +58,11 @@ ms.locfileid: "91362311"
 請按照下列步驟，使用 Web 入口網站取得正確的 PATCH URL：
 
 1. 登入 [Azure Machine Learning Web 服務](https://services.azureml.net/)入口網站。
-1. 按一下頂端的 [Web 服務]**** 或 [傳統 Web 服務]****。
+1. 按一下頂端的 [Web 服務] 或 [傳統 Web 服務]。
 1. 按一下您正在處理的評分 Web 服務 (如果您並未修改 Web 服務的預設名稱，它的結尾是「[Scoring Exp.]」)。
-1. 按一下 [ **+ 新增**]。
+1. 按一下 [ **+ 新增** ]。
 1. 在新增端點之後，按一下其端點名稱。
-1. 在 [修補程式]**** 之下，按一下 [API 說明]**** 以開啟修補說明頁面。
+1. 在 [修補程式] 之下，按一下 [API 說明] 以開啟修補說明頁面。
 
 > [!NOTE]
 > 如果您將端點新增至定型 Web 服務，而不是預測性 Web 服務，當您按一下 [ **更新資源** ] 連結時，將會收到下列錯誤：「很抱歉，但這項功能在此內容中不受支援或無法使用。 此 Web 服務有沒有可更新的資源。 造成您的不便我們深感抱歉，並將致力於改善這個工作流程。」
@@ -76,7 +76,7 @@ PATCH 說明頁面包含必須使用的 PATCH URL，並提供可用來呼叫它�
 
 您現在可以使用定型模型來更新您先前建立的評分端點。
 
-下列範例程式碼示範如何使用 *BaseLocation*、*RelativeLocation*、*SasBlobToken* 和 PATCH URL 來更新端點。
+下列範例程式碼示範如何使用 *BaseLocation* 、 *RelativeLocation* 、 *SasBlobToken* 和 PATCH URL 來更新端點。
 
 ```csharp
 private async Task OverwriteModel()
@@ -118,17 +118,17 @@ private async Task OverwriteModel()
 }
 ```
 
-在端點儀表板上可以看到呼叫的 *apiKey* 與 *endpointUrl*。
+在端點儀表板上可以看到呼叫的 *apiKey* 與 *endpointUrl* 。
 
-*資源*中*Name*參數的值應該符合預測性實驗中已儲存定型模型的資源名稱。 取得資源名稱：
+*資源* 中 *Name* 參數的值應該符合預測性實驗中已儲存定型模型的資源名稱。 取得資源名稱：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左側功能表中，按一下 [ **Machine Learning**]。
-1. 在 [名稱] 下，按一下您的工作區，然後按一下 [Web 服務] ****。
-1. 在 [名稱] 底下，按一下 **[人口普查模型 [預測 exp]]**。
+1. 在左側功能表中，按一下 [ **Machine Learning** ]。
+1. 在 [名稱] 下，按一下您的工作區，然後按一下 [Web 服務] 。
+1. 在 [名稱] 底下，按一下 **[人口普查模型 [預測 exp]]** 。
 1. 按一下您新增的端點。
-1. 在端點儀表板中，按一下 [更新資源] ****。
-1. 在 Web 服務的 [更新資源 API 文件] 頁面，您可以在 [可更新的資源]**** 下找到 [資源名稱]****。
+1. 在端點儀表板中，按一下 [更新資源] 。
+1. 在 Web 服務的 [更新資源 API 文件] 頁面，您可以在 [可更新的資源] 下找到 [資源名稱]。
 
 如果在您完成端點更新之前 SAS 權杖已到期，您必須執行 GET 以作業識別碼取得新的權杖。
 

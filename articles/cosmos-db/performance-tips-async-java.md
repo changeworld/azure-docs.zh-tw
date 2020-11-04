@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 53171fedac23401b7d696a9e611c53da86b1bb60
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c1dec2c8451ddd1feb4b5b0dac9c82e1716079b7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078062"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325829"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB 非同步 Java SDK v2 的效能祕訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -87,7 +87,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
   * ***直接模式 _ 總覽**
 
-  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接模式架構的圖例" border="false":::
   
   直接模式中採用的用戶端架構可讓您以可預測的方式進行網路使用，並對 Azure Cosmos DB 複本進行多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端為每個 DB 複本配置最多 10 _ *通道* *。 通道是一個 TCP 連線，其前面會有要求緩衝區，也就是30個要求的深度。 屬於複本的通道會視複本的 **服務端點** 的需要進行動態配置。 當使用者在直接模式中發出要求時， **TransportClient** 會根據資料分割索引鍵，將要求路由傳送至適當的服務端點。 **要求佇列** 會在服務端點之前對要求進行緩衝處理。
 
