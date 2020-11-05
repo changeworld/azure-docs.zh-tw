@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 29518fb971649087d8a5afa39d69c7fc2c014f98
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116729"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331089"
 ---
 | 資源 | 目標 | 固定限制 |
 |----------|--------------|------------|
@@ -21,7 +21,7 @@ ms.locfileid: "92116729"
 | 每個儲存體同步服務的同步群組 | 200 個同步群組 | 是 |
 | 每個儲存體同步服務的已註冊伺服器 | 99 部伺服器 | 是 |
 | 每個同步群組的雲端端點 | 1 個雲端端點 | 是 |
-| 每個同步群組的伺服器端點 | 50 個伺服器端點 | 否 |
+| 每個同步群組的伺服器端點 | 100 個伺服器端點 | 是 |
 | 每部伺服器的伺服器端點 | 30 個伺服器端點 | 是 |
 | 每個同步群組的檔案系統物件 (目錄和檔案) | 1 億個物件 | 否 |
 | 目錄中的檔案系統物件 (目錄和檔案) 數目上限 | 500 萬個物件 | 是 |

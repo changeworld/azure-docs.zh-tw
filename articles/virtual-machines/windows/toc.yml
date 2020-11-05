@@ -558,7 +558,7 @@
     - name: 保護 VM
       items:
         - name: 建議
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Just-In-Time 存取
           href: ../../security-center/security-center-just-in-time.md
         - name: 使用 Bastion
@@ -666,7 +666,7 @@
         - name: Azure VM 代理程式
           href: ../extensions/agent-windows.md
         - name: 減輕風險的理論式執行
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: 監視中繼資料
           href: instance-metadata-service.md
         - name: 啟用巢狀虛擬化
@@ -959,7 +959,7 @@
         - name: 使用加速網路
           href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 指派公用 DNS 名稱
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: DNS 解析
           href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 設定受控識別

@@ -3,8 +3,10 @@
 - name: 概觀
   href: media-services-overview.md
   items:
-    - name: 案例和可用性
+    - name: 常見的案例
       href: scenarios-and-availability.md
+    - name: 區域可用性
+      href: availability-regions-v-2.md
     - name: 概念
       href: media-services-concepts.md
 - name: 開始使用

@@ -127,6 +127,7 @@
           items:
             - name: 設定 - Azure 入口網站
               href: data-box-disk-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: 教學課程
           items:
             - name: 1 - 訂購
@@ -177,6 +178,7 @@
           items:
             - name: 設定 - Azure 入口網站
               href: data-box-heavy-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: 教學課程
           items:
             - name: 1 - 訂購

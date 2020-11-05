@@ -1527,6 +1527,8 @@
           href: sequr-tutorial.md
         - name: Serraview 空間使用量軟體解決方案
           href: serraview-space-utilization-software-solutions-tutorial.md
+        - name: Services@SoSafe
+          href: servicessosafe-tutorial.md
         - name: ServiceChannel
           href: servicechannel-tutorial.md
         - name: ServiceNow

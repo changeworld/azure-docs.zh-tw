@@ -86,6 +86,7 @@
       href: dns-settings.md
     - name: 監視器診斷記錄
       href: firewall-diagnostics.md
+      displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Azure 監視器記錄
       href: log-analytics-samples.md
     - name: Azure 防火牆活頁簿

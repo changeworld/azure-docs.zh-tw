@@ -1,18 +1,18 @@
 ---
 title: 了解保留折扣 - 適用於 PostgreSQL Single 的 Azure 資料庫伺服器
 description: 了解保留折扣如何套用至適用於 PostgreSQL Single 的 Azure 資料庫伺服器。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: d6b32df7264066daa0bc7298a04453dad4fc9937
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ace362872f0b7ba8e2f3d0302c887e2465c62982
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147246"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240336"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>保留折扣如何套用至適用於 PostgreSQL Single 的 Azure 資料庫伺服器
 
@@ -20,7 +20,7 @@ ms.locfileid: "92147246"
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 
-保留折扣採「不用則作廢」的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。</br>
+保留折扣採 **不用則作廢** 的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。</br>
 
 當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會失去保留時數。
 
@@ -30,15 +30,15 @@ ms.locfileid: "92147246"
 
 下列範例說明如何根據所購買的核心數目，以及其執行時間，套用適用於 PostgreSQL Single 的 Azure 資料庫伺服器保留容量折扣。
 
-**範例 1**：您針對 8 虛擬核心購買適用於 PostgreSQL Single 的 Azure 資料庫伺服器保留容量。 如果您執行的 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器符合其餘的保留屬性，則會針對 8 虛擬核心的 PostgreSQL Single 伺服器計算使用量向您收取隨用隨付價格的費用，而您可就一小時的 8 虛擬核心 PostgreSQL Single 伺服器計算使用量獲得保留折扣。</br>
+**範例 1** ：您針對 8 虛擬核心購買適用於 PostgreSQL Single 的 Azure 資料庫伺服器保留容量。 如果您執行的 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器符合其餘的保留屬性，則會針對 8 虛擬核心的 PostgreSQL Single 伺服器計算使用量向您收取隨用隨付價格的費用，而您可就一小時的 8 虛擬核心 PostgreSQL Single 伺服器計算使用量獲得保留折扣。</br>
 
 對於下列其餘範例，假設您所購買的適用於 PostgreSQL Single 的 Azure 資料庫伺服器保留容量適用於 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器，而且其餘的保留屬性符合執行中的 PostgreSQL Single 伺服器。
 
 * **範例 2：** 您執行兩部具有 8 虛擬核心的適用於 PostgreSQL Single 的 Azure 資料庫伺服器，每部各執行一小時。 16 虛擬核心保留折扣會套用至 8 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器計算使用量。
 
-* **範例 3**：您會從下午 1 點到 1:30 執行一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 您會從下午 1:30 到 2 點執行另一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 兩者都在保留折扣的涵蓋範圍內。
+* **範例 3** ：您會從下午 1 點到 1:30 執行一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 您會從下午 1:30 到 2 點執行另一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 兩者都在保留折扣的涵蓋範圍內。
 
-* **範例 4**：您會從下午 1 點到 1:45 執行一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 您會從下午 1:30 到 2 點執行另一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 您需要就 15 分鐘的重疊時間支付隨用隨付價格的費用。 保留折扣會套用至其餘時間的計算使用量。
+* **範例 4** ：您會從下午 1 點到 1:45 執行一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 您會從下午 1:30 到 2 點執行另一部 16 虛擬核心適用於 PostgreSQL Single 的 Azure 資料庫伺服器。 您需要就 15 分鐘的重疊時間支付隨用隨付價格的費用。 保留折扣會套用至其餘時間的計算使用量。
 
 若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](./understand-reserved-instance-usage-ea.md)。
 
