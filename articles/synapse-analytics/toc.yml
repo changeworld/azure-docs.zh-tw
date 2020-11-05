@@ -21,13 +21,13 @@
     - name: 1 建立 Synapse 工作區
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2 使用 SQL 集區進行分析
+    - name: 2 使用專用的 SQL 集區進行分析
       href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 3 使用 Spark 進行分析
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4 使用隨選 SQL 進行分析
+    - name: 4 使用無伺服器 SQL 集區進行分析
       href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 5 分析儲存體帳戶中的資料
@@ -119,7 +119,7 @@
                   href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Synapse 工作區的受控識別
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: 集區和隨選
+                - name: SQL 集區
                   href: ./sql/access-control.md
                   displayname: 'access, control'
         - name: 工具整合 (AI、ETL、BI)
@@ -149,6 +149,8 @@
                   displayname: links
                 - name: 使用受控 Vnet 佈建和保護連結服務
                   href: ./data-integration/linked-service.md
+                - name: 從受限制的網路連線到 Synapse 工作區
+                  href: security/how-to-connect-to-workspace-from-restricted-network.md
 - name: Synapse SQL
   items:
     - name: 概觀
@@ -156,10 +158,10 @@
         - name: Synapse SQL 架構
           href: sql/overview-architecture.md
           displayName: overview
-        - name: SQL 隨選
+        - name: 無伺服器 SQL 集區
           href: sql/on-demand-workspace-overview.md
           displayname: overview
-        - name: SQL 集區
+        - name: 專用的 SQL 集區
           href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           displayname: overview
         - name: 架構
@@ -168,17 +170,17 @@
           href: sql/overview-features.md
         - name: 資源耗用模型
           href: sql/resource-consumption-models.md
-        - name: SQL 隨選最佳做法
+        - name: 最佳做法無伺服器 SQL 集區
           href: sql/best-practices-sql-on-demand.md
-        - name: SQL 集區最佳做法
+        - name: 最佳做法專用的 SQL 集區
           href: sql/best-practices-sql-pool.md
     - name: 快速入門
       items:
-        - name: 使用 Synapse Studio 建立 SQL 集區
+        - name: 使用 Synapse Studio 建立專用的 SQL 集區
           href: quickstart-create-sql-pool-studio.md
-        - name: 使用 Azure 入口網站建立 SQL 集區
+        - name: 使用 Azure 入口網站建立專用的 SQL 集區
           href: quickstart-create-sql-pool-portal.md
-        - name: 使用 SQL 集區載入資料
+        - name: 使用專用 SQL 集區載入資料
           items:
             - name: COPY 陳述式
               href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -189,11 +191,11 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: 使用 SQL 隨選
+        - name: 使用無伺服器 SQL 集區
           href: quickstart-sql-on-demand.md
     - name: 教學課程
       items:
-        - name: 使用隨選 SQL 來分析資料
+        - name: 使用無伺服器 SQL 集區來分析資料
           href: ./sql/tutorial-data-analyst.md
         - name: Power BI Desktop
           href: ./sql/tutorial-connect-power-bi-desktop.md
@@ -489,7 +491,7 @@
               items:
                 - name: 使用 Apache Spark 匯入和匯出資料
                   href: ./spark/synapse-spark-sql-pool-import-export.md
-- name: Synapse 連結
+- name: Synapse Link
   items:
     - name: 快速入門
       items:
@@ -517,12 +519,16 @@
           href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 使用 Apache Spark 查詢 Azure Cosmos DB 分析存放區
           href: ./synapse-link/how-to-query-analytical-store-spark.md
-        - name: 使用 Apache Spark 將資料從 Synapse Link 複製到 SQL 集區
+        - name: 使用 Apache Spark 將資料從 Synapse Link 複製到專用的 SQL 集區
           href: ./synapse-link/how-to-copy-to-sql-pool.md
-        - name: 使用隨選 SQL 查詢 Azure Cosmos DB 分析存放區
+        - name: 使用無伺服器 SQL 集區查詢 Azure Cosmos DB 分析存放區
           href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: 管線和資料流程
   items:
+    - name: 快速入門
+      items:
+        - name: 使用複製活動將資料載入 SQL 集區
+          href: quickstart-copy-activity-load-sql-pool.md
     - name: 概念
       items:
         - name: 管線與活動
@@ -1007,13 +1013,13 @@
       href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 客戶自助
       items:
-        - name: SQL 隨選
+        - name: 無伺服器 SQL 集區
           href: sql/resources-self-help-sql-on-demand.md
     - name: 合作夥伴
       items:

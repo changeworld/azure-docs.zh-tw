@@ -128,7 +128,7 @@
               href: graphical-runbook-sdk.md
         - name: 監視 Runbook
           items:
-            - name: 監視 Runbook 輸出
+            - name: 設定 Runbook 輸出
               href: automation-runbook-output-and-messages.md
             - name: 處理圖形化 Runbook 中的錯誤
               href: automation-runbook-graphical-error-handling.md
@@ -343,7 +343,7 @@
       href: 'https://azure.microsoft.com/updates/?product=automation'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=automation'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'http://stackoverflow.com/questions/tagged/azure-automation'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

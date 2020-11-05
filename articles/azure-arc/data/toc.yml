@@ -116,6 +116,8 @@
           items:
             - name: 備份與還原
               href: backup-restore-postgresql-hyperscale.md
+            - name: 變更 PostgreSQL 連接埠
+              href: change-postgresql-port.md
             - name: 設定和調整
               items:
                 - name: 顯示設定

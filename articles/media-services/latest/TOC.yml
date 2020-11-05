@@ -437,5 +437,7 @@
       href: limits-quotas-constraints.md
     - name: Azure 雲端和區域
       href: azure-clouds-regions.md
+    - name: 區域代碼名稱和端點
+      href: azure-regions-code-names.md
     - name: 文件更新
       href: docs-release-notes.md

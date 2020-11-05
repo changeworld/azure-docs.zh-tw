@@ -39,6 +39,8 @@
           href: tutorial-private-endpoint-sql-portal.md
         - name: 連線到 SQL Server - PowerShell
           href: tutorial-private-endpoint-sql-powershell.md
+        - name: 連線到 SQL server - Azure CLI
+          href: tutorial-private-endpoint-sql-cli.md
 - name: 概念
   items:
     - name: 私人端點

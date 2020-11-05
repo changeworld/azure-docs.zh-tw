@@ -74,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: 訊息擴充
       href: tutorial-message-enrichments.md
-    - name: 使用計量和診斷記錄
+    - name: 使用計量和記錄
       href: tutorial-use-metrics-and-diags.md
     - name: 執行手動容錯移轉
       href: tutorial-manual-failover.md

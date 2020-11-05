@@ -98,14 +98,50 @@
       href: samples/web-calling-sample.md
 - name: 參考資料
   items:
+    - name: 參考文件概觀
+      href: concepts/reference.md
     - name: REST API 文件
       href: 'https://docs.microsoft.com/rest/api/communication/'
-    - name: 呼叫程式庫 (Android/Java)
-      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
-    - name: 呼叫程式庫 (JS)
-      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
-    - name: 呼叫程式庫 (iOS)
-      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+    - name: 呼叫程式庫
+      items:
+        - name: 呼叫 (JavaScript)
+          href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+        - name: 呼叫 (Android/Java)
+          href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+        - name: 呼叫 (iOS)
+          href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+    - name: 聊天程式庫
+      items:
+        - name: 聊天 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
+        - name: 聊天 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
+        - name: 聊天 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+    - name: SMS 程式庫
+      items:
+        - name: SMS (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
+        - name: SMS (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
+        - name: SMS (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
+    - name: 系統管理程式庫
+      items:
+        - name: 系統管理 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-administration'
+        - name: 系統管理 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationadministration'
+        - name: 系統管理 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-administration'
+    - name: 通用程式庫
+      items:
+        - name: 通用 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
+        - name: 通用 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
+        - name: 通用 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
 - name: 資源
   items:
     - name: 版本資訊

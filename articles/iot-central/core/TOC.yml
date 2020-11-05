@@ -221,6 +221,8 @@
           href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: IoT Central API 參考
       href: /rest/api/iotcentral/
+    - name: 客戶資料落地
+      href: iot-central-customer-data-residency.md
     - name: 客戶資料要求
       href: iot-central-customer-data-requests.md
     - name: 支援的瀏覽器

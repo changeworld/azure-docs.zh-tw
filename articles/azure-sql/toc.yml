@@ -361,7 +361,7 @@
               href: database/network-access-controls-overview.md
             - name: DNS 別名
               href: database/dns-alias-overview.md
-            - name: vNet 端點
+            - name: VNet 端點
               href: database/vnet-service-endpoint-rule-overview.md
             - name: 私人連結
               href: database/private-endpoint-overview.md
@@ -993,6 +993,8 @@
                   href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: 管理性
               items:
+                - name: SQL IaaS Agent 擴充功能
+                  href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                 - name: 專用主機
                   href: virtual-machines/windows/dedicated-host.md
                 - name: 擴充 SQL 2008 和 R2 的支援
@@ -1021,12 +1023,14 @@
                   href: virtual-machines/windows/change-sql-server-version.md
                 - name: 儲存體
                   href: virtual-machines/windows/storage-configuration.md
+                - name: 自動修補
+                  href: virtual-machines/windows/automated-patching.md
                 - name: Azure Key Vault 整合
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 將儲存體遷移至 UltraSSD
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: 使用 SQL VM RP 進行註冊
-                  displayName: 'resource provider, registration'
+                - name: 安裝 SQL IaaS Agent 擴充功能
+                  displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: 自動註冊
                       href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
@@ -1034,12 +1038,6 @@
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: 大量註冊多個 VM
                       href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-                - name: 將管理工作自動化
-                  items:
-                    - name: 使用 SQL Server IaaS 代理程式擴充
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: 自動修補
-                      href: virtual-machines/windows/automated-patching.md
             - name: 遷移
               items:
                 - name: SQL Server 資料庫到 VM
