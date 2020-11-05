@@ -1,7 +1,7 @@
 ---
 title: 監視和查看 ML 執行記錄 & 計量
 titleSuffix: Azure Machine Learning
-description: 監視您的 Azure ML 實驗並查看回合計量，以加強模型建立程式。 使用 widget 和 studio 入口網站來探索執行狀態和查看執行記錄。
+description: 監視您的 ML 實驗，並使用 Jupyter widget 和 Azure Machine Learning studio 來查看執行計量。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316682"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360593"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>監視和查看 ML 執行記錄和計量
-
-
 
 在本文中，您將瞭解如何監視 Azure Machine Learning 執行和查看其記錄。 在您可以查看記錄之前，您必須先加以啟用。 如需詳細資訊，請參閱 [在 AZURE ML 定型回合中啟用記錄](how-to-track-experiments.md)。
 

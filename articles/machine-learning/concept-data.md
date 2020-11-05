@@ -1,7 +1,7 @@
 ---
 title: 保護雲端中的資料存取
 titleSuffix: Azure Machine Learning
-description: 瞭解如何安全地從 Azure Machine Learning 連接到您的資料，以及如何使用資料集和資料存放區進行 ML 工作。 資料存放區可以儲存 Azure Blob 的資料，Azure Data Lake Gen 1 & 2、SQL db 和 Azure Databricks。
+description: 瞭解如何使用 Azure Machine Learning 資料存放區和資料集，安全地連線到您在 Azure 上的資料儲存體。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322240"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360168"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 

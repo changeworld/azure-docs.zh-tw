@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
+ms.custom: how-to, contperfq1, data4ml
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 9f2f2386e37dd7dbfe4c41bb3a83fcc46232cf6d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f82c3b894a54dc08b0f6dd73108d6f4b2c17f8d6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312727"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359828"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -37,7 +37,7 @@ ms.locfileid: "93312727"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要建立及使用資料集，您需要：
 
@@ -169,11 +169,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| (索引) |PassengerId|存活的|Pclass|名稱|性|年齡|SibSp|Parch|票證|費用|小屋|著手
+| (索引) |PassengerId|存活的|Pclass|Name|性|年齡|SibSp|Parch|票證|費用|小屋|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley (Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|True|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+2|3|是|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 若要在工作區中重複使用和共用實驗中的資料集，請 [註冊您的資料集](#register-datasets)。
 

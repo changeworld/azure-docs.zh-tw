@@ -1,18 +1,18 @@
 ---
 title: 將資料移轉至「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
 description: 此文件概述從 MongoDB 到 Cosmos DB 的資料移轉必要條件。
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.author: jasonh
-ms.openlocfilehash: 8e3a0ac6996762bc7f4bd1a6d9dde8cfb59db662
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: 8ad164f79f150e0cd6ab4a083f21b22c59f7c729
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096422"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361580"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

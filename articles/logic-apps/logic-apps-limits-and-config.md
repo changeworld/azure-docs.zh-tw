@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 10/09/2020
-ms.openlocfilehash: f722345b5be91a09bc513064b476f0b94eda765d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/04/2020
+ms.openlocfilehash: 7248c82882d32ae0eb225a9ec4c3b48dff3b9fcb
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094501"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360032"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -108,14 +108,23 @@ ms.locfileid: "93094501"
 
 以下是單一邏輯應用程式執行的限制：
 
+### <a name="loops"></a>迴圈
+
 | 名稱 | 限制 | 注意 |
 | ---- | ----- | ----- |
-| 觸發程序並行 | - 並行控制關閉時無限制 <p><p>- 並行控制開啟時，預設限制為 25，在啟用並行之後便無法進行復原。 您可以將預設值變更為介於 1 到 50 之間的值 (含 1 與 50)。 | 此限制描述可以同時 (或稱「平行」) 執行的邏輯應用程式執行個體數目上限。 <p><p>**注意** ：當並行開啟時， [解除批次處理陣列](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制會減少至 100 個項目。 <p><p>若要將預設限制變更為介於 1 到 50 個之間 (含 1 與 50)，請參閱[變更觸發程序並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[循序觸發執行個體](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
-| 最大等候執行數 | - 若沒有並行，等候執行的數目下限為 1，上限則為 50。 <p><p>- 若有並行，等候執行的數目下限為 10，加上並行執行 (觸發並行) 的數目。 您可以將數目上限變更為 100 (含)。 | 此限制描述當您的邏輯應用程式準備執行並行執行個體數目上限時，可以等候執行的邏輯應用程式執行個體數目上限。 <p><p>若要變更預設限制，請參閱[變更等候執行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
 | Foreach 陣列項目 | 100,000 | 此限制描述 "for each" 迴圈可以處理的陣列項目數目上限。 <p><p>若要篩選較大的陣列，您可以使用[查詢動作](logic-apps-perform-data-operations.md#filter-array-action)。 |
-| Foreach 並行 | 並行控制關閉時的預設限制為 20。 您可以將預設值變更為介於 1 到 50 之間的值 (含 1 與 50)。 | 此限制是可以同時 (或平行) 執行的 "for each" 迴圈反覆項目數目上限。 <p><p>若要將預設限制變更為介於 1 到 50 個之間 (含 1 與 50)，請參閱[變更 "for each" 並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[循序執行 "for each" 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
-| SplitOn 項目 | - 沒有觸發並行，則為 100,000 <p><p>- 若有觸發並行，則為 100 | 對於傳回陣列的觸發程序，您可以指定使用 'SplitOn' 屬性的運算式，將[陣列項目分割或解除批次為多個工作流程執行個體](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)以供處理，而非使用 "Foreach" 迴圈。 這個運算式會參考要用於建立及執行每個陣列項目的工作流程執行個體的陣列。 <p><p>**注意** ：當並行開啟時，SplitOn 限制會減少至 100 個項目。 |
-| 反覆運算之前 | - 預設值：60 <p><p>- 最大值：5,000 | |
+| Foreach 並行 | 並行關閉：20 <p><p>平行存取于： <p><p>-預設值：20 <br>-最小值：1 <br>-最大值：50 | 此限制是可以同時 (或平行) 執行的 "for each" 迴圈反覆項目數目上限。 <p><p>若要變更此限制，請參閱 [變更 "for each" 並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) 或 [依序執行 "for each" 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
+| 反覆運算之前 | - 預設值：60 <br>-最小值：1 <br>-最大值：5000 | 在邏輯應用程式執行期間，"Until" 迴圈可以有的最高迴圈數目。 <p><p>若要變更此限制，請在「Until」循環圖表形中選取 [ **變更限制** ]，並指定 [ **計數** ] 屬性的值。 |
+| 直到 timeout | -Default： PT1H (1 小時)  | 「Until」迴圈在結束之前可以執行的最長時間，而且是以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定。 逾時值的評估會以每個迴圈循環為基礎。 如果迴圈中有任何動作所花費的時間超過逾時限制，目前的循環並不會停止。 但不會啟動下一個循環，因為不符合限制條件。 <p><p>若要變更此限制，請在「Until」循環圖表形中選取 [ **變更限制** ]，並指定 **Timeout** 屬性的值。 |
+||||
+
+### <a name="concurrency-and-debatching"></a>並行和解除批次處理
+
+| 名稱 | 限制 | 注意 |
+| ---- | ----- | ----- |
+| 觸發程序並行 | 使用平行存取：無限制 <p><p>在啟用平行存取的情況下，您無法在啟用之後復原： <p><p>-預設值：25 <br>-最小值：1 <br>-最大值：50 | 這項限制是可同時執行或平行執行的邏輯應用程式實例數目上限。 <p><p>**注意** ：當並行開啟時， [解除批次處理陣列](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制會減少至 100 個項目。 <p><p>若要變更此限制，請參閱[依序](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)[變更觸發程式並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或觸發程式實例。 |
+| 最大等候執行數 | 使用 concurrency off： <p><p>-最小值：1 <br>-最大值：50 <p><p>平行存取于： <p><p>-Min：10加上並存執行數目 (觸發並行)  <br>-最大值：100 | 當您的邏輯應用程式已在執行並行實例數目上限時，此限制是可等候執行的邏輯應用程式實例數目上限。 <p><p>若要變更此限制，請參閱 [變更等候執行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
+| SplitOn 項目 | 並行關閉：100000 <p><p>平行存取于：100 | 對於傳回陣列的觸發程序，您可以指定使用 'SplitOn' 屬性的運算式，將[陣列項目分割或解除批次為多個工作流程執行個體](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)以供處理，而非使用 "Foreach" 迴圈。 這個運算式會參考要用於建立及執行每個陣列項目的工作流程執行個體的陣列。 <p><p>**注意** ：當並行開啟時，SplitOn 限制會減少至 100 個項目。 |
 ||||
 
 <a name="throughput-limits"></a>

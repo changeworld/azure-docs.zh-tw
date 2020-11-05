@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.date: 05/28/2020
-ms.openlocfilehash: 229bcbb8c8c429b7fe4e5878b0e57e74dd828b72
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320660"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359624"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動化機器學習中的特徵工程
 
@@ -29,7 +29,7 @@ ms.locfileid: "93320660"
 
 *特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *AutoML* 實驗中 *特徵化* 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已經知道如何設定 AutoML 實驗。 如需設定的相關資訊，請參閱下列文章：
 
@@ -47,7 +47,7 @@ ms.locfileid: "93320660"
 
 下表顯示 `featurization` [AutoMLConfig 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的已接受設定：
 
-|特徵化設定 | 描述|
+|特徵化設定 | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄和特徵化步驟](#featurization) 。 這是預設設定。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
@@ -62,7 +62,7 @@ ms.locfileid: "93320660"
 > [!NOTE]
 > 如果您打算將 AutoML 建立的模型匯出至 [ONNX 模型](concept-onnx.md)，則 ONNX 格式僅支援以星號表示的特徵化選項 ( "*" ) 。 深入了解[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)。
 
-|特徵化 &nbsp; 步驟| 描述 |
+|特徵化 &nbsp; 步驟| Description |
 | ------------- | ------------- |
 |卸載 **高基數或沒有** 變異數功能 _ |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中都具有相同的值，或是具有高基數 (例如，雜湊、識別碼或 Guid) 。|
 |_*插補遺漏值**_ |若為數值特徵，則會以資料行中的平均值來插補。<br/><br/>針對類別功能，以最頻繁的值插補。|

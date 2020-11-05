@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295541"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360049"
 ---
 # <a name="input-metadata"></a>輸入中繼資料
 
@@ -43,15 +43,15 @@ ms.locfileid: "89295541"
 > 
 > 
 
-| 名稱  | 描述 |
+| Name  | 描述 |
 | --- | --- | 
 | **VideoTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的視訊播放軌。 如需詳細資訊，請參閱 [VideoTracks](#videotracks)。 |
 | **AudioTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的音訊播放軌。 如需詳細資訊，請參閱 [AudioTracks](#audiotracks) |
-| **中繼資料**  |資產檔案的中繼資料 (以索引鍵\值字串表示)。 <br />例如： `<Metadata key="language" value="eng" />` |
+| **中繼資料**  |資產檔案的中繼資料 (以索引鍵\值字串表示)。 <br />例如：`<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>其他子項目
 
-| 名稱 | 描述 |
+| Name | 描述 |
 | --- | --- |
 | **名稱**<br />必要 |資產檔案名稱。 <br /><br />範例： `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />必要 |輸入資產所在的 URL。 若要識別輸出資產所屬的輸入資產，請使用 `Uri` 欄位而非識別碼。|
@@ -65,7 +65,7 @@ ms.locfileid: "89295541"
 
 ## <a name="videotracks"></a>VideoTracks
 
-| 名稱 |  | 描述 |
+| Name | 描述 |
 | --- | --- |
 | **FourCC**<br />必要 |Ffmpeg 所報告的影片編解碼器 FourCC 程式碼。<br /><br />範例： `"FourCC": "avc1"` |
 | **設定檔** |視訊播放軌的設定檔。 <br /><br />範例： `"Profile": "Main"`|
@@ -81,7 +81,7 @@ ms.locfileid: "89295541"
 | **Bitrate** |從資產檔案計算出來的平均影片位速率（以位/秒為單位）。 只會計算基本串流承載，而不會納入封裝負荷。 <br /><br />範例： `"Bitrate": 8421583`|
 | **HasBFrames** |B 畫面格的視訊播放軌數目。 <br /><br />範例： `"HasBFrames": 2`|
 | **中繼資料** |可以用來保存各種資訊的泛型索引鍵/值字串。 <br />請參閱本文結尾的完整範例。 |
-| **識別碼**<br />必要 |此音訊或視訊播放軌之以零為起始的索引。<br /><br /> 此**識別碼**不一定是用於 MP4 檔案中的 TrackID。 <br /><br />範例： `"Id": 2`|
+| **識別碼**<br />必要 |此音訊或視訊播放軌之以零為起始的索引。<br /><br /> 此 **識別碼** 不一定是用於 MP4 檔案中的 TrackID。 <br /><br />範例： `"Id": 2`|
 | **轉碼器** |視訊播放軌轉碼器字串。 <br /><br />範例： `"Codec": "h264"`|
 | **CodecLongName** |音訊或視訊播放軌轉碼器長名稱。 <br /><br />範例： `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
 | **轉碼器** |視訊播放軌轉碼器字串。 <br /><br />範例： `"Codec": "h264"`|
@@ -92,7 +92,7 @@ ms.locfileid: "89295541"
 
 ## <a name="audiotracks"></a>AudioTracks
 
-| 名稱  | 描述 |
+| Name  | 描述 |
 | --- | --- | 
 | **SampleFormat** |樣本格式。 <br /><br />範例： `"SampleFormat": "fltp"`|
 | **ChannelLayout** |聲道配置。 <br /><br />範例： `"ChannelLayout": "stereo"`|
@@ -112,8 +112,8 @@ ms.locfileid: "89295541"
 
 | 名稱 | 描述 |
 | --- | --- |
-| **key**<br />必要 |索引鍵/值組中的索引鍵。 |
-| **value**<br /> 必要 |索引鍵/值組中的值。 |
+| **key**<br />必要 |索引鍵/值組配對中的索引鍵。 |
+| **value**<br /> 必要 |索引鍵/值組配對中的值。 |
 
 ## <a name="schema-example"></a>架構範例
 

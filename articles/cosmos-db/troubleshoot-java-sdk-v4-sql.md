@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: b714c2c1c9524741d2dc0b7e8ff3ed082cadd106
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2dc3df81a62e9a844db2d951b9146b08bdae5ed9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079167"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360797"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>針對搭配使用 Azure Cosmos DB Java SDK v4 和 SQL API 帳戶時所發生的問題進行疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -178,12 +178,12 @@ Azure Cosmos DB Java SDK v4 會使用 SLF4j 做為記錄外觀，以支援登入
 ```
 # this is a sample log4j configuration
 
-# Set root logger level to DEBUG and its only appender to A1.
+# Set root logger level to INFO and its only appender to A1.
 log4j.rootLogger=INFO, A1
 
-log4j.category.com.azure.cosmos=DEBUG
-#log4j.category.io.netty=INFO
-#log4j.category.io.projectreactor=INFO
+log4j.category.com.azure.cosmos=INFO
+#log4j.category.io.netty=OFF
+#log4j.category.io.projectreactor=OFF
 # A1 is set to be a ConsoleAppender.
 log4j.appender.A1=org.apache.log4j.ConsoleAppender
 

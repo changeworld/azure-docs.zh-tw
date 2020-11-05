@@ -1,7 +1,7 @@
 ---
 title: 使用 azureml （資料集）定型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用定型中的資料集
+description: 瞭解如何將您的資料提供給您的本機或遠端計算使用 Azure Machine Learning 資料集進行 ML 模型定型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 70fd8796eb4d17662697410bf97caee835e998ab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: bf1dcb34b762c3dcae39316d804b617edbf2302d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311319"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360729"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集定型
 
@@ -26,7 +26,7 @@ ms.locfileid: "93311319"
 
 Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、 [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）緊密整合。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要建立和訓練資料集，您需要：
 

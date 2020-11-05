@@ -1,18 +1,18 @@
 ---
 title: 針對 Azure Cosmos DB 的 Mongo DB API 中常見的錯誤進行疑難排解
 description: 本檔將討論在 Azure Cosmos DB 的 MongoDB API 中遇到的常見問題進行疑難排解的方法。
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
-ms.author: jasonh
-ms.openlocfilehash: fa33e2ccc5c6cca94ab4e2294a4865745145c1ce
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: 9d76c3d9943300f88a146e82b862624d491cf546
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096320"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360202"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>針對 Azure Cosmos DB 的 MongoDB API 常見問題進行疑難排解
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

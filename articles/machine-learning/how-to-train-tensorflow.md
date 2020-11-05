@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: deedfacc4ff9caa7a8d8e4559cb29b8c34c2868a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c1c6af5f8304fd9093aa0351078b84d3f4d0b5d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314475"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360746"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 TensorFlow 模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "93314475"
 
 無論您是從頭開始開發 TensorFlow 模型，或是將 [現有的模型](how-to-deploy-existing-model.md) 帶入雲端，您都可以使用 Azure Machine Learning 來向外延展開放原始碼訓練作業，以建立、部署、設定版本和監視生產等級的模型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在下列任一環境中執行此程式碼：
 
@@ -58,6 +58,7 @@ import azureml
 
 from azureml.core import Experiment
 from azureml.core import Workspace, Run
+from azureml.core import Environment
 
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
@@ -175,8 +176,6 @@ dependencies:
 依預設，如果未指定基底映射，Azure ML 會使用 CPU 映射 `azureml.core.environment.DEFAULT_CPU_IMAGE` 作為基底映射。 因為此範例會在 GPU 叢集上執行定型，所以您必須指定具有必要 GPU 驅動程式和相依性的 GPU 基礎映射。 Azure ML 會維護一組發佈于 Microsoft Container Registry (MCR) 可供您使用的基底映射，如需詳細資訊，請參閱 [Azure/AzureML 容器 GitHub 存放](https://github.com/Azure/AzureML-Containers) 庫。
 
 ```python
-from azureml.core import Environment
-
 tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
 
 # Specify a GPU base image

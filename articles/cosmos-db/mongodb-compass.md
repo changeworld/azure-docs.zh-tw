@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/05/2020
-author: jasonwhowell
-ms.author: jasonh
-ms.openlocfilehash: c005c4fc15f7c7955a7254f386597eee01800da5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: christopheranderson
+ms.author: chrande
+ms.openlocfilehash: 6c48639279556d495be57a2933f1d7f3c139294a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126595"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361109"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 連線至 Azure Cosmos DB 的 MongoDB 版 API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -39,21 +39,21 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
     :::image type="content" source="./media/mongodb-compass/mongodb-compass-connection.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
-2. 在 Cosmos DB 中的 [主要/次要連接字串]  旁，按一下顯示為 [複製到剪貼簿]  的按鈕。 按一下此按鈕，會將您的整個連接字串複製到剪貼簿。
+2. 在 Cosmos DB 中的 [主要/次要連接字串] 旁，按一下顯示為 [複製到剪貼簿] 的按鈕。 按一下此按鈕，會將您的整個連接字串複製到剪貼簿。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[複製到剪貼簿] 按鈕的螢幕擷取畫面":::
 
-3. 在您的桌面/電腦上開啟 Compass，並按一下 [連線]  ，然後按一下 [連線至...]  。
+3. 在您的桌面/電腦上開啟 Compass，並按一下 [連線]，然後按一下 [連線至...]。
 
-4. Compass 會自動偵測剪貼簿中的連接字串，並出現提示詢問您是否要使用該連接字串來連線。 按一下 [是]  ，如下列螢幕擷取畫面所示。
+4. Compass 會自動偵測剪貼簿中的連接字串，並出現提示詢問您是否要使用該連接字串來連線。 按一下 [是]，如下列螢幕擷取畫面所示。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="螢幕擷取畫面顯示對話方塊，說明您的剪貼簿上有連接字串。":::
 
-5. 在上述步驟中按一下 [是]  後，將會自動填入連接字串中的詳細資料。 請移除在 [複本集名稱]  欄位中自動填入的值，以確定該欄位保留為空白。
+5. 在上述步驟中按一下 [是] 後，將會自動填入連接字串中的詳細資料。 請移除在 [複本集名稱] 欄位中自動填入的值，以確定該欄位保留為空白。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="螢幕擷取畫面：顯示 [複本集名稱] 文字方塊。":::
 
-6. 按一下頁面底部的 [連線]  。 您的 Cosmos DB 帳戶和資料庫現在應該會顯示在 MongoDB Compass 內。
+6. 按一下頁面底部的 [連線]。 您的 Cosmos DB 帳戶和資料庫現在應該會顯示在 MongoDB Compass 內。
 
 ## <a name="next-steps"></a>後續步驟
 

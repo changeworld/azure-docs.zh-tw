@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee28addd5f6ac0faaf03d29d712c4e750ed6e293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89177477"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359983"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 入口網站為受控識別指派對資源的存取權
 
@@ -30,7 +30,7 @@ ms.locfileid: "89177477"
 
 ## <a name="prerequisites"></a>先決條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱 [系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)** 。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
 ## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 Azure RBAC 將受控識別存取權指派給另一個資源
@@ -41,7 +41,7 @@ ms.locfileid: "89177477"
 
 2. 瀏覽至您要修改其存取控制的資源。 在此範例中，我們會為 Azure 虛擬機器提供對儲存體帳戶的存取權，因此我們瀏覽至儲存體帳戶。
 
-3. 選取資源的 [存取控制 (IAM)]**** 頁面，然後選取 [+ 新增角色指派]****。 接著，指定 [角色]****、[存取權指派對象]****，並指定對應的 [訂用帳戶]****。 在搜尋條件區域中，您應該會看到資源。 選取資源，然後選取 [儲存]****。 
+3. 選取資源的 [存取控制 (IAM)] 頁面，然後選取 [+ 新增角色指派]。 接著，指定 [角色]、[存取權指派對象]，並指定對應的 [訂用帳戶]。 在搜尋條件區域中，您應該會看到資源。 選取資源，然後選取 [儲存]。 
 
    ![存取控制 (IAM) 螢幕擷取畫面](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

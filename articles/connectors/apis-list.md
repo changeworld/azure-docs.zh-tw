@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400803"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359743"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -79,12 +79,12 @@ ms.locfileid: "91400803"
 
 Logic Apps 提供內建的觸發程式和動作，可讓您建立以排程為基礎的工作流程、協助邏輯應用程式與其他應用程式和服務通訊、透過邏輯應用程式控制工作流程，以及管理或運算元據。
 
-| 名稱 | 描述 |
+| Name | 描述 |
 |------|-------------|
-| [![排程內建連接器 ][schedule-icon]<br> **排程**][schedule-doc] | -在指定的週期上執行邏輯應用程式，範圍從基本到高階排程，以及 [**週期** 觸發][schedule-recurrence-doc]程式。 <br>-執行邏輯應用程式，該邏輯應用程式需要以 [**滑動視窗** 觸發][schedule-sliding-window-doc]程式來處理連續區塊中的資料。 <br>-使用 [**延遲** 動作][schedule-delay-doc]將邏輯應用程式暫停一段指定的持續時間。 <br>-暫停您的邏輯應用程式，直到指定的日期和時間加上[**延遲到動作為止**][schedule-delay-until-doc]。 |
-| [![Batch 內建連接器 ][batch-icon]<br> **批次**][batch-doc] | - 透過 [批次訊息]**** 觸發程序，分批處理訊息。 <br>- 透過 [將訊息傳送至批次]**** 動作，呼叫具有現有批次觸發程序的邏輯應用程式。 |
+| [![排程內建連接器 ][schedule-icon]<br> **排程**][schedule-doc] | -在指定的週期上執行邏輯應用程式，範圍從基本到高階排程，以及 [**週期** 觸發][schedule-recurrence-doc]程式。 <br>-執行邏輯應用程式，該邏輯應用程式需要以 [**滑動視窗** 觸發][schedule-sliding-window-doc]程式來處理連續區塊中的資料。 <br>-使用 [**延遲** 動作][schedule-delay-doc]將邏輯應用程式暫停一段指定的持續時間。 <br>-暫停您的邏輯應用程式，直到指定的日期和時間加上 [**延遲到動作為止**][schedule-delay-until-doc]。 |
+| [![Batch 內建連接器 ][batch-icon]<br> **批次**][batch-doc] | - 透過 [批次訊息] 觸發程序，分批處理訊息。 <br>- 透過 [將訊息傳送至批次] 動作，呼叫具有現有批次觸發程序的邏輯應用程式。 |
 | [![HTTP 內建連接器 ][http-icon]<br> **HTTP**][http-doc] | 使用 HTTP 的觸發程序和動作呼叫 HTTP 或 HTTPS 端點。 其他 HTTP 內建觸發程式和動作包括 [HTTP + Swagger 內建連接器][http-swagger-doc] 和 [HTTP + Webhook][http-webhook-doc]。 |
-| [![要求內建連接器 ][http-request-icon]<br> **要求**][http-request-doc] | - 透過 [要求]**** 觸發程序，讓邏輯應用程式得以從其他應用程式或服務呼叫、在 Event Grid 資源事件上觸發，或在 Azure 資訊安全中心警示的回應上觸發。 <br>- 透過 [回應]**** 動作，將回應傳送到應用程式或服務。 |
+| [![要求內建連接器 ][http-request-icon]<br> **要求**][http-request-doc] | - 透過 [要求] 觸發程序，讓邏輯應用程式得以從其他應用程式或服務呼叫、在 Event Grid 資源事件上觸發，或在 Azure 資訊安全中心警示的回應上觸發。 <br>- 透過 [回應] 動作，將回應傳送到應用程式或服務。 |
 | [![Azure API 管理內建連接器 ][azure-api-management-icon]<br> **azure api <br> 管理**][azure-api-management-doc] | 呼叫透過 Azure API 管理控管和發佈的自有 API 所定義的觸發程序和動作。 |
 | [![Azure App Services 內建連接器 ][azure-app-services-icon]<br> **Azure App <br> 服務**][azure-app-services-doc] | 呼叫 API Apps 或 Web Apps (裝載於 Azure App Service)。 如果包含 Swagger，這些應用程式所定義的動作與觸發程序看起來像是任何其他第一級觸發程序和動作。 |
 | [![Azure Logic Apps 內建連接器 ][azure-logic-apps-icon]<br> **Azure 邏輯 <br> 應用程式**][nested-logic-app-doc] | 呼叫以 **要求** 觸發程式開頭的其他邏輯應用程式。 |
@@ -94,7 +94,7 @@ Logic Apps 提供內建的觸發程式和動作，可讓您建立以排程為基
 
 Logic Apps 提供在邏輯應用程式的工作流程中執行您自己的程式碼的內建動作：
 
-| 名稱 | 描述 |
+| Name | 描述 |
 |------|-------------|
 | [![Azure Functions 內建連接器 ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | 呼叫 Azure 函式，以從邏輯應用程式執行自訂程式碼片段 (C# 或 Node.js)。 |
 | [![內嵌程式碼內建連接器 ][inline-code-icon]<br> **內嵌程式碼**][inline-code-doc] | 從邏輯應用程式新增並執行 JavaScript 程式碼片段。 |
@@ -104,25 +104,25 @@ Logic Apps 提供在邏輯應用程式的工作流程中執行您自己的程式
 
 Logic Apps 提供在邏輯應用程式工作流程中結構化及控制動作的內建動作：
 
-| 名稱 | 描述 |
+| Name | 描述 |
 |------|-------------|
 | [![條件內建動作 ][condition-icon]<br> **條件**][condition-doc] | 根據條件為 true 或 false，評估條件並執行不同的動作。 |
-| [![針對 ][for-each-icon]<br> **每個**的內建動作][for-each-doc] | 對陣列中的每個項目執行相同的動作。 |
-| [![範圍內建動作 ][scope-icon]<br> **範圍**][scope-doc] | 將動作分成數個「範圍」**，這些範圍會在範圍中的動作執行完成後取得自己的狀態。 |
-| [![切換內建動作 ][switch-icon]<br> **參數**][switch-doc] | 將動作分成數個「案例」**，這些案例會獲派唯一值 (預設案例除外)。 僅執行其指派值符合運算式、物件或語彙基元結果的案例。 如果沒有相符項目存在，請執行預設案例。 |
+| [![針對 ][for-each-icon]<br> **每個** 的內建動作][for-each-doc] | 對陣列中的每個項目執行相同的動作。 |
+| [![範圍內建動作 ][scope-icon]<br> **範圍**][scope-doc] | 將動作分成數個「範圍」，這些範圍會在範圍中的動作執行完成後取得自己的狀態。 |
+| [![切換內建動作 ][switch-icon]<br> **參數**][switch-doc] | 將動作分成數個「案例」，這些案例會獲派唯一值 (預設案例除外)。 僅執行其指派值符合運算式、物件或語彙基元結果的案例。 如果沒有相符項目存在，請執行預設案例。 |
 | [![終止內建動作 ][terminate-icon]<br> **終止**][terminate-doc] | 停止正在執行的邏輯應用程式工作流程。 |
-| [![][until-icon]<br> **Until**直到內建動作為止][until-doc] | 重複動作，直到符合指定的條件或某些狀態已改變為止。 |
+| [![][until-icon]<br> **Until** 直到內建動作為止][until-doc] | 重複動作，直到符合指定的條件或某些狀態已改變為止。 |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>管理或操作資料
 
 Logic Apps 提供使用資料輸出及其格式的內建動作：
 
-| 名稱 | 描述 |
+| Name | 描述 |
 |------|-------------|
-| [![資料作業內建動作 ][data-operations-icon]<br> **資料作業**][data-operations-doc] | 執行資料相關作業： <p>- **撰寫**：從多個輸入與各種類型建立單一輸出。 <br>- **建立 CSV 資料表**：從 JSON 物件陣列建立以逗號分隔 (CSV) 的資料表。 <br>- **建立 HTML 資料表**：從 JSON 物件陣列建立 HTML 資料表。 <br>- **篩選陣列**：從符合您準則的另一個陣列建立陣列。 <br>- **加入**：從陣列中的所有項目建立字串，並使用指定的分隔符號來分隔這些項目。 <br>- **剖析 json**：從屬性及其在 JSON 內容中的值建立方便使用的標記，以便您可以在工作流程中使用這些屬性。 <br>- **選取**：轉換另一個陣列中的項目或值，並將這些項目對應至指定的屬性，以建立 JSON 物件陣列。 |
-| ![日期時間內建動作][date-time-icon]<br>**日期時間** | 執行時間戳記相關作業： <p>- **新增至時間**：將指定的單位數新增至時間戳記。 <br>- **轉換時區**：將時間戳記從來源時區轉換為目標時區。 <br>- **目前時間**：傳回目前的時間戳記作為字串。 <br>- **取得未來時間**：傳回目前時間戳記加上指定時間單位的結果。 <br>- **取得過去時間**：傳回目前時間戳記減去指定時間單位的結果。 <br>- **從時間減去**：從時間戳記減去時間單位數字。 |
-| [![變數內建的動作 ][variables-icon]<br> **變數**][variables-doc] | 執行變數相關作業： <p>- **附加到陣列變數**：插入一個值，作為變數所儲存陣列中的最後一個項目。 <br>- **附加到字串變數**：插入一個值，作為變數所儲存字串中的最後一個字元。 <br>- **遞減變數**：依常數值遞減變數。 <br>- **遞增變數**：依常數值遞增變數。 <br>- **初始化變數**：建立變數，並宣告其資料類型和初始值。 <br>- **設定變數**：將不同的值指派給現有的變數。 |
+| [![資料作業內建動作 ][data-operations-icon]<br> **資料作業**][data-operations-doc] | 執行資料相關作業： <p>- **撰寫** ：從多個輸入與各種類型建立單一輸出。 <br>- **建立 CSV 資料表** ：從 JSON 物件陣列建立以逗號分隔 (CSV) 的資料表。 <br>- **建立 HTML 資料表** ：從 JSON 物件陣列建立 HTML 資料表。 <br>- **篩選陣列** ：從符合您準則的另一個陣列建立陣列。 <br>- **加入** ：從陣列中的所有項目建立字串，並使用指定的分隔符號來分隔這些項目。 <br>- **剖析 json** ：從屬性及其在 JSON 內容中的值建立方便使用的標記，以便您可以在工作流程中使用這些屬性。 <br>- **選取** ：轉換另一個陣列中的項目或值，並將這些項目對應至指定的屬性，以建立 JSON 物件陣列。 |
+| ![日期時間內建動作][date-time-icon]<br>**日期時間** | 執行時間戳記相關作業： <p>- **新增至時間** ：將指定的單位數新增至時間戳記。 <br>- **轉換時區** ：將時間戳記從來源時區轉換為目標時區。 <br>- **目前時間** ：傳回目前的時間戳記作為字串。 <br>- **取得未來時間** ：傳回目前時間戳記加上指定時間單位的結果。 <br>- **取得過去時間** ：傳回目前時間戳記減去指定時間單位的結果。 <br>- **從時間減去** ：從時間戳記減去時間單位數字。 |
+| [![變數內建的動作 ][variables-icon]<br> **變數**][variables-doc] | 執行變數相關作業： <p>- **附加到陣列變數** ：插入一個值，作為變數所儲存陣列中的最後一個項目。 <br>- **附加到字串變數** ：插入一個值，作為變數所儲存字串中的最後一個字元。 <br>- **遞減變數** ：依常數值遞減變數。 <br>- **遞增變數** ：依常數值遞增變數。 <br>- **初始化變數** ：建立變數，並宣告其資料類型和初始值。 <br>- **設定變數** ：將不同的值指派給現有的變數。 |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -131,14 +131,14 @@ Logic Apps 提供使用資料輸出及其格式的內建動作：
 
 Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或系統將工作、進程和工作流程自動化：
 
-| 名稱 | 描述 |
+| Name | 描述 |
 |------|-------------|
 | [![Azure 服務匯流排受控連接器 ][azure-service-bus-icon]<br> **Azure 服務匯流排**][azure-service-bus-doc] | 利用 Logic Apps 中最常用的連接器，管理非同步訊息、工作階段和主題訂用帳戶。 |
 | [![SQL Server 受控連接器 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 連接到您的 SQL Server 內部部署或雲端中的 Azure SQL Database，讓您可以記錄管理、執行預存程式或執行查詢。 |
 | [![Azure Blob 儲存體受控連接器 ][azure-blob-storage-icon]<br> **Azure Blob <br> 儲存體**][azure-blob-storage-doc] | 連接到您的儲存體帳戶，以便建立和管理 blob 內容。 |
 | [![Office 365 Outlook managed connector ][office-365-outlook-icon]<br> **office 365 <br> outlook**][office-365-outlook-doc] | 連接到您的公司或學校電子郵件帳戶，讓您可以建立和管理電子郵件、工作、行事曆事件和會議、連絡人、要求等等。 |
 | [![SFTP-SSH 管理的連接器 ][sftp-ssh-icon]<br> **SFTP-ssh**][sftp-ssh-doc] | 使用 SSH 連線到可從網際網路存取的 SFTP 伺服器，以便使用您的檔案和資料夾。 |
-| [![SharePoint Online 管理的連接器 ][sharepoint-online-icon]<br> **sharepoint <br> online**][sharepoint-online-doc] | 連接至 SharePoint Online，讓您可以管理檔案、附件、資料夾等。 |
+| [![SharePoint Online 管理的連接器 ][sharepoint-online-icon]<br> **sharepoint <br> online**][sharepoint-online-doc] | 連線到 SharePoint Online，以便管理檔案、附件、資料夾等等。 |
 | [![Azure 佇列受控連接器 ][azure-queues-icon]<br> **azure <br> 佇列**][azure-queues-doc] | 連接到您的 Azure 儲存體帳戶，讓您可以建立和管理佇列和訊息。 |
 | [![FTP 受控連接器 ][ftp-icon]<br> **ftp**][ftp-doc] | 連接到您可以從網際網路存取的 FTP 伺服器，以便使用您的檔案和資料夾。 |
 | [![檔案系統管理的連接器 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc] | 連接到您的內部部署檔案共用，讓您可以建立和管理檔案。 |
@@ -151,7 +151,9 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 ## <a name="on-premises-connectors"></a>內部部署連接器
 
-以下是一些常用的標準連接器，Logic Apps 可用於存取內部部署系統中的資料和資源。 您必須先[下載、安裝及設定內部部署資料閘道][gateway-doc]，才可建立內部部署系統連線。 此閘道會提供安全的通訊通道，而不需設定必要的網路基礎結構。
+您必須先[下載、安裝及設定內部部署資料閘道][gateway-doc]，才可建立內部部署系統連線。 此閘道會提供安全的通訊通道，而不需設定必要的網路基礎結構。 
+
+以下是 *一些* 常用的標準連接器，Logic Apps 可用於存取內部部署系統中的資料和資源。 如需內部部署連接器清單，請參閱 [支援的資料來源](../logic-apps/logic-apps-gateway-connection.md#supported-connections)。
 
 :::row:::
     :::column:::
@@ -218,16 +220,16 @@ Logic Apps 提供標準連接器，可讓您在建立及支付 [整合帳戶](..
 :::row-end:::
 :::row:::
     :::column:::
-        [![一般檔案解碼動作一般檔案 ][flat-file-decode-icon]<br> ** <br> 解碼**][flat-file-decode-doc]
+        [![一般檔案解碼動作一般檔案 ][flat-file-decode-icon]<br> **<br> 解碼**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![一般檔案編碼動作一般檔案 ][flat-file-encode-icon]<br> ** <br> 編碼**][flat-file-encode-doc]
+        [![一般檔案編碼動作一般檔案 ][flat-file-encode-icon]<br> **<br> 編碼**][flat-file-encode-doc]
     :::column-end:::
     :::column:::
         [![整合帳戶動作 ][integration-account-icon]<br> **整合 <br> 帳戶**][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![液體轉換動作 ][liquid-icon]<br> **液體** <br> **transforms**轉][json-liquid-transform-doc]
+        [![液體轉換動作 ][liquid-icon]<br> **液體** <br> **transforms** 轉][json-liquid-transform-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -270,7 +272,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 ## <a name="ise-connectors"></a>ISE 連接器
 
-針對您在專用整合服務環境中建立和執行的邏輯應用程式 [ (ISE) ](#integration-service-environment)，邏輯應用程式設計工具會使用 **核心** 標籤來識別在您 ISE 中執行的內建觸發程式和動作。 在 ISE 中執行的受控連接器會顯示 **ISE** 標籤，而在全域、多租使用者 Logic Apps 服務中執行的連接器則不會顯示任一標籤。 這份清單會顯示目前有 ISE 版本的連接器：
+針對您在專用整合服務環境中建立和執行的邏輯應用程式 [ (ISE)](#integration-service-environment)，邏輯應用程式設計工具會使用 **核心** 標籤來識別在您 ISE 中執行的內建觸發程式和動作。 在 ISE 中執行的受控連接器會顯示 **ISE** 標籤，而在全域、多租使用者 Logic Apps 服務中執行的連接器則不會顯示任一標籤。 這份清單會顯示目前有 ISE 版本的連接器：
 
 :::row:::
     :::column:::
@@ -367,17 +369,17 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 ## <a name="triggers-and-action-types"></a>觸發程式和動作類型
 
-連接器可以提供 *觸發*程式、 *動作*或兩者。 *觸發*程式是任何邏輯應用程式中的第一個步驟，通常會指定引發觸發程式的事件，並開始執行您的邏輯應用程式。 例如，FTP 連接器的觸發程式會啟動邏輯應用程式「當新增或修改檔案時」。 有些觸發程式會定期檢查指定的事件或資料，然後在偵測到指定的事件或資料時引發。 其他觸發程式會等候，但會在特定事件發生或有新資料可用時立即引發。 觸發程式也會將任何必要的資料傳遞至您的邏輯應用程式。 您的邏輯應用程式可以在整個工作流程中讀取和使用這些資料。 例如，Office 365 Outlook 連接器有一個觸發程式：「新的電子郵件送達時」，可將該電子郵件中的內容傳遞至邏輯應用程式的工作流程。
+連接器可以提供 *觸發* 程式、 *動作* 或兩者。 *觸發* 程式是任何邏輯應用程式中的第一個步驟，通常會指定引發觸發程式的事件，並開始執行您的邏輯應用程式。 例如，FTP 連接器的觸發程式會啟動邏輯應用程式「當新增或修改檔案時」。 有些觸發程式會定期檢查指定的事件或資料，然後在偵測到指定的事件或資料時引發。 其他觸發程式會等候，但會在特定事件發生或有新資料可用時立即引發。 觸發程式也會將任何必要的資料傳遞至您的邏輯應用程式。 您的邏輯應用程式可以在整個工作流程中讀取和使用這些資料。 例如，Office 365 Outlook 連接器有一個觸發程式：「新的電子郵件送達時」，可將該電子郵件中的內容傳遞至邏輯應用程式的工作流程。
 
 觸發程式引發之後，Azure Logic Apps 會建立邏輯應用程式的實例，並開始在邏輯應用程式的工作流程中執行 *動作* 。 動作是遵循觸發程式的步驟，並在邏輯應用程式的工作流程中執行工作。 例如，您可以建立邏輯應用程式，以從 SQL 資料庫取得客戶資料，並在後續的動作中處理該資料。
 
 以下是 Azure Logic Apps 提供的一般觸發程式類型：
 
-* *週期觸發*程式：此觸發程式會依照指定的排程執行，且不會與特定的服務或系統緊密相關聯。
+* *週期觸發* 程式：此觸發程式會依照指定的排程執行，且不會與特定的服務或系統緊密相關聯。
 
-* *輪詢觸發*程式：此觸發程式會根據指定的排程定期輪詢特定的服務或系統，檢查是否有新資料，或是否發生特定事件。 如果有新資料可用或發生特定事件，則觸發程式會建立並執行您的邏輯應用程式的新實例，現在可以使用傳遞做為輸入的資料。
+* *輪詢觸發* 程式：此觸發程式會根據指定的排程定期輪詢特定的服務或系統，檢查是否有新資料，或是否發生特定事件。 如果有新資料可用或發生特定事件，則觸發程式會建立並執行您的邏輯應用程式的新實例，現在可以使用傳遞做為輸入的資料。
 
-* *推送觸發*程式：此觸發程式會等候並接聽新的資料，或發生事件。 當有新資料可用或發生事件時，觸發程式會建立並執行邏輯應用程式的新實例，現在可以使用傳遞做為輸入的資料。
+* *推送觸發* 程式：此觸發程式會等候並接聽新的資料，或發生事件。 當有新資料可用或發生事件時，觸發程式會建立並執行邏輯應用程式的新實例，現在可以使用傳遞做為輸入的資料。
 
 <a name="connections"></a>
 
@@ -393,7 +395,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 ## <a name="custom-apis-and-connectors"></a>自訂 API 和連接器
 
-若要呼叫可執行自訂程式碼或不可作為連接器的 API，您可[建立自訂 API Apps](../logic-apps/logic-apps-create-api-app.md)，以擴充 Logic Apps 平台。 您也可以針對「任何」** 以 REST 或 SOAP 為基礎的 API [建立自訂連接器](../logic-apps/custom-connector-overview.md)，以便將這些 API 提供給 Azure 訂用帳戶中的任何邏輯應用程式使用。 若要對任何人公開自訂 API Apps 或連接器以使用於 Azure，您可以[提交連接器進行 Microsoft 認證](/connectors/custom-connectors/submit-certification)。
+若要呼叫可執行自訂程式碼或不可作為連接器的 API，您可[建立自訂 API Apps](../logic-apps/logic-apps-create-api-app.md)，以擴充 Logic Apps 平台。 您也可以針對「任何」以 REST 或 SOAP 為基礎的 API [建立自訂連接器](../logic-apps/custom-connector-overview.md)，以便將這些 API 提供給 Azure 訂用帳戶中的任何邏輯應用程式使用。 若要對任何人公開自訂 API Apps 或連接器以使用於 Azure，您可以[提交連接器進行 Microsoft 認證](/connectors/custom-connectors/submit-certification)。
 
 > [!NOTE]
 > 您在 [整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中部署和執行的邏輯應用程式，可以直接存取 Azure 虛擬網路中的資源。 如果您的自訂連接器需要內部部署資料閘道，而且您在 ISE 以外建立了這些連接器，ISE 中的邏輯應用程式也可以使用這些連接器。

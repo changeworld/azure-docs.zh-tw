@@ -1,7 +1,7 @@
 ---
 title: 記錄 ML 實驗和計量
 titleSuffix: Azure Machine Learning
-description: 監視您的 Azure ML 實驗並監視執行計量，以強化模型建立程序。 使用 run.log、Run.start_logging 或 ScriptRunConfig 將記錄新增至定型指令碼。
+description: 在 ML 訓練回合上啟用記錄，以監視即時執行計量，並協助診斷錯誤和警告。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318439"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361058"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>在 Azure ML 定型回合中啟用記錄
+# <a name="enable-logging-in-ml-training-runs"></a>在 ML 訓練回合中啟用記錄
 
 
 Azure Machine Learning Python SDK 可讓您使用預設的 Python 記錄套件和 SDK 特有的功能來記錄即時資訊。 您可以登入本機，並將記錄傳送至入口網站中的工作區。

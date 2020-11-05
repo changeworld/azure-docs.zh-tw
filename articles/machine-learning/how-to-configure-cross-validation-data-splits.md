@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: ed11a1b772acb31268f3d0a61fba10301ad62e18
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320470"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360100"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
 
@@ -31,7 +31,7 @@ AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azur
 > [!NOTE]
 > Studio 目前支援定型/驗證資料分割和交叉驗證選項，但不支援針對您的驗證集指定個別的資料檔案。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 針對本文，您需要
 

@@ -10,13 +10,13 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: 04882c71a2d80e01029dd0a8b476f21a658e632b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317025"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359590"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>偵測資料集的資料漂移 (預覽) 
 
@@ -38,7 +38,7 @@ ms.locfileid: "93317025"
 
 您可以使用 Python SDK 或 Azure Machine Learning studio 來查看資料漂移度量。  您可以透過與 Azure Machine Learning 工作區相關聯的 [Azure 應用程式 insights](../azure-monitor/app/app-insights-overview.md) 資源取得其他計量和見解。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
@@ -85,7 +85,7 @@ Azure Machine Learning 藉由計算單一計量來簡化漂移偵測，以抽象
 
 資料集監視器相依于下列 Azure 服務。
 
-|Azure 服務  |描述  |
+|Azure 服務  |Description  |
 |---------|---------|
 | *資料集* | 漂移會使用 Machine Learning 資料集來取得定型資料，並比較資料以進行模型定型。  產生資料的設定檔是用來產生一些回報的度量，例如 min、max、相異值、相異值計數。 |
 | *Azureml 管線和計算* | 漂移計算工作裝載于 azureml 管線中。  作業會視需要觸發，或依排程在漂移監視器建立時所設定的計算上執行。
@@ -221,9 +221,9 @@ monitor = monitor.enable_schedule()
 
 * **監視設定** 。  這些設定適用于已排程的資料集監視器管線，將會加以建立。 
 
-    | 設定 | 描述 | 提示 | 可變動 | 
+    | 設定 | Description | 提示 | 可變動 | 
     | ------- | ----------- | ---- | ------- |
-    | 名稱 | 資料集監視的名稱。 | | 否 |
+    | Name | 資料集監視的名稱。 | | 否 |
     | 特性 | 將分析一段時間內的資料漂移的功能清單。 | 設定為模型的輸出功能 (s) 來測量概念漂移。 請勿包含在一段時間內自然漂移的功能， (月份、年份、索引等 ) 。 您可以在調整功能的清單之後，回填和現有的資料漂移監視器。 | 是 | 
     | 計算目標 | Azure Machine Learning 計算目標來執行資料集監視作業。 | | 是 | 
     | 啟用 | 啟用或停用資料集監視器管線上的排程 | 停用排程，以使用回填設定來分析歷程記錄資料。 您可以在建立資料集監視之後啟用它。 | 是 | 

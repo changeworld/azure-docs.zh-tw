@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 11/02/2020
+ms.openlocfilehash: 47aada0abe2520ba81689ca8fa17787fde847d83
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147214"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360238"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -71,9 +71,11 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 **使用 TempDB：** 根據預設，Data Factory 會使用全域臨時表，在載入過程中儲存資料。 您也可以取消核取 [使用 TempDB] 選項，並改為要求 Data Factory 將臨時保存資料表儲存在使用者資料庫中，該資料庫位於要用於此接收的資料庫中。
 
-![Tempdb](media/data-flow/tempdb.png "Tempdb")
+![使用 Temp DB](media/data-flow/tempdb.png "使用 Temp DB")
 
 ## <a name="cache-sink"></a>快取接收
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
  
 當資料流程將資料寫入 Spark 快取，而不是資料存放區時，就會有快取 *接收器* 。 在對應資料流程中，您可以使用快取 *查閱* ，多次參考相同流程中的這項資料。 當您想要在運算式中參考資料，但是不想要明確地將資料行聯結至資料行時，這會很有用。 快取接收可協助查閱資料存放區的最大值，以及比對錯誤代碼與錯誤訊息資料庫的常見範例。 
 
@@ -102,9 +104,14 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 ![顯示自訂接收順序的螢幕擷取畫面。](media/data-flow/custom-sink-ordering.png "顯示自訂接收順序的螢幕擷取畫面。")
 
+> [!NOTE]
+> 利用快取 [查閱](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)時，請確定您的接收順序將快取的接收設定為0。
+
+![自訂接收順序](media/data-flow/cache-2.png "自訂接收順序")
+
 ## <a name="data-preview-in-sink"></a>接收中的資料預覽
 
 當您在偵錯工具叢集上提取資料預覽時，不會將任何資料寫入至您的接收。 將會傳回資料外觀的快照集，但不會將任何內容寫入目的地。 若要測試將資料寫入至您的接收，請從管線畫布執行管線偵錯工具。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 現在您已建立資料流程，請將 [資料流程活動新增至您的管線](concepts-data-flow-overview.md)。

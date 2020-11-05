@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 87532876551cacbd4da03b95b10c41600989a947
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186581"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359709"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -62,7 +62,7 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>支援以遞迴方式將存取控制清單設定 (Acl) 
 
-將 ACL 變更以遞迴方式從父目錄套用到子專案的功能處於 [公開預覽](recursive-access-control-lists.md)狀態。 在這項功能的目前版本中，您可以使用 PowerShell、.NET SDK 和 Python SDK 來套用 ACL 變更。 尚未提供 JAVA SDK、Azure CLI、Azure 入口網站或 Azure 儲存體總管的支援。
+將 ACL 變更以遞迴方式從父目錄套用到子專案的能力已正式運作。 在這項功能的目前版本中，您可以使用 PowerShell、Azure CLI 和 .NET、JAVA 和 Python SDK 來套用 ACL 變更。 Azure 入口網站或 Azure 儲存體總管尚未提供支援。
 
 <a id="known-issues-tools"></a>
 

@@ -1,7 +1,7 @@
 ---
 title: 在 ML 管線中移動資料
 titleSuffix: Azure Machine Learning
-description: 瞭解 Azure Machine Learning 管線中資料的輸入 & 輸出。
+description: 瞭解 Azure Machine Learning 管線如何內嵌資料，以及如何在管線步驟之間管理和移動資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: d96f5c0b6b1bb4a38724f53de68c9aad6608b258
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq4, devx-track-python, data4ml
+ms.openlocfilehash: bf5bfd8c2047764f9a03889c8fdd5012dc38ab65
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316602"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359760"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 

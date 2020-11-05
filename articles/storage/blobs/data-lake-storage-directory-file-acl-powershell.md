@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8083d42d9ce79bcf31e3875f2ff5d5f06970a7ff
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e2138fc03fcdb614daef2051b7fc1a840e421658
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131508"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359726"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
@@ -23,7 +23,7 @@ ms.locfileid: "92131508"
 
 [參考](https://docs.microsoft.com/powershell/module/Az.Storage/)  | [Gen1 至 Gen2 對應](#gen1-gen2-map)  | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -285,7 +285,7 @@ $filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
 $filesystem.ACL
 ```
 
-這個範例會取得 **目錄**的 acl，然後將 acl 列印到主控台。
+這個範例會取得 **目錄** 的 acl，然後將 acl 列印到主控台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -390,7 +390,7 @@ foreach ($a in $aclnew)
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
 ```
 
-### <a name="set-an-acl-recursively-preview"></a>以遞迴方式設定 ACL (預覽) 
+### <a name="set-an-acl-recursively"></a>以遞迴方式設定 ACL
 
 您可以在父目錄的現有子專案上以遞迴方式新增、更新和移除 Acl，而不需要為每個子專案個別進行這些變更。 如需詳細資訊，請參閱 [設定 (acl 的存取控制清單) 以遞迴方式進行 Azure Data Lake Storage Gen2](recursive-access-control-lists.md)。
 
@@ -400,7 +400,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 如何對應至 Data Lake Storage Gen2 的 Cmdlet。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 備註 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|根據預設，Get-AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item Cmdlet 的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|

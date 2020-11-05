@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249547"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360667"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>為 StorSimple 8000 系列裝置部署 StorSimple 裝置管理員服務
 
@@ -58,7 +58,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 各項 StorSimple 裝置管理員服務具有以下屬性：
 
 * **名稱** – 在建立時指派給您的 StorSimple 裝置管理員服務的名稱。 **服務建立之後，即無法變更服務名稱。這也適用于其他實體，例如裝置、磁片區、磁片區容器，以及無法在 Azure 入口網站中重新命名的備份原則。**
-* **狀態** – 服務狀態，包括 [使用中]****、[建立中]**** 或 [線上]****。
+* **狀態** – 服務狀態，包括 [使用中]、[建立中] 或 [線上]。
 * **位置** – 部署 StorSimple 裝置所在的地理位置。
 * **訂用帳戶** – 與您的服務相關聯的計費訂用帳戶。
 
@@ -73,7 +73,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
 ### <a name="to-delete-a-service"></a>刪除服務
 
-1. 搜尋您想要刪除的服務。 按一下 [資源]**** 圖示，然後輸入適當的字詞以進行搜尋。 在搜尋結果中，按一下您要刪除的服務。
+1. 搜尋您想要刪除的服務。 按一下 [資源] 圖示，然後輸入適當的字詞以進行搜尋。 在搜尋結果中，按一下您要刪除的服務。
 
     ![搜尋要刪除的服務](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
@@ -81,13 +81,13 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
     ![刪除服務](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
-3. 在確認通知中按一下 [是]****。 刪除服務可能需要數分鐘的時間。
+3. 在確認通知中按一下 [是]。 刪除服務可能需要數分鐘的時間。
 
     ![確認刪除](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>取得服務註冊金鑰。
 
-在您成功建立服務之後，您必須在 StorSimple 裝置註冊服務。 若要註冊您的第一個 StorSimple 裝置，您必須使用服務註冊金鑰。 若要使用現有的 StorSimple 服務註冊其他裝置，您需要註冊金鑰和服務資料加密金鑰 (在註冊期間於第一個裝置上產生)。 如需服務資料加密金鑰的詳細資訊，請參閱 [StorSimple 安全性](storsimple-8000-security.md)。 可進入 [StorSimple 裝置管理員] 刀鋒視窗上的 [金鑰]**** 取得註冊金鑰。
+在您成功建立服務之後，您必須在 StorSimple 裝置註冊服務。 若要註冊您的第一個 StorSimple 裝置，您必須使用服務註冊金鑰。 若要使用現有的 StorSimple 服務註冊其他裝置，您需要註冊金鑰和服務資料加密金鑰 (在註冊期間於第一個裝置上產生)。 如需服務資料加密金鑰的詳細資訊，請參閱 [StorSimple 安全性](storsimple-8000-security.md)。 可進入 [StorSimple 裝置管理員] 刀鋒視窗上的 [金鑰] 取得註冊金鑰。
 
 執行下列步驟以取得服務註冊金鑰。
 
@@ -103,14 +103,14 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 執行下列步驟以重新產生服務註冊金鑰。
 
 ### <a name="to-regenerate-the-service-registration-key"></a>重新產生服務註冊金鑰
-1. 在 [StorSimple 裝置管理員]**** 中，移至 [管理]**&gt;[金鑰]** ****。
+1. 在 [StorSimple 裝置管理員]中，移至 [管理] **&gt;[金鑰]** 。
     
-    ![[金鑰] 刀鋒視窗](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![移至 [金鑰] 分頁](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. 在 [金鑰]**** 刀鋒視窗中，按一下 [重新產生]****。
+2. 在 [金鑰] 刀鋒視窗中，按一下 [重新產生]。
 
     ![按一下重新產生](./media/storsimple-8000-manage-service/regenregkey3.png)
-3. 在 [重新產生服務註冊金鑰]**** 刀鋒視窗中，檢閱重新產生金鑰時所需的動作。 向此服務註冊的所有後續裝置會使用新的註冊金鑰。 按一下 [重新產生]**** 以確認。 重新產生完成之後會通知您。
+3. 在 [重新產生服務註冊金鑰] 刀鋒視窗中，檢閱重新產生金鑰時所需的動作。 向此服務註冊的所有後續裝置會使用新的註冊金鑰。 按一下 [重新產生] 以確認。 重新產生完成之後會通知您。
 
     ![確認重新產生](./media/storsimple-8000-manage-service/regenregkey4.png)
 

@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408010"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360644"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解譯性：自動化機器學習中的模型說明 (預覽) 
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解釋性：自動化機器學習中的模型說明 (預覽)
 
 
 
@@ -31,7 +31,7 @@ ms.locfileid: "91408010"
 - 啟用視覺效果，以協助您查看資料中的模式和說明。
 - 在推斷或評分期間執行可解譯性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 可解譯性功能。 執行 `pip install azureml-interpret` 以取得必要的套件。
 - 建立自動化 ML 實驗的知識。 如需有關如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此 [回歸模型教學](tutorial-auto-train-models.md) 課程，或瞭解如何 [設定自動化 ML 實驗](how-to-configure-auto-train.md)。

@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347636"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360013"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
-在 Azure 認知搜尋中，您可以透過新增至 [搜尋索引](search-what-is-an-index.md)的 **建議工具** 結構來啟用「搜尋即輸入」。 建議工具支援兩種體驗： *自動* 完成（完成整個詞彙查詢的部分輸入），以及邀請按一下以進行特定相符的 *建議* 。 自動完成會產生查詢。 建議產生相符的檔。
+在 Azure 認知搜尋中，您可以透過新增至 [搜尋索引](search-what-is-an-index.md)的 **建議工具** 結構來啟用「搜尋即輸入」。 建議工具支援兩種體驗： *自動* 完成（完成整個詞彙查詢的部分輸入），以及邀請點擊以符合特定比對的 *建議* 。 自動完成會產生查詢。 建議產生相符的檔。
 
 下列 [以 c # 建立第一個應用程式](tutorial-csharp-type-ahead-and-suggestions.md) 的螢幕擷取畫面說明這兩者。 自動完成會預見可能的詞彙，以 "in" 完成「臺灣」。 建議是迷你搜尋結果，其中的欄位（例如旅館名稱）表示來自索引的相符旅館搜尋檔。 建議您可以呈現任何提供描述性資訊的欄位。
 
@@ -44,6 +44,8 @@ ms.locfileid: "93347636"
 
 + 使用預設標準 Lucene 分析器 (`"analyzer": null`) 或 [語言分析器](index-add-language-analyzers.md) (例如， `"analyzer": "en.Microsoft"` 欄位上的) 
 
+如果您嘗試使用預先存在的欄位來建立建議工具，API 將不會允許它。 在索引編制期間會產生前置詞，而在兩個或更多字元組合中的部分詞彙則會與整個詞彙一起標記。 由於現有的欄位已經標記化，如果您想要將索引新增至建議工具，就必須重建索引。 如需詳細資訊，請參閱 [如何重建 Azure 認知搜尋索引](search-howto-reindex.md)。
+
 ### <a name="choose-fields"></a>選擇欄位
 
 雖然建議工具有數個屬性，但它主要是一組您要啟用搜尋型別體驗的字串欄位。 每個索引都有一個建議工具，因此建議工具清單必須包含提供內容的所有欄位，以提供建議和自動完成。
@@ -64,12 +66,6 @@ ms.locfileid: "93347636"
 
 > [!NOTE]
 > 如果您需要解決分析器條件約束（例如，如果您需要關鍵字或 ngram 分析器來處理特定的查詢案例），您應該針對相同的內容使用兩個不同的欄位。 這可讓其中一個欄位具有建議工具，而另一個欄位可以使用自訂分析器設定來設定。
-
-### <a name="when-to-create-a-suggester"></a>建立建議工具的時機
-
-建立建議工具的最佳時機是當您同時建立欄位定義時。
-
-如果您嘗試使用預先存在的欄位來建立建議工具，API 將不會允許它。 在索引編制期間會產生前置詞，而在兩個或更多字元組合中的部分詞彙則會與整個詞彙一起標記。 由於現有的欄位已經標記化，如果您想要將索引新增至建議工具，就必須重建索引。 如需詳細資訊，請參閱 [如何重建 Azure 認知搜尋索引](search-howto-reindex.md)。
 
 ## <a name="create-using-rest"></a>使用 REST 建立
 

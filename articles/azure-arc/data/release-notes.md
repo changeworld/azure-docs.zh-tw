@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321714"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359811"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>版本資訊-Azure Arc 啟用的資料服務 (預覽) 
 

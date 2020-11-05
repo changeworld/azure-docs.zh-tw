@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295459"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360848"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全性控制 V2：記錄和威脅偵測
 
@@ -38,9 +38,9 @@ ms.locfileid: "91295459"
 
 - [使用 Azure Sentinel 的網路威脅情報](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -75,9 +75,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [Azure 資訊安全中心內的威脅防護](../../security-center/threat-protection.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -109,9 +109,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [使用 DNS 分析解決方案收集您的 DNS 基礎結構的深入解析](../../azure-monitor/insights/dns-analytics.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -137,11 +137,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [瞭解 Azure 資訊安全中心資料收集](../../security-center/security-center-enable-data-collection.md)
 
-- [啟用及設定反惡意程式碼監視](../fundamentals/antimalware.md#enable-and-configure-antimalware-monitoring-using-powershell-cmdlets)
+**責任** ：共用
 
-**責任**：共用
-
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -169,9 +167,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [如何使 Azure Sentinel 上線](../../sentinel/quickstart-onboard.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -195,9 +193,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [Azure 資訊安全中心警示和建議匯出](../../security-center/continuous-export.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -223,9 +221,9 @@ Microsoft 會維護大部分 Azure PaaS 和 SaaS 服務的時間來源。 針對
 
 - [如何停用 Azure 服務的輸入 UDP](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**責任**：共用
+**責任** ：共用
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [原則和標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

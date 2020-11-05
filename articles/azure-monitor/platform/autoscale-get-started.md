@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342210"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361197"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -140,6 +140,20 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 ### <a name="monitoring"></a>監視
 
 提供應用程式的健康情況檢查路徑之後，您可以使用 Azure 監視器來監視網站的健康情況。 從入口網站的 **健康情況檢查** 分頁，按一下頂端工具列中的 **計量** 。 這會開啟新的分頁，您可以在其中看到網站的歷程記錄健康情況狀態，以及建立新的警示規則。 如需有關監視網站的詳細資訊， [請參閱 Azure 監視器上的指南](../../app-service/web-sites-monitor.md)。
+
+## <a name="moving-autoscale-to-a-different-region"></a>將自動調整移至不同區域
+本節說明如何將 Azure 自動調整移至相同訂用帳戶和資源群組下的另一個區域。 您可以使用 REST API 來移動自動調整設定。
+### <a name="prerequisite"></a>必要條件
+1. 請確認訂用帳戶和資源群組可供使用，而且來源和目的地區域中的詳細資料都相同。
+1. 確定 Azure 自動調整功能可在 [您想要移至的 azure 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中使用。
+
+### <a name="move"></a>移動
+使用 [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) 在新的環境中建立自動調整設定。 在目的地區域中建立的自動調整規模設定將會是來源區域中自動調整規模設定的複本。
+
+無法移動與來源區域中的自動調整設定關聯所建立的[診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)。 完成 autosale 設定的建立之後，您必須在目的地區域中重新建立診斷設定。 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>深入瞭解如何在 Azure 區域間移動資源
+若要深入瞭解如何在 Azure 中的區域與災難復原之間移動資源，請參閱[將資源移至新的資源群組或訂](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)用帳戶
 
 ## <a name="next-steps"></a>後續步驟
 - [建立活動記錄警示以監視訂用帳戶的所有自動調整引擎作業](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 10/30/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 3f3196e775ff9e7d8064559069414952f09a3016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348333"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360219"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -48,7 +48,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
-如果您使用範本來部署產品，而且可以在 Azure Marketplace 和 GitHub 上使用，您可以建立並註冊兩個不同的 GUID：
+如果您使用範本來部署產品，而且可以在 Azure Marketplace 和 GitHub 上使用，您可以建立並註冊兩個不同的 Guid：
 
 - Azure Marketplace 中的產品 A
 - GitHub 上的產品 A
@@ -311,10 +311,6 @@ Microsoft 可讓合作夥伴看到客戶部署解決方案的情形，並深入�
 **此方法和列冊數位合作夥伴 (DPOR) 類似嗎？**
 
 這種將部署與使用狀況連結至合作夥伴解決方案的新方法，提供將合作夥伴解決方案連結到 Azure 使用量的機制。 DPOR 可將諮詢 (系統整合者) 或管理 (受控服務提供者) 合作夥伴與客戶的 Azure 訂用帳戶建立關聯。
-
-**使用 Azure 儲存體 GUID 產生器表單的好處是什麼？**
-
-Azure 儲存體的 GUID 產生器表單保證會產生所需格式的 GUID。 此外，如果您是使用任何 Azure 儲存體的資料平面追蹤方法，可以利用相同的 GUID 來追蹤 Marketplace 控制平面。 這可讓您運用夥伴屬性的單一整合 GUID，而不需要維護個別的 GUID。
 
 **對於 Azure Marketplace 中的解決方案範本供應項目，我可以使用私人自訂的 VHD 嗎？**
 

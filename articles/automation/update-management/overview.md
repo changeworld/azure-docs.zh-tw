@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348673"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360780"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -18,6 +18,9 @@ ms.locfileid: "93348673"
 
 > [!NOTE]
 > 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。
+
+> [!NOTE]
+> 目前並不支援直接從啟用 Arc 的伺服器啟用更新管理。 請參閱 [從您的自動化帳戶啟用更新管理](../../automation/update-management/enable-from-automation-account.md) ，以瞭解需求以及如何為您的伺服器啟用。
 
 若要在 Azure VM 上自動下載並安裝可用的 *重大* 和 *安全性* 修補程式，請參閱 WINDOWS vm 的 [自動 VM 來賓修補](../../virtual-machines/windows/automatic-vm-guest-patching.md) 。
 

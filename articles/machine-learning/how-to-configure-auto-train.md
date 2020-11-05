@@ -1,7 +1,7 @@
 ---
 title: 建立自動化機器學習實驗
 titleSuffix: Azure Machine Learning
-description: 自動化機器學習服務可為您挑選演算法，並產生馬上可進行部署的模型。 了解可用來設定自動化機器學習實驗的選項。
+description: 瞭解如何定義自動化機器學習實驗的資料來源、計算和設定。
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 09fe93d4e3ba50ced6c8f07d6fe25ace2376c388
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python,contperfq1, automl
+ms.openlocfilehash: 009018335e57943392b83047702f24890bf714d5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320523"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359607"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "93320523"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。

@@ -8,22 +8,18 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1b2773b1d860126748e0dd05134d778073478d9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 55a49c5f8d066cd6893c46ef9942462bb7911307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741672"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360610"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure CLI 啟用受控磁片的雙重靜態加密
 
-Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜態加密和其他受控磁片加密類型的概念資訊，請參閱磁片加密文章中的 [雙重加密靜態](disk-encryption.md#double-encryption-at-rest) 一節。
+Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜態加密和其他受控磁片加密類型的概念資訊，請參閱磁片加密文章中的 [雙重加密靜態](../disk-encryption.md#double-encryption-at-rest) 一節。
 
-## <a name="supported-regions"></a>支援區域
-
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 安裝最新的 [Azure CLI](/cli/azure/install-az-cli2) ，並使用 [az Login](/cli/azure/reference-index)登入 Azure 帳戶。
 

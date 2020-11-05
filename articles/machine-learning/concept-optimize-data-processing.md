@@ -10,12 +10,13 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: data4ml
+ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719269"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360814"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure Machine Learning 優化資料處理
 
@@ -88,7 +89,7 @@ CSV 檔案通常用來匯入和匯出資料，因為它們很容易在 Excel 中
 
 您可以 `Dask` 使用 [dask-cloudprovider 使用](https://cloudprovider.dask.org/en/latest/#azure) 套件在 Azure ML compute 叢集上建立叢集。 或者，您可以 `Dask` 在計算實例的本機上執行。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Machine Learning 的資料內嵌選項](concept-data-ingestion.md)。
 * [建立和註冊資料集](how-to-create-register-datasets.md)。

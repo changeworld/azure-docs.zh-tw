@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 圖形資料庫的區域端點
 description: 了解如何為您的應用程式連線到最接近的圖形資料庫端點
-author: jasonwhowell
-ms.author: jasonh
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085763"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361782"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB 圖形帳戶的區域端點
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -111,7 +111,7 @@ foreach (string location in readLocations)
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [如何在 Azure Cosmos DB 中管理資料庫帳戶控管](how-to-manage-database-account.md)
 * Azure Cosmos DB 中的[高可用性](high-availability.md)
 * [透過 Azure Cosmos DB 全域散發 - 運作原理](global-dist-under-the-hood.md)

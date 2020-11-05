@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595834"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360304"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>使用 Azure PowerShell 建立裝載多個網站的應用程式閘道
 
-您可以使用 Azure PowerShell，在建立[應用程式閘道](overview.md)時[設定裝載多個網站](multiple-site-overview.md)。 在本文中，您可以使用虛擬機器擴展集來定義後端位址集區。 接著，您可以根據擁有的網域來設定接聽程式和規則，確保網路流量會抵達集區中的適當伺服器。 本文假設您擁有多個網域，並使用 *www.contoso.com* 和 *www.fabrikam.com*的範例。
+您可以使用 Azure PowerShell，在建立[應用程式閘道](overview.md)時[設定裝載多個網站](multiple-site-overview.md)。 在本文中，您可以使用虛擬機器擴展集來定義後端位址集區。 接著，您可以根據擁有的網域來設定接聽程式和規則，確保網路流量會抵達集區中的適當伺服器。 本文假設您擁有多個網域，並使用 *www.contoso.com* 和 *www.fabrikam.com* 的範例。
 
 在本文中，您將學會如何：
 
@@ -123,11 +123,11 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 需要接聽程式才能讓應用程式閘道將流量適當地路由傳送到後端位址集區。 在本文中，您會為兩個網域建立兩個接聽程式。 系統會為 *contoso.com* 和 *fabrikam.com* 網域建立接聽程式。
 
-使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 搭配先前建立的前端組態和前端連接埠，建立第一個接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 建立名為 contosoRule** 的基本規則。
+使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 搭配先前建立的前端組態和前端連接埠，建立第一個接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 建立名為 contosoRule 的基本規則。
 
 >[!NOTE]
 > 使用應用程式閘道或 WAF v2 SKU，您也可以為每個接聽程式設定最多5個主機名稱，而且可以在主機名稱中使用萬用字元。 如需詳細資訊，請參閱接聽程式 [中的萬用字元主機名稱](multiple-site-overview.md#wildcard-host-names-in-listener-preview) 。
->若要使用 Azure PowerShell 在接聽程式中使用多個主機名稱和萬用字元，您必須使用 `-HostNames` 而不是 `-HostName` 。 使用主機名稱，您最多可以將5個主機名稱視為逗點分隔值。 例如， `-HostNames "*.contoso.com,*.fabrikam.com"`
+>若要使用 Azure PowerShell 在接聽程式中使用多個主機名稱和萬用字元，您必須使用 `-HostNames` 而不是 `-HostName` 。 使用主機名稱，您最多可以將5個主機名稱視為逗點分隔值。 例如， `-HostNames "*.contoso.com","*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -185,7 +185,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在此範例中，您要建立兩個虛擬機器擴展集，以支援您所建立的兩個後端集區。 您所建立的擴展集名為 myvmss1** 和 myvmss2**。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。 當您設定 IP 設定時，要將擴展集指派給後端集區。
+在此範例中，您要建立兩個虛擬機器擴展集，以支援您所建立的兩個後端集區。 您所建立的擴展集名為 myvmss1 和 myvmss2。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。 當您設定 IP 設定時，要將擴展集指派給後端集區。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

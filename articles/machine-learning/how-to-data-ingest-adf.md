@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure Data Factory 進行資料擷取
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Data Factory 建立資料內嵌管線。
+description: 瞭解可用來建立資料內嵌管線的可用選項，並提供 Azure Data Factory 和各項優點。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,17 +11,17 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8cf0abdeaf3a7fe71213b6fa4f78f057bf2f92eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 73850d8022618dd6544d19564e425288aff09771
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307362"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360627"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure Data Factory 進行資料擷取
 
-在本文中，您將瞭解如何使用 Azure Data Factory (ADF) 建立資料內嵌管線。 此管線是用來內嵌資料以用於 Azure Machine Learning。 Azure Data Factory 可讓您輕鬆地將 (ETL) 資料解壓縮、轉換和載入。 一旦資料轉換並載入至儲存體之後，就可以用來定型您的機器學習模型。
+在本文中，您將瞭解使用 Azure Data Factory (ADF) 建立資料內嵌管線的可用選項。 此管線是用來內嵌資料以用於 Azure Machine Learning。 Azure Data Factory 可讓您輕鬆地將 (ETL) 資料解壓縮、轉換和載入。 一旦資料轉換並載入至儲存體之後，就可以用來定型您的機器學習模型。
 
 您可以使用原生 ADF 活動和檢測（例如 [資料流程](../data-factory/control-flow-execute-data-flow-activity.md)）來處理簡單的資料轉換。 在更複雜的案例中，可以使用一些自訂程式碼來處理資料。 例如，Python 或 R 程式碼。
 

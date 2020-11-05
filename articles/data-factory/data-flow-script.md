@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 69cc835b37d2405e15638d85309dc89d51c6d043
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91598092"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360270"
 ---
 # <a name="data-flow-script-dfs"></a> (DFS) 的資料流程腳本
 
@@ -220,6 +220,17 @@ split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 
-## <a name="next-steps"></a>下一步
+### <a name="automap-schema-drift-with-a-select"></a>使用 select 自動對應架構漂移
+當您需要從一組未知或動態的傳入資料行載入現有的資料庫架構時，您必須在接收轉換中對應右邊的資料行。 只有當您載入現有的資料表時，才需要此項。 將此程式碼片段新增至您的接收，以建立自動對應資料行的選取。 讓您的接收對應保持自動對應。
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
+```
+
+## <a name="next-steps"></a>後續步驟
 
 從[資料流程的總覽文章](concepts-data-flow-overview.md)開始探索資料流程

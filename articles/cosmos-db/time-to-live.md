@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f439fcd8b2aa1c75e1aff2c6b775921beabbcddf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cf9d0aea9ab9e79a5f184a42e1bb785b6fb870a7
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340544"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360083"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的存留時間 (TTL)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "93340544"
 
 刪除過期的專案是背景工作，其會取用要求單位（不是使用者要求所取用的要求單位）來取用剩餘的 [要求單位](request-units.md)。 即使在 TTL 過期之後，如果容器因為要求而多載，而且沒有足夠的 RU 可供使用，則資料刪除會延遲。 一旦有足夠的 ru 可用來執行刪除作業，就會刪除資料。 雖然資料刪除是延遲的，但在 TTL 過期之後，任何 API)  (的任何查詢都不會傳回資料。
 
-> 此內容與 Azure Cosmos DB 的交易式存放區 TTL 相關。 如果您要尋找 analitycal store TTL，可透過 [Azure Synapse 連結](./synapse-link.md)啟用 NoETL HTAP 案例，請按一下 [這裡](./analytical-store-introduction.md#analytical-ttl)。
+> 此內容與 Azure Cosmos DB 的交易式存放區 TTL 相關。 如果您要尋找可透過 [Azure Synapse 連結](./synapse-link.md)啟用 NoETL HTAP 案例的分析存放區 TTL，請按一下 [這裡](./analytical-store-introduction.md#analytical-ttl)。
 
 ## <a name="time-to-live-for-containers-and-items"></a>容器和項目的存留時間
 
@@ -34,7 +34,7 @@ ms.locfileid: "93340544"
 
    - 如果存在且值設為 "-1"，則等於無限大，而專案預設不會過期。
 
-   - 如果存在且值設為某個數位 *"n"* –專案將在上次修改時間後的 *"n"* 秒到期。
+   - 如果存在且值設定為 *非零* 數位 *"n"* ，則專案會在上次修改時間後的 *"n"* 秒到期。
 
 2. **項目的存留時間** (使用 `ttl` 設定)：
 
@@ -44,11 +44,11 @@ ms.locfileid: "93340544"
 
 ## <a name="time-to-live-configurations"></a>存留時間組態
 
-* 如果在容器上將 TTL 設定為 *"n"* ，則該容器中的專案會在 *n* 秒後過期。  如果相同容器中的專案具有自己的存留時間，請將設定為-1 (指出它們沒有過期) 或者，如果某些專案已使用不同的數位覆寫存留時間設定，則這些專案會根據自己設定的 TTL 值過期。 
+- 如果在容器上將 TTL 設定為 *"n"* ，則該容器中的專案會在 *n* 秒後過期。  如果相同容器中的專案具有自己的存留時間，請將設定為-1 (指出它們沒有過期) 或者，如果某些專案已使用不同的數位覆寫存留時間設定，則這些專案會根據自己設定的 TTL 值過期。
 
-* 如果未設定容器的 TTL，則此容器中項目的存留時間沒有任何作用。 
+- 如果未設定容器的 TTL，則此容器中項目的存留時間沒有任何作用。
 
-* 如果容器的 TTL 設定為 -1，則此容器中存留時間設為 n 的項目會在 n 秒後過期，而其餘的項目則不會過期。
+- 如果容器的 TTL 設定為 -1，則此容器中存留時間設為 n 的項目會在 n 秒後過期，而其餘的項目則不會過期。
 
 ## <a name="examples"></a>範例
 
@@ -60,10 +60,9 @@ ms.locfileid: "93340544"
 
 |專案上的 TTL| 結果|
 |---|---|
-|ttl = null|    TTL 已停用。 專案將永遠不會過期 (預設) 。|
-|ttl =-1   |TTL 已停用。 專案永遠不會過期。|
-|ttl = 2000 |TTL 已停用。 專案永遠不會過期。|
-
+|ttl = null|TTL 已停用。 專案將永遠不會過期 (預設) 。|
+|ttl =-1|TTL 已停用。 專案永遠不會過期。|
+|ttl = 2000|TTL 已停用。 專案永遠不會過期。|
 
 ### <a name="example-2"></a>範例 2
 
@@ -71,10 +70,9 @@ ms.locfileid: "93340544"
 
 |專案上的 TTL| 結果|
 |---|---|
-|ttl = null |已啟用 TTL。 專案將永遠不會過期 (預設) 。|
-|ttl =-1   |已啟用 TTL。 專案永遠不會過期。|
-|ttl = 2000 |已啟用 TTL。 專案將在2000秒後過期。|
-
+|ttl = null|已啟用 TTL。 專案將永遠不會過期 (預設) 。|
+|ttl =-1|已啟用 TTL。 專案永遠不會過期。|
+|ttl = 2000|已啟用 TTL。 專案將在2000秒後過期。|
 
 ### <a name="example-3"></a>範例 3
 
@@ -82,12 +80,12 @@ ms.locfileid: "93340544"
 
 |專案上的 TTL| 結果|
 |---|---|
-|ttl = null|    已啟用 TTL。 專案會在1000秒之後過期 (預設) 。|
-|ttl =-1   |已啟用 TTL。 專案永遠不會過期。|
-|ttl = 2000 |已啟用 TTL。 專案將在2000秒後過期。|
+|ttl = null|已啟用 TTL。 專案會在1000秒之後過期 (預設) 。|
+|ttl =-1|已啟用 TTL。 專案永遠不會過期。|
+|ttl = 2000|已啟用 TTL。 專案將在2000秒後過期。|
 
 ## <a name="next-steps"></a>後續步驟
 
 在下列文章中瞭解如何設定存留時間：
 
-* [如何設定存留時間](how-to-time-to-live.md)
+- [如何設定存留時間](how-to-time-to-live.md)

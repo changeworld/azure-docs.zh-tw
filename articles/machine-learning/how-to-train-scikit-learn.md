@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fb7dfb24a3c0a0b73b5fb18924f233080f73e80
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 91a9957c7a68f1752d7a6b9ea66910ec642b7bd1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314462"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360899"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>訓練 scikit-learn-利用 Azure Machine Learning 瞭解大規模模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "93314462"
 
 無論您是從頭開始訓練 machine learning scikit-learn-學習模型，或是將現有的模型帶入雲端，您都可以使用 Azure Machine Learning，利用彈性的雲端計算資源來擴充開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本和監視生產等級的模型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在下列任一環境中執行此程式碼：
  - Azure Machine Learning 計算執行個體 - 不需要下載或安裝
@@ -71,6 +71,8 @@ ws = Workspace.from_config()
 如果您想要使用策劃環境，您可以改為執行下列命令：
 
 ```python
+from azureml.core import Environment
+
 sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
 ```
 

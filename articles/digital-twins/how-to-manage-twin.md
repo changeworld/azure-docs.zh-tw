@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280393"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360066"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -23,7 +23,7 @@ ms.locfileid: "93280393"
 > [!TIP]
 > 所有 SDK 函式都有同步和非同步版本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "93280393"
 若要建立對應項，請在 `CreateOrReplaceDigitalTwinAsync()` 服務用戶端上使用方法，如下所示：
 
 ```csharp
-await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initData);
 ```
 
 若要建立數位對應項，您需要提供：
@@ -55,12 +55,7 @@ await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
 
 對應項建立 API 會接受序列化為對應項屬性之有效 JSON 描述的物件。 請參閱 [*概念：數位 twins 和*](concepts-twins-graph.md) 對應項圖表，以取得對應項的 JSON 格式描述。 
 
-首先，您可以建立資料物件來代表對應項和其屬性資料，如下所示：
-
-```csharp
-await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
-```
-您可以手動或使用所提供的 helper 類別來建立參數物件。 以下是每個範例。
+首先，您可以建立資料物件來代表對應項及其屬性資料。 您可以手動或使用所提供的 helper 類別來建立參數物件。 以下是每個範例。
 
 #### <a name="create-twins-using-manually-created-data"></a>使用手動建立的資料建立 twins
 
