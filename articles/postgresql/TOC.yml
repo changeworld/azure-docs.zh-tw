@@ -1,4 +1,4 @@
-- name: 適用於 PostgreSQL 的 Azure DB 文件
+- name: 適用於 PostgreSQL 的 Azure 資料庫文件
   href: index.yml
 - name: 概觀
   items:
@@ -255,6 +255,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: 還原已卸除的伺服器
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: 啟用驗證
           items:
             - name: 建立使用者
