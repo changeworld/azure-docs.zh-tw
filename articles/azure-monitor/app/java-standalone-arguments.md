@@ -1,17 +1,17 @@
 ---
-title: 監視在任何環境中執行的 JAVA 應用程式-Azure 監視器 Application Insights
-description: 使用 JAVA 獨立代理程式在任何環境上執行的 JAVA 應用程式的應用程式效能監視，而不需要檢測應用程式。 分散式追蹤和應用程式對應。
+title: 新增 JVM arg-Azure 監視器 Application Insights JAVA
+description: 新增 Azure 監視器 Application Insights JAVA 的 JVM 參數
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c9c38d4173413310b715e05c9dcfb9c15be9d4f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374298"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377628"
 ---
-# <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>針對 Azure 監視器 Application Insights 設定 JVM 引數 JAVA 獨立代理程式
+# <a name="adding-the-jvm-arg-for-azure-monitor-application-insights-java"></a>新增 Azure 監視器 Application Insights JAVA 的 JVM 參數
 
 
 
@@ -170,7 +170,7 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 
 ## <a name="websphere-8"></a>WebSphere 8
 
-開啟管理主控台移至 [ **伺服器] > WebSphere**應用程式伺服器 > 應用程式伺服器]，選擇適當的應用程式伺服器，然後按一下： 
+開啟管理主控台移至 [ **伺服器] > WebSphere** 應用程式伺服器 > 應用程式伺服器]，選擇適當的應用程式伺服器，然後按一下： 
 
 ```
 Java and Process Management > Process definition >  Java Virtual Machine

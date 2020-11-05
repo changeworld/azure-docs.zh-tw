@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294241"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376847"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>使用分層擴充 Azure AD B2C 以保護內部部署應用程式的教學課程
 
@@ -29,7 +29,7 @@ Maverics Identity Orchestrator 擴充 Azure AD B2C，以保護內部部署應用
 
 - **簡易** 設定： Azure AD B2C 提供簡單的逐步使用者介面，可將 Maverics IDENTITY Orchestrator SAML 或 OIDC 連接器連線到 Azure AD B2C。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -65,13 +65,11 @@ Maverics Identity Orchestrator 擴充 Azure AD B2C，以保護內部部署應用
 | 4. | IdP 會挑戰使用者的認證。 根據 IdP，使用者可能需要 (MFA) 進行多重要素驗證。|
 | 5. | IdP 會將驗證回應傳回 Azure AD B2C。 （選擇性）使用者可以在此步驟期間，在 Azure AD B2C 目錄中建立本機帳戶。|
 | 6. | Azure AD B2C 會將使用者要求傳送至 Azure AD B2C 租使用者中 Orchestrator 應用程式註冊期間指定的端點。|
-| 7. | 協調器會評估存取原則，並計算要在轉送到應用程式的 HTTP 標頭中包含的屬性值。 在這個步驟中，協調器可能會向外呼叫其他屬性提供者，以取得正確設定標頭值所需的資訊。|
-| 8. | Orchestrator 會設定標頭值，並將要求傳送至應用程式。|
-| 9. | 使用者現在已通過驗證，並可存取應用程式。|
+| 7. | 協調器會評估存取原則，並計算要在轉送到應用程式的 HTTP 標頭中包含的屬性值。 在這個步驟中，協調器可能會向外呼叫其他屬性提供者，以取得正確設定標頭值所需的資訊。 Orchestrator 會設定標頭值，並將要求傳送至應用程式。|
+| 8. | 使用者現在已通過驗證，並可存取應用程式。|
 
 ## <a name="get-maverics-identity-orchestrator"></a>取得 Maverics Identity Orchestrator
 
-若要取得您將用來整合舊版內部部署應用程式與 Azure AD B2C 的軟體，請 [分層](https://www.strata.io/contact/)。 取得軟體之後，請依照下列步驟來判斷 Orchestrator 特定的必要條件，並執行必要的安裝和設定步驟。
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>設定您的 Azure AD B2C 租使用者
 
@@ -261,7 +259,7 @@ appgateways:
 
 請務必保護您 Orchestrator 用來連線到 Azure AD B2C 和任何其他身分識別系統的秘密。 在本教學課程中，Maverics 會預設為以純文字載入密碼， `maverics.yaml` 不過，在本教學課程中，您將使用 Azure Key Vault 作為秘密提供者。
 
-請依照指示 [建立新的 Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) ，讓您的協調器實例會將其作為秘密提供者使用。 將您的秘密新增至保存庫，並記下 `SECRET NAME` 提供給每個秘密的。 例如： `AzureADB2CClientSecret` 。
+請依照指示 [建立新的 Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) ，讓您的協調器實例會將其作為秘密提供者使用。 將您的秘密新增至保存庫，並記下 `SECRET NAME` 提供給每個秘密的。 例如 `AzureADB2CClientSecret`。
 
 若要將值宣告為 `maverics.yaml` 組態檔中的密碼，請使用角括弧包裝祕密：
 

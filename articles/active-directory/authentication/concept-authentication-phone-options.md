@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377746"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "92165499"
 
 針對 Azure Multi-Factor Authentication 或 SSPR，使用者可選擇接收含驗證碼的簡訊以在登入介面中輸入，或接到電話並提示他們輸入已定義的 pin 碼。
 
-如果使用者不想在目錄中顯示其行動電話號碼，但想要用於密碼重設，系統管理員便不應將電話號碼填入目錄。 使用者反而應該透過合併安全性資訊註冊 (位於 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo))，填入其**驗證電話**屬性。 管理員可以在使用者的設定檔中看到此資訊，但該資訊不會發佈在其他地方。
+如果使用者不想在目錄中顯示其行動電話號碼，但想要用於密碼重設，系統管理員便不應將電話號碼填入目錄。 使用者反而應該透過合併安全性資訊註冊 (位於 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo))，填入其 **驗證電話** 屬性。 管理員可以在使用者的設定檔中看到此資訊，但該資訊不會發佈在其他地方。
 
 :::image type="content" source="media/concept-authentication-methods/user-authentication-methods.png" alt-text="Azure 入口網站的螢幕擷取畫面，其中顯示已填入電話號碼的驗證方法":::
 
@@ -49,8 +49,6 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 在 SSPR 或 Azure Multi-Factor Authentication 期間使用電話驗證，系統會對使用者註冊的電話號碼進行自動語音通話。 為了完成登入程序，系統會提示使用者輸入其 pin 碼，接著輸入其鍵台上的 #。
 
 ## <a name="office-phone-verification"></a>辦公室電話驗證
-
-辦公室電話屬性是由 Azure AD 系統管理員所管理，不能由使用者自行註冊。
 
 在 SSPR 或 Azure Multi-Factor Authentication 期間使用電話驗證，系統會對使用者註冊的電話號碼進行自動語音通話。 為了完成登入程序，系統會提示使用者輸入其 pin 碼，接著輸入其鍵台上的 #。
 
@@ -81,7 +79,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 
 若要深入了解 MFA 概念，請參閱 [Azure Multi-Factor Authentication 的運作方式][concept-mfa]。
 
-深入瞭解如何使用 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)來設定驗證方法。
+深入瞭解如何使用 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)來設定驗證方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

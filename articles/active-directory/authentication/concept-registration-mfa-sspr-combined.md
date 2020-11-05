@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424570"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378001"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 總覽的結合安全性資訊註冊
 
@@ -58,7 +58,7 @@ Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例�
 | 硬體權杖 | 否 | 否 | 是 |
 | 電話 | 是 | 是 | 是 |
 | 備用手機 | 是 | 是 | 是 |
-| 辦公室電話 | 否 | 否 | 否 |
+| 辦公室電話 | 是 | 是 | 是 |
 | 電子郵件 | 是 | 是 | 是 |
 | 安全性問題 | 是 | 否 | 是 |
 | 應用程式密碼 | 是 | 否 | 是 |
@@ -95,7 +95,7 @@ Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例�
 - *透過每個使用者 Multi-Factor Authentication 強制執行的註冊 Multi-Factor Authentication：* 系統會要求使用者在登入期間進行註冊。 他們會註冊 Multi-Factor Authentication 方法和 SSPR 方法， (使用者是否已啟用 SSPR) 。
 - *透過條件式存取或其他原則強制執行的註冊 Multi-Factor Authentication：* 當使用者使用需要 Multi-Factor Authentication 的資源時，系統會要求使用者進行註冊。 他們會註冊 Multi-Factor Authentication 方法和 SSPR 方法， (使用者是否已啟用 SSPR) 。
 - *SSPR 註冊已強制執行：* 系統會要求使用者在登入期間進行註冊。 他們只會註冊 SSPR 方法。
-- 已*強制執行 SSPR*重新整理：使用者必須以系統管理員設定的間隔來檢查其安全性資訊。使用者會看到其資訊，並可確認目前的資訊，或視需要進行變更。
+- 已 *強制執行 SSPR* 重新整理：使用者必須以系統管理員設定的間隔來檢查其安全性資訊。使用者會看到其資訊，並可確認目前的資訊，或視需要進行變更。
 
 強制註冊時，會顯示使用者最少需要符合 Multi-Factor Authentication 和 SSPR 原則的最少方法數目，從最高到最不安全。
 

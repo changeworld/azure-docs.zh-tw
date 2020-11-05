@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fd784bb184ff9432efc569ac9fd40de93eec0b53
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287237"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379582"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠的事件處理
 
@@ -50,7 +50,7 @@ Azure Functions 在迴圈執行下列步驟時，會取用事件中樞事件：
 
 此行為會顯示幾個重點：
 
-- *未處理的例外狀況可能會導致您遺失訊息。* 導致例外狀況的執行將會繼續進行指標的進度。  設定 [重試原則](./functions-bindings-error-pages.md#retry-policies) 會延遲指標的進度，直到評估整個重試原則為止。
+- *未處理的例外狀況可能會導致您遺失訊息。* 導致例外狀況的執行將會繼續進行指標的進度。  設定 [重試原則](./functions-bindings-error-pages.md#retry-policies-preview) 會延遲指標的進度，直到評估整個重試原則為止。
 - *函數可保證至少一次傳遞。* 您的程式碼和相依系統可能需要 [考慮相同訊息接收兩次的情況](./functions-idempotent.md)。
 
 ## <a name="handling-exceptions"></a>處理例外狀況
@@ -59,7 +59,7 @@ Azure Functions 在迴圈執行下列步驟時，會取用事件中樞事件：
 
 ### <a name="retry-mechanisms-and-policies"></a>重試機制和原則
 
-有些例外狀況本質上是暫時性的，而且在稍後重試一次作業時不會重新顯示。 這就是為什麼第一個步驟一律會重試作業的原因。  您可以利用函式應用程式 [重試原則](./functions-bindings-error-pages.md#retry-policies) ，或在函式執行內撰寫重試邏輯。
+有些例外狀況本質上是暫時性的，而且在稍後重試一次作業時不會重新顯示。 這就是為什麼第一個步驟一律會重試作業的原因。  您可以利用函式應用程式 [重試原則](./functions-bindings-error-pages.md#retry-policies-preview) ，或在函式執行內撰寫重試邏輯。
 
 將錯誤處理行為引進您的函式，可讓您定義基本和先進重試原則。 例如，您可以依照下列規則所說明的工作流程來執行原則：
 

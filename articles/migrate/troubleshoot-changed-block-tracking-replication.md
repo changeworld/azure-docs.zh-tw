@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314721"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377201"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -29,11 +29,16 @@ ms.locfileid: "92314721"
 使用下列步驟來監視虛擬機器的複寫狀態：
 
   1. 移至 Azure 入口網站 Azure Migrate 中的 [伺服器] 頁面。
-  2. 在 [伺服器遷移] 磚中，按一下 [複寫伺服器]，以流覽至 [複寫機器] 頁面。
-  3. 您將會看到一份複寫伺服器的清單，以及其他資訊，例如狀態、健全狀況、上次同步時間等等。健全狀況資料行會指出 VM 目前的複寫健康情況。 健全狀況資料行中的「重大」或「警告」值通常表示 VM 先前的複寫週期失敗。 若要取得更多詳細資料，請以滑鼠右鍵按一下 VM，然後選取 [錯誤詳細資料]。 [錯誤詳細資料] 頁面包含有關錯誤的資訊，以及如何進行疑難排解的其他詳細資料。 您也會看到 [最近使用的事件] 連結，可用來流覽至 VM 的 [事件] 頁面。
-  4. 按一下 [最近使用的事件] 以查看 VM 先前的複寫週期失敗。 在 [事件] 頁面中，尋找 VM 的「複寫週期失敗」或「磁片的複寫週期失敗」類型的最新事件。
-  5. 按一下事件可瞭解錯誤的可能原因，以及建議的補救步驟。 使用提供的資訊來疑難排解和補救錯誤。
-    
+  ![影像1](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. 在 [伺服器遷移] 磚中，按一下 [複寫伺服器]，以流覽至 [複寫機器] 頁面。
+  ![影像2](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. 您將會看到一份複寫伺服器的清單，以及其他資訊，例如狀態、健全狀況、上次同步時間等等。健全狀況資料行會指出 VM 目前的複寫健康情況。 健全狀況資料行中的「重大」或「警告」值通常表示 VM 先前的複寫週期失敗。 若要取得更多詳細資料，請以滑鼠右鍵按一下 VM，然後選取 [錯誤詳細資料]。 [錯誤詳細資料] 頁面包含有關錯誤的資訊，以及如何進行疑難排解的其他詳細資料。 您也會看到 [最近使用的事件] 連結，可用來流覽至 VM 的 [事件] 頁面。
+  ![影像3](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. 按一下 [最近使用的事件] 以查看 VM 先前的複寫週期失敗。 在 [事件] 頁面中，尋找 VM 的「複寫週期失敗」或「磁片的複寫週期失敗」類型的最新事件。
+  ![影像4](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. 按一下事件可瞭解錯誤的可能原因，以及建議的補救步驟。 使用提供的資訊來疑難排解和補救錯誤。
+ ![影像5](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>一般複寫錯誤
 
 本節說明一些常見的錯誤，以及您可以如何進行疑難排解。
@@ -54,7 +59,7 @@ ms.locfileid: "92314721"
 
 - 另一種情況可能會發生這種情況，就是當一位使用者 (user1) 嘗試在一開始設定複寫併發生失敗時，但已建立金鑰保存庫 (以及適當地指派給此使用者) 的使用者存取原則。 現在，我們會在稍後將不同的使用者 (使用者 2) 嘗試設定複寫，但設定受管理的儲存體帳戶或產生 SAS 定義作業失敗，因為沒有對應至金鑰保存庫中使用者2的使用者存取原則。
 
-**解決**方法：若要解決此問題，請在 keyvault 授與使用者管理人員許可權，以設定受管理的儲存體帳戶並產生 SAS 定義的使用者存取原則。 您可以使用下列 Cmdlet，在 Azure PowerShell 中執行此動作：
+**解決** 方法：若要解決此問題，請在 keyvault 授與使用者管理人員許可權，以設定受管理的儲存體帳戶並產生 SAS 定義的使用者存取原則。 您可以使用下列 Cmdlet，在 Azure PowerShell 中執行此動作：
 
 $userPrincipalId = $ (>get-azurermaduser-UserPrincipalName "user2_email_address" ) 。Id
 
@@ -134,7 +139,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     此命令將會嘗試 TCP 連線，並傳回輸出。
     
-     - 在輸出中，檢查 "_TcpTestSucceeded_" 欄位。 如果值為 "_True_"，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
+     - 在輸出中，檢查 " _TcpTestSucceeded_ " 欄位。 如果值為 " _True_ "，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
     
     **解決方式：** 如果此測試失敗，Azure Migrate 設備和 Azure Key Vault 之間會發生連線問題。 與您的當地網路團隊合作，檢查連線問題。 一般而言，可能會有一些會導致失敗的防火牆設定。
     
@@ -220,7 +225,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     此命令將會嘗試 TCP 連線，並傳回輸出。
     
-    1. 在輸出中，檢查 "_TcpTestSucceeded_" 欄位。 如果值為 "_True_"，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
+    1. 在輸出中，檢查 " _TcpTestSucceeded_ " 欄位。 如果值為 " _True_ "，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
     
     **解決方式：** 如果此測試失敗，Azure Migrate 設備和 Azure Key Vault 之間會發生連線問題。 與您的當地網路團隊合作，檢查連線問題。 一般而言，可能會有一些會導致失敗的防火牆設定。
     
@@ -271,9 +276,9 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 
 當快照集產生停止回應時，就會發生此問題。 發生此問題時，您可以看到 [建立快照集工作停止于95% 或 99%]。 請參閱此 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138969) 以解決此問題。
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_ ]
 
-當我們在複寫週期結束時合併磁片時，操作會失敗。 請選取適當的_原因_來解決問題，以遵循[VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970)中的指示。
+當我們在複寫週期結束時合併磁片時，操作會失敗。 請選取適當的 _原因_ 來解決問題，以遵循 [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970)中的指示。
 
 當 VMware 快照集相關的作業-建立、刪除或合併磁片失敗時，會發生下列錯誤。 遵循下一節中的指導方針來補救錯誤：
 

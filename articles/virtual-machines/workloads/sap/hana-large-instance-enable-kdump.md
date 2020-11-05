@@ -13,16 +13,22 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84488880"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379259"
 ---
-# <a name="enable-kdump-service"></a>啟用 Kdump 服務
+# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Azure 上的 SAP HANA 大型執行個體 (的 Kdump) 
 
-本檔說明如何在 Azure HANA 大型實例上啟用 Kdump 服務 (**類型 I 和 TYPE II** 的詳細資料) 
+設定和啟用 kdump 是針對沒有明確原因的系統損毀進行疑難排解所需的步驟。
+有時候系統會意外損毀，而無法由硬體或基礎結構問題解釋。
+在這些情況下，它可能是作業系統或應用程式的問題，而 kdump 會允許 SUSE 判斷系統當機的原因。
+
+## <a name="enable-kdump-service"></a>啟用 Kdump 服務
+
+本檔說明如何在 Azure HANA 大型實例上啟用 Kdump 服務 ( **類型 I 和 TYPE II** 的詳細資料) 
 
 ## <a name="supported-skus"></a>支援的 SKU
 
@@ -55,13 +61,17 @@ ms.locfileid: "84488880"
 |   類型 II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
 |   類型 II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Kdump 服務使用 `/var/crash` 目錄來寫入傾印，請確定對應到此目錄的磁碟分割有足夠的空間可容納傾印。
 
 ## <a name="setup-details"></a>設定詳細資料
 
 - 您可以在[這裡](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh)找到啟用 Kdump 的腳本
+> [!NOTE]
+> 此腳本是根據我們的實驗室設定來進行，而客戶預期會與 OS 廠商聯繫以進行進一步的調整。
+> 將會針對新的和現有的伺服器布建個別的 LUN，以儲存傾印，而腳本將會負責設定 LUN 的檔案系統。
+> Microsoft 不會負責分析傾印。 客戶必須向作業系統廠商開啟票證，才能進行分析。
 
 - 使用下列命令，在 HANA 大型實例上執行此腳本
 
@@ -72,7 +82,7 @@ ms.locfileid: "84488880"
     sudo bash enable-kdump.sh
     ```
 
-- 如果成功啟用命令輸出 Kdump，請重新開機系統以套用變更，然後成功啟用 Kdump。 將系統重新開機以套用變更。
+- 如果成功啟用命令輸出 Kdump，請務必重新開機系統，以成功套用變更。
 
 - 如果命令輸出無法進行某些作業，!!!!, 結束，則不會啟用 Kdump 服務。 請參閱 [支援問題](#support-issue)一節。
 
@@ -104,3 +114,6 @@ ms.locfileid: "84488880"
 * OS 版本
 
 * 核心版本
+
+## <a name="related-documents"></a>相關文件
+- 若要深入瞭解如何設定 [kdump](https://www.suse.com/support/kb/doc/?id=3374462)

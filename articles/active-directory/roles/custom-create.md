@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097986"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379242"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中建立及指派自訂角色
 

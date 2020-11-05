@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294248"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376879"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 TheAccessHub 管理工具的教學課程
 
@@ -102,7 +102,7 @@ TheAccessHub 管理工具會使用 Microsoft 的圖形 API 來讀取及變更您
 
 5. 遵循提示，然後選取 [ **接受** ]，授與 TheAccessHub 系統管理員工具所要求的許可權。
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>使用您的企業身分識別設定新的 CSR/技術服務人員使用者
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>使用您的企業身分識別設定新的 CSR 使用者
 
 建立 CSR/技術服務人員，以使用其現有的企業 Azure Active Directory 認證來存取 TheAccessHub 管理工具。
 
@@ -126,7 +126,7 @@ TheAccessHub 管理工具會使用 Microsoft 的圖形 API 來讀取及變更您
 
 6. 選取 [提交]  。
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>使用新的身分識別設定新的 CSR/技術服務人員使用者
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>使用新的身分識別設定新的 CSR 使用者
 
 建立 CSR/技術服務人員的使用者，該使用者將以 TheAccessHub 管理工具特有的新本機認證來存取 TheAccessHub 管理工具。 這主要是供不使用企業 Azure AD 的組織使用。
 
@@ -150,7 +150,7 @@ TheAccessHub 管理工具會使用 Microsoft 的圖形 API 來讀取及變更您
 
 7. 選取 [ **提交** ]
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>設定資料分割 CSR/服務台管理
+## <a name="configure-partitioned-csr-administration"></a>設定資料分割 CSR 管理
 
 在 TheAccessHub 管理工具中管理客戶和 CSR/技術支援使用者的許可權，是使用組織階層進行管理。 所有同事和客戶都有其所在的主要組織。 您可以將特定的同事或同事群組指派為組織的擁有者。  組織擁有者可以管理 (對組織中的) 同事和客戶，以及他們擁有的 suborganizations 進行變更。 若要允許多個同事管理一組使用者，可以建立具有許多成員的群組。 然後，您可以將群組指派為組織擁有者，而該群組的所有成員都可以管理組織中的同事和客戶。
 
@@ -324,7 +324,7 @@ TheAccessHub 管理工具會使用 Microsoft 的圖形 API 來讀取及變更您
 
 18. 當 **資料同步** 處理記錄在載入階段變成100% 時，就會起始載入所產生的所有變更。 客戶應該會開始出現或接收 Azure AD B2C 中的變更。
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>將 Azure AD B2C 客戶資料同步處理到 TheAccessHub 管理工具
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>同步處理 Azure AD B2C 客戶資料 
 
 TheAccessHub Admin Tool 是一次性或進行中的作業，可將 Azure AD B2C 中的所有客戶資訊同步處理到 TheAccessHub 管理工具中。 這可確保 CSR/技術服務人員的系統管理員可以看到最新的客戶資訊。
 
@@ -356,7 +356,7 @@ TheAccessHub Admin Tool 是一次性或進行中的作業，可將 Azure AD B2C 
 
 13. 當 **資料同步** 處理記錄在載入階段變成100% 時，就會起始載入所產生的所有變更。
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>設定 Azure AD B2C 原則以呼叫 TheAccessHub 管理工具
+## <a name="configure-azure-ad-b2c-policies"></a>設定 Azure AD B2C 原則
 
 有時候，同步處理 TheAccessHub 管理工具的能力，可以讓 Azure AD B2C 保持最新狀態。 我們可以利用 TheAccessHub 管理工具的 API 和 Azure AD B2C 原則，在發生變更時通知 TheAccessHub 管理工具。 此解決方案需要 [Azure AD B2C 自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)的技術知識。 在下一節中，我們將為您提供範例原則步驟和安全憑證，以在您 Sign-Up 自訂原則中通知新帳戶的 TheAccessHub 管理工具。
 

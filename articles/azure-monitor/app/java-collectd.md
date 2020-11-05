@@ -3,15 +3,17 @@ title: 監視 Linux - Azure 上的 Java Web 應用程式效能 | Microsoft Docs
 description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 Java 網站的應用程式效能監視功能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761017"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379004"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
 
+> [!IMPORTANT]
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
 
 若要在 [Application Insights](./app-insights-overview.md) 中瀏覽 Linux 系統效能度量，請安裝 [collectd](https://collectd.org/) 以及其 Application Insights 外掛程式。 這個開放原始碼解決方案會收集各種系統和網路統計資料。
 
@@ -94,7 +96,7 @@ ms.locfileid: "91761017"
 * 編輯組態檔。 
 * 在 `<Plugin ApplicationInsightsWriter>`中，加入指示詞行，如下所示：
 
-| 指示詞 | 效果 |
+| 指示詞 | 作用 |
 | --- | --- |
 | `Exclude disk` |排除 `disk` 外掛程式所收集的所有資料 |
 | `Exclude disk:read,write` |排除來自 `disk` 外掛程式名為 `read` 和 `write` 的來源。 |

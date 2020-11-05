@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d83005599c59f6a4249014139b594764df8acf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374766"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378545"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>指派自訂角色來管理 Azure Active Directory 中的企業應用程式
 
@@ -46,37 +46,37 @@ ms.locfileid: "92374766"
 > 自訂角色是在整個組織的層級建立和管理，而且只能從組織的 [總覽] 頁面使用。
 
 1. 使用您組織中的特殊許可權角色管理員或全域系統管理員許可權，登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 [Azure Active Directory]****，選取 [角色和系統管理員]****，然後選取 [新增自訂角色]****。
+1. 選取 [Azure Active Directory]，選取 [角色和系統管理員]，然後選取 [新增自訂角色]。
 
     ![從 Azure AD 中的 [角色] 清單新增自訂角色](./media/custom-enterprise-apps/new-custom-role.png)
 
-1. 在 [ **基本** ] 索引標籤上，提供角色名稱的 [管理使用者和群組指派] 和角色描述的 [授與管理使用者和群組指派的許可權]，然後選取 **[下一步**]。
+1. 在 [ **基本** ] 索引標籤上，提供角色名稱的 [管理使用者和群組指派] 和角色描述的 [授與管理使用者和群組指派的許可權]，然後選取 **[下一步** ]。
 
     ![提供自訂角色的名稱和描述](./media/custom-enterprise-apps/role-name-and-description.png)
 
-1. 在 [ **許可權** ] 索引標籤的 [搜尋] 方塊中輸入 "ServicePrincipals/serviceprincipals.approleassignedto/update"，然後選取所需許可權旁的核取方塊，然後選取 [ **下一步**]。
+1. 在 [ **許可權** ] 索引標籤的 [搜尋] 方塊中輸入 "ServicePrincipals/serviceprincipals.approleassignedto/update"，然後選取所需許可權旁的核取方塊，然後選取 [ **下一步** ]。
 
     ![將許可權新增至自訂角色](./media/custom-enterprise-apps/role-custom-permissions.png)
 
-1. 在 [檢閱 + 建立]**** 索引標籤上檢閱權限，然後選取 [建立]****。
+1. 在 [檢閱 + 建立] 索引標籤上檢閱權限，然後選取 [建立]。
 
     ![現在您可以建立自訂角色](./media/custom-enterprise-apps/role-custom-create.png)
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站將角色指派給使用者
 
 1. 使用特殊許可權角色管理員角色許可權登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 [Azure Active Directory]****，然後選取 [角色和系統管理員]****。
+1. 選取 [Azure Active Directory]，然後選取 [角色和系統管理員]。
 1. 選取 [ **授與許可權來管理使用者和群組指派** 角色]。
 
     ![開啟角色和系統管理員，並搜尋自訂角色](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. 選取 [ **新增指派**]，選取所需的使用者，然後按一下 [ **選取** ] 將角色指派新增至使用者。
+1. 選取 [ **新增指派** ]，選取所需的使用者，然後按一下 [ **選取** ] 將角色指派新增至使用者。
 
     ![將自訂角色的指派新增至使用者](./media/custom-enterprise-apps/assign-user-to-role.png)
 
 #### <a name="assignment-tips"></a>指派秘訣
 
-* 若要授與許可權給工作人員，以管理整個企業應用程式的使用者和群組存取權，請從您組織的 Azure AD**總覽**頁面上的全組織**角色和系統管理員**清單開始。
+* 若要授與許可權給工作人員，以管理整個企業應用程式的使用者和群組存取權，請從您組織的 Azure AD **總覽** 頁面上的全組織 **角色和系統管理員** 清單開始。
 * 若要授與許可權給受託人以管理特定企業應用程式的使用者和群組存取權，請在 Azure AD 中移至該應用程式，然後在該應用程式的 [ **角色和系統管理員** ] 清單中開啟。 選取新的自訂角色，並完成使用者或群組指派。 受託人只能管理特定應用程式的使用者和群組存取權。
 * 若要測試您的自訂角色指派，請以「受託人」登入，並開啟應用程式的 [ **使用者和群組** ] 頁面，確認已啟用 [ **新增使用者** ] 選項。
 

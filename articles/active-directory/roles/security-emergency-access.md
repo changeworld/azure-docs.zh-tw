@@ -5,24 +5,24 @@ services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: curtand
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffcbd77997e230b9b21ed29b47e37236de025f6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375227"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378749"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理緊急存取帳戶
 
-請務必防止意外鎖定 Azure Active Directory (Azure AD) 組織，因為您無法以系統管理員的身分，登入或啟動其他使用者的帳戶。 您可以藉由在組織中建立兩個或多個*緊急存取帳戶*，來減輕不慎失去系統管理存取權的影響。
+請務必防止意外鎖定 Azure Active Directory (Azure AD) 組織，因為您無法以系統管理員的身分，登入或啟動其他使用者的帳戶。 您可以藉由在組織中建立兩個或多個 *緊急存取帳戶* ，來減輕不慎失去系統管理存取權的影響。
 
 緊急存取帳戶具有高度權限，不會指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的緊急或「急用」狀況。 建議您限制只有在絕對必要時，才能使用緊急帳戶，並維護此限制目標。
 
@@ -113,7 +113,7 @@ ms.locfileid: "92375227"
 1. 選取要由警示通知的使用者動作群組。 如果您想要建立一個群組，請參閱[建立動作群組](#create-an-action-group)。
 1. 若要自訂傳送至動作群組成員的電子郵件通知，請選取 [自訂動作] 底下的動作。
 1. 在 [警示詳細資料] 底下，指定警示規則名稱並新增選擇性的描述。
-1. 設定事件的**嚴重性層級**。 我們建議您將其設定為 [重大 (嚴重性 0)]。
+1. 設定事件的 **嚴重性層級** 。 我們建議您將其設定為 [重大 (嚴重性 0)]。
 1. 於 [在建立時啟用規則] 底下，保留其設定為 [是]。
 1. 若要將警示關閉一段時間，請選取 [隱藏警示] 核取方塊，輸入再次警示之前的等候持續時間，然後選取 [儲存]。
 1. 按一下 [建立警示規則]。
@@ -127,7 +127,7 @@ ms.locfileid: "92375227"
 1. 指定動作群組名稱和簡短名稱。
 1. 確認訂用帳戶和資源群組。
 1. 在動作類型底下，選取 [電子郵件/簡訊/推播/語音]。
-1. 輸入動作名稱，例如**通知全域管理員**。
+1. 輸入動作名稱，例如 **通知全域管理員** 。
 1. 針對 [動作類型]，選取 [電子郵件/簡訊/推播/語音]。
 1. 選取 [編輯詳細資料] 以選取您要設定的通知方法，並輸入必要的連絡人資訊，然後選取 [確定] 以儲存詳細資料。
 1. 新增您想要觸發的任何其他動作。

@@ -4,14 +4,17 @@ description: 篩選出您不需要監視的事件，以減少遙測流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761000"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378188"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 應用程式中篩選遙測
+
+> [!IMPORTANT]
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
 
 篩選器可供選取 [Java Web 應用程式傳送至 Application Insights](java-get-started.md) 的遙測。 您可以使用一些現成可用的篩選器，也可以撰寫自己的自訂篩選器。
 
@@ -260,7 +263,7 @@ public TelemetryProcessor successFilter() {
 
 ## <a name="troubleshooting"></a>疑難排解
 
-我的篩選器無法運作。**
+我的篩選器無法運作。
 
 * 請檢查您已提供有效的參數值。 例如，持續時間應該是整數。 無效的值會導致篩選器被忽略。 如果您的自訂篩選器從建構函式或 set 方法擲回例外狀況，該篩選器將被忽略。
 

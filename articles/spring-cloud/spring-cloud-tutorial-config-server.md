@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d5196e612bcf20e11f17634b32db028cd5bc88
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904246"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378086"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>為您的服務設定 Spring Cloud Config Server 執行個體
 
@@ -40,7 +40,7 @@ spring.jmx.enabled
 ```
 
 > [!CAUTION]
-> 強烈建議您_不要_將上述屬性放在您的 Config Server 應用程式檔案中。
+> 強烈建議您 _不要_ 將上述屬性放在您的 Config Server 應用程式檔案中。
 
 ## <a name="create-your-config-server-files"></a>建立 Config Server 檔案
 
@@ -55,12 +55,12 @@ Azure Spring Cloud 支援 Azure DevOps、GitHub、GitLab 和 Bitbucket，以儲�
 下表列出用來設定公用 Git 存放庫的所有可設定屬性：
 
 > [!NOTE]
-> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，您可以使用 *default-label*，但不能使用 *defaultLabel*。
+> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，您可以使用 *default-label* ，但不能使用 *defaultLabel* 。
 
 | 屬性        | 必要 | 功能                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | 是    | 作為 Config Server 後端的 Git 存放庫，URI 會以 *http://* 、*https://* 、*git@* 或 *ssh://* 開頭。 |
-| `default-label` | 否     | Git 存放庫的預設標籤應為存放庫的*分支名稱*、*標籤名稱*或*認可識別碼*。 |
+| `uri`           | 是    | 作為 Config Server 後端的 Git 存放庫，URI 會以 *http://* 、 *https://* 、 *git@* 或 *ssh://* 開頭。 |
+| `default-label` | 否     | Git 存放庫的預設標籤應為存放庫的 *分支名稱* 、 *標籤名稱* 或 *認可識別碼* 。 |
 | `search-paths`  | 否     | 用來搜尋 Git 存放庫子目錄的字串陣列。 |
 
 ------
@@ -70,17 +70,20 @@ Azure Spring Cloud 支援 Azure DevOps、GitHub、GitLab 和 Bitbucket，以儲�
 下表列出用來對使用 SSH 的私人 Git 存放庫進行設定的所有可設定屬性：
 
 > [!NOTE]
-> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，您可以使用 *default-label*，但不能使用 *defaultLabel*。
+> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，您可以使用 *default-label* ，但不能使用 *defaultLabel* 。
 
 | 屬性                   | 必要 | 功能                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | 是    | 作為 Config Server 後端的 Git 存放庫，其 URI 應以 *http://* 、*https://* 、*git@* 或 *ssh://* 開頭。 |
-| `default-label`            | 否     | Git 存放庫的預設標籤應為存放庫的*分支名稱*、*標籤名稱*或*認可識別碼*。 |
+| `uri`                      | 是    | 作為 Config Server 後端的 Git 存放庫，其 URI 應以 *http://* 、 *https://* 、 *git@* 或 *ssh://* 開頭。 |
+| `default-label`            | 否     | Git 存放庫的預設標籤應為存放庫的 *分支名稱* 、 *標籤名稱* 或 *認可識別碼* 。 |
 | `search-paths`             | 否     | 用來搜尋 Git 存放庫子目錄的字串陣列。 |
-| `private-key`              | 否     | 用來存取 Git 存放庫的 SSH 私密金鑰，若 URI 以 *git@* 或 *ssh://* 開頭，則為_必要_項目。 |
+| `private-key`              | 否     | 用來存取 Git 存放庫的 SSH 私密金鑰，若 URI 以 *git@* 或 *ssh://* 開頭，則為 _必要_ 項目。 |
 | `host-key`                 | 否     | Git 存放庫伺服器的主機金鑰不應包含 `host-key-algorithm` 所涵蓋的演算法前置詞。 |
-| `host-key-algorithm`       | 否     | 主機金鑰演算法應為 *ssh-dss*、*ssh-rsa*、*ecdsa-sha2-nistp256*、*ecdsa-sha2-nistp384* 或 *ecdsa-sha2-nistp521*。 只有在 `host-key` 存在時才*需要*。 |
-| `strict-host-key-checking` | 否     | 指出在使用私密 `host-key` 時，Config Server 執行個體是否無法啟動。 應為 *true* (預設值) 或 *false*。 |
+| `host-key-algorithm`       | 否     | 主機金鑰演算法應為 *ssh-dss* 、 *ssh-rsa* 、 *ecdsa-sha2-nistp256* 、 *ecdsa-sha2-nistp384* 或 *ecdsa-sha2-nistp521* 。 只有在 `host-key` 存在時才 *需要* 。 |
+| `strict-host-key-checking` | 否     | 指出在使用私密 `host-key` 時，Config Server 執行個體是否無法啟動。 應為 *true* (預設值) 或 *false* 。 |
+
+> [!NOTE]
+> 如果未指定，Config Server 會 `master` 以預設標籤的形式 (Om Git 本身) 。 但 GitHub 已將預設分支從變更 `master` 為 `main` 最近。 若要避免 Azure 春季 Cloud Config Server 失敗，請在使用 GitHub 設定 Config Server 時注意預設標籤，特別是針對新建立的存放庫。
 
 -----
 
@@ -89,15 +92,15 @@ Azure Spring Cloud 支援 Azure DevOps、GitHub、GitLab 和 Bitbucket，以儲�
 以下列出透過基本驗證設定私人 Git 存放庫所使用的所有可設定屬性。
 
 > [!NOTE]
-> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，請使用 *default-label*，而不是 *defaultLabel*。
+> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，請使用 *default-label* ，而不是 *defaultLabel* 。
 
 | 屬性        | 必要 | 功能                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | 是    | 作為 Config Server 後端的 Git 存放庫，其 URI 應以 *http://* 、*https://* 、*git@* 或 *ssh://* 開頭。 |
-| `default-label` | 否     | Git 存放庫的預設標籤應為存放庫的*分支名稱*、*標籤名稱*或*認可識別碼*。 |
+| `uri`           | 是    | 作為 Config Server 後端的 Git 存放庫，其 URI 應以 *http://* 、 *https://* 、 *git@* 或 *ssh://* 開頭。 |
+| `default-label` | 否     | Git 存放庫的預設標籤應為存放庫的 *分支名稱* 、 *標籤名稱* 或 *認可識別碼* 。 |
 | `search-paths`  | 否     | 用來搜尋 Git 存放庫子目錄的字串陣列。 |
-| `username`      | 否     | 用來存取存放庫伺服器的使用者名稱，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為_必要_項目。 |
-| `password`      | 否     | 用來存取 Git 存放庫伺服器的密碼，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為_必要_項目。 |
+| `username`      | 否     | 用來存取存放庫伺服器的使用者名稱，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為 _必要_ 項目。 |
+| `password`      | 否     | 用來存取 Git 存放庫伺服器的密碼，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為 _必要_ 項目。 |
 
 > [!NOTE]
 > 許多 `Git` 存放庫伺服器都支援使用權杖，而不是 HTTP 基本驗證的密碼。 某些存放庫 (例如 GitHub) 可讓權杖無限期保存。 不過，有些 Git 存放庫伺服器 (包括 Azure DevOps) 會強制權杖在數小時內過期。 會導致權杖過期的存放庫不應使用權杖型驗證搭配 Azure Spring Cloud。
@@ -107,22 +110,22 @@ Azure Spring Cloud 支援 Azure DevOps、GitHub、GitLab 和 Bitbucket，以儲�
 以下列出透過模式設定 Git 存放庫所使用的所有可設定屬性。
 
 > [!NOTE]
-> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，請使用 *default-label*，而不是 *defaultLabel*。
+> 使用連字號 (-) 來分隔字組是目前唯一支援的命名慣例。 例如，請使用 *default-label* ，而不是 *defaultLabel* 。
 
 | 屬性                           | 必要         | 功能                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | 否             | 包含具名 Git 存放庫設定的對應。 |
-| `repos."uri"`                      | 在 `repos` 上為 [是] | 作為 Config Server 後端的 Git 存放庫，其 URI 應以 *http://* 、*https://* 、*git@* 或 *ssh://* 開頭。 |
-| `repos."name"`                     | 在 `repos` 上為 [是] | 用來識別 Git 存放庫的名稱，只有在 `repos` 存在時才_需要_。 例如 *team-A*、*team-B*。 |
+| `repos."uri"`                      | 在 `repos` 上為 [是] | 作為 Config Server 後端的 Git 存放庫，其 URI 應以 *http://* 、 *https://* 、 *git@* 或 *ssh://* 開頭。 |
+| `repos."name"`                     | 在 `repos` 上為 [是] | 用來識別 Git 存放庫的名稱，只有在 `repos` 存在時才 _需要_ 。 例如 *team-A* 、 *team-B* 。 |
 | `repos."pattern"`                  | 否             | 用來比對應用程式名稱的字串陣列。 每個模式都應使用 `{application}/{profile}` 格式搭配萬用字元。 |
-| `repos."default-label"`            | 否             | Git 存放庫的預設標籤應為存放庫的*分支名稱*、*標籤名稱*或*認可識別碼*。 |
+| `repos."default-label"`            | 否             | Git 存放庫的預設標籤應為存放庫的 *分支名稱* 、 *標籤名稱* 或 *認可識別碼* 。 |
 | `repos."search-paths`"             | 否             | 用來搜尋 Git 存放庫子目錄的字串陣列。 |
-| `repos."username"`                 | 否             | 用來存取存放庫伺服器的使用者名稱，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為_必要_項目。 |
-| `repos."password"`                 | 否             | 用來存取 Git 存放庫伺服器的密碼，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為_必要_項目。 |
-| `repos."private-key"`              | 否             | 用來存取 Git 存放庫的 SSH 私密金鑰，若 URI 以 *git@* 或 *ssh://* 開頭，則為_必要_項目。 |
+| `repos."username"`                 | 否             | 用來存取存放庫伺服器的使用者名稱，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為 _必要_ 項目。 |
+| `repos."password"`                 | 否             | 用來存取 Git 存放庫伺服器的密碼，若 Git 存放庫伺服器支援 `Http Basic Authentication`，則為 _必要_ 項目。 |
+| `repos."private-key"`              | 否             | 用來存取 Git 存放庫的 SSH 私密金鑰，若 URI 以 *git@* 或 *ssh://* 開頭，則為 _必要_ 項目。 |
 | `repos."host-key"`                 | 否             | Git 存放庫伺服器的主機金鑰不應包含 `host-key-algorithm` 所涵蓋的演算法前置詞。 |
-| `repos."host-key-algorithm"`       | 否             | 主機金鑰演算法應為 *ssh-dss*、*ssh-rsa*、*ecdsa-sha2-nistp256*、*ecdsa-sha2-nistp384* 或 *ecdsa-sha2-nistp521*。 只有在 `host-key` 存在時才*需要*。 |
-| `repos."strict-host-key-checking"` | 否             | 指出在使用私密 `host-key` 時，Config Server 執行個體是否無法啟動。 應為 *true* (預設值) 或 *false*。 |
+| `repos."host-key-algorithm"`       | 否             | 主機金鑰演算法應為 *ssh-dss* 、 *ssh-rsa* 、 *ecdsa-sha2-nistp256* 、 *ecdsa-sha2-nistp384* 或 *ecdsa-sha2-nistp521* 。 只有在 `host-key` 存在時才 *需要* 。 |
+| `repos."strict-host-key-checking"` | 否             | 指出在使用私密 `host-key` 時，Config Server 執行個體是否無法啟動。 應為 *true* (預設值) 或 *false* 。 |
 
 ## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>將 Config Server 存放庫連結至 Azure Spring Cloud
 
@@ -142,24 +145,24 @@ Azure Spring Cloud 支援 Azure DevOps、GitHub、GitLab 和 Bitbucket，以儲�
 
 #### <a name="default-repository"></a>預設存放庫
 
-* **公用存放庫**：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI。  將 [標籤] 設定為 **config**。請確定 [驗證] 設定是 [公用]，然後選取 [套用] 以完成作業。 
+* **公用存放庫** ：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI。  將 [標籤] 設定為 **config** 。請確定 [驗證] 設定是 [公用]，然後選取 [套用] 以完成作業。 
 
-* **私人存放庫**：Azure Spring Cloud 支援基本密碼/權杖型驗證和 SSH。
+* **私人存放庫** ：Azure Spring Cloud 支援基本密碼/權杖型驗證和 SSH。
 
-    * **基本驗證**：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI，然後選取 [驗證] (「鉛筆」圖示) 按鈕。 在 [編輯驗證] 窗格的 [驗證類型] 下拉式清單中，選取 [HTTP 基本]，然後輸入您的使用者名稱和密碼/權杖，以授與 Azure Spring Cloud 的存取權。 依序 [確定] 和 [套用]，以完成 Config Server 執行個體的設定。
+    * **基本驗證** ：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI，然後選取 [驗證] (「鉛筆」圖示) 按鈕。 在 [編輯驗證] 窗格的 [驗證類型] 下拉式清單中，選取 [HTTP 基本]，然後輸入您的使用者名稱和密碼/權杖，以授與 Azure Spring Cloud 的存取權。 依序 [確定] 和 [套用]，以完成 Config Server 執行個體的設定。
 
     ![編輯驗證窗格基本驗證](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
-    > 某些 Git 存放庫伺服器 (例如 GitHub) 會使用*個人權杖*或*存取權杖* (例如密碼) 進行**基本驗證**。 您可以使用這種權杖作為 Azure Spring Cloud 中的密碼，因為該權杖永遠不會過期。 但對於其他 Git 存放庫伺服器 (例如 Bitbucket 和 Azure DevOps)，*存取權杖*會在一或兩個小時後過期。 這表示在搭配 Azure Spring Cloud 使用這些存放庫伺服器時，無法使用此選項。
+    > 某些 Git 存放庫伺服器 (例如 GitHub) 會使用 *個人權杖* 或 *存取權杖* (例如密碼) 進行 **基本驗證** 。 您可以使用這種權杖作為 Azure Spring Cloud 中的密碼，因為該權杖永遠不會過期。 但對於其他 Git 存放庫伺服器 (例如 Bitbucket 和 Azure DevOps)， *存取權杖* 會在一或兩個小時後過期。 這表示在搭配 Azure Spring Cloud 使用這些存放庫伺服器時，無法使用此選項。
 
-    * **SSH**：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI，然後選取 [驗證] (「鉛筆」圖示) 按鈕。 在 [編輯驗證] 窗格的 [驗證類型] 下拉式清單中，選取 [SSH]，然後輸入您的 [私密金鑰]。 您可以選擇性地指定**主機金鑰**和**主機金鑰演算法**。 請務必將您的公開金鑰包含在 Config Server 存放庫中。 依序 [確定] 和 [套用]，以完成 Config Server 執行個體的設定。
+    * **SSH** ：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI，然後選取 [驗證] (「鉛筆」圖示) 按鈕。 在 [編輯驗證] 窗格的 [驗證類型] 下拉式清單中，選取 [SSH]，然後輸入您的 [私密金鑰]。 您可以選擇性地指定 **主機金鑰** 和 **主機金鑰演算法** 。 請務必將您的公開金鑰包含在 Config Server 存放庫中。 依序 [確定] 和 [套用]，以完成 Config Server 執行個體的設定。
 
     ![編輯驗證窗格 ssh 驗證](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>模式存放庫
 
-如果您想要使用選擇性的**模式存放庫**來設定服務，請指定 **URI** 和**驗證**，指定方式與**預設存放庫**相同。 請務必包含您模式的**名稱**，然後選取 [套用] 以將其連結至您的執行個體。 
+如果您想要使用選擇性的 **模式存放庫** 來設定服務，請指定 **URI** 和 **驗證** ，指定方式與 **預設存放庫** 相同。 請務必包含您模式的 **名稱** ，然後選取 [套用] 以將其連結至您的執行個體。 
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>在 YAML 檔案中輸入存放庫資訊
 
@@ -218,11 +221,11 @@ Azure 春季 Cloud 可以存取公開、由 SSH 保護的 Git 存放庫，或使
 
 1. 選取要設定的服務。
 
-1. 在 [服務] 頁面的左窗格中，選取 [ **設定**] 下的 [ **Config Server** ] 索引標籤。設定我們先前建立的存放庫：
+1. 在 [服務] 頁面的左窗格中，選取 [ **設定** ] 下的 [ **Config Server** ] 索引標籤。設定我們先前建立的存放庫：
    - 新增您在上一節中儲存的存放庫 URL
    - 按一下 `Authentication` 並選取 `HTTP Basic`
    - 使用者 __名稱__ 是從上一節儲存的使用者名稱
-   - __密碼__是前一節所儲存的密碼
+   - __密碼__ 是前一節所儲存的密碼
    - 按一下 [套用] 並等候作業成功
 
    ![Spring Cloud 設定伺服器](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)

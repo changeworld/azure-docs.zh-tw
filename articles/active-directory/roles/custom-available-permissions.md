@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d283a5bec804696a1243005a37bf73b087677d09
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d0e2f520f55b9664d2d0b039867ef7670b190fed
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375123"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377066"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自訂角色的應用程式註冊許可權
 
@@ -28,7 +28,7 @@ ms.locfileid: "92375123"
 
 選擇自訂角色的許可權時，您可以選擇授與僅管理單一租使用者應用程式的存取權。 單一租使用者應用程式僅適用于註冊應用程式之 Azure AD 組織中的使用者。 單一租使用者應用程式的定義是將 **受支援的帳戶類型** 設定為 [僅限此組織目錄中的帳戶]。 在圖形 API 中，單一租使用者應用程式的 signInAudience 屬性設定為 ">azureadmyorg"。
 
-若要授與僅管理單一租使用者應用程式的存取權，請使用下列許可權搭配 **myOrganization**子類型。 例如，myOrganization/basic/update。
+若要授與僅管理單一租使用者應用程式的存取權，請使用下列許可權搭配 **myOrganization** 子類型。 例如，myOrganization/basic/update。
 
 請參閱 [自訂角色總覽](custom-overview.md) ，以瞭解一般詞彙的子類型、許可權和屬性集的意義。 以下是應用程式註冊的特定資訊。
 

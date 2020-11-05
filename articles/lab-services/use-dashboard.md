@@ -3,17 +3,17 @@ title: 在 Azure 實驗室服務中使用適用于教室實驗室的儀表板 |M
 description: 瞭解如何在 Azure 實驗室服務中使用適用于教室實驗室的儀表板。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 607a3e7faaae65adb67afc0ab0ffd5698adf4655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3834e6910faea38e87489d1ad0075d4bd9b8c6c6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528256"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376947"
 ---
 # <a name="dashboard-for-classroom-labs"></a>教室實驗室的儀表板
 本文說明 Azure 實驗室服務中的教室實驗室儀表板視圖。 
 
-![螢幕 capature 會顯示 Azure 實驗室服務中教室實驗室的儀表板視圖。](./media/use-dashboard/dashboard.png)
+![螢幕擷取畫面顯示 Azure 實驗室服務中的教室實驗室儀表板視圖](./media/use-dashboard/dashboard.png)
 
 ## <a name="costs-and-billing-tile"></a>成本和計費圖格
 此磚提供下列成本預估詳細資料：

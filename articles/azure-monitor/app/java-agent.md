@@ -4,21 +4,23 @@ description: 使用 Application Insights 延伸 Java 網站的效能和使用量
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371357"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378477"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 JAVA web 應用程式中監視相依性、攔截到例外狀況和方法執行時間
 
+> [!IMPORTANT]
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
 
-如果您已[使用 Application Insights 檢測您的 Java Web 應用程式][java]，您可以使用 Java 代理程式獲得更深入的見解，而不需變更任何程式碼：
+如果您已 [使用 APPLICATION INSIGHTS SDK 來檢測您的 JAVA web 應用程式][java]，您可以使用 JAVA 代理程式來取得更深入的見解，而不需要變更任何程式碼：
 
 * **相依性** ：您的應用程式對其他元件呼叫的相關資料，包括：
-  * 透過 Apache HttpClient、OkHttp 和發出的連**出 HTTP 呼叫** `java.net.HttpURLConnection` 會被捕捉。
-  * 系統會捕捉透過 Jedis 用戶端所提出的**Redis 呼叫**。
+  * 透過 Apache HttpClient、OkHttp 和發出的連 **出 HTTP 呼叫** `java.net.HttpURLConnection` 會被捕捉。
+  * 系統會捕捉透過 Jedis 用戶端所提出的 **Redis 呼叫** 。
   * **JDBC 查詢** -針對 MySQL 和于 postgresql，如果呼叫花費的時間超過10秒，則代理程式會報告查詢計劃。
 
 * **應用程式記錄：** 使用 HTTP 要求和其他遙測來捕捉您的應用程式記錄並使其相互關聯
@@ -27,7 +29,7 @@ ms.locfileid: "87371357"
   * **Logback**
 
 * **更好的作業命名：** (用於入口網站中的要求匯總) 
-  * 以**春季**為基礎 `@RequestMapping` 。
+  * 以 **春季** 為基礎 `@RequestMapping` 。
   * **JAX-RS** 為基礎 `@Path` 。 
 
 若要使用 Java 代理程式，您要在伺服器上安裝它。 您必須使用 [Application Insights Java SDK][java] 檢測您的 Web 應用程式。 
@@ -90,7 +92,7 @@ ms.locfileid: "87371357"
 如需最新版本的 JAVA 代理程式，請參閱 [這裡](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )的版本。 
 
-代理程式必須封裝為專案中的資源，使其最後位於 D：/home/site/wwwroot/目錄中。 您可以前往 [**開發工具**] 的 [  >  **Advanced tools**]  >  **偵錯主控台**和檢查網站目錄的內容，確認您的代理程式位於正確的 App Service 目錄。    
+代理程式必須封裝為專案中的資源，使其最後位於 D：/home/site/wwwroot/目錄中。 您可以前往 [ **開發工具** ] 的 [  >  **Advanced tools** ]  >  **偵錯主控台** 和檢查網站目錄的內容，確認您的代理程式位於正確的 App Service 目錄。    
 
 * 儲存設定並重新啟動您的應用程式。  (這些步驟僅適用于在 Windows 上執行的應用程式服務。 ) 
 
@@ -114,7 +116,7 @@ ms.locfileid: "87371357"
 
 理想的狀況是，所有的服務已更新至支援 W3C 通訊協定的新版 SDK。 強烈建議儘快移至具備 W3C 支援的新版 SDK。
 
-確定**[傳入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)與傳出 (代理程式) 設定兩者**完全相同。
+確定 **[傳入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)與傳出 (代理程式) 設定兩者** 完全相同。
 
 ## <a name="view-the-data"></a>檢視資料
 在 Application Insights 資源中，匯總的遠端相依性和方法執行時間會出現 [在 [效能] 圖][metrics]格底下。

@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361197"
+ms.locfileid: "93377015"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -57,7 +57,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [檔案]  。
+1. 按一下 [儲存]。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 
@@ -115,7 +115,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>將流量路由傳送至狀況良好的實例 (App Service) 
 
-當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [ **監視** ] 底下的 [ **健康情況檢查** ]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [檔案]  。
+當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [ **監視** ] 底下的 [ **健康情況檢查** ]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [儲存]。
 
 若要啟用 ARM 範本的功能，請將 `healthcheckpath` 資源的屬性設定 `Microsoft.Web/sites` 為您網站上的健康情況檢查路徑，例如： `"/api/health/"` 。 若要停用此功能，請將屬性設定回空字串 `""` 。
 
@@ -132,6 +132,9 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 ### <a name="behavior"></a>行為
 
 當提供健康情況檢查路徑時，App Service 將會偵測所有實例上的路徑。 如果在5次 ping 之後未收到成功的回應碼，該實例就會被視為「狀況不良」。 狀況不良的實例 (s) 將會從負載平衡器輪替中排除。 您可以使用應用程式設定來設定所需的失敗 ping 數目 `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` 。 此應用程式設定可以設定為介於2到10之間的任何整數。 例如，如果這是設定為 `2` ，則會在兩個失敗的 ping 之後，從負載平衡器中移除您的實例。 此外，當您相應增加或相應放大時，App Service 會偵測健康情況檢查路徑，以確保新的實例已準備好要求，再新增至負載平衡器。
+
+> [!NOTE]
+> 請記住，您的 App Service 方案必須相應放大為2個或更多個實例，以進行負載平衡器排除。 如果您只有1個實例，就不會從負載平衡器中移除它，即使其狀況不良也一樣。 
 
 其餘狀況良好的實例可能會產生更高的負載。 為了避免剩餘的實例過多，系統不會排除超過一半的實例。 例如，如果 App Service 的方案相應放大至4個實例，其中3個狀況不良，則會將最多2個從 loadbalancer 旋轉中排除。 其他2個實例 (1 狀況良好，而1個狀況不良的) 將會繼續接收要求。 在所有實例都狀況不良的最糟情況下，將不會排除任何實例。如果您想要覆寫此行為，您可以將 `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` 應用程式設定設為和之間的值 `0` `100` 。 將此設定為較高的值表示將會移除更多狀況不良的實例 (預設值為 50) 。
 

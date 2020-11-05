@@ -6,20 +6,20 @@ keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
-ms.date: 04/30/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf41a16975505b76e4b49fdf4e73faeb187ddfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375246"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378630"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -82,7 +82,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 4. 從 [所有服務] 清單中開啟 Privileged Identity Management，並將其釘選至儀表板。
 
-請確定組織中第一個使用 PIM 的人指派為**安全性系統管理員**和**特殊權限角色管理員**角色。 只有特殊權限角色管理員才能管理使用者的 Azure AD Directory 角色指派。 PIM 精靈會引導您完成初始探索和指派體驗。 您此時可以結束精靈而不進行任何其他變更。
+請確定組織中第一個使用 PIM 的人指派為 **安全性系統管理員** 和 **特殊權限角色管理員** 角色。 只有特殊權限角色管理員才能管理使用者的 Azure AD Directory 角色指派。 PIM 精靈會引導您完成初始探索和指派體驗。 您此時可以結束精靈而不進行任何其他變更。
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>識別及分類高特殊權限角色中的帳戶
 

@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
-ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636318"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378426"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
@@ -135,7 +135,7 @@ ms.locfileid: "92636318"
 
 #### <a name="installing-azure-powershell"></a>安裝 Azure PowerShell
 
-如果您選取快速自訂安裝的 [ **安裝] Azure PowerShell** 類型，您可以在 Azure-SSIS IR 上安裝 PowerShell 的 Az 模組。 若要這樣做，請從 [支援的清單](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)中，輸入您想要的 Az 模組版本號碼 (x. y. z) 。 這可讓您在套件中執行 Azure PowerShell Cmdlet/腳本來管理 Azure 資源，例如 [azure Analysis Services)  (的 ](../analysis-services/analysis-services-powershell.md)。
+如果您選取快速自訂安裝的 [ **安裝] Azure PowerShell** 類型，您可以在 Azure-SSIS IR 上安裝 PowerShell 的 Az 模組。 若要這樣做，請從 [支援的清單](https://www.powershellgallery.com/packages/az)中，輸入您想要的 Az 模組版本號碼 (x. y. z) 。 這可讓您在套件中執行 Azure PowerShell Cmdlet/腳本來管理 Azure 資源，例如 [azure Analysis Services)  (的 ](../analysis-services/analysis-services-powershell.md)。
 
 #### <a name="installing-licensed-components"></a>安裝授權的元件
 
@@ -289,7 +289,7 @@ ms.locfileid: "92636318"
 
       * [Sample] 資料夾，其中包含自訂安裝程式，用以在 Azure-SSIS IR 的每個節點上安裝基本工作。 此工作不會執行任何動作，而會休眠數秒鐘。 此資料夾也包含 [gacutil] 資料夾，其完整內容 ( *gacutil .exe* 、 *gacutil .exe .config* 和 *1033\gacutlrc.dll* ) 可以依原樣複製至您的容器。
 
-      * [UserScenarios] 資料夾，其中包含實際使用者案例的數個自訂安裝範例。
+      * [UserScenarios] 資料夾，其中包含實際使用者案例的數個自訂安裝範例。 如果您想要在 Azure-SSIS IR 上安裝多個範例，您可以將其自訂安裝腳本 ( *主要 .cmd* ) 檔案合併成單一檔案，並將其所有相關聯的檔案上傳至您的容器。
 
         ![公開預覽容器的內容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 

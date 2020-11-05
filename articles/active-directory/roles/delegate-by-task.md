@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: reference
-ms.date: 05/04/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc33b0bafc0d56ebf1a14769aeaa5a55508fc4a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e83ff37140369cb073f4bdc2bd24ac08ee9b1ab
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375110"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379089"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中依管理工作區分的系統管理員角色
 
@@ -211,7 +211,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 讀取登入記錄 | 報表讀者 | 安全性讀取者、安全性系統管理員
 
-## <a name="multi-factor-authentication"></a>多重要素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -351,6 +351,7 @@ Task | 最低特殊權限角色 | 其他角色
 更新適用於受限制管理員的使用者主體名稱 (請參閱文件) | 使用者管理員 | 
 更新具特殊權限管理員上的使用者主體名稱屬性 (請參閱文件) | 全域管理員 | 
 更新使用者設定 | 全域管理員 | 
+更新驗證方法 | 驗證系統管理員 | 特殊許可權驗證管理員、全域管理員
 
 
 ## <a name="support"></a>支援

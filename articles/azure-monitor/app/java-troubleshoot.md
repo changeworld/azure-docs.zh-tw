@@ -4,14 +4,18 @@ description: 疑難排解指南 - 使用 Application Insights 監視即時的 Ja
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372513"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379531"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Application Insights for Java 的疑難排解和問答集
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>適用于 JAVA SDK 的 Application Insights 疑難排解和問與答
+
+> [!IMPORTANT]
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
+
 [Java 中的 Azure Application Insights][java] 疑問或問題？ 以下是一些秘訣。
 
 ## <a name="build-errors"></a>建置錯誤
@@ -85,7 +89,7 @@ ms.locfileid: "87372513"
 **如何變更我的專案將資料傳送到哪一個 Azure 資源？**
 
 * [取得新資源的檢測金鑰。][java]
-* 如果您已使用 Azure Toolkit for Eclipse 將 Application Insights 新增到您的專案，請在 Web 專案上按一下滑鼠右鍵，依序選取 [Azure]**** 和 [設定 Application Insights]****，然後變更金鑰。
+* 如果您已使用 Azure Toolkit for Eclipse 將 Application Insights 新增到您的專案，請在 Web 專案上按一下滑鼠右鍵，依序選取 [Azure] 和 [設定 Application Insights]，然後變更金鑰。
 * 如果您已將檢測金鑰設定為環境變數，請使用新的 iKey 更新環境變數的值。
 * 否則，請更新專案之 resources 資料夾的 ApplicationInsights.xml 中的機碼。
 
@@ -179,7 +183,7 @@ Application insights 會使用 `org.apache.http`。 這會重新配置在 Applic
 >如果您針對應用程式中的所有命名空間啟用 DEBUG 層級的記錄功能，它將適用於所有執行中的模組，包括已重新命名為 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`。 Application Insights 將無法針對這些呼叫套用篩選，因為正在由 Apache 程式庫發出記錄呼叫。 DEBUG 層級記錄會產生相當大量的記錄資料，因此不建議用於即時生產環境執行個體。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 **設定 Java 伺服器應用程式的 Application Insights。我還可以做什麼？**
 
 * [監視網頁可用性][availability]

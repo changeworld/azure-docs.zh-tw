@@ -6,14 +6,14 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: c2d35a6f379b0d7cf3c4c7d61e5e679553e5302f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1afd851f5511ce7b880727c36ffb76a7f4c6d5fe
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326880"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376981"
 ---
-# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>在內部部署監視 Java 無程式碼應用程式 - Azure 監視器 Application Insights - 公開預覽
+# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視內部部署-Azure 監視器 Application Insights
 
 監視 Java 無程式碼應用程式的重點在於簡單明瞭：不需進行任何程式碼變更，只要進行數個設定變更，就能啟用該 Java 代理程式。
 

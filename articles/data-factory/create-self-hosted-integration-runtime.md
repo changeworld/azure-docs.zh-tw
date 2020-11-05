@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 123595bb6cd0112e597b9d958763900e07b9ff38
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2dc8773dc41493e30f64c0602b4345a9491cd7b7
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633071"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379701"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -147,7 +147,6 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 您只能在任何單一電腦上安裝一個自我裝載整合執行時間實例。 如果您有兩個需要存取內部部署資料來源的資料處理站，請使用 [自我裝載 ir 共用功能](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory) 來共用自我裝載 ir，或在兩部內部部署電腦上安裝自我裝載 ir （每個資料處理站各一個）。  
 - 自我裝載整合執行時間不一定要在與資料來源相同的電腦上。 不過，讓自我裝載整合執行時間接近資料來源，可以減少自我裝載整合執行時間連接到資料來源的時間。 建議您在與裝載內部部署資料來源不同的電腦上安裝自我裝載整合執行時間。 當自我裝載整合執行時間和資料來源位於不同的電腦上時，自我裝載整合執行時間不會與資源的資料來源競爭。
 - 您可以在不同電腦上有多個自我裝載整合執行階段，但它們皆連接至相同的內部部署資料來源。 例如，如果您有兩個自我裝載整合執行時間來服務兩個資料處理站，則相同的內部部署資料來源可以同時向這兩個資料處理站註冊。
-- 如果您的電腦上已安裝閘道來提供 Power BI 案例，請在另一部電腦上安裝個別的自我裝載整合執行時間，以便 Data Factory。
 - 使用自我裝載整合執行時間支援 Azure 虛擬網路內的資料整合。
 - 即使您使用 Azure ExpressRoute，也應該將資料來源視為在防火牆後的內部部署資料來源。 使用自我裝載整合執行時間，將服務連接到資料來源。
 - 即使資料存放區位於 Azure 基礎結構即服務 (IaaS) 虛擬機器的雲端中，仍請使用自我裝載整合執行時間。
@@ -189,8 +188,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 選取 [ **下載** ]，選取64位版本，然後選取 **[下一步]** 。 不支援32位版本。
 1. 直接執行受控識別檔案，或將它儲存至硬碟並加以執行。
 1. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步** ]。
-1. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]  。
-1. 選取 [資料夾]  來安裝自我裝載整合執行階段，接著按一下 [下一步]  。
+1. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]。
+1. 選取 [資料夾] 來安裝自我裝載整合執行階段，接著按一下 [下一步]。
 1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝** ]。
 1. 選取 **[完成]** 以完成安裝。
 1. 使用 PowerShell 取得驗證金鑰。 擷取驗證金鑰的 PowerShell 範例：
@@ -203,7 +202,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
     1. 將驗證金鑰貼到文字區域。
 
-    1. (選擇性) 選取 [顯示驗證金鑰]  以查看金鑰文字。
+    1. (選擇性) 選取 [顯示驗證金鑰] 以查看金鑰文字。
 
     1. 選取 [註冊]。
 
@@ -263,7 +262,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
-### <a name="terminology"></a>詞彙
+### <a name="terminology"></a>術語
 
 - **共用 ir** ：在實體基礎結構上執行的原始自我裝載 ir。  
 - **連結的 ir** ：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
@@ -360,10 +359,10 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 註冊自我裝載整合執行時間之後，如果您想要查看或更新 proxy 設定，請使用 Microsoft Integration Runtime Configuration Manager。
 
-1. 開啟 [Microsoft Integration Runtime 管理員]  。
+1. 開啟 [Microsoft Integration Runtime 管理員]。
 1. 選取 [Settings] \(設定\) 索引標籤。
 1. 在 [ **Http proxy** ] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
-1. 選取 [下一步]  。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
+1. 選取 [下一步]。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
 
@@ -403,7 +402,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
     ```
 1. 將設定檔儲存在其原始位置。 然後重新開機自我裝載 integration runtime 主機服務，以挑選變更。
 
-   若要重新開機服務，請使用主控台中的 [服務] 小程式。 或從「整合執行階段組態管理員」中，選取 [停止服務]  按鈕，然後再選取 [啟動服務]  。
+   若要重新開機服務，請使用主控台中的 [服務] 小程式。 或從「整合執行階段組態管理員」中，選取 [停止服務] 按鈕，然後再選取 [啟動服務]。
 
    如果服務未啟動，您可能在所編輯的應用程式佈建檔中新增了不正確的 XML 標記語法。
 
@@ -417,7 +416,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 如果您看到類似下列的錯誤訊息，可能是因為防火牆或 proxy 伺服器的設定不正確。 這類設定可防止自我裝載的整合執行時間連接到 Data Factory，以驗證自己的身分。 請參閱上一節，以確保您的防火牆和 Proxy 伺服器的設定皆正確。
 
 * 當您嘗試註冊自我裝載整合執行時間時，您會收到下列錯誤訊息：「無法註冊此 Integration Runtime 節點！ 請確認驗證金鑰有效，且 integration service 主機服務正在這部電腦上執行。
-* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」  或「正在連線」  狀態。 當您在 [  ，您會看到如下的錯誤訊息：
+* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」或「正在連線」狀態。 當您在 [ **事件檢視器** 應用程式和服務記錄檔] Microsoft Integration Runtime 下查看 Windows 事件記錄檔時  >  **Application and Services Logs**  >  **** ，您會看到如下的錯誤訊息：
 
     ```
     Unable to connect to the remote server

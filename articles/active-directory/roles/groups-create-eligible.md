@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58aaecaa9f8606399b40fdb1d38a274117ec6a2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375074"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378613"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立可指派角色的群組
 
@@ -27,12 +27,12 @@ ms.locfileid: "92375074"
 ## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 系統管理中心
 
 1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
-1. 選取 [**群組**  >  **所有群組**]  >  **新群組**。
+1. 選取 [ **群組**  >  **所有群組** ]  >  **新群組** 。
 
     [![開啟 Azure Active Directory 並建立新的群組。](./media/groups-create-eligible/new-group.png "開啟 Azure Active Directory 並建立新的群組。")](./media/groups-create-eligible/new-group.png#<lightbox>)
 
 1. 在 [ **新增群組** ] 索引標籤上，提供群組類型、名稱和描述。
-1. 開啟 **Azure AD 角色可以指派給群組**。 只有特殊許可權角色管理員和全域管理員可以看到此切換參數，因為這些只有兩個可設定交換器的角色。
+1. 開啟 **Azure AD 角色可以指派給群組** 。 只有特殊許可權角色管理員和全域管理員可以看到此切換參數，因為這些只有兩個可設定交換器的角色。
 
     [![讓新群組符合角色指派的資格](./media/groups-create-eligible/eligible-switch.png "讓新群組符合角色指派的資格")](./media/groups-create-eligible/eligible-switch.png#<lightbox>)
 
@@ -40,7 +40,7 @@ ms.locfileid: "92375074"
 
     [![將成員新增至角色可指派的群組並指派角色。](./media/groups-create-eligible/specify-members.png "將成員新增至角色可指派的群組並指派角色。")](./media/groups-create-eligible/specify-members.png#<lightbox>)
 
-1. 指定成員和擁有者之後，請選取 [ **建立**]。
+1. 指定成員和擁有者之後，請選取 [ **建立** ]。
 
     [![[建立] 按鈕位於頁面的底部。](./media/groups-create-eligible/create-button.png "[建立] 按鈕位於頁面的底部。")](./media/groups-create-eligible/create-button.png#<lightbox>)
 

@@ -4,28 +4,28 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875598"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377797"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
 在 [Azure App 服務](../../app-service/index.yml) 上執行的 ASP.NET 和 ASP.NET Core 基礎 web 應用程式的監視，現在比以往更容易。 但先前您需要手動安裝網站延伸模組，現在最新的擴充功能/代理程式預設會內建于 app service 映射中。 本文將逐步引導您啟用 Application Insights 監視，以及提供將大規模部署程式自動化的初步指導方針。
 
 > [!NOTE]
-> 透過**開發工具**延伸模組手動新增 Application Insights 的網站延伸模組  >  **Extensions**已淘汰。 此延伸模組安裝方法與每個新版本的手動更新相依。 擴充功能的最新穩定版本現在已  [預先安裝](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) 為 App Service 映射的一部分。 這些檔案位於中 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ，並會在每個穩定版本自動更新。 如果您遵循以代理程式為基礎的指示來啟用下方的監視，它會自動為您移除已被取代的擴充功能。
+> 透過 **開發工具** 延伸模組手動新增 Application Insights 的網站延伸模組  >  **Extensions** 已淘汰。 此延伸模組安裝方法與每個新版本的手動更新相依。 擴充功能的最新穩定版本現在已  [預先安裝](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) 為 App Service 映射的一部分。 這些檔案位於中 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ，並會在每個穩定版本自動更新。 如果您遵循以代理程式為基礎的指示來啟用下方的監視，它會自動為您移除已被取代的擴充功能。
 
 ## <a name="enable-application-insights"></a>啟用 Application Insights
 
 有兩種方式可針對 Azure App Services 託管應用程式啟用應用程式監視：
 
-* 以**代理程式為基礎的應用程式監視** (ApplicationInsightsAgent) 。  
+* 以 **代理程式為基礎的應用程式監視** (ApplicationInsightsAgent) 。  
     * 此方法最容易啟用，而且不需要進行任何 advanced 設定。 它通常稱為「執行時間」監視。 針對 Azure App 服務，我們建議您至少啟用此層級的監視，然後根據您的特定案例，您可以透過手動檢測來評估是否需要更先進的監視。
 
-* 藉由安裝 Application Insights SDK，以**手動方式透過程式碼檢測應用程式**。
+* 藉由安裝 Application Insights SDK，以 **手動方式透過程式碼檢測應用程式** 。
 
     * 這種方法更容易自訂，但需要 [在 APPLICATION INSIGHTS SDK NuGet 套件上新增](./asp-net.md)相依性。 這種方法也表示您必須自行管理套件最新版本的更新。
 
@@ -42,14 +42,14 @@ ms.locfileid: "91875598"
 > 不支援 APPINSIGHTS_JAVASCRIPT_ENABLED 和檔案 >urlcompression> 的組合。 如需詳細資訊，請參閱 [疑難排解一節](#troubleshooting)中的說明。
 
 
-1. 在您的 app service 的 Azure 控制台中**選取 Application Insights** 。
+1. 在您的 app service 的 Azure 控制台中 **選取 Application Insights** 。
 
     ![在 [設定] 之下，選擇 Application Insights](./media/azure-web-apps/settings-app-insights-01.png)
 
    * 除非您已經為此應用程式設定 Application Insights 資源，否則請選擇建立新的資源。 
 
      > [!NOTE]
-     > 當您按一下 [確定]**** 來建立新資源時，系統會提示您 [套用監視設定]****。 選取 [繼續]**** 會將新的 Application Insights 資源連結至您的應用程式服務，這麼做也會**觸發應用程式服務的重新啟動**。 
+     > 當您按一下 [確定] 來建立新資源時，系統會提示您 [套用監視設定]。 選取 [繼續] 會將新的 Application Insights 資源連結至您的應用程式服務，這麼做也會 **觸發應用程式服務的重新啟動** 。 
 
      ![檢測 Web 應用程式](./media/azure-web-apps/create-resource-01.png)
 
@@ -79,14 +79,14 @@ ms.locfileid: "91875598"
 
 以代理程式/延伸模組為基礎的監視目前 **不支援** 以 .net Core 的完整架構、獨立式部署和 Linux 應用程式為目標。 透過程式碼 ([手動檢測](./asp-net-core.md) 可在先前的所有案例中運作。 ) 
 
-1. 在您的 app service 的 Azure 控制台中**選取 Application Insights** 。
+1. 在您的 app service 的 Azure 控制台中 **選取 Application Insights** 。
 
     ![在 [設定] 之下，選擇 Application Insights](./media/azure-web-apps/settings-app-insights-01.png)
 
    * 除非您已經為此應用程式設定 Application Insights 資源，否則請選擇建立新的資源。 
 
      > [!NOTE]
-     > 當您按一下 [確定]**** 來建立新資源時，系統會提示您 [套用監視設定]****。 選取 [繼續]**** 會將新的 Application Insights 資源連結至您的應用程式服務，這麼做也會**觸發應用程式服務的重新啟動**。 
+     > 當您按一下 [確定] 來建立新資源時，系統會提示您 [套用監視設定]。 選取 [繼續] 會將新的 Application Insights 資源連結至您的應用程式服務，這麼做也會 **觸發應用程式服務的重新啟動** 。 
 
      ![檢測 Web 應用程式](./media/azure-web-apps/create-resource-01.png)
 
@@ -96,11 +96,12 @@ ms.locfileid: "91875598"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-在 [**設定**] 底下的 App Service web 應用程式中  >  ，選取 [**Application Insights**  >  **啟用**]。 以 Node.js 代理程式為基礎的監視目前為預覽狀態。
+在 [ **設定** ] 底下的 App Service web 應用程式中  >  ，選取 [ **Application Insights**  >  **啟用** ]。 以 Node.js 代理程式為基礎的監視目前為預覽狀態。
 
 # <a name="java"></a>[Java](#tab/java)
 
-以 JAVA App Service 為基礎的 web 應用程式目前不支援自動以代理程式/擴充為基礎的監視。 若要啟用 JAVA 應用程式的監視，您需要 [手動檢測您的應用程式](./java-get-started.md)。
+遵循 [Application Insights java 3.0 代理程式](./java-in-process-agent.md) 的指導方針，為您的 java 應用程式啟用自動檢測，而不需要變更您的程式碼。
+App Service 尚無法使用自動整合。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -114,31 +115,31 @@ ms.locfileid: "91875598"
 
 用戶端監視為 ASP.NET 加入宣告。 若要啟用用戶端監視：
 
-* **設定** **>****Configuration**設定
-   * 在 [應用程式設定] 下，建立 **新的應用程式設定**：
+* **設定** **>****Configuration** 設定
+   * 在 [應用程式設定] 下，建立 **新的應用程式設定** ：
 
      名稱：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      值：`true`
 
-   * **儲存**設定並**重新啟動**您的應用程式。
+   * **儲存** 設定並 **重新啟動** 您的應用程式。
 
 若要停用用戶端監視，請從應用程式設定中移除相關聯的機碼值組，或將值設定為 false。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-**依預設**會針對具有**建議集合**的 .net Core 應用程式啟用用戶端監視，不論應用程式設定 ' APPINSIGHTS_JAVASCRIPT_ENABLED ' 是否存在。
+**依預設** 會針對具有 **建議集合** 的 .net Core 應用程式啟用用戶端監視，不論應用程式設定 ' APPINSIGHTS_JAVASCRIPT_ENABLED ' 是否存在。
 
 如果基於某些原因而想要停用用戶端監視：
 
-* **設定** **>****Configuration**設定
-   * 在 [應用程式設定] 下，建立 **新的應用程式設定**：
+* **設定** **>****Configuration** 設定
+   * 在 [應用程式設定] 下，建立 **新的應用程式設定** ：
 
      名字： `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      值：`false`
 
-   * **儲存**設定並**重新啟動**您的應用程式。
+   * **儲存** 設定並 **重新啟動** 您的應用程式。
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -350,7 +351,8 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 以下是針對在 Azure App 服務上執行的 .NET 和 .NET Core 應用程式，以擴充/代理程式為基礎的監視的逐步疑難排解指南。
 
 > [!NOTE]
-> 只有透過手動以 SDK 為基礎的檢測才支援 Azure App 服務的 JAVA 應用程式，因此下列步驟不適用於這些案例。
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
+
 
 1. 檢查應用程式是否透過進行監視 `ApplicationInsightsAgent` 。
     * 檢查 `ApplicationInsightsAgent_EXTENSION_VERSION` 應用程式設定是否設為 "~ 2" 的值。
@@ -401,7 +403,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支援 PHP 和 WordPress
 
-不支援 PHP 與 WordPress 網站。 目前沒有針對這些工作負載進行伺服器端監視的正式支援 SDK/代理程式。 不過，您可以使用 [JAVASCRIPT SDK](./javascript.md)來完成在 PHP 或 WordPress 網站上手動檢測用戶端交易，方法是將用戶端 javascript 新增至網頁。
+不支援 PHP 與 WordPress 網站。 目前沒有針對這些工作負載進行伺服器端監視的正式支援 SDK/代理程式。 不過，您可以使用 [JAVASCRIPT SDK](./javascript.md)來完成在 PHP 或 WordPress 網站上手動檢測用戶端交易，方法是將用戶端 JavaScript 新增至網頁。
 
 ### <a name="connection-string-and-instrumentation-key"></a>連接字串和檢測金鑰
 

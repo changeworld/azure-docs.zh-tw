@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f441930d9d99f35c2e53bb040b0db0a427659
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375054"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378375"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中從群組移除角色指派
 
@@ -28,13 +28,13 @@ ms.locfileid: "92375054"
 
 1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
 
-1. 選取 **角色和系統管理員** > **_角色名稱_*_。
+1. 選取 **角色和系統管理員** > * *_角色名稱_* _。
 
 1. 選取您要從中移除角色指派的群組，然後選取 [移除指派]。
 
    ![從選取的群組中移除角色指派。](./media/groups-remove-assignment/remove-assignment.png)
 
-1. 當系統要求您確認您的動作時，請選取 **[是]**。
+1. 當系統要求您確認您的動作時，請選取 **[是]** 。
 
 ## <a name="using-powershell"></a>使用 PowerShell
 

@@ -1,16 +1,16 @@
 ---
-title: 監視任何環境的 JAVA 應用程式-Azure 監視器 Application Insights
-description: 針對在任何環境中執行的 JAVA 應用程式進行應用程式效能監視，而不需要檢測應用程式。 分散式追蹤和應用程式對應。
+title: Azure 監視器 Application Insights JAVA
+description: 針對在任何環境中執行的 JAVA 應用程式進行應用程式效能監視，而不需要修改程式碼。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07be6a4ff08700ee9407fbf39946b7c24abbc01a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215275"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377032"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
 監視 Java 無程式碼應用程式的重點在於簡單明瞭：不需進行任何程式碼變更，只要進行數個設定變更，就能啟用該 Java 代理程式。
 
@@ -26,15 +26,20 @@ ms.locfileid: "92215275"
 
 **1. 下載代理程式**
 
-下載 [applicationinsights-agent-3.0.0 >>.0.9.0-preview.nupkg .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar)
+> [!WARNING]
+> **如果您要從 3.0 Preview 升級**
+>
+> 請仔細檢查所有的設定 [選項](./java-standalone-config.md) ，因為 json 結構已完全變更，除了檔案名本身的所有小寫。
+
+下載 [applicationinsights-agent-3.0.0 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar)
 
 **2. 將 JVM 指向代理程式**
 
-新增 `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` 至您應用程式的 JVM 引數
+新增 `-javaagent:path/to/applicationinsights-agent-3.0.0.jar` 至您應用程式的 JVM 引數
 
 一般 JVM 引數包含 `-Xmx512m` 和 `-XX:+UseG1GC` 。 如果您知道要在何處加入這些，則您已經知道要在哪裡加入。
 
-如需設定應用程式 JVM 引數的其他說明，請參閱 [3.0 預覽：更新 JVM 引數的秘訣](./java-standalone-arguments.md)。
+如需設定應用程式 JVM 引數的其他說明，請參閱 [更新 jvm 引數的秘訣](./java-standalone-arguments.md)。
 
 **3. 將代理程式指向您的 Application Insights 資源**
 
@@ -46,7 +51,7 @@ ms.locfileid: "92215275"
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-或者，建立名為的設定檔 `ApplicationInsights.json` ，並將它放在與相同的目錄中 `applicationinsights-agent-3.0.0-PREVIEW.7.jar` ，並包含下列內容：
+或者，建立名為的設定檔 `applicationinsights.json` ，並將它放在與相同的目錄中 `applicationinsights-agent-3.0.0.jar` ，並包含下列內容：
 
 ```json
 {
@@ -70,19 +75,21 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ## <a name="configuration-options"></a>設定選項
 
-在檔案中 `ApplicationInsights.json` ，您可以另外設定：
+在檔案中 `applicationinsights.json` ，您可以另外設定：
 
 * 雲端角色名稱
 * 雲端角色執行個體
-* 應用程式記錄檔捕獲
-* JMX 計量
-* Micrometer
-* 活動訊號
 * 取樣
+* JMX 計量
+* 自訂維度
+* 遙測處理器
+* 自動收集的記錄
+* 自動收集的 Micrometer 計量 (包括彈簧開機傳動標準) 
+* 活動訊號
 * HTTP Proxy
 * 自我診斷
 
-請參閱 [3.0 公開預覽：設定選項](./java-standalone-config.md)的詳細資料。
+如需完整的詳細資訊，請參閱設定 [選項](./java-standalone-config.md) 。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>實驗自動收集要求、相依性、記錄和計量
 
@@ -226,9 +233,14 @@ telemetryClient.trackEvent("WinGame");
 
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>從 Application Insights JAVA SDK 2.x 升級
 
-如果您已經在應用程式中使用 Application Insights JAVA SDK 2.x，則不需要將它移除。 JAVA 3.0 代理程式將會偵測到它，並透過 JAVA SDK 2.x 來捕捉和關聯任何自訂遙測，同時隱藏 JAVA SDK 2.x 所執行的任何 autocollection，以避免重複的捕捉。
+如果您已經在應用程式中使用 Application Insights JAVA SDK 2.x，則不需要將它移除。
+JAVA 3.0 代理程式會偵測到它，並將您透過 JAVA SDK 2.x 傳送的任何自訂遙測進行抓取和相互關聯，同時隱藏 JAVA SDK 2.x 所執行的任何自動收集，以避免重複的遙測。
 
 如果您使用 Application Insights 2.x 代理程式，則必須移除 `-javaagent:` 指向2.x 代理程式的 JVM 參數。
 
 > [!NOTE]
-> 注意：使用3.0 代理程式時，將不會執行 JAVA SDK 2.x TelemetryInitializers 和 TelemetryProcessors。
+> 使用3.0 代理程式時，將不會執行 JAVA SDK 2.x TelemetryInitializers 和 TelemetryProcessors。
+> 許多先前需要這些案例的使用案例，可以藉由設定 [自訂維度](./java-standalone-config.md#custom-dimensions) 或設定 [遙測處理器](./java-standalone-telemetry-processors.md)來在3.0 中解決。
+
+> [!NOTE]
+> 3.0 在單一 JVM 中尚不支援多個檢測金鑰。

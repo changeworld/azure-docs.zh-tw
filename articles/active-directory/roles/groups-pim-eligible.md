@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23243de192683a4811eb569b17425701381c4cd1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 74ad503374e0148e9813508b6c7f8b21e2dca7a3
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375055"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379157"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 將角色指派給群組
 
@@ -31,13 +31,13 @@ ms.locfileid: "92375055"
 
 1. 以您組織中的特殊權限角色管理員或全域系統管理員身分登入 [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) 。
 
-1. 選取**Privileged Identity Management**  >  **Azure AD 角色**  >  **角色**  >  **新增指派**
+1. 選取 **Privileged Identity Management**  >  **Azure AD 角色**  >  **角色**  >  **新增指派**
 
 1. 選取角色，然後選取群組。 只會顯示符合角色指派資格 (角色可指派群組) 的群組，而不會顯示所有群組。
 
     ![顯示 [新增指派] 頁面的螢幕擷取畫面，其中已醒目提示 [選取角色] 和 [Select member (s) ] 區段。](./media/groups-pim-eligible/select-member.png)
 
-1. 選取所需的成員資格設定。 若為需要啟用的角色，請選擇 [ **符合資格**]。 依預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成之後，請按 [儲存並加入] 以完成角色指派。
+1. 選取所需的成員資格設定。 若為需要啟用的角色，請選擇 [ **符合資格** ]。 依預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成之後，請按 [儲存並加入] 以完成角色指派。
 
     ![選取您要為其指派角色的使用者](./media/groups-pim-eligible/set-assignment-settings.png)
 

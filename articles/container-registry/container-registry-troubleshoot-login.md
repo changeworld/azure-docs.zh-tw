@@ -3,12 +3,12 @@ title: 針對登錄登入進行疑難排解
 description: 登入 Azure container registry 時常見問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348894"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379497"
 ---
 # <a name="troubleshoot-registry-login"></a>針對登錄登入進行疑難排解
 
@@ -98,7 +98,9 @@ az acr login --name myregistry
 
 確認與認證相關聯的登入權利，例如 `AcrPull` 從登錄提取映射的 Azure 角色，或用 `AcrPush` 來推送映射的角色。 
 
-若要在入口網站中存取登錄或使用 Azure CLI 的登錄管理，至少需要 `Reader` 執行 Azure Resource Manager 作業的角色。
+存取入口網站中的登錄或使用 Azure CLI 的登錄管理，至少需要 `Reader` 角色或同等許可權，才能執行 Azure Resource Manager 作業。
+
+如果您的許可權最近變更為允許透過入口網站進行登錄存取，您可能需要在瀏覽器中嘗試 incognito 或私用會話，以避免任何過時的瀏覽器快取或 cookie。
 
 您或登錄擁有者在訂用帳戶中必須有足夠的許可權，才能新增或移除角色指派。
 

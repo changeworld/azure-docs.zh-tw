@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 283befd08c7802a9df6d2fca78465d50cfb2ba7b
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348452"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376811"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -115,7 +115,12 @@ ms.locfileid: "93348452"
 
 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 異地還原會利用伺服器的最新備份。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
 
+> [!IMPORTANT]
+>如果為新建立的伺服器執行異地還原，則初始備份同步處理可能需要24小時以上的時間，視資料大小而定，因為初始完整快照集備份複製時間較高。 後續的快照集備份是增量複製，因此在建立伺服器的24小時後，還原速度會更快。 如果您正在評估異地還原以定義您的 RTO，建議您在建立伺服器的 **24 小時之後，才** 等待並評估異地還原，以獲得更好的估計。
+
 在異地還原期間，可以進行變更的伺服器設定包括計算世代、vCore、備份保留期間及備份備援選項。 異地還原期間不支援變更定價層 (基本、一般，或記憶體最佳化) 或儲存體大小。
+
+預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 ### <a name="perform-post-restore-tasks"></a>執行還原之後的工作
 

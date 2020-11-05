@@ -4,14 +4,18 @@ description: 在 Application Insights 中搜尋 Log4J 或 Logback 追蹤
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d219f4fcfd22d25babd8c9f6564f8dcd11d3144
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374264"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377916"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中探索 Java 追蹤記錄
+
+> [!IMPORTANT]
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
+
 如果您使用 Logback 或 Log4J (v1.2 或 v2.0) 進行追蹤，您可以將追蹤記錄自動傳送到 Application Insights，您可以在其中探索及搜尋記錄。
 
 > [!TIP]
@@ -189,7 +193,7 @@ Application Insights 附加器可由任何設定的記錄器參考，而不一�
 
 ![在 Application Insights 入口網站中，開啟 [搜尋]](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [診斷搜尋][diagnostic]
 
 <!--Link references-->
