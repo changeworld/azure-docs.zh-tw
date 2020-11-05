@@ -10,20 +10,20 @@ author: lobrien
 manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9cde7fe32d1b7b13c5f95bf3d99497926f68c88e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, automl
+ms.openlocfilehash: 4cbe43f224ddf349db6b182feb3a717bb2bfd32e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311195"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358825"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 
 
 Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模型，而不需要重新實作不免每種可能的方法。 結合 Azure Machine Learning 管線，您可以建立可部署的工作流程，以快速探索最適合您資料的演算法。 本文將說明如何有效率地將資料準備步驟加入自動化 ML 步驟。 自動化 ML 可以快速探索最適合您資料的演算法，同時讓您 MLOps 和模型生命週期運算化與管線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 

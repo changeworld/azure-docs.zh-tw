@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348554"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358621"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>資料擷取管線的 DevOps
 
@@ -211,18 +211,18 @@ JSON 檔案中的值是在管線定義中設定的預設值。 部署 Azure Reso
 
 持續傳遞程式會使用成品，並將其部署至第一個目標環境。 它會藉由執行測試來確定解決方案是否正常運作。 如果成功，則會繼續進行下一個環境。 
 
-CD Azure 管線是由代表環境的多個階段所組成。 每個階段都包含執行下列步驟的 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) 和 [作業](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) ：
+CD Azure 管線是由代表環境的多個階段所組成。 每個階段都包含執行下列步驟的 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) 和 [作業](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) ：
 
 _ 將 Python 筆記本部署到 Azure Databricks 工作區
 * 部署 Azure Data Factory 管線 
 * 執行管線
 * 檢查資料內嵌結果
 
-您可以使用 [核准](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) 和網 [關](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) 來設定管線階段，以提供部署程式如何透過環境鏈進行的額外控制。
+您可以使用 [核准](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) 和網 [關](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) 來設定管線階段，以提供部署程式如何透過環境鏈進行的額外控制。
 
 ### <a name="deploy-a-python-notebook"></a>部署 Python 筆記本
 
-下列程式碼片段會定義將 Python 筆記本複製到 Databricks 叢集的 Azure 管線 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) ：
+下列程式碼片段會定義將 Python 筆記本複製到 Databricks 叢集的 Azure 管線 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) ：
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ _ 將 Python 筆記本部署到 Azure Databricks 工作區
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI 所產生的成品會自動複製到部署代理程式，並可在資料夾中使用 `$(Pipeline.Workspace)` 。 在此情況下，部署工作是指 `di-notebooks` 包含 Python 筆記本的成品。 此 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) 會使用 [Databricks Azure DevOps 擴充](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) 功能，將筆記本檔案複製到 Databricks 工作區。
+CI 所產生的成品會自動複製到部署代理程式，並可在資料夾中使用 `$(Pipeline.Workspace)` 。 在此情況下，部署工作是指 `di-notebooks` 包含 Python 筆記本的成品。 此 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) 會使用 [Databricks Azure DevOps 擴充](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) 功能，將筆記本檔案複製到 Databricks 工作區。
 
 `Deploy_to_QA`階段包含 `devops-ds-qa-vg` Azure DevOps 專案中定義之變數群組的參考。 此階段中的步驟會參考此變數群組中的變數 (例如， `$(DATABRICKS_URL)` 以及 `$(DATABRICKS_TOKEN)`) 。 其構想是下一個階段 (例如， `Deploy_to_UAT`) 將會使用其本身 UAT 範圍變數群組中定義的相同變數名稱來運作。
 
@@ -339,7 +339,7 @@ Azure Data Factory 可部署的成品是 Azure Resource Manager 的範本。 它
     * 部署至 Databricks + 部署至 ADF
     * 整合測試
 
-它包含數個與您擁有的目標環境數目相等的 [ **部署** ] 階段。 每個 _*_部署_*_ 階段包含兩個平行執行的 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) ，以及在部署後執行的 [作業](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) ，以便在環境上測試解決方案。
+它包含數個與您擁有的目標環境數目相等的 [ **部署** ] 階段。 每個 _*_部署_*_ 階段包含兩個平行執行的 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) ，以及在部署後執行的 [作業](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) ，以便在環境上測試解決方案。
 
 管線的範例執行會在下列 _*_yaml_*_ 程式碼片段中組合：
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339424"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356343"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -69,7 +69,7 @@ ms.locfileid: "93339424"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -97,6 +97,7 @@ ms.locfileid: "93339424"
 | 以行動裝置為基礎的單一登出| √| √* |
 | 行動應用程式的條件式存取原則| √| X |
 | 適用于行動應用程式的順暢 MFA 體驗| √| X |
+| SCIM 佈建| √| √ |
 | 存取 Microsoft Graph| √| X |
 
 * 可能，但 Microsoft 不提供範例或指引。
@@ -261,7 +262,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ![在資源庫中列出密碼 SSO 應用程式](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果您正在執行 SCIM 2.0 端點以進行使用者布建，請選取如下所示的選項。 
+如果您正在執行 [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0 端點以進行使用者布建，請選取如下所示的選項。 
 
    ![要求使用者布建](./media/howto-app-gallery-listing/user-provisioning.png)
 

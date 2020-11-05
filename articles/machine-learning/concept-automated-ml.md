@@ -1,7 +1,7 @@
 ---
 title: 什麼是自動化 ML？ AutoML
 titleSuffix: Azure Machine Learning
-description: 了解 Azure Machine Learning 如何自動為您挑選演算法，以及如何藉由使用您提供來為模型選取最佳演算法的參數與準則，從其中產生模型來節省您的時間。
+description: 瞭解 Azure Machine Learning 如何使用您提供的參數和準則來自動產生模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,13 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
-ms.openlocfilehash: 31cb2b2b5411968f1eba71fa9afc7bdc8296407c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: automl
+ms.openlocfilehash: ca0cfd7c38dde5e7307c31989791aa3906b9cbe5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307407"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357278"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 

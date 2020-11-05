@@ -1,7 +1,7 @@
 ---
 title: 什麼是分散式訓練？
 titleSuffix: Azure Machine Learning
-description: 瞭解分散式訓練，以及 Azure Machine Learning 如何支援。
+description: 瞭解何種類型的分散式訓練 Azure Machine Learning 支援，以及適用于分散式訓練的開放原始碼架構整合。
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4e1972e0530656bf6cc0e6319191ab4ebbfbfddb
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322218"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358570"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>使用 Azure Machine Learning 的分散式訓練
 

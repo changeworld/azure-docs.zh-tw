@@ -1,5 +1,5 @@
 ---
-title: 連線至 Azure 儲存體服務
+title: 連接至 Azure 上的儲存體服務
 titleSuffix: Azure Machine Learning
 description: 了解如何在使用 Azure Machine Learning 定型期間使用資料存放區安全地連線至 Azure 儲存體服務
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 07/22/2020
-ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/03/2020
+ms.custom: how-to, contperfq1, devx-track-python, data4ml
+ms.openlocfilehash: f60d864bd367b5f44869abc9ccac4e4cc266075a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320861"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358094"
 ---
-# <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
+# <a name="connect-to-storage-services-azure"></a>連接至儲存體服務 Azure
 
-在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 儲存體服務** 。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](how-to-connect-data-ui.md) 來建立和註冊資料存放區。
+在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 上的儲存體服務** 。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](how-to-connect-data-ui.md) 來建立和註冊資料存放區。
 
 如果您想要使用 Azure Machine Learning VS Code 擴充功能來建立和管理資料存放區;如需深入瞭解，請造訪 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#datastores) 。
 
@@ -109,11 +109,13 @@ ms.locfileid: "93320861"
     * 其對應的 **總覽** 頁面將包含必要的資訊，例如租使用者識別碼和用戶端識別碼。
 
 > [!IMPORTANT]
-> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶的存取金鑰 (帳戶金鑰或 SAS 權杖) 。 當您這樣做時，請務必將新的認證與您的工作區和連線的資料存放區同步。 瞭解如何 [同步處理已更新的認證](how-to-change-storage-access-key.md)。 
-
+> * 如果您需要變更 Azure 儲存體帳戶的存取金鑰 (帳戶金鑰或 SAS 權杖) ，請務必將新的認證與您的工作區和連線的資料存放區同步。 瞭解如何 [同步處理已更新的認證](how-to-change-storage-access-key.md)。 
 ### <a name="permissions"></a>權限
 
-針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 針對資料讀取權限，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 若要進行資料寫入存取，也需要 [寫入] 和 [新增] 許可權。
+針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 
+* 針對資料 **讀取權限** ，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 
+
+* 若要進行資料 **寫入存取** ，也需要 [寫入] 和 [新增] 許可權。
 
 <a name="python"></a>
 
@@ -130,6 +132,8 @@ ms.locfileid: "93320861"
  若要為其他支援的儲存體服務建立資料存放區，請參閱 [適用 `register_azure_*` 方法的參考檔](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods)。
 
 如果您偏好低程式碼體驗，請參閱 [使用 Azure Machine Learning Studio 連接到資料](how-to-connect-data-ui.md)。
+>[!IMPORTANT]
+> 如果您使用相同的名稱來取消註冊並重新註冊資料存放區，而且該資料存放區失敗，則您工作區的 Azure Key Vault 可能不會啟用虛刪除。 根據預設，您的工作區所建立的金鑰保存庫實例會啟用虛刪除，但如果您使用現有的金鑰保存庫或在2020年10月之前建立的工作區，則可能不會啟用。 如需有關如何啟用虛刪除的詳細資訊，請參閱為 [現有的金鑰保存庫開啟虛刪除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
 
 > [!NOTE]
 > 資料存放區名稱只可包含小寫字母、數位和底線。 

@@ -10,12 +10,12 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ee461193be81297c6577ce4c264cabbf08e72417
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131593"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359437"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案，以及 ACL
 
@@ -225,7 +225,7 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 
 ### <a name="get-an-acl"></a>取得 ACL
 
-使用 `az storage fs access show` 命令，取得**目錄**的 ACL。
+使用 `az storage fs access show` 命令，取得 **目錄** 的 ACL。
 
 此範例會取得目錄的 ACL，然後將 ACL 列印到主控台。
 
@@ -233,7 +233,7 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-使用 `az storage fs access show` 命令，取得**檔案**的存取權限。 
+使用 `az storage fs access show` 命令，取得 **檔案** 的存取權限。 
 
 此範例取得檔案的 ACL，然後將 ACL 列印到主控台。
 
@@ -249,7 +249,7 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 
 ### <a name="set-an-acl"></a>設定 ACL
 
-使用 `az storage fs access set` 命令，設定**目錄**的 ACL。 
+使用 `az storage fs access set` 命令，設定 **目錄** 的 ACL。 
 
 此範例會針對擁有使用者、擁有群組，或其他使用者，在目錄上設定 ACL，然後將 ACL 列印到主控台。
 
@@ -257,13 +257,13 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-此範例會針對擁有使用者、擁有群組，或其他使用者，在目錄上設定*預設* ACL，然後將 ACL 列印到主控台。
+此範例會針對擁有使用者、擁有群組，或其他使用者，在目錄上設定 *預設* ACL，然後將 ACL 列印到主控台。
 
 ```azurecli
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-使用 `az storage fs access set` 命令，設定**檔案**的 ACL。 
+使用 `az storage fs access set` 命令，設定 **檔案** 的 ACL。 
 
 此範例會針對擁有使用者、擁有群組，或其他使用者，在檔案上設定 ACL，然後將 ACL 列印到主控台。
 
@@ -283,13 +283,13 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 藉由將 `-permissions` 參數設為簡短形式的 ACL，以更新目錄或檔案的 ACL。
 
-這個範例會更新**目錄**的 ACL。
+這個範例會更新 **目錄** 的 ACL。
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-這個範例會更新**檔案**的 ACL。
+這個範例會更新 **檔案** 的 ACL。
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -307,7 +307,12 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ```azurecli
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
+
 ```
+
+### <a name="set-an-acl-recursively"></a>以遞迴方式設定 ACL
+
+您可以在父目錄的現有子專案上以遞迴方式新增、更新和移除 Acl，而不需要為每個子專案個別進行這些變更。 如需詳細資訊，請參閱 [設定 (acl 的存取控制清單) 以遞迴方式進行 Azure Data Lake Storage Gen2](recursive-access-control-lists.md)。
 
 ## <a name="see-also"></a>另請參閱
 

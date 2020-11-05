@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API 的圖表資料模型
 description: 了解如何使用 Azure Cosmos DB Gremlin API 建立圖形資料庫的模型。 本文將說明使用圖形資料庫的時機和建立實體及關聯性模型的最佳做法。
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: jasonh
-ms.openlocfilehash: 70cbe3a7dae243105a659e1363a44f17f03758e2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: chrande
+ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129638"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357040"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的圖表資料模型
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -48,11 +48,11 @@ ms.locfileid: "93129638"
 
 | Object | 屬性 | 類型 | 注意 |
 | --- | --- | --- |  --- |
-| 頂點 | ID | String | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
+| 頂點 | 識別碼 | String | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
 | 頂點 | label | String | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
 | 頂點 | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個頂點中。 |
 | 頂點 | 分割區索引鍵 | 字串、布林值、數值 | 這個屬性會定義頂點和其傳出邊緣的儲存位置。 深入了解[資料分割](graph-partitioning.md)。 |
-| Edge | ID | String | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
+| Edge | 識別碼 | String | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
 | Edge | label | String | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
 | Edge | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個邊緣中。 |
 
@@ -78,7 +78,7 @@ ms.locfileid: "93129638"
 
 * **屬性內嵌頂點** ：此方法會利用索引鍵/值組清單來代表頂點內實體的所有屬性。 此方法可降低模型的複雜度，但將會導致只能執行較簡單的查詢和更符合成本效益的周遊。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="使用頂點作為屬性的實體模型。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="下圖顯示上圖中的 Luis 頂點與 i d、label 和 properties。" border="false":::
 
 > [!NOTE]
 > 上述範例顯示了簡化的圖形模型，以只顯示分割實體屬性的兩種方法之間的比較。
@@ -106,7 +106,7 @@ ms.locfileid: "93129638"
 * 使用非泛型詞彙來標記關聯性。
 * 利用關聯性名稱建立來源頂點的標籤與目標頂點的標籤之間的關聯。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="使用頂點作為屬性的實體模型。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="關聯性標籤範例。" border="false":::
 
 請盡可能讓周遊以越特定的方式使用標籤來篩選邊緣。 這項決策也會對查詢成本產生重大的影響。 您隨時可以[使用 executionProfile 步驟](graph-execution-profile.md)評估查詢成本。
 

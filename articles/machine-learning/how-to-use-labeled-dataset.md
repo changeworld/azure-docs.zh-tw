@@ -7,14 +7,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 7fad51f5c8ec426792c74b1a14ea80ab47c2d892
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 05535f47b212c3f72256dd8b2b8e3923c309a08c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312291"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356360"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>建立和探索具有標籤的 Azure Machine Learning 資料集
 

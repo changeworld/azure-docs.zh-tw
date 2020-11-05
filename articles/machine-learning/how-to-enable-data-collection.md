@@ -10,13 +10,13 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314234"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357638"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
@@ -57,7 +57,7 @@ Blob 中輸出資料的路徑遵循此語法：
 >[!NOTE]
 > 在版本 0.1.0 a16 之前的 Azure Machine Learning SDK for Python 版本中， `designation` 引數命名為 `identifier` 。 如果您使用較早的版本開發程式碼，您必須據以更新。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 

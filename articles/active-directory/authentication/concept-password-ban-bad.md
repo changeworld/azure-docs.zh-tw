@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd367b337a0f26323411111ea7eb1120bf6d75d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965177"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356581"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>使用 Azure Active Directory 密碼保護來消除錯誤的密碼
 
-許多安全性指引建議您不要在多個位置使用相同的密碼，使其變得複雜，並避免像 *Password123*這樣的簡單密碼。 您可以為使用者提供 [如何選擇密碼的指引](https://www.microsoft.com/research/publication/password-guidance)，但通常仍會使用弱式或不安全的密碼。 Azure AD 密碼保護會偵測並封鎖已知的弱式密碼及其變體，也可以封鎖您組織專屬的其他弱式詞彙。
+許多安全性指引建議您不要在多個位置使用相同的密碼，使其變得複雜，並避免像 *Password123* 這樣的簡單密碼。 您可以為使用者提供 [如何選擇密碼的指引](https://www.microsoft.com/research/publication/password-guidance)，但通常仍會使用弱式或不安全的密碼。 Azure AD 密碼保護會偵測並封鎖已知的弱式密碼及其變體，也可以封鎖您組織專屬的其他弱式詞彙。
 
 使用 Azure AD 密碼保護時，會自動將預設全域禁用密碼清單套用至 Azure AD 租使用者中的所有使用者。 若要支援您自己的商務和安全性需求，您可以在自訂禁用密碼清單中定義專案。 當使用者變更或重設其密碼時，系統會檢查這些禁用的密碼清單，以強制使用強式密碼。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91965177"
 
 ## <a name="global-banned-password-list"></a>全域禁用密碼清單
 
-Azure AD Identity Protection 團隊會持續分析 Azure AD 的安全性遙測資料，以尋找常用的弱式或遭盜用的密碼。 具體來說，分析會尋找通常用來做為弱式密碼基礎的基底詞彙。 當發現弱式字詞時，它們會新增至 *全域禁用密碼清單*。 全域禁用密碼清單的內容不是以任何外部資料源為基礎，而是根據 Azure AD 安全性遙測和分析的結果。
+Azure AD Identity Protection 團隊會持續分析 Azure AD 的安全性遙測資料，以尋找常用的弱式或遭盜用的密碼。 具體來說，分析會尋找通常用來做為弱式密碼基礎的基底詞彙。 當發現弱式字詞時，它們會新增至 *全域禁用密碼清單* 。 全域禁用密碼清單的內容不是以任何外部資料源為基礎，而是根據 Azure AD 安全性遙測和分析的結果。
 
 當 Azure AD 租使用者中的任何使用者的密碼變更或重設時，會使用目前版本的全域禁用密碼清單來驗證密碼的強度。 這項驗證檢查會為所有 Azure AD 客戶帶來更強的密碼。
 
@@ -44,7 +44,7 @@ Azure AD Identity Protection 團隊會持續分析 Azure AD 的安全性遙測�
 
 ## <a name="custom-banned-password-list"></a>自訂禁用密碼清單
 
-有些組織想要改善安全性，並在全域禁用密碼清單上新增自己的自訂。 若要新增您自己的專案，您可以使用 *自訂禁用密碼清單*。 新增至自訂禁用密碼清單的詞彙應著重于組織特定的詞彙，例如下列範例：
+有些組織想要改善安全性，並在全域禁用密碼清單上新增自己的自訂。 若要新增您自己的專案，您可以使用 *自訂禁用密碼清單* 。 新增至自訂禁用密碼清單的詞彙應著重于組織特定的詞彙，例如下列範例：
 
 - 品牌名稱
 - 產品名稱
@@ -61,7 +61,7 @@ Azure AD Identity Protection 團隊會持續分析 Azure AD 的安全性遙測�
 
 ![修改 [驗證方法] 底下的自訂禁用密碼清單](./media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)
 
-讓我們來看看名為 *Contoso*的客戶。 公司以倫敦為基礎，並製作名為 *Widget*的產品。 在此範例客戶中，嘗試封鎖這些詞彙的特定變化（如下所示）會很浪費且較不安全：
+讓我們來看看名為 *Contoso* 的客戶。 公司以倫敦為基礎，並製作名為 *Widget* 的產品。 在此範例客戶中，嘗試封鎖這些詞彙的特定變化（如下所示）會很浪費且較不安全：
 
 - "Contoso！ 1"
 - "Contoso@London"
@@ -202,7 +202,7 @@ Azure AD 密碼保護可有效率地封鎖可能在密碼噴灑攻擊中使用�
 > [!IMPORTANT]
 > 禁用密碼演算法以及全域禁用密碼清單，可以在 Azure 中的任何時間，根據持續性的安全性分析和研究來進行變更。
 >
-> 對於混合式案例中的內部部署 DC 代理程式服務，只有在重新安裝 DC 代理程式軟體之後，更新的演算法才會生效。
+> 對於混合式案例中的內部部署 DC 代理程式服務，只有在升級 DC 代理程式軟體之後，更新的演算法才會生效。
 
 ## <a name="what-do-users-see"></a>使用者看到的內容
 

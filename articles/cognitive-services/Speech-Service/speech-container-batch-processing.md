@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425793"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356700"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>適用于語音容器的批次處理套件
 
@@ -106,7 +106,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 
 `ONESHOT` 模式轉譯單一批次的音訊檔案 (從輸入目錄和選擇性檔案清單) 到輸出檔案夾。
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="顯示範例批次套件容器工作流程的圖表。":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="此圖表顯示 oneshot 模式中的批次套件容器處理檔案。":::
 
 1. 定義 batch 用戶端將在檔案中使用的語音容器端點 `config.yaml` 。 
 2. 將音訊檔案放入輸入目錄中。  
@@ -121,7 +121,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 
 `DAEMON` 模式轉譯指定資料夾中的現有檔案，並在新增音訊檔案時持續轉譯它們。          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="顯示範例批次套件容器工作流程的圖表。":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="此圖顯示在 daemon 模式中的批次套件容器處理檔案。":::
 
 1. 定義 batch 用戶端將在檔案中使用的語音容器端點 `config.yaml` 。 
 2. 叫用輸入目錄上的容器。 Batch 用戶端將開始監視傳入檔案的目錄。 
@@ -134,7 +134,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 
 `REST` 模式是一種 API 伺服器模式，可提供一組基本的 HTTP 端點，以進行音訊檔案批次提交、狀態檢查和長期輪詢。 也可讓您使用 python 模組擴充功能以程式設計的方式取用，或以子模組的形式匯入。
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="顯示範例批次套件容器工作流程的圖表。":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="此圖顯示以 REST 模式處理的批次套件容器處理檔案。":::
 
 1. 定義 batch 用戶端將在檔案中使用的語音容器端點 `config.yaml` 。 
 2. 將 HTTP 要求要求傳送至其中一個 API 伺服器的端點。 
@@ -158,7 +158,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 
 用戶端會在 docker 命令的引數所指定的目錄中建立 *執行 .log* 檔案 `-log_folder` `run` 。 依預設，記錄是在偵錯工具層級中捕捉。 相同的記錄會傳送至 `stdout/stderr` ，並根據引數進行篩選 `-log_level` 。 只有在進行偵錯工具時，或您需要傳送追蹤以取得支援時，才需要此記錄檔。 記錄資料夾也包含每個音訊檔案的語音 SDK 記錄檔。
 
-指定的輸出目錄 `-output_folder` 會包含檔案*上的run_summary.js*   ，這會在每隔30秒或每次新轉譯完成時定期重寫。 當批次繼續時，您可以使用這個檔案來檢查進度。 當批次完成時，它也會包含每個檔案的最終執行統計資料和最終狀態。 當進程有乾淨結束時，就會完成批次。 
+指定的輸出目錄 `-output_folder` 會包含檔案 *上的run_summary.js*   ，這會在每隔30秒或每次新轉譯完成時定期重寫。 當批次繼續時，您可以使用這個檔案來檢查進度。 當批次完成時，它也會包含每個檔案的最終執行統計資料和最終狀態。 當進程有乾淨結束時，就會完成批次。 
 
 ## <a name="next-steps"></a>後續步驟
 

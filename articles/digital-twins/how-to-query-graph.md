@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57b6bac49f0142b008a21accfffb614453cc6aec
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325773"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358145"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -154,21 +154,19 @@ AND T.Temperature = 70
 您也可以根據 **是否已定義特定屬性** 來取得 twins。 以下查詢會取得具有已定義 *位置* 屬性的 twins：
 
 ```sql
-SELECT *
-FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
 這可協助您依卷 *標屬性進行* twins，如將標籤 [新增至數位 twins](how-to-use-tags.md)所述。 以下查詢會取得以 *紅色* 標記的所有 twins：
 
 ```sql
-select * from digitaltwins where is_defined(tags.red)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
 ```
 
 您也可以根據 **屬性的類型** 來取得 twins。 以下查詢會取得其 *溫度* 屬性為數字的 twins：
 
 ```sql
-SELECT * FROM DIGITALTWINS T
-WHERE IS_NUMBER(T.Temperature)
+SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>依模型查詢
@@ -279,7 +277,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 您可以使用組合運算子 **結合** 上述任何類型的查詢，以在單一查詢中包含更多詳細資料。 以下是一些額外的複合查詢範例，可同時查詢多個類型的對應項描述項。
 
-| 描述 | 查詢 |
+| Description | 查詢 |
 | --- | --- |
 | 在 *123 空間* 的裝置上，傳回服務角色為操作員的 MxChip 裝置 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | 取得具有名為 *Contains* 之關聯性的 twins，以及識別碼為 *id1* 的另一個對應項 | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |

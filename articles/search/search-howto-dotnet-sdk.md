@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4b3256591c0aa2536fd42bcdbb2ef339fc1d5c48
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791948"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356802"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>如何在 c # .NET 應用程式中使用 Azure.Search.Documents
 
@@ -60,7 +60,7 @@ Azure.Search.Documents (第11版) 目標版本[ `2020-06-30` 的 Azure 認知搜
 
 ## <a name="example-application"></a>範例應用程式
 
-本文是以 GitHub 上的 >dotnethowto 程式碼範例為例，它會以 GitHub 上的[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo/v11)程式碼範例為例，說明如何建立、載入和查詢搜尋索引的基本 Azure 認知搜尋概念。
+本文是以 GitHub 上的 >dotnethowto 程式碼範例為例，它會以 GitHub 上的[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)程式碼範例為例，說明如何建立、載入和查詢搜尋索引的基本 Azure 認知搜尋概念。
 
 針對本文的其餘部分，假設有一個名為「飯店」的新索引，並填入幾份檔，其中有數個符合結果的查詢。
 

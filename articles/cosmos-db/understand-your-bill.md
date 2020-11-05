@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073820"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358706"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解您的 Azure Cosmos DB 帳單
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,11 +103,11 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 
 * 在有 720 小時的月份中，若有 300 小時佈建的輸送量為 120-K RU/秒，而其餘 420 小時佈建的輸送量為 155-K RU/秒，您的每月帳單會顯示：300 x $9.60/小時 + 420 x $12.40/小時 = $2,880 + $5,208 = $8,088/月。 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="專用輸送量帳單範例":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="共用輸送量帳單範例":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>具有異地複寫和多重區域寫入的計費範例  
+## <a name="billing-examples-with-geo-replication"></a>使用異地複寫的計費範例  
 
-您可以隨時在 Azure Cosmos 資料庫帳戶中新增/移除世界各地的 Azure 區域。 您為各種 Azure Cosmos 資料庫與容器設定的輸送量，將會保留在與您 Azure Cosmos 資料庫帳戶相關的每個 Azure 區域中。 如果您的 Azure Cosmos 資料庫帳戶內所有資料庫與容器所設定的佈建輸送量 (RU/秒) 總和 (每小時佈建量) 為 T，而與您資料庫帳戶相關聯的 Azure 區域數目為 N，那麼您 Azure Cosmos 資料庫帳戶已知小時的總佈建輸送量分別為，(a) 設定為單一寫入區域等於T x N RU/秒，以及 (b) 設定為能夠處理寫入的所有區域等於 T x (N+1) RU/秒。 布建的輸送量 (單一寫入區域) 每秒 100 RU $ 0.008/小時的費用，以及具有多個可寫入區域的布建輸送量 (多重區域寫入設定) 成本 $ 0.016/每小時每 100 RU/秒 (請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)) 。 不論您選擇單一寫入區域或多重寫入區域，Azure Cosmos DB 都能讓您從任何區域讀取資料。
+您可以隨時在 Azure Cosmos 資料庫帳戶中新增/移除世界各地的 Azure 區域。 您為各種 Azure Cosmos 資料庫與容器設定的輸送量，將會保留在與您 Azure Cosmos 資料庫帳戶相關的每個 Azure 區域中。 如果布建的輸送量總和 (RU/秒) 在您的 Azure Cosmos 資料庫帳戶內的所有資料庫和容器中設定 (每小時布建) 是 T，而且與您資料庫帳戶相關聯的 Azure 區域數目為 N，則 Azure Cosmos 資料庫帳戶的總布建輸送量會等於 T x N RU/秒。布建的輸送量 (單一寫入區域) 每秒 100 RU $ 0.008/小時的費用，以及具有多個可寫入區域的布建輸送量 (多重區域寫入設定) 成本 $ 0.016/每小時每 100 RU/秒 (請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)) 。 不論您選擇單一寫入區域或多重寫入區域，Azure Cosmos DB 都能讓您從任何區域讀取資料。
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>計費範例：多重區域 Azure Cosmos 帳戶，單一區域寫入
 
@@ -193,7 +193,7 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 
 下圖以視覺化方式顯示整個月 720 個小時期間整體佈建輸送量的變化： 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="專用輸送量帳單範例":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="真實範例":::
 
 每月帳單總計 (假設一個月 30 天/720 個小時) 計算方式如下：
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.custom: how-to
-ms.openlocfilehash: cb4e57cfe8b7494b7d5c38869f83190bff76ef2a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, automl
+ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305768"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358808"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>使用 .NET 中的 AutoML ONNX 模型進行預測
 
@@ -25,7 +25,7 @@ ms.locfileid: "93305768"
 
 ONNX 是 AI 模型的開放原始碼格式。 ONNX 支援架構間的互通性。 這表示您可以在許多熱門的機器學習架構（例如 PyTorch）中訓練模型、將它轉換成 ONNX 格式，然後在不同的架構（例如 ML.NET）中使用 ONNX 模型。 若要深入了解，請前往 [ONNX 網站](https://onnx.ai/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - [.NET Core SDK 3.1 或更高版本](https://dotnet.microsoft.com/download)
 - 文字編輯器或 IDE (例如 [Visual Studio](https://visualstudio.microsoft.com/vs/) 或 [Visual Studio Code](https://code.visualstudio.com/Download)) 

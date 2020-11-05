@@ -7,13 +7,13 @@ author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
-ms.author: jushiman
-ms.openlocfilehash: 175d572e69dd34a09787f44cf14ae0336c8e95e0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mimckitt
+ms.openlocfilehash: 45bcfdb544d3951feb40a821b601ce60ecc0feaf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975598"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356768"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -61,13 +61,32 @@ MBps = 每秒 10^6 位元組，而 GiB = 1024^3 位元組。
 
 <sup>1</sup> Fs 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能的設計](premium-storage-performance.md)。
 
+
+## <a name="nvv2-series"></a>NVv2 系列
+
+**較新的大小建議** ： [NVv3 系列](nvv3-series.md)
+
+NVv2 系列的虛擬機器採用 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 以及具備 Intel Broadwell CPU 的 NVIDIA GRID 技術。 這些虛擬機器專用於 GPU 高速圖形應用程式以及虛擬桌面，客戶可用於將其資料視覺化、將結果模擬到檢視中、運用於 CAD 之上，或是轉譯內容及串流內容。 除此之外，這些虛擬機器可以執行單一的精密工作負載，像是編碼及轉譯。 NVv2 虛擬機器支援進階儲存體，同時相較於之前的 NV 系列，配備兩倍的系統記憶體 (RAM)。  
+
+NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
+
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
+| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
+| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+
+## <a name="older-generations-of-virtual-machine-sizes"></a>較舊的虛擬機器大小層代
+
+本節提供舊版虛擬機器大小的相關資訊。 這些大小仍受支援，但不會收到額外的容量。 已正式推出較新或替代的大小。 請參閱 [Azure 中的虛擬機器大小](./sizes.md) ，以選擇最符合您需求的 VM 大小。  
+
+如需調整 Linux VM 大小的詳細資訊，請參閱 [調整 LINUX vm 的大小](linux/change-vm-size.md)。  
+
 <br>
-
-
 
 ### <a name="basic-a"></a>基本 A  
 
-**較新的大小建議**： [Av2 系列](av2-series.md)
+**較新的大小建議** ： [Av2 系列](av2-series.md)
 
 進階儲存體：不支援
 
@@ -97,7 +116,7 @@ MBps = 每秒 10^6 位元組，而 GiB = 1024^3 位元組。
 
 ### <a name="a-series"></a>A 系列  
 
-**較新的大小建議**： [Av2 系列](av2-series.md)
+**較新的大小建議** ： [Av2 系列](av2-series.md)
 
 ACU：50 - 100
 
@@ -122,7 +141,7 @@ ACU：50 - 100
 
 ### <a name="a-series---compute-intensive-instances"></a>A 系列 - 大量計算執行個體  
 
-**較新的大小建議**： [Av2 系列](av2-series.md)
+**較新的大小建議** ： [Av2 系列](av2-series.md)
 
 ACU：225
 
@@ -130,7 +149,7 @@ ACU：225
 
 進階儲存體快取：不支援
 
-A8-A11 和 H 系列大小也稱為 *計算密集型執行個體*。 執行這些大小的硬體是針對計算密集型和網路密集型應用程式 (包括高效能運算 (HPC) 叢集應用程式)、模型化及模擬而設計及最佳化的。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，而 H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  
+A8-A11 和 H 系列大小也稱為 *計算密集型執行個體* 。 執行這些大小的硬體是針對計算密集型和網路密集型應用程式 (包括高效能運算 (HPC) 叢集應用程式)、模型化及模擬而設計及最佳化的。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，而 H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (HDD)：GiB | 最大資料磁碟 | 最大資料磁碟輸送量︰IOPS | 最大 NIC|
 |---|---|---|---|---|---|---|
@@ -148,7 +167,7 @@ A8-A11 和 H 系列大小也稱為 *計算密集型執行個體*。 執行這些
 
 ### <a name="d-series"></a>D 系列  
 
-**較新的大小建議**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議** ： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1</sup>
 
@@ -169,7 +188,7 @@ ACU： 160-250 <sup>1</sup>
 
 ### <a name="d-series---memory-optimized"></a>D 系列 - 記憶體已最佳化  
 
-**較新的大小建議**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議** ： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1</sup>
 
@@ -188,9 +207,9 @@ ACU： 160-250 <sup>1</sup>
 
 <br>
 
-## <a name="preview-dc-series"></a>預覽： DC 系列
+### <a name="preview-dc-series"></a>預覽： DC 系列
 
-**較新的大小建議**： [DCsv2 系列](dcv2-series.md)
+**較新的大小建議** ： [DCsv2 系列](dcv2-series.md)
 
 進階儲存體：支援
 
@@ -205,12 +224,12 @@ DC 系列使用最新一代的 3.7 GHz Intel E-2176g (具處理器搭配 SGX 技
 
 > [!IMPORTANT]
 >
-> DC 系列 Vm 是 [第2代 vm](./generation-2.md#creating-a-generation-2-vm) ，且僅支援 `Gen2` 映射。
+> DC 系列 Vm 是 [第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，且僅支援 `Gen2` 映射。
 
 
 ### <a name="ds-series"></a>DS 系列  
 
-**較新的大小建議**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議** ： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1</sup>
 
@@ -231,7 +250,7 @@ ACU： 160-250 <sup>1</sup>
 
 ### <a name="ds-series---memory-optimized"></a>DS 系列 - 記憶體已最佳化  
 
-**較新的大小建議**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議** ： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1、2</sup>
 
@@ -253,7 +272,7 @@ ACU： 160-250 <sup>1、2</sup>
 
 ### <a name="ls-series"></a>Ls 系列
 
-**較新的大小建議**： [Lsv2 系列](lsv2-series.md)
+**較新的大小建議** ： [Lsv2 系列](lsv2-series.md)
 
 Ls 系列使用[Intel® Xeon® 處理器 E5 v3 系列](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)，提供最多 32 個 vCPU。 Ls 系列會取得與 G/GS 系列相同的 CPU 效能，而且每個 vCPU 會有 8 GiB 的記憶體。
 
@@ -278,7 +297,7 @@ Ls 系列 VM 的最大磁碟輸送量，可能會受到任何連結磁碟的數�
 
 ### <a name="gs-series"></a>GS 系列
 
-**較新的大小建議**： [Easv4 系列](eav4-easv4-series.md)、 [Esv4 系列](ev4-esv4-series.md)、 [Edsv4 系列](edv4-edsv4-series.md) 和 [M 系列](m-series.md)
+**較新的大小建議** ： [Easv4 系列](eav4-easv4-series.md)、 [Esv4 系列](ev4-esv4-series.md)、 [Edsv4 系列](edv4-edsv4-series.md) 和 [M 系列](m-series.md)
 
 ACU：180 - 240 <sup>1</sup>
 
@@ -304,7 +323,7 @@ ACU：180 - 240 <sup>1</sup>
 
 ### <a name="g-series"></a>G 系列
 
-**較新的大小建議**： [Eav4 系列](eav4-easv4-series.md)、 [Ev4 系列](ev4-esv4-series.md) 和 [Edv4 系列](edv4-edsv4-series.md) 與 [M 系列](m-series.md)
+**較新的大小建議** ： [Eav4 系列](eav4-easv4-series.md)、 [Ev4 系列](ev4-esv4-series.md) 和 [Edv4 系列](edv4-edsv4-series.md) 與 [M 系列](m-series.md)
 
 ACU：180 - 240
 
@@ -323,8 +342,8 @@ ACU：180 - 240
 <sup>1</sup> 執行個體會隔離至單一客戶專用的硬體。
 <br>
 
-## <a name="nv-series"></a>NV 系列
-**較新的大小建議**： [NVv3 系列](nvv3-series.md) 和 [NVv4 系列](nvv4-series.md)
+### <a name="nv-series"></a>NV 系列
+**較新的大小建議** ： [NVv3 系列](nvv3-series.md) 和 [NVv4 系列](nvv4-series.md)
 
 NV 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) \(英文\) GPU 和 NVIDIA GRID 技術提供技術支援，適用於桌面加速應用程式和虛擬桌面，可供客戶將其資料或模擬視覺化。 使用者能夠在 NV 執行個體上，將其圖形密集型工作流程視覺化以獲得較佳的圖形功能，此外還能夠執行單精確度工作負載，例如編碼和轉譯。 NV 系列 Vm 也支援 Intel 2690 v3， (Haswell) Cpu。
 
@@ -347,27 +366,8 @@ NV 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈�
 1 GPU = 1/2 M60 卡。
 <br>
 
-
-## <a name="nvv2-series"></a>NVv2 系列
-
-**較新的大小建議**： [NVv3 系列](nvv3-series.md)
-
-NVv2 系列的虛擬機器採用 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 以及具備 Intel Broadwell CPU 的 NVIDIA GRID 技術。 這些虛擬機器專用於 GPU 高速圖形應用程式以及虛擬桌面，客戶可用於將其資料視覺化、將結果模擬到檢視中、運用於 CAD 之上，或是轉譯內容及串流內容。 除此之外，這些虛擬機器可以執行單一的精密工作負載，像是編碼及轉譯。 NVv2 虛擬機器支援進階儲存體，同時相較於之前的 NV 系列，配備兩倍的系統記憶體 (RAM)。  
-
-NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
-
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
-| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
-| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
-<br>
-
-## <a name="nc-series"></a>NC 系列
-**較新的大小建議**： [NC T4 v3 系列](nct4-v3-series.md)
+### <a name="nc-series"></a>NC 系列
+**較新的大小建議** ： [NC T4 v3 系列](nct4-v3-series.md)
 
 NC 系列 Vm 是由 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) 卡和 Intel 2690 E5-v3 所支援， (Haswell) 處理器。 使用者可以藉由將 CUDA 用於能源探勘應用程式、當機模擬、光線追蹤轉譯、深度學習等等，更快速地處理資料。 NC24r 設定提供低延遲且高輸送量網路介面，最適合用於緊密結合的平行計算工作負載。
 
@@ -393,8 +393,8 @@ NC 系列 Vm 是由 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/
 <br>
 
 
-## <a name="ncv2-series"></a>NCv2 系列
-**較新的大小建議**： [NC T4 V3 系列](nct4-v3-series.md) 和 [NC V100 v3 系列](ncv3-series.md)
+### <a name="ncv2-series"></a>NCv2 系列
+**較新的大小建議** ： [NC T4 V3 系列](nct4-v3-series.md) 和 [NC V100 v3 系列](ncv3-series.md)
 
 NCv2 系列 VM 是由 NVIDIA Tesla P100 GPU 提供技術支援。 這些 GPU 可提供 NC 系列 2 倍以上的計算效能。 客戶可針對儲槽模型、DNA 定序、蛋白質分析、蒙地卡羅模擬等傳統 HPC 工作負載，善用這些更新過的 GPU。 除了 Gpu 之外，NCv2 系列的 Vm 也會由 Intel Broadwell E5-2690 v4 () Cpu 提供技術支援。
 
@@ -421,8 +421,8 @@ NC24rs v2 組態提供低延遲且高輸送量網路介面，最適合用於緊�
 
 <br>
 
-## <a name="nd-series"></a>ND 系列
-**較新的大小建議**： [NDv2 系列](ndv2-series.md) 和 [NC V100 v3 系列](ncv3-series.md)
+### <a name="nd-series"></a>ND 系列
+**較新的大小建議** ： [NDv2 系列](ndv2-series.md) 和 [NC V100 v3 系列](ncv3-series.md)
 
 ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習工作負載所設計。 它們能為訓練和推斷提供絕佳效能。 ND 實例是由 [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) Gpu 和 Intel 2690 E5-v4 所支援， (Broadwell) cpu。 這些執行個體為單精確度浮點數作業、使用 Microsoft Cognitive Toolkit 的 AI 工作負載、TensorFlow、Caffe 及其他架構，提供絕佳的效能。 ND 系列還能提供更大的 GPU 記憶體大小 (24 GB)，能夠用於更大的類神經網路模型。 如同 NC 系列，ND 系列透過 RDMA 提供具有次要低延遲且高輸送量網路的設定，以及 InfiniBand 連線能力，讓您能夠執行使用橫跨數個 GPU 的大規模訓練作業。
 
@@ -446,15 +446,6 @@ ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習�
 *支援 RDMA
 
 <br>
-
-## <a name="other-sizes"></a>其他大小
-
-* [一般用途](sizes-general.md)
-* [計算最佳化](sizes-compute.md)
-* [記憶體最佳化](sizes-memory.md)
-* [儲存體最佳化](sizes-storage.md)
-* [GPU](sizes-gpu.md)
-* [高效能計算](sizes-hpc.md)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289630"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356683"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -34,6 +34,9 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 -  **C + +/c #/JAVA/Python/Objective-C/Swift** ：已新增 `stopSpeakingAsync()` 方法來停止文字轉換語音合成。 請參閱此處的參考檔 [ (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)，此處 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)，此處 (了 [JAVA) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable)，此處 (了 [Python) ](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)， ([目標-C/Swift ](https://docs.microsoft.com/objectivec/cognitive-services/speech/)) 。
 - **C #、c + +、JAVA** ：將函式新增 `FromDialogServiceConnector()` 至 `Connection` 類別，可用於監視的連接和中斷連接事件 `DialogServiceConnector` 。 請參閱此處的參考檔 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)， [此處 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)， [此處 (JAVA) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)。
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+
+**重大變更**
+- **JavaScript** ： PullAudioOutputStream. read ( # A1 具有從內部承諾到原生 JavaScript 承諾的傳回類型變更。
 
 **Bug 修正**
 - **全部** ：修正在 `SetServiceProperty` 某些特殊字元中忽略值的固定1.13 回歸。

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341904"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356615"
 ---
 # <a name="getting-started-with-sql-queries"></a>開始使用 SQL 查詢
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,26 +21,35 @@ ms.locfileid: "93341904"
 
 **點讀取** -您可以針對單一 *專案識別碼* 和資料分割索引鍵進行索引鍵/值查閱。 *專案識別碼* 和資料分割索引鍵組合是索引鍵，而專案本身是值。 若是 1 KB 檔，點讀取通常是成本 1 [要求單位](request-units.md) ，延遲低於10毫秒。 點讀取會傳回單一專案。
 
-**Sql 查詢** -您可以使用結構化查詢語言 (SQL)  (SQL) 作為 JSON 查詢語言來撰寫查詢，以查詢資料。 查詢一律會產生至少2.3 的要求單位，而且通常會有比點讀取更高且更有變化的延遲。 查詢可能會傳回許多專案。
-
-Azure Cosmos DB 上大部分的大量讀取工作負載都會使用點讀取和 SQL 查詢的組合。 如果您只需要讀取單一專案，則點讀取比查詢更便宜且更快。 點讀取不需要使用查詢引擎來存取資料，而且可以直接讀取資料。 當然，所有工作負載都無法使用點讀取來獨佔讀取資料，因此支援 SQL 作為查詢語言，以及不 [限架構的索引編制](index-overview.md) ，可提供更有彈性的方式來存取您的資料。
-
-以下是如何使用每個 SDK 來執行端點讀取的一些範例：
+以下是如何使用每個 SDK 來執行 **端點讀取** 的一些範例：
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
 - [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
 - [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
 - [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
+**Sql 查詢** -您可以使用結構化查詢語言 (SQL)  (SQL) 作為 JSON 查詢語言來撰寫查詢，以查詢資料。 查詢一律會產生至少2.3 的要求單位，而且通常會有比點讀取更高且更有變化的延遲。 查詢可能會傳回許多專案。
+
+Azure Cosmos DB 上大部分的大量讀取工作負載都會使用點讀取和 SQL 查詢的組合。 如果您只需要讀取單一專案，則點讀取比查詢更便宜且更快。 點讀取不需要使用查詢引擎來存取資料，而且可以直接讀取資料。 當然，所有工作負載都無法使用點讀取來獨佔讀取資料，因此支援 SQL 作為查詢語言，以及不 [限架構的索引編制](index-overview.md) ，可提供更有彈性的方式來存取您的資料。
+
+以下是如何使用每個 SDK 進行 **SQL 查詢** 的一些範例：
+
+- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
+- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
+- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
+- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+
 本檔的其餘部分將說明如何開始在 Azure Cosmos DB 中撰寫 SQL 查詢。 您可以透過 SDK 或 Azure 入口網站執行 SQL 查詢。
 
 ## <a name="upload-sample-data"></a>上傳範例資料
 
-在您的 SQL API Cosmos DB 帳戶中，建立名為的容器 `Families` 。 在容器中建立兩個簡單的 JSON 專案。 您可以使用此資料集，在 Azure Cosmos DB 查詢檔中執行大部分的範例查詢。
+在您的 SQL API Cosmos DB 帳戶中，開啟 [資料總管](https://docs.microsoft.com/azure/cosmos-db/data-explorer) 以建立名為的容器 `Families` 。 建立之後，請使用資料結構瀏覽器來尋找並開啟它。 在您的 `Families` 容器中，您會在 `Items` 容器的名稱下方看到選項。 開啟此選項，您會在畫面中央的功能表列中看到一個按鈕，以建立「新專案」。 您將使用這項功能來建立下列 JSON 專案。
 
 ### <a name="create-json-items"></a>建立 JSON 專案
 
-下列程式碼會建立兩個有關家族的簡單 JSON 專案。 Andersen 和 Wakefield 系列的簡單 JSON 專案包括家長、子女及其寵物、位址和註冊資訊。 第一個專案具有字串、數位、布林值、陣列和嵌套屬性。
+下列2個 JSON 專案是 Andersen 和 Wakefield 系列的相關檔。 其中包括家長、子女及其寵物、位址和註冊資訊。 
+
+第一個專案具有字串、數位、布林值、陣列和嵌套屬性：
 
 ```json
 {
@@ -64,7 +73,7 @@ Azure Cosmos DB 上大部分的大量讀取工作負載都會使用點讀取和 
 }
 ```
 
-第二個專案會使用 `givenName` 和， `familyName` 而不是 `firstName` 和 `lastName` 。
+第二個專案會使用 `givenName` 和， `familyName` 而不是 `firstName` 和 `lastName` ：
 
 ```json
 {

@@ -10,25 +10,25 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2
-ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq2, automl
+ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311473"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359080"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>評估自動化機器學習實驗結果
 
-在本文中，您將瞭解如何查看和評估自動化機器學習、AutoML、實驗的結果。 這些實驗包含多個回合，其中每個執行都會建立一個模型。 為了協助您評估每個模型，AutoML 會自動產生您的實驗類型專用的效能度量和圖表。 
+在本文中，您將瞭解如何查看和評估自動化機器學習服務、自動化 ML、實驗的結果。 這些實驗包含多個回合，其中每個執行都會建立一個模型。 為了協助您評估每個模型，自動化 ML 會自動產生您的實驗類型專用的效能計量和圖表。 
 
-例如，AutoML 會為分類和回歸模型提供不同的圖表。 
+例如，自動化 ML 為分類和回歸模型提供不同的圖表。 
 
 |分類|迴歸
 |---|---|
 |<li> [混淆矩陣](#confusion-matrix) <li>[精確度與召回率圖表](#precision-recall-chart) <li> [接收者操作特徵 (或 ROC)](#roc) <li> [升力曲線](#lift-curve)<li> [增益曲線](#gains-curve)<li> [校正圖](#calibration-plot) | <li> [預測與 True](#pvt) <li> [殘差直方圖](#histo)|
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -61,14 +61,14 @@ ms.locfileid: "93311473"
 
 ## <a name="classification-performance-metrics"></a>分類效能計量
 
-下表摘要說明 AutoML 針對您的實驗所產生的每個分類模型計算的模型效能計量。 
+下表摘要說明自動化 ML 針對您的實驗所產生的每個分類模型計算的模型效能計量。 
 
 計量|描述|計算|額外的參數
 --|--|--|--
 AUC_macro| AUC 是「接收者作業特性曲線」下方的面積。 Macro 是每個類別 AUC 的算術平均值。  | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_micro| AUC 是「接收者作業特性曲線」下方的面積。 微運算是藉由結合每個類別的真肯定和誤報來全域計算。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
 AUC_weighted  | AUC 是「接收者作業特性曲線」下方的面積。 加權是每個類別分數的算術平均值，以每個類別中的 true 實例數目加權。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
-精確度|精確度是完全符合 true 標籤的預測標籤百分比。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
+精確度|精確度是完全符合 true 標籤的預測標籤百分比。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |無|
 average_precision_score_macro|Average precision 摘要出精確度-召回率曲線，為每個閾值到達的精確度加權平均值，並以上個閾值的召回率中的增值作為權重。 宏是每個類別平均精確度分數的算術平均值。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
 average_precision_score_micro|Average precision 摘要出精確度-召回率曲線，為每個閾值到達的精確度加權平均值，並以上個閾值的召回率中的增值作為權重。 微的計算方式是在每個截止時結合真肯定和誤報。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
 average_precision_score_weighted|Average precision 摘要出精確度-召回率曲線，為每個閾值到達的精確度加權平均值，並以上個閾值的召回率中的增值作為權重。 加權是每個類別平均精確度分數的算術平均值，以每個類別中的 true 實例數目加權。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
@@ -76,7 +76,7 @@ balanced_accuracy|Balanced accuracy 是每個類別其召回率的算術平均�
 f1_score_macro|F1 分數是精確度和召回率的調和平均數。 Macro 是每個類別的 F1 分數算術平均值。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|F1 分數是精確度和召回率的調和平均數。 微運算是透過計算真肯定、誤否定和誤報的總計來全域計算。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|F1 分數是精確度和召回率的調和平均數。 以每個類別的 F1 分數其類別頻率將平均值加權|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|這是 (多維度中使用的遺失函式) 羅吉斯回歸和它的延伸模組（例如類神經網路），其定義為 true 標籤的負面記錄檔可能性（指定概率分類器的預測）。 若為具有 true label yt 的單一範例 {0,1} ，以及 yt = 1 的估計機率 yp，記錄檔遺失為-Log P (yt&#124;yp) =- (yt log (yp) + (1-yt) log (1-yp) # A10。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
+log_loss|這是 (多維度中使用的遺失函式) 羅吉斯回歸和它的延伸模組（例如類神經網路），其定義為 true 標籤的負面記錄檔可能性（指定概率分類器的預測）。 若為具有 true label yt 的單一範例 {0,1} ，以及 yt = 1 的估計機率 yp，記錄檔遺失為-Log P (yt&#124;yp) =- (yt log (yp) + (1-yt) log (1-yp) # A10。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|無|
 norm_macro_recall|Normalized Macro Recall 是正常化的 Macro Recall，因此隨機效能的分數為 0，完美效能的分數為 1。 這是藉由 norm_macro_recall： = (recall_score_macro-R) / (1-R) 來達成，其中 R 是隨機預測的預期值 recall_score_macro 例如，二元分類的 R = 0.5 和 C 類別分類問題 (的 R = (1/C) 。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "宏" |
 precision_score_macro|有效位數是正確標示的正確預測元素百分比。 Macro 是每個類別的精確度算術平均值。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
 precision_score_micro|有效位數是正確標示的正確預測元素百分比。 微運算是藉由計算真肯定和誤報的總計來全域計算。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
@@ -88,7 +88,7 @@ weighted_accuracy|加權精確度是指指定給每個範例的權數等於該�
 
 ### <a name="binary-vs-multiclass-metrics"></a>二進位與多元計量的比較
 
-AutoML 不會區分二進位和多元計量。 如果資料集有兩個類別或兩個以上的類別，就會報告相同的驗證計量。 不過，某些計量適用于多元分類。 當套用至二進位資料集時，這些計量並不會將任何類別視為 `true` 類別，如您所預期。 顯然適用于多元的計量會加 `micro` 上、 `macro` 或的尾碼 `weighted` 。 範例包括 `average_precision_score` 、 `f1_score` 、 `precision_score` 、 `recall_score` 和 `AUC` 。
+自動化 ML 不會區分二進位和多元計量。 如果資料集有兩個類別或兩個以上的類別，就會報告相同的驗證計量。 不過，某些計量適用于多元分類。 當套用至二進位資料集時，這些計量並不會將任何類別視為 `true` 類別，如您所預期。 顯然適用于多元的計量會加 `micro` 上、 `macro` 或的尾碼 `weighted` 。 範例包括 `average_precision_score` 、 `f1_score` 、 `precision_score` 、 `recall_score` 和 `AUC` 。
 
 例如， `tp / (tp + fn)` 多元平均回想 (`micro` 、 `macro` 或 `weighted`) 兩個二元分類資料集類別的平均值，而不是計算重新叫用。 這相當於計算 `true` 類別和類別的召回 `false` ，然後取得兩者的平均值。
 
@@ -209,20 +209,20 @@ AutoML 不會區分二進位和多元計量。 如果資料集有兩個類別或
 
 ## <a name="regression-performance-metrics"></a>回歸效能度量
 
-下表摘要說明 AutoML 針對您的實驗產生的每個回歸或預測模型計算的模型效能計量。 
+下表摘要說明自動化 ML 針對您的實驗產生的每個回歸或預測模型計算的模型效能計量。 
 
 |計量|描述|計算|額外的參數
 --|--|--|--|
-explained_variance|Explained variance 是所給予資料集其變化的數學模型帳戶的比例。 它是原始資料其變異數中減少至錯誤變異數的百分比。 當錯誤的平均數為0時，它等於判斷的係數 (請參閱以下) 的 r2_score。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|None|
-r2_score|相較于輸出平均值的基準模型，R ^ 2 是平方誤差的係數或減少的百分比。 |[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|None|
-spearman_correlation|Spearman correlation (斯皮爾曼相關性) 是兩個資料集之間關係其單調性的非參數量值。 不同於 Pearson correlation (皮耳森相關性)，Spearman correlation 不假設這兩個資料集為常態分佈。 如同其他的相關係數，此相關係數的變化在 -1 到 +1 之間，其中 0 代表不相關。 -1 或 + 1 的相互關聯表示真正單純的關聯性。 正相關是指隨著 x 增加，y 也會增加。 負相關是指隨著 x 增加，y 會減少。|[計算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|None|
-mean_absolute_error|Mean absolute error (平均絕對誤差) 是目標與預測值之間差異絕對值的預期值|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|None|
+explained_variance|Explained variance 是所給予資料集其變化的數學模型帳戶的比例。 它是原始資料其變異數中減少至錯誤變異數的百分比。 當錯誤的平均數為0時，它等於判斷的係數 (請參閱以下) 的 r2_score。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|無|
+r2_score|相較于輸出平均值的基準模型，R ^ 2 是平方誤差的係數或減少的百分比。 |[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|無|
+spearman_correlation|Spearman correlation (斯皮爾曼相關性) 是兩個資料集之間關係其單調性的非參數量值。 不同於 Pearson correlation (皮耳森相關性)，Spearman correlation 不假設這兩個資料集為常態分佈。 如同其他的相關係數，此相關係數的變化在 -1 到 +1 之間，其中 0 代表不相關。 -1 或 + 1 的相互關聯表示真正單純的關聯性。 正相關是指隨著 x 增加，y 也會增加。 負相關是指隨著 x 增加，y 會減少。|[計算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|無|
+mean_absolute_error|Mean absolute error (平均絕對誤差) 是目標與預測值之間差異絕對值的預期值|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|無|
 normalized_mean_absolute_error|Normalized mean absolute error (正規化平均絕對誤差) 是平均絕對誤差除以資料範圍|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|除以資料範圍|
-median_absolute_error|Median absolute error (中位數絕對誤差) 是目標與預測值之間所有絕對值差異的中位數。 此遺失是強固極端值。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|None|
+median_absolute_error|Median absolute error (中位數絕對誤差) 是目標與預測值之間所有絕對值差異的中位數。 此遺失是強固極端值。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|無|
 normalized_median_absolute_error|Normalized median absolute error (正規化中位數絕對誤差) 是中位數絕對誤差除以資料範圍|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|除以資料範圍|
-root_mean_squared_error|Root mean squared error (均方根誤差) 是目標與預測值之間預期平方差的平方根|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|None|
+root_mean_squared_error|Root mean squared error (均方根誤差) 是目標與預測值之間預期平方差的平方根|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|無|
 normalized_root_mean_squared_error|Normalized root mean squared error (正規化均方根誤差) 是均方根誤差防以資料範圍|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|除以資料範圍|
-root_mean_squared_log_error|Root mean squared log error (均方根對數誤差) 是預期平方對數誤差的平方根|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
+root_mean_squared_log_error|Root mean squared log error (均方根對數誤差) 是預期平方對數誤差的平方根|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|無|
 normalized_root_mean_squared_log_error|Noramlized Root mean squared log error (正規化均方根對數誤差) 是均方根對數誤差除以資料範圍|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以資料範圍|
 
 <a name="pvt"></a>

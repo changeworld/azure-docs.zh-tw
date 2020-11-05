@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 88f1c88e721419bf944207b9c748b9250a25f428
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348061"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358451"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立會重複工作流程動作或處理陣列的迴圈
 
 若要處理邏輯應用程式中的陣列，您可以建立 ["Foreach" 迴圈](#foreach-loop)。 這個迴圈會對陣列中的每個項目重複執行一或多個動作。 如需 "Foreach" 迴圈可以處理的陣列專案數目限制，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
-若要重複執行動作直到條件符合或狀態改變，您可以建立 ["Until" 迴圈](#until-loop)。 邏輯應用程式會先執行迴圈內的所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 若要讓邏輯應用程式執行的 "Until" 迴圈數目有所限制，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+若要重複執行動作直到條件符合或狀態改變，您可以建立 ["Until" 迴圈](#until-loop)。 邏輯應用程式會先執行迴圈內的所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 如需邏輯應用程式執行的 "Until" 迴圈數目的預設和上限，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 > [!TIP]
 > 如果您的觸發程序接收到陣列，並想要針對每個陣列項目執行工作流程，您可以使用 [**SplitOn** 觸發屬性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)將該陣列「解除批次」。
@@ -152,7 +152,7 @@ ms.locfileid: "93348061"
 
 ## <a name="until-loop"></a>"Until" 迴圈
   
-若要執行並重複動作直到條件符合或狀態改變，請將這些動作放入 "Until" 迴圈。 邏輯應用程式會先執行迴圈內的任何和所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 若要讓邏輯應用程式執行的 "Until" 迴圈數目有所限制，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+若要執行並重複動作直到條件符合或狀態改變，請將這些動作放入 "Until" 迴圈。 邏輯應用程式會先執行迴圈內的任何和所有動作，然後檢查條件或狀態。 如果符合條件，則迴圈會停止。 否則，迴圈會重複。 如需邏輯應用程式執行的 "Until" 迴圈數目的預設和上限，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 以下是可以使用 "Until" 迴圈的一些常見案例：
 
@@ -245,17 +245,19 @@ ms.locfileid: "93348061"
 
       ![收到的電子郵件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
+<a name="prevent-endless-loops"></a>
+
 ## <a name="prevent-endless-loops"></a>避免無止盡的迴圈
 
-"Until" 迴圈具有預設的限制，就是達到下列任何條件時，便會停止執行：
+"Until" 迴圈會根據這些屬性停止執行，因此請確定您已適當地設定其值：
 
-| 屬性 | 預設值 | 描述 | 
-| -------- | ------------- | ----------- | 
-| **Count** | 60 | 迴圈結束前可執行的最高迴圈數。 預設為 60 個循環。 | 
-| **逾時** | PT1H | 迴圈結束前可執行迴圈的最大時間。 預設值是一小時，並以 ISO 8601 格式指定。 <p>逾時值的評估會以每個迴圈循環為基礎。 如果迴圈中有任何動作所花費的時間超過逾時限制，目前的循環並不會停止。 但不會啟動下一個循環，因為不符合限制條件。 | 
-|||| 
+* **Count** ：這個值是迴圈結束之前執行的最大迴圈數目。 如需邏輯應用程式執行的 "Until" 迴圈數目的預設和上限，請參閱 [並行、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
-若要變更這些預設限制，請選擇迴圈動作圖形中的 [顯示進階選項]。
+* **Timeout** ：此值是迴圈在結束之前執行的最長時間，而且是以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定。 如需 **Timeout** 值的預設和最大限制，請參閱 [平行存取、迴圈和解除批次處理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+
+  逾時值的評估會以每個迴圈循環為基礎。 如果迴圈中有任何動作所花費的時間超過逾時限制，目前的循環並不會停止。 但不會啟動下一個循環，因為不符合限制條件。
+
+若要變更這些限制，請在 [迴圈] 動作中選取 [ **變更限制** ]。
 
 <a name="until-json"></a>
 
