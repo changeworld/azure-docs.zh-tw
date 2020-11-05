@@ -9,12 +9,12 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 23e9b45c47cdbdb671146b772d16354b1ee3c31b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096473"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392566"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -54,7 +54,7 @@ Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳�
 
 `db.coll.find().sort({name:1,age:1})`
 
-您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下為範例：
+您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下是範例：
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -211,7 +211,7 @@ globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { univ
         "ok" : 1,
         "collectionsharded" : "test.coll"
 }
-globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {unique:true})
+globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
         "_t" : "CreateIndexesResponse",
         "ok" : 1,
@@ -365,7 +365,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 如果您想要建立萬用字元索引，請 [升級至3.6 版](mongodb-version-upgrade.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Cosmos DB 中的編製索引](../cosmos-db/index-policy.md)
 * [利用存留時間讓 Azure Cosmos DB 中的資料自動過期](../cosmos-db/time-to-live.md)

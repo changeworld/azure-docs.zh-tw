@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888428"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395218"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>設定複寫至 Azure SQL Edge 
 
@@ -24,8 +24,8 @@ ms.locfileid: "90888428"
   
 - Azure SQL Edge 的實例必須是發行者的發送訂閱者。
 - 發行者和散發者可以是：
-   - 在內部部署執行的 SQL Server 實例，或在 Azure 虛擬機器中執行的 SQL Server 實例。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)。 SQL Server 實例必須使用比 SQL Server 2016 更晚的版本。
-   - Azure SQL 受控執行個體的實例。 SQL 受控執行個體可以裝載發行者、散發者和訂閱者資料庫。 如需詳細資訊，請參閱[使用 SQL Database 受控執行個體進行複寫](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)。
+   - 在內部部署執行的 SQL Server 實例，或在 Azure 虛擬機器中執行的 SQL Server 實例。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../azure-sql/virtual-machines/index.yml)。 SQL Server 實例必須使用比 SQL Server 2016 更晚的版本。
+   - Azure SQL 受控執行個體的實例。 SQL 受控執行個體可以裝載發行者、散發者和訂閱者資料庫。 如需詳細資訊，請參閱[使用 SQL Database 受控執行個體進行複寫](/azure/sql-database/replication-with-sql-database-managed-instance/)。
 
 - 散發資料庫和複寫代理程式不能放在 Azure SQL Edge 的實例上。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "90888428"
 
 當您設定複寫時，必須瞭解下列需求和最佳作法：
 
-- 您可以使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)來設定複寫。 您也可以在「發行者」上執行 Transact-sql 語句，方法是使用 SQL Server Management Studio 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)。
+- 您可以使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)來設定複寫。 您也可以在「發行者」上執行 Transact-sql 語句，方法是使用 SQL Server Management Studio 或 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)。
 - 若要複寫至 Azure SQL Edge 的實例，您必須使用 SQL Server authentication 來登入。
 - 複寫的資料表都必須有主索引鍵。
 - SQL Server 上的單一發行集可同時支援 Azure SQL Edge 和 SQL Server (內部部署和 Azure 虛擬機器中的 SQL Server) 訂閱者。  
@@ -82,15 +82,13 @@ Azure SQL Edge 訂閱不支援下列選項：
 
 建立發行集和發送訂閱。 如需詳細資訊，請參閱
   
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- 使用 Azure SQL Edge server 名稱和 IP 做為訂閱者來[建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) (例如， **myEdgeinstance、1433**) ，以及 azure SQL Edge 實例上的資料庫名稱做為目的地資料庫 (例如**AdventureWorks**) 。  
+- [建立發行集](/sql/relational-databases/replication/publish/create-a-publication)
+- 使用 Azure SQL Edge server 名稱和 IP 做為訂閱者來 [建立發送訂閱](/sql/relational-databases/replication/create-a-push-subscription/) (例如， **myEdgeinstance、1433** ) ，以及 azure SQL Edge 實例上的資料庫名稱做為目的地資料庫 (例如 **AdventureWorks** ) 。  
 
 ## <a name="next-steps"></a>後續步驟  
 
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [複寫的類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [監視 (複寫) ](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [初始化訂用帳戶](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
-
-
+- [建立發行集](/sql/relational-databases/replication/publish/create-a-publication)
+- [建立發送訂閱](/sql/relational-databases/replication/create-a-push-subscription/)
+- [複寫的類型](/sql/relational-databases/replication/types-of-replication)
+- [監視 (複寫) ](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [初始化訂用帳戶](/sql/relational-databases/replication/initialize-a-subscription)

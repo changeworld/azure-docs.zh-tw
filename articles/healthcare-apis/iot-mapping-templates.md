@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558528"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394232"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT Connector for FHIR (預覽) 對應範本
 本文將詳細說明如何使用對應範本設定適用于 FHIR 的 Azure IoT Connector *。
@@ -254,7 +254,7 @@ JsonPathContentTemplate 可讓您使用 JSON 路徑來比對和解壓縮事件�
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
 IotJsonPathContentTemplate 與 JsonPathContentTemplate 類似，但不需要 DeviceIdExpression 和 TimestampExpression。
 
-使用此範本時的假設是使用 [Azure IoT 中樞裝置 sdk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks)來傳送要評估的訊息。 使用這些 Sdk 時，裝置身分識別 (假設 Azure Iot 中樞/Central 中的裝置識別碼已註冊為目的地 FHIR 伺服器上裝置資源的識別碼) 且已知訊息的時間戳記。 如果您使用 Azure IoT 中樞裝置 Sdk，但在訊息本文中使用自訂屬性作為裝置身分識別或測量時間戳記，您仍然可以使用 JsonPathContentTemplate。
+使用此範本時的假設是使用 [Azure IoT 中樞裝置 sdk](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)來傳送要評估的訊息。 使用這些 Sdk 時，裝置身分識別 (假設 Azure Iot 中樞/Central 中的裝置識別碼已註冊為目的地 FHIR 伺服器上裝置資源的識別碼) 且已知訊息的時間戳記。 如果您使用 Azure IoT 中樞裝置 Sdk，但在訊息本文中使用自訂屬性作為裝置身分識別或測量時間戳記，您仍然可以使用 JsonPathContentTemplate。
 
 *注意：使用 IotJsonPathContentTemplate 時，TypeMatchExpression 應該將整個訊息解析為 JToken。請參閱下列範例。* 
 ##### <a name="examples"></a>範例
@@ -347,7 +347,7 @@ CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。 
 |**代碼 []。代碼**|[編寫](http://hl7.org/fhir/datatypes-definitions.html#coding)程式碼的程式碼。
 |**代碼 []。系統**|撰寫程式 [代碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的系統。
 |**代碼 []。顯示**|[編碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的顯示。
-|**值**|要在觀察中解壓縮和表示的值。 如需詳細資訊，請參閱實 [值型別範本](#valuetypes)。
+|**ReplTest1**|要在觀察中解壓縮和表示的值。 如需詳細資訊，請參閱實 [值型別範本](#valuetypes)。
 |**Components**|*選用：* 要在觀察上建立的一或多個元件。
 |**元件 []。代碼**|要套用至元件的一或多個 [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
 |**元件 []。價值**|要在元件中解壓縮和表示的值。 如需詳細資訊，請參閱實 [值型別範本](#valuetypes)。
@@ -560,7 +560,7 @@ CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。 
 ```
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 查看適用于 FHIR (preview) 的 Azure IoT Connector 上的常見問題。
 

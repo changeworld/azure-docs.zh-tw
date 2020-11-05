@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083179"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393671"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -59,7 +59,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 - [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice)指令 Cmdlet
 
-    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="頁面的螢幕擷取畫面，其中 Azure 入口網站列出裝置上的名稱、擁有者和其他資訊。一個資料行列出啟用時間戳。" border="false":::
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="顯示命令列輸出的螢幕擷取畫面。一行會反白顯示，並列出 ApproximateLastLogonTimeStamp 值的時間戳記。" border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>規劃過時裝置的清除作業
 
@@ -147,7 +147,7 @@ Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, Displa
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>您應該知道的事項
@@ -179,6 +179,6 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 - **加入 Azure AD 的裝置** - 使用者不能使用裝置來登入。 
 - 行動 **裝置** -使用者無法存取 Azure AD 資源，例如 Microsoft 365。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要取得在 Azure 入口網站中管理裝置的概觀，請參閱[使用 Azure 入口網站來管理裝置](device-management-azure-portal.md)

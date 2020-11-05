@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896135"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395167"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中建立資料串流作業 
 
@@ -24,13 +24,13 @@ ms.locfileid: "92896135"
 
 T-sql 串流使用 SQL Server 的外部資料源功能，來定義與串流作業的外部資料流輸入和輸出相關聯的資料來源。 使用下列 T-sql 命令來建立外部資料流輸入或輸出物件：
 
-- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](/sql/t-sql/statements/create-external-data-source-transact-sql)
 
 - [CREATE EXTERNAL STREAM (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-此外，如果使用 Azure SQL Edge、SQL Server 或 Azure SQL Database 作為輸出資料流程，您需要 [ (transact-sql) 建立資料庫範圍認證 ](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 此 T-sql 命令會定義用來存取資料庫的認證。
+此外，如果使用 Azure SQL Edge、SQL Server 或 Azure SQL Database 作為輸出資料流程，您需要 [ (transact-sql) 建立資料庫範圍認證 ](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 此 T-sql 命令會定義用來存取資料庫的認證。
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>支援的輸入和輸出資料流程資料來源
 
@@ -38,7 +38,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 
 | 資料來源類型 | 輸入 | 輸出 | 描述 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge 中樞 | Y | Y | 用來讀取和寫入串流資料至 Azure IoT Edge 中樞的資料來源。 如需詳細資訊，請參閱 [IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
+| Azure IoT Edge 中樞 | Y | Y | 用來讀取和寫入串流資料至 Azure IoT Edge 中樞的資料來源。 如需詳細資訊，請參閱 [IoT Edge Hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub)。|
 | SQL Database | N | Y | 用來將串流資料寫入到 SQL Database 的資料來源連線。 資料庫可以是 Azure SQL Edge 中的本機資料庫，也可以是 SQL Server 或 Azure SQL Database 中的遠端資料庫。|
 | Kafka | Y | N | 用來從 Kafka 主題讀取串流資料的資料來源。 此介面卡目前僅適用于 Intel 或 AMD 版本的 Azure SQL Edge。 它不適用於 ARM64 版本的 Azure SQL Edge。|
 
@@ -173,7 +173,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 使用 `sys.sp_create_streaming_job` 系統預存程式來定義串流查詢並建立串流作業。 `sp_create_streaming_job`預存程式會採用下列參數：
 
 - `job_name`：資料流程工作的名稱。 串流作業名稱在整個執行個體中是唯一的。
-- `statement`：以 [串流分析查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)為基礎的串流查詢語句。
+- `statement`：以 [串流分析查詢語言](/stream-analytics-query/stream-analytics-query-language-reference)為基礎的串流查詢語句。
 
 下列範例會使用一個串流查詢來建立簡單的串流作業。 此查詢會從 IoT Edge 中樞讀取輸入，並 `dbo.TemperatureMeasurements` 在資料庫中寫入。
 
@@ -249,7 +249,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 | Processing | 串流作業正在執行，且正在處理輸入。 此狀態表示串流作業處於健全狀態。 |
 | 已降級 | 串流工作正在執行中，但輸入處理期間發生一些非嚴重錯誤。 輸入作業會繼續執行，但會捨棄發生錯誤的輸入。 |
 | 已停止 | 串流作業已停止。 |
-| Failed | 串流作業失敗。 這通常表示處理期間發生嚴重錯誤。 |
+| 失敗 | 串流作業失敗。 這通常表示處理期間發生嚴重錯誤。 |
 
 ## <a name="next-steps"></a>後續步驟
 

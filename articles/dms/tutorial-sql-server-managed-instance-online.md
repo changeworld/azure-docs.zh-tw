@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 745ea7dd8b3ee74c46d4c50a872dc4995d298142
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 744f71f0d9d20d6a815d26f89696898ebdbaab3d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291158"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392590"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 將 SQL Server 線上移轉至 Azure SQL 受控執行個體
 
@@ -74,7 +74,7 @@ ms.locfileid: "91291158"
 
 * 確定您虛擬網路的網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸出通訊連接埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
 * 設定[用於來源資料庫引擎存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
-* 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server (依預設會使用 TCP 連接埠 1433)。
+* 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server (依預設會使用 TCP 連接埠 1433)。 如果您的預設執行個體正在其他連接埠上接聽，請將其新增至防火牆。
 * 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，您可以啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
 * 如果您是在來源資料庫前面使用防火牆設備，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取用於移轉的來源資料庫，以及透過 SMB 連接埠 445 存取檔案。
 * 依照[在 Azure 入口網站中建立 Azure SQL 受控執行個體](https://aka.ms/sqldbmi)一文中的詳細資料，建立 SQL 受控執行個體。
@@ -87,14 +87,14 @@ ms.locfileid: "91291158"
   > [!NOTE]
   > Azure 資料庫移轉服務需要訂用帳戶的「參與者」權限，以取得指定的應用程式識別碼。 或者，您可以建立自訂角色，以授與 Azure 資料庫移轉服務所需的特定權限。 如需使用自訂角色的逐步指引，請參閱[自訂 SQL Server 角色以進行 SQL 受控執行個體的線上移轉](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)一文。
 
-* 建立或記下 Azure 儲存體帳戶的**標準效能層**，這可讓 DMS 服務將資料庫備份檔案上傳至該處，並用於遷移資料庫。  請務必在建立 Azure 資料庫移轉服務執行個體的相同區域中建立 Azure 儲存體帳戶。
+* 建立或記下 Azure 儲存體帳戶的 **標準效能層** ，這可讓 DMS 服務將資料庫備份檔案上傳至該處，並用於遷移資料庫。  請務必在建立 Azure 資料庫移轉服務執行個體的相同區域中建立 Azure 儲存體帳戶。
 
   > [!NOTE]
   > 使用線上移轉將受到[透明資料加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)的資料庫移轉至受控執行個體時，必須先移轉內部部署或 Azure VM SQL Server 執行個體的對應憑證，才能還原資料庫。 如需詳細步驟，請參閱[將 TDE 憑證移轉至受控執行個體](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
-1. 登入 Azure 入口網站，選取 [所有服務]****，然後選取 [訂用帳戶]****。
+1. 登入 Azure 入口網站，選取 [所有服務]，然後選取 [訂用帳戶]。
 
     ![顯示入口網站訂用帳戶](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)
 
@@ -112,15 +112,15 @@ ms.locfileid: "91291158"
 
      ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
-2. 在 [Azure 資料庫移轉服務]**** 畫面上，選取 [建立]****。
+2. 在 [Azure 資料庫移轉服務] 畫面上，選取 [建立]。
 
     ![建立 Azure 資料庫移轉服務執行個體](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
-3. 在 [建立移轉服務]**** 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
+3. 在 [建立移轉服務] 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
 
 4. 選取您要建立 DMS 執行個體的位置。
 
-5. 選取現有的虛擬網路或建立一個。
+5. 選取現有的虛擬網路或建立一個虛擬網路。
 
     虛擬網路會為 Azure 資料庫移轉服務提供來源 SQL Server 和目標 SQL 受控執行個體的存取權。
 
@@ -137,31 +137,31 @@ ms.locfileid: "91291158"
 
     ![建立 DMS 服務](media/tutorial-sql-server-to-managed-instance-online/dms-create-service3.png)
 
-7. 選取 [建立]**** 以建立服務。
+7. 選取 [建立] 以建立服務。
 
 ## <a name="create-a-migration-project"></a>建立移轉專案
 
 建立服務執行個體之後，請在 Azure 入口網站中找出該服務，然後建立新的移轉專案。
 
-1. 在 Azure 入口網站中，選取 [所有服務]****，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]****。
+1. 在 Azure 入口網站中，選取 [所有服務]，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]。
 
     ![找出 Azure 資料庫移轉服務的所有執行個體](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
 2. 在 [Azure 資料庫移轉服務] 畫面上，搜尋您建立的執行個體名稱，然後選取該執行個體。
 
-3. 選取 [+ 新增移轉專案]****。
+3. 選取 [+ 新增移轉專案]。
 
 4. 在 [新增移轉專案] 畫面上指定專案名稱、在 [來源伺服器類型] 文字方塊中選取 [SQL Server]、在 [目標伺服器類型] 文字方塊中選取 [Azure SQL 受控執行個體]，然後針對 [選擇活動類型]，選取 [連線資料移轉]。
 
    ![建立 Azure 資料庫移轉服務專案](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
-5. 選取 [建立及執行活動]****，以建立專案。
+5. 選取 [建立及執行活動]，以建立專案。
 
 ## <a name="specify-source-details"></a>指定來源詳細資料
 
-1. 在 [移轉來源詳細資料]**** 畫面上，指定來源 SQL Server 的連線詳細資料。
+1. 在 [移轉來源詳細資料] 畫面上，指定來源 SQL Server 的連線詳細資料。
 
-2. 如果您尚未在伺服器上安裝信任的憑證，請選取 [信任伺服器憑證]**** 核取方塊。
+2. 如果您尚未在伺服器上安裝信任的憑證，請選取 [信任伺服器憑證] 核取方塊。
 
     未安裝信任的憑證時，SQL Server 會在執行個體啟動時產生自我簽署憑證。 此憑證用來加密用戶端連線的認證。
 
@@ -172,7 +172,7 @@ ms.locfileid: "91291158"
 
 3. 選取 [儲存]。
 
-4. 在 [選取來源資料庫]**** 畫面上，選取 [Adventureworks2012]**** 資料庫進行移轉。
+4. 在 [選取來源資料庫] 畫面上，選取 [Adventureworks2012] 資料庫進行移轉。
 
    ![選取來源資料庫](media/tutorial-sql-server-to-managed-instance-online/dms-source-database1.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "91291158"
 
 ## <a name="select-source-databases"></a>選取來源資料庫
 
-1. 在 [選取來源資料庫]**** 畫面上，選取您要遷移的來源資料庫。
+1. 在 [選取來源資料庫] 畫面上，選取您要遷移的來源資料庫。
 
     ![選取來源資料庫](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
@@ -207,7 +207,7 @@ ms.locfileid: "91291158"
 
 ## <a name="configure-migration-settings"></a>設定移轉設定
 
-1. 在 [設定移轉設定]**** 畫面上，提供下列詳細資料：
+1. 在 [設定移轉設定] 畫面上，提供下列詳細資料：
 
     | | |
     |--------|---------|
@@ -229,7 +229,7 @@ ms.locfileid: "91291158"
 
 ## <a name="review-the-migration-summary"></a>檢閱移轉摘要
 
-1. 在 [移轉摘要]**** 畫面上的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱。
+1. 在 [移轉摘要] 畫面上的 [活動名稱] 文字方塊中，指定移轉活動的名稱。
 
 2. 檢閱並確認與移轉專案相關聯的詳細資料。
 
@@ -237,9 +237,9 @@ ms.locfileid: "91291158"
 
 ## <a name="run-and-monitor-the-migration"></a>執行並監視移轉
 
-1. 選取 [執行移轉]****。
+1. 選取 [執行移轉]。
 
-2. 在移轉活動畫面上，選取 [重新整理]**** 以更新顯示。
+2. 在移轉活動畫面上，選取 [重新整理] 以更新顯示。
 
    ![移轉活動進行中](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration2.png)
 
@@ -251,15 +251,15 @@ ms.locfileid: "91291158"
 
 當完整資料庫備份在 SQL 受控執行個體的目標執行個體上還原後，此資料庫就可用來執行完全移轉。
 
-1. 當您準備好要完成線上資料庫移轉後，請選取 [開始完全移轉]****。
+1. 當您準備好要完成線上資料庫移轉後，請選取 [開始完全移轉]。
 
 2. 停止對來源資料庫傳入任何流量。
 
 3. 進行 [結尾記錄備份]、在 SMB 網路共用中提供備份檔案，然後等到最後一個交易記錄備份還原完成。
 
-    此時，您會看到 [暫止的變更]**** 已設為 0。
+    此時，您會看到 [暫止的變更] 已設為 0。
 
-4. 選取 [確認]****，然後選取 [套用]****。
+4. 選取 [確認]，然後選取 [套用]。
 
     ![準備完成完全移轉](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 

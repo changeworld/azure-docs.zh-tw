@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50b88b4af6ea8479097b88b51fe7acfbea355ab8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461726"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392311"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的實用資源
 
@@ -62,7 +62,17 @@ Azure Sentinel 的 Audit 記錄會保留在 [Azure 活動記錄](../azure-monito
 您可以從 Azure 活動記錄將資料串流至 Azure Sentinel，然後對其執行研究和分析，以查看此資料。
 
 1. 連接 [Azure 活動](connect-azure-activity.md) 資料來源。 這麼做之後，就會在名為 AzureActivity 的 **記錄** 畫面中，將 audit 事件串流至新的資料表。
-2. 然後，使用 KQL 查詢資料，就像使用任何其他資料表一樣。
+
+1. 然後，使用 KQL 查詢資料，就像使用任何其他資料表一樣。
+
+    例如，若要找出誰是最後一個編輯特定分析規則的使用者，請使用下列查詢 (取代 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 為您想要檢查) 之規則的規則識別碼：
+
+    ```kusto
+    AzureActivity
+    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
+    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    | project Caller , TimeGenerated , Properties
+    ```
 
 
 

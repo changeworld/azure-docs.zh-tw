@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967962"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393161"
 ---
-# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Active Directory Domain Services 受控網域上的密碼和帳戶鎖定原則
+# <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory Domain Services 受控網域上的密碼和帳戶鎖定原則
 
 若要在 Azure Active Directory Domain Services (Azure AD DS) 中管理使用者安全性，您可以定義更細緻的密碼原則，以控制帳戶鎖定設定或密碼長度下限和複雜度。 系統會建立預設的更細緻的密碼原則，並將其套用至 Azure AD DS 受控網域中的所有使用者。 若要提供更細微的控制，並符合特定商務或合規性需求，您可以建立額外的原則，並將其套用至特定的使用者群組。
 
@@ -90,20 +90,20 @@ ms.locfileid: "91967962"
 > [!NOTE]
 > 若要在受控網域中建立自訂密碼原則，您必須登入屬於 *AAD DC 系統管理員* 群組成員的使用者帳戶。
 
-1. 從開始畫面選取 [系統 **管理工具**]。 您可以在教學課程中所安裝的可用管理工具清單中， [建立管理 VM][tutorial-create-management-vm]。
+1. 從開始畫面選取 [系統 **管理工具** ]。 您可以在教學課程中所安裝的可用管理工具清單中， [建立管理 VM][tutorial-create-management-vm]。
 1. 若要建立和管理 Ou，請從 [系統管理工具] 清單中選取 [ **Active Directory 管理中心** ]。
-1. 在左窗格中，選擇您的受控網域，例如 *aaddscontoso.com*。
-1. 開啟 [ **系統** ] 容器，然後 **密碼設定容器**]。
+1. 在左窗格中，選擇您的受控網域，例如 *aaddscontoso.com* 。
+1. 開啟 [ **系統** ] 容器，然後 **密碼設定容器** ]。
 
     受控網域的內建密碼原則會顯示。 您無法修改此內建原則。 相反地，請建立自訂密碼原則來覆寫預設原則。
 
     ![在 Active Directory 管理中心中建立密碼原則](./media/password-policy/create-password-policy-adac.png)
 
-1. 在右側 **的 [工作** ] 面板中，選取 [ **新增 > 密碼設定**]。
-1. 在 [ **建立密碼設定** ] 對話方塊中，輸入原則的名稱，例如 *MyCustomFGPP*。
-1. 如果有多個密碼原則，則會將具有最高優先順序或優先順序的原則套用至使用者。 編號愈低，優先順序愈高。 預設密碼原則的優先順序為 *200*。
+1. 在右側 **的 [工作** ] 面板中，選取 [ **新增 > 密碼設定** ]。
+1. 在 [ **建立密碼設定** ] 對話方塊中，輸入原則的名稱，例如 *MyCustomFGPP* 。
+1. 如果有多個密碼原則，則會將具有最高優先順序或優先順序的原則套用至使用者。 編號愈低，優先順序愈高。 預設密碼原則的優先順序為 *200* 。
 
-    設定自訂密碼原則的優先順序以覆寫預設值，例如 *1*。
+    設定自訂密碼原則的優先順序以覆寫預設值，例如 *1* 。
 
 1. 視需要編輯其他密碼原則設定。 請記住下列要點：
 
@@ -112,12 +112,12 @@ ms.locfileid: "91967962"
 
     ![建立自訂更細緻的密碼原則](./media/password-policy/custom-fgpp.png)
 
-1. 取消核取 [ **防止意外刪除**]。 如果選取此選項，您就無法儲存 FGPP。
+1. 取消核取 [ **防止意外刪除** ]。 如果選取此選項，您就無法儲存 FGPP。
 1. 在 [ **直接套用至** ] 區段中，選取 [ **加入** ] 按鈕。 在 [ **選取使用者或群組** ] 對話方塊中，選取 [ **位置** ] 按鈕。
 
     ![選取要套用密碼原則的使用者和群組](./media/password-policy/fgpp-applies-to.png)
 
-1. 密碼原則只能套用至群組。 在 [ **位置** ] 對話方塊中，展開功能變數名稱（例如 *aaddscontoso.com*），然後選取 [ **AADDC 使用者**] 之類的 OU。 如果您的自訂 OU 包含您想要套用的使用者群組，請選取該 OU。
+1. 密碼原則只能套用至群組。 在 [ **位置** ] 對話方塊中，展開功能變數名稱（例如 *aaddscontoso.com* ），然後選取 [ **AADDC 使用者** ] 之類的 OU。 如果您的自訂 OU 包含您想要套用的使用者群組，請選取該 OU。
 
     ![選取群組所屬的 OU](./media/password-policy/fgpp-container.png)
 

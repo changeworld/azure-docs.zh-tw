@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293895"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392243"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>在 SQL Edge 中 SQL Database DACPAC 和 BACPAC 套件
 
 Azure SQL Edge 是專為 IoT 和邊緣部署而準備的最佳化關聯式資料庫引擎。 它是以最新版本的 Microsoft SQL Database 引擎為基礎，提供領先業界的效能、安全性和查詢處理功能。 除了 SQL Server 領先業界的關聯式資料庫管理功能，Azure SQL Edge 還提供內建的串流功能，以進行即時分析和複雜的事件處理。
 
-Azure SQL Edge 提供原生機制，可讓您在部署 SQL Edge 期間或之後部署 [SQL DATABASE DACPAC 和 BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) 套件。
+Azure SQL Edge 提供原生機制，可讓您在部署 SQL Edge 期間或之後部署 [SQL DATABASE DACPAC 和 BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications) 套件。
 
 您可以使用環境變數，將 SQL Database dacpac 和 bacpac 封裝部署到 SQL Edge `MSSQL_PACKAGE` 。 您可以使用下列任何一項設定環境變數。  
 - SQL 容器內包含 dacpac 和 bacpac 檔案的本機資料夾位置。 您可以使用掛接點或資料磁片區容器，將此資料夾對應至主機磁片區。 
@@ -35,7 +35,7 @@ Azure SQL Edge 提供原生機制，可讓您在部署 SQL Edge 期間或之後�
 
 1. 使用下面所述的機制建立/解壓縮 DAC 封裝或匯出 Bacpac 檔案。 
     - 建立或擷取 SQL Database DAC 套件。 如需如何為現有的 SQL Server 資料庫產生 DAC 套件的詳細資訊，請參閱[從資料庫擷取 DAC](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)。
-    - 匯出已部署的 DAC 封裝或資料庫。 如需如何為現有的 SQL Server 資料庫產生 bacpac 檔案的相關資訊，請參閱 [匯出資料層應用程式](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) 。
+    - 匯出已部署的 DAC 封裝或資料庫。 如需如何為現有的 SQL Server 資料庫產生 bacpac 檔案的相關資訊，請參閱 [匯出資料層應用程式](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) 。
 
 2. 壓縮 `*.dacpac` 或檔案 `*.bacpac` ，並將它上傳至 Azure Blob 儲存體帳戶。 如需將檔案上傳至 Azure Blob 儲存體的詳細資訊，請參閱[使用 Azure 入口網站上傳、下載及列出 Blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 
@@ -53,13 +53,13 @@ Azure SQL Edge 提供原生機制，可讓您在部署 SQL Edge 期間或之後�
 
     5. 在 [ **設定模組** ] 頁面上，按一下 [Azure SQL Edge 模組]。
 
-    6. 在 [ **更新 IoT Edge 模組** ] 窗格中，選取 [ **環境變數**]。 新增 `MSSQL_PACKAGE` 環境變數，並指定在上述步驟3中產生的 SAS URL 作為環境變數的值。 
+    6. 在 [ **更新 IoT Edge 模組** ] 窗格中，選取 [ **環境變數** ]。 新增 `MSSQL_PACKAGE` 環境變數，並指定在上述步驟3中產生的 SAS URL 作為環境變數的值。 
 
     7. 選取 [更新]。
 
-    8. 在 [ **設定模組** ] 頁面上，選取 [ **審核 + 建立**]。
+    8. 在 [ **設定模組** ] 頁面上，選取 [ **審核 + 建立** ]。
 
-    9. 在 [ **設定模組** ] 頁面上，選取 [ **建立**]。
+    9. 在 [ **設定模組** ] 頁面上，選取 [ **建立** ]。
 
 5. 模組更新之後，會下載、解壓縮套件檔案，並針對 SQL Edge 實例進行部署。
 

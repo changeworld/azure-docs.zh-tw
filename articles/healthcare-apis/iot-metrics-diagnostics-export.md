@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: jasteppe
-ms.openlocfilehash: 2c10dc05775739a55267dd3766e533b73e12b3a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322357"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394249"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>透過診斷設定為 FHIR (預覽) 計量匯出 Azure IoT Connector
 
-在本文中，您將瞭解如何匯出適用于 FHIR * 計量記錄的 Azure IoT Connector。 啟用計量記錄的功能是 Azure 入口網站中的 [**診斷設定**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 。 
+在本文中，您將瞭解如何匯出適用于 FHIR * 計量記錄的 Azure IoT Connector。 啟用計量記錄的功能是 Azure 入口網站中的 [**診斷設定**](../azure-monitor/platform/diagnostic-settings.md) 。 
 
 > [!TIP]
 > 遵循 Azure API for FHIR 中的「 [啟用診斷記錄」和「Azure IoT Connector FOR FHIR](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) 」中的指引來設定「審核記錄」。
@@ -48,7 +48,7 @@ ms.locfileid: "93322357"
 > [!Note] 
 > 最多可能需要15分鐘的時間，第一個計量記錄才會顯示在您選擇的儲存機制中。  
  
-如需如何使用診斷記錄的詳細資訊，請參閱 [Azure 資源記錄檔](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview)
+如需如何使用診斷記錄的詳細資訊，請參閱 [Azure 資源記錄檔](../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="conclusion"></a>結論 
 您必須能夠存取計量記錄，才能進行監視和疑難排解。  適用于 FHIR 的 Azure IoT Connector 可讓您透過計量記錄進行這些動作。 

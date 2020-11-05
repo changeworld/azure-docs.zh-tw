@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114be810ea50f984c3211291691b4c4dd45ac2c7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905948"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395235"
 ---
 # <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>在 Azure SQL Edge 中備份和還原資料庫 
 
@@ -75,9 +75,9 @@ Azure SQL Edge 支援與 SQL Server 相同的備份類型。 如需完整清單�
 
 ### <a name="back-up-to-url"></a>備份至 URL
 
-Azure SQL Edge 支援備份至分頁 Blob 和區塊 Blob。 如需詳細資訊，請參閱 [備份至區塊 blob 和分頁 blob](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)。 在下列範例中，資料庫 *IronOreSilicaPrediction* 會備份至區塊 blob。 
+Azure SQL Edge 支援備份至分頁 Blob 和區塊 Blob。 如需詳細資訊，請參閱 [備份至區塊 blob 和分頁 blob](/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)。 在下列範例中，資料庫 *IronOreSilicaPrediction* 會備份至區塊 blob。 
 
-1. 若要將備份設定為區塊 blob，請先產生共用存取簽章 (SAS) 權杖，以便在 Azure SQL Edge 上建立 SQL Server 認證。 此腳本會建立與預存存取原則相關聯的 SAS。 如需詳細資訊，請參閱 [共用存取簽章，第1部分：瞭解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。 這個指令碼也會撰寫在 SQL Server 上建立認證所需的 T-SQL 命令。 下列腳本假設您已經有一個具有儲存體帳戶的 Azure 訂用帳戶，以及用於備份的儲存體容器。
+1. 若要將備份設定為區塊 blob，請先產生共用存取簽章 (SAS) 權杖，以便在 Azure SQL Edge 上建立 SQL Server 認證。 此腳本會建立與預存存取原則相關聯的 SAS。 如需詳細資訊，請參閱 [共用存取簽章，第1部分：瞭解 SAS 模型](../storage/common/storage-sas-overview.md)。 這個指令碼也會撰寫在 SQL Server 上建立認證所需的 T-SQL 命令。 下列腳本假設您已經有一個具有儲存體帳戶的 Azure 訂用帳戶，以及用於備份的儲存體容器。
 
     ```PowerShell
     # Define global variables for the script  
@@ -133,7 +133,7 @@ Azure SQL Edge 支援備份至分頁 Blob 和區塊 Blob。 如需詳細資訊�
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>在 Azure SQL Edge 中還原資料庫
 
-在 Azure SQL Edge 中，您可以從本機磁片、網路位置或 Azure Blob 儲存體帳戶還原。 如需 SQL Server 中還原和復原的詳細資訊，請參閱 [還原和復原總覽](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)。 如需 SQL Server 中簡單復原模式的總覽，請參閱 [完整的資料庫還原 (簡單復原模式) ](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model)。
+在 Azure SQL Edge 中，您可以從本機磁片、網路位置或 Azure Blob 儲存體帳戶還原。 如需 SQL Server 中還原和復原的詳細資訊，請參閱 [還原和復原總覽](/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)。 如需 SQL Server 中簡單復原模式的總覽，請參閱 [完整的資料庫還原 (簡單復原模式) ](/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model)。
 
 > [!IMPORTANT] 
 > 在「Azure SQL Edge」中建立的資料庫無法在 Microsoft SQL Server 或 Azure SQL 的實例上還原。 此外，如果資料庫未包含 Azure SQL Edge 不支援的任何功能，則可以在 Azure SQL Edge 上還原 Microsoft SQL Server 或 Azure SQL 上建立的資料庫。 
@@ -142,13 +142,13 @@ Azure SQL Edge 支援備份至分頁 Blob 和區塊 Blob。 如需詳細資訊�
 
 此範例會使用您在上一個範例中所做的 *IronOreSilicaPrediction* 備份。 現在，您要將它還原為具有不同名稱的新資料庫。
 
-1. 如果資料庫備份檔案尚未存在於容器中，您可以使用下列命令將檔案複製到容器中。 下列範例假設備份檔案存在於本機主機上，並且正在複製到/var/opt/mssql/backup 資料夾中名為 *sql1*的 Azure SQL Edge 容器。
+1. 如果資料庫備份檔案尚未存在於容器中，您可以使用下列命令將檔案複製到容器中。 下列範例假設備份檔案存在於本機主機上，並且正在複製到/var/opt/mssql/backup 資料夾中名為 *sql1* 的 Azure SQL Edge 容器。
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. 使用 SSMS 或 Azure Data Studio 連接到 Azure SQL Edge 實例，以執行 restore 命令。 在下列範例中，會還原 **IronOrePredictDB** 以建立新的資料庫， **IronOreSilicaPrediction_2**。
+2. 使用 SSMS 或 Azure Data Studio 連接到 Azure SQL Edge 實例，以執行 restore 命令。 在下列範例中，會還原 **IronOrePredictDB** 以建立新的資料庫， **IronOreSilicaPrediction_2** 。
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'
@@ -171,7 +171,7 @@ Azure SQL Edge 支援備份至分頁 Blob 和區塊 Blob。 如需詳細資訊�
 
 ### <a name="restore-from-url"></a>從 URL 還原
 
-Azure SQL Edge 也支援從 Azure 儲存體帳戶還原資料庫。 您可以從區塊 blob 或分頁 blob 備份進行還原。 在下列範例中，會還原區塊 blob 上的 *IronOreSilicaPrediction_2020_04_16 .bak* 資料庫備份檔案，以建立資料庫， *IronOreSilicaPrediction_3*。
+Azure SQL Edge 也支援從 Azure 儲存體帳戶還原資料庫。 您可以從區塊 blob 或分頁 blob 備份進行還原。 在下列範例中，會還原區塊 blob 上的 *IronOreSilicaPrediction_2020_04_16 .bak* 資料庫備份檔案，以建立資料庫， *IronOreSilicaPrediction_3* 。
 
 ```sql
 RESTORE DATABASE IronOreSilicaPrediction_3
@@ -180,5 +180,3 @@ WITH MOVE 'IronOreSilicaPrediction' TO '/var/opt/mssql/data/IronOreSilicaPredict
 MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_3.ldf',
 STATS = 10;
 ```
-
-

@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015965"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392572"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "87015965"
     >[!Note]
     >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
 
-我們在此提供的是 Facebook、Google、GitHub 及 Amazon 帳戶的相關程序，但此程序也適用於任何其他應用程式，例如 Instagram、Netflix 或 Adobe。
+我們在此為您的 Facebook、Google、GitHub 及 Amazon 帳戶提供此程式，但其他應用程式（例如 Instagram 和 Adobe）的程式是相同的。
 
 ## <a name="add-your-google-account"></a>新增您的 Google 帳戶
 
@@ -50,7 +50,7 @@ ms.locfileid: "87015965"
 
 ### <a name="add-your-google-account-to-the-app"></a>將您的 Google 帳戶新增至應用程式
 
-1. 在您電腦上的 [Google 帳戶安全性] 頁面上 (https://myaccount.google.com/security) ，移至 [**新增更多步驟來確認它是您的**] 區段，選擇 [從**驗證器應用程式****設定**] 區段。
+1. 在您電腦上的 [Google 帳戶安全性] 頁面上 (https://myaccount.google.com/security) ，移至 [ **新增更多步驟來確認它是您的** ] 區段，選擇 [從 **驗證器應用程式****設定** ] 區段。
 
 2. 在 [從 Authenticator 應用程式取得驗證碼] 頁面上，根據您的電話類型選取 [Android] 或 [iPhone]，然後選取 [下一步]。
 
@@ -142,7 +142,7 @@ ms.locfileid: "87015965"
 
     Microsoft Authenticator 應用程式無法掃描 QR 代碼，因此您必須以手動方式輸入代碼。
 
-5. 輸入**帳戶名稱** (例如 GitHub)，並輸入步驟 4 中的**祕密金鑰**，然後選取 [完成]。
+5. 輸入 **帳戶名稱** (例如 GitHub)，並輸入步驟 4 中的 **祕密金鑰** ，然後選取 [完成]。
 
 6. 在電腦的 [雙因素 Authenticator] 頁面上，為您的 GitHub 帳戶輸入應用程式提供的六位數驗證碼，然後選取 [啟用]。
 

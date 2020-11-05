@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886533"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392022"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Azure SQL Edge 支援的功能 
 
 Azure SQL Edge 是以最新版本的 SQL Database 引擎為基礎。 除了 Linux (上的 SQL Server 2019 或 Windows) 的 SQL Server 中目前不支援或無法使用的某些功能之外，它還支援 Linux 上 SQL Server 2019 支援的功能子集。
 
-如需 Linux 上 SQL Server 支援的功能完整清單，請參閱 [Linux 上的 SQL Server 2019 版本和支援功能](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019)。 針對 Windows 上 SQL Server 的版本和支援功能，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15)。
+如需 Linux 上 SQL Server 支援的功能完整清單，請參閱 [Linux 上的 SQL Server 2019 版本和支援功能](/sql/linux/sql-server-linux-editions-and-components-2019)。 針對 Windows 上 SQL Server 的版本和支援功能，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](/sql/sql-server/editions-and-components-of-sql-server-version-15)。
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge 版本
 

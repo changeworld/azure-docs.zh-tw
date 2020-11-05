@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc3d44ac4396897fd43831d51ee628bb06048cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907131"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392056"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>SQL Edge 中採用 ONNX 格式的機器學習和 AI
 
@@ -28,7 +28,7 @@ Azure SQL Edge 中的機器學習支援 [Open Neural Network Exchange (ONNX) ](h
 
 若要取得 ONNX 格式的模型：
 
-- **模型建立服務**：[Azure Machine Learning 中的自動化機器學習功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)及 [Azure 自訂視覺服務](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)等服務都支援以 ONNX 格式直接匯出定型的模型。
+- **模型建立服務** ： [Azure Machine Learning 中的自動化機器學習功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)及 [Azure 自訂視覺服務](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md)等服務都支援以 ONNX 格式直接匯出定型的模型。
 
 - [**轉換和/或匯出現有模型**](https://github.com/onnx/tutorials#converting-to-onnx-format)：多個訓練架構 (例如 [PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer 和 Caffe2) 都支援 ONNX 的原生匯出功能，讓您可以將定型的模型儲存至特定版本的 ONNX 格式。 對於不支援原生匯出的架構，則有獨立的 ONNX 轉換器安裝套件，讓您可以將已定型的模型從不同機器學習架構轉換成 ONNX 格式。
 
@@ -43,12 +43,12 @@ Azure SQL Edge 中的機器學習支援 [Open Neural Network Exchange (ONNX) ](h
 
 ## <a name="limitations"></a>限制
 
-目前，Azure SQL Edge 並未支援所有的 ONNX 模型。 僅支援**數值資料類型**的模型：
+目前，Azure SQL Edge 並未支援所有的 ONNX 模型。 僅支援 **數值資料類型** 的模型：
 
-- [int 和 bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
-- [real 和 float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql).
+- [int 和 bigint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
+- [real 和 float](/sql/t-sql/data-types/float-and-real-transact-sql).
   
-您可以使用 [CAST 和 CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)，將其他數數值類型轉換成支援的類型。
+您可以使用 [CAST 和 CONVERT](/sql/t-sql/functions/cast-and-convert-transact-sql)，將其他數數值類型轉換成支援的類型。
 
 模型輸入應已結構化，如此一來，模型的每個輸入才可對應到資料表中的單一資料行。 例如，如果您使用 Pandas 資料框架來定型模型，則每個輸入都應該是模型的個別資料行。
 

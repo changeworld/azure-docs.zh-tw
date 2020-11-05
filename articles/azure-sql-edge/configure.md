@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446956"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392328"
 ---
 # <a name="configure-azure-sql-edge"></a>設定 Azure SQL Edge
 
@@ -34,7 +34,7 @@ Azure SQL Edge 會公開數個不同的環境變數，其可用於設定 SQL Edg
 
 | 環境變數 | 描述 | 值 |     
 |-----|-----| ---------- | 
-| **PlanId** | 指定要在初始化期間使用的 Azure SQL Edge SKU。 只有使用 Azure IoT Edge 部署 Azure SQL Edge 時，才需要此環境變數。 | **asde-開發人員-iot-邊緣**或**asde-premium** ------邊緣 | 
+| **PlanId** | 指定要在初始化期間使用的 Azure SQL Edge SKU。 只有使用 Azure IoT Edge 部署 Azure SQL Edge 時，才需要此環境變數。 | **asde-開發人員-iot-邊緣** 或 **asde-premium** ------邊緣 | 
 | **MSSQL_TELEMETRY_ENABLED** | 啟用或停用使用方式和診斷資料收集。 | TRUE 或 FALSE |  
 | **MSSQL_TELEMETRY_DIR** | 設定使用方式和診斷資料收集審核檔案的目標目錄。 | SQL Edge 容器內的資料夾位置。 您可以使用掛接點或資料磁片區，將此資料夾對應至主機磁片區。 | 
 | **MSSQL_PACKAGE** | 指定要部署的 dacpac 或 bacpac 封裝的位置。 | 包含 dacpac 或 bacpac 封裝的資料夾、檔案或 SAS URL。 如需詳細資訊，請參閱 [在 SQL Edge 中部署 SQL DATABASE DACPAC 和 BACPAC 套件](deploy-dacpac.md)。 |
@@ -51,13 +51,13 @@ Azure SQL Edge 會公開數個不同的環境變數，其可用於設定 SQL Edg
 
 ### <a name="specify-the-environment-variables"></a>指定環境變數
 
-當您透過 [Azure 入口網站](deploy-portal.md)部署服務時，請指定 SQL Edge 的環境變數。 您可以將它們新增至模組部署的 **環境變數** 區段或作為 **容器建立選項**的一部分。
+當您透過 [Azure 入口網站](deploy-portal.md)部署服務時，請指定 SQL Edge 的環境變數。 您可以將它們新增至模組部署的 **環境變數** 區段或作為 **容器建立選項** 的一部分。
 
-在 **環境變數**中加入值。
+在 **環境變數** 中加入值。
 
 ![使用環境變數清單進行設定](media/configure/set-environment-variables.png)
 
-在 **容器建立選項**中新增值。
+在 **容器建立選項** 中新增值。
 
 ![使用容器建立選項設定](media/configure/set-environment-variables-using-create-options.png)
 
@@ -66,7 +66,7 @@ Azure SQL Edge 會公開數個不同的環境變數，其可用於設定 SQL Edg
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>使用 mssql 檔案進行設定
 
-Azure SQL Edge 不包含 [mssql 配置公用程式](/sql/linux/sql-server-linux-configure-mssql-conf/) ，例如 Linux 上的 SQL Server。 您必須手動設定 mssql 檔案，並將它放在對應至 SQL Edge 模組中/var/opt/mssql/資料夾的持續性存放磁片磁碟機中。 當您從 Azure Marketplace 部署 SQL Edge 時，此對應會指定為**容器建立選項**中的**裝載**選項。
+Azure SQL Edge 不包含 [mssql 配置公用程式](/sql/linux/sql-server-linux-configure-mssql-conf/) ，例如 Linux 上的 SQL Server。 您必須手動設定 mssql 檔案，並將它放在對應至 SQL Edge 模組中/var/opt/mssql/資料夾的持續性存放磁片磁碟機中。 當您從 Azure Marketplace 部署 SQL Edge 時，此對應會指定為 **容器建立選項** 中的 **裝載** 選項。
 
 ```json
     {
@@ -95,11 +95,11 @@ Azure SQL Edge 不包含 [mssql 配置公用程式](/sql/linux/sql-server-linux-
 |**客戶意見反應** | 選擇 SQL Server 是否會將意見反應傳送給 Microsoft。 |
 |**Database mail 設定檔** | 為 Linux 上的 SQL Server 設定預設 Database Mail 設定檔。 |
 |**高可用性** | 啟用可用性群組。 |
-|**Microsoft 分散式交易協調器** | 設定和疑難排解 Linux 上的 MSDTC。 SQL Edge 不支援其他分散式交易相關的設定選項。 如需有關這些額外設定選項的詳細資訊，請參閱 [設定 MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc)。 |
+|**Microsoft 分散式交易協調器** | 設定和疑難排解 Linux 上的 MSDTC。 SQL Edge 不支援其他分散式交易相關的設定選項。 如需有關這些額外設定選項的詳細資訊，請參閱 [設定 MSDTC](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc)。 |
 |**ML 服務 Eula** | 針對 Azure Machine Learning 套件接受 R 和 Python Eula。 只適用於 SQL Server 2019。|
 |**outboundnetworkaccess** |針對[機器學習服務](/sql/linux/sql-server-linux-setup-machine-learning/) R、Python 及 Java 擴充功能啟用輸出網路存取。|
 
-下列範例 mssql 檔案適用于 SQL Edge。 如需 mssql 檔案格式的詳細資訊，請參閱 [mssql 格式](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)。
+下列範例 mssql 檔案適用于 SQL Edge。 如需 mssql 檔案格式的詳細資訊，請參閱 [mssql 格式](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)。
 
 ```ini
 [EULA]
@@ -176,7 +176,7 @@ chown -R 10001:0 <database file dir>
 
 ## <a name="persist-your-data"></a> 保存您的資料
 
-即使您使用和重新開機容器，您的 Azure SQL Edge 設定變更和資料庫檔案仍會保存在容器中 `docker stop` `docker start` 。 不過，如果您移除容器，則 `docker rm` 會刪除容器中的所有專案，包括 AZURE SQL Edge 和您的資料庫。 下一節將說明如何使用**資料磁碟區**來保存您的資料庫檔案，即使已刪除相關聯的容器也一樣。
+即使您使用和重新開機容器，您的 Azure SQL Edge 設定變更和資料庫檔案仍會保存在容器中 `docker stop` `docker start` 。 不過，如果您移除容器，則 `docker rm` 會刪除容器中的所有專案，包括 AZURE SQL Edge 和您的資料庫。 下一節將說明如何使用 **資料磁碟區** 來保存您的資料庫檔案，即使已刪除相關聯的容器也一樣。
 
 > [!IMPORTANT]
 > 針對 Azure SQL Edge，請務必瞭解 Docker 中的資料持續性。 除了本節的討論，另請參閱 Docker 文件，以了解[如何管理 Docker 容器中的資料](https://docs.docker.com/engine/tutorials/dockervolumes/) \(英文\)。

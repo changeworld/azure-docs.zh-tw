@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: c8dcddcd3d928758557074bf01d92e4bcc57ee1d
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 1bb2b7ca22896ed279c8aac215109b7f7bc7854c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279438"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394266"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
 
@@ -100,11 +100,11 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 使指令碼會建立解決方案所需的登錄機碼。 此外也會建立 Windows 防火牆規則，以允許代理程式建立彼此的 TCP 連線。 此指令碼所建立的登錄機碼會指定是否要記錄偵錯記錄，以及記錄的路徑。 此指令碼也會定義用於通訊的代理程式 TCP 連接埠。 此指令碼會自動設定這些機碼的值。 請勿手動變更這些機碼。 預設開啟的連接埠是 8084。 您可以為指令碼提供 portNumber 參數來使用自訂連接埠。 請在指令碼執行所在的所有電腦上使用相同的連接埠。 
 
-    >[!NOTE]
-    > The script configures only Windows Firewall locally. If you have a network firewall, make sure that it allows traffic destined for the TCP port used by Network Performance Monitor.
+   >[!NOTE]
+   > 指令碼只會在本機設定 Windows 防火牆。 如果您有網路防火牆，請確定它允許傳至網路效能監視器所用 TCP 連接埠的流量。
 
-    >[!NOTE]
-    > You don't need to run the [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell script for Service Connectivity Monitor.
+   >[!NOTE]
+   > 您不需要執行服務連線監視器的 [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell 腳本。
 
     
 
@@ -167,7 +167,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 1. 選取或清除您要監視或停止監視的節點。 
 2. 視需要選取 [用於監視]，或加以清除。 
-3. 選取 [儲存]  。 
+3. 選取 [儲存]。 
 
 
 設定您想要的功能：

@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5deb84cdc2dee61474c9f2bd1f93311d89f8918
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308873"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393450"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 儲存報表資料的時間長度為何？
 
@@ -51,15 +51,9 @@ ms.locfileid: "92308873"
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>在取得 Azure AD 進階授權之後，我能否看見上個月的資料？
-
-如果您是最近切換到進階版 (包括試用版)，一開始最多可以看見 7 天的資料。 當資料累積起來時，您便可以看到過去 30 天的資料。
-
----
-
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD 何時會開始收集安全性訊號資料？  
 
-對於安全性訊號，收集程序會在您選擇使用 **Identity Protection 中心**時啟動。 
+對於安全性訊號，收集程序會在您選擇使用 **Identity Protection 中心** 時啟動。 
 
 ---
 
@@ -67,7 +61,7 @@ ms.locfileid: "92308873"
 
 **活動報告**    
 
-| 報表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Report                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 稽核記錄             | 7 天        | 30 天             | 30 天             |
 | 登入               | 7 天        | 30 天             | 30 天             |
@@ -77,9 +71,15 @@ ms.locfileid: "92308873"
 
 **安全性信號**
 
-| 報表         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Report         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
 | 有風險的使用者  | 7 天        | 30 天             | 90 天             |
 | 有風險的登入 | 7 天        | 30 天             | 90 天             |
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>在取得 Azure AD 進階授權之後，我能否看見上個月的資料？
+
+**否** ，您不能。 Azure 最多可為免費版本的活動資料儲存七天。 這表示，當您從免費切換至 premium 版本時，您最多隻能看見7天的資料。
 
 ---

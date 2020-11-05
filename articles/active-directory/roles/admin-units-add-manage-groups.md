@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 10/07/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026729"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394742"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理群組
 
@@ -128,7 +128,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 
 ### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
 
-執行下列命令：
+執行以下命令：
 
 ```http
 HTTP request
@@ -153,7 +153,7 @@ Request body
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-執行下列命令：
+執行以下命令：
 
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
@@ -161,7 +161,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 
 ### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
 
-執行下列命令：
+執行以下命令：
 
 ```http
 https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
@@ -193,7 +193,7 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-執行下列命令：
+執行以下命令：
 
 ```powershell
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
@@ -201,7 +201,7 @@ Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupO
 
 ### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
 
-執行下列命令：
+執行以下命令：
 
 ```http
 https://graph.microsoft.com/v1.0/directory/AdministrativeUnits/<adminunit-id>/members/<group-id>/$ref

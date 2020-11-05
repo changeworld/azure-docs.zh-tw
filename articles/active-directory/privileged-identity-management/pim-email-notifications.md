@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232303"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394725"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的電子郵件通知
 
@@ -34,7 +34,7 @@ Privileged Identity Management (PIM) 可讓您知道您的 Azure Active Director
 - 電子郵件地址：  **azure-noreply \@ microsoft.com**
 - 顯示名稱：Microsoft Azure
 
-這些電子郵件的主旨行中包含 **PIM** 前置詞。 以下為範例：
+這些電子郵件的主旨行中包含 **PIM** 前置詞。 以下是範例：
 
 - PIM：已永久指派「備份讀者」角色給 Alain Charon
 
@@ -54,7 +54,7 @@ Privileged Identity Management (PIM) 可讓您知道您的 Azure Active Director
 | 安全性系統管理員</br>(已啟用/合格) | 否 | 是* | 是 |
 | 全域管理員</br>(已啟用/合格) | 否 | 是* | 是 |
 
-\* 如果 [**[通知]** 設定](pim-how-to-change-default-settings.md#notifications)設為 [啟用]**** 時。
+\* 如果 [**[通知]** 設定](pim-how-to-change-default-settings.md#notifications)設為 [啟用] 時。
 
 以下所顯示的範例電子郵件，會在使用者啟用虛構 Contoso 組織的 Azure AD 角色時傳送。
 
@@ -68,21 +68,24 @@ Azure AD 角色的每週 Privileged Identity Management 摘要電子郵件，會
 
 電子郵件包含四個圖格：
 
-| 磚 | 說明 |
+| 磚 | 描述 |
 | --- | --- |
 | **已啟用的使用者** | 使用者在組織內啟用其合格角色的次數。 |
 | **成為永久狀態的使用者** | 具有合格指派的使用者成為永久狀態的次數。 |
 | **Privileged Identity Management 中的角色指派** | 在 Privileged Identity Management 內將合格角色指派給使用者的次數。 |
 | **PIM 外部的角色指派** | 在 Azure AD) 內，使用者被指派永久角色給 Privileged Identity Management (以外的次數。 |
 
-[ **最上層角色** ] 區段的總覽會根據每個角色的永久和合格管理員總數，列出組織中的前五個角色。 [採取動作]**** 連結會開啟 [PIM 精靈](pim-security-wizard.md)，您可以在其中將永久管理員分批轉換成合格的管理員。
+[ **最上層角色** ] 區段的總覽會根據每個角色的永久和合格管理員總數，列出組織中的前五個角色。 [採取動作] 連結會開啟 [PIM 精靈](pim-security-wizard.md)，您可以在其中將永久管理員分批轉換成合格的管理員。
 
 ## <a name="email-timing-for-activation-approvals"></a>啟用核准的電子郵件時間
 
-當使用者啟用其角色且角色設定需要核准時，核准者會收到三封電子郵件以供每次核准：
+當使用者啟用其角色且角色設定需要核准時，核准者會收到兩封電子郵件以供每次核准：
 
 - 要求核准或拒絕使用者的啟用要求 (由要求核准引擎傳送) 
 - 要求核准引擎傳送 (使用者的要求) 
+
+此外，全域管理員和特殊許可權角色管理員會收到每個核准的電子郵件：
+
 -  (由 Privileged Identity Management 傳送的使用者角色已啟用) 
 
 要求核准引擎傳送的前兩封電子郵件可能會延遲。 目前，90% 的電子郵件需要三至十分鐘的時間，但對於1% 的客戶而言，它可能更長，最多15分鐘。
@@ -111,7 +114,7 @@ Azure AD 角色的每週 Privileged Identity Management 摘要電子郵件，會
 
 ![適用于 Azure 資源角色的新 Privileged Identity Management 電子郵件](./media/pim-email-notifications/email-resources-new.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中設定 Azure AD 角色設定](pim-how-to-change-default-settings.md)
 - [核准或拒絕 Privileged Identity Management 中 Azure AD 角色的要求](azure-ad-pim-approval-workflow.md)

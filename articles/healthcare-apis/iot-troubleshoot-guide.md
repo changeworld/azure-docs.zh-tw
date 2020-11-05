@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558511"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394215"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>適用于 FHIR 的 Azure IoT Connector (preview) 疑難排解指南
 
@@ -33,12 +33,12 @@ ms.locfileid: "92558511"
 
 |元素|必要|
 |:-------|:------|
-|TypeName|True|
-|TypeMatchExpression|True|
-|DeviceIdExpression|True|
-|TimestampExpression|True|
-|值 []。ValueName|True|
-|值 []。ValueExpression|True|
+|TypeName|是|
+|TypeMatchExpression|是|
+|DeviceIdExpression|是|
+|TimestampExpression|是|
+|值 []。ValueName|是|
+|值 []。ValueExpression|是|
 
 > [!NOTE]
 > 值 []。ValueName 和 Values []。ValueExpression
@@ -49,7 +49,7 @@ ms.locfileid: "92558511"
 
 |元素|必要|
 |:------|:-------|
-|TypeName|True|
+|TypeName|是|
 
 > [!NOTE]
 > 這是目前唯一驗證的必要 FHIR 對應元素。
@@ -91,7 +91,7 @@ ms.locfileid: "92558511"
 > JSON 是目前唯一支援裝置和 FHIR 對應檔案的格式。
 
 > [!TIP]
-> 深入瞭解適用于 FHIR 裝置的 Azure IoT Connector [以及 FHIR 的轉換對應 JSON](https://docs.microsoft.com/azure/healthcare-apis/iot-mapping-templates)
+> 深入瞭解適用于 FHIR 裝置的 Azure IoT Connector [以及 FHIR 的轉換對應 JSON](./iot-mapping-templates.md)
 
 1. 在 [ **增益集]** 區段中，選取 Azure API for FHIR 資源儀表板左下方的 **[IoT Connector (預覽) ]** 。
 
@@ -99,25 +99,25 @@ ms.locfileid: "92558511"
 
 2. 選取您要從中複製轉換對應 JSON 的「 **連接器** 」。
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > 此程式也可以用來複製和儲存「 **設定 FHIR 對應** 」的 JSON 內容。
 
 3. 選取 **[設定裝置對應]** 。
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. 選取 JSON 的內容，並執行複製作業 (例如：選取 Ctrl + c) 。 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. 進行貼上作業 (例如：選取 Ctrl + v) 到編輯器中的新檔案 (例如： Visual Studio Code、記事本) ，然後以 *. json 副檔名儲存檔案。
 
 > [!TIP]
 > 如果您將針對 Azure IoT Connector for FHIR 開啟 [Azure 技術支援](https://azure.microsoft.com/support/create-ticket/) 票證，請務必包含轉換對應 JSON 的複本，以協助進行疑難排解程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 查看 Azure IoT Connector for FHIR 的常見問題。
 

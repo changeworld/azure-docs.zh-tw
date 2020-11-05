@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513363"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394861"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Azure IoT Connector for FHIR (預覽) 資料流程
 
@@ -26,7 +26,7 @@ ms.locfileid: "87513363"
 以下是 Azure IoT Connector 針對 FHIR 收到的資料經過的不同階段。
 
 ## <a name="ingest"></a>擷取
-內嵌是在 Azure IoT Connector 中接收裝置資料以進行 FHIR 的第一個階段。 裝置資料的內嵌端點裝載于 [Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/)。 Azure 事件中樞平臺支援高規模和輸送量，且每秒可接收和處理數百萬則訊息。 它也可讓 Azure IoT Connector FHIR 以非同步方式取用訊息，以在處理裝置資料時免除裝置等待的需求。
+內嵌是在 Azure IoT Connector 中接收裝置資料以進行 FHIR 的第一個階段。 裝置資料的內嵌端點裝載于 [Azure 事件中樞](../event-hubs/index.yml)。 Azure 事件中樞平臺支援高規模和輸送量，且每秒可接收和處理數百萬則訊息。 它也可讓 Azure IoT Connector FHIR 以非同步方式取用訊息，以在處理裝置資料時免除裝置等待的需求。
 
 > [!NOTE]
 > JSON 是裝置資料目前唯一支援的格式。
@@ -57,7 +57,7 @@ ms.locfileid: "87513363"
 ## <a name="persist"></a>Persist
 在轉換階段產生觀察 FHIR 資源之後，資源就會儲存在 Azure API for FHIR 中。 如果 FHIR 資源是新的，則會在伺服器上建立。 如果 FHIR 資源已經存在，將會更新。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 按一下下一個步驟，以瞭解如何建立裝置和 FHIR 對應範本。
 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902498"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395150"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>啟用及停用資料保留原則
 
@@ -22,7 +22,7 @@ ms.locfileid: "90902498"
 
 ## <a name="enable-data-retention-for-a-database"></a>啟用資料庫的資料保留
 
-下列範例顯示如何使用 [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)來啟用資料保留。
+下列範例顯示如何使用 [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options)來啟用資料保留。
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -38,9 +38,9 @@ FROM sys.databases;
 
 ## <a name="enable-data-retention-for-a-table"></a>啟用資料表的資料保留
 
-您必須針對要自動清除資料的每個資料表啟用資料保留。 在資料庫和資料表上啟用資料保留時，背景系統工作會定期掃描資料表，以找出並刪除任何過時的 (過時) 資料列。 您可以在資料表建立期間，使用 [Create table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) 或 [Alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)來啟用資料保留。
+您必須針對要自動清除資料的每個資料表啟用資料保留。 在資料庫和資料表上啟用資料保留時，背景系統工作會定期掃描資料表，以找出並刪除任何過時的 (過時) 資料列。 您可以在資料表建立期間，使用 [Create table](/sql/t-sql/statements/create-table-transact-sql) 或 [Alter table](/sql/t-sql/statements/alter-table-transact-sql)來啟用資料保留。
 
-下列範例顯示如何使用 [Create table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql)來啟用資料表的資料保留。 
+下列範例顯示如何使用 [Create table](/sql/t-sql/statements/create-table-transact-sql)來啟用資料表的資料保留。 
 
 ```sql
 CREATE TABLE [dbo].[data_retention_table] 
@@ -63,7 +63,7 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
     - DateTimeOffset
 - RETENTION_PERIOD-整數值，後面接著單元描述元。 允許的單位為 [日]、[天]、[周]、[周]、[月]、[年]。
 
-下列範例顯示如何使用 [Alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)來啟用資料表的資料保留。  
+下列範例顯示如何使用 [Alter table](/sql/t-sql/statements/alter-table-transact-sql)來啟用資料表的資料保留。  
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -101,7 +101,7 @@ and object_id = object_id(N'dbo.data_retention_table', N'U')
 
 ## <a name="disable-data-retention-on-a-table"></a>停用資料表的資料保留 
 
-您可以使用 [Alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)來停用資料表的資料保留。 下列命令可用來停用資料表的資料保留。
+您可以使用 [Alter table](/sql/t-sql/statements/alter-table-transact-sql)來停用資料表的資料保留。 下列命令可用來停用資料表的資料保留。
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -110,7 +110,7 @@ Set (DATA_DELETION = OFF)
 
 ## <a name="disable-data-retention-on-a-database"></a>停用資料庫的資料保留
 
-您可以使用 [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)來停用資料表的資料保留。 下列命令可用來停用資料庫的資料保留。
+您可以使用 [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options)來停用資料表的資料保留。 下列命令可用來停用資料庫的資料保留。
 
 ```sql
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;

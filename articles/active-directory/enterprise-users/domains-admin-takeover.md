@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/04/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374958"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393620"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>如何以系統管理員身分接管 Azure Active Directory 中非受控目錄
 
@@ -38,15 +38,15 @@ ms.locfileid: "92374958"
 
 1. 透過註冊 Power BI，在未受管理的組織中建立使用者內容。 為了便於範例說明，這些步驟會假設該路徑。
 
-2. 開啟 [Power BI 網站](https://powerbi.com)，然後選取 [免費開始]****。 輸入使用組織網域名稱的使用者帳戶，例如 `admin@fourthcoffee.xyz`。 輸入驗證碼之後，請查看您的電子郵件是否有確認碼。
+2. 開啟 [Power BI 網站](https://powerbi.com)，然後選取 [免費開始]。 輸入使用組織網域名稱的使用者帳戶，例如 `admin@fourthcoffee.xyz`。 輸入驗證碼之後，請查看您的電子郵件是否有確認碼。
 
-3. 在來自 Power BI 的確認電子郵件中，選取 [是，這是我]****。
+3. 在來自 Power BI 的確認電子郵件中，選取 [是，這是我]。
 
-4. 使用 Power BI 的使用者帳戶登入 [Microsoft 365 系統管理中心](https://portal.office.com/admintakeover) 。 您會收到一則訊息，指示您成為已在未受管理的組織中驗證之功能變數名稱的系統 **管理員** 。 請選取 [是，我想要成為管理員]****。
+4. 使用 Power BI 的使用者帳戶登入 [Microsoft 365 系統管理中心](https://portal.office.com/admintakeover) 。 您會收到一則訊息，指示您成為已在未受管理的組織中驗證之功能變數名稱的系統 **管理員** 。 請選取 [是，我想要成為管理員]。
   
    ![[成為管理員] 的第一個螢幕擷取畫面](./media/domains-admin-takeover/become-admin-first.png)
   
-5. 在您的網域名稱登錄器新增 TXT 記錄，以證明您擁有網域名稱 **fourthcoffee.xyz**。 在此範例中為 GoDaddy.com。
+5. 在您的網域名稱登錄器新增 TXT 記錄，以證明您擁有網域名稱 **fourthcoffee.xyz** 。 在此範例中為 GoDaddy.com。
   
    ![新增網域名稱的 txt 記錄](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -59,20 +59,20 @@ ms.locfileid: "92374958"
 1. 開啟 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 2. 選取 [ **使用者** ] 索引標籤，並使用不使用自訂功能變數名稱的名稱（例如 *使用者 \@ fourthcoffeexyz.onmicrosoft.com* ）建立新的使用者帳戶。 
 3. 請確定新的使用者帳戶具有 Azure AD 組織的全域管理員許可權。
-4. 開啟 Microsoft 365 系統管理中心中的 [ **網域** ] 索引標籤，選取功能變數名稱，然後選取 [ **移除**]。 
+4. 開啟 Microsoft 365 系統管理中心中的 [ **網域** ] 索引標籤，選取功能變數名稱，然後選取 [ **移除** ]。 
   
    ![從 Microsoft 365 移除功能變數名稱](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. 如果 Microsoft 365 中有任何使用者或群組參考移除的功能變數名稱，則必須將這些使用者或群組重新命名為 onmicrosoft.com 網域。 如果您強制刪除功能變數名稱，則會自動將所有使用者重新命名，在此範例中為 *使用者 \@ fourthcoffeexyz.onmicrosoft.com*。
+5. 如果 Microsoft 365 中有任何使用者或群組參考移除的功能變數名稱，則必須將這些使用者或群組重新命名為 onmicrosoft.com 網域。 如果您強制刪除功能變數名稱，則會自動將所有使用者重新命名，在此範例中為 *使用者 \@ fourthcoffeexyz.onmicrosoft.com* 。
   
 6. 使用 Azure AD 組織的全域管理員帳戶登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
   
-7. 選取 [自訂網域名稱]****，然後新增網域名稱。 您將必須輸入 DNS TXT 記錄來驗證網域名稱擁有權。 
+7. 選取 [自訂網域名稱]，然後新增網域名稱。 您將必須輸入 DNS TXT 記錄來驗證網域名稱擁有權。 
   
    ![網域已驗證為已新增至 Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> 在 Microsoft 365 組織中指派授權的 Power BI 或 Azure Rights Management 服務的任何使用者，都必須在移除功能變數名稱時儲存儀表板。 他們必須以使用者名稱（例如*使用者 \@ fourthcoffeexyz.onmicrosoft.com* ）登入，而不是*使用者 \@ fourthcoffee。*
+> 在 Microsoft 365 組織中指派授權的 Power BI 或 Azure Rights Management 服務的任何使用者，都必須在移除功能變數名稱時儲存儀表板。 他們必須以使用者名稱（例如 *使用者 \@ fourthcoffeexyz.onmicrosoft.com* ）登入，而不是 *使用者 \@ fourthcoffee。*
 
 ## <a name="external-admin-takeover"></a>外部管理員接管
 
@@ -100,7 +100,7 @@ ms.locfileid: "92374958"
 
 具有包含 SharePoint、OneDrive 或商務用 Skype 之服務方案的任何服務，都不支援外部管理員接管;例如，透過 Office 免費訂用帳戶。 
 
-您可以選擇性地使用[ **ForceTakeover**選項](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)，將功能變數名稱從非受控組織中移除，並在所需的組織上進行驗證。 
+您可以選擇性地使用 [ **ForceTakeover** 選項](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)，將功能變數名稱從非受控組織中移除，並在所需的組織上進行驗證。 
 
 #### <a name="more-information-about-rms-for-individuals"></a>個人版 RMS 的詳細資訊
 
@@ -118,10 +118,10 @@ Cmdlet | 使用方式
 `connect-msolservice` | 出現提示時，請登入您的受控組織。
 `get-msoldomain` | 顯示與目前組織相關聯的功能變數名稱。
 `new-msoldomain –name <domainname>` | 將功能變數名稱新增至組織作為未驗證的 (尚未執行任何 DNS 驗證) 。
-`get-msoldomain` | 功能變數名稱現在會包含在與您受控組織相關聯的功能變數名稱清單中，但會列為未 **驗證**的名稱。
+`get-msoldomain` | 功能變數名稱現在會包含在與您受控組織相關聯的功能變數名稱清單中，但會列為未 **驗證** 的名稱。
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | 提供要放到網域之新 DNS TXT 記錄中的資訊 (MS=xxxxx)。 驗證可能不會立即進行，因為 TXT 記錄需要一些時間傳播，所以請先稍候幾分鐘，再考慮使用 **-ForceTakeover** 選項。 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>如果您的網域名稱仍然未驗證，就可以著手執行 **-ForceTakeover** 選項。 它會驗證是否已建立 TXT 記錄，然後啟動接管程序。<li>只有在強制執行外部管理員接管時，例如，當非受控組織 Microsoft 365 服務封鎖接管時，才應該將 **-ForceTakeover** 選項新增至 Cmdlet。
-`get-msoldomain` | 網域清單現在會將網域名稱顯示為 [已驗證]****。
+`get-msoldomain` | 網域清單現在會將網域名稱顯示為 [已驗證]。
 
 > [!NOTE]
 > 當您執行外部接管強制選項之後，會在10天內刪除非受控 Azure AD 組織。
@@ -144,12 +144,12 @@ Cmdlet | 使用方式
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    例如：
+    例如︰
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. 複製從此命令傳回的值 (挑戰)。 例如：
+4. 複製從此命令傳回的值 (挑戰)。 例如︰
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +160,7 @@ Cmdlet | 使用方式
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   例如：
+   例如︰
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
@@ -174,7 +174,7 @@ Cmdlet | 使用方式
 * [如何安裝和設定 Azure PowerShell](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet 參考](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0&preserve-view=true)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png

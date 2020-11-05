@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72249184"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395745"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft Genomics 的商務持續性概觀
 本概觀說明 Microsoft Genomics 針對商務持續性和災害復原所提供的功能。 深入了解可使用哪些選項，從可能造成資料遺失的干擾性事件 (例如 Azure 區域中斷) 復原。 
@@ -43,7 +43,7 @@ ms.locfileid: "72249184"
 如果您希望在發生資料中心中斷時可更快速復原，您可以採取幾個步驟來減少手動將 Microsoft Genomics 工作流程重新提交到次要地區的時間：
 
 * 找出適當的次要地區，在該區域主動建立 Genomics 帳戶
-* 在主要和次要地區複製您的資料，讓您的資料在次要地區立即可供取用。 這個操作可以手動完成，或是使用 Azure 儲存體中可用的 [geo-redundant storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) 功能來完成。 
+* 在主要和次要地區複製您的資料，讓您的資料在次要地區立即可供取用。 這個操作可以手動完成，或是使用 Azure 儲存體中可用的 [geo-redundant storage](../storage/common/storage-redundancy.md) 功能來完成。 
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已了解使用 Microsoft Genomics 服務時的商務持續性和災害復原選項。 如需 Azure 中一般商務持續性和災害復原的詳細資訊，請參閱 [Azure 復原技術指引](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。 
+在本文中，您已了解使用 Microsoft Genomics 服務時的商務持續性和災害復原選項。 如需 Azure 中一般商務持續性和災害復原的詳細資訊，請參閱 [Azure 復原技術指引](/azure/architecture/resiliency/recovery-loss-azure-region)。

@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424653"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393076"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
 自動佈建是指在使用者需要存取的雲端應用程式中建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 開始部署之前，您可以先參閱本文，以了解 Azure AD 佈建的運作方式並取得設定建議。 
 
-**Azure AD 佈建服務**會藉由連線至應用程式廠商所提供的跨網域身分識別管理系統 (SCIM) 2.0 使用者管理 API 端點，將使用者佈建至 SaaS 應用程式和其他系統。 這個 SCIM 端點可讓 Azure AD 以程式設計方式建立、更新和移除使用者。 針對所選應用程式，佈建服務也可以建立、更新和移除其他與身分識別相關的物件，例如群組和角色。 Azure AD 與應用程式之間的佈建所使用的通道，會使用 HTTPS TLS 1.2 加密進行加密。
+**Azure AD 佈建服務** 會藉由連線至應用程式廠商所提供的跨網域身分識別管理系統 (SCIM) 2.0 使用者管理 API 端點，將使用者佈建至 SaaS 應用程式和其他系統。 這個 SCIM 端點可讓 Azure AD 以程式設計方式建立、更新和移除使用者。 針對所選應用程式，佈建服務也可以建立、更新和移除其他與身分識別相關的物件，例如群組和角色。 Azure AD 與應用程式之間的佈建所使用的通道，會使用 HTTPS TLS 1.2 加密進行加密。
 
 
 ![Azure AD 佈建服務](./media/how-provisioning-works/provisioning0.PNG)
@@ -43,9 +43,7 @@ Azure AD 佈建服務會使用 [SCIM 2.0 通訊協定](https://techcommunity.mic
 
 ## <a name="authorization"></a>授權
 
-Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在設定應用程式的自動使用者佈建時，您必須輸入有效的認證。 您可以參考應用程式教學課程，以尋找應用程式的認證類型和需求。 在 Azure 入口網站中，您可以讓 Azure AD 使用提供的認證嘗試連線至應用程式的佈建應用程式，以測試認證。
-
-如果應用程式也設定了 SAML 型單一登入，Azure AD 的內部、每個應用程式的儲存體限制將是 1024 個位元組。 此限制包含所有憑證、祕密權杖、認證，以及與單一應用程式執行個體關聯的相關設定資料 (在 Azure AD 中也稱為服務主體記錄)。 在設定了 SAML 型單一登入時，用來簽署 SAML 權杖的憑證通常會耗用超過 50% 的空間。 您在使用者佈建設定期間輸入的任何其他項目 (秘密權杖、URI、通知電子郵件地址、使用者名稱和密碼) 都可能超過儲存體限制。 如需詳細資訊，請參閱[在設定使用者佈建期間儲存管理員認證時發生問題](./application-provisioning-config-problem-storage-limit.md)。
+Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在設定應用程式的自動使用者佈建時，您必須輸入有效的認證。 針對資源庫應用程式，您可以參考應用程式教學課程，以尋找應用程式的認證類型和需求。 針對非資源庫的應用程式，您可以參考 [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) 檔以瞭解認證類型和需求。 在 Azure 入口網站中，您可以讓 Azure AD 使用提供的認證嘗試連線至應用程式的佈建應用程式，以測試認證。
 
 ## <a name="mapping-attributes"></a>對應屬性
 
@@ -53,7 +51,7 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 在 Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和屬性對應。 有些應用程式除了使用者以外，還會管理其他類型的物件，例如群組。
 
-在設定佈建時，請務必檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 請檢視並設定在兩個系統之間用來唯一識別和比對使用者/群組的比對屬性 (**使用此屬性來比對物件**)。
+在設定佈建時，請務必檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 請檢視並設定在兩個系統之間用來唯一識別和比對使用者/群組的比對屬性 ( **使用此屬性來比對物件** )。
 
 您可以根據您的業務需求自訂預設的屬性對應。 因此，您可以變更或刪除現有的屬性對應，或建立新的屬性對應。 如需詳細資訊，請參閱[自訂 SaaS 應用程式的使用者佈建屬性對應](./customize-application-attributes.md)。
 
@@ -135,7 +133,7 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 10. 在增量週期結束時保存新的浮水印，以為後續的增量週期提供起點。
 
 > [!NOTE]
-> 您可以使用[對應](customize-application-attributes.md)區段中的 [目標物件動作] 核取方塊，視需要停用**建立**、**更新**或**刪除**作業。 在更新期間停用使用者的邏輯也是透過來自 "accountEnabled" 這類欄位的屬性對應來控制。
+> 您可以使用 [對應](customize-application-attributes.md)區段中的 [目標物件動作] 核取方塊，視需要停用 **建立** 、 **更新** 或 **刪除** 作業。 在更新期間停用使用者的邏輯也是透過來自 "accountEnabled" 這類欄位的屬性對應來控制。
 
 佈建服務將會依據[每個應用程式特定的教學課程](../saas-apps/tutorial-list.md)中所定義的間隔，繼續無限期執行連續的增量週期。 增量週期會繼續進行，直到發生下列其中一個事件為止：
 
@@ -192,7 +190,7 @@ Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳�
 * 從應用程式解除指派使用者。
 * 使用者從範圍移至超出範圍 (不會再傳遞範圍篩選器) 。
 
-:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="停用使用者" lightbox="./media/how-provisioning-works/delete-user.png":::
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="刪除使用者" lightbox="./media/how-provisioning-works/delete-user.png":::
 
 根據預設，Azure AD 佈建服務會虛刪除或停用超出範圍的使用者。 如果您想要覆寫此預設行為，您可以設定旗標來 [略過超出範圍的刪除。](skip-out-of-scope-deletions.md)
 
@@ -200,7 +198,7 @@ Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳�
 
 如果您在屬性對應中看到 IsSoftDeleted 屬性，此屬性將用來決定使用者的狀態，以及是否要傳送 active = false 的更新要求以虛刪除使用者。
 
-**已知的限制**
+**已知限制**
 
 * 如果先前由布建服務管理的使用者未指派給應用程式或指派給應用程式的群組，則會傳送停用要求。 屆時，使用者不是由服務所管理，而且我們不會在從目錄中刪除時傳送刪除要求。
 * 不支援布建在 Azure AD 中停用的使用者。 在布建之前，它們必須在 Azure AD 中處於作用中狀態。

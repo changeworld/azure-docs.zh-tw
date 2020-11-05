@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 01/31/2019
+ms.date: 11/05/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66c7229c7e6d32bbec9a7659329aff7a90e7887d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374949"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393603"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自訂網域名稱
 
-網域名稱是許多目錄資源識別項重要的一部分：它可能是使用者的使用者名稱或電子郵件地址的一部分、群組位址的一部分，有時也可能是應用程式的應用程式識別碼 URI 的一部分。 Azure Active Directory (Azure AD) 中的資源可包含目錄 (其中含有資源) 所擁有的網域名稱。 只有全域管理員可以在 Azure AD 中管理網域。
+功能變數名稱是許多 Azure Active Directory (Azure AD) 資源之識別碼的重要部分：它是使用者的使用者名稱或電子郵件地址的一部分、群組位址的一部分，而且有時是應用程式之應用程式識別碼 URI 的一部分。 Azure AD 中的資源可以包含包含資源之組織所擁有的功能變數名稱。 只有全域管理員可以在 Azure AD 中管理網域。
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>設定 Azure AD 目錄的主要網域名稱
+## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>為您的 Azure AD 組織設定主功能變數名稱稱
 
-建立目錄時，初始網域名稱 (例如 ‘contoso.onmicrosoft.com’) 同時也是主要網域名稱。 當您建立新的使用者時，主要網域即為新使用者的預設網域名稱。 設定主要網域名稱可以簡化系統管理員在入口網站中建立新使用者的程序。 變更主要網域名稱：
+當您的組織建立時，初始功能變數名稱（例如 ' contoso.onmicrosoft.com '）也是主功能變數名稱稱。 當您建立新的使用者時，主要網域即為新使用者的預設網域名稱。 設定主要網域名稱可以簡化系統管理員在入口網站中建立新使用者的程序。 變更主要網域名稱：
 
-1. 使用具備目錄全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 **Azure Active Directory**。
+1. 使用組織的全域管理員帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
+2. 選取 **Azure Active Directory** 。
 3. 選取 [自訂網域名稱]。
   
    ![開啟使用者管理頁面](./media/domains-manage/add-custom-domain.png)
@@ -39,19 +39,19 @@ ms.locfileid: "92374949"
   
    ![將網域名稱設為主要網域名稱](./media/domains-manage/make-primary-domain.png)
 
-您可以將目錄的主要網域名稱變更為任何已驗證的非同盟自訂網域。 變更目錄的主要網域時，並不會變更任何現有使用者的使用者名稱。
+您可以將組織的主功能變數名稱稱變更為任何未同盟的已驗證自訂網域。 變更您組織的主域不會變更任何現有使用者的使用者名稱。
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>新增自訂網域名稱到您的 Azure AD 組織
 
-您最多可以新增 900 個受控網域名稱。 如果您要設定所有網域與內部部署 Active Directory 建立同盟，則最多可以在每個目錄中新增 450 個網域名稱。
+您最多可以新增 900 個受控網域名稱。 如果您要設定與內部部署 Active Directory 同盟的所有網域，您最多可以在每個組織中新增450個功能變數名稱。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>新增自訂網域的子網域
 
-如果您想要將第三層網域名稱新增至您的目錄，例如 'europe.contoso.com'，則應先新增並驗證第二層網域，例如 contoso.com。 Azure AD 會自動驗證子網域。 若要查看您新增的子網域是否通過驗證，請重新整理瀏覽器中的網域清單。
+如果您想要將子功能變數名稱稱（例如 ' europe.contoso.com '）新增至您的組織，您應該先新增並驗證根域，例如 contoso.com。 Azure AD 會自動驗證子網域。 若要查看您新增的子網域是否通過驗證，請重新整理瀏覽器中的網域清單。
 
-附註
+如果您已將 contoso.com 網域新增至一個 Azure AD 組織，也可以驗證不同 Azure AD 組織中的子域 europe.contoso.com。 加入子域時，系統會提示您在 DNS 主控提供者中新增 TXT 記錄。
 
-如果您已將 contoso.com 網域新增至 Azure AD 租用戶，您也可以將子網域 europe.contoso.com 新增至第二個 Azure AD 租用戶。 新增子網域時，系統會提示您在 DNS 主機服務提供者中新增 TXT 記錄。
+
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>如果您變更您的自訂網域名稱的 DNS 註冊機構，該怎麼辦
 
@@ -61,19 +61,19 @@ ms.locfileid: "92374949"
 
 如果貴組織不再使用該網域名稱，或如果您需要在另一個 Azure AD 中使用該網域名稱，您可以從您的 Azure AD 刪除自訂網域名稱。
 
-若要刪除自訂網域名稱，您必須先確定目錄中沒有任何資源仰賴該網域名稱。 如果有下列情況，即無法刪除目錄的網域名稱：
+若要刪除自訂功能變數名稱，您必須先確定您的組織中沒有任何資源依賴功能變數名稱。 如果有下列情況，您就無法從組織中刪除功能變數名稱：
 
 * 有任何使用者的使用者名稱、電子郵件地址或 Proxy 位址包含該網域名稱。
 * 有任何群組的電子郵件地址或 Proxy 位址包含該網域名稱。
 * Azure AD 中任何應用程式的應用程式識別碼 URI 包括該網域名稱。
 
-您必須變更或刪除 Azure AD 目錄中任何這類資源，才能刪除自訂網域名稱。
+您必須在 Azure AD 組織中變更或刪除任何這類資源，才能刪除自訂功能變數名稱。
 
 ### <a name="forcedelete-option"></a>ForceDelete 選項
 
-您可以 **ForceDelete**[Azure AD 管理中心](https://aad.portal.azure.com)中的網域名稱，或使用 [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta)。 這些選項會使用非同步作業，並更新所有從自訂網域名稱 (例如「user@contoso.com」) 到初始預設網域名稱 (例如「user@contoso.onmicrosoft.com」) 的參考。 
+您可以 **ForceDelete**[Azure AD 管理中心](https://aad.portal.azure.com)中的網域名稱，或使用 [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)。 這些選項會使用非同步作業，並更新所有從自訂網域名稱 (例如「user@contoso.com」) 到初始預設網域名稱 (例如「user@contoso.onmicrosoft.com」) 的參考。
 
-若要在 Azure 入口網站呼叫 **ForceDelete**，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)。 此外，如果下列任一項為真，**ForceDelete** 作業就會失敗：
+若要在 Azure 入口網站呼叫 **ForceDelete** ，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)。 此外，如果下列任一項為真， **ForceDelete** 作業就會失敗：
 
 * 您已透過 Microsoft 365 網域訂用帳戶服務購買網域
 * 您是合作夥伴，代表其他客戶組織進行管理
@@ -110,11 +110,11 @@ ms.locfileid: "92374949"
 
 在 Azure Active Directory 中，大部分的網域名稱管理工作也都可以使用 Microsoft PowerShell 來完成，或使用 Microsoft Graph API 以程式設計方式來完成。
 
-* [使用 PowerShell 管理 Azure AD 中的網域名稱](/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [網域資源類型](/graph/api/resources/domain?view=graph-rest-1.0) \(英文\)
+* [使用 PowerShell 管理 Azure AD 中的網域名稱](/powershell/module/azuread/?view=azureadps-2.0#domains&preserve-view=true)
+* [網域資源類型](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [新增自訂網域名稱](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
-* [在 Azure AD 中的自訂網域名稱上移除 Exchange 管理中心的 Exchange 已啟用郵件安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
-* [使用 Microsoft Graph API 以強制刪除自訂網域名稱](/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [在 Azure AD 中的自訂網域名稱上移除 Exchange 管理中心的 Exchange 已啟用郵件安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)
+* [使用 Microsoft Graph API 以強制刪除自訂網域名稱](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)

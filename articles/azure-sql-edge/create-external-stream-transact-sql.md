@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92658584030fa83da067eceab391d9bba2f034c0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888168"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392294"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
@@ -26,7 +26,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 
 | 資料來源類型 | 輸入 | 輸出 | 描述 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge 中樞 | Y | Y | 用來讀取和寫入串流資料至 Azure IoT Edge 中樞的資料來源。 如需詳細資訊，請參閱 [IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
+| Azure IoT Edge 中樞 | Y | Y | 用來讀取和寫入串流資料至 Azure IoT Edge 中樞的資料來源。 如需詳細資訊，請參閱 [IoT Edge Hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub)。|
 | SQL Database | N | Y | 用來將串流資料寫入到 SQL Database 的資料來源連線。 資料庫可以是 Azure SQL Edge 中的本機資料庫，也可以是 SQL Server 或 Azure SQL Database 中的遠端資料庫。|
 | Kafka | Y | N | 用來從 Kafka 主題讀取串流資料的資料來源。 ARM64 版本的 Azure SQL Edge 無法使用 Kafka 支援。|
 
@@ -94,12 +94,12 @@ WITH  ( <with_options> )
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
-- **LOCATION**：指定資料來源中實際資料或位置的名稱。 
+- **LOCATION** ：指定資料來源中實際資料或位置的名稱。 
    - 若為 Edge 中樞或 Kafka 資料流程物件，location 會指定要讀取或寫入的 Edge 中樞或 Kafka 主題的名稱。
    - 若為 SQL stream 物件 (SQL Server，Azure SQL Database 或 Azure SQL Edge) 位置會指定資料表的名稱。 如果資料流程是在與目的地資料表相同的資料庫和架構中建立的，則只會後綴資料表名稱。 否則，您必須完整限定 ( # B0 database_name. schema_name. table_name) 資料表名稱。
    - 針對 Azure Blob 儲存體 stream 物件位置是指在 Blob 容器內使用的路徑模式。 如需此功能的詳細資訊，請參閱 (/articles/stream-analytics/stream-analytics-define-outputs.md # blob-儲存體-和-azure-gen2) 
 
-- **INPUT_OPTIONS**：將選項指定為服務的索引鍵/值組，例如作為串流查詢輸入的 Kafka、IoT Edge 中樞
+- **INPUT_OPTIONS** ：將選項指定為服務的索引鍵/值組，例如作為串流查詢輸入的 Kafka、IoT Edge 中樞
     - 分割區：為主題定義的資料分割數目。 可以使用的最大分割區數目限制為32。
       - 適用于 Kafka 輸入資料流程
     - CONSUMER_GROUP：事件中樞和 IoT 中樞會限制一個取用者群組可擁有的讀者數量 (最多 5 個)。 將此欄位保留空白則會使用 '$Default' 取用者群組。
@@ -111,7 +111,7 @@ WITH  ( <with_options> )
     - OUT_OF_ORDER_EVENT_TOLERANCE：事件在從輸入前往串流查詢時，可能不會按順序抵達。 您可以依現狀接受這些事件，或者也可以選擇暫停一定時間來將其重新排序。
       - 保留供日後使用。 不適用於 Azure SQL Edge。
         
-- **OUTPUT_OPTIONS**：針對輸出至串流查詢的受支援服務，將選項指定為索引鍵/值組 
+- **OUTPUT_OPTIONS** ：針對輸出至串流查詢的受支援服務，將選項指定為索引鍵/值組 
   - REJECT_POLICY：DROP | RETRY 指定在發生資料轉換錯誤時的資料錯誤處理原則。 
     - 適用於所有受支援的輸出 
   - MINIMUM_ROWS：  
@@ -247,5 +247,4 @@ WITH
 
 ## <a name="see-also"></a>另請參閱
 
-- [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md) 
-
+- [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md)

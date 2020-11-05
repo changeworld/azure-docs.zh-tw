@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4fbd410a7d2a7374303e637ca81c34dbea90fcb7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791030"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391971"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |[服務主體無法存取 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020年8月|有因應措施||
 |[還原沒有總和檢查碼的手動備份可能會失敗](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解決|2020 年 6 月|
 |[在修改、停用或啟用現有的作業時，代理程式變成沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解決|2020 年 6 月|
-|[資源群組的許可權未套用至 SQL 受控執行個體](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020年2月|有因應措施||
+|[資源群組的許可權未套用至 SQL 受控執行個體](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020年2月|已解決|11月2020|
 |[透過入口網站進行容錯移轉群組的手動容錯移轉限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|有因應措施||
 |[SQL Agent 角色需要非系統管理員 (sysadmin) 登入的明確 EXECUTE 許可權](#in-memory-oltp-memory-limits-are-not-applied)|12月2019|有因應措施||
 |[代理程式進程重新開機可能會中斷 SQL Agent 作業](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|12月2019|已解決|三月2020|

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927680"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393824"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
 
@@ -46,11 +46,11 @@ ms.locfileid: "92927680"
  
 3. 在 [ **磁片名稱** ] 下，選取您要調整大小的磁片。
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="螢幕擷取畫面，顯示已選取磁片名稱的 [磁片] 窗格。":::
 
 4. 在左側功能表的 [ **設定** ] 底下 **，選取 [** 設定]。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="顯示在功能表的 [設定] 區段中選取之設定選項的螢幕擷取畫面。":::
 
 5. 在 [ **大小] (GiB])** 中，選取您要的磁片大小。
    
@@ -58,11 +58,11 @@ ms.locfileid: "92927680"
    > 新的大小應該大於現有的磁碟大小。 針對 OS 磁片，允許的最大值為 2048 GB。  (可以將 VHD blob 擴充至超過該大小，但 OS 只能與前 2048 GB 的空間搭配使用。 ) 
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="螢幕擷取畫面，顯示已選取磁片大小的設定窗格。":::
 
 6. 選取 [儲存]。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="顯示 [設定] 窗格的螢幕擷取畫面，其中已選取 [儲存] 按鈕。":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>使用 PowerShell 調整受控磁片大小
@@ -226,7 +226,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 **非受控磁碟**
 
 ```powershell
-($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
+($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).DiskSizeGB = 1023
 ```
 
 ## <a name="expand-the-volume-within-the-os"></a>擴充 OS 內的磁碟區

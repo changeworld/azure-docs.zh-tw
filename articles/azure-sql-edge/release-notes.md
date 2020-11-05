@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284477"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395031"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 版本資訊 
 
@@ -37,9 +37,9 @@ ms.locfileid: "91284477"
    - 啟用平行執行案例
 6. 低電源模式的省電改進
 7. 串流新功能支援 
-   - [快照集視窗](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) ：新的視窗類型，可讓您依確切時間抵達的事件分組。 
-   - 啟用 [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) 和 [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) as 分析函式，這將可讓您傳回由您選擇的資料行排序的記錄，而不需要成為視窗的一部分。 
-   - [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)的改善。 
+   - [快照集視窗](/stream-analytics-query/snapshot-window-azure-stream-analytics) ：新的視窗類型，可讓您依確切時間抵達的事件分組。 
+   - 啟用 [TopOne](/stream-analytics-query/topone-azure-stream-analytics) 和 [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) as 分析函式，這將可讓您傳回由您選擇的資料行排序的記錄，而不需要成為視窗的一部分。 
+   - [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)的改善。 
 
 ### <a name="fixes"></a>修正
 1. 疑難排解 TSQL 串流作業的其他錯誤訊息和詳細資料。 

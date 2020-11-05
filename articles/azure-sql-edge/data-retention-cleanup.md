@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547f0b3219889b54364c4805c2dd5b183a9861a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888126"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392362"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>使用保留原則管理歷程記錄資料
 
@@ -66,7 +66,7 @@ select @rowcnt
 
 ## <a name="monitoring-data-retention-cleanup"></a>監視資料保留清除
 
-您可以使用 Azure SQL Edge 中 (XEvents) 的擴充事件來監視資料保留原則清除作業。 如需擴充事件的詳細資訊，請參閱 [XEvents 總覽](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)。 
+您可以使用 Azure SQL Edge 中 (XEvents) 的擴充事件來監視資料保留原則清除作業。 如需擴充事件的詳細資訊，請參閱 [XEvents 總覽](/sql/relational-databases/extended-events/extended-events)。 
 
 下列六個擴充的事件有助於追蹤清除作業的狀態。 
 

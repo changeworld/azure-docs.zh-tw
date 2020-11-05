@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c877878fe25d4c6c8904840c3c3350fbe2acf7b5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026661"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395524"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理使用者
 
@@ -113,7 +113,7 @@ Request body
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-執行下列命令：
+執行以下命令：
 
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
@@ -149,7 +149,7 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-執行下列命令：
+執行以下命令：
 
 ```powershell
 Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
