@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6d0ae81177ca8488c410e40ca56642199694c08c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8c9007cf14b485c37b94e9f475e2ce890ea0ea2b
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072635"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330796"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中變更摘要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 中的變更摘要支援是靠接聽 Azure Cosmos 容器的任何變更而運作。 然後變更摘要會輸出已排序的文件清單，這些文件已依其修改的順序變更過。 變更會保存，可進行非同步累加處理，而輸出可配送給一或多個取用者進行平行處理。
+Azure Cosmos DB 中的變更摘要是依其發生順序變更容器的持續記錄。 Azure Cosmos DB 中的變更摘要支援是靠接聽 Azure Cosmos 容器的任何變更而運作。 然後變更摘要會輸出已排序的文件清單，這些文件已依其修改的順序變更過。 持續性變更可以用非同步和累加的方式處理，而且輸出可以散發給一或多個取用者以進行平行處理。
 
 深入了解[變更摘要設計模式](change-feed-design-patterns.md)。
 

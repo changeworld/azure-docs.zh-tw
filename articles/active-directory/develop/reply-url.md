@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042901"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331850"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重新導向 URI (回復 URL) 限制和限制
 
@@ -62,7 +62,9 @@ Azure Active Directory (Azure AD) 應用程式模型目前支援在任何組織�
 
 從開發的觀點來看，這表示有幾件事：
 
-* 請勿在埠不同的情況下註冊多個重新導向 Uri。 登入伺服器會任意挑選一個，並使用與該重新導向 URI 相關聯的行為 (例如，它是 `web` -、 `native` -或 `spa` -類型的重新導向) 。
+* 請勿在埠不同的情況下註冊多個重新導向 Uri。 登入伺服器會任意挑選一個，並使用與該重新導向 URI 相關聯的行為 (例如，是否為 `web` -、 `native` -或類型的重新 `spa` 導向) 。
+
+    當您想要在相同的應用程式註冊中使用不同的驗證流程時（例如授權碼授與和隱含流程），這點特別重要。 若要將正確的回應行為與每個重新導向 URI 建立關聯，登入伺服器必須能夠區分重新導向 Uri，而且只有在埠不同時才能這麼做。
 * 如果您需要在 localhost 上註冊多個重新導向 Uri，以在開發期間測試不同的流程，請使用 URI 的 *路徑* 元件來區分它們。 例如， `http://127.0.0.1/MyWebApp` 不符合 `http://127.0.0.1/MyNativeApp` 。
 * 目前不支援 IPv6 回送位址 (`[::1]`) 。
 * 若要防止您的應用程式因防火牆設定錯誤或重新命名網路介面而中斷，請在您的重新導向 URI 中使用 IP 常值回送位址， `127.0.0.1` 而不是 `localhost` 。

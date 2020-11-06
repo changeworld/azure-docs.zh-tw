@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 523f28cdd32c5176160587a8531aa66c0621d5a7
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325055"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330666"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -207,7 +207,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 ### <a name="creating-feature-branches"></a>建立功能分支
 
-與資料處理站相關聯的每個 Azure Repos Git 存放庫都有共同作業分支。 (`master` 是預設的共同作業分支)。 使用者也可以按一下 [分支] 下拉式清單中的 [+ 新增分支] 來建立功能分支。 [新增分支] 窗格出現之後，請輸入功能分支的名稱。
+與資料處理站相關聯的每個 Azure Repos Git 存放庫都有共同作業分支。 (`main` 是預設的共同作業分支)。 使用者也可以按一下 [分支] 下拉式清單中的 [+ 新增分支] 來建立功能分支。 [新增分支] 窗格出現之後，請輸入功能分支的名稱。
 
 ![建立新的分支](media/author-visually/new-branch.png)
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 3a195f9dd74353734ff65f0d5f210d861fa29a26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632578"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331374"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>針對 Azure Data Factory 進行疑難排解
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -522,79 +522,30 @@ ms.locfileid: "92632578"
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>錯誤碼：200
-
-- **訊息** ：`Unexpected error happened: '%error;'.`
-
-- **原因** ︰發生內部服務問題。
-
-- **建議** ：連絡支援服務以尋求進一步的協助。
-
-### <a name="error-code-201"></a>錯誤碼：201
-
-- **訊息** ：`JobType %jobType; is not found.`
-
-- **原因** ︰ADF 不支援新的作業類型。
-
-- **建議** ：請連絡 ADF 支援小組以取得進一步的協助。
-
-### <a name="error-code-202"></a>錯誤碼：202
-
-- **訊息** ：`Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **原因** ︰錯誤訊息包含錯誤的詳細資料。
-
-- **建議** ：錯誤訊息的詳細資料應可協助您針對問題進行疑難排解。 如果沒有足夠的資訊，請連絡 ADF 支援服務以取得進一步的協助。
-
-### <a name="error-code-203"></a>錯誤碼：203
-
-- **訊息** ：`Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **原因** ︰錯誤訊息包含錯誤的詳細資料。
-
-- **建議** ：錯誤訊息的詳細資料應可協助您針對問題進行疑難排解。 如果沒有足夠的資訊，請連絡 ADF 支援服務以取得進一步的協助。
-
-### <a name="error-code-204"></a>錯誤碼：204
-
-- **訊息** ：`The resumption token is missing for runId '%runId;'.`
-
-- **原因** ︰發生內部服務問題。
-
-- **建議** ：連絡支援服務以尋求進一步的協助。
-
-### <a name="error-code-205"></a>錯誤碼：205
-
-- **訊息** ：`Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **原因** ︰建立 HDI 隨選叢集時發生錯誤。
-
-- **建議** ：連絡支援服務以尋求進一步的協助。
-
 ### <a name="error-code-206"></a>錯誤碼：206
 
-- **訊息** ：`The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **訊息** ：`The batch ID for Spark job is invalid. Please retry your job.`
 
 - **原因** ︰造成此錯誤的服務發生內部問題。
 
-- **建議** ：此問題可能是暫時性的。 請重試您的作業，如果問題持續發生，請連絡 ADF 支援服務以取得進一步的協助。
+- **建議** ：此問題可能是暫時性的。 請稍後再重試您的作業。
 
 ### <a name="error-code-207"></a>錯誤碼：207
 
-- **訊息** ：`Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **訊息** ：`Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **原因** ︰嘗試從主要儲存體帳戶判斷區域時發生內部錯誤。
 
-- **建議** ：請嘗試另一個儲存體。 如果此選項不是可接受的解決方案，請連絡 ADF 支援小組以取得進一步協助。
+- **建議** ：請嘗試另一個儲存體。 
 
 ### <a name="error-code-208"></a>錯誤碼：208
 
-- **訊息** ：`Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **訊息** ：`Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **原因** ︰嘗試讀取服務主體或具現化 MSI 驗證時發生內部錯誤。
 
 - **建議** ：請考慮提供有權在所提供訂用帳戶中建立 HDInsight 叢集的服務主體，然後再試一次。 確認[已正確設定「管理身分識別」](../hdinsight/hdinsight-managed-identities.md)。
 
-   如果此選項不是可接受的解決方案，請連絡 ADF 支援小組以取得進一步協助。
 
 ### <a name="error-code-2300"></a>錯誤碼：2300
 
@@ -612,7 +563,7 @@ ms.locfileid: "92632578"
 
 - **建議** ：此問題可能源自一般 HDInsight 連線能力或網路連線能力。 請先確認您可以從任何瀏覽器連線到 HDInsight Ambari UI。 然後檢查您的認證是否仍然有效。
    
-   如果您使用自我裝載整合執行階段 (IR)，請從已安裝自我裝載 IR 的 VM 或機器中執行此步驟。 然後再次嘗試從 Data Factory 提交作業。 如果仍然失敗，請連絡 Data Factory 小組以取得支援。
+   如果您使用自我裝載整合執行階段 (IR)，請從已安裝自我裝載 IR 的 VM 或機器中執行此步驟。 然後再次嘗試從 Data Factory 提交作業。
 
    如需詳細資訊，請參閱 [Ambari Web UI](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)。
 

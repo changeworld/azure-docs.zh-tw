@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740153"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331601"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在您開發的 mobile apps 中支援單一登入和應用程式保護原則
 
@@ -30,7 +30,7 @@ ms.locfileid: "92740153"
 
 此外，在您的應用程式中啟用單一登入，可將新式驗證（例如 [無密碼](../authentication/concept-authentication-passwordless.md)登入）隨附的新驗證機制解除鎖定。 使用者名稱和密碼是針對應用程式最受歡迎的攻擊媒介之一，而啟用 SSO 可讓您藉由強制執行條件式存取或無密碼登入，以新增額外的安全性或依賴更安全的驗證機制，來降低這項風險。 最後，啟用單一登入也會啟用 [單一登出](v2-protocols-oidc.md#single-sign-out)。這在將用於共用裝置的工作應用程式之類的情況下很有用。
 
-[應用程式保護原則 (應用程式) ](/mem/intune/apps/app-protection-policy) 確保組織的資料保持安全且包含在其中。 它們可讓公司管理及保護應用程式內的資料，並可讓您控制誰可以存取應用程式和其資料。 執行應用程式保護原則可讓您的應用程式將使用者連接到受條件式存取原則保護的資源，並安全地將資料傳輸到其他受保護的應用程式。 應用程式保護原則解除鎖定的案例包括要求 PIN 以開啟應用程式、控制應用程式之間的資料共用，以及防止將公司應用程式資料儲存到裝置上的個人儲存位置。
+[應用程式保護原則 (應用程式) ](/mem/intune/apps/app-protection-policy) 確保組織的資料保持安全且包含在其中。 它們可讓公司管理及保護應用程式內的資料，並可讓您控制誰可以存取應用程式和其資料。 執行應用程式保護原則可讓您的應用程式將使用者連接到受條件式存取原則保護的資源，並安全地將資料傳輸到其他受保護的應用程式。 應用程式保護原則解除鎖定的案例包括要求 PIN 以開啟應用程式、控制應用程式之間的資料共用，以及防止將公司應用程式資料儲存到個人儲存位置。
 
 ## <a name="implementing-single-sign-on"></a>執行單一登入
 

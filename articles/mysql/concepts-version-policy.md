@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 75e24f9437257769a3d9bfd69980a9b8606d0563
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423920"
+ms.locfileid: "94331799"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>適用於 MySQL 的 Azure 資料庫版本控制原則
 
@@ -48,12 +48,13 @@ ms.locfileid: "93423920"
 ## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中不支援已淘汰的 MySQL 引擎版本
 
 在每個 MySQL 資料庫版本的停用日期之後，如果您繼續執行已淘汰的版本，請注意下列限制：
-- 因為該社區將不會釋出任何進一步的 bug 修正或安全性修正，所以適用于 MySQL 的 Azure 將不會修補已淘汰的資料庫引擎是否有任何 bug 或安全性問題，或針對已淘汰的資料庫引擎採取安全性措施。 不過，Azure 會繼續定期針對主機、作業系統、容器和任何其他服務相關元件執行維護和修補。
+- 由於該社區將不會釋出任何進一步的 bug 修正或安全性修正程式，適用於 MySQL 的 Azure 資料庫不會修補已淘汰的資料庫引擎是否有任何 bug 或安全性問題，或是針對已淘汰的資料庫引擎採取安全性措施。 不過，Azure 會繼續定期針對主機、作業系統、容器和任何其他服務相關元件執行維護和修補。
 - 如果您可能遇到與 MySQL 資料庫相關的任何支援問題，我們可能無法提供您支援。 在這種情況下，您必須升級您的資料庫，才能讓我們提供任何支援。
 - 您將無法為已淘汰的版本建立新的資料庫伺服器。 不過，您將能夠執行時間點復原，並為現有的伺服器建立讀取複本。
 - 適用於 MySQL 的 Azure 資料庫所開發的新服務功能，僅適用于支援的資料庫伺服器版本。
 - 執行時間 Sla 僅適用于適用於 MySQL 的 Azure 資料庫服務相關的問題，而不是與 Database engine 相關的 bug 所造成的任何停機時間。  
-- 如果在淘汰的資料庫版本中識別出 MySQL 資料庫引擎弱點所造成的服務發生嚴重威脅，則 Azure 可能會選擇停止資料庫伺服器的計算節點，以先保護服務的安全。 在讓伺服器上線之前，系統會要求您升級伺服器。 在升級過程中，您的資料一律會使用在服務上執行的自動備份來保護，視需要可用來還原回較舊版本。
+- 如果在淘汰的資料庫版本中識別出 MySQL 資料庫引擎弱點所造成的服務發生嚴重威脅，則 Azure 可能會選擇停止資料庫伺服器的計算節點，以先保護服務。 在讓伺服器上線之前，系統會要求您升級伺服器。 在升級過程中，您的資料一律會使用在服務上執行的自動備份來保護，視需要可用來還原回較舊版本。 
+
 
 
 ## <a name="next-steps"></a>後續步驟

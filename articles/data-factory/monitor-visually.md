@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638103"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331446"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以視覺化方式監視 Azure Data Factory
 
@@ -23,17 +23,21 @@ ms.locfileid: "92638103"
 
 一旦在 Azure Data Factory 中建立並發佈管道後，您就可以將其與觸發程序建立關聯，或手動啟動特定回合。 您可以在 Azure Data Factory 使用者體驗中以原生方式監視所有管線回合。 若要開啟監視體驗，請在 [Azure 入口網站](https://portal.azure.com/)的資料處理站刀鋒視窗中選取 [監視及管理] 圖格。 如果您已經在 ADF UX 中，請按一下左側提要欄位上的 [監視] 圖示。
 
-所有的資料處理站回合都會顯示在瀏覽器的本地時區中。 如果您變更時區，所有日期/時間欄位都會調整至選取的時區。
+依預設，所有的 data factory 執行都會顯示在瀏覽器的本地時區中。 如果您變更時區，所有日期/時間欄位都會調整至選取的時區。
 
 ## <a name="monitor-pipeline-runs"></a>監視管線回合
 
-預設監視檢視是所選取時段中的管線回合清單。 系統會顯示下列資料行：
+預設監視視圖是在選取的時間週期內，觸發的管線執行清單。 您可以變更時間範圍，並依狀態、管線名稱或注釋進行篩選。 將滑鼠停留在特定的管線執行，以取得執行特定的動作，例如重新執行和取用報表。
+
+![用於監視管線回合的清單檢視](media/monitor-visually/pipeline-runs.png)
+
+[管線執行] 方格包含下列資料行：
 
 | **資料行名稱** | **說明** |
 | --- | --- |
 | 管線名稱 | 管線的名稱 |
-| 動作 | 可讓您檢視活動詳細資料、取消或重新執行管線的圖示 |
 | 回合開始 | 管線回合的開始日期和時間 (MM/DD/YYYY，HH:MM:SS AM/PM) |
+| 執行結束 | 管線執行的結束日期和時間 (MM/DD/YYYY，HH： MM： SS AM/PM)  |
 | Duration | 回合持續時間 (HH:MM:SS) |
 | 觸發方式 | 啟動管線的觸發程序名稱 |
 | 狀態 | **失敗** 、 **成功** 、 **進行中** 、 **已取消** 或 **已排入佇列** |
@@ -42,15 +46,23 @@ ms.locfileid: "92638103"
 | 錯誤 | 如果管線失敗，則回合錯誤 |
 | 回合識別碼 | 管線執行的識別碼 |
 
-![用於監視管線回合的清單檢視](media/monitor-visually/pipeline-runs.png)
-
 您必須手動選取 [重新整理] 按鈕，才能重新整理管線和活動回合的清單。 目前不支援自動重新整理。
 
 ![[重新整理] 按鈕](media/monitor-visually/refresh.png)
 
+若要查看 debug 執行的結果，請選取 [ **調試** 程式] 索引標籤。
+
+![選取 [檢視作用中偵錯回合] 圖示](media/iterative-development-debugging/view-debug-runs.png)
+
 ## <a name="monitor-activity-runs"></a>監視活動回合
 
-若要檢視每個管線回合的活動回合，請按一下位於 [活動] 資料行底下的 [檢視活動回合] 圖示。 清單檢視會顯示對應至每個管線回合的活動回合。
+若要深入瞭解特定管線執行的個別活動執行，請按一下管線名稱。
+
+![檢視活動執行](media/monitor-visually/view-activity-runs.png)
+
+清單檢視會顯示對應至每個管線回合的活動回合。 將滑鼠停留在特定活動執行上，以取得執行特定的資訊，例如 JSON 輸入、JSON 輸出和詳細的活動特定監視體驗。
+
+![用於監視活動回合的清單檢視](media/monitor-visually/activity-runs.png)
 
 | **資料行名稱** | **說明** |
 | --- | --- |
@@ -65,56 +77,36 @@ ms.locfileid: "92638103"
 | 錯誤 | 如果活動失敗，則回合錯誤 |
 | 回合識別碼 | 活動執行的識別碼 |
 
-![用於監視活動回合的清單檢視](media/monitor-visually/activity-runs.png)
+如果活動失敗，您可以按一下 [錯誤] 資料行中的圖示，以查看詳細的錯誤訊息。 
+
+![用於監視活動回合的清單檢視](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>將使用者屬性升階以便監視
 
-將任何管線活動屬性升階為使用者屬性，讓其變成您監視的實體。 例如，您可以將管線中複製活動的 **Source** 和 **Destination** 屬性升階為使用者屬性。 選取 [自動產生]，為複製活動產生 **Source** 和 **Destination** 使用者屬性。
-
-![建立使用者屬性](media/monitor-visually/monitor-user-properties-image1.png)
+將任何管線活動屬性升階為使用者屬性，讓其變成您監視的實體。 例如，您可以將管線中複製活動的 **Source** 和 **Destination** 屬性升階為使用者屬性。
 
 > [!NOTE]
 > 您最多只能將五個管線活動屬性升階為使用者屬性。
 
-建立使用者屬性之後，您就可以在監視清單檢視中進行監視。 如果複製活動的來源是資料表名稱，您可以將來源資料表名稱當作活動回合清單檢視中的資料行進行監視。
+![建立使用者屬性](media/monitor-visually/promote-user-properties.png)
 
-![活動執行清單沒有使用者屬性](media/monitor-visually/monitor-user-properties-image2.png)
+建立使用者屬性之後，您就可以在監視清單檢視中進行監視。
 
-![將使用者屬性的資料行新增到活動回合清單](media/monitor-visually/monitor-user-properties-image3.png)
+![將使用者屬性的資料行新增到活動回合清單](media/monitor-visually/choose-user-properties.png)
 
-![活動執行清單具有使用者屬性的資料行](media/monitor-visually/monitor-user-properties-image4.png)
+ 如果複製活動的來源是資料表名稱，您可以將來源資料表名稱當作活動回合清單檢視中的資料行進行監視。
 
-## <a name="configure-the-list-view"></a>設定清單檢視
+![活動執行清單具有使用者屬性的資料行](media/monitor-visually/view-user-properties.png)
 
-### <a name="order-and-filter"></a>排序和篩選
+## <a name="rerun-pipelines-and-activities"></a>重新執行管線和活動
 
-根據回合開始時間，切換管線回合是遞減還是遞增。 使用下列資料行篩選管線回合：
+若要重新執行先前從開始執行的管線，請將滑鼠停留在特定的管線執行上，然後選取 [ **重新** 執行]。 如果您選取多個管線，您可以使用 [ **重新** 執行] 按鈕來執行所有管線。
 
-| **資料行名稱** | **說明** |
-| --- | --- |
-| 管線名稱 | 依管線的名稱篩選。 |
-| 回合開始 |  判定所顯示管線回合的時間範圍。 選項包括針對 [過去 24 小時]、[上週] 和 [過去 30 天] 的快速篩選，或是選取自訂日期和時間。 |
-| 回合狀態 | 依狀態篩選回合： **成功** 、 **失敗** 、 **已排入佇列** 、 **已取消** 或 **進行中** 。 |
-| 註解 | 依套用至每個管線的標籤篩選 |
-| 執行 | 篩選您是否要查看重新執行的管線 |
+![重新執行管線](media/monitor-visually/rerun-pipeline.png)
 
-![用於篩選的選項](media/monitor-visually/filter.png)
+如果您想要從特定點開始重新執行，您可以從 [活動執行] 視圖執行此動作。 選取您要啟動的活動，然後選取 [ **從活動重新** 執行]。 
 
-### <a name="add-or-remove-columns"></a>新增或移除資料行
-以滑鼠右鍵按一下清單檢視標頭，然後選擇要顯示於清單檢視中的資料行。
-
-![資料行選項](media/monitor-visually/columns.png)
-
-### <a name="adjust-column-widths"></a>調整資料行寬度
-若要增加或減少清單檢視中的資料行寬度，請將滑鼠游標暫留於資料行標頭上方。
-
-## <a name="rerun-activities-inside-a-pipeline"></a>在管線中重新執行活動
-
-您現在可以在管線內重新執行活動。 選取 [檢視活動回合]，然後選取管線中您想要重新執行管線的活動。
-
-![檢視活動執行](media/monitor-visually/rerun-activities-image1.png)
-
-![選取活動執行](media/monitor-visually/rerun-activities-image2.png)
+![重新執行活動執行](media/monitor-visually/rerun-activity.png)
 
 ### <a name="rerun-from-failed-activity"></a>從失敗的活動重新執行
 
@@ -126,11 +118,11 @@ ms.locfileid: "92638103"
 
 您可以在清單檢視中檢視所有管線執行的重新執行歷程記錄。
 
-![檢視歷程記錄](media/monitor-visually/rerun-history-image1.png)
+![檢視歷程記錄](media/monitor-visually/rerun-history-1.png)
 
 您也可以檢視特定管線執行的重新執行歷程記錄。
 
-![檢視管線執行的歷程記錄](media/monitor-visually/rerun-history-image2.png)
+![檢視管線執行的歷程記錄](media/monitor-visually/view-rerun-history.png)
 
 ## <a name="monitor-consumption"></a>監視耗用量
 
@@ -149,22 +141,13 @@ ms.locfileid: "92638103"
 
 ## <a name="gantt-views"></a>Gantt 檢視
 
-使用甘特圖檢視，以快速視覺化您的管線和活動回合。
+甘特圖是一個可讓您查看一段時間範圍內的執行歷程記錄。 藉由切換至甘特圖視圖，您將會看到依名稱分組的所有管線執行，都會顯示為相對於執行所花時間的橫條。 您也可以依據您在管線上建立的附注/標記進行分組。 您也可以在活動執行層級取得甘特圖視圖。
 
-![甘特圖的範例](media/monitor-visually/gantt1.png)
-
-您可以查看每個管線的甘特圖，或依您在管線上建立的註譯/標籤進行分組。
-
-![甘特圖註釋](media/monitor-visually/gantt2.png)
+![甘特圖的範例](media/monitor-visually/select-gantt.png)
 
 橫條的長度會告知管線的持續時間。 您也可以選取橫條以查看更多詳細資料。
 
-![甘特圖持續時間](media/monitor-visually/gantt3.png)
-
-## <a name="guided-tours"></a>導覽
-選取左下方的 [資訊] 圖示。 然後選取 [導覽] 以取得監視管線及活動回合的逐步指示。
-
-![導覽](media/monitor-visually/guided-tours.png)
+![甘特圖持續時間](media/monitor-visually/view-gantt-run.png)
 
 ## <a name="alerts"></a>警示
 

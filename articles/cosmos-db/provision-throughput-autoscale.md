@@ -6,21 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 78fbdbb91925bbe9954cc7a17e194de9c78c6389
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ada16c98eef516056bd3c139bddc8187fb0fe38
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097340"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330609"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>使用自動調整輸送量來建立 Azure Cosmos 容器和資料庫
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 可讓您在資料庫和容器上設定標準 (手動) 或自動調整佈建輸送量。 本文說明自動調整佈建輸送量的優點和使用案例。 
+在 Azure Cosmos DB 中，您可以在資料庫和容器上設定標準 (手動) 或自動調整布建輸送量。 Azure Cosmos DB 中的自動調整布建輸送量，可讓您 **自動且立即調整資料庫或容器的輸送量 (RU/秒)** 。 輸送量會根據使用量進行調整，而不會影響工作負載的可用性、延遲、輸送量或效能。
 
-自動調整佈建輸送量非常適合有變動或無法預測流量模式的任務關鍵性工作負載，而且需要高效能和規模的 SLA。 
-
-使用自動調整時，Azure Cosmos DB 會根據使用量， **自動且立即擴充資料庫或容器的輸送量 (RU/秒)** ，而不會影響工作負載的可用性、延遲、輸送量或效能。 
+自動調整佈建輸送量非常適合有變動或無法預測流量模式的任務關鍵性工作負載，而且需要高效能和規模的 SLA。 本文說明自動調整佈建輸送量的優點和使用案例。
 
 ## <a name="benefits-of-autoscale"></a>自動調整的優點
 

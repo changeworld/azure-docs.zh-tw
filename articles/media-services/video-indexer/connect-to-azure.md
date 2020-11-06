@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558723"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330575"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -45,7 +45,7 @@ ms.locfileid: "92558723"
 
     當您將影片索引器帳戶連線到 Azure 時，會用到此成員。
 
-    此使用者應該是Azure 訂用帳戶中具有「擁有者」  角色或同時有「參與者」  和「使用者存取系統管理員」  角色的成員。 使用者可以使用兩個角色新增兩次。 一次使用「參與者」角色，另一次使用「使用者存取系統管理員」角色。 如需詳細資訊，請參閱 [查看使用者對 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/check-access)。
+    此使用者應該是Azure 訂用帳戶中具有「擁有者」角色或同時有「參與者」和「使用者存取系統管理員」角色的成員。 使用者可以使用兩個角色新增兩次。 一次使用「參與者」角色，另一次使用「使用者存取系統管理員」角色。 如需詳細資訊，請參閱 [查看使用者對 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/check-access)。
 
     ![存取控制](./media/create-account/access-control-iam.png)
 
@@ -53,9 +53,9 @@ ms.locfileid: "92558723"
 
 * 使用 Azure 入口網站註冊 EventGrid 資源提供者。
 
-    在  -> [subscription] -> [ResourceProviders]  。
+    在 [Azure 入口網站](https://portal.azure.com/)中，前往 [訂用帳戶] -> [subscription] -> [ResourceProviders]。
 
-    搜尋 **Microsoft.Media** 和 **Microsoft.EventGrid** 。 如果不是處於「已註冊」狀態，請按一下 [註冊]  。 這需要幾分鐘來完成註冊。
+    搜尋 **Microsoft.Media** 和 **Microsoft.EventGrid** 。 如果不是處於「已註冊」狀態，請按一下 [註冊]。 這需要幾分鐘來完成註冊。
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -72,12 +72,12 @@ ms.locfileid: "92558723"
 
     ![將影片索引子連線到 Azure](./media/create-account/new-account-on-azure-subscription.png)
 1. 從支援的位置選取 Azure 區域：美國西部 2、北歐或東亞。
-1. 在 [Azure 媒體服務帳戶]  下，選擇其中一個選項：
+1. 在 [Azure 媒體服務帳戶] 下，選擇其中一個選項：
 
-    * 若要建立新的媒體服務帳戶，請選取 [建立新的資源群組]  。 提供資源群組的名稱。
+    * 若要建立新的媒體服務帳戶，請選取 [建立新的資源群組]。 提供資源群組的名稱。
 
         Azure 會在您的訂用帳戶中建立新帳戶，包括新的 Azure 儲存體帳戶。  
-    * 若要使用現有的媒體服務帳戶，請選取 [使用現有資源]  。 從帳戶清單中，選取您的帳戶。
+    * 若要使用現有的媒體服務帳戶，請選取 [使用現有資源]。 從帳戶清單中，選取您的帳戶。
 
         媒體服務帳戶具有的區域必須與您的影片索引器帳戶相同。
 
@@ -123,7 +123,7 @@ ms.locfileid: "92558723"
     ![串流端點](./media/create-account/create-ams-account2.png)
 4. 若要讓影片索引子使用媒體服務 API 進行驗證，則必須建立 AD 應用程式。 下列步驟會引導您完成[利用 Azure 入口網站開始使用 Azure AD 驗證](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 驗證程序：
 
-    1. 在新的媒體服務帳戶中，選取 [API 存取]  。
+    1. 在新的媒體服務帳戶中，選取 [API 存取]。
     2. 選取[服務主體驗證方法](../previous/media-services-portal-get-started-with-aad.md)。
     3. 取得用戶端識別碼和用戶端祕密
 
@@ -144,7 +144,7 @@ ms.locfileid: "92558723"
 |---|---|
 |影片索引器帳戶區域|影片索引器帳戶區域的名稱。 為了獲得更佳的效能和較低的成本，強烈建議您指定 Azure 媒體服務資源和 Azure 儲存體帳戶所在區域的名稱。 |
 |Azure AD 租用戶|Azure AD 租用戶的名稱，例如 "contoso.onmicrosoft.com"。 租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。 尋找 **網域** 右邊的名稱。|
-|訂用帳戶識別碼|用來建立此連線的 Azure 訂用帳戶。 訂用帳戶識別碼可從 Azure 入口網站擷取。 在左面板中選取 [ **所有服務** ]，並搜尋「訂用帳戶」。 選取 [訂用帳戶]  ，並從訂用帳戶清單中選擇需要的識別碼。|
+|訂用帳戶識別碼|用來建立此連線的 Azure 訂用帳戶。 訂用帳戶識別碼可從 Azure 入口網站擷取。 在左面板中選取 [ **所有服務** ]，並搜尋「訂用帳戶」。 選取 [訂用帳戶]，並從訂用帳戶清單中選擇需要的識別碼。|
 |Azure 媒體服務資源群組名稱|您在其中建立媒體服務帳戶的資源群組名稱。|
 |媒體服務資源名稱|您在上一節中建立的 Azure 媒體服務帳戶名稱。|
 |應用程式識別碼|您在上一節中建立的 Azure AD 應用程式識別碼 (具有所指定媒體服務帳戶的權限)。|
@@ -184,8 +184,17 @@ ms.locfileid: "92558723"
 * 如果您自動連線，Video Indexer 會將媒體 **保留單元** 設為 10 個 S3 單元：
 
     ![媒體服務保留單元](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>自動建立影片索引子帳戶
 
-## <a name="next-steps"></a>下一步
+若要自動建立帳戶，有兩個步驟：
+ 
+1. 使用 Azure Resource Manager 建立 Azure 媒體服務帳戶 + Azure AD 應用程式。
+
+    請參閱 [媒體服務帳戶建立範本](https://github.com/Azure-Samples/media-services-v3-arm-templates)的範例。
+1. [以媒體服務和 Azure AD 應用程式呼叫建立帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)。
+
+## <a name="next-steps"></a>後續步驟
 
 您可以遵循中的指示，以程式設計方式與連線到 Azure 的試用帳戶和/或您的影片索引子帳戶互動： [使用 api](video-indexer-use-apis.md)。
 

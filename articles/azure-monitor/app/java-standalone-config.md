@@ -4,12 +4,12 @@ description: Azure 監視器 Application Insights JAVA 的設定選項
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 710347061f072fe66987d88852045986c00812c8
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377678"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331901"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure 監視器 Application Insights JAVA 的設定選項
 
@@ -24,7 +24,7 @@ ms.locfileid: "93377678"
 
 ```json
 {
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "connectionString": "InstrumentationKey=...",
   "role": {
     "name": "my cloud role name"
   }
@@ -55,7 +55,7 @@ ms.locfileid: "93377678"
 
 ```json
 {
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  "connectionString": "InstrumentationKey=..."
 }
 ```
 
@@ -306,3 +306,47 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 `maxSizeMb` 這是記錄檔變換之前的大小上限。
 
 `maxHistory` 這是除了目前的記錄檔) 之外， (保留的記錄檔數目。
+
+## <a name="an-example"></a>範例
+
+這只是一個範例，說明如何使用多個元件來顯示設定檔的樣子。
+請根據您的需求設定特定選項。
+
+```json
+{
+  "connectionString": "InstrumentationKey=...",
+  "role": {
+    "name": "my cloud role name"
+  },
+  "sampling": {
+    "percentage": 100
+  },
+  "jmxMetrics": [
+  ],
+  "customDimensions": {
+  },
+  "instrumentation": {
+    "logging": {
+      "level": "INFO"
+    },
+    "micrometer": {
+      "enabled": true
+    }
+  },
+  "httpProxy": {
+  },
+  "preview": {
+    "processors": [
+    ]
+  },
+  "selfDiagnostics": {
+    "destination": "file+console",
+    "level": "INFO",
+    "file": {
+      "path": "applicationinsights.log",
+      "maxSizeMb": 5,
+      "maxHistory": 1
+    }
+  }
+}
+```

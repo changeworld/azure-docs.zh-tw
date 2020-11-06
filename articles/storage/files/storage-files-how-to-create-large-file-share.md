@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069131"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330303"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用和建立大型檔案共用
 
-當您在儲存體帳戶上啟用大型檔案共用時，您的檔案共用最多可擴大至 100 TiB。 您可以針對現有的檔案共用，在現有的儲存體帳戶上啟用這種調整。
+當您在儲存體帳戶上啟用大型檔案共用時，您的檔案共用最多可擴大至 100 TiB，同時也增加了標準共用的 IOPS 和輸送量限制。 您也可以針對現有的檔案共用，在現有的儲存體帳戶上啟用這種調整。 如需詳細資訊，請參閱檔案 [共用和檔案調整目標](storage-files-scale-targets.md#azure-files-scale-targets) 。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -37,16 +37,16 @@ ms.locfileid: "89069131"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站中，選取 [所有服務]。 
-1. 在資源清單中，輸入 **儲存體帳戶**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [儲存體帳戶]  。
-1. 在出現的 [ **儲存體帳戶** ] 視窗上，選取 [ **新增**]。
+1. 在資源清單中，輸入 **儲存體帳戶** 。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [儲存體帳戶]  。
+1. 在出現的 [ **儲存體帳戶** ] 視窗上，選取 [ **新增** ]。
 1. 選取您將用來建立儲存體帳戶的訂用帳戶。
-1. 在 [資源群組]**** 欄位下方，選取 [新建]****。 為新的資源群組輸入名稱。
+1. 在 [資源群組] 欄位下方，選取 [新建]。 為新的資源群組輸入名稱。
 
     ![示範如何在入口網站中建立資源群組的螢幕擷取畫面](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. 接下來，輸入儲存體帳戶的名稱。 此名稱在整個 Azure 中必須是唯一的。 名稱的長度也必須是3到24個字元，而且只能有數位和小寫字母。
 1. 選取儲存體帳戶的位置。
-1. 將複寫設定為 **本機多餘的儲存體** 或 **區域多餘的儲存體**。
+1. 將複寫設定為 **本機多餘的儲存體** 或 **區域多餘的儲存體** 。
 1. 將這些欄位保留為其預設值：
 
    |欄位  |值  |
@@ -56,12 +56,12 @@ ms.locfileid: "89069131"
    |帳戶種類     |StorageV2 (一般用途 v2)         |
    |存取層     |經常性存取層         |
 
-1. 選取 [ **Advanced**]，然後選取 [**大型檔案共用**] 右邊的 [**啟用**] 選項按鈕。
+1. 選取 [ **Advanced** ]，然後選取 [ **大型檔案共用** ] 右邊的 [ **啟用** ] 選項按鈕。
 1. 選取 [檢閱 + 建立]  ，以檢閱您的儲存體帳戶設定並建立帳戶。
 
     ![Azure 入口網站中新儲存體帳戶的 [已啟用] 選項按鈕的螢幕擷取畫面](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 選取 [建立]****。
+1. 選取 [建立]  。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -94,8 +94,8 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，然後移至您要啟用大型檔案共用的儲存體帳戶。
 1. 開啟儲存體帳戶， **然後選取 [** 設定]。
-1. 選取 [在**大型檔案共用**上**啟用**]，然後選取 [**儲存**]。
-1. 選取 **[總覽**]，然後選取 [重新整理 **]。**
+1. 選取 [在 **大型檔案共用** 上 **啟用** ]，然後選取 [ **儲存** ]。
+1. 選取 **[總覽** ]，然後選取 [重新整理 **]。**
 
 ![在 Azure 入口網站中的現有儲存體帳戶上選取 [啟用] 選項按鈕](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
@@ -131,8 +131,8 @@ Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 建立大型檔案共用與建立標準檔案共用幾乎完全相同。 主要差異在於您可以將配額設定為 100 TiB。
 
-1. 從您的儲存體帳戶選取 [檔案 **共用**]。
-1. 選取 [ **+ 檔案共用**]。
+1. 從您的儲存體帳戶選取 [檔案 **共用** ]。
+1. 選取 [ **+ 檔案共用** ]。
 1. 輸入檔案共用的名稱。 您也可以設定您想要的配額大小，最多可達 100 TiB。 然後選取 [建立]。 
 
 ![顯示 [名稱] 和 [配額] 方塊的 Azure 入口網站 UI](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
@@ -165,9 +165,9 @@ New-AzStorageShare -Name $shareName -Context $ctx
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 從您的儲存體帳戶選取 [檔案 **共用**]。
-1. 以滑鼠右鍵按一下您的檔案共用，然後選取 [ **配額**]。
-1. 輸入您想要的新大小，然後選取 **[確定]**。
+1. 從您的儲存體帳戶選取 [檔案 **共用** ]。
+1. 以滑鼠右鍵按一下您的檔案共用，然後選取 [ **配額** ]。
+1. 輸入您想要的新大小，然後選取 **[確定]** 。
 
 ![具有現有檔案共用配額的 Azure 入口網站 UI](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 

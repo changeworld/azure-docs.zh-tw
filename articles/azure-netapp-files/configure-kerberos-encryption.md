@@ -12,20 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217043"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331884"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>為 Azure NetApp Files 設定 Nfsv4.1 4.1 Kerberos 加密
 
 Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、krb5i 和 krb5p) 搭配 AES-256 加密。 本文說明搭配 Kerberos 加密使用 Nfsv4.1 4.1 磁片區所需的設定。
 
-## <a name="requirements"></a>規格需求
+## <a name="considerations"></a>考量
+
+* Nfsv4.1 4.1 Kerberos 加密磁片區目前不支援 Azure Active Directory Domain Services (AADDS) 。 
+
+## <a name="requirements"></a>需求
 
 下列需求適用于 Nfsv4.1 4.1 用戶端加密： 
 
@@ -40,7 +44,7 @@ Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、
 
 1.  遵循 [建立適用于 Azure NetApp Files 的 NFS 磁片](azure-netapp-files-create-volumes.md) 區來建立 nfsv4.1 4.1 磁片區的步驟。   
 
-    在 [建立磁片區] 頁面上，將 [NFS 版本] 設定為 **nfsv4.1 4.1**，並將 [Kerberos] 設定為 [ **啟用**]。
+    在 [建立磁片區] 頁面上，將 [NFS 版本] 設定為 **nfsv4.1 4.1** ，並將 [Kerberos] 設定為 [ **啟用** ]。
 
     > [!IMPORTANT] 
     > 建立磁片區之後，您就無法修改 Kerberos 啟用選項。
@@ -61,7 +65,7 @@ Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、
 
     Kerberos 需要您在 Active Directory 中至少建立一個電腦帳戶。 您提供的帳戶資訊是用來建立 SMB *和* Nfsv4.1 4.1 Kerberos 磁片區的帳戶。 這台電腦是在磁片區建立期間自動建立的帳戶。
 
-2.  在 [ **Kerberos 領域**] 下，輸入 **AD 伺服器名稱** 和 **KDC IP** 位址。
+2.  在 [ **Kerberos 領域** ] 下，輸入 **AD 伺服器名稱** 和 **KDC IP** 位址。
 
     AD 伺服器和 KDC IP 可以是相同的伺服器。 這項資訊是用來建立 Azure NetApp Files 所使用的 SPN 電腦帳戶。 建立電腦帳戶之後，Azure NetApp Files 將會使用 DNS 伺服器記錄，視需要找出額外的 KDC 伺服器。 
 

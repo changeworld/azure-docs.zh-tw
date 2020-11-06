@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: dc03f2276af7c5f6121966a52d50e9c1b208d8cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/05/2020
+ms.openlocfilehash: 331c55a9f7a489aa58f9d3add7303dc18917215d
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094705"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331935"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -308,28 +308,90 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 除了共用存取簽章 (SAS) ，您可能還想特別限制哪些用戶端可呼叫邏輯應用程式。 例如，如果您使用 [AZURE API 管理](../api-management/api-management-key-concepts.md)來管理您的要求端點，您可以限制邏輯應用程式只接受來自 [您所建立 API 管理服務實例](../api-management/get-started-create-service-instance.md)之 IP 位址的要求。
 
+> [!NOTE]
+> 無論您指定的任何 IP 位址為何，您仍然可以使用 [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run) 要求或使用 API 管理，來執行具有要求型觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
+
+<a name="restrict-inbound-ip-portal"></a>
+
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>在 Azure 入口網站中限制輸入 IP 範圍
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
 1. 在邏輯應用程式功能表的 [設定] 底下，選取 [工作流程設定]。
 
-1. 在 [存取控制設定] > [允許的輸入 IP 位址] 底下，選取 [特定 IP 範圍]。
+1. 在 [ **存取控制** 設定] 區段的 [ **允許的輸入 IP 位址** ] 下，選擇您案例的路徑：
 
-1. 出現 [ **觸發程式的 ip 範圍** ] 方塊時，指定觸發程式可接受的 ip 位址範圍。 有效的 IP 範圍使用這些格式： *x.x.x.x/x* 或 *x.x.x.x-x.x.x.x*
+   * 若要使用內建的 [Azure Logic Apps 動作](../logic-apps/logic-apps-http-endpoint.md)，讓邏輯應用程式只能以嵌套的邏輯應用程式的方式來呼叫，請 **只選取其他 Logic Apps** ，此作業 *只* 會在您使用 **Azure Logic Apps** 動作來呼叫嵌套邏輯應用程式時使用。
+   
+     此選項會將空的陣列寫入您的邏輯應用程式資源，而且只需要使用內建 **Azure Logic Apps** 動作的父邏輯應用程式呼叫，就可以觸發嵌套邏輯應用程式。
 
-   例如，若要讓邏輯應用程式只能透過 HTTP 動作以嵌套邏輯應用程式的方式來呼叫，請使用 [ **特定 IP 範圍** ] 選項 (不是唯一) 的 [ **Logic Apps** ] 選項，並輸入父邏輯應用程式的 [輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
+   * 若要使用 HTTP 動作，讓邏輯應用程式只能以嵌套的應用程式來呼叫，請選取 **特定的 IP 範圍** ， *而不***只是其他 Logic Apps** 。 出現 [ **觸發程式的 IP 範圍** ] 方塊時，輸入父邏輯應用程式的 [輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 有效的 IP 範圍會使用下列格式： x.x.x.x. x */x* 或 *x.x.x.x*. x. x. x. x. x. x. x. x. x. x. x. x. x。
+   
+     > [!NOTE]
+     > 如果您使用 **唯一的其他 Logic Apps** 選項和 HTTP 動作來呼叫您的嵌套邏輯應用程式，則會封鎖呼叫，而您會收到「401未經授權」的錯誤。
+        
+   * 如果您想要限制來自其他 Ip 的輸入呼叫，請在 [ **觸發程式的 IP 範圍** ] 方塊出現時，指定觸發程式可接受的 ip 位址範圍。 有效的 IP 範圍會使用下列格式： x.x.x.x. x */x* 或 *x.x.x.x*. x. x. x. x. x. x. x. x. x. x. x. x. x。
 
-   不過，若要讓邏輯應用程式只能透過內建的 [Azure Logic Apps 動作](../logic-apps/logic-apps-http-endpoint.md)作為嵌套邏輯應用程式來呼叫，請改為選取 **其他 Logic Apps** 選項。 此選項會將空的陣列寫入您的邏輯應用程式資源，並要求只有來自其他「父系」邏輯應用程式的呼叫，才能透過內建的 **Azure Logic Apps** 動作來觸發嵌套邏輯應用程式。
-
-   > [!NOTE]
-   > 無論您指定的任何 IP 位址為何，您仍然可以使用 [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run) 要求或使用 API 管理，來執行具有要求型觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
+1. （選擇性）在 **[限制呼叫] 下，從執行歷程記錄取得輸入和輸出訊息至提供的 IP 位址** ，您可以在執行歷程記錄中指定可存取輸入和輸出訊息之輸入呼叫的 IP 位址範圍。
 
 <a name="restrict-inbound-ip-template"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>在 Azure Resource Manager 範本中限制輸入 IP 範圍
 
-如果您 [使用 Resource Manager 範本來自動部署邏輯應用程式](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，您可以使用 `accessControl` 區段，並在邏輯應用程式的資源定義中加入 `triggers` 和 `actions` 區段，然後以 *x.x.x.x/x* 或 *x.x.x.x-x.x.x.x* 格式來指定 IP 範圍，例如：
+如果您 [使用 Resource Manager 範本將邏輯應用程式的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，您可以使用區段，在邏輯應用程式的資源定義中指定允許的輸入 IP 位址範圍 `accessControl` 。 在本節中，您可以將區段包含在屬性中， `triggers` `actions` `contents` `allowedCallerIpAddresses` `addressRange` 並將屬性值設定為 *x.x.x.x/x* *x.x.x.x-x.x.x.x* . x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
+
+* 如果您的嵌套邏輯應用程式使用 **唯一的 Logic Apps** 選項，只允許來自使用 Azure Logic Apps 動作之其他邏輯應用程式的輸入呼叫，請將屬性設定 `addressRange` 為空陣列 ( **[]** ) 。
+
+* 如果您的嵌套邏輯應用程式針對其他輸入呼叫（例如使用 HTTP 動作的其他邏輯應用程式）使用 **特定的 ip 範圍** 選項，請將 `addressRange` 屬性設定為允許的 IP 範圍。
+
+此範例顯示的是嵌套邏輯應用程式的資源定義，只允許來自使用內建 Azure Logic Apps 動作之邏輯應用程式的輸入呼叫：
+
+```json
+{
+   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {},
+   "variables": {},
+   "resources": [
+      {
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               <workflow-definition>
+            },
+            "parameters": {
+            },
+            "accessControl": {
+               "triggers": {
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": []
+                     }
+                  ]
+               },
+               "actions": {
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": []
+                     }
+                  ]
+               }
+            },
+            "endpointsConfiguration": {}
+         }
+      }
+   ],
+   "outputs": {}
+}
+```
+
+此範例顯示可允許來自使用 HTTP 動作之邏輯應用程式的輸入呼叫之嵌套邏輯應用程式的資源定義：
 
 ```json
 {
@@ -361,7 +423,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
                   ]
                },
                "actions": {
-                  "allowedCallerIpAddresses": []
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": "192.168.12.0/23"
+                     }
+                  ]
                }
             },
             "endpointsConfiguration": {}
@@ -1080,7 +1146,7 @@ Authorization: OAuth realm="Photos",
 * [Azure 公用雲端中的隔離](../security/fundamentals/isolation-choices.md)
 * [Azure 中高度機密的 IaaS 應用程式安全性](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [適用于 Azure Logic Apps 的 Azure 安全性基準](../logic-apps/security-baseline.md)
 * [Azure Logic Apps 的自動化部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370020"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330932"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>使用音訊內容建立工具改進合成
 
@@ -48,8 +48,8 @@ ms.locfileid: "92370020"
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>步驟 3-使用您的 Azure 帳戶和語音資源登入音訊內容建立
 
-1. 取得 Azure 帳戶和語音資源之後，您可以按一下 [**開始**使用] 來登入[音訊內容建立](https://aka.ms/audiocontentcreation)。
-2. **語音資源**頁面將會顯示給您。 選取您要處理的語音資源。 按一下 [ **移至 Studio** ] 開始建立音訊。 您也可以按一下 [ **建立新**的]，在這裡建立新的語音資源。 當您下一次登入音訊內容建立工具時，我們會直接將您連結到目前語音資源下的音訊工作檔案。 
+1. 取得 Azure 帳戶和語音資源之後，您可以按一下 [ **開始** 使用] 來登入 [音訊內容建立](https://aka.ms/audiocontentcreation)。
+2. **語音資源** 頁面將會顯示給您。 選取您要處理的語音資源。 按一下 [ **移至 Studio** ] 開始建立音訊。 您也可以按一下 [ **建立新** 的]，在這裡建立新的語音資源。 當您下一次登入音訊內容建立工具時，我們會直接將您連結到目前語音資源下的音訊工作檔案。 
 3. 您可以隨時使用 [ **設定** ] 選項（位於頂端導覽）來修改您的語音資源。
 
 ## <a name="how-to-use-the-tool"></a>如何使用此工具？
@@ -110,7 +110,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 在您審核音訊輸出並對調整和調整感到滿意之後，就可以匯出音訊。
 
-1. 按一下 [ **匯出** ] 以建立音訊建立工作。 建議**匯出至音訊媒體**櫃，因為它支援長音訊輸出和完整音訊輸出體驗。 您也可以直接將音訊下載到本機磁片，但只有前10分鐘可用。
+1. 按一下 [ **匯出** ] 以建立音訊建立工作。 建議 **匯出至音訊媒體** 櫃，因為它支援長音訊輸出和完整音訊輸出體驗。 您也可以直接將音訊下載到本機磁片，但只有前10分鐘可用。
 2. 選擇您調整音訊的輸出格式。 以下提供支援的格式清單和取樣率。
 3. 您可以在 [ **匯出** 工作] 索引標籤上查看工作的狀態。如果工作失敗，請參閱詳細資訊頁面以取得完整的報告。
 4. 當工作完成時，您可以在 [ **音訊媒體** 櫃] 索引標籤上下載音訊。
@@ -131,34 +131,34 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 遵循下列步驟將使用者新增至語音資源，讓他們可以使用音訊內容建立。
 
-1. 搜尋 Azure 入口網站中的 **認知服務** ，選取您要新增使用者的語音資源。
+1. 搜尋 [Azure 入口網站](https://portal.azure.com/)中的 **認知服務** ，選取您要新增使用者的語音資源。
 2. 按一下 [存取控制 (IAM)]。 按一下 [角色指派] 索引標籤以檢視此訂用帳戶的所有角色指派。
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="微調文字轉語音輸出所需步驟的圖表":::
+    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="[角色指派] 索引標籤":::
 1. 按一下 [新增] > [新增角色指派]，以開啟 [新增角色指派] 窗格。 在 [角色] 下拉式清單中，選取 [ **認知服務] 使用者** 角色。 如果您想要授與使用者此語音資源的擁有權，您可以選取 [ **擁有** 者] 角色。
 1. 在清單中，選取使用者。 如果您在清單中看不到使用者，您可以在 [選取] 方塊中輸入，以在目錄中搜尋顯示名稱和電子郵件地址。 如果使用者不在此目錄中，您可以輸入 Azure active directory) 所信任的使用者 [Microsoft 帳戶](https://account.microsoft.com/account) (。
 1. 按一下 [儲存] 以指派角色。 幾分鐘後，就會在語音資源範圍將認知服務使用者角色指派給使用者。
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="微調文字轉語音輸出所需步驟的圖表":::
+    :::image source="media/audio-content-creation/add-role-first.png" alt-text="[新增角色] 對話方塊":::
 
-1. 您新增的使用者將會收到邀請電子郵件。 按一下 [**接受邀請**  >  **接受] 以加入 Azure**後，他們就可以使用[音訊內容建立](https://aka.ms/audiocontentcreation)。
+1. 您新增的使用者將會收到邀請電子郵件。 按一下 [ **接受邀請**  >  **接受] 以加入 Azure** 後，他們就可以使用 [音訊內容建立](https://aka.ms/audiocontentcreation)。
 
 相同語音資源中的使用者將會在音訊內容建立 studio 中看到彼此的工作。 如果您想要讓每位使用者在音訊內容建立中具有唯一和私用的工作場所，請為每位使用者 [建立新的語音資源](#step-2---create-a-speech-resource) ，並為每位使用者提供語音資源的唯一存取權。 
 
 ### <a name="remove-users-from-a-speech-resource"></a>從語音資源移除使用者
 1. 搜尋 Azure 入口網站中的 **認知服務** ，選取您要從中移除使用者的語音資源。
 2. 按一下 [存取控制 (IAM)]。 按一下 [ **角色指派** ] 索引標籤，以查看此語音資源的所有角色指派。
-3. 選取您要移除的使用者，然後按一下**Remove**  >  **[移除確定]**。
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="微調文字轉語音輸出所需步驟的圖表":::
+3. 選取您要移除的使用者，然後按一下 **Remove**  >  **[移除確定]** 。
+    :::image source="media/audio-content-creation/remove-user.png" alt-text="[移除] 按鈕":::
 
 ### <a name="enable-users-to-grant-access"></a>讓使用者授與存取權
 如果您想要讓其中一個使用者授與其他使用者的存取權，您必須為使用者提供語音資源的「擁有者」角色，並將使用者設定為「Azure 目錄讀者」。 
 1. 將使用者新增為語音資源的擁有者。 瞭解 [如何將使用者新增至語音資源](#add-users-to-a-speech-resource)。
-    :::image source="media/audio-content-creation/add-role.png" alt-text="微調文字轉語音輸出所需步驟的圖表":::
-1. 選取左上方的折迭功能表。 按一下 [ **Azure Active Directory**]，然後按一下 [ **使用者**]。
-1. 搜尋使用者的 Microsoft 帳戶，然後移至使用者的詳細資料頁面。 按一下 [ **指派的角色**]。
-1. 按一下 [**新增指派**  ->  **目錄讀取器**]。
+    :::image source="media/audio-content-creation/add-role.png" alt-text="角色擁有者欄位":::
+1. 選取左上方的折迭功能表。 按一下 [ **Azure Active Directory** ]，然後按一下 [ **使用者** ]。
+1. 搜尋使用者的 Microsoft 帳戶，然後移至使用者的詳細資料頁面。 按一下 [ **指派的角色** ]。
+1. 按一下 [ **新增指派**  ->  **目錄讀取器** ]。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [長音訊 API](https://aka.ms/long-audio-api)
 

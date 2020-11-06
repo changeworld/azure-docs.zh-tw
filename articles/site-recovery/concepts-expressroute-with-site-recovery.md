@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367987"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330252"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute 搭配 Azure Site Recovery
 
@@ -31,7 +31,7 @@ ExpressRoute 線路有多個相關聯的路由網域。 請在[這裡](../expres
 
 Azure Site Recovery 能夠針對內部部署的 [Hyper-V 虛擬機器](hyper-v-azure-architecture.md)、[VMware 虛擬機器](vmware-azure-architecture.md)和[實體伺服器](physical-azure-architecture.md)進行災害復原並移轉到 Azure。 針對所有內部部署到 Azure 的案例，會將複寫資料傳送到並儲存於 Azure 儲存體帳戶。 在複寫期間，您不需支付任何虛擬機器費用。 當您容錯移轉到 Azure 時，Site Recovery 會自動建立 Azure IaaS 虛擬機器。
 
-Site Recovery 會透過公用端點，將資料複寫到目標 Azure 區域上的 Azure 儲存體帳戶或複本受控磁片。 若要使用 ExpressRoute 進行 Site Recovery 複寫流量，您可以使用 [Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ，或現有的 [公用對等互連](../expressroute/about-public-peering.md) (已針對新的建立) 淘汰。 Microsoft 對等互連是建議用於複寫的路由網域。 請注意，不支援透過私人對等互連進行複寫。
+Site Recovery 會透過公用端點，將資料複寫到目標 Azure 區域上的 Azure 儲存體帳戶或複本受控磁片。 若要使用 ExpressRoute 進行 Site Recovery 複寫流量，您可以使用 [Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ，或現有的 [公用對等互連](../expressroute/about-public-peering.md) (已針對新的建立) 淘汰。 Microsoft 對等互連是建議用於複寫的路由網域。 請注意，只有在 [啟用保存庫的私人端點](hybrid-how-to-enable-replication-private-endpoints.md)時，才會透過私人對等互連來支援複寫。
 
 確定也符合設定伺服器的 [網路需求](vmware-azure-configuration-server-requirements.md#network-requirements) 。 組態伺服器需要連線到特定 URL，才能進行 Site Recovery 複寫的協調流程。 ExpressRoute 無法用於此連線。 
 

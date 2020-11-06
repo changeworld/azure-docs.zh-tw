@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226509"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330983"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求
 
@@ -28,7 +28,7 @@ ms.locfileid: "89226509"
 
 本文說明如何使用要求觸發程式和回應動作，讓您的邏輯應用程式可以接收和回應傳入的呼叫。
 
-如需對邏輯應用程式進行撥入電話的加密、安全性和授權的相關資訊（例如 [傳輸層安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) ，或 Azure Active Directory [ (Open Authentication Azure AD ](../active-directory/develop/index.yml)，請參閱 [以要求為基礎的觸發程式之輸入呼叫的安全存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+如需對邏輯應用程式進行輸入呼叫的安全性、授權和加密的詳細資訊（例如 [傳輸層安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) 、使用 Azure API 管理來公開邏輯應用 [程式，或 ](../active-directory/develop/index.yml)限制發出輸入呼叫的 IP 位址，請參閱 [對要求型觸發程式進行輸入呼叫的安全存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,8 +42,7 @@ ms.locfileid: "89226509"
 
 此內建觸發程式會建立可透過 HTTPS *只* 處理輸入要求的手動可呼叫端點。 當呼叫端將要求傳送至此端點時， [要求觸發](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) 程式會引發並執行邏輯應用程式。 如需如何呼叫此觸發程式的詳細資訊，請參閱 [在 Azure Logic Apps 中呼叫、觸發或使用 HTTPS 端點來嵌套工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
-您的邏輯應用程式只會在 [有限的時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)內將輸入要求保持開啟狀態。 假設您的邏輯應用程式包含 [回應動作](#add-response)，如果您的邏輯應用程式未在這段時間過後將回應傳回給呼叫者，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 狀態傳回給呼叫者。 如果您的邏輯應用程式未包含回應動作， 
-> 邏輯應用程式會立即將 `202 ACCEPTED` 狀態傳回給呼叫者。
+您的邏輯應用程式只會在 [有限的時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)內將輸入要求保持開啟狀態。 假設您的邏輯應用程式包含 [回應動作](#add-response)，如果您的邏輯應用程式未在這段時間過後將回應傳回給呼叫者，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 狀態傳回給呼叫者。 如果您的邏輯應用程式未包含回應動作，您的邏輯應用程式會立即將 `202 ACCEPTED` 狀態傳回給呼叫者。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
 
@@ -154,9 +153,9 @@ ms.locfileid: "89226509"
 
 1. 若要檢查輸入呼叫是否有符合指定架構的要求本文，請遵循下列步驟：
 
-   1. 在要求觸發程式的標題列中，選取省略號按鈕 (**...**) 。
+   1. 在要求觸發程式的標題列中，選取省略號按鈕 ( **...** ) 。
 
-   1. 在觸發程式的設定中，開啟 **架構驗證**，然後選取 [ **完成**]。
+   1. 在觸發程式的設定中，開啟 **架構驗證** ，然後選取 [ **完成** ]。
 
       如果撥入電話的要求本文不符合您的架構，則觸發程式會傳回 `HTTP 400 Bad Request` 錯誤。
 
@@ -195,6 +194,8 @@ ms.locfileid: "89226509"
 
    例如，您可以使用 [Postman](https://www.getpostman.com/) 之類的工具來傳送 HTTP POST。 如需此觸發程序的基礎 JSON 定義及如何呼叫此觸發程序的詳細資訊，請參閱這些主題：[要求觸發程序類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure Logic Apps 中使用 HTTP 端點來呼叫、觸發或巢狀工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
+如需對邏輯應用程式進行輸入呼叫的安全性、授權和加密的詳細資訊（例如 [傳輸層安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) 、使用 Azure API 管理來公開邏輯應用 [程式，或 ](../active-directory/develop/index.yml)限制發出輸入呼叫的 IP 位址，請參閱 [對要求型觸發程式進行輸入呼叫的安全存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+
 ## <a name="trigger-outputs"></a>觸發程序輸出
 
 關於要求觸發程序的輸出，詳細資訊如下：
@@ -209,7 +210,7 @@ ms.locfileid: "89226509"
 
 ## <a name="add-a-response-action"></a>新增回應動作
 
-當您使用要求觸發程式來處理輸入要求時，您可以使用內建的 [回應動作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)來建立回應的模型，並將承載結果傳回給呼叫者。 您只能對要求觸發程式使用*回應動作。* 此組合與要求觸發程式和回應動作會建立 [要求-回應模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 迴圈和 Until 迴圈以及平行分支以外，您也可以在工作流程中的任何位置新增回應動作。
+當您使用要求觸發程式來處理輸入要求時，您可以使用內建的 [回應動作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)來建立回應的模型，並將承載結果傳回給呼叫者。 您只能對要求觸發程式使用 *回應動作。* 此組合與要求觸發程式和回應動作會建立 [要求-回應模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 迴圈和 Until 迴圈以及平行分支以外，您也可以在工作流程中的任何位置新增回應動作。
 
 > [!IMPORTANT]
 > 如果回應動作包含以下標頭，Logic Apps 會從產生的回應訊息中移除這些標頭，但不會顯示任何警告或錯誤：
@@ -232,7 +233,7 @@ ms.locfileid: "89226509"
 
    若要在步驟之間新增動作，請將指標移至這些步驟之間的箭頭上。 選擇出現的加號 ( **+** )，然後選取 [新增動作]。
 
-1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `response` 做為篩選準則，然後選取 **回應** 動作。
+1. 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，輸入 `response` 做為篩選準則，然後選取 **回應** 動作。
 
    ![選取回應動作](./media/connectors-native-reqres/select-response-action.png)
 

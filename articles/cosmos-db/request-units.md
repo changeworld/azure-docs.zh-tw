@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 52d7bc9ed4068d6a2e697cece7ca6cd0b12876c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ddbfb08370b73ef8fa023816a7362f671b33d3a0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085440"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331000"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的要求單位
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin 和資料表。 每個 API 都有它自己的一組資料庫作業。 這些作業的範圍可從簡單的點讀取和寫入到複雜查詢。 每個資料庫作業都會根據作業的複雜度來取用系統資源。
 
-所有資料庫作業的成本會由 Azure Cosmos DB 進行正規化，並以 *要求單位* (或 ru 表示（短) ）。 您可以將 ru 視為效能貨幣，以抽象化執行 Azure Cosmos DB 所支援之資料庫作業所需的系統資源（例如 CPU、IOPS 和記憶體）。
+所有資料庫作業的成本會由 Azure Cosmos DB 進行正規化，並以要求單位 (簡稱 RU) 表示。 要求單位是一種效能貨幣，可將執行 Azure Cosmos DB 所支援之資料庫作業所需的系統資源（例如 CPU、IOPS 和記憶體）抽象化。
 
 進行點讀取的成本 (亦即，1 KB 專案的識別碼和分割區索引鍵值) 的單一專案是1個要求單位 (或 1 RU) 。 所有其他資料庫作業同樣會使用 RU 來指派成本。 無論您使用哪種 API 與 Azure Cosmos 容器互動，成本始終由 RU 測量。 無論資料庫作業是寫入、點讀取或查詢，成本一律會以 ru 來測量。
 
@@ -79,7 +79,7 @@ Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 您所選擇的 [一致性模型](consistency-levels.md) 也會影響輸送量。 相較于較強的一致性層級，您可以取得大約2x 的讀取輸送量， (例如， *會話* 、 *一致前置* 詞和 *最終* 一致性) 相較于較強的一致性層級 (例如， *限定過期* 或 *強* 式一致性) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解如何[在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)。
 - 深入瞭解 [無伺服器的 Azure Cosmos DB](serverless.md)。

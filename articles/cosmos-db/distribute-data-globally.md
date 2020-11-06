@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 709c802b8b23a39a0f723db3ac7b4636a0c53930
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 45f4b00bcb3bc1c14d49ef1e79b258dc2008882c
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096762"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330643"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 來全域散發資料
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 現今的應用程式需要具有快速回應能力，且一律保持線上狀態。 為了達到低延遲和高可用性，這些應用程式的執行個體必須部署在接近使用者的資料中心內。 這些應用程式通常會部署在多個資料中心內，因此稱為全域散發的應用程式。 全域散發的應用程式需要全域散發的資料庫，這類資料庫可以透明方式複寫世界各地的資料，讓應用程式使用接近其使用者的資料複本。 
 
-Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲性、有彈性的輸送量延展性、妥善定義以保有資料一致性的語法，以及高可用性。 簡單地說，如果您的應用程式需要在世界各地都有快速的回應時間，而且必須永遠保持上線狀態，而且需要無限制且彈性的輸送量和儲存體調整能力，您應該在 Azure Cosmos DB 上建立您的應用程式。
+Azure Cosmos DB 是一種全域散發的資料庫系統，可讓您從資料庫的本機複本讀取和寫入資料。 Azure Cosmos DB 會以透明方式將資料複寫到與您 Cosmos 帳戶相關聯的所有區域。 Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲性、有彈性的輸送量延展性、妥善定義以保有資料一致性的語法，以及高可用性。 簡單地說，如果您的應用程式需要在世界各地都有快速的回應時間，而且必須永遠保持上線狀態，而且需要無限制且彈性的輸送量和儲存體調整能力，您應該在 Azure Cosmos DB 上建立您的應用程式。
 
 您可以將資料庫設定為全域散發，並且在任何可用的 Azure 區域中使用。 若要降低延遲，請將資料放在接近使用者的位置。 選擇所需的區域，取決於您應用程式能夠觸達的全域範圍以及使用者所在的位置。 Cosmos DB 會以透明方式將資料複寫到與您 Cosmos 帳戶相關聯的所有區域。 它會提供全域散發的 Azure Cosmos 資料庫和容器的單一系統映像，使您的應用程式可以在本機讀取和寫入。 
 

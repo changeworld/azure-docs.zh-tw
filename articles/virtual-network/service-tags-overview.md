@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2020
+ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 60d3607a543cac5b8ce71819eb60394d8b8827bf
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340255"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331106"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -28,6 +28,8 @@ ms.locfileid: "93340255"
 您可以使用服務標記來定義 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由在規則的適當 *來源* 或 *目的地* 欄位中指定服務標籤名稱（例如 **ApiManagement** ），您可以允許或拒絕對應服務的流量。
 
 您可以使用服務標籤進行網路隔離，以及在存取具有公用端點的 Azure 服務時，防止一般網際網路存取您的 Azure 資源。 建立輸入/輸出網路安全性群組規則，可拒絕進出於 **網際網路** 的流量，並允許 **AzureCloud** 或特定 Azure 服務的其他 [可用服務標籤](#available-service-tags)的輸入/輸出流量。
+
+![使用服務標籤來隔離 Azure 服務的網路](./media/service-tags-overview/service_tags.png)
 
 ## <a name="available-service-tags"></a>可用的服務標籤
 下表包含可在[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)規則中使用的所有服務標籤。

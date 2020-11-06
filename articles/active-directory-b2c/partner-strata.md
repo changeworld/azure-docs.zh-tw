@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376847"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330320"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>使用分層擴充 Azure AD B2C 以保護內部部署應用程式的教學課程
 
@@ -69,7 +69,7 @@ Maverics Identity Orchestrator 擴充 Azure AD B2C，以保護內部部署應用
 | 8. | 使用者現在已通過驗證，並可存取應用程式。|
 
 ## <a name="get-maverics-identity-orchestrator"></a>取得 Maverics Identity Orchestrator
-
+若要取得您將用來整合舊版內部部署應用程式與 Azure AD B2C 的軟體，請 [分層](https://www.strata.io/contact/)。 取得軟體之後，請依照下列步驟來判斷 Orchestrator 特定的必要條件，並執行必要的安裝和設定步驟。
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>設定您的 Azure AD B2C 租使用者
 
