@@ -40,6 +40,8 @@
           displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
         - name: 使用容器執行個體
           href: how-to/deploy-anomaly-detection-on-container-instances.md
+        - name: 認知服務容器文件
+          href: ../containers/index.yml
 - name: 概念
   items:
     - name: 異常偵測 API 最佳做法

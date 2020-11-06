@@ -70,6 +70,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: 使用容器執行個體
           href: deploy-form-recognizer-on-container-instances.md
+        - name: 認知服務容器文件
+          href: ../containers/index.yml
     - name: 備份和復原模型
       href: disaster-recovery.md
 - name: 參考

@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: 使用批次轉譯 API
           href: batch-transcription.md
-        - name: 評估發音
-          href: how-to-pronunciation-assessment.md
     - name: 教學課程
       items:
         - name: 辨識儲存在 Blob 儲存體中的語音
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: 容器常見問題集
           href: speech-container-faq.md
+        - name: 認知服務容器文件
+          href: ../containers/index.yml
 - name: 裝置
   items:
     - name: 語音裝置文件

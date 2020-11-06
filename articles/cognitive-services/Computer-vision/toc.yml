@@ -161,6 +161,8 @@
           href: spatial-analysis-zone-line-placement.md
         - name: 相機位置
           href: spatial-analysis-camera-placement.md
+    - name: 認知服務容器文件
+      href: ../containers/index.yml
 - name: 操作指南
   items:
     - name: 呼叫電腦視覺 API

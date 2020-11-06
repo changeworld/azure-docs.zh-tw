@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Azure 認知服務容器
+summary: Azure 認知服務提供數個容器，以便在內部部署使用 AI。 容器可讓您彈性地將認知服務帶入您的資料，以符合合規性、安全性或其他操作的原因。
+metadata:
+  title: Azure 認知服務容器
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: landing-page
+  ms.date: 10/27/2020
+  ms.author: aahi
+  ms.openlocfilehash: 28eb8450201280e58e24dd5ad9b8826165b614c3
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93328065"
+landingContent:
+- title: Azure 認知服務容器
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什麼是 Azure 認知服務容器？
+      url: ../cognitive-services-container-support.md
+    - text: 常見問題集
+      url: container-faq.md
+    - text: 容器映像標籤
+      url: container-image-tags.md
+- title: 容器配方
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 容器重複使用配方
+      url: container-reuse-recipe.md
+    - text: 在 Azure 容器執行個體上部署
+      url: azure-container-instance-recipe.md
+    - text: 在 Kubernetes 上部署
+      url: azure-kubernetes-recipe.md
+    - text: 透過 Docker Compose 部署
+      url: azure-kubernetes-recipe.md
+- title: 視覺容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../computer-vision/computer-vision-how-to-install-containers.md
+      text: 讀取 OCR
+    - url: ../computer-vision/spatial-analysis-container.md
+      text: 空間分析
+    - url: ../face/face-how-to-install-containers.md
+      text: 臉部
+    - url: ../form-recognizer/form-recognizer-container-howto.md
+      text: 表單辨識器
+- title: 語言容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+      text: 情感分析
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+      text: 關鍵片語擷取
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+      text: 文字語言偵測
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare
+      text: 健康情況的文字分析
+    - url: ../luis/luis-container-howto.md
+      text: LUIS 容器
+- title: 語音容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../speech-service/speech-container-howto.md?tabs=stt
+      text: 語音轉換文字
+    - url: ../speech-service/speech-container-howto.md?tabs=cstt
+      text: 自訂語音轉換文字
+    - url: ../speech-service/speech-container-howto.md?tabs=tts
+      text: 將文字轉換成語音
+    - url: ../speech-service/speech-container-howto.md?tabs=ctts
+      text: 自訂文字轉換語音
+    - url: ../speech-service/speech-container-howto.md?tabs=ntts
+      text: 類神經文字轉換語音
+    - url: ../speech-service/speech-container-howto.md?tabs=lid
+      text: 語音語言偵測
+- title: 決策容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../anomaly-detector/anomaly-detector-container-howto.md
+      text: 異常偵測器

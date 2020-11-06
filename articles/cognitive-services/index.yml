@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: ca210f144d56aa56ddbcb959e0240bd4816dc3af
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: b1aa2c098ead7086e670a92ce0657aa5a20a2b61
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92547107"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93323105"
 highlightedContent:
   items:
   - title: 認知服務是什麼？
@@ -118,9 +118,12 @@ conceptualContent:
   - title: 認知服務容器
     summary: Azure 認知服務中的容器支援可讓開發人員使用 Azure 中可用的相同豐富 API，並同時享有 Docker 容器所帶來的部署及裝載服務彈性。
     links:
+    - url: ./containers/index.yml
+      itemType: overview
+      text: 認知服務容器文件
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: 認知服務容器
+      text: 什麼是認知服務容器？
     - url: ./containers/container-reuse-recipe.md
       itemType: learn
       text: 建立要重複使用的容器

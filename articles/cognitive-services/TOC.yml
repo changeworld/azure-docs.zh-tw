@@ -66,6 +66,8 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: 認知服務容器文件
+      href: containers/index.yml
 - name: 巨量資料
   items:
     - name: 巨量資料的認知服務
