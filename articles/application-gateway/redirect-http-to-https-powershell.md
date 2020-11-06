@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: c4d1d16d07aaf92a0bc3cc365ac094893fc41c79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86eaa645cd6a81b9180d1241695240a71aa8202d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446531"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397258"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>使用 Azure PowerShell 以建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
-您可以使用 Azure PowerShell 來建立具有 TLS/SSL 終止憑證的 [應用程式閘道](overview.md) 。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
+您可以使用 Azure PowerShell 來建立具有 TLS/SSL 終止憑證的 [應用程式閘道](overview.md) 。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)。 
 
 在本文中，您將學會如何：
 
@@ -34,7 +34,7 @@ ms.locfileid: "91446531"
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
-若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在此教學課程中，您要使用 [New-selfsignedcertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 您可以使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。
+若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在此教學課程中，您要使用 [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 您可以使用 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。
 
 ```powershell
 New-SelfSignedCertificate `
@@ -64,7 +64,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用[>new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)建立名為*myResourceGroupAG*的 Azure 資源群組。 
+資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [>new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)建立名為 *myResourceGroupAG* 的 Azure 資源群組。 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -162,7 +162,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-現在您已建立必要的支援資源，請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 為名為 myAppGateway** 的應用程式閘道指定參數，然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 搭配憑證加以建立。
+現在您已建立必要的支援資源，請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 為名為 myAppGateway 的應用程式閘道指定參數，然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 搭配憑證加以建立。
 
 ```powershell
 $sku = New-AzApplicationGatewaySku `
@@ -202,7 +202,7 @@ Add-AzApplicationGatewayFrontendPort `
 
 ### <a name="add-the-http-listener"></a>新增 HTTP 接聽程式
 
-使用[>new-azapplicationgatewayHTTPlistener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)，將名為*myListener*的 HTTP 接聽程式新增至應用程式閘道。
+使用 [>new-azapplicationgatewayHTTPlistener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)，將名為 *myListener* 的 HTTP 接聽程式新增至應用程式閘道。
 
 ```powershell
 $fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
@@ -327,7 +327,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![安全警告](./media/redirect-http-to-https-powershell/application-gateway-secure.png)
 
-若要在使用自我簽署憑證時接受安全性警告，請依序按一下 [詳細資料]**** 與 [繼續瀏覽網頁]****。 接著會顯示受保護的 IIS 網站，如下列範例所示：
+若要在使用自我簽署憑證時接受安全性警告，請選取 [ **詳細資料** ]，然後 **移至網頁** 。 接著會顯示受保護的 IIS 網站，如下列範例所示：
 
 ![在應用程式閘道中測試基底 URL](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 

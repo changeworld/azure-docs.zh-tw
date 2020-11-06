@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b34c559c8320961a2e96a663d88001400c572d3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360152"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397513"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>建立應用程式閘道的自訂錯誤頁面
 
@@ -49,7 +49,7 @@ ms.locfileid: "91360152"
 1. 在入口網站中瀏覽至 [應用程式閘道]，然後選擇應用程式閘道。
 
     ![螢幕擷取畫面顯示應用程式閘道的 [總覽] 頁面。](media/custom-error/ag-overview.png)
-2. 按一下 [接聽程式]****，然後瀏覽至您要指定錯誤頁面的特定接聽程式。
+2. 按一下 [接聽程式]，然後瀏覽至您要指定錯誤頁面的特定接聽程式。
 
     ![應用程式閘道接聽程式](media/custom-error/ag-listener.png)
 3. 在接聽程式層級上設定 403 WAF 錯誤的自訂錯誤頁面或 502 維護頁面。
@@ -57,7 +57,7 @@ ms.locfileid: "91360152"
     > [!NOTE]
     > 目前不支援從 Azure 入口網站建立全域層級的自訂錯誤頁面。
 
-4. 為給定的錯誤狀態碼指定可公開存取的 Blob URL，然後按一下 [儲存]****。 應用程式閘道現在已設定自訂錯誤頁面。
+4. 為給定的錯誤狀態碼指定可公開存取的 Blob URL，然後按一下 [儲存]。 應用程式閘道現在已設定自訂錯誤頁面。
 
    ![應用程式閘道錯誤碼](media/custom-error/ag-error-codes.png)
 
@@ -81,7 +81,7 @@ $listener01 = Get-AzApplicationGatewayHttpListener -Name <listener-name> -Applic
 $updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
 ```
 
-如需詳細資訊，請參閱 [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) 和 [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)。
+如需詳細資訊，請參閱 [Add-AzApplicationGatewayCustomError](/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) 和 [Add-AzApplicationGatewayHttpListenerCustomError](/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)。
 
 ## <a name="next-steps"></a>後續步驟
 

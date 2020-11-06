@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9606bfe8b4719ed4ab3c51fc177f331b754f7a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595245"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397045"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 以建立包含 URL 路徑型重新導向的應用程式閘道
 
-您可以使用 Azure PowerShell，在建立[應用程式閘道](application-gateway-introduction.md)時設定 [URL 型路由規則](application-gateway-url-route-overview.md)。 在本文中，您會使用  [虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)來建立後端集區。 然後，您可以建立 URL 路由規則，確保 Web 流量會重新導向到適當的後端集區。
+您可以使用 Azure PowerShell，在建立[應用程式閘道](./overview.md)時設定 [URL 型路由規則](./url-route-overview.md)。 在本文中，您會使用  [虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)來建立後端集區。 然後，您可以建立 URL 路由規則，確保 Web 流量會重新導向到適當的後端集區。
 
 在本文中，您將學會如何：
 
@@ -173,7 +173,7 @@ New-AzApplicationGateway `
 
 ### <a name="add-backend-pools-and-ports"></a>新增後端集區和連接埠
 
-您可以使用 [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 將後端集區新增至您的應用程式閘道。 在此範例中，會建立 *imagesBackendPool* 和 *videoBackendPool*。 您需使用 [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) 來新增集區的前端連接埠。 然後使用 [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) 來提交對應用程式閘道進行的變更。
+您可以使用 [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 將後端集區新增至您的應用程式閘道。 在此範例中，會建立 *imagesBackendPool* 和 *videoBackendPool* 。 您需使用 [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) 來新增集區的前端連接埠。 然後使用 [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) 來提交對應用程式閘道進行的變更。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -390,7 +390,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在此範例中，您要建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 您所建立的擴展集名為 myvmss1**、myvmss2** 和 myvmss3**。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。 當您設定 IP 設定時，要將擴展集指派給後端集區。
+在此範例中，您要建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 您所建立的擴展集名為 myvmss1、myvmss2 和 myvmss3。 每個擴展集都會包含兩個您安裝 IIS 的虛擬機器執行個體。 當您設定 IP 設定時，要將擴展集指派給後端集區。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -518,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入了解應用程式閘道的用途](application-gateway-introduction.md)
+> [深入了解應用程式閘道的用途](./overview.md)

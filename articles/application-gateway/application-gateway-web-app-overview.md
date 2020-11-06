@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6ea6f348d796962141bd39ff858d891a29a2f6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628681"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397683"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>應用程式閘道支援多租使用者後端，例如 App service
 
@@ -28,11 +28,11 @@ ms.locfileid: "84628681"
 
 ## <a name="override-host-header-in-the-request"></a>覆寫要求中的主機標頭
 
-指定主機覆寫的功能定義于 [HTTP 設定](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) 中，並可在規則建立期間套用至任何後端集區。 支援下列兩種覆寫多租使用者後端主機標頭和 SNI 延伸的方法：
+指定主機覆寫的功能定義于 [HTTP 設定](./configuration-overview.md#http-settings) 中，並可在規則建立期間套用至任何後端集區。 支援下列兩種覆寫多租使用者後端主機標頭和 SNI 延伸的方法：
 
 - 能夠將主機名稱設定為在 HTTP 設定中明確輸入的固定值。 這項功能可確保針對套用特定 HTTP 設定的後端集區，將所有流量的主機標頭覆寫為此值。 使用端對端 TLS 時，會在 SNI 擴充功能中使用此覆寫的主機名稱。 這項功能可促成以下案例：其中的後端集區伺服器陣列預期會有不同於連入客戶主機標頭的主機標頭。
 
-- 從後端集區成員的 IP 或 FQDN 衍生主機名稱的功能。 如果使用從個別後端集區成員衍生主機名稱的選項進行設定，HTTP 設定也會提供從後端集區成員的 FQDN 動態挑選主機名稱的選項。 使用端對端 TLS 時，此主機名稱衍生自 FQDN，並用於 SNI 擴充功能。 這項功能可促成以下案例：其中的後端集區可以有兩個或多個多租用戶 PaaS 服務，例如 Azure Web 應用程式，而且每個成員的要求主機標頭包含衍生自其 FQDN 的主機名稱。 針對此案例，我們會使用 HTTP 設定中的參數，稱為 [從後端位址挑選主機名稱](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) ，這會將原始要求中的主機標頭動態覆寫至後端集區中提及的主機標頭。  例如，如果您的後端集區 FQDN 包含 "contoso11.azurewebsites.net" 和 "contoso22.azurewebsites.net"，則當要求傳送到適當的後端伺服器時，contoso.com 的原始要求主機標頭會被覆寫為 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net。 
+- 從後端集區成員的 IP 或 FQDN 衍生主機名稱的功能。 如果使用從個別後端集區成員衍生主機名稱的選項進行設定，HTTP 設定也會提供從後端集區成員的 FQDN 動態挑選主機名稱的選項。 使用端對端 TLS 時，此主機名稱衍生自 FQDN，並用於 SNI 擴充功能。 這項功能可促成以下案例：其中的後端集區可以有兩個或多個多租用戶 PaaS 服務，例如 Azure Web 應用程式，而且每個成員的要求主機標頭包含衍生自其 FQDN 的主機名稱。 針對此案例，我們會使用 HTTP 設定中的參數，稱為 [從後端位址挑選主機名稱](./configuration-http-settings.md#pick-host-name-from-back-end-address) ，這會將原始要求中的主機標頭動態覆寫至後端集區中提及的主機標頭。  例如，如果您的後端集區 FQDN 包含 "contoso11.azurewebsites.net" 和 "contoso22.azurewebsites.net"，則當要求傳送到適當的後端伺服器時，contoso.com 的原始要求主機標頭會被覆寫為 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net。 
 
   ![Web 應用程式案例](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -59,8 +59,8 @@ ms.locfileid: "84628681"
 - 您已在 App Service 上設定重新導向。 重新導向可以像在要求中加上尾端斜線一樣簡單。
 - 您有 Azure AD 的驗證會導致重新導向。
 
-若要解決這類情況，請參閱針對重新導向 [至 App service 的 URL 問題進行疑難排解](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)。
+若要解決這類情況，請參閱針對重新導向 [至 App service 的 URL 問題進行疑難排解](./troubleshoot-app-service-redirection-app-service-url.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-瞭解如何設定具有多租使用者應用程式的應用程式閘道，例如 Azure App 服務 web 應用程式作為後端集區成員，方法是造訪 [設定 App Service web 應用程式與應用程式閘道](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)
+瞭解如何設定具有多租使用者應用程式的應用程式閘道，例如 Azure App 服務 web 應用程式作為後端集區成員，方法是造訪 [設定 App Service web 應用程式與應用程式閘道](./configure-web-app-portal.md)

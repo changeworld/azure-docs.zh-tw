@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808027"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397496"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>使用應用程式閘道搭配入口網站來設定端對端 TLS
 
@@ -31,7 +31,7 @@ ms.locfileid: "84808027"
 
 若要進行端對端 TLS 加密，應用程式閘道中必須允許正確的後端伺服器。 若要允許此存取，請將後端伺服器的公開憑證（也稱為驗證憑證 (v1) 或受信任的根憑證 (v2) ）上傳至應用程式閘道。 新增憑證可確保應用程式閘道只會與已知的後端實例通訊。 此設定可進一步保護端對端通訊。
 
-若要深入瞭解，請參閱 [使用應用程式閘道的 tls 終止和端對端 Tls 總覽](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。
+若要深入瞭解，請參閱 [使用應用程式閘道的 tls 終止和端對端 Tls 總覽](./ssl-overview.md)。
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>使用端對端 TLS 建立新的應用程式閘道
 
@@ -39,19 +39,19 @@ ms.locfileid: "84808027"
 
 ### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>建立新的應用程式閘道時啟用 TLS 終止
 
-若要深入瞭解，請參閱 [在建立新的應用程式閘道時啟用 TLS 終止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
+若要深入瞭解，請參閱 [在建立新的應用程式閘道時啟用 TLS 終止](./create-ssl-portal.md)。
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>新增後端伺服器的驗證/根憑證
 
 1. 選取 [所有資源]  ，然後選取 [myAppGateway]  。
 
-2. 從左側功能表中選取 [ **HTTP 設定** ]。 當您建立應用程式閘道時，Azure 會自動建立預設的 HTTP 設定 **appGatewayBackendHttpSettings**。 
+2. 從左側功能表中選取 [ **HTTP 設定** ]。 當您建立應用程式閘道時，Azure 會自動建立預設的 HTTP 設定 **appGatewayBackendHttpSettings** 。 
 
-3. 選取 [ **appGatewayBackendHttpSettings**]。
+3. 選取 [ **appGatewayBackendHttpSettings** ]。
 
-4. 在 [ **通訊協定**] 底下，選取 [ **HTTPS**]。 **後端驗證憑證或受信任的根憑證**的窗格隨即出現。
+4. 在 [ **通訊協定** ] 底下，選取 [ **HTTPS** ]。 **後端驗證憑證或受信任的根憑證** 的窗格隨即出現。
 
-5. 選取 [建立新的]****。
+5. 選取 [建立新的]。
 
 6. 在 [ **名稱** ] 欄位中，輸入適當的名稱。
 
@@ -67,7 +67,7 @@ ms.locfileid: "84808027"
 
    ![根憑證](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 
 ## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>為現有的應用程式閘道啟用端對端 TLS
 
@@ -84,14 +84,14 @@ ms.locfileid: "84808027"
 
 3. 根據您的需求，選取 [ **基本** ] 或 [ **多網站** ] 接聽程式。
 
-4. 在 [ **通訊協定**] 底下，選取 [ **HTTPS**]。 [ **憑證** ] 窗格隨即出現。
+4. 在 [ **通訊協定** ] 底下，選取 [ **HTTPS** ]。 [ **憑證** ] 窗格隨即出現。
 
 5. 上傳您想要用於用戶端與應用程式閘道之間 TLS 終止的 PFX 憑證。
 
    > [!NOTE]
-   > 基於測試目的，您可以使用自我簽署憑證。 不過，這不建議用於生產工作負載，因為它們較難管理且不是完全安全。 如需詳細資訊，請參閱 [建立自我簽署憑證](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)。
+   > 基於測試目的，您可以使用自我簽署憑證。 不過，這不建議用於生產工作負載，因為它們較難管理且不是完全安全。 如需詳細資訊，請參閱 [建立自我簽署憑證](./create-ssl-portal.md#create-a-self-signed-certificate)。
 
-6. 根據您的 **需求，新增接聽程式的其他**必要設定。
+6. 根據您的 **需求，新增接聽程式的其他** 必要設定。
 
 7. 選取 [確定]  以儲存。
 
@@ -99,13 +99,13 @@ ms.locfileid: "84808027"
 
 1. 選取 [所有資源]  ，然後選取 [myAppGateway]  。
 
-2. 從左側功能表中選取 [ **HTTP 設定** ]。 您可以在 [安全收件者] 清單中將憑證放在現有的後端 HTTP 設定中，或建立新的 HTTP 設定。  (在下一個步驟中，預設 HTTP 設定 **appGatewayBackendHttpSettings**的憑證會新增至安全收件者清單。 ) 
+2. 從左側功能表中選取 [ **HTTP 設定** ]。 您可以在 [安全收件者] 清單中將憑證放在現有的後端 HTTP 設定中，或建立新的 HTTP 設定。  (在下一個步驟中，預設 HTTP 設定 **appGatewayBackendHttpSettings** 的憑證會新增至安全收件者清單。 ) 
 
-3. 選取 [ **appGatewayBackendHttpSettings**]。
+3. 選取 [ **appGatewayBackendHttpSettings** ]。
 
-4. 在 [ **通訊協定**] 底下，選取 [ **HTTPS**]。 **後端驗證憑證或受信任的根憑證**的窗格隨即出現。 
+4. 在 [ **通訊協定** ] 底下，選取 [ **HTTPS** ]。 **後端驗證憑證或受信任的根憑證** 的窗格隨即出現。 
 
-5. 選取 [建立新的]****。
+5. 選取 [建立新的]。
 
 6. 在 [ **名稱** ] 欄位中，輸入適當的名稱。
 

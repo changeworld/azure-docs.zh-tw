@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335814"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397445"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>應用程式閘道輸入控制器的注釋 
 
@@ -72,7 +72,7 @@ spec:
 
 ## <a name="tls-redirect"></a>TLS 重新導向
 
-應用程式閘道 [可以設定](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) 為自動將 HTTP url 重新導向至其 HTTPS 對應專案。 當此注釋存在且已正確設定 TLS 時，Kubernetes 輸入控制器會使用重新導向設定來建立 [路由規則](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) ，並將變更套用至您的應用程式閘道。 所建立的重新導向將會是 HTTP `301 Moved Permanently` 。
+應用程式閘道 [可以設定](./redirect-overview.md) 為自動將 HTTP url 重新導向至其 HTTPS 對應專案。 當此注釋存在且已正確設定 TLS 時，Kubernetes 輸入控制器會使用重新導向設定來建立 [路由規則](./redirect-http-to-https-portal.md#add-a-routing-rule-with-a-redirection-configuration) ，並將變更套用至您的應用程式閘道。 所建立的重新導向將會是 HTTP `301 Moved Permanently` 。
 
 ### <a name="usage"></a>使用狀況
 

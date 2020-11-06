@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807880"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397207"
 ---
 # <a name="renew-application-gateway-certificates"></a>更新應用程式閘道憑證
 
@@ -22,11 +22,11 @@ ms.locfileid: "84807880"
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-若要從入口網站更新接聽程式憑證，請瀏覽至您的應用程式閘道接聽程式。 按一下有憑證需要更新的接聽程式，然後按一下 [更新或編輯選取的憑證]****。
+若要從入口網站更新接聽程式憑證，請瀏覽至您的應用程式閘道接聽程式。 按一下有憑證需要更新的接聽程式，然後按一下 [更新或編輯選取的憑證]。
 
 ![更新憑證](media/renew-certificate/ssl-cert.png)
 
-上傳新的 PFX 憑證並為其命名，輸入密碼，然後按一下 [儲存]****。
+上傳新的 PFX 憑證並為其命名，輸入密碼，然後按一下 [儲存]。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解如何使用 Azure 應用程式閘道來設定 TLS 卸載，請參閱[設定 Tls](application-gateway-ssl-portal.md)卸載
+若要瞭解如何使用 Azure 應用程式閘道來設定 TLS 卸載，請參閱[設定 Tls](./create-ssl-portal.md)卸載

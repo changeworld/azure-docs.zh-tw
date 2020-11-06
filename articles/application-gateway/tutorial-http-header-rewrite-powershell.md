@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595898"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396850"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>建立應用程式閘道及重寫 HTTP 標題
 
-當您建立新的[自動調整規模和區域備援應用程式閘道 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 時，可以使用 Azure PowerShell 來設定[用以重寫 HTTP 要求和回應標頭的規則](rewrite-http-headers.md)
+當您建立新的[自動調整規模和區域備援應用程式閘道 SKU](./application-gateway-autoscaling-zone-redundant.md) 時，可以使用 Azure PowerShell 來設定[用以重寫 HTTP 要求和回應標頭的規則](rewrite-http-headers.md)
 
 在本文中，您將學會如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "89595898"
 
 ## <a name="prerequisites"></a>必要條件
 
-本文要求您在本機執行 Azure PowerShell。 您必須安裝 Az 模組 1.0.0 版或更新版本。 請執行 `Import-Module Az`，然後執行 `Get-Module Az` 來尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
+本文要求您在本機執行 Azure PowerShell。 您必須安裝 Az 模組 1.0.0 版或更新版本。 請執行 `Import-Module Az`，然後執行 `Get-Module Az` 來尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -66,7 +66,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>建立保留公用 IP
 
-將 PublicIPAddress 的配置方法指定為 [靜態]****。 自動調整應用程式閘道 VIP 只能是靜態。 不支援動態 IP。 只支援標準 PublicIpAddress SKU。
+將 PublicIPAddress 的配置方法指定為 [靜態]。 自動調整應用程式閘道 VIP 只能是靜態。 不支援動態 IP。 只支援標準 PublicIpAddress SKU。
 
 ```azurepowershell
 #Create static public IP
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 設定重寫 HTTP 標頭所需的新物件：
 
-- **RequestHeaderConfiguration**：此物件可用來指定您想要重寫的要求標頭欄位，以及原始標頭在重寫後必須採用的新值。
-- **ResponseHeaderConfiguration**：此物件可用來指定您想要重寫的回應標頭欄位，以及原始標頭在重寫後必須採用的新值。
-- **ActionSet**：此物件包含以上所指定要求和回應標頭的設定。 
-- **RewriteRule**：此物件包含以上所指定的所有 *actionSet*。 
-- **RewriteRuleSet**：此物件包含所有 *rewriteRule*，且將必須連結至要求路由規則 - 基本或路徑型。
+- **RequestHeaderConfiguration** ：此物件可用來指定您想要重寫的要求標頭欄位，以及原始標頭在重寫後必須採用的新值。
+- **ResponseHeaderConfiguration** ：此物件可用來指定您想要重寫的回應標頭欄位，以及原始標頭在重寫後必須採用的新值。
+- **ActionSet** ：此物件包含以上所指定要求和回應標頭的設定。 
+- **RewriteRule** ：此物件包含以上所指定的所有 *actionSet* 。 
+- **RewriteRuleSet** ：此物件包含所有 *rewriteRule* ，且將必須連結至要求路由規則 - 基本或路徑型。
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -134,13 +134,13 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 現在您可以指定應用程式閘道的自動調整設定。 支援兩種自動調整設定類型：
 
-* **固定容量模式**。 在此模式中，應用程式閘道不會自動調整，並且會以固定的縮放單位容量運作。
+* **固定容量模式** 。 在此模式中，應用程式閘道不會自動調整，並且會以固定的縮放單位容量運作。
 
    ```azurepowershell
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 
-* **自動調整模式**。 在此模式中，應用程式閘道會根據應用程式流量模式而自動調整。
+* **自動調整模式** 。 在此模式中，應用程式閘道會根據應用程式流量模式而自動調整。
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2

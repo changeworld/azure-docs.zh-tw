@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336525"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398006"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨區域負載平衡器 (預覽) 
 
@@ -45,7 +45,7 @@ Azure Standard Load Balancer 支援跨區域負載平衡，可啟用地理冗余
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="跨區域負載平衡器的圖表。" border="true":::
 
 > [!NOTE]
-> 負載平衡器在跨區域負載平衡器上負載平衡規則的後端埠應符合區域標準負載平衡器上負載平衡規則/輸入 nat 規則的前端埠。 
+> 跨區域負載平衡器上負載平衡規則的後端埠應符合「區域標準」負載平衡器上負載平衡規則/輸入 nat 規則的前端埠。 
 
 ### <a name="regional-redundancy"></a>區域冗余
 
@@ -55,7 +55,7 @@ Azure Standard Load Balancer 支援跨區域負載平衡，可啟用地理冗余
 
 跨區域負載平衡器的健康情況探查每隔20秒會收集可用性的相關資訊。 如果有一個區域負載平衡器將其可用性降至0，則跨區域負載平衡器會偵測到失敗。 區域負載平衡器接著會離開旋轉。 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="跨區域負載平衡器的圖表。" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="全球區域交通視圖的圖表。" border="true":::
 
 ### <a name="ultra-low-latency"></a>Ultra-低延遲
 
@@ -66,7 +66,7 @@ Azure Standard Load Balancer 支援跨區域負載平衡，可啟用地理冗余
 例如，您在 Azure 區域中有一個具有標準負載平衡器的跨區域負載平衡器：
 
 * 美國西部
-* 北歐
+* 歐洲北部
 
 如果流程是從西雅圖開始，流量會進入美國西部。 此區域是來自西雅圖的最接近參與區域。 流量會路由傳送至最接近的區域負載平衡器，也就是美國西部。
 
@@ -94,7 +94,7 @@ Azure 跨區域負載平衡器會使用地理鄰近性的負載平衡演算法�
 
 將您現有的負載平衡器部署新增至跨區域負載平衡器，以取得高可用性的跨區域部署。
 
-[**首頁] 區域**是部署跨區域負載平衡器的位置。 此區域不會影響流量的路由方式。 如果主要區域停止運作，則不會影響流量的流程。
+[ **首頁] 區域** 是部署跨區域負載平衡器的位置。 此區域不會影響流量的路由方式。 如果主要區域停止運作，則不會影響流量的流程。
 
 ### <a name="home-regions"></a>首頁區域
 * 美國東部 2
@@ -102,13 +102,13 @@ Azure 跨區域負載平衡器會使用地理鄰近性的負載平衡演算法�
 * 西歐
 * 東南亞
 * 美國中部
-* 北歐
+* 歐洲北部
 * 東亞
 
 > [!NOTE]
 > 您只能在上述8個區域的其中一個區域部署跨區域負載平衡器。
 
-**參與的區域**是負載平衡器的全域公用 IP 可用的位置。 
+**參與的區域** 是負載平衡器的全域公用 IP 可用的位置。 
 
 由使用者啟動的流量會透過 Microsoft 核心網路傳送到最接近的參與區域。 
 
@@ -120,7 +120,7 @@ Azure 跨區域負載平衡器會使用地理鄰近性的負載平衡演算法�
 * 美國中部 
 * 美國東部 2 
 * 美國西部 
-* 北歐 
+* 歐洲北部 
 * 美國中南部 
 * 美國西部 2 
 * 英國南部 
@@ -149,6 +149,6 @@ Azure 跨區域負載平衡器會使用地理鄰近性的負載平衡演算法�
  
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [建立公用標準負載平衡器](quickstart-load-balancer-standard-public-portal.md) ，開始使用負載平衡器。
+- 請參閱[建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
 - 深入了解 [Azure Load Balancer](load-balancer-overview.md)。
 - 負載平衡器 [常見問題](load-balancer-faqs.md)

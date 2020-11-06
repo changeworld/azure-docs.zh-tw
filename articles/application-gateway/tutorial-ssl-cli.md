@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76fea0c8b6f3c13c9f462ecbb72611c6659c65d0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595813"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397055"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>使用 Azure CLI 建立具有 TLS 終止的應用程式閘道
 
-您可以使用 Azure CLI 來建立具有[TLS 終止](ssl-overview.md)憑證的[應用程式閘道](overview.md)。 針對後端伺服器，您可以使用 [虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) 。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
+您可以使用 Azure CLI 來建立具有[TLS 終止](ssl-overview.md)憑證的[應用程式閘道](overview.md)。 針對後端伺服器，您可以使用 [虛擬機器擴展集](../virtual-machine-scale-sets/overview.md) 。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
 
 在本文中，您將學會如何：
 
@@ -48,7 +48,7 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.k
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-輸入憑證的密碼。 在此範例中會使用 Azure123456!** 。
+輸入憑證的密碼。 在此範例中會使用 Azure123456! 。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -62,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet** 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -90,7 +90,7 @@ az network public-ip create \
 
 您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 
 
-應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 在此範例中，您會在建立應用程式閘道時讓您建立的憑證與其密碼產生關聯。 
+應用程式閘道會指派給您先前建立的 myAGSubnet 和 myAGPublicIPAddress。 在此範例中，您會在建立應用程式閘道時讓您建立的憑證與其密碼產生關聯。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 
-在此範例中，您會建立虛擬機器擴展集，以在應用程式閘道中提供預設後端集區的伺服器。 擴展集中的虛擬機器會與 myBackendSubnet** 和 appGatewayBackendPool** 相關聯。 若要建立擴展集，您可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
+在此範例中，您會建立虛擬機器擴展集，以在應用程式閘道中提供預設後端集區的伺服器。 擴展集中的虛擬機器會與 myBackendSubnet 和 appGatewayBackendPool 相關聯。 若要建立擴展集，您可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
 
 ```azurecli-interactive
 az vmss create \
@@ -168,7 +168,7 @@ az network public-ip show \
 
 ![安全警告](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
-若要在使用自我簽署憑證時接受安全性警告，請依序按一下 [詳細資料]**** 與 [繼續瀏覽網頁]****。 接著會顯示受保護的 NGINX 網站，如下列範例所示：
+若要在使用自我簽署憑證時接受安全性警告，請選取 [ **詳細資料** ]，然後 **移至網頁** 。 接著會顯示受保護的 NGINX 網站，如下列範例所示：
 
 ![在應用程式閘道中測試基底 URL](./media/tutorial-ssl-cli/application-gateway-nginx.png)
 

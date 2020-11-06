@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723294"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396918"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>應用程式閘道的 TLS 終止和端對端 TLS 概觀
 
@@ -51,10 +51,10 @@ ms.locfileid: "88723294"
 - 萬用字元憑證：此憑證支援以 *.site.com 為基礎的子網域 (數量不限)，而您的子網域會取代其中的 *。 但並不支援 site.com，因此，如果使用者在存取您的網站時未輸入前置的 "www"，萬用字元憑證就不會將其涵蓋在內。
 - 自我簽署憑證：用戶端瀏覽器不信任這些憑證，且會警告使用者，指出虛擬服務的憑證不是信任鏈結的一部分。 自我簽署憑證適用於由系統管理員控制用戶端，且可安全略過瀏覽器安全性警示的測試或環境。 生產工作負載不得使用自我簽署憑證。
 
-如需詳細資訊，請參閱[設定應用程式閘道的 TLS 終止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
+如需詳細資訊，請參閱[設定應用程式閘道的 TLS 終止](./create-ssl-portal.md)。
 
 ### <a name="size-of-the-certificate"></a>憑證的大小
-請查看[應用程式閘道限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits)一節，以了解支援的 TLS/SSL 憑證大小上限。
+請查看[應用程式閘道限制](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)一節，以了解支援的 TLS/SSL 憑證大小上限。
 
 ## <a name="end-to-end-tls-encryption"></a>端對端 TLS 加密
 
@@ -62,7 +62,7 @@ ms.locfileid: "88723294"
 
 當您使用應用程式閘道的第 7 層負載平衡功能時，端對端 TLS 可讓您加密敏感性資料，並安全地將其傳輸至後端。 這些功能包括 Cookie 型工作階段親和性、URL 型路由、支援以網站為基礎的路由，以及重寫或插入 X-Forwarded-* 標頭的能力。
 
-當設定為端對端 TLS 通訊模式時，應用程式閘道會在閘道上終止 TLS 工作階段，並解密使用者流量。 然後，它會套用所設定的規則來選取要將流量路由傳送到的適當後端集區執行個體。 應用程式閘道接著再起始連往後端伺服器的新 TLS 連線，並先使用後端伺服器的公開金鑰憑證重新加密資料，再將要求傳輸至後端。 任何來自 Web 伺服器的回應都會經歷相同的程序而回到使用者端。 若要啟用端對端 TLS，請將 [BackendHTTPSetting](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) 中的通訊協定設為 HTTPS，接著再套用到後端集區。
+當設定為端對端 TLS 通訊模式時，應用程式閘道會在閘道上終止 TLS 工作階段，並解密使用者流量。 然後，它會套用所設定的規則來選取要將流量路由傳送到的適當後端集區執行個體。 應用程式閘道接著再起始連往後端伺服器的新 TLS 連線，並先使用後端伺服器的公開金鑰憑證重新加密資料，再將要求傳輸至後端。 任何來自 Web 伺服器的回應都會經歷相同的程序而回到使用者端。 若要啟用端對端 TLS，請將 [BackendHTTPSetting](./configuration-overview.md#http-settings) 中的通訊協定設為 HTTPS，接著再套用到後端集區。
 
 對於應用程式閘道和 WAF v1 SKU，TLS 原則會同時套用至前端和後端流量。 在前端，應用程式閘道會作為伺服器，並強制執行原則。 在後端，應用程式閘道會作為用戶端，並在 TLS 交握期間依照喜好設定傳送通訊協定/密碼資訊。
 
@@ -74,7 +74,7 @@ ms.locfileid: "88723294"
 
 > [!NOTE] 
 >
-> 新增至**後端 HTTP 設定**以驗證後端伺服器的憑證，可以與在應用程式閘道上針對 TLS 終止新增至**接聽程式**的憑證相同，或為了增強安全性而不同。
+> 新增至 **後端 HTTP 設定** 以驗證後端伺服器的憑證，可以與在應用程式閘道上針對 TLS 終止新增至 **接聽程式** 的憑證相同，或為了增強安全性而不同。
 
 ![端對端 TLS 案例][1]
 

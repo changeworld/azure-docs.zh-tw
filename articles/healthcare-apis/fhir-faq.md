@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 66ea8692fd3d93b8de9740e145404a8db50ebfdf
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558562"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398091"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -52,7 +52,7 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>哪些區域 Azure API for FHIR 可用？
 
-目前，在 [多個地理區域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)中，公用和政府都已正式推出。 如需 Microsoft 政府雲端服務的相關資訊，請參閱 [FedRAMP 的 Azure 服務](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)。
+目前，在 [多個地理區域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)中，公用和政府都已正式推出。 如需 Microsoft 政府雲端服務的相關資訊，請參閱 [FedRAMP 的 Azure 服務](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)。
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>我可以在哪裡看到 Azure API for FHIR 的發行內容？
 
@@ -97,17 +97,17 @@ _Count 目前的限制為100。 如果您將 _count 設定為100以上，您將�
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>搜尋 Azure API for FHIR 中的資源時，預設排序為何？
 
-我們支援依上次更新日期排序： _sort = _lastUpdated。 如需其他支援之搜尋參數的詳細資訊，請參閱 [支援的功能頁面](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search)。
+我們支援依上次更新日期排序： _sort = _lastUpdated。 如需其他支援之搜尋參數的詳細資訊，請參閱 [支援的功能頁面](./fhir-features-supported.md#search)。
 
 ### <a name="how-does-export-work"></a>$Export 如何運作？
 
-$export 是 FHIR 規格的一部分： https://hl7.org/fhir/uv/bulkdata/export/index.html 。 如果已使用受控識別和儲存體帳戶設定 FHIR 服務，而且受控識別可以存取該儲存體帳戶，您只需要在 FHIR API 上呼叫 $export，所有 FHIR 資源都會匯出至儲存體帳戶。 如需詳細資訊，請參閱 [$export 的文章](https://docs.microsoft.com/azure/healthcare-apis/export-data)。
+$export 是 FHIR 規格的一部分： https://hl7.org/fhir/uv/bulkdata/export/index.html 。 如果已使用受控識別和儲存體帳戶設定 FHIR 服務，而且受控識別可以存取該儲存體帳戶，您只需要在 FHIR API 上呼叫 $export，所有 FHIR 資源都會匯出至儲存體帳戶。 如需詳細資訊，請參閱 [$export 的文章](./export-data.md)。
 
 ## <a name="using-azure-api-for-fhir"></a>使用 Azure API for FHIR
 
 ### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>如何? 啟用 Azure API for FHIR 的 log analytics？
 
-我們會啟用診斷記錄，並允許查看這些記錄的範例查詢。 如需啟用審核記錄和查詢範例的詳細資訊，請參閱 [這一節](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging)。 如果您想要在記錄中包含其他資訊，請參閱 [使用自訂 HTTP 標頭](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)。
+我們會啟用診斷記錄，並允許查看這些記錄的範例查詢。 如需啟用審核記錄和查詢範例的詳細資訊，請參閱 [這一節](./enable-diagnostic-logging.md)。 如果您想要在記錄中包含其他資訊，請參閱 [使用自訂 HTTP 標頭](./use-custom-headers.md)。
 
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>哪裡可以查看在工作流程中使用 Azure API for FHIR 的一些範例？
 
@@ -121,7 +121,7 @@ $export 是 FHIR 規格的一部分： https://hl7.org/fhir/uv/bulkdata/export/i
 
 ### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>是否有方法可以使用我的個人金鑰來加密我的資料，而不是預設的金鑰？
 
-是的，Azure API for FHIR 可讓您設定客戶管理的金鑰，並利用 Cosmos DB 的支援。 如需使用個人金鑰加密您的資料的詳細資訊，請參閱 [這一節](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key)。
+是的，Azure API for FHIR 可讓您設定客戶管理的金鑰，並利用 Cosmos DB 的支援。 如需使用個人金鑰加密您的資料的詳細資訊，請參閱 [這一節](./customer-managed-key.md)。
 
 ## <a name="azure-api-for-fhir-preview-features"></a>Azure API for FHIR：預覽功能
 

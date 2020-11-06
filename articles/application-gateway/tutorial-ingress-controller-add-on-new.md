@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427973"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397082"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教學課程：使用新的應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件 (預覽)
 
@@ -39,17 +39,17 @@ ms.locfileid: "92427973"
 
 如果您選擇在本機安裝和使用 CLI，本教學課程需要您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要註冊 AKS-IngressApplicationGatewayAddon 功能旗標，請使用 [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令，如下列範例所示。 當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次。
+若要註冊 AKS-IngressApplicationGatewayAddon 功能旗標，請使用 [az feature register](/cli/azure/feature#az-feature-register) 命令，如下列範例所示。 當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次。
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
-可能需要數分鐘的時間狀態才會顯示為 `Registered`。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
+可能需要數分鐘的時間狀態才會顯示為 `Registered`。 您可以使用 [az feature list](/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-準備就緒時，使用 [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
+準備就緒時，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -82,7 +82,7 @@ az group create --name myResourceGroup --location canadacentral
 > - 透過入口網站在應用程式閘道中啟用 WAF。 
 > - 先建立 WAF_v2 應用程式閘道執行個體，然後遵循如何[使用現有的 AKS 叢集和現有的應用程式閘道執行個體啟用 AGIC 附加元件](tutorial-ingress-controller-add-on-existing.md)的指示。 
 
-在下列範例中，您將使用 [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) 和[受控識別](https://docs.microsoft.com/azure/aks/use-managed-identity)，部署名為 *myCluster* 的新 AKS 叢集。 AGIC 附加元件將會在您建立的資源群組 myResourceGroup 中啟用。 
+在下列範例中，您將使用 [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) 和 [受控識別](../aks/use-managed-identity.md)，部署名為 *myCluster* 的新 AKS 叢集。 AGIC 附加元件將會在您建立的資源群組 myResourceGroup 中啟用。 
 
 在未指定現有應用程式閘道執行個體的情況下，若要部署已啟用 AGIC 附加元件的新 AKS 叢集，就表示系統會自動建立 Standard_v2 SKU 應用程式閘道執行個體。 因此，您也會指定應用程式閘道執行個體的名稱和子網路位址空間。 應用程式閘道執行個體的名稱會是 myApplicationGateway，而我們所使用的子網路位址空間則是 10.2.0.0/16。 請確定您已在本教學課程的開頭新增或更新 aks-preview 擴充功能。 
 
@@ -90,7 +90,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-若要設定 `az aks create` 命令的其他參數，請參閱[這些參考](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create)。 
+若要設定 `az aks create` 命令的其他參數，請參閱[這些參考](/cli/azure/aks?view=azure-cli-latest#az-aks-create)。 
 
 > [!NOTE]
 > 您所建立的 AKS 叢集會出現在您所建立的 myResourceGroup 資源群組中。 不過，自動建立的應用程式閘道執行個體將會位於代理程式集區所在的節點資源群組中。 根據預設，節點資源群組會命名為 MC_resource-group-name_cluster-name_location，但可加以修改。 
@@ -124,7 +124,7 @@ kubectl get ingress
 - 造訪執行上述命令所獲得之應用程式閘道執行個體的 IP 位址。
 - 使用 `curl`。 
 
-應用程式閘道可能需要一分鐘來取得更新。 如果應用程式閘道在入口網站上仍為**更新**狀態，請先讓其完成，再嘗試連線 IP 位址。 
+應用程式閘道可能需要一分鐘來取得更新。 如果應用程式閘道在入口網站上仍為 **更新** 狀態，請先讓其完成，再嘗試連線 IP 位址。 
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -138,4 +138,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [了解如何停用 AGIC 附加元件](./ingress-controller-disable-addon.md)
-

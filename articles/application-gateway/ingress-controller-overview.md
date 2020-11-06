@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668095"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397343"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>什麼是應用程式閘道輸入控制器？
 應用程式閘道輸入控制器 (AGIC) 是一種 Kubernetes 應用程式，可讓 [Azure Kubernetes Service (AKS) ](https://azure.microsoft.com/services/kubernetes-service/) 客戶利用 Azure 的原生 [應用程式閘道](https://azure.microsoft.com/services/application-gateway/) L7 負載平衡器，向網際網路公開雲端軟體。 AGIC 會監視裝載的 Kubernetes 叢集，並持續更新應用程式閘道，讓選取的服務公開至網際網路。
 
-輸入控制器會在客戶的 AKS 上以自己的 pod 執行。 AGIC 會監視 Kubernetes 資源的子集以進行變更。 AKS 叢集的狀態會轉譯為應用程式閘道特定設定，並套用至 [Azure Resource Manager (ARM) ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+輸入控制器會在客戶的 AKS 上以自己的 pod 執行。 AGIC 會監視 Kubernetes 資源的子集以進行變更。 AKS 叢集的狀態會轉譯為應用程式閘道特定設定，並套用至 [Azure Resource Manager (ARM) ](../azure-resource-manager/management/overview.md)。
 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>應用程式閘道輸入控制器的優點
 AGIC 可協助消除在 AKS 叢集前面有其他負載平衡器/公用 IP 的需求，並在要求抵達 AKS 叢集之前，避免資料路徑中的多個躍點。 應用程式閘道會直接與使用其私人 IP 的 pod 交談，而不需要 NodePort 或 KubeProxy 服務。 這也可為您的部署帶來更好的效能。
@@ -77,4 +77,3 @@ AGIC 附加元件仍會部署為客戶 AKS 叢集中的 pod，不過 Helm 部署
 - [**AKS Add-On 棕色地帶部署**](tutorial-ingress-controller-add-on-existing.md)：在具有現有應用程式閘道的 AKS 叢集上安裝 AGIC 附加元件。
 - [**Helm Greenfield 部署**](ingress-controller-install-new.md)：透過 Helm、新的 AKS 叢集和全新的應用程式閘道安裝 AGIC 到空白的平板基礎結構。
 - [**Helm 棕色地帶部署**](ingress-controller-install-existing.md)：在現有的 AKS 叢集和應用程式閘道上透過 HELM 部署 AGIC。
-

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808230"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397887"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>設定應用程式閘道上的 TLS 原則版本和加密套件
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>以預先定義的 TLS 原則更新現有的應用程式閘道
 
-若要設定自訂的 TLS 原則，請傳遞下列參數： **PolicyType**、 **MinProtocolVersion**、 **CipherSuite**和 **ApplicationGateway**。 若要設定預先定義的 TLS 原則，請傳遞下列參數： **PolicyType**、 **PolicyName**和 **ApplicationGateway**。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。
+若要設定自訂的 TLS 原則，請傳遞下列參數： **PolicyType** 、 **MinProtocolVersion** 、 **CipherSuite** 和 **ApplicationGateway** 。 若要設定預先定義的 TLS 原則，請傳遞下列參數： **PolicyType** 、 **PolicyName** 和 **ApplicationGateway** 。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。
 
 在下列範例中，有自訂原則和預先定義原則兩者的程式碼範例。 對您想要使用的原則取消註解。
 
@@ -215,6 +215,6 @@ $AppGw = get-Azapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-請參閱[應用程式閘道重新導向概觀](application-gateway-redirect-overview.md)以了解如何將 HTTP 流量重新導向至 HTTPS 端點。
+請參閱[應用程式閘道重新導向概觀](./redirect-overview.md)以了解如何將 HTTP 流量重新導向至 HTTPS 端點。

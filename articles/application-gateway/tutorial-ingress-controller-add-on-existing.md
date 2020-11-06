@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f78167b9c3f557fa16061cfac8aad080519415
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285616"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397122"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教學課程：使用現有的應用程式閘道，透過 Azure CLI (預覽) 啟用現有 AKS 叢集的應用程式閘道輸入控制器附加元件
 
@@ -37,17 +37,17 @@ ms.locfileid: "91285616"
 
 如果您選擇在本機安裝和使用 CLI，本教學課程需要您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-使用 [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令註冊 AKS-IngressApplicationGatewayAddon 功能旗標，如下列範例所示；當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次：
+使用 [az feature register](/cli/azure/feature#az-feature-register) 命令註冊 AKS-IngressApplicationGatewayAddon 功能旗標，如下列範例所示；當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次：
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
 ```
 
-狀態需要幾分鐘才會顯示「已註冊」。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
+狀態需要幾分鐘才會顯示「已註冊」。 您可以使用 [az feature list](/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-準備就緒時，使用 [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
+準備就緒時，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -74,13 +74,13 @@ az group create --name myResourceGroup --location canadacentral
 
 您現在會部署新的 AKS 叢集，以模擬您想要為其啟用 AGIC 附加元件的現有的 AKS 叢集。  
 
-在下列範例中，您將會使用所建立之資源群組 myResourceGroup 中的 [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) 和[受控識別](https://docs.microsoft.com/azure/aks/use-managed-identity)來部署名為 myCluster 的新 AKS 叢集。    
+在下列範例中，您將會使用所建立之資源群組 myResourceGroup 中的 [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) 和[受控識別](../aks/use-managed-identity.md)來部署名為 myCluster 的新 AKS 叢集。    
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-若要設定 `az aks create` 命令的其他參數，請造訪[這些參考](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create)。 
+若要設定 `az aks create` 命令的其他參數，請造訪[這些參考](/cli/azure/aks?view=azure-cli-latest#az-aks-create)。 
 
 ## <a name="deploy-a-new-application-gateway"></a>部署新的應用程式閘道 
 

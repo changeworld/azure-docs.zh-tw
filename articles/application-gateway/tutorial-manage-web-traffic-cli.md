@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d0a130830c8b03fd1f47086b9a997f6fc3df9a4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595845"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396952"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>使用 Azure CLI 以應用程式閘道管理網路流量
 
-針對您維護的伺服器，可以使用應用程式閘道來管理及保護其網路流量。 您可以使用 Azure CLI 來建立[應用程式閘道](overview.md)，它使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作為後端伺服器。 在此範例中，擴展集會包含兩個虛擬機器執行個體。 會將擴展集新增至應用程式閘道的預設後端集區。
+針對您維護的伺服器，可以使用應用程式閘道來管理及保護其網路流量。 您可以使用 Azure CLI 來建立[應用程式閘道](overview.md)，它使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)作為後端伺服器。 在此範例中，擴展集會包含兩個虛擬機器執行個體。 會將擴展集新增至應用程式閘道的預設後端集區。
 
 在本文中，您將學會如何：
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源 
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet** 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -71,7 +71,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
-使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 *myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
+使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 *myAppGateway* 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet 和 myPublicIPAddress。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 
-在此範例中，您會建立虛擬機器擴展集，以在應用程式閘道中提供後端集區的伺服器。 擴展集中的虛擬機器會與 myBackendSubnet** 和 appGatewayBackendPool** 相關聯。 若要建立擴展集，請使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
+在此範例中，您會建立虛擬機器擴展集，以在應用程式閘道中提供後端集區的伺服器。 擴展集中的虛擬機器會與 myBackendSubnet 和 appGatewayBackendPool 相關聯。 若要建立擴展集，請使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
 
 ```azurecli-interactive
 az vmss create \
@@ -155,4 +155,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Web 應用程式防火牆來限制網路流量](./tutorial-restrict-web-traffic-cli.md)
+[使用 Web 應用程式防火牆來限制網路流量](../web-application-firewall/ag/tutorial-restrict-web-traffic-cli.md)

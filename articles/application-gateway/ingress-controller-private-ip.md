@@ -7,26 +7,26 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806789"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397303"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>使用私人 IP 進行輸入端點的內部路由 
 
 這項功能可讓您使用私人 IP 來公開中的輸入端點 `Virtual Network` 。
 
 ## <a name="pre-requisites"></a>必要條件  
-具有[私人 IP](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)設定的應用程式閘道
+具有[私人 IP](./configure-application-gateway-with-private-frontend-ip.md)設定的應用程式閘道
 
 有兩種方式可以設定控制器使用私人 IP 進行輸入，
 
 ## <a name="assign-to-a-particular-ingress"></a>指派給特定輸入
 若要透過私人 IP 公開特定輸入，請使用輸入中的注釋 [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) 。
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 ```yaml
 appgw.ingress.kubernetes.io/use-private-ip: "true"
 ```
@@ -53,7 +53,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 ## <a name="assign-globally"></a>全域指派
 在此情況下，需求是限制所有 Ingresses 都必須透過私人 IP 公開，請 `appgw.usePrivateIP: true` 在設定中使用 `helm` 。
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 ```yaml
 appgw:
     subscriptionId: <subscriptionId>
@@ -66,4 +66,4 @@ appgw:
 如果 `usePrivateIP: true` 未指派任何私人 IP，AGIC 會死毀並當機。
 
 > [!NOTE]
-> 應用程式閘道 v2 SKU 需要公用 IP。 如果您需要將應用程式閘道設為私用，請將應用程式閘道附加 [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) 至應用程式閘道的子網以限制流量
+> 應用程式閘道 v2 SKU 需要公用 IP。 如果您需要將應用程式閘道設為私用，請將應用程式閘道附加 [`Network Security Group`](../virtual-network/network-security-groups-overview.md) 至應用程式閘道的子網以限制流量

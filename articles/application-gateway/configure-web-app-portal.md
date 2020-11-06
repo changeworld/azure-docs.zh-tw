@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323361"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397547"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
 
@@ -30,39 +30,39 @@ ms.locfileid: "91323361"
 
 - 應用程式閘道：建立不具後端集區目標的應用程式閘道。 如需詳細資訊，請參閱 [快速入門：使用 Azure 應用程式閘道引導網路流量-Azure 入口網站](quick-create-portal.md)
 
-- App service：如果您沒有現有的 App service，請參閱 [app service 檔](https://docs.microsoft.com/azure/app-service/)。
+- App service：如果您沒有現有的 App service，請參閱 [app service 檔](../app-service/index.yml)。
 
 ## <a name="add-app-service-as-backend-pool"></a>將 App service 新增為後端集區
 
 1. 在 [Azure 入口網站中，選取您的應用程式閘道。
 
-2. 在 [ **後端**集區] 下，選取後端集區。
+2. 在 [ **後端** 集區] 下，選取後端集區。
 
-4. 在 [ **目標型別**] 下，選取 [ **應用程式服務**]。
+4. 在 [ **目標型別** ] 下，選取 [ **應用程式服務** ]。
 
 5. 在 [ **目標** ] 底下，選取您的 App Service。
 
    :::image type="content" source="./media/configure-web-app-portal/backend-pool.png" alt-text="App service 後端":::
    
    > [!NOTE]
-   > 下拉式清單只會填入與您應用程式閘道位於相同訂用帳戶中的應用程式服務。 如果您想要使用與應用程式閘道不同的訂用帳戶中的 app service，請**選擇 [** **IP 位址] 或 [主機名稱**] 選項，並輸入主機名稱 (範例。 **App Services** app service 的 azurewebsites.net) 。
-1. 選取 [儲存]****。
+   > 下拉式清單只會填入與您應用程式閘道位於相同訂用帳戶中的應用程式服務。 如果您想要使用與應用程式閘道不同的訂用帳戶中的 app service，請 **選擇 [** **IP 位址] 或 [主機名稱** ] 選項，並輸入主機名稱 (範例。 **App Services** app service 的 azurewebsites.net) 。
+1. 選取 [儲存]。
 
 ## <a name="edit-http-settings-for-app-service"></a>編輯 App Service 的 HTTP 設定
 
-1. 在 [ **Http 設定**] 底下，選取現有的 HTTP 設定。
+1. 在 [ **Http 設定** ] 底下，選取現有的 HTTP 設定。
 
-2. 在 [ **以新的主機名稱覆寫**] 下，選取 **[是]**。
-3. 在 [ **主機名稱覆寫**] 下，選取 [ **從後端目標挑選主機名稱**]。
-4. 選取 [儲存]****。
+2. 在 [ **以新的主機名稱覆寫** ] 下，選取 **[是]** 。
+3. 在 [ **主機名稱覆寫** ] 下，選取 [ **從後端目標挑選主機名稱** ]。
+4. 選取 [儲存]。
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App service 後端":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="從後端 HTTP 設定挑選主機名稱":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>重新導向至 app service 的相對路徑時的其他設定
 
 當 app service 傳送重新導向回應給用戶端以重新導向至其相對路徑時 (例如，從重新導向 `contoso.azurewebsites.net/path1` 至 `contoso.azurewebsites.net/path2`) 時，它會在其回應的位置標頭中使用與從應用程式閘道收到的要求中相同的主機名稱。 因此，用戶端會直接提出要求， `contoso.azurewebsites.net/path2` 而不是透過應用程式閘道 (`contoso.com/path2`) 。 略過應用程式閘道不是理想的做法。
 
-如果在您的使用案例中，應用程式服務必須將重新導向回應傳送給用戶端，請執行 [其他步驟來重寫位置標頭](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration)。
+如果在您的使用案例中，應用程式服務必須將重新導向回應傳送給用戶端，請執行 [其他步驟來重寫位置標頭](./troubleshoot-app-service-redirection-app-service-url.md#sample-configuration)。
 
 ## <a name="restrict-access"></a>限制存取
 
@@ -72,4 +72,4 @@ ms.locfileid: "91323361"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解應用程式閘道的 App service 和其他多租使用者支援，請參閱 [使用應用程式閘道的多租使用者服務支援](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)。
+若要深入瞭解應用程式閘道的 App service 和其他多租使用者支援，請參閱 [使用應用程式閘道的多租使用者服務支援](./application-gateway-web-app-overview.md)。

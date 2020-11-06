@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d55e7f29c9ecefa7cfcf98ef890d9982b044ef30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378817"
+ms.locfileid: "93396510"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -90,7 +90,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理員](#azure-devops-administrator-permissions)
 
-具有此角色的使用者可以管理 Azure DevOps 原則，將新的 Azure DevOps 組織建立限制於一組可設定的使用者或群組。 具備此角色的使用者可透過任何由公司 Azure AD 組織支援的 Azure DevOps 組織來管理此原則。
+具有此角色的使用者可以管理 Azure DevOps 原則，將新的 Azure DevOps 組織建立限制於一組可設定的使用者或群組。 此角色的使用者可以透過公司 Azure AD 組織所支援的任何 Azure DevOps 組織來管理此原則。 此角色不會授與任何其他 Azure DevOps 特定的許可權 (例如，專案集合系統管理員) 在公司 Azure AD 組織所支援的任何 Azure DevOps 組織內。
 
 具備此角色的使用者可以管理所有企業 Azure DevOps 原則。
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04d8a77cd051823559aba42d5dfc1418e6343ecc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807148"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397377"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何使用新的應用程式閘道 (AGIC) 安裝應用程式閘道輸入控制器
 
@@ -30,7 +30,7 @@ ms.locfileid: "84807148"
 
 您的 [Azure Cloud Shell](https://shell.azure.com/) 已經有所有必要的工具。 如果您選擇使用其他環境，請確定已安裝下列命令列工具：
 
-* `az` -Azure CLI： [安裝指示](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` -Azure CLI： [安裝指示](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` -Kubernetes 命令列工具： [安裝指示](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` -Kubernetes 套件管理員： [安裝指示](https://github.com/helm/helm/releases/latest)
 * `jq` -命令列 JSON 處理器： [安裝指示](https://stedolan.github.io/jq/download/)
@@ -38,9 +38,9 @@ ms.locfileid: "84807148"
 
 ## <a name="create-an-identity"></a>建立身分識別
 
-遵循下列步驟來建立 Azure Active Directory (AAD) [服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 請記錄 `appId` 、 `password` 和值， `objectId` 這些會在下列步驟中使用。
+遵循下列步驟來建立 Azure Active Directory (AAD) [服務主體物件](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 請記錄 `appId` 、 `password` 和值， `objectId` 這些會在下列步驟中使用。
 
-1. 建立 AD 服務主體 ([閱讀有關 RBAC) 的詳細資訊](https://docs.microsoft.com/azure/role-based-access-control/overview) ：
+1. 建立 AD 服務主體 ([閱讀有關 RBAC) 的詳細資訊](../role-based-access-control/overview.md) ：
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -71,11 +71,11 @@ ms.locfileid: "84807148"
 ## <a name="deploy-components"></a>部署元件
 此步驟會將下列元件新增至您的訂用帳戶：
 
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [應用程式閘道](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- 具有 2[個子網](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的[虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，將由[AAD Pod 身分識別](https://github.com/Azure/aad-pod-identity/blob/master/README.md)使用
+- [Azure Kubernetes Service](../aks/intro-kubernetes.md)
+- [應用程式閘道](./overview.md) v2
+- 具有 2[個子網](../virtual-network/virtual-networks-overview.md)的[虛擬網路](../virtual-network/virtual-networks-overview.md)
+- [公用 IP 位址](../virtual-network/virtual-network-public-ip-address.md)
+- [受控識別](../active-directory/managed-identities-azure-resources/overview.md)，將由[AAD Pod 身分識別](https://github.com/Azure/aad-pod-identity/blob/master/README.md)使用
 
 1. 視需要下載 Azure Resource Manager 範本和修改範本。
     ```bash
@@ -111,7 +111,7 @@ ms.locfileid: "84807148"
 ### <a name="setup-kubernetes-credentials"></a>設定 Kubernetes 認證
 在下列步驟中，我們需要安裝 [kubectl](https://kubectl.docs.kubernetes.io/) 命令，我們將用它來連接到新的 Kubernetes 叢集。 [Cloud Shell](https://shell.azure.com/) 已 `kubectl` 安裝。 我們將使用 `az` CLI 來取得 Kubernetes 的認證。
 
-取得新部署之 AKS 的認證 ([閱讀更多](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)) ：
+取得新部署之 AKS 的認證 ([閱讀更多](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)) ：
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -121,7 +121,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 ```
 
 ### <a name="install-aad-pod-identity"></a>安裝 AAD Pod 身分識別
-  Azure Active Directory Pod 身分識別會提供對 [Azure Resource Manager (ARM) ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的權杖型存取。
+  Azure Active Directory Pod 身分識別會提供對 [Azure Resource Manager (ARM) ](../azure-resource-manager/management/overview.md)的權杖型存取。
 
   [AAD Pod 身分識別](https://github.com/Azure/aad-pod-identity) 會將下列元件新增至您的 Kubernetes 叢集中：
    * Kubernetes [CRD](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)：`AzureIdentity`、`AzureAssignedIdentity`、`AzureIdentityBinding`
@@ -144,9 +144,9 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
      ```
 
 ### <a name="install-helm"></a>安裝 Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 是 Kubernetes 的套件管理員。 我們將利用它來安裝 `application-gateway-kubernetes-ingress` 套件：
+[Helm](../aks/kubernetes-helm.md) 是 Kubernetes 的套件管理員。 我們將利用它來安裝 `application-gateway-kubernetes-ingress` 套件：
 
-1. 安裝 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) ，並執行下列步驟以新增 `application-gateway-kubernetes-ingress` Helm 套件：
+1. 安裝 [Helm](../aks/kubernetes-helm.md) ，並執行下列步驟以新增 `application-gateway-kubernetes-ingress` Helm 套件：
 
     - *已啟用 RBAC* AKS 叢集
 

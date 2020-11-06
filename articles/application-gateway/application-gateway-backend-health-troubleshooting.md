@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132036"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397893"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>針對應用程式閘道中的後端健康情況問題進行疑難排解
 ==================================================
@@ -24,7 +24,7 @@ ms.locfileid: "87132036"
 
 ### <a name="how-to-check-backend-health"></a>如何檢查後端健康情況
 
-若要檢查後端集區的健康情況，您可以使用 Azure 入口網站上的 [後端健康情況] 頁面。 或者，您可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0)、[CLI](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health) 或 [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth)。
+若要檢查後端集區的健康情況，您可以使用 Azure 入口網站上的 [後端健康情況] 頁面。 或者，您可以使用 [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0)、[CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health) 或 [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)。
 
 任何這些方法所擷取的狀態可以是下列其中一項：
 
@@ -91,7 +91,7 @@ BackendAddressPoolsText : [
 
 **原因：** 應用程式閘道將 HTTP(S) 探查要求傳送至後端伺服器之後，其會等待來自後端伺服器的回應持續一段設定的時間。 如果後端伺服器未在設定的期間 (逾時值) 內回應，則會在重新開始於設定的逾時期間內回應前，系統會將其標示為「狀況不良」。
 
-**解決方案：** 檢查後端伺服器或應用程式未在設定的逾期期間內回應的原因，同時檢查應用程式的相依性。 例如，檢查資料庫是否有任何可能觸發延遲回應的問題。 如果您知道應用程式的行為，而且其應該只在逾時值之後回應，請增加自訂探查設定中的逾時值。 您必須具有自訂探查，才能變更逾時值。 如需如何設定自訂探查的詳細資訊，[請參閱文件頁面](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)。
+**解決方案：** 檢查後端伺服器或應用程式未在設定的逾期期間內回應的原因，同時檢查應用程式的相依性。 例如，檢查資料庫是否有任何可能觸發延遲回應的問題。 如果您知道應用程式的行為，而且其應該只在逾時值之後回應，請增加自訂探查設定中的逾時值。 您必須具有自訂探查，才能變更逾時值。 如需如何設定自訂探查的詳細資訊，[請參閱文件頁面](./application-gateway-create-probe-portal.md)。
 
 若要提高逾時值，請遵循下列步驟：
 
@@ -105,7 +105,7 @@ BackendAddressPoolsText : [
 
 #### <a name="dns-resolution-error"></a>DNS 解析錯誤
 
-**訊息：** 應用程式閘道無法建立此後端的探查。 此錯誤通常發生在後端的 FQDN 未正確輸入時。 
+**訊息：** 應用程式閘道無法建立此後端的探查。 此錯誤通常發生在後端的 FQDN 未正確輸入時。 
 
 **原因：** 如果後端集區的類型為 IP 位址/FQDN 或 App Service，則應用程式閘道會解析為透過網域名稱系統 (DNS) (自訂或 Azure 預設值) 輸入的 FQDN IP 位址，並嘗試連線到 HTTP 設定中所提 TCP 連接埠上的伺服器。 但是，如果顯示此訊息，則表示應用程式閘道無法成功解析所輸入 FQDN 的 IP 位址。
 
@@ -119,7 +119,7 @@ BackendAddressPoolsText : [
 
 1.  如果您使用的是 Azure 預設 DNS，請洽詢您的網域註冊機構，了解是否已完成適當的 A 記錄或 CNAME 記錄對應。
 
-1.  如果是私人或內部網域，請嘗試從相同虛擬網路中的 VM 進行解析。 如果您可加以解析，請重新啟動應用程式閘道，再檢查一次。 若要重新啟動應用程式閘道，您必須使用這些連結資源中所述的 PowerShell 命令進行[停止](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0)和[啟動](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0)。
+1.  如果是私人或內部網域，請嘗試從相同虛擬網路中的 VM 進行解析。 如果您可加以解析，請重新啟動應用程式閘道，再檢查一次。 若要重新啟動應用程式閘道，您必須使用這些連結資源中所述的 PowerShell 命令進行[停止](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0)和[啟動](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0)。
 
 #### <a name="tcp-connect-error"></a>TCP 連線錯誤
 
@@ -138,7 +138,7 @@ BackendAddressPoolsText : [
 
 1.  如果您也無法從本機電腦連線至連接埠，則：
 
-    a.  檢查後端伺服器的網路介面卡和子網路的網路安全性群組 (NSG) 設定，以及是否允許對所設定連接埠的輸入連線。 如果不是，請建立新規則以允許連線。 若要了解如何建立 NSG 規則，[請參閱文件頁面](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-security-rules)。
+    a.  檢查後端伺服器的網路介面卡和子網路的網路安全性群組 (NSG) 設定，以及是否允許對所設定連接埠的輸入連線。 如果不是，請建立新規則以允許連線。 若要了解如何建立 NSG 規則，[請參閱文件頁面](../virtual-network/tutorial-filter-network-traffic.md#create-security-rules)。
 
     b.  檢查應用程式閘道子網路的 NSG 設定是否允許輸出公用和私人流量，以便進行連線。 檢查步驟 3a 中提供的文件頁面，深入了解如何建立 NSG 規則。
     ```azurepowershell
@@ -185,13 +185,13 @@ BackendAddressPoolsText : [
 
 或者，如果您認為回應是合法的，而且希望應用程式閘道接受其他狀態碼屬於「良好」狀態，即可建立自訂探查。 在後端網站需要驗證的情況下，這個方法很有用。 由於探查要求不會攜帶任何使用者認證，因此將會失敗，且後端伺服器將傳回 HTTP 401 狀態碼。
 
-若要建立自訂探查，請依照[這些步驟](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)操作。
+若要建立自訂探查，請依照[這些步驟](./application-gateway-create-probe-portal.md)操作。
 
 #### <a name="http-response-body-mismatch"></a>HTTP 回應本文不相符
 
 **訊息：** 後端的 HTTP 回應本文與探查設定不相符。 收到的回應本文不包含 {string}。
 
-**原因：** 當您建立自訂探查時，您可以透過比對回應本文中的字串，將後端伺服器標示為「良好」。 例如，您可以將應用程式閘道設定為接受「未經授權」作為要比對的字串。 如果探查要求的後端伺服器回應包含字串**未經授權**，則會將其標示為「良好」。 否則，此訊息會將其視為「狀況不良」。
+**原因：** 當您建立自訂探查時，您可以透過比對回應本文中的字串，將後端伺服器標示為「良好」。 例如，您可以將應用程式閘道設定為接受「未經授權」作為要比對的字串。 如果探查要求的後端伺服器回應包含字串 **未經授權** ，則會將其標示為「良好」。 否則，此訊息會將其視為「狀況不良」。
 
 **解決方案：** 若要解決此問題，請依照下列步驟執行︰
 
@@ -201,7 +201,7 @@ BackendAddressPoolsText : [
 
 1.  如果兩者不相符，請變更探查設定，使其具有可接受的正確字串值。
 
-深入了解[應用程式閘道探查比對](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)。
+深入了解[應用程式閘道探查比對](./application-gateway-probe-overview.md#probe-matching)。
 
 >[!NOTE]
 > 對於所有 TLS 相關錯誤訊息，若要深入了解 SNI 行為和 v1 與 v2 SKU 之間的差異，請參閱 [TLS 概觀](ssl-overview.md)頁面。
@@ -238,7 +238,7 @@ BackendAddressPoolsText : [
 
 或者，您也可以透過瀏覽器直接存取伺服器 (略過應用程式閘道) 並從瀏覽器匯出根憑證，進而從用戶端電腦匯出根憑證。
 
-如需如何在應用程式閘道中擷取和上傳受信任根憑證的詳細資訊，請參閱[匯出受信任的根憑證 (適用於 v2 SKU)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku)。
+如需如何在應用程式閘道中擷取和上傳受信任根憑證的詳細資訊，請參閱[匯出受信任的根憑證 (適用於 v2 SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku)。
 
 #### <a name="trusted-root-certificate-mismatch"></a>受信任的根憑證不相符
 
@@ -253,7 +253,7 @@ BackendAddressPoolsText : [
 
 遵循上述方法中的步驟 1-11，將正確的受信任根憑證上傳至應用程式閘道。
 
-如需如何在應用程式閘道中擷取和上傳受信任根憑證的詳細資訊，請參閱[匯出受信任的根憑證 (適用於 v2 SKU)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku)。
+如需如何在應用程式閘道中擷取和上傳受信任根憑證的詳細資訊，請參閱[匯出受信任的根憑證 (適用於 v2 SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku)。
 > [!NOTE]
 > 如果後端伺服器未在 TLS 交握期間交換憑證的完整鏈結 (包括根 > 中繼 (如果適用) > 分葉)，也可能發生此錯誤。 若要驗證，您可以使用任何用戶端的 OpenSSL 命令，並使用應用程式閘道探查中設好的設定來連線到後端伺服器。
 
@@ -292,7 +292,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 如果 [從後端位址挑選主機名稱] 已設於 HTTP 設定中，則後端位址集區必須包含有效的 FQDN。
 
-如果您收到此錯誤訊息，這表示後端憑證的 CN 不符合自訂探查或 HTTP 設定中設定的主機名稱 (如果選取了 [從後端 HTTP 設定挑選主機名稱])。 如果您使用預設探查，主機名稱將會設定為 **127.0.0.1**。 如果這不是所需的值，則您應建立自訂探查，並將其與 HTTP 設定產生關聯。
+如果您收到此錯誤訊息，這表示後端憑證的 CN 不符合自訂探查或 HTTP 設定中設定的主機名稱 (如果選取了 [從後端 HTTP 設定挑選主機名稱])。 如果您使用預設探查，主機名稱將會設定為 **127.0.0.1** 。 如果這不是所需的值，則您應建立自訂探查，並將其與 HTTP 設定產生關聯。
 
 **解決方案：**
 
@@ -371,7 +371,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
     e.  在 [輸入規則] 區段中，新增輸入規則以允許 [來源] 設為 [任何] 或 [網際網路]的目的地連接埠範圍 65503-65534 (適用於 v1 SKU) 或 65200-65535 (適用於 v2 SKU)。
 
-    f.  選取 [儲存]，並確認您可以將後端視為「良好」。 或者，您也可以透過 [PowerShell/CLI](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) 來執行此作業。
+    f.  選取 [儲存]，並確認您可以將後端視為「良好」。 或者，您也可以透過 [PowerShell/CLI](../virtual-network/manage-network-security-group.md) 來執行此作業。
 
 1.  檢查您的 UDR 是否有下一個躍點未設定為 [網際網路] 的預設路由 (0.0.0.0/0)：
     
@@ -398,4 +398,4 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 <a name="next-steps"></a>後續步驟
 ----------
 
-深入了解[應用程式閘道診斷和記錄](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。
+深入了解[應用程式閘道診斷和記錄](./application-gateway-diagnostics.md)。

@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595939"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396884"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>針對應用程式閘道中的 App Service 問題進行疑難排解
 
 瞭解當 Azure App Service 用來作為具有 Azure 應用程式閘道的後端目標時，如何診斷並解決您可能會遇到的問題。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本文中，您將瞭解如何針對下列問題進行疑難排解：
 
@@ -41,8 +41,8 @@ ms.locfileid: "89595939"
 
 - HTTP 接聽程式：基本或多網站
 - 後端位址集區： App Service
-- HTTP 設定：**從已啟用的後端位址挑選主機名稱**
-- 探查：**從啟用的 HTTP 設定挑選主機名稱**
+- HTTP 設定： **從已啟用的後端位址挑選主機名稱**
+- 探查： **從啟用的 HTTP 設定挑選主機名稱**
 
 ## <a name="cause"></a>原因
 
@@ -80,10 +80,10 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>解決方案：重寫位置標頭
 
-將 location 標頭中的主機名稱設定為應用程式閘道的功能變數名稱。 若要這樣做，請使用條件來建立 [重寫規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) ，以評估回應中的位置標頭是否包含 azurewebsites.net。 它也必須執行動作來重寫 location 標頭，使其具有應用程式閘道的主機名稱。 如需詳細資訊，請參閱 [如何重寫位置標頭](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)的指示。
+將 location 標頭中的主機名稱設定為應用程式閘道的功能變數名稱。 若要這樣做，請使用條件來建立 [重寫規則](./rewrite-http-headers.md) ，以評估回應中的位置標頭是否包含 azurewebsites.net。 它也必須執行動作來重寫 location 標頭，使其具有應用程式閘道的主機名稱。 如需詳細資訊，請參閱 [如何重寫位置標頭](./rewrite-http-headers.md#modify-a-redirection-url)的指示。
 
 > [!NOTE]
-> HTTP 標頭重寫支援僅適用于應用程式閘道的 [Standard_v2 和 WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 。 如果您使用 v1 SKU，建議您 [從 v1 遷移至 v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)。 您想要使用第2版 SKU 提供的重寫和其他 [先進功能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) 。
+> HTTP 標頭重寫支援僅適用于應用程式閘道的 [Standard_v2 和 WAF_V2 SKU](./application-gateway-autoscaling-zone-redundant.md) 。 如果您使用 v1 SKU，建議您 [從 v1 遷移至 v2](./migrate-v1-v2.md)。 您想要使用第2版 SKU 提供的重寫和其他 [先進功能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) 。
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>替代解決方案：使用自訂功能變數名稱
 
@@ -93,7 +93,7 @@ X-Powered-By: ASP.NET
 
 您必須擁有自訂網域，並遵循此程式：
 
-- 向 app service 的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 的 FQDN 的 CNAME。 如需詳細資訊，請參閱 [將現有的自訂 DNS 名稱對應至 Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)。
+- 向 app service 的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 的 FQDN 的 CNAME。 如需詳細資訊，請參閱 [將現有的自訂 DNS 名稱對應至 Azure App Service](//azure/app-service/app-service-web-tutorial-custom-domain)。
 
     ![App service 自訂網域清單](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -101,12 +101,12 @@ X-Powered-By: ASP.NET
 
 - 當您進行 DNS 查詢時，請確定您的網域會 `www.contoso.com` 解析為應用程式閘道的 FQDN。
 
-- 設定您的自訂探查，以停 **用後端 HTTP 設定的挑選主機名稱**。 在 [Azure 入口網站中，清除探查設定中的核取方塊。 在 PowerShell 中，請勿在**AzApplicationGatewayProbeConfig**命令中使用 **-PickHostNameFromBackendHttpSettings**參數。 在探查的 [主機名稱] 欄位中，輸入您的 app service 的 FQDN example.azurewebsites.net。 從應用程式閘道傳送的探查要求會在主機標頭中攜帶此 FQDN。
+- 設定您的自訂探查，以停 **用後端 HTTP 設定的挑選主機名稱** 。 在 [Azure 入口網站中，清除探查設定中的核取方塊。 在 PowerShell 中，請勿在 **AzApplicationGatewayProbeConfig** 命令中使用 **-PickHostNameFromBackendHttpSettings** 參數。 在探查的 [主機名稱] 欄位中，輸入您的 app service 的 FQDN example.azurewebsites.net。 從應用程式閘道傳送的探查要求會在主機標頭中攜帶此 FQDN。
 
   > [!NOTE]
   > 在下一個步驟中，請確定您的自訂探查未與您的後端 HTTP 設定相關聯。 在此時，您的 HTTP 設定仍會啟用 **來自後端位址切換的挑選主機名稱** 。
 
-- 設定應用程式閘道的 HTTP 設定，以停 **用後端位址的挑選主機名稱**。 在 [Azure 入口網站中，清除此核取方塊。 在 PowerShell 中，請勿在 **>new-azapplicationgatewaybackendHTTPsettings**命令中使用 **-PickHostNameFromBackendAddress**參數。
+- 設定應用程式閘道的 HTTP 設定，以停 **用後端位址的挑選主機名稱** 。 在 [Azure 入口網站中，清除此核取方塊。 在 PowerShell 中，請勿在 **>new-azapplicationgatewaybackendHTTPsettings** 命令中使用 **-PickHostNameFromBackendAddress** 參數。
 
 - 將自訂探查關聯回後端 HTTP 設定，並確認後端狀況良好。
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558892"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398210"
 ---
 # <a name="configure-private-link"></a>設定 private link
 
@@ -30,7 +30,7 @@ Private link 可讓您透過私人端點存取 Azure API for FHIR，這是一種
 - Azure API for FHIR –您想要放在私人端點後方的 FHIR 資源。
 - 虛擬網路–用戶端服務和私人端點將連接的 VNet。
 
-如需詳細資訊，請參閱 [Private Link 檔](https://docs.microsoft.com/azure/private-link/)。
+如需詳細資訊，請參閱 [Private Link 檔](../private-link/index.yml)。
 
 ## <a name="disable-public-network-access"></a>停用公用網路存取
 
@@ -40,7 +40,7 @@ Private link 可讓您透過私人端點存取 Azure API for FHIR，這是一種
 
 ## <a name="create-private-endpoint"></a>建立私人端點
 
-若要建立私人端點，具有 FHIR 資源之 RBAC 許可權的開發人員可以使用 Azure 入口網站、 [Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)或 [Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli)。 本文將逐步引導您使用 Azure 入口網站的步驟。 建議使用 Azure 入口網站，因為它會自動建立及設定私人 DNS 區域。 您可以參考 [Private Link 的快速入門指南](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal) ，以取得詳細資料。
+若要建立私人端點，具有 FHIR 資源之 RBAC 許可權的開發人員可以使用 Azure 入口網站、 [Azure PowerShell](../private-link/create-private-endpoint-powershell.md)或 [Azure CLI](../private-link/create-private-endpoint-cli.md)。 本文將逐步引導您使用 Azure 入口網站的步驟。 建議使用 Azure 入口網站，因為它會自動建立及設定私人 DNS 區域。 您可以參考 [Private Link 的快速入門指南](../private-link/create-private-endpoint-portal.md) ，以取得詳細資料。
 
 有兩種方式可以建立私人端點。 自動核准流程可讓具有 FHIR 資源之 RBAC 許可權的使用者建立私人端點，而不需要核准。 手動核准流程可讓使用者不需要 FHIR 資源的許可權，就能要求 FHIR 資源擁有者核准私人端點。
 

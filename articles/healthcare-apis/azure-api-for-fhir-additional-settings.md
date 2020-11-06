@@ -8,12 +8,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9949ab4cfa42553e5a8d28244b8f621f09334d1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845896"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398159"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>Azure API for FHIR 的其他設定
 
@@ -29,7 +29,7 @@ Azure API for FHIR 會使用資料庫來儲存其資料。 基礎資料庫的效
 
 ## <a name="access-control"></a>存取控制
 
-Azure API for FHIR 只會允許授權的使用者存取 FHIR API。 您可以透過兩種不同的機制來設定授權的使用者。 設定存取控制的主要和建議方式是使用 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/)，可透過 **存取控制 (IAM) ** 分頁來存取。 如果您想要使用與訂用帳戶相關聯的 Azure Active Directory 租使用者來保護資料平面存取，Azure RBAC 才適用。 如果您想要使用不同的租使用者，Azure API for FHIR 提供本機 FHIR 資料平面存取控制機制。 使用本機 RBAC 機制時，設定選項的功能不會很豐富。 如需詳細資料，請選擇下列其中一個選項：
+Azure API for FHIR 只會允許授權的使用者存取 FHIR API。 您可以透過兩種不同的機制來設定授權的使用者。 設定存取控制的主要和建議方式是使用 [azure 角色型存取控制 (AZURE RBAC)](../role-based-access-control/index.yml)，可透過 **存取控制 (IAM)** 分頁來存取。 如果您想要使用與訂用帳戶相關聯的 Azure Active Directory 租使用者來保護資料平面存取，Azure RBAC 才適用。 如果您想要使用不同的租使用者，Azure API for FHIR 提供本機 FHIR 資料平面存取控制機制。 使用本機 RBAC 機制時，設定選項的功能不會很豐富。 如需詳細資料，請選擇下列其中一個選項：
 
 * [適用于 FHIR 資料平面的 AZURE RBAC](configure-azure-rbac.md)。 當您使用與訂用帳戶相關聯的 Azure Active Directory 租使用者時，這是慣用的選項。
 * [本機 FHIR 資料平面存取控制](configure-local-rbac.md)。 只有當您需要針對資料平面存取控制使用外部 Azure Active Directory 租使用者時，才使用此選項。 

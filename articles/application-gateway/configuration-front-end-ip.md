@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: d6cfac7f0fb3939e57ce64f552556138ce9feacd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652855"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397666"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>應用程式閘道前端 IP 位址設定
 
@@ -32,11 +32,11 @@ ms.locfileid: "89652855"
 
 僅支援一個公用 IP 位址或一個私人 IP 位址。 當您建立應用程式閘道時，請選擇前端 IP。
 
-- 針對公用 IP 位址，您可以建立新的公用 IP 位址，或在與應用程式閘道相同的位置中使用現有的公用 IP。 如需詳細資訊，請參閱 [靜態與動態公用 IP 位址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)。
+- 針對公用 IP 位址，您可以建立新的公用 IP 位址，或在與應用程式閘道相同的位置中使用現有的公用 IP。 如需詳細資訊，請參閱 [靜態與動態公用 IP 位址](./application-gateway-components.md#static-versus-dynamic-public-ip-address)。
 
-- 針對私人 IP 位址，您可以從建立應用程式閘道的子網中指定私人 IP 位址。 如果您未指定，則會自動從子網選取任意 IP 位址。 您選取 (靜態或動態) 的 IP 位址類型，稍後無法變更。 如需詳細資訊，請參閱 [使用內部負載平衡器建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)。
+- 針對私人 IP 位址，您可以從建立應用程式閘道的子網中指定私人 IP 位址。 如果您未指定，則會自動從子網選取任意 IP 位址。 您選取 (靜態或動態) 的 IP 位址類型，稍後無法變更。 如需詳細資訊，請參閱 [使用內部負載平衡器建立應用程式閘道](./application-gateway-ilb-arm.md)。
 
-前端 IP 位址與接聽程式相關 *聯，它*會檢查前端 ip 上的傳入要求。
+前端 IP 位址與接聽程式相關 *聯，它* 會檢查前端 ip 上的傳入要求。
 
 ## <a name="next-steps"></a>後續步驟
 

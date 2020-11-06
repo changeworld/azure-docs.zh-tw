@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088065"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397853"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 建立 Azure 應用程式閘道 (傳統) 的自訂探查
 
@@ -53,7 +53,7 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> *InstanceCount*的預設值為2，最大值為10。 *GatewaySize* 的預設值是 Medium。 您可以選擇 Small、Medium 和 Large。
+> *InstanceCount* 的預設值為2，最大值為10。 *GatewaySize* 的預設值是 Medium。 您可以選擇 Small、Medium 和 Large。
 > 
 > 
 
@@ -140,14 +140,14 @@ Get-AzureApplicationGateway AppGwTest
 
 組態參數如下：
 
-|參數|說明|
+|參數|描述|
 |---|---|
 |**名稱** |自訂探查的參考名稱。 |
 | **通訊協定** | 使用的通訊協定 (可能的值是 HTTP 或 HTTPS)。|
 | **Host** 和 **Path** | 應用程式閘道所叫用的完整 URL 路徑，可藉以判斷執行個體健康狀態。 例如，如果您有網站 HTTP： \/ /contoso.com/，則可以為 "HTTP：/contoso.com/path/custompath.htm" 設定自訂探查，以便 \/ 讓探查檢查有成功的 HTTP 回應。|
 | **間隔** | 以秒為單位設定探查間隔檢查。|
 | **逾時** | 定義 HTTP 回應檢查的探查逾時。|
-| **UnhealthyThreshold** | 要將後端執行個體標記為「狀況不良」** 所需的失敗 HTTP 回應次數。|
+| **UnhealthyThreshold** | 要將後端執行個體標記為「狀況不良」所需的失敗 HTTP 回應次數。|
 
 \<BackendHttpSettings\> 組態中會參考探查名稱，以指派哪個後端集區會使用自訂探查設定。
 
@@ -198,9 +198,8 @@ Get-AzureApplicationGateway AppGwTest
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-如果您想要設定傳輸層安全性 (TLS) ，之前稱為安全通訊端層 (SSL) 卸載，請參閱 [設定應用程式閘道以進行 tls](application-gateway-ssl.md)卸載。
+如果您想要設定傳輸層安全性 (TLS) ，之前稱為安全通訊端層 (SSL) 卸載，請參閱 [設定應用程式閘道以進行 tls](./tutorial-ssl-powershell.md)卸載。
 
-如果您想要設定要與內部負載平衡器搭配使用的應用程式閘道，請參閱 [建立具有內部負載平衡器 (ILB) 的應用程式閘道](application-gateway-ilb.md)。
-
+如果您想要設定要與內部負載平衡器搭配使用的應用程式閘道，請參閱 [建立具有內部負載平衡器 (ILB) 的應用程式閘道](./application-gateway-ilb-arm.md)。

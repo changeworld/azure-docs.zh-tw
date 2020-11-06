@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808202"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397802"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>透過 PowerShell 使用應用程式閘道來設定端對端 SSL
 
@@ -20,7 +20,7 @@ ms.locfileid: "84808202"
 
 Azure 應用程式閘道支援為流量進行端對端加密。 「應用程式閘道」會終止應用程式閘道上的 TLS/SSL 連線。 閘道接著會對流量套用路由規則、重新加密封包，並根據所定義的路由規則將封包轉送至適當的後端伺服器。 任何來自 Web 伺服器的回應都會經歷相同的程序而回到使用者端。
 
-應用程式閘道支援定義自訂 TLS 選項。 也支援停用下列通訊協定版本：**TLSv1.0**、**TLSv1.1** 和 **TLSv1.2**，也會定義要使用哪個加密套件以及偏好的順序。 若要深入了解可設定的 TLS 選項，請參閱 [TLS 原則概觀](application-gateway-SSL-policy-overview.md)。
+應用程式閘道支援定義自訂 TLS 選項。 也支援停用下列通訊協定版本： **TLSv1.0** 、 **TLSv1.1** 和 **TLSv1.2** ，也會定義要使用哪個加密套件以及偏好的順序。 若要深入了解可設定的 TLS 選項，請參閱 [TLS 原則概觀](application-gateway-SSL-policy-overview.md)。
 
 > [!NOTE]
 > 預設會停用 SSL 2.0 和 SSL 3.0，並且無法啟用。 這些版本被認為並不安全，因此不能搭配應用程式閘道使用。
@@ -202,7 +202,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. 設定應用程式閘道的執行個體大小。 可用大小是 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  容量的可用值為 **1** 到 **10**。
+10. 設定應用程式閘道的執行個體大小。 可用大小是 **Standard\_Small** 、 **Standard\_Medium** 和 **Standard\_Large** 。  容量的可用值為 **1** 到 **10** 。
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
     - **TLSV1_1**
     - **TLSV1_2**
     
-    下列範例將最小通訊協定版本設定為 **TLSv1_2**，並且只啟用 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** 和 **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256**。
+    下列範例將最小通訊協定版本設定為 **TLSv1_2** ，並且只啟用 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256** , **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** 和 **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** 。
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. 定義 TLS 原則。 在下列範例中，會停用 **TLSv1.0** 和 **TLSv1.1**，且只有 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, and **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** 是允許的加密套件。
+2. 定義 TLS 原則。 在下列範例中，會停用 **TLSv1.0** 和 **TLSv1.1** ，且只有 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256** , **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** , and **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** 是允許的加密套件。
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -359,6 +359,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>後續步驟
 
-如需透過應用程式閘道使用 Web 應用程式防火牆強化 Web 應用程式安全性的詳細資訊，請參閱 [Web 應用程式防火牆概觀](application-gateway-webapplicationfirewall-overview.md)。
+如需透過應用程式閘道使用 Web 應用程式防火牆強化 Web 應用程式安全性的詳細資訊，請參閱 [Web 應用程式防火牆概觀](../web-application-firewall/ag/ag-overview.md)。
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

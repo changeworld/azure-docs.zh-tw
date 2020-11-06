@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 23b59c80c8e44cf6473a2de9be9807eaf8a756c6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4b4a1e601a5a0dbf5e56fc1d930e14150f27fee3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310552"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398227"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>設定定型作業
 
-在本教學課程中，請使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py)上的定型腳本 *train.py* 。 在實務上，您可以採用任何自訂定型腳本，並以 Azure Machine Learning 的方式執行它。
+在本教學課程中，請使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/train/fastai/pets-resnet34/train.py)上的定型腳本 *train.py* 。 在實務上，您可以採用任何自訂定型腳本，並以 Azure Machine Learning 的方式執行它。
 
 建立 `ScriptRunConfig` 資源以設定您的作業，以在所需的 [計算目標](how-to-set-up-training-targets.md)上執行。
 

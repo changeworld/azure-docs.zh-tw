@@ -7,22 +7,22 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652860"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397530"
 ---
 # <a name="application-gateway-request-routing-rules"></a>應用程式閘道要求路由規則
 
-當您使用 Azure 入口網站建立應用程式閘道時，您會 (*rule1*) 建立預設規則。 此規則會將預設的接聽程式 (*appGatewayHttpListener*) 與預設的後端集區系結 (*appGatewayBackendPool*) 和預設的後端 HTTP 設定 (*appGatewayBackendHttpSettings*) 。 建立閘道之後，您可以編輯預設規則的設定，或建立新的規則。
+當您使用 Azure 入口網站建立應用程式閘道時，您會 ( *rule1* ) 建立預設規則。 此規則會將預設的接聽程式 ( *appGatewayHttpListener* ) 與預設的後端集區系結 ( *appGatewayBackendPool* ) 和預設的後端 HTTP 設定 ( *appGatewayBackendHttpSettings* ) 。 建立閘道之後，您可以編輯預設規則的設定，或建立新的規則。
 
 ## <a name="rule-type"></a>規則型別
 
-當您建立規則時，您可以選擇 [ [*基本* ] 和 [ *路徑型*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)]。
+當您建立規則時，您可以選擇 [ [*基本* ] 和 [ *路徑型*](./application-gateway-components.md#request-routing-rules)]。
 
-- 如果您想要將相關接聽程式上的所有要求轉寄 (例如， * <i></i> contoso.com/ \*) * 到單一後端集區，請選擇 [基本]。
+- 如果您想要將相關接聽程式上的所有要求轉寄 (例如， *<i></i> contoso.com/ \*)* 到單一後端集區，請選擇 [基本]。
 - 如果您想要將來自特定 URL 路徑的要求路由至特定的後端集區，請選擇 [以路徑為基礎]。 路徑模式只會套用至 URL 的路徑，而不會套用到其查詢參數。
 
 ### <a name="order-of-processing-rules"></a>處理規則的順序
@@ -51,13 +51,13 @@ ms.locfileid: "89652860"
 
 ## <a name="redirection-setting"></a>重新導向設定
 
-如果已針對基本規則設定重新導向，則會將相關聯接聽程式上的所有要求重新導向至目標。 這是 *全域* 重新導向。 如果已針對以路徑為基礎的規則設定重新導向，則只會重新導向特定網站區域中的要求。 例如，以 */cart/ \* *表示的購物車區域。 這是以 *路徑為基礎的重新導向* 。
+如果已針對基本規則設定重新導向，則會將相關聯接聽程式上的所有要求重新導向至目標。 這是 *全域* 重新導向。 如果已針對以路徑為基礎的規則設定重新導向，則只會重新導向特定網站區域中的要求。 例如，以 */cart/ \** 表示的購物車區域。 這是以 *路徑為基礎的重新導向* 。
 
 如需重新導向的詳細資訊，請參閱 [應用程式閘道重新導向總覽](redirect-overview.md)。
 
 ### <a name="redirection-type"></a>重新導向類型
 
-選擇所需的重新導向類型： *永久性 (301) *、 *暫時性 (307) *、 *找到 (302) *，或 *查看其他 (303) *。
+選擇所需的重新導向類型： *永久性 (301)* 、 *暫時性 (307)* 、 *找到 (302)* ，或 *查看其他 (303)* 。
 
 ### <a name="redirection-target"></a>重新導向目標
 
@@ -87,7 +87,7 @@ ms.locfileid: "89652860"
 藉由使用重寫規則，您可以新增、移除或更新 HTTP (S) 要求和回應標頭，以及 URL 路徑和查詢字串參數，因為要求和回應封包會透過應用程式閘道在用戶端和後端集區之間移動。
 
 標頭和 URL 參數可以設定為靜態值或其他標頭和伺服器變數。 這有助於重要的使用案例，例如，將用戶端 IP 位址解壓縮、移除後端的機密資訊、增加更多安全性等等。
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
  - [重寫 HTTP 標頭和 URL 總覽](rewrite-http-headers-url.md)
  - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)

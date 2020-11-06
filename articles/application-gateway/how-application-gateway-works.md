@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9166125fac28f43a93cbee2875b91bee986b1400
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506548"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397462"
 ---
 # <a name="how-an-application-gateway-works"></a>應用程式閘道的運作方式
 
@@ -32,7 +32,7 @@ ms.locfileid: "86506548"
 
 Azure 應用程式閘道可做為內部應用程式負載平衡器，或作為網際網路面向的應用程式負載平衡器。 網際網路面向的應用程式閘道會使用公用 IP 位址。 網際網路對向應用程式閘道的 DNS 名稱可公開解析為其公用 IP 位址。 因此，網際網路面向的應用程式閘道可以將用戶端要求路由傳送到網際網路。
 
-內部應用程式閘道僅使用私人 IP 位址。 如果您使用自訂或 [私人 DNS 區域](https://docs.microsoft.com/azure/dns/private-dns-overview)，則功能變數名稱應可在內部解析為應用程式閘道的私人 IP 位址。 因此，內部負載平衡器只能從用戶端對應用程式閘道的虛擬網路具有存取權的用戶端路由傳送要求。
+內部應用程式閘道僅使用私人 IP 位址。 如果您使用自訂或 [私人 DNS 區域](../dns/private-dns-overview.md)，則功能變數名稱應可在內部解析為應用程式閘道的私人 IP 位址。 因此，內部負載平衡器只能從用戶端對應用程式閘道的虛擬網路具有存取權的用戶端路由傳送要求。
 
 ## <a name="how-an-application-gateway-routes-a-request"></a>應用程式閘道路由要求的方式
 
@@ -52,9 +52,9 @@ HTTP 設定中使用的埠和通訊協定會決定應用程式閘道與後端伺
 
  >[!NOTE]
 >如果後端集區：
-> - **是公用端點**，應用程式閘道會使用其前端公用 IP 來連接伺服器。 如果沒有前端公用 IP 位址，則會為輸出外部連線指派一個。
-> - **包含可內部解析的 FQDN 或私人 ip 位址**，應用程式閘道會使用其實例的私人 ip 位址，將要求路由傳送至後端伺服器。
-> - **包含外部端點或外部可解析的 FQDN**，應用程式閘道會使用其前端公用 IP 位址，將要求路由傳送至後端伺服器。 DNS 解析是根據私人 DNS 區域或自訂 DNS 伺服器（如果已設定），或使用預設的 Azure 提供的 DNS。 如果沒有前端公用 IP 位址，則會為輸出外部連線指派一個。
+> - **是公用端點** ，應用程式閘道會使用其前端公用 IP 來連接伺服器。 如果沒有前端公用 IP 位址，則會為輸出外部連線指派一個。
+> - **包含可內部解析的 FQDN 或私人 ip 位址** ，應用程式閘道會使用其實例的私人 ip 位址，將要求路由傳送至後端伺服器。
+> - **包含外部端點或外部可解析的 FQDN** ，應用程式閘道會使用其前端公用 IP 位址，將要求路由傳送至後端伺服器。 DNS 解析是根據私人 DNS 區域或自訂 DNS 伺服器（如果已設定），或使用預設的 Azure 提供的 DNS。 如果沒有前端公用 IP 位址，則會為輸出外部連線指派一個。
 
 ### <a name="modifications-to-the-request"></a>要求的修改
 
@@ -64,6 +64,6 @@ X 轉送-proto 的有效值為 HTTP 或 HTTPS。 X 轉送的埠會指定要求�
 
 您可以使用 [重寫 HTTP 標頭和 url](rewrite-http-headers-url.md) 來設定應用程式閘道，以修改要求和回應標頭和 url，或使用路徑-覆寫設定修改 URI 路徑。 不過，除非設定為這樣做，否則所有連入要求都會 proxy 處理至後端。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解應用程式閘道元件](application-gateway-components.md)

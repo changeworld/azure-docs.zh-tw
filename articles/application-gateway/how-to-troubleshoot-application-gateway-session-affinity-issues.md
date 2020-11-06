@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 02d1d78dae4f02ac53d535f6c404b15f8d98f008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563738"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397564"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>針對 Azure 應用程式閘道會話親和性問題進行疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "90563738"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 當您想要在同一個後端保留使用者工作階段時，以 Cookie 為基礎的工作階段親和性非常有用。 使用受閘道管理的 Cookie，應用程式閘道即可將來自使用者工作階段的後續流量導向至同一部伺服器進行處理。 當使用者工作階段的工作階段狀態儲存在伺服器本機時，這項功能很重要。
 
@@ -40,9 +40,9 @@ ms.locfileid: "90563738"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 在 **左側流覽** 窗格中，按一下 [ **所有資源**]。 在 [所有資源] 分頁中，按一下應用程式閘道名稱。 如果您選取的訂用帳戶中已經有數個資源，您可以在 [**依名稱篩選**] 中輸入應用程式閘道名稱 .。。 輕鬆地存取應用程式閘道。
+2. 在 **左側流覽** 窗格中，按一下 [ **所有資源** ]。 在 [所有資源] 分頁中，按一下應用程式閘道名稱。 如果您選取的訂用帳戶中已經有數個資源，您可以在 [ **依名稱篩選** ] 中輸入應用程式閘道名稱 .。。 輕鬆地存取應用程式閘道。
 
-3. 在 [**設定**] 底下選取 [ **HTTP 設定**] 索引標籤。
+3. 在 [ **設定** ] 底下選取 [ **HTTP 設定** ] 索引標籤。
 
    ![螢幕擷取畫面顯示已選取 H T P 設定的設定。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
@@ -52,9 +52,9 @@ ms.locfileid: "90563738"
 
 
 
-您也可以使用下列其中一種方法，檢查 "**backendHttpSettingsCollection**" 下的 "**CookieBasedAffinity**" 值是否已設定為*啟用*：
+您也可以使用下列其中一種方法，檢查 " **backendHttpSettingsCollection** " 下的 " **CookieBasedAffinity** " 值是否已設定為 *啟用* ：
 
-- 在 PowerShell 中執行[AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)
+- 在 PowerShell 中執行[AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)
 - 使用 Azure Resource Manager 範本查看 JSON 檔案
 
 ```
@@ -80,10 +80,10 @@ ms.locfileid: "90563738"
 若要識別此問題，請遵循下列指示：
 
 1. 在「用戶端」上進行 web 偵錯工具追蹤，以連線至應用程式閘道後方的應用程式 (我們在此範例) 中使用 Fiddler。
-    **秘訣** 如果您不知道如何使用 Fiddler，請勾選底部的 [**我要收集網路流量，並使用 web 偵錯工具分析它**] 選項。
+    **秘訣** 如果您不知道如何使用 Fiddler，請勾選底部的 [ **我要收集網路流量，並使用 web 偵錯工具分析它** ] 選項。
 
-2. 檢查並分析會話記錄，以判斷用戶端所提供的 cookie 是否有 ARRAffinity 詳細資料。 如果您在 cookie 集合中找不到 ARRAffinity 詳細資料，例如 "**ARRAffinity =** *ARRAffinityValue*"，這表示用戶端不會使用應用程式閘道所提供的 ARRA cookie 來回複。
-    例如：
+2. 檢查並分析會話記錄，以判斷用戶端所提供的 cookie 是否有 ARRAffinity 詳細資料。 如果您在 cookie 集合中找不到 ARRAffinity 詳細資料，例如 " **ARRAffinity =** *ARRAffinityValue* "，這表示用戶端不會使用應用程式閘道所提供的 ARRA cookie 來回複。
+    例如︰
 
     ![螢幕擷取畫面顯示已反白顯示單一專案的會話記錄。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -109,29 +109,29 @@ ms.locfileid: "90563738"
 
 透過 Azure 入口網站啟用記錄功能
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，尋找您的資源，然後按一下 [ **診斷記錄**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，尋找您的資源，然後按一下 [ **診斷記錄** ]。
 
    針對應用程式閘道，有三個可用的記錄：存取記錄檔、效能記錄檔、防火牆記錄檔
 
-2. 若要開始收集資料，請按一下 [ **開啟診斷**]。
+2. 若要開始收集資料，請按一下 [ **開啟診斷** ]。
 
    ![螢幕擷取畫面顯示已選取診斷記錄的應用程式閘道。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
-3. [診斷設定]**** 刀鋒視窗中提供診斷記錄的設定。 在此範例中，Log Analytics 會儲存記錄。 按一下 [ **Log Analytics** ] 下的 **[設定]** 以設定您的工作區。 您也可以使用事件中樞和儲存體帳戶來儲存診斷記錄。
+3. [診斷設定] 刀鋒視窗中提供診斷記錄的設定。 在此範例中，Log Analytics 會儲存記錄。 按一下 [ **Log Analytics** ] 下的 **[設定]** 以設定您的工作區。 您也可以使用事件中樞和儲存體帳戶來儲存診斷記錄。
 
    ![螢幕擷取畫面顯示已選取 Log Analytics 設定的 [診斷設定] 窗格。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. 確認設定，然後按一下 [ **儲存**]。
+4. 確認設定，然後按一下 [ **儲存** ]。
 
    ![螢幕擷取畫面顯示 [診斷設定] 窗格，其中已選取 [儲存]。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
 #### <a name="view-and-analyze-the-application-gateway-access-logs"></a>查看並分析應用程式閘道存取記錄
 
-1. 在 [應用程式閘道資源] 視圖下的 Azure 入口網站中，選取 [**監視**] 區段中的 [**診斷記錄**]。
+1. 在 [應用程式閘道資源] 視圖下的 Azure 入口網站中，選取 [ **監視** ] 區段中的 [ **診斷記錄** ]。
 
    ![螢幕擷取畫面顯示已選取診斷記錄的監視。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. 在右側的 [**記錄檔類別**] 底下的下拉式清單中，選取 [**ApplicationGatewayAccessLog**]。  
+2. 在右側的 [ **記錄檔類別** ] 底下的下拉式清單中，選取 [ **ApplicationGatewayAccessLog** ]。  
 
    ![螢幕擷取畫面顯示已選取 ApplicationGatewayAccessLog 的 [記錄類別] 下拉式清單。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
@@ -141,19 +141,19 @@ ms.locfileid: "90563738"
 
 5. 檢查下列資料：
 
-- **ClientIP**–這是來自連接用戶端的用戶端 IP 位址。
+- **ClientIP** –這是來自連接用戶端的用戶端 IP 位址。
 - **ClientPort** -這是來自連接用戶端要求的來源埠。
 - **RequestQuery** –這表示收到要求的目的地伺服器。
-- **伺服器路由**：收到要求的後端集區實例。
-- **X-AzureApplicationGateway-LOG-ID**：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 例如： >new-azureapplicationgateway-CACHE-命中 = 0&伺服器路由 = 10.0.2.4。
+- **伺服器路由** ：收到要求的後端集區實例。
+- **X-AzureApplicationGateway-LOG-ID** ：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 例如： >new-azureapplicationgateway-CACHE-命中 = 0&伺服器路由 = 10.0.2.4。
 
-  - **SERVER-STATUS**：應用程式閘道從後端收到的 HTTP 回應碼。
+  - **SERVER-STATUS** ：應用程式閘道從後端收到的 HTTP 回應碼。
 
   ![螢幕擷取畫面會以純文字顯示伺服器狀態，大部分是隱藏的，clientPort 和伺服器路由會反白顯示。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
 如果您看到兩個專案來自相同的 ClientIP 和用戶端埠，則會傳送至相同的後端伺服器，這表示應用程式閘道已正確設定。
 
-如果您看到兩個專案來自相同的 ClientIP 和用戶端埠，而且這些專案會傳送至不同的後端伺服器，這表示要求會在後端伺服器之間跳動，請選取 [**應用程式正在使用以 cookie 為基礎的親和性，但仍在後端伺服器之間跳動的要求**]，以進行疑難排解。
+如果您看到兩個專案來自相同的 ClientIP 和用戶端埠，而且這些專案會傳送至不同的後端伺服器，這表示要求會在後端伺服器之間跳動，請選取 [ **應用程式正在使用以 cookie 為基礎的親和性，但仍在後端伺服器之間跳動的要求** ]，以進行疑難排解。
 
 ### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>使用 web 偵錯工具來捕獲及分析 HTTP 或 HTTPS 流量
 
@@ -174,7 +174,7 @@ Web 偵錯工具（如 Fiddler）可協助您藉由捕捉網際網路與測試�
 
     ![螢幕擷取畫面顯示 Fiddler Web 偵錯工具，其中已醒目提示 [捕捉] 指示器。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. 最可能的情況是，您會對解密的 HTTPS 流量有興趣，而且可以選取 [**工具**  >  **Fiddler 選項**]，然後選取 [**解密 HTTPs 流量**] 方塊來啟用 HTTPs 解密。
+4. 最可能的情況是，您會對解密的 HTTPS 流量有興趣，而且可以選取 [ **工具**  >  **Fiddler 選項** ]，然後選取 [ **解密 HTTPs 流量** ] 方塊來啟用 HTTPs 解密。
 
     ![螢幕擷取畫面顯示已選取 H T T P 的 Fiddler 選項，並將選取的 HTTPS 流量解密。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -182,7 +182,7 @@ Web 偵錯工具（如 Fiddler）可協助您藉由捕捉網際網路與測試�
 
     ![螢幕擷取畫面顯示選取的 X 圖示，它會顯示 [全部移除] 選項。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. 重現問題之後，**請選取 [**  >  **儲存**  >  **所有會話**]，以儲存要審核的檔案 .。。 
+6. 重現問題之後， **請選取 [**  >  **儲存**  >  **所有會話** ]，以儲存要審核的檔案 .。。 
 
     ![螢幕擷取畫面顯示已選取 [儲存所有會話] 選項。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
@@ -190,7 +190,7 @@ Web 偵錯工具（如 Fiddler）可協助您藉由捕捉網際網路與測試�
 
     例如：
 
-- **範例 A：** 您會發現從用戶端傳送要求的會話記錄，並移至應用程式閘道的公用 IP 位址，請按一下此記錄以查看詳細資料。  底部方塊中的資料是應用程式閘道傳回給用戶端的資料。 選取 [原始] 索引標籤，然後判斷用戶端是否收到「**設定 Cookie： ARRAffinity =** *ARRAffinityValue*」。 如果沒有 cookie，就不會設定會話親和性，或應用程式閘道不會將 cookie 套用回用戶端。
+- **範例 A：** 您會發現從用戶端傳送要求的會話記錄，並移至應用程式閘道的公用 IP 位址，請按一下此記錄以查看詳細資料。  底部方塊中的資料是應用程式閘道傳回給用戶端的資料。 選取 [原始] 索引標籤，然後判斷用戶端是否收到「 **設定 Cookie： ARRAffinity =** *ARRAffinityValue* 」。 如果沒有 cookie，就不會設定會話親和性，或應用程式閘道不會將 cookie 套用回用戶端。
 
    > [!NOTE]
    > 此 ARRAffinity 值是 cookie 識別碼，應用程式閘道會為用戶端設定，以傳送至特定的後端伺服器。

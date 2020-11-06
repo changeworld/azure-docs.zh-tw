@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 37e76f54b9c4fe38c891f7cee7bc443d1b0b20f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a73208ef7014c1f21c78485fc613a26ce3bfc76
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596053"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397139"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>使用 Azure PowerShell 根據 URL 路由網路流量
 
-您可以使用 Azure PowerShell，根據用來存取您應用程式的 URL，將網路流量設定為路由到特定可調整的伺服器集區。 在本文中，您會使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)，建立具有三個後端集區的[Azure 應用程式閘道](application-gateway-introduction.md)。 每個後端集區都有特定用途，例如處理常見資料、影像和影片。  將流量路由到個別集區，可確保您的客戶在需要時取得資訊。
+您可以使用 Azure PowerShell，根據用來存取您應用程式的 URL，將網路流量設定為路由到特定可調整的伺服器集區。 在本文中，您會使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)，建立具有三個後端集區的[Azure 應用程式閘道](./overview.md)。 每個後端集區都有特定用途，例如處理常見資料、影像和影片。  將流量路由到個別集區，可確保您的客戶在需要時取得資訊。
 
-若要啟用流量路由，請建立指派給接聽程式的[路由規則](application-gateway-url-route-overview.md)，接聽程式會接聽特定連接埠，以確保網路流量抵達集區中的適當伺服器。
+若要啟用流量路由，請建立指派給接聽程式的[路由規則](./url-route-overview.md)，接聽程式會接聽特定連接埠，以確保網路流量抵達集區中的適當伺服器。
 
 在本文中，您將學會如何：
 
@@ -90,7 +90,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
-使用[>new-azapplicationgatewayipconfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)將您先前建立的*myAGSubnet*與應用程式閘道建立關聯。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)，將 *myAGPublicIPAddress* 指派給應用程式閘道。
+使用 [>new-azapplicationgatewayipconfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)將您先前建立的 *myAGSubnet* 與應用程式閘道建立關聯。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)，將 *myAGPublicIPAddress* 指派給應用程式閘道。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -312,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在此範例中，您要建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 您所建立的擴展集名為 myvmss1**、myvmss2** 和 myvmss3**。 當您設定 IP 設定時，要將擴展集指派給後端集區。
+在此範例中，您要建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 您所建立的擴展集名為 myvmss1、myvmss2 和 myvmss3。 當您設定 IP 設定時，要將擴展集指派給後端集區。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

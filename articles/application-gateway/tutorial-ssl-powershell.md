@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595796"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396561"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>使用 Azure PowerShell 建立具有 TLS 終止的應用程式閘道
 
-您可以使用 Azure PowerShell 來建立[應用程式閘道](overview.md)，其具有使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作為後端伺服器之[TLS/SSL 終止](ssl-overview.md)的憑證。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。 
+您可以使用 Azure PowerShell 來建立[應用程式閘道](overview.md)，其具有使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)作為後端伺服器之[TLS/SSL 終止](ssl-overview.md)的憑證。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。 
 
 在本文中，您將學會如何：
 
@@ -35,7 +35,7 @@ ms.locfileid: "89595796"
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
-若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在本文中，您會使用 [new-selfsignedcertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate)來建立自我簽署憑證。 您可以使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。
+若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在本文中，您會使用 [new-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate)來建立自我簽署憑證。 您可以使用 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。
 
 ```powershell
 New-SelfSignedCertificate `
@@ -66,7 +66,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 建立名為 myResourceGroupAG** 的 Azure 資源群組。 
+資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 建立名為 myResourceGroupAG 的 Azure 資源群組。 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -146,7 +146,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在此範例中，您會建立基本接聽程式，接聽根 URL 的 HTTPS 流量。 
 
-使用 [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) 建立憑證物件，然後使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 搭配前端組態、前端連接埠和先前建立的憑證，建立名為 mydefaultListener** 的接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 來建立名為 *rule1* 的基本規則。
+使用 [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) 建立憑證物件，然後使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 搭配前端組態、前端連接埠和先前建立的憑證，建立名為 mydefaultListener 的接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 來建立名為 *rule1* 的基本規則。
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -176,7 +176,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-certificate"></a>建立包含憑證的應用程式閘道
 
-現在您已建立必要的支援資源，請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 為名為 myAppGateway** 的應用程式閘道指定參數，然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 搭配憑證加以建立。
+現在您已建立必要的支援資源，請使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 為名為 myAppGateway 的應用程式閘道指定參數，然後使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 搭配憑證加以建立。
 
 ### <a name="create-the-application-gateway"></a>建立應用程式閘道
 
@@ -284,7 +284,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![安全警告](./media/tutorial-ssl-powershell/application-gateway-secure.png)
 
-若要在使用自我簽署憑證時接受安全性警告，請依序按一下 [詳細資料]**** 與 [繼續瀏覽網頁]****。 接著會顯示受保護的 IIS 網站，如下列範例所示：
+若要在使用自我簽署憑證時接受安全性警告，請選取 [ **詳細資料** ]，然後 **移至網頁** 。 接著會顯示受保護的 IIS 網站，如下列範例所示：
 
 ![在應用程式閘道中測試基底 URL](./media/tutorial-ssl-powershell/application-gateway-iistest.png)
 

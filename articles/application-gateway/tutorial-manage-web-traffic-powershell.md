@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595860"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397099"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>使用 Azure PowerShell 以應用程式閘道管理網路流量
 
-針對您維護的伺服器，可以使用應用程式閘道來管理及保護其網路流量。 您可以使用 Azure PowerShell 來建立[應用程式閘道](overview.md)，它使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作為後端伺服器以管理網路流量。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
+針對您維護的伺服器，可以使用應用程式閘道來管理及保護其網路流量。 您可以使用 Azure PowerShell 來建立[應用程式閘道](overview.md)，它使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)作為後端伺服器以管理網路流量。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
 
 在本文中，您將學會如何：
 
@@ -257,4 +257,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Web 應用程式防火牆來限制網路流量](./tutorial-restrict-web-traffic-powershell.md)
+[使用 Web 應用程式防火牆來限制網路流量](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

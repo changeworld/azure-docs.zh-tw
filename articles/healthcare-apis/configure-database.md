@@ -7,18 +7,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3fe4118a8ecf4479732ba4073b342d3ec9f941b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042485"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398193"
 ---
 # <a name="configure-database-settings"></a>設定資料庫設定 
 
 Azure API for FHIR 會使用資料庫來儲存其資料。 基礎資料庫的效能取決於在服務布建期間選取的要求單位數目 (RU) ，或在服務布建之後，于資料庫設定中選取的數目。
 
-Azure API for FHIR 會從 Cosmos DB 中借用 ru 的概念 (在設定基礎資料庫的效能時，請參閱 [Azure Cosmos DB) 中的要求單位](https://docs.microsoft.com/azure/cosmos-db/request-units) 。 
+Azure API for FHIR 會從 Cosmos DB 中借用 ru 的概念 (在設定基礎資料庫的效能時，請參閱 [Azure Cosmos DB) 中的要求單位](../cosmos-db/request-units.md) 。 
 
 您必須布建輸送量，以確保您的資料庫隨時都能使用足夠的系統資源。 您的應用程式需要多少 ru 取決於您所執行的作業。 作業可以從簡單的讀取和寫入範圍，到更複雜的查詢。 
 

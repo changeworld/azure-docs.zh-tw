@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806766"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396935"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自訂根 CA 產生 Azure 應用程式閘道的自我簽署憑證
 
@@ -133,7 +133,7 @@ CSR 是在要求憑證時提供給 CA 的公開金鑰。 CA 會為此特定要�
 
 若要了解如何匯入憑證並將其上傳為 IIS 上的伺服器憑證，請參閱[操作說明：在 Windows Server 2003 中的 Web 服務器上安裝匯入的憑證](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
 
-如需 TLS 繫結指示，請參閱[如何在 IIS 7 上設定 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
+如需 TLS 繫結指示，請參閱[如何在 IIS 7 上設定 SSL](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
 
 ### <a name="apache"></a>Apache
 
@@ -266,11 +266,10 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ### <a name="verify-the-application-gateway-backend-health"></a>確認應用程式閘道後端的健康情況
 
 1. 按一下應用程式閘道的 [後端健康情況] 檢視，以確認探查狀況是否良好。
-1. 您應該會看到 HTTPS 探查的狀態為**良好**。
+1. 您應該會看到 HTTPS 探查的狀態為 **良好** 。
 
 ![HTTPS 探查](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解應用程式閘道中的 SSL\TLS，請參閱[應用程式閘道的 TLS 終止和端對端 TLS 概觀](ssl-overview.md)。
-

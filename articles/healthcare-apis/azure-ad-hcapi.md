@@ -9,16 +9,16 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b362a81fc9b533fe00987a74d7e25dbba61a2589
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846015"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398244"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure API for FHIR 的 Azure Active Directory 身分識別設定
 
-使用醫療保健資料時，有一個很重要的部分，就是要確保資料安全，而且無法被未經授權的使用者或應用程式存取。 FHIR 伺服器使用 [OAuth 2.0](https://oauth.net/2/) 來確保此資料安全性。 [Azure API for FHIR](https://azure.microsoft.com/services/azure-api-for-fhir/)使用[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)來保護，這是 OAuth 2.0 身分識別提供者的範例。 本文提供 FHIR 伺服器授權的總覽，以及取得權杖以存取 FHIR 伺服器所需的步驟。 雖然這些步驟將適用于任何 FHIR 伺服器和任何身分識別提供者，但我們將逐步解說作為 FHIR 伺服器的 Azure API for FHIR，並 Azure AD 為本文中的身分識別提供者。
+使用醫療保健資料時，有一個很重要的部分，就是要確保資料安全，而且無法被未經授權的使用者或應用程式存取。 FHIR 伺服器使用 [OAuth 2.0](https://oauth.net/2/) 來確保此資料安全性。 [Azure API for FHIR](https://azure.microsoft.com/services/azure-api-for-fhir/)使用[Azure Active Directory](../active-directory/index.yml)來保護，這是 OAuth 2.0 身分識別提供者的範例。 本文提供 FHIR 伺服器授權的總覽，以及取得權杖以存取 FHIR 伺服器所需的步驟。 雖然這些步驟將適用于任何 FHIR 伺服器和任何身分識別提供者，但我們將逐步解說作為 FHIR 伺服器的 Azure API for FHIR，並 Azure AD 為本文中的身分識別提供者。
 
 ## <a name="access-control-overview"></a>存取控制概觀
 
@@ -26,12 +26,12 @@ ms.locfileid: "87846015"
 
 取得權杖的方法有很多種，但 Azure API for FHIR 並不在意權杖的取得方式，只要它是具有正確宣告的適當簽署權杖即可。 
 
-使用 [授權碼流程](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) 作為範例，存取 FHIR 伺服器會經歷下列四個步驟：
+使用 [授權碼流程](../active-directory/azuread-dev/v1-protocols-oauth-code.md) 作為範例，存取 FHIR 伺服器會經歷下列四個步驟：
 
 ![FHIR 授權](media/azure-ad-hcapi/fhir-authorization.png)
 
-1. 用戶端會將要求傳送至 `/authorize` Azure AD 的端點。 Azure AD 會將用戶端重新導向至登入頁面，使用者將使用適當的認證進行驗證， (例如使用者名稱和密碼，或雙因素驗證) 。 請參閱 [取得授權碼](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)的詳細資料。 驗證成功時，會將 *授權碼* 傳回給用戶端。 Azure AD 只會允許將此授權碼傳回至用戶端應用程式註冊中所設定的已註冊回復 URL (請參閱以下) 。
-1. 用戶端應用程式會在 Azure AD 端點交換 *存取權杖* 的授權碼 `/token` 。 要求權杖時，用戶端應用程式可能必須提供用戶端密碼 (應用程式密碼) 。 請參閱 [取得存取權杖](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)的詳細資料。
+1. 用戶端會將要求傳送至 `/authorize` Azure AD 的端點。 Azure AD 會將用戶端重新導向至登入頁面，使用者將使用適當的認證進行驗證， (例如使用者名稱和密碼，或雙因素驗證) 。 請參閱 [取得授權碼](../active-directory/azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)的詳細資料。 驗證成功時，會將 *授權碼* 傳回給用戶端。 Azure AD 只會允許將此授權碼傳回至用戶端應用程式註冊中所設定的已註冊回復 URL (請參閱以下) 。
+1. 用戶端應用程式會在 Azure AD 端點交換 *存取權杖* 的授權碼 `/token` 。 要求權杖時，用戶端應用程式可能必須提供用戶端密碼 (應用程式密碼) 。 請參閱 [取得存取權杖](../active-directory/azuread-dev/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)的詳細資料。
 1. 用戶端會對 Azure API for FHIR 提出要求，例如 `GET /Patient` 搜尋所有患者。 提出要求時，它會在 HTTP 要求標頭中包含存取權杖，例如 `Authorization: Bearer eyJ0e...` ，其中 `eyJ0e...` 代表 Base64 編碼存取權杖。
 1. Azure API for FHIR 會驗證權杖中是否包含適當的宣告 () 中的屬性。 如果所有專案都已簽出，則會完成要求，並將結果傳回 FHIR 組合給用戶端。
 
@@ -89,7 +89,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvaWQiOiIxMjMiLCAiaXNzIjoiaHR0cHM6Ly9pc3N
 
 ## <a name="obtaining-an-access-token"></a>取得存取權杖
 
-如上所述，有數種方式可從 Azure AD 取得權杖。 [Azure AD 開發人員檔](https://docs.microsoft.com/azure/active-directory/develop/)中會詳細說明它們。
+如上所述，有數種方式可從 Azure AD 取得權杖。 [Azure AD 開發人員檔](../active-directory/develop/index.yml)中會詳細說明它們。
 
 Azure AD 有兩個不同版本的 OAuth 2.0 端點，稱為 `v1.0` 和 `v2.0` 。 這兩個版本都是 OAuth 2.0 端點， `v1.0` 而和則是 `v2.0` 指 Azure AD 如何實行該標準的差異。 
 
@@ -98,11 +98,11 @@ Azure AD 有兩個不同版本的 OAuth 2.0 端點，稱為 `v1.0` 和 `v2.0` �
 Azure AD 檔的相關章節如下：
 
 * `v1.0` 端點：
-    * [授權碼流程](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)。
-    * [用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)。
+    * [授權碼流程](../active-directory/azuread-dev/v1-protocols-oauth-code.md)。
+    * [用戶端認證流程](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)。
 * `v2.0` 端點：
-    * [授權碼流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)。
-    * [用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)。
+    * [授權碼流程](../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+    * [用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。
 
 有其他變化 (例如代表流程) 來取得權杖。 請查看 Azure AD 檔以取得詳細資料。 使用 Azure API for FHIR 時，也有一些快速鍵可以用來取得存取權杖， (用於) [使用 Azure CLI](get-healthcare-apis-access-token-cli.md)的偵錯工具。
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d663dc4e2bd860ec9494785ecbf6dbf10a4c5b5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808133"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397751"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>利用內部負載平衡器 (ILB) 建立應用程式閘道
 
@@ -50,7 +50,7 @@ ms.locfileid: "84808133"
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>建立資源管理員的資源群組
 
-請確定您切換 PowerShell 模式以使用 Azure 資源管理員 Cmdlet。 如需詳細資訊，請參閱 [使用 Windows PowerShell 與 Resource Manager](../powershell-azure-resource-manager.md)。
+請確定您切換 PowerShell 模式以使用 Azure 資源管理員 Cmdlet。 如需詳細資訊，請參閱 [使用 Windows PowerShell 與 Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md)。
 
 ### <a name="step-1"></a>步驟 1
 
@@ -256,12 +256,11 @@ VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-如果您想要設定 SSL 卸載，請參閱 [設定應用程式閘道以進行 SSL 卸載](application-gateway-ssl.md)。
+如果您想要設定 SSL 卸載，請參閱 [設定應用程式閘道以進行 SSL 卸載](./tutorial-ssl-powershell.md)。
 
 如果您想進一步了解一般負載平衡選項，請參閱：
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理員](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

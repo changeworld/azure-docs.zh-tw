@@ -2,14 +2,14 @@
 title: 使用 Azure 自動化管理 Office 365 服務
 description: 本文說明如何使用 Azure 自動化來管理 Office 365 訂閱服務。
 services: automation
-ms.date: 04/01/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185308"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398040"
 ---
 # <a name="manage-office-365-services"></a>管理 Office 365 服務
 
@@ -44,7 +44,7 @@ ms.locfileid: "86185308"
 3. 選取 [共用資源] 底下的 [模組庫]。
 4. 搜尋 MSOnline。
 5. 選取 `MSOnline` PowerShell 模組，然後按一下 [匯入] 以匯入模組作為資產。
-6. 重複步驟 4 和 5，以找出 `MSOnlineExt` 模組並匯入。 
+6. 重複步驟 4 和 5，以找出 `MSOnlineExt` 模組並匯入。
 
 ## <a name="create-a-credential-asset-optional"></a>建立認證資產 (選擇性)
 
@@ -52,7 +52,7 @@ ms.locfileid: "86185308"
 
 ## <a name="create-an-office-365-service-account"></a>建立 Office 365 服務帳戶
 
-若要執行 Office 365 訂閱服務，您需要具備權限可執行所需動作的 Office 365 服務帳戶。 您可以使用一個全域管理員帳戶、每個服務一個帳戶，或有一個要執行的函式或指令碼。 在任何情況下，服務帳戶都需要複雜且安全的密碼。 請參閱[設定商務用 Office 365](/microsoft-365/admin/setup/setup?view=o365-worldwide)。 
+若要執行 Office 365 訂閱服務，您需要具備權限可執行所需動作的 Office 365 服務帳戶。 您可以使用一個全域管理員帳戶、每個服務一個帳戶，或有一個要執行的函式或指令碼。 在任何情況下，服務帳戶都需要複雜且安全的密碼。 請參閱[設定商務用 Office 365](/microsoft-365/admin/setup/setup)。
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>連線到 Azure AD 線上服務
 
@@ -61,7 +61,7 @@ ms.locfileid: "86185308"
 
 您可以使用 MSOnline 模組，從 Office 365 訂閱連線到 Azure AD。 連線會使用 Office 365 使用者名稱和密碼，或使用多重要素驗證 (MFA)。 您可以使用 Azure 入口網站或 Windows PowerShell 命令提示字元 (不需要提升權限) 進行連線。
 
-PowerShell 範例顯示如下。 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) Cmdlet 會提示您輸入認證，並將其儲存在 `Msolcred` 變數中。 然後，[Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) Cmdlet 會使用認證來連線到 Azure Directory 線上服務。 如果您想要連線到特定 Azure 環境，請使用 `AzureEnvironment` 參數。
+PowerShell 範例顯示如下。 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) Cmdlet 會提示您輸入認證，並將其儲存在 `Msolcred` 變數中。 然後，[Connect-MsolService](/powershell/module/msonline/connect-msolservice) Cmdlet 會使用認證來連線到 Azure Directory 線上服務。 如果您想要連線到特定 Azure 環境，請使用 `AzureEnvironment` 參數。
 
 ```powershell
 $Msolcred = Get-Credential
@@ -71,25 +71,23 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 如果您未收到任何錯誤，則您已成功連線。 快速測試是執行 Office 365 Cmdlet，例如 `Get-MsolUser`，並查看結果。 如果您收到錯誤，請注意，常見的問題是密碼不正確。
 
 >[!NOTE]
->您也可以使用 AzureRM 模組或 Az 模組，從 Office 365 訂閱連線到 Azure AD。 主要的連線 Cmdlet 是 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0)。 此 Cmdlet 支援特定 Office 365 環境的 `AzureEnvironmentName` 參數。
+>您也可以使用 AzureRM 模組或 Az 模組，從 Office 365 訂閱連線到 Azure AD。 主要的連線 Cmdlet 是 [Connect-AzureAD](/powershell/module/azuread/connect-azuread)。 此 Cmdlet 支援特定 Office 365 環境的 `AzureEnvironmentName` 參數。
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>從現有的指令碼建立 PowerShell Runbook
 
 您可以從 PowerShell 指令碼存取 Office 365 功能。 以下是名為 `Office-Credentials` 的認證 (使用者名稱為 `admin@TenantOne.com`) 的指令碼範例。 會使用 `Get-AutomationPSCredential` 來匯入 Office 365 認證。
 
 ```powershell
-$emailFromAddress = "admin@TenantOne.com" 
-$emailToAddress = "servicedesk@TenantOne.com" 
-$emailSMTPServer = "outlook.office365.com" 
-$emailSubject = "Office 365 License Report" 
+$emailFromAddress = "admin@TenantOne.com"
+$emailToAddress = "servicedesk@TenantOne.com"
+$emailSMTPServer = "outlook.office365.com"
+$emailSubject = "Office 365 License Report"
 
-$credObject = Get-AutomationPSCredential -Name "Office-Credentials" 
+$credObject = Get-AutomationPSCredential -Name "Office-Credentials"
 Connect-MsolService -Credential $credObject
 
-$O365Licenses = Get-MsolAccountSku | Out-String 
-Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAddress -Subject $emailSubject -Body 
-
-$O365Licenses -SmtpServer $emailSMTPServer -UseSSL
+$O365Licenses = Get-MsolAccountSku | Out-String
+Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAddress -Subject $emailSubject -Body $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 ```
 
 ## <a name="run-the-script-in-a-runbook"></a>在 Runbook 中執行指令碼

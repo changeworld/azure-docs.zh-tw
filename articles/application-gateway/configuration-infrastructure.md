@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319787"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397615"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>應用程式閘道基礎結構設定
 
@@ -55,15 +55,15 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前四個和
 針對此案例，請在應用程式閘道子網上使用 Nsg。 依優先順序將下列限制放在子網上：
 
 1. 允許來自來源 IP 或 IP 範圍的連入流量，以目的地為整個應用程式閘道子網位址範圍和目的地埠作為您的輸入存取埠，例如 HTTP 存取的埠80。
-2. 允許來自來源作為 **GatewayManager** 服務標籤和目的地的連入要求，作為應用程式閘道 v1 SKU 的 **任何** 和目的地埠（65503-65534），以及用於 [後端健康狀態通訊](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)的 v2 SKU 埠65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠受到保護， (Azure 憑證) 鎖定。 若沒有適當的憑證，外部實體就無法在這些端點上起始變更。
-3. 允許傳入的 Azure Load Balancer 探查 (*AzureLoadBalancer*標籤) 以及[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)上 (*VirtualNetwork*標籤) 的輸入虛擬網路流量。
+2. 允許來自來源作為 **GatewayManager** 服務標籤和目的地的連入要求，作為應用程式閘道 v1 SKU 的 **任何** 和目的地埠（65503-65534），以及用於 [後端健康狀態通訊](./application-gateway-diagnostics.md)的 v2 SKU 埠65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠受到保護， (Azure 憑證) 鎖定。 若沒有適當的憑證，外部實體就無法在這些端點上起始變更。
+3. 允許傳入的 Azure Load Balancer 探查 ( *AzureLoadBalancer* 標籤) 以及 [網路安全性群組](../virtual-network/network-security-groups-overview.md)上 ( *VirtualNetwork* 標籤) 的輸入虛擬網路流量。
 4. 使用全部拒絕規則來封鎖所有其他連入流量。
 5. 允許所有目的地的網際網路輸出流量。
 
 ## <a name="supported-user-defined-routes"></a>支援的使用者定義路由 
 
 > [!IMPORTANT]
-> 在應用程式閘道子網上使用 Udr 可能會導致 [後端健康狀態視圖](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) 中的健全狀況狀態顯示為 [ **不明**]。 它也可能會造成應用程式閘道記錄和計量的產生失敗。 建議您不要在應用程式閘道子網上使用 Udr，如此您就可以查看後端健康情況、記錄和計量。
+> 在應用程式閘道子網上使用 Udr 可能會導致 [後端健康狀態視圖](./application-gateway-diagnostics.md#back-end-health) 中的健全狀況狀態顯示為 [ **不明** ]。 它也可能會造成應用程式閘道記錄和計量的產生失敗。 建議您不要在應用程式閘道子網上使用 Udr，如此您就可以查看後端健康情況、記錄和計量。
 
 - **v1**
 
@@ -78,7 +78,7 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前四個和
    > 路由表的設定不正確可能會導致應用程式閘道 v2 中的非對稱路由。 確定所有管理/控制平面流量都會直接傳送到網際網路，而不是透過虛擬裝置。 記錄和計量也可能受到影響。
 
 
-  **案例 1**： UDR 停用邊界閘道協定 (BGP) 將傳播傳送至應用程式閘道子網
+  **案例 1** ： UDR 停用邊界閘道協定 (BGP) 將傳播傳送至應用程式閘道子網
 
    有時候預設閘道路由 (0.0.0.0/0) 是透過與應用程式閘道虛擬網路相關聯的 ExpressRoute 或 VPN 閘道來通告。 這會中斷管理平面流量，這需要網際網路的直接路徑。 在這種情況下，UDR 可用來停用 BGP 路由傳播。 
 
@@ -90,11 +90,11 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前四個和
 
    啟用此案例的 UDR 應該不會中斷任何現有的設置。
 
-  **案例 2**： UDR 至將 0.0.0.0/0 導向至網際網路
+  **案例 2** ： UDR 至將 0.0.0.0/0 導向至網際網路
 
    您可以建立 UDR，將 0.0.0.0/0 流量直接傳送到網際網路。 
 
-  **案例 3**：使用 kubenet Azure Kubernetes Service 的 UDR
+  **案例 3** ：使用 kubenet Azure Kubernetes Service 的 UDR
 
   如果您使用 kubenet 搭配 Azure Kubernetes Service (AKS) 和應用程式閘道輸入控制器 (AGIC) ，您將需要路由表，以允許從應用程式閘道傳送至 pod 的流量路由傳送至正確的節點。 如果您使用 Azure CNI，就不需要這麼做。 
 
@@ -109,7 +109,7 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前四個和
     
   **v2 不支援的案例**
 
-  **案例 1**：虛擬裝置的 UDR
+  **案例 1** ：虛擬裝置的 UDR
 
   任何需要透過任何虛擬裝置、中樞/輪輻虛擬網路或內部部署來重新導向 0.0.0.0/0 的案例，都不支援 V2 的 (強制通道) 。
 

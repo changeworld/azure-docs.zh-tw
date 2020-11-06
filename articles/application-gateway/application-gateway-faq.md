@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791540"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397785"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -29,7 +29,7 @@ Azure 應用程式閘道以服務形式提供應用程式傳遞控制器 (ADC)�
 
 ### <a name="what-features-does-application-gateway-support"></a>應用程式閘道支援哪些功能？
 
-應用程式閘道支援自動調整、TLS 卸載、端對端 TLS、Web 應用程式防火牆 (WAF)、以 Cookie 為基礎的工作階段親和性、以 URL 路徑為基礎的路由、多網站裝載，以及其他功能。 如需完整的支援功能清單，請參閱[應用程式閘道簡介](application-gateway-introduction.md)。
+應用程式閘道支援自動調整、TLS 卸載、端對端 TLS、Web 應用程式防火牆 (WAF)、以 Cookie 為基礎的工作階段親和性、以 URL 路徑為基礎的路由、多網站裝載，以及其他功能。 如需完整的支援功能清單，請參閱[應用程式閘道簡介](./overview.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>應用程式閘道和 Azure Load Balancer 有何不同？
 
@@ -41,17 +41,17 @@ Azure 應用程式閘道以服務形式提供應用程式傳遞控制器 (ADC)�
 
 ### <a name="how-does-application-gateway-support-http2"></a>應用程式閘道如何支援 HTTP/2？
 
-請參閱 [HTTP/2 支援](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)。
+請參閱 [HTTP/2 支援](./configuration-listeners.md#http2-support)。
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>支援哪些資源作為後端集區的一部分？
 
-請參閱[支援的後端資源](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools)。
+請參閱[支援的後端資源](./application-gateway-components.md#backend-pools)。
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>應用程式閘道在哪些區域推出？
 
 應用程式閘道 v1 (Standard 和 WAF) 適用于全域 Azure 的所有區域。 [Azure China 21Vianet](https://www.azure.cn/) 和 [Azure Government](https://azure.microsoft.com/overview/clouds/government/) 中也提供此服務。
 
-針對應用程式閘道 v2 (Standard_v2 和 WAF_v2) 可用性，請參閱 [應用程式閘道 v2 支援的區域](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
+針對應用程式閘道 v2 (Standard_v2 和 WAF_v2) 可用性，請參閱 [應用程式閘道 v2 支援的區域](./application-gateway-autoscaling-zone-redundant.md#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>此部署是我的訂用帳戶專用，還是客戶共用？
 
@@ -59,11 +59,11 @@ Azure 應用程式閘道以服務形式提供應用程式傳遞控制器 (ADC)�
 
 ### <a name="does-application-gateway-support-http-to-https-redirection"></a>應用程式閘道是否 HTTP 到 HTTPS 重新導向？
 
-支援重新導向。 請參閱[應用程式閘道重新導向概觀](application-gateway-redirect-overview.md)。
+支援重新導向。 請參閱[應用程式閘道重新導向概觀](./redirect-overview.md)。
 
 ### <a name="in-what-order-are-listeners-processed"></a>接聽程式的處理順序為何？
 
-請參閱[接聽程式處理順序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners)。
+請參閱[接聽程式處理順序](./configuration-listeners.md#order-of-processing-listeners)。
 
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>哪裡可以找到應用程式閘道的 IP 和 DNS？
 
@@ -97,7 +97,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>應用程式閘道的子網路應該要多大？
 
-請參閱[應用程式閘道子網路大小考量](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet)。
+請參閱[應用程式閘道子網路大小考量](./configuration-infrastructure.md#size-of-the-subnet)。
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>可以將多個應用程式閘道資源部署到單一子網路嗎？
 
@@ -111,7 +111,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>應用程式閘道是否支援 x-forwarded-for 標頭？
 
-是。 請參閱[修改要求](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)。
+是。 請參閱[修改要求](./how-application-gateway-works.md#modifications-to-the-request)。
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>部署應用程式閘道需要多久的時間？ 應用程式閘道在更新當時是否運作？
 
@@ -172,7 +172,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>應用程式閘道一律部署在虛擬網路中？
 
-是。 應用程式閘道一律部署在虛擬網路子網路中。 這個子網路只能包含應用程式閘道。 如需詳細資訊，請參閱[虛擬網路和子網路需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)。
+是。 應用程式閘道一律部署在虛擬網路子網路中。 這個子網路只能包含應用程式閘道。 如需詳細資訊，請參閱[虛擬網路和子網路需求](./configuration-infrastructure.md#virtual-network-and-dedicated-subnet)。
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>應用程式閘道能否與虛擬網路外面或訂用帳戶外面的執行個體進行通訊？
 
@@ -184,15 +184,15 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>應用程式閘道子網路是否支援網路安全性群組？
 
-[應用程式閘道子網路中的網路安全性群組](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)。
+[應用程式閘道子網路中的網路安全性群組](./configuration-infrastructure.md#network-security-groups)。
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>應用程式閘道子網路是否支援使用者定義路由？
 
-請參閱[應用程式閘道子網路中支援的使用者定義路由](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)。
+請參閱[應用程式閘道子網路中支援的使用者定義路由](./configuration-infrastructure.md#supported-user-defined-routes)。
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>應用程式閘道子網是否支援服務端點原則？
 
-否。 應用程式閘道子網不支援儲存體帳戶的[服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)，並設定它將會封鎖 Azure 基礎結構流量。
+否。 應用程式閘道子網不支援儲存體帳戶的[服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)，並設定它將會封鎖 Azure 基礎結構流量。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>應用程式閘道的限制為何？ 是否可以增加這些限制？
 
@@ -220,7 +220,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>應用程式閘道中如何處理路由規則？
 
-請參閱[處理規則的順序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules)。
+請參閱[處理規則的順序](./configuration-request-routing-rules.md#order-of-processing-rules)。
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>自訂探查的 [主機] 欄位代表什麼？
 
@@ -228,7 +228,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>我可以只允許少數幾個來源 IP 位址存取應用程式閘道嗎？
 
-是。 請參閱[限制特定來源 IP 的存取](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips)。
+是。 請參閱[限制特定來源 IP 的存取](./configuration-infrastructure.md#allow-access-to-a-few-source-ips)。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>公開和私人接聽程式是否可以使用相同的連接埠？
 
@@ -247,7 +247,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 但是，如果想要使用只有私人 IP 的應用程式閘道 V2，您可以遵循下列程序：
 1. 建立具有公用和私人前端 IP 位址的應用程式閘道
 2. 請不要為公用前端 IP 位址建立任何接聽程式。 如果沒有為公用 IP 位址建立接聽程式，應用程式閘道就不會此位址上接聽任何流量。
-3. 依優先順序使用下列設定，針對應用程式閘道子網路建立並附加[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)：
+3. 依優先順序使用下列設定，針對應用程式閘道子網路建立並附加[網路安全性群組](../virtual-network/network-security-groups-overview.md)：
     
     a. 允許來源為 **GatewayManager** 服務標記、目的地為 **Any** 、目的地連接埠為 **65200-65535** 的流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些連接埠由憑證驗證保護 (鎖定)。 如果沒有適當的憑證，外部實體 (包括閘道使用者管理員) 無法變更這些端點
     
@@ -337,7 +337,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>如何為 .com 和 .net 網站設定 HTTPS 接聽程式？ 
 
-針對多個網域型 (主機型) 路由，您可以建立多網站接聽程式、設定以 HTTPS 為通訊協定的接聽程式，以及將接聽程式和路由規則建立關聯。 如需詳細資訊，請參閱[使用應用程式閘道來裝載多個網站](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)。
+針對多個網域型 (主機型) 路由，您可以建立多網站接聽程式、設定以 HTTPS 為通訊協定的接聽程式，以及將接聽程式和路由規則建立關聯。 如需詳細資訊，請參閱[使用應用程式閘道來裝載多個網站](./multiple-site-overview.md)。
 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>我可以在 .pfx 檔案密碼中使用特殊字元嗎？
 
@@ -365,7 +365,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 若要避免因為此問題而中斷應用程式，或重新發行已撤銷的 CA，您必須採取下列動作： 
 
 1.  請洽詢您的憑證提供者，以瞭解如何重新發行您的憑證
-2.  重新發行之後，請在 Azure 應用程式 Gateway/WAF 上更新您的憑證，並搭配完整 [的信任鏈](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (分葉、中繼、根憑證) 。 根據您使用憑證的位置，在接聽程式或應用程式閘道的 HTTP 設定上，依照下列步驟來更新憑證，並查看所述的檔連結以取得詳細資訊。
+2.  重新發行之後，請在 Azure 應用程式 Gateway/WAF 上更新您的憑證，並搭配完整 [的信任鏈](/windows/win32/seccrypto/certificate-chains) (分葉、中繼、根憑證) 。 根據您使用憑證的位置，在接聽程式或應用程式閘道的 HTTP 設定上，依照下列步驟來更新憑證，並查看所述的檔連結以取得詳細資訊。
 3.  更新您的後端應用程式伺服器，以使用重新發行的憑證。 根據您所使用的後端伺服器而定，您的憑證更新步驟可能會有所不同。 請查看廠商提供的檔。
 
 若要更新您接聽程式中的憑證：
@@ -374,14 +374,14 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 2.  開啟與您的憑證相關聯的接聽程式設定
 3.  按一下 [更新或編輯選取的憑證]
 4.  以密碼上傳新的 PFX 憑證，然後按一下 [儲存]
-5.  存取網站，並確認網站是否如預期般運作。如需詳細資訊，請參閱 [此處](https://docs.microsoft.com/azure/application-gateway/renew-certificates)的檔。
+5.  存取網站，並確認網站是否如預期般運作。如需詳細資訊，請參閱 [此處](./renew-certificates.md)的檔。
 
 如果您在應用程式閘道接聽程式中參考來自 Azure KeyVault 的憑證，建議您遵循下列步驟來進行快速變更–
 
 1.  在 [Azure 入口網站](https://portal.azure.com/)中，流覽至已與應用程式閘道相關聯的 Azure KeyVault 設定
-2.  在您的存放區中新增/匯入重新發行的憑證。 如需如何進行的詳細資訊，請參閱 [此處](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) 的檔。
+2.  在您的存放區中新增/匯入重新發行的憑證。 如需如何進行的詳細資訊，請參閱 [此處](../key-vault/certificates/quick-create-portal.md) 的檔。
 3.  匯入憑證後，流覽至您的應用程式閘道接聽程式設定，然後在 [從 Key Vault 選擇憑證] 下，按一下 [憑證] 下拉式清單，然後選擇最近新增的憑證
-4.  按一下 [儲存] 以取得具有 Key Vault 憑證的應用程式閘道上 TLS 終止的詳細資訊，請參閱 [此處](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)的檔。
+4.  按一下 [儲存] 以取得具有 Key Vault 憑證的應用程式閘道上 TLS 終止的詳細資訊，請參閱 [此處](./key-vault-certs.md)的檔。
 
 
 若要更新 HTTP 設定中的憑證：
@@ -391,7 +391,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 2.  開啟與您的憑證相關聯的 HTTP 設定
 3.  按一下 [新增憑證] 並上傳重新發行的憑證，然後按一下 [儲存]
 4.  您稍後可以按一下 [...] 來移除舊憑證 在舊憑證旁的 [選項] 按鈕，然後選取 [刪除]，再按一下 [儲存]。
-如需詳細資訊，請參閱 [此處](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)的檔。
+如需詳細資訊，請參閱 [此處](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers)的檔。
 
 如果您使用應用程式閘道/WAF 服務的 V2 SKU，就不需要上傳 HTTP 設定中的新憑證，因為 V2 SKU 會使用「受信任的根憑證」，而不需要採取任何動作。
 
@@ -454,7 +454,7 @@ AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯性
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>是否可以設定應用程式閘道的警示？
 
-是。 在應用程式閘道中，您可以在計量上設定警示。 如需詳細資訊，請參閱[應用程式閘道計量](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警示通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
+是。 在應用程式閘道中，您可以在計量上設定警示。 如需詳細資訊，請參閱[應用程式閘道計量](./application-gateway-metrics.md)和[接收警示通知](../azure-monitor/platform/alerts-overview.md)。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>如何分析應用程式閘道的流量統計資料？
 

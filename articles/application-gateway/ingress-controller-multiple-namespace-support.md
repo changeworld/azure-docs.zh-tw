@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556154"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397326"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>在具有應用程式閘道輸入控制器的 AKS 叢集中啟用多個命名空間支援
 
@@ -35,7 +35,7 @@ Kubernetes [命名空間](https://kubernetes.io/docs/concepts/overview/working-w
   - 列出所有可存取的命名空間的輸入資源
   - 篩選至標注的輸入資源 `kubernetes.io/ingress.class: azure/application-gateway`
   - 撰寫組合的[應用程式閘道](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744)設定
-  - 透過[ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)將設定套用至相關聯的應用程式閘道
+  - 透過[ARM](../azure-resource-manager/management/overview.md)將設定套用至相關聯的應用程式閘道
 
 ## <a name="conflicting-configurations"></a>衝突的設定
 多個命名空間輸入 [資源](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) 可以指示 AGIC 建立單一應用程式閘道的衝突設定。  (兩個宣告相同網域的 ingresses。 ) 
@@ -90,7 +90,7 @@ spec:
   - HTTP 設定： `bp-production-contoso-web-service-80-80-websocket-ingress`
   - 健康情況探查： `pb-production-contoso-web-service-80-websocket-ingress`
 
-請注意，除了接聽*程式和**路由規則*之外，所建立的應用程式閘道資源還包含建立命名空間 (`production`) 名稱。
+請注意，除了接聽 *程式和**路由規則* 之外，所建立的應用程式閘道資源還包含建立命名空間 (`production`) 名稱。
 
 如果在不同時間點將這兩個輸入資源引進 AKS 叢集中，AGIC 可能會在將應用程式閘道重新設定，並將流量重新路由傳送至的情況下結束 `namespace-B` `namespace-A` 。
 
@@ -99,7 +99,7 @@ spec:
 ## <a name="restrict-access-to-namespaces"></a>限制存取命名空間
 根據預設，AGIC 會根據任何命名空間內的標注輸入來設定應用程式閘道。 如果您想要限制這項行為，您可以選擇下列選項：
   - 藉由明確定義命名空間來限制命名空間，AGIC 應該透過 `watchNamespace` [helm-config](#sample-helm-config-file)中的 YAML 索引鍵來觀察。 YAML
-  - 使用 [角色/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) 限制特定命名空間的 AGIC
+  - 使用 [角色/RoleBinding](../aks/azure-ad-rbac.md) 限制特定命名空間的 AGIC
 
 ## <a name="sample-helm-config-file"></a>範例 Helm 設定檔
 
@@ -155,4 +155,3 @@ spec:
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
 ```
-
