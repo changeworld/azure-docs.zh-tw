@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 285c3bf37e9d6de042cb028745fc8b094d34c3a1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284408"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406663"
 ---
 在 Azure Functions 中引發的錯誤可能來自下列任何來源：
 
@@ -23,15 +23,15 @@ ms.locfileid: "93284408"
 - [啟用 Application Insights](../articles/azure-functions/functions-monitoring.md)
 - [使用結構化錯誤處理](#use-structured-error-handling)
 - [等冪性的設計](../articles/azure-functions/functions-idempotent.md)
-- 在適當的情況下， ([執行重試原則](#retry-policies)) 
+- 在適當的情況下， ([執行重試原則](#retry-policies-preview)) 
 
 ### <a name="use-structured-error-handling"></a>使用結構化錯誤處理
 
 捕捉和記錄錯誤對於監視您應用程式的健康情況是很重要的。 任何函式程式碼的最上層最上層都應該包含 try/catch 區塊。 在 catch 區塊中，您可以捕捉並記錄錯誤。
 
-## <a name="retry-policies"></a>重試原則
+## <a name="retry-policies-preview"></a>重試原則 (預覽) 
 
-您可以在函數應用程式中，針對任何觸發程式類型的任何函式定義重試原則。  重試原則會重新執行函式，直到成功執行為止，或直到重試次數的上限為止。  您可以為應用程式中的所有函式或個別功能定義重試原則。  根據預設，函式應用程式不會將訊息重試 (除了 [觸發程式來源) 上具有重試原則的特定觸發](#trigger-specific-retry-support) 程式。  每當執行導致未攔截的例外狀況時，就會評估重試原則。  最佳做法是，您應該攔截程式碼中的所有例外狀況，並重新擲回任何應該會導致重試的錯誤。  在執行的重試原則完成之前，不會寫入事件中樞和 Azure Cosmos DB 檢查點，這表示在該分割區上進行的進度會暫停，直到目前的批次完成為止。
+您可以在函數應用程式中，針對任何觸發程式類型的任何函式定義重試原則。  重試原則會重新執行函式，直到成功執行為止，或直到重試次數的上限為止。  您可以為應用程式中的所有函式或個別功能定義重試原則。  根據預設，函式應用程式不會將訊息重試 (除了 [觸發程式來源) 上具有重試原則的特定觸發](#using-retry-support-on-top-of-trigger-resilience) 程式。  每當執行導致未攔截的例外狀況時，就會評估重試原則。  最佳做法是，您應該攔截程式碼中的所有例外狀況，並重新擲回任何應該會導致重試的錯誤。  在執行的重試原則完成之前，不會寫入事件中樞和 Azure Cosmos DB 檢查點，這表示在該分割區上進行的進度會暫停，直到目前的批次完成為止。
 
 ### <a name="retry-policy-options"></a>重試原則選項
 
@@ -57,6 +57,8 @@ ms.locfileid: "93284408"
 #### <a name="fixed-delay-retry"></a>修正延遲重試
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+重試需要 NuGet 套件 [Microsoft。](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -152,6 +154,8 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 #### <a name="exponential-backoff-retry"></a>指數輪詢重試
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+重試需要 NuGet 套件 [Microsoft。](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -255,12 +259,27 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 |minimumInterval|n/a|使用策略時的最小重試延遲 `exponentialBackoff` 。|
 |maximumInterval|n/a|使用策略時的最大重試延遲 `exponentialBackoff` 。| 
 
-## <a name="trigger-specific-retry-support"></a>觸發程式特定的重試支援
+### <a name="retry-limitations-during-preview"></a>預覽期間的重試限制
 
-部分觸發程式會在觸發程式來源上提供重試。  除了函式應用程式主機重試原則的取代之外，還可以使用這些觸發程式重試。  如果需要固定的重試次數，您應該使用一般主機重試原則的觸發程式特定重試原則。  下列觸發程式支援在觸發程式來源上重試：
+- 針對 .NET 專案，您可能需要以手動方式提取 [3.0.23 的版本，>=](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) 。
+- 在取用方案中，應用程式可能會在重試佇列中的最後一則訊息時相應減少為零。
+- 在取用方案中，應用程式可能會在執行重試時縮小規模。  為了獲得最佳結果，請選擇重試間隔 <= 00:01:00，<= 5 次重試。
+
+## <a name="using-retry-support-on-top-of-trigger-resilience"></a>在觸發程式恢復功能之上使用重試支援
+
+函數應用程式的重試原則與觸發程式提供的任何重試或復原無關。  函數重試原則只會在觸發程式復原重試的最上方分層。  例如，如果使用 Azure 服務匯流排，佇列預設會有10個訊息傳遞計數。  預設的傳遞計數表示在10次嘗試傳遞佇列訊息之後，服務匯流排將會寄不出信件訊息。  您可以為具有服務匯流排觸發程式的函式定義重試原則，但重試將會在服務匯流排傳遞嘗試之上分層。  
+
+比方說，如果您使用預設的服務匯流排傳遞計數10，且定義了函式重試原則5。  訊息會先清除佇列，並將服務匯流排傳遞帳戶遞增至1。  如果每次執行失敗，則在五次嘗試觸發相同訊息之後，該訊息就會被標示為已放棄。  服務匯流排會立即 requeue 訊息，它會觸發函式，並將傳遞計數遞增為2。  最後，在50最終嘗試 (10 個服務匯流排傳遞數 * 每個傳遞) 有五個函式重試，訊息會被放棄並在服務匯流排上觸發寄不出的信件。
+
+> [!WARNING]
+> 不建議將服務匯流排佇列之類的觸發程式的傳遞計數設定為1，這表示在單一函式重試迴圈之後，訊息會立即失效。  這是因為觸發程式會以重試方式提供復原功能，而函式重試原則則是最佳的工作，而且可能會導致小於所需的重試總次數。
+
+### <a name="triggers-with-additional-resiliency-or-retries"></a>具有額外復原或重試的觸發程式
+
+下列觸發程式支援在觸發程式來源上重試：
 
 * [Azure Blob 儲存體](../articles/azure-functions/functions-bindings-storage-blob.md)
 * [Azure 佇列儲存體](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure 服務匯流排 (佇列/主題)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-根據預設，這些會觸發最多五次的重試要求。 第五次重試之後，Azure 佇列儲存體和 Azure 服務匯流排觸發程式都會將訊息寫入 [有害佇列](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)。
+根據預設，大部分的觸發程式會重試最多五次的要求。 第五次重試之後，這兩個 Azure 佇列儲存體都會將訊息寫入 [有害佇列](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)。  預設的服務匯流排佇列和主題原則會在嘗試10次後，將訊息寫入寄不出的 [信件佇列](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) 。
