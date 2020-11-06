@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75751715"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375816"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
 ### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>如果我在使用憑證驗證連線時發生憑證不符的情況，該怎麼辦？
 
-取消核取 [驗證憑證以確認伺服器的身分識別] 或在手動建立設定檔時**新增伺服器 FQDN 和憑證**。 若要這麼做，您可以從命令提示字元執行 **rasphone**，然後從下拉式清單中挑選設定檔。
+取消核取 [驗證憑證以確認伺服器的身分識別] 或在手動建立設定檔時 **新增伺服器 FQDN 和憑證** 。 若要這麼做，您可以從命令提示字元執行 **rasphone** ，然後從下拉式清單中挑選設定檔。
 
 一般不建議略過伺服器身分識別驗證，但進行 Azure 憑證驗證時，會使用相同的憑證來進行 VPN 通道通訊協定 (IKEv2/SSTP) 和 EAP 通訊協定中的伺服器驗證。 因為伺服器憑證和 FQDN 已經由 VPN 通道通訊協定驗證，所以在 EAP 中再次驗證相同項目是多餘的。
 
-![點對站](./media/vpn-gateway-faq-p2s-all-include/servercert.png "伺服器憑證")
+![點對站驗證](./media/vpn-gateway-faq-p2s-all-include/servercert.png "伺服器憑證")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>是否可以使用自己的內部 PKI 根 CA 來產生點對站連線的憑證？
 
@@ -39,7 +39,7 @@ ms.locfileid: "75751715"
 
 ### <a name="are-there-instructions-for-certificate-settings-and-parameters"></a><a name="certsettings"></a>是否有憑證設定及參數的指示？
 
-* **內部 PKI/Enterprise PKI 解決方案：** 請參閱步驟來[產生憑證](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)。
+* **內部 PKI/Enterprise PKI 解決方案：** 請參閱步驟來 [產生憑證](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)。
 
 * **Azure PowerShell：** 請參閱 [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) 文章以了解步驟。
 
@@ -52,4 +52,4 @@ ms.locfileid: "75751715"
     * 針對用戶端憑證：
 
       * 建立私密金鑰時，請將長度指定為 4096。
-      * 建立憑證時，針對 -extensions** 參數，請指定 usr_cert**。
+      * 建立憑證時，針對 -extensions 參數，請指定 usr_cert。

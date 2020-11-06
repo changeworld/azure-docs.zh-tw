@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6a6cbf51ef2ff1f1ef53b53a2b84c7a4f9510d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254284"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376202"
 ---
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure Stack Edge 資源，然後移至 [概觀]  。 您的裝置應在線上。
 
@@ -34,6 +34,6 @@ ms.locfileid: "89254284"
     
 4. 如果您選取這個新的儲存體帳戶，並移至 [存取金鑰]，您可以找到 Blob 服務端點和對應的儲存體帳戶名稱。 將這些值連同存取金鑰這樣的資訊複製起來，可協助您連線到 Edge 儲存體帳戶。
 
-    ![新增儲存體帳戶](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
+    ![新增儲存體帳戶 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
     您可以藉由[使用 Azure Resource Manager 連線到裝置本機 API](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)，來取得存取金鑰。 

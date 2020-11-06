@@ -13,15 +13,41 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立函式
+    - name: 建立您的第一個函式
       expanded: true
       items:
         - name: Visual Studio Code
-          href: ./functions-create-first-function-vs-code.md
+          expanded: true
+          items:
+            - name: C#
+              href: create-first-function-vs-code-csharp.md
+            - name: Java
+              href: create-first-function-vs-code-java.md
+            - name: JavaScript
+              href: create-first-function-vs-code-node.md
+            - name: PowerShell
+              href: create-first-function-vs-code-powershell.md
+            - name: Python
+              href: create-first-function-vs-code-python.md
+            - name: TypeScript
+              href: create-first-function-vs-code-typescript.md
         - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令列
-          href: functions-create-first-azure-function-azure-cli.md
+          expanded: false
+          items:
+            - name: C#
+              href: create-first-function-cli-csharp.md
+            - name: Java
+              href: create-first-function-cli-java.md
+            - name: JavaScript
+              href: create-first-function-cli-node.md
+            - name: PowerShell
+              href: create-first-function-cli-powershell.md
+            - name: Python
+              href: create-first-function-cli-python.md
+            - name: TypeScript
+              href: create-first-function-cli-typescript.md
         - name: ARM 範本
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
@@ -212,11 +238,11 @@
                 - name: Azure 入口網站
                   href: functions-create-first-azure-function.md
                 - name: 命令列
-                  href: ./functions-create-first-azure-function-azure-cli.md
+                  href: ./create-first-function-cli-csharp.md
                 - name: Visual Studio
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: ./functions-create-first-function-vs-code.md
+                  href: ./create-first-function-vs-code-csharp.md
                 - name: 使用 Gradle 的 Java
                   href: functions-create-first-java-gradle.md
                 - name: 使用 Eclipse 的 Java
@@ -230,7 +256,7 @@
                 - name: Linux App Service 方案
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 使用量方案
-                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
+                  href: create-first-function-cli-python.md
                 - name: Azure 學生入門版
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB 觸發程序

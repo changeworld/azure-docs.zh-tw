@@ -68,6 +68,8 @@
   items:
     - name: Microsoft Antimalware
       href: antimalware.md
+    - name: Microsoft Antimalware 程式碼範例
+      href: antimalware-code-samples.md
     - name: 虛擬機器安全性概觀
       href: virtual-machines-overview.md
     - name: 最佳做法 - IaaS 工作負載

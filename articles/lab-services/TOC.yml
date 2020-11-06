@@ -4,6 +4,10 @@
   items:
     - name: 關於實驗室服務
       href: lab-services-overview.md
+- name: 快速入門
+  items:
+    - name: 開始使用
+      href: get-started-manage-labs.md
 - name: 教學課程
   items:
     - name: 設定實驗室帳戶

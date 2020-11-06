@@ -529,6 +529,8 @@
       items:
         - name: 使用複製活動將資料載入 SQL 集區
           href: quickstart-copy-activity-load-sql-pool.md
+        - name: 使用對應資料流程來轉換資料
+          href: quickstart-data-flow.md
     - name: 概念
       items:
         - name: 管線與活動
@@ -1013,7 +1015,7 @@
       href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

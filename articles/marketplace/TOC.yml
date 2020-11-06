@@ -273,7 +273,7 @@
       href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
     - name: Azure Marketplace 條款
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
-- name: 參考
+- name: 參考資料
   items:
     - name: CPP API 參考
       items:
@@ -307,6 +307,8 @@
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Marketplace 計量服務
       items:
+        - name: 異常偵測服務
+          href: partner-center-portal/anomaly-detection-service-for-metered-billing.md
         - name: 驗證策略
           href: partner-center-portal/marketplace-metering-service-authentication.md
         - name: Marketplace 計量服務 API

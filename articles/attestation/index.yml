@@ -10,12 +10,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 07/20/2020
-  ms.openlocfilehash: 984fecd947cb174ab6663a874071926d16f657bd
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: e5bf0981d267dca9a6ef43880d879391b837faba
+  ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91285396"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93341785"
 landingContent:
 - title: 關於 Microsoft Azure 證明
   linkLists:
@@ -47,11 +47,11 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 撰寫和簽署證明原則
+    - text: 撰寫證明原則
       url: author-sign-policy.md
     - text: SGX 證明程式碼範例
       url: /samples/browse/?expanded=azure&terms=attestation
-- title: 參考資料
+- title: 參考
   linkLists:
   - linkListType: reference
     links:

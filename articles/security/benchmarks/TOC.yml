@@ -179,7 +179,5 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: 虛擬網路安全性基準
       href: ../../virtual-network/security-baseline.md
-    - name: Virtual WAN 安全性基準
-      href: ../../virtual-wan/security-baseline.md
     - name: VPN 閘道安全性基準
       href: ../../vpn-gateway/security-baseline.md

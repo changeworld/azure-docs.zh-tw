@@ -662,6 +662,8 @@
               href: how-to-time-to-live.md
             - name: 定義唯一索引鍵
               href: how-to-define-unique-keys.md
+            - name: 執行交易式批次作業
+              href: transactional-batch.md
         - name: 效能
           items:
             - name: 查詢
@@ -753,8 +755,6 @@
               href: create-sql-api-java-changefeed.md
         - name: 伺服器端程式設計
           items:
-            - name: 執行交易式批次作業
-              href: transactional-batch.md
             - name: 寫入預存程序、觸發程序和 UDF
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: 使用 JavaScript 查詢 API 寫入預存程序和觸發程序

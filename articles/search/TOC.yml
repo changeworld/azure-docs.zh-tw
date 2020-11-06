@@ -34,7 +34,7 @@
       href: search-get-started-java.md
     - name: JavaScript
       href: search-get-started-javascript.md
-    - name: postman
+    - name: REST
       href: search-get-started-postman.md
     - name: PowerShell
       href: search-get-started-powershell.md
@@ -94,6 +94,8 @@
   items:
     - name: 全文檢索搜尋
       href: search-lucene-query-architecture.md
+    - name: 相關性評分
+      href: index-similarity-and-scoring.md
     - name: 索引子
       href: search-indexer-overview.md
     - name: AI 擴充
@@ -294,8 +296,6 @@
       items:
         - name: 處理結果
           href: search-pagination-page-layout.md
-        - name: 相關性評分
-          href: index-similarity-and-scoring.md
         - name: 評分設定檔
           href: index-add-scoring-profiles.md
         - name: 相似性演算法

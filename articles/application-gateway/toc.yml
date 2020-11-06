@@ -287,7 +287,7 @@
       href: ../azure-resource-manager/management/overview.md
     - name: Resource Manager 範本
       displayName: ARM
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
+      href: /azure/templates/microsoft.network/applicationgateways
 - name: 資源
   items:
     - name: 作者範本

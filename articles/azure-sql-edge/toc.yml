@@ -47,7 +47,7 @@
         - name: 在 Kubernetes 中部署
           href: deploy-kubernetes.md
         - name: 使用 Azure Data Studio 進行部署
-          href: 'https://docs.microsoft.com/sql/azure-data-studio/deploy-azure-sql-edge?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/azure-data-studio/deploy-azure-sql-edge?toc=%252fazure%252fazure-sql-edge%252ftoc.json
     - name: 機器學習服務
       items:
         - name: 採用 ONNX 的機器學習和 AI
@@ -91,9 +91,9 @@
         - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
         - name: FIRST_VALUE (Transact-SQL)
-          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: LAST_VALUE (Transact-SQL)
-          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: 資料保留和清除
           items:
             - name: 資料保留概觀
@@ -109,11 +109,11 @@
         - name: 安全性概觀
           href: security-overview.md
         - name: 安全性功能
-          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/linux/sql-server-linux-security-get-started?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: 為連線加密
-          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/linux/sql-server-linux-encrypted-connections?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: 適用於 IoT 的 Azure 資訊安全中心
-          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+          href: ../defender-for-iot/overview.md?bc=%252fazure%252fazure-sql-edge%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fazure-sql-edge%252ftoc.json
 - name: 如何
   items:
     - name: 設定 SQL Edge
@@ -141,7 +141,7 @@
 - name: 參考
   items:
     - name: Transact-SQL (T-SQL) 參考
-      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+      href: /sql/t-sql/language-reference
 - name: 資源
   items:
     - name: 合作夥伴

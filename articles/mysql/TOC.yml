@@ -29,6 +29,9 @@
     - name: 緩解資料庫損毀
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: 版本控制原則
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: 單一伺服器
   expanded: true
   items:

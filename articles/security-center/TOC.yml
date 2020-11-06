@@ -223,7 +223,8 @@
         - name: 在 Azure VM 上設定適用於 SQL 的 Azure Defender
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: 自訂資訊保護原則
+        - name: 自訂 SQL 資訊保護原則
+          displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
     - name: 使用適用於容器登錄的 Azure Defender
       items:
