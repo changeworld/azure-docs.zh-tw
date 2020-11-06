@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 507ef55a6fa3976475dbf08f88ee36cd1977464d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379242"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421017"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中建立及指派自訂角色
 
@@ -183,4 +183,4 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 - 歡迎在 [Azure AD 系統管理角色論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上與我們共用資訊。
 - 如需角色和管理員角色指派的詳細資訊，請參閱[指派管理員角色](permissions-reference.md)。
-- 如需預設使用者權限，請參閱[預設來賓和成員使用者權限的比較](/azure/active-directory/fundamentals/users-default-permissions)。
+- 如需預設使用者權限，請參閱[預設來賓和成員使用者權限的比較](/azure/active-directory/fundamentals/users-default-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context)。

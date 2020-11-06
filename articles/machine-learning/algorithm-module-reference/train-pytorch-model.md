@@ -1,7 +1,7 @@
 ---
 title: 將 PyTorch 模型定型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何從頭開始定型 pytorch 模型或微調模型。
+description: 使用 Azure Machine Learning 設計工具中的 [定型 Pytorch 模型] 模組，從頭訓練模型，或微調現有的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439090"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420660"
 ---
 # <a name="train-pytorch-model"></a>將 PyTorch 模型定型
 
@@ -24,12 +24,12 @@ ms.locfileid: "91439090"
 
 1. 在設計工具中，將 [densenet-121](densenet.md) 模組或 [ResNet](resnet.md) 新增至您的管線草稿。
 
-2. 將 **定型 Pytorch 模型** 模組加入至管線。 您可以在 **模型定型** 類別下找到此模組。 展開 [ **定型**]，然後將 [ **定型 Pytorch 模型** ] 模組拖曳到您的管線中。
+2. 將 **定型 Pytorch 模型** 模組加入至管線。 您可以在 **模型定型** 類別下找到此模組。 展開 [ **定型** ]，然後將 [ **定型 Pytorch 模型** ] 模組拖曳到您的管線中。
 
    > [!NOTE]
-   > **定型 Pytorch 模型** 模組更適合在大型資料集的 **GPU** 類型計算上執行，否則您的管線將會失敗。 您可以設定 [ **使用其他計算目標**]，在模組的右窗格中選取特定模組的 [計算]。
+   > **定型 Pytorch 模型** 模組更適合在大型資料集的 **GPU** 類型計算上執行，否則您的管線將會失敗。 您可以設定 [ **使用其他計算目標** ]，在模組的右窗格中選取特定模組的 [計算]。
 
-3.  在左側輸入中，附加未定型的模型。 將訓練資料集和驗證資料集附加至 **定型 Pytorch 模型**的中間和右側輸入。
+3.  在左側輸入中，附加未定型的模型。 將訓練資料集和驗證資料集附加至 **定型 Pytorch 模型** 的中間和右側輸入。
 
     針對未定型的模型，它必須是 pytorch 模型，例如 Densenet-121;否則，將會擲回 ' InvalidModelDirectoryError '。
 
@@ -37,17 +37,17 @@ ms.locfileid: "91439090"
 
     訓練資料集和驗證資料集具有相同的標籤分類，否則會擲回 InvalidDatasetError。
 
-4.  若為 **epoch**，請指定您想要定型的 epoch 數目。 系統預設會在每個 epoch 中逐一查看整個資料集，預設為5。
+4.  若為 **epoch** ，請指定您想要定型的 epoch 數目。 系統預設會在每個 epoch 中逐一查看整個資料集，預設為5。
 
-5.  針對 [ **批次大小**]，指定批次中要定型的實例數目（預設為16）。
+5.  針對 [ **批次大小** ]，指定批次中要定型的實例數目（預設為16）。
 
-6.  針對 **學習速率**，請指定 *學習速率*的值。 學習速率值會控制在每次測試和更正模型時，在優化工具中使用的步驟大小（例如 sgd）。
+6.  針對 **學習速率** ，請指定 *學習速率* 的值。 學習速率值會控制在每次測試和更正模型時，在優化工具中使用的步驟大小（例如 sgd）。
 
     藉由讓速率變小，您可以更頻繁地測試模型，因為您可能會陷入本機高原的風險。 如果階梯較大，聚合速度會較快，但會有超過實際最小值的風險。 預設為0.001。
 
-7.  針對 **隨機種子**，選擇性地輸入要做為種子的整數值。 如果您想要確保在執行期間重現性實驗，建議使用種子。
+7.  針對 **隨機種子** ，選擇性地輸入要做為種子的整數值。 如果您想要確保在執行期間重現性實驗，建議使用種子。
 
-8.  若為 **耐心等候**，請指定如果驗證遺失未連續減少，要提早停止定型的 epoch 數目。 預設為3。
+8.  若為 **耐心等候** ，請指定如果驗證遺失未連續減少，要提早停止定型的 epoch 數目。 預設為3。
 
 9.  提交管線。 如果您的資料集大小較大，則需要一些時間，而且建議使用 GPU 計算。
 

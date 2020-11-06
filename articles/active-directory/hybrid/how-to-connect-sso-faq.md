@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f757d8f59c06d573d71099941530dfc28174ac42
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658339"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420475"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 無縫單一登入：常見問題集
 
@@ -35,7 +35,7 @@ ms.locfileid: "89658339"
 
 無縫 SSO 是免費功能，您不需要任何付費的 Azure AD 版本即可使用。
 
-**問：[Microsoft Azure 德國雲端](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure Government 雲端](https://azure.microsoft.com/features/gov/)是否有提供「無縫 SSO」功能？**
+**問： [Microsoft Azure 德國雲端](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure Government 雲端](https://azure.microsoft.com/features/gov/)是否有提供「無縫 SSO」功能？**
 
 無縫 SSO 適用於 Azure Government 雲端。 如需詳細資訊，請參閱 [Azure Government 的混合式身分識別考量](./reference-connect-government-cloud.md)。
 
@@ -64,9 +64,9 @@ ms.locfileid: "89658339"
 
 是。 如[這裡](how-to-connect-install-custom.md)所述設定於 Azure AD Connect 時，無縫 SSO 支援 `Alternate ID` 作為使用者名稱。 並非所有 Microsoft 365 的應用程式都支援 `Alternate ID` 。 請參閱支援陳述式的特定應用程式文件。
 
-**問：[Azure AD 聯結](../devices/overview.md)與「無縫 SSO」所提供的單一登入體驗有何差異？**
+**問： [Azure AD 聯結](../devices/overview.md)與「無縫 SSO」所提供的單一登入體驗有何差異？**
 
-[Azure AD 聯結](../devices/overview.md)可為裝置已向 Azure AD 註冊的使用者提供 SSO。 這些裝置不一定要加入網域。 提供 SSO 時，使用的是「主要重新整理權杖」(或稱 *PRT*)，而不是 Kerberos。 在 Windows 10 裝置上可獲得最佳使用者體驗。 SSO 在 Microsoft Edge 瀏覽器上會自動執行。 在 Chrome 上則藉由使用瀏覽器擴充功能也能運作。
+[Azure AD 聯結](../devices/overview.md)可為裝置已向 Azure AD 註冊的使用者提供 SSO。 這些裝置不一定要加入網域。 提供 SSO 時，使用的是「主要重新整理權杖」(或稱 *PRT* )，而不是 Kerberos。 在 Windows 10 裝置上可獲得最佳使用者體驗。 SSO 在 Microsoft Edge 瀏覽器上會自動執行。 在 Chrome 上則藉由使用瀏覽器擴充功能也能運作。
 
 您可以在租用戶上同時使用「Azure AD 聯結」和「無縫 SSO」。 這兩個功能是互補的。 如果同時開啟這兩個功能，則來自「Azure AD 聯結」的 SSO 優先順序會高於「無縫 SSO」。
 
@@ -107,6 +107,9 @@ ms.locfileid: "89658339"
    >如果您不是網域系統管理員，而且您已被網域系統管理員指派許可權，您應該呼叫 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. 針對您已設定此功能的每個 AD 樹系，重複上述步驟。
+   
+  >[!NOTE]
+   >如果您要更新的樹系不是 Azure AD Connect 的樹系，請確定可以使用與通用類別目錄伺服器的連線 (TCP 3268 和 TCP 3269) 。
 
    >[!IMPORTANT]
    >確定您「並未」執行 `Update-AzureADSSOForest` 命令一次以上。 否則，此功能會停止運作，直到使用者的 Kerberos 票證過期並由您的內部部署 Active Directory 重新發出為止。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893572"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420951"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>計量顧問常見問題
 
@@ -88,7 +88,7 @@ ms.locfileid: "92893572"
 
 請注意，這些查詢只會傳回單一時間戳的資料，並包含計量建議程式要內嵌的所有維度組合。 
 
-:::image type="content" source="media/query-result.png" alt-text="F0 資源已存在時的訊息" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="具有一個時間戳記的查詢結果" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>如何? 偵測到尖峰 & dip？
@@ -105,13 +105,26 @@ ms.locfileid: "92893572"
 如果您的資料通常很不穩定，而且您想要在它變得太穩定或甚至變成平坦線時收到警示，您可以設定「變更臨界值」，以便在變更太小時偵測這類資料點。
 請參閱 [異常偵測](how-tos/configure-metrics.md#anomaly-detection-methods) 設定以取得詳細資料。
 
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>如何設定電子郵件設定，並透過電子郵件啟用警示？
+
+1.  具有訂用帳戶管理員或資源群組系統管理員許可權的使用者，必須流覽至在 Azure 入口網站中建立的計量建議程式資源，然後選取 [ **存取控制] (IAM)** ] 索引標籤。 
+2.  選取 [ **新增角色指派** ]
+3.  選擇 **認知服務計量審查程式系統管理員** 的角色，然後選取您的帳戶，如下圖所示。
+4.  按一下 [ **儲存** ] 按鈕，即表示您已成功新增為計量建議程式資源的系統管理員。 請注意，所有上述動作都必須由訂用帳戶管理員或資源群組系統管理員執行。 
+
+:::image type="content" source="media/access-control.png" alt-text="[存取控制] (IAM) ] 功能表頁面上已選取 [新增角色指派]，後面接著一個方塊，其中具有 [認知服務計量顧問系統管理員] 存取角色所顯示的 [指派使用者存取權]，後面接著選取的 UI 的 [儲存] 按鈕，以說明搜尋使用者及新增特定層級的存取權限的步驟。" lightbox="media/access-control.png":::
+
+
+5.  傳播許可權最多可能需要一分鐘的時間。 然後，選取您的計量建議程式工作區，然後選取左側導覽面板中的 [ **電子郵件] 設定** 選項。 填寫必要的專案，特別是與 SMTP 相關的資訊。 
+6.  選取 [ **儲存** ]，您就可以設定電子郵件設定。 您可以針對近乎即時的警示建立新的勾點並訂閱計量異常。 
+
 ## <a name="advanced-concepts"></a>進階概念
 
 ### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>計量審查程式如何建立多維度計量的事件樹狀結構？
 
 度量可以依維度分割成多個時間序列。 例如， `Response latency` 會針對小組擁有的所有服務監視度量。 `Service`類別目錄可以用來做為擴充計量的維度，因此我們會 `Response latency` 依 `Service1` 、等來分割 `Service2` 。 每個服務都可以部署在多個資料中心的不同電腦上，因此度量可以進一步依 `Machine` 和分割 `Data center` 。
 
-|Service| 資料中心| 電腦  | 
+|服務| 資料中心| 電腦  | 
 |----|------|----------------   |
 | S1 |  DC1 |   M1 |
 | S1 |  DC1 |   M2 |
@@ -127,7 +140,7 @@ ms.locfileid: "92893572"
 
 在計量建議程式中，使用者可以指定想要從階層式拓撲的一個節點向下切入或匯總的任何路徑。 更精確地說，階層式拓撲是有向非迴圈的圖形，而不是樹狀結構。 有完整的階層式拓撲，其中包含所有可能的維度組合，如下所示： 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="F0 資源已存在時的訊息" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="階層式拓撲圖包含多個互連頂點和邊緣，其中有多個標記為 S、DC 和 M 的維度，其對應數位範圍介於1到6之間" lightbox="media/dimension-combinations-view.png":::
 
 理論上，如果維度 `Service` 有 `Ls` 相異的值、維度 `Data center` 有 `Ldc` 相異的值，而且維度 `Machine` 有相異的值 `Lm` ，則階層式拓撲中可能會有 `(Ls + 1) * (Ldc + 1) * (Lm + 1)` 維度組合。 
 

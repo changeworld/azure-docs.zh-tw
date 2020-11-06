@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544829"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417583"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>適用於 MySQL 的 Azure 資料庫-單一伺服器中規劃的維護通知
 
@@ -48,12 +48,12 @@ ms.locfileid: "92544829"
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [ **服務健康狀態** ]。
 2. 選取 **規劃的維護** 索引標籤
-3. 選取 **訂** 用帳戶、* * 區域，以及您想要檢查預定維護通知的 **服務** 。 
+3. 選取您要檢查預定維護通知的 **訂** 用帳戶、 **區域** 及 **服務** 。 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>若要接收預定的維修通知
 
-1. 在  。
-2. 在 [警示]  區段中，選取 [健康情況警示]  。
+1. 在[入口網站](https://portal.azure.com)中，選取 [服務健康情況]。
+2. 在 [警示] 區段中，選取 [健康情況警示]。
 3. 選取 [ **+ 新增服務健康情況警示** ]，然後填入欄位。
 4. 填寫必要的欄位。 
 5. 選擇 [ **事件種類** ]，選取 [ **預定維修** ] 或 [全 **選** ]
@@ -76,7 +76,7 @@ ms.locfileid: "92544829"
 暫時性錯誤 (也稱為暫時性故障) 係指會自行解決的錯誤。 維護期間可能會發生[暫時性錯誤](./concepts-connectivity.md#transient-errors)。 這些事件大多數都會由系統在 60 秒內自動解決。 暫時性錯誤應使用 [重試邏輯](./concepts-connectivity.md#handling-transient-errors)來處理。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如有關于使用適用於 MySQL 的 Azure 資料庫的任何問題或建議，請傳送電子郵件給適用於 MySQL 的 Azure 資料庫團隊 *AskAzureDBforMySQL@service.microsoft.com* 。
 - 請參閱[如何設定警示](howto-alert-on-metric.md)，取得根據計量來建立警示的指引。

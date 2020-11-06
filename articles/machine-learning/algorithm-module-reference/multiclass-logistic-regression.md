@@ -1,7 +1,7 @@
 ---
 title: 多元羅吉斯回歸：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 中使用多元羅吉斯回歸模組來建立可用於預測多個值的羅吉斯回歸模型。
+description: 瞭解如何在 Azure Machine Learning 設計工具中使用多元羅吉斯回歸模組來預測多個值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 247a0bef8e166c72f185f2d384067fc5814a602e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2bbc28735bcbfd952c4941453956acd0568ea67
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893742"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420728"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多元羅吉斯回歸模組
 
@@ -38,13 +38,13 @@ Azure Machine Learning 也提供 [兩個類別的羅吉斯回歸](./two-class-lo
 
 2. 藉由設定 [ **建立定型模式]** 選項，指定您要如何定型模型。
 
-    + **單一參數**：如果您知道要如何設定模型，請使用此選項，並提供一組特定值做為引數。
+    + **單一參數** ：如果您知道要如何設定模型，請使用此選項，並提供一組特定值做為引數。
 
-    + **參數範圍**：如果您不確定最佳參數，且想要執行參數清除，請選取此選項。 選取要逐一查看的值範圍，而 [ [微調模型超參數](tune-model-hyperparameters.md) ] 會逐一查看您提供的所有可能設定組合，以判斷產生最佳結果的超參數。  
+    + **參數範圍** ：如果您不確定最佳參數，且想要執行參數清除，請選取此選項。 選取要逐一查看的值範圍，而 [ [微調模型超參數](tune-model-hyperparameters.md) ] 會逐一查看您提供的所有可能設定組合，以判斷產生最佳結果的超參數。  
 
-3. **優化容錯**，指定優化工具聚合的臨界值。 換句話說，如果反覆運算之間的改進少於臨界值，此演算法會停止，並傳回目前的模型。
+3. **優化容錯** ，指定優化工具聚合的臨界值。 換句話說，如果反覆運算之間的改進少於臨界值，此演算法會停止，並傳回目前的模型。
 
-4. **L1 正規化權數**， **l2 正規化權數**：輸入用於正規化參數 L1 和 L2 的值。 非零值建議用於兩者。
+4. **L1 正規化權數** ， **l2 正規化權數** ：輸入用於正規化參數 L1 和 L2 的值。 非零值建議用於兩者。
 
     正規化是一種方法，可透過具有極端係數值的 penalizing 模型來防止過度學習。 正規化的運作方式是將與係數值相關聯的損失新增至假設的錯誤。 具有極端係數值的精確模型會懲罰更多，但具有更保守值的較不精確模型會懲罰較少。
 
@@ -52,13 +52,13 @@ Azure Machine Learning 也提供 [兩個類別的羅吉斯回歸](./two-class-lo
 
      已針對羅吉斯回歸模型（例如 [彈性網路正規化](https://wikipedia.org/wiki/Elastic_net_regularization)）設計了 L1 和 L2 詞彙的不同線性組合。
 
-6. **亂數種子**：如果您想要讓結果可重複執行，請輸入整數值做為演算法的種子。 否則，系統時鐘值會當做種子使用，這可能會在相同管線的執行中產生稍微不同的結果。
+6. **亂數種子** ：如果您想要讓結果可重複執行，請輸入整數值做為演算法的種子。 否則，系統時鐘值會當做種子使用，這可能會在相同管線的執行中產生稍微不同的結果。
 
 8. 連接已加上標籤的資料集，並將模型定型：
 
-    + 如果您將 [ **建立定型模式** ] 設定為 [ **單一參數**]，請連接已標記的資料集和「 [定型模型](train-model.md) 」模組。  
+    + 如果您將 [ **建立定型模式** ] 設定為 [ **單一參數** ]，請連接已標記的資料集和「 [定型模型](train-model.md) 」模組。  
   
-    + 如果您將 [ **建立定型模式** ] 設定為 [ **參數範圍**]，請連接已加上標籤的資料集，並使用 [微調模型超參數](tune-model-hyperparameters.md)來定型模型。  
+    + 如果您將 [ **建立定型模式** ] 設定為 [ **參數範圍** ]，請連接已加上標籤的資料集，並使用 [微調模型超參數](tune-model-hyperparameters.md)來定型模型。  
   
     > [!NOTE]
     > 

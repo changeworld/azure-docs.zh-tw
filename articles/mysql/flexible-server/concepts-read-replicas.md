@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 6f3482bdc608d97e4adba5f99393e74f2e6c7cde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795152"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420881"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>在適用於 MySQL 的 Azure 資料庫彈性的伺服器中讀取複本
 
@@ -117,6 +117,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 | 案例 | 限制/考慮 |
 |:-|:-|
 | 已啟用區域冗余 HA 之伺服器上的複本 | 不支援 |
+| 跨區域讀取複寫 | 不支援 |
 | 定價 | 執行複本伺服器的成本是以複本伺服器執行所在的區域為基礎 |
 | 來源伺服器重新開機 | 當您為沒有現有複本的來源建立複本時，來源會先重新開機以準備複寫。 請考慮這一點，並在離峰期間執行這些作業 |
 | 新複本 | 讀取複本會建立為新的適用於 MySQL 的 Azure 資料庫彈性伺服器。 現有伺服器無法設定為複本。 您無法建立另一個讀取複本的複本 |

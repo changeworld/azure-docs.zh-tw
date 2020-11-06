@@ -1,7 +1,7 @@
 ---
 title: 特徵雜湊模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的「特徵雜湊」模組，將文字資料的特徵化。
+description: 瞭解如何使用 Azure Machine Learning 設計工具中的「特徵雜湊」模組來為文字資料進行特徵化。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323719"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420779"
 ---
 # <a name="feature-hashing-module-reference"></a>特徵雜湊模組參考
 
@@ -22,7 +22,7 @@ ms.locfileid: "93323719"
 
 您可以使用「特徵雜湊」模組，將英文文字的資料流程轉換成一組整數特徵。 然後，您可以將此雜湊功能集傳遞至機器學習演算法，以定型文字分析模型。
 
-此課程模組中提供的功能雜湊功能是以 nimbusml 架構為基礎。 如需詳細資訊，請參閱 [NgramHash 類別](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)。
+此課程模組中提供的功能雜湊功能是以 nimbusml 架構為基礎。 如需詳細資訊，請參閱 [NgramHash 類別](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true)。
 
 ## <a name="what-is-feature-hashing"></a>什麼是特徵雜湊？
 

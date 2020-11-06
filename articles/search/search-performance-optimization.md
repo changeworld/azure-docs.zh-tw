@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934951"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420592"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 認知搜尋的效能調整規模
 
@@ -30,7 +30,7 @@ ms.locfileid: "88934951"
 
 1. 從每秒的查詢數目很少 (QPS) ，然後逐漸增加測試中所執行的數目，直到查詢延遲降到預先定義的目標底下為止。 這是很重要的效能評定，可協助您規劃應用程式將在使用量方面成長的規模。
 
-1. 如果可能，請重複使用 HTTP 連接。 如果您使用 Azure 認知搜尋 .NET SDK，這表示您應該重複使用實例或 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) 實例，如果您使用 REST API，則應該重複使用單一 HttpClient。
+1. 如果可能，請重複使用 HTTP 連接。 如果您使用 Azure 認知搜尋 .NET SDK，這表示您應該重複使用實例或 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 實例，如果您使用 REST API，則應該重複使用單一 HttpClient。
 
 1. 改變查詢要求的實質，讓搜尋出現在索引的不同部分。 變化很重要，因為如果您持續執行相同的搜尋要求，快取資料將會開始使效能看起來比使用更不同的查詢集還好。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88934951"
 + Azure 認知搜尋不會在背景執行索引工作。 如果您的服務會同時處理查詢和編制索引工作負載，請將索引編制作業帶入查詢測試，或探索在離峰時段執行索引編制工作的選項，以將其納入考慮。
 
 > [!Tip]
-> 您可以使用負載測試工具模擬實際的查詢負載。 請嘗試 [使用 Azure DevOps 的負載測試，](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) 或使用其中一個 [替代方案](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)。
+> 您可以使用負載測試工具模擬實際的查詢負載。 請嘗試 [使用 Azure DevOps 的負載測試，](/azure/devops/test/load-test/get-started-simple-cloud-load-test) 或使用其中一個 [替代方案](/azure/devops/test/load-test/overview#alternatives)。
 
 ## <a name="scale-for-high-query-volume"></a>高查詢量的調整
 

@@ -1,7 +1,7 @@
 ---
 title: 一對多多級
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的「一對多」多元分類模組，從二元分類模型的集團建立多元分類模型。
+description: 瞭解如何在 Azure Machine Learning 設計工具中使用「一對多」多元分類模組，以建立二元分類模型的集團。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898509"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420677"
 ---
 # <a name="one-vs-all-multiclass"></a>一對多多級
 
@@ -40,7 +40,7 @@ ms.locfileid: "90898509"
 
 當您結合模型時，「一對多」多元分類會建立多個二元分類模型、將每個類別的演算法優化，然後合併模型。 雖然訓練資料集可能會有多個類別值，模組仍會執行這些工作。
 
-1. 在設計工具中，將「一對多」多元分類模組新增至您的管線。 您可以在 [**分類**] 類別中的 [ **Machine Learning-初始化**] 下找到此模組。
+1. 在設計工具中，將「一對多」多元分類模組新增至您的管線。 您可以在 [ **分類** ] 類別中的 [ **Machine Learning-初始化** ] 下找到此模組。
 
    「一對多」多元分類分類器沒有自己的可設定參數。 任何自訂都必須在提供做為輸入的二元分類模型中完成。
 

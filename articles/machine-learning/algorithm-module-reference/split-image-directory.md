@@ -1,7 +1,7 @@
 ---
 title: 分割映像目錄
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 設計工具 (preview) 中使用分割影像目錄模組，將映射目錄的影像分割成兩個不同的集合。
+description: 瞭解如何使用設計工具中的「分割影像目錄」模組，將映射目錄的影像分割成兩個不同的集合。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ee4dd9b2e344ecb3e1a6424ce7310270e7cd076
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448674"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421187"
 ---
 # <a name="split-image-directory"></a>分割映像目錄
 
@@ -28,7 +28,7 @@ ms.locfileid: "91448674"
 
 2. 將它連接到輸出為影像目錄的模組。
 
-3. **第一個輸出中的影像**輸入比例，以指定要放入左方分割中的資料百分比，預設為0.9。 如果小數結果不是整數，模組會使用較小的接近整數。
+3. **第一個輸出中的影像** 輸入比例，以指定要放入左方分割中的資料百分比，預設為0.9。 如果小數結果不是整數，模組會使用較小的接近整數。
 
 
 ## <a name="technical-notes"></a>技術說明

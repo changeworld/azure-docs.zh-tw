@@ -1,6 +1,6 @@
 ---
 title: 演算法和模組參考
-description: 瞭解 Azure Machine Learning 表設計工具中可用的模組
+description: 瞭解您可以用來建立自己的機器學習專案的 Azure Machine Learning 設計工具模組。
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886396"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421289"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的演算法 & 模組參考
 

@@ -1,7 +1,7 @@
 ---
 title: ResNet
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 ResNet 演算法建立影像分類模型。
+description: 瞭解如何使用 ResNet 演算法，在 Azure Machine Learning 設計工具中建立影像分類模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442042"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421204"
 ---
 # <a name="resnet"></a>ResNet
 
@@ -34,9 +34,9 @@ ms.locfileid: "91442042"
 
 1.  在設計工具中，將 **ResNet** 模組新增至您的管線。  
 
-2.  針對 [ **模型名稱**]，指定特定 ResNet 結構的名稱，您可以從支援的 ResNet 中選取： ' resnet18 '、' resnet34 '、' resnet50 '、' resnet101 '、' resnet152 '、' resnet152 '、' resnext50 \_ 32x4d '、' resnext101 \_ 32x8d '、' wide_resnet50 \_ 2 '、' wide_resnet101 \_ 2 '。
+2.  針對 [ **模型名稱** ]，指定特定 ResNet 結構的名稱，您可以從支援的 ResNet 中選取： ' resnet18 '、' resnet34 '、' resnet50 '、' resnet101 '、' resnet152 '、' resnet152 '、' resnext50 \_ 32x4d '、' resnext101 \_ 32x8d '、' wide_resnet50 \_ 2 '、' wide_resnet101 \_ 2 '。
 
-3.  針對 [ **預先定型**]，指定是否要使用在 ImageNet 上預先定型的模型。 如果選取此選項，您可以根據所選預先定型的模型微調模型。如果取消選取，您可以從頭開始定型。
+3.  針對 [ **預先定型** ]，指定是否要使用在 ImageNet 上預先定型的模型。 如果選取此選項，您可以根據所選預先定型的模型微調模型。如果取消選取，您可以從頭開始定型。
 
 4.  將 **densenet-121** 模組、定型和驗證影像資料集模組的輸出連接到 [定型 Pytorch 模型](train-pytorch-model.md)。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "91442042"
 
 | 名稱       | 範圍 | 類型    | 預設           | 描述                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
-| 模型名稱 | 任意   | 模式    | resnext101 \_ 32x8d | 特定 ResNet 結構的名稱       |
+| 模型名稱 | 任意   | [模式]    | resnext101 \_ 32x8d | 特定 ResNet 結構的名稱       |
 | 預先定型 | 任意   | 布林值 | True              | 是否要在 ImageNet 上使用預先定型的模型 |
 |            |       |         |                   |                                          |
 

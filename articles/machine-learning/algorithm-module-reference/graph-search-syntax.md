@@ -1,7 +1,7 @@
 ---
 title: 圖表搜尋查詢語法
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用搜尋查詢語法，在管線圖形中搜尋節點。
+description: 瞭解如何使用 Azure Machine Learning 設計工具中的搜尋查詢語法，在管線圖形中搜尋節點。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290495"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420762"
 ---
 # <a name="graph-search-query-syntax"></a>圖表搜尋查詢語法
 
@@ -36,7 +36,7 @@ ms.locfileid: "91290495"
 
  
 - 且/或
-- 萬用字元符合 **？** and **\*** 運算子。
+- 萬用字元符合 **？** 和 * *\** _ 運算子。
 
 ### <a name="examples"></a>範例
 
@@ -49,7 +49,7 @@ ms.locfileid: "91290495"
  
 - 萬用字元比對： 
     - `machi?e learning`
-    - `mach*ing`
+    - `mach_ing`
  
 >[!NOTE]
 > 您無法以 "*" 字元啟動 Lucene 查詢。

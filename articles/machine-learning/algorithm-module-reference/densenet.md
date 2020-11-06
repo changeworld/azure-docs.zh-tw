@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Densenet-121 演算法建立影像分類模型。
+description: 瞭解如何在 Azure Machine Learning 設計工具中使用 Densenet-121 模組，以使用 Densenet-121 演算法建立影像分類模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536625"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421323"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -35,11 +35,11 @@ ms.locfileid: "91536625"
 
 1.  在設計工具中，將 **densenet-121** 模組新增至您的管線。  
 
-2.  針對 [ **模型名稱**]，指定特定 densenet-121 結構的名稱，您可以從支援的 densenet-121 中選取： ' densenet121 '、' densenet161 '、' densenet169 '、' densenet201 '。
+2.  針對 [ **模型名稱** ]，指定特定 densenet-121 結構的名稱，您可以從支援的 densenet-121 中選取： ' densenet121 '、' densenet161 '、' densenet169 '、' densenet201 '。
 
-3.  針對 [ **預先定型**]，指定是否要使用在 ImageNet 上預先定型的模型。 如果選取此選項，您可以根據所選預先定型的模型微調模型。如果取消選取，您可以從頭開始定型。
+3.  針對 [ **預先定型** ]，指定是否要使用在 ImageNet 上預先定型的模型。 如果選取此選項，您可以根據所選預先定型的模型微調模型。如果取消選取，您可以從頭開始定型。
 
-4.  若要 **有效率地使用記憶體**，請指定是否要使用檢查點，這會比記憶體效率更高，但速度較慢。 如需詳細資訊，請參閱研究白皮書、 [記憶體有效率的 DenseNets 執行](https://arxiv.org/pdf/1707.06990.pdf)。
+4.  若要 **有效率地使用記憶體** ，請指定是否要使用檢查點，這會比記憶體效率更高，但速度較慢。 如需詳細資訊，請參閱研究白皮書、 [記憶體有效率的 DenseNets 執行](https://arxiv.org/pdf/1707.06990.pdf)。
 
 5.  將 **densenet-121** 模組、定型和驗證影像資料集模組的輸出連接到 [定型 Pytorch 模型](train-pytorch-model.md)。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "91536625"
 
 | 名稱             | 範圍 | 類型    | 預設     | 描述                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| 模型名稱       | 任意   | 模式    | densenet201 | 特定 Densenet-121 結構的名稱     |
+| 模型名稱       | 任意   | [模式]    | densenet201 | 特定 Densenet-121 結構的名稱     |
 | 預先定型       | 任意   | 布林值 | True        | 是否要在 ImageNet 上使用預先定型的模型 |
 | 記憶體效率 | 任意   | 布林值 | 否       | 是否要使用檢查點，其記憶體效率更高，但速度較慢 |
 

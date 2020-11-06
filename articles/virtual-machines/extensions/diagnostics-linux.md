@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893398"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421068"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -74,6 +74,29 @@ Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版�
 * **Azure CLI** 。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
 * Wget 命令，如果您沒有：執行 `sudo apt-get install wget`。
 * 現有的 Azure 訂用帳戶和現有的一般用途儲存體帳戶，用來儲存資料。  一般目的儲存體帳戶支援需要的資料表儲存體。  Blob 儲存體帳戶將無法運作。
+* Python 2
+
+### <a name="python-requirement"></a>Python 需求
+
+Linux 診斷擴充功能需要 Python 2。 如果您的虛擬機器預設使用未包含 Python 2 的發行版本，則您必須安裝它。 下列範例命令會在不同的散發版本上安裝 Python 2。    
+
+ - Red Hat、CentOS、Oracle： `yum install -y python2`
+ - Ubuntu、Debian： `apt-get install -y python2`
+ - SUSE：`zypper install -y python2`
+
+Python2 可執行檔必須以 *python* 為別名。 以下是您可以用來設定此別名的其中一種方法：
+
+1. 執行下列命令以移除任何現有的別名。
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. 執行下列命令以建立別名。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>範例安裝
 

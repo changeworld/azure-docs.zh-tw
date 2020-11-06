@@ -1,7 +1,7 @@
 ---
 title: 針對設計工具模組錯誤進行疑難排解
 titleSuffix: Azure Machine Learning
-description: 針對 Azure Machine Learning 設計工具中的模組錯誤碼進行疑難排解
+description: 瞭解如何在 Azure Machine Learning 設計工具中讀取和疑難排解自動化模組錯誤碼。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323776"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420830"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
 
