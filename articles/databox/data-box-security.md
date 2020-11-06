@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565746"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337337"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -32,11 +32,11 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 
 下圖指出透過 Azure 資料箱解決方案從內部部署至 Azure 的資料流程，以及資料流程經解決方案時的各種安全性功能。 此流程適用于資料箱的匯入順序。
 
-![資料箱匯入安全性](media/data-box-security/data-box-security-2.png)
+![資料箱匯入安全性](media/data-box-security/data-box-security-import.png)
 
 下圖適用于資料箱的匯出順序。
 
-![資料箱匯出安全性](media/data-box-security/data-box-security-3.png)
+![資料箱匯出安全性](media/data-box-security/data-box-security-export.png)
 
 當資料流經此解決方案時，就會記錄事件並產生記錄檔。 如需詳細資訊，請移至：
 
@@ -56,7 +56,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - 只能執行資料箱專用軟體。
 - 在鎖定狀態下開機。
 - 透過裝置解除鎖定密碼控制裝置存取。
-- 存取認證，以將資料複製到裝置中或從裝置複製資料。 Azure 入口網站中，所有對 [裝置認證]**** 頁面的存取都會記錄於[活動記錄](data-box-logs.md#query-activity-logs-during-setup)中。
+- 存取認證，以將資料複製到裝置中或從裝置複製資料。 Azure 入口網站中，所有對 [裝置認證] 頁面的存取都會記錄於[活動記錄](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>資料箱資料保護
 
@@ -106,7 +106,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 
 資料箱中會實作下列安全性指導方針： 
 
-|指導方針   |描述   |
+|指導方針   |說明   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 適用於防水防塵         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 適用於不利的運輸條件耐久性          |

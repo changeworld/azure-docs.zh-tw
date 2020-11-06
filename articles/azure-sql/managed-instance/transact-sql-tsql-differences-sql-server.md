@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790605"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337639"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)
 - [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)語句的[SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr)子句
 
-### <a name="backup"></a>備份
+### <a name="backup"></a>Backup
 
 SQL 受控執行個體具有自動備份，因此使用者可以建立完整的資料庫 `COPY_ONLY` 備份。 不支援差異、記錄和檔案快照集備份。
 
@@ -159,6 +159,8 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
 
+  - 若要使用 EXECUTE AS 語句來模擬使用者，使用者必須直接對應到 Azure AD 伺服器主體 (登入) 。 如果使用者是對應到 Azure AD 伺服器主體 Azure AD 群組的成員，即使呼叫端具有指定使用者名稱的模擬許可權，也無法以 EXECUTE AS 語句進行模擬。
+
 - 使用 [SSMS 18.4 或更新版本](/sql/ssms/download-sql-server-management-studio-ssms)或 [SQLPackage.exe](/sql/tools/sqlpackage-download)的 SQL 受控執行個體中的 Azure AD 使用者，支援使用 bacpac 檔案進行資料庫匯出/匯入。
   - 下列是使用資料庫 bacpac 檔案支援的設定： 
     - 在相同 Azure AD 網域內的不同管理實例之間匯出/匯入資料庫。
@@ -188,7 +190,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 
@@ -300,6 +302,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
   - 尚不支援警示。
   - 不支援 proxy。
 - 不支援 EventLog。
+- 使用者必須直接對應到 Azure AD 伺服器主體 (登入) ，才能建立、修改或執行 SQL Agent 作業。 未直接對應的使用者（例如，屬於 Azure AD 群組且擁有建立、修改或執行 SQL Agent 作業之許可權的使用者，將無法有效執行這些動作。 這是因為受控執行個體模擬和 [執行為限制](#logins-and-users)。
 
 目前不支援下列 SQL Agent 功能：
 
@@ -409,7 +412,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 不支援參考 HDFS 或 Azure Blob 儲存體中檔案的外部資料表。 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
 
-### <a name="replication"></a>複寫
+### <a name="replication"></a>Replication
 
 - 支援快照式和雙向複寫類型。 不支援合併式複寫、點對點複寫，以及可更新的訂閱。
 - [異動複寫](replication-transactional-overview.md) 適用于 SQL 受控執行個體上的公開預覽，但有一些限制：

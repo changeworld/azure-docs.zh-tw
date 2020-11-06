@@ -4,12 +4,12 @@ description: 瞭解 Azure 區塊鏈服務的新功能，例如最新的版本資
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948454"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335021"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Azure 區塊鏈服務的新功能
 
@@ -27,7 +27,7 @@ Azure 區塊鏈服務持續不斷改進。 為了讓您隨時掌握最新的開�
 
 ### <a name="version-upgrades"></a>版本升級
 
-- 將仲裁版本升級至2.6.0。 使用版本2.6.0 時，您可以傳送已簽署的私用交易。 如需有關傳送私用交易的詳細資訊，請參閱 [仲裁 API 檔](https://docs.goquorum.com/en/latest/Getting%20Started/api/)。
+- 將仲裁版本升級至2.6.0。 使用版本2.6.0 時，您可以傳送已簽署的私用交易。 如需有關傳送私用交易的詳細資訊，請參閱 [仲裁 API 檔](https://docs.goquorum.consensys.net/en/latest/Reference/APIs/ContractExtensionAPIs/#apis)。
 - Tessera 版本升級為0.10.5。
 
 ### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>合約大小和交易大小增加到 128 KB
@@ -69,7 +69,7 @@ TrieTimeout 值已減少，以便將記憶體內部狀態更頻繁地寫入磁�
 在仲裁 v 2.6.0 中，呼叫 *estimateGas* 函式，但不提供額外的 *值* 參數導致 *方法處理常式* 損毀例外狀況。 仲裁小組已收到通知，而且預計會在2020年7月結束時進行修正。 您可以使用下列因應措施，直到有可用的修正程式為止：
 
 - 避免使用 *estimateGas* ，因為它會影響效能。 如需有關 estimateGas 效能問題的詳細資訊，請參閱 [呼叫 eth. estimateGas 函數可降低效能](#calling-ethestimategas-function-reduces-performance)。 為每筆交易包含天然氣值。 大部分的程式庫都會呼叫 estimateGas，如果未提供加油站值，導致仲裁 v 2.6.0 損毀。
-- 如果您需要呼叫 *estimateGas*，仲裁團隊建議您將額外的參數 *值* 當作 *0* 傳遞，以作為因應措施。
+- 如果您需要呼叫 *estimateGas* ，仲裁團隊建議您將額外的參數 *值* 當作 *0* 傳遞，以作為因應措施。
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>如果有少於四個驗證程式節點，則會停止進行
 
@@ -83,7 +83,7 @@ TrieTimeout 值已減少，以便將記憶體內部狀態更頻繁地寫入磁�
 
 ### <a name="blockchain-data-manager-requires-standard-tier-node"></a>區塊鏈資料管理員需要標準層節點
 
-如果您使用區塊鏈資料管理員，請使用 *標準* 層。 *基本*層僅具有 4 GB 的記憶體。 因此，它無法調整為區塊鏈資料管理員和其上執行的其他服務所需的使用量。
+如果您使用區塊鏈資料管理員，請使用 *標準* 層。 *基本* 層僅具有 4 GB 的記憶體。 因此，它無法調整為區塊鏈資料管理員和其上執行的其他服務所需的使用量。
 
 使用「基本」層來進行開發、測試和概念證明。 不支援在建立成員之後變更基本和標準間的定價層。
 
@@ -117,9 +117,9 @@ Azure 區塊鏈服務在發生損毀時重新開機 Tessera。 重新開機大�
 
 ### <a name="calling-ethestimategas-function-reduces-performance"></a>呼叫 estimateGas 函數可減少效能
 
-多次呼叫 *estimateGas* 函式會大幅減少每秒的交易數。 請勿針對每個提交的交易使用 *estimateGas* 函數。 *EstimateGas*函式需要記憶體密集的功能。
+多次呼叫 *estimateGas* 函式會大幅減少每秒的交易數。 請勿針對每個提交的交易使用 *estimateGas* 函數。 *EstimateGas* 函式需要記憶體密集的功能。
 
-可能的話，請使用保守的天然氣價值來提交交易，並將 *estimateGas*的使用降至最低。
+可能的話，請使用保守的天然氣價值來提交交易，並將 *estimateGas* 的使用降至最低。
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>智慧型合約中的未系結迴圈可減少效能
 
@@ -127,5 +127,5 @@ Azure 區塊鏈服務在發生損毀時重新開機 Tessera。 重新開機大�
 
 - [避免未系結迴圈](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [智慧型合約安全性最佳作法](https://github.com/ConsenSys/smart-contract-best-practices)
-- [仲裁提供的智慧型合約指導方針](http://docs.goquorum.com/en/latest/Security/Framework/Decentralized%20Application/Smart%20Contracts%20Security/)
+- [仲裁提供的智慧型合約指導方針](https://docs.goquorum.consensys.net/en/stable/Concepts/Security/Framework/DecentralizedApplication/SmartContractsSecurity/)
 - [密度提供的天然氣限制和迴圈指導方針](https://solidity.readthedocs.io/en/develop/security-considerations.html#gas-limit-and-loops)

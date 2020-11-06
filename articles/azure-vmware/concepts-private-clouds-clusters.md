@@ -3,12 +3,12 @@ title: 概念-私用雲端和叢集
 description: 深入瞭解 Azure VMware 解決方案軟體定義的資料中心和 vSphere 叢集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: b261eb0517e9890d9bccf12f2e5748626f4c1ff9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791013"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337316"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解決方案私用雲端和叢集概念
 
@@ -52,9 +52,9 @@ Azure VMware 解決方案私人雲端叢集中所使用 VMware 軟體的目前�
 
 | 軟體              |    版本   |
 | :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U2    | 
-| ESXi                  |    6.7 U2    | 
-| vSAN                  |    6.7 U2    |
+| VCSA/vSphere/ESXi |    6.7 U3    | 
+| ESXi                  |    6.7 U3    | 
+| vSAN                  |    6.7 U3    |
 | NSX-T                 |      2.5     |
 
 針對私人雲端中的任何新叢集，軟體版本會符合目前正在執行的專案。 針對訂用帳戶中的任何新私人雲端，會安裝軟體堆疊的最新版本。

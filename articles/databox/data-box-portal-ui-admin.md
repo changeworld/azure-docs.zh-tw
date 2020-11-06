@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924748"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338036"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 入口網站來管理資料箱磁碟
 
@@ -27,17 +27,17 @@ ms.locfileid: "87924748"
 
 執行下列步驟以取消訂單。
 
-1.  移至 [概觀 > 取消]****。 
+1.  移至 [概觀 > 取消]。 
 
-    ![取消訂單 1](media/data-box-portal-ui-admin/cancel-order1.png)
+    ![訂單的 [總覽] 索引標籤上的 [取消] 命令](media/data-box-portal-ui-admin/portal-ui-admin-cancel-command.png)
 
 2.  填寫取消訂單的原因。  
 
-    ![取消訂單 2](media/data-box-portal-ui-admin/cancel-order2.png)
+    ![取消訂單的原因](media/data-box-portal-ui-admin/portal-ui-admin-cancel-order-reason.png)
 
-3.  一旦訂單取消後，入口網站會更新訂單狀態，並將它顯示為 [已取消]****。
+3.  一旦訂單取消後，入口網站會更新訂單狀態，並將它顯示為 [已取消]。
 
-    ![取消訂單 3](media/data-box-portal-ui-admin/cancel-order3.png)
+    ![已取消訂單](media/data-box-portal-ui-admin/portal-ui-admin-canceled-order.png)
 
 在取消訂單時，您不會收到電子郵件通知。
 
@@ -47,15 +47,15 @@ ms.locfileid: "87924748"
 
 請執行下列步驟來複製訂單。
 
-1.  移至 [概觀 > 複製]****。 
+1.  移至 [概觀 > 複製]。 
 
-    ![複製訂單 1](media/data-box-portal-ui-admin/clone-order1.png)
+    ![訂單的 [總覽] 索引標籤上的 [複製] 命令](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]。    
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下頁面底部的 [新增]  。    
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
-[![複製順序3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![複製的順序](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png)](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png#lightbox) 
 
 ## <a name="delete-order"></a>刪除訂單
 
@@ -63,17 +63,17 @@ ms.locfileid: "87924748"
 
 您只能將已完成或已取消的訂單刪除。 執行下列步驟來刪除訂單。
 
-1. 移至 **所有資源**。 搜尋您的訂單。
+1. 移至 **所有資源** 。 搜尋您的訂單。
 
-    ![搜尋資料箱磁碟訂單](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
+    ![搜尋訂單](media/data-box-portal-ui-admin/portal-ui-admin-search-data-box-disk-orders.png)
 
-2. 按一下您想要刪除的訂單，並移至 [概觀]****。 從命令列按一下 [刪除]****。
+2. 按一下您想要刪除的訂單，並移至 [概觀]。 從命令列按一下 [刪除]。
 
-    ![刪除資料箱磁碟訂單 1](media/data-box-portal-ui-admin/delete-order1.png)
+    ![順序訂單](media/data-box-portal-ui-admin/portal-ui-admin-delete-command.png)
 
 3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 **[刪除]** 。
 
-     ![刪除資料箱磁碟訂單 2](media/data-box-portal-ui-admin/delete-order2.png)
+     ![確認訂單刪除](media/data-box-portal-ui-admin/portal-ui-admin-confirm-deletion.png)
 
 
 ## <a name="download-shipping-label"></a>下載出貨標籤
@@ -81,13 +81,13 @@ ms.locfileid: "87924748"
 如果您磁碟隨附的出貨標籤錯置或遺失，您可能需要下載出貨標籤。 
 
 執行下列步驟，以下載出貨標籤。
-1.  移至 [概觀 > 下載出貨標籤]****。 只有在磁碟出貨之後，才可使用此選項。 
+1.  移至 [概觀 > 下載出貨標籤]。 只有在磁碟出貨之後，才可使用此選項。 
 
-    ![下載出貨標籤](media/data-box-portal-ui-admin/download-shipping-label.png)
+    ![下載出貨標籤](media/data-box-portal-ui-admin/portal-ui-admin-download-shipping-label.png)
 
 2.  這會下載下列退貨標籤。 儲存標籤、列印，並將其貼到退貨上。
 
-    ![範例出貨標籤](media/data-box-portal-ui-admin/example-shipping-label.png)
+    ![範例出貨標籤](media/data-box-portal-ui-admin/portal-ui-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>編輯交貨地址
 
@@ -95,13 +95,13 @@ ms.locfileid: "87924748"
 
 執行下列步驟以編輯訂單。
 
-1. 移至 [訂單詳細資料 > 編輯交貨地址]****。
+1. 移至 [訂單詳細資料 > 編輯交貨地址]。
 
-    ![編輯交貨地址 1](media/data-box-portal-ui-admin/edit-shipping-address1.png)
+    ![依序編輯交貨位址命令的詳細資料](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-command.png)
 
 2. 您現在可以編輯交貨地址，然後儲存變更。
 
-    ![編輯交貨地址 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
+    ![編輯交貨位址對話方塊](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>編輯通知詳細資料
 
@@ -109,17 +109,17 @@ ms.locfileid: "87924748"
 
 請執行下列步驟來編輯通知詳細資料。
 
-1. 移至 [訂單詳細資料 > 編輯通知詳細資料]****。
+1. 移至 [訂單詳細資料 > 編輯通知詳細資料]。
 
-    ![編輯通知詳細資料 1](media/data-box-portal-ui-admin/edit-notification-details1.png)
+    ![依序編輯通知詳細資料命令](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-command.png)
 
 2. 您現在可以編輯通知詳細資料，然後儲存變更。
  
-    ![編輯通知詳細資料 2](media/data-box-portal-ui-admin/edit-notification-details2.png)
+    ![編輯通知詳細資料對話方塊](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-dbox.png)
 
 ## <a name="view-order-status"></a>檢視訂單狀態
 
-|訂單狀態 |描述 |
+|訂單狀態 |說明 |
 |---------|---------|
 |訂購時間     | 已成功下單。 <br> 如果磁碟無法使用，您會收到通知。 <br>如果可使用磁碟，Microsoft 會識別要寄送的磁碟，並準備磁碟包裹。        |
 |已處理     | 訂單處理已完成。 <br> 在訂單處理期間，會發生下列動作：<li>使用 AES-128 BitLocker 加密將磁碟加密。 </li> <li>鎖定資料箱磁碟，以防止未經授權的存取。</li><li>在此程序期間，會產生解除鎖定磁碟的通行金鑰。</li>        |
@@ -129,7 +129,7 @@ ms.locfileid: "87924748"
 |已收到     | Azure 資料中心已收到您的磁碟。 複製資料即將開始。        |
 |已複製資料     |資料複製進行中。<br> 等候資料複製完成。         |
 |已完成       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
-|已完成，但發生錯誤| 資料複製已完成，但收到錯誤。 <br> 使用 [概觀]**** 中提供的路徑，檢閱上傳的錯誤記錄。 如需詳細資訊，請移至[下載上傳錯誤記錄](data-box-disk-troubleshoot-upload.md#download-logs)。   |
+|已完成，但發生錯誤| 資料複製已完成，但收到錯誤。 <br> 使用 [概觀] 中提供的路徑，檢閱上傳的錯誤記錄。 如需詳細資訊，請移至[下載上傳錯誤記錄](data-box-disk-troubleshoot-upload.md#download-logs)。   |
 |已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。     |
 
 

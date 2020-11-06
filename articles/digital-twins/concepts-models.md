@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: fecadf3cd6fd0d654315038680b9aa3fa2b71782
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 12eed6aeccffe854810e9c2ddc8a5c4e59b8c312
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913903"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337928"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>瞭解 Azure 數位 Twins 中的對應項模型
 
@@ -138,7 +138,7 @@ Azure 數位 Twins 也不會觀察 `writable` 屬性或關聯性的屬性。 雖
 
 模型的欄位如下：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | --- | --- |
 | `@id` | 模型的識別碼。 的格式必須是 `dtmi:<domain>:<unique model identifier>;<model version number>` 。 |
 | `@type` | 識別所描述的資訊種類。 若為介面，此類型為 *介面* 。 |
@@ -228,13 +228,19 @@ Azure 數位 Twins 也不會觀察 `writable` 屬性或關聯性的屬性。 雖
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="converting-industry-standard-models"></a>轉換產業標準模型
+## <a name="integrating-with-industry-standard-models"></a>與產業標準模型整合
 
-如果您的現有模型是以產業標準（例如 RDF 或 OWL）為基礎的 Azure 數位 Twins，您必須 **將它們轉換成 DTDL** ，以搭配 Azure 數位 Twins 使用。 DTDL 版本接著會成為 Azure 數位 Twins 內模型的真實來源。
+使用以產業標準為基礎或使用標準本體標記法的模型（例如 RDF 或 OWL），可在設計 Azure 數位 Twins 模型時提供豐富的起點。 使用產業模型也有助於標準化與資訊共用。
 
-如需此程式的詳細資訊，請參閱 [*如何：轉換產業標準模型*](how-to-convert-models.md)。
+若要搭配 Azure 數位 Twins 使用，模型必須以以 JSON-LD 為基礎的 [**數位 Twins 定義語言表示， (DTDL)**](concepts-models.md)。 因此，本文說明如何在 DTDL 中呈現您的產業標準模型，並將現有的產業概念與 DTDL 語義整合，讓 Azure 數位 Twins 可以使用它們。 然後，DTDL 模型會作為 Azure 數位 Twins 內模型的真實來源。
 
-## <a name="next-steps"></a>下一步
+有兩個主要路徑可將產業標準模型與 DTDL 整合，視您的情況而定：
+* 如果您尚未建立您的模型，您可以在 **現有的 STARTER DTDL 本體** （包含您產業專屬的語言）上加以設計。
+* 如果您已經有以產業標準為基礎的現有模型，您必須 **將它們轉換成 DTDL** ，才能將它們帶入 Azure 數位 Twins。
+
+如需這兩個處理常式的詳細資訊，請參閱作法 [*：整合產業標準模型*](how-to-integrate-models.md)。
+
+## <a name="next-steps"></a>後續步驟
 
 請參閱如何使用 DigitalTwinModels Api 管理模型：
 * [操作說明：管理自訂模型](how-to-manage-model.md)

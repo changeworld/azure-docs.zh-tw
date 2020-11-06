@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147953"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337503"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure 資料箱和 Azure Data Box Heavy 匯出訂單的追蹤和事件記錄
 
@@ -39,7 +39,7 @@ ms.locfileid: "92147953"
 可以為 Azure 資料箱服務定義的兩個角色為：
 
 - **資料箱讀取器** -依領域定義的順序 (s) 的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，也無法編輯訂單詳細資料，例如位址等等。
-- **資料箱參與者** -只有 *在已有儲存體帳戶的寫入存取權時*，才能建立將資料傳送到指定儲存體帳戶的訂單。 如果他們沒有儲存體帳戶的存取權，他們甚至無法建立資料箱訂單來將資料複製到帳戶。 此角色不會定義任何儲存體帳戶的相關許可權，也不會授與儲存體帳戶的存取權。  
+- **資料箱參與者** -只有 *在已有儲存體帳戶的寫入存取權時* ，才能建立將資料傳送到指定儲存體帳戶的訂單。 如果他們沒有儲存體帳戶的存取權，他們甚至無法建立資料箱訂單來將資料複製到帳戶。 此角色不會定義任何儲存體帳戶的相關許可權，也不會授與儲存體帳戶的存取權。  
 
 若要限制訂單的存取權，您可以：
 
@@ -52,9 +52,9 @@ ms.locfileid: "92147953"
 
 當您放置資料箱的匯出順序時，您可以選擇啟用詳細資訊記錄檔的收集。 以下是您可以啟用詳細資訊記錄的順序畫面：
 
-![選取匯出選項](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![選取匯出選項](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-當您選取 [ **包含詳細資訊記錄** 檔] 選項時，從您的 Azure 儲存體帳戶複製資料時，會產生詳細資訊記錄檔。 此記錄檔包含已成功匯出的所有檔案清單。      
+當您選取 [ **包含詳細資訊記錄** 檔] 選項時，從您的 Azure 儲存體帳戶複製資料時，會產生詳細資訊記錄檔。 此記錄檔包含已成功匯出的所有檔案清單。
 
 如需匯出順序的詳細資訊，請參閱 [建立資料箱的匯出順序](data-box-deploy-export-ordered.md)
 
@@ -129,7 +129,7 @@ ms.locfileid: "92147953"
 
 ### <a name="verbose-log"></a>詳細資訊記錄
 
-*詳細資訊記錄*包含已從 Azure 儲存體帳戶成功匯出的所有檔案清單。 記錄中也包含檔案大小和總和檢查碼計算。
+*詳細資訊記錄* 包含已從 Azure 儲存體帳戶成功匯出的所有檔案清單。 記錄中也包含檔案大小和總和檢查碼計算。
 
 詳細資訊記錄檔的格式如下：
 
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下載訂單記錄
 
-訂單記錄可在 Azure 入口網站中取得。 如果訂單已完成，且裝置清除 (磁片) 的資料清除完成，請移至您的裝置訂單，然後流覽至 [ **訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱 [下載訂單記錄](data-box-portal-admin.md#download-order-history)。
+訂單記錄可在 Azure 入口網站中取得。 如果訂單已完成，且裝置清除 (磁片) 的資料清除完成，請移至您的裝置訂單，然後流覽至 [ **訂單詳細** 資料]。 [下載訂單記錄] 選項可供使用。 如需詳細資訊，請參閱 [下載訂單記錄](data-box-portal-admin.md#download-order-history)。
 
 如果您有滾動訂單歷程記錄，您會看到：
 
 - 裝置的貨運公司追蹤資訊。
 - 具有 *SecureErase* 活動的事件。 這些事件會對應到磁片上的資料抹除。
-- 資料箱記錄連結。 系統會顯示 *audit 記錄*檔、 *複製記錄*檔和 *BOM* 檔案的路徑。
+- 資料箱記錄連結。 系統會顯示 *audit 記錄* 檔、 *複製記錄* 檔和 *BOM* 檔案的路徑。
 
 以下是 Azure 入口網站的訂單歷程記錄範例：
 

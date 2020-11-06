@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e810a31fab4457e47329e37f54b16e6f488c9da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630605"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337622"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>針對常見路由問題進行疑難排解
 
@@ -95,13 +95,34 @@ ms.locfileid: "91630605"
 
     * 檢查您的 HTTP 和 HTTPS 連接埠。 在大多數情況下，80和 443 (分別) 正確，而且不需要任何變更。 不過，您的後端有機會無法以這種方式進行設定，而是在不同的埠上接聽。
 
-        * 請檢查針對前端主機應路由傳送至的後端所設定的 [後端主機標頭]__。 在大部分情況下，此標頭應該與 [後端主機標頭]** 相同。 不過，如果後端預期有不同的值，則不正確的值可能會導致各種 HTTP 4xx 狀態碼。 如果您輸入後端的 IP 位址，則可能必須將 [後端主機標頭]** 設定為後端的主機名稱。
+        * 請檢查針對前端主機應路由傳送至的後端所設定的 [後端主機標頭]。 在大部分情況下，此標頭應該與 [後端主機標頭] 相同。 不過，如果後端預期有不同的值，則不正確的值可能會導致各種 HTTP 4xx 狀態碼。 如果您輸入後端的 IP 位址，則可能必須將 [後端主機標頭] 設定為後端的主機名稱。
 
 3. 檢查路由規則設定：
-    * 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 請確定轉送要求時，已正確設定接受的通訊協定。 [ *接受的通訊協定* ] 欄位會決定 Front Door 應接受哪些要求。 *轉送通訊協定*會決定 Front Door 應使用哪個通訊協定將要求轉送至後端。
+    * 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 請確定轉送要求時，已正確設定接受的通訊協定。 [ *接受的通訊協定* ] 欄位會決定 Front Door 應接受哪些要求。 *轉送通訊協定* 會決定 Front Door 應使用哪個通訊協定將要求轉送至後端。
          * 例如，如果後端只接受 HTTP 要求，則下列組態會有效：
-            * [接受的通訊協定]** 為 HTTP 和 HTTPS。 [轉送通訊協定]** 為 HTTP。 比對要求無法運作，因為 HTTPS 是允許的通訊協定，而如果要求以 HTTPS 形式傳入，Front Door 會嘗試使用 HTTPS 轉寄。
+            * [接受的通訊協定] 為 HTTP 和 HTTPS。 [轉送通訊協定] 為 HTTP。 比對要求無法運作，因為 HTTPS 是允許的通訊協定，而如果要求以 HTTPS 形式傳入，Front Door 會嘗試使用 HTTPS 轉寄。
 
-            * [接受的通訊協定]** 為 HTTP。 *轉送通訊協定* 可能符合要求或 HTTP。
+            * [接受的通訊協定] 為 HTTP。 *轉送通訊協定* 可能符合要求或 HTTP。
+    - 預設會停用 *Url 重寫* 。 只有當您想要將想要提供的後端託管資源範圍縮小時，才會使用此欄位。 停用時，Front Doo 會轉送它所接收的相同要求路徑。 您可以 jeffv 此欄位。 因此，當 Front Door 要求來自無法使用的後端資源時，它會傳回 HTTP 404 狀態碼。
 
-    - 預設會停用*Url 重寫*。 只有當您想要將想要提供的後端託管資源範圍縮小時，才會使用此欄位。 停用時，Front Doo 會轉送它所接收的相同要求路徑。 您可以 jeffv 此欄位。 因此，當 Front Door 要求來自無法使用的後端資源時，它會傳回 HTTP 404 狀態碼。
+## <a name="request-to-frontend-host-name-returns-411-status-code"></a>前端主機名稱的要求傳回411狀態碼
+
+### <a name="symptom"></a>徵狀
+
+您已建立 Front Door，並設定了前端主機、至少有一個後端的後端集區，以及可將前端主機連到後端集區的路由規則。 將要求傳送至已設定的前端主機時，您的內容似乎無法使用，因為傳回 HTTP 411 狀態碼。
+
+這些要求的回應可能也會在回應本文中包含 HTML 錯誤頁面，其中包含解釋性語句。 例如：`HTTP Error 411. The request must be chunked or have a content length`
+
+### <a name="cause"></a>原因
+
+此徵兆有幾個可能的原因：但是，整體的原因是您的 HTTP 要求並非完全符合 RFC 規範。 
+
+不符合規範的範例是在 `POST` 沒有 `Content-Length` 或標頭 (傳送的要求 `Transfer-Encoding` ，例如使用 `curl -X POST https://example-front-door.domain.com`) 。 此要求不符合 [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.3.2) 中所設定的需求，而且您的 Front Door 會封鎖 HTTP 411 回應。
+
+這種行為與 Front Door 的 WAF 功能不同。 目前沒有任何方法可以停用此行為。 所有 HTTP 要求都必須符合需求，即使 WAF 功能未使用也一樣。
+
+### <a name="troubleshooting-steps"></a>疑難排解步驟
+
+- 確認您的要求符合所需 Rfc 中所設定的需求。
+
+- 記下為了回應您的要求所傳回的任何 HTML 訊息主體，因為它們通常會 *說明您的* 要求不符合規範。

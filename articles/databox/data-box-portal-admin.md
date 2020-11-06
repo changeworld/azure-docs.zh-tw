@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123710"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336357"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 入口網站來管理您的 Azure 資料箱和 Azure Data Box Heavy
 
@@ -32,15 +32,15 @@ ms.locfileid: "92123710"
 
 執行下列步驟以取消訂單。
 
-1.  移至 [概觀 > 取消]****。
+1.  移至 [概觀 > 取消]。
 
-    ![取消訂單 1](media/data-box-portal-admin/cancel-order1.png)
+    ![訂單的 [總覽] 索引標籤上的 [取消] 命令](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  填寫取消訂單的原因。  
 
-    ![取消訂單 2](media/data-box-portal-admin/cancel-order2.png)
+    ![取消順序對話方塊](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
-3.  一旦訂單取消後，入口網站會更新訂單狀態，並將它顯示為 [已取消]****。
+3.  一旦訂單取消後，入口網站會更新訂單狀態，並將它顯示為 [已取消]。
 
 ## <a name="clone-an-order"></a>複製訂單
 
@@ -51,11 +51,11 @@ ms.locfileid: "92123710"
 
 請執行下列步驟來複製匯入順序。
 
-1.  移至 [概觀 > 複製]****。 
+1.  移至 [概觀 > 複製]。 
 
-    ![複製訂單 1](media/data-box-portal-admin/clone-order1.png)
+    ![訂單的 [總覽] 索引標籤上的 [複製] 命令](media/data-box-portal-admin/portal-admin-clone-command.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]  。
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下頁面底部的 [新增]  。
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
@@ -66,11 +66,11 @@ ms.locfileid: "92123710"
 
 您只能將已完成或已取消的訂單刪除。 執行下列步驟來刪除訂單。
 
-1. 移至 **所有資源**。 搜尋您的訂單。
+1. 移至 **所有資源** 。 搜尋您的訂單。
 
-2. 按一下您想要刪除的訂單，並移至 [概觀]****。 從命令列按一下 [刪除]****。
+2. 按一下您想要刪除的訂單，並移至 [概觀]。 從命令列按一下 [刪除]。
 
-    ![刪除資料箱訂單 1](media/data-box-portal-admin/delete-order1.png)
+    ![訂單的 [總覽] 索引標籤上的 [刪除] 命令](media/data-box-portal-admin/portal-admin-delete-command.png)
 
 3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 **[刪除]** 。
 
@@ -80,13 +80,13 @@ ms.locfileid: "92123710"
 
 執行下列步驟，以下載出貨標籤。
 
-1.  移至 [概觀 > 下載出貨標籤]****。 此選項只有在裝置出貨之後才可使用。 
+1.  移至 [概觀 > 下載出貨標籤]。 此選項只有在裝置出貨之後才可使用。 
 
-    ![下載出貨標籤](media/data-box-portal-admin/download-shipping-label.png)
+    ![下載出貨標籤](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  這會下載下列退貨標籤。 儲存標籤並將它列印出來。將標籤折迭並插入裝置上的清除套管中。 請確保標籤清楚可見。 將裝置上來自先前運送的貼紙全數移除。
 
-    ![範例出貨標籤](media/data-box-portal-admin/example-shipping-label.png)
+    ![範例出貨標籤](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>編輯交貨地址
 
@@ -94,13 +94,13 @@ ms.locfileid: "92123710"
 
 執行下列步驟以編輯訂單。
 
-1. 移至 [訂單詳細資料 > 編輯交貨地址]****。
+1. 移至 [訂單詳細資料 > 編輯交貨地址]。
 
-    ![編輯交貨地址 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![依序編輯交貨位址命令的詳細資料](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. 編輯並驗證交貨地址，然後儲存變更。
 
-    ![編輯交貨地址 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![編輯交貨位址對話方塊](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>編輯通知詳細資料
 
@@ -108,13 +108,13 @@ ms.locfileid: "92123710"
 
 請執行下列步驟來編輯通知詳細資料。
 
-1. 移至 [訂單詳細資料 > 編輯通知詳細資料]****。
+1. 移至 [訂單詳細資料 > 編輯通知詳細資料]。
 
-    ![編輯通知詳細資料 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![依序編輯通知詳細資料命令](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. 您現在可以編輯通知詳細資料，然後儲存變更。
  
-    ![編輯通知詳細資料 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![編輯通知詳細資料對話方塊](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>下載訂單記錄
@@ -123,15 +123,15 @@ ms.locfileid: "92123710"
 
 執行下列步驟以下載訂單記錄。
 
-1. 在您的資料箱訂單中，移至 [概觀]****。 確認訂單已完成。 如果訂單已完成，且裝置清除也已完成，請移至 [訂單詳細資料]****。 [下載訂單記錄]**** 選項可供使用。
+1. 在您的資料箱訂單中，移至 [概觀]。 確認訂單已完成。 如果訂單已完成，且裝置清除也已完成，請移至 [訂單詳細資料]。 [下載訂單記錄] 選項可供使用。
 
-    ![下載訂單記錄](media/data-box-portal-admin/download-order-history-1.png)
+    ![下載訂單記錄](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
-2. 按一下 [下載訂單記錄]****。 在下載的記錄中，您會看到貨運公司追蹤記錄的記錄。 會有兩組記錄對應至 Data Box Heavy 上的兩個節點。 如果您捲動到此記錄的底部，將可看到下列項目的連結：
+2. 按一下 [下載訂單記錄]。 在下載的記錄中，您會看到貨運公司追蹤記錄的記錄。 會有兩組記錄對應至 Data Box Heavy 上的兩個節點。 如果您捲動到此記錄的底部，將可看到下列項目的連結：
     
    - **複製記錄** -在資料從 data Box 複製到您的 Azure 儲存體帳戶期間錯誤的檔案清單， (匯入順序) 或 *反向* (匯出順序) 。
    - **Audit logs** -包含有關如何在 Azure 資料中心以外時開啟和存取資料箱上的共用的資訊。
-   - 匯**入順序中的 BOM**檔案-具有檔案清單 (也稱為檔案資訊清單) ，您可以在**寄送準備**期間下載這些檔案，並具有檔案名、檔案大小和檔案總和檢查碼。
+   - 匯 **入順序中的 BOM** 檔案-具有檔案清單 (也稱為檔案資訊清單) ，您可以在 **寄送準備** 期間下載這些檔案，並具有檔案名、檔案大小和檔案總和檢查碼。
    - **輸出順序中的詳細資訊記錄** ：當資料從 Azure 儲存體帳戶複製到資料箱時，具有檔案名、檔案大小和總和檢查碼計算的檔案清單。
 
    以下是來自匯入順序的訂單歷程記錄範例。
@@ -198,11 +198,11 @@ ms.locfileid: "92123710"
 
     然後，您可以移至儲存體帳戶並檢視複製記錄。
 
-![登入儲存體帳戶](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![儲存體帳戶的複製記錄](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-您也可以檢視包含稽核記錄和 BOM 檔案的監管鏈記錄。
+   您也可以查看監管記錄的鏈，這些記錄包含了審核記錄和 BOM 檔案。
 
-![儲存體帳戶中的記錄2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![儲存體帳戶的監管記錄鏈](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>檢視訂單狀態
 
@@ -212,7 +212,7 @@ ms.locfileid: "92123710"
 
 以下是匯入順序的狀態。
 
-|訂單狀態 |描述 |
+|訂單狀態 |說明 |
 |---------|---------|
 |訂購時間     | 已成功下單。 <br>如果裝置可供使用，Microsoft 會識別要寄送的裝置，並準備該裝置。 <br> 如果裝置無法立即提供使用，系統將會在裝置可供使用時處理該訂單。 訂單的處理可能需花費數天到數個月的時間。 如果無法在 90 天內完成訂單，系統將會取消該訂單並通知您。         |
 |已處理     | 訂單處理已完成。 裝置已根據您的訂單在資料中心做好寄送準備。         |
@@ -231,7 +231,7 @@ ms.locfileid: "92123710"
 
 以下是匯出順序的狀態。
 
-|訂單狀態 |描述 |
+|訂單狀態 |說明 |
 |---------|---------|
 |訂購時間     | 已成功放置匯出順序。 <br>如果裝置可供使用，Microsoft 會識別要寄送的裝置，並準備該裝置。 <br> 如果裝置無法立即提供使用，系統將會在裝置可供使用時處理該訂單。 訂單的處理可能需花費數天到數個月的時間。 如果無法在 90 天內完成訂單，系統將會取消該訂單並通知您。         |
 |已取消            |訂單便會取消。 <br> 您已取消訂單 (您只能在訂單處理之前取消) 或發生錯誤，且服務已取消訂單。 如果無法在 90 天內完成訂單，系統也將會取消該訂單並通知您。     |
@@ -254,7 +254,7 @@ ms.locfileid: "92123710"
 
 如果使用自我管理的傳送，則在複製完成之後，以及在您收到裝置之前，您將會看到下列狀態 (而不是上表所述的) ：
 
-|訂單狀態 |描述 |
+|訂單狀態 |說明 |
 |---------|---------|
 |準備好在 Azure 資料中心取貨      |裝置已備妥可在 Azure 資料中心上挑選。        |
 |已取貨    |您已挑選裝置。         |
@@ -265,6 +265,6 @@ ms.locfileid: "92123710"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何針對 [資料箱和 Data Box Heavy 問題進行疑難排解](data-box-troubleshoot.md)。

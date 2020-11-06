@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420881"
+ms.locfileid: "94336058"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>在適用於 MySQL 的 Azure 資料庫彈性的伺服器中讀取複本
 
@@ -114,7 +114,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 
 ## <a name="considerations-and-limitations"></a>考量與限制
 
-| 案例 | 限制/考慮 |
+| 狀況 | 限制/考慮 |
 |:-|:-|
 | 已啟用區域冗余 HA 之伺服器上的複本 | 不支援 |
 | 跨區域讀取複寫 | 不支援 |
@@ -125,7 +125,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 | 已停止的複本 | 如果您停止來源伺服器和讀取複本之間的複寫，已停止的複本會變成同時接受讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。 |
 | 已刪除來源與獨立伺服器 | 刪除來源伺服器時，會停止所有讀取複本的複寫。 這些複本會自動變成獨立伺服器，並且可以同時接受讀取和寫入。 來源伺服器本身也會遭到刪除。 |
 | 使用者帳戶 | 來源伺服器上的使用者會複寫到讀取複本。 您只能使用來源伺服器上的可用使用者帳戶連接到讀取複本。 |
-| 伺服器參數 | 若要防止資料不同步，以及避免潛在的資料遺失或損毀，則會在使用讀取複本時，有些伺服器參數會被鎖定而無法更新。 <br> 來源伺服器和複本伺服器上的下列伺服器參數都已鎖定：<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> 複本伺服器上會鎖定 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) 參數。 <br> 若要更新來源伺服器上的上述其中一個參數，請刪除複本伺服器、更新來源的參數值，然後重新建立複本。 |
+| 伺服器參數 | 若要防止資料不同步，以及避免潛在的資料遺失或損毀，則會在使用讀取複本時，有些伺服器參數會被鎖定而無法更新。 <br> 來源伺服器和複本伺服器上的下列伺服器參數都已鎖定：<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> 複本伺服器上會鎖定 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) 參數。 <br> 若要更新來源伺服器上的上述其中一個參數，請刪除複本伺服器、更新來源的參數值，然後重新建立複本。 |
 | 其他 | -不支援建立複本的複本。 <br> -記憶體中的資料表可能會導致複本不同步。這是 MySQL 複寫技術的限制。 如需詳細資訊，請參閱 [MySQL 參考文件](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) \(英文\)。 <br>-確定來源伺服器資料表具有主鍵。 缺少主鍵可能會導致來源與複本之間的複寫延遲。<br>-請參閱[mysql 檔](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)中的 mysql 複寫限制完整清單 |
 
 ## <a name="next-steps"></a>後續步驟

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d758d4613f68450be9c444063d3a6188d1aa689
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760558"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337571"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 來建置和部署 HPC 解決方案
 
@@ -42,8 +42,8 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 此範例中使用的程式碼庫結構與下列項目類似：
 
 * **arm-templates** 資料夾，其中包含數個 Azure Resource Manager 範本。 本文會說明這些範本。
-* **client-application** 資料夾，這是[使用 ffmpeg 進行 Azure Batch .NET 檔案處理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)範例的複本。 這不是本文所需的項目。
-* **Hpc 應用程式**資料夾，也就是 Windows 64 位版本的[ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip)。
+* **client-application** 資料夾，這是 [使用 ffmpeg 進行 Azure Batch .NET 檔案處理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)範例的複本。 這不是本文所需的項目。
+* **Hpc 應用程式** 資料夾，也就是 Windows 64 位版本的 [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z)。
 * **pipelines** 資料夾。 其中包含一個概述建置程序的 YAML 檔案。 這將在文件中討論。
 
 本節假設您已熟悉版本控制和設計 Resource Manager 範本。 如果您不熟悉這些概念，請參閱下列頁面以取得詳細資訊。
@@ -300,7 +300,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 * **arm-templates** 資料夾，可儲存我們的「基礎結構即程式碼」
 * **hpc-application** 資料夾，其中包含 ffmpeg 的二進位檔
 * **pipelines** 資料夾，其中包含建置管線的定義。
-* **選擇性**：**client-application** 資料夾，會儲存 .NET 應用程式的程式碼。 我們不會在範例中使用此資料夾，但是在您自己的專案中，您可能想要透過用戶端應用程式執行 HPC Batch 應用程式。
+* **選擇性** ： **client-application** 資料夾，會儲存 .NET 應用程式的程式碼。 我們不會在範例中使用此資料夾，但是在您自己的專案中，您可能想要透過用戶端應用程式執行 HPC Batch 應用程式。
 
 > [!NOTE]
 > 這只是程式碼庫結構的其中一個範例。 這個方法用來示範應用程式、基礎結構和管線程式碼會儲存在相同的存放庫中。
@@ -387,15 +387,15 @@ Azure Pipelines 也用來部署您的應用程式和基礎結構。 [發行管�
 
 1. 瀏覽至 [變數] 區段。 建議您在管線中建立一些變數，才不會在多重工作中輸入相同的資訊。 以下是此範例中使用的變數，以及其對部署有何影響。
 
-    * **applicationStorageAccountName**：保存 HPC 應用程式二進位檔的儲存體帳戶名稱
-    * **batchAccountApplicationName**：Azure Batch 帳戶中的應用程式名稱
-    * **batchAccountName**：Azure Batch 帳戶的名稱
-    * **batchAccountPoolName**：執行處理的 VM 集區名稱
-    * **batchApplicationId**：Azure Batch 應用程式的唯一識別碼
-    * **batchApplicationVersion**：Batch 應用程式的語意版本 (也就是 ffmpeg 二進位檔)
-    * **location**：要部署的 Azure 資源位置
-    * **resourceGroupName**：要建立的資源群組名稱，以及將部署資源的位置
-    * **storageAccountName**：保存連結 Resource Manager 範本的儲存體帳戶名稱
+    * **applicationStorageAccountName** ：保存 HPC 應用程式二進位檔的儲存體帳戶名稱
+    * **batchAccountApplicationName** ：Azure Batch 帳戶中的應用程式名稱
+    * **batchAccountName** ：Azure Batch 帳戶的名稱
+    * **batchAccountPoolName** ：執行處理的 VM 集區名稱
+    * **batchApplicationId** ：Azure Batch 應用程式的唯一識別碼
+    * **batchApplicationVersion** ：Batch 應用程式的語意版本 (也就是 ffmpeg 二進位檔)
+    * **location** ：要部署的 Azure 資源位置
+    * **resourceGroupName** ：要建立的資源群組名稱，以及將部署資源的位置
+    * **storageAccountName** ：保存連結 Resource Manager 範本的儲存體帳戶名稱
 
     ![針對 Azure Pipelines 發行設定的變數範例](media/batch-ci-cd/Release-4.jpg)
 
@@ -405,42 +405,42 @@ Azure Pipelines 也用來部署您的應用程式和基礎結構。 [發行管�
 
 1. 新增 [下載管線成品 (預覽)] 工作並設定下列屬性：
     * **顯示名稱：** 將 ApplicationPackage 下載至代理程式
-    * **要下載的成品名稱**：hpc-application
-    * **要下載至的路徑**：$(System.DefaultWorkingDirectory)
+    * **要下載的成品名稱** ：hpc-application
+    * **要下載至的路徑** ：$(System.DefaultWorkingDirectory)
 
 1. 建立儲存體帳戶以儲存您的成品。 您可使用解決方案中現有的儲存體帳戶，但是為了提供獨立範例和內容隔離，我們會為成品 (特別是 Resource Manager 範本) 建立專用的儲存體帳戶。
 
     新增 [Azure 資源群組部署] 工作並設定下列屬性：
     * **顯示名稱：** 為 Resource Manager 範本部署儲存體帳戶
     * **Azure 訂用帳戶：** 選取適當的 Azure 訂用帳戶
-    * **動作**：建立或更新資源群組
-    * **資源群組**：$(resourceGroupName)
-    * **位置**：$(location)
-    * **範本**：$(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
-    * **覆寫範本參數**：-accountName $(storageAccountName)
+    * **動作** ：建立或更新資源群組
+    * **資源群組** ：$(resourceGroupName)
+    * **位置** ：$(location)
+    * **範本** ：$(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
+    * **覆寫範本參數** ：-accountName $(storageAccountName)
 
 1. 將成品從原始檔控制上傳至儲存體帳戶。 有一個 Azure 管線工作可執行此工作。 在這項工作中，可以將儲存體帳戶容器 URL 和 SAS 權杖輸出到 Azure Pipelines 中的變數。 這表示可以在此代理程式階段予以重複使用。
 
     新增 [Azure 檔案複製] 工作並設定下列屬性：
     * **來源：** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
-    * **Azure 連線類型**：Azure Resource Manager
+    * **Azure 連線類型** ：Azure Resource Manager
     * **Azure 訂用帳戶：** 選取適當的 Azure 訂用帳戶
-    * **目的地類型**：Azure Blob
-    * **RM 儲存體帳戶**：$(storageAccountName)
-    * **容器名稱**：templates
-    * **儲存體容器 URI**：templateContainerUri
-    * **儲存體容器 SAS 權杖**：templateContainerSasToken
+    * **目的地類型** ：Azure Blob
+    * **RM 儲存體帳戶** ：$(storageAccountName)
+    * **容器名稱** ：templates
+    * **儲存體容器 URI** ：templateContainerUri
+    * **儲存體容器 SAS 權杖** ：templateContainerSasToken
 
 1. 部署協調器範本。 回想一下先前的範本範本，您會發現除了 SAS 權杖以外，還有儲存體帳戶容器 URL 適用的參數。 您應會注意到，Resource Manager 範本中所需的變數會保留在發行定義的 variables 區段中，或是從另一個 Azure Pipelines 工作進行設定 (例如，Azure Blob 複製工作的一部分)。
 
     新增 [Azure 資源群組部署] 工作並設定下列屬性：
     * **顯示名稱：** 部署 Azure Batch
     * **Azure 訂用帳戶：** 選取適當的 Azure 訂用帳戶
-    * **動作**：建立或更新資源群組
-    * **資源群組**：$(resourceGroupName)
-    * **位置**：$(location)
-    * **範本**：$(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
-    * **覆寫範本參數**：```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **動作** ：建立或更新資源群組
+    * **資源群組** ：$(resourceGroupName)
+    * **位置** ：$(location)
+    * **範本** ：$(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
+    * **覆寫範本參數** ：```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 常見的做法是使用 Azure Key Vault 工作。 如果服務主體 (連線到您的 Azure 訂用帳戶) 已設定適當的存取原則，即可從 Azure Key Vault 下載秘密並作為您管線中的變數。 秘密的名稱會以相關聯的值進行設定。 例如，在發行定義中可以使用 $(sshPassword) 來參考 sshPassword 的秘密。
 
@@ -449,16 +449,16 @@ Azure Pipelines 也用來部署您的應用程式和基礎結構。 [發行管�
     新增 [Azure CLI] 工作並設定下列屬性：
     * **顯示名稱：** 在 Azure Batch 帳戶中建立應用程式
     * **Azure 訂用帳戶：** 選取適當的 Azure 訂用帳戶
-    * **指令碼位置**：內嵌指令碼
-    * **內嵌指令碼**：```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **指令碼位置** ：內嵌指令碼
+    * **內嵌指令碼** ：```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. 第二個步驟用來將相關聯的套件上傳至應用程式。 在我們的案例中是 ffmpeg 檔案。
 
     新增 [Azure CLI] 工作並設定下列屬性：
     * **顯示名稱：** 將套件上傳至 Azure Batch 帳戶
     * **Azure 訂用帳戶：** 選取適當的 Azure 訂用帳戶
-    * **指令碼位置**：內嵌指令碼
-    * **內嵌指令碼**：```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **指令碼位置** ：內嵌指令碼
+    * **內嵌指令碼** ：```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > 應用程式套件的版本號碼會設定為變數。 如果覆寫先前的版本套件對您有效，而且您想要手動控制推送至 Azure Batch 的套件版本號碼，這就會很方便。

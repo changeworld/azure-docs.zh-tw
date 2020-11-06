@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558392"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335480"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 整合原則
 
@@ -25,7 +25,7 @@ ms.locfileid: "92558392"
 
 ## <a name="enable-dapr-support-in-the-self-hosted-gateway"></a>在自我裝載閘道中啟用 Dapr 支援
 
-若要在自我裝載閘道中開啟 Dapr 支援，請將下列 [Dapr 注釋](https://github.com/dapr/docs/blob/master/howto/configure-k8s/README.md) 新增至 [Kubernetes 部署範本](how-to-deploy-self-hosted-gateway-kubernetes.md) ，並將 "app-name" 取代為所需的名稱。 您可以 [在這裡](https://aka.ms/apim/dapr/walkthru)找到使用 DAPR 進行 API 管理設定和使用的完整逐步解說。
+若要在自我裝載閘道中開啟 Dapr 支援，請將下列 [Dapr 注釋](https://github.com/dapr/docs/blob/master/README.md) 新增至 [Kubernetes 部署範本](how-to-deploy-self-hosted-gateway-kubernetes.md) ，並將 "app-name" 取代為所需的名稱。 您可以 [在這裡](https://aka.ms/apim/dapr/walkthru)找到使用 DAPR 進行 API 管理設定和使用的完整逐步解說。
 ```yml
 template:
     metadata:
@@ -39,9 +39,9 @@ template:
 
 ## <a name="distributed-application-runtime-dapr-integration-policies"></a>分散式應用程式執行階段 (Dapr) 整合原則
 
--  將[要求傳送至服務](api-management-dapr-policies.md#invoke)：使用 Dapr 執行時間來找出並與 Dapr 微服務可靠地通訊。 若要深入瞭解 Dapr 中的服務調用，請參閱此 [自述](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) 檔中的描述。
--  [將訊息傳送至 Pub/Sub 主題](api-management-dapr-policies.md#pubsub)：使用 Dapr runtime 將訊息發行至發佈/訂閱主題。 若要深入瞭解 Dapr 中的發佈/訂閱訊息，請參閱此 [自述](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) 檔中的描述。
--  [觸發程式輸出](api-management-dapr-policies.md#bind)系結：使用 Dapr 執行時間透過輸出系結叫用外部系統。 若要深入瞭解 Dapr 中的系結，請參閱此 [自述](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md) 檔中的描述。
+-  將[要求傳送至服務](api-management-dapr-policies.md#invoke)：使用 Dapr 執行時間來找出並與 Dapr 微服務可靠地通訊。 若要深入瞭解 Dapr 中的服務調用，請參閱此 [自述](https://github.com/dapr/docs/blob/master/README.md#service-invocation) 檔中的描述。
+-  [將訊息傳送至 Pub/Sub 主題](api-management-dapr-policies.md#pubsub)：使用 Dapr runtime 將訊息發行至發佈/訂閱主題。 若要深入瞭解 Dapr 中的發佈/訂閱訊息，請參閱此 [自述](https://github.com/dapr/docs/blob/master/README.md) 檔中的描述。
+-  [觸發程式輸出](api-management-dapr-policies.md#bind)系結：使用 Dapr 執行時間透過輸出系結叫用外部系統。 若要深入瞭解 Dapr 中的系結，請參閱此 [自述](https://github.com/dapr/docs/blob/master/README.md) 檔中的描述。
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> 將要求傳送至服務
 
@@ -83,19 +83,19 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必要 |
+| 項目             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | set-backend-service | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 描述                     | 必要 | Default |
+| 屬性        | 說明                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必須設定為 "dapr"           | 是      | N/A     |
-| dapr-應用程式識別碼      | 目標微服務的名稱。 對應至 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
-| dapr-方法      | 要在目標微服務上叫用的方法名稱或 URL。 對應至 Dapr 中的 [方法名稱](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
+| dapr-應用程式識別碼      | 目標微服務的名稱。 對應至 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
+| dapr-方法      | 要在目標微服務上叫用的方法名稱或 URL。 對應至 Dapr 中的 [方法名稱](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -120,7 +120,7 @@ template:
 
 #### <a name="example"></a>範例
 
-下列範例將示範如何將目前要求的本文傳送至「訂單」 Pub/Sub[元件](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)的「新」[主題](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)。 從 Dapr 執行時間收到的回應會儲存在 [內容](api-management-policy-expressions.md#ContextVariables) 物件中 Variables 集合的 "Dapr-response" 專案中。
+下列範例將示範如何將目前要求的本文傳送至「訂單」 Pub/Sub[元件](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)的「新」[主題](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)。 從 Dapr 執行時間收到的回應會儲存在 [內容](api-management-policy-expressions.md#ContextVariables) 物件中 Variables 集合的 "Dapr-response" 專案中。
 
 例如，如果 Dapr 執行時間找不到目標主題，並以錯誤回應，則會觸發「錯誤」區段。 從 Dapr 執行時間收到的回應會逐字傳回給呼叫者。 否則 `200 OK` 會傳回預設回應。
 
@@ -151,23 +151,23 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必要 |
+| 項目             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | 發行至 dapr     | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 描述                     | 必要 | Default |
+| 屬性        | 說明                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
-| pubsub-名稱      | 目標 PubSub 元件的名稱。 對應至 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) 參數。 如果不存在， __主題__ 屬性值必須為的形式 `pubsub-name/topic-name` 。    | 否       | None    |
-| 主題            | 主題名稱。 對應至 Dapr 中的 [主題](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) 參數。               | 是      | N/A     |
+| pubsub-名稱      | 目標 PubSub 元件的名稱。 對應至 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 參數。 如果不存在， __主題__ 屬性值必須為的形式 `pubsub-name/topic-name` 。    | 否       | None    |
+| 主題            | 主題名稱。 對應至 Dapr 中的 [主題](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 參數。               | 是      | N/A     |
 | ignore-error     | 如果設定為， `true` 則會在從 Dapr 執行時間收到錯誤時，指示原則不要觸發「 [發生錯誤](api-management-error-handling-policies.md) 」區段 | 否 | `false` |
 | response-variable-name | 要用來儲存 Dapr 執行時間回應的 [變數](api-management-policy-expressions.md#ContextVariables) 集合專案名稱 | 否 | None |
 | timeout | 等候 Dapr 執行時間回應的時間 (秒) 。 的範圍可以從1到240秒。 | 否 | 5 |
 | template | 用於轉換訊息內容的範本引擎。 「液體」是唯一支援的值。 | 否 | None |
 | Content-Type | 訊息內容的類型。 "application/json" 是唯一支援的值。 | 否 | None |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -176,7 +176,7 @@ template:
 
 ## <a name="trigger-output-binding"></a><a name="bind"></a> 觸發程式輸出系結
 
-此原則會指示 API 管理閘道觸發 [輸出 Dapr 系](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md)結。 這項原則會藉由提出 HTTP POST 要求來 `http://localhost:3500/v1.0/bindings/{{bind-name}}` 取代範本參數，並新增在 policy 語句中指定的內容來完成這項工作。
+此原則會指示 API 管理閘道觸發 [輸出 Dapr 系](https://github.com/dapr/docs/blob/master/README.md)結。 這項原則會藉由提出 HTTP POST 要求來 `http://localhost:3500/v1.0/bindings/{{bind-name}}` 取代範本參數，並新增在 policy 語句中指定的內容來完成這項工作。
 
 此原則假設 Dapr 執行時間是在與閘道相同的 pod 中的側車容器中執行。 Dapr 執行時間負責叫用系結所表示的外部資源。
 
@@ -234,26 +234,26 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必要 |
+| 項目             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | 根元素 | 是      |
-| 中繼資料            | 以索引鍵/值組的形式系結特定的中繼資料。 對應至 Dapr 中的 [中繼資料](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
-| 資料            | 訊息內容。 對應至 Dapr 中的 [資料](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
+| 中繼資料            | 以索引鍵/值組的形式系結特定的中繼資料。 對應至 Dapr 中的 [中繼資料](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
+| 資料            | 訊息內容。 對應至 Dapr 中的 [資料](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
 
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 描述                     | 必要 | Default |
+| 屬性        | 說明                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
-| name            | 目標系結名稱。 必須符合 Dapr 中 [定義](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的系結名稱。           | 是      | N/A     |
-| 作業       | 目標操作名稱 (系結特定) 。 對應至 Dapr 中的 [operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 | None |
+| NAME            | 目標系結名稱。 必須符合 Dapr 中 [定義](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) 的系結名稱。           | 是      | N/A     |
+| 作業       | 目標操作名稱 (系結特定) 。 對應至 Dapr 中的 [operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 | None |
 | ignore-error     | 如果設定為， `true` 則會在從 Dapr 執行時間收到錯誤時，指示原則不要觸發「 [發生錯誤](api-management-error-handling-policies.md) 」區段 | 否 | `false` |
 | response-variable-name | 要用來儲存 Dapr 執行時間回應的 [變數](api-management-policy-expressions.md#ContextVariables) 集合專案名稱 | 否 | None |
 | timeout | 等候 Dapr 執行時間回應的時間 (秒) 。 的範圍可以從1到240秒。 | 否 | 5 |
 | template | 用於轉換訊息內容的範本引擎。 「液體」是唯一支援的值。 | 否 | None |
 | Content-Type | 訊息內容的類型。 "application/json" 是唯一支援的值。 | 否 | None |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 

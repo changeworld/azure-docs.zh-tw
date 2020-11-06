@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 60326b0ba06e1642e2831814dd931c69f6a04f3b
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.custom: seo-nov-2020
+ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330898"
+ms.locfileid: "94337401"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (Preview) ？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -19,7 +20,9 @@ ms.locfileid: "94330898"
 > [!IMPORTANT]
 > Azure Cosmos DB 分析存放區目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure Cosmos DB 分析存放區是完全隔離的資料行存放區，可針對您 Azure Cosmos DB 中的運算元據啟用大規模分析，而不會影響您的交易式工作負載。 Azure Cosmos DB 交易存放區無從驗證結構描述，可讓您逐一查看交易應用程式，而不需處理結構描述或索引管理。 相較之下，Azure Cosmos DB 分析存放區會進行結構描述，以針對分析查詢效能進行最佳化。 本文詳細說明分析儲存體。
+Azure Cosmos DB 分析存放區是完全隔離的資料行存放區，可針對您 Azure Cosmos DB 中的運算元據啟用大規模分析，而不會影響您的交易式工作負載。 
+
+Azure Cosmos DB 交易存放區無從驗證結構描述，可讓您逐一查看交易應用程式，而不需處理結構描述或索引管理。 相較之下，Azure Cosmos DB 分析存放區會進行結構描述，以針對分析查詢效能進行最佳化。 本文詳細說明分析儲存體。
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>大規模分析操作資料的挑戰
 

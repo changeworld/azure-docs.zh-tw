@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 09/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0332400ce6808e92ba09e3bee3277495f6b6d1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf819e5cff8c6ef008b0e55e156ba3531936b489
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897487"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337877"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型 (預覽的公平) 
 
@@ -33,7 +33,7 @@ ms.locfileid: "90897487"
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning 公平 SDK 
 
-Azure Machine Learning 公平 SDK，會 `azureml-contrib-fairness` 在 Azure Machine Learning 內整合開放原始碼 Python 套件 [Fairlearn](http://fairlearn.github.io)。 若要深入瞭解 Azure Machine Learning 內的 Fairlearn 整合，請參閱這些 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 如需 Fairlearn 的詳細資訊，請參閱 [範例指南](https://fairlearn.github.io/auto_examples/) 和 [範例筆記本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)。 
+Azure Machine Learning 公平 SDK，會 `azureml-contrib-fairness` 在 Azure Machine Learning 內整合開放原始碼 Python 套件 [Fairlearn](http://fairlearn.github.io)。 若要深入瞭解 Azure Machine Learning 內的 Fairlearn 整合，請參閱這些 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 如需 Fairlearn 的詳細資訊，請參閱 [範例指南](https://fairlearn.github.io/master/auto_examples/) 和 [範例筆記本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)。 
 
 使用下列命令來安裝 `azureml-contrib-fairness` 和 `fairlearn` 封裝：
 ```bash
@@ -193,7 +193,7 @@ pip install fairlearn==0.4.6
     如果您完成上述步驟 (上傳產生的公平見解至 Azure Machine Learning) ，您可以在 [Azure Machine Learning studio](https://ml.azure.com)中查看公平儀表板。 此儀表板是 Fairlearn 中提供的相同視覺效果儀表板，可讓您在機密功能的子群組之間分析 disparities， (例如男性與女性) 。
     遵循下列其中一個路徑，以存取 Azure Machine Learning studio 中的視覺效果儀表板：
 
-    * **實驗窗格 (預覽) **
+    * **實驗窗格 (預覽)**
     1. 選取左窗格中的 [ **實驗** ]，以查看您在 Azure Machine Learning 上執行的實驗清單。
     1. 選取特定實驗來查看該實驗中的所有執行。
     1. 選取 [執行]，然後選取 [說明視覺效果] 儀表板的 [ **公平** ] 索引標籤。
@@ -205,7 +205,7 @@ pip install fairlearn==0.4.6
     1. 如果您遵循先前的步驟來註冊原始模型，您可以在左窗格中選取 **模型** 來加以查看。
     1. 選取模型，然後選取 [ **公平** ] 索引標籤，以查看 [說明視覺效果] 儀表板。
 
-    若要深入瞭解視覺效果儀表板及其包含的內容，請參閱 Fairlearn 的 [使用者指南](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)。
+    若要深入瞭解視覺效果儀表板及其包含的內容，請參閱 Fairlearn 的 [使用者指南](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard)。
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>針對多個模型上傳公平見解
 
@@ -306,14 +306,14 @@ pip install fairlearn==0.4.6
     ```
 
 
-    類似于上一節，您可以遵循上述的其中一個路徑， (透過 Azure Machine Learning studio 中的 **實驗** 或 **模型**) 來存取視覺效果儀表板，並根據公平和效能來比較這兩個模型。
+    類似于上一節，您可以遵循上述的其中一個路徑， (透過 Azure Machine Learning studio 中的 **實驗** 或 **模型** ) 來存取視覺效果儀表板，並根據公平和效能來比較這兩個模型。
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>上傳 unmitigated 並減輕公平見解
 
-您可以使用 Fairlearn 的 [風險降低演算法](https://fairlearn.github.io/user_guide/mitigation.html)、將 (s) 所產生的緩和模型，與原始 unmitigated 模型進行比較，並在比較的模型之間導覽效能/公平取捨。
+您可以使用 Fairlearn 的 [風險降低演算法](https://fairlearn.github.io/master/user_guide/mitigation.html)、將 (s) 所產生的緩和模型，與原始 unmitigated 模型進行比較，並在比較的模型之間導覽效能/公平取捨。
 
-若要查看示範如何使用 [方格搜尋](https://fairlearn.github.io/user_guide/mitigation.html#grid-search) 緩和演算法的範例 (使用不同的公平和效能取捨來建立緩和模型的集合) 請參閱此 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
+若要查看示範如何使用 [方格搜尋](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) 緩和演算法的範例 (使用不同的公平和效能取捨來建立緩和模型的集合) 請參閱此 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
 
 在單一回合中上傳多個模型的公平見解，將可讓您比較與公平和效能相關的模型。 您可以進一步按一下模型比較圖中顯示的任何模型，以查看特定模型的詳細公平見解。
 

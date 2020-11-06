@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088630"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337911"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>搭配使用分散式追蹤與 Azure Spring Cloud
 
@@ -28,14 +28,18 @@ ms.locfileid: "92088630"
 
 ## <a name="dependencies"></a>相依性
 
-安裝下列 NuGet 套件
+針對 Steeltoe 2.4.4，新增下列 NuGet 套件：
 
 * [Steeltoe. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 * [Steeltoe. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
 
+針對 Steeltoe 3.0.0，請新增下列 NuGet 套件：
+
+* [Steeltoe. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+
 ## <a name="update-startupcs"></a>更新 Startup.cs
 
-1. 在 `ConfigureServices` 方法中，呼叫 `AddDistributedTracing` 和 `AddZipkinExporter` 方法。
+1. 若為 Steeltoe 2.4.4， `AddDistributedTracing` 請 `AddZipkinExporter` 在方法中呼叫和 `ConfigureServices` 。
 
    ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -45,14 +49,29 @@ ms.locfileid: "92088630"
    }
    ```
 
-1. 在 `Configure` 方法中，呼叫 `UseTracingExporter` 方法。
+   針對 Steeltoe 3.0.0，請 `AddDistributedTracing` 在方法中呼叫 `ConfigureServices` 。
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration, builder => builder.UseZipkinWithTraceOptions(services));
+   }
+   ```
+
+1. 針對 Steeltoe 2.4.4，請 `UseTracingExporter` 在方法中呼叫 `Configure` 。
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
         app.UseTracingExporter();
    }
    ```
+
+   針對 Steeltoe 3.0.0，方法中不需要進行任何變更 `Configure` 。
 
 ## <a name="update-configuration"></a>更新設定
 
@@ -60,7 +79,7 @@ ms.locfileid: "92088630"
 
 1. 將 `management.tracing.alwaysSample` 設定為 True。
 
-2. 如果您想要查看 Eureka 伺服器、設定伺服器和使用者應用程式之間傳送的追蹤範圍：設定 `management.tracing.egressIgnorePattern` 為 "/api/v2/spans |/v2/apps/.*/permissions |/eureka/.*|/oauth/.*".
+2. 如果您想要查看 Eureka 伺服器、設定伺服器和使用者應用程式之間傳送的追蹤範圍：設定 `management.tracing.egressIgnorePattern` 為 "/api/v2/spans |/v2/apps/. */permissions |/eureka/.* |/oauth/.*".
 
 例如， *appsettings.js* 會包含下列屬性：
  

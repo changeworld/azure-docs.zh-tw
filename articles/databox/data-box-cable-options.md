@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: bab81809f42c9afa3d2c701398fa5ff8ffc2800d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744163"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334595"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure 資料箱的佈線選項
 
@@ -32,12 +32,12 @@ ms.locfileid: "91744163"
 
 1. 您可以使用 RJ45 纜線將 MGMT 連接埠連接到具有資料的伺服器。
 
-    ![單一連接埠設定](media/data-box-cable-options/cabling-mgmt-only.png)
+    ![單一端口設定](media/data-box-cable-options/cabling-mgmt-only.png)
 
 2. 在伺服器上，進行下列設定：
 
-    - 將 **IP 位址**設為 192.168.100.5
-    - 將**子網路**設為 255.255.255.0
+    - 將 **IP 位址** 設為 192.168.100.5
+    - 將 **子網路** 設為 255.255.255.0
 
 3. 在下列位址存取裝置的本機 Web UI：192.168.100.10。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 
@@ -62,10 +62,10 @@ ms.locfileid: "91744163"
 2. 使用 DATA 3 的 RJ45 或 SFP+ 纜線將 DATA 1 或 DATA 2 連接到作為資料來源的伺服器。 建議您使用 10-GbE DATA 1 或 DATA 2 連接埠以達到良好效能。
 3. 在伺服器上，進行下列設定：
 
-   - 將 **IP 位址**設為 192.168.100.5
-   - 將**子網路**設為 255.255.255.0
+   - 將 **IP 位址** 設為 192.168.100.5
+   - 將 **子網路** 設為 255.255.255.0
 
-     ![雙連接埠設定](media/data-box-cable-options/cabling-2-port-setup.png)
+     ![雙埠設定](media/data-box-cable-options/cabling-2-port-setup.png)
 
 3. 在下列位址存取裝置的本機 Web UI：192.168.100.10。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 4. 將靜態 IP 指派給您已設定的資料連接埠。
@@ -80,8 +80,8 @@ ms.locfileid: "91744163"
 
    - **IP 位址** 192.168.100.5
    - **子網路** 255.255.255.0。
-
-     ![具有交換器的雙連接埠設定](media/data-box-cable-options/cabling-with-static-ip.png)
+  
+   ![使用交換器的雙埠設定](media/data-box-cable-options/cabling-with-static-ip.png)
 
 3. 在下列位址存取裝置的本機 Web UI：192.168.100.10。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 4. 識別 DHCP 伺服器所指派的 IP 位址。
@@ -105,7 +105,7 @@ ms.locfileid: "91744163"
    - **IP 位址** 192.168.100.5
    - **子網路** 255.255.255.0。
 
-     ![使用交換器2的雙埠設定](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![使用交換器2進行雙埠設定](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. 在下列位址存取裝置的本機 Web UI：192.168.100.10。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 4. 將靜態 IP 指派給您已設定的資料連接埠。
@@ -126,6 +126,7 @@ ms.locfileid: "91744163"
 1. 使用 RJ45 或 SFP + 纜線透過交換器 (可存取 DHCP 伺服器) 連接到伺服器。
 
     ![使用交換器3的雙埠設定](media/data-box-cable-options/cabling-dhcp-data-only.png)
+
 2. 使用 DHCP 伺服器或 DNS 伺服器識別 IP 位址。
 3. 從相同網路上的伺服器，使用 DHCP 伺服器所指派的 IP 位址存取裝置的本機 Web UI。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 

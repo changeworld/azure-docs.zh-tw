@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167809"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335669"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>疑難排解：無法在 Azure 中刪除虛擬網路
 
@@ -31,10 +31,11 @@ ms.locfileid: "92167809"
 
 1. [檢查虛擬網路中是否正在執行虛擬網路閘道](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network)。
 2. [檢查虛擬網路中是否正在執行應用程式閘道](#check-whether-an-application-gateway-is-running-in-the-virtual-network)。
-3. [檢查虛擬網路中是否已啟用 Azure Active Directory 網域服務](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)。
-4. [檢查虛擬網路是否已連線到其他資源](#check-whether-the-virtual-network-is-connected-to-other-resource)。
-5. [檢查虛擬機器是否仍在虛擬網路中執行](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)。
-6. [檢查虛擬網路是否卡在移轉狀態](#check-whether-the-virtual-network-is-stuck-in-migration)。
+3. [檢查 Azure 容器實例是否仍存在於虛擬網路中](#check-whether-azure-container-instances-still-exist-in-the-virtual-network)。
+4. [檢查虛擬網路中是否已啟用 Azure Active Directory 網域服務](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)。
+5. [檢查虛擬網路是否已連線到其他資源](#check-whether-the-virtual-network-is-connected-to-other-resource)。
+6. [檢查虛擬機器是否仍在虛擬網路中執行](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)。
+7. [檢查虛擬網路是否卡在移轉狀態](#check-whether-the-virtual-network-is-stuck-in-migration)。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 
@@ -50,7 +51,7 @@ ms.locfileid: "92167809"
 
 ![Azure 入口網站中虛擬網路連線裝置清單的螢幕擷取畫面。 虛擬網路閘道會在清單中反白顯示。](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
-先移除閘道中的任何**連線**物件，然後才能移除閘道。 
+先移除閘道中的任何 **連線** 物件，然後才能移除閘道。 
 
 ### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>檢查虛擬網路中是否正在執行應用程式閘道
 
@@ -59,6 +60,19 @@ ms.locfileid: "92167809"
 ![Azure 入口網站中虛擬網路連線裝置清單的螢幕擷取畫面。 應用程式閘道會在清單中反白顯示。](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 如果有應用程式閘道，您必須先移除它，才能刪除虛擬網路。
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>檢查 Azure 容器實例是否仍存在於虛擬網路中
+
+1. 在 Azure 入口網站中，移至資源群組的 **[總覽** ] 頁面。
+1. 在資源群組資源清單的標頭中，選取 [ **顯示隱藏的類型** ]。 預設會在 Azure 入口網站中隱藏網路設定檔案類型。
+1. 選取與容器群組相關的網路設定檔。
+1. 選取 [刪除]。
+
+   ![隱藏網路設定檔案清單的螢幕擷取畫面。](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. 請再次刪除子網或虛擬網路。
+
+如果這些步驟無法解決問題，請使用這些 [Azure CLI 命令](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) 來清除資源。 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>檢查虛擬網路中是否已啟用 Azure Active Directory 網域服務
 

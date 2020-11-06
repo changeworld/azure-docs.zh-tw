@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Batch，以程式設計方式從 Key Vault
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913206"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337486"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>使用 Batch 安全地存取 Key Vault
 
@@ -67,7 +67,7 @@ $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplic
 
 ## <a name="grant-rights-to-key-vault"></a>將權限授與 Key Vault
 
-在上一個步驟中建立的服務主體需要從 Key Vault 擷取密碼的權限。 您可以透過 [Azure 入口網站](/key-vault/general/assign-access-policy-portal.md) 或使用下列 PowerShell 命令來授與許可權。
+在上一個步驟中建立的服務主體需要從 Key Vault 擷取密碼的權限。 您可以透過 [Azure 入口網站](/azure/key-vault/general/assign-access-policy-portal) 或使用下列 PowerShell 命令來授與許可權。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -108,7 +108,7 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 
 這些是要在您指令碼中使用的認證。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure Key Vault](../key-vault/general/overview.md)。
 - 檢查 [Batch 的 Azure 安全性基準](security-baseline.md)。

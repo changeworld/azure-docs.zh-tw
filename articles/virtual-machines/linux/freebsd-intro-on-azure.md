@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 2959904029643e5345590bd49f81b231c49771d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39564a34eb7a57cbd20e37b90d064917d5bf3b7a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286303"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337524"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 簡介
 本文提供在 Azure 中執行 FreeBSD 虛擬機器的概觀。
@@ -22,9 +22,9 @@ ms.locfileid: "87286303"
 
 Microsoft Corporation 目前在 Azure 上提供已預先設定 [Azure VM 客體代理程式](https://github.com/Azure/WALinuxAgent/)的 FreeBSD 映像。 目前，Microsoft 以映像形式提供下列 FreeBSD 版本：
 
-- [Azure Marketplace 上的 FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [Azure Marketplace 上的 FreeBSD 11.2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
-- [Azure Marketplace 上的 FreeBSD 12.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
+- Azure Marketplace 上的 FreeBSD 10.4
+- Azure Marketplace 上的 FreeBSD 11.2
+- Azure Marketplace 上的 FreeBSD 12.0
 
 此代理程式會負責 FreeBSD VM 與 Azure 網狀架構之間作業的通訊，例如在第一次使用 VM 時佈建 VM (使用者名稱、密碼或 SSH 金鑰、主機名稱等)，以及啟用選擇性 VM 延伸模組的功能。
 
@@ -33,22 +33,22 @@ Microsoft Corporation 目前在 Azure 上提供已預先設定 [Azure VM 客體�
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>透過 Azure CLI 在 FreeBSD 上建立 FreeBSD VM
 首先，您必須透過下列命令在 FreeBSD 電腦上安裝 [Azure CLI](/cli/azure/get-started-with-azure-cli)。
 
-```bash 
+```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-如果您的 FreeBSD 電腦上未安裝 Bash，請先執行下列命令，再進行安裝。 
+如果您的 FreeBSD 電腦上未安裝 Bash，請先執行下列命令，再進行安裝。 
 
 ```bash
 sudo pkg install bash
 ```
 
-如果您的 FreeBSD 電腦上未安裝 Python，請先執行下列命令，再進行安裝。 
+如果您的 FreeBSD 電腦上未安裝 Python，請先執行下列命令，再進行安裝。 
 
 ```bash
 sudo pkg install python35
-cd /usr/local/bin 
-sudo rm /usr/local/bin/python 
+cd /usr/local/bin 
+sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
@@ -57,7 +57,7 @@ sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 現在您可以登入 Azure 並建立您的 FreeBSD VM。 以下是一個建立 FreeBSD 11.0 VM 的範例。 您也可以新增 `--public-ip-address-dns-name` 參數，其中含有新建立之公用 IP 的全域唯一 DNS 名稱。 
 
 ```azurecli
-az login 
+az login 
 az group create --name myResourceGroup --location eastus
 az vm create --name myFreeBSD11 \
     --resource-group myResourceGroup \

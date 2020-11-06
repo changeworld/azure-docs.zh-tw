@@ -6,12 +6,13 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 3ada16c98eef516056bd3c139bddc8187fb0fe38
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.custom: seo-nov-2020
+ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330609"
+ms.locfileid: "94337520"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>使用自動調整輸送量來建立 Azure Cosmos 容器和資料庫
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

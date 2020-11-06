@@ -3,12 +3,12 @@ title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d5875287c7af905579397164029ef0504d6b9dc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627103"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337945"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -1433,7 +1433,7 @@ ms.locfileid: "91627103"
 > | privatednszones / virtualnetworklinks | 是 | 是 |
 > | privatednszonesinternal | 否 | 否 |
 > | privateendpointredirectmaps | 否 | 否 |
-> | privateendpoints | 是 | 是 |
+> | privateendpoints | 否 | 否 |
 > | privatelinkservices | 否 | 否 |
 > | publicipaddresses | 是 - 基本 SKU<br>是-標準 SKU | 是 - 基本 SKU<br>否 - 標準 SKU |
 > | publicipprefixes | 是 | 是 |

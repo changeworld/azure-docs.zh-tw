@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092795"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337605"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
@@ -30,15 +30,38 @@ Azure 春季 Cloud 提供健全的服務來裝載、監視、調整及更新 Ste
 Azure 春季雲端支援：
 
 * .NET Core 3.1
-* Steeltoe 2。4
+* Steeltoe 2.4 和3。0
 
 ## <a name="dependencies"></a>相依性
 
-安裝 [SpringCloud 用戶端](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) 套件。
+若為 Steeltoe 2.4，請將最新的 [SpringCloud](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) 新增至專案檔：
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-preview.1" />
+  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Management.TracingCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Management.ExporterCore" Version="2.4.4" />
+</ItemGroup>
+```
+
+若為 Steeltoe 3.0，請將最新的 [SpringCloud](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) 新增至專案檔：
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="2.0.0-preview.1" />
+  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.0.0" />
+  <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="3.0.0" />
+  <PackageReference Include="Steeltoe.Management.TracingCore" Version="3.0.0" />
+</ItemGroup>
+```
 
 ## <a name="update-programcs"></a>更新 Program.cs
 
-在 `Program.Main` 方法中，呼叫 `UseAzureSpringCloudService` 方法：
+在 `Program.Main` 方法中，呼叫 `UseAzureSpringCloudService` 方法。
+
+若為 Steeltoe 2.4.4，請 `UseAzureSpringCloudService` 在呼叫之後 `ConfigureWebHostDefaults` 和之後呼叫 `AddConfigServer` ：
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -47,7 +70,21 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         {
             webBuilder.UseStartup<Startup>();
         })
+        .AddConfigServer()
         .UseAzureSpringCloudService();
+```
+
+針對 Steeltoe 3.0.0，請 `UseAzureSpringCloudService` 在 `ConfigureWebHostDefaults` 任何 Steeltoe 設定程式碼之前和之前呼叫：
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .UseAzureSpringCloudService()
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .AddConfigServer();
 ```
 
 ## <a name="enable-eureka-server-service-discovery"></a>啟用 Eureka 伺服器服務探索
@@ -91,7 +128,7 @@ using (var client = new HttpClient(discoveryHandler, false))
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
 * [啟動您的第一個應用程式](spring-cloud-quickstart.md)
-* [建置和執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
+* [建立並執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
 
 本文說明必要的相依性，以及如何將其新增至 POM 檔案。
 

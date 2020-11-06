@@ -3,12 +3,12 @@ title: 關於存放庫 & 映射
 description: Azure container registry、存放庫及容器映射的重要概念簡介。
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390443"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335889"
 ---
 # <a name="about-registries-repositories-and-images"></a>關於登錄、存放庫和映射
 
@@ -16,7 +16,7 @@ ms.locfileid: "85390443"
 
 ## <a name="registry"></a>登錄
 
-容器「登錄」** 是一項服務，可儲存及散發容器映像。 Docker Hub 是支援開放原始碼社區的公用容器登錄，可作為影像的一般目錄。 Azure Container Registry 可讓使用者直接控制其映射，並提供整合式驗證、支援全域散發的 [異地](container-registry-geo-replication.md) 複寫、網路關閉部署的可靠性、 [虛擬網路和防火牆](container-registry-vnet.md)設定、 [標記鎖定](container-registry-image-lock.md)，以及許多其他增強功能。 
+容器「登錄」是一項服務，可儲存及散發容器映像。 Docker Hub 是支援開放原始碼社區的公用容器登錄，可作為影像的一般目錄。 Azure Container Registry 可讓使用者直接控制其映射，並提供整合式驗證、支援全域散發的 [異地](container-registry-geo-replication.md) 複寫、網路關閉部署的可靠性、 [虛擬網路和防火牆](container-registry-vnet.md)設定、 [標記鎖定](container-registry-image-lock.md)，以及許多其他增強功能。 
 
 除了 Docker 容器映射以外，Azure Container Registry 也支援相關的 [內容](container-registry-image-formats.md) 成品，包括 Open container 方案 (OCI) 映射格式。
 
@@ -27,7 +27,7 @@ Azure container registry 中的成品位址包含下列元素。
 `[loginUrl]/[repository:][tag]`
 
 * **loginUrl** -登錄主機的完整名稱。 Azure container registry 中的登錄主機格式為 *myregistry*. azurecr.io (全部小寫) 。 使用 Docker 或其他用戶端工具時，您必須指定 loginUrl，以將構件提取或推送至 Azure container registry。 
-* 存放**庫**-一或多個相關映射或構件的邏輯群組名稱，例如，應用程式或基礎作業系統的影像。 可能包含 *命名空間* 路徑。 
+* 存放 **庫** -一或多個相關映射或構件的邏輯群組名稱，例如，應用程式或基礎作業系統的影像。 可能包含 *命名空間* 路徑。 
 * **標記** -儲存在儲存機制中之影像或成品特定版本的識別碼。
 
 例如，Azure container registry 中的映射完整名稱可能如下所示：
@@ -61,7 +61,7 @@ Azure container registry 中的成品位址包含下列元素。
 
 登錄中的容器映射或其他成品會與一個或多個標記相關聯，其中有一或多個層級，並由資訊清單識別。 瞭解這些元件彼此之間的關聯性，可協助您有效地管理您的登錄。
 
-### <a name="tag"></a>Tag
+### <a name="tag"></a>標籤
 
 影像或其他成品的 *標記* 會指定其版本。 您可以將一個或多個標記指派給存放庫內的單一成品，也可以「未標記」。 也就是說，您可以從映射中刪除所有標記，而映射的資料 (其層級) 保留在登錄中。
 
@@ -73,7 +73,7 @@ Azure container registry 中的成品位址包含下列元素。
 
 ### <a name="layer"></a>層
 
-容器映射是由一或多個圖層所組成，每個 *圖層*都對應到 Dockerfile 中定義影像的一行。 登錄中的映像會共用常見層次，以提高儲存效率。 例如，不同存放庫中的數個映像可能會共用相同的 Alpine Linux 基底層次，但是該層次只有一個複本會儲存在登錄中。
+容器映射是由一或多個圖層所組成，每個 *圖層* 都對應到 Dockerfile 中定義影像的一行。 登錄中的映像會共用常見層次，以提高儲存效率。 例如，不同存放庫中的數個映像可能會共用相同的 Alpine Linux 基底層次，但是該層次只有一個複本會儲存在登錄中。
 
 層次共用也可將層次分布最佳化，使其分布於有多個映像共用常見層次的節點。 例如，如果節點上現有的映像包含 Alpine Linux 層次作為其基底，則參考同一層的不同映像在後續提取中不會將層移轉到節點。 相反地，它會參考已存在於節點上的層次。
 
@@ -81,7 +81,7 @@ Azure container registry 中的成品位址包含下列元素。
 
 ### <a name="manifest"></a>file:///
 
-每個推送至容器登錄的容器映射或成品都會與 *資訊清單*相關聯。 在推送映像時，由登錄所產生的資訊清單，可唯一識別該映像並指定其層次。 您可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存放庫的資訊清單：
+每個推送至容器登錄的容器映射或成品都會與 *資訊清單* 相關聯。 在推送映像時，由登錄所產生的資訊清單，可唯一識別該映像並指定其層次。 您可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存放庫的資訊清單：
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
@@ -122,7 +122,7 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="manifest-digest"></a>資訊清單摘要
 
-資訊清單是由唯一的 SHA-256 雜湊或「資訊清單摘要」** 識別。 每個影像或成品（不論是否已標記）都會以其摘要識別。 即使映像的層次資料與另一個映像的層次資料相同完全，摘要值也會是唯一的。 這個機制可讓您重複將標記相同的映像推送至登錄。 例如，您可以將 `myimage:latest` 重複推送至您的登錄，而不會發生錯誤，因為每個映像都是由其唯一摘要識別。
+資訊清單是由唯一的 SHA-256 雜湊或「資訊清單摘要」識別。 每個影像或成品（不論是否已標記）都會以其摘要識別。 即使映像的層次資料與另一個映像的層次資料相同完全，摘要值也會是唯一的。 這個機制可讓您重複將標記相同的映像推送至登錄。 例如，您可以將 `myimage:latest` 重複推送至您的登錄，而不會發生錯誤，因為每個映像都是由其唯一摘要識別。
 
 您可以在推送作業中指定其摘要，以從摘要中提取映像。 有些系統可能會設定為依照摘要提取，因為這可保證所提取的映像版本，即使標記相同的映像隨後推送至登錄亦然。
 
