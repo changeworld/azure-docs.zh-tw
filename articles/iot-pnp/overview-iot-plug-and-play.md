@@ -4,25 +4,25 @@ description: 了解 IoT 隨插即用。 IoT 隨插即用以開放式模型語言
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/06/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3a5d0ba92ab976f9ea3aa2722f92865f06d5a70e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045035"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421629"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什麼是 IoT 隨插即用？
 
 IoT 隨插即用可讓解決方案建立器將智慧型裝置整合到解決方案中，而不需手動設定。 IoT 隨插即用的核心是裝置「型號」，裝置會使用此型號向已啟用 IoT 隨插即用的應用程式公告其功能。 此模型是結構化的一組元素，可定義：
 
-- 代表裝置或其他實體的唯讀或可寫入狀態的_屬性_。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
-- 屬於裝置所發出之資料的_遙測_，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。
-- 說明可在裝置上完成之函式或作業的_命令_。 例如，命令可以重新啟動閘道或使用遠端相機拍照。
+- 代表裝置或其他實體的唯讀或可寫入狀態的 _屬性_ 。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
+- 屬於裝置所發出之資料的 _遙測_ ，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。
+- 說明可在裝置上完成之函式或作業的 _命令_ 。 例如，命令可以重新啟動閘道或使用遠端相機拍照。
 
 您可以將介面中的這些元素分組跨裝置重複使用，以簡化共同作業及加速開發工作。
 
@@ -40,8 +40,8 @@ IoT 隨插即用可讓解決方案建立器將智慧型裝置整合到解決方�
 
 IoT 隨插即用適用於兩種類型的開發人員：
 
-- _解決方案建置人員_負責使用 Azure IoT 中樞和其他 Azure 資源開發 IoT 解決方案，以及識別要整合的 IoT 裝置。
-- _裝置建置人員_會建立可在連線到解決方案的裝置上執行的程式碼。
+- _解決方案建置人員_ 負責使用 Azure IoT 中樞和其他 Azure 資源開發 IoT 解決方案，以及識別要整合的 IoT 裝置。
+- _裝置建置人員_ 會建立可在連線到解決方案的裝置上執行的程式碼。
 
 ## <a name="use-iot-plug-and-play-devices"></a>使用 IoT 隨插即用裝置
 

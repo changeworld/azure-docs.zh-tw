@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89177086"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422955"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>在本機上對 PowerShell 進行 Azure Functions 調試
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-此函數應用程式類似于您完成 [PowerShell 快速入門](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)時所取得的應用程式。
+此函數應用程式類似于您完成 [PowerShell 快速入門](./create-first-function-vs-code-powershell.md)時所取得的應用程式。
 
 中的函式程式碼 `run.ps1` 看起來會像下面的腳本：
 
@@ -95,10 +95,10 @@ if($name) {
 若要在 Visual Studio Code 中偵測 PowerShell 函式，您必須安裝下列各項：
 
 * [適用于 Visual Studio Code 的 PowerShell 擴充功能](/powershell/scripting/components/vscode/using-vscode)
-* [適用於 Visual Studio Code 的 Azure Functions 擴充功能](functions-create-first-function-vs-code.md) \(英文\)
+* [適用於 Visual Studio Code 的 Azure Functions 擴充功能](./create-first-function-cli-powershell.md) \(英文\)
 * [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-安裝這些相依性之後，載入現有的 PowerShell 函式專案，或 [建立您的第一個 Powershell 函數專案](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
+安裝這些相依性之後，載入現有的 PowerShell 函式專案，或 [建立您的第一個 Powershell 函數專案](./create-first-function-vs-code-powershell.md)。
 
 >[!NOTE]
 > 如果您的專案沒有所需的設定檔，系統會提示您新增這些檔案。
@@ -109,9 +109,9 @@ PowerShell Core 與 Windows PowerShell 並存安裝。 將 PowerShell Core 設�
 
 1. 按下 F1 以顯示命令接貨，然後搜尋 `Session` 。
 
-1. 選擇 [ **PowerShell：顯示會話功能表**]。
+1. 選擇 [ **PowerShell：顯示會話功能表** ]。
 
-1. 如果您 **目前的會話** 不是 **PowerShell Core 6**，請選擇 [ **切換至： PowerShell Core 6**]。
+1. 如果您 **目前的會話** 不是 **PowerShell Core 6** ，請選擇 [ **切換至： PowerShell Core 6** ]。
 
 當您開啟 PowerShell 檔案時，會在視窗右下方看到以綠色顯示的版本。 選取此文字也會顯示 [會話] 功能表。 若要深入瞭解，請參閱 [選擇要搭配擴充功能使用的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
 
@@ -119,7 +119,7 @@ PowerShell Core 與 Windows PowerShell 並存安裝。 將 PowerShell Core 設�
 
 確認 `Wait-Debugger` 已在您要附加偵錯工具的函式中設定。  `Wait-Debugger`新增之後，您就可以使用 Visual Studio Code 來對函數應用程式進行偵錯工具。
 
-選擇 [ **Debug** ] 窗格，然後 **附加至 PowerShell 函數**。
+選擇 [ **Debug** ] 窗格，然後 **附加至 PowerShell 函數** 。
 
 ![偵錯工具](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
@@ -132,7 +132,7 @@ PowerShell Core 與 Windows PowerShell 並存安裝。 將 PowerShell Core 設�
 * 將 PowerShell 偵錯工具附加至函式執行時間內的 PowerShell 執行時間。
 
 >[!NOTE]
-> 您必須確定 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試經驗。 此為預設值。
+> 您必須確定 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試經驗。 這是預設值。
 
 當您的函式應用程式正在執行時，您需要個別的 PowerShell 主控台來呼叫 HTTP 觸發的函式。
 

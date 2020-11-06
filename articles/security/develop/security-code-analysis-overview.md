@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fd8fb2e40fa44c5aec3f14bfd586187c952df0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031240"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422428"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>關於 Microsoft 安全性程式碼分析
 
@@ -39,7 +39,7 @@ ms.locfileid: "90031240"
 
 ### <a name="clean-builds"></a>清除組建
 
-解決工具所報告的初始問題之後，您可以設定延伸模組，以中斷新問題的組建。在每個提取要求上設定持續整合組建很簡單。
+解決工具所報告的初始問題之後，您可以設定延伸模組，以中斷新問題的組建。 在每個提取要求上設定持續整合組建很簡單。
 
 ### <a name="set-it-and-forget-it"></a>設定並忘記密碼
 
@@ -73,7 +73,7 @@ Binskim 等是可移植的可執行檔 (PE) 輕量掃描器，可驗證編譯器
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 
-Roslyn 分析器是 Microsoft 的編譯器整合式工具，可用於靜態分析 managed c # 和 Visual Basic 程式碼。 如需詳細資訊，請參閱以 [Roslyn 為基礎的分析器](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)。
+Roslyn 分析器是 Microsoft 的編譯器整合式工具，可用於靜態分析 managed c # 和 Visual Basic 程式碼。 如需詳細資訊，請參閱以 [Roslyn 為基礎的分析器](https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/security-warnings)。
 
 ### <a name="tslint"></a>TSLint
 

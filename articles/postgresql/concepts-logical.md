@@ -5,24 +5,27 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708606"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421801"
 ---
 # <a name="logical-decoding"></a>邏輯解碼
  
+> [!NOTE]
+> 邏輯解碼在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上處於公開預覽狀態。
+
 [于 postgresql 中的邏輯解碼](https://www.postgresql.org/docs/current/logicaldecoding.html) 可讓您將資料變更串流至外部取用者。 邏輯解碼是用於事件串流處理和變更資料捕獲案例的也就一般。
 
-邏輯解碼會使用輸出外掛程式將 Postgres 的 write log (WAL) 轉換為可讀取的格式。 適用於 PostgreSQL 的 Azure 資料庫提供輸出外掛程式 [wal2json](https://github.com/eulerto/wal2json)、 [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) 和 pgoutput。 pgoutput 可從 Postgres 10 版和更新版本中 Postgres 取得。
+邏輯解碼會使用輸出外掛程式將 Postgres 的 write log (WAL) 轉換為可讀取的格式。 適用於 PostgreSQL 的 Azure 資料庫提供輸出外掛程式 [wal2json](https://github.com/eulerto/wal2json)、 [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) 和 pgoutput。 pgoutput 可從于 postgresql 10 版和更新版本中于 postgresql 取得。
 
 如需 Postgres 邏輯解碼運作方式的總覽，請 [造訪我們的 blog](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)。 
 
 > [!NOTE]
-> 邏輯解碼在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上處於公開預覽狀態。
+> 適用於 PostgreSQL 的 Azure 資料庫單一伺服器不支援使用於 postgresql 發行集/訂用帳戶的邏輯複寫。
 
 
 ## <a name="set-up-your-server"></a>設定您的伺服器 
@@ -31,33 +34,37 @@ ms.locfileid: "91708606"
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
 * **Off** -將最少的資訊放在 WAL 中。 這項設定無法在大部分的適用於 PostgreSQL 的 Azure 資料庫伺服器上使用。  
-* **複本**-更**詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
-* **邏輯** 更詳細的資訊比 **複本**更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
+* **複本** -更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
+* **邏輯** 更詳細的資訊比 **複本** 更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
 
 此參數變更之後，必須重新開機伺服器。 就內部而言，此參數會設定 Postgres 參數 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
 1. 將 azure.replication_support 設定為 `logical` 。
-   ```
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. 重新開機伺服器以套用變更。
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. 如果您執行 Postgres 9.5 或9.6，並使用公用網路存取權，請新增防火牆規則，以包含您將執行邏輯複寫之用戶端的公用 IP 位址。 防火牆規則名稱必須包含 **_replrule** 。 例如， *test_replrule* 。 若要在伺服器上建立新的防火牆規則，請執行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令。 
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-1. 將 Azure 複寫支援設定為 **邏輯**。 選取 [儲存]****。
+1. 將 Azure 複寫支援設定為 **邏輯** 。 選取 [儲存]。
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
 
-2. 選取 **[是]**，重新開機伺服器以套用變更。
+2. 選取 **[是]** ，重新開機伺服器以套用變更。
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-確認重新開機":::
 
+3. 如果您執行 Postgres 9.5 或9.6，並使用公用網路存取權，請新增防火牆規則，以包含您將執行邏輯複寫之用戶端的公用 IP 位址。 防火牆規則名稱必須包含 **_replrule** 。 例如， *test_replrule* 。 然後按一下 [儲存]  。
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫-複寫-新增防火牆規則":::
 
 ## <a name="start-logical-decoding"></a>啟動邏輯解碼
 
@@ -79,7 +86,7 @@ ms.locfileid: "91708606"
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. 發出 SQL 命令。 例如：
+2. 發出 SQL 命令。 例如︰
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

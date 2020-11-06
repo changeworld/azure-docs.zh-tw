@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934917"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421714"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
 本文說明如何取得查詢回應，其會以相符檔總數、編頁結果、排序結果，以及點擊醒目提示的詞彙傳回。
 
-回應的結構取決於查詢中的參數：在 .NET SDK 中的 REST API 或[>documentsearchresult 類別](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)中[搜尋檔](/rest/api/searchservice/Search-Documents)。
+回應的結構取決於查詢中的參數：在 .NET SDK 中的 REST API 或[>.searchresults 類別](/dotnet/api/azure.search.documents.models.searchresults-1)中[搜尋檔](/rest/api/searchservice/Search-Documents)。
 
 ## <a name="result-composition"></a>結果組合
 
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 + 傳回第二個集合，略過前15個來取得下一個15： `$top=15&$skip=15` 。 針對第三組15執行相同動作： `$top=15&$skip=30`
 
 如果基礎索引正在變更，則不保證編頁查詢的結果是穩定的。 分頁 `$skip` 會變更每個頁面的值，但每個查詢都是獨立的，而且會在查詢時資料存在於索引中的目前資料檢視上運作 (換句話說，不會有結果的快取或快照集，例如在一般用途資料庫) 中找到的結果。
- 
+ 
 以下是您可能會收到重複專案的範例。 假設有四份檔的索引：
 
 ```text
@@ -61,21 +61,21 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 現在假設您想要一次傳回兩個結果，並依評等排序。 您可以執行此查詢來取得結果的第一頁： `$top=2&$skip=0&$orderby=rating desc` ，產生下列結果：
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 在服務上，假設在查詢呼叫之間將第五份檔新增至索引： `{ "id": "5", "rating": 4 }` 。  不久之後，您會執行查詢來提取第二頁： `$top=2&$skip=2&$orderby=rating desc` ，並取得下列結果：
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 請注意，檔2會提取兩次。 這是因為新的檔5有更高的評等值，因此它會在檔2之前排序，並放在第一頁。 雖然這種行為可能是非預期的，但通常是搜尋引擎的運作方式。
 
 ## <a name="ordering-results"></a>排序結果
@@ -92,7 +92,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ### <a name="consistent-ordering"></a>一致排序
 
-由於結果順序的彈性，您可能會想要在一致性為應用程式需求時探索其他選項。 最簡單的方法是依域值排序，例如評等或日期。 針對您想要依特定欄位排序的案例，例如評等或日期，您可以明確定義[ `$orderby` 運算式](query-odata-filter-orderby-syntax.md)，以套用至任何索引為可**排序**的欄位。
+由於結果順序的彈性，您可能會想要在一致性為應用程式需求時探索其他選項。 最簡單的方法是依域值排序，例如評等或日期。 針對您想要依特定欄位排序的案例，例如評等或日期，您可以明確定義 [ `$orderby` 運算式](query-odata-filter-orderby-syntax.md)，以套用至任何索引為可 **排序** 的欄位。
 
 另一個選項是使用 [自訂評分設定檔](index-add-scoring-profiles.md)。 評分設定檔可讓您更充分掌控搜尋結果中的專案排名，並能夠提升在特定欄位中找到的相符專案。 額外的評分邏輯可協助覆寫複本之間的微小差異，因為每份檔的搜尋分數會相距更遠。 我們建議採用此方法的 [排名演算法](index-ranking-similarity.md) 。
 
@@ -135,7 +135,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 當您撰寫執行搜尋結果醒目提示的用戶端程式代碼時，請注意這項變更。 請注意，除非您建立全新的搜尋服務，否則不會對您造成影響。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要快速為您的用戶端產生搜尋頁面，請考慮下列選項：
 

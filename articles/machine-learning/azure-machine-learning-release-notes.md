@@ -9,18 +9,27 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: a60ca64113bb3f2700e9f521f65780dc8ffbcc54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307738"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423006"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
+
+## <a name="2020-11-05"></a>2020-11-05
+
+### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>影像實例分割的資料標記 (多邊形注釋)  (preview) 
+
+現在可以使用資料標籤中的影像實例分割 (多邊形注釋) 專案類型，讓使用者可以在影像中物件的輪廓周圍繪製和標注多邊形。 使用者將能夠將某個類別和多邊形指派給影像內感興趣的每個物件。
+
+深入瞭解 [影像實例分割標記](how-to-label-images.md)。
+
 
 ## <a name="2020-10-26"></a>2020-10-26
 
@@ -1131,7 +1140,7 @@ ms.locfileid: "93307738"
     + 新增對 pandas 的支援。 數列和 pandas。 用於偵測資料行資料類型的類別。 先前只支援 numpy. ndarray
       + 已新增相關的程式碼變更，以正確地處理類別 dtype。
     + 已改善預測函數介面： y_pred 參數設為選擇性。 -Docstrings 已改善。
-  + **azureml-contrib-資料集**
+  + **azureml-contrib-dataset**
     + 修正無法裝載標記資料集的 bug。
   + **azureml-core**
     + 修正的錯誤 `Environment.from_existing_conda_environment(name, conda_environment_name)` 。 使用者可以建立環境的實例，該實例是本機環境的精確複本

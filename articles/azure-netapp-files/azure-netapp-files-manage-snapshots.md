@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp Files 管理快照集 | Microsoft Docs
-description: 說明如何使用 Azure NetApp Files 建立及管理快照集。
+description: 說明如何使用 Azure NetApp Files 來建立、管理和使用快照集。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,28 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e9f2a1f9125d25caa9506e954cab3b94dfcb5c24
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d7839b11e48e3e260f4d6b1323d1831e28222de
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932272"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421856"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
-Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排程自動建立快照集。  您也可以將快照集還原至新的磁片區，或使用用戶端來還原單一檔案。  
+Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排程自動建立快照集。 您也可以將快照集還原至新的磁片區、使用用戶端還原單一檔案，或使用快照集還原現有的磁片區。
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>建立磁碟區的隨選快照集
 
 您可以視需要建立磁片區快照集。 
 
-1.  移至您想要為其建立快照集的磁片區。 按一下 [ **快照**集]。
+1.  移至您想要為其建立快照集的磁片區。 按一下 [ **快照** 集]。
 
     ![瀏覽快照集](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  按一下 [+ 新增快照集]**** 以為磁碟區建立隨選快照集。
+2.  按一下 [+ 新增快照集] 以為磁碟區建立隨選快照集。
 
     ![新增快照集](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
@@ -41,7 +41,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![新增快照集](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 按一下 [確定]。 
+4. 按一下 [確定]  。 
 
 ## <a name="manage-snapshot-policies"></a>管理快照集原則
 
@@ -49,7 +49,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 ### <a name="register-the-feature"></a>註冊功能
 
-**快照集原則**功能目前為預覽狀態。 如果您是第一次使用這項功能，就必須先註冊該功能。 
+**快照集原則** 功能目前為預覽狀態。 如果您是第一次使用這項功能，您必須先註冊此功能。 
 
 1. 註冊功能： 
 
@@ -71,13 +71,13 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 快照集原則可讓您指定每小時、每日、每週或每月迴圈的快照建立頻率。 您也需要指定要保留給磁片區的快照集數目上限。  
 
-1.  從 NetApp 帳戶視圖中，按一下 [ **快照集原則**]。
+1.  從 NetApp 帳戶視圖中，按一下 [ **快照集原則** ]。
 
     ![快照集原則導覽](../media/azure-netapp-files/snapshot-policy-navigation.png)
 
-2.  在 [快照集原則] 視窗中，將 [原則狀態] 設定為 [ **啟用**]。 
+2.  在 [快照集原則] 視窗中，將 [原則狀態] 設定為 [ **啟用** ]。 
 
-3.  按一下 [ **每小時**]、[ **每天**]、[ **每週**] 或 [ **每月** ] 索引標籤，建立每小時、每日、每週或每月 指定 **要保留的快照集數目**。  
+3.  按一下 [ **每小時** ]、[ **每天** ]、[ **每週** ] 或 [ **每月** ] 索引標籤，建立每小時、每日、每週或每月 指定 **要保留的快照集數目** 。  
 
     查看有關磁片區允許的快照集數目上限的 [Azure NetApp Files 資源限制](azure-netapp-files-resource-limits.md) 。 
 
@@ -97,7 +97,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 **[儲存]** 。  
+4.  按一下 [儲存]。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您建立的原則會出現在 [快照集原則] 頁面中。
@@ -108,11 +108,11 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 如果您想要讓磁片區使用您所建立的快照集原則，您必須將原則套用至磁片區。 
 
-1.  移至 [ **磁片** 區] 頁面，以滑鼠右鍵按一下您想要套用快照集原則的磁片區，然後選取 [ **編輯**]。
+1.  移至 [ **磁片** 區] 頁面，以滑鼠右鍵按一下您想要套用快照集原則的磁片區，然後選取 [ **編輯** ]。
 
     ![磁片區右鍵功能表](../media/azure-netapp-files/volume-right-cick-menu.png) 
 
-2.  在 [編輯] 視窗的 [ **快照集原則**] 底下，選取要用於磁片區的原則。  按一下 **[確定]** 以套用原則。  
+2.  在 [編輯] 視窗的 [ **快照集原則** ] 底下，選取要用於磁片區的原則。  按一下 **[確定]** 以套用原則。  
 
     ![快照集原則編輯](../media/azure-netapp-files/snapshot-policy-edit.png) 
 
@@ -120,21 +120,21 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 您可以修改現有的快照集原則，以變更原則狀態、快照頻率 (每小時、每天、每週或每月) ，或要保留的快照集數目。  
  
-1.  從 NetApp 帳戶視圖中，按一下 [ **快照集原則**]。
+1.  從 NetApp 帳戶視圖中，按一下 [ **快照集原則** ]。
 
-2.  在您要修改的快照集原則上按一下滑鼠右鍵，然後選取 [ **編輯**]。
+2.  在您要修改的快照集原則上按一下滑鼠右鍵，然後選取 [ **編輯** ]。
 
     ![快照集原則按右鍵功能表](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
-3.  在出現的 [快照集原則] 視窗中進行變更，然後按一下 [ **儲存**]。 
+3.  在出現的 [快照集原則] 視窗中進行變更，然後按一下 [ **儲存** ]。 
 
 ### <a name="delete-a-snapshot-policy"></a>刪除快照集原則 
 
 您可以刪除不再需要保留的快照集原則。   
 
-1.  從 NetApp 帳戶視圖中，按一下 [ **快照集原則**]。
+1.  從 NetApp 帳戶視圖中，按一下 [ **快照集原則** ]。
 
-2.  在您要修改的快照集原則上按一下滑鼠右鍵，然後選取 [ **刪除**]。
+2.  在您要修改的快照集原則上按一下滑鼠右鍵，然後選取 [ **刪除** ]。
 
     ![快照集原則按右鍵功能表](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -161,7 +161,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![還原至新的磁片區](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 按一下 [ **審核 + 建立**]。  按一下 [建立]。   
+4. 按一下 [ **審核 + 建立** ]。  按一下頁面底部的 [新增]  。   
     新的磁片區會使用快照集所使用的相同通訊協定。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 
@@ -179,7 +179,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 1. 使用 `ls` Linux 命令可列出您想要從目錄還原的檔案 `.snapshot` 。 
 
-    例如：
+    例如︰
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -194,7 +194,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 2. 使用命令將檔案 `cp` 複製到上層目錄。  
 
-    例如： 
+    例如︰ 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -207,7 +207,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![顯示隱藏的項目](../media/azure-netapp-files/snapshot-show-hidden.png) 
 
-2. 流覽至內的子目錄， `~snapshot` 以尋找您想要還原的檔案。  以滑鼠右鍵按一下該檔案。 選取 [複製]****。  
+2. 流覽至內的子目錄， `~snapshot` 以尋找您想要還原的檔案。  以滑鼠右鍵按一下該檔案。 選取 [複製]。  
 
     ![複製要還原的檔案](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
 
@@ -218,6 +218,37 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 4. 您也可以在上層目錄上按一下滑鼠右鍵， **選取 [** 內容]，按一下 [ **舊版** ] 索引標籤以查看快照集清單，然後選取 [ **還原** ] 來還原檔案。  
 
     ![先前的屬性版本](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
+## <a name="revert-a-volume-using-snapshot-revert"></a>使用快照集還原復原磁碟區
+
+快照集還原功能可讓您快速地將磁片區還原到取得特定快照集時的狀態。 在大部分的情況下，復原磁碟區的速度遠快于從快照集還原至使用中檔案系統的個別檔案。 相較于將快照集還原至新的磁片區，這種方式也更有空間效益。 
+
+您可以在磁片區的 [快照集] 功能表中找到 [復原磁碟區] 選項。 在您選取回復的快照集之後，Azure NetApp Files 會將磁片區還原至所選快照集所包含的資料和時間戳記。 
+
+> [!IMPORTANT]
+> 建立所選快照集之後所建立的作用中檔案系統資料和快照集將會遺失。 快照集還原作業會將目標磁片區中的 *所有* 資料取代為所選快照集內的資料。 選取快照集時，您應該注意快照集的內容和建立日期。 您無法復原快照集還原作業。
+
+1. 移至磁片區的 [ **快照** 集] 功能表。  以滑鼠右鍵按一下要用於還原作業的快照集。 選取 [ **復原磁碟** 區]。 
+
+    ![描述快照之右鍵功能表的螢幕擷取畫面](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. 在 [將磁片區還原為快照集] 視窗中，輸入磁片區的名稱，然後按一下 [ **還原** ]。   
+
+    磁片區現在會還原至所選快照集的時間點。
+
+    ![將磁片區還原至快照集視窗的螢幕擷取畫面](../media/azure-netapp-files/snapshot-revert-volume.png) 
+
+## <a name="delete-snapshots"></a>刪除快照集  
+
+您可以刪除不再需要保留的快照。 
+
+1. 移至磁片區的 [ **快照** 集] 功能表。 以滑鼠右鍵按一下您要刪除的快照集。 選取 [刪除]。
+
+    ![描述快照之右鍵功能表的螢幕擷取畫面](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. 在 [刪除快照集] 視窗中，按一下 [ **是]** ，確認您要刪除該快照集。 
+
+    ![確認刪除快照集的螢幕擷取畫面](../media/azure-netapp-files/snapshot-confirm-delete.png)  
 
 ## <a name="next-steps"></a>後續步驟
 

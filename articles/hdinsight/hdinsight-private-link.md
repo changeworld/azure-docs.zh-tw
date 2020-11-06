@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547413"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422292"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -29,9 +29,9 @@ ms.locfileid: "92547413"
 
 預設虛擬網路架構中使用的基本負載平衡器會自動提供公用 NAT (的網路位址轉譯) 來存取必要的輸出相依性，例如 HDInsight RP。 如果您想要限制對公用網際網路的輸出連線能力，您可以 [設定防火牆](./hdinsight-restrict-outbound-traffic.md)，但這不是必要條件。
 
-設定 `resourceProviderConnection` 為輸出也可讓您使用私人端點來存取叢集特定資源，例如 Azure Data Lake Storage Gen2 或外部中繼存放區。 您必須先設定私人端點和 DNS 專案，才能建立 HDInsight 叢集。 建議您在叢集建立期間，建立並提供所需的所有外部 SQL 資料庫，例如 Apache Ranger、Ambari、Oozie 和 Hive 中繼存放區。
+設定 `resourceProviderConnection` 為輸出也可讓您使用私人端點來存取叢集特定資源，例如 Azure Data Lake Storage Gen2 或外部中繼存放區。 不會 mandetory 這些資源的私人端點，但如果您打算讓這些資源擁有私用端點，則必須設定您建立 HDInsight 叢集的私人端點和 DNS 專案 `before` 。 我們建議您在叢集建立期間，建立並提供所需的所有外部 SQL 資料庫，例如 Apache Ranger、Ambari、Oozie 和 Hive 中繼存放區。 需求是必須能夠從叢集子網內部存取這些資源，不論是透過自己的私人端點或其他資源。
 
-不支援 Azure Key Vault 的私人端點。 如果您要使用 Azure Key Vault 進行待用加密，則必須可從沒有私人端點的 HDInsight 子網記憶體取 Azure Key Vault 端點。
+不支援針對 Azure Key Vault 使用私用端點。 如果您要使用 Azure Key Vault 進行待用加密，則必須可從沒有私人端點的 HDInsight 子網記憶體取 Azure Key Vault 端點。
 
 下圖顯示當設定為輸出時，可能的 HDInsight 虛擬網路架構可能如下 `resourceProviderConnection` ：
 
@@ -52,7 +52,7 @@ ms.locfileid: "92547413"
 
 ## <a name="enable-private-link"></a>啟用 Private Link
 
-Private Link （預設為停用）需要廣泛的網路知識，才能在建立叢集之前，正確地設定使用者定義的路由 (UDR) 和防火牆規則。 只有在 [ `resourceProviderConnection` 網路] 屬性設定為 [ *輸出* ] （如上一節所述）時，才可使用叢集的 Private Link 存取。
+Private Link （預設為停用）需要廣泛的網路知識，才能在建立叢集之前，正確地設定使用者定義的路由 (UDR) 和防火牆規則。 使用這項設定是選擇性的，但只有在 [ `resourceProviderConnection` 網路] 屬性設定為 [ *輸出* ] （如上一節所述）的情況下才可使用。
 
 當 `privateLink` 設定為 [ *啟用* ] 時，系統就會建立 (SLB) 的內部 [標準負載平衡](../load-balancer/load-balancer-overview.md) 器，並為每個 SLB 布建 Azure Private Link 服務。 Private Link 服務可讓您從私人端點存取 HDInsight 叢集。
 
@@ -64,11 +64,11 @@ Private Link （預設為停用）需要廣泛的網路知識，才能在建立�
 
 下圖顯示建立叢集之前所需的網路設定範例。 在此範例中，會使用 UDR 將所有輸出流量 [強制](../firewall/forced-tunneling.md) 傳送至 Azure 防火牆，並在建立叢集之前，在防火牆上應「允許」所需的輸出相依性。 針對企業安全性套件叢集，可透過 VNet 對等互連來提供 Azure Active Directory Domain Services 的網路連線能力。
 
-:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="使用輸出資源提供者連接的 HDInsight 架構圖表":::
+:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="在叢集建立之前的私人連結環境圖":::
 
 設定網路之後，您可以建立已啟用輸出資源提供者連線和私人連結的叢集，如下圖所示。 在此設定中，不會針對每個標準負載平衡器布建公用 Ip 和 Private Link 服務。
 
-:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="使用輸出資源提供者連接的 HDInsight 架構圖表":::
+:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="叢集建立後的私人連結環境圖表":::
 
 ### <a name="access-a-private-cluster"></a>存取私人叢集
 
@@ -84,7 +84,7 @@ Private Link （預設為停用）需要廣泛的網路知識，才能在建立�
 
 下圖顯示從虛擬網路存取叢集所需的私人 DNS 專案範例，該虛擬網路未對等互連，或沒有叢集負載平衡器的直接連線。 您可以使用 Azure 私用區域來覆寫 `*.privatelink.azurehdinsight.net` fqdn，並解析成您自己的私人端點 IP 位址。
 
-:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="使用輸出資源提供者連接的 HDInsight 架構圖表":::
+:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="私用連結架構的圖表":::
 
 ## <a name="arm-template-properties"></a>ARM 範本屬性
 
@@ -99,7 +99,7 @@ networkProperties: {
 
 如需包含許多 HDInsight 企業安全性功能（包括 Private Link）的完整範本，請參閱 [HDInsight 企業安全性範本](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 的企業安全性套件](enterprise-security-package.md)
 * [Azure HDInsight 中的企業安全性一般資訊與指導方針](./domain-joined/general-guidelines.md)

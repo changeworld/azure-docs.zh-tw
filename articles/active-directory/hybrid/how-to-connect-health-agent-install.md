@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 975933a97b089cb208ecd7ff4461a893364262ff
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275641"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422360"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
@@ -59,7 +59,7 @@ ms.locfileid: "92275641"
 
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
-| 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
+| 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>最新版本的代理程式不需要 &#42; servicebus.windows.net-埠： 5671 () </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 
@@ -122,30 +122,30 @@ ms.locfileid: "92275641"
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上啟用 AD FS 的稽核
 
-1. 在 [開始] 畫面上開啟 [伺服器管理員]****，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]****，然後按一下 [工具/本機安全性原則]****。
-2. 瀏覽至**安全性設定\本機原則\使用者權限指派**資料夾，然後再按兩下 [產生安全性稽核]****。
-3. 在 [本機安全性設定]**** 索引標籤上，確認 AD FS 服務帳戶已列出。 如果帳戶不存在，請按一下 [新增使用者或群組]**** 並將它加入清單中，然後按一下 [確定]****。
+1. 在 [開始] 畫面上開啟 [伺服器管理員]，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]，然後按一下 [工具/本機安全性原則]。
+2. 瀏覽至 **安全性設定\本機原則\使用者權限指派** 資料夾，然後再按兩下 [產生安全性稽核]。
+3. 在 [本機安全性設定]索引標籤上，確認 AD FS 服務帳戶已列出。 如果帳戶不存在，請按一下 [新增使用者或群組]並將它加入清單中，然後按一下 [確定]。
 4. 若要啟用稽核，請使用提高的權限開啟命令提示字元，然後執行下列命令：```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
-5. 關閉 [本機安全性原則]****。
+5. 關閉 [本機安全性原則]。
 <br />   -- **只有主要 AD FS 伺服器才需要執行下列步驟。** -- <br />
-6. 開啟 [AD FS 管理]**** 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
-7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
-8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
-9. 選取 [成功稽核] 和 [失敗稽核]**** 核取方塊，然後按一下 [確定]****。
+6. 開啟 [AD FS 管理] 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
+7. 在 [動作] 窗格中，按一下 [編輯 Federation Service 屬性]。
+8. 在 [Federation Service 屬性] 對話方塊中，按一下 [事件] 索引標籤。
+9. 選取 [成功稽核] 和 [失敗稽核] 核取方塊，然後按一下 [確定]。
 10. 您可以使用命令，透過 powershell 啟用詳細資訊記錄： ```Set-AdfsProperties -LOGLevel Verbose``` 。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>在 Windows Server 2016 上啟用 AD FS 的稽核
 
-1. 在 [開始] 畫面上開啟 [伺服器管理員]****，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]****，然後按一下 [工具/本機安全性原則]****。
-2. 瀏覽至**安全性設定\本機原則\使用者權限指派**資料夾，然後再按兩下 [產生安全性稽核]****。
-3. 在 [本機安全性設定]**** 索引標籤上，確認 AD FS 服務帳戶已列出。 如果不存在，按一下 [新增使用者或群組]****，並將 AD FS 服務帳戶新增至清單，然後按一下 [確定]****。
+1. 在 [開始] 畫面上開啟 [伺服器管理員]，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]，然後按一下 [工具/本機安全性原則]。
+2. 瀏覽至 **安全性設定\本機原則\使用者權限指派** 資料夾，然後再按兩下 [產生安全性稽核]。
+3. 在 [本機安全性設定]索引標籤上，確認 AD FS 服務帳戶已列出。 如果不存在，按一下 [新增使用者或群組]，並將 AD FS 服務帳戶新增至清單，然後按一下 [確定]。
 4. 若要啟用稽核，請使用提高的權限開啟命令提示字元，然後執行下列命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. 關閉 [本機安全性原則]****。
+5. 關閉 [本機安全性原則]。
 <br />   -- **只有主要 AD FS 伺服器才需要執行下列步驟。** -- <br />
-6. 開啟 [AD FS 管理]**** 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
-7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
-8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
-9. 選取 [成功稽核] 和 [失敗稽核]**** 核取方塊，然後按一下 [確定]****。 預設會啟用此功能。
+6. 開啟 [AD FS 管理] 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
+7. 在 [動作] 窗格中，按一下 [編輯 Federation Service 屬性]。
+8. 在 [Federation Service 屬性] 對話方塊中，按一下 [事件] 索引標籤。
+9. 選取 [成功稽核] 和 [失敗稽核] 核取方塊，然後按一下 [確定]。 預設會啟用此功能。
 10. 開啟 PowerShell 視窗並執行下列命令：```Set-AdfsProperties -AuditLevel Verbose```。
 
 請注意，預設會啟用「基本」稽核層級。 深入了解 [Windows Server 2016 中的 AD FS 稽核增強功能](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server)
@@ -154,9 +154,9 @@ ms.locfileid: "92275641"
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>找出 AD FS 稽核記錄
 
 1. 開啟 [事件檢視器]。
-2. 移至 [Windows 記錄]，然後選取 [安全性] ****。
-3. 按一下右側的 [篩選目前的記錄] ****。
-4. 在 [事件來源] 下，選取 [AD FS 稽核] ****。
+2. 移至 [Windows 記錄]，然後選取 [安全性] 。
+3. 按一下右側的 [篩選目前的記錄] 。
+4. 在 [事件來源] 下，選取 [AD FS 稽核] 。
 
     以及稽核記錄的快速[常見問題集附註](reference-connect-health-faq.md#operations-questions)。
 
@@ -297,7 +297,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 您有下列選項來設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
 > [!NOTE]
-> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行下列命令：<br />
+> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行以下命令：<br />
 > Restart-Service AzureADConnectHealth *
 >
 >
@@ -328,7 +328,7 @@ Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-範例：*Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443*
+範例： *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443*
 
 * 「位址」可以是可解析的 DNS 伺服器名稱或 IPv4 位址
 * 「連接埠」可以省略。 如果省略，則會選擇 443 做為預設連接埠。

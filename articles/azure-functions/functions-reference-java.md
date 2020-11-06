@@ -4,12 +4,12 @@ description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927510"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422513"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "92927510"
 
 | 開始使用 | 概念| 
 | -- | -- |  
-| <ul><li>[使用 Visual Studio Code 的 JAVA 函數](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[使用 Gradle 的 JAVA 函數](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 構想的 JAVA 函式](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 JAVA 函數](./create-first-function-vs-code-java.md)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](./create-first-function-cli-java.md)</li><li>[使用 Gradle 的 JAVA 函數](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 構想的 JAVA 函式](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>JAVA 函數基本概念
 
@@ -55,7 +55,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-若要開始使用此原型，請參閱 [JAVA 快速入門](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)。 
+若要開始使用此原型，請參閱 [JAVA 快速入門](./create-first-function-cli-java.md)。
 
 ## <a name="folder-structure"></a>資料夾結構
 
@@ -153,7 +153,7 @@ public class Function {
 
 Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中的下列元素指出要使用的 JAVA 版本：
 
-| 元素 |  JAVA 8 值 | JAVA 11 值 | 描述 |
+| 項目 |  JAVA 8 值 | JAVA 11 值 | 描述 |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven 編譯器-外掛程式所使用的 JAVA 版本。 |
 | **`JavaVersion`** | 8 | 11 | Azure 中函數應用程式所裝載的 JAVA 版本。 |
@@ -173,7 +173,7 @@ Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中
 
 Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 使用 `os` 元素選擇作業系統。 
 
-| 元素 |  Windows | Linux | Docker |
+| 項目 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
 | **`os`** | windows | Linux | docker |
 

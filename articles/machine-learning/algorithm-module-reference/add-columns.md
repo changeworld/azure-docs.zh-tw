@@ -1,7 +1,7 @@
 ---
 title: 新增資料行：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [新增資料行] 模組串連兩個資料集。
+description: 瞭解如何使用拖放 Azure Machine Learning 設計工具中的 [加入資料行] 模組來串連兩個資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,29 +9,29 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 17882581c4548996c9a8b2a8670b5f720e64da1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36de827dff239dbeebc66e330a76b7a65fefb909
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898988"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421952"
 ---
 # <a name="add-columns-module"></a>新增資料行模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 
-使用此模組來串連兩個資料集。 您可以結合您指定為輸入的兩個資料集的所有資料行，以建立單一資料集。 如果您需要串連兩個以上的資料集，請使用多個 [ **加入資料行**] 實例。
+使用此模組來串連兩個資料集。 您可以結合您指定為輸入的兩個資料集的所有資料行，以建立單一資料集。 如果您需要串連兩個以上的資料集，請使用多個 [ **加入資料行** ] 實例。
 
 
 
 ## <a name="how-to-configure-add-columns"></a>如何設定新增資料行
 1. 將 [ **新增資料行** ] 模組新增至您的管線。
 
-2. 連接您想要串連的兩個資料集。 如果您想要結合兩個以上的資料集，您可以將多個 **加入資料行**的組合結合在一起。
+2. 連接您想要串連的兩個資料集。 如果您想要結合兩個以上的資料集，您可以將多個 **加入資料行** 的組合結合在一起。
 
     - 您可以結合兩個具有不同資料列數目的資料行。 輸出資料集會針對較小來源資料行中的每個資料列，以遺漏的值填補。
 
-    - 您無法選擇要加入的個別資料行。 當您使用 [ **新增資料行**] 時，會串連每個資料集的所有資料行。 因此，如果您只想要加入資料行的子集，請使用 [資料集] 中的 [選取資料行]，以您想要的資料行建立資料集。
+    - 您無法選擇要加入的個別資料行。 當您使用 [ **新增資料行** ] 時，會串連每個資料集的所有資料行。 因此，如果您只想要加入資料行的子集，請使用 [資料集] 中的 [選取資料行]，以您想要的資料行建立資料集。
 
 3. 提交管線。
 

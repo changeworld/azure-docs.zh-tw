@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a121751e71bffdb76341f6a7dc2a01a22240019b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534463"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423074"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立多種語言的索引
 
@@ -26,7 +26,7 @@ Azure 認知搜尋提供來自 Lucene 和 Microsoft 的大型語言分析器選�
 建立欄位時，會指定語言分析器。 將分析器新增至現有的欄位定義，需要覆寫 (和重載) 索引，或建立與原始相同的新欄位，但流量分析器指派。 您可以在方便時刪除未使用的欄位。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) ，並尋找您的搜尋服務。
-1. 在服務儀表板頂端的命令列中按一下 [新增索引] **** 即可開始新的索引，或開啟現有索引以在您加入至現有索引的新欄位上設定分析器。
+1. 在服務儀表板頂端的命令列中按一下 [新增索引]  即可開始新的索引，或開啟現有索引以在您加入至現有索引的新欄位上設定分析器。
 1. 藉由提供名稱來啟動欄位定義。
 1. 選擇 [Edm] 資料類型。 只有字串欄位可供全文檢索搜尋。
 1. 設定可搜尋 **的屬性以** 啟用分析器屬性。 欄位必須是以文字為基礎，才能利用語言分析器。
@@ -67,4 +67,4 @@ Azure 認知搜尋提供來自 Lucene 和 Microsoft 的大型語言分析器選�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您是 .NET 開發人員，請注意，您可以使用 [Azure 認知搜尋 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 和 [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer) 屬性來設定語言分析器。
+如果您是 .NET 開發人員，請注意，您可以使用 [Azure 認知搜尋 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 和 [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) 屬性來設定語言分析器。

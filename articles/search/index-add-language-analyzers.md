@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935873"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422326"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>將語言分析器新增至 Azure 認知搜尋索引中的字串欄位
 
-「語言分析器」** 是特定類型的[文字分析器](search-analyzers.md)，能使用目標語言的語言規則來執行語彙分析。 每個可搜尋的欄位都會有 **analyzer** 屬性。 如果您的內容包含翻譯的字串（例如英文和中文文字的個別欄位），您可以在每個欄位上指定語言分析器，以存取這些分析器的豐富語言功能。
+「語言分析器」是特定類型的[文字分析器](search-analyzers.md)，能使用目標語言的語言規則來執行語彙分析。 每個可搜尋的欄位都會有 **analyzer** 屬性。 如果您的內容包含翻譯的字串（例如英文和中文文字的個別欄位），您可以在每個欄位上指定語言分析器，以存取這些分析器的豐富語言功能。
 
 ## <a name="when-to-use-a-language-analyzer"></a>使用語言分析器的時機
 
@@ -68,7 +68,7 @@ Azure 認知搜尋支援 Lucene 所支援的35語言分析器，以及由 Office
 ## <a name="language-analyzer-list"></a>語言分析器清單 
  以下是支援的語言清單與 Lucene 和 Microsoft 的分析器名稱。  
 
-|Language|Microsoft 分析器名稱|Lucene 分析器名稱|  
+|語言|Microsoft 分析器名稱|Lucene 分析器名稱|  
 |--------------|-----------------------------|--------------------------|  
 |阿拉伯文|ar.microsoft|ar.lucene|  
 |亞美尼亞文||hy.lucene|  
@@ -129,8 +129,8 @@ Azure 認知搜尋支援 Lucene 所支援的35語言分析器，以及由 Office
 
  所有名稱加上 **Lucene** 註解的分析器都是由 [Apache Lucene 的語言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) \(英文\) 所提供。
 
-## <a name="see-also"></a>另請參閱  
+## <a name="see-also"></a>請參閱  
 
 + [建立索引 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName 類別](/dotnet/api/microsoft.azure.search.models.analyzername) \(英文\)
++ [LexicalAnalyzerName 類別](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

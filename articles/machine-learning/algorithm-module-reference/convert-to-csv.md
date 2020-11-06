@@ -1,7 +1,7 @@
 ---
 title: 轉換成 CSV：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [轉換為 CSV] 模組，將資料集轉換為 CSV 格式，以供使用 R 或 Python 腳本模組進行下載、匯出或共用。
+description: 瞭解如何在 Azure Machine Learning 表設計工具中使用 [轉換為 CSV] 模組，將資料集轉換成可稍後重複使用的 CSV 檔案。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898800"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421918"
 ---
 # <a name="convert-to-csv-module"></a>轉換成 CSV 模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "90898800"
 
 CSV 格式（代表「逗點分隔值」）是許多外部機器學習工具所使用的一種檔案格式。 使用開放原始碼語言（例如 R 或 Python）時，CSV 是常見的交換格式。
 
-即使您在 Azure Machine Learning 中執行大部分的工作，有時候您可能會發現將資料集轉換為 CSV 以在外部工具中使用是很方便的。 例如：
+即使您在 Azure Machine Learning 中執行大部分的工作，有時候您可能會發現將資料集轉換為 CSV 以在外部工具中使用是很方便的。 例如︰
 
 + 下載 CSV 檔案，以使用 Excel 開啟該檔案，或將其匯入至關係資料庫。  
 + 將 CSV 檔案儲存至雲端儲存體，並從 Power BI 連接到該檔案以建立視覺效果。  
@@ -46,11 +46,11 @@ CSV 格式（代表「逗點分隔值」）是許多外部機器學習工具所�
 ### <a name="results"></a>結果
   
 
-選取 [**轉換為 CSV**] 右邊面板中的 [**輸出**] 索引標籤，然後選取**埠輸出**下的其中一個圖示。  
+選取 [ **轉換為 CSV** ] 右邊面板中的 [ **輸出** ] 索引標籤，然後選取 **埠輸出** 下的其中一個圖示。  
 
-+ **註冊資料集**：選取圖示，並將 CSV 檔案以個別資料集的形式儲存回 Azure ML 工作區。 您可以在 [ **我的資料集** ] 區段下的模組樹狀結構中，找到資料集做為模組。
++ **註冊資料集** ：選取圖示，並將 CSV 檔案以個別資料集的形式儲存回 Azure ML 工作區。 您可以在 [ **我的資料集** ] 區段下的模組樹狀結構中，找到資料集做為模組。
 
- + **View output**：選取眼睛圖示，然後遵循指示來流覽 **Results_dataset** 資料夾，並下載 data.csv 檔案。
+ + **View output** ：選取眼睛圖示，然後遵循指示來流覽 **Results_dataset** 資料夾，並下載 data.csv 檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

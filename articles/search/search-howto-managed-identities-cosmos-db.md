@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 3412bfe95951a3fea035ffc6452719ede5e66d4d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a1744feedc3e0ffae6cf2cd45cd090a6c2f06d5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519600"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422088"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>使用受控識別設定與 Cosmos DB 資料庫的索引子連接
 
@@ -55,7 +55,7 @@ ms.locfileid: "92519600"
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Cosmos DB 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Cosmos DB 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 使用受控識別進行驗證時， **認證** 將不會包含帳戶金鑰。
 
@@ -84,8 +84,8 @@ api-key: [Search service admin key]
 |---------|-------------|
 | **name** | 必要。 選擇任何名稱，以代表您的資料來源物件。 |
 |**type**| 必要。 必須是 `cosmosdb`。 |
-|**credentials** | 必要。 <br/><br/>使用受控識別進行連線時，**credentials** 格式應該是：*Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>ResourceId 格式：*ResourceId=/subscriptions/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.DocumentDB/databaseAccounts/**您的 cosmos db 帳戶名稱**/;*<br/><br/>針對 SQL 集合，連接字串不需要 ApiKind。<br/><br/>針對 MongoDB 集合，請將 **ApiKind=MongoDb** 新增至連接字串。 <br/><br/>如需 Gremlin 圖形與 Cassandra 資料表，請註冊[受管制索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview)，以取得預覽的存取權，以及如何設定認證格式的相關資訊。<br/>|
-| **container** | 包含下列元素： <br/>**名稱**：必要。 指定要編製索引的資料庫集合識別碼。<br/>**查詢**：選擇性。 您可以指定查詢將任意 JSON 文件壓平合併成 Azure 認知搜尋可以編製索引的一般結構描述。<br/>針對 MongoDB API、Gremlin API 與 Cassandra API，則不支援查詢。 |
+|**credentials** | 必要。 <br/><br/>使用受控識別進行連線時， **credentials** 格式應該是： *Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>ResourceId 格式： *ResourceId=/subscriptions/ **您的訂用帳戶識別碼** /resourceGroups/ **您的資源群組名稱** /providers/Microsoft.DocumentDB/databaseAccounts/ **您的 cosmos db 帳戶名稱** /;*<br/><br/>針對 SQL 集合，連接字串不需要 ApiKind。<br/><br/>針對 MongoDB 集合，請將 **ApiKind=MongoDb** 新增至連接字串。 <br/><br/>如需 Gremlin 圖形與 Cassandra 資料表，請註冊[受管制索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview)，以取得預覽的存取權，以及如何設定認證格式的相關資訊。<br/>|
+| **container** | 包含下列元素： <br/>**名稱** ：必要。 指定要編製索引的資料庫集合識別碼。<br/>**查詢** ：選擇性。 您可以指定查詢將任意 JSON 文件壓平合併成 Azure 認知搜尋可以編製索引的一般結構描述。<br/>針對 MongoDB API、Gremlin API 與 Cassandra API，則不支援查詢。 |
 | **dataChangeDetectionPolicy** | 建議 |
 |**dataDeletionDetectionPolicy** | 選用 |
 

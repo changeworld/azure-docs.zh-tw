@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043113"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422547"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -20,7 +20,7 @@ Express.js、Node.js 或 JavaScript 開發人員，如果您不熟悉 Azure Func
 
 | 開始使用 | 概念| 引導式學習 |
 | -- | -- | -- | 
-| <ul><li>[ 使用 Visual Studio CodeNode.js 函數](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ 使用終端機/命令提示字元Node.js 函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[TypeScript 函數](#typescript)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[建立無伺服器應用程式](/learn/paths/create-serverless-applications/)</li><li>[重構 Node.js 和 Express Api 到無伺服器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[ 使用 Visual Studio CodeNode.js 函數](./create-first-function-vs-code-node.md)</li><li>[ 使用終端機/命令提示字元Node.js 函式](./create-first-function-cli-java.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[TypeScript 函數](#typescript)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[建立無伺服器應用程式](/learn/paths/create-serverless-applications/)</li><li>[重構 Node.js 和 Express Api 到無伺服器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 函式基本概念
 
@@ -204,8 +204,8 @@ module.exports = (context) => {
 | 屬性名稱  | 類型  | 描述 |
 |---------|---------|---------|
 | `invocationId` | String | 提供特定函式呼叫的唯一識別碼。 |
-| `functionName` | String | 提供正在執行之函式的名稱 |
-| `functionDirectory` | String | 提供函數應用程式目錄。 |
+| `functionName` | 字串 | 提供正在執行之函式的名稱 |
+| `functionDirectory` | 字串 | 提供函數應用程式目錄。 |
 
 下列範例顯示如何傳回 `invocationId` 。
 
@@ -651,7 +651,7 @@ module.exports = myObj;
 
 ## <a name="typescript"></a>TypeScript
 
-當您以2.x 版的函式執行時間為目標時， [Visual Studio Code 的 Azure Functions](functions-create-first-function-vs-code.md) 和 [Azure Functions Core Tools](functions-run-local.md) 可讓您使用支援 TypeScript 函式應用程式專案的範本來建立函數應用程式。 範本會產生 `package.json` 和 `tsconfig.json` 專案檔，讓您更輕鬆地使用這些工具，從 TypeScript 程式碼中轉換、執行和發佈 JavaScript 函式。
+當您以2.x 版的函式執行時間為目標時， [Visual Studio Code 的 Azure Functions](./create-first-function-cli-typescript.md) 和 [Azure Functions Core Tools](functions-run-local.md) 可讓您使用支援 TypeScript 函式應用程式專案的範本來建立函數應用程式。 範本會產生 `package.json` 和 `tsconfig.json` 專案檔，讓您更輕鬆地使用這些工具，從 TypeScript 程式碼中轉換、執行和發佈 JavaScript 函式。
 
 產生的檔案 `.funcignore` 會用來指出將專案發行至 Azure 時所要排除的檔案。  
 

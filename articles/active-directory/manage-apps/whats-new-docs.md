@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 應用程式管理的新功能
 description: Azure Active Directory 應用程式管理的新檔和更新的檔。
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,23 +10,41 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428023"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422598"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 應用程式管理：新功能
 
 歡迎使用 Azure Active Directory 應用程式管理檔中的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解應用程式管理服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="new-articles"></a>新文章
+
+- [Azure Active Directory 應用程式管理：新功能](whats-new-docs.md)
+- [瞭解 OIDC 為基礎的單一登入](configure-oidc-single-sign-on.md)
+- [設定權限分類](configure-permission-classifications.md)
+- [設定群組擁有者同意存取群組資料的應用程式](configure-user-consent-groups.md)
+- [管理應用程式同意原則](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [登入已設定 SAML 型單一登入的應用程式時發生問題](application-sign-in-problem-federated-sso-gallery.md)
+- [安裝應用程式 Proxy 代理程式連接器時遇到問題](application-proxy-connector-installation-problem.md)
+- [將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [設定使用者同意應用程式的方式](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 
 ### <a name="new-articles"></a>新文章
 - [快速入門：為您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定 OIDC 型單一登入 (SSO)](add-application-portal-setup-oidc-sso.md)
 - [快速入門：將使用者指派給以 Azure AD 作為識別提供者的應用程式](add-application-portal-assign-users.md)
-- [Docs 有哪些新功能？](whats-new-docs.md)
+- [檔有哪些新功能？](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>更新的文章

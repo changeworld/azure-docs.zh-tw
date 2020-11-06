@@ -6,19 +6,19 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104864"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422802"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 JAVA 和 Gradle 建立函式並將其發佈至 Azure
 
 本文說明如何使用 Gradle 命令列工具來建立和發佈 JAVA 函式專案，以 Azure Functions。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。 
 
 > [!NOTE]
-> 如果 Gradle 不是您慣用的開發工具，請參閱使用 [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、 [IntelliJ 概念](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)的 JAVA 開發人員類似教學課程。
+> 如果 Gradle 不是您慣用的開發工具，請參閱使用 [Maven](./create-first-function-cli-java.md)、 [IntelliJ 概念](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](./create-first-function-vs-code-java.md)的 JAVA 開發人員類似教學課程。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -126,8 +126,8 @@ gradle azureFunctionsDeploy
 
 + 資源群組。 以您提供的 _resourceGroup_ 命名。
 + 儲存體帳戶。 Functions 所需。 此名稱會根據儲存體帳戶名稱需求隨機產生。
-+ App Service 方案。 在指定的 _appRegion_中，為您的函數應用程式裝載的無伺服器耗用量方案。 此名稱是隨機產生的。
-+ 函式應用程式。 函式應用程式是您函式的部署和執行單位。 此名稱是您的 _appName _，其附加隨機產生的數字。 
++ App Service 方案。 在指定的 _appRegion_ 中，為您的函數應用程式裝載的無伺服器耗用量方案。 此名稱是隨機產生的。
++ 函式應用程式。 函式應用程式是您函式的部署和執行單位。 此名稱是您的 _appName_ ，其附加隨機產生的數字。 
 
 部署也會封裝專案檔案，並使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 將其部署至新的函式應用程式，並已啟用從套件執行模式。
 
@@ -140,13 +140,13 @@ gradle azureFunctionsDeploy
 
 您可以從 Azure 入口網站取得觸發函式所需的 URL 和函式金鑰。 
 
-1. 瀏覽至 [Azure 入口網站 ]、登入，在頁面頂端的 [搜尋]**** 中輸入您函式應用程式的 _appName_，然後按 Enter。
+1. 瀏覽至 [Azure 入口網站]、登入，在頁面頂端的 [搜尋] 中輸入您函式應用程式的 _appName_ ，然後按 Enter。
  
-1. 在您的函數應用程式中，選取 [函式]，選擇您的函 **式，然後**按一下 [ **</> 取得** 函式 Url]。 
+1. 在您的函數應用程式中，選取 [函式]，選擇您的函 **式，然後** 按一下 [ **</> 取得** 函式 Url]。 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="從 Azure 入口網站複製函式 URL":::
 
-1. 選擇 [預設值 (函式金鑰)]****，然後選取 [複製]****。 
+1. 選擇 [預設值 (函式金鑰)]，然後選取 [複製]。 
 
 您現在可以使用所複製的 URL 來存取您的函式。
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 25c79229a09db912903fba825f0d48f571880745
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876902"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422892"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault 的常見錯誤碼
 
@@ -22,7 +22,7 @@ Azure key vault 上的作業可能會傳回下表所列的錯誤碼
 
 | 錯誤碼 | 使用者訊息 |
 |--|--|
-| VaultAlreadyExists |  指定的金鑰保存庫已存在於虛刪除狀態中，或在另一個訂用帳戶) 中 (。 |
+| VaultAlreadyExists |  您嘗試以指定的名稱建立新的金鑰保存庫失敗，因為該名稱已在使用中。 如果您最近刪除了具有此名稱的金鑰保存庫，它可能仍處於已虛刪除的狀態。 您可以在[此處](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)確認它是否 existis 為虛刪除狀態 |
 | VaultNameNotValid |  保存庫名稱應為24個字元、英數位元，並以字母開頭 |
 | AccessDenied |  您可能缺少存取原則的許可權，無法進行該作業。 |
 | ForbiddenByFirewall |  用戶端位址未獲授權，呼叫端不是受信任的服務。 |

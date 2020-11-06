@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 11/05/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fa8794066739302d2f32acb13c936c524dc89a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489705"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422343"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>從 Azure CLI 建立及管理讀取複本，REST API
 
@@ -24,10 +24,12 @@ ms.locfileid: "92489705"
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
 * **Off** -將最少的資訊放在 WAL 中。 這項設定無法在大部分的適用於 PostgreSQL 的 Azure 資料庫伺服器上使用。  
-* **複本**-更**詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
-* **邏輯** 更詳細的資訊比 **複本**更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
+* **複本** -更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
+* **邏輯** 更詳細的資訊比 **複本** 更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
 
-此參數變更之後，必須重新開機伺服器。 就內部而言，此參數會設定 Postgres 參數 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
+
+> [!NOTE]
+> 針對持續大量寫入大量寫入的主要工作負載部署讀取複本時，複寫延遲可能會持續成長，而且可能永遠無法趕上主要工作負載。 這也可能會增加主資料庫的儲存體使用量，因為 WAL 檔案在複本收到時，不會被刪除。
 
 ## <a name="azure-cli"></a>Azure CLI
 您可以使用 Azure CLI 來建立及管理讀取複本。

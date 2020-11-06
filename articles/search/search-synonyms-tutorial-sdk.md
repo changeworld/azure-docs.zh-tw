@@ -7,31 +7,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b97b223ac180df7f8eb07ad8eaab66847f50776
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538801"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422989"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>範例：在 C 中新增 Azure 認知搜尋的同義字#
 
 同義字可藉由比對在語意上視為等於輸入詞彙的詞彙來展開查詢。 例如，您可能希望 "car" 比對包含 "automobile" 或 "vehicle" 詞彙的文件。 
 
-在 Azure 認知搜尋中，同義字定義于 *同義字對應*中，透過 *對應規則* 來建立對等詞彙的關聯。 此範例涵蓋使用現有的索引來新增和使用同義字的基本步驟。 您會了解如何：
+在 Azure 認知搜尋中，同義字定義于 *同義字對應* 中，透過 *對應規則* 來建立對等詞彙的關聯。 此範例涵蓋使用現有的索引來新增和使用同義字的基本步驟。
+
+在此範例中，您將瞭解如何：
 
 > [!div class="checklist"]
-> * 使用  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) 類別建立同義字地圖。 
-> * 在應支援透過同義字進行查詢擴充的欄位上設定 [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) 屬性。
+> * 使用 [SynonymMap 類別](/dotnet/api/azure.search.documents.indexes.models.synonymmap)建立同義字地圖。 
+> * 在應支援透過同義字進行查詢擴充的欄位上設定 [SynonymMapsName 屬性](/dotnet/api/azure.search.documents.indexes.models.searchfield.synonymmapnames) 。
 
 您可以如往常般查詢啟用同義字的欄位。 存取同義字不需要額外的查詢語法。
 
 您可以建立多個同義字對應、將它們張貼為可供任何索引使用的全服務資源，然後參照哪一個要在欄位層級使用。 在查詢時，除了搜尋索引之外，Azure 認知搜尋會在同義字對應中執行查閱（如果在查詢中使用的欄位上有指定的話）。
 
 > [!NOTE]
-> 同義字可以用程式設計的方式建立，但不能在入口網站中建立。 如果 Azure 入口網站的同義字支援對您很有用，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供您的意見反應
+> 同義字可以用程式設計的方式建立，但不能在入口網站中建立。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -39,109 +41,105 @@ ms.locfileid: "91538801"
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 認知搜尋服務](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET 程式庫](/dotnet/api/overview/azure/search)
-* [如何從 .NET 應用程式使用 Azure 認知搜尋](./search-howto-dotnet-sdk.md)
+* [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)
 
-## <a name="overview"></a>概觀
+如果您不熟悉 .NET 用戶端程式庫，請參閱 [如何在 .net 中使用 Azure 認知搜尋](search-howto-dotnet-sdk.md)。
 
-之前與之後查詢會示範同義字的值。 在此範例中，使用可執行查詢並傳回範例索引結果的範例應用程式。 範例應用程式會建立名為 "hotels" 並已填入兩份文件的小型索引。 此應用程式會使用未出現在索引中的詞彙和詞句來執行搜尋查詢，啟用同義字功能，然後再次發出相同的搜尋。 下列程式碼示範整體流程。
+## <a name="sample-code"></a>範例程式碼
+
+您可以在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)上找到此範例中所使用之範例應用程式的完整原始碼。
+
+## <a name="overview"></a>總覽
+
+使用前後查詢來示範同義字的值。 在此範例中，範例應用程式會執行查詢，並在填入兩份檔的範例「飯店」索引上傳回結果。 首先，應用程式會使用未出現在索引中的詞彙和片語來執行搜尋查詢。 其次，此程式碼會啟用同義字功能，然後重新發出相同的查詢，這次會根據同義字對應中的相符專案傳回結果。 
+
+下列程式碼示範整體流程。
 
 ```csharp
-  static void Main(string[] args)
-  {
-      SearchServiceClient serviceClient = CreateSearchServiceClient();
+static void Main(string[] args)
+{
+   SearchIndexClient indexClient = CreateSearchIndexClient();
 
-      Console.WriteLine("{0}", "Cleaning up resources...\n");
-      CleanupResources(serviceClient);
+   Console.WriteLine("Cleaning up resources...\n");
+   CleanupResources(indexClient);
 
-      Console.WriteLine("{0}", "Creating index...\n");
-      CreateHotelsIndex(serviceClient);
+   Console.WriteLine("Creating index...\n");
+   CreateHotelsIndex(indexClient);
 
-      ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+   SearchClient searchClient = indexClient.GetSearchClient("hotels");
 
-      Console.WriteLine("{0}", "Uploading documents...\n");
-      UploadDocuments(indexClient);
+   Console.WriteLine("Uploading documents...\n");
+   UploadDocuments(searchClient);
 
-      ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+   SearchClient searchClientForQueries = CreateSearchClientForQueries();
 
-      RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
+   RunQueriesWithNonExistentTermsInIndex(searchClientForQueries);
 
-      Console.WriteLine("{0}", "Adding synonyms...\n");
-      UploadSynonyms(serviceClient);
-      EnableSynonymsInHotelsIndex(serviceClient);
-      Thread.Sleep(10000); // Wait for the changes to propagate
+   Console.WriteLine("Adding synonyms...\n");
+   UploadSynonyms(indexClient);
 
-      RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
+   Console.WriteLine("Enabling synonyms in the test index...\n");
+   EnableSynonymsInHotelsIndexSafely(indexClient);
+   Thread.Sleep(10000); // Wait for the changes to propagate
 
-      Console.WriteLine("{0}", "Complete.  Press any key to end application...\n");
+   RunQueriesWithNonExistentTermsInIndex(searchClientForQueries);
 
-      Console.ReadKey();
-  }
+   Console.WriteLine("Complete.  Press any key to end application...\n");
+
+   Console.ReadKey();
+}
 ```
-[如何從 .Net 應用程式使用 Azure 認知搜尋](./search-howto-dotnet-sdk.md)，說明如何建立和填入範例索引的步驟。
 
 ## <a name="before-queries"></a>「之前」查詢
 
 在 `RunQueriesWithNonExistentTermsInIndex` 中，使用 "five star"、"internet" 和 "economy AND hotel" 發出搜尋查詢。
+
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
-results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
+results = searchClient.Search<Hotel>("\"five star\"", searchOptions);
 WriteDocuments(results);
 
 Console.WriteLine("Search the entire index for the term 'internet':\n");
-results = indexClient.Documents.Search<Hotel>("internet", parameters);
+results = searchClient.Search<Hotel>("internet", searchOptions);
 WriteDocuments(results);
 
 Console.WriteLine("Search the entire index for the terms 'economy' AND 'hotel':\n");
-results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
+results = searchClient.Search<Hotel>("economy AND hotel", searchOptions);
 WriteDocuments(results);
 ```
-這兩份經過檢索的文件都不包含這些詞彙，所以我們會從第一個 `RunQueriesWithNonExistentTermsInIndex` 取得下列輸出。
-```
-Search the entire index for the phrase "five star":
 
-no document matched
-
-Search the entire index for the term 'internet':
-
-no document matched
-
-Search the entire index for the terms 'economy' AND 'hotel':
-
-no document matched
-```
+這兩個已編制索引的檔都不包含詞彙，所以我們會從第一個取得下列輸出 `RunQueriesWithNonExistentTermsInIndex` ：  **沒有符合的檔** 。
 
 ## <a name="enable-synonyms"></a>啟用同義字
 
-啟用同義字的程序包含兩步驟。 我們會先定義和上傳同義字規則，然後再設定要使用這些規則的欄位。 `UploadSynonyms` 和 `EnableSynonymsInHotelsIndex` 會簡要說明此程序。
+在執行「before」查詢之後，範例程式碼會啟用同義字。 啟用同義字的程序包含兩步驟。 首先，定義並上傳同義字規則。 其次，設定欄位以使用它們。 `UploadSynonyms` 和 `EnableSynonymsInHotelsIndex` 會簡要說明此程序。
 
 1. 將同義字對應新增到您的搜尋服務。 在 `UploadSynonyms` 中，我們會在同義字對應'desc-synonymmap' 中定義四個規則並上傳至服務。
-   ```csharp
-    var synonymMap = new SynonymMap()
-    {
-        Name = "desc-synonymmap",
-        Format = "solr",
-        Synonyms = "hotel, motel\n
-                    internet,wifi\n
-                    five star=>luxury\n
-                    economy,inexpensive=>budget"
-    };
 
-    serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
+   ```csharp
+   private static void UploadSynonyms(SearchIndexClient indexClient)
+   {
+      var synonymMap = new SynonymMap("desc-synonymmap", "hotel, motel\ninternet,wifi\nfive star=>luxury\neconomy,inexpensive=>budget");
+
+      indexClient.CreateOrUpdateSynonymMap(synonymMap);
+   }
    ```
-   同義字對應必須符合開放原始碼標準 `solr` 格式。 這種格式會在 [Azure 認知搜尋](search-synonyms.md) 一節中的同義字中加以說明 `Apache Solr synonym format` 。
 
-2. 設定可搜尋的欄位，以使用索引定義中的同義字對應。 在 `EnableSynonymsInHotelsIndex` 中，我們會將 `synonymMaps` 屬性設定為新上傳的同義字對應名稱，以在 `category` 和 `tags` 兩個欄位上啟用同義字。
+1. 設定可搜尋的欄位，以使用索引定義中的同義字對應。 在 `AddSynonymMapsToFields` 中，我們會將 `SynonymMapNames` 屬性設定為新上傳的同義字對應名稱，以在 `category` 和 `tags` 兩個欄位上啟用同義字。
+
    ```csharp
-   Index index = serviceClient.Indexes.Get("hotels");
-   index.Fields.First(f => f.Name == "category").SynonymMaps = new[] { "desc-synonymmap" };
-   index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
-
-   serviceClient.Indexes.CreateOrUpdate(index);
+   private static SearchIndex AddSynonymMapsToFields(SearchIndex index)
+   {
+      index.Fields.First(f => f.Name == "category").SynonymMapNames.Add("desc-synonymmap");
+      index.Fields.First(f => f.Name == "tags").SynonymMapNames.Add("desc-synonymmap");
+      return index;
+   }
    ```
-   當您新增同義字對應時，不需要重建索引。 您可以將同義字對應新增到您的服務，然後修改任何索引中的現有欄位定義，以使用新的同義字對應。 新增屬性對於索引可用性沒有任何影響。 停用欄位的同義字也是如此。 您只要將 `synonymMaps` 屬性設定為空白清單。
+
+   當您新增同義字對應時，不需要重建索引。 您可以將同義字對應新增到您的服務，然後修改任何索引中的現有欄位定義，以使用新的同義字對應。 新增屬性對於索引可用性沒有任何影響。 停用欄位的同義字也是如此。 您只要將 `SynonymMapNames` 屬性設定為空白清單。
+
    ```csharp
-   index.Fields.First(f => f.Name == "category").SynonymMaps = new List<string>();
+   index.Fields.First(f => f.Name == "category").SynonymMapNames.Add("desc-synonymmap");
    ```
 
 ## <a name="after-queries"></a>「之後」查詢
@@ -161,12 +159,10 @@ Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ```
+
 第一個查詢會尋找 `five star=>luxury` 規則所產生的文件。 第二個查詢會使用 `internet,wifi` 展開搜尋，而第三個查詢會同時使用 `hotel, motel` 和 `economy,inexpensive=>budget` 來尋找相符的文件。
 
 新增同義字會全然改變搜尋經驗。 在此範例中，即使索引中的檔是相關的，原始查詢還是無法傳回有意義的結果。 啟用同義字，我們就可以展開索引以包含常用的詞彙，而不需變更索引中的基礎資料。
-
-## <a name="sample-application-source-code"></a>範例應用程式的原始程式碼
-您可以在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) 上尋找本逐步解說中所用範例應用程式的完整原始程式碼。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -174,7 +170,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="next-steps"></a>後續步驟
 
-此範例示範 c # 程式碼中的同義字功能，以建立和貼上對應規則，然後在查詢上呼叫同義字對應。 您可以在 [.NET SDK](/dotnet/api/microsoft.azure.search) 和 [REST API](/rest/api/searchservice/) 參考文件中找到其他資訊。
+此範例示範 c # 程式碼中的同義字功能，以建立和貼上對應規則，然後在查詢上呼叫同義字對應。 您可以在 [.NET SDK](/dotnet/api/overview/azure/search.documents-readme) 和 [REST API](/rest/api/searchservice/) 參考文件中找到其他資訊。
 
 > [!div class="nextstepaction"]
 > [如何在 Azure 認知搜尋中使用同義字](search-synonyms.md)

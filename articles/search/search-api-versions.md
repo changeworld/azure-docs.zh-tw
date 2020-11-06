@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/05/2020
+ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951574"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422717"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 認知搜尋中的 API 版本
 
@@ -87,8 +87,8 @@ Azure 認知搜尋服務實例支援數個 REST API 版本，包括最新版本�
 
 | SDK 版本 | 狀態 | 描述 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11。0](/dotnet/api/overview/azure/search.documents-readme) | 穩定 | 從2020年7月發行的 Azure .NET SDK 新用戶端程式庫。 以搜尋 REST api 版本 = 2020-06-30 REST API 為目標，但尚未支援、地理篩選或 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)。 |
-| [Microsoft Azure. 搜尋10。0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | 穩定 | 發行日期可能是2019。 以搜尋 REST api 版本 = 2019-05-06 為目標。|
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | 穩定 | 從2020年7月發行的 Azure .NET SDK 新用戶端程式庫。 以搜尋 REST api 版本 = 2020-06-30 REST API 為目標，但不支援地理篩選。 |
+| [Microsoft Azure. 搜尋10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | 穩定 | 發行日期可能是2019。 以搜尋 REST api 版本 = 2019-05-06 為目標。|
 | [Microsoft. 管理。搜尋4.0。0](/dotnet/api/overview/azure/search/management) | 穩定 | 以管理 REST api 版本 = 2020-08-01 為目標。  |
 | Microsoft. 管理。搜尋3.0。0 | 穩定 | 以管理 REST api 版本 = 2015-08-19 為目標。  |
 

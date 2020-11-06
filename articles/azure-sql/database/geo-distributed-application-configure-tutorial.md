@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 98e3eb4927b8eb9e52fd974c1ef7c417aff2ad54
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789619"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422785"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>教學課程： (Azure SQL Database) 執行異地分散式資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -120,7 +120,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-您也可以在 Azure 入口網站中變更異地複寫設定，方法是選取您的資料庫，然後選取 [異地複寫  。
+您也可以在 Azure 入口網站中變更異地複寫設定，方法是選取您的資料庫，然後選取 [異地複寫 **設定** ]  >  **** 。
 
 ![異地複寫設定](./media/geo-distributed-application-configure-tutorial/geo-replication.png)
 
@@ -333,7 +333,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 1. 啟動容錯移轉群組的手動容錯移轉：
 
    ```powershell
-   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
+   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 

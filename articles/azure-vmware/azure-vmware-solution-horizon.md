@@ -3,12 +3,12 @@ title: Azure VMware 解決方案上的部署範圍
 description: 瞭解如何在 Azure VMware 解決方案上部署 VMware 的範圍。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321362"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423095"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware 解決方案上的部署範圍 
 
@@ -127,6 +127,18 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>適用于範圍部署的 Azure VMware 解決方案主機大小 
 
 在 Azure VMware 解決方案中執行的主機上，範圍的大小調整方法比在內部部署環境中的範圍更簡單。  這是因為 Azure VMware 解決方案主機已標準化。  確切的主機大小有助於判斷支援 VDI 需求所需的主機數目。  它是決定每一桌面成本的核心。
+
+### <a name="sizing-tables"></a>調整資料表大小
+
+這些表格顯示登入 .VSI 知識工作者工作負載和 Power Worker 工作負載的一般工作負載。
+
+#### <a name="knowledge-worker-workloads"></a>知識工作者工作負載
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="適用于 VMware 的一般 VDI 設定檔（用於登入 .VSI 知識工作者工作負載）的表格" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>Power worker 工作負載
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="針對登入 .VSI Power worker 工作負載，適用于 VMware 的一般 VDI 設定檔資料表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware 解決方案主機實例
 

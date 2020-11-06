@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: 009018335e57943392b83047702f24890bf714d5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 825413421bc9025c2912bb790a3166c6e3d34a0f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359607"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421833"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "93359607"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
@@ -117,7 +117,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
     如需使用 Azure Machine Learning 受控計算的遠端範例，請參閱[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 
 
-* Azure 訂用帳戶中的 **Azure Databricks** 叢集。 您可以在這裡找到更多詳細資料 - [設定用於自動化 ML 的 Azure Databricks 叢集](how-to-configure-environment.md#aml-databricks)。 如需 Azure Databricks 的筆記本範例，請參閱此 [GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
+* Azure 訂用帳戶中的 **Azure Databricks** 叢集。 您可以在 [設定自動化 ML 的 Azure Databricks 叢集中](how-to-configure-databricks-automl-environment.md)找到更多詳細資料。 如需 Azure Databricks 的筆記本範例，請參閱此 [GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
 
 <a name='configure-experiment'></a>
 

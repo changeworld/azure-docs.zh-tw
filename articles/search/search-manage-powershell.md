@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 9f189d1889f3ca3a3aa3234432452b1b3d696c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7b672b7e2c3004eba4a38bd659965b7dee24db6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935087"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422479"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理您的 Azure 認知搜尋服務
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "88935087"
 > * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-您可以在 Windows、Linux 或 [Azure Cloud Shell](../cloud-shell/overview.md) 中執行 PowerShell Cmdlet 和腳本，以建立和設定 Azure 認知搜尋。 **Az. search**模組會將[Azure PowerShell](/powershell/)與[搜尋管理 REST api](/rest/api/searchmanagement)的完全同位延伸，以及執行下列工作的能力：
+您可以在 Windows、Linux 或 [Azure Cloud Shell](../cloud-shell/overview.md) 中執行 PowerShell Cmdlet 和腳本，以建立和設定 Azure 認知搜尋。 **Az. search** 模組會將 [Azure PowerShell](/powershell/)與 [搜尋管理 REST api](/rest/api/searchmanagement)的完全同位延伸，以及執行下列工作的能力：
 
 > [!div class="checklist"]
 > * [列出訂用帳戶中的搜尋服務](#list-search-services)
@@ -36,7 +36,7 @@ ms.locfileid: "88935087"
 
 有時候，系統會詢問問題， *而不* 在上述清單中。 目前，您不能使用 **Az. Search** 模組或管理 REST API 來變更伺服器名稱、區域或層級。 建立服務時，會配置專用資源。 因此，變更基礎硬體 (位置或節點類型) 需要新的服務。 同樣地，沒有任何工具或 Api 可將內容（例如索引）從某個服務傳送至另一個服務。
 
-在服務內，內容的建立和管理是透過 [搜尋服務 REST API](/rest/api/searchservice/) 或 [.net SDK](/dotnet/api/?term=microsoft.azure.search)。 雖然沒有適用于內容的專用 PowerShell 命令，您可以撰寫 PowerShell 腳本來呼叫 REST 或 .NET Api 來建立和載入索引。
+在服務內，內容的建立和管理是透過 [搜尋服務 REST API](/rest/api/searchservice/) 或 [.net SDK](/dotnet/api/overview/azure/search.documents-readme)。 雖然沒有適用于內容的專用 PowerShell 命令，您可以撰寫 PowerShell 腳本來呼叫 REST 或 .NET Api 來建立和載入索引。
 
 <a name="check-versions-and-load"></a>
 
@@ -90,7 +90,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>列出訂用帳戶中的服務
 
-下列命令來自 [**Az. Resources**](/powershell/module/az.resources/?view=azps-1.4.0#resources)，傳回您訂用帳戶中已布建的現有資源和服務的相關資訊。 如果您不知道已建立多少搜尋服務，這些命令會傳回該資訊，以節省您入口網站的行程。
+下列命令來自 [**Az. Resources**](/powershell/module/az.resources)，傳回您訂用帳戶中已布建的現有資源和服務的相關資訊。 如果您不知道已建立多少搜尋服務，這些命令會傳回該資訊，以節省您入口網站的行程。
 
 第一個命令會傳回所有搜尋服務。
 
@@ -116,7 +116,7 @@ ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroup
 
 ## <a name="import-azsearch"></a>匯入 Az. Search
 
-來自 Az 的命令。在您載入模組之前，無法使用[**搜尋。**](/powershell/module/az.search/?view=azps-1.4.0#search)
+來自 Az 的命令。在您載入模組之前，無法使用 [**搜尋。**](/powershell/module/az.search)
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
@@ -148,7 +148,7 @@ Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 
 ## <a name="get-search-service-information"></a>取得搜尋服務資訊
 
-Az 之後，即會匯入 **搜尋** ，且您知道包含您搜尋服務的資源群組，請執行 [AzSearchService](/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) 以傳回服務定義，包括名稱、區域、層級和複本和分割區計數。
+Az 之後，即會匯入 **搜尋** ，且您知道包含您搜尋服務的資源群組，請執行 [AzSearchService](/powershell/module/az.search/get-azsearchservice) 以傳回服務定義，包括名稱、區域、層級和複本和分割區計數。
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -170,7 +170,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>建立或刪除服務
 
-[**AzSearchService**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 可用來 [建立新的搜尋服務](search-create-service-portal.md)。
+[**AzSearchService**](/powershell/module/az.search/new-azsearchadminkey) 可用來 [建立新的搜尋服務](search-create-service-portal.md)。
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
@@ -191,7 +191,7 @@ Tags
 
 ## <a name="regenerate-admin-keys"></a>重新產生系統管理金鑰
 
-[**AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 可用來變換管理 [API 金鑰](search-security-api-keys.md)。 每個服務都會建立兩個系統管理金鑰以進行驗證存取。 每個要求都需要金鑰。 這兩個系統管理金鑰在功能上都相同，授與對搜尋服務的完整寫入存取權，讓您能夠取得任何資訊，或是建立和刪除任何物件。 有兩個索引鍵，可讓您在取代另一個索引鍵時使用。 
+[**AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey) 可用來變換管理 [API 金鑰](search-security-api-keys.md)。 每個服務都會建立兩個系統管理金鑰以進行驗證存取。 每個要求都需要金鑰。 這兩個系統管理金鑰在功能上都相同，授與對搜尋服務的完整寫入存取權，讓您能夠取得任何資訊，或是建立和刪除任何物件。 有兩個索引鍵，可讓您在取代另一個索引鍵時使用。 
 
 您一次只能重新產生一個，並指定為或索引 `primary` `secondary` 鍵。 針對不中斷的服務，請記得更新所有用戶端程式代碼，以在主要金鑰變換時使用次要金鑰。 避免在作業進行時變更金鑰。
 
@@ -213,7 +213,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>建立或刪除查詢金鑰
 
-[**AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) 可用來建立查詢 [API 金鑰](search-security-api-keys.md) ，以從用戶端應用程式到 Azure 認知搜尋索引的唯讀存取。 查詢金鑰是用來驗證特定索引，以取得搜尋結果。 查詢金鑰不會將唯讀存取權授與服務上的其他專案，例如索引、資料來源或索引子。
+[**AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey) 可用來建立查詢 [API 金鑰](search-security-api-keys.md) ，以從用戶端應用程式到 Azure 認知搜尋索引的唯讀存取。 查詢金鑰是用來驗證特定索引，以取得搜尋結果。 查詢金鑰不會將唯讀存取權授與服務上的其他專案，例如索引、資料來源或索引子。
 
 您無法提供 Azure 認知搜尋要使用的金鑰。 API 金鑰是由服務所產生。
 
@@ -223,7 +223,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>調整複本和磁碟分割
 
-[**AzSearchService**](/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) 可用來 [增加或減少複本和](search-capacity-planning.md) 資料分割，以重新調整服務內的可計費資源。 增加複本或資料分割會增加您的帳單，而您的帳單會有固定和不定的費用。 如果您需要額外的處理能力，您可以增加複本和分割區來處理工作負載。 總覽入口網站頁面中的 [監視] 區域具有查詢延遲、每秒查詢數和節流的圖格，指出目前的容量是否足夠。
+[**AzSearchService**](/powershell/module/az.search/set-azsearchservice) 可用來 [增加或減少複本和](search-capacity-planning.md) 資料分割，以重新調整服務內的可計費資源。 增加複本或資料分割會增加您的帳單，而您的帳單會有固定和不定的費用。 如果您需要額外的處理能力，您可以增加複本和分割區來處理工作負載。 總覽入口網站頁面中的 [監視] 區域具有查詢延遲、每秒查詢數和節流的圖格，指出目前的容量是否足夠。
 
 新增或移除資源可能需要一些時間。 調整容量會在背景進行，讓現有的工作負載繼續進行。 當連入要求就緒時，會立即使用額外的容量，不需要額外的設定。 
 

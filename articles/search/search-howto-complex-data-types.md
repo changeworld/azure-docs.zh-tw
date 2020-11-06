@@ -9,16 +9,16 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d380a41f5b20c52fefca9e68bb4ed858b3bf3a1
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824476"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422046"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
-用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時會包含階層式或嵌套子結構。 範例可能包含單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化方面，您可能會看到這些結構稱為 *複雜*、 *複合*、 *複合*或 *匯總* 資料類型。 此概念 Azure 認知搜尋使用的詞彙是 **複雜類型**。 在 Azure 認知搜尋中，複雜型別會使用 **複雜欄位**進行模型化。 複雜欄位是一個欄位，其中包含子欄位 (子欄位) 可以是任何資料類型，包括其他複雜類型。 其運作方式類似于程式設計語言中的結構化資料類型。
+用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時會包含階層式或嵌套子結構。 範例可能包含單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化方面，您可能會看到這些結構稱為 *複雜* 、 *複合* 、 *複合* 或 *匯總* 資料類型。 此概念 Azure 認知搜尋使用的詞彙是 **複雜類型** 。 在 Azure 認知搜尋中，複雜型別會使用 **複雜欄位** 進行模型化。 複雜欄位是一個欄位，其中包含子欄位 (子欄位) 可以是任何資料類型，包括其他複雜類型。 其運作方式類似于程式設計語言中的結構化資料類型。
 
 複雜欄位代表檔中的單一物件，或是物件的陣列（視資料類型而定）。 類型的欄位 `Edm.ComplexType` 代表單一物件，而類型的欄位則 `Collection(Edm.ComplexType)` 代表物件的陣列。
 
@@ -73,7 +73,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 ## <a name="creating-complex-fields"></a>建立複雜欄位
 
-如同任何索引定義，您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.index) 來建立包含複雜類型的架構。 
+如同任何索引定義，您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindex) 來建立包含複雜類型的架構。 
 
 下列範例顯示具有簡單欄位、集合和複雜類型的 JSON 索引架構。 請注意，在複雜型別中，每個子欄位都有一個型別，而且可以有屬性，就像最上層欄位一樣。 架構對應于上述的範例資料。 `Address` 是一種複雜欄位，不是 (旅館有一個位址) 的集合。 `Rooms` 是一個複雜的集合欄位， (飯店有許多房間) 。
 
@@ -156,7 +156,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 > `$filter=Address/Country eq 'Canada'`
 
-若要篩選複雜集合欄位，您可以使用**lambda 運算式**搭配[ `any` and `all` 運算子](search-query-odata-collection-operators.md)。 在此情況下，lambda 運算式的 **範圍變數** 是具有子欄位的物件。 您可以使用標準 OData 路徑語法來參考這些子欄位。 例如，下列篩選器會傳回至少有一個 deluxe 房間和所有非吸煙房間的所有旅館：
+若要篩選複雜集合欄位，您可以使用 **lambda 運算式** 搭配 [ `any` and `all` 運算子](search-query-odata-collection-operators.md)。 在此情況下，lambda 運算式的 **範圍變數** 是具有子欄位的物件。 您可以使用標準 OData 路徑語法來參考這些子欄位。 例如，下列篩選器會傳回至少有一個 deluxe 房間和所有非吸煙房間的所有旅館：
 
 > `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
@@ -164,7 +164,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在 [匯**入資料**] 嚮導中，嘗試[旅館資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 您將需要讀我檔案中提供的 Cosmos DB 連接資訊，才能存取資料。
+在 [匯 **入資料** ] 嚮導中，嘗試 [旅館資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 您將需要讀我檔案中提供的 Cosmos DB 連接資訊，才能存取資料。
 
 有了該資訊之後，您在嚮導中的第一個步驟就是建立新的 Azure Cosmos DB 資料來源。 此外，在嚮導中，當您進入 [目標索引] 頁面時，您會看到具有複雜類型的索引。 建立並載入此索引，然後執行查詢以瞭解新的結構。
 
