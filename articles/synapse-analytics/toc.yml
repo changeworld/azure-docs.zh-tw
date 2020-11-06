@@ -14,8 +14,9 @@
     - name: 版本資訊
       href: release-notes.md
 - name: 快速入門
+  expanded: true
   items:
-    - name: 簡介
+    - name: 開始使用
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1 建立 Synapse 工作區
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: 資源耗用模型
           href: sql/resource-consumption-models.md
-        - name: 最佳做法無伺服器 SQL 集區
+        - name: 已處理的資料量
+          href: sql/data-processed.md
+        - name: SQL 隨選最佳做法
           href: sql/best-practices-sql-on-demand.md
         - name: 最佳做法專用的 SQL 集區
           href: sql/best-practices-sql-pool.md
@@ -215,7 +218,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
