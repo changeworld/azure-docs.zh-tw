@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b789bf01a043b167d6740f09df935d9b683c48f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447204"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357754"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>針對以 Linux 為基礎的 HDInsight 叢集設定作業系統修補排程
 
@@ -64,7 +64,7 @@ Welcome to Spark on HDInsight.
 
 | 參數 | 接受的值 | 定義 |
 | --- | --- | --- |
-| 要安裝的更新類型 | 0、1或2 | 0值只會安裝核心更新。 1值會安裝所有更新，2則只會安裝核心 + 安全性更新。 如果未提供任何參數，則預設值為0。 |
+| 要安裝的更新類型 | 0、1或2 | 0值只會安裝核心更新。 值為1會安裝核心 + 安全性更新，2則會安裝所有更新。 如果未提供任何參數，則預設值為0。 |
 | 要執行的重新開機類型 | 0、1或2 | 值為0會停用重新開機。 值為1會啟用排程重新開機，2則可立即重新開機。 如果未提供任何參數，則預設值為0。 使用者必須將輸入參數1變更為輸入參數2。 |
 
 > [!NOTE]

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99c94528c13228e07327b529782f211ec92a08ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359845"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357072"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -37,7 +37,7 @@ Azure 針對 Azure Standard 和 premium 儲存體上的 Vhd 提供兩種部署�
 如需儲存體類型清單及其在 IOPS 和儲存體輸送量中的 SLA ，請檢閱[受控磁碟的 Azure 文件](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 > [!IMPORTANT]
-> 無論所選擇的 Azure 儲存體類型為何，適用於特定作業系統和 DBMS 的 SAP 必須可支援該存放裝置所使用的檔案系統。 [SAP 支援附註 #405827](https://launchpad.support.sap.com/#/notes/405827) 會列出不同作業系統和資料庫 (包括 SAP Hana) 支援的檔案系統。 這適用於所有 SAP Hana 可能會存取以進行任何工作讀取和寫入的磁碟區。 特別是在適用於 SAP Hana 的 Azure 上使用 NFS，這將會套用其他 NFS 版本限制，如本文稍後所述 
+> 無論所選擇的 Azure 儲存體類型為何，適用於特定作業系統和 DBMS 的 SAP 必須可支援該存放裝置所使用的檔案系統。 [SAP 支援附注 #2972496](https://launchpad.support.sap.com/#/notes/2972496) 列出不同作業系統和資料庫支援的檔案系統，包括 SAP Hana。 這適用於所有 SAP Hana 可能會存取以進行任何工作讀取和寫入的磁碟區。 特別是在適用於 SAP Hana 的 Azure 上使用 NFS，這將會套用其他 NFS 版本限制，如本文稍後所述 
 
 
 不同儲存類型的最低 SAP Hana 認證條件如下： 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397890"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358774"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 認知搜尋中的索引子
 
@@ -32,7 +32,7 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 
 * [入口網站 > 匯入資料 Wizard](search-import-data-portal.md)
 * [服務 REST API](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 一開始，會宣布新的索引子作為預覽功能。 預覽功能會在 API (REST 和 .NET) 中引進，然後在准許正式推出之後整合到入口網站中。 如果您正在評估新的索引子，您應該計劃撰寫程式碼。
 
@@ -88,22 +88,22 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 
 下圖顯示索引子階段的範例索引子 [調試](cognitive-search-debug-session.md) 程式標記法：檔破解、欄位對應、技能集執行和輸出欄位對應。
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="索引子階段" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="範例 debug 會話" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>基本組態步驟
 
 索引子可以提供資料來源特有的功能。 在這方面，索引子或資料來源組態的某些層面會因索引子類型而所有不同。 不過，所有索引子都有共用的的基本組成和需求。 下文涵蓋所有的索引子的通用步驟。
 
 ### <a name="step-1-create-a-data-source"></a>步驟 1:建立資料來源
-索引子會從 *資料來源* 物件取得資料來源連接。 資料來源定義會提供連接字串，以及可能的認證。 呼叫[建立資料來源](/rest/api/searchservice/create-data-source) REST API 或 [DataSource 類別](/dotnet/api/microsoft.azure.search.models.datasource)來建立資源。
+索引子會從 *資料來源* 物件取得資料來源連接。 資料來源定義會提供連接字串，以及可能的認證。 呼叫 [Create Datasource](/rest/api/searchservice/create-data-source) REST API 或 [SearchIndexerDataSourceConnection 類別](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) 來建立資源。
 
 資料來源和使用資料來源的索引子是各自獨立設定與管理，這表示多個索引子可使用同一個資料來源來一次載入多個索引。
 
 ### <a name="step-2-create-an-index"></a>步驟 2：建立索引
-索引子會自動執行有關資料擷取的某些工作，但是通常不包括建立索引。 若要滿足必要條件，您必須擁有預先定義的索引，且欄位必須與外部資料來源中的欄位相符。 欄位必須符合名稱和資料類型。 如需結構化索引的詳細資訊，請參閱 [建立索引 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/Create-Index) 或 [索引類別](/dotnet/api/microsoft.azure.search.models.index)。 如需關於欄位關聯的說明，請參閱 [Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。
+索引子會自動執行有關資料擷取的某些工作，但是通常不包括建立索引。 若要滿足必要條件，您必須擁有預先定義的索引，且欄位必須與外部資料來源中的欄位相符。 欄位必須符合名稱和資料類型。 如需結構化索引的詳細資訊，請參閱 [建立索引 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/Create-Index) 或 [SearchIndex 類別](/dotnet/api/azure.search.documents.indexes.models.searchindex)。 如需關於欄位關聯的說明，請參閱 [Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。
 
 > [!Tip]
-> 雖然索引子不能為您產生索引，但入口網站中的 [匯入資料]**** 精靈有所幫助。 在大部分情況下，此精靈可以從來源中的現有中繼資料推斷索引結構描述，並呈現您可以在精靈作用中時以內嵌方式編輯的初步索引結構描述。 一旦在服務上建立索引後，在入口網站中的進一步編輯大部分都受限於新增欄位。 請考慮使用精靈進行建立，但非修改索引。 如需實際操作學習，請逐步執行[入口網站逐步解說](search-get-started-portal.md)。
+> 雖然索引子不能為您產生索引，但入口網站中的 [匯入資料] 精靈有所幫助。 在大部分情況下，此精靈可以從來源中的現有中繼資料推斷索引結構描述，並呈現您可以在精靈作用中時以內嵌方式編輯的初步索引結構描述。 一旦在服務上建立索引後，在入口網站中的進一步編輯大部分都受限於新增欄位。 請考慮使用精靈進行建立，但非修改索引。 如需實際操作學習，請逐步執行[入口網站逐步解說](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步驟 3：建立和排程索引子
 索引子定義是一種結構，可將所有與資料內嵌相關的元素結合在一起。 必要的元素包括資料來源和索引。 選擇性元素包括排程和欄位對應。 只有當來源欄位和索引欄位清楚地對應時，欄位對應才是選擇性的。 如需結構化索引子的詳細資訊，請參閱 [建立索引子 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/Create-Indexer)。

@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 2f9c4cc5bac27e4734c9aabe7895002a045d583d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272078"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357006"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的查詢記錄緩慢
 在適用於 MariaDB 的 Azure 資料庫中，使用者可以使用慢速查詢記錄檔。 不支援存取交易記錄。 慢速查詢記錄檔可以用來找出效能瓶頸，以進行疑難排解。
 
 如需慢速查詢記錄檔的詳細資訊，請參閱 MariaDB 文件的[慢速查詢記錄檔](https://mariadb.com/kb/en/library/slow-query-log-overview/) (英文)。
 
+在您的伺服器上啟用 [查詢存放區](concepts-query-store.md) 時，您可能會看到 " `CALL mysql.az_procedure_collect_wait_stats (900, 30);` " 記錄在您的慢速查詢記錄中的查詢。 這是預期的行為，因為查詢存放區功能會收集查詢的相關統計資料。 
+
 ## <a name="configure-slow-query-logging"></a>設定慢速查詢記錄
 預設會停用慢速查詢記錄。 若要啟用它，請將設定 `slow_query_log` 為 ON。 您可以使用 Azure 入口網站或 Azure CLI 來啟用此功能。 
 
 您可以調整的其他參數包含：
 
-- **long_query_time**：如果查詢所需的時間比記錄該查詢的 long_query_time (秒) 還要久。 預設值是 10 秒。
-- **log_slow_admin_statements**：如果 ON 在寫入至 slow_query_log 的陳述式中包含 ALTER_TABLE 和 ANALYZE_TABLE 這類管理陳述式。
-- **log_queries_not_using_indexes**：決定是否將未使用索引的查詢記錄至 slow_query_log
-- **log_throttle_queries_not_using_indexes**：這個參數會限制可寫入至慢速查詢記錄的非索引查詢次數。 log_queries_not_using_indexes 設為 ON 時，這個參數會生效。
-- **log_output**：如果是 "File"，則會允許將慢速查詢記錄寫入本機伺服器儲存體和 Azure 監視器診斷記錄。 如果為「無」，則慢速查詢記錄只會寫入 Azure 監視器診斷記錄。 
+- **long_query_time** ：如果查詢所需的時間比記錄該查詢的 long_query_time (秒) 還要久。 預設值是 10 秒。
+- **log_slow_admin_statements** ：如果 ON 在寫入至 slow_query_log 的陳述式中包含 ALTER_TABLE 和 ANALYZE_TABLE 這類管理陳述式。
+- **log_queries_not_using_indexes** ：決定是否將未使用索引的查詢記錄至 slow_query_log
+- **log_throttle_queries_not_using_indexes** ：這個參數會限制可寫入至慢速查詢記錄的非索引查詢次數。 log_queries_not_using_indexes 設為 ON 時，這個參數會生效。
+- **log_output** ：如果是 "File"，則會允許將慢速查詢記錄寫入本機伺服器儲存體和 Azure 監視器診斷記錄。 如果為「無」，則慢速查詢記錄只會寫入 Azure 監視器診斷記錄。 
 
 > [!IMPORTANT]
 > 如果您的資料表未編制索引，將 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 參數設定為 ON 可能會影響適用于 mariadb 效能，因為對這些非索引資料表執行的所有查詢都會寫入慢速查詢記錄中。<br><br>
@@ -38,7 +40,7 @@ ms.locfileid: "81272078"
 ## <a name="access-slow-query-logs"></a>存取慢速查詢記錄
 有兩個選項可用於存取適用於 MariaDB 的 Azure 資料庫中的慢速查詢記錄：本機伺服器儲存體或 Azure 監視器診斷記錄。 這是使用參數進行設定 `log_output` 。
 
-若為本機伺服器儲存，您可以使用 Azure 入口網站或 Azure CLI 來列出和下載慢速查詢記錄。 在 Azure 入口網站中，流覽至您在 Azure 入口網站中的伺服器。 在 [監視]**** 標題下方，選取 [伺服器記錄]**** 頁面。 如需 Azure CLI 的詳細資訊，請參閱[使用 Azure CLI 設定和存取伺服器記錄](howto-configure-server-logs-cli.md)。 
+若為本機伺服器儲存，您可以使用 Azure 入口網站或 Azure CLI 來列出和下載慢速查詢記錄。 在 Azure 入口網站中，流覽至您在 Azure 入口網站中的伺服器。 在 [監視] 標題下方，選取 [伺服器記錄] 頁面。 如需 Azure CLI 的詳細資訊，請參閱[使用 Azure CLI 設定和存取伺服器記錄](howto-configure-server-logs-cli.md)。 
 
 Azure 監視器診斷記錄可讓您透過管線將慢速查詢記錄傳送至 Log Analytics) 、Azure 儲存體或事件中樞 (的 Azure 監視器記錄。 如需詳細資訊，請參閱 [下文](concepts-server-logs.md#diagnostic-logs) 。
 

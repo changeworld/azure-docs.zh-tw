@@ -4,15 +4,15 @@ description: 瞭解如何在 Azure HPC Vm 上啟用不限。
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 11/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b5f4cbd2fc09b2c42c232eafd63edb1217e4dacb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 264cfd98e69ad7bdd2fb8d5f9f98eb1eb1fd8f6c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996320"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358349"
 ---
 # <a name="enable-infiniband"></a>啟用 InfiniBand
 
@@ -60,11 +60,11 @@ yum install -y kernel-devel-${KERNEL}
 如果您打算執行 MPI 作業，通常不需要 IPoIB。 MPI 程式庫將使用動詞介面進行 IB 通訊 (除非您明確地使用 MPI 程式庫) 的 TCP/IP 通道。 但是，如果您的應用程式使用 TCP/IP 進行通訊，而您想要透過 IB 執行，您可以透過 IB 介面使用 IPoIB。 針對 RHEL/CentOS) 使用下列命令 (，以透過未經過的 IP 來啟用 IP。
 
 ```bash
-sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解如何在 Vm 上安裝各種 [支援的 MPI 程式庫](setup-mpi.md) 及其最佳設定。
 - 請檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)，了解如何以最佳方式設定工作負載以獲得效能和可擴縮性。

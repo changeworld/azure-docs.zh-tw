@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 789dafc61c89515f4b2ef64933262252d1232f16
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850867"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357023"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>教學課程：設定 Figma 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91850867"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -36,7 +36,7 @@ ms.locfileid: "91850867"
 * Figma 中具有系統管理員許可權的使用者帳戶。
 
 ## <a name="assign-users-to-figma"></a>將使用者指派給 Figma。
-Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪些使用者存取選取的應用程式。 在自動使用者布建的內容中，只會同步處理在 Azure AD 中指派給應用程式的使用者和/或群組。
+Azure Active Directory 使用稱為「指派」的概念，來判斷哪些使用者應該會收到所選應用程式的存取權。 在自動使用者布建的內容中，只會同步處理在 Azure AD 中指派給應用程式的使用者和/或群組。
 
 在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 Figma。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 Figma：
  
@@ -55,27 +55,27 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
 
-2. 流覽至 **一般 > 更新登入設定**。
+2. 流覽至 **一般 > 更新登入設定** 。
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma 管理主控台之 [一般] 索引標籤的螢幕擷取畫面。在 [登入和布建] 下，會反白顯示 [更新登入] 設定。" border="false":::
 
-3. 複製 **租使用者識別碼**。 此值將用來在 Azure 入口網站中，用來在 Figma 應用程式的 [布建] 索引標籤中，建立要輸入至 [ **租使用者 url** ] 欄位的 SCIM 端點 url。
+3. 複製 **租使用者識別碼** 。 此值將用來在 Azure 入口網站中，用來在 Figma 應用程式的 [布建] 索引標籤中，建立要輸入至 [ **租使用者 url** ] 欄位的 SCIM 端點 url。
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma 管理主控台中 S A M L s O 區段的螢幕擷取畫面。[租使用者識別碼] 標籤和連續的連結會反白顯示 [複製]。" border="false":::
 
-4. 向下鍵，然後按一下 [ **產生 API 權杖**]。
+4. 向下鍵，然後按一下 [ **產生 API 權杖** ]。
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma 管理主控台中的 S C I M 布建區段的螢幕擷取畫面。標示為產生 P I 權杖的連結已反白顯示。" border="false":::
 
 5. 複製  **API 權杖** 值。 在 Azure 入口網站的 Figma 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。 
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma 管理主控台中頁面的螢幕擷取畫面。在布建 P I 權杖下，會反白顯示標記的預留位置。" border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>從資源庫新增 Figma
 
 若要使用 Azure AD 設定 Figma 來自動布建使用者，您需要從 Azure AD 應用程式資源庫將 Figma 新增至受控 SaaS 應用程式清單。
 
-1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory**]。
+1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory** ]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -87,7 +87,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Figma**，在 [結果] 面板中選取 [ **Figma** ]，然後按一下 [ **新增** ] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Figma** ，在 [結果] 面板中選取 [ **Figma** ]，然後按一下 [ **新增** ] 按鈕以新增應用程式。
 
     ![結果清單中的 Figma](common/search-new-app.png)
 
@@ -104,51 +104,51 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Figma]****。
+2. 在應用程式清單中，選取 [Figma]。
 
     ![應用程式清單中的 Figma 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
     ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [系統 **管理員認證** ] 區段的 [ `https://www.figma.com/scim/v2/<TenantID>` **租使用者 URL** ] 中輸入，其中 **TenantID** 是您稍早從 Figma 中取出的值。 輸入**秘密權杖**中的**API 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Figma。 如果連接失敗，請確定您的 Figma 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統 **管理員認證** ] 區段的 [ `https://www.figma.com/scim/v2/<TenantID>` **租使用者 URL** ] 中輸入，其中 **TenantID** 是您稍早從 Figma 中取出的值。 輸入 **秘密權杖** 中的 **API 權杖** 值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Figma。 如果連接失敗，請確定您的 Figma 帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-8. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+8. 在 [通知電子郵件]  欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]  核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 **[儲存]** 。
+9. 按一下 [檔案]  。
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Figma**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Figma** ]。
 
     ![Figma 使用者對應](media/Figma-provisioning-tutorial/figma05.png)
 
-11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Figma 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Figma 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Figma 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Figma 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
     ![Figma 使用者屬性](media/Figma-provisioning-tutorial/figma06.png)
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Figma Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 Figma Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Figma 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Figma 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]。
+15. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，該報告描述 Figma 上的 Azure AD 布建服務所執行的所有動作。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，該報告描述 Figma 上的 Azure AD 布建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 

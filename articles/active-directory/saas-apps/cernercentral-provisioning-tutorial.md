@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456331"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357448"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教學課程︰設定 Cerner Central 來自動佈建使用者
 
@@ -45,7 +45,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 * 對單一使用者完成初始測試後，Cerner Central 建議指派嘗試存取要佈建至 Cerner 使用者名冊之任何 Cerner 解決方案 (不只是 Cerner Central) 的完整使用者清單。  其他 Cerner 解決方案會利用這份使用者名冊中的使用者清單。
 
-* 將使用者指派給 Cerner Central 時，您必須在 [指派] 對話方塊中選取 [使用者]**** 角色。 具有「預設存取」角色的使用者會從佈建中排除。
+* 將使用者指派給 Cerner Central 時，您必須在 [指派] 對話方塊中選取 [使用者] 角色。 具有「預設存取」角色的使用者會從佈建中排除。
 
 ## <a name="configuring-user-provisioning-to-cerner-central"></a>設定使用者佈建至 Cerner Central
 
@@ -82,39 +82,39 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 4. 最後，您需要針對 Cerner 中的沙箱和生產環境取得「使用者名冊領域識別碼」，以完成設定。 如需如何取得此識別碼的相關資訊，請參閱：https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM。 
 
-5. 現在您可以設定 Azure AD 將使用者帳戶佈建至 Cerner。 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 [Azure Active Directory] > [企業應用程式] > [所有應用程式]**** 區段。
+5. 現在您可以設定 Azure AD 將使用者帳戶佈建至 Cerner。 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 [Azure Active Directory] > [企業應用程式] > [所有應用程式] 區段。
 
-6. 如果您已經設定 Cerner Central 單一登入，使用 [搜尋] 欄位搜尋您的 Cerner Central 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [Cerner Central]****。 從搜尋結果中選取 Cerner Central，並將它新增至您的應用程式清單。
+6. 如果您已經設定 Cerner Central 單一登入，使用 [搜尋] 欄位搜尋您的 Cerner Central 執行個體。 否則，請選取 [新增]，並在應用程式庫中搜尋 [Cerner Central]。 從搜尋結果中選取 Cerner Central，並將它新增至您的應用程式清單。
 
-7. 選取您的 Cerner Central 執行個體，然後選取 [佈建]**** 索引標籤。
+7. 選取您的 Cerner Central 執行個體，然後選取 [佈建] 索引標籤。
 
 8. 將 [佈建模式]  設定為 [自動]  。
 
    ![Cerner Central 佈建](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9. 填寫 [系統管理員認證]**** 底下的下列欄位：
+9. 填寫 [系統管理員認證] 底下的下列欄位：
 
-   * 在 [租用戶 URL]**** 欄位中，以下列格式輸入 URL，並將 "User-Roster-Realm-ID" 取代為您在步驟 4 中取得的領域識別碼。
+   * 在 [租用戶 URL] 欄位中，以下列格式輸入 URL，並將 "User-Roster-Realm-ID" 取代為您在步驟 4 中取得的領域識別碼。
 
     > 沙箱：https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
     > 生產環境：https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * 在 [祕密權杖]**** 欄位中，輸入您在步驟 3 中產生的 OAuth 持有人權杖，然後按一下 [測試連接]****。
+   * 在 [祕密權杖] 欄位中，輸入您在步驟 3 中產生的 OAuth 持有人權杖，然後按一下 [測試連接]。
 
    * 您應該會在入口網站的右上方看到成功通知。
 
-1. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
+1. 在 [通知電子郵件] 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-1. 按一下 [檔案]  。
+1. 按一下 **[儲存]** 。
 
-1. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步處理至 Cerner Central 的使用者和群組屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Cerner Central 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+1. 在 [屬性對應] 區段中，檢閱將從 Azure AD 同步處理至 Cerner Central 的使用者和群組屬性。 選取為 [比對] 屬性的屬性會用來比對 Cerner Central 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
-1. 若要啟用 Cerner Central 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
+1. 若要啟用 Cerner Central 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]
 
-1. 按一下 [檔案]  。
+1. 按一下 **[儲存]** 。
 
-這會啟動在 [使用者和群組] 區段中指派給 Cerner Central 的任何使用者和/或群組之首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會表描述您 Cerner Central 應用程式上佈建服務所執行的所有動作。
+這會啟動在 [使用者和群組] 區段中指派給 Cerner Central 的任何使用者和/或群組之首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會表描述您 Cerner Central 應用程式上佈建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 

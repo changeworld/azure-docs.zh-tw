@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure、kinect、rgb、IR、錄製、感應器、sdk、存取、深度、影片、相機、imu、移動、感應器、音訊、麥克風、matroska、感應器 sdk、下載、主體、追蹤、支援
-ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85276550"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357040"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect 支援選項和資源
 
@@ -32,9 +32,9 @@ ms.locfileid: "85276550"
 
 ### <a name="microsoft-qa"></a>Microsoft Q&A
 
-若要讓 Microsoft 工程師、Azure 最有價值專家 (MVP) 或我們的專家社群為您的技術產品問題提供快速可靠的解答，請透過 [Microsoft 問與答頁面](https://aka.ms/azureqa)與我們聯繫，這是最廣為使用的 Azure 社群支援點。
+若要讓 Microsoft 工程師、Azure 最有價值專家 (MVP) 或我們的專家社群為您的技術產品問題提供快速可靠的解答，請透過 [Microsoft 問與答頁面](/answers/products/azure)與我們聯繫，這是最廣為使用的 Azure 社群支援點。
 
-- [適用于 Azure Kinect 的 Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html)，您可以在其中提出問題或搜尋現有的問題庫。
+- [適用于 Azure Kinect 的 Microsoft Q&A](/answers/topics/azure-kinect-dk.html)，您可以在其中提出問題或搜尋現有的問題庫。
 
 ### <a name="development-azure-kinect-on-azure"></a>Azure 上的 Azure Kinect 開發
 
@@ -50,7 +50,7 @@ Azure 訂閱者可以在 Azure 入口網站中建立及管理支援要求。 針
 
 ### <a name="azure-kinect-dk-device"></a>Azure Kinect DK 裝置
 
-在聯繫硬體支援之前，請確定您已設定和更新 Azure Kinect DK。 若要測試裝置是否正常運作，請使用 [Azure Kinect 檢視器](azure-kinect-viewer.md)。 深入瞭解我們的 [Azure Kinect DK](https://aka.ms/kinectsupport) 說明頁面。
+在聯繫硬體支援之前，請確定您已設定和更新 Azure Kinect DK。 若要測試裝置是否正常運作，請使用 [Azure Kinect 檢視器](azure-kinect-viewer.md)。 深入瞭解我們的 [Azure Kinect DK](./index.yml) 說明頁面。
 您也可能想要查看我們的 [已知問題與疑難排解](troubleshooting.md)。
 
 [取得](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) 裝置或感應器功能、固件更新或購買選項的協助。

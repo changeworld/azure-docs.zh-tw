@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 3886f82180728bc6f454b1a49b5551bc4831869e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070889"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358111"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的原則
 
@@ -38,7 +38,7 @@ ms.locfileid: "92070889"
 > 
 > 
 
-設定分為 `inbound`、`backend`、`outbound` 和 `on-error`。 指定的一連串原則陳述式會針對要求和回應而依序執行。
+設定分為 `inbound`、`backend`、`outbound` 和 `on-error`。 針對要求和回應，會依序執行一系列指定的原則語句。
 
 ```xml
 <policies>

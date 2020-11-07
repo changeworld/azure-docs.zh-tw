@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: Zhchia
-ms.openlocfilehash: 19e4a6b15f32ea9854801bcf6024577a1697c563
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: e7f3817a6db288e93b5e0dc99c7b6c9b7bd2e44b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455658"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355731"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>教學課程：設定 Code42 來自動布建使用者
 
@@ -35,7 +35,7 @@ ms.locfileid: "92455658"
 > * 在 Code42 中布建群組和群組成員資格
 > * Code42 (建議的[單一登入](./code42-tutorial.md)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -55,9 +55,9 @@ ms.locfileid: "92455658"
 
 ### <a name="to-create-a-provisioning-provider-in-code42s-console"></a>若要在 Code42's 主控台中建立布建提供者：
 
-1. 登入您的 Code42 主控台。 選取 [ **管理** ] 以展開導覽功能表。 依序選取 [ **設定** 身分 **識別管理**]。
-2. 選取 [ **布** 建] 索引標籤。然後，展開 [新增布建 **提供者** ] 功能表並選取 [ **新增 SCIM 提供者**]。
-3. 在 [ **顯示名稱** ] 欄位中，輸入布建提供者的唯一名稱。 將 **驗證認證類型** 設定為 **OAuth 權杖**。 選取 **[下一步]** 以產生認證。
+1. 登入您的 Code42 主控台。 選取 [ **管理** ] 以展開導覽功能表。 依序選取 [ **設定** 身分 **識別管理** ]。
+2. 選取 [ **布** 建] 索引標籤。然後，展開 [新增布建 **提供者** ] 功能表並選取 [ **新增 SCIM 提供者** ]。
+3. 在 [ **顯示名稱** ] 欄位中，輸入布建提供者的唯一名稱。 將 **驗證認證類型** 設定為 **OAuth 權杖** 。 選取 **[下一步]** 以產生認證。
 
 > [!NOTE]
 >* 讓此視窗保持開啟，直到系統提示您提供後續步驟中所需的 **基底 URL** 和 **權杖** 。
@@ -71,7 +71,7 @@ ms.locfileid: "92455658"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。
 
-* 將使用者和群組指派給 Code42 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。
+* 將使用者和群組指派給 Code42 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
@@ -86,7 +86,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [ **Code42**]。
+2. 在應用程式清單中，選取 [ **Code42** ]。
 
     ![應用程式清單中的 Code42 連結](common/all-applications.png)
 
@@ -98,7 +98,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![自動布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [系統**管理員認證**] 區段下，輸入稍早從**租使用者 URL**和**秘密權杖**中的 Code42 之前取出的**SCIM 2.0 基底 url 和存取權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Code42。 如果連接失敗，請確定您的 Code42 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統 **管理員認證** ] 區段下，輸入稍早從 **租使用者 URL** 和 **秘密權杖** 中的 Code42 之前取出的 **SCIM 2.0 基底 url 和存取權杖** 值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Code42。 如果連接失敗，請確定您的 Code42 帳戶具有系統管理員許可權，然後再試一次。
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -108,7 +108,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Code42**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Code42** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Code42 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Code42 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](../app-provisioning/customize-application-attributes.md)，您將必須確定 Code42 API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -129,7 +129,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Code42**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 Code42** ]。
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Code42 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Code42 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -141,11 +141,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Code42 Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 Code42 Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Code42 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Code42 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

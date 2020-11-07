@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544225"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356735"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教學課程：設定 Elium 來自動布建使用者
 
@@ -49,13 +49,13 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
 ## <a name="set-up-elium-for-provisioning"></a>設定布建的 Elium
 
-使用 Azure AD 設定 Elium 來自動布建使用者之前，您必須在 Elium 上啟用系統以進行跨網域身分識別管理 (SCIM) 布建。 請遵循下列步驟：
+使用 Azure AD 設定 Elium 來自動布建使用者之前，您必須在 Elium 上啟用系統以進行跨網域身分識別管理 (SCIM) 布建。 請遵循這些步驟：
 
-1. 登入 Elium 並移至 [**我的設定檔**  >  **設定**]。
+1. 登入 Elium 並移至 [ **我的設定檔**  >  **設定** ]。
 
     ![Elium 中的 [設定] 功能表項目](media/Elium-provisioning-tutorial/setting.png)
 
-1. 在左下角的 [ **ADVANCED**] 底下，選取 [ **安全性**]。
+1. 在左下角的 [ **ADVANCED** ] 底下，選取 [ **安全性** ]。
 
     ![Elium 中的安全性連結](media/Elium-provisioning-tutorial/security.png)
 
@@ -65,9 +65,9 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
 ## <a name="add-elium-from-the-gallery"></a>從資源庫新增 Elium
 
-若要使用 Azure AD 設定 Elium 來自動布建使用者，您也必須從 Azure AD 應用程式資源庫將 Elium 新增至受控軟體即服務 (SaaS) 應用程式的清單。 請遵循下列步驟：
+若要使用 Azure AD 設定 Elium 來自動布建使用者，您也必須從 Azure AD 應用程式資源庫將 Elium 新增至受控軟體即服務 (SaaS) 應用程式的清單。 請遵循這些步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)的左側導覽面板中，選取 [ **Azure Active Directory**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)的左側導覽面板中，選取 [ **Azure Active Directory** ]。
 
     ![Azure Active Directory 功能表項目](common/select-azuread.png)
 
@@ -79,7 +79,7 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
     ![新增應用程式連結](common/add-new-app.png)
 
-1. 在 [搜尋] 方塊中，輸入 **Elium**，在結果清單中選取 [ **Elium** ]，然後選取 [ **新增** ] 以新增應用程式。
+1. 在 [搜尋] 方塊中，輸入 **Elium** ，在結果清單中選取 [ **Elium** ]，然後選取 [ **新增** ] 以新增應用程式。
 
     ![資源庫搜尋方塊](common/search-new-app.png)
 
@@ -92,23 +92,23 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
 若要在 Azure AD 中為 Elium 設定自動使用者布建，請遵循下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，選取 [ **企業應用程式**]，然後選取 [ **所有應用程式**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，選取 [ **企業應用程式** ]，然後選取 [ **所有應用程式** ]。
 
     ![Azure AD 企業應用程式分頁](common/enterprise-applications.png)
 
-1. 在應用程式清單中，選取 [Elium]****。
+1. 在應用程式清單中，選取 [Elium]。
 
     ![企業應用程式分頁中的應用程式清單](common/all-applications.png)
 
-1. 選取 [佈建] 索引標籤。
+1. 選取 [佈建]  索引標籤。
 
     ![企業應用程式分頁中的 [布建] 索引標籤](common/provisioning.png)
 
-1. 將 [佈建模式] 設定為 [自動]。
+1. 將 [佈建模式]  設定為 [自動]  。
 
     ![布建模式的自動設定](common/provisioning-automatic.png)
 
-1. 在 [**管理員認證**] 區段的 [租使用者**URL** ] 欄位中，輸入** \<tenantURL\> /scim/v2** 。  (**租使用者 url>** 是先前從 Elium 管理主控台中取出的值。 ) 也在 [**秘密權杖**] 欄位中輸入 Elium**秘密權杖**值。 最後，選取 [ **測試連接** ] 以確認 Azure AD 可以連線至 Elium。 如果連接失敗，請確定您的 Elium 帳戶具有系統管理員許可權，然後再試一次。
+1. 在 [ **管理員認證** ] 區段的 [租使用者 **URL** ] 欄位中，輸入 **\<tenantURL\> /scim/v2** 。  ( **租使用者 url>** 是先前從 Elium 管理主控台中取出的值。 ) 也在 [ **秘密權杖** ] 欄位中輸入 Elium **秘密權杖** 值。 最後，選取 [ **測試連接** ] 以確認 Azure AD 可以連線至 Elium。 如果連接失敗，請確定您的 Elium 帳戶具有系統管理員許可權，然後再試一次。
 
     ![系統管理員認證中的租使用者 URL 和秘密權杖欄位](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -116,23 +116,23 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
-1. **在 [對應**] 區段中，選取 [**同步處理 Azure Active Directory 使用者至 Elium**]。
+1. **在 [對應** ] 區段中，選取 [ **同步處理 Azure Active Directory 使用者至 Elium** ]。
 
     ![將 Azure AD 使用者對應的連結同步至 Elium](media/Elium-provisioning-tutorial/usermapping.png)
 
-1. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Elium 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Elium 中的使用者帳戶以進行更新作業。 選取 [儲存]  認可任何變更。
+1. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Elium 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Elium 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![Azure AD 與 Elium 之間的屬性對應](media/Elium-provisioning-tutorial/userattribute.png)
 
 1. 若要設定範圍篩選器，請遵循 [範圍篩選器教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
 
-1. 若要啟用 Elium Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+1. 若要啟用 Elium Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![布建狀態設定為開啟](common/provisioning-toggle-on.png)
 
-1. 在 [**設定**] 區段的 [**領域**] 下拉式清單方塊中選取所需的值，以定義您想要布建到 Elium 的使用者和群組。
+1. 在 [ **設定** ] 區段的 [ **領域** ] 下拉式清單方塊中選取所需的值，以定義您想要布建到 Elium 的使用者和群組。
 
     ![布建領域清單方塊](common/provisioning-scope.png)
 

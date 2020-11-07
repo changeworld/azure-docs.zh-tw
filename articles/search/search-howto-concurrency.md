@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb8d578c05166f88ed7e91681dd6b5f15b1e3e5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020825"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358638"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 認知搜尋中的平行存取
 
-管理 Azure 認知搜尋資源（例如索引和資料來源）時，請務必安全地更新資源，特別是當您的應用程式的不同元件同時存取資源時。 當兩個用戶端在未經協調的情況下同時更新資源時，便可能發生競爭情形。 為了避免這種情況，Azure 認知搜尋提供 *開放式平行存取模型*。 資源上不會有鎖定的情形。 每個資源都會有一個能識別資源版本的 ETag，使您可以製作能避免意外覆寫的要求。
+管理 Azure 認知搜尋資源（例如索引和資料來源）時，請務必安全地更新資源，特別是當您的應用程式的不同元件同時存取資源時。 當兩個用戶端在未經協調的情況下同時更新資源時，便可能發生競爭情形。 為了避免這種情況，Azure 認知搜尋提供 *開放式平行存取模型* 。 資源上不會有鎖定的情形。 每個資源都會有一個能識別資源版本的 ETag，使您可以製作能避免意外覆寫的要求。
 
 > [!Tip]
 > [範例 c # 方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念程式碼說明並行控制在 Azure 認知搜尋中的運作方式。 該程式碼會建立能叫用並行控制的條件。 對於大多數開發人員而言，閱讀[下方的程式碼片段](#samplecode)應該就已經足夠，但如果您想要執行該程式碼片段，請編輯 appsettings.json 以新增服務名稱和系統管理員 API 金鑰。 若服務 URL 為 `http://myservice.search.windows.net`，服務名稱將會是 `myservice`。
@@ -27,10 +27,10 @@ ms.locfileid: "89020825"
 
 開放式同步存取的實作方式，是透過對寫入索引、索引子、資料來源及 synonymMap 資源的 API 呼叫進行存取條件檢查。
 
-所有資源都有能提供物件版本資訊的[*實體標記 (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag)。 透過先檢查 ETag 並確保資源的 ETag 符合您的本機複本，將可以避免在一般工作流程 (取得，於本機修改，更新) 中發生同時更新。
+所有資源都有能提供物件版本資訊的 [*實體標記 (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag)。 透過先檢查 ETag 並確保資源的 ETag 符合您的本機複本，將可以避免在一般工作流程 (取得，於本機修改，更新) 中發生同時更新。
 
 + REST API 會在要求標頭上使用 [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) \(英文\)。
-+ .NET SDK 透過 accessCondition 物件設定 ETag，並在資源上設定 [If-Match | If-Match-None 標頭](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) \(英文\)。 繼承自 [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) \(英文\) 的任何物件都具有 accessCondition 物件。
++ .NET SDK 透過 accessCondition 物件設定 ETag，並在資源上設定 [If-Match | If-Match-None 標頭](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) \(英文\)。 使用 Etag 的物件（例如 [SynonymMap ETag](/dotnet/api/azure.search.documents.indexes.models.synonymmap.etag) 和 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex.etag)）有 >accesscondition 物件。
 
 每次更新資源時，該資源的 ETag 都會自動變更。 當您實作並行管理時，所做的就是為更新要求設置前置條件，要求遠端資源的 ETag 必須與您在用戶端上所修改之資源複本的 ETag 相同。 如果並行處理程序已變更遠端資源，其 ETag 將會與前置條件不符，且該要求將會失敗並顯示 HTTP 412。 如果您是使用 .NET SDK，這會顯示為 `CloudException`，其中 `IsAccessConditionFailed()` 擴充方法會傳回 true。
 
@@ -216,7 +216,7 @@ ms.locfileid: "89020825"
 + [GitHub 上的 REST API 範例](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [GitHub 上的 .NET SDK 範例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解決方案包括「DotNetEtagsExplainer」專案，其中包含本文所提供的程式碼。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [一般 HTTP 要求和回應標頭](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
 [HTTP 狀態碼](/rest/api/searchservice/http-status-codes) 

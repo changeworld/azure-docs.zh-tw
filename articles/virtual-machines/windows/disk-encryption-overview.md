@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea82724ec534aa896fa012332c10e28050caf825
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909381"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357788"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>適用于 Windows Vm 的 Azure 磁碟加密 
 
@@ -38,6 +38,8 @@ Windows Vm 提供各種 [大小的](../sizes-general.md)支援。 Azure 磁碟�
 Azure 磁碟加密也適用於具有進階儲存體的 VM。
 
 [第2代 vm](../generation-2.md#generation-1-vs-generation-2-capabilities)上無法使用 Azure 磁碟加密。 如需更多例外狀況，請參閱 [Azure 磁碟加密：不支援的案例](disk-encryption-windows.md#unsupported-scenarios)。
+
+沒有暫存磁片的 VM 映射上無法使用 Azure 磁碟加密 (Dv4、Dsv4、Ev4 和 Esv4) 。  查看 [沒有本機暫存磁片的 AZURE VM 大小](../azure-vms-no-temp-disk.md)。
 
 ### <a name="supported-operating-systems"></a>支援的作業系統
 

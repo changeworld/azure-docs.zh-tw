@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 1b992150f6013fd597a3e56b243bd6236289b710
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514787"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357992"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>教學課程：設定 Soloinsight-CloudGate SSO 來自動布建使用者
 
@@ -46,19 +46,19 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * 建議將單一 Azure AD 使用者指派給 Soloinsight-CloudGate SSO，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 Soloinsight-CloudGate SSO 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式專屬角色 (可用的) 。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Soloinsight-CloudGate SSO 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式專屬角色 (可用的) 。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="set-up-soloinsight-cloudgate-sso-for-provisioning"></a>設定 Soloinsight-CloudGate SSO 進行布建
 
-1. 登入您 [的 >soloinsight-cloudgate-CLOUDGATE SSO 管理主控台](https://soloinsight.sigateway.com/login)。 流覽至 [ **系統管理] > 系統設定**。
+1. 登入您 [的 >soloinsight-cloudgate-CLOUDGATE SSO 管理主控台](https://soloinsight.sigateway.com/login)。 流覽至 [ **系統管理] > 系統設定** 。
 
     ![Soloinsight-CloudGate SSO 管理主控台](media/soloinsight-cloudgate-sso-provisioning-tutorial/admin.png)
 
-2.  流覽至 **[一般**]。
+2.  流覽至 **[一般** ]。
 
     ![Soloinsight-CloudGate SSO 新增 SCIM](media/soloinsight-cloudgate-sso-provisioning-tutorial/config.png)
 
-3.  向下滾動至頁面的結尾，以取得 **租使用者 URL** 和 **秘密權杖**。 複製 **秘密權杖**。 在 Azure 入口網站的 Soloinsight-CloudGate SSO 應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
+3.  向下滾動至頁面的結尾，以取得 **租使用者 URL** 和 **秘密權杖** 。 複製 **秘密權杖** 。 在 Azure 入口網站的 Soloinsight-CloudGate SSO 應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
 
     ![Soloinsight-CloudGate SSO 建立權杖](media/soloinsight-cloudgate-sso-provisioning-tutorial/token.png)
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 **若要從 Azure AD 應用程式庫新增 Soloinsight-CloudGate SSO，請執行下列步驟：**
 
-1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory**]。
+1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory** ]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -80,7 +80,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **>soloinsight-cloudgate-CLOUDGATE sso**，在結果窗格中選取 [ **>SOLOINSIGHT-CLOUDGATE-CloudGate sso** ]，然後按一下 [ **新增** ] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **>soloinsight-cloudgate-CLOUDGATE sso** ，在結果窗格中選取 [ **>SOLOINSIGHT-CLOUDGATE-CloudGate sso** ]，然後按一下 [ **新增** ] 按鈕以新增應用程式。
 
     ![結果清單中的 Soloinsight-CloudGate SSO](common/search-new-app.png)
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Soloinsight-CloudGate SSO]****。
+2. 在應用程式清單中，選取 [Soloinsight-CloudGate SSO]。
 
     ![應用程式清單中的 Soloinsight-CloudGate SSO 連結](common/all-applications.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [ **管理員認證** ] 區段下的 [ `https://sigateway.com/scim/v2/sync/serviceproviderconfig` **租使用者 URL**] 中輸入。 輸入稍早在**秘密權杖**中取出的**SCIM Authentication 權杖**值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線至 Soloinsight-CloudGate SSO。 如果連接失敗，請確定您的 Soloinsight-CloudGate SSO 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [ **管理員認證** ] 區段下的 [ `https://sigateway.com/scim/v2/sync/serviceproviderconfig` **租使用者 URL** ] 中輸入。 輸入稍早在 **秘密權杖** 中取出的 **SCIM Authentication 權杖** 值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線至 Soloinsight-CloudGate SSO。 如果連接失敗，請確定您的 Soloinsight-CloudGate SSO 帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 7. 按一下 [檔案]  。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Soloinsight-CloudGate SSO**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Soloinsight-CloudGate SSO** ]。
 
     ![Soloinsight-CloudGate SSO 使用者對應](media/soloinsight-cloudgate-sso-provisioning-tutorial/usermappings.png)
 
@@ -127,7 +127,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Soloinsight-CloudGate SSO 使用者屬性](media/soloinsight-cloudgate-sso-provisioning-tutorial/userattributes.png)
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Soloinsight-CloudGate SSO**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 Soloinsight-CloudGate SSO** ]。
 
     ![Soloinsight-CloudGate SSO 群組對應](media/soloinsight-cloudgate-sso-provisioning-tutorial/groupmappings.png)
 
@@ -137,11 +137,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Soloinsight-CloudGate SSO 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 Soloinsight-CloudGate SSO 的 Azure AD 布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建至 Soloinsight-CloudGate SSO 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建至 Soloinsight-CloudGate SSO 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

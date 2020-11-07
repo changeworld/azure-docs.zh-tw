@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427375"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357907"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登入已設定 SAML 型單一登入的應用程式時發生問題
 若要針對下列登入問題進行疑難排解，建議您遵循下列步驟來更妥善地進行診斷，並將解決步驟自動化：
@@ -28,12 +28,12 @@ ms.locfileid: "92427375"
 如果您使用 Azure 入口網站中的 [測試體驗](../azuread-dev/howto-v1-debug-saml-sso-issues.md) 搭配我的應用程式安全瀏覽器延伸模組，則不需要手動遵循下列步驟來開啟 [SAML 型單一登入設定] 頁面。
 
 若要開啟 [SAML 型單一登入設定] 頁面：
-1.  開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或 **共同管理員**身分登入。
-1.  選取主左側導覽功能表頂端的 [**所有服務**]，以開啟**Azure Active Directory 擴充**功能。
+1.  開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或 **共同管理員** 身分登入。
+1.  選取主左側導覽功能表頂端的 [ **所有服務** ]，以開啟 **Azure Active Directory 擴充** 功能。
 1.  在篩選搜尋方塊中輸入 **"Azure Active Directory"** ，然後選取 **Azure Active Directory** 專案。
 1.  從 Azure Active Directory 左側導覽功能表中選取 [ **企業應用程式** ]。
 1.  選取 [ **所有應用程式** ] 以查看您所有應用程式的清單。
-    如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式**]。
+    如果您在這裡看不到您想要顯示的應用程式，請使用 [ **所有應用程式] 清單** 頂端的 [ **篩選** ] 控制項，並將 [ **顯示** ] 選項設定為 [ **所有應用程式** ]。
 1.  選取您要設為單一登入的應用程式。
 1. 應用程式載入之後，請從應用程式的左側導覽功能表中選取 [ **單一登入** ]。
 1. 選取 [SAML 型 SSO]。
@@ -118,10 +118,10 @@ Azure AD 不支援應用程式為單一登入傳送的 SAML 要求。 以下為�
 **解決方法**
 
 若要刪除與建立新的憑證，請依照下列步驟執行：
-1. 在 [SAML SSO 設定] 畫面上，選取 [ **saml 簽署憑證**] 區段底下的 [**建立新憑證**]。
-1. 選取 [到期日]，然後按一下 [ **儲存**]。
-1. 核取 [ **讓新憑證成為** 使用中] 以覆寫作用中的憑證。 然後按一下窗格頂端的 [儲存]****，並按 [接受] 以啟動變換憑證。
-1. 在 [SAML 簽署憑證] 區段下，按一下 [移除] 以移除**********未使用**的憑證。
+1. 在 [SAML SSO 設定] 畫面上，選取 [ **saml 簽署憑證** ] 區段底下的 [ **建立新憑證** ]。
+1. 選取 [到期日]，然後按一下 [ **儲存** ]。
+1. 核取 [ **讓新憑證成為** 使用中] 以覆寫作用中的憑證。 然後按一下窗格頂端的 [儲存]，並按 [接受] 以啟動變換憑證。
+1. 在 [SAML 簽署憑證] 區段下，按一下 [移除] 以移除 **未使用** 的憑證。
 
 ## <a name="saml-request-not-present-in-the-request"></a>要求中沒有 SAML 要求
 `Error AADSTS750054: SAMLRequest or SAMLResponse must be present as query string parameters in HTTP request for SAML Redirect binding.`
@@ -145,7 +145,24 @@ Azure AD 無法識別 HTTP 要求中 URL 參數內的 SAML 要求。 如果應�
 
 刪除為應用程式設定的未使用回復 Url。
 
-在 [SAML SSO 設定] 頁面的 [ **回復 URL (判斷提示取用者服務 URL) ** ] 區段中，刪除系統所建立的未使用或預設回復 url。 例如： `https://127.0.0.1:444/applications/default.aspx`。
+在 [SAML SSO 設定] 頁面的 [ **回復 URL (判斷提示取用者服務 URL)** ] 區段中，刪除系統所建立的未使用或預設回復 url。 例如 `https://127.0.0.1:444/applications/default.aspx`。
+
+
+## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>使用者用來向服務驗證的驗證方法不符合要求的驗證方法
+`Error: AADSTS75011 Authentication method by which the user authenticated with the service doesn't match requested authentication method 'AuthnContextClassRef'. `
+
+**可能的原因**
+
+在 `RequestedAuthnContext` SAML 要求中。 這表示應用程式需要所 `AuthnContext` 指定的 `AuthnContextClassRef` 。 不過，使用者在存取應用程式之前已經過驗證，而且 `AuthnContext` 先前的驗證所使用的 (驗證方法) 與要求的驗證方法不同。 例如，發生 myapps 和 WIA 的同盟使用者存取權。 `AuthnContextClassRef`將會是 `urn:federation:authentication:windows` 。 AAD 不會執行全新的驗證要求，它會在此案例中使用 IdP (ADFS 或任何其他 federation service 傳遞給它的驗證內容) 。 因此，如果應用程式要求以外的應用程式，則會有不相符的情況 `urn:federation:authentication:windows` 。 另一種情況是使用多重要素： `'X509, MultiFactor` 。
+
+**解決方法**
+
+
+`RequestedAuthnContext` 是選擇性的值。 如果可能的話，請詢問應用程式是否可以移除。
+
+另一個選項是確定將會 `RequestedAuthnContext` 接受。 這會藉由要求全新驗證來完成。 如此一來，當 SAML 要求處理完成時，就會進行全新的驗證，並 `AuthnContext` 接受。 若要要求新的驗證，SAML 要求最多會包含此值 `forceAuthn="true"` 。 
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>自訂傳送至應用程式的 SAML 宣告時發生問題
 若要瞭解如何自訂傳送至應用程式的 SAML 屬性宣告，請參閱 [Azure Active Directory 中的宣告對應](../develop/active-directory-claims-mapping.md)。
@@ -153,7 +170,7 @@ Azure AD 無法識別 HTTP 要求中 URL 參數內的 SAML 要求。 如果應�
 ## <a name="errors-related-to-misconfigured-apps"></a>設定錯誤的應用程式相關錯誤
 確認入口網站中的兩種組態符合您應用程式中的組態。 特別是，比較用戶端/應用程識別碼、回覆 URL、用戶端密碼/金鑰，及應用程式識別碼 URI。
 
-將您正以程式碼要求存取的資源，與在 [必要的資源]**** 索引標籤中設定的權限比較，以確定您只要求所設定的資源。
+將您正以程式碼要求存取的資源，與在 [必要的資源] 索引標籤中設定的權限比較，以確定您只要求所設定的資源。
 
 ## <a name="next-steps"></a>後續步驟
 - [應用程式管理快速入門系列](add-application-portal-assign-users.md)

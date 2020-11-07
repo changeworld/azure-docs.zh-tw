@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d83e5c39f97db49e2cc9b77cc806cff0a1fa6de
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534789"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355979"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜尋中的篩選 
 
-*篩選*條件會提供選取 Azure 認知搜尋查詢中所使用之檔的準則。 未篩選的搜尋會包含索引中的所有文件。 篩選條件會將搜尋查詢的範圍設定為文件子集。 例如，篩選條件可以限制只對具有特定品牌或色彩且超過特定閾值之價格點的產品進行全文檢索搜尋。
+*篩選* 條件會提供選取 Azure 認知搜尋查詢中所使用之檔的準則。 未篩選的搜尋會包含索引中的所有文件。 篩選條件會將搜尋查詢的範圍設定為文件子集。 例如，篩選條件可以限制只對具有特定品牌或色彩且超過特定閾值之價格點的產品進行全文檢索搜尋。
 
-某些搜尋體驗會強制實行篩選條件需求以作為實作的一部分，但是，當您想要使用「以值為基礎」** 的準則 (針對 "Simon & Schuster" 所發行的類別 "non-fiction"，將搜尋範圍設定為產品類型 "books") 來限制搜尋時，隨時都可使用篩選條件。
+某些搜尋體驗會強制實行篩選條件需求以作為實作的一部分，但是，當您想要使用「以值為基礎」的準則 (針對 "Simon & Schuster" 所發行的類別 "non-fiction"，將搜尋範圍設定為產品類型 "books") 來限制搜尋時，隨時都可使用篩選條件。
 
-反之，如果您的目標是在特定資料「結構」** 上進行搜尋 (將搜尋範圍設定為客戶評論欄位)，則有替代方法，如下所述。
+反之，如果您的目標是在特定資料「結構」上進行搜尋 (將搜尋範圍設定為客戶評論欄位)，則有替代方法，如下所述。
 
 ## <a name="when-to-use-a-filter"></a>使用篩選條件的時機
 
@@ -138,11 +138,11 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 在 REST API 中，簡單欄位的可篩選預設為 *開啟* 。 可篩選的欄位會增加索引大小；請務必針對您不打算在篩選條件中實際使用的欄位設定 `"filterable": false`。 如需適用於欄位定義之設定的詳細資訊，請參閱[建立索引](/rest/api/searchservice/create-index) \(英文\)。
 
-在 .NET SDK 中，可篩選預設為 *off*。 您可以藉由將對應[欄位](/dotnet/api/microsoft.azure.search.models.field)物件的[IsFilterable 屬性](/dotnet/api/microsoft.azure.search.models.field.isfilterable)設定為，讓欄位可篩選 `true` 。 您也可以使用 [IsFilterable 屬性](/dotnet/api/microsoft.azure.search.isfilterableattribute)，以宣告方式進行這項作業。 在下列範例中，屬性是在 `BaseRate` 對應至索引定義的模型類別的屬性上進行設定。
+在 .NET SDK 中，可篩選預設為 *off* 。 您可以藉由將對應[>searchfield](/dotnet/api/azure.search.documents.indexes.models.searchfield)物件的[IsFilterable 屬性](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)設定為，讓欄位可篩選 `true` 。 在下列範例中，屬性是在 `BaseRate` 對應至索引定義的模型類別的屬性上進行設定。
 
 ```csharp
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
+[IsFilterable, IsSortable, IsFacetable]
+public double? BaseRate { get; set; }
 ```
 
 ### <a name="making-an-existing-field-filterable"></a>讓現有欄位可篩選
@@ -159,8 +159,8 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 | 方法 | 描述 | 使用時機 |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | 符合欄位與字串分隔清單的函式。 | 建議針對 [安全性篩選](search-security-trimming-for-azure-search.md) 和任何篩選準則，其中許多原始文字值都需要與字串欄位相符。 **Search.in**函式是針對速度而設計的，比使用和針對每個字串明確地比較欄位更快 `eq` `or` 。 | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 此函式可讓您在相同的篩選條件運算式中，混用全文檢索搜尋作業以及純布林值篩選作業。 | 當您想要在一個要求中使用多個搜尋篩選組合時，請使用 **ismatch** (或其對等計分 **search.ismatchscoring**) 。 您也可以將它用於 *contains* 篩選條件，以篩選較大字串內的部分字串。 |
+| [`search.in`](search-query-odata-search-in-function.md) | 符合欄位與字串分隔清單的函式。 | 建議針對 [安全性篩選](search-security-trimming-for-azure-search.md) 和任何篩選準則，其中許多原始文字值都需要與字串欄位相符。 **Search.in** 函式是針對速度而設計的，比使用和針對每個字串明確地比較欄位更快 `eq` `or` 。 | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 此函式可讓您在相同的篩選條件運算式中，混用全文檢索搜尋作業以及純布林值篩選作業。 | 當您想要在一個要求中使用多個搜尋篩選組合時，請使用 **ismatch** (或其對等計分 **search.ismatchscoring** ) 。 您也可以將它用於 *contains* 篩選條件，以篩選較大字串內的部分字串。 |
 | [`$filter=field operator string`](search-query-odata-comparison-operators.md) | 使用者定義的運算式，由欄位、運算子和值所組成。 | 當您想要在字串欄位和字串值之間尋找完全相符的專案時，請使用此專案。 |
 
 ## <a name="numeric-filter-fundamentals"></a>數值篩選條件基本概念
@@ -171,7 +171,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="next-steps"></a>後續步驟
 
-首先，嘗試使用入口網站中的 [搜尋總管]****，提交含有 **$filter** 參數的查詢。 [不動產範例索引](search-get-started-portal.md)會在您將下列篩選查詢貼至搜尋列時提供它們的有趣結果：
+首先，嘗試使用入口網站中的 [搜尋總管]，提交含有 **$filter** 參數的查詢。 [不動產範例索引](search-get-started-portal.md)會在您將下列篩選查詢貼至搜尋列時提供它們的有趣結果：
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -196,7 +196,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 若要使用更多範例，請參閱 [OData 篩選條件運算式語法 > 範例](./search-query-odata-filter.md#examples) \(英文\)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
 + [搜尋檔 REST API](/rest/api/searchservice/search-documents)

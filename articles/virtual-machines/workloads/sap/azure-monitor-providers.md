@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 235572cc4d697e7488765c464b12f9349c1e012b
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994174"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356445"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>適用于 SAP 解決方案提供者的 Azure 監視器 (預覽) 
 
 ## <a name="overview"></a>概觀  
 
-在 SAP 解決方案的 Azure 監視器內容中， *提供者類型* 是指特定的 *提供者*。 例如 *SAP Hana*，會針對 SAP 環境內的特定元件（例如 SAP Hana 資料庫）進行設定。 提供者包含對應元件的連接資訊，有助於從該元件收集遙測資料。 您可以使用多個提供者類型的多個提供者，或多個提供者類型的多個提供者，來設定 SAP 解決方案資源 (的一個 Azure 監視器也稱為 SAP 監視器資源) 。
+在 SAP 解決方案的 Azure 監視器內容中， *提供者類型* 是指特定的 *提供者* 。 例如 *SAP Hana* ，會針對 SAP 環境內的特定元件（例如 SAP Hana 資料庫）進行設定。 提供者包含對應元件的連接資訊，有助於從該元件收集遙測資料。 您可以使用多個提供者類型的多個提供者，或多個提供者類型的多個提供者，來設定 SAP 解決方案資源 (的一個 Azure 監視器也稱為 SAP 監視器資源) 。
    
 客戶可以選擇設定不同的提供者類型，以在其 SAP 環境中從對應的元件啟用資料收集。 例如，客戶可以為 SAP Hana 提供者類型、另一個提供者提供高可用性叢集提供者類型的提供者，依此類推。  
 
@@ -53,13 +53,24 @@ ms.locfileid: "91994174"
 
 ![適用于 SAP 解決方案提供者的 Azure 監視器-高可用性叢集](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-若要設定高可用性叢集提供者，有兩個主要步驟： 
-1. 在 Pacemaker 叢集中的*每個*節點上安裝[ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 
-    - 客戶可以使用 Azure 自動化腳本來部署高可用性叢集。 腳本會在每個叢集節點上安裝 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。  
-    - 或客戶可以執行手動安裝，請遵循[此頁面](https://github.com/ClusterLabs/ha_cluster_exporter)上的步驟 
-2. 在 Pacemaker 叢集中的 *每個* 節點上設定高可用性叢集提供者  
-  若要設定高可用性叢集提供者，需要 Prometheus URL、叢集名稱、主機名稱和系統識別碼。   
-  建議客戶為每個叢集節點設定一個提供者。   
+若要設定高可用性叢集提供者，涉及兩個主要步驟：
+
+1. 在 Pacemaker 叢集中的 *每個* 節點上安裝 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。
+
+   您有兩個選項可安裝 ha_cluster_exporter：
+   
+   - 使用 Azure 自動化腳本來部署高可用性叢集。 腳本會在每個叢集節點上安裝 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。  
+   - 進行 [手動安裝](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build)。 
+
+2. 為 Pacemaker 叢集中的 *每個* 節點設定高可用性叢集提供者。
+
+   若要設定高可用性叢集提供者，需要下列資訊：
+   
+   - **名稱** 。 此提供者的名稱。 對於此 Azure 監視器的 SAP 解決方案實例而言，它應該是唯一的。
+   - **Prometheus 端點** 。 通常是 HTTP \: // \<servername or ip address\> ： 9664/計量。
+   - **SID** 。 針對 SAP 系統，請使用 SAP SID。 針對其他系統 (例如，NFS 叢集) ，請使用三個字元的叢集名稱。 SID 必須與受監視的其他群集不同。   
+   - 叢集 **名稱** 。 建立叢集時所使用的叢集名稱。 叢集名稱可以在 cluster 屬性中找到 `cluster-name` 。
+   - **主機名稱** 。 VM 的 Linux 主機名稱。  
 
 ## <a name="provider-type-microsoft-sql-server"></a>提供者類型 Microsoft SQL server
 
@@ -71,7 +82,7 @@ ms.locfileid: "91994174"
 
 ![適用于 SAP 解決方案提供者的 Azure 監視器-SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 為 SAP 解決方案資源建立您的第一個 Azure 監視器。
 - 您有關于 SAP 解決方案 Azure 監視器的問題嗎？ 查看 [常見問題](./azure-monitor-faq.md) 區段

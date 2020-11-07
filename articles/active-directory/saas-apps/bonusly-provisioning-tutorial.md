@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33329fc30d1c20b4e20901d06a061accb2aeceb0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: d8c3f64e5cb5269bfe7e555615f874ac3443c6eb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456893"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357822"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>教學課程︰設定 Bonusly 來自動佈建使用者
 
@@ -25,7 +25,7 @@ ms.locfileid: "92456893"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -54,7 +54,7 @@ ms.locfileid: "92456893"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Bonusly**，從結果面板中選取 [Bonusly]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Bonusly** ，從結果面板中選取 [Bonusly]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Bonusly](common/search-new-app.png)
 
@@ -70,7 +70,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 * 建議將單一 Azure AD 使用者指派給 Bonusly，以測試自動使用者佈建的設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 Bonusly 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特有角色 (如果有的話)。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Bonusly 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特有角色 (如果有的話)。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>對 Bonusly 設定自動使用者佈建
 
@@ -81,7 +81,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>在 Azure AD 中為 Bonusly 設定自動使用者佈建：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) 並選取 [ **企業應用程式**]，選取 [ **所有應用程式**]，然後選取 [ **Bonusly**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com) 並選取 [ **企業應用程式** ]，選取 [ **所有應用程式** ]，然後選取 [ **Bonusly** ]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -95,59 +95,59 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 4. 將 [佈建模式]  設定為 [自動]  。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="顯示 [布建模式] 清單方塊的螢幕擷取畫面，其中已自動選取並反白顯示。" border="false":::
 
-5. 在 [管理員認證]**** 區段下，輸入 Bonusly 帳戶的 [祕密權杖]**** (如步驟 6 所述)。
+5. 在 [管理員認證] 區段下，輸入 Bonusly 帳戶的 [祕密權杖] (如步驟 6 所述)。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="[管理員認證] 區段的螢幕擷取畫面。[秘密權杖] 方塊是空的，但方塊已反白顯示。" border="false":::
 
-6. Bonusly 帳戶的 [秘密權杖]**** 位於 [管理員] > [公司] > [整合]****。 在 [如果您想要編碼]**** 區段中，按一下 [API] > [建立新的 API 存取權杖]**** 以建立新的祕密權杖。
+6. Bonusly 帳戶的 [秘密權杖] 位於 [管理員] > [公司] > [整合]。 在 [如果您想要編碼] 區段中，按一下 [API] > [建立新的 API 存取權杖] 以建立新的祕密權杖。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="[Bonusly] 功能表的螢幕擷取畫面。在 [系統管理員] 下，會反白顯示公司。在 [公司] 下，[整合] 會反白顯示。" border="false":::
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="如果您想要 Bonusly 網站的程式碼區段的螢幕擷取畫面，並反白顯示 P。" border="false":::
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="Bonusly 網站的螢幕擷取畫面。[服務] 索引標籤已開啟。在您的 P I 存取權杖底下，建立新的 P I 存取權杖已反白顯示。" border="false":::
 
-7. 在以下畫面上，在提供的文字方塊中輸入存取權杖的名稱，然後按 [建立 Api 金鑰]****。 新的存取權杖會出現在快顯視窗中幾秒鐘。
+7. 在以下畫面上，在提供的文字方塊中輸入存取權杖的名稱，然後按 [建立 Api 金鑰]。 新的存取權杖會出現在快顯視窗中幾秒鐘。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="Bonusly 網站 [新增存取權杖] 頁面的螢幕擷取畫面。未標記的方塊會包含我的權杖，並醒目提示 [建立 P I 按鍵] 按鈕。" border="false":::
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="Bonusly 網站的螢幕擷取畫面。顯示新的存取權杖，並在後面加上無法解讀的權杖，即會顯示通知。" border="false":::
 
-8. 如步驟 5 所示填寫欄位後，按一下 [測試連線]**** 以確認 Azure AD 可以連線到 Bonusly。 如果連線失敗，請確定您的 Bonusly 帳戶具有系統管理員權限並再試一次。
+8. 如步驟 5 所示填寫欄位後，按一下 [測試連線] 以確認 Azure AD 可以連線到 Bonusly。 如果連線失敗，請確定您的 Bonusly 帳戶具有系統管理員權限並再試一次。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="Azure 入口網站的 [管理員認證] 區段的螢幕擷取畫面。[文字連接] 按鈕會反白顯示。" border="false":::
 
-9. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+9. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="顯示空白通知電子郵件方塊的螢幕擷取畫面。您可以看到標示為 [在發生失敗時傳送電子郵件通知] 的選項。" border="false":::
 
-10. 按一下 [檔案]  。
+10. 按一下 **[儲存]** 。
 
-11. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 Bonusly]****。
+11. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Bonusly]。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="[對應] 區段的螢幕擷取畫面。在 [名稱] 底下，[同步處理 Azure Active Directory 使用者至 Bonusly] 會反白顯示。" border="false":::
 
-12. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 Bonusly 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Bonusly 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
+12. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Bonusly 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Bonusly 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="[屬性對應] 頁面的螢幕擷取畫面。資料表會列出 Azure Active Directory 屬性、對應的 Bonusly 屬性，以及相符的狀態。" border="false":::
 
 13. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-14. 若要啟用 Bonusly 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****。
+14. 若要啟用 Bonusly 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="[設定] 區段的螢幕擷取畫面。[布建狀態] 切換設定為 [關閉]。" border="false":::
 
-15. 透過在 [設定]**** 區段的 [範圍]**** 中選擇需要的值，可定義要佈建到 Bonusly 的使用者和/或群組。
+15. 透過在 [設定] 區段的 [範圍] 中選擇需要的值，可定義要佈建到 Bonusly 的使用者和/或群組。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="顯示 [領域] 清單方塊的螢幕擷取畫面。在方塊中選取 [只同步已指派的使用者和群組]。" border="false":::
 
 16. 當您準備好要佈建時，按一下 [儲存]  。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="Bonusly 布建頁面的螢幕擷取畫面，其中已醒目提示 [儲存] 按鈕。" border="false":::
 
-此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並遵循連結來佈建活動報告，當中會描述 Bonusly 上的 Azure AD 佈建服務所執行之所有動作。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並遵循連結來佈建活動報告，當中會描述 Bonusly 上的 Azure AD 佈建服務所執行之所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 

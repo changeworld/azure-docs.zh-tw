@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 80c3f9aa02680097276f966ce6aea02acf1e40fb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532562"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358791"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何排程 Azure 認知搜尋中的索引子
 
@@ -30,8 +30,8 @@ ms.locfileid: "91532562"
 ## <a name="define-schedule-properties"></a>定義排程屬性
 
 索引子排程有兩個屬性：
-* **間隔**，定義排程索引子執行之間的時間量。 允許的最小間隔為5分鐘，而最大間隔為24小時。
-* **開始時間 (UTC) **，指出第一次執行索引子的時間。
+* **間隔** ，定義排程索引子執行之間的時間量。 允許的最小間隔為5分鐘，而最大間隔為24小時。
+* **開始時間 (UTC)** ，指出第一次執行索引子的時間。
 
 您可以在第一次建立索引子時指定排程，或稍後更新索引子的屬性來指定。 您可以使用 [入口網站](#portal)、 [REST API](#restApi)或 [.net SDK](#dotNetSdk)來設定索引子排程。
 
@@ -50,11 +50,11 @@ ms.locfileid: "91532562"
 
 ## <a name="schedule-in-the-portal"></a>入口網站中的排程
 
-入口網站中的 [匯入資料] 嚮導可讓您在建立時定義索引子的排程。 預設排程設定為 [ **每**小時]，這表示索引子會在建立之後執行一次，然後在每小時之後再次執行。
+入口網站中的 [匯入資料] 嚮導可讓您在建立時定義索引子的排程。 預設排程設定為 [ **每** 小時]，這表示索引子會在建立之後執行一次，然後在每小時之後再次執行。
 
-如果您不想要自動執行索引子，或**每天每天**執行一次，則可以將排程設定變更為**一次**。 如果您想要指定不同的間隔或特定的未來開始時間，請將它設定為 [ **自訂** ]。
+如果您不想要自動執行索引子，或 **每天每天** 執行一次，則可以將排程設定變更為 **一次** 。 如果您想要指定不同的間隔或特定的未來開始時間，請將它設定為 [ **自訂** ]。
 
-當您將排程設定為 [ **自訂**] 時，欄位會顯示為可讓您指定 **間隔** 和 **開始時間 (UTC) **。 允許的最短時間間隔為5分鐘，而最長為1440分鐘 (24 小時) 。
+當您將排程設定為 [ **自訂** ] 時，欄位會顯示為可讓您指定 **間隔** 和 **開始時間 (UTC)** 。 允許的最短時間間隔為5分鐘，而最長為1440分鐘 (24 小時) 。
 
    ![在 [匯入資料] 嚮導中設定索引子排程](media/search-howto-schedule-indexers/schedule-import-data.png "在 [匯入資料] 嚮導中設定索引子排程")
 
@@ -82,7 +82,7 @@ ms.locfileid: "91532562"
 
 **間隔** 參數是必需的。 間隔指兩個連續索引子開始執行的時間。 允許的最小間隔為 5 分鐘；最長間隔為一天。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 間隔的模式為： `P(nD)(T(nH)(nM))`。 範例：`PT15M` 代表每隔 15 分鐘，`PT2H` 代表每隔 2 個小時。
 
-選擇性 **startTime** 會指出排程的執行應該開始的時間。 如果省略選用時間，則會使用您目前的 UTC 時間。 這次可以是過去的時間，在這種情況下，第一次執行的排程就如同在原始 **startTime**之後，索引子一直都在執行。
+選擇性 **startTime** 會指出排程的執行應該開始的時間。 如果省略選用時間，則會使用您目前的 UTC 時間。 這次可以是過去的時間，在這種情況下，第一次執行的排程就如同在原始 **startTime** 之後，索引子一直都在執行。
 
 您也可以使用執行索引子呼叫，隨時依需求執行索引子。 如需執行索引子和設定索引子排程的詳細資訊，請參閱 REST API 參考中的 [執行索引子](/rest/api/searchservice/run-indexer)、 [取得索引](/rest/api/searchservice/get-indexer)器和 [更新索引子](/rest/api/searchservice/update-indexer) 。
 
@@ -90,30 +90,34 @@ ms.locfileid: "91532562"
 
 ## <a name="schedule-using-the-net-sdk"></a>使用 .NET SDK 進行排程
 
-您可以使用 Azure 認知搜尋 .NET SDK 來定義索引子的排程。 若要這樣做，請在建立或更新索引子時包含 **schedule** 屬性。
+您可以使用 Azure 認知搜尋 .NET SDK 來定義索引子的排程。 若要這樣做，請在建立或更新索引子時包含 **Schedule** 屬性。
 
-下列 c # 範例會使用預先定義的資料來源和索引來建立索引子，並將其排程設定為每天從現在30分鐘開始執行一次：
+下列 c # 範例會使用預先定義的資料來源和索引來建立 Azure SQL 資料庫索引子，並將其排程設定為每天開始執行一次：
 
+```csharp
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+    StartTime = DateTimeOffset.Now
+};
+
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "Data indexer",
+    Schedule = schedule
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
-    Indexer indexer = new Indexer(
-        name: "azure-sql-indexer",
-        dataSourceName: dataSource.Name,
-        targetIndexName: index.Name,
-        schedule: new IndexingSchedule(
-                        TimeSpan.FromDays(1), 
-                        new DateTimeOffset(DateTime.UtcNow.AddMinutes(30))
-                    )
-        );
-    await searchService.Indexers.CreateOrUpdateAsync(indexer);
-```
-如果省略 **schedule** 參數，索引子只會在建立之後立即執行。
 
-**StartTime**參數可以設定為過去的時間。 在這種情況下，第一次執行的排程就像是在指定 **startTime**之後連續執行索引子一樣。
 
-排程會使用 [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) 類別來定義。 **IndexingSchedule**的函式需要使用**TimeSpan**物件指定的**間隔**參數。 允許的最小間隔值為5分鐘，而最大值為24小時。 第二個 **startTime** 參數（指定為 **DateTimeOffset** 物件）是選擇性的。
+如果省略了 **Schedule** 屬性，索引子只會在建立後立即執行一次。
 
-.NET SDK 可讓您使用 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 類別及其 [索引子](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) 屬性來控制索引子作業，該屬性會從 **IIndexersOperations** 介面中執行方法。 
+**StartTime** 參數可以設定為過去的時間。 在這種情況下，第一次執行的排程就像是在指定 **StartTime** 之後連續執行索引子一樣。
 
-您可以使用其中一個 [run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run)、 [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)或 [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) 方法，隨時依需求執行索引子。
+排程會使用 [IndexingSchedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) 類別來定義。 **IndexingSchedule** 的函式需要使用 **TimeSpan** 物件指定的 **間隔** 參數。 允許的最小間隔值為5分鐘，而最大值為24小時。 第二個 **StartTime** 參數（指定為 **DateTimeOffset** 物件）是選擇性的。
 
-如需有關建立、更新和執行索引子的詳細資訊，請參閱 [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations)。
+.NET SDK 可讓您使用 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)來控制索引子作業。 
+
+您可以使用其中一個 [RunIndexer](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) 或 [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) 方法，隨時依需求執行索引子。
+
+如需有關建立、更新和執行索引子的詳細資訊，請參閱 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)。

@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909636"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357244"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -42,7 +42,7 @@ IoT 中樞的要求失敗，並出現下列其中一個錯誤訊息：
 
 ### <a name="cause-1"></a>原因 1
 
-針對 MQTT，某些 Sdk 會依賴 IoT 中樞在 SAS 權杖到期時發出中斷連線，以得知何時重新整理。 所以， 
+針對 MQTT，某些 Sdk 會依賴 IoT 中樞在 SAS 權杖到期時發出中斷連線，以得知何時重新整理。 所以，
 
 1. SAS 權杖到期
 1. IoT 中樞會通知到期，並中斷裝置與401003的連線 **IoTHubUnauthorized**
@@ -54,13 +54,15 @@ IoT 中樞的要求失敗，並出現下列其中一個錯誤訊息：
 
 IoT 中樞無法驗證驗證標頭、規則或金鑰。 這可能是因為徵兆中提及的任何原因所致。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 ### <a name="solution-1"></a>解決方案 1
 
-使用 IoT SDK 進行連接時，不需要採取任何動作，而是使用裝置連接字串。 IoT SDK 會重新產生新的權杖，以在 SAS 權杖到期時重新連接。 
+使用 IoT SDK 進行連接時，不需要採取任何動作，而是使用裝置連接字串。 IoT SDK 會重新產生新的權杖，以在 SAS 權杖到期時重新連接。
 
-如果有問題的數量，請切換至 C SDK，以在到期前更新 SAS 權杖。 此外，對於 AMQP，SAS 權杖可以重新整理，而不會中斷連接。
+不同 Sdk 的預設權杖存留期是60分鐘;不過，對於某些 Sdk，權杖存留期和權杖更新閾值是可設定的。 此外，當裝置中斷連線並重新連線權杖更新時所產生的錯誤，會因每個 SDK 而有所不同。 若要深入瞭解，以及如何判斷您的裝置在記錄中使用哪一個 SDK 的相關資訊，請參閱 [使用 Azure IoT Sdk MQTT 裝置中斷連線行為](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks)。
+
+針對裝置開發人員，如果錯誤的數量是問題，請切換到 C SDK，以在到期前更新 SAS 權杖。 若為 AMQP，SAS 權杖可以重新整理，而不會中斷連接。
 
 ### <a name="solution-2"></a>解決方案 2
 
@@ -72,7 +74,7 @@ IoT 中樞無法驗證驗證標頭、規則或金鑰。 這可能是因為徵兆
 - 授權認證的格式正確，適用于您所使用的通訊協定。 若要深入瞭解，請參閱 [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)。
 - 使用的授權規則具有所要求作業的許可權。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要更輕鬆地向 IoT 中樞進行驗證，我們建議使用 [Azure IoT sdk](iot-hub-devguide-sdks.md)。
 - 如需有關使用 IoT 中樞進行驗證的詳細資訊，請參閱 [控制 Iot 中樞的存取權](iot-hub-devguide-security.md)。

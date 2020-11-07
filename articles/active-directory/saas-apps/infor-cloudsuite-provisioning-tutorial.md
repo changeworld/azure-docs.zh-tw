@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: a62afa9469caa886d86814036017427c0cc0d193
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460179"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357431"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>教學課程：設定 Infor CloudSuite 來自動布建使用者
 
@@ -46,23 +46,23 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * 建議將單一 Azure AD 使用者指派給 Infor CloudSuite，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 Infor CloudSuite 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果可用) 。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Infor CloudSuite 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果可用) 。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="set-up-infor-cloudsuite-for-provisioning"></a>設定 Infor CloudSuite 以進行布建
 
-1. 登入您的 [Infor CloudSuite 管理主控台](https://www.infor.com/customer-center)。 按一下 [使用者] 圖示，然後流覽至 [ **使用者管理**]。
+1. 登入您的 [Infor CloudSuite 管理主控台](https://www.infor.com/customer-center)。 按一下 [使用者] 圖示，然後流覽至 [ **使用者管理** ]。
 
     ![Infor CloudSuite 管理主控台](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  按一下畫面左上角的功能表圖示。 按一下 [ **管理**]。
+2.  按一下畫面左上角的功能表圖示。 按一下 [ **管理** ]。
 
     ![Infor CloudSuite 新增 SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
-3.  流覽至 **SCIM 帳戶**。
+3.  流覽至 **SCIM 帳戶** 。
 
     ![Infor CloudSuite SCIM 帳戶](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  按一下加號圖示以新增系統管理員使用者。 提供 **SCIM 密碼** ，並在 [ **確認密碼**] 下輸入相同的密碼。 按一下資料夾圖示以儲存密碼。 接著，您會看到為系統管理員使用者產生的 **使用者識別碼** 。
+4.  按一下加號圖示以新增系統管理員使用者。 提供 **SCIM 密碼** ，並在 [ **確認密碼** ] 下輸入相同的密碼。 按一下資料夾圖示以儲存密碼。 接著，您會看到為系統管理員使用者產生的 **使用者識別碼** 。
 
     ![Infor CloudSuite 管理使用者](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
@@ -70,9 +70,9 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Infor CloudSuite 管理主控台的螢幕擷取畫面，其中顯示反白顯示的資料表資料列。該資料列包含使用者識別碼、密碼和時間戳記。" border="false":::
 
-5. 若要產生持有人權杖，請複製 **使用者識別碼** 和 **SCIM 密碼**。 將它們貼入 notepad + + 以冒號分隔。 藉由流覽至 **外掛程式 > MIME 工具 > Basic64 編碼**來編碼字串值。 
+5. 若要產生持有人權杖，請複製 **使用者識別碼** 和 **SCIM 密碼** 。 將它們貼入 notepad + + 以冒號分隔。 藉由流覽至 **外掛程式 > MIME 工具 > Basic64 編碼** 來編碼字串值。 
 
-    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Infor CloudSuite 管理主控台的螢幕擷取畫面，其中顯示反白顯示的資料表資料列。該資料列包含使用者識別碼、密碼和時間戳記。" border="false":::
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="記事本 + + 檔的螢幕擷取畫面。在 [外掛程式] 功能表中，[MIME 工具] 會反白顯示。在 [MIME 工具] 功能表中，會反白顯示 Base64 編碼。" border="false":::
 
 3.  複製持有人權杖。 此值將會在 Azure 入口網站中 Infor CloudSuite 應用程式的 [布建] 索引標籤的 [秘密權杖] 欄位中輸入。
 
@@ -82,7 +82,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 **若要從 Azure AD 應用程式資源庫新增 Infor CloudSuite，請執行下列步驟：**
 
-1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory**]。
+1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory** ]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -94,7 +94,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Infor CloudSuite**，在結果窗格中選取 [ **Infor CloudSuite** ]，然後按一下 [ **新增** ] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Infor CloudSuite** ，在結果窗格中選取 [ **Infor CloudSuite** ]，然後按一下 [ **新增** ] 按鈕以新增應用程式。
 
     ![結果清單中的 Infor CloudSuite](common/search-new-app.png)
 
@@ -126,7 +126,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [ **管理員認證** ] 區段下的 [ `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` **租使用者 URL**] 中輸入。 輸入稍早在 **秘密權杖**中取出的持有人權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Infor CloudSuite。 如果連接失敗，請確定您的 Infor CloudSuite 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [ **管理員認證** ] 區段下的 [ `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` **租使用者 URL** ] 中輸入。 輸入稍早在 **秘密權杖** 中取出的持有人權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Infor CloudSuite。 如果連接失敗，請確定您的 Infor CloudSuite 帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -136,7 +136,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 7. 按一下 [檔案]  。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Infor CloudSuite**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Infor CloudSuite** ]。
 
     ![Infor CloudSuite 使用者對應](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
@@ -144,7 +144,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Infor CloudSuite 使用者屬性](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Infor CloudSuite**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 Infor CloudSuite** ]。
 
     ![Infor CloudSuite 群組對應](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
@@ -154,11 +154,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Infor CloudSuite 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 Infor CloudSuite 的 Azure AD 布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Infor CloudSuite 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Infor CloudSuite 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

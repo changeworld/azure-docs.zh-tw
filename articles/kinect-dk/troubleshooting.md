@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 疑難排解、更新、bug、kinect、意見反應、修復、記錄、秘訣
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85276548"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356377"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知問題和疑難排解
 
-此頁面包含搭配 Azure Kinect DK 使用感應器 SDK 時的已知問題和疑難排解秘訣。 另請參閱產品硬體特定問題的 [產品支援頁面](https://aka.ms/kinectsupport) 。
+此頁面包含搭配 Azure Kinect DK 使用感應器 SDK 時的已知問題和疑難排解秘訣。 另請參閱產品硬體特定問題的 [產品支援頁面](./index.yml) 。
 
 ## <a name="known-issues"></a>已知問題
 
@@ -144,7 +144,7 @@ K4A.dll 的記錄是透過環境變數啟用。 依預設，記錄會傳送至 s
 
 如果裝置未在 [裝置管理員] 下列舉，可能是因為它已插入不支援的 USB3 控制器。 
 
-針對 **Windows、Intel**、德克薩斯州的 Azure Kinect DK， ** (TI) **，而 **Renesas** 是 *唯一支援的主機控制器*。 Windows 平臺上的 Azure Kinect SDK 依賴統一的容器識別碼，且必須跨越 USB 2.0 和3.0 裝置，才能讓 SDK 找到實際位於相同裝置上的深度、色彩和音訊裝置。 在 Linux 上，可能會支援更多主機控制器，因為該平臺較不依賴容器識別碼，而更多則是裝置序號。 
+針對 **Windows、Intel** 、德克薩斯州的 Azure Kinect DK， **(TI)** ，而 **Renesas** 是 *唯一支援的主機控制器* 。 Windows 平臺上的 Azure Kinect SDK 依賴統一的容器識別碼，且必須跨越 USB 2.0 和3.0 裝置，才能讓 SDK 找到實際位於相同裝置上的深度、色彩和音訊裝置。 在 Linux 上，可能會支援更多主機控制器，因為該平臺較不依賴容器識別碼，而更多則是裝置序號。 
 
 當電腦安裝了一個以上的主機控制器時，USB 主機控制器的主題會變得更複雜。 混合主機控制器時，使用者可能會遇到某些埠運作正常，而其他埠無法正常運作的問題。 根據埠如何連接至案例，您可能會看到 Azure Kinect 有問題的所有前端埠
 
@@ -166,6 +166,6 @@ K4A.dll 的記錄是透過環境變數啟用。 依預設，記錄會傳送至 s
 
 若要搭配使用內文追蹤 SDK 與 Unreal，請確定您已新增 `<SDK Installation Path>\tools` 至環境變數 `PATH` ，並將 `dnn_model_2_0.onnx` 和複製 `cudnn64_7.dll` 到 `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [其他支援資訊](support.md)

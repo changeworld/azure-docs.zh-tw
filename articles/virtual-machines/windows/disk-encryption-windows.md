@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: baa6e10d33d1c0a1a9c367baa8888fdfb5a47c01
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e0409f289289aaebc760473f1f74130b34fbdd39
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746216"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357720"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
@@ -123,9 +123,9 @@ Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合�
 您可以使用 [Resource Manager 範本來加密執行中的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)，以在 Azure 中現有或執行中的 IaaS Windows VM 上啟用磁碟加密。
 
 
-1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]  。
+1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]。
 
-2. 選取訂用帳戶、資源群組、位置、設定、法律條款及合約。 按一下 [購買]  ，以在現有或執行中的 IaaS VM 上啟用加密。
+2. 選取訂用帳戶、資源群組、位置、設定、法律條款及合約。 按一下 [購買]，以在現有或執行中的 IaaS VM 上啟用加密。
 
 下表列出現有或執行中 VM 的 Resource Manager 範本參數︰
 
@@ -158,7 +158,7 @@ NVMe 磁片將在下列案例中未初始化：
 
 - 解除配置之後啟動 VM
 - 服務修復
-- 備份
+- Backup
 
 在這些情況下，NVMe 磁片必須在 VM 啟動之後初始化。 若要在 NVMe 磁片上啟用加密，請執行命令，在 NVMe 磁片初始化之後再次啟用 Azure 磁碟加密。
 
@@ -266,6 +266,7 @@ Azure 磁碟加密不適用於下列案例、功能和技術：
 - 具有寫入加速器磁片的 M 系列 Vm。
 - 將 ADE 套用至 VM 時，會使用 [伺服器端加密搭配客戶管理的金鑰](disk-encryption.md) 來加密 (SSE + CMK) 的磁片。 將 SSE + CMK 套用至以 ADE 加密的 VM 上的資料磁片也是不支援的案例。
 - 您可以使用客戶管理的金鑰， **將已加密** 的 VM，或使用 ade 加密的 VM 遷移至 [伺服器端加密](disk-encryption.md)。
+- [沒有本機暫存磁片的 AZURE VM 大小](../azure-vms-no-temp-disk.md);具體而言，是 Dv4、Dsv4、Ev4 和 Esv4。
 
 ## <a name="next-steps"></a>後續步驟
 

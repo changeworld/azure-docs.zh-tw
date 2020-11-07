@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496116"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357108"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安裝並執行空間分析容器 (預覽版) 
 
@@ -95,23 +95,23 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 * 您已 [連線並啟用](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate) 您的 Azure Stack Edge 裝置。 
 * 您有一個執行 PowerShell 5.0 或更新版本的 Windows 用戶端系統來存取裝置。  
-* 若要部署 Kubernetes 叢集，您必須透過[Azure 入口網站](https://portal.azure.com/)上的**本機 UI**來設定您的 Azure Stack Edge 裝置： 
+* 若要部署 Kubernetes 叢集，您必須透過 [Azure 入口網站](https://portal.azure.com/)上的 **本機 UI** 來設定您的 Azure Stack Edge 裝置： 
   1. 在您的 Azure Stack Edge 裝置上啟用計算功能。 若要啟用計算，請移至您裝置的 web 介面中的 [ **計算** ] 頁面。 
-  2. 選取您要為計算啟用的網路介面，然後按一下 [ **啟用**]。 這會在您的裝置上，于該網路介面上建立虛擬交換器。
+  2. 選取您要為計算啟用的網路介面，然後按一下 [ **啟用** ]。 這會在您的裝置上，于該網路介面上建立虛擬交換器。
   3. 將 [Kubernetes test node IP 位址] 和 [Kubernetes external services IP 位址] 保留空白。
-  4. 按一下 [套用]  。 這種作業可能需要大約兩分鐘的時間。 
+  4. 按一下 [套用]。 這種作業可能需要大約兩分鐘的時間。 
 
 ![設定計算](media/spatial-analysis/configure-compute.png)
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>設定 Edge 計算角色並建立 IoT 中樞資源
 
-在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 Azure Stack Edge 資源。 在 [ **總覽** ] 頁面或導覽清單中，按一下 [ **Edge 計算開始** 使用] 按鈕。 在 [ **設定 Edge 計算**]   磚中，按一下 [**設定**]。 
+在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 Azure Stack Edge 資源。 在 [ **總覽** ] 頁面或導覽清單中，按一下 [ **Edge 計算開始** 使用] 按鈕。 在 [  **設定 Edge 計算** ]   磚中，按一下 [ **設定** ]。 
 
 ![連結](media/spatial-analysis/configure-edge-compute-tile.png)
 
-在 [ **設定 Edge 計算**]   頁面中，選擇現有的 IoT 中樞，或選擇建立一個新的。 根據預設，會使用標準 (S1) 定價層來建立 IoT 中樞資源。 若要使用免費層 IoT 中樞資源，請建立一個，然後選取它。 IoT 中樞資源使用 Azure Stack Edge 資源所使用的相同訂用帳戶和資源群組 
+在 [ **設定 Edge 計算** ]   頁面中，選擇現有的 IoT 中樞，或選擇建立一個新的。 根據預設，會使用標準 (S1) 定價層來建立 IoT 中樞資源。 若要使用免費層 IoT 中樞資源，請建立一個，然後選取它。 IoT 中樞資源使用 Azure Stack Edge 資源所使用的相同訂用帳戶和資源群組 
 
-按一下 [建立]。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
+按一下頁面底部的 [新增]  。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算** ] 磚上的 [ **View config** ]   。
 
 在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 Azure IoT Edge 執行時間將已在 IoT Edge 裝置上執行。            
 
@@ -289,7 +289,7 @@ sudo apt-get update
 安裝1.0.9 版本：
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 接下來，使用 [連接字串](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)，在您的 IoT 中樞實例中將主機電腦註冊為 IoT Edge 裝置。
@@ -354,7 +354,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ## <a name="validate-that-the-deployment-is-successful"></a>驗證部署是否成功
 
-有數種方式可驗證容器正在執行。 在 Azure 入口網站上 Azure IoT 中樞實例中空間分析模組的**IoT Edge 模組設定**中找出*執行時間狀態*。 驗證*執行時間狀態*所**需的值**和**回報值***是否正在*執行。
+有數種方式可驗證容器正在執行。 在 Azure 入口網站上 Azure IoT 中樞實例中空間分析模組的 **IoT Edge 模組設定** 中找出 *執行時間狀態* 。 驗證 *執行時間狀態* 所 **需的值** 和 **回報值***是否正在* 執行。
 
 ![部署驗證範例](./media/spatial-analysis/deployment-verification.png)
 
@@ -378,10 +378,10 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>使用錄製的影片檔案執行空間分析
 
 您可以使用已錄製或即時影片的空間分析。 若要針對錄製的影片使用空間分析，請嘗試錄製影片檔案，並將它儲存為有空間的檔案。 在 Azure 中建立 blob 儲存體帳戶，或使用現有的帳戶。 然後，更新 Azure 入口網站中的下列 blob 儲存體設定：
-    1. 變更**停用****所需的安全傳輸**
-    2. 變更**允許 Blob 公用存取****啟用**
+    1. 變更 **停用****所需的安全傳輸**
+    2. 變更 **允許 Blob 公用存取****啟用**
 
-流覽至 [ **容器** ] 區段，並建立新的容器或使用現有的容器。 然後將影片檔案上傳至容器。 展開所上傳檔案的檔案設定，然後選取 [ **產生 SAS**]。 請務必將 **到期日** 設定為足夠的時間，以涵蓋測試期間。 ) 不支援將 **允許的通訊協定** 設定為 *HTTP* (*HTTPS* 。
+流覽至 [ **容器** ] 區段，並建立新的容器或使用現有的容器。 然後將影片檔案上傳至容器。 展開所上傳檔案的檔案設定，然後選取 [ **產生 SAS** ]。 請務必將 **到期日** 設定為足夠的時間，以涵蓋測試期間。 ) 不支援將 **允許的通訊協定** 設定為 *HTTP* ( *HTTPS* 。
 
 按一下 [ **產生 SAS 權杖和 url** ]，然後複製 BLOB SAS URL。 取代開頭 `https` 為的 `http` ，並在支援影片播放的瀏覽器中測試 URL。
 

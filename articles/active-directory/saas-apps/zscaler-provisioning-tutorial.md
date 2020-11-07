@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5858e785b2105d8357ebd478699e2d17768fc25f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 2c7f4aebc70ff831459fe111bcc30f5385088028
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519719"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357669"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler 來自動布建使用者
 
@@ -55,7 +55,7 @@ ms.locfileid: "92519719"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **Zscaler**，並從結果面板中選取 [Zscaler]****，然後按一下 [新增]**** 按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **Zscaler** ，並從結果面板中選取 [Zscaler]，然後按一下 [新增] 按鈕以新增應用程式。
 
     ![結果清單中的 Zscaler](common/search-new-app.png)
 
@@ -71,7 +71,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 * 建議將單一 Azure AD 使用者指派給 Zscaler，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 Zscaler 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話) 。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Zscaler 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話) 。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>設定自動使用者布建至 Zscaler
 
@@ -82,11 +82,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>若要在 Azure AD 中為 Zscaler 設定自動使用者布建：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) 並選取 [ **企業應用程式**]，選取 [ **所有應用程式**]，然後選取 [ **Zscaler**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com) 並選取 [ **企業應用程式** ]，選取 [ **所有應用程式** ]，然後選取 [ **Zscaler** ]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Zscaler]****。
+2. 在應用程式清單中，選取 [Zscaler]  。
 
     ![應用程式清單中的 Zscaler 連結](common/all-applications.png)
 
@@ -100,7 +100,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 5. 在 [系統 **管理員認證** ] 區段下，輸入 Zscaler 帳戶的 **租使用者 URL** 和 **秘密權杖** ，如步驟6所述。
 
-6. 若要取得**租使用者 URL**和**秘密權杖**，請在 Zscaler 入口網站使用者介面中流覽至 [**管理 > 驗證設定**]，然後按一下 [**驗證類型**] 下的 [ **SAML** ]。
+6. 若要取得 **租使用者 URL** 和 **秘密權杖** ，請在 Zscaler 入口網站使用者介面中流覽至 [ **管理 > 驗證設定** ]，然後按一下 [ **驗證類型** ] 下的 [ **SAML** ]。
 
     ![[驗證設定] 頁面的螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
@@ -108,19 +108,19 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![[設定 S] 對話方塊的螢幕擷取畫面，其中已將基底 U R L 和持有人權杖的文字方塊稱為 out。](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    選取 [ **啟用 SCIM-Based** 布建] 以取出 **基底 URL** 和 **持有人權杖**，然後儲存設定。 將 **基底 url** 複製 **到租使用者 url**，並將持有人 **權杖**  複製到 Azure 入口網站中的 **秘密權杖** 。
+    選取 [ **啟用 SCIM-Based** 布建] 以取出 **基底 URL** 和 **持有人權杖** ，然後儲存設定。 將 **基底 url** 複製 **到租使用者 url** ，並將持有人 **權杖**  複製到 Azure 入口網站中的 **秘密權杖** 。
 
 7. 填入步驟5所示的欄位後，按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Zscaler。 如果連接失敗，請確定您的 Zscaler 帳戶具有系統管理員許可權，然後再試一次。
 
     ![[系統管理員認證] 區段的螢幕擷取畫面，其中已呼叫 [測試連接] 選項。](./media/zscaler-provisioning-tutorial/test-connection.png)
 
-8. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+8. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
     ![通知電子郵件文字方塊的螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/notification.png)
 
 9. 按一下 **[儲存]** 。
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Zscaler**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Zscaler** ]。
 
     ![反白顯示 [同步處理 Azure Active Directory 使用者至 Zscaler] 選項的 [對應] 區段螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
@@ -128,7 +128,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
-12. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Zscaler**]。
+12. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 Zscaler** ]。
 
     ![醒目提示 [同步處理 Azure Active Directory 群組至 Zscaler] 選項的 [對應] 區段螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
@@ -138,11 +138,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 14. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-15. 若要啟用 Zscaler Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+15. 若要啟用 Zscaler Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![將 [布建狀態] 選項設為 [開啟] 的螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/provisioning-status.png)
 
-16. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Zscaler 的使用者和/或群組。
+16. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Zscaler 的使用者和/或群組。
 
     ![醒目提示 [僅同步已指派的使用者和群組] 選項之 [領域] 設定的螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/scoping.png)
 

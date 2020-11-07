@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 7d35799cd73ff4d065cb58189f2325dc4dac6840
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a30b5c225bcbcb7ca0febad5ae23bce522d2135
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87567897"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357516"
 ---
 # <a name="create-a-connection-monitor-preview-using-the-armclient"></a>使用 ARMClient 建立連線監視器 (預覽) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "87567897"
 
 連接監視器 (預覽) 包含下列實體：
 
-* 連線**監視器資源**–區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
+* 連線 **監視器資源** –區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
 * **端點** –參與連線能力檢查的來源或目的地。 端點的範例包括 Azure Vm、內部部署代理程式、Url 和 Ip。
 * **測試** 設定–適用于測試的通訊協定特定設定。 根據您選擇的通訊協定，您可以定義埠、閾值、測試頻率及其他參數。
 * **測試群組** –包含來源端點、目的地端點和測試設定的群組。 連接監視器可以包含一個以上的測試群組。
@@ -60,40 +60,92 @@ properties: {
 
 endpoints: [{
 
-name: 'workspace',
+name: 'endpoint_workspace_machine',
+
+type: 'MMAWorkspaceMachine',
 
 resourceId: '/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
 
-filter: {
+//Example 1: Choose a machine
 
- items: [{
-
-type: 'AgentAddress',
-
-address: '<FQDN of your on-premises agent>'
-
-}]
-
+address : '<non-Azure machine FQDN>'
 }
 
-          },
+//Example 2: Select IP from chosen machines
 
- {
+address : '<non-Azure machine FQDN>
 
-name: 'vm1',
+"scope": {
+      "include": [
+            {
+                  "address": "<IP belonging to machine chosen above>"  
+        }
+       ]
+      }
+   }    
+   
+name: 'endpoint_workspace_network',
+
+type: 'MMAWorkspaceNetwork',
+
+resourceId: '/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
+
+ coverage level : 'high', //Optional
+ 
+ //Include subnets. You can also exclude IPs from subnet to exclude from monitoring
+ 
+ scope: {
+      "include": [
+            {
+                  "address": "<subnet 1 mask>" // Eg: 10.10.1.0/28
+            },
+            {
+                  "address": "<subnet 2 mask>" 
+            }
+      ],
+      "exclude": [
+            { 
+            "address" : "<ip-from-included-subnets-that-should-be-excluded>"
+        }
+      ]
+     }
+},
+
+//Use a Azure VM as an endpoint
+{
+
+name: 'endpoint_virtualmachine',
 
 resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
 
 },
 
+//Use an Azure VNET or Subnet as an endpoint
+
  {
 
-name: 'vm2',
+name: 'endpoint_vnet_subnet',
 
-resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
+resourceId: '<resource id of VNET or subnet'
+coverage level: 'high' //Optional
 
+//Scope is optional.
+
+  "scope": {
+      "include": [
+            {
+                  "address": "<subnet 1 mask>" // Eg: 10.10.1.0/28 .This subnet should match with any existing subnet in vnet
+            }
+      ],
+    "exclude": [
+            {
+                  "address": "<ip-from-included-subnets-that-should-be-excluded>" // If used with include, IP should be part of the subnet defined above. Without include, this could be any address within vnet range or any specific subnet range as a whole.
+            }
+      ]
+  }
    },
 
+//Endpoint as a URL
 {
 
 name: 'azure portal'
@@ -102,6 +154,7 @@ address: '<URL>'
 
    },
 
+//Endpoint as an IP 
  {
 
     name: 'ip',
@@ -167,9 +220,24 @@ address: '<URL>'
     protocol: 'HTTP',
 
     httpConfiguration: {
-
-     preferHTTPS: true
-
+    
+     port: '<port of choice>'
+  
+    preferHTTPS: true // If port chosen is not 80 or 443
+    
+    method: 'GET', //Choose GET or POST
+    
+    path: '/', //Specify path for request
+         
+    requestHeaders: [
+            {
+              "name": "Content-Type",
+              "value": "appication/json"
+            }
+          ],
+          
+    validStatusCodeRanges: [ "102", "200-202", "3xx" ], //Samples
+          
     },
 
     successThreshold: {
@@ -180,7 +248,8 @@ address: '<URL>'
 
     }
 
-   }, {
+   }, 
+   {
 
     name: 'tcpEnabled',
 
@@ -307,9 +376,15 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
     * 名稱-測試設定的名稱。
     * testFrequencySec-指定來源將在您指定的通訊協定和埠上偵測目的地的頻率。 您可以選擇30秒、1分鐘、5分鐘、15分鐘或30分鐘。 來源會依據您選擇的值，測試目的地的連線能力。 例如，如果您選取30秒，則來源會在30秒內檢查目的地至少一次的連接。
     * 通訊協定-您可以選擇 TCP、ICMP、HTTP 或 HTTPS。 根據通訊協定而定，您可以進行一些特定的通訊協定特定的
-        * preferHTTPS-指定是否要在 HTTP 上使用 HTTPS
+    
+        * preferHTTPS-指定當使用的埠不是80或443時，是否要使用 HTTPS over HTTP
         * 埠-指定您選擇的目的地埠。
-        * disableTraceRoute-這適用于其通訊協定為 TCP 或 ICMP 的測試群組。 它會從探索拓撲和逐躍點的 RTT 停止來源。
+        * disableTraceRoute-這適用于其通訊協定為 TCP 或 ICMP 的測試設定。 它會從探索拓撲和逐躍點的 RTT 停止來源。
+        * 方法-這適用于其通訊協定為 HTTP 的測試設定。 選取 HTTP 要求方法--GET 或 POST
+        * 路徑-指定要附加至 URL 的路徑參數
+        * validStatusCodes-選擇適用的狀態碼。 如果回應碼與這份清單不符，您將會收到診斷訊息
+        * requestHeaders-指定將會傳遞至目的地的自訂要求標頭字串
+        
     * successThreshold-您可以設定下列網路參數的閾值：
         * checksFailedPercent-設定當來源使用您指定的準則來檢查目的地的連接時，可能會失敗的檢查百分比。 針對 TCP 或 ICMP 通訊協定，失敗的檢查百分比可等同于為封包遺失的百分比。 若為 HTTP 通訊協定，此欄位代表未收到回應的 HTTP 要求百分比。
         * roundTripTimeMs：設定以毫秒為單位的 RTT （以毫秒為單位），以供來源透過測試設定連接到目的地所需的時間。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329256"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358162"
 ---
 # <a name="public-ip-addresses"></a>公用 IP 位址
 
@@ -38,6 +38,8 @@ ms.locfileid: "91329256"
 公用 IP 位址是使用 IPv4 或 IPv6 位址所建立的。 
 
 ## <a name="sku"></a>SKU
+
+若要瞭解 SKU 升級，請參閱 [公用 IP 升級](../virtual-network/virtual-network-public-ip-address-upgrade.md)。
 
 公用 IP 位址是使用下列其中一個 SKU 所建立的：
 
@@ -91,12 +93,12 @@ ms.locfileid: "91329256"
 
 此 IP 位址會在您停止 (或刪除) 資源時釋出 。  
 
-例如，公用 IP 資源會從名為 **Resource a**的資源釋出。如果已重新指派公用 IP 資源，則 **資源 A** 會在啟動時收到不同的 ip。
+例如，公用 IP 資源會從名為 **Resource a** 的資源釋出。如果已重新指派公用 IP 資源，則 **資源 A** 會在啟動時收到不同的 ip。
 
-當配置方法從 **靜態** 變更為 **動態**時，就會釋放 IP 位址。 若要確保相關聯資源的 IP 位址維持不變，請明確地將配置方法設定為 **靜態**。 系統會立即指派靜態 IP 位址。
+當配置方法從 **靜態** 變更為 **動態** 時，就會釋放 IP 位址。 若要確保相關聯資源的 IP 位址維持不變，請明確地將配置方法設定為 **靜態** 。 系統會立即指派靜態 IP 位址。
 
 > [!NOTE]
-> 即使將配置方法設定為「靜態」****，您也無法指定已指派給公用 IP 位址資源的實際 IP 位址。 Azure 會從資源建立所在的 Azure 位置中可用的 IP 位址集區指派 IP 位址。
+> 即使將配置方法設定為「靜態」，您也無法指定已指派給公用 IP 位址資源的實際 IP 位址。 Azure 會從資源建立所在的 Azure 位置中可用的 IP 位址集區指派 IP 位址。
 >
 
 靜態公用 IP 位址通常用於下列案例：
@@ -114,7 +116,7 @@ ms.locfileid: "91329256"
 
 選取此選項可指定公用 IP 資源的 DNS 功能變數名稱標籤。 
 
-此選取專案會建立**domainnamelabel**的對應。cloudapp.azure.com 至 Azure 受控 DNS 中的公用**IP。** 
+此選取專案會建立 **domainnamelabel** 的對應。cloudapp.azure.com 至 Azure 受控 DNS 中的公用 **IP。** 
 
 例如，使用下列方式建立公用 IP：
 
@@ -137,13 +139,13 @@ ms.locfileid: "91329256"
 
 ## <a name="virtual-machines"></a>虛擬機器
 
-您可以藉由將公用 IP 位址指派給其**網路介面**，以建立其與 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器的關聯。 
+您可以藉由將公用 IP 位址指派給其 **網路介面** ，以建立其與 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器的關聯。 
 
 選擇 [ **動態** ] 或 [ **靜態** ] 作為公用 IP 位址。 深入了解如何[將 IP 位址指派給網路介面](virtual-network-network-interface-addresses.md)。
 
 ## <a name="internet-facing-load-balancers"></a>網際網路對應負載平衡器
 
-您可以藉由將任一個 SKU 的公用 IP 位址指派給負載平衡器**前端**設定，使其中一個[SKU](#sku)的公用 IP 位址與[Azure Load Balancer](../load-balancer/load-balancer-overview.md)產生關聯。 公用 IP 可作為負載平衡的 IP。 
+您可以藉由將任一個 SKU 的公用 IP 位址指派給負載平衡器 **前端** 設定，使其中一個 [SKU](#sku)的公用 IP 位址與 [Azure Load Balancer](../load-balancer/load-balancer-overview.md)產生關聯。 公用 IP 可作為負載平衡的 IP。 
 
 您可以將動態或靜態公用 IP 位址指派給負載平衡器前端。 您可以將多個公用 IP 位址指派給負載平衡器前端。 此設定可啟用 [多 VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 案例，例如具有 TLS 型網站的多租使用者環境。 
 
@@ -156,7 +158,7 @@ ms.locfileid: "91329256"
 * Azure 虛擬網路
 * 內部部署網路 (s) 。 
 
-公用 IP 位址會指派給 VPN 閘道，以啟用與遠端網路的通訊。 您只可以將「動態」** 基本公用 IP 位址指派給 VPN 閘道。
+公用 IP 位址會指派給 VPN 閘道，以啟用與遠端網路的通訊。 您只可以將「動態」基本公用 IP 位址指派給 VPN 閘道。
 
 ## <a name="application-gateways"></a>應用程式閘道
 

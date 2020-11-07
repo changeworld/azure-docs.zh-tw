@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect、固件、更新、復原
-ms.openlocfilehash: ecfa4a18592d3bc70e3b7cdd66ff6464a54e560d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030679"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356216"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>更新 Azure Kinect DK 固件
 
@@ -27,7 +27,7 @@ Azure Kinect DK 不會自動更新固件。 您可以使用 [Azure Kinect 固件
 3. 在 SDK 安裝位置的 (SDK 安裝位置) \tools\ 下，您應該會發現：
 
     - AzureKinectFirmwareTool.exe
-    - 在 [固件] 資料夾中的5.926614，例如*AzureKinectDK_Fw_1.。*
+    - 在 [固件] 資料夾中的5.926614，例如 *AzureKinectDK_Fw_1.。*
 
 4. 將您的裝置連接到主機電腦，並同時將其開機。
 
@@ -82,7 +82,7 @@ Azure Kinect DK 不會自動更新固件。 您可以使用 [Azure Kinect 固件
 
 3. 如果所有其他失敗，請遵循 [復原步驟來](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk) 還原為出廠預設值，然後再試一次。
 
-如有任何其他問題，請參閱 [Microsoft 支援頁面](https://aka.ms/kinectsupport)
+如有任何其他問題，請參閱 [Microsoft 支援頁面](./index.yml)
 
 ## <a name="next-steps"></a>後續步驟
 

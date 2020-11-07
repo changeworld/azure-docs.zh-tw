@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4200bc9879aba5e18282123be03576cc617a5e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 59c599167089d222324ed880c18e68d763f5e468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549223"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358451"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>教學課程：設定 Cornerstone OnDemand 來自動佈建使用者
 
@@ -54,7 +54,7 @@ ms.locfileid: "88549223"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在 [搜尋] 方塊中，輸入 **Cornerstone OnDemand**，然後從結果面板中選取 [Cornerstone OnDemand]。 若要新增應用程式，請選取 [新增]。
+4. 在 [搜尋] 方塊中，輸入 **Cornerstone OnDemand** ，然後從結果面板中選取 [Cornerstone OnDemand]。 若要新增應用程式，請選取 [新增]。
 
     ![結果清單中的 Cornerstone OnDemand](common/search-new-app.png)
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * 建議將單一 Azure AD 使用者指派給 Cornerstone OnDemand，以測試自動佈建使用者的設定。 您可以稍後再指派其他使用者或群組。
 
-* 將使用者指派給 Cornerstone OnDemand 時，請在指派對話方塊中選取任何有效的應用程式特定角色 (如果有的話)。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Cornerstone OnDemand 時，請在指派對話方塊中選取任何有效的應用程式特定角色 (如果有的話)。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="configure-automatic-user-provisioning-to-cornerstone-ondemand"></a>設定自動將使用者佈建至 Cornerstone OnDemand
 
@@ -80,7 +80,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 **Cornerstone OnDemand**。
+2. 在應用程式清單中，選取 **Cornerstone OnDemand** 。
 
     ![應用程式清單中的 Cornerstone OnDemand 連結](common/all-applications.png)
 

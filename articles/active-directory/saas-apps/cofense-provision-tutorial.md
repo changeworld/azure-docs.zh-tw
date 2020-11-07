@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: fa187d9f7ee2b4b91c8559a185f55f0015f0b441
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: 69a9b9401f25893ec94b282f52730d92d372268d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455624"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355697"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Cofense 收件者同步
 
@@ -33,7 +33,7 @@ ms.locfileid: "92455624"
 > * 當使用者不再需要存取權時，請移除 Cofense 收件者同步處理的使用者
 > * 在 Azure AD 與 Cofense 收件者同步之間保持使用者屬性同步
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -48,8 +48,8 @@ ms.locfileid: "92455624"
 
 ## <a name="step-2-configure-cofense-recipient-sync-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Cofense 收件者同步以支援以 Azure AD 布建
 
-1. 登入 Cofense PhishMe。 流覽至 **收件者 > 收件者同步**。 
-2. 接受條款及條件，然後按一下 [ **開始**]。
+1. 登入 Cofense PhishMe。 流覽至 **收件者 > 收件者同步** 。 
+2. 接受條款及條件，然後按一下 [ **開始** ]。
 
     ![Recepient 同步 >tnc](media/cofense-provisioning-tutorial/recipient-sync-toc.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92455624"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 指派使用者和群組來 Cofense 收件者同步時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
+* 指派使用者和群組來 Cofense 收件者同步時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -81,7 +81,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [ **Cofense 收件者同步**]。
+2. 在應用程式清單中，選取 [ **Cofense 收件者同步** ]。
 
     ![應用程式清單中的 Cofense 連結](common/all-applications.png)
 
@@ -103,7 +103,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者來 Cofense 收件者同步處理**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者來 Cofense 收件者同步處理** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理的使用者屬性，以 Cofense 收件者同步處理。 選取為 [比對] 屬性 **的屬性會** 用來比對 Cofense 收件者同步中的使用者帳戶，以進行更新作業。  選取 [儲存] 按鈕以認可所有變更。
 
@@ -116,23 +116,23 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |name.formatted|String|
    |name.givenName|String|
    |name.familyName|String|
-   |名稱. honorificSuffix|String|
-   |phoneNumbers [type eq "work"]。值|String|
-   |phoneNumbers [type eq "home"]. 值|String|
-   |phoneNumbers [type eq "other"]. 值|String|
-   |phoneNumbers [type eq "呼機"]. 值|String|
-   |phoneNumbers [type eq "mobile"]. 值|String|
-   |phoneNumbers [type eq "fax"]. 值|String|
-   |位址 [type eq "other"]。已格式化|String|
-   |位址 [type eq "work"]。已格式化|String|
-   |位址 [type eq "work"]。 streetAddress|String|
-   |位址 [type eq "work"]。位置|String|
-   |位址 [type eq "work"]. region|String|
-   |位址 [type eq "work"]。郵遞區號|String|
+   |名稱. honorificSuffix|字串|
+   |phoneNumbers [type eq "work"]。值|字串|
+   |phoneNumbers [type eq "home"]. 值|字串|
+   |phoneNumbers [type eq "other"]. 值|字串|
+   |phoneNumbers [type eq "呼機"]. 值|字串|
+   |phoneNumbers [type eq "mobile"]. 值|字串|
+   |phoneNumbers [type eq "fax"]. 值|字串|
+   |位址 [type eq "other"]。已格式化|字串|
+   |位址 [type eq "work"]。已格式化|字串|
+   |位址 [type eq "work"]。 streetAddress|字串|
+   |位址 [type eq "work"]。位置|字串|
+   |位址 [type eq "work"]. region|字串|
+   |位址 [type eq "work"]。郵遞區號|字串|
    |位址 [type eq "work"]。國家/地區|String|
    |title|String|
    |emails[type eq "work"].value|String|
-   |電子郵件 [type eq "home"]。值|String|
+   |電子郵件 [type eq "home"]。值|字串|
    |電子郵件 [type eq "other"]。值|String|
    |preferredLanguage|String|
    |nickName|String|
@@ -148,11 +148,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-11. 若要啟用 Cofense 收件者同步的 Azure AD 布建服務，請在 [**設定**] 區段中，將布建**狀態**變更為 [**開啟**]。
+11. 若要啟用 Cofense 收件者同步的 Azure AD 布建服務，請在 [ **設定** ] 區段中，將布建 **狀態** 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-12. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建來 Cofense 收件者同步處理的使用者和/或群組。
+12. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建來 Cofense 收件者同步處理的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

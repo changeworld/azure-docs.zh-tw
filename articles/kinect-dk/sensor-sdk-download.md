@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect,sdk, 下載更新, 最新, 可用, 安裝
-ms.openlocfilehash: 48cdd35a80d68a7ec0d900639c0fca3a2c66787e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48a3df3962796cf561057e8ec85b754c974200f4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171783"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358500"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect Sensor SDK 下載
 
@@ -39,7 +39,7 @@ ms.locfileid: "86171783"
 
 目前，唯一支援的發行版本為 Ubuntu 18.04。 若要要求支援其他發行版本，請參閱[此頁面](https://aka.ms/azurekinectfeedback)。
 
-首先，您必須遵循[這裡](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)的指示，設定 [Microsoft 的套件存放庫](https://packages.microsoft.com/)。
+首先，您必須遵循[這裡](/windows-server/administration/linux-package-repository-for-microsoft-software)的指示，設定 [Microsoft 的套件存放庫](https://packages.microsoft.com/)。
 
 現在您可以安裝需要的套件。 `k4a-tools` 套件包含 [Azure Kinect Viewer](azure-kinect-viewer.md)、[Azure Kinect Recorder](record-sensor-streams-file.md) 和 [Azure Kinect Firmware Tool](azure-kinect-firmware-tool.md)。 若要安裝它，請執行
 

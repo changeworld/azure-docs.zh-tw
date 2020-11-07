@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 94f863bd4f016ed1117fa236323b43515fd53797
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0ca0c4eacce88bfb53582f7969ed7acbfd75bb8a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165592"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358706"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用命名實體辨識
 
@@ -70,7 +70,7 @@ ms.locfileid: "92165592"
 
 #### <a name="version-31-preview2"></a>[版本 3.1-preview。2](#tab/version-3-preview)
 
-命名實體辨識會 `v3.1-preview.2` 針對 NER 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
+命名實體辨識 `v3.1-preview.2` 針對 NER、PII 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
 
 實體連結
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
@@ -82,6 +82,7 @@ NER
 
 [命名實體辨識版本 3.1-預覽參考 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
 
+個人識別資訊 (PII)
 * 個人 (`PII`) 資訊- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
 
 您也可以使用選擇性 `domain=phi` 參數來偵測 `PHI` 文字中) 資訊 (健康情況。 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 49493f47c7178a15e37a54a70dd066690057caba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519566"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358417"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>使用受控識別設定 Azure SQL Database 的索引子連接
 
@@ -86,7 +86,7 @@ ms.locfileid: "92519566"
 
     ![新增角色指派](./media/search-managed-identities/add-role-assignment-sql-server.png "新增角色指派")
 
-4. 選取適當的**讀者**角色。
+4. 選取適當的 **讀者** 角色。
 5. 將 [存取權指派對象為] 保留為 [Azure AD 使用者、群組或服務主體]
 6. 搜尋您的搜尋服務，加以選取，然後選取 [儲存]
 
@@ -94,16 +94,16 @@ ms.locfileid: "92519566"
 
 ### <a name="5---create-the-data-source"></a>5 - 建立資料來源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 使用 [REST API](/rest/api/searchservice/create-data-source)建立資料來源時，資料來源必須具有下列必要屬性：
 
-* **名稱**是搜尋服務中資料來源的唯一名稱。
+* **名稱** 是搜尋服務中資料來源的唯一名稱。
 * **type** 是 `azuresql`
 * **credentials**
-    * 使用受控識別進行驗證時，**credentials** 格式會與未使用受控身分識別時的格式不同。 在這裡，您將提供初始類別目錄或資料庫名稱，以及沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含 Azure SQL Database 的訂用帳戶識別碼、SQL Database 的資源群組，以及 SQL Database 的名稱。 
+    * 使用受控識別進行驗證時， **credentials** 格式會與未使用受控身分識別時的格式不同。 在這裡，您將提供初始類別目錄或資料庫名稱，以及沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含 Azure SQL Database 的訂用帳戶識別碼、SQL Database 的資源群組，以及 SQL Database 的名稱。 
     * 受控識別連接字串格式：
-        * *初始類別目錄|資料庫=**資料庫名稱**;ResourceId=/訂用帳戶/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.Sql/servers/**SQL Server 名稱**/;連線逾時=**連線逾時時間長度**;*
+        * *初始類別目錄|資料庫= **資料庫名稱** ;ResourceId=/訂用帳戶/ **您的訂用帳戶識別碼** /resourceGroups/ **您的資源群組名稱** /providers/Microsoft.Sql/servers/ **SQL Server 名稱** /;連線逾時= **連線逾時時間長度** ;*
 * **container** 指定您想要編制索引的資料表或檢視表的名稱。
 
 如何使用 [REST API](/rest/api/searchservice/create-data-source) \(機器翻譯\) 建立 Azure SQL 資料來源物件的範例：

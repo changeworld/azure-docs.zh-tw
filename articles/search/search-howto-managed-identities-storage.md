@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519549"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358366"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線
 
@@ -65,7 +65,7 @@ ms.locfileid: "92519549"
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 從儲存體帳戶編製索引時，資料來源必須具有下列必要屬性︰
 

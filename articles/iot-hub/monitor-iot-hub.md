@@ -5,13 +5,13 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
-ms.date: 10/22/2020
-ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/06/2020
+ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128874"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357601"
 ---
 # <a name="monitoring-azure-iot-hub"></a>監視 Azure IoT 中樞
 
@@ -65,7 +65,7 @@ Azure IoT 中樞會收集與 [azure 資源監視資料](/azure/azure-monitor/ins
 
 下列螢幕擷取畫面顯示診斷設定，可將資源記錄類型的連線 *作業* 和所有平臺計量路由傳送至 log Analytics 工作區。
 
-:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT 中樞總覽頁面上的預設度量圖表。":::
+:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT 中樞的 [診斷設定] 窗格。":::
 
 如需使用 Azure 入口網站、CLI 或 PowerShell 建立診斷設定的詳細程式，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](/azure/azure-monitor/platform/diagnostic-settings) 。 當您建立診斷設定時，可以指定要收集的記錄類別。 Azure IoT 中樞的類別列在 [[監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md#resource-logs)] 的 [資源記錄檔] 底下。
 
@@ -81,7 +81,7 @@ Azure IoT 中樞會收集與 [azure 資源監視資料](/azure/azure-monitor/ins
 
 在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [ **監視** ] 底下的 **計量** ，以依預設將計量瀏覽器範圍設定為 iot 中樞所發出的平臺計量：
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT 中樞總覽頁面上的預設度量圖表。":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT 中樞的計量瀏覽器頁面。":::
 
 如需針對 Azure IoT 中樞收集的平臺度量清單，請參閱 [監視 Azure IoT 中樞資料參考中的計量](monitor-iot-hub-reference.md#metrics)。 如需針對所有 Azure 服務收集的平臺度量清單，請參閱 [支援的 Azure 監視器計量](/azure/azure-monitor/platform/metrics-supported)。
 
@@ -97,7 +97,7 @@ Azure 監視器記錄檔中的資料會儲存在資料表中，其中每個資�
 
 在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [ **監視** ] 底下的 **[記錄檔** ]，依預設針對您的 iot 中樞 Azure 監視器記錄檔中所收集的記錄和計量執行 Log Analytics 查詢。
 
-:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="IoT 中樞總覽頁面上的預設度量圖表。":::
+:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="IoT 中樞的 [記錄] 頁面。":::
 
 如需 Log Analytics Azure 監視器記錄和可查詢的資料表清單，請參閱 [監視 Azure IoT 中樞資料參考中 Azure 監視器記錄資料表](monitor-iot-hub-reference.md#azure-monitor-logs-tables)。
 
@@ -119,7 +119,7 @@ IoT 中樞資源記錄中的某些作業會傳回 `sdkVersion` 其物件中的�
 
 下表顯示用於不同 Azure IoT Sdk 的 SDK 名稱：
 
-| SdkVersion 屬性中的 SDK 名稱 | 語言 |
+| SdkVersion 屬性中的 SDK 名稱 | Language |
 |----------|----------|
 | .NET | .NET (C#) |
 | microsoft azure. 裝置 | .NET (c # ) service SDK |
@@ -291,6 +291,14 @@ class Program
 當您在監視資料中找到重要的條件時，Azure 監視器警示會主動通知您。 它們可讓您識別並解決您的系統中的問題，然後客戶才會注意到這些問題。 您可以設定 [計量](/azure/azure-monitor/platform/alerts-metric-overview)、 [記錄](/azure/azure-monitor/platform/alerts-unified-log)和 [活動記錄](/azure/azure-monitor/platform/activity-log-alerts)的警示。 不同類型的警示有其優點和缺點。
 
 根據平臺計量建立警示規則時，請注意，針對以計數單位收集的 IoT 中樞平臺計量，某些匯總可能無法使用或無法使用。 若要深入瞭解，請參閱 [監視 Azure IoT 中樞資料參考中支援的](monitor-iot-hub-reference.md#supported-aggregations)匯總。
+
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>使用事件方格監視每個裝置的中斷連線
+
+Azure 監視器提供計量連接的 *裝置* ，您可以用來監視連線到 IoT 中樞的裝置數量，並在連線的裝置數目低於閾值時觸發警示。 雖然這對某些案例而言可能已足夠，但 [Azure 事件方格](/azure/event-grid/) 提供低延遲、每一裝置的監視解決方案，可用來追蹤重要裝置和基礎結構的裝置連線。
+
+您可以使用事件方格來訂閱 IoT 中樞 [ **DeviceConnected** 和 **DeviceDisconnected** 事件](iot-hub-event-grid.md#event-types)，以觸發警示並監視裝置線上狀態。 事件方格可提供比 Azure 監視器更低的事件延遲，而且您可以根據每個裝置來監視，而不是針對已連線的裝置總數進行監視。 這些因素讓事件方格成為監視重要裝置和基礎結構連線的慣用方法。 我們強烈建議使用事件方格來監視生產環境中的裝置連線。
+
+如需有關使用事件方格和 Azure 監視器來監視裝置連線的詳細資訊，請參閱 [監視、診斷和疑難排解與 Azure IoT 中樞中斷](iot-hub-troubleshoot-connectivity.md)連接。
 
 ## <a name="next-steps"></a>後續步驟
 

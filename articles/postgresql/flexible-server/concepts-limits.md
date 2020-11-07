@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936604"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357176"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器的限制
 
@@ -73,10 +73,12 @@ ms.locfileid: "90936604"
 - VNET 不支援防火牆規則，而是可以改用網路安全性群組。
 - 公用存取資料庫伺服器可以連線到公用網際網路，例如透過 `postgres_fdw` ，而且無法限制此存取。 以 VNET 為基礎的伺服器可以使用網路安全性群組來限制輸出存取。
 
-### <a name="high-availability"></a>高可用性
+### <a name="high-availability-ha"></a>高可用性 (HA) 
 
 - 高載伺服器目前不支援 Zone-Redundant HA。
 - 當伺服器容錯移轉至 HA 待命時，資料庫伺服器的 IP 位址會變更。 請確定您使用的是 DNS 記錄，而不是伺服器 IP 位址。
+- 如果邏輯複寫是以 HA 設定的彈性伺服器設定，則在容錯移轉至待命伺服器的情況下，不會將邏輯複寫位置複製到待命伺服器。 
+- 如需額外的 HA 限制，請參閱 [概念-HA 檔](concepts-high-availability.md) 頁面。
 
 ### <a name="availability-zones"></a>可用性區域
 
