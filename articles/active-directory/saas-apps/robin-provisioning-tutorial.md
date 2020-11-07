@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1a7c2634f4dc06e3c988a48c7ca15294160759e2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 6ef4558cc0cbbacb372fc4a4c2b52859517a2635
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520722"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353473"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的配置資源
 
@@ -46,11 +46,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * 建議將單一 Azure AD 使用者指派給配置資源，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給「資源配置」時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有) 可用的話。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給「資源配置」時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有) 可用的話。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="set-up-robin-for-provisioning"></a>設定布建的配置資源
 
-1. 登入您的配置資源 [管理主控台](https://dashboard.robinpowered.com/login)。 流覽以 **管理 > 整合 > SCIM > 管理**。
+1. 登入您的配置資源 [管理主控台](https://dashboard.robinpowered.com/login)。 流覽以 **管理 > 整合 > SCIM > 管理** 。
 
     ![配置資源管理主控台](media/robin-provisioning-tutorial/robin-admin.png)
 
@@ -58,7 +58,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![配置資源支援的新增 SCIM](media/robin-provisioning-tutorial/robin-token.png)
 
-3.  複製 **SCIM Authentication Token**。 在 Azure 入口網站中，您配置資源應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
+3.  複製 **SCIM Authentication Token** 。 在 Azure 入口網站中，您配置資源應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
 
 
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 **若要從 Azure AD 應用程式資源庫新增配置資源，請執行下列步驟：**
 
-1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory**]。
+1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory** ]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -80,7 +80,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入配置資源，在結果窗格**中選取 [** 配置資源 **]，然後**按一下 [**新增**] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入配置資源，在結果窗格 **中選取 [** 配置資源 **]，然後** 按一下 [ **新增** ] 按鈕以新增應用程式。
 
     ![結果清單中的資源資源](common/search-new-app.png)
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Robin]****。
+2. 在應用程式清單中，選取 [Robin]。
 
     ![應用程式清單中的配置資源支援連結](common/all-applications.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [ **管理員認證** ] 區段下的 [ `https://api.robinpowered.com/v1.0/scim-2` **租使用者 URL**] 中輸入。 輸入稍早在**秘密權杖**中取出的**SCIM Authentication 權杖**值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線至配置資源。 如果連接失敗，請確定您的配置資源帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [ **管理員認證** ] 區段下的 [ `https://api.robinpowered.com/v1.0/scim-2` **租使用者 URL** ] 中輸入。 輸入稍早在 **秘密權杖** 中取出的 **SCIM Authentication 權杖** 值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線至配置資源。 如果連接失敗，請確定您的配置資源帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 7. 按一下 [檔案]  。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至**配置資源]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至** 配置資源]。
 
     ![配置資源支援的使用者對應](media/robin-provisioning-tutorial/robin-user-mapping.png)
 
@@ -127,7 +127,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![配置資源支援的使用者屬性](media/robin-provisioning-tutorial/robin-user-attribute-mapping.png)
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至**配置資源]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至** 配置資源]。
 
     ![配置資源支援的群組對應](media/robin-provisioning-tutorial/robin-group-mapping.png)
 
@@ -137,11 +137,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要為配置資源啟用 Azure AD 布建服務，請在 [**設定**] 區段中，將布建**狀態**變更為 [**開啟**]。
+13. 若要為配置資源啟用 Azure AD 布建服務，請在 [ **設定** ] 區段中，將布建 **狀態** 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建至配置資源的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建至配置資源的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445668"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353708"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的控管
 
@@ -27,7 +27,7 @@ ms.locfileid: "92445668"
 >
 > 此連接器目前為預覽版。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文所述的案例假設您已經具備下列必要條件：
 
@@ -45,19 +45,19 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * 建議您指派單一 Azure AD 使用者，以測試自動使用者布建設定。 您可以稍後再指派其他使用者或群組。
 
-* 當您將使用者指派給使用者時，您必須在 [ **指派** ] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話) 。 具有*預設存取*角色的使用者會從佈建中排除。
+* 當您將使用者指派給使用者時，您必須在 [ **指派** ] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話) 。 具有 *預設存取* 角色的使用者會從佈建中排除。
 
 ## <a name="set-up-harness-for-provisioning"></a>設定用於布建的控管
 
-1. 登入您的控管[管理主控台](https://app.harness.io/#/login)，然後移至 [**持續安全性**  >  **存取管理**]。
+1. 登入您的控管 [管理主控台](https://app.harness.io/#/login)，然後移至 [ **持續安全性**  >  **存取管理** ]。
 
     ![控管管理主控台](media/harness-provisioning-tutorial/admin.png)
 
-1. 選取 **API 金鑰**。
+1. 選取 **API 金鑰** 。
 
     ![控管 API 金鑰連結](media/harness-provisioning-tutorial/apikeys.png)
 
-1. 選取 [ **新增 API 金鑰**]。 
+1. 選取 [ **新增 API 金鑰** ]。 
 
     ![控管新增 API 金鑰連結](media/harness-provisioning-tutorial/addkey.png)
 
@@ -90,7 +90,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[新增應用程式] 按鈕](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入控管，在結果清單**中選取 [** 控管 **]，然後**選取 [**新增**] 按鈕以新增應用程式。
+1. 在搜尋方塊中，輸入控管，在結果清單 **中選取 [** 控管 **]，然後** 選取 [ **新增** ] 按鈕以新增應用程式。
 
     ![結果清單中的控管](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 若要在 Azure AD 中設定控管的自動使用者布建，請執行下列動作：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [**企業應用**程式  >  **所有應用程式**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [ **企業應用** 程式  >  **所有應用程式** ]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -118,11 +118,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![布建按鈕](common/provisioning.png)
 
-1. 在 [布建 **模式]** 下拉式清單中，選取 [ **自動**]。
+1. 在 [布建 **模式]** 下拉式清單中，選取 [ **自動** ]。
 
     ![[布建模式] 下拉式清單](common/provisioning-automatic.png)
 
-1. 在 [系統 **管理員認證**] 下，執行下列動作：
+1. 在 [系統 **管理員認證** ] 下，執行下列動作：
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
  
@@ -136,29 +136,29 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 選取 [儲存]。
 
-1. 在 **[** 對應] 底下，選取 [ **同步處理 Azure Active Directory 使用者] 進行**控管。
+1. 在 **[** 對應] 底下，選取 [ **同步處理 Azure Active Directory 使用者] 進行** 控管。
 
     ![將「同步處理 Azure Active Directory 的使用者」連結](media/harness-provisioning-tutorial/usermappings.png)
 
-1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理的使用者屬性。 選取為 [比對 *] 的屬性會用* 來比對控管中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。
+1. 在 [ **屬性** 對應] 下，檢查從 Azure AD 同步處理的使用者屬性。 選取為 [比對 *] 的屬性會用* 來比對控管中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![控制使用者的 [屬性對應] 窗格](media/harness-provisioning-tutorial/userattributes.png)
 
-1. 在 [對應] **底下，選取**[ **同步處理 Azure Active Directory 群組以進行控制**]。
+1. 在 [對應] **底下，選取** [ **同步處理 Azure Active Directory 群組以進行控制** ]。
 
     ![將「同步處理 Azure Active Directory 群組以進行控管」連結](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理的群組屬性。 選取為 [比對] 屬性 *的屬性會* 用來比對控制項中的群組，以進行更新作業。 選取 [儲存] 認可任何變更。
+1. 在 [ **屬性** 對應] 下，檢查從 Azure AD 同步處理的群組屬性。 選取為 [比對] 屬性 *的屬性會* 用來比對控制項中的群組，以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![工具組 [屬性對應] 窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
 1. 若要設定範圍篩選器，請參閱 [使用範圍篩選器的屬性型應用程式布建](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
-1. 在 [ **設定**] 下，若要啟用 Azure AD 布建服務，請將 [布建 **狀態** ] 切換為 [ **開啟**]。
+1. 在 [ **設定** ] 下，若要啟用 Azure AD 布建服務，請將 [布建 **狀態** ] 切換為 [ **開啟** ]。
 
     ![布建狀態切換切換為「開啟」](common/provisioning-toggle-on.png)
 
-1. 在 [ **設定**] 底下的 [ **領域** ] 下拉式清單中，選取您要如何同步處理您要布建的使用者或群組以進行控制。
+1. 在 [ **設定** ] 底下的 [ **領域** ] 下拉式清單中，選取您要如何同步處理您要布建的使用者或群組以進行控制。
 
     ![佈建範圍](common/provisioning-scope.png)
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4a7b6ffc04fea3c7e09bae365a9c148e0ae5a232
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 54dc9d7357e4315c7878ccdacfd3f90809751858
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517934"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353402"
 ---
 # <a name="tutorial-configure-myday-for-automatic-user-provisioning"></a>教學課程：設定 myday 來自動布建使用者
 
@@ -50,7 +50,7 @@ ms.locfileid: "92517934"
 
 ## <a name="step-2-configure-myday-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 myday 以支援 Azure AD 的布建
 
-請與您的 myday 代表或支援小組聯繫，以接收 **租使用者 URL** 和 **秘密權杖**。
+請與您的 myday 代表或支援小組聯繫，以接收 **租使用者 URL** 和 **秘密權杖** 。
 
 ## <a name="step-3-add-myday-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 myday
 
@@ -60,7 +60,7 @@ ms.locfileid: "92517934"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 myday 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 myday 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -75,7 +75,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [ **myday**]。
+2. 在應用程式清單中，選取 [ **myday** ]。
 
     ![應用程式清單中的 myday 連結](common/all-applications.png)
 
@@ -123,7 +123,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |phoneNumbers[type eq "fax"].value|String|
    |phoneNumbers[type eq "mobile"].value|String|
    |phoneNumbers[type eq "work"].value|String|
-   |角色 [主要 eq "True"]。顯示|String|
+   |角色 [主要 eq "True"]。顯示|字串|
    |角色 [主要 eq "True"]。類型|String|
    |roles[primary eq "True"].value|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
@@ -131,7 +131,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
 
-10. **在 [對應**] 區段下，選取 [布建**Azure Active Directory 群組**]。
+10. **在 [對應** ] 區段下，選取 [布建 **Azure Active Directory 群組** ]。
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 myday 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 myday 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -143,11 +143,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 myday Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 myday Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 myday 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 myday 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

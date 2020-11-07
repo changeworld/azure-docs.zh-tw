@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e5b008dd3d3a9d2422cca1fe00329543ed6d362f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517137"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353589"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. 儲存組態。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面，其中顯示第四個整合步驟。[儲存設定] 按鈕會反白顯示。" border="false":::
 
 5. 選取 [使用者佈建]，然後按一下 [確定]。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面，其中顯示第五個整合步驟。[使用使用者布建] 和 [確定] 按鈕會反白顯示。" border="false":::
 
 6. 按一下 [產生祕密金鑰]。 複製並儲存此值。此值會輸入到 Azure 入口網站 MediusFLow 應用程式 [佈建] 索引標籤中的 [祕密權杖] 欄位。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理主控台中 [使用者布建設定] 索引標籤的螢幕擷取畫面。[產生秘密金鑰] 和 [複製] 按鈕會反白顯示。" border="false":::
 
 7. 按一下 [確定]。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面，其中包含通知，告知使用者按一下 [確定] 以產生新的秘密金鑰。[確定] 按鈕會反白顯示。" border="false":::
 
 8. 若要使用 MediusFlow 中預先定義的一組角色、公司和其他一般設定來匯入使用者，您必須先進行設定。 首先，按一下 [新增設定] 來新增設定。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理主控台中 [使用者布建設定] 索引標籤的螢幕擷取畫面。[新增設定] 按鈕會反白顯示。" border="false":::
 
 9. 提供使用者的預設設定。 在此檢視中，您可以設定預設屬性。 如果標準設定為正確，則只提供有效的公司名稱就足夠。 由於這些組態設定是從 Mediusflow 擷取，因此必須先進行設定。 如需詳細資訊，請參閱本文的＜必要條件＞一節。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="[MediusFlow 新增設定] 視窗的螢幕擷取畫面。可以看到許多設定，包括地區設定、篩選和使用者角色。" border="false":::
 
 10. 按一下 [儲存] 以儲存使用者設定。
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理主控台中 [使用者布建設定] 索引標籤的螢幕擷取畫面。[儲存] 按鈕會反白顯示。" border="false":::
 
 11. 若要取得使用者佈建連結，請按一下 [複製 SCIM 連結]。 複製並儲存此值。 此值會在 Azure 入口網站中 MediusFLow 應用程式的 [佈建] 索引標籤中，[租用戶 URL] 欄位中輸入。
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理主控台中 [使用者布建設定] 索引標籤的螢幕擷取畫面。[複製 S C I M] 連結按鈕已反白顯示。" border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 MediusFlow
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996480"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353997"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -47,6 +47,8 @@ Linux 虛擬機器上的作業系統磁碟加密程序完成之後，就可以�
 Azure 磁碟加密也適用於具有進階儲存體的 VM。
 
 Azure 磁碟加密無法在 [第2代 vm](../generation-2.md#generation-1-vs-generation-2-capabilities) 和 [Lsv2 系列 vm](../lsv2-series.md)上使用。 如需更多例外狀況，請參閱 [Azure 磁碟加密：不支援的案例](disk-encryption-linux.md#unsupported-scenarios)。
+
+沒有暫存磁片的 VM 映射上無法使用 Azure 磁碟加密 (Dv4、Dsv4、Ev4 和 Esv4) 。  查看 [沒有本機暫存磁片的 AZURE VM 大小](../azure-vms-no-temp-disk.md)。
 
 ### <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -90,7 +92,7 @@ Azure 磁碟加密無法在 [第2代 vm](../generation-2.md#generation-1-vs-gene
 > [!NOTE]
 > RHEL OS 和適用於 RHEL7 隨用隨付映像的資料磁碟，可支援全新的 Azure 磁碟加密實作。  
 >
-> RHEL 自備訂閱金級映像也支援 ADE，但僅限於註冊訂閱**之後**。 如需詳細資訊，請參閱 [Azure 中的 Red Hat Enterprise Linux 自備訂閱金級映像](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
+> RHEL 自備訂閱金級映像也支援 ADE，但僅限於註冊訂閱 **之後** 。 如需詳細資訊，請參閱 [Azure 中的 Red Hat Enterprise Linux 自備訂閱金級映像](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>其他 VM 需求
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 976bc7f8e36200250f230f7e543dcb181f370663
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516472"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352688"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>教學課程：設定 Rollbar 來自動布建使用者
 
@@ -49,15 +49,15 @@ ms.locfileid: "92516472"
 
 使用 Azure AD 設定 Rollbar 來自動布建使用者之前，您必須在 Rollbar 上啟用 SCIM 布建。
 
-1. 登入您的 [Rollbar 管理主控台](https://rollbar.com/login/)。 按一下 [ **帳戶設定**]。
+1. 登入您的 [Rollbar 管理主控台](https://rollbar.com/login/)。 按一下 [ **帳戶設定** ]。
 
     ![Rollbar 管理主控台](media/rollbar-provisioning-tutorial/image00.png)
 
-2. 流覽至您的 **Rollbar 租使用者名稱 > 身分識別提供者**。
+2. 流覽至您的 **Rollbar 租使用者名稱 > 身分識別提供者** 。
 
     ![Rollbar 識別提供者](media/rollbar-provisioning-tutorial/idp.png)
 
-3. 向下滾動至布建 **選項**。 複製存取權杖。 在 Azure 入口網站的 Rollbar 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。 選取 [ **啟用使用者和小組** 布建] 核取方塊，然後按一下 [ **儲存**]。
+3. 向下滾動至布建 **選項** 。 複製存取權杖。 在 Azure 入口網站的 Rollbar 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。 選取 [ **啟用使用者和小組** 布建] 核取方塊，然後按一下 [ **儲存** ]。
 
     ![Rollbar 存取權杖](media/rollbar-provisioning-tutorial/token.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "92516472"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 Rollbar 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 Rollbar 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -85,7 +85,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Rollbar]****。
+2. 在應用程式清單中，選取 [Rollbar]  。
 
     ![應用程式清單中的 Rollbar 連結](common/all-applications.png)
 
@@ -97,7 +97,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [系統 **管理員認證** ] 區段下，輸入稍早在 **秘密權杖**中取出的存取權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Rollbar。 如果連接失敗，請確定您的 Rollbar 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統 **管理員認證** ] 區段下，輸入稍早在 **秘密權杖** 中取出的存取權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Rollbar。 如果連接失敗，請確定您的 Rollbar 帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/rollbar-provisioning-tutorial/admin.png)
 
@@ -107,7 +107,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Rollbar**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Rollbar** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Rollbar 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Rollbar 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](../app-provisioning/customize-application-attributes.md)，您將必須確定 Rollbar API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -118,9 +118,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |作用中|Boolean|
    |name.familyName|String|
    |name.givenName|String|
-   |電子郵件 [type eq "work"]|String|
+   |電子郵件 [type eq "work"]|字串|
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Rollbar**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 Rollbar** ]。
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Rollbar 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Rollbar 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -132,11 +132,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Rollbar Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 Rollbar Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Rollbar 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Rollbar 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

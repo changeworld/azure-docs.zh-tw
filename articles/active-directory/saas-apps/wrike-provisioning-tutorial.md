@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 76b5f279294dda0d2b1c01bf8cdd803390b04cec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520025"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354211"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>教學課程：設定 Wrike 來自動布建使用者
 
@@ -60,11 +60,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Azure AD](media/Wrike-provisioning-tutorial/Capture01.png)
 
-3.  選取 [SCIM]。 複製 **基底 URL**。
+3.  選取 [SCIM]。 複製 **基底 URL** 。
 
     ![基底 URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. 選取**API**  >  **Azure SCIM**。
+4. 選取 **API**  >  **Azure SCIM** 。
 
     ![Azure SCIM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -72,7 +72,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Wrike 建立權杖](media/Wrike-provisioning-tutorial/password.png)
 
-6.  複製 **秘密權杖**，並將它貼入 Azure AD 中。 選取 [ **儲存** ]，完成 Wrike 上的布建設定。
+6.  複製 **秘密權杖** ，並將它貼入 Azure AD 中。 選取 [ **儲存** ]，完成 Wrike 上的布建設定。
 
     ![永久存取權杖](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
@@ -83,7 +83,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 若要從 Azure AD 應用程式庫新增 Wrike，請遵循下列步驟。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的左方流覽窗格中，選取 [ **Azure Active Directory**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的左方流覽窗格中，選取 [ **Azure Active Directory** ]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -95,7 +95,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Wrike**，在 [結果] 面板中選取 [ **Wrike** ]，然後選取 [ **新增** ] 以新增應用程式。
+4. 在搜尋方塊中，輸入 **Wrike** ，在 [結果] 面板中選取 [ **Wrike** ]，然後選取 [ **新增** ] 以新增應用程式。
 
     ![結果清單中的 Wrike](common/search-new-app.png)
 
@@ -109,11 +109,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>在 Azure AD 中為 Wrike 設定自動使用者布建
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取**企業應用**程式  >  的**所有應用程式**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 **企業應用** 程式  >  的 **所有應用程式** 。
 
     ![所有應用程式](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Wrike]****。
+2. 在應用程式清單中，選取 [Wrike]。
 
     ![應用程式清單中的 Wrike 連結](common/all-applications.png)
 
@@ -125,7 +125,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![布建模式設定為自動](common/provisioning-automatic.png)
 
-5. 在 [管理員認證] 區段底下，分別輸入**租使用者 URL**和**秘密權杖**中稍早抓取的**基底 url**和**永久存取權杖**值。 選取 [ **測試連接** ] 以確保 Azure AD 可以連線至 Wrike。 如果連接失敗，請確定您的 Wrike 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [管理員認證] 區段底下，分別輸入 **租使用者 URL** 和 **秘密權杖** 中稍早抓取的 **基底 url** 和 **永久存取權杖** 值。 選取 [ **測試連接** ] 以確保 Azure AD 可以連線至 Wrike。 如果連接失敗，請確定您的 Wrike 帳戶具有系統管理員許可權，然後再試一次。
 
     ![租使用者 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -135,7 +135,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 8. 選取 [儲存]。
 
-9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Wrike**]。
+9. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Wrike** ]。
 
     ![Wrike 使用者對應](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
@@ -145,11 +145,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 11. 若要設定範圍篩選器，請遵循 [範圍篩選器教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。
 
-12. 若要啟用 Wrike Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+12. 若要啟用 Wrike Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![布建狀態已切換開啟](common/provisioning-toggle-on.png)
 
-13. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Wrike 的使用者或群組。
+13. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Wrike 的使用者或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

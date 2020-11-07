@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3c3aa5c1f640db79e4e64545dc0da804508f64a9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: 3fa91e6d9c1df941a930d53119e6d4bd4cabca04
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460031"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354354"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教學課程：設定 Insight4GRC 來自動布建使用者
 
@@ -31,7 +31,7 @@ ms.locfileid: "92460031"
 > * 在 Insight4GRC 中布建群組和群組成員資格
 > * Insight4GRC (建議的[單一登入](./insight4grc-tutorial.md)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -59,7 +59,7 @@ ms.locfileid: "92460031"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 Insight4GRC 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 Insight4GRC 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -86,7 +86,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [系統 **管理員認證** ] 區段的 [ **租使用者 url**] 中，輸入 SCIM 端點 url。 端點 URL 的格式應該是 `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` **Insight4GRC 功能變數名稱** 是在先前步驟中抓取的值。 輸入稍早在 **秘密權杖**中取出的持有人權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Insight4GRC。 如果連接失敗，請確定您的 Insight4GRC 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統 **管理員認證** ] 區段的 [ **租使用者 url** ] 中，輸入 SCIM 端點 url。 端點 URL 的格式應該是 `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` **Insight4GRC 功能變數名稱** 是在先前步驟中抓取的值。 輸入稍早在 **秘密權杖** 中取出的持有人權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Insight4GRC。 如果連接失敗，請確定您的 Insight4GRC 帳戶具有系統管理員許可權，然後再試一次。
 
     ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -96,7 +96,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Insight4GRC**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Insight4GRC** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Insight4GRC 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Insight4GRC 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](../app-provisioning/customize-application-attributes.md)，您將必須確定 Insight4GRC API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -111,7 +111,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |emails[type eq "work"].value|String|
    |phoneNumbers[type eq "work"].value|String|
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Insight4GRC**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 Insight4GRC** ]。
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Insight4GRC 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Insight4GRC 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -123,11 +123,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Insight4GRC Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 Insight4GRC Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Insight4GRC 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 Insight4GRC 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

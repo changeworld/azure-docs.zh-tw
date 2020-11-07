@@ -5,17 +5,17 @@ services: peering-service
 author: derekolo
 ms.service: peering-service
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 02135b7e1f2086e430411c31f59ddeb55b2978e7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29ce0c1421019b95adb00c4eab3f9c1d90da0510
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201064"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353776"
 ---
 # <a name="peering-service-partners"></a>對等互連服務合作夥伴
 
@@ -40,9 +40,10 @@ Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路交換服
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |大洋洲  |
 | [Liquid Telecom](https://liquidcloud.africa/keep-expanding-365-direct/) | 非洲  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | 日本 |
-| [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |亞洲 |
-| [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |亞洲 |
+| [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |Asia |
+| [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |Asia |
 | [NAP 非洲](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |非洲|
+| [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |歐洲|
 
 > [!NOTE]
 >如需有關使用對等互連服務夥伴計畫登記的詳細資訊，請洽詢 peeringservice@microsoft.com 。

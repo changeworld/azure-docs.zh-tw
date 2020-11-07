@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8bd7d3e5dc4c263ff2a2ff03c077b59196c3413b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 915133210c9797db7446bf30391635fd36b73bf0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520739"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352787"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教學課程：設定 RingCentral 來自動布建使用者
 
@@ -46,15 +46,15 @@ ms.locfileid: "92520739"
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 RingCentral 以支援 Azure AD 的布建
 
-1. 登入您的 [RingCentral 管理主控台](https://login.ringcentral.com/sw.html)。 流覽至 [ **工具] > 目錄整合**。
+1. 登入您的 [RingCentral 管理主控台](https://login.ringcentral.com/sw.html)。 流覽至 [ **工具] > 目錄整合** 。
 
     ![RingCentral 管理主控台](media/ringcentral-provisioning-tutorial/admin.png)
 
-2.  選擇 [**選取目錄提供者**] 下的 [ **SCIM** ]。  (未來將會有一個稱為 Azure Active Directory) 的選項。 按一下 [ **啟用 SCIM 服務**]。
+2.  選擇 [ **選取目錄提供者** ] 下的 [ **SCIM** ]。  (未來將會有一個稱為 Azure Active Directory) 的選項。 按一下 [ **啟用 SCIM 服務** ]。
 
     ![RingCentral 新增 SCIM](media/ringcentral-provisioning-tutorial/scim.png)
 
-3.  請聯絡 RingCentral 支援小組，以 matthew.hunt@ringcentral.com 取得 **SCIM Authentication 權杖**。 在 Azure 入口網站的 RingCentral 應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
+3.  請聯絡 RingCentral 支援小組，以 matthew.hunt@ringcentral.com 取得 **SCIM Authentication 權杖** 。 在 Azure 入口網站的 RingCentral 應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
 
 > [!NOTE]
 > 若要將授權指派給使用者，請參閱 [這裡](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)的影片連結。
@@ -67,7 +67,7 @@ ms.locfileid: "92520739"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 RingCentral 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 RingCentral 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -94,7 +94,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [ **管理員認證** ] 區段下的 [ `https://platform.ringcentral.com/scim/v2` **租使用者 URL**] 中輸入。 輸入稍早在**秘密權杖**中取出的**SCIM Authentication 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 RingCentral。 如果連接失敗，請確定您的 RingCentral 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [ **管理員認證** ] 區段下的 [ `https://platform.ringcentral.com/scim/v2` **租使用者 URL** ] 中輸入。 輸入稍早在 **秘密權杖** 中取出的 **SCIM Authentication 權杖** 值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 RingCentral。 如果連接失敗，請確定您的 RingCentral 帳戶具有系統管理員許可權，然後再試一次。
 
     ![已呼叫 [測試連接] 選項的 [租使用者 URL] 和 [秘密權杖文字] 欄位的螢幕擷取畫面。](./media/ringcentral-provisioning-tutorial/provisioning.png)
 
@@ -104,7 +104,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 RingCentral**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 RingCentral** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 RingCentral 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 RingCentral 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](../app-provisioning/customize-application-attributes.md)，您將必須確定 RingCentral API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -127,11 +127,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-11. 若要啟用 RingCentral Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+11. 若要啟用 RingCentral Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-12. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 RingCentral 的使用者和/或群組。
+12. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 RingCentral 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
