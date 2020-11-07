@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532495"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358927"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 認知搜尋索引子的欄位對應和轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "91532495"
 * 您的資料來源有一個名為的欄位 `_id` ，但 Azure 認知搜尋不允許以底線開頭的功能變數名稱。 欄位對應可讓您有效地重新命名欄位。
 * 您想要從相同的資料來源資料填入索引中的數個欄位。 例如，您可能會想要將不同的分析器套用至這些欄位。
 * 您想要在索引欄位中填入來自多個資料來源的資料，而且每個資料來源都使用不同的功能變數名稱。
-* 您必須以 Base64 格式編碼或解碼資料。 欄位對應支援數個 **對應函式**，包括 Base64 編碼和解碼的函式。
+* 您必須以 Base64 格式編碼或解碼資料。 欄位對應支援數個 **對應函式** ，包括 Base64 編碼和解碼的函式。
 
 > [!NOTE]
 > 索引子中的欄位對應是一個簡單的方式，可將資料欄位對應至索引欄位，而且有一些功能可以進行輕量資料轉換。 更複雜的資料可能需要預先處理，才能將它調整為採用遭利用索引的表單。 您可以考慮的其中一個選項是 [Azure Data Factory](../data-factory/index.yml)。
@@ -81,7 +81,7 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-the-net-sdk"></a>使用 .NET SDK 來對應欄位
 
-您可以使用 [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) 類別，在 .net SDK 中定義欄位對應，其具有屬性 `SourceFieldName` 和 `TargetFieldName` ，以及選擇性的 `MappingFunction` 參考。
+您可以使用 [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) 類別，在 .net SDK 中定義欄位對應，其具有屬性 `SourceFieldName` 和 `TargetFieldName` ，以及選擇性的 `MappingFunction` 參考。
 
 您可以在建立索引子時指定欄位對應，或在稍後直接設定 `Indexer.FieldMappings` 屬性。
 
@@ -122,7 +122,7 @@ api-key: [admin key]
 
 ### <a name="base64encode-function"></a>base64Encode 函式
 
-執行輸入字串的安全 URL ** Base64 編碼。 假設輸入以 UTF-8 編碼。
+執行輸入字串的安全 URL  Base64 編碼。 假設輸入以 UTF-8 編碼。
 
 #### <a name="example---document-key-lookup"></a>範例-檔索引鍵查閱
 
@@ -215,7 +215,7 @@ Azure 認知搜尋中的 .NET 程式庫採用完整的 .NET Framework，可提�
 | Base64 加填補 | `MDA+MDA/MDA=` | 使用 URL 安全的字元，並移除填補 | 使用標準 base64 字元，並加上填補 |
 | Base64 無填補 | `MDA+MDA/MDA` | 使用 URL 安全的字元 | 使用標準 base64 字元 |
 | URL 安全的 base64 填補加填補 | `MDA-MDA_MDA=` | 移除填補 | 加上填補 |
-| URL 安全的 base64 無填補 | `MDA-MDA_MDA` | 無 | 無 |
+| URL 安全的 base64 無填補 | `MDA-MDA_MDA` | None | None |
 
 <a name="extractTokenAtPositionFunction"></a>
 

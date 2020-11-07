@@ -1130,7 +1130,7 @@
             - name: 已封存的傳統 RM 文件
               href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
-              href: //sql/ssdt/download-sql-server-data-tools-ssdt
+              href: /sql/ssdt/download-sql-server-data-tools-ssdt
             - name: SQL Server Management Studio (SSMS)
               href: /sql/ssms/download-sql-server-management-studio-ssms
             - name: SQL Server 工具

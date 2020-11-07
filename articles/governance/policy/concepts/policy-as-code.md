@@ -1,16 +1,16 @@
 ---
-title: 將 Azure 原則設計為程式碼工作流程
+title: 設計 Azure 原則即程式碼工作流程
 description: 了解如何設計將您的 Azure 原則定義部署為程式碼並自動驗證資源的工作流程。
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320603"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359675"
 ---
-# <a name="design-azure-policy-as-code-workflows"></a>將 Azure 原則設計為程式碼工作流程
+# <a name="design-azure-policy-as-code-workflows"></a>設計 Azure 原則即程式碼工作流程
 
 透過雲端治理進行旅程時，您會想要從使用 Azure 入口網站或各種 SDK 手動管理每個原則定義，轉換為在企業規模更容易管理且可重複使用的程序。 要在雲端大規模管理系統，主要有兩種方法：
 
@@ -38,8 +38,6 @@ Azure 原則的程式碼是這些構想的組合。 基本上，請將原則定�
 
 - 原則定義： [將標記新增至資源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - 方案定義： [計費標記](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-此外，請參閱 [匯出 Azure 原則資源](../how-to/export-resources.md) ，以將現有的定義和指派指派至原始程式碼管理環境 [GitHub](https://www.github.com)。
 
 ## <a name="workflow-overview"></a>工作流程概觀
 
@@ -74,6 +72,8 @@ Azure 原則的程式碼是這些構想的組合。 基本上，請將原則定�
 
 新增原則或更新現有的原則時，工作流程應該會自動更新 Azure 中的原則定義。 新的或更新的原則定義會在後續步驟中進行測試。
 
+此外，請參閱 [匯出 Azure 原則資源](../how-to/export-resources.md) ，以將現有的定義和指派指派至原始程式碼管理環境 [GitHub](https://www.github.com)。
+
 ### <a name="create-and-update-initiative-definitions"></a>建立及更新方案定義
 
 同樣地，方案也有本身的 JSON 檔案和相關檔案，應儲存在相同資料夾中。 方案定義需要已存在的原則定義，因此必須等到原則的來源已在原始檔控制中更新，繼而在 Azure 中更新之後，才能建立或更新。 下列結構是將方案定義保存在原始檔控制中的建議方式：
@@ -102,7 +102,7 @@ Azure 原則的程式碼是這些構想的組合。 基本上，請將原則定�
 
 ### <a name="test-and-validate-the-updated-definition"></a>測試及驗證更新的定義
 
-在自動流程已取得您新建立或更新的原則或方案定義，並對 Azure 中的物件進行更新後，就可以測試所做的變更。 原則或其所屬的方案應指派給生產之前最初步的環境所含的資源。 此環境通常為 _Dev_。
+在自動流程已取得您新建立或更新的原則或方案定義，並對 Azure 中的物件進行更新後，就可以測試所做的變更。 原則或其所屬的方案應指派給生產之前最初步的環境所含的資源。 此環境通常為 _Dev_ 。
 
 指派的 [enforcementMode](./assignment-structure.md#enforcement-mode) 應使用 [停用]，如此就不會封鎖資源的建立和更新，但仍會對現有的資源進行審核以符合更新的原則定義。 即便使用 enforcementMode，仍建議將指派範圍設為專門用來驗證原則的資源群組或訂用帳戶。
 
@@ -129,7 +129,7 @@ Azure 原則的程式碼是這些構想的組合。 基本上，請將原則定�
 
 ### <a name="update-to-enforced-assignments"></a>更新為強制指派
 
-所有驗證閘道皆已完成後，請更新指派以使用 [啟用] 的 **enforcementMode**。 建議您應先在生產之前的同一個最初期的環境中進行這項變更。 該環境經驗證可如預期運作之後，即應該將變更的範圍設定為包含下一個環境，依此類推，直到原則部署至生產資源為止。
+所有驗證閘道皆已完成後，請更新指派以使用 [啟用] 的 **enforcementMode** 。 建議您應先在生產之前的同一個最初期的環境中進行這項變更。 該環境經驗證可如預期運作之後，即應該將變更的範圍設定為包含下一個環境，依此類推，直到原則部署至生產資源為止。
 
 ## <a name="process-integrated-evaluations"></a>程序整合評估
 

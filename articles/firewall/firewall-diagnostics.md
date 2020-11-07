@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348758"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358842"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>監視 Azure 防火牆記錄和計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "93348758"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您應該先閱讀 [Azure 防火牆記錄和計量](logs-and-metrics.md) ，以瞭解適用于 azure 防火牆的診斷記錄和計量。
 
@@ -50,74 +50,55 @@ ms.locfileid: "93348758"
 8. 選取您的訂用帳戶。
 9. 選取 [儲存]。
 
-## <a name="enable-logging-with-powershell"></a>使用 PowerShell 啟用記錄
+## <a name="enable-diagnostic-logging-by-using-powershell"></a>使用 PowerShell 啟用診斷記錄
 
 每個 Resource Manager 資源都會自動啟用活動記錄功能。 您必須啟用診斷記錄，才能開始收集可透過這些記錄取得的資料。
 
-若要啟用診斷記錄，請使用下列步驟：
+若要使用 PowerShell 啟用診斷記錄，請使用下列步驟：
 
-1. 請記下您的儲存體帳戶的資源識別碼 (記錄資料的儲存之處)。 此值的形式為： */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>* 。
+1. 請記下記錄資料儲存所在的 Log Analytics 工作區資源識別碼。 此值的格式為： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>` 。
 
-   您可以使用訂用帳戶中的所有儲存體帳戶。 您可以使用 Azure 入口網站來尋找此資訊。 資訊位於資源的 [屬性] 頁面中。
+   您可以使用訂用帳戶中的任何工作區。 您可以使用 Azure 入口網站來尋找此資訊。 此資訊位於資源 **屬性** 頁面中。
 
-2. 請記下您防火牆的資源識別碼 (將為其啟用記錄功能)。 此值的形式為： */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>* 。
+2. 請記下您防火牆的資源識別碼 (將為其啟用記錄功能)。 此值的格式為： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` 。
 
    您可以使用入口網站來尋找此資訊。
 
-3. 使用下列 Powershell Cmdlet 啟用診斷記錄功能：
+3. 使用下列 PowerShell Cmdlet 啟用所有記錄和計量的診斷記錄：
 
-    ```powershell
-    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
-   -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> `
-   -Enabled $true     
-    ```
+   ```powershell
+   $diagSettings = @{
+      Name = 'toLogAnalytics'
+      ResourceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      WorkspaceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      Enabled = $true
+   }
+   Set-AzDiagnosticSetting  @diagSettings 
+   ```
 
-> [!TIP]
->診斷記錄不需要個別的儲存體帳戶。 將儲存體用於記錄存取和效能會產生服務費用。
-
-## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>使用 Azure CLI 來啟用診斷記錄
+## <a name="enable-diagnostic-logging-by-using-the-azure-cli"></a>使用 Azure CLI 來啟用診斷記錄
 
 每個 Resource Manager 資源都會自動啟用活動記錄功能。 您必須啟用診斷記錄，才能開始收集可透過這些記錄取得的資料。
 
-[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+若要使用 Azure CLI 啟用診斷記錄，請使用下列步驟：
 
-### <a name="enable-diagnostic-logging"></a>啟用診斷記錄
+1. 請記下記錄資料儲存所在的 Log Analytics 工作區資源識別碼。 此值的格式為： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` 。
 
-使用下列命令來啟用診斷記錄。
+   您可以使用訂用帳戶中的任何工作區。 您可以使用 Azure 入口網站來尋找此資訊。 此資訊位於資源 **屬性** 頁面中。
 
-1. 執行 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 命令以啟用診斷記錄：
+2. 請記下您防火牆的資源識別碼 (將為其啟用記錄功能)。 此值的格式為： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` 。
 
-   ```azurecli
-   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
-     --resource Firewall07 --storage-account MyStorageAccount
+   您可以使用入口網站來尋找此資訊。
+
+3. 使用下列 Azure CLI 命令啟用所有記錄和計量的診斷記錄：
+
+   ```azurecli-interactive
+   az monitor diagnostic-settings create -n 'toLogAnalytics'
+      --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      --logs '[{\"category\":\"AzureFirewallApplicationRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallNetworkRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallDnsProxy\",\"Enabled\":true}]' 
+      --metrics '[{\"category\": \"AllMetrics\",\"enabled\": true}]'
    ```
-
-   執行 [az monitor 診斷-settings list](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) 命令以查看資源的診斷設定：
-
-   ```azurecli
-   az monitor diagnostic-settings list --resource Firewall07
-   ```
-
-   使用 [az monitor 診斷設定顯示](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) 來查看資源的作用中診斷設定：
-
-   ```azurecli
-   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-1. 執行 [az monitor 診斷-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) 命令以更新設定。
-
-   ```azurecli
-   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
-   ```
-
-   使用 [az 監視器診斷-設定刪除](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) 命令來刪除診斷設定。
-
-   ```azurecli
-   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-> [!TIP]
->診斷記錄不需要個別的儲存體帳戶。 將儲存體用於記錄存取和效能會產生服務費用。
 
 ## <a name="view-and-analyze-the-activity-log"></a>檢視和分析活動記錄檔
 
@@ -133,6 +114,8 @@ ms.locfileid: "93348758"
 
 如需 Azure 防火牆 log analytics 範例查詢，請參閱 [Azure 防火牆 log analytics](log-analytics-samples.md)範例。
 
+[Azure 防火牆活頁簿](firewall-workbook.md) 為 azure 防火牆資料分析提供了彈性的畫布。 您可以使用它，在 Azure 入口網站中建立豐富的視覺效果報表。 您可以利用多個在 Azure 中部署的防火牆，並將它們結合成整合的互動式體驗。
+
 您也可以連接到儲存體帳戶並擷取存取和效能記錄的 JSON 記錄項目。 下載 JSON 檔案後，可以將它們轉換成 CSV，並在 Excel、PowerBI 或任何其他資料視覺化工具中檢視它們。
 
 > [!TIP]
@@ -144,5 +127,7 @@ ms.locfileid: "93348758"
 ## <a name="next-steps"></a>後續步驟
 
 既然您已設定防火牆來收集記錄，您可以探索 Azure 監視器記錄以檢視您的資料。
+
+[使用 Azure 防火牆活頁簿監視記錄](firewall-workbook.md)
 
 [Azure 監視器記錄中的網路監視解決方案](../azure-monitor/insights/azure-networking-analytics.md)

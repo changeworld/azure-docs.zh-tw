@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933858"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359539"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中的高可用性概念
 
@@ -43,7 +43,7 @@ ms.locfileid: "90933858"
 
 于 postgresql 用戶端應用程式會使用資料庫伺服器名稱連接到主伺服器。 應用程式讀取會直接從主伺服器提供服務，而只有在主伺服器和待命複本上保存資料時，才會向應用程式確認認可和寫入。 由於這項額外的來回行程需求，應用程式可能會預期寫入和認可的延遲較高。 您可以在入口網站上監視高可用性的健全狀況。
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="區域冗余高可用性"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="區域冗余高可用性-穩定狀態"::: 
 
 1. 用戶端會連線到彈性的伺服器，並執行寫入作業。
 2. 變更會複寫到待命網站。
@@ -64,7 +64,7 @@ ms.locfileid: "90933858"
 
 未計畫的中斷包括軟體錯誤或基礎結構元件失敗會影響資料庫的可用性。 當監視系統偵測到伺服器無法使用時，就會中斷對待命複本的複寫，並啟用待命複本作為主資料庫伺服器。 用戶端可以使用相同的連接字串重新連接至資料庫伺服器，並繼續其作業。 整體容錯移轉時間預期會需要 60-120s。 不過，根據主資料庫伺服器在容錯移轉時的活動（例如大型交易和復原時間），容錯移轉可能需要較長的時間。
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="區域冗余高可用性"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="區域冗余高可用性-容錯移轉"::: 
 
 1. 主資料庫伺服器已關閉，且用戶端失去資料庫連線能力。 
 2. 待命伺服器會啟用成為新的主伺服器。 用戶端會使用相同的連接字串連接到新的主伺服器。 將用戶端應用程式放在與主資料庫伺服器相同的區域中，可減少延遲並改善效能。
@@ -112,6 +112,8 @@ ms.locfileid: "90933858"
 -   無法在受管理的維護期間排程設定客戶起始的管理工作。
 
 -   諸如調整計算和調整儲存體等計劃性事件會先在待命中進行，然後再於主要伺服器上進行。 服務不會容錯移轉。 
+
+-  如果邏輯解碼或邏輯複寫是以 HA 設定的彈性伺服器設定，則在容錯移轉至待命伺服器的情況下，不會將邏輯複寫位置複製到待命伺服器。  
 
 ## <a name="next-steps"></a>後續步驟
 

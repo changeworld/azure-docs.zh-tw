@@ -203,6 +203,8 @@
       href: concepts-roles-permissions.md
     - name: 命名規則
       href: naming-rules.md
+    - name: 資料備援
+      href: concepts-data-redundancy.md
 - name: 操作指南
   items:
     - name: 作者
