@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: c4b02ef7bc833a7f5ab41e0203836637613244e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9e887d8f7579a90e7d4e8d54dcf28e1256269063
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101981"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368452"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>自動建議 API 升級指南
 
@@ -42,7 +42,7 @@ ms.locfileid: "93101981"
 
 - 將 v5 錯誤碼取代為下列可能的 `code` 和 `subCode` 值。
 
-|程式碼|子代碼|描述
+|程式碼|子代碼|說明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出現任何子代碼條件，Bing 會傳回 ServerError。 如果 HTTP 狀態碼為 500，則回應會包含這些錯誤。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>封鎖|只要要求的任何部分無效，Bing 就會傳回 InvalidRequest。 例如缺少必要的參數或參數值無效。<br/><br/>如果錯誤是 ParameterMissing 或 ParameterInvalidValue，則 HTTP 狀態碼為 400。<br/><br/>如果錯誤是 HttpNotAllowed，則 HTTP 狀態碼為410。
@@ -59,7 +59,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-停用|InsufficientAuthorization.AuthorizationDisabled
+已停用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -76,4 +76,4 @@ InsufficientScope|InsufficientAuthorization
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用和顯示需求](./UseAndDisplayRequirements.md)
+> [使用和顯示需求](../bing-web-search/use-display-requirements.md)

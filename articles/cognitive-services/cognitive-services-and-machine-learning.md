@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132835"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368860"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>認知服務和機器學習
 
 認知服務提供機器學習功能來解決一般問題，例如分析情緒情感的文字，或分析影像以辨識物件或臉部。 您不需要具備機器學習或資料科學的專門知識，即可使用這些服務。 
 
-[認知服務](welcome.md) 是一組服務，每個服務都支援不同的一般化預測功能。 這些服務分為不同的類別，可協助您找出正確的服務。 
+[認知服務](./what-are-cognitive-services.md) 是一組服務，每個服務都支援不同的一般化預測功能。 這些服務分為不同的類別，可協助您找出正確的服務。 
 
-|服務類別|目的|
+|服務類別|用途|
 |--|--|
 |[決策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|建置應用程式，以顯示有助於做出明智與高效決策的建議。|
 |[語言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|允許您的應用程式使用預先建立的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
@@ -38,13 +38,13 @@ ms.locfileid: "87132835"
 
 * 需要選擇演算法，且需要針對非常特定的資料進行定型。
 
-## <a name="what-is-machine-learning"></a>什麼是機器學習服務？
+## <a name="what-is-machine-learning"></a>什麼是機器學習？
 
 機器學習是一種概念，可讓您整合資料和演算法來解決特定需求。 一旦資料和演算法經過定型，輸出就會是您可以使用不同資料再次使用的模型。 定型的模型會根據新的資料提供見解。 
 
 建立機器學習系統的程式需要瞭解機器學習或資料科學。
 
-您可以使用 [Azure Machine Learning (AML) 產品與服務](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)來提供機器學習服務。
+您可以使用 [Azure Machine Learning (AML) 產品與服務](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)來提供機器學習服務。
 
 ## <a name="what-is-a-cognitive-service"></a>什麼是認知服務？
 
@@ -71,7 +71,7 @@ ms.locfileid: "87132835"
 
 ### <a name="no-additional-training-data-required"></a>不需要其他定型資料
 
-提供完整定型模型的服務可以視為不 _透明_的方塊。 您不需要知道它們的運作方式，或是用來定型它們的資料。 您可以將資料帶入經過完整定型的模型，以取得預測。 
+提供完整定型模型的服務可以視為不 _透明_ 的方塊。 您不需要知道它們的運作方式，或是用來定型它們的資料。 您可以將資料帶入經過完整定型的模型，以取得預測。 
 
 ### <a name="some-or-all-training-data-required"></a>需要部分或全部定型資料
 
@@ -91,9 +91,9 @@ ms.locfileid: "87132835"
 |--|--|--|--|
 |[異常偵測器](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing 搜尋 |x|||
-|[電腦視覺](./Computer-vision/Home.md)|x|||
+|[電腦視覺](./computer-vision/overview.md)|x|||
 |[內容仲裁](./Content-Moderator/overview.md)|x||x|
-|[自訂視覺](./Custom-Vision-Service/home.md)||x||
+|[自訂視覺](./custom-vision-service/overview.md)||x||
 |[臉部](./Face/Overview.md)|x|x||
 |[表單辨識器](./form-recognizer/overview.md)||x||
 |[沈浸式閱讀程式](./immersive-reader/overview.md)|x|||
@@ -101,7 +101,7 @@ ms.locfileid: "87132835"
 |[語言理解 (LUIS)](./LUIS/what-is-luis.md)||x||
 |[個人化工具](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[說話者辨識器](./speaker-recognition/home.md)||x||
+|[說話者辨識器](./speech-service/speaker-recognition-overview.md)||x||
 |[語音文字轉換語音 (TTS) ](speech-service/text-to-speech.md)|x|x||
 |[語音轉換文字 (STT) ](speech-service/speech-to-text.md)|x|x||
 |[語音翻譯](speech-service/speech-translation.md)|x|||
@@ -127,16 +127,16 @@ ms.locfileid: "87132835"
 
 |認知服務|模型資訊|
 |--|--|
-|[自訂視覺](./custom-vision-service/home.md)|針對 Android Tensorflow[匯出](./Custom-Vision-Service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
+|[自訂視覺](./custom-vision-service/overview.md)|針對 Android Tensorflow[匯出](./Custom-Vision-Service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
 
 ## <a name="learn-more"></a>深入了解
 
-* [架構指南-Microsoft 的機器學習服務產品是什麼？](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [架構指南-Microsoft 的機器學習服務產品是什麼？](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [機器學習服務-深度學習和機器學習的簡介](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* 在 [Azure 入口網站](cognitive-services-apis-create-account.md) 中或使用 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)建立您的認知服務帳戶。
+* 在 [Azure 入口網站](cognitive-services-apis-create-account.md) 中或使用 [Azure CLI](./cognitive-services-apis-create-account-cli.md)建立您的認知服務帳戶。
 * 瞭解如何對認知服務 [進行驗證](authentication.md) 。
 * 使用 [診斷記錄](diagnostic-logging.md) 來進行問題的識別和偵測。 
 * 在 Docker [容器](cognitive-services-container-support.md)中部署認知服務。

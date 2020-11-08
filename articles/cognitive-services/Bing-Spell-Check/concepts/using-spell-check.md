@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: ece9d191460323a917579c5a32cff429f52139fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a02d5217cb051516e11d17730f31869618a2cfb0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098224"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369387"
 ---
 # <a name="using-the-bing-spell-check-api"></a>使用 Bing 拼字檢查 API
 
@@ -49,14 +49,14 @@ ms.locfileid: "93098224"
 
 ## <a name="market-setting"></a>市場設定
 
-[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)應該與 `mkt` 查詢參數一起在要求中指定。 否則，API 會使用以要求的 IP 位址為基礎的預設市場。
+[市場代碼](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)應該與 `mkt` 查詢參數一起在要求中指定。 否則，API 會使用以要求的 IP 位址為基礎的預設市場。
 
 
 ## <a name="http-post-and-get-support"></a>HTTP POST 與 GET 支援
 
 此 API 支援 HTTP POST 或 HTTP GET。 應使用何者，取決於您要校訂的文字長度。 如果字串一律少於 1,500 個字元，您應使用 GET。 但若您要支援高達 10,000 個字元的字串，則應使用 POST。 文字字串可包含任何有效的 UTF-8 字元。
 
-下列範例顯示要對文字字串檢查拼字和文法的 POST 要求。 為求完整性，此範例加入了 [mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) 查詢參數 (原本會排除此參數，因為 `mode` 預設為 Proof)。 [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) 查詢參數包含要校訂的字串。
+下列範例顯示要對文字字串檢查拼字和文法的 POST 要求。 為求完整性，此範例加入了 [mode](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) 查詢參數 (原本會排除此參數，因為 `mode` 預設為 Proof)。 [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) 查詢參數包含要校訂的字串。
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -73,7 +73,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 如果您使用 HTTP GET，您應在 URL 的查詢字串中加入 `text` 查詢參數
   
-以下顯示前一個要求的回應。 回應包含 [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) 物件。 
+以下顯示前一個要求的回應。 回應包含 [SpellCheck](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) 物件。 
   
 ```json
 {  
@@ -117,7 +117,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 }  
 ```  
   
-[FlaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) 欄位列出此 API 在[文字](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text)字串中找到的拼字和文法錯誤。 `token` 欄位包含要被取代的文字。 您可以在 `offset` 欄位中使用以零為起始的位移，尋找 `text` 字串中的權杖。 然後，您應將該位置的文字取代為 `suggestion` 欄位中的文字。 
+[FlaggedTokens](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) 欄位列出此 API 在[文字](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text)字串中找到的拼字和文法錯誤。 `token` 欄位包含要被取代的文字。 您可以在 `offset` 欄位中使用以零為起始的位移，尋找 `text` 字串中的權杖。 然後，您應將該位置的文字取代為 `suggestion` 欄位中的文字。 
 
 如果 `type` 欄位為 RepeatedToken，您仍應將權杖取代為 `suggestion`，但您也可能需要移除尾端的空格。
 
@@ -125,7 +125,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [什麼是 Bing 拼字檢查 API？](../overview.md)
-- [Bing 拼字檢查 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing 拼字檢查 API v7 參考](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

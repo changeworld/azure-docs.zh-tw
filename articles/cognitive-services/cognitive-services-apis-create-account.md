@@ -10,18 +10,18 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827395"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368911"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立認知服務資源
 
 使用本快速入門開始使用 Azure 認知服務。 在 Azure 入口網站中建立認知服務資源之後，您將會取得用來驗證應用程式的端點和金鑰。
 
-Azure 認知服務是具有 REST Api 的雲端式服務，也提供用戶端程式庫 Sdk，可協助開發人員在不需要人工智慧 (AI) 或資料科學技能或知識的情況下，在應用程式中建立認知智慧。 Azure 認知服務可讓開發人員使用認知解決方案，輕鬆地將認知功能新增至其應用程式，以查看、聆聽、說出、了解，甚至是開始的原因。
+Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端式服務，可協助開發人員建置認知智慧應用程式，且無須直接人工智慧 (AI) 或資料科學技術或知識。 Azure 認知服務可讓開發人員使用認知解決方案，輕鬆地將認知功能新增至其應用程式，以查看、聆聽、說出、了解，甚至是開始的原因。
 
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
@@ -64,15 +64,15 @@ Azure 認知服務是具有 REST Api 的雲端式服務，也提供用戶端程�
     | [筆跡辨識器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文字分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing 拼字檢查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [翻譯工具](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing 自動建議](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    ***
+    **_
 
-3. 在 [建立]**** 頁面上，提供下列資訊：
+3. 在 [_ *建立* ] 頁面上，提供下列資訊：
 
     #### <a name="multi-service-resource"></a>[多服務資源](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **名稱** | 認知服務資源的描述性名稱。 例如， *MyCognitiveServicesResource*。 |
+    | **Name** | 認知服務資源的描述性名稱。 例如， *MyCognitiveServicesResource* 。 |
     | **訂用帳戶** | 選取您其中一個可用的 Azure 訂用帳戶。 |
     | **位置** | 您的認知服務執行個體的位置。 位置不同可能會造成延遲，但不會影響您資源執行階段的可用性。 |
     | **定價層** | 認知服務帳戶的費用取決於您選擇的選項和使用方式。 如需詳細資訊，請參閱 API [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/)。
@@ -80,13 +80,13 @@ Azure 認知服務是具有 REST Api 的雲端式服務，也提供用戶端程�
 
     ![多服務資源資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    按一下 [建立]。
+    按一下頁面底部的 [新增]  。
 
     #### <a name="single-service-resource"></a>[單一服務資源](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **名稱** | 認知服務資源的描述性名稱。 例如， *TextAnalyticsResource*。 |
+    | **Name** | 認知服務資源的描述性名稱。 例如， *TextAnalyticsResource* 。 |
     | **訂用帳戶** | 選取您其中一個可用的 Azure 訂用帳戶。 |
     | **位置** | 您的認知服務執行個體的位置。 位置不同可能會造成延遲，但不會影響您資源執行階段的可用性。 |
     | **定價層** | 認知服務帳戶的費用取決於您選擇的選項和使用方式。 如需詳細資訊，請參閱 API [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/)。
@@ -94,15 +94,15 @@ Azure 認知服務是具有 REST Api 的雲端式服務，也提供用戶端程�
 
     ![單一服務資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    按一下 [建立]。
+    按一下頁面底部的 [新增]  。
 
-    ***
+    **_
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>取得資源的金鑰
 
-1. 成功部署您的資源之後，請按一下 **[前往下一個步驟]** 下的 [**移至資源**]。
+1. 成功部署您的資源之後，請按一下 **[下一步]** 下的 [ *前往資源* ]。
 
     ![搜尋認知服務](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
@@ -120,10 +120,10 @@ Azure 認知服務是具有 REST Api 的雲端式服務，也提供用戶端程�
 2. 找出要刪除的資源位於哪一個資源群組
 3. 以滑鼠右鍵按一下資源群組清單。 選取 [刪除資源群組] 並且確認。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [驗證 Azure 認知服務要求](authentication.md)
-* [什麼是 Azure 認知服務？](Welcome.md)
+* [什麼是 Azure 認知服務？](./what-are-cognitive-services.md)
 * [使用 Azure 管理用戶端程式庫建立新的資源](.\cognitive-services-apis-create-account-client-library.md)
 * [自然語言支援](language-support.md)
 * [Docker 容器支援](cognitive-services-container-support.md)

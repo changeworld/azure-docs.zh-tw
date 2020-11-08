@@ -10,33 +10,33 @@ keywords: 認知服務, 認知智慧, 認知解決方案, ai 服務
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e276d96e8a81b435ec4d0c270cf818555d512ae0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262428"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368894"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入門：使用 Azure Command-Line 介面 (CLI 建立認知服務資源) 
 
-您可以使用本快速入門，透過 [Azure 命令列介面 (CLI) ](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)來開始使用 Azure 認知服務。
+您可以使用本快速入門，透過 [Azure 命令列介面 (CLI) ](/cli/azure/install-azure-cli?view=azure-cli-latest)來開始使用 Azure 認知服務。
 
 Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端式服務，可協助開發人員建置認知智慧應用程式，且無須直接人工智慧 (AI) 或資料科學技術或知識。 Azure 認知服務可讓開發人員使用認知解決方案，輕鬆地將認知功能新增至其應用程式，以查看、聆聽、說出、了解，甚至是開始的原因。
 
-認知服務會由您在 Azure 訂用帳戶中建立的 Azure [資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) 表示。 建立資源之後，請使用為您產生的金鑰和端點來驗證您的應用程式。
+認知服務會由您在 Azure 訂用帳戶中建立的 Azure [資源](../azure-resource-manager/management/manage-resources-portal.md) 表示。 建立資源之後，請使用為您產生的金鑰和端點來驗證您的應用程式。
 
-在本快速入門中，您將瞭解如何使用 [Azure 命令列介面 (CLI) ](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)來註冊 Azure 認知服務，並建立具有單一服務或多服務訂用帳戶的帳戶。 這些服務是以 Azure [資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，可讓您連線到一或多個 azure 認知服務 API。
+在本快速入門中，您將瞭解如何使用 [Azure 命令列介面 (CLI) ](/cli/azure/install-azure-cli?view=azure-cli-latest)來註冊 Azure 認知服務，並建立具有單一服務或多服務訂用帳戶的帳戶。 這些服務是以 Azure [資源](../azure-resource-manager/management/manage-resources-portal.md)表示，可讓您連線到一或多個 azure 認知服務 API。
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
 * 有效的 Azure 訂用帳戶- [建立一個](https://azure.microsoft.com/free/cognitive-services) 免費的訂用帳戶。
-* [Azure 命令列介面 (CLI) ](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure 命令列介面 (CLI) ](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安裝 Azure CLI 並登入
 
-安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登入您的本機 CLI 安裝，請執行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令：
+安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登入您的本機 CLI 安裝，請執行 [az login](/cli/azure/reference-index#az-login) 命令：
 
 ```azurecli-interactive
 az login
@@ -134,7 +134,7 @@ az group create \
 | 內容仲裁 | `ContentModerator` |
 | 個人化工具      | `Personalizer`     |
 
-您可以使用 [az cognitiveservices account list-種類](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) 命令來尋找可用的認知服務「種類」清單：
+您可以使用 [az cognitiveservices account list-種類](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) 命令來尋找可用的認知服務「種類」清單：
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -142,7 +142,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>將新資源新增至您的資源群組
 
-若要建立並訂閱新的認知服務資源，請使用 [az cognitiveservices account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) 命令。 此命令會將新的可計費資源新增至稍早建立的資源群組。 建立新資源時，您必須知道您想要使用的服務種類，以及其定價層 (或 sku) 和 Azure 位置：
+若要建立並訂閱新的認知服務資源，請使用 [az cognitiveservices account create](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) 命令。 此命令會將新的可計費資源新增至稍早建立的資源群組。 建立新資源時，您必須知道您想要使用的服務種類，以及其定價層 (或 sku) 和 Azure 位置：
 
 您可以使用下列命令，為異常偵測器 (免費的) 資源建立 F0 `anomaly-detector-resource` 。
 
@@ -160,13 +160,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>取得資源的金鑰
 
-若要登入 Command-Line 介面的本機安裝 (CLI) ，請使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
+若要登入 Command-Line 介面的本機安裝 (CLI) ，請使用 [az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az cognitiveservices account keys list](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) 命令來取得認知服務資源的金鑰。
+使用 [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) 命令來取得認知服務資源的金鑰。
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -185,7 +185,7 @@ az login
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>取得資源的目前配額使用量
 
-使用 [az cognitiveservices account list-usage](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) 命令可取得認知服務資源的使用量。
+使用 [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) 命令可取得認知服務資源的使用量。
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \
@@ -204,9 +204,9 @@ az cognitiveservices account list-usage \
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [驗證 Azure 認知服務要求](authentication.md)
-* [什麼是 Azure 認知服務？](Welcome.md)
+* [什麼是 Azure 認知服務？](./what-are-cognitive-services.md)
 * [自然語言支援](language-support.md)
 * [Docker 容器支援](cognitive-services-container-support.md)

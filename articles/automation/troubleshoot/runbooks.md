@@ -6,12 +6,12 @@ ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5e173e76b80717d6685e9a6b383ee98eddf910f5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323475"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368078"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
 
@@ -251,7 +251,7 @@ Start-AzAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -AzContext $AzureContext `
+    -AzContext $AzContext `
     –Parameters $params –wait
 ```
 
@@ -522,7 +522,7 @@ The runbook job failed due to a job stream being larger than 1MB, this is the li
 
 因為您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程，所以會發生此錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 作業輸出資料流程有 1 MB 的限制。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。 針對執行中的混合式 Runbook 背景工作角色，會顯示截斷為 1 MB 的輸出資料流程，而不會出現任何錯誤訊息。
 

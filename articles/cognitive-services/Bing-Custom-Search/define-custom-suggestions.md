@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080969"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367585"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>設定您的自訂自動建議體驗
 
@@ -28,7 +28,7 @@ ms.locfileid: "93080969"
 
 您可以指定只傳回自訂的建議，或者也要包含 Bing 的建議。 如果您包含 Bing 的建議，自訂的建議會在 Bing 的建議前面出現。 如果您提供足夠的相關建議，則傳回的建議清單可能不會包含 Bing 的建議。 Bing 的建議一律會在您的自訂搜尋執行個體內容中。 
 
-若要為您的執行個體設定搜尋查詢建議，請按一下 [自動建議]  索引標籤。  
+若要為您的執行個體設定搜尋查詢建議，請按一下 [自動建議] 索引標籤。  
 
 > [!NOTE]
 > 若要使用此功能，您必須訂閱適當等級的「自訂搜尋」(請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/))。
@@ -37,11 +37,11 @@ ms.locfileid: "93080969"
 
 ## <a name="enable-bing-suggestions"></a>啟用 Bing 的建議
 
-若要啟用 Bing 的建議，請將 [自動 Bing 建議]  滑桿切換到開啟的位置。 滑桿會變成藍色。
+若要啟用 Bing 的建議，請將 [自動 Bing 建議] 滑桿切換到開啟的位置。 滑桿會變成藍色。
 
 ## <a name="add-your-own-suggestions"></a>新增您自己的建議
 
-若要新增您自己的查詢字串建議，請將它們新增到 [使用者定義建議]  底下的清單。 在清單中加入建議之後，請按 enter 鍵或按一下 **+** 圖示。 您可以用任何語言指定建議。 您可以新增最多 5000 個查詢字串建議。
+若要新增您自己的查詢字串建議，請將它們新增到 [使用者定義建議] 底下的清單。 在清單中加入建議之後，請按 enter 鍵或按一下 **+** 圖示。 您可以用任何語言指定建議。 您可以新增最多 5000 個查詢字串建議。
 
 ## <a name="upload-suggestions"></a>上傳建議
 
@@ -53,7 +53,7 @@ ms.locfileid: "93080969"
 
 ## <a name="block-suggestions"></a>封鎖建議
 
-如果包含 Bing 的建議，您可以新增不希望 Bing 傳回的搜尋查詢字串清單。 若要新增封鎖的查詢字串，請按一下 [顯示封鎖的建議]  。 將查詢字串新增至清單，然後按下 enter 鍵或按一下 **+** 圖示。 您可以新增最多 50 個封鎖的查詢字串。
+如果包含 Bing 的建議，您可以新增不希望 Bing 傳回的搜尋查詢字串清單。 若要新增封鎖的查詢字串，請按一下 [顯示封鎖的建議]。 將查詢字串新增至清單，然後按下 enter 鍵或按一下 **+** 圖示。 您可以新增最多 50 個封鎖的查詢字串。
 
 
 
@@ -65,7 +65,7 @@ ms.locfileid: "93080969"
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>在託管的 UI 中啟用自動建議
 
-若要為託管的 UI 啟用查詢字串建議，請按一下 [託管的 UI]  。 向下捲動到 [其他設定]  區段。 在 [Web 搜尋]  下，針對 [啟用自動建議]  選取 [開啟]  。 若要啟用自動建議，您必須選取包含搜尋方塊的版面配置。
+若要為託管的 UI 啟用查詢字串建議，請按一下 [託管的 UI]。 向下捲動到 [其他設定] 區段。 在 [Web 搜尋] 下，針對 [啟用自動建議] 選取 [開啟]。 若要啟用自動建議，您必須選取包含搜尋方塊的版面配置。
 
 
 ## <a name="calling-the-autosuggest-api"></a>呼叫自動建議 API
@@ -91,8 +91,8 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 如果使用者從下拉式清單中選取建議的查詢字串，請在呼叫 [Bing 自訂搜尋 API](overview.md) 時，在 `query` 欄位中使用該查詢字串。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- [取得自訂建議](./get-custom-suggestions.md)
+- [取得自訂建議]()
 - [搜尋自訂執行個體](./search-your-custom-view.md)
 - [設定和使用自訂託管的 UI](./hosted-ui.md)

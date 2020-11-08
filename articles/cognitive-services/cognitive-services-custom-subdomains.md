@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590633"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368809"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>認知服務的自訂子功能變數名稱稱
 
-Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)、 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)建立的每個資源，使用自訂子功能變數名稱稱。 不同于特定 Azure 區域中所有客戶常見的區域端點，自訂子功能變數名稱稱對於資源而言是唯一的。 需要自訂子功能變數名稱稱，才能啟用 Azure Active Directory (Azure AD) 進行驗證等功能。
+Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)、 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)或 [Azure CLI](/cli/azure/install-azure-cli)建立的每個資源，使用自訂子功能變數名稱稱。 不同于特定 Azure 區域中所有客戶常見的區域端點，自訂子功能變數名稱稱對於資源而言是唯一的。 需要自訂子功能變數名稱稱，才能啟用 Azure Active Directory (Azure AD) 進行驗證等功能。
 
 ## <a name="how-does-this-impact-existing-resources"></a>這會如何影響現有的資源？
 
@@ -27,7 +27,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 如果您想要遷移現有資源以利用自訂子功能變數名稱稱，讓您可以啟用如 Azure AD 的功能，請遵循下列指示：
 
 1. 登入 Azure 入口網站，並找出您想要新增自訂子功能變數名稱稱的認知服務資源。
-2. 在 [ **總覽** ] 分頁中，找出並選取 [ **產生自訂功能變數名稱**]。
+2. 在 [ **總覽** ] 分頁中，找出並選取 [ **產生自訂功能變數名稱** ]。
 3. 這會開啟一個面板，說明如何為您的資源建立唯一的自訂子域。
    > [!WARNING]
    > 在您建立自訂子功能變數名稱稱之後，便 **無法** 變更。
@@ -43,7 +43,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 
 同時支援區域端點和自訂子功能變數名稱稱，而且可以交換使用。 但是，必須要有完整的端點。
 
-您可以在[Azure 入口網站](https://portal.azure.com)中資源的**總覽**分頁中找到區域資訊。 如需區域端點的完整清單，請參閱 [是否有區域端點的清單？](#is-there-a-list-of-regional-endpoints)
+您可以在 [Azure 入口網站](https://portal.azure.com)中資源的 **總覽** 分頁中找到區域資訊。 如需區域端點的完整清單，請參閱 [是否有區域端點的清單？](#is-there-a-list-of-regional-endpoints)
 
 ## <a name="are-custom-subdomain-names-regional"></a>自訂子功能變數名稱稱是否為區域？
 
@@ -83,7 +83,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 | | 日本東部 | `https://japaneast.api.cognitive.microsoft.com` |
 | | 南韓中部 | `https://koreacentral.api.cognitive.microsoft.com` |
 | | 美國中北部 | `https://northcentralus.api.cognitive.microsoft.com` |
-| | 北歐 | `https://northeurope.api.cognitive.microsoft.com` |
+| | 歐洲北部 | `https://northeurope.api.cognitive.microsoft.com` |
 | | 南非北部 | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | 美國中南部 | `https://southcentralus.api.cognitive.microsoft.com` |
 | | 東南亞 | `https://southeastasia.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 | 中國 | 中國東部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | 中國北部 | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [什麼是認知服務？](Welcome.md)
+* [什麼是認知服務？](./what-are-cognitive-services.md)
 * [驗證](authentication.md)

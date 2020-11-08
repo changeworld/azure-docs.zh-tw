@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337554"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369234"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>針對容量集區問題進行疑難排解
 
@@ -34,6 +34,10 @@ ms.locfileid: "94337554"
 | 磁片區建立或修改失敗，發生 `Requested throughput not available` 錯誤 | 磁片區的可用輸送量取決於其容量集區的大小和服務層級。 如果沒有足夠的輸送量，您應該增加集區大小或調整現有的磁片區輸送量。 | 
 
 ## <a name="issues-moving-a-capacity-pool"></a>移動容量集區的問題 
+
+> [!IMPORTANT] 
+> 以動態方式變更磁片區公開預覽註冊 [的服務層級](dynamic-change-volume-service-level.md) ，直到進一步通知為止。
+
 |     錯誤狀況    |     解決方案    |
 |-|-|
 | 不允許變更磁片區的容量集區。 | 您可能尚未取得使用這項功能的授權。 <br> 將磁片區移至另一個容量集區的功能目前為預覽狀態。 如果您是第一次使用這項功能，則必須先註冊該功能，並加以設定 `-FeatureName ANFTierChange` 。 請參閱中的註冊步驟，以 [動態方式變更磁片區的服務層級](dynamic-change-volume-service-level.md)。 |

@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 05d3ca7cf532b739b943e2a87d5ab29ae66cabd7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548514"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368792"
 ---
 # <a name="cognitive-services-development-options"></a>認知服務開發選項
 
@@ -25,8 +25,8 @@ Azure 認知服務是雲端式 AI 服務，可讓開發人員在其應用程式�
 
 * 自動化和整合工具，例如 Logic Apps 和 Power Automate。
 * 部署選項，例如 Azure Functions 和 App Service。 
-* 適用于安全存取的認知服務 Docker 容器。
-* 適用于大型資料案例的 Apache Spark、Azure Databricks、Azure Synapse Analytics 和 Azure Kubernetes Service 等工具。 
+* 可進行安全存取的認知服務 Docker 容器。
+* 適用於巨量資料案例的 Apache Spark、Azure Databricks、Azure Synapse Analytics 和 Azure Kubernetes Service 等工具。 
 
 在開始之前，請務必瞭解認知服務主要用於兩個不同的工作。 根據您想要執行的工作，您有不同的開發和部署選項可供選擇。 
 
@@ -69,7 +69,7 @@ Azure 提供各種專為不同類型的使用者所設計的工具，其中有�
 
 ### <a name="azure-functions-and-azure-service-web-jobs"></a>Azure Functions 和 Azure 服務 Web 作業
 
-[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 和 [Azure App Service Web 作業](https://docs.microsoft.com/azure/app-service/) 都提供專為開發人員設計的程式碼優先 integration services，並建置於 [Azure App 服務](https://docs.microsoft.com/azure/app-service/)上。 這些產品提供無伺服器的基礎結構來撰寫程式碼。 在該程式碼中，您可以使用用戶端程式庫和 REST Api 對我們的服務進行呼叫。 
+[Azure Functions](../azure-functions/index.yml) 和 [Azure App Service Web 作業](../app-service/index.yml) 都提供專為開發人員設計的程式碼優先 integration services，並建置於 [Azure App 服務](../app-service/index.yml)上。 這些產品提供無伺服器的基礎結構來撰寫程式碼。 在該程式碼中，您可以使用用戶端程式庫和 REST Api 對我們的服務進行呼叫。 
 
 * **目標使用者 ()** ：開發人員和資料科學家
 * **優點** ：無伺服器計算服務，可讓您執行事件觸發的程式碼。 
@@ -78,7 +78,7 @@ Azure 提供各種專為不同類型的使用者所設計的工具，其中有�
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) 與 Power Automate 共用相同的工作流程設計工具和連接器，但是提供更先進的控制，包括與 Visual Studio 和 DevOps 的整合。 Power Automate 可讓您透過服務特定的連接器，輕鬆地與您的認知服務資源整合，以提供 Api 的 proxy 或包裝函式。 這些是 Power Automate 中可用的連接器。 
+[Azure Logic Apps](../logic-apps/index.yml) 與 Power Automate 共用相同的工作流程設計工具和連接器，但是提供更先進的控制，包括與 Visual Studio 和 DevOps 的整合。 Power Automate 可讓您透過服務特定的連接器，輕鬆地與您的認知服務資源整合，以提供 Api 的 proxy 或包裝函式。 這些是 Power Automate 中可用的連接器。 
 
 * **目標使用者 ()** ：開發人員、整合者、IT 專業人員、DevOps
 * **優點** ：設計師優先 (宣告式) 開發模型，在低程式碼解決方案中提供先進的選項和整合
@@ -87,7 +87,7 @@ Azure 提供各種專為不同類型的使用者所設計的工具，其中有�
 
 ### <a name="power-automate"></a>Power Automate 
 
-Power 自動化是 [Power Platform](https://docs.microsoft.com/power-platform/) 中的一項服務，可協助您在應用程式與服務之間建立自動化的工作流程，而不需要撰寫程式碼。 我們提供數個連接器，可讓您輕鬆地與 Power Automate 解決方案中的認知服務資源互動。 Power Automate 是以 Logic Apps 為基礎所建置。 
+Power 自動化是 [Power Platform](/power-platform/) 中的一項服務，可協助您在應用程式與服務之間建立自動化的工作流程，而不需要撰寫程式碼。 我們提供數個連接器，可讓您輕鬆地與 Power Automate 解決方案中的認知服務資源互動。 Power Automate 是以 Logic Apps 為基礎所建置。 
 
 * **目標使用者 (s)** ：商務使用者 (分析師) 和 Sharepoint 系統管理員
 * **優點** ：只需從桌面錄製滑鼠點按、按鍵和複製貼上步驟，就能自動執行重複的手動工作！
@@ -96,7 +96,7 @@ Power 自動化是 [Power Platform](https://docs.microsoft.com/power-platform/) 
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[AI Builder](https://docs.microsoft.com/ai-builder/overview) 是一種 Microsoft Power Platform 的功能，可讓您藉由自動化程式並預測結果，來提升業務績效。 AI builder 透過點按一下體驗，將 AI 功能帶入您的解決方案。 許多認知服務（例如表單辨識器、文字分析和電腦視覺）都已直接整合到這裡，您不需要建立自己的認知服務。 
+[AI Builder](/ai-builder/overview) 是一種 Microsoft Power Platform 的功能，可讓您藉由自動化程式並預測結果，來提升業務績效。 AI builder 透過點按一下體驗，將 AI 功能帶入您的解決方案。 許多認知服務（例如表單辨識器、文字分析和電腦視覺）都已直接整合到這裡，您不需要建立自己的認知服務。 
 
 * **目標使用者 (s)** ：商務使用者 (分析師) 和 Sharepoint 系統管理員
 * **優點** ：透過點按體驗來帶來 AI 威力的全包式解決方案。 不需要撰寫程式碼或資料科學技能。
@@ -124,30 +124,30 @@ Power 自動化是 [Power Platform](https://docs.microsoft.com/power-platform/) 
 
 | 要素 | 服務 | 自訂 UI | 快速入門 |
 |--------|---------|------------------|------------|
-| 視覺 | 自訂視覺 | https://www.customvision.ai/ | [快速入門](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/quickstarts/image-classification?pivots=programming-language-csharp) | 
-| 視覺 | 表單辨識器 | 範例標籤工具 | [快速入門](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0) |
-| 決策 | 內容仲裁者 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入門](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/human-in-the-loop) |
-| 決策 | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [快速入門](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/web-portal) |
-| 決策 | 個人化工具 | UI 可在個人化工具資源下的 Azure 入口網站中取得。 | [快速入門](https://docs.microsoft.com/azure/cognitive-services/personalizer/quickstart-personalizer-sdk) |
-| 語言 | 語言理解 (LUIS) | https://www.luis.ai/ | |
-| 語言 | QnA Maker | https://www.qnamaker.ai/ | [快速入門](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) |
-| 語言 | Translator/自訂翻譯 | https://portal.customtranslator.azure.ai/ | [快速入門](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model) |
-| 語音 | 自訂命令 | https://speech.microsoft.com/ | [快速入門](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands) |
-| 語音 | 客製化的語音 | https://speech.microsoft.com/ | [快速入門](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech) |
-| 語音 | 自訂語音 | https://speech.microsoft.com/ | [快速入門](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice) |  
+| 視覺 | 自訂視覺 | https://www.customvision.ai/ | [快速入門](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
+| 視覺 | 表單辨識器 | 範例標籤工具 | [快速入門](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| 決策 | 內容仲裁 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入門](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
+| 決策 | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [快速入門](./metrics-advisor/quickstarts/web-portal.md) |
+| 決策 | 個人化工具 | UI 可在個人化工具資源下的 Azure 入口網站中取得。 | [快速入門](./personalizer/quickstart-personalizer-sdk.md) |
+| Language | 語言理解 (LUIS) | https://www.luis.ai/ | |
+| Language | QnA Maker | https://www.qnamaker.ai/ | [快速入門](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
+| Language | Translator/自訂翻譯 | https://portal.customtranslator.azure.ai/ | [快速入門](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
+| 語音 | 自訂命令 | https://speech.microsoft.com/ | [快速入門](./speech-service/custom-commands.md) |
+| 語音 | 客製化的語音 | https://speech.microsoft.com/ | [快速入門](./speech-service/how-to-custom-speech.md) |
+| 語音 | 自訂語音 | https://speech.microsoft.com/ | [快速入門](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>使用 DevOps 和 GitHub Actions 的持續整合和傳遞
 
 Language Understanding 和語音服務提供由 Azure DevOps 和 GitHub 動作提供的持續整合和持續部署解決方案。 這些工具可用來自動化自訂模型的定型、測試和發行管理。 
 
-* [自訂語音的 CI/CD](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-* [適用于 LUIS 的 CI/CD](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-devops-automation)
+* [自訂語音的 CI/CD](./speech-service/how-to-custom-speech-continuous-integration-continuous-deployment.md)
+* [適用于 LUIS 的 CI/CD](./luis/luis-concept-devops-automation.md)
 
 ## <a name="on-prem-containers"></a>內部內部部署容器 
 
 許多認知服務都可以部署在容器中，以供內部部署存取及使用。 使用這些容器可讓您彈性地將認知服務帶到更接近您的資料，以符合法規、安全性或其他操作原因。 如需認知服務容器的完整清單，請參閱 [認知服務的內部部署容器](./cognitive-services-container-support.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 <!--
 * Learn more about low code development options for Cognitive Services -->
-* [建立認知服務資源並開始建立](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Clinux)
+* [建立認知服務資源並開始建立](./cognitive-services-apis-create-account.md?tabs=multiservice%252clinux)

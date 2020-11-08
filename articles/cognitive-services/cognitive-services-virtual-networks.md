@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843136"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369370"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -69,7 +69,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 根據預設，認知服務資源會接受來自任何網路上用戶端的連線。 若要限制對所選網路的存取權，您必須先變更預設動作。
 
 > [!WARNING]
-> 變更網路規則會影響您的應用程式連線到 Azure 認知服務的能力。 將預設的網路規則設定為**拒絕**以封鎖所有的資料存取，除非也套用了**授與**存取權的特定網路規則。 請務必先將存取權授與任何使用網路規則的允許網路，再變更預設規則以拒絕存取。 如果您允許列出內部部署網路的 IP 位址，請務必從您的內部部署網路新增所有可能的連出公用 IP 位址。
+> 變更網路規則會影響您的應用程式連線到 Azure 認知服務的能力。 將預設的網路規則設定為 **拒絕** 以封鎖所有的資料存取，除非也套用了 **授與** 存取權的特定網路規則。 請務必先將存取權授與任何使用網路規則的允許網路，再變更預設規則以拒絕存取。 如果您允許列出內部部署網路的 IP 位址，請務必從您的內部部署網路新增所有可能的連出公用 IP 位址。
 
 ### <a name="managing-default-network-access-rules"></a>管理預設的網路存取規則
 
@@ -79,12 +79,12 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 移至您想要保護的認知服務資源。
 
-1. 選取名為 [**虛擬網路**] 的**資源管理**功能表。
+1. 選取名為 [ **虛擬網路** ] 的 **資源管理** 功能表。
 
    ![虛擬網路選項](media/vnet/virtual-network-blade.png)
 
-1. 若要預設拒絕存取，請選擇允許**所選網路**存取權。 只要 **選取 [網路** ] 設定，unaccompanied 由設定的 **虛擬網路** 或 **位址範圍** ，就會有效地拒絕所有的存取。 當拒絕所有存取時，就不允許嘗試取用認知服務資源的要求。 您仍然可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來設定認知服務資源。
-1. 若要允許來自所有網路的流量，請選擇允許**所有網路**存取權。
+1. 若要預設拒絕存取，請選擇允許 **所選網路** 存取權。 只要 **選取 [網路** ] 設定，unaccompanied 由設定的 **虛擬網路** 或 **位址範圍** ，就會有效地拒絕所有的存取。 當拒絕所有存取時，就不允許嘗試取用認知服務資源的要求。 您仍然可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來設定認知服務資源。
+1. 若要允許來自所有網路的流量，請選擇允許 **所有網路** 存取權。
 
    ![虛擬網路拒絕](media/vnet/virtual-network-deny.png)
 
@@ -92,7 +92,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看**]。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看** ]。
 
 1. 顯示認知服務資源的預設規則狀態。
 
@@ -128,7 +128,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看**]。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看** ]。
 
 1. 顯示認知服務資源的預設規則狀態。
 
@@ -154,7 +154,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
         --default-action Allow
     ```
 
-***
+**_
 
 ## <a name="grant-access-from-a-virtual-network"></a>授與虛擬網路存取權
 
@@ -166,7 +166,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 ### <a name="required-permissions"></a>所需的權限
 
-若要將虛擬網路規則套用至認知服務資源，使用者必須擁有所要新增之子網的適當許可權。 必要的許可權是預設的 *參與者* 角色或 *認知服務參與者* 角色。 您也可以將必要的許可權新增至自訂角色定義。
+若要將虛擬網路規則套用至認知服務資源，使用者必須擁有所要新增之子網的適當許可權。 必要的許可權是預設的 _Contributor * 角色或 *認知服務參與者* 角色。 您也可以將必要的許可權新增至自訂角色定義。
 
 認知服務資源和授與存取權的虛擬網路可能在不同的訂用帳戶中，包括屬於不同 Azure AD 租使用者的訂用帳戶。
 
@@ -181,23 +181,23 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 移至您想要保護的認知服務資源。
 
-1. 選取名為 [**虛擬網路**] 的**資源管理**功能表。
+1. 選取名為 [ **虛擬網路** ] 的 **資源管理** 功能表。
 
-1. 請確定您已選取允許從**所選網路**進行存取。
+1. 請確定您已選取允許從 **所選網路** 進行存取。
 
-1. 若要授與具有現有網路規則之虛擬網路的存取權，請選取 [ **虛擬網路**] 下的 [ **新增現有的虛擬網路**]。
+1. 若要授與具有現有網路規則之虛擬網路的存取權，請選取 [ **虛擬網路** ] 下的 [ **新增現有的虛擬網路** ]。
 
    ![新增現有的 vNet](media/vnet/virtual-network-add-existing.png)
 
-1. 選取 [ **虛擬網路** ] 和 [ **子網** ] 選項，然後選取 [ **啟用**]。
+1. 選取 [ **虛擬網路** ] 和 [ **子網** ] 選項，然後選取 [ **啟用** ]。
 
    ![新增現有的 vNet 詳細資料](media/vnet/virtual-network-add-existing-details.png)
 
-1. 若要建立新的虛擬網路並授與存取權，請選取 [ **新增虛擬網路**]。
+1. 若要建立新的虛擬網路並授與存取權，請選取 [ **新增虛擬網路** ]。
 
    ![新增 vNet](media/vnet/virtual-network-add-new.png)
 
-1. 提供建立新虛擬網路所需的資訊，然後選取 [ **建立**]。
+1. 提供建立新虛擬網路所需的資訊，然後選取 [ **建立** ]。
 
    ![建立 vNet](media/vnet/virtual-network-create.png)
 
@@ -206,7 +206,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
     >
     > 目前，只有屬於相同 Azure Active Directory 租用戶的虛擬網路，才會在建立規則時顯示以供選取。 當虛擬網路屬於另一個租用戶時，若要授與權限存取其中的子網路，請使用 Powershell、CLI 或 REST Api。
 
-1. 若要移除虛擬網路或子網規則，請選取 [ **...** ] 開啟虛擬網路或子網的內容功能表，然後選取 [ **移除**]。
+1. 若要移除虛擬網路或子網規則，請選取 [ **...** ] 開啟虛擬網路或子網的內容功能表，然後選取 [ **移除** ]。
 
    ![移除 vNet](media/vnet/virtual-network-remove.png)
 
@@ -214,7 +214,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看**]。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看** ]。
 
 1. 列出虛擬網路規則。
 
@@ -274,7 +274,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看**]。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看** ]。
 
 1. 列出虛擬網路規則。
 
@@ -322,10 +322,10 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
         --subnet $subnetid
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> 請務必將[預設規則設定](#change-the-default-network-access-rule)為 [拒絕]，否則網路規則不會生效。
+> 請務必 [將預設規則設](#change-the-default-network-access-rule) 為 _ * deny * *，否則網路規則不會有任何作用。
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>授與網際網路 IP 範圍存取權
 
@@ -336,7 +336,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
    > [!Tip]
    > 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 這些範圍應該使用個別的 IP 位址規則設定。
 
-只有**公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括開頭為 `10.*` 、和的位址 `172.16.*`  -  `172.31.*` `192.168.*` 。
+只有 **公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括開頭為 `10.*` 、和的位址 `172.16.*`  -  `172.31.*` `192.168.*` 。
 
    > [!NOTE]
    > IP 網路規則不會影響源自于與認知服務資源相同 Azure 區域的要求。 使用[虛擬網路規則](#grant-access-from-a-virtual-network)來允許同一個區域的要求。
@@ -357,11 +357,11 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 移至您想要保護的認知服務資源。
 
-1. 選取名為 [**虛擬網路**] 的**資源管理**功能表。
+1. 選取名為 [ **虛擬網路** ] 的 **資源管理** 功能表。
 
-1. 請確定您已選取允許從**所選網路**進行存取。
+1. 請確定您已選取允許從 **所選網路** 進行存取。
 
-1. 若要授與網際網路 IP 範圍的存取權，請在 [**防火牆**位址範圍] 下，輸入 (為[CIDR 格式](https://tools.ietf.org/html/rfc4632)) 的 IP 位址或位址範圍  >  ** **。 只接受有效的公用 IP (非保留) 位址。
+1. 若要授與網際網路 IP 範圍的存取權，請在 [ **防火牆** 位址範圍] 下，輸入 (為 [CIDR 格式](https://tools.ietf.org/html/rfc4632)) 的 IP 位址或位址範圍  >  **** 。 只接受有效的公用 IP (非保留) 位址。
 
    ![新增 IP 範圍](media/vnet/virtual-network-add-ip-range.png)
 
@@ -373,7 +373,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看**]。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看** ]。
 
 1. 列出 IP 網路規則。
 
@@ -431,7 +431,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看**]。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看** ]。
 
 1. 列出 IP 網路規則。
 
@@ -472,10 +472,10 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
         --ip-address "16.17.18.0/24"
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> 請務必將[預設規則設定](#change-the-default-network-access-rule)為 [拒絕]，否則網路規則不會生效。
+> 請務必 [將預設規則設](#change-the-default-network-access-rule) 為 _ * deny * *，否則網路規則不會有任何作用。
 
 ## <a name="use-private-endpoints"></a>使用私人端點
 
@@ -497,7 +497,7 @@ VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使
 
 當您為 VNet 中的認知服務資源建立私人端點時，會傳送同意要求以供認知服務資源擁有者核准。 如果要求建立私人端點的使用者也是資源的擁有者，則會自動核准此同意要求。
 
-認知服務資源擁有者可以透過[Azure 入口網站](https://portal.azure.com)中認知服務資源的 [*私人端點*] 索引標籤，來管理同意要求和私人端點。
+認知服務資源擁有者可以透過 [Azure 入口網站](https://portal.azure.com)中認知服務資源的 [ *私人端點* ] 索引標籤，來管理同意要求和私人端點。
 
 ### <a name="private-endpoints"></a>私人端點
 
@@ -519,7 +519,7 @@ VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使
 
 ### <a name="dns-changes-for-private-endpoints"></a>私人端點的 DNS 變更
 
-當您建立私人端點時，認知服務資源的 DNS CNAME 資源記錄會更新為首碼為 '*privatelink*' 的子域中的別名。 根據預設，我們也會建立對應至 '*privatelink*' 子域的[私人 dns 區域](../dns/private-dns-overview.md)，並以 DNS 為私人端點的資源記錄。
+當您建立私人端點時，認知服務資源的 DNS CNAME 資源記錄會更新為首碼為 ' *privatelink* ' 的子域中的別名。 根據預設，我們也會建立對應至 ' *privatelink* ' 子域的 [私人 dns 區域](../dns/private-dns-overview.md)，並以 DNS 為私人端點的資源記錄。
 
 當您從 VNet 外部將端點 URL 解析為私人端點時，它會解析為認知服務資源的公用端點。 從裝載私人端點的 VNet 解析時，端點 URL 會解析為私人端點的 IP 位址。
 
@@ -532,8 +532,8 @@ VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使
 
 如需有關設定您自己的 DNS 伺服器以支援私人端點的詳細資訊，請參閱下列文章：
 
-* [Azure 虛擬網路中的資源名稱解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-* [私人端點的 DNS 設定](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure 虛擬網路中的資源名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+* [私人端點的 DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ### <a name="pricing"></a>定價
 
@@ -541,5 +541,5 @@ VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使
 
 ## <a name="next-steps"></a>後續步驟
 
-* 探索各種 [Azure 認知服務](welcome.md)
+* 探索各種 [Azure 認知服務](./what-are-cognitive-services.md)
 * 深入瞭解 [Azure 虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)

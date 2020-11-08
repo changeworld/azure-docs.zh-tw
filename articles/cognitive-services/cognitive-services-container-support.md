@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、Kubernetes
-ms.openlocfilehash: e6a01192068617dcdb52e6160ffcf633d099bdf1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677426"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368843"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 認知服務容器
 
@@ -56,7 +56,7 @@ Azure 認知服務提供數個 [Docker 容器](https://www.docker.com/what-conta
 
 Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包含 Azure 認知服務中服務之功能的子集：
 
-| Service | 支援的定價層 | 容器 | Description |
+| 服務 | 支援的定價層 | 容器 | Description |
 |--|--|--|--|
 | [異常偵測器][ad-containers] | F0，S0 | **異常** 偵測器 ( [映射](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))   | Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取][request-access] |
 | [電腦視覺][cv-containers] | F0，S1 | **讀取** OCR ( [映射](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read))  | 「讀取 OCR」容器可讓您從影像和檔中取出列印和手寫的文字，並支援 JPEG、PNG、BMP、PDF 和 TIFF 檔案格式。 如需詳細資訊，請參閱 [讀取 API 檔](./computer-vision/concept-recognizing-text.md)。<br>[要求存取][request-access] |
@@ -71,11 +71,11 @@ Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包
 | [文字分析][ta-containers-keyphrase] | F0、S | **關鍵片語擷取** ( [影像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | 擷取關鍵片語來識別重點。 例如，若輸入文字為 "The food was delicious and there were wonderful staff"，API 即會傳回主要討論要點："food" 和 "wonderful staff"。 |
 | [文字分析][ta-containers-language] | F0、S | **語言偵測** ( [影像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 偵測輸入文字是以何種語言撰寫的，並針對要求所提交的每份文件回報單一語言代碼，最多可達 120 種語言。 語言代碼各配有一個分數，表示分數的強度。 |
 | [文字分析][ta-containers-sentiment] | F0、S | **情感分析 v3** ( [映射](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409))  | 分析原始文字以尋找正面或負面情感的線索。 此版本的情感分析會傳回情感標籤 (例如，在其中每個檔和句子的 *正面* 或 *負面* ) 。 |
-| [文字分析][ta-containers-health] | F0、S | **健全狀況的文字分析** | 從非結構化臨床文字中將醫療資訊解壓縮並加上標籤。 |
+| [文字分析][ta-containers-health] | F0、S | **健康情況的文字分析** | 從非結構化臨床文字中將醫療資訊解壓縮並加上標籤。 |
 | [空間分析][spa-containers] | S0 | **空間分析** | 分析即時串流影片，以瞭解人員之間的空間關聯性、其移動和實體環境中物件的互動。 |
 
 <!--
-|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
+|[Personalizer](./personalizer/what-is-personalizer.md) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
 -->
 
 此外，認知服務的 [**多**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) 個供應專案資源金鑰中支援某些容器。 您可以建立單一的「認知服務」全功能資源，並在支援的服務之間使用相同的計費金鑰來執行下列服務：
@@ -132,7 +132,7 @@ Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
-[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
+[spa-containers]: ./computer-vision/spatial-analysis-container.md
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

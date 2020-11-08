@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152291"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368775"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
 
@@ -60,7 +60,7 @@ ms.locfileid: "92152291"
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-在新的 **命令提示**字元實例中，讀取環境變數。
+在新的 **命令提示** 字元實例中，讀取環境變數。
 
 ```CMD
 :: Prints the env var value
@@ -76,7 +76,7 @@ echo %ENVIRONMENT_VARIABLE_KEY%
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-在 **Windows PowerShell**的新實例中，讀取環境變數。
+在 **Windows PowerShell** 的新實例中，讀取環境變數。
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ echo %ENVIRONMENT_VARIABLE_KEY%
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-在 **Bash**的新實例中，讀取環境變數。
+在 **Bash** 的新實例中，讀取環境變數。
 
 ```Bash
 # Prints the env var value
@@ -113,7 +113,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-如需詳細資訊， <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-如需詳細資訊， <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-如需詳細資訊， <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊，請參閱 <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-如需詳細資訊， <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊，請參閱 <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-如需詳細資訊， <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊，請參閱 <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-如需詳細資訊， <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊，請參閱 <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -201,7 +201,7 @@ NSString* value =
 
 客戶加密箱適用于此認知服務：
 
-* Translator
+* 轉譯程式
 
 針對下列服務，Microsoft 工程師不會存取 E0 層中的任何客戶資料： 
 
@@ -211,7 +211,7 @@ NSString* value =
 * 個人化工具
 
 > [!IMPORTANT]
-> 若為 **表單辨識器**，Microsoft 工程師將不會在2020年7月10日後建立的資源中存取任何客戶資料。
+> 若為 **表單辨識器** ，Microsoft 工程師將不會在2020年7月10日後建立的資源中存取任何客戶資料。
 
 若要要求使用 E0 SKU 的能力，請填寫並提交此 [要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准搭配 LUIS 使用 E0 SKU 之後，您必須從 Azure 入口網站建立新的資源，並選取 [E0] 作為定價層。 使用者將無法從 F0 升級至新的 E0 SKU。
 
@@ -222,5 +222,5 @@ NSString* value =
 
 ## <a name="next-steps"></a>後續步驟
 
-* 探索各種 [認知服務](welcome.md)
+* 探索各種 [認知服務](./what-are-cognitive-services.md)
 * 深入瞭解 [認知服務虛擬網路](cognitive-services-virtual-networks.md)

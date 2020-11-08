@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588610"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369506"
 ---
 # <a name="translator-v20"></a>Translator 2.0 版
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588610"
 第2版的翻譯工具可以緊密整合到您的應用程式、網站、工具或其他解決方案，以提供多語言使用者體驗。 您可以將它用於任何硬體平臺和任何作業系統，以根據產業標準來執行語言轉譯和其他與語言相關的工作，例如文字語言偵測和文字轉換語音。 如需詳細資訊，請參閱 [Translator](../translator-info-overview.md)。
 
 ## <a name="getting-started"></a>開始使用
-若要存取翻譯工具，您必須 [註冊 Microsoft Azure](../translator-text-how-to-signup.md)。
+若要存取翻譯工具，您必須 [註冊 Microsoft Azure](../translator-how-to-signup.md)。
 
 ## <a name="authentication"></a>驗證 
 對翻譯工具的所有呼叫都需要訂用帳戶金鑰才能進行驗證。 API 支援三種驗證方法：
@@ -71,7 +71,7 @@ ms.locfileid: "83588610"
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/Translate`。
 
-傳回**值：** 表示已翻譯文字的字串。
+傳回 **值：** 表示已翻譯文字的字串。
 
 如果您先前使用 `AddTranslation` 或 `AddTranslationArray` 針對相同的來源句子輸入具有5或更高評等的翻譯，則 `Translate` 只會傳回您系統可用的最上層選擇。 「相同的來源句子」表示) 的相同 (100% 的相符項，但不包括大小寫、空白字元、標記值和標點符號（在句子結尾）。 如果未以5或以上的評等來儲存評等，則傳回的結果會是由 Microsoft Translator 自動轉譯。
 
@@ -209,7 +209,7 @@ ms.locfileid: "83588610"
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames`。
 
-要求本文包含字串陣列，代表要取得其易記名稱的 ISO 639-1 語言代碼。 以下為範例：
+要求本文包含字串陣列，代表要取得其易記名稱的 ISO 639-1 語言代碼。 以下是範例：
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -218,7 +218,7 @@ ms.locfileid: "83588610"
 </ArrayOfstring>
 ```
 
-傳回**值：** 字串陣列，其中包含 Translator 服務所支援的語言名稱，當地語系化為所要求的語言。
+傳回 **值：** 字串陣列，其中包含 Translator 服務所支援的語言名稱，當地語系化為所要求的語言。
 
 ### <a name="response-class-status-200"></a>回應類別 (狀態 200) 
 字串陣列，其中包含 Translator 服務所支援且當地語系化為所要求語言的語言名稱。
@@ -252,7 +252,7 @@ ms.locfileid: "83588610"
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate`。
 
-傳回**值：** 字串陣列，包含 Translator 服務所支援的語言代碼。
+傳回 **值：** 字串陣列，包含 Translator 服務所支援的語言代碼。
 
 ### <a name="response-class-status-200"></a>回應類別 (狀態 200) 
 字串陣列，包含 Translator 服務所支援的語言代碼。
@@ -285,7 +285,7 @@ ms.locfileid: "83588610"
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForSpeak`。
 
-傳回**值：** 字串陣列，包含 Translator 服務所支援的語音合成語言代碼。
+傳回 **值：** 字串陣列，包含 Translator 服務所支援的語音合成語言代碼。
 
 ### <a name="response-class-status-200"></a>回應類別 (狀態 200) 
 字串陣列，包含 Translator 服務所支援的語音合成語言代碼。
@@ -318,7 +318,7 @@ ms.locfileid: "83588610"
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/Speak`。
 
-傳回**值：** 以所需語言說出之傳入文字的 WAV 或 MP3 串流。
+傳回 **值：** 以所需語言說出之傳入文字的 WAV 或 MP3 串流。
 
 ### <a name="response-class-status-200"></a>回應類別 (狀態 200) 
 
@@ -333,7 +333,7 @@ BINARY
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
 |text|(空白)   |必要。 字串，包含一或多個要以指定語言讀出之資料流程的句子。 文字不能超過2000個字元。|查詢|字串|
 |語言|(空白)   |必要。 字串，表示用來說出文字之語言的支援語言代碼。 程式碼必須是方法所傳回的其中一個代碼 `GetLanguagesForSpeak` 。|查詢|字串|
-|format|(空白)|選擇性。 指定內容類型識別碼的字串。 目前可以使用 `audio/wav` 和 `audio/mp3`。 預設值為 `audio/wav`。|查詢|字串|
+|format|(空白)|選擇性。 指定內容類型識別碼的字串。 目前可以使用 `audio/wav` 和 `audio/mp3`。 預設值是 `audio/wav`。|查詢|字串|
 |選項|(空白)    |選擇性。 指定合成語音屬性的字串：<ul><li>`MaxQuality` 並 `MinSize` 指定音訊信號的品質。 `MaxQuality` 提供最高品質。 `MinSize` 提供最小的檔案大小。 預設值為  `MinSize` 。</li><li>`female` 並 `male` 指定所需的聲音性別。 預設為 `female`。 使用垂直線 (<code>\|</code>) 包含多個選項。 例如，`MaxQuality|Male`。</li></li></ul>  |查詢|字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)  |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
@@ -354,7 +354,7 @@ BINARY
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/Detect`。
 
-傳回**值：** 字串，包含文字的雙字元語言代碼。
+傳回 **值：** 字串，包含文字的雙字元語言代碼。
 
 ### <a name="response-class-status-200"></a>回應類別 (狀態 200) 
 
@@ -400,7 +400,7 @@ BINARY
 
 文字不能超過10000個字元。
 
-傳回**值：** 字串陣列，包含輸入陣列中的每個資料列都有兩個字元的語言代碼。
+傳回 **值：** 字串陣列，包含輸入陣列中的每個資料列都有兩個字元的語言代碼。
 
 以下是回應主體的格式：
 
@@ -440,7 +440,7 @@ BINARY
 ### <a name="implementation-notes"></a>實作附註
 
 > [!IMPORTANT]
-> 淘汰**附注：** 2018年1月31日之後，此方法將不會接受新的句子提交。 您將會收到錯誤訊息。 請參閱有關共同翻譯架構 (CTF) 之變更的公告。
+> 淘汰 **附注：** 2018年1月31日之後，此方法將不會接受新的句子提交。 您將會收到錯誤訊息。 請參閱有關共同翻譯架構 (CTF) 之變更的公告。
 
 將翻譯新增至翻譯記憶體。
 
@@ -461,7 +461,7 @@ BINARY
 |translatedText|(空白) |必要。 包含翻譯成目的語言之文字的字串。 字串的最大長度是2000個字元。|查詢|字串|
 |從|(空白)   |必要。 字串，表示文字原始語言的語言代碼。 例如，en 代表英文，取消德文。|查詢|字串|
 |to|(空白)|必要。 字串，表示要將文字轉譯成之語言的語言代碼。|查詢|字串|
-|rating|(空白) |選擇性。 表示字串品質評等的整數。 值介於-10 到10之間。 預設值為 1。|查詢|整數|
+|rating|(空白) |選擇性。 表示字串品質評等的整數。 值介於-10 到10之間。 預設為 1。|查詢|integer|
 |ContentType|(空白)    |選擇性。 要翻譯文字的格式。 支援的格式為 `text/plain` 和 `text/html` 。 任何 HTML 專案都必須是格式正確且完整的元素。    |查詢|字串|
 |category|(空白)|選擇性。 字串，包含翻譯 (網域) 的分類。 預設為 `general`。|查詢|字串|
 |user|(空白)|必要。 用來追蹤提交的建立者的字串。|查詢|字串|
@@ -484,7 +484,7 @@ BINARY
 ### <a name="implementation-notes"></a>實作附註
 
 > [!IMPORTANT]
-> 淘汰**附注：** 2018年1月31日之後，此方法將不會接受新的句子提交。 您將會收到錯誤訊息。 請參閱有關共同翻譯架構 (CTF) 之變更的公告。
+> 淘汰 **附注：** 2018年1月31日之後，此方法將不會接受新的句子提交。 您將會收到錯誤訊息。 請參閱有關共同翻譯架構 (CTF) 之變更的公告。
 
 將翻譯的陣列加入至翻譯記憶體。 這個方法是的陣列版本 `AddTranslation` 。
 
@@ -555,12 +555,12 @@ BINARY
 
 要求 URI 為 `https://api.microsofttranslator.com/V2/Http.svc/BreakSentences`。
 
-傳回**值：** 整數的陣列，表示句子的長度。 陣列的長度代表句子數目。 值代表每個句子的長度。
+傳回 **值：** 整數的陣列，表示句子的長度。 陣列的長度代表句子數目。 值代表每個句子的長度。
 
 ### <a name="response-class-status-200"></a>回應類別 (狀態 200) 
 整數的陣列，表示句子的長度。 陣列的長度代表句子數目。 值代表每個句子的長度。
 
-整數
+integer
 
 回應內容類型： application/xml
 
@@ -607,11 +607,11 @@ BINARY
 
 * `Category`：包含翻譯 (網域) 類別的字串。 預設為 `general`。
 * `ContentType`：唯一支援的選項以及預設值為 `text/plain` 。
-* `IncludeMultipleMTAlternatives`：布林值旗標，指定是否應該從 MT 引擎傳回一個以上的替代選項。 有效的值為 `true` ，且 `false` (區分大小寫的) 。 預設值是 `false` ，它只會傳回一個替代方法。 設定旗標可 `true` 讓您建立人工替代方案，與共同作業轉譯架構 (CTF) 完全整合在一起。 這項功能可讓您藉由在解碼器的 *n*個最佳清單中新增人工替代專案，來傳回在 CTF 中沒有翻譯的句子替代專案。
+* `IncludeMultipleMTAlternatives`：布林值旗標，指定是否應該從 MT 引擎傳回一個以上的替代選項。 有效的值為 `true` ，且 `false` (區分大小寫的) 。 預設值是 `false` ，它只會傳回一個替代方法。 設定旗標可 `true` 讓您建立人工替代方案，與共同作業轉譯架構 (CTF) 完全整合在一起。 這項功能可讓您藉由在解碼器的 *n* 個最佳清單中新增人工替代專案，來傳回在 CTF 中沒有翻譯的句子替代專案。
     - 評級。 分級的套用方式如下： 
          - 最佳自動翻譯的評分為 5。
        - CTF 中的替代方案會反映審核者的授權單位。 範圍從-10 到 + 10。
-       - 自動產生的 (*n*最佳) 轉譯替代專案的評等為0，而相符程度為100。
+       - 自動產生的 ( *n* 最佳) 轉譯替代專案的評等為0，而相符程度為100。
     - 替代專案的數目。 傳回的替代專案數目可以高達中指定的值 `maxTranslations` ，但可以較低。
     - 語言組。 這項功能不適用於簡體中文與繁體中文之間的翻譯。 它適用于 Microsoft Translator 支援的所有其他語言配對。
 * `State`：可協助將要求和回應相互關聯的使用者狀態。 回應中會傳回相同的內容。
@@ -620,7 +620,7 @@ BINARY
 
 要求 `Content-Type` 應該是 `text/xml`。
 
-傳回**值：** 以下是回應的格式：
+傳回 **值：** 以下是回應的格式：
 
 ```
 <GetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
@@ -669,7 +669,7 @@ BINARY
 |text|(空白)|必要。 字串，表示要轉譯的文字。 文字的大小上限為10000個字元。|查詢|字串|
 |從|(空白)|必要。 字串，表示所要翻譯文字的語言代碼。|查詢|字串|
 |to |(空白)    |必要。 字串，表示要將文字轉譯成之語言的語言代碼。|查詢|字串|
-|maxTranslations|(空白)|必要。 整數，表示要傳回的翻譯數目上限。|查詢|整數|
+|maxTranslations|(空白)|必要。 整數，表示要傳回的翻譯數目上限。|查詢|integer|
 |授權| (空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|字串|  header|
 |Ocp-Apim-Subscription-Key|(空白)  |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
 
@@ -719,11 +719,11 @@ BINARY
 * `Options`:選擇性。 `Options`包含下列值的物件。 它們都是選擇性的，且預設為最常見的設定。 指定的項目必須以字母順序列出。
     - `Category`：包含翻譯 (網域) 類別的字串。 預設為 `general`。
     - `ContentType`：唯一支援的選項以及預設值為 `text/plain` 。
-    - `IncludeMultipleMTAlternatives`：布林值旗標，指定是否應該從 MT 引擎傳回一個以上的替代選項。 有效的值為 `true` ，且 `false` (區分大小寫的) 。 預設值是 `false` ，它只會傳回一個替代方法。 將旗標設定為可 `true` 在翻譯中產生人工替代方案，並與共同作業翻譯架構 (CTF) 完全整合。 這項功能可讓您藉由在解碼器的 *n*個最佳清單中新增人工替代專案，來傳回在 CTF 中沒有替代專案的替代句子替代專案。
+    - `IncludeMultipleMTAlternatives`：布林值旗標，指定是否應該從 MT 引擎傳回一個以上的替代選項。 有效的值為 `true` ，且 `false` (區分大小寫的) 。 預設值是 `false` ，它只會傳回一個替代方法。 將旗標設定為可 `true` 在翻譯中產生人工替代方案，並與共同作業翻譯架構 (CTF) 完全整合。 這項功能可讓您藉由在解碼器的 *n* 個最佳清單中新增人工替代專案，來傳回在 CTF 中沒有替代專案的替代句子替代專案。
         - 分級的套用方式如下：
           - 最佳自動翻譯的評分為 5。
           - CTF 中的替代方案會反映審核者的授權單位。 範圍從-10 到 + 10。
-          - 自動產生的 (*n*最佳) 轉譯替代專案的評等為0，而相符程度為100。
+          - 自動產生的 ( *n* 最佳) 轉譯替代專案的評等為0，而相符程度為100。
         - 替代專案的數目。 傳回的替代專案數目可以高達中指定的值 `maxTranslations` ，但可以較低。
         - 語言組。 這項功能不適用於簡體中文與繁體中文之間的翻譯。 它適用于 Microsoft Translator 支援的所有其他語言配對。
 * `State`：可協助將要求和回應相互關聯的使用者狀態。 回應中會傳回相同的內容。
@@ -736,7 +736,7 @@ BINARY
 
 要求 `Content-Type` 應該是 `text/xml`。
 
-傳回**值：** 以下是回應的格式：
+傳回 **值：** 以下是回應的格式：
 
 ```
 <ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
@@ -800,9 +800,7 @@ BINARY
 |500    |伺服器錯誤。 若錯誤持續發生，請讓我們知道。 請提供要求的大約日期和時間，並將要求識別碼包括在回應標頭 `X-MS-Trans-Info` 中。|
 |503    |服務暫時無法使用。 請重試，並讓我們知道錯誤是否持續發生。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [遷移至 Translator v3](../migrate-to-v3.md)
-
-

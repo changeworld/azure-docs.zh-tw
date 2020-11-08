@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 11/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 23e9b45c47cdbdb671146b772d16354b1ee3c31b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392566"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369285"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -335,6 +335,51 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 > [!NOTE]
 > 您可以 [追蹤索引進度](#track-index-progress)。
+
+## <a name="reindex-command"></a>重新索引命令
+
+此 `reIndex` 命令會重新建立集合上的所有索引。 在大多數情況下，這是不必要的。 不過，在某些罕見的情況下，執行命令之後可能會改善查詢效能 `reIndex` 。
+
+您可以 `reIndex` 使用下列語法來執行命令：
+
+`db.runCommand({ reIndex: <collection> })`
+
+您可以使用下列語法來檢查是否需要執行 `reIndex` 命令：
+
+`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+
+範例輸出：
+
+```
+{
+        "database" : "myDB",
+        "collection" : "myCollection",
+        "provisionedThroughput" : 400,
+        "indexes" : [
+                {
+                        "v" : 1,
+                        "key" : {
+                                "_id" : 1
+                        },
+                        "name" : "_id_",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                },
+                {
+                        "v" : 1,
+                        "key" : {
+                                "b.$**" : 1
+                        },
+                        "name" : "b.$**_1",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                }
+        ],
+        "ok" : 1
+}
+```
+
+如果 `reIndex` 是必要的， **requiresReIndex** 將會是 true。 如果 `reIndex` 不需要，則會省略此屬性。
 
 ## <a name="migrate-collections-with-indexes"></a>使用索引遷移集合
 

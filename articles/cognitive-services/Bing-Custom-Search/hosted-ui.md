@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090557"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367381"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>設定託管的 UI 體驗
 
@@ -45,16 +45,16 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
     - 僅限結果：只顯示搜尋結果，不含搜尋方塊。 使用此版面配置時，您必須提供搜尋查詢 (`&q=<query string>`)。 在 JavaScript 程式碼片段或 HTML 端點連結中，將查詢參數新增到要求 URL。
     - 快顯視窗：提供搜尋方塊，並在滑動重迭中顯示搜尋結果。
 
-5. 選取色彩佈景主題。 按一下 [自訂佈景主題]  ，即可自訂符合您應用程式的色彩。 若要變更色彩，請輸入色彩的 RGB HEX 值 (例如 `#366eb8`)，或按一下色彩預覽。
+5. 選取色彩佈景主題。 按一下 [自訂佈景主題]，即可自訂符合您應用程式的色彩。 若要變更色彩，請輸入色彩的 RGB HEX 值 (例如 `#366eb8`)，或按一下色彩預覽。
 
-   您可以在入口網站的右側預覽您的變更。 按一下 [重設為預設]  ，您的變更就會還原為所選佈景主題的預設色彩。
+   您可以在入口網站的右側預覽您的變更。 按一下 [重設為預設]，您的變更就會還原為所選佈景主題的預設色彩。
 
    > [!NOTE]
    > 選擇色彩時，請考慮可存取性。
 
-6. 在 [其他組態]  下方，為您的應用程式提供適當的值。 這些設定是選用的。 若要檢視套用或移除這些設定的效果，請查看右側的預覽窗格。 可用的組態選項包括：  
+6. 在 [其他組態] 下方，為您的應用程式提供適當的值。 這些設定是選用的。 若要檢視套用或移除這些設定的效果，請查看右側的預覽窗格。 可用的組態選項包括：  
 
-7. 輸入搜尋訂用帳戶金鑰，或從下拉式清單中選擇。 下拉式清單中會填入來自您 Azure 帳戶之訂用帳戶的金鑰。 請參閱[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。  
+7. 輸入搜尋訂用帳戶金鑰，或從下拉式清單中選擇。 下拉式清單中會填入來自您 Azure 帳戶之訂用帳戶的金鑰。 請參閱[認知服務 API 帳戶](../cognitive-services-apis-create-account.md)。  
 
 8. 如果您已啟用自動建議，請輸入自動建議訂用帳戶金鑰，或從下拉式清單中選擇。 下拉式清單中會填入來自您 Azure 帳戶之訂用帳戶的金鑰。 自訂自動建議需要特定的訂用帳戶層，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)。
 
@@ -82,7 +82,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > 視需要將下列的查詢參數加入 URL。 如需有關這些參數的資訊，請參閱[自訂搜尋 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) \(英文\) 參考。
+  > 視需要將下列的查詢參數加入 URL。 如需有關這些參數的資訊，請參閱[自訂搜尋 API](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) \(英文\) 參考。
   >
   > - q
   > - mkt
@@ -92,11 +92,11 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
   > [!IMPORTANT]
   > 頁面無法顯示您的隱私權聲明或其他通知和條款。 對您的適用性可能有所不同。  
 
-如需相關資訊 (包括您的自訂組態識別碼)，請移至 [生產]  索引標籤下的 [端點]  。
+如需相關資訊 (包括您的自訂組態識別碼)，請移至 [生產] 索引標籤下的 [端點]。
 
 ## <a name="configuration-options"></a>設定選項
 
-按一下 [其他組態]  ，然後提供值，即可設定託管 UI 的行為。 這些設定是選用的。 若要檢視套用或移除這些設定的效果，請查看右側的預覽窗格。 
+按一下 [其他組態]，然後提供值，即可設定託管 UI 的行為。 這些設定是選用的。 若要檢視套用或移除這些設定的效果，請查看右側的預覽窗格。 
 
 ### <a name="web-search-configurations"></a>Web 搜尋組態
 
@@ -115,7 +115,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 - 啟用影像結果：決定是否啟用影像搜尋 (您會在頁面頂端看到 [影像] 索引標籤) 。
 - 每一頁面的影像結果：一次顯示的影像搜尋結果數目 (最大值為每頁) 的150結果。
 
-如果您按一下 [顯示進階設定]  ，將顯示下列設定。  
+如果您按一下 [顯示進階設定]，將顯示下列設定。  
   
 - 啟用篩選：新增使用者可用來篩選 Bing 傳回之影像的篩選準則。 例如，使用者可以篩選只顯示動畫 GIF 的結果。
 
@@ -124,7 +124,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 - 啟用的影片結果：決定是否啟用影片搜尋 (您會在頁面) 頂端看到 [影片] 索引標籤。
 - 每一頁面的影片結果：一次顯示的影片搜尋結果數目 (最大值為每頁) 的150結果。
 
-如果您按一下 [顯示進階設定]  ，將顯示下列設定。  
+如果您按一下 [顯示進階設定]，將顯示下列設定。  
   
 - 啟用篩選：新增使用者可用來篩選 Bing 傳回之影片的篩選準則。 例如，使用者可以篩選特定解析度的影片結果，或篩選在過去 24 小時內探索到的影片。
 
@@ -133,7 +133,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 - 頁面標題：顯示在 [搜尋結果] 頁面標題區域中的文字 (不適用於彈出版面配置) 。
 - 工具列主題：決定搜尋結果頁面標題區域的背景色彩。
 
-如果您按一下 [顯示進階設定]  ，將顯示下列設定。  
+如果您按一下 [顯示進階設定]，將顯示下列設定。  
 
 |資料行1  |資料行2  |
 |---------|---------|
@@ -150,7 +150,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 - 標誌 URL
 - Favicon URL  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用裝飾標記醒目提示文字](../bing-web-search/hit-highlighting.md)
-- [網頁頁面](./page-webpages.md)
+- [網頁頁面](../bing-web-search/paging-search-results.md)

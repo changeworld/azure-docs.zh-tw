@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a7aa2b75a6f6e95bdeff4176ee2ad852de3d7169
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 80215a22c5af3698aee6719f52e42c457220b7f9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090693"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367449"
 ---
 # <a name="custom-search"></a>自訂搜尋
 
@@ -33,10 +33,10 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-如需如何設定自訂搜尋來源的範例，請參閱[教學課程](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)。 如需關於標頭、參數、市場代碼、回應物件、錯誤的詳細資料，請參閱 [Bing 自訂搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) 參考資訊。
+如需如何設定自訂搜尋來源的範例，請參閱[教學課程](./tutorials/custom-search-web-page.md)。 如需關於標頭、參數、市場代碼、回應物件、錯誤的詳細資料，請參閱 [Bing 自訂搜尋 API v7](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) 參考資訊。
 
 ## <a name="custom-search-response-json"></a>自訂搜尋回應 JSON
-自訂搜尋要求會傳回 JSON 物件形式的結果，請參閱[回應物件](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects)。 
+自訂搜尋要求會傳回 JSON 物件形式的結果，請參閱[回應物件](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects)。 
 
 ## <a name="custom-autosuggest"></a>自訂自動建議
 自訂自動建議 API 可讓您將部分搜尋查詢字詞傳送到 Bing，並取得您可以設定的建議查詢清單。 透過自訂自動建議，您可以新增 API 所傳回的建議，並選擇性地指定是否要包含 Bing 所產生的建議。
@@ -60,10 +60,10 @@ https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 ```
 
-如需設定自訂搜尋執行個體的相關資訊，請參閱[設定您的自訂搜尋體驗](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view)。
+如需設定自訂搜尋執行個體的相關資訊，請參閱[設定您的自訂搜尋體驗](./define-your-custom-view.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 **Bing** API 支援根據類型傳回結果的搜尋動作。 所有搜尋端點會傳回作為 JSON 回應物件的結果。  所有端點均可支援依照經度、緯度和搜尋半徑傳回特定語言及/或位置的查詢。
 
 如需每個端點支援的參數完整相關資訊，請參閱每種類型的參考頁面。
-如需透過範例了解使用自訂搜尋 API 的基本要求，請參閱[自訂搜尋快速入門](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)
+如需透過範例了解使用自訂搜尋 API 的基本要求，請參閱[自訂搜尋快速入門](/azure/cognitive-services/bing-custom-search/)

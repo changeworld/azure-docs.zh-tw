@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220868"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368279"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>將中樞工作區和專案移轉至自訂翻譯工具
 
@@ -27,7 +27,7 @@ ms.locfileid: "92220868"
 * 在任何時間點，從中樞定型遷移的 BLEU 分數都可在模型的 [TrainingDetails] 頁面中找到，其位於「MT 中樞的 Bleu 分數」標題中。
 
 > [!Note] 
-> 若要成功定型，自訂翻譯至少需要10000個唯一的解壓縮句子。 自訂翻譯無法進行比 [建議的最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)更少的訓練。
+> 若要成功定型，自訂翻譯至少需要10000個唯一的解壓縮句子。 自訂翻譯無法進行比 [建議的最小值](./sentence-alignment.md#suggested-minimum-number-of-sentences)更少的訓練。
 
 ## <a name="find-custom-translator-workspace-id"></a>尋找自訂翻譯工具工作區識別碼
 
@@ -122,7 +122,7 @@ ms.locfileid: "92220868"
 * 自訂翻譯中尚未提供語言組的系統將只能透過自訂翻譯來存取資料或解除部署。 這些專案在 [專案] 頁面上會標示為 [無法使用]。 當我們啟用自訂翻譯的新語言組時，專案就會變成使用中以進行定型和部署。 
 * 將專案從 Hub 移轉至自訂翻譯工具，並不會對您的 Hub 訓練或專案造成任何影響。 在移轉期間，我們不會從 Hub 中刪除專案或文件，也不會將模型解除部署。
 * 您的每個專案只能移轉一次。 如果您需要重複移轉某個專案，請與我們連絡。
-* 自訂翻譯支援與英文的 NMT 語言配對。 [查看支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub 不需要基準模型，因此可支援數千種語言。 您可以移轉不受支援的語言組，但我們只會執行文件和專案定義的移轉。 我們無法為新模型定型。 此外，這些文件和專案將會顯示為非作用中，以指出它們目前無法使用。 如果新增了這些專案和 (或) 文件的支援，它們就會變成作用中狀態，且可以定型。
+* 自訂翻譯支援與英文的 NMT 語言配對。 [查看支援語言的完整清單](../language-support.md#customization)。 Hub 不需要基準模型，因此可支援數千種語言。 您可以移轉不受支援的語言組，但我們只會執行文件和專案定義的移轉。 我們無法為新模型定型。 此外，這些文件和專案將會顯示為非作用中，以指出它們目前無法使用。 如果新增了這些專案和 (或) 文件的支援，它們就會變成作用中狀態，且可以定型。
 * 自訂翻譯工具目前不支援單一語言定型資料。 和不受支援的語言組一樣，您可以移轉單一語言文件，但在單一語言資料受到支援之前，這些文件都會顯示為非作用中。
 * 自訂翻譯工具需要 10k 個平行句子才能執行定型。 Microsoft Hub 無法對較小的資料集定型。 不符合此需求的訓練若進行移轉，則不會定型。
 
@@ -146,4 +146,4 @@ ms.locfileid: "92220868"
 ## <a name="next-steps"></a>後續步驟
 
 - [定型模型](how-to-train-model.md)。
-- 透過 [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)開始使用您已部署的自訂翻譯模型。
+- 透過 [Translator V3](../reference/v3-0-translate.md?tabs=curl)開始使用您已部署的自訂翻譯模型。

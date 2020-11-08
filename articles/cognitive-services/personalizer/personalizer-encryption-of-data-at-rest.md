@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: a19f0a204bec1c0a43a84d93c2dc4b70ef6ecbe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069898"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369353"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>靜態資料的個人化工具服務加密
 
@@ -30,4 +30,4 @@ ms.locfileid: "89069898"
 ## <a name="next-steps"></a>後續步驟
 
 * [個人化工具 Service Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)
-* [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [深入瞭解 Azure Key Vault](../../key-vault/general/overview.md)

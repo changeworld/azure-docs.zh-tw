@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 7248c82882d32ae0eb225a9ec4c3b48dff3b9fcb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 11/06/2020
+ms.openlocfilehash: 7532366d533aa957525235511a1f29649d6f8828
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360032"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369202"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -137,13 +137,57 @@ ms.locfileid: "93360032"
 
 | 名稱 | 限制 | 注意 |
 | ---- | ----- | ----- |
-| 動作：每 5 分鐘執行次數 | 100,000 是預設限制，但 300,000 是上限。 | 若要變更預設限制，請參閱[以「輸送量」模式執行您的邏輯應用程式](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) (此為預覽版)。 或者，您可以視需要將工作負載分散到多個邏輯應用程式。 |
+| 動作：每 5 分鐘執行次數 | 100,000 是預設限制，但 300,000 是上限。 | 若要將預設限制提高至邏輯應用程式的最大值，請參閱在 [高輸送量模式中執行](#run-high-throughput-mode)（處於預覽狀態）。 或者，您可以視需要將 [工作負載分散到多個邏輯應用程式](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) 。 |
 | 動作：並行撥出電話 | ~2,500 | 您可以視需要減少並行要求數目或縮短持續時間。 |
 | 執行時間端點：並行的輸入呼叫 | ~1,000 | 您可以視需要減少並行要求數目或縮短持續時間。 |
 | 執行階段端點：每 5 分鐘讀取呼叫數目  | 60,000 | 此限制適用于從邏輯應用程式的執行歷程記錄取得原始輸入和輸出的呼叫。 您可以視需要將工作負載分散到多個應用程式。 |
 | 執行階段端點：每 5 分鐘叫用呼叫數目 | 45,000 | 您可以視需要將工作負載分散到多個應用程式。 |
 | 每 5 分鐘的內容輸送量 | 600 MB | 您可以視需要將工作負載分散到多個應用程式。 |
 ||||
+
+<a name="run-high-throughput-mode"></a>
+
+#### <a name="run-in-high-throughput-mode"></a>在高輸送量模式中執行
+
+針對單一邏輯應用程式定義，每5分鐘執行的動作數目都有 [預設限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要將預設限制提高至邏輯應用程式的最大值，您可以啟用高輸送量模式（處於預覽狀態）。 或者，您可以視需要將 [工作負載分散到多個邏輯應用程式](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) 。
+
+1. 在 [Azure 入口網站] 的邏輯應用程式功能表上，選取 [ **設定** ] 下的 [ **工作流程設定** ]。
+
+1. 在 [ **執行時間選項**  >  **高輸送量** ] 下，將設定變更為 [ **開啟** ]。
+
+   ![顯示 Azure 入口網站中的邏輯應用程式功能表，並將 [工作流程設定] 和 [高輸送量] 設定為 [開啟] 的螢幕擷取畫面。](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+若要在用來部署邏輯應用程式的 ARM 範本中啟用這項設定，請在 `properties` 邏輯應用程式資源定義的物件中，將 `runtimeConfiguration` `operationOptions` 屬性設定為的物件新增至 `OptimizedForHighThroughput` ：
+
+```json
+{
+   <template-properties>
+   "resources": [
+      // Start logic app resource definition
+      {
+         "properties": {
+            <logic-app-resource-definition-properties>,
+            <logic-app-workflow-definition>,
+            <more-logic-app-resource-definition-properties>,
+            "runtimeConfiguration": {
+               "operationOptions": "OptimizedForHighThroughput"
+            }
+         },
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {},
+         "apiVersion": "2016-06-01",
+         "dependsOn": [
+         ]
+      }
+      // End logic app resource definition
+   ],
+   "outputs": {}
+}
+```
+
+如需邏輯應用程式資源定義的詳細資訊，請參閱 [總覽：使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)。
 
 ### <a name="integration-service-environment-ise"></a>整合服務環境 (ISE)
 

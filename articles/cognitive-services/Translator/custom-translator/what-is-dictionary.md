@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510754"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368979"
 ---
 # <a name="what-is-a-dictionary"></a>什麼是字典？
 
 字典是已對齊的一組文件，用來指定片語或句子及其對應之翻譯的清單。 在定型中使用字典，當您想要 Microsoft Translator 一律翻譯原始片語或句子的任何實例時，就會使用您在字典中提供的翻譯。 字典有時稱為字彙或詞彙。 您可以將字典視為針對您所列出的所有字詞，強制執行「複製並取代」。 此外，Microsoft 自訂翻譯的服務會建立並使用自己的一般用途字典，以改善其翻譯品質。 不過，客戶提供的字典會採用引用，並且會先搜尋以查閱單字或句子。
 
-字典只適用于語言組中具有完整支援之 Microsoft 一般類神經網路模型的專案。 [查看語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
+字典只適用于語言組中具有完整支援之 Microsoft 一般類神經網路模型的專案。 [查看語言的完整清單](../language-support.md#customization)。
 
 ## <a name="phrase-dictionary"></a>片語字典
 片語字典會區分大小寫。 它是精確的尋找和取代作業。 當您在定型模型中包含片語字典，則其中所列的任何單字或片語都會以您指定的方式翻譯。 句子的其餘部分會如往常般翻譯。 您可以使用片語字典來指定不應翻譯的片語，方法是在字典中的原始和目標檔案內提供相同的未翻譯片語。

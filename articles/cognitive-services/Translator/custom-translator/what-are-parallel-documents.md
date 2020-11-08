@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510805"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368996"
 ---
 # <a name="what-are-parallel-documents"></a>什麼是平行處理的文件？
 
@@ -23,7 +23,7 @@ ms.locfileid: "88510805"
 
 ## <a name="requirements"></a>需求
 
-您至少需要10000個唯一對齊的平行句子，才能將系統定型。 這項限制是安全的網路，可確保您的並行句子包含足夠的獨特詞彙來成功定型轉譯模型。 最佳做法是持續新增更多平行處理的內容，並重新定型以改善翻譯系統的品質。 請參閱 [句子對齊](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)。
+您至少需要10000個唯一對齊的平行句子，才能將系統定型。 這項限制是安全的網路，可確保您的並行句子包含足夠的獨特詞彙來成功定型轉譯模型。 最佳做法是持續新增更多平行處理的內容，並重新定型以改善翻譯系統的品質。 請參閱 [句子對齊](./sentence-alignment.md)。
 
 Microsoft 要求，上傳到自訂翻譯工具的文件不可違反第三方著作權或智慧財產權。 如需詳細資訊，請參閱[使用規定](https://azure.microsoft.com/support/legal/cognitive-services-terms/)。
 使用入口網站上傳文件，並不會改變文件本身的智慧財產權歸屬。

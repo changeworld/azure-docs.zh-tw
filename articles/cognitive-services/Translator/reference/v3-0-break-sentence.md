@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27069cf38da2567a3af3ed0fb65baead43665186
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903998"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369472"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3.0： BreakSentence
 
@@ -33,20 +33,20 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 在查詢字串上傳遞的要求參數為：
 
-| 查詢參數 | 描述 |
+| 查詢參數 | 說明 |
 | -------| ----------- |
-| api-version <img width=200/>   | **必要查詢參數**。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。 |
-| 語言 | **選擇性查詢參數**。<br/>識別輸入文字語言的語言標記。 如果未指定代碼，將會套用自動語言偵測。 |
-| 指令碼    | **選擇性查詢參數**。<br/>識別輸入文字所使用指令碼的指令碼標記。 如果未指定指令碼，將會假設語言的預設指令碼。  | 
+| api-version <img width=200/>   | **必要查詢參數** 。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。 |
+| 語言 | **選擇性查詢參數** 。<br/>識別輸入文字語言的語言標記。 如果未指定代碼，將會套用自動語言偵測。 |
+| 指令碼    | **選擇性查詢參數** 。<br/>識別輸入文字所使用指令碼的指令碼標記。 如果未指定指令碼，將會假設語言的預設指令碼。  | 
 
 要求標頭包括：
 
 | 標題 | 描述 |
 | ------- | ----------- |
-| 驗證標頭 <img width=200/>  | 必要的要求標頭。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
+| 驗證標頭 <img width=200/>  | 必要的要求標頭。<br/>請參閱<a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
 | Content-Type | 必要的要求標頭。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
 | Content-Length    | 必要的要求標頭。<br/>要求本文的長度。  | 
-| X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 請注意，若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。  | 
+| X-ClientTraceId   | **選擇項** 。<br/>用於識別唯一要求的 GUID，由用戶端產生。 請注意，若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。  | 
 
 ## <a name="request-body"></a>Request body
 
@@ -141,7 +141,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)的 [參考] 頁面上找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](./v3-0-reference.md#errors)的 [參考] 頁面上找到常見的錯誤碼。 
 
 ## <a name="examples"></a>範例
 
@@ -150,4 +150,3 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-

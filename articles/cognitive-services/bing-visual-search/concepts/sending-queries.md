@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095113"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369489"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>將搜尋查詢傳送至 Bing 圖像式搜尋 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "93095113"
 
 您可以透過三種方式來取得關於影像的深入解析：
 
-- 使用您在前一次呼叫其中一個 [BING 影像搜尋 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 端點的映射中取得的深入解析權杖。
+- 使用您在前一次呼叫其中一個 [BING 影像搜尋 API](/rest/api/cognitiveservices/bing-images-api-v7-reference) 端點的映射中取得的深入解析權杖。
 - 傳送影像的 URL。
 - 以二進位格式)  (上傳影像。
 
@@ -78,18 +78,18 @@ ms.locfileid: "93095113"
 
 以下是您的要求所應指定的查詢參數。 您至少應該包含 `mkt` 查詢參數：
 
-| 名稱 | 值 | 類型 | 必要 |
+| Name | 值 | 類型 | 必要 |
 | --- | --- | --- | --- |
-| <a name="cc"></a>cc  | 代表結果來源的兩個字元的國家/地區代碼。<br /><br /> 若您設定此參數，則您也必須指定 [Accept-Language](#acceptlanguage) 標頭。 Bing 會使用它從語言清單中找到的第一個支援的語言，然後將其與您所指定的國碼 (地區碼) 結合，以決定要傳回結果的市場。 如果語言清單中未包含支援的語言，Bing 會就近尋找支援要求的語言和市場。 或者，它可能會將彙總或預設的市場用於結果，而不指定市場。<br /><br /> 只有在指定了多個語言時，才需要使用此查詢參數和 `Accept-Language` 查詢參數，否則，您應使用 `mkt` 和 `setLang` 查詢參數。<br /><br /> 此參數和 [mkt](#mkt) 查詢參數彼此互斥 &mdash; 請勿同時指定。 | String | 否       |
+| <a name="cc"></a>cc  | 代表結果來源的兩個字元的國家/地區代碼。<br /><br /> 若您設定此參數，則您也必須指定 [Accept-Language](#acceptlanguage) 標頭。 Bing 會使用它從語言清單中找到的第一個支援的語言，然後將其與您所指定的國碼 (地區碼) 結合，以決定要傳回結果的市場。 如果語言清單中未包含支援的語言，Bing 會就近尋找支援要求的語言和市場。 或者，它可能會將彙總或預設的市場用於結果，而不指定市場。<br /><br /> 只有在指定了多個語言時，才需要使用此查詢參數和 `Accept-Language` 查詢參數，否則，您應使用 `mkt` 和 `setLang` 查詢參數。<br /><br /> 此參數和 [mkt](#mkt) 查詢參數彼此互斥 &mdash; 請勿同時指定。 | 字串 | 否       |
 | <a name="mkt"></a>mkt   | 產生結果的市場。 <br /><br /> **注意：** 您應該一律指定市場（如果已知）。 指定市場可協助 Bing 路由傳送要求，並傳回適當的最佳回應。<br /><br /> 此參數和 [cc](#cc) 查詢參數彼此互斥 &mdash; 請勿同時指定。 | String | 是      |
-| <a name="safesearch"></a>safeSearch | 成人內容的篩選準則。 以下是可能的篩選值 (不區分大小寫)。<br /><ul><li>關閉 &mdash; 傳回含有成人文字或影像的網頁。<br /><br/></li><li>中度 &mdash; 傳回含有成人文字、但不含成人影像的網頁。<br /><br/></li><li>嚴格 &mdash; 不傳回含有成人文字或影像的網頁。</li></ul><br /> 預設值為「中度」。<br /><br /> **注意：** 如果要求來自於 Bing 的成人內容原則必須將 `safeSearch` 設為「嚴格」的市場，Bing 將會忽略 `safeSearch` 值並使用「嚴格」。<br/><br/>**注意：** 如果您使用 `site:` 查詢運算子，不論查詢參數設定為何，回應都有可能包含成人內容 `safeSearch` 。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才可使用 `site:`。  | String | 否       |
-| <a name="setlang"></a>setLang  | 用於使用者介面字串的語言。 使用 ISO 639-1 兩個字母的語言代碼指定語言。 例如，英文的語言代碼是 EN。 預設值為 EN (英文)。<br /><br /> 語言雖然是選擇性的，但您應一律加以指定。 一般而言，除非使用者想要以不同的語言顯示使用者介面字串，否則您都會將 `setLang` 設定為 `mkt` 所指定的相同語言。<br /><br /> 此參數和 [Accept-Language](#acceptlanguage) 標頭彼此互斥 &mdash; 請勿同時指定。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 同樣地，回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。 | String | 否   |
+| <a name="safesearch"></a>safeSearch | 成人內容的篩選準則。 以下是可能的篩選值 (不區分大小寫)。<br /><ul><li>關閉 &mdash; 傳回含有成人文字或影像的網頁。<br /><br/></li><li>中度 &mdash; 傳回含有成人文字、但不含成人影像的網頁。<br /><br/></li><li>嚴格 &mdash; 不傳回含有成人文字或影像的網頁。</li></ul><br /> 預設值為「中度」。<br /><br /> **注意：** 如果要求來自於 Bing 的成人內容原則必須將 `safeSearch` 設為「嚴格」的市場，Bing 將會忽略 `safeSearch` 值並使用「嚴格」。<br/><br/>**注意：** 如果您使用 `site:` 查詢運算子，不論查詢參數設定為何，回應都有可能包含成人內容 `safeSearch` 。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才可使用 `site:`。  | 字串 | 否       |
+| <a name="setlang"></a>setLang  | 用於使用者介面字串的語言。 使用 ISO 639-1 兩個字母的語言代碼指定語言。 例如，英文的語言代碼是 EN。 預設值為 EN (英文)。<br /><br /> 語言雖然是選擇性的，但您應一律加以指定。 一般而言，除非使用者想要以不同的語言顯示使用者介面字串，否則您都會將 `setLang` 設定為 `mkt` 所指定的相同語言。<br /><br /> 此參數和 [Accept-Language](#acceptlanguage) 標頭彼此互斥 &mdash; 請勿同時指定。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 同樣地，回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。 | 字串 | 否   |
 
 ## <a name="headers"></a>標題
 
 以下是您的要求所應指定的標頭。 `Content-Type`和 `Ocp-Apim-Subscription-Key` 標頭是唯一必要的標頭，但您也應該包含 `User-Agent` 、、 `X-MSEdge-ClientID` `X-MSEdge-ClientIP` 和 `X-Search-Location` 。
 
-| 標頭 | 描述 |
+| 標頭 | 說明 |
 | --- | --- |
 | <a name="acceptlanguage"></a>Accept-Language  | 選擇性要求標頭。<br /><br /> 要用於使用者介面字串語言的逗號分隔清單。 清單採用喜好設定的遞減順序。 如需詳細資訊 (包括預期的格式)，請參閱 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此標頭和 [setLang](#setlang) 查詢參數彼此互斥 &mdash; 請勿同時指定。<br /><br /> 若您設定此標頭，則您也必須指定 [cc](#cc) 查詢參數。 若要決定要傳回結果的市場，Bing 會使用它從清單中找到的第一個支援的語言，然後將其與 `cc` 參數值結合。 如果清單中未包含支援的語言，Bing 會就近尋找支援要求的語言和市場，或將彙總或預設的市場用於結果。 若要判斷 Bing 使用的市場，請參閱 `BingAPIs-Market` 標頭。<br /><br /> 只有在指定了多種語言時，才需要使用此標頭和 `cc` 查詢參數。 否則，請使用 [mkt](#mkt) 和 [setLang](#setlang) 查詢參數。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。  |
 | <a name="contenttype"></a>Content-Type  |     |
@@ -109,7 +109,7 @@ ms.locfileid: "93095113"
 
 ### <a name="content-form-types"></a>內容表單類型
 
-每個要求都必須包含 `Content-Type` 標頭。 標頭必須設定為： `multipart/form-data; boundary=\<boundary string\>` ，其中 \<boundary string\> 是識別表單資料界限的唯一不透明字串。 例如： `boundary=boundary_1234-abcd` 。
+每個要求都必須包含 `Content-Type` 標頭。 標頭必須設定為： `multipart/form-data; boundary=\<boundary string\>` ，其中 \<boundary string\> 是識別表單資料界限的唯一不透明字串。 例如 `boundary=boundary_1234-abcd`。
 
 如果您將影像權杖或 URL 圖像式搜尋傳送，下列程式碼片段會顯示您必須包含在 POST 主體中的表單資料。 表單資料必須包含 `Content-Disposition` 標頭，而且您必須將其 `name` 參數設定為 "knowledgeRequest"。 如需物件的詳細資訊 `imageInfo` ，請參閱要求。
 

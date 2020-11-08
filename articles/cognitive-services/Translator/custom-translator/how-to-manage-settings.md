@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757022"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368333"
 ---
 # <a name="how-to-manage-settings"></a>如何管理設定
 
@@ -33,7 +33,7 @@ ms.locfileid: "91757022"
 
 如果您沒有訂用帳戶，請遵循下列步驟：
 
-1. 訂閱以建立翻譯工具資源。 請依照 [如何註冊 translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) 來訂閱和取得 translator 金鑰。
+1. 訂閱以建立翻譯工具資源。 請依照 [如何註冊 translator](../translator-how-to-signup.md) 來訂閱和取得 translator 金鑰。
 2. 記下 Translator 訂用帳戶的金鑰。 可用的值為 Key1 或 Key2。
 3. 瀏覽回自訂翻譯工具入口網站。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91757022"
     ![建立新的工作區對話方塊](media/how-to/create-new-workspace-dialog.png)
 
 >[!Note]
->自訂翻譯不支援為翻譯工具文字的 API 資源建立工作區 (也稱為 在 [啟用的 VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)內建立的 Azure 訂用帳戶金鑰) 。
+>自訂翻譯不支援為翻譯工具文字的 API 資源建立工作區 (也稱為 在 [啟用的 VNET](../../../api-management/api-management-using-with-vnet.md)內建立的 Azure 訂用帳戶金鑰) 。
 
 ### <a name="modify-existing-key"></a>修改現有金鑰
 

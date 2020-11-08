@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 43086c245f1d16975eae6951b1e8c2cb56fe5241
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ac581b96ba4e29837570ab8c01bf6c927eb34a28
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098326"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367517"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>拼字檢查 API 升級指南
 
@@ -30,7 +30,7 @@ ms.locfileid: "93098326"
 
 ### <a name="endpoints"></a>端點
 
-- 從 v5 變更為 v7 的端點版本號碼。 例如： `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck` 。
+- 從 v5 變更為 v7 的端點版本號碼。 例如 `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`。
 
 ### <a name="error-response-objects-and-error-codes"></a>錯誤回應物件和錯誤碼
 
@@ -43,7 +43,7 @@ ms.locfileid: "93098326"
 
 - 將 v5 錯誤碼取代為下列可能的 `code` 和 `subCode` 值。  
   
-|程式碼|子代碼|描述
+|程式碼|子代碼|說明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出現任何子代碼條件，Bing 會傳回 ServerError。 如果 HTTP 狀態碼為 500，則回應會包含這些錯誤。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>封鎖|只要要求的任何部分無效，Bing 就會傳回 InvalidRequest。 例如缺少必要的參數或參數值無效。<br/><br/>如果錯誤是 ParameterMissing 或 ParameterInvalidValue，則 HTTP 狀態碼為 400。<br/><br/>如果錯誤是 HttpNotAllowed，則 HTTP 狀態碼為 410。
@@ -60,7 +60,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-停用|InsufficientAuthorization.AuthorizationDisabled
+已停用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -77,4 +77,4 @@ InsufficientScope|InsufficientAuthorization
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用和顯示需求](./UseAndDisplayRequirements.md)
+> [使用和顯示需求](../bing-web-search/use-display-requirements.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: d99cfc8b50155eb4cb2aecb3cb770f71b927ce1d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148690"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368758"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 認知服務支援和協助選項
 
@@ -32,39 +32,39 @@ ms.locfileid: "92148690"
 
 ## <a name="post-a-question-on-microsoft-qa"></a>在 Microsoft 問與答頁面上張貼問題
 
-若要快速且可靠地回答 Microsoft 工程師提供的技術產品問題、Azure 最有價值的專家 (Mvp) 或我們的專家團體，請與我們分享 [Microsoft 問&A](https://docs.microsoft.com/answers/products/azure?product=all)azure 的慣用目的地以取得支援。
+若要快速且可靠地回答 Microsoft 工程師提供的技術產品問題、Azure 最有價值的專家 (Mvp) 或我們的專家團體，請與我們分享 [Microsoft 問&A](/answers/products/azure?product=all)azure 的慣用目的地以取得支援。
 
 如果您使用搜尋找不到問題的解答，請將新問題提交至 Microsoft 問與答頁面。 當您提出問題時，請使用下列其中一個標籤：
 
-* [認知服務](https://docs.microsoft.com/answers/topics/azure-cognitive-services.html)
+* [認知服務](/answers/topics/azure-cognitive-services.html)
 
 **視覺**
 
-* [電腦視覺](https://docs.microsoft.com/answers/topics/azure-computer-vision.html)
-* [自訂視覺](https://docs.microsoft.com/answers/topics/azure-custom-vision.html)
-* [臉部](https://docs.microsoft.com/answers/topics/azure-face.html)
-* [表單辨識器](https://docs.microsoft.com/answers/topics/azure-form-recognizer.html)
-* [影片索引子](https://docs.microsoft.com/answers/topics/azure-media-services.html)
+* [電腦視覺](/answers/topics/azure-computer-vision.html)
+* [自訂視覺](/answers/topics/azure-custom-vision.html)
+* [臉部](/answers/topics/azure-face.html)
+* [表單辨識器](/answers/topics/azure-form-recognizer.html)
+* [影片索引子](/answers/topics/azure-media-services.html)
 
 **語言**
 
-* [沈浸式閱讀程式](https://docs.microsoft.com/answers/topics/azure-immersive-reader.html)
-* [語言理解 (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
-* [QnA Maker](https://docs.microsoft.com/answers/topics/azure-qna-maker.html)
-* [文字分析](https://docs.microsoft.com/answers/topics/azure-text-analytics.html)
-* [翻譯工具](https://docs.microsoft.com/answers/topics/azure-translator.html)
+* [沈浸式閱讀程式](/answers/topics/azure-immersive-reader.html)
+* [語言理解 (LUIS)](/answers/topics/azure-language-understanding.html)
+* [QnA Maker](/answers/topics/azure-qna-maker.html)
+* [文字分析](/answers/topics/azure-text-analytics.html)
+* [翻譯工具](/answers/topics/azure-translator.html)
 
 **語音**
 
-* [語音服務](https://docs.microsoft.com/answers/topics/azure-speech.html)
+* [語音服務](/answers/topics/azure-speech.html)
 
 
 **決策**
 
-* [異常偵測器](https://docs.microsoft.com/answers/topics/azure-anomaly-detector.html) 
-* [內容仲裁](https://docs.microsoft.com/answers/topics/azure-content-moderator.html)
+* [異常偵測器](/answers/topics/azure-anomaly-detector.html) 
+* [內容仲裁](/answers/topics/azure-content-moderator.html)
 * [Metrics Advisor (預覽)]()
-* [個人化工具](https://docs.microsoft.com/answers/topics/azure-personalizer.html)
+* [個人化工具](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 張貼問題
 
@@ -115,9 +115,9 @@ ms.locfileid: "92148690"
 
 | 服務                       | 認知服務 UserVoice URL |
 |-------------------------------|---------------|
-| Anomaly Detector              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
+| 異常偵測器              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | 電腦視覺               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| 內容仲裁者             | https://cognitive.uservoice.com/forums/559960-content-moderator |
+| 內容仲裁             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | 自訂視覺                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | 臉部                          | https://cognitive.uservoice.com/forums/430315-face |
 | 表單辨識器               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
@@ -143,4 +143,4 @@ ms.locfileid: "92148690"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Azure 認知服務是什麼？](welcome.md)
+> [Azure 認知服務是什麼？](./what-are-cognitive-services.md)

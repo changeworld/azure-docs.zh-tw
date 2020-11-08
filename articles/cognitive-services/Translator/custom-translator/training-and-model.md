@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510822"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369013"
 ---
 # <a name="what-are-trainings-and-models"></a>什麼是定型和模型？
 
 模型是一種系統，提供特定語言組的翻譯。
-成功定型的輸出就是模型。 定型模型時，需要三種互斥的檔案類型：定型、調整和測試。 也可以提供字典檔案類型。 請參閱 [句子對齊](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)。
+成功定型的輸出就是模型。 定型模型時，需要三種互斥的檔案類型：定型、調整和測試。 也可以提供字典檔案類型。 請參閱 [句子對齊](./sentence-alignment.md#suggested-minimum-number-of-sentences)。
 
 如果在將定型排入佇列時只提供定型資料，自訂翻譯將會自動組合微調和測試資料。 它會使用您定型檔中的隨機句子子集，並將這些句子從定型資料本身中排除。
 
