@@ -10,25 +10,25 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
-ms.openlocfilehash: ae987a4239f478162e1e1f251e0d6607d63e02c5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019744"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363709"
 ---
 # <a name="configure-anomaly-detector-containers"></a>設定異常偵測器容器
 
-**異常**偵測器容器執行時間環境是使用 `docker run` 命令引數進行設定。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。 
+**異常** 偵測器容器執行時間環境是使用 `docker run` 命令引數進行設定。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。 
 
 ## <a name="configuration-settings"></a>組態設定
 
 此容器具有下列組態設定：
 
-|必要|設定|目的|
+|必要|設定|用途|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用來追蹤帳單資訊。|
-|否|[ApplicationInsights](#applicationinsights-setting)|可讓您將 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遙測支援新增至容器。|
+|否|[ApplicationInsights](#applicationinsights-setting)|可讓您將 [Azure Application Insights](/azure/application-insights) 遙測支援新增至容器。|
 |是|[Billing](#billing-configuration-setting)|指定 Azure 上服務資源的端點 URI。|
 |是|[Eula](#eula-setting)| 表示您已接受容器的授權。|
 |否|[Fluentd](#fluentd-settings)|將記錄 (和選擇性的計量資料) 寫入至 Fluentd 伺服器。|
@@ -59,7 +59,7 @@ ms.locfileid: "92019744"
 
 * Azure 入口網站： **異常** 偵測器的總覽，加上標籤 `Endpoint`
 
-|必要| 名稱 | 資料類型 | 描述 |
+|必要| Name | 資料類型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 計費端點 URI。 如需取得帳單 URI 的詳細資訊，請參閱 [收集必要參數](anomaly-detector-container-howto.md#gathering-required-parameters)。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../cognitive-services-custom-subdomains.md)。 |
 
@@ -88,17 +88,17 @@ ms.locfileid: "92019744"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](anomaly-detector-container-howto.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。 
 
-|選擇性| 名稱 | 資料類型 | 描述 |
+|選用| Name | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
 |不允許| `Input` | 字串 | 異常偵測器容器不會使用這個。|
-|選用| `Output` | String | 輸出裝載的目標。 預設值為 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令 
 
 下列範例會使用組態設定來說明如何撰寫和使用 `docker run` 命令。  開始執行後，容器就會持續執行，直到您加以[停止](anomaly-detector-container-howto.md#stop-the-container)。
 
-* **行接續字元**：下列各節中的 Docker 命令會使用反斜線做為 `\` bash shell 的行接續字元。 請根據您主機作業系統的需求加以替換或移除。 例如，適用於 Windows 的行接續字元是插入號 `^`。 以插入號取代反斜線。 
-* **引數順序**：除非您非常熟悉 Docker 容器，否則請勿變更引數的順序。
+* **行接續字元** ：下列各節中的 Docker 命令會使用反斜線做為 `\` bash shell 的行接續字元。 請根據您主機作業系統的需求加以替換或移除。 例如，適用於 Windows 的行接續字元是插入號 `^`。 以插入號取代反斜線。 
+* **引數順序** ：除非您非常熟悉 Docker 容器，否則請勿變更引數的順序。
 
 以您自己的值取代括弧中的值 `{}` ：
 

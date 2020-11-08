@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a2b41ac32f8c887d7a8ffd33d51baebaa0e2482e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146172"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366480"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
@@ -28,11 +28,10 @@ ms.locfileid: "93146172"
 
 下表顯示合作夥伴中心中的商業 marketplace 供應專案類型。
 
-| **供應項目類型**    | **說明**  |
+| **供應項目類型**    | **描述**  |
 | :------------------- | :-------------------|
-| [Azure 應用程式： **受控應用程式**](marketplace-managed-apps.md) | 當需要下列條件時，請使用 Azure 應用程式：受控應用程式供應專案類型： <br> <ul> <li>您使用 VM 或整個 IaaS 型解決方案為客戶部署訂用帳戶型解決方案。 </li> <li>您或您的客戶要求由合作夥伴管理解決方案。 </li> <ul> |
-| [Azure 應用程式： **解決方案範本**](marketplace-solution-templates.md) | 當您的解決方案需要在單一 VM 之外進行額外的部署和設定自動化時，請使用 Azure 應用程式：解決方案範本供應專案類型。 解決方案範本可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。  |
-  | [**Azure 容器**](marketplace-containers.md) | 當您的解決方案是布建為以 Kubernetes 為基礎的 Azure container service 的 Docker 容器映射時，請使用 Azure 容器供應專案類型。 |
+| [**Azure 應用程式**](plan-azure-application-offer.md) | 有兩種 Azure 應用程式方案： _解決方案範本_ 和 _受控應用程式_ 。 這兩種方案類型都支援將解決方案的部署和設定自動化，但 (VM) 以外的單一虛擬機器。 您可以自動化提供多個資源的程式，包括 Vm、網路和儲存體資源，以提供複雜的解決方案，例如 IaaS 解決方案。 這兩種方案類型都可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。<ul><li>**解決方案範本** 方案是在商業 marketplace 中發佈解決方案的其中一種主要方式。 解決方案範本方案不會可交易在商業 marketplace 中，但可以用來部署透過商業市場計費的付費 VM 供應專案。 當客戶將管理解決方案，而且交易是透過另一個方案計費時，請使用方案範本方案類型。</li><br><li>**受控應用程式** 方案可讓您輕鬆地為客戶建立並提供完全受控的現成應用程式。 它們具有與解決方案範本方案相同的功能，但有一些主要差異：</li><ul><li> 資源會部署至資源群組，並由應用程式的發行者管理。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。</li><li>您可以使用「發行者」來指定持續支援解決方案的成本，並透過商業市場支援交易。</li></ul>當您或您的客戶要求解決方案由夥伴管理，或您將部署以訂用帳戶為基礎的解決方案時，請使用受控應用程式方案類型。</ul> |
+| [**Azure 容器**](marketplace-containers.md) | 當您的解決方案是布建為以 Kubernetes 為基礎的 Azure container service 的 Docker 容器映射時，請使用 Azure 容器供應專案類型。 |
 | [**Azure 虛擬機器**](marketplace-virtual-machines.md) | 當您要將虛擬設備部署到與客戶相關的訂用帳戶時，請使用「虛擬機器」供應項目類型。 |
 | [**諮詢服務**](consulting-services.md) | 諮詢服務可協助您將客戶與服務連線，以支援及擴充其 Azure、Dynamics 365 或 Power Suite 服務的使用。|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps 和財務和營運應用程式的 AppSource 供應專案。|
@@ -42,7 +41,7 @@ ms.locfileid: "93146172"
 | [**軟體即服務**](plan-saas-offer.md) | 使用「軟體即服務」 (SaaS) 供應專案類型，讓客戶以訂用帳戶的形式購買您的 SaaS 型技術解決方案。 如需 SaaS 供應專案的單一登入需求的詳細資訊，請參閱在 [商業市場中 Azure AD 和可交易 saas](azure-ad-saas.md)供應專案。 |
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱您的供應專案類型之對應文章中的資格需求，以完成供應專案的選取和設定。
 - 請參閱每個線上商店的發佈模式，以取得解決方案如何對應至供應專案類型和設定的範例。

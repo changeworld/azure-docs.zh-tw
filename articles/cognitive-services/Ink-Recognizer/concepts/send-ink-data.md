@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf3ad43b46d491d5f15270790251a0bc4e882e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051095"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365358"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>將筆跡資料傳送至筆跡辨識器 API 
 
@@ -64,7 +64,7 @@ ms.locfileid: "89051095"
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>筆跡辨識器 API 所辨識的圖形
 
-筆跡辨識器 API 可以識別筆記記錄中最常使用的圖形。 下圖顯示一些基本範例。 如需該 API 所辨識圖形和其他筆跡內容的完整清單，請參閱 [API 參考文章](https://go.microsoft.com/fwlink/?linkid=2089907)。 
+筆跡辨識器 API 可以識別筆記記錄中最常使用的圖形。 下圖顯示一些基本範例。 如需該 API 所辨識圖形和其他筆跡內容的完整清單，請參閱 [API 參考文章](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)。 
 
 ![筆跡辨識器 API 所辨識圖形的清單](../media/shapes.png)
 
@@ -84,12 +84,12 @@ ms.locfileid: "89051095"
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>整合筆跡辨識器 API 與 Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供各種工具和技術，因此能在各種裝置上實現數位筆跡體驗。 您可以將 Windows Ink 平臺與筆跡辨識器 API 結合，以建立顯示及解讀數位筆跡筆劃的應用程式。
+[Windows Ink](/windows/uwp/design/input/pen-and-stylus-interactions) 提供各種工具和技術，因此能在各種裝置上實現數位筆跡體驗。 您可以將 Windows Ink 平臺與筆跡辨識器 API 結合，以建立顯示及解讀數位筆跡筆劃的應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [什麼是筆跡辨識器 API？](../overview.md)
-* [筆跡辨識器 REST API 參考](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [筆跡辨識器 REST API 參考](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 * 使用下列工具來開始傳送數位筆跡筆觸資料：
     * [C#](../quickstarts/csharp.md)

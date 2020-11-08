@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be43d04672dcefe368eb4052b4d1a929e25327ab
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243746"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366854"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>將文字分析容器部署至 Azure 容器實例
 
@@ -41,7 +41,7 @@ ms.locfileid: "88243746"
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-#### <a name="text-analytics-for-health"></a>[健全狀況的文字分析](#tab/health)
+#### <a name="text-analytics-for-health"></a>[健康情況的文字分析](#tab/health)
 
 [!INCLUDE [Verify the health container instance](../includes/verify-health-container.md)]
 
@@ -50,7 +50,7 @@ ms.locfileid: "88243746"
 ## <a name="next-steps"></a>後續步驟 
 
 * 使用更多[認知服務容器](../../cognitive-services-container-support.md)
-* 使用 [文字分析聯機服務](../vs-text-connected-service.md)
+* 使用 [文字分析聯機服務](../index.yml)
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

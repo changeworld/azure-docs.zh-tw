@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25750f690129439f0f614724a2bb62b596f322ea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b290539bf6424895a9685c1e4cdb53d8fb8cfb41
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084981"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365902"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>將搜尋要求傳送至 Bing 實體搜尋 API
 
@@ -40,18 +40,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 ## <a name="specifying-query-parameters-and-headers"></a>指定查詢參數和標頭
 
-要求必須指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查詢參數，其中含有使用者的搜尋字詞。 要求也必須指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) 查詢參數，其可識別您希望結果來自哪個市場。 如需選擇性查詢參數的清單，請參閱 [查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)。 對所有查詢參數進行 URL 編碼。  
+要求必須指定 [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查詢參數，其中含有使用者的搜尋字詞。 要求也必須指定 [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) 查詢參數，其可識別您希望結果來自哪個市場。 如需選擇性查詢參數的清單，請參閱 [查詢參數](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)。 對所有查詢參數進行 URL 編碼。  
   
-要求必須指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭：  
+要求必須指定 [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭：  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
--   [X-X-msedge-clientid-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-X-msedge-clientid-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [X-X-msedge-clientid-ClientID](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
+-   [X-X-msedge-clientid-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 用戶端 IP 和位置標頭對於傳回位置感知內容很重要。  
 
-如需所有要求和回應標頭的清單，請參閱[標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)。
+如需所有要求和回應標頭的清單，請參閱[標頭](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)。
 
 ## <a name="the-request"></a>要求
 
@@ -71,7 +71,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="the-response"></a>回應
 
-以下顯示前一個要求的回應。 此範例也示範 Bing 特定回應標頭。 如需回應物件的相關資訊，請參閱 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)。
+以下顯示前一個要求的回應。 此範例也示範 Bing 特定回應標頭。 如需回應物件的相關資訊，請參閱 [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -137,7 +137,7 @@ BingAPIs-Market: en-US
 ```
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Bing 實體 API 搜尋實體](search-for-entities.md)
-* [Bing API 的使用和顯示需求](../use-display-requirements.md)
+* [Bing API 的使用和顯示需求](../../bing-web-search/use-display-requirements.md)

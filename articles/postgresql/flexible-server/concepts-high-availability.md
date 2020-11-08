@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359539"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366718"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中的高可用性概念
 
@@ -101,17 +101,17 @@ ms.locfileid: "94359539"
 -   只有在有多個區域可供使用的區域中才支援高可用性。
 -   由於同步複寫至另一個可用性區域，因此應用程式可能會遇到較高的寫入和認可延遲。
 
--   待命複本無法用於唯讀查詢。
+-   待命複本無法用於讀取查詢。
 
--   根據主伺服器上的活動在容錯移轉時，最多可能需要兩分鐘或更長的時間才能完成容錯移轉。
+-   根據主伺服器上的工作負載和活動，容錯移轉程式可能需要超過120秒的時間。
 
--   重新開機主資料庫伺服器來挑選靜態參數變更也會重新開機待命複本。
+-   重新開機主資料庫伺服器也會重新開機待命複本。 
 
 -   不支援設定額外的讀取複本。
 
 -   無法在受管理的維護期間排程設定客戶起始的管理工作。
 
--   諸如調整計算和調整儲存體等計劃性事件會先在待命中進行，然後再於主要伺服器上進行。 服務不會容錯移轉。 
+-   諸如調整計算和調整儲存體等計劃性事件會先在待命中進行，然後再於主要伺服器上進行。 伺服器不會針對這些計畫的作業進行容錯移轉。 
 
 -  如果邏輯解碼或邏輯複寫是以 HA 設定的彈性伺服器設定，則在容錯移轉至待命伺服器的情況下，不會將邏輯複寫位置複製到待命伺服器。  
 

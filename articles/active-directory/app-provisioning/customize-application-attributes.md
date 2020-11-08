@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 2f21e4f41814b47d8e630df72c255886ac2af53b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233878"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364287"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -110,7 +110,7 @@ Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在�
 - Workday 至 Active Directory/Workday 到 Azure Active Directory
 - SuccessFactors 至 Azure Active Directory 的 Active Directory/SuccessFactors
 - Azure Active Directory (支援 [Azure AD Graph API 預設屬性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自訂目錄擴充功能)
-- 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
+- 支援[SCIM 2.0](https://tools.ietf.org/html/rfc7643)的應用程式
 - 針對 Azure Active Directory 回寫至 Workday 或 SuccessFactors，支援 (XPATH 和 JSONPath) 更新支援屬性的相關中繼資料，但不支援將新的 Workday 或 SuccessFactors 屬性加入預設架構中包含的屬性之外
 
 
@@ -146,7 +146,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
 
 這些指示僅適用於已啟用 SCIM 的應用程式。 ServiceNow 和 Salesforce 等應用程式不會與使用 SCIM 的 Azure AD 整合，因此在新增自訂屬性時不需要此特定命名空間。
 
-自訂屬性不可以是參考屬性或多重值屬性。 目前只有資源庫中的應用程式可支援自訂多重值延伸模組屬性。  
+自訂屬性不能是引用屬性、多重值或複雜類型的屬性。 目前只有資源庫中的應用程式支援自訂的多值和複雜類型延伸模組屬性。  
  
 **具有延伸模組屬性之使用者的範例表示法：**
 

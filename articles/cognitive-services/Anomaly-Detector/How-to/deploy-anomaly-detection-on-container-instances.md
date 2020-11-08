@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mbullwin
-ms.openlocfilehash: c7ce1985f4c7dcd14befce14abe5b913e2c9a67e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3979bb82bfa055cc2a134bf3119097c452ffb855
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014730"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364117"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>將異常偵測器容器部署至 Azure 容器實例
 
-瞭解如何將認知服務 [異常](../anomaly-detector-container-howto.md) 偵測器容器部署至 Azure [容器實例](https://docs.microsoft.com/azure/container-instances/)。 此程式示範如何建立異常偵測器資源。 然後我們會討論如何提取相關聯的容器映射。 最後，我們強調了從瀏覽器執行兩者的協調流程的能力。 使用容器可以將開發人員的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
+瞭解如何將認知服務 [異常](../anomaly-detector-container-howto.md) 偵測器容器部署至 Azure [容器實例](../../../container-instances/index.yml)。 此程式示範如何建立異常偵測器資源。 然後我們會討論如何提取相關聯的容器映射。 最後，我們強調了從瀏覽器執行兩者的協調流程的能力。 使用容器可以將開發人員的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 

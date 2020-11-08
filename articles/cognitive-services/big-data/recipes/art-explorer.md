@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a65ff28a38e42e05844063a330c0325f16b2247
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87850486"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363284"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>配方：使用認知服務進行大量資料的智慧型藝術探索
 
@@ -24,7 +24,7 @@ ms.locfileid: "87850486"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 您必須有電腦視覺和認知搜尋的訂用帳戶金鑰。 依照 [建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) 中的指示訂閱電腦視覺並取得您的金鑰。
+* 您必須有電腦視覺和認知搜尋的訂用帳戶金鑰。 依照 [建立認知服務帳戶](../../cognitive-services-apis-create-account.md) 中的指示訂閱電腦視覺並取得您的金鑰。
   > [!NOTE]
   > 如需定價資訊，請參閱 [Azure 認知搜尋](https://azure.microsoft.com/services/search/#pricing)。
 
@@ -118,4 +118,3 @@ requests.post(url, json={"search": "Glass"}, headers = {"api-key": AZURE_SEARCH_
 ## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用 [認知服務進行大量資料的異常偵測](anomaly-detection.md)。
-

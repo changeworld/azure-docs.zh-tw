@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: aad00d60c5a1b75e200b49b0cdcf0d396012a5f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a42b282ac2c42480473186f90a542e33781c8a68
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101947"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364032"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>將要求傳送至 Bing 自動建議 API。
 
@@ -38,13 +38,13 @@ ms.locfileid: "93101947"
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-如需標頭、參數、市場代碼、回應物件、錯誤等詳細資料，請參閱 [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) (英文)。
+如需標頭、參數、市場代碼、回應物件、錯誤等詳細資料，請參閱 [Bing 自動建議 API v7 參考](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) (英文)。
 
 **Bing** API 支援根據類型傳回結果的搜尋動作。 所有搜尋端點會傳回作為 JSON 回應物件的結果。
 所有端點均可支援依照經度、緯度和搜尋半徑傳回特定語言及/或位置的查詢。
 
 如需每個端點支援的參數完整相關資訊，請參閱每種類型的參考頁面。
-如需使用自動建議 API 之基本要求的範例，請參閱[自動建議快速入門](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest) (英文)。
+如需使用自動建議 API 之基本要求的範例，請參閱[自動建議快速入門](/azure/cognitive-services/Bing-Autosuggest) (英文)。
 
 ## <a name="bing-autosuggest-api-requests"></a>Bing 自動建議 API 要求
 
@@ -53,18 +53,18 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 建議讓所有要求來自伺服器。 將金鑰作為用戶端應用程式的一部份散佈，會讓惡意第三方有更多機會存取金鑰。 此外，從伺服器進行呼叫，未來就能以單一升級點進行更新。
 
-要求必須指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查詢參數，其包含使用者的部份搜尋字詞。 雖是選擇性，但請在要求中指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查詢參數，其可識別您希望從哪個市場取得結果。 如需選擇性查詢參數的清單，請參閱 [查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查詢參數值均須為 URL 編碼。
+要求必須指定 [q](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查詢參數，其包含使用者的部份搜尋字詞。 雖是選擇性，但請在要求中指定 [mkt](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查詢參數，其可識別您希望從哪個市場取得結果。 如需選擇性查詢參數的清單，請參閱 [查詢參數](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查詢參數值均須為 URL 編碼。
 
-要求必須指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭：
+要求必須指定 [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭：
 
-- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
-- [X-X-msedge-clientid-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
-- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
-- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
+- [User-Agent](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [X-X-msedge-clientid-ClientID](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
+- [X-Search-ClientIP](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
+- [X-Search-Location](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
 用戶端 IP 和位置標頭對於傳回位置感知內容很重要。
 
-如需所有要求和回應標頭的清單，請參閱[標頭](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)。
+如需所有要求和回應標頭的清單，請參閱[標頭](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)。
 
 > [!NOTE]
 > 當您從 JavaScript 呼叫 Bing 自動建議 API 時，瀏覽器的內建安全性功能可能會讓您無法存取這些標頭的值。
@@ -110,7 +110,7 @@ cors-proxy-server
 
 `displayText` 欄位包含建議的查詢，您可以用來填入搜尋方塊的下拉式清單。 您必須依提供的順序顯示回應包含的所有建議。  
 
-如果使用者從下拉式清單選取查詢，您可以使用該查詢來呼叫其中一個 [Bing 搜尋 API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) 並自行顯示結果，或使用傳回的 `url` 欄位將使用者送到 Bing 結果頁面。
+如果使用者從下拉式清單選取查詢，您可以使用該查詢來呼叫其中一個 [Bing 搜尋 API](../../bing-web-search/bing-api-comparison.md?bc=%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fen-us%252fazure%252fcognitive-services%252fbing-autosuggest%252ftoc.json) 並自行顯示結果，或使用傳回的 `url` 欄位將使用者送到 Bing 結果頁面。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -178,8 +178,8 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [什麼是 Bing 自動建議？](../get-suggested-search-terms.md)
-- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Bing 自動建議 API v7 參考](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
 - [從 Bing 自動建議 API 取得建議的搜尋字詞](get-suggestions.md)

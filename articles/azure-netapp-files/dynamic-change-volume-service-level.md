@@ -12,16 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f5627f4bd0d62a70ef9d7809f0bf1441141f4c6
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: fe4b2925a34ae7c06bb0b597f0bcdcc3f4d80896
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931240"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363216"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
+
+> [!IMPORTANT] 
+> 這項功能的公開預覽註冊會持續保留，直到進一步通知為止。 
 
 您可以藉由將磁片區移至另一個使用磁片區所需 [服務層級](azure-netapp-files-service-levels.md) 的容量集區，來變更現有磁片區的服務層級。 此磁碟區的就地服務層級變更不需要您遷移資料。 它也不會影響對磁片區的存取。  
 
@@ -33,31 +36,31 @@ ms.locfileid: "91931240"
 
 * 將磁片區移至另一個容量集區之後，您就無法再存取先前的磁片區活動記錄和磁片區計量。 磁片區會從新的容量集區下的新活動記錄和計量開始。
 
-* 如果您將磁片區移至較高服務層級的容量集區 (例如，從 *標準* 移至 *Premium* 或 *Ultra* 服務層級) ，您必須至少等候七天，才能將該磁片區 *再次* 移至較低服務層級的容量集區 (例如，從 *Ultra* 移至 *Premium* 或 *標準*) 。  
+* 如果您將磁片區移至較高服務層級的容量集區 (例如，從 *標準* 移至 *Premium* 或 *Ultra* 服務層級) ，您必須至少等候七天，才能將該磁片區 *再次* 移至較低服務層級的容量集區 (例如，從 *Ultra* 移至 *Premium* 或 *標準* ) 。  
+<!-- 
+## Register the feature
 
-## <a name="register-the-feature"></a>註冊功能
+The feature to move a volume to another capacity pool is currently in preview. If you are using this feature for the first time, you need to register the feature first.
 
-將磁片區移至另一個容量集區的功能目前為預覽狀態。 如果您是第一次使用這項功能，就必須先註冊該功能。
-
-1. 註冊功能： 
+1. Register the feature: 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
 
-2. 檢查功能註冊的狀態： 
+2. Check the status of the feature registration: 
 
     > [!NOTE]
-    > 在變更為之前， **>registrationstate** 可能會處於 `Registering` 最多60分鐘的狀態 `Registered` 。 等到狀態 **註冊** 後再繼續。
+    > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is **Registered** before continuing.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-您也可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
-
+You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
+--> 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>將磁片區移至另一個容量集區
 
-1.  在 [磁片區] 頁面上，以滑鼠右鍵按一下您要變更其服務層級的磁片區。 選取 [ **變更集**區]。
+1.  在 [磁片區] 頁面上，以滑鼠右鍵按一下您要變更其服務層級的磁片區。 選取 [ **變更集** 區]。
 
     ![以滑鼠右鍵按一下 [磁片區]](../media/azure-netapp-files/right-click-volume.png)
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173956"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363862"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>How to：使用文字分析的健全狀況 (預覽) 
 
@@ -84,7 +84,7 @@ ms.locfileid: "92173956"
 您可以透過多種方式來安裝和執行容器。 
 
 - 使用 [Azure 入口網站](text-analytics-how-to-install-containers.md?tabs=healthcare) 建立文字分析資源，並使用 Docker 來取得您的容器。
-- 使用下列 PowerShell 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 腳本，將資源部署容器設定自動化。
+- 使用下列 PowerShell 和 [Azure CLI](/cli/azure/?view=azure-cli-latest) 腳本，將資源部署容器設定自動化。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用於容器的 Web App 安裝容器
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 您也可以使用 Azure 容器實例 (ACI) 讓部署更容易。 ACI 是一項資源，可讓您在受控、無伺服器的 Azure 環境中，視需要執行 Docker 容器。 
 
 請參閱 [如何使用 Azure 容器實例](text-analytics-how-to-use-container-instances.md) ，以取得使用 AZURE 入口網站部署 ACI 資源的步驟。 您也可以使用下列 PowerShell 腳本搭配 Azure CLI，這會使用容器映射在您的訂用帳戶上建立 ACI。  請先等候腳本完成 (大約25-30 分鐘) ，然後再提交第一個要求。  由於每個 ACI 資源的 Cpu 數目上限限制，如果您想要提交5個以上的大型檔，請不要選取此選項， (大約5000個字元) 每個要求。
-如需可用性資訊，請參閱 [ACI 區域支援](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) 文章。 
+如需可用性資訊，請參閱 [ACI 區域支援](../../../container-instances/container-instances-region-availability.md) 文章。 
 
 > [!NOTE] 
 > Azure 容器實例不包含內建網域的 HTTPS 支援。 如果您需要 HTTPS，您將需要手動設定它，包括建立憑證和註冊網域。 您可以使用下面的 NGINX 找到相關指示。
@@ -399,7 +399,7 @@ example.json
 
 ### <a name="relation-extraction-output"></a>關聯性解壓縮輸出
 
-關聯性解壓縮輸出包含關聯性 *來源* 及其 *目標*的 URI 參考。 具有關聯角色的實體 `ENTITY` 會指派給 `target` 欄位。 具有關聯角色的實體 `ATTRIBUTE` 會指派給 `source` 欄位。 縮寫關聯包含雙向 `source` 和 `target` 欄位，而且 `bidirectional` 會設定為 `true` 。 
+關聯性解壓縮輸出包含關聯性 *來源* 及其 *目標* 的 URI 參考。 具有關聯角色的實體 `ENTITY` 會指派給 `target` 欄位。 具有關聯角色的實體 `ATTRIBUTE` 會指派給 `source` 欄位。 縮寫關聯包含雙向 `source` 和 `target` 欄位，而且 `bidirectional` 會設定為 `true` 。 
 
 ```json
 "relations": [

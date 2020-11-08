@@ -2,13 +2,13 @@
 title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 7d5875287c7af905579397164029ef0504d6b9dc
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.date: 11/06/2020
+ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337945"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364224"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -792,7 +792,6 @@ ms.locfileid: "94337945"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | datafactories | 是 | 是 |
-> | datafactoryschema | 否 | 否 |
 > | factories | 是 | 是 |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake

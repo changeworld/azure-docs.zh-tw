@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523973"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364270"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 至 V3 的遷移
 
@@ -37,7 +37,7 @@ Microsoft Translator 團隊已發行第3版 (V3) 的翻譯工具。 本版包含
 * 音譯 - API 中新增了音譯方法。 此方法會將一個指令碼中的字組和句子 (例如 阿拉伯文) 轉換為另一個指令碼 (例如 拉丁文)。
 * 語言-新的「語言」方法會以 JSON 格式傳遞語言資訊，以搭配「轉譯」、「字典」和「直譯」方法使用。
 * 轉譯的新功能已新增至「翻譯」方法，以支援 V2 API 中的某些功能作為個別方法。 例如，TranslateArray 就是其中之一。
-* Microsoft Translator 不再支援說出方法文字轉換語音功能。 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中有提供文字轉語音功能。
+* Microsoft Translator 不再支援說出方法文字轉換語音功能。 [Microsoft 語音服務](../speech-service/text-to-speech.md)中有提供文字轉語音功能。
 
 下列 V2 和 V3 方法清單列出將提供 V2 隨附功能的 V3 方法和 API。
 
@@ -47,8 +47,8 @@ Microsoft Translator 團隊已發行第3版 (V3) 的翻譯工具。 本版包含
 | `TranslateArray`      | [翻譯](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [語言](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [語言](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Microsoft 語音服務](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Microsoft 語音服務](../speech-service/text-to-speech.md)          |
 | `Detect`     | [偵測](reference/v3-0-detect.md)         |
 | `DetectArray`     | [偵測](reference/v3-0-detect.md)         |
 | `AddTranslation`     | 不再支援功能       |
@@ -143,7 +143,7 @@ Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無�
 * [Microsoft Azure 法律資訊](https://azure.microsoft.com/support/legal)
 * [線上服務條款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [檢視 V3.0 文件](reference/v3-0-reference.md)

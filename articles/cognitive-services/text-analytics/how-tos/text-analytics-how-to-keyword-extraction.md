@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704373"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363628"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>範例：如何使用文字分析來將關鍵字組解壓縮
 
@@ -23,7 +23,7 @@ ms.locfileid: "91704373"
 
 此功能在您需要快速識別文件集合中的要點時相當有用。 例如，假設輸入文字為 "The food was delicious and there were wonderful staff"，服務即會傳回主要討論要點："food" 和 "wonderful staff"。
 
-如需詳細資訊，請參閱[支援的語言](../text-analytics-supported-languages.md)。
+如需詳細資訊，請參閱[支援的語言](../language-support.md)。
 
 > [!TIP]
 > 文字分析也會提供可用來擷取關鍵片語的 Linux 型 Docker 容器映像，好讓您可以在接近資料的位置[安裝和執行文字分析容器](text-analytics-how-to-install-containers.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "91704373"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-關鍵片語擷取在處理較大量文字時的效果最佳。 這與情感分析相反，後者較適合用來處理較少量的文字。 若要從這兩個作業中取得最佳結果，請考慮據以重建輸入。
+關鍵片語擷取在處理較大量文字時的效果最佳。 這與情感分析相反，後者較適合用來處理較少量的文字。 若要從這兩項作業獲得最佳結果，請考慮據此重新建構輸入。
 
 您必須具有下列格式的 JSON 檔：識別碼、文字、語言
 
@@ -83,7 +83,7 @@ ms.locfileid: "91704373"
 + 在要求主體中，提供您準備用於此分析的 JSON 文件集合。
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟 [文件](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) \(英文\) 中的 **API 測試主控台** 來建立要求結構，並將它 POST 到服務。
 
 ## <a name="step-2-post-the-request"></a>步驟 2：張貼要求
 

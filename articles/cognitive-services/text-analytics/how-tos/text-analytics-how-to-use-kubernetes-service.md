@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b7a5953edd9aec96a7f75e747c39e8f07f7210bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243763"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366888"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>將文字分析容器部署到 Azure Kubernetes Service
 
-瞭解如何將 Azure 認知服務 [文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) 容器映射部署至 AZURE KUBERNETES SERVICE (AKS) 。 此程式示範如何建立文字分析資源、如何建立相關聯的情感分析影像，以及如何在瀏覽器中執行這兩個的協調流程。 使用容器可讓您的注意力遠離管理基礎結構，而改為專注于應用程式開發。
+瞭解如何將 Azure 認知服務 [文字分析](./text-analytics-how-to-install-containers.md) 容器映射部署至 AZURE KUBERNETES SERVICE (AKS) 。 此程式示範如何建立文字分析資源、如何建立相關聯的情感分析影像，以及如何在瀏覽器中執行這兩個的協調流程。 使用容器可讓您的注意力遠離管理基礎結構，而改為專注于應用程式開發。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,11 +27,11 @@ ms.locfileid: "88243763"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
 * 文字編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
-* 安裝的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 。
+* 安裝的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 。
 * 已安裝 [KUBERNETES CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 。
 * 具有正確定價層的 Azure 資源。 並非所有的定價層都會使用這個容器︰
-    * 只有 F0 或標準定價層的**Azure 文字分析**資源。
-    * 具有 S0 定價層的**Azure 認知服務**資源。
+    * 只有 F0 或標準定價層的 **Azure 文字分析** 資源。
+    * 具有 S0 定價層的 **Azure 認知服務** 資源。
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -55,9 +55,9 @@ ms.locfileid: "88243763"
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>後續步驟
 
-* 使用更多 [認知服務容器](../../cognitive-services-container-support.md)
-* 使用 [文字分析聯機服務](../vs-text-connected-service.md)
+_ 使用更多 [認知服務容器](../../cognitive-services-container-support.md)
+* 使用 [文字分析聯機服務](../index.yml)

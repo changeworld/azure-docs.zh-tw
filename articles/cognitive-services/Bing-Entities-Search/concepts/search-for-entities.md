@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085117"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365987"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用 Bing 實體 API 搜尋實體
 
@@ -28,9 +28,9 @@ ms.locfileid: "93085117"
 
 若您提供使用者可在其中輸入其搜尋字詞的搜尋方塊，請使用 [Bing 自動建議 API](../../bing-autosuggest/get-suggested-search-terms.md) 來改善使用經驗。 API 會根據部分搜尋字詞傳回建議的查詢字串，作為使用者類型。
 
-在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查詢參數。 例如，若使用者輸入 *Marcus Appel* ，請將 `q` 設定為 *Marcus+Appel* 或 *Marcus%20Appel* 。
+在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查詢參數。 例如，若使用者輸入 *Marcus Appel* ，請將 `q` 設定為 *Marcus+Appel* 或 *Marcus%20Appel* 。
 
-若搜尋字詞包含拼字錯誤，搜尋回應會包含 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 物件。 物件會顯示 Bing 用於搜尋的原始拼字和已更正的拼字。
+若搜尋字詞包含拼字錯誤，搜尋回應會包含 [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 物件。 物件會顯示 Bing 用於搜尋的原始拼字和已更正的拼字。
 
 ```json
 "queryContext": {
@@ -43,15 +43,15 @@ ms.locfileid: "93085117"
 
 ## <a name="the-bing-entity-search-api-response"></a>Bing 實體搜尋 API 回應
 
-API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) 物件。 若 Bing 找到相關的實體或地點，物件會包含 `entities` 欄位、`places` 欄位或兩者。 否則，回應物件不包含任一欄位。
+API 回應包含 [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) 物件。 若 Bing 找到相關的實體或地點，物件會包含 `entities` 欄位、`places` 欄位或兩者。 否則，回應物件不包含任一欄位。
 > [!NOTE]
 > 實體回應支援多個市場，但地點回應支援僅美國公司地點。 
 
-`entities` 欄位是包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) 物件清單的 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件 (請參閱 `value` 欄位)。 此清單可能包含單一主控實體、多個去除混淆實體或兩者。 
+`entities` 欄位是包含 [Entity](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) 物件清單的 [EntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件 (請參閱 `value` 欄位)。 此清單可能包含單一主控實體、多個去除混淆實體或兩者。 
 
 當 Bing 認定有符合要求的唯一實體時 (確知哪個實體符合要求，沒有模稜兩可的情況)，就會傳回主控實體。 若可能有多個實體符合要求，清單會包含多個去除混淆實體。 例如，若要求使用電影系列的通用標題，清單可能會包含去除混淆實體。 但若要求指定系列中的特定標題，清單可能會包含單一主控實體。
 
-實體包含已知的名人，例如歌手、演員、運動員、模特兒等；地點和地標，例如瑞尼爾山和林肯紀念堂；以及事項，例如香蕉、黃金貴賓犬、書籍或電影標題。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 欄位包含識別實體類型的提示。 例如，若它是人物、電影、動物或景點。 如需可能類型的清單，請參閱 [Entity Types](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) (實體類型)
+實體包含已知的名人，例如歌手、演員、運動員、模特兒等；地點和地標，例如瑞尼爾山和林肯紀念堂；以及事項，例如香蕉、黃金貴賓犬、書籍或電影標題。 [entityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 欄位包含識別實體類型的提示。 例如，若它是人物、電影、動物或景點。 如需可能類型的清單，請參閱 [Entity Types](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) (實體類型)
 
 ```json
 "entityPresentationInfo": {
@@ -179,9 +179,9 @@ API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitives
 
 ## <a name="find-places"></a>尋找地點
 
-`places` 欄位是包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) 物件清單的 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件 (如需詳細資訊，請參閱 [實體類型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) 欄位)。 清單包含一或多個符合要求的本地實體。
+`places` 欄位是包含 [Place](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) 物件清單的 [LocalEntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 物件 (如需詳細資訊，請參閱 [實體類型](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) 欄位)。 清單包含一或多個符合要求的本地實體。
 
-地點包含餐廳、旅館或本地商家。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 欄位包含識別本地實體類型的提示。 清單包含地點、本地商家、餐廳等提示清單。 陣列中的每個後續提示都會縮小實體的類型。 如需可能類型的清單，請參閱 [Entity Types](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) (實體類型)
+地點包含餐廳、旅館或本地商家。 [entityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 欄位包含識別本地實體類型的提示。 清單包含地點、本地商家、餐廳等提示清單。 陣列中的每個後續提示都會縮小實體的類型。 如需可能類型的清單，請參閱 [Entity Types](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) (實體類型)
 
 ```json
 "entityPresentationInfo": {
@@ -194,7 +194,7 @@ API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitives
 > [!NOTE]
 > 實體回應支援多個市場，但地點回應支援僅美國公司地點。 
 
-本地感知實體查詢 (例如「我附近的餐廳」  ) 需要使用者的位置以提供精確的結果。 您的要求應該一律使用 X-Search-Location 和 X-MSEdge-ClientIP 標頭來指定使用者的位置。 若 Bing 認為使用者的位置對查詢有利，則會將 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 欄位設定為 **true** 。 
+本地感知實體查詢 (例如「我附近的餐廳」) 需要使用者的位置以提供精確的結果。 您的要求應該一律使用 X-Search-Location 和 X-MSEdge-ClientIP 標頭來指定使用者的位置。 若 Bing 認為使用者的位置對查詢有利，則會將 [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 欄位設定為 **true** 。 
 
 ```json
 {
@@ -295,7 +295,7 @@ Bing 實體 API 回應包含第三方所擁有的資訊。 您會負責確定使
 
 ### <a name="license-attribution"></a>授權屬性
 
-若契約規則清單包含 [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 規則，您必須在緊接於套用授權之內容後面的該行上顯示通知。 `LicenseAttribution` 規則使用 `targetPropertyName` 欄位來識別套用授權的屬性。
+若契約規則清單包含 [LicenseAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 規則，您必須在緊接於套用授權之內容後面的該行上顯示通知。 `LicenseAttribution` 規則使用 `targetPropertyName` 欄位來識別套用授權的屬性。
 
 以下示範內含 `LicenseAttribution` 規則的範例。
 
@@ -305,7 +305,7 @@ Bing 實體 API 回應包含第三方所擁有的資訊。 您會負責確定使
 
 ### <a name="link-and-text-attribution"></a>連結和文字屬性
 
-[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) 和 [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) 規則通常可用來識別資料的提供者。 `targetPropertyName` 欄位會識別套用規則的欄位。
+[LinkAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) 和 [TextAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) 規則通常可用來識別資料的提供者。 `targetPropertyName` 欄位會識別套用規則的欄位。
 
 若要屬性化提供者，請在套用屬性的內容 (例如目標欄位) 之後立即加入一行。 該行應該清楚標示，指出提供者是資料的來源。 例如，"Data from: contoso.com"。 針對 `LinkAttribution` 規則，您必須建立提供者網站的超連結。
 
@@ -315,7 +315,7 @@ Bing 實體 API 回應包含第三方所擁有的資訊。 您會負責確定使
 
 ### <a name="media-attribution"></a>媒體屬性
 
-若實體包含影像，而且您會顯示該影像，您必須提供提供者網站的點選連結。 若實體包含 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 規則，請使用規則的 URL 建立點選連結。 否則，請使用包含在影像 `provider` 欄位中的 URL 建立點選連結。
+若實體包含影像，而且您會顯示該影像，您必須提供提供者網站的點選連結。 若實體包含 [MediaAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 規則，請使用規則的 URL 建立點選連結。 否則，請使用包含在影像 `provider` 欄位中的 URL 建立點選連結。
 
 以下示範內含影像 `provider` 欄位和契約規則的範例。 由於範例包含契約規則，因此您會忽略影像的 `provider` 欄位並套用 `MediaAttribution` 規則。
 
@@ -336,6 +336,6 @@ Bing 實體 API 回應包含第三方所擁有的資訊。 您會負責確定使
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 嘗試透過[快速入門](../quickstarts/csharp.md)開始使用 Bing 實體搜尋 API 來搜尋實體。

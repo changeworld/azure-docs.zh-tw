@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、情感分析、自然語言處理
-ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43684e814dd0049a08eacdce50ca6eef17fb7f97
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461490"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363930"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
@@ -32,7 +32,7 @@ ms.locfileid: "91461490"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 > [!IMPORTANT]
-> 免費帳戶的限制為每月5000筆交易，而只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求速率的詳細資訊，請參閱 [資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
+> 免費帳戶的限制為每月5000筆交易，而只有 **免費** 和 **標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span></a>適用于容器。 如需交易要求速率的詳細資訊，請參閱 [資料限制](../overview.md#data-limits)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -42,11 +42,11 @@ ms.locfileid: "91461490"
 
 使用文字分析容器之前，您必須符合下列必要條件：
 
-|必要|目的|
+|必要|用途|
 |--|--|
-|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
+|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上** ，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
-|文字分析資源 |若要使用此容器，您必須具備：<br><br>Azure [文字分析資源](../../cognitive-services-apis-create-account.md) ，可取得相關聯的 API 金鑰和端點 URI。 這兩個值可在 Azure 入口網站的 [文字分析概觀和金鑰] 頁面上取得，需要這些值才能啟動容器。<br><br>**{API_KEY}**： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}**： **總覽** 頁面上提供的端點|
+|文字分析資源 |若要使用此容器，您必須具備：<br><br>Azure [文字分析資源](../../cognitive-services-apis-create-account.md) ，可取得相關聯的 API 金鑰和端點 URI。 這兩個值可在 Azure 入口網站的 [文字分析概觀和金鑰] 頁面上取得，需要這些值才能啟動容器。<br><br>**{API_KEY}** ： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}** ： **總覽** 頁面上提供的端點|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -89,7 +89,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
-***
+**_
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
 
@@ -103,7 +103,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 使用 [docker 執行](https://docs.docker.com/engine/reference/commandline/run/) 命令來執行容器。 容器將會繼續執行，直到您將它停止為止。
 
 > [!IMPORTANT]
-> * 以下幾節的 Docker 命令會使用反斜線 `\` 作為行接續字元。 請根據您主機作業系統的需求加以替換或移除。 
+> _ 下列各節中的 docker 命令會使用反斜線 `\` 作為行接續字元。 請根據您主機作業系統的需求加以替換或移除。 
 > * 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。
 > * 情感分析 v3 容器現已正式推出，其會在回應中傳回 [情感標籤](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) 。 關鍵字組解壓縮和語言偵測容器會使用 API 的 v2，並處於預覽狀態。
 
@@ -149,7 +149,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 
 ## <a name="billing"></a>計費
 
-文字分析容器會使用您 Azure 帳戶上的_文字分析_資源傳送計費資訊至 Azure。 
+文字分析容器會使用您 Azure 帳戶上的 _文字分析_ 資源傳送計費資訊至 Azure。 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -165,9 +165,9 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 
 * 文字分析提供三個適用于 Docker 的 Linux 容器，並封裝各種功能：
    * *情感分析*
-   * *關鍵片語擷取 (preview) * 
-   * *語言偵測 (preview) *
-   * *適用于 Health (preview 的文字分析) *
+   * *關鍵片語擷取 (preview)* 
+   * *語言偵測 (preview)*
+   * *適用于 Health (preview 的文字分析)*
 * 您可以從 Microsoft Container Registry 下載容器映射 (MCR) 或預覽容器存放庫。
 * 容器映像是在 Docker 中執行。
 * 您可以指定容器的主機 URI，來使用 REST API 或 SDK 呼叫文字分析容器中的作業。

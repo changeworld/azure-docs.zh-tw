@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 205adf8cb173c9df30e9907b5fe9de6d5d5ab343
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e7207a1d675298779c3523ee93a8169ac0a26e4a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098309"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367109"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>將要求傳送至 Bing 拼字檢查 API
 
@@ -34,16 +34,16 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 
 建議讓所有要求來自伺服器。 將金鑰作為用戶端應用程式的一部份散佈，會讓惡意第三方有更多機會存取到金鑰。 伺服器也會為 API 的未來版本提供單一的升級點。
 
-要求必須指定 [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) 查詢參數，其包含要證明的文字字串。 雖然是選用項目，但要求應該也指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) 查詢參數，其可識別您希望結果來自哪個市場。 如需選用查詢參數 (例如 `mode`) 的清單，請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters)。 所有查詢參數值均須為 URL 編碼。  
+要求必須指定 [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) 查詢參數，其包含要證明的文字字串。 雖然是選用項目，但要求應該也指定 [mkt](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) 查詢參數，其可識別您希望結果來自哪個市場。 如需選用查詢參數 (例如 `mode`) 的清單，請參閱[查詢參數](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters)。 所有查詢參數值均須為 URL 編碼。  
   
-要求必須指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭。 這些標頭可協助 Bing 拼字檢查 API 傳回更精確的結果：  
+要求必須指定 [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭。 這些標頭可協助 Bing 拼字檢查 API 傳回更精確的結果：  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
--   [X-X-msedge-clientid-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
+-   [X-X-msedge-clientid-ClientID](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
+-   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
 
-如需所有要求和回應標頭的清單，請參閱[標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers)。
+如需所有要求和回應標頭的清單，請參閱[標頭](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers)。
 
 使用 JavaScript 呼叫 Bing 拼字檢查 API 時，瀏覽器的內建安全性功能可能會讓您無法存取這些標頭的值。
 
@@ -129,7 +129,7 @@ BingAPIs-Market: en-US
 }  
 ```  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [什麼是 Bing 拼字檢查 API？](../overview.md)
-- [Bing 拼字檢查 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing 拼字檢查 API v7 參考](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

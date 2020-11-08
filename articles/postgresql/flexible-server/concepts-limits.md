@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357176"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366633"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器的限制
 
@@ -78,7 +78,7 @@ ms.locfileid: "94357176"
 - 高載伺服器目前不支援 Zone-Redundant HA。
 - 當伺服器容錯移轉至 HA 待命時，資料庫伺服器的 IP 位址會變更。 請確定您使用的是 DNS 記錄，而不是伺服器 IP 位址。
 - 如果邏輯複寫是以 HA 設定的彈性伺服器設定，則在容錯移轉至待命伺服器的情況下，不會將邏輯複寫位置複製到待命伺服器。 
-- 如需額外的 HA 限制，請參閱 [概念-HA 檔](concepts-high-availability.md) 頁面。
+- 如需區域冗余 HA （包括限制）的詳細資訊，請參閱 [概念-ha 檔](concepts-high-availability.md) 頁面。
 
 ### <a name="availability-zones"></a>可用性區域
 

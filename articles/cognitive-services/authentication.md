@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232741"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363318"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>驗證 Azure 認知服務要求
 
@@ -24,7 +24,7 @@ Azure 認知服務的每個要求必須包含驗證標頭。 此標頭會與訂�
 * 使用[權杖](#authenticate-with-an-authentication-token)進行驗證
 * 使用[Azure Active Directory (AAD) ](#authenticate-with-azure-active-directory)進行驗證
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 提出要求之前，您需要 Azure 帳戶和 Azure 認知服務訂用帳戶。 如果您已經有帳戶，請繼續進行並跳至下一節。 如果您沒有帳戶，我們會引導您在幾分鐘內完成設定： [建立適用于 Azure 的認知服務帳戶](cognitive-services-apis-create-account.md)。
 
@@ -75,7 +75,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="supported-regions"></a>支援區域
 
-當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如： `westus.api.cognitive.microsoft.com` 。
+當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如：`westus.api.cognitive.microsoft.com`。
 
 使用多服務訂用帳戶金鑰搭配 Translator 服務時，您必須使用標頭指定訂用帳戶區域 `Ocp-Apim-Subscription-Region` 。
 
@@ -175,8 +175,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 [!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [什麼是認知服務？](welcome.md)
+* [什麼是認知服務？](./what-are-cognitive-services.md)
 * [認知服務定價](https://azure.microsoft.com/pricing/details/cognitive-services/)
 * [自訂子網域](cognitive-services-custom-subdomains.md)

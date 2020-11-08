@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73837130"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364933"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>關於文字分析認知服務的常見問題集 (FAQ)
 
@@ -29,11 +29,11 @@ ms.locfileid: "73837130"
 
 ## <a name="can-i-add-my-own-training-data-or-models"></a>我是否可以新增自己的訓練資料或模型？
 
-否，模型已預先訓練。 唯一可對上傳資料執行的作業為計分、關鍵片語擷取和語言偵測。 我們不會裝載自訂模型。 若您想要建立及裝載自訂 Machine Learning 模型，請考慮使用 [Microsoft R Server 中的機器學習服務功能](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)。
+否，模型已預先訓練。 唯一可對上傳資料執行的作業為計分、關鍵片語擷取和語言偵測。 我們不會裝載自訂模型。 若您想要建立及裝載自訂 Machine Learning 模型，請考慮使用 [Microsoft R Server 中的機器學習服務功能](/r-server/r/concept-what-is-the-microsoftml-package)。
 
 ## <a name="can-i-request-additional-languages"></a>我是否可以要求其他語言？
 
-情感分析和關鍵片語擷取適用於[某些選取的語言](text-analytics-supported-languages.md)。 自然語言處理非常複雜，而且需要大量測試，才能發行新功能。 基於這個理由，我們會避免預先宣告支援，以確保不會有人採用需要更多時間成熟的相依性和功能。 
+情感分析和關鍵片語擷取適用於[某些選取的語言](./language-support.md)。 自然語言處理非常複雜，而且需要大量測試，才能發行新功能。 基於這個理由，我們會避免預先宣告支援，以確保不會有人採用需要更多時間成熟的相依性和功能。 
 
 若要協助我們排列接下來要支援哪些語言的優先順序，請在 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) 投票支持特定語言。 
 

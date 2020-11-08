@@ -10,22 +10,27 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509353"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365868"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
 
 建立虛擬機器 (VM)、重新啟動已停止 (已解除配置) 的 VM 或調整 VM 大小時，Microsoft Azure 會配置計算資源給您的訂用帳戶。 我們正持續投資額外的基礎結構和功能，以確保始終擁有所有 VM 類型可供支援客戶需求。 不過，您可能偶爾會遇到因特定區域中對 Azure 服務的空前需求成長，而導致資源配置失敗的情況。 當您嘗試在 VM 顯示下列錯誤碼和訊息的區域中建立或啟動 VM，便可能發生此問題：
 
-**錯誤碼**：AllocationFailed 或 ZonalAllocationFailed
+**錯誤碼** ：AllocationFailed 或 ZonalAllocationFailed
 
-**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何藉由 HTTPs： \/ /aka.ms/allocation-guidance "來提高配置成功的可能性
+**錯誤訊息** ：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何藉由 HTTPs： \/ /aka.ms/allocation-guidance "來提高配置成功的可能性
+
+> [!NOTE]
+> 如果您要針對虛擬機器擴展集進行疑難排解 (VMSS) ，此程式與標準 VM 相同。 若要解決此問題，您應該遵循本文中的指示。
+> 
+>**錯誤訊息** ：「配置失敗。 如果您嘗試將新的 VM 新增至具有單一放置群組的虛擬機器擴展集，或在具有單一放置群組的虛擬機器擴展集中更新/調整現有 VM 的大小，請注意，這種配置的範圍僅限於單一叢集，而且可能是叢集容量不足。 請參閱 HTTP：/aka.ms/allocation-guidance，以深入瞭解如何提高配置成功的可能性 \/ 。
 
 本文說明一些常見的配置失敗原因，並建議可能的補救方法。
 
@@ -85,7 +90,7 @@ ms.locfileid: "86509353"
 
 隨著我們擴充 Azure 基礎結構，我們會部署更新一代、專為支援最新虛擬機器類型而設計的硬體。 有些較舊系列的 VM 無法在我們最新一代的基礎結構上執行。 因此，客戶可能偶爾會遇到這些舊版 SKU 的配置失敗問題。 為了避免這個問題，我們鼓勵使用舊版系列虛擬機器的客戶考慮依據下列建議移轉至對等的較新版 VM：這些 VM 已針對最新硬體進行最佳化，將可讓您享有更好的定價和效能。 
 
-|傳統 VM 系列/大小|建議的較新版 VM 系列/大小|詳細資訊|
+|傳統 VM 系列/大小|建議的較新版 VM 系列/大小|更多資訊|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 或 DSv1 系列 (D1 到 D5)|[Dv3 或 DSv3 系列](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/

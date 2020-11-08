@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 89bbb16f96d06d1861dabdf89cf690e69c10735c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348911"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364474"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>針對 Azure 中的共用映射資源庫進行疑難排解
 
@@ -153,7 +153,7 @@ ms.locfileid: "93348911"
 
 *不允許變更屬性 ' galleryImageVersion. storageProfile. <diskImage \> . source.id '。*  
 **原因** ：建立之後，無法變更資源庫映射版本的來源識別碼。  
-因應 **措施：請** 確定來源識別碼與已經存在的來源識別碼相同，或變更映射版本的版本號碼。
+因應 **措施：請** 確認來源識別碼與現有的來源識別碼相同、變更映射版本的版本號碼，或刪除目前的映射版本，然後再試一次。
 
 *在輸入資料磁片中偵測到重複的 lun 編號。每個資料磁片的 Lun 編號都必須是唯一的。*  
 **原因** ：使用磁片和/或磁片快照集的清單建立映射版本時，有兩個或多個磁片或磁片快照集具有相同的 lun 編號。  

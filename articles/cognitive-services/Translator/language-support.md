@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669628"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364414"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -347,7 +347,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 威爾斯文 | `cy` |
 
 ## <a name="speech-translation"></a>語音翻譯
-語音翻譯可透過使用 Translator 與認知服務語音服務來取得。 查看 [語音服務檔](https://docs.microsoft.com/azure/cognitive-services/speech-service/) ，以深入瞭解如何使用語音翻譯和查看所有可用的 [語言選項](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)。
+語音翻譯可透過使用 Translator 與認知服務語音服務來取得。 查看 [語音服務檔](../speech-service/index.yml) ，以深入瞭解如何使用語音翻譯和查看所有可用的 [語言選項](../speech-service/language-support.md)。
 
 ### <a name="speech-to-text"></a>語音轉文字
 將語音轉換成文字，以轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用的語音轉換語音翻譯。

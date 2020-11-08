@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510839"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366837"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>平行文件中的句子配對與對齊
 
@@ -28,7 +28,7 @@ ms.locfileid: "88510839"
 
 如果您知道您有平行文件，您可能會提供預先對齊的文字檔案來覆寫句子對齊。 您可以將這兩份文件中的所有句子擷取到文字檔，並組織成每一行一個句子，然後以 `.align` 副檔名來上傳檔案。 `.align` 副檔名會告知自訂翻譯工具應該略過句子對齊。
 
-為了獲得最佳結果，請嘗試確定您的檔案內容是每行一個句子。一個句子中不能有換行字元，因為這會導致不好的對齊效果。
+為了獲得最佳結果，請嘗試確定您的檔案內容是每行一個句子。 一個句子中不能有換行字元，因為這會導致不好的對齊效果。
 
 ## <a name="suggested-minimum-number-of-sentences"></a>建議的最小句子數目
 
@@ -44,7 +44,7 @@ ms.locfileid: "88510839"
 > [!NOTE]
 > - 如果未符合定型的10000最小句子計數，定型將不會啟動，而且將會失敗。 
 > - 調整和測試是選擇性的。 如果您未提供這些值，系統會從定型中移除適當的百分比，以用於驗證和測試。 
-> - 您可以只使用字典資料來定型模型。 請參閱 [什麼是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
+> - 您可以只使用字典資料來定型模型。 請參閱 [什麼是字典](./what-is-dictionary.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

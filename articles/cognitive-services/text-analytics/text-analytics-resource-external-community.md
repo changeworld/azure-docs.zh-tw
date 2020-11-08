@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291639"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365002"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>文字分析認知服務的外部和社群內容
 
@@ -31,11 +31,11 @@ ms.locfileid: "87291639"
 
 + [Sentiment analysis in Logic App using SQL Server data (TechNet blog)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx) (邏輯應用程式中使用 SQL Server 資料的情感分析 (TechNet 部落格))
 
-+ [Sentiment analysis with Dynamics 365 CRM Online (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) (含 Dynamics 365 CRM Online 的情感分析 (MSDN 部落格)) 
++ [Sentiment analysis with Dynamics 365 CRM Online (MSDN blog)](/archive/blogs/geoffreyinnis/sentiment-analysis-in-usd-with-cognitive-services-text-analytics) (含 Dynamics 365 CRM Online 的情感分析 (MSDN 部落格)) 
 
 + Power BI blog：從 Facebook 訊息解壓縮主要片語： [第1部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) 和 [第2部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
-+ [使用 MS Flow (Microsoft tech 社區) 來識別 Yammer 群組中的批註情感 ](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
++ [使用 MS Flow (Microsoft tech 社區) 來識別 Yammer 群組中的批註情感 ](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
 
 
 
@@ -47,11 +47,11 @@ ms.locfileid: "87291639"
 
 + [Text analytics extract key phrases using Power BI and Microsoft Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14) (使用 Power BI 和 Microsoft 認知服務的文字分析擷取關鍵片語)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您正在尋找未涵蓋功能或使用案例的相關資訊嗎？ 請考慮在 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) 上要求或對它投票。 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
  [StackOverflow： Azure 文字分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive) (StackOverflow：Azure 認知服務)

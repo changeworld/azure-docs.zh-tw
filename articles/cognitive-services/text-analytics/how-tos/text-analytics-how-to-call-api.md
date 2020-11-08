@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ee7272066dbd89e7c0053d51ba039b83fb494f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710595"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363811"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
-針對**文字分析 API** 的呼叫是 HTTP POST/GET 呼叫，可由您以任何語言編寫。 在本文中，我們會使用 REST 和 [Postman](https://www.postman.com/downloads/) \(英文\) 來示範重點概念。
+針對 **文字分析 API** 的呼叫是 HTTP POST/GET 呼叫，可由您以任何語言編寫。 在本文中，我們會使用 REST 和 [Postman](https://www.postman.com/downloads/) \(英文\) 來示範重點概念。
 
 每個要求都必須包含您的存取金鑰和 HTTP 端點。 端點會指定您在註冊時所選擇的區域、服務 URL，以及用於要求的資源：`sentiment`、`keyphrases`、`languages` 和 `entities`。 
 
@@ -41,11 +41,11 @@ ms.locfileid: "91710595"
 
 您目前可以針對所有文字分析作業提交相同的文件：情感、關鍵片語、語言偵測，以及實體識別。 (未來結構描述很有可能會針對每個分析而有所不同)。
 
-| 元素 | 有效值 | 必要？ | 使用量 |
+| 項目 | 有效值 | 必要？ | 使用方式 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
-|`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../text-analytics-supported-languages.md)。 |
-|`language` | 適用於[支援語言](../text-analytics-supported-languages.md)的 2 個字元 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代碼 | 不定 | 針對情感分析、關鍵片語擷取及實體連結為必要，針對語言偵測為選擇性。 排除它將不會產生錯誤，但分析的效果會因此而減弱。 語言代碼應該對應至您提供的 `text`。 |
+|`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../language-support.md)。 |
+|`language` | 適用於[支援語言](../language-support.md)的 2 個字元 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代碼 | 不定 | 針對情感分析、關鍵片語擷取及實體連結為必要，針對語言偵測為選擇性。 排除它將不會產生錯誤，但分析的效果會因此而減弱。 語言代碼應該對應至您提供的 `text`。 |
 
 如需限制的詳細資訊，請參閱[文字分析概觀 > 資料限制](../overview.md#data-limits)。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "91710595"
 
 1. 在 Postman 中：
 
-   + 選擇 [Post]**** 作為要求類型。
+   + 選擇 [Post] 作為要求類型。
    + 將您從入口網站頁面所複製的端點貼上。
    + 附加資源。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91710595"
 
    ![具有端點和標頭的要求螢幕擷取畫面](../media/postman-request-keyphrase-1.png)
 
-4. 按一下 [Body]**** \(主體\) 並選擇 [raw]**** \(未經處理\) 作為格式。
+4. 按一下 [Body] \(主體\) 並選擇 [raw] \(未經處理\) 作為格式。
 
    ![具有 [body] \(主體\) 設定的要求螢幕擷取畫面](../media/postman-request-body-raw.png)
 
@@ -112,11 +112,11 @@ ms.locfileid: "91710595"
   + [實體辨識](text-analytics-how-to-entity-linking.md)  
 
 
-6. 按一下 [Send]**** \(傳送\) 以提交要求。 請參閱總覽中的 [資料限制](../overview.md#data-limits) 一節，以取得每分鐘可以傳送的要求數目和秒數的相關資訊。
+6. 按一下 [Send] \(傳送\) 以提交要求。 請參閱總覽中的 [資料限制](../overview.md#data-limits) 一節，以取得每分鐘可以傳送的要求數目和秒數的相關資訊。
 
    在 Postman 中，回應會以單一 JSON 文件的形式顯示在下一個視窗中，且在要求中所提供的每個文件識別碼都會有一個項目。
 
-## <a name="see-also"></a>另請參閱 
+## <a name="see-also"></a>請參閱 
 
  [文字分析總覽](../overview.md)  
  [常見問題集 (FAQ)](../text-analytics-resource-faq.md)
