@@ -50,13 +50,13 @@
   items:
     - name: 快速入門
       items:
-        - name: 使用 Azure 入口網站建立 Synapse 工作區
+        - name: 使用 Azure 入口網站建立工作區
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: 使用 Azure CLI 建立 Synapse 工作區
+        - name: 使用 Azure CLI 建立工作區
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: 使用 Azure PowerShell 建立 Synapse 工作區
+        - name: 使用 Azure PowerShell 建立工作區
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: 透過範本進行部署
@@ -218,7 +218,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: 操作指南
       items:
+        - name: 備份與還原
+          items:
+            - name: 建立還原點
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: 還原 Synapse SQL 集區
+              href: ./backuprestore/restore-sql-pool.md
         - name: 管理和監視
           items:
             - name: 監視 Gen2 快取
@@ -1018,7 +1024,7 @@
       href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
