@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/09/2020
+ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421289"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376837"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的演算法 & 模組參考
 
@@ -45,7 +45,7 @@ ms.locfileid: "93421289"
 | --- |--- | --- |
 | 迴歸 | 預測值。 | [促進式決策樹迴歸](boosted-decision-tree-regression.md) <br/> [決策樹系迴歸](decision-forest-regression.md) <br/> [快速樹系分量迴歸](fast-forest-quantile-regression.md)  <br/> [線性迴歸](linear-regression.md)  <br/> [類神經網路迴歸](neural-network-regression.md)  <br/> [波氏迴歸](poisson-regression.md)  <br/>|
 | 叢集 | 將資料群組在一起。| [K-Means 群集](k-means-clustering.md)
-| 分類 | 預測類別。  選擇二進位 (二元) 或多元演算法。| [多元促進式決策樹](multiclass-boosted-decision-tree.md) <br/> [多元決策樹系](multiclass-decision-forest.md) <br/> [多元羅吉斯迴歸](multiclass-logistic-regression.md)  <br/> [多元神經網路](multiclass-neural-network.md) <br/> [「一對多」多元分類](one-vs-all-multiclass.md) <br/> [二元平均感知器](two-class-averaged-perceptron.md) <br/>  [二元促進式決策樹](two-class-boosted-decision-tree.md)  <br/> [二元決策樹系](two-class-decision-forest.md) <br/>  [二元羅吉斯迴歸](two-class-logistic-regression.md) <br/> [二元神經網路](two-class-neural-network.md) <br/> [二元支援向量機器](two-class-support-vector-machine.md) | 
+| 分類 | 預測類別。  選擇二進位 (二元) 或多元演算法。| [多元促進式決策樹](multiclass-boosted-decision-tree.md) <br/> [多元決策樹系](multiclass-decision-forest.md) <br/> [多元羅吉斯迴歸](multiclass-logistic-regression.md)  <br/> [多元神經網路](multiclass-neural-network.md) <br/> [「一對多」多元分類](one-vs-all-multiclass.md) <br/> [One 與 One 多元](one-vs-one-multiclass.md) <br/>[二元平均感知器](two-class-averaged-perceptron.md) <br/>  [二元促進式決策樹](two-class-boosted-decision-tree.md)  <br/> [二元決策樹系](two-class-decision-forest.md) <br/>  [二元羅吉斯迴歸](two-class-logistic-regression.md) <br/> [二元神經網路](two-class-neural-network.md) <br/> [二元支援向量機器](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>用於建置和評估模型的模組
 

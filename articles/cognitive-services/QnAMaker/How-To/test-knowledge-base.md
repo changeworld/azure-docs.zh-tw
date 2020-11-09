@@ -4,13 +4,13 @@ description: QnA Maker 知識庫測試，對於用以改善傳回回應正確度
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 05ae359182ac3d9c3f4cc17d7675a3f2fefa0bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776828"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376120"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中測試您的知識庫
 
@@ -18,40 +18,42 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>在 QnA Maker 入口網站中以互動方式測試
 
-1. 選取 [我的知識庫]**** 頁面上的資料庫名稱來存取知識庫。
-1. 若要存取測試滑出面板，請選取應用程式上方面板中的 [測試]****。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
+1. 選取 [我的知識庫] 頁面上的資料庫名稱來存取知識庫。
+1. 若要存取測試滑出面板，請選取應用程式上方面板中的 [測試]。
 1. 在文字方塊中輸入查詢，並選取 [輸入]。
 1. 會將知識庫中最相符的答案做為回應傳回。
 
 ### <a name="clear-test-panel"></a>清除測試面板
 
-若要從測試主控台清除所有輸入的測試查詢及其結果，請選取測試面板左上角的 [重新開始]****。
+若要從測試主控台清除所有輸入的測試查詢及其結果，請選取測試面板左上角的 [重新開始]。
 
 ### <a name="close-test-panel"></a>關閉測試面板
 
-若要關閉測試面板，請再次選取 [測試]**** 按鈕。 測試面板開啟時，您無法編輯知識庫內容。
+若要關閉測試面板，請再次選取 [測試] 按鈕。 測試面板開啟時，您無法編輯知識庫內容。
 
 ### <a name="inspect-score"></a>檢查分數
 
 您可在 [檢查] 面板中檢查測試結果的詳細資料。
 
-1.  測試滑出面板開啟時，對於該回應的詳細資料選取 [檢查]****。
+1.  測試滑出面板開啟時，對於該回應的詳細資料選取 [檢查]。
 
-    ![檢查回應](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![檢查回應](../media/qnamaker-how-to-test-knowledge-bases/inspect.png)
 
 2.  [檢查] 面板隨即出現。 該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。
 
 ### <a name="correct-the-top-scoring-answer"></a>修正評分最高的答案
 
-如果評分最高的答案不正確，請從清單中選取正確的答案，並選取 [Save and train]\(儲存並訓練\)****。
+如果評分最高的答案不正確，請從清單中選取正確的答案，並選取 [Save and train]\(儲存並訓練\)。
 
-![修正評分最高的答案](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![修正評分最高的答案](../media/qnamaker-how-to-test-knowledge-bases/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>新增替代問題
 
-您可以將問題的替代格式加入到指定的答案。 在文字方塊中鍵入替代答案，並按一下 Enter 新增這些替代答案。 選取 [Save and train]\(儲存並訓練\)**** 儲存更新。
+您可以將問題的替代格式加入到指定的答案。 在文字方塊中輸入替代的答案，然後選取 enter 鍵將它們加入。 選取 [Save and train]\(儲存並訓練\) 儲存更新。
 
-![新增替代問題](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![新增替代問題](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>加入新答案
 
@@ -59,16 +61,67 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 
 在答案清單的底部，使用文字方塊來輸入新的答案，然後按 enter 鍵加以新增。
 
-選取 [Save and train]\(儲存並訓練\)**** 保留此答案。 新的問答組現在已加入至您的知識庫。
+選取 [Save and train]\(儲存並訓練\) 保留此答案。 新的問答組現在已加入至您的知識庫。
 
 > [!NOTE]
-> 只有在您按下 [Save and train]\(儲存並訓練\)**** 按鈕時，才會儲存對於知識庫進行的所有編輯。
+> 只有在您按下 [Save and train]\(儲存並訓練\) 按鈕時，才會儲存對於知識庫進行的所有編輯。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+1. 選取 [我的知識庫] 頁面上的資料庫名稱來存取知識庫。
+1. 若要存取測試滑出面板，請選取應用程式上方面板中的 [測試]。 
+1. 您會在最上方的 **顯示簡短答案** 中看到一個核取方塊（預設為已選取）。 此選項可用來在您的測試面板中啟用以 MRC 為基礎的回應範圍偵測。 
+1. 在文字方塊中輸入查詢，並選取 [輸入]。 
+1. 針對每個查詢，如果回應中有精確的答案/簡短答案，而且有最符合規範的答案段（存在於知識庫中），則您的查詢也會有簡短的答案。
+    ![受管理啟用的測試窗格](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. 如果您取消選取 **顯示簡短的答案** ，則只會傳回知識庫中最符合的答案，作為回應。
+
+### <a name="clear-test-panel"></a>清除測試面板
+
+若要從測試主控台清除所有輸入的測試查詢及其結果，請選取測試面板左上角的 [重新開始]。
+
+### <a name="close-test-panel"></a>關閉測試面板
+
+若要關閉測試面板，請再次選取 [測試] 按鈕。 測試面板開啟時，您無法編輯知識庫內容。
+
+### <a name="inspect-score"></a>檢查分數
+
+您可在 [檢查] 面板中檢查測試結果的詳細資料。
+
+1.  測試滑出面板開啟時，對於該回應的詳細資料選取 [檢查]。
+
+    ![檢查回應預覽](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
+
+2.  [檢查] 面板隨即出現。 該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。
+3. 面板會顯示回應的信賴分數，以及偵測到的答案範圍分數。
+
+### <a name="correct-the-top-scoring-answer"></a>修正評分最高的答案
+
+如果評分最高的答案不正確，請從清單中選取正確的答案，並選取 [Save and train]\(儲存並訓練\)。
+
+![修正評分最高的答案預覽](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
+
+### <a name="add-alternate-questions"></a>新增替代問題
+
+您可以將問題的替代格式加入到指定的答案。 在文字方塊中輸入替代的答案，然後選取 enter 鍵將它們加入。 選取 [Save and train]\(儲存並訓練\) 儲存更新。
+
+![新增替代問題預覽](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
+
+### <a name="add-a-new-answer"></a>加入新答案
+
+如果任何符合的現有答案不正確，或答案不存在於知識庫 (在資料庫中找不到任何合適的相符項目)，您可以加入新的答案。
+
+在答案清單的底部，使用文字方塊來輸入新的答案，然後按 enter 鍵加以新增。
+
+選取 [Save and train]\(儲存並訓練\) 保留此答案。 新的問答組現在已加入至您的知識庫。
+
+---
 
 ### <a name="test-the-published-knowledge-base"></a>測試已發佈的知識庫
 
 您可以在 [測試] 窗格中測試知識庫的已發佈版本。 發佈 KB 之後，請選取 [ **已發佈的 kb** ] 方塊，並傳送查詢以取得已發佈 kb 的結果。
 
-![針對已發佈的 KB 進行測試](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![針對已發佈的 KB 進行測試](../media/qnamaker-how-to-test-knowledge-bases/test-against-published-knowledge-base.png)
 
 ## <a name="batch-test-with-tool"></a>使用工具進行批次測試
 
@@ -91,7 +144,7 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 ### <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>透過多回合 sample.docx 檔案建立新的知識庫
 
 1. 從工具列中選取 [建立知識庫]。
-1. 您應該已經有 QnA Maker 資源，因此請略過**步驟 1**，前往**步驟 2** 以選取現有資源的資訊：
+1. 您應該已經有 QnA Maker 資源，因此請略過 **步驟 1** ，前往 **步驟 2** 以選取現有資源的資訊：
     * Azure Active Directory 識別碼
     * Azure 訂用帳戶名稱
     * Azure QnA 服務名稱
@@ -107,7 +160,7 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
     |**+ 新增檔案**|選取 [必要條件] 中所下載的 `.docx` 檔案清單。|
     |**閒聊**|選取 [Professional]|
 
-1. 在**步驟 5** 中，選取 [建立知識庫]。
+1. 在 **步驟 5** 中，選取 [建立知識庫]。
 
     當建立程序完成時，入口網站會顯示可編輯的知識庫。
 
@@ -130,11 +183,11 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 |--|--|--|
 |知識庫識別碼|在 [發佈] 頁面上所找到的知識庫識別碼。 藉由在單一檔案中使用不同的知識庫識別碼，便能以單一檔案在同一個服務中一次測試數個知識庫。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (`POST` 內所顯示的其中 36 個字元字串) |
 |問題|使用者會輸入的問題文字。 最多可輸入 1,000 個字元。|`How do I sign out?`|
-|中繼資料標記|選用|`topic:power` 會使用「key:value」格式|
+|中繼資料標記|選用|`topic:power` 使用 `key:value` 格式|
 |Top 參數|選用|`25`|
 |預期答案的識別碼|選用|`13`|
 
-針對此知識庫，請在檔案中新增只有 2 個必要資料行的 3 個資料列。 第一個資料行是知識庫的識別碼，第二個資料行則應該是下列問題清單：
+針對此知識庫，請只將兩個必要資料行中的三個數據列新增至檔案。 第一個資料行是知識庫的識別碼，第二個資料行則應該是下列問題清單：
 
 |資料行 2 - 問題|
 |--|
@@ -144,7 +197,7 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 
 這些問題是來自知識庫的確切用語，而且應該會傳回值為 100 的信賴分數。
 
-接下來，使用相同的知識庫識別碼，在另外 3 個資料列上新增幾個與上述問題類似、但未完全相同的問題：
+接下來，使用相同的知識庫識別碼，在三個以上的資料列上新增幾個問題，而不是完全相同的問題：
 
 |資料行 2 - 問題|
 |--|
@@ -176,7 +229,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 為確保安全，知識庫識別碼已取代為 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。 在進行您自己的批次測試時，資料行會顯示您的知識庫識別碼。
 
-在第 4 個資料行中，信賴分數的測試輸出顯示前 3 個問題如預期般傳回值為 100 的分數，其原因是每個問題都與知識庫中所顯示的問題完全相同。 最後三個問題由於使用了新的問題用語，因此不會傳回值為 100 的信賴分數。 為了增加測試和使用者兩者的分數，您必須在知識庫中新增更多替代問題。
+第四個數據行中的信賴分數測試輸出顯示前三個問題，如預期般傳回100分數，因為每個問題與知識庫中所顯示的問題完全相同。 最後三個問題（有問題的新用語）不會傳回100作為信賴分數。 為了增加測試和使用者兩者的分數，您必須在知識庫中新增更多替代問題。
 
 ### <a name="testing-with-the-optional-fields"></a>使用選擇性欄位進行測試
 
@@ -192,7 +245,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 |資料行編號|選擇性資料行|資料位置|
 |--|--|--|
-|3|中繼資料|匯出現有「key:value」配對的現有知識庫。|
+|3|中繼資料|針對現有的配對匯出現有的知識庫 `key:value` 。|
 |4|top|建議以 `25` 作為預設值。|
 |5|問答集識別碼|匯出識別碼值的現有知識庫。 另請注意，輸出檔案中會傳回識別碼。|
 
@@ -225,7 +278,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 下列程序假設此案例是要處理聊天記錄
 
-1. 建立新的批次測試檔案以包含選擇性資料 `batch-test-data-2.tsv`。 從原始的批次測試輸入檔案新增 6 個資料列，然後為每個資料列新增中繼資料、top 和 QnA 配對識別碼。
+1. 建立新的批次測試檔案以包含選擇性資料 `batch-test-data-2.tsv`。 從原始批次測試輸入檔中加入六個數據列，然後為每個資料列加入中繼資料、top 和 QnA 組識別碼。
 
     為了模擬針對知識庫來自動檢查聊天記錄中新文字的程序，請將每個資料行的中繼資料設定為相同值：`topic:power`。
 
@@ -241,7 +294,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 此測試輸出檔案可在自動化連續測試管線中加以剖析。
 
-此特定測試輸出應該解讀為：每個資料列都已使用中繼資料進行篩選，而且因為每個資料列都不符合知識庫中的中繼資料，所以傳回了這些不相符資料列所適用的預設回答 (「在知識庫中未找到正確的匹配項目」)。 至於確實相符的資料列，則會傳回 QnA 識別碼和分數。
+此特定測試輸出應該解讀為：每個資料列都已使用中繼資料進行篩選，而且因為每個資料列都不符合知識庫中的中繼資料，所以傳回了這些不相符資料列所適用的預設回答 (「在知識庫中未找到正確的匹配項目」)。 在相符的資料列中，會傳回 QnA 識別碼和分數。
 
 所有資料列都傳回了不正確的標籤，原因是沒有資料列符合預期的答案識別碼。
 

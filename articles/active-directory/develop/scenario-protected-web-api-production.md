@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccae831498c8c10895387b78c07e4f8ddc228be1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026555"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375273"
 ---
 # <a name="protected-web-api---move-to-production"></a>受保護的 web API-移至生產環境
 
@@ -25,20 +25,13 @@ ms.locfileid: "87026555"
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-瞭解如何呼叫下游 API。
+瞭解如何在案例中呼叫下游 API [：呼叫 Web api 的 WEB api](scenario-web-api-call-api-overview.md)。
 
-> [!div class="nextstepaction"]
-> [案例-Web API 呼叫下游 Api](scenario-web-api-call-api-overview.md)
 
-深入瞭解教學課程和範例。
+深入瞭解 GitHub 上的教學課程和範例：
 
-> [!div class="nextstepaction"]
-> [使用 daemon 呼叫受保護的 API](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core web API 教學課程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Web API 範例](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+- [使用 daemon 呼叫受保護的 API](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+- [ASP.NET Core web API 教學課程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+- [ASP.NET Web API 範例](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

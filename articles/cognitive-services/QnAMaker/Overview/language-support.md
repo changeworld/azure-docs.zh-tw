@@ -7,51 +7,83 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 09/24/2019
-ms.openlocfilehash: c990b6980dea871679b0b301e293e4fb94748db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650891"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375632"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 資源和知識庫的語言支援
+
+本文說明 QnA Maker 資源和知識庫的語言支援選項。 
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
 
 當您在資源中建立第一個知識庫時，會選取服務的語言。 資源中的所有其他知識庫都必須採用相同的語言。 
 
 語言會決定 QnA Maker 提供來回應使用者查詢的結果相關性。 QnA Maker 資源和該資源內的所有知識庫都支援單一語言。 您必須使用單一語言來提供查詢的最佳解答結果。
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+在 QnA Maker 管理的中，您可以選擇在個別的知識庫層級進行語言設定。 只有在服務的知識庫中，才能啟用此設定。 設定之後，就無法變更服務的語言設定。 
+
+如果您選取 [語言設定] 作為 [知識庫特定]，就可以在服務本身中建立不同語言的知識庫。 
+
+---
+
 ## <a name="single-language-per-resource"></a>每個資源的單一語言
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
 
 請考慮下列事項：
 
+* QnA Maker 服務及其所有知識庫都只支援一種語言。
+* 建立服務的第一個知識庫時，會明確地設定語言。
+* 語言取決於建立知識庫時新增的檔案和 Url。
+* 無法變更服務中任何其他知識庫的語言。
+* 認知搜尋服務 (ranker #1) 和 QnA Maker 服務 (ranker #2) ，以產生最佳的查詢答案。
+
+# <a name="qnamaker-managed-preview"></a>[QnAMaker 受控 (預覽) ](#tab/v2)
+![QnA Maker 管理的語言設定](../media/language-support/language-setting-managed.png)
+
+如果您 **未選取核取方塊以啟用每個知識庫的語言設定** ，請考慮下列各項： 
 * QnA Maker 服務及其所有知識庫都只支援一種語言。
 * 建立服務的第一個知識庫時，會明確設定語言
 * 語言取決於建立知識庫時新增的檔案和 Url。
 * 無法變更服務中任何其他知識庫的語言
 * 認知搜尋服務 (ranker #1) 和 QnA Maker 服務 (ranker #2) ，以產生查詢的最佳答案，以使用語言
 
-## <a name="supporting-multiple-languages"></a>支援多種語言
+---
+
+## <a name="supporting-multiple-languages-in-one-qna-maker-resource"></a>在一個 QnA Maker 資源中支援多種語言
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+目前正式推出的 (GA) 穩定版本中不支援這項功能。 簽出 QnA Maker 管理] 以測試此功能。 
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+* 當您在服務中建立第一個知識庫時，您可以選擇啟用每個知識庫的語言設定。 選取此核取方塊，以在單一服務內建立屬於不同語言的知識庫。
+* 建立第一個知識庫之後，就無法修改服務的 [語言] 設定選項。
+* 如果您啟用每個知識庫專屬的語言設定，則不會有服務的一個測試索引，而是每個知識庫都有一個測試索引。 
+
+![QnA Maker 管理的語言設定](../media/language-support/language-setting-managed.png)
+
+---
+
+## <a name="supporting-multiple-languages-in-one-knowledge-base"></a>在一個知識庫中支援多種語言
 
 如果您需要支援包含數種語言的知識庫系統，您可以：
 
 * 使用 [Translator 服務](../../translator/translator-info-overview.md) 將問題轉譯成單一語言，然後再將問題傳送至您的知識庫。 這可讓您專注于單一語言的品質，以及替代問題和解答的品質。
 * 針對每個語言建立 QnA Maker 資源，以及該資源內的知識庫。 這可讓您管理個別的替代問題，以及針對每種語言更差別細微的解答文字。 這可提供您更大的彈性，但在所有語言的問題或答案變更時，需要更高的維護成本。
 
-審核 QnA Maker [支援的語言](../overview/language-support.md) 。
-
-### <a name="support-each-language-with-a-qna-maker-resource"></a>使用 QnA Maker 資源支援每種語言
-
-* 為每種語言建立 QnA Maker 資源
-* 只新增該語言的檔案和 Url
-* 使用資源的命名慣例來識別語言。 範例適用 `qna-maker-fr` 于法文檔的所有知識庫
-
 
 ## <a name="languages-supported"></a>支援的語言
 
 下列清單包含 QnA Maker 資源支援的語言。 
 
-|Language|
+|語言|
 |--|
 |阿拉伯文|
 |亞美尼亞文|

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 568cd7b280b8fb65b5f75588a2832631361938dd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420609"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375904"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class 促進式決策樹模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "93420609"
   
 一般來說，在適當設定的情況下，促進式決策樹是最簡單的方法，可讓您在各種不同的機器學習工作上獲得最佳效能。 不過，它們也是更耗用記憶體的學習人員之一，而目前的實作為將所有專案保存在記憶體中。 因此，促進式決策樹模型可能無法處理某些線性學習工具可以處理的大型資料集。
 
-此模組是以 LightGBM 演算法為基礎。
+此課程模組是以 LightGBM 演算法為基礎。
 
 ## <a name="how-to-configure"></a>如何設定
 
@@ -56,7 +56,7 @@ ms.locfileid: "93420609"
   
 6.  針對所建立的 **樹狀結構數目** ，指出要在集團中建立的決策樹總數目。 藉由建立多個決策樹，您或許能夠有較佳的涵蓋範圍，但是定型時間會拉長。
   
-     此值也會控制視覺化定型模型時所顯示的樹狀結構數目。 如果您想要查看或列印單一樹狀結構，請將值設定為1。 不過，當您這樣做時，只有一個樹狀結構會在具有一組初始參數) 的樹狀結構 (產生，而不會執行進一步的反復專案。
+     如果您將值設定為1，則只會產生一個樹狀結構 (樹狀結構的初始參數) ，且不會執行進一步的反覆運算。
   
 7.  針對 [ **亂數種子** ]，選擇性地輸入非負整數，以作為隨機的種子值。 指定種子可確保跨回合的重現性具有相同的資料和參數。  
   

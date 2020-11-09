@@ -4,13 +4,13 @@ description: 使用下列最佳做法可改善您的知識庫，並為您的應�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777015"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376752"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知識庫的最佳做法
 
@@ -113,14 +113,20 @@ GenerateAnswer API 會使用這兩個問題和答案來搜尋使用者查詢的�
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>使用中繼資料標記來篩選問題和答案
 
-[中繼資料](../How-To/edit-knowledge-base.md) 可讓用戶端應用程式知道它不應該採取所有的答案，而是根據元資料標記來縮小使用者查詢結果的範圍。 即使查詢相同，知識庫解答也可能根據中繼資料標記而不同。 例如，如果餐廳分店的地點不同 (亦即，中繼資料為「地點：西雅圖」** 和「地點：雷德蒙」** 的不同)，「停車場在哪裡」** 就可能有不同的回答。
+[中繼資料](../How-To/edit-knowledge-base.md) 可讓用戶端應用程式知道它不應該採取所有的答案，而是根據元資料標記來縮小使用者查詢結果的範圍。 即使查詢相同，知識庫解答也可能根據中繼資料標記而不同。 例如，如果餐廳分店的地點不同 (亦即，中繼資料為「地點：西雅圖」和「地點：雷德蒙」的不同)，「停車場在哪裡」就可能有不同的回答。
 
 ### <a name="use-synonyms"></a>使用同義字
-雖然有某些支援英文語言的同義字，但請透過變異 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 同義字會加入至 QnA Maker 服務層級，並由服務中的所有知識庫所共用。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+雖然有某些支援英文語言的同義字，但請透過變異 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 同義字會加入至 QnA Maker 服務層級，並 **由服務中的所有知識庫所共用** 。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+雖然有某些支援英文語言的同義字，但請透過變異 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 QnA Maker 受控 (預覽) 中的同義字是 **針對每個知識庫新增** 的。
 
 |原始字組|同義字|
 |--|--|
 |buy|purchase<br>網路-銀行<br>net banking|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>使用相異字詞區隔問題
 QnA Maker 排名演算法會比對使用者查詢與知識庫中的所含問題，在每個問題分別處理不同的需求時，可獲得最佳效果。 若在不同問題間有相同的字組重複出現，就比較難以用這些字組為指定的使用者查詢選擇正確的解答。
@@ -132,7 +138,7 @@ QnA Maker 排名演算法會比對使用者查詢與知識庫中的所含問題�
 |where is the parking *location*|
 |其中是 ATM *位置*|
 
-因為這兩個 QnA 是以非常類似的字組表達，此相似性可能會對以 *"where is the `<x>` location"* 這類方式表達的許多使用者查詢，造成非常類似的分數。 相反地，請儘量  *避免像是* 「位置」之類的像是「位置」的 *文字，而*不是在您的知識庫中可能遇到的許多問題。
+因為這兩個 QnA 是以非常類似的字組表達，此相似性可能會對以 *"where is the `<x>` location"* 這類方式表達的許多使用者查詢，造成非常類似的分數。 相反地，請儘量  *避免像是* 「位置」之類的像是「位置」的 *文字，而* 不是在您的知識庫中可能遇到的許多問題。
 
 ## <a name="collaborate"></a>共同作業
 QnA Maker 可讓使用者對知識庫進行[共同作業](../How-to/collaborate-knowledge-base.md)。 使用者需要有 Azure QnA Maker 資源群組的存取權，才能存取知識庫。 有些組織可能想要將知識庫的編輯和維護委外處理，但同時仍能夠保護其 Azure 資源的存取權。 若要完成此「編輯者-核准者」模型，可以在不同的訂用帳戶中設定兩個相同的 [QnA Maker 服務](../How-to/set-up-qnamaker-service-azure.md)，並選取其中一個用於編輯測試週期。 測試完成之後，就會使用[匯入-匯出](../Tutorials/migrate-knowledge-base.md)程序將知識庫內容轉移至核准者的 QnA Maker 服務，由他來執行最終的知識庫發佈和端點更新。

@@ -4,13 +4,13 @@ description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776250"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375613"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -39,7 +39,7 @@ ms.locfileid: "91776250"
 
 ### <a name="maximum-file-size"></a>檔案大小上限
 
-|[格式]|檔案大小上限 (MB) |
+|格式|檔案大小上限 (MB) |
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -51,9 +51,12 @@ ms.locfileid: "91776250"
 
 可以解壓縮的檔案數目上限與檔案大小上限是根據您的 **[QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** 而定。
 
+> [!NOTE]
+> QnA Maker 受控 (預覽) 是一項免費服務，可新增的來源數量沒有限制。 針對管理 Api 和預測 Api，輸送量目前的輸送量上限為每秒10筆交易。
+
 ### <a name="maximum-number-of-deep-links-from-url"></a>來自 URL 的深層連結數目上限
 
-可從 URL 頁面解壓縮以進行 Qna 的最大深層連結數目為 **20**。
+可從 URL 頁面解壓縮以進行 Qna 的最大深層連結數目為 **20** 。
 
 ## <a name="metadata-limits"></a>中繼資料限制
 
@@ -71,7 +74,7 @@ ms.locfileid: "91776250"
 
 下表列出中繼資料名稱和值的長度和可接受的字元。
 
-|項目|允許的字元|Regex 模式相符|最大字元數|
+|Item|允許的字元|Regex 模式相符|最大字元數|
 |--|--|--|--|
 | (金鑰) 名稱|允許<br>英數位元 (字母和數位) <br>`_` (底線) <br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
 |值|允許以外的所有專案<br>`:` (冒號) <br>`|` (垂直管道) <br>只允許一個值。|`^[^:|]+$`|500|
@@ -92,13 +95,13 @@ ms.locfileid: "91776250"
 * URL/HTML 頁面：1000000個字元
 
 ## <a name="create-knowledge-base-call-limits"></a>建立知識庫呼叫限制：
-這些代表每個建立知識庫動作的限制；也就是，按一下 [建立知識庫]** 或呼叫 CreateKnowledgeBase API。
+這些代表每個建立知識庫動作的限制；也就是，按一下 [建立知識庫] 或呼叫 CreateKnowledgeBase API。
 * 每個解答的替代問題數目上限：300
 * URL 數目上限︰10
 * 檔案數目上限︰10
 
 ## <a name="update-knowledge-base-call-limits"></a>更新知識庫呼叫限制
-這些代表每個更新動作的限制；也就是，按一下 [儲存及訓練]** 或呼叫 UpdateKnowledgeBase API。
+這些代表每個更新動作的限制；也就是，按一下 [儲存及訓練] 或呼叫 UpdateKnowledgeBase API。
 * 每個來源名稱的長度：300
 * 新增或刪除的替代問題數目上限：300
 * 新增或刪除的中繼資料欄位數目上限：10

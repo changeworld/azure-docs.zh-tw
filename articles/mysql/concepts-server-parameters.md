@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545152"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376769"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器參數
 
@@ -31,7 +31,7 @@ MySQL 引擎提供許多不同的伺服器變數/參數，可用來設定和微�
 
 ### <a name="thread-pools"></a>執行緒集區
 
-MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用者數目增加時，效能會有相對應的下降。 許多作用中線程可能會因為內容切換增加、執行緒爭用，以及 CPU 快取的錯誤位置而大幅影響效能。
+MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用者數目增加時，formance 中會有對應的下降。 許多作用中線程可能會因為內容切換增加、執行緒爭用，以及 CPU 快取的錯誤位置而大幅影響效能。
 
 執行緒集區是伺服器端功能，與連接共用不同，它會引進背景工作執行緒的動態集區，以限制伺服器上執行的使用中線程數目，並將執行緒變換降至最低。 這有助於確保連接的高載不會導致伺服器用盡資源或當機，並出現記憶體不足的錯誤。 執行緒集區最有效率，適用于簡短的查詢和需要大量 CPU 的工作負載，例如 OLTP 工作負載。
 
@@ -108,7 +108,7 @@ MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用�
 
 MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表儲存在不同的資料表空間中。 [系統資料表空間](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) \(英文\) 是 InnoDB 資料字典的儲存區域。 [file-per-table 資料表空間](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) \(英文\) 包含單一 InnoDB 資料表的資料和索引，且會獨自儲存在檔案系統的資料檔中。 這個行為是由 `innodb_file_per_table` 伺服器參數所控制。 將 `innodb_file_per_table` 設定為 `OFF` 會導致 InnoDB 在系統資料表空間中建立資料表。 否則，InnoDB 會在 file-per-table 資料表空間中建立資料表。
 
-適用於 MySQL 的 Azure 資料庫在單一資料檔中支援最大達到 **1 TB** 。 如果資料庫大小大於 1 TB，則應該在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) \(英文\) 資料表空間中建立資料表。 如果單一資料表大小大於 1 TB，則應該使用分割區資料表。
+適用於 MySQL 的 Azure 資料庫在單一資料檔案中支援最大 **4 TB** 的資料。 如果您的資料庫大小超過 4 TB，您應該在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) 表空間中建立資料表。 如果您的單一資料表大小超過 4 TB，您應該使用資料分割資料表。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -280,7 +280,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 此處未列出的其他變數會設定為預設 MySQL 現成的值。 如需預設值的 [8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) 版本，請參閱 MySQL 檔。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
 - 瞭解如何 [使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-using-cli.md)

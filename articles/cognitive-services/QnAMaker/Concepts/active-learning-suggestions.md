@@ -4,17 +4,17 @@ description: 主動式學習建議可讓您根據使用者提交的問題和答�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 707f4c098eacb0b72a7e12ebf79f9389b91095cc
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777032"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376514"
 ---
 # <a name="active-learning-suggestions"></a>主動式學習建議
 
-_主動式學習建議_功能可讓您根據使用者提交的問題和答案配對建議替代問題，來改善知識庫的品質。 您可以檢閱這些建議，並將其新增至現有的問題或加以拒絕。
+_主動式學習建議_ 功能可讓您根據使用者提交的問題和答案配對建議替代問題，來改善知識庫的品質。 您可以檢閱這些建議，並將其新增至現有的問題或加以拒絕。
 
 您的知識庫不會自動變更。 為了讓變更生效，您必須接受建議。 這些建議會新增問題，但不會變更或移除現有的問題。
 
@@ -37,10 +37,18 @@ QnA Maker 可透過隱含和明確的意見反應學習新演變出來的問題�
 
 ## <a name="turn-on-active-learning"></a>開啟主動式學習
 
-主動學習預設為 **關閉**。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
+主動學習預設為 **關閉** 。
 若要使用主動式學習：
 * 您必須 [開啟主動式學習](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) ，讓 QnA Maker 為您的知識庫收集替代問題。
 * 若要查看建議的替代問題，請使用 [編輯] 頁面上的 [ [視圖選項](../How-To/improve-knowledge-base.md#view-suggested-questions) ]。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+主動學習預設會在 QnA Maker 受控 (預覽) 中 **開啟** 。 若要查看建議的替代問題，請使用 [編輯] 頁面上的 [ [視圖選項](../How-To/improve-knowledge-base.md#view-suggested-questions) ]。
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker 的隱含回饋如何運作
 

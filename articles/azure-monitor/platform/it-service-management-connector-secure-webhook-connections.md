@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377134"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376531"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全匯出將 Azure 連接至 ITSM 工具
 
@@ -117,7 +117,7 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 ### <a name="configure-the-servicenow-connection"></a>設定 ServiceNow 連接
 
-1. 使用 <HTTPs:// <instance name> . service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor 的連結> 安全匯出定義的 URI。
+1. 使用連結 HTTPs:// (實例名稱) . service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor 安全匯出定義的 URI。
 
 2. 依照下列版本的指示進行：
    * [巴黎](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)

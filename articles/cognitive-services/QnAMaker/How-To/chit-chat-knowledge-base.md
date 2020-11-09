@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330633"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376636"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>在知識庫中新增閒聊
 
@@ -41,7 +41,7 @@ ms.locfileid: "91330633"
 
 閒聊-支援下列語言的聊天資料集：
 
-|Language|
+|語言|
 |--|
 |中文|
 |英文|
@@ -55,27 +55,35 @@ ms.locfileid: "91330633"
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>在知識庫建立期間新增閒聊
-在知識庫建立期間，新增來源 URL 和檔案之後，有可供新增閒聊的選項。 選擇您想要作為聊天基底的特質。 如果您不想新增閒聊，或如果您的資料來源中已經有閒聊支援，請選擇 [無]****。
+在知識庫建立期間，新增來源 URL 和檔案之後，有可供新增閒聊的選項。 選擇您想要作為聊天基底的特質。 如果您不想新增閒聊，或如果您的資料來源中已經有閒聊支援，請選擇 [無]。
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>在現有知識庫中新增閒聊
-選取您的知識庫，並瀏覽至 [設定]**** 頁面。 有一個連結可連到適當 **.tsv** 格式的所有閒聊資料集。 下載您想要的特質，然後將它上傳為檔案來源。 當您下載並上傳檔案時，務必不要編輯格式或中繼資料。
+選取您的知識庫，並瀏覽至 [設定] 頁面。 有一個連結可連到適當 **.tsv** 格式的所有閒聊資料集。 下載您想要的特質，然後將它上傳為檔案來源。 當您下載並上傳檔案時，務必不要編輯格式或中繼資料。
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
 
 ![在現有知識庫中新增閒聊](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+![將閒聊新增至現有的 KB 預覽版本](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>編輯您的閒聊問題和回答
 當您編輯知識庫時，您會看到閒聊的新來源，其是以您選取的特質為基礎。 您現在可以新增變更的問題或編輯回應，就像處理任何其他來源一樣。
 
 ![編輯閒聊 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-若要查看中繼資料，請選取工具列中的 [ **視圖選項** ]，然後選取 [ **顯示中繼資料**]。
+若要查看中繼資料，請選取工具列中的 [ **視圖選項** ]，然後選取 [ **顯示中繼資料** ]。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>新增其他閒聊問題和回答
-您可以新增不在預先定義的資料集中的新閒聊聊天 QnA 配對。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的**編輯**來源。 為確保 ranker 瞭解這是閒聊的聊天，請新增中繼資料索引鍵/值組 "聊天"，如下圖所示：
+您可以新增不在預先定義的資料集中的新閒聊聊天 QnA 配對。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的 **編輯** 來源。 為確保 ranker 瞭解這是閒聊的聊天，請新增中繼資料索引鍵/值組 "聊天"，如下圖所示：
 
 :::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="新增閒聊 QnA" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>從現有知識庫中刪除閒聊
-選取您的知識庫，並瀏覽至 [設定]**** 頁面。 您的特定閒聊來源會以檔案列示，內含選取的特質名稱。 您可以將此當作原始程式檔刪除。
+選取您的知識庫，並瀏覽至 [設定] 頁面。 您的特定閒聊來源會以檔案列示，內含選取的特質名稱。 您可以將此當作原始程式檔刪除。
 
 ![從知識庫中刪除閒聊](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 

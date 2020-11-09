@@ -1,18 +1,18 @@
 ---
-title: 快速入門-使用 Azure PowerShell 建立 Azure 私人端點
-description: 您可以使用本快速入門來瞭解如何使用 Azure PowerShell 來建立私人端點。
+title: 快速入門 - 使用 Azure PowerShell 建立 Azure 私人端點
+description: 使用本快速入門來了解如何使用 Azure PowerShell 建立私人端點。
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 147e646738df9d70355f379a9e64a52116e9f16f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
-ms.translationtype: MT
+ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233588"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368656"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立私人端點
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name 'CreatePrivateEndpointQS-rg' -Location 'eastus'
 
 * [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
 * [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
-* [新 AzBastion](/powershell/module/az.network/new-azbastion)
+* [New-AzBastion](/powershell/module/az.network/new-azbastion)
 
 ```azurepowershell-interactive
 ## Create backend subnet config. ##
@@ -147,14 +147,15 @@ New-AzVM -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Location 'eastus' -VM 
 
 ## <a name="create-private-endpoint"></a>建立私人端點
 
-在本節中，您將使用下列各項來建立私人端點和連接：
+在本節中，您會使用下列方式建立私人端點和連線：
 
 * [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
 * [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
 ```azurepowershell-interactive
-## Place web app into variable. Replace <your-webapp-name> with your server name ##
-$webapp = Get-AzWebApp -ResourceGroupName CreatePrivateEndpointQS-rg -Name <your-webapp-name>
+## Place web app into variable. Replace <webapp-resource-group-name> with the resource group of your webapp. ##
+## Replace <your-webapp-name> with your webapp name ##
+$webapp = Get-AzWebApp -ResourceGroupName <webapp-resource-group-name> -Name <your-webapp-name>
 
 ## Create private endpoint connection. ##
 $parameters1 = @{
@@ -183,7 +184,7 @@ New-AzPrivateEndpoint @parameters2
 ```
 ## <a name="configure-the-private-dns-zone"></a>設定私人 DNS 區域
 
-在本節中，您將使用下列方式來建立和設定私人 DNS 區域：
+在本節中，您會使用下列方式建立和設定私人 DNS 區域：
 
 * [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
 * [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
@@ -237,7 +238,7 @@ New-AzPrivateDnsZoneGroup @parameters4
 
 3. 選取 [CreatePrivateEndpointQS-rg]。
 
-4. 選取 [myVM]  。
+4. 選取 [myVM]。
 
 5. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
@@ -259,11 +260,11 @@ New-AzPrivateDnsZoneGroup @parameters4
     Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-    針對 web 應用程式名稱，會傳回 **10.0.0.5** 的私人 IP 位址。  此位址位於您先前所建立虛擬網路的子網路中。
+    針對 Web 應用程式名稱，會傳回 **10.0.0.5** 的私人 IP 位址。  此位址位於您先前所建立虛擬網路的子網路中。
 
 10. 在與 **myVM** 的堡壘連線中，開啟 Internet Explorer。
 
-11. 輸入 Web 應用程式的 URL： **https://\<your-webapp-name>.azurewebsites.net** .。
+11. 輸入 Web 應用程式的 URL： **https://\<your-webapp-name>.azurewebsites.net**.。
 
 12. 如果您尚未部署應用程式，則會收到預設的 Web 應用程式頁面：
 
@@ -272,7 +273,7 @@ New-AzPrivateDnsZoneGroup @parameters4
 13. 關閉與 **myVM** 的連線。
 
 ## <a name="clean-up-resources"></a>清除資源 
-當您完成使用私人端點和 VM 時，請使用 [>new-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup) 來移除資源群組及其所有資源：
+當您完成使用私人端點和 VM 時，使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 來移除資源群組以及其具有的所有資源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force

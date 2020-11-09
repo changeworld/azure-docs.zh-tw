@@ -4,13 +4,13 @@ description: 瞭解如何規劃您的 QnA Maker 應用程式。 瞭解 QnA Maker
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776930"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376669"
 ---
 # <a name="plan-your-qna-maker-app"></a>規劃您的 QnA Maker 應用程式
 
@@ -20,6 +20,8 @@ ms.locfileid: "91776930"
 
 使用 QnA Maker 建立的每個 [Azure 資源](azure-resources.md#resource-purposes) 都有特定用途。 每個資源都有自己的用途、限制和 [定價層](azure-resources.md#pricing-tier-considerations)。 請務必瞭解這些資源的功能，讓您可以在規劃程式中使用該知識。
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
 | 資源 | 目的 |
 |--|--|
 | [QnA Maker](azure-resources.md#qna-maker-resource) 資源 | 撰寫和查詢預測 |
@@ -27,6 +29,14 @@ ms.locfileid: "91776930"
 | [App Service 資源和 App 方案服務](azure-resources.md#app-service-and-app-service-plan) 資源 | 查詢預測端點 |
 | [Application Insights](azure-resources.md#application-insights) 資源 | 查詢預測遙測 |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+| 資源 | 目的 |
+|--|--|
+| [QnA Maker](azure-resources.md#qna-maker-resource) 資源 | 撰寫、查詢預測端點和遙測|
+| [認知搜尋](azure-resources.md#cognitive-search-resource) 資源 | 資料儲存和搜尋 |
+
+---
 ### <a name="resource-planning"></a>資源規劃
 
 每個資源的免費層都 `F0` 可以運作，並可同時提供撰寫和查詢預測體驗。 您可以使用這一層來學習撰寫和查詢預測。 當您移至生產或即時案例時，請重新評估您的資源選取專案。
@@ -65,9 +75,22 @@ ms.locfileid: "91776930"
 
 ### <a name="language-considerations"></a>語言考量因素
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
 在 QnA Maker 資源上建立的第一個知識庫會設定資源的語言。 QnA Maker 資源只能有一種語言。
 
 您可以依語言來結構 QnA Maker 資源，也可以使用 [翻譯工具](../../translator/translator-info-overview.md) 將查詢從另一種語言變更為知識庫的語言，再將查詢傳送至查詢預測端點。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+您現在可以在相同的 QnA Maker 資源內擁有不同語言的知識庫。 當您建立第一個知識庫時，您可以選擇是否要使用單一語言或多種語言的知識庫資源。
+
+![QnA Maker 受控 (預覽) 多語言知識庫選取專案](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> 如果您啟用每個知識庫的語言設定，就不能在 QnA Maker 資源中建立多個知識庫。 以取得 [語言設定限制](./azure-resources.md)的詳細資料。
+
+---
 
 ### <a name="ingest-data-sources"></a>內嵌資料來源
 
@@ -87,7 +110,7 @@ ms.locfileid: "91776930"
 
 ### <a name="bot-personality"></a>Bot 個人化
 
-使用 [閒聊聊天](../how-to/chit-chat-knowledge-base.md)將 bot 個人化新增至您的知識庫。 這項特性是透過特定對話語氣（例如 *professional* 和 *易記*）提供的解答。 這項閒聊的交談是以對話設定的方式提供，您可以在其中加入、編輯和移除所有的控制權。
+使用 [閒聊聊天](../how-to/chit-chat-knowledge-base.md)將 bot 個人化新增至您的知識庫。 這項特性是透過特定對話語氣（例如 *professional* 和 *易記* ）提供的解答。 這項閒聊的交談是以對話設定的方式提供，您可以在其中加入、編輯和移除所有的控制權。
 
 如果您的 bot 連接到您的知識庫，建議使用 bot 特性。 即使您也連接到其他服務，您也可以選擇在您的知識庫中使用閒聊聊天，但您應該檢查 bot 服務如何互動，以瞭解這是否為您使用的正確架構設計。
 
@@ -129,7 +152,7 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="providing-a-default-answer"></a>提供預設答案
 
-如果您的知識庫找不到答案，則會傳回 _預設答案_。 此答案可在 QnA Maker 入口網站或[api](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)中的 [設定] 頁面上**設定**。
+如果您的知識庫找不到答案，則會傳回 _預設答案_ 。 此答案可在 QnA Maker 入口網站或 [api](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)中的 [設定] 頁面上 **設定** 。
 
 此預設答案不同于 Azure bot 的預設答案。 您可以在 Azure 入口網站中設定 Azure bot 的預設答案作為設定的一部分。 當分數閾值不符合時，就會傳回此值。
 
@@ -152,7 +175,15 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="service-updates"></a>服務更新
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
 套用 [最新的執行時間更新](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) ，以自動管理服務更新。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+在 QnA Maker managed (Preview) 中，執行時間是由 QnA Maker 服務本身管理。 因此不適用服務更新。
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>調整規模、輸送量和復原能力
 
@@ -160,7 +191,16 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="analytics-with-application-insights"></a>使用 Application Insights 分析
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
 您知識庫的所有查詢都會儲存在 Application Insights 中。 使用我們的 [最佳查詢](../how-to/get-analytics-knowledge-base.md) 來瞭解您的計量。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+在受控部署中，遙測會透過 [Azure 監視器服務](https://docs.microsoft.com/azure/azure-monitor/)提供。 使用我們的 [最佳查詢](../how-to/get-analytics-knowledge-base.md) 來瞭解您的計量。
+
+
+---
 
 ## <a name="development-lifecycle"></a>開發生命週期
 
@@ -177,7 +217,7 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="devops-development"></a>DevOps 開發
 
-開發要插入至 DevOps 管線的知識庫時，必須在 [批次測試](../quickstarts/batch-testing.md)期間隔離知識庫。
+您必須在 [批次測試](../quickstarts/batch-testing.md)期間隔離知識庫，才能開發要插入至 DevOps 管線的知識庫。
 
 知識庫會與 QnA Maker 資源上的所有其他知識庫共用認知搜尋索引。 雖然知識庫是依資料分割隔離，但相較于已發佈的知識庫，共用索引可能會導致分數的差異。
 

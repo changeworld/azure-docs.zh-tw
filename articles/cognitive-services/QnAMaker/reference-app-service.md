@@ -4,28 +4,27 @@ description: 瞭解設定資源的方式和位置。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/21/2020
-ms.openlocfilehash: 1d54b912d2177a3ccd0cf34d57fc0358af653199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/9/2020
+ms.openlocfilehash: eac930971cab041fbf398da1ac5f8a055412832d
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776709"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376854"
 ---
 # <a name="service-configuration"></a>服務設定
 
-QnA Maker 使用數個 Azure 資源 (服務) 包括認知搜尋、App Service、App Service 方案和 Application Insights。
-
-以下列出 QnA Maker 支援的這些設定的所有自訂。
+每個版本的 QnA Maker 都會使用一組不同的 Azure 資源 (服務) 。 本文說明這些服務所支援的自訂。 
 
 ## <a name="app-service"></a>App Service 方案
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
 QnA Maker 使用 App Service 來提供 [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)所使用的查詢執行時間。
 
+這些設定適用于 App Service 的 Azure 入口網站。 您可以依序選取 [ **設定** ] 和 [設定] 來使用這些 **設定。**
 
-這些設定適用于 App Service 的 Azure 入口網站。 您可以依序選取 [**設定**] 和 [設定] 來使用這些**設定。**
-
-您可以透過 [應用程式設定] 清單設定個別設定，或選取 [ **Advanced edit （編輯**）] 來修改數個設定。
+您可以透過 [應用程式設定] 清單設定個別設定，或選取 [ **Advanced edit （編輯** ）] 來修改數個設定。
 
 |資源|設定|
 |--|--|
@@ -36,9 +35,13 @@ QnA Maker 使用 App Service 來提供 [GENERATEANSWER API](https://docs.microso
 |UserAppInsightsKey|聊天記錄和遙測|
 |UserAppInsightsName|聊天記錄和遙測|
 
-瞭解 [如何將您的認知搜尋服務變更](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 為您的服務。
+完成變更之後，您必須從 Azure 入口網站的 [ **總覽** ] 頁面 **重新開機** 服務。
 
-完成變更之後，您必須從 Azure 入口網站的 [**總覽**] 頁面**重新開機**服務。
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+App Service 自訂不適用於 QnA Maker 受控 (預覽) 。
+
+---
 
 ## <a name="qna-maker-service"></a>QnA Maker 服務
 
@@ -46,13 +49,37 @@ QnA Maker 服務會提供下列使用者的設定，以在單一 QnA Maker 服�
 
 瞭解 [如何將](./how-to/collaborate-knowledge-base.md) 共同作業者新增至您的服務。
 
-## <a name="application-insights"></a>Application Insights
+## <a name="change-azure-cognitive-search"></a>變更 Azure 認知搜尋
 
-Application Insights 沒有 QnA Maker 專用的設定設定。
+瞭解如何變更連結至 QnA Maker 服務 [的認知搜尋服務](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 。
+
+## <a name="change-default-answer"></a>變更預設答案
+
+瞭解 [如何變更預設答案的文字](How-To/change-default-answer.md)。 
+
+## <a name="telemetry"></a>遙測
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+
+Application Insights 用於監視 QnA Maker GA 的遙測。 QnA Maker 沒有特定的設定設定。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+
+瞭解 [如何將遙測新增至您的 QnA Maker 受控 (預覽版) 服務](How-To/get-analytics-knowledge-base.md)。 
+
+---
 
 ## <a name="app-service-plan"></a>App Service 方案
 
+# <a name="qnamaker-ga-stable-release"></a>[QnAMaker GA (穩定版本) ](#tab/v1)
+
 App Service 方案沒有適用于 QnA Maker 的任何設定設定。
+
+# <a name="qnamaker-managed-preview-release"></a>[QnAMaker 受控 (預覽版本) ](#tab/v2)
+
+App Service 方案不適用於 QnA Maker 受控 (preview) 。
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 
