@@ -8,110 +8,139 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 05/22/2020
-ms.author: aahi
+ms.date: 10/22/2020
+ms.author: clschott
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c69fec46a6d1c8b177e5602ae24a6cbf0654dc20
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f28ab0d81daaedeec83994fcebc3eb430023bbc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88929205"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315855"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>快速入門：使用 Bing 影片搜尋 REST API 和 C# 來搜尋影片
 
-使用本快速入門，第一次呼叫 Bing 影片搜尋 API。 這個簡單的 C# 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+> [!WARNING]
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+
+使用本快速入門，第一次呼叫 Bing 影片搜尋 API。 這個簡單的 C# 應用程式會將 HTTP 影片搜尋查詢傳送至 API，並顯示 JSON 回應。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) 上有此範例的原始程式碼，其中還有其他錯誤處理、功能和程式碼註釋。
 
-## <a name="prerequisites"></a>必要條件
-* [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
-* [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。
-* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
+## <a name="prerequisites"></a>Prerequisites
+
+您將必須設定電腦以執行 .NET Core。 您可以在 [.NET Core 下載](https://dotnet.microsoft.com/download) 頁面上找到安裝指示。 您可以在 Windows、Linux、macOS 或 Docker 容器中執行此應用程式。 您將必須安裝慣用的程式碼編輯器。 以下說明使用 [Visual Studio Code](https://code.visualstudio.com/)，這是一個開放原始碼的跨平台編輯器。 不過，您可以使用您熟悉的任何工具。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在 Visual Studio 中建立新的主控台解決方案。 接著，將下列命名空間新增至主要程式碼檔案：
+第一個步驟是建立新的應用程式。 請開啟命令提示字元，然後為您的應用程式建立新目錄。 使該目錄成為目前的目錄。 在主控台視窗中輸入下列命令：
 
-    ```csharp
-    using System;
-    using System.Text;
-    using System.Net;
-    using System.IO;
-    using System.Collections.Generic;
-    ```
+```dotnetcli
+dotnet new console --name VideoSearchClient
+```
 
-2. 針對您的訂用帳戶金鑰、端點和搜尋字詞新增變數。 對於 `uriBase` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
-
-    ```csharp
-    const string accessKey = "enter your key here";
-    const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/videos/search";
-    const string searchTerm = "kittens";
-    ```
-
-## <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>建立結構來製作 Bing 影片搜尋 API 回應的格式
-
-定義 `SearchResult` 結構以包含影像搜尋結果及 JSON 標頭資訊。
+您必須在 Main 方法的頂端新增下列 `using` 指示詞，讓 C# 編譯器能夠辨識工作和 JSON 類型：
 
 ```csharp
-struct SearchResult
-    {
-        public String jsonResult;
-        public Dictionary<String, String> relevantHeaders;
-    }
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+```
+
+針對您的訂用帳戶金鑰、端點和搜尋字詞新增變數。 對於 `uriBase` 值，您可以使用下列程式碼中的全域端點，或使用在 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+
+```csharp
+// Replace the accessKey string value with your valid access key.
+const string _accessKey = "enter your key here";
+
+// Or use the custom subdomain endpoint displayed in the Azure portal for your resource.
+const string _uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/videos/search";
+
+const string _searchTerm = "kittens";
+```
+
+接著，更新 Main 方法，以便使用非同步方法。 新增 async 修飾詞，並將傳回類型變更為「工作」。
+
+```csharp
+static async Task Main(string[] args)
+{
+    
+}
+```
+
+現在，您會有一個僅以非同步方式執行工作的程式。 來加以改善吧。
+
+## <a name="create-a-data-structure-to-hold-the-bing-video-search-api-response"></a>建立資料結構以保存 Bing 影片搜尋 API 回應
+
+定義 `SearchResult` 和 `Video` 類別，以包含影片搜尋結果。 後續當您需要 JSON 結果中的其他欄位時，可以新增更多屬性。
+
+```cscharp
+class SearchResult
+{
+    [JsonPropertyName("totalEstimatedMatches")]
+    public int TotalEstimatedMatches { get; set; }
+
+    [JsonPropertyName("value")]
+    public List<Video> Videos { get; set; }
+}
+
+class Video
+{
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+
+    [JsonPropertyName("description")]
+    public string Description { get; set; }
+
+    [JsonPropertyName("thumbnailUrl")]
+    public string ThumbnailUrl { get; set; }
+
+    [JsonPropertyName("contentUrl")]
+    public string ContentUrl { get; set; }
+}
 ```
 
 ## <a name="create-and-handle-a-video-search-request"></a>建立及處理影片搜尋要求
 
-1. 建立一個名為 `BingVideoSearch` 的方法來執行對 API 的呼叫，並將傳回類型設定為之前建立的 `SearchResult` 結構。 
+我們使用 `HttpClient` 來執行對 API 的呼叫。 首先，我們需要新增標頭 `Ocp-Apim-Subscription-Key` 和您的存取金鑰。 
 
-   在接下來的步驟中，將程式碼新增至此方法。
+```csharp
+using var client = new HttpClient();
+client.BaseAddress = new Uri(_uriBase);
+client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _accessKey);
+```
 
-1. 建構搜尋要求的 URI。 將搜尋詞彙 `toSearch` 格式化，然後再附加至字串。
+建構搜尋要求的 URI。 將搜尋詞彙 `_searchTerm` 格式化，然後再附加至字串。
 
-    ```csharp    
-    static SearchResult BingVideoSearch(string toSearch){
-    
-        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
-    //...
-    ```
-
-2. 藉由將金鑰新增至 `Ocp-Acpim-Subscription-Key` 標頭，並使用 `HttpWebResponse` 物件儲存 API 回應，來執行 Web 要求。 然後使用 `StreamReader` 取得 JSON 字串。
-
-    ```csharp
-    //...
-    WebRequest request = HttpWebRequest.Create(uriQuery);
-    request.Headers["Ocp-Apim-Subscription-Key"] = accessKey;
-    HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
-    string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-    //...
-    ```
+```csharp
+var response = await client.GetAsync($"?q={Uri.EscapeDataString(_searchTerm)}");
+```
 
 ## <a name="process-the-result"></a>處理結果
 
-1. 建立搜尋結果物件並擷取 Bing HTTP 標頭。 然後傳回 `searchResult` 物件。 
+當回應成功時，我們可以處理 JSON 資料。 我們已將 JSON 字串還原序列化為先前建立的 `SearchResult`。 將迴圈新增至結果 (如果有的話)，並將結果列印至主控台。
 
-    ```csharp
-    var searchResult = new SearchResult();
-    searchResult.jsonResult = json;
-    searchResult.relevantHeaders = new Dictionary<String, String>();
+```csharp
+if (response.IsSuccessStatusCode)
+{
+    var json = await response.Content.ReadAsStringAsync();
+    var result = JsonSerializer.Deserialize<SearchResult>(json);
 
-    // Extract Bing HTTP headers
-    foreach (String header in response.Headers)
+    foreach (var video in result.Videos)
     {
-        if (header.StartsWith("BingAPIs-") || header.StartsWith("X-MSEdge-"))
-            searchResult.relevantHeaders[header] = response.Headers[header];
+        Console.WriteLine($"Name: {video.Name}");
+        Console.WriteLine($"ContentUrl: {video.ContentUrl}");
+        Console.WriteLine();
     }
-    return searchResult;
-    ```
-
-2. 列印回應。
-
-    ```csharp
-    Console.WriteLine(result.jsonResult);
-    ```
+}
+```
 
 ## <a name="example-json-response"></a>範例 JSON 回應 
 
