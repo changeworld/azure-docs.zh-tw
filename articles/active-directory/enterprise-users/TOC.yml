@@ -70,6 +70,8 @@
           href: ../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: 管理網域名稱
           href: domains-manage.md
+        - name: 確認子網域為受控
+          href: domains-verify-custom-subdomain.md
         - name: 刪除目錄
           href: directory-delete-howto.md
         - name: 多個目錄

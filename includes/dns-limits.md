@@ -2,14 +2,14 @@
 author: rothja
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 2/14/2020
+ms.date: 11/05/2020
 ms.author: rohink
-ms.openlocfilehash: 0f7187300ec96ce417866c4fb8fa02783c1da63a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7011b92485c56187021c9043ba84bc85e448a98f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515840"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329524"
 ---
 **公用 DNS 區域**
 
@@ -33,7 +33,7 @@ ms.locfileid: "86515840"
 | 已啟用自動註冊的每個私人 DNS 區域的虛擬網路連結 |100|
 | 虛擬網路可以連結並已啟用自動註冊的私人 DNS 區域數目 |1|
 | 虛擬網路可以連結的私人 DNS 區域數目 |1000|
-| 虛擬機器每秒可傳送至 Azure DNS 解析程式的 DNS 查詢數目 |500 <sup>1</sup> |
+| 虛擬機器每秒可傳送至 Azure DNS 解析程式的 DNS 查詢數目 |1000 <sup>1</sup> |
 | 每個虛擬機器的已排入佇列 (回應待決) DNS 查詢數目上限 |200 <sup>1</sup> |
 
 <sup>1</sup>這些限制會套用至每個個別虛擬機器，而不會套用於虛擬網路層級。 超過這些限制的 DNS 查詢會遭到捨棄。

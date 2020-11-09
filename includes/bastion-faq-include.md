@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756005"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329591"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>哪些區域可用？
 
@@ -88,3 +88,7 @@ Azure Bastion 目前在 VM 內支援 en-us-qwerty 鍵盤配置。  鍵盤配置�
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>我該如何處理部署失敗？
 
 檢閱任何錯誤訊息，並視需要[在 Azure 入口網站提出支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 部署失敗的原因可能是 [Azure 訂用帳戶限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 具體而言，客戶可能會遇到每個訂用帳戶允許的公用 IP 位址數目限制，進而導致 Azure Bastion 部署失敗。
+
+### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>如何在我的災害復原方案中納入 Azure Bastion？
+
+因為 Azure Bastion 會與 Azure 區域相關聯，並且會部署在 VNet 或對等互連 VNet 內，所以您必須負責將 Azure Bastion 部署到災害復原 (DR) 網站 VNet。 發生 Azure 區域失敗時，您必須為虛擬機器執行容錯移轉作業，然後使用部署於災害復原區域的 Azure Bastion 主機，連線到部署於災害復原區域的 VM。

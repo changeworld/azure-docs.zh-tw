@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a765bf547924cbba1c4cff36a97df4ae88df1787
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: d5467537e105225541ffc501d345fd2fa57e0803
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495945"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324554"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -48,7 +48,7 @@ ms.locfileid: "92495945"
 
 以下是建築案例 *AdtSampleApp* 範例應用程式實作的元件：
 * 裝置驗證 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 使用範例 (請參閱 *CommandLoop.cs* )
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 使用範例 (請參閱 *CommandLoop.cs* )
 * 呼叫 Azure Digital Twins API 的主控台介面
 * *SampleClientApp* ：範例 Azure Digital Twins 解決方案
 * *SampleFunctionsApp* ：Azure Functions 應用程式，可將 Azure Digital Twins 圖形更新為來自 IoT 中樞和 Azure Digital Twins 事件的遙測結果
@@ -329,7 +329,7 @@ ObserveProperties thermostat67 Temperature
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="完整建築案例圖形的摘錄，並醒目提示 C 箭號，亦即 Azure Digital Twins 執行個體：事件方格和第二個 Azure 函式":::
 
 請完成下列動作以設定此資料流程：
-1. 建立連線執行個體和事件方格的 Azure Digital Twins 端點
+1. 在 Azure Digital Twins 中建立將執行個體連線至事件方格的端點
 2. 設定 Azure Digital Twins 內的路由，將對應項屬性變更事件傳送至端點
 3. 部署會在端點上接聽 (透過[事件方格](../event-grid/overview.md)) 的 Azure Functions 應用程式，並據此更新其他對應項
 4. 執行模擬的裝置並查詢 Azure Digital Twins，以查看即時結果
@@ -354,7 +354,7 @@ az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-g
 
 此命令的輸出是您所建立事件方格主題的相關資訊。
 
-接下來，建立指向事件方格主題的 Azure Digital Twins 端點。 使用下列命令，視需要填寫預留位置欄位：
+接著，在 Azure Digital Twins 中建立事件方格端點，將您的執行個體連線至事件方格主題。 使用下列命令，視需要填寫預留位置欄位：
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
@@ -372,11 +372,11 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="端點查詢的結果，顯示 provisioningState 為 Succeeded 的端點":::
 
-儲存您提供給事件方格主題和 Azure Digital Twins 端點的名稱。 稍後會用到這些。
+儲存您為事件方格主題和 Azure Digital Twins 中的事件方格端點提供的名稱。 稍後會用到這些。
 
 ### <a name="set-up-route"></a>設定路由
 
-接下來，建立 Azure Digital Twins 路由，將事件傳送至您剛才建立的 Azure Digital Twins 端點。
+接下來，建立 Azure Digital Twins 路由，將事件傳送至您剛才建立的事件方格端點。
 
 ```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>

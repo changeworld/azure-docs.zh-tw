@@ -109,6 +109,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: 套用安全性原則時 VM 沒有回應
           href: unresponsive-vm-apply-security-policy.md
+        - name: 等候本機工作階段管理員時 VM 沒有回應
+          href: vm-unresponsive-wait-local-session-manager.md
         - name: Windows 開機管理程式錯誤 - 狀態無效影像雜湊
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows 停止錯誤 - 錯誤的系統組態資訊
@@ -117,6 +119,8 @@
           href: troubleshoot-windows-stop-error.md
         - name: Windows 停止錯誤 - 系統流程已終止
           href: windows-stop-error-system-process-terminated.md
+        - name: Windows 停止錯誤 - 未處理系統執行緒例外狀況
+          href: windows-stop-error-system-thread-exception-not-handled.md
 - name: 無法連接到我的 VM
   items:
     - name: RDP

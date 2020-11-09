@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334716"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130718"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
@@ -72,7 +72,7 @@ ms.locfileid: "91334716"
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    請從最左邊的文字 `pickup` 前面開始選取 (#1)，再選取到最右邊的文字 `anchovies` (#2 - 如此即結束標籤程序)。 快顯功能表隨即出現。 在快顯方塊中，輸入 `Order` 作為實體的名稱 (#3)。 然後，從清單中選取 `Order Create new entity` (#4)。
+    按住游標並將其拖曳到第一個範例意圖的文字上方。 在顯示的功能表中，輸入 `Order` 作為實體的名稱。 然後，從清單中選取 `Order Create new entity`。
 
     ![完整訂單文字的標籤開頭和結尾](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "91334716"
 
 1. 從左側導覽中選取 [意圖]，然後選取 [OrderPizza] 意圖。
 
-1. 若要開啟**實體選擇區**，請在內容工具列中選取 @ 符號。
+1. 若要開啟 **實體選擇區** ，請在內容工具列中選取 @ 符號。
 
 1. 選取選擇區中的每個實體資料列，然後使用選擇區游標來選取每個範例語句中的實體。 當您完成時，實體清單看起來應該如下圖所示。
 
@@ -215,7 +215,7 @@ ms.locfileid: "91334716"
 
 ## <a name="test-the-app-to-validate-the-changes"></a>測試應用程式以驗證變更
 
-使用互動式**測試**面板來測試應用程式。 此程序可讓您輸入新的語句，然後檢視預測結果，以確認作用中且已定型的應用程式運作的情形。 意圖預測應有不錯的信賴度 (高於 60%)，且實體擷取應該至少會取用 `Order` 實體。 訂單實體可能會不夠詳細，因為幾個語句不足以處理每個案例。
+使用互動式 **測試** 面板來測試應用程式。 此程序可讓您輸入新的語句，然後檢視預測結果，以確認作用中且已定型的應用程式運作的情形。 意圖預測應有不錯的信賴度 (高於 60%)，且實體擷取應該至少會取用 `Order` 實體。 訂單實體可能會不夠詳細，因為幾個語句不足以處理每個案例。
 
 1. 選取頂端導覽中的 [測試]。
 1. 輸入語句 `2 small cheese pizzas for pickup`，然後選取 [輸入]。 使用中模型在超過 60% 的信賴度下預測了正確的意圖。
@@ -247,7 +247,7 @@ ms.locfileid: "91334716"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 移至網址列中的 URL 結尾處，然後以您在互動式測試面板中輸入的相同查詢取代 _YOUR_QUERY_HERE_。
+1. 移至網址列中的 URL 結尾處，然後以您在互動式測試面板中輸入的相同查詢取代 _YOUR_QUERY_HERE_ 。
 
     `2 small cheese pizzas for pickup`
 

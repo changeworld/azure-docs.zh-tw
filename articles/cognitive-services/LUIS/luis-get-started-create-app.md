@@ -4,13 +4,13 @@ description: 本快速入門說明如何建立 LUIS 應用程式，該應用程�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316475"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128120"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入門：使用預先建置的家庭自動化應用程式
 
@@ -23,25 +23,28 @@ ms.locfileid: "91316475"
 ## <a name="create-a-new-app"></a>建立新的應用程式
 您可以在 [我的應用程式] 上建立和管理應用程式。
 
-1. 在 [我的應用程式] 清單上選取 [+ 新增對話應用程式]，然後在選項清單中再次選取 [+ 新增對話應用程式]。
+### <a name="create-an-application"></a>建立應用程式
 
-1. 在對話方塊中，將您的應用程式命名為 `Home Automation`。
-1. 選取 [英文] 作為文化特性。
-1. 輸入選擇性描述。
-1. 如果尚未建立資源，請不要選取預測資源。 若要使用應用程式的預測端點 (預備或生產)，必須指派預測資源。
-1. 選取 [完成] 。
+若要建立應用程式，請按一下 [+ 新增應用程式]。 
 
-    LUIS 會建立應用程式。
+在顯示的視窗中，輸入下列資訊：
 
-    ![在對話方塊中，將您的應用程式命名為 `Home Automation`。](./media/create-new-app-details.png)
+|名稱  |描述  |
+|---------|---------|
+|AName     | 您的應用程式名稱。 例如 "home automation"。        |
+|文化特性     | 您的應用程式了解及讀出的語言。   |
+|描述 | 應用程式的描述。
+|預測資源 | 將接收查詢的預測資源。 |
 
-    >[!NOTE]
-    >建立應用程式之後便無法變更文化特性 (Culture)。
+選取 [完成]  。
+
+>[!NOTE]
+>建立應用程式之後便無法變更文化特性 (Culture)。
 
 ## <a name="add-prebuilt-domain"></a>新增預建網域
 
 1. 從左側導覽中，選取 [預建網域]。
-1. 搜尋 **HomeAutomation**。
+1. 搜尋 **HomeAutomation** 。
 1. 在 HomeAutomation 卡片上選取 [新增網域]。
 
     > [!div class="mx-imgBorder"]
@@ -51,10 +54,7 @@ ms.locfileid: "91316475"
 
 ## <a name="intents-and-entities"></a>意圖和實體
 
-1. 選取**意圖**，以檢閱 HomeAutomation 網域意圖。 預建網域意圖具有範例語句。
-
-    > [!div class="mx-imgBorder"]
-    > ![HomeAutomation 意圖清單的螢幕擷取畫面](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意圖清單的螢幕擷取畫面")
+1. 在左側導覽功能表中選取 [意圖]，以查看 HomeAutomation 網域意圖。 其範例語句包括 `HomeAutomation.QueryState` 和 `HomeAutomation.SetDevice`。
 
     > [!NOTE]
     > 「無」是所有 LUIS 應用程式都會提供的意圖。 您可以使用它來處理未對應至應用程式所提供功能的語句。
@@ -63,6 +63,10 @@ ms.locfileid: "91316475"
 
     > [!div class="mx-imgBorder"]
     > [![HomeAutomation.TurnOff 意圖的螢幕擷取畫面](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意圖的螢幕擷取畫面")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. 如果您想要檢視應用程式的實體，請選取 [實體]。 如果您按一下其中一個實體 (例如 **HomeAutomation.DeviceName)** ，您會看到其相關值的清單。 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="影像替代文字" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>進行 LUIS 應用程式定型
 
@@ -73,11 +77,7 @@ ms.locfileid: "91316475"
 
 1. 從右上方導覽中選取 [測試]。
 
-1. 將測試語句 (例如 `Turn off the lights`) 輸入到 [互動測試] 窗格中，然後按下 Enter 鍵。
-
-    ```
-    Turn off the lights
-    ```
+1. 將測試語句 (例如 `Turn off the lights`) 輸入到 [互動測試] 窗格中，然後按下 Enter 鍵。 例如， *關燈* 。
 
     在此範例中，`Turn off the lights` 會正確識別為 **HomeAutomation.TurnOff** 的最高得分意圖。
 
@@ -94,7 +94,18 @@ ms.locfileid: "91316475"
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>發佈應用程式以取得端點 URL
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+若要在聊天機器人或其他應用程式中收到 LUIS 預測，您必須將應用程式發佈到預測端點。
+
+1. 選取視窗右上角的 [發佈]。
+
+1. 選取 [生產位置]，然後選取 [完成]。
+
+    > [!div class="mx-imgBorder"]
+    > ![LUIS 發佈到端點的螢幕擷取畫面](media/howto-publish/publish-app-popup.png)
+
+1. 選取通知中的 [存取您的端點 URL] 連結，以移至 [Azure 資源] 頁面。 端點 URL 會列為 [範例查詢]。
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 

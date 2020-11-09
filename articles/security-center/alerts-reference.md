@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784281"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372688"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示 - 參考指南
 
@@ -456,6 +456,8 @@ ms.locfileid: "92784281"
 | **影響**              | 影響事件主要會嘗試直接減少系統、服務或網路的可用性或完整性；包括影響商務或作業流程的操控。 這通常指的是勒索軟體、竄改、資料操控和其他技術。                                                                                                                                                                                                                                                                                                     |
 |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
 
+> [!NOTE]
+> 針對處於預覽狀態中的警示：[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解警示，請參閱：

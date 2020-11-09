@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: aahi
 keywords: 文字採礦, 情感分析, 文字分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647472"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289696"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
@@ -29,7 +29,9 @@ ms.locfileid: "89647472"
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-使用[情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md)對文字進行採礦，可獲得關於正面或負面情感的線索，進而了解客戶對您的品牌或主題有何看法。 此 API 功能會為每份文件傳回 0 到 1 之間的情感分數，1 代表最正面的情感。
+使用[情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md)對文字進行採礦，可獲得關於正面或負面情感的線索，進而了解客戶對您的品牌或主題有何看法。 
+
+此功能會根據服務在句子和文件層級找到的最高信賴分數提供情感標籤 (例如「負面」、「中性」和「正面」)。 此功能也會為每份文件和其中的句子傳回 0 到 1 之間的信賴分數，以表示正面、中性和負面情感。 您也可以[使用容器](how-tos/text-analytics-how-to-install-containers.md)在內部部署執行服務。
 
 從 v3.1 預覽版開始，意見挖掘是情感分析的功能。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。
 

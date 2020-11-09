@@ -140,8 +140,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: 適用於 JavaScript 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 功能管理
       items:
         - name: .NET Core 程式庫
@@ -156,6 +154,52 @@
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: 總覽
+          href: rest-api.md
+        - name: 資源
+          items:
+            - name: 索引鍵
+              href: ./rest-api-keys.md
+            - name: 索引鍵/值
+              href: ./rest-api-key-value.md
+            - name: 標籤
+              href: ./rest-api-labels.md
+            - name: 鎖定
+              href: ./rest-api-locks.md
+            - name: 修訂記錄
+              href: ./rest-api-revisions.md
+        - name: 通訊協定
+          items:
+            - name: 驗證
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Azure Active Directory 驗證
+                  href: rest-api-authentication-azure-ad.md
+                - name: HMAC 驗證
+                  href: rest-api-authentication-hmac.md
+            - name: 授權
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Azure Active Directory 授權
+                  href: rest-api-authorization-azure-ad.md
+                - name: HMAC 授權
+                  href: rest-api-authorization-hmac.md
+            - name: 一致性模型
+              href: ./rest-api-consistency.md
+            - name: 通用標頭
+              href: ./rest-api-headers.md
+            - name: 節流
+              href: ./rest-api-throttling.md
+            - name: 版本控制
+              href: ./rest-api-versioning.md
+        - name: 部署
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: postman
+              href: ./rest-api-postman.md
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

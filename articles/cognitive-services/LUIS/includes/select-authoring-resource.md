@@ -2,16 +2,15 @@
 title: 選取製作資源
 ms.topic: include
 ms.date: 03/25/2020
-ms.openlocfilehash: b16e720e8b28d9440cde4fdf5e84dbfc00c00ca8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b8544ca5cea6b717863410c0add303d32386157c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83658766"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128127"
 ---
 ## <a name="select-subscription-and-authoring-resource"></a>選取訂用帳戶和製作資源
 
-在 LUIS 入口網站中，若要查看應用程式清單或建立應用程式，請選取訂用帳戶和製作資源。 應用程式會透過 LUIS 製作資源來存取。
+在選取特定訂用帳戶和撰寫資源時，您會看到其相關聯的應用程式清單。
 
-> [!div class="mx-imgBorder"]
-> ![選取製作訂用帳戶和製作資源](../media/select-authoring-resource/select-authoring-resource-my-english-app.png)
+:::image type="content" source="../media/select-authoring-resource/select-authoring-resource-my-english-app-2.png" alt-text="選取製作訂用帳戶和製作資源" lightbox="../media/select-authoring-resource/select-authoring-resource-my-english-app-2.png":::

@@ -1,7 +1,7 @@
 ---
 title: 快速入門：在 Web 上試用 Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。
+description: 在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內容仲裁者, 內容仲裁
-ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596798"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143678"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入門：在 Web 上試用 Content Moderator
 
@@ -28,14 +28,13 @@ ms.locfileid: "91596798"
 - 網頁瀏覽器
 
 ## <a name="set-up-the-review-tool"></a>設定審核工具
-
-「Content Moderator 審核工具」是一個 Web 型工具，可讓人工審核者協助認知服務進行決策。 在本指南中，您將完成設定審核工具的簡短程序，以便了解 Content Moderator 服務如何運作。 請前往 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站並註冊。
+「Content Moderator 審核工具」是一個 Web 型工具，可讓人工審核者協助認知服務進行決策。 在本指南中，您將完成設定檢閱工具的簡短程序，以便了解 Content Moderator 服務的運作方式。 請前往 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站並註冊。
 
 ![Content Moderator 首頁](images/homepage.PNG)
 
 ## <a name="create-a-review-team"></a>建立檢閱小組
 
-接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 若要建立小組，您必須選取 [區域]，並提供 [小組名稱] 和 [小組識別碼]。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
+接著，建立審核小組。 在工作案例中，此小組會是將手動檢閱服務仲裁決策的一群人。 若要建立小組，您必須選取 [區域]，並提供 [小組名稱] 和 [小組識別碼]。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
 
 > [!NOTE]
 > [小組名稱] 是檢閱小組的易記名稱。 這是顯示在 Azure 入口網站中的名稱。 [小組識別碼] 是用來以程式設計方式識別檢閱小組的項目。
@@ -43,35 +42,39 @@ ms.locfileid: "91596798"
 > [!div class="mx-imgBorder"]
 > ![邀請小組成員](images/create-team.png)
 
-如果您選擇使用客戶管理的金鑰 (CMK) 來加密資料，則系統會針對 E0 定價層中的內容仲裁資源提示您輸入 [資源識別碼]。 您提供的資源必須是新的。 
+如果您選擇使用客戶管理的金鑰 (CMK) 來加密資料，則系統會針對 E0 定價層中的內容仲裁資源提示您輸入 [資源識別碼]。 您提供的資源對此小組而言必須是唯一的。 
 
 > [!div class="mx-imgBorder"]
 > ![使用 CMK 邀請小組成員](images/create-team-cmk.png)
-
-如果您嘗試重複使用內容仲裁資源，您會看到下列警告： 
-
-> [!div class="mx-imgBorder"]
-> ![CMK 失敗](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>上傳範例內容
 
 現在，您已做好上傳範例內容的準備。 選取 [試用] > [影像]、[試用] > [文字] 或 [試用] > [影片]。
 
-![嘗試影像或文字審核](images/tryimagesortext.png)
+> [!div class="mx-imgBorder"]
+> ![嘗試影像或文字審核](images/tryimagesortext.png)
 
-提交您的內容以供仲裁。 就內部而言，審核工具會呼叫仲裁 API 來掃描您的內容。 掃描完成之後，您會看到一則訊息，通知您有結果等待您的審核。
+提交您的內容以供仲裁。 您可以使用下列範例文字內容：
 
-![審核檔案](images/submitted.png)
+```
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 4255550111
+```
+
+就內部而言，審核工具會呼叫仲裁 API 來掃描您的內容。 掃描完成之後，您會看到一則訊息，通知您有結果等待您的審核。
+
+> [!div class="mx-imgBorder"]
+> ![審核檔案](images/submitted.png)
 
 ## <a name="review-moderation-tags"></a>審核仲裁標記
 
-審核已套用的仲裁標記。 您可以查看您的內容已套用哪些標記，以及每個類別的分數。 請參閱[影像](image-moderation-api.md)、[文字](text-moderation-api.md)和[影片](video-moderation-api.md)仲裁主題，來深入了解不同的內容標記表示的意義。
+審核已套用的仲裁標記。 您可以查看您的內容已套用哪些標記，以及每個類別的分數。 請參閱[影像](image-moderation-api.md)、[文字](text-moderation-api.md)和[影片](video-moderation-api.md)仲裁文章，來深入了解不同的內容標籤表示的意義。
 
-![檢閱結果](images/reviewresults_text.png)
+<!-- ![Review results](images/reviewresults_text.png) -->
 
 在專案中，您或審核小組可以視需要變更這些標記或新增更多標記。 您將透過 [下一步] 按鈕來提交這些變更。 當您的商務應用程式呼叫 Moderator API 時，已加上標記的內容會在這裡排入佇列，準備供人工審核小組進行審核。 您可以使用此方法快速審核大量內容。
 
-到目前為止，您已使用「Content Moderator 審核工具」來查看 Content Moderator 服務的功能範例。 接著，您可以深入了解審核工具及如何使用「審核 API」將其整合至軟體專案，或是跳到[後續步驟](#next-steps)一節，以了解如何在您的應用程式中使用「仲裁 API」本身。
+到目前為止，您已使用「Content Moderator 檢閱工具」查看 Content Moderator 服務的功能範例。 接著，您可以深入了解審核工具及如何使用「審核 API」將其整合至軟體專案，或是跳到[後續步驟](#next-steps)一節，以了解如何在您的應用程式中使用「仲裁 API」本身。
 
 ## <a name="learn-more-about-the-review-tool"></a>深入了解審核工具
 

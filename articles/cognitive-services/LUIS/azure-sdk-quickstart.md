@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, LUIS, azure luis, 自然語言理解, ai 聊天機器人, 聊天機器人製作者, 理解自然語言
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e389152292239076f3077e2edfb8d5be52ab815b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327258"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241373"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>快速入門：用於建立及查詢您 LUIS 應用程式的 Language Understanding (LUIS) SDK 用戶端程式庫
 
@@ -21,7 +21,8 @@ ms.locfileid: "91327258"
 
 Language Understanding (LUIS) 可讓您將自然語言處理 (NLP) 套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
 
-* **撰寫 SDK** 用戶端程式庫可讓您建立、編輯、定型及發佈 LUIS 應用程式。 * **預測執行階段 SDK** 用戶端程式庫可讓您查詢已發佈的應用程式。
+* **撰寫 SDK** 用戶端程式庫可讓您建立、編輯、定型及發佈 LUIS 應用程式。
+* **預測執行階段 SDK** 用戶端程式庫可讓您查詢已發佈的應用程式。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [LUIS development with C# SDK](./includes/sdk-csharp.md)]

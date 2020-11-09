@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 466129e8435ef694821b078592a100a111a43f3a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331561"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242274"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入門 - 使用 ADT Explorer 探索 Azure Digital Twins 案例的範例
 
@@ -37,56 +37,40 @@ ms.locfileid: "92331561"
 
 您的機器上也必須要有 **Node.js** 。 您可以透過下列連結取得最新版本：[Node.js](https://nodejs.org/).
 
-最後，您還必須下載兩個要在快速入門中使用的範例：
-* **ADT Explorer** 應用程式範例。 此範例包含您在快速入門中用來載入和探索 Azure Digital Twins 案例的主要應用程式。 若要取得應用程式，請瀏覽此處：[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 點擊 [下載 ZIP] 按鈕，將此範例程式碼的 .ZIP 檔案下載到您的電腦。 這會將 .ZIP 資料夾以 _**Azure_Digital_Twins__ADT__explorer.zip**_ 的形式下載至您的電腦。 將資料夾解壓縮並擷取檔案。
-* **Azure Digital Twins 案例的範例** 。 其中包括預先建立的 Azure Digital Twins 圖形，您會將其載入到 ADT Explorer 中使用。 若要取得案例，請瀏覽此處：[Azure Digital Twins 端對端範例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 點擊 [下載 ZIP] 按鈕，將此範例程式碼的 .ZIP 檔案下載到您的電腦。 這會將 .ZIP 資料夾以 Azure_Digital_Twins_end_to_end_samples.zip  的形式下載至您的電腦。 將資料夾解壓縮並擷取檔案。
+最後，您需要下載要在快速入門中使用的範例： **ADT 總管** 應用程式範例。 此範例包含您在快速入門中用來載入和探索 Azure Digital Twins 案例的主要應用程式，以及範例案例檔案。 若要取得範例，請瀏覽此處：[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 點擊 [下載 ZIP] 按鈕，將此範例程式碼的 .ZIP 檔案下載到您的電腦。 這會將 .ZIP 資料夾以 _**Azure_Digital_Twins__ADT__explorer.zip**_ 的形式下載至您的電腦。 將資料夾解壓縮並擷取檔案。
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>設定 Azure Digital Twins 和 ADT Explorer
 
-使用 Azure Digital Twins 的第一個步驟是設定 **Azure Digital Twins 執行個體** 。 建立服務的執行個體之後，稍後在快速入門中，您就能夠將範例資料填入執行個體。
+使用 Azure Digital Twins 的第一個步驟是設定 **Azure Digital Twins 執行個體** 。 當您建立服務的執行個體，並 **設定認證** 用以向 ADT Explorer 進行驗證之後，您將能夠 **在 ADT Explorer 中連線至執行個體** ，且稍後可在快速入門中為其填入範例資料。
 
-您也會為 ADT Explorer 設定權限，使其可以在電腦上執行，並存取您的 Azure Digital Twins 執行個體。 這可讓您使用範例應用程式來瀏覽執行個體和其資料。
+本節的其餘部分會引導您完成這些步驟。
 
-### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>設定 Azure Digital Twins 執行個體和應用程式註冊
+### <a name="set-up-azure-digital-twins-instance"></a>設定 Azure Digital Twins 執行個體
 
-首先， **設定 Azure Digital Twins 執行個體** ，及其正常運作所需的驗證。 若要這麼做，請依照指示操作： [*操作說明：設定執行個體和驗證*](how-to-set-up-instance-portal.md)。 您可以根據本身偏好的體驗，選擇參閱針對 [Azure 入口網站](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md) 或[自動化 Cloud Shell 部署指令碼範例](how-to-set-up-instance-scripted.md)而提供的設定文章。 各種版本的指示也包含可驗證您已成功完成每個步驟，並已準備好繼續使用新執行個體的步驟。
-* 設定 Azure Digital Twins 執行個體之後，您將需要執行個體的 **_主機名稱_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))。
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-若要驗證 ADT Explorer 應用程式，您還必須設定 **應用程式註冊** 。 請遵循 [操作說明： *建立應用程式註冊*](how-to-create-app-registration.md)以進行此設定。 
-* 註冊應用程式之後，您將需要註冊的 **_應用程式 (用戶端) 識別碼_** 和 **_目錄 (租用戶) 識別碼_** ([在入口網站中尋找這些項目](how-to-create-app-registration.md#collect-client-id-and-tenant-id))。
+### <a name="set-up-local-azure-credentials"></a>設定本機 Azure 認證
 
-### <a name="set-adt-explorer-permissions"></a>設定 ADT Explorer 權限
+在本機電腦上執行時，ADT Explorer 應用程式會使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (屬於 `Azure.Identity` 程式庫) 對 Azure Digital Twins 執行個體驗證使用者。 如需用戶端應用程式可以使用 Azure Digital Twins 進行驗證的不同方式詳細資訊，請參閱 [*操作指南：撰寫應用程式驗證碼*](how-to-authenticate-client.md)。
 
-接下來，準備您所建立的 Azure Digital Twins 執行個體來使用 ADT Explorer，也就是本機裝載的 Web 應用程式。 瀏覽 Azure 入口網站中的 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)頁面，並從清單中選取上一節所建立 **應用程式註冊** 的名稱。
+使用此類型的驗證時，ADT Explorer 會搜尋本機環境中的認證，例如本機 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或 Visual Studio/Visual Studio Code 中的 Azure 登入。 這表示您應透過下列其中一種機制 **本機登入 Azure** ，以設定 ADT Explorer 應用程式的認證。
 
-從註冊的功能表中選取 [驗證]，然後點擊 [+ 新增平台]。
+如果您已透過上述其中一種方式登入 Azure，您可以跳到[下一節](#run-and-configure-adt-explorer)。
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+否則，您可以依照下列步驟安裝本機 **Azure CLI** ：
+1. 依照 [**此安裝連結**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)中的程序，完成符合您作業系統的安裝。
+2. 在您的機器上開啟主控台視窗。
+3. 執行 `az login`，並依照驗證提示登入您的 Azure 帳戶。
 
-在接下來的 [設定平台] 頁面上，選取 [Web]。
-填寫設定詳細資料，如下所示：
-* **重新導向 URI** ：新增 *http://localhost:3000* 的重新導向 URI。
-* **隱含授與** ：勾選 [存取權杖] 方塊。
+完成此作業後，當您在下一節中執行時，ADT Explorer 應該會自動選擇您的 Azure 認證。
 
-點擊 [設定] 來完成設定。
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-現在您已設定 ADT Explorer 將使用的 Web 設定。 Azure 入口網站中的 [驗證] 索引標籤應該會反映此設定。 在確認下方的區段後，點按 [儲存]。
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。":::
+您可以選擇關閉驗證主控台視窗，或將其保持開啟以供下一個步驟使用。
 
 ### <a name="run-and-configure-adt-explorer"></a>執行和設定 ADT Explorer
 
 接下來，執行 ADT Explorer 應用程式，並針對您的 Azure Digital Twins 執行個體進行設定。
 
-瀏覽至已下載並解壓縮的 _**Azure_Digital_Twins__ADT__explorer**_ 資料夾。 在資料夾位置 *Azure_Digital_Twins__ADT__explorer/client/src* 開啟命令提示字元。
+瀏覽至已下載並解壓縮的 _**Azure_Digital_Twins__ADT__explorer**_ 資料夾。 開啟主控台視窗並進入資料夾位置 *Azure_Digital_Twins__ADT__explorer/client/src* 。
 
 執行 `npm install` 以下載所有必要的相依性。
 
@@ -94,16 +78,13 @@ ms.locfileid: "92331561"
 
 幾秒後，瀏覽器視窗會隨即開啟，且應用程式會出現在瀏覽器中。
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 點擊視窗頂端的 [登入] 按鈕 (如下圖所示) 來設定 ADT Explorer，以使用您已設定的執行個體。 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="醒目提示視窗頂端旁 [登入] 圖示的 ADT Explorer。圖示會顯示簡易人像剪影，並在上方覆疊鑰匙剪影。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-輸入您稍早在＜[必要條件](#prerequisites)＞一節中收集的重要資訊：
-* 應用程式 (用戶端) 識別碼
-* 目錄 (租用戶) 識別碼
-* Azure Digital Twins 執行個體 URL，格式為 https://{instance host name}
+輸入您先前在 [必要條件](#prerequisites)一節中收集到的 *Azure Digital Twins 執行個體 URL* ，格式為 *https://{執行個體主機名稱}* 。
 
 >[!NOTE]
 > 若要重新瀏覽/編輯此資訊，您可以隨時選取相同圖示來再次提取登入方塊。 其會保留您傳入的值。
@@ -115,9 +96,7 @@ ms.locfileid: "92331561"
 
 ## <a name="add-the-sample-data"></a>加入範例資料
 
-接下來，您會將範例案例和圖形匯入 ADT Explorer。
-
-範例案例位於您下載並解壓縮的 _**Azure_Digital_Twins_end_to_end_samples**_ 資料夾中，因此您現在應瀏覽至該資料夾。
+接下來，您會將範例案例和圖形匯入 ADT Explorer。 範例案例也位於您稍早下載的 **Azure_Digital_Twins__ADT__explorer** 資料夾中。
 
 ### <a name="models"></a>模型
 
@@ -138,21 +117,21 @@ Azure Digital Twins 解決方案的第一個步驟是定義您環境的詞彙。
 
 在 [模型檢視] 方塊中，點擊 [上傳模型] 圖示。
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="在 [模型檢視] 方塊中醒目提示中間圖示。其會顯示指向雲端的箭號。" lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. 在隨即顯示的 [檔案選取器] 方塊中，瀏覽至 *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp/models* 資料夾 (位於您下載的存放庫中)。
+1. 在隨即顯示的 [檔案選取器] 方塊中，瀏覽至 *Azure_Digital_Twins__ADT__explorer/client/examples* 資料夾 (位於您下載的存放庫中)。
 2. 選取 *Room.json* 和 *Floor.json* ，然後點擊 [確定]。 (您也可以上傳其他模型，但本快速入門中不會用到這些模型。)
 3. 遵循要求您登入 Azure 帳戶的快顯視窗對話方塊。
 
 >[!NOTE]
->如果您看到下列錯誤訊息：:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" border="false"::: 
+>如果您看到下列錯誤訊息：:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="快顯視窗顯示「錯誤：提取模型時發生錯誤：ClientAuthError：開啟快顯視窗時發生錯誤。如果您使用 IE，或如果瀏覽器中的快顯視窗遭到封鎖，就可能發生此情況。」，且視窗底部有 [關閉] 按鈕" border="false"::: 
 > 請嘗試停用快顯封鎖程式，或使用不同的瀏覽器。
 
 ADT Explorer 現在會將這些模型檔案上傳到您的 Azure Digital Twins 執行個體。 這些模型應該會出現在 [模型檢視] 方塊中，並顯示其自訂名稱和完整模型識別碼。 您可以按一下 [檢視模型] 資訊氣泡，查看其背後的 DTDL 程式碼。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="[模型檢視] 方塊的視圖，其中列出兩個模型定義：Floor (dtmi:example:Floor;1) 和 Room (dtmi:example:Room;1)。醒目提示每個模型的 [檢視模型] 圖示，其顯示有個字母 'i' 在圓圈裡。" lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -176,9 +155,9 @@ ADT Explorer 現在會將這些模型檔案上傳到您的 Azure Digital Twins �
 
 在 [圖形檢視] 方塊中，點擊 [匯入圖形] 圖示。
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="在 [圖形檢視] 方塊中醒目提示圖示。其會顯示指向雲端的箭號。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-在檔案選取器方塊中，瀏覽至 *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp* 資料夾並選擇 _**buildingScenario.xlsx**_ 試算表檔案。 此檔案包含範例圖形的描述。 點擊 [確定]。
+在 [檔案選取器] 方塊中，瀏覽至 *Azure_Digital_Twins__ADT__explorer/client/examples* 資料夾，然後選擇 _**buildingScenario.xlsx**_ 試算表檔案。 此檔案包含範例圖形的描述。 點擊 [確定]。
 
 幾秒後，ADT Explorer 會開啟 [匯入] 視圖，顯示即將載入的圖形預覽。
 
@@ -186,7 +165,7 @@ ADT Explorer 現在會將這些模型檔案上傳到您的 Azure Digital Twins �
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="醒目提示圖形預覽窗格中的儲存圖示" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -196,7 +175,7 @@ ADT Explorer 現在會使用上傳的檔案來建立要求的分身，以及分�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="指出圖形匯入成功的對話方塊。其顯示「匯入成功。已匯入 4 個對應項。已匯入 2 個關聯性。」" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -206,7 +185,7 @@ ADT Explorer 現在會使用上傳的檔案來建立要求的分身，以及分�
 
 圖形現在已上傳至 ADT Explorer。 若要查看圖形，請在 [ADT Explorer] 視窗頂端附近的 [圖形總管] 方塊中，點擊 [執行查詢] 按鈕。 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="醒目提示靠近視窗頂端的 [執行查詢] 按鈕" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 這會執行預設查詢來選取並顯示所有數位分身。 ADT Explorer 會從服務擷取所有分身和關聯性，並在 [圖形檢視] 方塊中繪製其定義的圖形。
 
@@ -214,7 +193,7 @@ ADT Explorer 現在會使用上傳的檔案來建立要求的分身，以及分�
 
 現在，您可以看到已上傳的範例案例圖形：
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="內部有對應項圖形的 [圖形檢視] 方塊視圖。標示 'floor1' 的圓形由標示 'contains' 的箭號連結到標示 'room1' 的圓形；標示 'floor0' 的圓形由標示 'contains' 的箭號連結到標示 'room0' 的圓形。":::
 
 圓形 (圖形「節點」) 代表數位分身，而線條代表關聯性。 您會看到 *Floor0* 對應項包含 *Room0* ，而 *Floor1* 對應項包含 *Room1* 。
 
@@ -228,7 +207,7 @@ ADT Explorer 現在會使用上傳的檔案來建立要求的分身，以及分�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="醒目提示顯示 Room0 屬性的 [屬性總管] 方塊，其中包括 (但不限於) Room0 的 $dtId 欄位、溫度欄位 (70) 及濕度欄位 (30)。" lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -240,7 +219,7 @@ ADT Explorer 現在會使用上傳的檔案來建立要求的分身，以及分�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="醒目提示顯示 Room1 屬性的 [屬性總管] 方塊，其中包括 (但不限於) Room1 的 $dtId 欄位、溫度欄位 (80) 及濕度欄位 (60)。" lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -264,7 +243,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 回想一下您稍早看到的對應項屬性， *Room0* 的溫度是 **70** ，而 *Room1* 的溫度是 **80** 。 因此，只有 _**Room1**_ 會顯示在此結果中。
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="屬性查詢的結果，僅顯示 Room1" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > 上述查詢中也支援其他比較運算子 ( *<* 、 *>* 、 *=* 或 *!=* )。 您可以嘗試將不同的值或不同的對應項屬性插入查詢中，以嘗試回答您自己的問題。
@@ -279,7 +258,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="顯示 Room0 屬性的 [屬性總管] 方塊。溫度值是顯示 76 的可編輯方塊，而 [儲存] 圖示周圍有醒目提示。" lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -297,7 +276,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 現在， *Room0* 的溫度已從 **70** 變更為 **76** ，因此這兩個分身應該都會顯示在結果中。
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="屬性查詢的結果，同時顯示 Room0 和 Room1" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>檢閱和情境化學習
 
@@ -320,7 +299,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最後，刪除您下載到本機電腦的專案範例資料夾 ( _**Azure_Digital_Twins__ADT__explorer**_ 和 _**Azure_Digital_Twins_end_to_end_samples**_ )。 您可能必須將壓縮和解壓縮的版本都刪除。
+最後，刪除您下載到本機電腦的專案範例資料夾 ( **Azure_Digital_Twins__ADT__explorer** )。 您可能必須將壓縮和解壓縮的版本都刪除。
 
 ## <a name="next-steps"></a>後續步驟 
 

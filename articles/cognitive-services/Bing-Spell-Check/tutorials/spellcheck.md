@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b87a2cd3e6edc6a47de77f475c40d30ce1606e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fa86ef33fe7b0d9e97aebca96b3aa5465f24a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099856"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>教學課程：建置網頁拼字檢查用戶端
+
+> [!WARNING]
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 在本教學課程中，我們將建置一個網頁，讓使用者查詢 Bing 拼字檢查 API。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html) 上找到此應用程式的原始程式碼。
 
@@ -123,7 +128,7 @@ getSubscriptionKeyLocalStorage 協助程式函式先嘗試查閱適當的 Cookie
     }
 ```
 
-getSubscriptionKey 協助程式函式採用一個參數 **invalidate**。 如果 **invalidate** 為 **true**，getSubscriptionKey 會刪除包含 Bing 拼字檢查 API 金鑰的 Cookie。 如果 **invalidate** 為 **false**，getSubscriptionKey 會傳回 Bing 拼字檢查 API 金鑰的值。
+getSubscriptionKey 協助程式函式採用一個參數 **invalidate** 。 如果 **invalidate** 為 **true** ，getSubscriptionKey 會刪除包含 Bing 拼字檢查 API 金鑰的 Cookie。 如果 **invalidate** 為 **false** ，getSubscriptionKey 會傳回 Bing 拼字檢查 API 金鑰的值。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -237,7 +242,7 @@ function bingSpellCheck(query, key) {
     });
 ```
 
-傳送要求。 關閉 bingSpellCheck 函式，**script** 標籤和 **head** 標籤。
+傳送要求。 關閉 bingSpellCheck 函式， **script** 標籤和 **head** 標籤。
 
 ```html
     request.send();
@@ -288,7 +293,7 @@ function bingSpellCheck(query, key) {
 
 ## <a name="display-results"></a>顯示結果
 
-在您的瀏覽器中開啟網頁。 出現提示時，輸入您的 Bing 拼字檢查 API 訂用帳戶金鑰。 在 [拼字檢查] 文字方塊中輸入查詢 (例如 "Hollo, wlrd!")，然後按下 **Enter**。 網頁就會顯示查詢結果。
+在您的瀏覽器中開啟網頁。 出現提示時，輸入您的 Bing 拼字檢查 API 訂用帳戶金鑰。 在 [拼字檢查] 文字方塊中輸入查詢 (例如 "Hollo, wlrd!")，然後按下 **Enter** 。 網頁就會顯示查詢結果。
 
 ```json
 {

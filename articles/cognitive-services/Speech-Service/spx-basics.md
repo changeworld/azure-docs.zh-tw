@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893810"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286677"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解語音 CLI 的基本概念
 
@@ -65,15 +65,16 @@ spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
 ```
 
-在此命令中，您必須指定來源語言 (要**翻譯**的語言) 和目標語言 (要**譯成**的語言)。 使用 `--microphone` 引數時，將會聽取目前作用中輸入裝置上的音訊，並在您按下 `ENTER` 後停止聽取。 輸出是目標語言的文字轉譯，會寫入文字檔中。
+在此命令中，您必須指定來源語言 (要 **翻譯** 的語言) 和目標語言 (要 **譯成** 的語言)。 使用 `--microphone` 引數時，將會聽取目前作用中輸入裝置上的音訊，並在您按下 `ENTER` 後停止聽取。 輸出是目標語言的文字轉譯，會寫入文字檔中。
 
 > [!NOTE]
 > 請參閱[語言和地區設定文章](language-support.md)，其中列出了所有支援的語言及其對應的地區設定代碼。
 
 ### <a name="configuration-files-in-the-datastore"></a>資料存放區中的組態檔
 
-語音 CLI 可以在組態檔中讀取和寫入多個設定 (其儲存在本機語音 CLI 資料存放區中)，並使用 @ 符號在語音 CLI 呼叫內命名。 語音 CLI 會嘗試將新的設定儲存於其在目前工作目錄中建立的新 `./spx/data` 子目錄。
-搜尋組態值時，語音 CLI 會在您目前的工作目錄中查看，然後在 `./spx/data` 路徑中查看。
+語音 CLI 的行為可依賴組態檔中的設定，您可以在語音 CLI 呼叫中使用 @ 符號加以參考。
+語音 CLI 會將新的設定儲存於其在目前工作目錄中建立的新 `./spx/data` 子目錄。
+搜尋設定值時，語音 CLI 會依序在您目前的工作目錄中和 `./spx/data` 路徑中查看，然後再查看其他資料存放區，包括 `spx` 二進位檔案中最終的唯讀資料存放區。
 先前，您已使用資料存放區來儲存 `@key` 和 `@region` 值，因此不需要使用每個命令列呼叫來進行指定。
 您也可以使用組態檔來儲存自己的組態設定，或甚至使用其來傳遞在執行階段產生的 URL 或其他動態內容。
 
@@ -158,13 +159,13 @@ C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
 spx synthesize --foreach in @C:\your\path\to\text_synthesis.tsv
 ```
 
-此命令相當於對 `.tsv` 檔案中的**每個**記錄執行 `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav`。 請留意以下幾點：
+此命令相當於對 `.tsv` 檔案中的 **每個** 記錄執行 `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav`。 請留意以下幾點：
 
 * 資料行標頭 `audio.output` 和 `text` 分別對應至命令列引數 `--audio output` 和 `--text`。 多部分的命令列引數 (例如 `--audio output`) 應在檔案中格式化，不含空格、不含前置的連字號，並且以句點分隔字串，例如 `audio.output`。 任何其他現有的命令列引數都可以使用此模式新增至檔案中，作為其他資料行。
 * 以此方式格式化檔案時，不需將其他引數傳至 `--foreach`。
-* 請務必以**定位字元**分隔 `.tsv` 中的每個值。
+* 請務必以 **定位字元** 分隔 `.tsv` 中的每個值。
 
-不過，如果您的 `.tsv` 檔案如下列範例所示，且資料行標頭**不符合**命令列引數：
+不過，如果您的 `.tsv` 檔案如下列範例所示，且資料行標頭 **不符合** 命令列引數：
 
 ```output
 wav_path    str_text
@@ -181,4 +182,4 @@ spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.ts
 
 ## <a name="next-steps"></a>後續步驟
 
-* 使用 SDK 完成[語音辨識](./quickstarts/speech-to-text-from-microphone.md)或[語音合成](./quickstarts/text-to-speech.md)快速入門。
+* 使用語音 CLI 完成[語音辨識](get-started-speech-to-text.md?pivots=programmer-tool-spx)或[語音合成](get-started-text-to-speech.md?pivots=programmer-tool-spx)快速入門。

@@ -399,6 +399,9 @@
         - name: 使用遠端計算目標
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: 搭配使用自動化 ML 與 Databricks
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: 自動定型預測模型
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -589,7 +592,7 @@
       href: resource-known-issues.md
     - name: 使用者論壇
       href: /answers/topics/azure-machine-learning.html
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比較 ML 產品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context

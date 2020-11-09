@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6f5da1d17722f89bee88a4b69177583e095eeac3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85601933"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094280"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>什麼是 Bing 影片搜尋 API？
+
+> [!WARNING]
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 影片搜尋 API 可讓您輕鬆地將影片搜尋功能新增至服務和應用程式。 使用 API 傳送使用者搜尋查詢，您即可取得並顯示類似於 [Bing 影片](https://www.bing.com/video)的相關高品質影片。 針對僅包含影片的搜尋結果使用此 API。 [Bing Web 搜尋 API](../bing-web-search/search-the-web.md) 可以傳回其他類型的 Web 內容，包括網頁、影片、新聞和影像。
 

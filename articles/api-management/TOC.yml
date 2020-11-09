@@ -54,7 +54,7 @@
       href: api-management-terminology.md
     - name: 原則
       items:
-        - name: 概觀
+        - name: 總覽
           href: api-management-howto-policies.md
         - name: 原則參考索引
           href: api-management-policies.md
@@ -266,8 +266,10 @@
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: 參考
   items:
+    - name: Azure CLI
+      href: /cli/azure/apim
     - name: Azure PowerShell
-      href: /powershell/module/az.apimanagement/?view=azps-2.6.0
+      href: /powershell/module/az.apimanagement/
     - name: REST
       href: /rest/api/apimanagement/
     - name: REST (原始)
@@ -277,6 +279,8 @@
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: 資源記錄結構描述
+      href: gateway-log-schema-reference.md
 - name: 資源
   items:
     - name: 常見問題集

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936047"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329549"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>網路限制 - Azure Resource Manager
 下列限制僅適用於透過每個訂用帳戶每一區域的 **Azure Resource Manager** 所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
@@ -55,6 +55,7 @@ ms.locfileid: "91936047"
 | 公用 IP 位址<sup>1</sup> | 10 (適用於基本版)。 | 請連絡支援人員。 |
 | 靜態公用 IP 位址<sup>1</sup> | 10 (適用於基本版)。 | 請連絡支援人員。 |
 | 標準公用 IP 位址<sup>1</sup> | 10 | 請連絡支援人員。 |
+| [每個資源群組的公用 IP 位址](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | 請連絡支援人員。 | 
 | 公用 IP 前置詞 | 受訂用帳戶中標準公用 IP 數目的限制 | 請連絡支援人員。 |
 | 公用 IP 前置長度 | /28 | 請連絡支援人員。 |
 
@@ -91,7 +92,7 @@ ms.locfileid: "91936047"
 | 每個 Load Balancer 的可用性設定組     | 1                            |
 | 每個 VM 的負載平衡器                   | 2 個 (1 個公用和 1 個內部)  |
 
-<a name="virtual-networking-limits-classic"></a>下列限制僅適用於透過每個訂用帳戶的**傳統**部署模型所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
+<a name="virtual-networking-limits-classic"></a>下列限制僅適用於透過每個訂用帳戶的 **傳統** 部署模型所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
 
 | 資源 | 預設限制 | 上限 |
 | --- | --- | --- |
@@ -106,6 +107,6 @@ ms.locfileid: "91936047"
 | 每個路由表的使用者定義路由 |400 |400 |
 | 公用 IP 位址 (動態) |500 |500 |
 | 保留的公用 IP 位址 |500 |500 |
-| 每個部署的公用 VIP |5 |請連絡支援人員 |
-| 每個部署的私人 VIP (內部負載平衡) |1 |1 |
+| 每個部署的公用 IP |5 |請連絡支援人員 |
+| 每個部署的私人 IP (內部負載平衡) |1 |1 |
 | 端點存取控制清單 (ACL) |50 |50 |

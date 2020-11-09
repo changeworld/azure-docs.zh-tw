@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe7a8a3df535d05c3c834d3e2fbba5f7df5d6fcd
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585469"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372239"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>將受 HSM 保護的金鑰匯入 Key Vault (BYOK)
 
@@ -63,7 +63,8 @@ ms.locfileid: "88585469"
 |Fortanix|製造商，<br/>HSM 即服務|<ul><li>自我保護金鑰管理服務 (SDKMS)</li><li>Equinix SmartKey</li></ul>|[將 SDKMS 金鑰匯出至 BYOK 的雲端提供者 - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|製造商|所有 LiquidSecurity HSM，具有<ul><li>韌體版本 2.0.4 或更新版本</li><li>韌體版本 3.2 或更新版本</li></ul>|[Marvell BYOK 工具和文件](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (企業金鑰管理系統)|多個 HSM 品牌和型號，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>如需詳細資訊，請參閱 [Cryptomathic 網站](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK 工具和文件](https://www.cryptomathic.com/azurebyok)|
-
+|Securosys SA|製造商，HSM 即服務|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文件](https://www.securosys.com/primus-azure-byok)|
+||||
 
 
 ## <a name="supported-key-types"></a>支援的金鑰類型
@@ -119,7 +120,7 @@ az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --fil
 > [!NOTE] 
 > 不支援匯入 RSA 1024 位元金鑰。 目前不支援匯入Elliptic Curve (EC) 金鑰。
 > 
-> **已知問題**：只有韌體 7.4.0 或更新版本才支援從 Luna HSM 匯入 RSA 4K 目標金鑰。
+> **已知問題** ：只有韌體 7.4.0 或更新版本才支援從 Luna HSM 匯入 RSA 4K 目標金鑰。
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>步驟 4：將金鑰傳輸至 Azure Key Vault
 

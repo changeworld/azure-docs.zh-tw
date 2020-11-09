@@ -5,36 +5,37 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303840"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131446"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中建立新的應用程式
 
-在本快速入門中，您會在 LUIS 入口網站中建立新的應用程式。 受先，建立應用程式、**意圖**和**實體**的基本部分。 然後，藉由在互動式測試面板中提供範例使用者語句進行測試，以取得預測意圖。
+在本快速入門中，您會在 LUIS 入口網站中建立新的應用程式。 受先，建立應用程式、 **意圖** 和 **實體** 的基本部分。 然後，藉由在互動式測試面板中提供範例使用者語句進行測試，以取得預測意圖。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>建立應用程式
 
-1. 從內容工具列中選取 [+ 新增對話應用程式]，然後再次選取 [+ 新增對話應用程式]。
+若要建立應用程式，請按一下 [+ 新增應用程式]。 
 
-    > [!div class="mx-imgBorder"]
-    > [![在 LUIS 入口網站中建立新應用程式的螢幕擷取畫面](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+在顯示的視窗中，輸入下列資訊：
 
-1. 在快顯視窗中，使用下列設定進行應用程式設定，然後選取 [完成]。
+|名稱  |描述  |
+|---------|---------|
+|名稱     | 您的應用程式名稱。 例如 "home automation"。 必要。        |
+|文化特性     | 您的應用程式了解及讀出的語言。 必要。   |
+|描述 | 應用程式的描述。 選擇性。
+|預測資源 | 將接收查詢的預測資源。 選擇性。 |
 
-   |設定名稱| 值 | 目的|
-   |--|--|--|
-   |名稱|`myEnglishApp`|唯一的 LUIS 應用程式名稱<br>required|
-   |文化特性|**英文**|使用者語句的語言 **en-us**<br>required|
-   |說明 (選擇性)|`App made with LUIS Portal`|應用程式的描述<br>選用|
-   |預測資源 (選擇性) |-  |請勿選取。 LUIS 提供入門金鑰，可免費用於製作 1000 個預測端點要求。 |
+選取 [完成]  。
 
-   ![輸入新應用程式設定的螢幕擷取畫面](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>建立應用程式之後便無法變更文化特性 (Culture)。
+
 
 ## <a name="create-intents"></a>建議意圖
 
@@ -45,14 +46,14 @@ ms.locfileid: "91303840"
 
 應用程式的兩個不同「目的」均符合下列意圖：
 
-|Intent|使用者的文字範例<br>稱為_語句_|
+|Intent|使用者的文字範例<br>稱為 _語句_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
 若要建立意圖，請完成下列步驟：
 
-1. 應用程式建立後，您會在 [建置] 區段的 [意圖] 頁面上。 選取 [建立]。
+1. 應用程式建立後，請確定您位於 [建置] 區段的 [意圖] 頁面上。 選取 [建立]。
 
    [![選取 [建立] 以建立新意圖的螢幕擷取畫面](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -60,14 +61,9 @@ ms.locfileid: "91303840"
 
 ## <a name="add-an-example-utterance"></a>新增範例語句
 
-建立意圖之後，您可以新增範例語句。 範例語句是使用者在聊天機器人或其他用戶端應用程式中輸入的文字。 這些會將使用者文字的意圖對應到 LUIS 意圖。
+建立意圖之後，您可以新增範例語句。 範例語句是使用者在聊天機器人或其他用戶端應用程式中輸入的文字。 這些會將使用者文字的意圖對應到 LUIS 意圖。 至於此範例應用程式的 `FindForm` 意圖，範例語句會納入表單號碼。 用戶端應用程式需要表單號碼才能滿足使用者的要求，因此必須將表單號碼包含在表達中。
 
-至於此範例應用程式的 `FindForm` 意圖，範例語句會納入表單號碼。 用戶端應用程式需要表單號碼才能滿足使用者的要求，因此必須將表單號碼包含在表達中。
-
-> [!div class="mx-imgBorder"]
-> [![輸入 FindForm 意圖範例語句的螢幕擷取畫面](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-請將下列 15 個範例語句新增至 `FindForm` 意圖。
+在 `FindForm` 的 [意圖] 頁面上，在 [範例語句] 底下新增下列範例語句。 
 
 |#|範例語句|
 |--|--|
@@ -159,7 +155,7 @@ ms.locfileid: "91303840"
    > [!div class="mx-imgBorder"]
    > ![對測試窗格中的新語句進行測試的螢幕擷取畫面](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   最高預測意圖是信賴度超過 90% (0.977) 的 **FindForm**。 **FormNumber** 實體的擷取值為 hrf-234098。
+   最高預測意圖是信賴度超過 90% (0.977) 的 **FindForm** 。 **FormNumber** 實體的擷取值為 hrf-234098。
 
 ## <a name="clean-up-resources"></a>清除資源
 

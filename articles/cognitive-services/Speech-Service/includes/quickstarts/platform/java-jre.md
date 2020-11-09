@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 093e5482896e2af8008f20826e30443bdeb9aae9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 142d4504ab12e7df5cc1e009038554a5b90dff0c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097026"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135764"
 ---
 本指南說明如何安裝適用於 64 位元 JAVA 8 JRE 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，就無法在 Maven 中央存放庫中使用 JAVA SDK。 無論您使用的是 Gradle 或 `pom.xml` 相依性檔案，都需要新增指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自訂存放庫 (請參閱下方的套件名稱)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92097026"
 - JAVA 語音 SDK 套件適用於下列作業系統：
   - Windows：僅限 64 位元
   - Mac：macOS X 10.13 版或更新版本
-  - Linux：64 位元僅在 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8 和 CentOS 7/8 提供
+  - Linux：請參閱[支援的 Linux 發行版本和目標架構](~/articles/cognitive-services/speech-service/speech-sdk.md)清單。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -39,19 +39,14 @@ ms.locfileid: "92097026"
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/) (需要已安裝 JAVA)
 - 支援的 Linux 平台會要求安裝特定程式庫 (`libssl` 以取得安全通訊端層支援，`libasound2` 以取得音效支援)。 請參閱以下的發佈，以取得安裝這些程式庫正確版本所需的命令。
 
-  - 在 Ubuntu 上，執行下列命令以安裝必要的套件：
+  - 在 Ubuntu/Debian 上執行下列命令，以安裝必要的套件：
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - 在 Debian 9 上，執行下列命令以安裝必要的套件：
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    如果 libssl1.0.0 無法使用，請改為安裝 libssl1.0.x (其中 x 大於 0) 或 libssl1.1。
 
   - 在 RHEL/CentOS 上，執行下列命令以安裝必要的套件：
 
