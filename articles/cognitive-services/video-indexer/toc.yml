@@ -4,7 +4,7 @@
     - name: 什麼是影片索引子？
       href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: 概念
-      href: ../../media-services/video-indexer/video-indexer-concepts.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
 - name: 快速入門
   expanded: true
   items:
@@ -13,7 +13,7 @@
 - name: 使用說明指南
   items:
     - name: 從 v1 遷移至 v2
-      href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: 連線到 Azure
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: 管理與 Azure 連線的帳戶
@@ -29,7 +29,7 @@
     - name: 檢視及編輯影片索引器深入解析
       href: ../../media-services/video-indexer/video-indexer-view-edit.md
     - name: 從現有影片建立影片深入解析
-      href: ../../media-services/video-indexer/video-indexer-create-new.md
+      href: ../../media-services/video-indexer/use-editor-create-project.md
     - name: 將小工具內嵌至您的應用程式
       href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: 參考
@@ -42,7 +42,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'

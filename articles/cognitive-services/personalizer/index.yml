@@ -12,12 +12,12 @@ metadata:
   title: 個人化工具文件
   titleSuffix: Azure Cognitive Services
   description: Azure 個人化工具是雲端式 API 服務，可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。
-  ms.openlocfilehash: 51aba4941eb1e1e575e6d33a48a8fe1552eb4d47
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: f4d263e551360b326fbe849e4cb62347e8125849
+  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92371132"
+  ms.lasthandoff: 11/08/2020
+  ms.locfileid: "94368129"
 landingContent:
 - title: 關於個人化工具
   linkLists:
@@ -58,27 +58,27 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 SDK
-      url: sdk-learning-loop.md
+      url: ./quickstart-personalizer-sdk.md
 - title: 透過個人化工具開發
   linkLists:
   - linkListType: get-started
     links:
     - text: 使用 .NET 開發個人化工具迴圈
-      url: sdk-learning-loop.md?pivots=programming-language-csharp
+      url: ./quickstart-personalizer-sdk.md?pivots=programming-language-csharp
     - text: Nuget 套件
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet 參考文件
-      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
   - linkListType: get-started
     links:
     - text: 使用 Node.js 開發個人化工具迴圈
-      url: sdk-learning-loop.md?pivots=programming-language-javascript
+      url: ./quickstart-personalizer-sdk.md?pivots=programming-language-javascript
     - text: NPM 套件
       url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
   - linkListType: get-started
     links:
     - text: 使用 Python 開發個人化工具迴圈
-      url: sdk-learning-loop.md?pivots=programming-language-python
+      url: ./quickstart-personalizer-sdk.md?pivots=programming-language-python
     - text: Pypi 封裝
       url: https://pypi.org/project/azure-cognitiveservices-personalizer/
   - linkListType: get-started

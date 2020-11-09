@@ -1,9 +1,9 @@
 - name: 說話者辨識文件
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: 概觀
   items:
     - name: 深入了解說話者辨識
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: 參考
   items:
     - name: API 參考

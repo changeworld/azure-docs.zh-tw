@@ -72,6 +72,8 @@
           href: concepts-api-management.md
         - name: 中樞與輪幅
           href: concepts-hub-and-spoke.md
+        - name: Azure 資訊安全中心
+          href: azure-security-integration.md
         - name: Azure 備份伺服器
           items:
             - name: 設定備份伺服器

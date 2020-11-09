@@ -1,6 +1,6 @@
 - name: 筆跡辨識器文件
   href: index.yml
-- name: 總覽
+- name: 概觀
   expanded: true
   items:
     - name: 什麼是筆跡辨識器 API？
@@ -32,14 +32,14 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2089906'
     - name: Swift 和 iOS 行動裝置應用程式
       href: 'https://go.microsoft.com/fwlink/?linkid=2089805'
-- name: 參考資料
+- name: 參考
   items:
     - name: REST API 參考資料
-      href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
+      href: /rest/api/cognitiveservices/inkrecognizer/inkrecognizer
     - name: PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: 語言支援
       href: language-support.md
     - name: 區域

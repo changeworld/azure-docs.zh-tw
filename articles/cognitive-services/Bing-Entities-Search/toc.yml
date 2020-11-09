@@ -53,17 +53,17 @@
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
     - name: Bing 實體搜尋 API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-java-stable
         - name: Python
           href: /python/api/azure-cognitiveservices-search-entitysearch/?view=azure-python
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-entitysearch/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-entitysearch/?view=azure-node-latest
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
 - name: 資源
@@ -72,7 +72,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+entity+search'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

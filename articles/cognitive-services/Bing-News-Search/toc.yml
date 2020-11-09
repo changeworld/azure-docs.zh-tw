@@ -59,19 +59,19 @@
 - name: 參考
   items:
     - name: Bing 新聞搜尋 API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference
     - name: Bing 新聞搜尋 API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable
         - name: Python
           href: /python/api/azure-cognitiveservices-search-newssearch/?view=azure-python
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-newssearch/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-newssearch/?view=azure-node-latest
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch'
     - name: 使用和顯示需求
@@ -83,7 +83,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+news+search'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
@@ -100,6 +100,6 @@
     - name: 語言支援
       href: language-support.md
     - name: Bing 新聞搜尋 API 的分析
-      href: bing-news-stats.md
+      href: ../bing-web-search/bing-web-stats.md
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

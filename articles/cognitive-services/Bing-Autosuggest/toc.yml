@@ -45,19 +45,19 @@
 - name: 參考
   items:
     - name: Bing 自動建議 API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
     - name: Bing 自動建議 API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest
     - name: 使用和顯示需求
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
@@ -67,7 +67,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+autosuggest'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
