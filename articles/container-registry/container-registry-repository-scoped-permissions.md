@@ -3,12 +3,12 @@ title: Azure Container Registry 中存放庫的權限
 description: 建立權杖，其許可權範圍限於 Premium 登錄中的特定存放庫，以提取或推送映射，或執行其他動作
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65b1bf69337cb172a17043490a5d13c7bd7afc2
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84509401"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381230"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>建立具有存放庫範圍權限的權杖
 
@@ -20,7 +20,7 @@ ms.locfileid: "84509401"
 * 提供外部組織特定存放庫的權限 
 * 為貴組織中的不同使用者群組限制存放庫存取權限。 例如，為負責組建特定映像的開發人員提供寫入和讀取權限，而為從這些存放庫進行部署的群組提供讀取權限。
 
-**進階**容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
+**進階** 容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
 
 > [!IMPORTANT]
 > 此功能目前在預覽階段，但[有某些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
@@ -32,11 +32,11 @@ ms.locfileid: "84509401"
 
 ## <a name="concepts"></a>概念
 
-若要設定存放庫範圍的權限，您可以使用相關聯的*範圍對應*建立*權杖*。 
+若要設定存放庫範圍的權限，您可以使用相關聯的 *範圍對應* 建立 *權杖* 。 
 
-* **權杖**連同產生的密碼可讓使用者向登錄進行驗證。 您可以設定權杖密碼的到期日，或隨時停用權杖。  
+* **權杖** 連同產生的密碼可讓使用者向登錄進行驗證。 您可以設定權杖密碼的到期日，或隨時停用權杖。  
 
-  使用權杖進行驗證之後，使用者或服務可以執行一或多個*動作*，範圍設定為一個或多個存放庫。
+  使用權杖進行驗證之後，使用者或服務可以執行一或多個 *動作* ，範圍設定為一個或多個存放庫。
 
   |動作  |描述  | 範例 |
   |---------|---------|--------|
@@ -46,7 +46,7 @@ ms.locfileid: "84509401"
   |`metadata/read`    | 讀取來自存放庫的中繼資料   | 列出標籤或資訊清單 |
   |`metadata/write`     |  將中繼資料寫入至存放庫  | 啟用或停用讀取、寫入或刪除作業 |
 
-* **範圍對應**會將套用至權杖的存放庫權限分組，並可重新套用至其他權杖。 每個權杖都與單一範圍對應相關聯。 
+* **範圍對應** 會將套用至權杖的存放庫權限分組，並可重新套用至其他權杖。 每個權杖都與單一範圍對應相關聯。 
 
    使用範圍對應：
 
@@ -150,7 +150,7 @@ az acr token create --name MyToken \
 下列範例會建立權杖，並在 `samples/hello-world` 存放庫上建立具有下列權限的範圍對應：`content/write` 和 `content/read`。
 
 1. 在入口網站中，瀏覽到您的容器登錄。
-1. 在 [存放 **庫許可權**] 下，選取 [ **權杖 (預覽]) > + 新增**]。
+1. 在 [存放 **庫許可權** ] 下，選取 [ **權杖 (預覽]) > + 新增** ]。
 
       :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="在入口網站中建立權杖 ":::
 1. 輸入權杖名稱。
@@ -159,10 +159,10 @@ az acr token create --name MyToken \
     1. 輸入範圍對應的名稱及描述。 
     1. 在 [存放庫] 下，輸入 `samples/hello-world`，然後在 [權限] 底下，選取 [`content/read`] 和 [`content/write`]。 然後選取 [+新增]。  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="在入口網站中建立權杖 ":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="在入口網站中建立範圍對應":::
 
     1. 新增存放庫和權限之後，請選取 [新增] 以新增範圍對應。
-1. 接受 [已啟用] 的預設權杖**狀態**，然後選取 [建立]。
+1. 接受 [已啟用] 的預設權杖 **狀態** ，然後選取 [建立]。
 
 驗證並建立權杖之後，權杖詳細資料會出現在 [權杖] 畫面中。
 
@@ -171,12 +171,12 @@ az acr token create --name MyToken \
 若要使用在入口網站中建立的權杖，您必須產生密碼。 您可以產生一或兩組密碼，並為每組密碼設定一個到期日。 
 
 1. 在入口網站中，瀏覽到您的容器登錄。
-1. 在 [存放 **庫許可權**] 下，選取 [ **權杖 (預覽]) **，然後選取權杖。
+1. 在 [存放 **庫許可權** ] 下，選取 [ **權杖 (預覽])** ，然後選取權杖。
 1. 在權杖詳細資料中，選取 [password1] 或 [password2]，然後選取 [產生] 圖示。
 1. 在 [密碼] 畫面中，選擇設定密碼的到期日，然後選取 [產生]。 建議您設定到期日。
 1. 產生密碼之後，請複製密碼並儲存到安全的位置。 您無法在關閉畫面後取出產生的密碼，但您可以產生新的密碼。
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="在入口網站中建立權杖 ":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="在入口網站中建立權杖密碼":::
 
 ## <a name="authenticate-with-token"></a>使用權杖進行驗證
 
@@ -204,7 +204,7 @@ az acr token create --name MyToken \
 docker pull hello-world
 docker pull alpine
 docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
+docker tag alpine myregistry.azurecr.io/samples/alpine:v1
 ```
 
 ### <a name="authenticate-using-token"></a>使用權杖進行驗證
@@ -259,7 +259,7 @@ az acr scope-map update \
 在 Azure 入口網站中：
 
 1. 瀏覽至您的容器登錄。
-1. 在 [存放 **庫許可權**] 下，選取 [ **範圍對應] (預覽) **，然後選取要更新的範圍對應。
+1. 在 [存放 **庫許可權** ] 下，選取 [ **範圍對應] (預覽)** ，然後選取要更新的範圍對應。
 1. 在 [存放庫] 下，輸入 `samples/alpine`，然後在 [權限] 底下，選取 [`content/read`] 和 [`content/write`]。 然後選取 [+新增]。
 1. 在 [存放庫] 底下，選取 [`samples/hello-world`]，然後在 [權限] 下，取消選取 `content/write`。 然後選取 [儲存]。
 

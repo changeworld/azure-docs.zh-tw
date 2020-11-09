@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c49a85c71c9b877be7e143f5caf27dc307fe0c12
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078964"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381264"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>將跨租使用者 Vnet 連接到虛擬 Wan 中樞
 
@@ -30,7 +30,7 @@ ms.locfileid: "92078964"
 
 ## <a name="before-you-begin"></a>開始之前
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要使用本文中的步驟，您必須在環境中已設定下列設定：
 
@@ -54,7 +54,7 @@ ms.locfileid: "92078964"
 1. 接下來，將遠端租使用者訂用帳戶和父租使用者訂用帳戶新增至目前的 PowerShell 會話。 執行下列命令。 如果您已登入父系，則只需要執行遠端租使用者的命令。
 
    ```azurepowershell-interactive
-   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. 使用父認證登入 Azure PowerShell，並執行下列命令，以確認角色指派是否成功：
@@ -96,7 +96,7 @@ ms.locfileid: "92078964"
 1. 您可以在 PowerShell 或 Azure 入口網站中查看新的連接。
 
    * **PowerShell：** 如果成功形成連接，則新格式的連接中的中繼資料會顯示在 PowerShell 主控台中。
-   * **Azure 入口網站：** 流覽至虛擬中樞、連線 **> 的虛擬網路連接**。 您可以查看連接的指標。 若要查看實際的資源，您將需要適當的許可權。
+   * **Azure 入口網站：** 流覽至虛擬中樞、連線 **> 的虛擬網路連接** 。 您可以查看連接的指標。 若要查看實際的資源，您將需要適當的許可權。
    
 ## <a name="troubleshooting"></a><a name="troubleshoot"></a>疑難排解
 

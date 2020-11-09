@@ -3,12 +3,12 @@ title: Azure 監視器 Application Insights JAVA
 description: 針對在任何環境中執行的 JAVA 應用程式進行應用程式效能監視，而不需要修改程式碼。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 31ee3c4a2dbf6f6832c0228e70aa079b5f028bc4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331918"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379764"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -133,7 +133,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 我們在 3.0 + 中的目標是要讓您使用標準 Api 來傳送自訂遙測。
 
-我們支援 Micrometer、OpenTelemetry API 和熱門的記錄架構。 Application Insights JAVA 3.0 會自動捕獲遙測資料，並將其與所有實驗自動收集遙測相互關聯。
+我們支援 Micrometer、OpenTelemetry API 和熱門的記錄架構。 Application Insights JAVA 3.0 會自動捕獲遙測，並將其與所有自動收集的遙測相互關聯。
 
 ### <a name="supported-custom-telemetry"></a>支援的自訂遙測
 
@@ -141,12 +141,12 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 |                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
 |---------------------|------------|---------------------|---------|
-| **自訂事件**   |            |                     |  是    |
+| **自訂事件**   |            |                     |  Yes    |
 | **自訂計量**  |  是       |                     |  是    |
-| **Dependencies** (相依性)    |            |                     |  是    |
+| **Dependencies** (相依性)    |            |                     |  Yes    |
 | **例外狀況**      |            |  是                |  是    |
-| **頁面檢視**      |            |                     |  是    |
-| **要求**        |            |                     |  是    |
+| **頁面檢視**      |            |                     |  Yes    |
+| **要求**        |            |                     |  Yes    |
 | **追蹤**          |            |  是                |  是    |
 
 我們目前未規劃 Application Insights 3.0 發行 SDK。

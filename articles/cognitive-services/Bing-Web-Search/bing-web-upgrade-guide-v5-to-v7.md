@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 95e80907220a58243844b80d81dc187f8dc4c8bc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078691"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381111"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>從 Bing Web 搜尋 API v5 升級至 v7
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 本升級指南會識別 Bing Web 搜尋 API 第 5 版和第 7 版之間的變更。 本指南可協助您識別出應用程式有哪些部分需要更新以使用第 7 版。
 
@@ -61,7 +61,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-停用|InsufficientAuthorization.AuthorizationDisabled
+已停用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -80,14 +80,14 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="headers"></a>標題
 
-- 已新增選擇性的 [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 要求標頭。 根據預設，Bing 會傳回快取的內容 (如果有的話)。 若要防止 Bing 傳回快取的內容，請將 Pragma 標頭設定為 no-cache (例如，Pragma: no-cache)。
+- 已新增選擇性的 [Pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 要求標頭。 根據預設，Bing 會傳回快取的內容 (如果有的話)。 若要防止 Bing 傳回快取的內容，請將 Pragma 標頭設定為 no-cache (例如，Pragma: no-cache)。
 
 ### <a name="query-parameters"></a>查詢參數
 
-- 已新增 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查詢參數。 使用此參數可指定您要讓回應包含的解答數目。 系統會根據排名選擇解答。 例如，如果您將此參數設定為三 (3)，則回應會包含最高排名的前三個解答。  
+- 已新增 [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查詢參數。 使用此參數可指定您要讓回應包含的解答數目。 系統會根據排名選擇解答。 例如，如果您將此參數設定為三 (3)，則回應會包含最高排名的前三個解答。  
 
-- 已新增 [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查詢參數。 搭配使用此參數與 `answerCount` 可明確包含一或多個回應類型，無論其排名為何。 例如，若要將影片和影像升階為回應，您可以將 [升階至影片] *、[影像* ]。 您想要升階的解答清單不會計入 `answerCount` 限制。 例如，如果 `answerCount` 是2，並 `promote` 設定為影片 *、影像* ，則回應可能會包含網頁、新聞、影片和影像。
+- 已新增 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查詢參數。 搭配使用此參數與 `answerCount` 可明確包含一或多個回應類型，無論其排名為何。 例如，若要將影片和影像升階為回應，您可以將 [升階至影片] *、[影像* ]。 您想要升階的解答清單不會計入 `answerCount` 限制。 例如，如果 `answerCount` 是2，並 `promote` 設定為影片 *、影像* ，則回應可能會包含網頁、新聞、影片和影像。
 
 ### <a name="object-changes"></a>物件變更
 
-- 已將 `someResultsRemoved` 欄位新增至 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 物件。 此欄位包含布林值，用以指出回應是否在 Web 解答中排除某些結果。  
+- 已將 `someResultsRemoved` 欄位新增至 [WebAnswer](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 物件。 此欄位包含布林值，用以指出回應是否在 Web 解答中排除某些結果。

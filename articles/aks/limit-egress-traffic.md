@@ -4,15 +4,14 @@ description: 了解在 Azure Kubernetes Service (AKS) 中控制連出流量所�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900476"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380206"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -63,7 +62,6 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | 節點 < > API 伺服器通訊的必要元件。 取代 *\<location\>* 為您的 AKS 叢集部署所在的區域。 |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | 存取 Microsoft Container Registry 中的映射所需 (MCR) 。 此登錄包含第一方映射/圖表 (例如，coreDNS 等 ) 。 您必須要有這些映射，才能正確建立和運作叢集，包括調整和升級作業。  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`management.azure.com`**       | **`HTTPS:443`** | 針對 Azure API 進行 Kubernetes 作業所需。 |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory 驗證的必要。 |
@@ -92,7 +90,6 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | 節點 < > API 伺服器通訊的必要元件。 取代 *\<location\>* 為您的 AKS 叢集部署所在的區域。 |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | 節點 < > API 伺服器通訊的必要元件。 取代 *\<location\>* 為您的 AKS 叢集部署所在的區域。 |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | 存取 Microsoft Container Registry 中的映射所需 (MCR) 。 此登錄包含第一方映射/圖表 (例如，coreDNS 等 ) 。 您必須要有這些映射，才能正確建立和運作叢集，包括調整和升級作業。 |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | 針對 Azure API 進行 Kubernetes 作業所需。 |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory 驗證的必要。 |
@@ -119,7 +116,6 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | 節點 < > API 伺服器通訊的必要元件。 取代 *\<location\>* 為您的 AKS 叢集部署所在的區域。|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | 存取 Microsoft Container Registry 中的映射所需 (MCR) 。 此登錄包含第一方映射/圖表 (例如，coreDNS 等 ) 。 您必須要有這些映射，才能正確建立和運作叢集，包括調整和升級作業。 |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | 針對 Azure API 進行 Kubernetes 作業所需。 |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory 驗證的必要。 |

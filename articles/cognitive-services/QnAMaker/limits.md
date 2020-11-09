@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375613"
+ms.locfileid: "94380891"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -96,14 +96,14 @@ ms.locfileid: "94375613"
 
 ## <a name="create-knowledge-base-call-limits"></a>建立知識庫呼叫限制：
 這些代表每個建立知識庫動作的限制；也就是，按一下 [建立知識庫] 或呼叫 CreateKnowledgeBase API。
-* 每個解答的替代問題數目上限：300
+* 建議的每個解答的替代問題數目上限：300
 * URL 數目上限︰10
 * 檔案數目上限︰10
 
 ## <a name="update-knowledge-base-call-limits"></a>更新知識庫呼叫限制
 這些代表每個更新動作的限制；也就是，按一下 [儲存及訓練] 或呼叫 UpdateKnowledgeBase API。
 * 每個來源名稱的長度：300
-* 新增或刪除的替代問題數目上限：300
+* 建議新增或刪除的替代問題數目上限：300
 * 新增或刪除的中繼資料欄位數目上限：10
 * 可重新整理的 URL 數目上限：5
 

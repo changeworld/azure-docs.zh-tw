@@ -4,12 +4,12 @@ description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167741"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380958"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -38,7 +38,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 
 ## <a name="functions-class-library-project"></a>Functions 類別庫專案
 
-在 Visual Studio 中，**Azure Functions** 專案範本可建立 C# 類別庫專案，其中包含下列檔案：
+在 Visual Studio 中， **Azure Functions** 專案範本可建立 C# 類別庫專案，其中包含下列檔案：
 
 * [host.json](functions-host-json.md) - 儲存會影響在本機或 Azure 中執行之專案中所有函式的組態設定。
 * [local.settings.json](functions-run-local.md#local-settings-file) - 儲存在本機執行時所使用的應用程式設定和連接字串。 此檔案包含密碼，不會發佈至 Azure 中的函數應用程式。 相反地，請 [將應用程式設定新增至函數應用程式](functions-develop-vs.md#function-app-settings)。
@@ -58,7 +58,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 此目錄會部署至 Azure 中的函數應用程式。 Functions 執行階段[版本 2.x](functions-versions.md) 中所需之繫結延伸模組會[以 NuGet 封裝形式新增至專案](./functions-bindings-register.md#vs)。
 
 > [!IMPORTANT]
-> 建置流程會為每個函式都建立 function.json** 檔案。 這個 function.json** 檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 若要了解如何停用函式，請參閱[如何停用函式](disable-function.md)。
+> 建置流程會為每個函式都建立 function.json 檔案。 這個 function.json 檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 若要了解如何停用函式，請參閱[如何停用函式](disable-function.md)。
 
 
 ## <a name="methods-recognized-as-functions"></a>辨識為函式的方法
@@ -199,7 +199,7 @@ Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1.x �
 
 Visual Studio 會使用 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 來執行 Functions 專案。 Core Tools 是適用於 Functions 執行階段的命令列介面。
 
-如果您使用 npm 安裝 Core Tools，那就不會影響 Visual Studio 所使用的 Core Tools 版本。 對於 Functions 執行階段 1.x 版，Visual Studio 會在 *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* 中儲存 Core Tools 版本，並使用儲存於該處的最新版本。 對於 Functions 2.x，Core Tools 會隨附於 **Azure Functions 與 Web 工作工具**擴充功能中。 對於 1.x 和 2.x，您可以在執行 Functions 專案時，於主控台輸出中查看使用的是哪個版本：
+如果您使用 npm 安裝 Core Tools，那就不會影響 Visual Studio 所使用的 Core Tools 版本。 對於 Functions 執行階段 1.x 版，Visual Studio 會在 *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* 中儲存 Core Tools 版本，並使用儲存於該處的最新版本。 對於 Functions 2.x，Core Tools 會隨附於 **Azure Functions 與 Web 工作工具** 擴充功能中。 對於 1.x 和 2.x，您可以在執行 Functions 專案時，於主控台輸出中查看使用的是哪個版本：
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -313,7 +313,7 @@ public static class CancellationTokenExample
 
 ## <a name="logging"></a>記錄
 
-在您的函式程式碼中，您可以將輸出寫入 Application Insights 中顯示為追蹤的記錄。 寫入記錄檔的建議方式是包含 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)類型的參數，通常會命名為 `log` 。 使用1.x 版的函式執行時間 `TraceWriter` ，這也會寫入 Application Insights，但不支援結構化記錄。 請勿使用 `Console.Write` 寫入您的記錄檔，因為這項資料不是由 Application Insights 所捕捉。 
+在您的函式程式碼中，您可以將輸出寫入 Application Insights 中顯示為追蹤的記錄。 寫入記錄檔的建議方式是包含 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)類型的參數，通常會命名為 `log` 。 使用1.x 版的函式執行時間 `TraceWriter` ，這也會寫入 Application Insights，但不支援結構化記錄。 請勿使用 `Console.Write` 寫入您的記錄，因為這項資料不是由 Application Insights 所捕捉。 
 
 ### <a name="ilogger"></a>ILogger
 
@@ -571,11 +571,11 @@ public static class EnvironmentVariablesExample
 
 ## <a name="binding-at-runtime"></a>執行階段的繫結
 
-在 C# 和其他 .NET 語言中，您可以使用相對於屬性中[宣告式](https://en.wikipedia.org/wiki/Declarative_programming)** 繫結的[命令式](https://en.wikipedia.org/wiki/Imperative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
+在 C# 和其他 .NET 語言中，您可以使用相對於屬性中[宣告式](https://en.wikipedia.org/wiki/Declarative_programming)繫結的[命令式](https://en.wikipedia.org/wiki/Imperative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
 
 定義命令式繫結，如下所示︰
 
-- **請勿**在函式簽章中加入您所需命令式繫結的屬性。
+- **請勿** 在函式簽章中加入您所需命令式繫結的屬性。
 - 傳入輸入參數 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下列 C# 模式來執行資料繫結。
 

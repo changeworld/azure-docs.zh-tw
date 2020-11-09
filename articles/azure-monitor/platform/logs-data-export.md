@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 972c32b5403a7e6f614161271b7cb7e88693e032
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335089"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380121"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -58,7 +58,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="data-completeness"></a>資料完整性
 當目的地無法使用時，資料匯出會繼續重試傳送資料最多30分鐘。 如果在30分鐘後仍無法使用，則會捨棄資料，直到目的地變成可用為止。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 資料匯出功能目前沒有額外的費用。 未來將會宣佈資料匯出的定價，以及開始計費之前所提供的通知。 如果您選擇在通知期間之後繼續使用資料匯出，將會以適用的費率向您收費。
 
 ## <a name="export-destinations"></a>匯出目的地
@@ -80,7 +80,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 以下是在設定 Log Analytics 資料匯出之前必須完成的必要條件。
 
 - 儲存體帳戶和事件中樞必須已建立，且必須與 Log Analytics 工作區位於相同的區域。 如果您需要將資料複寫至其他儲存體帳戶，您可以使用任何 [Azure 儲存體的冗余選項](../../storage/common/storage-redundancy.md)。  
@@ -325,7 +325,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
-| ContainerLog | |
 | ContainerNodeInventory | |
 | ContainerServiceLog | |
 | CoreAzureBackup | |
@@ -343,7 +342,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DnsInventory | |
 | Dynamics365Activity | |
 | 事件 | 部分支援。 此資料表的部分資料是透過儲存體帳戶內嵌。 這項資料目前不會匯出。 |
-| ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |

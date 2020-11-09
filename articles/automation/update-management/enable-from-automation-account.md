@@ -2,15 +2,15 @@
 title: 從自動化帳戶啟用 Azure 自動化更新管理
 description: 此文章說明如何從自動化帳戶啟用更新管理。
 services: automation
-ms.date: 11/04/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348826"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380533"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>從自動化帳戶啟用更新管理
 
@@ -49,7 +49,7 @@ ms.locfileid: "93348826"
 
 ## <a name="enable-non-azure-vms"></a>啟用非 Azure VM
 
-您必須手動加入不在 Azure 中的機器。
+針對裝載于 Azure 外部的電腦或伺服器，包括已向 Azure Arc 啟用的伺服器註冊的電腦或伺服器，請執行下列步驟以使用更新管理來啟用它們。  
 
 1. 從您的自動化帳戶中，選取 [更新管理] 之下的 [更新管理]。
 

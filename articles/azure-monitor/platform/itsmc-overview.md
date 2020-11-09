@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102015"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380873"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -67,7 +67,7 @@ ITSMC 支援與下列 ITSM 工具連線：
    >[!NOTE]
    >在從 Microsoft Operations Management Suite (OMS) 到 Azure 監視器的持續轉換過程中，OMS 工作區現在稱為 *Log Analytics 工作區* 。
 
-5. 選取 [確定]  。
+5. 選取 [確定]。
 
 部署 ITSMC 資源時，視窗右上角會出現通知。
 
@@ -111,7 +111,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 ## <a name="template-definitions"></a>範本定義
    有工作專案類型可以使用 ITSM 工具所定義的範本。
-藉由使用範本，您可以定義欄位，這些欄位會根據定義為動作群組一部分的固定值來自動填入。 您可以在 ITSM 工具中定義範本。
+藉由使用範本，您可以定義欄位，這些欄位會根據定義為動作群組一部分的固定值來自動填入。 您可以在 ITSM 工具中定義範本。 您可以定義您想要將哪一個範本作為動作群組定義的一部分。
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>從 Azure 警示建立 ITSM 工作項目
 
@@ -146,11 +146,13 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 9. 如果您 **針對每個設定專案選取 [建立個別的工作專案** ]，則每個設定專案都會有自己的工作專案。 每個設定專案都會有一個工作專案。 它會根據將建立的警示進行更新。
 
-   如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則每個警示都會建立新的工作專案。 每個設定專案可能會有一個以上的警示。
+   * 如果您在工作專案下拉式清單中選取 [事件] 或 [警示]：如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則每個警示都會建立新的工作專案。 每個設定專案可能會有一個以上的警示。
 
    ![顯示 ITSM 票證視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * 如果您在工作專案下拉式清單中選取 [事件]：如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，則每個警示都會建立新的工作專案。 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別工作專案** ]，則每個設定專案都會有自己的工作專案。 
 
-10. 選取 [確定]  。
+10. 選取 [確定]。
 
 當您建立或編輯 Azure 警示規則時，請使用具有 ITSM 動作的動作群組。 當警示觸發時，會在 ITSM 工具中建立或更新工作專案。
 
@@ -321,6 +323,6 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 如果您有關于 IT 服務管理連接器的查詢或意見反應，請與我們聯絡 [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 [將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md)
 

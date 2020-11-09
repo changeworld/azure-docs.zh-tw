@@ -11,23 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076273"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380444"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名顯示 Bing Web 搜尋 API 結果  
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
-每個搜尋回應都包含 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 答案，可指定您必須以何種方式顯示搜尋結果。 針對傳統搜尋結果頁面，排名回應會依主線內容和資訊看板內容為結果分組。 如果您未以傳統的主線和資訊看板格式顯示結果，您必須為主線內容提供比資訊看板內容更高的可見度。  
+每個搜尋回應都包含 [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 答案，可指定您必須以何種方式顯示搜尋結果。 針對傳統搜尋結果頁面，排名回應會依主線內容和資訊看板內容為結果分組。 如果您未以傳統的主線和資訊看板格式顯示結果，您必須為主線內容提供比資訊看板內容更高的可見度。  
 
-在每個群組 (主線或資訊看板) 內，[項目](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items)陣列會識別內容必須出現的順序。 每個項目都會提供下列兩種方式來識別答案內的結果。  
+在每個群組 (主線或資訊看板) 內，[項目](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items)陣列會識別內容必須出現的順序。 每個項目都會提供下列兩種方式來識別答案內的結果。  
 
 -   `answerType` 和 `resultIndex` - `answerType` 欄位會識別答案 (例如網頁或新聞)，而 `resultIndex` 會識別答案內的結果 (例如新聞發行項)。 索引以零起始。  
 
@@ -35,11 +35,11 @@ ms.locfileid: "93076273"
 
 使用識別碼會較為容易，因為您只需要比對排名識別碼與答案或其中一個結果的識別碼即可。 如果回應物件包含 `id` 欄位，則會同時顯示回應的所有結果。 例如，如果 `News` 物件包含 `id` 欄位，則會同時顯示所有新聞發行項。 如果 `News` 物件未包含 `id` 欄位，則每個新聞發行項都會包含 `id` 欄位，且排名回應會混合新聞發行項與其他答案的結果。  
 
-使用 `answerType` 和 `resultIndex` 會稍微複雜一點。 您會使用 `answerType` 來識別哪個答案包含要顯示的結果。 然後，您會使用 `resultIndex` 為答案的結果編製索引，以顯示結果。  (`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 物件中的功能變數名稱。 ) 如果您應該將所有答案的結果一起顯示，則排名回應專案不會包含該 `resultIndex` 欄位。  
+使用 `answerType` 和 `resultIndex` 會稍微複雜一點。 您會使用 `answerType` 來識別哪個答案包含要顯示的結果。 然後，您會使用 `resultIndex` 為答案的結果編製索引，以顯示結果。  (`answerType` 值是 [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 物件中的功能變數名稱。 ) 如果您應該將所有答案的結果一起顯示，則排名回應專案不會包含該 `resultIndex` 欄位。  
 
 ## <a name="ranking-response-example"></a>排名回應範例
 
-以下顯示範例 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)。 由於 Web 答案未包含 `id` 欄位，因此您會根據排名個別顯示所有的網頁 (每個網頁包含一個 `id` 欄位)。 而由於影像、視訊和相關搜尋答案包含 `id` 欄位，因此您會根據排名同時顯示每個答案的結果。
+以下顯示範例 [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)。 由於 Web 答案未包含 `id` 欄位，因此您會根據排名個別顯示所有的網頁 (每個網頁包含一個 `id` 欄位)。 而由於影像、視訊和相關搜尋答案包含 `id` 欄位，因此您會根據排名同時顯示每個答案的結果。
 
 ```json
 {  
@@ -223,7 +223,7 @@ ms.locfileid: "93076273"
 -   所有相關搜尋  
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需將未排名的結果升階的相關資訊，請參閱[升階未排名的答案](./filter-answers.md#promoting-answers-that-are-not-ranked)。
 

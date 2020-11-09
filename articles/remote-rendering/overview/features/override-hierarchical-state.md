@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207728"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380994"
 ---
 # <a name="hierarchical-state-override"></a>階層式狀態覆寫
 
@@ -28,26 +28,26 @@ ms.locfileid: "92207728"
 
 可以覆寫的一組固定狀態為：
 
-* **`Hidden`**：場景圖形中的個別網格會隱藏或顯示。
-* **`Tint color`**：轉譯的物件可以色彩色彩，以及其個別的色調色彩和色調粗細。 下圖顯示滾輪邊緣的濃淡色彩。
+* **`Hidden`** ：場景圖形中的個別網格會隱藏或顯示。
+* **`Tint color`** ：轉譯的物件可以色彩色彩，以及其個別的色調色彩和色調粗細。 下圖顯示滾輪邊緣的濃淡色彩。
   
   ![用來將物件變成綠色的色調色彩](./media/color-tint.png)
 
-* **`See-through`**：幾何會以半透明方式轉譯，例如，用來顯示物件的內部部分。 下圖顯示除了紅色的剎車制動器之外，以透視模式轉譯的整輛汽車：
+* **`See-through`** ：幾何會以半透明方式轉譯，例如，用來顯示物件的內部部分。 下圖顯示除了紅色的剎車制動器之外，以透視模式轉譯的整輛汽車：
 
   ![查看用來讓選取的物件變成透明的模式](./media/see-through.png)
 
   > [!IMPORTANT]
   > 只有在使用 *TileBasedComposition* [轉譯模式](../../concepts/rendering-modes.md) 時，才可使用透視效果。
 
-* **`Selected`**：幾何會以 [選取範圍大綱](outlines.md)呈現。
+* **`Selected`** ：幾何會以 [選取範圍大綱](outlines.md)呈現。
 
   ![用來反白顯示所選元件的大綱選項](./media/selection-outline.png)
 
-* **`DisableCollision`**：幾何豁免于 [空間查詢](spatial-queries.md)。 **`Hidden`** 旗標不會影響衝突狀態旗標，因此這兩個旗標通常會一起設定。
+* **`DisableCollision`** ：幾何豁免于 [空間查詢](spatial-queries.md)。 **`Hidden`** 旗標不會影響衝突狀態旗標，因此這兩個旗標通常會一起設定。
 
-* **`UseCutPlaneFilterMask`**：使用個別的篩選位遮罩來控制剪下的平面選取範圍。 此旗標會決定是否應該使用個別篩選遮罩，或從其父系繼承。 篩選位遮罩本身是透過 `CutPlaneFilterMask` 屬性設定。 如需篩選運作方式的詳細資訊，請參閱「 [選擇性剪下平面」段落](cut-planes.md#selective-cut-planes)。
-![選擇性剪下平面](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** ：使用個別的篩選位遮罩來控制剪下的平面選取範圍。 此旗標會決定是否應該使用個別篩選遮罩，或從其父系繼承。 篩選位遮罩本身是透過 `CutPlaneFilterMask` 屬性設定。 如需篩選運作方式的詳細資訊，請參閱「 [選擇性剪下平面」段落](cut-planes.md#selective-cut-planes)。 請參閱下列範例，其中只會剪下輪胎和邊緣，而其餘場景仍不受影響。
+![選擇性剪下平面](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,7 +101,7 @@ component->SetState(
 
 `HierarchicalStateOverrideComponent` 本身的執行個體並不會增加太多執行階段的額外負荷。 不過，將作用中元件的數目維持在較低的狀態，一般來說是很好的作法。 例如，當實作反白顯示所挑選物件的選取範圍系統時，建議您在移除反白顯示時刪除該元件。 在元件周圍使用中性功能，可快速增加。
 
-相較於標準轉譯，透明轉譯現會加重伺服器 CPU 的工作負載。 如果場景圖形的大型組件切換成*透視*，而且可以看見多層的幾何，則可能會變成效能瓶頸。 對於具有[選取範圍外框](../../overview/features/outlines.md#performance)的物件而言，這也是有效的作法。
+相較於標準轉譯，透明轉譯現會加重伺服器 CPU 的工作負載。 如果場景圖形的大型組件切換成 *透視* ，而且可以看見多層的幾何，則可能會變成效能瓶頸。 對於具有[選取範圍外框](../../overview/features/outlines.md#performance)的物件而言，這也是有效的作法。
 
 ## <a name="api-documentation"></a>API 文件
 

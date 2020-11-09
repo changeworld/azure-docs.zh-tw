@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 的 VMware 嚴重損壞修復常見問題
 description: 使用 Azure Site Recovery 取得內部部署 VMware Vm 至 Azure 的嚴重損壞修復常見問題解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359793"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379985"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
 
@@ -106,7 +106,7 @@ Site Recovery 通過 ISO 27001:2013 和27018、HIPAA 和 DPA 的認證。 SOC2 �
 Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中的受控磁片。
 
 - Site Recovery 進程伺服器會將複寫記錄寫入目的地區域中的快取儲存體帳戶。
-- 這些記錄會用來在具有 **asrseeddisk**前置詞的 Azure 受控磁片上建立復原點。
+- 這些記錄會用來在具有 **asrseeddisk** 前置詞的 Azure 受控磁片上建立復原點。
 - 發生容錯移轉時，您選取的復原點會用來建立新的目標受控磁片。 此受控磁片會連接至 Azure 中的 VM。
 - 先前複寫到) 2019 年3月之前的儲存體帳戶 (的 Vm 不會受到影響。
 
@@ -153,7 +153,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="what-is-asrseeddisk"></a>什麼是 asrseeddisk？
 
-針對每個來源磁片，資料會複寫至 Azure 中的受控磁片。 此磁片的前置詞為 **asrseeddisk**。 它會儲存來源磁片和所有復原點快照集的複本。
+針對每個來源磁片，資料會複寫至 Azure 中的受控磁片。 此磁片的前置詞為 **asrseeddisk** 。 它會儲存來源磁片和所有復原點快照集的複本。
 
 ### <a name="can-i-exclude-disks-from-replication"></a>我可以從複寫中排除磁片嗎？
 
@@ -176,7 +176,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>我可以將內部部署機器遷移至新的 vCenter Server，而不會影響進行中的複寫嗎？
 
-否。 VMware Vcenter 或遷移的變更將會影響進行中的複寫。 使用新的 vCenter Server 設定 Site Recovery，並再次啟用機器的複寫。
+請參閱我們的 [指引](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server) ，以將機器遷移至新的 vCenter
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>我可以將虛擬網路 (的快取或目標儲存體帳戶複寫到 Azure 防火牆) 設定嗎？
 
@@ -258,11 +258,11 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](./service-updates-how-to
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>在設定組態伺服器時，是否可以手動下載並安裝 MySQL？
 
-是。 請下載 MySQL 並將它放在 C:\Temp\ASRSetup 資料夾中。 然後以手動方式進行安裝。 當您設定組態伺服器 VM 時，如果您接受條款，MySQL 在 [下載並安裝]**** 中就會列示為 [已安裝]****。
+是。 請下載 MySQL 並將它放在 C:\Temp\ASRSetup 資料夾中。 然後以手動方式進行安裝。 當您設定組態伺服器 VM 時，如果您接受條款，MySQL 在 [下載並安裝] 中就會列示為 [已安裝]。
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>是否可以不要下載 MySQL 而讓 Site Recovery 加以安裝？
 
-是。 請下載 MySQL 安裝程式，並將它放在 C:\Temp\ASRSetup 資料夾中。 當您設定伺服器 VM 時，請接受條款，然後選取 [ **下載並安裝**]。 入口網站將會使用您新增的安裝程式來安裝 MySQL。
+是。 請下載 MySQL 安裝程式，並將它放在 C:\Temp\ASRSetup 資料夾中。 當您設定伺服器 VM 時，請接受條款，然後選取 [ **下載並安裝** ]。 入口網站將會使用您新增的安裝程式來安裝 MySQL。
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>組態伺服器 VM 是否可用於任何其他位置？
 
@@ -286,7 +286,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](./service-updates-how-to
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>哪裡可以下載保存庫註冊金鑰？
 
-在復原服務保存庫中，選取 [ **Site Recovery 基礎結構**管理] 中的 [設定**伺服器**]  >  ** **。 然後，在 [ **伺服器**] 中，選取 [ **下載註冊金鑰** ] 以下載保存庫認證檔。
+在復原服務保存庫中，選取 [ **Site Recovery 基礎結構** 管理] 中的 [設定 **伺服器** ]  >  **** 。 然後，在 [ **伺服器** ] 中，選取 [ **下載註冊金鑰** ] 以下載保存庫認證檔。
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用單一設定伺服器來保護多個 vCenter 實例？
 

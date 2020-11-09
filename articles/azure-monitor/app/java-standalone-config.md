@@ -2,14 +2,14 @@
 title: 設定選項-Azure 監視器 Application Insights JAVA
 description: Azure 監視器 Application Insights JAVA 的設定選項
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331901"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381026"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure 監視器 Application Insights JAVA 的設定選項
 
@@ -48,7 +48,7 @@ ms.locfileid: "94331901"
 
 ## <a name="connection-string"></a>連接字串
 
-這是必填欄位。 您可以在 Application Insights 資源中找到您的連接字串：
+需要連接字串。 您可以在 Application Insights 資源中找到您的連接字串：
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights 連接字串":::
 
@@ -105,7 +105,7 @@ ms.locfileid: "94331901"
 
 例如，如果您將取樣設定為10%，您只會看到10% 的交易，但這10% 的每一個都有完整的端對端交易詳細資料。
 
-以下範例說明如何設定取樣，以取得大約 **1/3 的所有交易** -請確定您已為您的使用案例設定正確的取樣率：
+以下範例說明如何設定取樣來取得大約 **1/3 的所有交易** -請確定您設定的取樣率適用于您的使用案例：
 
 ```json
 {
@@ -169,18 +169,18 @@ ms.locfileid: "94331901"
 
 ## <a name="telemetry-processors-preview"></a> (預覽版的遙測處理器) 
 
-這是預覽功能。
+這項功能處於預覽狀態。
 
-它可讓您設定將套用至要求、相依性和追蹤遙測的規則，例如
+它可讓您設定將套用至要求、相依性和追蹤遙測的規則，例如：
  * 遮罩敏感性資料
  * 有條件地加入自訂維度
  * 更新用於匯總和顯示的遙測名稱
 
 如需詳細資訊，請參閱 [遙測處理器](./java-standalone-telemetry-processors.md) 檔。
 
-## <a name="auto-collected-logging"></a>自動收集的記錄
+## <a name="autocollected-logging"></a>實驗自動收集記錄
 
-Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這些記錄架構執行的記錄。
+Log4j、Logback 和 util 會自動檢測記錄，而透過這些記錄架構執行的記錄則是實驗自動收集。
 
 依預設，只有在該記錄執行于 `INFO` 層級或以上時，才會收集記錄。
 
@@ -213,13 +213,16 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 | 追蹤 (或最佳)  | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自動收集的 Micrometer 計量 (包括彈簧開機傳動標準) 
+## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>實驗自動收集 Micrometer 計量 (包括彈簧開機傳動標準) 
 
-如果您的應用程式使用 [Micrometer](https://micrometer.io)，則會自動收集傳送至 Micrometer global 登錄的計量。
+如果您的應用程式使用 [Micrometer](https://micrometer.io)，則傳送至 Micrometer global 登錄的計量會實驗自動收集。
 
-此外，如果您的應用程式使用 [彈簧開機傳動](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)器，則也會自動收集由彈簧開機傳動器設定的計量。
+此外，如果您的應用程式使用 [彈簧開機傳動](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)器，則由春季開機傳動器設定的計量也會實驗自動收集。
 
-若要停用自動收集 Micrometer 計量 (包括彈簧開機傳動程式計量) ：
+若要停用 autocollection 的 Micrometer 計量 (包括彈簧開機傳動程式計量) ：
+
+> [!NOTE]
+> 自訂計量會分開計費，而且可能會產生額外的成本。 請務必檢查詳細的 [定價資訊](https://azure.microsoft.com/pricing/details/monitor/)。 若要停用 Micrometer 和春季制動器的計量，請將下列設定新增至您的設定檔。
 
 ```json
 {
@@ -244,7 +247,7 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 ```
 
 > [!NOTE]
-> 您無法減少此信號的頻率，因為也會使用心跳資料來追蹤 Application Insights 的使用量。
+> 您無法減少心跳的頻率，因為也會使用心跳資料來追蹤 Application Insights 的使用量。
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
@@ -279,7 +282,7 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 
 「自我診斷」指的是 Application Insights JAVA 3.0 的內部記錄。
 
-這有助於找出和診斷 Application Insights 本身的問題。
+這種功能有助於找出和診斷 Application Insights 本身的問題。
 
 依預設，會在檔案和主控台的層級 Application Insights JAVA 3.0 記錄 `INFO` `applicationinsights.log` ，這會對應到此設定：
 

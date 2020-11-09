@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078538"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380703"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用裝飾標記醒目提示文字
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 支援搜尋結果醒目提示，這會將查詢詞彙標示 (或 Bing 在某些答案的顯示字串中找到相關) 的其他詞彙。 例如，網頁結果的 `name` 、 `displayUrl` 和 `snippet` 欄位可能包含標示的查詢詞彙。 
 
@@ -39,7 +39,7 @@ Bing 支援搜尋結果醒目提示，這會將查詢詞彙標示 (或 Bing 在�
 
 ## <a name="marker-formatting"></a>標記格式化
 
-Bing 提供使用 Unicode 字元或 HTML 標籤做為標記的選項。 若要指定要使用的標記，請包含 [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) 查詢參數： 
+Bing 提供使用 Unicode 字元或 HTML 標籤做為標記的選項。 若要指定要使用的標記，請包含 [textFormat](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) 查詢參數： 
 
 | 值             | Marker                       |
 |-------------------|------------------------------|
@@ -81,7 +81,7 @@ Bing 可以傳回數種不同的文字裝飾。 例如， `Computation` 答案�
 |U+E018|\<sup>|標示上標內容的結尾
 |U+E019|\</sup>|標示上標內容的開頭
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [什麼是 Bing Web 搜尋 API？](overview.md) 
 * [調整大小和裁剪縮圖](resize-and-crop-thumbnails.md)

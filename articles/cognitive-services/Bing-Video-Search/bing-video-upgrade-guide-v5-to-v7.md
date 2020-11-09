@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: c67ef6ddcd709dea8727a67100607bfc4f8cc8f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 392bb46d481df1f872b9a61beffed9e5b46f4dc5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099839"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379832"
 ---
 # <a name="video-search-api-upgrade-guide"></a>影片搜尋 API 升級指南
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 本升級指南會識別 Bing 影片搜尋 API 第 5 版和第 7 版之間的變更。 本指南可協助您識別出應用程式有哪些部分需要更新以使用第 7 版。
 
@@ -30,7 +30,7 @@ ms.locfileid: "93099839"
 
 ### <a name="endpoints"></a>端點
 
-- 從 v5 變更為 v7 的端點版本號碼。 例如： `https://api.cognitive.microsoft.com/bing/v7.0/videos/search` 。
+- 從 v5 變更為 v7 的端點版本號碼。 例如：`https://api.cognitive.microsoft.com/bing/v7.0/videos/search`。
 
 ### <a name="error-response-objects-and-error-codes"></a>錯誤回應物件和錯誤碼
 
@@ -60,7 +60,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-停用|InsufficientAuthorization.AuthorizationDisabled
+已停用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -76,11 +76,10 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="query-parameters"></a>查詢參數
 
-- 將 `modulesRequested` 查詢參數重新命名為 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)。  
+- 將 `modulesRequested` 查詢參數重新命名為 [modules](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)。  
 
 ### <a name="object-changes"></a>物件變更
 
-- 將 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 的 `nextOffsetAddCount` 欄位重新命名為 `nextOffset`。 使用 offset 的方式也會跟著變更。 先前，您已將 [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) 查詢參數設定為 `nextOffset` 值，以在結果中加上前一個 offset 值和影片數目。 現在，您只需要將 `offset` 查詢參數設定為 `nextOffset` 值。  
+- 將 [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 的 `nextOffsetAddCount` 欄位重新命名為 `nextOffset`。 使用 offset 的方式也會跟著變更。 先前，您已將 [offset](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) 查詢參數設定為 `nextOffset` 值，以在結果中加上前一個 offset 值和影片數目。 現在，您只需要將 `offset` 查詢參數設定為 `nextOffset` 值。  
   
-- 已將 `relatedVideos` 欄位的資料類型從 `Video[]` 變更為 [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (請參閱 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails))。
-
+- 已將 `relatedVideos` 欄位的資料類型從 `Video[]` 變更為 [VideosModule](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (請參閱 [VideoDetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails))。

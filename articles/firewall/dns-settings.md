@@ -1,24 +1,20 @@
 ---
-title: 'Azure 防火牆 DNS 設定 (預覽) '
+title: Azure 防火牆 DNS 設定
 description: 您可以使用 DNS 伺服器和 DNS proxy 設定來設定 Azure 防火牆。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 11/06/2020
 ms.author: victorh
-ms.openlocfilehash: efe608437f350a29147cf10989cdb6c17a23196d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ad0ac040b510783656617ddbf2063cd94c80aae7
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397989"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380941"
 ---
-# <a name="azure-firewall-dns-settings-preview"></a>Azure 防火牆 DNS 設定 (預覽) 
-
-> [!IMPORTANT]
-> Azure 防火牆 DNS 設定目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="azure-firewall-dns-settings"></a>Azure 防火牆 DNS 設定
 
 您可以設定自訂 DNS 伺服器，並啟用 Azure 防火牆的 DNS proxy。 當您從 [ **DNS 設定** ] 頁面部署防火牆或更新版本時，可以設定這些設定。
 
@@ -29,7 +25,7 @@ DNS 伺服器會維護並將功能變數名稱解析為 IP 位址。 根據預�
 > [!NOTE]
 > 針對使用 Azure 防火牆管理員管理的 Azure 防火牆，會在相關聯的 Azure 防火牆原則中設定 DNS 設定。
 
-### <a name="configure-custom-dns-servers-preview---azure-portal"></a> (預覽版設定自訂 DNS 伺服器) -Azure 入口網站
+### <a name="configure-custom-dns-servers---azure-portal"></a>設定自訂 DNS 伺服器-Azure 入口網站
 
 1. 在 [Azure 防火牆 **設定** ] 下，選取 [ **DNS 設定** ]。
 2. 在 [ **DNS 伺服器** ] 下，您可以輸入或新增先前在虛擬網路中指定的現有 DNS 伺服器。
@@ -38,7 +34,7 @@ DNS 伺服器會維護並將功能變數名稱解析為 IP 位址。 根據預�
 
 :::image type="content" source="media/dns-settings/dns-servers.png" alt-text="DNS 伺服器":::
 
-### <a name="configure-custom-dns-servers-preview---azure-cli"></a> (預覽版設定自訂 DNS 伺服器) -Azure CLI
+### <a name="configure-custom-dns-servers---azure-cli"></a>設定自訂 DNS 伺服器-Azure CLI
 
 下列範例會使用 Azure CLI 來更新具有自訂 DNS 伺服器的 Azure 防火牆。
 
@@ -52,7 +48,7 @@ az network firewall update \
 > [!IMPORTANT]
 > 此命令 `az network firewall` 需要安裝 Azure CLI 延伸模組 `azure-firewall` 。 您可以使用命令來安裝它 `az extension add --name azure-firewall` 。 
 
-### <a name="configure-custom-dns-servers-preview---azure-powershell"></a> (預覽版設定自訂 DNS 伺服器) -Azure PowerShell
+### <a name="configure-custom-dns-servers---azure-powershell"></a>設定自訂 DNS 伺服器-Azure PowerShell
 
 下列範例會使用 Azure PowerShell 來更新具有自訂 DNS 伺服器的 Azure 防火牆。
 
@@ -64,22 +60,32 @@ $azFw.DNSServer = $dnsServers
 $azFw | Set-AzFirewall
 ```
 
-## <a name="dns-proxy-preview"></a>DNS proxy (預覽) 
+## <a name="dns-proxy"></a>DNS proxy
 
 您可以設定 Azure 防火牆作為 DNS proxy。 DNS proxy 可作為從用戶端虛擬機器到 DNS 伺服器的 DNS 要求媒介。 如果您設定自訂 DNS 伺服器，您應該啟用 DNS proxy 以避免 DNS 解析不相符，並在網路規則中啟用 FQDN 篩選。
 
 如果您未啟用 DNS proxy，來自用戶端的 DNS 要求可能會在不同時間移動到 DNS 伺服器，或傳回與防火牆不同的回應。 DNS proxy 會將 Azure 防火牆放在用戶端要求的路徑中，以避免不一致。
+
+當 Azure 防火牆是 DNS proxy 時，會發生兩個快取函數類型：
+
+- 正快取-DNS 解析成功。 防火牆會使用封包或物件的 (存留時間) 的 TTL。 
+
+- 負快取-DNS 解析會導致沒有回應或沒有解決方法。 防火牆會在一小時內快取此資訊。
+
+DNS proxy 會將所有已解析的 IP 位址從 Fqdn 儲存在網路規則中。 最佳做法是使用可解析為一個 IP 位址的 Fqdn。  
+
+### <a name="dns-proxy-configuration"></a>DNS proxy 設定
 
 DNS Proxy 設定需要三個步驟：
 1. 啟用 Azure 防火牆 DNS 設定中的 DNS proxy。
 2. 選擇性地設定您的自訂 DNS 伺服器，或使用提供的預設值。
 3. 最後，您必須將 Azure 防火牆的私人 IP 位址設定為虛擬網路 DNS 伺服器設定中的自訂 DNS 位址。 這可確保 DNS 流量會導向至 Azure 防火牆。
 
-### <a name="configure-dns-proxy-preview---azure-portal"></a>設定 DNS proxy (預覽) -Azure 入口網站
+#### <a name="configure-dns-proxy---azure-portal"></a>設定 DNS proxy-Azure 入口網站
 
 若要設定 DNS proxy，您必須設定虛擬網路 DNS 伺服器設定，以使用防火牆私人 IP 位址。 然後，在 Azure 防火牆 **dns 設定** 中啟用 DNS Proxy。
 
-#### <a name="configure-virtual-network-dns-servers"></a>設定虛擬網路 DNS 伺服器 
+##### <a name="configure-virtual-network-dns-servers"></a>設定虛擬網路 DNS 伺服器 
 
 1. 選取將透過 Azure 防火牆路由傳送 DNS 流量的虛擬網路。
 2. 選取 [設定] 底下的 [DNS 伺服器]。
@@ -88,7 +94,7 @@ DNS Proxy 設定需要三個步驟：
 5. 選取 [儲存]。
 6. 將連線到虛擬網路的 VM 重新啟動，讓這些 VM 獲得新的 DNS 伺服器設定。 這些 VM 會繼續使用其目前的 DNS 設定，直到您將其重新啟動。
 
-#### <a name="enable-dns-proxy-preview"></a>啟用 DNS proxy (預覽) 
+##### <a name="enable-dns-proxy"></a>啟用 DNS proxy
 
 1. 選取您的 Azure 防火牆。
 2. 在 [ **設定** ] 底下，選取 [ **DNS 設定** ]。
@@ -98,11 +104,11 @@ DNS Proxy 設定需要三個步驟：
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS proxy":::
 
-### <a name="configure-dns-proxy-preview---azure-cli"></a>設定 DNS proxy (預覽) -Azure CLI
+#### <a name="configure-dns-proxy---azure-cli"></a>設定 DNS proxy-Azure CLI
 
-您可以使用 Azure CLI 來設定 Azure 防火牆中的 DNS proxy 設定，並將 Vnet 更新為使用 Azure 防火牆作為 DNS 伺服器。
+您可以使用 Azure CLI 來設定 Azure 防火牆中的 DNS proxy 設定，並更新虛擬網路以使用 Azure 防火牆作為 DNS 伺服器。
 
-#### <a name="configure-virtual-network-dns-servers"></a>設定虛擬網路 DNS 伺服器
+##### <a name="configure-virtual-network-dns-servers"></a>設定虛擬網路 DNS 伺服器
 
 此範例會將 VNet 設定為使用 Azure 防火牆作為 DNS 伺服器。
  
@@ -113,7 +119,7 @@ az network vnet update \
     --dns-servers <firewall-private-IP>
 ```
 
-#### <a name="enable-dns-proxy-preview"></a>啟用 DNS proxy (預覽) 
+##### <a name="enable-dns-proxy"></a>啟用 DNS proxy
 
 此範例會啟用 Azure 防火牆中的 DNS proxy 功能。
 
@@ -124,11 +130,11 @@ az network firewall update \
     --enable-dns-proxy true
 ```
 
-### <a name="configure-dns-proxy-preview---azure-powershell"></a>設定 DNS proxy (預覽) -Azure PowerShell
+#### <a name="configure-dns-proxy---azure-powershell"></a>設定 DNS proxy-Azure PowerShell
 
-您可以使用 Azure PowerShell 來設定 DNS proxy 設定，並將 Vnet 更新為使用 Azure 防火牆作為 DNS 伺服器。
+您可以使用 Azure PowerShell 來設定 Azure 防火牆中的 DNS proxy 設定，並更新虛擬網路以使用 Azure 防火牆作為 DNS 伺服器。
 
-#### <a name="configure-virtual-network-dns-servers"></a>設定虛擬網路 DNS 伺服器
+##### <a name="configure-virtual-network-dns-servers"></a>設定虛擬網路 DNS 伺服器
 
  此範例會將 VNet 設定為使用 Azure 防火牆作為 DNS 伺服器。
 
@@ -140,7 +146,7 @@ $VNet.DhcpOptions.DnsServers = $dnsServers
 $VNet | Set-AzVirtualNetwork
 ```
 
-#### <a name="enable-dns-proxy-preview"></a>啟用 DNS proxy (預覽) 
+##### <a name="enable-dns-proxy"></a>啟用 DNS proxy
 
 此範例會啟用 Azure 防火牆中的 DNS proxy 功能。
 

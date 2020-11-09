@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: d34505b1f36d6de77e2bb1df9aa98b7a14b5f44d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171934"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380427"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-受控 Azure Active Directory 整合
 
@@ -22,20 +22,13 @@ AKS 管理的 Azure AD 整合旨在簡化 Azure AD 整合體驗，其中使用�
 
 深入瞭解 [Azure Active Directory 整合概念檔](concepts-identity.md#azure-active-directory-integration)上的 Azure AD 整合流程。
 
-## <a name="region-availability"></a>區域可用性
-
-受 AKS 管理的 Azure Active Directory 整合可在 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公用區域中使用。
-
-* 目前不支援 Azure Government。
-* 目前不支援 Azure 中國的世紀。
-
 ## <a name="limitations"></a>限制 
 
 * 無法停用 AKS 管理的 Azure AD 整合
 * AKS 管理的 Azure AD 整合不支援已啟用非 RBAC 的叢集
 * 不支援變更與 AKS 管理 Azure AD 整合相關聯的 Azure AD 租使用者
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure CLI 2.11.0 版版或更新版本
 * 最低版本為[1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181)或[kubelogin](https://github.com/Azure/kubelogin)的 Kubectl

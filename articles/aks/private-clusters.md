@@ -4,22 +4,22 @@ description: 了解如何建立私人 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 4ebc5e44f491b5ff5950a13771fe3d7179b6fc9f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5c45c01e34c4663657dbeee803fe0bb5cdae6a3c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143091"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380567"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私人 Azure Kubernetes Service 叢集
 
-在私人叢集中，控制平面或 API 伺服器都具有內部 IP 位址，如 [RFC1918 - 私人網際網路的位址配置](https://tools.ietf.org/html/rfc1918)文件中所定義。 您可以使用私人叢集，確保您的 API 伺服器與節點集區之間的網路流量，只會保留在私人網路中。
+在私人叢集中，控制平面或 API 伺服器具有在 [私人網際網路檔的 RFC1918 位址配置](https://tools.ietf.org/html/rfc1918) 中定義的內部 IP 位址。 您可以使用私人叢集，確保您的 API 伺服器與節點集區之間的網路流量，只會保留在私人網路中。
 
 控制平面或 API 伺服器會位於 Azure Kubernetes Service (AKS) 管理的 Azure 訂用帳戶中。 客戶的叢集或節點集區會位於客戶的訂用帳戶中。 伺服器和叢集或節點集區可以透過 API 伺服器虛擬網路中的 [Azure Private Link 服務][private-link-service]，以及在客戶 AKS 叢集子網路中公開的私人端點，彼此通訊。
 
 ## <a name="region-availability"></a>區域可用性
 
-私人叢集可在 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公用區域中使用。
+私人叢集可在 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公用區域、Azure Government 和 Azure 中國世紀區域中使用。
 
 > [!NOTE]
 > 支援 Azure Government 網站，但因為缺少 Private Link 支援，所以目前不支援 US Gov 德克薩斯州。
@@ -43,7 +43,7 @@ az group create -l westus -n MyResourceGroup
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-其中 --enable-private-cluster 是私人叢集的強制旗標。 
+其中 `--enable-private-cluster` 是私人叢集的強制旗標。 
 
 ### <a name="advanced-networking"></a>進階網路  
 
@@ -59,14 +59,14 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-其中 --enable-private-cluster 是私人叢集的強制旗標。 
+其中 `--enable-private-cluster` 是私人叢集的強制旗標。 
 
 > [!NOTE]
 > 如果 Docker 橋接器位址 CIDR (172.17.0.1/16) 與子網路 CIDR 衝突，請適當地變更 Docker 橋接器位址。
 
 ## <a name="options-for-connecting-to-the-private-cluster"></a>用來連線到私人叢集的選項
 
-API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使用的 VM 必須可存取 AKS 叢集的 Azure 虛擬網路 (VNet)。 有數個選項可讓您與私人叢集建立網路連線。
+API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必須使用可存取 AKS 叢集的 Azure 虛擬網路 (VNet) 的 VM。 有數個選項可讓您與私人叢集建立網路連線。
 
 * 在與 AKS 叢集相同的 Azure 虛擬網路 (VNet) 中建立 VM。
 * 在不同的網路中使用 VM，並設定[虛擬網路對等互連][virtual-network-peering]。  如需此選項的詳細資訊，請參閱下一節。
@@ -94,9 +94,9 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 
 ![私人叢集中樞和輪輻](media/private-clusters/aks-private-hub-spoke.png)
 
-1. 根據預設，佈建私人叢集時，叢集管理的資源群組中會建立私人端點 (1) 和私人 DNS 區域 (2)。 叢集會使用私人區域中的 A 記錄來解析私人端點的 IP，以便與 API 伺服器通訊。
+1. 根據預設，布建私人叢集時，會在叢集管理的資源群組中建立私人端點 (1) 和私人 DNS 區域 (2) 。 叢集會使用私人區域中的 A 記錄來解析私人端點的 IP，以便與 API 伺服器通訊。
 
-2. 私人 DNS 區域只會連結至叢集節點所連結的 VNet (3)。 這表示私人端點只能由該連結 VNet 中的主機解析。 在 VNet 上未設定任何自訂 DNS (預設) 的情況下，這種情況不會發生問題，因為 168.63.129.16 for DNS 的主機點可能會因連結而解析私人 DNS 區域中的記錄。
+2. 私人 DNS 區域只會連結至叢集節點所連結的 VNet (3)。 這表示私人端點只能由該連結 VNet 中的主機解析。 在 VNet 上未設定任何自訂 DNS (預設) 的情況下，這項作業不會發生問題，因為 168.63.129.16 for DNS 的主機點可解決私人 DNS 區域中的記錄，因為連結。
 
 3. 在包含叢集的 VNet 有自訂 DNS 設定 (4) 的情況下，除非私人 DNS 區域已連結至包含自訂 DNS 解析程式 (5) 的 VNet，否則叢集部署將會失敗。 在叢集布建期間建立私人區域，或在使用事件型部署 (機制（例如，Azure 事件方格和 Azure Functions) ）偵測到建立區域時，可以手動建立此連結。
 
