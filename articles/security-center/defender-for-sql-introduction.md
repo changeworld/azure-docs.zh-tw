@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342020"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372521"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
@@ -23,8 +23,8 @@ ms.locfileid: "92342020"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上的 SQL 伺服器的 Azure Defender** - 預覽|
-|定價：|構成**適用於 SQL 的 Azure Defender** 的兩個方案，會依照[定價頁面](security-center-pricing.md)顯示的方式計費|
+|版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上的 SQL 伺服器的 Azure Defender** - 預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|定價：|構成 **適用於 SQL 的 Azure Defender** 的兩個方案，會依照 [定價頁面](security-center-pricing.md)顯示的方式計費|
 |受保護的 SQL 版本：|Azure SQL Database <br>Azure SQL 受控執行個體<br>Azure Synapse Analytics (先前為 SQL DW)<br>SQL Server (所有支援的版本)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||

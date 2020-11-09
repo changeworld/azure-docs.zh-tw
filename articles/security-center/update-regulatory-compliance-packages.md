@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342190"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372756"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>如何在法規合規性儀表板中自訂一組標準
 
-Azure 資訊安全中心會持續比較您的資源設定與業界標準、法規和效能評定的需求。 **法規合規性儀表板**會根據您符合特定合規性控制和需求的程度，提供合規性狀態的見解。
+Azure 資訊安全中心會持續比較您的資源設定與業界標準、法規和效能評定的需求。 **法規合規性儀表板** 會根據您符合特定合規性控制和需求的程度，提供合規性狀態的見解。
 
 
 ## <a name="overview-of-compliance-packages"></a>合規性套件概觀
@@ -41,7 +41,7 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
 
 您可以新增 NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official 和 UK NHS、加拿大聯邦 PBMM 和 Azure CIS 1.1.0 (新版) 等標準，這是更完整的 Azure CIS 1.1.0 表述。 
 
-此外，您可以新增 **Azure 安全性效能評定**，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 ([深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)。)
+此外，您可以新增 **Azure 安全性效能評定** ，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 ([深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)。)
 
 當儀表板可供使用時，將會支援其他標準。 
 
@@ -68,6 +68,7 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
 
     - **Azure 安全性效能評定**
     - **NIST SP 800-53 R4**
+    - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF-v2020**
     - **UKO 和 UK NHS**
     - **加拿大 PBMM**
@@ -92,7 +93,7 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
 
 若要移除標準：
 
-1. 從 [安全性中心] 功能表中，選取 [ **安全性原則**]。
+1. 從 [安全性中心] 功能表中，選取 [ **安全性原則** ]。
 
 1. 選取您要從中移除標準的相關訂用帳戶。
 
@@ -103,16 +104,16 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="在 Azure 資訊安全中心中從您的法規合規性儀表板移除法規標準":::
 
-1. 針對您想要移除的標準，請選取 [ **停**用]。 確認視窗隨即出現。
+1. 針對您想要移除的標準，請選取 [ **停** 用]。 確認視窗隨即出現。
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="在 Azure 資訊安全中心中從您的法規合規性儀表板移除法規標準":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="確認您真的想要移除所選的法規標準":::
 
 1. 選取 [是]。 將會移除標準。 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何**新增相容性套件**，以監視您是否符合其他標準。 
+在本文中，您已了解如何 **新增相容性套件** ，以監視您是否符合其他標準。 
 
 如需其他相關資料，請參閱下列文章： 
 

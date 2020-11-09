@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448989"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372630"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>將您的 GCP 帳戶連線到 Azure 資訊安全中心
 
@@ -36,9 +36,9 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽|
+|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
-|必要的角色和權限：|相關 Azure 訂用帳戶上的**擁有者**或**參與者**|
+|必要的角色和權限：|相關 Azure 訂用帳戶上的 **擁有者** 或 **參與者**|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
@@ -48,8 +48,8 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 對於組織中的所有 GCP 專案，您也必須：
 
-1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/quickstart-scc-setup)，設定 **GCP 安全性命令中心**。
-1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/how-to-use-security-health-analytics)，啟用**安全性健康情況分析**。
+1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/quickstart-scc-setup)，設定 **GCP 安全性命令中心** 。
+1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/how-to-use-security-health-analytics)，啟用 **安全性健康情況分析** 。
 1. 確認有資料流向安全性命令中心。
 
 連接您的 GCP 環境以進行安全性設定的指示，會遵循 Google 在使用安全性設定方面的建議。 此整合會運用 Google 安全性命令中心，且會使用可能影響到計費的其他資源。
@@ -80,7 +80,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
     1. 選取 [新增]。
     1. 在 [新增成員] 欄位中，貼上您先前複製的 [電子郵件值]。
     1. 將 [角色] 指定為 [資訊安全中心管理檢視器]，然後選取 [儲存]。
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="設定相關的 GCP 權限":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>步驟 4： 建立專用服務帳戶的私密金鑰
@@ -107,7 +107,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 在成功建立連接器並正確設定 GCP 安全性命令中心後：
 
 - GCP CIS 標準會顯示在資訊安全中心的法規合規性儀表板中。
-- 上線完成 5-10 分鐘後，資訊安全中心入口網站和法規合規性儀表板將會顯示 GCP 資源的安全性建議： :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+- 上線完成 5-10 分鐘後，資訊安全中心入口網站和法規合規性儀表板將會顯示 GCP 資源的安全性建議： :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="資訊安全中心建議頁面中的 GCP 資源和建議":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>監視您的 GCP 資源
@@ -116,7 +116,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 若要依資源類型檢視資源的所有作用中建議，請使用資訊安全中心的資產清查頁面，並篩選到您所需的 GCP 資源類型：
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="資產清查頁面的資源類型篩選器，顯示 GCP 選項"::: 
 
 
 ## <a name="next-steps"></a>後續步驟

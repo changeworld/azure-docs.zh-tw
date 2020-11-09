@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340028"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372722"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "93340028"
 - **分析** 報表。 您可以尋找可疑事件、異常活動及趨勢。
 
 > [!IMPORTANT]
-> Azure SQL Database 的審核已針對可用性和效能優化。 在非常高的活動期間 Azure SQL Database 或 Azure Synapse 允許作業繼續進行，而且可能不會記錄某些已審核的事件。
+> Azure SQL Database 和 Azure Synapse 的審核已針對可用性和效能優化。 在非常高的活動或高網路負載期間，Azure SQL Database 和 Azure Synapse 允許作業繼續進行，而且可能不會記錄某些已審核的事件。
 
 ### <a name="auditing-limitations"></a>審核限制
 
@@ -82,7 +82,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
   > [!NOTE]
   > 不可能在暫停的專用 SQL 集區上啟用審核。 若要啟用審核，請取消暫停專用的 SQL 集區。 深入瞭解 [專用的 SQL 集](../..//synapse-analytics/sql/best-practices-sql-pool.md)區。
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。
+1. 前往 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [ **sql database** ] 或 **[sql server** ] 窗格的 [安全性] 標題下，流覽至 [ **審核** ]。
 3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定] 連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則適用于這部伺服器上所有現有和新建立的資料庫。
 

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b10cf314bc9394f3297839d45d3497f9f5d3b0e0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0107dfb24ddad2a5b0f9f0ab12d2fe701466e385
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358825"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372824"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜尋索引子狀態和結果
 
@@ -132,16 +132,15 @@ api-key: [Search service admin key]
 
 ## <a name="monitor-using-the-net-sdk"></a>使用 .NET SDK 進行監視
 
-您可以使用 Azure 認知搜尋 .NET SDK 來定義索引子的排程。 若要這樣做，請在建立或更新索引子時包含 **Schedule** 屬性。
-
-下列 c # 範例會寫入索引子狀態的相關資訊，以及其最近 (或正在進行的) 執行至主控台的結果。
+使用 Azure 認知搜尋 .NET SDK 時，下列 c # 範例會將索引子狀態的相關資訊，以及最新 (或正在進行的) 執行到主控台的結果寫入。
 
 ```csharp
-static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
+static void CheckIndexerStatus(SearchIndexerClient indexerClient, SearchIndexer indexer)
 {
     try
     {
-        IndexerExecutionInfo execInfo = searchService.Indexers.GetStatus(indexer.Name);
+        string indexerName = "hotels-sql-idxr";
+        SearchIndexerStatus execInfo = indexerClient.GetIndexerStatus(indexerName);
 
         Console.WriteLine("Indexer has run {0} times.", execInfo.ExecutionHistory.Count);
         Console.WriteLine("Indexer Status: " + execInfo.Status.ToString());
@@ -149,15 +148,15 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
         IndexerExecutionResult result = execInfo.LastResult;
 
         Console.WriteLine("Latest run");
-        Console.WriteLine("  Run Status: {0}", result.Status.ToString());
-        Console.WriteLine("  Total Documents: {0}, Failed: {1}", result.ItemCount, result.FailedItemCount);
+        Console.WriteLine("Run Status: {0}", result.Status.ToString());
+        Console.WriteLine("Total Documents: {0}, Failed: {1}", result.ItemCount, result.FailedItemCount);
 
         TimeSpan elapsed = result.EndTime.Value - result.StartTime.Value;
-        Console.WriteLine("  StartTime: {0:T}, EndTime: {1:T}, Elapsed: {2:t}", result.StartTime.Value, result.EndTime.Value, elapsed);
+        Console.WriteLine("StartTime: {0:T}, EndTime: {1:T}, Elapsed: {2:t}", result.StartTime.Value, result.EndTime.Value, elapsed);
 
         string errorMsg = (result.ErrorMessage == null) ? "none" : result.ErrorMessage;
-        Console.WriteLine("  ErrorMessage: {0}", errorMsg);
-        Console.WriteLine("  Document Errors: {0}, Warnings: {1}\n", result.Errors.Count, result.Warnings.Count);
+        Console.WriteLine("ErrorMessage: {0}", errorMsg);
+        Console.WriteLine(" Document Errors: {0}, Warnings: {1}\n", result.Errors.Count, result.Warnings.Count);
     }
     catch (Exception e)
     {
@@ -174,7 +173,7 @@ Indexer Status: Running
 Latest run
   Run Status: Success
   Total Documents: 7, Failed: 0
-  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  StartTime: 11:29:31 PM, EndTime: 11:29:31 PM, Elapsed: 00:00:00.2560000
   ErrorMessage: none
   Document Errors: 0, Warnings: 0
 ```
@@ -185,8 +184,11 @@ Latest run
 
 重設索引子以重新整理其變更追蹤狀態時，會加入具有 **重設** 狀態的個別歷程記錄專案。
 
-如需狀態碼和索引子監視資訊的詳細資訊，請參閱 REST API 中的 [GetIndexerStatus](/rest/api/searchservice/get-indexer-status) 。
+## <a name="next-steps"></a>後續步驟
 
-您可以藉由列舉清單和來抓取檔特定錯誤或警告的詳細資料 `IndexerExecutionResult.Errors` `IndexerExecutionResult.Warnings` 。
+如需狀態碼和索引子監視資訊的詳細資訊，請參閱下列 API 參考：
 
-如需用來監視索引子之 .NET SDK 類別的詳細資訊，請參閱 [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo) 和 [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult)。
+* [GetIndexerStatus (REST API) ](/rest/api/searchservice/get-indexer-status)
+* [IndexerStatus](/dotnet/api/azure.search.documents.indexes.models.indexerstatus)
+* [IndexerExecutionStatus](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionstatus)
+* [IndexerExecutionResult](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionresult)

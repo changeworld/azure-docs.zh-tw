@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d41146b01b6b81804cdba31fbbf2541ba7ae0f03
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403631"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372366"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 Blob 索引子編制 JSON blob 的索引
 
@@ -31,7 +31,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 ## <a name="use-the-portal"></a>使用入口網站
 
-為 JSON 文件索引編製時，最簡單的方法是使用 [Azure 入口網站](https://portal.azure.com/)中的精靈。 藉由剖析 Azure Blob 容器中的中繼資料，[**匯入資料**](search-import-data-portal.md)精靈可以建立預設索引、將來源欄位對應至目標索引欄位，並在單一作業中載入索引。 根據來源資料的大小和複雜度，只需要幾分鐘的時間，您就可以擁有正常運作的全文檢索搜尋索引。
+為 JSON 文件索引編製時，最簡單的方法是使用 [Azure 入口網站](https://portal.azure.com/)中的精靈。 藉由剖析 Azure Blob 容器中的中繼資料， [**匯入資料**](search-import-data-portal.md)精靈可以建立預設索引、將來源欄位對應至目標索引欄位，並在單一作業中載入索引。 根據來源資料的大小和複雜度，只需要幾分鐘的時間，您就可以擁有正常運作的全文檢索搜尋索引。
 
 針對 Azure 認知搜尋和 Azure 儲存體，建議使用相同的區域或位置，以降低延遲，並避免頻寬費用。
 
@@ -49,21 +49,21 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 ### <a name="3---set-the-data-source"></a>3 - 設定資料來源
 
-在 [資料來源]**** 頁面中，來源必須是 **Azure Blob 儲存體**，並具有下列規格：
+在 [資料來源] 頁面中，來源必須是 **Azure Blob 儲存體** ，並具有下列規格：
 
-+ [要擷取的資料]**** 應該是 [內容和中繼資料]**。 選擇此選項可讓精靈推斷索引結構描述，並對應要匯入的欄位。
++ [要擷取的資料] 應該是 [內容和中繼資料]。 選擇此選項可讓精靈推斷索引結構描述，並對應要匯入的欄位。
    
-+ **剖析模式** 應設定為 *json*、 *json 陣列* 或 *json 行*。 
++ **剖析模式** 應設定為 *json* 、 *json 陣列* 或 *json 行* 。 
 
-  [JSON]** 會將每個 Blob 清楚表達為單一搜尋文件，而在搜尋結果中顯示為獨立項目。 
+  [JSON] 會將每個 Blob 清楚表達為單一搜尋文件，而在搜尋結果中顯示為獨立項目。 
 
-  *Json 陣列* 適用于包含格式正確的 json 資料的 blob-格式正確的 json 會對應至物件的陣列，或具有屬性（property），而您想要將每個專案明確地表示為獨立的獨立搜尋檔。 如果 Blob 很複雜，而且您未選擇 [JSON 陣列]**，則整個 Blob 會擷取為單一文件。
+  *Json 陣列* 適用于包含格式正確的 json 資料的 blob-格式正確的 json 會對應至物件的陣列，或具有屬性（property），而您想要將每個專案明確地表示為獨立的獨立搜尋檔。 如果 Blob 很複雜，而且您未選擇 [JSON 陣列]，則整個 Blob 會擷取為單一文件。
 
   *Json 行* 適用于由多個 JSON 實體（以新行分隔）所組成的 blob，您可以在其中將每個實體都表達為獨立的獨立搜尋檔。 如果 blob 很複雜，而且您沒有選擇 *JSON 程式碼* 剖析模式，則會將整個 blob 內嵌為單一檔。
    
-+ [儲存體容器]**** 必須指定儲存體帳戶和容器，或是會解析為容器的連接字串。 您可以在 Blob 服務的入口網站頁面上取得連接字串。
++ [儲存體容器] 必須指定儲存體帳戶和容器，或是會解析為容器的連接字串。 您可以在 Blob 服務的入口網站頁面上取得連接字串。
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="入口網站中的匯入資料命令" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Blob 資料來源定義" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-略過 wizard 中的 [豐富內容] 頁面
 
@@ -73,15 +73,15 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 ### <a name="5---set-index-attributes"></a>5 - 設定索引屬性
 
-在 [索引]**** 頁面上，您應該會看到欄位清單，其中有資料類型以及一系列用於設定索引屬性的核取方塊。 Wizard 可以根據中繼資料和取樣來源資料來產生欄位清單。 
+在 [索引] 頁面上，您應該會看到欄位清單，其中有資料類型以及一系列用於設定索引屬性的核取方塊。 Wizard 可以根據中繼資料和取樣來源資料來產生欄位清單。 
 
-您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對每個應該傳回給用戶端應用**程式的欄位**，選擇 [可取得] 和 [可搜尋 **]，並**受限於全文檢索搜尋處理。 您將會注意到，整數不是全文檢索或模糊可搜尋 (數位會逐字進行評估，而且在篩選) 中通常很有用。
+您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對每個應該傳回給用戶端應用 **程式的欄位** ，選擇 [可取得] 和 [可搜尋 **]，並** 受限於全文檢索搜尋處理。 您將會注意到，整數不是全文檢索或模糊可搜尋 (數位會逐字進行評估，而且在篩選) 中通常很有用。
 
 如需詳細資訊，請參閱 [索引屬性](/rest/api/searchservice/create-index#bkmk_indexAttrib) 和 [語言分析器](/rest/api/searchservice/language-support) 的描述。 
 
 請花一點時間檢閱您的選擇。 一旦執行精靈，就會建立實體的資料結構，而且除非您捨棄並重新建立所有物件，否則將無法編輯這些欄位。
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="入口網站中的匯入資料命令" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Blob 索引定義" border="false":::
 
 ### <a name="6---create-indexer"></a>6 - 建立索引子
 
@@ -89,9 +89,9 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 如果您不熟悉索引子， *索引子* 是 Azure 認知搜尋中的資源，可將外部資料源編目以取得可搜尋的內容。 匯 **入資料** wizard 的輸出是一個索引子，可編目您的 JSON 資料來源、解壓縮可搜尋的內容，並將它匯入 Azure 認知搜尋的索引中。
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="入口網站中的匯入資料命令" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Blob 索引子定義" border="false":::
 
-按一下 [確定]**** 來執行精靈並建立所有物件。 編製索引的程序會立即開始。
+按一下 [確定] 來執行精靈並建立所有物件。 編製索引的程序會立即開始。
 
 您可以在入口網站的頁面中監視資料匯入過程。 進度通知會指出編製索引的狀態，以及所上傳的文件數量。 
 
@@ -120,9 +120,9 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 | JSON 文件 | parsingMode | 描述 | 可用性 |
 |--------------|-------------|--------------|--------------|
-| 一個 blob 一個 | `json` | 將 JSON blob 當作單一文字區塊來剖析。 每個 JSON blob 都會變成單一 Azure 認知搜尋檔。 | [REST](/rest/api/searchservice/indexer-operations) API 和[.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已正式推出。 |
-| 一個 blob 多個 | `jsonArray` | 剖析 blob 中的 JSON 陣列，其中陣列的每個元素都會變成個別 Azure 認知搜尋檔。  | [REST](/rest/api/searchservice/indexer-operations) API 和[.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已正式推出。 |
-| 一個 blob 多個 | `jsonLines` | 剖析 blob，其中包含多個 JSON 實體 (「陣列」 ) 以分行符號分隔，其中每個實體都會變成個別的 Azure 認知搜尋檔。 | [REST](/rest/api/searchservice/indexer-operations) API 和[.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已正式推出。 |
+| 一個 blob 一個 | `json` | 將 JSON blob 當作單一文字區塊來剖析。 每個 JSON blob 都會變成單一 Azure 認知搜尋檔。 | [REST](/rest/api/searchservice/indexer-operations) API 和[.net](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK 均已正式推出。 |
+| 一個 blob 多個 | `jsonArray` | 剖析 blob 中的 JSON 陣列，其中陣列的每個元素都會變成個別 Azure 認知搜尋檔。  | [REST](/rest/api/searchservice/indexer-operations) API 和[.net](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK 均已正式推出。 |
+| 一個 blob 多個 | `jsonLines` | 剖析 blob，其中包含多個 JSON 實體 (「陣列」 ) 以分行符號分隔，其中每個實體都會變成個別的 Azure 認知搜尋檔。 | [REST](/rest/api/searchservice/indexer-operations) API 和[.net](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK 均已正式推出。 |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-組合要求的輸入
 
@@ -141,7 +141,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 2. 在左側流覽窗格中，按一下 [機 **碼** ]，然後複製主要或次要金鑰， (它們相等) 。
 
-3. 切換至儲存體帳戶的入口網站頁面。 在左側流覽窗格的 [ **設定**] 底下，按一下 [ **存取金鑰**]。 此頁面提供帳戶名稱和金鑰。 將儲存體帳戶名稱和其中一個金鑰複製到 [記事本]。
+3. 切換至儲存體帳戶的入口網站頁面。 在左側流覽窗格的 [ **設定** ] 底下，按一下 [ **存取金鑰** ]。 此頁面提供帳戶名稱和金鑰。 將儲存體帳戶名稱和其中一個金鑰複製到 [記事本]。
 
 ### <a name="2---create-a-data-source"></a>2-建立資料來源
 
@@ -280,10 +280,10 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 .NET SDK 與 REST API 有完整的同位檢查。 建議您檢閱先前的 REST API 章節，以了解其概念、工作流程和需求。 然後，您可以參閱下列 .NET API 參考文件，以在受控程式碼中實作 JSON 索引子。
 
-+ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource)
-+ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
-+ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index) 
-+ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer)
++ [azure.search.documents。 searchindexerdatasourceconnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
++ [azure.search.documents。 searchindexerdatasourcetype](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) 
++ [azure.search.documents。 searchindex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 
++ [azure.search.documents。 searchindexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 <a name="parsing-modes"></a>
 
@@ -291,9 +291,9 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 JSON blob 可採用多種形式。 JSON 索引子上的 **parsingMode** 參數會決定 json blob 內容在 Azure 認知搜尋索引中的剖析和結構：
 
-| parsingMode | 描述 |
+| parsingMode | 說明 |
 |-------------|-------------|
-| `json`  | 將每個 blob 的索引編制為單一檔。 此為預設值。 |
+| `json`  | 將每個 blob 的索引編制為單一檔。 這是預設值。 |
 | `jsonArray` | 如果您的 blob 包含 JSON 陣列，且您需要陣列的每個元素成為 Azure 認知搜尋中的個別檔，請選擇此模式。 |
 |`jsonLines` | 如果您的 blob 包含以新行分隔的多個 JSON 實體，而且您需要每個實體成為 Azure 認知搜尋中的個別檔，請選擇此模式。 |
 
@@ -329,7 +329,7 @@ Blob 索引子會將 JSON 檔剖析成單一 Azure 認知搜尋檔。 索引子�
 
 ## <a name="parse-json-arrays"></a>剖析 JSON 陣列
 
-或者，您可以使用 JSON 陣列選項。 當 blob 包含格式正確的 *JSON 物件陣列*，而您想要每個元素變成個別 Azure 認知搜尋檔時，此選項非常有用。 例如，假設有下列的 JSON blob，您可以在 Azure 認知搜尋索引中填入三個不同的檔，每個都有 "id" 和 "text" 欄位。  
+或者，您可以使用 JSON 陣列選項。 當 blob 包含格式正確的 *JSON 物件陣列* ，而您想要每個元素變成個別 Azure 認知搜尋檔時，此選項非常有用。 例如，假設有下列的 JSON blob，您可以在 Azure 認知搜尋索引中填入三個不同的檔，每個都有 "id" 和 "text" 欄位。  
 
 ```text
     [
@@ -455,7 +455,7 @@ Azure 認知搜尋目前無法直接編制任意 JSON 檔的索引，因為它�
 ## <a name="help-us-make-azure-cognitive-search-better"></a>協助我們改善 Azure 認知搜尋
 如果您有功能要求或改進的想法，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 提供。 如果您需要使用現有功能的協助，請將您的問題張貼在 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)上。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [Azure 認知搜尋中的索引子](search-indexer-overview.md)
 + [使用 Azure 認知搜尋編制索引 Azure Blob 儲存體](search-howto-index-json-blobs.md)

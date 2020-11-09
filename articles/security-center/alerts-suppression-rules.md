@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342088"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372654"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>隱藏來自 Azure Defender 的警示
 
@@ -23,9 +23,9 @@ ms.locfileid: "92342088"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽|
+|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |定價：|免費<br> (大部分的安全性警示僅適用于 Azure Defender) |
-|必要的角色和權限：|**安全性系統管理員** 和 **擁有** 者可以建立/刪除規則。<br>**安全性讀取者**和**讀者**可以檢視規則。|
+|必要的角色和權限：|**安全性系統管理員** 和 **擁有** 者可以建立/刪除規則。<br>**安全性讀取者** 和 **讀者** 可以檢視規則。|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
@@ -70,7 +70,7 @@ ms.locfileid: "92342088"
 
 1. 在 [新增歸併規則] 窗格中，輸入新規則的詳細資料。
     - 您的規則可以關閉 [所有資源] 上的警示，如此您在未來就不會收到任何類似警示。     
-    - 當警示與特定的 IP 位址、程序名稱、使用者帳戶、Azure 資源或位置相關時，您的規則就可以關閉**特定準則上**的警示。
+    - 當警示與特定的 IP 位址、程序名稱、使用者帳戶、Azure 資源或位置相關時，您的規則就可以關閉 **特定準則上** 的警示。
 
     > [!TIP]
     > 如果您從特定警示開啟 [新增規則] 頁面，將會自動在您的新規則中設定警示和訂用帳戶。 如果您使用 [建立新的歸併規則] 連結，則選取的訂用帳戶會符合入口網站中目前的篩選條件。
@@ -127,9 +127,9 @@ ms.locfileid: "92342088"
 
 REST API 中歸併規則的相關 HTTP 方法為：
 
-- **PUT**：在指定的訂用帳戶中建立或更新歸併規則。
+- **PUT** ：在指定的訂用帳戶中建立或更新歸併規則。
 
-- **GET**：
+- **GET** ：
 
     - 列出針對所指定訂用帳戶設定的所有規則。 這個方法會傳回適用規則的陣列。
 
@@ -137,7 +137,7 @@ REST API 中歸併規則的相關 HTTP 方法為：
 
     - 模擬歸併規則仍在設計階段的影響。 此呼叫會識別當規則已在使用中時，會關閉哪些現有警示。
 
-- **DELETE**：刪除現有的規則 (但不會變更其已關閉的警示狀態)。
+- **DELETE** ：刪除現有的規則 (但不會變更其已關閉的警示狀態)。
 
 如需完整詳細資料和使用方式範例，請參閱 [API 文件](/rest/api/securitycenter/)。 
 

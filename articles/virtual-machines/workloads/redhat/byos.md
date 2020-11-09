@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993344"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372790"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Azure 中的自備訂用帳戶黃金映射
 
@@ -21,14 +21,14 @@ Red Hat Enterprise Linux (RHEL) 映射可透過隨用隨付或自備訂用帳戶
 >[!NOTE]
 > RHEL BYOS 黃金映射可在 Azure 公用 (商用) 和 Azure Government 雲端中使用。 它們在 Azure 中國或 Azure Blackforest 雲端中無法使用。
 
-## <a name="important-points-to-consider"></a>要考慮的重要事項
+## <a name="important-points-to-consider"></a>需要考量的重要事項
 
 - 此方案中提供的 Red Hat 黃金映射是生產環境就緒的 RHEL 映射，類似于 Azure Marketplace 中的 RHEL 隨用隨付映射。
 - 映射會遵循 [Azure 上 Red Hat Enterprise Linux 映射](./redhat-images.md)中所述的目前原則。
 - 標準支援原則適用于從這些映射建立的 Vm。
 - 從 Red Hat 黃金映射布建的 Vm 不會包含與 RHEL 隨用隨付映射相關聯的 RHEL 費用。
 - 影像未獲授權。 您必須使用 Red Hat Subscription-Manager 來註冊並訂閱 Vm，以直接從 Red Hat 取得更新。
-- 目前無法在 BYOS 和 Linux 映射的隨用隨付計費模型之間動態切換。 若要切換計費模型，您必須從個別的映射重新部署 VM。
+- 您可以使用 [Azure Hybrid Benefit](../../linux/azure-hybrid-benefit-linux.md)，從隨用隨付映射切換至 BYOS。 不過，您無法從最初部署的 BYOS 切換至 Linux 映射的隨用隨付計費模型。 若要將計費模式從 BYOS 切換至隨用隨付，您必須從個別的映射重新部署 VM。
 
 >[!NOTE]
 > 第2代 RHEL BYOS 映射目前無法透過 marketplace 供應專案取得。 如果您需要第2代 RHEL BYOS 映射，請造訪 Red Hat 訂用帳戶管理中的雲端存取儀表板。 如需詳細資訊，請參閱 [Red Hat 檔](https://access.redhat.com/articles/4847681)。
@@ -45,7 +45,7 @@ Red Hat Enterprise Linux (RHEL) 映射可透過隨用隨付或自備訂用帳戶
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 入口網站的 Red Hat 黃金映射
 
-1. 當您的 Azure 訂用帳戶收到 Red Hat 黃金影像的存取權之後，您就可以在 [Azure 入口網站](https://portal.azure.com)中找到它們。 移至 [**建立資源] 的**[  >  **查看全部**]。
+1. 當您的 Azure 訂用帳戶收到 Red Hat 黃金影像的存取權之後，您就可以在 [Azure 入口網站](https://portal.azure.com)中找到它們。 移至 [ **建立資源] 的** [  >  **查看全部** ]。
 
 1. 在頁面頂端，您會看到您有私用供應專案。
 
@@ -93,7 +93,7 @@ Red Hat Enterprise Linux (RHEL) 映射可透過隨用隨付或自備訂用帳戶
     ```
 
     >[!NOTE]
-    >每個 Azure 訂用帳戶 *每個映射 SKU*都必須接受這些條款一次。
+    >每個 Azure 訂用帳戶 *每個映射 SKU* 都必須接受這些條款一次。
 
 1.  (選擇性) 使用下列命令驗證您的 VM 部署：
 
@@ -208,7 +208,7 @@ Red Hat Enterprise Linux BYOS 黃金映射可透過使用 [Azure 磁碟加密](.
 
 - 如果您使用自動化從 RHEL BYOS 映射布建 Vm，您必須提供類似于範例命令中所示的方案參數。 例如，如果您使用 Terraform，您可以在 [計畫區塊](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)中提供方案資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - Red hat Cloud Access 的詳細資料可在[Red hat 公用雲端檔](https://access.redhat.com/public-cloud)中取得
 - 如需有關雲端存取的逐步指南和程式詳細資料，請參閱 [Red Hat Cloud access 檔](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)。

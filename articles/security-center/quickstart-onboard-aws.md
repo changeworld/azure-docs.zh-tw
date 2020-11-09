@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428115"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372773"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>將您的 AWS 帳戶連線到 Azure 資訊安全中心
 
@@ -39,7 +39,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽|
+|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和權限：|相關 Azure 訂用帳戶上的 **擁有者** 或 **參與者**|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
@@ -71,7 +71,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 #### <a name="create-an-iam-role-for-security-center"></a>建立資訊安全中心的 IAM 角色
 1. 在 Amazon Web Services 主控台的 [安全性、身分識別與合規性] 底下，選取 [IAM]。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS 服務":::
 
 1. 選取 [角色] 和 [建立角色]。
 1. 選取 [另一個 AWS 帳戶]。
@@ -130,13 +130,13 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 1. 從資訊安全中心的功能表中，選取 [多重雲端連接器]。
 1. 選取 [新增 AWS 帳戶]。
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="資訊安全中心的 [多重雲端連接器] 頁面上的 [新增 AWS 帳戶] 按鈕":::
 1. 設定 [AWS 驗證] 索引標籤中的選項：
     1. 輸入連接器的 [顯示名稱]。
     1. 確認訂用帳戶正確無誤。 這是將包含連接器和 AWS 安全性中樞建議的訂用帳戶。
     1. 根據您在[步驟 2. 在 AWS 中設定資訊安全中心的驗證](#step-2-set-up-authentication-for-security-center-in-aws)中選擇的驗證選項：
         - 選取 [假設角色]，然後從 [為資訊安全中心建立 IAM 角色](#create-an-iam-role-for-security-center) 貼上 ARN。
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="在 Azure 入口網站中，將 ARN 檔案貼入 AWS 連線精靈的相關欄位":::
 
             或者
 
@@ -168,7 +168,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 - ASC 服務每 6 小時會掃描一次新的 AWS EC2 執行個體，並根據設定加以上線。
 - AWS CIS 標準會顯示在資訊安全中心的法規合規性儀表板中。
 - 若已啟用安全性中樞原則，則在上線完成 5-10 分鐘後，資訊安全中心入口網站和法規合規性儀表板將會顯示建議。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="資訊安全中心建議頁面中的 AWS 資源和建議":::
 
 
 
@@ -178,7 +178,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 若要依資源類型檢視資源的所有作用中建議，請使用資訊安全中心的資產清查頁面，並篩選到您所需的 AWS 資源類型：
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="資產清查頁面的資源類型篩選器，顯示 AWS 選項"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>資訊安全中心中的 AWS 常見問題集

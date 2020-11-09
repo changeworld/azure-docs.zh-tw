@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4d98323ebe973f13e654324f463ae01a8f1268c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629216"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372671"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux Azure 中提供的 (RHEL) 映射
 Azure 提供各種不同使用案例的 RHEL 映射。
@@ -26,12 +26,12 @@ Azure 提供各種不同使用案例的 RHEL 映射。
 > [!NOTE]
 > 不會再產生原始影像，而是要改用 LVM 分割的影像。 LVM 提供許多優於舊版原始 (非 LVM) 資料分割配置的優點，包括大幅提高彈性的分割區大小選項。
 
-供應項目| SKU | 資料分割 | 佈建 | 注意
+供應項目| SKU | 資料分割 | 佈建 | 備註
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 6.7      | RAW    | Linux 代理程式 | 
-|             | 6.8      | RAW    | Linux 代理程式 | 
-|             | 6.9      | RAW    | Linux 代理程式 | 
-|             | 6.10     | RAW    | Linux 代理程式 | 
+RHEL          | 6.7      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
+|             | 6.8      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
+|             | 6.9      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
+|             | 6.10     | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
 |             | 7-RAW    | RAW    | Linux 代理程式 | RHEL 7.x 映射系列。 <br> 預設會附加至一般存放庫， (不會 EUS) 。
 |             | 7-LVM    | LVM    | Linux 代理程式 | RHEL 7.x 映射系列。 <br> 預設會附加至一般存放庫， (不會 EUS) 。 如果您要尋找標準 RHEL 映射以進行部署，請使用這組映射及/或其第2代對應。
 |             | 7lvm-gen2| LVM    | Linux 代理程式 | 第2代、RHEL 7.x 映射系列。 <br> 預設會附加至一般存放庫， (不會 EUS) 。 如果您要尋找要部署的標準 RHEL 映射，請使用這組映射及/或其第1代。
@@ -67,9 +67,9 @@ RHEL-SAP      | 7.4      | LVM    | Linux 代理程式 | 適用于 SAP Hana 及�
 |             | 7.6       | LVM    | Linux 代理程式 | 適用于 SAP Hana 及商務應用程式的 RHEL 7.6。 附加至 E4S 存放庫，將會針對 SAP 和 RHEL 以及基礎計算費用收取 premium。
 |             | 76sap-gen2| LVM    | Linux 代理程式 | 適用于 SAP Hana 及商務應用程式的 RHEL 7.6。 第2代映射。 附加至 E4S 存放庫，將會針對 SAP 和 RHEL 以及基礎計算費用收取 premium。
 |             | 7.7       | LVM    | Linux 代理程式 | 適用于 SAP Hana 及商務應用程式的 RHEL 7.7。 附加至 E4S 存放庫，將會針對 SAP 和 RHEL 以及基礎計算費用收取 premium。
-要從2020年10月的 Marketplace 中移除 RHEL-SAP-HANA ()  | 6.7       | RAW    | Linux 代理程式 | 適用于 SAP Hana 的 RHEL 6.7。 已過期，並改用 RHEL-SAP 映射。 此映射將于2020年10月從 Azure Marketplace 中移除。 您可以 [在這裡](https://access.redhat.com/articles/3751271)找到有關 RED Hat SAP 雲端供應專案的詳細資料。
-|             | 7.2       | LVM    | Linux 代理程式 | 適用于 SAP Hana 的 RHEL 7.2。 已過期，並改用 RHEL-SAP 映射。 此映射將于2020年10月從 Azure Marketplace 中移除。 您可以 [在這裡](https://access.redhat.com/articles/3751271)找到有關 RED Hat SAP 雲端供應專案的詳細資料。
-|             | 7.3       | LVM    | Linux 代理程式 | 適用于 SAP Hana 的 RHEL 7.3。 已過期，並改用 RHEL-SAP 映射。 此映射將于2020年10月從 Azure Marketplace 中移除。 您可以 [在這裡](https://access.redhat.com/articles/3751271)找到有關 RED Hat SAP 雲端供應專案的詳細資料。
+要在2020年11月移除的 RHEL-SAP-HANA ()  | 6.7       | RAW    | Linux 代理程式 | 適用于 SAP Hana 的 RHEL 6.7。 已過期，並改用 RHEL-SAP 映射。 此映射將于2020年11月移除。 您可以 [在這裡](https://access.redhat.com/articles/3751271)找到有關 RED Hat SAP 雲端供應專案的詳細資料。
+|             | 7.2       | LVM    | Linux 代理程式 | 適用于 SAP Hana 的 RHEL 7.2。 已過期，並改用 RHEL-SAP 映射。 此映射將于2020年11月移除。 您可以 [在這裡](https://access.redhat.com/articles/3751271)找到有關 RED Hat SAP 雲端供應專案的詳細資料。
+|             | 7.3       | LVM    | Linux 代理程式 | 適用于 SAP Hana 的 RHEL 7.3。 已過期，並改用 RHEL-SAP 映射。 此映射將于2020年11月移除。 您可以 [在這裡](https://access.redhat.com/articles/3751271)找到有關 RED Hat SAP 雲端供應專案的詳細資料。
 RHEL-SAP-APPS | 6.8       | RAW    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 6.8。 已過期，並改用 RHEL-SAP 映射。
 |             | 7.3       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 7.3。 已過期，並改用 RHEL-SAP 映射。
 |             | 7.4       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 7.4。

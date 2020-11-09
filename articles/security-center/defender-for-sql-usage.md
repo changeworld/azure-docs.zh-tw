@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461527"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372552"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -30,8 +30,8 @@ ms.locfileid: "92461527"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽|
-|定價：|**電腦上適用于 SQL server 的 Azure Defender**會依[定價頁面](security-center-pricing.md)上的顯示方式計費|
+|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|定價：|**電腦上適用于 SQL server 的 Azure Defender** 會依 [定價頁面](security-center-pricing.md)上的顯示方式計費|
 |受保護的 SQL 版本：|Azure SQL Server (Microsoft 支援服務所涵蓋的所有版本) |
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
@@ -53,7 +53,7 @@ ms.locfileid: "92461527"
 
 - **SQL Server 內部內部部署** -如果您的 SQL Server 裝載于內部部署 Windows 機器上，而沒有 Azure Arc，您有兩個選項可將其連接到 Azure：
     
-    - **部署 Azure Arc** -您可以將任何 Windows 電腦連接到安全性中心。 不過，Azure Arc 可在 *所有* Azure 環境之間提供更深入的整合。 如果您設定了 Azure Arc，您會在入口網站中看到 [ **SQL Server] Azure Arc** 頁面，而您的安全性警示將會出現在該頁面上的 [專用 **安全性** ] 索引標籤上。 第一個和建議的選項是 [設定主機上的 Azure Arc](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) ，並遵循上述 **Azure Arc 上 SQL Server**的指示。
+    - **部署 Azure Arc** -您可以將任何 Windows 電腦連接到安全性中心。 不過，Azure Arc 可在 *所有* Azure 環境之間提供更深入的整合。 如果您設定了 Azure Arc，您會在入口網站中看到 [ **SQL Server] Azure Arc** 頁面，而您的安全性警示將會出現在該頁面上的 [專用 **安全性** ] 索引標籤上。 第一個和建議的選項是 [設定主機上的 Azure Arc](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) ，並遵循上述 **Azure Arc 上 SQL Server** 的指示。
         
     - **不 Azure Arc 連接 windows 電腦** -如果您選擇連接 windows 電腦上執行的 SQL Server，而不使用 Azure Arc，請依照將 [windows 機器連線至 Azure 監視器](../azure-monitor/platform/agent-windows.md)中的指示進行。
 
@@ -62,13 +62,13 @@ ms.locfileid: "92461527"
 
 1. 在 [安全性中心] 功能表中，開啟 [ **定價 & 設定** ] 頁面。
 
-    - 如果您使用 **Azure 資訊安全中心的預設工作區** (名稱為 "defaultworkspace-[您的訂用帳戶識別碼]-[區域]" ) ，請選取相關的 **訂**用帳戶。
+    - 如果您使用 **Azure 資訊安全中心的預設工作區** (名稱為 "defaultworkspace-[您的訂用帳戶識別碼]-[區域]" ) ，請選取相關的 **訂** 用帳戶。
 
-    - 如果您使用 **非預設工作區**，請選取相關的 **工作區** (在 [必要時，在篩選中輸入工作區的名稱]) ：
+    - 如果您使用 **非預設工作區** ，請選取相關的 **工作區** (在 [必要時，在篩選中輸入工作區的名稱]) ：
 
         ![依標題尋找您的非預設工作區](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. 針對 **電腦上的 SQL server 設定 Azure Defender 的選項 (Preview) ** 方案設定為 **開啟**。 
+1. 針對 **電腦上的 SQL server 設定 Azure Defender 的選項 (Preview)** 方案設定為 **開啟** 。 
 
     ![具有選擇性方案的 [安全性中心定價] 頁面](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -91,13 +91,13 @@ ms.locfileid: "92461527"
 
 您可以直接從 [安全性中心] 查看弱點評定結果。
 
-1. 從資訊安全中心的提要欄位中，開啟 [ **建議** ] 頁面，然後選取 **您的 SQL server 上應補救的建議弱點 (預覽) **。 如需詳細資訊，請參閱資訊 [安全中心建議](security-center-recommendations.md)。 
+1. 從資訊安全中心的提要欄位中，開啟 [ **建議** ] 頁面，然後選取 **您的 SQL server 上應補救的建議弱點 (預覽)** 。 如需詳細資訊，請參閱資訊 [安全中心建議](security-center-recommendations.md)。 
 
     :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="您應補救電腦上 SQL server 的弱點評定結果 (預覽版) ":::
 
     此建議的詳細觀點隨即出現。
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="您應補救電腦上 SQL server 的弱點評定結果 (預覽版) ":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="建議的詳細觀點":::
 
 1. 如需詳細資料，請向下切入：
 
@@ -105,7 +105,7 @@ ms.locfileid: "92461527"
 
     * 如需依特定 SQL database 分組的弱點總覽，請選取您感興趣的資料庫。
 
-    在每個觀點中，安全性檢查會依 **嚴重性**排序。 按一下特定的安全性檢查，以查看具有 **描述**的詳細資料窗格、如何進行 **修復** ，以及其他相關資訊，例如 **影響** 或 **基準測試**。
+    在每個觀點中，安全性檢查會依 **嚴重性** 排序。 按一下特定的安全性檢查，以查看具有 **描述** 的詳細資料窗格、如何進行 **修復** ，以及其他相關資訊，例如 **影響** 或 **基準測試** 。
 
 ## <a name="azure-defender-for-sql-alerts"></a>適用于 SQL 的 Azure Defender 警示
 警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可以在 [ [警示參考] 頁面的 [SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中，觸發顯示的警示。

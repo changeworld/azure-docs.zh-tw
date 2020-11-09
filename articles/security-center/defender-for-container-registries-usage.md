@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289216"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372603"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點
 
@@ -113,6 +113,9 @@ ms.locfileid: "93289216"
 
 
 ## <a name="disable-specific-findings-preview"></a>停用特定的結果 (預覽) 
+
+> [!NOTE]
+> [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
 如果您的組織需要忽略某個結果，而不是將其修復，您可以選擇性地停用該結果。 停用的結果不會影響您的安全分數或產生不想要的雜訊。
 
