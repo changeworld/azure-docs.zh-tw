@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380121"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427797"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -77,10 +77,11 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ### <a name="event-hub"></a>事件中樞
 資料會在接近 Azure 監視器時，以近乎即時的方式傳送至您的事件中樞。 系統會為您匯出的每個資料類型建立事件中樞，並 *在後面加上資料表名稱。* 例如，資料表 *SecurityEvent* 會傳送至名為 *SecurityEvent* 的事件中樞。 如果您想要匯出的資料到達特定的事件中樞，或資料表的名稱超過47個字元的限制，您可以提供自己的事件中樞名稱，並將已定義資料表的所有資料匯出至該名稱。
 
-匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
+考量：
+1. 「基本」事件中樞 sku 支援較低的事件大小限制，而您的工作區中的某些記錄可能會超過此 [限制](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) 並卸載。 我們建議使用「標準」或「專用」事件中樞作為匯出目的地。
+2. 匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 以下是在設定 Log Analytics 資料匯出之前必須完成的必要條件。
 
 - 儲存體帳戶和事件中樞必須已建立，且必須與 Log Analytics 工作區位於相同的區域。 如果您需要將資料複寫至其他儲存體帳戶，您可以使用任何 [Azure 儲存體的冗余選項](../../storage/common/storage-redundancy.md)。  
@@ -428,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | 更新 | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
 | UpdateRunProgress | |
 | UpdateSummary | |
-| 使用方式 | |
+| 使用量 | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
 | 關注清單 | |

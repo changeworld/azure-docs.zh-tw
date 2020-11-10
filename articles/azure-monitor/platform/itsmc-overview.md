@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380873"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428007"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -28,6 +28,9 @@ ITSMC 支援與下列 ITSM 工具連線：
 -   System Center Service Manager
 -   Provance
 -   Cherwell
+
+   >[!NOTE]
+> 從 1-10 月-2020 Cherwell 和 Provance ITSM 與 Azure 警示的整合將不再針對新客戶啟用。 不支援新的 ITSM 連接。 將會支援現有的 ITSM 連接。
 
 使用 ITSMC，您可以：
 
@@ -150,7 +153,8 @@ ITSMC 支援與下列 ITSM 工具連線：
 
    ![顯示 ITSM 票證視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
    
-   * 如果您在工作專案下拉式清單中選取 [事件]：如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，則每個警示都會建立新的工作專案。 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別工作專案** ]，則每個設定專案都會有自己的工作專案。 
+   * 如果您在工作專案下拉式清單中選取 [事件]：如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，則每個警示都會建立新的工作專案。 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別工作專案** ]，則每個設定專案都會有自己的工作專案。
+   ![顯示 ITSM 票證視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. 選取 [確定]。
 

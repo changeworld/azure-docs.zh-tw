@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 04c532ceb5f40e9a5b7fa5fd5b75f60182f54580
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369058"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427780"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -32,13 +32,13 @@ Azure 監視器記錄是為縮放及支援每日大量資料的收集、索引�
 
 ## <a name="pricing-model"></a>定價模式
 
-Log Analytics 的預設定價是**隨用隨付**模型 (會以所擷取的資料量作為根據)，而且可選擇性地用於需要長時間保留資料的情況。 資料量會以 GB 儲存的資料大小來測量， (10 ^ 9 個位元組) 。 每項 Log Analytics 工作區都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 根據下列因素而定，所資料的擷取量可能會很可觀： 
+Log Analytics 的預設定價是 **隨用隨付** 模型 (會以所擷取的資料量作為根據)，而且可選擇性地用於需要長時間保留資料的情況。 資料量會以 GB 儲存的資料大小來測量， (10 ^ 9 個位元組) 。 每項 Log Analytics 工作區都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 根據下列因素而定，所資料的擷取量可能會很可觀： 
 
   - 已啟用的管理解決方案數目和其設定
   - 已監視的 VM 數目
   - 從每個已監視 VM 收集來的資料類型 
   
-除了隨用隨付模型外，Log Analytics 還有**容量保留**層，相較於隨用隨付價格，可讓您省下 25% 的費用。 容量保留定價可讓您從「100 GB/天」起購買保留。 高於保留層級的使用量則會以隨用隨付費率計費。 容量保留層有 31 天的承諾用量期間。 在承諾用量期間，您可以變更為較高層級的容量保留層 (這麼做會重新開始計算 31 天的承諾用量期間)，但在承諾用量期間結束之前，您都無法重新回到隨用隨付定價或較低的容量保留層。 容量保留層會每日計費。 [深入了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 的隨用隨付定價和容量保留定價。 
+除了隨用隨付模型外，Log Analytics 還有 **容量保留** 層，相較於隨用隨付價格，可讓您省下 25% 的費用。 容量保留定價可讓您從「100 GB/天」起購買保留。 高於保留層級的使用量則會以隨用隨付費率計費。 容量保留層有 31 天的承諾用量期間。 在承諾用量期間，您可以變更為較高層級的容量保留層 (這麼做會重新開始計算 31 天的承諾用量期間)，但在承諾用量期間結束之前，您都無法重新回到隨用隨付定價或較低的容量保留層。 容量保留層會每日計費。 [深入了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 的隨用隨付定價和容量保留定價。 
 
 在所有的定價層中，事件的資料大小是從記錄檔分析中針對此事件儲存的屬性（不論是從代理程式傳送，還是在內嵌進程期間新增）的字串表示所計算。 這包括任何 [自訂欄位](custom-fields.md) ，這些欄位會在收集資料時新增，然後儲存在 Log Analytics 中。 所有資料類型通用的數個屬性，包括一些 [Log Analytics 標準屬性](./log-standard-columns.md)，都會在事件大小的計算中排除。 這包括 `_ResourceId` 、 `_ItemId` 、 `_IsBillable` `_BilledSize` 和 `Type` 。 儲存在 Log Analytics 中的其他所有屬性都會包含在事件大小的計算中。 某些資料類型完全免費，資料內嵌費用，例如 AzureActivity、心跳和使用類型。 若要判斷是否從資料內嵌的計費中排除某個事件，您可以使用 `_IsBillable` 屬性，如下[below](#data-volume-for-specific-events)所示。 使用量會以 GB (1.0 E 9 bytes) 來回報。 
 
@@ -50,11 +50,11 @@ Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資�
 
 叢集容量保留層級是使用中的參數，以程式設計方式透過 Azure Resource Manager 來設定 `Capacity` `Sku` 。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。 這詳述于 [Azure 監視器客戶管理的金鑰](customer-managed-keys.md#create-cluster)。 如果您的叢集需要「2000 GB/天」以上的保留量，請透過以下信箱與我們連絡：[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
 
-叢集上的使用量有兩種計費模式。 設定叢集時，參數可以指定這些 `billingType` 參數。 [configuring your cluster](customer-managed-keys.md#cmk-management) 兩種模式為： 
+叢集上的使用量有兩種計費模式。 設定叢集時，參數可以指定這些 `billingType` 參數。 [configuring your cluster](customer-managed-keys.md#customer-managed-key-operations) 兩種模式為： 
 
-1. 叢集 **：在**此案例中 (是預設) ，內嵌資料的計費是在叢集層級進行。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](../../security-center/index.yml)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
+1. 叢集 **：在** 此案例中 (是預設) ，內嵌資料的計費是在叢集層級進行。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](../../security-center/index.yml)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
 
-2. **工作區**：您叢集的容量保留成本會依叢集內的工作區進行比例化， (在會計入每個工作區 [Azure 資訊安全中心](../../security-center/index.yml) 的每個節點配置。 ) 如果內嵌到一天工作區的總數據量小於容量保留，則每個工作區的內嵌資料會以每 GB 容量保留費率計費，並藉由以容量保留的一部分計費來計費，而容量保留的未使用部分則會計費至叢集資源。 如果內嵌到一天工作區的總數據量超過容量保留量，則每個工作區會依據其內嵌資料的分數，以及每個工作區的容量保留比例，以每個工作區的比例計費。 如果每天內嵌到工作區中的資料量總計超過容量保留，則不會對叢集資源收費。
+2. **工作區** ：您叢集的容量保留成本會依叢集內的工作區進行比例化， (在會計入每個工作區 [Azure 資訊安全中心](../../security-center/index.yml) 的每個節點配置。 ) 如果內嵌到一天工作區的總數據量小於容量保留，則每個工作區的內嵌資料會以每 GB 容量保留費率計費，並藉由以容量保留的一部分計費來計費，而容量保留的未使用部分則會計費至叢集資源。 如果內嵌到一天工作區的總數據量超過容量保留量，則每個工作區會依據其內嵌資料的分數，以及每個工作區的容量保留比例，以每個工作區的比例計費。 如果每天內嵌到工作區中的資料量總計超過容量保留，則不會對叢集資源收費。
 
 在叢集計費選項中，資料保留會依工作區計費。 請注意，當叢集建立好時，無論是否已有工作區與叢集關聯，叢集都會開始計費。 此外，請注意，與叢集相關聯的工作區不再具有定價層。
 
@@ -98,20 +98,20 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 ## <a name="legacy-pricing-tiers"></a>舊版定價層
 
-在 2018 年 4 月 2 日之前擁有 Log Analytics 工作區或 Application Insights 資源的訂用帳戶，或所連結的 Enterprise 合約已在 2019 年 2 月 1 日之前啟動的訂用帳戶，將會繼續擁有使用舊版定價層的存取權：**免費**、**獨立 (每 GB)** 和**每一節點 (OMS)** 。  免費定價層中的工作區會將每日資料擷取量限制在 500 MB 內 ([Azure 資訊安全中心](../../security-center/index.yml)所收集的安全性資料類型除外)，而且資料會限制為保留 7 天。 免費定價層僅供評估之用。 「獨立」或「每一節點」定價層中的工作區則會擁有 30 到 730 天的保留時間，此值可由使用者加以設定。
+在 2018 年 4 月 2 日之前擁有 Log Analytics 工作區或 Application Insights 資源的訂用帳戶，或所連結的 Enterprise 合約已在 2019 年 2 月 1 日之前啟動的訂用帳戶，將會繼續擁有使用舊版定價層的存取權： **免費** 、 **獨立 (每 GB)** 和 **每一節點 (OMS)** 。  免費定價層中的工作區會將每日資料擷取量限制在 500 MB 內 ([Azure 資訊安全中心](../../security-center/index.yml)所收集的安全性資料類型除外)，而且資料會限制為保留 7 天。 免費定價層僅供評估之用。 「獨立」或「每一節點」定價層中的工作區則會擁有 30 到 730 天的保留時間，此值可由使用者加以設定。
 
 獨立定價層上的使用量會依內嵌資料量計費。 它會在 **Log Analytics** 服務中報告，且計量會命名為「資料分析」。 
 
-「每一節點」定價層會以小時為單位來針對每一已監視 VM (節點) 收費。 針對每個已監視的節點，工作區每天可獲得 500 MB 資料的配置量，這部分的使用量不會計費。 此配置是以每小時的資料細微性計算，並在每天的工作區層級進行匯總。 高於每日資料配置彙總量的擷取資料則會在資料超額時按 GB 計費。 請注意，如果工作區位於「每一節點」定價層，則 Log Analytics 使用量的服務在帳單上會是**深入解析與分析**。 使用量會以三個計量回報：
+「每一節點」定價層會以小時為單位來針對每一已監視 VM (節點) 收費。 針對每個已監視的節點，工作區每天可獲得 500 MB 資料的配置量，這部分的使用量不會計費。 此配置是以每小時的資料細微性計算，並在每天的工作區層級進行匯總。 高於每日資料配置彙總量的擷取資料則會在資料超額時按 GB 計費。 請注意，如果工作區位於「每一節點」定價層，則 Log Analytics 使用量的服務在帳單上會是 **深入解析與分析** 。 使用量會以三個計量回報：
 
 1. 節點：這是受監視節點數目的使用量， (Vm) 單位為節點 * 月數。
 2. 每個節點的資料超額：這是內嵌超過匯總資料配置的資料 GB 數目。
 3. 每個節點包含的資料：這是匯總資料配置所涵蓋的內嵌資料量。 當工作區在所有定價層中，以顯示 Azure 資訊安全中心所涵蓋的資料量時，也會使用此計量表。
 
 > [!TIP]
-> 如果您的工作區可存取**每一節點**定價層，但您想要知道其成本是否會低於隨用隨付層，則可以[使用下面的查詢](#evaluating-the-legacy-per-node-pricing-tier)輕鬆取得建議。 
+> 如果您的工作區可存取 **每一節點** 定價層，但您想要知道其成本是否會低於隨用隨付層，則可以 [使用下面的查詢](#evaluating-the-legacy-per-node-pricing-tier)輕鬆取得建議。 
 
-在 2016 年 4 月前建立的工作區也可以存取原始的**標準**和**進階**定價層，兩者分別會固定保留資料 30 天和 365 天。 新的工作區則無法建立在**標準**或**進階**定價層，而且如果將工作區移出這兩層，就無法再將其移回。 這些舊版層的資料內嵌計量稱為「資料分析」。
+在 2016 年 4 月前建立的工作區也可以存取原始的 **標準** 和 **進階** 定價層，兩者分別會固定保留資料 30 天和 365 天。 新的工作區則無法建立在 **標準** 或 **進階** 定價層，而且如果將工作區移出這兩層，就無法再將其移回。 這些舊版層的資料內嵌計量稱為「資料分析」。
 
 舊版 Log Analytics 層的使用以及 [Azure 資訊安全中心](../../security-center/index.yml)的使用量計費方式之間還有一些行為。 
 
@@ -210,7 +210,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 每個工作區的每日上限都套用於一天的不同小時。 重設時數會顯示在 [ **每日上限** ] 頁面中 (查看以下) 。 無法設定此重設時數。 
 
-達到每日限制後不久，就會立即停止收集當天剩餘時間的需計費資料類型。 套用每日上限的延遲是指在指定的每日上限層級中，不會精確套用端點。 在所選取的 Log Analytics 工作區中，頁面頂端會出現警告橫幅，且系統會將作業事件傳送至 **LogManagement** 類別下的「Operation」** 資料表。 一旦過了「每日限制的設定時間」下定義的重設時間後，資料收集就會繼續執行。 我們建議您根據此作業事件定義警示規則，設定為在達到每日資料限制時發出通知。 
+達到每日限制後不久，就會立即停止收集當天剩餘時間的需計費資料類型。 套用每日上限的延遲是指在指定的每日上限層級中，不會精確套用端點。 在所選取的 Log Analytics 工作區中，頁面頂端會出現警告橫幅，且系統會將作業事件傳送至 **LogManagement** 類別下的「Operation」 資料表。 一旦過了「每日限制的設定時間」下定義的重設時間後，資料收集就會繼續執行。 我們建議您根據此作業事件定義警示規則，設定為在達到每日資料限制時發出通知。 
 
 > [!NOTE]
 > 每日上限無法精確地以指定的端點層級和某些多餘的資料來停止收集資料，尤其是當工作區接收大量資料時。  
@@ -307,7 +307,7 @@ find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(n
 
 
 > [!TIP]
-> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型 (請參閱下文)。
+> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要 **每一部電腦** 的結果，則請查詢 Usage 資料類型 (請參閱下文)。
 
 ## <a name="understanding-ingested-data-volume"></a>了解已擷取的資料量
 
@@ -366,7 +366,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>資料量 (依電腦)
 
-`Usage` 資料類型不包含電腦層級的資訊。 若要查看每一部電腦已擷取的資料**大小**，請使用會提供大小 (以位元組為單位) 的 `_BilledSize` [屬性](./log-standard-columns.md#_billedsize)：
+`Usage` 資料類型不包含電腦層級的資訊。 若要查看每一部電腦已擷取的資料 **大小** ，請使用會提供大小 (以位元組為單位) 的 `_BilledSize` [屬性](./log-standard-columns.md#_billedsize)：
 
 ```kusto
 find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
@@ -378,7 +378,7 @@ find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
 
 `_IsBillable` [屬性](./log-standard-columns.md#_isbillable)會指定已擷取的資料是否會產生費用。 
 
-若要查看每一部電腦所擷取的可計費事件**計數**，請使用 
+若要查看每一部電腦所擷取的可計費事件 **計數** ，請使用 
 
 ```kusto
 find where TimeGenerated > ago(24h) project _IsBillable, Computer
@@ -389,11 +389,11 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型。
+> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要 **每一部電腦** 的結果，則請查詢 Usage 資料類型。
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>資料量 (依 Azure 資源、資源群組或訂用帳戶)
 
-針對 Azure 中所裝載節點的資料，您可以取得__每一部電腦__所擷取資料的**大小**，使用 _ResourceId [屬性](./log-standard-columns.md#_resourceid)，此屬性會提供資源的完整路徑：
+針對 Azure 中所裝載節點的資料，您可以取得 __每一部電腦__ 所擷取資料的 **大小** ，使用 _ResourceId [屬性](./log-standard-columns.md#_resourceid)，此屬性會提供資源的完整路徑：
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -401,7 +401,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-針對裝載于 Azure 中節點的資料，您可以取得__每個 azure 訂__用帳戶的內嵌資料**大小**，取得訂用帳戶識別碼的 `_ResourceId` 屬性如下：
+針對裝載于 Azure 中節點的資料，您可以取得 __每個 azure 訂__ 用帳戶的內嵌資料 **大小** ，取得訂用帳戶識別碼的 `_ResourceId` 屬性如下：
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -441,9 +441,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 
 + **工作區型 Application Insights** 資源
   - 深入瞭解如何 [管理 Application Insights 的使用量和成本](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources)
-+ **安全性**解決方案
++ **安全性** 解決方案
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ **記錄管理**解決方案
++ **記錄管理** 解決方案
   - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
 + **Perf** 資料類型
   - `Perf | summarize AggregatedValue = count() by CounterPath`
@@ -473,7 +473,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>在每一節點定價層讓節點成為已計費
 
-若要在工作區位於舊版的每一節點定價層時，取得會以節點形式計費的電腦清單，請尋找會傳送**已計費資料類型** (某些資料類型是免費的) 的節點。 若要這麼做，請使用 `_IsBillable` [屬性](./log-standard-columns.md#_isbillable)，並使用完整網域名稱的最左邊欄位。 這會傳回具有每小時 (這是節點的計算和計費細微性) 已計費資料的電腦計數：
+若要在工作區位於舊版的每一節點定價層時，取得會以節點形式計費的電腦清單，請尋找會傳送 **已計費資料類型** (某些資料類型是免費的) 的節點。 若要這麼做，請使用 `_IsBillable` [屬性](./log-standard-columns.md#_isbillable)，並使用完整網域名稱的最左邊欄位。 這會傳回具有每小時 (這是節點的計算和計費細微性) 已計費資料的電腦計數：
 
 ```kusto
 find where TimeGenerated > ago(24h) project Computer, TimeGenerated
@@ -528,7 +528,7 @@ union
 
 ## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>評估舊版的每一節點定價層
 
-在決定可存取舊版**每一節點**定價層的工作區是在該階層還是目前的**隨用隨付**或**容量保留**層會比較好時，客戶往往很難做出評估。  這牽涉到了解每一節點定價層中每一已監視節點的固定成本與其內含的資料配置「500 MB/節點/天」，以及隨用隨付 (每 GB) 層只需支付所擷取資料的成本之間的取捨。 
+在決定可存取舊版 **每一節點** 定價層的工作區是在該階層還是目前的 **隨用隨付** 或 **容量保留** 層會比較好時，客戶往往很難做出評估。  這牽涉到了解每一節點定價層中每一已監視節點的固定成本與其內含的資料配置「500 MB/節點/天」，以及隨用隨付 (每 GB) 層只需支付所擷取資料的成本之間的取捨。 
 
 為了協助進行此評估，您可以根據工作區的使用模式，使用下列查詢來提出最佳定價層建議。  此查詢會查看過去 7 天內已監視的節點和擷取至工作區的資料，並針對每一天評估哪個定價層最好。 若要使用查詢，您必須指定
 
@@ -597,14 +597,14 @@ union *
 
 若要在過去24小時內內嵌計費資料量超過 50 GB 時發出警示，請遵循下列步驟： 
 
-- **定義警示條件**：將您的 Log Analytics 工作區指定為資源目標。
-- **警示準則**：指定下列項目：
-   - **訊號名稱**：選取 [自訂記錄搜尋]
+- **定義警示條件** ：將您的 Log Analytics 工作區指定為資源目標。
+- **警示準則** ：指定下列項目：
+   - **訊號名稱** ：選取 [自訂記錄搜尋]
    - **搜尋查詢** 至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同的 
    - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
-   - 每隔*1440*分鐘一天執行一次的時間（ *1440*分鐘）和**警示頻率**的**時間週期**。
-- **定義警示詳細資料**：指定下列項目：
-   - *在24小時內大於 50 GB 的可計費資料磁片*區**名稱**
+   - 每隔 *1440* 分鐘一天執行一次的時間（ *1440* 分鐘）和 **警示頻率** 的 **時間週期** 。
+- **定義警示詳細資料** ：指定下列項目：
+   - *在24小時內大於 50 GB 的可計費資料磁片* 區 **名稱**
    - 將 [嚴重性] 設定為「警告」
 
 指定現有或建立新的[動作群組](action-groups.md)，以便在記錄警示符合準則時收到通知。
@@ -624,7 +624,7 @@ union *
 Operation | where OperationCategory == 'Data Collection Status'
 ```
 
-當資料收集停止時，OperationStatus 為 **Warning**。 當資料收集開始時，OperationStatus 為 **Succeeded**。 下表描述資料收集停止的原因，並建議為繼續資料收集所要採取的動作：  
+當資料收集停止時，OperationStatus 為 **Warning** 。 當資料收集開始時，OperationStatus 為 **Succeeded** 。 下表描述資料收集停止的原因，並建議為繼續資料收集所要採取的動作：  
 
 |收集停止的原因| 解決方法| 
 |-----------------------|---------|
@@ -633,7 +633,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |已達舊版免費定價層的每日限制 |請等到隔天自動重新開始收集，或變更為付費定價層。|
 |Azure 訂用帳戶處於暫停狀態，原因如下：<br> 免費試用已結束<br> Azure Pass 已過期<br> 已達每月消費限制 (例如 MSDN 或 Visual Studio 訂閱)|轉換成付費訂閱<br> 移除限制，或等到限制重設|
 
-若要在資料收集停止時收到通知，請使用*建立每日資料上限*警示中所述的步驟，以在資料收集停止時收到通知。 使用[建立動作群組](action-groups.md)中所述的步驟來設定警示規則的電子郵件、Webhook 或 Runbook 動作。 
+若要在資料收集停止時收到通知，請使用 *建立每日資料上限* 警示中所述的步驟，以在資料收集停止時收到通知。 使用[建立動作群組](action-groups.md)中所述的步驟來設定警示規則的電子郵件、Webhook 或 Runbook 動作。 
 
 ## <a name="limits-summary"></a>限制摘要
 

@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173284"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427729"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份的架構與元件
 
@@ -22,11 +22,11 @@ Azure 備份會備份在內部部署機器和 Azure 虛擬機器上執行的資�
 
 您可以使用數種方法來備份電腦和資料：
 
-- **備份內部部署機器**：
+- **備份內部部署機器** ：
   - 您可以使用 Azure 備份 Microsoft Azure 復原服務 (MARS) 代理程式，將內部部署 Windows 電腦直接備份至 Azure。 不支援 Linux 機器。
   - 您可以將內部部署機器備份至備份伺服器，也就是 System Center Data Protection Manager (DPM) 或 Microsoft Azure 備份 Server (MABS) 。 然後，您可以將備份伺服器備份至 Azure 中的復原服務保存庫。
 
-- **備份 Azure vm**：
+- **備份 Azure vm** ：
   - 您可以直接備份 Azure VM。 Azure 備份會將備份擴充功能安裝至 VM 上執行的 Azure VM 代理程式。 此擴充功能會備份整個 VM。
   - 您可以執行 MARS 代理程式來備份 Azure VM 上的特定檔案和資料夾。
   - 您可以將 Azure Vm 備份至在 Azure 中執行的 MABS，然後將 MABS 備份到復原服務保存庫。
@@ -43,9 +43,9 @@ Azure 備份會將備份的資料儲存在保存庫-復原服務保存庫和備�
 - 您可以監視保存庫中的備份專案，包括 Azure Vm 和內部部署機器。
 - 您可以使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)來管理保存庫存取。
 - 您可以指定如何複寫保存庫中的資料以提供備援性：
-  - **本機冗余儲存體 (LRS) **：為了防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](../storage/common/storage-redundancy.md#locally-redundant-storage)。
-  - **異地冗余儲存體 (GRS) **：若要防止整個區域的中斷，您可以使用 GRS。 GRS 會將您的資料複寫到次要區域。 [深入了解](../storage/common/storage-redundancy.md#geo-redundant-storage)。
-  - **區域冗余儲存體 (ZRS) **：複寫 [可用性區域](../availability-zones/az-overview.md#availability-zones)中的資料，保證相同區域中的資料存放區和復原。 [深入了解](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **本機冗余儲存體 (LRS)** ：為了防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](../storage/common/storage-redundancy.md#locally-redundant-storage)。
+  - **異地冗余儲存體 (GRS)** ：若要防止整個區域的中斷，您可以使用 GRS。 GRS 會將您的資料複寫到次要區域。 [深入了解](../storage/common/storage-redundancy.md#geo-redundant-storage)。
+  - **區域冗余儲存體 (ZRS)** ：複寫 [可用性區域](../availability-zones/az-overview.md#availability-zones)中的資料，保證相同區域中的資料存放區和復原。 [深入了解](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - 根據預設，復原服務保存庫會使用 GRS。
 
 復原服務保存庫具有下列額外功能：
@@ -87,8 +87,8 @@ Azure 備份會根據要備份的機器類型，提供不同的備份代理程�
 
 - 資料來源 A 由每月備份的10個儲存區塊（A1-A10）所組成。
 - 區塊 A2、A3、A4 和 A9 在第一個月有所變更，而 A5 則在下個月有所變更。
-- 若使用差異備份，將會在第二個月備份有所變更的區塊 A2、A3、A4 和 A9。 在第三個月會再次備份這一些相同區塊，以及有所變更的區塊 A5。 在執行下次完整備份之前，都會繼續備份有所變更的區塊。
-- 針對增量備份，在第二個月，區塊 A2、A3、A4 和 A9 會標示為已變更和已傳送。 在第三個月，只標示區塊 A5 有所變更，而加以傳輸。
+- 針對差異備份，在第二個月變更的區塊 A2、A3、A4 和 A9 都會進行備份。 在第三個月會再次備份這一些相同區塊，以及有所變更的區塊 A5。 在執行下次完整備份之前，都會繼續備份有所變更的區塊。
+- 針對增量備份，在第二個月中，會將 A2、A3、A4 和 A9 標示為已變更和已傳送。 在第三個月，只標示區塊 A5 有所變更，而加以傳輸。
 
 ![顯示備份方法比較的影像](./media/backup-architecture/backup-method-comparison.png)
 
@@ -96,7 +96,7 @@ Azure 備份會根據要備份的機器類型，提供不同的備份代理程�
 
 下表摘要說明不同備份類型的支援功能：
 
-**功能** | **使用 MARS 代理程式直接備份檔案和資料夾 () ** | **Azure VM 備份** | **使用 DPM/MABS 的電腦或應用程式**
+**功能** | **使用 MARS 代理程式直接備份檔案和資料夾 ()** | **Azure VM 備份** | **使用 DPM/MABS 的電腦或應用程式**
 --- | --- | --- | ---
 備份至保存庫 | ![是][green] | ![是][green] | ![是][green]
 備份至 DPM/MABS 磁片，然後再備份至 Azure | | | ![是][green]
@@ -123,6 +123,12 @@ Azure 備份會根據要備份的機器類型，提供不同的備份代理程�
 - 「每月」、「每年」備份點的保留期稱為長期保留 (LTR) 
 - 建立保存庫時，也會建立「DefaultPolicy」，並可用於備份資源。
 - 對備份原則的保留期間所做的任何變更，將會追溯到新的復原點以外的所有舊的復原點。
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>原則變更在復原點上的影響
+
+- **保留持續時間增加/減少：** 當保留期間變更時，新的保留期間也會套用至現有的復原點。 如此一來，將會清除某些復原點。 如果保留期限增加，現有的復原點也會有增加的保留。
+- **從每天變更為每週：** 當排程備份從每天變更為每週時，會清除現有的每日復原點。
+- **從每週變更為每日：** 現有的每週備份會根據目前的保留原則，保留剩餘的天數。
 
 ### <a name="additional-reference"></a>其他參考資料
 
@@ -204,7 +210,7 @@ Azure VM 會使用磁碟來儲存其作業系統、應用程式和資料。 每�
 
 您可以搭配 Azure 備份使用 premium 儲存體來備份 Azure Vm：
 
-- 在使用 premium 儲存體備份 Vm 的過程中，備份服務會在儲存體帳戶中建立名為 *AzureBackup*的暫存位置。 預備位置的大小等於復原點快照集的大小。
+- 在使用 premium 儲存體備份 Vm 的過程中，備份服務會在儲存體帳戶中建立名為 *AzureBackup* 的暫存位置。 預備位置的大小等於復原點快照集的大小。
 - 確定進階儲存體帳戶有足夠的可用空間可容納暫存位置。 如需詳細資訊，請參閱 [premium 頁面 blob 儲存體帳戶的擴充性目標](../storage/blobs/scalability-targets-premium-page-blobs.md)。 請勿修改暫存位置。
 - 備份作業完成後，就會刪除暫存位置。
 - 用於暫存位置的儲存體，價格會與[進階儲存體價格](../virtual-machines/disks-types.md#billing)一致。

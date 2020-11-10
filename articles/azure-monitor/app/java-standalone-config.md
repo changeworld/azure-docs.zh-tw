@@ -4,12 +4,12 @@ description: Azure 監視器 Application Insights JAVA 的設定選項
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381026"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427695"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure 監視器 Application Insights JAVA 的設定選項
 
@@ -178,9 +178,9 @@ ms.locfileid: "94381026"
 
 如需詳細資訊，請參閱 [遙測處理器](./java-standalone-telemetry-processors.md) 檔。
 
-## <a name="autocollected-logging"></a>實驗自動收集記錄
+## <a name="auto-collected-logging"></a>自動收集的記錄
 
-Log4j、Logback 和 util 會自動檢測記錄，而透過這些記錄架構執行的記錄則是實驗自動收集。
+Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這些記錄架構執行的記錄。
 
 依預設，只有在該記錄執行于 `INFO` 層級或以上時，才會收集記錄。
 
@@ -213,13 +213,13 @@ Log4j、Logback 和 util 會自動檢測記錄，而透過這些記錄架構執�
 | 追蹤 (或最佳)  | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>實驗自動收集 Micrometer 計量 (包括彈簧開機傳動標準) 
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自動收集的 Micrometer 計量 (包括彈簧開機傳動標準) 
 
-如果您的應用程式使用 [Micrometer](https://micrometer.io)，則傳送至 Micrometer global 登錄的計量會實驗自動收集。
+如果您的應用程式使用 [Micrometer](https://micrometer.io)，則會自動收集傳送至 Micrometer global 登錄的計量。
 
-此外，如果您的應用程式使用 [彈簧開機傳動](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)器，則由春季開機傳動器設定的計量也會實驗自動收集。
+此外，如果您的應用程式使用 [彈簧開機傳動](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)器，則也會自動收集由彈簧開機傳動器設定的計量。
 
-若要停用 autocollection 的 Micrometer 計量 (包括彈簧開機傳動程式計量) ：
+若要停用自動收集 Micrometer 計量 (包括彈簧開機傳動程式計量) ：
 
 > [!NOTE]
 > 自訂計量會分開計費，而且可能會產生額外的成本。 請務必檢查詳細的 [定價資訊](https://azure.microsoft.com/pricing/details/monitor/)。 若要停用 Micrometer 和春季制動器的計量，請將下列設定新增至您的設定檔。

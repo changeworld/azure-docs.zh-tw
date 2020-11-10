@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780014"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427933"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>開始使用 Azure SQL 受控執行個體審核
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,11 +42,11 @@ ms.locfileid: "92780014"
       > - 如果您的儲存體帳戶位於虛擬網路或防火牆後方，請參閱 [從虛擬網路授與存取權](../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)。
       > - 如果您將保留期間從 0 (無限制的保留) 變更為任何其他值，請注意保留期只會套用至保留值變更之後所寫入的記錄 (設定為無限制的期間所寫入的記錄會予以保留，即使已啟用保留期)。
 
-   1. 在儲存體帳戶中，移至 [概觀]  ，然後按一下 [Blob]  。
+   1. 在儲存體帳戶中，移至 [概觀]，然後按一下 [Blob]。
 
       ![Azure Blob widget](./media/auditing-configure/1_blobs_widget.png)
 
-   1. 在上方功能表中，按一下 [+ 容器]  以建立新的容器。
+   1. 在上方功能表中，按一下 [+ 容器] 以建立新的容器。
 
       ![建立 Blob 容器圖示](./media/auditing-configure/2_create_container_button.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "92780014"
 
    - <a id="blobtsql"></a>使用 T-sql 設定 audit 記錄檔的 blob 儲存體：
 
-     1. 在容器清單中，按一下新建立的容器，然後按一下 [容器屬性]  。
+     1. 在容器清單中，按一下新建立的容器，然後按一下 [容器屬性]。
 
         ![Blob 容器屬性按鈕](./media/auditing-configure/4_container_properties_button.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "92780014"
             > [!NOTE]
             > 在過期時更新權杖，以避免稽核失敗。
 
-          - 按一下 [產生 SAS]  。
+          - 按一下 [產生 SAS]。
 
             ![SAS 設定](./media/auditing-configure/7_sas_configure.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "92780014"
         GO
         ```
 
-        藉由 [建立伺服器 audit 規格或資料庫審核規格](#createspec)來繼續。
+     1. 藉由 [建立伺服器 audit 規格或資料庫審核規格](#createspec)來繼續。
 
    - <a id="blobssms"></a>使用 SQL Server Management Studio 18 (Preview) 為 audit 記錄設定 blob 儲存體：
 
@@ -169,15 +169,15 @@ ms.locfileid: "92780014"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/) 中流覽至受控實例。
 
-2. 按一下 [診斷設定]  。
+2. 按一下 [診斷設定]。
 
-3. 按一下 [開啟診斷]  。 如果已啟用診斷，則會改為顯示 [ **+ 新增診斷] 設定** 。
+3. 按一下 [開啟診斷]。 如果已啟用診斷，則會改為顯示 [ **+ 新增診斷] 設定** 。
 
-4. 從記錄清單中選取 [SQLSecurityAuditEvents]  。
+4. 從記錄清單中選取 [SQLSecurityAuditEvents]。
 
 5. 選取 audit 事件的目的地：事件中樞、Azure 監視器記錄或兩者。 為每個目標設定必要的參數 (例如 Log Analytics 工作區)。
 
-6. 按一下 [檔案]  。
+6. 按一下 [儲存]。
 
     ![設定診斷設定](./media/auditing-configure/9_mi_configure_diagnostics.png)
 

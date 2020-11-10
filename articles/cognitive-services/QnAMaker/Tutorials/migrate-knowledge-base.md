@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 78e22a9ec150435c1bc83873a2fcf0a00560c0c1
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4378a648b8b7a545c9e4b638d08592aa32fff3aa
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375953"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427661"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用匯出-匯入移轉知識庫
 
@@ -25,7 +25,7 @@ ms.locfileid: "94375953"
 > [!NOTE]
 > 遵循下列指示，將您現有的知識庫遷移至新的 QnA Maker 受控 (預覽版) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 開始之前，請建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 * 設定新的 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)
@@ -59,12 +59,12 @@ ms.locfileid: "94375953"
 
 **匯出**
 
-* [下載知識庫 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+* [下載知識庫 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
 
 **匯入**
 
-* [使用相同的知識庫識別碼取代 (重載 API) ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
-* [使用新的知識庫識別碼建立 API (載入) ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [使用相同的知識庫識別碼取代 (重載 API) ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
+* [使用新的知識庫識別碼建立 API (載入) ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>聊天記錄和變動
