@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: 使用前端進行快取
       href: front-door-caching.md
+    - name: DDoS 保護
+      href: front-door-ddos.md
     - name: Front Door 常見問題集
       href: front-door-faq.md
     - name: 地區篩選

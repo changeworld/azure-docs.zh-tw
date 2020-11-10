@@ -64,6 +64,8 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: 使用 ARMClient
           href: connection-monitor-preview-create-using-arm-client.md
+        - name: 使用 PowerShell
+          href: connection-monitor-create-using-powershell.md
     - name: 遷移至連線監視器 (預覽)
       items:
         - name: 從網路效能監控

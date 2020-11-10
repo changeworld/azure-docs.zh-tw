@@ -86,7 +86,7 @@
     - name: 適用於 PostgreSQL 的 Azure 資料庫 - 超大規模資料庫安全性基準
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks 安全性基準
-      href: ../../azure-databricks/security-baseline.md
+      href: /azure/databricks/scenarios/security-baseline
     - name: Azure DNS 安全性基準
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs 安全性基準
@@ -118,7 +118,7 @@
     - name: Azure Sentinel 安全性基準
       href: ../../sentinel/security-baseline.md
     - name: Azure SQL Database 安全性基準
-      href: ../../sql-database/security-baseline.md
+      href: ../../azure-sql/database/security-baseline.md
     - name: Azure 儲存體安全性基準
       href: ../../storage/common/security-baseline.md
     - name: Azure 流量管理員安全性基準
@@ -154,7 +154,7 @@
     - name: HDInsight 安全性基準
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault 安全性基準
-      href: ../../key-vault/security-baseline.md
+      href: ../../key-vault/general/security-baseline.md
     - name: Logic Apps 安全性基準
       href: ../../logic-apps/security-baseline.md
     - name: 網路監看員安全性基準

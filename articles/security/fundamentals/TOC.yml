@@ -49,7 +49,7 @@
     - name: 安全性檢查清單
       href: steps-secure-identity.md
     - name: 選擇無密碼
-      href: ad-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md
 - name: 網路安全性
   items:
     - name: 安全性概觀
@@ -63,7 +63,7 @@
     - name: 懸空 DNS 和子網域接管
       href: subdomain-takeover.md
     - name: 安全混合式網路架構
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
 - name: IaaS 安全性
   items:
     - name: Microsoft Antimalware
@@ -97,13 +97,13 @@
     - name: 資料庫安全性
       items:
         - name: 概觀
-          href: ../../sql-database/sql-database-security-overview.md
+          href: ../../azure-sql/database/security-overview.md
         - name: 最佳作法
-          href: ../../sql-database/sql-database-security-best-practice.md
+          href: ../../azure-sql/database/security-best-practice.md
         - name: 安全性檢查清單
           href: database-security-checklist.md
     - name: 儲存體安全性指南
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: ../../storage/blobs/security-recommendations.md?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
     - name: 客戶加密箱
       href: customer-lockbox-overview.md
     - name: 客戶加密箱的安全性基準

@@ -120,6 +120,8 @@
           href: understand/subscription-transfer.md
         - name: 在合作夥伴之間轉移訂閱 (預覽)
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: 開始使用 Azure EA 入口網站
+          href: manage/ea-portal-get-started.md
 - name: 操作指南
   items:
     - name: 設定成本管理 + 計費
@@ -200,8 +202,6 @@
               href: manage/cancel-azure-subscription.md
         - name: 管理 Enterprise 合約訂用帳戶
           items:
-            - name: 開始使用 Azure EA 入口網站
-              href: manage/ea-portal-get-started.md
             - name: Azure 中的 EA 角色
               href: manage/understand-ea-roles.md
             - name: Azure EA 入口網站系統管理員
