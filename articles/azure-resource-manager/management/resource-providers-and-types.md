@@ -2,20 +2,20 @@
 title: 資源提供者和資源類型
 description: 描述支援 Azure Resource Manager 的資源提供者。 它描述其架構、可用的 API 版本，以及可裝載資源的區域。
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278848"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426454"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
 部署資源時，您經常需要擷取有關資源提供者和類型的資訊。 例如，如果想要儲存金鑰和密碼，您會使用 Microsoft.KeyVault 資源提供者。 此資源提供者會提供稱為保存庫的資源類型來建立金鑰保存庫。
 
-資源類型名稱的格式：**{resource-provider}/{resource-type}**。 金鑰保存庫的資源類型是 **Microsoft.KeyVault/vaults**。
+資源類型名稱的格式： **{resource-provider}/{resource-type}** 。 金鑰保存庫的資源類型是 **Microsoft.KeyVault/vaults** 。
 
 在本文中，您將學會如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "89278848"
 
 ## <a name="register-resource-provider"></a>註冊資源提供者
 
-使用資源提供者之前，您必須為您的 Azure 訂用帳戶註冊資源提供者。 此步驟會將您的訂用帳戶設定為使用資源提供者。 註冊範圍一律是訂用帳戶。 許多資源提供者都會預設為自動註冊。 不過，您可能需要手動註冊某些資源提供者。
+使用資源提供者之前，必須先為資源提供者註冊您的 Azure 訂用帳戶。 註冊會將您的訂用帳戶設定為使用資源提供者。 預設會註冊某些資源提供者。 當您採取特定動作時，會自動註冊其他資源提供者。 例如，當您透過入口網站建立資源時，通常會為您註冊資源提供者。 若是其他情況，您可能需要手動註冊資源提供者。
 
 本文說明如何檢查資源提供者的註冊狀態，並視需要進行註冊。 您必須擁有對資源提供者進行作業的許可權 `/register/action` 。 許可權包含在「參與者」和「擁有者」角色中。
 
@@ -49,23 +49,23 @@ ms.locfileid: "89278848"
 
     ![選取 [訂用帳戶]](./media/resource-providers-and-types/select-all-services.png)
 
-3. 在 [所有服務]**** 方塊中，輸入 [訂用帳戶]****，然後選取 [訂用帳戶]****。
+3. 在 [所有服務] 方塊中，輸入 [訂用帳戶]，然後選取 [訂用帳戶]。
 4. 從訂用帳戶清單中選取要檢視的訂用帳戶。
-5. 選取**資源提供者**並檢視可用資源提供者的清單。
+5. 選取 **資源提供者** 並檢視可用資源提供者的清單。
 
     ![顯示資源提供者](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. 若要註冊資源提供者，請選取 [註冊]****。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊]**** 連結。
+6. 若要註冊資源提供者，請選取 [註冊]。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊] 連結。
 
 若要查看特定資源提供者的資訊：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 Azure 入口網站功能表上，選取 [所有服務]。
-3. 在 [所有服務]**** 方塊中，輸入 [資源總管]****，然後選取 [資源總管]****。
+3. 在 [所有服務] 方塊中，輸入 [資源總管]，然後選取 [資源總管]。
 
     ![選取所有服務](./media/resource-providers-and-types/select-resource-explorer.png)
 
-4. 選取向右箭號可展開 [提供者]****。
+4. 選取向右箭號可展開 [提供者]。
 
     ![選取 [提供者]](./media/resource-providers-and-types/select-providers.png)
 
@@ -83,8 +83,6 @@ ms.locfileid: "89278848"
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 若要查看 Azure 中的所有資源提供者，以及您訂用帳戶的登錄狀態，請使用：
 
 ```azurepowershell-interactive
@@ -101,6 +99,12 @@ Microsoft.ClassicNetwork         Registered
 Microsoft.ClassicStorage         Registered
 Microsoft.CognitiveServices      Registered
 ...
+```
+
+若要查看您訂用帳戶的所有已註冊資源提供者，請使用：
+
+```azurepowershell-interactive
+ Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
 若要註冊資源提供者，請使用：
@@ -190,7 +194,7 @@ West US
 
 若要查看 Azure 中的所有資源提供者，以及您訂用帳戶的登錄狀態，請使用：
 
-```azurecli
+```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
@@ -206,9 +210,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
+若要查看您訂用帳戶的所有已註冊資源提供者，請使用：
+
+```azurecli-interactive
+az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
+```
+
 若要註冊資源提供者，請使用：
 
-```azurecli
+```azurecli-interactive
 az provider register --namespace Microsoft.Batch
 ```
 
@@ -216,7 +226,7 @@ az provider register --namespace Microsoft.Batch
 
 若要查看特定資源提供者的資訊，請使用：
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch
 ```
 
@@ -235,7 +245,7 @@ az provider show --namespace Microsoft.Batch
 
 若要查看資源提供者的資源類型，請使用：
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
@@ -254,7 +264,7 @@ API 版本會對應至資源提供者所發行的 REST API 作業版本。 當�
 
 若要取得資源類型的可用 API 版本，請使用：
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
@@ -274,7 +284,7 @@ Result
 
 若要取得資源類型支援的位置，請使用：
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 

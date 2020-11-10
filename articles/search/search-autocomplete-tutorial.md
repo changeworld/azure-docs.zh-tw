@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5dd2d9e932bd1be3da74a2bdc9bd918401076aa3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348605"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426165"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -56,8 +56,8 @@ Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。
 
 + [建議 REST API](/rest/api/searchservice/suggestions) 
 + [自動完成 REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [AutocompleteWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [SuggestAsync 方法](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [AutocompleteAsync 方法](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 ## <a name="structure-a-response"></a>結構回應
 
@@ -67,7 +67,7 @@ Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。
 
 針對建議，您應該進一步精簡回應以避免重複，或看似不相關的結果。 若要控制結果，請在要求中包含更多參數。 下列參數適用于自動完成和建議，但可能更是建議的必要項，特別是在建議工具組含多個欄位時。
 
-| 參數 | 使用方式 |
+| 參數 | 使用量 |
 |-----------|-------|
 | **$select** | 如果您在建議工具中有多個 **sourceFields** ，請使用 **$select** 選擇 () 中提供值的欄位 `$select=GameTitle` 。 |
 | **searchFields** | 將查詢限制為特定欄位。 |
@@ -139,45 +139,43 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>建議函數
 
-如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函式是以 [DocumentsOperationsExtensions. 建議方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)為基礎。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](search-howto-dotnet-sdk.md)。
+如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函數是以 [SuggestAsync 方法](/dotnet/api/azure.search.documents.searchclient.suggestasync)為基礎。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](search-howto-dotnet-sdk.md)。
 
-`InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters)類別上的屬性會決定要在結果中搜尋和傳回哪些欄位、相符的數目，以及是否使用模糊比對。 
+`InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions)類別上的屬性會決定要在結果中搜尋和傳回哪些欄位、相符的數目，以及是否使用模糊比對。 
 
 針對自動完成，模糊比對會限制為一個編輯距離， (一個省略或錯置的字元) 。 請注意，自動完成查詢中的模糊比對有時可能會產生非預期的結果，視索引大小及其分區化方式而定。 如需詳細資訊，請參閱 [分割區和分區化概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 ```csharp
-public ActionResult Suggest(bool highlights, bool fuzzy, string term)
+public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
 {
     InitSearch();
 
-    // Call suggest API and return results
-    SuggestParameters sp = new SuggestParameters()
+    var options = new SuggestOptions()
     {
-        Select = HotelName,
-        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
-        Top = 5
+        Size = 8,
     };
 
     if (highlights)
     {
-        sp.HighlightPreTag = "<b>";
-        sp.HighlightPostTag = "</b>";
+        options.HighlightPreTag = "<b>";
+        options.HighlightPostTag = "</b>";
     }
 
-    DocumentSuggestResult resp = _indexClient.Documents.Suggest(term, "sg", sp);
+    // Only one suggester can be specified per index.
+    // The suggester for the Hotels index enables autocomplete/suggestions on the HotelName field only.
+    // During indexing, HotelNames are indexed in patterns that support autocomplete and suggested results.
+    var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
 
     // Convert the suggest query results to a list that can be displayed in the client.
-    List<string> suggestions = resp.Results.Select(x => x.Text).ToList();
-    return new JsonResult
-    {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = suggestions
-    };
+    List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+    // Return the list of suggestions.
+    return new JsonResult(suggestions);
 }
 ```
 
-建議函式會採用兩個參數，以決定是要傳回命中結果醒目提示，還是要使用搜尋字詞輸入外加模糊比對。 此方法會建立 [SuggestParameters 物件](/dotnet/api/microsoft.azure.search.models.suggestparameters)，然後傳遞到建議 API。 結果接著會轉換為 JSON，以供在用戶端中顯示。
+SuggestAsync 函式會採用兩個參數，以決定是否要傳回搜尋結果反白顯示，以及是否要使用搜尋字詞輸入以外的模糊比對。 建議的結果中可以包含最多8個相符專案。 方法會建立 [SuggestOptions 物件](/dotnet/api/azure.search.documents.suggestoptions)，然後將該物件傳遞至建議 API。 結果接著會轉換為 JSON，以供在用戶端中顯示。
 
 ## <a name="autocomplete"></a>自動完成
 
@@ -185,7 +183,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.8 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#searchbox1").autocompleteInline({
         appendMethod: "replace",
@@ -220,28 +218,25 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>自動完成函數
 
-自動完成是根據 [DocumentsOperationsExtensions。自動完成方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete)。 如同建議，此程式碼區塊會進入 **HomeController.cs** 檔案。
+自動完成會以 [AutocompleteAsync 方法](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)為基礎。 如同建議，此程式碼區塊會進入 **HomeController.cs** 檔案。
 
 ```csharp
-public ActionResult AutoComplete(string term)
+public async Task<ActionResult> AutoCompleteAsync(string term)
 {
     InitSearch();
-    //Call autocomplete API and return results
-    AutocompleteParameters ap = new AutocompleteParameters()
-    {
-        AutocompleteMode = AutocompleteMode.OneTermWithContext,
-        UseFuzzyMatching = false,
-        Top = 5
-    };
-    AutocompleteResult autocompleteResult = _indexClient.Documents.Autocomplete(term, "sg", ap);
 
-    // Convert the Suggest results to a list that can be displayed in the client.
-    List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-    return new JsonResult
+    // Setup the autocomplete parameters.
+    var ap = new AutocompleteOptions()
     {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = autocomplete
+        Mode = AutocompleteMode.OneTermWithContext,
+        Size = 6
     };
+    var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
+
+    // Convert the autocompleteResult results to a list that can be displayed in the client.
+    List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
+
+    return new JsonResult(autocomplete);
 }
 ```
 

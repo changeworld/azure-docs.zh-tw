@@ -5,12 +5,12 @@ description: 瞭解如何更新或重設 Azure Kubernetes Service (AKS) 叢集�
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c787f172bc03e11c574c4de967aee05da9df18aa
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871219"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427508"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service (AKS 的認證) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "88871219"
 
 ## <a name="before-you-begin"></a>開始之前
 
-您需要安裝並設定 Azure CLI 2.0.65 版版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您需要安裝並設定 Azure CLI 2.0.65 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>為您的 AKS 叢集更新或建立新的服務主體
 
@@ -36,7 +36,7 @@ ms.locfileid: "88871219"
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>檢查服務主體的到期日
 
-若要檢查服務主體的到期日，請使用 [az ad sp credential list][az-ad-sp-credential-list] 命令。 下列範例會使用[az aks show][az-aks-show]命令，取得*myResourceGroup*資源群組中名為*myAKSCluster*之叢集的服務主體識別碼。 服務主體識別碼會設定為名為 *SP_ID* 的變數，以搭配 [az ad SP credential list][az-ad-sp-credential-list] 命令使用。
+若要檢查服務主體的到期日，請使用 [az ad sp credential list][az-ad-sp-credential-list] 命令。 下列範例會使用 [az aks show][az-aks-show]命令，取得 *myResourceGroup* 資源群組中名為 *myAKSCluster* 之叢集的服務主體識別碼。 服務主體識別碼會設定為名為 *SP_ID* 的變數，以搭配 [az ad SP credential list][az-ad-sp-credential-list] 命令使用。
 
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -82,7 +82,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-現在，使用您自己的 [az ad sp create-for-rbac][az-ad-sp-create] 命令輸出，定義服務主體識別碼和用戶端密碼的變數，如以下範例所示。 *SP_ID* 是您的 *appId*，而 *SP_SECRET* 是您的*密碼*：
+現在，使用您自己的 [az ad sp create-for-rbac][az-ad-sp-create] 命令輸出，定義服務主體識別碼和用戶端密碼的變數，如以下範例所示。 *SP_ID* 是您的 *appId* ，而 *SP_SECRET* 是您的 *密碼* ：
 
 ```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -104,7 +104,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret "$SP_SECRET"
+    --client-secret $SP_SECRET
 ```
 
 針對小型和中型大小的叢集，在 AKS 中更新服務主體認證需要一些時間。
@@ -124,7 +124,7 @@ az aks update-credentials \
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，已更新 AKS 叢集本身和 AAD 整合應用程式的服務主體。 如需更多如何管理叢集內工作負載之身分識別的相關資訊，請參閱[在 AKS 中驗證和授權的最佳做法][best-practices-identity]。
 

@@ -3,30 +3,20 @@ title: Azure 事件中樞防火牆規則 | Microsoft Docs
 description: 使用「防火牆規則」以允許從特定 IP 位址連線至「Azure 事件中樞」。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 596d506c0c4f6d79696b3019fd903e549149c656
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e07f863bf8b7d5f64ec0ba04bf16fba12f4a785d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056203"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427440"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 事件中樞命名空間
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
-此功能在只應該從特定知名網站存取 Azure 事件中樞的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route][express-route] 使用事件中樞，您可以建立**防火牆規則**以僅允許來自您內部部署基礎結構 IP 位址的流量。 
+此功能在只應該從特定知名網站存取 Azure 事件中樞的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route][express-route] 使用事件中樞，您可以建立 **防火牆規則** 以僅允許來自您內部部署基礎結構 IP 位址的流量。 
 
->[!IMPORTANT]
-> 依預設，開啟事件中樞命名空間的防火牆規則會封鎖連入要求，除非要求源自于來自允許的公用 IP 位址的服務。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 
->
-> 以下是啟用 IP 篩選時，無法存取事件中樞資源的部分服務。 請注意，清單並 **不** 完整。
->
-> - Azure 串流分析
-> - Azure IoT 中樞路由
-> - Azure IoT Device Explorer
-> - Azure Event Grid
-> - Azure 監視器 (診斷設定) 
->
-> 例外狀況是，即使在啟用 IP 篩選時，您也可以允許從某些受信任的服務存取事件中樞資源。 如需信任的服務清單，請參閱 [信任的 Microsoft 服務](#trusted-microsoft-services)。
+>[!WARNING]
+> 依預設，開啟事件中樞命名空間的防火牆規則會封鎖連入要求，除非要求源自于來自允許的公用 IP 位址的服務。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 例外狀況是，即使在啟用 IP 篩選時，您也可以允許從某些受信任的服務存取事件中樞資源。 如需信任的服務清單，請參閱 [信任的 Microsoft 服務](#trusted-microsoft-services)。
 
 ## <a name="ip-firewall-rules"></a>IP 防火牆規則
 IP 防火牆規則會在事件中樞命名空間層級套用。 因此，這些規則會套用至使用任何支援的通訊協定之用戶端的所有連接。 從不符合事件中樞命名空間上允許之 IP 規則的 IP 位址嘗試進行的任何連線，都會被拒絕為未經授權。 回應不會提及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
@@ -34,8 +24,8 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，這些�
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
 此節會示範如何使用 Azure 入口網站來為事件中樞命名空間建立 IP 防火牆規則。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的**事件中樞命名空間**。
-4. 在左側功能表的 [**設定**] 底下選取 [**網路**]。 您只會看到標準或**專用**命名空間的 [**網路**] 索引**卷**標。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的 **事件中樞命名空間** 。
+4. 在左側功能表的 [ **設定** ] 底下選取 [ **網路** ]。 您只會看到標準或 **專用** 命名空間的 [ **網路** ] 索引 **卷** 標。 
     > [!NOTE]
     > 預設會選取 [ **選取的網路** ] 選項，如下圖所示。 如果您未在此頁面上指定 IP 防火牆規則或新增虛擬網路，可以使用存取金鑰) ，透過 **公用網際網路** (來存取命名空間。  
 
@@ -61,7 +51,7 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，這些�
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 
 > [!IMPORTANT]
-> 「事件中樞」的**標準**和**專用**層級可支援防火牆規則。 基本層中不支援虛擬網路。
+> 「事件中樞」的 **標準** 和 **專用** 層級可支援防火牆規則。 基本層中不支援虛擬網路。
 
 下列 Resource Manager 範本可讓您將 IP 篩選器規則新增至現有的事件中樞命名空間。
 
@@ -71,7 +61,7 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，這些�
 
 > [!NOTE]
 > 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。
-> 在建立「虛擬網路」或「防火牆」規則時，我們必須將 ***"defaultAction"***
+> 建立虛擬網路或防火牆規則時，必須變更 **_"defaultAction"_**
 > 
 > 從
 > ```json

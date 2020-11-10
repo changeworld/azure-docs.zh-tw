@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570326"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425757"
 ---
 # <a name="wildcard-domains"></a>萬用字元網域
 
@@ -27,7 +27,7 @@ ms.locfileid: "91570326"
 - 如果應用程式新增子域，您就不再需要變更生產 Azure Front Door 設定。 之前，您必須新增子域、將憑證系結至該子域、將 web 應用程式防火牆 (WAF) 原則，然後將網域新增至不同的路由規則。
 
 > [!NOTE]
-> 目前，只有透過 API、PowerShell 和 Azure CLI 才支援萬用字元網域。 無法支援在 Azure 入口網站中新增和管理萬用字元網域。
+> 目前，只有透過 API、PowerShell 和 Azure CLI 才支援透過 Azure DNS 新增萬用字元網域。 無法支援在 Azure 入口網站中新增和管理萬用字元網域。
 
 ## <a name="adding-wildcard-domains"></a>新增萬用字元網域
 

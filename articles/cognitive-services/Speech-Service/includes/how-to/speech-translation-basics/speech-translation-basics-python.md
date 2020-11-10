@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 987aad74401a11407e33f0b0bd51548f354bdd6d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ce542702f691c6cb2ab62f6f99b48763ab886bb7
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470800"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425520"
 ---
 語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
 
@@ -21,13 +21,13 @@ ms.locfileid: "92470800"
 
 如果要直接跳到範例程式碼，請參閱 GitHub 上的 [Python 快速入門範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
-您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照「_關於語音 sdk_ 」一文的「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 取得語音 sdk</a> 」一節中的指示進行。
+您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照「 _關於語音 sdk_ 」一文的「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 取得語音 sdk</a> 」一節中的指示進行。
 
 ## <a name="import-dependencies"></a>匯入相依性
 
@@ -60,7 +60,7 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`][config]。 遵循 [免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟來取得這些認證。
+我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`][config]。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -197,7 +197,7 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-如需語音轉換文字的詳細資訊，請參閱 [語音辨識的基本概念](../../../speech-to-text-basics.md)。
+如需語音轉換文字的詳細資訊，請參閱 [語音辨識的基本概念](../../../get-started-speech-to-text.md)。
 
 ## <a name="synthesize-translations"></a>合成翻譯
 
@@ -310,13 +310,13 @@ def synthesize_translations(result):
 translate_speech_to_text()
 ```
 
-如需語音合成的詳細資訊，請參閱 [語音合成的基本概念](../../../text-to-speech-basics.md)。
+如需語音合成的詳細資訊，請參閱 [語音合成的基本概念](../../../get-started-text-to-speech.md)。
 
-[config]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
-[audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python
-[recognizer]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognizer?view=azure-python
-[recognitionlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python
-[addlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python#add-target-language-language--str-
-[translations]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognitionresult?view=azure-python#translations
-[voicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python#voice-name
-[speechsynthesisvoicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-synthesis-voice-name
+[config]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
+[audioconfig]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python
+[recognizer]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognizer?view=azure-python
+[recognitionlang]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python
+[addlang]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python#add-target-language-language--str-
+[translations]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognitionresult?view=azure-python#translations
+[voicename]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python#voice-name
+[speechsynthesisvoicename]: /python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-synthesis-voice-name

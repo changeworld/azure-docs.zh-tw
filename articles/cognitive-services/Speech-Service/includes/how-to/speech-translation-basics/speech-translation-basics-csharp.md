@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1302b3e959530b0ff738e4fb5c3898355088591d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c8392770d7edb18f776f7664657c6985b9f7fb63
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470758"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424953"
 ---
 語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
 
@@ -28,7 +28,7 @@ ms.locfileid: "92470758"
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
-您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照「_關於語音 sdk_ 」一文的「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 取得語音 sdk</a> 」一節中的指示進行。
+您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照「 _關於語音 sdk_ 」一文的「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 取得語音 sdk</a> 」一節中的指示進行。
 
 ## <a name="import-dependencies"></a>匯入相依性
 
@@ -76,7 +76,7 @@ public class Program
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`][config]。 遵循 [免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟來取得這些認證。
+我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`][config]。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。
 
 ```csharp
 public class Program
@@ -228,7 +228,7 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-如需語音轉換文字的詳細資訊，請參閱 [語音辨識的基本概念](../../../speech-to-text-basics.md)。
+如需語音轉換文字的詳細資訊，請參閱 [語音辨識的基本概念](../../../get-started-speech-to-text.md)。
 
 ## <a name="synthesize-translations"></a>合成翻譯
 
@@ -333,13 +333,13 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-如需語音合成的詳細資訊，請參閱 [語音合成的基本概念](../../../text-to-speech-basics.md)。
+如需語音合成的詳細資訊，請參閱 [語音合成的基本概念](../../../get-started-text-to-speech.md)。
 
-[config]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig?view=azure-dotnet
-[audioconfig]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet
-[recognizer]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognizer?view=azure-dotnet
-[recognitionlang]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet
-[addlang]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.addtargetlanguage?view=azure-dotnet
-[translations]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognitionresult.translations?view=azure-dotnet
-[voicename]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.voicename?view=azure-dotnet
-[speechsynthesisvoicename]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechsynthesisvoicename?view=azure-dotnet
+[config]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig?view=azure-dotnet
+[audioconfig]: /dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet
+[recognizer]: /dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognizer?view=azure-dotnet
+[recognitionlang]: /dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet
+[addlang]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.addtargetlanguage?view=azure-dotnet
+[translations]: /dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognitionresult.translations?view=azure-dotnet
+[voicename]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.voicename?view=azure-dotnet
+[speechsynthesisvoicename]: /dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechsynthesisvoicename?view=azure-dotnet

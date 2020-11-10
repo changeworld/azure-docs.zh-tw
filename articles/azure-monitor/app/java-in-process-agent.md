@@ -3,12 +3,12 @@ title: Azure 監視器 Application Insights JAVA
 description: 針對在任何環境中執行的 JAVA 應用程式進行應用程式效能監視，而不需要修改程式碼。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7cda0f9389f0b628aca82dd6c65acba140e739b
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379764"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426828"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -16,9 +16,9 @@ ms.locfileid: "94379764"
 
  JAVA 代理程式可在任何環境中運作，並可讓您監視所有的 JAVA 應用程式。 換句話說，無論您是在內部部署的 Vm 上執行 JAVA 應用程式，在內部部署的 AKS，在 Windows 上，您可以將它命名為，JAVA 3.0 代理程式將會監視您的應用程式。
 
-不再需要將 Application Insights JAVA SDK 新增至您的應用程式，因為3.0 代理程式會 autocollects 要求、相依性和記錄檔。
+不再需要將 Application Insights JAVA SDK 新增至您的應用程式，因為3.0 代理程式會自動收集要求、相依性和記錄檔。
 
-您仍然可以從應用程式傳送自訂遙測。 3.0 代理程式將會追蹤並將其與所有實驗自動收集遙測相互關聯。
+您仍然可以從應用程式傳送自訂遙測。 3.0 代理程式將會追蹤並將其與所有自動收集的遙測相互關聯。
 
 3.0 代理程式支援 JAVA 8 和更新版本。
 
@@ -82,7 +82,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * 取樣
 * JMX 計量
 * 自訂維度
-* 遙測處理器
+*  (預覽版的遙測處理器) 
 * 自動收集的記錄
 * 自動收集的 Micrometer 計量 (包括彈簧開機傳動標準) 
 * 活動訊號
@@ -91,7 +91,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 如需完整的詳細資訊，請參閱設定 [選項](./java-standalone-config.md) 。
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>實驗自動收集要求、相依性、記錄和計量
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>自動收集的要求、相依性、記錄和計量
 
 ### <a name="requests"></a>Requests
 
@@ -141,12 +141,12 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 |                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
 |---------------------|------------|---------------------|---------|
-| **自訂事件**   |            |                     |  Yes    |
+| **自訂事件**   |            |                     |  是    |
 | **自訂計量**  |  是       |                     |  是    |
-| **Dependencies** (相依性)    |            |                     |  Yes    |
+| **Dependencies** (相依性)    |            |                     |  是    |
 | **例外狀況**      |            |  是                |  是    |
-| **頁面檢視**      |            |                     |  Yes    |
-| **要求**        |            |                     |  Yes    |
+| **頁面檢視**      |            |                     |  是    |
+| **要求**        |            |                     |  是    |
 | **追蹤**          |            |  是                |  是    |
 
 我們目前未規劃 Application Insights 3.0 發行 SDK。

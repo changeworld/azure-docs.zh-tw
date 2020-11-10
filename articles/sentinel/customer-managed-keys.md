@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951480"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427049"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>設定 Azure Sentinel 客戶管理的金鑰
 
 本文提供 Azure Sentinel 的背景資訊和設定客戶管理的金鑰 (CMK) 步驟。 CMK 可讓所有儲存或傳送至 Azure Sentinel 的資料加密，這些資料放在所有相關的儲存體資源中，並使用您所建立或擁有的 Azure Key Vault 金鑰加密。
 
 > [!NOTE]
-> - Azure Sentinel 的 CMK 功能僅提供給 **新客戶**。
+> - Azure Sentinel 的 CMK 功能僅提供給 **新客戶** 。
 >
-> - 這項功能的存取權是由 Azure 功能註冊所控制。您可以藉由聯絡來要求存取權 azuresentinelCMK@microsoft.com 。 擱置的要求將會根據可用容量核准。
+> - 這項功能的存取權是由 Azure 功能註冊所控制。 您可以藉由聯絡來要求存取權 azuresentinelCMK@microsoft.com 。 擱置的要求將會根據可用容量核准。
 >
 > - CMK 功能僅適用於每天傳送 1TB 或以上的客戶。 當您向 Microsoft 申請在您的 Azure 訂用帳戶佈建 CMK 時，您會收到額外價格的相關資訊。 深入了解 [Log Analytics 價格](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)。
 
@@ -36,14 +36,14 @@ ms.locfileid: "91951480"
 
 Azure Sentinel 解決方案會針對記錄收集和功能使用數個儲存體資源，包括 Log Analytics 和其他。 在 Azure Sentinel CMK 設定的過程中，您也必須在相關的儲存體資源上設定 CMK 設定。 儲存在 Log Analytics 以外的儲存體資源中的資料也會一併加密。
 
-進一步了解 [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview)。
+進一步了解 [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)。
 
 > [!NOTE]
 > 如果您在 Azure Sentinel 上啟用 CMK，並不會啟用任何不支援 CMK 的公開預覽功能。
 
 ## <a name="enable-cmk"></a>啟用 CMK 
 
-若要佈建 CMK，請遵循下列步驟： 
+若要佈建 CMK，請遵循下列步驟： 
 
 1.  建立 Azure Key Vault 並儲存金鑰。
 
@@ -114,7 +114,7 @@ Azure Sentinel 與 Cosmos DB 搭配可以做為額外的儲存體資源。 請�
 
 如果在撤銷之後還原存取，Azure Sentinel 會在一小時內還原資料的存取權。
 
-若要深入瞭解撤銷在 Azure 監視器中如何運作，請參閱 [Azure 監視器 CMK 撤銷](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-revocation)。
+若要深入瞭解撤銷在 Azure 監視器中如何運作，請參閱 [Azure 監視器 CMK 撤銷](../azure-monitor/platform/customer-managed-keys.md#key-revocation)。
 
 ## <a name="key-encryption-key-rotation"></a>金鑰加密金鑰輪替
 
@@ -127,7 +127,7 @@ Azure Sentinel 和 Log Analytics 支援金鑰輪替。 當使用者在 Key Vault
 
 您可以在 24 小時後停用舊版本的金鑰，或在 Azure Key Vault 稽核記錄不再顯示任何使用舊版金鑰的活動之後停用。
 
-如果您在 Azure Sentinel 和 Log Analytics 中使用相同的金鑰，則必須執行金鑰輪替，您必須使用新的 Azure Key Vault 金鑰版本，在 Log Analytics 中明確更新叢集資源。 如需詳細資訊，請參閱 [Azure 監視器 CMK 輪替](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation)。
+如果您在 Azure Sentinel 和 Log Analytics 中使用相同的金鑰，則必須執行金鑰輪替，您必須使用新的 Azure Key Vault 金鑰版本，在 Log Analytics 中明確更新叢集資源。 如需詳細資訊，請參閱 [Azure 監視器 CMK 輪替](../azure-monitor/platform/customer-managed-keys.md#key-rotation)。
 
 ## <a name="next-steps"></a>後續步驟
 在本文件中，您已瞭解如何在 Azure Sentinel 中設定客戶管理的金鑰。 若要深入了解 Azure Sentinel，請參閱下列文章：

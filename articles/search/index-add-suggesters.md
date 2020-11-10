@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360013"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427032"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -26,7 +26,7 @@ ms.locfileid: "93360013"
 
 您可以單獨或一起使用這些功能。 若要在 Azure 認知搜尋中執行這些行為，有一個索引和查詢元件。 
 
-+ 在索引中，將建議工具加入至索引。 您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.suggester)。 本文的其餘部分著重于建立建議工具。
++ 在索引中，將建議工具加入至索引。 您可以使用入口網站 [Create Index (REST) # B2/rest/api/searchservice/create-index) 或 [建議工具屬性](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters)。 本文的其餘部分著重于建立建議工具。
 
 + 在查詢要求中，呼叫下列其中一個 [api](#how-to-use-a-suggester)。
 
@@ -107,34 +107,33 @@ ms.locfileid: "93360013"
 
 ## <a name="create-using-net"></a>使用 .NET 建立
 
-在 c # 中，定義 [建議工具物件](/dotnet/api/microsoft.azure.search.models.suggester)。 `Suggesters` 是集合，但只能採用一個專案。 
+在 c # 中，定義 [SearchSuggester 物件](/dotnet/api/azure.search.documents.indexes.models.searchsuggester)。 `Suggesters` 是 SearchIndex 物件上的集合，但它只能採用一個專案。 
 
 ```csharp
-private static void CreateHotelsIndex(SearchServiceClient serviceClient)
+private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 {
-    var definition = new Index()
-    {
-        Name = "hotels-sample-index",
-        Fields = FieldBuilder.BuildForType<Hotel>(),
-        Suggesters = new List<Suggester>() {new Suggester()
-            {
-                Name = "sg",
-                SourceFields = new string[] { "HotelName", "Category" }
-            }}
-    };
+    FieldBuilder fieldBuilder = new FieldBuilder();
+    var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    serviceClient.Indexes.Create(definition);
+    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
 
+    var definition = new SearchIndex(indexName, searchFields);
+
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
+
+    definition.Suggesters.Add(suggester);
+
+    indexClient.CreateOrUpdateIndex(definition);
 }
 ```
 
 ## <a name="property-reference"></a>屬性參考
 
-|屬性      |描述      |
+|屬性      |說明      |
 |--------------|-----------------|
 |`name`        |建議工具的名稱。|
 |`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，目前與詞彙的開頭相符。|
-|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/microsoft.azure.search.models.analyzername) 中的命名分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |
+|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 中的命名分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -144,8 +143,8 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 + [建議 REST API](/rest/api/searchservice/suggestions)
 + [自動完成 REST API](/rest/api/searchservice/autocomplete)
-+ [SuggestWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [AutocompleteWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [SuggestAsync 方法](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [AutocompleteAsync 方法](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 在搜尋應用程式中，用戶端程式代碼應該利用程式庫（例如 [JQUERY UI 自動完成](https://jqueryui.com/autocomplete/) ）來收集部分查詢並提供相符的結果。 如需這項工作的詳細資訊，請參閱 [將自動完成或建議的結果新增至用戶端程式代碼](search-autocomplete-tutorial.md)。
 
