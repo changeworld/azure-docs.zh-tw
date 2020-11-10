@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332003"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901546"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -37,11 +37,11 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 為了協助您面對這些挑戰，資訊安全中心為您提供工具：
 
--   **加強安全性狀態**：資訊安全中心會評估您的環境，並讓您了解資源的狀態，以及資源是否安全無虞。
+-   **加強安全性狀態** ：資訊安全中心會評估您的環境，並讓您了解資源的狀態，以及資源是否安全無虞。
 
--   **抵禦威脅**：資訊安全中心會評估您的工作負載，並提出威脅預防建議和安全性警示。
+-   **抵禦威脅** ：資訊安全中心會評估您的工作負載，並提出威脅預防建議和安全性警示。
 
--   **更快保障安全**：在資訊安全中心的一切都是以雲端速度完成。 因為原生整合，使得部署資訊安全中心相當容易，能夠使用 Azure 服務為您自動佈建和提供保護。
+-   **更快保障安全** ：在資訊安全中心的一切都是以雲端速度完成。 因為原生整合，使得部署資訊安全中心相當容易，能夠使用 Azure 服務為您自動佈建和提供保護。
 
 > [!NOTE]
 > 此服務支援 [Azure Lighthouse](../lighthouse/overview.md)，可讓服務提供者登入其本身的租用戶，以管理客戶所委派的訂用帳戶和資源群組。 針對 Azure 資訊安全中心案例，必須委派訂用帳戶，而不是個別的資源群組。
@@ -62,27 +62,27 @@ Azure 資訊安全中心可讓您加強安全性狀態。 這表示其可協助�
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>管理組織安全性原則與合規性
 
-其為安全性基本須知，並可確保工作負載安全無虞，而且一開始會備妥量身打造的安全性原則。 資訊安全中心的所有原則都是以 Azure 原則控制項為基礎所建置，因此您可獲得全套的**世界級原則解決方案**與其彈性。 您可以在資訊安全中心設定原則，以在管理群組上、跨訂用帳戶執行，甚至可供整個租用戶使用。
+其為安全性基本須知，並可確保工作負載安全無虞，而且一開始會備妥量身打造的安全性原則。 資訊安全中心的所有原則都是以 Azure 原則控制項為基礎所建置，因此您可獲得全套的 **世界級原則解決方案** 與其彈性。 您可以在資訊安全中心設定原則，以在管理群組上、跨訂用帳戶執行，甚至可供整個租用戶使用。
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="原則管理頁面":::
 
-資訊安全中心可協助您**識別影子 IT 訂用帳戶**。 查看儀表板中標記為**未涵蓋**的訂用帳戶，即可在有新的訂用帳戶建立時立即得知，以及確保其涵蓋在原則中，並受到 Azure 資訊安全中心保護。
+資訊安全中心可協助您 **識別影子 IT 訂用帳戶** 。 查看儀表板中標記為 **未涵蓋** 的訂用帳戶，即可在有新的訂用帳戶建立時立即得知，以及確保其涵蓋在原則中，並受到 Azure 資訊安全中心保護。
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="原則管理頁面":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="資訊安全中心原則儀表板":::
 
 ### <a name="continuous-assessments"></a>持續評量
 
 資訊安全中心會持續探索部署於工作負載的新資源，並評估其是否根據安全性最佳做法來設定，若非如此則會加上旗標，並提供建議您必須優先修正以保護機器的事項清單。
 
-為了協助您了解每個建議對整體安全性狀態的重要性，資訊安全中心將建議分組為安全性控制，並將**安全分數**值新增至每項控制。 這對於讓您**排定安全性工作的順位**十分重要。
+為了協助您了解每個建議對整體安全性狀態的重要性，資訊安全中心將建議分組為安全性控制，並將 **安全分數** 值新增至每項控制。 這對於讓您 **排定安全性工作的順位** 十分重要。
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="原則管理頁面":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="資訊安全中心安全分數":::
 
 ### <a name="network-map"></a>網路地圖
 
-資訊安全中心所提供，用來持續監視網路安全性狀態的最強大工具之一，就是**網路地圖**。 此地圖可讓您查看工作負載的拓撲，如此便可了解是否已正確設定每個節點。 您可以查看節點的連線方式，幫助您封鎖來路不明且可能讓攻擊者趁機沿著網路蔓延的連線。
+資訊安全中心所提供，用來持續監視網路安全性狀態的最強大工具之一，就是 **網路地圖** 。 此地圖可讓您查看工作負載的拓撲，如此便可了解是否已正確設定每個節點。 您可以查看節點的連線方式，幫助您封鎖來路不明且可能讓攻擊者趁機沿著網路蔓延的連線。
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="原則管理頁面":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="資訊安全中心網路地圖":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>透過設定建議的控制項來最佳化和改善安全性
@@ -93,7 +93,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 建議可協助您減少每個資源的受攻擊面。 這包括 Azure 虛擬機器、非 Azure 伺服器及 Azure PaaS 服務 (如 SQL 和儲存體帳戶等等)，其中每種類型的資源都會以自己的標準分別評估。
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="原則管理頁面":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="資訊安全中心的建議範例":::
 
 ## <a name="protect-against-threats"></a>抵禦威脅
 
@@ -101,11 +101,11 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 資訊安全中心的威脅防護包括混合的狙殺鏈分析，其會根據網路狙殺鏈分析自動與環境中的警示相互關聯，協助您更了解攻擊活動全貌，知道攻擊在何處開始和對資源有何影響。
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="原則管理頁面":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="安全性警示":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>與 Microsoft Defender 進階威脅防護整合
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>與端點的 Microsoft Defender 整合
 
-資訊安全中心可與 Microsoft Defender 進階威脅防護進行自動原生整合。 這表示不需要任何設定，您的 Windows 和 Linux 機器即可與資訊安全中心的建議與評量功能完全整合。
+資訊安全中心可與端點 Microsoft Defender 進行自動原生整合。 這表示不需要任何設定，您的 Windows 和 Linux 機器即可與資訊安全中心的建議與評量功能完全整合。
 
 此外，資訊安全中心可讓您在伺服器環境自動化執行應用程式控制原則。 資訊安全中心的自適性應用程式控制會在所有 Windows 伺服器啟用端對端應用程式核准清單。 建立規則和檢查違規全都會自動完成，您不需要動手。
 
@@ -123,7 +123,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 ## <a name="get-secure-faster"></a>更快保障安全
 
-原生 Azure 整合 (包括 Azure 原則與 Azure 監視器記錄) 結合了與之緊密整合的其他 Microsoft 安全性解決方案，例如 Microsoft Cloud App Security 與 Windows Defender 進階威脅防護，可協助確保您的安全性解決方案完善周全且容易上架和推出。
+原生 Azure 整合 (包括 Azure 原則與 Azure 監視器記錄) 結合了與之緊密整合的其他 Microsoft 安全性解決方案，例如 Microsoft Cloud App Security 與端點 Microsoft Defender，可協助確保您的安全性解決方案完善周全且容易上線和推出。
 
 此外，您可以將整個解決方案擴充到 Azure 外部於其他雲端上和內部部署資料中心內執行的工作負載。
 

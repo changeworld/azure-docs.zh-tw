@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 Synapse Studio 建立 Apache Spark 集區 (預覽)
-description: 遵循本指南中的步驟，使用 Synapse Studio 建立新的 Apache Spark 集區。
+title: 快速入門：使用 Synapse Studio 建立無伺服器 Apache Spark 集區 (預覽)
+description: 遵循本指南中的步驟，使用 Synapse Studio 建立無伺服器 Apache Spark 集區。
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748319"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324180"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立 Apache Spark 集區 (預覽)
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立無伺服器 Apache Spark 集區 (預覽)
 
 Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化、分析及處理您的資料。 Apache Spark 集區提供開放原始碼的巨量資料計算功能。 在 Synapse 工作區中建立 Apache Spark 集區後，就可以載入、模型化、處理和提供資料，以取得深入解析。  
 
@@ -47,7 +47,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 ## <a name="launch-synapse-studio"></a>啟動 Synapse Studio 
 
-從工作區總覽中，選取 [啟動 Synapse Studio]，以開啟將建立 Apache Spark 集區的位置。 直接在搜尋列中輸入服務名稱或資源名稱。
+從工作區概觀中，選取工作區 **Web URL** 以開啟 Synapse Studio。
 
 ![已反白顯示 [啟動 Synapse Studio] 的 Azure 入口網站 Synapse 工作區總覽。](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 

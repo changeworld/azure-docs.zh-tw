@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Azure 應用程式供應項目
       items:
-        - name: 規劃解決方案範本供應項目
-          href: marketplace-solution-templates.md
-        - name: 規劃受控應用程式供應項目
-          href: marketplace-managed-apps.md
+        - name: 規劃 Azure 應用程式供應項目
+          items:
+            - name: 規劃 Azure 應用程式供應項目
+              href: plan-azure-application-offer.md
+            - name: 規劃解決方案範本
+              href: plan-azure-app-solution-template.md
+            - name: 規劃受控應用程式
+              href: plan-azure-app-managed-app.md
         - name: 建立及發佈 Azure 應用程式供應項目
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: 建立 Azure 應用程式供應項目
+              href: create-new-azure-apps-offer.md
+            - name: 設定 Azure 應用程式供應項目屬性
+              href: create-new-azure-apps-offer-properties.md
+            - name: 設定 Azure 應用程式供應項目清單
+              href: create-new-azure-apps-offer-listing.md
+            - name: 新增預覽對象
+              href: create-new-azure-apps-offer-preview.md
+            - name: 新增技術詳細資訊
+              href: create-new-azure-apps-offer-technical.md
+            - name: 建立方案
+              href: create-new-azure-apps-offer-plans.md
+            - name: 建立解決方案範本方案
+              href: create-new-azure-apps-offer-solution.md
+            - name: 建立受控應用程式方案
+              href: create-new-azure-apps-offer-managed.md
+            - name: 測試及發佈 Azure 應用程式供應項目
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: 行銷 Azure 應用程式供應項目
+          href: create-new-azure-apps-offer-marketing.md
         - name: Azure 應用程式計量付費計費
           href: partner-center-portal/azure-app-metered-billing.md
         - name: 處理檢閱意見反應
@@ -273,7 +297,7 @@
       href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
     - name: Azure Marketplace 條款
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
-- name: 參考資料
+- name: 參考
   items:
     - name: CPP API 參考
       items:

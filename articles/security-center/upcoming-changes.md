@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629148"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026712"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>未來 Azure 資訊安全中心的重要變更
 
@@ -42,27 +42,19 @@ ms.locfileid: "92629148"
 
 Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的一組 Azure 特定指導方針。 [深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)。
 
-接下來會在 Azure 資訊安全中心新增 29 個新的建議，以增加評定的涵蓋範圍。
+接下來會在 Azure 資訊安全中心新增 18 個新的建議，以增加評定的涵蓋範圍。
 
 預覽建議不會將資源轉譯為「狀況不良」，這些項目也不會納入您安全分數的計算範圍。 您可以盡可能加以補救，以在預覽期間結束時計入您的分數。 若要了解如何回應這些建議，請參閱[Azure 資訊安全中心的補救建議](security-center-remediate-recommendations.md)。
 
 - 應該為虛擬機器啟用 Azure 備份
-- SQL 伺服器的稽核保留期應該至少設為 90 天
-- 應啟用 App Service 中的診斷記錄 
 - 應為 MySQL 資料庫伺服器啟用 [強制執行 SSL 連線]
 - 應為 PostgreSQL 資料庫伺服器啟用 [強制執行 SSL 連線]
-- 您的 API 應用程式應要求使用 FTPS
-- 您的函式應用程式應要求使用 FTPS
-- Web 應用程式中應該要求 FTPS
 - 應為適用於 MariaDB 的 Azure 資料庫啟用異地備援備份
 - 應為適用於 MySQL 的 Azure 資料庫啟用異地備援備份
 - 應為適用於 PostgreSQL 的 Azure 資料庫啟用異地備援備份
 - API 應用程式的 Java 應該更新為最新版本
 - 函式應用程式的 Java 應該更新為最新版本
 - Web 應用程式的 Java 應該更新為最新版本
-- API 應用程式應該使用受控識別
-- 函式應用程式應該使用受控識別
-- Web 應用程式應該使用受控識別
 - API 應用程式的 PHP 應該更新為最新版本
 - Web 應用程式的 PHP 應該更新為最新版本
 - MariaDB 伺服器應啟用私人端點
@@ -71,9 +63,6 @@ Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎
 - API 應用程式的 Python 應該更新為最新版本
 - 函式應用程式的 Python 應該更新為最新版本
 - Web 應用程式的 Python 應該更新為最新版本
-- API 應用程式的 TLS 應該更新為最新版本
-- 函式應用程式的 TLS 應該更新為最新版本
-- Web 應用程式的 TLS 應該更新為最新版本
 - Web 應用程式應該要求所有要求提供 SSL 憑證
 
 相關連結：

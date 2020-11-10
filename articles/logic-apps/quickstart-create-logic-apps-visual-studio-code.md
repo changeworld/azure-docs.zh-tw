@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/25/2020
-ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91361206"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099183"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 來建立及管理邏輯應用程式工作流程定義
 
@@ -20,7 +20,7 @@ ms.locfileid: "91361206"
 
 雖然您可以在 [Azure 入口網站](https://portal.azure.com)與 Visual Studio 中執行這些相同的工作，但當您已經熟悉邏輯應用程式定義且想要直接用於程式碼時，在 Visual Studio Code 中可更快開始使用。 例如，您可以停用、啟用、刪除及重新整理已建立的邏輯應用程式。 此外，您也可以從 Visual Studio Code 執行所在的任何開發平台 (例如 Linux、Windows、和 Mac) 來處理邏輯應用程式和整合帳戶。
 
-針對本文，您可以從這個[快速入門](../logic-apps/quickstart-create-first-logic-app-workflow.md)建立相同的邏輯應用程式；該快速入門較著重於基本概念。 在 Visual Studio Code 中，邏輯應用程式看起來會像以下範例：
+針對本文，您可以從這個[快速入門](../logic-apps/quickstart-create-first-logic-app-workflow.md)建立相同的邏輯應用程式；該快速入門較著重於基本概念。 您也可 [了解如何在 Visual Studio中建立範例應用程式](quickstart-create-logic-apps-with-visual-studio.md)，並[了解如何透過 Azure 命令列介面 (Azure CLI) 建立和管理應用程式](quickstart-logic-apps-azure-cli.md)。 在 Visual Studio Code 中，邏輯應用程式看起來會像以下範例：
 
 ![範例邏輯應用程式工作流程定義](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 

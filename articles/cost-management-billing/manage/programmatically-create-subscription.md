@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748174"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043278"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>使用最新的 API 以程式設計方式建立 Azure 訂用帳戶
 
@@ -232,7 +232,7 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure 企業版訂用帳戶建立 API 的限制
 
 - 使用此 API 只能建立「Azure 企業版」訂用帳戶。
-- 每一註冊帳戶僅限 2000 個訂用帳戶。 之後，您只能在 Azure 入口網站中為帳戶建立更多訂用帳戶。 若要透過此 API 建立更多訂用帳戶，請建立另一個註冊帳戶。
+- 每一註冊帳戶僅限 2000 個訂用帳戶。 之後，您只能在 Azure 入口網站中為帳戶建立更多訂用帳戶。 若要透過此 API 建立更多訂用帳戶，請建立另一個註冊帳戶。 已取消、已刪除和已轉移的訂用帳戶會計入 2000 筆的限制。
 - 不是「帳戶擁有者」但已透過 Azure RBAC 新增至註冊帳戶的使用者，並無法在 Azure 入口網站中建立訂用帳戶。
 - 您無法選取要作為訂用帳戶建立位置的租用戶。 訂用帳戶一律會建立在「帳戶擁有者」的主租用戶中。 若要將訂用帳戶移至不同的租用戶，請參閱[變更訂用帳戶租用戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 

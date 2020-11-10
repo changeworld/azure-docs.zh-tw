@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc5126c0cce89502b0f1d8b17c06519f338fe52
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043068"
 ---
 # <a name="what-is-azure-active-directory"></a>什麼是 Azure Active Directory？
 
@@ -93,7 +93,7 @@ Microsoft 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure 
 |帳戶管理員|在概念上，這個傳統的訂用帳戶系統管理員角色是訂用帳戶的計費擁有者。 這個角色可存取 [Azure 帳戶中心](https://account.azure.com/Subscriptions)，並可讓您管理帳戶中的所有訂用帳戶。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |服務管理員|這個傳統的訂用帳戶系統管理員角色可讓您管理所有 Azure 資源，包括存取權。 這個角色所具有的存取權，與在訂用帳戶範圍獲派擁有者角色的使用者相同。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |擁有者|這個角色可協助您管理所有 Azure 資源，包括存取權。 這個角色建置在較新的授權系統 (稱為 Azure 角色型存取控制 (RBAC)) 上，可讓您以更細微的方式管理 Azure 資源的存取權。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
-|Azure AD 全域系統管理員|這個系統管理員角色會自動指派給 Azure AD 租用戶的建立者。 全域系統管理員可以針對 Azure AD 和任何與 Azure AD 同盟的服務 (例如，Exchange Online、SharePoint Online 和商務用 Skype Online)，執行所有系統管理功能。 您可以有多個全域系統管理員，但只有全域系統管理員可以對使用者指派系統管理員角色 (包括指派其他全域系統管理員)。 請注意，此管理員角色在 Azure 入口網站中稱為全域管理員，但在 Microsoft Graph API 與 Azure AD PowerShell 中稱為 **公司系統管理員** 。如需各種管理員角色的詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../roles/permissions-reference.md)。|
+|Azure AD 全域系統管理員|這個系統管理員角色會自動指派給 Azure AD 租用戶的建立者。 全域系統管理員可以針對 Azure AD 和任何與 Azure AD 同盟的服務 (例如，Exchange Online、SharePoint Online 和商務用 Skype Online)，執行所有系統管理功能。 您可以有多個全域系統管理員，但只有全域系統管理員可以對使用者指派系統管理員角色 (包括指派其他全域系統管理員)。 請注意在 Azure 入口網站中，這個系統管理員角色稱為全域系統管理員，但在 Microsoft Graph API 和 Azure AD PowerShell 中，則稱為 **公司系統管理員** 。 如需各種系統管理員角色的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../roles/permissions-reference.md)。|
 |Azure 訂用帳戶| 用來支付 Azure 雲端服務費用。 您可以擁有許多訂用帳戶，而它們都會與信用卡連結。|
 |Azure 租用戶| 組織在註冊 Microsoft 雲端服務訂用帳戶 (例如 Microsoft Azure、Microsoft Intune 或 Microsoft 365) 時，所自動建立的專用且受信任 Azure AD 執行個體。 一個 Azure 租用戶代表一個組織。|
 |單一租用戶| 如果 Azure 租用戶會存取專用環境中的其他服務，便可將其視為單一租用戶。|

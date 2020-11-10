@@ -8,14 +8,15 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: jasonh
-ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4bf5ebeb3cda8507b79a7021dd506146ecb2a36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409352"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131304"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>快速入門：使用 PHP 和 Azure 入口網站在 Azure Cosmos DB 中建立圖形資料庫
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin 主控台](create-graph-gremlin-console.md)
@@ -191,21 +192,21 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 您現在可以移回 [資料總管] 並查看已新增到圖行的頂點，然後新增額外的資料點。
 
-1. 按一下 [資料總管]，展開 **sample-graph**，按一下 [圖形]，然後再按一下 [套用篩選條件]。 
+1. 按一下 [資料總管]，展開 **sample-graph** ，按一下 [圖形]，然後再按一下 [套用篩選條件]。 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="顯示從 A P I 選取的 Graph 螢幕擷取畫面，以及 [套用篩選器] 的選項。":::
 
-2. 在 [結果] 清單中，請注意已新增到圖形的新使用者。 選取 **ben**，請注意，其已連線到 robin。 您可以拖放移動周圍的頂點、捲動滑鼠滾輪執行縮放、使用雙箭號展開圖形大小。 
+2. 在 [結果] 清單中，請注意已新增到圖形的新使用者。 選取 **ben** ，請注意，其已連線到 robin。 您可以拖放移動周圍的頂點、捲動滑鼠滾輪執行縮放、使用雙箭號展開圖形大小。 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure 入口網站的資料總管之圖形中的新頂點":::
 
 3. 現在來加入一些新使用者。 按一下 [新增頂點] 按鈕，將資料新增至您的圖形。
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="顯示 [新增頂點] 窗格螢幕擷取畫面，您可以在其中輸入值。":::
 
-4. 輸入*人員*的標籤。
+4. 輸入 *人員* 的標籤。
 
-5. 按一下 [新增屬性]，以新增以下各項屬性。 請注意，您可以在圖形中為每個人建立獨特的屬性。 只需要**識別碼**索引鍵。
+5. 按一下 [新增屬性]，以新增以下各項屬性。 請注意，您可以在圖形中為每個人建立獨特的屬性。 只需要 **識別碼** 索引鍵。
 
     Key | 值 | 注意
     ----|----|----
@@ -220,7 +221,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 7. 再次按一下 [新增頂點] 並新增額外的新使用者。 
 
-8. 輸入*人員*的標籤。
+8. 輸入 *人員* 的標籤。
 
 9. 按一下 [新增屬性]，以新增以下各項屬性：
     
@@ -236,17 +237,17 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     隨著您新增更多的資料，您可以使用篩選條件來限制您的結果。 依預設，[資料總管] 會使用 `g.V()` 擷取圖形中的所有頂點。 您可將其變更為不同的[圖形查詢](tutorial-query-graph.md) (例如 `g.V().count()`)，以使用 JSON 格式傳回圖形中所有頂點的計數。 若您變更篩選條件，請將篩選條件變更回 `g.V()`，然後按一下 [套用篩選條件]，即可再次顯示所有的結果。
 
-12. 現在您可以將 rakesh 和 ashley 連線。 請確定已在 [結果] 清單中選取 **ashley**，然後按一下右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
+12. 現在您可以將 rakesh 和 ashley 連線。 請確定已在 [結果] 清單中選取 **ashley** ，然後按一下右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="變更圖形中頂點的目標":::
 
 13. 在 [目標] 方塊中輸入 rakesh，並在 [邊緣標籤] 方塊中輸入 knows，然後按一下核取方塊。
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="在 [資料總管] 中新增 ashley 與 rakesh 之間的連線":::
 
 14. 現在從 [結果] 清單中選取 **rakesh** 並查看 ashley 與 rakesh 是否已連線。 
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="[資料總管] 中連線的兩個頂點":::
 
     這會完成本快速入門中的資源建立部分。 您可以繼續將頂點新增至圖形、修改現有的頂點，或是變更查詢。 現在讓我們檢閱 Azure Cosmos DB 提供的計量，然後再清除資源。 
 

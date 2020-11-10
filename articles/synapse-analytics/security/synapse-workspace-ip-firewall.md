@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480542"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313885"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics IP 防火牆規則 (預覽)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92480542"
 
 ## <a name="ip-firewall-rules"></a>IP 防火牆規則
 
-IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Synapse 工作區存取權。 您可以設定工作區的 IP 防火牆規則。 在工作區層級上設定的 IP 防火牆規則會套用到工作區的所有公用端點 (SQL 集區、SQL 隨選和開發)。
+IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Synapse 工作區存取權。 您可以設定工作區的 IP 防火牆規則。 在工作區層級上設定的 IP 防火牆規則會套用到工作區的所有公用端點 (專用 SQL 集區、無伺服器 SQL 集區和開發)。
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>建立和管理 IP 防火牆規則
 
@@ -37,7 +37,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Syn
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>從您自己的網路連線到 Synapse
 
-您可以使用 Synapse Studio 連線到您的 Synapse 工作區。 您也可以使用 SQL Server Management Studio (SSMS) 來連線到您工作區中的 SQL 資源 (SQL 集區和 SQL 隨選)。
+您可以使用 Synapse Studio 連線到您的 Synapse 工作區。 您也可以使用 SQL Server Management Studio (SSMS) 連線到您工作區中的 SQL 資源 (專用 SQL 集區和無伺服器 SQL 集區)。
 
 請確定您網路和本機電腦上的防火牆已為 Synapse Studio 允許 TCP 通訊埠 80、443 和 1443 上的傳出通訊。
 

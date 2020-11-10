@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 48e6a2a6bcf20e22edbf0d2f98607b8310d2f22d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55c352df83e8f72a418452dd28d621556b207e5e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307852"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332163"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Node.js 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -66,9 +66,9 @@ ms.locfileid: "91307852"
    ```
 3. 檢查 npm 清單輸出文字，以確認安裝。 版本號碼可能會隨著新的修補檔案發行而有所不同。
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
-1. 輸入下列命令以安裝 **brew**、適用於 Mac OS X 的簡易使用封裝管理員和 **Node.js**。
+1. 輸入下列命令以安裝 **brew** 、適用於 macOS 的簡易使用封裝管理員和 **Node.js** 。
 
    ```bash
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -90,7 +90,7 @@ ms.locfileid: "91307852"
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
 3. 選取伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="Azure Database for MySQL 伺服器名稱":::
@@ -319,6 +319,16 @@ function deleteData(){
                 else  console.log('Done.') 
         });
 };
+```
+
+## <a name="clean-up-resources"></a>清除資源
+
+若要清除在此快速入門期間使用的所有資源，請使用下列命令刪除資源群組：
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
 title: 使用 sqlcmd 連線到 Synapse SQL
-description: 使用 sqlcmd 命令列公用程式來連線及查詢 SQL 隨選 (預覽) 和 SQL 集區。
+description: 使用 sqlcmd 命令列公用程式來連線及查詢無伺服器 SQL 集區 (預覽) 和專用 SQL 集區。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1af42a838463132a241447c11b90bfb489f879ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 10f15ec2108e897164206543358d7a9e7bd40f64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316497"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>使用 sqlcmd 連線到 Synapse SQL
 
@@ -25,10 +25,10 @@ ms.locfileid: "87059464"
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-您可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 命令列公用程式來連線及查詢 Synapse SQL 內的 SQL 隨選 (預覽) 和 SQL 集區。  
+您可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 命令列公用程式來連線及查詢 Synapse SQL 內的無伺服器 SQL 集區 (預覽) 和專用 SQL 集區。  
 
 ## <a name="1-connect"></a>1.連線
-若要開始使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，請開啟命令提示字元，然後輸入 **sqlcmd**並在後面加上 Synapse SQL 資料庫的連接字串。 連接字串需要下列參數：
+若要開始使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，請開啟命令提示字元，然後輸入 **sqlcmd** 並在後面加上 Synapse SQL 資料庫的連接字串。 連接字串需要下列參數：
 
 * **伺服器 (-S)：** 採用 `<`Server Name`>`.database.windows.net 格式的伺服器
 * **資料庫 (-d)：** 資料庫名稱
@@ -41,13 +41,13 @@ ms.locfileid: "87059464"
 
 您的連接字串可能類似下列範例︰
 
-**SQL 隨選**
+**無伺服器 SQL 集區**
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
 ```
 
-**SQL 集區**
+**專用 SQL 集區**
 
 ```
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -59,13 +59,13 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 
 您的連接字串可能類似下列其中一個範例︰
 
-**SQL 隨選**
+**無伺服器 SQL 集區**
 
 ```
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -G -I
 ```
 
-**SQL 集區**
+**專用 SQL 集區**
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ## <a name="2-query"></a>2.查詢
 
-### <a name="use-sql-pool"></a>使用 SQL 集區
+### <a name="use-dedicated-sql-pool"></a>使用專用 SQL 集區
 
 連線之後，您可以對執行個體發出任何支援的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) 陳述式。 此範例會在互動模式中提交查詢：
 
@@ -87,7 +87,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-針對 SQL 集區，後續的範例會說明如何使用 -Q 選項或以管線將 SQL 傳送到 sqlcmd，來執行批次模式查詢：
+針對專用 SQL 集區，後續的範例會說明如何使用 -Q 選項或以管線將 SQL 傳送到 sqlcmd，來執行批次模式查詢：
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -97,7 +97,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-### <a name="use-sql-on-demand"></a>使用 SQL 隨選
+### <a name="use-serverless-sql-pool"></a>使用無伺服器 SQL 集區
 
 連線之後，您可以對執行個體發出任何支援的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) 陳述式。  下列範例會以互動模式提交查詢：
 
@@ -108,7 +108,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-針對 SQL 隨選，後續範例會示範如何使用 -Q 選項或以管線將 SQL 傳送到 sqlcmd，來執行批次模式查詢：
+針對無伺服器 SQL 集區，後續範例會示範如何使用 -Q 選項或以管線將 SQL 傳送到 sqlcmd，來執行批次模式查詢：
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"

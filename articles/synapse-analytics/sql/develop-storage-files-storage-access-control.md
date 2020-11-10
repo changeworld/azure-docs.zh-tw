@@ -1,6 +1,6 @@
 ---
-title: 控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
-description: 說明 SQL 隨選 (預覽版) 如何存取 Azure 儲存體，以及您如何在 Azure Synapse Analytics 中控制 SQL 隨選的儲存體存取。
+title: 控制無伺服器 SQL 集區 (預覽版) 的儲存體帳戶存取
+description: 說明無伺服器 SQL 集區 (預覽版) 如何存取 Azure 儲存體，以及您如何在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體存取。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,31 +9,31 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449456"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315735"
 ---
-# <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
+# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區 (預覽版) 的儲存體帳戶存取
 
-SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存體上檔案的權限會由兩個層級來控制：
+無伺服器 SQL 集區查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存體上檔案的權限會由兩個層級來控制：
 - **儲存體層級** - 使用者應該具有存取基礎儲存體檔案的權限。 您的儲存體管理員應允許 Azure AD 主體讀取/寫入檔案，或產生將用來存取儲存體的 SAS 金鑰。
-- **SQL 服務層級** - 使用者應該具有從[外部資料表](develop-tables-external-tables.md)讀取資料的 `SELECT` 權限，或執行 `OPENROWSET` 的 `ADMINISTER BULK ADMIN` 權限，以及使用存取儲存體所需認證的權限。
+- **SQL 服務層級** - 使用者應該具有從 [外部資料表](develop-tables-external-tables.md)讀取資料的 `SELECT` 權限，或執行 `OPENROWSET` 的 `ADMINISTER BULK ADMIN` 權限，以及使用存取儲存體所需認證的權限。
 
 本文將說明您可以使用的認證類型，以及如何為 SQL 和 Azure AD 使用者制訂認證查閱。
 
 ## <a name="supported-storage-authorization-types"></a>支援的儲存體授權類型
 
-已登入 SQL 隨選資源的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 您可以使用三種授權類型來存取非公用儲存體：[使用者身分識別](?tabs=user-identity)、[共用存取簽章](?tabs=shared-access-signature)以及[受控識別](?tabs=managed-identity)。
+已登入無伺服器 SQL 集區的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 您可以使用三種授權類型來存取非公用儲存體：[使用者身分識別](?tabs=user-identity)、[共用存取簽章](?tabs=shared-access-signature)以及[受控識別](?tabs=managed-identity)。
 
 > [!NOTE]
-> 當您建立工作區時，**Azure AD 傳遞**是預設的行為。
+> 當您建立工作區時， **Azure AD 傳遞** 是預設的行為。
 
 ### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
 
-**使用者身分識別** (也稱為「Azure AD 傳遞」) 是一種授權類型，其使用登入 SQL 隨選的 Azure AD 使用者身分識別來授與資料存取權。 存取資料之前，Azure 儲存體管理員必須將權限授與 Azure AD 使用者。 如下表所示，SQL 使用者類型不支援此方式。
+**使用者身分識別** (也稱為「Azure AD 傳遞」) 是一種授權類型，其使用登入無伺服器 SQL 集區的 Azure AD 使用者身分識別來授與資料存取權。 存取資料之前，Azure 儲存體管理員必須將權限授與 Azure AD 使用者。 如下表所示，SQL 使用者類型不支援此方式。
 
 > [!IMPORTANT]
 > 您必須具有儲存體 Blob 資料擁有者/參與者/讀者角色，才能使用您的身分識別來存取資料。
@@ -49,7 +49,7 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 若要取得 SAS 權杖，您可以瀏覽至 **Azure 入口網站 -> 儲存體帳戶 -> 共用存取簽章 -> 設定權限 -> 產生 SAS 和連接字串。**
 
 > [!IMPORTANT]
-> 產生 SAS 權杖時，權杖的開頭會包含問號 ('?')。 若要在 SQL 隨選中使用權杖，您必須在建立認證時移除問號 ('?')。 例如：
+> 產生 SAS 權杖時，權杖的開頭會包含問號 ('?')。 若要在無伺服器 SQL 集區中使用權杖，您必須在建立認證時移除問號 ('?')。 例如：
 >
 > SAS 權杖：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
@@ -57,7 +57,7 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 
 ### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
 
-**受控識別**也稱為 MSI。 這是 Azure Active Directory (Azure AD) 的功能，可為 SQL 隨選提供 Azure 服務。 此外，也會在 Azure AD 中部署自動受控識別。 在 Azure 儲存體中，此身分識別可用來授與資料存取要求的權限。
+**受控識別** 也稱為 MSI。 這是 Azure Active Directory (Azure AD) 的功能，可為無伺服器 SQL 集區提供 Azure 服務。 此外，也會在 Azure AD 中部署自動受控識別。 在 Azure 儲存體中，此身分識別可用來授與資料存取要求的權限。
 
 存取資料之前，Azure 儲存體管理員必須將權限授與受控識別，才能存取資料。 將權限授與受控識別的方式，與對任何其他 Azure AD 使用者授與權限的方式一樣。
 
@@ -95,7 +95,7 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 
 ## <a name="credentials"></a>認證
 
-若要查詢 Azure 儲存體中的檔案，您的 SQL 隨選端點需要其中包含驗證資訊的認證。 您可以使用兩種類型的認證：
+若要查詢 Azure 儲存體中的檔案，您的無伺服器 SQL 集區端點需要其中包含驗證資訊的認證。 您可以使用兩種類型的認證：
 - 伺服器層級的認證適用於使用 `OPENROWSET` 函式執行的特定查詢。 認證名稱必須符合儲存體 URL。
 - DATABASE SCOPED CREDENTIAL 適用於外部資料表。 外部資料表會參考具有存取儲存體所需認證的 `DATA SOURCE`。
 
@@ -119,7 +119,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 ## <a name="server-scoped-credential"></a>伺服器範圍的認證
 
-當 SQL 登入呼叫沒有 `DATA_SOURCE` 的 `OPENROWSET` 函式來讀取某些儲存體帳戶上的檔案時，就會用到伺服器範圍的認證。 伺服器範圍認證的名稱**必須**符合 Azure 儲存體的 URL。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
+當 SQL 登入呼叫沒有 `DATA_SOURCE` 的 `OPENROWSET` 函式來讀取某些儲存體帳戶上的檔案時，就會用到伺服器範圍的認證。 伺服器範圍認證的名稱 **必須** 符合 Azure 儲存體的 URL。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
 
 > [!NOTE]
 > 不支援 `FOR CRYPTOGRAPHIC PROVIDER` 引數。
@@ -144,7 +144,7 @@ SQL 使用者無法使用 Azure AD 驗證來存取儲存體。
 
 下列指令碼會建立伺服器層級的認證，讓 `OPENROWSET` 函式可以使用 SAS 權杖來存取 Azure 儲存體上的任何檔案。 建立此認證可讓 SQL 主體執行 `OPENROWSET` 函式，在符合認證名稱中 URL 的 Azure 儲存體上讀取以 SAS 金鑰保護的檔案。
 
-請將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
+請將 < *mystorageaccountname* > 替換為實際的儲存體帳戶名稱，以及將 < *mystorageaccountcontainername* > 替換為實際的容器名稱：
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

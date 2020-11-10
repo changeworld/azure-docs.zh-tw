@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249411"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324947"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>使用 TokenLibrary 透過已連結的服務保護您的認證
 從外部來源存取資料是常見的模式。 除非外部資料源允許匿名存取，否則您可能需要使用認證、祕密或連接字串來保護您的連線。  
@@ -122,5 +122,5 @@ print(accountKey)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [寫入至 SQL 集區](./synapse-spark-sql-pool-import-export.md)
+- [寫入專用 SQL 集區](./synapse-spark-sql-pool-import-export.md)
 

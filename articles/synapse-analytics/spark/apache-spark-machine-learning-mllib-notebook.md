@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369330"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306967"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教學課程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
 
@@ -33,9 +33,9 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 
 分類是常見的機器學習工作，是指將輸入資料依類別排序的程序。 這是以分類演算法指出如何為您所提供的輸入資料指派「標籤」的作業。 例如，試想某個機器學習演算法以股市資訊作為輸入，並且將股票分成兩個類別：該賣的股票和該留的股票。
 
-「羅吉斯迴歸」是您可以用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於*二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
+「羅吉斯迴歸」是您可以用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於 *二元分類* ，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-總之，羅吉斯迴歸的程序會產生一個*羅吉斯函數* ，此函數可用來預測輸入向量可能屬於哪一個群組的機率。
+總之，羅吉斯迴歸的程序會產生一個 *羅吉斯函數* ，此函數可用來預測輸入向量可能屬於哪一個群組的機率。
 
 ## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>紐約市計程車資料的預測分析範例
 
@@ -49,7 +49,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>建立 Apache Spark MLlib 機器學習應用程式
 
 1. 使用 PySpark 核心建立筆記本。 如需相關指示，請參閱[建立筆記本](../quickstart-apache-spark-notebook.md#create-a-notebook)。
-2. 匯入此應用程式所需的類型。 複製下列程式碼並貼到空白儲存格中，然後按 **SHIFT + ENTER**，或使用程式碼左邊的藍色播放圖示來執行儲存格。
+2. 匯入此應用程式所需的類型。 複製下列程式碼並貼到空白儲存格中，然後按 **SHIFT + ENTER** ，或使用程式碼左邊的藍色播放圖示來執行儲存格。
 
     ```python
     import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 
 因為未經處理資料採用 Parquet 格式，所以您可以使用 Spark 內容，直接將檔案當作資料框架提取至記憶體中。 雖然下列程式碼使用預設選項，但是您可以視需要強制對應資料類型和其他結構描述屬性。
 
-1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放資料集 API 來擷取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的 Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用篩選器，以傳回單一月份的資料。
+1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放資料集 API 來擷取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的無伺服器 Apache Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用篩選器，以傳回單一月份的資料。
 
     ```python
     from azureml.opendatasets import NycTlcYellow

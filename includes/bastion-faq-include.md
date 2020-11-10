@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329591"
+ms.locfileid: "94331750"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>哪些區域可用？
 
-[!INCLUDE [region](bastion-regions-include.md)]
+[!INCLUDE [Azure Bastion region availability](bastion-regions-include.md)]
 
-### <a name="do-i-need-a-public-ip-on-my-virtual-machine"></a><a name="publicip"></a>我的虛擬機器需要使用公用 IP 嗎？
+### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>我的虛擬機器上是否需要公用 IP 才能透過 Azure Bastion 進行連線？
 
-使用 Azure Bastion 連線至 VM 時，在要連線的 Azure 虛擬機器不需要公用 IP。 Bastion 服務將會透過虛擬網路中的虛擬機器私人 IP，開啟 RDP/SSH 工作階段/連線至您的虛擬機器。
+否。 使用 Azure Bastion 連線至 VM 時，要與 VM 連線的 Azure 虛擬機器上不需要公用 IP。 Bastion 服務將會透過虛擬網路中的虛擬機器私人 IP，開啟 RDP/SSH 工作階段/連線至您的虛擬機器。
 
 ### <a name="is-ipv6-supported"></a>是否支援 IPV6？
 
@@ -29,11 +29,11 @@ ms.locfileid: "94329591"
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>我需要 RDP 或 SSH 用戶端嗎？
 
-您不需要 RDP 或 SSH 用戶端，即可在 Azure 入口網站中對您的 Azure 虛擬機器進行 RDP/SSH 存取。 使用 [Azure 入口網站](https://portal.azure.com)可讓您直接在瀏覽器中對虛擬機器進行 RDP/SSH 存取。
+否。 您不需要 RDP 或 SSH 用戶端，即可在 Azure 入口網站中對您的 Azure 虛擬機器進行 RDP/SSH 存取。 使用 [Azure 入口網站](https://portal.azure.com)可讓您直接在瀏覽器中對虛擬機器進行 RDP/SSH 存取。
 
 ### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>我需要在 Azure 虛擬機器中執行代理程式嗎？
 
-您不需要在瀏覽器或 Azure 虛擬機器上安裝代理程式或任何軟體。 Bastion 服務沒有代理程式，不需要任何其他 RDP/SSH 軟體。
+否。 您不需要在瀏覽器或 Azure 虛擬機器上安裝代理程式或任何軟體。 Bastion 服務沒有代理程式，不需要任何其他 RDP/SSH 軟體。
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>每個 Azure Bastion 可支援多少個並行 RDP 和 SSH 工作階段？
 
@@ -70,15 +70,17 @@ Azure Bastion 不會將客戶資料移動或儲存到其部署所在的區域外
 如需詳細資訊，請參閱[價格頁面](https://aka.ms/BastionHostPricing)。
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure Bastion 是否需要 RDS CAL 才能在 Azure 裝載的虛擬機器上進行管理？
+
 否，當 Azure Bastion 僅用於管理目的時，不需要 [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) 也可以存取 Windows Server VM。
 
-### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Bastion 遠端工作階段期間支援哪些鍵盤配置？
+### <a name="which-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Bastion 遠端工作階段期間支援哪些鍵盤配置？
 
 Azure Bastion 目前在 VM 內支援 en-us-qwerty 鍵盤配置。  鍵盤配置的其他地區設定支援正在進行中。
 
 ### <a name="is-user-defined-routing-udr-supported-on-an-azure-bastion-subnet"></a><a name="udr"></a>Azure Bastion 子網路是否支援使用者定義的路由 (UDR)？
 
 否。 Azure Bastion 子網路不支援 UDR。
+
 若是相同的虛擬網路中同時包含 Azure Bastion 和 Azure 防火牆/網路虛擬設備 (NVA)，您無需強制將 Azure Bastion 子網路的流量導向 Azure 防火牆，因為 Azure Bastion 和您的 VM 間採用私人通訊。 如需詳細資訊，請參閱[透過 Bastion 從 Azure 防火牆後方存取 VM](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)。
 
 ### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>為何在 Bastion 工作階段開始之前，收到「您的工作階段已過期」錯誤訊息？
@@ -87,8 +89,8 @@ Azure Bastion 目前在 VM 內支援 en-us-qwerty 鍵盤配置。  鍵盤配置�
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>我該如何處理部署失敗？
 
-檢閱任何錯誤訊息，並視需要[在 Azure 入口網站提出支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 部署失敗的原因可能是 [Azure 訂用帳戶限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 具體而言，客戶可能會遇到每個訂用帳戶允許的公用 IP 位址數目限制，進而導致 Azure Bastion 部署失敗。
+檢閱任何錯誤訊息，並視需要[在 Azure 入口網站提出支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 部署失敗的原因可能是 [Azure 訂用帳戶限制、配額和條件約束](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)。 具體而言，客戶可能會遇到每個訂用帳戶允許的公用 IP 位址數目限制，進而導致 Azure Bastion 部署失敗。
 
-### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>如何在我的災害復原方案中納入 Azure Bastion？
+### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>如何在我的災害復原方案中納入 Azure Bastion？
 
-因為 Azure Bastion 會與 Azure 區域相關聯，並且會部署在 VNet 或對等互連 VNet 內，所以您必須負責將 Azure Bastion 部署到災害復原 (DR) 網站 VNet。 發生 Azure 區域失敗時，您必須為虛擬機器執行容錯移轉作業，然後使用部署於災害復原區域的 Azure Bastion 主機，連線到部署於災害復原區域的 VM。
+Azure Bastion 會部署在 VNet 或對等互連 VNet 內，並與 Azure 區域相關聯。 您必須負責將 Azure Bastion 部署到災害復原 (DR) 網站 VNet。 發生 Azure 區域失敗時，請執行 VM 到 DR 區域的容錯移轉作業。 然後，使用在 DR 區域中部署的 Azure Bastion 主機來連線到現在在該處部署的 VM。

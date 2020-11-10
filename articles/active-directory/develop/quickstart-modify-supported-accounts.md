@@ -1,5 +1,6 @@
 ---
-title: 快速入門：修改 Microsoft 身分識別平台應用程式帳戶 | Azure
+title: 快速入門：變更應用程式所支援的帳戶類型 | Azure
+titleSuffix: Microsoft identity platform
 description: 在本快速入門中，您會設定向 Microsoft 身分識別平台註冊的應用程式，以變更可以存取應用程式的使用者或帳戶。
 services: active-directory
 author: rwike77
@@ -8,71 +9,54 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 10/27/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: marsma, aragra, lenalepa, sureshja
+ms.openlocfilehash: 2382eedcc14f683d354b88bf2eb8d53b2af40dbd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258008"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083264"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入門：修改應用程式所支援的帳戶
 
-在 Microsoft 身分識別平台註冊應用程式時，您可以只讓組織中的使用者存取您的應用程式。 或者，您可能也會想讓應用程式可供外部組織的使用者、外部組織的使用者，以及不一定屬於組織的使用者 (個人帳戶) 存取。
+向 Microsoft 身分識別平台註冊應用程式時，同時指定了誰 (哪些帳戶類型) 可以存取該應用程式。 例如，您可能已在組織中指定帳戶，這是「單一租用戶」應用程式。 或者，您可能已在任何組織 (包括您的) 中指定帳戶，這是「多租用戶」應用程式。
 
-在本快速入門中，您會了解如何修改應用程式的設定，以變更可以存取應用程式的使用者或帳戶。
+在本快速入門中，您會了解如何修改應用程式組態，以變更可以存取應用程式的使用者或帳戶類型。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 完成[快速入門：使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登入 Azure 入口網站，然後選取應用程式
-
-請先遵循下列步驟，然後才能設定應用程式：
-
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-1. 在左側導覽窗格中，選取 [Azure Active Directory]  服務，然後選取 [應用程式註冊]  。
-1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀] 或主要註冊頁面。
-1. 遵循相關步驟來[變更應用程式註冊以支援不同的帳戶](#change-the-application-registration-to-support-different-accounts)。
-1. 如果您有單頁應用程式，請[啟用 OAuth 2.0 隱含授與](#enable-oauth-20-implicit-grant-for-single-page-applications)。
-
 ## <a name="change-the-application-registration-to-support-different-accounts"></a>變更應用程式註冊以支援不同的帳戶
 
-如果您正在撰寫想要提供給組織外的客戶或合作夥伴使用的應用程式，您必須在 Azure 入口網站中更新應用程式定義。
+若要針對現有應用程式註冊所支援的帳戶類型指定不同的設定：
 
-> [!IMPORTANT]
-> Azure AD 會要求多租用戶應用程式的應用程式識別碼 URI 必須是全域唯一的。 「應用程式識別碼 URI」是其中一種可在通訊協定訊息中識別應用程式的方式。 在單一租用戶應用程式中，只要該租用戶內有唯一的應用程式識別碼 URI 就已足夠。 就多租用戶應用程式而言，該 URI 則必須具全域唯一性，Azure AD 才能在所有租用戶中找到該應用程式。 系統會透過要求「應用程式識別碼 URI」必須具有與已驗證的 Azure AD 租用戶網域相符的主機名稱，來強制執行全域唯一性。 例如，如果租用戶的名稱是 contoso.onmicrosoft.com，則有效的應用程式識別碼 URI 會是 `https://contoso.onmicrosoft.com/myapp`。 如果租用戶的已驗證網域是 contoso.com，則有效的應用程式識別碼 URI 也會是 `https://contoso.com/myapp`。 如果「應用程式識別碼 URI」沒有按照這個模式，將應用程式設定成多租用戶時就會失敗。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 [管理]下選取 [應用程式註冊]，再選取您的應用程式。
+1. 現在指定可以使用應用程式的人員，有時也稱為「登入受眾」。
 
-### <a name="to-change-who-can-access-your-application"></a>變更可以存取應用程式的使用者
-
-1. 從應用程式的 [概觀] 頁面，選取 [驗證] 區段，然後變更 [支援的帳戶類型] 底下所選取的值。
-    * 如果您要建置企業營運 (LOB) 應用程式，請選取 [只有這個目錄中的帳戶]。 如果未在目錄中註冊應用程式，則無法使用此選項。
-    * 如果您想要鎖定所有商業和教育客戶，請選取 [任何組織目錄中的帳戶]。
-    * 選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶] 以鎖定最廣泛的一組客戶。
+    | 支援的帳戶類型 | 描述 |
+    |-------------------------|-------------|
+    | **僅此組織目錄中的帳戶** | 如果您要建置的應用程式僅供「您」租用戶中的使用者 (或來賓) 使用，請選取此選項。<br><br>通常稱為「企業營運應用程式」 (LOB) ，這是 Microsoft 身分識別平台中的 **單一租用戶** 應用程式。 |
+    | **任何組織目錄中的帳戶** | 如果您想要讓「任何」Azure AD 租用戶中的使用者都能使用您的應用程式，請選取此選項。 例如，如果要建立要提供給多個組織的軟體即服務 (SaaS) 應用程式，則適合使用此選項。<br><br>這在 Microsoft 身分識別平台中稱為 **多租用戶** 應用程式。 |
 1. 選取 [儲存]。
 
-## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>啟用單頁應用程式的 OAuth 2.0 隱含授與
+### <a name="why-changing-to-multi-tenant-can-fail"></a>無法變更為多租用戶的原因
 
-單頁應用程式 (SPA) 的結構，通常會設計成具有在瀏覽器中執行且使用大量 JavaScript 的前端，此前端會呼叫應用程式的 Web API 後端以執行其商務邏輯。 針對裝載於 Azure AD 中的 SPA，您會使用 OAuth 2.0 隱含授權驗證具備 Azure AD 的使用者，並取得您可以使用的權杖以保護從應用程式的 JavaScript 用戶端到其後端 web API 的呼叫。
+因為應用程式識別碼 URI (應用程式識別碼 URI) 名稱發生衝突，所以將應用程式註冊從單一切換到多租用戶有時會失敗。 範例應用程式識別碼 URI 為 `https://contoso.onmicrosoft.com/myapp`。
 
-使用者授與同意權之後，這個相同的驗證通訊協定可用來取得權杖以保護用戶端和其他為應用程式設定之 web API 資源之間的呼叫。 若要深入了解隱含授權授與，並協助您決定其是否適合您的應用程式案例，請了解 Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) 和 [v2.0](v2-oauth2-implicit-grant-flow.md) 中的 OAuth 2.0 隱含授與流程。
+「應用程式識別碼 URI」是其中一種可在通訊協定訊息中識別應用程式的方式。 在單一租用戶應用程式中，只要該租用戶內有唯一的應用程式識別碼 URI 即可。 就多租用戶應用程式而言，該 URI 則必須具全域唯一性，Azure AD 才能在所有租用戶中找到該應用程式。 系統會透過要求「應用程式識別碼 URI」主機名稱必須與其中一個 Azure AD 租用戶的[驗證發行者網域](howto-configure-publisher-domain.md)相符，來強制執行全域唯一性。
 
-根據預設，應用程式的 OAuth 2.0 隱含授與會停用。 您可以藉由遵循下面所述步驟，來啟用應用程式的 OAuth 2.0 隱含授與。
+例如，如果租用戶的名稱是 contoso.onmicrosoft.com，則有效的應用程式識別碼 URI 會是 `https://contoso.onmicrosoft.com/myapp`。 如果租用戶的已驗證網域是 contoso.com，則有效的應用程式識別碼 URI 也會是 `https://contoso.com/myapp`。 如果應用程式識別碼 URI 未遵循第二個模式，`https://contoso.com/myapp`，則系統無法將應用程式註冊轉換成多租用戶。
 
-### <a name="to-enable-oauth-20-implicit-grant"></a>啟用 OAuth 2.0 隱含授權
-
-1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
-1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀] 或主要註冊頁面。
-1. 從應用程式的 [概觀] 頁面，選取 [驗證] 區段。
-1. 在 [進階設定] 底下，找到 [隱含授與] 區段。
-1. 選取 [識別碼權杖] 和 (或) [存取權杖]。
-1. 選取 [儲存]。
+如需設定已驗證之發行者網域的詳細資訊，請參閱[設定已驗證的網域](quickstart-modify-supported-accounts.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [應用程式的商標指導方針](howto-add-branding-in-azure-ad-apps.md)
+> [操作說明：將您的應用程式轉換成多租用戶](howto-convert-app-to-be-multi-tenant.md)

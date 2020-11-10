@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f159e38eb66e1758feaf743c32d8de30c614b234
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288506"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310319"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支援的 Transact-SQL 功能
 
@@ -79,11 +79,11 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 | **使用者** |  N/A (資料庫只支援所包含的使用者) | 是 |
 | **[自主使用者](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | 是。 **注意：** 只有一個 Azure AD 使用者可成為不受限的系統管理員 | 是 |
 | **SQL 使用者名稱/密碼驗證**| 是 | 是 |
-| **Azure Active Directory (AAD) 驗證**| 是，Azure AD 使用者 | 是，Azure AD 登入與使用者 |
-| **儲存體 Azure Active Directory (AAD) 通道驗證** | 是 | 是 |
+| **Azure Active Directory (Azure AD) 驗證**| 是，Azure AD 使用者 | 是，Azure AD 登入與使用者 |
+| **儲存體 Azure Active Directory (Azure AD) 通道驗證** | 是 | 是 |
 | **儲存體 SAS 權杖驗證** | 否 | 是，使用 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 或執行個體層級的 [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 |
 | **儲存體存取金鑰驗證** | 是，使用 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
-| **儲存體[受控識別](../security/synapse-workspace-managed-identity.md)驗證** | 是，使用[受控服務識別認證](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 是，使用 `Managed Identity` 認證。 |
+| **儲存體 [受控識別](../security/synapse-workspace-managed-identity.md)驗證** | 是，使用[受控服務識別認證](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 是，使用 `Managed Identity` 認證。 |
 | **儲存體應用程式身分識別驗證** | [是](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
 | **權限 - 物件層級** | 是，包括針對使用者 GRANT、DENY 和 REVOKE 權限的能力 | 是，包括在支援的系統物件上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 |
 | **權限 - 結構描述層級** | 是，包括在結構描述上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 | 是，包括在結構描述上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 |
@@ -103,7 +103,7 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 | **[防火牆規則](../security/synapse-workspace-ip-firewall.md)**| 是 | 是 |
 | **[私人端點](../security/synapse-workspace-managed-private-endpoints.md)**| 是 | 是 |
 
-SQL 集區和 SQL 隨選會使用標準的 Transact-SQL 語言來查詢資料。 如需詳細的差異，請參閱 [Transact-SQL 語言參考](/sql/t-sql/language-reference)。
+專用 SQL 集區和無伺服器 SQL 集區會使用標準的 Transact-SQL 語言來查詢資料。 如需詳細的差異，請參閱 [Transact-SQL 語言參考](/sql/t-sql/language-reference)。
 
 ## <a name="tools"></a>工具
 
@@ -118,7 +118,7 @@ SQL 集區和 SQL 隨選會使用標準的 Transact-SQL 語言來查詢資料。
 | **SQL Server Management Studio** | 是 | 是，18.5 版或更高版本 |
 
 > [!NOTE]
-> 您可以使用 SSMS 來連線到 SQL 隨選 (預覽) 和查詢。 其從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
+> 您可以使用 SSMS 來連線到無伺服器 SQL 集區 (預覽) 和查詢。 其從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 
 大部分的應用程式都會使用標準的 Transact-SQL 語言，因此都可以查詢 Synapse SQL 的已佈建和無伺服器耗用量模型。
 
@@ -150,7 +150,7 @@ SQL 集區和 SQL 隨選會使用標準的 Transact-SQL 語言來查詢資料。
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | 否 | 否 |
 
 ## <a name="next-steps"></a>後續步驟
-如需關於 SQL 集區和 SQL 隨選最佳做法的其他資訊，請參閱下列文章：
+如需關於專用 SQL 集區和無伺服器 SQL 集區最佳做法的其他資訊，請參閱下列文章：
 
-- [SQL 集區的最佳做法](best-practices-sql-pool.md)
-- [SQL 隨選的最佳做法](best-practices-sql-on-demand.md)
+- [專用 SQL 集區最佳做法](best-practices-sql-pool.md)
+- [無伺服器 SQL 集區最佳做法](best-practices-sql-on-demand.md)

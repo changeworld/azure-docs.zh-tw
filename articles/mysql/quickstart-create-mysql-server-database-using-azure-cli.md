@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 161d1c95507d366ce00f75580a100fd2607675d9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0c43f1ea81bbc29817e6a2509c9967bf3b5782c9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544013"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337280"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure Database for MySQL 伺服器
 
@@ -143,6 +143,4 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
->[使用 MySQL 在 Windows 上建置 PHP 應用程式](../app-service/tutorial-php-mysql-app.md)
->[使用 MySQL 在 Linux 上建置 PHP 應用程式](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux)
->[ MySQL 建置以 Java 為基礎的 Spring 應用程式](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[使用 MySQL 在 Windows 上建立 PHP 應用程式](../app-service/tutorial-php-mysql-app.md)

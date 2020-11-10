@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 24b7679c92b8f69b9406677ebe6355c0e1e51f55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1aadf1fe59c5300a4f16ea96b1e1d7a5fbcbdd6d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348013"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325732"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>我可以使用 Machine Learning Studio (傳統版) 來做些什麼？
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -30,14 +30,14 @@ Machine Learning Studio (傳統版) 是一種拖放工具，可以用來建置�
 
 若要開發預測分析模型，您通常會使用一或多個來源的資料，透過各種資料操作和統計函數來轉換和分析該資料，然後產生一組結果。 開發此類模型是一種反覆式過程。 隨著您修改各種函數及其參數，結果會不斷收斂，直到您對已訓練的有效模型感到滿意為止。
 
-Machine Learning Studio (傳統版) 提供互動式的視覺化工作區，讓您輕鬆建置、測試和反覆運算預測分析模型。 您可以將「資料集」和分析「模組」拖放到互動式畫布，將它們連接在一起以構成「實驗」，然後在 Machine Learning Studio (傳統) 中執行。 若要反覆調整模型設計，請編輯實驗，儲存複本 (若需要)，然後重新提交。 當您準備好時，可以將您的「訓練實驗」轉換成「預測實驗」，然後發佈為「Web 服務」，讓其他人可以存取您的模型。
+Machine Learning Studio (傳統版) 提供互動式的視覺化工作區，讓您輕鬆建置、測試和反覆運算預測分析模型。 您可以將「資料集」*_和分析「模組」拖放到互動式畫布，連接在一起以構成「實驗」，然後在 Machine Learning Studio (傳統) 中執行。 若要反覆調整模型設計，請編輯實驗，儲存複本 (若需要)，然後重新提交。 當您準備好時，可以將您的「訓練實驗」轉換成「預測實驗」，然後發佈為「Web 服務」，讓其他人可以存取您的模型。
 
 不需要設計程式，就能以視覺化方式連接資料集和模組來建構預測性分析模型。
 
 ![Machine Learning Studio (傳統版) 圖表：建立實驗、讀取許多來源的資料、寫入評分的資料及寫入模型。](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>下載 ML Studio (傳統版) 概觀圖表
-下載 **Microsoft ML Studio (傳統版) 功能概觀**圖表，並取得 Machine Learning Studio (傳統版) 功能的高階檢視。 若要就近保留它，您可以將圖表列印於 Tabloid 大小 (11 x 17 英吋) 的紙張上。
+下載 _ *Microsoft ML Studio (傳統版) 功能概觀* *圖表，並取得 Machine Learning Studio (傳統版) 功能的高階檢視。 若要就近保留它，您可以將圖表列印於 Tabloid 大小 (11 x 17 英吋) 的紙張上。
 
 **在這裡下載圖表：[Microsoft Machine Learning Studio (傳統) 功能概觀](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
 ![Microsoft Machine Learning Studio (傳統) 功能概觀](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
@@ -90,7 +90,7 @@ Machine Learning Studio (傳統版) 提供互動式的視覺化工作區，讓�
 您可以使用[逐步快速入門](create-experiment.md)和[以範例建置](sample-experiments.md)，來了解預測性分析和機器學習的基本概念。
 
 <!-- Module References -->
-[convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/
-[elementary-statistics]: https://msdn.microsoft.com/library/azure/3086b8d4-c895-45ba-8aa9-34f0c944d4d3/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
+[convert-to-arff]: /azure/machine-learning/studio-module-reference/convert-to-arff
+[elementary-statistics]: /azure/machine-learning/studio-module-reference/compute-elementary-statistics
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[score-model]: /azure/machine-learning/studio-module-reference/score-model

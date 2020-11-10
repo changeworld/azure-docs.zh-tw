@@ -9,38 +9,38 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167530"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314957"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>搭配 Synapse SQL 使用外部資料表
 
-外部資料表會指向位於 Hadoop、Azure 儲存體 Blob 或 Azure Data Lake Store 中的資料。 外部資料表是用來從檔案讀取資料，或將資料寫入 Azure 儲存體中的檔案。 透過 Synapse SQL，您可以使用外部資料表來讀取資料，並將其寫入 SQL 集區或 SQL 隨選 (預覽)。
+外部資料表會指向位於 Hadoop、Azure 儲存體 Blob 或 Azure Data Lake Store 中的資料。 外部資料表是用來從檔案讀取資料，或將資料寫入 Azure 儲存體中的檔案。 透過 Synapse SQL，您可以使用外部資料表來讀取資料，並將其寫入專用 SQL 集區或無伺服器 SQL 集區 (預覽)。
 
-## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Synapse SQL 集區和 SQL 隨選中的外部資料表
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>專用 SQL 集區和無伺服器 SQL 集區中的外部資料表
 
-### <a name="sql-pool"></a>[SQL 集區](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[專用 SQL 集區](#tab/sql-pool) 
 
-在 SQL 集區中，您可以使用外部資料表來執行下列動作：
+在專用 SQL 集區中，您可以使用外部資料表來執行下列動作：
 
 - 使用 Transact-SQL 陳述式查詢 Azure Blob 儲存體和 Azure Data Lake Gen2。
-- 從 Azure Blob 儲存體和 Azure Data Lake Storage 匯入資料，並儲存到 SQL 集區。
+- 從 Azure Blob 儲存體和 Azure Data Lake Storage 匯入資料，並儲存到專用 SQL 集區。
 
 與 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 陳述式搭配使用時，選取從外部資料表將資料匯入 SQL 集區中。 除了 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，外部資料表也很適合載入資料。 
 
 如需載入的教學課程，請參閱[使用 PolyBase 從 Azure Blob 儲存體載入資料](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-### <a name="sql-on-demand"></a>[SQL 隨選](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[無伺服器 SQL 集區](#tab/sql-on-demand)
 
-針對 SQL 隨選，您將使用外部資料表來執行下列動作：
+在無伺服器 SQL 集區中，您可以使用外部資料表來：
 
 - 使用 Transact-SQL 陳述式查詢 Azure Blob 儲存體或 Azure Data Lake Storage 中的資料
-- 使用 [CETAS](develop-tables-cetas.md)，將 SQL 隨選查詢結果儲存到 Azure Blob 儲存體或 Azure Data Lake Storage 中的檔案
+- 使用 [CETAS](develop-tables-cetas.md)，將無伺服器 SQL 集區查詢結果儲存到 Azure Blob 儲存體或 Azure Data Lake Storage 中的檔案
 
-您可以透過下列步驟，使用 SQL 隨選建立外部資料表：
+您可以透過下列步驟，使用無伺服器 SQL 集區建立外部資料表：
 
 1. CREATE EXTERNAL DATA SOURCE
 2. CREATE EXTERNAL FILE FORMAT
@@ -56,7 +56,7 @@ ms.locfileid: "92167530"
 - 資料來源可以有認證，讓外部資料表只能使用 SAS 權杖或工作區受控識別來存取 Azure 儲存體上的檔案 - 如需範例，請參閱[開發儲存體檔案儲存體存取控制](develop-storage-files-storage-access-control.md#examples)一文。
 
 > [!IMPORTANT]
-> 在 SQL 集區中，不含認證的資料來源可讓 Azure AD 使用者使用其 Azure AD 身分識別來存取儲存體檔案。 在 SQL 隨選中，您必須使用具有 `IDENTITY='User Identity'` 屬性的資料庫範圍認證來建立資料來源 - 請參閱[這裡的範例](develop-storage-files-storage-access-control.md#examples)。
+> 在專用 SQL 集區中，不含認證建立的資料來源可讓 Azure AD 使用者使用其 Azure AD 身分識別來存取儲存體檔案。 在無伺服器 SQL 集區中，您必須使用具有 `IDENTITY='User Identity'` 屬性的資料庫範圍認證來建立資料來源 - 請參閱[這裡的範例](develop-storage-files-storage-access-control.md#examples)。
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
@@ -64,7 +64,7 @@ ms.locfileid: "92167530"
 
 ### <a name="syntax-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE 語法
 
-#### <a name="sql-pool"></a>[SQL 集區](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[專用 SQL 集區](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[SQL 隨選](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[無伺服器 SQL 集區](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -110,16 +110,16 @@ LOCATION = `'<prefix>://<path>'` - 提供連線通訊協定和路徑給外部資
 #### <a name="credential"></a>認證
 CREDENTIAL = `<database scoped credential>` 是選擇性認證，將用來在 Azure 儲存體上進行驗證。 沒有認證的外部資料來源可以存取公用儲存體帳戶。 
 
-SQL 集區中沒有認證的外部資料來源也可以使用呼叫者 Azure AD 身分識別來存取儲存體上的檔案。 具有認證的外部資料來源會使用認證中指定的身分識別來存取檔案。
-- 在 SQL 集區中，資料庫範圍認證可以指定自訂應用程式識別、工作區受控識別或 SAK 金鑰。 
-- 在 SQL 隨選中，資料庫範圍認證可以指定呼叫者的 Azure AD 身分識別、工作區受控識別或 SAS 金鑰。 
+專用 SQL 集區中沒有認證的外部資料來源也會使用呼叫者 Azure AD 身分識別來存取儲存體上的檔案。 具有認證  `IDENTITY='User Identity'` 的無伺服器 SQL 集區的外部資料來源，會使用呼叫者的 Azure AD 身分識別來存取檔案。
+- 在專用 SQL 集區中，資料庫範圍認證可以指定自訂應用程式識別、工作區受控識別或 SAK 金鑰。 
+- 在無伺服器 SQL 集區中，資料庫範圍認證可以指定呼叫者的 Azure AD 身分識別、工作區受控識別或 SAS 金鑰。 
 
 #### <a name="type"></a>TYPE
-在 SQL 集區中，TYPE = `HADOOP` 是強制性選項，會指定使用 Polybase 技術來存取基礎檔案。 此參數不能用於使用內建原生讀取器的 SQL 隨選服務。
+在專用 SQL 集區中，TYPE = `HADOOP` 是強制性選項，會指定使用 Polybase 技術來存取基礎檔案。 此參數不能用於使用內建原生讀取器的無伺服器 SQL 集區服務。
 
 ### <a name="example-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE 範例
 
-#### <a name="sql-pool"></a>[SQL 集區](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[專用 SQL 集區](#tab/sql-pool)
 
 下列範例會針對指向紐約資料集的 Azure Data Lake Gen2 建立外部資料來源：
 
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[SQL 隨選](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[無伺服器 SQL 集區](#tab/sql-on-demand)
 
 下列範例會建立可使用 SAS 認證加以存取的 Azure Data Lake Gen2 外部資料來源：
 
@@ -195,7 +195,7 @@ WITH (
 }
 ```
 
-#### <a name="sql-on-demand"></a>[SQL 隨選](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[無伺服器 SQL 集區](#tab/sql-on-demand)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -266,7 +266,7 @@ TRUE - 若從文字檔擷取資料，使用外部資料表定義中對應資料�
 
 FALSE - 將所有遺漏值儲存為 NULL。 在分隔符號文字檔中使用 NULL 一字儲存的任何 NULL 值都會以 'NULL' 字串匯入。
 
-Encoding = {'UTF8' | 'UTF16'} - SQL 隨選可讀取以 UTF8 和 UTF16 編碼的分隔符號文字檔。
+Encoding = {'UTF8' | 'UTF16'} - 無伺服器 SQL 集區可讀取以 UTF8 和 UTF16 編碼的分隔符號文字檔。
 
 DATA_COMPRESSION = *data_compression_method* - 此引數會指定外部資料的資料壓縮方法。 
 
@@ -321,7 +321,7 @@ column_name <data_type>
 
 *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-要建立之資料表名稱的第一到第三部分。 針對外部資料表，SQL 隨選只會儲存資料表中繼資料。 不會在 SQL 隨選中移動或儲存任何實際資料。
+要建立之資料表名稱的第一到第三部分。 針對外部資料表，無伺服器 SQL 集區只會儲存資料表中繼資料。 不會在無伺服器 SQL 集區中移動或儲存任何實際資料。
 
 <column_definition>, ... *n* ]
 
@@ -336,12 +336,12 @@ LOCATION = ' *folder_or_filepath* '
 
 指定位於 Azure Blob 儲存體中之實際資料的資料夾或檔案路徑，以及檔案名稱。 位置會從根資料夾開始。 根資料夾是在外部資料來源中指定的資料位置。
 
-如果您指定資料夾 LOCATION，SQL 隨選查詢將會從外部資料表中選取，並從資料夾中擷取檔案。
+如果您指定資料夾 LOCATION，無伺服器 SQL 集區查詢將會從外部資料表中選取，並從資料夾中擷取檔案。
 
 > [!NOTE]
-> 與 Hadoop 和 PolyBase 不同的是，SQL 隨選不會傳回子資料夾； 而是會傳回檔案名稱是以底線 (_) 或句號 (.) 開始的檔案。
+> 與 Hadoop 和 PolyBase 不同的是，無伺服器 SQL 集區不會傳回子資料夾； 而是會傳回檔案名稱是以底線 (_) 或句號 (.) 開始的檔案。
 
-在此範例中，若 LOCATION='/webdata/'，SQL 隨選查詢將會傳回來自 mydata.txt 和 _hidden.txt 的資料列， 而不會傳回 mydata2 .txt 和 mydata3.txt，因為位於子資料夾中。
+在此範例中，若 LOCATION='/webdata/'，無伺服器 SQL 集區查詢將會傳回來自 mydata.txt 和 _hidden.txt 的資料列， 而不會傳回 mydata2 .txt 和 mydata3.txt，因為位於子資料夾中。
 
 ![外部資料表的遞迴資料](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>從 Azure Data Lake 中的檔案建立和查詢外部資料表
 
-使用 Data Lake 探索功能，您現在可以使用 SQL 集區或 SQL 隨選建立並查詢外部資料表，只要在檔案上按一下滑鼠右鍵即可。
+使用 Data Lake 探索功能，您現在可以使用專用 SQL 集區或無伺服器 SQL 集區建立並查詢外部資料表，只要在檔案上按一下滑鼠右鍵即可。
 
 ### <a name="prerequisites"></a>必要條件
 
@@ -395,7 +395,7 @@ SELECT TOP 1 * FROM census_external_table
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-對話視窗隨即開啟。 選取 [SQL 集區] 或 [SQL 隨選]，為資料表指定名稱，然後選取 [開啟指令碼]：
+對話視窗隨即開啟。 選取專用 SQL 集區或 無伺服器 SQL 集區，為資料表指定名稱，然後選取 [開啟指令碼]：
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)

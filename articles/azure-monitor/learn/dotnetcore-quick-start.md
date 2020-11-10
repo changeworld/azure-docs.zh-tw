@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd45284bfea09935ea48445d816f3b91272f68fc
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055476"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925844"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>開始監視 ASP.NET Core Web 應用程式
 
@@ -61,7 +61,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
 ## <a name="configure-app-insights-sdk"></a>設定 App Insights SDK
 
-1. 在 Visual Studio 中開啟您的 ASP.NET Core Web 應用程式**專案** > 在 [方案總管]  中以滑鼠右鍵按一下 AppName > 選取 [新增]   > [Application Insights 遙測]  。
+1. 在 Visual Studio 中開啟您的 ASP.NET Core Web 應用程式 **專案** > 在 [方案總管]  中以滑鼠右鍵按一下 AppName > 選取 [新增]   > [Application Insights 遙測]  。
 
     ![新增 Application Insights 遙測](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
@@ -73,7 +73,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
 5. 選取 [偵錯]   > [啟動但不偵錯]  \(Ctrl + F5) 來啟動您的應用程式
 
-    ![Application Insights 概觀功能表](./media/dotnetcore-quick-start/3debug.png)
+    ![顯示 [啟動但不偵錯] 功能表選項的螢幕擷取畫面。](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > 經過 3-5 分鐘，資料就會開始出現在入口網站。 如果此應用程式是低流量測試應用程式，請記住，只在有使用中的要求或作業時，才會擷取大部分的計量。
@@ -88,7 +88,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
    ![應用程式對應](./media/dotnetcore-quick-start/5appmap.png)
 
-3. 按一下 [應用程式分析]  圖示 ![應用程式對應圖示](./media/dotnetcore-quick-start/006.png) [在 Analytics 中檢視]  。 這樣會開啟 **Application Insights Analytics**，它提供一種豐富查詢語言，可用於分析 Application Insights 收集的所有資料。 此案例中會為您產生查詢，可將要求計數以圖表呈現。 您可以撰寫自己的查詢來分析其他資料。
+3. 按一下 [應用程式分析]  圖示 ![應用程式對應圖示](./media/dotnetcore-quick-start/006.png) [在 Analytics 中檢視]  。 這樣會開啟 **Application Insights Analytics** ，它提供一種豐富查詢語言，可用於分析 Application Insights 收集的所有資料。 此案例中會為您產生查詢，可將要求計數以圖表呈現。 您可以撰寫自己的查詢來分析其他資料。
 
    ![經過一段時間的使用者要求分析圖表](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -107,7 +107,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 > 如果您使用了現有的資源群組，下列指示將沒有作用，而且您只需要刪除個別的 Application Insights 資源。 請記住，每當您刪除資源群組時，將會刪除屬於該群組的所有基礎資源。
 
 1. 從 Azure 入口網站的左側功能表中，依序按一下 [資源群組]  和 [myResourceGroup]  。
-2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入 **myResourceGroup**，然後按一下 [刪除]  。
+2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入 **myResourceGroup** ，然後按一下 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 

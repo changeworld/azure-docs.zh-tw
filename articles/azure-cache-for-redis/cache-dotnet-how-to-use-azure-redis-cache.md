@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Azure Cache for Redis 搭配 .NET 應用程式
+title: 快速入門：在 .NET Framework 中使用 Azure Cache for Redis
 description: 在本快速入門中，了解如何從 .NET 應用程式存取 Azure Cache for Redis
 author: yegu-ms
 ms.author: yegu
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b3c18fcc0f4ff21eaaea2cbaf664e87d0ff33d60
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537060"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077059"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入門：搭配使用 Azure Cache for Redis 與 .NET Framework 應用程式
+# <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>快速入門：在 .NET Framework 中使用 Azure Cache for Redis
 
 在本快速入門中，您會將 Azure Cache for Redis 納入 .NET Framework 應用程式中，以便存取可從 Azure 內的任何應用程式存取的安全專用快取。 您會在 .NET 主控台應用程式中明確地搭配使用 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 用戶端與 C# 程式碼。
 

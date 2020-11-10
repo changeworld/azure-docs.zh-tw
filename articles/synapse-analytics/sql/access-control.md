@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503278"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311744"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理工作區、資料和管線的存取權
 
@@ -94,21 +94,21 @@ ms.locfileid: "92503278"
 基礎資料的存取控制分為三個部分：
 
 - 儲存體帳戶的資料平面存取權 (已在上面的步驟 2 完成設定)
-- SQL Database 的資料平面存取權 (同時適用於 SQL 集區和 SQL 隨選)
-- 透過儲存體帳戶建立 SQL 隨選資料庫的認證
+- SQL Database 的資料平面存取權 (同時適用於專用 SQL 集區和無伺服器 SQL 集區)
+- 透過儲存體帳戶建立無伺服器 SQL 集區資料庫的認證
 
 ## <a name="access-control-to-sql-databases"></a>SQL Database 的存取控制
 
 > [!TIP]
 > 您必須為 **每個** SQL 資料庫執行下列步驟，為使用者授與所有 SQL 資料庫的存取權，但不包括 [伺服器層級權限](#server-level-permission)一節中的資料庫 (您可為使用者指派這些資料庫的系統管理員角色)。
 
-### <a name="sql-on-demand"></a>SQL 隨選
+### <a name="serverless-sql-pool"></a>無伺服器 SQL 集區
 
 在本節中，您可以找到如何授與使用者特定資料庫的權限或完整伺服器權限的範例。
 
 #### <a name="database-level-permission"></a>資料庫層級權限
 
-若要對使用者授與 **單一** SQL 隨選資料庫的存取權，請遵循此範例中的步驟：
+若要授與使用者 **單一** 無伺服器 SQL 集區資料庫的存取權，請遵循此範例中的步驟：
 
 1. 建立登入
 
@@ -140,16 +140,16 @@ ms.locfileid: "92503278"
 
 #### <a name="server-level-permission"></a>伺服器層級權限
 
-若要對使用者授與 **所有** SQL 隨選資料庫的完整存取權，請遵循此範例中的步驟：
+若要授與使用者 **所有** 無伺服器 SQL 集區資料庫的完整存取權，請遵循此範例中的步驟：
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>SQL 集區
+### <a name="dedicated-sql-pool"></a>專用 SQL 集區
 
-若要對使用者授與 **單一** SQL Database 的存取權，請遵循下列步驟：
+若要對使用者授與 **單一** SQL 資料庫的存取權，請遵循下列步驟：
 
 1. 藉由在內容選取器 (用來選取資料庫的下拉式清單) 中執行下列以所需資料庫為目標的命令，於資料庫中建立使用者：
 
@@ -167,18 +167,18 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 
 > [!IMPORTANT]
 > 如果您不想要授與 *db_owner* 權限，則 *db_datareader* 和 *db_datawriter* 可適用於讀取/寫入權限。
-> 若要讓 Spark 使用者能夠直接從 Spark 讀取和寫入至 SQL 集區 (反之亦然)，則需要有 *db_owner* 權限。
+> 若要讓 Spark 使用者能夠直接從 Spark 讀取和寫入至專用 SQL 集區 (反之亦然)，則需要有 *db_owner* 權限。
 
-在建立使用者後，請驗證 SQL 隨選是否可查詢儲存體帳戶。
+在建立使用者後，請確定能使用無伺服器 SQL 集區查詢儲存體帳戶。
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>工作區管線執行的存取控制
 
 ### <a name="workspace-managed-identity"></a>工作區受控識別
 
 > [!IMPORTANT]
-> 若要成功執行參考 SQL 集區的資料集或活動所在的管線，您必須對工作區身分識別直接授與 SQL 集區的存取權。
+> 若要成功執行參考 SQL 集區的資料集或活動所在的管線，您必須對工作區身分識別直接授與專用 SQL 集區的存取權。
 
-在每個 SQL 集區上執行下列命令，允許工作區受控識別可在 SQL 集區資料庫上執行管線：
+在每個專用 SQL 集區上執行下列命令，允許工作區受控識別可在 SQL 集區資料庫上執行管線：
 
 ```sql
 --Create user in DB

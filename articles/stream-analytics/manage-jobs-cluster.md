@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943635"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305826"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>在 Azure 串流分析叢集中建立和刪除作業
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>在 Azure 串流分析叢集中新增和移除作業
 
 您可以在串流分析叢集上執行多個 Azure 串流分析作業。 只需簡單的 2 步驟程序，就可在叢集上執行作業：將作業新增至叢集並啟動作業。 本文說明如何從現有的叢集中新增和移除作業。 遵循快速入門以[建立串流分析叢集](create-cluster.md) (如果您還沒有串流分析叢集)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "90943635"
 
 1. 在 Azure 入口網站中，找出並選取您的串流分析叢集。
 
-1. 在**設定**下，選取 [串流分析作業]。 接著選取 [新增現有作業]。
+1. 在 **設定** 下，選取 [串流分析作業]。 接著選取 [新增現有作業]。
 
 1. 選取您要新增至叢集的訂用帳戶和串流分析作業。 只能將與叢集位於相同區域中的串流分析作業新增至叢集。
 
@@ -41,7 +41,7 @@ ms.locfileid: "90943635"
 
 1. 找出並選取您的串流分析叢集。
 
-1. 在**設定**下，選取 [串流分析作業]。
+1. 在 **設定** 下，選取 [串流分析作業]。
 
 1. 選取您要從這個叢集中移除的作業，然後選取 [移除] 。
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8edf782c03300cf22bd349548da425669f492bc1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093526"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317272"
 ---
 # <a name="sql-authentication"></a>SQL 驗證
 
@@ -22,47 +22,47 @@ Azure Synapse Analytics 有兩種 SQL 規格可讓您控制資源耗用量。 �
 
 若要向 Synapse SQL 授權，您可以使用兩種授權類型：
 
-- AAD 授權
+- Azure Active Directory 授權
 - SQL 授權
 
-AAD 授權依賴 Azure Active Directory，並可讓您在單一位置管理使用者。 SQL 授權則可讓繼承應用程式以極為熟悉的方式使用 Synapse SQL。
+Azure Active Directory 可讓您在單一位置管理使用者。 SQL 授權則可讓繼承應用程式以極為熟悉的方式使用 Synapse SQL。
 
 ## <a name="administrative-accounts"></a>系統管理帳戶
 
-做為系統管理員的系統管理帳戶有兩個 (**伺服器管理員**和**Active Directory 管理員**)。 若要識別 SQL server 的系統管理員帳戶，請開啟 Azure 入口網站，然後瀏覽至 Synapse SQL 的 [屬性] 索引標籤。
+做為系統管理員的系統管理帳戶有兩個 ( **伺服器管理員** 和 **Active Directory 管理員** )。 若要識別 SQL server 的系統管理員帳戶，請開啟 Azure 入口網站，然後瀏覽至 Synapse SQL 的 [屬性] 索引標籤。
 
 ![SQL Server 系統管理員](./media/sql-authentication/sql-admins.png)
 
 - **伺服器管理員**
 
-  當您建立 Azure Synapse Analytics 時，您必須命名**伺服器管理員登入**。 SQL Server 會將該帳戶建立為 master 資料庫中的登入。 此帳戶會使用 SQL Server 驗證 (使用者名稱和密碼) 連接。 只有其中一個帳戶可以存在。
+  當您建立 Azure Synapse Analytics 時，您必須命名 **伺服器管理員登入** 。 SQL Server 會將該帳戶建立為 master 資料庫中的登入。 此帳戶會使用 SQL Server 驗證 (使用者名稱和密碼) 連接。 只有其中一個帳戶可以存在。
 
 - **Azure Active Directory 管理員**
 
-  一個 Azure Active Directory 帳戶 (個人或安全性群組帳戶) 也可以設定為系統管理員。 選擇性地設定 Azure AD 系統管理員，但是如果您想要使用 Azure AD 帳戶連線到 Synapse SQL，則**必須**設定 Azure AD 系統管理員。
+  一個 Azure Active Directory 帳戶 (個人或安全性群組帳戶) 也可以設定為系統管理員。 選擇性地設定 Azure AD 系統管理員，但是如果您想要使用 Azure AD 帳戶連線到 Synapse SQL，則 **必須** 設定 Azure AD 系統管理員。
 
-**伺服器管理員**和 **Azure AD 管理員**帳戶具有下列特性︰
+**伺服器管理員** 和 **Azure AD 管理員** 帳戶具有下列特性︰
 
 - 是唯一可以自動連線到伺服器上任何 SQL Database 的帳戶。 (若要連接至使用者資料庫，其他帳戶必須是資料庫的擁有者，或在使用者資料庫中擁有使用者帳戶。)
 - 這些帳戶會輸入使用者資料庫做為 `dbo` 使用者，而且具有使用者資料庫中的所有權限。 (使用者資料庫的擁有者也會進入資料庫做為 `dbo` 使用者。)
 - 不會輸入 `master` 資料庫作為 `dbo` 使用者，而且具有 master 的有限權限。
-- **不是**標準 SQL Server `sysadmin` 固定伺服器角色的成員，該角色不適用於 SQL Database。  
+- **不是** 標準 SQL Server `sysadmin` 固定伺服器角色的成員，該角色不適用於 SQL Database。  
 - 可以建立、改變和卸除 master 中的資料庫、登入、使用者，以及伺服器層級 IP 防火牆規則。
 - 可以新增和移除 `dbmanager` 和 `loginmanager` 角色的成員。
 - 可以檢視 `sys.sql_logins` 系統資料表。
 
-## <a name="sql-on-demand-preview"></a>[SQL 隨選 (預覽)](#tab/serverless)
+## <a name="serverless-sql-pool-preview"></a>[無伺服器 SQL 集區 (預覽)](#tab/serverless)
 
-若要管理可存取 SQL 隨選的使用者，您可以使用下列指示。
+若要管理可存取無伺服器 SQL 集區的使用者，您可以使用下列指示。
 
-若要建立 SQL 隨選的登入，請使用下列語法：
+若要建立無伺服器 SQL 集區的登入，請使用下列語法：
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-登入存在後，您就可以在 SQL 隨選端點內的個別資料庫中建立使用者，並將必要的權限授與給這些使用者。 若要建立使用者，您可以使用下列語法：
+登入存在後，您就可以在無伺服器 SQL 集區端點內的個別資料庫中建立使用者，並將必要的權限授與給這些使用者。 若要建立使用者，您可以使用下列語法：
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -77,7 +77,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="administrator-access-path"></a>系統管理員存取路徑
 
-正確設定伺服器層級防火牆後，**SQL Database 管理員**和 **Azure Active Directory 管理員**可以使用用戶端工具 (例如 SQL Server Management Studio 或 SQL Server Data Tools) 進行連接。 只有最新的工具會提供所有的功能。 
+正確設定伺服器層級防火牆後， **SQL Database 管理員** 和 **Azure Active Directory 管理員** 可以使用用戶端工具 (例如 SQL Server Management Studio 或 SQL Server Data Tools) 進行連接。 只有最新的工具會提供所有的功能。 
 
 下圖顯示兩個系統管理員帳戶的一般設定：
  
@@ -158,7 +158,7 @@ GRANT ALTER ANY USER TO Mary;
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-在 SQL 集區中，請使用 [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+在專用 SQL 集區中，請使用 [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -187,9 +187,9 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 - 使用 SQL Server 驗證時，在資料庫中建立自主資料庫使用者。 將一或多個資料庫使用者放入[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)中，然後將[權限](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)指派給資料庫角色。
 
-資料庫角色可以是內建的角色，例如 **db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter** 和 **db_denydatareader**。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 
+資料庫角色可以是內建的角色，例如 **db_owner** 、 **db_ddladmin** 、 **db_datawriter** 、 **db_datareader** 、 **db_denydatawriter** 和 **db_denydatareader** 。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 
 
-例如，**db_datareader** 固定資料庫角色可授與資料庫中每個資料表的讀取存取權，這通常並非絕對必要。 
+例如， **db_datareader** 固定資料庫角色可授與資料庫中每個資料表的讀取存取權，這通常並非絕對必要。 
 
 最好是使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 陳述式來建立您自己的使用者定義資料庫角色，並謹慎地授與每個角色在業務需求上所需的最小權限。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
 
@@ -206,9 +206,9 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 在 SQL Database 中管理登入和使用者時，請考慮下列幾點︰
 
 - 執行 `CREATE/ALTER/DROP DATABASE` 陳述式時，您必須連接到 **master** 資料庫。
-- 無法更改或刪除與**伺服器管理員**登入對應的資料庫使用者。
-- 英文 (美國) 是**伺服器管理員**登入的預設語言。
-- 只有系統管理員 (**伺服器管理員**登入或 Azure AD 系統管理員) 及 **master** 資料庫中 **dbmanager** 資料庫角色的成員，才具備執行 `CREATE DATABASE` 和 `DROP DATABASE` 陳述式的權限。
+- 無法更改或刪除與 **伺服器管理員** 登入對應的資料庫使用者。
+- 英文 (美國) 是 **伺服器管理員** 登入的預設語言。
+- 只有系統管理員 ( **伺服器管理員** 登入或 Azure AD 系統管理員) 及 **master** 資料庫中 **dbmanager** 資料庫角色的成員，才具備執行 `CREATE DATABASE` 和 `DROP DATABASE` 陳述式的權限。
 - 執行 `CREATE/ALTER/DROP LOGIN` 陳述式時，您必須連接到 master 資料庫。 不過，不建議使用登入。 請改為使用自主資料庫使用者。
 - 若要連接到使用者資料庫，您必須在連接字串中提供資料庫名稱。
 - 只有伺服器層級的主體登入及 **master** 資料庫中 **loginmanager** 資料庫角色的成員，才具備執行 `CREATE LOGIN`、`ALTER LOGIN` 及 `DROP LOGIN` 陳述式的權限。
@@ -232,7 +232,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 - 搭配執行 `CREATE USER` 陳述式和 `FOR/FROM LOGIN` 選項時，它必須是 Transact-SQL 批次中唯一的陳述式。
 - 搭配執行 `ALTER USER` 陳述式和 `WITH LOGIN` 選項時，它必須是 Transact-SQL 批次中唯一的陳述式。
 - 若要 `CREATE/ALTER/DROP`，使用者必須擁有資料庫的 `ALTER ANY USER` 權限。
-- 當資料庫角色的擁有者嘗試對該資料庫角色新增或移除另一個資料庫使用者時，可能會發生下列錯誤：**使用者或角色 'Name' 並不存在於此資料庫中。** 因為擁有者看不到使用者，所以會發生此錯誤。 若要解決這個問題，請為角色擁有者授與使用者的 `VIEW DEFINITION` 權限。 
+- 當資料庫角色的擁有者嘗試對該資料庫角色新增或移除另一個資料庫使用者時，可能會發生下列錯誤： **使用者或角色 'Name' 並不存在於此資料庫中。** 因為擁有者看不到使用者，所以會發生此錯誤。 若要解決這個問題，請為角色擁有者授與使用者的 `VIEW DEFINITION` 權限。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入門：搭配使用 Azure Cache for Redis 與 Java
+title: 快速入門：在 Java 中使用 Azure Cache for Redis
 description: 在本快速入門中，您將會建立可使用 Azure Cache for Redis 的新 Java 應用程式
 author: yegu-ms
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87528818"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088109"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入門：搭配使用 Azure Cache for Redis 與 Java
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>快速入門：在 Java 中使用 Azure Cache for Redis
 
 在本快速入門中，您會使用 [Jedis](https://github.com/xetorthio/jedis) Redis 用戶端將 Azure Cache for Redis 納入 Java 應用程式中，以便存取可從 Azure 內的任何應用程式存取的安全、專用快取。
 
@@ -32,7 +32,7 @@ ms.locfileid: "87528818"
 
 ## <a name="setting-up-the-working-environment"></a>設定工作環境 
 
-根據您的作業系統，為**主機名稱**和**主要存取金鑰**新增環境變數。 開啟命令提示字元或終端機視窗，然後設定下列值：
+根據您的作業系統，為 **主機名稱** 和 **主要存取金鑰** 新增環境變數。 開啟命令提示字元或終端機視窗，然後設定下列值：
 
 ```CMD 
 set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
@@ -46,8 +46,8 @@ export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 
 以下列值取代預留位置：
 
-- `<YOUR_HOST_NAME>`:在 Azure 入口網站中，從 Azure Cache for Redis 資源的「屬性」區段取得的 DNS 主機名稱。
-- `<YOUR_PRIMARY_ACCESS_KEY>`:在 Azure 入口網站中，從 Azure Cache for Redis 資源的「存取金鑰」區段取得的主要存取金鑰。
+- `<YOUR_HOST_NAME>`：在 Azure 入口網站中，從 Azure Cache for Redis 資源的「屬性」區段取得的 DNS 主機名稱。
+- `<YOUR_PRIMARY_ACCESS_KEY>`：在 Azure 入口網站中，從 Azure Cache for Redis 資源的「存取金鑰」區段取得的主要存取金鑰。
 
 ## <a name="create-a-new-java-app"></a>建立新的 Java 應用程式
 

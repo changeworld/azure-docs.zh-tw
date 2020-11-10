@@ -4,12 +4,12 @@ description: 使用 Azure Container Registry 命令，在 Azure 雲端中快速�
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538172"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098904"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
@@ -17,11 +17,11 @@ ms.locfileid: "91538172"
 
 完成此快速入門後，請使用[教學課程](container-registry-tutorial-quick-task.md)進一步探索 ACR 工作的進階功能。 ACR 工適用於多種案例，包括根據程式碼認可或基底映像更新將映像建置自動化，或是以平行方式測試多個容器。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成此快速入門。 如果您想要在本機使用，建議使用 2.0.58 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- 本快速入門需要 2.0.58 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
-使用 [az acr create][az-acr-create] 命令建立容器登錄。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例將使用 *myContainerRegistry008*。 請將此更新為唯一的值。
+使用 [az acr create][az-acr-create] 命令建立容器登錄。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例將使用 *myContainerRegistry008* 。 請將此更新為唯一的值。
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup \
@@ -46,10 +46,10 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>從 Dockerfile 建置和推送映像
 
-現在，請使用 Azure Container Registry 建置和推送映像。 首先建立本機工作目錄，然後使用以下單一行建立名為 *Dockerfile* 的 Dockerfile：`FROM hello-world`。 這是從 Docker Hub 中的 `hello-world` 映像建置 Linux 容器映像的簡單範例。 您可以建立自己的標準 Dockerfile，並建置適用於其他平台的映像。 如果您在 Bash Shell 作業，請使用下列命令建立 Dockerfile：
+現在，請使用 Azure Container Registry 建置和推送映像。 首先建立本機工作目錄，然後使用以下單一行建立名為 *Dockerfile* 的 Dockerfile：`FROM mcr.microsoft.com/hello-world`。 這是從 Microsoft Container Registry 中的 `hello-world` 映像建置 Linux 容器映像的簡單範例。 您可以建立自己的標準 Dockerfile，並建置適用於其他平台的映像。 如果您在 Bash Shell 作業，請使用下列命令建立 Dockerfile：
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 執行 [az acr build][az-acr-build] 命令來建置映射，並在成功建置映像後，將其推送至您的登錄。 下列範例會建置和推送 `sample/hello-world:v1` 映像。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
@@ -78,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1

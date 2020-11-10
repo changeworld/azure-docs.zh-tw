@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287724"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322581"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 Apache Spark 與 Azure Cosmos DB 互動 (預覽)
 
@@ -27,7 +27,7 @@ ms.locfileid: "91287724"
 * Synapse Apache Spark 也可讓您將資料內嵌至 Azure Cosmos DB。 請務必注意，資料一律會透過交易式存放區內嵌到 Azure Cosmos DB 容器。 啟用 Synapse 連結時，任何新的插入、更新和刪除都會自動同步處理到分析存放區。
 * Synapse Apache Spark 也支援使用 Azure Cosmos DB 作為來源和接收的 Spark 結構化串流。 
 
-下列各節將逐步解說上述功能的語法。 Azure Synapse Analytics 工作區中手勢的設計，是為了讓您在開始使用時能有簡單的立即可用體驗。 在 Synapse 工作區的**資料**索引標籤中，以滑鼠右鍵按一下 Azure Cosmos DB 容器時，就會顯示手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 按一下以探索資料時，也非常適合使用手勢。
+下列各節將逐步解說上述功能的語法。 Azure Synapse Analytics 工作區中手勢的設計，是為了讓您在開始使用時能有簡單的立即可用體驗。 在 Synapse 工作區的 **資料** 索引標籤中，以滑鼠右鍵按一下 Azure Cosmos DB 容器時，就會顯示手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 按一下以探索資料時，也非常適合使用手勢。
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>查詢 Azure Cosmos DB 分析存放區
 
@@ -35,9 +35,9 @@ ms.locfileid: "91287724"
 
 體驗方面的差異在於，Azure Cosmos DB 容器中的基礎資料變更是否應該自動反映在 Spark 中執行的分析。 當 Spark 資料框架已註冊，或針對容器的分析存放區建立 Spark 資料表時，系統會將分析存放區中目前資料快照集的中繼資料提取至 Spark，以有效率地推送後續分析。 請務必注意，由於 Spark 會遵循延遲評估原則，除非在 Spark 資料框架上叫用動作，或針對 Spark 資料表執行 SparkSQL 查詢，否則系統不會從基礎容器的分析存放區提取實際的資料。
 
-在**載入至 Spark 資料框架**的情況下，系統會透過 Spark 工作階段的存留期快取提取的中繼資料，因此在建立資料框架時，系統會針對分析存放區的快照集評估在資料框架上叫用的後續動作。
+在 **載入至 Spark 資料框架** 的情況下，系統會透過 Spark 工作階段的存留期快取提取的中繼資料，因此在建立資料框架時，系統會針對分析存放區的快照集評估在資料框架上叫用的後續動作。
 
-另一方面，在**建立 Spark 資料表**的情況下，系統不會在 Spark 中快取分析存放區狀態的中繼資料，而且會在每次對 Spark 資料表執行 SparkSQL 查詢時重新載入。
+另一方面，在 **建立 Spark 資料表** 的情況下，系統不會在 Spark 中快取分析存放區狀態的中繼資料，而且會在每次對 Spark 資料表執行 SparkSQL 查詢時重新載入。
 
 因此，您可以選擇要針對分析存放區的固定快照集，或分別針對分析存放區的最新快照集評估您的 Spark 分析來載入 Spark 資料框架並建立 Spark 資料表。
 
@@ -209,7 +209,7 @@ query.awaitTermination()
     ]
 }
 ```
-如果要將遠端 Spark 作業定義提交至 Synapse Spark 集區，可以遵循此[教學課程](../spark/apache-spark-job-definitions.md)了解如何參考外部程式庫。
+如果要將遠端 Spark 作業定義提交至無伺服器 Apache Spark 集區，可以遵循此[教學課程](../spark/apache-spark-job-definitions.md)了解如何參考外部程式庫。
 
 ## <a name="next-steps"></a>後續步驟
 

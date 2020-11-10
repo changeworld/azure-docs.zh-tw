@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3c269f07c177d99e46dcc343b80979835b429b68
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0ea46122cffe03ffe2e6a4e07afc6995d88a3acb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369347"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306998"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark
 
-Apache Spark 是一個平行處理架構，可支援記憶體內部處理，以大幅提升巨量資料分析應用程式的效能。 Azure Synapse Analytics 中的 Apache Spark 是 Microsoft 在雲端中的其中一種 Apache Spark 實作。 Azure Synapse 可讓您輕鬆地在 Azure 中建立和設定 Spark 集區 (預覽)。 Azure Synapse 中的 Spark 集區與 Azure 儲存體和 Azure Data Lake Generation 2 Storage 相容。 因此，您可以使用 Azure Spark 集區來處理儲存於 Azure 的資料。
+Apache Spark 是一個平行處理架構，可支援記憶體內部處理，以大幅提升巨量資料分析應用程式的效能。 Azure Synapse Analytics 中的 Apache Spark 是 Microsoft 在雲端中的其中一種 Apache Spark 實作。 Azure Synapse 可讓您輕鬆地在 Azure 中建立和設定無伺服器 Apache Spark 集區 (預覽)。 Azure Synapse 中的 Spark 集區與 Azure 儲存體和 Azure Data Lake Generation 2 Storage 相容。 因此，您可以使用 Spark 集區來處理儲存於 Azure 的資料。
 
 ![Spark：統一架構](./media/apache-spark-overview/spark-overview.png)
 

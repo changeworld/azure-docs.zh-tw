@@ -4,12 +4,12 @@ description: 在本快速入門中，使用 Azure 入口網站建立 Azure 原�
 ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0818dde40a48b4b093ee9c0adc735aba4c883487
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 9955f911f9a92d7b353a8f3d022af7884b5a6aae
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074102"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090132"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入門：建立原則指派，以便使用 Azure CLI 識別不相容資源
 
@@ -24,7 +24,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-- 本快速入門會要求您執行 Azure CLI 2.0.76 版或更新版本，以在本機安裝和使用 CLI。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 此快速入門需要您執行 Azure CLI 2.0.76 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 - 使用 Azure CLI 註冊 Azure 原則見解資源提供者。 註冊資源提供者，以確保您的訂用帳戶可搭配它使用。 若要註冊資源提供者，您必須有權註冊資源提供者作業。 這項作業包含在「參與者」和「擁有者」角色中。 執行下列命令以註冊資源提供者：
 
@@ -51,8 +51,8 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 上述命令會使用下列資訊：
 
 - **Name** - 指派的實際名稱。 例如，我們使用了 audit-vm-manageddisks  。
-- **DisplayName** - 原則指派的顯示名稱。 在此案例中，您會使用_稽核沒有受控磁碟指派的虛擬機器_。
-- **原則** – 原則定義識別碼，這是您用來建立指派的根基。 在此案例中，即為原則定義_稽核沒有受控磁碟的虛擬機器_的 ID。 若要取得原則定義識別碼，請執行此命令：`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **DisplayName** - 原則指派的顯示名稱。 在此案例中，您會使用 _稽核沒有受控磁碟指派的虛擬機器_ 。
+- **原則** – 原則定義識別碼，這是您用來建立指派的根基。 在此案例中，即為原則定義 _稽核沒有受控磁碟的虛擬機器_ 的 ID。 若要取得原則定義識別碼，請執行此命令：`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **範圍** – 範圍會決定在哪些資源或資源群組上強制執行原則指派。 範圍從訂用帳戶到資源群組。 請務必將 &lt;scope&gt; 取代為您的資源群組。
 
 ## <a name="identify-non-compliant-resources"></a>識別不相容的資源

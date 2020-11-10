@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425864"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925742"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中執行自訂容器
 
@@ -81,7 +81,7 @@ ms.locfileid: "92425864"
 
    等待部署完成。 [發佈] 頁面現在會顯示可供稍後使用的存放庫名稱。
 
-   ![從專案概觀頁面發佈](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![S反白顯示存放庫名稱的螢幕擷取畫面。](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. 複製此存放庫名稱以便稍後使用。
 
@@ -197,11 +197,11 @@ Linux 上的 App Service 提供 Linux 上的預先定義應用程式堆疊，且
 若要完成本快速入門，您將需要一個儲存在 [Azure Container Registry](../container-registry/index.yml) 中的適當 Web 應用程式映像。 遵循[快速入門：使用 Azure 入口網站建立私人容器登錄](../container-registry/container-registry-get-started-portal.md)中的指示，但使用 `mcr.microsoft.com/azuredocs/go` 映像，而不是 `hello-world` 映像。 如需參考，[在 Azure 範例存放庫中可找到範例 Dockerfile](https://github.com/Azure-Samples/go-docs-hello-world)。
 
 > [!IMPORTANT]
-> 當您建立容器登錄時，請務必將 [管理使用者]  選項設定為 [啟用]  。 您也可以在 Azure 入口網站中，從登錄頁面的 [存取金鑰]  區段擷取它。 這是 App Service 存取的必要設定。
+> 當您建立容器登錄時，請務必將 [管理使用者] 選項設定為 [啟用]。 您也可以在 Azure 入口網站中，從登錄頁面的 [存取金鑰] 區段擷取它。 這是 App Service 存取的必要設定。
 
 ## <a name="sign-in"></a>登入
 
-接下來，啟動 VS Code 並使用 App Service 擴充功能登入您的 Azure 帳戶。 若要這麼做，請在活動列中選取 Azure 標誌，瀏覽至 [APP SERVICE]  總管，然後選取 [Sign in to Azure]  \(登入 Azure\)，並遵循指示操作。
+接下來，啟動 VS Code 並使用 App Service 擴充功能登入您的 Azure 帳戶。 若要這麼做，請在活動列中選取 Azure 標誌，瀏覽至 [APP SERVICE] 總管，然後選取 [Sign in to Azure] \(登入 Azure\)，並遵循指示操作。
 
 ![登入 Azure](./media/quickstart-docker/sign-in.png)
 
@@ -209,7 +209,7 @@ Linux 上的 App Service 提供 Linux 上的預先定義應用程式堆疊，且
 
 現在您可以檢查是否已正確安裝及設定所有必要條件。
 
-在 VS Code 中，您應該會在狀態列中看到您的 Azure 電子郵件地址，並在 [APP SERVICE]  總管中看到您的訂用帳戶。
+在 VS Code 中，您應該會在狀態列中看到您的 Azure 電子郵件地址，並在 [APP SERVICE] 總管中看到您的訂用帳戶。
 
 接下來，確認您已安裝且正在執行 Docker。 下列命令會顯示 Docker 版本 (如果它正在執行中)。
 
@@ -217,7 +217,7 @@ Linux 上的 App Service 提供 Linux 上的預先定義應用程式堆疊，且
 docker --version
 ```
 
-最後，請確定您的 Azure Container Registry 已連線。 若要這麼做，請在活動列中選取 Docker 標誌，然後瀏覽至 [REGISTRIES]  \(登錄\)。
+最後，請確定您的 Azure Container Registry 已連線。 若要這麼做，請在活動列中選取 Docker 標誌，然後瀏覽至 [REGISTRIES] \(登錄\)。
 
 ![此螢幕擷取畫面顯示已擴充 Azure 的登錄值，以及具有 .io 副檔名的檔案。](./media/quickstart-docker/registries.png)
 
@@ -225,9 +225,9 @@ docker --version
 
 設定好所有項目之後，您就可以直接從 Docker 擴充功能總管將您的映像部署到 [Azure App Service](https://azure.microsoft.com/services/app-service/)。
 
-在  \(登錄\) 節點底下尋找映像，並展開它以顯示其標籤。 以滑鼠右鍵按一下標籤，然後選取 [Deploy Image to Azure App Service]  \(將映像部署至 Azure App Service\)。
+在 **DOCKER** 總管的 [Registries] \(登錄\) 節點底下尋找映像，並展開它以顯示其標籤。 以滑鼠右鍵按一下標籤，然後選取 [Deploy Image to Azure App Service] \(將映像部署至 Azure App Service\)。
 
-從這裡，遵循提示來選擇訂用帳戶、全域唯一應用程式名稱、資源群組和 App Service 方案。 針對定價層和區域選擇 [B1 Basic]  \(B1 基本\)。
+從這裡，遵循提示來選擇訂用帳戶、全域唯一應用程式名稱、資源群組和 App Service 方案。 針對定價層和區域選擇 [B1 Basic] \(B1 基本\)。
 
 部署之後，您的應用程式可以在 `http://<app name>.azurewebsites.net` 取得。
 
@@ -237,7 +237,7 @@ docker --version
 
 ## <a name="browse-the-website"></a>瀏覽網站
 
-[輸出]  面板會在部署期間開啟，以指出作業的狀態。 當作業完成時，尋找您在 [APP SERVICE]  總管中建立的應用程式，並以滑鼠右鍵按一下，然後選取 [Browse Website]  \(瀏覽網站\)，以在瀏覽器中開啟網站。
+[輸出] 面板會在部署期間開啟，以指出作業的狀態。 當作業完成時，尋找您在 [APP SERVICE] 總管中建立的應用程式，並以滑鼠右鍵按一下，然後選取 [Browse Website] \(瀏覽網站\)，以在瀏覽器中開啟網站。
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)

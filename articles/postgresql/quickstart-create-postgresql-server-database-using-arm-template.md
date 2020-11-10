@@ -1,18 +1,18 @@
 ---
 title: 快速入門：建立適用於 PostgreSQL 的 Azure DB - ARM 範本
-description: 在本文中，您將了解如何使用 Azure Resource Manager 範本，建立「適用於 PostgreSQL 的 Azure 資料庫」單一伺服器。
-author: mgblythe
+description: 在本快速入門中，您將了解如何使用 Azure Resource Manager 範本，建立「適用於 PostgreSQL 的 Azure 資料庫」單一伺服器。
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: b73bf82b7fba4c7c618dbae81873efabec61051d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906437"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331636"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入門：使用 ARM 範本建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -68,32 +68,32 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-在**使用 VNet 部署適用於 PostgreSQL 的 Azure 資料庫**頁面：
+在 **使用 VNet 部署適用於 PostgreSQL 的 Azure 資料庫** 頁面：
 
 1. 針對 [資源群組]，選取 [新建]，然後輸入新資源群組的名稱並選取 [確認]。
 
-2. 如果您已建立新的資源群組，請選取資源群組和新伺服器的**位置**。
+2. 如果您已建立新的資源群組，請選取資源群組和新伺服器的 **位置** 。
 
-3. 輸入**伺服器名稱**、**管理員登入**，以及**管理員登入密碼**。
+3. 輸入 **伺服器名稱** 、 **管理員登入** ，以及 **管理員登入密碼** 。
 
-    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="部署至 Azure":::
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="使用 VNet 視窗、Azure 快速入門範本和 Azure 入口網站部署適用於 PostgreSQL 的 Azure 資料庫":::
 
 4. 如有需要，請變更其他預設設定：
 
-    * **訂用帳戶**：選取您要讓伺服器使用的 Azure 訂用帳戶。
-    * **SKU 容量**：虛擬核心容量，可以是 2 (預設值)、4、8、16、32或 64。
-    * **SKU 名稱**：SKU 層前置詞、SKU 系列和 SKU 容量 (以底線連在一起)，例如 B_Gen5_1、GP_Gen5_2 (預設值) 或 MO_Gen5_32。
-    * **SKU 大小 MB**：適用於 PostgreSQL 的 Azure 資料庫儲存體大小 (以 MB 為單位，預設為 51200)。
-    * **SKU 層**：部署層，例如基本、GeneralPurpose (預設值) 或 *MemoryOptimized*。
-    * **SKU 系列**：Gen4 或 Gen5 (預設值)，表示伺服器部署的硬體世代。
-    * **Postgresql 版本**：要部署的 PostgreSQL 版本，例如 9.5、9.6、10 或 11 (預設值)。
-    * **備份保留天數**：異地備援備份保留的所需期間 (以天為單位，預設值為 7)。
-    * **異地備援備份**：根據異地災害復原 (Geo-DR) 需求，啟用或停用 (預設值)。
-    * **虛擬網路名稱**：虛擬網路的名稱 (預設為 azure_postgresql_vnet)。
-    * **子網路名稱**：子網路的名稱 (預設為 azure_postgresql_subnet)。
-    * **虛擬網路規則名稱**：允許子網路的虛擬網路規則名稱 (預設為 AllowSubnet)。
-    * **VNet 位址前置詞**：虛擬網路的位址前置詞 (預設為 10.0.0.0/16)。
-    * **子網路前置詞**：子網路的位址前置詞 (預設為 10.0.0.0/16)。
+    * **訂用帳戶** ：選取您要讓伺服器使用的 Azure 訂用帳戶。
+    * **SKU 容量** ：虛擬核心容量，可以是 2 (預設值)、4、8、16、32或 64。
+    * **SKU 名稱** ：SKU 層前置詞、SKU 系列和 SKU 容量 (以底線連在一起)，例如 B_Gen5_1、GP_Gen5_2 (預設值) 或 MO_Gen5_32。
+    * **SKU 大小 MB** ：適用於 PostgreSQL 的 Azure 資料庫儲存體大小 (以 MB 為單位，預設為 51200)。
+    * **SKU 層** ：部署層，例如基本、GeneralPurpose (預設值) 或 *MemoryOptimized* 。
+    * **SKU 系列** ：Gen4 或 Gen5 (預設值)，表示伺服器部署的硬體世代。
+    * **Postgresql 版本** ：要部署的 PostgreSQL 版本，例如 9.5、9.6、10 或 11 (預設值)。
+    * **備份保留天數** ：異地備援備份保留的所需期間 (以天為單位，預設值為 7)。
+    * **異地備援備份** ：根據異地災害復原 (Geo-DR) 需求，啟用或停用 (預設值)。
+    * **虛擬網路名稱** ：虛擬網路的名稱 (預設為 azure_postgresql_vnet)。
+    * **子網路名稱** ：子網路的名稱 (預設為 azure_postgresql_subnet)。
+    * **虛擬網路規則名稱** ：允許子網路的虛擬網路規則名稱 (預設為 AllowSubnet)。
+    * **VNet 位址前置詞** ：虛擬網路的位址前置詞 (預設為 10.0.0.0/16)。
+    * **子網路前置詞** ：子網路的位址前置詞 (預設為 10.0.0.0/16)。
 
 5. 讀取條款及條件，然後選取 [我同意上方所述的條款及條件]。
 

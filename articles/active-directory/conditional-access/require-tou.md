@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88948856"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077892"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入門：必須接受使用規定才可存取雲端應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "88948856"
 
 本快速入門說明如何設定 [Azure AD 條件式存取原則](./overview.md)，以要求必須對您環境中選定的雲端應用程式接受 ToU。
 
-![建立原則](./media/require-tou/5555.png)
+:::image type="content" source="./media/require-tou/5555.png" alt-text="Azure 入口網站的螢幕擷取畫面。顯示定義名為需要 T O U for Isabella 钅原則的窗格。" border="false":::
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "88948856"
 若要完成本快速入門中的案例，您需要：
 
 - **Azure AD Premium 版的存取權** - Azure AD 條件式存取是 Azure AD Premium 中的功能。
-- **稱為 Isabella Simonsen 的測試帳戶** - 如果您不知道如何建立測試帳戶，請參閱[新增雲端式使用者](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
+- **稱為 Isabella Simonsen 的測試帳戶** - 如果您不知道如何建立測試帳戶，請參閱 [新增雲端式使用者](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 
 ## <a name="test-your-sign-in"></a>測試您的登入
 
@@ -66,15 +66,15 @@ ms.locfileid: "88948856"
 
 1. 在 [管理] 區段中，按一下 [使用規定]。
 
-   ![使用規定](./media/require-tou/04.png)
+   :::image type="content" source="./media/require-tou/04.png" alt-text="Azure Active Directory 頁面之管理區段的螢幕擷取畫面。使用規定項目會反白顯示。" border="false":::
 
 1. 在頂端的功能表中，按一下 [新增條款]。
 
-   ![使用規定](./media/require-tou/05.png)
+   :::image type="content" source="./media/require-tou/05.png" alt-text="Azure Active Directory 頁面中功能表的螢幕擷取畫面。新的條款項目會反白顯示。" border="false":::
 
 1. 在 [新增使用規定] 頁面上：
 
-   ![使用規定](./media/require-tou/112.png)
+   :::image type="content" source="./media/require-tou/112.png" alt-text="新增使用規定頁面的螢幕擷取畫面，其中會反白顯示名稱、顯示名稱、文件、語言、條件式存取和延伸條款切換。" border="false":::
 
    1. 在 [名稱] 文字方塊中，輸入「我的 TOU」。
    1. 在 [顯示名稱] 文字方塊中，輸入「我的 TOU」。
@@ -99,7 +99,7 @@ ms.locfileid: "88948856"
 | 雲端應用程式 | Microsoft Azure 管理 |
 | 授與存取權 | 我的 TOU |
 
-![建立原則](./media/require-tou/1234.png)
+:::image type="content" source="./media/require-tou/1234.png" alt-text="定義原則之 Azure 入口網站窗格的螢幕擷取畫面。箭號表示原則會授與 My T O U 的存取權，並包含一個使用者和應用程式。" border="false":::
 
 **若要設定條件式存取原則：**
 
@@ -109,11 +109,11 @@ ms.locfileid: "88948856"
 
 1. 在 [指派] 區段中，按一下 [使用者和群組]。
 
-   ![使用者和群組](./media/require-tou/06.png)
+   :::image type="content" source="./media/require-tou/06.png" alt-text="定義原則之 Azure 入口網站窗格的指派區段的螢幕擷取畫面。顯示未選取任何項目的使用者和群組項目。" border="false":::
 
 1. 在 [使用者和群組] 頁面上：
 
-   ![使用者和群組](./media/require-tou/24.png)
+   :::image type="content" source="./media/require-tou/24.png" alt-text="使用者和群組頁面之「包括」索引標籤的螢幕擷取畫面。已選取 [選取使用者和群組]，如同 [使用者和群組]。選取項目已反白顯示。" border="false":::
 
    1. 按一下 [選取使用者和群組]，然後選取 [群組設定]。
    1. 按一下 [選取]。
@@ -121,7 +121,7 @@ ms.locfileid: "88948856"
    1. 在 [使用者和群組] 頁面上，按一下 [完成]。
 1. 按一下 [雲端應用程式]。
 
-   ![雲端應用程式](./media/require-tou/08.png)
+   :::image type="content" source="./media/require-tou/08.png" alt-text="定義原則之 Azure 入口網站窗格的指派區段的螢幕擷取畫面。顯示未選取任何項目的雲端應用程式項目。" border="false":::
 
 1. 在 [雲端應用程式] 頁面上：
 
@@ -170,13 +170,13 @@ ms.locfileid: "88948856"
 
    ![What If](./media/require-tou/14.png)
 
-1. 按一下 **使用者**，選取 **Isabella Simonsen**，然後按一下 **選取**。
+1. 按一下 **使用者** ，選取 **Isabella Simonsen** ，然後按一下 **選取** 。
 
    ![User](./media/require-tou/15.png)
 
 1. 若要選取雲端應用程式：
 
-   ![雲端應用程式](./media/require-tou/16.png)
+   :::image type="content" source="./media/require-tou/16.png" alt-text="雲端應用程式區段的螢幕擷取畫面。表示已選取一個應用程式的文字。" border="false":::
 
    1. 按一下 [雲端應用程式]。
    1. 在 [雲端應用程式] 頁面上，按一下 [選取應用程式]。
@@ -191,7 +191,7 @@ ms.locfileid: "88948856"
 
 若要測試原則，請再次使用 **Isabella Simonsen** 測試帳戶來嘗試登入 [Azure 入口網站](https://portal.azure.com)。 您應該會看到一個對話方塊要求您接受使用規定。
 
-![使用規定](./media/require-tou/57.png)
+:::image type="content" source="./media/require-tou/57.png" alt-text="標題為「身分識別安全性保護使用規定」之對話方塊的螢幕擷取畫面，其中包含 [拒絕] 和 [接受] 按鈕，以及標示為 My T O U 的按鈕。" border="false":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -200,11 +200,11 @@ ms.locfileid: "88948856"
 - 如果您不知道如何刪除 Azure AD 使用者，請參閱[從 Azure AD 刪除使用者](../fundamentals/add-users-azure-active-directory.md#delete-a-user)。
 - 若要刪除原則，請選取您的原則，然後按一下快速存取工具列的 [刪除]。
 
-    ![Multi-Factor Authentication](./media/require-tou/33.png)
+    :::image type="content" source="./media/require-tou/33.png" alt-text="針對 Azure 入口網站使用者顯示名為「必要 MFA」的螢幕擷取畫面。顯示捷徑功能表，並反白顯示刪除。" border="false":::
 
 - 若要刪除使用規定，請加以選取，然後按一下頂端工具列中的 [刪除條款]。
 
-    ![Multi-Factor Authentication](./media/require-tou/29.png)
+    :::image type="content" source="./media/require-tou/29.png" alt-text="顯示部分資料表的螢幕擷取畫面，列出使用規定文件。顯示 My T O U 文件。在功能表中，會反白顯示刪除條款。" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

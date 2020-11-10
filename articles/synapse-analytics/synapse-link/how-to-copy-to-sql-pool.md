@@ -1,6 +1,6 @@
 ---
-title: 使用 Apache Spark 將適用於 Azure Cosmos DB 的 Synapse Link 資料複製到 SQL 集區
-description: 將資料載入 Spark 資料框架中、策展資料，並將其載入 SQL 集區資料表
+title: 使用 Apache Spark 將適用於 Azure Cosmos DB 的 Synapse Link 資料複製到專用 SQL 集區
+description: 將資料載入 Spark 資料框架中、策展資料，並將其載入專用 SQL 集區資料表
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,30 +9,30 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287845"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309210"
 ---
-# <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>使用 Apache Spark 將資料從 Azure Cosmos DB 複製到 SQL 集區
+# <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>使用 Apache Spark 將資料從 Azure Cosmos DB 複製到專用 SQL 集區
 
 適用於 Azure Cosmos DB 的 Synapse Link 可讓使用者對 Azure Cosmos DB 中的操作資料執行近乎即時的分析。 不過，有時候有些資料需要進行彙總和擴充，才能服務資料倉儲使用者。 只需透過筆記本的幾個資料格即可策展和匯出 Synapse Link 資料。
 
 ## <a name="prerequisites"></a>先決條件
 * 使用下列項目[佈建 Synapse 工作區](../quickstart-create-workspace.md)：
-    * [Spark 集區](../quickstart-create-apache-spark-pool-studio.md)
-    * [SQL 集區](../quickstart-create-sql-pool-studio.md)
+    * [無伺服器 Apache Spark 集區](../quickstart-create-apache-spark-pool-studio.md)
+    * [專用 SQL 集區](../quickstart-create-sql-pool-studio.md)
 * [以具有資料的 HTAP 容器佈建 Cosmos DB 帳戶](../../cosmos-db/configure-synapse-link.md)
 * [將 Azure Cosmos DB HTAP 容器連線到工作區](./how-to-connect-synapse-link-cosmos-db.md)
-* [進行正確設定以將資料從 Spark 匯入到 SQL 集區](../spark/synapse-spark-sql-pool-import-export.md)
+* [進行正確設定以將資料從 Spark 匯入到專用 SQL 集區](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>步驟
 在本教學課程中，您將連線到分析存放區，因此不會影響交易存放區 (其不會取用任何要求單位)。 我們會進行下列步驟：
 1. 將 Cosmos DB HTAP 容器讀入 Spark 資料框架中
 2. 在新的資料框架中彙總結果
-3. 將資料擷取至 SQL 集區
+3. 將資料內嵌至專用 SQL 集區
 
 [![Spark 至 SQL 的步驟 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
@@ -50,7 +50,7 @@ ms.locfileid: "91287845"
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-我們會依據 *productCode* 和 *weekStarting* 來彙總銷售額 (*數量*、*收益* (價格 x 數量)) 以供報告之用。 最後，我們會將該資料匯出到名為 **dbo.productsales** 的 SQL 集區資料表。
+我們會依據 *productCode* 和 *weekStarting* 來彙總銷售額 ( *數量* 、 *收益* (價格 x 數量)) 以供報告之用。 最後，我們會將該資料匯出到名為 **dbo.productsales** 的專用 SQL 集區資料表。
 
 ## <a name="configure-a-spark-notebook"></a>設定 Spark 筆記本
 使用 Scala as Spark (Scala) 作為主要語言來建立 Spark 筆記本。 我們會針對工作階段使用筆記本的預設設定。
@@ -67,7 +67,7 @@ val df_olap = spark.read.format("cosmos.olap").
 
 ## <a name="aggregate-the-results-in-a-new-dataframe"></a>在新的資料框架中彙總結果
 
-在第二個資料格中，我們會先執行新資料框架所需的轉換和彙總，然後再將其載入至 SQL 集區資料庫。
+在第二個資料格中，我們會先執行新資料框架所需的轉換和彙總，然後再將其載入至專用 SQL 集區資料庫。
 
 ```java
 // Select relevant columns and create revenue
@@ -77,12 +77,12 @@ val df_olap_aggr = df_olap_step1.groupBy("productCode","weekStarting").agg(sum("
     withColumn("AvgPrice",col("Sum_revenue")/col("Sum_quantity"))
 ```
 
-## <a name="load-the-results-into-a-sql-pool"></a>將結果載入到 SQL 集區
+## <a name="load-the-results-into-a-dedicated-sql-pool"></a>將結果載入到專用 SQL 集區
 
-在第三個資料格中，我們會將資料載入到 SQL 集區。 其會自動建立暫存的外部資料表、外部資料來源和外部檔案格式，並於作業完成後立即刪除。
+在第三個資料格中，我們會將資料載入到專用 SQL 集區。 其會自動建立暫存的外部資料表、外部資料來源和外部檔案格式，並於作業完成後立即刪除。
 
 ```java
-df_olap_aggr.write.sqlanalytics("arnaudpool.dbo.productsales", Constants.INTERNAL)
+df_olap_aggr.write.sqlanalytics("userpool.dbo.productsales", Constants.INTERNAL)
 ```
 
 ## <a name="query-the-results-with-sql"></a>使用 SQL 查詢結果

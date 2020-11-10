@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 Synapse Studio 建立 Synapse SQL 集區
-description: 遵循本指南中的步驟，使用 Synapse Studio 建立新的 Synapse SQL 集區。
+title: 快速入門：使用 Synapse Studio 建立專用 SQL 集區
+description: 遵循本指南中的步驟，使用 Synapse Studio 建立專用 SQL 集區。
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 806831ac5e965afcd076066f4baa498297a43a3e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740529"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324315"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立 Synapse SQL 集區
+# <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立專用的 SQL 集區
 
-Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化及分析您的資料。 SQL 集區提供以 T-SQL 為基礎的計算和儲存功能。 在 Synapse 工作區中建立 SQL 集區後，就可以載入、模型化、處理及提供資料，以提供更快速的分析見解。
+Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化及分析您的資料。 專用 SQL 集區提供以 T-SQL 為基礎的計算和儲存功能。 在 Synapse 工作區中建立專用 SQL 集區後，就可以載入、模型化、處理及提供資料，以提供更快速的分析見解。
 
-本快速入門說明使用 Synapse Studio 在 Synapse 工作區中建立 SQL 集區的步驟。
+本快速入門說明使用 Synapse Studio 在 Synapse 工作區中建立專用 SQL 集區的步驟。
 
 如果您沒有 Azure 訂用帳戶，[請在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -36,7 +36,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 ## <a name="navigate-to-the-synapse-workspace"></a>瀏覽至 Synapse 工作區
 
-1. 在搜尋列中輸入服務名稱 (或直接輸入資源名稱)，瀏覽至要建立 SQL 集區的 Synapse 工作區。
+1. 在搜尋列中輸入服務名稱 (或直接輸入資源名稱)，瀏覽至要建立專用 SQL 集區的 Synapse 工作區。
 
     ![Azure 入口網站搜尋列中輸入了 Synapse 工作區。](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
 1. 從工作區清單中，輸入要開啟之工作區的名稱 (或名稱的一部分)。 在此範例中，我們將使用名為 **contosoanalytics** 的工作區。
@@ -45,11 +45,11 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 ## <a name="launch-synapse-studio"></a>啟動 Synapse Studio
 
-1. 從工作區總覽中，選取 [啟動 Synapse Studio]，以開啟將建立 SQL 集區的位置。 直接在搜尋列中輸入服務名稱或資源名稱。
+1. 從工作區概觀中，選取工作區 **Web URL** 以啟動 Synapse Studio。
 
-    ![已反白顯示 [啟動 Synapse Studio] 的 Azure 入口網站 Synapse 工作區總覽。](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
+    ![已反白顯示工作區 Web URL 的 Azure 入口網站 Synapse 工作區概觀。](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 
-## <a name="create-a-sql-pool-in-synapse-studio"></a>在 Synapse Studio 中建立 SQL 集區
+## <a name="create-a-dedicated-sql-pool-in-synapse-studio"></a>在 Synapse Studio 中建立專用 SQL 集區
 
 1. 在 Synapse Studio 首頁上，選取 [管理] 圖示，以瀏覽至左側導覽中的 [管理中樞]。
 
@@ -67,12 +67,12 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
     | 設定 | 建議的值 | 描述 |
     | :------ | :-------------- | :---------- |
-    | **SQL 集區名稱** | contosoedw | 這是 SQL 集區將擁有的名稱。 |
+    | **SQL 集區名稱** | contosoedw | 這是專用 SQL 集區將擁有的名稱。 |
     | **效能等級** | DW100c | 將此設為最小的大小，以降低本快速入門的成本 |
 
     ![SQL 集區建立流程 - [基本資料] 索引標籤。](media/quickstart-create-sql-pool/create-sql-pool-studio-24.png)
     > [!IMPORTANT]
-    > 請注意，SQL 集區可以使用的名稱有特定限制。 名稱不能包含特殊字元、必須是 15 個或更少的字元、不能包含保留字，而且必須是工作區中唯一的名稱。
+    > 請注意，專用 SQL 集區可以使用的名稱有特定限制。 名稱不能包含特殊字元、必須是 15 個或更少的字元、不能包含保留字，而且必須是工作區中唯一的名稱。
 
 4. 在下一個索引標籤中的 [其他設定]，選取 [無] 以佈建沒有資料的 SQL 集區。 保留選取的預設定序。
 
@@ -90,24 +90,24 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
     ![SQL 集區建立流程 - 資源佈建。](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
 
-1. 建立 SQL 集區之後，就可以在工作區中使用該集區來載入資料、處理資料流、從資料湖讀取等。
+1. 建立專用 SQL 集區之後，就可以在工作區中用該集區來載入資料、處理資料流、從資料湖讀取等。
 
-## <a name="clean-up-sql-pools-using-synapse-studio"></a>使用 Synapse Studio 清理 SQL 集區    
+## <a name="clean-up-dedicated-sql-pool-using-synapse-studio"></a>使用 Synapse Studio 清除專用 SQL 集區    
 
-請遵循下列步驟，使用 Synapse Studio 從工作區中刪除 SQL 集區。
+請遵循下列步驟，使用 Synapse Studio 從工作區中刪除專用 SQL 集區。
 > [!WARNING]
-> 刪除 SQL 集區將會從工作區移除分析引擎。 引擎無法再連線到集區，且使用此 SQL 集區的所有查詢、管線和指令碼將無法再使用。
+> 刪除專用 SQL 集區將會從工作區移除分析引擎。 引擎無法再連線到集區，且使用此專用 SQL 集區的所有查詢、管線和指令碼將無法再使用。
 
-若要刪除 SQL 集區，請執行下列動作：
+若要刪除專用 SQL 集區，請執行下列動作：
 
 1. 在 Synapse Studio 中，瀏覽至管理中樞內的 SQL 集區。
-1. 選取要刪除之 SQL 集區中的省略號 (在此案例中為 **contosoedw** ) 以顯示 SQL 集區的命令：
+1. 選取要刪除之專用 SQL 集區中的省略號 (在此案例中為 **contosoedw** ) 以顯示專用 SQL 集區的命令：
 
     ![已選取最近建立之集區的 SQL 集區清單。](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. 按下 [刪除]。
 1. 確認刪除，然後按 [刪除] 按鈕。
-1. 當流程成功完成時，SQL 集區就不會再列入工作區資源中。
+1. 當流程成功完成時，專用 SQL 集區就不會再列入工作區資源中。
 
 ## <a name="next-steps"></a>後續步驟 
 - 請參閱[快速入門：建立 Apache Spark 筆記本](quickstart-apache-spark-notebook.md)。
-- 請參閱[快速入門：使用 Azure 入口網站來建立 Synapse SQL 集區](quickstart-create-sql-pool-portal.md)。
+- 請參閱[快速入門：使用 Azure 入口網站建立專用的 SQL 集區](quickstart-create-sql-pool-portal.md)。

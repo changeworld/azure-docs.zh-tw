@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a3bd565b26d011e6186cc6957769db57f9cd1c9c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093407"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311712"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>使用 Azure Active Directory 驗證向 Synapse SQL 進行驗證
 
@@ -39,7 +39,7 @@ Azure Active Directory 驗證機制會使用 Azure Active Directory (Azure AD) �
 3. 將角色指派給 Synapse 工作區中建立的 Azure Active Directory 身分識別 (預覽)
 4. 使用 Azure AD 身分識別連線到 Synapse Studio。
 
-## <a name="aad-pass-through-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 AAD 傳遞
+## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Azure AD 傳遞
 
 Azure Synapse Analytics 可讓您使用 Azure Active Directory 身分識別來存取資料湖中的資料。
 
@@ -49,13 +49,13 @@ Azure Synapse Analytics 可讓您使用 Azure Active Directory 身分識別來�
 
 下列高階圖表摘要說明搭配使用 Azure AD 驗證與 Synapse SQL 的解決方案架構。 若要支援 Azure AD 原生使用者密碼，只會考慮雲端部分和 Azure AD/Synapse Synapse SQL。 若要支援同盟驗證 (或 Windows 認證的使用者/密碼)，需要與 ADFS 區塊進行通訊。 箭頭表示通訊路徑。
 
-![aad 驗證圖表](./media/aad-authentication/1-active-directory-authentication-diagram.png)
+![Azure AD 驗證圖表](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
 下圖表示允許用戶端藉由提交權杖連線到資料庫的同盟、信任和主控關聯性。 此權杖是由 Azure AD 所驗證，並受到資料庫信任。 
 
 客戶 1 可以代表具有原生使用者的 Azure AD 或具有同盟使用者的 Azure Active Directory。 客戶 2 代表包含已匯入使用者的可能解決方案；在此範例中，來自同盟 Azure Active Directory 且 ADFS 正與 Azure Active Directory 進行同步處理。 
 
-請務必了解使用 Azure AD 驗證存取資料庫的必要條件是裝載訂用帳戶要與 Azure AD 相關聯。 您必須使用相同的訂用帳戶來建立裝載 Azure SQL Database 或 SQL 集區的 SQL Server。
+請務必了解使用 Azure AD 驗證存取資料庫的必要條件是裝載訂用帳戶要與 Azure AD 相關聯。 您必須使用相同的訂用帳戶來建立裝載 Azure SQL Database 或專用 SQL 集區的 SQL Server。
 
 ![訂用帳戶關聯性](./media/aad-authentication/2-subscription-relationship.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 - 包含 MFA 的 Active Directory 通用驗證
 - 使用應用程式權杖驗證
 
-Azure AD 伺服器主體 (登入) (**公開預覽**) 支援下列驗證方法：
+Azure AD 伺服器主體 (登入) ( **公開預覽** ) 支援下列驗證方法：
 
 - Azure Active Directory 密碼
 - Azure Active Directory 整合式
@@ -119,7 +119,7 @@ Azure AD 伺服器主體 (登入) (**公開預覽**) 支援下列驗證方法：
 
 - 若要增強管理性，建議您以系統管理員身分佈建專用的 Azure AD 群組。
 - 任何時候都只能為 Synapse SQL 集區設定一個 Azure AD 系統管理員 (使用者或群組)。
-  - Azure AD 伺服器主體 (登入) 新增到 SQL 隨選 (預覽) 之後，就能建立可以加入 `sysadmin` 角色的多個 Azure AD 伺服器主體 (登入)。
+  - Azure AD 伺服器主體 (登入) 新增到 Synapse SQL (預覽) 之後，就能建立可以加入 `sysadmin` 角色的多個 Azure AD 伺服器主體 (登入)。
 - 只有 Synapse SQL 的 Azure AD 系統管理員可以在一開始使用 Azure Active Directory 帳戶連線到 Synapse SQL。 Active Directory 系統管理員可以設定後續的 Azure AD 資料庫使用者。
 - 建議將連接逾時設定為 30 秒。
 - SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015 (版本 14.0.60311.1 (2016 年 4 月) 或更新版本) 支援 Azure Active Directory 驗證。 ( **.NET Framework Data Provider for SqlServer** 支援 Azure AD 驗證，最低版本 .NET Framework 4.6)。 因此，這些工具和資料層應用程式 (DAC 和 .BACPAC) 的最新版本可以使用 Azure AD 驗證。

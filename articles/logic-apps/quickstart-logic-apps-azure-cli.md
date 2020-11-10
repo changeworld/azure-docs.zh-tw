@@ -6,26 +6,28 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
-ms.date: 07/30/2020
-ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/28/2020
+ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747163"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099057"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來建立和管理邏輯應用程式
 
-本快速入門說明如何使用 [Azure CLI Logic Apps 擴充功能](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`) 來建立和管理邏輯應用程式。 從命令列中，您可以使用邏輯應用程式工作流程定義的 JSON 檔案來建立邏輯應用程式。 然後，您可以從命令列執行 `list`、`show` (`get`)、`update` 和 `delete` 之類的作業來管理邏輯應用程式。
+本快速入門說明如何使用 [Azure CLI Logic Apps 擴充功能](/cli/azure/ext/logic/logic) (`az logic`) 來建立和管理邏輯應用程式。 從命令列中，您可以使用邏輯應用程式工作流程定義的 JSON 檔案來建立邏輯應用程式。 然後，您可以從命令列執行 `list`、`show` (`get`)、`update` 和 `delete` 之類的作業來管理邏輯應用程式。
 
 > [!WARNING]
 > Azure CLI Logic Apps 擴充功能目前為「實驗性」擴充功能，不在客戶支援涵蓋範圍內。 請小心使用此 CLI 擴充功能，特別是當您選擇在生產環境中使用擴充功能時。
 
+如果您不熟悉 Logic Apps，也可以了解如何[透過 Azure 入口網站](quickstart-create-first-logic-app-workflow.md)、 [Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)以及在 [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) 中建立第一個邏輯應用程式。
+
 ## <a name="prerequisites"></a>Prerequisites
 
 * 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 在您的本機電腦上安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* 在您的電腦上安裝 [Logic Apps Azure CLI 擴充功能](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest)。 若要安裝此擴充功能，請使用下列命令：`az extension add --name logic`
+* 在您的本機電腦上安裝 [Azure CLI](/cli/azure/install-azure-cli)。
+* 在您的電腦上安裝 [Logic Apps Azure CLI 擴充功能](/cli/azure/azure-cli-extensions-list)。 若要安裝此擴充功能，請使用下列命令：`az extension add --name logic`
 * 要在其中建立邏輯應用程式的 [Azure 資源群組](#example---create-resource-group)。
 
 ### <a name="prerequisite-check"></a>先決條件檢查
@@ -33,8 +35,8 @@ ms.locfileid: "92747163"
 開始之前，請先驗證您的環境：
 
 * 登入 Azure 入口網站，並執行 `az login` 檢查您的訂用帳戶是否有效。
-* 執行 `az --version`，在終端機或命令視窗中檢查您的 Azure CLI 版本。 如需最新版本，請參閱[最新版本資訊](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)。
-  * 如果您沒有最新版本，請遵循[適用於您作業系統或平台的安裝指南](/cli/azure/install-azure-cli?view=azure-cli-latest)，更新您的安裝。
+* 執行 `az --version`，在終端機或命令視窗中檢查您的 Azure CLI 版本。 如需最新版本，請參閱[最新版本資訊](/cli/azure/release-notes-azure-cli?tabs=azure-cli)。
+  * 如果您沒有最新版本，請遵循[適用於您作業系統或平台的安裝指南](/cli/azure/install-azure-cli)，更新您的安裝。
 
 ### <a name="example---create-resource-group"></a>範例 - 建立資源群組
 
@@ -67,7 +69,7 @@ az group create --name testResourceGroup --location westus
 
 ## <a name="create-logic-apps-from-cli"></a>從 CLI 建立邏輯應用程式
 
-您可以使用 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) 命令搭配定義的 JSON 檔案，從 Azure CLI 建立邏輯應用程式工作流程。
+您可以使用 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) 命令搭配定義的 JSON 檔案，從 Azure CLI 建立邏輯應用程式工作流程。
 
 ```azurecli
 
@@ -84,7 +86,7 @@ az logic workflow create --definition
 
 ```
 
-您的命令必須包含下列[必要參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters)：
+您的命令必須包含下列[必要參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)：
 
 | 參數 | 值 | 說明 |
 | --------- | ----- | ----------- |
@@ -93,7 +95,7 @@ az logic workflow create --definition
 | 名稱 | `--name -n` | 邏輯應用程式的名稱。 名稱只能包含字母、數字、連字號 (`-`)、底線 (`_`)、括弧(`()`) 和句點 (`.`)。 名稱在整個 Azure 中也必須是唯一的。 |
 | 資源群組名稱 | `--resource-group -g` | 要在其中建立邏輯應用程式的 [Azure 資源群組](../azure-resource-manager/management/overview.md)。 如果您的邏輯應用程式還沒有資源群組，請在開始之前先[建立資源群組](#example---create-resource-group)。 |
 
-您也可以包含其他[選擇性參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters)，來設定邏輯應用程式的存取控制、端點、整合帳戶、整合服務環境、狀態，以及資源標籤。
+您也可以包含其他[選擇性參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters)，來設定邏輯應用程式的存取控制、端點、整合帳戶、整合服務環境、狀態，以及資源標籤。
 
 ### <a name="example---create-logic-app"></a>範例 - 建立邏輯應用程式
 
@@ -109,9 +111,9 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ## <a name="update-logic-apps-from-cli"></a>從 CLI 更新邏輯應用程式
 
-您也可以使用 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) 命令，從 Azure CLI 更新邏輯應用程式的工作流程。
+您也可以使用 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) 命令，從 Azure CLI 更新邏輯應用程式的工作流程。
 
-您的命令必須包含與您[建立邏輯應用程式](#create-logic-apps-from-cli)時相同的[必要參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters)。 您也可以新增與建立邏輯應用程式時相同的[選擇性參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters)。
+您的命令必須包含與您[建立邏輯應用程式](#create-logic-apps-from-cli)時相同的[必要參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)。 您也可以新增與建立邏輯應用程式時相同的[選擇性參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters)。
 
 ```azurecli
 
@@ -142,16 +144,16 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ## <a name="delete-logic-apps-from-cli"></a>從 CLI 刪除邏輯應用程式
 
-您可以使用 [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete) 命令，從 Azure CLI 刪除邏輯應用程式的工作流程。
+您可以使用 [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete) 命令，從 Azure CLI 刪除邏輯應用程式的工作流程。
 
-您的命令必須包含下列[必要參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-required-parameters)：
+您的命令必須包含下列[必要參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters)：
 
-| 參數 | 值 | 說明 |
+| 參數 | 值 | 描述 |
 | --------- | ----- | ----------- |
-| Name | `--name -n` | 邏輯應用程式的名稱。 |
+| 名稱 | `--name -n` | 邏輯應用程式的名稱。 |
 | 資源群組名稱 | `-resource-group -g` | 邏輯應用程式所在的資源群組。 |
 
-您也可以包含[選擇性參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-optional-parameters)，以略過確認提示 (`--yes -y`)。
+您也可以包含[選擇性參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters)，以略過確認提示 (`--yes -y`)。
 
 ```azurecli
 
@@ -185,7 +187,7 @@ az logic workflow delete --resource-group "testResourceGroup" --name "testLogicA
 
 ## <a name="show-logic-apps-in-cli"></a>在 CLI 中顯示邏輯應用程式
 
-您可以使用 [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) 命令來取得特定的邏輯應用程式工作流程。
+您可以使用 [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) 命令來取得特定的邏輯應用程式工作流程。
 
 ```azurecli
 
@@ -194,11 +196,11 @@ az logic workflow show --name
 
 ```
 
-您的命令必須包含下列[必要參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show-required-parameters)
+您的命令必須包含下列[必要參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters)
 
-| 參數 | 值 | 說明 |
+| 參數 | 值 | 描述 |
 | --------- | ----- | ----------- |
-| Name | `--name -n` | 邏輯應用程式的名稱。 |
+| 名稱 | `--name -n` | 邏輯應用程式的名稱。 |
 | 資源群組名稱 | `--resource-group -g` | 邏輯應用程式所在的資源群組名稱。 |
 
 ### <a name="example---get-logic-app"></a>範例 - 取得邏輯應用程式
@@ -213,9 +215,9 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 ## <a name="list-logic-apps-in-cli"></a>在 CLI 中列出邏輯應用程式
 
-您可以使用 [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list) 命令，依訂用帳戶列出邏輯應用程式。 此命令會傳回邏輯應用程式工作流程的 JSON 程式碼。
+您可以使用 [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list) 命令，依訂用帳戶列出邏輯應用程式。 此命令會傳回邏輯應用程式工作流程的 JSON 程式碼。
 
-您可以依下列[選擇性參數](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list-optional-parameters)篩選結果：
+您可以依下列[選擇性參數](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters)篩選結果：
 
 | 參數 | 值 | 說明 |
 | --------- | ----- | ----------- |
@@ -265,7 +267,7 @@ Expecting value: line 1 column 1 (char 0)
 
 | 參數 | 值 | 說明 |
 | --------- | ----- | ----------- |
-| 輸出格式 | `--output -o` | 變更預設 JSON 的[輸出格式](/cli/azure/format-output-azure-cli?view=azure-cli-latest)。 |
+| 輸出格式 | `--output -o` | 變更預設 JSON 的[輸出格式](/cli/azure/format-output-azure-cli)。 |
 | 僅顯示錯誤 | `--only-show-errors` | 隱藏警告，只顯示錯誤。 |
 | 「詳細資訊」 | `--verbose` | 顯示詳細資訊記錄。 |
 | 偵錯 | `--debug` | 顯示所有的偵錯記錄。 |
@@ -274,8 +276,11 @@ Expecting value: line 1 column 1 (char 0)
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure/?view=azure-cli-latest)。
-
-如需如何透過 CLI 建立基本邏輯應用程式的範例，請參閱[範例指令碼和工作流程定義](sample-logic-apps-cli-script.md)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure/)。
 
 您可以在 [Microsoft 的程式碼範例瀏覽器](/samples/browse/?products=azure-logic-apps)中找到其他 Logic Apps CLI 指令碼範例。
+
+接下來，您可以使用範例指令碼和工作流程定義，透過 Azure CLI 建立範例應用程式邏輯。
+
+> [!div class="nextstepaction"]
+> [使用範例指令碼建立邏輯應用程式](sample-logic-apps-cli-script.md)。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d52e8e0157c891cf8be6c610b7c0185d83ef9f06
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 519447dfffaa660131fa587eaef946c76f66983b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638052"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027324"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站 
 
@@ -61,6 +61,8 @@ ms.locfileid: "92638052"
 1. 針對 [位置]，選取資料處理站的位置。
 
    清單只會顯示 Data Factory 支援的位置，以及儲存您 Azure Data Factory 中繼資料的位置。 Data Factory 所使用的相關聯資料存放區 (如 Azure 儲存體和 Azure SQL Database) 和計算 (如 Azure HDInsight) 可在其他區域中執行。
+
+1. 完成時，選取 [下一步:Git 組態]，接著選取 [稍後設定 Git]。
 
 1. 選取 [建立]。 在建立完成後，選取 [前往資源]，以瀏覽至 [資料處理站] 頁面。 
 

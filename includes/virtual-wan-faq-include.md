@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038584"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331053"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虛擬 WAN 是否正式發行？
 
@@ -259,6 +259,8 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虛擬 WAN 中是否支援 IPv6？
 
 虛擬 WAN 中樞和其閘道不支援 IPv6。 如果您的 VNet 具有 IPv4 與 IPv6 支援，並且想要將 VNet 連線至虛擬 WAN，則此情況目前不受支援。 
+
+針對透過 Azure 防火牆進行網際網路分類的點對站 (使用者) VPN 案例，建議您關閉用戶端裝置上的 IPv6 連線能力，以強制對虛擬 WAN 中樞的流量。 這是因為根據預設，新式裝置預設會使用 IPv6 位址。
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>自動化各種虛擬 WAN 功能的指令碼所使用的建議 API 版本為何？
 

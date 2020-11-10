@@ -7,69 +7,65 @@ ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/07/2019
-ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/28/2020
+ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481188"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331772"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Python 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
-在本快速入門中，您會在 macOS、Ubuntu Linux 或 Windows 上搭配 Python 使用適用於 PostgreSQL 的 Azure 資料庫。 快速入門會說明如何連線到資料庫，以及如何使用 SQL 陳述式來查詢、插入、更新和刪除資料。 本文假設您已熟悉 Python，但還不熟悉適用於 PostgreSQL 的 Azure 資料庫。
+在本快速入門中，您將了解如何連線到適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的資料庫，並執行 SQL 陳述式在 macOS、Ubuntu Linux 或 Windows 上使用 Python 查詢。
 
 > [!TIP]
 > 如果您想要使用 PostgreSQL 建置 Django 應用程式，請查看[使用 PostgreSQL 部署 Django Web 應用程式](../app-service/tutorial-python-postgresql-app.md)教學課程。
 
 
 ## <a name="prerequisites"></a>Prerequisites
+在本快速入門中，您需要：
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free)。
+- 使用 [Azure 入口網站](./quickstart-create-server-database-portal.md)建立適用於 PostgreSQL 的 Azure 資料庫單一伺服器 <br/> 如果沒有，請使用 [Azure CLI](./quickstart-create-server-database-azure-cli.md)。
+- 根據您使用的是公用或私人存取，完成下列 **其中一項** 動作以啟用連線。
 
-- 完成[快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)或[快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫](quickstart-create-server-database-azure-cli.md)。
-  
+  |動作| 連線方法|操作指南|
+  |:--------- |:--------- |:--------- |
+  | **設定防火牆規則** | 公用 | [入口網站](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+  | **設定服務端點** | 公用 | [入口網站](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+  | **設定私人連結** | 私人 | [入口網站](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
+
 - [Python](https://www.python.org/downloads/) 2.7.9+ 或 3.4+。
-  
+
 - 最新 [pip](https://pip.pypa.io/en/stable/installing/) 套件安裝程式。
-
-## <a name="install-the-python-libraries-for-postgresql"></a>安裝適用於 PostgreSQL 的 Python =程式庫
-[psycopg2](https://pypi.python.org/pypi/psycopg2/) 模組可讓您連線到 PostgreSQL 資料庫並進行查詢，而且可作為 Linux、macOS 或 Windows 的 [Wheel](https://pythonwheels.com/) 套件提供。 安裝模組的二進位版本 (包括所有相依性)。 如需有關 `psycopg2` 安裝和需求的詳細資訊，請參閱[安裝](http://initd.org/psycopg/docs/install.html)。 
-
-若要安裝 `psycopg2`，請開啟終端機或命令提示字元，然後執行 `pip install psycopg2` 命令。
+- 在終端機或命令提示字元視窗中使用 `pip install psycopg2`，安裝 [psycopg2](https://pypi.python.org/pypi/psycopg2/)。 如需詳細資訊，請參閱[安裝方式`psycopg2`](http://initd.org/psycopg/docs/install.html)。
 
 ## <a name="get-database-connection-information"></a>取得資料庫連線資訊
 連線到適用於 PostgreSQL 的 Azure 資料庫需要完整的伺服器名稱和登入認證。 您可以從 Azure 入口網站中取得此資訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，搜尋並選取適用於 PostgreSQL 的 Azure 資料庫伺服器名稱。 
-1. 在伺服器的 [概觀] 頁面上，複製完整的 **伺服器名稱** 和 **管理使用者名稱** 。 完整的 **伺服器名稱** 的格式一律是 *\<my-server-name>. postgres.database.azure.com* ，而 **管理員使用者名稱** 的格式一律是 *\<my-admin-username>@\<my-server-name>* 。 
-   
-   也需要您的管理員密碼。 如果您忘記密碼，可以在此頁面中重設密碼。 
-   
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，搜尋並選取適用於 PostgreSQL 的 Azure 資料庫伺服器名稱。
+1. 在伺服器的 [概觀] 頁面上，複製完整的 **伺服器名稱** 和 **管理使用者名稱** 。 完整的 **伺服器名稱** 的格式一律是 *\<my-server-name>. postgres.database.azure.com* ，而 **管理員使用者名稱** 的格式一律是 *\<my-admin-username>@\<my-server-name>* 。
+
+   也需要您的管理員密碼。 如果您忘記密碼，可以在此頁面中重設密碼。
+
    :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
 
-## <a name="how-to-run-the-python-examples"></a>如何執行 Python 範例
+> [!IMPORTANT]
+>  取代下列值：
+>   - 將 `<server-name>` 和 `<admin-username>` 取代為您從 Azure 入口網站中複製的值。
+>   - 將 `<admin-password>` 取代為伺服器密碼。
+>   - 當您建立伺服器時，系統已自動建立名為 postgres *`<database-name>` 的預設資料庫* 。 您可以使用 SQL 命令來重新命名該資料庫或[建立新的資料庫](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)。
 
-針對本文中的每個程式碼範例：
-
-1. 在文字編輯器中建立新的檔案。 
-   
-1. 將程式碼範例新增至檔案。 在程式碼中，取代下列內容：
-   - 將 `<server-name>` 和 `<admin-username>` 取代為您從 Azure 入口網站中複製的值。
-   - 將 `<admin-password>` 取代為伺服器密碼。
-   - 將 `<database-name>` 取代為「適用於 PostgreSQL 的 Azure 資料庫」的名稱。 當您建立伺服器時，系統已自動建立名為 postgres 的預設資料庫。 您可以使用 SQL 命令來重新命名該資料庫或建立新的資料庫。 
-   
-1. 使用 .py 作為副檔名，將檔案儲存在您的專案資料夾中，例如 postgres-insert.py。 針對 Windows，請務必在儲存檔案時選取 UTF-8 編碼。 
-   
-1. 若要執行檔案，請在命令列介面中變更為您的專案資料夾，然後輸入 `python`，並在後方接著檔案名稱，例如 `python postgres-insert.py`。
-
-## <a name="create-a-table-and-insert-data"></a>建立資料表及插入資料
-下列程式碼範例會使用 [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 函式來連線到適用於 PostgreSQL 的 Azure 資料庫，並使用 SQL **INSERT** 語句來載入資料。 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 函式會針對資料庫執行 SQL 查詢。 
+## <a name="step-1-connect-and-insert-data"></a>步驟 1：連線和插入資料
+下列程式碼範例會連線到您的「適用於 PostgreSQL 的 Azure 資料庫」資料庫，方式如下：
+-  [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 函式，並使用 SQL **INSERT** 陳述式載入資料。
+- [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 函式會針對資料庫執行 SQL 查詢。
 
 ```Python
 import psycopg2
 
-# Update connection string information 
+# Update connection string information
 host = "<server-name>"
 dbname = "<database-name>"
 user = "<admin-username>"
@@ -78,7 +74,7 @@ sslmode = "require"
 
 # Construct connection string
 conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
+conn = psycopg2.connect(conn_string)
 print("Connection established")
 
 cursor = conn.cursor()
@@ -105,27 +101,17 @@ conn.close()
 
 程式碼會在成功執行後產生下列輸出：
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="命令列輸出":::
 
-## <a name="read-data"></a>讀取資料
-下列程式碼範例會連線到適用於 PostgreSQL 的 Azure 資料庫，並使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **SELECT** 陳述式來讀取資料。 此函式會接受查詢並使用 [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) 傳回用於反覆查詢的結果集。 
+
+[有任何問題嗎？請告訴我們](https://aka.ms/postgres-doc-feedback)
+
+## <a name="step-2-read-data"></a>步驟 2:讀取資料
+下列程式碼範例會連線到您的「適用於 PostgreSQL 的 Azure 資料庫」資料庫，方式如下：
+- [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **SELECT** 陳述式讀取資料。
+- [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) 會接受查詢並使用下列方式傳回用於反覆查詢的結果集：
 
 ```Python
-import psycopg2
-
-# Update connection string information
-host = "<server-name>"
-dbname = "<database-name>"
-user = "<admin-username>"
-password = "<admin-password>"
-sslmode = "require"
-
-# Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
-print("Connection established")
-
-cursor = conn.cursor()
 
 # Fetch all rows from table
 cursor.execute("SELECT * FROM inventory;")
@@ -135,72 +121,50 @@ rows = cursor.fetchall()
 for row in rows:
     print("Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2])))
 
-# Cleanup
-conn.commit()
-cursor.close()
-conn.close()
-```
 
-## <a name="update-data"></a>更新資料
-下列程式碼範例會連線到適用於 PostgreSQL 的 Azure 資料庫，並使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **UPDATE** 陳述式來更新資料。 
+```
+[有任何問題嗎？請告訴我們](https://aka.ms/postgres-doc-feedback)
+
+## <a name="step-3-update-data"></a>步驟 3：更新資料
+下列程式碼範例會使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **UPDATE** 陳述式以更新資料。
 
 ```Python
-import psycopg2
-
-# Update connection string information
-host = "<server-name>"
-dbname = "<database-name>"
-user = "<admin-username>"
-password = "<admin-password>"
-sslmode = "require"
-
-# Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
-print("Connection established")
-
-cursor = conn.cursor()
 
 # Update a data row in the table
 cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
 print("Updated 1 row of data")
 
-# Cleanup
-conn.commit()
-cursor.close()
-conn.close()
 ```
+[有任何問題嗎？請告訴我們](https://aka.ms/postgres-doc-feedback)
 
-## <a name="delete-data"></a>刪除資料
-下列程式碼範例會連線到適用於 PostgreSQL 的 Azure 資料庫，並使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **DELETE** 陳述式來刪除您先前插入的清查項目。 
+## <a name="step-5-delete-data"></a>步驟 5：刪除資料
+下列程式碼使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **DELETE** 陳述式來刪除您先前插入的詳細目錄項目。
 
 ```Python
-import psycopg2
-
-# Update connection string information
-host = "<server-name>"
-dbname = "<database-name>"
-user = "<admin-username>"
-password = "<admin-password>"
-sslmode = "require"
-
-# Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
-print("Connection established")
-
-cursor = conn.cursor()
 
 # Delete data row from table
 cursor.execute("DELETE FROM inventory WHERE name = %s;", ("orange",))
 print("Deleted 1 row of data")
 
-# Cleanup
-conn.commit()
-cursor.close()
-conn.close()
+```
+
+[有任何問題嗎？請告訴我們](https://aka.ms/postgres-doc-feedback)
+
+## <a name="clean-up-resources"></a>清除資源
+
+若要清除在此快速入門期間使用的所有資源，請使用下列命令刪除資源群組：
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [使用匯出和匯入來移轉資料庫](./howto-migrate-using-export-and-import.md)
+> [使用入口網站管理適用於 MySQL 的 Azure 資料庫伺服器](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [使用 CLI 管理適用於 MySQL 的 Azure 資料庫伺服器](./how-to-manage-server-cli.md)<br/>
+
+[找不到您要找的項目嗎？請告訴我們。](https://aka.ms/postgres-doc-feedback)

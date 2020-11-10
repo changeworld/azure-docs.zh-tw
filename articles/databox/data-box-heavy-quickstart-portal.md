@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122818"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347417"
 ---
 ::: zone target = "docs"
 
@@ -60,14 +60,87 @@ ms.locfileid: "92122818"
 
 ## <a name="order"></a>單
 
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
+
 這個步驟需要大約 5 分鐘。
 
 1. 在 Azure 入口網站中建立新的 Azure 資料箱資源。
-2. 選取針對此服務啟用的現有訂用帳戶，然後選擇 [匯入]  作為轉移類型。 提供資料所在的 [來源國家/地區]  ，以及資料傳輸的 [Azure 目的地區域]  。
+2. 選取針對此服務啟用的現有訂用帳戶，然後選擇 [匯入] 作為轉移類型。 提供資料所在的 [來源國家/地區]  ，以及資料傳輸的 [Azure 目的地區域]  。
 3. 選取 [Data Box Heavy]  。 可用容量上限為 770 TB，您可以針對較大的資料大小建立多個訂單。
 4. 輸入訂單詳細資料和出貨資訊。 如果您的區域可使用服務，請提供通知電子郵件地址、檢閱摘要，然後建立訂單。
 
 一旦建立訂單後，裝置就準備出貨。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用這些 Azure CLI 命令建立 Data Box Heavy 作業。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. 執行 [az group create](/cli/azure/group#az_group_create) 命令建立資源群組，或使用現有的資源群組：
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令建立儲存體帳戶，或使用現有的儲存體帳戶：
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. 執行 [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) 命令，使用 `DataBoxHeavy` 的 **--sku** 值建立資料箱作業：
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > 請確定您的訂用帳戶支援 Data Box Heavy。
+
+1. 執行 [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) 更新工作，如下列範例所示，您可以變更連絡人名稱和電子郵件：
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   執行 [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) 命令取得作業的相關資訊：
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   使用 [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) 命令查看資源群組的所有資料箱作業：
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   執行 [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) 命令取消作業：
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   執行 [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) 命令刪除作業：
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. 使用 [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) 命令列出資料箱作業的認證：
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+一旦建立訂單後，裝置就準備出貨。
+
+---
 
 ::: zone-end
 
@@ -134,7 +207,7 @@ ms.locfileid: "92122818"
 完成這項作業的時間取決於您的資料大小。
 
 1. 在資料複製完成且未發生錯誤後，前往本機 Web UI 中的 [準備寄送]  頁面，並開始準備寄送。
-2. 在這兩個節點上順利完成**準備寄送**後，從本機 Web UI 關閉裝置。
+2. 在這兩個節點上順利完成 **準備寄送** 後，從本機 Web UI 關閉裝置。
 
 ## <a name="ship-to-azure"></a>寄送到 Azure
 
@@ -159,9 +232,9 @@ ms.locfileid: "92122818"
 
 完成此步驟需要 2-3 分鐘。
 
-- 訂單處理之前，您可以在 Azure 入口網站中取消 Data Box Heavy 訂單。 一旦處理訂單後，就無法取消訂單。 訂單會進行直到達到已完成的階段為止。 若要取消訂單，請前往 [概觀]  ，然後從命令列按一下 [取消]  。
+- 訂單處理之前，您可以在 Azure 入口網站中取消 Data Box Heavy 訂單。 一旦處理訂單後，就無法取消訂單。 訂單會進行直到達到已完成的階段為止。 若要取消訂單，請前往 [概觀]，然後從命令列按一下 [取消]。
 
-- 一旦 Azure 入口網站中的狀態顯示為 [已完成]  或是 [已取消]  後，您就可以刪除訂單。 若要刪除訂單，請前往 [概觀]  ，然後從命令列按一下 [刪除]  。
+- 一旦 Azure 入口網站中的狀態顯示為 [已完成] 或是 [已取消] 後，您就可以刪除訂單。 若要刪除訂單，請前往 [概觀]，然後從命令列按一下 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

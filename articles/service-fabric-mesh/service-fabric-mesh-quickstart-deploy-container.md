@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: a22356e89dcc3ab465226bad196068d934ff1182
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 0c6bb8ba680612acbd497598b3e56efa5c28244a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840280"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146240"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入門：將 Hello World 部署至 Service Fabric Mesh
 
@@ -41,6 +41,12 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>部署應用程式
+
+>[!NOTE]
+> 自 2020 年 11 月 2 日起，[下載速率限制適用](https://docs.docker.com/docker-hub/download-rate-limit/)於從 Docker 免費方案帳戶對 Docker Hub 進行匿名和已驗證的要求，並由 IP 位址強制執行。 
+> 
+> 這些範本會使用來自 Docker Hub 的公用映像。 請注意，您可能會受到速率限制。 如需詳細資訊，請參閱[使用 Docker Hub 驗證](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)。
+
 使用 `az mesh deployment create` 命令在資源群組中建立您的應用程式。  執行下列命令：
 
 ```azurecli-interactive

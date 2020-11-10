@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 SQL 隨選
-description: 在本快速入門中，您將了解如何使用 SQL 隨選 (預覽) 來查詢各種類型的檔案。
+title: 快速入門：使用無伺服器 SQL 集區
+description: 在本快速入門中，您將了解如何使用無伺服器 SQL 集區 (預覽) 來查詢各種類型的檔案。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e502a984e71a06eb57b345371d70d659c6a031
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86274164"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321685"
 ---
-# <a name="quickstart-use-sql-on-demand"></a>快速入門：使用 SQL 隨選
+# <a name="quickstart-use-serverless-sql-pool"></a>快速入門：使用無伺服器 SQL 集區
 
-Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放在 Azure 儲存體中的檔案執行 SQL 查詢。 在本快速入門中，您將了解如何使用 SQL 隨選來查詢各種類型的檔案。 支援的格式會列在 [OPENROWSET](sql/develop-openrowset.md) 中。
+Synapse 無伺服器 SQL 集區 (預覽) 是一項無伺服器查詢服務，可讓您對放在 Azure 儲存體中的檔案執行 SQL 查詢。 在本快速入門中，您將了解如何使用無伺服器 SQL 集區來查詢各種類型的檔案。 支援的格式會列在 [OPENROWSET](sql/develop-openrowset.md) 中。
 
 本快速入門示範如何查詢：CSV、Apache Parquet 和 JSON 檔案。
 
@@ -34,8 +34,8 @@ Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放�
 
 | 參數                                 | 描述                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL 隨選服務端點位址    | 作為伺服器名稱                                   |
-| SQL 隨選服務端點區域     | 用來決定要在範例中使用的儲存體 |
+| 無伺服器 SQL 集區服務端點位址    | 作為伺服器名稱                                   |
+| 無伺服器 SQL 集區服務端點區域     | 用來決定要在範例中使用的儲存體 |
 | 用來存取端點的使用者名稱和密碼 | 用來存取端點                               |
 | 用來建立檢視的資料庫         | 範例中用來作為起點的資料庫       |
 
@@ -44,7 +44,7 @@ Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放�
 使用範例之前：
 
 - 為您的檢視建立資料庫 (如果您想要使用檢視的話)
-- 建立可讓 SQL 隨選用來存取儲存體中檔案的認證
+- 建立可讓無伺服器 SQL 集區用來存取儲存體中檔案的認證
 
 ### <a name="create-database"></a>建立資料庫
 
@@ -62,7 +62,7 @@ CREATE DATABASE mydbname
 
 ### <a name="create-data-source"></a>建立資料來源
 
-若要使用 SQL 隨選來執行查詢，請建立隨選 SQL 可用來存取儲存體中檔案的資料來源。
+若要使用無伺服器 SQL 集區來執行查詢，請建立無伺服器 SQL 集區可用來存取儲存體中檔案的資料來源。
 執行下列程式碼片段，以建立本節範例所使用的資料來源：
 
 ```sql
@@ -115,7 +115,7 @@ WHERE
 下列範例顯示用於查詢 Parquet 檔案的自動結構描述推斷功能。 其會傳回 2017 年 9 月的資料列數目，而不需要指定架構。
 
 > [!NOTE]
-> 在讀取 Parquet 檔案時，您不需要在 `OPENROWSET WITH` 子句中指定資料行。 在此案例中，SQL 隨選會利用 Parquet 檔案中的中繼資料，並依名稱繫結資料行。
+> 在讀取 Parquet 檔案時，您不需要在 `OPENROWSET WITH` 子句中指定資料行。 在此案例中，無伺服器 SQL 集區會利用 Parquet 檔案中的中繼資料，並依名稱繫結資料行。
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -153,7 +153,7 @@ FROM OPENROWSET
 
 ### <a name="query-json-files"></a>查詢 JSON 檔案
 
-下列查詢會示範如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，從名為 *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles* 的書籍中擷取純量值 (書名、發行者)：
+下列查詢會示範如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，從名為 *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles* 的書籍中擷取純量值 (書名、發行者)：
 
 ```sql
 SELECT

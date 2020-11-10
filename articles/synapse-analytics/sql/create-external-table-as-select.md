@@ -1,6 +1,6 @@
 ---
-title: 將查詢結果儲存到儲存體
-description: 在本文中，您將了解如何使用 SQL 隨選 (預覽) 將查詢結果儲存至儲存體。
+title: 從無伺服器 SQL 集區儲存查詢結果
+description: 在本文中，您將了解如何使用無伺服器 SQL 集區 (預覽) 將查詢結果儲存至儲存體。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5fda5e7a5caf72df3d4c80e37a684232ca5541
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289356"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322623"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>透過 Azure Synapse Analytics 使用 SQL 隨選 (預覽) 將查詢結果儲存至儲存體
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 將查詢結果儲存至儲存體
 
-在本文中，您將了解如何使用 SQL 隨選 (預覽) 將查詢結果儲存至儲存體。
+在本文中，您將了解如何使用無伺服器 SQL 集區 (預覽) 將查詢結果儲存至儲存體。
 
 ## <a name="prerequisites"></a>必要條件
 
-您的第一個步驟是**建立資料庫**，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用來讀取這些範例中資料的外部檔案格式。
+您的第一個步驟是 **建立資料庫** ，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用來讀取這些範例中資料的外部檔案格式。
 
 依照本文中的指示，建立資料來源、資料庫範圍認證，以及用來將資料寫入輸出儲存體的外部檔案格式。
 

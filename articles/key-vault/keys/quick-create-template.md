@@ -1,6 +1,6 @@
 ---
 title: Azure 快速入門 - 使用 Azure Resource Manager 範本建立 Azure 金鑰保存庫和金鑰 | Microsoft Docs
-description: 說明如何建立 Azure Key Vault，並使用 Azure Resource Manager 範本將金鑰新增至保存庫的快速入門。
+description: 說明如何建立 Azure Key Vault，並使用 Azure Resource Manager 範本 (ARM 範本) 將金鑰新增至保存庫的快速入門。
 services: key-vault
 author: sebansal
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 55641dacf8f7efb18b479dd4b4253787df540341
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0a613ce64d2037fdc7ebad680939893f1faa0639
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132443"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899017"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>快速入門：使用 ARM 範本建立 Azure 金鑰保存庫和金鑰 (預覽)
 
@@ -25,9 +25,9 @@ ms.locfileid: "92132443"
 
 若要完成此文章：
 
-* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 範本需要您的 Azure AD 使用者物件識別碼來設定權限。 下列程序會取得物件識別碼 (GUID)。
+- 範本需要您的 Azure AD 使用者物件識別碼來設定權限。 下列程序會取得物件識別碼 (GUID)。
 
     1. 透過選取 [試試看] 來執行下列 Azure PowerShell 或 Azure CLI 命令，然後將指令碼貼到 Shell 窗格中。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]。
 
@@ -48,118 +48,121 @@ ms.locfileid: "92132443"
 
         ---
 
-    2. 請記下物件識別碼。 您會在本快速入門中的下一節用到它。
+    1. 請記下物件識別碼。 您會在本快速入門中的下一節用到它。
 
 ## <a name="review-the-template"></a>檢閱範本
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vaultName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the key vault to be created."
-            }
-        },
-        "skuName": {
-            "type": "string",
-            "defaultValue": "Standard",
-            "allowedValues": [
-                "Standard",
-                "Premium"
-            ],
-            "metadata": {
-                "description": "The SKU of the vault to be created."
-            }
-        },
-        "keyName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the key to be created."
-            }
-        },
-        "keyType": {
-            "type": "string",
-            "metadata": {
-                "description": "The JsonWebKeyType of the key to be created."
-            }
-        },
-        "keyOps": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The permitted JSON web key operations of the key to be created."
-            }
-        },
-        "keySize": {
-            "type": "int",
-            "defaultValue": -1,
-            "metadata": {
-                "description": "The size in bits of the key to be created."
-            }
-        },
-        "curveName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The JsonWebKeyCurveName of the key to be created."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the key vault to be created."
+      }
     },
-    "resources": [
-        {
-            "type": "Microsoft.KeyVault/vaults",
-            "name": "[parameters('vaultName')]",
-            "apiVersion": "2019-09-01",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "enableRbacAuthorization": false,
-                "enableSoftDelete": false,
-                "enabledForDeployment": false,
-                "enabledForDiskEncryption": false,
-                "enabledForTemplateDeployment": false,
-                "tenantId": "[subscription().tenantId]",
-                "accessPolicies": [],
-                "sku": {
-                    "name": "[parameters('skuName')]",
-                    "family": "A"
-                },
-                "networkAcls": {
-                    "defaultAction": "Allow",
-                    "bypass": "AzureServices"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.KeyVault/vaults/keys",
-            "name": "[concat(parameters('vaultName'), '/', parameters('keyName'))]",
-            "apiVersion": "2019-09-01",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.KeyVault/vaults', parameters('vaultName'))]"
-            ],
-            "properties": {
-                "kty": "[parameters('keyType')]",
-                "keyOps": "[parameters('keyOps')]",
-                "keySize": "[if(equals(parameters('keySize'), -1), json('null'), parameters('keySize'))]",
-                "curveName": "[parameters('curveName')]"
-            }
-        }
-    ],
-    "outputs": {
-        "proxyKey": {
-            "type": "object",
-            "value": "[reference(resourceId('Microsoft.KeyVault/vaults/keys', parameters('vaultName'), parameters('keyName')))]"
-        }
+    "skuName": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "The SKU of the vault to be created."
+      }
+    },
+    "keyName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the key to be created."
+      }
+    },
+    "keyType": {
+      "type": "string",
+      "metadata": {
+        "description": "The JsonWebKeyType of the key to be created."
+      }
+    },
+    "keyOps": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "The permitted JSON web key operations of the key to be created."
+      }
+    },
+    "keySize": {
+      "type": "int",
+      "defaultValue": -1,
+      "metadata": {
+        "description": "The size in bits of the key to be created."
+      }
+    },
+    "curveName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The JsonWebKeyCurveName of the key to be created."
+      }
     }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2019-09-01",
+      "name": "[parameters('vaultName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "enableRbacAuthorization": false,
+        "enableSoftDelete": false,
+        "enabledForDeployment": false,
+        "enabledForDiskEncryption": false,
+        "enabledForTemplateDeployment": false,
+        "tenantId": "[subscription().tenantId]",
+        "accessPolicies": [],
+        "sku": {
+          "name": "[parameters('skuName')]",
+          "family": "A"
+        },
+        "networkAcls": {
+          "defaultAction": "Allow",
+          "bypass": "AzureServices"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/keys",
+      "apiVersion": "2019-09-01",
+      "name": "[concat(parameters('vaultName'), '/', parameters('keyName'))]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+      ],
+      "properties": {
+        "kty": "[parameters('keyType')]",
+        "keyOps": "[parameters('keyOps')]",
+        "keySize": "[if(equals(parameters('keySize'), -1), json('null'), parameters('keySize'))]",
+        "curveName": "[parameters('curveName')]"
+      }
+    }
+  ],
+  "outputs": {
+    "proxyKey": {
+      "type": "object",
+      "value": "[reference(resourceId('Microsoft.KeyVault/vaults/keys', parameters('vaultName'), parameters('keyName')))]"
+    }
+  }
 }
-
 ```
 
-在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)中，可找到更多 Azure Key Vault 範本範例。
+範本中定義了兩種資源：
 
+- [Microsoft.KeyVault/vaults](/azure/templates/microsoft.keyvault/vaults)
+- Microsoft.KeyVault/vaults/keys
+
+在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)中，可找到更多 Azure Key Vault 範本範例。
 
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738089"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313770"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 受控私人端點 (預覽)
 
@@ -43,17 +43,17 @@ Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure 虛�
 
 只有處於已核准狀態的受控私人端點可以將流量傳送到指定的私人連結資源。
 
-## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>適用於 SQL 集區的受控私人端點和 SQL 隨選
+## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>專用 SQL 集區和無伺服器 SQL 集區的受控私人端點
 
-SQL 集區和 SQL 隨選是 Azure Synapse 工作區中的分析功能。 這些功能會使用未部署到[受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)中的多租用戶基礎結構。
+專用 SQL 集區和無伺服器 SQL 集區是 Azure Synapse 工作區中的分析功能。 這些功能會使用未部署到[受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)中的多租用戶基礎結構。
 
-建立工作區時，Azure Synapse 會在該工作區中，在 SQL 集區和 SQL 隨選中建立兩個受控私人端點。 
+建立工作區時，Azure Synapse 會在該工作區中建立兩個受控私人端點，一個供專用 SQL 集區使用，另一個供無伺服器 SQL 集區使用。 
 
 這兩個受控私人端點會列在 Azure Synapse Studio 中。 選取左側導覽中的 [管理]，然後選取 [受控虛擬網路] 以在 Studio 中查看。
 
-以 SQL 集區為目標的受控私人端點稱為 *synapse-ws-sql--\<workspacename\>* ，而以 SQL 隨選為目標的受控私人端點則稱為 *synapse-ws-sqlOnDemand--\<workspacename\>* 。
+以 SQL 集區為目標的受控私人端點稱為 *synapse-ws-sql--\<workspacename\>* ，而以無伺服器 SQL 集區為目標的受控私人端點則稱為 *synapse-ws-sqlOnDemand--\<workspacename\>* 。
 
-![適用於 SQL 集區的受控私人端點和 SQL 隨選](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
+![專用 SQL 集區和無伺服器 SQL 集區的受控私人端點](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 建立 Azure Synapse 工作區時，系統會自動為您建立這兩個受控私人端點。 這兩個受控私人端點不會收費。
 

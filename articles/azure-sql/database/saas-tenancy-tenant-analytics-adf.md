@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 860fcb2948869d21eb78d0b318074b9a5e2ba0b9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 97dc53c9870112dc5d547ab477e54f15f802cc05
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310653"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>使用 Azure SQL Database、Azure Synapse Analytics、Data Factory 及 Power BI 探索 SaaS 分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 在此教學課程中，您會逐步完成端對端分析案例。 此案例示範如何透過租用戶資料分析讓軟體廠商做出智慧決策。 使用從每個租用戶資料庫擷取的資料，您使用分析來取得租用戶行為的深入解析，包括他們對於範例 Wingtip Tickets SaaS 應用程式的使用。 這個案例牽涉到三個步驟：
 
-1. 從每個租用戶資料庫 **擷取資料** 至分析存放區，在此案例中為 SQL 集區。
+1. 從每個租用戶資料庫 **擷取資料** 至分析存放區，在此案例中為專用 SQL 集區。
 2. 針對分析處理 **最佳化擷取的資料** 。
 3. 使用 **商業智慧** 工具來繪製出有用的深入解析，可以引導決策進行。
 
@@ -45,7 +45,7 @@ SaaS 應用程式會保留雲端中可能非常大量的租用戶資料。 此�
 
 當所有資料都在一個多租用戶資料庫時，存取所有租用戶的資料就相當簡單。 但是當資料散佈在上千個資料庫時，存取就更加複雜。 有效駕馭複雜度的一種方法是將資料擷取至分析資料庫或資料倉儲進行查詢。
 
-此教學課程會呈現 Wingtip Tickets 應用程式的端對端分析案例。 首先，[Azure Data Factory (ADF)](../../data-factory/introduction.md) 可作為協調流程工具，從每個租用戶資料庫擷取票證銷售和相關資料。 這項資料會載入分析存放區中的暫存表格。 分析存放區可以是 SQL Database 或 SQL 集區。 本教學課程使用 [Azure Synapse Analytics (先前稱為 SQL 資料倉儲)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 作為分析存放區。
+此教學課程會呈現 Wingtip Tickets 應用程式的端對端分析案例。 首先，[Azure Data Factory (ADF)](../../data-factory/introduction.md) 可作為協調流程工具，從每個租用戶資料庫擷取票證銷售和相關資料。 這項資料會載入分析存放區中的暫存表格。 分析存放區可以是 SQL Database 或專用 SQL 集區。 本教學課程使用 [Azure Synapse Analytics (先前稱為 SQL 資料倉儲)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 作為分析存放區。
 
 接下來，擷取的資料會轉換成一組[星型結構描述](https://www.wikipedia.org/wiki/Star_schema)資料表並載入。 資料表是由一個中央的事實資料表，再加上相關的維度資料表所組成：
 
@@ -87,7 +87,7 @@ SaaS 應用程式會保留雲端中可能非常大量的租用戶資料。 此�
 
 在 Wingtip Tickets 應用程式中，租用戶的交易資料會透過多個資料庫發佈。 您可使用 Azure Data Factory (ADF) 將此資料的擷取、載入和轉換 (ELT) 作業協調至資料倉儲。 為了有效地將資料載入 Azure Synapse Analytics (先前稱為 SQL 資料倉儲)，ADF 會將資料擷取至中繼 blob 檔案，然後使用 [PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) 將資料載入資料倉儲。
 
-在此步驟中，您會部署教學課程中使用的其他資源：名為 _tenantanalytics_ 的 SQL 集區、名為 _dbtodwload-\<user\>_ 的 Azure Data Factory，以及名為 _wingtipstaging\<user\>_ 的 Azure 儲存體帳戶。 儲存體帳戶可在擷取的資料檔案載入資料倉儲之前，以 blob 形式暫時保存這些檔案。 這個步驟也會部署資料倉儲結構描述，並定義協調 ELT 程序的 ADF 管道。
+在此步驟中，您會部署教學課程中使用的其他資源：名為 _tenantanalytics_ 的專用 SQL 集區、名為 _dbtodwload-\<user\>_ 的 Azure Data Factory，以及名為 wingtipstaging\<user\> 的 Azure 儲存體帳戶。 儲存體帳戶可在擷取的資料檔案載入資料倉儲之前，以 blob 形式暫時保存這些檔案。 這個步驟也會部署資料倉儲結構描述，並定義協調 ELT 程序的 ADF 管道。
 
 1. 在 PowerShell ISE 中開啟 *…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* ，然後設定：
     - **$DemoScenario** = **2** 部署租用戶分析資料倉儲、blob 儲存體及資料處理站
@@ -159,7 +159,7 @@ Azure Data Factory 可用來協調擷取、載入及轉換資料。 在本教學
 
 **管道 3 - TableCopy** 使用 SQL Database 中的資料列版本號碼 ( _rowversion_ ) 來識別已變更或更新的資料列。 此活動查詢開始和結束資料列版本，用以擷取來自來源資料表的資料列。 儲存在每個租用戶資料庫中的 **CopyTracker** 資料表，會追蹤每次執行中從各來源資料表擷取的最後一個資料列。 全新或變更過的資料列會複製到資料倉儲中對應的暫存表格： **raw_Tickets** 、 **raw_Customers** 、 **raw_Venues** 及 **raw_Events** 。 最後，最後一個資料列版本會儲存在 **CopyTracker** 資料表，做為下次擷取的初始資料列版本。
 
-此外還有三個參數化連結服務，將資料處理站連結至來源 SQL Database、目標 SQL 集區以及中繼 Blob 儲存體。 在 [建立者] 索引標籤上，按一下 [連線] 探索連結的服務，如下列影像所示：
+此外還有三個參數化連結服務，將資料處理站連結至來源 SQL Database、目標專用 SQL 集區以及中繼 Blob 儲存體。 在 [建立者] 索引標籤上，按一下 [連線] 探索連結的服務，如下列影像所示：
 
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 

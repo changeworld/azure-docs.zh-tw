@@ -9,22 +9,22 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 394521156d6192d25c3a4d254ac2c9b94c6231f5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093543"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318399"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 資源耗用量
 
 本文說明 Synapse SQL (預覽) 的資源耗用量模型。
 
-## <a name="sql-on-demand"></a>SQL 隨選
+## <a name="serverless-sql-pool"></a>無伺服器 SQL 集區
 
-SQL 隨選是按照每個查詢來收費的服務，因此您不必挑選合適的大小。 系統會根據您的需求自動調整，讓您不必管理基礎結構和挑選適當的大小供解決方案使用。
+無伺服器 SQL 集區是按照每個查詢來收費的服務，因此您不必挑選合適的大小。 系統會根據您的需求自動調整，讓您不必管理基礎結構和挑選適當的大小供解決方案使用。
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>SQL 集區 - 資料倉儲單位 (DWU) 和計算資料倉儲單位 (cDWU)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>專用 SQL 集區 - 資料倉儲單位 (DWU) 和計算資料倉儲單位 (cDWU)
 
 選擇理想的資料倉儲單位 (DWU) 數目以獲得最佳價格與效能，以及如何變更單位數目的建議。
 
@@ -50,12 +50,12 @@ Synapse SQL 集區代表所要佈建的分析資源集合。 分析資源會定�
 
 服務等級目標 (SLO) 是決定您資料倉儲之成本和效能層級的延展性設定。 Gen2 的服務等級會以計算資料倉儲單位 (cDWU) 來測量，例如 DW2000c。 Gen1 服務等級則會以 DWU 來測量，例如 DW2000。
 
-服務等級目標 (SLO) 是決定您資料倉儲之成本和效能層級的延展性設定。 Gen2 SQL 集區的服務等級會以資料倉儲單位 (DWU) 來測量，例如 DW2000c。
+服務等級目標 (SLO) 是決定您資料倉儲之成本和效能層級的延展性設定。 Gen2 專用 SQL 集區的服務等級會以資料倉儲單位 (DWU) 來測量，例如 DW2000c。
 
 > [!NOTE]
 > Azure Synapse Analytics Gen2 最近新增了其他調整規模功能，以支援最低 100 計算資料倉儲單位的計算層。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-在 T-SQL 中，SERVICE_OBJECTIVE 設定會決定您 SQL 集區適用的服務等級和效能層級。
+在 T-SQL 中，SERVICE_OBJECTIVE 設定會決定您專用 SQL 集區適用的服務等級和效能層級。
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -204,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-此 DMV 會傳回您的 SQL 集區上各種管理作業的相關資訊，例如，作業和作業的狀態 (不是 IN_PROGRESS 就是 COMPLETED)。
+此 DMV 會傳回您的專用 SQL 集區上各種管理作業的相關資訊，例如，作業和作業的狀態 (不是 IN_PROGRESS 就是 COMPLETED)。
 
 ### <a name="the-scaling-workflow"></a>調整工作流程
 

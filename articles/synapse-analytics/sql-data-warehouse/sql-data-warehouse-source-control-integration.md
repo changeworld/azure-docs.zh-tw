@@ -1,6 +1,6 @@
 ---
 title: 原始檔控制整合
-description: 適用於 SQL 集區的企業級資料庫 DevOps 體驗，並搭配使用 Azure Repos (Git 和 GitHub) 的原生原始檔控制整合。
+description: 適用於專用 SQL 集區的企業級資料庫 DevOps 體驗，並搭配使用 Azure Repos (Git 和 GitHub) 的原生原始檔控制整合。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441276"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313296"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>SQL 集區的原始檔控制整合
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的原始檔控制整合
 
-本教學課程概述如何將您的 SQL Server Data Tools (SSDT) 資料庫專案與原始檔控制整合。  原始檔控制整合是在 Azure Synapse Analytics 中為 SQL 集區資源建置持續整合和部署管線的第一個步驟。
+本教學課程概述如何將您的 SQL Server Data Tools (SSDT) 資料庫專案與原始檔控制整合。  原始檔控制整合是在 Azure Synapse Analytics 中為專用 SQL 集區資源建置持續整合和部署管線的第一個步驟。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -33,7 +33,7 @@ ms.locfileid: "89441276"
 
    ![建立專案](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "建立專案")
 
-2. 選取**管理連線**以開啟 Visual Studio 並連線到步驟一中的 Azure DevOps 組織和專案。
+2. 選取 **管理連線** 以開啟 Visual Studio 並連線到步驟一中的 Azure DevOps 組織和專案。
 
    ![管理連線](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理連線")
 
@@ -53,7 +53,7 @@ ms.locfileid: "89441276"
 
 ## <a name="create-and-connect-your-project"></a>建立及連結您的專案
 
-1. 在 Visual Studio 中，建立新的 SQL Server 資料庫專案，並在**複製到本機的存放庫**中包含目錄和本機 Git 存放庫。
+1. 在 Visual Studio 中，建立新的 SQL Server 資料庫專案，並在 **複製到本機的存放庫** 中包含目錄和本機 Git 存放庫。
 
    ![建立新專案](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "建立新專案")  
 
@@ -85,8 +85,8 @@ ms.locfileid: "89441276"
 
    ![Verify](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "驗證變更")
 
-4. (**選用**) 使用 [結構描述比較]，並使用 SSDT 更新目標資料倉儲的變更，以確保 Azure Repo 存放庫和本機存放庫中的物件定義會反映您的資料倉儲。
+4. ( **選用** ) 使用 [結構描述比較]，並使用 SSDT 更新目標資料倉儲的變更，以確保 Azure Repo 存放庫和本機存放庫中的物件定義會反映您的資料倉儲。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [SQL 集區的開發](sql-data-warehouse-overview-develop.md)
+- [針對專用 SQL 集區開發](sql-data-warehouse-overview-develop.md)

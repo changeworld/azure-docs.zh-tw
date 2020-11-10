@@ -1,6 +1,6 @@
 ---
-title: 在 隨選 SQL (預覽) 中同步處理 Apache Spark 外部資料表定義
-description: 概述如何使用 SQL 隨選 (預覽) 查詢 Spark 資料表
+title: 在無伺服器 SQL 集區 (預覽) 中同步處理 Apache Spark 外部資料表定義
+description: 概述如何使用無伺服器 SQL 集區 (預覽) 查詢 Spark 資料表
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87046845"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315826"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>在 SQL 隨選 (預覽) 中同步處理 Apache Spark for Azure Synapse 外部資料表定義
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>在無伺服器 SQL 集區 (預覽) 中同步處理 Apache Spark for Azure Synapse 的外部資料表定義
 
-SQL 隨選 (預覽) 可以自動同步處理來自 Apache Spark for Azure Synapse 集區的中繼資料。 系統會針對 Spark 集區 (預覽) 中的每個資料庫建立 SQL 隨選資料庫。 
+無伺服器 SQL 集區 (預覽) 可以自動同步處理來自 Apache Spark 的中繼資料。 系統會針對 Spark 集區 (預覽) 中的每個資料庫建立無伺服器 SQL 集區資料庫。 
 
-針對以 Parquet 為基礎且位於 Azure 儲存體中的每個 Spark 外部資料表，系統會在 SQL 隨選資料庫中建立一個外部資料表。 因此，您可以在關閉 Spark 集區後，繼續從 SQL 隨選查詢 Spark 外部資料表。
+針對以 Parquet 為基礎且位於 Azure 儲存體中的每個 Spark 外部資料表，系統會在無伺服器 SQL 集區資料庫中建立一個外部資料表。 因此，您可以在關閉 Spark 集區後，繼續從無伺服器 SQL 集區查詢 Spark 外部資料表。
 
-在 Spark 中分割資料表時，儲存體中的檔案會依資料夾組織。 隨選 SQL 會使用分割區中繼資料，而且只會以相關的資料夾和檔案作為查詢目標。
+在 Spark 中分割資料表時，儲存體中的檔案會依資料夾組織。 無伺服器 SQL 集區會使用分割區中繼資料，而且只會以相關的資料夾和檔案作為查詢目標。
 
-系統已針對 Azure Synapse 工作區中佈建的每個 Spark 集區自動設定中繼資料同步。 您可以立即開始查詢 Spark 外部資料表。
+系統已針對 Azure Synapse 工作區中佈建的每個無伺服器 Apache Spark 集區自動設定中繼資料同步。 您可以立即開始查詢 Spark 外部資料表。
 
-位於 Azure 儲存體中的每個 Spark Parquet 外部資料表都會以 dbo 結構描述中對應至 SQL 隨選資料庫的外部資料表來表示。 
+位於 Azure 儲存體中的每個 Spark Parquet 外部資料表都會以 dbo 結構描述中對應至無伺服器 SQL 集區資料庫的外部資料表來表示。 
 
 針對 Spark 外部資料表查詢，請執行以外部 [spark_table] 為目標的查詢。 在執行下列範例之前，請確定您可以正確地[存取檔案所在的儲存體帳戶](develop-storage-files-storage-access-control.md)。
 
@@ -35,14 +35,14 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> 新增、置放或變更資料行的 Spark 外部資料表命令都不會在隨選 SQL 的外部資料表中反映。
+> 新增、置放或變更資料行的 Spark 外部資料表命令都不會在無伺服器 SQL 集區的外部資料表中反映。
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark 資料類型與 SQL 資料類型的對應
 
 | Spark 資料類型 | SQL 資料類型               |
 | --------------- | --------------------------- |
 | ByteType        | SMALLINT                    |
-| ShortType       | SMALLINT                    |
+| ShortType      | SMALLINT                    |
 | IntegerType     | int                         |
 | LongType        | BIGINT                      |
 | FloatType       | real                        |
@@ -50,16 +50,16 @@ SELECT * FROM [db].dbo.[spark_table]
 | DecimalType     | decimal                     |
 | TimestampType   | datetime2                   |
 | DateType        | date                        |
-| StringType      | varchar(max)*               |
+| StringType      | varchar(max)\*               |
 | BinaryType      | varbinary                   |
 | BooleanType     | bit                         |
-| ArrayType       | varchar(max)* (into JSON)** |
-| MapType         | varchar(max)* (into JSON)** |
-| StructType      | varchar(max)* (into JSON)** |
+| ArrayType       | varchar(max)\* (into JSON)\** |
+| MapType         | varchar(max)\* (into JSON)\** |
+| StructType      | varchar(max)\* (into JSON)\** |
 
 \* 使用的定序為 Latin1_General_100_BIN2_UTF8。
 
-** ArrayType、MapType 和 StructType 會以 JSON 表示。
+\** ArrayType、MapType 和 StructType 會以 JSON 表示。
 
 
 

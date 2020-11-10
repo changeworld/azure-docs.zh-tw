@@ -1,6 +1,6 @@
 ---
 title: 共用中繼資料模型
-description: Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 (預覽)、SQL 隨選 (預覽) 引擎和 SQL 集區之間共用資料庫和資料表。
+description: Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 、無伺服器 SQL 集區 (預覽) 和專用 SQL 集區之間共用資料庫和資料表。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87387331"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324665"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共用中繼資料
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 (預覽) 和 SQL 隨選引擎 (預覽) 之間共用資料庫和資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 之間共用資料庫和資料表。
 
 [!INCLUDE [preview](../includes/note-preview.md)]
 
@@ -32,7 +32,7 @@ Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 
 
 2. Spark 建立的資料庫及其所有資料表都會顯示在任何 Azure Synapse 工作區 Spark 集區執行個體中，而且可以從任何 Spark 作業中使用。 這項功能會受限於[權限](#security-model-at-a-glance)，因為工作區中所有 Spark 集區都會共用相同的基礎目錄中繼存放區。
 
-3. Spark 建立的資料庫及其受 Parquet 支援的資料表會在工作區 SQL 隨選引擎中顯示。 [資料庫](database.md)會在 SQL 隨選中繼資料中自動建立，而由 Spark 作業建立的[外部和受控資料表](table.md)，則會在對應資料庫的 `dbo` 結構描述中，以外部資料表的形式存在 SQL 隨選中繼資料中來供以存取。 
+3. Spark 建立的資料庫及其受 Parquet 支援的資料表會在工作區無伺服器 SQL 集區引擎中顯示。 [資料庫](database.md)會在無伺服器 SQL 集區中繼資料中自動建立，而由 Spark 作業建立的[外部和受控資料表](table.md)，則會在對應資料庫的 `dbo` 結構描述中，以外部資料表的形式存在無伺服器 SQL 集區中繼資料中來供以存取。 
 
 <!--[INSERT PICTURE]-->
 
@@ -52,7 +52,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 
 ## <a name="change-maintenance"></a>變更維護
 
-如果使用 Spark 刪除或變更中繼資料物件，則系統會取出變更並傳播至 SQL 隨選引擎。 同步並非即時進行，變更會在短暫延遲之後反映在 SQL 引擎中。
+如果使用 Spark 刪除或變更中繼資料物件，則系統會取出變更並傳播至無伺服器 SQL 集區引擎。 同步並非即時進行，變更會在短暫延遲之後反映在 SQL 引擎中。
 
 ## <a name="next-steps"></a>後續步驟
 

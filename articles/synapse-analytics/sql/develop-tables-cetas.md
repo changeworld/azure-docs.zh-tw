@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288761"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315076"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS 搭配 Synapse SQL
 
-您可以在 SQL 集區或 SQL 隨選 (預覽) 中使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 完成下列工作：  
+您可以在專用 SQL 集區或無伺服器 SQL 集區 (預覽) 中使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 完成下列工作：  
 
 - 建立外部資料表
 - 將 Transact-SQL SELECT 陳述式的結果以平行方式匯出至：
@@ -27,13 +27,13 @@ ms.locfileid: "91288761"
   - Azure 儲存體 Blob
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>SQL 集區中的 CETAS
+## <a name="cetas-in-dedicated-sql-pool"></a>專用 SQL 集區中的 CETAS
 
-如需 SQL 集區的 CETAS 用法和語法，請查看 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，如需使用 SQL 集區進行 CTAS 的指引，請參閱 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
+如需專用 SQL 集區的 CETAS 用法和語法，請查看 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，如需使用專用 SQL 集區進行 CTAS 的指引，請參閱 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
 
-## <a name="cetas-in-sql-on-demand"></a>SQL 隨選中的 CETAS
+## <a name="cetas-in-serverless-sql-pool"></a>無伺服器 SQL 集區中的 CETAS
 
-使用 隨選 SQL 時，CETAS 會用來建立外部資料表，並將查詢結果匯出至 Azure 儲存體 Blob 或 Azure Data Lake Storage Gen2。
+使用無伺服器 SQL 集區時，CETAS 會用來建立外部資料表，並將查詢結果匯出至 Azure 儲存體 Blob 或 Azure Data Lake Storage Gen2。
 
 ## <a name="syntax"></a>語法
 
@@ -56,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[ [ *database_name* . [ *schema_name* ] . ] | *schema_name* . ] *table_name**
 
-要建立之資料表名稱的第一到第三部分。 針對外部資料表，SQL 隨選只會儲存資料表中繼資料。 不會在 SQL 隨選中移動或儲存任何實際資料。
+要建立之資料表名稱的第一到第三部分。 針對外部資料表，無伺服器 SQL 集區只會儲存資料表中繼資料。 不會在無伺服器 SQL 集區中移動或儲存任何實際資料。
 
 LOCATION = *'path_to_folder'*
 

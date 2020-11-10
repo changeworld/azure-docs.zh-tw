@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fa7faf64e1889ef2d1abe644f23f0be363709a6b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461102"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322713"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入門：建立 Synapse 工作區
 本快速入門說明如何使用 Azure 入口網站來建立 Azure Synapse 工作區。
@@ -65,6 +65,6 @@ Azure Synapse 工作區的受控身分識別可能已經有儲存體帳戶的存
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立 SQL 集區](quickstart-create-sql-pool-studio.md) 
-* [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)
-* [使用 SQL 隨選](quickstart-sql-on-demand.md)
+* [建立專用 SQL 集區](quickstart-create-sql-pool-studio.md) 
+* [建立無伺服器 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)
+* [使用無伺服器 SQL 集區](quickstart-sql-on-demand.md)

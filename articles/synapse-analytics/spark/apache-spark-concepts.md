@@ -1,6 +1,6 @@
 ---
 title: Apache Spark 核心概念
-description: 介紹 Azure Synapse Analytics 中的 Apache Spark，以及不同的概念。
+description: 介紹 Azure Synapse Analytics 中的 Apache Spark 核心概念。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480474"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313392"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics 中的 Apache Spark 核心概念
 
@@ -24,7 +24,7 @@ Azure Synapse 可讓您輕鬆地在 Azure 中建立和設定 Spark 功能。 Azu
 
 ## <a name="spark-pools-preview"></a>Spark 集區 (預覽)
 
-Spark 集區 (預覽) 會建立在 Azure 入口網站中。 其定義是，當 Spark 集區具現化時，會用來建立可處理資料的 Spark 執行個體。 建立 Spark 集區時，其只會以中繼資料的形式存在，而且不會耗用或執行任何資源，或向您收取資源費用。 Spark 集區具有一系列的屬性，可控制 Spark 執行個體的特性。 這些特性包括但不限於名稱、大小、調整行為、存留時間。
+無伺服器 Apache Spark 集區 (預覽) 會建立在 Azure 入口網站中。 其定義是，當 Spark 集區具現化時，會用來建立可處理資料的 Spark 執行個體。 建立 Spark 集區時，其只會以中繼資料的形式存在，而且不會耗用或執行任何資源，或向您收取資源費用。 Spark 集區具有一系列的屬性，可控制 Spark 執行個體的特性。 這些特性包括但不限於名稱、大小、調整行為、存留時間。
 
 由於建立 Spark 集區沒有相關聯的費用或資源成本，因此可以使用任意數目的不同設定來建立任何數量的集區。 您也可以對 Spark 集區套用權限，讓使用者只能存取部分集區，而不能存取其他集區。
 

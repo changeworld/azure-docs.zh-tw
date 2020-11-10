@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c63733a66a2bb4e320a24649dfe82eac259e79ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131100"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043297"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>使用預覽 API 以程式設計方式建立 Azure 訂用帳戶
 
@@ -45,7 +45,7 @@ Azure 客戶若使用下列合約類型的計費帳戶，則可以程式設計�
 
 當您加入與「帳戶擁有者」相關聯的註冊帳戶之後，Azure 會使用帳戶與註冊的關聯性來判斷由誰支付訂用帳戶的費用。 所有在該帳戶下所建立訂用帳戶的費用，都會由該帳戶所在的 EA 註冊支付。 若要建立訂用帳戶，您必須傳入註冊帳戶與使用者主體的相關值，才能擁有訂用帳戶。
 
-若要執行下列命令，您必須登入「帳戶擁有者」的*主目錄* (建立訂用帳戶時預設的所在目錄)。
+若要執行下列命令，您必須登入「帳戶擁有者」的 *主目錄* (建立訂用帳戶時預設的所在目錄)。
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -177,7 +177,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 | 元素名稱  | 必要 | 類型   | 描述 |
 |---------------|----------|--------|----|
-| `Name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版*。 |
+| `Name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版* 。 |
 | `OfferType`   | 是      | String | 訂用帳戶供應項目。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `EnrollmentAccountObjectId`      | 是       | String | 用來建立訂用帳戶並加以收費的註冊帳戶物件識別碼。 此值是您從 `Get-AzEnrollmentAccount` 取得的 GUID。 |
 | `OwnerObjectId`      | 否       | String | 在建立訂用帳戶之後，任何要在該訂用帳戶上新增為「Azure RBAC 擁有者」之使用者的「物件識別碼」。  |
@@ -198,7 +198,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 | 元素名稱  | 必要 | 類型   | 描述 |
 |---------------|----------|--------|------------|
-| `display-name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版*。|
+| `display-name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版* 。|
 | `offer-type`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `enrollment-account-object-id`      | 是       | String | 用來建立訂用帳戶並加以收費的註冊帳戶物件識別碼。 此值是您從 `az billing enrollment-account list` 取得的 GUID。 |
 | `owner-object-id`      | 否       | String | 在建立訂用帳戶之後，任何要在該訂用帳戶上新增為「Azure RBAC 擁有者」之使用者的「物件識別碼」。  |
@@ -212,7 +212,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure 企業版訂用帳戶建立 API 的限制
 
 - 使用此 API 只能建立「Azure 企業版」訂用帳戶。
-- 每一註冊帳戶僅限 2000 個訂用帳戶。 之後，您只能在 Azure 入口網站中為帳戶建立更多訂用帳戶。 如果您想要透過 API 建立更多訂用帳戶，請建立另一個註冊帳戶。
+- 每一註冊帳戶僅限 2000 個訂用帳戶。 之後，您只能在 Azure 入口網站中為帳戶建立更多訂用帳戶。 如果您想要透過 API 建立更多訂用帳戶，請建立另一個註冊帳戶。 已取消、已刪除和已轉移的訂用帳戶會計入 2000 筆的限制。
 - 不是「帳戶擁有者」但已透過 Azure RBAC 新增至註冊帳戶的使用者，並無法在 Azure 入口網站中建立訂用帳戶。
 - 您無法選取要作為訂用帳戶建立位置的租用戶。 訂用帳戶一律會建立在「帳戶擁有者」的主租用戶中。 若要將訂用帳戶移至不同的租用戶，請參閱[變更訂用帳戶租用戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
@@ -506,7 +506,7 @@ API 回應會列出客戶適用的轉售商：
 
 下列範例會為 *Fabrikam toys* 建立名為「開發小組訂用帳戶」的訂用帳戶，並讓 *Wingtip* 轉銷商與訂用帳戶建立關聯。 
 
-提出下列要求，並以從第二個步驟複製的 `id` 取代 `<customerId>` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 在 API 的要求參數中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
+提出下列要求，並以從第二個步驟複製的 `id` 取代 `<customerId>` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 在 API 的要求參數中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview

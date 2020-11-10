@@ -1,6 +1,6 @@
 ---
 title: 共用中繼資料表
-description: Azure Synapse Analytics 會提供共用中繼資料模型，您在 Apache Spark 中建立的資料表，將能夠透過其 SQL 隨選 (預覽) 和 SQL 集區引擎存取，而不需要複製資料。
+description: Azure Synapse Analytics 會提供共用中繼資料模型，您在無伺服器 Apache Spark 集區中建立資料表，將能夠透過無伺服器 SQL 集區 (預覽) 和 SQL 集區引擎存取，而不需要複製資料。
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260726"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314539"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共用中繼資料資料表
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 集區 (預覽) 和 SQL 隨選 (預覽) 引擎之間共用資料庫和 Parquet 支援的資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 引擎之間共用資料庫和 Parquet 支援的資料表。
 
 Spark 作業建立資料庫之後，您就可以透過 Spark，在其中建立使用 Parquet 儲存格式的資料表。 這些資料表隨即可供任何 Azure Synapse 工作區 Spark 集區查詢。 若具有適當權限，您也可以從任何 Spark 作業中使用這些資料表。
 
-Spark 所建立和管理的資料表以及外部資料表也會在 SQL 隨選的對應同步資料庫中，以同名的外部資料表形式來提供使用。 [在 SQL 中公開 Spark 資料表](#expose-a-spark-table-in-sql)會提供資料表同步的更多詳細資料。
+Spark 所建立和管理的資料表以及外部資料表也會在無伺服器 SQL 集區的對應同步資料庫中，以同名的外部資料表形式來提供使用。 [在 SQL 中公開 Spark 資料表](#expose-a-spark-table-in-sql)會提供資料表同步的更多詳細資料。
 
-由於資料表不會即時同步至 SQL，因此資料表會延遲顯示。
+由於資料表不會即時同步至無伺服器 SQL 集區，因此資料表會延遲顯示。
 
 ## <a name="manage-a-spark-created-table"></a>管理 Spark 建立的資料表
 
-使用 Spark 來管理 Spark 建立的資料庫。 例如，透過 Spark 集區作業來刪除資料庫，以及從 Spark 建立其中的資料表。
+使用 Spark 來管理 Spark 建立的資料庫。 例如，透過無伺服器 Apache Spark 集區作業來刪除資料庫，以及從 Spark 建立其中的資料表。
 
-如果您透過 SQL 隨選在這類資料庫中建立物件，或嘗試卸載資料庫，雖然此作業將會成功，但不會變更原始的 Spark 資料庫。
+如果您透過無伺服器 SQL 集區在這類資料庫中建立物件，或嘗試卸載資料庫，雖然此作業將會成功，但不會變更原始的 Spark 資料庫。
 
 ## <a name="expose-a-spark-table-in-sql"></a>在 SQL 中公開 Spark 資料表
 
@@ -74,12 +74,12 @@ Spark 資料表提供的資料類型與 Synapse SQL 引擎不同。 下表是 Sp
 | `decimal`      | `decimal`        |<!-- need precision and scale-->|
 | `timestamp` |    `datetime2`      |<!-- need precision and scale-->|
 | `date`      | `date`           ||
-| `string`    |    `varchar(max)`   | 使用 `Latin1_General_CP1_CI_AS_UTF8` 定序 |
+| `string`    |    `varchar(max)`   | 使用 `Latin1_General_100_BIN2_UTF8` 定序 |
 | `binary`    |    `varbinary(max)` ||
 | `boolean`   |    `bit`            ||
-| `array`     |    `varchar(max)`   | 使用 `Latin1_General_CP1_CI_AS_UTF8` 定序序列化為 JSON |
-| `map`       |    `varchar(max)`   | 使用 `Latin1_General_CP1_CI_AS_UTF8` 定序序列化為 JSON |
-| `struct`    |    `varchar(max)`   | 使用 `Latin1_General_CP1_CI_AS_UTF8` 定序序列化為 JSON |
+| `array`     |    `varchar(max)`   | 使用 `Latin1_General_100_BIN2_UTF8` 定序序列化為 JSON |
+| `map`       |    `varchar(max)`   | 使用 `Latin1_General_100_BIN2_UTF8` 定序序列化為 JSON |
+| `struct`    |    `varchar(max)`   | 使用 `Latin1_General_100_BIN2_UTF8` 定序序列化為 JSON |
 
 <!-- TODO: Add precision and scale to the types mentioned above -->
 
@@ -95,9 +95,9 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 
 ## <a name="examples"></a>範例
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中建立由 Parquet 支援的受控資料表，並從 SQL 隨選查詢
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>在 Spark 中建立由 Parquet 支援的受控資料表，並從無伺服器 SQL 集區查詢
 
-在此案例中，您有一個名為 `mytestdb` 的 Spark 資料庫。 請參閱[使用隨選 SQL 建立並連線到 Spark 資料庫](database.md#create-and-connect-to-spark-database-with-sql-on-demand)。
+在此案例中，您有一個名為 `mytestdb` 的 Spark 資料庫。 請參閱[使用無伺服器 SQL 集區建立並連線到 Spark 資料庫](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool)。
 
 藉由執行下列命令，您可以使用 SparkSQL 建立受控 Spark 資料表：
 
@@ -105,7 +105,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-此命令會在 `mytestdb` 資料庫中建立 `myParquetTable` 資料表。 短暫延遲之後，您就可以在 SQL 隨選中看到資料表。 例如，從 SQL 隨選執行下列陳述式。
+此命令會在 `mytestdb` 資料庫中建立 `myParquetTable` 資料表。 短暫延遲之後，您就可以在無伺服器 SQL 集區中看到資料表。 例如，從無伺服器 SQL 集區執行下列陳述式。
 
 ```sql
     USE mytestdb;
@@ -140,7 +140,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-現在您可以從 SQL 隨選中讀取資料，如下所示：
+現在您可以從無伺服器 SQL 集區讀取資料，如下所示：
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +154,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中建立由 Parquet 支援的外部資料表，並從 SQL 隨選查詢
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>在 Spark 中建立由 Parquet 支援的外部資料表，並從無伺服器 SQL 集區查詢
 
 在此範例中，請以先前受控資料表範例中建立的 Parquet 資料檔案建立外部 Spark 資料表。
 
@@ -168,7 +168,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 將 `<fs>` 預留位置取代為工作區預設檔案系統的檔案系統名稱，並以您用來執行此範例的 synapse 工作區名稱取代 `<synapse_ws>` 預留位置。
 
-前一個範例會在 `mytestdb` 資料庫中建立 `myExtneralParquetTable` 資料表。 短暫延遲之後，您就可以在 SQL 隨選中看到資料表。 例如，從 SQL 隨選執行下列陳述式。
+前一個範例會在 `mytestdb` 資料庫中建立 `myExtneralParquetTable` 資料表。 短暫延遲之後，您就可以在無伺服器 SQL 集區中看到資料表。 例如，從無伺服器 SQL 集區執行下列陳述式。
 
 ```sql
 USE mytestdb;
@@ -177,7 +177,7 @@ SELECT * FROM sys.tables;
 
 確認結果中包含 `myExternalParquetTable`。
 
-現在您可以從 SQL 隨選中讀取資料，如下所示：
+現在您可以從無伺服器 SQL 集區讀取資料，如下所示：
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

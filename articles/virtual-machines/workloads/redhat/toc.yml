@@ -16,3 +16,5 @@
   href: redhat-rhui.md
 - name: Hat Enterprise Linux BYOS 映像供應項目
   href: byos.md
+- name: Red Hat Enterprise Linux 擴充生命週期支援
+  href: redhat-extended-lifecycle-support.md

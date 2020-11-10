@@ -1,6 +1,6 @@
 ---
-title: 在隨選 SQL 中存取儲存體上的檔案 (預覽)
-description: 說明如何在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案。
+title: 在無伺服器 SQL 集區中存取儲存體的檔案 (預覽)
+description: 在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 說明查詢儲存體檔案。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288982"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315932"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>存取 Synapse SQL 中的外部儲存體 (隨選)
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 存取外部儲存體
 
-本文件說明使用者如何在 Synapse SQL (隨選) 中讀取儲存在 Azure 儲存體中的檔案資料。 使用者可以使用下列選項來存取儲存體：
+本文件說明使用者如何在無伺服器 SQL 集區中讀取儲存在 Azure 儲存體中的檔案資料。 使用者可以使用下列選項來存取儲存體：
 
 - [OPENROWSET](develop-openrowset.md) 函式，可對 Azure 儲存體中的檔案進行特定查詢。
 - [外部資料表](develop-tables-external-tables.md)，這是建置於外部檔案集之上的預先定義資料結構。
@@ -27,7 +27,7 @@ ms.locfileid: "91288982"
 
 ## <a name="query-files-using-openrowset"></a>使用 OPENROWSET 查詢檔案
 
-OPENROWSET 可讓使用者在 Azure 儲存體上查詢外部檔案 (如果他們具有儲存體的存取權)。 連線到 Synapse SQL 隨選端點的使用者應該使用下列查詢來讀取 Azure 儲存體上的檔案內容：
+OPENROWSET 可讓使用者在 Azure 儲存體上查詢外部檔案 (如果他們具有儲存體的存取權)。 連線到無伺服器 SQL 集區的使用者應該使用下列查詢來讀取 Azure 儲存體上的檔案內容：
 
 ```sql
 SELECT * FROM

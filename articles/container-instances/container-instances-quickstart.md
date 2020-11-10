@@ -9,12 +9,12 @@ ms.custom:
 - mvc
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 41e064d34f9fdb004feb72d7becdb08fe377aec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91271200"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100179"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入門：使用 Azure CLI 部署容器執行個體
 
@@ -24,11 +24,11 @@ ms.locfileid: "91271200"
 
 ![在瀏覽器中檢視部署至 Azure Container Instances 的應用程式][aci-app-browser]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成此快速入門。 如果您想要在本機使用，建議使用 2.0.55 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+- 本快速入門需要 2.0.55 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -66,7 +66,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-如果容器的 `ProvisioningState` 為 [成功]  ，請在瀏覽器中移至其 FQDN。 如果您看到如下的網頁，恭喜您！ 您已將 Docker 容器中執行的應用程式成功部署至 Azure。
+如果容器的 `ProvisioningState` 為 [成功]，請在瀏覽器中移至其 FQDN。 如果您看到如下的網頁，恭喜您！ 您已將 Docker 容器中執行的應用程式成功部署至 Azure。
 
 ![在瀏覽器中檢視部署至 Azure Container Instances 的應用程式][aci-app-browser]
 
@@ -101,7 +101,7 @@ listening on port 80
 az container attach --resource-group myResourceGroup --name mycontainer
 ```
 
-在附加之後，重新整理瀏覽器幾次以產生一些額外的輸出。 作業完成後，請使用 `Control+C` 將主控台中斷連結。 您應該會看到類似以下的輸出：
+在附加之後，重新整理瀏覽器幾次以產生一些額外的輸出。 作業完成後，請使用 `Control+C` 將主控台中斷連結。 您應該會看到如下輸出：
 
 ```output
 Container 'mycontainer' is in state 'Running'...

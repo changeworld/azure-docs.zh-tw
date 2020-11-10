@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dd262b942d6ce4e423f524c7381574afd501f466
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88080944"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927544"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>開始監視 ASP.NET Web 應用程式
 
@@ -62,17 +62,17 @@ Application Insights 會為您的應用程式收集遙測資料，不論其執�
 
 1. 在方案總管中展開 [連線的服務] 資料夾 (雲端和加號圖示)，然後以滑鼠右鍵按一下 [Application Insights] 資料夾，並按一下 [開啟 Application Insights 入口網站]。  您可以看到有關您的應用程式的某些資訊和各種選項。
 
-    ![應用程式對應](media/quick-monitor-portal/04-overview.png)
+    ![顯示 Application Insights 入口網站內應用程式相關資訊的螢幕擷取畫面。](media/quick-monitor-portal/04-overview.png)
 
 2. 按一下 [應用程式對應]  ，取得應用程式元件之間相依性關聯性的視覺化配置。  每個元件會顯示負載、效能、失敗和警示等 KPI。
 
     ![應用程式對應](media/quick-monitor-portal/05-appmap.png)
 
-3. 按一下其中一個應用程式元件的 [應用程式分析]  圖示 [應用程式對應]![](media/quick-monitor-portal/app-viewinlogs-icon.png) [在記錄中檢視 (Analytics)]  。 這會開啟**記錄 (Analytics)** ，它可提供豐富的查詢語言，可用於分析 Application Insights 收集的所有資料。 此案例中會為您產生查詢，可將要求計數以圖表呈現。 您可以撰寫自己的查詢來分析其他資料。
+3. 按一下 [應用程式分析] 圖示 ![應用程式分析圖示的螢幕擷取畫面。](media/quick-monitor-portal/app-viewinlogs-icon.png) **檢視其中一個應用程式元件上的記錄 (Analytics)** 。 這會開啟 **記錄 (Analytics)** ，它可提供豐富的查詢語言，可用於分析 Application Insights 收集的所有資料。 此案例中會為您產生查詢，可將要求計數以圖表呈現。 您可以撰寫自己的查詢來分析其他資料。
 
     ![分析](media/quick-monitor-portal/6viewanalytics.png)
 
-4. 在 [調查] 底下的左邊按一下 [即時計量資料流]  。 這會顯示有關您的應用程式的即時統計資料，因為它在執行中。 這包含連入要求數量、這些要求的持續時間及發生的任何失敗之類的資訊。 您也可以檢查重要效能計量，例如處理器和記憶體。
+4. 在 [調查] 底下的左邊按一下 [即時計量資料流]。 這會顯示有關您的應用程式的即時統計資料，因為它在執行中。 這包含連入要求數量、這些要求的持續時間及發生的任何失敗之類的資訊。 您也可以檢查重要效能計量，例如處理器和記憶體。
 
     ![即時資料流](media/quick-monitor-portal/7livemetrics.png)
 
@@ -104,7 +104,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 ## <a name="clean-up-resources"></a>清除資源
 當您完成測試時，您可以刪除資源群組和所有相關資源。 若要這樣做，請依照下列步驟執行。
 1. 從 Azure 入口網站的左側功能表中，依序按一下 [資源群組]  和 [myResourceGroup]  。
-2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入 **myResourceGroup**，然後按一下 [刪除]  。
+2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入 **myResourceGroup** ，然後按一下 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 在這個快速入門中，您已啟用您的應用程式，供 Azure Application Insights 進行監視。  繼續進行教學課程，以了解如何使用它來監視統計資料和偵測應用程式中的問題。

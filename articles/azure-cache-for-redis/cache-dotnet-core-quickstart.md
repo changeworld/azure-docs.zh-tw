@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Azure Cache for Redis 搭配 .NET Core 應用程式
+title: 快速入門：在 .NET Core 中使用 Azure Cache for Redis
 description: 在本快速入門中，了解如何在 .NET Core 應用程式中存取 Azure Cache for Redis
 author: yegu-ms
 ms.author: yegu
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547719"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077076"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>快速入門：搭配使用 Azure Cache for Redis 與 .NET Core 應用程式
+# <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>快速入門：在 .NET Core 中使用 Azure Cache for Redis
 
 在本快速入門中，您會將 Azure Cache for Redis 納入 .NET Core 應用程式中，以便存取可從 Azure 內的任何應用程式存取的安全專用快取。 您會在 .NET Core 主控台應用程式中明確地搭配使用 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 用戶端與 C# 程式碼。
 
@@ -234,7 +234,7 @@ dotnet add package Newtonsoft.json
 using Newtonsoft.Json;
 ```
 
-將下列 `Employee` 類別定義新增至 Program.cs  ：
+將下列 `Employee` 類別定義新增至 Program.cs：
 
 ```csharp
 class Employee

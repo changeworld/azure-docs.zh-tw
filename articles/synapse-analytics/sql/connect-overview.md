@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289390"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322664"
 ---
 # <a name="connect-to-synapse-sql"></a>連線到 Synapse SQL
 連線到 Azure Synapse Analytics 中的 Synapse SQL 功能。
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>支援 SQL 隨選的工具 (預覽)
+## <a name="supported-tools-for-serverless-sql-pool-preview"></a>無伺服器 SQL 集區支援的工具 (預覽)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 從 1.18.0 版開始便已獲得完整支援。 SSMS 從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 
@@ -31,8 +31,8 @@ ms.locfileid: "91289390"
 
 ## <a name="find-your-server-name"></a>尋找您的伺服器名稱
 
-在下列範例中，SQL 集區的伺服器名稱為：showdemoweu.sql.azuresynapse.net。
-下列範例中的 SQL 隨選伺服器名稱為：showdemoweu-ondemand.sql.azuresynapse.net。
+在下列範例中，專用 SQL 集區的伺服器名稱為：showdemoweu.sql.azuresynapse.net。
+在下列範例中，無伺服器 SQL 集區的伺服器名稱為：showdemoweu-ondemand.sql.azuresynapse.net。
 
 若要尋找完整的伺服器名稱：
 
@@ -46,9 +46,9 @@ ms.locfileid: "91289390"
 
 ![完整伺服器名稱](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**SQL 隨選**
+## <a name="serverless-sql-pool"></a>**無伺服器 SQL 集區**
 
-![SQL 隨選的完整伺服器名稱](./media/connect-overview/server-connect-example-sqlod.png)
+![完整伺服器名稱無伺服器 SQL 集區](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支援的驅動程式和連接字串
 Synapse SQL 支援 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 若要尋找最新版本和文件，請選取前述的其中一個驅動程式。 若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，選取前述範例中的 [顯示資料庫連接字串]。 下列一些範例顯示每個驅動程式的連接字串。
@@ -92,7 +92,7 @@ Synapse SQL 會在連線和物件建立期間將一些設定標準化。 這些�
 
 ## <a name="recommendations"></a>建議
 
-若要執行 **SQL 隨選**查詢，建議的工具為 [Azure Data Studio](get-started-azure-data-studio.md) 和 Azure Synapse Studio。
+若要執行 **無伺服器 SQL 集區** 查詢，建議的工具為 [Azure Data Studio](get-started-azure-data-studio.md) 和 Azure Synapse Studio。
 
 ## <a name="next-steps"></a>後續步驟
 若要使用 Visual Studio 連接及查詢，請參閱 [使用 Visual Studio 查詢](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 若要深入了解驗證選項，請參閱[適用於 Synapse SQL 的驗證](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。

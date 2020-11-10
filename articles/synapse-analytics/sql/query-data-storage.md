@@ -1,6 +1,6 @@
 ---
-title: 使用隨選 SQL 來查詢儲存體中的資料 (預覽)
-description: 本文說明如何使用 Azure Synapse Analytics 中的 SQL 隨選 (預覽) 資源來查詢 Azure 儲存體。
+title: 使用無伺服器 SQL 集區查詢資料儲存體 (預覽)
+description: 本文說明如何使用 Azure Synapse Analytics 中的無伺服器 SQL 集區 (預覽) 資源來查詢 Azure 儲存體。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288370"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310960"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案
+# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>具有無伺服器 SQL 集區 (預覽) 的查詢儲存體檔案不支援此語法
 
-SQL 隨選 (預覽) 可讓您查詢資料湖中的資料。 其提供可搭載半結構化和非結構化資料查詢的 T-SQL 查詢介面區。 在查詢方面，可支援下列 T-SQL 層面：
+無伺服器 SQL 集區 (預覽) 可讓您查詢資料湖中的資料。 其提供可搭載半結構化和非結構化資料查詢的 T-SQL 查詢介面區。 在查詢方面，可支援下列 T-SQL 層面：
 
 - 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 介面區，包括大部分的 [SQL 函式及運算子](overview-features.md)。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 會建立[外部資料表](develop-tables-external-tables.md)，然後將 Transact-SQL SELECT 陳述式的結果以平行方式匯出至 Azure 儲存體。
 
-如需有關目前支援及不支援的功能詳細資訊，請參閱 [SQL 隨選概觀](on-demand-workspace-overview.md)一文，或參閱下列文章：
+如需有關目前支援及不支援的功能詳細資訊，請參閱[無伺服器 SQL 集區概觀](on-demand-workspace-overview.md)一文，或參閱下列文章：
 - [開發儲存體存取](develop-storage-files-overview.md)，您可以在其中了解如何使用[外部資料表](develop-tables-external-tables.md)及 [OPENROWSET](develop-openrowset.md) 函式從儲存體讀取資料。
 - [控制儲存體存取](develop-storage-files-storage-access-control.md)，您可以在其中了解如何讓 Synapse SQL 使用 SAS 驗證或工作區的受控識別來存取儲存體。
 
 ## <a name="overview"></a>概觀
 
-為了在 Azure 儲存體檔案中進行資料就地查詢時有流暢的體驗，SQL 隨選使用了 [OPENROWSET](develop-openrowset.md) 函式與其他功能：
+為了在 Azure 儲存體檔案中進行資料就地查詢時有流暢的體驗，無伺服器 SQL 集區使用了 [OPENROWSET](develop-openrowset.md) 函式與其他功能：
 
 - [查詢多個檔案或資料夾](#query-multiple-files-or-folders)
 - [PARQUET 檔案格式](#query-parquet-files)
@@ -66,7 +66,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 - ESCAPE_CHAR = 'char' 會指定檔案中用來將本身和所有分隔符號值逸出的字元。 如果逸出字元後面接著本身或任何分隔符號值以外的值，讀取值時就會捨棄逸出字元。
 無論 FIELDQUOTE 已啟用或未啟用，都會套用 ESCAPE_CHAR 參數。 其不會用來逸出引號字元。 引號字元必須以另一個引號字元來逸出。 只有在以引號字元封住值時，引號字元才能在資料行值中出現。
 - FIELDTERMINATOR ='field_terminator' 會指定要使用的欄位結束字元。 預設的欄位結束字元為逗號 (" **,** ")
-- ROWTERMINATOR ='row_terminator' 會指定要使用的資料列結束字元。 預設的資料列結束字元是新行字元： **\r\n**。
+- ROWTERMINATOR ='row_terminator' 會指定要使用的資料列結束字元。 預設的資料列結束字元是新行字元： **\r\n** 。
 
 ## <a name="file-schema"></a>檔案結構描述
 
@@ -146,7 +146,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>使用複雜類型和巢狀或重複的資料結構
 
-為了在使用以巢狀或重複資料類型 (例如 [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) 檔案) 儲存的資料時擁有流暢的體驗，SQL 隨選已新增下列延伸模組。
+為了在使用以巢狀或重複資料類型 (例如 [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) 檔案) 儲存的資料時擁有流暢的體驗，無伺服器 SQL 集區已新增下列延伸模組。
 
 #### <a name="project-nested-or-repeated-data"></a>投射巢狀或重復資料
 
@@ -228,7 +228,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ### <a name="demo-setup"></a>示範設定
 
-您的第一個步驟是**建立資料庫**，您將在其中執行查詢。 然後，您將在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 
+您的第一個步驟是 **建立資料庫** ，您將在其中執行查詢。 然後，您將在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 
 
 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用來讀取這些範例中資料的外部檔案格式。
 

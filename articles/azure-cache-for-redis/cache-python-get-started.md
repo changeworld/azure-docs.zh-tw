@@ -1,5 +1,5 @@
 ---
-title: 快速入門：建立 Python 應用程式 - Azure Cache for Redis
+title: 快速入門：在 Python 中使用 Azure Cache for Redis
 description: 在此快速入門中，您將了解如何建立可使用 Azure Cache for Redis 的 Python 應用程式。
 author: yegu-ms
 ms.author: yegu
@@ -11,14 +11,14 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87845319"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099431"
 ---
-# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入門：建立可使用 Azure Cache for Redis 的 Python 應用程式
+# <a name="quickstart-use-azure-cache-for-redis-in-python"></a>快速入門：在 Python 中使用 Azure Cache for Redis
 
 在本文中，您會將 Azure Cache for Redis 納入 Python 應用程式中，以便存取可從 Azure 內任何應用程式存取的安全、專用快取。
 
@@ -34,15 +34,15 @@ ms.locfileid: "87845319"
 
 ## <a name="install-redis-py"></a>安裝 redis-py
 
-[redis-py](https://github.com/andymccurdy/redis-py) \(英文\) 是 Azure Cache for Redis 的 Python 介面。 使用 Python 套件工具 *pip*，從命令提示字元中安裝 *redis-py* 套件。 
+[redis-py](https://github.com/andymccurdy/redis-py) \(英文\) 是 Azure Cache for Redis 的 Python 介面。 使用 Python 套件工具 *pip* ，從命令提示字元中安裝 *redis-py* 套件。 
 
-下列範例使用 Python 3 的 *pip3*，在 Windows 10 上，從系統管理員命令提示字元中安裝 *redis-py*。
+下列範例使用 Python 3 的 *pip3* ，在 Windows 10 上，從系統管理員命令提示字元中安裝 *redis-py* 。
 
 ![將 redis-py Python 介面安裝至 Azure Cache for Redis](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 ## <a name="read-and-write-to-the-cache"></a>讀取和寫入快取
 
-從命令列中執行 Python，然後使用下列程式碼來測試您的快取。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱的格式 *\<DNS name>.redis.cache.windows.net*。
+從命令列中執行 Python，然後使用下列程式碼來測試您的快取。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱的格式 *\<DNS name>.redis.cache.windows.net* 。
 
 ```python
 >>> import redis
@@ -59,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>建立 Python 範例應用程式
 
-建立新的文字檔、新增下列指令碼，然後將檔案儲存為 *PythonApplication1.py*。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱的格式 *\<DNS name>.redis.cache.windows.net*。
+建立新的文字檔、新增下列指令碼，然後將檔案儲存為 *PythonApplication1.py* 。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱的格式 *\<DNS name>.redis.cache.windows.net* 。
 
 ```python
 import redis
@@ -85,7 +85,7 @@ for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
 
-使用 Python 執行 *PythonApplication1.py*。 您應該會看到類似下列範例的結果：
+使用 Python 執行 *PythonApplication1.py* 。 您應該會看到類似下列範例的結果：
 
 ![執行 Python 指令碼以測試快取存取](./media/cache-python-get-started/cache-python-completed.png)
 

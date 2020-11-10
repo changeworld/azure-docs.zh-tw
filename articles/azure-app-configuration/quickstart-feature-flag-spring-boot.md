@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075530"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124181"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
 在本快速入門中，您會將 Azure 應用程式組態納入 Spring Boot Web 應用程式中，以建立功能管理的端對端實作。 您可以使用應用程式組態服務來集中儲存所有功能旗標及控制其狀態。
 
-Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴充架構。 這些程式庫**不會**相依於任何 Azure 程式庫。 它們可透過 Spring Boot 組態提供者完美地與應用程式組態整合。
+Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴充架構。 這些程式庫 **不會** 相依於任何 Azure 程式庫。 它們可透過 Spring Boot 組態提供者完美地與應用程式組態整合。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
    * 使用 **Java** 產生 **Maven** 專案。
    * 指定 **Spring Boot** 版本，應等於或大於 2.0。
-   * 指定應用程式的**群組**和**成品**名稱。  本文使用 `com.example` 和 `demo`。
+   * 指定應用程式的 **群組** 和 **成品** 名稱。  本文使用 `com.example` 和 `demo`。
    * 新增 **Spring Web** 相依性。
 
 1. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至您的本機電腦。
@@ -286,7 +286,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 1. 開啟瀏覽器視窗並移至 URL：`http://localhost:8080/welcome`。
 
-    ![快速入門應用程式啟動本機](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![顯示具有歡迎訊息的瀏覽器視窗螢幕擷取畫面。](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 1. 在應用程式組態入口網站中選取 [功能管理員]  ，然後將 Beta  金鑰的狀態變更為 [開啟]  ：
 
@@ -296,7 +296,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 1. 重新整理瀏覽器頁面，以查看新的組態設定。
 
-    ![快速入門應用程式啟動本機](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![顯示瀏覽器視窗螢幕擷取畫面，其中包含歡迎訊息和搶鮮版 (Beta) 連結圖說文字。](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

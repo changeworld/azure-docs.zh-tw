@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: jasonh
 ms.custom: devx-track-python
-ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d288b80b646851df9a3900a8ad3e5e0bf1a977ef
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409335"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131321"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入門：使用 Python 和 Azure 入口網站在 Azure Cosmos DB 中建立圖形資料庫
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin 主控台](create-graph-gremlin-console.md)
@@ -170,19 +171,19 @@ ms.locfileid: "91409335"
 
 在插入頂點和邊緣之後，您現在可以移回 [資料總管] 並查看已新增到圖行的頂點，然後新增額外的資料點。
 
-1. 在 Azure 入口網站您的 Azure Cosmos DB 帳戶中，選取 [資料總管]，展開 **sample-graph**，選取 [圖形]，然後選取 [套用篩選條件]。 
+1. 在 Azure 入口網站您的 Azure Cosmos DB 帳戶中，選取 [資料總管]，展開 **sample-graph** ，選取 [圖形]，然後選取 [套用篩選條件]。 
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="顯示從 A P I 選取的 Graph 螢幕擷取畫面，以及 [套用篩選器] 的選項。":::
 
 2. 在 [結果] 清單中，請注意圖形中已新增三個使用者。 您可以拖放移動周圍的頂點、捲動滑鼠滾輪執行縮放、使用雙箭號展開圖形大小。 
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure 入口網站的資料總管之圖形中的新頂點":::
 
 3. 現在來加入一些新使用者。 選取 [新增頂點] 按鈕，將資料新增至您的圖形。
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="顯示 [新增頂點] 窗格螢幕擷取畫面，您可以在其中輸入值。":::
 
-4. 輸入*人員*的標籤。
+4. 輸入 *人員* 的標籤。
 
 5. 選取 [新增屬性]，以新增以下各項屬性。 請注意，您可以在圖形中為每個人建立獨特的屬性。 只需要識別碼索引鍵。
 
@@ -200,7 +201,7 @@ ms.locfileid: "91409335"
 
 7. 再次選取 [新增頂點] 並新增額外的新使用者。 
 
-8. 輸入*人員*的標籤。
+8. 輸入 *人員* 的標籤。
 
 9. 選取 [新增屬性]，以新增以下各項屬性：
 
@@ -217,17 +218,17 @@ ms.locfileid: "91409335"
 
     隨著您新增更多的資料，您可以使用篩選條件來限制您的結果。 依預設，[資料總管] 會使用 `g.V()` 擷取圖形中的所有頂點。 您可將其變更為不同的[圖形查詢](tutorial-query-graph.md) (例如 `g.V().count()`)，以使用 JSON 格式傳回圖形中所有頂點的計數。 若您變更篩選條件，請將篩選條件變更回 `g.V()`，然後選取 [套用篩選條件]，即可再次顯示所有的結果。
 
-12. 現在我們可以連線 rakesh 和 ashley。 請確定已在 [結果] 清單中選取 **ashley**，然後選取右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
+12. 現在我們可以連線 rakesh 和 ashley。 請確定已在 [結果] 清單中選取 **ashley** ，然後選取右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="變更圖形中頂點的目標":::
 
 13. 在 [目標] 方塊中輸入 rakesh，並在 [邊緣標籤] 方塊中輸入 knows，然後選取核取方塊。
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="在 [資料總管] 中新增 ashley 與 rakesh 之間的連線":::
 
 14. 現在從 [結果] 清單中選取 **rakesh** 並查看 ashley 與 rakesh 是否已連線。 
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="[資料總管] 中連線的兩個頂點":::
 
 這會完成本教學課程中的資源建立部分。 您可以繼續將頂點新增至圖形、修改現有的頂點，或是變更查詢。 現在讓我們檢閱 Azure Cosmos DB 提供的計量，然後再清除資源。 
 

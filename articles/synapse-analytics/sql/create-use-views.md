@@ -1,6 +1,6 @@
 ---
-title: 在 SQL 隨選中建立和使用檢視 (預覽)
-description: 在本節中，您將了解如何建立和使用檢視來包裝 SQL 隨選 (預覽) 查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配隨選 SQL，也是需要檢視。
+title: 在無伺服器 SQL 集區 (預覽) 中建立及使用檢視
+description: 在本節中，您將了解如何建立和使用檢視來包裝無伺服器 SQL 集區 (預覽) 查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配無伺服器 SQL 集區，也是需要檢視。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f91611ab3c75a96f13ab84312ca0b2157e69af0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289305"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316241"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 在 SQL 隨選 (預覽) 中建立及使用檢視
+# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 建立及使用檢視
 
-在本節中，您將了解如何建立和使用檢視來包裝 SQL 隨選 (預覽) 查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配隨選 SQL，也是需要檢視。
+在本節中，您將了解如何建立和使用檢視來包裝無伺服器 SQL 集區 (預覽) 查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配無伺服器 SQL 集區，也是需要檢視。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -57,7 +57,7 @@ WITH (
 
 此範例中的檢視會使用 `OPENROWSET` 函式，以使用基礎檔案的絕對路徑。 如果您的 `EXTERNAL DATA SOURCE` 具有儲存體的根 URL，則可以搭配使用 `OPENROWSET` 與 `DATA_SOURCE` 和相對檔案路徑：
 
-```
+```sql
 CREATE VIEW TaxiView
 AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM

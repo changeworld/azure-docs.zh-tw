@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288778"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311124"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 連線到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "91288778"
 > 
 > 
 
-您可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)，透過 SQL 隨選 (預覽) 或 SQL 集區資源，連線至 Azure Synapse Analytics 中的 Synapse SQL 並加以查詢。 
+您可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)，透過無伺服器 SQL 集區 (預覽) 或 SQL 集區資源，連線至 Azure Synapse Analytics 中的專用 SQL 並加以查詢。 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>支援 SQL 隨選的工具 (預覽)
+### <a name="supported-tools-for-serverless-sql-pool-preview"></a>無伺服器 SQL 集區支援的工具 (預覽)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 從 1.18.0 版開始便已獲得完整支援。 SSMS 從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 
@@ -40,51 +40,51 @@ ms.locfileid: "91288778"
 開始之前，請先確定您已擁有下列必要條件：  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。 
-* 針對 SQL 集區，您需要現有的資料倉儲。 若要建立資料倉儲，請參閱[建立 SQL 集區](../quickstart-create-sql-pool-portal.md)。 針對 SQL 隨選，系統已在建立時在您的工作區中加以佈建。 
+* 針對專用 SQL 集區，您需要現有的資料倉儲。 若要建立資料倉儲，請參閱[建立專用 SQL 集區](../quickstart-create-sql-pool-portal.md)。 在建立時，您的工作區中已佈建了一個名稱內建的無伺服器 SQL 集區。 
 * 完整的 SQL 伺服器名稱。 若要尋找此名稱，請參閱[連線至 Synapse SQL](connect-overview.md)。
 
 ## <a name="connect"></a>連線
 
-### <a name="sql-pool"></a>SQL 集區
+### <a name="dedicated-sql-pool"></a>專用 SQL 集區
 
-若要使用 SQL 集區連線到 Synapse SQL，請遵循下列步驟： 
+若要使用專用 SQL 集區連線到 Synapse SQL，請遵循下列步驟： 
 
 1. 開啟 SQL Server Management Studio (SSMS)。 
 1. 在 [連線至伺服器] 對話方塊中填妥欄位，然後選取 [連線]： 
   
     ![連線至伺服器 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **伺服器名稱**：輸入先前找到的 **伺服器名稱** 。
-   * **驗證**：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
-   * **使用者名稱**和**密碼**：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * **伺服器名稱** ：輸入先前找到的 **伺服器名稱** 。
+   * **驗證** ：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
+   * **使用者名稱** 和 **密碼** ：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
 
-1. 在**物件總管**中展開您的 Azure SQL Server。 您可以檢視與伺服器相關聯的資料庫，例如範例 AdventureWorksDW 資料庫。 您可以展開資料庫以查看資料表：
+1. 在 **物件總管** 中展開您的 Azure SQL Server。 您可以檢視與伺服器相關聯的資料庫，例如範例 AdventureWorksDW 資料庫。 您可以展開資料庫以查看資料表：
    
     ![探索 AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>SQL 隨選 (預覽)
+### <a name="serverless-sql-pool-preview"></a>無伺服器 SQL 集區 (預覽)
 
-若要使用 SQL 隨選連線到 Synapse SQL，請遵循下列步驟： 
+若要使用無伺服器 SQL 集區連線到 Synapse SQL，請遵循下列步驟： 
 
 1. 開啟 SQL Server Management Studio (SSMS)。
 1. 在 [連線至伺服器] 對話方塊中填妥欄位，然後選取 [連線]： 
    
     ![連線至伺服器 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **伺服器名稱**：輸入先前找到的 **伺服器名稱** 。
-   * **驗證**：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]：
-   * **使用者名稱**和**密碼**：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * **伺服器名稱** ：輸入先前找到的 **伺服器名稱** 。
+   * **驗證** ：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]：
+   * **使用者名稱** 和 **密碼** ：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
    * 選取 [連接]  。
 
-4. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開*示範*以查看範例資料庫中的內容。
+4. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開 *示範* 以查看範例資料庫中的內容。
    
     ![探索 AdventureWorksDW 2](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>執行範例查詢
 
-### <a name="sql-pool"></a>SQL 集區
+### <a name="dedicated-sql-pool"></a>專用 SQL 集區
 
 既然已建立資料庫連線，您現在可以查詢資料。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91288778"
    
     ![查詢結果 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
-### <a name="sql-on-demand"></a>SQL 隨選
+### <a name="serverless-sql-pool"></a>無伺服器 SQL 集區
 
 既然已建立資料庫連線，您現在可以查詢資料。
 

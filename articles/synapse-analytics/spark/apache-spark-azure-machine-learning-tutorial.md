@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540501"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313621"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>教學課程：使用 Azure 自動化 ML 和 Apache Spark 執行實驗
 
@@ -29,13 +29,16 @@ Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自
 - 計算模型精確度
 
 ### <a name="before-you-begin"></a>開始之前
-- 依照[建立 Apache Spark 集區教學課程](../quickstart-create-apache-spark-pool-studio.md)中的指示，建立 Apache Spark 集區。
+
+- 遵循[建立無伺服器 Apache Spark 集區快速入門](../quickstart-create-apache-spark-pool-studio.md)，建立無伺服器 Apache Spark 集區。
 - 如果您沒有現有的 Azure Machine Learning 工作區，請完成 [Azure Machine Learning 工作區設定教學課程](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup)。 
 
 ### <a name="understand-regression-models"></a>了解迴歸模型
-*迴歸模型*會根據獨立的預測指標來預測數值輸出值。 在迴歸中，目標是藉由評估一個變數如何影響其他變數，來協助您建立那些獨立預測變數之間的關聯性。  
+
+*迴歸模型* 會根據獨立的預測指標來預測數值輸出值。 在迴歸中，目標是藉由評估一個變數如何影響其他變數，來協助您建立那些獨立預測變數之間的關聯性。  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>紐約市計程車資料的迴歸分析範例
+
 在此範例中，您將使用 Spark 對紐約的計程車行程小費資料執行一些分析。 您可以透過 [Azure 開放資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)取得資料。 此資料集的子集包含黃色計程車行程的相關資訊，包括每個行程的相關資訊、開始和結束時間及位置、成本和其他有趣的屬性。
 
 > [!IMPORTANT]
@@ -52,7 +55,7 @@ Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自
    > 由於使用 PySpark 核心，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 內容。
    >
 
-2. 因為未經處理資料採用 Parquet 格式，所以您可以使用 Spark 內容，直接將檔案當作資料框架提取至記憶體中。 透過開放資料集 API 擷取資料，以建立 Spark 資料框架。 在此，我們將使用 Spark 資料框架*讀取時的結構描述*屬性來推斷資料類型和結構描述。 
+2. 因為未經處理資料採用 Parquet 格式，所以您可以使用 Spark 內容，直接將檔案當作資料框架提取至記憶體中。 透過開放資料集 API 擷取資料，以建立 Spark 資料框架。 在此，我們將使用 Spark 資料框架 *讀取時的結構描述* 屬性來推斷資料類型和結構描述。 
    
    ```python
    blob_account_name = "azureopendatastorage"
@@ -125,7 +128,7 @@ training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 此步驟可確保會以資料點測試已完成、但尚未用來定型模型的模型。 
 
 ## <a name="connect-to-an-azure-machine-learning-workspace"></a>連線至 Azure Machine Learning 工作區
-在 Azure Machine Learning 中，**工作區**是會接受您的 Azure 訂用帳戶和資源資訊的類別。 它也會建立雲端資源來監視及追蹤您的模型執行。 在此步驟中，我們將從現有的 Azure Machine Learning 工作區建立工作區物件。
+在 Azure Machine Learning 中， **工作區** 是會接受您的 Azure 訂用帳戶和資源資訊的類別。 它也會建立雲端資源來監視及追蹤您的模型執行。 在此步驟中，我們將從現有的 Azure Machine Learning 工作區建立工作區物件。
    
 ```python
 from azureml.core import Workspace
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>將資料框架轉換為 Azure Machine Learning 資料集
-為了提交遠端實驗，我們必須將資料集轉換為 Azure Machine Learning ```TabularDatset```。 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 會剖析提供的檔案，並以表格格式呈現資料。
+為了提交遠端實驗，我們必須將資料集轉換為 Azure Machine Learning ```TabularDatset```。 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 會剖析提供的檔案，並以表格格式呈現資料。
 
 下列程式碼會取得現有的工作區和 Azure Machine Learning 的預設資料存放區。 接著會將資料存放區和檔案位置傳至路徑參數，以建立新的 ```TabularDataset```。 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![已上傳資料集的圖片。](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>提交自動 ML 實驗
+## <a name="submit-an-automl-experiment"></a>提交 AutoML 實驗
 
 #### <a name="define-training-settings"></a>定義定型設定
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Spark 集區 (預覽) 和 SQL 集區之間匯入和匯出資料
-description: 本文提供相關資訊來讓您了解如何使用自訂連接器，於 SQL 集區和 Spark 集區 (預覽) 之間來回移動資料。
+title: 在無伺服器 Apache Spark 集區 (預覽) 和 SQL 集區之間匯入和匯出資料
+description: 本文提供相關資訊來讓您了解如何使用自訂連接器，於專用 SQL 集區和無伺服器 Apache Spark 集區 (預覽) 之間移動資料。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259912"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323890"
 ---
 # <a name="introduction"></a>簡介
 
-Azure Synapse Apache Spark 對 Synapse SQL 連接器的設計目的是要讓您在 Azure Synapse 中於 Spark 集區 (預覽) 和 SQL 集區之間有效率地傳輸資料。 Azure Synapse Apache Spark 對 Synapse SQL 連接器僅適用於 SQL 集區，不適用於 SQL 隨選。
+Azure Synapse Apache Spark 對 Synapse SQL 連接器的設計目的是要讓您在 Azure Synapse 中於無伺服器 Apache Spark 集區 (預覽) 和 SQL 集區之間有效率地傳輸資料。 Azure Synapse Apache Spark 對 Synapse SQL 連接器僅適用於專用 SQL 集區，不適用於無伺服器 SQL 集區。
 
 ## <a name="design"></a>設計
 
 若要在 Spark 集區和 SQL 集區之間傳輸資料，可使用 JDBC 來進行。 不過，在有兩個分散式系統 (例如 Spark 和 SQL 集區) 的情況下，JDBC 往往會成為序列資料傳輸的瓶頸。
 
-Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Spark 的資料來源實作。 其會使用 Azure Data Lake Storage Gen2 以及 SQL 集區中的 Polybase，以在 Spark 叢集與 Synapse SQL 執行個體之間有效率地傳輸資料。
+Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Spark 的資料來源實作。 其會使用 Azure Data Lake Storage Gen2 以及專用 SQL 集區中的 Polybase，以在 Spark 叢集與 Synapse SQL 執行個體之間有效率地傳輸資料。
 
 ![連接器架構](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -32,7 +32,7 @@ Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Sp
 
 在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 權杖服務會與 Azure Active Directory 連線，以取得要在存取儲存體帳戶或資料倉儲伺服器時使用的安全性權杖。
 
-因此，只要在儲存體帳戶和資料倉儲伺服器上設定好 AAD 驗證，就不需要建立認證或在連接器 API 中指定認證。 如果未設定，則可以指定 SQL 驗證。 請於[使用方式](#usage)一節尋找更多詳細資料。
+因此，只要在儲存體帳戶和資料倉儲伺服器上設定好 Azure AD 驗證，就不需要建立認證或在連接器 API 中指定認證。 如果未設定，則可以指定 SQL 驗證。 請於[使用方式](#usage)一節尋找更多詳細資料。
 
 ## <a name="constraints"></a>條件約束
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 您不必提供匯入陳述式，筆記本體驗已預先匯入這些陳述式。
 
-### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>在連結有工作區的 SQL 集區之間來回傳輸資料
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-attached-within-the-workspace"></a>在連結有工作區的專用 SQL 集區之間來回傳輸資料
 
 > [!NOTE]
 > **筆記本體驗中不需要匯入**
@@ -91,12 +91,12 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-寫入 API 會在 SQL 集區中建立資料表，然後叫用 Polybase 來載入資料。  資料表不能存在於 SQL 集區中，否則會傳回錯誤，指出「已經有物件名為...」
+寫入 API 會在專用 SQL 集區中建立資料表，然後叫用 Polybase 來載入資料。  資料表不能存在於專用 SQL 集區中，否則會傳回錯誤，指出「已經有物件名為...」
 
 TableType 值
 
-- Constants.INTERNAL - SQL 集區中的受控資料表
-- Constants.EXTERNAL - SQL 集區中的外部資料表
+- Constants.INTERNAL - 專用 SQL 集區中的受控資料表
+- Constants.INTERNAL - 專用 SQL 集區中的外部資料表
 
 SQL 集區受控資料表
 
@@ -106,10 +106,10 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL 集區外部資料表
 
-若要寫入 SQL 集區外部資料表，SQL 集區上必須有 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  如需詳細資訊，請參閱 SQL 集區中的[建立外部資料來源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  以下是在 SQL 集區中建立外部資料來源和外部檔案格式的範例。
+若要寫入專用 SQL 集區外部資料表，專用 SQL 集區上必須有 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  如需詳細資訊，請參閱專用 SQL 集區中的[建立外部資料來源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  以下是在專用 SQL 集區中建立外部資料來源和外部檔案格式的範例。
 
 ```sql
---For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+--For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:
 CREATE EXTERNAL DATA SOURCE <DataSourceName>
 WITH
   ( LOCATION = 'abfss://...' ,
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果您要在工作區外的 SQL 集區或資料庫之間來回傳輸資料
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-or-database-outside-the-workspace"></a>如果要在工作區外的專用 SQL 集區或資料庫之間來回傳輸資料
 
 > [!NOTE]
 > 筆記本體驗中不需要匯入
@@ -160,11 +160,11 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-sql-auth-instead-of-aad"></a>使用 SQL 驗證而非 AAD
+### <a name="use-sql-auth-instead-of-azure-ad"></a>使用 SQL 驗證而非 Azure AD
 
 #### <a name="read-api"></a>讀取 API
 
-目前，連接器不支援對工作區外的 SQL 集區進行權杖型驗證。 您必須使用 SQL 驗證。
+目前，連接器不支援對工作區外的專用 SQL 集區進行權杖型驗證。 您必須使用 SQL 驗證。
 
 ```scala
 val df = spark.read.
@@ -227,7 +227,7 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 - 您應該能夠從 Azure 入口網站，對所有來自 "synapse" 和其下層的資料夾執行 ACL。 若要對根 "/" 資料夾執行 ACL，請遵循下列指示。
 
-- 使用 AAD 從儲存體總管連線到與工作區連線的儲存體帳戶
+- 使用 Azure AD 從儲存體總管連線到與工作區連線的儲存體帳戶
 - 選取您的帳戶，並提供工作區的 ADLS Gen2 URL 和預設檔案系統
 - 在看到儲存體帳戶列出後，請以滑鼠右鍵按一下列出的工作區，然後選取 [管理存取權]。
 - 將具有「執行」存取權限的使用者新增至 / 資料夾。 選取 [確定]
@@ -237,5 +237,5 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure 入口網站建立 SQL 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [使用 Azure 入口網站建立專用的 SQL 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [使用 Azure 入口網站建立新的 Apache Spark 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

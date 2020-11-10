@@ -1,6 +1,6 @@
 ---
 title: 共用資料庫
-description: Azure Synapse Analytics 會提供共用中繼資料模型，只要是在 Apache Spark 中建立的資料庫，便可從其 SQL 隨選 (預覽) 和 SQL 集區引擎來加以存取。
+description: Azure Synapse Analytics 會提供共用中繼資料模型，只要是在無伺服器 Apache Spark 集區中建立的資料庫，便可從其無伺服器 SQL 集區 (預覽) 和 SQL 集區引擎存取。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,36 +10,36 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260847"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317829"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共用資料庫
 
-Azure Synapse Analytics 可讓不同的計算工作區引擎在其 Spark 集區 (預覽) 和 SQL 隨選 (預覽) 引擎之間共用資料庫和資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 之間共用資料庫和資料表。
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區 (預覽)，包括隨選 SQL 引擎。
+使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區 (預覽)，包括無伺服器 SQL 集區引擎。
 
-Spark 預設資料庫 (稱為 `default`) 也會在 SQL 隨選內容中顯示為稱為 `default` 的資料庫。
+Spark 預設資料庫 (稱為 `default`) 也會在無伺服器 SQL 集區內容中顯示為稱為 `default` 的資料庫。
 
-由於資料庫不會即時同步至 SQL，因此資料庫會延遲顯示。
+由於資料庫不會即時同步至無伺服器 SQL 集區，因此資料表會延遲顯示。
 
 ## <a name="manage-a-spark-created-database"></a>管理 Spark 建立的資料庫
 
 使用 Spark 來管理 Spark 建立的資料庫。 例如，透過 Spark 集區作業來刪除資料庫，以及從 Spark 建立其中的資料表。
 
-如果您使用 SQL 隨選在 Spark 所建資料庫中建立物件，或嘗試卸除資料庫，則作業將會成功。 但是，原始的 Spark 資料庫不會有任何改變。
+如果您使用無伺服器 SQL 集區在 Spark 所建資料庫中建立物件，或嘗試卸除資料庫，則作業將會成功。 但是，原始的 Spark 資料庫不會有任何改變。
 
 ## <a name="how-name-conflicts-are-handled"></a>如何處理名稱衝突
 
-如果 Spark 資料庫的名稱與現有 SQL 隨選資料庫的名稱衝突，則會在 SQL 隨選中為 Spark 資料庫附加尾碼。 SQL 隨選中的尾碼是 `_<workspace name>-ondemand-DefaultSparkConnector`。
+如果 Spark 資料庫的名稱與現有無伺服器 SQL 集區資料庫的名稱衝突，則會在無伺服器 SQL 集區中為 Spark 資料庫附加尾碼。 無伺服器 SQL 集區的尾碼為 `_<workspace name>-ondemand-DefaultSparkConnector`。
 
-例如，如果名為 `mydb` 的 Spark 資料庫是在 Azure Synapse 工作區 `myws` 中建立的，且已存在具有該名稱的 SQL 隨選資料庫，則必須使用名稱 `mydb_myws-ondemand-DefaultSparkConnector` 來參考 SQL 隨選中的 Spark 資料庫。
+例如，如果名為 `mydb` 的 Spark 資料庫是在 Azure Synapse 工作區 `myws` 中建立的，且已存在具有該名稱的無伺服器 SQL 集區資料庫，則必須使用名稱 `mydb_myws-ondemand-DefaultSparkConnector` 來參考無伺服器 SQL 集區選中的 Spark 資料庫。
 
 > [!CAUTION]
 > 注意：請勿依賴此行為。
@@ -58,7 +58,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 
 ## <a name="examples"></a>範例
 
-### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>使用隨選 SQL 建立並連線到 Spark 資料庫
+### <a name="create-and-connect-to-spark-database-with-serverless-sql-pool"></a>使用無伺服器 SQL 集區建立並連線到 Spark 資料庫
 
 首先，請使用您已在工作區中建立的 Spark 叢集來建立名為 `mytestdb` 的新 Spark 資料庫。 例如，您可以使用 Spark C# Notebook 搭配下列 .NET for Spark 陳述式來達成此目的：
 
@@ -66,7 +66,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-在短暫延遲過後，您就可以從 SQL 隨選看到該資料庫。 例如，從 SQL 隨選執行下列陳述式。
+在短暫延遲過後，您就可以從無伺服器 SQL 集區看到該資料庫。 例如，從無伺服器 SQL 集區執行下列陳述式。
 
 ```sql
 SELECT * FROM sys.databases;

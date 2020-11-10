@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: ce0858f61ca1fe3b81c3d0c8a3c97954827def80
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950613"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027562"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>在管理群組中的所有訂用帳戶上啟用資訊安全中心
 
@@ -31,14 +31,14 @@ ms.locfileid: "91950613"
 
 1. 選取 [指派] 並確保您將範圍設定為 MG 層級。
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Azure 原則定義、在您的訂用帳戶上啟用 Azure 資訊安全中心":::
+    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="指派定義、在您的訂用帳戶上啟用 Azure 資訊安全中心":::
 
     > [!TIP]
     > 除了範圍以外，沒有必要的參數。
 
 1. 選取 [建立補救工作] 以確保所有未啟用資訊安全中心的現有訂用帳戶都會上線。
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Azure 原則定義、在您的訂用帳戶上啟用 Azure 資訊安全中心":::
+    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="為 Azure 原則定義建立補救工作、在您的訂用帳戶上啟用 Azure 資訊安全中心":::
 
 1. 指派定義後，其將會：
 
@@ -49,7 +49,7 @@ ms.locfileid: "91950613"
     然後補救工作會在不符合規範的訂用帳戶上，免費啟用資訊安全中心。
 
 > [!IMPORTANT]
-> 原則定義只會在**現有的**訂用帳戶上啟用資訊安全中心。 若要註冊新建立的訂用帳戶，請開啟 [相容性] 索引標籤，選取相關的不合規訂用帳戶，然後建立補救工作。如果您有一或多個要利用資訊安全中心監視的新訂用帳戶，請重複此步驟。
+> 原則定義只會在 **現有的** 訂用帳戶上啟用資訊安全中心。 若要註冊新建立的訂用帳戶，請開啟 [相容性] 索引標籤，選取相關的不合規訂用帳戶，然後建立補救工作。如果您有一或多個要利用資訊安全中心監視的新訂用帳戶，請重複此步驟。
 
 ## <a name="optional-modifications"></a>選擇性修改
 

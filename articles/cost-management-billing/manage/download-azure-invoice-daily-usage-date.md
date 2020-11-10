@@ -7,15 +7,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/28/2020
 ms.author: banders
-ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270894"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911285"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下載或檢視您的 Azure 帳單發票和每日使用量資料
 
@@ -41,7 +41,7 @@ ms.locfileid: "91270894"
 
     ![顯示 [帳單和使用量] 選項的螢幕擷取畫面](./media/download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. 按一下 [下載] 按鈕以下載 PDF 發票的複本，然後選取 [下載發票]  。 如果它顯示**無法使用**，請參閱[為什麼我沒有看到上期的發票？](#noinvoice)
+3. 按一下 [下載] 按鈕以下載 PDF 發票的複本，然後選取 [下載發票]  。 如果它顯示 **無法使用** ，請參閱 [為什麼我沒有看到上期的發票？](#noinvoice)
 
     ![顯示計費期間、下載發票和每個計費期間總費用的螢幕擷取畫面](./media/download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "91270894"
 5. 按一下資料列結尾的 [下載] 按鈕。
 6. 在下載操作功能表中，選取 [發票]  。
 
-如果您沒有看到上一個計費期間的發票，請參閱**其他資訊**。 <!-- Fix this -->
+如果您沒有看到上一個計費期間的發票，請參閱 **其他資訊** 。 <!-- Fix this -->
 ### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a>為什麼我沒有看到上期的發票？
 
 您沒有看到發票的可能原因如下︰
@@ -136,9 +136,7 @@ ms.locfileid: "91270894"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋 [成本管理 + 帳單]  。
-
-    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
-
+1. 如果您有多個計費帳戶的存取權，請選取您 EA 計費帳戶的計費範圍。
 1. 選取 [使用量 + 費用]  。
 1. 針對您想要下載的月份，選取 [下載]  。
 
@@ -165,10 +163,6 @@ ms.locfileid: "91270894"
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>檢查 Microsoft 客戶合約的存取
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
-
-## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
-
-如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132460"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323818"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>使用 Azure Data Studio (預覽) 連線到 Synapse SQL
 
@@ -42,11 +42,11 @@ ms.locfileid: "92132460"
 * **資料庫：** 資料庫名稱
 
 > [!NOTE]
-> 如果您想要使用 **SQL 隨選 (預覽)** ，URL 應如下所示：
+> 如果您想要使用 **無伺服器 SQL 集區 (預覽)** ，URL 應如下所示：
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net。
 >
-> 如果您想要使用 **SQL 集區** ，URL 應如下所示：
+> 如果您想要使用 **專用 SQL 集區** ，URL 應如下所示：
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
@@ -77,7 +77,7 @@ ms.locfileid: "92132460"
 
 ![新增查詢](./media/get-started-azure-data-studio/5-new-query.png)
 
-例如，您可以使用下列 Transact-SQL 陳述式，透過 SQL 隨選[查詢 Parquet 檔案](query-parquet-files.md)：
+例如，您可以使用下列 Transact-SQL 陳述式，透過無伺服器 SQL 集區[查詢 Parquet 檔案](query-parquet-files.md)：
 
 ```sql
 SELECT COUNT(*)
