@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80885475"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443325"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>呼叫 web Api 的 Daemon 應用程式-應用程式註冊
 
@@ -26,8 +26,8 @@ ms.locfileid: "80885475"
 
 只有在 Azure AD 租使用者中，Daemon 應用程式才有意義。 因此，當您建立應用程式時，您必須選擇下列其中一個選項：
 
-- **僅限此組織目錄中的帳戶**。 這是最常見的選擇，因為守護程式應用程式通常是由企業營運 (LOB) 開發人員所撰寫。
-- **任何組織目錄中的帳戶**。 如果您是為客戶提供公用程式工具的 ISV，您將會選擇此選項。 您將需要客戶的租使用者系統管理員核准它。
+- **僅限此組織目錄中的帳戶** 。 這是最常見的選擇，因為守護程式應用程式通常是由企業營運 (LOB) 開發人員所撰寫。
+- **任何組織目錄中的帳戶** 。 如果您是為客戶提供公用程式工具的 ISV，您將會選擇此選項。 您將需要客戶的租使用者系統管理員核准它。
 
 ## <a name="authentication---no-reply-uri-needed"></a>驗證-不需要回復 URI
 
@@ -35,14 +35,14 @@ ms.locfileid: "80885475"
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API 許可權-應用程式許可權和系統管理員同意
 
-背景程式應用程式只能要求 Api 的應用程式許可權 (不會) 委派許可權。 在應用程式註冊的 [ **API 許可權** ] 頁面上，選取 [ **新增許可權** ] 並選擇 API 系列之後，選擇 [ **應用程式許可權**]，然後選取您的許可權。
+背景程式應用程式只能要求 Api 的應用程式許可權 (不會) 委派許可權。 在應用程式註冊的 [ **API 許可權** ] 頁面上，選取 [ **新增許可權** ] 並選擇 API 系列之後，選擇 [ **應用程式許可權** ]，然後選取您的許可權。
 
 ![應用程式許可權和系統管理員同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> 您要呼叫的 web API 必須定義 *應用程式許可權 (應用程式角色) *，而不是委派的許可權。 如需如何公開這類 API 的詳細資訊，請參閱 [受保護的 WEB api：應用程式註冊-當您的 WEB api 由 daemon 應用程式呼叫時](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
+> 您要呼叫的 web API 必須定義 *應用程式許可權 (應用程式角色)* ，而不是委派的許可權。 如需如何公開這類 API 的詳細資訊，請參閱 [受保護的 WEB api：應用程式註冊-當您的 WEB api 由 daemon 應用程式呼叫時](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
 
-Daemon 應用程式要求租使用者系統管理員必須預先同意呼叫 web API 的應用程式。 租使用者系統管理員選取 [**授與系統管理員同意給*我們的組織*** ]，即可在相同的**API 許可權**頁面上提供此同意
+Daemon 應用程式要求租使用者系統管理員必須預先同意呼叫 web API 的應用程式。 租使用者系統管理員選取 [ **授與系統管理員同意給 *我們的組織*** ]，即可在相同的 **API 許可權** 頁面上提供此同意
 
 如果您是建立多租使用者應用程式的 ISV，您應該參閱部署多租使用者背景工作應用程式的 [部署案例](scenario-daemon-production.md#deployment---multitenant-daemon-apps)一節。
 
@@ -50,5 +50,4 @@ Daemon 應用程式要求租使用者系統管理員必須預先同意呼叫 web
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-應用程式程式碼設定](./scenario-daemon-app-configuration.md)
+請繼續進行此案例中的下一篇文章，也就是 [應用程式程式碼](./scenario-daemon-app-configuration.md)設定。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/09/2020
-ms.openlocfilehash: 7f62aade114613261a22a818ab47e096eb16084b
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427967"
+ms.locfileid: "94443376"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -27,9 +27,10 @@ Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和�
 
 客戶管理的金鑰功能可在專用的 Log Analytics 叢集上傳遞。 它可讓您使用 [密碼箱](#customer-lockbox-preview) 控制來保護您的資料，並讓您隨時都能撤銷對您資料的存取權。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料加密，並在2021的上半年 Customer-Managed 金鑰。
 
-若要確認我們具有在您的區域中布建專用叢集所需的容量，我們需要事先允許您的訂用帳戶。 在開始 Customer-Managed 金鑰設定之前，請使用您的 Microsoft 連絡人或開啟支援要求以取得訂用帳戶。
-
 [Log Analytics 叢集定價模型](./manage-cost-storage.md#log-analytics-dedicated-clusters)會使用每日層級的容量保留，起價為 1000 GB。
+
+> [!IMPORTANT]
+> 由於有暫時性的容量限制，我們要求您在建立叢集之前預先註冊。 使用您的連絡人進入 Microsoft，或開啟支援要求以註冊您的訂用帳戶識別碼。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed 金鑰在 Azure 監視器中的運作方式
 
@@ -63,11 +64,11 @@ Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存
 
 ## <a name="customer-managed-key-provisioning-procedure"></a>Customer-Managed 金鑰布建程式
 
-1. 允許訂用帳戶--這項功能會在專用的 Log Analytics 叢集上傳遞。 若要確認您的區域中有必要的容量，我們需要事先允許您的訂用帳戶。 使用您的 Microsoft 連絡人來取得訂用帳戶。
-2. 建立 Azure Key Vault 並儲存金鑰
-3. 正在建立叢集
-4. 授與 Key Vault 的權限
-5. 連結 Log Analytics 工作區
+1. 註冊您的訂用帳戶以允許叢集建立
+1. 建立 Azure Key Vault 並儲存金鑰
+1. 正在建立叢集
+1. 授與 Key Vault 的權限
+1. 連結 Log Analytics 工作區
 
 Azure 入口網站中不支援 Customer-Managed 金鑰設定，而布建是透過 [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)、 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) 或 [REST](https://docs.microsoft.com/rest/api/loganalytics/) 要求來執行。
 
@@ -149,7 +150,6 @@ Authorization: Bearer <token>
 
 > [!IMPORTANT]
 > Customer-Managed 的主要功能是區域性的。 您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區必須位於相同的區域中，但它們可以在不同的訂用帳戶中。
-> 若要確認我們具有在您的區域中布建專用叢集所需的容量，我們需要事先允許您的訂用帳戶。 在開始 Customer-Managed 金鑰設定之前，請先使用您的 Microsoft 連絡人或開啟支援要求，以取得訂用帳戶。 
 
 ### <a name="storing-encryption-key-kek"></a>儲存加密金鑰 (KEK)
 
@@ -200,6 +200,25 @@ az monitor log-analytics cluster update --name "cluster-name" --resource-group "
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
+
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
+}
 ```
 
 **回應**
@@ -288,6 +307,11 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 
 將 *查詢* 的儲存體帳戶連結至您的工作區--儲存 *的搜尋* 查詢會儲存在您的儲存體帳戶中。 
 
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
@@ -314,6 +338,11 @@ Content-type: application/json
 **設定 BYOS 的記錄警示查詢**
 
 將 *警示* 的儲存體帳戶連結至您的工作區-- *記錄-警示* 查詢會儲存在您的儲存體帳戶中。 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"

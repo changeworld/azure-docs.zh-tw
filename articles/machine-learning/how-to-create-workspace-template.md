@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305486"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442050"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -34,7 +34,7 @@ ms.locfileid: "93305486"
 
 * 某些案例需要您開啟支援票證。 這些案例為：
 
-    * __使用客戶管理的金鑰 Private Link 啟用的工作區 (CMK)__
+    * __已啟用 Private Link 的工作區與客戶自控金鑰__
     * __虛擬網路背後工作區的 Azure Container Registry__
 
     如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
@@ -170,7 +170,7 @@ New-AzResourceGroupDeployment `
 > [!IMPORTANT]
 > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
-如需詳細資訊，請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
+如需詳細資訊，請參閱[靜態加密](concept-data-encryption.md#encryption-at-rest)。
 
 > [!IMPORTANT]
 > 使用此範本之前，訂用帳戶必須符合一些特定需求：
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-使用客戶管理的金鑰時，Azure Machine Learning 建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
+使用客戶管理的金鑰時，Azure Machine Learning 建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-data-encryption.md#encryption-at-rest)。
 
 您可以為資料提供的其他設定是將 **confidential_data** 參數設定為 **true** 。 這樣做會執行下列動作：
 
@@ -264,7 +264,7 @@ New-AzResourceGroupDeployment `
     > [!IMPORTANT]
     > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
-  如需詳細資訊，請參閱待用 [加密](concept-enterprise-security.md#encryption-at-rest)。
+  如需詳細資訊，請參閱待用 [加密](concept-data-encryption.md#encryption-at-rest)。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>在虛擬網路後方部署工作區
 

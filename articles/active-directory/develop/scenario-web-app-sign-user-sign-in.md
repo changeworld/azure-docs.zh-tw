@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 28bbe1432777e9e15ae625fb9788f9182495bd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845080"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443546"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式：登入和登出
 
@@ -33,7 +33,7 @@ ms.locfileid: "87845080"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登 **入** ] 按鈕會在 MVC 應用程式的 (中公開， `Views\Shared\_LoginPartial.cshtml`) 或 `Pages\Shared\_LoginPartial.cshtm` 針對 Razor 應用程式)  (。 只有當使用者未通過驗證時，才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [ **登出** ] 按鈕。 請注意，帳戶控制器會定義在名為**MicrosoftIdentity**的區域中的 [**使用者**名稱] NuGet 套件中。
+在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登 **入** ] 按鈕會在 MVC 應用程式的 (中公開， `Views\Shared\_LoginPartial.cshtml`) 或 `Pages\Shared\_LoginPartial.cshtm` 針對 Razor 應用程式)  (。 只有當使用者未通過驗證時，才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [ **登出** ] 按鈕。 請注意，帳戶控制器會定義在名為 **MicrosoftIdentity** 的區域中的 [ **使用者** 名稱] NuGet 套件中。
 
 ```html
 <ul class="navbar-nav">
@@ -221,15 +221,15 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別平�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [ 註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
+在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [ **驗證** ] 頁面上的 [ **Advanced Settings** ] 區段的 [ **登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [ 註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44308/Account/EndSession` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
+在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44308/Account/EndSession` 在 [ **驗證** ] 頁面上的 [ **Advanced Settings** ] 區段的 [ **登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `http://localhost:8080/msal4jsample/sign_out` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。
+在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `http://localhost:8080/msal4jsample/sign_out` 在 [ **驗證** ] 頁面上的 [ **Advanced Settings** ] 區段的 [ **登出 URL** ] 欄位中註冊。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -432,5 +432,4 @@ public class AccountController : Controller
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [移至生產環境](scenario-web-app-sign-user-production.md)
+移至本案例的下一篇文章， [移至生產環境](scenario-web-app-sign-user-production.md)。

@@ -13,14 +13,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257532"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443104"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>案例：呼叫 web Api 的行動應用程式
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>案例：呼叫 Web API 的行動應用程式
 
 了解如何建置會呼叫 Web API 的行動應用程式。
 
@@ -40,10 +40,10 @@ ms.locfileid: "91257532"
 
 Mobile apps 的考慮：
 
-- **使用者體驗是關鍵**：允許使用者在要求登入之前，先查看您的應用程式的值。 只要求必要的許可權。
-- **支援所有使用者**設定：許多行動商務使用者必須遵守條件式存取原則和裝置合規性原則。 請務必支援這些重要案例。
-- **執行單一登入 (SSO) **：藉由使用 MSAL 和 Microsoft 身分識別平臺，您可以透過裝置的瀏覽器或 Microsoft Authenticator (和 Android Intune 公司入口網站上的) 來啟用單一登入。
-- **實行共用裝置模式**：讓您的應用程式可用於共用裝置案例，例如醫院、製造、零售和財務。 [深入瞭解如何支援共用裝置模式](msal-shared-devices.md)。
+- **使用者體驗是關鍵** ：允許使用者在要求登入之前，先查看您的應用程式的值。 只要求必要的許可權。
+- **支援所有使用者** 設定：許多行動商務使用者必須遵守條件式存取原則和裝置合規性原則。 請務必支援這些重要案例。
+- **執行單一登入 (SSO)** ：藉由使用 MSAL 和 Microsoft 身分識別平臺，您可以透過裝置的瀏覽器或 Microsoft Authenticator (和 Android Intune 公司入口網站上的) 來啟用單一登入。
+- **實行共用裝置模式** ：讓您的應用程式可用於共用裝置案例，例如醫院、製造、零售和財務。 [深入瞭解如何支援共用裝置模式](msal-shared-devices.md)。
 
 ## <a name="specifics"></a>特性
 
@@ -59,5 +59,4 @@ Mobile apps 的考慮：
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](scenario-mobile-app-registration.md)
+請移至此案例的 [應用程式註冊](scenario-mobile-app-registration.md)中的下一篇文章。

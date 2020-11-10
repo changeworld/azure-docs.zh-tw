@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38ed7fb2930463e6657422e851a73f2b3b011f35
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257058"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443580"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>案例：登入使用者的 Web 應用程式
 
@@ -28,29 +28,25 @@ ms.locfileid: "91257058"
 
 如果您想要建立第一個可攜 (ASP.NET Core) web 應用程式登入使用者，請遵循本快速入門：
 
-> [!div class="nextstepaction"]
-> [快速入門： ASP.NET Core 登入使用者的 web 應用程式](quickstart-v2-aspnet-core-webapp.md)
+[快速入門： ASP.NET Core 登入使用者的 web 應用程式](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 如果您想要瞭解如何將登入新增至現有的 ASP.NET web 應用程式，請嘗試下列快速入門：
 
-> [!div class="nextstepaction"]
-> [快速入門： ASP.NET 登入使用者的 web 應用程式](quickstart-v2-aspnet-webapp.md)
+[快速入門： ASP.NET 登入使用者的 web 應用程式](quickstart-v2-aspnet-webapp.md)
 
 # <a name="java"></a>[Java](#tab/java)
 
 如果您是 JAVA 開發人員，請嘗試下列快速入門：
 
-> [!div class="nextstepaction"]
-> [快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式](quickstart-v2-java-webapp.md)
+[快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式](quickstart-v2-java-webapp.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
 如果您使用 Python 進行開發，請嘗試下列快速入門：
 
-> [!div class="nextstepaction"]
-> [快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式](quickstart-v2-python-webapp.md)
+[快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -81,22 +77,18 @@ Web 應用程式會在網頁瀏覽器中驗證使用者。 在此案例中，web
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)
+請移至此案例的 [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)中的下一篇文章。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)
+請移至此案例的 [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)中的下一篇文章。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=java)
+請移至此案例的 [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=java)中的下一篇文章。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=python)
+請移至此案例的 [應用程式註冊](./scenario-web-app-sign-user-app-registration.md?tabs=python)中的下一篇文章。
 
 ---

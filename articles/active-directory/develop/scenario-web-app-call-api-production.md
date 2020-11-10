@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6404d00b87b9ee745b9e3a92c646404e574417c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f38755e669a62e9fe74aa6281daccdf39e1f117c
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80881656"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443563"
 ---
 # <a name="a-web-app-that-calls-web-apis-move-to-production"></a>呼叫 web Api 的 web 應用程式：移至生產環境
 
@@ -34,8 +34,7 @@ ms.locfileid: "80881656"
 - 處理累加式同意。
 - 呼叫您自己的 web API。
 
-> [!div class="nextstepaction"]
-> [ASP.NET Core Web 應用程式教學課程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+[ASP.NET Core Web 應用程式教學課程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

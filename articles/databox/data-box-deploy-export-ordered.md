@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b514cce8128dc0b17b5cebf8f2dc42e2c4dd8c8e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336851"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442016"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
 
@@ -30,7 +30,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 訂購裝置之前，請先完成下列資料箱服務和裝置的設定必要條件。
 
@@ -60,7 +60,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![建立資源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. 選取 [建立]  。
+3. 選取 [建立]。
 
    ![建立 Azure 資料箱資源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -102,7 +102,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
     |---------|---------|
     |儲存體帳戶     | 您要從中匯出資料的 Azure 儲存體帳戶。 |
     |匯出類型     | 指定要從 **所有物件** 匯出的資料類型，並 **使用 XML** 檔案。<ul><li> **所有物件** -指定作業會根據您的 **傳送選項選項** 來匯出所有資料。</li><li> **使用 xml** 檔案-指定 xml 檔案，其中包含要從儲存體帳戶匯出之 blob 和/或檔案的一組路徑和首碼。 XML 檔案必須位於所選儲存體帳戶的容器中，而且目前不支援從檔案共用選取。 檔案必須是非空白 .xml 檔案。</li></ul>        |
-    |傳送選項     |  從 [全 **選** ]、[ **所有 blob** ] 和 [ **所有** 檔案] 指定資料傳輸選項。 <ul><li> **全選** -指定匯出所有 Blob 和 Azure 檔案。 如果您使用僅支援 blob (Blob 儲存體帳戶) 的儲存體帳戶，將無法選取 [ **所有** 檔案] 選項。</li><li> **所有 blob** -指定只匯出區塊和分頁 blob。</li><li> **所有** 檔案-指定匯出所有檔案，但不包括 blob。 您 (GPv1 和 GPv2、premium 儲存體或 blob 儲存體) 的儲存體帳戶類型，會決定您可以匯出的資料類型。 如需詳細資訊，請參閱 [支援的儲存體帳戶以進行匯出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
+    |傳送選項     |  從 [全 **選** ]、[ **所有 blob** ] 和 [ **所有** 檔案] 指定資料傳輸選項。 <ul><li> **全選** -指定匯出所有 blob 和 Azure 檔案儲存體。 如果您使用僅支援 blob (Blob 儲存體帳戶) 的儲存體帳戶，將無法選取 [ **所有** 檔案] 選項。</li><li> **所有 blob** -指定只匯出區塊和分頁 blob。</li><li> **所有** 檔案-指定匯出所有檔案，但不包括 blob。 您 (GPv1 和 GPv2、premium 儲存體或 blob 儲存體) 的儲存體帳戶類型，會決定您可以匯出的資料類型。 如需詳細資訊，請參閱 [支援的儲存體帳戶以進行匯出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
     |包含詳細資訊記錄     | 指出您是否想要包含已成功匯出之所有檔案清單的詳細資訊記錄檔。        |
 
     > [!NOTE]
@@ -171,7 +171,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![選取匯出選項，新增容器設定](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. 選取 [建立]  。
+4. 選取 [建立]。
 
    ![選取 [匯出選項]，建立新的容器。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
@@ -183,11 +183,11 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![查看容器詳細資料](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案的清單。 選取 [上傳] 。
+6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案儲存體清單。 選取 [上傳] 。
 
    ![將 Blob 上傳至容器](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
-7. 您已成功將 XML 檔案新增至容器。 只有您在此 XML 中指定的 blob 和 Azure 檔案會匯出。
+7. 您已成功將 XML 檔案新增至容器。 只有您在此 XML 中指定的 blob 和 Azure 檔案儲存體會匯出。
 
    ![XML 檔案已新增至容器](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
@@ -227,7 +227,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 ## <a name="sample-xml-file"></a>範例 XML 檔
 
-下列 xml 顯示當您選取 [ **使用 xml** 檔案] 選項時，匯出順序所使用的 xml 格式的 blob 名稱、blob 首碼和 Azure 檔案的範例：
+下列 xml 顯示當您選取 [ **使用 xml** 檔案] 選項時，匯出順序所使用的 xml 格式的 blob 名稱、blob 首碼和 Azure 檔案儲存體範例：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318152"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441982"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 
@@ -119,7 +119,7 @@ Azure Machine Learning 提供兩種方式來控制 web 服務的存取權。
 
 將要求傳送至使用金鑰或權杖保護的服務時，請使用 __授權__ 標頭來傳遞金鑰或權杖。 金鑰或權杖的格式必須是 `Bearer <key-or-token>` ，其中 `<key-or-token>` 是您的金鑰或權杖值。
 
-金鑰和權杖之間的主要差異在於 **金鑰是靜態的，而且可以手動** 重新產生，而權杖必須在 **到期時** 重新整理。 Azure 容器實例和 Azure Kubernetes Service 部署的 web 服務都支援金鑰型驗證，且權杖型驗證 **僅** 適用于 Azure Kubernetes Service 部署。 如需詳細資訊和特定程式碼範例，請參閱「 [如何進行](how-to-setup-authentication.md#web-service-authentication) 驗證」。
+金鑰和權杖之間的主要差異在於 **金鑰是靜態的，而且可以手動** 重新產生，而權杖必須在 **到期時** 重新整理。 Azure 容器實例和 Azure Kubernetes Service 部署的 web 服務都支援金鑰型驗證，且權杖型驗證 **僅** 適用于 Azure Kubernetes Service 部署。 如需設定驗證的詳細資訊，請參閱 [設定部署為 web 服務的模型驗證](how-to-authenticate-web-service.md)。
 
 
 #### <a name="authentication-with-keys"></a>使用金鑰進行驗證

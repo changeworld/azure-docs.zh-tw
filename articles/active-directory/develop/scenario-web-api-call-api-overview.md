@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4dcf377797709b56b4db735dabf4d48cfae4fc06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9d879849a94ac255a0967ad4fbc762417f8cd4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257158"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442645"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>案例：呼叫 web Api 的 web API
 
 瞭解如何建立可呼叫 web Api 的 web API 的須知事項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在此案例中，受保護的 web API 會呼叫其他 web Api，並以 [案例為基礎：受保護的 WEB api](scenario-protected-web-api-overview.md)。
 
@@ -40,5 +40,4 @@ ms.locfileid: "91257158"
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](scenario-web-api-call-api-app-registration.md)
+請移至此案例的 [應用程式註冊](scenario-web-api-call-api-app-registration.md)中的下一篇文章。

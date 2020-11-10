@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396122"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443597"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>呼叫 web api 的 web 應用程式：呼叫 web API
 
@@ -29,7 +29,7 @@ ms.locfileid: "91396122"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-當您使用的是 *web.config*時，有三種使用方法可供您呼叫 API：
+當您使用的是 *web.config* 時，有三種使用方法可供您呼叫 API：
 
 - [選項1：使用 Microsoft Graph SDK 呼叫 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
 - [選項2：使用 helper 類別呼叫下游 web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -37,7 +37,7 @@ ms.locfileid: "91396122"
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>選項1：使用 SDK 呼叫 Microsoft Graph
 
-您想要呼叫 Microsoft Graph。 在此案例中，您已依照 `AddMicrosoftGraph` 程式[代碼](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)設定中的指定在*Startup.cs*中新增，而且您可以直接在控制器或頁面的函式中插入，以用於 `GraphServiceClient` 動作。 下列範例 Razor 頁面會顯示已登入使用者的相片。
+您想要呼叫 Microsoft Graph。 在此案例中，您已依照 `AddMicrosoftGraph` 程式 [代碼](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)設定中的指定在 *Startup.cs* 中新增，而且您可以直接在控制器或頁面的函式中插入，以用於 `GraphServiceClient` 動作。 下列範例 Razor 頁面會顯示已登入使用者的相片。
 
 ```CSharp
 [Authorize]
@@ -73,7 +73,7 @@ public class IndexModel : PageModel
 
 #### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>選項2：使用 helper 類別呼叫下游 web API
 
-您想要呼叫 Microsoft Graph 以外的 web API。 在此情況下，您已在程式 `AddDownstreamWebApi` [代碼](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)設定中指定的*Startup.cs*中新增，而且您可以直接在控制器或頁面的函式中插入服務， `IDownstreamWebApi` 並在動作中使用它：
+您想要呼叫 Microsoft Graph 以外的 web API。 在此情況下，您已在程式 `AddDownstreamWebApi` [代碼](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)設定中指定的 *Startup.cs* 中新增，而且您可以直接在控制器或頁面的函式中插入服務， `IDownstreamWebApi` 並在動作中使用它：
 
 ```CSharp
 [Authorize]
@@ -199,5 +199,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [移至生產環境](scenario-web-app-call-api-production.md)
+移至本案例的下一篇文章， [移至生產環境](scenario-web-app-call-api-production.md)。

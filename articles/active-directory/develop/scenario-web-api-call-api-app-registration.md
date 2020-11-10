@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c0b009d6d53a117aa11d0629fb649b2dd55559af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 790580160ec236d1923dc28b9990d2675c253b44
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438189"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442679"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>呼叫 web Api 的 web API：應用程式註冊
 
@@ -32,5 +32,4 @@ Web apps 會代表已收到持有人權杖的使用者呼叫 Api。 Web 應用�
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [呼叫 web Api 的 web API：程式碼設定](scenario-web-api-call-api-app-configuration.md)
+請繼續進行此案例中的下一篇文章，也就是 [應用程式程式碼](scenario-web-api-call-api-app-configuration.md)設定。

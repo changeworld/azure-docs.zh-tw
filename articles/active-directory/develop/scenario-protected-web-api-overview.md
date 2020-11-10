@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c9ff9ae811a29685937b922f04a277e663e26f1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9cc8e6fcc796cfc7a09cf7bc1431646a6603af0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257359"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442968"
 ---
 # <a name="scenario-protected-web-api"></a>案例：受保護的 web API
 
@@ -29,7 +29,7 @@ ms.locfileid: "91257359"
 
 以下是您需要知道用來保護 web Api 的特定資訊：
 
-- 您的應用程式註冊必須公開至少一個 *範圍* 或一個 *應用程式角色*。
+- 您的應用程式註冊必須公開至少一個 *範圍* 或一個 *應用程式角色* 。
   - 範圍是由代表使用者呼叫的 web Api 所公開。
   - 應用程式角色是由 daemon 應用程式所呼叫的 web Api 所公開， (會代表自己呼叫您的 web API) 。
 - 如果您建立新的 web API 應用程式註冊，請選擇您的 web API 所接受的 [存取權杖版本](reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` 。 針對舊版 web Api，可接受的權杖版本可以是 `null` ，但此值會限制只有組織的登入物件，且不支援 (MSA) 的個人 Microsoft 帳戶。
@@ -42,5 +42,4 @@ ms.locfileid: "91257359"
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [應用程式註冊](scenario-protected-web-api-app-registration.md)
+請移至此案例的 [應用程式註冊](scenario-protected-web-api-app-registration.md)中的下一篇文章。

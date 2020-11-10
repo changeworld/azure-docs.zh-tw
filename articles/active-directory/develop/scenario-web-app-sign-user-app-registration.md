@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0f4ad8db5b750a8e75a921a6d459a1a294a4bad0
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 29f5d2960a678204387b2bd1dfd6d4acdc4f9c3d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910027"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442509"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
 
@@ -68,7 +68,7 @@ ms.locfileid: "92910027"
 1. 選取 [註冊] 以建立應用程式。
 1. 選取 [ **驗證** ] 功能表。
 1. 在 [ **Advanced settings**  |  **隱含授** 與] 區段中，選取 [ **識別碼權杖** ]。 此範例需要啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md) 才能登入使用者。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -121,7 +121,6 @@ ms.locfileid: "92910027"
 >
 > 您可以建立使用其個人 Microsoft 帳戶登入使用者的應用程式 (例如 Skype、Xbox 或 Outlook.com) 。 首先，建立多租使用者應用程式。 支援的帳戶類型是任何組織目錄中的帳戶。 然後，在 [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) **2** [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) `AzureADandPersonalMicrosoftAccount` [應用程式資訊清單](./reference-app-manifest.md)中，將 Azure 入口網站的屬性變更為2，並將屬性變更為。 如需詳細資訊，請參閱 ASP.NET Core 教學課程中的 [步驟 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 您可以用任何語言將此步驟一般化至 web 應用程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [應用程式的程式碼設定](scenario-web-app-sign-user-app-configuration.md)
+請移至本案例中的下一篇文章，以 [應用程式的程式碼](scenario-web-app-sign-user-app-configuration.md)設定。

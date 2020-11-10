@@ -4,19 +4,19 @@ description: 使用本文來解決部署 IoT Edge 解決方案時遇到的常見
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82783743"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442356"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常見問題和解決方案
 
@@ -87,7 +87,7 @@ IoT Edge 代理程式沒有存取模組映射的許可權。
 
 放 `daemon.json` 在適合您平臺的位置：
 
-| 平台 | Location |
+| 平台 | 位置 |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows 主機與 Windows 容器 | `C:\ProgramData\iotedge-moby\config` |
@@ -130,7 +130,7 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n)
 ```
 
-或者
+或
 
 ```output
 info: edgelet_docker::runtime -- Starting module edgeHub...
@@ -153,13 +153,13 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 在 Azure 入口網站中：
 
-1. 流覽至您的 IoT 中樞，然後選取 [ **IoT Edge**]。
+1. 流覽至您的 IoT 中樞，然後選取 [ **IoT Edge** ]。
 
 2. 選取您要更新的 IoT Edge 裝置。
 
-3. 選取 [ **設定模組**]。
+3. 選取 [ **設定模組** ]。
 
-4. 選取 [ **執行時間設定**]。
+4. 選取 [ **執行時間設定** ]。
 
 5. 在 **Edge 中樞** 模組設定中，從 [ **建立選項** ] 文字方塊中刪除所有專案。
 
@@ -217,12 +217,12 @@ IoT Edge 執行階段只能支援少於 64 個字元的主機名稱。 實體機
 當發現這個錯誤時，可以設定虛擬機器的 DNS 名稱，然後將 DNS 名稱設定為安裝命令中的主機名稱來解決。
 
 1. 在 Azure 入口網站中，瀏覽至虛擬機器的概觀頁面。
-2. 選取 DNS 名稱下的 [設定]****。 如果虛擬機器已設定 DNS 名稱，則不需要設定新的名稱。
+2. 選取 DNS 名稱下的 [設定]。 如果虛擬機器已設定 DNS 名稱，則不需要設定新的名稱。
 
    ![設定虛擬機器的 DNS 名稱](./media/troubleshoot/configure-dns.png)
 
-3. 提供 **DNS 名稱標籤**的值，並選取 [儲存]****。
-4. 複製新的 DNS 名稱，**其格式應為。 \<DNSnamelabel\> \<vmlocation\>cloudapp.azure.com**。
+3. 提供 **DNS 名稱標籤** 的值，並選取 [儲存]。
+4. 複製新的 DNS 名稱， **其格式應為。 \<DNSnamelabel\> \<vmlocation\>cloudapp.azure.com** 。
 5. 在虛擬機器中，使用下列命令以您的 DNS 名稱設定 IoT Edge 執行階段：
 
    * 在 Linux 上：
@@ -272,11 +272,11 @@ IoT Edge hub （IoT Edge 執行時間的一部分）依預設會針對效能優�
 
 **解決方法：**
 
-針對 IoT Edge 中樞，將環境變數 **將 optimizeforperformance** 設定為 **false**。 有兩種方式可以設定環境變數：
+針對 IoT Edge 中樞，將環境變數 **將 optimizeforperformance** 設定為 **false** 。 有兩種方式可以設定環境變數：
 
 在 Azure 入口網站中：
 
-在 IoT 中樞中，選取您的 IoT Edge 裝置，然後從 [裝置詳細資料] 頁面選取 [**設定模組**  >  **運行**時間設定]。 針對稱為 *將 optimizeforperformance* 的 IoT Edge 中樞模組建立環境變數，並將其設定為 *false*。
+在 IoT 中樞中，選取您的 IoT Edge 裝置，然後從 [裝置詳細資料] 頁面選取 [ **設定模組**  >  **運行** 時間設定]。 針對稱為 *將 optimizeforperformance* 的 IoT Edge 中樞模組建立環境變數，並將其設定為 *false* 。
 
 ![將 OptimizeForPerformance 設定為 false](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -324,7 +324,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 **根源：**
 
-如果自動部署以裝置為目標，則會優先于手動設定單一裝置的模組。 在 Visual Studio Code 中 Azure 入口網站或**建立單一裝置功能部署**的**設定模組**功能，將會在一段時間後生效。 您會看到您所定義的模組在裝置上啟動。 然後，自動部署的優先順序就會開始，並覆寫裝置的所需屬性。
+如果自動部署以裝置為目標，則會優先于手動設定單一裝置的模組。 在 Visual Studio Code 中 Azure 入口網站或 **建立單一裝置功能部署** 的 **設定模組** 功能，將會在一段時間後生效。 您會看到您所定義的模組在裝置上啟動。 然後，自動部署的優先順序就會開始，並覆寫裝置的所需屬性。
 
 **解決方法：**
 
@@ -332,7 +332,26 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 如需詳細資訊，請參閱[了解單一裝置或大規模的 IoT Edge 自動部署](module-deployment-monitoring.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>閘道後方的 IoT Edge 無法執行 HTTP 要求並啟動 edgeAgent 模組
+
+**看到的行為：**
+
+IoT Edge daemon 正在使用有效的設定檔，但無法啟動 edgeAgent 模組。 此命令會傳回 `iotedge list` 空白清單。 IoT Edge daemon 記錄報告 `Could not perform HTTP request` 。
+
+**根源：**
+
+閘道後方的 IoT Edge 裝置會從 yaml 檔案的欄位中指定的父 IoT Edge 裝置取得其模組映射 `parent_hostname` 。 此 `Could not perform HTTP request` 錯誤表示子裝置無法透過 HTTP 連接其父裝置。
+
+**解決方法：**
+
+請確定父系 IoT Edge 裝置可以接收來自子 IoT Edge 裝置的連入要求。 針對來自子裝置的要求，開啟埠443和6617上的網路流量。
+
+:::moniker-end
+
+## <a name="next-steps"></a>後續步驟
 
 您在 IoT Edge 平台中發現到錯誤嗎？ [提交問題](https://github.com/Azure/iotedge/issues)，讓我們可以持續進行改善。
 

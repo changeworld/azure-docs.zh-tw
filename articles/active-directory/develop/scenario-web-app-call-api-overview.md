@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4123b0424e52c6a2919de4b60bcc6158062b0f1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257124"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442628"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>案例：呼叫 web Api 的 web 應用程式
 
 瞭解如何建立 web 應用程式，以將使用者登入 Microsoft 身分識別平臺，然後代表已登入的使用者呼叫 web Api。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 此案例假設您已完成 [案例：登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "91257124"
 
 您會將驗證新增至您的 web 應用程式，讓它可以將使用者登入，並代表已登入的使用者呼叫 web API。
 
-![呼叫 Web API 的 Web 應用程式](./media/scenario-webapp/web-app.svg)
+![可呼叫 Web API 的 Web 應用程式](./media/scenario-webapp/web-app.svg)
 
 呼叫 web Api 的 web 應用程式是機密用戶端應用程式。
 這就是為什麼他們將秘密 (應用程式密碼或憑證) Azure Active Directory (Azure AD) 。 此密碼會在呼叫 Azure AD 期間傳入，以取得權杖。
@@ -53,5 +53,4 @@ ms.locfileid: "91257124"
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [呼叫 web Api 的 web 應用程式：應用程式註冊](scenario-web-app-call-api-app-registration.md)
+請移至此案例的 [應用程式註冊](scenario-web-app-call-api-app-registration.md)中的下一篇文章。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 993e1a513fae726e00a29c4b9927a0a039572f74
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365930"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443784"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 web API：程式碼設定
 
@@ -88,7 +88,7 @@ Web.config 提供數種方式來描述憑證（透過設定或程式碼）。 �
 
 ## <a name="startupcs"></a>Startup.cs
 
-您的 web API 將需要取得下游 API 的權杖。 您可以在後面加上一行來指定它 `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` 。 這行程式碼 `ITokenAcquisition` 會顯示您可以在控制器/頁面動作中使用的服務。 不過，您會在接下來的兩個專案點中看到，您甚至可以更輕鬆地完成。 您也需要選擇權杖快取執行，例如 `.AddInMemoryTokenCaches()` ，在 *Startup.cs*中：
+您的 web API 將需要取得下游 API 的權杖。 您可以在後面加上一行來指定它 `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` 。 這行程式碼 `ITokenAcquisition` 會顯示您可以在控制器/頁面動作中使用的服務。 不過，您會在接下來的兩個專案點中看到，您甚至可以更輕鬆地完成。 您也需要選擇權杖快取執行，例如 `.AddInMemoryTokenCaches()` ，在 *Startup.cs* 中：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -116,7 +116,7 @@ public class Startup
 如果您想要呼叫 Microsoft Graph，則在您的 API 動作中，您可以直接使用 `GraphServiceClient` MICROSOFT GRAPH SDK) 所公開的 (。 若要公開 Microsoft Graph：
 
 1. 將 [>microsoft.azure.webjobs.extensions.microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 套件新增至您的專案。
-1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` 在*Startup.cs*檔案中新增。 `.AddMicrosoftGraph()` 有數個覆寫。 使用接受設定區段作為參數的覆寫，程式碼就會變成：
+1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` 在 *Startup.cs* 檔案中新增。 `.AddMicrosoftGraph()` 有數個覆寫。 使用接受設定區段作為參數的覆寫，程式碼就會變成：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -164,7 +164,7 @@ public class Startup
 
 如同 web 應用程式，您可以選擇各種權杖快取執行。 如需詳細資訊，請參閱 GitHub 上的 [Microsoft 身分識別 web-權杖](https://aka.ms/ms-id-web/token-cache-serialization) 快取序列化。
 
-下圖顯示 Startup.cs 檔案的各種可能性 *，以及其*對*Startup.cs*檔案的影響：
+下圖顯示 Startup.cs 檔案的各種可能性 *，以及其* 對 *Startup.cs* 檔案的影響：
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="顯示啟動點 C S 中的服務設定選項以呼叫 web API 和指定權杖快取執行的區塊圖":::
 
@@ -256,5 +256,4 @@ Python web API 將需要使用一些中介軟體來驗證從用戶端收到的�
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [呼叫 web Api 的 web API：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)
+移至此案例的下一篇文章， [取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。

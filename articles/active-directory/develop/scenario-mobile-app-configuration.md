@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204213"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444056"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>設定可呼叫 web Api 的行動應用程式
 
@@ -148,9 +148,9 @@ var pca = PublicClientApplicationBuilder
 
 在 Android 和 iOS 上，訊息代理程式會啟用：
 
-- **單一登入 (sso) **：您可以針對使用 Azure Active Directory (Azure AD) 註冊的裝置使用 sso。 當您使用 SSO 時，您的使用者不需要登入每個應用程式。
-- **裝置識別**：此設定可啟用與 Azure AD 裝置相關的條件式存取原則。 驗證程式會使用裝置加入工作場所時所建立的裝置憑證。
-- **應用程式識別驗證**：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 然後，訊息代理程式會驗證它。
+- **單一登入 (sso)** ：您可以針對使用 Azure Active Directory (Azure AD) 註冊的裝置使用 sso。 當您使用 SSO 時，您的使用者不需要登入每個應用程式。
+- **裝置識別** ：此設定可啟用與 Azure AD 裝置相關的條件式存取原則。 驗證程式會使用裝置加入工作場所時所建立的裝置憑證。
+- **應用程式識別驗證** ：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 然後，訊息代理程式會驗證它。
 
 ### <a name="enable-the-broker-on-xamarin"></a>啟用 Xamarin 上的訊息代理程式
 
@@ -367,5 +367,4 @@ MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置�
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [取得權杖](scenario-mobile-acquire-token.md)
+請移至本案例的下一篇文章，以取得 [權杖](scenario-mobile-acquire-token.md)。

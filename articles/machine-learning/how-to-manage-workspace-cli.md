@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312479"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442135"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -177,7 +177,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!IMPORTANT]
 > 只有在建立工作區時，才能選取 [高業務衝擊]。 建立工作區之後，就無法變更此設定。
 
-如需客戶管理的金鑰和高業務影響工作區的詳細資訊，請參閱 [Azure Machine Learning 的企業安全性](concept-enterprise-security.md#encryption-at-rest)。
+如需客戶管理的金鑰和高業務影響工作區的詳細資訊，請參閱 [Azure Machine Learning 的企業安全性](concept-data-encryption.md#encryption-at-rest)。
 
 ### <a name="use-existing-resources"></a>使用現有的資源
 

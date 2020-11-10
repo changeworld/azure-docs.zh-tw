@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ab0b74ffbcd8167613c6a8470e2f9102566edc60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56bcc4e4936371b58d78f6de5ce4c2d25fbf614d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257226"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442798"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 web API：取得應用程式的權杖
 
@@ -29,7 +29,7 @@ ms.locfileid: "91257226"
 
 *Web.config* 會新增擴充方法，以提供用來呼叫 Microsoft Graph 或下游 Web API 的便利服務。 這些方法會在 [呼叫 Web api 的 WEB api 中詳細說明：呼叫 API](scenario-web-api-call-api-call-api.md)。 使用這些 helper 方法時，您不需要手動取得權杖。
 
-但是，如果您想要以手動方式取得權杖，下列程式碼將示範如何在 API 控制器中使用*web.config。* 它會呼叫名為 *todolist*的下游 API。
+但是，如果您想要以手動方式取得權杖，下列程式碼將示範如何在 API 控制器中使用 *web.config。* 它會呼叫名為 *todolist* 的下游 API。
 若要取得權杖來呼叫下游 API，您可以在控制器的函式中將相依性 `ITokenAcquisition` 插入插入服務 (或您的頁面函式（如果您使用 Blazor) ），並在您的控制器動作中使用它，為使用者 (`GetAccessTokenForUserAsync`) 或應用程式本身取得權杖 (`GetAccessTokenForAppAsync` 在背景程式案例的情況下) 。
 
 ```csharp
@@ -92,5 +92,4 @@ Python web API 需要使用中介軟體來驗證從用戶端收到的持有人�
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [呼叫 web api 的 web API：呼叫 API](scenario-web-api-call-api-call-api.md)
+請移至本案例的下一篇文章，以 [呼叫 API](scenario-web-api-call-api-call-api.md)。

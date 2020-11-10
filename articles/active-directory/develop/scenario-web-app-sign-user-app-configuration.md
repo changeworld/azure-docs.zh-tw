@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ea0312cd8129fce342f94cfab5701d1773aca309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728330"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443648"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登入使用者的 Web 應用程式：程式碼設定
 
@@ -245,7 +245,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
      }).AddMicrosoftIdentityUI();
     ```
 
-3. 在 `Configure` *Startup.cs*的方法中，使用呼叫來啟用驗證 `app.UseAuthentication();`
+3. 在 `Configure` *Startup.cs* 的方法中，使用呼叫來啟用驗證 `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -259,7 +259,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
    ```
 
 在上述程式碼中：
-- `AddMicrosoftIdentityWebAppAuthentication`擴充方法是在**web.config**中定義。 強烈
+- `AddMicrosoftIdentityWebAppAuthentication`擴充方法是在 **web.config** 中定義。 強烈
   - 新增驗證服務。
   - 設定選項以從 "AzureAD" 區段讀取設定檔 () 
   - 設定 OpenID Connect 選項，讓授權單位是 Microsoft 身分識別平臺端點。
@@ -270,7 +270,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 - `AddMicrosoftIdentityWebAppAuthentication` 具有 advanced 案例的其他參數。 例如，追蹤 OpenID Connect 中介軟體事件可協助您疑難排解 web 應用程式（如果驗證無法運作）。 將選擇性參數設定 `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` 為， `true` 會顯示 ASP.NET Core 中介軟體從 HTTP 回應到中的使用者身分識別時，如何處理資訊 `HttpContext.User` 。
 
-- `AddMicrosoftIdentityUI`擴充方法是在**web.config**中定義。 它提供預設控制器來處理登入和登出。
+- `AddMicrosoftIdentityUI`擴充方法是在 **web.config** 中定義。 它提供預設控制器來處理登入和登出。
 
 您可以找到更多有關如何讓您在中建立 web 應用程式的詳細資料。 <https://aka.ms/ms-id-web/webapp>
 
@@ -344,22 +344,18 @@ Session(app)
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)
+請移至本案例的下一篇文章，登 [入並登出](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)
+請移至本案例的下一篇文章，登 [入並登出](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=java)
+請移至本案例的下一篇文章，登 [入並登出](./scenario-web-app-sign-user-sign-in.md?tabs=java)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=python)
+請移至本案例的下一篇文章，登 [入並登出](./scenario-web-app-sign-user-sign-in.md?tabs=python)。
 
 ---

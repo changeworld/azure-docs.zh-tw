@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7cad0592c5c4c0487f582ce5405c275b94b7bd0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83771735"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444022"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>從行動應用程式呼叫 Web API
 
@@ -119,9 +119,9 @@ task.resume()
 
 如果您需要呼叫相同 API 數次，或如果您需要呼叫多個 API，請在建置應用程式時思考下列主題：
 
-- **增量同意**：Microsoft 身分識別平台可讓應用程式在需要權限時才取得使用者同意，而非全都在一開始就取得。 每次應用程式準備呼叫 API 時，就只應要求所需的範圍。
+- **增量同意** ：Microsoft 身分識別平台可讓應用程式在需要權限時才取得使用者同意，而非全都在一開始就取得。 每次應用程式準備呼叫 API 時，就只應要求所需的範圍。
 
-- **條件式存取**：當您提出數個 API 要求時，在某些情況下，您可能必須符合其他條件式存取需求。 如果第一個要求沒有條件式存取原則，而您的應用程式嘗試以無訊息模式存取需要條件存取的新 API，則需求可能會以這種方式增加。 若要處理此問題，請務必擷取無訊息要求中的錯誤，並準備好進行互動式要求。  如需詳細資訊，請參閱[條件式存取的指導方針](../azuread-dev/conditional-access-dev-guide.md)。
+- **條件式存取** ：當您提出數個 API 要求時，在某些情況下，您可能必須符合其他條件式存取需求。 如果第一個要求沒有條件式存取原則，而您的應用程式嘗試以無訊息模式存取需要條件存取的新 API，則需求可能會以這種方式增加。 若要處理此問題，請務必擷取無訊息要求中的錯誤，並準備好進行互動式要求。  如需詳細資訊，請參閱[條件式存取的指導方針](../azuread-dev/conditional-access-dev-guide.md)。
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>使用增量同意和條件式存取來呼叫數個 API
 
@@ -159,5 +159,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [移至生產環境](scenario-mobile-production.md)
+移至本案例的下一篇文章， [移至生產環境](scenario-mobile-production.md)。

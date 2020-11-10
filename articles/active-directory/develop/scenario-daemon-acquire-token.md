@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119210"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443308"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>呼叫 web Api 的 Daemon 應用程式-取得權杖
 
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > 當 MSAL 要求接受版本1.0 存取權杖之資源的存取權杖時，Azure AD 會取得最後一個斜線之前的所有內容，並將其作為資源識別碼，藉此從要求的範圍剖析所需的物件。
-> 因此，如果 Azure SQL Database (**HTTPs： \/ /database.windows.net**) ，則資源預期會有一個以斜線 (結尾的物件 Azure SQL Database， `https://database.windows.net/`) ，您必須要求的範圍 `https://database.windows.net//.default` 。  (記下雙斜線。 ) 另請參閱 MSAL.NET 問題 [#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，如果 Azure SQL Database ( **HTTPs： \/ /database.windows.net** ) ，則資源預期會有一個以斜線 (結尾的物件 Azure SQL Database， `https://database.windows.net/`) ，您必須要求的範圍 `https://database.windows.net//.default` 。  (記下雙斜線。 ) 另請參閱 MSAL.NET 問題 [#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -202,7 +202,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ## <a name="application-token-cache"></a>應用程式權杖快取
 
-在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken*XX* 方法都會使用使用者權杖快取。 `AcquireTokenSilent` 在呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用 *使用者* 權杖快取。 `AcquireTokenForClient` 檢查 *應用程式* 權杖快取本身，並加以更新。
+在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken *XX* 方法都會使用使用者權杖快取。 `AcquireTokenSilent` 在呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用 *使用者* 權杖快取。 `AcquireTokenForClient` 檢查 *應用程式* 權杖快取本身，並加以更新。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -233,17 +233,14 @@ Content: {
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 web API](./scenario-daemon-call-api.md?tabs=dotnet)
+請移至本案例的下一篇文章，以 [呼叫 WEB API](./scenario-daemon-call-api.md?tabs=dotnet)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 web API](./scenario-daemon-call-api.md?tabs=python)
+請移至本案例的下一篇文章，以 [呼叫 WEB API](./scenario-daemon-call-api.md?tabs=python)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 web API](./scenario-daemon-call-api.md?tabs=java)
+請移至本案例的下一篇文章，以 [呼叫 WEB API](./scenario-daemon-call-api.md?tabs=java)。
 
 ---

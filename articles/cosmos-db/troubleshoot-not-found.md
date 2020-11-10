@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e2e2797bd01635c4c066a60f379a884e545e5af2
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409683"
+ms.locfileid: "94442322"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>針對找不到 Azure Cosmos DB 找不到例外狀況進行診斷和疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ HTTP 狀態碼 404 表示資源已不存在。
 專案會插入 Azure Cosmos DB 中，並在專案識別碼中包含 [不正確字元](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) 。
 
 #### <a name="solution"></a>解決方案：
-將識別碼變更為不包含特殊字元的其他值。 如果無法變更識別碼，您可以使用 Base64 編碼此識別碼以將特殊字元換用。
+將識別碼變更為不包含特殊字元的其他值。 如果無法變更識別碼，您可以使用 Base64 編碼此識別碼以將特殊字元換用。 Base64 仍可以產生含有無效字元 '/' 的名稱，但必須加以取代。
 
 您可以使用 RID 值（而不是以名稱為基礎的參考）來取代已在識別碼容器中插入的專案。
 ```c#
@@ -65,7 +65,7 @@ while (invalidItemsIterator.HasMoreResults)
         // Choose a new ID that doesn't contain special characters.
         // If that isn't possible, then Base64 encode the ID to escape the special characters.
         byte[] plainTextBytes = Encoding.UTF8.GetBytes(itemWithInvalidId["id"].ToString());
-        itemWithInvalidId["id"] = Convert.ToBase64String(plainTextBytes);
+        itemWithInvalidId["id"] = Convert.ToBase64String(plainTextBytes).Replace('/', '!');
 
         // Update the item with the new ID value by using the RID-based container reference.
         JObject item = await containerByRid.ReplaceItemAsync<JObject>(
