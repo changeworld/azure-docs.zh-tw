@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc08df7390285f9b6e4701bb1ca5c4227b19f1da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739685"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445025"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -25,16 +25,16 @@ ms.locfileid: "91739685"
 當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 嘗試從保存庫管理或擷取內容的任何人都必須由 Azure AD 進行驗證。
 
 - 驗證會建立呼叫者的身分識別。
-- 授權則會判斷呼叫者可以執行的作業。 Key Vault 中的授權使用[角色型存取控制](../../role-based-access-control/overview.md) (RBAC) 和 Azure Key Vault 存取原則的組合。
+- 授權則會判斷呼叫者可以執行的作業。 Key Vault 中的授權會使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) 和 Azure Key Vault 存取原則的組合。
 
 ### <a name="access-model-overview"></a>存取模型概觀
 
 保存庫的存取會透過兩個介面或平面進行。 這些平面包括管理平面和資料平面。
 
-- *管理平面*是您管理 Key Vault 本身的位置，而且這是用來建立和刪除保存庫的介面。 您也可以讀取 Key Vault 屬性並管理存取原則。
-- *資料平面*可讓您處理金鑰保存庫中儲存的資料。 您可以新增、刪除和修改金鑰、祕密和憑證。
+- *管理平面* 是您管理 Key Vault 本身的位置，而且這是用來建立和刪除保存庫的介面。 您也可以讀取 Key Vault 屬性並管理存取原則。
+- *資料平面* 可讓您處理金鑰保存庫中儲存的資料。 您可以新增、刪除和修改金鑰、祕密和憑證。
 
-若要在任一平面存取金鑰保存庫，所有呼叫者 (使用者或應用程式) 都必須經過驗證和授權。 兩個平面都會使用 Azure Active Directory (Azure AD) 來進行驗證。 至於授權，管理平面會使用角色型存取控制 (RBAC)，資料平面則會使用 Key Vault 存取原則。
+若要在任一平面存取金鑰保存庫，所有呼叫者 (使用者或應用程式) 都必須經過驗證和授權。 兩個平面都會使用 Azure Active Directory (Azure AD) 來進行驗證。 針對授權，管理平面會使用 Azure 角色型存取控制 (Azure RBAC) ，而資料平面會使用 Key Vault 存取原則。
 
 這兩個平面的單一驗證機制模型有幾個優點：
 
@@ -46,11 +46,11 @@ ms.locfileid: "91739685"
 
 當您在資源群組中建立金鑰保存庫時，可以使用 Azure AD 管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以指派適當的 Azure 角色，以授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 下列範圍層級可以指派給 Azure 角色：
 
-- **訂**用帳戶：在訂用帳戶層級指派的 Azure 角色會套用到該訂用帳戶內的所有資源群組和資源。
-- **資源群組**：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
-- **特定資源**：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- **訂** 用帳戶：在訂用帳戶層級指派的 Azure 角色會套用到該訂用帳戶內的所有資源群組和資源。
+- **資源群組** ：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
+- **特定資源** ：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
-有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
+有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱 [AZURE RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 
 > [!IMPORTANT]
 > 如果使用者具有金鑰保存庫管理平面的 `Contributor` 權限，就可以透過設定 Key Vault 存取原則，對自己授與資料平面的存取權。 因此，請嚴格控制誰可以有金鑰保存庫的 `Contributor` 角色存取權。 請確定只有獲得授權的人員可以存取和管理您的金鑰保存庫、金鑰、祕密和憑證。
@@ -79,7 +79,7 @@ Key Vault 存取原則可分別授與金鑰、祕密或憑證的權限。 您只
 
 *   Key Vault 前端 (資料平面) 是多租使用者伺服器。 這表示來自不同客戶的金鑰保存庫可以共用相同的公用 IP 位址。 為了達成隔離，每個 HTTP 要求都會與其他要求分開進行驗證和授權。
 *   您可以識別舊版的 TLS 來回報弱點，但因為公用 IP 位址是共用的，所以 key vault 服務小組無法針對傳輸層級的個別金鑰保存庫停用舊版 TLS。
-*   HTTPS 通訊協定可讓用戶端參與 TLS 協商。 **用戶端可以強制執行最新版本的 TLS**，而且每當用戶端執行此動作時，整個連接都會使用對應的層級保護。 Key Vault 仍然支援舊版 TLS 的事實不會影響使用較新 TLS 版本的連線安全性。
+*   HTTPS 通訊協定可讓用戶端參與 TLS 協商。 **用戶端可以強制執行最新版本的 TLS** ，而且每當用戶端執行此動作時，整個連接都會使用對應的層級保護。 Key Vault 仍然支援舊版 TLS 的事實不會影響使用較新 TLS 版本的連線安全性。
 *   儘管 TLS 通訊協定有已知的弱點，但在攻擊者使用具有弱點的 TLS 版本連線時，並沒有任何已知的攻擊可讓惡意代理程式從您的金鑰保存庫中解壓縮任何資訊。 攻擊者仍然需要自行驗證及授權，而且只要合法的用戶端一律與最新的 TLS 版本連線，就無法在舊版的 TLS 版本上洩漏認證。
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
@@ -91,4 +91,4 @@ Key Vault 記錄會儲存在保存庫上執行之活動的相關資訊。 如需
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)
-- [RBAC：內建角色](../../role-based-access-control/built-in-roles.md)
+- [Azure RBAC：內建角色](../../role-based-access-control/built-in-roles.md)

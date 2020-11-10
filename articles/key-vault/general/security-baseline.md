@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 48a822adc34019ca2f6a39aa70211cae7fbf6030
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1abbabd3c231a70ca473c4b64e9a8c75d2119c89
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289887"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445518"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 
@@ -344,7 +344,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導** 方針：不適用;Azure Key Vault 沒有預設密碼的概念，因為 Active Directory 提供驗證，並使用角色型存取控制進行保護。
+**指導** 方針：不適用;Azure Key Vault 沒有預設密碼的概念，因為 Active Directory 提供驗證，並使用 Azure 角色型存取控制 (Azure RBAC) 進行保護。
 
 
 **Azure 資訊安全中心監視** ：不適用
@@ -445,7 +445,7 @@ Azure Active Directory 條件式存取中的位置條件為何？： https://doc
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導** 方針：使用 Azure Active Directory (Azure AD) 作為 Azure 資源（例如 Key Vault）的中央驗證和授權系統。 這可讓 (RBAC) 的角色型存取控制管理敏感性資源。
+**指導** 方針：使用 Azure Active Directory (Azure AD) 作為 Azure 資源（例如 Key Vault）的中央驗證和授權系統。 這可讓 Azure 角色型存取控制 (Azure RBAC) 管理敏感性資源。
 
  
 

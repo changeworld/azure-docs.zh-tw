@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: be2fa0fa85da7c0f02567580c50968b7418e4cde
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286596"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445178"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 角色型存取控制 (預覽，提供 Key Vault 金鑰、憑證和秘密的存取權) 
 
@@ -79,11 +79,11 @@ Key vault 的新 Azure RBAC 許可權模型提供了保存庫存取原則許可�
 
 1.  在新的金鑰保存庫上啟用 Azure RBAC 許可權：
 
-    ![啟用 RBAC 許可權-新增保存庫](../media/rbac/image-1.png)
+    ![啟用 Azure RBAC 許可權-新增保存庫](../media/rbac/image-1.png)
 
 2.  在現有的金鑰保存庫上啟用 Azure RBAC 許可權：
 
-    ![啟用 RBAC 許可權-現有的保存庫](../media/rbac/image-2.png)
+    ![啟用 Azure RBAC 許可權-現有的保存庫](../media/rbac/image-2.png)
 
 ### <a name="assign-role"></a>指派角色
 

@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f7f9acd18da57bd83e688249600b8468cc4ebbe5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286234"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445552"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 驗證基本概念
 
@@ -45,9 +45,9 @@ Azure Key Vault 可讓您安全地儲存和管理應用程式認證，例如秘�
 * 在 Azure Active Directory[連結](../../active-directory/fundamentals/add-users-azure-active-directory.md)中註冊使用者
 * 在 Azure Active Directory[連結](../../active-directory/develop/quickstart-register-app.md)中註冊應用程式
 
-## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>在 Azure Active Directory 中將角色指派給安全性主體
+## <a name="assign-your-security-principal-a-role"></a>將角色指派給安全性主體
 
-Azure Active Directory 使用角色型存取控制 (RBAC) 將許可權指派給安全性主體。 這些許可權稱為角色指派。
+您可以使用 Azure 角色型存取控制 (Azure RBAC) 將許可權指派給安全性主體。 這些許可權稱為角色指派。
 
 在金鑰保存庫的內容中，這些角色指派會決定安全性主體的管理平面存取層級 (也稱為金鑰保存庫的控制平面) 。 這些角色指派不會直接提供資料平面秘密的存取權，但會提供管理金鑰保存庫屬性的存取權。 例如，被指派「 **讀者」角色** 的使用者或應用程式將無法變更金鑰保存庫的防火牆設定，而指派「 **參與者」角色** 的使用者或應用程式可以進行變更。 這兩個角色都不會有直接存取權來執行秘密、金鑰和憑證的作業，例如建立或抓取其值，直到指派金鑰保存庫資料平面的存取權為止。 在下一個步驟中會說明這一點。
 
@@ -57,7 +57,7 @@ Azure Active Directory 使用角色型存取控制 (RBAC) 將許可權指派給�
 >[!NOTE]
 > 當您將角色指派指派給 Azure Active Directory 租使用者層級的使用者時，這組許可權會向下 trickle 到指派範圍內的所有訂用帳戶、資源群組和資源。 若要遵循最低許可權的主體，您可以在更細微的範圍中建立此角色指派。 例如，您可以為使用者指派訂用帳戶層級的讀取者角色，以及單一金鑰保存庫的擁有者角色。 移至訂用帳戶、資源群組或金鑰保存庫的身分識別存取管理 (IAM) 設定，以在更細微的範圍中建立角色指派。
 
-* 若要深入瞭解 Azure Active Directory 角色 [連結](../../role-based-access-control/built-in-roles.md)
+* 深入瞭解 Azure 角色 [連結](../../role-based-access-control/built-in-roles.md)
 * 深入瞭解指派或移除角色指派 [連結](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>為您的安全性主體設定 key vault 存取原則
@@ -91,7 +91,7 @@ Azure Active Directory 角色指派會授與存取權，以在金鑰保存庫上
 Key vault 存取原則會將存取權授與使用者和應用程式，以在金鑰保存庫上執行資料平面作業。
 
 > [!NOTE]
-> 此存取模型與 key vault RBAC (選項 2) 不相容，如下所述。 您必須選擇一個。 當您按一下金鑰保存庫的 [存取原則] 索引標籤時，您將有機會進行這項選擇。
+> 此存取模型與適用于 key vault 的 Azure RBAC (選項 2) 不相容，如下所述。 您必須選擇一個。 當您按一下金鑰保存庫的 [存取原則] 索引標籤時，您將有機會進行這項選擇。
 
 傳統存取原則是細微的，這表示您可以允許或拒絕每個個別使用者或應用程式在金鑰保存庫內執行個別作業的能力。 以下是一些範例：
 
@@ -104,25 +104,25 @@ Key vault 存取原則會將存取權授與使用者和應用程式，以在金�
 > [!IMPORTANT]
 > 傳統金鑰保存庫存取原則和 Azure Active Directory 角色指派彼此獨立。 在訂用帳戶層級指派安全性主體的「參與者」角色，並不會自動讓安全性主體能夠在訂用帳戶範圍內的每個金鑰保存庫上執行資料平面作業。 您仍然必須授與安全性主體，或授與本身存取原則許可權，以執行資料平面作業。
 
-### <a name="data-plane-access-option-2--key-vault-rbac-preview"></a>資料平面存取選項2： Key Vault RBAC (預覽) 
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>資料平面存取選項2：適用于 Key Vault (Preview 的 Azure RBAC) 
 
-將存取權授與金鑰保存庫資料平面的新方法，是透過 key vault 角色型存取控制 (RBAC) 。
+將存取權授與金鑰保存庫資料平面的新方法，是透過 Azure 角色型存取控制 (適用于 key vault 的 Azure RBAC) 。
 
 > [!NOTE]
 > 此存取模型與上面顯示的金鑰保存庫傳統存取原則不相容。 您必須選擇一個。 當您按一下金鑰保存庫的 [存取原則] 索引標籤時，您將有機會進行這項選擇。
 
 Key Vault 角色指派是一組 Azure 內建的角色指派，其中包含用來存取金鑰、秘密和憑證的一般許可權集。 此許可權模型也會啟用傳統金鑰保存庫存取原則模型中無法使用的其他功能。
 
-* 您可以允許使用者在訂用帳戶、資源群組或個別金鑰保存庫層級指派這些角色，以大規模管理 RBAC 許可權。 使用者將擁有 RBAC 指派範圍內所有金鑰保存庫的資料平面許可權。 這樣就不需要針對每個金鑰保存庫的每個使用者/應用程式指派個別存取原則許可權。
+* 您可以允許使用者在訂用帳戶、資源群組或個別金鑰保存庫層級指派這些角色，以大規模管理 Azure RBAC 許可權。 使用者會擁有 Azure RBAC 指派範圍內所有金鑰保存庫的資料平面許可權。 這樣就不需要針對每個金鑰保存庫的每個使用者/應用程式指派個別存取原則許可權。
 
-* RBAC 許可權與 Privileged Identity Management 或 PIM 相容。 這可讓您為特殊許可權角色（例如 Key Vault 系統管理員）設定即時存取控制。 這是最佳的安全性作法，而且會藉由消除對金鑰保存庫的持續存取權，遵循最低許可權的主體。
+* Azure RBAC 許可權與 Privileged Identity Management 或 PIM 相容。 這可讓您為特殊許可權角色（例如 Key Vault 系統管理員）設定即時存取控制。 這是最佳的安全性作法，而且會藉由消除對金鑰保存庫的持續存取權，遵循最低許可權的主體。
 
-* RBAC 許可權與每個物件的細微許可權相容，因此您可以限制使用者只能對某些金鑰保存庫物件執行作業。 這可讓多個應用程式共用單一金鑰保存庫，同時仍然隔離應用程式之間的存取。
+* Azure RBAC 許可權與每個物件的細微許可權相容，因此您可以限制使用者只能對某些金鑰保存庫物件執行作業。 這可讓多個應用程式共用單一金鑰保存庫，同時仍然隔離應用程式之間的存取。
 
-若要深入瞭解 Key Vault RBAC，請參閱下列檔：
+若要深入瞭解適用于 Key Vault 的 Azure RBAC，請參閱下列檔：
 
-* Azure Key Vault RBAC [連結](./secure-your-key-vault.md#management-plane-and-azure-rbac)
-* Azure Key Vault RBAC 角色 (預覽) [連結](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
+* 適用于 Key Vault 的 Azure RBAC [連結](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* 適用于 Key Vault 角色的 Azure RBAC (預覽) [連結](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>設定 Key Vault 防火牆
 

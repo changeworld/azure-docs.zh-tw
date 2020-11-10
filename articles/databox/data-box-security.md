@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337337"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444753"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -63,7 +63,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 流入及流出資料箱的資料會受到下列功能保護：
 
 - 待用資料的 AES 256 位元加密。
-- 可用於資料傳輸的加密通訊協定。 建議您在從資料伺服器複製資料時，使用具有加密的 SMB 3.0 來保護資料。
+- 可用於資料傳輸的加密通訊協定。 建議您在將資料從資料伺服器複製到資料時，使用具有加密的 SMB 3.0 來保護資料。
 - 將資料上傳至 Azure 完成之後，安全清除裝置中的資料。 資料清除是依據[附錄 A：NIST 800-88r1 標準中的 ATA 硬碟](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)中的指導方針進行。 資料清除事件記錄在[訂購記錄](data-box-logs.md#download-order-history)中。
 
 ### <a name="data-box-service-protection"></a>資料箱服務保護
@@ -90,7 +90,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
   - 街道地址
   - City
   - 郵遞區號
-  - State
+  - 狀態
   - 國家/地區/州/省/區域
   - 貨運公司帳戶號碼
   - 運送追蹤號碼

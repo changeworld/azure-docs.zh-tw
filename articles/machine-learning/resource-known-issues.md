@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314761"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445371"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -258,7 +258,20 @@ ms.locfileid: "93314761"
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning 設計工具
 
-* **長時間計算準備時間：**
+### <a name="dataset-visualization-in-the-designer"></a>設計工具中的資料集視覺效果
+
+在 [ **資料集** 資產] 頁面或使用 SDK 註冊資料集之後，您可以在左側清單中的 [ **資料集** ] 類別下找到它。
+
+但是，當您將資料集拖曳至畫布並進行視覺化時，可能會因為下列原因而無法視覺化：
+
+- 目前，您只能在設計工具中將表格式資料集視覺化。 如果您在設計工具外註冊檔案資料集，則無法在設計工具畫布中將它視覺化。
+- 您的資料集會儲存在虛擬網路中 (VNet) 。 如果您想要視覺化，您需要啟用資料存放區的工作區受控識別。
+    1. 移至相關的資料存放區，然後按一下 [ **更新認證** 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="更新認證":::]
+    1. 選取 **[是]** 可啟用工作區受控識別。
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="啟用工作區受控識別":::
+
+### <a name="long-compute-preparation-time"></a>長時間計算準備時間
 
 當您第一次連接或建立計算目標時，可能需要幾分鐘或更長的時間。 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **記錄即時端點：**
+### <a name="log-for-real-time-endpoints"></a>即時端點的記錄
 
 即時端點的記錄是客戶資料。 如需即時端點的疑難排解，您可以使用下列程式碼來啟用記錄。 
 
@@ -410,7 +423,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 針對下列錯誤採取下列動作：
 
-|錯誤  | 解決方法  |
+|錯誤  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |

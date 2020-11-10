@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924706"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445450"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 認知搜尋擴充管線中的 AML 技能
 
 > [!IMPORTANT] 
 > 此技能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前沒有 .NET SDK 支援。
 
-**Aml**技能可讓您使用自訂[Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML) 模型來擴充 AI 擴充。 一旦將 AML 模型 [定型及部署](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)之後， **aml** 技能就會將其整合到 AI 擴充中。
+**Aml** 技能可讓您使用自訂 [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML) 模型來擴充 AI 擴充。 一旦將 AML 模型 [定型及部署](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)之後， **aml** 技能就會將其整合到 AI 擴充中。
 
 和內建技能一樣， **AML** 技能具有輸入和輸出。 輸入會以 JSON 物件的形式傳送至您部署的 AML 服務，其會輸出 JSON 承載作為回應，以及成功狀態碼。 回應預期會有由 **AML** 技能指定的輸出。 任何其他的回應會被視為錯誤，並且不會執行任何擴充。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88924706"
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [AML 工作區](../machine-learning/concept-workspace.md)
 * 此工作區中具有已[部署模型](../machine-learning/how-to-deploy-azure-kubernetes-service.md)的[Azure Kubernetes Service AML 計算目標](../machine-learning/concept-compute-target.md)
@@ -45,7 +45,7 @@ AmlSkill。
 
 | 參數名稱 | 描述 |
 |--------------------|-------------|
-| `uri` |  (不需要[驗證或金鑰驗證](#WhatSkillParametersToUse)，) 將傳送_JSON_承載之[AML 服務的評分 URI](../machine-learning/how-to-consume-web-service.md) 。 只允許 **HTTPs** URI 配置。 |
+| `uri` |  (不需要 [驗證或金鑰驗證](#WhatSkillParametersToUse)，) 將傳送 _JSON_ 承載之 [AML 服務的評分 URI](../machine-learning/how-to-consume-web-service.md) 。 只允許 **HTTPs** URI 配置。 |
 | `key` | [金鑰驗證](#WhatSkillParametersToUse)所需的 () [AML 服務的金鑰](../machine-learning/how-to-consume-web-service.md#authentication-with-keys)。 |
 | `resourceId` | [權杖驗證](#WhatSkillParametersToUse)) 所需的 (。 AML 服務的 Azure Resource Manager 資源識別碼。 其格式應為：訂用帳戶/{guid}/resourceGroups/{資源組名}/MachineLearningServices/workspace/{workspace-name}/services/{service_name}。 |
 | `region` | [權杖驗證](#WhatSkillParametersToUse))  (選擇性。 AML 服務部署所在的 [區域](https://azure.microsoft.com/global-infrastructure/regions/) 。 |
@@ -58,9 +58,9 @@ AmlSkill。
 
 需要哪些 AML 技能參數取決於您的 AML 服務所使用的驗證（如果有的話）。 AML 服務提供三種驗證選項：
 
-* 以[金鑰為基礎的驗證](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment)。 提供靜態金鑰以驗證來自 AML 技能的評分要求
+* 以[金鑰為基礎的驗證](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication)。 提供靜態金鑰以驗證來自 AML 技能的評分要求
   * 使用 _uri_ 和 _金鑰_ 參數
-* 以[權杖為基礎的驗證](../machine-learning/concept-enterprise-security.md#authentication)。 AML 服務是 [使用以權杖為基礎的驗證來部署](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens)。 Azure 認知搜尋服務的 [受控識別](../active-directory/managed-identities-azure-resources/overview.md) 會授與 AML 服務工作區中的 [讀取者角色](../machine-learning/how-to-assign-roles.md) 。 AML 技能接著會使用 Azure 認知搜尋服務的受控識別來對 AML 服務進行驗證，而不需要靜態金鑰。
+* 以[權杖為基礎的驗證](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication)。 AML 服務是 [使用以權杖為基礎的驗證來部署](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication)。 Azure 認知搜尋服務的 [受控識別](../active-directory/managed-identities-azure-resources/overview.md) 會授與 AML 服務工作區中的 [讀取者角色](../machine-learning/how-to-assign-roles.md) 。 AML 技能接著會使用 Azure 認知搜尋服務的受控識別來對 AML 服務進行驗證，而不需要靜態金鑰。
   * 使用 _resourceId_ 參數。
   * 如果 Azure 認知搜尋服務與 AML 工作區位於不同的區域，請使用 _region_ 參數設定要在其中部署 AML 服務的區域。
 * 無驗證。 使用 AML 服務不需要驗證
@@ -168,7 +168,7 @@ AmlSkill。
 
 在 AML 服務無法使用或傳回 HTTP 錯誤的情況下，將會在索引子執行歷程記錄中加入易記的錯誤，其中包含 HTTP 錯誤的任何可用詳細資料。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [AML 服務疑難排解](../machine-learning/how-to-troubleshoot-deployment.md)

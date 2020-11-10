@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127632"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444957"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在入口網站中測試 Azure 串流分析作業
 
@@ -27,7 +27,7 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
 
 2. 找出並選取您現有的串流分析作業。
 
-3. 在 [串流分析作業] 頁面上，[工作拓撲]  標題下方，選取 [查詢]  開啟 [查詢] 編輯器視窗。 
+3. 在 [串流分析作業] 頁面上，[工作拓撲] 標題下方，選取 [查詢] 開啟 [查詢] 編輯器視窗。 
 
 4. 若要查看連入事件的範例清單，請選取 [具有檔案的輸入] 圖示，範例事件就會自動出現在 [ **輸入預覽** ] 中。
 
@@ -75,13 +75,13 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
    
 2. 找到現有的串流分析作業並加以選取。
 
-3. 在 [串流分析作業] 頁面上，[工作拓撲]  標題下方，選取 [查詢]  開啟 [查詢] 編輯器視窗。
+3. 在 [串流分析作業] 頁面上，[工作拓撲] 標題下方，選取 [查詢] 開啟 [查詢] 編輯器視窗。
 
 4. 若要使用本機檔案測試您的查詢，請選取 [ **輸入預覽** ] 索引標籤上的 **[上傳範例輸入** ]。 
 
    ![螢幕擷取畫面顯示上傳範例輸入選項。](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. 上傳您的本機檔案以測試查詢。 您只能上傳具有 JSON、CSV 或 AVRO 格式的檔案。 選取 [確定]  。
+5. 上傳您的本機檔案以測試查詢。 您只能上傳具有 JSON、CSV 或 AVRO 格式的檔案。 選取 [確定]。
 
    ![螢幕擷取畫面顯示 [上傳範例資料] 對話方塊，您可以在其中選取檔案。](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
@@ -111,6 +111,19 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
 4.  Timeout 大小是一分鐘。 因此，任何視窗大小超過一分鐘的查詢都無法取得任何資料。
 
 5.  不支援機器學習。
+
+
+## <a name="troubleshooting"></a>疑難排解
+
+1.  如果您收到此錯誤訊息，則會在提取結果時發生網路連線問題。 請檢查您的網路和防火牆設定。」，請遵循下列步驟：
+
+  * 若要檢查服務的連接，請 [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) 在瀏覽器中開啟。 如果您無法開啟此連結，請更新您的防火牆設定。
+  
+2. 如果您收到這個錯誤「要求大小太大。 請減少輸入資料大小，然後再試一次。」，請遵循下列步驟：
+
+  * 縮小輸入大小–以較小的範例檔案或較小的時間範圍測試您的查詢。
+  * 減少查詢大小–若要測試選取的查詢，請選取查詢的一部分，然後按一下 [ **測試選取的查詢** ]。
+
 
 ## <a name="next-steps"></a>後續步驟
 * [使用串流分析來建立 IoT 解決方案](./stream-analytics-build-an-iot-solution-using-stream-analytics.md)：本教學課程將引導您使用資料產生器來建立端對端解決方案，此解決方案將會模擬收費亭的流量。

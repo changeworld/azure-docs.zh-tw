@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427032"
+ms.locfileid: "94445331"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -26,9 +26,9 @@ ms.locfileid: "94427032"
 
 您可以單獨或一起使用這些功能。 若要在 Azure 認知搜尋中執行這些行為，有一個索引和查詢元件。 
 
-+ 在索引中，將建議工具加入至索引。 您可以使用入口網站 [Create Index (REST) # B2/rest/api/searchservice/create-index) 或 [建議工具屬性](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters)。 本文的其餘部分著重于建立建議工具。
++ 將建議工具新增至搜尋索引定義。 本文的其餘部分著重于建立建議工具。
 
-+ 在查詢要求中，呼叫下列其中一個 [api](#how-to-use-a-suggester)。
++ 使用 [下面所列](#how-to-use-a-suggester)的其中一個 api，以建議要求或自動完成要求的形式呼叫啟用建議工具的查詢。
 
 針對字串欄位，以每個欄位為基礎啟用搜尋即輸入支援。 如果您想要類似螢幕擷取畫面所示的體驗，您可以在同一個搜尋解決方案中執行這兩個自動提示行為。 這兩個要求都會以特定索引的 *檔* 集合為目標，而且在使用者至少提供三個字元輸入字串之後，就會傳迴響應。
 
@@ -36,9 +36,9 @@ ms.locfileid: "94427032"
 
 建議工具是一種內部資料結構，它會儲存前置詞來比對部分查詢，以支援搜尋型別行為。 如同 token 化詞彙一樣，前置詞會儲存在反向索引中，建議工具 fields 集合中指定的每個欄位都會有一個首碼。
 
-## <a name="define-a-suggester"></a>定義建議工具
+## <a name="how-to-create-a-suggester"></a>如何建立建議工具
 
-若要建立建議工具，請將它加入至 [索引架構](/rest/api/searchservice/create-index) ，並 [設定每個屬性](#property-reference)。 建立建議工具的最佳時機是當您同時定義將使用它的欄位時。
+若要建立建議工具，請在 [索引定義](/rest/api/searchservice/create-index)中加入一個。 建議工具會取得啟用自動提示體驗的名稱和欄位集合。 並 [設定每個屬性](#property-reference)。 建立建議工具的最佳時機是當您同時定義將使用它的欄位時。
 
 + 僅使用字串欄位
 
@@ -60,12 +60,22 @@ ms.locfileid: "94427032"
 
 您選擇的分析器會決定如何將欄位標記化，並在後面加上前置詞。 例如，如需使用語言分析器之類的斷字元字串，請使用語言分析器來產生這些權杖組合：「內容」、「敏感性」、「內容相關」。 您是否已使用標準 Lucene 分析器，以斷字元的字串不存在。 
 
-評估分析器時，請考慮使用「 [分析文字 API](/rest/api/searchservice/test-analyzer) 」來深入瞭解詞彙如何 token 化，然後再加上前置詞。 建立索引之後，您可以在字串上嘗試各種分析器來查看權杖輸出。
+評估分析器時，請考慮使用「 [分析文字 API](/rest/api/searchservice/test-analyzer) 」來深入瞭解如何處理詞彙。 建立索引之後，您可以在字串上嘗試各種分析器來查看權杖輸出。
 
 使用 [自訂分析器](index-add-custom-analyzers.md) 或 [預先定義之分析器](index-add-custom-analyzers.md#predefined-analyzers-reference) (的欄位，除了標準 Lucene) 之外，明確不允許用來防止結果不良。
 
 > [!NOTE]
 > 如果您需要解決分析器條件約束（例如，如果您需要關鍵字或 ngram 分析器來處理特定的查詢案例），您應該針對相同的內容使用兩個不同的欄位。 這可讓其中一個欄位具有建議工具，而另一個欄位可以使用自訂分析器設定來設定。
+
+## <a name="create-using-the-portal"></a>使用入口網站建立
+
+使用 [ **新增索引** ] 或 [匯 **入資料** ] 建立索引時，您可以選擇啟用建議工具：
+
+1. 在索引定義中，輸入建議工具的名稱。
+
+1. 在新欄位的每個欄位定義中，選取 [建議工具] 資料行中的核取方塊。 核取方塊僅適用于字串欄位。 
+
+如先前所述，分析器選項會影響 token 化和首碼。 啟用建議工具時，請考慮整個欄位定義。 
 
 ## <a name="create-using-rest"></a>使用 REST 建立
 
@@ -131,9 +141,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |屬性      |說明      |
 |--------------|-----------------|
-|`name`        |建議工具的名稱。|
-|`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，目前與詞彙的開頭相符。|
-|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 中的命名分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |
+|`name`        | 在建議工具定義中指定，但也會在自動完成或建議要求中呼叫。 |
+|`sourceFields`| 在建議工具定義中指定。 它是索引中一或多個欄位的清單，這些欄位是建議的內容來源。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 中的命名詞彙分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |
+|`searchMode`  | 僅限 REST 參數，但也會顯示在入口網站中。 此參數無法在 .NET SDK 中使用。 指出用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，目前與詞彙的開頭相符。|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -160,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>範例程式碼
 
-+ 使用[c # 建立您的第一個應用程式 (第3課-新增搜尋](tutorial-csharp-type-ahead-and-suggestions.md)型別) 範例示範建議工具結構、建議的查詢、自動完成和多面向導覽。 這個程式碼範例會在沙箱 Azure 認知搜尋服務上執行，並使用預先載入的旅館索引，所以您只需要按 F5 來執行應用程式即可。 不需要訂用帳戶或登入。
++ [以 c # 建立您的第一個應用程式 (第3課-新增搜尋型別) ](tutorial-csharp-type-ahead-and-suggestions.md) 範例示範建議的查詢、自動完成和多面向導覽。 這個程式碼範例會在沙箱 Azure 認知搜尋服務上執行，並使用預先載入的旅館索引與已建立的建議工具，所以您只需要按 F5 來執行應用程式即可。 不需要訂用帳戶或登入。
 
 ## <a name="next-steps"></a>後續步驟
 

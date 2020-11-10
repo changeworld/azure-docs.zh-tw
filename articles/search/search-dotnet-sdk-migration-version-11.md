@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539566"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445433"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升級至 Azure 認知搜尋 .NET SDK 11 版
 
@@ -49,7 +49,7 @@ ms.locfileid: "91539566"
 |---------------------|------------------------------|------------------------------|
 | 用於查詢及填入索引的用戶端。 | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | 用於索引、分析器、同義字對應的用戶端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| 用於索引子、資料來源、技能集的用戶端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**新**) ](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| 用於索引子、資料來源、技能集的用戶端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **新** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` 存在於兩個版本中，但支援不同的專案。 在第10版中， `SearchIndexClient` 建立索引和其他物件。 在第11版中， `SearchIndexClient` 可以使用現有的索引。 為了避免在更新程式碼時產生混淆，請留意用戶端參考的更新順序。 遵循 [升級步驟](#UpgradeSteps) 中的順序應有助於減輕任何字串取代問題。
@@ -75,7 +75,7 @@ ms.locfileid: "91539566"
 | [欄位](/dotnet/api/microsoft.azure.search.models.field) | [>searchfield](/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [DataType](/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [分析器](/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (也 `AnalyzerName` `LexicalAnalyzerName`)  |
+| [分析儀](/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (也 `AnalyzerName` `LexicalAnalyzerName`)  |
 | [AnalyzeRequest](/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [StandardAnalyzer](/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (也 `StandardTokenizerV2` `LuceneStandardTokenizerV2`)  |
@@ -169,6 +169,24 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
    ```
 
 1. 加入索引子相關物件的新用戶端參考。 如果您使用索引子、資料來源或技能集，請將用戶端參考變更為 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此用戶端是第11版中的新用戶端，而且沒有任何之前的版本。
+
+1. 重新流覽集合。 在新的 SDK 中，如果清單剛好包含 null 值，則所有清單都是唯讀的，以避免下游問題。 程式碼變更是將專案加入至清單。 例如，您可以依照下列方式加入字串，而不是將字串指派給 Select 屬性：
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
 
 1. 更新查詢和資料匯入的用戶端參考。 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)的實例應變更為[SearchClient](/dotnet/api/azure.search.documents.searchclient)。 為了避免名稱混淆，請務必先攔截所有實例，再繼續進行下一個步驟。
 

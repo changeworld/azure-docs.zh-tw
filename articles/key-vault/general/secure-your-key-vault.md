@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285839"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445484"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -26,7 +26,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 金鑰保存庫的存取權可透過兩個介面來控制︰管理平面和資料平面。 管理平面可讓您管理 Key Vault 本身。 此平面中的作業包括建立和刪除金鑰保存庫、擷取 Key Vault 屬性，以及更新存取原則。 資料平面則可讓您處理金鑰保存庫中儲存的資料。 您可以新增、刪除和修改金鑰、祕密和憑證。
 
-這兩個平面都會使用 [Azure Active Directory (Azure AD) ](../../active-directory/fundamentals/active-directory-whatis.md) 進行驗證。 針對授權，管理平面會使用 [azure 角色型存取控制 (RBAC) ](../../role-based-access-control/overview.md) 而資料平面會使用 [Key Vault 存取原則](./assign-access-policy-portal.md) 和 [Azure RBAC 來 Key Vault 資料平面作業 (preview) ](./rbac-guide.md)。
+這兩個平面都會使用 [Azure Active Directory (Azure AD) ](../../active-directory/fundamentals/active-directory-whatis.md) 進行驗證。 針對授權，管理平面會使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) ，而資料平面會使用 [Key Vault 存取原則](./assign-access-policy-portal.md) 和 [Azure RBAC 來 Key Vault 資料平面作業 (preview) ](./rbac-guide.md)。
 
 若要在任一平面存取金鑰保存庫，所有呼叫者 (使用者或應用程式) 都必須有適當的驗證和授權。 驗證會建立呼叫者的身分識別。 授權則會判斷呼叫者可以執行哪些作業。 使用 Key Vault 進行驗證時，會與 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 搭配使用，其會負責驗證任何指定 **安全性主體** 的身分識別。
 
@@ -58,7 +58,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 ## <a name="resource-endpoints"></a>資源端點
 
-應用程式會透過端點來存取平面。 這兩個平面的存取控制各自獨立運作。 若要授與應用程式存取權以使用金鑰保存庫中的金鑰，您可以使用 Key Vault 存取原則或 Azure RBAC (preview) 來授與資料平面存取權。 若要對使用者授與讀取 Key Vault 屬性和標籤的存取權，但不授與讀取資料 (金鑰、密碼或憑證) 的存取權，您可以使用 RBAC 來對管理平面授與存取權。
+應用程式會透過端點來存取平面。 這兩個平面的存取控制各自獨立運作。 若要授與應用程式存取權以使用金鑰保存庫中的金鑰，您可以使用 Key Vault 存取原則或 Azure RBAC (preview) 來授與資料平面存取權。 若要授與使用者對 Key Vault 屬性和標記的讀取權限，但無法存取 (金鑰、秘密或憑證) 的資料，您可以使用 Azure RBAC 來授與管理平面存取權。
 
 下表顯示管理和資料平面的端點。
 
@@ -111,7 +111,7 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 
 對保存庫存取原則使用 Azure RBAC 許可權的主要優點是集中式存取控制管理，以及與 [Privileged Identity Management (PIM) ](../../active-directory/privileged-identity-management/pim-configure.md)的整合。 Privileged Identity Management 提供以時間為基礎和以核准為基礎的角色啟用，可降低因重要資源上有過多、不必要或誤用的存取權限而帶來的風險。
 
-如需使用 RBAC Key Vault 資料平面的詳細資訊，請參閱 [使用 Azure 角色型存取控制 Key Vault 金鑰、憑證和秘密 (預覽) ](rbac-guide.md)
+如需有關使用 Azure RBAC Key Vault 資料平面的詳細資訊，請參閱 [使用 azure 角色型存取控制 Key Vault 金鑰、憑證和秘密 (預覽) ](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>防火牆與虛擬網路
 
@@ -187,7 +187,7 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 | 安全性小組 | [Key Vault 參與者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 憑證：所有作業 <br> 金鑰：所有作業 <br> 祕密：所有作業 | [Key Vault 系統管理員 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意** ：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None | None |
 | 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意** ：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | [Key Vault 讀者 (預覽) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure 儲存體帳戶 | None | 索引鍵： get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服務加密](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| Azure 儲存體帳戶 | 無 | 索引鍵： get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服務加密](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
 | Application | None | 秘密： get、list <br> 憑證： get、list | [Key Vault 讀者 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、 [Key Vault Secret 使用者 (preview) ](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 Vm (或 Azure App Service) 的 Web Apps 功能，開發人員和操作員需要部署存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。

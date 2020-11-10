@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257668"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444158"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 web Api 的 Daemon 應用程式-程式碼設定
 
@@ -34,7 +34,7 @@ ms.locfileid: "91257668"
 
 ## <a name="configure-the-authority"></a>設定授權單位
 
-背景程式應用程式會使用應用程式許可權，而不是委派的許可權。 因此，其支援的帳戶類型不能是任何組織目錄或任何個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) 的帳戶。 沒有租使用者系統管理員可將同意授與 Microsoft 個人帳戶的 daemon 應用程式。 您必須選擇 *組織內的帳戶* 或 *任何組織內的帳戶*。
+背景程式應用程式會使用應用程式許可權，而不是委派的許可權。 因此，其支援的帳戶類型不能是任何組織目錄或任何個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) 的帳戶。 沒有租使用者系統管理員可將同意授與 Microsoft 個人帳戶的 daemon 應用程式。 您必須選擇 *組織內的帳戶* 或 *任何組織內的帳戶* 。
 
 因此，應用程式設定中指定的授權單位應租使用者 (指定租使用者識別碼或與您組織) 相關聯的功能變數名稱。
 
@@ -51,7 +51,7 @@ ms.locfileid: "91257668"
 
 設定檔會定義：
 
-- 雲端實例和租使用者識別碼，可一起構成 *授權*單位。
+- 雲端實例和租使用者識別碼，可一起構成 *授權* 單位。
 - 您從應用程式註冊所得到的用戶端識別碼。
 - 用戶端密碼或憑證。
 
@@ -166,7 +166,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-`Authority`是雲端實例和租使用者識別碼的串連，例如 `https://login.microsoftonline.com/contoso.onmicrosoft.com` 或 `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` 。 在 [[設定檔](#configuration-file)] 區段所示的*appsettings.js*檔案中，這些 `Instance` 分別以和值表示 `Tenant` 。
+`Authority`是雲端實例和租使用者識別碼的串連，例如 `https://login.microsoftonline.com/contoso.onmicrosoft.com` 或 `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` 。 在 [ [設定檔](#configuration-file)] 區段所示的 *appsettings.js* 檔案中，這些 `Instance` 分別以和值表示 `Tenant` 。
 
 在先前的程式碼片段取自的程式碼範例中， `Authority` 是  [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) 類別上的屬性，並定義如下：
 
@@ -352,17 +352,14 @@ ConfidentialClientApplication cca =
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-取得應用程式的權杖](./scenario-daemon-acquire-token.md?tabs=dotnet)
+移至此案例的下一篇文章， [取得應用程式的權杖](./scenario-daemon-acquire-token.md?tabs=dotnet)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-取得應用程式的權杖](./scenario-daemon-acquire-token.md?tabs=python)
+移至此案例的下一篇文章， [取得應用程式的權杖](./scenario-daemon-acquire-token.md?tabs=python)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon 應用程式-取得應用程式的權杖](./scenario-daemon-acquire-token.md?tabs=java)
+移至此案例的下一篇文章， [取得應用程式的權杖](./scenario-daemon-acquire-token.md?tabs=java)。
 
 ---

@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927731"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445586"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的虛擬網路支援
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。 本文說明如何設定進階 Azure Cache for Redis 執行個體的虛擬網路支援。
@@ -26,7 +26,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 [Azure 虛擬網路 (VNet) ](https://azure.microsoft.com/services/virtual-network/) 部署可為您的 Azure Cache for Redis 提供增強的安全性和隔離，以及子網、存取控制原則及其他功能，以進一步限制存取。
 
 ## <a name="virtual-network-support"></a>虛擬網路支援
-虛擬網路 (VNet) 支援是在快取建立期間於 [新的 Azure Cache for Redis]  刀鋒視窗中設定的。 
+虛擬網路 (VNet) 支援是在快取建立期間於 [新的 Azure Cache for Redis] 刀鋒視窗中設定的。 
 
 1. 若要建立 premium 快取，請登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **建立資源** ]。 請注意，除了在 Azure 入口網站中建立快取，您也可以使用 Resource Manager 範本、PowerShell 或 Azure CLI 來建立它們。 如需如何建立 Azure Cache for Redis 的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
@@ -34,7 +34,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
    
 2. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="建立資源。":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="選取 Azure Cache for Redis。":::
 
 3. 在 [ **新的 Redis** 快取] 頁面上，設定新 premium 快取的設定。
    
@@ -55,7 +55,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
    > 
    > 
 
-   | 設定      | 建議的值  | 描述 |
+   | 設定      | 建議的值  | 說明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **虛擬網路** | 下拉式清單，然後選取您的虛擬網路。 | 選取與您的快取位於相同訂用帳戶和位置的虛擬網路。 | 
    | **子網路** | 下拉式清單，然後選取您的子網。 | 子網的位址範圍應為 CIDR 標記法 (例如 192.168.1.0/24) 。 其必須包含在虛擬網路的位址空間中。 | 
@@ -80,7 +80,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 
 11. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
 
-建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。 建立快取之後，您可以從 [資源]  功能表中按一下 [虛擬網路]  ，以檢視 VNet 的設定。
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。 建立快取之後，您可以從 [資源] 功能表中按一下 [虛擬網路]，以檢視 VNet 的設定。
 
 ![虛擬網路][redis-cache-vnet-info]
 
@@ -158,11 +158,11 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |輸入 |TCP |對 Redis 進行的用戶端通訊，Azure 負載平衡 | (Redis 子網路) |  (Redis 子網) 、虛擬網路、Azure Load Balancer <sup>1</sup> |
 | 8443 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
-| 8500 |連入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
-| 10221-10231 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路)，Azure Load Balancer |
+| 8500 |輸入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
+| 10221-10231 |輸入 |TCP |Redis 叢集的用戶端通訊，Redis 的內部通訊 | (Redis 子網路) | (Redis 子網) 、Azure Load Balancer (用戶端子網)  |
 | 13000-13999 |輸入 |TCP |對 Redis 叢集的用戶端通訊，Azure 負載平衡 | (Redis 子網路) |虛擬網路，Azure Load Balancer |
 | 15000-15999 |輸入 |TCP |Redis 叢集的用戶端通訊，Azure 負載平衡，以及 Geo-Replication | (Redis 子網路) |虛擬網路、Azure Load Balancer、 (異地複本對等子網)  |
-| 16001 |連入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
+| 16001 |輸入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
 | 20226 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
 
 <sup>1</sup> 您可以使用服務標記 ' AzureLoadBalancer ' (Resource Manager)  (或為傳統 AZURE_LOADBALANCER 撰寫 NSG 規則的 ') '。
@@ -179,7 +179,7 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>如何確認我的快取是在 VNET 中運作？
 
 >[!IMPORTANT]
->連線到裝載在 VNET 中的 Azure Cache for Redis 實例時，您的快取用戶端必須位於相同的 VNET 中，或位於相同 Azure 區域內已啟用 VNET 對等互連的 VNET 中。 目前不支援全域 VNET 對等互連。 這包括任何測試應用程式或診斷 Ping 工具。 不論用戶端應用程式裝載在哪個位置，都必須設定網路安全性群組以允許用戶端的網路流量觸達 Redis 執行個體。
+>連線到裝載在 VNET 中的 Azure Cache for Redis 實例時，您的快取用戶端必須位於相同的 VNET 中，或位於相同 Azure 區域內已啟用 VNET 對等互連的 VNET 中。 目前不支援全域 VNET 對等互連。 這包括任何測試應用程式或診斷 Ping 工具。 無論用戶端應用程式的裝載位置為何，您都必須設定網路安全性群組或其他網路層，以便讓用戶端的網路流量觸達 Redis 實例。
 >
 >
 

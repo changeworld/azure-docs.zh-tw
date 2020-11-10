@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 803dc4d1a7b78df891780eb741cba4e57ab2d5dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784417"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445229"
 ---
 # <a name="managed-hsm-access-control"></a>受控 HSM 存取控制
 
@@ -35,7 +35,7 @@ Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這�
 
 建立受控 HSM 時，要求者也會提供資料平面系統管理員清單， (所有 [安全性主體](../../role-based-access-control/overview.md#security-principal) 都) 支援。 只有這些系統管理員能夠存取受管理的 HSM 資料平面，以執行重要作業，以及管理 (受控 HSM 本機 RBAC) 的資料平面角色指派。
 
-這兩個平面的許可權模型都會使用相同的語法 (RBAC) ，但會在不同的層級強制執行，而且角色指派會使用不同的範圍。 管理平面 RBAC 會由 Azure Resource Manager 強制執行，而資料平面 RBAC 則由受控 HSM 本身強制執行。
+這兩個平面的許可權模型都會使用相同的語法，但是會在不同的層級強制執行，而且角色指派會使用不同的範圍。 管理平面 Azure RBAC 是由 Azure Resource Manager 強制執行，而資料平面管理的 HSM 本機 RBAC 則由受控 HSM 本身強制執行。
 
 > [!IMPORTANT]
 > 授與安全性主體管理平面對受控 HSM 的存取權，並不會授與他們存取資料平面的任何存取權，以存取金鑰或資料層角色指派管理的 HSM 本機 RBAC) 。 這項隔離的設計是為了避免不小心地展開影響存取儲存在受控 HSM 中之金鑰的許可權。
@@ -67,16 +67,16 @@ Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這�
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>管理平面和 Azure RBAC
 
-在管理平面中，您會使用 Azure RBAC 來授權呼叫者可以執行的作業。 在 RBAC 模型中，每個 Azure 訂用帳戶都有 Azure Active Directory 的實例。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-classic-cli)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](/rest/api/authorization/roleassignments)。
+在管理平面中，您會使用 Azure RBAC 來授權呼叫者可以執行的作業。 在 Azure RBAC 模型中，每個 Azure 訂用帳戶都有 Azure Active Directory 的實例。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-classic-cli)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](/rest/api/authorization/roleassignments)。
 
-您會在資源群組中建立金鑰保存庫，並使用 Azure Active Directory 來管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 RBAC 角色，來授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以對 RBAC 角色指派下列範圍層級：
+您會在資源群組中建立金鑰保存庫，並使用 Azure Active Directory 來管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 Azure 角色，授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 下列範圍層級可以指派給 Azure 角色：
 
-- **管理群組** ：在訂用帳戶層級指派的 RBAC 角色，會套用至該管理群組中的所有訂用帳戶。
-- 訂用帳戶：在訂用帳戶層級指派的 RBAC 角色，會套用至該訂用帳戶內的所有資源群組和資源。
-- **資源群組** ：在資源群組層級指派的 RBAC 角色，會套用至該資源群組內的所有資源。
-- **特定資源** ：針對特定資源指派的 RBAC 角色，則會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- **管理群組** ：在訂用帳戶層級指派的 Azure 角色會套用到該管理群組中的所有訂用帳戶。
+- **訂** 用帳戶：在訂用帳戶層級指派的 Azure 角色會套用到該訂用帳戶內的所有資源群組和資源。
+- **資源群組** ：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
+- **特定資源** ：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
-有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
+有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱 [AZURE RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="data-plane-and-managed-hsm-local-rbac"></a>資料平面和受控 HSM 本機 RBAC
 

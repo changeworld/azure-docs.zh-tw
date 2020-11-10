@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 1767f149d9935c86281c7b7be3e684aa82a603f9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999041"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444600"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>將模型部署到 Azure Machine Learning 計算實例
 
@@ -28,9 +28,9 @@ ms.locfileid: "91999041"
 - 您正在測試處於開發狀態的模型。
 
 > [!TIP]
-> 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是 _本機部署_。 在此情況下，「本機」電腦是計算實例。 如需部署的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+> 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是 _本機部署_ 。 在此情況下，「本機」電腦是計算實例。 如需部署的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 執行計算實例的 Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "91999041"
 
     ![筆記本上執行中本機服務的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. 筆記本會顯示服務執行所在的 URL 和埠。 例如，`https://localhost:6789`。 您也可以執行包含的資料格 `print('Local service port: {}'.format(local_service.port))` 來顯示埠。
+1. 筆記本會顯示服務執行所在的 URL 和埠。 例如 `https://localhost:6789`。 您也可以執行包含的資料格 `print('Local service port: {}'.format(local_service.port))` 來顯示埠。
 
     ![執行中本機服務埠的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "91999041"
     * 筆記本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` 。 
     * 計算實例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` 。 
 
-    例如， 
+    例如，套用至物件的 
     * 筆記本 VM： `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * 計算實例： `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
@@ -63,7 +63,7 @@ ms.locfileid: "91999041"
 > [!NOTE]
 > 當對計算實例上的部署進行驗證時，會使用 Azure Active Directory 來進行驗證。 在範例程式 `interactive_auth.get_authentication_header()` 代碼中的呼叫會使用 AAD 來驗證您的身分，並傳回可接著用來對計算實例上的服務進行驗證的標頭。 如需詳細資訊，請參閱[設定 Azure Machine Learning 資源和工作流程的驗證](how-to-setup-authentication.md#interactive-authentication)。
 >
-> 當對 Azure Kubernetes Service 或 Azure 容器實例上的部署進行驗證時，會使用不同的驗證方法。 如需的詳細資訊，請參閱 [設定 Azure Machine Learning 資源和工作流程的驗證](how-to-setup-authentication.md#web-service-authentication)。
+> 當對 Azure Kubernetes Service 或 Azure 容器實例上的部署進行驗證時，會使用不同的驗證方法。 如需的詳細資訊，請參閱為 [部署為 web 服務的 Azure 機器模型設定驗證](how-to-authenticate-web-service.md)。
 
 ```python
 import requests

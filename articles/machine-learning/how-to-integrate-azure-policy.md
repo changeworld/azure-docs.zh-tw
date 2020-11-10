@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325493"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444554"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>使用 Azure 原則來審核和管理 Azure Machine Learning
 
@@ -42,11 +42,11 @@ Azure Machine Learning 提供一組原則，可讓您用於 Azure Machine Learni
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>使用客戶管理的金鑰進行工作區加密
 
-控制是否應使用客戶管理的金鑰來加密工作區 (CMK) ，或使用 Microsoft 管理的金鑰來加密計量和中繼資料。 如需有關使用 CMK 的詳細資訊，請參閱企業安全性文章的 [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) 一節。
+控制是否應使用客戶管理的金鑰來加密工作區，或使用 Microsoft 管理的金鑰來加密計量和中繼資料。 如需使用客戶管理金鑰的詳細資訊，請參閱資料加密文章的 [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) 一節。
 
-若要設定此原則，請將效果參數設定為 __audit__ 或 __deny__ 。 如果設定為 __audit__ ，您可以建立不含 CMK 的工作區，並在活動記錄中建立警告事件。
+若要設定此原則，請將效果參數設定為 __audit__ 或 __deny__ 。 如果設定為 __audit__ ，您可以建立不含客戶管理金鑰的工作區，並在活動記錄中建立警告事件。
 
-如果原則設定為 [ __拒絕__ ]，則除非您指定 CMK，否則無法建立工作區。 嘗試建立不含 CMK 的工作區時，會產生類似 `Resource 'clustername' was disallowed by policy` 的錯誤，並在活動記錄中建立錯誤。 原則識別碼也會在這個錯誤中傳回。
+如果原則設定為 [ __拒絕__ ]，除非指定客戶管理的金鑰，否則您無法建立工作區。 嘗試建立不含客戶管理金鑰的工作區時，會產生類似的錯誤 `Resource 'clustername' was disallowed by policy` ，並在活動記錄中建立錯誤。 原則識別碼也會在這個錯誤中傳回。
 
 ## <a name="workspaces-should-use-private-link"></a>工作區應使用 private link
 

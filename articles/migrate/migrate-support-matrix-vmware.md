@@ -2,13 +2,13 @@
 title: Azure Migrate 中的 VMware 評估支援
 description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的支援。
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/10/2020
+ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345426"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444940"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -40,7 +40,7 @@ ms.locfileid: "93345426"
 **VMware** | **詳細資料**
 --- | ---
 **VMware VM** | 所有作業系統都可以進行評估以進行遷移。 
-**儲存體** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
+**Storage** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
@@ -66,14 +66,14 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 **支援** | **詳細資料**
 --- | ---
-**支援的機器** | 應用程式探索目前僅支援 VMware VM。 您可以從每個 Azure Migrate 設備探索最多可在 10000 VMware Vm 上安裝的應用程式。
-**作業系統** | 執行所有 Windows 和 Linux 版本的 Vm 都支援應用程式探索。
+**支援的機器** | 目前僅支援 VMware VM。 您可以從每個 Azure Migrate 設備探索最多可在 10000 VMware Vm 上安裝的應用程式。
+**作業系統** | 支援執行所有 Windows 和 Linux 版本的 Vm。
 **VM 需求** | 您必須在要探索應用程式的 Vm 上安裝並執行 VMware 工具。 <br/><br/> VMware 工具版本必須為 10.2.0 之後。<br/><br/> VM 必須安裝 PowerShell 2.0 版或更新版本。
-**探索** | 應用程式探索不需要代理程式。 其會使用機器來賓認證，並使用 WMI 和 SSH 呼叫從遠端存取機器。
+**探索** | 在 vm 上安裝之應用程式的相關資訊，會使用安裝在 VM 上的 VMware 工具從 vCenter Server 收集。 設備會使用 vSphere Api，從 vCenter Server 收集應用程式資訊。 應用程式探索不需要代理程式。 Vm 上未安裝任何專案，且設備不會直接連線至 Vm。 WMI/SSH 應在 Vm 上啟用及使用。
 **vCenter** | 用於評量的 vCenter Server 唯讀帳戶，需要 **虛擬機器**  >  **來賓作業** 啟用的許可權，才能與 VM 互動以進行應用程式探索。
 **VM 存取** | 應用程式探索需要 VM 上的本機使用者帳戶，才能進行應用程式探索。<br/><br/> Azure Migrate 目前支援在所有 Windows 伺服器上使用一個認證，以及為所有 Linux 伺服器使用一個認證。<br/><br/> 請為 Windows VM 建立來賓使用者帳戶，以及為所有 Linux VM 建立常規/一般使用者帳戶 (非 sudo 存取權)。
 **連接埠存取** | Azure Migrate 設備必須能夠連線到執行您要探索應用程式之 Vm 的 ESXi 主機上的 TCP 埠443。 VCenter Server 會傳回 ESXI 主機連接，以下載包含應用程式資訊的檔案。
-**限制** | 針對應用程式探索，您最多可以在每個 Azure Migrate 設備上探索 10,000 部 VM。
+
 
 
 ## <a name="dependency-analysis-requirements-agentless"></a> (無代理程式) 的相依性分析需求
@@ -82,17 +82,15 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 **需求** | **詳細資料**
 --- | --- 
-**部署之前** | 請先備妥 Azure Migrate 專案，並已在專案中新增伺服器評估工具。<br/><br/>  在設定 Azure Migrate 設備之後，您會部署相依性視覺效果，以探索您的內部部署 VMware 機器。<br/><br/> [了解如何](create-manage-projects.md)第一次建立專案。<br/> [了解如何](how-to-assess.md)將評估工具新增至現有專案。<br/> [了解如何](how-to-set-up-appliance-vmware.md)設定 Azure Migrate 設備以評估 VMware VM。
 **支援的機器** | 目前僅支援 VMware VM。
-**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)。<br/>Microsoft Windows Server 2008 (32 位) 。 確定已安裝 PowerShell。
-**vCenter Server 認證** | 相依性視覺效果需要具有唯讀存取權的 vCenter Server 帳戶，以及為 [虛擬機器] > [來賓作業] 啟用權限。
-**Windows VM 許可權** |  針對相依性分析，Azure Migrate 設備需要有網域系統管理員帳戶或本機系統管理員帳戶才能存取 Windows VM。
-**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。<br/> SUSE Linux Enterprise Server 11 和更新版本
-**Linux 帳戶** | 針對相依性分析，在 Linux 機器上，Azure Migrate 設備需要根使用者帳戶<br/><br/> 或者，使用者帳戶需要 /bin/netstat 和 /bin/ls 檔案上的這些權限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。 使用下列命令來設定這些功能： <br/> sudo setcap CAP_DAC_READ_SEARCH、CAP_SYS_PTRACE = ep/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH、CAP_SYS_PTRACE = ep/bin/netstat
-**所需的代理程式** | 您想要分析的電腦上不需要任何代理程式。
-**VMware 工具** | 您想要分析的每個 VM 上必須安裝並執行 VMware 工具 (10.2 之後的版本)。
-**PowerShell** | Windows VM 必須安裝 PowerShell 2.0 版或更新版本。
-**連接埠存取** | 在想要分析的 VM 執行所在的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 連接埠 443。
+**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)。<br/>Microsoft Windows Server 2008 (32 位) 。 
+**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。<br/> SUSE Linux Enterprise Server 11 和更新版本。
+**VM 需求** | VMware Tools (晚于 10.2.0) 必須安裝並在您想要分析的 Vm 上執行。<br/><br/> VM 必須安裝 PowerShell 2.0 版或更新版本。
+**探索方法** |  您可以使用安裝在 VM 上的 VMware 工具，從 vCenter Server 收集 Vm 之間的相依性資訊。 設備會使用 vSphere Api，從 vCenter Server 收集資訊。 探索為無代理程式。 VM 上未安裝任何專案，且設備不會直接連線至 Vm。 WMI/SSH 應在 Vm 上啟用及使用。
+**vCenter 帳戶** | Azure Migrate 用於評量的唯讀帳戶，必須啟用 **虛擬機器 > 來賓作業** 的許可權。
+**Windows VM 許可權** |  帳戶 (本機系統管理員或網域) 具有 Vm 的本機系統管理員許可權。
+**Linux 帳戶** | 根使用者帳戶，或在/bin/netstat 和/bin/ls 檔案上具有這些許可權的帳戶： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。<br/><br/> 使用下列命令來設定這些功能： <br/><br/> sudo setcap CAP_DAC_READ_SEARCH、CAP_SYS_PTRACE = ep/bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH、CAP_SYS_PTRACE = ep/bin/netstat
+**連接埠存取** | Azure Migrate 設備必須能夠連線到執行您要探索其相依性之 Vm 的 ESXI 主機上的 TCP 埠443。 VCenter Server 會傳回 ESXI 主機連接，以下載包含相依性資訊的檔案。
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>以代理程式為基礎的)  (相依性分析需求

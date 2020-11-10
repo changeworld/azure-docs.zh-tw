@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5f2d3ba12fa65beb7156e056c23e44b028cbb520
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151139"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445059"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -113,7 +113,7 @@ ms.locfileid: "92151139"
 > 
 > 若要執行查詢作業，您必須指定一個能夠解析結果集中的所有金鑰的金鑰解析程式。 如果查詢結果中包含的實體無法解析成提供者，用戶端程式庫會擲回錯誤。 針對執行伺服器端投影的任何查詢，用戶端程式庫會依預設將特殊加密中繼資料屬性 (_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2) 加入選取的資料行。
 
-## <a name="azure-key-vault"></a>Azure 金鑰保存庫
+## <a name="azure-key-vault"></a>Azure Key Vault
 Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用 Azure 金鑰保存庫時，使用者可以使用受硬體安全模組 (HSM) 保護的金鑰來加密金鑰和密碼 (例如驗證金鑰、儲存體帳戶金鑰、資料加密金鑰、.PFX 檔案和密碼)。 如需詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)。
 
 儲存體用戶端程式庫會使用核心程式庫中的 Key Vault 介面，以提供跨 Azure 的通用架構來管理金鑰。 使用者可以利用 Key Vault 程式庫來取得其所提供的所有其他權益，例如簡單、無縫對稱/RSA 本機和雲端金鑰提供者的實用功能，以及匯總和快取的協助。
@@ -167,14 +167,14 @@ Key Vault 整合有兩個必要的套件：
   * 叫用金鑰解析程式 (如果指定) 以取得金鑰。 如果已指定解析程式，但沒有金鑰識別碼的對應，則會擲回錯誤。
 
 ### <a name="requireencryption-mode-v11-only"></a>>requireencryption 模式 (v11) 
-使用者可以針對所有上傳和下載都必須加密的作業模式，從中選擇啟用。 在此模式中，在用戶端上嘗試上傳沒有加密原則的資料或下載未在服務上加密的資料將會失敗。 要求選項物件的 **RequireEncryption** 屬性會控制此行為。 如果您的應用程式會將所有儲存在 Azure 儲存體中的物件加密，則您可以在服務用戶端服務的預設要求選項上，設定 **RequireEncryption** 屬性。 例如，將 **CloudBlobClient.DefaultRequestOptions.RequireEncryption** 設為 **true**，要求加密透過該用戶端物件所執行的所有 Blob 作業。
+使用者可以針對所有上傳和下載都必須加密的作業模式，從中選擇啟用。 在此模式中，在用戶端上嘗試上傳沒有加密原則的資料或下載未在服務上加密的資料將會失敗。 要求選項物件的 **RequireEncryption** 屬性會控制此行為。 如果您的應用程式會將所有儲存在 Azure 儲存體中的物件加密，則您可以在服務用戶端服務的預設要求選項上，設定 **RequireEncryption** 屬性。 例如，將 **CloudBlobClient.DefaultRequestOptions.RequireEncryption** 設為 **true** ，要求加密透過該用戶端物件所執行的所有 Blob 作業。
 
 
 ### <a name="blob-service-encryption"></a>Blob 服務加密
 
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
-建立 **ClientSideEncryptionOptions** 物件，並在使用 **SpecializedBlobClientOptions**建立用戶端時進行設定。 您無法以每個 API 為基礎設定加密選項。 其他一切由用戶端程式庫在內部處理。
+建立 **ClientSideEncryptionOptions** 物件，並在使用 **SpecializedBlobClientOptions** 建立用戶端時進行設定。 您無法以每個 API 為基礎設定加密選項。 其他一切由用戶端程式庫在內部處理。
 
 ```csharp
 // Your key and key resolver instances, either through KeyVault SDK or an external implementation
@@ -207,9 +207,9 @@ MemoryStream outputStream = new MemoryStream();
 blob.DownloadTo(outputStream);
 ```
 
-**BlobServiceClient**不需要套用加密選項。 它們也可以傳遞至**BlobContainerClient** / 接受**BlobClientOptions**物件的 BlobContainerClient **>blobclient**函式。
+**BlobServiceClient** 不需要套用加密選項。 它們也可以傳遞至 **BlobContainerClient** / 接受 **BlobClientOptions** 物件的 BlobContainerClient **>blobclient** 函式。
 
-如果所需的 **>blobclient** 物件已經存在，但沒有用戶端加密選項，就會有擴充方法，以指定的 **ClientSideEncryptionOptions**建立該物件的複本。 這個擴充方法可避免從頭開始建立新的 **>blobclient** 物件時所產生的額外負荷。
+如果所需的 **>blobclient** 物件已經存在，但沒有用戶端加密選項，就會有擴充方法，以指定的 **ClientSideEncryptionOptions** 建立該物件的複本。 這個擴充方法可避免從頭開始建立新的 **>blobclient** 物件時所產生的額外負荷。
 
 ```csharp
 using Azure.Storage.Blobs.Specialized;
@@ -223,7 +223,7 @@ BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOpti
 ```
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
-建立 **BlobEncryptionPolicy** 物件，並在要求選項中加以設定 (透過 API 或在用戶端層級使用 **DefaultRequestOptions**)。 其他一切由用戶端程式庫在內部處理。
+建立 **BlobEncryptionPolicy** 物件，並在要求選項中加以設定 (透過 API 或在用戶端層級使用 **DefaultRequestOptions** )。 其他一切由用戶端程式庫在內部處理。
 
 ```csharp
 // Create the IKey used for encryption.
@@ -247,7 +247,7 @@ blob.DownloadToStream(outputStream, null, options, null);
 
 ### <a name="queue-service-encryption"></a>佇列服務加密
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
-建立 **ClientSideEncryptionOptions** 物件，並在使用 **SpecializedQueueClientOptions**建立用戶端時進行設定。 您無法以每個 API 為基礎設定加密選項。 其他一切由用戶端程式庫在內部處理。
+建立 **ClientSideEncryptionOptions** 物件，並在使用 **SpecializedQueueClientOptions** 建立用戶端時進行設定。 您無法以每個 API 為基礎設定加密選項。 其他一切由用戶端程式庫在內部處理。
 
 ```csharp
 // Your key and key resolver instances, either through KeyVault SDK or an external implementation
@@ -277,9 +277,9 @@ queue.SendMessage("Hello, World!");
 QueueMessage[] queue.ReceiveMessages(); 
 ```
 
-**QueueServiceClient**不需要套用加密選項。 它們也可以傳遞至接受**QueueClientOptions**物件的**QueueClient**函式。
+**QueueServiceClient** 不需要套用加密選項。 它們也可以傳遞至接受 **QueueClientOptions** 物件的 **QueueClient** 函式。
 
-如果所需的 **QueueClient** 物件已經存在，但沒有用戶端加密選項，就會有擴充方法，以指定的 **ClientSideEncryptionOptions**建立該物件的複本。 這個擴充方法可避免從頭開始建立新的 **QueueClient** 物件時所產生的額外負荷。
+如果所需的 **QueueClient** 物件已經存在，但沒有用戶端加密選項，就會有擴充方法，以指定的 **ClientSideEncryptionOptions** 建立該物件的複本。 這個擴充方法可避免從頭開始建立新的 **QueueClient** 物件時所產生的額外負荷。
 
 ```csharp
 using Azure.Storage.Queues.Specialized;
@@ -292,7 +292,7 @@ ClientSideEncryptionOptions encryptionOptions;
 QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
 ```
 
-有些使用者可能會有佇列，其中並非所有收到的訊息都可以成功解密，而金鑰或解析程式必須擲回。 在此情況下，上述範例的最後一行將會擲回，而且將無法存取任何接收的訊息。 在這些案例中，可以使用子類別 **QueueClientSideEncryptionOptions** 來提供加密選項給用戶端。 它會公開事件 **DecryptionFailed** ，以便在佇列訊息解密時觸發，只要至少有一個調用加入至事件即可。 您可以用這種方式處理個別失敗的訊息，並將它們從 **>receivemessages**傳回的最終**QueueMessage []** 中篩選掉。
+有些使用者可能會有佇列，其中並非所有收到的訊息都可以成功解密，而金鑰或解析程式必須擲回。 在此情況下，上述範例的最後一行將會擲回，而且將無法存取任何接收的訊息。 在這些案例中，可以使用子類別 **QueueClientSideEncryptionOptions** 來提供加密選項給用戶端。 它會公開事件 **DecryptionFailed** ，以便在佇列訊息解密時觸發，只要至少有一個調用加入至事件即可。 您可以用這種方式處理個別失敗的訊息，並將它們從 **>receivemessages** 傳回的最終 **QueueMessage []** 中篩選掉。
 
 ```csharp
 // Create your encryption options using the sub-class.
@@ -324,7 +324,7 @@ Debug.Assert(messages.Length == 4)
 ```
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
-建立 **QueueEncryptionPolicy** 物件，並在要求選項中加以設定 (透過 API 或在用戶端層級使用 **DefaultRequestOptions**)。 其他一切由用戶端程式庫在內部處理。
+建立 **QueueEncryptionPolicy** 物件，並在要求選項中加以設定 (透過 API 或在用戶端層級使用 **DefaultRequestOptions** )。 其他一切由用戶端程式庫在內部處理。
 
 ```csharp
 // Create the IKey used for encryption.
@@ -344,7 +344,7 @@ Debug.Assert(messages.Length == 4)
 ---
 
 ### <a name="table-service-encryption-v11-only"></a>表格服務加密 (v11) 
-除了建立加密原則並在要求選項上加以設定之外，您必須在 **TableRequestOptions** 中指定 **EncryptionResolver**，或在實體上設定 [EncryptProperty] 屬性。
+除了建立加密原則並在要求選項上加以設定之外，您必須在 **TableRequestOptions** 中指定 **EncryptionResolver** ，或在實體上設定 [EncryptProperty] 屬性。
 
 #### <a name="using-the-resolver"></a>使用解析程式
 
@@ -383,7 +383,7 @@ Debug.Assert(messages.Length == 4)
 ```
 
 #### <a name="using-attributes"></a>使用屬性
-如上所述，如果實體實作 TableEntity，則屬性可以使用 [EncryptProperty] 屬性裝飾，不需指定 **EncryptionResolver**。
+如上所述，如果實體實作 TableEntity，則屬性可以使用 [EncryptProperty] 屬性裝飾，不需指定 **EncryptionResolver** 。
 
 ```csharp
 [EncryptProperty]

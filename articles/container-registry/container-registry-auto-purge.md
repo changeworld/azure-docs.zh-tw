@@ -2,19 +2,19 @@
 title: 清除標記和資訊清單
 description: 使用清除命令，根據壽命和標記篩選條件刪除 Azure Container Registry 中的多個標記和資訊清單，並選擇性地排程清除作業。
 ms.topic: article
-ms.date: 05/14/2020
-ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 406a1f231af57407e9475a8888b68aad9d88dcb3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652645"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445110"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自動清除 Azure Container Registry 中的映像
 
 使用 Azure Container Registry 做為開發工作流程的一部分時，登錄很快會被短時間內就不需要的映像或其他成品填滿。 您可能想要刪除比特定期間還舊或符合指定名稱篩選條件的所有標記。 為了快速刪除多個成品，本文介紹 `acr purge` 命令，您可以用隨需工作或[排程的](container-registry-tasks-scheduled.md)存取控制記錄 (ACR) 工作兩種方式執行。 
 
-`acr purge` 命令目前在公用容器映像 (`mcr.microsoft.com/acr/acr-cli:0.2`) 中散發，是從 GitHub [acr-cli](https://github.com/Azure/acr-cli) 存放庫中的原始碼建構而來。
+`acr purge` 命令目前在公用容器映像 (`mcr.microsoft.com/acr/acr-cli:0.3`) 中散發，是從 GitHub [acr-cli](https://github.com/Azure/acr-cli) 存放庫中的原始碼建構而來。
 
 您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來執行本文中的 ACR 工作。 如果您想要在本機使用，需使用 2.0.76 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。 
 
@@ -44,6 +44,7 @@ ms.locfileid: "83652645"
 
 * `--untagged` - 指定刪除沒有關聯標記的資訊清單 (無標記的資訊清單)。
 * `--dry-run` - 指定不刪除任何資料，但輸出會與在沒有此旗標的情況下執行命令相同。 此參數很適合用於測試清除命令，以確保其不會不小心刪除您想要保留的資料。
+* `--keep` -指定保留最新的 x 個要刪除的標記數目。
 
 如需其他參數，請執行 `acr purge --help`。 
 

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322318"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444796"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -46,6 +46,19 @@ ms.locfileid: "93322318"
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：儲存計算目標所使用的秘密，以及工作區所需的其他機密資訊。
 
 您可以與其他人共用工作區。
+
+### <a name="create-workspace"></a>建立工作區
+
+下圖顯示建立工作區工作流程。
+
+* 您可以從其中一個支援的 Azure Machine Learning 用戶端 (Azure CLI、Python SDK、Azure 入口網站) 登入 Azure AD，並要求適當的 Azure Resource Manager 權杖。
+* 您會呼叫 Azure Resource Manager 來建立工作區。 
+* Azure Resource Manager 聯絡 Azure Machine Learning 資源提供者以佈建工作區。
+* 如果您未指定現有的資源，則會在您的訂用帳戶中建立額外的必要資源。
+
+您也可以視需要布建附加至工作區的其他計算目標 (例如 Azure Kubernetes Service 或 Vm) 。
+
+[![建立工作區工作流程](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
 
 ## <a name="computes"></a>計算
 
@@ -114,6 +127,10 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 提交回合時，Azure Machine Learning 會將包含指令碼的目錄壓縮成 zip 檔案，然後傳送至計算目標。 接著會將 zip 檔案解壓縮並在該處執行指令碼。 Azure Machine Learning 也會將 zip 檔案以快照方式儲存在回合記錄中。 任何擁有工作區存取權的人都能瀏覽回合記錄並下載快照集。
 
+下圖顯示程式碼快照集工作流程。
+
+[![程式碼快照集工作流程](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
+
 ### <a name="logging"></a>記錄
 
 Azure Machine Learning 會為您自動記錄標準執行計量。 不過，您也可以 [使用 PYTHON SDK 來記錄任意計量](how-to-track-experiments.md)。
@@ -129,6 +146,31 @@ Azure Machine Learning 會為您自動記錄標準執行計量。 不過，您�
 當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 這適用于使用腳本執行設定或 ML 管線提交的執行。 其也適用於從 SDK 或 Machine Learning CLI 提交的執行。
 
 如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
+
+### <a name="training-workflow"></a>定型工作流程
+
+當您執行實驗來定型模型時，會發生下列步驟。 這些將在下列定型工作流程圖中說明：
+
+* 會使用上一節中所儲存之程式碼快照集的快照集識別碼來呼叫 Azure Machine Learning。
+* Azure Machine Learning 會建立執行識別碼 (選擇性) 和 Machine Learning 服務權杖，稍後會由計算目標 (例如 Machine Learning Compute/VM) 用來與 Machine Learning 服務進行通訊。
+* 您可以選擇受控計算目標 (例如 Machine Learning Compute) 或非受控計算目標 (例如 VM) 來執行定型作業。 以下是這兩種案例的資料流程：
+   * VM/HDInsight，由 Microsoft 訂用帳戶的金鑰保存庫中的 SSH 認證存取。 Azure Machine Learning 會在計算目標上執行管理程式碼，其：
+
+   1. 準備環境。 (Docker 是 VM 和本機電腦的選項。 請參閱 Machine Learning Compute 的下列步驟，以了解在 Docker 容器上執行實驗的運作方式。)
+   1. 下載程式碼。
+   1. 設定環境變數和組態。
+   1. 執行使用者指令碼 (上一節中提到的程式碼快照集)。
+
+   * Machine Learning Compute，透過工作區受控識別來存取。
+因為 Machine Learning Compute 是受控計算目標 (也就是由 Microsoft 管理)，所以其會在您的 Microsoft 訂用帳戶下執行。
+
+   1. 如有需要，會啟動遠端 Docker 建構。
+   1. 管理程式碼會寫入使用者的 Azure 檔案儲存體共用。
+   1. 使用初始命令啟動容器。 也就是上一個步驟中所述的管理程式碼。
+
+* 執行完成之後，您就可以查詢執行和計量。 在下面的流程圖中，當定型計算目標將執行計量從 Cosmos DB 資料庫中的儲存體寫回 Azure Machine Learning 時，就會發生此步驟。 用戶端可以呼叫 Azure Machine Learning。 Machine Learning 接著會從 Cosmos DB 資料庫中提取計量，並將其傳回用戶端。
+
+[![定型工作流程](media/concept-azure-machine-learning-architecture/training-and-metrics.png)](media/concept-azure-machine-learning-architecture/training-and-metrics.png#lightbox)
 
 ## <a name="models"></a>模型
 
@@ -178,9 +220,21 @@ Azure Machine Learning 與架構無關。 在建立模型時，您可以使用�
 
 將模型部署為 web 服務時，您可以將端點部署在 Azure 容器實例上、Azure Kubernetes Service 或 Fpga。 您可以從模型、指令碼和相關聯的檔案建立服務。 這些會放入基底容器映射中，其中包含模型的執行環境。 映像包含經過負載平衡的 HTTP 端點，可接收傳送至 Web 服務的評分要求。
 
-您可以啟用 Application Insights 遙測或模型遙測，以監視您的 web 服務。 您只能存取遙測資料。  它會儲存在您的 Application Insights 和儲存體帳戶實例中。
+您可以啟用 Application Insights 遙測或模型遙測，以監視您的 web 服務。 您只能存取遙測資料。  它會儲存在您的 Application Insights 和儲存體帳戶實例中。 如果已經啟用自動調整功能，Azure 將會自動調整您的部署。
 
-如果已經啟用自動調整功能，Azure 將會自動調整您的部署。
+下圖顯示部署為 web 服務端點之模型的推斷工作流程：
+
+詳細資料如下：
+
+* 使用者會使用 Azure Machine Learning SDK 之類的用戶端來註冊模型。
+* 使用者會使用模型、分數檔案和其他模型相依性來建立映像。
+* Docker 映像會建立並儲存在 Azure Container Registry 中。
+* Web 服務會使用在上一個步驟中建立的映像，部署到計算目標 (容器執行個體/AKS)。
+* 評分要求詳細資料會儲存在使用者訂用帳戶中的 Application Insights,。
+* 遙測也會推送至 Microsoft/Azure 訂用帳戶。
+
+[![推斷工作流程](media/concept-azure-machine-learning-architecture/inferencing.png)](media/concept-azure-machine-learning-architecture/inferencing.png#lightbox)
+
 
 如需將模型部署為 Web 服務的範例，請參閱[在 Azure 容器執行個體中部署映像分類模型](tutorial-deploy-models-with-aml.md)。
 

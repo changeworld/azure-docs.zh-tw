@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423006"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445076"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -742,7 +742,7 @@ ms.locfileid: "93423006"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
     
-| 以 Web 為基礎的工具  |     描述  |
+| 以 Web 為基礎的工具  |     說明  |
 |---|---|
 | Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 
 
@@ -1084,7 +1084,7 @@ ms.locfileid: "93423006"
 
 + **新功能**
   + Dataset：加入兩個 `on_error` 選項 `out_of_range_datetime` ， `to_pandas_dataframe` 如果資料有錯誤值而不是填滿，則會失敗 `None` 。
-  + 工作區：新增 `hbi_workspace` 具有機密資料的工作區旗標，可進一步加密並停用工作區上的 advanced diagnostics。 此外，我們也新增了在建立工作區時，藉由指定和參數來為相關聯的 Cosmos DB 實例提供您自己的金鑰的支援，這會在布 `cmk_keyvault` `resource_cmk_uri` 建您的工作區時，在訂用帳戶中建立 Cosmos DB 實例。 [請於此處深入了解。](./concept-enterprise-security.md#azure-cosmos-db)
+  + 工作區：新增 `hbi_workspace` 具有機密資料的工作區旗標，可進一步加密並停用工作區上的 advanced diagnostics。 此外，我們也新增了在建立工作區時，藉由指定和參數來為相關聯的 Cosmos DB 實例提供您自己的金鑰的支援，這會在布 `cmk_keyvault` `resource_cmk_uri` 建您的工作區時，在訂用帳戶中建立 Cosmos DB 實例。 [請於此處深入了解。](./concept-data-encryption.md#azure-cosmos-db)
 
 + **Bug 修正和改善**
   + **azureml-automl-runtime**
@@ -1140,7 +1140,7 @@ ms.locfileid: "93423006"
     + 新增對 pandas 的支援。 數列和 pandas。 用於偵測資料行資料類型的類別。 先前只支援 numpy. ndarray
       + 已新增相關的程式碼變更，以正確地處理類別 dtype。
     + 已改善預測函數介面： y_pred 參數設為選擇性。 -Docstrings 已改善。
-  + **azureml-contrib-dataset**
+  + **azureml-contrib-資料集**
     + 修正無法裝載標記資料集的 bug。
   + **azureml-core**
     + 修正的錯誤 `Environment.from_existing_conda_environment(name, conda_environment_name)` 。 使用者可以建立環境的實例，該實例是本機環境的精確複本
@@ -1254,7 +1254,7 @@ ms.locfileid: "93423006"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
 
-| 以 Web 為基礎的工具 | 描述 | 
+| 以 Web 為基礎的工具 | 說明 | 
 |-|-|-|
 | 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 
 | [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | 
@@ -2102,7 +2102,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Azure Machine Learning 資料準備 SDK v 1.0.16
 
-+ **錯誤 (bug) 修正**
++ **Bug 修正**
   + 修正了 API 變更所造成的服務主體驗證問題。
 
 ## <a name="2019-02-25"></a>2019-02-25

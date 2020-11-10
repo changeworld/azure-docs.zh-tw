@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287605"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445127"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -79,7 +79,7 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 ## <a name="manage-keys-certificates-and-secrets"></a>管理金鑰、憑證和秘密
 
-金鑰、秘密和憑證的存取權是由資料平面所控制。 您可以使用本機保存庫存取原則或 RBAC (預覽) 來完成資料平面存取控制。
+金鑰、秘密和憑證的存取權是由資料平面所控制。 您可以使用本機保存庫存取原則或 Azure RBAC (預覽版) 來完成資料平面存取控制。
 
 **金鑰 Api 和 Sdk**
 
@@ -104,7 +104,7 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 請參閱安裝套件和原始程式碼的 [用戶端程式庫](client-libraries.md) 。
 
-如需 Key Vault 資料平面安全性的詳細資訊，請參閱 [Key Vault 資料平面和存取原則](./secure-your-key-vault.md#data-plane-and-access-policies) ，以及 [Key Vault 資料平面和 RBAC (預覽) ](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
+如需 Key Vault 資料平面安全性的詳細資訊，請參閱 [Key Vault 資料平面和存取原則](./secure-your-key-vault.md#data-plane-and-access-policies) ，以及 [Key Vault 資料平面和 Azure RBAC (預覽) ](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
 
 ### <a name="code-examples"></a>程式碼範例
 

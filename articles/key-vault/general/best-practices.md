@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4a522e58677e2c71cb52ad7e04b288622ad62d91
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3d959cccd4fbce24e36b1ed62bc6bf417af23c82
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287331"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445501"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用 Key Vault 的最佳作法
 
@@ -24,7 +24,7 @@ ms.locfileid: "93287331"
 Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字串和密碼) 的雲端服務。 由於這項資料相當敏感且攸關業務，所以您必須藉由只允許獲得授權的應用程式和使用者，來保護金鑰保存庫的存取權。 本文 [提供 Key Vault](secure-your-key-vault.md) 存取模型的總覽。 文中會說明驗證和授權，並說明如何保護金鑰保存庫的存取權。
 
 控制保存庫存取時的建議如下：
-1. 鎖定訂用帳戶、資源群組和金鑰保存庫 (RBAC) 的存取權
+1.  (Azure RBAC) ，鎖定訂用帳戶、資源群組和金鑰保存庫的存取權
 2. 建立每個保存庫的存取原則
 3. 使用最低許可權存取主體來授與存取權
 4. 開啟防火牆和 [VNET 服務端點](overview-vnet-service-endpoints.md)
@@ -33,7 +33,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 我們的建議是在每個環境中使用每個應用程式的保存庫 (開發、進入生產階段前和生產) 。 這可協助您在不同的環境中共用秘密，也可在發生缺口時減少威脅。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 請確定您在保存庫中的物件更新/刪除/建立時，定期備份保存庫。
 

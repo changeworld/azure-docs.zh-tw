@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380994"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445146"
 ---
 # <a name="hierarchical-state-override"></a>階層式狀態覆寫
 
@@ -39,6 +39,13 @@ ms.locfileid: "94380994"
 
   > [!IMPORTANT]
   > 只有在使用 *TileBasedComposition* [轉譯模式](../../concepts/rendering-modes.md) 時，才可使用透視效果。
+
+* **`Shell`** ：幾何會轉譯為透明、消除飽和的 shell。 這種模式可讓您淡出場景中不重要的部分，同時仍然能維持圖形和相對定位的意義。 若要變更 shell 轉譯的外觀，請使用 [ShellRenderingSettings](shell-effect.md) 狀態。 請參閱下圖，以取得完全 shell 轉譯的車輛模型，但藍色彈簧除外：
+
+  ![用來淡化特定物件的 Shell 模式](./media/shell.png)
+
+  > [!IMPORTANT]
+  > Shell 效果僅適用于使用 *TileBasedComposition* 轉譯 [模式](../../concepts/rendering-modes.md) 時。
 
 * **`Selected`** ：幾何會以 [選取範圍大綱](outlines.md)呈現。
 
@@ -101,7 +108,7 @@ component->SetState(
 
 `HierarchicalStateOverrideComponent` 本身的執行個體並不會增加太多執行階段的額外負荷。 不過，將作用中元件的數目維持在較低的狀態，一般來說是很好的作法。 例如，當實作反白顯示所挑選物件的選取範圍系統時，建議您在移除反白顯示時刪除該元件。 在元件周圍使用中性功能，可快速增加。
 
-相較於標準轉譯，透明轉譯現會加重伺服器 CPU 的工作負載。 如果場景圖形的大型組件切換成 *透視* ，而且可以看見多層的幾何，則可能會變成效能瓶頸。 對於具有[選取範圍外框](../../overview/features/outlines.md#performance)的物件而言，這也是有效的作法。
+相較於標準轉譯，透明轉譯現會加重伺服器 CPU 的工作負載。 如果場景圖形的大型組件切換成 *透視* ，而且可以看見多層的幾何，則可能會變成效能瓶頸。 同樣適用于具有 [選取範圍大綱](../../overview/features/outlines.md#performance) 和 [shell](../../overview/features/shell-effect.md#performance) 轉譯的物件。 
 
 ## <a name="api-documentation"></a>API 文件
 

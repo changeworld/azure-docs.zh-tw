@@ -2,13 +2,13 @@
 title: Azure Arc 已啟用伺服器代理程式的新功能
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的版本資訊。 針對許多摘要問題，有其他詳細資料的連結。
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908156"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445280"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的新功能
 
@@ -17,6 +17,21 @@ ms.locfileid: "90908156"
 - 最新版本
 - 已知問題
 - 錯誤修正
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="fixed"></a>固定式
+
+已解決在以 RPM 為基礎的發行版本升級之後，proxy 設定可能會遺失的問題。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="fixed"></a>固定式
+
+- 固定的 proxy 腳本，用來處理替代的 GC daemon 單位檔案位置。
+- GuestConfig 代理程式可靠性變更。
+- US Gov 維吉尼亞州區域的 GuestConfig 代理程式支援。
+- GuestConfig 代理程式擴充功能報告訊息在失敗時更詳細。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
