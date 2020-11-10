@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911387"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409887"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -27,7 +27,7 @@ ms.locfileid: "92911387"
 
 ## <a name="what-is-subdomain-takeover"></a>什麼是子域接管？
 
-子域接管是常見的高嚴重性威脅，適用于定期建立和刪除許多資源的組織。 當您有指向取消布建 Azure 資源的 [DNS 記錄](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) 時，就會發生子域接管。 這類 DNS 記錄也稱為「無關聯 DNS」專案。 CNAME 記錄特別容易受到這種威脅。 子域接管可讓惡意執行者將組織網域的流量，重新導向至執行惡意活動的網站。
+子域接管是常見的高嚴重性威脅，適用于定期建立和刪除許多資源的組織。 當您有指向取消布建 Azure 資源的 [DNS 記錄](../../dns/dns-zones-records.md#dns-records) 時，就會發生子域接管。 這類 DNS 記錄也稱為「無關聯 DNS」專案。 CNAME 記錄特別容易受到這種威脅。 子域接管可讓惡意執行者將組織網域的流量，重新導向至執行惡意活動的網站。
 
 子域接管的常見案例：
 
@@ -86,7 +86,7 @@ ms.locfileid: "92911387"
 此工具支援下表所列的 Azure 資源。 此工具會將所有租使用者的 Cname 解壓縮或做為輸入。
 
 
-| Service                   | 類型                                        | FQDNproperty                               | 範例                         |
+| 服務                   | 類型                                        | FQDNproperty                               | 範例                         |
 |---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
 | Azure Front Door          | microsoft.network/frontdoors                | 屬性 cName                           | `abc.azurefd.net`               |
 | Azure Blob 儲存體        | microsoft.storage/storageaccounts           | >primaryendpoints.blob blob           | `abc. blob.core.windows.net`    |
@@ -100,7 +100,7 @@ ms.locfileid: "92911387"
 
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 以具有下列許可權的使用者身分執行查詢：
 
@@ -198,7 +198,7 @@ Azure DNS 的 [別名記錄](../../dns/dns-alias.md#scenarios) 可讓 DNS 記錄
     - 請刪除不再使用的 DNS 記錄，或將其指向您的組織所擁有的正確 Azure 資源 (FQDN) 。
  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解您可以用來防禦子域接管的相關服務和 Azure 功能，請參閱下列頁面。
 

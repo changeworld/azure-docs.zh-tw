@@ -2,18 +2,18 @@
 title: 包含檔案
 description: 包含檔案
 services: virtual-machines
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/18/2019
-ms.author: azcspmt;ayshak;cynthn
+ms.date: 11/05/2020
+ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: 4f6a6dd28662c98c89dad39da3fd5c967f227dc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d65b574fc1479d000d347020823166a4d4b968b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084039"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410570"
 ---
 Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制，而且為單一客戶專用。 在硬體世代淘汰時，隔離的大小會在特定硬體世代上運作，並且會被淘汰。
 
@@ -34,6 +34,7 @@ Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制�
 > 隔離的 VM 大小具有有限的硬體壽命。 請參閱下方以取得詳細資料
 
 ## <a name="deprecation-of-isolated-vm-sizes"></a>取代隔離的 VM 大小
+
 因為隔離的 VM 大小是硬體系結大小，所以 Azure 會在正式淘汰的大小之前12個月提供提醒。  Azure 也會在下一個硬體版本上提供更新的隔離大小，客戶可考慮將其工作負載移至這些版本。
 
 | 大小 | 隔離停用日期 | 
@@ -46,26 +47,31 @@ Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制�
 
 ## <a name="faq"></a>常見問題集
 ### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>問：即將淘汰的大小，或只有「隔離」功能？
-**答**：如果虛擬機器大小沒有 "i" 注標，則只會淘汰「隔離」功能。 如果不需要隔離，則不需要採取任何動作，且 VM 將繼續如預期般運作。 範例包括 Standard_DS15_v2、Standard_D15_v2、Standard_M128ms 等等。如果虛擬機器大小包含 "i" 注標，則大小將會被淘汰。
+**答** ：如果虛擬機器大小沒有 "i" 注標，則只會淘汰「隔離」功能。 如果不需要隔離，則不需要採取任何動作，且 VM 將繼續如預期般運作。 範例包括 Standard_DS15_v2、Standard_D15_v2、Standard_M128ms 等等。如果虛擬機器大小包含 "i" 注標，則大小將會被淘汰。
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>問：當我的 vm 落在非隔離硬體上時，是否會有停機時間？
-**答**：如果不需要隔離，就不需要採取任何動作，也不會有停機時間。
+**答** ：如果不需要隔離，就不需要採取任何動作，也不會有停機時間。
 
 ### <a name="q-is-there-any-cost-delta-for-moving-to-a-non-isolated-virtual-machine"></a>問：移至非隔離的虛擬機器是否有任何成本差異？
-**答**：否
+**答** ：否
 
 ### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>問：何時會淘汰其他隔離的大小？
-**答**：我們將在正式取代的隔離大小之前12個月提供提醒。
+**答** ：我們將在正式取代的隔離大小之前12個月提供提醒。
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>問：我是依賴銀級或金級耐久性層的 Azure Service Fabric 客戶。 這種變更對我有何影響？
-**答**：否。 即使在這項變更之後，Service Fabric 的 [持久性層](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) 提供的保證仍會繼續運作。 如果基於其他原因需要實體硬體隔離，您可能仍需要採取上述其中一個動作。 
+**答** ：否。 即使在這項變更之後，Service Fabric 的 [持久性層](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) 提供的保證仍會繼續運作。 如果基於其他原因需要實體硬體隔離，您可能仍需要採取上述其中一個動作。 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>問： D15_v2 或 DS15_v2 隔離淘汰的里程碑為何？ 
-**A**： 
-| Date | 動作 | 
-| --- | --- |
-| 2019 年 11 月 18 日 | D/DS15i_v2 (PAYG，1年 RI) 的可用性 |
-| 2020月14日  | 購買 D/DS15i_v2 1 年 RI 的最後一天 | 
-| 2020 年 5 月 15 日   | 已移除 D/DS15_v2 隔離保證 | 
-| 2021 5 月15日  | 淘汰 D/DS15i_v2 (所有客戶，但在2019年11月18日前購買了3年 RI 的 D/DS15_v2) | 
-| 2022年11月17日  | 若已在2019年11月18日之前購買 DS15_v2 了3年 RI 的客戶，請淘汰 D/DS15i_v2 ()  | 
+**A** ： 
+ 
+| Date | 動作 |
+|---|---| 
+| 2019 年 11 月 18 日 | D/DS15i_v2 (PAYG，1年 RI) 的可用性 | 
+| 2020月14日 | 購買 D/DS15i_v2 1 年 RI 的最後一天 | 
+| 2020 年 5 月 15 日 | 已移除 D/DS15_v2 隔離保證 | 
+| 2021 5 月15日 | 淘汰 D/DS15i_v2 (所有客戶，但在2019年11月18日前購買了3年 RI 的 D/DS15_v2) | 
+| 2022年11月17日 | 若已在2019年11月18日之前購買 DS15_v2 了3年 RI 的客戶，請淘汰 D/DS15i_v2 ()  |
+
+## <a name="next-steps"></a>後續步驟
+
+客戶也可以選擇使用 [Azure 的巢狀虛擬機器支援](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，進一步細分這些隔離虛擬機器的資源。

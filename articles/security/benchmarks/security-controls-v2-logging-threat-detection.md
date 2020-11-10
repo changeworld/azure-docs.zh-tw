@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360848"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408697"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全性控制 V2：記錄和威脅偵測
 
@@ -30,7 +30,7 @@ ms.locfileid: "93360848"
 
 此外，您也可以使用 Azure Sentinel 來建立分析規則，以搜尋符合您環境內特定準則的威脅。 規則會在符合準則時產生事件，讓您可以調查每個事件。 Azure Sentinel 也可以匯入協力廠商威脅情報，以增強其威脅偵測功能。 
 
-- [Azure 資訊安全中心內的威脅防護](../../security-center/threat-protection.md)
+- [Azure 資訊安全中心內的威脅防護](../../security-center/azure-defender.md)
 
 - [Azure 資訊安全中心安全性警示參考指南](../../security-center/alerts-reference.md)
 
@@ -73,7 +73,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [啟用 Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure 資訊安全中心內的威脅防護](../../security-center/threat-protection.md)
+- [Azure 資訊安全中心內的威脅防護](../../security-center/azure-defender.md)
 
 **責任** ：客戶
 
@@ -230,4 +230,3 @@ Microsoft 會維護大部分 Azure PaaS 和 SaaS 服務的時間來源。 針對
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

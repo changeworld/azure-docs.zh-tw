@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395765"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410329"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
@@ -48,11 +48,11 @@ Azure 也支援 Symantec Endpoint Protection (SEP)。 透過入口網站整合�
 
 * [在 Azure 虛擬機器上部署反惡意程式碼解決方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [適用於 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](antimalware.md)
-* [如何在 Windows VM 上安裝和設定 Trend Micro Deep Security as a Service](/azure/virtual-machines/windows/classic/install-trend)
-* [如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
+* [如何在 Windows VM 上安裝和設定 Trend Micro Deep Security as a Service](../../virtual-machines/extensions/trend.md)
+* [如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection](../../virtual-machines/extensions/symantec.md)
 * [可用於保護 Azure 虛擬機器的新反惡意程式碼選項](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/) \(英文\)
 
-## <a name="multi-factor-authentication"></a>多重要素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication 是一種驗證方法，其需要使用一個以上的驗證方法。 它可以為使用者登入和交易新增重要的第二層安全性。
 
@@ -61,7 +61,7 @@ Multi-Factor Authentication 有助於保護對資料與應用程式的存取，�
 深入了解：
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [什麼是 Azure Multi-Factor Authentication？](/azure/active-directory/authentication/multi-factor-authentication)
+* [什麼是 Azure Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md)
 * [Azure Multi-Factor Authentication 的作用](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -112,7 +112,7 @@ Azure AD Identity Protection 提供可疑登入活動和潛在弱點的合併檢
 
 深入了解：
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [第 9 頻道：Azure AD 和身分識別展示：Identity Protection 預覽](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>資訊安全中心
@@ -129,8 +129,8 @@ Azure 資訊安全中心可協助您保護、偵測威脅並採取相應的措�
 
 深入了解：
 
-* [Azure 資訊安全中心簡介](../../security-center/security-center-intro.md)
-* [改善您 Azure 資訊安全中心的安全分數](../../security-center/security-center-secure-score.md)
+* [Azure 資訊安全中心簡介](../../security-center/security-center-introduction.md)
+* [改善您 Azure 資訊安全中心的安全分數](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 

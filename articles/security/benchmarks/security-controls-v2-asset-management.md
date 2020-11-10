@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 087147038286bd7363fcc0eb3812abccc6ef9206
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201829"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408969"
 ---
 # <a name="security-control-v2-asset-management"></a>安全性控制 V2：資產管理
 
@@ -36,9 +36,9 @@ ms.locfileid: "92201829"
 
 - [Azure 管理群組總覽](../../governance/management-groups/overview.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -60,11 +60,11 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [Azure 資訊安全中心資產庫存管理](../../security-center/asset-inventory.md)
 
-- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -80,13 +80,13 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../../governance/policy/samples/index.md)
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../../governance/resource-graph/first-query-portal.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -104,9 +104,9 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [刪除 Azure 資源群組和資源](../../azure-resource-manager/management/delete-resource-group.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](../../role-based-access-control/conditional-access-azure-management.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -152,15 +152,14 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [瞭解 Azure 自動化變更追蹤和清查](../../automation/change-tracking/overview.md)
 
-- [如何在 Windows 環境中控制 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
-

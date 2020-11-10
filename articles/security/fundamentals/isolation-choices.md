@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533898"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410569"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 
@@ -86,11 +86,11 @@ Azure Active Directory 的一些其他功能包括：
 
 - Azure AD 會啟用 SaaS 應用程式的 SSO，而無論應用程式裝載於何處。 有些應用程式會與 Azure AD 同盟，有些則使用密碼 SSO。 同盟應用程式也可以支援使用者布建和 [密碼](https://www.techopedia.com/definition/31415/password-vault)保存庫。
 
-- 對 [Azure 儲存體](https://azure.microsoft.com/services/storage/)的資料存取可透過驗證來控制。 每個儲存體帳戶都有主要金鑰 ([儲存體帳戶金鑰](../../storage/common/storage-create-storage-account.md)，或稱 SAK) 和次要金鑰 (共用存取簽章，或稱 SAS)。
+- 對 [Azure 儲存體](https://azure.microsoft.com/services/storage/)的資料存取可透過驗證來控制。 每個儲存體帳戶都有主要金鑰 ([儲存體帳戶金鑰](../../storage/common/storage-account-create.md)，或稱 SAK) 和次要金鑰 (共用存取簽章，或稱 SAS)。
 
-- Azure AD 可透過與內部部署目錄的同盟、同步和複寫提供「身分識別即服務」(使用 [Active Directory Federation Services](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md))。
+- Azure AD 可透過與內部部署目錄的同盟、同步和複寫提供「身分識別即服務」(使用 [Active Directory Federation Services](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs))。
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) 是一種多因素驗證服務，需要使用者同時使用行動裝置應用程式、通話或簡訊來驗證登入。 它可與 Azure Active Directory 搭配使用，來協助保護內部部署資源和 Azure Multi-Factor Authentication Server 的安全，它還可以使用 SDK 來與自訂應用程式和目錄搭配使用。
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) 是一種多因素驗證服務，需要使用者同時使用行動裝置應用程式、通話或簡訊來驗證登入。 它可與 Azure Active Directory 搭配使用，來協助保護內部部署資源和 Azure Multi-Factor Authentication Server 的安全，它還可以使用 SDK 來與自訂應用程式和目錄搭配使用。
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) 可讓您將 Azure 虛擬機器加入 Active Directory 網域，而不需部署網域控制站。 您可以登入使用公司的 Active Directory 認證登入這些虛擬機器，並使用群組原則管理加入網域的虛擬機器，以對您所有的 Azure 虛擬機器強制執行安全性基準。
 
@@ -119,7 +119,7 @@ Microsoft Azure 提供各種雲端式計算服務，其中包含各式各樣的�
 
 ### <a name="dedicated-hosts"></a>專用主機
 
-除了上一節所述的隔離主機之外，Azure 也提供專用主機。 Azure 中的專用主機提供可裝載一或多部虛擬機器的實體伺服器，而且專用於單一 Azure 訂用帳戶的服務。 專用主機提供實體伺服器層級的硬體隔離。 系統不會在您的主機上放置其他 Vm。 專用主機會部署在相同的資料中心，並與其他非隔離的主機共用相同的網路和基礎的儲存基礎結構。 如需詳細資訊，請參閱 [Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的詳細總覽。
+除了上一節所述的隔離主機之外，Azure 也提供專用主機。 Azure 中的專用主機提供可裝載一或多部虛擬機器的實體伺服器，而且專用於單一 Azure 訂用帳戶的服務。 專用主機提供實體伺服器層級的硬體隔離。 系統不會在您的主機上放置其他 Vm。 專用主機會部署在相同的資料中心，並與其他非隔離的主機共用相同的網路和基礎的儲存基礎結構。 如需詳細資訊，請參閱 [Azure 專用主機](../../virtual-machines/dedicated-hosts.md)的詳細總覽。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 與客體 VM 之間的 Hyper-V 和根 OS 隔離
 
@@ -190,11 +190,11 @@ Microsoft Azure 的基本設計是將以 VM 為基礎的計算與儲存體分隔
 
 ### <a name="isolation-using-storage-access-control"></a>使用儲存體存取控制進行隔離
 
-**Azure 儲存體中的存取控制**具有簡單的存取控制模型。 每個 Azure 訂用帳戶都能建立一或多個儲存體帳戶。 每個儲存體帳戶都會有單一祕密金鑰，可用來控制存取該儲存體帳戶中的所有資料。
+**Azure 儲存體中的存取控制** 具有簡單的存取控制模型。 每個 Azure 訂用帳戶都能建立一或多個儲存體帳戶。 每個儲存體帳戶都會有單一祕密金鑰，可用來控制存取該儲存體帳戶中的所有資料。
 
 ![使用儲存體存取控制進行隔離](./media/isolation-choices/azure-isolation-fig9.png)
 
-** Azure 儲存體資料 (包括表格)** 可透過 [SAS (共用存取簽章)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 權杖來控制，該權杖會授與限定範圍的存取權。 SAS 會透過查詢範本 (URL) 來建立，此 URL 是利用 [SAK (儲存體帳戶金鑰)](https://msdn.microsoft.com/library/azure/ee460785.aspx) 簽署的。 該[簽署的 URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 可以提供給另一個程序 (也就是委派)，然後填入查詢的詳細資料，並提出儲存體服務的要求。 SAS 可讓您對用戶端授與限時的存取權，而不需揭露儲存體帳戶的祕密金鑰。
+**Azure 儲存體資料 (包括表格)** 可透過 [SAS (共用存取簽章)](../../storage/common/storage-sas-overview.md) 權杖來控制，該權杖會授與限定範圍的存取權。 SAS 會透過查詢範本 (URL) 來建立，此 URL 是利用 [SAK (儲存體帳戶金鑰)](/previous-versions/azure/reference/ee460785(v=azure.100)) 簽署的。 該[簽署的 URL](../../storage/common/storage-sas-overview.md) 可以提供給另一個程序 (也就是委派)，然後填入查詢的詳細資料，並提出儲存體服務的要求。 SAS 可讓您對用戶端授與限時的存取權，而不需揭露儲存體帳戶的祕密金鑰。
 
 SAS 意謂著我們可以將儲存體帳戶中物件的有限權限授與用戶端，讓該用戶端可以在一段指定的時間內使用一組指定的權限進行存取。 我們可以在不須分享您帳戶存取金鑰的情況下，授與這些有限的權限。
 
@@ -225,13 +225,13 @@ Azure 提供下列加密類型來保護資料：
 
 - [儲存體服務加密](../../storage/blobs/security-recommendations.md) 可讓您要求儲存體服務在將資料寫入 Azure 儲存體時自動加密資料。
 - [用戶端加密](../../storage/blobs/security-recommendations.md) 也提供待用加密的功能。
-- [Azure 磁碟加密](../azure-security-disk-encryption-overview.md) 允許您加密 IaaS 虛擬機器所使用的作業系統磁碟和資料磁碟。
+- [Azure 磁碟加密](./azure-disk-encryption-vms-vmss.md) 允許您加密 IaaS 虛擬機器所使用的作業系統磁碟和資料磁碟。
 
 #### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
-適用於虛擬機器 (VM) 的 [Azure 磁碟加密](../azure-security-disk-encryption-overview.md)會使用您在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中所控制的金鑰與原則來將 VM 磁碟 (包括開機和資料磁碟) 加密，以協助您達成組織安全性與合規性需求。
+適用於虛擬機器 (VM) 的 [Azure 磁碟加密](./azure-disk-encryption-vms-vmss.md)會使用您在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中所控制的金鑰與原則來將 VM 磁碟 (包括開機和資料磁碟) 加密，以協助您達成組織安全性與合規性需求。
 
-Windows 的磁碟加密解決方案是建基於 [Microsoft BitLocker 磁碟機加密](https://technet.microsoft.com/library/cc732774.aspx)，而 Linux 解決方案是建基於 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
+Windows 的磁碟加密解決方案是建基於 [Microsoft BitLocker 磁碟機加密](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))，而 Linux 解決方案是建基於 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
 在 Microsoft Azure 中啟用時，解決方案會對 IaaS VM 支援下列案例：
 
@@ -243,7 +243,7 @@ Windows 的磁碟加密解決方案是建基於 [Microsoft BitLocker 磁碟機�
 - 在執行 Windows 用戶端 OS 的 IaaS VM 上啟用加密
 - 在具有掛接路徑的磁碟區上啟用加密
 - 在使用 [mdadm (英文)](https://en.wikipedia.org/wiki/Mdadm) 設定等量磁碟 (RAID) 的 Linux VM 上啟用加密
-- 在使用資料磁碟適用之 [LVM (邏輯磁碟區管理員) (英文)](https://msdn.microsoft.com/library/windows/desktop/bb540532) 的 Linux VM 上啟用加密
+- 在使用資料磁碟適用之 [LVM (邏輯磁碟區管理員) (英文)](/windows/win32/fileio/about-volume-management) 的 Linux VM 上啟用加密
 - 在使用儲存空間設定的 Windows VM 上啟用加密
 - 所有 Azure 公用區域皆受到支援
 

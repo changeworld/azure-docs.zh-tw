@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757931"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408732"
 ---
 # <a name="security-control-v2-identity-management"></a>安全性控制 V2：身分識別管理
 
@@ -39,13 +39,13 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 - [定義 Azure AD 租使用者](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [使用應用程式的外部識別提供者](/azure/active-directory/b2b/identity-providers)
+- [使用應用程式的外部識別提供者](../../active-directory/external-identities/identity-providers.md)
 
 - [Azure AD 中的身分識別安全分數為何](../../active-directory/fundamentals/identity-secure-score.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -75,9 +75,9 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 使用 Azure Key Vault 進行安全性主體註冊：驗證 # 授權-a-安全性-主體到存取金鑰-保存庫
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -95,9 +95,9 @@ Azure AD 可提供 Azure 資源、雲端應用程式和內部部署應用程式�
 
 - [瞭解 Azure AD 的應用程式 SSO](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -130,9 +130,9 @@ Azure AD 透過多重要素驗證 (MFA) 和強式無密碼方法來支援強式�
 
 - [使用 Azure AD 密碼保護來消除錯誤的密碼](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -163,13 +163,13 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [Azure AD 中的審核活動報告](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../../security-center/security-center-identity-access.md)
 
-- [Azure 資訊安全中心的威脅情報保護模組中的警示](/azure/security-center/alerts-reference)
+- [Azure 資訊安全中心的威脅情報保護模組中的警示](../../security-center/alerts-reference.md)
 
 - [如何將 Azure 活動記錄整合到 Azure 監視器](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -177,9 +177,9 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [Azure 進階威脅防護](/azure-advanced-threat-protection/what-is-atp)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -199,9 +199,9 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [使用條件式存取來設定驗證工作階段管理](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -225,9 +225,9 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [GitHub 秘密掃描](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -249,9 +249,9 @@ Azure AD 應用程式 Proxy 可讓您將舊版內部部署應用程式發佈至�
 
 - [Microsoft Cloud App Security 最佳作法](/cloud-app-security/best-practices)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329426"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408663"
 ---
 # <a name="security-control-v2-network-security"></a>安全性控制 V2：網路安全性
 
@@ -40,9 +40,9 @@ ms.locfileid: "91329426"
 
 - [Azure Sentinel 不安全的通訊協定活頁簿](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -68,9 +68,9 @@ ms.locfileid: "91329426"
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -92,9 +92,9 @@ ms.locfileid: "91329426"
 
 - [瞭解虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -116,15 +116,15 @@ ms.locfileid: "91329426"
 -   藉由在 Azure 虛擬網路上啟用 DDoS 標準保護，來保護您的資產免于 DDoS 攻擊。 
 -   使用 Azure 資訊安全中心來偵測與上述相關的設定錯誤的風險。 
 
-- [Azure 防火牆檔](/azure/firewall/)
+- [Azure 防火牆檔](../../firewall/index.yml)
 
 - [如何部署 Azure WAF](../../web-application-firewall/overview.md)
 
 - [使用 Azure 入口網站管理 Azure DDoS 保護標準](../../virtual-network/manage-ddos-protection.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 無
 
@@ -144,9 +144,9 @@ ms.locfileid: "91329426"
 
 - [Microsoft Defender ATP EDR 功能](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -168,11 +168,11 @@ ms.locfileid: "91329426"
 
 - [瞭解和使用服務標記](../../virtual-network/service-tags-overview.md)
 
-- [瞭解及使用應用程式安全性群組](/azure/virtual-network/security-overview#application-security-groups)
+- [瞭解及使用應用程式安全性群組](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -196,13 +196,12 @@ ms.locfileid: "91329426"
 
 - [防止無關聯的 DNS 專案，並避免子域接管](../fundamentals/subdomain-takeover.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
-- [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
-
+- [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

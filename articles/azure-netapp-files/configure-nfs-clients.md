@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b8b4b56693023ede2ccf8ae7eeac7ed5e16824
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216856"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409564"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>設定 Azure NetApp Files 的 NFS 用戶端
 
@@ -75,7 +75,10 @@ ms.locfileid: "92216856"
     例如： 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
-
+    
+    確定 `default_realm` 已將設定為中提供的領域 `/etc/krb5.conf` 。  如果沒有，請將它新增至檔案中的區段底下， `[libdefaults]` 如下列範例所示：
+    
+    `default_realm = CONTOSO.COM`
 
 7. 重新開機所有 NFS 服務：  
  

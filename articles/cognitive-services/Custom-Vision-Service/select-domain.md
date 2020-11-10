@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82127764"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409377"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>選取自訂視覺專案的網域
 
@@ -42,30 +42,18 @@ ms.locfileid: "82127764"
 
 ## <a name="compact-domains"></a>精簡領域
 
-精簡領域所產生的模型可以匯出到本機執行。 模型效能會因選取的網域而異。 在下表中，我們會報告 Intel 桌面 CPU 和 NVidia GPU 1 上的模型大小和推斷時間 \[ \] 。 
+精簡領域所產生的模型可以匯出到本機執行。 在自訂視覺3.4 公開預覽 API 中，您可以藉由呼叫 GetDomains API 取得 compact 網域的可匯出平臺清單。
 
-> [!NOTE]
-> 這些數位不包括前置處理和後處理時間。
+模型效能會因選取的網域而異。 在下表中，我們會報告 Intel 桌面 CPU 和 NVidia GPU 1 上的模型大小和推斷時間 \[ \] 。 這些數位不包括前置處理和後處理時間。
 
-|Task|網域|模型大小|CPU 推斷時間|GPU 推斷時間|
+|Task|Domain|模型大小|CPU 推斷時間|GPU 推斷時間|
 |---|---|---|---|---|
 |分類|一般 (精簡)|5 MB|13 毫秒|5 毫秒|
 |物件偵測|一般 (精簡)|45 MB|35毫秒|5 毫秒|
 |物件偵測|一般 (compact) [S1]|14 MB|27毫秒|7 毫秒|
 
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (視覺 AI 開發工具組) 
-
-如果選取了 compact 網域，則會提供額外的「匯出功能」選項，讓您能夠區別「基本平臺」和「視覺 AI 開發工具組」。
-
-在 [ _匯出功能_ ] 下，兩個選項如下：
-
-- 基本平臺 (Tensorflow、CoreML、ONNX 等 ) 
-- 視覺 AI 開發工具組。
-
-當您選取 [ _視覺 AI 開發工具組_ ] 時，[ _一般_]、[ _地標_] 和 [ _零售_ ]，而非 [ _食物_ ] compact 網域可用於影像分類，而 _一般 (compact) _ 和 _一般 (compact) [S1]_ 可用於物件偵測。
-
 >[!NOTE]
->用於物件偵測的__一般 (compact) __網域需要特殊的後處理邏輯。 如需詳細資料，請參閱匯出的 zip 套件中的範例腳本。 如果您需要不含後處理邏輯的模型，請使用 __一般 (compact) [S1]__。
+>用於物件偵測的 __一般 (compact)__ 網域需要特殊的後處理邏輯。 如需詳細資料，請參閱匯出的 zip 套件中的範例腳本。 如果您需要不含後處理邏輯的模型，請使用 __一般 (compact) [S1]__ 。
 
 >[!IMPORTANT]
 >無法保證匯出的模型會提供與雲端上的預測 API 完全相同的結果。 在執行中的平臺或前置處理的實作為微差異，可能會導致模型輸出中有較大的差異。 如需前置處理邏輯的詳細資料，請參閱 [這份檔](quickstarts/image-classification.md)。

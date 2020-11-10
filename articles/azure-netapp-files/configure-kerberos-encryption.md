@@ -12,24 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331884"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410091"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>為 Azure NetApp Files 設定 Nfsv4.1 4.1 Kerberos 加密
 
 Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、krb5i 和 krb5p) 搭配 AES-256 加密。 本文說明搭配 Kerberos 加密使用 Nfsv4.1 4.1 磁片區所需的設定。
 
-## <a name="considerations"></a>考量
-
-* Nfsv4.1 4.1 Kerberos 加密磁片區目前不支援 Azure Active Directory Domain Services (AADDS) 。 
-
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 下列需求適用于 Nfsv4.1 4.1 用戶端加密： 
 

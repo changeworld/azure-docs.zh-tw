@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462525"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408068"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>保護 Azure 中 PaaS 資料庫的最佳做法
 
@@ -36,11 +36,11 @@ Azure SQL Database 和 Azure Synapse Analytics 為您以網際網路為基礎的
 
 Azure SQL Database 可以設定為使用兩種驗證類型的其中一種：
 
-- **SQL 驗證**會使用使用者名稱和密碼。 當您為資料庫建立伺服器時，您已使用使用者名稱和密碼指定了「伺服器管理員」登入。 使用這些認證時，您能夠以資料庫擁有者身分向該伺服器上的任何資料庫進行驗證。
+- **SQL 驗證** 會使用使用者名稱和密碼。 當您為資料庫建立伺服器時，您已使用使用者名稱和密碼指定了「伺服器管理員」登入。 使用這些認證時，您能夠以資料庫擁有者身分向該伺服器上的任何資料庫進行驗證。
 
-- **Azure Active Directory 驗證**會使用由 Azure Active Directory 管理的身分識別，並且受控網域和整合式網域都支援此驗證。 若要使用「Azure Active Directory 驗證」，您必須建立另一個名為「Azure AD 管理員」的伺服器管理員，此管理員能夠管理 Azure AD 使用者和群組。 此管理員也可以執行一般伺服器管理員可執行的所有作業。
+- **Azure Active Directory 驗證** 會使用由 Azure Active Directory 管理的身分識別，並且受控網域和整合式網域都支援此驗證。 若要使用「Azure Active Directory 驗證」，您必須建立另一個名為「Azure AD 管理員」的伺服器管理員，此管理員能夠管理 Azure AD 使用者和群組。 此管理員也可以執行一般伺服器管理員可執行的所有作業。
 
-[Azure Active Directory authentication](../../active-directory/develop/authentication-scenarios.md) 是使用 AZURE ACTIVE DIRECTORY (AD) 中的身分識別連接到 Azure SQL Database 和 Azure Synapse Analytics 的機制。 Azure AD 提供一個 SQL Server 驗證替代方案，可讓您停止在各個資料庫伺服器擴散使用者身分識別。 Azure AD 驗證可讓您在一個中央位置集中管理資料庫使用者及其他 Microsoft 服務的身分識別。 中央識別碼管理提供單一位置以管理資料庫使用者並簡化權限管理。  
+[Azure Active Directory authentication](../../active-directory/develop/authentication-vs-authorization.md) 是使用 AZURE ACTIVE DIRECTORY (AD) 中的身分識別連接到 Azure SQL Database 和 Azure Synapse Analytics 的機制。 Azure AD 提供一個 SQL Server 驗證替代方案，可讓您停止在各個資料庫伺服器擴散使用者身分識別。 Azure AD 驗證可讓您在一個中央位置集中管理資料庫使用者及其他 Microsoft 服務的身分識別。 中央識別碼管理提供單一位置以管理資料庫使用者並簡化權限管理。  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>使用 Azure AD 而不使用 SQL 驗證的好處
 
@@ -50,7 +50,7 @@ Azure SQL Database 可以設定為使用兩種驗證類型的其中一種：
 - 使用自主資料庫使用者，在資料庫層級驗證身分。
 - 針對連線到 SQL Database 的應用程式支援權杖型驗證。
 - 支援 Active Directory Federation Services (ADFS) 的網域同盟或本機 Azure AD 的原生使用者/密碼驗證，而不需進行網域同步處理。
-- 支援來自 SQL Server Management Studio 之使用「Active Directory 通用驗證」(包括 [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)) 的連線。 MFA 包含增強式驗證功能，其中提供一系列簡易的驗證選項，例如電話、簡訊、含有 PIN 的智慧卡或行動應用程式通知。 如需詳細資訊，請參閱 [使用 SQL Database 和 Azure Synapse Analytics 的通用驗證](../../azure-sql/database/authentication-mfa-ssms-overview.md)。
+- 支援來自 SQL Server Management Studio 之使用「Active Directory 通用驗證」(包括 [Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md)) 的連線。 MFA 包含增強式驗證功能，其中提供一系列簡易的驗證選項，例如電話、簡訊、含有 PIN 的智慧卡或行動應用程式通知。 如需詳細資訊，請參閱 [使用 SQL Database 和 Azure Synapse Analytics 的通用驗證](../../azure-sql/database/authentication-mfa-ssms-overview.md)。
 
 若要深入了解 Azure AD 驗證，請參閱：
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055306"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410771"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>語音服務：檔的新功能
 
@@ -23,9 +23,10 @@ ms.locfileid: "89055306"
 
 ### <a name="service-updates"></a>服務更新
 
-如果您想要瞭解語音服務、語音 SDK、語音裝置 SDK 或語音 CLI 的更新，請參閱：
+如果您想要瞭解「語音服務」、「語音 SDK」、「語音裝置 SDK」、「語音 CLI」或「語音」容器的更新，請參閱：
 * [語音 SDK 版本](releasenotes.md)資訊。
 * [語音裝置 SDK 版本資訊](devices-sdk-release-notes.md)
+* [認知服務容器版本資訊](../containers/container-image-tags.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -57,7 +58,7 @@ ms.locfileid: "89055306"
 
 此資料表每月更新一次，而且只會反映在5月開啟的問題。  
 
-|識別碼|User|描述|已開啟|State|類型|
+|識別碼|User|描述|已開啟|狀態|類型|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|因為缺少 bot 的端點，所以已丟棄活動|2020-05-31|封閉式|問題|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|發佈 bot 的步驟錯誤|2020-05-31|開啟|問題|

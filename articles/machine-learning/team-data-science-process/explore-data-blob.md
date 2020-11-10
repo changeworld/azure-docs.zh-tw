@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2ee92a9eaf9316cbd453ea1ec4def58bb543a5a6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321141"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410669"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 Pandas 瀏覽 Azure blob 儲存體中的資料
 
@@ -69,7 +69,7 @@ ms.locfileid: "93321141"
 1. 檢查 **資料列和資料行的數目**
 
     ```python
-    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    print('the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape)
     ```
 
 1. **檢查** 資料集中的前幾個或最後幾個 **資料列** ：
@@ -84,7 +84,7 @@ ms.locfileid: "93321141"
 
     ```python
     for col in dataframe_blobdata.columns:
-        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+        print(dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype)
     ```
 
 1. 檢查資料集中資料行的 **基本統計資料** ，如下所示
@@ -103,7 +103,7 @@ ms.locfileid: "93321141"
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-    print miss_num
+    print(miss_num)
     ```
 
 1. 如果您在資料的特定資料行中有 **遺漏值** ，則可卸除它們，如下所示：

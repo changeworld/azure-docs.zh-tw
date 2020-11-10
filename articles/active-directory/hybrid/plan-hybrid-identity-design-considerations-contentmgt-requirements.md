@@ -16,15 +16,15 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57990fda7475b95bd6582fa5a495ac8d24aa55d5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "64918449"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408527"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的內容管理需求
-了解適合您企業的內容管理需求，可能會直接影響您決定要使用哪一個混合式身分識別解決方案。 由於裝置數目激增，而且可讓使用者攜帶自己的裝置 ([BYOD](https://aka.ms/byodcg))，所以公司必須保護它自己的資料，但它也必須完整保持使用者的隱私權。 通常當使用者擁有自己的裝置時，可能也會有多個認證，將根據其使用的應用程式來替換。 請務必區分使用個人認證建立的內容以及使用公司認證建立的內容。 您的身分識別解決方案應該能夠與雲端服務互動，為終端使用者提供順暢的體驗，同時確保其隱私權並提高保護來防止資料外洩。 
+了解適合您企業的內容管理需求，可能會直接影響您決定要使用哪一個混合式身分識別解決方案。 由於裝置數目激增，而且可讓使用者攜帶自己的裝置 ([BYOD](/mem/intune/fundamentals/byod-technology-decisions))，所以公司必須保護它自己的資料，但它也必須完整保持使用者的隱私權。 通常當使用者擁有自己的裝置時，可能也會有多個認證，將根據其使用的應用程式來替換。 請務必區分使用個人認證建立的內容以及使用公司認證建立的內容。 您的身分識別解決方案應該能夠與雲端服務互動，為終端使用者提供順暢的體驗，同時確保其隱私權並提高保護來防止資料外洩。 
 
 您的身分識別解決方案是透過不同技術控制項來運用，以便提供內容管理，如下圖所示：
 
@@ -69,4 +69,3 @@ ms.locfileid: "64918449"
 
 ## <a name="see-also"></a>另請參閱
 [設計考量概觀](plan-hybrid-identity-design-considerations-overview.md)
-

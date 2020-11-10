@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127054"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410057"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -42,13 +42,13 @@ ms.locfileid: "93127054"
 ![身分識別安全分數](./media/steps-secure-identity/azure-ad-sec-steps0.png)
 
 > [!NOTE]
-> 這裡所述的許多功能都需要 Azure AD Premium 訂用帳戶，有些則免費。 如需詳細資訊，請參閱我們的 [Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 部署檢查清單](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2)。
+> 這裡所述的許多功能都需要 Azure AD Premium 訂用帳戶，有些則免費。 如需詳細資訊，請參閱我們的 [Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 部署檢查清單](../../active-directory/fundamentals/active-directory-deployment-checklist-p2.md)。
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>開始之前：使用 MFA 保護特殊權限帳戶
 
 在開始進行此檢查清單之前，請確定您不會在閱讀此檢查清單時遭到入侵。 您必須先保護特殊權限帳戶。
 
-攻擊者若掌控了特殊權限帳戶，將會造成極大的破壞，因此請務必先保護這些帳戶。 使用 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)或[條件式存取](../../active-directory/conditional-access/plan-conditional-access.md)，為組織中的所有系統管理員啟用並要求 [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA)。 如果您尚未實作 MFA，請立即實作！ 這一點非常重要。
+攻擊者若掌控了特殊權限帳戶，將會造成極大的破壞，因此請務必先保護這些帳戶。 使用 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)或[條件式存取](../../active-directory/conditional-access/plan-conditional-access.md)，為組織中的所有系統管理員啟用並要求 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA)。 如果您尚未實作 MFA，請立即實作！ 這一點非常重要。
 
 全都準備好了嗎？ 那就開始進行此檢查清單吧。
 
@@ -59,7 +59,7 @@ ms.locfileid: "93127054"
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>確定組織使用的是強式驗證
 
-有鑑於入侵者經常會猜測、誘騙或以惡意程式碼竊取密碼，使用者也經常會重複使用密碼，所以請務必使用某種形式的強式認證來支援密碼 - 詳情請參閱 [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md)。
+有鑑於入侵者經常會猜測、誘騙或以惡意程式碼竊取密碼，使用者也經常會重複使用密碼，所以請務必使用某種形式的強式認證來支援密碼 - 詳情請參閱 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 若要輕鬆啟用基本層級的身分識別安全性，您可以搭配 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)來使用單鍵啟用。 安全性預設值會對租用戶中的所有使用者強制執行 Azure MFA，並封鎖來自整個舊版通訊協定租用戶的登入。
 
@@ -75,14 +75,14 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 2. 停用到期規則，因為到期規則會讓使用者想要使用容易猜測的密碼，例如 **Spring2019!**
 3. 停用字元組合規定，防止使用者選擇常常受到攻擊的密碼，原因是這些規定會導致使用者在密碼中選擇可預測的替代字元。
 
-如果您是直接在 Azure AD 中建立身分識別，則可以使用 [PowerShell 來防止使用者的密碼到期](../../active-directory/authentication/concept-sspr-policy.md)。 混合式組織應使用[網域群組原則設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) \(英文\) 或 [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) \(英文\) 來實作這些原則。
+如果您是直接在 Azure AD 中建立身分識別，則可以使用 [PowerShell 來防止使用者的密碼到期](../../active-directory/authentication/concept-sspr-policy.md)。 混合式組織應使用[網域群組原則設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) \(英文\) 或 [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) \(英文\) 來實作這些原則。
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>防止認證外洩並新增遇到中斷時的復原能力
 
 如果您的組織使用搭配傳遞驗證或同盟的混合式身分識別解決方案，則基於下列兩個原因，您應該啟用密碼雜湊同步處理：
 
-* Azure AD 管理中的[認證外洩的使用者](../../active-directory/reports-monitoring/concept-risk-events.md)報告會就「暗網 (Dark Web)」上已公開的使用者名稱和密碼組向您發出警告。 數量驚人的密碼是透過網路釣魚、惡意程式碼，以及在第三方網站上重複使用密碼並於之後遭到入侵而外洩的。 Microsoft 已發現許多這樣的外洩認證，並會在此報告中告訴您它們是否與您組織的認證相符，但前提是您必須[啟用密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
-* 如果發生內部部署中斷 (例如，在勒索軟體攻擊中) 您可以 [使用密碼雜湊同步](choose-ad-authn.md)處理來切換到使用雲端驗證。這種備份驗證方法可讓您繼續存取設定為使用 Azure Active Directory 進行驗證的應用程式，包括 Microsoft 365。 在此情況下，在解決內部部署中斷之前，IT 員工將不需要被迫使用個人電子郵件帳戶來共用資料。
+* Azure AD 管理中的[認證外洩的使用者](../../active-directory/identity-protection/overview-identity-protection.md)報告會就「暗網 (Dark Web)」上已公開的使用者名稱和密碼組向您發出警告。 數量驚人的密碼是透過網路釣魚、惡意程式碼，以及在第三方網站上重複使用密碼並於之後遭到入侵而外洩的。 Microsoft 已發現許多這樣的外洩認證，並會在此報告中告訴您它們是否與您組織的認證相符，但前提是您必須[啟用密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
+* 如果發生內部部署中斷 (例如，在勒索軟體攻擊中) 您可以 [使用密碼雜湊同步](../../active-directory/hybrid/choose-ad-authn.md)處理來切換到使用雲端驗證。這種備份驗證方法可讓您繼續存取設定為使用 Azure Active Directory 進行驗證的應用程式，包括 Microsoft 365。 在此情況下，在解決內部部署中斷之前，IT 員工將不需要被迫使用個人電子郵件帳戶來共用資料。
 
 深入了解[密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的運作方式。
 
@@ -91,11 +91,11 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>實作 AD FS 外部網路智慧鎖定
 
-將應用程式設定為直接向 Azure AD 進行驗證的組織，可受益於 [Azure AD 智慧鎖定](../../active-directory/authentication/concept-sspr-howitworks.md)。 如果您是在 Windows Server 2012R2 中使用 AD FS，請實作 AD FS [外部網路鎖定保護](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) \(英文\)。 如果您是在 Windows Server 2016 上使用 AD FS，請實作[外部網路智慧鎖定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016) \(機器翻譯\)。 AD FS 智慧外部網路鎖定可防範以 AD FS 目標的暴力密碼破解攻擊，並防止系統在 Active Directory 中鎖定使用者。
+將應用程式設定為直接向 Azure AD 進行驗證的組織，可受益於 [Azure AD 智慧鎖定](../../active-directory/authentication/concept-sspr-howitworks.md)。 如果您是在 Windows Server 2012R2 中使用 AD FS，請實作 AD FS [外部網路鎖定保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) \(英文\)。 如果您是在 Windows Server 2016 上使用 AD FS，請實作[外部網路智慧鎖定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016) \(機器翻譯\)。 AD FS 智慧外部網路鎖定可防範以 AD FS 目標的暴力密碼破解攻擊，並防止系統在 Active Directory 中鎖定使用者。
 
 ### <a name="take-advantage-of-intrinsically-secure-easier-to-use-credentials"></a>利用真正安全、更容易使用的認證
 
-使用 [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)，即可在 PC 和行動裝置上將密碼改為強式雙因素驗證。 這個驗證包含與裝置安全繫結的新型使用者認證，且會使用生物特徵辨識或 PIN 碼。
+使用 [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)，即可在 PC 和行動裝置上將密碼改為強式雙因素驗證。 這個驗證包含與裝置安全繫結的新型使用者認證，且會使用生物特徵辨識或 PIN 碼。
 
 ## <a name="step-2---reduce-your-attack-surface"></a>步驟 2 - 減少受攻擊面
 
@@ -105,8 +105,8 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 使用自有舊式方法來向 Azure AD 進行驗證和存取公司資料的應用程式，會對組織造成其他風險。 使用舊式驗證的應用程式範例包括 POP3、IMAP4 或 SMTP 用戶端。 舊式驗證應用程式會代表使用者進行驗證，而讓 Azure AD 無法進行進階的安全性評估。 作為替代的新式驗證可支援多重要素驗證和條件式存取，所以會減少安全性風險。 建議您進行下列三個動作：
 
-1. 封鎖[舊式驗證 (如果您使用 AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
-2. 將 [SharePoint Online 和 Exchange Online 設定為使用新式驗證](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md)。
+1. 封鎖[舊式驗證 (如果您使用 AD FS)](/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
+2. 將 [SharePoint Online 和 Exchange Online 設定為使用新式驗證](../../active-directory/conditional-access/block-legacy-authentication.md)。
 3. 如果您擁有 Azure AD Premium，請使用條件式存取原則來[封鎖舊版驗證](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md)，否則請使用 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
 
 ### <a name="block-invalid-authentication-entry-points"></a>封鎖無效的驗證進入點
@@ -143,13 +143,13 @@ Azure Active Directory 有許多會自動攔截攻擊的功能，可讓偵測與
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 來實作使用者風險安全性原則
 
-使用者風險可指出使用者的身分識別已遭到入侵的可能性，並會根據與使用者身分識別相關聯的[使用者風險偵測](../../active-directory/identity-protection/overview.md)來算出。 使用者風險原則是條件式存取原則，可評估特定使用者或群組的風險層級。 根據低、中、高風險層級，原則可以設定為封鎖存取，也可以設定為必須使用多重要素驗證來進行安全密碼變更。 Microsoft 會建議您要求高風險使用者必須進行安全密碼變更。
+使用者風險可指出使用者的身分識別已遭到入侵的可能性，並會根據與使用者身分識別相關聯的[使用者風險偵測](../../active-directory/identity-protection/overview-identity-protection.md)來算出。 使用者風險原則是條件式存取原則，可評估特定使用者或群組的風險層級。 根據低、中、高風險層級，原則可以設定為封鎖存取，也可以設定為必須使用多重要素驗證來進行安全密碼變更。 Microsoft 會建議您要求高風險使用者必須進行安全密碼變更。
 
 ![螢幕擷取畫面顯示已選取使用者，並標示為有風險的使用者。](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 來實作登入風險原則
 
-登入風險是指帳戶擁有者以外人士嘗試使用身分識別來登入的可能性。 [登入風險原則](../../active-directory/identity-protection/overview.md)是條件式存取原則，可評估特定使用者或群組的風險層級。 根據風險層級 (高/中/低)，原則可以設定為封鎖存取，也可以設定為強制使用多重要素驗證。 請確定您有對中等以上風險的登入，強制使用多重要素驗證。
+登入風險是指帳戶擁有者以外人士嘗試使用身分識別來登入的可能性。 [登入風險原則](../../active-directory/identity-protection/overview-identity-protection.md)是條件式存取原則，可評估特定使用者或群組的風險層級。 根據風險層級 (高/中/低)，原則可以設定為封鎖存取，也可以設定為強制使用多重要素驗證。 請確定您有對中等以上風險的登入，強制使用多重要素驗證。
 
 ![從匿名 IP 登入](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
@@ -169,7 +169,7 @@ Microsoft Azure 服務和功能提供可設定的安全性稽核和記錄選項�
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>監視 Azure AD Identity Protection 事件
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) 是一種通知、監視和報告工具，可用來偵測會影響組織身分識別的潛在弱點。 它會偵測風險偵測，例如外洩的認證、不可能的行進路線、源自受感染裝置的登入、匿名 IP 位址、與可疑活動相關聯的 IP 位址，以及不明的位置。 請啟用通知警示，以接收有風險使用者的電子郵件和/或每週摘要電子郵件。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) 是一種通知、監視和報告工具，可用來偵測會影響組織身分識別的潛在弱點。 它會偵測風險偵測，例如外洩的認證、不可能的行進路線、源自受感染裝置的登入、匿名 IP 位址、與可疑活動相關聯的 IP 位址，以及不明的位置。 請啟用通知警示，以接收有風險使用者的電子郵件和/或每週摘要電子郵件。
 
 Azure AD Identity Protection 能提供兩個您應該每天監視的重要報告：
 1. 具風險的登入報告將能顯示您應該調查的使用者登入活動，因為執行該登入的可能不是帳戶的合法使用者。
@@ -179,9 +179,9 @@ Azure AD Identity Protection 能提供兩個您應該每天監視的重要報告
 
 ### <a name="audit-apps-and-consented-permissions"></a>稽核應用程式和已同意的權限
 
-使用者可能會遭到誘騙而瀏覽至被入侵的網站或應用程式，並使其取得使用者的設定檔資訊和使用者資料 (例如其電子郵件)。 惡意的執行者可以使用其所接收到的已同意權限來對使用者的信箱內容進行加密，並要求使用者支付贖金以重新存取其信箱資料。 [管理員應該檢閱並稽核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)使用者所提供的權限，或停用使用者依預設可提供同意的能力。
+使用者可能會遭到誘騙而瀏覽至被入侵的網站或應用程式，並使其取得使用者的設定檔資訊和使用者資料 (例如其電子郵件)。 惡意的執行者可以使用其所接收到的已同意權限來對使用者的信箱內容進行加密，並要求使用者支付贖金以重新存取其信箱資料。 [管理員應該檢閱並稽核](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)使用者所提供的權限，或停用使用者依預設可提供同意的能力。
 
-除了稽核使用者所提供的權限之外，您還可以在進階環境中[找出有風險或不想要的 OAuth 應用程式](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)。
+除了稽核使用者所提供的權限之外，您還可以在進階環境中[找出有風險或不想要的 OAuth 應用程式](/cloud-app-security/investigate-risky-oauth)。
 
 ## <a name="step-5---enable-end-user-self-service"></a>步驟 5 - 啟用終端使用者自助服務
 
@@ -189,7 +189,7 @@ Azure AD Identity Protection 能提供兩個您應該每天監視的重要報告
 
 ### <a name="implement-self-service-password-reset"></a>實作自助密碼重設
 
-Azure AD 的[自助密碼重設 (SSPR)](../../active-directory/authentication/quickstart-sspr.md) 提供簡單的方法，讓 IT 系統管理員允許使用者重設或解除鎖定其密碼或帳戶，而不必技術支援中心或系統管理員介入處理。 系統包含詳細的報告以供追蹤使用者何時重設其密碼，並有通知可針對誤用或濫用的情形向您發出警示。
+Azure AD 的[自助密碼重設 (SSPR)](../../active-directory/authentication/tutorial-enable-sspr.md) 提供簡單的方法，讓 IT 系統管理員允許使用者重設或解除鎖定其密碼或帳戶，而不必技術支援中心或系統管理員介入處理。 系統包含詳細的報告以供追蹤使用者何時重設其密碼，並有通知可針對誤用或濫用的情形向您發出警示。
 
 ### <a name="implement-self-service-group-and-application-access"></a>實作自助式的群組和應用程式存取
 
@@ -213,6 +213,6 @@ Azure AD 可讓非系統管理員使用安全性群組、Microsoft 365 群組、
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您需要協助來規劃和部署各項建議，請參閱 [Azure AD 專案部署方案](https://aka.ms/deploymentplans)中的說明。
+如果您需要協助來規劃和部署各項建議，請參閱 [Azure AD 專案部署方案](../../active-directory/fundamentals/active-directory-deployment-plans.md)中的說明。
 
 如果您確信所有這些步驟都已完成，請使用 Microsoft 的[身分識別安全分數](../../active-directory/fundamentals/identity-secure-score.md)，以隨時掌握[最新的最佳做法](identity-management-best-practices.md)和安全性威脅。

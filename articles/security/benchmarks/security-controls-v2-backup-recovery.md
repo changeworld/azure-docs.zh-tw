@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322116"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408935"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全性控制 V2：備份和復原
 
@@ -32,13 +32,13 @@ ms.locfileid: "91322116"
 
 - [企業級商務持續性和災害復原](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery) \(部分機器翻譯\)
 
-- [如何啟用 Azure 備份](/azure/backup/)
+- [如何啟用 Azure 備份](../../backup/index.yml)
 
-- [如何啟用跨區域還原](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
+- [如何啟用跨區域還原](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [原則和標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -60,17 +60,17 @@ ms.locfileid: "91322116"
 
 在 Azure 備份、Azure Key Vault 或其他資源中使用角色型存取控制，以保護備份和客戶管理的金鑰。 此外，您可以啟用 advanced security 功能來要求 MFA，然後才能改變或刪除備份。
 
-- [Azure 備份中的安全性功能概觀](/azure/backup/security-overview)
+- [Azure 備份中的安全性功能概觀](../../backup/security-overview.md)
 
-- [使用客戶管理的金鑰來加密備份資料](/azure/backup/encryption-at-rest-with-cmk) 
+- [使用客戶管理的金鑰來加密備份資料](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [如何在 Azure 中備份 Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中備份 Key Vault 金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-- [協助保護混合式備份免于遭受攻擊的安全性功能](/azure/backup/backup-azure-security-feature#prevent-attacks)
+- [協助保護混合式備份免于遭受攻擊的安全性功能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -86,13 +86,13 @@ ms.locfileid: "91322116"
 
 定期執行備份的資料還原。 確定您可以還原已備份的客戶管理金鑰。
 
-- [如何從 Azure 虛擬機器備份復原檔案](/azure/backup/backup-azure-restore-files-from-vm)
+- [如何從 Azure 虛擬機器備份復原檔案](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [如何在 Azure 中還原 Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原 Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -106,15 +106,14 @@ ms.locfileid: "91322116"
 
 確定您已備妥量值，以防止和復原遺失的金鑰。 啟用 Azure Key Vault 中的虛刪除和清除保護，以防止金鑰遭到意外或惡意刪除。  
 
-- [如何啟用 Key Vault 中的虛刪除和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何啟用 Key Vault 中的虛刪除和清除保護](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [資料安全性](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

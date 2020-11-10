@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241322"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410924"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 驗證與授權錯誤碼 \(部分機器翻譯\)
 
@@ -48,7 +48,7 @@ ms.locfileid: "93241322"
 }
 ```
 
-| 參數         | Description    |
+| 參數         | 描述    |
 |-------------------|----------------|
 | `error`       | 錯誤碼字串，可用來分類所發生錯誤的類型，並使用該字串來回應錯誤。 |
 | `error_description` | 協助開發人員識別驗證錯誤根本原因的特定錯誤訊息。 請勿使用這個欄位來回應程式碼中的錯誤。 |
@@ -74,7 +74,7 @@ ms.locfileid: "93241322"
 ## <a name="lookup-current-error-code-information"></a>查閱目前的錯誤碼資訊
 錯誤碼和訊息可能會變更。  如需最新資訊，請查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 頁面以尋找 AADSTS 錯誤描述、修正，以及一些建議的因應措施。  
 
-搜尋傳回錯誤碼的數值部分。  例如，如果您收到錯誤碼 "AADSTS16000"，請在中搜尋 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000"。  您也可以直接連結到特定的錯誤，方法是將錯誤碼號碼新增至 URL： [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) 。
+例如，如果您收到錯誤碼 "AADSTS50058"，請在中搜尋 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058"。  您也可以直接連結到特定的錯誤，方法是將錯誤碼號碼新增至 URL： [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) 。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 錯誤碼
 
@@ -250,7 +250,7 @@ ms.locfileid: "93241322"
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 此功能已停用。 |
 | AADSTS90051 | InvalidNationalCloudId - 全國性雲端識別碼包含無效的雲端識別碼。 |
 | AADSTS90055 | TenantThrottlingError - 有太多傳入要求。 此例外狀況因為封鎖的租用戶而擲回。 |
-| AADSTS90056 | BadResourceRequest - 若要兌換存取權杖的程式碼，應用程式應將 POST 要求傳送至 `/token` 端點。 此外，在此之前，您應該提供授權碼並以 POST 要求將它傳送到 `/token` 端點。 請參閱這篇文章，以瞭解 OAuth 2.0 授權碼流程的總覽： [.。。/azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 將使用者導向 `/authorize` 端點，這會傳回 authorization_code。 將要求張貼至 `/token` 端點，使用者就會取得存取權杖。 登入 Azure 入口網站，然後檢查 [應用程式註冊] > [端點]  ，確認已正確設定兩個端點。 |
+| AADSTS90056 | BadResourceRequest - 若要兌換存取權杖的程式碼，應用程式應將 POST 要求傳送至 `/token` 端點。 此外，在此之前，您應該提供授權碼並以 POST 要求將它傳送到 `/token` 端點。 請參閱這篇文章，以瞭解 OAuth 2.0 授權碼流程的總覽： [.。。/azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 將使用者導向 `/authorize` 端點，這會傳回 authorization_code。 將要求張貼至 `/token` 端點，使用者就會取得存取權杖。 登入 Azure 入口網站，然後檢查 [應用程式註冊] > [端點]，確認已正確設定兩個端點。 |
 | AADSTS90072 | PassThroughUserMfaError - 使用者登入的外部帳戶不存在於已登入的租用戶，因此使用者不符合租用戶的 MFA 需求。 如果使用者已同步處理，但 ImmutableID (sourceAnchor) 屬性 Active Directory 和 Azure AD 之間有不相符的情況，也可能會發生此錯誤。 必須先在租用戶中將帳戶新增為外部使用者。 請登出並使用其他 Azure AD 使用者帳戶登入。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服務嘗試處理 WS-同盟訊息時發生錯誤。 訊息無效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支援針對要求選取的驗證原則。 |
@@ -323,6 +323,6 @@ ms.locfileid: "93241322"
 | AADSTS7000114| 應用程式 ' appIdentifier ' 不允許進行應用程式的呼叫。|
 | AADSTS7500529 | 值 ' SAMLId-Guid ' 不是有效的 SAML 識別碼-Azure AD 使用這個屬性來填入所傳迴響應的 InResponseTo 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如，id6c1c178c166d486687be4aaf5e482730 是有效的識別碼。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 有任何疑問或找不到您要尋找的內容嗎？ 建立 GitHub 問題，或參閱[適用於開發人員的支援和協助選項](./developer-support-help-options.md)，了解您可以取得協助和支援的其他方法。

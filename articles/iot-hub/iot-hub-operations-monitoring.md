@@ -1,20 +1,20 @@
 ---
 title: Azure IoT 中樞作業監視 (已淘汰) | Microsoft Docs
 description: 如何使用 Azure IoT 中樞作業監視來即時監視 IoT 中樞上的作業狀態。
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538488"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408119"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中樞作業監視 (已淘汰)
 
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>後續步驟
 
-若要進一步探索 IoT 中樞的功能，請參閱︰
+若要進一步探索如何使用 Azure 監視器來監視 IoT 中樞，請參閱：
 
-* [IoT 中樞開發人員指南](iot-hub-devguide.md)
+* [監視 IoT 中樞](monitor-iot-hub.md)
 
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)
+* [從 IoT 中樞作業監視遷移至 Azure 監視器](iot-hub-migrate-to-diagnostics-settings.md)

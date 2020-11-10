@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400087"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409020"
 ---
 # <a name="security-control-secure-configuration"></a>安全性控制：安全設定
 
@@ -30,13 +30,13 @@ ms.locfileid: "89400087"
 
 您也可以使用 Azure 資訊安全中心中的建議作為 Azure 資源的安全設定基準。
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [教學課程：建立和管理原則來強制執行相容性](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [教學課程：建立和管理原則來強制執行相容性](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure 入口網站中的單一和多重資源匯出至範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Azure 入口網站中的單一和多重資源匯出至範本](../../azure-resource-manager/templates/export-template-portal.md)
 
-- [安全性建議 - 參考指南](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [安全性建議 - 參考指南](../../security-center/recommendations-reference.md)
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
@@ -46,15 +46,15 @@ ms.locfileid: "89400087"
 
 使用 Azure 資訊安全中心建議來維護所有計算資源上的安全性設定。  此外，您也可以使用自訂的作業系統映射或 Azure 自動化狀態設定，來建立您組織所需作業系統的安全性設定。
 
-- [如何監視 Azure 資訊安全中心建議](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
+- [如何監視 Azure 資訊安全中心建議](../../security-center/security-center-recommendations.md)
 
-- [安全性建議 - 參考指南](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [安全性建議 - 參考指南](../../security-center/recommendations-reference.md)
 
-- [Azure 自動化狀態設定總覽](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
+- [Azure 自動化狀態設定總覽](../../automation/automation-dsc-overview.md)
 
-- [上傳 VHD 並使用它在 Azure 中建立新的 Windows Vm](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [上傳 VHD 並使用它在 Azure 中建立新的 Windows Vm](../../virtual-machines/windows/upload-generalized-managed.md)
 
-- [使用 Azure CLI 從自訂磁碟建立 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
+- [使用 Azure CLI 從自訂磁碟建立 Linux VM](../../virtual-machines/linux/upload-vhd.md)
 
 ## <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
@@ -64,11 +64,11 @@ ms.locfileid: "89400087"
 
 使用 Azure 原則 [拒絕] 和 [部署是否不存在]，在您的 Azure 資源上強制執行安全設定。  此外，您可以使用 Azure Resource Manager 範本，維護您的組織所需的 Azure 資源安全性設定。 
 
-- [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [瞭解 Azure 原則效果](../../governance/policy/concepts/effects.md)
 
-- [建立和管理原則以強制執行合規性](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [建立和管理原則以強制執行合規性](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager 範本總覽](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager 範本總覽](../../azure-resource-manager/templates/overview.md)
 
 ## <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
@@ -80,17 +80,17 @@ ms.locfileid: "89400087"
 
 另外也請注意，microsoft 發佈的 Azure Marketplace 虛擬機器映射是由 Microsoft 所管理和維護。 
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../../security-center/deploy-vulnerability-assessment-vm.md)
 
-- [如何從 Azure Resource Manager 範本建立 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+- [如何從 Azure Resource Manager 範本建立 Azure 虛擬機器](../../virtual-machines/windows/ps-template.md)
 
-- [Azure 自動化狀態設定總覽](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
+- [Azure 自動化狀態設定總覽](../../automation/automation-dsc-overview.md)
 
-- [在 Azure 入口網站中建立 Windows 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+- [在 Azure 入口網站中建立 Windows 虛擬機器](../../virtual-machines/windows/quick-create-portal.md)
 
-- [如何下載 VM 範本的資訊](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+- [如何下載 VM 範本的資訊](../../virtual-machines/windows/download-template.md)
 
-- [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
@@ -100,9 +100,9 @@ ms.locfileid: "89400087"
 
 使用 Azure DevOps 來安全地儲存和管理您的程式碼，例如自訂 Azure 原則、Azure Resource Manager 範本和 Desired State Configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [關於 Azure DevOps 中的許可權和群組](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
 ## <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
@@ -112,13 +112,13 @@ ms.locfileid: "89400087"
 
 如果使用自訂映射，請使用 Azure 角色型存取控制 (Azure RBAC) ，以確保只有獲得授權的使用者可以存取影像。 使用共用映像庫，即可在組織內對於不同的使用者、服務主體或 AD 群組共用您的映像。  針對容器映射，請將它們儲存在 Azure Container Registry 中，並利用 Azure RBAC 來確保只有授權的使用者可以存取影像。  
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [了解 Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [瞭解適用于 Container Registry 的 Azure RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [瞭解適用于 Container Registry 的 Azure RBAC](../../container-registry/container-registry-roles.md)
 
-- [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [如何設定 Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共用映像資源庫概觀](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
+- [共用映像資源庫概觀](../../virtual-machines/windows/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
@@ -128,9 +128,9 @@ ms.locfileid: "89400087"
 
 使用 Azure 原則定義和實行 Azure 資源的標準安全性設定。 使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的網路設定進行審核或強制執行。 您也可以使用與特定資源相關的內建原則定義。  此外，您可以使用 Azure 自動化來部署設定變更。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用別名](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [如何使用別名](../../governance/policy/concepts/definition-structure.md#aliases)
 
 ## <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的設定管理工具
 
@@ -140,7 +140,7 @@ ms.locfileid: "89400087"
 
 Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desired State Configuration (DSC) 節點的設定管理服務。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。 
 
-- [將機器上架交由 Azure Automation State Configuration 管理](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+- [將機器上架交由 Azure Automation State Configuration 管理](../../automation/automation-dsc-onboarding.md)
 
 ## <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
@@ -150,7 +150,7 @@ Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desi
 
 使用 Azure 資訊安全中心來執行 Azure 資源的基準掃描。  此外，請使用 Azure 原則來警示和審核 Azure 資源設定。
 
-- [如何修復 Azure 資訊安全中心中的建議](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [如何修復 Azure 資訊安全中心中的建議](../../security-center/security-center-remediate-recommendations.md)
 
 ## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
@@ -160,7 +160,7 @@ Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desi
 
 使用 Azure 資訊安全中心對容器的 OS 和 Docker 設定執行基準掃描。
 
-- [了解 Azure 資訊安全中心容器建議](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+- [了解 Azure 資訊安全中心容器建議](../../security-center/container-security.md)
 
 ## <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
@@ -170,9 +170,9 @@ Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desi
 
 使用受控服務識別搭配 Azure Key Vault，以簡化和保護雲端應用程式的秘密管理。
 
-- [如何與 Azure 受控識別整合](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+- [如何與 Azure 受控識別整合](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+- [如何建立 Key Vault](../../key-vault/secrets/quick-create-portal.md)
 
 - [如何驗證 Key Vault](../../key-vault/general/authentication.md)
 
@@ -186,7 +186,7 @@ Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desi
 
 使用受控識別，在 Azure AD 中為 Azure 服務提供自動管理的身分識別。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
-- [如何設定受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+- [如何設定受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 

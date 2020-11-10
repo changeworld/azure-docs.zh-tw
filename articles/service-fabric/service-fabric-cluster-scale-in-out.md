@@ -3,12 +3,12 @@ title: 相應縮小或放大 Service Fabric 叢集
 description: 設定每個節點類型/虛擬機器擴展集的自動調整規模規則，以相應縮小或放大 Service Fabric 叢集以符合需求。 新增或移除 Service Fabric 叢集的節點
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246481"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409938"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>將叢集相應縮小或相應放大
 
@@ -54,7 +54,6 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 > [!NOTE]
 > 在案例中，除非您的節點類型具有金級或銀 [級][durability] ，否則您必須使用適當的節點名稱呼叫 [>remove-servicefabricnodestate Cmdlet](/powershell/module/servicefabric/remove-servicefabricnodestate) 。 針對銅級持久性，不建議一次調整多個節點。
 > 
-> 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>手動將 Vm 新增至節點類型/虛擬機器擴展集
 
@@ -68,7 +67,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 遵循 [快速入門範本資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) 中的範例/指示，變更每個節點類型中的 vm 數目。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>使用 PowerShell 或 CLI 命令新增 Vm
-下列程式碼會按照名稱取得擴展集，並將擴展集的**容量**增加 1。
+下列程式碼會按照名稱取得擴展集，並將擴展集的 **容量** 增加 1。
 
 ```powershell
 $scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
@@ -97,6 +96,9 @@ Service fabric 系統服務會在叢集中的主要節點類型中執行。 在�
 ### <a name="remove-the-service-fabric-node"></a>移除 Service Fabric 節點
 
 手動移除節點狀態的步驟只適用于具有 *銅* 級耐久性層的節點類型。  針對 *銀* 級和 *金* 級持久性層級，這些步驟會由平臺自動完成。 如需持久性的詳細資訊，請參閱 [Service Fabric 叢集容量規劃][durability]。
+
+>[!NOTE]
+> 針對所有啟用 Gold 或 Silver 持久性的虛擬機器擴展集維持至少五個節點。 如果您的縮減低於此閾值，您的叢集將會進入錯誤狀態，而且您需要手動清除已移除的節點。
 
 為了讓叢集節點在升級和容錯網域之間平均分配，因而讓它們的使用率更加平均，應該先移除最近建立的節點。 換句話說，節點的移除順序應該與建立順序相反。 最近建立的節點具有最大的 `virtual machine scale set InstanceId` 屬性值。 下列程式碼範例會傳回最近建立的節點。
 
@@ -239,6 +241,9 @@ Service Fabric Explorer 列出的節點會反映出 Service Fabric 系統服務 
 
 1. 為叢集中的節點類型選擇 Gold 或 Silver 持久性層級，提供您基礎結構的整合。 這會在您相應縮小時，自動從我們的系統服務中移除節點 (FM) 狀態。
 請參閱 [持久性層級的詳細資訊](service-fabric-cluster-capacity.md)
+
+> [!NOTE]
+> 針對所有啟用 Gold 或 Silver 持久性的虛擬機器擴展集維持至少五個節點。 如果您的縮減低於此閾值，您的叢集將會進入錯誤狀態，而且您需要手動清除已移除的節點。
 
 2. 一旦將 VM 實例放大之後，您必須呼叫 [>remove-servicefabricnodestate Cmdlet](/powershell/module/servicefabric/remove-servicefabricnodestate)。
 

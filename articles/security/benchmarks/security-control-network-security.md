@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b74baebd964ee43658f74e0050dff838e29f9b8a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82193117"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409054"
 ---
 # <a name="security-control-network-security"></a>安全性控制：網路安全性
 
@@ -28,15 +28,15 @@ ms.locfileid: "82193117"
 
 或者，如果您有特定的使用案例，您可以藉由執行 Azure 防火牆來滿足需求。
 
-- [瞭解虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [瞭解虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-- [瞭解 Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [瞭解 Azure Private Link](../../private-link/private-link-overview.md)
 
-- [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [如何建立虛擬網路](../../virtual-network/quick-create-portal.md)
 
-- [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何建立具有安全性設定的 NSG](../../virtual-network/tutorial-filter-network-traffic.md)
 
-- [如何部署和設定 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [如何部署和設定 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
@@ -46,11 +46,11 @@ ms.locfileid: "82193117"
 
 使用 Azure 資訊安全中心，並遵循網路保護建議來協助保護您在 Azure 中的網路資源。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可以將 NSG 流量記錄傳送至 Log Analytics 工作區，並使用流量分析來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
-- [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [如何啟用 NSG 流量記錄](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何啟用及使用流量分析](../../network-watcher/traffic-analytics.md)
 
-- [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [瞭解 Azure 資訊安全中心所提供的網路安全性](../../security-center/security-center-network-recommendations.md)
 
 ## <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
@@ -60,7 +60,7 @@ ms.locfileid: "82193117"
 
 將 Azure Web 應用程式防火牆 (WAF) 部署在重要的 Web 應用程式前面，以額外檢查連入流量。 啟用診斷設定以 WAF 記錄，並將其內嵌至儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
-- [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [如何部署 Azure WAF](../../web-application-firewall/ag/create-waf-policy-ag.md)
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
@@ -76,15 +76,15 @@ ms.locfileid: "82193117"
 
 使用 Azure 資訊安全中心調適型網路強化，根據實際的流量和威脅情報，建議可限制埠和來源 Ip 的 NSG 設定。
 
-- [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [如何設定 DDoS 保護](../../virtual-network/manage-ddos-protection.md)
 
-- [如何部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [如何部署 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 資訊安全中心的整合式威脅情報](../../security-center/azure-defender.md)
 
-- [瞭解 Azure 資訊安全中心適應性網路強化](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [瞭解 Azure 資訊安全中心適應性網路強化](../../security-center/security-center-adaptive-network-hardening.md)
 
-- [瞭解 Azure 資訊安全中心及時的網路存取控制](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [瞭解 Azure 資訊安全中心及時的網路存取控制](../../security-center/security-center-just-in-time.md)
 
 ## <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
@@ -94,7 +94,7 @@ ms.locfileid: "82193117"
 
 啟用網路監看員封包捕捉以調查異常活動。
 
-- [如何啟用網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [如何啟用網路監看員](../../network-watcher/network-watcher-create.md)
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
@@ -108,9 +108,9 @@ ms.locfileid: "82193117"
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [如何部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [如何部署 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [如何使用 Azure 防火牆設定警示](https://docs.microsoft.com/azure/firewall/threat-intel)
+- [如何使用 Azure 防火牆設定警示](../../firewall/threat-intel.md)
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
@@ -120,11 +120,11 @@ ms.locfileid: "82193117"
 
 針對已啟用受信任憑證的 HTTPS/TLS 的 web 應用程式部署 Azure 應用程式閘道。
 
-- [如何部署應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- [如何部署應用程式閘道](../../application-gateway/quick-create-portal.md)
 
-- [如何將應用程式閘道設定為使用 HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+- [如何將應用程式閘道設定為使用 HTTPS](../../application-gateway/create-ssl-portal.md)
 
-- [瞭解 Azure web 應用程式閘道的第7層負載平衡](https://docs.microsoft.com/azure/application-gateway/overview)
+- [瞭解 Azure web 應用程式閘道的第7層負載平衡](../../application-gateway/overview.md)
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
@@ -136,9 +136,9 @@ ms.locfileid: "82193117"
 
 您也可以使用應用程式安全性群組來協助簡化複雜的安全性設定。 應用程式安全性群組可讓您將網路安全性設定為應用程式結構的自然擴充功能，讓您將虛擬機器分組，並定義以這些群組為基礎的網路安全性原則。
 
-- [瞭解和使用服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [瞭解和使用服務標記](../../virtual-network/service-tags-overview.md)
 
-- [瞭解及使用應用程式安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+- [瞭解及使用應用程式安全性群組](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
@@ -150,11 +150,11 @@ ms.locfileid: "82193117"
 
 您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝重要環境成品（例如 Azure 資源管理員範本、RBAC 控制項和原則）來簡化大規模的 Azure 部署。 您可以將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于網路的 Azure 原則範例](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [適用于網路的 Azure 原則範例](../../governance/policy/samples/built-in-policies.md#network)
 
-- [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [如何建立 Azure 藍圖](../../governance/blueprints/create-blueprint-portal.md)
 
 ## <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
@@ -168,11 +168,11 @@ ms.locfileid: "82193117"
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
-- [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [如何建立虛擬網路](../../virtual-network/quick-create-portal.md)
 
-- [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何建立具有安全性設定的 NSG](../../virtual-network/tutorial-filter-network-traffic.md)
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
@@ -182,10 +182,10 @@ ms.locfileid: "82193117"
 
 使用 Azure 活動記錄來監視資源設定，並偵測對您 Azure 資源的變更。 在 Azure 監視器中建立警示，在發生重大資源變更時將會觸發此警示。
 
-- [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何在 Azure 監視器中建立警示](../../azure-monitor/platform/alerts-activity-log.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱下一個安全性控制： [記錄和監視](security-control-logging-monitoring.md)

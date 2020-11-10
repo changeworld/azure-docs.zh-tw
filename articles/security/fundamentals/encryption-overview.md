@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458615"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410210"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -45,15 +45,15 @@ Azure 支援各種加密模型，包括使用下列方式進行的伺服器端�
 
 這三種伺服器端加密模型提供不同的金鑰管理特性，您可以根據需求進行選擇：
 
-- **服務管理的金鑰**：結合控制能力與便利性，而且額外負荷很低。
+- **服務管理的金鑰** ：結合控制能力與便利性，而且額外負荷很低。
 
-- **客戶管理的金鑰**：可讓您控制金鑰，包括支援「攜帶您自己的金鑰」(BYOK)，或允許您產生新的金鑰。
+- **客戶管理的金鑰** ：可讓您控制金鑰，包括支援「攜帶您自己的金鑰」(BYOK)，或允許您產生新的金鑰。
 
-- **受客戶控制硬體中服務管理的金鑰**：可讓您在不受 Microsoft 控制的專屬存放庫中管理金鑰。 這個特性稱為「裝載您自己的金鑰」(HYOK)。 不過，設定很複雜，而且大多數 Azure 服務並不支援此模型。
+- **受客戶控制硬體中服務管理的金鑰** ：可讓您在不受 Microsoft 控制的專屬存放庫中管理金鑰。 這個特性稱為「裝載您自己的金鑰」(HYOK)。 不過，設定很複雜，而且大多數 Azure 服務並不支援此模型。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
-您可以使用 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)來保護 Windows 和 Linux 虛擬機器，其會使用 [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) \(英文\) 技術和 Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) \(英文\)，透過完整磁碟區加密來保護作業系統磁碟和資料磁碟。
+您可以使用 [Azure 磁碟加密](./azure-disk-encryption-vms-vmss.md)來保護 Windows 和 Linux 虛擬機器，其會使用 [Windows BitLocker](/previous-versions/windows/it-pro/windows-vista/cc766295(v=ws.10)) \(英文\) 技術和 Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) \(英文\)，透過完整磁碟區加密來保護作業系統磁碟和資料磁碟。
 
 加密金鑰和祕密會在您的 [Azure Key Vault 訂用帳戶](../../key-vault/general/overview.md)中受到保護。 使用 Azure 備份服務，您可以備份及還原使用金鑰加密金鑰 (KEK) 設定的已加密虛擬機器 (VM)。
 
@@ -83,13 +83,13 @@ Azure Blob 儲存體和 Azure 檔案共用中的待用資料可以在伺服器�
 
 #### <a name="transparent-data-encryption"></a>透明資料加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) （儲存在資料庫開機記錄中，以在復原期間提供可用性），即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、 [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 資料檔案。
+[TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) （儲存在資料庫開機記錄中，以在復原期間提供可用性），即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、 [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 資料檔案。
 
 TDE 會使用 AES 和三重資料加密標準 (3DES) 加密演算法來保護資料和記錄檔。 資料庫檔案的加密會在頁面層級執行。 已加密資料庫中的頁面會在寫入磁碟之前進行加密，並會在讀入記憶體時進行解密。 現在預設會在新建立的 Azure SQL 資料庫上啟用 TDE。
 
 #### <a name="always-encrypted-feature"></a>Always Encrypted 功能
 
-透過 Azure SQL 中的 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能，您可以先在用戶端應用程式內將資料加密，然後將它儲存於 Azure SQL Database 中。 您也可以將內部部署資料庫系統管理作業委派給第三方，並持續將擁有且可檢視資料的人員與可管理資料但不應存取資料的人員區隔開來。
+透過 Azure SQL 中的 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能，您可以先在用戶端應用程式內將資料加密，然後將它儲存於 Azure SQL Database 中。 您也可以將內部部署資料庫系統管理作業委派給第三方，並持續將擁有且可檢視資料的人員與可管理資料但不應存取資料的人員區隔開來。
 
 #### <a name="cell-level-or-column-level-encryption"></a>資料格層級或資料行層級的加密
 
@@ -125,9 +125,9 @@ Microsoft 可讓客戶在雲端服務與客戶之間進行傳輸時，能夠使�
 
 當您透過 Azure 入口網站與 Azure 儲存體互動時，所有交易都會透過 HTTPS 進行。 您也可以透過 HTTPS 使用儲存體 REST API 來與 Azure 儲存體互動。 透過啟用儲存體帳戶所需的安全傳輸，您可於呼叫 REST API 來存取儲存體帳戶中的物件時強制使用 HTTPS。
 
-共用存取簽章 ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)) 可用來委派 Azure 儲存體物件的存取權，包含一個選項，可指定在您使用共用存取簽章時只能使用 HTTPS 通訊協定。 這個方法可確保任何傳送具有 SAS 權杖的連結的人都會使用正確的通訊協定。
+共用存取簽章 ([SAS](../../storage/common/storage-sas-overview.md)) 可用來委派 Azure 儲存體物件的存取權，包含一個選項，可指定在您使用共用存取簽章時只能使用 HTTPS 通訊協定。 這個方法可確保任何傳送具有 SAS 權杖的連結的人都會使用正確的通訊協定。
 
-用來存取 Azure 檔案共用的 [SMB 3.0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption) \(英文\) 支援加密，而且可在 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 中找到。 它允許跨區域存取，甚至可在電腦上存取。
+用來存取 Azure 檔案共用的 [SMB 3.0](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn551363(v=ws.11)#BKMK_SMBEncryption) \(英文\) 支援加密，而且可在 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 中找到。 它允許跨區域存取，甚至可在電腦上存取。
 
 用戶端加密會先將資料加密，然後傳送到 Azure 儲存體執行個體，因此在網路中傳送時會處於加密狀態。
 
@@ -143,7 +143,7 @@ Microsoft 可讓客戶在雲端服務與客戶之間進行傳輸時，能夠使�
 
 ### <a name="rdp-sessions"></a>RDP 工作階段
 
-您可以從 Windows 用戶端電腦或已安裝 RDP 用戶端的 Mac 電腦，使用[遠端桌面通訊協定 (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) \(英文\) 連線到 VM 並登入。 RDP 工作階段中透過網路傳輸的資料可由 TLS 保護。
+您可以從 Windows 用戶端電腦或已安裝 RDP 用戶端的 Mac 電腦，使用[遠端桌面通訊協定 (RDP)](/windows/win32/termserv/remote-desktop-protocol) \(英文\) 連線到 VM 並登入。 RDP 工作階段中透過網路傳輸的資料可由 TLS 保護。
 
 您也可以使用遠端桌面連線到 Azure 中的 Linux VM。
 
@@ -163,7 +163,7 @@ Microsoft 可讓客戶在雲端服務與客戶之間進行傳輸時，能夠使�
 
 ### <a name="point-to-site-vpns"></a>點對站 VPN
 
-點對站 VPN 可讓個別用戶端電腦存取 Azure 虛擬網路。 [安全通訊端通道通訊協定 (SSTP)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) \(英文\) 可用來建立 VPN 通道。 它可以周遊防火牆 (通道會顯示為 HTTPS 連線)。 您可以使用自己的內部公開金鑰基礎結構 (PKI) 根憑證授權單位 (CA)，來取得點對站連線能力。
+點對站 VPN 可讓個別用戶端電腦存取 Azure 虛擬網路。 [安全通訊端通道通訊協定 (SSTP)](/previous-versions/technet-magazine/cc162322(v=msdn.10)) \(英文\) 可用來建立 VPN 通道。 它可以周遊防火牆 (通道會顯示為 HTTPS 連線)。 您可以使用自己的內部公開金鑰基礎結構 (PKI) 根憑證授權單位 (CA)，來取得點對站連線能力。
 
 您可以使用 Azure 入口網站搭配憑證驗證或 PowerShell，來設定可連線到虛擬網路的點對站 VPN 連線。
 
@@ -201,9 +201,9 @@ Key Vault 讓組織不需要設定、修補及維護硬體安全模組 (HSM) 和
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 安全性概觀](get-started-overview.md)
+- [Azure 安全性概觀](./overview.md)
 - [Azure 網路安全性概觀](network-overview.md)
-- [Azure 資料庫安全性概觀](database-security-overview.md)
+- [Azure 資料庫安全性概觀](../../azure-sql/database/security-overview.md)
 - [Azure 虛擬機器安全性概觀](virtual-machines-overview.md)
 - [待用資料加密](encryption-atrest.md)
 - [資料安全性與加密的最佳做法](data-encryption-best-practices.md)

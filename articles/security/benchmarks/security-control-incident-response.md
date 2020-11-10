@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 993793d21e6253188dfc199d8701cbe117503517
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb4c4c5a0cf6610af17aabc562c42d2e0eb4e6a4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81408425"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409088"
 ---
 # <a name="security-control-incident-response"></a>安全性控制：事件回應
 
@@ -42,9 +42,9 @@ ms.locfileid: "81408425"
 
 此外，使用標記清楚地標示訂用帳戶 (例如， 生產、非生產) 並建立命名系統，以清楚地識別及分類 Azure 資源，尤其是處理敏感性資料的資源。  您需負責根據發生事件的 Azure 資源和環境的重要性，設定警示的補救優先順序。
 
-- [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Azure 資訊安全中心的安全性警示](../../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
@@ -64,7 +64,7 @@ ms.locfileid: "81408425"
 
 如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料已被非法或未經授權的物件存取，Microsoft 會使用安全性事件連絡人資訊來與您聯繫。 事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](../../security-center/security-center-provide-security-contact-details.md)
 
 ## <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
@@ -74,9 +74,9 @@ ms.locfileid: "81408425"
 
 使用連續匯出功能來匯出您的 Azure 資訊安全中心警示和建議，以協助找出 Azure 資源的風險。 「連續匯出」可讓您以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Azure Sentinel。
 
-- [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [如何設定連續匯出](../../security-center/continuous-export.md)
 
-- [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何將警示串流至 Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
 ## <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
@@ -86,7 +86,7 @@ ms.locfileid: "81408425"
 
 使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」安全性警示和建議來自動觸發回應，以保護您的 Azure 資源。
 
-- [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何設定工作流程自動化和 Logic Apps](../../security-center/workflow-automation.md)
 
 
 ## <a name="next-steps"></a>後續步驟

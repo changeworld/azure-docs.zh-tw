@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3ac044666b8f723e3cc26fd7a30f5dd8a8f77d90
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168030"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409870"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全性技術功能
 本文提供 Azure 中的安全性服務簡介，可協助您保護雲端中的資料、資源和應用程式，並符合企業的安全性需求。
@@ -48,7 +48,7 @@ Azure 可讓您管理使用者的身分識別和認證並控制存取權，協�
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Microsoft 身分識別與存取管理解決方案可協助 IT 保護跨公司資料中心和雲端的應用程式和資源存取，以啟用其他層級的驗證，例如多重要素驗證和條件式存取原則。 透過進階的安全性報告、稽核和警示來監視可疑活動，有助於減緩潛在的安全性問題。 [Azure Active Directory Premium](../../active-directory/active-directory-whatis.md) 提供數千個雲端應用程式的單一登入，以及您在內部部署環境中執行之 web 應用程式的存取權。
+Microsoft 身分識別與存取管理解決方案可協助 IT 保護跨公司資料中心和雲端的應用程式和資源存取，以啟用其他層級的驗證，例如多重要素驗證和條件式存取原則。 透過進階的安全性報告、稽核和警示來監視可疑活動，有助於減緩潛在的安全性問題。 [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) 提供數千個雲端應用程式的單一登入，以及您在內部部署環境中執行之 web 應用程式的存取權。
 
 Azure Active Directory (Azure AD) 的安全性優點包括下列功能：
 
@@ -88,17 +88,17 @@ Azure Active Directory (Azure AD) 的安全性優點包括下列功能：
 
 [Azure AD 將內部部署 Active Directory 延伸至雲端](../../active-directory/manage-apps/what-is-single-sign-on.md)，讓使用者能夠使用其主要組織帳戶來登入已加入網域的裝置和公司資源，以及其工作所需的所有 Web 和 SaaS 應用程式。
 
-不只使用者不需要管理多組使用者名稱和密碼，還可根據組織群組，以及其身為員工的狀態，自動佈建或解除佈建其應用程式的存取權。 [Azure AD 引進了安全性和存取管理控制](../../active-directory/active-directory-enterprise-apps-manage-sso.md) ，可讓您跨 SaaS 應用程式集中管理使用者的存取權。
+不只使用者不需要管理多組使用者名稱和密碼，還可根據組織群組，以及其身為員工的狀態，自動佈建或解除佈建其應用程式的存取權。 [Azure AD 引進了安全性和存取管理控制](../../active-directory/manage-apps/view-applications-portal.md) ，可讓您跨 SaaS 應用程式集中管理使用者的存取權。
 
 #### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-[Azure Multi-Factor Authentication (MFA) ](../../active-directory/authentication/multi-factor-authentication.md) 是一種驗證方法，需要使用多個驗證方法，並在使用者登入和交易中新增重要的第二層安全性。 [MFA 有助於保護](../../active-directory/authentication/concept-mfa-howitworks.md) 對資料和應用程式的存取，同時滿足使用者對簡單登入程式的需求。 它可以透過一些驗證選項 (例如電話、文字訊息，或行動應用程式通知或驗證代碼，以及第三方 OAuth 權杖) 來提供強大的驗證功能。
+[Azure Multi-Factor Authentication (MFA) ](../../active-directory/authentication/concept-mfa-howitworks.md) 是一種驗證方法，需要使用多個驗證方法，並在使用者登入和交易中新增重要的第二層安全性。 [MFA 有助於保護](../../active-directory/authentication/concept-mfa-howitworks.md) 對資料和應用程式的存取，同時滿足使用者對簡單登入程式的需求。 它可以透過一些驗證選項 (例如電話、文字訊息，或行動應用程式通知或驗證代碼，以及第三方 OAuth 權杖) 來提供強大的驗證功能。
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全性監視、警示以及機器學習服務型報告
 
 安全性監視和警示以及機器學習式報告，會識別不一致的存取模式，可以協助您保護企業安全。 您可以使用 Azure Active Directory 的存取和使用情況報告來了解貴組織的目錄完整性和安全性。 利用此資訊，目錄管理員更能夠判斷可能發生安全性風險的位置，以便適當地規劃來減輕這些風險。
 
-在 Azure 入口網站或透過 [Azure Active Directory 入口網站](https://aad.portal.azure.com/)，以下列方式分類[報告](../../active-directory/active-directory-reporting-azure-portal.md)：
+在 Azure 入口網站或透過 [Azure Active Directory 入口網站](https://aad.portal.azure.com/)，以下列方式分類[報告](../../active-directory/reports-monitoring/overview-reports.md)：
 
 - 異常報告 – 包含我們發現異常的登入事件。 我們的目標在於使您注意這類活動，並讓您能夠決定事件是否可疑。
 
@@ -142,7 +142,7 @@ Azure AD Privileged Identity Management 可讓您：
 
 #### <a name="identity-protection"></a>身分識別保護
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) 是一項安全性服務，可針對風險偵測和潛在弱點（會影響組織的身分識別）提供合併的觀點。 Identity Protection 使用現有 Azure Active Directory 的異常偵測功能 (可透過 Azure AD 的異常活動報告取得) ，並引進可即時偵測異常的新風險偵測類型。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) 是一項安全性服務，可針對風險偵測和潛在弱點（會影響組織的身分識別）提供合併的觀點。 Identity Protection 使用現有 Azure Active Directory 的異常偵測功能 (可透過 Azure AD 的異常活動報告取得) ，並引進可即時偵測異常的新風險偵測類型。
 
 ## <a name="secure-resource-access"></a>安全資源存取
 
@@ -183,35 +183,35 @@ RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需
 
 較大的資料集可以透過專用的高速 WAN 連結 (例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)) 移動。 如果您選擇使用 ExpressRoute，您也可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
 
-如果您透過 Azure 入口網站與 Azure 儲存體互動，則所有交易都會透過 HTTPS 發生。 透過 HTTPS 的[儲存體 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 也可用來與 [Azure 儲存體](https://azure.microsoft.com/services/storage/)和 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 互動。
+如果您透過 Azure 入口網站與 Azure 儲存體互動，則所有交易都會透過 HTTPS 發生。 透過 HTTPS 的[儲存體 REST API](/rest/api/storageservices/) 也可用來與 [Azure 儲存體](https://azure.microsoft.com/services/storage/)和 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 互動。
 
-無法保護傳輸中資料的組織比較容易遭受 [中間人攻擊](https://technet.microsoft.com/library/gg195821.aspx)、 [竊聽](https://technet.microsoft.com/library/gg195641.aspx)及會話劫持攻擊。 這些攻擊可能是取得機密資料存取權的第一步。
+無法保護傳輸中資料的組織比較容易遭受 [中間人攻擊](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14))、 [竊聽](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))及會話劫持攻擊。 這些攻擊可能是取得機密資料存取權的第一步。
 
 若要深入了解 Azure VPN 選項，請閱讀[規劃與設計 VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)一文。
 
 ### <a name="enforce-file-level-data-encryption"></a>強制執行檔案層級資料加密
 
-[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) 會使用加密、身分識別和授權原則，協助您保護檔案和電子郵件。 Azure RMS 可跨多個裝置運作 — 手機、平板電腦和 PC。保護您的組織內部和外部 因為 Azure RMS 新增資料所屬的保護層級，所以即使資料脫離您組織的範圍，這項功能仍然可行。
+[Azure RMS](/azure/information-protection/what-is-azure-rms) 會使用加密、身分識別和授權原則，協助您保護檔案和電子郵件。 Azure RMS 可跨多個裝置運作 — 手機、平板電腦和 PC。保護您的組織內部和外部 因為 Azure RMS 新增資料所屬的保護層級，所以即使資料脫離您組織的範圍，這項功能仍然可行。
 
 當您使用 Azure RMS 來保護檔案時，您要使用業界標準的密碼編譯搭配 [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) 的完整支援。 當您利用 Azure RMS 進行資料保護時，即使檔案被複製到不受 IT 控制的儲存體 (例如雲端儲存體服務)，也保證該檔案持續受到保護。 同樣的情況會出現在透過電子郵件共用的檔案，檔案會以電子郵件的附件形式受到保護，並提供如何開啟受保護附件的指示。
 規劃 Azure RMS 採用時，建議執行下列作業︰
 
-- 安裝 [RMS 共用應用程式](https://technet.microsoft.com/library/dn339006.aspx)。 此應用程式會藉由安裝 Office 增益集來與 Office 應用程式整合，讓使用者可以輕鬆地直接保護檔案。
+- 安裝 [RMS 共用應用程式](/azure/information-protection/rms-client/sharing-app-windows)。 此應用程式會藉由安裝 Office 增益集來與 Office 應用程式整合，讓使用者可以輕鬆地直接保護檔案。
 
 - 設定應用程式和服務以支援 Azure RMS
 
-- 建立可反映您的業務需求的[自訂範本](https://technet.microsoft.com/library/dn642472.aspx)。 例如︰最高秘密資料的範本應套用於所有最高機密相關的電子郵件。
+- 建立可反映您的業務需求的[自訂範本](/azure/information-protection/configure-policy-templates)。 例如︰最高秘密資料的範本應套用於所有最高機密相關的電子郵件。
 
 [資料分類](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和檔案保護能力不佳的組織可能更容易受資料外洩。 沒有適當的檔案保護，組織將無法取得商業見解、監督濫用情形，以及防止檔案被惡意存取。
 
 > [!Note]
-> 若要深入了解 Azure RMS，請閱讀[開始使用 Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx) 一文。
+> 若要深入了解 Azure RMS，請閱讀[開始使用 Azure Rights Management](/azure/information-protection/requirements) 一文。
 
 ## <a name="secure-your-application"></a>保護您的應用程式
 Azure 負責保護您的應用程式執行所在的基礎結構和平台，而保護您的應用程式本身是您的責任。 換句話說，您需要以安全的方式來開發、部署及管理您的應用程式程式碼和內容。 如果沒有這麼做，您的應用程式程式碼或內容仍然可能受到威脅。
 
 ### <a name="web-application-firewall"></a>Web 應用程式防火牆
-[Web 應用程式防火牆 (WAF) ](../../application-gateway/waf-overview.md) 是 [應用程式閘道](../../application-gateway/overview.md) 的一項功能，可提供 Web 應用程式的集中式保護，免于遭受常見的惡意探索和弱點攻擊。
+[Web 應用程式防火牆 (WAF) ](../../web-application-firewall/ag/ag-overview.md) 是 [應用程式閘道](../../application-gateway/overview.md) 的一項功能，可提供 Web 應用程式的集中式保護，免于遭受常見的惡意探索和弱點攻擊。
 
 Web 應用程式防火牆會根據 [OWASP 核心規則集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的規則提供保護。 Web 應用程式已逐漸成為利用常見已知弱點的惡意攻擊目標。 這些攻擊中最常見的是 SQL 插入式攻擊、跨網站指令碼攻擊等等。 想要防止應用程式的程式碼受到這類攻擊會非常困難，而且可能需要對多層次的應用程式拓撲執行嚴格的維護、修補和監視工作。 集中式 Web 應用程式防火牆有助於簡化安全性管理作業，且更加確保應用程式管理員能夠對抗威脅或入侵。 相較於保護每個個別的 Web 應用程式，WAF 方案還可透過在中央位置修補已知弱點，更快地因應安全性威脅。 現有的應用程式閘道可以輕易地轉換成已啟用 Web 應用程式防火牆的應用程式閘道。
 
@@ -232,7 +232,7 @@ Web 應用程式防火牆防禦的一些常見 Web 弱點包括︰
 - 偵測一般應用程式錯誤組態 (也就是 Apache、IIS 等)
 
 > [!Note]
-> 如需更詳細的規則清單及其保護，請參閱下列 [核心規則集](../../application-gateway/waf-overview.md)：
+> 如需更詳細的規則清單及其保護，請參閱下列 [核心規則集](../../web-application-firewall/ag/ag-overview.md)：
 
 Azure 也提供幾項簡單易用的功能，可協助保護您的應用程式的輸入和輸出流量。 Azure 也藉由外部提供的功能來掃描您 Web 應用程式的弱點，協助客戶保護他們的應用程式程式碼。
 
@@ -265,7 +265,7 @@ Azure App Service 會使用 Azure 雲端服務和虛擬機器使用的相同反�
 ## <a name="secure-your-network"></a>保護您的網路
 Microsoft Azure 包括強大網路基礎結構以支援您的應用程式和服務連線需求。 在 Azure 的資源之間、內部部署與 Azure 託管資源之間，以及到網際網路和 Azure 與來自網際網路和 Azure，可能會有網路連線。
 
-[Azure 網路基礎結構](../../virtual-machines/windows/infrastructure-example.md)可讓 Azure 資源與[虛擬網路 (VNet)](../../virtual-network/virtual-networks-overview.md) 彼此安全地連線。 VNet 是您的網路在雲端中的身分。 VNet 是專屬於您訂用帳戶的 Azure 雲端網路邏輯隔離。 您可以將 VNet 連線到內部部署網路。
+[Azure 網路基礎結構](/previous-versions/azure/virtual-machines/windows/infrastructure-example)可讓 Azure 資源與[虛擬網路 (VNet)](../../virtual-network/virtual-networks-overview.md) 彼此安全地連線。 VNet 是您的網路在雲端中的身分。 VNet 是專屬於您訂用帳戶的 Azure 雲端網路邏輯隔離。 您可以將 VNet 連線到內部部署網路。
 
 ![保護網路 (保護)](./media/technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
@@ -335,7 +335,7 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 ### <a name="azure-security-center"></a>Azure 資訊安全中心
 
-[Azure 資訊安全中心](../../security-center/security-center-intro.md) 可協助您防止、偵測和回應威脅，並加強對 Azure 資源安全性的可見度和控制權。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
+[Azure 資訊安全中心](../../security-center/security-center-introduction.md) 可協助您防止、偵測和回應威脅，並加強對 Azure 資源安全性的可見度和控制權。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
 
 資訊安全中心會分析 Azure 資源的安全性狀態，以識別潛在的安全性弱點。 建議清單會引導您完成設定所需控制項的程序。
 
@@ -378,7 +378,7 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 ### <a name="storage-analytics"></a>儲存體分析
 
-[儲存體分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) 可以儲存包含與儲存體服務要求相關的匯總交易統計資料和容量資料的計量。 報告的交易是屬於 API 作業層級以及儲存體服務層級，而報告的容量則是屬於儲存體服務層級。 度量資料可用來分析儲存體服務使用量、診斷針對儲存體服務提出之要求的問題，以及提升使用服務的應用程式效能。
+[儲存體分析](/rest/api/storageservices/fileservices/storage-analytics) 可以儲存包含與儲存體服務要求相關的匯總交易統計資料和容量資料的計量。 報告的交易是屬於 API 作業層級以及儲存體服務層級，而報告的容量則是屬於儲存體服務層級。 度量資料可用來分析儲存體服務使用量、診斷針對儲存體服務提出之要求的問題，以及提升使用服務的應用程式效能。
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -390,7 +390,7 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 - **相依比率、回應時間和失敗率** - 找出外部服務是否會使您降低效能。
 
-- **例外狀況**：分析彙總的統計資料，或挑選特定執行個體並深入了解堆疊追蹤和相關要求。 伺服器和瀏覽器例外狀況都會報告。
+- **例外狀況** ：分析彙總的統計資料，或挑選特定執行個體並深入了解堆疊追蹤和相關要求。 伺服器和瀏覽器例外狀況都會報告。
 
 - **頁面檢視和載入效能** - 由使用者的瀏覽器報告。
 
@@ -398,13 +398,13 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 - **使用者和會話計數。**
 
-- 你的Windows 或 Linux 伺服器中的**效能計數器**，例如 CPU、記憶體和網路使用量。
+- 你的Windows 或 Linux 伺服器中的 **效能計數器** ，例如 CPU、記憶體和網路使用量。
 
-- 來自 Docker 或 Azure 的**主機診斷**。
+- 來自 Docker 或 Azure 的 **主機診斷** 。
 
-- 來自您應用程式的**診斷追蹤記錄** - 讓您使追蹤事件與要求相互關聯。
+- 來自您應用程式的 **診斷追蹤記錄** - 讓您使追蹤事件與要求相互關聯。
 
-- 您在用戶端或伺服器程式碼中自行撰寫的**自訂事件和計量**，可追蹤商務事件，例如銷售專案或贏得的遊戲。
+- 您在用戶端或伺服器程式碼中自行撰寫的 **自訂事件和計量** ，可追蹤商務事件，例如銷售專案或贏得的遊戲。
 
 應用程式的基礎結構通常由許多元件所組成 – 或許是虛擬機器、儲存體帳戶和虛擬網路，或者 web 應用程式、資料庫、資料庫伺服器和第三方服務。 您看不到這些元件作為個別的實體，而是看到它們作為單一實體相關且彼此相依的組件。 您會想要將其當成群組來部署、管理和監視。 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 可讓您將方案中的資源作為群組使用。
 

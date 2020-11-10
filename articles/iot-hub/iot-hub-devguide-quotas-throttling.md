@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547685"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410686"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -69,7 +69,7 @@ IoT 隨插即用裝置會針對每個介面至少傳送一個遙測訊息（包�
 
    最後，如果您的承載大小介於156KB 和 160 KB 之間，則在達到 160 KB/秒/單位的限制之前，您只能在中樞內針對每個單位進行1次呼叫。
 
-*  若為 *工作裝置作業 (更新對應項，請* 針對階層 S2 叫用直接方法) ，50/秒/單位只適用于使用作業叫用方法時。 如果您直接叫用直接方法，則會套用 S2) 之 24 MB/sec/單位 (的原始節流限制。
+*  針對 *工作裝置作業 (更新對應項，請* 針對第一層) 叫用直接方法，而只有當您使用作業叫用方法時，才適用 50/秒/單位。 如果您直接叫用直接方法，則會套用適用于 S3) 之 24 MB/sec/unit (的原始節流限制。
 
 *  **配額** 是 *您每天可以在中樞傳送* 的訊息總數。 您可以在 [ [IoT 中樞定價] 頁面](https://azure.microsoft.com/pricing/details/iot-hub/)上/天的 [ **訊息總數** ] 資料行中找到中樞的配額限制。
 
@@ -89,7 +89,7 @@ IoT 隨插即用裝置會針對每個介面至少傳送一個遙測訊息（包�
 
 ### <a name="device-connections-throttle"></a>裝置連接節流
 
-「裝置連線」  節流會控制新裝置可與 IoT 中樞建立連線的速率。 「裝置連線」  節流不會控制同時連線裝置的數目上限。 「裝置連線」  速率節流受制於為 IoT 中樞佈建的單位數。
+「裝置連線」節流會控制新裝置可與 IoT 中樞建立連線的速率。 「裝置連線」節流不會控制同時連線裝置的數目上限。 「裝置連線」速率節流受制於為 IoT 中樞佈建的單位數。
 
 例如，若您購買單一 S1 單位，則得到每秒 100 個連線的節流。 因此，若要連接100000裝置，至少需要1000秒 (約16分鐘的時間) 。 不過，若您已將裝置登錄在您的身分識別登錄中，則可以有任意數量的同時連線裝置。
 
@@ -132,7 +132,7 @@ IoT 中樞會努力地為所有作業提供低延遲的服務。 不過，由於
 
 如果您注意到作業的延遲時間莫名其妙增加，請連絡 [Microsoft 支援服務](https://azure.microsoft.com/support/options/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需有關 IoT 中樞節流行為的深入討論，請參閱 [IoT Hub throttling and you (IoT 中樞節流和您)](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/) 部落格文章。
 

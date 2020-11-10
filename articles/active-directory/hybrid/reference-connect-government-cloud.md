@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276179"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409292"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government 雲端的混合式身分識別考量
 
@@ -36,7 +36,7 @@ ms.locfileid: "89276179"
 在您部署傳遞驗證代理程式之前，請先確認您的伺服器與 Azure AD 之間是否有防火牆存在。 如果您的防火牆或 Proxy 允許網域名稱系統 (DNS) 封鎖或安全的程式，請新增下列連線。
 
 > [!NOTE]
-> 下列指引也適用於針對 Azure Government 環境安裝 [Azure AD 應用程式 Proxy 連接器](https://aka.ms/whyappproxy)。
+> 下列指引也適用於針對 Azure Government 環境安裝 [Azure AD 應用程式 Proxy 連接器](../manage-apps/what-is-application-proxy.md)。
 
 |URL |使用方式|
 |-----|-----|

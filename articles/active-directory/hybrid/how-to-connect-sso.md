@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457986"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408000"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 無縫單一登入
 
@@ -36,7 +36,7 @@ ms.locfileid: "92457986"
 ![無縫單一登入](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->無縫 SSO 只需要使用者的裝置**已加入網域**，但其不用於[已加入 Azure AD ](../devices/concept-azure-ad-join.md) 或[已加入混合式 Azure AD](../devices/concept-azure-ad-join-hybrid.md) 的裝置上。 已加入 Azure AD、已加入混合式 Azure AD，以及 Azure AD 的已註冊裝置上的 SSO，是以[主要重新整理權杖](../devices/concept-primary-refresh-token.md)為基礎來運作。
+>無縫 SSO 只需要使用者的裝置 **已加入網域** ，但其不用於 [已加入 Azure AD](../devices/concept-azure-ad-join.md) 或 [已加入混合式 Azure AD](../devices/concept-azure-ad-join-hybrid.md) 的裝置上。 已加入 Azure AD、已加入混合式 Azure AD，以及 Azure AD 的已註冊裝置上的 SSO，是以[主要重新整理權杖](../devices/concept-primary-refresh-token.md)為基礎來運作。
 
 ## <a name="key-benefits"></a>主要權益
 
@@ -85,7 +85,7 @@ ms.locfileid: "92457986"
 ## <a name="next-steps"></a>後續步驟
 
 - [**快速入門**](how-to-connect-sso-quick-start.md) - 開始使用 Azure AD 無縫 SSO。
-- [**部署方案**](https://aka.ms/deploymentplans/sso) - 逐步部署方案。
+- [**部署方案**](../manage-apps/plan-sso-deployment.md) - 逐步部署方案。
 - [**技術性深入探討**](how-to-connect-sso-how-it-works.md) - 了解這項功能的運作方式。
 - [**常見問題集**](how-to-connect-sso-faq.md) - 常見問題集的答案。
 - [**疑難排解**](tshoot-connect-sso.md) - 了解如何解決此功能的常見問題。

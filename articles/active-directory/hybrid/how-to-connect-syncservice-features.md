@@ -16,23 +16,23 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356758"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410533"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步處理服務功能
 
 Azure AD connect 同步處理功能有兩個元件：
 
-* 名為 **Azure AD Connect 同步處理**的內部部署元件，也稱為**同步處理引擎**。
+* 名為 **Azure AD Connect 同步處理** 的內部部署元件，也稱為 **同步處理引擎** 。
 * 位於 Azure AD 的服務，也稱為 **Azure AD Connect 同步處理服務**
 
 本主題說明 **Azure AD Connect 同步處理服務** 的下列功能如何運作，以及如何使用 Windows PowerShell 進行設定。
 
-這些設定是由 [適用於 Windows PowerShell 的 Azure Active Directory 模組](https://aka.ms/aadposh)所設定。 從 Azure AD Connect 個別進行下載和安裝。 本主題說明的 Cmdlet 已導入 [2016 年 3 月版本 (組建 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)。 如果您沒有本主題說明的 Cmdlet，或它們未產生相同的結果，請確認您執行的是最新版本。
+這些設定是由 [適用於 Windows PowerShell 的 Azure Active Directory 模組](/previous-versions/azure/jj151815(v=azure.100))所設定。 從 Azure AD Connect 個別進行下載和安裝。 本主題說明的 Cmdlet 已導入 [2016 年 3 月版本 (組建 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)。 如果您沒有本主題說明的 Cmdlet，或它們未產生相同的結果，請確認您執行的是最新版本。
 
 若要查看 Azure AD 目錄中的組態，請執行 `Get-MsolDirSyncFeatures`。  
 ![Get-MsolDirSyncFeatures 結果](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
@@ -49,7 +49,7 @@ Azure AD connect 同步處理功能有兩個元件：
 啟用功能後，即無法將其停用。
 
 > [!NOTE]
-> 從 2016 年 8 月 24 日起，預設會對新的 Azure AD 目錄啟用*重複屬性恢復*功能。 這項功能也會在此日期前建立的目錄上推出和啟用。 當您的目錄即將啟用此功能時，您會收到電子郵件通知。
+> 從 2016 年 8 月 24 日起，預設會對新的 Azure AD 目錄啟用 *重複屬性恢復* 功能。 這項功能也會在此日期前建立的目錄上推出和啟用。 當您的目錄即將啟用此功能時，您會收到電子郵件通知。
 > 
 > 
 

@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: dce956b932274a44e98a28b4c6567a5e98771613
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: aa9bf1fd706ccf6064893f1141be5e5b2f185ff3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340000"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411162"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>診斷和疑難排解 Azure Cosmos DB 未授權的例外狀況
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,3 +53,5 @@ HTTP 401：在 HTTP 要求中找到的 MAC 簽名碼與計算的簽章不同。
 ## <a name="next-steps"></a>後續步驟
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。
+* 當您使用 Azure Cosmos DB JAVA v4 SDK 時[，診斷和疑難排解](troubleshoot-java-sdk-v4-sql.md)問題。
+* 瞭解 [JAVA V4 SDK](performance-tips-java-sdk-v4-sql.md)的效能指導方針。

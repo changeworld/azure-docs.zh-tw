@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144718"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410890"
 ---
 # <a name="adsync-service-account"></a>ADSync 服務帳戶
 Azure AD Connect 會安裝內部部署服務，以協調 Active Directory 和 Azure Active Directory 之間的同步處理。  Microsoft Azure AD 同步處理服務 (ADSync) 會在內部部署環境中的伺服器上執行。  服務的認證預設會在快速安裝中設定，但可自訂以符合您的組織安全性需求。  這些認證不會用來連接到您的內部部署樹系或 Azure Active Directory。
@@ -40,7 +40,7 @@ Azure AD Connect 會安裝內部部署服務，以協調 Active Directory 和 Az
 |網域控制站|Domain \ AAD_74dc30c01e80 (請參閱附注) |
 
 ## <a name="custom-adsync-service-accounts"></a>自訂 ADSync 服務帳戶
-Microsoft 建議在虛擬服務帳戶或獨立或群組受管理的服務帳戶的內容中執行 ADSync 服務。  您的網域系統管理員也可以選擇建立已布建的服務帳戶，以符合您特定的組織安全性需求。   若要自訂安裝期間所使用的服務帳戶，請選擇下方 [快速設定] 頁面上的 [自訂] 選項。   有下列選項可供使用：
+Microsoft 建議在虛擬服務帳戶或獨立或群組受管理的服務帳戶的內容中執行 ADSync 服務。  您的網域系統管理員也可以選擇建立已布建的服務帳戶，以符合您特定的組織安全性需求。   若要自訂安裝期間所使用的服務帳戶，請選擇下方 [快速設定] 頁面上的 [自訂] 選項。   可用選項如下：
 
 - 預設帳戶– Azure AD Connect 將會依照上述方式布建服務帳戶
 - 受管理的服務帳戶–使用由系統管理員布建的獨立或群組 MSA
@@ -61,7 +61,7 @@ ADSync 服務會在無法啟動時，將錯誤層級訊息發行至事件記錄�
 
 針對此問題進行疑難排解：如果已變更 AdSync 服務登入認證，Microsoft Azure AD 同步加密金鑰將變成無法存取。  如果認證已變更，請使用 [服務] 應用程式將登入帳戶變更回原先設定的值 (例如 NT SERVICE\AdSync) 並重新啟動服務。  這會立即還原正確的 AdSync 服務操作。
 
-如需詳細資訊，請參閱下列 [文章](https://go.microsoft.com/fwlink/?linkid=2086764) 。
+如需詳細資訊，請參閱下列 [文章](./whatis-hybrid-identity.md) 。
 
 ### <a name="example-2"></a>範例 2
 
@@ -69,7 +69,7 @@ ADSync 服務會在無法啟動時，將錯誤層級訊息發行至事件記錄�
 
 針對此問題進行疑難排解：如果已變更 AdSync 服務登入認證，Microsoft Azure AD 同步服務將會失去存取本機資料庫提供者的許可權。  如果認證已變更，請使用服務應用程式將登入帳戶變更回原先設定的值 (例如 NT SERVICE\AdSync) 並重新啟動服務。  這會立即還原正確的 AdSync 服務操作。
 
-如需詳細資訊，請參閱下列 [文章](https://go.microsoft.com/fwlink/?linkid=2086764) 。
+如需詳細資訊，請參閱下列 [文章](./whatis-hybrid-identity.md) 。
 
 提供者傳回下列錯誤資訊的其他詳細資料：
  

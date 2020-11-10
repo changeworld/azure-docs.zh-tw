@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba7391b3b524f7532101083a444aab6059e8a10
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326383"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408750"
 ---
 # <a name="security-control-v2-incident-response"></a>安全性控制 V2：事件回應
 
@@ -26,13 +26,13 @@ ms.locfileid: "91326383"
 
 確定您的組織有處理常式來回應安全性事件、已更新 Azure 的這些處理常式，並會定期進行這些程式以確保就緒。
 
-- [跨企業環境執行安全性](https://aka.ms/AzSec4)
+- [跨企業環境執行安全性](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [事件回應參考指南](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -50,9 +50,9 @@ ms.locfileid: "91326383"
 
 - [如何設定 Azure 資訊安全中心安全性連絡人](../../security-center/security-center-provide-security-contact-details.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -76,9 +76,9 @@ Azure 資訊安全中心在許多 Azure 資產之間提供高品質的警示。 
 
 - [如何將警示串流至 Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -116,9 +116,9 @@ Azure Sentinel 在幾乎任何記錄來源和案例管理入口網站中提供�
 
 - [使用 Azure Sentinel 調查事件](../../sentinel/tutorial-investigate-cases.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -140,11 +140,11 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 資訊安全中心的安全性警示](../../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../../azure-resource-manager/management/tag-resources.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -166,13 +166,12 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [在 Azure Sentinel 中設定自動化威脅回應](../../sentinel/tutorial-respond-threats-playbook.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [威脅情報](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
-

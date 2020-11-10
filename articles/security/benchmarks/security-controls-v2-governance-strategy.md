@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403521"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408787"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全性控制 V2：治理和策略
 
@@ -45,19 +45,19 @@ ms.locfileid: "91403521"
 - 適當的密碼編譯標準
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性架構建議-儲存體、資料和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure 安全性架構建議-儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
 
 - [Azure 安全性基礎-Azure 資料安全性、加密和儲存體](../fundamentals/encryption-overview.md)
 
-- [雲端採用架構-Azure 資料安全性和加密最佳作法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [雲端採用架構-Azure 資料安全性和加密最佳作法](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
 
 - [Azure 安全性基準測試-資產管理](security-controls-v2-asset-management.md)
 
 - [Azure 安全性基準測試-資料保護](security-controls-v2-data-protection.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -79,9 +79,9 @@ ms.locfileid: "91403521"
 
 - [利用企業分割策略來調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -95,9 +95,9 @@ ms.locfileid: "91403521"
 
 - [Azure 安全性基準測試-狀態與弱點管理](security-controls-v2-posture-vulnerability-management.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -109,15 +109,15 @@ ms.locfileid: "91403521"
 
 確定您記載並傳達安全性組織中角色和責任的明確策略。 優先提供安全性決策的明確責任、教育所有人共同責任模型，以及教育技術小組來保護雲端。
 
-- [Azure 安全性最佳作法 1-人員：教育小組雲端安全性旅程](https://aka.ms/AzSec1)
+- [Azure 安全性最佳作法 1-人員：教育小組雲端安全性旅程](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
-- [Azure 安全性最佳作法 2-人員：教育小組雲端安全性技術](https://aka.ms/AzSec2)
+- [Azure 安全性最佳作法 2-人員：教育小組雲端安全性技術](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
-- [Azure 安全性最佳作法 3-處理：指派雲端安全性決策的責任](https://aka.ms/AzSec3)
+- [Azure 安全性最佳作法 3-處理：指派雲端安全性決策的責任](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -145,7 +145,7 @@ ms.locfileid: "91403521"
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](https://aka.ms/AzSec11)
+- [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure 安全性基準測試-網路安全性](security-controls-v2-network-security.md)
 
@@ -153,9 +153,9 @@ ms.locfileid: "91403521"
 
 - [商業網路架構策略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -185,13 +185,13 @@ ms.locfileid: "91403521"
 
 - [Azure 安全性基準測試-特殊許可權存取](security-controls-v2-privileged-access.md)
 
-- [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](https://aka.ms/AzSec11)
+- [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure 身分識別管理安全性概觀](../fundamentals/identity-management-overview.md)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -224,15 +224,15 @@ ms.locfileid: "91403521"
 
 - [Azure 安全性基準測試-事件回應](security-controls-v2-incident-response.md)
 
-- [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](https://aka.ms/AzSec4)
+- [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [Azure 採用架構、記錄和報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
 - [Azure 企業規模、管理及監視](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -259,9 +259,8 @@ ms.locfileid: "91403521"
 
 - [Azure 採用架構-商務持續性和嚴重損壞修復](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**責任**：客戶
+**責任** ：客戶
 
-**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
-

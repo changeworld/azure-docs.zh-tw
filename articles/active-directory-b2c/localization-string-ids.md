@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096193"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410499"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -33,7 +33,7 @@ ms.locfileid: "92096193"
 | **logonIdentifier_email** | 電子郵件地址 |
 | **requiredField_email** | 請輸入您的電子郵件 |
 | **invalid_email** | 請輸入有效的電子郵件地址 |
-| **email_pattern** | ^ [a-zA-Z0-9.！# $% & ' '*+/=？ ^ _ \` { \| } ~-] + @ [Z0-9-] + (？： \\ . [a-zA-Z0-9-] +) *$ |
+| **email_pattern** | ^ [a-zA-Z0-9.！# $% & ' ' *+/=？ ^ _ \` { \| } ~-] + @ [Z0-9-] + (？： \\ . [a-zA-Z0-9-] +)*$ |
 | **local_intro_username** | 使用您的使用者名稱登入 |
 | **logonIdentifier_username** | 使用者名稱 |
 | **requiredField_username** | 請輸入您的使用者名稱 |
@@ -43,7 +43,7 @@ ms.locfileid: "92096193"
 | **forgotpassword_link** | 忘記密碼了嗎? |
 | **createaccount_intro** | 還沒有帳戶嗎？ |
 | **createaccount_link** | 立即註冊 |
-| **divider_title** | OR |
+| **divider_title** | 或 |
 | **cancel_message** | 使用者忘記密碼 |
 | **button_signin** | 登入 |
 | **social_intro** | 使用您的社交帳戶登入 |
@@ -87,6 +87,7 @@ ms.locfileid: "92096193"
 | 識別碼 | 預設值 |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | 您的密碼不正確。 |
+| **UserMessageIfPasswordExpired**| 您的密碼過期。|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | 找不到您的帳戶。 |
 | **UserMessageIfOldPasswordUsed** | 您使用的似乎是舊密碼。 |
 | **DefaultMessage** | 無效的使用者名稱或密碼。 |
@@ -122,6 +123,7 @@ ms.locfileid: "92096193"
     <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>
@@ -143,13 +145,13 @@ ms.locfileid: "92096193"
 | **cancel_message** | 使用者已取消輸入自動判斷的資訊 |
 | **preloader_alt** | 請稍候 |
 | **ver_but_send** | 傳送驗證碼 |
-| **alert_yes** | 是 |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | 有一或多個欄位填寫不正確。 請檢查您的輸入，然後再試一次。 |
 | **year** | Year |
 | **verifying_blurb** | 正在處理您的資訊，請稍候。 |
 | **button_cancel** | 取消 |
 | **ver_fail_no_retry** | 您已嘗試太多次，但都不正確。 請稍後再試一次。 |
-| **month** | Month |
+| **month** | 月 |
 | **ver_success_msg** | 已驗證電子郵件地址。 您現在可以繼續。 |
 | **months** | 一月、二月、三月、四月、五月、六月、七月、八月、九月、十月、十一月、十二月 |
 | **ver_fail_server** | 我們無法驗證您的電子郵件地址。 請輸入有效的電子郵件地址，然後再試一次。 |
@@ -161,7 +163,7 @@ ms.locfileid: "92096193"
 | **ver_incorrect_format** | 格式不正確。 |
 | **ver_but_edit** | 變更電子郵件 |
 | **ver_but_verify** | 檢查驗證碼 |
-| **alert_no** | 否 |
+| **alert_no** | No |
 | **ver_info_msg** | 驗證碼已經傳送到您的收件匣。 請將其複製到下方輸入方塊。 |
 | **day** | 天 |
 | **ver_fail_throttled** | 驗證此電子郵件地址時有過多要求。 請稍候，然後再試一次。 |

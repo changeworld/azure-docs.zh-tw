@@ -3,12 +3,12 @@ title: Azure 服務匯流排訊息例外狀況 |Microsoft Docs
 description: 本文提供在例外狀況發生時所要採取的 Azure 服務匯流排訊息例外狀況和建議的動作清單。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 45f18d16aaeee0017bd4d219b6dc9e6beab515af
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e4aa6d82c20e21caabf0205d7446cf88ed8b7f34
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027511"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409309"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服務匯流排傳訊例外狀況
 本文列出 .NET Framework Api 所產生的 .NET 例外狀況。 
@@ -33,8 +33,7 @@ ms.locfileid: "93027511"
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) |提供給方法的一個或多個引數無效。<br /> 提供給 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路徑區段。<br /> 提供給 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 配置無效。 <br />屬性值大於 32 KB。 |檢查呼叫程式碼，並確定引數正確無誤。 |重試不會有説明。 |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |與作業相關聯的實體不存在或已刪除。 |確定實體已存在。 |重試不會有説明。 |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |嘗試接收具有特定序號的訊息。 找不到此訊息。 |請確定尚未接收訊息。 檢查寄不出信件佇列，查看訊息是否已停止傳送。 |重試不會有説明。 |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |用戶端無法建立與服務匯流排的連線。 |確定提供的主機名稱正確，且主機可以連線。 <p>如果您的程式碼是在具有防火牆/proxy 的環境中執行，請確定未封鎖對服務匯流排網域/IP 位址和埠的流量。
-</p>|如果有間歇性的連線問題，重試也許有幫助。 |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |用戶端無法建立與服務匯流排的連線。 |確定提供的主機名稱正確，且主機可以連線。 <p>如果您的程式碼是在具有防火牆/proxy 的環境中執行，請確定未封鎖對服務匯流排網域/IP 位址和埠的流量。</p>|如果有間歇性的連線問題，重試也許有幫助。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |服務目前無法處理要求。 |用戶端可以等待一段時間，然後再重試作業。 |用戶端可以在特定間隔後重試。 如果重試產生不同的例外狀況，請檢查該例外狀況的重試行為。 |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |可能會在下列情況中擲回的一般傳訊例外狀況：<p>利用屬於不同實體類型 (例如主題) 的名稱或路徑嘗試建立 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 。</p><p>嘗試傳送大於 256 KB 的訊息。 </p>處理要求時伺服器或服務發生錯誤。 如需詳細資訊，請參閱例外狀況訊息。 這通常是暫時性例外狀況。</p><p>因為實體正在進行節流，所以已終止要求。 錯誤碼：50001、50002、50008。 </p> | 查看程式碼，並確定訊息內文只使用可序列化的物件 (或使用自訂序列化程式)。 <p>查看文件來了解支援的屬性值類型，並且只使用支援的類型。</p><p> 查看 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 屬性。 如果是 **true** ，您可以重試此作業。 </p>| 如果例外狀況是因為節流所造成，請等候幾秒鐘，然後再次嘗試操作。 重試行為未定義，在其他情況下可能不會有説明。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |嘗試在該服務命名空間中以另一個實體已在使用的名稱建立實體。 |刪除現有的實體，或選擇不同的名稱來建立實體。 |重試不會有説明。 |

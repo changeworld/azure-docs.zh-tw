@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353997"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410805"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -75,6 +75,7 @@ Azure 磁碟加密無法在 [第2代 vm](../generation-2.md#generation-1-vs-gene
 | RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 6.8 | 6.8 | RedHat:RHEL:6.8:latest | 資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | 資料磁碟 (請參閱下列注意事項) |
+| OpenLogic | CentOS 7。8 | 7.8 | OpenLogic： CentOS：7_8：最新 | 作業系統和資料磁碟 |
 | OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | 作業系統和資料磁碟 |
 | OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | 作業系統和資料磁碟 |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | 作業系統和資料磁碟 |

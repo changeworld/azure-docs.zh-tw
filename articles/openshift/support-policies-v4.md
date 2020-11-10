@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049956"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408401"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支援原則
 
@@ -30,6 +30,7 @@ Azure Red Hat OpenShift 4 叢集的某些設定可能會影響您叢集的可支
 * 所有叢集虛擬機器都必須具有直接的輸出網際網路存取權，至少要有 Azure Resource Manager (ARM) 和服務記錄 (Geneva) 端點。  不支援任何形式的 HTTPS Proxy。
 * 請勿修改叢集虛擬網路的 DNS 設定。 必須使用預設的 Azure DNS 解析程式。
 * 請勿以任何方式覆寫叢集的任何 MachineConfig 物件 (例如，kubelet 設定)。
+* 請勿設定任何 unsupportedConfigOverrides 選項。 設定這些選項可防止次要版本升級。
 * Azure Red Hat OpenShift 服務會透過 Private Link 服務存取您的叢集。  請勿移除或修改服務存取。
 * 不支援非 RHCOS 計算節點。 例如，您無法使用 RHEL 計算節點。
 
