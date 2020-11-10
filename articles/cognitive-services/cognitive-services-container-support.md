@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、Kubernetes
-ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 56d88b9223a80ea9981e8830cac44bac7c6edb3b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368843"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413032"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 認知服務容器
 
@@ -58,7 +58,7 @@ Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包
 
 | 服務 | 支援的定價層 | 容器 | Description |
 |--|--|--|--|
-| [異常偵測器][ad-containers] | F0，S0 | **異常** 偵測器 ( [映射](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))   | Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取][request-access] |
+| [異常偵測器][ad-containers] | F0，S0 | **異常** 偵測器 ( [映射](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))   | Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取][request-access] |
 | [電腦視覺][cv-containers] | F0，S1 | **讀取** OCR ( [映射](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read))  | 「讀取 OCR」容器可讓您從影像和檔中取出列印和手寫的文字，並支援 JPEG、PNG、BMP、PDF 和 TIFF 檔案格式。 如需詳細資訊，請參閱 [讀取 API 檔](./computer-vision/concept-recognizing-text.md)。<br>[要求存取][request-access] |
 | [臉部][fa-containers] | F0，S0 | **臉部** | 能偵測影像中的人臉並識別其特性，包括臉部特徵點 (例如鼻子和眼睛)、性別、年齡及其他機器預測的臉部容貌。 除了偵測以外，臉部也可以使用信賴分數檢查相同或不同影像中的兩張臉是否相同，或將臉部向資料庫進行比對，看看是否有樣貌相似或相同的臉部。 它也能夠使用共同視覺特徵，將相似臉部分組。 |
 | [表單辨識器][fr-containers] | F0，S0 | **表單辨識器** | 表單理解會套用機器學習技術來識別和解壓縮表單中的索引鍵/值組和資料表。 |
@@ -91,7 +91,7 @@ Azure 認知服務容器可透過您的 Azure 訂用帳戶公開取得，而 Doc
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須滿足下列必要條件才能使用 Azure 認知服務容器：
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 6c48639279556d495be57a2933f1d7f3c139294a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 43bcd54955cb1a8aaf08785368faf13c14f8322c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361109"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413049"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 連線至 Azure Cosmos DB 的 MongoDB 版 API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,9 +27,6 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
 * 下載並安裝 [Compass](https://www.mongodb.com/download-center/compass?jmp=hero)
 * 取得您的 Cosmos DB [連接字串](connect-mongodb-account.md)資訊
-
-> [!NOTE]
-> 目前，適用于 MongoDB 的 Azure Cosmos DB API 伺服器版本3.2 支援最新版本的 MongoDB 羅盤。 3.6 伺服器版本尚不支援 MongoDB 羅盤。 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>連線至 Cosmos DB 的 MongoDB 版 API
 

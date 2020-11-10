@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88611172"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412998"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -40,9 +40,9 @@ Azure 防火牆支援規則和規則集合。 規則集合是一組共用相同�
 
 規則集合有三種類型：
 
-* *應用程式規則*：設定可從子網路存取的完整網域名稱 (FQDN)。
-* *網路規則*：設定包含來源位址、通訊協定、目的地連接埠及目的地位址的規則。
-* *NAT 規則*：設定 DNAT 規則以允許傳入的網際網路連線。
+* *應用程式規則* ：設定可從子網路存取的完整網域名稱 (FQDN)。
+* *網路規則* ：設定包含來源位址、通訊協定、目的地連接埠及目的地位址的規則。
+* *NAT 規則* ：設定 DNAT 規則以允許傳入的網際網路連線。
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火牆是否支援輸入流量篩選？
 
@@ -119,7 +119,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>私人網路之間的 Azure 防火牆輸出 SNAT 嗎？
 
-目的地 IP 位址為 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) \(英文\) 的私人 IP 範圍時，Azure 防火牆不會進行 SNAT 轉譯。 如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 您可以將 Azure 防火牆設定為**不要** SNAT 公用 IP 位址範圍。 如需詳細資訊，請參閱 [Azure 防火牆 SNAT 私人 IP 位址範圍](snat-private-range.md)。
+目的地 IP 位址為 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) \(英文\) 的私人 IP 範圍時，Azure 防火牆不會進行 SNAT 轉譯。 如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 您可以將 Azure 防火牆設定為 **不要** SNAT 公用 IP 位址範圍。 如需詳細資訊，請參閱 [Azure 防火牆 SNAT 私人 IP 位址範圍](snat-private-range.md)。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>受支援的網路虛擬設備是否強制進行通道/鏈結？
 
@@ -139,9 +139,9 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>如何在應用程式規則中將萬用字元用於目標 FQDN？
 
-目前只能在 FQDN 的左邊使用萬用字元。 例如，***. contoso.com** 和 ***contoso.com**。
+目前只能在 FQDN 的左邊使用萬用字元。 例如，* *_. contoso.com_* 和 * *_contoso.com_* 。
 
-如果您設定 ***contoso.com**，其會允許*任何值*.contoso.com，但不包含 contoso.com (網域頂點)。 如果您想要允許網域頂點，您必須明確地將其設定為目標 FQDN。
+如果您設定 * *_. contoso.com_* ，它會允許 *anyvalue* ，但無法 (網域頂點) 的 contoso.com。 如果您想要允許網域頂點，您必須明確地將其設定為目標 FQDN。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>[佈建狀態:失敗] 是什麼意思？
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>為什麼即使 Azure 防火牆上沒有規則允許 TCP Ping 和類似的工具的流量，其也會成功連線到目標 FQDN？
 
-TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背景 Proxy 會接聽連接埠 80/443 上的連出流量。 TCP Ping 會建立與防火牆的連線，然後卸除封包並記錄連線。 此行為不會對安全性造成影響。 不過，為了避免混淆，我們正在調查此行為的可能變更。
+TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背景 Proxy 會接聽連接埠 80/443 上的連出流量。 TCP ping 會建立與防火牆的連接，然後再卸載封包。 此行為不會對安全性造成影響。 不過，為了避免混淆，我們正在調查此行為的可能變更。
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP 群組支援的 IP 位址數目是否有限制？
 

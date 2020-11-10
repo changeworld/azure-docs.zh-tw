@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369772"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412369"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 的強式身分識別基礎進行四個步驟
 
@@ -83,7 +83,7 @@ Azure AD 應用程式 Proxy 提供下列優點：
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) 可協助您識別有用的應用程式，這些應用程式可能會批准並新增至企業應用程式資源庫，讓使用者可以從 SSO 和條件式存取等功能獲益。
 
-<em>「**Cloud App Security** 可協助我們確保我們的人員能夠正確地使用我們的雲端和 SaaS 應用程式，以支援協助保護 Accenture 的基礎安全性原則。」</em> --- [John Blasi，管理總監，資訊安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>「 **Cloud App Security** 可協助我們確保我們的人員能夠正確地使用我們的雲端和 SaaS 應用程式，以支援協助保護 Accenture 的基礎安全性原則。」</em> --- [John Blasi，管理總監，資訊安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 除了偵測影子 IT，MCAS 還可以判斷應用程式的風險層級、防止未經授權的存取公司資料、可能的資料洩漏，以及其他應用程式中的安全性風險。
 
@@ -147,7 +147,7 @@ MFA 登 [入報告](../authentication/howto-mfa-reporting.md) 包含 mfa 使用�
 
 ### <a name="self-service-app-management"></a>自助應用程式管理
 
-您必須先針對您想要允許使用者自行探索和要求存取權的任何應用程式，啟用 [自助應用程式存取](../manage-apps/access-panel-manage-self-service-access.md) 權，您的使用者才能從其存取面板自行探索應用程式。 自助應用程式存取是讓使用者能夠自行探索應用程式，並選擇性地允許商務群組核准存取這些應用程式的絕佳方式。 您可以讓商務群組在 [應用程式上](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) ，直接從其存取面板管理指派給這些使用者的認證 Single-Sign。
+您必須先針對您想要允許使用者自行探索和要求存取權的任何應用程式，啟用 [自助應用程式存取](../manage-apps/access-panel-manage-self-service-access.md) 權，您的使用者才能從其存取面板自行探索應用程式。 自助應用程式存取是讓使用者能夠自行探索應用程式，並選擇性地允許商務群組核准存取這些應用程式的絕佳方式。 您可以讓商務群組在 [應用程式上](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app) ，直接從其存取面板管理指派給這些使用者的認證 Single-Sign。
 
 ### <a name="self-service-group-management"></a>自助式群組管理
 
@@ -229,7 +229,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="today"></a>今天
 
-|完成了嗎？|項目|
+|完成了嗎？|Item|
 |:-|:-|
 ||針對群組 (SSPR) 試驗自助式密碼重設|
 ||使用 Azure AD Connect Health 監視混合式元件|
@@ -239,7 +239,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="next-two-weeks"></a>接下來兩周
 
-|完成了嗎？|項目|
+|完成了嗎？|Item|
 |:-|:-|
 ||讓您的使用者可以使用應用程式|
 ||適用于所選 SaaS 應用程式的試驗 Azure AD 布建|
@@ -249,7 +249,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="next-month"></a>下個月
 
-|完成了嗎？|項目|
+|完成了嗎？|Item|
 |:-|:-|
 ||監視應用程式的使用方式來推動見解|
 ||試驗安全的應用程式遠端存取|
@@ -258,7 +258,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="next-three-months"></a>接下來三個月
 
-|完成了嗎？|項目|
+|完成了嗎？|Item|
 |:-|:-|
 ||啟用自助應用程式管理|
 ||啟用自助式群組管理|
@@ -267,6 +267,6 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 Azure Active Directory 的功能和這五個步驟的檢查清單，來增加安全的狀態- [保護您的身分識別基礎結構的五個步驟](https://aka.ms/securitysteps)。
+瞭解如何使用 Azure Active Directory 的功能和這五個步驟的檢查清單，來增加安全的狀態- [保護您的身分識別基礎結構的五個步驟](../../security/fundamentals/steps-secure-identity.md)。
 
-瞭解 Azure AD 中的身分識別功能如何協助您加速轉換至雲端管理的管理，方法是提供解決方案和功能，讓組織能夠快速地採用和移動更多的身分識別管理，從傳統的內部部署系統，到 Azure AD 的 [Azure AD 如何為內部部署工作負載提供雲端控管的管理](https://aka.ms/cloudgoverned)。
+瞭解 Azure AD 中的身分識別功能如何協助您加速轉換至雲端管理的管理，方法是提供解決方案和功能，讓組織能夠快速地採用和移動更多的身分識別管理，從傳統的內部部署系統，到 Azure AD 的 [Azure AD 如何為內部部署工作負載提供雲端控管的管理](./cloud-governed-management-for-on-premises.md)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397244"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412777"
 ---
 # <a name="azure-data-encryption-at-rest"></a>待用 Azure 資料加密
 
@@ -48,7 +48,7 @@ Microsoft Azure 包含的工具，可根據貴公司的安全性和合規性需�
 
 靜態加密旨在防止攻擊者存取未加密的資料，方法是確保資料在磁碟上時就已加密。 如果攻擊者取得具有已加密資料的硬碟，但是沒有加密金鑰，則該攻擊者必須將加密破解才能讀取資料。 與存取硬碟上未加密的資料相比，此攻擊將會變得更為複雜，且需要耗用更多資源。 基於這個理由，強烈建議您使用靜態加密，且對許多組織而言是高優先順序的需求。
 
-組織對於資料治理和合規性工作的需要，也可能需要待用加密。 產業和政府規定 (例如 HIPAA、PCI 和 FedRAMP 等) 就資料保護和加密需求制定了具體的保護措施。 待用加密是符合這其中部分規範所需的必要手段。 如需 Microsoft 的 FIPS 140-2 驗證方法的詳細資訊，請參閱 [聯邦資訊處理標準 (fips) 發行集 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)。
+組織對於資料治理和合規性工作的需要，也可能需要待用加密。 產業和政府規定 (例如 HIPAA、PCI 和 FedRAMP 等) 就資料保護和加密需求制定了具體的保護措施。 待用加密是符合這其中部分規範所需的必要手段。 如需 Microsoft 的 FIPS 140-2 驗證方法的詳細資訊，請參閱 [聯邦資訊處理標準 (fips) 發行集 140-2](/microsoft-365/compliance/offering-fips-140-2)。
 
 除了能滿足合規性和法規要求之外，靜態加密也能提供深度防禦的保護。 Microsoft Azure 針對服務、應用程式及資料提供符合規範的平台。 它也提供全方位的設施和實體安全性、資料存取控制及稽核。 但是，如果其中一個其他安全性措施失敗且待用加密提供這類安全性措施，請務必提供額外的「重迭」安全性措施。
 
@@ -58,7 +58,7 @@ Microsoft 致力於為所有雲端服務提供靜態加密選項，並給予客�
 
 如先前所述，靜態加密的目的，是使用祕密加密金鑰將保存在磁碟上的資料進行加密。 若要達到這個目標，就必須提供安全的金鑰建立、儲存、存取控制，以及加密金鑰管理。 儘管細節可能有所差異，但 Azure 服務「待用加密」實作可以下圖所示的術語來加以說明。
 
-![元件](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
+![單元](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
 ### <a name="azure-key-vault"></a>Azure 金鑰保存庫
 
@@ -73,7 +73,7 @@ Microsoft 致力於為所有雲端服務提供靜態加密選項，並給予客�
 在靜態加密實作中，會使用一個以上的加密金鑰。 將加密金鑰儲存在 Azure Key Vault 可確保金鑰的安全金鑰存取和集中管理。 不過，對於大量加密和解密而言，服務本機存取加密金鑰較有效率，因為它與每個資料作業的 Key Vault 進行互動，因此可提供更強的加密和更佳的效能。 限制使用單一加密金鑰會降低金鑰洩露的風險，以及在必須更換金鑰時的重新加密成本。 「Azure 加密待用模型」使用由下列金鑰類型所組成的金鑰階層，來滿足所有這些需求：
 
 - **資料加密金鑰 (DEK)** – 用於將分割區或資料區塊加密的對稱 AES256 金鑰。  單一資源可能會有多個分割區和多個資料加密金鑰。 使用不同金鑰將每個資料區塊進行加密，會使密碼編譯分析攻擊更加困難。 資源提供者或要將特定區塊加密和解密的應用程式執行個體都需要存取 DEK。 當新的金鑰取代 DEK 時，只有在相關聯區塊中的資料才需要使用新的金鑰重新加密。
-- **金鑰加密金鑰 (KEK) ** -用來加密資料加密金鑰的加密金鑰。 使用永不離開 Key Vault 的金鑰加密金鑰，可讓資料加密金鑰本身進行加密及控制。 可存取 KEK 的實體可能不同於需要 DEK 的實體。 實體可以代理存取 DEK，以限制每個 DEK 只能由特定分割區存取。 因為需要 KEK 才能將 DEK 解密，KEK 實際上就是單一點，藉以透過刪除 KEK 來有效地刪除 DEK。
+- **金鑰加密金鑰 (KEK)** -用來加密資料加密金鑰的加密金鑰。 使用永不離開 Key Vault 的金鑰加密金鑰，可讓資料加密金鑰本身進行加密及控制。 可存取 KEK 的實體可能不同於需要 DEK 的實體。 實體可以代理存取 DEK，以限制每個 DEK 只能由特定分割區存取。 因為需要 KEK 才能將 DEK 解密，KEK 實際上就是單一點，藉以透過刪除 KEK 來有效地刪除 DEK。
 
 以金鑰加密金鑰加密的資料加密金鑰會分開儲存，而且只有具有金鑰加密金鑰存取權的實體，才能解密這些資料加密金鑰。 支援不同模型的金鑰儲存。 如需詳細資訊，請參閱 [資料加密模型](encryption-models.md) 。
 
@@ -115,22 +115,22 @@ Microsoft 致力於為所有雲端服務提供靜態加密選項，並給予客�
 
 ### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
-任何使用 Azure 基礎結構即服務 (IaaS) 功能的客戶都可透過 Azure 磁碟加密讓其 IaaS VM 和磁碟達到靜態加密。 如需有關 Azure 磁片加密的詳細資訊，請參閱 [Azure 磁碟加密檔](../azure-security-disk-encryption-overview.md)。
+任何使用 Azure 基礎結構即服務 (IaaS) 功能的客戶都可透過 Azure 磁碟加密讓其 IaaS VM 和磁碟達到靜態加密。 如需有關 Azure 磁片加密的詳細資訊，請參閱 [Azure 磁碟加密檔](./azure-disk-encryption-vms-vmss.md)。
 
 #### <a name="azure-storage"></a>Azure 儲存體
 
 所有 Azure 儲存體服務 (Blob 儲存體、佇列儲存體、資料表儲存體和 Azure 檔案儲存體) 支援伺服器端待用加密;某些服務還支援客戶管理的金鑰和用戶端加密。
 
-- 伺服器端：所有 Azure 儲存體服務預設會使用服務管理的金鑰啟用伺服器端加密，這對應用程式是透明的。 如需詳細資訊，請參閱[待用資料的 Azure 儲存體服務加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 儲存體和 Azure 檔案也支援 Azure Key Vault 中的 RSA 2048 位元客戶管理金鑰。 如需詳細資訊，請參閱[使用 Azure Key Vault 中客戶管理的金鑰進行儲存體服務加密](../../storage/common/storage-encryption-keys-portal.md)。
+- 伺服器端：所有 Azure 儲存體服務預設會使用服務管理的金鑰啟用伺服器端加密，這對應用程式是透明的。 如需詳細資訊，請參閱[待用資料的 Azure 儲存體服務加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 儲存體和 Azure 檔案也支援 Azure Key Vault 中的 RSA 2048 位元客戶管理金鑰。 如需詳細資訊，請參閱[使用 Azure Key Vault 中客戶管理的金鑰進行儲存體服務加密](../../storage/common/customer-managed-keys-configure-key-vault.md)。
 - 用戶端：Azure Blob、資料表和佇列支援用戶端加密。 當您使用用戶端加密時，客戶會將資料加密，並上傳資料做為加密的 blob。 金鑰管理是由客戶完成。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database 目前支援針對由 Microsoft 管理之服務端和用戶端加密案例的靜態加密。
 
-伺服器加密的支援目前是透過稱為「透明資料加密」的 SQL 功能所提供。 一旦 Azure SQL Database 客戶啟用 TDE 後，就會為他們自動建立和管理金鑰。 可以在資料庫和伺服器等級啟用靜態加密。 自 2017 年 6 月起，[透明資料加密 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) 依預設會在新建立的資料庫上啟用。 Azure SQL Database 支援 Azure Key Vault 中的 RSA 2048 位元客戶管理金鑰。 如需詳細資訊，請參閱 [Azure SQL Database 和資料倉儲的透明資料加密與攜帶您自己的金鑰支援](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)。
+伺服器加密的支援目前是透過稱為「透明資料加密」的 SQL 功能所提供。 一旦 Azure SQL Database 客戶啟用 TDE 後，就會為他們自動建立和管理金鑰。 可以在資料庫和伺服器等級啟用靜態加密。 自 2017 年 6 月起，[透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 依預設會在新建立的資料庫上啟用。 Azure SQL Database 支援 Azure Key Vault 中的 RSA 2048 位元客戶管理金鑰。 如需詳細資訊，請參閱 [Azure SQL Database 和資料倉儲的透明資料加密與攜帶您自己的金鑰支援](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)。
 
-透過 [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 功能可支援 Azure SQL Database 資料的用戶端加密。 Always Encrypted 會使用用戶端所建立及儲存的金鑰。 客戶可以將主要金鑰儲存在 Windows 憑證存放區、Azure Key Vault 或硬體安全性模組中。 使用 SQL Server Management Studio 時，SQL 使用者會選擇要用來加密哪一個資料行的索引鍵。
+透過 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能可支援 Azure SQL Database 資料的用戶端加密。 Always Encrypted 會使用用戶端所建立及儲存的金鑰。 客戶可以將主要金鑰儲存在 Windows 憑證存放區、Azure Key Vault 或硬體安全性模組中。 使用 SQL Server Management Studio 時，SQL 使用者會選擇要用來加密哪一個資料行的索引鍵。
 
 ## <a name="conclusion"></a>結論
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897070"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413083"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -116,6 +116,9 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
+
+> [!TIP]
+> 啟用虛擬網路觸發程式可能會對應用程式的效能造成影響，因為您的 App Service 計畫實例將需要監視您的觸發程式，以判斷何時要調整規模。 這項影響可能很小。
 
 2\.x 版和更新版本的 Functions 執行階段可支援虛擬網路觸發程序。 支援下列非 HTTP 觸發程序類型。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff56c32fb1fb6ef2fef862e50277e8ef3e5b81
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85123978"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412879"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft 網路安全性服務
 
@@ -37,7 +37,7 @@ Microsoft 服務可以建立解決方案來整合我們的產品，並強化其�
 * [Active Directory 服務的離線評定](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
 * [強化的安全性管理環境](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure AD 實作服務](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [嚴防橫向帳戶移動](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [嚴防橫向帳戶移動](/azure-advanced-threat-protection/use-case-lateral-movement-path)
 * [事件回應和復原](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 [深入了解](https://aka.ms/cyberserv) Microsoft 服務安全性諮詢服務。

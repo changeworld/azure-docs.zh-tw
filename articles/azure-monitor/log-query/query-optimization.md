@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203478"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411383"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
-Azure 監視器記錄使用 [Azure 資料總管 (ADX) ](/azure/data-explorer/) 儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理和維護 ADX 叢集，並針對您的記錄分析工作負載進行優化。 當您執行查詢時，它會進行優化，並路由傳送至儲存工作區資料的適當 ADX 叢集。 Azure 監視器記錄和 Azure 資料總管都會使用許多自動查詢優化機制。 雖然自動優化提供大幅提升，但在某些情況下，您可以大幅改善查詢效能。 本文說明效能考慮，以及用來修正這些問題的幾項技術。
+Azure 監視器記錄使用 [Azure 資料總管 (ADX) ](/azure/data-explorer/) 儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理和維護 ADX 叢集，並針對您的記錄分析工作負載進行優化。 當您執行查詢時，它會進行優化，並路由傳送至儲存工作區資料的適當 ADX 叢集。 Azure 監視器記錄和 Azure 資料總管都會使用許多自動查詢優化機制。 雖然自動優化提供大幅提升，但在某些情況下，您可以大幅提升查詢效能。 本文說明效能考慮，以及用來修正這些問題的幾項技術。
 
 大部分的技術都是直接在 Azure 資料總管上執行的查詢，以及 Azure 監視器記錄檔的常見方法，不過這裡討論的有幾個獨特的 Azure 監視器記錄考慮。 如需更多 Azure 資料總管優化秘訣，請參閱 [查詢最佳做法](/azure/kusto/query/best-practices)。
 
@@ -131,9 +131,9 @@ SecurityEvent
 
 雖然 [ ( # B1 ](/azure/kusto/query/max-aggfunction)、 [Sum ( # B3 ](/azure/kusto/query/sum-aggfunction)、 [count ( # B5 ](/azure/kusto/query/count-aggfunction)和 [avg ( # B7 ](/azure/kusto/query/avg-aggfunction) 等的一些匯總命令都有低 CPU 的影響，但其他比較複雜，而且包含啟發學習法和估計值，可讓它們有效率地執行。 例如， [dcount ( # B1 ](/azure/kusto/query/dcount-aggfunction) 會使用 HyperLogLog 演算法來提供接近大量資料集的相異計數，而不會實際計算每個值;百分位數函數使用最接近的排名百分位數演算法來執行類似的近似值。 有幾個命令包含可減少其影響的選擇性參數。 例如， [makeset ( # B1 ](/azure/kusto/query/makeset-aggfunction) 函式有一個選擇性參數，可用來定義最大設定大小，這會大幅影響 CPU 和記憶體。
 
-[加入](/azure/kusto/query/joinoperator?pivots=azuremonitor) 和 [摘要](/azure/kusto/query/summarizeoperator) 命令可能會在處理大型資料集時造成高 CPU 使用率。 它們的複雜性與使用做為*cardinality* `by` 摘要或聯結屬性之資料行的可能值數目（稱為基數）直接相關。 如需聯結和摘要的說明和優化，請參閱其檔文章和優化提示。
+[加入](/azure/kusto/query/joinoperator?pivots=azuremonitor) 和 [摘要](/azure/kusto/query/summarizeoperator) 命令可能會在處理大型資料集時造成高 CPU 使用率。 它們的複雜性與使用做為 *cardinality* `by` 摘要或聯結屬性之資料行的可能值數目（稱為基數）直接相關。 如需聯結和摘要的說明和優化，請參閱其檔文章和優化提示。
 
-例如，下列查詢會產生完全相同的結果，因為 **CounterPath** 一律是一對一對應到 **CounterName** 和 **ObjectName**。 第二個比較有效率，因為匯總維度較小：
+例如，下列查詢會產生完全相同的結果，因為 **CounterPath** 一律是一對一對應到 **CounterName** 和 **ObjectName** 。 第二個比較有效率，因為匯總維度較小：
 
 ```Kusto
 //less efficient
@@ -324,7 +324,7 @@ Azure 監視器記錄檔中的所有記錄都會根據 **TimeGenerated** 資料�
 
 您可以使用 Log Analytics 畫面中的時間範圍選取器來設定時間範圍，如 [Azure 監視器 Log analytics 中的記錄查詢範圍和時間範圍](scope.md#time-range)所述。 這是建議的方法，因為選取的時間範圍會使用查詢中繼資料傳遞至後端。 
 
-替代方法是在查詢的**TimeGenerated**上明確包含[where](/azure/kusto/query/whereoperator)條件。 您應該使用這個方法，因為它會確保時間範圍是固定的，即使是從不同的介面使用查詢也是一樣。
+替代方法是在查詢的 **TimeGenerated** 上明確包含 [where](/azure/kusto/query/whereoperator)條件。 您應該使用這個方法，因為它會確保時間範圍是固定的，即使是從不同的介面使用查詢也是一樣。
 您應確定查詢的所有部分都有 **TimeGenerated** 篩選。 當查詢有從不同資料表或相同資料表中提取資料的子查詢時，每個查詢都必須包含其本身 [的 where](/azure/kusto/query/whereoperator) 條件。
 
 ### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>請確定所有子查詢都有 TimeGenerated 篩選

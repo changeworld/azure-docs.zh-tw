@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03035f0ddb2499fb922581855878bc061bf57946
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85124046"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412845"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 資料安全性和加密最佳做法
 本文說明資料安全性和加密的最佳做法。
@@ -37,7 +37,7 @@ ms.locfileid: "85124046"
 
 保護您的金鑰對於保護雲端中的資料至關重要。
 
-[Azure Key Vault](/azure/key-vault/key-vault-overview) 可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和祕密。 金鑰保存庫簡化了金鑰管理程序，並可讓您控管存取和加密資料的金鑰。 開發人員可以在幾分鐘內建立用於開發和測試的金鑰，然後將它們移轉至生產金鑰。 安全性系統管理員可以視需要授與 (和撤銷) 存取金鑰的權限。
+[Azure Key Vault](../../key-vault/general/overview.md) 可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和祕密。 金鑰保存庫簡化了金鑰管理程序，並可讓您控管存取和加密資料的金鑰。 開發人員可以在幾分鐘內建立用於開發和測試的金鑰，然後將它們移轉至生產金鑰。 安全性系統管理員可以視需要授與 (和撤銷) 存取金鑰的權限。
 
 您可以使用 Key Vault 建立多個安全的容器，稱之為保存庫。 這些保存庫由 HSM 支援。 保存庫藉由集中儲存應用程式祕密，協助減少意外遺失安全性資訊的機會。 金鑰保存庫也會控制和記錄對其中所儲存項目的存取。 Azure Key Vault 可以處理要求及更新傳輸層安全性 (TLS) 憑證。 它為憑證生命週期管理提供了健全的解決方案功能。
 
@@ -45,19 +45,19 @@ Azure Key Vault 設計用來支援應用程式金鑰和祕密。 Key Vault 的�
 
 以下是使用金鑰保存庫的安全性最佳做法。
 
-**最佳做法**：在特定範圍對使用者、群組和應用程式授與存取權。   
-**詳細資料**：使用 RBAC 的預先定義的角色。 例如，若要授與使用者存取權以管理金鑰保存庫，您可以將預先定義的角色 [Key Vault 參與者](/azure/role-based-access-control/built-in-roles) 指派給特定範圍的使用者。 在此案例中，範圍會是訂用帳戶、資源群組或只是特定金鑰保存庫。 如果預先定義的角色不符合您的需求，您可以 [定義自己的角色](/azure/role-based-access-control/custom-roles)。
+**最佳做法** ：在特定範圍對使用者、群組和應用程式授與存取權。   
+**詳細資料** ：使用 RBAC 的預先定義的角色。 例如，若要授與使用者存取權以管理金鑰保存庫，您可以將預先定義的角色 [Key Vault 參與者](../../role-based-access-control/built-in-roles.md) 指派給特定範圍的使用者。 在此案例中，範圍會是訂用帳戶、資源群組或只是特定金鑰保存庫。 如果預先定義的角色不符合您的需求，您可以 [定義自己的角色](../../role-based-access-control/custom-roles.md)。
 
-**最佳做法**：控制哪些使用者具有存取權。   
-**詳細資料**：金鑰保存庫的存取權可透過兩個不同介面來控制︰管理平面和資料平面。 管理平面和資料平面的存取控制在運作上互不相關。
+**最佳做法** ：控制哪些使用者具有存取權。   
+**詳細資料** ：金鑰保存庫的存取權可透過兩個不同介面來控制︰管理平面和資料平面。 管理平面和資料平面的存取控制在運作上互不相關。
 
 使用 RBAC 控制使用者可以存取的內容。 例如，如果您想要對應用程式授與金鑰保存庫中金鑰的使用權限，您只需要使用金鑰保存庫存取原則對資料平面授與存取權限，此應用程式完全不需要管理平面的存取權。 相反地，如果您想要讓使用者能夠讀取保存庫屬性和標籤，但不讓他擁有金鑰、密碼或憑證的任何存取權，您可以使用 RBAC 對此使用者授與「讀取」權限，但不需要授與資料平面的存取權。
 
-**最佳做法**：將憑證儲存在金鑰保存庫。 您的憑證價值很高。 若陷入有心人的控制中，就可能危害您的應用程式安全性或資料的安全性。   
-**詳細資料**：Azure Resource Manager 可以在部署 VM 時，將儲存在 Azure Key Vault 中的憑證安全地部署到 Azure VM。 透過為金鑰保存庫設定適當的存取原則，您也控制誰可以存取您的憑證。 另一個優點是您可以在 Azure Key Vault 中的單一位置管理所有憑證。 如需其他資訊，請參閱[將憑證從客戶管理的金鑰保存庫部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) \(英文\)。
+**最佳做法** ：將憑證儲存在金鑰保存庫。 您的憑證價值很高。 若陷入有心人的控制中，就可能危害您的應用程式安全性或資料的安全性。   
+**詳細資料** ：Azure Resource Manager 可以在部署 VM 時，將儲存在 Azure Key Vault 中的憑證安全地部署到 Azure VM。 透過為金鑰保存庫設定適當的存取原則，您也控制誰可以存取您的憑證。 另一個優點是您可以在 Azure Key Vault 中的單一位置管理所有憑證。 如需其他資訊，請參閱[將憑證從客戶管理的金鑰保存庫部署到 VM](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault) \(英文\)。
 
-**最佳做法**：請確定您可以復原刪除的金鑰保存庫或金鑰保存庫物件。   
-**詳細資料**：刪除金鑰保存庫或金鑰保存庫物件可能是不小心或惡意的。 啟用金鑰保存庫的虛刪除和清除保護功能，尤其是針對用來加密待用資料的金鑰。 刪除這些金鑰就相當於資料遺失，因此如有需要，您可以復原已刪除的保存庫和保存庫物件。 定期練習金鑰保存庫復原作業。
+**最佳做法** ：請確定您可以復原刪除的金鑰保存庫或金鑰保存庫物件。   
+**詳細資料** ：刪除金鑰保存庫或金鑰保存庫物件可能是不小心或惡意的。 啟用金鑰保存庫的虛刪除和清除保護功能，尤其是針對用來加密待用資料的金鑰。 刪除這些金鑰就相當於資料遺失，因此如有需要，您可以復原已刪除的保存庫和保存庫物件。 定期練習金鑰保存庫復原作業。
 
 > [!NOTE]
 > 如果使用者具有金鑰保存庫管理平面的參與者權限 (RBAC)，他們可以透過設定金鑰保存庫存取原則，為自己授與資料平面的存取權。 建議您嚴格控制擁有金鑰保存庫「參與者」權限的人員，以確保只有獲得授權的人員可以存取和管理您的金鑰保存庫、金鑰、密碼和憑證。
@@ -73,23 +73,23 @@ Azure Key Vault 設計用來支援應用程式金鑰和祕密。 Key Vault 的�
 
 因為絕大多數的攻擊是以使用者為目標，所以端點會成為主要攻擊點之一。 攻擊者入侵端點，就可以利用使用者的認證來存取組織的資料。 大部分的端點攻擊可以利用使用者就是其本機工作站的系統管理員的這個事實。
 
-**最佳做法**：使用安全管理工作站保護敏感性帳戶、工作和資料。   
-**詳細資料**：使用[特殊權限存取工作站](https://technet.microsoft.com/library/mt634654.aspx)來減少工作站的受攻擊面。 這些安全的管理工作站可協助您減輕其中一些攻擊，以確保您的資料更為安全。
+**最佳做法** ：使用安全管理工作站保護敏感性帳戶、工作和資料。   
+**詳細資料** ：使用 [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)來減少工作站的受攻擊面。 這些安全的管理工作站可協助您減輕其中一些攻擊，以確保您的資料更為安全。
 
-**最佳做法**：確保端點保護。   
-**詳細資料**：在用來取用資料的所有裝置上強制執行安全性原則 (不論資料位置是雲端或內部部署)。
+**最佳做法** ：確保端點保護。   
+**詳細資料** ：在用來取用資料的所有裝置上強制執行安全性原則 (不論資料位置是雲端或內部部署)。
 
 ## <a name="protect-data-at-rest"></a>保護靜態資料的安全
 
 待用[資料加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是資料隱私權、合規性及資料主權的必要步驟。
 
-**最佳做法**：套用磁碟加密來協助保護您的資料。   
-**詳細資料**：使用 [Azure 磁碟加密](/azure/security/azure-security-disk-encryption-overview)。 它可讓 IT 系統管理員加密 Windows 和 Linux IaaS VM 磁碟。 磁碟加密結合業界標準的 Windows BitLocker 功能和 Linux dm-crypt 功能，為 OS 和資料磁碟提供磁碟區加密。
+**最佳做法** ：套用磁碟加密來協助保護您的資料。   
+**詳細資料** ：使用 [Azure 磁碟加密](./azure-disk-encryption-vms-vmss.md)。 它可讓 IT 系統管理員加密 Windows 和 Linux IaaS VM 磁碟。 磁碟加密結合業界標準的 Windows BitLocker 功能和 Linux dm-crypt 功能，為 OS 和資料磁碟提供磁碟區加密。
 
 Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服務會提供加密選項。 您可以使用 Azure Key Vault 控管存取和加密資料的金鑰。 [若要深入瞭解，請參閱 Azure 資源提供者加密模型支援](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
 
-**最佳做法**：使用加密，協助降低與未經授權存取資料相關的風險。   
-**詳細資料**：將機密資料寫入它們之前，先加密您的磁碟機。
+**最佳做法** ：使用加密，協助降低與未經授權存取資料相關的風險。   
+**詳細資料** ：將機密資料寫入它們之前，先加密您的磁碟機。
 
 未強制執行資料加密的組織會更容易遭受資料機密性問題的攻擊。 例如，未經授權或惡意使用者可能會竊取遭入侵帳戶中的資料，或未經授權存取以清除格式編碼的資料。 公司必須證明他們是十分用心，並使用正確的安全性控制項來增強資料安全性以遵守業界法規。
 
@@ -101,19 +101,19 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 
 以下是特定於使用 Azure VPN 閘道、SSL/TLS，以及 HTTPS 的最佳做法。
 
-**最佳做法**：從內部部署的多個工作站安全存取 Azure 虛擬網路。   
-**詳細資料**：使用[站對站 VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
+**最佳做法** ：從內部部署的多個工作站安全存取 Azure 虛擬網路。   
+**詳細資料** ：使用 [站對站 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
-**最佳做法**：從內部部署的個別工作站安全存取 Azure 虛擬網路。   
-**詳細資料**：[使用點對站 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
+**最佳做法** ：從內部部署的個別工作站安全存取 Azure 虛擬網路。   
+**詳細資料** ： [使用點對站 VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)。
 
-**最佳做法**：通過專用的高速 WAN 連結移動大型資料集。   
-**詳細資料**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果您選擇使用 ExpressRoute，您也可以透過使用 SSL/TLS 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
+**最佳做法** ：通過專用的高速 WAN 連結移動大型資料集。   
+**詳細資料** ：使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)。 如果您選擇使用 ExpressRoute，您也可以透過使用 SSL/TLS 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
 
-**最佳做法**：透過 Azure 入口網站與 Azure 儲存體互動。   
-**詳細資料**：透過 HTTPS 發生的所有交易。 您也可以使用 [儲存體 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) over HTTPS 來與 [Azure 儲存體](https://azure.microsoft.com/services/storage/)互動。
+**最佳做法** ：透過 Azure 入口網站與 Azure 儲存體互動。   
+**詳細資料** ：透過 HTTPS 發生的所有交易。 您也可以使用 [儲存體 REST API](/rest/api/storageservices/) over HTTPS 來與 [Azure 儲存體](https://azure.microsoft.com/services/storage/)互動。
 
-無法保護傳輸中資料的組織比較容易遭受 [中間人攻擊](https://technet.microsoft.com/library/gg195821.aspx)、 [竊聽](https://technet.microsoft.com/library/gg195641.aspx)及會話劫持攻擊。 這些攻擊可能是取得機密資料存取權的第一步。
+無法保護傳輸中資料的組織比較容易遭受 [中間人攻擊](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14))、 [竊聽](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))及會話劫持攻擊。 這些攻擊可能是取得機密資料存取權的第一步。
 
 ## <a name="secure-email-documents-and-sensitive-data"></a>保護電子郵件、 文件和敏感性資料
 
@@ -138,5 +138,5 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 如需更多安全性最佳做法，請參閱 [Azure 安全性最佳做法與模式](best-practices-and-patterns.md)，以便在使用 Azure 設計、部署和管理雲端解決方案時使用。
 
 下列資源可提供更多有關 Azure 安全性和相關 Microsoft 服務的一般資訊：
-* [Azure 安全性小組部落格](https://blogs.msdn.microsoft.com/azuresecurity/) - Azure 安全性的最新資訊
+* [Azure 安全性小組部落格](/archive/blogs/azuresecurity/) - Azure 安全性的最新資訊
 * [Microsoft 安全性回應中心](https://technet.microsoft.com/library/dn440717.aspx) -- 可在其中回報 Microsoft 安全性弱點 (包括 Azure 的問題) 或透過電子郵件傳送給 secure@microsoft.com

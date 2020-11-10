@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e2144a61d83f6c7dece8f34232031192b51cde8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395986"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412692"
 ---
 # <a name="security-control-data-protection"></a>安全性控制：資料保護
 
@@ -26,7 +26,7 @@ ms.locfileid: "91395986"
 
 使用標籤協助追蹤儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
@@ -36,11 +36,11 @@ ms.locfileid: "91395986"
 
 針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure 角色型存取控制 (Azure RBAC) 來控制 Azure 資源的存取權。 
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](../../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
@@ -52,7 +52,7 @@ ms.locfileid: "91395986"
 
 針對 Microsoft 所管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../fundamentals/protection-customer-data.md)
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
@@ -64,7 +64,7 @@ ms.locfileid: "91395986"
 
 遵循 Azure 資訊安全中心待用加密及傳輸中加密的建議（適用時）。
 
-- [瞭解 Azure 中的傳輸加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [瞭解 Azure 中的傳輸加密](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
@@ -78,11 +78,11 @@ ms.locfileid: "91395986"
 
 使用 Azure SQL 資訊保護來協助分類和標記儲存在 Azure SQL Database 中的資訊。
 
-- [如何執行 Azure SQL 資料探索](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+- [如何執行 Azure SQL 資料探索](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-- [如何執行 Azure 資訊保護](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+- [如何執行 Azure 資訊保護](/azure/information-protection/deployment-roadmap)
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../fundamentals/protection-customer-data.md)
 
 ## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
@@ -92,7 +92,7 @@ ms.locfileid: "91395986"
 
 使用 Azure 角色型存取控制 (Azure RBAC) 來控制資料和資源的存取權，否則請使用服務特定的存取控制方法。
 
-- [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何設定 Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
@@ -104,7 +104,7 @@ ms.locfileid: "91395986"
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../fundamentals/protection-customer-data.md)
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
@@ -114,9 +114,9 @@ ms.locfileid: "91395986"
 
 在所有 Azure 資源上使用待用加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。 
 
-- [瞭解 Azure 中的待用加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [瞭解 Azure 中的待用加密](../fundamentals/encryption-atrest.md)
 
-- [如何設定客戶管理的加密金鑰](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [如何設定客戶管理的加密金鑰](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
@@ -126,7 +126,7 @@ ms.locfileid: "91395986"
 
 使用 Azure 監視器搭配 Azure 活動記錄，以針對重要 Azure 資源發生變更時建立警示。
 
-- [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何建立 Azure 活動記錄事件的警示](../../azure-monitor/platform/alerts-activity-log.md)
 
 
 ## <a name="next-steps"></a>後續步驟

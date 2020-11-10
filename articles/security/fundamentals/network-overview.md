@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811095"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413287"
 ---
 # <a name="azure-network-security-overview"></a>Azure 網路安全性概觀
 
@@ -63,25 +63,25 @@ Azure 支援數種類型的網路存取控制，例如：
 任何安全部署都需要某種程度的網路存取控制。 網路存取控制的目標是限制虛擬機器只能與必要的系統通訊。 其他通訊嘗試都會被封鎖。
 
 > [!NOTE]
-> [Azure 儲存體安全性概觀](storage-overview.md)一文說明儲存體防火牆
+> [Azure 儲存體安全性概觀](../../storage/blobs/security-recommendations.md)一文說明儲存體防火牆
 
 #### <a name="network-security-rules-nsgs"></a>網路安全性規則 (NSG)
 
 如果您需要基本的網路層級存取控制 (以 IP 位址和 TCP 或 UDP 通訊協定為基礎)，則可以使用網路安全性群組 (NSG)。 NSG 是基本且具狀態的封包過濾防火牆，可讓您根據 [5-Tuple](https://www.techopedia.com/definition/28190/5-tuple) \(英文\) 來控制存取權。 NSG 所含的功能可簡化管理工作並降低設定錯誤的可能性：
 
-* **增強型安全性規則**可簡化 NSG 規則定義，並讓您能夠建立複雜的規則，而無須建立多個簡單的規則以達到相同的結果。
-* **服務標記**是 Microsoft 建立的標籤，用來代表一組 IP 位址。 這些標記可動態更新，以納入與定義標籤所含內容的條件相符的 IP 範圍。 例如，如果您想要建立要對東部區域中的所有 Azure 儲存體套用的規則，您可以使用 Storage.EastUS
-* **應用程式安全性群組**可讓您將資源部署至應用程式群組，並藉由建立使用這些應用程式群組的規則來控制對這些資源的存取。 例如，如果您已將 Web 伺服器部署至 'Webservers' 應用程式群組，您可以建立會套用 NSG 的規則，而允許從網際網路到 'Webservers' 應用程式群組中所有系統的 443 流量。
+* **增強型安全性規則** 可簡化 NSG 規則定義，並讓您能夠建立複雜的規則，而無須建立多個簡單的規則以達到相同的結果。
+* **服務標記** 是 Microsoft 建立的標籤，用來代表一組 IP 位址。 這些標記可動態更新，以納入與定義標籤所含內容的條件相符的 IP 範圍。 例如，如果您想要建立要對東部區域中的所有 Azure 儲存體套用的規則，您可以使用 Storage.EastUS
+* **應用程式安全性群組** 可讓您將資源部署至應用程式群組，並藉由建立使用這些應用程式群組的規則來控制對這些資源的存取。 例如，如果您已將 Web 伺服器部署至 'Webservers' 應用程式群組，您可以建立會套用 NSG 的規則，而允許從網際網路到 'Webservers' 應用程式群組中所有系統的 443 流量。
 
 NSG 未提供應用程式層級檢查或已驗證的存取控制。
 
 深入了解：
 
-* [網路安全性群組](../../virtual-network/security-overview.md)
+* [網路安全性群組](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just-In-Time VM 存取
 
-[Azure 資訊安全中心](../../security-center/security-center-intro.md)可以管理 VM 上的 NSG 及鎖定對 VM 的存取，直到具有適當角色型存取控制 [RBAC](/azure/role-based-access-control/overview) 權限的使用者要求存取為止。 當使用者成功獲得授權後，ASC 便會對 NSG 進行修改，以允許在指定的時間內對選取的連接埠進行存取。 在這段時間到期後，NSG 就會還原為其先前受保護的狀態。
+[Azure 資訊安全中心](../../security-center/security-center-introduction.md)可以管理 VM 上的 NSG 及鎖定對 VM 的存取，直到具有適當角色型存取控制 [RBAC](../../role-based-access-control/overview.md) 權限的使用者要求存取為止。 當使用者成功獲得授權後，ASC 便會對 NSG 進行修改，以允許在指定的時間內對選取的連接埠進行存取。 在這段時間到期後，NSG 就會還原為其先前受保護的狀態。
 
 深入了解：
 
@@ -141,7 +141,7 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 
 深入了解：
 
-* [Azure 防火牆概觀](/azure/firewall/overview)
+* [Azure 防火牆概觀](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>安全遠端存取和跨單位連線
 
@@ -202,7 +202,7 @@ Azure 網路支援下列安全遠端存取案例︰
 
 有一個選項是透過網際網路「繞回」，以將某個虛擬網路上的服務連線到另一個虛擬網路上的服務。 連線會從某個虛擬網路開始、經過網際網路，然後回到目的地虛擬網路。 這個選項會讓連線暴露在任何網際網路型通訊的固有安全性問題之中。
 
-建立在兩個虛擬網路之間連線的站對站 VPN 可能是更好的選項。 這個方法會使用與上述的跨單位站對站 VPN 連線相同的 [IPSec 通道模式](https://technet.microsoft.com/library/cc786385.aspx) 通訊協定。
+建立在兩個虛擬網路之間連線的站對站 VPN 可能是更好的選項。 這個方法會使用與上述的跨單位站對站 VPN 連線相同的 [IPSec 通道模式](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) 通訊協定。
 
 這個方法的優點在於 VPN 連線是透過 Azure 網路網狀架構所建立的，而不是透過網際網路連線。 相較於透過網際網路連線的站對站 VPN，這會提供多一層的安全性。
 
@@ -237,7 +237,7 @@ Azure 應用程式閘道會針對您的 Web 架構服務提供以 HTTP 為基礎
 
 深入了解：
 
-* [應用程式閘道概觀](/azure/application-gateway/application-gateway-introduction)
+* [應用程式閘道概觀](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>網路層級負載平衡
 
@@ -252,8 +252,8 @@ Azure 應用程式閘道會針對您的 Web 架構服務提供以 HTTP 為基礎
 
 深入了解：
 
-* [多個虛擬機器或服務之間網際網路面向的負載平衡器](/azure/load-balancer/load-balancer-internet-overview)
-* [內部負載平衡器概觀](/azure/load-balancer/load-balancer-internal-overview)
+* [多個虛擬機器或服務之間網際網路面向的負載平衡器](../../load-balancer/load-balancer-overview.md)
+* [內部負載平衡器概觀](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>全域負載平衡
 
@@ -315,19 +315,19 @@ Azure 會以 Azure DNS 的形式提供高可用性且高效能的外部 DNS 解�
 ## <a name="azure-ddos-protection"></a>Azure DDoS 保護
 
 分散式阻斷服務 (DDoS) 攻擊是將應用程式移至雲端的客戶所面臨的最大可用性和安全性顧慮之一。 DDoS 攻擊會嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。
-Microsoft 提供在 Azure 平台中名為**基本**的 DDoS 保護。 此功能不收費，且會持續監視和即時緩解常見的網路層級攻擊。 除了隨附於 DDoS 保護**基本**的保護功能以外，您也可以啟用**標準**選項。 DDoS Protection Standard 功能包括：
+Microsoft 提供在 Azure 平台中名為 **基本** 的 DDoS 保護。 此功能不收費，且會持續監視和即時緩解常見的網路層級攻擊。 除了隨附於 DDoS 保護 **基本** 的保護功能以外，您也可以啟用 **標準** 選項。 DDoS Protection Standard 功能包括：
 
-* **原生平台整合**：原生整合到 Azure。 包括透過 Azure 入口網站進行設定。 DDoS Protection Standard 了解您的資源和資源組態。
+* **原生平台整合** ：原生整合到 Azure。 包括透過 Azure 入口網站進行設定。 DDoS Protection Standard 了解您的資源和資源組態。
 * **現成的保護：** 經過簡化的組態會在啟用 DDoS Protection Standard 後，立即保護虛擬網路上的所有資源。 不需要任何介入或使用者定義。 一旦偵測到攻擊，DDoS Protection Standard 就會立即自動減輕攻擊。
 * **永遠可用流量監視：** 您的應用程式流量模式受到全年無休的全天候監視，以尋找 DDoS 攻擊的指標。 超出保護原則時，就會執行安全防護功能。
-* **攻擊風險降低報**攻擊風險降低報告會使用彙總的網路流量資料，提供有關以您資源為目標的攻擊詳細資訊。
-* **攻擊風險降低流程記錄**攻擊風險降低流程記錄可讓您在作用中 DDoS 攻擊期間，近乎即時地查看丟棄的流量、轉送的流量及其他相關攻擊資料。
+* **攻擊風險降低報** 攻擊風險降低報告會使用彙總的網路流量資料，提供有關以您資源為目標的攻擊詳細資訊。
+* **攻擊風險降低流程記錄** 攻擊風險降低流程記錄可讓您在作用中 DDoS 攻擊期間，近乎即時地查看丟棄的流量、轉送的流量及其他相關攻擊資料。
 * **適應性調整：** 智慧型流量分析可在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。 第 3 層至第 7 層保護：搭配 Web 應用程式防火牆使用時，可提供完整的堆疊 DDoS 保護。
 * **廣泛的安全防護範圍：** 可利用全域功能降低超過 60 種不同攻擊類型的風險，以抵禦最大的已知 DDoS 攻擊。
 * **攻擊計量：** 透過 Azure 監視器可以存取每個攻擊的摘要計量。
 * **攻擊警示：** 您可以使用內建攻擊計量，在開始和停止攻擊時設定警示，並在攻擊的持續時間內設定警示。 警示會整合到您的操作軟體，例如 Microsoft Azure 監視器記錄、Splunk、Azure 儲存體、電子郵件和 Azure 入口網站。
 * **成本保證：** 資料傳輸和應用程式相應放大服務會針對記載的 DDoS 攻擊計算點數。
-* **DDoS 快速回應**標準 DDoS 保護的客戶現在可以在攻擊進行期間，連絡 Rapid Response 小組。 DRR 可協助您在攻擊發生期間調查攻擊和自訂移轉，以及進行攻擊後的分析。
+* **DDoS 快速回應** 標準 DDoS 保護的客戶現在可以在攻擊進行期間，連絡 Rapid Response 小組。 DRR 可協助您在攻擊發生期間調查攻擊和自訂移轉，以及進行攻擊後的分析。
 
 
 深入了解：
@@ -381,7 +381,7 @@ Azure 資訊安全中心可協助您預防、偵測和回應威脅，並加強�
 
 深入了解：
 
-* [Azure 資訊安全中心簡介](../../security-center/security-center-intro.md)
+* [Azure 資訊安全中心簡介](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>虛擬網路 TAP
 

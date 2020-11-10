@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eedd19189d1e1ccedd3d505aecf407aca8fca831
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793053"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413355"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>如何將在 Linux 或 Windows 上執行的 IoT 隨插即用 bridge 範例連線到 IoT 中樞
 
@@ -176,14 +176,14 @@ cd scripts/linux
  流覽至 *pnpbridge* 資料夾，並在命令提示字元中執行下列命令，以啟動環境感應器的 IoT 隨插即用橋接器範例：
 
 ```bash
- cd cmake/pnpbridge_x86/src/adaptors/samples/environmental_sensor/
+ cd cmake/pnpbridge_linux/src/adapters/samples/environmental_sensor/
 ./pnpbridge_environmentalsensor
 
 ```
 
 ```cmd
 REM Windows
-cd cmake\pnpbridge_x86\src\adaptors\samples\environmental_sensor
+cd cmake\pnpbridge_x86\src\adapters\samples\environmental_sensor
 Debug\pnpbridge_environmentalsensor.exe
 ```
 

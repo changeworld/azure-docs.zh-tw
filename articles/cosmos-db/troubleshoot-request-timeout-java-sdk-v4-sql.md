@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340064"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411281"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Azure Cosmos DB JAVA v4 SDK 要求超時例外狀況進行診斷和疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,6 +22,9 @@ ms.locfileid: "93340064"
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 下列清單包含要求超時例外狀況的已知原因和解決方案。
+
+### <a name="existing-issues"></a>現有問題
+如果您看到要求停滯于較長的持續時間或更頻繁地計時，請將 JAVA v4 SDK 升級為最新版本。 注意：我們強烈建議使用4.7.0 版和更新版本。 如需詳細資訊，請參閱 [JAVA V4 SDK 版本](sql-api-sdk-java-v4.md) 資訊。
 
 ### <a name="high-cpu-utilization"></a>高 CPU 使用率
 高 CPU 使用率是最常見的情況。 為了達到最佳延遲，CPU 使用量大約是40%。 使用10秒作為間隔，以監視 (不是平均) CPU 使用率。 CPU 尖峰對於跨資料分割查詢較為常見，因為它可能會針對單一查詢進行多個連接。

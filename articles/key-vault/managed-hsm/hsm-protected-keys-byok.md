@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 39486b076f9284436207f823ea48fddc98bb48a0
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 3c727b75e0d1b1e05638617d6e460dade15fc3c5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372841"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413474"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>將受 HSM 保護的金鑰匯入至受控 HSM (BYOK) 
 
@@ -40,7 +40,7 @@ ms.locfileid: "94372841"
 * 將 BYOK 檔案上傳到受控 HSM 時，受控 HSM 會使用 KEK 私密金鑰來解密目標金鑰內容，並將它匯入為 HSM 金鑰。 這種操作完全是在 HSM 內部執行。 目標金鑰一律會保留在 HSM 保護界限內。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用本文中的 Azure CLI 命名，您必須具有下列項目：
 
@@ -67,7 +67,8 @@ az login
 |Fortanix|製造商，<br/>HSM 即服務|<ul><li>自我保護金鑰管理服務 (SDKMS)</li><li>Equinix SmartKey</li></ul>|[將 SDKMS 金鑰匯出至 BYOK 的雲端提供者 - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|製造商|所有 LiquidSecurity HSM，具有<ul><li>韌體版本 2.0.4 或更新版本</li><li>韌體版本 3.2 或更新版本</li></ul>|[Marvell BYOK 工具和文件](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (企業金鑰管理系統)|多個 HSM 品牌和型號，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>如需詳細資訊，請參閱 [Cryptomathic 網站](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK 工具和文件](https://www.cryptomathic.com/azurebyok)|
-|Securosys SA|製造商、HSM 即服務|Primus 其 HSM 系列，Securosys 雲 HSM|[Primus 其 BYOK 工具和檔](https://www.securosys.com/primus-azure-byok)|
+|Securosys SA|製造商，HSM 即服務|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文件](https://www.securosys.com/primus-azure-byok)|
+|StorMagic|ISV (企業金鑰管理系統)|多個 HSM 品牌和型號，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[如需詳細資訊，請參閱 StorMagic 網站](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS 和 Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 ||||
 
 

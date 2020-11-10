@@ -16,17 +16,17 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e09dd6a127bd04ae698cb6cad2ffd7f35e3b51c3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313306"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413423"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>身分識別同步處理和重複屬性恢復功能
 重複屬性恢復功能是 Azure Active Directory 中的一項功能，可在執行 Microsoft 的其中一種同步處理工具時，消除 **UserPrincipalName** 和 SMTP **ProxyAddress** 衝突所造成的衝突。
 
-在指定之 Azure Active Directory 租用戶的所有「使用者」****、「群組」**** 或「連絡人」**** 物件中，這兩個屬性通常必須是唯一的。
+在指定之 Azure Active Directory 租用戶的所有「使用者」、「群組」或「連絡人」物件中，這兩個屬性通常必須是唯一的。
 
 > [!NOTE]
 > 只有使用者可以擁有 UPN。
@@ -40,11 +40,11 @@ ms.locfileid: "91313306"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重複屬性恢復功能的行為
 Azure Active Directory 並不是完全無法佈建或更新具有重複屬性的物件，而是會「隔離」違反唯一性條件約束的重複屬性。 如果佈建時需要此屬性 (例如 UserPrincipalName)，則服務會指派預留位置值。 這些暫存值的格式為  
-_** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_。
+_**\<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_ 。
 
 屬性復原進程只會處理 UPN 和 SMTP **ProxyAddress** 值。
 
-如果不需要此屬性（例如  **ProxyAddress**），Azure Active Directory 只會隔離衝突屬性並繼續建立或更新物件。
+如果不需要此屬性（例如  **ProxyAddress** ），Azure Active Directory 只會隔離衝突屬性並繼續建立或更新物件。
 
 隔離屬性時，衝突相關資訊會以舊版行為中使用的相同錯誤報告電子郵件傳送。 不過，此資訊只會出現在錯誤報告中一次，發生隔離時，將不會繼續記錄在未來的電子郵件中。 此外，此物件已成功匯出，所以同步用戶端不會記錄錯誤，而且不會在後續的同步週期中重試建立 / 更新作業。
 
@@ -75,7 +75,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 對於本主題中的 PowerShell Cmdlet，下列項目為真︰
 
 * 下列所有 Cmdlet 都會區分大小寫。
-* 一律包含 **–ErrorCategory PropertyConflict** 。 目前沒有其他類型的 **ErrorCategory**，但可能會在未來加以擴充。
+* 一律包含 **–ErrorCategory PropertyConflict** 。 目前沒有其他類型的 **ErrorCategory** ，但可能會在未來加以擴充。
 
 首先，執行 **Connect-MsolService** 並輸入租用戶系統管理員的認證。
 
@@ -101,17 +101,17 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
-或者
+或
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>依衝突的值
-若要查看與特定屬性相關的錯誤，請新增 **-PropertyValue** 旗標 (新增此旗標時，必須一併使用 **-PropertyName**)：
+若要查看與特定屬性相關的錯誤，請新增 **-PropertyValue** 旗標 (新增此旗標時，必須一併使用 **-PropertyName** )：
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
 #### <a name="using-a-string-search"></a>使用字串搜尋
-若要進行廣泛的字串搜尋，請使用 **-SearchString** 旗標。 此旗標可以與上述所有旗標獨立使用，但一律為必要項目的 **-ErrorCategory PropertyConflict**除外︰
+若要進行廣泛的字串搜尋，請使用 **-SearchString** 旗標。 此旗標可以與上述所有旗標獨立使用，但一律為必要項目的 **-ErrorCategory PropertyConflict** 除外︰
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
@@ -122,7 +122,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 系統管理中心
-您可以在 Microsoft 365 系統管理中心中查看目錄同步處理錯誤。 Microsoft 365 系統管理中心中的報表只會顯示有這些錯誤的 **使用者** 物件。 並不會顯示「群組」**** 和「連絡人」**** 之間的衝突相關資訊。
+您可以在 Microsoft 365 系統管理中心中查看目錄同步處理錯誤。 Microsoft 365 系統管理中心中的報表只會顯示有這些錯誤的 **使用者** 物件。 並不會顯示「群組」和「連絡人」之間的衝突相關資訊。
 
 ![顯示 Microsoft 365 系統管理中心中目錄同步處理錯誤的螢幕擷取畫面。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "作用中使用者")
 
@@ -140,7 +140,7 @@ ProxyAddress 衝突的電子郵件通知範例如下所示︰
 下列文章概述各種疑難排解和解決策略︰ [重複或無效的屬性會防止在 Office 365 中進行目錄同步作業](https://support.microsoft.com/kb/2647098)。
 
 ## <a name="known-issues"></a>已知問題
-沒有任何已知問題會導致資料遺失或服務降級。 其中有幾個是美觀的問題，其他問題會導致擲回標準「恢復前」** 重複屬性錯誤，而不是隔離衝突屬性，而別的問題會導致特定錯誤需要額外的手動修復。
+沒有任何已知問題會導致資料遺失或服務降級。 其中有幾個是美觀的問題，其他問題會導致擲回標準「恢復前」重複屬性錯誤，而不是隔離衝突屬性，而別的問題會導致特定錯誤需要額外的手動修復。
 
 **核心行為︰**
 
@@ -149,33 +149,32 @@ ProxyAddress 衝突的電子郵件通知範例如下所示︰
    
     a. 在 AD 中建立新的使用者，並以 **Joe \@ Contoso.com** 和 PROXYADDRESS **Smtp 的 UPN： joe \@ contoso.com**
    
-    b. 此物件的屬性與現有的群組發生衝突，其中 ProxyAddress 是 **SMTP： Joe \@ contoso.com**。
+    b. 此物件的屬性與現有的群組發生衝突，其中 ProxyAddress 是 **SMTP： Joe \@ contoso.com** 。
    
-    c. 匯出時，會擲回「ProxyAddress 衝突」**** 錯誤，而不是將衝突屬性隔離。 此作業會在每個後續的同步處理週期中重試，就如同在啟用恢復功能之前一樣。
+    c. 匯出時，會擲回「ProxyAddress 衝突」 錯誤，而不是將衝突屬性隔離。 此作業會在每個後續的同步處理週期中重試，就如同在啟用恢復功能之前一樣。
 2. 如果在內部部署上建立兩個具有相同 SMTP 位址的群組，則會在第一次嘗試時佈建失敗並發生標準的重複 **ProxyAddress** 錯誤。 不過，重複值會在下一個同步處理週期時被適當隔離。
 
-**Office 入口網站報告**：
+**Office 入口網站報告** ：
 
 1. UPN 衝突集中兩個物件的詳細錯誤訊息是相同的。 這表示它們都已變更 / 隔離 UPN，當事實上只有其中一個變更了資料。
 2. UPN 衝突的詳細錯誤訊息會對已變更/隔離其 UPN 的使用者，顯示錯誤的 displayName。 例如：
    
-    a. **使用者 A** 會先使用 **UPN = 使用者 \@ contoso.com**進行同步處理。
+    a. **使用者 A** 會先使用 **UPN = 使用者 \@ contoso.com** 進行同步處理。
    
-    b. **使用者 B** 會在下一次使用 **UPN = 使用者 \@ contoso.com**進行同步處理。
+    b. **使用者 B** 會在下一次使用 **UPN = 使用者 \@ contoso.com** 進行同步處理。
    
-    c. **使用者 B** UPN 已變更為 **User1234 \@ contoso.onmicrosoft.com** ，而 **使用者 \@ contoso.com** 已新增至 **造成 dirsyncprovisioningerrors**。
+    c. **使用者 B** UPN 已變更為 **User1234 \@ contoso.onmicrosoft.com** ，而 **使用者 \@ contoso.com** 已新增至 **造成 dirsyncprovisioningerrors** 。
    
-    d. **使用者 b**的錯誤訊息應該會指出**使用者 A**已將**使用者 \@ contoso.com**為 UPN，但它會顯示**使用者 B 本身的**displayName。
+    d. **使用者 b** 的錯誤訊息應該會指出 **使用者 A** 已將 **使用者 \@ contoso.com** 為 UPN，但它會顯示 **使用者 B 本身的** displayName。
 
-**身分識別同步處理錯誤報告**：
+**身分識別同步處理錯誤報告** ：
 
-「如何解決此問題的步驟」** 的連結不正確：  
+「如何解決此問題的步驟」的連結不正確：  
     ![作用中使用者](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "作用中使用者")  
 
-它應該指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) 。
+它應該指向 [https://aka.ms/duplicateattributeresiliency]() 。
 
 ## <a name="see-also"></a>另請參閱
 * [Azure AD Connect 同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 * [找出 Microsoft 365 中的目錄同步錯誤](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
-

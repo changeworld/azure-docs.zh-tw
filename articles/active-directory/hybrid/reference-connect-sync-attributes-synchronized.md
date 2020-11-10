@@ -16,19 +16,19 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016073"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413185"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步處理：將屬性同步處理至 Azure Active Directory
 本主題列出 Azure AD Connect 同步處理所同步處理的屬性。  
 屬性會依相關的 Azure AD App 來分組。
 
 ## <a name="attributes-to-synchronize"></a>要同步處理的屬性
-常見的問題是同步處理的最少屬性清單為何 **。 預設和建議的方法是保留預設屬性，讓完整的 GAL (全域通訊清單) 可在雲端中建立，並取得 Microsoft 365 工作負載中的所有功能。 在某些情況下，您的組織不想將某些屬性同步處理至雲端，因為這些屬性包含機密的個人資料，如下列範例所示：  
+常見的問題是同步處理的最少屬性清單為何 。 預設和建議的方法是保留預設屬性，讓完整的 GAL (全域通訊清單) 可在雲端中建立，並取得 Microsoft 365 工作負載中的所有功能。 在某些情況下，您的組織不想將某些屬性同步處理至雲端，因為這些屬性包含機密的個人資料，如下列範例所示：  
 ![不正確的屬性](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
 在此情況下，請從本主題中的屬性清單開始，並識別包含個人資料且無法同步處理的屬性。 接著，在安裝期間使用 [Azure AD 應用程式和屬性篩選](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)將這些屬性取消選取。
@@ -373,7 +373,7 @@ ms.locfileid: "90016073"
 此群組是一組屬性，用來作為一般工作負載或應用程式所需的最基本屬性。 它可以用於另一節中未列出的工作負載或用於非 Microsoft 應用程式。 它會明確用於下列︰
 
 * Yammer (使用的只有 User)
-* [SharePoint 等資源所提供的混合式企業對企業 (B2B) 跨組織共同作業案例](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [SharePoint 等資源所提供的混合式企業對企業 (B2B) 跨組織共同作業案例](/sharepoint/create-b2b-extranet)
 
 此群組是一組屬性，如果 Azure AD 目錄未用來支援 Microsoft 365、Dynamics 或 Intune，便可使用這些屬性。 它包含一小組的核心屬性。 請注意，單一登入或布建至某些協力廠商應用程式需要設定屬性的同步處理，以及此處所述的屬性。 應用程式需求會在每個應用程式的 [SaaS 應用程式教學](../saas-apps/tutorial-list.md) 課程中說明。
 
@@ -411,7 +411,7 @@ ms.locfileid: "90016073"
 | operatingSystemVersion |X |也稱為 deviceOSVersion。 |
 | userCertificate |X | |
 
-下列「使用者」 **** 屬性是您已選取的其他應用程式以外的屬性。  
+下列「使用者」  屬性是您已選取的其他應用程式以外的屬性。  
 
 | 屬性名稱 | User | 註解 |
 | --- |:---:| --- |
@@ -420,7 +420,7 @@ ms.locfileid: "90016073"
 | msDS-KeyCredentialLink |X |一旦使用者在 Windows Hello 企業版中註冊後。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合回寫
-當您選擇啟用「Exchange 混合」 **** 時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
+當您選擇啟用「Exchange 混合」 時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
 
 | 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | User | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |---|
@@ -435,7 +435,7 @@ ms.locfileid: "90016073"
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |將 Exchange Online 信箱的 SendOnBehalfTo 權限授與使用內部部署 Exchange 信箱的使用者。 需要 Azure AD Connect 1.1.552.0 組建版本或更新版本。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange 郵件公用資料夾
-當您選擇啟用 [Exchange 郵件公用資料夾]**** 時，系統會將內部部署 Active Directory 的這些屬性同步到 Azure AD。
+當您選擇啟用 [Exchange 郵件公用資料夾] 時，系統會將內部部署 Active Directory 的這些屬性同步到 Azure AD。
 
 | 屬性名稱 | 公用資料夾 | 註解 |
 | --- | :---:| --- |
@@ -466,9 +466,9 @@ ms.locfileid: "90016073"
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>備註
 * 使用「替代識別碼」時，內部部署屬性 userPrincipalName 會與 Azure AD 屬性 onPremisesUserPrincipalName 進行同步處理。 「替代識別碼」屬性 (例如 mail) 會與 Azure AD 屬性 userPrincipalName 進行同步處理。
-* 在上面的清單中，物件類型 **User** 也適用於物件類型 **iNetOrgPerson**。
+* 在上面的清單中，物件類型 **User** 也適用於物件類型 **iNetOrgPerson** 。
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。

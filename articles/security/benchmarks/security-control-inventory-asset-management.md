@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81408371"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412641"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全性控制：清查和資產管理
 
@@ -28,11 +28,11 @@ ms.locfileid: "81408371"
 
 雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
-- [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Resource Graph 建立查詢](../../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../../role-based-access-control/overview.md)
 
 ## <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
@@ -42,7 +42,7 @@ ms.locfileid: "81408371"
 
 將標籤套用至 Azure 資源，提供中繼資料，以邏輯方式將它們組織成分類法。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
@@ -52,11 +52,11 @@ ms.locfileid: "81408371"
 
 適當地使用標記、管理群組和個別訂用帳戶來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](../../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
@@ -76,9 +76,9 @@ ms.locfileid: "81408371"
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。  確保已核准環境中的所有 Azure 資源。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 建立查詢](../../governance/resource-graph/first-query-portal.md)
 
 ## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
@@ -88,7 +88,7 @@ ms.locfileid: "81408371"
 
 使用 Azure 虛擬機器清查，將虛擬機器上所有軟體的資訊收集自動化。 您可以從 Azure 入口網站取得軟體名稱、版本、發行者和重新整理時間。 若要取得安裝日期和其他資訊的存取權，請啟用來賓層級的診斷，並將 Windows 事件記錄檔帶入 Log Analytics 工作區。
 
-- [如何啟用 Azure 虛擬機器清查](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [如何啟用 Azure 虛擬機器清查](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
@@ -98,11 +98,11 @@ ms.locfileid: "81408371"
 
 使用 Azure 資訊安全中心的檔案完整性監視 (變更追蹤) 和虛擬機器清查，來識別安裝在虛擬機器上的所有軟體。 您可以執行自己的流程，以移除未經授權的軟體。 您也可以使用協力廠商解決方案來識別未核准的軟體。
 
-- [如何使用檔案完整性監視](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
+- [如何使用檔案完整性監視](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [瞭解 Azure 變更追蹤](https://docs.microsoft.com/azure/automation/change-tracking)
+- [瞭解 Azure 變更追蹤](../../automation/change-tracking.md)
 
-- [如何啟用 Azure 虛擬機器清查](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [如何啟用 Azure 虛擬機器清查](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
@@ -112,7 +112,7 @@ ms.locfileid: "81408371"
 
 使用 Azure 資訊安全中心適應性應用程式控制，以確保只有經過授權的軟體會執行，而且所有未經授權的軟體都會在 Azure 虛擬機器上遭到封鎖而無法執行。
 
-- [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [如何使用 Azure 資訊安全中心適應性應用程式控制](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
@@ -122,9 +122,9 @@ ms.locfileid: "81408371"
 
 使用 Azure 原則來限制您可以在環境中布建的服務。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../../governance/policy/samples/index.md)
 
 ## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：維護已核准軟體標題的清查
 
@@ -136,7 +136,7 @@ ms.locfileid: "81408371"
 
 如果這不符合需求，請執行協力廠商解決方案。
 
-- [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [如何使用 Azure 資訊安全中心適應性應用程式控制](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制使用者與 Azure Resource Manager 互動的能力
 
@@ -146,7 +146,7 @@ ms.locfileid: "81408371"
 
 使用 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，來限制使用者與 Azure 資源管理員互動的能力。
 
-- [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](../../role-based-access-control/conditional-access-azure-management.md)
 
 ## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行指令碼的能力
 
@@ -156,9 +156,9 @@ ms.locfileid: "81408371"
 
 根據腳本的類型而定，您可以使用作業系統專屬設定或協力廠商資源，以限制使用者在 Azure 計算資源內執行腳本的能力。  您也可以運用 Azure 資訊安全中心的自我調整應用程式控制，以確保只有授權的軟體會執行，而且所有未經授權的軟體都會在 Azure 虛擬機器上遭到封鎖而無法執行。
 
-- [如何在 Windows 環境中控制 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-- [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [如何使用 Azure 資訊安全中心適應性應用程式控制](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
@@ -168,9 +168,9 @@ ms.locfileid: "81408371"
 
 商務營運所需的軟體，但可能會對組織產生更高的風險，應該隔離在自己的虛擬機器和（或）虛擬網路內，並使用 Azure 防火牆或網路安全性群組來充分保護。
 
-- [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [如何建立虛擬網路](../../virtual-network/quick-create-portal.md)
 
-- [如何使用安全性設定建立 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何使用安全性設定建立 NSG](../../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-steps"></a>後續步驟

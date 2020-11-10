@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 10/22/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460660"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413117"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -42,7 +42,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 > [!NOTE]
 > 除了與 Azure Lighthouse 相關的租使用者資訊外，這些 Api 所顯示的租使用者也可能會反映 Azure Databricks 或 Azure 受控應用程式的合作夥伴租使用者。
 
-我們也提供執行 Azure Lighthouse 工作專屬的 Api。 如需詳細資訊，請參閱**參考**一節。
+我們也提供執行 Azure Lighthouse 工作專屬的 Api。 如需詳細資訊，請參閱 **參考** 一節。
 
 ## <a name="enhanced-services-and-scenarios"></a>增強的服務與案例
 
@@ -104,7 +104,6 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 [Azure 原則](../../governance/policy/index.yml) \(部分機器翻譯\)：
 
-- 顯示委派之訂用帳戶內的已指派原則詳細資料的合規性快照集
 - 在委派的訂用帳戶內建立和編輯原則定義
 - 在委派的訂用帳戶內指派客戶定義的原則定義
 - 客戶會看到由服務提供者所撰寫的原則，以及他們自己撰寫的所有原則
@@ -157,7 +156,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 支援要求：
 
-- 在委派資源的 Azure 入口網站中，從 [說明[ **+ 支援**] 開啟支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started)， (選取可供委派範圍使用的支援方案) 
+- 在委派資源的 Azure 入口網站中，從 [說明 [ **+ 支援** ] 開啟支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started)， (選取可供委派範圍使用的支援方案) 
 
 ## <a name="current-limitations"></a>目前的限制
 

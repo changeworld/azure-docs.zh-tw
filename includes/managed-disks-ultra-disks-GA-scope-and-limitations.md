@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441177"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413136"
 ---
 目前，ultra 磁片有額外的限制，如下所示：
 
@@ -34,6 +34,7 @@ Ultra 磁片目前唯一可用的基礎結構冗余選項是可用性區域。 �
 |美國中南部    |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |US Gov 亞利桑那州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |US Gov 維吉尼亞州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|US Gov 德克薩斯州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |美國西部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集)         |
 |澳大利亞中部    |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |澳大利亞東部     |三個可用性區域         |
@@ -44,7 +45,7 @@ Ultra 磁片目前唯一可用的基礎結構冗余選項是可用性區域。 �
 |美國東部 2     |三個可用性區域         |
 |法國中部    |兩個可用性區域        |
 |日本東部    |三個可用性區域        |
-|北歐    |三個可用性區域        |
+|歐洲北部    |三個可用性區域        |
 |英國南部    |三個可用性區域        |
 |西歐    | 三個可用性區域|
 |美國西部 2    |三個可用性區域|

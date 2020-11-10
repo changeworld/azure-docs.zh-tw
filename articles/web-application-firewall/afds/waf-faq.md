@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837629"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413066"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service 上 Azure Web 應用程式防火牆的常見問題
 
@@ -64,7 +64,7 @@ Front Door 提供 TLS 卸載。 WAF 與 Front Door 原生整合，並可在要�
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS protection 是否與 Front Door 整合？ 
 
-Azure Front Door 可以在 Azure 網路邊緣全球散發，以吸收和地理位置隔離大型磁片區攻擊。 您可以建立自訂 WAF 原則，以自動封鎖 HTTP (s 的限制，並對有已知簽章的) 攻擊進行評分。 此外，您可以在您的後端部署所在的 VNet 上啟用 DDoS 保護標準。 Azure DDoS 保護標準客戶可獲得額外的權益，包括成本保護、SLA 保證，以及從 DDoS 快速回應小組存取專家，以在攻擊期間提供立即協助。
+Azure Front Door 可以在 Azure 網路邊緣全球散發，以吸收和地理位置隔離大型磁片區攻擊。 您可以建立自訂 WAF 原則，以自動封鎖 HTTP (s 的限制，並對有已知簽章的) 攻擊進行評分。 此外，您可以在您的後端部署所在的 VNet 上啟用 DDoS 保護標準。 Azure DDoS 保護標準客戶可獲得額外的權益，包括成本保護、SLA 保證，以及從 DDoS 快速回應小組存取專家，以在攻擊期間提供立即協助。 如需詳細資訊，請參閱 [Front Door 上的 DDoS 保護](../../frontdoor/front-door-ddos.md)。
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>為什麼額外要求超過針對我的速率限制規則設定的閾值會傳遞至我的後端伺服器？
 

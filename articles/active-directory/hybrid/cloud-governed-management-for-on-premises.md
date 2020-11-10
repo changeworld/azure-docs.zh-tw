@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369789"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413440"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何為內部部署工作負載提供雲端控管管理
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 是一項全方位的身分識別即服務 (ID
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>雲端受控身分識別管理的 Azure AD 方法
 
-當組織轉換至雲端時，他們需要保證他們能夠掌控整個環境-更安全且更容易掌握活動、自動化支援和主動式見解。 「**雲端管制管理**」說明組織如何從雲端管理和管理其使用者、應用程式、群組和裝置。
+當組織轉換至雲端時，他們需要保證他們能夠掌控整個環境-更安全且更容易掌握活動、自動化支援和主動式見解。 「 **雲端管制管理** 」說明組織如何從雲端管理和管理其使用者、應用程式、群組和裝置。
 
 在這個現代化的世界中，組織必須能夠大規模地管理，因為 SaaS 應用程式的激增，以及共同作業和外部身分識別的增加角色。 雲端的新風險環境，表示組織必須更具回應性，這是危害雲端使用者的惡意執行者可能會影響雲端和內部部署應用程式。
 
@@ -77,7 +77,7 @@ Azure AD Premium 也包含 Microsoft Identity Manager，其可以從其他內部
 
 Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../external-identities/hybrid-cloud-to-on-premises.md) ，讓商務來賓存取內部部署 AD 整合的應用程式，而不需要其他密碼。 組織可以 [為來賓使用者設定多重要素驗證 (mfa) 原則](../external-identities/conditional-access.md)，以便在應用程式 proxy 驗證期間完成 mfa 檢查。 此外，在雲端 B2B 使用者上完成的任何 [存取權審核](../governance/manage-guest-access-with-access-reviews.md) 都適用于內部部署使用者。 例如，如果雲端使用者是透過生命週期管理原則刪除，則內部部署使用者也會一併刪除。
 
-**Active Directory 帳戶的認證管理** Azure AD 的自助式密碼重設可讓已忘記密碼的使用者重新驗證及重設其密碼，並將變更的密碼 [寫入內部部署 Active Directory](../authentication/concept-sspr-writeback.md)。 密碼重設程式也可以使用內部部署 Active Directory 密碼原則：當使用者重設其密碼時，會進行檢查以確保它符合內部部署 Active Directory 原則，然後才將其認可至該目錄。 自助式密碼重設 [部署計畫](https://aka.ms/deploymentplans/sspr) 概述可透過 Web 和 Windows 整合式體驗將自助式密碼重設推出給使用者的最佳作法。
+**Active Directory 帳戶的認證管理** Azure AD 的自助式密碼重設可讓已忘記密碼的使用者重新驗證及重設其密碼，並將變更的密碼 [寫入內部部署 Active Directory](../authentication/concept-sspr-writeback.md)。 密碼重設程式也可以使用內部部署 Active Directory 密碼原則：當使用者重設其密碼時，會進行檢查以確保它符合內部部署 Active Directory 原則，然後才將其認可至該目錄。 自助式密碼重設 [部署計畫](../authentication/howto-sspr-deployment.md) 概述可透過 Web 和 Windows 整合式體驗將自助式密碼重設推出給使用者的最佳作法。
 
 ![Azure AD SSPR 架構](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../extern
 
 * 將您的 [應用程式遷移至 Azure Active Directory](https://aka.ms/migrateapps/whitepaper)的白皮書，可提供遷移的優點，並說明如何在四個清楚敘述的階段中規劃遷移：探索、分類、遷移和持續管理。 您將會引導您瞭解如何思考流程，並將您的專案細分為易於取用的部分。 此文件全篇都有在過程中可協助您的重要資源連結。
 
-* 解決方案指南 [可將應用程式驗證從 Active Directory 同盟服務遷移至 Azure Active Directory](https://aka.ms/migrateapps/adfssolutionguide) 更詳細地探索規劃和執行應用程式遷移專案的四個階段。 在本指南中，您將瞭解如何將這些階段套用至將應用程式從 Active Directory 同盟服務 (AD FS) 移至 Azure AD 的特定目標。
+* 解決方案指南 [可將應用程式驗證從 Active Directory 同盟服務遷移至 Azure Active Directory](../manage-apps/migrate-adfs-apps-to-azure.md) 更詳細地探索規劃和執行應用程式遷移專案的四個階段。 在本指南中，您將瞭解如何將這些階段套用至將應用程式從 Active Directory 同盟服務 (AD FS) 移至 Azure AD 的特定目標。
 
 * [Active Directory 同盟服務的遷移就緒腳本](https://aka.ms/migrateapps/adfstools)可在現有的內部部署 Active Directory 同盟服務 (AD FS) 伺服器上執行，以判斷要遷移至 Azure AD 的應用程式是否就緒。
 
@@ -111,7 +111,7 @@ Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../extern
 
 ## <a name="future-directions"></a>未來方向
 
-在混合式環境中，Microsoft 的策略是為了讓 **雲端成為身分識別的控制平面**，以及內部部署目錄和其他身分識別系統（例如 Active Directory 和其他內部部署應用程式），提供可供使用者存取的目標。 此策略將繼續確保這些應用程式中的許可權、身分識別和存取權，以及依賴這些應用程式的工作負載。 在此結束狀態下，組織將能夠完全從雲端推動終端使用者生產力。
+在混合式環境中，Microsoft 的策略是為了讓 **雲端成為身分識別的控制平面** ，以及內部部署目錄和其他身分識別系統（例如 Active Directory 和其他內部部署應用程式），提供可供使用者存取的目標。 此策略將繼續確保這些應用程式中的許可權、身分識別和存取權，以及依賴這些應用程式的工作負載。 在此結束狀態下，組織將能夠完全從雲端推動終端使用者生產力。
 
 ![Azure AD 架構](media/cloud-governed-management-for-on-premises/image6.png)
 

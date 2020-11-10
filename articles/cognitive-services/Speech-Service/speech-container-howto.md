@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 11/09/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內部部署、Docker、容器
-ms.openlocfilehash: 6f04e40b0b2baa496faf8001684304c5df78ec20
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496145"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412233"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>安裝和執行適用于語音服務 Api 的 Docker 容器 
 
@@ -41,24 +41,24 @@ ms.locfileid: "92496145"
 
 | 容器 | 特性 | Latest |
 |--|--|--|
-| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.5.0 |
-| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.5.0 |
-| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.7.0 |
-| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.7.0 |
+| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.6.0 |
+| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.6.0 |
+| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.8.0 |
+| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.8.0 |
 | 語音語言偵測 | 偵測音訊檔案中所說的語言。 | 1.0 |
 | 神經文字轉換語音 | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 | 1.2.0 |
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用語音容器之前的必要條件如下：
 
 | 必要 | 目的 |
 |--|--|
-| Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
+| Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上** ，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。 |
-| 語音資源 | 若要使用這些容器，您必須具備：<br><br>Azure _語音_ 資源，用來取得相關聯的 API 金鑰和端點 URI。 這兩個值都可在 Azure 入口網站的 [ **語音** 總覽] 和 [金鑰] 頁面上取得。 這兩者都是啟動容器的必要項。<br><br>**{API_KEY}**： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}**： **總覽** 頁面上提供的端點 |
+| 語音資源 | 若要使用這些容器，您必須具備：<br><br>Azure _語音_ 資源，用來取得相關聯的 API 金鑰和端點 URI。 這兩個值都可在 Azure 入口網站的 [ **語音** 總覽] 和 [金鑰] 頁面上取得。 這兩者都是啟動容器的必要項。<br><br>**{API_KEY}** ： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}** ： **總覽** 頁面上提供的端點 |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -68,13 +68,13 @@ ms.locfileid: "92496145"
 
 ### <a name="advanced-vector-extension-support"></a>先進的向量擴充功能支援
 
-**主機**是執行 Docker 容器的電腦。 主機 *必須支援* (AVX2) 的 [Advanced 向量擴充](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) 功能。 您可以使用下列命令，在 Linux 主機上檢查 AVX2 支援：
+**主機** 是執行 Docker 容器的電腦。 主機 *必須支援* (AVX2) 的 [Advanced 向量擴充](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) 功能。 您可以使用下列命令，在 Linux 主機上檢查 AVX2 支援：
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> *需要*主機電腦才能支援 AVX2。 如果沒有 AVX2 支援，容器 *將無法* 正確運作。
+> *需要* 主機電腦才能支援 AVX2。 如果沒有 AVX2 支援，容器 *將無法* 正確運作。
 
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
@@ -156,7 +156,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>適用于語音轉換文字容器的 Docker pull
 
-使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 container Preview 登錄下載容器映射。
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft container registry 下載容器映射。
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest
@@ -176,7 +176,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-
 下列標記是格式的範例：
 
 ```
-2.5.0-amd64-en-us-preview
+2.6.0-amd64-en-us
 ```
 
 如需 **語音轉換文字** 容器的所有支援地區設定，請參閱 [語音轉換文字影像標記](../containers/container-image-tags.md#speech-to-text)。
@@ -185,7 +185,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>自訂語音轉換文字容器的 Docker 提取
 
-使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 container Preview 登錄下載容器映射。
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft container registry 下載容器映射。
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest
@@ -198,7 +198,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文字轉換語音容器的 Docker pull
 
-使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 container Preview 登錄下載容器映射。
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft container registry 下載容器映射。
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest
@@ -218,19 +218,19 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-sp
 下列標記是格式的範例：
 
 ```
-1.6.0-amd64-en-us-ariarus-preview
+1.8.0-amd64-en-us-ariarus
 ```
 
 針對所有支援的地區設定和 **文字轉換語音** 容器的對應語音，請參閱 [文字轉換語音影像標記](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 當您建立 *文字轉換語音* HTTP POST 時， [語音合成標記語言 (SSML) ](speech-synthesis-markup.md) 訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「 [簡短名稱](language-support.md#standard-voices)」。 例如，標記的 `latest` 語音名稱為 `en-US-AriaRUS` 。
+> 當您建立 *文字轉換語音* HTTP POST 時， [語音合成標記語言 (SSML)](speech-synthesis-markup.md) 訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「 [簡短名稱](language-support.md#standard-voices)」。 例如，標記的 `latest` 語音名稱為 `en-US-AriaRUS` 。
 
 # <a name="neural-text-to-speech"></a>[神經文字轉換語音](#tab/ntts)
 
 #### <a name="docker-pull-for-the-neural-text-to-speech-container"></a>神經文字轉換語音容器的 Docker 提取
 
-使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 container Preview 登錄下載容器映射。
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft container registry 下載容器映射。
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest
@@ -256,13 +256,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 針對所有支援的地區設定和類 **神經文字轉換語音** 容器的對應語音，請參閱類 [神經文字轉換語音影像標記](../containers/container-image-tags.md#neural-text-to-speech)。
 
 > [!IMPORTANT]
-> 當您建立類 *神經文字轉換語音* HTTP POST 時， [語音合成標記語言 (SSML) ](speech-synthesis-markup.md) 訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「 [簡短名稱](language-support.md#neural-voices)」。 例如，標記的 `latest` 語音名稱為 `en-US-AriaNeural` 。
+> 當您建立類 *神經文字轉換語音* HTTP POST 時， [語音合成標記語言 (SSML)](speech-synthesis-markup.md) 訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「 [簡短名稱](language-support.md#neural-voices)」。 例如，標記的 `latest` 語音名稱為 `en-US-AriaNeural` 。
 
 # <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>自訂文字轉換語音容器的 Docker 提取
 
-使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 container Preview 登錄下載容器映射。
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft container registry 下載容器映射。
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
@@ -275,7 +275,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-tex
 
 #### <a name="docker-pull-for-the-speech-language-detection-container"></a>適用于語音語言偵測容器的 Docker pull
 
-使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 container Preview 登錄下載容器映射。
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft container registry 下載容器映射。
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest
@@ -315,6 +315,12 @@ ApiKey={API_KEY}
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析語音轉換文字輸出上的情感 
+從「語音轉文字」容器的 v 2.6.0 開始，您應該使用 >microsoft.azure.cognitiveservices.language.textanalytics 3.0 API 端點，而不是預覽。 例如：
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+* `https://localhost:5000/text/analytics/v3.0/sentiment`
+
+> [!NOTE]
+> 文字分析 `v3.0` API 無法與文字分析回溯相容 `v3.0-preview.1` 。 若要取得最新的情感功能支援，請使用 `v2.6.0` 語音轉文字容器映射及文字分析 `v3.0` 。
 
 從「語音轉換文字」容器的 v 2.2.0 開始，您可以在輸出上呼叫 [情感分析 V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 。 若要呼叫情感分析，您將需要文字分析 API 資源端點。 例如： 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
@@ -339,16 +345,36 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 * 執行與上述命令相同的步驟。
 * 儲存文字分析 API 端點和金鑰，以傳送情感分析要求。 
 
+#### <a name="phraselist-v2-on-the-speech-to-text-output"></a>語音轉換文字輸出上的 Phraselist v2 
+
+從「語音轉文字」容器的 v 2.6.0 開始，您可以使用自己的片語（整個句子或中間的片語）取得輸出。 例如，下列句子中 *的高度男人* ：
+
+* 「這是 **最高的** 一句，那就是另一個句子」。
+
+若要設定片語清單，您必須在進行呼叫時，新增您自己的片語。 例如：
+
+```python
+    phrase="the tall man"
+    recognizer = speechsdk.SpeechRecognizer(
+        speech_config=dict_speech_config,
+        audio_config=audio_config)
+    phrase_list_grammer = speechsdk.PhraseListGrammar.from_recognizer(recognizer)
+    phrase_list_grammer.addPhrase(phrase)
+
+```
+
+如果您有多個要新增的片語，請呼叫 `.addPhrase()` 每個片語以將其新增至片語清單。 
+
 
 # <a name="custom-speech-to-text"></a>[自訂語音轉換文字](#tab/cstt)
 
-*自訂語音轉換文字*容器會依賴自訂語音模型。 自訂模型必須使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)進行[定型](how-to-custom-speech-train-model.md)。
+*自訂語音轉換文字* 容器會依賴自訂語音模型。 自訂模型必須使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)進行[定型](how-to-custom-speech-train-model.md)。
 
 > [!IMPORTANT]
 > 自訂語音模型必須從下列其中一個模型版本進行定型：
-> * **20181201 (3.3 版整合) **
-> * **20190520 (v 4.14 整合) **
-> * **20190701 (v 4.17 整合) **<br>
+> * **20181201 (3.3 版整合)**
+> * **20190520 (v 4.14 整合)**
+> * **20190701 (v 4.17 整合)**<br>
 > ![自訂語音訓練容器模型](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
 需要有自訂語音 **模型識別碼** ，才能執行容器。 您可以在自訂語音入口網站的 [ **定型** ] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 **定型** 頁面並選取模型。
@@ -363,10 +389,10 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
-| `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
+| `{MODEL_ID}` | 自訂語音入口網站的 [ **定型** ] 頁面中的自訂語音 **模型識別碼** 。 |
 | `{ENDPOINT_URI}` | 需要端點才能進行計量和帳單。 如需詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters)。 |
 | `{API_KEY}` | 需要 API 金鑰。 如需詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters)。 |
 
@@ -386,11 +412,51 @@ ApiKey={API_KEY}
 
 * 從容器映射執行 *自訂的語音轉換文字* 容器。
 * 配置4個 CPU 核心和 4 gb (GB) 的記憶體。
-* 從磁片區輸入掛接載入 *自訂語音轉換文字* 模型，例如 *C:\CustomSpeech*。
+* 從磁片區輸入掛接載入 *自訂語音轉換文字* 模型，例如 *C:\CustomSpeech* 。
 * 公開 TCP 通訊埠5000，並為容器配置虛擬 TTY。
 * `ModelId`如果找不到磁片區掛接) 上的 (，則會下載模型。
 * 如果自訂模型先前已下載，則 `ModelId` 會忽略。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
+
+
+#### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>自訂語音轉換文字容器上的基底模型下載  
+從自訂語音轉換文字容器的 v 2.6.0 開始，您可以使用選項來取得可用的基底模型資訊 `BaseModelLocale=<locale>` 。 此選項會提供您帳單帳戶下該地區設定的可用基礎模型清單。 例如：
+
+```bash
+docker run --rm -it \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
+BaseModelLocale={LOCALE} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+此命令：
+
+* 從容器映射執行 *自訂的語音轉換文字* 容器。
+* 檢查並傳回目標地區設定的可用基底模型。
+
+輸出會提供具有資訊地區設定、模型識別碼和建立日期時間的基底模型清單。 您可以使用模型識別碼來下載並使用您偏好的特定基底模型。 例如：
+```
+Checking available base model for en-us
+2020/10/30 21:54:20 [Info] Searching available base models for en-us
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2016-11-04T08:23:42Z, Id: a3d8aab9-6f36-44cd-9904-b37389ce2bfa
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2016-11-04T12:01:02Z, Id: cc7826ac-5355-471d-9bc6-a54673d06e45
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2017-08-17T12:00:00Z, Id: a1f8db59-40ff-4f0e-b011-37629c3a1a53
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-04-16T11:55:00Z, Id: c7a69da3-27de-4a4b-ab75-b6716f6321e5
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-09-21T15:18:43Z, Id: da494a53-0dad-4158-b15f-8f9daca7a412
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-10-19T11:28:54Z, Id: 84ec130b-d047-44bf-a46d-58c1ac292ca7
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-11-26T07:59:09Z, Id: ee5c100f-152f-4ae5-9e9d-014af3c01c56
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2018-11-26T09:21:55Z, Id: d04959a6-71da-4913-9997-836793e3c115
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-01-11T10:04:19Z, Id: 488e5f23-8bc5-46f8-9ad8-ea9a49a8efda
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-02-18T14:37:57Z, Id: 0207b3e6-92a8-4363-8c0e-361114cdd719
+2020/10/30 21:54:21 [Info] [Base model] Locale: en-us, CreatedDate: 2019-03-03T17:34:10Z, Id: 198d9b79-2950-4609-b6ec-f52254074a05
+2020/10/30 21:54:21 [Fatal] Please run this tool again and assign --modelId '<one above base model id>'. If no model id listed above, it means currently there is no available base model for en-us
+```
+
+#### <a name="custom-pronunciation-on-the-custom-speech-to-text-container"></a>自訂語音轉換文字容器上的自訂發音 
+從自訂語音轉換文字容器的 v 2.5.0 開始，您可以在輸出中取得自訂的發音結果。 您只需要在自訂模型中設定自己的自訂發音規則，並將模型裝載到自訂語音轉換文字容器。
+
 
 # <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
@@ -432,7 +498,7 @@ ApiKey={API_KEY}
 
 # <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
-*自訂文字轉換語音*容器會依賴自訂語音模型。 自訂模型必須使用[自訂語音入口網站](https://aka.ms/custom-voice-portal)進行[定型](how-to-custom-voice-create-voice.md)。 需要有自訂語音 **模型識別碼** ，才能執行容器。 您可以在自訂語音入口網站的 [ **定型** ] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 **定型** 頁面並選取模型。
+*自訂文字轉換語音* 容器會依賴自訂語音模型。 自訂模型必須使用[自訂語音入口網站](https://aka.ms/custom-voice-portal)進行[定型](how-to-custom-voice-create-voice.md)。 需要有自訂語音 **模型識別碼** ，才能執行容器。 您可以在自訂語音入口網站的 [ **定型** ] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 **定型** 頁面並選取模型。
 <br>
 
 ![自訂語音訓練頁面](media/custom-voice/custom-voice-model-training.png)
@@ -444,10 +510,10 @@ ApiKey={API_KEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
-| `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
+| `{MODEL_ID}` | 自訂語音入口網站的 [ **定型** ] 頁面中的自訂語音 **模型識別碼** 。 |
 | `{ENDPOINT_URI}` | 需要端點才能進行計量和帳單。 如需詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters)。 |
 | `{API_KEY}` | 需要 API 金鑰。 如需詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters)。 |
 
@@ -467,7 +533,7 @@ ApiKey={API_KEY}
 
 * 從容器映射執行 *自訂文字轉換語音* 的容器。
 * 配置1個 CPU 核心和 2 gb (GB) 的記憶體。
-* 從磁片區輸入裝載載入 *自訂文字轉換語音* 模型，例如 *C:\CustomVoice*。
+* 從磁片區輸入裝載載入 *自訂文字轉換語音* 模型，例如 *C:\CustomVoice* 。
 * 公開 TCP 通訊埠5000，並為容器配置虛擬 TTY。
 * `ModelId`如果找不到磁片區掛接) 上的 (，則會下載模型。
 * 如果自訂模型先前已下載，則 `ModelId` 會忽略。

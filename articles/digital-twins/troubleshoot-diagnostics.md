@@ -1,34 +1,38 @@
 ---
-title: 設定診斷
+title: 啟用和查詢診斷記錄
 titleSuffix: Azure Digital Twins
-description: 請參閱如何使用診斷設定來啟用記錄。
+description: 瞭解如何使用診斷設定來啟用記錄，以及查詢記錄以進行立即查看。
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 11/9/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091730"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411744"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
 
-Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) ，以提供您資源狀態的相關資訊。 您可以使用這些計量來評估 Azure 數位 Twins 服務及其連線資源的整體健康情況。 這些使用者對應的統計資料可協助您瞭解 Azure 數位 Twins 的狀況，並協助您對問題進行根本原因分析，而不需要聯繫 Azure 支援。
+Azure 數位 Twins 可以為您的服務實例收集記錄，以監視其效能、存取和其他資料。 您可以使用這些記錄來瞭解 Azure 數位 Twins 實例中發生的情況，並對問題執行根本原因分析，而不需要 Azure 支援聯絡。
 
-本文說明如何從 Azure 數位 Twins 實例開啟計量資料的 **診斷記錄** 。 您可以使用這些記錄來協助您針對服務問題進行疑難排解，並設定診斷設定，以將 Azure 數位 Twins 計量傳送至不同的目的地。 您可以在建立診斷設定中閱讀有關這些設定的詳細資訊， [*以將平臺記錄和計量傳送至不同的目的地*](../azure-monitor/platform/diagnostic-settings.md)。
+本文說明如何在 [Azure 入口網站](https://portal.azure.com)中 [**設定診斷設定**](#turn-on-diagnostic-settings)，以開始從您的 Azure 數位 Twins 實例收集記錄。 您也可以指定記錄檔的儲存位置 (例如 Log Analytics 或您選擇的儲存體帳戶) 。
 
-## <a name="turn-on-diagnostic-settings-with-the-azure-portal"></a>使用 Azure 入口網站開啟診斷設定
+本文也包含 Azure 數位 Twins 所收集的所有 [記錄類別](#log-categories) 和 [記錄架構](#log-schemas) 清單。
 
-以下說明如何啟用 Azure 數位 Twins 實例的診斷設定：
+設定記錄檔之後，您也可以 [**查詢記錄**](#view-and-query-logs) 以快速收集自訂見解。
+
+## <a name="turn-on-diagnostic-settings"></a>開啟診斷設定 
+
+開啟診斷設定，以開始在您的 Azure 數位 Twins 實例上收集記錄。 您也可以選擇要儲存匯出記錄的目的地。 以下說明如何啟用 Azure 數位 Twins 實例的診斷設定。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) ，然後流覽至您的 Azure 數位 Twins 實例。 您可以在入口網站的搜尋列中輸入其名稱來尋找它。 
 
 2. 從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定** 。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. 在接下來的頁面上，填入下列值：
      * **診斷設定名稱** ：提供診斷設定的名稱。
@@ -39,7 +43,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
         - QueryOperation
         - AllMetrics
         
-        如需這些選項的詳細資訊，請參閱下面的 [*類別目錄詳細資料*](#category-details) 一節。
+        如需這些類別及其所含資訊的詳細資訊，請參閱下面的「 [*記錄類別*](#log-categories) 」一節。
      * **目的地詳細資料** ：選擇您要傳送記錄的位置。 您可以選取這三個選項的任意組合：
         - 傳送至 Log Analytics
         - 封存至儲存體帳戶
@@ -49,13 +53,15 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
     
 4. 儲存新設定。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="顯示診斷設定頁面的螢幕擷取畫面，其中使用者已填入診斷設定名稱，並針對 [類別目錄詳細資料] 和 [目的地詳細資料] 選取了一些核取方塊。[儲存] 按鈕會反白顯示。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 新的設定大約會在 10 分鐘內生效。 之後，記錄會出現在您實例的 [ **診斷設定** ] 頁面上的已設定目標中。 
 
-## <a name="category-details"></a>類別目錄詳細資料
+如需診斷設定及其設定選項的詳細資訊，您可以流覽 [*建立診斷設定，以將平臺記錄和計量傳送至不同的目的地*](../azure-monitor/platform/diagnostic-settings.md)。
 
-以下是在設定診斷設定時，可以在 [ **類別目錄詳細資料** ] 底下選取之記錄類別的更多詳細資料。
+## <a name="log-categories"></a>記錄類別
+
+以下是 Azure 數位 Twins 所收集之記錄類別的詳細資料。
 
 | 記錄分類 | 描述 |
 | --- | --- |
@@ -109,18 +115,18 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 | 欄位名稱 | 資料類型 | 描述 |
 |-----|------|-------------|
 | `Time` | Datetime | 此事件發生的日期和時間（UTC） |
-| `ResourceID` | String | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
-| `OperationName` | String  | 在事件期間執行的動作類型 |
-| `OperationVersion` | String | 在事件期間使用的 API 版本 |
-| `Category` | String | 所發出的資源類型 |
-| `ResultType` | String | 事件的結果 |
-| `ResultSignature` | String | 事件的 Http 狀態碼 |
-| `ResultDescription` | String | 事件的其他詳細資料 |
-| `DurationMs` | String | 執行事件花費的時間（以毫秒為單位） |
-| `CallerIpAddress` | String | 事件的遮罩來源 IP 位址 |
+| `ResourceID` | 字串 | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
+| `OperationName` | 字串  | 在事件期間執行的動作類型 |
+| `OperationVersion` | 字串 | 在事件期間使用的 API 版本 |
+| `Category` | 字串 | 所發出的資源類型 |
+| `ResultType` | 字串 | 事件的結果 |
+| `ResultSignature` | 字串 | 事件的 Http 狀態碼 |
+| `ResultDescription` | 字串 | 事件的其他詳細資料 |
+| `DurationMs` | 字串 | 執行事件花費的時間（以毫秒為單位） |
+| `CallerIpAddress` | 字串 | 事件的遮罩來源 IP 位址 |
 | `CorrelationId` | Guid | 客戶為事件提供的唯一識別碼 |
-| `Level` | String | 事件的記錄嚴重性 |
-| `Location` | String | 事件發生的區域 |
+| `Level` | 字串 | 事件的記錄嚴重性 |
+| `Location` | 字串 | 事件發生的區域 |
 | `RequestUri` | Uri | 在事件期間使用的端點 |
 
 以下是這些記錄類型的範例 JSON 主體。
@@ -195,13 +201,13 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 |欄位名稱 | 資料類型 | 描述 |
 |-----|------|-------------|
 | `Time` | Datetime | 此事件發生的日期和時間（UTC） |
-| `ResourceId` | String | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
-| `OperationName` | String  | 在事件期間執行的動作類型 |
-| `Category` | String | 所發出的資源類型 |
-| `ResultDescription` | String | 事件的其他詳細資料 |
-| `Level` | String | 事件的記錄嚴重性 |
-| `Location` | String | 事件發生的區域 |
-| `EndpointName` | String | 在 Azure 數位 Twins 中建立之輸出端點的名稱 |
+| `ResourceId` | 字串 | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
+| `OperationName` | 字串  | 在事件期間執行的動作類型 |
+| `Category` | 字串 | 所發出的資源類型 |
+| `ResultDescription` | 字串 | 事件的其他詳細資料 |
+| `Level` | 字串 | 事件的記錄嚴重性 |
+| `Location` | 字串 | 事件發生的區域 |
+| `EndpointName` | 字串 | 在 Azure 數位 Twins 中建立之輸出端點的名稱 |
 
 以下是這些記錄類型的範例 JSON 主體。
 
@@ -223,7 +229,35 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="view-and-query-logs"></a>查看和查詢記錄
+
+稍早在本文中，您已設定要儲存的記錄類型，並指定其儲存位置。
+
+若要針對問題進行疑難排解，並從這些記錄產生深入解析，您可以產生 **自訂查詢** 。 若要開始使用，您也可以利用服務提供給您的一些範例查詢，以解決客戶對其實例的常見問題。
+
+以下是查詢實例記錄的方式。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com) ，然後流覽至您的 Azure 數位 Twins 實例。 您可以在入口網站的搜尋列中輸入其名稱來尋找它。 
+
+2. 從功能表選取 [ **記錄** ]，以開啟 [記錄查詢] 頁面。 頁面會開啟一個稱為 [ *查詢* ] 的視窗。
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="顯示 Azure 數位 Twins 實例之 [記錄] 頁面的螢幕擷取畫面。它會與查詢視窗重迭，顯示以不同記錄選項命名的預建查詢，例如 DigitalTwin API 延遲和模型 API 延遲。" lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    這些是針對各種記錄所撰寫的預建範例查詢。 您可以選取其中一個查詢，將它載入查詢編輯器中，然後執行它來查看您實例的這些記錄。
+
+    您也可以關閉 [ *查詢* ] 視窗而不執行任何作業，直接移至 [查詢編輯器] 頁面，您可以在其中撰寫或編輯自訂查詢程式碼。
+
+3. 結束 [ *查詢* ] 視窗之後，您會看到主要的 [查詢編輯器] 頁面。 您可以在這裡查看和編輯範例查詢的文字，或從頭開始撰寫您自己的查詢。
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="顯示 Azure 數位 Twins 實例之 [記錄] 頁面的螢幕擷取畫面。[查詢] 視窗已消失，而是有不同記錄的清單、顯示可編輯查詢程式碼的編輯窗格，以及顯示查詢歷程記錄的窗格。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    在左窗格中， 
+    - [ *資料表* ] 索引標籤會顯示您可以在查詢中使用的不同 Azure 數位 Twins [記錄類別](#log-categories) 。 
+    - [ *查詢* ] 索引標籤包含您可以載入編輯器中的查詢範例。
+    - [ *篩選* ] 索引標籤可讓您自訂查詢所傳回之資料的篩選視圖。
+
+如需有關記錄查詢及其撰寫方式的詳細資訊，您可以流覽 [*Azure 監視器中的記錄查詢總覽*](../azure-monitor/log-query/log-query-overview.md)。
+
+## <a name="next-steps"></a>後續步驟
 
 * 如需有關設定診斷的詳細資訊，請參閱 [*收集和取用來自 Azure 資源的記錄資料*](../azure-monitor/platform/platform-logs-overview.md)。
 * 如需 Azure 數位 Twins 計量的詳細資訊，請參閱 [*疑難排解：使用 Azure 監視器來查看計量*](troubleshoot-metrics.md)。

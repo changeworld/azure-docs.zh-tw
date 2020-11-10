@@ -14,18 +14,18 @@ ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a5a4659671f8d4ded64a4f04f84abf1f67d8825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24820949eb6762caf808c4420ede6f0f59184281
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265250"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412590"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies
 下列參考檔說明 Exchange 使用的這些屬性，以及編輯預設同步處理規則的適當方式。
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>MsExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies 是什麼？
-有兩種類型的 [保留](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) 可供 Exchange 伺服器使用：訴訟保存和 In-Place 保存。 若已啟用訴訟保存，所有信箱都會保留在保存中。  In-Place 保留僅用來保留符合您使用 In-Place 的電子檔探索工具所定義之搜尋查詢準則的專案。
+有兩種類型的 [保留](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) 可供 Exchange 伺服器使用：訴訟保存和 In-Place 保存。 若已啟用訴訟保存，所有信箱都會保留在保存中。  In-Place 保留僅用來保留符合您使用 In-Place 的電子檔探索工具所定義之搜尋查詢準則的專案。
 
 MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 屬性可讓內部部署 AD 和 Azure AD 根據使用者是在線上使用內部部署 Exchange 或 Exchange，判斷哪些使用者正在進行保存。
 

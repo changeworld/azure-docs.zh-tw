@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372288"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413219"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>建立 Azure Arc 資料控制器
 
@@ -36,7 +36,8 @@ ms.locfileid: "92372288"
 - 開放原始碼的上游 Kubernetes 通常使用 kubeadm 進行部署
 
 > [!IMPORTANT]
-> * 最小支援的 Kubernetes 版本為 v 1.14。
+> * 最小支援的 Kubernetes 版本為 v 1.17。
+> * 最小支援的 OCP 版本為4.3。
 > * 若要瞭解您的環境與 Azure 之間的連線能力，請參閱連線 [需求](connectivity.md) 。
 > * 如要瞭解如何設定持續性儲存體的詳細資料，請參閱 [存放裝置設定指引](storage-configuration.md) 。
 > * 如果您使用 Azure Kubernetes Service，您叢集的背景工作節點 VM 大小至少應為 **Standard_D8s_v3** 並使用 **premium 磁片。** 叢集不應該跨多個可用性區域。 
@@ -45,7 +46,7 @@ ms.locfileid: "92372288"
 > [!NOTE]
 > 如果您在 Azure 上使用 Red Hat OpenShift 容器平臺，建議使用最新的可用版本。
 
-視您選擇的選項而定，將 _需要_某些工具，但建議您在開始建立 Azure Arc 資料控制器之前，先 [安裝所有用戶端工具](./install-client-tools.md) 。
+視您選擇的選項而定，將 _需要_ 某些工具，但建議您在開始建立 Azure Arc 資料控制器之前，先 [安裝所有用戶端工具](./install-client-tools.md) 。
 
 無論您選擇哪一個選項，在建立過程中，您都必須提供下列資訊：
 
@@ -53,7 +54,7 @@ ms.locfileid: "92372288"
 - **資料控制器使用者名稱** -資料控制器系統管理員使用者的任何使用者名稱。
 - **資料控制器密碼** -資料控制器系統管理員使用者的密碼。
 - **Kubernetes 命名空間的名稱** -您想要在其中建立資料控制器的 Kubernetes 命名空間名稱。
-- 連線**能力模式**-叢集的連線[模式](./connectivity.md)。 目前僅支援「間接」。
+- 連線 **能力模式** -叢集的連線 [模式](./connectivity.md)。 目前僅支援「間接」。
 - **Azure 訂** 用帳戶識別碼-azure 訂用帳戶 GUID，適用于您想要在 azure 中建立資料控制器資源的位置。
 - **Azure 資源組名** -您想要在 Azure 中建立資料控制器資源的資源組名。
 - **Azure 位置** -資料控制器資源中繼資料將儲存在 azure 中的 azure 位置。 如需可用區域的清單，請參閱 [Azure 全球基礎結構/產品（依區域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)）。

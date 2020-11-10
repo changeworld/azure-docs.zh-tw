@@ -4,14 +4,14 @@ description: 使用 Azure HPC Cache 的必要條件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/05/2020
 ms.author: v-erkel
-ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344010"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412505"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache 的必要條件
 
@@ -59,9 +59,22 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 快取需要 DNS 才能存取其虛擬網路之外的資源。 視您使用的資源而定，您可能需要設定自訂的 DNS 伺服器，並設定該伺服器與 Azure DNS 伺服器之間的轉送：
 
 * 若要存取 Azure Blob 儲存體端點和其他內部資源，您需要以 Azure 為基礎的 DNS 伺服器。
-* 若要存取內部部署儲存體，您需要設定可解析儲存體主機名稱的自訂 DNS 伺服器。
+* 若要存取內部部署儲存體，您需要設定可解析儲存體主機名稱的自訂 DNS 伺服器。 您必須先完成此動作， **才能** 建立快取。
 
 如果您只需要存取 Blob 儲存體，您可以使用 Azure 提供的預設 DNS 伺服器做為您的快取。 但是，如果您需要存取其他資源，您應該建立自訂的 DNS 伺服器，並將其設定為將任何 Azure 特定的解析要求轉送至 Azure DNS 伺服器。
+
+若要使用自訂的 DNS 伺服器，您必須先執行下列設定步驟，再建立快取：
+
+* 建立將裝載 Azure HPC Cache 的虛擬網路。
+* 建立 DNS 伺服器。
+* 將 DNS 伺服器新增至快取的虛擬網路。
+
+  依照下列步驟，將 DNS 伺服器新增至 Azure 入口網站中的虛擬網路：
+
+  1. 開啟 Azure 入口網站中的虛擬網路。
+  1. 從側邊欄中的 [ **設定** ] 功能表選擇 [ **DNS 伺服器** ]。
+  1. 選取 [自訂]
+  1. 在欄位中輸入 DNS 伺服器的 IP 位址。
 
 您也可以使用簡單的 DNS 伺服器，在所有可用的快取掛接點之間進行用戶端連線的負載平衡。
 
@@ -92,8 +105,8 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 若要建立相容的儲存體帳戶，請使用下列設定：
 
 * 效能： **標準**
-* 帳戶種類： **StorageV2 (一般用途 v2) **
-* 複寫： **本機冗余儲存體 (LRS) **
+* 帳戶種類： **StorageV2 (一般用途 v2)**
+* 複寫： **本機冗余儲存體 (LRS)**
 * 存取層 (預設) ： **熱**
 
 在與您的快取相同的位置中使用儲存體帳戶是很好的作法。
@@ -128,7 +141,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 
   * 如果您無法使用 `rpcinfo` 命令，請確定這些常用的埠允許連入和連出流量：
 
-    | 通訊協定 | 連接埠  | Service  |
+    | 通訊協定 | Port  | 服務  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
@@ -143,7 +156,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 * **目錄存取：** 在 `showmount` 儲存體系統上啟用命令。 Azure HPC Cache 使用此命令來檢查您的儲存體目標設定是否指向有效的匯出，也可確保多個裝載不會存取相同的子目錄， (有檔案衝突) 的風險。
 
   > [!NOTE]
-  > 如果您的 NFS 儲存體系統使用 NetApp 的 ONTAP 9.2 作業系統，請不要**啟用 `showmount` **。 [請聯絡 Microsoft 服務及支援](hpc-cache-support-ticket.md) 以取得協助。
+  > 如果您的 NFS 儲存體系統使用 NetApp 的 ONTAP 9.2 作業系統，請不要 **啟用 `showmount`** 。 [請聯絡 Microsoft 服務及支援](hpc-cache-support-ticket.md) 以取得協助。
 
   深入瞭解 NFS 儲存體目標 [疑難排解文章](troubleshoot-nas.md#enable-export-listing)中的目錄清單存取。
 

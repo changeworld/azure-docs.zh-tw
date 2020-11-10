@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e70e2f64c8fc7d3ed63fd9e6fb7ae0f9f3cfe69c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afca8d8fe13042e369b6aa58e527e1c976f143dd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313326"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411570"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警示目錄 
 
@@ -99,7 +99,7 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 | LanmanServer 服務並未執行 | 如果停用此服務，明確依存於此服務的所有服務都將無法啟動。 | 在受影響的網域控制站上執行 '<b>net start LanManServer</b>'。 |
 | Kerberos 金鑰發佈中心服務未執行 | 若 KDC 服務停止，使用者會無法透過此 DC 使用 Kerberos v5 驗證通訊協定進行驗證。 | 在受影響的網域控制站上執行 '<b>net start kdc</b>'。 |
 | DNS 服務未執行 | 若 DNS 服務停止，則因 DNS 之故而使用該伺服器的電腦與使用者，將會找不到資源。 | 在受影響的網域控制站上執行 '<b>net start dns</b>'。 |
-| DC 具 USN 復原 | 發生 USN 回復時，物件和屬性的修改不會由先前看過 USN 的目的地網域控制站進行輸入複寫。 因為這些目的地網域控制站認為他們是最新的，所以在目錄服務事件記錄中或從監視及診斷工具，不會回報任何複寫錯誤。 USN 回復可能會影響任何分割區中任何物件或屬性的複寫。 最常見的副作用是，在回復網域控制站上建立的使用者帳戶和電腦帳戶，在一或多個複寫協力電腦上不存在。 或者，在回復網域控制站上產生的密碼更新，不存在於複寫協力電腦上。 | 有兩種方法可以從 USN 回復復原： <p>遵循下列步驟，從網域中移除網域控制站： <ol type="1"><li>從網域控制站中移除 Active Directory，強制它成為獨立伺服器。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/332199">332199</a> 當您在 Windows Server 2003 及 Windows 2000 Server 中使用 [Active Directory 安裝精靈] 強制降級時，網域控制站將無法正常降級 (機器翻譯)。 </li> <li>關閉被降級的伺服器。</li> <li>在狀況良好的網域控制站上，清除降級網域控制站的中繼資料。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/216498">216498</a> 如何在網域控制站降級失敗後，移除 Active Directory 中的資料</li> <li>如果未正確還原的網域控制站裝載了操作主機角色，請將這些角色轉移至狀況良好的網域控制站。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/255504">255504</a> 使用 Ntdsutil.exe 拿取或傳輸 FSMO 角色到網域控制站</li> <li>重新啟動降級的伺服器。</li> <li>如有需要，可在獨立伺服器上再次安裝 Active Directory。</li> <li>如果網域控制站之前是通用目錄，請將網域控制站設定為通用目錄。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/313994">313994</a> 如何建立或移動 Windows 2000 中的通用類別目錄 (機器翻譯)</li> <li>如果網域控制站之前有裝載操作主機角色，請將操作主機角色轉移回網域控制站。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/255504">255504</a> 使用 Ntdsutil.exe 拿取或傳輸 FSMO 角色到網域控制站。還原良好備份的系統狀態。</li></ol></p> <p>評估此網域控制站是否有有效的系統狀態備份。 如果在回復的網域控制站未正確還原之前，有進行有效的系統狀態備份，而且備份包含網域控制站最近所做的變更，請從最新的備份還原系統狀態。</p> <p>您也可以使用快照做為備份的來源。 或是可將資料庫設定成為其本身提供新的引動過程識別碼，可利用<a href="https://technet.microsoft.com/library/dd363545(WS.10).aspx">本文章</a>中＜在不使用系統狀態資料備份的情況下還原舊版虛擬網域控制站 VHD＞一節中的程序進行。</p></p> |
+| DC 具 USN 復原 | 發生 USN 回復時，物件和屬性的修改不會由先前看過 USN 的目的地網域控制站進行輸入複寫。 因為這些目的地網域控制站認為他們是最新的，所以在目錄服務事件記錄中或從監視及診斷工具，不會回報任何複寫錯誤。 USN 回復可能會影響任何分割區中任何物件或屬性的複寫。 最常見的副作用是，在回復網域控制站上建立的使用者帳戶和電腦帳戶，在一或多個複寫協力電腦上不存在。 或者，在回復網域控制站上產生的密碼更新，不存在於複寫協力電腦上。 | 有兩種方法可以從 USN 回復復原： <p>遵循下列步驟，從網域中移除網域控制站： <ol type="1"><li>從網域控制站中移除 Active Directory，強制它成為獨立伺服器。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/332199">332199</a> 當您在 Windows Server 2003 及 Windows 2000 Server 中使用 [Active Directory 安裝精靈] 強制降級時，網域控制站將無法正常降級 (機器翻譯)。 </li> <li>關閉被降級的伺服器。</li> <li>在狀況良好的網域控制站上，清除降級網域控制站的中繼資料。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/216498">216498</a> 如何在網域控制站降級失敗後，移除 Active Directory 中的資料</li> <li>如果未正確還原的網域控制站裝載了操作主機角色，請將這些角色轉移至狀況良好的網域控制站。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/255504">255504</a> 使用 Ntdsutil.exe 拿取或傳輸 FSMO 角色到網域控制站</li> <li>重新啟動降級的伺服器。</li> <li>如有需要，可在獨立伺服器上再次安裝 Active Directory。</li> <li>如果網域控制站之前是通用目錄，請將網域控制站設定為通用目錄。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/313994">313994</a> 如何建立或移動 Windows 2000 中的通用類別目錄 (機器翻譯)</li> <li>如果網域控制站之前有裝載操作主機角色，請將操作主機角色轉移回網域控制站。 如需詳細資訊，請按一下下列文章編號，以檢視 Microsoft 知識庫文章： <br><a href="https://support.microsoft.com/kb/255504">255504</a> 使用 Ntdsutil.exe 拿取或傳輸 FSMO 角色到網域控制站。還原良好備份的系統狀態。</li></ol></p> <p>評估此網域控制站是否有有效的系統狀態備份。 如果在回復的網域控制站未正確還原之前，有進行有效的系統狀態備份，而且備份包含網域控制站最近所做的變更，請從最新的備份還原系統狀態。</p> <p>您也可以使用快照做為備份的來源。 或是可將資料庫設定成為其本身提供新的引動過程識別碼，可利用<a href="/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd363545(v=ws.10)">本文章</a>中＜在不使用系統狀態資料備份的情況下還原舊版虛擬網域控制站 VHD＞一節中的程序進行。</p></p> |
 
 
 

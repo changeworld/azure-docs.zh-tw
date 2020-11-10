@@ -3,12 +3,12 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b95c056a8885998c3ca5b5c62cb13049c3a8c66d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950239"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412916"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -21,7 +21,7 @@ ms.locfileid: "91950239"
 > [!NOTE]
 > 某些服務具有可調整的限制。
 >
-> 當服務沒有可調整的限制時，下表會使用標頭 **限制**。 在這些情況下，預設和最大限制是相同的。
+> 當服務沒有可調整的限制時，下表會使用標頭 **限制** 。 在這些情況下，預設和最大限制是相同的。
 >
 > 當限制可以調整時，資料表會包含 **預設限制** 和 **最大限制** 標頭。 限制可以在預設限制以上引發，但不能超過上限。
 >
@@ -94,9 +94,9 @@ ms.locfileid: "91950239"
 
 定價層會決定搜尋服務的容量和限制。 層級包括：
 
-* 與其他 Azure 訂閱者共用的**免費**多租使用者服務，適用于評估和小型開發專案。
-* **** 可針對規模較小的生產工作負載提供專用的計算資源，以及針對高可用性的查詢工作負載提供最多 3 個複本。
-* **標準**（包括 S1、S2、S3 及 s3 高密度）適用于較大型的生產工作負載。 標準層內有多個層級，因此您可以選擇最符合您工作負載設定檔的資源設定。
+* 與其他 Azure 訂閱者共用的 **免費** 多租使用者服務，適用于評估和小型開發專案。
+*  可針對規模較小的生產工作負載提供專用的計算資源，以及針對高可用性的查詢工作負載提供最多 3 個複本。
+* **標準** （包括 S1、S2、S3 及 s3 高密度）適用于較大型的生產工作負載。 標準層內有多個層級，因此您可以選擇最符合您工作負載設定檔的資源設定。
 
 **每一訂用帳戶的限制**
 
@@ -227,7 +227,7 @@ ms.locfileid: "91950239"
 ## <a name="digital-twins-limits"></a>數位 Twins 限制
 
 > [!NOTE]
-> 這項服務的某些區域具有可調整的限制，其他則否。 這會在下表中以可 *調整的？* 資料行表示。 當限制可以調整時，可 *調整* 的值是 *[是]*。
+> 這項服務的某些區域具有可調整的限制，其他則否。 這會在下表中以可 *調整的？* 資料行表示。 當限制可以調整時，可 *調整* 的值是 *[是]* 。
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -285,7 +285,11 @@ ms.locfileid: "91950239"
 
 ### <a name="virtual-network-gateway-limits"></a>虛擬網路閘道限制
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>NAT 閘道限制
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>虛擬 WAN 限制
 

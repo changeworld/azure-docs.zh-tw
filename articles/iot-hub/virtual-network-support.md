@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 11/09/2020
 ms.author: jlian
-ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427853"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413389"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -92,7 +92,7 @@ IoT 中樞可連線到 Azure Blob 儲存體、事件中樞、服務匯流排資�
 
 1. 在 [狀態] 下，選取 [開啟]，然後按一下 [儲存]。
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="顯示為 IoT 中樞新增私人端點的位置螢幕擷取畫面":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="顯示如何為 IoT 中樞開啟受控識別的螢幕擷取畫面":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 範本在建立時將受控識別指派給您的 IoT 中樞
 
@@ -200,7 +200,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的事件中樞命名�
 
 5. 巡覽至 [自訂端點] 區段，然後按一下 [新增]。 選取 [事件中樞] 作為 [端點類型]。
 
-6. 在顯示的頁面上，提供端點的名稱，選取事件中樞命名空間和執行個體，然後按一下 [建立] 按鈕。
+6. 在顯示的頁面上，提供您的端點名稱，然後選取您的事件中樞命名空間和實例。 選取 [以身分 **識別為基礎** ] 作為 **驗證類型** ，然後按一下 [ **建立** ] 按鈕。
 
 現在，自訂事件中樞已設定為使用中樞系統指派的身分識別，且即使有防火牆限制，也有權存取事件中樞資源。 您現在可使用此端點來設定路由規則。
 
@@ -218,7 +218,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命�
 
 5. 巡覽至 [自訂端點] 區段，然後按一下 [新增]。 選取 [服務匯流排佇列] 或 [服務匯流排主題] (如果適用的話) 作為 [端點類型]。
 
-6. 在顯示的頁面上，提供端點的名稱，並選取服務匯流排的命名空間以及佇列或主題 (如果適用的話)。 按一下 [ **建立** ] 按鈕。
+6. 在顯示的頁面上，提供端點的名稱，並選取服務匯流排的命名空間以及佇列或主題 (如果適用的話)。 選取 [以身分 **識別為基礎** ] 作為 **驗證類型** ，然後按一下 [ **建立** ] 按鈕。
 
 現在，服務匯流排已設定為使用中樞系統指派的身分識別，且即使有防火牆限制，也有權存取服務匯流排資源。 您現在可使用此端點來設定路由規則。
 
@@ -236,7 +236,7 @@ IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲�
 
 4. 在 IoT 中樞的資源頁面上，巡覽至 [檔案上傳] 索引標籤。
 
-5. 在顯示的頁面上，選取想要在 blob 儲存體中使用的容器，然後視需要設定 [檔案通知設定]、[SAS TTL]、[預設 TTL] 和 [最大傳遞計數]。 選取 [以身分 **識別為基礎** ] 作為儲存體端點的 **驗證類型** 。 按一下 [ **建立** ] 按鈕。 如果您在此步驟中收到錯誤，請暫時將您的儲存體帳戶設定為允許來自 **所有網路**的存取，然後再試一次。 一旦檔案上傳設定完成之後，您就可以在儲存體帳戶上設定防火牆。
+5. 在顯示的頁面上，選取想要在 blob 儲存體中使用的容器，然後視需要設定 [檔案通知設定]、[SAS TTL]、[預設 TTL] 和 [最大傳遞計數]。 選取 [以身分 **識別為基礎** ] 作為儲存體端點的 **驗證類型** 。 按一下 [ **建立** ] 按鈕。 如果您在此步驟中收到錯誤，請暫時將您的儲存體帳戶設定為允許來自 **所有網路** 的存取，然後再試一次。 一旦檔案上傳設定完成之後，您就可以在儲存體帳戶上設定防火牆。
 
 現在，您用於檔案上傳的儲存體端點已設定為使用中樞系統所指派身分識別，且即使有防火牆限制，也有權存取儲存體資源。
 
