@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8ae0463633940ba3192815af6a07a6356901044
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426981"
+ms.locfileid: "94441829"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
@@ -34,11 +34,11 @@ Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金�
 
 Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。
 
-Azure AD 會使用同時也受 Key Vault 支援的角色型存取控制 (RBAC) 來管理授權。
+Azure AD 會使用同時也受 Key Vault 支援的 Azure 角色型存取控制 (Azure RBAC) 來管理授權。
 
 ## <a name="service-principal-application-id"></a>服務主體的應用程式識別碼
 
-Azure AD 租用戶會為每個已註冊的應用程式提供一個[服務主體](../../active-directory/develop/developer-glossary.md#service-principal-object)。 服務主體會作為應用程式識別碼，在授權設定期間用來透過 RBAC 存取其他 Azure 資源。
+Azure AD 租用戶會為每個已註冊的應用程式提供一個[服務主體](../../active-directory/develop/developer-glossary.md#service-principal-object)。 服務主體會作為應用程式識別碼，在授權設定期間用來透過 Azure RBAC 存取其他 Azure 資源。
 
 Key Vault 是 Microsoft 應用程式，已在所有 Azure AD 租用戶中預先註冊。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
 
