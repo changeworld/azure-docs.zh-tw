@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 7eb610f741681be89ef44f8288ed47674c1d6440
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348571"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490707"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體輸出
 
@@ -223,6 +223,10 @@ ms.locfileid: "93348571"
 3.    如果您已啟用它，請按一下 [ **儲存** ]。
 
    ![啟用 VNET 存取](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+
+## <a name="remove-managed-identity"></a>移除受控識別
+
+只有在作業刪除時，才會刪除為串流分析作業建立的受控識別。 沒有任何方法可刪除受控識別，而不刪除工作。 如果您不想再使用受控識別，您可以變更輸出的驗證方法。 受控識別會持續存在，直到刪除作業為止，如果您決定再次使用受控識別驗證，則會使用此身分識別。
 
 ## <a name="limitations"></a>限制
 以下是這項功能目前的限制：

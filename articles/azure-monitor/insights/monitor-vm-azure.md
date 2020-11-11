@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029456"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491625"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -98,11 +98,11 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>啟用診斷擴充功能和 Telegraf 代理程式
 適用於 VM 的 Azure 監視器是以將資料傳送至 Log Analytics 工作區的 Log Analytics 代理程式為基礎。 這支援 Azure 監視器的多項功能，例如[記錄查詢](../log-query/log-query-overview.md)、[記錄警示](../platform/alerts-log.md)和[活頁簿](../platform/workbooks-overview.md)。 [診斷擴充功能](../platform/diagnostics-extension-overview.md)會將 Windows 虛擬機器之客體作業系統的效能資料收集至 Azure 儲存體，並選擇性地將效能資料傳送至 [Azure 監視器計量](../platform/data-platform-metrics.md)。 針對 Linux 虛擬機器，必須要有 [Telegraf 代理程式](../platform/collect-custom-metrics-linux-telegraf.md)，才能將資料傳送至 Azure 計量。  這會啟用 Azure 監視器的其他功能，例如[計量瀏覽器](../platform/metrics-getting-started.md)，以及[計量警示](../platform/alerts-metric.md)。 您也可以使用 Azure 事件中樞，將診斷擴充功能設定為在 Azure 監視器外部傳送事件和效能資料。
 
-在 Azure 入口網站中，從 VM 功能表的 [診斷設定] 選項，安裝單一 Windows 虛擬機器的診斷擴充功能。 在 [接收器] 索引標籤中，選取要啟用 **Azure 監視器**的選項。若要從範本或命令列為多部虛擬機器啟用擴充功能，請參閱[安裝和設定](../platform/diagnostics-extension-overview.md#installation-and-configuration)。 不同於 Log Analytics 代理程式，要收集的資料會在每個虛擬機器上的擴充功能設定中定義。
+在 Azure 入口網站中，從 VM 功能表的 [診斷設定] 選項，安裝單一 Windows 虛擬機器的診斷擴充功能。 在 [接收器] 索引標籤中，選取要啟用 **Azure 監視器** 的選項。若要從範本或命令列為多部虛擬機器啟用擴充功能，請參閱 [安裝和設定](../platform/diagnostics-extension-overview.md#installation-and-configuration)。 不同於 Log Analytics 代理程式，要收集的資料會在每個虛擬機器上的擴充功能設定中定義。
 
 ![診斷設定](media/monitor-vm-azure/diagnostic-setting.png)
 
-如需在 Linux 虛擬機器上設定 Telegraf 代理程式的詳細資訊，請參閱[安裝和設定 Telegraf](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf)。 **診斷設定**功能表選項適用於 Linux，但只允許您將資料傳送至 Azure 儲存體。
+如需在 Linux 虛擬機器上設定 Telegraf 代理程式的詳細資訊，請參閱[安裝和設定 Telegraf](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf)。 **診斷設定** 功能表選項適用於 Linux，但只允許您將資料傳送至 Azure 儲存體。
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>收集平台計量和活動記錄
 您可以在 Azure 入口網站中，檢視針對每部虛擬機器主機收集的平台計量和活動記錄。 將此資料收集到與適用於 VM 的 Azure 監視器相同的 Log Analytics 工作區，以使用針對虛擬機器所收集的其他監視資料進行分析。 您可以使用[診斷設定](../platform/diagnostic-settings.md)來設定此收集。 使用[訂用帳戶的診斷設定](../platform/diagnostic-settings.md#create-in-azure-portal)收集活動記錄。
@@ -124,7 +124,7 @@ az monitor diagnostic-settings create \
 ## <a name="monitoring-in-the-azure-portal"></a>Azure 入口網站中的監視 
 設定虛擬機器的監視資料收集後，有多個選項可供您在 Azure 入口網站中存取這些資料：
 
-- 使用 **Azure 監視器**功能表存取來自所有受監視資源的資料。 
+- 使用 **Azure 監視器** 功能表存取來自所有受監視資源的資料。 
 - 使用適用於 VM 的 Azure 監視器來大規模監視一組虛擬機器。
 - 從 Azure 入口網站中的功能表，分析單一虛擬機器的資料。 下表列出監視虛擬機器功能表的不同選項。
 
@@ -139,12 +139,12 @@ az monitor diagnostic-settings create \
 | 計量 | 開啟[計量瀏覽器](../platform/metrics-getting-started.md)，並將範圍設定為目前的虛擬機器。 |
 | 診斷設定 | 啟用和設定目前虛擬機器的[診斷擴充功能](../platform/diagnostics-extension-overview.md)。 |
 | Advisor 建議 | [Azure Advisor](../../advisor/index.yml) 中目前虛擬機器的建議。 |
-| 記錄 | 開啟 [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics)，並將[範圍](../log-query/scope.md)設定為目前的虛擬機器。 |
+| 記錄 | 開啟 [Log Analytics](../log-query/log-analytics-overview.md)，並將[範圍](../log-query/scope.md)設定為目前的虛擬機器。 |
 | 連線監視 | 開啟[網路監看員連線監視器](../../network-watcher/connection-monitor-preview.md)，以監視目前虛擬機器與其他虛擬機器之間的連線。 |
 
 
 ## <a name="analyzing-metric-data"></a>分析計量資料
-您可以使用計量瀏覽器來分析虛擬機器的計量，方法是從虛擬機器的功能表開啟**計量**。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../platform/metrics-getting-started.md)。 
+您可以使用計量瀏覽器來分析虛擬機器的計量，方法是從虛擬機器的功能表開啟 **計量** 。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../platform/metrics-getting-started.md)。 
 
 虛擬機器會將三個命名空間用於計量：
 

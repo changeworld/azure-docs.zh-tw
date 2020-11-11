@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130250"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491302"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
 
@@ -50,6 +50,8 @@ ms.locfileid: "93130250"
 ## <a name="resource-utilization-is-high"></a>資源使用率偏高
 
 請確實利用 Azure 串流分析中的平行處理。 您將了解如何藉由設定輸入分割區並調整分析查詢定義，為串流分析作業[調整查詢平行處理](stream-analytics-parallelization.md)。
+
+如果資源使用率一致超過80%，則會增加水位線的延遲，而待處理的事件數目不斷增加，請考慮增加串流單位。 高使用率表示作業使用接近已配置資源的最大值。
 
 ## <a name="debug-queries-progressively"></a>以漸進方式對查詢偵錯
 

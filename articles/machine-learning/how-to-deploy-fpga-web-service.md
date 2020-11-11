@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324962"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491693"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>使用 Azure Machine Learning 將 ML 模型部署到可現場程式化閘道陣列 (Fpga)  
 
@@ -31,7 +31,7 @@ Fpga 可讓您達到低延遲，以進行即時推斷 (或模型計分) 要求�
 
 ![Azure Machine Learning FPGA 比較的圖表](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|處理器| 縮寫 |描述|
+|處理器| 縮寫 |說明|
 |---|:-------:|------|
 |應用程式特定的積體電路|ASIC|自訂電路 (例如，Google 的 TensorFlow 處理器 (TPU)) 可提供最高效率。 它們無法隨著您需求的變更加以重新設定。|
 |現場可程式化閘陣列|FPGA|FPGA (例如 Azure 上所提供的那些陣列) 可提供接近 ASIC 的效能。 它們也會隨著時間而具有彈性且可重新設定，以實作新邏輯。|
@@ -60,7 +60,7 @@ Azure Fpga 會與 Azure Machine Learning 整合。 Azure 可以跨 Fpga 平行�
 
 在此範例中，您會建立 TensorFlow 圖來預先處理輸入影像、使其成為在 FPGA 上使用 ResNet 50 的 featurizer，然後透過針對 ImageNet 資料集定型的分類器來執行這些功能。 然後，此模型會部署至 AKS 叢集。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 - Azure 訂用帳戶。 如果您沒有帳戶，請建立 [隨用隨付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) 帳戶 (免費的 Azure 帳戶不符合 FPGA 配額) 資格。
 
@@ -362,6 +362,8 @@ converted_model.delete()
 ## <a name="next-steps"></a>後續步驟
 
 + 瞭解如何 [保護您的 web 服務](how-to-secure-web-service.md) 檔。
+
++ 瞭解 FPGA 和 [Azure Machine Learning 定價和成本](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
 + [超大規模硬體：在 Azure 上大規模的 ML、FPGA：組建 2018 (影片) ](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

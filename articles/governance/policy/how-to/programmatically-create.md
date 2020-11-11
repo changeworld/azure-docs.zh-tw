@@ -3,12 +3,12 @@ title: 以程式設計方式建立原則
 description: 此文章會逐步引導您使用 Azure CLI、Azure PowerShell 及 REST API，以程式設計方式建立及管理 Azure 原則的原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047049"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491795"
 ---
 # <a name="programmatically-create-policies"></a>以程式設計方式建立原則
 
@@ -69,13 +69,13 @@ ms.locfileid: "89047049"
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   此命令會建立名為_對公用網路開放的稽核儲存體帳戶_的原則定義。
+   此命令會建立名為 _對公用網路開放的稽核儲存體帳戶_ 的原則定義。
    如需您可使用的其他參數詳細資訊，請參閱 [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition)。
 
    若在未指定位置參數的情況下呼叫，`New-AzPolicyDefinition` 會預設儲存工作階段內容中所選訂用帳戶的原則定義。 若要將定義儲存至不同位置，請使用下列參數：
 
    - **SubscriptionId** - 儲存到不同的訂用帳戶。 需要 _GUID_ 值。
-   - **ManagementGroupName** - 儲存至管理群組。 需要_字串_值。
+   - **ManagementGroupName** - 儲存至管理群組。 需要 _字串_ 值。
 
 1. 建立原則定義之後，您可以執行下列命令來建立原則指派：
 
@@ -85,14 +85,14 @@ ms.locfileid: "89047049"
    New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
-   以您想要的資源群組名稱取代 _ContosoRG_。
+   以您想要的資源群組名稱取代 _ContosoRG_ 。
 
    `New-AzPolicyAssignment` 上的 **Scope** 參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數會使用 `Get-AzResourceGroup` 上 **ResourceId** 屬性傳回的完整資源路徑。 以下是每個容器的 **Scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。
-   `{rType}` 會取代為資源的**資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
+   `{rType}` 會取代為資源的 **資源類型** ，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
 
    - 資源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 資源群組 - `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - 訂用帳戶 - `/subscriptions/{subId}/`
+   - 訂用帳戶 - `/subscriptions/{subId}`
    - 管理群組 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 如需使用 Resource Manager PowerShell 模組管理資源原則的詳細資訊，請參閱 [Az. Resources](/powershell/module/az.resources/#policies)。
@@ -202,13 +202,13 @@ ms.locfileid: "89047049"
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
-   此命令會建立名為_對公用網路開放的稽核儲存體帳戶_的原則定義。
+   此命令會建立名為 _對公用網路開放的稽核儲存體帳戶_ 的原則定義。
    如需有關其他可供您使用之參數的詳細資訊，請參閱 [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create)。
 
    若在未指定位置參數的情況下呼叫，`az policy definition creation` 會預設儲存工作階段內容中所選訂用帳戶的原則定義。 若要將定義儲存至不同位置，請使用下列參數：
 
    - **subscription** - 儲存到不同的訂用帳戶。 需要一個 _GUID_ 值來用於訂用帳戶 ID，或需要一個「字串」值來用於訂用帳戶名稱。
-   - **management-group** - 儲存到管理群組。 需要_字串_值。
+   - **management-group** - 儲存到管理群組。 需要 _字串_ 值。
 
 1. 使用下列命令以建立原則指派。 以您自己的值取代 &lt;&gt; 符號中的範例資訊。
 
@@ -216,7 +216,7 @@ ms.locfileid: "89047049"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 上的 **scope** 參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數使用完整資源路徑。 以下是每個容器的 **scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。 `{rType}` 會取代為資源的**資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
+   `az policy assignment create` 上的 **scope** 參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數使用完整資源路徑。 以下是每個容器的 **scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。 `{rType}` 會取代為資源的 **資源類型** ，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
 
    - 資源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 資源群組 - `/subscriptions/{subID}/resourceGroups/{rgName}`

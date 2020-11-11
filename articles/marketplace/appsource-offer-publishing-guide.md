@@ -4,21 +4,21 @@ description: 針對 Microsoft 365、Dynamics 365、Power Apps 和 Power BI 發�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484811"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491149"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Microsoft 365、Dynamics 365、Power Apps 和 Power BI 的供應專案發佈指南
 
 Microsoft AppSource 包含以 Microsoft 365、Dynamics 365、Power Apps 和 Power BI 為建立或擴充的供應專案。 每一項產品都有特定的檔，可引導您進行發佈流程。 
 
-AppSource 有付費、清單及試用版供應專案，且清單選項 *立即取得*，請 *洽詢我*，並 *立即試用*。
+AppSource 有付費、清單及試用版供應專案，且清單選項 *立即取得* ，請 *洽詢我* ，並 *立即試用* 。
 
 ## <a name="product-specific-guides"></a>產品特定指南
 

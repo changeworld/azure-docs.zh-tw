@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900278"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491931"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -59,7 +59,7 @@ Azure 春季雲端具有下列已知限制：
 
 如果您在 Azure 春季雲端遇到任何問題，請建立 [Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 若要提交功能要求或提供意見反應，請前往 [Azure 意見](https://feedback.azure.com/forums/34192--general-feedback)反應。
 
-## <a name="development"></a>部署
+## <a name="development"></a>開發
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是春季雲端開發人員，但不熟悉 Azure。 最快的方式是瞭解如何開發 Azure 春季雲端應用程式？
 
@@ -73,9 +73,9 @@ Azure Spring Cloud 支援 Java 8 和 11。 請參閱 [JAVA 執行時間和作業
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>我可以在哪裡查看我的春季雲端應用程式記錄和計量？
 
-在 [應用程式概觀] 索引標籤和 [Azure 監視器](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) \(部分機器翻譯\) 索引標籤中尋找計量。
+在 [應用程式概觀] 索引標籤和 [Azure 監視器](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer) \(部分機器翻譯\) 索引標籤中尋找計量。
 
-Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring* 。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
+Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring* 。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支援分散式追蹤？
 
@@ -209,6 +209,6 @@ RetryableEurekaHttpClient: Request execution failure with status code 401; retry
 我們將在不久的將來增強這個部分，並避免使用者的應用程式發生此錯誤。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您有其他問題，請參閱《 [Azure 春季雲端疑難排解指南》](spring-cloud-troubleshoot.md)。

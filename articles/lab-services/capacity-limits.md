@@ -3,12 +3,12 @@ title: Azure 實驗室服務中的容量限制
 description: 瞭解 Azure 實驗室服務中)  (虛擬機器限制的容量限制。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444092"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491013"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Azure 實驗室服務中的容量限制
 Azure 實驗室服務具有 Azure 訂用帳戶的預設容量限制，以符合 Azure 計算配額限制，並減少詐騙。 所有 Azure 訂用帳戶都會有初始容量限制，這會根據訂用帳戶類型、標準計算核心數目，以及 Azure 實驗室服務內可用的 GPU 核心而有所不同。 它會限制您可以在您的實驗室內建立多少虛擬機器，然後才需要要求增加限制。  
@@ -50,4 +50,5 @@ Azure 實驗室服務具有 Azure 訂用帳戶的預設容量限制，以符合 
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章：
+- [系統管理員指南-VM](administrator-guide.md#vm-sizing)調整大小。
 - [常見問題集](classroom-labs-faq.md)。

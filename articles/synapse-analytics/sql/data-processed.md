@@ -1,6 +1,6 @@
 ---
-title: 使用無伺服器 SQL 集區處理的資料
-description: 本檔說明當您在 data lake 中查詢資料時，如何計算資料處理量。
+title: 無伺服器 SQL 集區的成本管理
+description: 本檔說明如何管理無伺服器 SQL 集區的成本，以及在 Azure 儲存體中查詢資料時，如何計算資料的處理方式。
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,22 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a108e5fdd30c21cdb7771e3f683dad22773653a4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381196"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491561"
 ---
-# <a name="data-processed-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區處理的資料
+# <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中無伺服器 SQL 集區的成本管理
+
+本文說明如何在 Azure Synapse Analytics 中估計及管理無伺服器 SQL 集區的成本：
+- 估計發出查詢之前所處理的資料量
+- 使用成本控制功能來設定預算
+
+瞭解 Azure Synapse Analytics 中無伺服器 SQL 集區的成本，只是您的 Azure 帳單中的每月成本的一部分。 如果您使用其他 Azure 服務，您必須針對 Azure 訂用帳戶中使用的所有 Azure 服務和資源（包括協力廠商服務）支付費用。 本文說明如何在 Azure Synapse Analytics 中規劃及管理無伺服器 SQL 集區的成本。
+
+## <a name="data-processed"></a>已處理的資料量
 
 *處理的資料* 是系統在執行查詢時暫時儲存的資料量。 處理的資料包含下列數量：
 
@@ -84,6 +92,53 @@ ms.locfileid: "94381196"
 此查詢會讀取整個檔案。 此資料表之儲存體中的檔案大小總計為 100 KB。 節點會處理此資料表的片段，而每個片段的總和會在節點之間傳輸。 最後一個總和會轉移至您的端點。 
 
 此查詢會處理稍微超過 100 KB 的資料。 此查詢所處理的資料量會進位到 10 MB （如本文的 [舍入](#rounding) 區段中所指定）。
+
+## <a name="cost-control"></a>成本控制
+
+無伺服器 SQL 集區中的成本控制功能可讓您設定所處理資料量的預算。 您可以設定每日、每週和每月處理的資料量（以 TB 為限）。 同時您可以設定一或多個預算。 若要設定無伺服器 SQL 集區的成本控制，您可以使用 Synapse Studio 或 T-sql。
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-synapse-studio"></a>在 Synapse Studio 中設定無伺服器 SQL 集區的成本控制
+ 
+若要在 Synapse Studio 中設定無伺服器 SQL 集區的成本控制，請流覽至左側功能表中的 [管理專案]，而非 [在分析集區中選取 SQL 集區專案]。 當您將滑鼠停留在無伺服器 SQL 集區時，您會看到成本控制的圖示-按一下此圖示。
+
+![成本控制導覽](./media/data-processed/cost-control-menu.png)
+
+一旦您按一下 [成本控制] 圖示，就會出現側邊列：
+
+![成本控制設定](./media/data-processed/cost-control-sidebar.png)
+
+若要設定一或多個預算，請先針對您想要設定的預算按一下 [啟用] 選項按鈕，而不是在文字方塊中輸入整數值。 值的單位為 Tb。 設定您想要的預算之後，請按一下側邊列底部的 [套用] 按鈕。 這樣就可以了，您現在已設定預算。
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-t-sql"></a>在 T-sql 中設定無伺服器 SQL 集區的成本控制
+
+若要在 T-sql 中設定無伺服器 SQL 集區的成本控制，您需要執行下列一或多個預存程式。
+
+```sql
+sp_set_data_processed_limit
+    @type = N'daily',
+    @limit_tb = 1
+
+sp_set_data_processed_limit
+    @type= N'weekly',
+    @limit_tb = 2
+
+sp_set_data_processed_limit
+    @type= N'monthly',
+    @limit_tb = 3334
+```
+
+若要查看目前的設定，請執行下列 T-sql 語句：
+
+```sql
+SELECT * FROM sys.configurations
+WHERE name like 'Data processed %';
+```
+
+若要查看目前日期、周或月中處理的資料量，請執行下列 T-sql 語句：
+
+```sql
+SELECT * FROM sys.dm_external_data_processed
+```
 
 ## <a name="next-steps"></a>後續步驟
 

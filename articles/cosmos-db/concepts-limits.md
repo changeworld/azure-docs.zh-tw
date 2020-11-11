@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/10/2020
+ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319833"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491812"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,9 +43,9 @@ ms.locfileid: "93319833"
 
 Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/秒。 當容器成長時，支援的最小輸送量也取決於下列因素：
 
-* 您曾在容器上佈建的最大輸送量。 例如，如果輸送量已增加到 50,000 RU/秒，則最低的可能佈建輸送量會是 500 RU/秒
-* 容器中的目前儲存體 (以 GB 為單位)。 例如，如果容器具有 100 GB 的儲存體，則最低的可能佈建輸送量會是 1000 RU/秒
-* 共用輸送量資料庫上最小輸送量也取決於先前在共用輸送量資料庫中建立的容器總數 (以每個容器 100 RU/秒為單位)。 例如，如果已在共用輸送量資料庫中建立五個容器，則輸送量必須至少為 500 RU/秒
+* 您曾在容器上佈建的最大輸送量。 例如，如果您的輸送量已增加到 50000 RU/秒，則最低的可能布建輸送量會是 500 RU/秒。
+* 容器中的目前儲存體 (以 GB 為單位)。 例如，如果您的容器具有 100 GB 的儲存體，則可能布建的最小輸送量會是 1000 RU/秒。 **注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能會符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格。
+* 共用輸送量資料庫上最小輸送量也取決於先前在共用輸送量資料庫中建立的容器總數 (以每個容器 100 RU/秒為單位)。 例如，如果您已在共用輸送量資料庫中建立五個容器，則輸送量至少必須為 500 RU/秒。
 
 您可從 Azure 入口網站或 SDK 擷取容器或資料庫的目前和最小輸送量。 如需詳細資訊，請參閱[在容器和資料庫中佈建輸送量](set-throughput.md)。 
 

@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323323"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491455"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service Azure Functions 的輸出系結
 
-若使用 SignalR** 輸出繫結，即可使用 Azure SignalR Service 來傳送一或多則訊息。 您可以廣播訊息至：
+若使用 SignalR 輸出繫結，即可使用 Azure SignalR Service 來傳送一或多則訊息。 您可以廣播訊息至：
 
 - 所有已連線的用戶端
 - 針對特定使用者驗證的已連線用戶端
@@ -26,7 +26,7 @@ ms.locfileid: "91323323"
 
 ## <a name="broadcast-to-all-clients"></a>廣播到所有用戶端
 
-下列範例顯示的函式會使用輸出系結，將訊息傳送至所有連線的用戶端。 *目標*是要在每個用戶端上叫用的方法名稱。 *Arguments*屬性是要傳遞給用戶端方法的零或多個物件的陣列。
+下列範例顯示的函式會使用輸出系結，將訊息傳送至所有連線的用戶端。 *目標* 是要在每個用戶端上叫用的方法名稱。 *Arguments* 屬性是要傳遞給用戶端方法的零或多個物件的陣列。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -116,7 +116,7 @@ function.json 範例：
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -126,9 +126,9 @@ function.json 範例：
 以下是 Python 程式碼：
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         'target': 'newMessage',
         'arguments': [ message ]
     }))
@@ -248,7 +248,7 @@ function.json 範例：
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -258,9 +258,9 @@ function.json 範例：
 以下是 Python 程式碼：
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         #message will only be sent to this user ID
         'userId': 'userId1',
         'target': 'newMessage',
@@ -383,7 +383,7 @@ function.json 範例：
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -393,9 +393,9 @@ function.json 範例：
 以下是 Python 程式碼：
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         #message will only be sent to this group
         'groupName': 'myGroup',
         'target': 'newMessage',
@@ -722,7 +722,7 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 

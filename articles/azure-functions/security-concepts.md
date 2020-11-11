@@ -3,12 +3,12 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102301"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491319"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
@@ -28,7 +28,7 @@ ms.locfileid: "92102301"
 
 ### <a name="log-and-monitor"></a>記錄和監視
 
-偵測攻擊的方法之一是透過活動監視活動和記錄分析。 Functions 會與 Application Insights 整合，以收集函式應用程式的記錄、效能和錯誤資料。 Application Insights 會自動偵測效能異常，並隨附強大的分析工具，以協助您診斷問題及了解如何使用您的函式。 若要深入了解，請參閱[監視 Azure Functions](functions-monitoring.md)。
+偵測攻擊的其中一種方式是透過活動監控活動和記錄分析。 Functions 會與 Application Insights 整合，以收集函式應用程式的記錄、效能和錯誤資料。 Application Insights 會自動偵測效能異常，並隨附強大的分析工具，以協助您診斷問題及了解如何使用您的函式。 若要深入了解，請參閱[監視 Azure Functions](functions-monitoring.md)。
 
 Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程式記錄與系統事件合併，以便分析。 您可以使用診斷設定，將函式平台記錄和計量的資料流匯出設定到您選擇的目的地，例如 Logs Analytics 工作區。 若要深入了解，請參閱[使用 Azure 監視器記錄監視 Azure Functions](functions-monitor-log-analytics.md)。 
 
@@ -76,11 +76,11 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 根據預設，金鑰會儲存在設定所提供之帳戶的 Blob 儲存體容器中 `AzureWebJobsStorage` 。 您可以使用特定的應用程式設定來覆寫此行為，並將金鑰儲存在不同的位置。
 
-|Location  |設定 | 值 | 描述  |
+|位置  |設定 | 值 | 描述  |
 |---------|---------|---------|---------|
 |不同的儲存體帳戶     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 會根據提供的 SAS URL，將金鑰儲存在第二個儲存體帳戶的 Blob 儲存體中。 金鑰會在使用您函式應用程式特有的秘密進行儲存之前進行加密。 |
 |檔案系統   | `AzureWebJobsSecretStorageType`   |  `files`       | 金鑰會保存在檔案系統上，並使用您函式應用程式特有的秘密在儲存體之前加密。 |
-|Azure 金鑰保存庫  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保存庫必須具有對應于主機資源的系統指派受控識別的存取原則。 存取原則應授與身分識別下列秘密許可權： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本機執行時，會使用開發人員身分識別，而設定必須在 [local.settings.js](functions-run-local.md#local-settings-file)的檔案中。 | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保存庫必須具有對應于主機資源的系統指派受控識別的存取原則。 存取原則應授與身分識別下列秘密許可權： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本機執行時，會使用開發人員身分識別，而設定必須在 [local.settings.js](functions-run-local.md#local-settings-file)的檔案中。 | 
 |Kubernetes 秘密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (選擇性) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 只有在 Kubernetes 中執行函數執行時間時才支援。 若 `AzureWebJobsKubernetesSecretName` 未設定，則會將存放庫視為唯讀。 在此情況下，必須在部署前產生這些值。 Azure Functions Core Tools 部署至 Kubernetes 時，會自動產生這些值。|
 
 ### <a name="authenticationauthorization"></a>驗證/授權

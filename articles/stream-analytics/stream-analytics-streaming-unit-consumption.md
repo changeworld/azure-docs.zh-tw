@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 70b5e85c99184b890d2b5269f483785a82340255
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127547"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490945"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解及調整串流單位
 
@@ -20,14 +20,14 @@ ms.locfileid: "93127547"
 
 為了達到低延遲的串流處理，Azure 串流分析作業會在記憶體中執行所有處理。 當記憶體用完時，串流工作將會失敗。 因此，對於生產作業來說，請務必監視串流作業的資源使用狀況，並配置足夠的資源讓作業保持全天候運作。
 
-SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的記憶體耗用量。 就使用量最低的串流作業而言，此計量通常會介於 10% 到 20% 之間。 如果 SU% 使用率很高 (高於 80% ) ，或如果輸入事件因為未顯示 CPU) 使用量而產生 (的低 SU% 使用率，則您的工作負載可能需要更多計算資源，因此您需要增加 SU 的數目。 建議您最好將 SU 計量保持低於 80%，以因應偶發的尖峰使用量。 Microsoft 建議對 80% 的 SU 使用量計量設定警示，以避免資源耗盡。 如需詳細資訊，請參閱[教學課程：設定 Azure 串流分析作業的警示](stream-analytics-set-up-alerts.md)。
+SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的記憶體耗用量。 就使用量最低的串流作業而言，此計量通常會介於 10% 到 20% 之間。 如果 SU% 使用率很高 (高於 80% ) ，或如果輸入事件因為未顯示 CPU) 使用量而產生 (的低 SU% 使用率，則您的工作負載可能需要更多計算資源，因此您需要增加 SU 的數目。 最好將 SU 計量保持低於80%，以考慮偶爾的尖峰。 若要回應增加的工作負載並增加串流處理單位，請考慮在 SU 使用率度量上設定80% 的警示。 此外，您也可以使用浮水印延遲和囤積事件計量來查看是否有影響。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>設定串流分析串流單位 (SU)
 1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
 2. 在資源清單中，尋找並開啟您想要調整的串流分析作業。 
 
-3. 在作業頁面的 [設定]  標題下，選取 [縮放]  。 建立作業時，預設的 su 數目為3。
+3. 在作業頁面的 [設定] 標題下，選取 [縮放]。 建立作業時，預設的 su 數目為3。
 
     ![Azure 入口網站串流分析作業組態][img.stream.analytics.preview.portal.settings.scale]
     
@@ -43,7 +43,7 @@ SU % 使用率計量介於 0% 到 100% 的範圍間，可說明工作負載的�
 
 ## <a name="how-many-sus-are-required-for-a-job"></a>一個作業需要多少 SU？
 
-選擇特定作業所需的 SU 數量取決於輸入的磁碟分割組態以及作業內定義的查詢。 [調整]  頁面可讓您設定正確的 SU 數目。 最好作法是配置比所需數目還多的 SU。 串流處理引擎會不惜分派額外的記憶體，針對延遲和輸送量進行最佳化。
+選擇特定作業所需的 SU 數量取決於輸入的磁碟分割組態以及作業內定義的查詢。 [調整] 頁面可讓您設定正確的 SU 數目。 最好作法是配置比所需數目還多的 SU。 串流處理引擎會不惜分派額外的記憶體，針對延遲和輸送量進行最佳化。
 
 一般情況下，最佳的作法是對不是使用 **PARTITION BY** 的查詢使用 6 個 SU 開始。 然後使用反覆嘗試的方法來決定最佳配置，這方法就是您可以在傳送代表的資料總數後修改 SU 數目，並且檢查 SU% 使用率計量。 串流分析作業可使用的串流單位數目上限，取決於為作業定義的查詢中包含的步驟數目，和每個步驟中的分割區數目。 您可以在[這裡](./stream-analytics-parallelization.md#calculate-the-maximum-streaming-units-of-a-job)深入了解限制。
 

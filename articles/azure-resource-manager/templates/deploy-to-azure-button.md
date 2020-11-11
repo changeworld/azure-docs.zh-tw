@@ -2,13 +2,13 @@
 title: 部署至 Azure 按鈕
 description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager 範本。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/10/2020
+ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675401"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490894"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按鈕從 GitHub 存放庫部署範本
 
@@ -71,6 +71,14 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 您有連結的完整 URL。
 
+如果您使用 [Git 搭配 Azure Repos](/azure/devops/repos/git/) 而不是使用 GitHub 存放庫，您仍可使用 [部署至 Azure] 按鈕。 請確定您的存放庫是公用的。 使用 [Items](/rest/api/azure/devops/git/items/get) 作業來取得範本。 您的要求應該採用下列格式：
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+將此要求 URL 編碼。
+
 ## <a name="create-deploy-to-azure-button"></a>[建立部署至 Azure] 按鈕
 
 最後，將連結和影像放在一起。
@@ -87,6 +95,12 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+若為 Git 與 Azure 存放庫，按鈕的格式如下：
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%252Freponame%252Fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>部署範本

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741059"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490741"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -59,7 +59,7 @@ $ras.Count
     az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
 
-    如果您收到「許可權不足，無法完成作業」錯誤，可能是因為 Azure CLI 嘗試查閱 Azure AD 中的「受託者」身分識別，而服務主體預設無法讀取 Azure AD。
+    如果您收到「許可權不足，無法完成作業」錯誤，可能是因為 Azure CLI 嘗試在 Azure AD 中查閱「受託人」身分識別，而服務主體預設無法讀取 Azure AD。
 
     有兩種方式可以解決此錯誤。 第一種方式是將 [目錄讀取](../active-directory/roles/permissions-reference.md#directory-readers) 者角色指派給服務主體，讓它可以讀取目錄中的資料。
 
@@ -68,6 +68,7 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- 如果您嘗試移除訂用帳戶的最後一個擁有者角色指派，您可能會看到「無法刪除最後一個 RBAC 系統管理員指派」錯誤。 不支援移除訂用帳戶的上次擁有者角色指派，以避免損壞訂用帳戶。 如果您想要取消訂用帳戶，請參閱 [取消您的 Azure 訂](../cost-management-billing/manage/cancel-azure-subscription.md)用帳戶。
 
 ## <a name="problems-with-custom-roles"></a>自訂角色的問題
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123501"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491517"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解串流分析工作監視功能，以及如何監視查詢
 
@@ -43,7 +43,7 @@ Azure 入口網站會顯示關鍵效能計量，可供您用來監視查詢和�
 | 順序錯亂事件    | 所收到順序錯亂的事件數目，這些事件會根據事件順序原則，予以捨棄或指定調整後的時間戳記。 順序錯亂容錯視窗設定的組態可能會造成影響。 |
 | 輸出事件          | 「串流分析」工作所傳送的資料量 (以事件數為單位)。 |
 | 執行階段錯誤         | 與查詢處理相關的錯誤總數 (不包括在擷取事件或輸出結果時發現的錯誤) |
-| SU % 使用率       | 從工作的 [調整] 索引標籤指派給工作的串流處理單元使用率。 若此指標達到 80% 以上，則代表事件處理作業極有可能延遲或暫停。 |
+| SU % 使用率       | 如果資源使用率一致超過80%，則會增加水位線的延遲，而待處理的事件數目不斷增加，請考慮增加串流單位。 高使用率表示作業使用接近已配置資源的最大值。 |
 | 浮水印延遲秒數       | 作業中所有輸出分割區的延遲秒數上限。 |
 
 您可以使用這些計量來[監視串流分析作業的效能](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)。 

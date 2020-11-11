@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 11/09/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042617"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490605"
 ---
 # <a name="what-is-risk"></a>什麼是風險？
 
@@ -24,10 +24,10 @@ Azure AD Identity Protection 中的風險偵測包含任何與目錄中的使用
 
 Identity Protection 可讓組織存取強大的資源，以快速查看及回應這些可疑的動作。 
 
->**注意：** 只有在使用正確的認證時，Identity Protection 才會產生風險偵測。 如果登入時使用了不正確的認證，則不代表認證洩漏的風險。
-
 ![顯示有風險的使用者和登入的安全性總覽](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> 只有在使用正確的認證時，Identity Protection 才會產生風險偵測。 如果登入時使用了不正確的認證，則不代表認證洩漏的風險。
 
 ## <a name="risk-types-and-detection"></a>風險類型和偵測
 
@@ -77,6 +77,10 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 身分識別保護會將風險分類成三個層級：低、中和高。 
 
 雖然 Microsoft 並未提供如何計算風險的特定詳細資料，但我們會假設每個層級針對使用者或登入遭到入侵時都具備更高的信賴度。 例如，相較於使用者的其中一個執行個體出現不熟悉的登入屬性，將認證洩漏給其他使用者的情況比較嚴重。
+
+### <a name="password-hash-synchronization"></a>密碼雜湊同步處理
+
+洩漏的認證和密碼噴灑等風險偵測需要有密碼雜湊，才能進行偵測。 如需密碼雜湊同步處理的詳細資訊，請參閱文章、 [使用 Azure AD Connect 同步處理密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md)。
 
 ### <a name="leaked-credentials"></a>認證外洩
 

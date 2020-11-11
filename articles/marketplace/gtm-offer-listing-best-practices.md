@@ -4,15 +4,15 @@ description: 了解 Microsoft AppSource 和 Azure Marketplace 供應項目的進
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708640"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492084"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "91708640"
 
 | 線上商店 | 類別 <br>依線上商店 | 類別 <br>依線上商店 | 產業 <br> 針對 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **供應項目類型**   |  **Azure Marketplace**  | **AppSource**  |
+| **供應專案類型**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure 應用程式 | X | |
 | 容器 | X | |
 | 諮詢服務 | | | X |
@@ -93,7 +93,7 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同方案類型的線上�
 | **架構 & 結構** | |
 | **汽車** | |
 | **Distribution** | 批發 <br> 包裹 & 套件寄送 |  
-| **Education** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
+| **教育訓練** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
 | **金融服務** | 銀行 & 資本市場 <br> Insurance | 
 | **政府** |  防禦 & 情報 <br> 文職政府 <br> 公共安全 & 司法 |
 | **醫療保健** | 健全狀況醫療給付 <br> 健康狀態提供者 <br> Pharmaceuticals | 
@@ -130,8 +130,8 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同方案類型的線上�
 ## <a name="link-to-your-offer-page-from-your-website"></a>從您的網站連結至供應項目頁面
 
 當您從網站上的 AppSource 或 Azure Marketplace 徽章連結到您在商業市集中的清單時，可以在 URL 的結尾加入下列查詢參數，以支援強大的分析和報告：
-* **src**：包含路由傳送到 AppSource (例如，網站、LinkedIn 或 Facebook) 的流量來源。
-* **mktcmpid**：您的行銷活動識別碼，最多可包含 16 個字元，而且可以是字母、數字、底線與連字號的任意組和 (例如，blogpost_12)。
+* **src** ：包含路由傳送到 AppSource (例如，網站、LinkedIn 或 Facebook) 的流量來源。
+* **mktcmpid** ：您的行銷活動識別碼，最多可包含 16 個字元，而且可以是字母、數字、底線與連字號的任意組和 (例如，blogpost_12)。
 
 下列範例 URL 包含前兩個查詢範例：`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

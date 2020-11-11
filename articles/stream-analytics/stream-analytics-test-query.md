@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444957"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490962"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在入口網站中測試 Azure 串流分析作業
 
@@ -101,8 +101,8 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
 
 1.  入口網站測試不支援時間原則：
 
-   * 順序不對：將會排序所有傳入的事件。
-   * 延遲抵達：由於串流分析只能使用現有的資料進行測試，因此不會有延遲抵達事件。
+    * 順序不對：將會排序所有傳入的事件。
+    * 延遲抵達：由於串流分析只能使用現有的資料進行測試，因此不會有延遲抵達事件。
    
 2.  不支援 c # UDF。
 
@@ -112,6 +112,7 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
 
 5.  不支援機器學習。
 
+6. 範例資料 API 會在15分鐘的時間範圍內進行五個要求的節流。 在15分鐘的時間範圍結束之後，您就可以進行更多範例資料要求。 這項限制適用于訂用帳戶層級。
 
 ## <a name="troubleshooting"></a>疑難排解
 

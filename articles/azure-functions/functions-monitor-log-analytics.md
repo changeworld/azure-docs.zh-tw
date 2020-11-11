@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208366"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491217"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>使用 Azure 監視器記錄監視 Azure Functions
 
@@ -22,23 +22,23 @@ Azure 監視器記錄檔可讓您從相同工作區中的不同資源合併記�
 Azure 監視器使用 Azure 資料總管使用的 [Kusto 查詢語言](/azure/kusto/query/)版本，適合用於簡單的記錄查詢，但也包含進階的功能，例如彙總、聯結和智慧分析。 您可以使用[多個課程](../azure-monitor/log-query/get-started-queries.md)，快速了解查詢語言。
 
 > [!NOTE]
-> 針對在 Windows 耗用量、高階和專用主機方案上執行的函式應用程式，與 Azure 監視器記錄檔的整合目前處於公開預覽狀態。
+> 針對在 Windows 耗用量、高階和專用主機方案上執行的 v2 和 v3 函式應用程式，與 Azure 監視器記錄檔的整合目前處於公開預覽狀態。
 
 ## <a name="setting-up"></a>設定
 
-1. 從[Azure 入口網站](https://portal.azure.com)中函數應用程式的 [**監視**] 區段中，選取 [**診斷設定**]，然後選取 [**新增診斷設定**]。
+1. 從 [Azure 入口網站](https://portal.azure.com)中函數應用程式的 [ **監視** ] 區段中，選取 [ **診斷設定** ]，然後選取 [ **新增診斷設定** ]。
 
    :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="選取診斷設定":::
 
-1. 在 [ **診斷設定** ] 頁面的 [ **類別目錄詳細資料** 和 **記錄**檔] 底下，選擇 [ **FunctionAppLogs**]。
+1. 在 [ **診斷設定** ] 頁面的 [ **類別目錄詳細資料** 和 **記錄** 檔] 底下，選擇 [ **FunctionAppLogs** ]。
 
-   **FunctionAppLogs**資料表包含所需的記錄。
+   **FunctionAppLogs** 資料表包含所需的記錄。
 
-1. 在 [ **目的地詳細資料**] 底下，選擇 [ **傳送至 log analytics**]，然後選取您的 **log analytics 工作區**。 
+1. 在 [ **目的地詳細資料** ] 底下，選擇 [ **傳送至 log analytics** ]，然後選取您的 **log analytics 工作區** 。 
 
-1. 輸入 **診斷設定名稱**，然後選取 [ **儲存**]。
+1. 輸入 **診斷設定名稱** ，然後選取 [ **儲存** ]。
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="選取診斷設定":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="新增診斷設定":::
 
 ## <a name="user-generated-logs"></a>使用者產生的記錄
 
@@ -81,15 +81,15 @@ logging.info('My app logs here.')
 
 若要查詢產生的記錄：
  
-1. 從您的函數應用程式選取 [ **診斷設定**]。 
+1. 從您的函數應用程式選取 [ **診斷設定** ]。 
 
 1. 從 [ **診斷設定** ] 清單中，選取您設定來傳送函數記錄檔的 Log Analytics 工作區。 
 
-1. 從 **Log Analytics 工作區** 頁面中，選取 [ **記錄**]。
+1. 從 **Log Analytics 工作區** 頁面中，選取 [ **記錄** ]。
 
-   Azure Functions 會將所有記錄寫入**LogManagement**下的**FunctionAppLogs**資料表。 
+   Azure Functions 會將所有記錄寫入 **LogManagement** 下的 **FunctionAppLogs** 資料表。 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="選取診斷設定":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics 工作區中的查詢視窗":::
 
 以下是一些範例查詢：
 

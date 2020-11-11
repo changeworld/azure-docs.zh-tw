@@ -1,18 +1,17 @@
 ---
-title: 將磚新增至您的 Azure IoT Central 儀表板 |Microsoft Docs
+title: 設定至您的 Azure IoT Central 儀表板 |Microsoft Docs
 description: 作為建立者，瞭解如何使用磚設定預設的 Azure IoT Central 應用程式儀表板。
-author: Haley-Rowland
-ms.author: harowl
-ms.date: 05/27/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
-services: iot-central
-ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376976"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491974"
 ---
 # <a name="configure-the-application-dashboard"></a>設定應用程式儀表板
 
@@ -29,23 +28,26 @@ ms.locfileid: "94376976"
 
 當您選取 [ **編輯** ] 或 [ **新增** ] 之後，儀表板就會處於 *編輯* 模式。 您可以使用 [ **編輯儀表板** ] 面板中的工具，將磚新增至儀表板，並自訂和移除儀表板上的磚。 例如，若要新增 **遙測** 磚，以顯示一或多個裝置回報的目前溫度：
 
-1. 在 [ **編輯儀表板** ] 面板中，選取 **裝置群組** 。
-1. 在 [ **裝置** ] 下拉式清單中選取一或多個裝置，以顯示在磚上。 您現在會看到來自裝置的可用遙測、屬性和命令。
-1. 選取 [遙測] 區段中的 [ **溫度** ]，然後選取 [ **新增磚** ]。 磚現在會顯示在儀表板上，您可以在其中變更視覺效果、調整磚大小並加以設定：
+1. 選取 **裝置群組** ，然後在 [ **裝置** ] 下拉式清單中選擇您的裝置，以顯示在磚上。 您現在會看到來自裝置的可用遙測、屬性和命令。
+
+1. 如有需要，您可以使用下拉式清單來選取要在磚上顯示的遙測值。 您可以藉由選取 [ **+ 遙測** ]、[ **+ 屬性** ] 或 [ **+ 雲端] 屬性** ，將更多專案加入至磚。
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="將溫度遙測磚新增至儀表板":::
 
-當您完成新增和自訂儀表板上的磚時，請選取 [ **儲存** ]。
+當您選取要顯示在磚上的所有值時，請按一下 [ **新增磚]。** 磚現在會出現在儀表板上，您可以在其中變更視覺效果、調整其大小、移動並設定它。
+
+當您完成新增和自訂儀表板上的磚時，請選取 [ **儲存** ] 以儲存儀表板的變更，這會讓您離開編輯模式。
 
 ## <a name="customize-tiles"></a>自訂磚
 
-若要自訂儀表板上的磚，儀表板必須處於編輯模式。 可用的自訂選項取決於 [圖格類型](#tile-types)：
+若要編輯磚，您必須處於編輯模式。  可用的自訂選項取決於 [圖格類型](#tile-types)：
 
-* 磚上的尺規圖示可讓您變更視覺效果。 視覺效果包括折線圖、最後一個已知值和熱度圖。
+* 磚上的尺規圖示可讓您變更視覺效果。 視覺效果包括折線圖、橫條圖、圓形圖、最後已知值、關鍵效能指標 (或 Kpi) 、熱度圖和地圖。
 
 * 正方形圖示可讓您調整圖格的大小。
 
 * 齒輪圖示可讓您設定視覺效果。 例如，您可以選擇在折線圖視覺效果中顯示圖例和軸，然後選擇要繪製的時間範圍。
+
 
 ## <a name="tile-types"></a>圖格類型
 
@@ -91,11 +93,16 @@ ms.locfileid: "94376976"
 
 新增您的條件式格式化規則：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="顯示平均流程的條件式格式規則的螢幕擷取畫面。有三個規則-less 20 為綠色、小於50為黃色，而任何50為紅色":::
-
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="顯示平均流程的條件式格式規則的螢幕擷取畫面。有三個規則-小於20、小於50是黃色，而任何超過50的則是紅色":::
+   
 下列螢幕擷取畫面顯示條件式格式設定規則的效果：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="螢幕擷取畫面，顯示平均水流程磚上的黃色背景色彩。磚上的數位是40.84":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="螢幕擷取畫面，顯示平均水流程磚上的紅色背景色彩。磚上的數位是50.54":::
+
+### <a name="tile-formatting"></a>「磚」格式化
+這項功能可在 KPI、LKV 和屬性圖格中取得，讓使用者可以調整字型大小、選擇小數有效位數、縮寫數值 (例如，將1700設為 1.7 K) ，或將字串值包裝在其磚中。
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/tile-format.png" alt-text="磚格式":::
 
 ## <a name="next-steps"></a>後續步驟
 

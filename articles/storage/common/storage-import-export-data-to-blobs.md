@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32187b7aedd43a57ffe77c2f8524c54049ba10ae
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234115"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490877"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure Blob 儲存體
 
@@ -34,7 +34,7 @@ ms.locfileid: "93234115"
 * 在 Windows 系統上啟用 BitLocker。 請參閱[如何啟用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 * 下載 Windows 系統上[最新的 WAImportExport 第1版](https://www.microsoft.com/download/details.aspx?id=42659)。 此工具的最新版本具有安全性更新，可允許適用于 BitLocker 金鑰的外部保護裝置，以及更新的解除鎖定模式功能。
 
-  * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1` 。
+  * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如 `C:\WaImportExportV1`。
 * 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。
   * 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
   * 產生匯出作業的追蹤號碼。
@@ -71,20 +71,20 @@ ms.locfileid: "93234115"
 7. 若要準備磁碟，請執行下列命令。 **視資料大小而定，這可能需要數小時到數天的時間。**
 
     ```powershell
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    日誌檔案會建立在執行此工具的相同資料夾中。 還會建立其他兩個檔案 - .xml  檔案 (您執行工具的資料夾) 和 drive-manifest.xml  檔案 (資料所在的資料夾)。
+    日誌檔案會建立在執行此工具的相同資料夾中。 還會建立其他兩個檔案 - .xml 檔案 (您執行工具的資料夾) 和 drive-manifest.xml 檔案 (資料所在的資料夾)。
 
     下表會說明使用的參數：
 
-    |選項  |Description  |
+    |選項  |描述  |
     |---------|---------|
     |/j:     |日誌檔案的名稱 (具有 .jrn 副檔名)。 每個磁碟機都會產生日誌檔案。 我們建議您使用磁碟序號作為日誌檔案名稱。         |
     |/id:     |工作階段識別碼。 針對命令的每個執行個體使用唯一的工作階段號碼。      |
     |/t:     |要寄送之磁碟的磁碟機代號。 例如，磁碟機 `D`。         |
     |/bk:     |磁碟機的 BitLocker 金鑰。 其數字密碼來自 `manage-bde -protectors -get D:` 的輸出      |
-    |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如： `D:\` 。         |
+    |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如 `D:\`。         |
     |/dstdir:     |Azure 儲存體中目的地容器的名稱。         |
     |/blobtype     |此選項會指定您想要匯入資料的 blob 類型。 針對區塊 blob，這是 `BlockBlob` 分頁 blob 的和 `PageBlob` 。         |
     |/skipwrite：     |此選項表示不需要複製新資料，且即將準備磁碟上的現有資料。          |
@@ -101,7 +101,7 @@ ms.locfileid: "93234115"
 在 Azure 入口網站中執行下列步驟，以建立匯入作業。
 
 1. 登入 https://portal.azure.com/。
-2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]  。
+2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]。
 
     ![移至匯入/匯出作業](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "93234115"
 
 4. 在 [基本] 中：
 
-   * 選取 [匯入至 Azure]  。
+   * 選取 [匯入至 Azure]。
    * 輸入匯入作業的描述性名稱。 使用此名稱來追蹤作業進度。
        * 名稱只可包含小寫字母、數字和連字號。
        * 名稱必須以字母開頭，並且不能包含空格。
@@ -120,7 +120,7 @@ ms.locfileid: "93234115"
 
      ![建立匯入作業 - 步驟 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-5. 在 [作業詳細資料]  中：
+5. 在 [作業詳細資料] 中：
 
    * 上傳在磁碟機準備步驟中取得的磁碟機日誌檔案。 如果已使用 `waimportexport.exe version1`，您需要針對已備妥的每個磁碟機上傳一個檔案。 如果日誌檔案大小超過 2 MB，則您可以使用與日誌檔案一起建立的 `<Journal file name>_DriveInfo_<Drive serial ID>.xml`。
    * 選取將存放資料的目的地儲存體帳戶。
@@ -128,7 +128,7 @@ ms.locfileid: "93234115"
 
    ![建立匯入作業 - 步驟 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-6. 在 [寄返資訊]  中：
+6. 在 [寄返資訊] 中：
 
    * 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請從下拉式清單中選擇現有的選項。 請與 `adbops@microsoft.com`  您打算使用的電訊廠商相關資訊，聯絡 Azure 資料箱營運團隊。
    * 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯入作業完成時，Microsoft 會透過此帳戶將磁碟機寄還給您。 如果您沒有帳戶號碼，請建立 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 貨運帳戶。
@@ -139,10 +139,10 @@ ms.locfileid: "93234115"
 
      ![建立匯入工作 - 步驟 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-7. 在 [摘要]  中：
+7. 在 [摘要] 中：
 
    * 檢閱摘要中提供的作業資訊。 記下作業名稱和 Azure 資料中心寄送地址，以將磁碟寄回 Azure。 這項資訊稍後會用在出貨標籤上。
-   * 按一下 [確定]  以完成建立匯入作業。
+   * 按一下 [確定] 以完成建立匯入作業。
 
      ![建立匯入作業 - 步驟 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
@@ -337,7 +337,7 @@ Install-Module -Name Az.ImportExport
 
 追蹤作業到完成為止。 作業完成之後，請確認您的資料已上傳至 Azure。 確認上傳成功之後才刪除內部部署的資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [檢視作業和磁碟機狀態](storage-import-export-view-drive-status.md)
 * [檢閱匯入/匯出的需求](storage-import-export-requirements.md)

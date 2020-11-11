@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ec260c2e71d1716eb4de9ad25942f61169356dfb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129893"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491336"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -123,6 +123,10 @@ GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 1. 選取 [新增] > [SQL Database]。 在 SQL Database 輸出接收的輸出屬性視窗中，選取驗證模式下拉式清單中的 [受控識別]。
 
 1. 填寫其餘屬性。 若要深入了解如何建立 SQL Database 輸出，請參閱[使用串流分析建立 SQL Database 輸出](sql-database-output.md)。 完成後，請選取 [儲存]。 
+
+## <a name="remove-managed-identity"></a>移除受控識別
+
+只有在作業刪除時，才會刪除為串流分析作業建立的受控識別。 沒有任何方法可刪除受控識別，而不刪除工作。 如果您不想再使用受控識別，您可以變更輸出的驗證方法。 受控識別會持續存在，直到刪除作業為止，如果您決定再次使用受控識別驗證，則會使用此身分識別。
 
 ## <a name="next-steps"></a>後續步驟
 

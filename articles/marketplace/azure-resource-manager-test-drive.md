@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: keferna
-author: keferna
-ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: trkeya
+author: trkeya
+ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125133"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491234"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
@@ -316,7 +316,7 @@ ms.locfileid: "93125133"
    6. 選取 [建立]。
    7. 建立應用程式之後，選取 [ **屬性** ]  >  **將應用程式設定為多租** 使用者，然後 **儲存** 。
 
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
 5. 複製此已註冊應用程式的應用程式識別碼，並將它貼到 [試用產品] 欄位中。
 
@@ -334,7 +334,7 @@ ms.locfileid: "93125133"
 
       ![新增權限](media/test-drive/access-control-permissions.jpg)
 
-   1. 選取 [儲存]  。
+   1. 選取 [儲存]。
 
 7. 產生 **Azure AD App** 的驗證金鑰。 在 [ **金鑰** ] 下，新增 **金鑰描述** 、將持續時間設為 [ **永不過期** ] (到期的金鑰會將您的試用產品分成生產) ，然後選取 [ **儲存** ]。 將此值複製並貼到 [需要的試用產品] 欄位中。
 

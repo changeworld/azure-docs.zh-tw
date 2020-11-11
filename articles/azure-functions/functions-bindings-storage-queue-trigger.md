@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376633"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491438"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體觸發程式
 
@@ -19,7 +19,7 @@ ms.locfileid: "89376633"
 
 ## <a name="encoding"></a>編碼
 
-Functions 預期有 base64** 編碼的字串。 任何對於編碼類型的調整 (以便準備資料作為 base64** 編碼的字串) 都必須在呼叫服務中實作。
+Functions 預期有 base64 編碼的字串。 任何對於編碼類型的調整 (以便準備資料作為 base64 編碼的字串) 都必須在呼叫服務中實作。
 
 ## <a name="example"></a>範例
 
@@ -146,7 +146,7 @@ module.exports = async function (context, message) {
 
 下列範例示範如何透過觸發程式讀取傳遞至函式的佇列訊息。
 
-儲存體佇列觸發程式是在 [*類型*] 設定為的*function.js*中定義 `queueTrigger` 。
+儲存體佇列觸發程式是在 [ *類型* ] 設定為的 *function.js* 中定義 `queueTrigger` 。
 
 ```json
 {
@@ -163,7 +163,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-* _ \_ _ \_ .Py*會將參數宣告為 `func.QueueMessage` ，可讓您讀取函數中的佇列訊息。
+*_\__ \_ .Py* 會將參數宣告為 `func.QueueMessage` ，可讓您讀取函數中的佇列訊息。
 
 ```python
 import logging
@@ -336,7 +336,7 @@ public class QueueTriggerDemo {
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-使用方法參數（例如）來存取訊息資料 `string paramName` 。 `paramName`是在function.js的屬性中指定的 `name` 值*function.json*。 您可以繫結至下列任何類型：
+使用方法參數（例如）來存取訊息資料 `string paramName` 。 `paramName`是在function.js的屬性中指定的 `name` 值 *function.json* 。 您可以繫結至下列任何類型：
 
 * 物件：Functions 執行階段會將 JSON 裝載還原序列化為程式碼中所定義之任意類別的執行個體。 
 * `string`
@@ -347,7 +347,7 @@ public class QueueTriggerDemo {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-佇列專案承載可透過 `context.bindings.<NAME>` `<NAME>` 符合 *function.js*中定義之名稱的位置使用。 如果承載是 JSON，此值會還原序列化為物件。
+佇列專案承載可透過 `context.bindings.<NAME>` `<NAME>` 符合 *function.js* 中定義之名稱的位置使用。 如果承載是 JSON，此值會還原序列化為物件。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -375,7 +375,7 @@ public class QueueTriggerDemo {
 
 ## <a name="poison-messages"></a>有害訊息
 
-當佇列觸發程序函數失敗時，Azure Functions 會針對指定的佇列訊息重試該函數最多五次，包括第一次嘗試。 如果所有五次嘗試失敗，函式執行時間會將訊息新增至名為 >originalqueuename>-poison 的佇列* &lt;>-有害*。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
+當佇列觸發程序函數失敗時，Azure Functions 會針對指定的佇列訊息重試該函數最多五次，包括第一次嘗試。 如果所有五次嘗試失敗，函式執行時間會將訊息新增至名為 >originalqueuename>-poison 的佇列 *&lt;>-有害* 。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
 
 若要手動處理有害訊息，請檢查佇列訊息的 [dequeueCount](#message-metadata)。
 
@@ -408,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>後續步驟
 
-- [ (輸出系結寫入 blob 儲存體訊息) ](./functions-bindings-storage-blob-output.md)
+- [將佇列儲存體訊息寫入 (輸出系結) ](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

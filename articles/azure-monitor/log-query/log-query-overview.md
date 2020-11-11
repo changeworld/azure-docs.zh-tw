@@ -1,101 +1,82 @@
 ---
-title: Azure 監視器中的記錄查詢總覽 |Microsoft Docs
-description: 回答與記錄查詢相關的常見問題，並讓您開始使用。
+title: Azure 監視器中的記錄查詢
+description: Azure 監視器所使用的 Kusto 查詢語言參考資訊。 包含 Azure 監視器專用的其他元素和 Azure 監視器記錄查詢中不支援的元素。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
-ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 6174bcbe5a014cff8dbd8dff242880d7f0ef7aa0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995206"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491387"
 ---
-# <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
-記錄查詢可協助您充分利用 [Azure 監視器記錄](../platform/data-platform-logs.md)檔中收集的資料值。 強大的查詢語言可讓您聯結來自多個資料表的資料、匯總大型資料集，並以基本程式碼執行複雜作業。 幾乎任何問題只要已收集到支援資料，就可以回答和分析，而且您瞭解如何建立正確的查詢。
+# <a name="log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢
+Azure 監視器記錄是以 Azure 資料總管為基礎，而記錄查詢則是使用相同的 Kusto 查詢語言（ (KQL) ）來撰寫。 這是設計成易於閱讀和撰寫的豐富語言，因此您應該能夠使用一些基本的指引來開始撰寫查詢。
 
-Azure 監視器中的某些功能（例如 [見解](../insights/insights-overview.md) 和 [解決方案](../monitor-reference.md) ）會處理記錄資料，而不會向您公開基礎查詢。 若要充分利用 Azure 監視器的其他功能，您應該瞭解查詢的建立方式，以及如何使用它們以互動方式分析 Azure 監視器記錄檔中的資料。
+您將在 Azure 監視器中使用查詢的區域包括下列各項：
 
-您可以使用這篇文章作為學習 Azure 監視器中記錄查詢的起點。 它會回答常見的問題，並提供其他檔的連結，以提供進一步的詳細資料和課程。
+- [Log Analytics](../log-query/log-analytics-overview.md)。 Azure 入口網站中的主要工具，可用於編輯記錄查詢和以互動方式分析其結果。 即使您想要在 Azure 監視器的其他位置使用記錄查詢，您通常會在 Log Analytics 中撰寫和測試它，再將它複製到最終位置。
+- [記錄警示規則](../platform/alerts-overview.md)。 主動識別您工作區中資料的問題。  每個警示規則都是以定期自動執行的記錄檔查詢為基礎。  會檢查結果來判斷是否應該建立警示。
+- 活頁[簿](../platform/workbooks-overview.md)。 在 Azure 入口網站的互動式視覺效果報表中，使用不同的視覺效果來包含記錄查詢的結果。
+- [Azure 儀表板](../learn/tutorial-logs-dashboards.md)。 將任何查詢的結果釘選到 Azure 儀表板，可讓您將記錄和度量資料視覺化，並選擇性地與其他 Azure 使用者共用。
+- [Logic Apps](../platform/logicapp-flow-connector.md)。  使用 Logic Apps，在自動化工作流程中使用記錄查詢的結果。
+- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult)。 從命令列或使用 AzOperationalInsightsSearchResults 的 Azure 自動化 runbook，在 PowerShell 腳本中使用記錄查詢的結果。
+- [Azure 監視器記錄 API](https://dev.loganalytics.io)。 從任何 REST API 用戶端取出工作區中的記錄資料。  API 要求包含針對 Azure 監視器執行的查詢，來判斷要擷取的資料。
 
-## <a name="how-can-i-learn-how-to-write-queries"></a>如何才能瞭解如何撰寫查詢？
-如果您想要直接跳至專案，您可以從下列教學課程開始：
+## <a name="getting-started"></a>開始使用
+開始學習使用 KQL 撰寫記錄查詢的最佳方式，就是運用可用的教學課程和範例。
 
-- [開始使用 Azure 監視器中的 Log Analytics](get-started-portal.md)。
-- [開始使用 Azure 監視器中的記錄查詢](get-started-queries.md)。
-
-當您有基本概念之後，請使用您自己的資料或示範環境中的資料，從以下開始逐步解說多個課程： 
-
-- [在 Azure 監視器記錄查詢中使用字串](string-operations.md)
- 
-## <a name="what-language-do-log-queries-use"></a>記錄查詢使用哪種語言？
-Azure 監視器記錄是以 [Azure 資料總管](/azure/data-explorer)為基礎，而記錄查詢則是使用相同的 Kusto 查詢語言（ (KQL) ）來撰寫。 這是設計成易於閱讀和撰寫的豐富語言，您應該能夠以最基本的指引開始使用。
-
-如需有關 KQL 的完整檔和可用的不同功能，請參閱 [Azure 資料總管 KQL 檔](/azure/kusto/query) 。<br>
-請參閱 [Azure 監視器中的「開始使用記錄查詢](get-started-queries.md) 」，以使用 Azure 監視器記錄檔中的資料進行語言的快速逐步解說。
-如 Azure 監視器 Azure 監視器所使用的 KQL 版本，請參閱 [記錄查詢語言差異](data-explorer-difference.md) 。
-
-## <a name="what-data-is-available-to-log-queries"></a>記錄查詢可使用哪些資料？
-Azure 監視器記錄檔中收集的所有資料都可在記錄查詢中取得和分析。 不同的資料來源會將其資料寫入至不同的資料表，但您可以在單一查詢中包含多個資料表，以便跨多個來源分析資料。 當您建置查詢時，從判斷哪些資料表具有您要尋找的資料開始。 如需資料結構的說明，請參閱 [Azure 監視器記錄的結構](../platform/data-platform-logs.md) 。
-
-## <a name="what-does-a-log-query-look-like"></a>記錄查詢看起來是什麼樣子？
-查詢可以像單一資料表名稱一樣簡單，以便從該資料表中取出所有記錄：
-
-```Kusto
-Syslog
-```
-
-或者，它可以篩選特定記錄、摘要記錄，以及在圖表中將結果視覺化：
-
-```
-SecurityEvent
-| where TimeGenerated > ago(7d)
-| where EventID == 4625
-| summarize count() by Computer, bin(TimeGenerated, 1h)
-| render timechart 
-```
-
-若要進行更複雜的分析，您可以使用聯結來從多個資料表中取出資料，以同時分析結果。
-
-```Kusto
-app("ContosoRetailWeb").requests
-| summarize count() by bin(timestamp,1hr)
-| join kind= inner (Perf
-    | summarize avg(CounterValue) 
-      by bin(TimeGenerated,1hr))
-on $left.timestamp == $right.TimeGenerated
-```
-即使您不熟悉 KQL，您至少應該能夠找出這些查詢所使用的基本邏輯。 它們的開頭是資料表的名稱，然後新增多個命令來篩選和處理該資料。 查詢可以使用任意數目的命令，而且您可以在熟悉可用的不同 KQL 命令時撰寫更複雜的查詢。
-
-請參閱 [Azure 監視器中的記錄查詢](get-started-queries.md) 入門，以取得介紹語言和一般功能之記錄查詢的教學課程。<br>
+- [Log analytics 教學](log-analytics-tutorial.md) 課程-使用 log analytics 功能的教學課程，這是您將在 Azure 入口網站中用來編輯和執行查詢的工具。 它也可讓您撰寫簡單的查詢，而不需要直接使用查詢語言。 如果您之前未曾使用過 Log Analytics，請從這裡開始，以便了解您將搭配其他教學課程和範例使用的工具。
+- [KQL 教學](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) 課程-引導您逐步瞭解基本的 KQL 概念和一般運算子。 這是開始使用語言本身以及記錄查詢結構的最佳位置。 
+- [範例查詢](example-queries.md) -Log Analytics 中可用之範例查詢的描述。 您可以在不修改的情況下使用這些查詢，也可以使用它們作為範例來瞭解 KQL。
+- [查詢範例](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor) -說明各種不同概念的範例查詢。
 
 
-## <a name="what-is-log-analytics"></a>什麼是 Log Analytics？
-Log Analytics 是 Azure 入口網站中的主要工具，可用於撰寫記錄查詢並以互動方式分析其結果。 即使記錄查詢是用於 Azure 監視器中的其他地方，您通常還是先使用 Log Analytics 撰寫並測試查詢。
 
-您可以從 Azure 入口網站中的數個位置啟動 Log Analytics。 適用于 Log Analytics 的資料範圍取決於您啟動的方式。 如需詳細資訊，請參閱 [查詢範圍](scope.md) 。
-
-- 從 [ **Azure 監視器**] 功能表或 [ **Log Analytics 工作區**] 功能表選取 [**記錄**]。
-- 從 Application Insights 應用程式的 [**總覽**] 頁面中選取 [**記錄**]。
-- 從 Azure 資源的功能表中選取 [ **記錄** ]。
-
-![Log Analytics](media/log-query-overview/log-analytics.png)
-
-請參閱 [Azure 監視器中的開始使用 Log analytics](get-started-portal.md) ，以取得 log analytics 的教學課程逐步解說，其中包含了數個功能。
-
-## <a name="where-else-are-log-queries-used"></a>使用記錄查詢的位置為何？
-除了以互動方式使用 log Analytics 中的記錄查詢和其結果之外，Azure 監視器中您將使用查詢的區域包括下列各項：
-
-- **警示規則。** [警示規則](../platform/alerts-overview.md)會主動識別您的工作區中資料的問題。  每個警示規則是根據以固定間隔自動執行的記錄搜尋。  會檢查結果來判斷是否應該建立警示。
-- **儀表板。** 您可以將任何查詢的結果釘選到 [Azure 儀表板](../learn/tutorial-logs-dashboards.md)中，如此即可以視覺化方式顯示記錄和計量資料，並選擇性地將其與其他 Azure 使用者共用。
-- **視圖。**  您可以使用[檢視設計工具](../platform/view-designer.md)，建立要包含在使用者儀表板中的資料視覺效果。  記錄查詢會在各個檢視中提供[圖格](../platform/view-designer-tiles.md)和[視覺效果部分](../platform/view-designer-parts.md)所使用的資料。  
-- **出口。**  當您從 Azure 監視器將記錄資料匯入到 Excel 或 [Power BI](../platform/powerbi.md) 時，您會建立定義要匯出之資料的記錄查詢。
-- **PowerShell.** 您可以從命令列或 Azure 自動化 runbook 執行 PowerShell 腳本，以使用 [AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) 從 Azure 監視器取出記錄資料。  此 Cmdlet 需要查詢來決定要擷取的資料。
-- **Azure 監視器記錄 API。**  [Azure 監視器記錄 API](https://dev.loganalytics.io) 可讓任何 REST API 用戶端從工作區擷取記錄資料。  API 要求包含針對 Azure 監視器執行的查詢，來判斷要擷取的資料。
+## <a name="reference-documentation"></a>參考文件
+您可以在 Azure 資料總管檔中[取得 KQL 的檔](/azure/data-explorer/kusto/query/)，包括所有命令和運算子的參考。 即使您已熟悉 KQL，仍會定期使用參考來調查先前未使用的新命令和案例。
 
 
-## <a name="next-steps"></a>接下來的步驟
-- 逐步解說在 [Azure 入口網站中使用 Log Analytics 的教學](get-started-portal.md)課程。
-- 逐步解說 [撰寫查詢的教學](get-started-queries.md)課程。
+## <a name="language-differences"></a>語言差異
+雖然 Azure 監視器使用與 Azure 資料總管相同的 KQL，但有一些差異。 KQL 檔將指定 Azure 監視器或具有不同功能的運算子不受支援。 Azure 監視器的特定運算子記載于 Azure 監視器內容中。 下列各節會提供語言版本之間的差異，以供快速參考。
+
+### <a name="statements-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的陳述式
+
+* [別名](/azure/kusto/query/aliasstatement)
+* [查詢參數](/azure/kusto/query/queryparametersstatement)
+
+### <a name="functions-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的函式
+
+* [cluster()](/azure/kusto/query/clusterfunction)
+* [cursor_after()](/azure/kusto/query/cursorafterfunction)
+* [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
+* [cursor_current()、current_cursor()](/azure/kusto/query/cursorcurrent)
+* [資料庫 ( # B1 ](/azure/kusto/query/databasefunction)
+* [current_principal()](/azure/kusto/query/current-principalfunction)
+* [extent_id()](/azure/kusto/query/extentidfunction)
+* [extent_tags()](/azure/kusto/query/extenttagsfunction)
+
+### <a name="operators-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的運算子
+
+* [跨叢集聯結](/azure/kusto/query/joincrosscluster)
+
+### <a name="plugins-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的外掛程式
+
+* [Python 外掛程式](/azure/kusto/query/pythonplugin)
+* [sql_request 外掛程式](/azure/kusto/query/sqlrequestplugin)
+
+
+### <a name="additional-operators-in-azure-monitor"></a>Azure 監視器中的其他運算子
+下列運算子支援特定 Azure 監視器功能，且無法在 Azure 監視器以外的地方使用。
+
+* [應用程式 ( # B1 ](app-expression.md)
+* [資源 ( # B1 ](resource-expression.md)
+* [工作區 ( # B1 ](workspace-expression.md)
+
+## <a name="next-steps"></a>後續步驟
+- 逐步解說 [撰寫查詢的教學](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)課程。
+- 存取完整的 [Kusto 查詢語言的參考文件](/azure/kusto/query/)。
+

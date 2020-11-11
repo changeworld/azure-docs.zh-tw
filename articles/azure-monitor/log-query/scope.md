@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031937"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491370"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍
 當您在[Azure 入口網站的 Log Analytics](get-started-portal.md)中執行[記錄查詢](log-query-overview.md)時，查詢所評估的資料集會取決於您選取的範圍和時間範圍。 本文說明範圍和時間範圍，以及如何根據您的需求進行設定。 它也會描述不同類型範圍的行為。
@@ -31,11 +31,11 @@ ms.locfileid: "90031937"
 
 | 查詢範圍 | 範圍中的記錄 | 如何選取 | 變更範圍 |
 |:---|:---|:---|:---|
-| Log Analytics 工作區 | Log Analytics 工作區中的所有記錄。 | 從 [ **Azure 監視器**] 功能表或 [ **Log Analytics 工作區**] 功能表選取 [**記錄**]。  | 可以將範圍變更為任何其他資源類型。 |
-| Application Insights 應用程式 | Application Insights 應用程式中的所有記錄。 | 從應用程式的 [ **Application Insights** ] 功能表中選取 [**記錄**檔]。 | 只能將範圍變更為另一個 Application Insights 應用程式。 |
+| Log Analytics 工作區 | Log Analytics 工作區中的所有記錄。 | 從 [ **Azure 監視器** ] 功能表或 [ **Log Analytics 工作區** ] 功能表選取 [ **記錄** ]。  | 可以將範圍變更為任何其他資源類型。 |
+| Application Insights 應用程式 | Application Insights 應用程式中的所有記錄。 | 從應用程式的 [ **Application Insights** ] 功能表中選取 [ **記錄** 檔]。 | 只能將範圍變更為另一個 Application Insights 應用程式。 |
 | 資源群組 | 資源群組中的所有資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。 | 從 [資源群組] 功能表選取 [ **記錄** ]。 | 無法變更範圍。|
 | 訂用帳戶 | 訂用帳戶中的所有資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。 | 從 [訂用帳戶] 功能表選取 [ **記錄** ]。   | 無法變更範圍。 |
-| 其他 Azure 資源 | 資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。  | 選取 [資源] 功能表中的 [ **記錄** ]。<br>OR<br>從**Azure 監視器**] 功能表選取 [**記錄**]，然後選取新的範圍。 | 只能將範圍變更為相同的資源類型。 |
+| 其他 Azure 資源 | 資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。  | 選取 [資源] 功能表中的 [ **記錄** ]。<br>或<br>從 **Azure 監視器** ] 功能表選取 [ **記錄** ]，然後選取新的範圍。 | 只能將範圍變更為相同的資源類型。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>範圍設定為資源時的限制
 
@@ -51,9 +51,7 @@ ms.locfileid: "90031937"
 - [工作](workspace-expression.md)
  
 
-## <a name="query-limits"></a>查詢限制
-您可能需要 Azure 資源的商務需求，才能將資料寫入至多個 Log Analytics 工作區。 工作區不需要位於與資源相同的區域中，且單一工作區可能會從各種區域中的資源收集資料。  
-
+## <a name="query-scope-limits"></a>查詢範圍限制
 將範圍設定為資源或資源集是 Log Analytics 的一項特別強大的功能，因為它可讓您在單一查詢中自動合併分散式資料。 但是，如果需要跨多個 Azure 區域的工作區抓取資料，它可能會大幅影響效能。
 
 Log Analytics 可在使用特定數量的區域時發出警告或錯誤，以協助防止跨多個區域中工作區的查詢過度負荷。 如果範圍包含5個或更多個區域中的工作區，您的查詢就會收到警告。 它仍會執行，但可能需要花費太多時間才能完成。
@@ -66,28 +64,24 @@ Log Analytics 可在使用特定數量的區域時發出警告或錯誤，以協
 
 
 ## <a name="time-range"></a>時間範圍
-時間範圍會指定根據建立記錄時，針對查詢評估的一組記錄。 這是由工作區或應用程式中每一筆記錄的標準資料行所定義，如下表所指定。
+時間範圍會指定根據建立記錄時，針對查詢評估的一組記錄。 這是由工作區或應用程式中每一筆記錄的 **TimeGenerated** 資料行所定義，如下表所指定。 若是傳統的 Application Insights 應用程式，時間範圍會使用 **時間戳記** 資料行。
 
-| Location | 資料行 |
-|:---|:---|
-| Log Analytics 工作區          | TimeGenerated |
-| Application Insights 應用程式 | timestamp     |
 
 從 Log Analytics 視窗頂端的時間選擇器選取時間範圍，以設定時間範圍。  您可以選取預先定義的期間，或選取 [ **自訂** ] 來指定特定的時間範圍。
 
 ![時間選擇器](media/scope/time-picker.png)
 
-如果您在使用如上表所示的標準時間資料行的查詢中設定篩選準則，時間選擇器會變更為 **在查詢中設定**，且時間選擇器會停用。 在此情況下，將篩選準則放在查詢頂端最有效率，讓任何後續的處理只需要使用篩選的記錄。
+如果您在使用如上表所示的標準時間資料行的查詢中設定篩選準則，時間選擇器會變更為 **在查詢中設定** ，且時間選擇器會停用。 在此情況下，將篩選準則放在查詢頂端最有效率，讓任何後續的處理只需要使用篩選的記錄。
 
 ![篩選的查詢](media/scope/query-filtered.png)
 
-如果您使用 [ [工作區](workspace-expression.md) ] 或 [ [應用](app-expression.md) 程式] 命令從另一個工作區或應用程式取出資料，時間選擇器可能會有不同的行為。 如果範圍是 Log Analytics 工作區，而且您使用 **應用**程式，或者範圍是 Application Insights 應用程式且您使用 **工作區**，則 Log Analytics 可能不了解篩選中使用的資料行應該決定時間篩選準則。
+如果您使用 [ [工作區](workspace-expression.md) ] 或 [ [應用程式](app-expression.md) ] 命令從另一個工作區或傳統應用程式取出資料，時間選擇器可能會有不同的行為。 如果範圍是 Log Analytics 工作區，而且您使用 **應用** 程式，或者範圍是傳統 Application Insights 應用程式且您使用 **工作區** ，則 Log Analytics 可能不了解篩選中使用的資料行應該決定時間篩選準則。
 
 在下列範例中，範圍設定為 Log Analytics 工作區。  此查詢會使用 **工作區** 來從另一個 Log Analytics 工作區中取出資料。 時間選擇器會變更為 **在查詢中設定** ，因為它會看到使用預期的 **TimeGenerated** 資料行的篩選。
 
 ![使用工作區查詢](media/scope/query-workspace.png)
 
-如果查詢使用 **應用** 程式從 Application Insights 應用程式取出資料，Log Analytics 無法辨識篩選中的 **時間戳記** 資料行，時間選擇器會維持不變。 在此情況下，會套用這兩個篩選準則。 在此範例中，只有在過去24小時內建立的記錄會包含在查詢中，即使它在 **where** 子句中指定了7天也一樣。
+如果查詢使用 **應用** 程式從傳統的 Application Insights 應用程式取出資料，Log Analytics 無法辨識篩選中的 **時間戳記** 資料行，時間選擇器會維持不變。 在此情況下，會套用這兩個篩選準則。 在此範例中，只有在過去24小時內建立的記錄會包含在查詢中，即使它在 **where** 子句中指定了7天也一樣。
 
 ![使用應用程式查詢](media/scope/query-app.png)
 

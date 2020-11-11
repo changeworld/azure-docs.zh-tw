@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 4d21bfa69022cbebdcbf80c3bee4aec76bf99c53
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380227"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491115"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
@@ -111,7 +111,7 @@ ms.locfileid: "94380227"
 
 - 可能的話，請在短時間內避免相同目錄的過度開啟/結束控制碼。
 - 針對 Linux Vm，請將 **actimeo = \<sec>** 指定為掛接選項，以增加目錄專案快取超時。 根據預設，這會是一秒，因此較大的值（例如三或五）可能會有所説明。
-- 若為 Linux Vm，請將核心升級為4.20 或更高版本。
+- 針對 RHEL/CentOS Vm，請將系統升級至 RHEL/CentOS 8.2。 針對其他 Linux Vm，請將核心升級為5.0 或更高版本。
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL 的低 IOPS
 

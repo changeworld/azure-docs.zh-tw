@@ -3,12 +3,12 @@ title: 概念-將 Azure VMware 解決方案部署整合到中樞和輪輻架構�
 description: 瞭解如何將 Azure VMware 解決方案部署整合到 Azure 上的中樞和輪輻架構。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674713"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490809"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案
 
@@ -36,30 +36,29 @@ ms.locfileid: "92674713"
 
 架構具有下列主要元件：
 
--   **內部部署網站：** 客戶的內部部署資料中心 (s) 透過 ExpressRoute 連線連線到 Azure。
+- **內部部署網站：** 客戶的內部部署資料中心 (s) 透過 ExpressRoute 連線連線到 Azure。
 
--   **Azure VMware 解決方案私用雲端：** 由一或多個 vSphere 叢集所組成的 Azure VMware Solution SDDC，每個叢集最多16個節點。
+- **Azure VMware 解決方案私用雲端：** 由一或多個 vSphere 叢集所組成的 Azure VMware Solution SDDC，每個叢集最多16個節點。
 
--   **ExpressRoute 閘道：** 啟用 Azure VMware 解決方案私人雲端、中樞虛擬網路上的共用服務，以及在輪輻虛擬網路上執行的工作負載之間的通訊。
+- **ExpressRoute 閘道：** 啟用 Azure VMware 解決方案私人雲端、中樞虛擬網路上的共用服務，以及在輪輻虛擬網路上執行的工作負載之間的通訊。
 
--   **ExpressRoute 全球接觸：** 啟用內部部署與 Azure VMware 解決方案私人雲端之間的連線。
-
-
-  > [!NOTE]
-  > **S2S VPN 考慮事項：** 針對 Azure VMware 解決方案生產部署，因為 VMware HCX 的網路需求，所以不支援 Azure S2S VPN。 不過，您可以將它用於 PoC 部署。
+- **ExpressRoute 全球接觸：** 啟用內部部署與 Azure VMware 解決方案私人雲端之間的連線。 Azure VMware 解決方案與 Azure 網狀架構之間的連線能力是透過 ExpressRoute Global 觸及。 您無法選取 ExpressRoute Fast Path 以外的任何選項。  不支援 ExpressRoute Direct。
 
 
--   **中樞虛擬網路：** 作為內部部署網路和 Azure VMware 解決方案私人雲端的連線中心點。
+- **S2S VPN 考慮事項：** 針對 Azure VMware 解決方案生產部署，因為 VMware HCX 的網路需求，所以不支援 Azure S2S VPN。 不過，您可以將它用於 PoC 部署。
 
--   **輪輻虛擬網路**
 
-    -   **IaaS 輪輻：** IaaS 輪輻裝載以 Azure IaaS 為基礎的工作負載，包括 VM 可用性設定組和虛擬機器擴展集，以及對應的網路元件。
+- **中樞虛擬網路：** 作為內部部署網路和 Azure VMware 解決方案私人雲端的連線中心點。
 
-    -   **PaaS 輪輻：** PaaS 輪輻會使用私用定址來裝載 Azure PaaS 服務，而不需要 [私人端點](../private-link/private-endpoint-overview.md) 和 [Private Link](../private-link/private-link-overview.md)。
+- **輪輻虛擬網路**
 
--   **Azure 防火牆：** 作為將輪輻和 Azure VMware 解決方案之間的流量分割的核心。
+    - **IaaS 輪輻：** IaaS 輪輻裝載以 Azure IaaS 為基礎的工作負載，包括 VM 可用性設定組和虛擬機器擴展集，以及對應的網路元件。
 
--   **應用程式閘道：** 公開及保護在 Azure IaaS/PaaS 或 Azure VMware 解決方案虛擬機器 (Vm) 上執行的 web 應用程式。 它會與其他服務（如 API 管理）整合。
+    - **PaaS 輪輻：** PaaS 輪輻會使用私用定址來裝載 Azure PaaS 服務，而不需要 [私人端點](../private-link/private-endpoint-overview.md) 和 [Private Link](../private-link/private-link-overview.md)。
+
+- **Azure 防火牆：** 作為將輪輻和 Azure VMware 解決方案之間的流量分割的核心。
+
+- **應用程式閘道：** 公開及保護在 Azure IaaS/PaaS 或 Azure VMware 解決方案虛擬機器 (Vm) 上執行的 web 應用程式。 它會與其他服務（如 API 管理）整合。
 
 ## <a name="network-and-security-considerations"></a>網路和安全性考慮
 
@@ -69,12 +68,12 @@ ExpressRoute 連線可讓流量在內部部署、Azure VMware 解決方案和 Az
 
 * **內部部署至 Azure VMware 解決方案的流量流程**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="內部部署至 Azure VMware 解決方案的流量流程" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware 解決方案至中樞 VNET 流量流程**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解決方案至中樞虛擬網路流量流程" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 您可以在 [Azure Vmware 解決方案產品檔](./concepts-networking.md)中找到更多有關 Azure vmware 解決方案網路功能和連線能力概念的詳細資料。
@@ -85,7 +84,7 @@ ExpressRoute 連線可讓流量在內部部署、Azure VMware 解決方案和 Az
 
 建立路由表，以將流量導向至 Azure 防火牆。  針對輪輻虛擬網路，建立路由，將預設路由設定為 Azure 防火牆的內部介面。 如此一來，當虛擬網路中的工作負載需要連接到 Azure VMware 解決方案位址空間時，防火牆可以進行評估，並將對應的流量規則套用至允許或拒絕它。  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="建立路由表以將流量導向至 Azure 防火牆" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
@@ -93,7 +92,7 @@ ExpressRoute 連線可讓流量在內部部署、Azure VMware 解決方案和 Az
 
 在對應的路由表上設定特定網路的路由。 例如，從輪輻工作負載路由傳送到 Azure VMware 解決方案管理和工作負載 IP 首碼，反之亦然。
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="在對應的路由表上設定特定網路的路由" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 使用輪輻和中樞內的網路安全性群組來建立更細微的流量原則，以進行第二層的流量分割。
 
@@ -106,7 +105,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 
 如需詳細資訊和需求，請參閱關於 [應用程式閘道](./protect-azure-vmware-solution-with-application-gateway.md) 的 Azure VMware 解決方案特定文章。
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="使用網路安全性群組的第二層流量分割" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>跳躍箱和 Azure 防禦
@@ -122,7 +121,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 > 請勿將公用 IP 位址提供給跳躍箱 VM，或將 3389/TCP 埠公開至公用網際網路。 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure 防禦中樞虛擬網路" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS 解析考慮
@@ -139,11 +138,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 
 您可以使用 Azure 私人 DNS，其中 Azure 私人 DNS 區域會連結至虛擬網路。  DNS 伺服器可作為混合式解析程式使用，以將條件式轉送至內部部署或 Azure VMware 解決方案，以利用客戶的 Azure 私人 DNS 基礎結構來執行 DNS。 
 
-Azure DNS 私人區域有幾個考慮：
-
-* 您應為 Azure DNS 啟用自動註冊，以自動管理在輪輻虛擬網路中部署之 Vm 的 DNS 記錄生命週期。
-* 虛擬網路可以連結到的私人 DNS 區域數目上限只有一個。
-* 虛擬網路可以連結的私人 DNS 區域數目上限為1000，但未啟用自動註冊。
+若要為輪輻虛擬網路內部署的 Vm 自動管理 DNS 記錄的生命週期，請啟用自動註冊。 啟用時，私人 DNS 區域的最大數目只是一個。 如果停用，則最大值為1000。
 
 您可以使用條件轉寄站設定內部部署和 Azure VMware 解決方案伺服器，以在 azure 中針對 Azure 私人 DNS 區域解析 Vm。
 

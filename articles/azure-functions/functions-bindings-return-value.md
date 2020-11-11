@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212168"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491353"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函數傳回值
 
@@ -21,7 +21,7 @@ ms.locfileid: "88212168"
 
 * 在 C# 類別庫中，將輸出繫結屬性套用至方法傳回值。
 * 在 JAVA 中，將輸出系結注釋套用至函數方法。
-* 在其他語言中，將 function.json** 中的 `name` 屬性設定為 `$return`。
+* 在其他語言中，將 function.json 中的 `name` 屬性設定為 `$return`。
 
 如果有多個輸出繫結，請只對其中一個使用傳回值。
 
@@ -55,7 +55,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-以下是 function.json** 檔案中的輸出繫結：
+以下是 function.json 檔案中的輸出繫結：
 
 ```json
 {
@@ -88,7 +88,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="f"></a>[F#](#tab/fsharp)
 
-以下是 function.json** 檔案中的輸出繫結：
+以下是 function.json 檔案中的輸出繫結：
 
 ```json
 {
@@ -110,7 +110,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下是 function.json** 檔案中的輸出繫結：
+以下是 function.json 檔案中的輸出繫結：
 
 ```json
 {
@@ -130,10 +130,31 @@ module.exports = function (context, input) {
     context.done(null, json);
 }
 ```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+以下是 function.json 檔案中的輸出繫結：
+
+```json
+{
+    "name": "Response",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{blobname}"
+}
+```
+
+以下是使用 HTTP 輸出系結傳回值的 PowerShell 程式碼：
+
+```powershell
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $blobname
+    })
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下是 function.json** 檔案中的輸出繫結：
+以下是 function.json 檔案中的輸出繫結：
 
 ```json
 {

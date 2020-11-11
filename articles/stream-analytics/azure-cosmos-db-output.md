@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906260"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491727"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Cosmos DB 輸出
 
@@ -34,12 +34,12 @@ Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無�
 | 帳戶識別碼 | Azure Cosmos DB 帳戶的名稱或端點 URI。 |
 | 帳戶金鑰 | Azure Cosmos DB 帳戶的共用存取金鑰。 |
 | 資料庫 | Azure Cosmos DB 資料庫名稱。 |
-| 容器名稱 | 要使用的容器名稱，必須存在於 Cosmos DB 中。 範例：  <br /><ul><li> _MyContainer_：名為 "MyContainer" 的容器必須存在。</li>|
+| 容器名稱 | 要使用的容器名稱，必須存在於 Cosmos DB 中。 範例：  <br /><ul><li> _MyContainer_ ：名為 "MyContainer" 的容器必須存在。</li>|
 | 文件識別碼 |選擇性。 輸出事件中的欄位名稱會用來指定主索引鍵，此為插入或更新作業的依據。
 
 ## <a name="partitioning"></a>資料分割
 
-分割區索引鍵是以查詢中的 PARTITION BY 子句為基礎。 輸出寫入器的數目會遵循完全平行化 [查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 串流分析會將 Cosmos DB 輸出分割區索引鍵轉換成字串。 例如，如果您的資料分割索引鍵的值為1，且類型為 Bigint，則會轉換成字串類型的 "1"。
+分割區索引鍵是以查詢中的 PARTITION BY 子句為基礎。 輸出寫入器的數目會遵循完全平行化 [查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 串流分析會將 Cosmos DB 輸出分割區索引鍵轉換成字串。 例如，如果您的資料分割索引鍵的值為1，且類型為 Bigint，則會轉換成字串類型的 "1"。 無論是否將資料分割屬性寫入 Cosmos DB，一律會發生這項轉換。
 
 ## <a name="output-batch-size"></a>輸出批次大小
 

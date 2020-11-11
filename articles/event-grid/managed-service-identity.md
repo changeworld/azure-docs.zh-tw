@@ -3,12 +3,12 @@ title: 事件傳遞、受控服務識別和私用連結
 description: 本文說明如何為 Azure 事件方格主題啟用受管理的服務識別。 使用它來將事件轉送到支援的目的地。
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d16310ac61121af0cc9d76664bfeeeb14e1bc243
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460915"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491710"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用受控識別傳遞事件
 本文說明如何啟用 Azure 事件方格主題或網域的 [受控服務識別](../active-directory/managed-identities-azure-resources/overview.md) 。 使用此功能將事件轉送到支援的目的地，例如，服務匯流排佇列和主題、事件中樞，以及儲存體帳戶。
@@ -74,7 +74,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 | Destination | Azure 角色 | 
 | ----------- | --------- | 
 | 服務匯流排佇列與主題 | [Azure 服務匯流排資料傳送者](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
-| Azure 事件中心 | [Azure 事件中樞資料傳送者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
+| Azure 事件中樞 | [Azure 事件中樞資料傳送者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
 | Azure Blob 儲存體 | [儲存體 Blob 資料參與者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
 | Azure 佇列儲存體 |[儲存體佇列資料訊息傳送者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
@@ -84,13 +84,13 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 您可以使用 Azure 入口網站將主題或網域身分識別指派給適當的角色，讓主題或網域可以將事件轉送到目的地。 
 
-下列範例會為名稱為 **msitesttopic** 的事件方格主題，針對包含佇列或主題資源的服務匯流排命名空間，將受控識別新增至 **Azure 服務匯流排資料傳送者**角色。 當您加入至命名空間層級的角色時，主題可以將事件轉送到命名空間內的所有實體。 
+下列範例會為名稱為 **msitesttopic** 的事件方格主題，針對包含佇列或主題資源的服務匯流排命名空間，將受控識別新增至 **Azure 服務匯流排資料傳送者** 角色。 當您加入至命名空間層級的角色時，主題可以將事件轉送到命名空間內的所有實體。 
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的**服務匯流排命名空間**。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的 **服務匯流排命名空間** 。 
 1. 選取左窗格中的 [ **存取控制** ]。 
 1. 在 [新增角色指派] 區段中，選取 [新增]。 
 1. 在 [新增角色指派] 頁面中，執行下列步驟：
-    1. 選取角色。 在此案例中，該角色為 **Azure 服務匯流排資料傳送者**。 
+    1. 選取角色。 在此案例中，該角色為 **Azure 服務匯流排資料傳送者** 。 
     1. 為您的主題或網域選取 [身分識別]。 
     1. 選取 [ **儲存** ] 以儲存設定。
 
@@ -107,7 +107,7 @@ topic_pid=$(az ad sp list --display-name "$<TOPIC NAME>" --query [].objectId -o 
 ```
 
 #### <a name="create-a-role-assignment-for-event-hubs-at-various-scopes"></a>在各種範圍內建立事件中樞的角色指派 
-下列 CLI 範例示範如何在命名空間層級或事件中樞層級，將主題的身分識別新增至 **Azure 事件中樞資料傳送者**角色。 如果您在命名空間層級建立角色指派，主題可以將事件轉送至該命名空間中的所有事件中樞。 如果您在事件中樞層級建立角色指派，此主題只能將事件轉送至該特定事件中樞。 
+下列 CLI 範例示範如何在命名空間層級或事件中樞層級，將主題的身分識別新增至 **Azure 事件中樞資料傳送者** 角色。 如果您在命名空間層級建立角色指派，主題可以將事件轉送至該命名空間中的所有事件中樞。 如果您在事件中樞層級建立角色指派，此主題只能將事件轉送至該特定事件中樞。 
 
 
 ```azurecli-interactive
@@ -123,7 +123,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$event
 ```
 
 #### <a name="create-a-role-assignment-for-a-service-bus-topic-at-various-scopes"></a>在不同範圍建立服務匯流排主題的角色指派 
-下列 CLI 範例示範如何在命名空間層級或服務匯流排主題層級，將主題的身分識別新增至 **Azure 服務匯流排資料傳送者**角色。 如果您在命名空間層級建立角色指派，事件方格主題可以將事件轉送至該命名空間中)  (服務匯流排佇列或主題的所有實體。 如果您在服務匯流排佇列或主題層級建立角色指派，事件方格主題只能將事件轉送至該特定的服務匯流排佇列或主題。 
+下列 CLI 範例示範如何在命名空間層級或服務匯流排主題層級，將主題的身分識別新增至 **Azure 服務匯流排資料傳送者** 角色。 如果您在命名空間層級建立角色指派，事件方格主題可以將事件轉送至該命名空間中)  (服務匯流排佇列或主題的所有實體。 如果您在服務匯流排佇列或主題層級建立角色指派，事件方格主題只能將事件轉送至該特定的服務匯流排佇列或主題。 
 
 ```azurecli-interactive
 role="Azure Service Bus Data Sender" 
@@ -150,7 +150,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ![啟用系統指派的身分識別以進行無效信件處理](./media/managed-service-identity/enable-deadletter-identity.png)
 
 ### <a name="use-the-azure-cli---service-bus-queue"></a>使用 Azure CLI-服務匯流排佇列 
-在本節中，您會瞭解如何使用 Azure CLI 來啟用系統指派的身分識別，以便將事件傳遞至服務匯流排佇列。 身分識別必須是 **Azure 服務匯流排資料傳送者**角色的成員。 在用於進行無效信件處理的儲存體帳戶上，該身分識別也必須是**儲存體 Blob 資料參與者**角色的成員。 
+在本節中，您會瞭解如何使用 Azure CLI 來啟用系統指派的身分識別，以便將事件傳遞至服務匯流排佇列。 身分識別必須是 **Azure 服務匯流排資料傳送者** 角色的成員。 在用於進行無效信件處理的儲存體帳戶上，該身分識別也必須是 **儲存體 Blob 資料參與者** 角色的成員。 
 
 #### <a name="define-variables"></a>定義變數
 首先，針對要在 CLI 命令中使用的下列變數，指定值。 
@@ -166,7 +166,7 @@ sb_esname = "<Specify a name for the event subscription>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>使用受控識別進行傳遞來建立事件訂用帳戶 
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列**。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列** 。 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -178,7 +178,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>使用受控識別傳遞和無效信件來建立事件訂閱
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列**。 它也會指定系統管理的身分識別要用於無效信件。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列** 。 它也會指定系統管理的身分識別要用於無效信件。 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -195,7 +195,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---event-hubs"></a>使用 Azure CLI 事件中樞 
-在本節中，您會瞭解如何使用 Azure CLI 來啟用系統指派的身分識別，以便將事件傳遞至事件中樞。 身分識別必須是 **Azure 事件中樞資料傳送者**角色的成員。 在用於進行無效信件處理的儲存體帳戶上，該身分識別也必須是**儲存體 Blob 資料參與者**角色的成員。 
+在本節中，您會瞭解如何使用 Azure CLI 來啟用系統指派的身分識別，以便將事件傳遞至事件中樞。 身分識別必須是 **Azure 事件中樞資料傳送者** 角色的成員。 在用於進行無效信件處理的儲存體帳戶上，該身分識別也必須是 **儲存體 Blob 資料參與者** 角色的成員。 
 
 #### <a name="define-variables"></a>定義變數
 ```azurecli-interactive
@@ -208,7 +208,7 @@ eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>使用受控識別進行傳遞來建立事件訂用帳戶 
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞**。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞** 。 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -220,7 +220,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>使用受控識別進行傳遞 + deadletter 來建立事件訂用帳戶 
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞**。 它也會指定系統管理的身分識別要用於無效信件。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞** 。 它也會指定系統管理的身分識別要用於無效信件。 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>使用 Azure CLI Azure 儲存體佇列 
-在本節中，您會瞭解如何使用 Azure CLI 來啟用系統指派的身分識別，以便將事件傳遞至 Azure 儲存體佇列。 此身分識別在儲存體帳戶上必須是**儲存體 Blob 資料參與者**角色的成員。
+在本節中，您會瞭解如何使用 Azure CLI 來啟用系統指派的身分識別，以便將事件傳遞至 Azure 儲存體佇列。 此身分識別在儲存體帳戶上必須是 **儲存體 Blob 資料參與者** 角色的成員。
 
 #### <a name="define-variables"></a>定義變數  
 

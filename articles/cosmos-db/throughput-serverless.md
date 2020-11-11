@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079333"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491183"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在布建的輸送量和無伺服器之間進行選擇
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,9 +19,6 @@ ms.locfileid: "93079333"
 Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throughput.md) 和 [無伺服器](serverless.md)。 您可以在這兩種模式中執行完全相同的資料庫作業，但您對這些作業計費的方式完全不同。 下列影片說明這些模式之間的核心差異，以及它們如何符合不同類型的工作負載：
 
 > [!VIDEO https://www.youtube.com/embed/CgYQo6uHyt0]
-
-> [!NOTE]
-> Azure Cosmos DB Core (SQL) API 目前僅支援無伺服器。
 
 ## <a name="detailed-comparison"></a>詳細比較
 
@@ -66,7 +63,7 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 > [!NOTE]
 > 上述範例所示的成本僅供示範之用。 如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解如何[在 Azure Cosmos DB 上](set-throughput.md)布建輸送量
 - 深入瞭解 [Azure Cosmos DB 無伺服器](serverless.md)

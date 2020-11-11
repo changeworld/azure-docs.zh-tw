@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033467"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491047"
 ---
 # <a name="deploy-azure-monitor"></a>部署 Azure 監視器
 啟用 Azure 監視器來監視您所有的 Azure 資源，是設定 Azure 監視器元件和設定 Azure 資源以產生監視資料以供 Azure 監視器收集的組合。 本文說明使用一般設定來監視 Azure 訂用帳戶中的所有資源時，完整執行 Azure 監視器所需的不同步驟。 系統會提供每個步驟的基本描述，並提供詳細設定需求的其他檔連結。
@@ -118,7 +118,7 @@ Azure 中的資源會自動產生 [資源記錄](platform/platform-logs-overview
 Azure 監視器使用 [Application Insights](app/app-insights-overview.md)來監視您的自訂應用程式，您必須針對想要監視的每個應用程式進行設定。 設定程式會根據受監視的應用程式類型和您想要執行的監視類型而有所不同。 根據功能而定，Application Insights 所收集的資料會儲存在 Azure 監視器計量、Azure 監視器記錄和 Azure blob 儲存體中。 效能資料會儲存在 Azure 監視器計量和 Azure 監視器記錄中，而不需要額外的設定。
 
 ### <a name="create-an-application-resource"></a>建立應用程式資源
-您必須針對要監視的每個應用程式，在 Application Insights 中建立資源。 Application Insights 所收集的記錄資料會儲存在以工作區為基礎之應用程式的 Azure 監視器記錄中。 傳統應用程式的記錄資料會與您的 Log Analytics 工作區分開儲存，如 [資料結構](platform/data-platform-logs.md#structure-of-data)中所述。
+您必須針對要監視的每個應用程式，在 Application Insights 中建立資源。 Application Insights 所收集的記錄資料會儲存在以工作區為基礎之應用程式的 Azure 監視器記錄中。 傳統應用程式的記錄資料會與您的 Log Analytics 工作區分開儲存，如 [資料結構](platform/data-platform-logs.md#data-structure)中所述。
 
  當您建立應用程式時，您必須選取要使用傳統或以工作區為基礎。 請參閱 [建立 Application Insights 資源](app/create-new-resource.md) 以建立傳統應用程式。 請參閱以 [工作區為基礎的 Application Insights 資源 (預覽) ](app/create-workspace-resource.md) 來建立工作區應用程式。
 
@@ -133,7 +133,7 @@ Azure 監視器使用 [Application Insights](app/app-insights-overview.md)來監
 - [裝載在 IIS 內部部署 VM 中的 ASP.NET 應用程式](app/monitor-performance-live-website-now.md)
 
 
-以程式**代碼為基礎的監視**可更容易自訂並收集其他遙測，但需要在 Application Insights SDK NuGet 套件上將相依性新增至您的程式碼。 請參閱下列資源，以取得根據您的應用程式啟用監視的詳細資料。
+以程式 **代碼為基礎的監視** 可更容易自訂並收集其他遙測，但需要在 Application Insights SDK NuGet 套件上將相依性新增至您的程式碼。 請參閱下列資源，以取得根據您的應用程式啟用監視的詳細資料。
 
 - [ASP.NET 應用程式](app/asp-net.md)
 - [ASP.NET Core 應用程式](app/asp-net-core.md)
