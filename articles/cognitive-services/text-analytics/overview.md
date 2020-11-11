@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: 文字採礦, 情感分析, 文字分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289696"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365290"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
 文字分析 API 是一項雲端式服務，可提供自然語言處理 (NLP) 功能來進行文字採礦和文字分析，包括：情感分析、意見挖掘、關鍵片語擷取、語言偵測，以及具名實體辨識。
 
-此 API 屬於 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。 您可以將這些功能與 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) \(英文\) 或[用戶端程式庫](quickstarts/text-analytics-sdk.md)搭配使用。
+此 API 屬於 [Azure 認知服務](../index.yml)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。 您可以將這些功能與 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) \(英文\) 或[用戶端程式庫](quickstarts/text-analytics-sdk.md)搭配使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -73,18 +73,18 @@ ms.locfileid: "93289696"
 
 * 所需的最少程式設計：
     * [使用文字分析和 Power Automate 在 Excel 中擷取資訊](tutorials/extract-excel-information.md)
-    * [使用文字分析 API 和 MS Flow 來識別 Yammer 群組中註解的情緒](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [使用文字分析 API 和 MS Flow 來識別 Yammer 群組中註解的情緒](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [將 Power BI 與文字分析 API 整合以分析客戶的意見反應](tutorials/tutorial-power-bi-key-phrases.md)
 * 建議的程式設計體驗：
-    * [使用 Azure Databricks 對串流資料進行情感分析](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [建置 Flask 應用程式以翻譯文字、分析情緒及合成語音](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [使用 Azure Databricks 對串流資料進行情感分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [建置 Flask 應用程式以翻譯文字、分析情緒及合成語音](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>支援的語言
 
-本節已移至個別的文章，以利說明。 如需此內容，請參閱[文字分析 API 中支援的語言](text-analytics-supported-languages.md)。
+本節已移至個別的文章，以利說明。 如需此內容，請參閱[文字分析 API 中支援的語言](./language-support.md)。
 
 <a name="data-limits"></a>
 
@@ -94,7 +94,7 @@ ms.locfileid: "93289696"
 
 ## <a name="unicode-encoding"></a>Unicode 編碼
 
-針對文字表示法和字元計數計算，文字分析 API 會使用 Unicode 編碼。 要求可使用 UTF-8 和 UTF-16 來提交，兩者的字元計數並沒有明顯差異。 Unicode 字碼指標會作為字元長度的啟發學習法，且會視為等同於文字分析資料大小上限的用途。 如果您使用 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 取得字元計數，您所使用就是我們用來測量資料大小的相同方法。
+針對文字表示法和字元計數計算，文字分析 API 會使用 Unicode 編碼。 要求可使用 UTF-8 和 UTF-16 來提交，兩者的字元計數並沒有明顯差異。 Unicode 字碼指標會作為字元長度的啟發學習法，且會視為等同於文字分析資料大小上限的用途。 如果您使用 [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 取得字元計數，您所使用就是我們用來測量資料大小的相同方法。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -104,6 +104,6 @@ ms.locfileid: "93289696"
 
 + 如需新版本和功能的詳細資訊，請參閱[文字分析 API 的新功能](whats-new.md)。
 
-+ 稍微深入了解這個使用 Azure Databricks 的[情感分析教學課程](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services)。
++ 稍微深入了解這個使用 Azure Databricks 的[情感分析教學課程](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services)。
 
 + 請至[外部和社群內容頁面](text-analytics-resource-external-community.md)參閱我們的部落格文章清單，以及觀看更多相關影片以了解如何搭配其他工具和技術來使用文字分析 API。

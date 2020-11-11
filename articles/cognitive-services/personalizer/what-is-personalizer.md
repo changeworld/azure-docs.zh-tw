@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: 個人化工具, Azure 個人化工具, 機器學習
-ms.openlocfilehash: ae17b799c2b222525db53d5bb8e0afdbbcf19975
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777236"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363896"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
@@ -29,16 +29,16 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>個人化工具如何選取最佳內容項目？
 
-個人化工具會使用 **增強式學習**，根據所有使用者的集體行為和獎勵分數來選取最佳項目 (_動作_)。 動作是內容項目，例如新聞文章、特定電影或產品。
+個人化工具會使用 **增強式學習** ，根據所有使用者的集體行為和獎勵分數來選取最佳項目 ( _動作_ )。 動作是內容項目，例如新聞文章、特定電影或產品。
 
-**排名**呼叫會取得動作項目和動作特性及關係特性，以選取頂端動作項目：
+**排名** 呼叫會取得動作項目和動作特性及關係特性，以選取頂端動作項目：
 
 * **具有特性的動作** - 具有每個項目特有特性的內容項目
 * **關係特性** - 使用者在使用您的應用程式時，其特性、其關係或其環境
 
-排名呼叫會在 [獎勵動作識別碼] 欄位中，傳回內容項目 (__動作__) 的識別碼以對使用者顯示。
+排名呼叫會在 [獎勵動作識別碼] 欄位中，傳回內容項目 ( __動作__ ) 的識別碼以對使用者顯示。
 
-向使用者顯示的__動作__會與機器學習模型一起選擇，以嘗試將一段時間內的獎勵總量最大化。
+向使用者顯示的 __動作__ 會與機器學習模型一起選擇，以嘗試將一段時間內的獎勵總量最大化。
 
 ### <a name="sample-scenarios"></a>範例案例
 
@@ -57,9 +57,9 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="when-to-use-personalizer"></a>個人化工具的使用時機
 
-每次應用程式呈現內容時，都會呼叫個人化工具的**排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。 這也稱為**事件**，並以「事件識別碼」加以註記。
+每次應用程式呈現內容時，都會呼叫個人化工具的 **排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。 這也稱為 **事件** ，並以「事件識別碼」加以註記。
 
-個人化工具的**獎勵** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可即時呼叫，或延遲以更加符合您的基礎結構。 您可以根據您的業務需求判斷獎勵分數。 獎勵分數介於 0 到 1 之間。 這可以是單一值，例如 1 表示良好，0 表示不良，或由您建立的演算法所產生的數字，其會考慮您的業務目標和計量。
+個人化工具的 **獎勵** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可即時呼叫，或延遲以更加符合您的基礎結構。 您可以根據您的業務需求判斷獎勵分數。 獎勵分數介於 0 到 1 之間。 這可以是單一值，例如 1 表示良好，0 表示不良，或由您建立的演算法所產生的數字，其會考慮您的業務目標和計量。
 
 ## <a name="content-requirements"></a>內容需求
 
@@ -76,7 +76,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="how-to-design-for-and-implement-personalizer"></a>如何設計和實作個人化工具
 
-1. 針對內容、**_動作_** 及**_關係_** 進行[設計](concepts-features.md)與規劃。 決定**獎勵**分數的獎勵演算法。
+1. 針對內容、 **_動作_** 及 **_關係_** 進行 [設計](concepts-features.md)與規劃。 決定 **獎勵** 分數的獎勵演算法。
 1. 您所建立的每個[個人化工具資源](how-to-settings.md)都會被視為 1 個學習迴圈。 迴圈將會接收該內容或使用者體驗的排名和獎勵呼叫。
 
     |資源類型| 目的|
@@ -86,9 +86,9 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
     |免費，`F0`| 在非實際執行環境中試用線上學習行為|
 
 1. 將個人化工具新增至您的應用程式、網站或系統：
-    1. 在您的應用程式、網站或系統中，將**排名**呼叫新增至個人化工具，以在向使用者顯示內容之前，判斷單一最佳「內容」項目。
+    1. 在您的應用程式、網站或系統中，將 **排名** 呼叫新增至個人化工具，以在向使用者顯示內容之前，判斷單一最佳「內容」項目。
     1. 向使用者顯示單一最佳「內容」項目，也就是傳回的「獎勵動作識別碼」。
-    1. 將_商務邏輯_套用至所收集的使用者行為相關資訊，以判斷**獎勵**分數，例如：
+    1. 將 _商務邏輯_ 套用至所收集的使用者行為相關資訊，以判斷 **獎勵** 分數，例如：
 
     |行為|計算的獎勵分數|
     |--|--|
@@ -96,7 +96,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
     |使用者選取了其他內容|**0**|
     |在選取單一最佳「內容」項目 (獎勵動作識別碼) 之前，使用者暫停了不明確地隨意捲動|**0.5**|
 
-    1. 新增**獎勵**呼叫，以傳送 0 到 1 之間的獎勵分數
+    1. 新增 **獎勵** 呼叫，以傳送 0 到 1 之間的獎勵分數
         * 緊接在顯示您的內容之後
         * 或稍後在離線系統中進行
     1. 在使用一段時間之後，利用離線評估來[評估您的迴圈](concepts-offline-evaluation.md)。 離線評估可讓您測試及評估個人化工具服務的效用，而這不會變更您的程式碼或影響使用者體驗。
@@ -105,7 +105,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 我們會提供 C#、JavaScript 和 Python 的快速入門。 每個快速入門的設計訴求都是要教您基本的設計模式，並讓您能在 10 分鐘內執行程式碼。 
 
-* [快速入門：如何使用個人化工具用戶端程式庫](sdk-learning-loop.md)
+* [快速入門：如何使用個人化工具用戶端程式庫](./quickstart-personalizer-sdk.md)
 
 在您有機會開始使用個人化工具服務之後，請嘗試我們的教學課程，並了解如何在 Web 應用程式、聊天機器人或 Azure Notebook 中使用個人化工具。
 
@@ -115,10 +115,10 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="reference"></a>參考資料 
 
-* [個人化工具 C#/.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [個人化工具 C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
 * [個人化工具 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
-* [個人化工具 JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [個人化工具 Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [個人化工具 JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [個人化工具 Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>後續步驟

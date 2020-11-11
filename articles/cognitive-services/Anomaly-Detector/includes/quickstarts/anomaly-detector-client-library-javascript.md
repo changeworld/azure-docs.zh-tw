@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: 376ad893bf6fee36543e691fe50f369d8a43142c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b970b099d87148d169b2be3b7e72d32c159f5046
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018433"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371677"
 ---
 開始使用適用於 JavaScript 的 Anomaly Detector 用戶端程式庫。 請依照下列步驟，開始使用服務提供的演算法安裝套件。 Anomaly Detector 服務可藉由自動對時間序列資料使用最適合的模型，而讓您找出其中的異常狀況，不論是什麼產業、情境或資料量都沒問題。
 
@@ -72,11 +72,11 @@ npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 
 ## <a name="object-model"></a>物件模型
 
-Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 物件，其使用您的金鑰向 Azure 進行驗證。 用戶端可以使用 [entireDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) 在整個資料集上執行異常偵測，或使用 [LastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 在最新資料點上執行異常偵測。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) 方法會偵測標記趨勢變更的點。 
+Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 物件，其使用您的金鑰向 Azure 進行驗證。 用戶端可以使用 [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) 在整個資料集上執行異常偵測，或使用 [LastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 在最新資料點上執行異常偵測。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) 方法會偵測標記趨勢變更的點。 
 
-時間序列資料會透過 [Request](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) 物件以 [Point](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 序列的形式來傳送。 `Request` 物件包含用來說明資料的屬性 (例如，[細微性](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity))，以及供異常偵測使用的參數。 
+時間序列資料會透過 [Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) 物件以 [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 序列的形式來傳送。 `Request` 物件包含用來說明資料的屬性 (例如，[細微性](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity))，以及供異常偵測使用的參數。 
 
-Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)、[EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 或 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) 物件 (端視所使用的方法而定)。 
+Anomaly Detector 回應是 [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)、[EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 或 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) 物件 (端視所使用的方法而定)。 
 
 ## <a name="code-examples"></a>程式碼範例 
 
@@ -90,7 +90,7 @@ Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/javas
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-使用您的端點和認證將 [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 物件具現化。
+使用您的端點和認證將 [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 物件具現化。
 
 [!code-javascript[Authentication](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=authentication)]
 
@@ -103,19 +103,19 @@ Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/javas
 
 此時間序列資料會格式化為 .csv 檔案，且會傳送至 Anomaly Detector API。
 
-使用 csv-parse 程式庫的 `readFileSync()` 方法來讀取資料檔案，並使用 `parse()` 來剖析檔案。 針對每一行，推送包含時間戳記和數值的 [Point](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 物件。
+使用 csv-parse 程式庫的 `readFileSync()` 方法來讀取資料檔案，並使用 `parse()` 來剖析檔案。 針對每一行，推送包含時間戳記和數值的 [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 物件。
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>偵測整個資料集內的異常 
 
-使用用戶端的 [entireDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) 方法，單批次地呼叫 API 來偵測整個時間序列的異常情形。 儲存傳回的 [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 物件。 逐一查看回應的 `isAnomaly` 清單，然後列印任何 `true` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
+使用用戶端的 [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) 方法，單批次地呼叫 API 來偵測整個時間序列的異常情形。 儲存傳回的 [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 物件。 逐一查看回應的 `isAnomaly` 清單，然後列印任何 `true` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>偵測最新資料點的異常狀態
 
-呼叫 Anomaly Detector API，使用用戶端的 [lastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 方法來判斷最新資料點是否異常，並儲存傳回的 [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) 物件。 回應的 `isAnomaly` 值是布林值，其指定該資料點的異常狀態。  
+呼叫 Anomaly Detector API，使用用戶端的 [lastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 方法來判斷最新資料點是否異常，並儲存傳回的 [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) 物件。 回應的 `isAnomaly` 值是布林值，其指定該資料點的異常狀態。  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 

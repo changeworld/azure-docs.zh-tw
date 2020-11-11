@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 07/17/2020
-ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87133073"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363879"
 ---
 # <a name="whats-new-in-personalizer"></a>個人化工具的新功能
 
@@ -31,7 +31,7 @@ ms.locfileid: "87133073"
 
 ### <a name="may-2020---build-conference"></a>2020 年 5 月- //組建會議
 
-下列項目目前處於**公開預覽狀態**：
+下列項目目前處於 **公開預覽狀態** ：
 
  * [新手模式](concept-apprentice-mode.md)作為學習行為。
 
@@ -62,5 +62,5 @@ ms.locfileid: "87133073"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：以 C# 建立意見反應迴圈](csharp-quickstart-commandline-feedback-loop.md)
+* [快速入門：以 C# 建立意見反應迴圈](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [使用互動式示範](https://personalizationdemo.azurewebsites.net/)

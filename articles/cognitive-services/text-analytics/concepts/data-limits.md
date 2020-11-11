@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258278"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363828"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文字分析 API 的資料和速率限制
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ ms.locfileid: "88258278"
 
 | 限制 | 值 |
 |------------------------|---------------|
-| 單一文件的大小上限 | 5,120 個字元，由 [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 進行測量。 也適用於健康情況容器的文字分析。 |
+| 單一文件的大小上限 | 5,120 個字元，由 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 進行測量。 也適用於健康情況容器的文字分析。 |
 | 整體要求的大小上限 | 1 MB。 也適用於健康情況容器的文字分析。 |
 
 您可以在單一要求中傳送的文件數目上限取決於所使用的 API 版本和功能。

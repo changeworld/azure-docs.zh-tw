@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c0715b3570bf60205c83390ab93b272e49e8733
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88246182"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371865"
 ---
 開始使用適用於 Go 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝程式庫，並試用我們的基本工作範例。
 
@@ -33,7 +33,7 @@ ms.locfileid: "88246182"
 ## <a name="create-environment-variables"></a>建立環境變數
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。
+> 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../../../cognitive-services-custom-subdomains.md)。
 
 在您建立的資源中，使用金鑰和端點來建立兩個環境變數以進行驗證：
 <!-- replace the below variable names with the names expected in the code sample.-->
@@ -76,9 +76,9 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 在主控台視窗 (cmd、PowerShell、Bash) 中，為您的 Go 專案建立新的工作區，並瀏覽至該工作區。 您的工作區將包含三個資料夾：
 
-* **src**：此目錄包含原始程式碼和套件。 任何使用 `go get` 命令安裝的套件都將位於此處。
-* **pkg**：此目錄包含已編譯的 Go 套件物件。 這些檔案都具有 `.a` 副檔名。
-* **bin**：此目錄包含您執行 `go install` 時所建立的二進位可執行檔。
+* **src** ：此目錄包含原始程式碼和套件。 任何使用 `go get` 命令安裝的套件都將位於此處。
+* **pkg** ：此目錄包含已編譯的 Go 套件物件。 這些檔案都具有 `.a` 副檔名。
+* **bin** ：此目錄包含您執行 `go install` 時所建立的二進位可執行檔。
 
 > [!TIP]
 > 深入了解 [Go 工作區](https://golang.org/doc/code.html#Workspaces)的結構。 本指南包含用來設定 `$GOPATH` 和 `$GOROOT` 的資訊。
@@ -155,7 +155,7 @@ func main() {
 ### <a name="authenticate-the-client"></a>驗證用戶端
 
 > [!NOTE]
-> 本快速入門假設您已為 Bing 自動建議金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) (名為 `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`)，並為端點建立名為 `BING_AUTOSUGGEST_ENDPOINT` 的環境變數。
+> 本快速入門假設您已為 Bing 自動建議金鑰[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) (名為 `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`)，並為端點建立名為 `BING_AUTOSUGGEST_ENDPOINT` 的環境變數。
 
 在 `main()` 函式中，使用端點和金鑰來具現化用戶端。
 
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>傳送 API 要求
 
-在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)回應，並列印第一個建議。
+在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)回應，並列印第一個建議。
 
 ```Go
 // This should return the query suggestion "xbox."
@@ -220,4 +220,4 @@ go run sample-app.go
 ## <a name="see-also"></a>另請參閱
 
 - [什麼是 Bing 自動建議？](../../get-suggested-search-terms.md)
-- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Bing 自動建議 API v7 參考](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

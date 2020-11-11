@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961229"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365494"
 ---
 # <a name="what-is-custom-translator"></a>什麼是自訂翻譯工具？
 
 [自訂翻譯工具](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服務的功能，可讓翻譯工具企業、應用程式開發人員和語言服務提供者建置自訂的類神經機器翻譯 (NMT) 系統。 自訂的翻譯系統會順暢地整合到現有應用程式、工作流程和網站。 [自訂翻譯工具](https://portal.customtranslator.azure.ai/)所提供的功能，類似於 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 針對統計機器翻譯 (SMT) 所提供的功能，但前者專供類神經機器翻譯 (NMT) 系統來使用。
 
-使用[自訂翻譯工具](https://portal.customtranslator.azure.ai)所建置的翻譯系統，可透過相同的雲端式、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效能、具有高度擴充性的 Microsoft Translator [文字 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)來使用，其每天支援數十億次翻譯。
+使用[自訂翻譯工具](https://portal.customtranslator.azure.ai)所建置的翻譯系統，可透過相同的雲端式、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效能、具有高度擴充性的 Microsoft Translator [文字 API V3](../reference/v3-0-translate.md?tabs=curl)來使用，其每天支援數十億次翻譯。
 
-自訂翻譯工具支援三十幾種以上的語言，並會直接對應至 NMT 可用的語言。 如需完整清單，請參閱 [Microsoft Translator 語言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
+自訂翻譯工具支援三十幾種以上的語言，並會直接對應至 NMT 可用的語言。 如需完整清單，請參閱 [Microsoft Translator 語言](../language-support.md#customization)。
 
 ## <a name="features"></a>特性
 
@@ -34,7 +34,7 @@ ms.locfileid: "85961229"
 |[建置知道您商務術語的系統](what-are-parallel-documents.md)     |  使用平行處理的文件來自訂和建置翻譯系統，其了解您自己的企業和產業中所使用的術語。       |
 |[使用字典來建置模型](what-is-dictionary.md)     |   如果您沒有訓練資料集，則可以只使用字典資料來訓練模型。       |
 |[與其他人共同作業](how-to-manage-settings.md#share-your-workspace)     |   藉由與不同的人共享工作，來與您的小組共同作業。     |
-|[存取自訂翻譯模型](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  現有應用程式/程式隨時可以透過 Microsoft Translator 文字 API V3 存取您的自訂轉譯模型。       |
+|[存取自訂翻譯模型](../reference/v3-0-translate.md?tabs=curl)     |  現有應用程式/程式隨時可以透過 Microsoft Translator 文字 API V3 存取您的自訂轉譯模型。       |
 
 ## <a name="get-better-translations"></a>獲得更好的翻譯
 

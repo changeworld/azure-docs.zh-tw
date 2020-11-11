@@ -10,17 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101930"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364576"
 ---
 # <a name="what-is-bing-autosuggest"></a>什麼是 Bing 自動建議？
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93101930"
 
 Bing 自動建議 API 是一種 RESTful Web 服務，可輕易地從任何可發出 HTTP 要求及剖析 JSON 的程式設計語言呼叫。
 
-1. 建立具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+1. 建立具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](../cognitive-services-apis-create-account.md)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 2. 在每次使用者於應用程式的搜尋方塊中鍵入新字元時，傳送要求給這個 API。
 3. 剖析傳回的 JSON 訊息以處理 API 回應。
 
@@ -52,11 +52,11 @@ Bing 自動建議 API 是一種 RESTful Web 服務，可輕易地從任何可發
 
 若要快速開始使用您的第一個要求，請參閱[建立您的第一個查詢](quickstarts/csharp.md)。
 
-請熟悉 [Bing 自動建議 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) 參考。 此參考包含端點、標頭、您用來要求建議查詢字詞的查詢參數，以及回應物件定義的清單。
+請熟悉 [Bing 自動建議 API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) 參考。 此參考包含端點、標頭、您用來要求建議查詢字詞的查詢參數，以及回應物件定義的清單。
 
-請瀏覽 [Bing 搜尋 API 中樞頁面](../bing-web-search/search-the-web.md)以探索其他可用的 API。
+請瀏覽 [Bing 搜尋 API 中樞頁面](../bing-web-search/overview.md)以探索其他可用的 API。
 
 
-了解如何使用 [Bing Web 搜尋 API](../bing-web-search/search-the-web.md) 來搜尋 Web，以及如何探索其他 [Bing 搜尋 API](../bing-web-search/index.yml)。
+了解如何使用 [Bing Web 搜尋 API](../bing-web-search/overview.md) 來搜尋 Web，以及如何探索其他 [Bing 搜尋 API](../bing-web-search/index.yml)。
 
-務必閱讀 [Bing 使用和顯示需求](./useanddisplayrequirements.md)，您才不會違反任何有關使用搜尋結果的規則。
+務必閱讀 [Bing 使用和顯示需求](../bing-web-search/use-display-requirements.md)，您才不會違反任何有關使用搜尋結果的規則。

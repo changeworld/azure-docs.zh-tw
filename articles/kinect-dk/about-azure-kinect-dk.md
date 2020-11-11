@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: azure, kinect, 概觀, 開發人員套件, DK, 裝置, 景深, 全身追蹤, 語音, 認知服務, SDK, 軟體開發套件, 韌體
-ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d188d37c0247aebb16f51b4404da81d469136468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85277780"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359648"
 ---
 # <a name="about-azure-kinect-dk"></a>關於 Azure Kinect DK
 
@@ -86,7 +86,7 @@ Azure Kinect 感應器 SDK 可為 Azure Kinect DK 硬體感應器和裝置設定
 >[!NOTE]
 >Azure Kinect DK 沒有喇叭。
 
-如需其他詳細資料和資訊，請造訪[語音服務文件](https://docs.microsoft.com/azure/cognitive-services/speech-service/)。
+如需其他詳細資料和資訊，請造訪[語音服務文件](../cognitive-services/speech-service/index.yml)。
 
 ## <a name="vision-services"></a>視覺服務
 
