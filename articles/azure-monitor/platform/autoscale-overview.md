@@ -4,12 +4,12 @@ description: Microsoft Azure 的自動調整
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567259"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505832"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure 的自動調整概觀
 本文說明何謂 Microsoft Azure 自動調整、其優點，以及如何開始使用它。  
@@ -61,11 +61,11 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 - **自動調整設定** 會被自動調整引擎讀取來判斷是要擴大或縮減。 它包含一個或多個設定檔、關於目標資源的資訊，以及通知設定。
 
-  - **自動調整設定檔**結合了下列項目：
+  - **自動調整設定檔** 結合了下列項目：
 
-    - **容量設定**，會指出執行個體數目的最小值、最大值和預設值。
-    - **一組規則**，其中的每個規則包含觸發程序 (時間或度量) 和調整動作 (相應增加或相應減少)。
-    - **循環**，會指出自動調整應該在何時讓此設定檔生效。
+    - **容量設定** ，會指出執行個體數目的最小值、最大值和預設值。
+    - **一組規則** ，其中的每個規則包含觸發程序 (時間或度量) 和調整動作 (相應增加或相應減少)。
+    - **循環** ，會指出自動調整應該在何時讓此設定檔生效。
 
       您可以擁有多個設定檔，以便處理不同的重疊需求。 舉例來說，您可以針對一天當中的不同時間或一週當中的不同日子擁有不同的自動調整設定檔。
 
@@ -102,7 +102,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 | 虛擬機器：傳統 |[調整傳統的虛擬機器可用性設定組](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | 虛擬機器：Windows 擴展集 |[在 Windows 中調整虛擬機器擴展集](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | 虛擬機器：Linux 擴展集 |[在 Linux 中調整虛擬機器擴展集](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| 虛擬機器：Windows 範例 |[針對 VM 擴展集使用 Resource Manager 範本進行進階自動調整設定](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| 虛擬機器：Windows 範例 |[針對 VM 擴展集使用 Resource Manager 範本進行進階自動調整設定](autoscale-virtual-machine-scale-sets.md) |
 | Azure App Service |[在 Azure App Service 中擴大應用程式](../../app-service/manage-scale-up.md)|
 | API 管理服務|[自動調整 Azure API 管理執行個體](../../api-management/api-management-howto-autoscale.md)
 | Azure 資料總管叢集|[管理 Azure 資料總管叢集的大小調整以適應不斷變化的需求](/azure/data-explorer/manage-cluster-horizontal-scaling)|

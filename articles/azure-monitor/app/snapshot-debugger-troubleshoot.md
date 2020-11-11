@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760507"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504963"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 針對啟用 Application Insights 快照偵錯工具或查看快照集的問題進行疑難排解
 如果您已為應用程式啟用 Application Insights 快照偵錯工具，但是沒有看到例外狀況的快照集，您可以使用這些指示來進行疑難排解。 不會產生快照集有許多不同的原因。 您可以執行快照集健康情況檢查，以找出一些可能的常見原因。
@@ -57,22 +57,24 @@ ms.locfileid: "91760507"
 > 如果 targetFramework 為4.7 或更新版本，則 Windows 會決定可用的通訊協定。 在 Azure App Service 中，可以使用 TLS 1.2。 但是，如果您使用自己的虛擬機器，可能需要在作業系統中啟用 TLS 1.2。
 
 ## <a name="preview-versions-of-net-core"></a>.NET Core 的預覽版本
-如果應用程式使用 .NET Core 的預覽版本，並透過入口網站中的 [ [Application Insights] 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) 啟用快照偵錯工具，則快照偵錯工具可能無法啟動。 請先依照 [針對其他環境啟用快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 的指示，先將 [ApplicationInsights microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件 ***與應用程式搭配使用，再*** 透過 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用。
+如果應用程式使用 .NET Core 的預覽版本，並透過入口網站中的 [ [Application Insights] 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) 啟用快照偵錯工具，則快照偵錯工具可能無法啟動。 請先依照 [針對其他環境啟用快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 的指示，先將 [ApplicationInsights. microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件與應用程式搭配 **使用 * 此外** ，再透過 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用。
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>升級至最新版本的 NuGet 套件
 
 如果透過 [入口網站中的 [Application Insights] 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用快照偵錯工具，則您的應用程式應該已在執行最新的 NuGet 套件。 如果已藉由包含 [ApplicationInsights Microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) nuget 套件來啟用快照偵錯工具，請使用 Visual Studio 的 nuget 封裝管理員，以確定您使用的是最新版本的 ApplicationInsights. microsoft.applicationinsights.snapshotcollector。
 
+如需最新的更新和錯誤修正， [請參閱版本](./snapshot-collector-release-notes.md)資訊。
+
 ## <a name="check-the-uploader-logs"></a>請檢查上傳程式記錄
 
 建立快照集之後，磁碟上會建立小型傾印檔案 (.dmp)。 個別的上傳程式處理序會建立該小型傾印檔案，並將它 (以及任何相關聯的 PDB) 上傳至 Application Insights 快照集偵錯工具儲存體。 成功上傳小型傾印之後，它就會從磁碟中刪除。 上傳程式處理序的記錄檔會保留在磁碟上。 在 App Service 環境中，您可以在 `D:\Home\LogFiles` 中找到這些記錄。 使用 App Service 的 Kudu 管理網站來尋找這些記錄檔。
 
 1. 在 Azure 入口網站中開啟您的 App Service 應用程式。
-2. 按一下 [進階工具]****，或搜尋 **Kudu**。
-3. 按一下 **[移至]**。
-4. 在 [偵錯主控台]**** 下拉式清單方塊中，選取 [CMD]****。
-5. 按一下 [LogFiles]****。
+2. 按一下 [Advanced Tools] 或 [搜尋 **Kudu** ]。
+3. 按一下 **[移至]** 。
+4. 在 [偵錯主控台] 下拉式清單方塊中，選取 [CMD]。
+5. 按一下 [LogFiles]。
 
 您應會看到至少有一個檔案的名稱開頭為 `Uploader_` 或 `SnapshotUploader_` 且副檔名為 `.log`。 按一下適當的圖示，以下載任何記錄檔，或在瀏覽器中開啟它們。
 檔案名稱包含可識別 App Service 執行個體的唯一尾碼。 如果 App Service 執行個體裝載於一部以上的電腦，每部電腦會有個別的記錄檔。 當上傳程式偵測到新的小型傾印檔案時，該檔案會記錄在記錄檔中。 以下是成功快照集和上傳的範例︰
@@ -108,7 +110,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 在上述範例中，檢測金鑰為 `c12a605e73c44346a984e00000000000`。 這個值應該符合您應用程式的檢測金鑰。
 小型傾印會與識別碼為 `139e411a23934dc0b9ea08a626db16c5` 的快照集相關聯。 您稍後可以使用這個識別碼，在 Application Insights Analytics 中找出相關聯的例外狀況遙測。
 
-上載程式約每隔 15 分鐘掃描一次新的 PDB。 以下為範例：
+上載程式約每隔 15 分鐘掃描一次新的 PDB。 以下是範例：
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -121,7 +123,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-若為「未」__ 裝載於 App Service 中的應用程式，上傳程式記錄位於與小型傾印相同的資料夾中：`%TEMP%\Dumps\<ikey>` (其中 `<ikey>` 是您的檢測金鑰)。
+若為「未」裝載於 App Service 中的應用程式，上傳程式記錄位於與小型傾印相同的資料夾中：`%TEMP%\Dumps\<ikey>` (其中 `<ikey>` 是您的檢測金鑰)。
 
 ## <a name="troubleshooting-cloud-services"></a>針對雲端服務進行疑難排解
 針對雲端服務中的角色，預設暫存資料夾可能太小，無法保存小型傾印檔案，進而導致遺失快照集。
@@ -185,13 +187,13 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 - APPDATA
 - TEMP
 
-如果找不到適合的資料夾，快照集收集器會報告錯誤，指出「找不到適合的陰影複製資料夾。」__
+如果找不到適合的資料夾，快照集收集器會報告錯誤，指出「找不到適合的陰影複製資料夾。」
 
 如果複製失敗，快照集收集器會報告 `ShadowCopyFailed` 錯誤。
 
 如果上傳程式無法啟動，快照集收集器會報告 `UploaderCannotStartFromShadowCopy` 錯誤。 訊息內文通常會包含 `System.UnauthorizedAccessException`。 之所以發生此錯誤，通常是因為應用程式執行於權限降低的帳戶下。 該帳戶有權寫入陰影複製資料夾，但沒有執行程式碼的權限。
 
-這些錯誤通常是在啟動期間發生的，因此通常會尾隨 `ExceptionDuringConnect` 錯誤，指出「上傳程式無法啟動。」__
+這些錯誤通常是在啟動期間發生的，因此通常會尾隨 `ExceptionDuringConnect` 錯誤，指出「上傳程式無法啟動。」
 
 若要解決這些錯誤，您可以透過 `ShadowCopyFolder` 組態選項以手動方式指定陰影複製資料夾。 例如，使用 ApplicationInsights.config：
 
@@ -220,7 +222,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>使用 Application Insights 搜尋來尋找快照集例外狀況的
 
-建立快照集後，擲回中的例外狀況會以快照集識別碼標記。 向 Application Insights 回報例外狀況遙測後，該快照集識別碼就會包含為自訂屬性。 使用 Application Insights 中的 [搜尋]**** 刀鋒視窗，您可以找到具有 `ai.snapshot.id` 自訂屬性的所有遙測。
+建立快照集後，擲回中的例外狀況會以快照集識別碼標記。 向 Application Insights 回報例外狀況遙測後，該快照集識別碼就會包含為自訂屬性。 使用 Application Insights 中的 [搜尋] 刀鋒視窗，您可以找到具有 `ai.snapshot.id` 自訂屬性的所有遙測。
 
 1. 在 Azure 入口網站中瀏覽至您的 Application Insights 資源。
 2. 按一下 **[搜尋]** 。

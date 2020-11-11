@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427933"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505660"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>開始使用 Azure SQL 受控執行個體審核
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "94427933"
   
 3. 建立 audit 記錄的容器之後，有兩種方式可以將它設定為 audit 記錄的目標： [使用 t-sql](#blobtsql) 或 [使用 SQL Server Management Studio (SSMS) UI](#blobssms)：
 
-   - <a id="blobtsql"></a>使用 T-sql 設定 audit 記錄檔的 blob 儲存體：
+   - <a id="blobtsql"></a>**使用 T-sql 設定 audit 記錄檔的 blob 儲存體：**
 
      1. 在容器清單中，按一下新建立的容器，然後按一下 [容器屬性]。
 
@@ -120,7 +120,7 @@ ms.locfileid: "94427933"
 
      1. 藉由 [建立伺服器 audit 規格或資料庫審核規格](#createspec)來繼續。
 
-   - <a id="blobssms"></a>使用 SQL Server Management Studio 18 (Preview) 為 audit 記錄設定 blob 儲存體：
+   - <a id="blobssms"></a>**使用 SQL Server Management Studio 18 來設定 audit 記錄檔的 blob 儲存體：**
 
      1. 使用 SQL Server Management Studio UI 連接到受控實例。
 
@@ -143,8 +143,8 @@ ms.locfileid: "94427933"
         ![選取 Azure 訂用帳戶、儲存體帳戶和 blob 容器](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
      1. 在 [ **建立審核** ] 對話方塊中，按一下 **[確定** ]。
-
-4. <a id="createspec"></a>將 blob 容器設定為 audit 記錄檔的目標之後，請依照您的 SQL Server 建立並啟用伺服器審核規格或資料庫審核規格：
+     
+     1. <a id="createspec"></a>將 blob 容器設定為 audit 記錄檔的目標之後，請依照您的 SQL Server 建立並啟用伺服器審核規格或資料庫審核規格：
 
    - [建立伺服器 audit 規格 T-sql 指南](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [建立資料庫審核規格 T-sql 指南](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -177,7 +177,7 @@ ms.locfileid: "94427933"
 
 5. 選取 audit 事件的目的地：事件中樞、Azure 監視器記錄或兩者。 為每個目標設定必要的參數 (例如 Log Analytics 工作區)。
 
-6. 按一下 [儲存]。
+6. 按一下 [檔案] 。
 
     ![設定診斷設定](./media/auditing-configure/9_mi_configure_diagnostics.png)
 

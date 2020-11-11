@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a0300bd66dbeec84aba2102a510b4f6194debc5
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378579"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505575"
 ---
-# <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自訂角色指派
+# <a name="view-custom-role-assignments-using-azure-active-directory"></a>使用 Azure Active Directory 查看自訂角色指派
 
 本文說明如何在 Azure Active Directory (Azure AD) 中，查看您所指派的自訂角色。 在 Azure Active Directory (Azure AD) 中，可以在整個組織範圍或單一應用程式範圍中指派角色。
 

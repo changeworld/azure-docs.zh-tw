@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289363"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506051"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>診斷 Azure Key Vault 上的私人連結設定問題
 
@@ -142,21 +142,29 @@ DNS 解析是將金鑰保存庫主機名稱 (範例： `fabrikam.vault.azure.net
 
 Windows：
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
+```
 
 Linux：
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 您可以看到名稱解析為公用 IP 位址，但沒有 `privatelink` 別名。 別名稍後會加以說明，現在請不要擔心。
 
@@ -168,23 +176,24 @@ Linux：
 
 Windows：
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
+非授權的答案： Address：52.168.109.101 別名： fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```
+Linux:
 
-Linux：
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
-
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 與上一個案例的顯著差異在於，有一個具有值的新別名 `{vaultname}.privatelink.vaultcore.azure.net` 。 這表示金鑰保存庫資料平面已準備好接受來自私用連結的要求。
 
@@ -198,19 +207,27 @@ Linux：
 
 Windows：
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  10.1.2.3
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  10.1.2.3
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+```
 
 Linux：
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```
 
 有兩個值得注意的差異。 首先，名稱會解析為私人 IP 位址。 這必須是我們在本文 [對應章節](#find-the-key-vault-private-ip-address-in-the-virtual-network) 中找到的 IP 位址。 其次，它後面沒有其他別名 `privatelink` 。 發生這種情況是因為虛擬網路 DNS 伺服器會 *攔截* 別名鏈，並直接從名稱傳回私人 IP 位址 `fabrikam.privatelink.vaultcore.azure.net` 。 該專案實際上是 `A` 私人 DNS 區域中的一筆記錄。 接下來將會有更多相關資訊。
 
@@ -227,7 +244,7 @@ Linux：
 
 您的 Azure 訂用帳戶必須具有具有此確切名稱的 [私人 DNS 區域](../../dns/private-dns-privatednszone.md) 資源：
 
-    privatelink.vaultcore.azure.net
+`privatelink.vaultcore.azure.net`
 
 您可以前往入口網站中的 [訂用帳戶] 頁面，然後選取左側功能表上的 [資源]，來檢查此資源是否存在。 資源名稱必須是 `privatelink.vaultcore.azure.net` ，而且資源類型必須是 **私人 DNS 區域** 。
 
@@ -282,37 +299,48 @@ Linux：
 
 Windows (PowerShell) ：
 
-    PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```
 
-    Key                           Value
-    ---                           -----
-    Pragma                        no-cache
-    x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
-    x-ms-keyvault-service-version 1.2.27.0
-    x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security     max-age=31536000;includeSubDomains
-    Content-Length                4
-    Cache-Control                 no-cache
-    Content-Type                  application/json; charset=utf-8
+```output
+Key                           Value
+---                           -----
+Pragma                        no-cache
+x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
+x-ms-keyvault-service-version 1.2.27.0
+x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security     max-age=31536000;includeSubDomains
+Content-Length                4
+Cache-Control                 no-cache
+Content-Type                  application/json; charset=utf-8
+```
 
 Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
-    joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
-    x-ms-keyvault-service-version: 1.2.27.0
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security: max-age=31536000;includeSubDomains
-    Content-Length: 4
+```console
+joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
+```
+
+```output
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
+x-ms-keyvault-service-version: 1.2.27.0
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security: max-age=31536000;includeSubDomains
+Content-Length: 4
+```
 
 如果您未取得類似的輸出，或發生網路錯誤，這表示您的金鑰保存庫無法透過您在範例)  (中指定的主機名稱來存取 `fabrikam.vault.azure.net` 。 可能是主機名稱未解析為正確的 IP 位址，或您在傳輸層有連線問題。 這可能是因為路由問題、封裝捨棄及其他原因所致。 您必須進一步調查。
 
 回應必須包含標頭 `x-ms-keyvault-network-info` ：
 
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```console
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```
 
 `addr`標頭中的欄位會 `x-ms-keyvault-network-info` 顯示要求來源的 IP 位址。 此 IP 位址可以是下列其中一項：
 
@@ -330,11 +358,15 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
 如果您已安裝最新版的 PowerShell，您可以使用 `-SkipCertificateCheck` 略過 HTTPS 憑證檢查，然後您可以直接將 [金鑰保存庫 IP 位址](#find-the-key-vault-private-ip-address-in-the-virtual-network) 設為目標：
 
-    PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```
 
 如果您使用的是 `curl` ，您可以使用引數來執行相同動作 `-k` ：
 
-    joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```console
+joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```
 
 回應必須與上一節中的相同，這表示它必須包含 `x-ms-keyvault-network-info` 具有相同值的標頭。 `/healthstatus`如果您使用金鑰保存庫主機名稱或 IP 位址，端點就不會在意。
 

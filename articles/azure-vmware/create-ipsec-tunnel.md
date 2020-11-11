@@ -3,12 +3,12 @@ title: 在 Azure VMware 解決方案中建立 IPSec 通道
 description: 瞭解如何建立虛擬 WAN 中樞，以在 Azure VMware 解決方案中建立 IPSec 通道。
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: 63318b9fdd0de5e0ce102fafe332f40f595f38f1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9f869f04bf165f4791f13c626b63257ea98a7ca9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357839"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506442"
 ---
 # <a name="create-an-ipsec-tunnel-into-azure-vmware-solution"></a>在 Azure VMware 解決方案中建立 IPSec 通道
 
@@ -16,7 +16,7 @@ ms.locfileid: "94357839"
 
 ## <a name="topology"></a>拓撲
 
-![VPN 站對站通道架構。](media/create-ipsec-tunnel/vpn-s2s-tunnel-architecture.png)
+![顯示 VPN 站對站通道架構的圖表。](media/create-ipsec-tunnel/vpn-s2s-tunnel-architecture.png)
 
 Azure 虛擬中樞包含 Azure VMware 解決方案 ExpressRoute 閘道和站對站 VPN 閘道。 它會將內部部署 VPN 裝置連接到 Azure VMware 解決方案端點。
 
@@ -39,7 +39,7 @@ Azure 虛擬中樞包含 Azure VMware 解決方案 ExpressRoute 閘道和站對�
    | **型別** | 選取 [ **標準** ]，而不只允許 VPN 閘道流量。  |
 
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="建立 WAN。":::
+    :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="顯示 Azure 入口網站中 [建立 WAN] 頁面的螢幕擷取畫面。":::
 
 3. 在 [Azure 入口網站中，選取您在上一個步驟中建立的虛擬 WAN、選取 [ **建立虛擬中樞** ]、輸入必要欄位，然後選取 **[下一步：站對站]** 。 
 
@@ -49,7 +49,7 @@ Azure 虛擬中樞包含 Azure VMware 解決方案 ExpressRoute 閘道和站對�
    | **Name** |    |
    | **中樞私人位址空間** | 使用 `/24` (最小) 來輸入子網。  |
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="建立虛擬中樞。":::
+    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="顯示 [建立虛擬中樞] 頁面的螢幕擷取畫面。":::
 
 4. 在 [ **網站對網站** ] 索引標籤上，從 [ **閘道縮放單位** ] 下拉式清單中設定匯總輸送量來定義站對站閘道。 
 
@@ -70,7 +70,7 @@ Azure 虛擬中樞包含 Azure VMware 解決方案 ExpressRoute 閘道和站對�
 2. 在虛擬中樞的 **總覽** 中，選取連線 **Connectivity**  >  **vpn (站對站)** ，然後選取 [ **建立新的 vpn 網站** ]。
 
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="建立 VPN 網站。":::  
+    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="虛擬中樞 [總覽] 頁面的螢幕擷取畫面，其中已選取 [VPN (站對站]) 和 [建立新的 VPN 網站]。":::  
  
 3. 在 [ **基本** ] 索引標籤上，輸入必要的欄位，然後選取 **[下一步：連結]** 。 
 
@@ -93,14 +93,14 @@ Azure 虛擬中樞包含 Azure VMware 解決方案 ExpressRoute 閘道和站對�
 
 2. 選取您的 VPN 網站名稱，然後選取最右側的省略號 ( ... ) ;然後選取 [ **編輯此中樞的 VPN** 連線]。
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="編輯此中樞的 VPN 連接。" lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Azure 中虛擬 WAN 中樞網站頁面的螢幕擷取畫面，其中顯示選取的省略號來存取此中樞的 [編輯 VPN 連線]。" lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
 3. 編輯 VPN 網站與中樞之間的連接，然後選取 [ **儲存** ]。
    - 網際網路通訊協定安全性 (IPSec) ，請選取 [ **自訂** ]。
    - 使用以原則為基礎的流量選取器，選取 [ **啟用** ]
    - 指定 **Ike 階段 1** 和 **ike 階段 2 (ipsec)** 的詳細資料。 
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="編輯 VPN 連線"::: 
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="[編輯 VPN 連接] 頁面的螢幕擷取畫面。"::: 
  
     您的流量選取器或屬於以原則為基礎之加密網域一部分的子網應該是：
     
@@ -122,14 +122,14 @@ Azure 虛擬中樞包含 Azure VMware 解決方案 ExpressRoute 閘道和站對�
 
     移至 Azure VMware Solution 私用雲端的 [連線 **能力** ] 區段。 在 [ **ExpressRoute** ] 索引標籤上，選取 [ **+ 要求授權金鑰** ]。 為其命名，然後選取 [ **建立** ]。  (可能需要約30秒的時間來建立金鑰。 ) 複製 ExpressRoute 識別碼和授權金鑰。 
 
-    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="複製 Express Route ID 和授權金鑰。":::
+    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="私人雲端 [連線能力] 頁面的螢幕擷取畫面，其中已選取 [ExpressRoute] 索引標籤底下的授權金鑰。":::
 
     > [!NOTE]
     > 授權金鑰會在一段時間後消失，因此請在出現後立即複製。
 
 4. 接下來，我們會將 Azure VMware 解決方案和 VPN 閘道一起連結到虛擬 WAN 中樞。 在 Azure 入口網站中，開啟您稍早建立的虛擬 WAN。 選取已建立的虛擬 WAN 中樞，然後在左窗格中選取 [ **ExpressRoute** ]。 選取 [ **+ 兌換授權金鑰** ]。
 
-    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="兌換授權金鑰。":::
+    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="已選取兌換授權金鑰之私人雲端 ExpressRoute 頁面的螢幕擷取畫面。":::
 
     將授權金鑰貼入 [授權金鑰] 欄位，然後將 ExpressRoute 識別碼貼到 [ **對等線路 URI** ] 欄位中。 請務必選取 **[自動將此 ExpressRoute 線路與中樞建立關聯]。** 選取 [ **新增** ] 以建立連結。 
 

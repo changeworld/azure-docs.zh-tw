@@ -4,12 +4,12 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358043"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506068"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -312,10 +312,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 預設設定適用于大部分的 Azure Functions 應用程式。 不過，您可以根據您的工作負載設定檔來採用設定，以改善應用程式輸送量的效能。 第一個步驟是瞭解您正在執行的工作負載類型。
 
-|&nbsp;| I/o 系結工作負載 | CPU 系結的工作負載 |
+| | I/o 系結工作負載 | CPU 系結的工作負載 |
 |--| -- | -- |
-|函數應用程式特性| <ul><li>應用程式需要處理許多並行調用。</li> <li> 應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。</li> </ul>| <ul><li>應用程式會執行長時間執行的計算，例如調整大小的影像。</li> <li>應用程式會進行資料轉換。</li> </ul> |
-|範例| <ul><li>Web API</li><ul> | <ul><li>資料處理</li><li> 機器學習推斷</li><ul>|
+|**函數應用程式特性**| <ul><li>應用程式需要處理許多並行調用。</li> <li> 應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。</li> </ul>| <ul><li>應用程式會執行長時間執行的計算，例如調整大小的影像。</li> <li>應用程式會進行資料轉換。</li> </ul> |
+|**範例**| <ul><li>Web API</li><ul> | <ul><li>資料處理</li><li> 機器學習推斷</li><ul>|
 
 
 > [!NOTE]

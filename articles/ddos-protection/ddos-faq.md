@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 040e99e767ad81c4fc240a8765c854f998f3a395
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0873705e105710873be5d024269d40deb1c85e2b
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102893"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505422"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
+# <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保護標準常見問題
 
 本文將回答有關 Azure DDoS 保護 Standard 的常見問題。 
 

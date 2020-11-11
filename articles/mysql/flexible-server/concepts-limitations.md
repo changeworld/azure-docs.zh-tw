@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650284"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504334"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的限制
 
@@ -23,9 +23,9 @@ ms.locfileid: "91650284"
 ## <a name="server-parameters"></a>伺服器參數
 
 > [!NOTE]
-> 如果您要尋找伺服器參數的最小值/最大值（例如 `max_connections` 和 `innodb_buffer_pool_size` ），此資訊已移至伺服器參數概念 <!-- **[server parameters](./concepts-server-parameters.md)** --> 一文。
+> 如果您要尋找伺服器參數的最小值/最大值（如 `max_connections` 和 `innodb_buffer_pool_size` ），這項資訊已移至伺服器參數概念 [伺服器參數](./concepts-server-parameters.md) 一文。
 
-適用於 MySQL 的 Azure 資料庫支援調整伺服器參數的值。 某些參數的最小值和最大值 (例如。 `max_connections`、 `join_buffer_size` `query_cache_size`) 是由伺服器的計算層和計算大小所決定。 請參閱伺服器參數概念 <!-- [server parameters](./concepts-server-parameters.md)--> 以取得這些限制的詳細資訊。
+適用於 MySQL 的 Azure 資料庫支援調整伺服器參數的值。 某些參數的最小值和最大值 (例如。 `max_connections`、 `join_buffer_size` `query_cache_size`) 是由伺服器的計算層和計算大小所決定。 如需這些限制的詳細資訊，請參閱 [伺服器參數](./concepts-server-parameters.md) 。
 
 服務不支援密碼外掛程式，例如 "validate_password" 和 "caching_sha2_password"。
 
@@ -68,7 +68,7 @@ MySQL 服務不允許直接存取基礎檔案系統。 不支援某些資料操�
 - 在高載計算層級中不支援。
 
 ### <a name="networking"></a>網路功能
-- 建立伺服器之後，就無法變更連接方法。 如果伺服器是利用 *私人存取 (VNet 整合) *所建立，則在建立之後，就無法將它變更為 *公用存取 (允許的 IP 位址) * ，反之亦然
+- 建立伺服器之後，就無法變更連接方法。 如果伺服器是利用 *私人存取 (VNet 整合)* 所建立，則在建立之後，就無法將它變更為 *公用存取 (允許的 IP 位址)* ，反之亦然
 - 預設會啟用 TLS/SSL，且無法停用。
 - 伺服器支援的最低 TLS 版本為 TLS 1.2。 若要深入瞭解，請參閱 [使用 TLS/SSL 連線](./how-to-connect-tls-ssl.md) 。
 

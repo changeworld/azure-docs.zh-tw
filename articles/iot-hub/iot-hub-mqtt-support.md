@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 9f063b147fbddaeaa7888af755dba8f325d4fe0f
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899099"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505643"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -298,7 +300,8 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 * 「IoT 中樞」不會保存「保留」訊息。 如果裝置傳送的訊息的 **保留** 旗標設為1，則 IoT 中樞會將 **mqtt-保留** 應用程式屬性新增至訊息。 在此情況下，「IoT 中樞」不會保存保留訊息，而是會傳遞給後端應用程式。
 
-* IoT 中樞僅支援每個裝置有一個作用中 MQTT 連接。 代表相同裝置識別碼的任何新的 MQTT 連接都會導致 IoT 中樞卸除現有的連接。
+* IoT 中樞僅支援每個裝置有一個作用中 MQTT 連接。 代表相同裝置識別碼的任何新 MQTT 連線都會使 IoT 中樞卸載現有的連線，而 **400027 ConnectionForcefullyClosedOnNewConnection** 將會登入 Iot 中樞記錄
+
 
 如需詳細資訊，請參閱[傳訊開發人員指南](iot-hub-devguide-messaging.md)。
 

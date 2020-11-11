@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218936"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506170"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -26,7 +26,7 @@ ms.locfileid: "92218936"
 * 將影片檔案當作要求本文中的位元組陣列傳送、
 * 藉由提供[資產識別碼](../latest/assets-concept.md)來使用現有的 Azure 媒體服務資產 (僅支援付費帳戶)。
 
-上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
+上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編制索引的分鐘數。如需詳細資訊，請參閱 [媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
 本文說明如何使用下列選項來上傳您的影片並為其編制索引：
 
@@ -72,15 +72,15 @@ ms.locfileid: "92218936"
 > 影片名稱不得超過 80 個字元。
 
 1. 登入 [Video Indexer](https://www.videoindexer.ai/) 網站。
-1. 若要上傳影片，請按 [上傳]**** 按鈕或連結。
+1. 若要上傳影片，請按 [上傳]  按鈕或連結。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="上傳":::
 1. 上傳您的影片後，Video Indexer 會開始編製索引及分析影片。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="上傳":::
-1. 影片索引子分析完成後，您會收到一封電子郵件，其中包含您的影片連結，以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="上傳的進度":::
+1. Video Indexer 完成分析後，您會收到電子郵件，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>使用 API 上傳和編制索引
 
@@ -104,7 +104,7 @@ ms.locfileid: "92218936"
         |名稱|描述|
         |---|---|
         |id|影片識別碼|
-        |狀態|影片狀態|  
+        |state|影片狀態|  
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
 - 在影片中識別到的人員：
   - 屬性
@@ -118,7 +118,7 @@ ms.locfileid: "92218936"
         
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>注意
+##### <a name="other-considerations"></a>其他考量
 
 - 影片索引器會傳回原始 URL 中提供的任何現有參數。
 - 提供的 URL 必須進行編碼。
@@ -140,7 +140,7 @@ ms.locfileid: "92218936"
 
 #### <a name="priority"></a>priority
 
-影片索引器會根據影片的優先順序來為其編製索引。 請使用 **priority** 參數來指定索引的優先順序。 下列是有效值：**Low (低)**、**Normal** (一般，預設值) 和 **High (高)**。
+影片索引器會根據影片的優先順序來為其編製索引。 請使用 **priority** 參數來指定索引的優先順序。 下列是有效值： **Low (低)** 、 **Normal** (一般，預設值) 和 **High (高)** 。
 
 僅有付費帳戶可支援 **Priority** 參數。
 
@@ -148,7 +148,7 @@ ms.locfileid: "92218936"
 
 上傳您的影片後，影片索引器會選擇性地對影片進行編碼。 然後，繼續進行索引編製並分析影片。 當影片索引器完成分析時，您會收到包含影片識別碼的通知。  
 
-使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中]**** 狀態。
+使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中] 狀態。
 
 若為 SingleBitrate，則會依據輸出套用標準編碼器成本。 如果影片高度大於或等於720，影片索引子會將它編碼為1280x720。 否則為640x468。
 預設設定為 [內容感知編碼](../latest/content-aware-encoding.md)。
@@ -177,7 +177,7 @@ ms.locfileid: "92218936"
 
     * 巡覽到 https://api-portal.videoindexer.ai/
     * 登入
-    * 前往**Products**  ->  **授權**  ->  **授權訂**用帳戶
+    * 前往 **Products**  ->  **授權**  ->  **授權訂** 用帳戶
     * 複製 **主要金鑰**
 * 影片 URL –要編制索引之影片/音訊檔案的 URL。 URL 必須指向媒體檔案 (不支援 HTML 網頁)。 作為 URI 一部分提供的存取權杖可以保護檔案，而處理檔案的端點必須透過 TLS 1.2 或更高版本來保護。 URL 必須進行編碼。
 

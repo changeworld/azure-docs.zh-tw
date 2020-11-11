@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ecfeebb9ce86d717531310c2ad1a33a3d27f4c0a
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995737"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506289"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>針對適用於 VM 的 Azure 監視器來設定 Log Analytics 工作區
 適用於 VM 的 Azure 監視器會從 Azure 監視器中的一或多個 Log Analytics 工作區收集其資料。 在將代理程式上架之前，您必須先建立並設定工作區。 本文說明工作區的需求，並針對適用於 VM 的 Azure 監視器進行設定。
@@ -20,10 +20,10 @@ ms.locfileid: "91995737"
 ## <a name="overview"></a>概觀
 依您的需求而定，單一訂用帳戶可以使用任意數目的工作區，因為它位於支援的位置，並且使用 *VMInsights* 方案設定。
 
-設定好工作區之後，您可以使用任何可用的選項，在 VM 和 VMMS 上安裝所需的代理程式，並指定工作區以傳送其資料。 適用於 VM 的 Azure 監視器將會從其訂用帳戶中任何已設定的工作區收集資料。
+設定好工作區之後，您可以使用任何可用的選項，在 VM 和 VMSS 上安裝所需的代理程式，並指定工作區以傳送其資料。 適用於 VM 的 Azure 監視器將會從其訂用帳戶中任何已設定的工作區收集資料。
 
 > [!NOTE]
-> 當您在單一 VM 或使用 Azure 入口網站的 VMMS 上啟用適用於 VM 的 Azure 監視器時，您可以選擇選取現有的工作區，或建立一個新的工作區。 *VMInsights*解決方案將會安裝在此工作區中（如果尚未安裝）。 然後，您可以將此工作區用於其他代理程式。
+> 當您使用 Azure 入口網站在單一 VM 或 VMSS 上啟用適用於 VM 的 Azure 監視器時，您可以選擇選取現有的工作區，或建立一個新的工作區。 *VMInsights* 解決方案將會安裝在此工作區中（如果尚未安裝）。 然後，您可以將此工作區用於其他代理程式。
 
 
 ## <a name="create-log-analytics-workspace"></a>建立 Log Analytics 工作區
@@ -43,7 +43,7 @@ ms.locfileid: "91995737"
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
-## <a name="supported-regions"></a>支援區域
+## <a name="supported-regions"></a>支援的區域
 
 適用於 VM 的 Azure 監視器支援下欄區域中的 Log Analytics 工作區，但您可以監視任何區域中的虛擬機器。 虛擬機器本身不限於 Log Analytics 工作區支援的區域。
 
@@ -80,16 +80,16 @@ ms.locfileid: "91995737"
 ### <a name="azure-portal"></a>Azure 入口網站
 有三個選項可讓您從 Azure 入口網站設定現有的工作區。
 
-若要設定單一工作區，請選取 **其他上線選項** ，然後 **設定工作區**。 選取訂用帳戶和工作區，然後按一下 [ **設定**]。
+若要設定單一工作區，請選取 **其他上線選項** ，然後 **設定工作區** 。 選取訂用帳戶和工作區，然後按一下 [ **設定** ]。
 
 [![設定工作區](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
-若要設定多個工作區，請在 Azure 入口網站的 [**監視**] 功能表的 [**虛擬機器**] 功能表中，選取 [**工作區**設定] 索引標籤 設定篩選值以顯示現有工作區的清單。 選取要啟用的每個工作區旁的核取方塊，然後按一下 [ **設定選取** ]。
+若要設定多個工作區，請在 Azure 入口網站的 [ **監視** ] 功能表的 [ **虛擬機器** ] 功能表中，選取 [ **工作區** 設定] 索引標籤 設定篩選值以顯示現有工作區的清單。 選取要啟用的每個工作區旁的核取方塊，然後按一下 [ **設定選取** ]。
 
 [![工作區設定](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-當您在單一 VM 或使用 Azure 入口網站的 VMMS 上啟用適用於 VM 的 Azure 監視器時，您可以選擇選取現有的工作區，或建立一個新的工作區。 *VMInsights*解決方案將會安裝在此工作區中（如果尚未安裝）。 然後，您可以將此工作區用於其他代理程式。
+當您使用 Azure 入口網站在單一 VM 或 VMSS 上啟用適用於 VM 的 Azure 監視器時，您可以選擇選取現有的工作區，或建立一個新的工作區。 *VMInsights* 解決方案將會安裝在此工作區中（如果尚未安裝）。 然後，您可以將此工作區用於其他代理程式。
 
 [![在入口網站中啟用單一 VM](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

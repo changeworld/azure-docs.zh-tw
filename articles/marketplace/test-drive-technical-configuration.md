@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490078"
+ms.locfileid: "94504827"
 ---
 # <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
@@ -93,9 +93,10 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 如果您目前正在合作夥伴中心中建立您的試用產品，請選取 [ **儲存草稿** ]，然後再繼續。
 
+## <a name="additional-resources"></a>其他資源
+
 ## <a name="next-steps"></a>後續步驟
 
 - [試用產品的最佳作法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF;請確定您的快顯封鎖程式已關閉) 
 - [更新商業 Marketplace 中的現有供應項目](partner-center-portal/update-existing-offer.md) \(部分機器翻譯\)
-- [Azure Marketplace 意見反應論壇](https://feedback.azure.com/forums/216369-azure-marketplace)

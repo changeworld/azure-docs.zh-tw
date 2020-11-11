@@ -5,15 +5,15 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 08/11/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 332841d4ee4791cb8da1620aa292b05bbde74955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d701fe8dc19b3deaa05cf6f10643bdb1059aa1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88162786"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505732"
 ---
 | 資源 | 預設限制 | 上限 |
 | --- | --- | --- |
@@ -23,7 +23,3 @@ ms.locfileid: "88162786"
 | 記錄警示 | 每個訂用帳戶 512 個使用中警示規則。 每個訂用帳戶 200 個使用中警示規則。 | 請致電支援部門 |
 | 動作群組 |每一訂用帳戶 2,000 個動作群組。 | 請致電支援部門 |
 | 警示規則和動作規則描述長度| 記錄搜尋警示為 4096 個字元<br/>所有其他警示為 2048 個字元 | 與預設值相同 |
-| 自動調整設定 |每個區域中每個訂用帳戶 100 個。 | 與預設值相同 |
-| 自動調整規模設定檔 |每個自動調整規模設定為 20 個設定檔。 | 與預設值相同 |
-
-

@@ -5,25 +5,28 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441743"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505303"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器 (GPU) 加速
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
 
 Windows 虛擬桌面支援採用 GPU 加速的轉譯和編碼功能，可藉此改善應用程式效能和擴充性。 GPU 加速對於需要大量圖形的應用程式特別重要。
 
 請遵循本文中的指示來建立 GPU 最佳化的 Azure 虛擬機器，並將其新增至您的主機集區，然後將其設定為使用 GPU 加速進行轉譯和編碼。 本文假設您已設定 Windows 虛擬桌面的租用戶。
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>選取 GPU 最佳化的 Azure 虛擬機器大小
+## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>選取適當的 GPU 優化 Azure 虛擬機器大小
 
-Azure 提供數個 [GPU 最佳化的虛擬機器大小](/azure/virtual-machines/windows/sizes-gpu)。 主機集區的正確選擇取決於數個因素，包括您的特定應用程式工作負載、所需的使用者體驗品質和成本。 一般而言，較大且能力較強的 GPU 可在指定的使用者密度上提供更好的使用者體驗。
+選取其中一個 Azure 的 [NV 系列](/azure/virtual-machines/nv-series)、 [NVv3 系列](/azure/virtual-machines/nvv3-series)或 [NVv4 系列](/azure/virtual-machines/nvv4-series) VM 大小。 這些是針對應用程式和桌面虛擬化量身打造的，可讓應用程式和 Windows 使用者介面進行 GPU 加速。 主機集區的正確選擇取決於數個因素，包括您的特定應用程式工作負載、所需的使用者體驗品質和成本。 一般而言，更大且更強大的 Gpu 可在指定的使用者密度上提供更佳的使用者體驗，而較小和小數的 GPU 大小則可讓您更精確地控制成本和品質。
+
+>[!NOTE]
+>Azure 的 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm 通常不適合 Windows 虛擬桌面工作階段主機。 這些 Vm 是專為特製化、高效能的計算或機器學習工具所量身打造，例如以 NVIDIA CUDA 建立的工具。 使用 NVIDIA Gpu 的一般應用程式和桌面加速需要 NVIDIA GRID 授權;這是由 Azure 針對建議的 VM 大小所提供，但需要針對 NC/ND 系列 Vm 分開排列。
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>建立主機集區、佈建您的虛擬機器，以及設定應用程式群組
 
@@ -40,7 +43,7 @@ Windows 虛擬桌面支援在下列作業系統中使用 GPU 加速的轉譯和�
 
 若要在 Windows 虛擬桌面中使用 Azure N 系列 VM 的 GPU 功能，您必須安裝適當的圖形驅動程式。 請遵循[支援的作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)中的指示，透過手動或使用 Azure VM 擴充功能的方式，從適當圖形廠商安裝驅動程式。
 
-Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對具有 NVIDIA GPU 的 Azure VM，Windows 虛擬桌面僅支援 [NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)。
+Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 針對具有 NVIDIA Gpu 的 Azure NV 系列 Vm，只有 [NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)，而非 nvidia TESLA (CUDA) 驅動程式，支援一般用途應用程式和桌上型電腦的 GPU 加速。
 
 安裝驅動程式之後，必須重新啟動 VM。 使用上述指示中的驗證步驟，確認已成功安裝圖形驅動程式。
 

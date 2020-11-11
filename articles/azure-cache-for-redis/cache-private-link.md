@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546274"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504691"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis 與 Azure Private Link (公開預覽) 
 在本文中，您將瞭解如何使用 Azure 入口網站來建立虛擬網路和具有私人端點的 Azure Cache for Redis 實例。 您也將瞭解如何將私人端點新增至現有的 Azure Cache for Redis 實例。
@@ -33,7 +33,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路 
 
-1. 登入  。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [建立資源]。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="選取 [建立資源]。":::
 
@@ -47,7 +47,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
    | ------------ |  ------- | -------------------------------------------------- |
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 用來建立此虛擬網路的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 要在其中建立虛擬網路和其他資源的資源組名。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
-   | **名稱** | 輸入虛擬網路名稱。 | 名稱必須以字母或數位開頭，以字母、數位或底線結尾，且只能包含字母、數位、底線、句點或連字號。 | 
+   | **Name** | 輸入虛擬網路名稱。 | 名稱必須以字母或數位開頭，以字母、數位或底線結尾，且只能包含字母、數位、底線、句點或連字號。 | 
    | **區域** | 下拉並選取區域。 | 選取將使用虛擬網路的其他服務附近的 [區域](https://azure.microsoft.com/regions/) 。 |
 
 5. 選取 [ **IP 位址** ] 索引標籤，或按一下頁面底部的 [ **下一步： IP 位址** ] 按鈕。
@@ -71,7 +71,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
    
 1. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="選取 [建立資源]。":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="選取 Azure Cache for Redis。":::
    
 1. 在 [新的 Redis 快取]  頁面上，設定新快取的設定。
    
@@ -89,7 +89,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 1. 按一下 [ **新增** ] 按鈕以建立私人端點。
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="選取 [建立資源]。":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="在 [網路功能] 中，新增私人端點。":::
 
 1. 在 [ **建立私人端點** ] 頁面上，使用您在上一節中建立的虛擬網路和子網來設定私人端點的設定，然後選取 **[確定]** 。 
 
@@ -98,7 +98,6 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 1. 在基本或標準快取執行個體的 [進階] 索引標籤中，如果您想要啟用非 TLS 連接埠，請選取啟用切換。
 
 1. 在高階快取執行個體的 [進階] 索引標籤中，設定非 TLS 連接埠、叢集和資料持續性的設定。
-
 
 1. 選取頁面底部的 [下一步:標記] 索引標籤，或按一下頁面底部的 [下一步:標記] 按鈕。
 
@@ -135,7 +134,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 ### <a name="create-a-virtual-network"></a>建立虛擬網路 
 若要建立虛擬網路，請遵循下列步驟。
 
-1. 登入  。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [建立資源]。
 
 2. 在 [ **新增** ] 頁面上，選取 [ **網路** ]，然後選取 [ **虛擬網路** ]。
 
@@ -147,7 +146,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
    | ------------ |  ------- | -------------------------------------------------- |
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 用來建立此虛擬網路的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 要在其中建立虛擬網路和其他資源的資源組名。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
-   | **名稱** | 輸入虛擬網路名稱。 | 名稱必須以字母或數位開頭，以字母、數位或底線結尾，且只能包含字母、數位、底線、句點或連字號。 | 
+   | **Name** | 輸入虛擬網路名稱。 | 名稱必須以字母或數位開頭，以字母、數位或底線結尾，且只能包含字母、數位、底線、句點或連字號。 | 
    | **區域** | 下拉並選取區域。 | 選取將使用虛擬網路的其他服務附近的 [區域](https://azure.microsoft.com/regions/) 。 |
 
 5. 選取 [ **IP 位址** ] 索引標籤，或按一下頁面底部的 [ **下一步： IP 位址** ] 按鈕。
@@ -170,7 +169,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 1. 在 Azure 入口網站中，搜尋 **Azure Cache for Redis** ，然後按 enter 鍵或從搜尋建議中選取。
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="選取 [建立資源]。":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="搜尋 Azure Cache for Redis。":::
 
 2. 選取您要新增私人端點的快取實例。
 
@@ -178,7 +177,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 4. 按一下 [ **私人端點** ] 按鈕以建立私人端點。
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="選取 [建立資源]。":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="新增私人端點。":::
 
 5. 在 [ **建立私人端點] 頁面** 上，設定私人端點的設定。
 
@@ -186,7 +185,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
    | ------------ |  ------- | -------------------------------------------------- |
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 用來建立此私人端點的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 要在其中建立私人端點和其他資源的資源組名。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
-   | **名稱** | 輸入私人端點名稱。 | 名稱必須以字母或數位開頭，以字母、數位或底線結尾，且只能包含字母、數位、底線、句點或連字號。 | 
+   | **Name** | 輸入私人端點名稱。 | 名稱必須以字母或數位開頭，以字母、數位或底線結尾，且只能包含字母、數位、底線、句點或連字號。 | 
    | **區域** | 下拉並選取區域。 | 選取將使用您私人端點的其他服務附近的 [區域](https://azure.microsoft.com/regions/) 。 |
 
 6. 按一下頁面底部的 [ **下一步：資源]** 按鈕。
@@ -205,7 +204,37 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 13. 出現綠色 **驗證通過** 訊息之後，請選取 [ **建立** ]。
 
+## <a name="faq"></a>常見問題集
 
-## <a name="next-steps"></a>下一步
+### <a name="why-cant-i-connect-to-a-private-endpoint"></a>為什麼我無法連接到私人端點？
+如果您的快取已經是 VNet 插入快取，私人端點就無法與您的快取實例搭配使用。 如果您的快取實例使用以下) 所列 (不支援的功能，您將無法連接到您的私人端點實例。 此外，您必須在7月27日之後建立快取實例，才能使用私人端點。
 
-若要深入瞭解 Azure Private Link，請參閱 [Azure Private Link 檔](../private-link/private-link-overview.md)。
+### <a name="what-features-are-not-supported-with-private-endpoints"></a>私人端點不支援哪些功能？
+異地複寫、防火牆規則、入口網站主控台支援、每個叢集快取的多個端點、防火牆規則和區域冗余的持續性。 
+
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>如何變更要從公用網路存取停用的私人端點？
+預設會有 `publicNetworkAccess` 旗標 `Enabled` 。 此旗標旨在讓您選擇性地允許公用和私人端點存取快取（若其設定為） `Enabled` 。 如果設定為 `Disabled` ，則只會允許私人端點存取。 您可以 `Disabled` 使用下列 PATCH 要求將值設定為。
+```http
+PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+{    "properties": {
+       "publicNetworkAccess":"Disabled"
+   }
+}
+```
+
+### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>是否已針對私人端點啟用 (NSG) 的網路安全性群組？
+否，私人端點已停用它們。 但是，如果子網上有其他資源，則 NSG 強制會套用至這些資源。
+
+### <a name="how-can-i-connect-to-a-clustered-cache"></a>如何連接到叢集快取？
+`publicNetworkAccess` 必須設定為 `Disabled` ，而且只能有一個私人端點連接。
+
+### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>因為我的私人端點實例不在我的 VNet 中，所以它與我的 VNet 有何關聯？
+它只會連結到您的 VNet。 因為它不在您的 VNet 中，所以不需要針對相依端點修改 NSG 規則。
+
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>如何將 VNet 插入快取遷移至私人端點快取？
+您將需要刪除 VNet 插入的快取，並建立具有私人端點的新快取實例。
+
+## <a name="next-steps"></a>後續步驟
+
+* 若要深入瞭解 Azure Private Link，請參閱 [Azure Private Link 檔](../private-link/private-link-overview.md)。
+* 若要比較您快取實例的各種網路隔離選項，請參閱 [Azure Cache for Redis 網路隔離選項檔](cache-network-isolation.md)集。

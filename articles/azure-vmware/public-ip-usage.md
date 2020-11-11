@@ -3,12 +3,12 @@ title: 如何使用 Azure VMware 解決方案中的公用 IP 功能
 description: 本文說明如何使用 Azure 虛擬 WAN 中的公用 IP 功能。
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 63475b478a951632c068b168353acf2e0bb7061c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490384"
+ms.locfileid: "94504402"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>如何使用 Azure VMware 解決方案中的公用 IP 功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "94490384"
 
 本文會詳細說明如何在虛擬 WAN 中使用公用 IP 功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Azure VMware 解決方案環境
 - 在 Azure VMware 解決方案環境中執行的 web 伺服器。
@@ -39,14 +39,14 @@ ms.locfileid: "94490384"
 
 :::image type="content" source="media/public-ip-usage/public-ip-architecture-diagram.png" alt-text="公用 IP 架構圖表" border="false" lightbox="media/public-ip-usage/public-ip-architecture-diagram.png":::
 
-架構圖顯示 Azure VMware 解決方案環境中裝載的客戶 web 伺服器，並使用 RFC1918 的私人 IP 位址進行設定。  此 web 服務可透過虛擬 WAN 公用 IP 功能提供給網際網路。  公用 IP 通常是在 Azure 防火牆中轉譯的目的地 NAT。 使用 DNAT 規則，防火牆原則會將公用 IP 位址要求轉譯為私人位址 (web 伺服器) 與埠。
+架構圖顯示 Azure VMware 解決方案環境中裝載的 web 伺服器，並使用 RFC1918 的私人 IP 位址進行設定。  Web 服務可透過虛擬 WAN 公用 IP 功能提供給網際網路。  公用 IP 通常是在 Azure 防火牆中轉譯的目的地 NAT。 使用 DNAT 規則時，防火牆原則會將公用 IP 位址要求轉譯為具有埠 (web 伺服器) 的私人位址。
 
 使用者要求會叫用公用 IP 上的防火牆，然後再使用 Azure 防火牆中的 DNAT 規則，將其轉譯為私人 IP。 防火牆會檢查 NAT 資料表，如果要求符合某個專案，則會將流量轉送至 Azure VMware 解決方案環境中的已轉譯位址和埠。
 
 Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆，然後防火牆會將資訊轉送至公用 IP 位址上的使用者。
 
 ## <a name="test-case"></a>測試案例
-在此案例中，您必須將 IIS web 伺服器發佈到網際網路。 使用 Azure VMware 解決方案中的公用 IP 功能，在公用 IP 位址上發佈網站。  我們將在防火牆上設定 NAT 規則，並將 Azure VMware 解決方案資源 (具有公用 IP 之 web 伺服器) 的 Vm。
+在此案例中，您必須將 IIS 網頁伺服器發佈到網際網路。 使用 Azure VMware 解決方案中的公用 IP 功能，在公用 IP 位址上發佈網站。  我們將在防火牆上設定 NAT 規則，並使用具有公用 IP 的 web 伺服器) 來存取 Azure VMware 解決方案資源 (Vm。
 
 ## <a name="deploy-virtual-wan"></a>部署虛擬 WAN
 

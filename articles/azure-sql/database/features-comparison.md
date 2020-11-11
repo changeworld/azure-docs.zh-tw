@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-ms.date: 07/22/2020
-ms.openlocfilehash: 265828cc34d73409b91c55be64b087d22f1a11f6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/10/2020
+ms.openlocfilehash: 65ef118fde57a7b72903d502a06644024939923f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789585"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506017"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比較： Azure SQL Database 和 Azure SQL 受控執行個體
 
@@ -58,7 +58,7 @@ Azure 會管理您的資料庫，並保證其高可用性。 某些可能會影�
 | [資料庫鏡像](/sql/database-engine/database-mirroring/database-mirroring-sql-server) | 否 | [否](../managed-instance/transact-sql-tsql-differences-sql-server.md#database-mirroring) |
 | [資料庫快照集](/sql/relational-databases/databases/database-snapshots-sql-server) | 否 | 否 |
 | [DBCC 陳述式](/sql/t-sql/database-console-commands/dbcc-transact-sql) | 大部分 - 請參閱個別陳述式 | 是 - 請參閱 [DBCC 差異](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc) |
-| [DDL 語句](/sql/t-sql/statements/statements) | 大部分 - 請參閱個別陳述式 | 是 - 請參閱 [T-SQL 差異](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
+| [DDL 陳述式](/sql/t-sql/statements/statements) | 大部分 - 請參閱個別陳述式 | 是 - 請參閱 [T-SQL 差異](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [DDL 觸發程式](/sql/relational-databases/triggers/ddl-triggers) | 僅限資料庫 |  是 |
 | [分散式分割區檢視](/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | 否 | 是 |
 | [分散式交易 - MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | 否 - 請參閱[彈性交易](elastic-transactions-overview.md) |  否-請參閱 [連結的伺服器差異](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)。 在遷移期間，嘗試將多個分散式 SQL Server 實例的資料庫合併成一個 SQL 受控執行個體。 |
@@ -71,8 +71,8 @@ Azure 會管理您的資料庫，並保證其高可用性。 某些可能會影�
 | [檔案和檔案群組](/sql/relational-databases/databases/database-files-and-filegroups) | 僅限主要檔案群組 | 是。 系統會自動指派檔案路徑，而且無法在語句中指定檔案位置 `ALTER DATABASE ADD FILE` [ ](../managed-instance/transact-sql-tsql-differences-sql-server.md#alter-database-statement)。  |
 | [Filestream](/sql/relational-databases/blob/filestream-sql-server) | 否 | [否](../managed-instance/transact-sql-tsql-differences-sql-server.md#filestream-and-filetable) |
 | [全文檢索搜尋 (FTS) ](/sql/relational-databases/search/full-text-search) |  是，但不支援協力廠商斷詞工具 | 是，但[不支援協力廠商斷詞](../managed-instance/transact-sql-tsql-differences-sql-server.md#full-text-semantic-search)工具 |
-| [函數](/sql/t-sql/functions/functions) | 大部分 - 請參閱個別函式 | 是 - 請參閱[預存程序、函式、觸發程序差異](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
-| [記憶體內部最佳化](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | 是- [Premium 和業務關鍵層僅](../in-memory-oltp-overview.md) 針對非持續性 In-Memory 物件（例如資料表類型）提供有限的支援 | 是 - [僅限業務關鍵層](../managed-instance/sql-managed-instance-paas-overview.md) |
+| [函式](/sql/t-sql/functions/functions) | 大部分 - 請參閱個別函式 | 是 - 請參閱[預存程序、函式、觸發程序差異](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
+| [記憶體內部最佳化](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | 是在 [Premium 和業務關鍵服務層級](../in-memory-oltp-overview.md)中。</br> 有限支援非持續性 In-Memory OLTP 物件，例如 [超大規模服務層](service-tier-hyperscale.md)級中的記憶體優化資料表變數。| 在[業務關鍵服務層級](../managed-instance/sql-managed-instance-paas-overview.md)中為 [是] |
 | [語言元素](/sql/t-sql/language-elements/language-elements-transact-sql) | 大部分 - 請參閱個別元素 |  是 - 請參閱 [T-SQL 差異](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [連結的伺服器](/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 - 請參閱[彈性查詢](elastic-query-horizontal-partitioning.md) | 是。 只有在沒有分散式交易的情況下 [SQL Server 和 SQL Database](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) 。 |
 | 從檔案讀取的[連結伺服器](/sql/relational-databases/linked-servers/linked-servers-database-engine) (CSV、Excel) | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 作為 CSV 格式的替代方案。 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 作為 CSV 格式的替代方案。 在[SQL 受控執行個體意見反應專案](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上追蹤這些要求|

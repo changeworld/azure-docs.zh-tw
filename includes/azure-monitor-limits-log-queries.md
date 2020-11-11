@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 83754842eeb4b5d609596045c11451e898960b9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83e046ca97ceee249e707e30f478fad89345f4de
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064865"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504114"
 ---
 ### <a name="general-query-limits"></a>一般查詢限制
 
 | 限制 | 描述 |
 |:---|:---|
 | 查詢語言 | Azure 監視器使用與 Azure 資料總管相同的 [Kusto 查詢語言](/azure/kusto/query/)。 如需 Azure 監視器中不支援的 KQL 語言元素，請參閱 [Azure 監視器記錄查詢語言差異](../articles/azure-monitor/log-query/data-explorer-difference.md)。 |
-| Azure 區域 | 當資料的範圍跨越多個 Azure 區域中的 Log Analytics 工作區時，記錄查詢可能會承受過多的負荷。 如需詳細資訊，請參閱[查詢限制](../articles/azure-monitor/log-query/scope.md#query-limits)。 |
+| Azure 區域 | 當資料的範圍跨越多個 Azure 區域中的 Log Analytics 工作區時，記錄查詢可能會承受過多的負荷。 如需詳細資訊，請參閱[查詢限制](../articles/azure-monitor/log-query/scope.md#query-scope-limits)。 |
 | 跨資源查詢 | 單一查詢中的 Application Insights 資源和 Log Analytics 工作區數目上限為100。<br>View Designer 不支援跨資源查詢。<br>新的 scheduledQueryRules API 支援記錄警示中的跨資源查詢。<br>如需詳細資訊，請參閱[跨資源查詢限制](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits)。 |
 
 ### <a name="user-query-throttling"></a>使用者查詢節流

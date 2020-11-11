@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 06/02/2020
+ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337639"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506374"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)
 - [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)語句的[SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr)子句
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>備份
 
 SQL 受控執行個體具有自動備份，因此使用者可以建立完整的資料庫 `COPY_ONLY` 備份。 不支援差異、記錄和檔案快照集備份。
 
@@ -99,7 +99,7 @@ SQL 受控執行個體中的 XEvent 審核支援 Azure Blob 儲存體目標。 �
 - `TO URL`您可以使用新的語法，來指定放置檔案的 Azure Blob 儲存體容器的 URL `.xel` 。
 - `TO FILE`因為 SQL 受控執行個體無法存取 Windows 檔案共用，所以不支援語法。
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 
 - [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -190,7 +190,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 
@@ -410,9 +410,9 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 ### <a name="polybase"></a>PolyBase
 
-不支援參考 HDFS 或 Azure Blob 儲存體中檔案的外部資料表。 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
+唯一支援的外部來源類型是 RDBMS、Azure SQL Database 和其他 Azure SQL 受控執行個體。 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
 
-### <a name="replication"></a>Replication
+### <a name="replication"></a>複寫
 
 - 支援快照式和雙向複寫類型。 不支援合併式複寫、點對點複寫，以及可更新的訂閱。
 - [異動複寫](replication-transactional-overview.md) 適用于 SQL 受控執行個體上的公開預覽，但有一些限制：

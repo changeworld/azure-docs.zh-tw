@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791591"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505252"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -56,6 +56,11 @@ ms.locfileid: "92791591"
 實況活動支援接收各種輸入外觀比例。 Stretch 模式可讓客戶指定輸出的延展行為。
 
 即時編碼現在新增了將固定的主要畫面格間隔片段輸出到20秒0.5 之間的功能。
+
+## <a name="accounts"></a>帳戶
+
+> [!WARNING]
+> 如果您使用 2020-05-01 API 版本建立媒體服務帳戶，則無法使用 RESTv2 
 
 ## <a name="august-2020"></a>2020 年 8 月
 

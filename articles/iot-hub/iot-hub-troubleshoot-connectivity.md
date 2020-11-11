@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: f7073fbf39344fe39e179d55a5a8f395a6ba6240
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+- fasttrack-edit
+- iot
+ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357344"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506391"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>使用 Azure IoT 中樞來監視、診斷和排解連線中斷問題
 
@@ -159,6 +161,11 @@ AzureDiagnostics
 如果您是 IoT 解決方案開發人員或操作員，則必須留意此行為，才能在記錄中解讀連接/中斷線上活動和相關錯誤。 如果您想要變更裝置的權杖存留期或更新行為，請檢查裝置是否可執行裝置對應項設定或可進行這項操作的裝置方法。
 
 如果您要監視與事件中樞的裝置連線，請確定您是以某種方式來篩選出因為 SAS 權杖更新而導致的定期中斷連接;例如，在特定時間範圍內，只要中斷連接事件後面接著 connect 事件，就不會根據中斷連線觸發動作。
+
+> [!NOTE]
+> IoT 中樞僅支援每個裝置有一個作用中 MQTT 連接。 代表相同裝置識別碼的任何新的 MQTT 連接都會導致 IoT 中樞卸除現有的連接。
+>
+> 400027 ConnectionForcefullyClosedOnNewConnection 將會登入 IoT 中樞記錄
 
 ## <a name="i-tried-the-steps-but-they-didnt-work"></a>我試過這些步驟，但沒有用
 

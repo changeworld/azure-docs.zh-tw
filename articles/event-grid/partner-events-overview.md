@@ -2,16 +2,16 @@
 title: Azure 事件方格-夥伴事件
 description: 使用 Azure 事件方格，將來自協力廠商事件方格 SaaS 和 PaaS 合作夥伴的事件直接傳送至 Azure 服務。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102881"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506138"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Azure 事件方格中的合作夥伴事件 (預覽) 
-「 **夥伴事件** 」功能可讓協力廠商 SaaS 提供者從其服務發佈事件，讓可訂閱這些事件的取用者可以使用這些事件。 它藉由公開「訂閱者」用來取用事件的 [主題](concepts.md#topics) 類型（ **合作夥伴主題** ），為協力廠商事件來源提供第一方體驗。 它也提供乾淨的 pub sub 模型，方法是分隔事件發行者和訂閱者所使用之資源的考慮和擁有權。
+「 **夥伴事件** 」功能可讓協力廠商 SaaS 提供者從其服務發佈事件，讓取用者可以訂閱這些事件。 這項功能藉由公開 [主題](concepts.md#topics) 類型（ **合作夥伴主題** ），提供協力廠商事件來源的第一方體驗。 訂閱者會建立此主題的訂用帳戶，以使用事件。 它也會藉由分隔事件發行者和訂閱者所使用之資源的考慮和擁有權，來提供全新的 pub sub 模型。
 
 > [!NOTE]
 > 如果您是使用 Event Grid 的新手，請參閱 [總覽](overview.md)、 [概念](concepts.md)和 [事件處理常式](event-handlers.md)。
@@ -76,6 +76,20 @@ ms.locfileid: "93102881"
 ## <a name="resources-managed-by-subscribers"></a>由訂閱者管理的資源 
 訂閱者可以使用「發行者」所定義的夥伴主題，而它是唯一看到及管理的資源類型。 建立夥伴主題之後，訂閱者使用者可以建立事件訂閱，將篩選規則定義至 [目的地/事件處理常式](overview.md#event-handlers)。 對訂閱者而言，夥伴主題及其相關聯的事件訂用帳戶會提供與 [自訂主題](custom-topics.md) 相同的豐富功能，以及其相關的訂用帳戶 (s) 有一個值得注意的差異：合作夥伴主題只支援 [Cloud Events 1.0 架構](cloudevents-schema.md)，提供比其他支援的架構更豐富的功能集。
 
+下圖顯示控制平面作業的流程。
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="夥伴活動-控制平面流程":::
+
+1. 發行者會建立 **夥伴註冊** 。 合作夥伴註冊是全域的。 也就是它們不會與特定的 Azure 區域相關聯。 此為選用步驟。
+1. 發行者會在特定區域中建立 **夥伴命名空間** 。
+1. 當訂閱者1嘗試建立夥伴主題時，會先在發行者的 Azure 訂用帳戶中建立 **事件通道** （event channel 1）。
+1. 然後，會在訂閱者的 Azure 訂用帳戶中建立合作夥伴主題1的 **夥伴主題** 1。 訂閱者必須啟用夥伴主題。 
+1. 訂閱者1會建立夥伴主題1的 **Azure Logic Apps 訂** 用帳戶。
+1. 訂閱者1會建立夥伴主題1的 **Azure Blob 儲存體訂** 用帳戶。 
+1. 當訂閱者2嘗試建立夥伴主題時，會先在發行者的 Azure 訂用帳戶中建立另一個 **事件通道** （事件通道2）。 
+1. 然後，第二個訂閱者的 Azure 訂用帳戶中會建立夥伴主題2的 **夥伴主題** 2。 訂閱者必須啟用夥伴主題。 
+1. 訂閱者2會建立夥伴主題2的 **Azure Functions 訂** 用帳戶。 
+
 ## <a name="pricing"></a>定價
 合作夥伴主題的計費方式是使用事件方格時所執行的作業數目。 如需使用做為計費和詳細價格資訊基礎之所有類型作業的詳細資訊，請參閱 [事件方格定價](https://azure.microsoft.com/pricing/details/event-grid/)。
 
@@ -83,7 +97,7 @@ ms.locfileid: "93102881"
 如需合作夥伴主題之限制的詳細資訊，請參閱 [事件方格服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits) 。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Auth0 合作夥伴主題](auth0-overview.md)
 - [如何使用 Auth0 合作夥伴主題](auth0-how-to.md)
