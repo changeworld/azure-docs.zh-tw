@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 056009c34aec97a8c5c45aea4b93ba41977fa7a6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461782"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518187"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>遷移至文字分析 API 的3.x 版
 
@@ -38,7 +38,7 @@ ms.locfileid: "92461782"
 請參閱參考檔，以取得 JSON 回應的範例。
 * [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 * [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
-* [3.1-preview 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+* [3.1-preview 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 
@@ -70,7 +70,7 @@ NER
 請參閱參考檔，以取得 JSON 回應的範例。
 * [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 * [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
-* [3.1-preview 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
+* [3.1-preview 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 
@@ -92,7 +92,7 @@ NER
 請參閱參考檔，以取得 JSON 回應的範例。
 * [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 * [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
-* [3.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
+* [3.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Languages)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 

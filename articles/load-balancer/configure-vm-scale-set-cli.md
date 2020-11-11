@@ -6,34 +6,28 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 990380d553cc12d1a87b2e1c7ca9b09864801294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a60a6889217ce6ca8dccd5ebf5ee74b8f67a7757
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333973"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518204"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 來設定現有 Azure Load Balancer 的虛擬機器擴展集
 
-在本文中，您將瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。 
+在本文中，您將瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure 訂用帳戶。
-- 訂用帳戶中的現有標準 sku 負載平衡器，將在其中部署虛擬機器擴展集。
-- 虛擬機器擴展集的 Azure 虛擬網路。
+## <a name="prerequisites"></a>必要條件 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+- 您需要在將部署虛擬機器擴展集的訂用帳戶中有現有的標準 sku 負載平衡器。
 
-如果您選擇在本機使用 CLI，本文會要求您安裝 Azure CLI 2.0.28 版版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+- 您需要虛擬機器擴展集的 Azure 虛擬網路。
+ 
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="sign-in-to-azure-cli"></a>登入 Azure CLI
-
-登入 Azure。
-
-```azurecli-interactive
-az login
-```
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>使用現有的負載平衡器部署虛擬機器擴展集
 
@@ -56,12 +50,12 @@ az vmss create \
 
 下列範例會使用下列方式部署虛擬機器擴展集：
 
-- 名為 **>myvmss**的虛擬機器擴展集
+- 名為 **>myvmss** 的虛擬機器擴展集
 - Azure Load Balancer 名為 **myLoadBalancer**
-- 名為**myBackendPool**的負載平衡器後端集區
-- 名為**myVnet**的 Azure 虛擬網路
-- 名為 **>mysubnet**的子網
-- 名為**myResourceGroup**的資源群組
+- 名為 **myBackendPool** 的負載平衡器後端集區
+- 名為 **myVnet** 的 Azure 虛擬網路
+- 名為 **>mysubnet** 的子網
+- 名為 **myResourceGroup** 的資源群組
 - 虛擬機器擴展集的 Ubuntu Server 映射
 
 ```azurecli-interactive

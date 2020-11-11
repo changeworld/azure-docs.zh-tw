@@ -7,27 +7,28 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0aba88c10304cf7d87277ad851ae38eae8eb5bf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e532902e1e6da90d4c81320b34a0b2b5dd1133f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497115"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518079"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中設定和存取適用于 Maria 資料庫的 Azure 資料庫審核記錄
 
 您可以從 Azure CLI 設定 [適用於 MariaDB 的 Azure 資料庫審核記錄](concepts-audit-logs.md) 。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>必要條件
 
-若要逐步執行本作法指南，您需要︰
+若要完成本指南：
 
-- [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- 您需要 [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> 本操作說明指南會要求您使用 Azure CLI 2.0 版或更新版本。 若要確認版本，請在 Azure CLI 命令提示字元中輸入 `az --version`。 若要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 2.0 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="configure-audit-logging"></a>設定 audit 記錄
 
@@ -41,7 +42,7 @@ ms.locfileid: "87497115"
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. 藉由更新**audit_log_events**參數，選取要記錄的[事件種類](concepts-audit-logs.md#configure-audit-logging)。
+1. 藉由更新 **audit_log_events** 參數，選取要記錄的 [事件種類](concepts-audit-logs.md#configure-audit-logging)。
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```
@@ -56,7 +57,7 @@ ms.locfileid: "87497115"
     az mariadb server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解適用於 MariaDB 的 Azure 資料庫中的[audit 記錄](concepts-audit-logs.md)
 - 瞭解如何在[Azure 入口網站](howto-configure-audit-logs-portal.md)中設定 audit 記錄

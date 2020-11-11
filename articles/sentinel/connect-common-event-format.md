@@ -1,6 +1,6 @@
 ---
 title: 將 CEF 資料連線到 Azure Sentinel 預覽 |Microsoft Docs
-description: 使用 Linux 機器作為記錄轉寄站，以將傳送常見事件格式 (CEF) 訊息的外部解決方案連線至 Azure Sentinel。
+description: 將傳送常見事件格式的外部解決方案 (CEF) 訊息傳送至 Azure Sentinel，並使用 Linux 機器作為記錄轉寄站。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347602"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517966"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
@@ -27,14 +27,14 @@ ms.locfileid: "93347602"
 
 步驟1： [部署 Syslog/CEF](connect-cef-agent.md) 轉寄站來連線 CEF 步驟2： [執行解決方案特定步驟](connect-cef-solution-config.md) 步驟3： [驗證連線能力](connect-cef-verify.md)
 
-本文說明連線的運作方式、提供必要條件，並提供在安全性解決方案上部署代理程式的步驟，以在 Syslog 上傳送常見的事件格式 (CEF) 訊息。 
+本文說明連線的運作方式、列出必要條件，並顯示部署安全性解決方案機制以傳送常見事件格式 (CEF) 訊息在 Syslog 上的步驟。 
 
 > [!NOTE] 
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
 
 若要進行此連線，您必須部署 Syslog 轉寄站伺服器，以支援設備與 Azure Sentinel 之間的通訊。  伺服器是由已安裝 Log Analytics Linux 代理程式的專用 Linux 機器 (VM 或內部部署) 所組成。 
 
-下圖說明在 Azure 中的 Linux VM 發生時的設定：
+下圖說明在 Azure 中 Linux VM 的情況下的設定：
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
@@ -48,23 +48,23 @@ ms.locfileid: "93347602"
 
 若要使用 Syslog 來源與 Syslog 轉寄站之間的 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 請確定您用來作為記錄轉寄站的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元
-  - CentOS 7 和8，包括不 (6) 的子版本
+  - CentOS 7 和8（包括次要版本） (不是 6) 
   - Amazon Linux 2017.09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的子版本) 
+  - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的次要版本) 
   - Debian GNU/Linux 8 和 9
   - Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
   - SUSE Linux Enterprise Server 12，15
 
 - 32 位元
-  - CentOS 7 和8，包括不 (6) 的子版本
+  - CentOS 7 和8（包括次要版本） (不是 6) 
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的子版本) 
+  - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的次要版本) 
   - Debian GNU/Linux 8 和 9
   - Ubuntu Linux 14.04 LTS 和 16.04 LTS
  
@@ -82,7 +82,7 @@ ms.locfileid: "93347602"
   - 您必須在電腦上擁有較高的許可權 (sudo) 。 
 
 - 軟體需求
-  - 確定您的電腦上正在執行 python 2.7。
+  - 確定您的電腦上正在執行 python 2.7 或3。
 
 ## <a name="next-steps"></a>後續步驟
 

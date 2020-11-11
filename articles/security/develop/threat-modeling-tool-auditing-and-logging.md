@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3f3ca7b5d4516c2ad5dc9cb19a2eaed0a8a4a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542988"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518272"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架︰稽核和記錄 | 緩和措施 
 
@@ -28,7 +28,7 @@ ms.locfileid: "87542988"
 | --------------- | ------- |
 | **Dynamics CRM**    | <ul><li>[在您的解決方案中識別敏感性實體並執行變更審核](#sensitive-entities)</li></ul> |
 | **Web 應用程式** | <ul><li>[確定已在應用程式上強制執行審核和記錄](#auditing)</li><li>[確定已備妥記錄輪替和分隔](#log-rotation)</li><li>[確保應用程式不會記錄敏感性使用者資料](#log-sensitive-data)</li><li>[確保稽核和記錄檔有限制存取](#log-restricted-access)</li><li>[確保已記錄使用者管理事件](#user-management)</li><li>[確保系統已內建誤用防禦措施](#inbuilt-defenses)</li><li>[在 Azure App Service 中針對 Web 應用程式啟用診斷記錄功能。](#diagnostics-logging)</li></ul> |
-| **Database** | <ul><li>[確保已在 SQL Server 上啟用登入稽核功能](#identify-sensitive-entities)</li><li>[在 Azure SQL 上啟用威脅偵測功能](#threat-detection)</li></ul> |
+| **資料庫** | <ul><li>[確保已在 SQL Server 上啟用登入稽核功能](#identify-sensitive-entities)</li><li>[在 Azure SQL 上啟用威脅偵測功能](#threat-detection)</li></ul> |
 | **Azure 儲存體** | <ul><li>[使用 Azure 儲存體分析來稽核 Azure 儲存體的存取](#analytics)</li></ul> |
 | **WCF** | <ul><li>[實作足夠的記錄](#sufficient-logging)</li><li>[實作足夠的稽核失敗處理](#audit-failure-handling)</li></ul> |
 | **Web API** | <ul><li>[確定已在 Web API 上強制執行審核和記錄](#logging-web-api)</li></ul> |
@@ -131,7 +131,7 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [設定登入稽核](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **參考**              | [設定登入稽核](/sql/ssms/configure-login-auditing-sql-server-management-studio) |
 | **步驟** | <p>必須啟用資料庫伺服器登入稽核功能，才能偵測/確認密碼猜測攻擊。 請務必擷取失敗的登入嘗試。 擷取成功和失敗的登入嘗試，可在鑑識調查期間提供額外的好處</p>|
 
 ## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>在 Azure SQL 上啟用威脅偵測功能
@@ -142,7 +142,7 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure |
 | **屬性**              | SQL 版本 - V12 |
-| **參考**              | [使用 SQL Database 威脅偵測開始](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **參考**              | [使用 SQL Database 威脅偵測開始](../../azure-sql/database/threat-detection-configure.md)|
 | **步驟** |<p>威脅偵測會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。 其提供新的一層安全性，在發生異常活動時會提供安全性警示，讓客戶偵測並回應潛在威脅。</p><p>使用者可以使用 Azure SQL Database 稽核來探查可疑的事件，判斷是否有人嘗試存取、破壞或利用資料庫中的資料。</p><p>您不必是安全性專家，也不需要管理進階的安全性監視系統，威脅偵測讓您輕鬆解決資料庫的潛在威脅</p>|
 
 ## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>使用 Azure 儲存體分析來稽核 Azure 儲存體的存取
@@ -153,7 +153,7 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A |
-| **參考**              | [使用儲存體分析來監視授權類型](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **參考**              | [使用儲存體分析來監視授權類型](../../storage/blobs/security-recommendations.md#loggingmonitoring) |
 | **步驟** | <p>對於每個儲存體帳戶，您可以啟用 Azure 儲存體分析，來執行記錄和儲存計量資料。 儲存體分析記錄可提供重要資訊，例如其他人存取儲存體時所使用的驗證方法。</p><p>如果您要嚴密監視儲存體的存取，這真的很實用。 例如，在 Blob 儲存體中，您可以將所有容器設定為私人，並透過您的應用程式實作 SAS 服務的用法。 然後您可以定期檢查記錄，以查看是否會使用儲存體帳戶金鑰存取您的 Blob (這可能表示安全性缺口)，或者 Blob 是公用的但它們不應該是公用的。</p>|
 
 ## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>實作足夠的記錄
@@ -164,7 +164,7 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | Build |  
 | **適用的技術** | .NET Framework |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **步驟** | <p>在安全性事件之後，若缺少適當的稽核線索，可能會拖累鑑識努力。 Windows Communication Foundation (WCF) 可讓您記錄成功和/或失敗的驗證嘗試。</p><p>記錄失敗的驗證嘗試可以警告系統管理員可能的暴力破解攻擊。 同樣地，記錄成功的驗證事件可以在合法帳戶遭到入侵時提供有用的稽核線索。 啟用 WCF 的服務安全性稽核功能 |
 
 ### <a name="example"></a>範例
@@ -193,7 +193,7 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | Build |  
 | **適用的技術** | .NET Framework |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **步驟** | <p>所開發的解決方案已設定成：不會在無法寫入稽核記錄檔時產生例外狀況。 如果 WCF 已設定成：不會在無法寫入稽核記錄檔時擲回例外狀況，程式就不會接獲失敗通知，而可能不會發生重大安全性事件的稽核。</p>|
 
 ### <a name="example"></a>範例
@@ -242,5 +242,5 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [IoT 中樞作業監視簡介](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **參考**              | [IoT 中樞作業監視簡介](../../iot-hub/iot-hub-operations-monitoring.md) |
 | **步驟** | <p>設計用來收集及儲存透過 IoT 中樞作業監視所蒐集的稽核資料。 啟用下列監視類別：</p><ul><li>裝置身分識別作業</li><li>裝置到雲端通訊</li><li>雲端到裝置通訊</li><li>連接</li><li>檔案上傳</li></ul>|

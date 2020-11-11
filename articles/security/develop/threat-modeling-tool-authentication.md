@@ -16,26 +16,26 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: eade2d24dccb9fc8033a903be5e48b07b44e17ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a1afd1d998fcb3ba715c890cc4deac1f0a7da5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317985"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517711"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架︰驗證 | 緩和措施
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
 | **Web 應用程式**    | <ul><li>[考慮使用標準驗證機制來驗證 Web 應用程式](#standard-authn-web-app)</li><li>[應用程式必須安全地處理失敗的驗證案例](#handle-failed-authn)</li><li>[啟用逐步執行或自我調整驗證](#step-up-adaptive-authn)</li><li>[確保已適當地鎖定系統管理介面](#admin-interface-lockdown)</li><li>[安全地執行忘記的密碼功能](#forgot-pword-fxn)</li><li>[確定已實行密碼和帳戶原則](#pword-account-policy)</li><li>[執行控制項以防止使用者名稱列舉](#controls-username-enum)</li></ul> |
-| **Database** | <ul><li>[可能的話，請使用 Windows 驗證連接到 SQL Server](#win-authn-sql)</li><li>[可能的話，請使用 Azure Active Directory Authentication 連接到 SQL Database](#aad-authn-sql)</li><li>[使用 SQL 驗證模式時，確保在 SQL Server 上強制執行帳戶和密碼原則](#authn-account-pword)</li><li>[請勿在自主資料庫中使用 SQL 驗證](#autn-contained-db)</li></ul> |
+| **資料庫** | <ul><li>[可能的話，請使用 Windows 驗證連接到 SQL Server](#win-authn-sql)</li><li>[可能的話，請使用 Azure Active Directory Authentication 連接到 SQL Database](#aad-authn-sql)</li><li>[使用 SQL 驗證模式時，確保在 SQL Server 上強制執行帳戶和密碼原則](#authn-account-pword)</li><li>[請勿在自主資料庫中使用 SQL 驗證](#autn-contained-db)</li></ul> |
 | **Azure 事件中樞** | <ul><li>[使用採用 SaS 權杖的每一裝置驗證認證](#authn-sas-tokens)</li></ul> |
 | **Azure 信任邊界** | <ul><li>[啟用 Azure 系統管理員適用的 Azure Multi-Factor Authentication](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric 信任邊界** | <ul><li>[限制 Service Fabric 叢集的匿名存取](#anon-access-cluster)</li><li>[確定 Service Fabric 的用戶端對節點憑證與節點對節點憑證不同](#fabric-cn-nn)</li><li>[使用 AAD 來向 service fabric 叢集驗證用戶端](#aad-client-fabric)</li><li>[確保從經過核准的憑證授權單位 (CA) 取得 Service Fabric 憑證](#fabric-cert-ca)</li></ul> |
 | **身分識別伺服器** | <ul><li>[使用 Identity Server 支援的標準驗證案例](#standard-authn-id)</li><li>[以可調整的替代方式覆寫預設身分識別伺服器權杖快取](#override-token)</li></ul> |
 | **電腦信任邊界** | <ul><li>[確保已數位簽署所部署應用程式的二進位檔](#binaries-signed)</li></ul> |
 | **WCF** | <ul><li>[連接到 WCF 中的 MSMQ 佇列時啟用驗證](#msmq-queues)</li><li>[WCF - 請勿將訊息 clientCredentialType 設定為 none](#message-none)</li><li>[WCF-請勿將傳輸 clientCredentialType 設定為 none](#transport-none)</li></ul> |
-| **Web API** | <ul><li>[確保使用標準驗證技術來保護 Web Api](#authn-secure-api)</li></ul> |
+| **Web API** | <ul><li>[確保使用標準驗證技術來保護 Web API](#authn-secure-api)</li></ul> |
 | **Azure AD** | <ul><li>[使用 Azure Active Directory 所支援的標準驗證案例](#authn-aad)</li><li>[使用可調整的替代方式覆寫預設 ADAL 權杖快取](#adal-scalable)</li><li>[確保使用 TokenReplayCache 來防止重新執行 ADAL 驗證權杖](#tokenreplaycache-adal)</li><li>[使用 ADAL 程式庫來管理從 OAuth2 用戶端至 AAD (或內部部署 AD 的權杖要求) ](#adal-oauth2)</li></ul> |
 | **IoT 現場閘道** | <ul><li>[驗證連接到現場閘道的裝置](#authn-devices-field)</li></ul> |
 | **IoT 雲端閘道** | <ul><li>[確保會驗證連線到雲端閘道的裝置](#authn-devices-cloud)</li><li>[使用每一裝置的驗證認證](#authn-cred)</li></ul> |
@@ -126,7 +126,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | OnPrem |
 | **屬性**              | SQL 版本 - 全部 |
-| **參考**              | [SQL Server - 選擇驗證模式](https://msdn.microsoft.com/library/ms144284.aspx) |
+| **參考**              | [SQL Server - 選擇驗證模式](/sql/relational-databases/security/choose-an-authentication-mode) |
 | **步驟** | Windows 驗證會使用 Kerberos 安全性通訊協定、在增強式密碼的複雜驗證方面提供密碼原則強化、提供對帳戶鎖定的支援，而且支援密碼逾期。|
 
 ## <a name="when-possible-use-azure-active-directory-authentication-for-connecting-to-sql-database"></a><a id="aad-authn-sql"></a>可能的話，使用 Azure Active Directory 驗證連線到 SQL Database
@@ -137,7 +137,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | SQL Azure |
 | **屬性**              | SQL 版本 - V12 |
-| **參考**              | [使用 Azure Active Directory 驗證連線到 SQL 資料庫](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
+| **參考**              | [使用 Azure Active Directory 驗證連線到 SQL 資料庫](../../azure-sql/database/authentication-aad-overview.md) |
 | **步驟** | **最小版本︰** 允許 Azure SQL Database 對 Microsoft 目錄使用 AAD 驗證所需的 Azure SQL Database V12 |
 
 ## <a name="when-sql-authentication-mode-is-used-ensure-that-account-and-password-policy-are-enforced-on-sql-server"></a><a id="authn-account-pword"></a>使用 SQL 驗證模式時，確保在 SQL Server 上強制執行帳戶和密碼原則
@@ -148,7 +148,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [SQL Server 密碼原則](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
+| **參考**              | [SQL Server 密碼原則](/previous-versions/sql/sql-server-2012/ms161959(v=sql.110)) |
 | **步驟** | 使用 SQL Server 驗證時，系統會在 SQL Server 中建立不是以 Windows 使用者帳戶為基礎的登入。 使用 SQL Server 建立使用者名稱和密碼並儲存在 SQL Server 中。 SQL Server 可以使用 Windows 密碼原則機制。 它可以將 Windows 中使用的相同複雜性和到期原則套用於 SQL Server 內部使用的密碼。 |
 
 ## <a name="do-not-use-sql-authentication-in-contained-databases"></a><a id="autn-contained-db"></a>請勿在自主資料庫中使用 SQL 驗證
@@ -159,7 +159,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | Sql Azure、OnPrem |
 | **屬性**              | SQL 版本 - MSSQL2012、SQL 版本 - V12 |
-| **參考**              | [自主資料庫的安全性最佳做法](https://msdn.microsoft.com/library/ff929055.aspx) |
+| **參考**              | [自主資料庫的安全性最佳做法](/sql/relational-databases/databases/security-best-practices-with-contained-databases) |
 | **步驟** | 缺少強制執行的密碼原則，可能會增加在自主資料庫中建立弱式認證的可能性。 利用 Windows 驗證。 |
 
 ## <a name="use-per-device-authentication-credentials-using-sas-tokens"></a><a id="authn-sas-tokens"></a>使用採用 SaS 權杖的每一裝置驗證認證
@@ -170,7 +170,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [事件中樞驗證和安全性模型概觀](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **參考**              | [事件中樞驗證和安全性模型概觀](../../event-hubs/authenticate-shared-access-signature.md) |
 | **步驟** | <p>事件中樞安全性模型是以共用存取簽章 (SAS) 權杖和事件發佈者的組合為基礎。 發佈者代表可接收權杖的 DeviceID。 這有助於讓所產生的權杖與個別的裝置建立關聯。</p><p>在允許偵測承載內部原始來源詐騙嘗試的服務端上，所有訊息都會標示建立者。 驗證裝置時，產生範圍限於唯一發佈者的每個裝置 SaS 權杖。</p>|
 
 ## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>啟用 Azure 系統管理員適用的 Azure Multi-Factor Authentication
@@ -181,7 +181,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [什麼是 Azure Multi-Factor Authentication？](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
+| **參考**              | [什麼是 Azure Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md) |
 | **步驟** | <p>多因素驗證 (MFA) 是需要多種驗證方法，並在使用者登入和交易中新增重要的第二層安全性的驗證方法。 其運作方式需要下列其中任何二或多個驗證方法：</p><ul><li>您知道的資訊 (通常是密碼)</li><li>您擁有的事物 (不易複製的受信任裝置，例如電話)</li><li>您身上的某些特徵 (生物識別技術)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>限制 Service Fabric 叢集的匿名存取
@@ -192,7 +192,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure  |
-| **參考**              | [Service Fabric 叢集安全性案例](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
+| **參考**              | [Service Fabric 叢集安全性案例](../../service-fabric/service-fabric-cluster-security.md) |
 | **步驟** | <p>叢集應一律受到安全保護，以防止未經授權使用者連線您的叢集，特別是當叢集上有生產工作負載正在執行時。</p><p>建立 Service Fabric 叢集時，確保安全性模式設定為「安全」並設定必要的 X.509 伺服器憑證。 建立「不安全的」叢集將會在叢集向公用網際網路公開管理端點時，允許任何匿名使用者連線到叢集。</p>|
 
 ## <a name="ensure-that-service-fabric-client-to-node-certificate-is-different-from-node-to-node-certificate"></a><a id="fabric-cn-nn"></a>確保 Service Fabric 的用戶端對節點憑證不同於節點對節點憑證
@@ -203,7 +203,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure、環境 - 獨立 |
-| **參考**              | [Service Fabric 用戶端對節點憑證安全性](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security)、[使用用戶端憑證連線到安全的叢集](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
+| **參考**              | [Service Fabric 用戶端對節點憑證安全性](../../service-fabric/service-fabric-cluster-security.md#client-to-node-certificate-security)、[使用用戶端憑證連線到安全的叢集](../../service-fabric/service-fabric-connect-to-secure-cluster.md) |
 | **步驟** | <p>用戶端對節點憑證安全性是在建立叢集 (透過 Azure 入口網站、Resource Manager 範本或 JSON 範本) 時，藉由指定系統管理用戶端憑證和 (或) 使用者用戶端憑證來設定的。</p><p>您指定的系統管理用戶端憑證和使用者用戶端憑證，應該不同於您為節點對節點安全性指定的主要和次要憑證。</p>|
 
 ## <a name="use-aad-to-authenticate-clients-to-service-fabric-clusters"></a><a id="aad-client-fabric"></a>使用 AAD 來向 Service Fabric 叢集驗證用戶端對
@@ -214,7 +214,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure |
-| **參考**              | [叢集安全性案例 - 安全性建議](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
+| **參考**              | [叢集安全性案例 - 安全性建議](../../service-fabric/service-fabric-cluster-security.md#security-recommendations) |
 | **步驟** | 除了用戶端憑證，在 Azure 上執行的叢集也可以使用 Azure Active Directory (AAD) 來保護對管理端點的存取。 對於 Azure 叢集，建議您針對節點對節點安全性使用 AAD 安全性來驗證用戶端和憑證。|
 
 ## <a name="ensure-that-service-fabric-certificates-are-obtained-from-an-approved-certificate-authority-ca"></a><a id="fabric-cert-ca"></a>確保從經過核准的憑證授權單位 (CA) 取得 Service Fabric 憑證
@@ -225,7 +225,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure |
-| **參考**              | [X.509 憑證和 Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
+| **參考**              | [X.509 憑證和 Service Fabric](../../service-fabric/service-fabric-cluster-security.md#x509-certificates-and-service-fabric) |
 | **步驟** | <p>Service Fabric 會使用 X.509 伺服器憑證驗證節點和用戶端。</p><p>在 Service Fabric 中使用憑證時，所需可量的一些重要事項︰</p><ul><li>執行生產環境工作負載之叢集中所使用的憑證應該是使用已正確設定的 Windows Server 憑證服務來建立，或是從已核准的憑證授權單位 (CA) 取得。 CA 可以是已核准的外部 CA 或妥善管理的內部公開金鑰基礎結構 (PKI)</li><li>絕對不要在生產環境中使用以 MakeCert.exe 這類工具建立的暫時或測試憑證</li><li>您可以使用自我簽署憑證，但應該只用於測試叢集，不應該在生產環境中使用</li></ul>|
 
 ## <a name="use-standard-authentication-scenarios-supported-by-identity-server"></a><a id="standard-authn-id"></a>使用 Identity Server 所支援的標準驗證案例
@@ -269,7 +269,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型、NET Framework 3 |
 | **屬性**              | N/A |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)) |
 | **步驟** | 程式無法在連線到 MSMQ 佇列時啟用驗證，攻擊者可能會以匿名方式將訊息提交至佇列進行處理。 如果未使用驗證來連線到用來將訊息傳遞至另一個程式的 MSMQ 佇列，攻擊者可能會提交惡意的匿名訊息。|
 
 ### <a name="example"></a>範例
@@ -309,7 +309,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | .NET Framework 3 |
 | **屬性**              | 用戶端認證類型 - None |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **步驟** | 缺少驗證表示每個人都能夠存取此服務。 不會驗證其用戶端的服務可允許所有使用者進行存取。 設定應用程式以針對用戶端認證進行驗證。 將訊息 clientCredentialType 設定為 Windows 或 [憑證] 即可完成此作業。 |
 
 ### <a name="example"></a>範例
@@ -325,7 +325,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型、.NET Framework 3 |
 | **屬性**              | 用戶端認證類型 - None |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **步驟** | 缺少驗證表示每個人都能夠存取此服務。 不會驗證其用戶端的服務可允許所有使用者存取其功能。 設定應用程式以針對用戶端認證進行驗證。 將傳輸 clientCredentialType 設定為 Windows 或 [憑證] 即可完成此作業。 |
 
 ### <a name="example"></a>範例
@@ -352,7 +352,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [Azure AD 的驗證案例](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)、[Azure Active Directory 程式碼範例](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/)、[Azure Active Directory 開發人員指南](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
+| **參考**              | [Azure AD 的驗證案例](../../active-directory/develop/authentication-vs-authorization.md)、[Azure Active Directory 程式碼範例](../../active-directory/azuread-dev/sample-v1-code.md)、[Azure Active Directory 開發人員指南](../../active-directory/develop/index.yml) |
 | **步驟** | <p>Azure Active Directory (Azure AD) 提供身分識別做為服務，支援業界標準通訊協定 (例如 OAuth 2.0 和 OpenID Connect)，以簡化開發人員的驗證工作。 以下是 Azure AD 支援的五個主要應用程式案例：</p><ul><li>Web 瀏覽器到 Web 應用程式：使用者需要登入 Azure AD 所保護的 Web 應用程式</li><li>單一頁面應用程式 (SPA)：使用者需要登入 Azure AD 所保護的單一頁面應用程式</li><li>原生應用程式到 Web API：在電話、平板電腦或電腦執行的原生應用程式需要驗證使用者，以便從 Azure AD 所保護的 Web API 取得資源</li><li>Web 應用程式到 Web API：Web 應用程式需要從 Azure AD 所保護的 Web API 取得資源</li><li>Daemon 或伺服器應用程式到 Web API：無 Web 使用者介面的 Daemon 應用程式或伺服器應用程式，需要從 Azure AD 所保護的 Web API 取得資源</li></ul><p>請參閱 [參考] 區段中的連結，以取得低階實作詳細資料</p>|
 
 ## <a name="override-the-default-adal-token-cache-with-a-scalable-alternative"></a><a id="adal-scalable"></a>以可調整的替代項目覆寫預設 ADAL 權杖快取
@@ -363,7 +363,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [Modern Authentication with Azure Active Directory for Web Applications](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[使用 Redis 作為 ADAL 權杖快取](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
+| **參考**              | [Modern Authentication with Azure Active Directory for Web Applications](/archive/blogs/microsoft_press/new-book-modern-authentication-with-azure-active-directory-for-web-applications)、[使用 Redis 作為 ADAL 權杖快取](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
 | **步驟** | <p>ADAL (Active Directory 驗證程式庫) 使用的預設快取是依賴靜態存放區、整個程序可用的記憶體內部快取。 雖然這適用於原生應用程式，但不會針對中間層和後端應用程式進行調整，原因如下︰</p><ul><li>這些應用程式是由許多使用者同時存取。 在相同存放區中儲存所有的存取權杖會在大規模運作時產生隔離問題並帶來挑戰︰許多使用者 (各自有許多權杖) 的數字和代價很高的查閱作業，可能表示許多使用者，每個都有最多的語彙基元為代表他們執行的應用程式存取的資源</li><li>這些應用程式通常會部署在分散式拓撲上，其中多個節點必須存取相同的快取</li><li>快取的權杖必須在程序回收和停用後存留下來</li></ul><p>基於上述原因，實作 Web 應用程式時，建議以可調整的替代項目 (例如 Azure Cache for Redis) 覆寫預設 ADAL 權杖快取。</p>|
 
 ## <a name="ensure-that-tokenreplaycache-is-used-to-prevent-the-replay-of-adal-authentication-tokens"></a><a id="tokenreplaycache-adal"></a>確保使用 TokenReplayCache 來防止重新執行 ADAL 驗證權杖
@@ -374,7 +374,7 @@ ms.locfileid: "91317985"
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [Modern Authentication with Azure Active Directory for Web Applications](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
+| **參考**              | [Modern Authentication with Azure Active Directory for Web Applications](/archive/blogs/microsoft_press/new-book-modern-authentication-with-azure-active-directory-for-web-applications) |
 | **步驟** | <p>TokenReplayCache 屬性可讓開發人員為了確認沒有權杖可使用一次以上，而定義權杖重新執行快取以及可用來儲存權杖的存放區。</p><p>這是對抗常見攻擊 (恰如其名的權杖重新執行攻擊) 的措施︰攔截登入時所傳送權杖的攻擊者可能會試著將權杖再次傳送至應用程式 (「重新執行」它)，以便建立新的工作階段。 例如，在 OIDC 程式碼授與流程中，使用者驗證成功後，對信賴憑證者之 "/signin-oidc" 端點的要求是由 "id_token"、"code" 和 "state" 參數所構成。</p><p>信賴憑證者會驗證此要求並建立新的工作階段。 如果敵人擷取此要求並重新執行它，敵人即可建立成功的工作階段並欺騙使用者。 OpenID Connect 中存在的 nonce 可以限制，但未完全消除可成功發動攻擊的情況。 若要保護其應用程式，開發人員可以提供 ITokenReplayCache 的實作，並將執行個體指派給 TokenReplayCache。</p>|
 
 ### <a name="example"></a>範例
@@ -435,7 +435,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
+| **參考**              | [ADAL](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) |
 | **步驟** | <p>Azure AD 驗證程式庫 (ADAL) 可讓用戶端應用程式開發人員輕鬆地向雲端或內部部署 Active Directory (AD) 驗證使用者，然後取得存取權杖來保護 API 呼叫。</p><p>ADAL 有許多功能可使開發人員的驗證更容易，例如非同步支援、儲存存取權杖和更新權杖的可設定權杖快取、當存取權杖到期並且更新權杖可供使用時自動更新權杖等等。</p><p>藉由處理大部分的複雜度，ADAL 可以幫助開發人員專注於他們的應用程式中的商務邏輯，並輕鬆地保護資源而不需成為安全性方面的專家。 不同的程式庫適用于 .NET、JavaScript (用戶端和 Node.js) 、Python、iOS、Android 和 JAVA。</p>|
 
 ## <a name="authenticate-devices-connecting-to-the-field-gateway"></a><a id="authn-devices-field"></a>驗證連線到現場閘道的裝置
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型、C#、Node.JS  |
 | **屬性**              | N/A、閘道選擇 - Azure IoT 中樞 |
-| **參考**              | N/A、 [使用 .net 的 Azure IoT 中樞](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、 [與 Iot 中樞和 Node JS 消費者入門](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、 [使用 SAS 和憑證來保護 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、 [Git 存放庫](https://github.com/Azure/azure-iot-sdks/) |
+| **參考**              | N/A、 [使用 .net 的 Azure IoT 中樞](../../iot-hub/quickstart-send-telemetry-dotnet.md)、 [與 Iot 中樞和 Node JS 消費者入門](../../iot-hub/quickstart-send-telemetry-node.md)、 [使用 SAS 和憑證來保護 IoT](../../iot-hub/iot-hub-devguide-security.md)、 [Git 存放庫](https://github.com/Azure/azure-iot-sdks/) |
 | **步驟** | <ul><li>**泛型︰** 使用傳輸層安全性 (TLS) 或 IPSec 來驗證裝置。 如果裝置無法處理完整的非對稱密碼編譯，則基礎結構應該支援在這些裝置上使用預先共用金鑰 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 建立 DeviceClient 執行個體時，Create 方法預設會建立一個使用 AMQP 通訊協定來與 IoT 中樞通訊的 DeviceClient 執行個體。 若要使用 HTTPS 通訊協定，請使用可讓您指定通訊協定的 Create 方法的覆寫。 若您使用 HTTPS 通訊協定，您也應該將 `Microsoft.AspNet.WebApi.Client` Nuget 套件新增至您的專案，以包含 `System.Net.Http.Formatting` 命名空間。</li></ul>|
 
 ### <a name="example"></a>範例
@@ -557,7 +557,7 @@ await deviceClient.SendEventAsync(message);
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | 閘道選擇 - Azure IoT 中樞 |
-| **參考**              | [Azure IoT 中樞安全性權杖](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
+| **參考**              | [Azure IoT 中樞安全性權杖](../../iot-hub/iot-hub-devguide-security.md) |
 | **步驟** | 使用每一裝置驗證認證搭配以裝置金鑰或用戶端憑證為基礎的 SaS 權杖，而不是 IoT 中樞共用存取原則。 這可防止其他人在一個裝置或現場閘道上重複使用驗證權杖 |
 
 ## <a name="ensure-that-only-the-required-containers-and-blobs-are-given-anonymous-read-access"></a><a id="req-containers-anon"></a>確保只有必要的容器和 blob 會取得匿名讀取權限
@@ -568,7 +568,7 @@ await deviceClient.SendEventAsync(message);
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | StorageType - Blob |
-| **參考**              | [管理對容器與 Blob 的匿名讀取權限](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[共用存取簽章，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
+| **參考**              | [管理對容器與 Blob 的匿名讀取權限](../../storage/blobs/anonymous-read-access-configure.md)、[共用存取簽章，第 1 部分：了解 SAS 模型](../../storage/common/storage-sas-overview.md) |
 | **步驟** | <p>根據預設，可能只有儲存體帳戶的擁有者能存取容器及其內部的任何 Blob。 若要為匿名使用者授與容器及其 Blob 的讀取權限，您可以設定容器權限以允許公用存取。 匿名使用者可以讀取可公開存取之容器內的 Blob，而不需驗證要求。</p><p>容器會提供下列選項來管理容器存取：</p><ul><li>完整的公開讀取權限：可以透過匿名要求讀取容器和 Blob 資料。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。</li><li>僅對 Blob 有公開讀取權限：您可以透過匿名要求讀取此容器內的 Blob 資料，但您無法使用容器資料。 用戶端無法透過匿名要求列舉容器內的 Blob</li><li>沒有公開讀取權限：只有帳戶擁有者可以讀取容器和 Blob 資料。</li></ul><p>匿名存取適用於某些 Blob 應永遠可供匿名讀取存取的狀況。 如需更精密的控制，您可以建立共用存取簽章，以便在指定的時間間隔內，使用不同的權限來委派受限制的存取權。 確保容器和 blob (可能包含敏感性資料) 不會意外取得匿名存取權</p>|
 
 ## <a name="grant-limited-access-to-objects-in-azure-storage-using-sas-or-sap"></a><a id="limited-access-sas"></a>使用 SAS 或 SAP 對 Azure 儲存體中的物件授與有限的存取權
@@ -579,5 +579,5 @@ await deviceClient.SendEventAsync(message);
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A |
-| **參考**              | [共用存取簽章，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[共用存取簽章，第 2 部分：透過 Blob 儲存體建立及使用 SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[如何使用共用存取簽章和預存存取原則將存取權委派給帳戶中的物件](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
+| **參考**              | [共用存取簽章，第 1 部分：了解 SAS 模型](../../storage/common/storage-sas-overview.md)、[共用存取簽章，第 2 部分：透過 Blob 儲存體建立及使用 SAS](../../storage/common/storage-sas-overview.md)、[如何使用共用存取簽章和預存存取原則將存取權委派給帳戶中的物件](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **步驟** | <p>若要在無需公開帳戶存取金鑰的情況下，將儲存體帳戶中物件的限制存取授與其他用戶端，則使用共用存取簽章 (SAS) 會是個佷有效的方式。 SAS 是一種 URI，URI 會在其查詢參數中包含通過驗證存取儲存體資源的所有必要資訊。 若要使用 SAS 存取儲存體資源，用戶端只需在適當的建構函式或方法中傳入 SAS 即可。</p><p>當您想要將儲存體帳戶中的資源存取權提供給無法放心託付帳戶金鑰的用戶端時，您可以使用 SAS。 您的儲存體帳戶金鑰包括主要和次要金鑰，兩者皆可授與帳戶及帳戶內所有資源的系統管理存取權。 提供任一帳戶金鑰都會讓您的帳戶受到惡意或粗心使用的可能性。 共用存取簽章提供一個安全的替代方式，無需帳戶金鑰便可讓其他用戶端根據他們被授與的權限，來讀取、寫入及刪除儲存體帳戶中的資料。</p><p>如果您每次都有一組類似的邏輯參數，使用預存存取原則 (SAP) 會是個不錯的做法。 因為使用衍生自預存存取原則的 SAS 讓您能夠立即撤銷該 SAS，所以建議的最佳做法是一律儲存預存存取原則 (如果可能)。</p>|

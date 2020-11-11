@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: c26acb1460516781b34a5dcc861164e9ef87a37a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331619"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518096"
 ---
 # <a name="security-frame-session-management"></a>安全性架構︰工作階段管理
 | 產品/服務 | 發行項 |
@@ -159,8 +159,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | EnvironmentType - OnPrem |
-| **參考**              | [httpCookies 元素 (ASP.NET 設定結構描述)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、[HttpCookie.Secure 屬性](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
-| **步驟** | Cookie 通常只能供其範圍所在的網域存取。 不幸的是，「網域」的定義不包含通訊協定，因此透過 HTTPS 所建立的 Cookie 可透過 HTTP 來存取。 「安全」的屬性會對瀏覽器指出 Cookie 只應透過 HTTPS 提供使用。 請確定所有透過 HTTPS 設定的 Cookie 會使用**安全**的屬性。 藉由將 requireSSL 屬性設為 true 可在 web.config 檔案中強制執行這項需求。 這是偏好的方法，因為它會強制對所有目前和未來的 Cookie 執行**安全**的屬性，而不需要進行任何額外的程式碼變更。|
+| **參考**              | [httpCookies 元素 (ASP.NET 設定結構描述)](/previous-versions/dotnet/netframework-4.0/ms228262(v=vs.100))、[HttpCookie.Secure 屬性](/dotnet/api/system.web.httpcookie.secure) |
+| **步驟** | Cookie 通常只能供其範圍所在的網域存取。 不幸的是，「網域」的定義不包含通訊協定，因此透過 HTTPS 所建立的 Cookie 可透過 HTTP 來存取。 「安全」的屬性會對瀏覽器指出 Cookie 只應透過 HTTPS 提供使用。 請確定所有透過 HTTPS 設定的 Cookie 會使用 **安全** 的屬性。 藉由將 requireSSL 屬性設為 true 可在 web.config 檔案中強制執行這項需求。 這是偏好的方法，因為它會強制對所有目前和未來的 Cookie 執行 **安全** 的屬性，而不需要進行任何額外的程式碼變更。|
 
 ### <a name="example"></a>範例
 ```csharp
@@ -221,7 +221,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 階段**               | Build |  
 | **適用的技術** | Web Form |
 | **屬性**              | N/A  |
-| **參考**              | [FormsAuthentication.RequireSSL 屬性](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **參考**              | [FormsAuthentication.RequireSSL 屬性](/dotnet/api/system.web.security.formsauthentication.requiressl) |
 | **步驟** | RequireSSL 屬性值是使用組態元素的 requireSSL 屬性來設定於 ASP.NET 應用程式的組態檔中。 您可以在 ASP.NET 應用程式的 Web.config 檔案中指定傳輸層安全性 (TLS) （先前稱為 SSL (安全通訊端層) ）是否需要藉由設定 requireSSL 屬性將表單驗證 cookie 傳回伺服器。|
 
 ### <a name="example"></a>範例 
@@ -238,7 +238,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 階段**               | Build |  
 | **適用的技術** | MVC5 |
 | **屬性**              | EnvironmentType - OnPrem |
-| **參考**              | [Windows Identity Foundation (WIF) 組態 - 單元二](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **參考**              | [Windows Identity Foundation (WIF) 組態 - 單元二](/archive/blogs/alikl/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler) |
 | **步驟** | 若要設定 FedAuth Cookie 的 httpOnly 屬性，hideFromCsript 屬性值應該設定為 True。 |
 
 ### <a name="example"></a>範例
@@ -292,7 +292,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 ```
 
 ### <a name="example"></a>範例
-在此同時，Html.AntiForgeryToken() 會給予訪客名為 __RequestVerificationToken 的 Cookie，其值和上面顯示的隨機隱藏值相同。 接下來，若要驗證連入的表單張貼，請將 [ValidateAntiForgeryToken] 篩選新增至目標動作方法。 例如：
+在此同時，Html.AntiForgeryToken() 會給予訪客名為 __RequestVerificationToken 的 Cookie，其值和上面顯示的隨機隱藏值相同。 接下來，若要驗證連入的表單張貼，請將 [ValidateAntiForgeryToken] 篩選新增至目標動作方法。 例如︰
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -358,7 +358,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **SDL 階段**               | Build |  
 | **適用的技術** | Web Form |
 | **屬性**              | N/A  |
-| **參考**              | [利用 ASP.NET 內建功能來避開 Web 攻擊](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **參考**              | [利用 ASP.NET 內建功能來避開 Web 攻擊](/previous-versions/dotnet/articles/ms972969(v=msdn.10)#securitybarriers_topic2) |
 | **步驟** | 您可以降低 WebForm 型應用程式中的 CSRF 攻擊風險，方法是將 ViewStateUserKey 設為會隨每個使用者而不同的隨機字串，使用者識別碼、或者最好是工作階段識別碼。 基於諸多技術和社交方面的原因，工作階段識別碼會比較適合，因為工作階段識別碼無法預料、會逾時，而且會隨每個使用者而有所不同。|
 
 ### <a name="example"></a>範例
@@ -378,7 +378,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [HttpSessionState.Timeout 屬性](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **參考**              | [HttpSessionState.Timeout 屬性](/dotnet/api/system.web.sessionstate.httpsessionstate.timeout) |
 | **步驟** | 會話超時表示當使用者未在 web 伺服器) 所定義的間隔 (的間隔期間，在網站上執行任何動作時所發生的事件。 伺服器端上的事件會將使用者工作階段的狀態變更為「無效」(例如「不再被使用」)，並指示網頁伺服器終結它 (刪除其中包含的所有資料)。 下列程式碼範例會在 Web.config 檔案中將逾時工作階段屬性設定為 15 分鐘。|
 
 ### <a name="example"></a>範例
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 階段**               | Build |  
 | **適用的技術** | Web Form |
 | **屬性**              | N/A  |
-| **參考**              | [驗證 (ASP.NET 設定架構) 的 Forms 元素 ](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **參考**              | [驗證 (ASP.NET 設定架構) 的 Forms 元素 ](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
 | **步驟** | 將表單驗證票證 Cookie 逾時設定為 15 分鐘|
 
 ### <a name="example"></a>範例
@@ -536,7 +536,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 ```
 
 ### <a name="example"></a>範例
-在此同時，Html.AntiForgeryToken() 會給予訪客名為 __RequestVerificationToken 的 Cookie，其值和上面顯示的隨機隱藏值相同。 接下來，若要驗證連入的表單張貼，請將 [ValidateAntiForgeryToken] 篩選新增至目標動作方法。 例如：
+在此同時，Html.AntiForgeryToken() 會給予訪客名為 __RequestVerificationToken 的 Cookie，其值和上面顯示的隨機隱藏值相同。 接下來，若要驗證連入的表單張貼，請將 [ValidateAntiForgeryToken] 篩選新增至目標動作方法。 例如︰
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()

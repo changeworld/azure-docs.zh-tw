@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f68bc5e4604f35f9c4c45cd3e38ddaf8d24cd03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41532e554623c47e9728c6ccab92d99500e42021
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004454"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517422"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架︰例外狀況管理 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -38,7 +38,7 @@ ms.locfileid: "89004454"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、NET Framework 3 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **步驟** | Windows Communication Framework (WCF) 服務可以設定為公開偵錯資訊。 偵錯資訊不應用於生產環境。 `<serviceDebug>` 標籤可定義是否啟用 WCF 服務的偵錯資訊功能。 如果屬性 includeExceptionDetailInFaults 設為 true，來自應用程式的例外狀況資訊會傳回給用戶端。 攻擊者可以利用他們從偵錯輸出取得的其他資訊，裝載以架構、資料庫或應用程式所用其他資源做為目標的攻擊。 |
 
 ### <a name="example"></a>範例
@@ -62,7 +62,7 @@ ms.locfileid: "89004454"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | 泛型、NET Framework 3 |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **步驟** | 對外公開的服務相關資訊可提供重要見解給攻擊者，讓其了解如何利用服務。 `<serviceMetadata>` 標籤會啟用中繼資料發佈功能。 服務中繼資料可能包含不應開放存取的敏感性資訊。 至少，請只允許受信任使用者存取中繼資料，並確定不會公開不必要的資訊。 最好是完全停用發佈中繼資料的功能。 安全的 WCF 組態不會包含 `<serviceMetadata>` 標籤。 |
 
 ## <a name="ensure-that-proper-exception-handling-is-done-in-aspnet-web-api"></a><a id="exception"></a>確定有在 ASP.NET Web API 中正確處理例外狀況
@@ -202,7 +202,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [編輯 ASP.NET 錯誤頁面設定對話方塊](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **參考**              | [編輯 ASP.NET 錯誤頁面設定對話方塊](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd569096(v=ws.10)) |
 | **步驟** | <p>當 ASP.NET 應用程式失敗並造成 HTTP/1.x 500 內部伺服器錯誤時，或當功能組態 (例如要求篩選) 避免顯示頁面時，就會產生錯誤訊息。 系統管理員可以選擇應用程式應該對用戶端顯示容易理解的訊息、對用戶端顯示詳細的錯誤訊息，或只對本機主機顯示詳細的錯誤訊息。 web.config 中的 `<customErrors>` 標籤有三種模式︰</p><ul><li>**開啟：** 指定要啟用自訂錯誤。 如果未指定任何 defaultRedirect 屬性，則使用者會看到泛型錯誤。 自訂錯誤會顯示給遠端用戶端和本機主機</li><li>**關閉︰** 指定要停用自訂錯誤。 詳細的 ASP.NET 錯誤會顯示給遠端用戶端和本機主機</li><li>**RemoteOnly：** 指定自訂錯誤只顯示給遠端用戶端，而將 ASP.NET 錯誤顯示給本機主機。 這是預設值。</li></ul><p>開啟應用程式/網站的 `web.config` 檔案，並確定標籤已定義 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>設定要在 IIS 中零售的部署方法
@@ -213,7 +213,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [部署元素 (ASP.NET 設定結構描述)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
+| **參考**              | [部署元素 (ASP.NET 設定結構描述)](/previous-versions/dotnet/netframework-2.0/ms228298(v=vs.80)) |
 | **步驟** | <p>`<deployment retail>` 參數是要供生產 IIS 伺服器使用。 這個參數可用來協助應用程式以最佳效能和最低安全性資訊外洩可能性來執行，方法是停用應用程式對頁面產生追蹤輸出的能力、停用對使用者顯示詳細錯誤訊息的能力，以及停用偵錯參數。</p><p>在開發期間，經常會啟用專供開發人員使用的參數和選項，例如失敗要求追蹤和偵錯。 建議您將任何生產伺服器上的部署方法設為零售。 開啟 machine.config 檔，並確定 `<deployment retail="true" />` 維持設定為 true。</p>|
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>例外狀況應安全地失敗
@@ -268,4 +268,4 @@ public HttpResponseMessage PostProduct(Product item)
             }
         }
 ```
-如果發生某些例外狀況，上述方法一律會傳回 True。 如果使用者提供格式不正確的 URL，瀏覽器加以採用但 `Uri()` 建構函式未採用，就會擲回例外狀況，並將受害者導向有效但格式不正確的 URL。 
+如果發生某些例外狀況，上述方法一律會傳回 True。 如果使用者提供格式不正確的 URL，瀏覽器加以採用但 `Uri()` 建構函式未採用，就會擲回例外狀況，並將受害者導向有效但格式不正確的 URL。

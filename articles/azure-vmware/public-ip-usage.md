@@ -3,12 +3,12 @@ title: 如何使用 Azure VMware 解決方案中的公用 IP 功能
 description: 本文說明如何使用 Azure 虛擬 WAN 中的公用 IP 功能。
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504402"
+ms.locfileid: "94517898"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>如何使用 Azure VMware 解決方案中的公用 IP 功能
 
@@ -39,14 +39,14 @@ ms.locfileid: "94504402"
 
 :::image type="content" source="media/public-ip-usage/public-ip-architecture-diagram.png" alt-text="公用 IP 架構圖表" border="false" lightbox="media/public-ip-usage/public-ip-architecture-diagram.png":::
 
-架構圖顯示 Azure VMware 解決方案環境中裝載的 web 伺服器，並使用 RFC1918 的私人 IP 位址進行設定。  Web 服務可透過虛擬 WAN 公用 IP 功能提供給網際網路。  公用 IP 通常是在 Azure 防火牆中轉譯的目的地 NAT。 使用 DNAT 規則時，防火牆原則會將公用 IP 位址要求轉譯為具有埠 (web 伺服器) 的私人位址。
+架構圖顯示 Azure VMware 解決方案環境中裝載的 web 伺服器，並使用 RFC1918 的私人 IP 位址進行設定。  Web 服務可透過虛擬 WAN 公用 IP 功能提供給網際網路。  公用 IP 通常是在 Azure 防火牆中轉譯的目的地 NAT。 使用 DNAT 規則，防火牆原則會將公用 IP 位址要求轉譯為私人位址 (web 伺服器) 與埠。
 
 使用者要求會叫用公用 IP 上的防火牆，然後再使用 Azure 防火牆中的 DNAT 規則，將其轉譯為私人 IP。 防火牆會檢查 NAT 資料表，如果要求符合某個專案，則會將流量轉送至 Azure VMware 解決方案環境中的已轉譯位址和埠。
 
 Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆，然後防火牆會將資訊轉送至公用 IP 位址上的使用者。
 
 ## <a name="test-case"></a>測試案例
-在此案例中，您必須將 IIS 網頁伺服器發佈到網際網路。 使用 Azure VMware 解決方案中的公用 IP 功能，在公用 IP 位址上發佈網站。  我們將在防火牆上設定 NAT 規則，並使用具有公用 IP 的 web 伺服器) 來存取 Azure VMware 解決方案資源 (Vm。
+在此案例中，您會將 IIS web 伺服器發佈至網際網路。 使用 Azure VMware 解決方案中的公用 IP 功能，在公用 IP 位址上發佈網站。  您也會在防火牆上設定 NAT 規則，並使用具有公用 IP 的 web 伺服器) 來存取 Azure VMware 解決方案資源 (Vm。
 
 ## <a name="deploy-virtual-wan"></a>部署虛擬 WAN
 
@@ -66,9 +66,9 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 接受預設值或加以變更，然後選取 [ **建立** ]。
 
-   - 虛擬廣域網路資源群組
+   - 虛擬 WAN 資源群組
 
-   - 虛擬廣域網路名稱
+   - 虛擬 WAN 名稱
 
    - 虛擬中樞位址區塊 (使用新的非重迭 IP 範圍) 
 
@@ -142,7 +142,7 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 從清單中選取一個中樞，然後選取 [ **新增** ]。
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="螢幕擷取畫面，顯示將轉換成 Scecured 虛擬中樞的選定中樞。" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="螢幕擷取畫面，顯示將轉換為安全虛擬中樞的選定中樞。" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. 選取 [下一步:標籤]。 
 

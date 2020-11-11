@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: c43b85f3c4b8d1b750e9f97e0be812bee683c702
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984cdfb3e60717f7632ea1fdcd05a4681dd6a1fd
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600784"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517932"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 的流量管理員子網覆寫
 
@@ -34,11 +34,9 @@ ms.locfileid: "90600784"
 
 若要建立流量管理員子網覆寫，您可以使用 Azure CLI 將覆寫的子網新增至流量管理員端點。
 
-## <a name="azure-cli"></a>Azure CLI
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您選擇在本機安裝和使用 CLI，在執行本教學課程時，您必須執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>使用子網覆寫來更新流量管理員端點。
 使用 Azure CLI 以 [az network 流量管理員端點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)來更新您的端點。
@@ -61,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-您可以使用 **--remove**選項執行[az network 流量管理員端點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)來移除 IP 位址範圍。
+您可以使用 **--remove** 選項執行 [az network 流量管理員端點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)來移除 IP 位址範圍。
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \

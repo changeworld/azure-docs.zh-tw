@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9a68ec82ea5e924916cbe8b07c11a4f8f62199a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317951"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517479"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架︰組態管理 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -88,7 +88,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [ASP.NET 偵錯概要](https://msdn.microsoft.com/library/ms227556.aspx)、[ASP.NET 追蹤概觀](https://msdn.microsoft.com/library/bb386420.aspx)、[HOW TO：啟用 ASP.NET 應用程式的追蹤](https://msdn.microsoft.com/library/0x5wc973.aspx)、[HOW TO：啟用 ASP.NET 應用程式的偵錯](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **參考**              | [ASP.NET 偵錯概要](/previous-versions/ms227556(v=vs.140))、[ASP.NET 追蹤概觀](/previous-versions/bb386420(v=vs.140))、[HOW TO：啟用 ASP.NET 應用程式的追蹤](/previous-versions/0x5wc973(v=vs.140))、[HOW TO：啟用 ASP.NET 應用程式的偵錯](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **步驟** | 啟用頁面的追蹤後，每個要求該頁面的瀏覽器也會取得包含內部伺服器狀態和工作流程相關資料的追蹤資訊。 這項資訊可能是安全性相關資訊。 啟用頁面偵錯後，在伺服器上發生的錯誤會導致對瀏覽器呈現完整堆疊追蹤資料。 該資料可能會公開有關伺服器工作流程的安全性相關資訊。 |
 
 ## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>僅從信任的來源存取第三方 javascript
@@ -110,7 +110,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [OWASP 點擊劫持防禦功能提要](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)、[IE 內部 - 使用 X-Frame-Options 對抗點擊劫持](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **參考**              | [OWASP 點擊劫持防禦功能提要](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)、[IE 內部 - 使用 X-Frame-Options 對抗點擊劫持](/archive/blogs/ieinternals/combating-clickjacking-with-x-frame-options) |
 | **步驟** | <p>點擊劫持 (Clickjacking) 也稱為「UI 偽裝攻擊」，當使用者打算按一下最上層頁面時，攻擊者會使用多重透明或不透明層級來誘騙使用者按一下另一個頁面上的按鈕或連結。</p><p>使用 iframe 製作惡意頁面，以載入受害者的頁面，即可達成此分層處理。 因此，攻擊者會「劫持」頁面所需的點擊，並將其路由傳送至另一個頁面，該頁面最可能由另一個應用程式、網域或兩者所擁有。 若要避免點擊劫持攻擊，請設定適當的 X-Frame-Options HTTP 回應標頭，以指示瀏覽器不允許從其他網域進行框架處理</p>|
 
 ### <a name="example"></a>範例
@@ -213,7 +213,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [IE8 Security Part V：完善的保護](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)、[MIME 類型](https://en.wikipedia.org/wiki/Mime_type) |
+| **參考**              | [IE8 Security Part V：完善的保護](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)、[MIME 類型](https://en.wikipedia.org/wiki/Mime_type) |
 | **步驟** | X-Content-Type-Options 標頭是可讓開發人員指定不應對其內容探查 MIME 的 HTTP 標頭。 此標頭是設計用來降低 MIME 探查攻擊的風險。 對於可能包含使用者可控制內容的每個頁面，您必須使用 HTTP 標頭 Header X-Content-Type-Options:nosniff。 若要為應用程式中的所有頁面全域啟用必要標頭，您可以執行下列其中一項︰|
 
 ### <a name="example"></a>範例
@@ -289,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure、OnPrem |
 | **屬性**              | N/A、SQL 版本 - V12 |
-| **參考**              | [如何設定 Azure SQL Database 防火牆](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、 [設定資料庫引擎存取的 Windows 防火牆](https://msdn.microsoft.com/library/ms175043) |
+| **參考**              | [如何設定 Azure SQL Database 防火牆](../../azure-sql/database/firewall-configure.md)、 [設定資料庫引擎存取的 Windows 防火牆](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) |
 | **步驟** | 防火牆系統有助於預防未經授權存取電腦資源。 若要透過防火牆存取 SQL Server 資料庫引擎的執行個體，您必須在執行 SQL Server 的電腦上設定防火牆以允許存取 |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>確保在 ASP.NET Web API 上啟用 CORS 的情況下只允許信任的原始來源
@@ -300,7 +300,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL 階段**               | Build |  
 | **適用的技術** | MVC 5 |
 | **屬性**              | N/A  |
-| **參考**              | [在 ASP.NET Web API 2 中啟用跨源要求](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 中的 CORS 支援](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **參考**              | [在 ASP.NET Web API 2 中啟用跨源要求](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 中的 CORS 支援](/archive/msdn-magazine/2013/december/asp-net-web-api-cors-support-in-asp-net-web-api-2) |
 | **步驟** | <p>瀏覽器安全性可防止網頁對另一個網域提出 AJAX 要求。 這項限制也稱為同源原則，可防止惡意網站從另一個網站讀取敏感性資料。 不過，有時候可能需要安全地公開其他網站可以取用的 API。 跨原始來源資源共用 (CORS) 是 W3C 標準，可讓伺服器放寬同源原則。</p><p>使用 CORS，伺服器可以明確允許某些跨源要求，然而拒絕其他要求。 相較於早期技術 (例如 JSONP)，CORS 較為安全且更具彈性。</p>|
 
 ### <a name="example"></a>範例
@@ -488,7 +488,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [How To:在 ASP.NET 2.0 中使用 DPAPI 加密組態區段](https://msdn.microsoft.com/library/ff647398.aspx)、[指定受保護的組態提供者](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[使用 Azure Key Vault 來保護應用程式的機密資訊](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **參考**              | [How To:在 ASP.NET 2.0 中使用 DPAPI 加密組態區段](/previous-versions/msp-n-p/ff647398(v=pandp.10))、[指定受保護的組態提供者](/previous-versions/68ze1hb2(v=vs.140))、[使用 Azure Key Vault 來保護應用程式的機密資訊](/azure/architecture/multitenant-identity/web-api) |
 | **步驟** | 組態檔 (例如 Web.config、appsettings.json) 常會用來敏感性資訊，包括使用者名稱、密碼、資料庫連接字串和加密金鑰。 如果您不保護這項資訊，您的應用程式會很容易受到攻擊者或惡意使用者攻擊，而被其取得敏感性資訊，例如帳戶使用者名稱和密碼、資料庫名稱和伺服器名稱。 請根據部署類型 (Azure/內部部署)，使用 DPAPI 或服務 (例如 Azure Key Vault) 加密組態檔的敏感性區段。 |
 
 ## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>確保使用強式認證保護所有系統管理介面
@@ -510,7 +510,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [在 Windows 10 IoT Core 上啟用安全開機和 BitLocker 裝置加密](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
+| **參考**              | [在 Windows 10 IoT Core 上啟用安全開機和 BitLocker 裝置加密](/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **步驟** | 「UEFI 安全開機」會將系統限制為只允許執行指定的授權單位所簽署的二進位檔。 這項功能可防止不明程式碼在平台上執行並可能使其安全性狀態變弱。 啟用「UEFI 安全開機」並限制受託簽署程式碼的憑證授權單位清單。 使用其中一個受信任的授權單位簽署在裝置上部署的所有程式碼。 |
 
 ## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>使用 Bitlocker 將 IoT 裝置的 OS 和其他磁碟分割加密
@@ -565,7 +565,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | 閘道選擇 - Azure IoT 中樞 |
-| **參考**              | [IoT 中樞裝置管理概觀](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[如何更新裝置韌體](../../iot-hub/tutorial-firmware-update.md) |
+| **參考**              | [IoT 中樞裝置管理概觀](../../iot-hub/iot-hub-device-management-overview.md)、[如何更新裝置韌體](../../iot-hub/tutorial-firmware-update.md) |
 | **步驟** | LWM2M 是來自 Open Mobile Alliance 且適用於 IoT 裝置管理的通訊協定。 Azure IoT 裝置管理可讓您使用裝置工作來與實體裝置進行互動。 確保雲端閘道會實作相關程序，以使用 Azure IoT 中樞裝置管理讓裝置和其他組態資料常保最新狀態。 |
 
 ## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>確保裝置已根據組織的原則設定端點安全性控制項
@@ -587,7 +587,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [Azure 儲存體安全性指南 - 管理儲存體帳戶金鑰](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
+| **參考**              | [Azure 儲存體安全性指南 - 管理儲存體帳戶金鑰](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **步驟** | <p>金鑰儲存體︰建議將 Azure Key Vault 中的 Azure 儲存體存取金鑰儲存為密碼，並且讓應用程式從 Key Vault 擷取金鑰。 此建議的原因如下︰</p><ul><li>應用程式永遠都不需要將儲存體金鑰硬式編碼於組態檔中，這樣會移除某人不需特定權限即可存取金鑰的途徑</li><li>可以使用 Azure Active Directory 控制金鑰的存取。 這表示帳戶擁有者可以將存取權授予少數需要從 Azure Key Vault 擷取金鑰的應用程式。 若未特別授與權限，其他應用程式將無法存取金鑰</li><li>重新產生金鑰︰基於安全性考量，建議施行相關程序來重新產生 Azure 儲存體存取金鑰。 Azure 儲存體安全性指南參考文章會記載有關為何及如何規劃重新產生金鑰的詳細資訊</li></ul>|
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>確保在 Azure 儲存體上啟用 CORS 的情況下只允許信任的來源
@@ -598,7 +598,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [Azure 儲存體服務的 CORS 支援](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
+| **參考**              | [Azure 儲存體服務的 CORS 支援](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services) |
 | **步驟** | Azure 儲存體可讓您啟用 CORS – 跨原始來源資源共用。 對於每個儲存體帳戶，您可以指定可存取該儲存體帳戶中之資源的網域。 根據預設，所有服務上都會停用 CORS。 您可以使用 REST API 或儲存體用戶端程式庫，呼叫其中一個方法來設定服務原則，藉以啟用 CORS。 |
 
 ## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>啟用 WCF 的服務節流功能
@@ -609,7 +609,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | Build |  
 | **適用的技術** | .NET Framework 3 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com) |
 | **步驟** | <p>未設定系統資源的使用限制，可能會導致資源耗盡，而最後導致拒絕服務。</p><ul><li>**說明︰** Windows Communication Foundation (WCF) 提供服務要求節流的功能。 允許太多的用戶端要求可能會淹沒系統及耗盡其資源。 另一方面，只允許服務有少數要求可防止合法使用者使用此服務。 每項服務應個別調整並設定為允許適當的資源數量。</li><li>**建議** 啟用 WCF 的服務節流功能以及為應用程式設定適當的限制。</li></ul>|
 
 ### <a name="example"></a>範例
@@ -632,7 +632,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 階段**               | Build |  
 | **適用的技術** | .NET Framework 3 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com) |
 | **步驟** | 中繼資料可協助攻擊者了解系統及規劃攻擊形式。 可以將 WCF 服務設定為公開中繼資料。 中繼資料可提供詳細的服務描述資訊，且不得在生產環境中廣播。 ServiceMetaData 類別的 `HttpGetEnabled` / `HttpsGetEnabled` 屬性會定義服務是否會公開中繼資料 | 
 
 ### <a name="example"></a>範例

@@ -7,12 +7,12 @@ ms.date: 05/06/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f598ed3e2aef2f53b90b213d0bd1b002f56bd30c
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068106"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517745"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 設定 Azure 映射產生器服務許可權
 
@@ -22,7 +22,7 @@ Azure 映射產生器服務需要先設定許可權和許可權，才能建立�
 > Azure Image Builder 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="register-the-features"></a>註冊各項功能
 
@@ -110,7 +110,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 下列範例會從上一節所述的動作建立 Azure 角色定義。 這些範例會套用至資源群組層級。 評估並測試範例是否夠細微，以滿足您的需求。 針對您的案例，您可能需要將它精簡至特定的共用映射庫。
 
-影像動作允許讀取和寫入。 決定適合您環境的功能。 例如，建立角色以允許 Azure 映射產生器讀取資源群組 *範例-rg-1* 中的映射，並將影像寫入資源群組 *範例-rg-2*。
+影像動作允許讀取和寫入。 決定適合您環境的功能。 例如，建立角色以允許 Azure 映射產生器讀取資源群組 *範例-rg-1* 中的映射，並將影像寫入資源群組 *範例-rg-2* 。
 
 ### <a name="custom-image-azure-role-example"></a>自訂映射 Azure 角色範例
 

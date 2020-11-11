@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8c3b47659486ef32bdb0a9a26d1b0f39c5bcd7a9
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949746"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518119"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全性架構︰敏感性資料 | 風險降低 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
 | **電腦信任邊界** | <ul><li>[如果二進位檔包含機密資訊，請確定這些二進位檔已進行模糊處理](#binaries-info)</li><li>[請考慮使用加密的檔案系統 (EFS) 用來保護機密的使用者特定資料](#efs-user)</li><li>[確定應用程式儲存在檔案系統上的敏感性資料已加密](#filesystem)</li></ul> | 
 | **Web 應用程式** | <ul><li>[確定瀏覽器上不會快取敏感性內容](#cache-browser)</li><li>[加密包含敏感性資料的 Web 應用程式組態檔區段](#encrypt-data)</li><li>[明確停用敏感性表單和輸入中的自動完成 HTML 屬性](#autocomplete-input)</li><li>[確定使用者畫面上顯示的敏感性資料已遮罩](#data-mask)</li></ul> | 
-| **Database** | <ul><li>[執行動態資料遮罩來限制敏感性資料暴露非特殊許可權的使用者](#dynamic-users)</li><li>[確定密碼是以 salted 雜湊格式儲存](#salted-hash)</li><li>[確定資料庫資料行中的敏感性資料已加密](#db-encrypted)</li><li>[確定已啟用資料庫層級加密 (TDE) ](#tde-enabled)</li><li>[確定資料庫備份已加密](#backup)</li></ul> | 
+| **資料庫** | <ul><li>[執行動態資料遮罩來限制敏感性資料暴露非特殊許可權的使用者](#dynamic-users)</li><li>[確定密碼是以 salted 雜湊格式儲存](#salted-hash)</li><li>[確定資料庫資料行中的敏感性資料已加密](#db-encrypted)</li><li>[確定已啟用資料庫層級加密 (TDE) ](#tde-enabled)</li><li>[確定資料庫備份已加密](#backup)</li></ul> | 
 | **Web API** | <ul><li>[確定與 Web API 相關的敏感性資料未儲存在瀏覽器的儲存體中](#api-browser)</li></ul> | 
 | Azure Document DB | <ul><li>[將儲存在 Azure Cosmos DB 中的敏感性資料加密](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS VM 信任邊界** | <ul><li>[使用 Azure 磁碟加密來加密虛擬機器所使用的磁片](#disk-vm)</li></ul> | 
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [How To:在 ASP.NET 2.0 中使用 DPAPI 加密組態區段](https://msdn.microsoft.com/library/ff647398.aspx)、[指定受保護的組態提供者](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[使用 Azure Key Vault 來保護應用程式的機密資訊](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **參考**              | [How To:在 ASP.NET 2.0 中使用 DPAPI 加密組態區段](/previous-versions/msp-n-p/ff647398(v=pandp.10))、[指定受保護的組態提供者](/previous-versions/68ze1hb2(v=vs.140))、[使用 Azure Key Vault 來保護應用程式的機密資訊](/azure/architecture/multitenant-identity/web-api) |
 | **步驟** | 組態檔 (例如 Web.config、appsettings.json) 常會用來敏感性資訊，包括使用者名稱、密碼、資料庫連接字串和加密金鑰。 如果您不保護這項資訊，您的應用程式會很容易受到攻擊者或惡意使用者攻擊，而被其取得敏感性資訊，例如帳戶使用者名稱和密碼、資料庫名稱和伺服器名稱。 請根據部署類型 (Azure/內部部署)，使用 DPAPI 或服務 (例如 Azure Key Vault) 加密組態檔的敏感性區段。 |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>明確停用敏感性表單和輸入內的自動完成 HTML 屬性
@@ -143,7 +143,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN︰自動完成屬性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自動完成](https://msdn.microsoft.com/library/ms533032.aspx)[HTML 清理弱點](https://technet.microsoft.com/security/bulletin/MS10-071)、[再次自動完成？！](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **參考**              | [MSDN︰自動完成屬性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自動完成](/previous-versions/windows/internet-explorer/ie-developer/)[HTML 清理弱點](/security-updates/SecurityBulletins/2010/ms10-071)、[再次自動完成？！](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **步驟** | 自動完成屬性會指定表單應開啟或關閉自動完成。 當自動完成開啟時，瀏覽器會根據使用者之前輸入的值自動填妥值。 例如，在表單中輸入新名稱和密碼並提交表單後，瀏覽器會詢問是否應儲存密碼。之後在顯示表單時，就會自動填入名稱和密碼或在輸入名稱時填妥。 具有本機存取權的攻擊者可從瀏覽器快取取得純文字密碼。 預設會啟用自動完成，但您必須明確地加以停用。 |
 
 ### <a name="example"></a>範例
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 階段**               | Build |  
 | **適用的技術** | Sql Azure、OnPrem |
 | **屬性**              | SQL 版本 - V12、SQL 版本 - MsSQL2016 |
-| **參考**              | [動態資料遮罩](https://msdn.microsoft.com/library/mt130841) |
+| **參考**              | [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking) |
 | **步驟** | 動態資料遮罩的目的在於限制機密限制的曝光，防止不該存取資料的使用者檢視該資料。 動態資料遮罩並不是用來防止資料庫使用者直接連接到資料庫，以及執行會讓機密資料片段曝光的全面查詢。 動態資料遮罩是為了補充其他 SQL Server 安全性功能 (稽核、加密、資料列層級安全性...)，因此強烈建議您搭配使用這項功能以便加強保護資料庫中的敏感性資料。 請注意，SQL Server 2016 (含) 以上版本和 Azure SQL Database 才支援此功能。 |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>確定密碼是以 salted 雜湊格式儲存
@@ -195,7 +195,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | SQL 版本 - 全部 |
-| **參考**              | [加密 SQL Server 中的敏感性資料](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[加密 SQL Server 中的一欄資料](https://msdn.microsoft.com/library/ms179331)、[以憑證加密](https://msdn.microsoft.com/library/ms188061) |
+| **參考**              | [加密 SQL Server 中的敏感性資料](/previous-versions/sql/sql-server-2008-r2/ff848751(v=sql.105))、[加密 SQL Server 中的一欄資料](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)、[以憑證加密](/sql/t-sql/functions/encryptbycert-transact-sql) |
 | **步驟** | 資料庫中的敏感性資料 (例如信用卡號碼) 必須加密。 您可以使用資料行層級加密或透過使用加密功能的應用程式函式來加密資料。 |
 
 ## <a name="ensure-that-database-level-encryption-tde-is-enabled"></a><a id="tde-enabled"></a>確定已啟用資料庫層級加密 (TDE)
@@ -206,7 +206,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [了解 SQL Server 的透明資料加密 (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **參考**              | [了解 SQL Server 的透明資料加密 (TDE)](/previous-versions/sql/sql-server-2008-r2/bb934049(v=sql.105)) |
 | **步驟** | SQL Server 的透明資料加密 (TDE) 功能有助於加密資料庫中的敏感性資料，並保護用來以憑證加密資料的金鑰。 這可防止沒有金鑰的人使用資料。 TDE 會保護休眠的資料，也就是資料檔和記錄檔。 它提供了與各個不同業界內建立的許多法令、規章和指導方針相符的能力， |
 
 ## <a name="ensure-that-database-backups-are-encrypted"></a><a id="backup"></a>確定資料庫備份已加密
@@ -217,7 +217,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure、OnPrem |
 | **屬性**              | SQL 版本 - V12、SQL 版本 - MsSQL2014 |
-| **參考**              | [SQL Database 備份加密](https://msdn.microsoft.com/library/dn449489) |
+| **參考**              | [SQL Database 備份加密](/sql/relational-databases/backup-restore/backup-encryption) |
 | **步驟** | SQL Server 可在建立備份時加密資料。 藉由在建立備份時指定加密演算法和加密程式 (憑證或非對稱金鑰)，使用者可建立加密的備份檔案。 |
 
 ## <a name="ensure-that-sensitive-data-relevant-to-web-api-is-not-stored-in-browsers-storage"></a><a id="api-browser"></a>確定與 Web API 相關的敏感性資料未儲存在瀏覽器的儲存體中
@@ -263,7 +263,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [使用 Azure 磁碟加密來加密虛擬機器所使用的磁碟](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **參考**              | [使用 Azure 磁碟加密來加密虛擬機器所使用的磁碟](../../storage/blobs/security-recommendations.md#data-protection) |
 | **步驟** | <p>Azure 磁碟加密是目前預覽版中的新功能。 此功能允許您加密 IaaS 虛擬機器所使用的作業系統磁碟和資料磁碟。 對於 Windows，磁碟機是使用業界標準的 BitLocker 加密技術來加密。 對於 Linux，磁碟是使用 DM-Crypt 技術來加密。 這會與 Azure 金鑰保存庫整合，可讓您控制和管理磁碟加密金鑰。 Azure 磁碟加密解決方案支援下列三個客戶加密案例：</p><ul><li>在透過客戶加密的 VHD 檔案和客戶提供的加密金鑰 (儲存於 Azure 金鑰保存庫中) 建立的新 IaaS VM 上啟用加密。</li><li>在透過 Azure Marketplace 建立的新 IaaS VM 上啟用加密。</li><li>在 Azure 中已執行的現有 IaaS VM 上啟用加密。</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>將 Service Fabric 應用程式中的密碼加密
@@ -274,7 +274,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure |
-| **參考**              | [管理 Service Fabric 應用程式中的密碼](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **參考**              | [管理 Service Fabric 應用程式中的密碼](../../service-fabric/service-fabric-application-secret-management.md) |
 | **步驟** | 密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。 使用 Azure Key Vault 來管理 Service Fabric 應用程式中的金鑰和密碼。 |
 
 ## <a name="perform-security-modeling-and-use-business-unitsteams-where-required"></a><a id="modeling-teams"></a>執行安全性模型化並視需要使用業務單位/團隊
@@ -329,7 +329,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | StorageType - Blob |
-| **參考**              | [待用資料的 Azure 儲存體服務加密 (預覽)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **參考**              | [待用資料的 Azure 儲存體服務加密 (預覽)](../../storage/common/storage-service-encryption.md) |
 | **步驟** | <p>待用資料的 Azure 儲存體服務加密 (SSE) 會協助您保護資料安全，以符合組織安全性和法規遵循承諾。 利用此功能，Azure 儲存體會自動加密資料，再保存到儲存體，以及在擷取之前解密。 以完全無感的方式處理所有加密、解密和金鑰管理。 SSE 只適用於區塊 Blob、分頁 Blob 及附加 Blob。 其他類型的資料 (包括表格、佇列和檔案) 將不會加密。</p><p>加密和解密工作流程：</p><ul><li>客戶會在儲存體帳戶上啟用加密</li><li>當客戶將新資料 (放置 Blob、放置區塊、放置頁面等等) 寫入至 Blob 儲存體，每個寫入是使用 256 位元 AES 加密 (可用的最強區塊加密方式之一) 進行加密</li><li>當客戶需要存取資料 (取得 Blob 等) 時，資料會在傳回給使用者之前自動解密</li><li>如果已停用加密，就不會再加密新的寫入，現有加密資料在使用者重新寫入之前會保持加密。 啟用加密時，寫入至 Blob 儲存體將會加密。 資料的狀態在使用者於啟用/停用儲存體帳戶的加密之間切換時不會變更</li><li>所有加密金鑰會由 Microsoft 儲存、加密及管理</li></ul><p>請注意，在此階段中，用來加密的金鑰是由 Microsoft 所管理。 Microsoft 一開始會產生金鑰，並管理金鑰的安全儲存體，以及如同內部 Microsoft 原則所定義的定期輪換。 客戶未來將會獲得管理自有加密金鑰的功能，並提供從 Microsoft 管理的金鑰到客戶管理的金鑰的移轉路徑。</p>| 
 
 ## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>使用用戶端加密在 Azure 儲存體中儲存敏感性資料
@@ -340,7 +340,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[教學課程：在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 Blob](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[在 Azure Blob 儲存體中使用 Azure 加密擴充功能安全地存放資料](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **參考**              | [Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫](../../storage/common/storage-client-side-encryption.md)、[教學課程：在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 Blob](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)、[在 Azure Blob 儲存體中使用 Azure 加密擴充功能安全地存放資料](/archive/blogs/partnercatalystteam/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions) |
 | **步驟** | <p>適用於 .NET NuGet 套件的 Azure 儲存體用戶端程式庫支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與 Azure 金鑰保存庫整合，以進行儲存體帳戶金鑰管理。 以下是用戶端加密運作方式的簡短描述：</p><ul><li>Azure 儲存體用戶端 SDK 會產生內容加密金鑰 (CEK)，這是使用一次的對稱金鑰</li><li>客戶資料是使用此 CEK 加密</li><li>然後使用金鑰加密金鑰 (KEK) 包裝 (加密) CEK。 KEK 由金鑰識別碼所識別，可以是非對稱金鑰組或對稱金鑰，且可以在本機管理或儲存在 Azure 金鑰保存庫中。 儲存體用戶端本身永遠沒有 KEK 的存取權。 它只是叫用金鑰保存庫所提供的金鑰包裝演算法。 如有需要，客戶可以選擇使用自訂提供者來包裝/取消包裝金鑰</li><li>然後，將加密的資料上傳至 Azure 儲存體服務。 請參閱 [參考] 區段中的連結，以取得低階實作詳細資料。</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>將寫入電話本機儲存體的敏感性資料或 PII 資料加密
@@ -351,7 +351,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、Xamarin  |
 | **屬性**              | N/A  |
-| **參考**              | [使用 Microsoft Intune 原則管理裝置上的設定和功能](https://docs.microsoft.com/mem/intune/configuration/)、[金鑰鏈貼身](https://components.xamarin.com/view/square.valet) |
+| **參考**              | [使用 Microsoft Intune 原則管理裝置上的設定和功能](/mem/intune/configuration/)、[金鑰鏈貼身](https://components.xamarin.com/view/square.valet) |
 | **步驟** | <p>如果應用程式在行動裝置的檔案系統上寫入敏感性資訊，例如使用者的 PII (電子郵件、電話號碼、名字、姓氏、喜好設定等)，則應先將它加密再寫入本機檔案系統。 如果應用程式是企業應用程式，則請探究使用 Windows Intune 發佈應用程式的可能性。</p>|
 
 ### <a name="example"></a>範例
@@ -431,7 +431,7 @@ Allow screen capture
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、.NET Framework 3 |
 | **屬性**              | 安全性模式 - 傳輸、安全性模式 - 訊息 |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全性基礎概念 CoDe Magazine](https://www.codemag.com/article/0611051) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全性基礎概念 CoDe Magazine](https://www.codemag.com/article/0611051) |
 | **步驟** | 尚未定義任何傳輸或訊息安全性。 傳輸訊息的應用程式若沒有傳輸或訊息安全性，就無法保證訊息的完整性或機密性。 當 WCF 安全性繫結設定為 [無] 時，會同時停用傳輸和訊息安全性。 |
 
 ### <a name="example"></a>範例

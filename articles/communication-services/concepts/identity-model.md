@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 336e708334778e107331f5f393476c4b3dbb98a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507437"
+ms.locfileid: "94517762"
 ---
 # <a name="identity-model"></a>身分識別模型
 
@@ -59,3 +59,9 @@ Azure 通訊服務的存取金鑰輪替會導致所有使用先前存取金鑰�
 建議您在伺服器端服務中發出存取權杖，而不是在用戶端的應用程式中發出。 原因是，發行需要存取金鑰或受控身分識別。 基於安全性理由，不建議將存取金鑰與用戶端的應用程式共用。 用戶端應用程式應該使用可驗證用戶端的信任服務端點，並代表其發出存取權杖。 您可以在 [這裡](./client-and-server-architecture.md)找到更多有關架構的詳細資料。
 
 如果您將存取權杖快取到備份存放區，我們建議使用加密。 存取權杖是敏感性資料，如果未受保護，則可用於惡意活動。 擁有存取權杖之後，您就可以初始化 SDK 並取得 API 的存取權。 可存取的 API 只會根據存取權杖擁有的範圍受到限制。 建議您只使用需要的範圍發出存取權杖。
+
+## <a name="next-steps"></a>後續步驟
+
+* 如需存取權杖管理的簡介，請參閱 [建立和管理存取權杖](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)
+* 如需驗證的簡介，請參閱驗證 [Azure 通訊服務](https://docs.microsoft.com/azure/communication-services/concepts/authentication)
+* 如需資料落地和隱私權的簡介，請參閱[區域可用性和資料](https://docs.microsoft.com/azure/communication-services/concepts/privacy)落地

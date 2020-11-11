@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7af115d8f1244253e461f796c5665609d3b84b21
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87539946"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517439"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全性架構︰密碼編譯 | 風險降低 
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
 | **Web 應用程式** | <ul><li>[只使用核准的對稱封鎖密碼和金鑰長度](#cipher-length)</li><li>[針對對稱編碼器使用核准的區塊編碼器模式和初始化向量](#vector-ciphers)</li><li>[使用核准的非對稱演算法、金鑰長度和填補](#padding)</li><li>[使用核准的亂數產生器](#numgen)</li><li>[請勿使用對稱串流密碼](#stream-ciphers)</li><li>[使用已核准的 MAC/HMAC/金鑰雜湊演算法](#mac-hash)</li><li>[只使用核准的密碼編譯雜湊函數](#hash-functions)</li></ul> |
-| **Database** | <ul><li>[使用強式加密演算法來加密資料庫中的資料](#strong-db)</li><li>[SSIS 套件應經過加密和數位簽署](#ssis-signed)</li><li>[將數位簽章新增至重要資料庫安全性實體](#securables-db)</li><li>[使用 SQL server EKM 來保護加密金鑰](#ekm-keys)</li><li>[如果不應該對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
+| **資料庫** | <ul><li>[使用強式加密演算法來加密資料庫中的資料](#strong-db)</li><li>[SSIS 套件應經過加密和數位簽署](#ssis-signed)</li><li>[將數位簽章新增至重要資料庫安全性實體](#securables-db)</li><li>[使用 SQL server EKM 來保護加密金鑰](#ekm-keys)</li><li>[如果不應該對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
 | **IoT 裝置** | <ul><li>[在 IoT 裝置上安全地儲存密碼編譯金鑰](#keys-iot)</li></ul> | 
 | **IoT 雲端閘道** | <ul><li>[產生足夠長度的隨機對稱金鑰以向 IoT 中樞進行驗證](#random-hub)</li></ul> | 
 | **Dynamics CRM 行動用戶端** | <ul><li>[確定已備妥需要使用 PIN 並允許遠端抹除的裝置管理原則](#pin-remote)</li></ul> | 
@@ -119,7 +119,7 @@ ms.locfileid: "87539946"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [選擇加密演算法](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
+| **參考**              | [選擇加密演算法](/sql/relational-databases/security/encryption/choose-an-encryption-algorithm) |
 | **步驟** | 加密演算法會定義資料轉換，讓未經授權的使用者無法輕鬆地反轉資料轉換。 SQL Server 可讓系統管理員和開發人員選擇數種演算法，包括 DES、Triple DES、TRIPLE_DES_3KEY、RC2、RC4、128 位元 RC4、DESX、128 位元 AES、192 位元 AES 和 256 位元 AES |
 
 ## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>SSIS 套件應予以加密和數位簽章
@@ -130,7 +130,7 @@ ms.locfileid: "87539946"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [使用數位簽章識別套件的來源](https://msdn.microsoft.com/library/ms141174.aspx)、[威脅和弱點風險降低 (整合服務)](https://msdn.microsoft.com/library/bb522559.aspx) |
+| **參考**              | [使用數位簽章識別套件的來源](/sql/integration-services/security/identify-the-source-of-packages-with-digital-signatures)、[威脅和弱點風險降低 (整合服務)](/sql/integration-services/security/security-overview-integration-services) |
 | **步驟** | 封裝的來源是指建立此封裝的個人或組織。 執行來自未知或不受信任來源的封裝可能會有風險。 為了防止有人未經授權就竄改 SSIS 套件，您應該使用數位簽章。 此外，為了確保套件能在儲存/傳輸期間保持機密，您必須加密 SSIS 套件 |
 
 ## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>在重要的資料庫安全性實體中新增數位簽章
@@ -141,7 +141,7 @@ ms.locfileid: "87539946"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **參考**              | [ADD SIGNATURE (Transact-SQL)](/sql/t-sql/statements/add-signature-transact-sql) |
 | **步驟** | 在必須驗證重要資料庫的安全性實體是否完整的情況下，您應該使用數位簽章。 資料庫安全性實體 (例如預存程序、函式、組件或觸發程序) 可以加上數位簽章。 以下是此簽章適用時機的範例︰假設 ISV (獨立軟體廠商) 已針對傳遞給其中一個客戶的軟體提供支援。 在提供支援之前，ISV 會想要確保軟體中的資料庫安全性實體並未因為有人不小心或惡意嘗試而遭到竄改。 如果安全性實體有加上數位簽章，ISV 就可以驗證其數位簽章，並驗證其完整性。| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>使用 SQL Server EKM 來保護加密金鑰
@@ -152,7 +152,7 @@ ms.locfileid: "87539946"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [SQL Server 可延伸金鑰管理 (EKM)](https://msdn.microsoft.com/library/bb895340)、[使用 Azure Key Vault 的可延伸金鑰管理 (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
+| **參考**              | [SQL Server 可延伸金鑰管理 (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm)、[使用 Azure Key Vault 的可延伸金鑰管理 (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) |
 | **步驟** | SQL Server 可延伸金鑰管理可讓用以保護資料庫檔案的加密金鑰儲存在外部裝置，例如智慧卡、USB 裝置或 EKM/HSM 模組。 這也會讓資料庫管理員 (系統管理員群組的成員除外) 能夠保護資料。 資料可以使用只有資料庫使用者可在外部 EKM/HSM 模組上存取的加密金鑰進行加密。 |
 
 ## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>如果不應對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能
@@ -163,7 +163,7 @@ ms.locfileid: "87539946"
 | **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure、OnPrem |
 | **屬性**              | SQL 版本 - V12、MsSQL2016 |
-| **參考**              | [Always Encrypted (資料庫引擎)](https://msdn.microsoft.com/library/mt163865) |
+| **參考**              | [Always Encrypted (資料庫引擎)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) |
 | **步驟** | Always Encrypted 功能是設計用來保護 Azure SQL Database 或 SQL Server 資料庫中儲存的敏感性資料，例如信用卡號碼或身分證號碼 (例如，美國的社會安全號碼)。 Always Encrypted 可讓用戶端在用戶端應用程式中將敏感性資料加密，且永遠不會對資料庫引擎 (SQL Database 或 SQL Server) 顯示加密金鑰。 因此，Always Encrypted 可將資料擁有者 (和可檢視者) 及資料管理者 (但無法存取資料) 分隔開來 |
 
 ## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>在 IoT 裝置上安全地儲存密碼編譯金鑰
@@ -174,7 +174,7 @@ ms.locfileid: "87539946"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | 裝置作業系統 - Windows IoT 核心版、裝置連線能力 - Azure IoT 裝置 SDK |
-| **參考**              | [Windows IoT 核心版上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[設定 Windows IoT 核心版上的 TPM](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 裝置 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **參考**              | [Windows IoT 核心版上的 TPM](/windows/iot-core/secure-your-device/TPM)、[設定 Windows IoT 核心版上的 TPM](/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 裝置 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
 | **步驟** | 在硬體保護的儲存體 (如 TPM 或智慧卡晶片) 中安全地對稱或憑證私密金鑰。 Windows 10 IoT Core 支援使用 TPM，而且有數個相容 TPM 可供使用︰https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm。 建議您使用韌體或離散 TPM。 軟體 TPM 只應用於開發和測試用途。 一旦 TPM 可供使用而且在其中佈建了金鑰，應該就能撰寫權杖產生程式碼而不必在其中硬式編碼任何敏感性資訊。 | 
 
 ### <a name="example"></a>範例
