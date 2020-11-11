@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524958"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363267"
 ---
 # <a name="quick-examples"></a>快速範例
 
@@ -30,7 +30,7 @@ ms.locfileid: "90524958"
 ## <a name="prerequisites"></a>必要條件
 
 1. 依照[使用者入門](getting-started.md)中的步驟，設定您的 Azure Databricks 和認知服務環境。 本教學課程將涵蓋如何安裝 MMLSpark，以及如何在 Databricks 中建立 Spark 叢集。
-1. 在 Azure Databricks 中建立新的筆記本之後，請複製下面的**共用程式碼**，並貼到您筆記本中的新儲存格。
+1. 在 Azure Databricks 中建立新的筆記本之後，請複製下面的 **共用程式碼** ，並貼到您筆記本中的新儲存格。
 1. 選擇下方的服務範例，並將其貼到您筆記本中的第二個新儲存格。
 1. 以您自己的金鑰取代任何服務訂用帳戶金鑰的預留位置。
 1. 選擇儲存格右上角的 [執行] 按鈕 (三角形圖示)，然後選取 [執行儲存格]。
@@ -49,7 +49,7 @@ val location = "eastus"
 
 ## <a name="text-analytics"></a>文字分析
 
-[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)服務提供數種演算法，可從文字中擷取智慧型深入解析。 例如，我們可以找到指定輸入文字的情感。 服務會傳回介於 `0.0` 和 `1.0` 之間的分數，低分表示負面情感，而高分表示正面情感。  下列範例會使用三個簡單的句子，並傳回每個句子的情感分數。
+[文字分析](../text-analytics/index.yml)服務提供數種演算法，可從文字中擷取智慧型深入解析。 例如，我們可以找到指定輸入文字的情感。 服務會傳回介於 `0.0` 和 `1.0` 之間的分數，低分表示負面情感，而高分表示正面情感。  下列範例會使用三個簡單的句子，並傳回每個句子的情感分數。
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -81,7 +81,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 
 ## <a name="computer-vision"></a>電腦視覺
 
-[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)會分析影像，以識別臉部、物件和自然語言描述等結構。
+[電腦視覺](../computer-vision/index.yml)會分析影像，以識別臉部、物件和自然語言描述等結構。
 在此範例中，我們會標記一系列影像。 標記是影像中事項的單字描述，例如可辨識的物件、人員、景象和動作。
 
 ```scala
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Bing 影像搜尋
 
-[Bing 影像搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)會搜尋 Web，以擷取與使用者的自然語言查詢相關的影像。 在此範例中，我們會使用文字查詢來尋找引號中的影像。 其會傳回影像 URL 清單，其中包含與查詢相關的相片。
+[Bing 影像搜尋](../bing-image-search/overview.md)會搜尋 Web，以擷取與使用者的自然語言查詢相關的影像。 在此範例中，我們會使用文字查詢來尋找引號中的影像。 其會傳回影像 URL 清單，其中包含與查詢相關的相片。
 
 
 ```scala
@@ -163,7 +163,7 @@ display(pipeline.fit(df).transform(df))
 
 ## <a name="speech-to-text"></a>語音轉文字
 
-[語音轉換文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text)服務會將說話音訊的串流或檔案轉換成文字。 在此範例中，我們會轉譯兩個音訊檔案。 第一個檔案很容易了解，第二個則較具挑戰性。
+[語音轉換文字](../speech-service/index-speech-to-text.yml)服務會將說話音訊的串流或檔案轉換成文字。 在此範例中，我們會轉譯兩個音訊檔案。 第一個檔案很容易了解，第二個則較具挑戰性。
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -196,7 +196,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 ## <a name="anomaly-detector"></a>異常偵測器
 
-[異常偵測器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/)非常適合用來偵測時間序列資料中的異常狀況。 在此範例中，我們會使用該服務來尋找整個時間序列中的異常。
+[異常偵測器](../anomaly-detector/index.yml)非常適合用來偵測時間序列資料中的異常狀況。 在此範例中，我們會使用該服務來尋找整個時間序列中的異常。
 
 ```scala
 import org.apache.spark.sql.functions.{col, lit}

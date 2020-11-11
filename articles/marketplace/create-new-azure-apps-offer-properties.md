@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 1414f2ce53d1764e788749fc2d225c56f624bcdc
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6f92c138a02c9dbdc1d22ca04c733cfbee69dcd0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369997"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488514"
 ---
 # <a name="how-to-configure-your-azure-application-offer-properties"></a>如何設定您的 Azure 應用程式供應專案屬性
 
@@ -76,10 +76,6 @@ ms.locfileid: "94369997"
 
 1. 在 [ **法律** ] 下，請確定已清除 [ **使用 Microsoft 的商業 marketplace 標準合約** ] 核取方塊。
 1. 在 [ **條款及條件** ] 方塊中，輸入最多10000個字元的文字。
-
-   > [!NOTE]
-   > 如果您需要較長的描述，請輸入指向可在何處找到您的條款及條件的單一網址。 這將會向客戶顯示為作用中連結。
-
 1. 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤：供應專案清單。
 
 ## <a name="next-steps"></a>後續步驟

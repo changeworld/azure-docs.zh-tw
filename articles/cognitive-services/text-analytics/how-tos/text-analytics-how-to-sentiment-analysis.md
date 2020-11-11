@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166925"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366752"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -23,7 +23,7 @@ ms.locfileid: "92166925"
 
 傳送情感分析要求之後，API 會傳回情感標籤 (例如「負面」、「中性」和「正面」)，以及句子和文件層級的信賴分數。
 
-情感分析支援多種語言，且預覽中支援的語言更多。 如需詳細資訊，請參閱[支援的語言](../text-analytics-supported-languages.md)。
+情感分析支援多種語言，且預覽中支援的語言更多。 如需詳細資訊，請參閱[支援的語言](../language-support.md)。
 
 ## <a name="sentiment-analysis-versions-and-features"></a>情感分析版本和功能
 
@@ -76,7 +76,7 @@ v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級
 
 ## <a name="structure-the-request"></a>建立要求結構
 
-建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台**，以快速建構及傳送要求。 
+建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台** ，以快速建構及傳送要求。 
 
 #### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
 

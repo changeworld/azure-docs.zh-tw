@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331697"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489143"
 ---
 # <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
@@ -29,7 +29,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 ![OCR 如何使用已解壓縮的文字將影像和檔轉換成結構化的輸出](./Images/how-ocr-works.svg)
 
 ## <a name="input-requirements"></a>輸入需求
-**讀取**呼叫會將影像和檔做為輸入。 它們具有下列需求：
+**讀取** 呼叫會將影像和檔做為輸入。 它們具有下列需求：
 
 * 支援的檔案格式： JPEG、PNG、BMP、PDF 和 TIFF
 * 針對 PDF 和 TIFF 檔案，最多2000頁 (只會處理免費層) 的前兩個頁面。
@@ -73,6 +73,9 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 
 當 [ **狀態** ] 欄位的值為 [ **成功** ] 時，JSON 回應會包含來自您的影像或檔的已解壓縮文字內容。 JSON 回應會維護已辨識字組的原始行群組。 它包含已解壓縮的文字線條和其周框方塊座標。 每一行文字都包含所有已解壓縮的文字，以及其座標和信賴分數。
 
+> [!NOTE]
+> 提交給作業的資料 `Read` 會暫時加密並儲存在 rest 中，並在48小時內刪除。 這可讓您的應用程式以服務回應的一部分取出已解壓縮的文字。
+
 ## <a name="sample-json-output"></a>範例 JSON 輸出
 
 請參閱下列成功 JSON 回應的範例：
@@ -87,7 +90,6 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
     "readResults": [
       {
         "page": 1,
-        "language": "en",
         "angle": 0.8551,
         "width": 2661,
         "height": 1901,
@@ -129,7 +131,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 }
 ```
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>閱讀 3.2 preview 只會將文字行樣式新增 (拉丁語言) 
-[Read 3.2 PREVIEW API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)會輸出**外觀**物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
+[Read 3.2 PREVIEW API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)會輸出 **外觀** 物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 
 開始使用 [電腦視覺 READ OCR SDK 快速入門](./quickstarts-sdk/client-library.md) 和 [read REST API 快速](./QuickStarts/CSharp-hand-text.md) 入門，開始將 OCR 功能整合到您的應用程式中。
 

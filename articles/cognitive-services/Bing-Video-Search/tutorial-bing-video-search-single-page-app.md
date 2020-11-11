@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098990"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379866"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教學課程：單頁影片搜尋應用程式
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 Bing 影片搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的影片結果。 在本教學課程中，我們會建置單頁 Web 應用程式，以使用 Bing 影片搜尋 API 在頁面中顯示搜尋結果。 該應用程式包含 HTML、CSS 和 JavaScript 元件。
@@ -47,7 +47,7 @@ Bing 影片搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 
 本教學課程頁完全獨立，不會使用任何外部架構、樣式表或影像檔。 它使用唯一且廣泛支援的 JavaScript 語言功能，適用於所有主要網頁瀏覽器的目前版本。
 
-在本教學課程中，我們會討論原始程式碼的選定部分。 有完整的[原始程式碼](tutorial-bing-video-search-single-page-app-source.md)可供使用。 若要執行範例，請將原始程式碼複製並貼入文字編輯器，並將其儲存為 `bing.html`。
+在本教學課程中，我們會討論原始程式碼的選定部分。 有完整的[原始程式碼]()可供使用。 若要執行範例，請將原始程式碼複製並貼入文字編輯器，並將其儲存為 `bing.html`。
 
 ## <a name="app-components"></a>應用程式元件
 如同任何單頁 Web 應用程式，本教學課程應用程式包含三個部分：

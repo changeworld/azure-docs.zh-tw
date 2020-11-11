@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460796"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490571"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure 監視器中的 Log Analytics 代理程式資料來源
 Azure 監視器使用 [Log analytics](log-analytics-agent.md) 代理程式從虛擬機器收集的資料，是由您在 [log analytics 工作區](data-platform-logs.md)中設定的資料來源所定義。   每個資料來源都會建立特定類型的記錄，每種類型各有自己的一組屬性。
@@ -20,6 +20,9 @@ Azure 監視器使用 [Log analytics](log-analytics-agent.md) 代理程式從虛
 > 本文涵蓋 [Log Analytics 代理程式](log-analytics-agent.md) 的資料來源，這是 Azure 監視器所使用的其中一個代理程式。 其他代理程式會收集不同的資料，並以不同的方式進行設定。 如需可用的代理程式清單和可收集的資料，請參閱 [Azure 監視器代理](agents-overview.md) 程式的總覽。
 
 ![記錄資料收集](media/agent-data-sources/overview.png)
+
+> [!IMPORTANT]
+> 本文所述的資料來源只適用于執行 Log Analytics 代理程式的虛擬機器。 
 
 ## <a name="summary-of-data-sources"></a>資料來源的摘要
 下表列出 Log Analytics 代理程式目前可用的代理程式資料來源。  每個資料來源都有個別的文章連結，提供該資料來源的詳細資料。   此外，還提供收集方法與頻率的相關資訊。 
@@ -37,7 +40,7 @@ Azure 監視器使用 [Log analytics](log-analytics-agent.md) 代理程式從虛
 
 
 ## <a name="configuring-data-sources"></a>設定資料來源
-若要設定 Log Analytics 代理程式的資料來源，請移至 Azure 入口網站中的 **Log analytics 工作區** 功能表，然後選取工作區。 依序按一下 [ **Advanced settings** ] 和 [ **Data**]。 選取您要設定的資料來源。 您可以依照上表中的連結，取得每個資料來源的檔，以及其設定的詳細資料。
+若要設定 Log Analytics 代理程式的資料來源，請移至 Azure 入口網站中的 **Log analytics 工作區** 功能表，然後選取工作區。 依序按一下 [ **Advanced settings** ] 和 [ **Data** ]。 選取您要設定的資料來源。 您可以依照上表中的連結，取得每個資料來源的檔，以及其設定的詳細資料。
 
 所有設定都會傳遞至所有連線到該工作區的代理程式。  您無法從此設定中排除任何已連線的代理程式。
 
@@ -55,7 +58,7 @@ Azure 監視器使用 [Log analytics](log-analytics-agent.md) 代理程式從虛
 ## <a name="log-records"></a>所有記錄
 Azure 監視器收集的所有記錄資料都會以記錄形式儲存在工作區中。  不同資料來源所收集的記錄會有自己的一組屬性，並由其 **類型** 屬性來識別。  如需每種記錄類型的詳細資訊，請參閱各資料來源和方案的文件。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解可將功能新增至 Azure 監視器，並會將資料收集到工作區的[監視解決方案](../insights/solutions.md)。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和監視解決方案收集到的資料。  
 * 設定[警示](alerts-overview.md)，以便從資料來源和監視解決方案收集到重要資料時主動通知您。

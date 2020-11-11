@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346596"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488429"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自訂還原序列化程式讀取任何格式的輸入
 
@@ -249,9 +249,9 @@ namespace ExampleCustomCode.Serialization
 
 實作還原序列化程式後，即可藉由與社群分享來協助其他人。 將您的程式碼提交至 [Azure 串流分析 GitHub 存放庫](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>在串流分析中使用自訂還原序列化程式的其他限制為何？
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>在串流分析中使用自訂還原序列化程式有哪些其他限制？
 
-如果您的輸入為 Protobuf 格式，其具有包含 MapField 類型的結構描述，您將無法實作自訂還原序列化程式。 我們正努力持續支援這個類型。
+如果您輸入的 Protobuf 格式具有包含類型的架構 `MapField` ，您將無法執行自訂還原序列化程式。 此外，自訂還原序列化程式不支援範例資料或預覽資料。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098751"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490350"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 無伺服器 (預覽) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,9 +51,6 @@ Azure Cosmos DB 無伺服器最適合您預期的案例：
 
 無伺服器是新的 Azure Cosmos 帳戶類型，這表示在建立新帳戶時，您必須在布 **建的輸送量** 和 **無伺服器** 之間進行選擇。 您必須建立新的無伺服器帳戶，才能開始使用無伺服器。 在預覽版本中，唯一支援的方法是 [使用 Azure 入口網站](create-cosmosdb-resources-portal.md)來建立新的無伺服器帳戶。 目前不支援從無伺服器模式遷移現有的帳戶。
 
-> [!NOTE]
-> Azure Cosmos DB Core (SQL) API 目前僅支援無伺服器。
-
 在無伺服器帳戶中建立的任何容器都是無伺服器容器。 無伺服器容器會公開與在布建的輸送量模式中建立之容器相同的功能，因此您可以用完全相同的方式讀取、寫入及查詢您的資料。 但是無伺服器帳戶和容器也有特定特性：
 
 > [!IMPORTANT]
@@ -89,7 +86,7 @@ Azure Cosmos DB 無伺服器最適合您預期的案例：
 > [!NOTE]
 > 如同任何 Azure 預覽版，Azure Cosmos DB 無伺服器的服務等級協定 (SLA) 。 上述的效能特性可作為此供應專案在正式推出時將提供的內容預覽。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 透過下列文章開始使用無伺服器：
 

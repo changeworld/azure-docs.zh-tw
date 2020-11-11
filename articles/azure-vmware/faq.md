@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 9f0eb1ec7c979e6f35c21f49cad9ab9975a221fc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357280"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487783"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -194,6 +194,12 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 是。 您必須使用 NSX-T 管理員來建立防火牆，以限制 VM 對網際網路的存取。
 
+
+#### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware 解決方案可以使用 Azure 虛擬 WAN 裝載的 ExpressRoute 閘道嗎？
+是。
+
+#### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>在內部部署與 Azure VMware 解決方案之間，透過 ExpressRoute 全球各地的 Azure 虛擬 WAN 來建立傳輸連線能力嗎？
+Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN ExpressRoute 閘道之間提供可轉移的路由。 使用 ExpressRoute Global 觸及可允許內部部署與 Azure VMware 解決方案之間的連線，但會透過 Microsoft 的全球網路（而不是虛擬 WAN 中樞）進行連線。
 
 
 ## <a name="accounts-and-privileges"></a>帳戶和權限

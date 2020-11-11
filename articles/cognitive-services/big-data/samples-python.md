@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86189304"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363250"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>將認知服務用於巨量資料的 Python 範例
 
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>文字分析範例
 
-[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)服務提供數種演算法，可從文字中擷取智慧型深入解析。 例如，我們可以找到指定輸入文字的情感。 服務會傳回介於 0.0 和 1.0 之間的分數，低分表示負面情感，而高分表示正面情感。  此範例會使用三個簡單的句子，並傳回每個句子的情感。
+[文字分析](../text-analytics/index.yml)服務提供數種演算法，可從文字中擷取智慧型深入解析。 例如，我們可以找到指定輸入文字的情感。 服務會傳回介於 0.0 和 1.0 之間的分數，低分表示負面情感，而高分表示正面情感。  此範例會使用三個簡單的句子，並傳回每個句子的情感。
 
 ```python
 from pyspark.sql.functions import col
@@ -78,20 +78,20 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>預期的結果
 
 | text                                      | 情感                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| 今天我很高興，天氣真晴朗！(I am so happy today, its sunny!)           | 0.9789592027664185                                    |
-| 我因為此尖峰時間的交通感到沮喪 (I am frustrated by this rush hour traffic) | 0.023795604705810547                                  |
-| Spark 上的認知服務不佳 (The cognitive services on spark aint bad)  | 0.8888956308364868                                    |
+| 今天我很高興，天氣真晴朗！(I am so happy today, its sunny!)           | 正面                                              |
+| 我因為此尖峰時間的交通感到沮喪 (I am frustrated by this rush hour traffic) | 負面                                              |
+| Spark 上的認知服務不佳 (The cognitive services on spark aint bad)  | 正面                                              |
 
 ## <a name="computer-vision-sample"></a>電腦視覺範例
 
-[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)會分析影像，以識別臉部、物件和自然語言描述等結構。 在此範例中，我們會標記一系列影像。 標記是影像中事項的單字描述，例如可辨識的物件、人員、景象和動作。
+[電腦視覺](../computer-vision/index.yml)會分析影像，以識別臉部、物件和自然語言描述等結構。 在此範例中，我們會標記一系列影像。 標記是影像中事項的單字描述，例如可辨識的物件、人員、景象和動作。
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>Bing 影像搜尋範例
 
-[Bing 影像搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)會搜尋 Web，以擷取與使用者的自然語言查詢相關的影像。 在此範例中，我們會使用文字查詢來尋找引號中的影像。 其會傳回影像 URL 清單，其中包含與查詢相關的相片。
+[Bing 影像搜尋](../bing-image-search/overview.md)會搜尋 Web，以擷取與使用者的自然語言查詢相關的影像。 在此範例中，我們會使用文字查詢來尋找引號中的影像。 其會傳回影像 URL 清單，其中包含與查詢相關的相片。
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>語音轉文字範例
-[語音轉換文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text)服務會將說話音訊的串流或檔案轉換成文字。 在此範例中，我們會轉譯兩個音訊檔案。 第一個檔案很容易了解，第二個則較具挑戰性。
+[語音轉換文字](../speech-service/index-speech-to-text.yml)服務會將說話音訊的串流或檔案轉換成文字。 在此範例中，我們會轉譯兩個音訊檔案。 第一個檔案很容易了解，第二個則較具挑戰性。
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>異常偵測器範例
 
-[異常偵測器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/)非常適合用來偵測時間序列資料中的異常狀況。 在此範例中，我們會使用該服務來尋找整個時間序列中的異常。
+[異常偵測器](../anomaly-detector/index.yml)非常適合用來偵測時間序列資料中的異常狀況。 在此範例中，我們會使用該服務來尋找整個時間序列中的異常。
 
 ```python
 from pyspark.sql.functions import lit

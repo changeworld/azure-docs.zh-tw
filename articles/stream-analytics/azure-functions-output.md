@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881918"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488080"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Functions 輸出
 
 Azure Functions 是無伺服器計算服務，您可以用來依需求執行程式碼，無需明確佈建或管理基礎結構。 可讓您實作在 Azure 或合作夥伴服務中發生事件所觸發的程式碼。 Azure Functions 回應觸發程序的這個功能使其自然輸出 Azure 串流分析。 此輸出配接器可讓使用者將串流分析連接至 Azure Functions，然後執行指令碼或程式碼片段，以回應各種不同的事件。
 
-Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無法從串流分析產生 Azure Functions 輸出。
+Azure Functions 來自串流分析的輸出，在 Azure 中國世紀和 Azure 德國 (的 T 系統國際) 區域中無法使用。 也不支援從在多租使用者叢集中執行的串流分析作業連線到虛擬網路內的 Azure Functions (VNet) 。
 
 Azure 串流分析會透過 HTTP 觸發程序叫用 Azure Functions。 Azure Functions 輸出配接器可搭配下列可設定屬性使用：
 

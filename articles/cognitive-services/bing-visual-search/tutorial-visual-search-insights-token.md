@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f68618c4387bc5105914eccc4e6149650119fd0f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102174"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366072"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>教學課程：使用影像深入解析權杖尋找先前搜尋中的類似影像
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "93102174"
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>從 Bing 影像搜尋用戶端程式庫取得 ImageInsightsToken
 
-此應用程式會使用透過 [Bing 影像搜尋用戶端程式庫](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)所取得的 `ImageInsightsToken`。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
+此應用程式會使用透過 [Bing 影像搜尋用戶端程式庫](../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)所取得的 `ImageInsightsToken`。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -129,7 +129,7 @@ if (visualSearchResults.Tags.Count > 0)
     }
 ```
 
-如需這些資料類型的詳細資訊，請參閱[影像 - 圖像式搜尋](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)。
+如需這些資料類型的詳細資訊，請參閱[影像 - 圖像式搜尋](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)。
 
 ## <a name="returned-urls"></a>傳回的 URL
 

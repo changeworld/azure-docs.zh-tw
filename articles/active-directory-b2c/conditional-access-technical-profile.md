@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042604"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488273"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義條件式存取技術設定檔
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 條件式存取是 Azure AD B2C 用來將信�
 
 ## <a name="protocol"></a>通訊協定
 
-**Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **處理常式**屬性必須包含 Azure AD B2C 所使用之通訊協定處理常式元件的完整名稱：
+**Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **處理常式** 屬性必須包含 Azure AD B2C 所使用之通訊協定處理常式元件的完整名稱：
 
 ```
 Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -53,11 +53,11 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| OperationType | 是 | 必須是 **評估**。  |
+| OperationType | 是 | 必須是 **評估** 。  |
 
 ### <a name="input-claims"></a>輸入宣告
 
-**InputClaims**元素包含要傳送至條件式存取的宣告清單。 您也可以將您的宣告名稱對應至條件式存取技術設定檔中定義的名稱。
+**InputClaims** 元素包含要傳送至條件式存取的宣告清單。 您也可以將您的宣告名稱對應至條件式存取技術設定檔中定義的名稱。
 
 | ClaimReferenceId | 必要 | 資料類型 | 描述 |
 | --------- | -------- | ----------- |----------- |
@@ -67,11 +67,11 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 | IsMfaRegistered | 是 |boolean | 指出使用者是否已註冊用於多重要素驗證的電話號碼。 |
 
 
-**InputClaimsTransformations**元素可以包含**InputClaimsTransformation**專案的集合，這些專案可用來修改輸入宣告或產生新的宣告，然後再將其傳送至條件式存取服務。
+**InputClaimsTransformations** 元素可以包含 **InputClaimsTransformation** 專案的集合，這些專案可用來修改輸入宣告或產生新的宣告，然後再將其傳送至條件式存取服務。
 
 ### <a name="output-claims"></a>輸出宣告
 
-**OutputClaims**元素包含 ConditionalAccessProtocolProvider 所產生的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
+**OutputClaims** 元素包含 ConditionalAccessProtocolProvider 所產生的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
 
 | ClaimReferenceId | 必要 | 資料類型 | 描述 |
 | --------- | -------- | ----------- |----------- |
@@ -115,22 +115,22 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| OperationType | 是 | 必須是 **補救**。  |
+| OperationType | 是 | 必須是 **補救** 。  |
 
 ### <a name="input-claims"></a>輸入宣告
 
-**InputClaims**元素包含要傳送至條件式存取的宣告清單。 您也可以將您的宣告名稱對應至條件式存取技術設定檔中定義的名稱。
+**InputClaims** 元素包含要傳送至條件式存取的宣告清單。 您也可以將您的宣告名稱對應至條件式存取技術設定檔中定義的名稱。
 
 | ClaimReferenceId | 必要 | 資料類型 | 描述 |
 | --------- | -------- | ----------- |----------- |
 | ChallengesSatisfied | 是 | stringCollection| 修正已識別的威脅，以從評估模式退回的挑戰、挑戰索賠的清單。|
 
 
-**InputClaimsTransformations**元素可以包含**InputClaimsTransformation**專案的集合，這些元素可用來修改輸入宣告或產生新的宣告，然後再呼叫條件式存取服務。
+**InputClaimsTransformations** 元素可以包含 **InputClaimsTransformation** 專案的集合，這些元素可用來修改輸入宣告或產生新的宣告，然後再呼叫條件式存取服務。
 
 ### <a name="output-claims"></a>輸出宣告
 
-條件式存取通訊協定提供者不會傳回任何 **OutputClaims**，因此不需要指定輸出宣告。 不過，您可以包含條件式存取通訊協定提供者未傳回的宣告，只要您設定屬性即可 `DefaultValue` 。
+條件式存取通訊協定提供者不會傳回任何 **OutputClaims** ，因此不需要指定輸出宣告。 不過，您可以包含條件式存取通訊協定提供者未傳回的宣告，只要您設定屬性即可 `DefaultValue` 。
 
 **OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
@@ -428,7 +428,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>

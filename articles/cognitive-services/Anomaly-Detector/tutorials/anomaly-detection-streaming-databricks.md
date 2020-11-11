@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017653"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368707"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教學課程：使用 Azure Databricks 對串流資料進行異常情況偵測
 
@@ -47,7 +47,7 @@ ms.locfileid: "92017653"
 
 ## <a name="prerequisites"></a>必要條件
 
-- [Azure 事件中樞命名空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)和事件中樞。
+- [Azure 事件中樞命名空間](../../../event-hubs/event-hubs-create.md)和事件中樞。
 
 - 用來存取事件中樞命名空間的[連接字串](../../../event-hubs/event-hubs-get-connection-string.md)。 連接字串的格式應類似於：
 
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-若要執行 Notebook，請按 **SHIFT + ENTER**。 您會看到如下列程式碼片段所示的輸出。 輸出中的每個事件都是內嵌至事件中樞的時間戳記和「喜歡」數目組合。
+若要執行 Notebook，請按 **SHIFT + ENTER** 。 您會看到如下列程式碼片段所示的輸出。 輸出中的每個事件都是內嵌至事件中樞的時間戳記和「喜歡」數目組合。
 
 ```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-若要執行 Notebook，請按 **SHIFT + ENTER**。 您會看到如下列程式碼片段所示的輸出。
+若要執行 Notebook，請按 **SHIFT + ENTER** 。 您會看到如下列程式碼片段所示的輸出。
 
 ```scala
 import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
@@ -497,7 +497,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-若要執行 Notebook，請按 **SHIFT + ENTER**。 您會看到如下列程式碼片段所示的輸出。
+若要執行 Notebook，請按 **SHIFT + ENTER** 。 您會看到如下列程式碼片段所示的輸出。
 
 ```scala
 import org.apache.spark.sql.Row

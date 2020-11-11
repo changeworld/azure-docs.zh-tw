@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 11/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233792"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489517"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -116,6 +116,10 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 原則最慢可能需要 24 小時才會生效。
 
 您可以選取  [其他用戶端] 條件所有可用的授與控制項，但使用者體驗一律相同，存取均會遭到封鎖。
+
+### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online 和 B2B 來賓使用者
+
+若要透過舊版驗證來封鎖 B2B 使用者對 SharePoint Online 的存取，組織必須使用 PowerShell 命令停用 SharePoint 上的舊版驗證， `Set-SPOTenant` 並將 `-LegacyAuthProtocolsEnabled` 參數設定為 `$false` 。 如需有關設定此參數的詳細資訊，請參閱有關[set-spotenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)的 SharePoint PowerShell 參考檔
 
 ## <a name="next-steps"></a>後續步驟
 

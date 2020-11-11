@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 資料表儲存體來針對 Microsoft AppS
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 925bc79d54def3f2aec4657196b8cea53704396f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130641"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489347"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 資料表儲存體來管理商業市集潛在客戶
 
@@ -38,7 +38,7 @@ ms.locfileid: "93130641"
 
 1. 從 Azure 入口網站 **的 [首頁** ] 中，選取 [ **查看您的所有資源** ] 以存取您的儲存體帳戶。 您也可以從 Azure 入口網站的左側功能表中選取 [所有資源]。
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="建立 Azure 儲存體帳戶的步驟。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="存取您的 Azure 儲存體帳戶。":::
 
 1. 從您的儲存體帳戶窗格，選取 [存取金鑰] 並複製該金鑰的 [連接字串] 值。 請儲存此值，因為其為您必須在發佈入口網站中加以提供，以便接收您 Azure Marketplace 供應項目之潛在客戶的「儲存體帳戶連接字串」。
 
@@ -48,7 +48,7 @@ ms.locfileid: "93130641"
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="建立 Azure 儲存體帳戶的步驟。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure 儲存體金鑰。":::
 
 
 1. 從您的儲存體帳戶窗格，選取 [資料表] 並選取 [+ 資料表] 以建立資料表。 輸入資料表的名稱，然後選取 [確定]。 請儲存此值，因為如果您想要設定流程以在接收到潛在客戶時接收電子郵件通知，便會需要此值。
@@ -185,7 +185,7 @@ ms.locfileid: "93130641"
 
 1. 在 [潛在客戶] 區段底下，選取 [連線]。
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="建立 Azure 儲存體帳戶的步驟。":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="潛在客戶":::
 
 1. 在 [連線詳細資料] 快顯視窗中，選取 [Azure 資料表] 作為 [潛在客戶目的地]。 
      ![潛在客戶管理，[連線詳細資料]](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

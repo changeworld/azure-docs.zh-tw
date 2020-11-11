@@ -1,20 +1,20 @@
 ---
-title: Microsoft 商用 marketplace 分析中的使用量儀表板，Azure Marketplace 和 Microsoft AppSource
-description: 了解如何存取所有的 VM 供應項目使用量和計量付費度量。 移至 [商業市集] 下方 [合作夥伴中心] 中的 [使用量] 儀表板。
+title: 商業 marketplace 分析中的使用量儀表板 |Azure Marketplace
+description: 瞭解如何針對發佈至 Azure Marketplace 的供應專案存取所有使用量和計量付費計量。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9a1b6197241b93edf778295f196ccc92c45d85d6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414421"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490112"
 ---
-# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商業市集分析中的使用量儀表板
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的使用量儀表板
 
 本文提供合作夥伴中心中使用方式儀表板的相關資訊。 此儀表板會顯示所有虛擬機器 (VM) 在三個不同的索引標籤中提供標準化的使用量、原始使用量和計量計費計量： VM 正規化使用量、VM 原始使用量和計量計費使用量。
 

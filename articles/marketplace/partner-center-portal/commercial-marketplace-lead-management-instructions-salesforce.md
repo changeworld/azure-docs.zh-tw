@@ -4,15 +4,15 @@ description: 了解如何使用 Salesforce 設定 Microsoft AppSource 和 Azure 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86117110"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489313"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>針對 Salesforce 設定潛在客戶管理
 

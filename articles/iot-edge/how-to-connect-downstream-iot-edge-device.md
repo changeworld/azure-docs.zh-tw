@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 83db314070f4c8857ebaa10b26d0adf51372776f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447589"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489279"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>將下游 IoT Edge 裝置連線至 Azure IoT Edge 閘道 (預覽) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "94447589"
 
 * 免費或標準的 IoT 中樞。
 * 至少兩部 **IoT Edge 裝置** ，一個是最上層裝置和一或多個較低層的裝置。 如果您沒有可用的 IoT Edge 裝置，可以 [在 Ubuntu 虛擬機器上執行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
-* 如果您使用 Azure CLI 來建立和管理裝置，請在安裝 Azure IoT 擴充功能 v 0.9.10 或更新版本時，使用 Azure CLI 的2.3.1。
+* 如果您使用 Azure CLI 來建立和管理裝置，請在安裝 Azure IoT 擴充功能 v 0.10.6 或更新版本時，使用 Azure CLI 的2.3.1。
 
 本文提供詳細的步驟和選項，協助您為您的案例建立正確的閘道階層。 如需引導式教學課程，請參閱 [使用閘道建立 IoT Edge 裝置](tutorial-nested-iot-edge.md)的階層。
 

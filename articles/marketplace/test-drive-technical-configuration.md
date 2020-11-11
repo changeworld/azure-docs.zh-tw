@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125677"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490078"
 ---
 # <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
@@ -98,9 +98,4 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 - [試用產品的最佳作法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF;請確定您的快顯封鎖程式已關閉) 
 - [更新商業 Marketplace 中的現有供應項目](partner-center-portal/update-existing-offer.md) \(部分機器翻譯\)
-
-## <a name="additional-resources"></a>其他資源
-
-## <a name="feedback"></a>意見反應
-
-提交及查看[此產品](https://feedback.azure.com/forums/216369-azure-marketplace)的意見反應
+- [Azure Marketplace 意見反應論壇](https://feedback.azure.com/forums/216369-azure-marketplace)

@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636488"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368197"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>教學課程：建立以相片中的內容啟動沈浸式閱讀程式的 iOS 應用程式 (Swift)
 
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
 
-[電腦視覺認知服務讀取 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 可使用 Microsoft 最新的辨識模型來偵測影像中的文字內容，並將識別出來的文字轉換為電腦可讀取的字元資料流。
+[電腦視覺認知服務讀取 API](../computer-vision/concept-recognizing-text.md) 可使用 Microsoft 最新的辨識模型來偵測影像中的文字內容，並將識別出來的文字轉換為電腦可讀取的字元資料流。
 
 在本教學課程中，您將從頭開始建置 iOS 應用程式，並且使用沈浸式閱讀程式 SDK 整合讀取 API 與沈浸式閱讀程式。 本教學課程的完整工作範例可以在[這裡](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)取得。
 

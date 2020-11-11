@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9456d663eb1600bf73b1fe253560c2d9f29205ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374976"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489449"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 的 Microsoft 365 群組上強制執行命名原則
 
@@ -85,26 +85,26 @@ ms.locfileid: "92374976"
 ## <a name="configure-naming-policy-in-azure-portal"></a>在 Azure 入口網站中設定命名原則
 
 1. 使用群組系統管理員帳戶登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 [群組]****，然後選取 [命名原則]**** 以開啟 [命名原則] 頁面。
+1. 選取 [群組]，然後選取 [命名原則] 以開啟 [命名原則] 頁面。
 
     ![在管理中心開啟 [命名原則] 頁面](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或編輯前置詞尾碼命名原則
 
-1. 在 [命名原則]**** 頁面上，選取 [群組命名原則]****。
+1. 在 [命名原則] 頁面上，選取 [群組命名原則]。
 1. 您可以選取您想要在命名原則時強制執行的屬性或字串，以個別檢視或編輯目前的前置詞或後置詞命名原則。
-1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]****。 您同時可以刪除多個項目。
-1. 藉由選取 [ **儲存**]，儲存新原則的變更以開始生效。
+1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]。 您同時可以刪除多個項目。
+1. 藉由選取 [ **儲存** ]，儲存新原則的變更以開始生效。
 
 ### <a name="edit-custom-blocked-words"></a>編輯自訂封鎖字組
 
-1. 在 [命名原則]**** 頁面上，選取 [封鎖的字組]****。
+1. 在 [命名原則] 頁面上，選取 [封鎖的字組]。
 
     ![編輯和上傳命名原則的封鎖字組清單](./media/groups-naming-policy/blockedwords.png)
 
-1. 選取 [下載]**** 可檢視或編輯目前的自訂封鎖字組清單。
+1. 選取 [下載] 可檢視或編輯目前的自訂封鎖字組清單。
 1. 選取 [檔案] 圖示可上傳新的自訂封鎖字組清單。
-1. 藉由選取 [ **儲存**]，儲存新原則的變更以開始生效。
+1. 藉由選取 [ **儲存** ]，儲存新原則的變更以開始生效。
 
 ## <a name="install-powershell-cmdlets"></a>安裝 PowerShell Cmdlet
 
@@ -123,7 +123,7 @@ ms.locfileid: "92374976"
    Install-Module AzureADPreview
    ```
 
-   如果系統提示您存取未受信任的儲存機制，請輸入 **Y**。安裝新模組可能需要幾分鐘的時間。
+   如果系統提示您存取未受信任的儲存機制，請輸入 **Y** 。安裝新模組可能需要幾分鐘的時間。
 
 ## <a name="configure-naming-policy-in-powershell"></a>在 PowerShell 中設定命名原則
 
@@ -136,7 +136,7 @@ ms.locfileid: "92374976"
    Connect-AzureAD
    ```
 
-   在所開啟的 [登入帳戶]**** 畫面中，輸入系統管理員帳戶和密碼以連線到服務，然後選取 [登入]****。
+   在所開啟的 [登入帳戶] 畫面中，輸入系統管理員帳戶和密碼以連線到服務，然後選取 [登入]。
 
 1. 遵循 Azure Active Directory Cmdlet 中的步驟來 [設定群組設定](../enterprise-users/groups-settings-cmdlets.md) ，以建立此組織的群組設定。
 
@@ -206,7 +206,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>使用 Azure 入口網站移除命名原則
 
-1. 在 [命名原則]**** 頁面上，選取 [刪除原則]****。
+1. 在 [命名原則] 頁面上，選取 [刪除原則]。
 1. 確認刪除之後，命名原則就會遭到移除，包括所有前置詞後置詞命名原則以及任何自訂封鎖字組。
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 移除命名原則
@@ -249,7 +249,6 @@ Groups 行動應用程式 | 在 Groups 行動應用程式中所建立的群組�
 Planner | Planner 會遵守命名原則。 輸入計劃名稱時，Planner 會顯示命名原則預覽。 當使用者輸入自訂封鎖字組時，系統會在建立計劃時顯示錯誤訊息。
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement 會遵守命名原則。 當使用者輸入群組名稱或群組電子郵件別名時，Dynamics 365 會顯示命名原則所強制使用的名稱。 當使用者輸入自訂封鎖字組時，系統會顯示附上封鎖字組的錯誤訊息，讓使用者可將其移除。
 學校資料同步 (SDS) | 透過 SDS 所建立的群組會遵守命名原則，但不會自動套用命名原則。 對於需要建立群組並上傳到 SDS 的類別名稱，SDS 系統管理員必須對此名稱附加前置詞和後置詞。 否則，群組的建立或編輯會失敗。
-Outlook Customer Manager (OCM) | Outlook Customer Manager 會遵守命名原則，而此原則會自動套用到 Outlook Customer Manager 中所建立的群組。 如果偵測到自訂封鎖字組，系統會封鎖 OCM 中的群組建立，並讓使用者無法使用 OCM 應用程式。
 Classroom 應用程式 | 在 Classroom 應用程式中所建立的群組會遵守命名原則，但不會自動套用命名原則，而且不會在使用者輸入教室群組名稱時顯示命名原則預覽。 使用者必須輸入具有前置詞和後置詞的強制教室群組名稱。 如果沒有這麼做，教室群組的建立或編輯作業會失敗，並顯示錯誤。
 Power BI | Power BI 工作區會遵守命名原則。    
 Yammer | 當使用者以其 Azure Active Directory 帳戶登入 Yammer 來建立群組或編輯群組名稱時，群組名稱會符合命名原則。 這同時適用于 Microsoft 365 連接的群組和所有其他 Yammer 群組。<br>如果已在命名原則就緒之前建立 Microsoft 365 連接的群組，組名將不會自動遵循命名原則。 當使用者編輯群組名稱時，系統會提示他們新增前置詞和後置詞。

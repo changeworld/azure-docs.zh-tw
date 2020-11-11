@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 1a76c753cdf22d2c9b8b56893017cdc3cee9c8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d987797c2c25f685a3c9250afeb17cec3ad3cb2e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527287"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369540"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教學課程：將 Power BI 與文字分析認知服務整合
 
@@ -103,7 +103,7 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 現在，您已經準備好建立自訂函式，以整合 Power BI 與文字分析。 函式會收到要處理為參數的文字。 它會將資料轉換為所需的 JSON 格式 (以及反向轉換)，並對關鍵片語 API 提出 HTTP 要求。 接著，函式會剖析來自 API 的回應並傳回字串，其中包含所擷取關鍵片語的逗點分隔值清單。
 
 > [!NOTE]
-> Power BI Desktop 自訂函式會以 [Power Query M 公式語言](https://docs.microsoft.com/powerquery-m/power-query-m-reference) (簡稱 "M") 來撰寫。 M 是以 [F#](https://docs.microsoft.com/dotnet/fsharp/) 為基礎的功能性程式設計語言。 不過，不是程式設計師也能完成本教學課程；下面有所需的程式碼。
+> Power BI Desktop 自訂函式會以 [Power Query M 公式語言](/powerquery-m/power-query-m-reference) (簡稱 "M") 來撰寫。 M 是以 [F#](/dotnet/fsharp/) 為基礎的功能性程式設計語言。 不過，不是程式設計師也能完成本教學課程；下面有所需的程式碼。
 
 在 Power BI Desktop 中，確定您仍在 [查詢編輯器] 視窗中。 如果不是，請選取 [常用] 功能區，按一下 [外部資料] 群組中的 [編輯查詢]。
 
@@ -296,7 +296,7 @@ in  keyphrases
 > [文字分析 API 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
 
 > [!div class="nextstepaction"]
-> [Power Query M 參考](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Power Query M 參考](/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI 文件](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

@@ -4,15 +4,15 @@ description: 合作夥伴中心內 Azure Marketplace 和 AppSource 的支援資�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: navits09
+ms.author: navits
 ms.date: 04/14/2020
-ms.openlocfilehash: 7008c305525c7564e57fd225e961b462bf6939f2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130828"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488752"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 的支援
 

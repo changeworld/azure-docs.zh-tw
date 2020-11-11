@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095436"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381281"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教學課程：使用 Bing Web 搜尋 API 建立單頁應用程式
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93095436"
 > * 管理訂用帳戶金鑰
 > * 處理錯誤
 
-若要使用此應用程式，需要具備 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。
+若要使用此應用程式，需要具備 [Azure 認知服務帳戶](../cognitive-services-apis-create-account.md)及 Bing 搜尋 API。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -86,7 +86,7 @@ npm install
 
 ## <a name="query-options"></a>查詢選項
 
-HTML 表單包含對應到 [Bing Web 搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\) 中查詢參數的選項。 下表提供使用者如何使用範例應用程式來篩選搜尋結果的明細：
+HTML 表單包含對應到 [Bing Web 搜尋 API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\) 中查詢參數的選項。 下表提供使用者如何使用範例應用程式來篩選搜尋結果的明細：
 
 | 參數 | 描述 |
 |-----------|-------------|
@@ -99,7 +99,7 @@ HTML 表單包含對應到 [Bing Web 搜尋 API v7](https://docs.microsoft.com/r
 | `offset` | 隱藏的欄位。 要求中第一個搜尋結果的位移，其可用於分頁。 它會隨著每個新要求重設為 `0`。 |
 
 > [!NOTE]
-> Bing Web 搜尋 API 會提供其他查詢參數來協助精簡搜尋結果。 此範例只使用數個參數。 如需可用參數的完整清單，請參閱 [Bing Web 搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\)。
+> Bing Web 搜尋 API 會提供其他查詢參數來協助精簡搜尋結果。 此範例只使用數個參數。 如需可用參數的完整清單，請參閱 [Bing Web 搜尋 API v7 參考](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\)。
 
 `bingSearchOptions()` 函式會轉換這些選項，以符合 Bing 搜尋 API 所需的格式。
 
@@ -303,7 +303,7 @@ function handleBingResponse() {
 
 ## <a name="display-search-results"></a>顯示搜尋結果
 
-對於 Bing Web 搜尋 API 所傳回的結果有[使用和顯示需求](useanddisplayrequirements.md)。 由於回應可能包含各種結果類型，因而不足以逐一查看最上層 `WebPages`集合。 範例應用程式會改為使用 `RankingResponse`，來將結果排序為規格。
+對於 Bing Web 搜尋 API 所傳回的結果有[使用和顯示需求](./use-display-requirements.md)。 由於回應可能包含各種結果類型，因而不足以逐一查看最上層 `WebPages`集合。 範例應用程式會改為使用 `RankingResponse`，來將結果排序為規格。
 
 > [!NOTE]
 > 如果您只想要單一結果類型，請使用 `responseFilter` 查詢參數，或考慮使用其他 Bing 搜尋端點之一，例如 Bing 影像搜尋。

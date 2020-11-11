@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777253"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363913"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教學課程：將個人化工具新增至 .NET Web 應用程式
 
@@ -24,13 +24,13 @@ ms.locfileid: "91777253"
 > * 設定個人化工具的金鑰和端點
 > * 收集特性
 > * 呼叫排名 API 和獎勵 API
-> * 顯示最佳動作 (指定為 _rewardActionId_)
+> * 顯示最佳動作 (指定為 _rewardActionId_ )
 
 
 
 ## <a name="select-the-best-content-for-a-web-app"></a>選取 Web 應用程式的最佳內容
 
-當網頁上有一份_動作_ (某些類型的內容) 清單，而這些動作必須個人化為要顯示的單一最佳項目 (rewardActionId) 時，Web 應用程式就應該使用個人化工具。 動作清單的範例包括新聞文章、按鈕放置位置，以及產品名稱的文字選擇。
+當網頁上有一份 _動作_ (某些類型的內容) 清單，而這些動作必須個人化為要顯示的單一最佳項目 (rewardActionId) 時，Web 應用程式就應該使用個人化工具。 動作清單的範例包括新聞文章、按鈕放置位置，以及產品名稱的文字選擇。
 
 您需要將動作清單連同內容特性傳送至個人化工具迴圈。 個人化工具會選取單一最佳動作，然後 Web 應用程式會顯示該動作。
 
@@ -44,9 +44,9 @@ ms.locfileid: "91777253"
 * 咖啡
 * 湯
 
-為了協助個人化工具了解您的動作，請在每個排名 API 要求中傳送_具有特性的動作_與_內容特性_。
+為了協助個人化工具了解您的動作，請在每個排名 API 要求中傳送 _具有特性的動作_ 與 _內容特性_ 。
 
-模型的**特性**是可跨 Web 應用程式使用者群體的成員加以彙總 (群組) 的動作或內容相關資訊。 特性_不會_具有個別特定性質 (例如使用者識別碼) 或高度特定性 (例如一天之中的確切時間)。
+模型的 **特性** 是可跨 Web 應用程式使用者群體的成員加以彙總 (群組) 的動作或內容相關資訊。 特性 _不會_ 具有個別特定性質 (例如使用者識別碼) 或高度特定性 (例如一天之中的確切時間)。
 
 ### <a name="actions-with-features"></a>具有特性的動作
 
@@ -155,10 +155,10 @@ private string GetUsersTastePreference()
 ## <a name="how-does-the-web-app-use-personalizer"></a>Web 應用程式如何使用個人化工具？
 
 Web 應用程式會使用個人化工具，從食物選擇清單中選取最佳動作。 其方式是在每個排名 API 呼叫中傳送下列資訊：
-* **動作**及其特性，例如 `taste` 和 `spiceLevel`
-* **內容**特性，例如一天之中的 `time`、使用者的 `taste` 偏好、瀏覽器的使用者代理程式資訊，以及內容特性
-* **要排除的動作**，例如果汁
-* **eventId**，此值在每個排名 API 呼叫中都不同。
+* **動作** 及其特性，例如 `taste` 和 `spiceLevel`
+* **內容** 特性，例如一天之中的 `time`、使用者的 `taste` 偏好、瀏覽器的使用者代理程式資訊，以及內容特性
+* **要排除的動作** ，例如果汁
+* **eventId** ，此值在每個排名 API 呼叫中都不同。
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Web 應用程式中的個人化工具模型特性
 
@@ -216,7 +216,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1) - 範例後端伺服器會使用 .NET Core
 * [Node.js](https://nodejs.org/) - 用戶端/前端取決於此應用程式
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/) - 請使用 Visual Studio 2019 的開發人員環境或 .NET Core CLI 來建置和執行 app
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [.NET Core CLI](/dotnet/core/tools/) - 請使用 Visual Studio 2019 的開發人員環境或 .NET Core CLI 來建置和執行 app
 
 ### <a name="set-up-the-sample"></a>設定範例
 1. 複製 Azure 個人化工具範例存放庫。
@@ -235,7 +235,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 1. 在 Azure 入口網站中，於 [金鑰和端點] 索引標籤中尋找 `Endpoint` 和 `Key1` 或 `Key2` (任何一個都行)。這些是您的 `PersonalizerServiceEndpoint` 和 `PersonalizerApiKey`。
 1. 在 **appsettings.json** 中填寫 `PersonalizerServiceEndpoint`。
-1. 以下列其中一種方式，將 `PersonalizerApiKey` 設定為[應用程式祕密](https://docs.microsoft.com/aspnet/core/security/app-secrets)：
+1. 以下列其中一種方式，將 `PersonalizerApiKey` 設定為[應用程式祕密](/aspnet/core/security/app-secrets)：
 
     * 如果您使用 .NET Core CLI，則可以使用 `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` 命令。
     * 如果您使用 Visual Studio，則可以在專案上按一下滑鼠右鍵，然後選取 [管理使用者祕密] 功能表選項來設定個人化工具金鑰。 如此一來，Visual Studio 將會開啟 `secrets.json` 檔案以供您在其中新增金鑰，如下所示：
@@ -277,13 +277,13 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 範例 Web 應用程式具有 **C# .NET** 伺服器，以負責管理特性的集合，以及傳送和接收個人化工具端點的 HTTP 呼叫。
 
-範例 Web 應用程式會使用**油墨廓清前端用戶端應用程式**來擷取特性和處理使用者介面動作，例如按一下按鈕，以及將資料傳送給 .NET 伺服器。
+範例 Web 應用程式會使用 **油墨廓清前端用戶端應用程式** 來擷取特性和處理使用者介面動作，例如按一下按鈕，以及將資料傳送給 .NET 伺服器。
 
 下列各節會說明開發人員在使用個人化工具時所必須了解的伺服器和用戶端部分。
 
 ## <a name="rank-api-client-application-sends-context-to-server"></a>排名 API：用戶端應用程式將內容傳送給伺服器
 
-用戶端應用程式會收集使用者的瀏覽器_使用者代理程式_。
+用戶端應用程式會收集使用者的瀏覽器 _使用者代理程式_ 。
 
 > [!div class="mx-imgBorder"]
 > ![建置和執行 HTTPRequestFeaturesExample 專案。 瀏覽器視窗隨即開啟，以顯示單頁應用程式。](./media/tutorial-web-app/user-agent.png)
@@ -340,7 +340,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>選取最佳動作
 
-在伺服器的 **PersonalizerController.cs** 中，**GenerateRank** 伺服器 API 會摘要說明呼叫排名 API 的準備工作
+在伺服器的 **PersonalizerController.cs** 中， **GenerateRank** 伺服器 API 會摘要說明呼叫排名 API 的準備工作
 
 * 為排名呼叫建立新的 `eventId`
 * 取得動作清單
@@ -564,7 +564,7 @@ public RankRequest GenerateRank()
 
 ## <a name="reward-api-collect-information-for-reward"></a>獎勵 API：收集獎勵的資訊
 
-[獎勵分數](concept-rewards.md)應謹慎規劃，就如同規劃特性一樣。 獎勵分數一般應該是介於 0 到 1 之間的值。 該值_可以_在用戶端應用程式中進行部分計算 (根據使用者行為) 以及在伺服器上進行部分計算 (根據商務邏輯和目標)。
+[獎勵分數](concept-rewards.md)應謹慎規劃，就如同規劃特性一樣。 獎勵分數一般應該是介於 0 到 1 之間的值。 該值 _可以_ 在用戶端應用程式中進行部分計算 (根據使用者行為) 以及在伺服器上進行部分計算 (根據商務邏輯和目標)。
 
 如果在 Azure 入口網站中針對個人化工具資源所設定的 [獎勵等候時間] 內，伺服器未呼叫獎勵 API，則會針對該事件使用 [預設獎勵] (一樣是在 Azure 入口網站中進行設定)。
 

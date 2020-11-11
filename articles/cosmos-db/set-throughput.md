@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098768"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490265"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -73,7 +73,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 如果您的工作負載涉及刪除和重新建立資料庫中的所有集合，建議您先捨棄空的資料庫並重新建立新的資料庫，然後再建立集合。 下圖顯示實體分割區如何裝載一或多個屬於資料庫內不同容器的邏輯分割區：
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="裝載屬於不同容器的一或多個邏輯分割區的實體分割區 " border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>在資料庫和容器上設定輸送量
 
@@ -82,7 +82,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 * 您可以使用 *"K"* 個 RU 的標準 (手動) 佈建輸送量來建立名為 *Z* 的 Azure Cosmos 資料庫。 
 * 接下來，在資料庫中建立五個容器，名稱分別為 *A* 、 *B* 、 *C* 、 *D* 和 *E* 。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 只有在建立資料庫和容器時，您才能設定共用和專用輸送量。 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="設定容器層級的輸送量":::
 
 * *"K"* RU 輸送量會在四個容器 *A* 、 *C* 、 *D* 和 *E* 之間共用。 *A* 、 *C* 、 *D* 或 *E* 可用的確切輸送量數量會有所不同。 沒有適用於每個個別容器輸送量的 SLA。
 * 容器 *B* 保證能夠隨時取得 *"P"* 個 RU 的輸送量， 並受到 SLA 支援。
@@ -109,7 +109,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 實際的最小 RU/秒可能會依您的帳戶設定而有所不同。 但一般而言，它的最大值是：
 
 * 400 RU/秒 
-* 目前的儲存體（GB） * 10 RU/秒
+* 目前的儲存體（GB） * 10 RU/秒 (除非您的容器或資料庫包含超過 1 TB 的資料，請參閱我們的 [高儲存體/低輸送量程式](#high-storage-low-throughput-program)) 
 * 在資料庫或容器上布建的最高 RU/秒/100
 * 容器計數 * 100 RU/秒 (只) 的共用輸送量資料庫
 

@@ -3,12 +3,12 @@ title: 如何使用 Azure VMware 解決方案中的公用 IP 功能
 description: 本文說明如何使用 Azure 虛擬 WAN 中的公用 IP 功能。
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 63475b478a951632c068b168353acf2e0bb7061c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912662"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490384"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>如何使用 Azure VMware 解決方案中的公用 IP 功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "92912662"
 
 本文會詳細說明如何在虛擬 WAN 中使用公用 IP 功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - Azure VMware 解決方案環境
 - 在 Azure VMware 解決方案環境中執行的 web 伺服器。
@@ -54,15 +54,15 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 選取 Azure VMware 解決方案私人雲端。
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Azure VMware 解決方案私人雲端的螢幕擷取畫面。" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
 1. 在 [ **管理** ] 底下，選取 [連線 **能力** ]。
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="連接區段的螢幕擷取畫面。" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
 1. 選取 [ **公用 IP** ] 索引標籤，然後選取 [ **設定** ]。
 
-   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
+   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="顯示開始設定公用 IP 位置的螢幕擷取畫面" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
 1. 接受預設值或加以變更，然後選取 [ **建立** ]。
 
@@ -87,19 +87,19 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 選取已部署的防火牆，然後選取 [ **造訪 Azure 防火牆管理員以設定及管理此防火牆** 。
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="顯示設定和管理防火牆選項的螢幕擷取畫面" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. 選取 [ **安全虛擬中樞** ]，然後從清單中選取虛擬中樞。
 
-   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="公用 IP 架構圖表" lightbox="media/public-ip-usage/select-virtual-hub.png":::
+   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="防火牆管理員的螢幕擷取畫面" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
 1. 在 [虛擬中樞] 頁面上，選取 [ **公用 ip** 設定]，並新增更多公用 ip 位址，然後選取 [ **新增** ]。 
 
-   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
+   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="如何在防火牆管理員中新增公用 IP 設定的螢幕擷取畫面" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
 1. 提供所需的 Ip 數目，然後選取 [ **新增** ]。
 
-   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="公用 IP 架構圖表" border="true":::
+   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="新增指定數目之公用 IP 設定的螢幕擷取畫面" border="true":::
 
 
 ## <a name="create-firewall-policies"></a>建立防火牆原則
@@ -110,11 +110,11 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 選取已部署的防火牆，然後選取 [ **造訪 Azure 防火牆管理員以設定及管理此防火牆** 。
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="顯示設定和管理防火牆選項的螢幕擷取畫面" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. 選取 [ **Azure 防火牆** 原則]，然後選取 [ **建立 azure 防火牆原則** ]。
 
-   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="如何在防火牆管理員中建立防火牆原則的螢幕擷取畫面" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
 1. 在 [ **基本** ] 索引標籤下提供必要的詳細資料，然後選取 **[下一步： DNS 設定]** 。 
 
@@ -122,7 +122,7 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 選取 [ **新增規則集合** ]，提供下列詳細資料，然後選取 [ **新增** ]，然後選取 **[下一步：威脅情報]** 。
 
-   -  Name
+   -  名稱
    -  規則集合類型-DNAT
    -  優先順序
    -  規則集合動作-允許
@@ -140,15 +140,13 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 1. 選取 [ **建立虛擬中樞的關聯** ]。
 
-   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
-
 1. 從清單中選取一個中樞，然後選取 [ **新增** ]。
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="螢幕擷取畫面，顯示將轉換成 Scecured 虛擬中樞的選定中樞。" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. 選取 [下一步:標籤]。 
 
-1.  (選擇性) 建立名稱/值組以將您的資源分類。 
+1.  (選擇性) 建立名稱和值組以將您的資源分類。 
 
 1. 選取 **[下一步]： [檢查 + 建立]** ，然後選取 [ **建立** ]。
 
@@ -156,7 +154,7 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
 您可以為每個 SDDCs 擁有100個公用 Ip。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何使用 [Azure 虛擬 WAN](../virtual-wan/virtual-wan-about.md)來使用公用 IP 位址。
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a17143045b368038e24ac40f131325a623fc934d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374922"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489602"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中將靜態群組成員資格變更為動態
 
@@ -32,24 +32,24 @@ ms.locfileid: "92374922"
 
 ## <a name="change-the-membership-type-for-a-group"></a>變更群組的成員資格類型
 
-1. 使用您 Azure AD 組織中的全域管理員或使用者系統管理員帳戶登入 [Azure AD admin center](https://aad.portal.azure.com) 。
+1. 使用全域管理員、使用者系統管理員或您 Azure AD 組織中的群組系統管理員帳戶登入 [Azure AD admin center](https://aad.portal.azure.com) 。
 2. 選取 [群組]。
-3. 從 [所有群組]**** 清單中，開啟您想要變更的群組。
+3. 從 [所有群組] 清單中，開啟您想要變更的群組。
 4. 選取 [屬性] 。
-5. 在群組的 [屬性]**** 頁面上，依據您所需的成員資格類型，選取 [已指派] (靜態)、[動態使用者] 或 [動態裝置] 作為 [成員資格類型]****。 針對動態成員資格，您可以使用規則建立器來選取簡單規則的選項，或自行撰寫成員資格規則。 
+5. 在群組的 [屬性] 頁面上，依據您所需的成員資格類型，選取 [已指派] (靜態)、[動態使用者] 或 [動態裝置] 作為 [成員資格類型]。 針對動態成員資格，您可以使用規則建立器來選取簡單規則的選項，或自行撰寫成員資格規則。 
 
 下列步驟是針對某個使用者群組將群組從靜態變更為動態成員資格的範例。
 
-1. 在所選群組的 [屬性]**** 上，選取 [動態使用者]**** 作為 [成員資格類型]****，然後在說明群組成員資格變更的對話方塊上，選取 [是] 以繼續。 
+1. 在所選群組的 [屬性] 上，選取 [動態使用者] 作為 [成員資格類型]，然後在說明群組成員資格變更的對話方塊上，選取 [是] 以繼續。 
   
    ![選取動態使用者作為成員資格類型](./media/groups-change-type/select-group-to-convert.png)
   
-2. 選取 [新增動態查詢]****，然後提供規則。
+2. 選取 [新增動態查詢]，然後提供規則。
   
    ![輸入動態群組的規則](./media/groups-change-type/enter-rule.png)
   
-3. 建立規則之後，在頁面底部選取 [新增查詢]****。
-4. 在群組的 [屬性]**** 頁面上，選取 [儲存]**** 以儲存變更。 群組的 [成員資格類型]**** 會立即在群組清單中更新。
+3. 建立規則之後，在頁面底部選取 [新增查詢]。
+4. 在群組的 [屬性] 頁面上，選取 [儲存] 以儲存變更。 群組的 [成員資格類型] 會立即在群組清單中更新。
 
 > [!TIP]
 > 如果您輸入的成員資格規則不正確，群組轉換可能會失敗。 入口網站右上角將會顯示通知，當中包含系統為什麼無法接受該規則的解釋。 請仔細閱讀，以了解您可以如何調整規則來讓規則變成有效。 如需規則語法的範例以及成員資格規則支援的完整屬性、運算子和值清單，請參閱 [Azure Active Directory 中群組的動態成員資格規則](groups-dynamic-membership.md)。
@@ -57,7 +57,7 @@ ms.locfileid: "92374922"
 ## <a name="change-membership-type-for-a-group-powershell"></a>變更群組的成員資格類型 (PowerShell)
 
 > [!NOTE]
-> 若要變更動態群組屬性，您必須使用**預覽版本** [Azure AD PowerShell 第 2 版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)中的 Cmdlet。 您可以從 [PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview)安裝預覽版。
+> 若要變更動態群組屬性，您必須使用 **預覽版本** [Azure AD PowerShell 第 2 版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)中的 Cmdlet。 您可以從 [PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview)安裝預覽版。
 
 以下是在現有群組上切換成員資格管理的函式範例。 在此範例中，需小心以正確操作 GroupTypes 屬性，並保留任何與動態成員資格無關的值。
 

@@ -9,18 +9,62 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445076"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489126"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
+
+
+## <a name="2020-11-09"></a>2020-11-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1180"></a>Azure Machine Learning SDK for Python v 1.18。0
++ **Bug 修正和改善**
+  + **azureml-automl-core**
+    +  藉由允許以高斯雜訊填補，來改善短時間序列的處理。
+  + **azureml-automl-runtime**
+    + 如果 DateTime 資料行具有 OutOfBoundsDatetime 值，則擲回 ConfigException
+    + 藉由允許以高斯雜訊填補，來改善短時間序列的處理。
+    + 確定每個文字資料行都可以根據該文字資料行中字串的長度，利用含有 n 個語法的字元轉換
+    + 針對在使用者的本機計算上執行的 AutoML 實驗，提供最佳模式的原始功能說明
+  + **azureml-core**
+    + 釘選套件： pyjwt，以避免在即將推出的版本中提取中斷的版本。
+    + 如果這類實驗存在或新的實驗，建立實驗將會傳回具有相同指定名稱的作用中或上次封存的實驗。
+    + 依名稱呼叫 get_experiment 會傳回使用該指定名稱的作用中或上次封存的實驗。
+    + 使用者無法在重新開機時重新命名實驗。
+    + 改進的錯誤訊息，以在資料集不正確地傳遞至實驗 (例如 ScriptRunConfig) 時，包含可能的修正程式。 
+    + 的改進檔， `OutputDatasetConfig.register_on_complete` 包括名稱已存在時所發生的行為。
+    + 指定可能與常見環境變數衝突的資料集輸入和輸出名稱，現在會產生警告
+    + `grant_workspace_access`註冊資料存放區時的重新用途參數。 將它設定為 `True` ，以從 Machine Learning Studio 存取虛擬網路背後的資料。
+      [深入了解](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+    + 已調整連結服務 API。 我們不會提供資源識別碼，而是在設定中定義3個不同的參數 sub_id、rg 和名稱。
+    + 為了讓客戶能夠自行解決權杖損毀問題，請啟用工作區權杖同步處理成為公用方法。
+    + 這種變更可讓您使用空字串做為 script_param 的值
+  + **azureml-pipeline-core**
+    + SDK 以支援 SynapseCompute 類型和 SynapseSparkStep。 客戶可以在 synapse spark 集區上執行實驗和管線執行。
+  + **azureml-pipeline-steps**
+    + SDK 以支援 SynapseCompute 類型和 SynapseSparkStep。 客戶可以在 synapse spark 集區上執行實驗和管線執行。
+  + **azureml-synapse**
+    + 新增 Synapse 魔術和 SparkMonitor，以啟用使用者提交 Syanpse 作業，並查看筆記本中的作業進度。
+  + **azureml-train-automl-client**
+    +  藉由允許以高斯雜訊填補，來改善短時間序列的處理。
+  + **azureml-train-automl-runtime**
+    + 如果 DateTime 資料行具有 OutOfBoundsDatetime 值，則擲回 ConfigException
+    + 已新增支援，以針對在使用者的本機計算上執行的 AutoML 實驗提供最佳模型的原始功能說明
+    + 藉由允許以高斯雜訊填補，來改善短時間序列的處理。
+  + **azureml-train-core**
+    + 這種變更可讓您使用空字串做為 script_param 的值
+  + **azureml-定型-restclients-hyperdrive**
+    + 讀我檔案已變更為提供更多內容
+  + **azureml-widgets**
+    + 針對 widget 將字串支援新增至圖表/平行座標程式庫。
 
 ## <a name="2020-11-05"></a>2020-11-05
 
@@ -29,6 +73,7 @@ ms.locfileid: "94445076"
 現在可以使用資料標籤中的影像實例分割 (多邊形注釋) 專案類型，讓使用者可以在影像中物件的輪廓周圍繪製和標注多邊形。 使用者將能夠將某個類別和多邊形指派給影像內感興趣的每個物件。
 
 深入瞭解 [影像實例分割標記](how-to-label-images.md)。
+
 
 
 ## <a name="2020-10-26"></a>2020-10-26
@@ -1140,7 +1185,7 @@ ms.locfileid: "94445076"
     + 新增對 pandas 的支援。 數列和 pandas。 用於偵測資料行資料類型的類別。 先前只支援 numpy. ndarray
       + 已新增相關的程式碼變更，以正確地處理類別 dtype。
     + 已改善預測函數介面： y_pred 參數設為選擇性。 -Docstrings 已改善。
-  + **azureml-contrib-資料集**
+  + **azureml-contrib-dataset**
     + 修正無法裝載標記資料集的 bug。
   + **azureml-core**
     + 修正的錯誤 `Environment.from_existing_conda_environment(name, conda_environment_name)` 。 使用者可以建立環境的實例，該實例是本機環境的精確複本

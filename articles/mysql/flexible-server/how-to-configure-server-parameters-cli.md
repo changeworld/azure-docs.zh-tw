@@ -6,16 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 87ec99a68c538e8133d64351cdecbbf8b10459e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525069"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489534"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>使用 Azure CLI 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中設定伺服器參數
+
+> [!IMPORTANT] 
+> 適用於 MySQL 的 Azure 資料庫 - 彈性伺服器目前處於公開預覽狀態。
+
 您可以使用 Azure 命令列公用程式 Azure CLI，來列出、顯示及更新適用於 MySQL 的 Azure 資料庫彈性伺服器的參數。 當您建立伺服器時，伺服器參數會設定為預設值和建議值。  
 
 本文描述如何使用 Azure CLI 來列出、顯示和補救伺服器參數。
@@ -31,7 +35,7 @@ ms.locfileid: "92525069"
 ## <a name="list-server-parameters-for-azure-database-for-mysql-flexible-server"></a>列出適用於 MySQL 的 Azure 資料庫彈性伺服器的伺服器參數
 若要列出伺服器中的所有參數及其值，請執行 [az mysql 彈性伺服器參數清單](/cli/azure/mysql/flexible-server/parameter) 命令。
 
-您可以在 [資源群組**myresourcegroup**] 下，列出伺服器**mydemoserver.mysql.database.azure.com**的伺服器參數。
+您可以在 [資源群組 **myresourcegroup** ] 下，列出伺服器 **mydemoserver.mysql.database.azure.com** 的伺服器參數。
 ```azurecli-interactive
 az mysql flexible-server parameter list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -40,14 +44,14 @@ az mysql flexible-server parameter list --resource-group myresourcegroup --serve
 ## <a name="show-server-parameter-details"></a>顯示伺服器參數詳細資料
 若要顯示有關伺服器特定參數的詳細資料，請執行 [az mysql 彈性伺服器參數 show](/cli/azure/mysql/flexible-server/parameter) 命令。
 
-此範例會顯示 [資源群組 myresourcegroup] 下 [伺服器**mydemoserver.mysql.database.azure.com** ]**慢速 \_ 查詢 \_ 記錄**伺服器參數的詳細資料 **。**
+此範例會顯示 [資源群組 myresourcegroup] 下 [伺服器 **mydemoserver.mysql.database.azure.com** ] **慢速 \_ 查詢 \_ 記錄** 伺服器參數的詳細資料 **。**
 ```azurecli-interactive
 az mysql flexible-server parameter show --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
 ## <a name="modify-a-server-parameter-value"></a>修改伺服器參數值
 您也可以修改特定伺服器參數的值，以更新 MySQL 伺服器引擎的基礎設定值。 若要補救伺服器參數，請使用 [az mysql 彈性伺服器參數集](/cli/azure/mysql/flexible-server/parameter) 命令。 
 
-更新 [資源群組 myresourcegroup] 下 [伺服器**mydemoserver.mysql.database.azure.com** ] 的**慢速 \_ 查詢 \_ 記錄**伺服器參數 **。**
+更新 [資源群組 myresourcegroup] 下 [伺服器 **mydemoserver.mysql.database.azure.com** ] 的 **慢速 \_ 查詢 \_ 記錄** 伺服器參數 **。**
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver --value ON
 ```
@@ -55,13 +59,13 @@ az mysql flexible-server parameter set --name slow_query_log --resource-group my
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
-此程式碼會將 **慢速 \_ 查詢 \_ 記錄** 重設為預設值 **OFF**。 
+此程式碼會將 **慢速 \_ 查詢 \_ 記錄** 重設為預設值 **OFF** 。 
 
 ## <a name="setting-non-modifiable-server-parameters"></a>設定不可修改的伺服器參數
 
 如果您要更新的伺服器參數不可修改，您可以選擇性地使用在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
 
-更新 [資源群組**myresourcegroup** ] 下的 [伺服器**mydemoserver.mysql.database.azure.com** ] 的 [ **init connect 伺服器 \_ ]** 參數，以設定值，例如 [字元集]。
+更新 [資源群組 **myresourcegroup** ] 下的 [伺服器 **mydemoserver.mysql.database.azure.com** ] 的 [ **init connect 伺服器 \_ ]** 參數，以設定值，例如 [字元集]。
 ```azurecli-interactive
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
@@ -94,7 +98,7 @@ SELECT name FROM mysql.time_zone_name;
 
 全域層級時區可以使用 [az mysql 彈性伺服器參數集](/cli/azure/mysql/flexible-server/parameter) 命令來設定。
 
-下列命令會將 [資源群組**myresourcegroup** ] 下的 [伺服器**mydemoserver.mysql.database.azure.com** ] 的**時區 \_ **伺服器參數更新為**美國/太平洋**。
+下列命令會將 [資源群組 **myresourcegroup** ] 下的 [伺服器 **mydemoserver.mysql.database.azure.com** ] 的 **時區 \_** 伺服器參數更新為 **美國/太平洋** 。
 
 ```azurecli-interactive
 az mysql flexible-server parameter set --name time_zone --resource-group myresourcegroup --server-name mydemoserver --value "US/Pacific"
