@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167197"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422649"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>將您的 Java 函式連線至 Azure 儲存體
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-本文說明如何整合您在[先前的快速入門文章](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)中建立的函式與 Azure 儲存體佇列。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至佇列中的訊息。
+本文說明如何整合您在[先前的快速入門文章](./create-first-function-cli-java.md?tabs=bash,browser)中建立的函式與 Azure 儲存體佇列。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至佇列中的訊息。
 
 大部分的繫結都需要函式用來存取繫結服務的預存連接字串。 為了方便進行此連線，您可以使用您以函式應用程式建立的儲存體帳戶。 此帳戶的連線已儲存在名為 `AzureWebJobsStorage` 的應用程式設定中。  
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在開始這篇文章之前，請先完成 [Java 快速入門第 1 部分](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)中的步驟。
+在開始這篇文章之前，請先完成 [Java 快速入門第 1 部分](./create-first-function-cli-java.md?tabs=bash,browser)中的步驟。
 
 ## <a name="download-the-function-app-settings"></a>下載函式應用程式設定
 

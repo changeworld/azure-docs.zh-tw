@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213469"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347194"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>快速入門：透過 Azure 入口網站建立佇列並新增訊息
 
@@ -41,9 +41,9 @@ ms.locfileid: "88213469"
 
 1. 從儲存體帳戶的佇列清單中選取新的佇列。
 1. 選取 [+ 新增訊息]  按鈕，將訊息新增至佇列。 在 [訊息文字]  欄位中輸入訊息。
-1. 指定訊息的到期時間。 可在**到期時間**欄位中輸入的有效值介於 1 秒到 7 天之間。 選取 [訊息永不過期] 以指出在明確移除之前將會保留在佇列中的訊息。
+1. 指定訊息的到期時間。 可在 **到期時間** 欄位中輸入的有效值介於 1 秒到 7 天之間。 選取 [訊息永不過期] 以指出在明確移除之前將會保留在佇列中的訊息。
 1. 指出是否要將訊息編碼為 Base64。 建議編碼二進位資料。
-1. 選取 [確定]**** 按鈕以新增訊息。
+1. 選取 [確定] 按鈕以新增訊息。
 
     ![顯示如何將訊息新增至佇列的螢幕擷取畫面](media/storage-quickstart-queues-portal/add-message.png)
 
@@ -55,9 +55,9 @@ ms.locfileid: "88213469"
 
 ## <a name="dequeue-a-message"></a>清除訊息佇列
 
-您可以在 Azure 入口網站中，從佇列前端清除佇列中的訊息。 當您清除佇列中的訊息時，該訊息會遭到刪除。 
+您可以在 Azure 入口網站中，從佇列前端清除佇列中的訊息。 當您清除佇列中的訊息時，該訊息會遭到刪除。
 
-清除佇列一律會移除佇列中最舊的訊息。 
+清除佇列一律會移除佇列中最舊的訊息。
 
 ![顯示如何從入口網站中清除佇列中訊息的螢幕擷取畫面](media/storage-quickstart-queues-portal/dequeue-message.png)
 

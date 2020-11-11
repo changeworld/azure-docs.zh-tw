@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 399c078481fb205221a683e44f74b4d70c383cbe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7fd52376e6b2d435e3ac6a60243f85ab34e59381
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096558"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412922"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>適用於 MongoDB (3.6 版) 的 Azure Cosmos DB API：支援的功能和語法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -148,7 +148,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 |$currentOp|    否|
 |$listLocalSessions    |否|
 |$listSessions    |否|
-|$graphLookup    |否|
+|$graphLookup    |是|
 
 ### <a name="boolean-expressions"></a>布林運算式
 

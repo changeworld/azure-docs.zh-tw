@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123557"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336674"
 ---
 # <a name="what-is-azure-data-box"></a>什麼是 Azure 資料箱？
 
@@ -90,12 +90,12 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 * **資料箱裝置** - 一種實體裝置，可提供主要儲存體、管理與雲端儲存體的通訊，並協助確保所有儲存在裝置之資料的安全性和機密性。 資料箱裝置的可用儲存容量為 80 TB。 
 
-    ![資料箱的正面和背面](media/data-box-overview/data-box-combined3.png)
+    ![資料箱的正面和背面](media/data-box-overview/data-box-combined.png)
 
     
 * **資料箱服務** - Azure 入口網站的延伸模組，可讓您從不同的地理位置存取 Web 介面來管理資料箱裝置。 使用資料箱服務執行資料箱裝置的每日管理。 服務工作包括如何建立和管理訂單、檢視及管理警示，以及管理共用。  
 
-    ![Azure 入口網站中的資料箱服務](media/data-box-overview/data-box-service1.png)
+    ![Azure 入口網站中的資料箱服務](media/data-box-overview/data-box-service.png)
 
     如需詳細資訊，請移至[使用資料箱服務管理資料箱裝置](data-box-portal-ui-admin.md)。
 
@@ -142,7 +142,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 ### <a name="for-import"></a>匯入
 
-- **服務可用性** - 針對匯入或匯出訂單使用資料箱時，若要取得區域可用性的相關資訊，請移至[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 資料箱上的匯出功能目前為預覽狀態。 
+- **服務可用性** - 針對匯入或匯出訂單使用資料箱時，若要取得區域可用性的相關資訊，請移至 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 資料箱上的匯出功能目前為預覽狀態。 
 
     針對匯入訂單，資料箱也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](../azure-government/documentation-government-welcome.md)。 
 

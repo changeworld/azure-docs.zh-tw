@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/28/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b4b55fa5a21ce56d27505a724bcf08f1a893c71
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41d1be35d2add24cbbc171c3da3bd4d06bce4337
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003451"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359658"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>使用 Azure SDK 以 Azure 資源管理的受控識別設定 VM
 
@@ -48,4 +48,4 @@ Azure 透過一系列的 [Azure SDK](https://azure.microsoft.com/downloads) 來�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要了解您還可以如何使用 Azure 入口網站、PowerShell、CLI 和資源範本，請參閱**設定 Azure VM 身分識別**底下的相關文章。
+- 若要了解您還可以如何使用 Azure 入口網站、PowerShell、CLI 和資源範本，請參閱 **設定 Azure VM 身分識別** 底下的相關文章。

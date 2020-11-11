@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50f15d041f9bcea66400eda0877e9d7914335d74
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783295"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345714"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入門：適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -21,26 +21,26 @@ ms.locfileid: "92783295"
 
 使用適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12：
 
-* 建立佇列
-* 將訊息新增至佇列
-* 窺視佇列中的訊息
-* 更新佇列中的訊息
-* 從佇列接收訊息
-* 刪除佇列中的訊息
-* 刪除佇列
+- 建立佇列
+- 將訊息新增至佇列
+- 窺視佇列中的訊息
+- 更新佇列中的訊息
+- 從佇列接收訊息
+- 刪除佇列中的訊息
+- 刪除佇列
 
 其他資源：
 
-* [API 參考文件](/python/api/azure-storage-queue/index)
-* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
-* [套件 (Python 套件索引)](https://pypi.org/project/azure-storage-queue/) \(英文\)
-* [範例](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API 參考文件](/python/api/azure-storage-queue/index)
+- [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+- [套件 (Python 套件索引)](https://pypi.org/project/azure-storage-queue/) \(英文\)
+- [範例](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](../common/storage-account-create.md)
-* 適用於您作業系統的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更新版本
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- Azure 儲存體帳戶 - [建立儲存體帳戶](../common/storage-account-create.md)
+- 適用於您作業系統的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更新版本
 
 ## <a name="setting-up"></a>設定
 
@@ -101,9 +101,9 @@ pip install azure-storage-queue
 
 Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息的大小可能高達 64 KB。 佇列可以包含數百萬則訊息，最高可達儲存體帳戶的總容量限制。 佇列通常用來建立要以非同步方式處理的待處理項目 (backlog)。 佇列儲存體提供三種類型資源：
 
-* 儲存體帳戶
-* 儲存體帳戶中的佇列
-* 佇列中的訊息
+- 儲存體帳戶
+- 儲存體帳戶中的佇列
+- 佇列中的訊息
 
 下圖顯示資源之間的關係。
 
@@ -111,22 +111,22 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 Python 類別與這些資源互動：
 
-* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-* [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-* [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [receive_Messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 時所傳回的個別物件。
+- [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+- [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+- [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [receive_Messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
 這些範例程式碼片段會示範如何使用適用於 Python 的 Azure 佇列儲存體用戶端程式庫執行下列動作：
 
-* [取得連接字串](#get-the-connection-string)
-* [建立佇列](#create-a-queue)
-* [將訊息新增至佇列](#add-messages-to-a-queue)
-* [窺視佇列中的訊息](#peek-at-messages-in-a-queue)
-* [更新佇列中的訊息](#update-a-message-in-a-queue)
-* [從佇列接收訊息](#receive-messages-from-a-queue)
-* [刪除佇列中的訊息](#delete-messages-from-a-queue)
-* [刪除佇列](#delete-a-queue)
+- [取得連接字串](#get-the-connection-string)
+- [建立佇列](#create-a-queue)
+- [將訊息新增至佇列](#add-messages-to-a-queue)
+- [窺視佇列中的訊息](#peek-at-messages-in-a-queue)
+- [更新佇列中的訊息](#update-a-message-in-a-queue)
+- [從佇列接收訊息](#receive-messages-from-a-queue)
+- [刪除佇列中的訊息](#delete-messages-from-a-queue)
+- [刪除佇列](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>取得連接字串
 
@@ -316,5 +316,5 @@ Done
 > [!div class="nextstepaction"]
 > [適用於 Python 開發人員的 Azure](/azure/python/)
 
-* 若要深入了解，請參閱[適用於 Python 的 Azure 儲存體程式庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)。
-* 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 v12 Python 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)。
+- 若要深入了解，請參閱[適用於 Python 的 Azure 儲存體程式庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)。
+- 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 v12 Python 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)。

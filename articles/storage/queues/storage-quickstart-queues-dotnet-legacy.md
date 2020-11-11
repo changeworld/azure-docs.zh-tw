@@ -9,16 +9,16 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425888"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345613"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列
 
-在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫第 11 版，來建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。 
+在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫第 11 版，來建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。
 
 > [!NOTE]
 > 本快速入門會使用舊版的 Azure 佇列儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12](storage-quickstart-queues-dotnet.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "92425888"
 ### <a name="windows"></a>Windows
 
 - 安裝 [.NET Core for Windows](https://www.microsoft.com/net/download/windows) 或 [.NET Framework](https://www.microsoft.com/net/download/windows) (隨附於 Visual Studio for Windows)
-- 安裝 [Visual Studio for Windows](https://www.visualstudio.com/)。 如果您使用 .NET Core，可選擇性安裝 Visual Studio。  
+- 安裝 [Visual Studio for Windows](https://www.visualstudio.com/)。 如果您使用 .NET Core，可選擇性安裝 Visual Studio。
 
 如需選擇 .NET Core 或 .NET Framework 的相關資訊，請參閱[針對伺服器應用程式選擇 .NET Core 或 .NET Framework](/dotnet/standard/choosing-core-framework-server)。
 
@@ -50,13 +50,13 @@ ms.locfileid: "92425888"
 
 本快速入門使用的範例應用程式是基本的主控台應用程式。 您可探索 [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) 上的範例應用程式。
 
-使用 [git](https://git-scm.com/) 將應用程式的複本下載至您的開發環境。 
+使用 [git](https://git-scm.com/) 將應用程式的複本下載至您的開發環境。
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令會將存放庫複製到本機的 git 資料夾。 若要開啟 Visual Studio 解決方案，請尋找 *storage-queues-dotnet-quickstart* 資料夾並加以開啟，然後按兩下 *storage-queues-dotnet-quickstart.sln* 。 
+此命令會將存放庫複製到本機的 git 資料夾。 若要開啟 Visual Studio 解決方案，請尋找 *storage-queues-dotnet-quickstart* 資料夾並加以開啟，然後按兩下 *storage-queues-dotnet-quickstart.sln* 。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -72,7 +72,7 @@ git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-新增環境變數之後，您可能需要重新啟動任何需要讀取環境變數的執行中程式，包括主控台視窗。 例如，如果您使用 Visual Studio 做為編輯器，請在執行範例前重新啟動 Visual Studio。 
+新增環境變數之後，您可能需要重新啟動任何需要讀取環境變數的執行中程式，包括主控台視窗。 例如，如果您使用 Visual Studio 做為編輯器，請在執行範例前重新啟動 Visual Studio。
 
 ### <a name="linux"></a>Linux
 
@@ -98,7 +98,7 @@ export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 
 ### <a name="windows"></a>Windows
 
-如果您使用 Visual Studio 作為編輯器，請按 **F5** 來執行。 
+如果您使用 Visual Studio 作為編輯器，請按 **F5** 來執行。
 
 否則，瀏覽至您的應用程式目錄，並使用 `dotnet run` 命令執行應用程式。
 
@@ -161,7 +161,7 @@ string storageConnectionString = Environment.GetEnvironmentVariable("storageconn
 if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
 {
     // If the connection string is valid, proceed with calls to Azure Queues here.
-    ...    
+    ...
 }
 else
 {
@@ -174,11 +174,11 @@ else
 
 ### <a name="create-the-queue"></a>建立佇列
 
-首先，此範例會建立佇列並在其中新增訊息。 
+首先，此範例會建立佇列並在其中新增訊息。
 
 ```csharp
-// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name 
-// is unique in your storage account. 
+// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name
+// is unique in your storage account.
 queue = cloudQueueClient.GetQueueReference("quickstartqueues-" + Guid.NewGuid().ToString());
 await queue.CreateAsync();
 
@@ -188,7 +188,7 @@ Console.WriteLine();
 
 ### <a name="add-a-message"></a>新增訊息
 
-接下來，此範例會將訊息新增至佇列後端。 
+接下來，此範例會將訊息新增至佇列後端。
 
 訊息的格式必須可以包含在採用 UTF-8 編碼的 XML 要求中，且大小最大可能為 64 KB。 如果訊息包含二進位資料，則建議您將訊息編碼為 Base64。
 
@@ -215,8 +215,8 @@ await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null)
 此範例示範如何查看佇列中的訊息。 當您查看訊息時，您可以讀取訊息的內容。 不過，其他用戶端仍可看見此訊息，以便其他用戶端接著擷取和處理該訊息。
 
 ```csharp
-// Peek at the message at the front of the queue. Peeking does not alter the message's 
-// visibility, so that another client can still retrieve and process it. 
+// Peek at the message at the front of the queue. Peeking does not alter the message's
+// visibility, so that another client can still retrieve and process it.
 CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
 
 // Display the ID and contents of the peeked message.
@@ -231,7 +231,7 @@ Console.WriteLine();
 如果您的程式碼因為硬體或軟體失敗而無法處理訊息，則訊息會在不可見期間後再度看得見。 另一個用戶端可以擷取相同的訊息並再試一次。
 
 ```csharp
-// Retrieve the message at the front of the queue. The message becomes invisible for 
+// Retrieve the message at the front of the queue. The message becomes invisible for
 // a specified interval, during which the client attempts to process it.
 CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
 
@@ -267,8 +267,8 @@ if (queue != null)
 ### <a name="binaries-and-source-code"></a>二進位檔和原始程式碼
 
 - 針對 Azure 儲存體最新版的 [.NET 用戶端程式庫](/dotnet/api/overview/azure/storage)下載 NuGet 套件
-    - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-    - [佇列](https://www.nuget.org/packages/Azure.Storage.Queues/)
+  - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [佇列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 在 GitHub 上檢視 [.NET 用戶端程式庫原始程式碼](https://github.com/Azure/azure-storage-net)。
 
 ### <a name="client-library-reference-and-samples"></a>用戶端程式庫參考和範例
@@ -278,7 +278,7 @@ if (queue != null)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何將訊息新增至佇列，查看佇列中的訊息，以及使用 .NET 清除佇列和處理訊息。 
+在本快速入門中，您已了解如何將訊息新增至佇列，查看佇列中的訊息，以及使用 .NET 清除佇列和處理訊息。
 
 > [!div class="nextstepaction"]
 > [在應用程式與 Azure 佇列儲存體之間進行通訊](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)

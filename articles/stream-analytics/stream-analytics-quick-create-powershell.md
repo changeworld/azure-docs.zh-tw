@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ea92ad2e9c81b568e11ff97d7b6a88eeb4f188e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124521"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346565"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立串流分析作業
 
@@ -28,7 +28,7 @@ ms.locfileid: "93124521"
 
 * 本快速入門需要 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 來尋找本機電腦上所安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.70 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
+* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.70 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](/cli/azure/install-azure-cli)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -68,9 +68,9 @@ New-AzResourceGroup `
 
 下列 Azure CLI 程式碼區塊會執行許多命令，以準備作業所需的輸入資料。 檢閱區段以了解程式碼。
 
-1. 在 PowerShell 視窗中執行 [az login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 命令，以登入您的 Azure 帳戶。
+1. 在 PowerShell 視窗中執行 [az login](/cli/azure/authenticate-azure-cli) 命令，以登入您的 Azure 帳戶。
 
-    當您成功登入時，Azure CLI 會傳回您的訂用帳戶清單。 複製您用於此快速入門的訂用帳戶，然後執行 [az account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) 命令來選取該訂用帳戶。 選擇您在上一節中使用 PowerShell 選取的相同訂用帳戶。 務必要以您的訂用帳戶名稱取代 `<your subscription name>`。
+    當您成功登入時，Azure CLI 會傳回您的訂用帳戶清單。 複製您用於此快速入門的訂用帳戶，然後執行 [az account set](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) 命令來選取該訂用帳戶。 選擇您在上一節中使用 PowerShell 選取的相同訂用帳戶。 務必要以您的訂用帳戶名稱取代 `<your subscription name>`。
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ New-AzResourceGroup `
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    建立 IoT 中樞後，使用 [az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest) 命令來取得 IoT 中樞連接字串。 複製整個連接字串並加以儲存，以便在將 IoT 中樞當作輸入新增至 Stream Analytics 作業時使用。
+    建立 IoT 中樞後，使用 [az iot hub show-connection-string](/cli/azure/iot/hub) 命令來取得 IoT 中樞連接字串。 複製整個連接字串並加以儲存，以便在將 IoT 中樞當作輸入新增至 Stream Analytics 作業時使用。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"

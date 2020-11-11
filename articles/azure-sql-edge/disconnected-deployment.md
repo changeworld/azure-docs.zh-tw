@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ff14f8a9f236701889aea95911f2a1e381eabf83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943647"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392073"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>使用 Docker 部署 Azure SQL Edge
 
-在本快速入門中，您將使用 Docker 提取與執行 Azure SQL Edge 容器映像。 然後與 **sqlcmd**連線來建立您的第一個資料庫並執行查詢。
+在本快速入門中，您將使用 Docker 提取與執行 Azure SQL Edge 容器映像。 然後與 **sqlcmd** 連線來建立您的第一個資料庫並執行查詢。
 
 此映像由 Ubuntu 18.04 為基礎的 Azure SQL Edge 組成。 您可於適用於 Mac/Windows 的 Docker 上將其與 Docker 引擎 1.8 以上版本搭配使用。
 
@@ -28,7 +28,7 @@ ms.locfileid: "90943647"
 - Docker **overlay2** 儲存體驅動程式。 這是大部分使用者的預設值。 如果您發現您未使用此儲存提供者且需要進行變更，請參閱[用於設定 overlay2 的 Docker 文件](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)中指示和警告。
 - 至少 10 GB 的磁碟空間。
 - 至少 1 GB 的 RAM。
-- [Azure SQL Edge 的硬體需求](https://docs.microsoft.com/azure/azure-sql-edge/features#hardware-support)。
+- [Azure SQL Edge 的硬體需求](./features.md#hardware-support)。
 
 
 ## <a name="pull-and-run-the-container-image"></a>提取及執行容器映像
@@ -69,8 +69,8 @@ ms.locfileid: "90943647"
 
     | 參數 | 描述 |
     |-----|-----|
-    | **-e "ACCEPT_EULA=Y"** |  將 **ACCEPT_EULA** 變數設為任意值可確認您接受[終端使用者授權合約](https://go.microsoft.com/fwlink/?linkid=2139274)。 Azure SQL Edge 映像的必要設定。 |
-    | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | 指定您自己的強式密碼，該密碼長度至少需為 8 個字元且符合 [Azure SQL Edge 密碼需求](https://docs.microsoft.com/sql/relational-databases/security/password-policy)。 Azure SQL Edge 映像的必要設定。 |
+    | **-e "ACCEPT_EULA=Y"** |  將 **ACCEPT_EULA** 變數設為任意值可確認您接受 [終端使用者授權合約](https://go.microsoft.com/fwlink/?linkid=2139274)。 Azure SQL Edge 映像的必要設定。 |
+    | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | 指定您自己的強式密碼，該密碼長度至少需為 8 個字元且符合 [Azure SQL Edge 密碼需求](/sql/relational-databases/security/password-policy)。 Azure SQL Edge 映像的必要設定。 |
     | **-p 1433:1433** | 將主機環境上的 TCP 連接埠 (第一個值) 對應至容器中的 TCP 連接埠 (第二個值)。 在本範例中，Azure SQL Edge 正在接聽容器中的 TCP 1433 且對主機上的連接埠 1433 公開。 |
     | **--name azuresqledge** | 為容器指定自訂名稱，而不使用隨機產生的名稱。 若您執行數個容器，就無法使用此相同名稱。 |
     | **-d** | 在背景執行容器 (精靈) |
@@ -83,7 +83,7 @@ ms.locfileid: "90943647"
     sudo docker ps -a
    ```
 
-4. 若 **STATUS** 欄位顯示的狀態含 **Up**，表示 Azure SQL Edge 正在容器中執行且接聽於 **PORTS** 欄位中指定的連接埠。 若 Azure SQL Edge 容器的 **STATUS** 欄位顯示**已結束**，請參閱 Azure SQL Edge 文件的疑難排解。
+4. 若 **STATUS** 欄位顯示的狀態含 **Up** ，表示 Azure SQL Edge 正在容器中執行且接聽於 **PORTS** 欄位中指定的連接埠。 若 Azure SQL Edge 容器的 **STATUS** 欄位顯示 **已結束** ，請參閱 Azure SQL Edge 文件的疑難排解。
 
     `-h` (主機名稱) 參數也相當實用，但為求簡明因此未在本教學課程中使用。 此參數可將容器的內部名稱變更為自訂值。 這是您在下列 Transact-SQL 查詢中會看到的傳回名稱：
 
@@ -104,7 +104,7 @@ ms.locfileid: "90943647"
 
 1. 選擇要為 SA 使用者使用的強式密碼。
 
-2. 使用 `docker exec` 來執行 **sqlcmd**，以使用 Transact-SQL 變更密碼。 在下列範例中，將舊密碼 `<YourStrong!Passw0rd>` 和新密碼 `<YourNewStrong!Passw0rd>` 取代為您自己的密碼值。
+2. 使用 `docker exec` 來執行 **sqlcmd** ，以使用 Transact-SQL 變更密碼。 在下列範例中，將舊密碼 `<YourStrong!Passw0rd>` 和新密碼 `<YourNewStrong!Passw0rd>` 取代為您自己的密碼值。
 
    ```bash
    sudo docker exec -it azuresqledge /opt/mssql-tools/bin/sqlcmd \

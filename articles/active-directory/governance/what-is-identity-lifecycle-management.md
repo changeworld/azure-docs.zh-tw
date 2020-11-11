@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6aa94c58dfb051eadc0059aa556383260a00b10
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0d54e1127207f0593f8d345b266d7db6e92b5c0d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134902"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335395"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>什麼是身分識別生命週期管理？
 
@@ -70,7 +70,7 @@ Azure AD 目前提供下列功能：
 ## <a name="next-steps"></a>後續步驟 
 
 - [什麼是佈建？](what-is-provisioning.md)
-- [在 Azure AD 權利管理中管理外部使用者的存取權](/azure/active-directory/governance/entitlement-management-external-users.md)
+- [在 Azure AD 權利管理中管理外部使用者的存取權](/azure/active-directory/governance/entitlement-management-external-users)
 - [什麼是 HR 驅動佈建？](what-is-hr-driven-provisioning.md)
 - [什麼是應用程式佈建？](what-is-app-provisioning.md)
 - [什麼是目錄間的佈建？](what-is-inter-directory-provisioning.md)

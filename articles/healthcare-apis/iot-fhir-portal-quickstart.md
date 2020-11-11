@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e3101c8abcaef52c0ae9aaafef36b23aa45b586
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594368"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394504"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入門：使用入口網站部署 Azure IoT Connector for FHIR (預覽)
 
@@ -61,7 +61,7 @@ Azure IoT Connector for FHIR* 是 Azure API for FHIR 的一個選用功能，可
 
 ## <a name="configure-azure-iot-connector-for-fhir-preview"></a>設定 Azure IoT Connector for FHIR (預覽)
 
-Azure IoT Connector for FHIR 需要兩個對應範本，才能將裝置訊息轉換成 FHIR 型觀察資源：**裝置對應**和 **FHIR 對應**。 在上傳這些對應之前，您的 Azure IoT Connector for FHIR 無法完全正常運作。
+Azure IoT Connector for FHIR 需要兩個對應範本，才能將裝置訊息轉換成 FHIR 型觀察資源： **裝置對應** 和 **FHIR 對應** 。 在上傳這些對應之前，您的 Azure IoT Connector for FHIR 無法完全正常運作。
 
 [![IoT 連接器遺漏的對應](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg#lightbox)
 
@@ -163,16 +163,16 @@ IoMT 裝置需要一個連接字串，才能將訊息連線並傳送至 Azure Io
 
 Azure 提供一套廣泛的 IoT 產品，可連線並管理您的 IoT 裝置。 您可以根據 PaaS，使用 Azure IoT 中樞建置自己的解決方案，或從使用 Azure IoT Central 管理 IoT 應用程式平台開始。 在此教學課程中，我們將利用 Azure IoT Central 中，專門針對產業提供的解決方案範本，協助您開始使用。
 
-部署[持續性患者監視應用程式範本](https://docs.microsoft.com/azure/iot-central/healthcare/tutorial-continuous-patient-monitoring#create-an-application-template)。 此範本包含兩個可產生即時資料的模擬裝置，可協助您開始使用：**Smart Vitals Patch** 和 **Smart Knee Brace**。
+部署[持續性患者監視應用程式範本](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template)。 此範本包含兩個可產生即時資料的模擬裝置，可協助您開始使用： **Smart Vitals Patch** 和 **Smart Knee Brace** 。
 
 > [!NOTE]
-> 當您的實際裝置準備就緒時，您可以使用相同的 IoT Central 應用程式[將裝置上線](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template) \(部分機器翻譯\)，並取代裝置模擬器。 您的裝置資料也會自動開始流向 FHIR。 
+> 當您的實際裝置準備就緒時，您可以使用相同的 IoT Central 應用程式[將裝置上線](../iot-central/core/howto-set-up-template.md) \(部分機器翻譯\)，並取代裝置模擬器。 您的裝置資料也會自動開始流向 FHIR。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>使用 Azure IoT Connector for FHIR 連線您的 IoT 資料 (預覽)
 > [!WARNING]
 > 本指南中提供的裝置對應範本是設計用來使用 IoT Central 內的資料匯出 (舊版)。
 
-部署 IoT Central 應用程式之後，您的兩個現成的模擬裝置將會開始產生遙測資料。 在此教學課程中，我們會透過 Azure IoT Connector for FHIR，將 *Smart Vitals Patch* 模擬器的遙測資料內嵌到 FHIR 中。 若要將您的 IoT 資料匯出至 Azure IoT Connector for FHIR，我們會想要[在 IoT Central 中設定連續資料匯出](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy)。 在連續資料匯出頁面上：
+部署 IoT Central 應用程式之後，您的兩個現成的模擬裝置將會開始產生遙測資料。 在此教學課程中，我們會透過 Azure IoT Connector for FHIR，將 *Smart Vitals Patch* 模擬器的遙測資料內嵌到 FHIR 中。 若要將您的 IoT 資料匯出至 Azure IoT Connector for FHIR，我們會想要[在 IoT Central 中設定連續資料匯出](../iot-central/core/howto-export-data-legacy.md)。 在連續資料匯出頁面上：
 - 挑選 [Azure 事件中樞] 作為匯出目的地。
 - 針對 [事件中樞命名空間] 欄位，選取 [使用連接字串] 值。
 - 針對 [連接字串] 欄位，提供上一個步驟中取得的 Azure IoT Connector for FHIR 連接字串。

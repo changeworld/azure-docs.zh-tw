@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296832"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357771"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 的金鑰、祕密與憑證概觀
 
@@ -45,10 +46,10 @@ Azure 德國雲端 | .vault.microsoftazure.de | 不支援
 憑證|/certificates|支援|不支援
 儲存體帳戶金鑰|/storageaccount|支援|不支援
 |||
-- **密碼編譯金鑰**：支援多種金鑰類型和演算法，可讓您使用受軟體保護和受 HSM 保護的金鑰。 如需詳細資訊，請參閱[關於金鑰](../keys/about-keys.md)。
-- **祕密**：提供儲存祕密 (例如密碼和資料庫連接字串) 的安全機制。 如需詳細資訊，請參閱[關於祕密](../secrets/about-secrets.md)。
-- **憑證**：支援以金鑰和祕密為基礎且新增自動更新功能的憑證。 如需詳細資訊，請參閱[關於憑證](../certificates/about-certificates.md)。
-- **Azure 儲存體帳戶金鑰**：可為您管理「Azure 儲存體」帳戶的金鑰。 Key Vault 可在內部列出 (同步) 金鑰與 Azure 儲存體帳戶，以及定期重新產生 (輪替) 金鑰。 如需詳細資訊，請參閱[使用 Key Vault 管理儲存體帳戶金鑰](../secrets/overview-storage-keys.md)。
+- **密碼編譯金鑰** ：支援多種金鑰類型和演算法，可讓您使用受軟體保護和受 HSM 保護的金鑰。 如需詳細資訊，請參閱[關於金鑰](../keys/about-keys.md)。
+- **祕密** ：提供儲存祕密 (例如密碼和資料庫連接字串) 的安全機制。 如需詳細資訊，請參閱[關於祕密](../secrets/about-secrets.md)。
+- **憑證** ：支援以金鑰和祕密為基礎且新增自動更新功能的憑證。 如需詳細資訊，請參閱[關於憑證](../certificates/about-certificates.md)。
+- **Azure 儲存體帳戶金鑰** ：可為您管理「Azure 儲存體」帳戶的金鑰。 Key Vault 可在內部列出 (同步) 金鑰與 Azure 儲存體帳戶，以及定期重新產生 (輪替) 金鑰。 如需詳細資訊，請參閱[使用 Key Vault 管理儲存體帳戶金鑰](../secrets/overview-storage-keys.md)。
 
 如需 Key Vault 的一般詳細資訊，請參閱[關於 Azure Key Vault](overview.md)。 如需受控 HSM 集區的詳細資訊，請參閱[Azure Key Vault 受控 HSM？](../managed-hsm/overview.md)
 
@@ -80,9 +81,9 @@ Key Vault 中的物件可以藉由指定版本來定址，或藉由對現行物�
 
 物件識別碼具有下列一般格式 (視容器類型而定)：  
 
-- **針對保存庫**：`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **針對保存庫** ：`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **針對受控 HSM 集區**：`https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **針對受控 HSM 集區** ：`https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > 如需每個容器類型所支援的物件類型，請參閱[物件類型支援](#object-types)。

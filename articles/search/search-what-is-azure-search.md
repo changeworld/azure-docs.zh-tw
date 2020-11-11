@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 10/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d045014cd92df084e4dd409012fdb668d312de1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f9a5197b982958fe0a0ff21c4b442142beb38882
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442315"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422462"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
@@ -78,7 +78,7 @@ Azure 認知搜尋適用於下列應用程式案例：
 
 ### <a name="step-4-send-queries-and-handle-responses"></a>步驟 4：傳送查詢並處理回應
 
-填入索引後，您可以透過 [REST API](/rest/api/searchservice/Search-Documents) 或 [.NET SDK](/dotnet/api/microsoft.azure.search.idocumentsoperations)，使用簡單的 HTTP 要求對服務端點[發出搜尋查詢](search-query-overview.md)。
+填入索引後，您可以透過 [REST API](/rest/api/searchservice/Search-Documents) 或 [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)，使用簡單的 HTTP 要求對服務端點[發出搜尋查詢](search-query-overview.md)。
 
 逐步執行[建立您的第一個搜尋應用程式](tutorial-csharp-create-first-app.md)以建置並擴充用來收集使用者輸入並處理結果的網頁。 您也可以使用 [Postman 來進行互動式 REST](search-get-started-postman.md) 呼叫或在 Azure 入口網站使用內建的[搜尋總管](search-explorer.md)來查詢現有索引。
 

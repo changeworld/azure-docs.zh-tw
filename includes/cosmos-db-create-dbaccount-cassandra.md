@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/01/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 1d7af1b29d1ed2d8ff0ae60da0a171b9d8b98bbf
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 30a7f3ae878cebcd1e58287fc59241651dac2bfd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743130"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504032"
 ---
 1. 在新的瀏覽器視窗中，登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -34,10 +34,11 @@ ms.locfileid: "91743130"
     帳戶名稱|輸入唯一名稱|輸入唯一名稱來識別您的 Azure Cosmos DB 帳戶。 您的帳戶 URI 將是 cassandra.cosmos.azure.com  ，並附加至您的唯一帳戶名稱。<br><br>帳戶名稱只能使用小寫字母、數字和連字號 (-)，且長度必須介於 3 到 31 個字元之間。
     API|Cassandra|API 會決定要建立的帳戶類型。 Azure Cosmos DB 提供五個 API：Core(SQL) (適用於文件資料庫)、Gremlin (適用於圖形資料庫)、MongoDB (適用於文件資料庫)、Azure 資料表及 Cassandra。 您必須為每個 API 建立個別帳戶。 <br><br>選取 [Cassandra]  ，因為在此快速入門中，您會建立可搭配 Cassandra API 使用的資料表。 <br><br>[深入了解 Cassandra API](../articles/cosmos-db/cassandra-introduction.md)。|
     Location|選取最接近使用者的區域|選取用來裝載 Azure Cosmos DB 帳戶的地理位置。 使用最接近使用者的位置，以便他們能以最快速度存取資料。
+    容量模式|佈建輸送量或無伺服器|選取 [佈建的輸送量]，以[佈建的輸送量](../articles/cosmos-db/set-throughput.md)模式建立帳戶。 選取 [無伺服器]，以[無伺服器](../articles/cosmos-db/serverless.md)模式建立帳戶。
 
     請選取 [檢閱 + 建立]  。 您可以跳過 [網路]、[備份]、[加密] 和 [標記] 區段。 
 
     ![Azure Cosmos DB 的新帳戶頁面](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
 
-4. 建立帳戶需要幾分鐘的時間。 等候入口網站顯示頁面「**恭喜!已建立您的 Azure Cosmos DB 帳戶**」。
+4. 建立帳戶需要幾分鐘的時間。 等候入口網站顯示頁面「 **恭喜!已建立您的 Azure Cosmos DB 帳戶** 」。
 

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7ec4515d5f1d096cfb83f06c398da4c1254279f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099142"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337452"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>快速入門：建立第一個 Logic Apps 工作流程 - Azure 入口網站
 
@@ -112,7 +112,7 @@ ms.locfileid: "93099142"
 
 ## <a name="add-the-send-email-action"></a>新增 [傳送電子郵件] 動作
 
-在[為邏輯應用程式新增觸發程序後](#add-rss-trigger)，您必須在邏輯應用程式檢查 RSS 摘要並出現新項目時，新增[動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以決定回應。 您也可以建立具有更複雜動作的邏輯應用程式，例如在[使用 Logic Apps、Azure Functions 和 Azure 儲存體中處理電子郵件](/tutorial-process-email-attachments-workflow.md)教學課程中提到的內容。
+在[為邏輯應用程式新增觸發程序後](#add-rss-trigger)，您必須在邏輯應用程式檢查 RSS 摘要並出現新項目時，新增[動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以決定回應。 您也可以建立具有更複雜動作的邏輯應用程式，例如在[使用 Logic Apps、Azure Functions 和 Azure 儲存體中處理電子郵件](/azure/logic-apps/tutorial-process-email-attachments-workflow)教學課程中提到的內容。
 
 > [!NOTE]
 > 此範例使用 Office 365 Outlook 作為電子郵件服務。 如果您在邏輯應用程式中使用其他支援的電子郵件服務，使用者介面看起來可能不同。 不過，與另一個電子郵件服務連線的基本概念仍然相同。
