@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2a0202c5259ccebedf03ade217f57b6305b9fa1b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786066"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444923"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>建立 SAS 定義並擷取程式碼中的共用存取簽章權杖
 
 您可以使用儲存在金鑰保存庫中的共用存取簽章 (SAS) 權杖來管理儲存體帳戶。 如需詳細資訊，請參閱[使用 SAS 授與 Azure 儲存體資源的存取權](../../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
-> 我們建議使用[角色型存取控制 (RBAC)](../../storage/common/storage-auth-aad.md) 來保護您的儲存體帳戶，以取得高級的安全性，並且讓透過「共用金鑰」授權使用更加方便。
+> 我們建議使用[Azure 角色型存取控制 (Azure RBAC)](../../storage/common/storage-auth-aad.md) 來保護您的儲存體帳戶，以取得高級的安全性，並且讓透過「共用金鑰」授權使用更加方便。
 
 本文提供 .NET 程式碼的範例，該程式碼會建立 SAS 定義及擷取 SAS 權杖。 如需完整詳細資料，包括為 Key Vault 受控儲存體帳戶產生的用戶端，請參閱我們的 [ShareLink](/samples/azure/azure-sdk-for-net/share-link/) 範例。 如需如何建立及儲存 SAS 權杖的相關資訊，請參閱[使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰](overview-storage-keys.md)，或[使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰](overview-storage-keys-powershell.md)。
 

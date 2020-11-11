@@ -24,6 +24,8 @@
       href: howto-add-update-pull-secret.md
     - name: 設定 Azure Red Hat OpenShift 4 叢集的 DNS 轉送
       href: dns-forwarding.md
+    - name: 設定適用於 Azure Red Hat OpenShift 4 的內建容器登錄
+      href: built-in-container-registry.md
     - name: 設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證
       items:
         - name: 設定 Azure Active Directory 驗證 (CLI)
@@ -44,6 +46,10 @@
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: 針對 Azure Red Hat OpenShift 3.11 (預覽) 中的容器停用 Azure 監視器
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: 在 Azure Red Hat OpenShift 4 叢集上開啟 Liberty/WebSphere Liberty
+      items:
+        - name: 在 Azure Red Hat OpenShift 4 叢集上部署開放式的 Liberty/WebSphere Liberty 應用程式
+          href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
         - name: 針對 Azure Red Hat OpenShift 3.11 設定您的 Azure Red Hat OpenShift 開發環境

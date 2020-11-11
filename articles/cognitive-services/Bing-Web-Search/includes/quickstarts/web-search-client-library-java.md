@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 042a3edf8efe080064a3c41fd55975a40bf47e5e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87374825"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386583"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 JAVA 應用程式。 在本快速入門中，您將了解如何傳送要求、接收 JSON 回應，以及篩選和剖析結果。
 
@@ -24,7 +24,7 @@ Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 
 
 以下是執行本快速入門之前的幾個必備項目：
 
-* [JDK 7 或 8](https://aka.ms/azure-jdks) (英文)
+* [JDK 7 或 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) (英文)
 * [Apache Maven](https://maven.apache.org/download.cgi) 或您最愛的組建自動化工具
 * 訂用帳戶金鑰
 
@@ -295,4 +295,4 @@ mvn compile exec:java
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure Java SDK 參考](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable) (英文)
+* [Azure Java SDK 參考](/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable) (英文)

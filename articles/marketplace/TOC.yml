@@ -37,6 +37,10 @@
           href: test-drive-technical-configuration.md
         - name: Azure Resource Manager 的試用產品
           href: azure-resource-manager-test-drive.md
+        - name: 裝載試用產品的詳細設定
+          href: test-drive-hosted-detailed-config.md
+        - name: 設定裝載試用產品的 Azure 訂用帳戶
+          href: test-drive-azure-subscription-setup.md
     - name: Azure 合作夥伴客戶使用狀況屬性
       href: azure-partner-customer-usage-attribution.md
     - name: Go-To-Market 選項
@@ -270,15 +274,15 @@
     - name: 商業市集分析
       href: partner-center-portal/analytics.md
     - name: 摘要儀表板
-      href: partner-center-portal/summary-dashboard.md
+      href: summary-dashboard.md
     - name: 訂單儀表板
-      href: partner-center-portal/orders-dashboard.md
+      href: orders-dashboard.md
     - name: 使用量儀表板
-      href: partner-center-portal/usage-dashboard.md
+      href: usage-dashboard.md
     - name: 客戶儀表板
-      href: partner-center-portal/customer-dashboard.md
+      href: customer-dashboard.md
     - name: Marketplace 見解儀表板
-      href: partner-center-portal/insights-dashboard.md
+      href: insights-dashboard.md
     - name: 下載儀表板
       href: partner-center-portal/downloads-dashboard.md
     - name: 評分與評論儀表板

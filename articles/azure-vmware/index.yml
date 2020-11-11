@@ -9,12 +9,12 @@ metadata:
   author: dikamath
   ms.author: dikamath
   ms.date: 10/19/2020
-  ms.openlocfilehash: 31b3ad9c33ffd07b62067de3aa46333608522f97
-  ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+  ms.openlocfilehash: b72ec69edaae7681cd3310c66bcd209b3eae1a4e
+  ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/19/2020
-  ms.locfileid: "92172140"
+  ms.lasthandoff: 11/10/2020
+  ms.locfileid: "94412573"
 landingContent:
 - title: 關於 Azure VMware 解決方案
   linkLists:
@@ -94,6 +94,8 @@ landingContent:
       url: concepts-api-management.md
     - text: 中樞與輪幅
       url: concepts-hub-and-spoke.md
+    - text: Azure 資訊安全中心
+      url: azure-security-integration.md
     - text: Azure 備份伺服器
       url: set-up-backup-server-for-azure-vmware-solution.md
     - text: VM 上的生命週期管理
@@ -122,7 +124,11 @@ landingContent:
     links:
     - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.vmware
-    - text: 取得部署或佈建失敗的協助
-      url: fix-deployment-provisioning-failures.md
     - text: 常見問題集
       url: faq.md
+- title: 疑難排解
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 開啟部署失敗的支援要求
+      url: fix-deployment-provisioning-failures.md

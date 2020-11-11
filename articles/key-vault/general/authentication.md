@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287501"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445535"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>向 Azure Key Vault 進行驗證
 
@@ -62,7 +62,7 @@ Key Vault 適用於兩種不同的授權層級：
 
     Key Vault 目前支援[參與者](../../role-based-access-control/built-in-roles.md#key-vault-contributor)角色，允許在 Key Vault 資源上進行管理作業。 有一些其他角色目前為預覽狀態。 您也可以建立自訂角色，如 [Azure 自訂角色](../../role-based-access-control/custom-roles.md)所述。
 
-    如需角色的一般資訊，請參閱[什麼是角色型存取控制 (RBAC)？](../../role-based-access-control/overview.md)。
+    如需角色的一般資訊，請參閱[什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。
 
 
 > [!IMPORTANT]
@@ -125,4 +125,4 @@ Key Vault 適用於兩種不同的授權層級：
 - [Key Vault 存取原則疑難排解](troubleshooting-access-issues.md)
 - [Key Vault REST API 錯誤碼](rest-error-codes.md)
 - [金鑰保存庫開發人員指南](developers-guide.md)
-- [什麼是 Azure 角色型存取控制 (RBAC)？](../../role-based-access-control/overview.md)
+- [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)

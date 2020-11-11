@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357805"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372333"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -32,6 +32,12 @@ ms.locfileid: "93357805"
 
 
 ## <a name="november-2020"></a>2020 年 11 月
+
+11 月的更新包括：
+
+- [已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [NIST SP 800 171 R2 已新增至資訊安全中心的法規合規性儀表板](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
+
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
 
@@ -61,10 +67,21 @@ Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎
 - [深入了解適用於 PostgreSQL 的 Azure 資料庫](../postgresql/overview.md)
 
 
+### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>NIST SP 800 171 R2 已新增至資訊安全中心的法規合規性儀表板
+
+NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全中心的法規合規性儀表板搭配使用。 如需這些控制項的對應，請參閱 [NIST SP 800-171 R2 法規遵循內建方案的詳細資料](../governance/policy/samples/nist-sp-800-171-r2.md)。 
+
+若要將標準套用至您的訂用帳戶，並持續監視合規性狀態，請使用[自訂合規性儀表板中的一組標準](update-regulatory-compliance-packages.md)中的指示。
+
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="資訊安全中心的法規合規性儀表板中的 NIST SP 800 171 R2 標準版":::
+
+如需此合規性標準的詳細資訊，請參閱 [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)。
+
 
 
 ## <a name="october-2020"></a>2020 年 10 月
 
+10 月的更新包括：
 - [內部部署和多雲端電腦的弱點評量 (預覽)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [已新增 Azure 防火牆建議 (預覽)](#azure-firewall-recommendation-added-preview)
 - [已使用快速修正更新「Kubernetes Service 上應定義授權 IP 範圍」建議](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)

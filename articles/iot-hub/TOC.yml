@@ -471,7 +471,7 @@
       items:
         - name: 作業監視
           href: iot-hub-operations-monitoring.md
-        - name: 移轉至診斷設定
+        - name: 遷移至 Azure 監視器
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: TLS 1.0 和 1.1 淘汰
           href: iot-hub-tls-deprecating-1-0-and-1-1.md

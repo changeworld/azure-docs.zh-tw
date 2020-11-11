@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 029cb1e59876eb01c609ef8b7ba0412ed35a2a1b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8a877e1773431053c5ad7344209076cb868a0ee3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940733"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424706"
 ---
 在本快速入門中，您將了解如何使用語音服務和 cURL 將文字轉換成語音。
 
@@ -26,7 +26,7 @@ ms.locfileid: "91940733"
 - 您的語音服務區域。
 
 您也可能想要變更下列值。
-- `X-Microsoft-OutputFormat` 標頭值，可控制音訊輸出格式。 您可以在[文字轉換語音 REST API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs)中找到支援的音訊輸出格式清單。
+- `X-Microsoft-OutputFormat` 標頭值，可控制音訊輸出格式。 您可以在[文字轉換語音 REST API 參考](../../../rest-text-to-speech.md#audio-outputs)中找到支援的音訊輸出格式清單。
 - 輸出語音。 若要取得語音端點可用的語音清單，請參閱下一節。
 - 輸出檔案。 在此範例中，我們會將伺服器的回應導向至名為 `output.wav` 的檔案。
 

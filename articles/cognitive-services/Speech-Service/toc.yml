@@ -41,8 +41,6 @@
           href: batch-transcription.md
     - name: 教學課程
       items:
-        - name: 辨識儲存在 Blob 儲存體中的語音
-          href: quickstarts/from-blob.md
         - name: 以租用戶模型提高精確度
           href: tutorial-tenant-model.md
     - name: 自訂

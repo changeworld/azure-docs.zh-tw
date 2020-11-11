@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0e2324f7e524567b07f0228e046605b781bc4916
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135786"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425102"
 ---
 本指南說明如何安裝適用於 Python 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，請執行 `pip install azure-cognitiveservices-speech`。
 
@@ -22,7 +22,7 @@ ms.locfileid: "93135786"
   - Mac：macOS X 10.12 版或更新版本
   - Linux：請參閱[支援的 Linux 發行版本和目標架構](~/articles/cognitive-services/speech-service/speech-sdk.md)清單。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 支援的 Linux 平台會要求安裝特定程式庫 (`libssl` 以取得安全通訊端層支援，`libasound2` 以取得音效支援)。 請參閱以下的發佈，以取得安裝這些程式庫正確版本所需的命令。
 
@@ -90,7 +90,7 @@ import azure.cognitiveservices.speech as speechsdk
 如果有新版本可用，您可以使用 `pip install --upgrade azure-cognitiveservices-speech` 命令來更新至該版本。
 請檢查 `azure.cognitiveservices.speech.__version__` 變數來確認目前所安裝的版本。
 
-如果您有問題或缺少功能，請參閱[支援和協助選項](~/articles/cognitive-services/speech-service/support.md)。
+如果您有問題或缺少功能，請參閱[支援和協助選項](../../../../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
 
 ## <a name="next-steps"></a>後續步驟
 

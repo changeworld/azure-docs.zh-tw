@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 4cfbf5ea5de9b8c448af56b186acdc4f3bb6f02e
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: cf8223e9b2a235e61876fb44afd9ad05fafdb6b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096941"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424645"
 ---
 本指南說明如何安裝適用於 C# .NET Core 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，請在 NuGet 主控台中執行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
 > [!NOTE]
-> .NET Core 是實作[.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 規格的開放原始碼、跨平台 .NET 平台。
+> .NET Core 是實作[.NET Standard](/dotnet/standard/net-standard) 規格的開放原始碼、跨平台 .NET 平台。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 

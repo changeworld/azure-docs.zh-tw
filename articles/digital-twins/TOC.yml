@@ -111,7 +111,7 @@
       items:
         - name: 檢視 Azure 監視器中的計量
           href: troubleshoot-metrics.md
-        - name: 啟用診斷記錄
+        - name: 啟用和查詢診斷記錄
           href: troubleshoot-diagnostics.md
         - name: 啟用警示
           href: troubleshoot-alerts.md

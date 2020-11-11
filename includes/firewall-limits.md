@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 07/30/2020
+ms.date: 11/06/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 59699d493880034ad1d26a56c63a9ed8401ef371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d479c3087b971aa17cf145e0111890da07381eab
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507651"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386595"
 ---
 | 資源 | 限制 |
 | --- | --- |
@@ -24,6 +24,7 @@ ms.locfileid: "87507651"
 |網路和應用程式規則中的連接埠範圍|1 - 65535|
 |公用 IP 位址|最大值 250。 所有公用 IP 位址都可以在 DNAT 規則中使用，而且這些公用 IP 位址全都會提供給可用的 SNAT 埠。|
 |IP 群組中的 IP 位址|每個防火牆最多 100 個 IP 群組。<br>每個 IP 群組最多 5000 個個別 IP 位址或 IP 首碼。
-|路由表|根據預設，AzureFirewallSubnet 具有 NextHopType 值設為 **Internet** 的 0.0.0.0/0 路由。<br><br>「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 **Internet**，以保有直接網際網路連線。 根據預設，Azure 防火牆不支援對內部部署網路的強制通道。<br><br>不過，如果您的設定需要對內部部署網路的強制通道，Microsoft 將以個別案例為原則提供支援。 連絡支援人員，以便我們檢閱您的案例。 受理後，我們會允許您的訂用帳戶，並確實維持必要的防火牆網際網路連線。|
+|路由表|根據預設，AzureFirewallSubnet 具有 NextHopType 值設為 **Internet** 的 0.0.0.0/0 路由。<br><br>「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 **Internet** ，以保有直接網際網路連線。 根據預設，Azure 防火牆不支援對內部部署網路的強制通道。<br><br>不過，如果您的設定需要對內部部署網路的強制通道，Microsoft 將以個別案例為原則提供支援。 連絡支援人員，以便我們檢閱您的案例。 受理後，我們會允許您的訂用帳戶，並確實維持必要的防火牆網際網路連線。|
+|網路規則中的 FQDN|為達到良好效能，每個防火牆的所有網路規則不超過 1000 個 FQDN。|
 
 <sup>1</sup> 如果需要增加這些限制，請連絡 Azure 支援。

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 1b0fa12aa00165ad4ddd02d36383b41bdf74f4d8
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377095"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386663"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 Node.js 應用程式。 在本快速入門中，您將了解如何具現化用戶端、傳送要求，以及列印回應。
 
@@ -107,4 +107,4 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure Node SDK 參考](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/) (英文)
+* [Azure Node SDK 參考](/javascript/api/@azure/cognitiveservices-websearch/) (英文)

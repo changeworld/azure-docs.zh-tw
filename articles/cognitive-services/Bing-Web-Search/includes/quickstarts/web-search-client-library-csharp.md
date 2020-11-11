@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9dbed0de3cf6cc911111825a75430d0c616f4dc4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217573"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386561"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 C# 應用程式。 在本快速入門中，您將了解如何具現化用戶端、傳送要求，以及列印回應。
 
@@ -36,7 +36,7 @@ Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 
 > [!TIP]
 > 從 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) 取得最新程式碼作為 Visual Studio 解決方案。
 
-第一個步驟是建立新的主控台專案。 如需設定主控台專案的說明，請參閱 [Hello World - 您的第一個程式 (C# 程式設計手冊)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)。 若要在您的應用程式中使用 Bing Web 搜尋 SDK，您必須使用 NuGet 套件管理員安裝 `Microsoft.Azure.CognitiveServices.Search.WebSearch`。
+第一個步驟是建立新的主控台專案。 如需設定主控台專案的說明，請參閱 [Hello World - 您的第一個程式 (C# 程式設計手冊)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)。 若要在您的應用程式中使用 Bing Web 搜尋 SDK，您必須使用 NuGet 套件管理員安裝 `Microsoft.Azure.CognitiveServices.Search.WebSearch`。
 
 [Web 搜尋 SDK 套件](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) (英文) 也會安裝：
 
@@ -424,4 +424,3 @@ dotnet run
 
 > [!div class="nextstepaction"]
 > [認知服務 Node.js SDK 範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) (英文)
-                                    

@@ -100,7 +100,7 @@
   items:
     - name: 疑難排解
       items:
-        - name: 取得部署或佈建失敗的協助
+        - name: 開啟部署失敗的支援要求
           href: fix-deployment-provisioning-failures.md
     - name: 常見問題集
       href: faq.md

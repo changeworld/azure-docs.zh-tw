@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: b2369e3f941b3d7c86b5c09a11d3e17ade8e99cf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136067"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425306"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -23,7 +23,7 @@ ms.locfileid: "93136067"
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
-您必須先安裝[適用於 Go 的語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Cwindows%2Cjre%2Cbrowser&pivots=programming-language-go)，才能執行動作。
+您必須先安裝[適用於 Go 的語音 SDK](../../../quickstarts/setup-platform.md?pivots=programming-language-go&tabs=dotnet%252cwindows%252cjre%252cbrowser)，才能執行動作。
 
 ## <a name="speech-to-text-from-microphone"></a>從麥克風進行語音轉換文字
 

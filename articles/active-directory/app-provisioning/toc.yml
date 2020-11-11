@@ -12,6 +12,8 @@
   items:
     - name: 建立 SCIM 端點和設定佈建
       href: use-scim-to-provision-users-and-groups.md
+    - name: 自訂屬性對應
+      href: customize-application-attributes.md
     - name: 應用程式特定佈建教學課程
       href: /azure/active-directory/saas-apps
 - name: 概念
@@ -30,8 +32,6 @@
   items:
     - name: 設定資源庫應用程式的佈建
       href: configure-automatic-user-provisioning-portal.md
-    - name: 自訂屬性對應
-      href: customize-application-attributes.md
     - name: 包含或排除範圍中的使用者和群組
       items:
         - name: 設定要佈建的使用者或群組範圍

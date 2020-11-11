@@ -44,7 +44,7 @@
   items:
     - name: 容器支援
       href: cognitive-services-container-support.md
-    - name: 容器映像標籤
+    - name: 容器映像標記和版本資訊
       href: ./containers/container-image-tags.md
     - name: 容器常見問題集
       href: ./containers/container-faq.md

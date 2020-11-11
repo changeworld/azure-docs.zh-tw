@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: fe7a8a3df535d05c3c834d3e2fbba5f7df5d6fcd
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a1c6b054a9caac8ba223bc81e164e7ebf34bd267
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372239"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413321"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>將受 HSM 保護的金鑰匯入 Key Vault (BYOK)
 
@@ -64,6 +64,7 @@ ms.locfileid: "94372239"
 |Marvell|製造商|所有 LiquidSecurity HSM，具有<ul><li>韌體版本 2.0.4 或更新版本</li><li>韌體版本 3.2 或更新版本</li></ul>|[Marvell BYOK 工具和文件](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (企業金鑰管理系統)|多個 HSM 品牌和型號，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>如需詳細資訊，請參閱 [Cryptomathic 網站](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK 工具和文件](https://www.cryptomathic.com/azurebyok)|
 |Securosys SA|製造商，HSM 即服務|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文件](https://www.securosys.com/primus-azure-byok)|
+|StorMagic|ISV (企業金鑰管理系統)|多個 HSM 品牌和型號，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>如需詳細資訊，請參閱 [StorMagic 網站](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS 和 Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 ||||
 
 

@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4db81571fe4b77382ccf269351ddbf46ef5f06e2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c19aca20b1b5dff53630c0b51c75689394ad3d53
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076702"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381077"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>快速入門：使用 JAVA 以 Bing Web 搜尋 REST API (Azure 認知服務) 來搜尋網頁
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "93076702"
 
 以下是執行本快速入門之前的幾個必備項目：
 
-* [JDK 7 或 8](https://aka.ms/azure-jdks) (英文)
+* [JDK 7 或 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) (英文)
 * [Gson 程式庫](https://github.com/google/gson) (英文)
 * 訂用帳戶金鑰
 
@@ -333,4 +333,4 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 > [!div class="nextstepaction"]
 > [Bing Web 搜尋 API 單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
 
-[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

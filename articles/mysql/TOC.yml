@@ -471,6 +471,8 @@
               href: flexible-server/concepts-high-availability.md
         - name: 監視和記錄
           items:
+            - name: 伺服器參數
+              href: flexible-server/concepts-server-parameters.md
             - name: 慢速查詢記錄
               href: flexible-server/concepts-slow-query-logs.md
             - name: 稽核記錄

@@ -114,15 +114,7 @@
     - name: 資料來源
       href: platform/data-sources.md
     - name: 資料平台
-      items:
-        - name: 概觀
-          href: platform/data-platform.md
-        - name: 記錄
-          href: platform/data-platform-logs.md
-        - name: 計量
-          href: platform/data-platform-metrics.md
-        - name: 將資料串流至事件中樞
-          href: platform/stream-monitoring-data-event-hubs.md
+      href: platform/data-platform.md
     - name: 資料安全性
       items:
         - name: 記錄資料
@@ -188,98 +180,13 @@
               href: app/pricing.md
             - name: 記錄資料使用量和成本
               href: platform/manage-cost-storage.md
-    - name: 平台記錄
+    - name: Azure 監視器記錄
       items:
         - name: 概觀
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: 活動記錄檔
-          href: platform/activity-log.md
-        - name: 資源記錄
-          href: platform/resource-logs.md
-        - name: 診斷設定
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
-        - name: 概觀
-          displayname: 'Log Analytics, log query, log queries, query, queries'
-          href: log-query/log-query-overview.md
-        - name: 教學課程
-          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
-          href: log-query/get-started-portal.md
-        - name: 查詢範圍
-          href: log-query/scope.md
-        - name: 使用 Azure 資料總管查詢
-          href: platform/azure-data-explorer-monitor-proxy.md
-        - name: 記錄查詢
-          items:
-            - name: 標準資料行
-              href: platform/log-standard-columns.md
-            - name: 稽核查詢
-              href: log-query/query-audit.md
-            - name: 最佳化查詢
-              href: log-query/query-optimization.md
-            - name: 函式
-              href: log-query/functions.md
-            - name: 剖析文字資料
-              href: log-query/parse-text.md
-            - name: 查詢範例
-              href: log-query/saved-queries.md
-            - name: 電腦群組
-              href: platform/computer-groups.md
-        - name: 查詢語言
-          items:
-            - name: KQL 參考
-              href: /azure/data-explorer/kusto/query/
-            - name: 與 Azure 資料總管的差異
-              href: log-query/data-explorer-difference.md
-            - name: 範例
-              href: log-query/examples.md
-            - name: 智慧分析範例
-              href: log-query/smart-analytics.md
-            - name: 課程
-              items:
-                - name: 字串作業
-                  href: log-query/string-operations.md
-                - name: 日期與時間作業
-                  href: log-query/datetime-operations.md
-                - name: 彙總函式
-                  href: log-query/aggregations.md
-                - name: 進階彙總
-                  href: log-query/advanced-aggregations.md
-                - name: 聯結
-                  href: log-query/joins.md
-                - name: JSON 與資料結構
-                  href: log-query/json-data-structures.md
-                - name: 進階查詢撰寫
-                  href: log-query/advanced-query-writing.md
-                - name: 圖表和資料圖表
-                  href: log-query/charts.md
-                - name: 搜尋查詢
-                  href: log-query/search-queries.md
-            - name: 速查表
-              items:
-                - name: SQL
-                  href: log-query/sql-cheatsheet.md
-                - name: Splunk
-                  href: log-query/splunk-cheatsheet.md
-        - name: 跨資源查詢
-          items:
-            - name: 概觀
-              href: log-query/cross-workspace-query.md
-            - name: 應用程式運算式
-              href: log-query/app-expression.md
-            - name: 工作區運算式
-              href: log-query/workspace-expression.md
-            - name: 資源運算式
-              href: log-query/resource-expression.md
-            - name: 統一應用程式資料資源
-              href: log-query/unify-app-resource-data.md
+          displayname: 'Azure Monitor Logs, Logs, Log Analytics, log query, log queries, query, queries'
+          href: platform/data-platform-logs.md
         - name: 工作區和叢集
           items:
-            - name: 設計工作區部署
-              href: platform/design-logs-deployment.md
             - name: 建立工作區
               items:
                 - name: Azure 入口網站
@@ -288,6 +195,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+            - name: 設計工作區部署
+              href: platform/design-logs-deployment.md
             - name: 監視工作區
               href: platform/monitor-workspace.md
             - name: 刪除並復原工作區
@@ -301,6 +210,50 @@
               href: platform/service-providers.md
             - name: 專用叢集
               href: log-query/logs-dedicated-clusters.md
+        - name: Log Analytics
+          items:
+            - name: 概觀
+              displayname: 'Log Analytics, log query, log queries, query, queries'
+              href: log-query/log-analytics-overview.md
+            - name: 教學課程
+              displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+              href: log-query/log-analytics-tutorial.md
+            - name: 查詢範圍
+              href: log-query/scope.md
+            - name: 查詢範例
+              href: log-query/example-queries.md
+        - name: 記錄查詢
+          items:
+            - name: 概觀
+              displayname: 'log query, log queries, query, queries'
+              href: log-query/log-query-overview.md
+            - name: KQL 參考
+              href: /azure/data-explorer/kusto/query/
+            - name: 範例查詢
+              href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
+            - name: 標準資料行
+              href: platform/log-standard-columns.md
+            - name: 最佳化查詢
+              href: log-query/query-optimization.md
+            - name: 函式
+              href: log-query/functions.md
+            - name: 剖析文字資料
+              href: log-query/parse-text.md
+            - name: 電腦群組
+              href: platform/computer-groups.md
+            - name: 跨資源查詢
+              items:
+                - name: 概觀
+                  displayname: cross-resource queries
+                  href: log-query/cross-workspace-query.md
+                - name: 應用程式運算式
+                  href: log-query/app-expression.md
+                - name: 工作區運算式
+                  href: log-query/workspace-expression.md
+                - name: 資源運算式
+                  href: log-query/resource-expression.md
+                - name: 統一應用程式資料資源
+                  href: log-query/unify-app-resource-data.md
         - name: 資料匯出
           items:
             - name: 工作區資料匯出
@@ -309,17 +262,34 @@
               href: platform/logs-export-logic-app.md
             - name: 使用資料總管查詢匯出的資料
               href: platform/azure-data-explorer-query-storage.md
-    - name: 計量瀏覽器
+    - name: Azure 監視器計量
       items:
-        - name: 開始使用計量瀏覽器
-          href: platform/metrics-getting-started.md
-        - name: 計量瀏覽器進階功能
-          href: platform/metrics-charts.md
-        - name: 計量圖表範例
-          href: platform/metric-chart-samples.md
-        - name: 針對計量圖表進行疑難排解
-          href: platform/metrics-troubleshoot.md
-    - name: 資料收集
+        - name: 概觀
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: 計量瀏覽器
+          items:
+            - name: 開始使用計量瀏覽器
+              href: platform/metrics-getting-started.md
+            - name: 計量瀏覽器進階功能
+              href: platform/metrics-charts.md
+            - name: 計量圖表範例
+              href: platform/metric-chart-samples.md
+            - name: 針對計量圖表進行疑難排解
+              href: platform/metrics-troubleshoot.md
+    - name: 平台記錄
+      items:
+        - name: 概觀
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: 活動記錄檔
+          href: platform/activity-log.md
+        - name: 資源記錄
+          href: platform/resource-logs.md
+        - name: 診斷設定
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: 資料集合
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md

@@ -94,7 +94,7 @@
       href: enable-diagnostic-logging.md
     - name: 透過診斷設定匯出 Azure IoT Connector for FHIR (預覽) 計量
       href: iot-metrics-diagnostics-export.md
-    - name: 檢視和設定 Azure IoT Connector for FHIR (預覽) 計量
+    - name: 顯示和設定 Azure IoT Connector for FHIR (預覽) 計量
       href: iot-metrics-display.md
     - name: 取得適用於 FHIR 的 Azure API 權杖 - CLI
       href: get-healthcare-apis-access-token-cli.md

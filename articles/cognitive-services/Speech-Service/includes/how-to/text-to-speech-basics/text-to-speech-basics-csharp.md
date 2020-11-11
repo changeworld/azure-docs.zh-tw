@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa1571721653b9a3829a91bb5659f0b8216e0037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 27eecc5560bc99520fea85baf13c0ff4d8a84e7e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470645"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424861"
 ---
 在本快速入門中，您將了解如何使用語音 SDK 進行文字轉換語音合成的常見設計模式。 首先，您會進行基本設定與合成，並繼續處理更多用於自訂應用程式開發的高階範例，包括：
 
@@ -52,19 +52,19 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。
+若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。
 
 > [!NOTE]
 > 無論您是執行語音辨識、語音合成、翻譯還是意圖辨識，都一定會建立設定。
 
-您可以透過數種方式將 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) 初始化：
+您可以透過數種方式將 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) 初始化：
 
 * 使用訂用帳戶：傳入金鑰和相關聯的區域。
 * 使用端點：傳入語音服務端點。 金鑰或授權權杖是選用項目。
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true)。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
+在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
 
 ```csharp
 public class Program 
@@ -83,7 +83,7 @@ public class Program
 
 ## <a name="synthesize-speech-to-a-file"></a>將語音合成至檔案
 
-接下來，您會建立 [`SpeechSynthesizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet&preserve-view=true) 物件，以執行文字轉換語音並輸出至喇叭、檔案或其他輸出串流。 [`SpeechSynthesizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet&preserve-view=true) 接受以下物件作為參數：在上一個步驟中建立的 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) 物件，以及可指定應如何處理輸出結果的 [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet&preserve-view=true) 物件。
+接下來，您會建立 [`SpeechSynthesizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-dotnet) 物件，以執行文字轉換語音並輸出至喇叭、檔案或其他輸出串流。 [`SpeechSynthesizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-dotnet) 接受以下物件作為參數：在上一個步驟中建立的 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) 物件，以及可指定應如何處理輸出結果的 [`AudioConfig`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?preserve-view=true&view=azure-dotnet) 物件。
 
 若要開始，請建立 `AudioConfig`，以使用 `FromWavFileOutput()` 函式將輸出自動寫入至 `.wav` 檔案，然後使用 `using` 陳述式將其具現化。 此內容中的 `using` 陳述式會自動處置非受控資源，並在處置後導致物件超出範圍。
 
@@ -135,7 +135,7 @@ static async Task SynthesizeAudioAsync()
 > [!NOTE]
 > 針對 `AudioConfig` 傳遞 `null` (而非如同在上述喇叭輸出範例中加以省略)，並不會在目前作用中的輸出裝置上依預設播放音訊。
 
-這次，您會將結果儲存至 [`SpeechSynthesisResult`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult?view=azure-dotnet&preserve-view=true) 變數。 `AudioData` 屬性包含輸出資料的 `byte []`。 您可以手動處理此 `byte []`，也可以使用 [`AudioDataStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet&preserve-view=true) 類別來管理記憶體內部資料流。 在此範例中，您會使用 `AudioDataStream.FromResult()` 靜態函式從結果中取得資料流。
+這次，您會將結果儲存至 [`SpeechSynthesisResult`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult?preserve-view=true&view=azure-dotnet) 變數。 `AudioData` 屬性包含輸出資料的 `byte []`。 您可以手動處理此 `byte []`，也可以使用 [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-dotnet) 類別來管理記憶體內部資料流。 在此範例中，您會使用 `AudioDataStream.FromResult()` 靜態函式從結果中取得資料流。
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -158,11 +158,11 @@ static async Task SynthesizeAudioAsync()
 * 採樣速率
 * 位元深度
 
-若要變更音訊格式，請在 `SpeechConfig` 物件上使用 `SetSpeechSynthesisOutputFormat()` 函式。 此函式應該有 [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet&preserve-view=true) 類型的 `enum`，您可使用此類型來選取輸出格式。 如需可用的[音訊格式清單](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet&preserve-view=true)，請參閱參考文件。
+若要變更音訊格式，請在 `SpeechConfig` 物件上使用 `SetSpeechSynthesisOutputFormat()` 函式。 此函式應該有 [`SpeechSynthesisOutputFormat`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet) 類型的 `enum`，您可使用此類型來選取輸出格式。 如需可用的[音訊格式清單](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet)，請參閱參考文件。
 
 根據您的需求而定，有各種選項可供不同的檔案類型使用。 請注意，依照定義，原始格式 (例如 `Raw24Khz16BitMonoPcm`) 不包含音訊標頭。 只有在您知道下游實作可將原始位元資料流解碼，或者打算根據位元深度、採樣速率、通道數目等手動建立標頭時，才會使用原始格式。
 
-在此範例中，您可藉由在 `SpeechConfig` 物件上設定 `SpeechSynthesisOutputFormat`，以指定高精確度的 RIFF 格式 `Riff24Khz16BitMonoPcm`。 與上一節中的範例類似，您可使用 [`AudioDataStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet&preserve-view=true) 來取得結果的記憶體內部資料流，然後將其寫入至檔案。
+在此範例中，您可藉由在 `SpeechConfig` 物件上設定 `SpeechSynthesisOutputFormat`，以指定高精確度的 RIFF 格式 `Riff24Khz16BitMonoPcm`。 與上一節中的範例類似，您可使用 [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-dotnet) 來取得結果的記憶體內部資料流，然後將其寫入至檔案。
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -185,7 +185,7 @@ static async Task SynthesizeAudioAsync()
 語音合成標記語言 (SSML) 可讓您從 XML 結構描述提交要求，以微調文字轉換語音輸出的音調、發音、說話速度、音量等等。 本節說明一些實際使用範例，但如需更詳細的指南，請參閱 [SSML 操作說明文章](../../../speech-synthesis-markup.md)。
 
 若要開始使用 SSML 進行自訂，您可進行簡單變更來切換語音。
-首先，在根專案目錄中為 SSML 組態建立新的 XML 檔案，在此範例中為 `ssml.xml`。 根元素一律為 `<speak>`，而將文字包裝在 `<voice>` 元素中，可讓您使用 `name` 參數來變更語音。 這個範例會將語音變更為男性英文 (英式) 語音。 請注意，此語音是 **標準** 語音，其定價和可用性與 **神經** 語音不同。 請參閱支援的 **標準** 語音 [完整清單](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices)。
+首先，在根專案目錄中為 SSML 組態建立新的 XML 檔案，在此範例中為 `ssml.xml`。 根元素一律為 `<speak>`，而將文字包裝在 `<voice>` 元素中，可讓您使用 `name` 參數來變更語音。 這個範例會將語音變更為男性英文 (英式) 語音。 請注意，此語音是 **標準** 語音，其定價和可用性與 **神經** 語音不同。 請參閱支援的 **標準** 語音 [完整清單](../../../language-support.md#standard-voices)。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -230,7 +230,7 @@ public static async Task SynthesizeAudioAsync()
 
 神經語音是由深度神經網路提供技術支援的語音合成演算法。 使用神經語音時，合成語音與人類錄音幾乎無法區分。 具有類似人類的自然韻律和清楚的文字清晰度，神經語音大幅降低使用者與 AI 系統互動時的聆聽疲勞。
 
-若要切換成神經語音，請將 `name` 變更為其中一個[神經語音選項](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)。 然後，新增 `mstts` 的 XML 命名空間，並將您的文字包裝在 `<mstts:express-as>` 標籤中。 使用 `style` 參數來自訂說話風格。 此範例會使用 `cheerful`，但請嘗試將其設定為 `customerservice` 或 `chat`，以查看說話風格的差異。
+若要切換成神經語音，請將 `name` 變更為其中一個[神經語音選項](../../../language-support.md#neural-voices)。 然後，新增 `mstts` 的 XML 命名空間，並將您的文字包裝在 `<mstts:express-as>` 標籤中。 使用 `style` 參數來自訂說話風格。 此範例會使用 `cheerful`，但請嘗試將其設定為 `customerservice` 或 `chat`，以查看說話風格的差異。
 
 > [!IMPORTANT]
 > **只有** 在 [美國東部]、[東南亞] 和 [西歐] 區域中建立的語音資源，才支援神經語音。

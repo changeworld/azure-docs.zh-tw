@@ -6,14 +6,14 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8bcc3e41f87570822f48a111fe98d1fdaf72679f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 09b537d82ce4e9e44c36df628d120623e69abfaf
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470836"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424816"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
@@ -41,14 +41,14 @@ ms.locfileid: "92470836"
 將此程式碼插入 `main()` 的 Try / Catch 區塊中。 請務必更新這些值：
 
 * 將 `"YourLanguageUnderstandingSubscriptionKey"` 取代為您的 LUIS 預測金鑰。
-* 將 `"YourLanguageUnderstandingServiceRegion"` 取代為您的 LUIS 位置。 使用[區域](https://aka.ms/speech/sdkregion)中的 [區域識別碼]  。
+* 將 `"YourLanguageUnderstandingServiceRegion"` 取代為您的 LUIS 位置。 使用[區域](../../../../regions.md)中的 [區域識別碼]  。
 
 >[!TIP]
 > 如果您在尋找這些值時需要協助，請參閱[建立意圖辨識的 LUIS 應用程式](#create-a-luis-app-for-intent-recognition)。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) \(英文\)。
+此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) \(英文\)。
 
 語音 SDK 會預設為使用 en-us 來辨識語言，如需選擇來源語言的詳細資訊，請參閱[指定語音轉換文字的來源語言](../../../../how-to-specify-source-language.md)。
 

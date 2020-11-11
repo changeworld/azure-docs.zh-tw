@@ -199,6 +199,8 @@
           href: bookmarks.md
         - name: 使用 Livestream 搜捕
           href: livestream.md
+        - name: 使用 REST-API 管理搜捕查詢
+          href: hunting-with-rest-api.md
     - name: 移除 Azure Sentinel
       href: offboard.md
 - name: 參考 (新增！)

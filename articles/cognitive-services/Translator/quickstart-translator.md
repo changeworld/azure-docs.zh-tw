@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: 翻譯工具, 翻譯工具服務, 翻譯文字, 進行文字音譯, 語言偵測
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322520"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369523"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入門：開始使用翻譯工具
 
@@ -105,7 +105,7 @@ ms.locfileid: "93322520"
   <th>描述</th>
   <tr>
     <td>驗證標頭</td>
-    <td>必要的要求標頭。<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>如果使用認知服務資源，則為必要的要求標頭。如果使用翻譯工具資源，則為選擇性標頭</em>。<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
+    <td>必要的要求標頭。<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>如果使用認知服務資源，則為必要的要求標頭。如果使用翻譯工具資源，則為選擇性標頭</em>。<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>請參閱<a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -123,7 +123,7 @@ ms.locfileid: "93322520"
 
 ## <a name="keys-and-endpoints"></a>[金鑰和端點]
 
-為方便說明，此頁面上的範例會使用硬式編碼的金鑰和端點。 切記， **完成時請從程式碼中移除金鑰** ，且 **切勿公開發佈金鑰** 。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+為方便說明，此頁面上的範例會使用硬式編碼的金鑰和端點。 切記， **完成時請從程式碼中移除金鑰** ，且 **切勿公開發佈金鑰** 。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../cognitive-services-security.md)一文。
 
 ## <a name="translate-text"></a>翻譯文字 
 
@@ -686,7 +686,7 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 ### <a name="detect-source-language-without-translation"></a>偵測來源語言而不進行翻譯
 
-您可以使用翻譯工具服務，在不進行翻譯的情況下偵測來源文字的語言。 若要這麼做，您應使用 [`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) 端點。 
+您可以使用翻譯工具服務，在不進行翻譯的情況下偵測來源文字的語言。 若要這麼做，您應使用 [`/detect`](./reference/v3-0-detect.md) 端點。 
 
 # <a name="c"></a>[C#](#tab/csharp)
 

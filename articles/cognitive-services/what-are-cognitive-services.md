@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546257"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369404"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure 認知服務是什麼？
 
@@ -39,59 +39,59 @@ Azure 認知服務是使用 REST API 和用戶端程式庫 SDK 的雲端式服�
 
 |服務名稱|服務描述|
 |:-----------|:------------------|
-|[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "電腦視覺")|電腦視覺服務可供您存取進階演認知算法，以處理影像及傳回資訊。|
-|[自訂視覺服務](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自訂辨識服務")|自訂視覺服務可讓您建置自訂影像分類器。|
-|[臉部](https://docs.microsoft.com/azure/cognitive-services/face/ "臉部")| 臉部辨識服務提供進階的臉部識別演算法，以偵測和辨識臉部屬性。|
-|[表單辨識器](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "表單辨識器")|表單辨識器會從表單文件中識別並擷取索引鍵/值組和資料表資料；然後輸出結構化資料，包括原始檔案中的關聯性。|
-|[筆跡辨識器](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "筆跡辨識器") (淘汰)|筆跡辨識器可讓您辨識並分析數位筆跡的筆觸資料、圖形和手寫內容，以及輸出包含所有已辨識實體的文件結構。|
-|[影片索引子](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "影片索引子")|影片索引器可讓您從影片中擷取深入解析。|
+|[電腦視覺](./computer-vision/index.yml "電腦視覺")|電腦視覺服務可供您存取進階演認知算法，以處理影像及傳回資訊。|
+|[自訂視覺服務](./custom-vision-service/overview.md "自訂辨識服務")|自訂視覺服務可讓您建置自訂影像分類器。|
+|[臉部](./face/index.yml "臉部")| 臉部辨識服務提供進階的臉部識別演算法，以偵測和辨識臉部屬性。|
+|[表單辨識器](./form-recognizer/index.yml "表單辨識器")|表單辨識器會從表單文件中識別並擷取索引鍵/值組和資料表資料；然後輸出結構化資料，包括原始檔案中的關聯性。|
+|[筆跡辨識器](./ink-recognizer/index.yml "筆跡辨識器") (淘汰)|筆跡辨識器可讓您辨識並分析數位筆跡的筆觸資料、圖形和手寫內容，以及輸出包含所有已辨識實體的文件結構。|
+|[影片索引子](../media-services/video-indexer/video-indexer-overview.md "影片索引子")|影片索引器可讓您從影片中擷取深入解析。|
 
 ## <a name="speech-apis"></a>語音識別 API
 
 |服務名稱|服務描述|
 |:-----------|:------------------|
-|[語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "語音服務")|語音服務會將語音啟用功能加入應用程式。 語音服務包含各種功能，例如語音轉換文字、文字轉換語音、語音翻譯等等。|
+|[語音服務](./speech-service/index.yml "語音服務")|語音服務會將語音啟用功能加入應用程式。 語音服務包含各種功能，例如語音轉換文字、文字轉換語音、語音翻譯等等。|
 <!--
-|[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
-|[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
-|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
+|[Speaker Recognition API](./speech-service/speaker-recognition-overview.md "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
+|[Bing Speech](./speech-service/how-to-migrate-from-bing-speech.md "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
+|[Translator Speech](/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
 -->
 ## <a name="language-apis"></a>語言 API
 
 |服務名稱|服務描述|
 |:-----------|:------------------|
-|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding 服務 (LUIS) 可讓應用程式了解人在文字中所表達的意思。|
-|[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker 可讓您從半結構化內容建置問題與解答服務。|
-|[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "文字分析")| 文字分析可針對原始文字進行自然語言處理，進行情感分析、關鍵片語擷取和語言偵測。|
-|[翻譯工具](https://docs.microsoft.com/azure/cognitive-services/translator/ "轉譯程式")|翻譯工具可提供近乎即時的機器文字翻譯。|
-| [沈浸式閱讀程式](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/ "沈浸式閱讀程式") | 沈浸式閱讀程式在您的應用程式中新增了螢幕閱讀和理解功能。 |
+|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding 服務 (LUIS) 可讓應用程式了解人在文字中所表達的意思。|
+|[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker 可讓您從半結構化內容建置問題與解答服務。|
+|[文字分析](./text-analytics/index.yml "文字分析")| 文字分析可針對原始文字進行自然語言處理，進行情感分析、關鍵片語擷取和語言偵測。|
+|[翻譯工具](./translator/index.yml "轉譯程式")|翻譯工具可提供近乎即時的機器文字翻譯。|
+| [沈浸式閱讀程式](./immersive-reader/index.yml "沈浸式閱讀程式") | 沈浸式閱讀程式在您的應用程式中新增了螢幕閱讀和理解功能。 |
 
 ## <a name="decision-apis"></a>決策 API
 
 |服務名稱|服務描述|
 |:-----------|:------------------|
-|[異常偵測器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "異常偵測器") |異常偵測器可讓您監視和偵測時間序列資料中的異常狀況。|
-|[內容仲裁](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "內容仲裁")|內容仲裁可監視潛在的冒犯、惡意或具風險之內容。|
-|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (預覽) | Metrics Advisor 可讓您在多變數的時間序列資料上提供可自訂的異常偵測，以及功能完整且可協助您使用服務的 Web 入口網站。|
-|[個人化工具](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "個人化工具")|個人化工具可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。|
+|[異常偵測器](./anomaly-detector/index.yml "異常偵測器") |異常偵測器可讓您監視和偵測時間序列資料中的異常狀況。|
+|[內容仲裁](./content-moderator/overview.md "內容仲裁")|內容仲裁可監視潛在的冒犯、惡意或具風險之內容。|
+|[Metrics Advisor](./metrics-advisor/index.yml) (預覽) | Metrics Advisor 可讓您在多變數的時間序列資料上提供可自訂的異常偵測，以及功能完整且可協助您使用服務的 Web 入口網站。|
+|[個人化工具](./personalizer/index.yml "個人化工具")|個人化工具可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。|
 
 ## <a name="search-apis"></a>搜尋 API
 
 > [!NOTE]
-> 尋找 [Azure 認知搜尋](https://docs.microsoft.com/azure/search/)？ 雖然其使用認知服務進行某些工作，但是可支援其他案例的不同搜尋技術。
+> 尋找 [Azure 認知搜尋](../search/index.yml)？ 雖然其使用認知服務進行某些工作，但是可支援其他案例的不同搜尋技術。
 
 |服務名稱|服務描述|
 |:-----------|:------------------|
-|[Bing 新聞搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing 新聞搜尋")|Bing 新聞搜尋會傳回一份與使用者查詢相關的新聞文章清單。|
-|[Bing 影片搜尋](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing 影片搜尋")|Bing 新聞搜尋會傳回一份與使用者查詢相關的影片清單。|
-|[Bing Web 搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Web 搜尋")|Bing Web 搜尋會傳回一份與使用者查詢相關的搜尋結果清單。|
-|[Bing 自動建議](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing 自動建議")|Bing 自動建議可讓您將部分搜尋查詢字詞傳送到 Bing，並取得建議查詢清單。|
-|[Bing 自訂搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing 自訂搜尋")|Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋經驗。|
-|[Bing 實體搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing 實體搜尋")|Bing 實體搜尋會傳回 Bing 判斷與使用者查詢相關的實體相關資訊。|
-|[Bing 影像搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing 影像搜尋")|Bing 影像搜尋會傳回與使用者查詢相關的影像。|
-|[Bing 圖像式搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing 圖像式搜尋")|Bing 圖像式搜尋會傳回深入解析的影像，例如視覺效果類似的影像、影像中找到的產品購物來源，以及相關搜尋。|
-|[Bing 當地企業搜尋](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing 當地企業搜尋")| Bing 當地企業搜尋 API 可讓您的應用程式依搜尋查詢項目，尋找當地商家的連絡方式及位置資訊。|
-|[Bing 拼字檢查](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing 拼字檢查")|Bing 拼字檢查可讓您執行內容的文法與拼字檢查。|
+|[Bing 新聞搜尋](/azure/cognitive-services/bing-news-search/ "Bing 新聞搜尋")|Bing 新聞搜尋會傳回一份與使用者查詢相關的新聞文章清單。|
+|[Bing 影片搜尋](/azure/cognitive-services/Bing-Video-Search/ "Bing 影片搜尋")|Bing 新聞搜尋會傳回一份與使用者查詢相關的影片清單。|
+|[Bing Web 搜尋](./bing-web-search/index.yml "Bing Web 搜尋")|Bing Web 搜尋會傳回一份與使用者查詢相關的搜尋結果清單。|
+|[Bing 自動建議](/azure/cognitive-services/Bing-Autosuggest "Bing 自動建議")|Bing 自動建議可讓您將部分搜尋查詢字詞傳送到 Bing，並取得建議查詢清單。|
+|[Bing 自訂搜尋](/azure/cognitive-services/bing-custom-search "Bing 自訂搜尋")|Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋經驗。|
+|[Bing 實體搜尋](/azure/cognitive-services/bing-entities-search/ "Bing 實體搜尋")|Bing 實體搜尋會傳回 Bing 判斷與使用者查詢相關的實體相關資訊。|
+|[Bing 影像搜尋](/azure/cognitive-services/bing-image-search "Bing 影像搜尋")|Bing 影像搜尋會傳回與使用者查詢相關的影像。|
+|[Bing 圖像式搜尋](/azure/cognitive-services/bing-visual-search "Bing 圖像式搜尋")|Bing 圖像式搜尋會傳回深入解析的影像，例如視覺效果類似的影像、影像中找到的產品購物來源，以及相關搜尋。|
+|[Bing 當地企業搜尋](/azure/cognitive-services/bing-local-business-search/ "Bing 當地企業搜尋")| Bing 當地企業搜尋 API 可讓您的應用程式依搜尋查詢項目，尋找當地商家的連絡方式及位置資訊。|
+|[Bing 拼字檢查](/azure/cognitive-services/bing-spell-check/ "Bing 拼字檢查")|Bing 拼字檢查可讓您執行內容的文法與拼字檢查。|
 
 ## <a name="development-options"></a>開發選項 
 
@@ -111,7 +111,7 @@ Azure 認知服務是使用 REST API 和用戶端程式庫 SDK 的雲端式服�
 * [Azure 入口網站](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure 入口網站")
 * [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Azure SDK 用戶端程式庫](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
-* [Azure Resource Manager (ARM) 範本](resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) 範本")
+* [Azure Resource Manager (ARM) 範本](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) 範本")
 
 <!--
 ## Subscription management

@@ -10,17 +10,17 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2eab79d79a287bc8a92133c6901c420dfaee2fd5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 50db66d54993a4b5ee8afb4756be6b1f4387a1d0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082040"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369336"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>什麼是 Bing 圖像式搜尋 API？
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
@@ -53,7 +53,7 @@ Bing 圖像式搜尋的結果也會包含影像中相關區域的週框。 例�
 
 Bing 圖像式搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任何可發出 HTTP 要求及剖析 JSON 的程式設計語言呼叫。 您可以對此服務使用 REST API 或 SDK。
 
-1. 建立[認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)來存取 Bing 搜尋 API。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+1. 建立[認知服務帳戶](../cognitive-services-apis-create-account.md)來存取 Bing 搜尋 API。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜尋查詢，將要求傳送至 API。
 3. 剖析傳回的 JSON 訊息以處理 API 回應。
 
@@ -74,8 +74,8 @@ Bing 圖像式搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任
 
 ## <a name="see-also"></a>另請參閱
 
-* [影像 - 圖像式搜尋](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)參考會說明您在要求以影像為基礎的搜尋結果時所能使用端點、要求標頭、回應和查詢參數的定義和資訊。
+* [影像 - 圖像式搜尋](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)參考會說明您在要求以影像為基礎的搜尋結果時所能使用端點、要求標頭、回應和查詢參數的定義和資訊。
 
 * [Bing 搜尋 API 使用和顯示需求](../bing-web-search/use-display-requirements.md)指定了透過 Bing 搜尋 API 取得的內容和資訊可行的用法。
 
-* 請瀏覽 [Bing 搜尋 API 中樞頁面](../bing-web-search/search-the-web.md)以探索其他可用的 API。
+* 請瀏覽 [Bing 搜尋 API 中樞頁面](../bing-web-search/overview.md)以探索其他可用的 API。
