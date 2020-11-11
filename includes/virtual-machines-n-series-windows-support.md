@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bfb7d1d52549d7fda9547b65a259fe2ce73f8839
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 22d2ddc65616bbeb0c511afa6f60bc12c6ec67ef
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997921"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482655"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支援的作業系統和驅動程式
 
@@ -34,12 +34,12 @@ ms.locfileid: "91997921"
 
 Microsoft 會針對用來作為虛擬工作站或虛擬應用程式的 NV 和 NVv3 系列 Vm，轉散發 NVIDIA GRID 驅動程式安裝程式。 僅在下表所列的作業系統上安裝 Azure NV 系列 Vm 上的這些方格驅動程式。 這些驅動程式包含在 Azure 的 GRID 虛擬 GPU 軟體的授權中。 您不需要設定 NVIDIA vGPU software 授權伺服器。
 
-Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm）上運作。
+Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm）上運作。 其中一個例外狀況是 NCas_T4_V3 VM 系列，格線驅動程式會在其中啟用類似于 NV 系列的圖形功能。
 
 請注意，Nvidia 延伸模組一律會安裝最新的驅動程式。 針對相依于較舊版本的客戶，我們提供了先前版本的連結。
 
 若為 Windows Server 2019、Windows Server 2016 和 Windows 10 () 建立2004：
-- [方格 11 (452.39) ](https://go.microsoft.com/fwlink/?linkid=874181) ( .exe) 
+- [方格 11.1 (452.39) ](https://go.microsoft.com/fwlink/?linkid=874181) ( .exe) 
 - [方格 11.0 (451.48) ](https://download.microsoft.com/download/C/1/4/c147a482-1364-4d12-b9e3-0beda0f00a13/451.48_grid_win10_server2016_server2019_64bit_international.exe) ( .exe)  
 
 若為 Windows Server 2012 R2： 

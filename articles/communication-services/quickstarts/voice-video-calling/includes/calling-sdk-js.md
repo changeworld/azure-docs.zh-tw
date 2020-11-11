@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779247"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482711"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
-- `User Access Token`要啟用呼叫用戶端的。 如需[如何取得的 `User Access Token` ](../../access-tokens.md)詳細資訊
+- 用來啟用通話用戶端的 `User Access Token`。 如需[如何取得 `User Access Token`](../../access-tokens.md) 的詳細資訊
 - 選擇性：完成快速入門以 [開始將呼叫新增至您的應用程式](../getting-started-with-calling.md)
 
 ## <a name="setting-up"></a>設定
@@ -99,7 +99,7 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
-### <a name="join-a-group-call"></a>加入群組呼叫
+### <a name="join-a-group-call"></a>加入群組通話
 若要啟動新的群組呼叫或加入進行中的群組呼叫，請使用 ' join ' 方法並傳遞具有屬性的物件 `groupId` 。 值必須是 GUID。
 ```js
 
@@ -147,7 +147,8 @@ const callState = call.state;
 * 「已連線」-呼叫已連線
 * 「保留」-通話處於保留狀態，本機端點與遠端參與者之間沒有媒體流動 () 
 * 「中斷連接」-在呼叫進入「中斷連線」狀態之前的轉換狀態
-* 「已中斷連線」-最終撥號狀態
+* 「已中斷連線」-最終撥號狀態。
+   * 如果網路連線中斷，在大約2分鐘之後，狀態會變成「已中斷連線」。
 
 
 * 若要查看給定通話結束的原因，請檢查 `callEndReason` 屬性。
@@ -233,6 +234,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>常見問題集
+ * 如果網路連線中斷，撥號狀態是否會變更為「已中斷連線」？
+    * 是的，如果網路連線遺失超過2分鐘，則呼叫將會轉換為已中斷連線的狀態，而呼叫將會結束。
 
 ## <a name="remote-participants-management"></a>遠端參與者管理
 
@@ -270,7 +274,8 @@ const state = remoteParticipant.state;
 * 「已連線」-參與者已連線到通話
 * 「保留」-參與者正在保存
 * ' EarlyMedia '-參與者連接到通話之前會播放公告
-* 「已中斷連線」-最終狀態-參與者已與呼叫中斷連線
+* 「已中斷連線」-最終狀態-參與者已與呼叫中斷連線。
+   * 如果遠端參與者失去其網路連線能力，則在大約2分鐘之後，遠端參與者狀態會變成「已中斷連線」。
 
 若要瞭解參與者離開通話的原因，請檢查 `callEndReason` 屬性：
 ```js
@@ -410,7 +415,9 @@ document.body.appendChild(rendererView.target);
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>常見問題集
+* 如果遠端參與者失去其網路連線，其狀態會變更為「已中斷連線」？
+    * 是的，如果遠端參與者中斷其網路連線超過2分鐘，其狀態將會轉換為已中斷連線，而且會從呼叫中移除。
 ## <a name="device-management"></a>裝置管理
 
 `DeviceManager` 可讓您列舉可在呼叫中用來傳輸音訊/影片串流的本機裝置。 它也可讓您向使用者要求許可權，以使用原生瀏覽器 API 來存取其麥克風和相機。
