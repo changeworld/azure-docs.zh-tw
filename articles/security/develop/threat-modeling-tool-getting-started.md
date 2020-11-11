@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913019"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515722"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威脅模型化工具使用者入門
 
 Microsoft Threat Modeling Tool 2018 已於 2018 年 9 月正式發行， **[按一下即可免費下載](https://aka.ms/threatmodelingtool)** 。 傳遞機制中的變更可讓我們在客戶每次開啟它時，將最新的增強功能和錯誤修正傳送給客戶，讓它更容易維護及使用。
 本文章會引導您開始使用 Microsoft SDL 威脅模型化方法的程序，並且示範如何使用工具來開發很棒的威脅模型，作為安全性程序的骨幹。
 
-這篇文章是根據 SDL 威脅模型化方法的現有知識所建置的。 如需快速檢閱，請參閱 **[威脅模型化 Web 應用程式](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年發佈的 **[使用 STRIDE 方法發現安全性缺陷](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文件的封存版本。
+這篇文章是根據 SDL 威脅模型化方法的現有知識所建置的。 如需快速檢閱，請參閱 **[威脅模型化 Web 應用程式](/previous-versions/msp-n-p/ff648006(v=pandp.10))** 和 2006 年發佈的 **[使用 STRIDE 方法發現安全性缺陷](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文件的封存版本。
 
 若要快速摘要，方法牽涉到建立圖表、識別威脅、緩和它們及驗證每個風險降低。 以下反白顯示此程序的圖表：
 

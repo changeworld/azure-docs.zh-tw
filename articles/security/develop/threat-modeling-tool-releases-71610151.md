@@ -6,19 +6,19 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 10/16/2019
-ms.openlocfilehash: e45d1347993611130d1bb5036ad4638210c15517
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761ad45496e799a555b60480ff575b9d8f30e984
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317934"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516980"
 ---
 # <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool 更新版本 7.1.61015.1 - 2019 年 10 月 16 日
 
 Microsoft Threat Modeling Tool (TMT) 的版本7.1.61015.1 已于 16 2019 年10月發行，並包含下列變更：
 
-- 協助工具改進
-- 錯誤修正
+- 協助工具增強功能
+- Bug 修正
 - Azure Logic Apps 和 Azure 資料總管的新樣板
 
 ## <a name="notable-bug-fixes"></a>值得注意的錯誤修正
@@ -60,7 +60,7 @@ System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'L
 
 ## <a name="documentation-and-feedback"></a>文件和意見反應
 
-- Threat Modeling Tool 的文件位於 [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)，其中包含[關於使用工具](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)的資訊。
+- Threat Modeling Tool 的文件位於 [docs.microsoft.com](./threat-modeling-tool.md)，其中包含[關於使用工具](./threat-modeling-tool-getting-started.md)的資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

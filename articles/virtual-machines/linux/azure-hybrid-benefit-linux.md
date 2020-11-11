@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443427"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516436"
 ---
 # <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>公開預覽： Azure Hybrid Benefit –適用于 Linux 虛擬機器
 
@@ -53,10 +53,12 @@ Azure Hybrid Benefit 目前處於 Linux Vm 的預覽階段。 當您取得預覽
 
 ### <a name="red-hat-customers"></a>Red Hat 客戶
 
-1.    向[Red Hat Cloud Access 方案](https://aka.ms/rhel-cloud-access)註冊
-1.    啟用您的 Azure 訂用帳戶 () 進行雲端存取，並啟用包含您想要使用權益之 Vm 的訂用帳戶
-1.    透過 Azure CLI 將權益套用至現有的 Vm
-1.    使用個別的更新來源來註冊您的 Vm 以接收權益
+適用于 RHEL 的 Azure Hybrid Benefit 適用于具有使用中/未使用的 RHEL 訂用帳戶，且該訂用帳戶可在 Azure 中使用，以及已啟用一或多個訂用帳戶，以在 Azure 中搭配 [Red Hat Cloud 存取](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 程式使用的客戶。 
+
+1.  使用 [Red Hat Cloud Access 客戶介面](https://access.redhat.com/management/cloud)，啟用一或多個合格的 RHEL 訂用帳戶，以便在 Azure 中使用。
+1.  您在 Red Hat Cloud Access 啟用程式期間提供的 Azure 訂用帳戶 () ，接著將允許使用 Azure Hybrid Benefit 功能。
+1.  將 Azure Hybrid Benefit 套用至任何現有的 RHEL PAYG Vm，以及您從 Azure Marketplace PAYG 映射部署的任何新 RHEL Vm。
+1.  遵循建議的 [後續步驟](https://access.redhat.com/articles/5419341) ，以設定 rhel vm 的更新來源和 rhel 訂用帳戶合規性指導方針。
 
 
 ### <a name="suse-customers"></a>SUSE 客戶
@@ -124,7 +126,19 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="red-hat"></a>Red Hat
 
-若要使用適用于 RHEL Vm 的 Azure Hybrid Benefit，您必須先向 Red Hat Cloud Access 方案註冊。 您可以透過這裡的 Red Hat Cloud Access 網站來完成此作業。 當您在 VM 上啟用權益之後，您必須使用您自己的更新來源（具有 Red Hat 訂用帳戶管理員或 Red Hat 附屬物）註冊 VM。 註冊更新將可確保您保持在支援的狀態。
+使用 RHEL Azure Hybrid Benefit 的客戶同意與 Azure Marketplace RHEL 供應專案相關聯的標準 [法律條款](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) 和 [隱私權聲明](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) 。
+
+使用 RHEL Azure Hybrid Benefit 的客戶有三個選項可將軟體更新和修補程式提供給這些 Vm：
+
+1.  [Red Hat 更新基礎結構 (RHUI) ](../workloads/redhat/redhat-rhui.md) (預設選項) 
+1.  Red Hat 附屬伺服器
+1.  Red Hat 訂用帳戶管理員
+
+選擇 RHUI 選項的客戶可以繼續使用 RHUI 作為其 AHB RHEL Vm 的主要更新來源，而不需要將 RHEL 訂用帳戶附加至這些 Vm。  選擇 RHUI 選項的客戶必須負責確保 RHEL 訂用帳戶合規性。
+
+選擇 Red Hat 附屬伺服器或 Red Hat 訂用帳戶管理員的客戶應該移除 RHUI 設定，然後將已啟用雲端存取的 RHEL 訂用帳戶附加至其 AHB RHEL VM (s) 。  
+
+您可以在 [這裡](https://access.redhat.com/articles/5419341)找到有關 Red Hat 訂用帳戶合規性、軟體更新和 AHB RHEL vm 來源的詳細資訊。
 
 ### <a name="suse"></a>SUSE
 

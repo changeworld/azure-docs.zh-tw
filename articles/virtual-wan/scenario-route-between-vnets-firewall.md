@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267511"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515564"
 ---
 # <a name="scenario-azure-firewall---custom"></a>案例： Azure 防火牆-自訂
 
@@ -26,12 +26,12 @@ ms.locfileid: "91267511"
 
 **連接矩陣**
 
-| 來自           | 變更為：      | *Vnet*      | *分支*    | *網際網路*   |
+| 從           | 變更為：      | *Vnet*      | *分支*    | *網際網路*   |
 |---             |---       |---           |---            |---           |
-| **Vnet**      |   &#8594;|     X        |     AzFW      |     AzFW     |
-| **分支**   |   &#8594;|    AzFW      |       X       |       X      |
+| **Vnet**      |   &#8594;|    直接    |     AzFW      |     AzFW     |
+| **分支**   |   &#8594;|    AzFW      |    直接     |    直接    |
 
-在上表中，"X" 代表兩個連線之間的直接連線，而不會流經虛擬 WAN 中的 Azure 防火牆，而 "AzFW" 表示流程將會通過 Azure 防火牆。 因為矩陣中有兩個不同的連接模式，所以我們需要兩個路由表，其設定如下：
+在上表中，「直接」代表兩個連線之間的直接連線，而不會流經虛擬 WAN 中的 Azure 防火牆，而「AzFW」表示流程將會通過 Azure 防火牆。 因為矩陣中有兩個不同的連接模式，所以我們需要兩個路由表，其設定如下：
 
 * 虛擬網路：
   * 相關聯的路由表： **RT_VNet**
@@ -47,11 +47,11 @@ ms.locfileid: "91267511"
 
 ## <a name="workflow"></a><a name="workflow"></a>工作流程
 
-在此案例中，您想要透過 Azure 防火牆將流量路由傳送至 VNet 對網際網路、VNet 對分支或分支對 VNet 流量，但想要直接使用 VNet 對 VNet 流量。 如果您使用 Azure 防火牆管理員，路由設定會自動填入 **預設路由表**中。 私人流量適用于 VNet 和分支，網際網路流量會套用至 0.0.0.0/0。
+在此案例中，您想要透過 Azure 防火牆將流量路由傳送至 VNet 對網際網路、VNet 對分支或分支對 VNet 流量，但想要直接使用 VNet 對 VNet 流量。 如果您使用 Azure 防火牆管理員，路由設定會自動填入 **預設路由表** 中。 私人流量適用于 VNet 和分支，網際網路流量會套用至 0.0.0.0/0。
 
 VPN、ExpressRoute 和使用者 VPN 連線統稱為分支，並與相同的 (預設) 路由表建立關聯。 所有 VPN、ExpressRoute 和使用者 VPN 連接都會將路由傳播至同一組路由表。 若要設定此案例，請考慮下列步驟：
 
-1. 建立自訂路由表 **RT_VNet**。
+1. 建立自訂路由表 **RT_VNet** 。
 1. 建立路由以啟用 VNet 對網際網路和 VNet 對分支： 0.0.0.0/0，且下一個躍點指向 Azure 防火牆。 在 [傳播] 區段中，您將確認已選取 Vnet，以確保更特定的路由，進而允許 VNet 對 VNet 的直接流量。
 
    * 在 [關聯] 中 **：** 選取 [vnet]，這表示 vnet 會根據此路由表的路由來到達目的地。
@@ -62,7 +62,7 @@ VPN、ExpressRoute 和使用者 VPN 連線統稱為分支，並與相同的 (預
    * 請記住，分支會關聯並傳播至預設路由表。
    * 分支不會傳播至 RT_VNet 路由表。 這可確保透過 Azure 防火牆的 VNet 對分支流量流動。
 
-這會導致路由設定變更，如 [ **圖 1**] 所示。
+這會導致路由設定變更，如 [ **圖 1** ] 所示。
 
 **圖1**
 

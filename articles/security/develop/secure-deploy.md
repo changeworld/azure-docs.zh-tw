@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934877"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517184"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>在 Azure 上部署安全的應用程式
-在本文中，我們會提供在您部署雲端應用程式時所要考慮的安全性活動和控制項。 在 Microsoft [安全性開發生命週期 ](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的發行和回應階段期間，要考慮的安全性問題和概念 (SDL) 的涵蓋範圍。 目標是協助您定義活動和 Azure 服務，您可以使用這些服務來部署更安全的應用程式。
+在本文中，我們會提供在您部署雲端應用程式時所要考慮的安全性活動和控制項。 在 Microsoft [安全性開發生命週期 ](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的發行和回應階段期間，要考慮的安全性問題和概念 (SDL) 的涵蓋範圍。 目標是協助您定義活動和 Azure 服務，您可以使用這些服務來部署更安全的應用程式。
 
 本文章涵蓋下列 SDL 階段：
 
@@ -40,7 +40,7 @@ ms.locfileid: "68934877"
 
 Web 應用程式已逐漸成為利用常見已知弱點的惡意攻擊目標。 這些惡意探索中常見的是 SQL 插入式攻擊和跨網站腳本攻擊。 在應用程式程式碼中防止這些攻擊是一種挑戰。 它可能需要嚴格的維護、修補和監視應用程式拓撲的許多層級。 集中式 WAF 有助於簡化安全性管理。 WAF 解決方案也可以透過在中央位置修補已知弱點，與保護每個個別的 web 應用程式，來回應安全性威脅。
 
-[Azure 應用程式閘道 WAF](../../application-gateway/waf-overview.md)可為您的 web 應用程式提供集中式保護，使其免于遭遇常見的攻擊和弱點。 WAF 是以 [OWASP core 規則集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或2.2.9 的規則為基礎。
+[Azure 應用程式閘道 WAF](../../web-application-firewall/ag/ag-overview.md)可為您的 web 應用程式提供集中式保護，使其免于遭遇常見的攻擊和弱點。 WAF 是以 [OWASP core 規則集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或2.2.9 的規則為基礎。
 
 ### <a name="create-an-incident-response-plan"></a>建立事件回應計劃
 
@@ -75,9 +75,9 @@ Web 應用程式已逐漸成為利用常見已知弱點的惡意攻擊目標。 
 
 #### <a name="azure-security-center"></a>Azure 資訊安全中心
 
-[Azure 資訊安全中心](../../security-center/security-center-intro.md) 可協助您防止、偵測和回應威脅，並提高對 Azure 資源（包括 web 應用程式）的 (和控制) 安全性的可見度。 Azure 資訊安全中心有助於偵測可能不會察覺到的威脅。 它適用于各種安全性解決方案。
+[Azure 資訊安全中心](../../security-center/security-center-introduction.md) 可協助您防止、偵測和回應威脅，並提高對 Azure 資源（包括 web 應用程式）的 (和控制) 安全性的可見度。 Azure 資訊安全中心有助於偵測可能不會察覺到的威脅。 它適用于各種安全性解決方案。
 
-資訊安全中心的免費層僅為 Azure 資源提供有限的安全性。 資訊 [安全中心標準層](../../security-center/security-center-onboarding.md) 會將這些功能延伸到內部部署資源和其他雲端。
+資訊安全中心的免費層僅為 Azure 資源提供有限的安全性。 資訊 [安全中心標準層](../../security-center/security-center-get-started.md) 會將這些功能延伸到內部部署資源和其他雲端。
 安全性中心標準可協助您：
 
   - 找出並修正安全性弱點。

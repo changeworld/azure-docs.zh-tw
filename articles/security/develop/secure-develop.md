@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283481"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517082"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
-在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制。 其中涵蓋 Microsoft [安全性開發生命週期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，以便您用來開發更安全的應用程式。
+在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制。 其中涵蓋 Microsoft [安全性開發生命週期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，以便您用來開發更安全的應用程式。
 
 本文章涵蓋下列 SDL 階段：
 
@@ -34,7 +34,7 @@ ms.locfileid: "87283481"
 
 ### <a name="perform-code-reviews"></a>執行程式碼檢閱
 
-在您簽入程式碼之前，請先進行[程式碼檢閱](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)來提升整體程式碼品質，並降低發生錯誤的風險。 您可以使用 [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) 來管理程式碼檢閱程序。
+在您簽入程式碼之前，請先進行[程式碼檢閱](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)來提升整體程式碼品質，並降低發生錯誤的風險。 您可以使用 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) 來管理程式碼檢閱程序。
 
 ### <a name="perform-static-code-analysis"></a>執行靜態程式碼分析
 
@@ -99,7 +99,7 @@ Server、X-Powered-By、X-AspNet-Version 等標頭會揭露有關伺服器和基
 
 如果您的應用程式允許[上傳檔案](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)，請考慮為此風險活動採取預防措施。 在許多攻擊中，第一部舊是將一些惡意程式碼放入遭受攻擊的系統中。 使用檔案上傳可幫助攻擊者完成此動作。 OWASP 提供驗證檔案的解決方案，以確保您要上傳的檔案是安全的。
 
-反惡意程式碼軟體可協助識別及移除病毒、間諜軟體和其他惡意軟體。 您可安裝 [Microsoft Antimalware](../fundamentals/antimalware.md) 或 Microsoft 合作夥伴的端點保護解決方案 ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) 及 [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection))。
+反惡意程式碼軟體可協助識別及移除病毒、間諜軟體和其他惡意軟體。 您可安裝 [Microsoft Antimalware](../fundamentals/antimalware.md) 或 Microsoft 合作夥伴的端點保護解決方案 ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) 及 [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection))。
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) 包含下列功能：即時防護、排程掃描、惡意程式碼補救、簽章更新、引擎更新、範例報告和排除事件收集。 您可以將 Microsoft Antimalware 和合作夥伴解決方案與 [Azure 資訊安全中心](../../security-center/security-center-partner-integration.md)整合，以方便部署和執行內建偵測 (警示與事件)。
 

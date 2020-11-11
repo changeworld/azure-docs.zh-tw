@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b0be672c0768b4facb6518c777d4fe56eb28aa9
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293348"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515671"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架︰輸入驗證 | 風險降低 
 | 產品/服務 | 發行項 |
@@ -40,7 +40,7 @@ ms.locfileid: "89293348"
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [XSLT 安全性](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)、[XsltSettings.EnableScript 屬性](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **參考**              | [XSLT 安全性](/previous-versions/windows/desktop/ms763800(v=vs.85))、[XsltSettings.EnableScript 屬性](/dotnet/api/system.xml.xsl.xsltsettings.enablescript) |
 | **步驟** | XSLT 支援在使用 `<msxml:script>` 元素的樣式表內編寫指令碼。 這可讓自訂函式用於 XSLT 轉換。 指令碼會在執行轉換的程序內容下執行。 在未受信任的環境時必須停用 XSLT 指令碼，以防止執行未受信任的程式碼。 *如果使用 .NET：* 預設會停用 XSLT 指令碼；不過，您必須確認它尚未透過 `XsltSettings.EnableScript` 屬性加以明確啟用。|
 
 ### <a name="example"></a>範例 
@@ -72,7 +72,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [IE8 安全性單元五 - 完善的保護](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
+| **參考**              | [IE8 安全性單元五 - 完善的保護](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
 | **步驟** | <p>對於可能包含使用者可控制內容的每個頁面，您必須使用 HTTP 標頭 `X-Content-Type-Options:nosniff`。 若要符合此需求，您可以單獨針對可能包含使用者可控制內容的頁面逐頁設定此必要標頭，或者，您也可以針對應用程式中的所有頁面全域設定此標頭。</p><p>從 Web 伺服器傳遞過來之檔案的每個類型都有相關聯的 [MIME 類型](https://en.wikipedia.org/wiki/Mime_type) (也稱為「內容類型」)，以描述內容的本質 (也就是影像、文字、應用程式等)</p><p>X-Content-Type-Options 標頭是可讓開發人員指定不應對其內容探查 MIME 的 HTTP 標頭。 此標頭是設計用來降低 MIME 探查攻擊的風險。 Internet Explorer 8 (IE8) 已新增對此標頭的支援</p><p>只有 Internet Explorer 8 (IE8) 的使用者能夠受益於 X-Content-Type-Options。 舊版 Internet Explorer 目前不採用 X-Content-Type-Options 標頭</p><p>Internet Explorer 8 (和更新版本) 是主要瀏覽器中唯一實作了可選擇不要 MIME 探查功能的瀏覽器。 當其他主要瀏覽器 (Firefox、Safari、Chrome) 實作了類似功能時，我們會更新這項建議，使其也包含這些瀏覽器的語法</p>|
 
 ### <a name="example"></a>範例
@@ -141,7 +141,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [XML 實體擴充](https://capec.mitre.org/data/definitions/197.html)、[XML 阻斷服務攻擊與防禦](https://msdn.microsoft.com/magazine/ee335713.aspx)、[MSXML 安全性概觀](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx)、[保護 MSXML 程式碼的最佳作法](https://msdn.microsoft.com/library/ms759188(VS.85).aspx)、[NSXMLParserDelegate 通訊協定參考](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[解析外部參考](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
+| **參考**              | [XML 實體擴充](https://capec.mitre.org/data/definitions/197.html)、[XML 阻斷服務攻擊與防禦](/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses)、[MSXML 安全性概觀](/previous-versions/windows/desktop/ms754611(v=vs.85))、[保護 MSXML 程式碼的最佳作法](/previous-versions/windows/desktop/ms759188(v=vs.85))、[NSXMLParserDelegate 通訊協定參考](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[解析外部參考](/dotnet/standard/data/xml/resolving-external-resources) |
 | **步驟**| <p>雖然未被廣泛使用，但有一項 XML 功能可讓 XML 剖析器使用在文件本身內或從外部來源所定義的值，來擴充巨集實體。 例如，文件可能會使用值 "Microsoft" 定義實體 "companyname"，以便在每次文件中出現文字 "&companyname;" 時，就自動以文字 Microsoft 加以取代。 或者，文件可能會定義參考外部 Web 服務的實體 "MSFTStock"，以擷取 Microsoft 股票的目前股價。</p><p>然後，每當文件中出現 "&MSFTStock;" 時，就自動以目前股價加以取代。 不過，這項功能可能會遭到濫用，來造成阻斷服務 (DoS) 狀況。 攻擊者可將多個實體進行巢狀處理來製造會以指數方式擴張的 XML 炸彈 (XML bomb)，以耗用系統上所有可用的記憶體。 </p><p>或者，他也可以建立外部參考，以往回串流無限量的資料，或讓執行緒停止回應。 因此，所有小組必須完全停用其應用程式並未使用的內部及/或外部 XML 實體解析，或以手動方式限制可供應用程式取用來解析實體的記憶體和時間量 (如果這項功能有其絕對必要)。 如果應用程式不需要解析實體，則請停用。 </p>|
 
 ### <a name="example"></a>範例
@@ -360,7 +360,7 @@ myCommand.Fill(userDataset);
 | **SDL 階段**               | Build |  
 | **適用的技術** | MVC5、MVC6 |
 | **屬性**              | N/A  |
-| **參考**              | [中繼資料屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute)、[公用金鑰安全性弱點和風險降低](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[在 ASP.NET MVC 中大量指派的完整指南](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[使用 MVC 開始使用 EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
+| **參考**              | [中繼資料屬性](/dotnet/api/system.componentmodel.dataannotations.metadatatypeattribute)、[公用金鑰安全性弱點和風險降低](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[在 ASP.NET MVC 中大量指派的完整指南](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[使用 MVC 開始使用 EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
 | **步驟** | <ul><li>**我應該在何時尋找 over-posting 弱點？-** over-posting 弱點可能發生在您從使用者輸入繫結模型類別的任何位置。 MVC 等架構可在自訂 .NET 類別中代表使用者資料，包括簡單的 CLR 物件 (POCO)。 MVC 會自動在這些模型類別中填入要求中的資料，以方便代表要處理的使用者輸入。 當這些類別包括不應該由使用者設定的屬性時，應用程式很容易遭受 over-posting 攻擊，因而允許使用者控制應用程式永遠不會需要的資料。 和 MVC 模型繫結一樣，Entity Framework 等物件/關聯式對應程式之類的資料庫存取技術，通常也支援使用 POCO 物件來代表資料庫資料。 這些資料模型類別同樣能代表要處理的資料庫資料，就和 MVC 在處理使用者輸入時一樣。 因為 MVC 和資料庫都支援類似模型，例如 POCO 物件，想要將相同的類別重複用於這兩種用途似乎是輕鬆無比的事。 這種作法無法保持關注點分離，而這一塊區域通常也會讓模型繫結能夠接觸到非預期屬性，而實現 over-posting 攻擊。</li><li>**為何不該使用未經篩選的資料庫模型類別來做為 MVC 動作的參數？-** 因為 MVC 模型繫結會在該類別繫結任何項目。 即使資料未出現在檢視中，惡意使用者也可以傳送內含此資料的 HTTP 要求，MVC 會很樂意繫結它，因為您的動作說明資料庫類別是它應該接受做為使用者輸入的資料外觀。</li><li>**為何我該關心用於模型繫結的外觀？-** 搭配過度廣泛的模型使用 ASP.NET MVC 模型繫結，會讓應用程式暴露在 over-posting 攻擊範圍內。 over-posting 可讓攻擊者將應用程式資料的使用範圍變更為開發人員預定用途之外，例如覆寫某商品的價格或帳戶的安全性權限。 應用程式應使用動作專屬的繫結模型 (或特別允許的屬性篩選清單) 來提供明確合約，規定要透過模型繫結允許哪些不受信任的輸入。</li><li>**要擁有個別的繫結模型是否只要複製程式碼即可？-** 否，此作業和關注點分離有關。 若您在動作方法中重複使用資料庫模型，就表示該類別中的屬性 (或子屬性) 可供使用者在 HTTP 要求中設定。 如果您不想讓 MVC 這麼做，就需要使用篩選清單或個別的類別外觀來告訴 MVC 哪些資料可以來自使用者輸入。</li><li>**如果我有專門用於使用者輸入的繫結模型，我是否必須複製我所有的資料註解屬性？-** 不一定。 您可以在資料庫模型類別上使用 MetadataTypeAttribute 來連結至模型繫結類別上的中繼資料。 但請注意，MetadataTypeAttribute 所參考的類型必須是參考類型的子集 (可以有較少屬性，但不得超過)。</li><li>**在使用者輸入模型和資料庫模型之間來回移動資料很麻煩。是否可以使用反映功能直接複製所有屬性？-** 是。 繫結模型中唯一會出現的屬性，是您已確定可安全做為使用者輸入的屬性。 沒有任何安全性方面的理由可阻止您使用反映功能來複製這兩個模型之間共同存在的所有屬性。</li><li>**若是使用 [Bind(Exclude ="â&euro;¦")]。我能否使用此方法而不使用個別的繫結模型？-** 不建議使用這個方法。 使用 [Bind(Exclude ="â&euro;¦")] 表示任何新的屬性都會預設為可繫結。 當您新增屬性時，有一個必須記得才能讓一切保持安全的額外步驟，而非讓設計預設就保持安全。 依靠開發人員在每次新增屬性時檢查這份清單是件危險的事。</li><li>**[Bind(Include ="â&euro;¦")] 對於 [編輯] 作業是否有用？-** 否。 [Bind(Include ="â&euro;¦")] 僅適用於 INSERT 樣式的作業 (新增資料)。 若為更新樣式的作業 (修改現有資料)，請使用另一種方法，例如擁有個別的繫結模型，或將允許屬性的明確清單傳遞給 UpdateModel 或 TryUpdateModel。 在 [編輯] 作業上新增 [Bind(Include ="â&euro;¦")] 屬性表示 MVC 將會建立物件執行個體，並只設定所列出的屬性，將所有其他的屬性保留為預設值。 當資料存留下來時，便會完全取代現有實體，將任何遭忽略屬性的值重設為預設值。 例如，如果在 [編輯] 作業的 [Bind(Include ="â&euro;¦")] 屬性中省略了 IsAdmin，則透過此動作編輯名稱的任何使用者都會重設為 IsAdmin = false (已編輯的任何使用者都會失去系統管理員狀態)。 如果您想要防止更新某些屬性，請使用上述其他方法的其中一個。 請注意，某些版本的 MVC 工具會產生控制器類別，且 [編輯] 動作上會包含 [Bind(Include ="â&euro;¦")]，代表從該清單中移除屬性會避免過度貼文 (over-posting) 攻擊。 但如上所述，該方法不會如預期運作，反而會將所忽略屬性中的任何資料重設為預設值。</li><li>**針對 [建立] 作業，使用 [Bind(Include ="â&euro;¦")] 而不是個別的繫結模型時，是否有任何需要注意的事項？-** 是。 首先，這個方法不適用於編輯案例，需要維護兩種不同方法來降低所有 over-posting 弱點。 第二，使用個別繫結模型必定需要分別處理使用者輸入型態與用於持續性的型態，但使用 [Bind(Include ="â&euro;¦")] 則不必如此。 第三，請注意，[Bind(Include ="â&euro;¦")] 只能處理最上層屬性；您無法僅允許屬性中的部分子屬性 (例如 "Details.Name")。 最後，也許是最重要的一點，使用 [Bind(Include ="â&euro;¦")] 會新增額外的步驟，只要將類別用於模型繫結，就必須記得進行此步驟。 若將新的動作方法直接繫結至資料類別，且忘記包含 [Bind(Include ="â&euro;¦")] 屬性，就可能容易遭受過度貼文的攻擊，因此 [Bind(Include ="â&euro;¦")] 方法依預設是較不安全的。 如果您使用 [Bind(Include ="â&euro;¦")]，則每次資料類別顯示為動作方法參數時，請務必一律記得加以指定。</li><li>**針對 [建立] 作業，將 [Bind(Include ="â&euro;¦")] 屬性放在模型類別本身上會如何？這種方法不能讓我不再需要記得在每個動作方法放置此屬性嗎？-** 這種方法在某些情況下有用。 在模型類型本身上使用 [Bind(Include ="â&euro;¦")] (而非在動作參數上使用這個類別)，並不需要在每個動作方法上記得包含 [Bind(Include ="â&euro;¦")] 屬性。 直接在類別上使用此屬性實際上會為此類別建立不同的介面區域，以供繫結模型。 不過，此方法只允許在每個模型類別上使用一個模型繫結外觀。 如果某個動作方法需要允許某欄位進行模型繫結 (例如，會更新使用者角色的僅限系統管理員動作)，而其他動作需要防止此欄位進行模型繫結，這個方法就無法運作。 每一個類別只能有一個模型繫結型態；如果不同動作需要不同的模型繫結型態，則必須在動作方法上使用個別模型繫結類別或是個別的 [Bind(Include ="â&euro;¦")] 屬性來代表這些個別型態。</li><li>**何謂繫結模型？它們是和檢視模型相同的概念嗎？-** 這兩者是有相關性的概念。 繫結模型一詞是指動作的參數清單中所使用的模型類別 (從 MVC 模型繫結傳遞至動作方法的外觀)。 檢視模型一詞則是指從動作方法傳遞至檢視的模型類別。 要將資料從動作方法傳遞至檢視時，通常會使用檢視專屬模型這個方法。 此型態通常也適用於模型繫結，而檢視模型一詞則可用來指稱這兩個位置中所使用的相同模型。 準確地說，此程序專門討論繫結模型，將重點放在傳遞給動作的外觀，而這對於大量指派來說很重要。</li></ul>| 
 
 ## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>先將未受信任的 Web 輸出編碼再進行轉譯
@@ -371,7 +371,7 @@ myCommand.Fill(userDataset);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、Web Form、MVC5、MVC6 |
 | **屬性**              | N/A  |
-| **參考**              | [如何在 ASP.NET 中防止跨網站指令碼](https://msdn.microsoft.com/library/ms998274.aspx)、[跨網站指令碼](https://cwe.mitre.org/data/definitions/79.html)、[XSS (跨網站指令碼) 防護功能提要](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
+| **參考**              | [如何在 ASP.NET 中防止跨網站指令碼](/previous-versions/msp-n-p/ff649310(v=pandp.10))、[跨網站指令碼](https://cwe.mitre.org/data/definitions/79.html)、[XSS (跨網站指令碼) 防護功能提要](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
 | **步驟** | 跨網站指令碼 (通常縮寫為 XSS) 是針對線上服務或從 Web 取用輸入之任何應用程式/元件的攻擊媒介。 XSS 弱點可能會讓攻擊者透過易受攻擊的 Web 應用程式，對其他使用者的電腦執行指令碼。 惡意指令碼可用來竊取 Cookie 或是透過 JavaScript 竄改受害者的電腦。 若要預防 XSS，您可以驗證使用者輸入、確保其格式正確無誤並先加以編碼，再轉譯於網頁中。 使用 Web Protection Library 即可進行輸入驗證和輸出編碼。 若為受控碼 (C\#、VB.NET 等)，請根據為使用者輸入建立資訊清單的內容，使用一或多個來自 Web Protection (Anti-XSS) Library 的適當編碼方法：| 
 
 ### <a name="example"></a>範例
@@ -396,7 +396,7 @@ myCommand.Fill(userDataset);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、MVC5、MVC6 |
 | **屬性**              | N/A  |
-| **參考**              | [新增驗證](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[驗證 MVC 應用程式中的模型資料](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 應用程式的指導原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **參考**              | [新增驗證](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[驗證 MVC 應用程式中的模型資料](/previous-versions/dd410404(v=vs.90))、[ASP.NET MVC 應用程式的指導原則](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
 | **步驟** | <p>所有輸入參數都必須先驗證再用於應用程式，以確保應用程式不受惡意使用者輸入所危害。 使用伺服器端上的正則運算式驗證和允許的清單驗證策略，驗證輸入值。 傳遞至方法的未清理使用者輸入/參數會造成程式碼插入弱點。</p><p>對於 Web 應用程式，進入點還可能包括表單欄位、QueryStrings、Cookie、HTTP 標頭和 Web 服務參數。</p><p>在繫結模型時，必須執行下列輸入驗證檢查︰</p><ul><li>模型屬性應該使用 RegularExpression 註解來加以註解，以便接受允許的字元和最大允許長度</li><li>控制器方法應該執行 ModelState 有效性</li></ul>|
 
 ## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>應該對接受所有字元的表單欄位 (例如 RTF 編輯器) 套用清理
@@ -407,7 +407,7 @@ myCommand.Fill(userDataset);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [將不安全的輸入編碼](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3)， [HTML 清理程式](https://github.com/mganss/HtmlSanitizer) |
+| **參考**              | [將不安全的輸入編碼](/previous-versions/msp-n-p/ff647397(v=pandp.10)#paght000003_step3)， [HTML 清理程式](https://github.com/mganss/HtmlSanitizer) |
 | **步驟** | <p>找出您想要使用的所有靜態標記標籤。 常見的作法是將格式限制為安全的 HTML 元素，例如 `<b>`(粗體) 和 `<i>` (斜體)。</p><p>在寫入資料前，先對它進行 HTML 編碼。 此動作可讓惡意指令碼變得安全，因為這會讓它以文字形式進行處理，而不是以可執行程式碼的形式。</p><ol><li>將 ValidateRequest ="false" 屬性新增至 \@ Page 指示詞，以停用 ASP.NET 要求驗證</li><li>使用 HtmlEncode 方法將字串輸入編碼</li><li>使用 StringBuilder 並呼叫其取代方法，選擇性移除您想要允許之 HTML 元素上的編碼</li></ol><p>參考中的頁面會藉由設定 `ValidateRequest="false"` 來停用 ASP.NET 要求驗證。 它會對輸入進行 HTML 編碼，並選擇性地允許 `<b>` 和 `<i>`。或者，也可以使用 .NET 程式庫來清理 HTML。</p><p>HtmlSanitizer 是用來從可能會導致 XSS 攻擊的建構中清理 HTML 片段和文件的 .NET 程式庫。 它會使用 AngleSharp 來剖析、操作及轉譯 HTML 與 CSS。 HtmlSanitizer 可使用 NuGet 套件的形式來安裝，並可視需要透過相關 HTML 或 CSS 清理方法，在伺服器端上傳遞使用者輸入。 請注意，只有在迫不得已時才可考慮使用清理做為安全性控制方法。</p><p>輸入驗證和輸出編碼會是較佳的安全性控制方法。</p> |
 
 ## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>請勿將沒有內建編碼的 DOM 元素指派給接收器
@@ -451,7 +451,7 @@ $('body').append(resHTML);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、MVC5、MVC6 |
 | **屬性**              | N/A  |
-| **參考**              | [驗證 MVC 應用程式中的模型資料](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 應用程式的指導原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **參考**              | [驗證 MVC 應用程式中的模型資料](/previous-versions/dd410404(v=vs.90))、[ASP.NET MVC 應用程式的指導原則](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
 | **步驟** | 對於只接受基本資料類型而不接受模型來做為引數的方法，應該使用規則運算式進行輸入驗證。 在此，Regex.IsMatch 應搭配使用有效的 regex 模式。 如果輸入不符合指定的規則運算式，就不該再繼續進行控制，而且應該顯示關於驗證失敗的適當警告。| 
 
 ## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>為規則運算式處理設定逾時上限以防止因規則運算式不正確而導致 DoS
@@ -462,7 +462,7 @@ $('body').append(resHTML);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、Web Form、MVC5、MVC6  |
 | **屬性**              | N/A  |
-| **參考**              | [DefaultRegexMatchTimeout 屬性](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) (機器翻譯) |
+| **參考**              | [DefaultRegexMatchTimeout 屬性](/dotnet/api/system.web.configuration.httpruntimesection.defaultregexmatchtimeout) (機器翻譯) |
 | **步驟** | 若要確保以錯誤格式建立的規則運算式不會遭受阻斷服務攻擊，而造成大量回溯，請設定全域的預設逾時。 如果處理時間超過所定義的上限，便會擲回逾時例外狀況。 若未做任何設定，則逾時時間是無限。| 
 
 ### <a name="example"></a>範例
@@ -622,7 +622,7 @@ namespace MyApi.Controllers
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、MVC 5、MVC 6 |
 | **屬性**              | N/A  |
-| **參考**              | [驗證 MVC 應用程式中的模型資料](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 應用程式的指導原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **參考**              | [驗證 MVC 應用程式中的模型資料](/previous-versions/dd410404(v=vs.90))、[ASP.NET MVC 應用程式的指導原則](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
 | **步驟** | 對於只接受基本資料類型而不接受模型來做為引數的方法，應該使用規則運算式進行輸入驗證。 在此，Regex.IsMatch 應搭配使用有效的 regex 模式。 如果輸入不符合指定的規則運算式，就不該再繼續進行控制，而且應該顯示關於驗證失敗的適當警告。|
 
 ## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>確定 Web API 有使用 type-safe 參數來存取資料
@@ -674,7 +674,7 @@ myCommand.Fill(userDataset);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、NET Framework 3 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff647820(v=pandp.10)) |
 | **步驟** | <p>缺少驗證機制會導致不同類型的插入式攻擊。</p><p>訊息驗證代表 WCF 應用程式保護措施中的一條防禦線。 利用這個方法，您可以使用結構描述來驗證訊息，以防止惡意用戶端攻擊 WCF 服務作業。 驗證用戶端所收到的所有訊息可防止用戶端遭到惡意服務攻擊。 訊息驗證可讓您在作業取用訊息合約或資料合約時驗證訊息，使用參數驗證則無法這麼做。 訊息驗證可讓您在結構描述內建立驗證邏輯，進而提供更大的彈性並縮減開發時間。 結構描述可以重複使用到組織中的不同應用程式，而為如何代表資料建立標準。 此外，在它們取用涉及代表商務邏輯之合約的更複雜資料類型時，訊息驗證可讓您保護作業。</p><p>若要執行訊息驗證，您可以先建置結構描述來代表服務的作業和這些作業所取用的資料類型。 然後，您可以建立 .NET 類別來實作自訂用戶端訊息偵測器和自訂發送器訊息偵測器，以驗證服務所傳送/接收的訊息。 接下來，您可以實作自訂端點行為，在用戶端和服務上啟用訊息驗證。 最後，您可以對類別實作自訂組態元素，以便您可以在服務或用戶端的組態檔中，公開擴充的自訂端點行為</p>|
 
 ## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>透過參數偵測器驗證 WCF 輸入
@@ -685,5 +685,5 @@ myCommand.Fill(userDataset);
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型、NET Framework 3 |
 | **屬性**              | N/A  |
-| **參考**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
+| **參考**              | [MSDN](/previous-versions/msp-n-p/ff647875(v=pandp.10)) |
 | **步驟** | <p>輸入和資料驗證代表 WCF 應用程式保護措施中的一條重要防禦線。 您應該驗證 WCF 服務作業中公開的所有參數，以防止服務遭受惡意用戶端攻擊。 相反地，您還應該驗證用戶端所收到的所有傳回值，以防止用戶端遭受惡意服務攻擊</p><p>WCF 會提供不同的擴充點，讓您藉由建立自訂擴充功能來自訂 WCF 執行階段行為。 訊息偵測器和參數偵測器這兩個擴充性機制可用來加強對用戶端和服務之間所傳遞之資料的控制力。 您應該使用參數偵測器來驗證輸入，而只將訊息偵測器用於當您需要檢查流入及流出服務的整個訊息時。</p><p>若要執行輸入驗證，您需要建置 .NET 類別，並實作自訂參數偵測器，以對服務中的作業參數進行驗證。 接著，您需要實作自訂端點行為，在用戶端和服務上啟用驗證。 最後，您可以對類別實作自訂組態元素，以便您可以在服務或用戶端的組態檔中，公開擴充的自訂端點行為</p>|

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fd8fb2e40fa44c5aec3f14bfd586187c952df0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422428"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515688"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>關於 Microsoft 安全性程式碼分析
 
@@ -73,7 +73,7 @@ Binskim 等是可移植的可執行檔 (PE) 輕量掃描器，可驗證編譯器
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 
-Roslyn 分析器是 Microsoft 的編譯器整合式工具，可用於靜態分析 managed c # 和 Visual Basic 程式碼。 如需詳細資訊，請參閱以 [Roslyn 為基礎的分析器](https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/security-warnings)。
+Roslyn 分析器是 Microsoft 的編譯器整合式工具，可用於靜態分析 managed c # 和 Visual Basic 程式碼。 如需詳細資訊，請參閱以 [Roslyn 為基礎的分析器](/dotnet/fundamentals/code-analysis/quality-rules/security-warnings)。
 
 ### <a name="tslint"></a>TSLint
 

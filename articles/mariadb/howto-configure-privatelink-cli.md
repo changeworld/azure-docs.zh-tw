@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c7f95b2009521b054958be48e444a129b0a59ed3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7ba8a5ded1d83ffdf153724c5e76b27e10bccfcb
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242886"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515756"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫的 Private Link
 
@@ -21,15 +21,15 @@ ms.locfileid: "93242886"
 > [!NOTE]
 > 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>必要條件
 
-若要逐步執行本作法指南，您需要︰
+- 您需要 [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-cli.md)。 
 
-- [適用於 MariaDB 的 Azure 資料庫的伺服器](quickstart-create-mariadb-server-database-using-azure-cli.md)。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您決定改為在本機安裝和使用 CLI，本快速入門會要求您使用 Azure CLI 2.0.28 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -141,14 +141,14 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 1. 開啟 *downloaded.rdp* 檔案。
 
-    1. 如果出現提示，請選取 [連接]  。
+    1. 如果出現提示，請選取 [連接]。
 
     1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934857"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517167"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure 上的安全開發最佳做法
 這一系列文章提供當您開發雲端應用程式時所要考慮的安全性活動和控制項。 Microsoft 安全性開發生命週期的階段 (SDL) ，以及在生命週期的每個階段所要考慮的安全性問題和概念。 其目標是協助您定義活動和 Azure 服務，您可以在生命週期的每個階段中使用這些活動，以設計、開發及部署更安全的應用程式。
@@ -37,7 +37,7 @@ ms.locfileid: "68934857"
 
 您稍後可以修正開發生命週期中的問題，修正的成本就愈高。 安全性問題並沒有例外。 如果您在軟體發展的早期階段忽略安全性問題，接下來的每個階段可能會繼承先前階段的弱點。 您的最終產品將會累積多個安全性問題和入侵的可能性。 在開發生命週期的每個階段中建立安全性，可協助您及早攔截問題，並協助您降低開發成本。
 
-我們會遵循 Microsoft [安全性開發生命週期的各個階段 (SDL) ](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 引進活動和 Azure 服務，您可以在生命週期的每個階段中用來履行安全的軟體發展實務。
+我們會遵循 Microsoft [安全性開發生命週期的各個階段 (SDL) ](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 引進活動和 Azure 服務，您可以在生命週期的每個階段中用來履行安全的軟體發展實務。
 
 SDL 階段包括：
 
@@ -63,7 +63,7 @@ SDL 階段包括：
 
 使用下列資源來深入瞭解如何開發安全的應用程式，並協助保護您在 Azure 上的應用程式：
 
-[Microsoft 安全性開發週期 (sdl) ](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) – Sdl 是 microsoft 的軟體發展流程，可協助開發人員建立更安全的軟體。 它可協助您解決安全性合規性需求，同時降低開發成本。
+[Microsoft 安全性開發週期 (sdl) ](/previous-versions/windows/desktop/cc307891(v=msdn.10)) – Sdl 是 microsoft 的軟體發展流程，可協助開發人員建立更安全的軟體。 它可協助您解決安全性合規性需求，同時降低開發成本。
 
 [開放 Web 應用程式安全性專案 (OWASP) ](https://www.owasp.org/index.php/Main_Page) – OWASP 是線上的社區，可在 Web 應用程式安全性領域中產生免費的文章、方法、檔、工具和技術。
 

@@ -3,21 +3,102 @@ title: Azure 企業版註冊發票
 description: 本文將說明如何管理 Azure 企業發票，並採取相關行動。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq1
+ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316132"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410947"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 
 本文將說明如何管理 Azure Enterprise 合約 (Azure EA) 發票，並採取相關行動。 您的發票即代表您的帳單。 請檢查其正確性。 您也應熟悉管理發票時可能需要的其他工作。
+
+## <a name="view-usage-summary-and-download-reports"></a>檢視使用量摘要及下載報表
+
+企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用預付款，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
+
+若要檢視特定帳戶的詳細使用量，請下載使用量詳細資料報告：
+
+1. 登入 Azure 企業版入口網站。
+1. 選取 [報表]。
+1. 選取 [下載使用量] 索引標籤。
+1. 在報告清單中，針對想要取得的每月報告選取 [下載]。
+
+   > [!NOTE]
+   > 使用量詳細資料報告不包含任何適用的稅金。
+   >
+   > 從使用量發生到使用量在報告上反映時，可能會有最多 8 小時的延遲時間。
+
+若要檢視使用量摘要報告和圖表：
+
+1. 登入 Azure 企業版入口網站。
+
+1. 選取款預付字詞。
+
+   若要變更 [使用量摘要] 的日期範圍，您可以從頁面右上方的 **M** (每月) 切換到 **C** (自訂)，然後輸入自訂開始和結束日期。
+
+   ![在自訂檢視中建立和檢視使用量摘要及下載報告](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. 若要檢視其他詳細資料，您可選取圖表上的期間或月份。
+
+   - 此圖表會顯示每月使用量明細，其中包含已使用的用量、超額服務、個別計費的費用和 Azure Marketplace 費用。
+   - 對於所選的月份，您可以使用圖表下方的欄位，依部門、帳戶和訂用帳戶進行篩選。
+   - 您可以在 [依服務收費] 與 [依階層收費] 之間切換。
+   - 藉由展開相關區段，從 [Azure 服務]、[個別計費的費用] 及 [ Azure Marketplace] 檢視詳細資料。
+
+觀看這段影片以了解如何檢視使用量：
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+
+### <a name="download-csv-reports"></a>下載 CSV 報表
+
+企業系統管理員可使用每月報告下載頁面，將下列報告下載為 CSV 檔案：
+
+- 餘額和費用
+- 使用量詳細資料
+- Azure Marketplace 費用
+- 價位表
+
+若要下載報表：
+
+1. 在 Azure 企業版入口網站中，選取 [報告]。
+2. 選取頁面頂端的 [下載使用量]。
+3. 選取月份報表旁的 [下載]。
+
+   > [!NOTE]
+   > 產生使用量的時間與使用量顯示在報表中的時間可能會有最多五天的延遲。
+   >
+   > 使用 Safari 將 CSV 檔案下載至 Excel 的使用者可能會遇到格式錯誤。 若要避免錯誤，請使用文字編輯器來開啟檔案。
+
+![顯示 [下載使用量] 頁面的範例](./media/ea-portal-enrollment-invoices/create-ea-download-csv-reports.png)
+
+觀看這段影片以了解如何下載使用量資訊：
+
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+
+### <a name="advanced-report-download"></a>進階報表下載
+
+您可以使用進階報告下載來取得涵蓋特定日期範圍或帳戶的報告。 輸出檔的格式為 CSV，可容納大型記錄集。
+
+1. 在 Azure 企業版入口網站中，選取 [進階報告下載]。
+1. 選取適當的日期範圍和適當的帳戶。
+1. 選取 [要求使用量資料]。
+1. 選取 [重新整理] 按鈕，直到報告狀態更新為 [下載] 為止。
+1. 下載報告。
+
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>下載先前註冊的使用量報告和計費資訊
+
+您可以在進行註冊轉移之後，下載先前註冊的使用量報告和計費資訊。 歷程記錄報告適用於 Azure 企業版入口網站與成本管理。
+
+Azure 企業版入口網站會篩選掉非作用中的註冊。 您必須取消勾選 [作用中] 方塊，才能檢視非作用中的已轉移註冊。  
+
+![取消勾選 [作用中] 方塊可讓使用者查看非作用中的註冊](./media/ea-portal-enrollment-invoices/unchecked-active-box.png)
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>變更可即將超額的發票 PO 編號
 
@@ -61,20 +142,20 @@ ms.locfileid: "91316132"
 
 您收到超額發票的日期取決於您的註冊開始日期和設定：
 
-- **開始日期早於 2018 年 5 月1 日的直接註冊**：
+- **開始日期早於 2018 年 5 月1 日的直接註冊** ：
   - 如果您是直接 Enterprise 合約 (EA) 的客戶，Azure 服務會設定為年度計費週期 (不包括 Azure Marketplace 服務)。 您的計費週期會根據週年日 (合約生效的日期) 計算。
   - 如果您超過 Azure EA 預付款閾值的 150%，則會自動轉換為以您周年日計算的季度計費週期。 您也會收到 Azure 服務超額發票。
   - 如果您未超過 Azure 預付款閾值的 150%，則您的註冊會維持在年度計費週期。 您將會在預付款年度結束時收到超額發票。
 
-- **開始日期晚於 2018 年 5 月1 日的直接註冊**：
+- **開始日期晚於 2018 年 5 月1 日的直接註冊** ：
   - 您的 Azure 使用量和個別計費的費用發票則會採用每月計費週期。
   - Azure 預付款中未涵蓋的任何費用都將計為超額款項。  
 
-- **註冊開始日期早於 2018 年 5 月 1 日的間接註冊**：
+- **註冊開始日期早於 2018 年 5 月 1 日的間接註冊** ：
 
   如果您是間接 Enterprise 合約 (EA) 客戶，而且開始日期在 2018 年 5 月1日之前，您的計費週期將會以季度來計算。 通路合作夥伴 (CP) 會直接向您開立發票。  
 
-- **開始日期晚於 2018 年 5 月1 日的間接註冊**：
+- **開始日期晚於 2018 年 5 月1 日的間接註冊** ：
 
   您將使用每月計費週期。  
 
@@ -88,9 +169,9 @@ ms.locfileid: "91316132"
 
 針對發票上的每個項目，您會看到：
 
-- **應收金額**：費用總計
-- **預付款使用量**：用來涵蓋費用的預付款金額
-- **淨額**：超出您預付款的費用
+- **應收金額** ：費用總計
+- **預付款使用量** ：用來涵蓋費用的預付款金額
+- **淨額** ：超出您預付款的費用
 
 只有超過預付款的淨額，才會加上適用的稅額。
 
@@ -110,9 +191,9 @@ ms.locfileid: "91316132"
 
 客戶的帳單週期是每年、每季或每月。 計費週期會在客戶簽署合約時決定。 每月計費是最小的計費間隔。
 
-- 針對直接註冊，將計費週期從每年變更為每季時，需要企業系統管理員的**核准**。 間接註冊需要合作夥伴系統管理員的核准。 變更會在目前的帳單季結束時生效。
-- 若要將每年或每季的計費週期變更為每月，則必須**修訂**合約。  對現有註冊計費週期所做的任何變更，都需要企業系統管理員或「帳單連絡人」的核准。
-- **提交**您的核准至 [Azure 企業版入口網站支援](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)。 選擇問題類別：**計費和發票**。
+- 針對直接註冊，將計費週期從每年變更為每季時，需要企業系統管理員的 **核准** 。 間接註冊需要合作夥伴系統管理員的核准。 變更會在目前的帳單季結束時生效。
+- 若要將每年或每季的計費週期變更為每月，則必須 **修訂** 合約。  對現有註冊計費週期所做的任何變更，都需要企業系統管理員或「帳單連絡人」的核准。
+- **提交** 您的核准至 [Azure 企業版入口網站支援](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)。 選擇問題類別： **計費和發票** 。
 
 變更會在目前的帳單季結束時生效。
 

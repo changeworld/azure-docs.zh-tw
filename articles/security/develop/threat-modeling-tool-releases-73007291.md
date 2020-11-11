@@ -6,18 +6,18 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: fc343f292fa32ed2db67dd74aba7a66dbc00d6ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e6fcd52ad9cb6c127c14bac2f33223fb921519e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317832"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516368"
 ---
 # <a name="threat-modeling-tool-update-release-73007291---07292020"></a>Threat Modeling Tool 更新版本 7.3.00729.1-07/29/2020
 
 Microsoft Threat Modeling Tool (TMT) 的版本7.3.00729.1 已于 29 2020 年7月發行，並包含下列變更：
 
-- 錯誤修正
+- Bug 修正
  
 ## <a name="known-issues"></a>已知問題
 
@@ -48,7 +48,7 @@ The threat model file '$PATH\TMT7.application' could not be deserialized. File i
 
 ## <a name="documentation-and-feedback"></a>文件和意見反應
 
-- Threat Modeling Tool 的文件位於 [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)，其中包含[關於使用工具](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)的資訊。
+- Threat Modeling Tool 的文件位於 [docs.microsoft.com](./threat-modeling-tool.md)，其中包含[關於使用工具](./threat-modeling-tool-getting-started.md)的資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

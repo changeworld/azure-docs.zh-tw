@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 462242b001da5a5a6d2eba8e4bd06315c0b263a6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 35ed275419cc4319e7edfed608340853c986a927
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491835"
+ms.locfileid: "94515620"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄檔總覽
 Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](../monitor-reference.md)收集及組織記錄和效能資料。 來自不同來源的資料，例如來自 Azure 服務的 [平臺記錄](platform-logs-overview.md) 、 [虛擬機器代理](agents-overview.md)程式的記錄和效能資料，以及 [應用程式](../app/app-insights-overview.md) 的使用方式和效能資料，都可以合併到單一工作區中，因此可以使用能夠快速分析數百萬筆記錄的精密查詢語言來分析它們。 您可以執行簡單的查詢，只抓取一組特定的記錄，或執行精密的資料分析，以識別監視資料中的重要模式。 使用 Log Analytics 以互動方式使用記錄查詢及其結果、在警示規則中使用這些查詢，以主動通知 br，或在活頁簿或儀表板中將其結果視覺化。

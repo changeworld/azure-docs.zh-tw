@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/05/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371893"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411553"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 傳輸
 
@@ -93,21 +94,25 @@ Azure 預付款無法在註冊之間轉移。 Azure 預付款餘額會依約繫�
 
 帳戶或註冊轉移期間不會有任何停機時間。 如果已提供所有必要的資訊，此作業可以在提出要求的同一天完成。
 
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>將企業訂用帳戶轉移到隨用隨付訂用帳戶
+
+若要將企業訂用帳戶轉移至採隨用隨付費率的個別訂用帳戶，您必須在 Azure 企業版入口網站中建立新的支援要求。 若要建立支援要求，請選取 [說明及支援] 區域中的 [+ 新增支援要求]。
+
 ## <a name="change-account-owner"></a>變更帳戶擁有者
 
-Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另一個帳戶擁有者。 如需詳細資訊，請參閱[變更帳戶擁有者](ea-portal-get-started.md#change-account-owner)。
+Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另一個帳戶擁有者。 如需詳細資訊，請參閱[變更帳戶擁有者](ea-portal-administration.md#change-account-owner)。
 
 ## <a name="subscription-transfer-effects"></a>訂用帳戶轉移效果
 
 當 Azure 訂用帳戶轉移到相同 Azure Active Directory 租用戶中的帳戶時，具有 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會保留其存取權。
 
-若要檢視訂用帳戶上具有 Azure RBAC 存取權的使用者：
+若要檢視訂用帳戶上具有 RBAC 存取權的使用者：
 
-1. 在 Azure 入口網站中，開啟**訂用帳戶**。
+1. 在 Azure 入口網站中，開啟 **訂用帳戶** 。
 2. 選取要檢視的訂用帳戶，然後選取 [存取控制 (IAM)]。
-3. 選取 [角色指派]。 [角色指派] 頁面會列出在訂用帳戶上具有 Azure RBAC 存取權的所有使用者。
+3. 選取 [角色指派]。 [角色指派] 頁面會列出在訂用帳戶上具有 RBAC 存取權的所有使用者。
 
-如果訂用帳戶轉移到不同 Azure AD 租用戶中的帳戶，則具有 [Azure RBAC](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會「失去」其存取權。 雖然 Azure RBAC 存取不存在，但您可以透過安全性機制取得訂用帳戶的存取權，包括：
+如果訂用帳戶轉移到不同 Azure AD 租用戶中的帳戶，則具有 [RBAC](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會「失去」其存取權。 雖然 RBAC 存取不存在，但您可以透過安全性機制取得訂用帳戶的存取權，包括：
 
 - 可將使用者管理權限授與給訂用帳戶資源的管理憑證。 如需詳細資訊，請參閱[建立和上傳 Azure 的管理憑證](../../cloud-services/cloud-services-certs-create.md)。
 - 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../../storage/common/storage-account-overview.md)。

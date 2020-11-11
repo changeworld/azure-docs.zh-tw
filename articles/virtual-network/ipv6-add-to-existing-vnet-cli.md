@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 654924d25a567ed6c63405d27444eb6ff96d480d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c46bb2233fe38380dd5ba19804791c7c9f3da91
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603623"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517337"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>將 IPv6 新增至 Azure 虛擬網路中的 IPv4 應用程式-Azure CLI
 
 本文說明如何將 IPv6 位址新增至使用 Azure 虛擬網路中的 IPv4 公用 IP 位址的應用程式，以使用 Azure CLI 的 Standard Load Balancer。 就地升級包含虛擬網路和子網、具有 IPv4 + IPV6 前端設定的 Standard Load Balancer、具有 IPv4 + IPv6 設定的 Vm、網路安全性群組和公用 Ip 的。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您決定改為在本機安裝和使用 CLI，本快速入門會要求您使用 Azure CLI 2.0.28 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
 ## <a name="prerequisites"></a>必要條件
 
-本文假設您已部署 Standard Load Balancer，如 [快速入門：建立 Standard Load Balancer Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)中所述。
+- 本文假設您已部署 Standard Load Balancer，如 [快速入門：建立 Standard Load Balancer Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)中所述。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-ipv6-addresses"></a>建立 IPv6 位址
 
-使用 [az network public ip create](/cli/azure/network/public-ip) 為您的 Standard Load Balancer 建立公用 IPv6 位址。 下列範例會在*myResourceGroupSLB*資源群組中建立名為*PublicIP_v6*的 IPv6 公用 IP 位址：
+使用 [az network public ip create](/cli/azure/network/public-ip) 為您的 Standard Load Balancer 建立公用 IPv6 位址。 下列範例會在 *myResourceGroupSLB* 資源群組中建立名為 *PublicIP_v6* 的 IPv6 公用 IP 位址：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -141,8 +141,8 @@ az network nic ip-config create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路
 
 您可以在 Azure 入口網站中看到 IPv6 雙重堆疊虛擬網路，如下所示：
-1. 在入口網站的搜尋列中，輸入 *myVnet*。
-2. 當 **myVnet** 出現在搜尋結果中時，請加以選取。 這會啟動名為*myVNet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示在名為 *>mysubnet*的雙重堆疊子網中，具有 IPv4 和 IPv6 設定的三個 nic。
+1. 在入口網站的搜尋列中，輸入 *myVnet* 。
+2. 當 **myVnet** 出現在搜尋結果中時，請加以選取。 這會啟動名為 *myVNet* 的雙重堆疊虛擬網路的 [ **總覽** ] 頁面。 雙重堆疊虛擬網路會顯示在名為 *>mysubnet* 的雙重堆疊子網中，具有 IPv4 和 IPv6 設定的三個 nic。
 
   ![Azure 中的 IPv6 雙重堆疊虛擬網路](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 

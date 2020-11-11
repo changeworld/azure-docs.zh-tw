@@ -8,27 +8,26 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5073cd33d9dada666324e92f3418b2548d9af374
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98782f02c871f676ec3506d0bad45cd8cce079a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502557"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516504"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 MariaDB 的 Azure 資料庫中備份和還原伺服器
 
 為了能使用還原功能，適用於 MariaDB 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>Prerequisites
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-若要完成本操作說明指南，您需要：
+## <a name="prerequisites"></a>必要條件
 
-- [適用於 MariaDB 的 Azure 資料庫伺服器與資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- 您需要 [適用於 MariaDB 的 Azure 資料庫伺服器和資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> 本操作說明指南會要求您使用 Azure CLI 2.0 版或更新版本。 若要確認版本，請在 Azure CLI 命令提示字元中輸入 `az --version`。 若要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本操作指南需要版本2.0 或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="set-backup-configuration"></a>設定備份組態
 
@@ -70,9 +69,9 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 `az mariadb server restore` 命令需要下列參數：
 
-| 設定 | 建議的值 | 描述  |
+| 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
+| resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
 | NAME | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如 `2018-03-13T05:59:00-08:00`。 您也可以使用 UTC Zulu 格式，例如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要進行還原的來源伺服器之名稱或識別碼。 |
@@ -81,7 +80,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 已還原伺服器的位置與定價層值與原始伺服器相同。 
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀] 頁面變更密碼。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 
@@ -101,7 +100,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-此命令會在美國東部建立一個名為 *mydemoserver-georestored*、將屬於 *myresourcegroup* 的新伺服器。 這是一般用途、具有 8 個 vCore 的第 5 代伺服器。 此伺服器是從 *mydemoserver* (同樣位於 *myresourcegroup* 資源群組) 的異地備援備份建立的
+此命令會在美國東部建立一個名為 *mydemoserver-georestored* 、將屬於 *myresourcegroup* 的新伺服器。 這是一般用途、具有 8 個 vCore 的第 5 代伺服器。 此伺服器是從 *mydemoserver* (同樣位於 *myresourcegroup* 資源群組) 的異地備援備份建立的
 
 如果您想要在與現有伺服器不同的來源群組中建立新伺服器，則在 `--source-server` 參數中，您將限定伺服器名稱，如以下範例所示：
 
@@ -112,7 +111,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 `az mariadb server georestore` 命令需要下列參數：
 
-| 設定 | 建議的值 | 描述  |
+| 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新伺服器將所屬的資源群組名稱。|
 |NAME | mydemoserver-georestored | 新伺服器的名稱。 |
@@ -122,7 +121,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 透過異地還原建立新伺服器時，它會繼承與來源伺服器相同的儲存體大小和定價層。 在建立期間無法變更這些值。 在建立新伺服器之後，您可以調高儲存體大小。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀] 頁面變更密碼。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 

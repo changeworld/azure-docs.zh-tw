@@ -8,40 +8,33 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01bfb31577b946de7782812cb0001938e2da0614
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7efa9a6ae6dda41a5503da389b59880c448bc76
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537094"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515467"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點
 
 虛擬網路 (VNet) 服務端點和規則會將虛擬網路的私人位址空間延伸到您適用於 MariaDB 的 Azure 資料庫伺服器。 您可以使用 Azure 命令列介面 (CLI) 命令，來建立、更新、刪除、列出及顯示 VNet 服務端點和規則，以管理您的伺服器。 如需適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點概觀 (包含限制)，請參閱[適用於 MariaDB 的 Azure 資料庫伺服器的 VNet 服務端點](concepts-data-access-security-vnet.md)。 VNet 服務端點在「適用於 MariaDB 的 Azure 資料庫」的所有支援區域皆可使用。
 
-## <a name="prerequisites"></a>必要條件
-若要逐步執行本作法指南，您需要︰
-- 安裝 [Azure CLI](/cli/azure/install-azure-cli) 或在瀏覽器中使用 Azure Cloud Shell。
-- [適用於 MariaDB 的 Azure 資料庫的伺服器和資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- 您需要 [適用於 MariaDB 的 Azure 資料庫伺服器和資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)。
+
+- 本文需要 Azure CLI 2.0 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 > [!NOTE]
 > VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
 ## <a name="configure-vnet-service-endpoints"></a>設定 VNet 服務端點
-[az network vnet](/cli/azure/network/vnet) \(英文\) 命令會用來設定虛擬網路。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+[az network vnet](/cli/azure/network/vnet?view=azure-cli-latest) \(英文\) 命令會用來設定虛擬網路。
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
-
-若您在本機上執行 CLI，則需要使用 [az login](/cli/azure/authenticate-azure-cli) 命令登入您的帳戶。 請記下命令輸出中的 **識別碼** 屬性，以取得對應的訂用帳戶名稱。
-```azurecli-interactive
-az login
-```
-
-如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的 **識別碼** 屬性，替代訂用帳戶識別碼的預留位置。
+如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的 **識別碼** 屬性，替代訂用帳戶識別碼的預留位置。
 
 - 該帳戶必須擁有必要的權限，才能建立虛擬網路和服務端點。
 

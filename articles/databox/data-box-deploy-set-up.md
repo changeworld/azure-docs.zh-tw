@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924151"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335463"
 ---
 ::: zone target="docs"
 
@@ -119,7 +119,7 @@ ms.locfileid: "87924151"
 2. 連接到裝置的 MGMT 連接埠，並經由 https\://192.168.100.10 存取其本機 Web UI。 在開啟裝置後，此作業最多可能需耗時 5 分鐘。
 3. 按一下 [詳細資料]，然後按一下 [繼續瀏覽網頁]。
 
-   ![連線至本機 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![連線至本機 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. 您會看到本機 Web UI 的 [登入] 頁面。 請確定入口網站 UI 和本機 Web UI 上的裝置序號是相符的。 裝置此時處於鎖定狀態。
 5. 登入 [Azure 入口網站](https://portal.azure.com)。
