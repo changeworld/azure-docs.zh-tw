@@ -7,6 +7,8 @@
       href: overview.md
     - name: 技術和功能概觀
       href: technical-overview.md
+    - name: Docs 有哪些新功能？
+      href: whats-new-docs.md
 - name: 快速入門
   expanded: true
   items:
@@ -519,7 +521,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解決方案與訓練
       href: solution-articles.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支援
       href: support-options.md

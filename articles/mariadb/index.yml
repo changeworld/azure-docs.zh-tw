@@ -3,17 +3,17 @@ title: 適用於 MariaDB 的 Azure 資料庫文件
 summary: 適用於 MariaDB 的 Azure 資料庫是以開放原始碼 MariaDB 伺服器引擎為基礎的關聯式資料庫服務。  它是一個完全受控的資料庫即服務，其可透過可預測效能及動態延展性處理任務關鍵性工作負載。 您可以使用開放原始碼工具，以及您選擇的平台，透過適用於 MariaDB 的 Azure 資料庫來開發應用程式。 了解如何透過我們的快速入門、教學課程和範例使用適用於 MariaDB 的 Azure 資料庫。
 metadata:
   description: 適用於 MariaDB 的 Azure 資料庫位於 Microsoft 雲端中，其是以開放原始碼 MariaDB 伺服器引擎為基礎的關聯式資料庫服務，供開發人員使用。
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: 3e49a860cca6cb59543f450cda4bda8c6b0c0a38
-  ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+  ms.openlocfilehash: 3c2ea25c4d928071da6f6d3047b58996289aaa13
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92428324"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94539799"
 landingContent:
 - title: 關於適用於 MariaDB 的 Azure 資料庫
   linkLists:

@@ -3,17 +3,17 @@ title: 適用於 MySQL 的 Azure 資料庫文件
 summary: 適用於 MySQL 的 Azure 資料庫是以 MySQL Community Edition 為基礎的關聯式資料庫服務。您可以使用單一伺服器或彈性伺服器 (預覽) 在 Azure 中裝載 MySQL 資料庫。 它是一個完全受控的資料庫即服務，其可透過可預測效能及動態延展性處理任務關鍵性工作負載。
 metadata:
   description: 適用於 MySQL 的 Azure 資料庫位於 Microsoft 雲端，是由 My SQL 社群版提供的關聯式資料庫服務，供開發人員使用。 您可以選擇單一伺服器或彈性伺服器 (預覽)，在 Azure 中部署您的 MySQL 資料庫。
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 9ac045aac0587f7080ab7df277522674ca603040
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: 82c736b3256a099aa0dbd2edca14f402a3b935be
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92546291"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94543029"
 landingContent:
 - title: 關於適用於 MySQL 的 Azure 資料庫
   linkLists:
