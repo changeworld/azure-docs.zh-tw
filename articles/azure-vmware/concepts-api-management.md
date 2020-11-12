@@ -2,13 +2,13 @@
 title: 概念-API 管理
 description: '瞭解 API 管理如何保護在 Azure VMware 解決方案虛擬機器 (Vm 上執行的 Api) '
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: f412ee81fc77435f2586a31c1bf6f6bdf22c66e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/27/2020
+ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670361"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541958"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>用來發佈及保護在 Azure VMware 解決方案型 Vm 上執行之 Api 的 API 管理
 
@@ -59,4 +59,4 @@ API 管理具有 Azure 公用 API，並建議啟用 Azure DDOS 保護服務。
 * 外部流量會透過應用程式閘道進入 Azure，而應用程式閘道會使用外部保護層來管理 API。
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="外部部署-Azure VMware 解決方案的 API 管理" lightbox="media/api-management/internal-deployment.png":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="內部部署-Azure VMware 解決方案的 API 管理" lightbox="media/api-management/internal-deployment.png":::

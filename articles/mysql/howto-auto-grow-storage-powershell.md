@@ -1,18 +1,18 @@
 ---
 title: 自動成長儲存體-Azure PowerShell-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何在適用於 MySQL 的 Azure 資料庫中使用 PowerShell 來啟用自動成長儲存體。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5fa9f9b07eb20c995bc0cf47dd3bf72f236c3112
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e8c9f6f66e484fbd9ebe5c15934936d6e5c59073
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546818"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542026"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 在適用於 MySQL 的 Azure 資料庫伺服器中自動成長儲存體
 
@@ -51,7 +51,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -StorageAutogrow Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本](howto-read-replicas-powershell.md)。

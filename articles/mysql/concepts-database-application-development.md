@@ -1,17 +1,17 @@
 ---
 title: 應用程式開發-適用於 MySQL 的 Azure 資料庫
 description: 介紹開發人員在撰寫應用程式程式碼以連接到適用於 MySQL 的 Azure 資料庫時所應遵循的設計考量
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 02ce6b00b6555f849d162b9f3b381c0ab358d712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20c6841bb596c7f4a32ef689423515a8da59a945
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79532836"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541550"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的應用程式開發概觀 
 本文討論開發人員在撰寫應用程式程式碼以連接到適用於 MySQL 的 Azure 資料庫時所應遵循的設計考量。 
@@ -36,7 +36,7 @@ ms.locfileid: "79532836"
 ## <a name="authentication"></a>驗證
 適用於 MySQL 的 Azure 資料庫支援使用者與登入的伺服器驗證。
 
-## <a name="resiliency"></a>災害復原
+## <a name="resiliency"></a>復原
 當連接到 MySQL 資料庫發生暫時性錯誤時，您的程式碼應該重試呼叫。 我們建議重試邏輯使用輪詢邏輯，如此它就不會同時重試多個用戶端而讓 SQL Database 超過負荷。
 
 - 程式碼範例︰如需示範重試邏輯的程式碼範例，請參閱以下文章中您所選擇語言的範例︰[用來連接到適用於 MySQL 的 Azure 資料庫的連線庫](concepts-connection-libraries.md)

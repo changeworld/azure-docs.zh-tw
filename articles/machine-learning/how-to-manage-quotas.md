@@ -1,7 +1,7 @@
 ---
 title: 管理資源和配額
 titleSuffix: Azure Machine Learning
-description: 瞭解 Azure Machine Learning 資源的配額，以及如何要求增加配額。
+description: 瞭解 Azure Machine Learning 資源的配額和限制，以及如何要求增加配額。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309074"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542111"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -98,7 +98,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 | 管線中的步驟 | 30,000 |
 | 每個資源群組的工作區 | 800 |
 
-### <a name="container-instances"></a>Container Instances
+### <a name="container-instances"></a>容器執行個體
 
 如需詳細資訊，請參閱 [容器實例限制](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits)。
 

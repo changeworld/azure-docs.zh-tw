@@ -2,17 +2,17 @@
 title: 暫時性連線錯誤-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何處理暫時性連線錯誤，並有效率地連接到適用於 MySQL 的 Azure 資料庫。
 keywords: mysql 連線，連接字串，連線問題，暫時性錯誤，連接錯誤，有效率地連接
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cb5adb3787176e3bdbfb7897aa7d7deb9cc2dae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89673c14c38947dc5aeb91cacde1eb2755e84138
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82100136"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542604"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>處理暫時性錯誤並有效率地連接到適用於 MySQL 的 Azure 資料庫
 
@@ -110,6 +110,6 @@ public class SimpleTestOnBorrowExample {
   }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [針對適用於 MySQL 的 Azure 資料庫的連線問題進行疑難排解](howto-troubleshoot-common-connection-issues.md)

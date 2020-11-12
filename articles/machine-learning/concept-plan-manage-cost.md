@@ -1,7 +1,7 @@
 ---
 title: 規劃和管理成本
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 入口網站的成本分析來規劃和管理 Azure Machine Learning 成本。 當您建立機器學習模型時，請學習更多節省成本的秘訣，以降低成本。
+description: 使用 Azure 入口網站的成本分析來規劃和管理 Azure Machine Learning 成本。 深入瞭解節省成本的秘訣，以在建立 ML 模型時降低成本。
 author: sdgilley
 ms.author: sgilley
 ms.custom: subject-cost-optimization
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e0f61da52ce00fb2eb4b4a7d95ab74082f9472
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322990"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541703"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 

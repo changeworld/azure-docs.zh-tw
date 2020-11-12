@@ -1,17 +1,17 @@
 ---
 title: 讀取複本-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解適用於 MariaDB 的 Azure 資料庫中的讀取複本：選擇區域、建立複本、連接至複本、監視複寫，以及停止複寫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fcf368c9fbbb185ac3f47faa5705e1933d085c81
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b2dbaa932c01c96582cb038143fa7686707be67d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126442"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541159"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」中的讀取複本
 
@@ -81,7 +81,7 @@ ms.locfileid: "92126442"
 
 複本會從來源伺服器繼承系統管理員帳戶。 來源伺服器上的所有使用者帳戶都會複寫到讀取複本。 您只能使用來源伺服器上所提供的使用者帳戶，連接到讀取複本。
 
-您可以使用其主機名稱和有效的使用者帳戶來連接到複本，就像在一般適用於 MariaDB 的 Azure 資料庫伺服器上一樣。 若伺服器名稱為 **myreplica**，且統管理員使用者名稱為 **myadmin**，則您可以使用 mysql CLI 來連線到複本：
+您可以使用其主機名稱和有效的使用者帳戶來連接到複本，就像在一般適用於 MariaDB 的 Azure 資料庫伺服器上一樣。 若伺服器名稱為 **myreplica** ，且統管理員使用者名稱為 **myadmin** ，則您可以使用 mysql CLI 來連線到複本：
 
 ```bash
 mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
@@ -113,7 +113,7 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 來源與複本伺服器之間沒有自動容錯移轉。 
 
-由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
+由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲* （可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
 > 如果您容錯移轉至複本，從來源取消複本時的延遲將會指出遺失的資料量。

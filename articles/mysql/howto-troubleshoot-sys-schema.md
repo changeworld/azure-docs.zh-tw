@@ -1,17 +1,17 @@
 ---
 title: 使用 sys_schema - 適用於 MySQL 的 Azure 資料庫
 description: 學習如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中找出效能問題及維護資料庫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a20510ee2800a54f9a51a2f498ee8ae8a3e51d55
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544846"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543144"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
 
@@ -37,23 +37,23 @@ sys_schema 中有 52 個檢視，每個檢視分別具有下列其中一個前�
 
 IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_summary_by_file_io* 檢視來找出平均 IO 延遲。 使用 125 GB 的預設佈建儲存體時，我的 IO 延遲大約是 15 秒。
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="IO 延遲：125 GB":::
 
 由於適用於 MySQL 的 Azure 資料庫會針對儲存體調整 IO，因此將我已佈建的儲存體增加到 1 TB 時，我的 IO 延遲會減少為 571 毫秒。
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="IO 延遲：1TB":::
 
 ### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
 儘管經過仔細規劃，許多查詢仍可能導致完整資料表掃描。 如需關於索引類型和如何對它們加以最佳化的詳細資訊，您可以參閱這篇文章：[如何對查詢效能進行疑難排解](./howto-troubleshoot-query-performance.md)。 完整資料表掃描會耗用大量資源，並降低資料庫效能。 透過完整資料表掃描來尋找資料表的最快方式是查詢 *sys.schema_tables_with_full_table_scans* 檢視。
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="完整資料表掃描":::
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
 對資料庫效能問題進行疑難排解時，識別您的資料庫內發生的事件可能會有幫助，而使用 *sys.user_summary_by_statement_type* 檢視可能可以協助做到這一點。
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="依陳述式分類的摘要":::
 
 在此範例中，適用於 MySQL 的 Azure 資料庫花費了 53 分鐘將 slog 查詢記錄排清 44579 次。 這不僅耗時，也需要許多 IO。 您可以藉由停用慢速查詢記錄，或降低慢速查詢記錄的頻率，在 Azure 入口網站中減少這項活動。
 
@@ -66,7 +66,7 @@ IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_su
 
 InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要快取機制。 InnoDB 緩衝集區的大小會繫結至效能層，除非選擇不同的產品 SKU，否則無法變更。 如同作業系統中的記憶體，系統會移出舊的頁面以騰出空間給最新的資料。 若要了解哪些資料表耗用了大部分的 InnoDB 緩衝集區記憶體，您可以查詢 *sys.innodb_buffer_stats_by_table* 檢視。
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="InnoDB 緩衝區狀態":::
 
 從上圖可以明顯看出，除了系統資料表和檢視以外，mysqldatabase033 資料庫 (其裝載其中一個「我的 WordPress」網站) 中的每個資料表都在記憶體中佔用了 16 KB (或 1 頁) 的資料。
 
@@ -74,9 +74,9 @@ InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要�
 
 索引是提升讀取效能的理想工具，但它們會造成插入和儲存方面的額外成本。 *Sys.schema_unused_indexes* 和 *sys.schema_redundant_indexes* 可為您提供未使用或重複索引的見解。
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="未使用的索引":::
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="sys_schema 的檢視":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="重複的索引":::
 
 ## <a name="conclusion"></a>結論
 

@@ -1,7 +1,7 @@
 ---
 title: 定型及部署 TensorFlow 模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 大規模執行 TensorFlow 訓練腳本。
+description: 瞭解 Azure Machine Learning 如何讓您使用彈性雲端計算資源來擴充 TensorFlow 訓練作業。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c1c6af5f8304fd9093aa0351078b84d3f4d0b5d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360746"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542281"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 TensorFlow 模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "93360746"
 
 無論您是從頭開始開發 TensorFlow 模型，或是將 [現有的模型](how-to-deploy-existing-model.md) 帶入雲端，您都可以使用 Azure Machine Learning 來向外延展開放原始碼訓練作業，以建立、部署、設定版本和監視生產等級的模型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
 

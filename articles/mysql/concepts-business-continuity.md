@@ -1,17 +1,17 @@
 ---
 title: 商務持續性-適用於 MySQL 的 Azure 資料庫
 description: 瞭解使用適用於 MySQL 的 Azure 資料庫 service 時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: b21062256896ebfc9c11b031413538b39620d1e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15fde6e7558c685537d36f45bcc7e3ff341544ff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613967"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542488"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫中的商務持續性
 
@@ -26,10 +26,10 @@ ms.locfileid: "89613967"
 | **功能** | **基本** | **一般用途** | **記憶體最佳化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
-| 從異地複寫備份進行異地還原 | 不支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
+| 從異地複寫備份進行異地還原 | 不受支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
 
 > [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。
+> 已刪除的伺服器 **無法** 還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 

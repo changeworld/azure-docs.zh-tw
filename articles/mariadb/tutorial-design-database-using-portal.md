@@ -1,18 +1,18 @@
 ---
 title: 教學課程：設計適用於 MariaDB 的 Azure 資料庫 - Azure 入口網站
 description: 本教學課程說明如何使用「Azure 入口網站」來建立和管理「適用於 MariaDB 的 Azure 資料庫」伺服器和資料庫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 3e6cac09ff304e02e24b482dc834d8199329c1c0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424884"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542434"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MariaDB 的 Azure 資料庫」資料庫
 

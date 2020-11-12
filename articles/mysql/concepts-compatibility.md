@@ -1,17 +1,17 @@
 ---
 title: 驅動程式和工具相容性-適用於 MySQL 的 Azure 資料庫
 description: 本文說明 MySQL 驅動程式和管理工具與適用於 MySQL 的 Azure 資料庫之相容性。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006528"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542638"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL 驅動程式和管理工具與適用於 MySQL 的 Azure 資料庫的相容性
 本文說明驅動程式和管理工具與適用於 MySQL 的 Azure 資料庫之相容性。
@@ -19,7 +19,7 @@ ms.locfileid: "89006528"
 ## <a name="mysql-drivers"></a>MySQL 驅動程式
 適用於 MySQL 的 Azure 資料庫使用世界上最熱門的 MySQL 資料庫社群版本。 因此，此版本與多種程式設計語言和驅動程式相容。 目標是支援三個最新版本的 MySQL 驅動程式，並繼續與開放原始碼社群作者一起努力，持續改善 MySQL 驅動程式的功能和可用性。 下表提供的驅動程式清單經過測試，證明與適用於 MySQL 5.6 和 5.7 的 Azure 資料庫相容：
 
-| **程式設計語言** | **驅動程式** | **連結** | **相容版本** | **不相容的版本** | **備註** |
+| **程式設計語言** | **驅動程式** | **連結** | **相容版本** | **不相容的版本** | **注意事項** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
 | PHP | mysqli、pdo_mysql、mysqlnd | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | 若要連接 PHP 7.0 與 SSL MySQLi，請在連接字串中加入 MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO 組：```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` 選項為 false。|
 | .NET | 適用于 .NET 的非同步 MySQL 連接器 | https://github.com/mysql-net/MySqlConnector <br> [來自 Nuget 的安裝套件](https://www.nuget.org/packages/MySqlConnector/) \(英文\) | 0.27 及更新版本 | 0.26.5 及更舊版本 | |

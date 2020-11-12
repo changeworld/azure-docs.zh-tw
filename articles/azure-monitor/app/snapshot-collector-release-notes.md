@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: faacb78ca7f055bb8e9a469afb894bc30ee87501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507457"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542723"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>ApplicationInsights. Microsoft.applicationinsights.snapshotcollector 的版本資訊
 
@@ -70,7 +70,7 @@ Snapshot Collector 從 APPLICATIONINSIGHTS_CONNECTION_STRING 環境變數或從 
 - _實驗性功能_ ：快照點收集計畫：新增 "snapshotOnFirstOccurence"。 詳細資訊可從[這裡](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)取得。
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
-- 修正導致 SnapshotUploader.exe 停止回應，且不會上傳 .NET Core 應用程式快照集的 bug。
+- 已修正導致 SnapshotUploader.exe 停止回應，且不會上傳 .NET Core 應用程式快照集的 bug。
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
 - _實驗性功能_ ：快照點收集計畫。 詳細資訊可從[這裡](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)取得。

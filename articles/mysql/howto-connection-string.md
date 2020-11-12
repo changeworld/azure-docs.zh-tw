@@ -1,18 +1,18 @@
 ---
 title: 連接字串-適用於 MySQL 的 Azure 資料庫
 description: 本文件列出目前支援讓應用程式與「適用於 MySQL 的 Azure 資料庫」連線的所有連接字串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 和 Ruby。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 635cf55cab74ecdc32c5687eed8282a052ccf7c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40af2660f0052a876ef9310bc2426295ba67558b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331738"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541482"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何將應用程式連線至適用於 MySQL 的 Azure 資料庫
 本主題列出適用於 MySQL 的 Azure 資料庫所支援的連接字串類型，以及範本和範例。 您可以在連接字串中使用不同的參數和設定。
@@ -63,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>從 Azure 入口網站取得連接字串詳細資料
-在 [Azure 入口網站](https://portal.azure.com)中，移至適用於 MySQL 的 Azure 資料庫伺服器，然後按一下 [連接字串]**** 以取得您執行個體的字串清單︰:::image type="content" source="./media/howto-connection-strings/connection-strings-on-portal.png" alt-text="Azure 入口網站中的 [連接字串] 窗格":::
+在 [Azure 入口網站](https://portal.azure.com)中，移至適用於 MySQL 的 Azure 資料庫伺服器，然後按一下 [連接字串] 以取得您執行個體的字串清單︰:::image type="content" source="./media/howto-connection-strings/connection-strings-on-portal.png" alt-text="Azure 入口網站中的 [連接字串] 窗格":::
 
 此字串會提供詳細資料，例如驅動程式、伺服器和其他資料庫連線參數。 修改這些範例，以使用您自己的參數 (例如資料庫名稱、密碼等)。 接著，您可以使用這個字串從您的程式碼和應用程式連接到伺服器。
 

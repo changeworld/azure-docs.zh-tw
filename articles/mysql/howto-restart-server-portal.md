@@ -1,17 +1,17 @@
 ---
 title: 重新開機伺服器-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站來重新開機適用於 MySQL 的 Azure 資料庫伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: d885cc64eeebd4873ad5993b39b48845d1365c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d19c0bd4ef5c49b8be82ffa11115ff6a1c6b302
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902755"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541788"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 入口網站重新啟動適用於 MySQL 的 Azure 資料庫伺服器
 本主題說明如何重新啟動適用於 MySQL 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
@@ -30,21 +30,21 @@ ms.locfileid: "90902755"
 
 1. 在 Azure 入口網站中，選取適用於 MySQL 的 Azure 資料庫伺服器。
 
-2. 在伺服器 [概觀]**** 頁面的工具列中，按一下 [重新啟動]****。
+2. 在伺服器 [概觀] 頁面的工具列中，按一下 [重新啟動]。
 
    :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
 
-3. 按一下 [是]**** 以確認要重新啟動伺服器。
+3. 按一下 [是] 以確認要重新啟動伺服器。
 
-   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 -重新啟動確認":::
 
 4. 您會發現伺服器的狀態變更為「正在重新啟動」。
 
-   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="適用於 MySQL 的 Azure 資料庫 -重新啟動狀態":::
 
 5. 確認伺服器重新啟動已成功。
 
-   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="適用於 MySQL 的 Azure 資料庫 -重新啟動成功":::
 
 ## <a name="next-steps"></a>後續步驟
 

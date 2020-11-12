@@ -1,17 +1,17 @@
 ---
 title: 備份和還原-適用於 MySQL 的 Azure 資料庫
 description: 了解自動備份和還原適用於 MySQL 的 Azure 資料庫資料庫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 283befd08c7802a9df6d2fca78465d50cfb2ba7b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4438ceaa7bb4e9c29a05de0481acdad571e3bb64
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376811"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542332"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 

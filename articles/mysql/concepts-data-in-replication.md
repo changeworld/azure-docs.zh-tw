@@ -1,17 +1,17 @@
 ---
 title: 資料 in replication-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何使用資料輸入複寫，從外部伺服器同步處理到適用於 MySQL 的 Azure 資料庫服務。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544047"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541584"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>將資料複寫至適用於 MySQL 的 Azure 資料庫
 
@@ -50,7 +50,7 @@ ms.locfileid: "92544047"
 - 資料輸入複寫只適用於一般用途和記憶體最佳化定價層。
 - 不支援全域交易識別碼 (GTID)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 瞭解如何[設定資料](howto-data-in-replication.md)複寫
 - 了解如何[在 Azure 中使用讀取複本進行複寫](concepts-read-replicas.md)
 - 瞭解如何 [使用 DMS 以短時間來遷移資料](howto-migrate-online.md)

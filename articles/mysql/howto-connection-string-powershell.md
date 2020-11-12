@@ -1,18 +1,18 @@
 ---
 title: 使用 PowerShell 產生連接字串 - 適用於 MySQL 的 Azure 資料庫
 description: 本文提供 Azure PowerShell 範例，以產生連線至適用於 MySQL 的 Azure 資料庫的連接字串。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: fcba366a0322c3c1b5c6dcdf0fc3571646053fad
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f960d32dcf1f359327dccc01eeb06825cc3a062
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337178"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541465"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>如何使用 PowerShell 產生適用於 MySQL 的 Azure 資料庫連接字串
 

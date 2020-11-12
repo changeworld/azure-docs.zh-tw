@@ -1,26 +1,26 @@
 ---
 title: 管理防火牆規則-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 本文描述如何使用 Azure CLI 命令列，建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ffbacd9167f6c73fb2815f76f56bfe2ae08eca9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425957"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540894"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則
 您可以使用伺服器層級防火牆規則，從特定 IP 位址或 IP 位址範圍管理適用於 MariaDB 的 Azure 資料庫伺服器的存取權。 透過方便的 Azure CLI 命令，您可以建立、更新、刪除、列出及顯示防火牆規則，以管理您的伺服器。 如需適用於 MariaDB 的 Azure 資料庫防火牆的總覽，請參閱 [適用於 MariaDB 的 Azure 資料庫伺服器防火牆規則](./concepts-firewall-rules.md)。
 
 虛擬網路 (VNet) 規則也可以用來保護對伺服器的存取。 深入瞭解如何 [使用 Azure CLI 來建立和管理虛擬網路服務端點和規則](howto-manage-vnet-cli.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 * [適用於 MariaDB 的 Azure 資料庫的伺服器和資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)。
 
@@ -28,11 +28,11 @@ ms.locfileid: "92425957"
 **az mariadb server firewall-rule** 命令是從 Azure CLI 中用來建立、刪除、列出、顯示及更新防火牆規則。
 
 命令：
-- **create**︰建立 Azure MariaDB 伺服器防火牆規則。
-- **delete**︰刪除 Azure MariaDB 伺服器防火牆規則。
-- **list**：列出 Azure MariaDB 伺服器防火牆規則。
-- **show**︰顯示 Azure MariaDB 伺服器防火牆規則的詳細資料。
-- **update**︰更新 Azure MariaDB 伺服器防火牆規則。
+- **create** ︰建立 Azure MariaDB 伺服器防火牆規則。
+- **delete** ︰刪除 Azure MariaDB 伺服器防火牆規則。
+- **list** ：列出 Azure MariaDB 伺服器防火牆規則。
+- **show** ︰顯示 Azure MariaDB 伺服器防火牆規則的詳細資料。
+- **update** ︰更新 Azure MariaDB 伺服器防火牆規則。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>登入 Azure 並列出您的適用於 MariaDB 的 Azure 資料庫伺服器
 使用 **az login** 命令，安全地連接 Azure CLI 與 Azure 帳戶。

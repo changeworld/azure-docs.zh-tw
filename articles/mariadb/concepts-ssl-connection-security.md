@@ -1,17 +1,17 @@
 ---
 title: SSL/TLS 連線能力-適用於 MariaDB 的 Azure 資料庫
 description: 用來設定適用於 MariaDB 的 Azure 資料庫與相關聯應用程式以適當使用 SSL 連線的資訊
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 4eb4ad48554b8ca2ce6af9f89652fad685998a2a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d2d916f3cba27f6b38a781b81e403ee9b6f0fab3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126049"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541040"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 SSL/TLS 連線能力
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將資料庫伺服器連接至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
@@ -31,7 +31,7 @@ ms.locfileid: "92126049"
 
 同樣地，下列連結會指向主權雲端中伺服器的憑證： [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、 [Azure 中國](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和 [Azure 德國](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
 
-Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些連接字串包含連接到您資料庫所需的 SSL 參數。 在 Azure 入口網站中選取您的伺服器。 在下 [設定]**** 標題之下，選取 [連接字串]****。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
+Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些連接字串包含連接到您資料庫所需的 SSL 參數。 在 Azure 入口網站中選取您的伺服器。 在下 [設定] 標題之下，選取 [連接字串]。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
 
 若要了解如何在開發應用程式時啟用或停用 SSL 連接，請參閱[如何設定 SSL](howto-configure-ssl.md)。
 
@@ -71,7 +71,7 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 *   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 *   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入了解[伺服器防火牆規則](concepts-firewall-rules.md)
 - 瞭解如何 [設定 SSL](howto-configure-ssl.md)
 - 瞭解如何 [設定 TLS](howto-tls-configurations.md)

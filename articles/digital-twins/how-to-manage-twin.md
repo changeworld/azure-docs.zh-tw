@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360066"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540962"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -23,9 +23,13 @@ ms.locfileid: "93360066"
 > [!TIP]
 > 所有 SDK 函式都有同步和非同步版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-twins"></a>管理 twins 的方式
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-a-digital-twin"></a>建立數位對應項
 
@@ -187,6 +191,17 @@ foreach (string prop in twin.Contents.Keys)
 ```
 
 您可以參閱 [*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)，以深入瞭解序列化協助程式類別。
+
+## <a name="view-all-digital-twins"></a>查看所有數位 twins
+
+若要在您的實例中查看所有數位 twins，請使用 [查詢](how-to-query-graph.md)。 您可以使用 [查詢 api](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)來執行查詢。
+
+以下是基本查詢的主體，會傳回實例中所有數位 twins 的清單：
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="update-a-digital-twin"></a>更新數位分身
 
@@ -360,7 +375,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 如需如何一次刪除所有 twins 的範例，請下載 _Tutorial 中使用的範例應用程式 [：探索範例用戶端應用程式的基本概念 *](tutorial-command-line-app.md)。 *CommandLoop.cs* 檔案會在函式中執行此 `CommandDeleteAllTwins()` 工作。
 
-## <a name="manage-twins-using-runnable-code-sample"></a>使用可執行檔程式碼範例來管理 twins
+## <a name="runnable-digital-twin-code-sample"></a>可執行檔數位對應項程式碼範例
 
 您可以使用下列可執行檔程式碼範例來建立對應項、更新其詳細資料，以及刪除對應項。 
 
@@ -535,22 +550,6 @@ namespace minimal
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="顯示對應項已建立、更新及刪除的主控台輸出" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="manage-twins-with-cli"></a>使用 CLI 管理 twins
-
-您也可以使用 Azure 數位 Twins CLI 來管理 Twins。 您可以在 [_How：使用 Azure 數位 TWINS CLI *](how-to-use-cli.md)中找到這些命令。
-
-## <a name="view-all-digital-twins"></a>查看所有數位 twins
-
-若要在您的實例中查看所有數位 twins，請使用 [查詢](how-to-query-graph.md)。 您可以使用 [查詢 api](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)來執行查詢。
-
-以下是基本查詢的主體，會傳回實例中所有數位 twins 的清單：
-
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
-
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何建立和管理數位 twins 之間的關聯性：
-* [*How to：使用關聯性管理對應項圖表*](how-to-manage-graph.md)
+瞭解如何建立和管理數位 twins 之間的關聯性： _ [*如何：管理具有關聯性的* 對應項圖表](how-to-manage-graph.md)

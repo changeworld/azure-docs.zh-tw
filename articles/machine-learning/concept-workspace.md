@@ -1,7 +1,7 @@
 ---
 title: 什麼是工作區
 titleSuffix: Azure Machine Learning
-description: 工作區是 Azure Machine Learning 的最上層資源。 它會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型
+description: 工作區是 Azure Machine Learning 的最上層資源。 它會保留所有定型執行的歷程記錄、記錄、計量、輸出，以及腳本的快照。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324792"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541346"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 

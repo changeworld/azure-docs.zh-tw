@@ -1,17 +1,17 @@
 ---
 title: 建立資料庫和使用者-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何建立新的使用者帳戶，以與適用於 MySQL 的 Azure 資料庫伺服器互動。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 3e1f24b3ae6133241660751293f52fec63dfbe73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766868"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541414"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立資料庫和使用者
 
@@ -22,7 +22,7 @@ ms.locfileid: "91766868"
 > [!NOTE]
 > **無偏差通訊**
 >
-> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 *從屬*的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文會使用這個字來保持一致性，因為這是目前出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
+> Microsoft 支援多元和包容性的環境。 本文包含 *slave* 單字的參考。 Microsoft [無偏差通訊的樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這個單字辨識為排他性的單字。 本文會使用這個字來保持一致性，因為這是目前出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新以保持一致。
 >
 
 當您第一次建立適用於 MySQL 的 Azure 資料庫伺服器時，會提供伺服器系統管理員使用者名稱和密碼。 如需詳細資訊，請參閱本 [快速入門](quickstart-create-mysql-server-database-using-azure-portal.md)。 您可以在 Azure 入口網站中判斷您的伺服器管理員使用者名稱。
@@ -94,7 +94,7 @@ ms.locfileid: "91766868"
    
    如果您不確定如何連線，請參閱 [使用 MySQL 工作臺來連接和查詢資料](./connect-workbench.md)。
 
-3. 編輯並執行下列 SQL 程式碼。 `new_master_user`以新的使用者名稱取代預留位置值。 此語法會授與所有資料庫架構的所列許可權 (*。*) `new_master_user` 此範例) 的使用者 (。
+3. 編輯並執行下列 SQL 程式碼。 `new_master_user`以新的使用者名稱取代預留位置值。 此語法會授與所有資料庫架構的所列許可權 ( *。* ) `new_master_user` 此範例) 的使用者 (。
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

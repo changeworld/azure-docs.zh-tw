@@ -1,17 +1,17 @@
 ---
 title: 使用傾印和還原遷移-適用於 MariaDB 的 Azure 資料庫
 description: 此文章將說明兩個常見方法，讓您可在適用於 MariaDB 的 Azure 資料庫中用來備份和還原資料庫，使用如 mysqldump、MySQL Workbench 與 PHPMyAdmin 的工具。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c23b027b428ef58ae51a6ba1d2603e94b1eaaf8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118846"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540853"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用傾印和還原來將 MariaDB 資料庫移轉至適用於 MariaDB 的 Azure 資料庫
 此文章將說明兩個常見方法，讓您可在適用於 MariaDB 的 Azure 資料庫中用來備份和還原資料庫
@@ -83,7 +83,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ## <a name="create-a-database-on-the-target-server"></a>在目標伺服器上建立資料庫
 在您要移轉資料的目標適用於 MariaDB 的 Azure 資料庫伺服器上建立空白資料庫。 使用 MySQL Workbench 之類的工具來建立資料庫。 資料庫名稱可以與包含傾印資料的資料庫名稱相同，或者您可以建立名稱不同的資料庫。
 
-若要連線，請在適用於 MariaDB 的 Azure 資料庫的 [概觀]**** 中尋找連線資訊。
+若要連線，請在適用於 MariaDB 的 Azure 資料庫的 [概觀] 中尋找連線資訊。
 
 ![在 Azure 入口網站中尋找連線資訊](./media/howto-migrate-dump-restore/1_server-overview-name-login.png)
 
@@ -113,13 +113,13 @@ $ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p te
 ## <a name="import-using-phpmyadmin"></a>使用 PHPMyAdmin 匯入
 匯入資料庫的程序與匯出類似。 請執行下列動作：
 1. 開啟 phpMyAdmin。 
-2. 在 phpMyAdmin 設定頁面中，按一下 [新增]**** 以新增您的適用於 MariaDB 的 Azure 資料庫伺服器。 提供連線詳細資料和登入資訊。
+2. 在 phpMyAdmin 設定頁面中，按一下 [新增] 以新增您的適用於 MariaDB 的 Azure 資料庫伺服器。 提供連線詳細資料和登入資訊。
 3. 建立已適當命名的資料庫，然後在畫面左邊選取它。 若要重寫現有的資料庫，按一下資料庫名稱、選取資料表名稱旁的所有核取方塊，然後選取 [捨棄] 以刪除現有的資料表。 
 4. 按一下 **SQL** 連結，以顯示您可以在其中輸入 SQL 命令或上傳 SQL 檔案的分頁。 
-5. 您可以使用**瀏覽**按鈕來尋找資料庫檔案。 
+5. 您可以使用 **瀏覽** 按鈕來尋找資料庫檔案。 
 6. 按一下 [執行] 按鈕以匯出備份、執行 SQL 命令，並重新建立您的資料庫。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [將應用程式連線至適用於 MariaDB 的 Azure 資料庫](./howto-connection-string.md)。
  
 <!--

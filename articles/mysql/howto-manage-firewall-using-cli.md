@@ -1,19 +1,19 @@
 ---
 title: 管理防火牆規則-Azure CLI-適用於 MySQL 的 Azure 資料庫
 description: 本文描述如何使用 Azure CLI 命令列，建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7f8547419b45314ad044b41957a53085cdbe13
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eaddd8b2979b30251301ad041ea4b872c23d680b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546393"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541329"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
 您可以使用伺服器層級防火牆規則，從特定 IP 位址或 IP 位址範圍管理適用於 MySQL 的 Azure 資料庫伺服器的存取權。 透過方便的 Azure CLI 命令，您可以建立、更新、刪除、列出及顯示防火牆規則，以管理您的伺服器。 如需適用於 MySQL 的 Azure 資料庫防火牆的總覽，請參閱 [適用於 MySQL 的 Azure 資料庫伺服器防火牆規則](./concepts-firewall-rules.md)。
@@ -119,7 +119,7 @@ az mysql server firewall-rule delete --resource-group myresourcegroup --server-n
 ```
 成功時，沒有任何輸出。 發生錯誤時，就會顯示錯誤訊息文字。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [適用於 MySQL 的 Azure 資料庫 Server 防火牆規則](./concepts-firewall-rules.md)。
 - [使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則](./howto-manage-firewall-using-portal.md)。
 - [使用 Azure CLI 來建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)，以進一步保護對伺服器的存取。

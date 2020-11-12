@@ -1,17 +1,17 @@
 ---
 title: 管理讀取複本 - Azure 入口網站 - 適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定與管理讀取複本。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 26b503e7d55ed3d2f9bd06837551655e7af05a17
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546801"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541935"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中建立與管理讀取複本
 
@@ -43,11 +43,11 @@ ms.locfileid: "92546801"
 
 5. 輸入複本伺服器的名稱。
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 複本名稱":::
 
 6. 選取複本伺服器的位置。 預設位置與來源伺服器相同。
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 複本位置":::
 
    > [!NOTE]
    > 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。 
@@ -59,7 +59,7 @@ ms.locfileid: "92546801"
 
 建立複本伺服器後，可從 [複寫] 刀鋒視窗檢視該伺服器。
 
-   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 列示複本":::
 
 ## <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
 
@@ -74,15 +74,15 @@ ms.locfileid: "92546801"
 
 3. 選取您想要停止複寫的複本伺服器。
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 停止複寫選取伺服器":::
 
 4. 選取 [停止複寫]。
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 停止複寫":::
 
 5. 按一下 [確定] 確認您要停止複寫。
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 確認停止複寫":::
 
 ## <a name="delete-a-replica-server"></a>刪除複本伺服器
 
@@ -94,15 +94,15 @@ ms.locfileid: "92546801"
 
 3. 選取您想要刪除的複本伺服器。
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 刪除複寫選取伺服器":::
 
 4. 選取 [刪除複本]
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 刪除複本":::
 
 5. 輸入複本名稱，然後按一下 [刪除] 確認刪除複本。  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 確認刪除複本":::
 
 ## <a name="delete-a-source-server"></a>刪除來源伺服器
 
@@ -115,11 +115,11 @@ ms.locfileid: "92546801"
 
 2. 從 [概觀] 中選取 [刪除]。
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 刪除主要伺服器":::
 
 3. 輸入來源伺服器的名稱，然後按一下 [ **刪除** ] 以確認刪除來源伺服器。  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫-刪除主機確認":::
 
 ## <a name="monitor-replication"></a>監視複寫
 
@@ -129,15 +129,15 @@ ms.locfileid: "92546801"
 
 3. 從可用計量下拉式清單中選取 [複寫延遲 (秒)]。
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="選取複寫延遲":::
 
 4. 選取您要檢視的時間範圍。 下圖選取 30 分鐘的時間範圍。
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="選取時間範圍":::
 
 5. 檢視所選時間範圍的複寫延遲。 下圖顯示過去 30 分鐘。
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="適用於 MySQL 的 Azure 資料庫 -複寫":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="選取時間範圍30分鐘":::
 
 ## <a name="next-steps"></a>後續步驟
 

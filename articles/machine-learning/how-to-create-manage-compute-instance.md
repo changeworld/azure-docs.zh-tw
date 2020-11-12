@@ -1,7 +1,7 @@
 ---
 title: 建立及管理計算實例
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在您的 Azure Machine Learning 工作區中建立及管理計算實例。 使用計算實例作為開發環境，或用於定型和推斷開發/測試用途。
+description: 瞭解如何建立和管理 Azure Machine Learning 計算實例。 使用作為開發環境，或作為開發/測試用途的計算目標。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bdae8d77dc5e51cf4a181459ab2e159f31f06e31
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318032"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543097"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 

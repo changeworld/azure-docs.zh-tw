@@ -1,17 +1,17 @@
 ---
 title: 使用重新導向來連線 - 適用於 MySQL 的 Azure 資料庫
 description: 此文章描述如何設定應用程式，以使用重新導向連線到適用於 MySQL 的 Azure 資料庫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86107813"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541805"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>使用重新導向連線到適用於 MySQL 的 Azure 資料庫
 
@@ -38,9 +38,9 @@ Mysqlnd_azure 延伸模組可透過 PECL 新增至 PHP 應用程式，因此強�
 ### <a name="redirection-logic"></a>重新導向邏輯
 
 >[!IMPORTANT]
-> 重新導向邏輯/行為開始版本 1.1.0 已更新，**建議使用版本 1.1.0+** 。
+> 重新導向邏輯/行為開始版本 1.1.0 已更新， **建議使用版本 1.1.0+** 。
 
-重新導向行為取決於 `mysqlnd_azure.enableRedirect` 的值。 下表根據此參數的值 (從**版本 1.1.0+** 開始)，列出重新導向的行為。
+重新導向行為取決於 `mysqlnd_azure.enableRedirect` 的值。 下表根據此參數的值 (從 **版本 1.1.0+** 開始)，列出重新導向的行為。
 
 如果您使用較舊版本的 mysqlnd_azure 延伸模組 (1.0.0-1.0.3 版)，則重新導向行為取決於 `mysqlnd_azure.enabled` 的值。 有效值為 `off` (與下表中所述的行為類似) 和 `on` (作用如下表中的 `preferred`)。  
 

@@ -1,18 +1,18 @@
 ---
 title: 重新開機伺服器-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 來重新開機適用於 MariaDB 的 Azure 資料庫伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ccbd0790692f065cc313b5f95d5944ad3ff716b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 8ae69adfe83b871eb29c85fc4d03e817026ec006
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515399"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541363"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機適用於 MariaDB 的 Azure 資料庫伺服器
 本主題說明如何重新啟動適用於 MariaDB 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。

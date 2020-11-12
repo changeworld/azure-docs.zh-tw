@@ -1,17 +1,17 @@
 ---
 title: Advanced 威脅防護-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 適用於 MariaDB 的 Azure 資料庫的威脅防護會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425973"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542689"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的 Advanced 威脅防護
 
@@ -23,15 +23,15 @@ ms.locfileid: "92425973"
 > Advanced 威脅防護目前處於公開預覽狀態。 如果適用於 MariaDB 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 
 > [!NOTE]
-> 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
+> 下列 Azure Government 和主權雲端區域 **無法** 使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
 1. 啟動 Azure 入口網站 [https://portal.azure.com](https://portal.azure.com) 。
-2. 流覽至您要保護之適用於 MariaDB 的 Azure 資料庫伺服器的設定頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
-3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
+2. 流覽至您要保護之適用於 MariaDB 的 Azure 資料庫伺服器的設定頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]。
+3. 在 [進階威脅防護 (預覽)] 設定頁面上：
 
    - 在伺服器上啟用進階威脅防護。
-   - 在 [進階威脅防護設定]**** 的 [傳送警示給]**** 文字方塊中，提供要在偵測到異常資料庫活動時收到安全性警示的電子郵件清單。
+   - 在 [進階威脅防護設定] 的 [傳送警示給] 文字方塊中，提供要在偵測到異常資料庫活動時收到安全性警示的電子郵件清單。
   
    ![設定威脅偵測](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "92425973"
 
 偵測到異常資料庫活動時，您會收到電子郵件通知。 電子郵件會提供可疑安全性事件的相關資訊，包括異常活動的性質、資料庫名稱、伺服器名稱、應用程式名稱和事件時間。 此外，該電子郵件還會提供可能原因和建議動作的相關資訊，以協助您調查和減輕資料庫的潛在威脅。
  
-1. 按一下電子郵件中的 [檢視最近的警示]**** 連結來啟動 Azure 入口網站，並顯示 Azure 資訊安全中心警示頁面，其中會概述在 SQL 資料庫上偵測到的作用中威脅。
+1. 按一下電子郵件中的 [檢視最近的警示] 連結來啟動 Azure 入口網站，並顯示 Azure 資訊安全中心警示頁面，其中會概述在 SQL 資料庫上偵測到的作用中威脅。
     
     ![異常活動報告](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "92425973"
 
 SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合。 在 Azure 入口網站中，資料庫和 SQL ATP 刀鋒視窗內的 SQL 動態威脅偵測圖格會追蹤作用中威脅的狀態。
 
-按一下 [威脅偵測警示]**** 會啟動 Azure 資訊安全中心的警示頁面，並獲得在資料庫中偵測到的作用中 SQL 威脅概觀。
+按一下 [威脅偵測警示] 會啟動 Azure 資訊安全中心的警示頁面，並獲得在資料庫中偵測到的作用中 SQL 威脅概觀。
 
    ![威脅偵測警示](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    

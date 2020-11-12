@@ -1,17 +1,17 @@
 ---
 title: 設定資料-in replication-適用於 MySQL 的 Azure 資料庫
 description: 本文將說明如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544030"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541397"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
@@ -134,17 +134,17 @@ ms.locfileid: "92544030"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中建立複寫角色，請從 [管理]  面板開啟 [使用者和權限]  面板。 接著，按一下 [新增帳戶]  。 
+   若要在 MySQL Workbench 中建立複寫角色，請從 [管理] 面板開啟 [使用者和權限] 面板。 接著，按一下 [新增帳戶]。 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="使用者和權限":::
 
-   在 [登入名稱]  欄位中輸入使用者名稱。 
+   在 [登入名稱] 欄位中輸入使用者名稱。 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="使用者和權限":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="同步處理使用者":::
  
-   按一下 [管理角色]  面板，然後從 [全域權限]  清單選取 [複寫從屬]  。 然後按一下 [套用]  以建立複寫角色。
+   按一下 [管理角色] 面板，然後從 [全域權限] 清單選取 [複寫從屬]。 然後按一下 [套用] 以建立複寫角色。
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="使用者和權限":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="複寫從屬":::
 
 1. 將來源伺服器設定為唯讀模式
 
@@ -164,7 +164,7 @@ ms.locfileid: "92544030"
    ```
    結果應類似以下所示。 請務必記下二進位檔案的名稱，後續步驟會用到此名稱。
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="使用者和權限":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="主要狀態結果":::
  
 ## <a name="dump-and-restore-source-server"></a>傾印和還原來源伺服器
 
@@ -285,5 +285,5 @@ CALL mysql.az_replication_remove_master;
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入了解「適用於 MySQL 的 Azure 資料庫」的[資料帶入複寫](concepts-data-in-replication.md)。

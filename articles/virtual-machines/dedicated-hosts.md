@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979014"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542145"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 專用主機
 
@@ -33,9 +33,9 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 ![查看專用主機的新資源。](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
 
-**主機群組**是代表專用主機集合的資源。 您會在區域和可用性區域中建立主機群組，並在其中新增主機。
+**主機群組** 是代表專用主機集合的資源。 您會在區域和可用性區域中建立主機群組，並在其中新增主機。
 
-**主機**是資源，對應至 Azure 資料中心內的實體伺服器。 實體伺服器會在建立主機時配置。 主機會建立在主機群組內。 主機有一個 SKU，描述可建立的 VM 大小。 每一部主機都可以裝載多個不同大小的 Vm，只要它們是來自相同的大小序列即可。
+**主機** 是資源，對應至 Azure 資料中心內的實體伺服器。 實體伺服器會在建立主機時配置。 主機會建立在主機群組內。 主機有一個 SKU，描述可建立的 VM 大小。 每一部主機都可以裝載多個不同大小的 Vm，只要它們是來自相同的大小序列即可。
 
 
 ## <a name="high-availability-considerations"></a>高可用性考慮 
@@ -84,7 +84,6 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 - 您將無法在專用主機上套用 Azure 混合式權益。
 - 您將無法重新部署 VM。 
-- 您將無法控制專用主機的維護。
 - 您將無法使用 Lsv2、NVasv4、NVsv3、Msv2 或 M 系列 Vm 搭配專用主機 
 
 
@@ -120,7 +119,7 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 支援您虛擬機器的基礎結構有時可能會更新，以改善可靠性、效能、安全性，並推出新功能。 Azure 平臺會盡可能將平臺維護的影響降到最低，但具有 *維護敏感性* 工作負載的客戶，在 VM 需要凍結或中斷連線以進行維護時，不能容忍幾秒鐘的時間。
 
-**維護控制** 讓客戶可以選擇略過在其專用主機上排程的一般平臺更新，然後在35天的輪流時段內套用。
+**維護控制** 讓客戶可以選擇略過在其專用主機上排程的一般平臺更新，然後在35天的輪流時段內套用。 在 [維護] 視窗中，您可以依任何順序直接在主機層級套用維護。 維護期間結束後，Microsoft 會繼續進行，並將擱置中的維護套用至主機，但可能不會遵循使用者定義的容錯網域。
 
 如需詳細資訊，請參閱 [使用維護控制管理平臺更新](./maintenance-control.md)。
 

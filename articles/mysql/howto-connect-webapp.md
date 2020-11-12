@@ -1,17 +1,17 @@
 ---
 title: 連接到 Azure App Service-適用於 MySQL 的 Azure 資料庫
 description: 說明如何將現有的 Azure App Service 正確地連線到適用於 MySQL 的 Azure 資料庫
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6355afe6ce5decbed029db4536b1b1b19f5a876c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905851"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541499"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>將現有的 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫
 本主題說明如何將現有的 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫。
@@ -24,25 +24,25 @@ ms.locfileid: "90905851"
 ## <a name="solution-1---allow-azure-services"></a>解決方案 1 - 允許 Azure 服務
 適用於 MySQL 的 Azure 資料庫提供存取安全性，使用防火牆來保護您的資料。 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫時，請注意 App Service 的輸出 IP 本質上是動態的。 選擇 [允許存取 Azure 服務] 選項，可讓 App Service 連線至 MySQL 伺服器。
 
-1. 在 [MySQL 伺服器] 刀鋒視窗的 [設定] 標題下，按一下 [連線安全性]****，開啟「適用於 MySQL 的 Azure 資料庫」的 [連線安全性] 刀鋒視窗。
+1. 在 [MySQL 伺服器] 刀鋒視窗的 [設定] 標題下，按一下 [連線安全性]，開啟「適用於 MySQL 的 Azure 資料庫」的 [連線安全性] 刀鋒視窗。
 
    :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure 入口網站 - 按一下 [連線安全性]":::
 
-2. 選取 [允許存取 Azure 服務]**** 中的 [開啟]****，然後選取 [儲存]****。
-   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure 入口網站 - 按一下 [連線安全性]":::
+2. 選取 [允許存取 Azure 服務] 中的 [開啟]，然後選取 [儲存]。
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure 入口網站 - 允許 Azure 存取":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>解決方案 2 - 建立防火牆規則以明確允許輸出 IP
 您可以明確新增 Azure App Service 的所有輸出 IP。
 
-1. 在 App Service 的 [屬性] 刀鋒視窗上，檢視您的 [輸出 IP 位址]****。
+1. 在 App Service 的 [屬性] 刀鋒視窗上，檢視您的 [輸出 IP 位址]。
 
-   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure 入口網站 - 按一下 [連線安全性]":::
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure 入口網站 - 檢視輸出 IP":::
 
 2. 在 MySQL 的 [連線安全性] 刀鋒視窗上，逐一新增輸出 IP。
 
-   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure 入口網站 - 按一下 [連線安全性]":::
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure 入口網站 - 新增明確的 IP":::
 
-3. 記得**儲存**您的防火牆規則。
+3. 記得 **儲存** 您的防火牆規則。
 
 雖然 Azure App Service 會嘗試將 IP 位址保持固定一段時間，IP 位址有時還是可能會變更。 例如，此狀控可能發生應用程式回收或調整規模作業時，或在 Azure 地區資料中心內新增電腦以增加容量時。 當 IP 位址變更時，應用程式可能會在無法再連線到 MySQL 伺服器時發生停機。 選擇上述其中一種解決方案時，請考慮這個可能性。
 

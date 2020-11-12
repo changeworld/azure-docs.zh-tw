@@ -1,17 +1,17 @@
 ---
 title: 管理伺服器-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何從 Azure 入口網站管理適用於 MySQL 的 Azure 資料庫伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a9dba7c85ded7add1a9f1494d88a3f8a1f62f175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882452"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541448"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>使用 Azure 入口網站管理適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -33,9 +33,9 @@ ms.locfileid: "90882452"
 
 您可以從一般用途擴充至記憶體優化，反之亦然。 不支援在建立伺服器之後，從基本層變更為和。
 
-1. 在 Azure 入口網站中選取您的伺服器。 選取位於 [**設定**] 區段中的 [**定價層**]。
+1. 在 Azure 入口網站中選取您的伺服器。 選取位於 [ **設定** ] 區段中的 [ **定價層** ]。
 
-2. 選取 **[一般用途** ] 或 [ **記憶體優化**] （視您要調整的內容而定）。
+2. 選取 **[一般用途** ] 或 [ **記憶體優化** ] （視您要調整的內容而定）。
 
    :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
@@ -46,11 +46,11 @@ ms.locfileid: "90882452"
 
 ### <a name="scale-vcores-up-or-down"></a>向上或向下調整虛擬核心
 
-1. 在 Azure 入口網站中選取您的伺服器。 選取位於 [**設定**] 區段中的 [**定價層**]。
+1. 在 Azure 入口網站中選取您的伺服器。 選取位於 [ **設定** ] 區段中的 [ **定價層** ]。
 
-2. 將滑桿移至所需的值來變更 [vCore]**** 設定。
+2. 將滑桿移至所需的值來變更 [vCore] 設定。
 
-    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="適用於 MySQL 的 Azure 資料庫中選擇 [vCore] 選項 Azure 入口網站的螢幕擷取畫面":::
 
     > [!NOTE]
     > 調整虛擬核心會導致伺服器重新開機。
@@ -59,11 +59,11 @@ ms.locfileid: "90882452"
 
 ### <a name="scale-storage-up"></a>擴大儲存體
 
-1. 在 Azure 入口網站中選取您的伺服器。 選取位於 [**設定**] 區段中的 [**定價層**]。
+1. 在 Azure 入口網站中選取您的伺服器。 選取位於 [ **設定** ] 區段中的 [ **定價層** ]。
 
 2. 將滑杆移至您想要的值，以變更 **儲存體** 設定。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇儲存體規模 Azure 入口網站的螢幕擷取畫面":::
 
    > [!NOTE]
    > 存放裝置無法縮小。
@@ -74,13 +74,13 @@ ms.locfileid: "90882452"
 
 您可以使用 Azure 入口網站來變更系統管理員角色的密碼。
 
-1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **重設密碼**]。
+1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **重設密碼** ]。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="在適用於 MySQL 的 Azure 資料庫中重設密碼 Azure 入口網站的螢幕擷取畫面":::
 
 2. 輸入新密碼並確認密碼。 文字方塊會提示您輸入密碼複雜性需求。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Azure 入口網站的螢幕擷取畫面，以重設密碼並儲存適用於 MySQL 的 Azure 資料庫":::
 
 3. 選取 **[確定]** 以儲存新密碼。
 
@@ -88,18 +88,18 @@ ms.locfileid: "90882452"
 
 如果您不再需要，您可以刪除伺服器。
 
-1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **刪除**]。
+1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **刪除** ]。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="適用於 MySQL 的 Azure 資料庫中刪除伺服器 Azure 入口網站的螢幕擷取畫面":::
 
 2. 在 [輸入] 方塊中輸入伺服器的名稱，確認這是您要刪除的伺服器。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="在適用於 MySQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="在適用於 MySQL 的 Azure 資料庫中確認伺服器刪除 Azure 入口網站的螢幕擷取畫面":::
 
    > [!NOTE]
    > 刪除伺服器無法復原。
 
-3. 選取 [刪除]  。
+3. 選取 [刪除] 。
 
 ## <a name="next-steps"></a>後續步驟
 

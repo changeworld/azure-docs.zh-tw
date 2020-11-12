@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489126"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542128"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -107,6 +107,16 @@ ms.locfileid: "94489126"
   + **azureml-train-automl-client**
     + 修正 get_output 可能引發 XGBoostError 的問題。
 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio 筆記本體驗 (10 月更新) 
++ **新功能**
+  + [完整的虛擬網路支援](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+  + [焦點模式](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + 儲存筆記本 Ctrl-S
+  + 行號
+
++ **Bug 修正和改善**
+  + 改進速度和核心可靠性
+  + Jupyter 小工具 UI 更新
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -787,7 +797,7 @@ ms.locfileid: "94489126"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
     
-| 以 Web 為基礎的工具  |     說明  |
+| 以 Web 為基礎的工具  |     描述  |
 |---|---|
 | Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 
 
@@ -1185,7 +1195,7 @@ ms.locfileid: "94489126"
     + 新增對 pandas 的支援。 數列和 pandas。 用於偵測資料行資料類型的類別。 先前只支援 numpy. ndarray
       + 已新增相關的程式碼變更，以正確地處理類別 dtype。
     + 已改善預測函數介面： y_pred 參數設為選擇性。 -Docstrings 已改善。
-  + **azureml-contrib-dataset**
+  + **azureml-contrib-資料集**
     + 修正無法裝載標記資料集的 bug。
   + **azureml-core**
     + 修正的錯誤 `Environment.from_existing_conda_environment(name, conda_environment_name)` 。 使用者可以建立環境的實例，該實例是本機環境的精確複本
@@ -1299,7 +1309,7 @@ ms.locfileid: "94489126"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
 
-| 以 Web 為基礎的工具 | 說明 | 
+| 以 Web 為基礎的工具 | 描述 | 
 |-|-|-|
 | 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 
 | [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | 

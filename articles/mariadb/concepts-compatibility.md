@@ -1,17 +1,17 @@
 ---
 title: 驅動程式和工具相容性-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明與適用於 MariaDB 的 Azure 資料庫相容的適用于 mariadb 驅動程式和管理工具。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49fd2c8da3ba0a44f4901bc6c7a2241e9e20df4d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86107201"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541686"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>適用于 mariadb 與適用於 MariaDB 的 Azure 資料庫相容的驅動程式和管理工具
 
@@ -23,7 +23,7 @@ ms.locfileid: "86107201"
 
 其目標是要支援三個最新版本的適用于 mariadb 驅動程式，並與開放原始碼社區的作者努力，持續改善適用于 mariadb 驅動程式的功能和可用性。 下表提供經過測試且發現與適用於 MariaDB 的 Azure 資料庫10.2 相容的驅動程式清單：
 
-**驅動程式** | **連結** | **相容版本** | **不相容的版本** | **備註**
+**驅動程式** | **連結** | **相容版本** | **不相容的版本** | **注意事項**
 ---|---|---|---|---
 PHP | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | 若要連接 PHP 7.0 與 SSL MySQLi，請在連接字串中加入 MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO 組：```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` 選項為 false。
 .NET | [ GitHub 上的 MySqlConnector](https://github.com/mysql-net/MySqlConnector) \(英文\) <br> [來自 Nuget 的安裝套件](https://www.nuget.org/packages/MySqlConnector/) \(英文\) | 0.27 及更新版本 | 0.26.5 及更舊版本 |

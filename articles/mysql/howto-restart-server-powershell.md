@@ -1,18 +1,18 @@
 ---
 title: 重新開機伺服器-Azure PowerShell-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何使用 PowerShell 來重新開機適用於 MySQL 的 Azure 資料庫伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71d10078a704b2905cf055347f5ed4272ca8ef72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94b3586f13ad1f5bf5f042ef1dc824bd0a5da0d1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502778"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542196"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 重新開機適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -22,7 +22,7 @@ ms.locfileid: "87502778"
 
 完成重新開機所需的時間量取決於 MySQL 復原程式。 若要減少重新開機的時間，建議您在重新開機之前，將伺服器上發生的活動量降至最低。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 
@@ -45,7 +45,7 @@ ms.locfileid: "87502778"
 Restart-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-powershell.md)

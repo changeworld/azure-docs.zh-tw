@@ -1,17 +1,17 @@
 ---
 title: 慢速查詢記錄-適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 描述適用於 MySQL 的 Azure 資料庫彈性伺服器中可用的慢速查詢記錄。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399205"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543012"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的查詢記錄緩慢
 
@@ -23,14 +23,14 @@ ms.locfileid: "91399205"
 如需 MySQL 慢速查詢記錄的詳細資訊，請參閱 MySQL 引擎檔中的 [慢速查詢記錄一節](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) 。
 
 ## <a name="configure-slow-query-logging"></a>設定慢速查詢記錄 
-預設會停用慢速查詢記錄。 若要啟用記錄，請將 `slow_query_log` server 參數設定為 *ON*。 您可以使用 Azure 入口網站或 Azure CLI 來設定此設定。 <!-- add link to server parameter-->. 
+預設會停用慢速查詢記錄。 若要啟用記錄，請將 `slow_query_log` server 參數設定為 *ON* 。 您可以使用 Azure 入口網站或 Azure CLI 來設定此設定。 <!-- add link to server parameter-->. 
 
 您可以調整以控制慢速查詢記錄行為的其他參數包括：
 
-- **long_query_time**：如果查詢所需的時間超過 `long_query_time` (（以秒為單位），) 完成記錄。 預設值是 10 秒。
-- **log_slow_admin_statements**：判斷系統管理語句 (例如 `ALTER_TABLE``ANALYZE_TABLE`會記錄) 。
-- **log_queries_not_using_indexes**：決定是否記錄未使用索引的查詢。
-- **log_throttle_queries_not_using_indexes**：限制可寫入至慢速查詢記錄的非索引查詢數目。 當 `log_queries_not_using_indexes` 設定為*ON*時，此參數會生效
+- **long_query_time** ：如果查詢所需的時間超過 `long_query_time` (（以秒為單位），) 完成記錄。 預設值是 10 秒。
+- **log_slow_admin_statements** ：判斷系統管理語句 (例如 `ALTER_TABLE``ANALYZE_TABLE`會記錄) 。
+- **log_queries_not_using_indexes** ：決定是否記錄未使用索引的查詢。
+- **log_throttle_queries_not_using_indexes** ：限制可寫入至慢速查詢記錄的非索引查詢數目。 當 `log_queries_not_using_indexes` 設定為 *ON* 時，此參數會生效
 
 > [!IMPORTANT]
 > 如果您的資料表未編制索引，將 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 參數設定為 [ **開啟** ] 可能會影響 MySQL 效能，因為針對這些非索引資料表執行的所有查詢都會寫入慢速查詢記錄檔。

@@ -1,7 +1,7 @@
 ---
 title: Workbench 有什麼改變？
 titleSuffix: Azure Machine Learning
-description: 了解沒有 Workbench 應用程式的可能情況，以及支援時程表為何。
+description: Azure Machine Learning 是一套整合式資料科學解決方案，可建立雲端規模的 ML 應用程式模型並加以部署。 工作臺功能已淘汰。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 2a9111e40b207cadd27365cb4f1c199931c40638
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb35cce46a8448b744e8f7b3d26f2ca6a166f831
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323968"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541210"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 發生什麼事？
 

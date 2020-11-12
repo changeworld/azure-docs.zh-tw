@@ -1,17 +1,17 @@
 ---
 title: Advanced 威脅防護-適用於 MySQL 的 Azure 資料庫
 description: 瞭解「先進的威脅防護」的概念，它會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4e72cf2cbe17f3a92d3769fb85332f29be038f17
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c9e884d153e85e7b68dee38494ac5d6f4271978a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547226"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542570"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>適用於 MySQL 的 Azure 資料庫進階威脅防護
 
@@ -40,7 +40,7 @@ ms.locfileid: "92547226"
 - **從可能有害的應用程式存取** ：使用可能有害的應用程式用存取資料庫時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測使用常見攻擊工具的攻擊。
 - **暴力破解適用於 MySQL 的 Azure 資料庫認證** ：當有使用不同認證的異常大量失敗登入時，就會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [Azure 資訊安全中心](../security-center/security-center-introduction.md)
 * 如需定價的詳細資訊，請參閱[適用於 MySQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/mysql/) 

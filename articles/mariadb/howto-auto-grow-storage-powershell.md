@@ -1,18 +1,18 @@
 ---
 title: 自動成長儲存體-Azure PowerShell-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何在適用於 MariaDB 的 Azure 資料庫中使用 PowerShell 來啟用自動成長儲存體。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1da49f574ceadf98d0870fdd94b7d86f26d840d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426055"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540989"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫伺服器中自動成長儲存體
 
@@ -23,7 +23,7 @@ ms.locfileid: "92426055"
 > [!IMPORTANT]
 > 請記住，儲存體只能相應增加，不能相應減少。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 

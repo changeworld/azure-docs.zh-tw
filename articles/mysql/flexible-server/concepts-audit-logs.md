@@ -1,17 +1,17 @@
 ---
 title: Audit logs-適用於 MySQL 的 Azure 資料庫-彈性伺服器
 description: 描述適用於 MySQL 的 Azure 資料庫彈性伺服器中可用的 audit 記錄。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295984"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542213"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>使用適用於 MySQL 的 Azure 資料庫彈性伺服器中的 Audit 記錄來追蹤資料庫活動
 
@@ -25,7 +25,7 @@ ms.locfileid: "91295984"
 >[!IMPORTANT]
 > 建議您只針對您的審核目的記錄所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重的影響。
 
-預設會停用 audit 記錄檔。 若要啟用它們，請將 `audit_log_enabled` server 參數設定為 *ON*。 您可以使用 Azure 入口網站或 Azure CLI 來設定此設定。 <!-- add link to server parameter-->. 
+預設會停用 audit 記錄檔。 若要啟用它們，請將 `audit_log_enabled` server 參數設定為 *ON* 。 您可以使用 Azure 入口網站或 Azure CLI 來設定此設定。 <!-- add link to server parameter-->. 
 
 您可以調整以控制審核記錄行為的其他參數包括：
 

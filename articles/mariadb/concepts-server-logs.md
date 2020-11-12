@@ -1,17 +1,17 @@
 ---
 title: 慢速查詢記錄-適用於 MariaDB 的 Azure 資料庫
 description: 描述適用於 MariaDB 的 Azure 資料庫中的可用記錄，以及啟用不同記錄層級的可用參數。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2f9c4cc5bac27e4734c9aabe7895002a045d583d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a5acf3b6447b2e3722a27951700138f756a99251
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357006"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541108"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的查詢記錄緩慢
 在適用於 MariaDB 的 Azure 資料庫中，使用者可以使用慢速查詢記錄檔。 不支援存取交易記錄。 慢速查詢記錄檔可以用來找出效能瓶頸，以進行疑難排解。

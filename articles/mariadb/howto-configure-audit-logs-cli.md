@@ -1,18 +1,18 @@
 ---
 title: 存取 audit 記錄檔-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何從 Azure CLI 設定和存取適用於 MariaDB 的 Azure 資料庫中的 audit 記錄。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8e532902e1e6da90d4c81320b34a0b2b5dd1133f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c1d446d8ee2863077ad84c361876758336f5a3cb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518079"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540955"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中設定和存取適用于 Maria 資料庫的 Azure 資料庫審核記錄
 

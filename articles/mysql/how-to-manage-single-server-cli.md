@@ -1,17 +1,17 @@
 ---
 title: 管理伺服器-Azure CLI-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何從 Azure CLI 管理適用於 MySQL 的 Azure 資料庫伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 1f0b059a25cd9fc77a59dc0a78feb18c2c549057
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd068f0cf76a8edefca854d72d5240c0becaf8fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546852"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542060"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 MySQL 的 Azure 資料庫單一伺服器
 
@@ -82,7 +82,7 @@ az mysql server update --resource-group myresourcegroup --name mydemoserver --ad
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [重新啟動伺服器](howto-restart-server-cli.md)
 - [還原處于不良狀態的伺服器](howto-restore-server-cli.md)
 - [監視和微調伺服器](concepts-monitoring.md)

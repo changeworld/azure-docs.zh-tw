@@ -1,6 +1,6 @@
 ---
 title: 監視 Azure Machine Learning 資料參考 |Microsoft Docs
-description: 當您監視 Azure Machine Learning 時，需要重要的參考資料。 瞭解針對 Azure Machine Learning 收集的資料和資源，以及可在 Azure 監視器中使用的資源。 Azure 監視器會收集和呈現您 Azure Machine Learning 工作區的相關資料，並可讓您查看度量、設定警示，以及分析記錄的資料。
+description: 監視 Azure Machine Learning 的參考檔。 瞭解 Azure 監視器中收集和提供的資料 & 資源。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323937"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540785"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>監視 Azure machine learning 資料參考
 
@@ -77,7 +77,7 @@ ms.locfileid: "93323937"
 
 Azure Machine Learning 具有與其度量相關聯的下列維度。
 
-| 維度 | 描述 |
+| 尺寸 | 描述 |
 | ---- | ---- |
 | 叢集名稱 | 計算實例的名稱。 適用于所有配額度量。 |
 | Vm 系列名稱 | 叢集所使用的 VM 系列名稱。 適用于配額使用率百分比。 |
@@ -178,7 +178,7 @@ RunType 維度的有效值為：
 | MinimumNodeCount | 叢集的最小節點計數 |
 | MaximumNodeCount | 叢集的節點計數上限 |
 | NodeDeallocationOption | 節點應如何解除配置 |
-| 發行者 | 叢集類型的發行者 |
+| Publisher | 叢集類型的發行者 |
 | 供應項目 | 用來建立叢集的供應專案 |
 | SKU | 在叢集中建立之節點/VM 的 Sku |
 | 版本 | 建立節點/VM 時使用的映射版本 |
@@ -214,7 +214,7 @@ RunType 維度的有效值為：
 | VmSize | 節點的 Vm 大小 |
 | VmFamilyName | 節點所屬的 Vm 系列 |
 | VmPriority | 節點建立的專用/LowPriority 優先順序 |
-| 發行者 | Vm 映射的發行者。 例如，microsoft dsvm |
+| Publisher | Vm 映射的發行者。 例如，microsoft dsvm |
 | 供應項目 | 與 VM 建立相關聯的供應專案 |
 | SKU | 已建立之節點/VM 的 Sku |
 | 版本 | 建立節點/VM 時使用的映射版本 |

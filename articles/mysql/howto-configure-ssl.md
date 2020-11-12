@@ -1,18 +1,18 @@
 ---
 title: 設定 SSL-適用於 MySQL 的 Azure 資料庫
 description: 有關如何適當設定「適用於 MySQL 的 Azure 資料庫」及相關聯應用程式以適當使用 SSL 連線的指示
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e6d024b27ecad09b3339a7b0a8c406c7a3eda1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905834"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541516"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫
 
@@ -36,15 +36,15 @@ ms.locfileid: "90905834"
 
 設定使 MySQL Workbench 安全地透過 SSL 連線。
 
-1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL]**** 索引標籤。
+1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL] 索引標籤。
 
 1. 將 [ **使用 SSL** ] 欄位更新為 [需要]。
 
-1. 在 [SSL CA 檔案:]**** 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。
+1. 在 [SSL CA 檔案:] 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。
 
    :::image type="content" source="./media/howto-configure-ssl/mysql-workbench-ssl.png" alt-text="儲存 SSL 設定":::
 
-針對現有的連接，您可以用滑鼠右鍵按一下連接圖示，然後選擇 [編輯]，以系結 SSL。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
+針對現有的連接，您可以用滑鼠右鍵按一下連接圖示，然後選擇 [編輯]，以系結 SSL。 然後瀏覽至 [SSL] 索引標籤上，並繫結憑證檔案。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 透過 SSL 連線至伺服器
 
@@ -61,9 +61,9 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-使用 Azure 入口網站，瀏覽適用於 MySQL 的 Azure 資料庫伺服器，然後按一下 [連線安全性]****。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線]**** 設定，然後按一下 [儲存]****。 Microsoft 建議一律啟用 [強制使用 SSL 連線]**** 設定，以增強安全性。
+使用 Azure 入口網站，瀏覽適用於 MySQL 的 Azure 資料庫伺服器，然後按一下 [連線安全性]。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線] 設定，然後按一下 [儲存]。 Microsoft 建議一律啟用 [強制使用 SSL 連線] 設定，以增強安全性。
 
-:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="儲存 SSL 設定":::
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="在適用於 MySQL 的 Azure 資料庫中強制執行 SSL 連線 Azure 入口網站的螢幕擷取畫面":::
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
@@ -81,7 +81,7 @@ az mysql server update --resource-group myresource --name mydemoserver --ssl-enf
 mysql> status
 ```
 
-藉由檢閱輸出確認連線已加密，顯示結果應類似：**SSL: Cipher in use is AES256-SHA**
+藉由檢閱輸出確認連線已加密，顯示結果應類似： **SSL: Cipher in use is AES256-SHA**
 
 ## <a name="sample-code"></a>範例程式碼
 

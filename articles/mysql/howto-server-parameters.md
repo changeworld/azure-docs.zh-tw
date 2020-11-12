@@ -1,47 +1,47 @@
 ---
 title: 設定伺服器參數-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定 MySQL 伺服器參數。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363be8b34f230b812bc24276e1f3925faf0cdc1c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631472"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540836"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
 
 MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如何使用 Azure 入口網站來設定這些參數。 並非所有伺服器參數皆可調整。
 
 >[!Note]
-> 伺服器參數可以在伺服器層級全域更新、使用 [Azure CLI](./howto-configure-server-parameters-using-cli.md)、 [PowerShell](./howto-configure-server-parameters-using-powershell.md)或 [Azure 入口網站](./howto-server-parameters.md)。
+> 伺服器參數可以在伺服器層級全域更新，請使用 [Azure CLI](./howto-configure-server-parameters-using-cli.md)、[PowerShell](./howto-configure-server-parameters-using-powershell.md) 或 [Azure 入口網站](./howto-server-parameters.md)。
 
 ## <a name="configure-server-parameters"></a>設定伺服器參數
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後找出您的適用於 MySQL 的 Azure 資料庫伺服器。
-2. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MySQL 伺服器的 Azure 資料庫的 [伺服器參數] 頁面。
+2. 在 [設定] 區段下方，按一下 [伺服器參數] 以開啟適用於 MySQL 伺服器的 Azure 資料庫的 [伺服器參數] 頁面。
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Azure 入口網站伺服器參數頁面":::
-3. 找出您需要調整的任何設定。 檢閱 [描述]**** 資料行，以了解用途和允許的值。
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Azure 入口網站伺服器參數頁面":::
+3. 找出您需要調整的任何設定。 檢閱 [描述] 資料行，以了解用途和允許的值。
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="列舉下拉按鈕":::
 4. 按一下 [  **儲存** ] 以儲存您的變更。
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Azure 入口網站伺服器參數頁面":::
-5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Azure 入口網站伺服器參數頁面":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="儲存或捨棄變更":::
+5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值] 回復為所有參數的預設值。
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="全部重設為預設值":::
 
 ## <a name="setting-parameters-not-listed"></a>未列出設定參數
 
 如果您要更新的伺服器參數未列在 Azure 入口網站中，您可以選擇性地使用在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
 
-1. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MySQL 伺服器的 Azure 資料庫的 [伺服器參數] 頁面。
+1. 在 [設定] 區段下方，按一下 [伺服器參數] 以開啟適用於 MySQL 伺服器的 Azure 資料庫的 [伺服器參數] 頁面。
 2. 搜尋 `init_connect`
 3. 以下列格式加入伺服器參數： [值] 資料 `SET parameter_name=YOUR_DESIRED_VALUE` 行。
 
     例如，您可以藉由將設定為，來變更伺服器的字元集 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. 按一下 [確定] 儲存變更。
+4. 按一下 [儲存] 以儲存變更。
 
 >[!Note]
 > `init_connect` 可用來變更在工作階段層級不需要 SUPER 權限的參數。 若要確認您是否可以使用 `init_connect` 來設定參數，請執行 `set session parameter_name=YOUR_DESIRED_VALUE;` 命令；如果出現「拒絕存取；您需要 SUPER 權限」錯誤，表示您無法使用 'init_connect' 來設定參數。
@@ -70,9 +70,9 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>設定全域層級時區
 
-全域層級時區可從 Azure 入口網站中的 [伺服器參數]**** 頁面設定。 下方的命令可將全域時區的值設定為 "US/Pacific"。
+全域層級時區可從 Azure 入口網站中的 [伺服器參數] 頁面設定。 下方的命令可將全域時區的值設定為 "US/Pacific"。
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Azure 入口網站伺服器參數頁面":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="設定時區參數":::
 
 ### <a name="setting-the-session-level-time-zone"></a>設定工作階段層級時區
 

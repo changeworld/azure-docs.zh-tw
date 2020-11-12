@@ -1,7 +1,7 @@
 ---
 title: 設定定型回合
 titleSuffix: Azure Machine Learning
-description: 在各種定型環境上定型您的機器學習模型， (計算目標) 。 您可以輕鬆地在定型環境之間切換。 在本機開始定型作業。 如果您需要擴增，請切換至雲端式計算目標。
+description: 在各種定型環境上定型您的機器學習模型， (計算目標) 。 您可以輕鬆地在定型環境之間切換。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8280af20d63da969504cda8ffe875405d4bf0218
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324707"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541295"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定和提交定型執行
 

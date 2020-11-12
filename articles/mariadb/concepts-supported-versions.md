@@ -1,17 +1,17 @@
 ---
 title: 支援的版本-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解適用於 MariaDB 的 Azure 資料庫服務中支援的適用于 mariadb 伺服器版本。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/20/2020
-ms.openlocfilehash: 0b495bf21b1f78e5e6a9285f67e1769d2d2a0db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbf32626714200e6712c67b701ebc597c4a7ba7e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065693"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541023"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支援的適用於 MariaDB 的 Azure 資料庫伺服器版本
 
@@ -41,6 +41,6 @@ ms.locfileid: "87065693"
 
 目前不支援主要和次要版本升級。 例如，不支援從 MariaDB 10.2 升級至 MariaDB 10.3。 如果您想要從10.2 升級為10.3，請取得傾印，並將其 [還原](./howto-migrate-dump-restore.md) 至使用新引擎版本建立的伺服器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- 如需根據 **服務層級**的特定資源配額和限制的詳細資訊，請參閱 [服務層級](./concepts-pricing-tiers.md)。
+- 如需根據 **服務層級** 的特定資源配額和限制的詳細資訊，請參閱 [服務層級](./concepts-pricing-tiers.md)。

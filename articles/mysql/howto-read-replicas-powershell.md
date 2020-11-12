@@ -1,18 +1,18 @@
 ---
 title: 管理讀取複本-Azure PowerShell-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中設定和管理讀取複本。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540994"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541924"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本
 
@@ -54,9 +54,9 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlReplica` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resourceGroupName |  myresourcegroup |  建立複本伺服器的資源群組。  |
+| resourceGroupName |  myresourcegroup |  建立複本伺服器的資源群組。  |
 | 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 
 若要建立跨區域讀取複本，請使用 **Location** 參數。 下列範例會在 **美國西部** 區域建立複本。
@@ -83,9 +83,9 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resourceGroupName |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
+| resourceGroupName |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | ServerName | mydemoserver | 來源伺服器的名稱或識別碼。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器

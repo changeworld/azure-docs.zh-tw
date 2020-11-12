@@ -1,17 +1,17 @@
 ---
 title: 伺服器參數-適用於 MariaDB 的 Azure 資料庫
 description: 本主題提供在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數的指導方針。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626389"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541125"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的伺服器參數
 
@@ -31,9 +31,9 @@ ms.locfileid: "91626389"
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-在適用於 MariaDB 的 Azure 資料庫中，二進位記錄一律會啟用 (`log_bin` 也就是在) 上設定為。 如果您想要使用觸發程式，將會收到類似于 *您未啟用超級許可權和二進位記錄的錯誤 (您可能會想要使用較不安全的 `log_bin_trust_function_creators` 變數) *。
+在適用於 MariaDB 的 Azure 資料庫中，二進位記錄一律會啟用 (`log_bin` 也就是在) 上設定為。 如果您想要使用觸發程式，將會收到類似于 *您未啟用超級許可權和二進位記錄的錯誤 (您可能會想要使用較不安全的 `log_bin_trust_function_creators` 變數)* 。
 
-二進位記錄格式一律是 **row** ，而伺服器的所有連接 **一律** 會使用以資料列為基礎的二進位記錄。 使用以資料列為基礎的二進位記錄時，不會有安全性問題，而且二進位記錄無法中斷，因此您可以安全地設定 [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) 為 **TRUE**。
+二進位記錄格式一律是 **row** ，而伺服器的所有連接 **一律** 會使用以資料列為基礎的二進位記錄。 使用以資料列為基礎的二進位記錄時，不會有安全性問題，而且二進位記錄無法中斷，因此您可以安全地設定 [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) 為 **TRUE** 。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -41,7 +41,7 @@ ms.locfileid: "91626389"
 
 #### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存體的伺服器
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -59,7 +59,7 @@ ms.locfileid: "91626389"
 
 #### <a name="servers-support-up-to-16-tb-storage"></a>伺服器最多支援 16 TB 的儲存體
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -82,13 +82,13 @@ ms.locfileid: "91626389"
 
 MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表儲存在不同的資料表空間中。 [系統資料表空間](https://mariadb.com/kb/en/innodb-system-tablespaces/)是 InnoDB 資料字典的儲存區域。 [file-per-table 資料表空間](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) \(英文\) 包含單一 InnoDB 資料表的資料和索引，且會獨自儲存在檔案系統的資料檔中。 這個行為是由 `innodb_file_per_table` 伺服器參數所控制。 將 `innodb_file_per_table` 設定為 `OFF` 會導致 InnoDB 在系統資料表空間中建立資料表。 否則，InnoDB 會在 file-per-table 資料表空間中建立資料表。
 
-適用於 MariaDB 的 Azure 資料庫在單一資料檔中支援最大達到 **1 TB**。 如果資料庫大小大於 1 TB，則應該在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 資料表空間中建立資料表。 如果單一資料表大小大於 1 TB，則應該使用分割區資料表。
+適用於 MariaDB 的 Azure 資料庫在單一資料檔中支援最大達到 **1 TB** 。 如果資料庫大小大於 1 TB，則應該在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 資料表空間中建立資料表。 如果單一資料表大小大於 1 TB，則應該使用分割區資料表。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -137,7 +137,7 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -159,7 +159,7 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|* * 最大值 * *|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|* * 最大值 * *|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -179,7 +179,7 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -199,7 +199,7 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|

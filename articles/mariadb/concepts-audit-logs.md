@@ -1,17 +1,17 @@
 ---
 title: Audit 記錄檔-適用於 MariaDB 的 Azure 資料庫
 description: 描述適用於 MariaDB 的 Azure 資料庫中可用的 audit 記錄，以及可用來啟用記錄層級的參數。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66eaf62b54759222421b17ebc7e33b82e018338
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362419"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541754"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 Audit 記錄
 
@@ -33,7 +33,7 @@ ms.locfileid: "85362419"
 > [!Note]
 > `audit_log_include_users` 的優先順序高於 `audit_log_exclude_users` 。 例如，如果 `audit_log_include_users`  =  `demouser` 和 `audit_log_exclude_users`  =  `demouser` ，使用者將會包含在 audit 記錄中，因為 `audit_log_include_users` 優先順序較高。
 
-| **事件** | **描述** |
+| **事件** | **說明** |
 |---|---|
 | `CONNECTION` | -連接初始 (成功或失敗)  <br> -會話期間使用不同使用者/密碼重新驗證使用者 <br> -連接終止 |
 | `DML_SELECT`| SELECT 查詢 |
