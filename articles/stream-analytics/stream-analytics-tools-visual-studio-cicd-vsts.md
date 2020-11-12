@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e87432ad4437f41e70d988e7e2b3cd82aa3bd82
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903845"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123382"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教學課程：使用 Azure Pipelines 來部署具有 CI/CD 的 Azure 串流分析作業
 本教學課程說明如何使用 Azure Pipelines 設定 Azure 串流分析作業的持續整合和部署。 
@@ -34,8 +34,8 @@ ms.locfileid: "90903845"
 開始之前，請先確定您已完成下列步驟：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 安裝 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 和 **Azure 開發**或**資料儲存和處理**工作負載。
-* 建立 [Visual Studio 中的串流分析專案](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs)。
+* 安裝 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 和 **Azure 開發** 或 **資料儲存和處理** 工作負載。
+* 建立 [Visual Studio 中的串流分析專案](./stream-analytics-quick-create-vs.md)。
 * 建立 [Azure DevOps](https://visualstudio.microsoft.com/team-services/) 組織。
 
 ## <a name="configure-nuget-package-dependency"></a>設定 NuGet 套件相依性
@@ -54,57 +54,57 @@ ms.locfileid: "90903845"
 
 向 Azure DevOps 中的專案共用應用程式原始檔，以便產生組建。  
 
-1. 在 Visual Studio 右下角的狀態列上，依序選取 [新增至原始檔控制]****、[Git]****，建立專案的新本機 Git 存放庫。 
+1. 在 Visual Studio 右下角的狀態列上，依序選取 [新增至原始檔控制]、[Git]，建立專案的新本機 Git 存放庫。 
 
-2. 在 [Team Explorer]**** 的 [同步處理]**** 檢視中，選取 [推送至 Azure DevOps Services]**** 下的 [發佈 Git 存放庫]**** 按鈕。
+2. 在 [Team Explorer] 的 [同步處理] 檢視中，選取 [推送至 Azure DevOps Services] 下的 [發佈 Git 存放庫] 按鈕。
 
    ![[推送至 Azure DevOps Services] 的 [發行 Git 存放庫] 按鈕](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
-3. 確認電子郵件，並在 [Azure DevOps Services 網域]**** 下拉式清單中選取組織。 輸入您的儲存機制名稱，並選取 [發佈儲存機制]****。
+3. 確認電子郵件，並在 [Azure DevOps Services 網域] 下拉式清單中選取組織。 輸入您的儲存機制名稱，並選取 [發佈儲存機制]。
 
    ![推送 Git 存放庫的 [發行存放庫] 按鈕](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
-    發佈存放庫時會在組織中建立與本機存放庫名稱相同的新專案。 若要在現有專案中建立存放庫，請按一下**存放庫名稱**旁邊的 [進階]****，並選取專案。 您可以選取 [在網路上檢視]****，在瀏覽器上檢視您的程式碼。
+    發佈存放庫時會在組織中建立與本機存放庫名稱相同的新專案。 若要在現有專案中建立存放庫，請按一下 **存放庫名稱** 旁邊的 [進階]，並選取專案。 您可以選取 [在網路上檢視]，在瀏覽器上檢視您的程式碼。
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>設定 Azure DevOps 的持續傳遞
-Azure Pipelines 組建管線描述了由循序執行組建步驟所組成的工作流程。 深入了解 [Azure Pipelines 組建管線](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true)。
+Azure Pipelines 組建管線描述了由循序執行組建步驟所組成的工作流程。 深入了解 [Azure Pipelines 組建管線](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts)。
 
-Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作流程。 一起使用時，組建管線和發行管線可以執行整個工作流程；從來源檔案開始，並以叢集中的執行中應用程式結束。 深入了解 Azure Pipelines [發行管線](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true)。
+Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作流程。 一起使用時，組建管線和發行管線可以執行整個工作流程；從來源檔案開始，並以叢集中的執行中應用程式結束。 深入了解 Azure Pipelines [發行管線](/azure/devops/pipelines/release/define-multistage-release-process?preserve-view=true&view=vsts)。
 
 ### <a name="create-a-build-pipeline"></a>建立組建管線
 請開啟網頁瀏覽器，並瀏覽至您剛剛在 [Azure DevOps](https://app.vsaex.visualstudio.com/) 中建立的專案。 
 
-1. 在 [組建與版本]**** 索引標籤底下，選取 [組建]****，然後選取 [+新增]****。  選取 [Azure DevOps Services Git]**** 和 [繼續]****。
+1. 在 [組建與版本] 索引標籤底下，選取 [組建]，然後選取 [+新增]。  選取 [Azure DevOps Services Git] 和 [繼續]。
     
     ![選取 Azure DevOps 中的 DevOps Git 來源](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
-2. 在 [選取範本]**** 中，按一下 [空白流程]**** 從空白管線開始。
+2. 在 [選取範本] 中，按一下 [空白流程] 從空白管線開始。
     
     ![從 DevOps 的範本選項中選取空白流程](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template-empty-process.png)
 
-3. 在 [觸發程序]**** 下方，透過核取 [啟用持續整合]**** 觸發程序狀態來啟用持續整合。  選取 [儲存並加入佇列]**** 以手動啟動組建。 
+3. 在 [觸發程序] 下方，透過核取 [啟用持續整合] 觸發程序狀態來啟用持續整合。  選取 [儲存並加入佇列] 以手動啟動組建。 
     
     ![啟用持續整合觸發程序狀態](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
-4. 推送或簽入時也會觸發組建。 若要檢查組建進度，請切換到 [組建] 索引標籤。一旦確認組建執行成功，您必須定義將應用程式部署至叢集的發行管線。 以滑鼠右鍵按一下組建管線旁邊的省略符號，然後選取 [編輯]****。
+4. 推送或簽入時也會觸發組建。 若要檢查組建進度，請切換到 [組建] 索引標籤。一旦確認組建執行成功，您必須定義將應用程式部署至叢集的發行管線。 以滑鼠右鍵按一下組建管線旁邊的省略符號，然後選取 [編輯]。
 
-5.  在 [工作]**** 中，輸入 "Hosted" 作為**代理程式佇列**。
+5.  在 [工作] 中，輸入 "Hosted" 作為 **代理程式佇列** 。
     
     ![選取 [工作] 功能表中的代理程式佇列](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. 在 [第 1 階段]**** 中，按一下 [+]****，然後新增 **NuGet** 工作。
+6. 在 [第 1 階段] 中，按一下 [+]，然後新增 **NuGet** 工作。
     
     ![在 [代理程式佇列] 中新增一個 NuGet 工作](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
-7. 展開 [進階]****，然後將 `$(Build.SourcesDirectory)\packages` 新增至**目的地目錄**中。 保留其餘的預設 NuGet 組態值。
+7. 展開 [進階]，然後將 `$(Build.SourcesDirectory)\packages` 新增至 **目的地目錄** 中。 保留其餘的預設 NuGet 組態值。
 
    ![設定 NuGet 還原工作](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. 在 [第 1 階段]**** 中，按一下 [+]****，然後新增 **MSBuild** 工作。
+8. 在 [第 1 階段] 中，按一下 [+]，然後新增 **MSBuild** 工作。
 
    ![在 [代理程式佇列] 中新增 MSBuild 工作](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
-9. 將 **MSBuild 引數**變更如下：
+9. 將 **MSBuild 引數** 變更如下：
 
    ```
    /p:CompilerTaskAssemblyFile="Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll"  /p:ASATargetsFilePath="$(Build.SourcesDirectory)\packages\Microsoft.Azure.StreamAnalytics.CICD.1.0.0\build\StreamAnalytics.targets"
@@ -112,11 +112,11 @@ Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作�
 
    ![設定 DevOps 中的 MSBuild 工作](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
-10. 在 [第 1 階段]**** 中，按一下 [+]****，然後新增 [Azure 資源群組部署]**** 工作。 
+10. 在 [第 1 階段] 中，按一下 [+]，然後新增 [Azure 資源群組部署] 工作。 
     
     ![新增 [Azure 資源群組部署] 工作](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
-11. 展開 [Azure 詳細資料]**** 並以下列值填入組態：
+11. 展開 [Azure 詳細資料] 並以下列值填入組態：
     
     |**設定**  |**建議的值**  |
     |---------|---------|
@@ -129,12 +129,12 @@ Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作�
     
     ![設定 [Azure 資源群組部署] 的屬性](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
-12. 按一下 [儲存並排入佇列]**** 以測試組建管線。
+12. 按一下 [儲存並排入佇列] 以測試組建管線。
     
     ![儲存 DevOps 中的組建並排入佇列](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
 ### <a name="failed-build-process"></a>失敗的建置流程
-如果您未在組建管線的 **Azure 資源群組部署**工作中覆寫範本參數，則您會收到 Null 部署參數的錯誤訊息。 請返回組建管線，並覆寫 Null 參數以解決此錯誤。
+如果您未在組建管線的 **Azure 資源群組部署** 工作中覆寫範本參數，則您會收到 Null 部署參數的錯誤訊息。 請返回組建管線，並覆寫 Null 參數以解決此錯誤。
 
    ![DevOps 串流分析建置程序失敗](./media/stream-analytics-tools-visual-studio-cicd-vsts/devops-build-process-failed.png)
 
@@ -143,11 +143,11 @@ Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作�
 
 您撰寫程式碼時，Visual Studio 會自動追蹤您的變更。 藉由從右下方的狀態列選取暫止變更圖示，認可本機 Git 存放庫的變更。
 
-1. 在 Team Explorer 的**變更**檢視中，加入描述更新的訊息，並認可變更。
+1. 在 Team Explorer 的 **變更** 檢視中，加入描述更新的訊息，並認可變更。
 
     ![從 Visual Studio 認可存放庫變更](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-commit-changes-visual-studio.png)
 
-2. 選取未發行的變更狀態列圖示或 Team Explorer 中的 [同步] 檢視。 選取 [推送]**** 更新 Azure DevOps 中的程式碼。
+2. 選取未發行的變更狀態列圖示或 Team Explorer 中的 [同步] 檢視。 選取 [推送] 更新 Azure DevOps 中的程式碼。
 
     ![從 Visual Studio 推送變更](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-visual-studio.png)
 

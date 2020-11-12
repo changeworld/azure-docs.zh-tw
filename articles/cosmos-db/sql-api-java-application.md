@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485285"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097298"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -67,7 +68,7 @@ ms.locfileid: "92485285"
 
 1. 首先，我們將從建立 Java 專案開始。 啟動 Eclipse，依序按一下 [檔案]、[新增] 和 [動態 Web 專案]。 如果您在可用專案中沒有看到 [動態 Web 專案]，請執行下列動作：依序按一下 [檔案]、[新增]、[專案]，展開 [Web]，按一下 [動態 Web 專案]，然後按 [下一步]。
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="我的待辦事項清單 Java 應用程式":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java 應用程式開發":::
 
 1. 在 [專案名稱] 方塊中輸入專案名稱，然後在 [目標執行階段] 下拉式選單中，選擇性地選取值 (例如 Apache Tomcat v7.0)，然後按一下 [完成]。 選取目標執行階段可讓您透過 Eclipse 在本機執行專案。
 
@@ -75,7 +76,7 @@ ms.locfileid: "92485285"
 
 1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp** 。 將上層資料夾保持為 **WebContent** ，如下圖所示，然後按 [下一步]。
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="我的待辦事項清單 Java 應用程式":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="建立新的 JSP 檔案 - Java Web 應用程式教學課程":::
 
 1. 在 [選取 JSP 範本] 對話方塊中，基於本教學課程的目的，選取 [新增 JSP 檔案 (html)]，然後按一下 [完成]。
 
@@ -91,7 +92,7 @@ ms.locfileid: "92485285"
 
 1. 如果您在步驟 2 中已設定目標執行階段，就可以依序按一下 [專案] 和 [執行]，即可在本機執行您的 JSP 應用程式：
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="我的待辦事項清單 Java 應用程式":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – Java 應用程式教學課程":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>安裝 SQL Java SDK
 

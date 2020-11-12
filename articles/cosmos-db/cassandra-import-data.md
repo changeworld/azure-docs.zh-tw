@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82858570"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100400"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教學課程：將您的資料遷移至 Azure Cosmos DB 中的 Cassandra API 帳戶
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 身為開發人員，您可能已有在內部部署環境或雲端中執行的 Cassandra 工作負載，而且想將這些工作負載遷移到 Azure。 您可以將這類資料遷移至 Azure Cosmos DB 中的 Cassandra API 帳戶。 本教學課程會根據可用來將 Apache Cassandra 資料遷移至 Azure Cosmos DB 中 Cassandra API 帳戶的不同選項提供指示。
 

@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317713"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124776"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的 JavaScript 使用者定義函式
  
-Azure 串流分析支援以 JavaScript 撰寫的使用者定義函式。 JavaScript 提供豐富的 **String**、**RegExp**、**Math**、**Array** 和 **Date** 方法，可讓使用串流分析作業建立複雜的資料轉換變得更容易。
+Azure 串流分析支援以 JavaScript 撰寫的使用者定義函式。 JavaScript 提供豐富的 **String** 、 **RegExp** 、 **Math** 、 **Array** 和 **Date** 方法，可讓使用串流分析作業建立複雜的資料轉換變得更容易。
 
 ## <a name="overview"></a>概觀
 
 JavaScript 使用者定義的函式支援無狀態且只做為計算用途的純量函式，而且不需要外部連線能力。 函數的傳回值只能是純量 (單一) 值。 將 JavaScript 使用者定義函式新增至作業之後，您可以在查詢中的任何位置使用函式，就像是內建的純量函式。
 
 從以下的一些案例可以看出 JavaScript 使用者定義函式很實用：
-* 剖析及操作具有規則運算式函式的字串，例如：**Regexp_Replace()** 和 **Regexp_Extract()**
+* 剖析及操作具有規則運算式函式的字串，例如： **Regexp_Replace()** 和 **Regexp_Extract()**
 * 解碼和編碼資料，例如：從二進位轉換成十六進位
 * 使用 JavaScript **Math** 函式進行數學運算
 * 進行陣列作業，例如，排序、連結、尋找及填入
@@ -34,7 +34,7 @@ JavaScript 使用者定義的函式支援無狀態且只做為計算用途的純
 * 對輸入/輸出執行自訂事件格式序列化或還原序列化
 * 建立自訂彙總
 
-雖然沒有在函式定義中封鎖 **Date.GetDate()** 或 **Math.random()** 等函式，您仍應避免使用這些函式。 這些函式**不會**在每次呼叫時都傳回同樣的結果，且「串流分析」服務不會記錄函式叫用和傳回值的日誌。 若函式針對同樣事件傳回不同的值，則當您或串流分析重新啟動某項作業之後，將不保證其具有可重覆性。
+雖然沒有在函式定義中封鎖 **Date.GetDate()** 或 **Math.random()** 等函式，您仍應避免使用這些函式。 這些函式 **不會** 在每次呼叫時都傳回同樣的結果，且「串流分析」服務不會記錄函式叫用和傳回值的日誌。 若函式針對同樣事件傳回不同的值，則當您或串流分析重新啟動某項作業之後，將不保證其具有可重覆性。
 
 ## <a name="add-a-javascript-user-defined-function-to-your-job"></a>將 JavaScript 使用者定義函式新增至作業
 
@@ -55,7 +55,7 @@ JavaScript 使用者定義的函式支援無狀態且只做為計算用途的純
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>針對 JavaScript UDF 進行測試和疑難排解 
 
-您可以在任何瀏覽器中測試和偵錯 JavaScript UDF 邏輯。 串流分析入口網站目前不支援對這類使用者定義函數的邏輯進行偵錯和測試。 函數如預期般運作後，即可將函數新增至串流分析工作 (如上所述)，然後直接從查詢加以叫用。 您可以使用[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)來以 JavaScript UDF 測試查詢邏輯。
+您可以在任何瀏覽器中測試和偵錯 JavaScript UDF 邏輯。 串流分析入口網站目前不支援對這類使用者定義函數的邏輯進行偵錯和測試。 函數如預期般運作後，即可將函數新增至串流分析工作 (如上所述)，然後直接從查詢加以叫用。 您可以使用[適用於 Visual Studio 的串流分析工具](./stream-analytics-tools-for-visual-studio-install.md)來以 JavaScript UDF 測試查詢邏輯。
 
 JavaScript 執行階段錯誤會被視為嚴重問題，並顯示在活動記錄。 若要擷取記錄檔，在 Azure 入口網站中，請移至您的作業並選取 [活動記錄]  。
 
@@ -188,5 +188,5 @@ FROM
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [Machine Learning UDF](./machine-learning-udf.md)
+* [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

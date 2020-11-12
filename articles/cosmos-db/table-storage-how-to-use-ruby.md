@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171923"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101114"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何搭配 Ruby 使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -41,7 +42,7 @@ ms.locfileid: "87171923"
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 來取得套件
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **Terminal** (Mac) 或 **Bash** (Unix)。
 2. 在命令視窗中輸入 **gem install azure-storage-table** 以安裝 Gem 和相依性。
 
 ### <a name="import-the-package"></a>匯入封裝
@@ -58,7 +59,7 @@ require "azure/storage/table"
 
 ### <a name="add-an-azure-storage-connection"></a>新增 Azure 儲存體連線
 
-「Azure 儲存體」模組會讀取環境變數 **AZURE_STORAGE_ACCOUNT** 和 **AZURE_STORAGE_ACCESS_KEY**，以取得連線至「Azure 」儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須在使用 **Azure::Storage::Table::TableService** 之前，先使用下列程式碼來指定帳戶資訊：
+「Azure 儲存體」模組會讀取環境變數 **AZURE_STORAGE_ACCOUNT** 和 **AZURE_STORAGE_ACCESS_KEY** ，以取得連線至「Azure 」儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須在使用 **Azure::Storage::Table::TableService** 之前，先使用下列程式碼來指定帳戶資訊：
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
@@ -97,7 +98,7 @@ end
 
 ## <a name="add-an-entity-to-a-table"></a>將實體新增至資料表
 
-若要新增實體，請先建立定義實體屬性的雜湊物件。 請注意，對每個實體都必須指定 **PartitionKey** 及 **RowKey**。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 Azure 儲存體會使用 **PartitionKey** ，自動將資料表的實體分散在許多儲存體節點上。 具有相同 **PartitionKey** 的實體會儲存在相同節點上。 **RowKey** 是實體在其所屬資料分割內的唯一識別碼。
+若要新增實體，請先建立定義實體屬性的雜湊物件。 請注意，對每個實體都必須指定 **PartitionKey** 及 **RowKey** 。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 Azure 儲存體會使用 **PartitionKey** ，自動將資料表的實體分散在許多儲存體節點上。 具有相同 **PartitionKey** 的實體會儲存在相同節點上。 **RowKey** 是實體在其所屬資料分割內的唯一識別碼。
 
 ```ruby
 entity = { "content" => "test entity",
@@ -140,7 +141,7 @@ results = azure_table_service.execute_batch(batch)
 
 ## <a name="query-for-an-entity"></a>查詢實體
 
-若要查詢資料表中的實體，請使用 **get_entity()** 方法，藉由傳遞資料表名稱、**PartitionKey** 及 **RowKey** 來進行。
+若要查詢資料表中的實體，請使用 **get_entity()** 方法，藉由傳遞資料表名稱、 **PartitionKey** 及 **RowKey** 來進行。
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
@@ -149,7 +150,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 
 ## <a name="query-a-set-of-entities"></a>查詢實體集合
 
-若要查詢資料表中的一組實體，請建立查詢雜湊物件，然後使用 **query_entities()** 方法。 下列範例示範取得具備相同 **PartitionKey**的所有實體：
+若要查詢資料表中的一組實體，請建立查詢雜湊物件，然後使用 **query_entities()** 方法。 下列範例示範取得具備相同 **PartitionKey** 的所有實體：
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }

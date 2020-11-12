@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: 3116038939a07084f13db22819726dcbb2622a10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081309"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 將 CRUD 函式新增至應用程式
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 這個多部分的教學課程示範如何使用 Express 和 Angular 來建立以 Node.js 撰寫的新應用程式，然後將它連線至[使用適用於 MongoDB 的 Cosmos DB API 設定的 Cosmos 帳戶](mongodb-introduction.md)。 本教學課程的第 6 部分是以[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)為基礎並涵蓋下列工作：
 
@@ -36,7 +37,7 @@ ms.locfileid: "91292416"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>將 Post 函式新增至 Hero 服務
 
-1. 在 Visual Studio Code 中，按 [分割編輯器] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::，並排開啟 **routes.js** 和 **hero.service.js**。
+1. 在 Visual Studio Code 中，按 [分割編輯器] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::，並排開啟 **routes.js** 和 **hero.service.js** 。
 
     您會看到 routes.js 第 7 行正在呼叫 **hero.service.js** 中第 5 行上的 `getHeroes` 函式。  我們需要針對 post、put 和 delete 函式建立此相同配對。 
 
@@ -76,7 +77,7 @@ ms.locfileid: "91292416"
     };
     ```
 
-4. 在 **routes.js** 中，在 `get` 路由器之後為 `post` 函式新增路由器。 此路由器會一次張貼一個 Hero。 以這種方式建構路由器檔案，可清楚顯示所有可用的 API 端點並離開的實際工作**hero.service.js**檔案。
+4. 在 **routes.js** 中，在 `get` 路由器之後為 `post` 函式新增路由器。 此路由器會一次張貼一個 Hero。 以這種方式建構路由器檔案，可清楚顯示所有可用的 API 端點並離開的實際工作 **hero.service.js** 檔案。
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -88,9 +89,11 @@ ms.locfileid: "91292416"
 
 6. 現在返回您的網際網路瀏覽器，並且按 F12 (在大部分的機器上) 開啟開發人員工具 [網路] 索引標籤。 瀏覽至 `http://localhost:3000` 以監看透過網路撥打的電話。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js" 和招呼語 "Hello"，然後選取 [儲存]。 您應會在 [網路] 索引標籤中看到您已針對新 Hero 傳送 POST 要求。 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome 中的 [網路] 索引標籤會顯示網路活動":::
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js":::
+7. 選取 [新增主圖] 按鈕以新增主圖。 輸入識別碼 "999"、名稱 "Fred" 和招呼語 "Hello"，然後選取 [儲存]。 您應會在 [網路] 索引標籤中看到您已針對新 Hero 傳送 POST 要求。 
+
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome 中的 [網路] 索引標籤會顯示 Get 和 Post 函式的網路活動":::
 
     現在返回，並將 Post 和 Delete 函式新增至應用程式。
 
@@ -175,9 +178,11 @@ ms.locfileid: "91292416"
 
     您現在可以在 [網路] 索引標籤中選取識別碼來顯示承載。 您可以在承載中看到招呼語現在已設定為 "Bye"。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js" 的主圖選取 [刪除] 按鈕。
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="顯示承載的 Hero 應用程式和網路索引標籤"::: 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js"::: 
+    您也可以在 UI 中刪除其中一個 Hero，並查看完成刪除作業所需的時間。 試著針對名為 "Fred" 的主圖選取 [刪除] 按鈕。
+
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="顯示完成函式所需時間的 Hero 應用程式和網路索引標籤"::: 
 
     如果您重新整理頁面，[網路] 索引標籤會顯示取得 Hero 所需的時間。 雖然時間迅速，但大部分取決於您的資料所在的地理位置，以及在接近使用者的區域中異動複寫資料的能力。 您可以在接下來 (即將發行) 的教學課程中，進一步了解異地複寫。
 

@@ -10,14 +10,15 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 06c309de5054887a64e61d61345190c776835709
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cdb8612bb04d52df3603aa4520cad4cbacb661da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476581"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074075"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>使用 React 和 Azure Cosmos DB 建立 MongoDB 應用程式  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 此多部分的影片教學課程示範如何建立具有 前端 React 的 Hero 追蹤應用程式。 將 Node 和 Express 用於伺服器的應用程式，會連線至使用[適用於 MongoDB 的 Azure Cosmos DB API](mongodb-introduction.md) 設定的 Cosmos 資料庫，然後將 React 前端連線至應用程式的伺服器部分。 本教學課程也會示範如何在 Azure 入口網站進行 Cosmos DB 的點按式調整，以及如何將應用程式部署到網際網路，讓每個人都可以追蹤他們喜愛的英雄。 
 

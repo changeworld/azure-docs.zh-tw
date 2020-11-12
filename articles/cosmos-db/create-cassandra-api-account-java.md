@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 902980d7c145d5150214b7d4f4433e5da344e30b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570052"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099873"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教學課程：使用 Java 應用程式在 Azure Cosmos DB 中建立 Cassandra API 帳戶，用以儲存索引鍵/值資料
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 身為開發人員，您可能有使用索引鍵/值組的應用程式。 您可以使用 Azure Cosmos DB 中的 Cassandra API 帳戶來儲存索引鍵/值資料。 本教學課程說明如何使用 Java 應用程式來建立 Azure Cosmos DB Cassandra API 帳戶、新增資料庫 (也稱為 keyspace) 以及新增資料表。 Java 應用程式會使用 [Java 驅動程式](https://github.com/datastax/java-driver)來建立使用者資料庫，其中包含使用者識別碼、使用者名稱、使用者所在城市等詳細資料。  
 
@@ -56,7 +57,7 @@ ms.locfileid: "91570052"
 
    :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="使用入口網站建立帳戶":::
 
-4. 選取 [建立]。 <br/>建立帳戶需要幾分鐘的時間。 建立資源之後，您可以在入口網站的右側看到**部署成功**通知。
+4. 選取 [建立]。 <br/>建立帳戶需要幾分鐘的時間。 建立資源之後，您可以在入口網站的右側看到 **部署成功** 通知。
 
 ## <a name="get-the-connection-details-of-your-account"></a>取得您帳戶的連線詳細資料  
 
@@ -66,7 +67,7 @@ ms.locfileid: "91570052"
 
 2. 開啟 [連接字串] 窗格。  
 
-3. 複製**接觸點**、**連接埠**、**使用者名稱**以及**主要密碼**的值，以用於後續步驟。
+3. 複製 **接觸點** 、 **連接埠** 、 **使用者名稱** 以及 **主要密碼** 的值，以用於後續步驟。
 
 ## <a name="create-the-project-and-the-dependencies"></a>建立專案和相依性 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65e424c6275f9990a5d5a42a54bc4131300a45bf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88526507"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教學課程：Azure Active Directory 與 Workspot Control 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88526507"
 * 可以讓使用者藉由使用其 Azure AD 帳戶自動登入 Workspot Control (單一登入 [SSO])。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-如需有關 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱 [Azure AD 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+如需有關 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱 [Azure AD 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -62,7 +62,7 @@ ms.locfileid: "88526507"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在 [搜尋] 方塊中，輸入 **Workspot Control**，從結果面板中選取 [Workspot Control]  ，然後選取 [新增]  。
+4. 在 [搜尋] 方塊中，輸入 **Workspot Control** ，從結果面板中選取 [Workspot Control]  ，然後選取 [新增]  。
 
      ![[從資源庫新增] 視窗](common/search-new-app.png)
 
@@ -100,29 +100,29 @@ ms.locfileid: "88526507"
 
 4. 在 [基本 SAML 組態]  區段中，若您想要以 IDP 起始模式設定應用程式，請遵循下列步驟：
 
-    ![Workspot Control 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     1. 在 [識別碼]  文字方塊中，以下列模式輸入 URL：<br/>
-    ***https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/metadata***
+    **_https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/metadata_* _
 
-    1. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：<br/>
-    ***https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/assertion***
+    1. 在 [回覆 URL] _* 文字方塊中，輸入下列模式的 URL：<br/>
+    **_https://< <i></i>INSTANCENAME>-saml.workspot.com/saml/assertion_*_
 
-5. 如果您想要以 SP 起始模式設定應用程式，請選取 [設定其他 URL]  。
+5. 如果您想要以 SP 起始模式設定應用程式，請選取 [設定其他 URL]。
 
-    ![Workspot Control 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL：<br/>
-    ***https://<<i></i>INSTANCENAME>-saml.workspot.com/***
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL：<br/>
+    **_https://< <i></i>INSTANCENAME>-saml.workspot.com/_* _
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的識別碼、回覆 URL 和登入 URL 來取代這些值。 請連絡 [Workspot Control 客戶支援小組](mailto:support@workspot.com)以取得這些值。 或是您也可以參考 Azure 入口網站中 [基本 SAML 組態]  區段中的模式。
+    > 這些都不是真正的值。 使用實際的識別碼、回覆 URL 和登入 URL 來取代這些值。 請連絡 [Workspot Control 客戶支援小組](mailto:support@workspot.com)以取得這些值。 或是您也可以參考 Azure 入口網站中 [基本 SAML 組態] 區段中的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中選取 [下載]  ，以依據您的需求從可用選項下載 [憑證 (Base64)]  。 將其儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中選取 [下載]，以依據您的需求從可用選項下載 [憑證 (Base64)]。 將其儲存在您的電腦上。
 
     ![憑證 (Base64) 下載連結](common/certificatebase64.png)
 
-7. 在 [安裝 Workspot Control]  區段中，依據您的需求複製適當的 URL：
+7. 在 [安裝 Workspot Control] 區段中，依據您的需求複製適當的 URL：
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -136,21 +136,21 @@ ms.locfileid: "88526507"
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Workspot Control。
 
-2. 在頁面頂端的工具列上，依序選取 [設定]  和 [SAML]  。
+2. 在頁面頂端的工具列上，依序選取 [設定] 和 [SAML]。
 
     ![設定選項](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-3. 在 [安全性聲明標記語言組態]  視窗中，遵循下列步驟：
+3. 在 [安全性聲明標記語言組態] 視窗中，遵循下列步驟：
  
     ![安全性判斷提示標記語言組態視窗](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    1. 在 [實體識別碼]  方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  。
+    1. 在 [實體識別碼] 方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]。
 
-    1. 在 [登入服務 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
+    1. 在 [登入服務 URL] 方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]。
 
-    1. 在 [登出服務 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  。
+    1. 在 [登出服務 URL] 方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]。
 
-    1. 選取 [更新檔案]  ，將您從 Azure 入口網站下載的 base-64 編碼憑證上傳至 X.509 憑證中。
+    1. 選取 [更新檔案]，將您從 Azure 入口網站下載的 base-64 編碼憑證上傳至 X.509 憑證中。
 
     1. 選取 [儲存]  。
 
@@ -158,11 +158,11 @@ ms.locfileid: "88526507"
 
 在本節中，您會在 Azure 入口網站中建立測試使用者。
 
-1. 在 Azure 入口網站的左側窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左側窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在視窗頂端選取 [新增使用者]  。
+2. 在視窗頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -170,39 +170,39 @@ ms.locfileid: "88526507"
 
     ![使用者屬性視窗](common/user-properties.png)
 
-    1. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    1. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
-    1. 在 [使用者名稱]  欄位中，輸入 **brittasimon@* yourcompanydomain.extension***。 例如，輸入 **BrittaSimon@contoso.<i></i>com**。
+    1. 在 [使用者名稱] 欄位中，輸入 * *brittasimon@* yourcompanydomain.extension***。 例如，輸入 **BrittaSimon@contoso. <i></i>com** 。
 
-    1. 選取 [顯示密碼]  核取方塊。 然後記下 [密碼]  方塊中顯示的值。
+    1. 選取 [顯示密碼]  核取方塊。 然後記下 [密碼] 方塊中顯示的值。
 
-    1. 選取 [建立]  。
+    1. 選取 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Workspot Control 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  和 [Workspot Control]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 和 [Workspot Control]。
 
     ![[企業應用程式] 窗格](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Workspot Control]  。
+2. 在應用程式清單中，選取 [Workspot Control]。
 
     ![應用程式清單中的 [Workspot Control] 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 選取 [新增使用者]  按鈕。 然後在 [新增指派] 視窗中，選取 [使用者和群組]。
+4. 選取 [新增使用者] 按鈕。 然後在 [新增指派] 視窗中，選取 [使用者和群組]。
 
     ![[新增指派] 視窗](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  視窗的 [使用者]  清單中，選取 [Britta Simon]  。 然後按一下 [選取]  。
+5. 在 [使用者和群組] 視窗的 [使用者] 清單中，選取 [Britta Simon]。 然後按一下 [選取] 。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  視窗的清單中選取適當的使用者角色。 然後按一下底部的 [選取]  。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 視窗的清單中選取適當的使用者角色。 然後按一下底部的 [選取]。
 
-7. 在 [新增指派]  視窗中，選取 [指派]  。
+7. 在 [新增指派] 視窗中，選取 [指派]。
 
 ### <a name="create-a-workspot-control-test-user"></a>建立 Workspot Control 測試使用者
 
@@ -212,36 +212,36 @@ ms.locfileid: "88526507"
 
 1. 以安全性系統管理員身分登入 Workspot Control。
 
-2. 在頁面頂端的工具列上，依序選取 [使用者]  和 [新增使用者]  。
+2. 在頁面頂端的工具列上，依序選取 [使用者] 和 [新增使用者]。
 
     ![[使用者] 選項](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
-3. 在 [新增使用者]  視窗中，遵循下列步驟：
+3. 在 [新增使用者] 視窗中，遵循下列步驟：
 
     ![[新增使用者] 視窗](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    1. 在 [名字]  方塊中，輸入使用者的名字，例如 **Britta**。
+    1. 在 [名字] 方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    1. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    1. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
-    1. 在 [電子郵件]  方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon@contoso.<i></i>com**。
+    1. 在 [電子郵件] 方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon@contoso. <i></i>com** 。
 
-    1. 從 [角色]  下拉式清單中選取適當的使用者角色。
+    1. 從 [角色] 下拉式清單中選取適當的使用者角色。
 
-    1. 從 [群組]  下拉式清單中選取適當的使用者群組。
+    1. 從 [群組] 下拉式清單中選取適當的使用者群組。
 
     1. 選取 [新增使用者]  。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
-在本節中，我們會透過 [存取面板]  測試 Azure AD 單一登入組態。
+在本節中，我們會透過 [存取面板] 測試 Azure AD 單一登入組態。
 
-當您在存取面板中按一下 [Workspot Control]  圖格時，應該會自動登入您已設定 SSO 的 Workspot Control。 如需詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+當您在存取面板中按一下 [Workspot Control] 圖格時，應該會自動登入您已設定 SSO 的 Workspot Control。 如需詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

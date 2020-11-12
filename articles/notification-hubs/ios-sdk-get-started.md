@@ -3,17 +3,17 @@ title: 使用 Azure 通知中樞和 iOS SDK 將推播通知傳送至 iOS
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Apple Push Notification Service 將推播通知傳送至 iOS 裝置。
 author: sethmanheim
 ms.author: sethm
-ms.date: 08/10/2020
+ms.date: 10/30/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 3ec96ff0fdebc0ac862af00c699ec489567a7144
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426768"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085372"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式
 
@@ -110,7 +110,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 - 建立可直接上傳至通知中樞的 **.p12** 檔案。
 
-- 建立 **.p8** 檔案，其可用於[權杖型驗證](notification-hubs-push-notification-http2-token-authentication.md) (較新的方法)。
+- 建立 **.p8** 檔案，其可用於 [權杖型驗證](notification-hubs-push-notification-http2-token-authentication.md) (較新的方法)。
 
 第二個選項具有許多優點 (相較於使用憑證)，如 [APNS 權杖型 (HTTP/2) 驗證](notification-hubs-push-notification-http2-token-authentication.md)中所述。 不過，這兩種方法的步驟皆有提供。
 
@@ -309,4 +309,4 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 在本教學課程中，您已在 Azure 中建立並設定通知中樞，並將其設定為允許透過 Apple Push Notification Service (APNS) 將通知傳送至您的應用程式。 接下來，我們將建立 iOS 應用程式範例，並整合 Azure 通知中樞 SDK，讓其可以接收透過 Azure 入口網站傳送的推播通知。 根據您選擇的語言，前往下列教學課程：
 
-- [教學課程：使用 Swift 與 iOS 應用程式整合]()
+- [教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-300.md)

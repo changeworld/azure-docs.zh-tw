@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097816"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 使用 Angular 建置 UI
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 這個多部分的教學課程示範如何使用 Express 和 Angular 來建立以 Node.js 撰寫的新應用程式，然後將它連線至[使用適用於 MongoDB 的 Cosmos DB API 設定的 Cosmos 帳戶](mongodb-introduction.md)。
 
@@ -62,7 +63,7 @@ ms.locfileid: "91282896"
 
 4. 在相同的資料夾中，開啟 **app.module.ts** 檔案，並請注意它已將 `HeroesComponent` 新增至第 5 行上的宣告，並且也在第 10 行上匯入它。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="正在安裝 hero 元件":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="開啟 app-module.ts 檔案":::
 
 5. 請回到 **heroes.component.html** 檔案並在此程式碼中複製。 `<div>` 是整個頁面的容器。 容器內部有我們需要建立的 Hero 清單，因此當您按一下其中一個 Hero 時，您可以在 UI 中選取您、編輯或刪除它。 然後在 HTML 中，我們已取得一些樣式，因此您知道已選取哪一個 Hero。 另外還有一個編輯區域，以便您新增 Hero 或編輯現有的 Hero。 
 
@@ -353,7 +354,7 @@ ms.locfileid: "91282896"
 
 我們現在已有元件，如何讓它顯示在螢幕上？ 讓我們在 **app.component.ts** 中修改預設元件。
 
-1. 在 [總管] 窗格中，開啟 **/app/app.component.ts**，將標題變更為 Heroes，然後放置我們在 **heroes.components.ts** 中建立的元件名稱 (app-heroes) 以參照該新元件。 此檔案的內容應該如下所示： 
+1. 在 [總管] 窗格中，開啟 **/app/app.component.ts** ，將標題變更為 Heroes，然後放置我們在 **heroes.components.ts** 中建立的元件名稱 (app-heroes) 以參照該新元件。 此檔案的內容應該如下所示： 
 
     ```ts
     import { Component } from '@angular/core';
@@ -380,7 +381,7 @@ ms.locfileid: "91282896"
     ng g cl hero
     ```
 
-3. 在 [總管] 窗格中，開啟 **src\app\hero.ts**。 在 **hero.ts** 中，以下列程式碼取代檔案內容，其可新增包含識別碼、名稱和招呼語的 Hero 類別。
+3. 在 [總管] 窗格中，開啟 **src\app\hero.ts** 。 在 **hero.ts** 中，以下列程式碼取代檔案內容，其可新增包含識別碼、名稱和招呼語的 Hero 類別。
 
     ```ts
       export class Hero {
@@ -390,11 +391,13 @@ ms.locfileid: "91282896"
     }
     ```
 
-4. 回到 **heroes.components.ts**，並請注意 `selectedHero: Hero;` 行 (第 10 行) 上的 `Hero` 底下有紅線。 
+4. 回到 **heroes.components.ts** ，並請注意 `selectedHero: Hero;` 行 (第 10 行) 上的 `Hero` 底下有紅線。 
 
 5. 以滑鼠左鍵按一下 `Hero` 一詞，而 Visual Studio 會在程式碼區塊的左側顯示燈泡圖示。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="正在安裝 hero 元件" 匯入 Hero]。 (此訊息會根據您的設定而變更)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code 中的燈泡":::
+
+6. 按一下燈泡，然後按一下 [從 "app/hero" 匯入 Hero]。 或 [從 "./hero" 匯入 Hero]。 (此訊息會根據您的設定而變更)
 
     第 2 行上會出現一行新程式碼。 如果第 2 行參照 /app/hero，請加以修改，讓它從本機資料夾 (./hero) 參照 Hero 檔案。 第 2 行看起來應該如下所示：
 
@@ -412,7 +415,7 @@ ms.locfileid: "91282896"
     ng g s hero -m app.module
     ```
 
-2. 在 Visual Studio Code 中，回到 **heroes.components.ts**。 請注意 `constructor(private heroService: HeroService) {}` 行 (第 13 行) 上的 `HeroService` 底下有紅線。 按一下 `HeroService`，您將會在程式碼區塊的左側取得燈泡。 按一下燈泡，然後按一下 [從 "./hero.service 匯入 HeroService]。 或 [從 "app/hero.service" 匯入 HeroService]。
+2. 在 Visual Studio Code 中，回到 **heroes.components.ts** 。 請注意 `constructor(private heroService: HeroService) {}` 行 (第 13 行) 上的 `HeroService` 底下有紅線。 按一下 `HeroService`，您將會在程式碼區塊的左側取得燈泡。 按一下燈泡，然後按一下 [從 "./hero.service 匯入 HeroService]。 或 [從 "app/hero.service" 匯入 HeroService]。
 
     按一下燈泡會在第 2 行上插入一行新程式碼。 如果第 2 行參考 /app/hero.service 資料夾，請加以修改，讓它從本機資料夾 (./hero.service) 參考 Hero 檔案。 第 2 行看起來應該如下所示：
     
@@ -420,7 +423,7 @@ ms.locfileid: "91282896"
     import { HeroService } from "./hero.service"
     ```
 
-3. 在 Visual Studio Code 中，開啟 **hero.service.ts**，複製下列程式碼並取代檔案內容。
+3. 在 Visual Studio Code 中，開啟 **hero.service.ts** ，複製下列程式碼並取代檔案內容。
 
     ```ts
     import { Injectable } from '@angular/core';
@@ -454,7 +457,7 @@ ms.locfileid: "91282896"
 
     此程式碼使用 Angular 提供的最新版 HttpClient，這是您需要提供的模組，因此我們接下來會執行該作業。
 
-4. 在 Visual Studio Code 中，開啟 **app.module.ts**，並藉由更新 import 區段以包含 HttpClientModule 來匯入 HttpClientModule。
+4. 在 Visual Studio Code 中，開啟 **app.module.ts** ，並藉由更新 import 區段以包含 HttpClientModule 來匯入 HttpClientModule。
 
     ```ts
     imports: [
@@ -486,9 +489,9 @@ ms.locfileid: "91282896"
 
 2. 在 Visual Studio Code 中，按一下左側的 [偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::，然後按一下 [開始偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png":::。
 
-3. 現在開啟網際網路瀏覽器並瀏覽至 **localhost:3000**，以查看在本機執行的應用程式。
+3. 現在開啟網際網路瀏覽器並瀏覽至 **localhost:3000** ，以查看在本機執行的應用程式。
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="正在安裝 hero 元件":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="在本機執行的 Hero 應用程式":::
 
 ## <a name="next-steps"></a>後續步驟
 

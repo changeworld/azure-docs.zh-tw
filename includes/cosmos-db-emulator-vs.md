@@ -11,4 +11,4 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "71326908"
 ---
-下載並使用免費的 [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用了 **Azure 開發**工作負載。
+下載並使用免費的 [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用了 **Azure 開發** 工作負載。
