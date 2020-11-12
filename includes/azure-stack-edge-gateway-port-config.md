@@ -4,15 +4,15 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/16/2019
 ms.author: alkohli
-ms.openlocfilehash: baf18ae0263215e6ff83570557255d06c3117fd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 417fbdea3f46dfb3e90ab4890cec5e88c5aa4e07
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89083382"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523984"
 ---
-| 連接埠號碼| 內或外 | 連接埠範圍| 必要|   注意 |   |
-|--------|-----|-----|-----------|----------|-----------|
+| 連接埠號碼| 內或外 | 連接埠範圍| 必要 | 備註 |
+|---------|-----------|-----------|----------|-------|
 | TCP 80 (HTTP)|外|WAN |否|輸出連接埠用於網際網路存取以擷取更新。 <br>輸出 Web Proxy 可由使用者設定。 |
 | TCP 443 (HTTPS)|外|WAN|是|輸出連接埠用來存取雲端中的資料。<br>輸出 Web Proxy 可由使用者設定。|
 | UDP 123 (NTP)|外|WAN|在某些情況下<br>請參閱附註|只有當您使用網際網路型 NTP 伺服器時，才需要此連接埠。  |   

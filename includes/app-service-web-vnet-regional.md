@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371582"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523870"
 ---
 使用區域 VNet 整合可讓您的應用程式存取：
 
@@ -42,10 +42,10 @@ ms.locfileid: "94371582"
 在相同區域中使用 VNet 與 Vnet 的整合有一些限制：
 
 * 您無法跨全球對等互連連線來連線到資源。
-* 這項功能僅適用于支援 >premiumv2 App Service 方案的較新 Azure App Service 縮放單位。 請注意， *這並不表示您的應用程式必須在 >premiumv2 定價層* 上執行，只是它必須在可使用 >premiumv2 選項的 App Service 方案上執行 (這表示它是較新的縮放單位，也可以) 使用此 VNet 整合功能。
+* 您可以從 Premium V2 和 Premium V3 中的所有 App Service 縮放單位取得此功能。 它也適用于標準版，但只適用于較新的 App Service 縮放單位。 如果您是在較舊的縮放單位上，則只能使用 Premium V2 App Service 方案中的功能。 如果您想要能夠在標準 App Service 方案中使用該功能，請在 Premium V3 App Service 方案中建立您的應用程式。 這些方案僅支援最新的縮放單位。 如果您想要的話，可以縮小。  
 * 整合子網只能由一個 App Service 方案使用。
 * App Service 環境中的隔離式方案應用程式無法使用此功能。
-* 此功能需要 Azure Resource Manager VNet 中具有32位址或更大的未使用子網/27。
+* 此功能需要 Azure Resource Manager VNet 中的/28 或更大的未使用子網。
 * 應用程式和 VNet 必須位於相同的區域。
 * 您無法使用整合式應用程式刪除 VNet。 刪除 VNet 之前，請先移除整合。
 * 您只能在與應用程式相同的訂用帳戶中與 Vnet 整合。
@@ -53,7 +53,21 @@ ms.locfileid: "94371582"
 * 當有使用區域 VNet 整合的應用程式時，您無法變更應用程式或方案的訂用帳戶。
 * 您的應用程式無法在沒有設定變更的 Azure DNS 私人區域中解析位址
 
-每個方案實例都會使用一個位址。 如果您將應用程式調整為五個實例，則會使用五個位址。 因為子網大小在指派後無法變更，所以您必須使用夠大的子網來容納您的應用程式可能達到的任何規模。 使用64位址的/26 是建議的大小。 具有64位址的/26 容納具有30個實例的 Premium 方案。 當您向上或向下調整方案時，您需要一小段時間的位址兩次。
+VNet 整合取決於使用專用子網。  當您布建子網時，Azure 子網會從一開始就失去5個 Ip。 其中一個位址是從每個方案實例的整合子網使用。 如果您將應用程式調整為四個實例，則會使用四個位址。 來自子網大小的5個位址付款表示每個 CIDR 區塊的可用位址上限為：
+
+- /28 有11個位址
+- /27 有27個位址
+- /26 有59位址
+
+如果您的大小擴大或縮小，您需要一小段時間才需要兩次的位址。 大小的限制表示，如果您的子網為，每個子網大小的真實可用支援實例為：
+
+- /28，最大水準規模為5個實例
+- /27，最大水準規模為13個實例
+- /26，最大水準規模為29個實例
+
+最大水準延展上所述的限制會假設您在某個時間點需要擴大或縮小大小或 SKU。 
+
+因為子網大小在指派後無法變更，所以請使用夠大的子網來容納您的應用程式可能達到的任何規模。 為了避免任何子網容量發生問題，建議的大小為/26 （含64位址）。  
 
 如果您想要讓另一個方案中的應用程式連接到已由另一個方案中的應用程式連線到的 VNet，請選取與預先存在的 VNet 整合所使用的子網不同的子網。
 
@@ -82,21 +96,15 @@ ms.locfileid: "94371582"
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS 私人區域 
 
-當您的應用程式與您的 VNet 整合之後，它會使用您的 VNet 設定所在的相同 DNS 伺服器。 根據預設，您的應用程式不會使用 Azure DNS 私人區域。 若要使用 Azure DNS 私人區域，您需要新增下列應用程式設定：
-
-1. 具有值168.63.129.16 的 WEBSITE_DNS_SERVER
-1. 值為1的 WEBSITE_VNET_ROUTE_ALL
-
-這些設定會將來自您應用程式的所有輸出呼叫傳送至您的 VNet。 此外，它也會藉由在背景工作角色層級查詢私人 DNS 區域，讓應用程式可以使用 Azure DNS。 當執行中的應用程式正在存取私人 DNS 區域時，就會使用這項功能。
-
-> [!NOTE]
->使用私人 DNS 區域嘗試將自訂網域新增至 Web 應用程式，並不可能使用 VNET 整合。 自訂網域驗證是在控制器層級執行，而不是背景工作角色層級，這樣會防止出現 DNS 記錄。 若要從私人 DNS 區域使用自訂網域，必須使用應用程式閘道或 ILB App Service 環境來略過驗證。
-
-
+當您的應用程式與您的 VNet 整合之後，它會使用您的 VNet 設定所在的相同 DNS 伺服器。 您可以藉由設定應用程式設定 WEBSITE_DNS_SERVER 與所需 DNS 伺服器的位址，在您的應用程式上覆寫此行為。 如果您有使用 VNet 設定的自訂 DNS 伺服器，但想要讓您的應用程式使用 Azure DNS 私人區域，則應該將 WEBSITE_DNS_SERVER 設定為值168.63.129.16。 
 
 ### <a name="private-endpoints"></a>私人端點
 
-如果您想要對 [私人端點][privateendpoints]進行呼叫，則必須將與 Azure DNS 私人區域整合，或在您的應用程式所使用的 DNS 伺服器中管理私人端點。 
+如果您想要對 [私人端點][privateendpoints]進行呼叫，您必須確定您的 DNS 查閱會解析為私人端點。 為了確保來自您應用程式的 DNS 查閱會指向您的私人端點，您可以：
+
+* 與 Azure DNS 私人區域整合。 如果您的 VNet 沒有自訂 DNS 伺服器，這將會自動
+* 在您的應用程式所使用的 DNS 伺服器中管理私人端點。 若要這樣做，您必須知道私人端點位址，然後使用 A 記錄，將您嘗試抵達的端點指向該位址。
+* 設定您自己的 DNS 伺服器以轉寄至 Azure DNS 私人區域
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
