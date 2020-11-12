@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441778"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539646"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性和治理
 
@@ -123,10 +123,11 @@ Azure Machine Learning 使用各種計算資源和資料存放區。 若要深�
 
 根據角色以及受監視的內容而定，有數個監視案例 Azure Machine Learning。
 
-| 角色 | 要使用的監視 |
-| ---- | ----- |
-| Admin、DevOps、MLOps | [Azure 監視器計量](#azure-monitor)、 [活動記錄](#activity-log)、 [弱點掃描](#vulnerability-scanning) |
-| 資料科學家，MLOps | [監視執行](#monitor-runs) |
+| 角色 | 要使用的監視 | 描述 |
+| ---- | ----- | ----- |
+| Admin、DevOps、MLOps | [Azure 監視器計量](#azure-monitor)、 [活動記錄](#activity-log)、 [弱點掃描](#vulnerability-scanning) | 服務層級資訊 |
+| 資料科學家，MLOps | [監視執行](#monitor-runs) | 定型執行期間所記錄的資訊 |
+| MLOps | [收集模型資料](how-to-enable-data-collection.md)， [使用 Application Insights 監視](how-to-enable-app-insights.md) | 部署為 web 服務或 IoT Edge 模組的模型所記錄的資訊|
 
 ### <a name="monitor-runs"></a>監視執行
 

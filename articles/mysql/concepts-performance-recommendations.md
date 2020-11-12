@@ -1,17 +1,17 @@
 ---
 title: 效能建議 - 適用於 MySQL 的 Azure 資料庫
 description: 本文描述如何在適用於 MySQL 的 Azure 資料庫中使用效能建議功能
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1445ad3d6be020326c34d60c555c24c435548fd0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485227"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537640"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的效能建議
 
@@ -21,7 +21,7 @@ ms.locfileid: "84485227"
 
 ## <a name="permissions"></a>權限
 
-需要**擁有者**或**參與者**權限，才能使用 [效能建議] 功能執行分析。
+需要 **擁有者** 或 **參與者** 權限，才能使用 [效能建議] 功能執行分析。
 
 ## <a name="performance-recommendations"></a>效能建議
 
@@ -35,7 +35,7 @@ ms.locfileid: "84485227"
 
 [建議] 視窗將會顯示一份建議清單 (如果有任何發現的話)，以及產生這項建議的相關查詢識別碼。 透過查詢識別碼，您可以使用 [mysql.query_store](concepts-query-store.md#mysqlquery_store) 檢視來深入了解查詢。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="[效能建議] 登陸頁面":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="效能建議新頁面":::
 
 建議不會自動套用。 若要套用建議，請複製查詢文字並從您選擇的用戶端中執行該文字。 請記得進行測試和監視來評估建議。
 

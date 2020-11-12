@@ -1,17 +1,17 @@
 ---
 title: 使用傾印和還原移轉 - 適用於 MySQL 的 Azure 資料庫
 description: 本文將說明兩個常見方法，讓您可在適用於 MySQL 的 Azure 資料庫中用來備份和還原資料庫，使用如 mysqldump、MySQL Workbench 和 PHPMyAdmin 的工具。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128958"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537912"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用傾印和還原來將 MySQL 資料庫移轉至適用於 MySQL 的 Azure 資料庫
 
@@ -73,7 +73,7 @@ ms.locfileid: "93128958"
 
 將連線資訊新增至 MySQL Workbench。
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="在 Azure 入口網站中尋找連線資訊":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL Workbench 連接字串":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>準備目標適用於 MySQL 的 Azure 資料庫伺服器，以快速載入資料
 若要準備目標適用於 MySQL 的 Azure 資料庫伺服器，以更快速地載入資料，則必須變更下列伺服器參數和設定。

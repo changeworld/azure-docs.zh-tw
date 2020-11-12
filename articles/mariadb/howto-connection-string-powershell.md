@@ -1,18 +1,18 @@
 ---
 title: 使用 PowerShell 產生連接字串 - 適用於 MariaDB 的 Azure 資料庫
 description: 本快速入門提供 Azure PowerShell 範例，以產生連線至「適用於 MariaDB 的 Azure 資料庫」的連接字串。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: b08a1c60b1225b2786ea869f96ac40cc651c82f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dee109c701d3760c93f39e639dcfd7cae07b595
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185599"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538048"
 ---
 # <a name="how-to-generate-an-azure-database-for-mariadb-connection-string-with-powershell"></a>如何使用 PowerShell 產生適用於 MariaDB 的 Azure 資料庫連接字串
 
@@ -26,7 +26,7 @@ ms.locfileid: "88185599"
 
 ## <a name="get-the-connection-string"></a>取得連接字串
 
-`Get-AzMariaDbConnectionString` Cmdlet 是用來產生連接字串，以便將應用程式連線到適用於 MariaDB 的 Azure 資料庫。 下列範例會從 **mydemoserver**傳回 PHP 用戶端的連接字串。
+`Get-AzMariaDbConnectionString` Cmdlet 是用來產生連接字串，以便將應用程式連線到適用於 MariaDB 的 Azure 資料庫。 下列範例會從 **mydemoserver** 傳回 PHP 用戶端的連接字串。
 
 ```azurepowershell-interactive
 Get-AzMariaDbConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup

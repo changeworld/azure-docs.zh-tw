@@ -17,22 +17,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d5f6f9cfaff722245f6105b5e86390b8aeb769f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302208"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539697"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>診斷虛擬機器網路路由問題 - Azure CLI
 
 在本文章中，您將部署虛擬機器 (VM)，然後檢查送至 IP 位址和 URL 的通訊。 您可判斷通訊失敗的原因及其解決方式。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 Azure CLI，本文會要求您執行 Azure CLI 版本2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本文中的 Azure CLI 命令會格式化為在 Bash shell 中執行。
+- 本文需要 Azure CLI 2.0 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 
+
+- 本文中的 Azure CLI 命令會格式化為在 Bash shell 中執行。
 
 ## <a name="create-a-vm"></a>建立 VM
 
@@ -85,7 +87,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-幾秒鐘後，輸出會通知您 **nextHopType** 是 **網際網路**，而且 **routeTableId** 是 **系統路由**。 此結果可讓您知道通往目的地的路由是有效的。
+幾秒鐘後，輸出會通知您 **nextHopType** 是 **網際網路** ，而且 **routeTableId** 是 **系統路由** 。 此結果可讓您知道通往目的地的路由是有效的。
 
 測試從 VM 輸出至 172.31.0.100 的通訊：
 
@@ -99,7 +101,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-傳回的輸出會通知您沒有 **任何** **NextHopType**，而且 **routeTableId** 也是 **系統路由**。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
+傳回的輸出會通知您沒有 **任何** **NextHopType** ，而且 **routeTableId** 也是 **系統路由** 。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
 
 ## <a name="view-details-of-a-route"></a>檢視路由的詳細資料
 
@@ -113,7 +115,7 @@ az network nic show-effective-route-table \
 
 傳回的輸出中包含下列文字：
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -129,11 +131,11 @@ az network nic show-effective-route-table \
 },
 ```
 
-當您使用 `az network watcher show-next-hop` 命令測試[使用下一個躍點](#use-next-hop)中輸出至 13.107.21.200 的通訊時，**addressPrefix** 為 0.0.0.0/0** 的路由會用來將流量路由至該位址，這是因為輸出中沒有其他路由包含此位址。 根據預設，如果位址並未指定在另一個路由的位址前置詞中，則會路由至網際網路。
+當您使用 `az network watcher show-next-hop` 命令測試 [使用下一個躍點](#use-next-hop)中輸出至 13.107.21.200 的通訊時， **addressPrefix** 為 0.0.0.0/0** 的路由會用來將流量路由至該位址，這是因為輸出中沒有其他路由包含此位址。 根據預設，如果位址並未指定在另一個路由的位址前置詞中，則會路由至網際網路。
 
 但是當您使用 `az network watcher show-next-hop` 命令測試輸出至 172.31.0.100 的通訊時，結果收到通知指出您已沒有下一個躍點類型。 您也會在傳回的輸出中看到下列文字：
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -149,7 +151,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-如同來自 `az network watcher nic show-effective-route-table` 命令的輸出中所示，雖然有通往 172.16.0.0/12 前置詞的預設路由，且其中包含 172.31.0.100 位址，但 [nextHopType]**** 是 [無]****。 Azure 會建立通往 172.16.0.0/12 的預設路由，但不會指定下一個躍點類型，除非有理由這麼做。 例如，如果您將 172.16.0.0/12 位址範圍新增至虛擬網路的位址空間，則 Azure 會將此路由的 **nextHopType** 變更為 **Virtual network**。 執行檢查就會看到 **Virtual network** 顯示為 **nextHopType**。
+如同來自 `az network watcher nic show-effective-route-table` 命令的輸出中所示，雖然有通往 172.16.0.0/12 前置詞的預設路由，且其中包含 172.31.0.100 位址，但 [nextHopType] 是 [無]。 Azure 會建立通往 172.16.0.0/12 的預設路由，但不會指定下一個躍點類型，除非有理由這麼做。 例如，如果您將 172.16.0.0/12 位址範圍新增至虛擬網路的位址空間，則 Azure 會將此路由的 **nextHopType** 變更為 **Virtual network** 。 執行檢查就會看到 **Virtual network** 顯示為 **nextHopType** 。
 
 ## <a name="clean-up-resources"></a>清除資源
 

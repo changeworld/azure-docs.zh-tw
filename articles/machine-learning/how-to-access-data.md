@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489296"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538592"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>連接至 Azure 上的儲存體服務
 
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 針對 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 資料存放區，請使用 [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 透過[服務主體權限](../active-directory/develop/howto-create-service-principal-portal.md)註冊連線至 Azure DataLake Gen 2 儲存體的認證資料存放區。  
 
-若要使用您的服務主體，您必須 [註冊您的應用程式](../active-directory/develop/app-objects-and-service-principals.md) ，並將服務主體授與 **儲存體 Blob 資料讀取器** 存取權。 深入了解 [ADLS Gen 2 的存取控制設定](../storage/blobs/data-lake-storage-access-control.md)。 
+若要使用您的服務主體，您必須 [註冊您的應用程式](../active-directory/develop/app-objects-and-service-principals.md) ，並透過角色型存取控制來授與服務主體資料存取， (Azure RBAC) 或 (ACL) 的存取控制清單。 深入了解 [ADLS Gen 2 的存取控制設定](../storage/blobs/data-lake-storage-access-control-model.md)。 
 
 下列程式碼會建立 `adlsgen2_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用提供的服務主體認證，存取 `account_name` 儲存體帳戶中的檔案系統 `test`。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以取得虛擬網路案例的指引，以及尋找所需驗證認證的位置。 
 

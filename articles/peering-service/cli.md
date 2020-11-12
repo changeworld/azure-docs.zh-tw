@@ -10,22 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398984"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540581"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>使用 Azure CLI 註冊對等互連服務連線
 
 Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲端服務，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) 服務、Azure，或可透過公用網際網路存取的任何 Microsoft 服務的連線能力。 在本文中，您將瞭解如何使用 Azure CLI 來註冊對等互連服務連接。
 
-如果您沒有 Azure 訂用帳戶，請立即建立[帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您選擇在本機安裝和使用 CLI，本文會要求 Azure CLI 2.0.28 版版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 執行 [az version](/cli/azure/reference-index#az_version) 以尋找已安裝的版本和相依程式庫。 若要升級至最新版本，請執行 [az upgrade](/cli/azure/reference-index#az_upgrade)。
 
 ## <a name="prerequisites"></a>必要條件 
 
@@ -41,19 +37,11 @@ Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲
 
 請確定連線提供者已與 Microsoft 合作。
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. 登入您的 Azure 帳戶，然後選取您的訂用帳戶
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-若要開始您的組態，請登入您的 Azure 帳戶。 如果您使用 Cloud Shell **試用** ] 選項，您就會自動登入。 您可以使用下列範例來協助您連接。
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-```azurecli-interactive
-az login
-```
-
-檢查帳戶的訂用帳戶。
-
-```azurecli-interactive
-az account list
-```
+### <a name="1-select-your-subscription"></a>1. 選取您的訂用帳戶
 
 選取您要註冊對等互連服務連接的訂用帳戶。
 

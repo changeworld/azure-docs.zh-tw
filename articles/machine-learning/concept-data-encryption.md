@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: de83be26e3cb7105303528e10fb50b7ecc438472
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447605"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540003"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning 的資料加密
 
@@ -53,7 +53,7 @@ Azure Machine Learning 會將快照集、輸出和記錄儲存在與 Azure Machi
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中繼資料。 這個執行個體與 Azure Machine Learning 所管理的 Microsoft 訂用帳戶相關聯。 Azure Cosmos DB 中儲存的所有資料，都會使用 Microsoft 受控金鑰進行待用加密。
+Azure Machine Learning 將中繼資料儲存在 Azure Cosmos DB 實例中。 這個執行個體與 Azure Machine Learning 所管理的 Microsoft 訂用帳戶相關聯。 Azure Cosmos DB 中儲存的所有資料，都會使用 Microsoft 受控金鑰進行待用加密。
 
 若要使用您自己 (客戶管理) 金鑰來加密 Azure Cosmos DB 執行個體，您可以建立專用的 Cosmos DB 執行個體以搭配您的工作區使用。 如果您想要將資料 (例如執行歷程記錄資訊) 儲存在 Microsoft 訂用帳戶所裝載的多租用戶 Cosmos DB 執行個體之外，我們建議採用這種方法。 
 

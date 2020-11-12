@@ -1,7 +1,7 @@
 ---
 title: 架構和重要概念
 titleSuffix: Azure Machine Learning
-description: 瞭解組成 Azure Machine Learning 的架構、詞彙和概念。
+description: 本文可讓您深入瞭解構成 Azure Machine Learning 的架構、詞彙和概念。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444796"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540171"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -267,6 +267,18 @@ Azure IoT Edge 會確保模組正在執行，並監視裝載模組的裝置。
 您可以使用 [機器學習管線](concept-ml-pipelines.md) 來建立和管理將機器學習階段拼接在一起的工作流程。 例如，管線可能包含資料準備、模型訓練、模型部署和推斷/評分階段。 每個階段都可以包含多個步驟，這些步驟各自都可以在各種計算目標中自動執行。 
 
 管線步驟可重複使用，如果前面步驟的輸出未變更，則可以在不重新執行前面步驟的情況下執行管線步驟。 例如，如果資料未變更，便可以在不必重新執行昂貴的資料準備步驟情況下將模型重新定型。 管線也可以讓資料科學家在分頭處理不同機器學習工作流程區域時共同作業。
+
+## <a name="monitoring-and-logging"></a>監視和記錄
+
+Azure Machine Learning 提供下列監視和記錄功能：
+
+* 對於 __資料科學家__ ，您可以監視您的實驗，並記錄來自定型回合的資訊。 如需詳細資訊，請參閱下列文章：
+   * [啟動、監視及取消定型回合](how-to-manage-runs.md)
+   * [記錄訓練執行的計量](how-to-track-experiments.md)
+   * [使用 MLflow 追蹤實驗](how-to-use-mlflow.md)
+   * [使用 TensorBoard 執行視覺化](how-to-monitor-tensorboard.md)
+* 對於系統 __管理員__ ，您可以使用 Azure 監視器來監視工作區、相關 Azure 資源和事件的相關資訊，例如建立和刪除資源。 如需詳細資訊，請參閱 [如何監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
+* 針對 __DevOps__ 或 __MLOps__ ，您可以監視部署為 web 服務或 IoT Edge 模組的模型所產生的資訊，以找出部署的問題，並收集提交給服務的資料。 如需詳細資訊，請參閱[使用 Application Insights](how-to-enable-app-insights.md)[收集模型資料](how-to-enable-data-collection.md)和監視。
 
 ## <a name="interacting-with-your-workspace"></a>與您的工作區互動
 

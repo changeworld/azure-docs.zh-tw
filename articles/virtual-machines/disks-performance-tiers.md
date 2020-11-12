@@ -1,23 +1,23 @@
 ---
 title: 變更 Azure 受控磁片的效能
-description: 瞭解受控磁片的效能層級，並瞭解如何變更現有受控磁片的效能層級。
+description: 瞭解受控磁片的效能層級，並瞭解如何使用 Azure PowerShell 模組或 Azure CLI 來變更現有受控磁片的效能層級。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 11/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 923c5970183bd192ac1a2f20fb775d96dcc06865
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348690"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540632"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>受控磁片的效能層級 (預覽) 
 
-Azure 磁碟儲存體目前提供內建的高載功能，以提供更高的效能來處理短期非預期的流量。 Premium Ssd 具有增加磁片效能的彈性，而不會增加實際的磁片大小。 這項功能可讓您符合工作負載的效能需求，並降低成本。 
+Azure 磁碟儲存體提供內建的高載功能，以提供更高的效能來處理短期非預期的流量。 Premium Ssd 具有增加磁片效能的彈性，而不會增加實際的磁片大小。 這項功能可讓您符合工作負載的效能需求，並降低成本。 
 
 > [!NOTE]
 > 此功能目前為預覽狀態。 
@@ -42,10 +42,10 @@ Azure 磁碟儲存體目前提供內建的高載功能，以提供更高的效�
 | 512 GiB | P20 | P30、P40、P50 |
 | 1 TiB | P30 | P40、P50 |
 | 2 TiB | P40 | P50 |
-| 4 TiB | P50 | 無 |
+| 4 TiB | P50 | None |
 | 8 TiB | P60 |  P70、P80 |
 | 16 TiB | P70 | P80 |
-| 32 TiB | P80 | 無 |
+| 32 TiB | P80 | None |
 
 如需帳單資訊，請參閱 [受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
@@ -57,6 +57,8 @@ Azure 磁碟儲存體目前提供內建的高載功能，以提供更高的效�
 - 磁片的效能層級只能每24小時降級一次。
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>建立層級高於基準層的空白資料磁片
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 subscriptionId=<yourSubscriptionIDHere>
@@ -83,8 +85,30 @@ image=Canonical:UbuntuServer:18.04-LTS:18.04.202002180
 
 az disk create -n $diskName -g $resourceGroupName -l $region --image-reference $image --sku Premium_LRS --tier $performanceTier
 ```
-     
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+$subscriptionId='yourSubscriptionID'
+$resourceGroupName='yourResourceGroupName'
+$diskName='yourDiskName'
+$diskSizeInGiB=4
+$performanceTier='P50'
+$sku='Premium_LRS'
+$region='westcentralus'
+
+Connect-AzAccount
+
+Set-AzContext -Subscription $subscriptionId
+
+$diskConfig = New-AzDiskConfig -SkuName $sku -Location $region -CreateOption Empty -DiskSizeGB $diskSizeInGiB -Tier $performanceTier
+New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+```
+---
+
 ## <a name="update-the-tier-of-a-disk"></a>更新磁片層
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 resourceGroupName=<yourResourceGroupNameHere>
@@ -93,11 +117,36 @@ performanceTier=<yourDesiredPerformanceTier>
 
 az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+$resourceGroupName='yourResourceGroupName'
+$diskName='yourDiskName'
+$performanceTier='P1'
+
+$diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
+
+Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
+```
+---
+
 ## <a name="show-the-tier-of-a-disk"></a>顯示磁片的層級
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+$disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
+
+$disk.Tier
+```
+---
 
 ## <a name="next-steps"></a>後續步驟
 

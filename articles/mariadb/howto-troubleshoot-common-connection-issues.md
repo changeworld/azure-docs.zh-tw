@@ -1,17 +1,17 @@
 ---
 title: 疑難排解連接問題-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何對適用於 MariaDB 的 Azure 資料庫的連接問題進行疑難排解，包括需要重試的暫時性錯誤、防火牆問題和中斷。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a670472529dccd51cbfa71e385151bc63cff9b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82101445"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539374"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫的連線問題進行疑難排解
 
@@ -39,7 +39,7 @@ ms.locfileid: "82101445"
 1. 檢查 [Microsoft Azure 服務儀表板](https://azure.microsoft.com/status) ，以了解是否有在應用程式回報錯誤期間發生的任何已知中斷。
 2. 連線到雲端服務 (例如「適用於 MariaDB 的 Azure 資料庫」) 的應用程式應該預期會發生暫時性錯誤，並實作重試邏輯來處理這些錯誤，而不是將這些錯誤當作應用程式錯誤呈現給使用者。 請檢閱[處理適用於 MariaDB 的 Azure 資料庫的暫時性連線錯誤](concepts-connectivity.md)，以了解處理暫時性錯誤的最佳做法和設計指導方針。
 3. 當伺服器接近其資源限制時，錯誤可能似乎是暫時性連線問題。 請參閱[適用於 MariaDB 的 Azure 資料庫相關限制](concepts-limits.md)。
-4. 如果連線問題繼續發生，或如果您的應用程式發生錯誤的持續時間超過 60 秒，或如果您在一天當中，看到錯誤多次發生，請在 [Azure 支援](https://azure.microsoft.com/support/options)網站上選取 [取得支援]****，來提出 Azure 支援要求。
+4. 如果連線問題繼續發生，或如果您的應用程式發生錯誤的持續時間超過 60 秒，或如果您在一天當中，看到錯誤多次發生，請在 [Azure 支援](https://azure.microsoft.com/support/options)網站上選取 [取得支援]，來提出 Azure 支援要求。
 
 ## <a name="troubleshoot-persistent-errors"></a>針對持續性錯誤進行疑難排解
 
@@ -47,7 +47,7 @@ ms.locfileid: "82101445"
 
 * 防火牆設定：「適用於 MariaDB 的 Azure 資料庫」伺服器或用戶端防火牆目前封鎖連線。
 * 用戶端的網路重新設定：新增了新的 IP 位址或 Proxy 伺服器。
-* 使用者錯誤：例如，您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的* \@ servername*尾碼。
+* 使用者錯誤：例如，您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的 *\@ servername* 尾碼。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解決永久性連線問題的步驟
 
@@ -56,6 +56,6 @@ ms.locfileid: "82101445"
 3. 請確認您的連接字串和其他連線設定。 請檢閱[如何將應用程式連線至適用於 MariaDB 的 Azure 資料庫](howto-connection-string.md)。
 4. 檢查儀表板中的服務健康情況。 如果您認為有區域中斷，請參閱 [使用適用於 MariaDB 的 Azure 資料庫的商務持續性總覽](concepts-business-continuity.md) ，以取得復原到新區域的步驟。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [處理適用於 MariaDB 的 Azure 資料庫的暫時性連線錯誤](concepts-connectivity.md)

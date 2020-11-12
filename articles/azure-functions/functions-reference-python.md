@@ -4,12 +4,12 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506068"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539068"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -723,6 +723,8 @@ Python 函式應用程式完全支援 CORS。
 * [HTTP 和 Webhook 繫結](functions-bindings-http-webhook.md)
 * [佇列儲存體繫結](functions-bindings-storage-queue.md)
 * [計時器觸發程序](functions-bindings-timer.md)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/python-functions-ref-survey)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true

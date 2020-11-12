@@ -4,12 +4,12 @@ description: 使用 Visual Studio 中的 CodeLens 快速存取 Application Insig
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932646"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538490"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遙測
 Web 應用程式的程式碼方法可透過遙測資料來標註出執行階段及要求回應時間。 如果您在應用程式中安裝 [Azure Application Insights](./app-insights-overview.md)，遙測會出現在 Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) - 各函式頂端的註解，也就是您慣於查看有否實用資訊之處，例如參考函式的位置數或上次編輯函式的人員。
@@ -30,29 +30,29 @@ Web 應用程式的程式碼方法可透過遙測資料來標註出執行階段�
 > 
 
 ## <a name="exceptions-in-codelens"></a>CodeLens 中的例外狀況
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![螢幕擷取畫面顯示 CodeLens 中顯示47例外狀況。](./media/visual-studio-codelens/codelens-exceptions.png)
 
 例外狀況 CodeLens 指標在透過方法處理要求時，也會一面顯示過去 24 小時內您應用程式中 15 個最頻繁發生的例外狀況數目。
 
 若要查看更多詳細資料，請按一下例外狀況 CodeLens 指標︰
 
 * 最近 24 小時 (相對於前 24 小時) 內例外狀況數目的百分比變化
-* 選擇 [移至程式碼] **** 可瀏覽至擲回例外狀況之函數的原始程式碼
-* 選擇 [搜尋] **** 可查詢過去 24 小時內發生此例外狀況的所有執行個體
-* 選擇 [趨勢] **** 可檢視過去 24 小時內此例外狀況的發生次數的趨勢視覺效果
-* 選擇 [檢視此應用程式中的所有例外狀況] **** 可查詢過去 24 小時內發生的所有例外狀況
-* 選擇 [探索例外狀況區域] **** 可檢視過去 24 小時內發生的所有例外狀況的趨勢視覺效果。 
+* 選擇 [移至程式碼]  可瀏覽至擲回例外狀況之函數的原始程式碼
+* 選擇 [搜尋]  可查詢過去 24 小時內發生此例外狀況的所有執行個體
+* 選擇 [趨勢]  可檢視過去 24 小時內此例外狀況的發生次數的趨勢視覺效果
+* 選擇 [檢視此應用程式中的所有例外狀況]  可查詢過去 24 小時內發生的所有例外狀況
+* 選擇 [探索例外狀況區域]  可檢視過去 24 小時內發生的所有例外狀況的趨勢視覺效果。 
 
 > [!TIP]
-> 如果您在 CodeLens 中看到「0 個例外狀況」，但您知道應該有例外狀況，請檢查並確定已在 CodeLens 中選取正確的 Application Insights 資源。 若要選取其他資源，請在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選擇 [Application Insights] > [選擇遙測來源]****。 CodeLens 只會顯示過去 24 小時內您的應用程式中 15 個最頻繁發生的例外狀況，所以如果某例外狀況的發生頻率是第 16 位或更不常發生，您將會看到「0 個例外狀況」。 ASP.NET 檢視中的例外狀況可能不會出現在產生這些檢視的控制器方法上。
+> 如果您在 CodeLens 中看到「0 個例外狀況」，但您知道應該有例外狀況，請檢查並確定已在 CodeLens 中選取正確的 Application Insights 資源。 若要選取其他資源，請在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選擇 [Application Insights] > [選擇遙測來源]。 CodeLens 只會顯示過去 24 小時內您的應用程式中 15 個最頻繁發生的例外狀況，所以如果某例外狀況的發生頻率是第 16 位或更不常發生，您將會看到「0 個例外狀況」。 ASP.NET 檢視中的例外狀況可能不會出現在產生這些檢視的控制器方法上。
 > 
 > [!TIP]
-> 如果您在 CodeLens 中看到「？ 個例外狀況」，您需要建立您的 Azure 帳戶與 Visual Studio 的關聯，否則您的 Azure 帳戶認證可能會過期。 在任一種情況下，按一下「？ 個例外狀況」，然後選擇 [新增帳戶...] **** 以輸入認證。
+> 如果您在 CodeLens 中看到「？ 個例外狀況」，您需要建立您的 Azure 帳戶與 Visual Studio 的關聯，否則您的 Azure 帳戶認證可能會過期。 在任一種情況下，按一下「？ 個例外狀況」，然後選擇 [新增帳戶...]  以輸入認證。
 > 
 > 
 
 ## <a name="requests-in-codelens"></a>CodeLens 中的要求
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![螢幕擷取畫面會顯示684要求的詳細資料，包括7% 失敗。](./media/visual-studio-codelens/codelens-requests.png)
 
 要求 CodeLens 指標會顯示過去 24 小時內方法已提供服務的 HTTP 要求數目，加上這些要求失敗的百分比。
 
@@ -60,11 +60,11 @@ Web 應用程式的程式碼方法可透過遙測資料來標註出執行階段�
 
 * 過去 24 小時 (相較於前 24 小時) 內要求數目、失敗的要求或平均回應時間的絕對值和百分比變更
 * 方法的可靠性，該值的計算方式為過去 24 小時內未失敗的要求百分比
-* 選擇 [搜尋] **** 要求或失敗的要求，以查詢過去 24 小時內發生的所有 (失敗) 要求
-* 選擇 [趨勢] **** 可檢視過去 24 小時內要求、失敗的要求或平均回應時間的趨勢視覺效果。
+* 選擇 [搜尋]  要求或失敗的要求，以查詢過去 24 小時內發生的所有 (失敗) 要求
+* 選擇 [趨勢]  可檢視過去 24 小時內要求、失敗的要求或平均回應時間的趨勢視覺效果。
 * 選擇 CodeLens 詳細資料檢視左上角的 Application Insights 資源名稱，以變更哪個資源是 CodeLens 資料的來源。
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
-* 使用**[Visual Studio 中的 Application Insights](./visual-studio.md)**。 搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 
-* 使用**[Application Insights 入口網站](./overview-dashboard.md)**。 儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及遙測匯出等功能。 
+* 使用 **[Visual Studio 中的 Application Insights](./visual-studio.md)** 。 搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 
+* 使用 **[Application Insights 入口網站](./overview-dashboard.md)** 。 儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及遙測匯出等功能。 
 

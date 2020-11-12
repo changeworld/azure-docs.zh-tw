@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979791"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537657"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中核准或拒絕存取要求
 
@@ -53,15 +53,15 @@ ms.locfileid: "90979791"
 
 1. 流覽至我的存取權中的 [ **核准** ] 索引標籤。
 
-1. 移至您想要核准的要求，然後按一下 [ **詳細資料**]。 如果您已準備好進行決策，您也可以按一下 [ **核准** ] 或 [ **拒絕** ]。
+1. 移至您想要核准的要求，然後按一下 [ **詳細資料** ]。 如果您已準備好進行決策，您也可以按一下 [ **核准** ] 或 [ **拒絕** ]。
 
-1. 按一下 [ **要求詳細資料**]。
+1. 按一下 [ **要求詳細資料** ]。
 
      ![我的存取權入口網站-存取要求-按一下要求詳細資料](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. 要求者提供的資訊將位於面板底部。
 
-     ![我的存取權入口網站 - 存取要求](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+     ![螢幕擷取畫面顯示要求的詳細資料](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. 根據要求者提供的資訊，您可以接著核准或拒絕要求。 請參閱核准或拒絕要求指引中的步驟。
 
@@ -71,19 +71,19 @@ ms.locfileid: "90979791"
 
 **先決條件角色：** 人員
 
-1. 按一下 [檢視]**** 連結以開啟 [存取要求] 窗格。
+1. 按一下 [檢視] 連結以開啟 [存取要求] 窗格。
 
 1. 按一下 [ **詳細資料** ] 以查看存取要求的詳細資料。
 
     這些詳細資料包括使用者的名稱、組織、存取開始和結束日期（如有提供）、商務理由、提交要求的時間，以及要求將到期的時間。
 
-1. 按一下 [ **核准** ] 或 [ **拒絕**]。
+1. 按一下 [ **核准** ] 或 [ **拒絕** ]。
 
 1. 如有必要，請輸入原因。
 
-    ![我的存取權入口網站 - 存取要求](./media/entitlement-management-request-approve/my-access-approve-request.png)
+    ![螢幕擷取畫面顯示您接受或拒絕要求的頁面。](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
-1. 按一下 [提交]**** 以提交您的決定。
+1. 按一下 [提交] 以提交您的決定。
 
     如果原則設定有多個核准者，只有一位核准者需要決定待核准。 核准者提交其對存取要求的決策之後，要求便會完成，而且其他核准者也無法再核准或拒絕要求。 其他核准者可以在其我的存取權入口網站中查看要求決策和決策 maker。 目前只支援單一階段核准。
 

@@ -1,17 +1,17 @@
 ---
 title: 效能建議-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫中的效能建議功能
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a20b8a43c8955e1afea7a7157e3e73425fb0d806
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84484724"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540462"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的效能建議
 
@@ -21,13 +21,13 @@ ms.locfileid: "84484724"
 
 ## <a name="permissions"></a>權限
 
-需要**擁有者**或**參與者**權限，才能使用 [效能建議] 功能執行分析。
+需要 **擁有者** 或 **參與者** 權限，才能使用 [效能建議] 功能執行分析。
 
 ## <a name="performance-recommendations"></a>效能建議
 
 [效能建議](concepts-performance-recommendations.md)功能可分析整部伺服器的工作負載，來找出可能可以改善效能的索引。
 
-在適用于 mariadb 伺服器的 [Azure 入口網站] 頁面上，從功能表列的 [**智慧效能**] 區段開啟**效能建議**。
+在適用于 mariadb 伺服器的 [Azure 入口網站] 頁面上，從功能表列的 [ **智慧效能** ] 區段開啟 **效能建議** 。
 
 :::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="[效能建議] 登陸頁面":::
 
@@ -35,7 +35,7 @@ ms.locfileid: "84484724"
 
 [建議] 視窗將會顯示一份建議清單 (如果有任何發現的話)，以及產生這項建議的相關查詢識別碼。 透過查詢識別碼，您可以使用 [mysql.query_store](concepts-query-store.md#mysqlquery_store) 檢視來深入了解查詢。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="[效能建議] 登陸頁面":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="效能建議新頁面":::
 
 建議不會自動套用。 若要套用建議，請複製查詢文字並從您選擇的用戶端中執行該文字。 請記得進行測試和監視來評估建議。
 

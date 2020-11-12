@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68946331"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538303"
 ---
 # <a name="detect-domain-specific-content"></a>偵測特定領域內容
 
@@ -26,7 +26,7 @@ ms.locfileid: "68946331"
 
 ### <a name="scoped-analysis"></a>已設定範圍的分析
 
-您可以藉由呼叫 [模型/ \<model\> /analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API，只使用所選的特定領域模型來分析影像。
+您可以藉由呼叫 [模型/ \<model\> /analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API，只使用所選的特定領域模型來分析影像。
 
 以下是針對指定的影像由 **models/celebrities/analyze** API 傳回的 JSON 回應範例：
 
@@ -57,7 +57,7 @@ ms.locfileid: "68946331"
 
 ### <a name="enhanced-categorization-analysis"></a>強化分類分析
 
-也可以使用特定領域模型，來補足一般的影像分析。 您可以在 [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼叫的 details ** 參數中指定特定領域模型，做為[高階分類](concept-categorizing-images.md)的一環來進行。
+也可以使用特定領域模型，來補足一般的影像分析。 您可以在 [Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 呼叫的 details 參數中指定特定領域模型，做為[高階分類](concept-categorizing-images.md)的一環來進行。
 
 在此情況下，必須先呼叫 86 類別分類器。 如果任何偵測到的類別符合特定領域模型，即會透過該模型傳遞影像，並新增結果。
 
@@ -105,7 +105,7 @@ ms.locfileid: "68946331"
 | 名人 | 支援 `people_` 類別中分類影像的名人辨識 |
 | 地標 | 支援 `outdoor_` 或 `building_` 類別中分類影像的地標辨識 |
 
-呼叫 [Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API 會傳回此資訊，以及每個模型可以套用的類別：
+呼叫 [Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20e) API 會傳回此資訊，以及每個模型可以套用的類別：
 
 ```json
 {

@@ -12,12 +12,12 @@ ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 內部部署、OCR、Docker、容器
-ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 33fc13722a4d0f26c71aa85809a605188b610014
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677207"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539005"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a> (預覽) 安裝讀取 OCR Docker 容器 
 
@@ -56,7 +56,7 @@ ms.locfileid: "92677207"
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
 |電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure **電腦視覺** 資源和相關聯的 API 金鑰（端點 URI）。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}** ： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}** ： **總覽** 頁面上提供的端點|
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="request-approval-to-run-the-container"></a>要求核准以執行容器
 
@@ -411,6 +411,6 @@ JSON 回應物件與非同步版本具有相同的物件圖形。 如果您是 J
 
 * 檢閱[設定容器](computer-vision-resource-container-config.md)以了解組態設定
 * 檢閱[電腦視覺概觀](overview.md)，以深入了解辨識印刷和手寫的文字
-* 參閱[電腦視覺 API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)，以取得容器支援的方法之詳細資訊。
+* 參閱[電腦視覺 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)，以取得容器支援的方法之詳細資訊。
 * 參閱[常見問題集 (FAQ)](FAQ.md) 來解決與電腦視覺功能相關的問題。
 * 使用更多[認知服務容器](../cognitive-services-container-support.md)

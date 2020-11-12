@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445620"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540122"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
 
@@ -23,7 +23,7 @@ ms.locfileid: "94445620"
 
 當您的需求變更或自動化的需求增加時，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * 如果使用 Python SDK，請 [安裝 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
@@ -191,7 +191,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 ### <a name="advanced"></a>進階
 
-根據預設，工作區的計量和中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。
+根據預設，工作區的中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。
 
 若要限制 Microsoft 在您的工作區上收集的資料，請在入口網站中選取 [ __高業務影響] 工作區__ ，或 `hbi_workspace=true ` 在 Python 中設定。 如需此設定的詳細資訊，請參閱待用 [加密](concept-data-encryption.md#encryption-at-rest)。
 
@@ -200,7 +200,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 #### <a name="use-your-own-key"></a>使用您自己的金鑰
 
-您可以提供自己的金鑰進行資料加密。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。
+您可以提供自己的金鑰進行資料加密。 這麼做會建立 Azure Cosmos DB 實例，以將中繼資料儲存在您的 Azure 訂用帳戶中。
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 

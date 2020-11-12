@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b065b36103b69f0601daa1388b45865856543d2b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329827"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540513"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
@@ -56,9 +56,9 @@ ms.locfileid: "92329827"
 
 ## <a name="image-analysis"></a>影像分析
 
-[分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可能會以查詢參數指定的其他語言傳回結果 `language` 。 無論指定何種語言，其他動作都會以英文傳回結果，而其他動作則會針對不支援的語言擲回例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數指定的; 請參閱 [總覽](overview.md) ，以取得您可以使用影像分析執行的所有動作清單。
+[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)API 的某些動作可能會以查詢參數指定的其他語言傳回結果 `language` 。 無論指定何種語言，其他動作都會以英文傳回結果，而其他動作則會針對不支援的語言擲回例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數指定的; 請參閱 [總覽](overview.md) ，以取得您可以使用影像分析執行的所有動作清單。
 
-|Language | 語言代碼 | 類別 | 標籤 | 說明 | 成人 | 品牌 | 色彩 | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|Language | 語言代碼 | 類別 | 標籤 | 描述 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

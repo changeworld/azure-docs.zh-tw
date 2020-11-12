@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517254"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539748"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 
@@ -98,7 +98,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -150,7 +152,7 @@ sudo reboot
 
 ## <a name="rdma-network-connectivity"></a>RDMA 網路連線
 
-可在支援 RDMA 的 N 系列 VM (例如部署在同一個可用性設定組或虛擬機器 (VM) 擴展集的單一放置群組中 NC24r) 上啟用 RDMA 網路連線能力。 RDMA 網路可針對搭配 Intel MPI 5.x 或更新版本執行的應用程式，支援訊息傳遞介面 (MPI) 流量。 其他需求如下：
+您可以在支援 RDMA 的 N 系列 Vm （例如部署于相同可用性設定組中的 NC24r）上啟用 RDMA 網路連線，也可以在虛擬機器 (VM) 擴展集的單一放置群組中啟用。 RDMA 網路可針對搭配 Intel MPI 5.x 或更新版本執行的應用程式，支援訊息傳遞介面 (MPI) 流量。 其他需求如下：
 
 ### <a name="distributions"></a>散發
 
@@ -162,7 +164,7 @@ sudo reboot
 
 * **CentOS 型 7.4 HPC** - 已在 VM 上安裝 RDMA 驅動程式和 Intel MPI 5.1。
 
-* 以**CentOS 為基礎的 hpc** -CENTOS-hpc 7.6 和更新版本的 (，適用于透過 sr-iov) 支援不受支援的 sku。 這些映射已預先安裝了 Mellanox OFED 和 MPI 程式庫。
+* 以 **CentOS 為基礎的 hpc** -CENTOS-hpc 7.6 和更新版本的 (，適用于透過 sr-iov) 支援不受支援的 sku。 這些映射已預先安裝了 Mellanox OFED 和 MPI 程式庫。
 
 > [!NOTE]
 > 只有 LTS 版本的 Mellanox OFED 才支援 CX3-Pro 卡。 在具有 ConnectX3-Pro 卡片的 N 系列 Vm 上使用 LTS Mellanox OFED 版本 (4.9-0.1.7.0) 。 如需詳細資訊，請參閱 [Linux 驅動程式](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)。
@@ -264,7 +266,7 @@ sudo reboot
    sudo yum install hyperv-daemons
    ```
 
-2. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NV2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請使用下列內容以在名為 `nouveau.conf` 的 `/etc/modprobe.d` 中建立檔案：
+2. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。  (僅在 NV 或 NV3 Vm 上使用 NVIDIA 驅動程式。 ) 若要這樣做，請 `/etc/modprobe.d` 使用下列內容建立名為的檔案 `nouveau.conf` ：
 
    ```
    blacklist nouveau
@@ -272,7 +274,9 @@ sudo reboot
    blacklist lbm-nouveau
    ```
  
-3. 重新啟動 VM、重新連線，然後安裝最新的[適用於 Hyper-V 和 Azure 的 Linux 整合服務](https://www.microsoft.com/download/details.aspx?id=55106)。
+3. 重新啟動 VM、重新連線，然後安裝最新的[適用於 Hyper-V 和 Azure 的 Linux 整合服務](https://www.microsoft.com/download/details.aspx?id=55106)。 確認 lspci 的結果，檢查是否需要 IIS。 如果所有 GPU 裝置都如預期般列出，則不需要安裝 .LIS。 
+
+如果您使用 CentOS/RHEL 7.8 和更新版本，請略過此步驟。
  
    ```bash
    wget https://aka.ms/lis
@@ -373,6 +377,7 @@ fi
 
 * 您可以使用 `nvidia-smi` 設定持續性模式，如此當您需要查詢卡片時，命令的輸出更快。 若要設定持續性模式，請執行 `nvidia-smi -pm 1`。 請注意，如果重新啟動 VM，模式設定就會消失。 您一律可以編寫指令碼在啟動時執行模式設定。
 * 如果已將 NVIDIA CUDA 驅動程式更新為最新版本，且發現 RDMA 連線不再有效，請[重新安裝 RDMA 驅動程式](#rdma-network-connectivity)以重新建立該連線。 
+* 如果 .LIS 不支援特定的 CentOS/RHEL OS 版本 (或核心) ，則會擲回「不支援的核心版本」錯誤。 請報告此錯誤以及作業系統和核心版本。
 
 ## <a name="next-steps"></a>後續步驟
 
