@@ -1,17 +1,17 @@
 ---
 title: 伺服器概念-適用於 MySQL 的 Azure 資料庫
 description: 本主題提供使用適用於 MySQL 之 Azure 資料庫伺服器的考量和指導方針。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5477aa0c4eb2a66af816b287a8b6d7da8a53952f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544795"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534886"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器概念
 
@@ -64,7 +64,7 @@ ms.locfileid: "92544795"
 
 您可以使用 Azure 入口網站或 Azure CLI，來管理適用於 MySQL 的 Azure 資料庫伺服器。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需服務的概觀，請參閱[適用於 MySQL 的 Azure 資料庫概觀](./overview.md)
 - 如需根據您的 **定價層** 的特定資源配額和限制的詳細資訊，請參閱 [定價層](./concepts-pricing-tiers.md)。

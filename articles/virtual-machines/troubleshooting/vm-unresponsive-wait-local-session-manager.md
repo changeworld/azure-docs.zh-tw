@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: ae3d35bea1c75c797447100316ceab9a27fcbe48
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f2f0177b5fe8bb97773d297319f6c9196d8178d2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424042"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536229"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager"></a>等候本機會話管理員時，VM 沒有回應
 
@@ -35,7 +35,7 @@ ms.locfileid: "93424042"
 
 ## <a name="solution"></a>解決方案
 
-在某些情況下，只要等待足夠的時間來完成程式，就能解決您的問題。 如果您的 VM 在等候畫面上的等待時間超過一小時，您應該收集記憶體傾印，然後聯絡 Microsoft 支援服務。
+在某些情況下，只要等待足夠的時間來完成程式，就能解決您的問題。 如果您的 VM 沒有回應，且停留在等候畫面上超過一小時，您應該收集記憶體傾印，然後聯絡 Microsoft 支援服務。
 
 ### <a name="collect-the-memory-dump-file"></a>收集記憶體傾印檔案
 

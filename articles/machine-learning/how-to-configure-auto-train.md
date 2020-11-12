@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: 435476bee4839d083e3fe6cb0aa635d5ca67c4c0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352569"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535328"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -346,6 +346,9 @@ run = experiment.submit(automl_config, show_output=True)
 請參閱 [評估自動化機器學習實驗的結果](how-to-understand-automated-ml.md) ，以瞭解每次執行所提供的效能圖表和度量的定義和範例。 
 
 若要取得特徵化摘要，並瞭解已新增至特定模型的功能，請參閱 [特徵化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
+
+> [!NOTE]
+> 自動化 ML 採用的演算法具有固有的隨機性，可能會導致建議模型的最終計量分數稍微變化，例如精確度。 自動化 ML 也會在必要時對資料（例如，訓練-測試分割、定型驗證分割或交叉驗證）執行作業。 因此，如果您多次執行具有相同設定和主要計量的實驗，您可能會在每個實驗中看到由於這些因素的最終計量分數變化。 
 
 ## <a name="register-and-deploy-models"></a>註冊和部署模型
 

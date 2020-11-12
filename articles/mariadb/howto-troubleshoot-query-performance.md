@@ -1,17 +1,17 @@
 ---
 title: 為查詢效能疑難排解 - 適用於 MariaDB 的 Azure 資料庫
 description: 了解如何使用 EXPLAIN 對適用於 MariaDB 的 Azure 資料庫中的查詢效能進行疑難排解。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ae3637eb5e9f6f70d0f53d7b1cb97bd348c114bc
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424416"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537232"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>如何使用 EXPLAIN 剖析適用於 MariaDB 的 Azure 資料庫中的查詢效能
 **EXPLAIN** 是可最佳化查詢的便利工具。 EXPLAIN 陳述式可用來取得關於 SQL 陳述式如何執行的資訊。 下列輸出顯示 EXPLAIN 陳述式的執行範例。
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-在此範例中您可以看到，*key* 的值為 NULL。 此輸出表示 MariaDB 找不到任何查詢的最佳化索引，因此執行了完整資料表掃描。 我們將在 [識別碼] 資料行上新增索引，以最佳化此查詢。
+在此範例中您可以看到， *key* 的值為 NULL。 此輸出表示 MariaDB 找不到任何查詢的最佳化索引，因此執行了完整資料表掃描。 我們將在 [識別碼] 資料行上新增索引，以最佳化此查詢。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-如輸出所顯示，MariaDB 並未使用任何索引，因為沒有適當的索引可供使用。 其中也顯示 *Using temporary; Using file sort*，這表示 MariaDB 建立了暫存資料表以滿足 **GROUP BY** 子句。
+如輸出所顯示，MariaDB 並未使用任何索引，因為沒有適當的索引可供使用。 其中也顯示 *Using temporary; Using file sort* ，這表示 MariaDB 建立了暫存資料表以滿足 **GROUP BY** 子句。
  
 單獨建立資料行 **c2** 的索引並無作用，MariaDB 仍然需要建立暫存資料表：
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-在此情況下，可建立 **c1** 和 **c2** 兩者的**涵蓋性索引**，藉以將 **c2**" 的值直接加入索引中，而消除進一步的資料查閱。
+在此情況下，可建立 **c1** 和 **c2** 兩者的 **涵蓋性索引** ，藉以將 **c2** " 的值直接加入索引中，而消除進一步的資料查閱。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);

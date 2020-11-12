@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 0c697e6332b757e1d135a77b70f33a6e32528309
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: aa45bc9f70bf05074391dd14cc5fc774eb77c762
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358893"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536246"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 
@@ -162,6 +162,9 @@ ms.locfileid: "93358893"
 ## <a name="run-experiment-and-view-results"></a>執行實驗並檢視結果
 
 選取 [完成] 以執行實驗。 實驗準備流程最多需要 10 分鐘。 訓練作業可能需要額外 2-3 分鐘不等，才能讓每個管線完成執行。
+
+> [!NOTE]
+> 自動化 ML 採用的演算法具有固有的隨機性，可能會導致建議模型的最終計量分數稍微變化，例如精確度。 自動化 ML 也會在必要時對資料（例如，訓練-測試分割、定型驗證分割或交叉驗證）執行作業。 因此，如果您多次執行具有相同設定和主要計量的實驗，您可能會在每個實驗中看到由於這些因素的最終計量分數變化。 
 
 ### <a name="view-experiment-details"></a>檢視實驗詳細資料
 

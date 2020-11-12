@@ -1,7 +1,7 @@
 ---
 title: 訓練 scikit-learn-瞭解機器學習模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 上執行 scikit-learn 學習訓練腳本。
+description: 瞭解 Azure Machine Learning 如何讓您使用彈性雲端計算資源來擴充 scikit-learn 學習訓練作業。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 91a9957c7a68f1752d7a6b9ea66910ec642b7bd1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4758e937a0ed105bf136acf7e78f2d44c84e74fb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360899"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536049"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>訓練 scikit-learn-利用 Azure Machine Learning 瞭解大規模模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "93360899"
 
 無論您是從頭開始訓練 machine learning scikit-learn-學習模型，或是將現有的模型帶入雲端，您都可以使用 Azure Machine Learning，利用彈性的雲端計算資源來擴充開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本和監視生產等級的模型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
  - Azure Machine Learning 計算執行個體 - 不需要下載或安裝

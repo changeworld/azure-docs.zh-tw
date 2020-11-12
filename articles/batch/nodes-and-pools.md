@@ -2,13 +2,13 @@
 title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/10/2020
+ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913801"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537606"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -72,9 +72,9 @@ Batch 中有兩種類型的集區設定可供使用。
 
 ### <a name="cloud-services-configuration"></a>雲端服務設定
 
-**雲端服務設定** 會指定集區是由 Azure 雲端服務節點所組成。 雲端服務「只」提供 Windows 計算節點。
+**雲端服務設定** 會指定集區是由 Azure 雲端服務節點所組成。 雲端服務只提供 Windows 計算節點。
 
-雲端服務組態集區可用的作業系統列於 [Azure 客體 OS 版次與 SDK 相容性矩陣](../cloud-services/cloud-services-guestos-update-matrix.md)。 建立包含雲端服務節點的集區時，您需要指定節點大小及其「作業系統系列」(這會決定作業系統所安裝的 .NET 版本)。 雲端服務部署至 Azure 的速度比執行 Windows 的虛擬機器還快。 如果您需要 Windows 計算節點的集區，可能會發現雲端服務提供了部署時間方面的效能優勢。
+雲端服務設定集區的可用作業系統會列在 [Azure 虛擬作業系統版本和 SDK 相容性矩陣](../cloud-services/cloud-services-guestos-update-matrix.md)中，可用的計算節點大小會以 [雲端服務的大小](../cloud-services/cloud-services-sizes-specs.md)列出。 當您建立包含雲端服務節點的集區時，您會指定節點大小和其 *OS 系列* (，以判斷作業系統) 安裝的 .net 版本。 雲端服務部署至 Azure 的速度比執行 Windows 的虛擬機器還快。 如果您需要 Windows 計算節點的集區，可能會發現雲端服務提供了部署時間方面的效能優勢。
 
 如同雲端服務內的背景工作角色，您可以指定 [OS 版本] (如需背景工作角色的詳細資訊，請參閱[雲端服務概觀](../cloud-services/cloud-services-choose-me.md))。 建議為 [OS 版本]指定 `Latest (*)`，以便自動升級節點，而且不需為了因應新發行的版本而執行工作。 選取特定 OS 版本的主要使用案例是為了確保應用程式相容性，以允許在更新版本之前執行回溯相容性測試。 通過驗證之後，即可更新集區的 [OS 版本] 並安裝新的 OS 映像。 任何執行中的工作都將會中斷並重新排入佇列。
 

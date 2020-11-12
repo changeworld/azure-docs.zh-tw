@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408201"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536492"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 我們知道安全性是雲端中的首要工作和其重要性，因為您可在其中找到精確且及時的 Azure 安全性資訊。 針對您的應用程式和服務使用 Azure 的最佳原因之一是可以利用它的各種安全性工具和功能。 這些工具和功能可協助您在安全的 Azure 平台上建立安全的解決方案。 Microsoft Azure 提供客戶資料的機密性、完整性和可用性，同時也能釐清責任。
 
 本文提供 Azure 可用安全性的完整探討。
@@ -179,7 +179,7 @@ App Service Web 應用程式會針對來自 Web 伺服器和 Web 應用程式的
 
 Azure 儲存體服務目前支援 CORS，因此，一旦您設定服務的 CORS 規則之後，即會評估從不同網域對服務所提出的適當驗證要求，以判斷是否可根據您指定的規則來允許它。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 本節提供關於 Azure 網路安全性中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="network-layer-controls"></a>網路層控制
@@ -221,7 +221,7 @@ Azure 網路功能支援各種安全遠端存取案例。 其中包含：
 ### <a name="express-route"></a>ExpressRoute
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 是專用的 WAN 連結，可讓您透過連線提供者所提供的專用私人連接，將內部部署網路擴充至 Microsoft 雲端。
 
-![ExpressRoute](./media/overview/azure-security-fig1.png)
+![ExpressRoute](./media/overview/azure-security-figure-1.png)
 
 使用 ExpressRoute，您可以建立與 Microsoft 雲端服務的連線，例如 Microsoft Azure、Microsoft 365 和 CRM Online。 從任意點對任意點 (IP VPN) 網路、點對點乙太網路，或在共置設施上透過連線提供者的虛擬交叉連接，都可以進行連線。
 
@@ -231,7 +231,7 @@ ExpressRoute 連接不會經過公用網際網路，因此可視為比 VPN 型�
 ### <a name="application-gateway"></a>應用程式閘道
 Microsoft [Azure 應用程式閘道](../../application-gateway/overview.md)會以服務形式提供[應用程式傳遞控制器 (ADC) (英文)](https://en.wikipedia.org/wiki/Application_delivery_controller)，為您的應用程式提供各種第 7 層負載平衡功能。
 
-![應用程式閘道](./media/overview/azure-security-fig2.png)
+![應用程式閘道](./media/overview/azure-security-figure-2.png)
 
 它可讓您將 CPU 密集的 TLS 終止卸載至應用程式閘道，以優化 web 伺服陣列的生產力 (也稱為「TLS 卸載」或「TLS 橋接」 ) 。 它也提供其他第 7 層路由功能，包括循環配置傳入流量、以 Cookie 為基礎的工作階段同質性、URL 路徑型路由，以及在單一應用程式閘道背後代管多個網站的能力。 Azure 應用程式閘道是第 7 層負載平衡器。
 
@@ -242,7 +242,7 @@ Microsoft [Azure 應用程式閘道](../../application-gateway/overview.md)會�
 ### <a name="web-application-firewall"></a>Web 應用程式防火牆
 Web 應用程式防火牆是 [Azure 應用程式閘道](../../application-gateway/overview.md)的一項功能，可保護使用應用程式閘道執行標準應用程式傳遞控制 (ADC) 功能的 Web 應用程式。 Web 應用程式防火牆的做法是保護應用程式以防範 OWASP 前 10 個最常見的 Web 弱點。
 
-![Web 應用程式防火牆](./media/overview/azure-security-fig1.png)
+![Web 應用程式防火牆](./media/overview/azure-security-figure-3.png)
 
 -   SQL 插入式攻擊保護
 

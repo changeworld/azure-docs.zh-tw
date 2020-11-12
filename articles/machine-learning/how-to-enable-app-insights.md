@@ -1,7 +1,7 @@
 ---
 title: 從 Machine Learning web 服務端點監視和收集資料
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 應用程式 Insights 監視以 Azure Machine Learning 部署的 web 服務
+description: 瞭解如何在 Azure Kubernetes Service (AKS) 或 Azure 容器實例 (ACI) 中，從部署至 web 服務端點的模型收集資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 1f02c9b080b87b4fbffcd1870dd139b9d32de0c7
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357666"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536586"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
 
@@ -32,7 +32,7 @@ ms.locfileid: "93357666"
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶-試用 [免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 

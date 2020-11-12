@@ -1,17 +1,17 @@
 ---
 title: 管理預存程式-適用於 MySQL 的 Azure 資料庫
 description: 瞭解適用於 MySQL 的 Azure 資料庫中的預存程式對於協助您設定資料複寫、設定時區和終止查詢有何説明。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542473"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536127"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>適用於 MySQL 的 Azure 資料庫管理預存程式
 

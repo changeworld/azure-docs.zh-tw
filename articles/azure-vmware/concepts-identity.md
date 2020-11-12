@@ -2,25 +2,25 @@
 title: 概念-身分識別和存取
 description: 深入瞭解 Azure VMware 解決方案的身分識別和存取概念
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/11/2020
+ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674646"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536093"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解決方案身分識別概念
 
-部署私用雲端時，會布建 vCenter 伺服器和 NSX-T 管理員。 您可以使用 vCenter 來管理虛擬機器 (VM) 工作負載。 您可以使用 NSX-T 管理員來擴充私用雲端軟體定義的網路。
+Azure VMware 解決方案私用雲端是使用 vCenter server 和 NSX-T 管理員所布建。 您可以使用 vCenter 來管理虛擬機器 (VM) 工作負載。 您可以使用 NSX-T 管理員來擴充私人雲端。
 
 存取和身分識別管理使用適用于 vCenter 的 CloudAdmin 群組許可權，以及適用于 NSX-T 管理員的受限制系統管理員許可權。 它可確保您的私用雲端平臺會自動升級為最新的功能和修補程式。  如需詳細資訊，請參閱 [私用雲端升級概念文章][concepts-upgrades]。
 
 ## <a name="vcenter-access-and-identity"></a>vCenter 存取和身分識別
 
-VCenter 中的許可權是透過 CloudAdmin 群組提供。 您可以在 vCenter 本機管理該群組，或透過與 Azure Active Directory 整合 vCenter LDAP 單一登入。 當您部署私人雲端之後，您就能夠啟用該整合。
+CloudAdmin 群組會提供 vCenter 中的許可權。 您可以在 vCenter 本機管理群組。 另一個選項是透過與 Azure Active Directory 整合 vCenter LDAP 單一登入。 部署私人雲端之後，您可以啟用該整合。 
 
-CloudAdmin 和 CloudGlobalAdmin 許可權如下表所示。
+此表格顯示 **CloudAdmin** 和 **CloudGlobalAdmin** 許可權。
 
 |  許可權集合           | CloudAdmin | CloudGlobalAdmin | 註解 |
 | :---                     |    :---:   |       :---:      |   :--:  |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279426"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534750"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -20,9 +20,13 @@ ms.locfileid: "93279426"
 
 管理作業包括上傳、驗證、抓取和刪除模型。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-models"></a>管理模型的方式
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-models"></a>建立模型
 
@@ -73,17 +77,7 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="manage-models-with-apis"></a>使用 Api 管理模型
-
-下列各節說明如何使用 [Azure 數位 Twins api 和 sdk](how-to-use-apis-sdks.md)完成不同的模型管理作業。
-
-> [!NOTE]
-> 為了簡潔起見，下列範例不包含錯誤處理。 不過，強烈建議您在專案內將服務呼叫包裝在 try/catch 區塊中。
-
-> [!TIP] 
-> 請記住，所有的 SDK 方法都有同步和非同步版本。 針對分頁呼叫，非同步方法會在 `AsyncPageable<T>` 同步版本傳回時傳回 `Pageable<T>` 。
-
-### <a name="upload-models"></a>上傳模型
+## <a name="upload-models"></a>上傳模型
 
 建立模型之後，您可以將它們上傳至 Azure 數位 Twins 實例。
 
@@ -136,7 +130,7 @@ client.CreateModels(dtdlStrings);
  
 上傳時，服務會驗證模型檔案。
 
-### <a name="retrieve-models"></a>取出模型
+## <a name="retrieve-models"></a>取出模型
 
 您可以列出和取出儲存在 Azure 數位 Twins 實例上的模型。 
 
@@ -166,13 +160,13 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 模型不一定會以其上傳的檔表單來傳回。 Azure 數位 Twins 只會保證傳回表單在語義上是相等的。 
 
-### <a name="update-models"></a>更新模型
+## <a name="update-models"></a>更新模型
 
 將模型上傳至您的 Azure 數位 Twins 實例之後，整個模型介面都是不可變的。 這表示沒有傳統的「編輯」模型。 Azure 數位 Twins 也不允許重新上傳相同的模型。
 
 相反地，如果您想要變更模型（例如更新或），則請 `displayName` `description` 上傳 **較新版本** 的模型。 
 
-#### <a name="model-versioning"></a>模型版本設定
+### <a name="model-versioning"></a>模型版本設定
 
 若要建立現有模型的新版本，請從原始模型的 DTDL 開始。 更新、新增或移除您想要變更的欄位。
 
@@ -194,7 +188,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 然後，您的實例中將會提供此版本的模型，以用於數位 twins。 它不 **會** 覆寫舊版的模型，因此模型的多個版本會並存于您的實例中，直到您將 [它們移除](#remove-models)為止。
 
-#### <a name="impact-on-twins"></a>對 twins 的影響
+### <a name="impact-on-twins"></a>對 twins 的影響
 
 當您建立新的對應項時，由於新的模型版本和舊模型版本並存，新的對應項可以使用新版本的模型或較舊的版本。
 
@@ -202,7 +196,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 您可以藉由修補，將這些現有的 twins 更新為新的模型版本，如「 *如何：管理數位 twins* 」的「 [*更新數位對應項的模型*](how-to-manage-twin.md#update-a-digital-twins-model)」一節中所述。 在相同的修補程式中，您必須將 **模型識別碼** (更新為新版本) 以及 **必須在對應項上更改的任何欄位，使其符合新的模型** 。
 
-### <a name="remove-models"></a>移除模型
+## <a name="remove-models"></a>移除模型
 
 您也可以透過下列兩種方式之一，從服務中移除模型：
 * **解除** 委任：當模型解除委任之後，您就無法再使用它來建立新的數位 twins。 已使用此模型的現有數位 twins 不會受到影響，因此您仍可使用屬性變更和新增或刪除關聯性之類的專案來更新它們。
@@ -210,7 +204,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 這些是不同的功能，它們彼此不會有任何影響，不過它們可以一起使用，以逐漸移除模型。 
 
-#### <a name="decommissioning"></a>退役
+### <a name="decommissioning"></a>退役
 
 以下是解除委任模型的程式碼：
 
@@ -223,7 +217,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 模型的解除委任狀態會包含在 `ModelData` 模型抓取 api 所傳回的記錄中。
 
-#### <a name="deletion"></a>刪除
+### <a name="deletion"></a>刪除
 
 您可以一次刪除實例中的所有模型，也可以在個別的基礎上進行。
 
@@ -231,7 +225,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 本節的其餘部分會將模型刪除細分為更詳細的資料，並顯示如何針對個別模型執行此作業。
 
-##### <a name="before-deletion-deletion-requirements"></a>刪除之前：刪除需求
+#### <a name="before-deletion-deletion-requirements"></a>刪除之前：刪除需求
 
 一般來說，您可以隨時刪除模型。
 
@@ -239,7 +233,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 若要這麼做，您可以更新相依模型以移除相依性，或完全刪除相依模型。
 
-##### <a name="during-deletion-deletion-process"></a>刪除期間：刪除進程
+#### <a name="during-deletion-deletion-process"></a>刪除期間：刪除進程
 
 即使模型符合要求以立即將其刪除，您可能會想要先完成幾個步驟，以避免 twins 遺留的非預期結果。 以下是可協助您管理進程的一些步驟：
 1. 首先，解除委任模型
@@ -255,7 +249,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 await client.DeleteModelAsync(IDToDelete);
 ```
 
-##### <a name="after-deletion-twins-without-models"></a>刪除之後：不含模型的 Twins
+#### <a name="after-deletion-twins-without-models"></a>刪除之後：不含模型的 Twins
 
 一旦刪除模型，任何使用模型的數位 twins 現在都會被視為沒有模型。 請注意，沒有可提供此狀態中所有 twins 清單的查詢，不過您仍然 *可以* 依已刪除的模型查詢 twins，以瞭解受影響的 twins。
 
@@ -274,17 +268,13 @@ await client.DeleteModelAsync(IDToDelete);
 * 編輯外寄關聯 (如中所述，此對應項與其他 twins *的* 關聯性) 
 * 編輯屬性
 
-##### <a name="after-deletion-re-uploading-a-model"></a>刪除之後：重新上傳模型
+#### <a name="after-deletion-re-uploading-a-model"></a>刪除之後：重新上傳模型
 
 刪除模型之後，您可以稍後再決定上傳與您所刪除之識別碼相同的新模型。 以下是在該情況下所發生的情況。
 * 從方案存放區的觀點來看，這與上傳全新的模型相同。 這項服務並不記得先前已上傳舊的服務。   
 * 如果圖形中有任何剩餘的 twins 參考已刪除的模型，則不再是孤立的，此模型識別碼會與新的定義再次有效。 但是，如果模型的新定義與已刪除的模型定義不同，則這些 twins 可能會有符合已刪除之定義的屬性和關聯性，而且不是以新的定義有效。
 
 Azure 數位 Twins 不會防止此狀態，因此請小心適當地修補 Twins，以確保它們透過模型定義參數保持有效。
-
-## <a name="manage-models-with-cli"></a>使用 CLI 管理模型
-
-您也可以使用 Azure 數位 Twins CLI 來管理模型。 您可以在 how [*to：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
 ## <a name="next-steps"></a>後續步驟
 

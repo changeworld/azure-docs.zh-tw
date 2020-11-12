@@ -1,17 +1,17 @@
 ---
 title: Advanced 威脅防護-適用於 MariaDB 的 Azure 資料庫
 description: 「進階威脅防護」會偵測出暗示對資料庫有潛在安全性威脅的異常資料庫活動。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 2ad35c36e497e4719729c00a90eb8919b75ef0fd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 018ba33271f8a3a81c3b7109607334b076d8609c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425656"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536186"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>適用於 MariaDB 的 Azure 資料庫 Advanced 威脅防護
 
@@ -23,7 +23,7 @@ ms.locfileid: "92425656"
 「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過 [Azure 入口網站](https://portal.azure.com)來存取和管理 Advanced 威脅防護。 這項功能適用于一般用途和記憶體優化伺服器。
 
 > [!NOTE]
-> 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
+> 下列 Azure Government 和主權雲端區域 **無法** 使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 
 ## <a name="what-is-advanced-threat-protection"></a>什麼是進階威脅防護？
@@ -34,11 +34,11 @@ ms.locfileid: "92425656"
 
 ## <a name="advanced-threat-protection-alerts"></a>進階威脅防護警示 
 適用於 MariaDB 的 Azure 資料庫的 Advanced 威脅防護會偵測異常活動，指出有不尋常且可能有害的存取或惡意探索資料庫，而且可能會觸發下列警示：
-- **從不尋常的位置存取**：當適用於 MariaDB 的 Azure 資料庫伺服器的存取模式發生變更時，就會觸發此警示，其中有人從不尋常的地理位置登入適用於 MariaDB 的 Azure 資料庫伺服器。 在某些情況下，警示會偵測到合法的動作 (新的應用程式或開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
-- **從不尋常的 Azure 資料中心存取**：當適用於 MariaDB 的 Azure 資料庫伺服器的存取模式發生變更時，就會觸發此警示，而在最近的期間內，有人從這台伺服器上看到的不尋常 Azure 資料中心登入伺服器。 在某些情況下，警示會偵測到您在 Azure 中的新應用程式 (合法的動作，Power BI) 。 在其他情況下，警示則是偵測來自 Azure 資源/服務的惡意動作 (離職員工、外部攻擊者)。
-- **從不熟悉的主體存取**：當適用於 MariaDB 的 Azure 資料庫伺服器的存取模式發生變更時，就會觸發此警示，其中有人使用不尋常的主體 (適用於 MariaDB 的 Azure 資料庫使用者) 來登入伺服器。 在某些情況下，警示會偵測到合法的動作 (新的應用程式、開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
-- **從可能有害的應用程式存取**：使用可能有害的應用程式用存取資料庫時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測使用常見攻擊工具的攻擊。
-- **暴力密碼破解適用於 MariaDB 的 Azure 資料庫認證**：當有異常大量的失敗登入具有不同的認證時，就會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
+- **從不尋常的位置存取** ：當適用於 MariaDB 的 Azure 資料庫伺服器的存取模式發生變更時，就會觸發此警示，其中有人從不尋常的地理位置登入適用於 MariaDB 的 Azure 資料庫伺服器。 在某些情況下，警示會偵測到合法的動作 (新的應用程式或開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
+- **從不尋常的 Azure 資料中心存取** ：當適用於 MariaDB 的 Azure 資料庫伺服器的存取模式發生變更時，就會觸發此警示，而在最近的期間內，有人從這台伺服器上看到的不尋常 Azure 資料中心登入伺服器。 在某些情況下，警示會偵測到您在 Azure 中的新應用程式 (合法的動作，Power BI) 。 在其他情況下，警示則是偵測來自 Azure 資源/服務的惡意動作 (離職員工、外部攻擊者)。
+- **從不熟悉的主體存取** ：當適用於 MariaDB 的 Azure 資料庫伺服器的存取模式發生變更時，就會觸發此警示，其中有人使用不尋常的主體 (適用於 MariaDB 的 Azure 資料庫使用者) 來登入伺服器。 在某些情況下，警示會偵測到合法的動作 (新的應用程式、開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
+- **從可能有害的應用程式存取** ：使用可能有害的應用程式用存取資料庫時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測使用常見攻擊工具的攻擊。
+- **暴力密碼破解適用於 MariaDB 的 Azure 資料庫認證** ：當有異常大量的失敗登入具有不同的認證時，就會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
 
 ## <a name="next-steps"></a>後續步驟
 

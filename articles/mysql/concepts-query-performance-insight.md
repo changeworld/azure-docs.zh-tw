@@ -1,17 +1,17 @@
 ---
 title: 查詢效能深入解析 - 適用於 MySQL 的 Azure 資料庫
 description: 此文章描述如何在適用於 MySQL 的 Azure 資料庫中使用查詢效能深入解析功能
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884901"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535175"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的查詢效能深入解析
 
@@ -33,7 +33,7 @@ ms.locfileid: "90884901"
 
 ## <a name="permissions"></a>權限
 
-需要**擁有者**或**參與者**權限，才能檢視查詢效能深入解析中的查詢文字。 **讀者**可以檢視圖表與資料表，但無法檢視查詢文字。
+需要 **擁有者** 或 **參與者** 權限，才能檢視查詢效能深入解析中的查詢文字。 **讀者** 可以檢視圖表與資料表，但無法檢視查詢文字。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -64,7 +64,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 [等候統計資料] 檢視中顯示的查詢會根據指定時間間隔內呈現最大等候資料的查詢來分組。
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析長時間執行的查詢":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析等候統計資料":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444346"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536433"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何使用 IoT Edge 裝置作為閘道
 
@@ -45,21 +45,21 @@ IoT Edge hub 模組的運作方式就像是 IoT 中樞，因此可以從任何�
 
 在透明閘道模式中，理論上可以連線到 IoT 中樞的裝置可以改為連接到閘道裝置。 下游裝置有自己的 IoT 中樞身分識別，並使用 MQTT 或 AMQP 通訊協定進行連線。 閘道只會在裝置與 IoT 中樞之間傳遞通訊。 裝置和透過 IoT 中樞與其互動的使用者，不會察覺到閘道正在調節其通訊。 缺乏認知表示閘道被視為 *透明* 。
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-IoT Edge 裝置可透過透明閘道和一般 IoT 裝置進行連線。
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge 的裝置不能是 IoT Edge 閘道的下游。
 
 ![圖表-透明閘道模式](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+從版本1.2.0 開始，IoT Edge 的裝置可以透過透明閘道連接。
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ IoT Edge 裝置可以是透明閘道關聯性中的父代和子系。 您可以�
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>透明閘道後方的裝置功能
 
-
 搭配 IoT Edge 的訊息管線使用的所有 IoT 中樞基本專案也支援透明閘道案例。 每個 IoT Edge 閘道都有訊息的儲存和轉送功能。
 
 使用下表查看與閘道後方裝置相較之下，裝置支援不同 IoT 中樞功能的方式。
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| 功能 | IoT 裝置 | 閘道後方的 IoT |
+| ---------- | ---------- | -------------------- |
+| [裝置到雲端 (D2C) 訊息](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![是-IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![是-子 IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [雲端到裝置 (C2D) 訊息](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![是-IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![是-IoT 子 C2D](./media/iot-edge-as-gateway/check-yes.png) |
+| [直接方法](../iot-hub/iot-hub-devguide-direct-methods.md) | ![是-IoT 直接方法](./media/iot-edge-as-gateway/check-yes.png) | ![是-子 IoT 直接方法](./media/iot-edge-as-gateway/check-yes.png) |
+| [裝置 twins](../iot-hub/iot-hub-devguide-device-twins.md) 和 [模組 twins](../iot-hub/iot-hub-devguide-module-twins.md) | ![是-IoT twins](./media/iot-edge-as-gateway/check-yes.png) | ![是-子 IoT twins](./media/iot-edge-as-gateway/check-yes.png) |
+| [檔案上傳](../iot-hub/iot-hub-devguide-file-upload.md) | ![是-IoT 檔案上傳](./media/iot-edge-as-gateway/check-yes.png) | ![否-IoT 子檔案上傳](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ IoT Edge 裝置可以是透明閘道關聯性中的父代和子系。 您可以�
 您可以從父裝置下載、儲存和傳遞 **容器映射** 到子裝置。
 
 **Blob** （包括支援配套和記錄）可以從子裝置上傳至父裝置。
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| 功能 | IoT 裝置 | 閘道後方的 IoT |
-| ---------- | ---------- | -------------------- |
-| [裝置到雲端 (D2C) 訊息](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![是-IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![是-子 IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [雲端到裝置 (C2D) 訊息](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![是-IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![是-IoT 子 C2D](./media/iot-edge-as-gateway/check-yes.png) |
-| [直接方法](../iot-hub/iot-hub-devguide-direct-methods.md) | ![是-IoT 直接方法](./media/iot-edge-as-gateway/check-yes.png) | ![是-子 IoT 直接方法](./media/iot-edge-as-gateway/check-yes.png) |
-| [裝置 twins](../iot-hub/iot-hub-devguide-device-twins.md) 和 [模組 twins](../iot-hub/iot-hub-devguide-module-twins.md) | ![是-IoT twins](./media/iot-edge-as-gateway/check-yes.png) | ![是-子 IoT twins](./media/iot-edge-as-gateway/check-yes.png) |
-| [檔案上傳](../iot-hub/iot-hub-devguide-file-upload.md) | ![是-IoT 檔案上傳](./media/iot-edge-as-gateway/check-yes.png) | ![否-IoT 子檔案上傳](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 

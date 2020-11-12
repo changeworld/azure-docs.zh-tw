@@ -1,17 +1,17 @@
 ---
 title: 設定資料-in Replication-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何在適用於 MariaDB 的 Azure 資料庫中設定資料輸入複寫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425992"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535362"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>設定適用於 MariaDB 的 Azure 資料庫中的資料輸入複寫
 
@@ -54,7 +54,7 @@ ms.locfileid: "92425992"
 
 1. 繼續之前，請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) 。 
 
-2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
+2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址** 、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
    
    藉由嘗試從另一部電腦上裝載的 MySQL 命令列，或從 Azure 入口網站提供的 [Azure Cloud Shell](../cloud-shell/overview.md) ，來測試來源伺服器的連線能力。
 
@@ -119,7 +119,7 @@ ms.locfileid: "92425992"
    
    若要深入瞭解適用于 mariadb 檔，請參閱 [指定帳戶名稱](https://mariadb.com/kb/en/library/create-user/#account-names)。
 
-   **SQL (命令)**
+   **SQL 命令**
 
    - 使用 SSL 的複寫
 
@@ -141,7 +141,7 @@ ms.locfileid: "92425992"
 
    **MySQL Workbench**
 
-   若要在 MySQL 工作臺中建立複寫角色，請在 [ **管理** ] 窗格中選取 [ **使用者和許可權**]。 然後選取 [ **新增帳戶**]。
+   若要在 MySQL 工作臺中建立複寫角色，請在 [ **管理** ] 窗格中選取 [ **使用者和許可權** ]。 然後選取 [ **新增帳戶** ]。
  
    ![使用者和權限](./media/howto-data-in-replication/users_privileges.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "92425992"
 
    ![同步處理使用者](./media/howto-data-in-replication/syncuser.png)
  
-   選取 [系統 **管理角色** ] 面板，然後在 **全域許可權**清單中選取 [複寫 **從屬**]。 選取 **[** 套用] 以建立複寫角色。
+   選取 [系統 **管理角色** ] 面板，然後在 **全域許可權** 清單中選取 [複寫 **從屬** ]。 選取 **[** 套用] 以建立複寫角色。
 
    ![複寫從屬](./media/howto-data-in-replication/replicationslave.png)
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899556"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535940"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上，使用啟用 Redis on Arc 的 Kubernetes 叢集來部署 PHP 意見簿無狀態應用程式
 
@@ -77,11 +77,11 @@ ms.locfileid: "90899556"
 
     ![移至 Azure Arc 資源](media/azure-stack-edge-gpu-connect-powershell-interface/verify-azure-arc-enabled-1.png)
 
-1. 移至 [設定] **，然後選取** [ **+ 新增**設定]。
+1. 移至 [設定] **，然後選取** [ **+ 新增** 設定]。
 
-    ![移至設定](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![螢幕擷取畫面顯示已選取 [新增設定] Azure Arc 啟用 Kubernetes 叢集。](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. 在 [ **新增**設定] 中，為欄位輸入適當的值， **然後選取 [** 套用]。
+1. 在 [ **新增** 設定] 中，為欄位輸入適當的值， **然後選取 [** 套用]。
 
     |參數  |描述 |
     |---------|---------|
@@ -89,22 +89,22 @@ ms.locfileid: "90899556"
     |運算子實例名稱     |用來識別特定設定之操作員的實例名稱。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |
     |Operator 命名空間     | 設定為 **demotestguestbook** ，因為這符合部署中指定的命名空間 `yaml` 。 <br> 欄位會定義操作員安裝所在的命名空間。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |
     |存放庫 URL     |<br>Git 存放庫的路徑， `http://github.com/username/repo` 或 `git://github.com/username/repo` 格式設定 gitops) 將設定所在的位置。         |
-    |運算子範圍     | 選取 [ **命名空間**]。 <br>這會定義操作員的安裝範圍。 選取此名稱做為命名空間。 您的操作員將安裝在部署 yaml 檔所指定的命名空間中。       |
+    |運算子範圍     | 選取 [ **命名空間** ]。 <br>這會定義操作員的安裝範圍。 選取此名稱做為命名空間。 您的操作員將安裝在部署 yaml 檔所指定的命名空間中。       |
     |運算子類型     | 保留預設值。 <br>這會指定運算子的類型（依預設，設定為 flux）。        |
     |Operator 參數     | 將此留白。 <br>此欄位包含要傳遞給 flux 運算子的參數。        |
-    |Helm     | 將此設定為 **停用**。 <br>如果您要進行以圖表為基礎的部署，請啟用此選項。        |
+    |Helm     | 將此設定為 **停用** 。 <br>如果您要進行以圖表為基礎的部署，請啟用此選項。        |
 
 
     ![新增設定](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
 
 
-1. 設定部署會開始，且 **操作員狀態** 會顯示為 [ **擱置**中]。 
+1. 設定部署會開始，且 **操作員狀態** 會顯示為 [ **擱置** 中]。 
 
-    ![移至設定](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![螢幕擷取畫面顯示在重新整理時，處於擱置狀態的 Azure Arc 啟用 Kubernetes 叢集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
-1. 部署需要幾分鐘的時間。 當部署完成時， **操作員狀態** 會顯示為 **已安裝**。
+1. 部署需要幾分鐘的時間。 當部署完成時， **操作員狀態** 會顯示為 **已安裝** 。
 
-    ![移至設定](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![螢幕擷取畫面顯示已安裝狀態的 Azure Arc 啟用 Kubernetes 叢集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>驗證部署
@@ -154,7 +154,7 @@ ms.locfileid: "90899556"
 若要刪除部署，您可以從 Azure 入口網站中刪除設定。 這會刪除所建立的物件，包括部署和服務。
 
 1. 在 Azure 入口網站中，移至 Azure Arc 資源 > 設定。 
-1. 找出您想要刪除的設定。 選取 .。。以叫用操作功能表，然後選取 [ **刪除**]。
+1. 找出您想要刪除的設定。 選取 .。。以叫用操作功能表，然後選取 [ **刪除** ]。
     ![刪除設定](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 刪除設定可能需要幾分鐘的時間。

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: dc5dcf20b8c4fb1dae971b9bda4ef1a7552ce9d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442135"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534733"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -156,9 +156,12 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客戶管理的金鑰和高業務影響工作區
 
-根據預設，工作區的計量和中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。 
+根據預設，工作區的中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。
 
-您可以使用 [提供您自己的金鑰]，而不是使用 Microsoft 管理的金鑰。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫中金鑰的 URL。
+> [!NOTE]
+> Azure Cosmos DB __不__ 會用來儲存資訊，例如模型效能、實驗所記錄的資訊，或從模型部署記錄的資訊。 如需有關監視這些專案的詳細資訊，請參閱架構和概念文章的 [監視和記錄](concept-azure-machine-learning-architecture.md) 一節。
+
+您可以使用 [提供您自己的金鑰]，而不是使用 Microsoft 管理的金鑰。 這麼做會建立 Azure Cosmos DB 實例，以將中繼資料儲存在您的 Azure 訂用帳戶中。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫中金鑰的 URL。
 
 使用 `--cmk-keyvault` 和參數之前 `--resource-cmk-uri` ，您必須先執行下列動作：
 

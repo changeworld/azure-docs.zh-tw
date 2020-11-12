@@ -2,13 +2,13 @@
 title: 概念- (RBAC) 的角色型存取控制
 description: 瞭解 Azure VMware 解決方案的角色型存取控制的主要功能
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440938"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535481"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>以角色為基礎的存取控制 (適用于 Azure VMware 解決方案的 RBAC) 
 
@@ -30,9 +30,9 @@ ms.locfileid: "92440938"
 
 您可以在 Azure VMware 解決方案私人雲端 vCenter 上，查看授與 Azure VMware Solution CloudAdmin 角色的許可權。
 
-1. 登入 SDDC vSphere 用戶端，並移至**功能表**  >  **管理**。
-1. 在 [ **存取控制**] 底下，選取 [ **角色**]。
-1. 從角色清單中選取 [ **CloudAdmin** ]，然後選取 [ **許可權**]。 
+1. 登入 SDDC vSphere 用戶端，並移至 **功能表**  >  **管理** 。
+1. 在 [ **存取控制** ] 底下，選取 [ **角色** ]。
+1. 從角色清單中選取 [ **CloudAdmin** ]，然後選取 [ **許可權** ]。 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="如何在 vSphere 用戶端中查看 CloudAdmin 角色許可權":::
 

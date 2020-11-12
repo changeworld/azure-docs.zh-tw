@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e41eb0f6a61f7b195e251739ae93207c731cac5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71718522"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535872"
 ---
 # <a name="detect-adult-content"></a>偵測成人內容
 
@@ -30,12 +30,12 @@ ms.locfileid: "71718522"
 「成人」分類中有幾個不同的類別：
 
 - **成人** 影像定義為本質上明確的特質，通常會描繪裸體和性行為。
-- **猥褻** 影像會定義為本質上具有色情暗示性的影像，而且通常會包含比標記為 **成人**的影像更少的色情內容。
+- **猥褻** 影像會定義為本質上具有色情暗示性的影像，而且通常會包含比標記為 **成人** 的影像更少的色情內容。
 - **暴力** 映射會定義為描述而且高爾的影像。
 
 ## <a name="use-the-api"></a>使用 API
 
-您可以使用 [分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 來偵測成人內容。 當您將的值新增 `Adult` 至**visualFeatures** query 參數時，API 會 &mdash; `isAdultContent` `isRacyContent` `isGoryContent` &mdash; 在其 JSON 回應中傳回三個布林值屬性、和。 方法也會傳回對應的屬性 &mdash; `adultScore` ，以及 `racyScore` `goreScore` &mdash; 代表每個個別類別的信賴分數（介於零和1之間）。
+您可以使用 [分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 來偵測成人內容。 當您將的值新增 `Adult` 至 **visualFeatures** query 參數時，API 會 &mdash; `isAdultContent` `isRacyContent` `isGoryContent` &mdash; 在其 JSON 回應中傳回三個布林值屬性、和。 方法也會傳回對應的屬性 &mdash; `adultScore` ，以及 `racyScore` `goreScore` &mdash; 代表每個個別類別的信賴分數（介於零和1之間）。
 
 - [快速入門： ( .NET SDK) 分析影像 ](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [快速入門：分析影像 (REST API) ](./quickstarts/csharp-analyze.md)

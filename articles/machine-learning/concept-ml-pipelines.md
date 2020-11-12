@@ -1,5 +1,6 @@
 ---
 title: 什麼是 Azure Machine Learning 管線
+titleSuffix: Azure Machine Learning
 description: 瞭解 machine learning (ML) 管線如何協助您建立、優化及管理機器學習工作流程。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2ebe3976813c00e92f041faf267ef0d8ae98a909
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c29ee87ab177357f4289134bb39353c764a0d75b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323030"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535294"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
@@ -36,7 +37,7 @@ ms.locfileid: "93323030"
 
 Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不同的管線，以及它們的用途：
 
-| 狀況 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
+| 案例 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 |  (Machine learning) 的模型協調流程 | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發、快取、程式碼優先、重複使用 | 
 | 資料協調 (資料準備)  | 資料工程師 | [Azure Data Factory 管線](../data-factory/concepts-pipelines-activities.md) | Apache Airflow | 資料 > 資料 | 強型別移動、以資料為中心的活動 |

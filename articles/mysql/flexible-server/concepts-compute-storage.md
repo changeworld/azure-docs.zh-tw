@@ -1,17 +1,17 @@
 ---
 title: 計算和儲存選項-適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 本文說明適用於 MySQL 的 Azure 資料庫彈性伺服器中的計算和儲存體選項。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 0755ca7e77592a2efd6d8687f9eb19eacc2f0128
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315163"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534665"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 中的計算和儲存體選項
 
@@ -76,7 +76,7 @@ ms.locfileid: "92315163"
 您布建的儲存體是彈性伺服器可用的儲存體容量數量。 儲存體會用於資料庫檔案、暫存檔案、交易記錄和 MySQL 伺服器記錄。 在所有計算層中，支援的最小儲存體為 5 GiB，最大值為 16 TiB。 儲存體會以 1 GiB 增量進行調整，而且可以在建立伺服器之後相應增加。
 
 >[!NOTE]
-> 儲存體只能相應增加，無法相應減少。
+> 儲存體只能擴大，而不能縮小。
 
 您可以使用儲存體限制、儲存體百分比和儲存體使用的計量，以 Azure 監視器) 監視 Azure 入口網站 (中的儲存體耗用量。 請參閱 [監視文章](./concepts-monitoring.md) ，以瞭解計量。 
 
@@ -130,13 +130,13 @@ ms.locfileid: "92315163"
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-有效 IOPS 的最大值取決於每個計算大小的最大可用 IOPS。 請參閱下面的公式，並參考資料行最大未快取的磁片輸送量： [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、 [Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和[EDSV4 系列](../../virtual-machines/edv4-edsv4-series.md)檔中的*IOPS/MBps* 。
+有效 IOPS 的最大值取決於每個計算大小的最大可用 IOPS。 請參閱下面的公式，並參考資料行最大未快取的磁片輸送量： [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、 [Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和 [EDSV4 系列](../../virtual-machines/edv4-edsv4-series.md)檔中的 *IOPS/MBps* 。
 
 **最大有效 IOPS** = 最小 (「最大未快取的 *磁片輸送量： IOPS/MBps* 」的計算大小、GiB 中布建的儲存體 * 3) 
 
 您可以使用 [IO 百分比](./concepts-monitoring.md) 計量，以 Azure 監視器) 監視 Azure 入口網站 (中的 i/o 耗用量。 如果您需要更多 IOPS，您將需要瞭解您是否受限於計算大小或布建的儲存體。 相應調整您伺服器的計算或儲存體的布建。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 服務會自動採用伺服器的備份。 您可以從1到35天的範圍選取保留週期。 深入瞭解 [備份和還原概念文章](concepts-backup-restore.md)中的備份。
 
@@ -151,9 +151,9 @@ ms.locfileid: "92315163"
 
 調整儲存體和變更備份保留期限為線上作業，不需要重新開機伺服器。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
-如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 根據您選取的選項，在 [ **計算 + 儲存體** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案**]，展開 [ **資料庫** ] 類別，選擇 [ **適用於 MySQL 的 Azure 資料庫**] 和 [ **彈性伺服器** ] 作為部署類型，以自訂選項。
+如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 根據您選取的選項，在 [ **計算 + 儲存體** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案** ]，展開 [ **資料庫** ] 類別，選擇 [ **適用於 MySQL 的 Azure 資料庫** ] 和 [ **彈性伺服器** ] 作為部署類型，以自訂選項。
 
 如果您想要將伺服器成本優化，可以考慮下列秘訣：
 

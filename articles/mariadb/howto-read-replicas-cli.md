@@ -1,18 +1,18 @@
 ---
 title: 管理讀取複本-Azure CLI、REST API 適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 和 REST API，在適用於 MariaDB 的 Azure 資料庫中設定和管理讀取複本。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8bb8ad4baec4c59a78afd6a92d69e94240c056a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 70da1e9c70bf80737065362c68781652dd9ab6e5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542619"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537504"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API，在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -45,7 +45,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
-| name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| NAME | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有來源伺服器的名稱或識別碼。 |
 
 若要建立跨區域讀取複本，請使用 `--location` 參數。 
@@ -93,7 +93,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
-| name | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
+| NAME | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 
