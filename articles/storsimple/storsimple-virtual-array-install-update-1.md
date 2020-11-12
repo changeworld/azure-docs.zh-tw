@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 4bcd0f6d4d1ac505598c839f89850f9b55a9c36a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d05395f97aded0b57780f898e9cba6ddca491f95
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977488"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534087"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 1.0
 
@@ -47,7 +47,7 @@ ms.locfileid: "91977488"
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-1.md)]
 
-安裝完成後，請移至 StorSimple 裝置管理員服務。 選取 [裝置]****，然後選取並按一下您剛剛更新的裝置。 移至 [設定] > [管理] > [裝置更新]****。 顯示的軟體版本應該是 **10.0.10296.0**。
+安裝完成後，請移至 StorSimple 裝置管理員服務。 選取 [裝置]，然後選取並按一下您剛剛更新的裝置。 移至 [設定] > [管理] > [裝置更新]。 顯示的軟體版本應該是 **10.0.10296.0** 。
 
 ![更新之後的軟體版本](./media/storsimple-virtual-array-install-update-1/azupdate17m1.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "91977488"
 
 1. 啟動 Internet Explorer，然後流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
-2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]****。
+2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]。
 
-3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號。 輸入 **4047203** (適用於 Update 1.0)，然後按一下 [搜尋]****。
+3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號。 輸入 **4047203** (適用於 Update 1.0)，然後按一下 [搜尋]。
    
-    此時會顯示 Hotfix 清單，例如 **StorSimple Virtual Array Update 1.0**。
+    此時會顯示 Hotfix 清單，例如 **StorSimple Virtual Array Update 1.0** 。
    
     ![搜尋目錄](./media/storsimple-virtual-array-install-update-1/download1.png)
 
@@ -100,28 +100,28 @@ ms.locfileid: "91977488"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
-1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 記下您在執行的軟體版本。 **只有當您執行的是 Update 0.6 (10.0.10293.0) 時，才繼續進行此更新。如果您正在執行較舊的版本，請先在裝置上 [安裝更新 0.6](storsimple-virtual-array-install-update-06.md) ，然後套用 update 1。**
+1. 在本機 web UI 中，移至 [ **維護**  >  **軟體更新** ]。 記下您在執行的軟體版本。 **只有當您執行的是 Update 0.6 (10.0.10293.0) 時，才繼續進行此更新。如果您正在執行較舊的版本，請先在裝置上 [安裝更新 0.6](storsimple-virtual-array-install-update-06.md) ，然後套用 update 1。**
    
-    ![更新裝置1](./media/storsimple-virtual-array-install-update-1/update1m.png)
+    ![螢幕擷取畫面顯示從維護功能表選取的軟體更新。](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
+2. 在 [更新檔案路徑] 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
    
-    ![更新裝置2](./media/storsimple-virtual-array-install-update-1/update2m.png)
+    ![螢幕擷取畫面顯示 [軟體更新] 頁面中的 [目前的軟體版本] 和 [更新檔案路徑] 文字方塊。](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
 3. 此時會顯示警告。 如果虛擬陣列是單一節點裝置，在套用更新後，裝置就會重新啟動而會有停機時間。 按一下核取圖示。
    
-   ![更新裝置3](./media/storsimple-virtual-array-install-update-1/update3m.png)
+   ![螢幕擷取畫面顯示停止運作的對話方塊警告。](./media/storsimple-virtual-array-install-update-1/update3m.png)
 
 4. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
-    ![更新裝置4](./media/storsimple-virtual-array-install-update-1/update5m.png)
+    ![螢幕擷取畫面顯示更新的成功訊息。](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
-5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10296** (適用於 Update 1.0)。
+5. 重新啟動完成後，您就會進入 [登入] 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [ **維護**  >  **軟體更新** ]。 顯示的軟體版本應該是 **10.0.0.0.0.10296** (適用於 Update 1.0)。
    
    > [!NOTE]
-   > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10296**，而相同版本在 Azure 入口網站則會回報為 **10.0.10296.0**。
+   > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10296** ，而相同版本在 Azure 入口網站則會回報為 **10.0.10296.0** 。
    
-    ![更新裝置5](./media/storsimple-virtual-array-install-update-1/update6m.png)
+    ![螢幕擷取畫面顯示軟體更新頁面和目前的軟體版本。](./media/storsimple-virtual-array-install-update-1/update6m.png)
 
 6. 使用檔案 `windows8.1-kb4012213-x64`，重複步驟 2-4 安裝 Windows 安全性修正。 安裝後會重新啟動虛擬陣列，而您需要登入本機的 Web UI。
 

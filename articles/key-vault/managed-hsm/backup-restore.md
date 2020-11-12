@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3d999375d746bb359acdccf9bf48f8b77d509776
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e051a36b3c91fadc0c3b602cb4ba8e3dbcff1294
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992155"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367126"
 ---
 # <a name="full-backup-and-restore"></a>完整備份和還原
 
@@ -52,6 +52,10 @@ end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name mhsmdemobackup --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
 
+# Create a container
+
+az storage container create --account-name  mhsmdemobackup --name mhsmdemobackupcontainer  --account-key $skey
+
 # Generate a container sas token
 
 sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-name mhsmdemobackup --permissions crdw --expiry $end --account-key $skey -o tsv --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
@@ -68,7 +72,7 @@ az keyvault backup start --hsm-name mhsmdemo2 --storage-account-name mhsmdemobac
 > [!IMPORTANT]
 > 完整還原是具破壞性和干擾性的作業。 因此，必須在執行 `restore` 作業前的 30 分鐘內完成完整備份。
 
-還原是一項資料平面作業。 啟動還原作業的呼叫者必須具有執行 dataAction **Microsoft.KeyVault/managedHsm/restore/start/action** 的權限。 備份建立所在的來源 HSM 和將執行還原的目的地 HSM **必須**具有相同的安全性網域。 請參閱[關於受控 HSM 安全性網域](security-domain.md)以了解詳細資訊。
+還原是一項資料平面作業。 啟動還原作業的呼叫者必須具有執行 dataAction **Microsoft.KeyVault/managedHsm/restore/start/action** 的權限。 備份建立所在的來源 HSM 和將執行還原的目的地 HSM **必須** 具有相同的安全性網域。 請參閱[關於受控 HSM 安全性網域](security-domain.md)以了解詳細資訊。
 
 您必須提供下列資訊，才能執行完整還原：
 - HSM 名稱或 URL

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: adc3b4542b6eba0cc0df7d93ac2cabbf7c1c144a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 232f50c05182799c93a636baa2aec8ed93419be8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216584"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489466"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 共用資料  
 
@@ -137,8 +137,15 @@ ms.locfileid: "92216584"
 
 1. 在 [檢閱 + 建立] 索引標籤中，檢閱 [套件內容]、[設定]、[收件者] 及 [同步處理設定]。 選取 [建立]  。
 
-Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備好接受邀請。 
+Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備好接受邀請。
+
+## <a name="clean-up-resources"></a>清除資源
+
+當不再需要資源時，請移至 [Data Share 概觀] 頁面，然後選取 [刪除] 來移除資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立 Azure Data Share 並邀請收件者。 若要了解資料取用者要如何接受和接收資料共用，請繼續閱讀[接受和接收資料](subscribe-to-data-share.md)教學課程。
+在本教學課程中，您已了解如何建立 Azure Data Share 並邀請收件者。 若要了解資料取用者要如何接受和接收資料共用，請繼續閱讀接受和接收資料教學課程。
+
+> [!div class="nextstepaction"]
+> [教學課程：使用 Azure Data Share 接受和接收資料](subscribe-to-data-share.md)

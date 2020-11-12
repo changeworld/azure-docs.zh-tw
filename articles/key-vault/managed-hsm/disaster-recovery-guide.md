@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760388"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369251"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>受控 HSM 災害復原
 
@@ -48,7 +48,7 @@ ms.locfileid: "91760388"
 - Azure 位置。
 - 初始管理員的清單。
 
-下列範例會在位於**美國東部 2** 位置的資源群組 **ContosoResourceGroup** 中建立名為 **ContosoMHSM** 的 HSM，並將**目前登入的使用者**設為唯一管理員。
+下列範例會在位於 **美國東部 2** 位置的資源群組 **ContosoResourceGroup** 中建立名為 **ContosoMHSM** 的 HSM，並將 **目前登入的使用者** 設為唯一管理員。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 此命令的輸出會顯示您所建立之受控 HSM 的屬性。 兩個最重要屬性是：
 
-* **名稱**：在此範例中，名稱是 ContosoMHSM。 您將在其他 Key Vault 命令中使用此名稱。
-* **hsmUri**：在此範例中，URI 是 https://contosohsm.managedhsm.azure.net 。 透過其 REST API 使用 HSM 的應用程式必須使用此 URI。
+* **名稱** ：在此範例中，名稱是 ContosoMHSM。 您將在其他 Key Vault 命令中使用此名稱。
+* **hsmUri** ：在此範例中，URI 是 https://contosohsm.managedhsm.azure.net 。 透過其 REST API 使用 HSM 的應用程式必須使用此 URI。
 
 您的 Azure 帳戶現已取得在此受控 HSM 上執行任何作業的授權。 而且，沒有其他人已獲授權。
 
@@ -86,7 +86,7 @@ az keyvault security-domain init-recovery --hsm-name ContosoMHSM2 --sd-exchange-
 - 使用我們在上一個步驟下載的安全性網域交換金鑰，建立加密的安全性網域上傳 Blob，然後
 - 將安全性網域上傳 Blob 上傳至 HSM，以完成安全性網域復原
 
-在下列範例中，我們會使用 **ContosoMHSM** 中的安全性網域 (對應私密金鑰的 2)，並將其上傳至正在等待接收安全性網域的 **ContosoMHSM2**。 
+在下列範例中，我們會使用 **ContosoMHSM** 中的安全性網域 (對應私密金鑰的 2)，並將其上傳至正在等待接收安全性網域的 **ContosoMHSM2** 。 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key
@@ -102,11 +102,12 @@ az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key Con
 - 將用來儲存備份的儲存體帳戶
 - 此儲存體帳戶中的 Blob 儲存體容器；備份程序會在其中建立新資料夾來儲存加密備份
 
-在下列範例中，我們會使用 `az keyvault backup` 命令，將 HSM 備份儲存在儲存體帳戶 **ContosoBackup** 中的儲存體容器 **mhsmbackupcontainer**。 我們會建立在 30 分鐘後到期的 SAS 權杖，並將其提供給受控 HSM 以寫入備份。
+在下列範例中，我們會使用 `az keyvault backup` 命令，將 HSM 備份儲存在儲存體帳戶 **ContosoBackup** 中的儲存體容器 **mhsmbackupcontainer** 。 我們會建立在 30 分鐘後到期的 SAS 權杖，並將其提供給受控 HSM 以寫入備份。
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
+az storage container create --account-name  mhsmdemobackup --name mhsmbackupcontainer  --account-key $skey
 sas=$(az storage container generate-sas -n mhsmbackupcontainer --account-name ContosoBackup --permissions crdw --expiry $end --account-key $skey -o tsv)
 az keyvault backup start --hsm-name ContosoMHSM2 --storage-account-name ContosoBackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas
 

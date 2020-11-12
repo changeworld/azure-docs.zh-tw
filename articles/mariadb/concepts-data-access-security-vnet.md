@@ -1,21 +1,21 @@
 ---
 title: VNet 服務端點-適用於 MariaDB 的 Azure 資料庫
 description: 說明 VNet 服務端點如何針對適用於 MariaDB 的 Azure 資料庫伺服器運作。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 15bfeb3860c3a7dd5f9dc11f7fb18473116f5ff4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0863ccda9f292f3da9f7064a78ba700ab5962eb2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425609"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533458"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫使用虛擬網路服務端點和規則
 
-*虛擬網路規則*是一項防火牆安全性功能，可控制適用於 MariaDB 的 Azure 資料庫伺服器是否接受從虛擬網路中特定子網路所傳來的通訊。 本文說明為何虛擬網路規則功能有時是讓適用於 MariaDB 的 Azure 資料庫伺服器安全接受通訊的最佳選項。
+*虛擬網路規則* 是一項防火牆安全性功能，可控制適用於 MariaDB 的 Azure 資料庫伺服器是否接受從虛擬網路中特定子網路所傳來的通訊。 本文說明為何虛擬網路規則功能有時是讓適用於 MariaDB 的 Azure 資料庫伺服器安全接受通訊的最佳選項。
 
 若要建立虛擬網路規則，必須先有[虛擬網路][vm-virtual-network-overview] (VNet) 和[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]可供規則參考。 下圖說明虛擬網路服務端點如何與適用於 MariaDB 的 Azure 資料庫搭配運作：
 
@@ -32,9 +32,9 @@ ms.locfileid: "92425609"
 
 **虛擬網路：** Azure 訂用帳戶可以有相關聯的虛擬網路。
 
-**子網路：** 虛擬網路包含**子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
+**子網路：** 虛擬網路包含 **子網路** 。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
-**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MariaDB、MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。
+**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql** ，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MariaDB、MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。
 
 **虛擬網路規則：** 適用於 MariaDB 的 Azure 資料庫伺服器的虛擬網路規則，是列於適用於 MariaDB 的 Azure 資料庫伺服器之存取控制清單 (ACL) 中的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在適用於 MariaDB 的 Azure 資料庫伺服器的 ACL 中。
 
@@ -54,13 +54,13 @@ ms.locfileid: "92425609"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. 允許存取 Azure 服務
 
-連線安全性窗格有一個標示為 [允許存取 Azure 服務]**** 的 [開啟/關閉]**** 按鈕。 [開啟]**** 設定允許來自所有 Azure IP 位址和所有 Azure 子網路的通訊。 這些 Azure IP 或子網路可能不是您所擁有。 此 [開啟]**** 設定可能會超出您想要開啟適用於 MariaDB 資料庫的 Azure 資料庫的幅度。 虛擬網路規則功能提供更細微的控制。
+連線安全性窗格有一個標示為 [允許存取 Azure 服務] 的 [開啟/關閉] 按鈕。 [開啟] 設定允許來自所有 Azure IP 位址和所有 Azure 子網路的通訊。 這些 Azure IP 或子網路可能不是您所擁有。 此 [開啟] 設定可能會超出您想要開啟適用於 MariaDB 資料庫的 Azure 資料庫的幅度。 虛擬網路規則功能提供更細微的控制。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
-適用於 MariaDB 的 Azure 資料庫防火牆可讓您指定 IP 位址範圍，以接受來自此範圍內的通訊進入適用於 MariaDB 的 Azure 資料庫伺服器。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 但 Azure 私人網路內部的許多節點都以「動態」** IP 位址設定。 動態 IP 位址可能變更，例如當 VM 重新啟動時。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
+適用於 MariaDB 的 Azure 資料庫防火牆可讓您指定 IP 位址範圍，以接受來自此範圍內的通訊進入適用於 MariaDB 的 Azure 資料庫伺服器。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 但 Azure 私人網路內部的許多節點都以「動態」IP 位址設定。 動態 IP 位址可能變更，例如當 VM 重新啟動時。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
 
-您可以取得 VM 的「靜態」** IP 位址，以挽回 IP 選項。 如需詳細資料，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
+您可以取得 VM 的「靜態」IP 位址，以挽回 IP 選項。 如需詳細資料，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 不過，靜態 IP 方法可能變得難以管理，在大規模使用時成本很高。 虛擬網路規則較容易建立和管理。
 
@@ -130,7 +130,7 @@ ms.locfileid: "92425609"
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNET 服務端點的情況下將 VNET 防火牆規則新增至伺服器
 
-僅設定 VNet 防火牆規則無法協助保護伺服器對 VNet 的安全。 您也必須**開啟** VNet 服務端點，安全性才會生效。 當您**開啟**服務端點時，您的 VNet 子網路會停機，直到完成**關閉**到**開啟**的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
+僅設定 VNet 防火牆規則無法協助保護伺服器對 VNet 的安全。 您也必須 **開啟** VNet 服務端點，安全性才會生效。 當您 **開啟** 服務端點時，您的 VNet 子網路會停機，直到完成 **關閉** 到 **開啟** 的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
 
 您可以使用 Azure CLI 或入口網站設定 **IgnoreMissingServiceEndpoint** 旗標。
 

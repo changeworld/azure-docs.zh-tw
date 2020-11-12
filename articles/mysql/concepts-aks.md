@@ -1,17 +1,17 @@
 ---
 title: 連接到 Azure Kubernetes Service-適用於 MySQL 的 Azure 資料庫
 description: 了解如何連接 Azure Kubernetes Service 與適用於 MySQL 的 Azure 資料庫
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5c4a5f5d792a60ed3fef07797fdbdfa0c9cfb8fe
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546903"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534325"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>連接 Azure Kubernetes Service 與適用於 MySQL 的 Azure 資料庫
 
@@ -29,8 +29,8 @@ Azure Kubernetes Service (AKS) 提供的受控 Kubernetes 叢集可讓您用於 
 3. 複製 **基礎結構資源群組** 的名稱。
 4. 使用入口網站搜尋列，以找出並開啟基礎結構資源群組。
 5. 選取該資源群組中的 VM。
-6. 移至 VM 的 [網路]  索引標籤。
-7. 確認 [加速網路]  是否為「啟用」。
+6. 移至 VM 的 [網路] 索引標籤。
+7. 確認 [加速網路] 是否為「啟用」。
 
 或者，透過 Azure CLI 使用下列兩個命令：
 ```azurecli
@@ -42,6 +42,6 @@ az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [建立 Azure Kubernetes Service 叢集](../aks/kubernetes-walkthrough.md)
 - 了解如何[使用適用於 MySQL 的 OSBA 與 Azure 資料庫從 Helm 圖表安裝 WordPress](../aks/index.yml)

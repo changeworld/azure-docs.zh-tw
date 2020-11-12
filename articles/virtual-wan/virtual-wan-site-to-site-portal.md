@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a25ead5983e56f56ba0daea23c2775b3332fb8b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057904"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359522"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
@@ -41,13 +41,7 @@ ms.locfileid: "92057904"
 
 在開始設定之前，請確認您已符合下列條件：
 
-* 您有一個要連線的虛擬網路。 驗證沒有任何內部部署網路的子網路與您要連線的虛擬網路子網路重疊。 若要在 Azure 入口網站中建立虛擬網路，請參閱[快速入門](../virtual-network/quick-create-portal.md)。
-
-* 您的虛擬網路沒有任何虛擬網路閘道。 如果您的虛擬網路有閘道 (VPN 或 ExpressRoute)，則必須移除所有閘道。 此設定需要將虛擬網路改為連線到虛擬 WAN 中樞閘道。
-
-* 取得中樞區域的 IP 位址範圍。 中樞是虛擬 WAN 建立和使用的虛擬網路。 您為中樞區域指定的位址範圍不能與任何連線的現有虛擬網路重疊。 也不能與連線至內部部署的位址範圍重疊。 如果您不熟悉位於內部部署網路設定的 IP 位址範圍，請與能夠提供那些詳細資料的人員協調。
-
-* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [Before you begin](../../includes/virtual-wan-before-include.md)]
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>建立虛擬 WAN
 
@@ -91,7 +85,7 @@ ms.locfileid: "92057904"
 * **vpnSiteConfiguration -** 此區段表示網站連線至虛擬 WAN 時設定的裝置詳細資料。 其中包含分支裝置的名稱和公用 IP 位址。
 * **vpnSiteConnections -** 此區段提供與下列設定有關的資訊：
 
-    * 虛擬中樞 VNet 的**位址空間**<br>範例：
+    * 虛擬中樞 VNet 的 **位址空間**<br>範例：
  
         ```
         "AddressSpace":"10.1.0.0/24"
@@ -101,13 +95,13 @@ ms.locfileid: "92057904"
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * 虛擬中樞 Vpngateway 的 **IP 位址**。 由於 Vpngateway 的每個連線都由「主動對主動」設定中的 2 個通道組成，因此您會看到此檔案中列出這兩個 IP 位址。 在此範例中，您會看到每個網站的 "Instance0" 和 "Instance1"。<br>範例：
+    * 虛擬中樞 Vpngateway 的 **IP 位址** 。 由於 Vpngateway 的每個連線都由「主動對主動」設定中的 2 個通道組成，因此您會看到此檔案中列出這兩個 IP 位址。 在此範例中，您會看到每個網站的 "Instance0" 和 "Instance1"。<br>範例：
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Vpngateway 連線設定詳細資料**，例如 BGP、預先共用金鑰等等。PSK 是自動為您產生的預先共用金鑰。 您隨時都可以在自訂 PSK 的 [概觀] 頁面中編輯連線。
+    * **Vpngateway 連線設定詳細資料** ，例如 BGP、預先共用金鑰等等。PSK 是自動為您產生的預先共用金鑰。 您隨時都可以在自訂 PSK 的 [概觀] 頁面中編輯連線。
   
 ### <a name="example-device-configuration-file"></a>範例裝置設定檔
 
@@ -240,7 +234,7 @@ ms.locfileid: "92057904"
 * VPN 閘道的預設 BGP IP 位址 (由 Azure 指派)
 * 自訂 BGP IP 位址的設定選項：此欄位保留給 APIPA (自動私人 IP 定址)。 Azure 在範圍 169.254.21.* 和 169.254.22.* 支援 BGP IP。 Azure 會接受這些範圍內的 BGP 連線，但會使用預設的 BGP IP 來進行撥號連線。
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="此螢幕擷取畫面顯示箭頭指向 [檢視/設定] 動作的 [VPN (網台對網站)] 頁面。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 88828d6dea05c530d20fe378a108df2bd0dcd5b9
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279458"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533747"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -20,11 +20,11 @@ ms.locfileid: "93279458"
 
 在 Azure 數位 Twins 中，您可以將 [事件通知](how-to-interpret-event-data.md) 路由傳送至下游服務或已連線的計算資源。 這是藉由先設定可接收事件的 **端點** 來完成。 然後，您可以建立  [**事件路由**](concepts-route-events.md) ，以指定 Azure 數位 Twins 所產生的哪些事件會傳遞給哪些端點。
 
-您可以使用 [事件路由 api](/rest/api/digital-twins/dataplane/eventroutes)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)或 [Azure 數位 Twins CLI](how-to-use-cli.md)來管理端點和路由。 本文將逐步引導您完成透過這些機制建立端點和路由的流程。
+本文將逐步引導您完成使用 [事件路由 api](/rest/api/digital-twins/dataplane/eventroutes)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)和 [Azure 數位 Twins CLI](how-to-use-cli.md)建立端點和路由的流程。
 
-您也可以透過 [Azure 入口網站](https://portal.azure.com)來管理它們。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
+或者，您也可以使用 [Azure 入口網站](https://portal.azure.com)來管理端點和路由。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
 * 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：

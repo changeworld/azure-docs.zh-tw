@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: c08dd1b5b2f90e874f36c6cf01c4cc5f5ae74d17
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636250"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505983"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用私人端點將資料從 Azure Blob 儲存體安全地複製到 SQL 資料庫
 
@@ -59,17 +59,17 @@ ms.locfileid: "92636250"
 
 使用下列 SQL 指令碼，在您的 SQL 資料庫中建立 **dbo.emp** 資料表：
 
-    ```sql
-    CREATE TABLE dbo.emp
-    (
-        ID int IDENTITY(1,1) NOT NULL,
-        FirstName varchar(50),
-        LastName varchar(50)
-    )
-    GO
+```sql
+CREATE TABLE dbo.emp
+(
+    ID int IDENTITY(1,1) NOT NULL,
+    FirstName varchar(50),
+    LastName varchar(50)
+)
+GO
 
-    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
-    ```
+CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+```
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 在此步驟中，您可以建立資料處理站，並啟動 Data Factory 使用者介面，在資料處理站中建立管線。
@@ -84,10 +84,10 @@ ms.locfileid: "92636250"
 
 1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
 
-1. 針對 [資源群組]  ，採取下列其中一個步驟︰
+1. 針對 [資源群組]，採取下列其中一個步驟︰
 
-    - 選取 [使用現有的]  ，然後從下拉式清單選取現有的資源群組。
-    - 選取 [建立新的]  ，然後輸入資源群組的名稱。 
+    - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
+    - 選取 [建立新的] ，然後輸入資源群組的名稱。 
      
     若要了解資源群組，請參閱[使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。 
 

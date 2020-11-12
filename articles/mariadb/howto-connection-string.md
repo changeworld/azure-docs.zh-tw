@@ -1,18 +1,18 @@
 ---
 title: 連接字串-適用於 MariaDB 的 Azure 資料庫
 description: 此文件列出目前支援讓應用程式與「適用於 MariaDB 的 Azure 資料庫」連線的所有連接字串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 與 Ruby。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 73c91343057c12d7534cd79de346182f32964f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8119f0bfd1f9007cab0df93ad2c7ef22b4db2199
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268754"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532999"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>如何將應用程式連線至適用於 MariaDB 的 Azure 資料庫
 此主題列出適用於 MariaDB 的 Azure 資料庫所支援的連接字串類型，以及範本和範例。 您可以在連接字串中使用不同的參數和設定。
@@ -63,7 +63,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>從 Azure 入口網站取得連接字串詳細資料
-在 [Azure 入口網站](https://portal.azure.com)中，移至適用於 MariaDB 的 Azure 資料庫伺服器，然後按一下 [連接字串]**** 以取得您執行個體的字串清單︰![Azure 入口網站中的 [連接字串] 窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
+在 [Azure 入口網站](https://portal.azure.com)中，移至適用於 MariaDB 的 Azure 資料庫伺服器，然後按一下 [連接字串] 以取得您執行個體的字串清單︰![Azure 入口網站中的 [連接字串] 窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 此字串會提供詳細資料，例如驅動程式、伺服器和其他資料庫連線參數。 修改這些範例，以使用您自己的參數 (例如資料庫名稱、密碼等)。 接著，您可以使用這個字串從您的程式碼和應用程式連接到伺服器。
 

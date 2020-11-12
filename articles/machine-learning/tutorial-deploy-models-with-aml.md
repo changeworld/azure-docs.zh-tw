@@ -1,7 +1,7 @@
 ---
 title: 映像分類教學課程：部署模型
 titleSuffix: Azure Machine Learning
-description: 本教學課程是兩部分系列的第二部分，將說明如何使用 Azure Machine Learning 搭配 scikit-learn 在 Python Jupyter Notebook 中部署影像分類模型。
+description: 本教學課程會示範如何使用 Azure Machine Learning，搭配 scikit-learn 在 Python Jupyter Notebook 中部署影像分類模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0d78fc55ca60fa883c742885acf2fa98ede61ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee6529f36c302cba1dc7b5a4b53aaf96ce58e4a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896581"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532778"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教學課程：在 Azure 容器執行個體中部署映像分類模型
 
 
-本教學課程是**兩部分教學課程系列的第二部分**。 在[先前的教學課程](tutorial-train-models-with-aml.md)中，您定型了機器學習模型，並在您的雲端工作區內註冊模型。  現在，您已準備好將模型部署為 Web 服務。 Web 服務是映像，在此案例中為 Docker 映像。 它封裝了評分邏輯和模型本身。 
+本教學課程是 **兩部分教學課程系列的第二部分** 。 在[先前的教學課程](tutorial-train-models-with-aml.md)中，您定型了機器學習模型，並在您的雲端工作區內註冊模型。  現在，您已準備好將模型部署為 Web 服務。 Web 服務是映像，在此案例中為 Docker 映像。 它封裝了評分邏輯和模型本身。 
 
 在本教學課程部分中，您將使用 Azure Machine Learning 來進行下列工作：
 
@@ -45,7 +45,7 @@ ms.locfileid: "90896581"
 > 本文的其餘部分包含與您在 Notebook 中所見相同的內容。  
 >
 > 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。
-> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]  ，以執行整個 Notebook。
+> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter** 。 或者，從頂端工具列中選擇 [全部執行]  ，以執行整個 Notebook。
 
 ## <a name="set-up-the-environment"></a><a name="start"></a>設定環境
 
@@ -124,7 +124,7 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```
 
 ### <a name="deploy-in-aci"></a>在 ACI 中部署
-預估完成時間：**2 到 5 分鐘**
+預估完成時間： **2 到 5 分鐘**
 
 設定映像並部署。 下列程式碼會執行這些步驟：
 
@@ -358,6 +358,6 @@ service.delete()
 
 + 了解所有的 [Azure Machine Learning 部署選項](how-to-deploy-and-where.md)。
 + 了解如何[建立 Web 服務的用戶端](how-to-consume-web-service.md)。
-+  以非同步的方式[對大量資料進行預測](how-to-use-parallel-run-step.md)。
++  以非同步的方式[對大量資料進行預測](./tutorial-pipeline-batch-scoring-classification.md)。
 + [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)。
-+ 請試試[自動選取演算法](tutorial-auto-train-models.md)教學課程。 
++ 請試試[自動選取演算法](tutorial-auto-train-models.md)教學課程。

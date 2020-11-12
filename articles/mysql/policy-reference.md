@@ -3,22 +3,22 @@ title: 適用於 MySQL 的 Azure 資料庫的內建原則定義
 description: 列出「適用於 MySQL 的 Azure 資料庫」的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
 ms.date: 10/20/2020
 ms.topic: reference
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ec580d4582d1a9066ff1b91cf1fb856355d3156d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 75a3112875d6d4c610315c02151281a511f72322
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332360"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534427"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」的 Azure 原則內建定義
 
 此頁面是「適用於 MySQL 的 Azure 資料庫」的 [Azure 原則](../governance/policy/overview.md)內建原則定義索引。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。
 
-連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本]**** 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
+連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本] 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
 
 ## <a name="azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫
 

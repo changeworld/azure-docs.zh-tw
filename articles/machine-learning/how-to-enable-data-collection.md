@@ -1,7 +1,7 @@
 ---
 title: 收集生產環境模型的相關資料
 titleSuffix: Azure Machine Learning
-description: 瞭解如何從已部署的 Azure Machine Learning 模型收集資料
+description: 瞭解如何從部署在 Azure Kubernetes Service (AKS) 叢集的 Azure Machine Learning 模型中收集資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,14 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357638"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532812"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
-
-
 
 本文說明如何從部署在 Azure Kubernetes Service (AKS) 叢集的 Azure Machine Learning 模型中收集資料。 然後收集到的資料會儲存在 Azure Blob 儲存體中。
 
@@ -57,7 +55,7 @@ Blob 中輸出資料的路徑遵循此語法：
 >[!NOTE]
 > 在版本 0.1.0 a16 之前的 Azure Machine Learning SDK for Python 版本中， `designation` 引數命名為 `identifier` 。 如果您使用較早的版本開發程式碼，您必須據以更新。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 

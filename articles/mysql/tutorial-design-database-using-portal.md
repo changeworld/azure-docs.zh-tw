@@ -1,18 +1,18 @@
 ---
 title: 教學課程：設計伺服器 - Azure 入口網站 - 適用於 MySQL 的 Azure 資料庫
 description: 本教學課程說明如何使用「Azure 入口網站」來建立和管理「適用於 MySQL 的 Azure 資料庫」伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: f6d0c4167192c42939e16dfd36bdc3eeef4b54b7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7559bc2246ca26cf2b14071396e075b28d2af3a7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543707"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532676"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MySQL 的 Azure 資料庫」資料庫
 
@@ -28,6 +28,8 @@ ms.locfileid: "92543707"
 > * 查詢資料
 > * 更新資料
 > * 還原資料
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -47,7 +49,7 @@ ms.locfileid: "92543707"
 
 3. 按一下 [適用於 MySQL 的 Azure 資料庫]  圖格。 填寫適用於 MySQL 的 Azure 資料庫表單。
    
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="瀏覽至 MySQL":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="建立表單":::
 
     **設定** | **建議的值** | **欄位描述**
     ---|---|---
@@ -62,7 +64,7 @@ ms.locfileid: "92543707"
     版本 | *最新版本*| 最新版本 (除非您有需要另一個版本的特定需求)。
     定價層 | **一般用途** 、 **Gen 5** 、 **2 個虛擬核心** 、 **5 GB** 、 **7 天** 、 **異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]  。 接下來，選取 [一般用途]  索引標籤。Gen 5  、2 個虛擬核心  、5 GB  和 7 天  是 **計算世代** 、 **虛擬核心** 、 **儲存體** 和 **備份保留期限** 的預設值。 您可以讓這些滑桿保留原狀。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項]  中選取 [異地備援]  。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="瀏覽至 MySQL":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="定價層":::
 
    > [!TIP]
    > 啟用 **自動成長** 後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
@@ -75,7 +77,7 @@ ms.locfileid: "92543707"
 
 1. 按一下您新建立的伺服器，然後按一下 [連線安全性]  。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="瀏覽至 MySQL":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="連接安全性":::
 2. 您可以在這裡 [新增我的 IP]  ，或設定防火牆規則。 請記得在建立規則後按一下 [儲存]  。
 您現在可以使用 mysql 命令列工具或 MySQL Workbench GUI 工具來連線到伺服器。
 
@@ -89,7 +91,7 @@ ms.locfileid: "92543707"
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下左側功能表中的 [所有資源]  ，輸入名稱，然後搜尋您的 Azure Database for MySQL 伺服器。 選取伺服器名稱以檢視詳細資料。
 
 2. 記下 [概觀]  頁面中的 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 您可以按一下每個欄位旁邊的 [複製] 按鈕，以複製到剪貼簿。
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="瀏覽至 MySQL":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="4-2 伺服器屬性":::
 
 在此範例中，伺服器名稱為 *mydemoserver.mysql.database.azure.com* ，而伺服器管理員登入為 *myadmin\@mydemoserver* 。
 
@@ -168,11 +170,11 @@ SELECT * FROM inventory;
 
 1. 在 Azure 入口網站中，找出您的 Azure Database for MySQL。 在 [概觀]  頁面上，按一下工具列上的 [還原]  。 [還原] 頁面隨即開啟。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="瀏覽至 MySQL":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="10-1 還原資料庫":::
 
 2. 在 [還原]  表單中填入必要資訊。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="瀏覽至 MySQL":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="10-2 還原表單":::
 
    - **還原點** ：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
    - **還原到新的伺服器** ：提供要作為還原目的地的新伺服器名稱。
@@ -180,6 +182,14 @@ SELECT * FROM inventory;
    - **定價層** ：此定價層與來源伺服器相同且無法變更。
    
 3. 按一下 [確定]  ，將伺服器[還原到資料表刪除之前的時間點](./howto-restore-server-portal.md)。 還原伺服器可建立伺服器的新複本 (自您指定的時間點起)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您覺得未來不需要這些資源，可以刪除資源群組，或刪除 MySQL 伺服器。 若要移除資源群組，請依照這些步驟操作：
+1. 在 Azure 入口網站中，搜尋並選取 [資源群組]。 
+2. 在 [資源群組] 清單中，選擇資源群組的名稱。
+3. 在資源群組的 [概觀]頁面中，選取 [刪除資源群組]。
+4. 在確認對話方塊凹輸入您的資源群組名稱，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

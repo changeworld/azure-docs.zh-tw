@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952160"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504445"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>教學課程：使用 Azure Stack Edge Pro 轉換資料
 
@@ -63,11 +63,11 @@ ms.locfileid: "91952160"
 
     ![開始使用計算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]**** 圖格會更新以顯示計算組態。 
+4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算] 圖格會更新以顯示計算組態。 
 
     ![開始使用計算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. 若要確認已設定 Edge 計算角色，請選取 [設定計算]**** 圖格上的 [檢視計算]****。
+5. 若要確認已設定 Edge 計算角色，請選取 [設定計算] 圖格上的 [檢視計算]。
     
     ![開始使用計算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "91952160"
     ![新增 Edge 本機共用](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-2.png)
 
   
-3. 選取 [新增共用]**** 以查看更新後的共用清單。
+3. 選取 [新增共用] 以查看更新後的共用清單。
 
     ![更新的共用清單](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-3.png) 
  
@@ -121,8 +121,8 @@ ms.locfileid: "91952160"
 
 在本節中，您會將自訂模組新增至您在[為您的 Azure Stack Edge Pro 開發 C# 模組](azure-stack-edge-j-series-create-iot-edge-module.md)中建立的 IoT Edge 裝置。 此自訂模組會從 Edge 裝置上的 Edge 本機共用中取用檔案，並將其移至裝置上的 Edge (雲端) 共用。 接著，雲端共用會將檔案推送至與該雲端共用相關聯的 Azure 儲存體帳戶。
 
-1. 移至 [Edge 計算] > [開始使用]。 在 [新增模組]**** 圖格上，選取 [簡單]**** 案例類型。 選取 [新增]  。
-2. 在 [設定和新增模組]**** 刀鋒視窗中，輸入下列值：
+1. 移至 [Edge 計算] > [開始使用]。 在 [新增模組] 圖格上，選取 [簡單] 案例類型。 選取 [新增]  。
+2. 在 [設定和新增模組] 刀鋒視窗中，輸入下列值：
 
     
     |欄位  |值  |
@@ -132,13 +132,13 @@ ms.locfileid: "91952160"
     |需要認證     | 若已核取，使用者名稱和密碼會用來擷取具有相符 URL 的模組。        |
     |輸入共用     | 選取輸入共用。 在此情況下，Edge 本機共用是輸入共用。 此處使用的模組會將檔案從 Edge 本機共用移到 Edge 共用，以便上傳至雲端。        |
     |輸出共用     | 選取輸出共用。 在此情況下，Edge 共用是輸出共用。        |
-    |觸發程序類型     | 選取 [檔案]**** 或 [排程]****。 每當發生檔案事件 (例如檔案寫入至輸入共用) 時，就會引發檔案觸發程序。 排定的觸發程序會根據您所定義的排程引發。         |
+    |觸發程序類型     | 選取 [檔案] 或 [排程]。 每當發生檔案事件 (例如檔案寫入至輸入共用) 時，就會引發檔案觸發程序。 排定的觸發程序會根據您所定義的排程引發。         |
     |觸發程序名稱     | 觸發程序的唯一名稱。         |
     |環境變數| 選用資訊，可協助定義您的模組將在其中執行的環境。   |
 
     ![新增和設定模組](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-1.png)
 
-3. 選取 [新增]  。 模組便會新增。 移至**概觀**頁面。 **模組**圖格會更新以指出已部署模組。 
+3. 選取 [新增]  。 模組便會新增。 移至 **概觀** 頁面。 **模組** 圖格會更新以指出已部署模組。 
 
     ![已部署模組](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-2.png)
 
@@ -148,23 +148,23 @@ ms.locfileid: "91952160"
 
 若要確認模組正在執行中，請執行下列步驟：
 
-1. 選取 [新增模組]**** 圖格。 這會帶您前往 [模組]**** 刀鋒視窗。 在模組清單中，找出您所部署的模組。 您新增的模組應處於「執行中」** 的執行階段狀態。
+1. 選取 [新增模組] 圖格。 這會帶您前往 [模組] 刀鋒視窗。 在模組清單中，找出您所部署的模組。 您新增的模組應處於「執行中」的執行階段狀態。
 
     ![檢視已部署的模組](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
-1.   在 [檔案總管] 中，連線到您先前建立的 Edge 本機共用和 Edge 共用。
+1. 在 [檔案總管] 中，連線到您先前建立的 Edge 本機共用和 Edge 共用。
 
     ![確認資料轉換](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
-1.   將資料新增至本機共用。
+1. 將資料新增至本機共用。
 
     ![確認資料轉換](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
-    資料會移至雲端共用。
+   資料會移至雲端共用。
 
     ![確認資料轉換](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
-    然後將資料從雲端共用推送至儲存體帳戶。 若要檢視資料，您可以使用儲存體總管。
+   然後將資料從雲端共用推送至儲存體帳戶。 若要檢視資料，您可以使用儲存體總管。
 
     <!--![Verify data transform](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-5.png)-->
  

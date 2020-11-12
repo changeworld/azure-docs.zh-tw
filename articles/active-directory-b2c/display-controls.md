@@ -11,24 +11,22 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961352"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532370"
 ---
 # <a name="display-controls"></a>顯示控制項
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**顯示控制項**是具有特殊功能的使用者介面元素，並與 Azure Active Directory B2C (Azure AD B2C) 後端服務互動。 它可讓使用者在頁面上執行動作，該頁面會在後端叫用 [驗證技術設定檔](validation-technical-profile.md) 。 顯示控制項會顯示在頁面上，並由自我判斷 [技術設定檔](self-asserted-technical-profile.md)參考。
+**顯示控制項** 是具有特殊功能的使用者介面元素，並與 Azure Active Directory B2C (Azure AD B2C) 後端服務互動。 它可讓使用者在頁面上執行動作，該頁面會在後端叫用 [驗證技術設定檔](validation-technical-profile.md) 。 顯示控制項會顯示在頁面上，並由自我判斷 [技術設定檔](self-asserted-technical-profile.md)參考。
 
 下圖說明自我判斷的註冊頁面，其中包含兩個可驗證主要和次要電子郵件地址的顯示控制項。
 
 ![範例轉譯的顯示控制項](media/display-controls/display-control-email.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -57,7 +55,7 @@ ms.locfileid: "91961352"
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** 用來預先填入要從使用者收集的宣告值。 如需詳細資訊，請參閱 [InputClaims](technicalprofiles.md#inputclaims) 元素。 |
 | DisplayClaims | 0:1 | **DisplayClaims** 可用來代表要從使用者收集的宣告。 如需詳細資訊，請參閱 [DisplayClaim](technicalprofiles.md#displayclaim) 元素。|
-| OutputClaims | 0:1 | **OutputClaims** 可用來代表要暫時 **儲存此顯示的宣告**。 如需詳細資訊，請參閱 [OutputClaims](technicalprofiles.md#outputclaims) 元素。|
+| OutputClaims | 0:1 | **OutputClaims** 可用來代表要暫時 **儲存此顯示的宣告** 。 如需詳細資訊，請參閱 [OutputClaims](technicalprofiles.md#outputclaims) 元素。|
 | 動作 | 0:1 | **動作** 可用來列出驗證技術設定檔，以針對前端發生的使用者動作叫用。 |
 
 ### <a name="input-claims"></a>輸入宣告
@@ -78,9 +76,9 @@ ms.locfileid: "91961352"
 
 每種類型的顯示控制項都需要一組不同的顯示宣告、 [輸出宣告](#output-claims)，以及要執行的 [動作](#display-control-actions) 。
 
-類似于[自我判斷技術設定檔](self-asserted-technical-profile.md#display-claims)中定義的**顯示宣告**，顯示宣告代表要從使用者在顯示控制項中收集的宣告。 參考的 **ClaimType** 元素必須針對 Azure AD B2C 所支援的使用者輸入類型指定 **>userinputtype** 元素，例如 `TextBox` 或 `DropdownSingleSelect` 。 如果 **動作**需要顯示宣告值，請將 **必要** 的屬性設定為， `true` 以強制使用者提供該特定顯示宣告的值。
+類似于 [自我判斷技術設定檔](self-asserted-technical-profile.md#display-claims)中定義的 **顯示宣告** ，顯示宣告代表要從使用者在顯示控制項中收集的宣告。 參考的 **ClaimType** 元素必須針對 Azure AD B2C 所支援的使用者輸入類型指定 **>userinputtype** 元素，例如 `TextBox` 或 `DropdownSingleSelect` 。 如果 **動作** 需要顯示宣告值，請將 **必要** 的屬性設定為， `true` 以強制使用者提供該特定顯示宣告的值。
 
-特定的顯示控制項類型需要特定的顯示宣告。 例如， **VerificationControl**類型的顯示控制項需要**VerificationCode** 。 您可以使用屬性 **ControlClaimType** 來指定所需的宣告所指定的 DisplayClaim。 例如：
+特定的顯示控制項類型需要特定的顯示宣告。 例如， **VerificationControl** 類型的顯示控制項需要 **VerificationCode** 。 您可以使用屬性 **ControlClaimType** 來指定所需的宣告所指定的 DisplayClaim。 例如：
 
 ```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -96,11 +94,11 @@ ms.locfileid: "91961352"
 
 顯示控制項的 **動作** 就是當使用者在用戶端上執行特定動作時，會在 Azure AD B2C 後端執行的程式 (瀏覽器) 。 例如，當使用者選取頁面上的按鈕時所要執行的驗證。
 
-動作會定義 **驗證技術設定檔**的清單。 它們是用來驗證顯示控制項的部分或全部顯示宣告。 驗證技術設定檔會驗證使用者輸入，並可能會將錯誤傳回給使用者。 您可以在顯示控制項動作中使用 **ContinueOnError**、 **ContinueOnSuccess**和 **前置條件** ，類似于在自我判斷技術設定檔中的 [驗證技術配置](validation-technical-profile.md) 檔中使用它們的方式。
+動作會定義 **驗證技術設定檔** 的清單。 它們是用來驗證顯示控制項的部分或全部顯示宣告。 驗證技術設定檔會驗證使用者輸入，並可能會將錯誤傳回給使用者。 您可以在顯示控制項動作中使用 **ContinueOnError** 、 **ContinueOnSuccess** 和 **前置條件** ，類似于在自我判斷技術設定檔中的 [驗證技術配置](validation-technical-profile.md) 檔中使用它們的方式。
 
 #### <a name="actions"></a>動作
 
-**Actions**元素包含下列元素：
+**Actions** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
@@ -108,13 +106,13 @@ ms.locfileid: "91961352"
 
 #### <a name="action"></a>動作
 
-**Action**元素包含下列屬性：
+**Action** 元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 作業的類型。 可能的值：`SendCode` 或 `VerifyCode`。 此 `SendCode` 值會將程式碼傳送給使用者。 此動作可能包含兩個驗證技術設定檔：一個用來產生程式碼，另一個用於傳送程式碼。 `VerifyCode`值會驗證使用者在 [輸入] 文字方塊中輸入的程式碼。 |
 
-**Action**元素包含下列元素：
+**Action** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
@@ -122,13 +120,13 @@ ms.locfileid: "91961352"
 
 #### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
 
-**ValidationClaimsExchange**元素包含下列元素：
+**ValidationClaimsExchange** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 一種技術設定檔，用來驗證參考技術設定檔的部分或所有顯示宣告。 |
 
-**ValidationTechnicalProfile**元素包含下列屬性：
+**ValidationTechnicalProfile** 元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -142,7 +140,7 @@ ms.locfileid: "91961352"
 | ------- | ----------- | ----------- |
 | 先決條件 | 0:1 | 必須滿足才能使驗證技術設定檔執行的先決條件清單。 |
 
-**先決條件**元素包含下列屬性：
+**先決條件** 元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -154,7 +152,7 @@ ms.locfileid: "91961352"
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 值 | 1:n | 檢查所用的資料。 如果這項檢查的型別是 `ClaimsExist`，此欄位會指定要查詢的 ClaimTypeReferenceId。 如果檢查的型別是 `ClaimEquals`，此欄位會指定要查詢的 ClaimTypeReferenceId。 指定要在另一個值元素中檢查的值。|
-| 動作 | 1:1 | 當協調流程步驟內的先決條件檢查為 True 時應採取的動作。 **動作**的值設定為 `SkipThisValidationTechnicalProfile` ，指定不應該執行相關聯的驗證技術設定檔。 |
+| 動作 | 1:1 | 當協調流程步驟內的先決條件檢查為 True 時應採取的動作。 **動作** 的值設定為 `SkipThisValidationTechnicalProfile` ，指定不應該執行相關聯的驗證技術設定檔。 |
 
 下列範例會使用 [AZURE AD SSPR 技術設定檔](aad-sspr-technical-profile.md)來傳送和驗證電子郵件地址。
 

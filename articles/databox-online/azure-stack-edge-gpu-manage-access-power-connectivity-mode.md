@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 99dd3da3f9e8434f9c859afd347bd19d10628083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934126"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532438"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>管理 Azure Stack Edge Pro GPU 的存取、電源和連線模式
 
@@ -36,7 +36,7 @@ ms.locfileid: "90934126"
 
 請在本機 UI 中執行下列步驟，以變更裝置密碼。
 
-1. 在本機 web UI 中，移至 [ **維護 > 密碼**]。
+1. 在本機 web UI 中，移至 [ **維護 > 密碼** ]。
 2. 輸入目前的密碼，然後輸入新密碼。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 確認新的密碼。
 
     ![變更密碼](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/change-password-1.png)
@@ -47,14 +47,14 @@ ms.locfileid: "90934126"
 
 重設工作流程不需要使用者重新叫用舊密碼，在密碼遺失時很好用。 此工作流程會在 Azure 入口網站中執行。
 
-1. 在 Azure 入口網站中，移至 [概觀] > [重設管理員密碼]****。
+1. 在 Azure 入口網站中，移至 [概觀] > [重設管理員密碼]。
 
-    ![重設密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![螢幕擷取畫面顯示已選取 [重設裝置密碼] 的裝置。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 選取 [重設]****。
+2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 選取 [重設]。
 
-    ![重設密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![螢幕擷取畫面顯示 [重設裝置密碼] 對話方塊。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理資源存取
 
@@ -114,15 +114,15 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 若要變更裝置模式，請遵循下列步驟：
 
-1. 在裝置的本機 web UI 中，移至設定 **> 雲端**。
-2. 從下拉式清單中，選取您要在其中操作裝置的模式。 您可以選取 [ **完全連接**]、[ **部分連接**] 和 [ **完全中斷**連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]****。
+1. 在裝置的本機 web UI 中，移至設定 **> 雲端** 。
+2. 從下拉式清單中，選取您要在其中操作裝置的模式。 您可以選取 [ **完全連接** ]、[ **部分連接** ] 和 [ **完全中斷** 連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]。
 
  
 ## <a name="manage-power"></a>管理電源
 
 您可以使用本機 Web UI 關閉或重新啟動您的實體裝置。 我們建議在重新開機之前，先讓資料伺服器上的共用離線，然後再讓裝置離線。 此動作可讓資料損毀的可能性降至最低。
 
-1. 在本機 web UI 中，移至 [ **維護 > 電源**]。
+1. 在本機 web UI 中，移至 [ **維護 > 電源** ]。
 2. 根據您想要做的動作，選取 [ **關閉** ] 或 [ **重新開機** ]。
 
     ![電源設定](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/shut-down-restart-1.png)

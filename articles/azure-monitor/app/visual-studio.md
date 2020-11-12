@@ -4,12 +4,12 @@ description: 偵錯期間和生產環境中的 Web 應用程式效能分析與�
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932204"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532897"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 進行應用程式偵錯
 在 Visual Studio (2015 和更新版本) 中，您可以使用 [Azure Application Insights](./app-insights-overview.md) 的遙測，在偵錯時和在生產環境中分析 ASP.NET Web 應用程式的效能並診斷問題。
@@ -53,12 +53,12 @@ ms.locfileid: "91932204"
 
 按一下例外狀況以取得堆疊追蹤。 如果應用程式的程式碼在 Visual Studio 中開啟，您可以從堆疊追蹤點選至程式碼的相關程式碼行。
 
-![例外狀況堆疊追蹤](./media/visual-studio/17.png)
+![螢幕擷取畫面：顯示堆疊追蹤中的 About 物件。](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>檢視程式碼中的要求和例外狀況摘要
 在每個處理常式方法之上的 Code Lens 行中，您會看到過去 24 小時內由 Application Insights 記錄的要求和例外狀況計數。
 
-![例外狀況堆疊追蹤](./media/visual-studio/21.png)
+![螢幕擷取畫面顯示 [內容] 對話方塊中的例外狀況。](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > 只有在您[設定應用程式以將遙測傳送至 Application Insights 入口網站](./asp-net.md)後，Code Lens 才會顯示 Application Insights 資料。
@@ -69,7 +69,7 @@ ms.locfileid: "91932204"
 ## <a name="trends"></a>趨勢
 趨勢是用來將應用程式一段時間內行為方式進行視覺化的工具。 
 
-從 Application Insights 工具列按鈕或 [Application Insights 搜尋] 視窗選擇 [探索遙測趨勢] **** 。 選擇五種常見查詢的其中一個，以便開始使用。 您可以根據遙測類型、時間範圍和其他屬性，分析不同的資料集。 
+從 Application Insights 工具列按鈕或 [Application Insights 搜尋] 視窗選擇 [探索遙測趨勢]  。 選擇五種常見查詢的其中一個，以便開始使用。 您可以根據遙測類型、時間範圍和其他屬性，分析不同的資料集。 
 
 若要尋找資料中的異常狀況，請選擇 [檢視類型] 下拉式清單底下的其中一個異常選項。 視窗底部的篩選選項可讓您輕鬆地全神貫注於特定的遙測子集。
 
@@ -92,5 +92,5 @@ ms.locfileid: "91932204"
 
 ## <a name="next-steps"></a>後續步驟
 
- * 使用**[Application Insights 入口網站](./overview-dashboard.md)**。 檢視儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及匯出的遙測資料。 
+ * 使用 **[Application Insights 入口網站](./overview-dashboard.md)** 。 檢視儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及匯出的遙測資料。 
 

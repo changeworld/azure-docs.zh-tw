@@ -3,17 +3,17 @@ title: 監視 Linux - Azure 上的 Java Web 應用程式效能 | Microsoft Docs
 description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 Java 網站的應用程式效能監視功能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: a4ce1ad6a8248680b8bdeec8a98195c3dbfe31a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379004"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532863"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd： Application Insights 中的 Linux 效能計量 [已淘汰]
 
 > [!IMPORTANT]
-> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
+> 監視 JAVA 應用程式的 **建議方法** 是使用自動檢測，而不需要變更程式碼。 請遵循 **[Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)** 的指導方針。
 
 若要在 [Application Insights](./app-insights-overview.md) 中瀏覽 Linux 系統效能度量，請安裝 [collectd](https://collectd.org/) 以及其 Application Insights 外掛程式。 這個開放原始碼解決方案會收集各種系統和網路統計資料。
 

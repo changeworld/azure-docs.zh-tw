@@ -4,23 +4,23 @@ description: Azure Functions 支援多個執行階段版本。 了解其間的�
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208112"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533730"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 執行階段版本概觀
 
 Azure Functions 目前支援三個版本的執行時間主機：1.x、2.x 和3.x。 所有三個版本都支援生產案例。  
 
 > [!IMPORTANT]
-> 版本1.x 處於維護模式，且僅支援在 Azure 入口網站或在 Windows 電腦本機上進行開發。 只有在較新版本中才會提供增強功能。 
+> 版本1.x 處於維護模式，且僅支援在 Azure 入口網站、Azure Stack Hub 入口網站或 Windows 電腦本機上進行開發。 只有在較新版本中才會提供增強功能。 
 
 本文將詳細說明各種版本之間的一些差異、如何建立每個版本，以及如何變更版本。
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>語言
 
 從2.x 版開始，執行時間會使用語言擴充性模型，且函數應用程式中的所有函式都必須共用相同的語言。 當您建立應用程式時，會選擇函式應用程式中函式的語言，並在 [函數背景 \_ 工作 \_ 運行](functions-app-settings.md#functions_worker_runtime) 時間設定中維護。 
 

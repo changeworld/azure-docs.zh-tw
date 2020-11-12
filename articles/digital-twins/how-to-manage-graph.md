@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78e0bfb0af494ecae2865fcc42679b8fcce44916
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 73aa6f8f6ee36aeeb41fbc54afe217ac776a4ebc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359573"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533870"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖形
 
@@ -25,7 +25,13 @@ Azure 數位 Twins 的核心是代表整個環境的對應項 [圖形](concepts-
 ## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
-    
+
+## <a name="ways-to-manage-graph"></a>管理圖表的方式
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+
+您也可以使用 Azure 數位 Twins (ADT) Explorer 範例來變更您的圖形，這可讓您將 Twins 和圖形視覺化，並在幕後使用 SDK。 下一節將詳細說明此範例。
+
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>建立關聯性
@@ -219,7 +225,8 @@ private static async Task DeleteRelationship(DigitalTwinsClient client, string s
 ```csharp
 await DeleteRelationship(client, srcId, relId);
 ```
-## <a name="create-a-twin-graph"></a>建立對應項圖形 
+
+## <a name="runnable-twin-graph-sample"></a>可執行檔對應項圖形範例
 
 下列可執行檔程式碼片段會使用本文中的關聯性作業，從數位 twins 和關聯性建立對應項圖形。
 
@@ -575,9 +582,6 @@ namespace creating_twin_graph_from_csv
 }
 
 ```
-## <a name="manage-relationships-with-cli"></a>使用 CLI 管理關聯性
-
-您也可以使用 Azure 數位 Twins CLI 來管理 Twins 及其關聯性。 您可以在 how [*to：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
 ## <a name="next-steps"></a>後續步驟
 

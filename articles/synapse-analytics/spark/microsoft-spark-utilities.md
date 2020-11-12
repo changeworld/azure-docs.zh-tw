@@ -4,24 +4,27 @@ description: 在 Azure Synapse Analytics 筆記本中使用 MSSparkutils 的教�
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: reference
 ms.subservice: spark
 ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 648c5b75f125725ebda2966d3ebc4200ee76b98c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428584"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533271"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
-Microsoft Spark 公用程式 (MSSparkUtils) 是一種內建套件，可協助您更輕鬆地進行常見的使用工作。 您可以使用 MSSparkUtils 有效率地處理檔案系統、取得環境變數，以及使用秘密。 MSSparkUtils 可在 `PySpark (Python)` 、 `Scala` 和 `.NET Spark (C#)` 筆記本以及 Synapse 管線中使用。
+
+Microsoft Spark 公用程式 (MSSparkUtils) 是一種內建套件，可協助您輕鬆地執行一般工作。 您可以使用 MSSparkUtils 來處理檔案系統、取得環境變數，以及處理秘密。 MSSparkUtils 可在 `PySpark (Python)` 、 `Scala` 和 `.NET Spark (C#)` 筆記本以及 Synapse 管線中使用。
 
 ## <a name="pre-requisites"></a>必要條件
+
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>設定 Azure Data Lake Storage Gen2 的存取權 
+
 Synapse 筆記本使用 Azure active directory (Azure AD) 傳遞來存取 ADLS Gen2 帳戶。 您需要是 **Blob 儲存體參與者** ，才能存取 ADLS Gen2 帳戶 (或資料夾) 。 
 
 Synapse 管線會使用 (MSI) 的工作區身分識別來存取儲存體帳戶。 若要在管線活動中使用 MSSparkUtils，您的工作區身分識別必須是 **Blob 儲存體參與者** ，才能存取 ADLS Gen2 帳戶 (或資料夾) 。
@@ -29,10 +32,10 @@ Synapse 管線會使用 (MSI) 的工作區身分識別來存取儲存體帳戶�
 請遵循下列步驟，以確定您的 Azure AD 和工作區 MSI 可以存取 ADLS Gen2 帳戶：
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) 以及您想要存取的儲存體帳戶。 您可以流覽至您想要存取的特定容器。
 2. 從左面板中選取 [ **存取控制] (IAM)** 。
-3. 對於儲存體帳戶上的 **儲存體 Blob 資料參與者** 角色，請將 **您的 Azure AD 帳戶** 和 **工作區身分識別** (與您的工作區名稱相同) 或確定已獲指派。 
-4. 按一下 [儲存]。
+3. 將 **您的 Azure AD 帳戶** 和 **工作區身分識別** (與您的工作區名稱相同) 至儲存體帳戶上的 **儲存體 Blob 資料參與者** 角色（如果尚未指派）。 
+4. 選取 [儲存]。
 
-您可以透過下列 URL，透過 Synapse Spark 存取 ADLS Gen2 上的資料：
+您可以透過下列 URL 使用 Synapse Spark 存取 ADLS Gen2 上的資料：
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
@@ -45,10 +48,10 @@ Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。
 1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 2. 從左側面板中選取 [ **管理** ]，然後選取 [ **外部連接** ] 底下的 [ **連結服務** ]。
 3. 在右側的 [ **新增連結服務** ] 面板中搜尋 **Azure Blob 儲存體** 。
-4. 按一下 [繼續] 。
+4. 選取 [繼續]  。
 5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰** 。
-6. 按一下 [ **測試連接** ] 以驗證設定是否正確。
-7. 按一下 [ **建立** ]，然後按一下 [ **全部發佈** ] 儲存您的變更。 
+6. 選取 [ **測試連接** ] 以驗證設定是否正確。
+7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
 
 您可以透過下列 URL，透過 Synapse Spark 存取 Azure Blob 儲存體上的資料：
 
@@ -103,25 +106,25 @@ print('Remote blob path: ' + wasb_path)
 2. 從左側面板中選取 [ **管理** ]，然後選取 [ **外部連接** ] 底下的 [ **連結服務** ]。
 3. 在右側的 [ **新增連結服務** ] 面板中搜尋 **Azure Key Vault** 。
 4. 選取要存取的 Azure Key Vault 帳戶，並設定連結的服務名稱。
-5. 按一下 [ **測試連接** ] 以驗證設定是否正確。
-6. 按一下 [ **建立** ]，然後按一下 [ **全部發行** ] 以儲存變更。 
+5. 選取 [ **測試連接** ] 以驗證設定是否正確。
+6. 選取 [先 **建立** ]，然後按一下 [ **全部發行** ] 以儲存您的變更。 
 
 Synapse 筆記本使用 Azure active directory (Azure AD) 傳遞來存取 Azure Key Vault。 Synapse 管線會使用 (MSI) 的工作區身分識別來存取 Azure Key Vault。 為了確保您的程式碼在筆記本和 Synapse 管線中都能運作，建議您授與 Azure AD 帳戶和工作區身分識別的秘密存取權限。
 
 請遵循下列步驟，將密碼存取權授與您的工作區身分識別：
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) 以及您想要存取的 Azure Key Vault。 
 2. 從左面板中選取 **存取原則** 。
-3. 按一下 [ **新增存取原則** ]： 
+3. 選取 [ **新增存取原則** ]： 
     - 選擇 [ **金鑰]、[秘密]、[& 憑證管理** ] 作為設定範本。
     - 選取 **您的 Azure AD 帳戶** 和 **您的工作區身分識別** (與選取主體中的工作區名稱) 相同，或確定已獲指派。 
-4. 按一下 [ **選取** 並 **新增** ]。
-5. 按一下 [ **儲存** ] 按鈕以認可變更。  
+4. 選取 [ **選取** 並 **新增** ]。
+5. 選取 [ **儲存** ] 按鈕以認可變更。  
 
 ## <a name="file-system-utilities"></a>檔案系統公用程式
 
 `mssparkutils.fs` 提供使用各種檔案系統的公用程式，包括 Azure Data Lake Storage Gen2 (ADLS Gen2) 和 Azure Blob 儲存體。 請務必設定 [Azure Data Lake Storage Gen2](#configure-access-to-azure-data-lake-storage-gen2) 的存取權，並適當地 [Azure Blob 儲存體](#configure-access-to-azure-blob-storage) 。
 
-執行下列命令以取得可用方法的總覽：
+執行下列命令，以取得可用方法的總覽：
 
 :::zone pivot = "programming-language-python"
 
@@ -196,7 +199,7 @@ FS.Ls("Your directory path")
 
 
 ### <a name="view-file-properties"></a>檢視檔案內容
-傳回檔案屬性，包括檔案名、檔案路徑、檔案大小、是否為目錄，以及檔案是否為檔案。
+傳回檔案屬性，包括檔案名、檔案路徑、檔案大小，以及它是否為目錄和檔案。
 
 :::zone pivot = "programming-language-python"
 
@@ -230,7 +233,8 @@ foreach(var File in Files) {
 ::: zone-end
 
 ### <a name="create-new-directory"></a>建立新目錄
-建立指定的目錄（如果不存在），也會建立任何必要的父目錄。
+
+建立指定的目錄（如果不存在），以及任何必要的父目錄。
 
 :::zone pivot = "programming-language-python"
 
@@ -256,7 +260,8 @@ FS.Mkdirs("new directory name")
 ::: zone-end
 
 ### <a name="copy-file"></a>複製檔案
-複製檔案或目錄，支援跨檔案系統複製。
+
+複製檔案或目錄。 支援跨檔案系統複製。
 
 :::zone pivot = "programming-language-python"
 
@@ -282,6 +287,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 ::: zone-end
 
 ### <a name="preview-file-content"></a>預覽檔案內容
+
 傳回指定檔案的第一個 ' maxBytes ' 個位元組，以 UTF-8 編碼的字串。
 
 :::zone pivot = "programming-language-python"
@@ -308,7 +314,8 @@ FS.Head("file path", maxBytes to read)
 ::: zone-end
 
 ### <a name="move-file"></a>移動檔案
-移動檔案或目錄，支援跨檔案系統移動。
+
+移動檔案或目錄。 支援跨檔案系統移動。
 
 :::zone pivot = "programming-language-python"
 
@@ -334,6 +341,7 @@ FS.Mv("source file or directory", "destination directory", true)
 ::: zone-end
 
 ### <a name="write-file"></a>寫入檔案
+
 將指定的字串寫出至檔案，並以 UTF-8 編碼。
 
 :::zone pivot = "programming-language-python"
@@ -360,6 +368,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 ::: zone-end
 
 ### <a name="append-content-to-a-file"></a>將內容附加至檔案
+
 將指定的字串附加至檔案，並以 UTF-8 編碼。
 
 :::zone pivot = "programming-language-python"
@@ -386,6 +395,7 @@ FS.Append("file path","content to append",true) // Set the last parameter as Tru
 ::: zone-end
 
 ### <a name="delete-file-or-directory"></a>刪除檔案或目錄
+
 移除檔案或目錄。
 
 :::zone pivot = "programming-language-python"
@@ -454,6 +464,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 ```
 
 ### <a name="get-token"></a>取得權杖
+
 傳回指定物件的 Azure AD 權杖，名稱 (選擇性) 。 下表列出所有可用的物件類型： 
 
 |物件類型|物件金鑰|
@@ -492,6 +503,7 @@ mssparkutils.credentials.getToken("audience Key")
 
 
 ### <a name="validate-token"></a>驗證權杖
+
 如果 token 尚未過期，則傳回 true。
 
 :::zone pivot = "programming-language-python"
@@ -519,6 +531,7 @@ mssparkutils.credentials.isValidToken("your token")
 
 
 ### <a name="get-connection-string-or-credentials-for-linked-service"></a>取得連結服務的連接字串或認證
+
 傳回連結服務的連接字串或認證。 
 
 :::zone pivot = "programming-language-python"
@@ -546,6 +559,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 
 
 ### <a name="get-secret-using-workspace-identity"></a>使用工作區身分識別取得秘密
+
 使用工作區身分識別，針對指定的 Azure Key Vault 名稱、秘密名稱和連結的服務名稱，傳回 Azure Key Vault 秘密。 請確定您已適當地設定 [Azure Key Vault](#configure-access-to-azure-key-vault) 的存取權。
 
 :::zone pivot = "programming-language-python"
@@ -573,6 +587,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 
 
 ### <a name="get-secret-using-user-credentials"></a>使用使用者認證取得秘密
+
 使用使用者認證，傳回指定 Azure Key Vault 名稱、秘密名稱和連結服務名稱的 Azure Key Vault 秘密。 
 
 :::zone pivot = "programming-language-python"
@@ -599,6 +614,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 ::: zone-end
 
 ### <a name="put-secret-using-workspace-identity"></a>使用工作區身分識別來放置秘密
+
 使用工作區身分識別，為指定的 Azure Key Vault 名稱、秘密名稱和連結服務名稱放置 Azure Key Vault 秘密。 請確定您已適當地設定 [Azure Key Vault](#configure-access-to-azure-key-vault) 的存取權。
 
 :::zone pivot = "programming-language-python"
@@ -626,6 +642,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 
 ### <a name="put-secret-using-user-credentials"></a>使用使用者認證來放置秘密
+
 使用使用者認證，為指定的 Azure Key Vault 名稱、秘密名稱和連結服務名稱放置 Azure Key Vault 秘密。 
 
 :::zone pivot = "programming-language-python"
@@ -689,6 +706,7 @@ getClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>取得使用者名稱
+
 傳回目前的使用者名稱。
 
 :::zone pivot = "programming-language-python"
@@ -715,6 +733,7 @@ mssparkutils.env.getUserName()
 ::: zone-end
 
 ### <a name="get-user-id"></a>取得使用者識別碼
+
 傳回目前的使用者識別碼。
 
 :::zone pivot = "programming-language-python"
@@ -741,6 +760,7 @@ mssparkutils.env.getUserId()
 ::: zone-end
 
 ### <a name="get-job-id"></a>取得作業識別碼
+
 傳回作業識別碼。
 
 :::zone pivot = "programming-language-python"
@@ -767,6 +787,7 @@ mssparkutils.env.getJobId()
 ::: zone-end
 
 ### <a name="get-workspace-name"></a>取得工作區名稱
+
 傳回工作區名稱。
 
 :::zone pivot = "programming-language-python"
@@ -793,6 +814,7 @@ mssparkutils.env.getWorkspaceName()
 ::: zone-end
 
 ### <a name="get-pool-name"></a>取得集區名稱
+
 傳回 Spark 集區名稱。
 
 :::zone pivot = "programming-language-python"
@@ -819,6 +841,7 @@ mssparkutils.env.getPoolName()
 ::: zone-end
 
 ### <a name="get-cluster-id"></a>取得叢集識別碼
+
 傳回目前的叢集識別碼。
 
 :::zone pivot = "programming-language-python"
@@ -845,6 +868,7 @@ mssparkutils.env.getClusterId()
 ::: zone-end
 
 ## <a name="next-steps"></a>後續步驟
+
 - [查看 Synapse 範例筆記本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區 (預覽)](../quickstart-apache-spark-notebook.md)
 - [什麼是 Azure Synapse Analytics 中的 Apache Spark](apache-spark-overview.md)
