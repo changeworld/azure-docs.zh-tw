@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b32ff0926aa2b797bdb8dfcbb01cf845080a0ce9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174571"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375902"
 ---
 1. 瀏覽至 [Google 雲端主控台](https://console.developers.google.com/cloud-resource-manager)，並使用您的 Google 帳戶認證登入。 
 2. 選取工具列上的 [建立專案]  。 
@@ -43,8 +43,8 @@ ms.locfileid: "67174571"
     ![[建立認證] 按鈕](./media/mobile-services-enable-google-cloud-messaging/create-credentials-button.png)
 11. 在 [Add credentials to your project] \(將認證新增至您的專案\)  頁面上，選取 [API 金鑰]  連結。 
 
-    ![[建立認證] 按鈕](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
-12. 在 [API 金鑰]  頁面上，選取 [建立/儲存]  。 在下列範例中，已選取 [IP 位址]  選項，並針對允許的 IP 位址輸入 **0.0.0.0/0**。 您應該適當地限制 API 金鑰。 
+    ![新增認證](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
+12. 在 [API 金鑰]  頁面上，選取 [建立/儲存]  。 在下列範例中，已選取 [IP 位址]  選項，並針對允許的 IP 位址輸入 **0.0.0.0/0** 。 您應該適當地限制 API 金鑰。 
 
     ![API 金鑰 - [建立] 按鈕](./media/mobile-services-enable-google-cloud-messaging/api-key-create-button.png)
 13. 將 [API 金鑰]  複製至剪貼簿，並將它儲存在某個位置。 

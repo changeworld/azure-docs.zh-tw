@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504529"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289890"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 來管理 Key Vault 
 
@@ -128,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 此命令的輸出會顯示您所建立的金鑰保存庫屬性。 兩個最重要屬性是：
 
-* **名稱**：在此範例中，名稱是 ContosoKeyVault。 您將在其他 Key Vault 命令中使用此名稱。
-* **vaultUri**：在此範例中，URI 是 https://contosokeyvault.vault.azure.net 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
+* **名稱** ：在此範例中，名稱是 ContosoKeyVault。 您將在其他 Key Vault 命令中使用此名稱。
+* **vaultUri** ：在此範例中，URI 是 https://contosokeyvault.vault.azure.net 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 您的 Azure 帳戶現已取得在此金鑰保存庫上執行任何作業的授權。 而且，沒有其他人已獲授權。
 
@@ -194,7 +194,7 @@ az keyvault certificate list --vault-name "ContosoKeyVault"
 
 應用程式必須向 Azure Active Directory 出示這兩個值才能取得權杖。 設定應用程式以取得權杖的方式取決於應用程式。 在 [Key Vault 範例應用程式](https://www.microsoft.com/download/details.aspx?id=45343)中，應用程式擁有者會在 app.config 檔案中設定這些值。
 
-如需有關使用 Azure Active Directory 來註冊應用程式的詳細步驟，您應檢閱標題為[整合應用程式與 Azure Active Directory](../../active-directory/develop/active-directory-integrating-applications.md)、[使用入口網站來建立可存取資源的 Azure Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)及[使用 Azure CLI 來建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)的文章。
+如需有關使用 Azure Active Directory 來註冊應用程式的詳細步驟，您應檢閱標題為[整合應用程式與 Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)、[使用入口網站來建立可存取資源的 Azure Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)及[使用 Azure CLI 來建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)的文章。
 
 若要在 Azure Active Directory 中註冊應用程式：
 

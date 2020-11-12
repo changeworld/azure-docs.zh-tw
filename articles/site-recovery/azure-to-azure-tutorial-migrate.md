@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045341"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394827"
 ---
 # <a name="move-vms-to-another-azure-region"></a>將 VM 移至另一個 Azure 區域
 
@@ -68,7 +68,7 @@ ms.locfileid: "92045341"
 - 若為 Linux VM，請遵循 Linux 散發者提供的指引，以取得最新的受信任根憑證及 VM 的憑證撤銷清單。
 - 請確定您未使用驗證 Proxy 來控制所要移動 VM 的網路連線能力。
 
-- 如果嘗試移動的 VM 無法存取網際網路，或使用防火牆 Proxy 控制輸出存取，請[檢查需求](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)。
+- 如果嘗試移動的 VM 無法存取網際網路，或使用防火牆 Proxy 控制輸出存取，請[檢查需求](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity)。
 
 - 識別來源網路配置，以及您目前使用的所有資源。 這包括但不限於負載平衡器、網路安全性群組 (NSG)、公用 IP 等。
 
@@ -98,7 +98,7 @@ ms.locfileid: "92045341"
 1. 在搜尋中，輸入「復原服務」，然後按一下 [復原服務保存庫]
 1. 在 [復原服務保存庫] 功能表中，按一下 [+新增]。
 1. 在 [名稱]  中，指定易記名稱 [ContosoVMVault]  。 如果您有多個訂用帳戶，請選取適當的一個。
-1. 建立資源群組 **ContosoRG**。
+1. 建立資源群組 **ContosoRG** 。
 1. 指定 Azure 區域。 若要查看支援的區域，請參閱 [Azure Site Recovery 定價詳細資料](https://azure.microsoft.com/pricing/details/site-recovery/)。
 1. 在 [復原服務保存庫] 中，選取 [ContosoVMVault] > [複寫的項目] > [+複寫]。
 1. 在下拉式清單中，選取 [Azure 虛擬機器]。
@@ -116,7 +116,7 @@ Site Recovery 會擷取與訂用帳戶和資源群組建立關聯的 VM 清單�
 1. 在本教學課程中，接受其他預設設定。
 1. 選取 [啟用複寫]  。 這個步驟會啟動一個作業來啟用 VM 的複寫。
 
-    ![啟用複寫](media/tutorial-migrate-azure-to-azure/settings.png)
+
 
 ## <a name="move"></a>移動
 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5659ce5fa6f99463f58a33662563d768248fd8cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904120"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394895"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>教學課程：使用 SQL 資料同步將 SQL Edge 中的資料同步至 Azure SQL Database
 
@@ -55,7 +55,7 @@ ms.locfileid: "90904120"
 
 * [最佳做法](../azure-sql/database/sql-data-sync-best-practices.md)和[如何針對 Azure SQL 資料同步問題進行疑難排解](../azure-sql/database/sql-data-sync-troubleshoot.md)
 
-* [使用 Azure 監視器記錄監視 SQL 資料同步](../azure-sql/database/sql-data-sync-monitor-sync.md)
+* [使用 Azure 監視器記錄監視 SQL 資料同步](../azure-sql/database/monitor-tune-overview.md)
 
 * 使用 [Transact-SQL](../azure-sql/database/sql-data-sync-update-sync-schema.md) 或 [PowerShell](../azure-sql/database/scripts/update-sync-schema-in-sync-group.md) 更新同步結構描述
 

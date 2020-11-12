@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 7690977f23b193bb3ba282df14d348b3fac0ad6b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457532"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330533"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教學課程：整合 Atlassian Cloud 與 Azure Active Directory
 
@@ -158,7 +158,7 @@ ms.locfileid: "92457532"
    
 1. 您的 Atlassian Cloud 應用程式會預期要有特定格式的 SAML 判斷提示，這需要您將自訂屬性對應新增到您的「SAML 權杖屬性」設定。 您可以按一下 [編輯] 圖示來編輯屬性對應。 
 
-   ![屬性](./media/atlassian-cloud-tutorial/default-attributes.png)
+   ![屬性](./media/atlassian-cloud-tutorial/edit-attribute.png)
    
    1. 具有 Microsoft 365 授權的 Azure AD 租用戶屬性對應
       
@@ -172,7 +172,7 @@ ms.locfileid: "92457532"
       
       c. 最後的屬性對應看起來應該如下所示。
 
-      ![影像 2](common/default-attributes.png)
+      ![影像 2](./media/atlassian-cloud-tutorial/default-attributes-1.png)
       
    1. 沒有 Microsoft 365 授權的 Azure AD 租用戶屬性對應 
 
@@ -186,7 +186,7 @@ ms.locfileid: "92457532"
          
       c. 最後的屬性對應看起來應該如下所示。
 
-      ![影像 4](common/default-attributes.png)
+      ![影像 4](./media/atlassian-cloud-tutorial/default-attributes-2.png)
      
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

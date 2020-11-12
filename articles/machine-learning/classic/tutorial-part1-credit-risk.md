@@ -9,21 +9,21 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6947c567ee2ffd70fdb3a1dfc17a641f63124ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91337795"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325810"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教學課程 1：預測信用風險 - Azure Machine Learning Studio (傳統)
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-在本教學課程中，您將進一步了解開發預測性分析解決方案的程序。 您將在 Machine Learning Studio (傳統) 中建立簡單的模型。  接著，您會將該模型部署為 Azure Machine Learning Web 服務。  這個已部署的模型可使用新資料進行預測。 本教學課程是**三部分教學課程系列的第一部分**。
+在本教學課程中，您將進一步了解開發預測性分析解決方案的程序。 您將在 Machine Learning Studio (傳統) 中建立簡單的模型。  接著，您會將該模型部署為 Azure Machine Learning Web 服務。  這個已部署的模型可使用新資料進行預測。 本教學課程是 **三部分教學課程系列的第一部分** 。
 
 假設您必須根據某個人在信用申請書上提供的資訊預測其信用風險。  
 
@@ -44,7 +44,7 @@ ms.locfileid: "91337795"
 
 本教學課程假設您之前已至少使用過一次 Machine Learning Studio (傳統)，且對機器學習概念有一些了解。 但不會假設您對上述任一方面有所專精。
 
-如果您未曾使用過 **Azure Machine Learning Studio (傳統)** ，您可以從[在 Azure Machine Learning Studio (傳統) 中建立您的第一個資料科學實驗](create-experiment.md)快速入門著手。 該快速入門會引導您完成第一次使用 Machine Learning Studio (傳統) 的程序。 它會說明基本概念，讓您了解如何將模組拖放到您的實驗、將它們連接在一起、執行實驗及檢視結果。
+如果您未曾使用過 **Azure Machine Learning Studio (傳統)** ，您可以從 [在 Azure Machine Learning Studio (傳統) 中建立您的第一個資料科學實驗](create-experiment.md)快速入門著手。 該快速入門會引導您完成第一次使用 Machine Learning Studio (傳統) 的程序。 它會說明基本概念，讓您了解如何將模組拖放到您的實驗、將它們連接在一起、執行實驗及檢視結果。
 
 
 > [!TIP] 
@@ -123,9 +123,9 @@ sed 's/ /,/g' german.data > german.csv
 
 3. 按一下視窗底部的 [ **+新增** ]。
 
-4. 選取 [ **資料集**]。
+4. 選取 [ **資料集** ]。
 
-5. 選取 [ **從本機檔案**]。
+5. 選取 [ **從本機檔案** ]。
 
     ![從本機檔案新增資料集](./media/tutorial-part1-credit-risk/add-dataset.png)
 
@@ -313,6 +313,6 @@ sed 's/ /,/g' german.data > german.csv
 > [教學課程 2 - 訓練和評估模型](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
-[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
-[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data

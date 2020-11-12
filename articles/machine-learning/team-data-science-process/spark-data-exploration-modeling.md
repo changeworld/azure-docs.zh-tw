@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027506"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314837"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 資料探索和模型化
 
 瞭解如何使用 HDInsight Spark 來訓練機器學習使用 Spark MLlib 預測計程車費用的模型。
 
-此範例會示範 [小組資料科學流程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的各種步驟。 NYC 計程車旅程和費用 2013 資料集的子集可用於載入、探索和準備資料。 然後，使用 Spark MLlib 來訓練二進位分類和迴歸模型，藉此預測是否會針對該行程付費，並預估小費數量。
+此範例會示範 [小組資料科學流程](./index.yml) 中的各種步驟。 NYC 計程車旅程和費用 2013 資料集的子集可用於載入、探索和準備資料。 然後，使用 Spark MLlib 來訓練二進位分類和迴歸模型，藉此預測是否會針對該行程付費，並預估小費數量。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -341,7 +341,7 @@ taxi_df_train_with_newFeatures.count()
 本節說明如何索引並編碼分類功能，以輸入模型化函式中。 MLlib 的模型化和預測函式需要先執行功能來分類要索引或編碼的分類輸入資料，才能使用這些資料。 根據模型，您需要以不同方式索引或編碼它們︰  
 
 * **樹狀結構型模型化** 需要將類別編碼為數值 (例如，含 3 個類別的特徵可能會使用 0、1、2 編碼)。 此演算法是由 MLlib 的 [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函式所提供。 此函式會將標籤的字串資料行，編碼為標籤頻率所排序的標籤索引的資料行。 雖然使用輸入和資料處理的數值編製索引，仍可指定樹狀結構型演算法，將它們視為類別適當地處理。 
-* **羅吉斯和線性迴歸模型**需要一個有效編碼方式，例如，含 3 個類別的一個功能可擴充至 3 個功能資料行，根據觀察的類別，每個資料行包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函式以執行 one-hot 編碼。 此編碼器會將標籤索引資料行對應到二進位向量資料行 (最多有一個單一值)。 這種編碼方式允許將預期數值功能的演算法 (例如羅吉斯迴歸) 套用至分類功能。
+* **羅吉斯和線性迴歸模型** 需要一個有效編碼方式，例如，含 3 個類別的一個功能可擴充至 3 個功能資料行，根據觀察的類別，每個資料行包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函式以執行 one-hot 編碼。 此編碼器會將標籤索引資料行對應到二進位向量資料行 (最多有一個單一值)。 這種編碼方式允許將預期數值功能的演算法 (例如羅吉斯迴歸) 套用至分類功能。
 
 以下是要索引及編碼分類功能的程式碼︰
 
@@ -1117,6 +1117,6 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 現在已使用 Spark MlLib 建立迴歸和分類模型，您已瞭解如何評分及評估這些模型。 進階資料探索和模型化筆記本深入探討到包括交叉驗證、超參數清除和模型評估。 
 
-**模型取用量**：若要了解如何評分和評估本主題中所建立的分類和迴歸模型，請參閱[評分及評估 Spark 建置的機器學習模型](spark-model-consumption.md)。
+**模型取用量** ：若要了解如何評分和評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置的機器學習模型](spark-model-consumption.md)。
 
-**交叉驗證和超參數掃掠**：如需如何使用交叉驗證和超參數掃掠來將模型定型的相關資訊，請參閱[使用 Spark 執行進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)
+**交叉驗證和超參數掃掠** ：如需如何使用交叉驗證和超參數掃掠來將模型定型的相關資訊，請參閱 [使用 Spark 執行進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)

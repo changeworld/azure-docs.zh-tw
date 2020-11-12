@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 233af68e4109e53b6bd841f298e9c2728ca5b116
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: baae0f89165e292408150dd419c6de8dc41a320c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313487"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335514"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>教學課程：整合 Abstract 與 Azure Active Directory
 
@@ -49,7 +49,7 @@ ms.locfileid: "92313487"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Abstract**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Abstract** 。
 1. 從結果面板選取 [Abstract]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -103,7 +103,7 @@ ms.locfileid: "92313487"
 
 1. 開啟 [Abstract Web 應用程式](https://app.abstract.com/)。
 2. 移至左側工具列中的 [權限]  頁面。
-3. 在 [設定 SSO]  區段中，輸入您的**中繼資料 URL** 和**實體識別碼**。
+3. 在 [設定 SSO]  區段中，輸入您的 **中繼資料 URL** 和 **實體識別碼** 。
 4. 輸入您可能會遇到的任何手動例外。 手動例外區段中所列的電子郵件將會略過 SSO，並且能夠使用電子郵件和密碼登入。 
 5. 按一下 **[儲存變更]** 。
 
@@ -146,7 +146,7 @@ ms.locfileid: "92313487"
 
 1. 開啟 [Abstract Web 應用程式](https://app.abstract.com/)。
 2. 移至左側工具列中的 [權限]  頁面。
-3. 按一下 [以我的帳戶進行測試]  。 如果測試失敗，請[連絡我們的支援小組](https://www.abstract.com/help/contact/)。
+3. 按一下 [以我的帳戶進行測試]  。 如果測試失敗，請[連絡我們的支援小組](https://help.abstract.com/hc/)。
 
 >[!Note]
 >您必須使用組織系統管理員帳戶進行驗證，才能存取 Abstract 上的 SSO 設定。

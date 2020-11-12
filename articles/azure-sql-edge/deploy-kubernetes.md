@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929229"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395286"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>在 Kubernetes 中部署 Azure SQL Edge 容器
 
@@ -48,7 +48,7 @@ Kubernetes 1.6 和更新版本支援[儲存體類別](https://kubernetes.io/docs
 * **Kubernetes 叢集**
    - 本教學課程需要使用 Kubernetes 叢集。 這些步驟會使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) 來管理叢集。 
 
-   - 基於本教學課程的目的，我們將使用 Azure Kubernetes Service 來部署 Azure SQL Edge。 請參閱[部署 Azure Kubernetes Service (AKS) 叢集](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster)，以使用 `kubectl` 在 AKS 中建立單一節點 Kubernetes 叢集並進行連線。 
+   - 基於本教學課程的目的，我們將使用 Azure Kubernetes Service 來部署 Azure SQL Edge。 請參閱[部署 Azure Kubernetes Service (AKS) 叢集](../aks/tutorial-kubernetes-deploy-cluster.md)，以使用 `kubectl` 在 AKS 中建立單一節點 Kubernetes 叢集並進行連線。 
 
    >[!NOTE]
    >為了防止節點失敗，Kubernetes 叢集需要一個以上的節點。
@@ -108,7 +108,7 @@ Kubernetes 1.6 和更新版本支援[儲存體類別](https://kubernetes.io/docs
          storage: 8Gi
    ```
 
-   儲存檔案 (例如 **pvc.yaml**)。
+   儲存檔案 (例如 **pvc.yaml** )。
 
 2. 在 Kubernetes 中建立永續性磁碟區宣告。
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >藉由使用 `LoadBalancer` 服務類型，您可以在連接埠 1433 遠端存取 (透過網際網路) Azure SQL Edge 執行個體。
 
-   儲存檔案 (例如 **sqledgedeploy.yaml**)。
+   儲存檔案 (例如 **sqledgedeploy.yaml** )。
 
 2. 建立部署。
 
@@ -318,8 +318,7 @@ Kubernetes 會自動重新建立 Pod，以復原 Azure SQL Edge 執行個體，�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Kubernetes 簡介](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Kubernetes 簡介](../aks/intro-kubernetes.md)
 - [SQL Edge 中採用 ONNX 的機器學習與人工智慧](onnx-overview.md)。
 - [使用 SQL Edge 和 IoT Edge 建置端對端 IoT 解決方案](tutorial-deploy-azure-resources.md)。
 - [Azure SQL Edge 中的資料串流](stream-data.md)
-

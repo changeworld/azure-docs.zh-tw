@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 6b252164027f07e4f26ab84ac12e2425e1da05f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c63c02ea852e8cf17e2d520ca91b05a5ba12b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357280"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325620"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統版) 中使用範例資料集
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [top]: #machine-learning-sample-datasets
@@ -27,7 +27,7 @@ ms.locfileid: "91357280"
 
 其中的部分資料集可在 Azure Blob 儲存體中使用。 下表提供這些資料集的直接連結。 您也可以透過[匯入資料][import-data]模組在實驗中使用這些資料集。
 
-在**儲存的資料集**之下的工作區中可使用這些範例資料集的其餘部分。 您可以在 Machine Learning Studio (傳統版) 的實驗畫布左邊的模組調色盤中找到這個。
+在 **儲存的資料集** 之下的工作區中可使用這些範例資料集的其餘部分。 您可以在 Machine Learning Studio (傳統版) 的實驗畫布左邊的模組調色盤中找到這個。
 您可以將資料集拖曳到您的實驗畫布上，在自己的實驗中使用任一資料集。
 
 ## <a name="datasets"></a>資料集
@@ -414,4 +414,4 @@ RCV1-V2 路透社新聞資料集中新聞文章的主題指派。 一篇新聞�
 > [透過範例開始進行您的實驗](sample-experiments.md)
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

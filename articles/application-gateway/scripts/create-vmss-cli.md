@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b7ae2543cfa9226064a2890b95dcc96be85fe56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81c936acc00801f8473c1ec74aa50dbf2abb4936
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497217"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397013"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 管理網路流量
 
@@ -45,16 +45,16 @@ az group delete --name myResourceGroupAG --yes
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 建立虛擬網路。 |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虛擬網路中建立子網路。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | 建立應用程式閘道的公用 IP 位址。 |
-| [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | 建立應用程式閘道。 |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | 建立虛擬機器擴展集。 |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | 取得應用程式閘道的公用 IP 位址。 |
+| [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
+| [az network vnet create](/cli/azure/network/vnet) | 建立虛擬網路。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虛擬網路中建立子網路。 |
+| [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest) | 建立應用程式閘道的公用 IP 位址。 |
+| [az network application-gateway create](/cli/azure/network/application-gateway?view=azure-cli-latest) | 建立應用程式閘道。 |
+| [az vmss create](/cli/azure/vmss) | 建立虛擬機器擴展集。 |
+| [az network public-ip show](/cli/azure/network/public-ip) | 取得應用程式閘道的公用 IP 位址。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure/overview)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure/overview)。
 
 您可以在 [Azure Windows 虛擬機器文件](../cli-samples.md)中找到其他應用程式閘道的 CLI 指令碼範例。

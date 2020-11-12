@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 407bd5679c6afebf26c2e6b768e0f8513ac39123
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205576"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397581"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立包含 URL 路徑型路由規則的應用程式閘道
 
-您可以使用 Azure 入口網站，在建立[應用程式閘道](application-gateway-introduction.md)時設定 [URL 路徑型路由規則](application-gateway-url-route-overview.md)。 在本教學課程中，您可以使用虛擬機器建立後端集區。 然後，您可以建立路由規則，確保 Web 流量會抵達集區中的適當伺服器。
+您可以使用 Azure 入口網站，在建立[應用程式閘道](./overview.md)時設定 [URL 路徑型路由規則](./url-route-overview.md)。 在本教學課程中，您可以使用虛擬機器建立後端集區。 然後，您可以建立路由規則，確保 Web 流量會抵達集區中的適當伺服器。
 
 在本文中，您將學會如何：
 
@@ -46,10 +46,10 @@ ms.locfileid: "88205576"
 3. 依虛擬機器輸入這些值：
 
     - 針對 [資源群組]  ，選取 [新建]  ，然後輸入 myResourceGroupAG  。
-    - **虛擬機器名稱**：myVM1 
-    - **區域**：(美國) 美國東部 
-    - **使用者名稱**：azureuser 
-    - **密碼**：*Azure123456!*
+    - **虛擬機器名稱** ：myVM1 
+    - **區域** ：(美國) 美國東部 
+    - **使用者名稱** ：azureuser 
+    - **密碼** ： *Azure123456!*
 
 
 4. 選取 [下一步：磁碟]  。
@@ -71,7 +71,7 @@ ms.locfileid: "88205576"
 
 ### <a name="install-iis"></a>安裝 IIS
 
-1. 開啟互動式殼層，並確定它是設定為 **PowerShell**。
+1. 開啟互動式殼層，並確定它是設定為 **PowerShell** 。
 
     ![安裝自訂延伸模組](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
 
@@ -103,8 +103,8 @@ ms.locfileid: "88205576"
 
 1. 在 [基本]  索引標籤上，為下列應用程式閘道設定輸入這些值：
 
-   - **資源群組**：選取 **myResourceGroupAG** 作為資源群組。
-   - **應用程式閘道名稱**：輸入 myAppGateway  作為應用程式閘道的名稱。
+   - **資源群組** ：選取 **myResourceGroupAG** 作為資源群組。
+   - **應用程式閘道名稱** ：輸入 myAppGateway  作為應用程式閘道的名稱。
    - **區域** - 選取 [(美國) 美國東部]  。
 
         ![建立新的應用程式閘道：基本概念](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
@@ -120,7 +120,7 @@ ms.locfileid: "88205576"
    > [!NOTE]
    > 對於應用程式閘道 v2 SKU，您只能選擇 [公用]  前端 IP 組態。 目前未針對此 v2 SKU 啟用私人前端 IP 設定。
 
-2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
+2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress* ，然後選取 [確定]  。 
 3. 完成時，選取 [下一步:  後端]。
 
 ### <a name="backends-tab"></a>[後端] 索引標籤
@@ -131,7 +131,7 @@ ms.locfileid: "88205576"
 
 2. 在隨即開啟的 [新增後端集區]  視窗中，輸入下列值以建立空的後端集區：
 
-    - **Name**：輸入 *myBackendPool* 作為後端集區的名稱。
+    - **Name** ：輸入 *myBackendPool* 作為後端集區的名稱。
 3. 在 [後端目標]  下，針對 [目標類型]  ，從下拉式清單中選取 [虛擬機器]  。
 
 5. 在 [目標]  之下，選取用於 [myVM1]  的網路介面。
@@ -147,13 +147,13 @@ ms.locfileid: "88205576"
 
 1. 選取 [路由規則]  欄中的 [新增規則]  。
 
-2. 在隨即開啟的 [新增路由規則]  視窗中，針對 [規則名稱]  輸入 *myRoutingRule*。
+2. 在隨即開啟的 [新增路由規則]  視窗中，針對 [規則名稱]  輸入 *myRoutingRule* 。
 
 3. 路由規則需要接聽程式。 在 [新增路由規則]  視窗內的 [接聽程式]  索引標籤上，針對接聽程式輸入下列值：
 
-    - **接聽程式名稱**：輸入 *myListener* 作為接聽程式的名稱。
-    - **前端 IP**：選取 [公用]  以選擇您針對前端所建立的公用 IP。
-    - **連接埠**：輸入 *8080*
+    - **接聽程式名稱** ：輸入 *myListener* 作為接聽程式的名稱。
+    - **前端 IP** ：選取 [公用]  以選擇您針對前端所建立的公用 IP。
+    - **連接埠** ：輸入 *8080*
   
         接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
 
@@ -161,10 +161,10 @@ ms.locfileid: "88205576"
 
 5. 針對 [HTTP 設定]  ，選取 [新建]  以建立新的 HTTP 設定。 HTTP 設定將會決定路由規則的行為。 
 
-6. 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *myHTTPSetting*。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。
+6. 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *myHTTPSetting* 。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。
 7. 在 [路徑型路由]  底下，選取 [新增多個目標以建立路徑型規則]  。
 8. 針對 [路徑]  ，輸入 */images/* \*。
-9. 針對 [路徑規則名稱]  ，輸入 *Images*。
+9. 針對 [路徑規則名稱]  ，輸入 *Images* 。
 10. 針對 [HTTP 設定]  ，選取 [myHTTPSetting]  。
 11. 針對 [後端目標]  ，選取 [影像]  。
 12. 選取 [新增]  以儲存路徑規則，並返回 [新增路由規則]  索引標籤。
@@ -192,13 +192,13 @@ ms.locfileid: "88205576"
 
    連接埠 8080 上的接聽程式會將此要求路由傳送至預設後端集區。
 
-3. 將 URL 變更為 *http://&lt;ip-address&gt;:8080/images/test.htm*，將 &lt;ip-address&gt; 取代為您的 IP 位址，然後您會看到類似下列的範例：
+3. 將 URL 變更為 *http://&lt;ip-address&gt;:8080/images/test.htm* ，將 &lt;ip-address&gt; 取代為您的 IP 位址，然後您會看到類似下列的範例：
 
     ![在應用程式閘道中測試影像 URL](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
    連接埠 8080 上的接聽程式會將此要求路由傳送至 [Images]  後端集區。
 
-4. 將 URL 變更為 *http://&lt;ip-address&gt;:8080/video/test.htm*，將 &lt;ip-address&gt; 取代為您的 IP 位址，然後您會看到類似下列的範例：
+4. 將 URL 變更為 *http://&lt;ip-address&gt;:8080/video/test.htm* ，將 &lt;ip-address&gt; 取代為您的 IP 位址，然後您會看到類似下列的範例：
 
     ![在應用程式閘道中測試影片 URL](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
@@ -211,4 +211,4 @@ ms.locfileid: "88205576"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在 Azure 應用程式閘道上啟用端對端 TLS](application-gateway-backend-ssl.md)
+> [在 Azure 應用程式閘道上啟用端對端 TLS](./ssl-overview.md)

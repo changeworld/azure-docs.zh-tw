@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b33c619ecfde8d1a470069f7fab4d840536b46
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245735"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397639"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 TLS 終止的應用程式閘道
 
@@ -36,7 +36,7 @@ ms.locfileid: "88245735"
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
-在此節中，您將使用 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 當您為應用程式閘道建立接聽程式時，須將憑證上傳至 Azure 入口網站。
+在此節中，您將使用 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 當您為應用程式閘道建立接聽程式時，須將憑證上傳至 Azure 入口網站。
 
 在您的本機電腦上，以系統管理員身分開啟 Windows PowerShell 視窗。 執行下列命令來建立憑證：
 
@@ -56,7 +56,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。 請確定您的密碼長度為 4-12 個字元：
+使用 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。 請確定您的密碼長度為 4-12 個字元：
 
 
 ```powershell
@@ -77,8 +77,8 @@ Export-PfxCertificate `
 
 1. 在 [基本]  索引標籤上，為下列應用程式閘道設定輸入這些值：
 
-   - **資源群組**：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
-   - **應用程式閘道名稱**：輸入 myAppGateway  作為應用程式閘道的名稱。
+   - **資源群組** ：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
+   - **應用程式閘道名稱** ：輸入 myAppGateway  作為應用程式閘道的名稱。
 
         ![建立新的應用程式閘道：基本概念](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
@@ -86,13 +86,13 @@ Export-PfxCertificate `
 
     在 [設定虛擬網路]  底下，選取 [新建]  以建立新的虛擬網路。 在隨即開啟的 [建立虛擬網路]  視窗中，輸入下列值以建立虛擬網路和兩個子網路：
 
-    - **Name**：輸入 myVNet  作為虛擬網路的名稱。
+    - **Name** ：輸入 myVNet  作為虛擬網路的名稱。
 
-    - **子網路名稱** (應用程式閘道子網路)：[子網路]  方格將會顯示名為 *Default* 的子網路。 將此子網路的名稱變更為 *myAGSubnet*。<br>應用程式閘道子網路只能包含應用程式閘道。 不允許任何其他資源。
+    - **子網路名稱** (應用程式閘道子網路)：[子網路]  方格將會顯示名為 *Default* 的子網路。 將此子網路的名稱變更為 *myAGSubnet* 。<br>應用程式閘道子網路只能包含應用程式閘道。 不允許任何其他資源。
 
-    - **子網路名稱** (後端伺服器子網路)：在 [子網路]  方格的第二列中，於 [子網路名稱]  欄中輸入 *myBackendSubnet*。
+    - **子網路名稱** (後端伺服器子網路)：在 [子網路]  方格的第二列中，於 [子網路名稱]  欄中輸入 *myBackendSubnet* 。
 
-    - **位址範圍** (後端伺服器子網路)：在 [子網路]  方格的第二列中，輸入沒有與 *myAGSubnet* 的位址範圍重疊的位址範圍。 例如，如果 *myAGSubnet* 的位址範圍是 10.0.0.0/24，請針對 *myBackendSubnet* 的位址範圍輸入 *10.0.1.0/24*。
+    - **位址範圍** (後端伺服器子網路)：在 [子網路]  方格的第二列中，輸入沒有與 *myAGSubnet* 的位址範圍重疊的位址範圍。 例如，如果 *myAGSubnet* 的位址範圍是 10.0.0.0/24，請針對 *myBackendSubnet* 的位址範圍輸入 *10.0.1.0/24* 。
 
     選取 [確定]  以關閉 [建立虛擬網路]  視窗並儲存虛擬網路設定。
 
@@ -106,7 +106,7 @@ Export-PfxCertificate `
    > [!NOTE]
    > 對於應用程式閘道 v2 SKU，您只能選擇 [公用]  前端 IP 組態。 目前未針對此 v2 SKU 啟用私人前端 IP 設定。
 
-2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
+2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress* ，然後選取 [確定]  。 
 
    ![建立新的應用程式閘道：前端](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -120,8 +120,8 @@ Export-PfxCertificate `
 
 2. 在隨即開啟的 [新增後端集區]  視窗中，輸入下列值以建立空的後端集區：
 
-    - **Name**：輸入 *myBackendPool* 作為後端集區的名稱。
-    - **新增不含目標的後端集區**：選取 [是]  以建立不含目標的後端集區。 您將會在建立應用程式閘道之後再新增後端目標。
+    - **Name** ：輸入 *myBackendPool* 作為後端集區的名稱。
+    - **新增不含目標的後端集區** ：選取 [是]  以建立不含目標的後端集區。 您將會在建立應用程式閘道之後再新增後端目標。
 
 3. 在 [新增後端集區]  視窗中，選取 [新增]  以儲存後端集區設定，並返回 [後端]  索引標籤。
 
@@ -135,19 +135,19 @@ Export-PfxCertificate `
 
 1. 選取 [路由規則]  欄中的 [新增規則]  。
 
-2. 在隨即開啟的 [新增路由規則]  視窗中，針對 [規則名稱]  輸入 *myRoutingRule*。
+2. 在隨即開啟的 [新增路由規則]  視窗中，針對 [規則名稱]  輸入 *myRoutingRule* 。
 
 3. 路由規則需要接聽程式。 在 [新增路由規則]  視窗內的 [接聽程式]  索引標籤上，針對接聽程式輸入下列值：
 
-    - **接聽程式名稱**：輸入 *myListener* 作為接聽程式的名稱。
-    - **前端 IP**：選取 [公用]  以選擇您針對前端所建立的公用 IP。
-    - **通訊協定**：選取 [HTTPS]  。
-    - **連接埠**：確認已輸入 443 作為連接埠。
+    - **接聽程式名稱** ：輸入 *myListener* 作為接聽程式的名稱。
+    - **前端 IP** ：選取 [公用]  以選擇您針對前端所建立的公用 IP。
+    - **通訊協定** ：選取 [HTTPS]  。
+    - **連接埠** ：確認已輸入 443 作為連接埠。
 
    在 [HTTPS 憑證]  底下:
 
    - **PFX 憑證檔案** - 流覽至您稍早建立的 c:\appgwcert.pfx 檔案並加以選取。
-   - **憑證名稱** - 輸入 mycert1*mycert1* 作為憑證的名稱。
+   - **憑證名稱** - 輸入 mycert1 *mycert1* 作為憑證的名稱。
    - **密碼** - 輸入您的密碼。
   
         接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
@@ -156,7 +156,7 @@ Export-PfxCertificate `
 
 4. 在 [後端目標]  索引標籤上，針對 [後端目標]  選取 [myBackendPool]  。
 
-5. 針對 [HTTP 設定]  ，選取 [新建]  以建立新的 HTTP 設定。 HTTP 設定將會決定路由規則的行為。 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *myHTTPSetting*。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。 
+5. 針對 [HTTP 設定]  ，選取 [新建]  以建立新的 HTTP 設定。 HTTP 設定將會決定路由規則的行為。 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *myHTTPSetting* 。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。 
 
    :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="建立新的應用程式閘道：HTTP 設定":::
 
@@ -176,7 +176,7 @@ Export-PfxCertificate `
 
 若要這麼做，您將：
 
-1. 建立 2 個新的 VM (*myVM* 與 *myVM2*)，以作為後端伺服器。
+1. 建立 2 個新的 VM ( *myVM* 與 *myVM2* )，以作為後端伺服器。
 2. 在虛擬機器上安裝 IIS，以確認成功建立應用程式閘道。
 3. 將後端伺服器新增至後端集區。
 
@@ -189,10 +189,10 @@ Export-PfxCertificate `
 
 1. 在 [基本]  索引標籤中，為下列虛擬機器設定輸入這些值：
 
-    - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
-    - **虛擬機器名稱**：輸入 myVM  作為虛擬機器的名稱。
-    - **使用者名稱**：輸入 azureuser  作為系統管理員使用者名稱。
-    - **密碼**：輸入系統管理員帳戶的密碼。
+    - **資源群組** ：選取 **myResourceGroupAG** 作為資源群組名稱。
+    - **虛擬機器名稱** ：輸入 myVM  作為虛擬機器的名稱。
+    - **使用者名稱** ：輸入 azureuser  作為系統管理員使用者名稱。
+    - **密碼** ：輸入系統管理員帳戶的密碼。
 1. 接受其他預設值，然後選取 [下一步：  磁碟]。  
 2. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
 3. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。
@@ -206,7 +206,7 @@ Export-PfxCertificate `
 
 在此範例中，您在虛擬機器上安裝 IIS，只為了驗證 Azure 已成功建立應用程式閘道。
 
-1. 開啟 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 若要這樣做，請從 Azure 入口網站的頂端導覽列中選取 [Cloud Shell]  ，然後從下拉式清單中選取 [PowerShell]  。 
+1. 開啟 [Azure PowerShell](../cloud-shell/quickstart-powershell.md)。 若要這樣做，請從 Azure 入口網站的頂端導覽列中選取 [Cloud Shell]  ，然後從下拉式清單中選取 [PowerShell]  。 
 
     ![安裝自訂延伸模組](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 

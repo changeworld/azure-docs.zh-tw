@@ -10,12 +10,13 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: automl
+ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979070"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356496"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
 
@@ -69,7 +70,7 @@ ms.locfileid: "90979070"
     
     1. 選擇本機電腦上的 **bike-no.csv** 檔案。 這是您作為[必要條件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)下載的檔案。
 
-    1. 選取 [**下一步**]
+    1. 選取 [ **下一步** ]
 
        上傳完成時，系統會根據檔案類型，預先填入 [設定與預覽] 表單。 
        
@@ -125,7 +126,7 @@ ms.locfileid: "90979070"
 
         1. 建立完成後，請從下拉式清單選取新的計算目標。
 
-    1. 選取 [下一步] 。
+    1. 選取 [下一步]  。
 
 ## <a name="select-forecast-settings"></a>選取預測設定
 
@@ -144,7 +145,7 @@ ms.locfileid: "90979070"
     主要計量| 用於測量機器學習演算法的評估計量。|標準化均方根誤差
     解釋最佳模型| 自動在自動化 ML 所建立的最佳模型上顯示可解釋性。| 啟用
     封鎖的演算法 | 您要從定型作業中排除的演算法| 極端隨機樹狀結構
-    其他預測設定| 這些設定有助於改善模型的正確性 <br><br> **預測目標延隔：** 您想要將目標變數的延隔往回建構多久 <br> **目標滾動時間範圍**：指定將會產生特徵 (例如「最大值」、「最小值」和「總和」) 的滾動時間範圍大小。 | <br><br>預測&nbsp;目標&nbsp;延隔：None <br> 目標&nbsp;滾動&nbsp;時間範圍&nbsp;大小：None
+    其他預測設定| 這些設定有助於改善模型的正確性 <br><br> **預測目標延隔：** 您想要將目標變數的延隔往回建構多久 <br> **目標滾動時間範圍** ：指定將會產生特徵 (例如「最大值」、「最小值」和「總和」) 的滾動時間範圍大小。 | <br><br>預測&nbsp;目標&nbsp;延隔：None <br> 目標&nbsp;滾動&nbsp;時間範圍&nbsp;大小：None
     結束準則| 如果符合條件，訓練作業就會停止。 |定型作業時間 (小時)：&nbsp;&nbsp;3 <br> 計量分數閾值：&nbsp;&nbsp;None
     驗證 | 選擇交叉驗證類型與測試次數。|驗證類型：<br>K 折交叉驗證&nbsp;&nbsp; <br> <br> 驗證次數：5
     並行| 每個反覆運算已執行的平行反覆運算數目上限| 並行反覆運算上限：&nbsp;&nbsp;6
@@ -156,15 +157,15 @@ ms.locfileid: "90979070"
 若要執行實驗，請選取 [完成]。 [執行詳細資料] 畫面隨即開啟，且在頂端的執行編號旁會顯示 [執行狀態]。 此狀態會隨著實驗的進行而更新。
 
 >[!IMPORTANT]
-> 準備實驗執行需要 **10-15 分鐘**的時間。
-> 執行之後，**每個反覆項目需要 2-3 分鐘以上的時間**。  <br> <br>
+> 準備實驗執行需要 **10-15 分鐘** 的時間。
+> 執行之後， **每個反覆項目需要 2-3 分鐘以上的時間** 。  <br> <br>
 > 在生產環境中，此程序需要進行一段時間，因此您可以先離開一會。 在等待時，建議您開始探索 [模型] 索引標籤上已完成測試的演算法。 
 
 ##  <a name="explore-models"></a>探索模型
 
 瀏覽至 [模型] 索引標籤，以查看已測試的演算法 (模型)。 根據預設，模型會在完成時依計量分數排序。 在本教學課程中，根據所選計量而獲得最高評分的模型會顯示在清單頂端。
 
-當您等候所有實驗模型完成時，可選取已完成模型的**演算法名稱**來探索其效能詳細資料。 
+當您等候所有實驗模型完成時，可選取已完成模型的 **演算法名稱** 來探索其效能詳細資料。 
 
 以下範例在 [詳細資料] 與 [計量] 索引標籤中進行瀏覽，以查看所選模型的屬性、計量與效能圖表。 
 
@@ -204,7 +205,7 @@ Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個�
     
 一旦部署成功，您就會有可運作的 Web 服務來產生預測。 
 
-若要深入了解如何取用新的 Web 服務及如何使用 Power BI 內建的 Azure Machine Learning 支援來測試您的預測，請繼續進行[**後續步驟**](#next-steps)。
+若要深入了解如何取用新的 Web 服務及如何使用 Power BI 內建的 Azure Machine Learning 支援來測試您的預測，請繼續進行 [**後續步驟**](#next-steps)。
 
 ## <a name="clean-up-resources"></a>清除資源
 

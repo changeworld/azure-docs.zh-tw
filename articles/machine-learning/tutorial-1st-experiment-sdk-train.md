@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3ba5751e7a0c2369d505535896bbb4ff7523c02
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369955"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314573"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>教學課程：訓練您的第一個機器學習模型 (第 3 部分，共 4 個部分)
 
 本教學課程說明如何在 Azure Machine Learning 中訓練機器學習模型。
 
-本教學課程是*四部分教學課程系列的第 3 部分*，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在系列[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)和[第 2 部分：執行 "Hello world!"](tutorial-1st-experiment-hello-world.md) 完成的工作而建置的。
+本教學課程是 *四部分教學課程系列的第 3 部分* ，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在系列[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)和[第 2 部分：執行 "Hello world!"](tutorial-1st-experiment-hello-world.md) 完成的工作而建置的。
 
 在本教學課程中，您會透過提交可訓練機器學習模型的指令碼來進行下一步。 此範例將協助您了解 Azure Machine Learning 如何在本機偵錯和遠端回合之間，輕鬆地達成一致的行為。
 
@@ -98,7 +98,7 @@ trainset = torchvision.datasets.CIFAR10(
     transform=torchvision.transforms.ToTensor(),
 )
 trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=4, shuffle=True, num_workers=2
+    trainset, batch_size=4, shuffle=True
 )
 
 if __name__ == "__main__":
@@ -220,7 +220,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning 提供[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)概念來代表可重現且已建立版本的 Python 環境，用於執行實驗。 從本機 Conda 或 pip 環境中建立環境很容易。
+      Azure Machine Learning 提供[環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)概念來代表可重現且已建立版本的 Python 環境，用於執行實驗。 從本機 Conda 或 pip 環境中建立環境很容易。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -228,7 +228,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      將環境新增至 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)。
+      將環境新增至 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)。
    :::column-end:::
 :::row-end:::
 
@@ -406,7 +406,7 @@ python 04-run-pytorch.py
 
 在此課程中，您已從基本的 "Hello world!" 升級 編寫更實際的訓練指令碼，以執行特定的 Python 環境。 您已了解如何透過 Azure Machine Learning 環境，將本機 Conda 環境帶到雲端。 最後，您已了解如何透過幾行程式碼，將計量記錄到 Azure Machine Learning。
 
-還有其他方法可以建立 Azure Machine Learning 環境，包括[從 pip requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)，或[從現有的本機 Conda 環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)。
+還有其他方法可以建立 Azure Machine Learning 環境，包括[從 pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-)，或[從現有的本機 Conda 環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-)。
 
 在下一個課程中，您將了解如何將 CIFAR10 資料集上傳至 Azure，以使用 Azure Machine Learning 中的資料。
 

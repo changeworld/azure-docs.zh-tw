@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e94288b49cd57b59c126c95ca507477f1c56946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913274"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321524"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教學課程：使用 R 建立機器學習模型 (預覽)
 
@@ -289,7 +289,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>部署成 Web 服務
 
-在您的模型中，您可以預測碰撞致死的危險性。 使用 Azure ML 將您的模型部署為預測服務。 在本教學課程中，您將在 [Azure 容器執行個體 (ACI)](https://docs.microsoft.com/azure/container-instances/) 中部署 Web 服務。
+在您的模型中，您可以預測碰撞致死的危險性。 使用 Azure ML 將您的模型部署為預測服務。 在本教學課程中，您將在 [Azure 容器執行個體 (ACI)](../container-instances/index.yml) 中部署 Web 服務。
 
 ### <a name="register-the-model"></a>註冊模型
 

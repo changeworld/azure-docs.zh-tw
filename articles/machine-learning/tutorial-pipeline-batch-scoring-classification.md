@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 3f131e1f8d5604e566c8d7b41fa9d45cb7d2a7a2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f7d1cffb44914535fe218980c750270ebba14445
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054877"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309463"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
 
@@ -63,7 +63,7 @@ ws = Workspace.from_config()
 
 在 `pipelinedata` 帳戶上，從 `sampledata` 公用 Blob 容器取得 ImageNet 評估的公用資料範例。 呼叫 `register_azure_blob_container()`，讓資料可供名為 `images_datastore` 的工作區使用。 然後，將工作區預設資料存放區設定為輸出資料存放區。 使用輸出資料存放區對管線中的輸出評分。
 
-如需如何存取資料的詳細資訊，請參閱[如何存取資料](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk)。
+如需如何存取資料的詳細資訊，請參閱[如何存取資料](./how-to-access-data.md)。
 
 ```python
 from azureml.core.datastore import Datastore
@@ -84,9 +84,9 @@ def_data_store = ws.get_default_datastore()
 > [!Important]
 > 本教學課程中的批次評分範例只會使用一個管線步驟。 在具有多個步驟的使用案例中，一般的流程會包含下列步驟：
 >
-> 1. 使用 `Dataset` 物件作為*輸入*以擷取原始資料、執行一些轉換，然後*輸出*`PipelineData` 物件。
+> 1. 使用 `Dataset` 物件作為 *輸入* 以擷取原始資料、執行一些轉換，然後 *輸出*`PipelineData` 物件。
 >
-> 2. 使用上一個步驟中的 `PipelineData` *輸出物件*作為*輸入物件*。 請在後續步驟中重複執行前述步驟。
+> 2. 使用上一個步驟中的 `PipelineData` *輸出物件* 作為 *輸入物件* 。 請在後續步驟中重複執行前述步驟。
 
 在此案例中，您會針對輸入影像和分類標籤 (y-測試值) 建立對應至資料存放區目錄的 `Dataset` 物件。 您也會為批次評分輸出資料建立 `PipelineData` 物件。
 
@@ -140,9 +140,9 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 ## <a name="create-and-attach-the-remote-compute-target"></a>建立和連結遠端計算目標
 
-機器學習管線無法在本機執行，因此您必須在雲端資源或*遠端計算目標*上加以執行。 遠端計算目標是可重複使用的虛擬計算環境，您可以在其中執行實驗機器學習工作流程。 
+機器學習管線無法在本機執行，因此您必須在雲端資源或 *遠端計算目標* 上加以執行。 遠端計算目標是可重複使用的虛擬計算環境，您可以在其中執行實驗機器學習工作流程。 
 
-執行下列程式碼來建立具有 GPU 功能的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) 目標，然後將其連結至您的工作區。 如需計算目標的詳細資訊，請參閱[概念性文章](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
+執行下列程式碼來建立具有 GPU 功能的 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) 目標，然後將其連結至您的工作區。 如需計算目標的詳細資訊，請參閱[概念性文章](./concept-compute-target.md)。
 
 
 ```python
@@ -305,9 +305,9 @@ parallel_run_config = ParallelRunConfig(
 * 輸入和輸出資料，以及任何自訂參數
 * 在步驟進行期間，所要執行指令碼或 SDK 邏輯的參考
 
-有多個類別會繼承自父代類別 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true)。 您可以選擇類別，以使用特定的架構或堆疊來建置步驟。 在此範例中，您會使用 `ParallelRunStep` 類別，透過自訂的 Python 指令碼來定義步驟邏輯。 如果指令碼的引數是步驟的輸入或步驟的輸出，則必須將此引數*同時*定義在 `arguments` 陣列中，*以及*分別定義在 `input` 或 `output` 參數中。 
+有多個類別會繼承自父代類別 [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py)。 您可以選擇類別，以使用特定的架構或堆疊來建置步驟。 在此範例中，您會使用 `ParallelRunStep` 類別，透過自訂的 Python 指令碼來定義步驟邏輯。 如果指令碼的引數是步驟的輸入或步驟的輸出，則必須將此引數 *同時* 定義在 `arguments` 陣列中， *以及* 分別定義在 `input` 或 `output` 參數中。 
 
-在有多個步驟的案例中，`outputs` 陣列中的物件參考將可以作為後續管線步驟的*輸入*。
+在有多個步驟的案例中，`outputs` 陣列中的物件參考將可以作為後續管線步驟的 *輸入* 。
 
 ```python
 from azureml.pipeline.steps import ParallelRunStep
@@ -329,7 +329,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-如需可用於不同步驟類型的所有類別清單，請參閱[步驟套件](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true)。
+如需可用於不同步驟類型的所有類別清單，請參閱[步驟套件](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)。
 
 ## <a name="submit-the-pipeline"></a>提交管線
 
@@ -338,7 +338,7 @@ batch_score_step = ParallelRunStep(
 接下來，使用 `Experiment.submit()` 函式來提交管線以供執行。 `wait_for_completion` 函式會在管線建置程序中輸出記錄。 您可以使用記錄來查看目前的進度。
 
 > [!IMPORTANT]
-> 第一次執行管線大約需要 *15 分鐘*。 因為過程中必須下載所有相依性、建立 Docker 映像，並佈建和建立 Python 環境。 再次執行管線所需的時間會大幅縮短，因為過程中會重複使用這些資源，而不會再次建立。 不過，管線的總執行時間取決於每個管線步驟中執行的指令碼和程序的工作負載。
+> 第一次執行管線大約需要 *15 分鐘* 。 因為過程中必須下載所有相依性、建立 Docker 映像，並佈建和建立 Python 環境。 再次執行管線所需的時間會大幅縮短，因為過程中會重複使用這些資源，而不會再次建立。 不過，管線的總執行時間取決於每個管線步驟中執行的指令碼和程序的工作負載。
 
 ```python
 from azureml.core import Experiment
@@ -386,9 +386,9 @@ published_pipeline
 
 若要從 REST 端點執行管線，您必須要有 OAuth2 Bearer-type 驗證標頭。 下列範例會使用互動式驗證來進行說明，但對於大部分需要自動化驗證或無周邊驗證的生產案例，請使用[本文中所述](how-to-setup-authentication.md)的服務主體驗證。
 
-若要使用服務主體驗證，必須在 *Azure Active Directory* 建立中*應用程式註冊*。 首先，您必須產生用戶端密碼，然後將您的服務主體*角色存取權*授與機器學習工作區。 請使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) 類別管理您的驗證流程。 
+若要使用服務主體驗證，必須在 *Azure Active Directory* 建立中 *應用程式註冊* 。 首先，您必須產生用戶端密碼，然後將您的服務主體 *角色存取權* 授與機器學習工作區。 請使用 [`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) 類別管理您的驗證流程。 
 
-[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) 和 `ServicePrincipalAuthentication` 都繼承自 `AbstractAuthentication`。 在這兩種情況下，均應以相同方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-authentication-header--) 函式來擷取標頭：
+[`InteractiveLoginAuthentication`](/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?preserve-view=true&view=azure-ml-py) 和 `ServicePrincipalAuthentication` 都繼承自 `AbstractAuthentication`。 在這兩種情況下，均應以相同方式使用 [`get_authentication_header()`](/python/api/azureml-core/azureml.core.authentication.abstractauthentication?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-authentication-header--) 函式來擷取標頭：
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

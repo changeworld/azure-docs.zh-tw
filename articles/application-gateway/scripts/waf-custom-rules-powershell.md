@@ -7,16 +7,16 @@ ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bf19052c11301412a299c31a2cd73ed2f9ffc7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079892"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396986"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 建立 Web 應用程式防火牆 (WAF) 自訂規則
 
-此指令碼會建立可使用自訂規則的應用程式閘道 Web 應用程式防火牆。 如果要求標頭包含使用者代理程式 *evilbot*，則自訂規則會封鎖流量。
+此指令碼會建立可使用自訂規則的應用程式閘道 Web 應用程式防火牆。 如果要求標頭包含使用者代理程式 *evilbot* ，則自訂規則會封鎖流量。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -70,6 +70,6 @@ Remove-AzResourceGroup -Name CustomRulesTest
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需 WAF 自訂規則的詳細資訊，請參閱 [Web 應用程式防火牆的自訂規則](../custom-waf-rules-overview.md)
+- 如需 WAF 自訂規則的詳細資訊，請參閱 [Web 應用程式防火牆的自訂規則](../../web-application-firewall/ag/custom-waf-rules-overview.md)
 - 如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 - 您可以在 [Azure 應用程式閘道文件](../powershell-samples.md)中找到其他應用程式閘道的 PowerShell 指令碼範例。

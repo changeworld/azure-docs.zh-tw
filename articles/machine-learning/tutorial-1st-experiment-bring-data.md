@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372559"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320101"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教學課程：使用您自己的資料 (第 4 部，共 4 部)
 
 本教學課程會示範如何上傳和使用您自己的資料，以在 Azure Machine Learning 中訓練機器學習模型。
 
-本教學課程是*四部分教學課程系列的第 4 部分*，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：執行 "Hello World"](tutorial-1st-experiment-hello-world.md) 及[第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)。
+本教學課程是 *四部分教學課程系列的第 4 部分* ，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：執行 "Hello World"](tutorial-1st-experiment-hello-world.md) 及[第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)。
 
 在[第 3 部分：定型模型](tutorial-1st-experiment-sdk-train.md)中，資料下載方式是透過 PyTorch API 中的內建 `torchvision.datasets.CIFAR10` 方法。 不過，在許多情況下，您會在遠端訓練回合中使用自己的資料。 本文將說明 Azure Machine Learning 中可用來處理自己資料的工作流程。
 
@@ -202,7 +202,7 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 `target_path` 值會指定資料存放區上用來上傳 CIFAR10 資料的路徑。
 
 >[!TIP] 
-> 雖然您使用 Azure Machine Learning 來上傳資料，但您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來上傳特定檔案。 如果您需要 ETL 工具，可以使用 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) 將您的資料內嵌到 Azure 中。
+> 雖然您使用 Azure Machine Learning 來上傳資料，但您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來上傳特定檔案。 如果您需要 ETL 工具，可以使用 [Azure Data Factory](../data-factory/introduction.md) 將您的資料內嵌到 Azure 中。
 
 執行 Python 檔案以上傳資料。 (上傳應快速且小於 60 秒。)
 
@@ -271,7 +271,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)會用來參考您上傳至 Azure Blob 儲存體的資料。 資料集是在您資料之上的抽象層，其設計目的是為了改善可靠性和可信度。
+      [資料集](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)會用來參考您上傳至 Azure Blob 儲存體的資料。 資料集是在您資料之上的抽象層，其設計目的是為了改善可靠性和可信度。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,7 +279,7 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 已修改為包含將傳遞至 `train.py` 的引數清單。 `dataset.as_named_input('input').as_mount()` 引數表示指定的目錄將會「掛接」至計算目標。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 已修改為包含將傳遞至 `train.py` 的引數清單。 `dataset.as_named_input('input').as_mount()` 引數表示指定的目錄將會「掛接」至計算目標。
    :::column-end:::
 :::row-end:::
 

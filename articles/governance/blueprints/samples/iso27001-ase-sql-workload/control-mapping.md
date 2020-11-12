@@ -1,23 +1,23 @@
 ---
 title: ISO 27001 ASE/SQL 工作負載藍圖範例控制項
 description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例對於 Azure 原則和 Azure RBAC 的控制項對應。
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 662e5dce9c58cec3be36c3e492d7231ed0e83939
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929314"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420405"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作負載藍圖的控制項對應
 
 下列文章將詳細說明 Azure 藍圖 ISO 27001 ASE/SQL 工作負載藍圖範例與 ISO 27001 控制項的對應情形。 如需控制項的詳細資訊，請參閱 [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 
-以下是與 **ISO 27001:2013** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 ISO 27001:2013 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
+以下是與 **ISO 27001:2013** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 ISO 27001:2013 控制項並部署特定的 VM 延伸模組，以支援稽核需求** 內建原則方案。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的 **符合規範** 只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md) \(英文\)。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 權責區分
 
@@ -37,8 +37,6 @@ Azure 的 [SQL 弱點評量服務](../../../../azure-sql/database/sql-vulnerabil
 Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以管理有權存取 Azure 資源的人員。 此藍圖指派了七項 [Azure 原則](../../../policy/overview.md)定義以協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。
 了解有哪些資源違反這些原則可協助您採取修正動作，以確保 Azure 資源僅限定給經授權的使用者存取。
 
-- 部署必要條件，以稽核有不具密碼帳戶的 Linux VM
-- 部署必要條件以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
 - 從帳戶沒有密碼的 Linux VM 顯示稽核結果
 - 從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
 - 儲存體帳戶應移轉至新的 Azure Resource Manager 資源
@@ -65,7 +63,6 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 - 應在您訂用帳戶上具有讀取權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA
 - 從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
-- 部署必要條件，以稽核密碼檔權限未設為 0644 的 Linux VM
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 檢閱使用者存取權限
 
@@ -100,11 +97,6 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 - 從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
 - 從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
 - 從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
-- 部署必要條件以稽核未啟用密碼複雜度設定的 Windows VM
-- 部署必要條件以稽核最大密碼存留期不是 70 天的 Windows VM
-- 部署必要條件以稽核最小密碼存留期不是 1 天的 Windows VM
-- 部署必要條件以稽核最小密碼長度未限制為 14 個字元的 Windows VM
-- 部署必要條件以稽核允許重複使用前 24 個舊密碼的 Windows VM
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 使用密碼編譯控制項的原則
 
@@ -114,7 +106,6 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 - 函式應用程式應只可經由 HTTPS 存取
 - Web 應用程式應只可經由 HTTPS 存取
 - API 應用程式應只可經由 HTTPS 存取
-- 部署必要條件以稽核未使用可逆加密來儲存密碼的 Windows VM
 - 從未使用可逆加密來儲存密碼的 Windows VM 顯示結果
 - 應在虛擬機器上套用磁碟加密
 - 應加密自動化帳戶變數

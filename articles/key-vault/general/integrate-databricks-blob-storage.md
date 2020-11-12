@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: bb574bb3dd000682090c6c3f861e885761753e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588512"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285673"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>教學課程：使用 Azure Databricks 和 Azure Key Vault 存取 Azure Blob 儲存體
 
@@ -29,11 +29,11 @@ ms.locfileid: "88588512"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-開始本教學課程之前，請先安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
+開始本教學課程之前，請先安裝 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>利用 Azure CLI 建立儲存體帳戶和 Blob 容器
 
-您必須先建立一般用途的儲存體帳戶，才能使用 blob。 如果您沒有[資源群組](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)，請在執行命令之前建立一個。 下列命令會建立並顯示儲存體容器的中繼資料。 複製**識別碼**。
+您必須先建立一般用途的儲存體帳戶，才能使用 blob。 如果您沒有[資源群組](/cli/azure/group?view=azure-cli-latest#az-group-create)，請在執行命令之前建立一個。 下列命令會建立並顯示儲存體容器的中繼資料。 複製 **識別碼** 。
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -41,7 +41,7 @@ az storage account create --name contosoblobstorage5 --resource-group contosoRes
 
 ![上述命令的主控台輸出。 識別碼會以綠色反白顯示，讓終端使用者可以看到此識別碼。](../media/databricks-command-output-1.png)
 
-您必須先將[儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) 角色指派給自己，才可以建立容器來上傳 blob。 在此範例中，系統會將角色指派給您先前建立的儲存體帳戶。
+您必須先將[儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己，才可以建立容器來上傳 blob。 在此範例中，系統會將角色指派給您先前建立的儲存體帳戶。
 
 ```azurecli
 az role assignment create --role "Storage Blob Data Contributor" --assignee t-trtr@microsoft.com --scope "/subscriptions/885e24c8-7a36-4217-b8c9-eed31e110504/resourceGroups/contosoResourceGroup5/providers/Microsoft.Storage/storageAccounts/contosoblobstorage5
@@ -77,7 +77,7 @@ az storage account keys list -g contosoResourceGroup5 -n contosoblobstorage5
 
 ## <a name="create-a-key-vault-and-set-a-secret"></a>建立 Key Vault 並設定祕密
 
-您將使用下列命令來建立 Key Vault。 此命令也會顯示 Key Vault 的中繼資料。 複製**識別碼** 和 **vaultUri**。
+您將使用下列命令來建立 Key Vault。 此命令也會顯示 Key Vault 的中繼資料。 複製 **識別碼** 和 **vaultUri** 。
 
 ```azurecli
 az keyvault create --name contosoKeyVault10 --resource-group contosoResourceGroup5 --location eastus
@@ -94,7 +94,7 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="create-an-azure-databricks-workspace-and-add-key-vault-secret-scope"></a>建立 Azure Databricks 工作區並新增 Key Vault 秘密範圍
 
-此區段無法透過命令列完成。 請遵循此[指南](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope)。 您必須存取 [Azure 入口網站](https://ms.portal.azure.com/#home)，才能執行下列動作：
+此區段無法透過命令列完成。 請遵循此[指南](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope)。 您必須存取 [Azure 入口網站](https://ms.portal.azure.com/#home)，才能執行下列動作：
 
 1. 建立您的 Azure Databricks 資源
 1. 啟動您的工作區
@@ -102,10 +102,10 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="access-your-blob-container-from-azure-databricks-workspace"></a>從 Azure Databricks 工作區存取您的 Blob 容器
 
-此區段無法透過命令列完成。 請遵循此[指南](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks)。 您必須使用 Azure Databricks 工作區，才能執行下列動作：
+此區段無法透過命令列完成。 請遵循此[指南](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks)。 您必須使用 Azure Databricks 工作區，才能執行下列動作：
 
-1. 建立**新叢集**
-1. 建立**新的 Notebook**
+1. 建立 **新叢集**
+1. 建立 **新的 Notebook**
 1. 填寫 Python 指令碼中的對應欄位
 1. 執行 Python 指令碼
 
@@ -124,4 +124,4 @@ df.show()
 
 確定您的 Key Vault 可以復原：
 > [!div class="nextstepaction"]
-> [清除資源](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+> [清除資源](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)

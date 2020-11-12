@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e9bbfd311d6a05d0dd328a63c7d11e14ab0d7e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069607"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422921"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教學課程：在 Azure Functions 中使用 Python 和 TensorFlow 來套用機器學習模型
 
@@ -133,7 +133,7 @@ py -3.7 -m venv .venv
     func new --name classify --template "HTTP trigger"
     ```
 
-    此命令會建立符合函式名稱的資料夾，即 classify  。 該資料夾中有兩個檔案： *\_\_init\_\_.py* 包含函式程式碼，而 *function.json* 則說明函式的觸發程序及其輸入和輸出繫結。 如需這些檔案內容的詳細資訊，請參閱 Python 快速入門中的[檢查檔案內容](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents)。
+    此命令會建立符合函式名稱的資料夾，即 classify  。 該資料夾中有兩個檔案： *\_\_init\_\_.py* 包含函式程式碼，而 *function.json* 則說明函式的觸發程序及其輸入和輸出繫結。 如需這些檔案內容的詳細資訊，請參閱 Python 快速入門中的[檢查檔案內容](./create-first-function-cli-python.md#optional-examine-the-file-contents)。
 
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
@@ -229,7 +229,7 @@ py -3.7 -m venv .venv
 
 ## <a name="update-the-function-to-run-predictions"></a>更新函式以執行預測
 
-1. 在文字編輯器中開啟 *classify/\_\_init\_\_.py*，然後在現有的 `import` 陳述式後面新增以下幾行，以匯入標準 JSON 程式庫和 predict  協助程式：
+1. 在文字編輯器中開啟 *classify/\_\_init\_\_.py* ，然後在現有的 `import` 陳述式後面新增以下幾行，以匯入標準 JSON 程式庫和 predict  協助程式：
 
     :::code language="python" source="~/functions-python-tensorflow-tutorial/end/classify/__init__.py" range="1-6" highlight="5-6":::
 

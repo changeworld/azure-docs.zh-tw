@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f7746f079e740493348731376d0a5a7b1a9e954
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852611"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317854"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教學課程：將 ML 實驗轉換為生產環境的 Python 程式碼
 
@@ -33,7 +33,7 @@ ms.locfileid: "87852611"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 產生 [MLOpsPython 範本](https://github.com/microsoft/MLOpsPython/generate)並使用 `experimentation/Diabetes Ridge Regression Training.ipynb` 和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` Notebook。 這些 Notebook 會作為從實驗轉換到生產的範例。 您可以在 [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) 找到這些 Notebook。
-- 安裝 `nbconvert`。 僅依照[安裝](https://nbconvert.readthedocs.io/en/latest/install.html)頁面上__安裝 nbconvert__ 一節中的安裝指示操作。
+- 安裝 `nbconvert`。 僅依照 [安裝](https://nbconvert.readthedocs.io/en/latest/install.html)頁面上 __安裝 nbconvert__ 一節中的安裝指示操作。
 
 ## <a name="remove-all-nonessential-code"></a>移除所有非必要的程式碼
 
@@ -67,7 +67,7 @@ args = {
 }
 
 reg_model = Ridge(**args)
-reg.fit(data["train"]["X"], data["train"]["y"])
+reg_model.fit(data["train"]["X"], data["train"]["y"])
 
 preds = reg_model.predict(data["test"]["X"])
 mse = mean_squared_error(preds, y_test)
@@ -91,15 +91,15 @@ joblib.dump(value=reg, filename=model_name)
 
 1. 建立名為 `split_data` 的函式，將資料框架分割成測試和定型資料。 函式應該採用資料框架 `df` 作做為參數，並傳回包含索引鍵 `train` 和 `test`的字典。
 
-    將*將資料分割成訓練和驗證集*標題下的程式碼移到 `split_data` 函式並加以修改，以傳回 `data` 物件。
+    將 *將資料分割成訓練和驗證集* 標題下的程式碼移到 `split_data` 函式並加以修改，以傳回 `data` 物件。
 
 1. 建立名為 `train_model` 的函式，此函式會採用 `data` 和 `args` 參數並傳回定型的模型。
 
-    將標題*訓練集中的訓練模型*下的程式碼移到 `train_model` 函式並加以修改，以傳回 `reg_model` 物件。 移除 `args` 字典，這些值將來自 `args` 參數。
+    將標題 *訓練集中的訓練模型* 下的程式碼移到 `train_model` 函式並加以修改，以傳回 `reg_model` 物件。 移除 `args` 字典，這些值將來自 `args` 參數。
 
 1. 建立名為 `get_model_metrics` 的函式，此函式會採用 `reg_model` 和 `data` 參數，然後評估模型，並傳回已定型模型的計量字典。
 
-    將*訓練集中的驗證模型*標題下的程式碼移到 `get_model_metrics` 函式並加以修改，以傳回 `metrics` 物件。
+    將 *訓練集中的驗證模型* 標題下的程式碼移到 `get_model_metrics` 函式並加以修改，以傳回 `metrics` 物件。
 
 這三個函式應該如下所示：
 
@@ -527,5 +527,5 @@ def test_train_model():
 既然您已了解如何從實驗轉換成實際執行的程式碼，請參閱下列連結以取得詳細資訊和後續步驟：
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md):建置 CI/CD 管線，使用 Azure Pipelines 和 Azure Machine Learning 來定型、評估和部署您自己的模型
-+ [監視 Azure ML 實驗的執行和計量](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [從 ML Web 服務端點監視及收集資料](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [監視 Azure ML 實驗的執行和計量](./how-to-track-experiments.md)
++ [從 ML Web 服務端點監視及收集資料](./how-to-enable-app-insights.md)

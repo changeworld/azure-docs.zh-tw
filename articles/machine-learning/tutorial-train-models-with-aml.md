@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321288"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教學課程：使用 MNIST 資料和 scikit-learn 將影像分類模型定型 
 
 
-在本教學課程中，您會以遠端計算資源訓練機器學習模型。 您將使用 Python Jupyter Notebook 中的 Azure Machine Learning 定型和部署工作流程。  然後，您可以使用 Notebook 作為範本，以自己的資料將您自己的機器學習服務模型定型。 本教學課程是**兩部分教學課程系列的第一部分**。  
+在本教學課程中，您會以遠端計算資源訓練機器學習模型。 您將使用 Python Jupyter Notebook 中的 Azure Machine Learning 定型和部署工作流程。  然後，您可以使用 Notebook 作為範本，以自己的資料將您自己的機器學習服務模型定型。 本教學課程是 **兩部分教學課程系列的第一部分** 。  
 
 本教學課程可讓您使用 [MNIST](http://yann.lecun.com/exdb/mnist/) 資料集，並搭配 [scikit-learn](https://scikit-learn.org) 與 Azure Machine Learning 定型簡單的羅吉斯迴歸。 MNIST 是熱門的資料集，由 70,000 個灰階影像所組成。 每個影像都是 28 x 28 像素的手寫數字，代表 0 到 9 的數字。 目標是要建立多類別分類器，來識別特定影像代表的數字。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91535064"
 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 >[!NOTE]
-> 此文章中的程式碼已進行過 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.13.0 版的測試。
+> 此文章中的程式碼已進行過 [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 1.13.0 版的測試。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -49,13 +49,13 @@ ms.locfileid: "91535064"
 * 在複製的 tutorials/image-classification-mnist-data 資料夾中，開啟 img-classification-part1-training.ipynb 筆記本。 
 
 
-如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中使用此教學課程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上取得此教學課程和隨附的 **utils.py** 檔案。 執行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以安裝此教學課程的相依性。
+如果您想要在自己的 [本機環境](how-to-configure-environment.md#local)中使用此教學課程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上取得此教學課程和隨附的 **utils.py** 檔案。 執行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以安裝此教學課程的相依性。
 
 > [!Important]
 > 本文的其餘部分包含與您在 Notebook 中所見相同的內容。  
 >
 > 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。 
-> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
+> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter** 。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>設定您的開發環境
 
@@ -159,7 +159,7 @@ else:
 
 ### <a name="download-the-mnist-dataset"></a>下載 MNIST 資料集
 
-使用 Azure 開放資料集來取得原始 MNIST 資料檔案。 [Azure 開放資料集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)是策劃的公用資料集，您可以使用這些公用資料集，將案例專有的功能新增至機器學習解決方案，以獲得更準確的模型。 每個資料集都有對應的類別 (在此案例中為 `MNIST`)，來以不同的方式擷取資料。
+使用 Azure 開放資料集來取得原始 MNIST 資料檔案。 [Azure 開放資料集](../open-datasets/overview-what-are-open-datasets.md)是策劃的公用資料集，您可以使用這些公用資料集，將案例專有的功能新增至機器學習解決方案，以獲得更準確的模型。 每個資料集都有對應的類別 (在此案例中為 `MNIST`)，來以不同的方式擷取資料。
 
 此程式碼以 `FileDataset` 物件的形式擷取資料，該物件是 `Dataset` 的子類別。 `FileDataset` 會參考資料存放區或公用 URL 中的單一或多個任意格式檔案。 透過建立資料來源位置的參考，類別可讓您將檔案下載或裝載至您的計算。 此外，您可以在工作區中註冊資料集，以便在定型期間進行輕鬆的擷取。
 
@@ -309,11 +309,11 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 ### <a name="configure-the-training-job"></a>設定定型作業
 
-建立 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 指定下列各項來設定 ScriptRunConfig：
+建立 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 指定下列各項來設定 ScriptRunConfig：
 
 * 包含指令碼的目錄。 在此目錄中的所有檔案都會上傳到叢集節點以便執行。
 * 計算目標。 在此案例中，您會使用您所建立的 Azure Machine Learning 計算叢集。
-* 定型指令碼名稱 (**train.py**)。
+* 定型指令碼名稱 ( **train.py** )。
 * 包含執行指令碼所需程式庫的環境。
 * 來自定型指令碼的必要引數。
 
@@ -364,25 +364,25 @@ run
 
 ## <a name="monitor-a-remote-run"></a>監視遠端執行
 
-第一次執行總計會花費**大約 10 分鐘的時間**。 但針對後續的執行，只要指令碼相依性不變，便會重複使用相同的影像。 因此容器啟動時間會快許多。
+第一次執行總計會花費 **大約 10 分鐘的時間** 。 但針對後續的執行，只要指令碼相依性不變，便會重複使用相同的影像。 因此容器啟動時間會快許多。
 
 在您等候時，會發生什麼事：
 
-- **影像建立**：系統會建立一個 Docker 映像，其符合 Azure ML 環境所指定的 Python 環境。 影像會上傳到工作區。 映像的建立和上傳會花費**大約 5 分鐘的時間**。
+- **影像建立** ：系統會建立一個 Docker 映像，其符合 Azure ML 環境所指定的 Python 環境。 影像會上傳到工作區。 映像的建立和上傳會花費 **大約 5 分鐘的時間** 。
 
   這個階段會針對每個 Python 環境發生一次，因為系統會快取容器以供後續執行使用。 在影像建立期間，會將記錄串流至執行歷程記錄中。 您可以使用這些記錄來監視映像建立程序。
 
-- **調整**：如果遠端叢集需要比目前可用節點數更多的節點來進行執行，將會自動新增額外的節點。 調整通常會花費**大約 5 分鐘的時間**。
+- **調整** ：如果遠端叢集需要比目前可用節點數更多的節點來進行執行，將會自動新增額外的節點。 調整通常會花費 **大約 5 分鐘的時間** 。
 
-- **執行中**：在這個階段，會將必要的指令碼與檔案傳送到計算目標。 然後會掛接或複製資料存放區。 接著會執行 **entry_script**。 當作業執行時，**stdout** 和 **./logs** 目錄會串流至執行歷程記錄。 您可以使用這些記錄來監視執行的進度。
+- **執行中** ：在這個階段，會將必要的指令碼與檔案傳送到計算目標。 然後會掛接或複製資料存放區。 接著會執行 **entry_script** 。 當作業執行時， **stdout** 和 **./logs** 目錄會串流至執行歷程記錄。 您可以使用這些記錄來監視執行的進度。
 
-- **後處理**：執行的 **./outputs** 目錄會複製到您工作區中的執行歷程記錄，以便您存取這些結果。
+- **後處理** ：執行的 **./outputs** 目錄會複製到您工作區中的執行歷程記錄，以便您存取這些結果。
 
 您可以透過數種方式檢查執行中作業的進度。 本教學課程會使用 Jupyter 小工具和 `wait_for_completion` 方法。
 
 ### <a name="jupyter-widget"></a>Jupyter 小工具
 
-使用 [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)觀看執行的進度。 與提交執行相同，小工具會以非同步方式作業，並且會每隔 10 到 15 秒提供即時更新，直到作業完成為止：
+使用 [Jupyter 小工具](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)觀看執行的進度。 與提交執行相同，小工具會以非同步方式作業，並且會每隔 10 到 15 秒提供即時更新，直到作業完成為止：
 
 ```python
 from azureml.widgets import RunDetails
@@ -393,7 +393,7 @@ RunDetails(run).show()
 
 ![Notebook 小工具](./media/tutorial-train-models-with-aml/widget.png)
 
-如需取消執行，您可以依照[這些指示](https://aka.ms/aml-docs-cancel-run)操作。
+如需取消執行，您可以依照[這些指示](./how-to-manage-runs.md)操作。
 
 ### <a name="get-log-results-upon-completion"></a>在完成時取得記錄檔結果
 

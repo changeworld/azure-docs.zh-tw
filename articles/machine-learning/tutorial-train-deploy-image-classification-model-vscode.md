@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ca0f1e82b81c8aad53938a5475f1ece68c0e33
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906689"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321559"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>使用 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類 TensorFlow 模型 (預覽)
 
@@ -57,9 +57,9 @@ ms.locfileid: "90906689"
     > [!div class="mx-imgBorder"]
     > ![建立工作區](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. 根據預設，產生的名稱包含建立日期和時間。 在文字輸入方塊中，將名稱變更為 "TeamWorkspace"，然後按 **Enter**。
+1. 根據預設，產生的名稱包含建立日期和時間。 在文字輸入方塊中，將名稱變更為 "TeamWorkspace"，然後按 **Enter** 。
 1. 選取 [建立新的資源群組]。 
-1. 將您的資源群組命名為 "TeamWorkspace-rg"，然後按 **輸入**。 
+1. 將您的資源群組命名為 "TeamWorkspace-rg"，然後按 **輸入** 。 
 1. 選擇工作區的位置。 建議您選擇的位置是最接近您打算部署模型的位置。 例如，「美國西部 2」。
 1. 當系統提示您選取工作區類型時，請選擇 [基本]。
 
@@ -97,7 +97,7 @@ ms.locfileid: "90906689"
     > ![建立計算目標](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. 選取 [Azure Machine Learning Compute (AMLCompute)]。 Azure Machine Learning Compute 是一種受控的計算基礎結構，可讓使用者輕鬆建立單一或多重節點計算，以供您工作區中的其他使用者使用。
-1. 選擇 VM 大小。 從選項清單中選取 **Standard_F2s_v2**。 您的 VM 大小會影響定型模型所需的時間量。 如需 VM 大小的詳細資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+1. 選擇 VM 大小。 從選項清單中選取 **Standard_F2s_v2** 。 您的 VM 大小會影響定型模型所需的時間量。 如需 VM 大小的詳細資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](../virtual-machines/sizes.md)。
 1. 將您的計算命名為 "TeamWkspc-com"，然後按 **Enter** 來建立計算。
 
     檔案會出現在具有類似以下內容的 VS Code 中：
@@ -139,7 +139,7 @@ ms.locfileid: "90906689"
 
 1. 在 Visual Studio Code 活動列上，選取 **Azure** 圖示。 Azure Machine Learning 檢視隨即出現。 
 1. 展開您的訂用帳戶節點。 
-1. 展開 **TeamWorkspace > 計算叢集**節點。 
+1. 展開 **TeamWorkspace > 計算叢集** 節點。 
 1. 在計算節點下方，以滑鼠右鍵按一下 [TeamWkspc-com] 計算節點，然後選擇 [建立回合組態]。
 
     > [!div class="mx-imgBorder"]
@@ -205,8 +205,8 @@ ms.locfileid: "90906689"
     Azure ML: Save and Continue
     ```
 
-1. 此範例不會使用在 Azure Machine Learning 中註冊的資料集。 而是在 train.py 執行時將其載入。 當系統提示您建立訓練執行所需的資料參考時，請在提示字元中輸入 "n"，然後按 **Enter**。
-1. 按 **Enter**，以瀏覽要在計算節點上執行的指令檔檔案。 在此情況下，用來定型模型的指令碼是 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目錄內的 `train.py` 檔案。
+1. 此範例不會使用在 Azure Machine Learning 中註冊的資料集。 而是在 train.py 執行時將其載入。 當系統提示您建立訓練執行所需的資料參考時，請在提示字元中輸入 "n"，然後按 **Enter** 。
+1. 按 **Enter** ，以瀏覽要在計算節點上執行的指令檔檔案。 在此情況下，用來定型模型的指令碼是 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目錄內的 `train.py` 檔案。
 
     名為 `MNIST-rc.runconfig` 的檔案會出現在具有類似以下內容的 VS Code 中：
 
@@ -323,7 +323,7 @@ ms.locfileid: "90906689"
     > [!div class="mx-imgBorder"]
     > ![註冊模型](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. 將模型命名為 "MNIST-TensorFlow-model"，然後按 **Enter**。
+1. 將模型命名為 "MNIST-TensorFlow-model"，然後按 **Enter** 。
 1. TensorFlow 模型是由數個檔案所組成。 在選項清單中，選取 [模型資料夾] 作為模型路徑格式。 
 1. 選取 `azureml_outputs/Run_1/outputs/outputs/model` 目錄。
 
@@ -367,10 +367,10 @@ ms.locfileid: "90906689"
     > [!div class="mx-imgBorder"]
     > ![部署模型](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
-1. 選取 **Azure 容器執行個體**。
-1. 將服務命名為 "mnist-tensorflow-svc"，然後按 **Enter**。
-1. 在輸入方塊中按 **Enter**，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `score.py` 檔案，以選擇要在容器中執行的指令碼。
-1. 在輸入方塊中按 **Enter**，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `env.yml` 檔案，以提供執行指令碼所需的相依性。
+1. 選取 **Azure 容器執行個體** 。
+1. 將服務命名為 "mnist-tensorflow-svc"，然後按 **Enter** 。
+1. 在輸入方塊中按 **Enter** ，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `score.py` 檔案，以選擇要在容器中執行的指令碼。
+1. 在輸入方塊中按 **Enter** ，然後瀏覽 `mnist-vscode-docs-sample` 目錄中的 `env.yml` 檔案，以提供執行指令碼所需的相依性。
 
     包含您模型組態的檔案會出現在 Visual Studio Code 中，其內容如下所示：
 
@@ -414,4 +414,3 @@ ms.locfileid: "90906689"
 
 * 如需如何使用 Visual Studio Code 外的 Azure Machine Learning 進行定型的逐步解說，請參閱[教學課程：使用 Azure Machine Learning 將模型定型](tutorial-train-models-with-aml.md)。
 * 如需在本機編輯、執行和偵錯程式碼的逐步解說，請參閱 [Python Hello World 教學課程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
-

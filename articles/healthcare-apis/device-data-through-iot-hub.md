@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308219"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398142"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教學課程：透過 Azure IoT 中樞接收裝置資料
 
@@ -23,7 +23,7 @@ Azure IoT Connector for FHIR* 可讓您將來自醫學物聯網 (IoMT) 裝置的
 
 - 有效的 Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 至少具有一個 Azure IoT Connector for FHIR 的 Azure API for FHIR 資源 - [使用 Azure 入口網站部署 Azure IoT Connector for FHIR (預覽)](iot-fhir-portal-quickstart.md)
-- 與實際或模擬裝置連線的 Azure IoT 中樞資源 - [使用 Azure 入口網站建立 IoT 中樞](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- 與實際或模擬裝置連線的 Azure IoT 中樞資源 - [使用 Azure 入口網站建立 IoT 中樞](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > 如果您使用 Azure IoT 中樞模擬裝置應用程式，則可以在不同的支援語言和系統上，自由挑選您選擇的應用程式。
@@ -36,15 +36,15 @@ Azure IoT Connector for FHIR 會在幕後使用 Azure 事件中樞執行個體�
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>使用 Azure IoT Connector for FHIR 連線 Azure IoT 中樞 (預覽)
 
-Azure IoT 中樞支援稱為[訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)的功能，可提供將裝置資料傳送至各種 Azure 服務 (例如事件中樞、儲存體帳戶和服務匯流排) 的功能。 Azure IoT Connector for FHIR 會利用這項功能，將裝置資料從 Azure IoT 中樞連線並傳送到其事件中樞端點。
+Azure IoT 中樞支援稱為[訊息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)的功能，可提供將裝置資料傳送至各種 Azure 服務 (例如事件中樞、儲存體帳戶和服務匯流排) 的功能。 Azure IoT Connector for FHIR 會利用這項功能，將裝置資料從 Azure IoT 中樞連線並傳送到其事件中樞端點。
 
 > [!NOTE] 
-> 目前，您只能使用 PowerShell 或 CLI 命令[建立訊息路由](https://docs.microsoft.com/azure/iot-hub/tutorial-routing)，因為客戶的訂用帳戶上並未裝載 Azure IoT Connector for FHIR 的事件中樞，因此您無法透過 Azure 入口網站看到訊息路由。 不過，一旦使用 PowerShell 或 CLI 新增訊息路由物件，訊息路由就會顯示在 Azure 入口網站上，而且可以從該處進行管理。
+> 目前，您只能使用 PowerShell 或 CLI 命令[建立訊息路由](../iot-hub/tutorial-routing.md)，因為客戶的訂用帳戶上並未裝載 Azure IoT Connector for FHIR 的事件中樞，因此您無法透過 Azure 入口網站看到訊息路由。 不過，一旦使用 PowerShell 或 CLI 新增訊息路由物件，訊息路由就會顯示在 Azure 入口網站上，而且可以從該處進行管理。
 
 只需兩步驟即可設定訊息路由。
 
 ### <a name="add-an-endpoint"></a>新增端點。
-此步驟會定義 IoT 中樞會將資料路由至其中的端點。 請根據您的嘉好設定，使用 [AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell 命令或 [az iot hub routing-endpoint create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create) CLI 命令來建立此端點。
+此步驟會定義 IoT 中樞會將資料路由至其中的端點。 請根據您的嘉好設定，使用 [AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell 命令或 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI 命令來建立此端點。
 
 以下是要搭配命令以建立端點的參數清單：
 
@@ -59,7 +59,7 @@ Azure IoT 中樞支援稱為[訊息路由](https://docs.microsoft.com/azure/iot-
 |ConnectionString|connection-string|Azure IoT Connector for FHIR 的連接字串。 使用上一個步驟中取得的值。|
 
 ### <a name="add-a-message-route"></a>新增訊息路由
-此步驟會使用上面建立的端點來定義訊息路由。 請根據您的喜好設定，使用 [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令來建立路由點。
+此步驟會使用上面建立的端點來定義訊息路由。 請根據您的喜好設定，使用 [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令來建立路由點。
 
 以下是要用於命令以新增訊息路由的參數清單：
 

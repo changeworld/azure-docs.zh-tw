@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16f55dc88ed2d2d019a2fed355a14741263c20af
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723991"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397598"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立和設定應用程式閘道以裝載多個網站
 
@@ -47,26 +47,26 @@ ms.locfileid: "88723991"
 
 1. 在 [基本]  索引標籤上，為下列應用程式閘道設定輸入這些值：
 
-   - **資源群組**：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
-   - **應用程式閘道名稱**：輸入 myAppGateway  作為應用程式閘道的名稱。
+   - **資源群組** ：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
+   - **應用程式閘道名稱** ：輸入 myAppGateway  作為應用程式閘道的名稱。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="多網站應用程式閘道":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="建立應用程式閘道":::
 
 2.  Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您可以建立新的虛擬網路，或使用現有的虛擬網路。 在此範例中，您將會在建立應用程式閘道時，同時建立新的虛擬網路。 在不同的子網路中，建立應用程式閘道執行個體。 在此範例中您會建立兩個子網路：一個用於應用程式閘道，另一個用於後端伺服器。
 
     在 [設定虛擬網路]  底下，選取 [建立]  以建立新的虛擬網路。 在隨即開啟的 [建立虛擬網路]  視窗中，輸入下列值以建立虛擬網路和兩個子網路：
 
-    - **Name**：輸入 myVNet  作為虛擬網路的名稱。
+    - **Name** ：輸入 myVNet  作為虛擬網路的名稱。
 
-    - **子網路名稱** (應用程式閘道子網路)：[子網路]  方格將會顯示名為 *Default* 的子網路。 將此子網路的名稱變更為 *myAGSubnet*。<br>應用程式閘道子網路只能包含應用程式閘道。 不允許任何其他資源。
+    - **子網路名稱** (應用程式閘道子網路)：[子網路]  方格將會顯示名為 *Default* 的子網路。 將此子網路的名稱變更為 *myAGSubnet* 。<br>應用程式閘道子網路只能包含應用程式閘道。 不允許任何其他資源。
 
-    - **子網路名稱** (後端伺服器子網路)：在 [子網路]  方格的第二列中，於 [子網路名稱]  欄中輸入 *myBackendSubnet*。
+    - **子網路名稱** (後端伺服器子網路)：在 [子網路]  方格的第二列中，於 [子網路名稱]  欄中輸入 *myBackendSubnet* 。
 
-    - **位址範圍** (後端伺服器子網路)：在 [子網路]  方格的第二列中，輸入沒有與 *myAGSubnet* 的位址範圍重疊的位址範圍。 例如，如果 *myAGSubnet* 的位址範圍是 10.0.0.0/24，請針對 *myBackendSubnet* 的位址範圍輸入 *10.0.1.0/24*。
+    - **位址範圍** (後端伺服器子網路)：在 [子網路]  方格的第二列中，輸入沒有與 *myAGSubnet* 的位址範圍重疊的位址範圍。 例如，如果 *myAGSubnet* 的位址範圍是 10.0.0.0/24，請針對 *myBackendSubnet* 的位址範圍輸入 *10.0.1.0/24* 。
 
     選取 [確定]  以關閉 [建立虛擬網路]  視窗並儲存虛擬網路設定。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="多網站應用程式閘道":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="建立 VNet":::
     
 3. 在 [基本]  索引標籤上，接受其他設定的預設值，然後選取 [下一步:  前端]。
 
@@ -76,9 +76,9 @@ ms.locfileid: "88723991"
    > [!NOTE]
    > 對於應用程式閘道 v2 SKU，您只能選擇 [公用]  前端 IP 組態。 目前未針對此 v2 SKU 啟用私人前端 IP 設定。
 
-2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
+2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress* ，然後選取 [確定]  。 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="多網站應用程式閘道":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="建立另一個 VNet":::
 
 3. 完成時，選取 [下一步:  後端]。
 
@@ -90,13 +90,13 @@ ms.locfileid: "88723991"
 
 2. 在隨即開啟的 [新增後端集區]  視窗中，輸入下列值以建立空的後端集區：
 
-    - **Name**：輸入 *contosoPool*作為後端集區的名稱。
-    - **新增不含目標的後端集區**：選取 [是]  以建立不含目標的後端集區。 您將會在建立應用程式閘道之後再新增後端目標。
+    - **Name** ：輸入 *contosoPool* 作為後端集區的名稱。
+    - **新增不含目標的後端集區** ：選取 [是]  以建立不含目標的後端集區。 您將會在建立應用程式閘道之後再新增後端目標。
 
 3. 在 [新增後端集區]  視窗中，選取 [新增]  以儲存後端集區設定，並返回 [後端]  索引標籤。
-4. 現在新增另一個名為 *fabrikamPool*的後端集區。
+4. 現在新增另一個名為 *fabrikamPool* 的後端集區。
 
-    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="多網站應用程式閘道":::
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="建立後端":::
 
 4. 在 [後端]  索引標籤上，選取 [下一步:  設定]。
 
@@ -106,29 +106,29 @@ ms.locfileid: "88723991"
 
 1. 選取 [路由規則]  欄中的 [新增規則]  。
 
-2. 在隨即開啟的 [新增路由規則]  視窗中，針對 [規則名稱]  輸入 *contosoRule*。
+2. 在隨即開啟的 [新增路由規則]  視窗中，針對 [規則名稱]  輸入 *contosoRule* 。
 
 3. 路由規則需要接聽程式。 在 [新增路由規則]  視窗內的 [接聽程式]  索引標籤上，針對接聽程式輸入下列值：
 
-    - **接聽程式名稱**：輸入 *contosoListener* 作為接聽程式的名稱。
-    - **前端 IP**：選取 [公用]  以選擇您針對前端所建立的公用 IP。
+    - **接聽程式名稱** ：輸入 *contosoListener* 作為接聽程式的名稱。
+    - **前端 IP** ：選取 [公用]  以選擇您針對前端所建立的公用 IP。
 
    在 [其他設定]  之下：
-   - **接聽程式類型**：多站台
-   - **主機名稱**：**www.contoso.com**
+   - **接聽程式類型** ：多站台
+   - **主機名稱** ： **www.contoso.com**
 
    接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
 
-   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="多網站應用程式閘道":::
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="建立路由規則":::
 
 4. 在 [後端目標]  索引標籤上，針對 [後端目標]  選取 [contosoPool]  。
 
-5. 針對 [HTTP 設定]  ，選取 [新建]  以建立新的 HTTP 設定。 HTTP 設定將會決定路由規則的行為。 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *contosoHTTPSetting*。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。 
+5. 針對 [HTTP 設定]  ，選取 [新建]  以建立新的 HTTP 設定。 HTTP 設定將會決定路由規則的行為。 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *contosoHTTPSetting* 。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。 
 
 6. 在 [新增路由規則]  視窗上，選取 [新增]  以儲存路由規則，並返回 [設定]  索引標籤。
 7. 選取 [新增規則]  ，然後為 Fabrikam 新增類似的規則、接聽程式、後端目標和 HTTP 設定。
 
-     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="多網站應用程式閘道":::
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 規則":::
 
 7. 完成時，選取 [下一步:  標籤]，然後選取 [下一步:  檢閱 + 建立]。
 
@@ -144,7 +144,7 @@ ms.locfileid: "88723991"
 
 若要新增後端目標，您會：
 
-1. 建立 2 個新 VM (*contosoVM* 和 *fabrikamVM*)，以作為後端伺服器。
+1. 建立 2 個新 VM ( *contosoVM* 和 *fabrikamVM* )，以作為後端伺服器。
 2. 在虛擬機器上安裝 IIS，以確認成功建立應用程式閘道。
 3. 將後端伺服器新增至後端集區。
 
@@ -154,10 +154,10 @@ ms.locfileid: "88723991"
 2. 選取 [計算]  ，然後選取 [熱門]  清單中的 [Windows Server 2016 Datacenter]  。 [建立虛擬機器]  頁面隨即出現。<br>應用程式閘道可將流量路由至其後端集區中所用任何類型的虛擬機器。 在此範例中，您會使用 Windows Server 2016 Datacenter。
 3. 在 [基本]  索引標籤中，為下列虛擬機器設定輸入這些值：
 
-    - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
-    - **虛擬機器名稱**：輸入 *contosoVM* 作為虛擬機器的名稱。
-    - **使用者名稱**：輸入管理員使用者的名稱。
-    - **密碼**：輸入管理員的密碼。
+    - **資源群組** ：選取 **myResourceGroupAG** 作為資源群組名稱。
+    - **虛擬機器名稱** ：輸入 *contosoVM* 作為虛擬機器的名稱。
+    - **使用者名稱** ：輸入管理員使用者的名稱。
+    - **密碼** ：輸入管理員的密碼。
 1. 接受其他預設值，然後選取 [下一步：  磁碟]。  
 2. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
 3. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
@@ -169,7 +169,7 @@ ms.locfileid: "88723991"
 
 在此範例中，您在虛擬機器上安裝 IIS，只為了驗證 Azure 已成功建立應用程式閘道。
 
-1. 開啟 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 若要這樣做，請從 Azure 入口網站的頂端導覽列中選取 [Cloud Shell]  ，然後從下拉式清單中選取 [PowerShell]  。 
+1. 開啟 [Azure PowerShell](../cloud-shell/quickstart-powershell.md)。 若要這樣做，請從 Azure 入口網站的頂端導覽列中選取 [Cloud Shell]  ，然後從下拉式清單中選取 [PowerShell]  。 
 
     ![安裝自訂延伸模組](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -204,7 +204,7 @@ ms.locfileid: "88723991"
     ![新增後端伺服器](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
 6. 選取 [儲存]  。
-7. 重複執行，新增 *fabrikamVM* 並連接至 *fabrikamPool*。
+7. 重複執行，新增 *fabrikamVM* 並連接至 *fabrikamPool* 。
 
 等候部署完成，再繼續進行下一個步驟。
 
@@ -242,4 +242,4 @@ ms.locfileid: "88723991"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入了解 Azure 應用程式閘道的用途](application-gateway-introduction.md)
+> [深入了解 Azure 應用程式閘道的用途](./overview.md)
