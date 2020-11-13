@@ -18,6 +18,8 @@
   href: color-materials.md
 - name: 外框呈現
   href: outlines.md
+- name: 殼層呈現
+  href: shell-effect.md
 - name: 單面呈現
   href: single-sided-rendering.md
 - name: 空間查詢

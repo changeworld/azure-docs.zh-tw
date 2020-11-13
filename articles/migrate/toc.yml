@@ -68,7 +68,7 @@
           href: tutorial-migrate-gcp-virtual-machines.md
 - name: 概念
   items:
-    - name: 使用 Azure Migrate 建立移轉計劃
+    - name: 建置移轉計劃
       href: concepts-migration-planning.md
     - name: 支援矩陣
       items:

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c96f2cc37c47c77b82ca86d5fd0295f0c66a896
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093063"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553687"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停機部署
 
@@ -54,7 +54,7 @@ Durable Functions 的 [可靠執行模型](./durable-functions-orchestrations.md
 
 1. 針對每個位置，建立新的應用程式設定，例如 `DurableManagementStorage` 。 將其值設定為不同儲存體帳戶的連接字串。 Durable Functions 擴充功能會使用這些儲存體帳戶進行 [可靠的執行](./durable-functions-orchestrations.md)。 針對每個位置使用不同的儲存體帳戶。 請勿將此設定標示為部署位置設定。
 
-1. 在函式應用程式 [host.js的 [durableTask] 區段上](durable-functions-bindings.md#hostjson-settings)，指定 `azureStorageConnectionStringName` 您在步驟3中建立的應用程式設定名稱。
+1. 在函式應用程式 [host.js的 [durableTask] 區段上](durable-functions-bindings.md#hostjson-settings)，指定 (長期 2.x `connectionStringName`) 或 (永久性 1.x] `azureStorageConnectionStringName`) 做為您在步驟3中建立的應用程式設定名稱。
 
 下圖顯示部署位置和儲存體帳戶的說明設定。 在這種可能的預先部署案例中，函式應用程式第2版正在生產位置中執行，而第1版仍在預備位置中。
 
@@ -71,7 +71,10 @@ Durable Functions 的 [可靠執行模型](./durable-functions-orchestrations.md
   "version": 2.0,
   "extensions": {
     "durableTask": {
-      "azureStorageConnectionStringName": "DurableManagementStorage"
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
+      }
     }
   }
 }
@@ -168,7 +171,7 @@ Azure Pipelines 會在部署開始之前，先檢查函式應用程式是否有�
 
 ![追蹤存放區設定](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [版本控制 Durable Functions](durable-functions-versioning.md)

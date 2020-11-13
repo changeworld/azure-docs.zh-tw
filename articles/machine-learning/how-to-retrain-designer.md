@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure Machine Learning 設計工具重新定型模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 表設計工具中，使用已發佈的管線重新定型模型。
+description: 瞭解如何在 Azure Machine Learning 表設計工具中，使用已發佈的管線重新定型機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905675"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554796"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具重新定型模型
 
@@ -49,7 +49,7 @@ ms.locfileid: "90905675"
 
 建立管線參數，以在執行階段動態設定變數。 在此範例中，您會將定型資料路徑從固定值變更為參數，以便使用不同的資料重新定型模型。
 
-1. 選取**匯入資料**模組。
+1. 選取 **匯入資料** 模組。
 
     > [!NOTE]
     > 此範例會使用「匯入資料」模組來存取已註冊資料存放區中的資料。 不過，如果您使用替代的資料存取模式，則可以依照類似的步驟操作。

@@ -18,3 +18,5 @@
   href: byos.md
 - name: Red Hat Enterprise Linux 擴充生命週期支援
   href: redhat-extended-lifecycle-support.md
+- name: 就地升級 Azure 上的 Red Hat Enterprise 映像
+  href: redhat-in-place-upgrade.md

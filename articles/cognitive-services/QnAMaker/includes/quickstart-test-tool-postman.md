@@ -4,16 +4,16 @@ description: 包含檔案
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132874"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386529"
 ---
 這個以 Postman 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
@@ -28,6 +28,8 @@ ms.locfileid: "87132874"
 > 當您準備好從知識庫產生問題的答案時，就必須[定型](../Quickstarts/create-publish-knowledge-base.md#save-and-train)並[發佈](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)知識庫。 發佈知識庫時，[發佈] 頁面會顯示用來產生答案的 HTTP 要求設定。 [Postman] 索引標籤會顯示為了產生答案所需的設定。
 
 ## <a name="set-up-postman-for-requests"></a>針對要求來設定 Postman
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 本快速入門會針對 Postman 的 **POST** 要求使用相同設定，然後根據您所嘗試查詢的內容來設定為傳送至服務的 POST 主體 JSON。
 
@@ -44,6 +46,25 @@ ms.locfileid: "87132874"
     ||`{"question":"<Your question>"}`|POST 要求的主體，會作為 JSON 物件。 根據查詢的目的而定，在下列各節中，此值會有所變更。|
 
 1. 開啟 Postman，並使用所發佈知識庫的設定來建立新的基本 **POST** 要求。 在下列各節中，修改 POST 主體 JSON 以將查詢變更為您的知識庫。
+
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+
+本快速入門會針對 Postman 的 **POST** 要求使用相同設定，然後根據您所嘗試查詢的內容來設定為傳送至服務的 POST 主體 JSON。
+
+使用此程序來設定 Postman，然後閱讀後續各節以設定 POST 主體 JSON。
+
+1. 從知識庫的 [設定] 頁面，選取 [Postman] 索引標籤來查看用來從知識庫產生答案的設定。 複製下列要用於 Postman 的資訊。
+
+    |名稱|設定|目的和值|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|這是 URL 的 HTTP 方法和路由。|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|這是 URL 的主機。 串連 Host 和 Post 值，以取得完整的 generateAnswer URL。|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|用來授權要求的標頭值。 |
+    |`Content-type`|`application/json`|內容的標頭值。|
+    ||`{"question":"<Your question>"}`|POST 要求的主體，會作為 JSON 物件。 根據查詢的目的而定，在下列各節中，此值會有所變更。|
+
+1. 開啟 Postman，並使用所發佈知識庫的設定來建立新的基本 **POST** 要求。 在下列各節中，修改 POST 主體 JSON 以將查詢變更為您的知識庫。
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>使用中繼資料來篩選答案
 

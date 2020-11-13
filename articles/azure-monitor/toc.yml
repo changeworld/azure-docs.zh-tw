@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: 記錄資料使用量和成本
               href: platform/manage-cost-storage.md
+    - name: Azure 監視器計量
+      items:
+        - name: 概觀
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: 計量瀏覽器
+          items:
+            - name: 開始使用計量瀏覽器
+              href: platform/metrics-getting-started.md
+            - name: 計量瀏覽器進階功能
+              href: platform/metrics-charts.md
+            - name: 計量圖表範例
+              href: platform/metric-chart-samples.md
+            - name: 針對計量圖表進行疑難排解
+              href: platform/metrics-troubleshoot.md
     - name: Azure 監視器記錄
       items:
         - name: 概觀
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: 使用資料總管查詢匯出的資料
               href: platform/azure-data-explorer-query-storage.md
-    - name: Azure 監視器計量
-      items:
-        - name: 概觀
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: 計量瀏覽器
-          items:
-            - name: 開始使用計量瀏覽器
-              href: platform/metrics-getting-started.md
-            - name: 計量瀏覽器進階功能
-              href: platform/metrics-charts.md
-            - name: 計量圖表範例
-              href: platform/metric-chart-samples.md
-            - name: 針對計量圖表進行疑難排解
-              href: platform/metrics-troubleshoot.md
+            - name: 傳送至 Excel
+              href: log-query/log-excel.md
+            - name: 傳送至 Power BI
+              href: log-query/log-powerbi.md
     - name: 平台記錄
       items:
         - name: 概觀
@@ -289,7 +293,7 @@
         - name: 診斷設定
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-    - name: 資料集合
+    - name: 資料收集
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
-            - name: 非 Http 應用程式/背景應用程式
+              items:
+                - name: ASP.NET 應用程式監視
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: ASP.NET 疑難排解
+                  href: app/asp-net-troubleshoot-no-data.md
+            - name: 非 HTTP/背景應用程式
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET 主控台
+            - name: ASP.NET 主控台
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: 記錄追蹤
                   href: app/java-trace-logs.md
-                - name: Unix 計量
-                  href: app/java-collectd.md
                 - name: 相依性
                   href: app/java-agent.md
                 - name: 篩選遙測
                   href: app/java-filter-telemetry.md
-                - name: Micrometer Metrics
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot 應用程式
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: 疑難排解
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: Application Insights API 摘要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: ASP.NET 疑難排解
-              href: app/asp-net-troubleshoot-no-data.md
             - name: 移除 Application Insights
               href: app/remove-application-insights.md
         - name: 無程式碼監視
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Web 應用程式擴充功能
               href: app/web-app-extension-release-notes.md
+            - name: 快照集偵錯工具
+              href: app/snapshot-collector-release-notes.md
         - name: 資料模型
           items:
             - name: 概觀
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: 金鑰保存庫分析 (已遭到取代)
           href: insights/azure-key-vault-deprecated.md
+        - name: Unix 計量
+          href: app/java-collectd.md
+        - name: Micrometer Metrics
+          displayname: java
+          href: app/micrometer-java.md
         - name: 檢視
           items:
             - name: 檢視設計工具

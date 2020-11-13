@@ -1,19 +1,19 @@
 ---
 title: 教學課程：設計伺服器 - Azure CLI - 適用於 MySQL 的 Azure 資料庫
 description: 本教學課程說明如何使用 Azure CLI 從命令列建立和管理 Azure Database for MySQL 伺服器和資料庫。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3e851c47e67ac6e42d81b7688e457c2f9e17725b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 06d8b7cdd6edb6ae3dad27a8a5f50443e3fc8969
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543945"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533588"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教學課程：使用 Azure CLI 來設計適用於 MySQL 的 Azure 資料庫
 
@@ -27,6 +27,8 @@ ms.locfileid: "92543945"
 > * 查詢資料
 > * 更新資料
 > * 還原資料
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -174,10 +176,10 @@ SELECT * FROM inventory;
 
 若要進行還原，您需要下列資訊︰
 
-- 還原點：選取在伺服器發生變更前的時間點。 必須大於或等於來源資料庫的最舊備份值。
-- 目標伺服器：提供要作為還原目的地的新伺服器名稱
-- 來源伺服器：提供要作為還原來源的伺服器名稱
-- 位置：您無法選取區域，預設是與來源伺服器相同的區域
+- 還原點：選取在變更伺服器之前的時間點。 必須大於或等於來源資料庫的最舊備份值。
+- 目標伺服器︰提供要作為還原目的地的新伺服器名稱
+- 來源伺服器︰提供要作為還原來源的伺服器名稱
+- 位置︰您無法選取區域，預設是與來源伺服器相同的區域
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -196,12 +198,25 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 命令是同步的，將會在伺服器還原之後傳回。 一旦還原完成時，找出所建立的新伺服器。 請確認資料已如預期般還原。
 
+## <a name="clean-up-resources"></a>清除資源
+如果您不需要這些資源來進行其他快速入門/教學課程，可以執行下列命令加以刪除︰ 
+
+```azurecli-interactive
+az group delete --name myresourcegroup
+```
+
+若您只想要刪除一個新建立的伺服器，則可執行 [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) 命令。
+
+```azurecli-interactive
+az mysql server delete --resource-group myresourcegroup --name mydemoserver
+```
+
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解：
 > [!div class="checklist"]
 > * 建立適用於 MySQL 的 Azure 資料庫伺服器
 > * 設定伺服器防火牆
-> * 使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)建立資料庫
+> * 使用 mysql 命令列工具建立資料庫
 > * 載入範例資料
 > * 查詢資料
 > * 更新資料

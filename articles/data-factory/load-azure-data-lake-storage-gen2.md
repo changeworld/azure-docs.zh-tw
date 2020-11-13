@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 424d5a7ade04c2b72a0bc8ec379a6fad09216f39
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/09/2020
+ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042684"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554112"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen2 中
 
@@ -42,7 +42,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左側功能表上，選取 [建立資源] > [資料 + 分析] > [資料處理站]：
+1. 在左側功能表中，選取 [ **建立資源**  >  **整合**  >  **Data Factory** ：
    
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -77,16 +77,16 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
    1. 指定 [存取金鑰識別碼] 值。
    2. 指定 [祕密存取金鑰] 值。
-   3. 按一下 [ **測試連接** ] 以驗證設定，然後選取 [ **建立** ]。
+   3. 按一下 [測試連線] 以驗證設定，然後選取 [建立]。
 
       ![指定 Amazon S3 帳戶](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. 您會看到新的 AmazonS3 連接已建立。 選取 [下一步]  。 
+   4. 您會看到新的 AmazonS3 連接已建立。 選取 [下一步]。 
 
 5. 在 [選擇輸入檔案或資料夾] 頁面中，瀏覽至您要複製過去的資料夾和檔案。 選取資料夾/檔案，然後選取 **[選擇** ]。
 
     ![選擇輸入檔案或資料夾](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. 藉由檢查 **遞迴** 和 **二進位複製** 選項來指定複製行為。 選取 [下一步]  。
+6. 藉由檢查 **遞迴** 和 **二進位複製** 選項來指定複製行為。 選取 [下一步]。
 
     ![螢幕擷取畫面顯示選擇您可以在其中選取二進位複製和遞迴的輸入檔案或資料夾。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
@@ -97,7 +97,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 8. 在 [ **新增連結服務] (Azure Data Lake Storage Gen2)** ] 頁面中，執行下列步驟：
 
    1. 從 [儲存體帳戶名稱] 下拉式清單中，選取您的 Data Lake Storage Gen2 可使用帳戶。
-   2. 選取 [ **建立** ] 以建立連接。 然後選取 [下一步]  。   
+   2. 選取 [ **建立** ] 以建立連接。 然後，選取 [下一步]。   
 
         ![指定 Azure Data Lake Storage Gen2 帳戶](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 
@@ -113,7 +113,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
     ![摘要頁面](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
 
-12. 在  來監視管線 (工作)。 
+12. 在 **部署頁面** 上選取 [監視] 來監視管線 (工作)。 
  
 13. 當管線執行成功完成時，您會看到由手動觸發程式所觸發的管線執行。 您可以使用 [管線名稱] 資料行下的連結來檢視活動詳細資料，以及重新執行管線。
 

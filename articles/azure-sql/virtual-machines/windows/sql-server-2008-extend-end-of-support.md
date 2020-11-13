@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784859"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553517"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 擴充對 Azure SQL Server 2008 和 SQL Server 2008 R2 的支援
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,9 +45,9 @@ SQL Server 2008 和 SQL Server 2008 R2 均已達到[終止支援 (EOS) 生命週
 ## <a name="licensing"></a>授權
 隨用隨付 SQL Server 2008 R2 部署可以轉換為 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
-若要將以軟體保證 (SA) 為基礎的授權轉換成隨用隨付授權，客戶應向 SQL VM [資源提供者](sql-vm-resource-provider-register.md)註冊。 在完成上述註冊後，即可互換 Azure Hybrid Benefit 與隨用隨付這兩種 SQL 授權類型。
+若要將軟體保證 (SA) 型授權轉換成隨用隨付，客戶應該向 [SQL IaaS 代理程式延伸](sql-agent-extension-manually-register-single-vm.md)模組註冊。 在完成上述註冊後，即可互換 Azure Hybrid Benefit 與隨用隨付這兩種 SQL 授權類型。
 
-在 Azure VM 上自行安裝的 SQL Server 2008 或 SQL Server 2008 R2 執行個體，可以向 SQL VM 資源提供者註冊，並將其授權類型轉換成隨用隨付。
+在 Azure VM 上自行安裝的 SQL Server 2008 或 SQL Server 2008 R2 實例可以向 SQL IaaS 代理程式延伸模組註冊，並將其授權類型轉換成隨用隨付。
 
 ## <a name="migration"></a>遷移
 您可以使用手動備份/還原方法，將 EOS SQL Server 執行個體遷移至 Azure VM。 這是從內部部署遷移到 Azure VM 的最常見方法。
@@ -71,7 +71,8 @@ Azure VM 上的 EOS SQL Server 的災害復原解決方案如下：
 - **Azure Site Recovery** ：您可以透過 Azure Site Recovery 複寫，在區域和區域之間複寫 VM。 SQL Server 需要應用程式一致的快照集，以確保在發生災害時能夠復原。 Azure Site Recovery 為 EOS SQL Server 災害復原提供最少 1 小時的 RPO 和 2 小時 (加上 SQL Server 復原時間) 的 RTO。
 
 ## <a name="security-patching"></a>安全性修補
-在 SQL Server VM 已向 SQL VM [資源提供者](sql-vm-resource-provider-register.md)註冊後，會透過 Microsoft Update 通道傳遞SQL Server VM 的擴充安全性更新。 您可以手動或自動下載修補程式。
+
+使用 [SQL IaaS 代理程式擴充](sql-agent-extension-manually-register-single-vm.md)功能註冊 SQL Server VM 之後，SQL Server vm 的擴充安全性更新會透過 Microsoft Update 通道傳遞。 您可以手動或自動下載修補程式。
 
 *Automated patching* 。 自動修補可讓 Azure 自動修補 SQL Server 和作業系統。 如果已安裝 SQL Server IaaS 擴充功能，您可以指定維護期間的星期幾、時間和持續時間。 Azure 會在此維護期間執行修補。 維護期間排程會使用 VM 地區設定做為時間。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 自動修補](automated-patching.md)。
 

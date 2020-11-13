@@ -451,6 +451,8 @@
           href: copy-activity-fault-tolerance.md
         - name: 資料一致性驗證
           href: copy-activity-data-consistency.md
+        - name: 複製活動記錄
+          href: copy-activity-log.md
         - name: 格式和壓縮支援 (舊版)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: 轉換資料

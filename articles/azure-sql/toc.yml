@@ -1,7 +1,11 @@
 - name: Azure SQL 文件
   href: index.yml
-- name: 什麼是 Azure SQL？
-  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Azure SQL
+  items:
+    - name: 什麼是 Azure SQL？
+      href: azure-sql-iaas-vs-paas-what-is-overview.md
+    - name: 遷移至 Azure SQL
+      href: migration-guides/index.yml
 - name: 共用 SQL DB 和 SQL MI 文件
   items:
     - name: 購買模型
@@ -301,6 +305,16 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: 將 SQLite 遷移至無伺服器
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: 移轉指南
+      items:
+        - name: 從 DB2
+          href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: 從 SQL Server
+          items:
+            - name: 概觀
+              href: migration-guides/database/sql-server-to-sql-database-overview.md
+            - name: 移轉
+              href: migration-guides/database/sql-server-to-sql-database-guide.md
     - name: 概念
       items:
         - name: 連線架構
@@ -696,6 +710,18 @@
               href: managed-instance/replication-between-two-instances-configure-tutorial.md
             - name: MI pub、MI dist、SQL sub
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: 移轉指南
+      items:
+        - name: 從 DB2
+          href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: 從 SQL Server
+          items:
+            - name: 概觀
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+            - name: 移轉
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: 效能基準
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
     - name: 概念
       items:
         - name: 資源限制
@@ -1068,7 +1094,7 @@
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                         - name: 手動設定
                           items:
-                            - name: 必要條件
+                            - name: Prerequisites
                               href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                             - name: 教學課程
                               href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
@@ -1139,7 +1165,7 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: MSDN 論壇
               href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-            - name: 堆疊溢位
+            - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: Linux
       items:
@@ -1171,6 +1197,14 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: 移轉指南
+      items:
+        - name: 概觀
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+        - name: 從 SQL Server
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+        - name: 從 DB2
+          href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
 - name: 參考
   items:
     - name: T-SQL 語言參考
@@ -1240,7 +1274,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: 疑難排解
       items:

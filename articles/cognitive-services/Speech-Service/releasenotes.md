@@ -11,14 +11,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2586b3aab9d1fb8e7ae12aea540df19ff6c37556
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356683"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553653"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
+
+## <a name="text-to-speech-2020-october-release"></a>文字轉換語音 2020-10 月版本
+
+**新功能**
+- Jenny 支援新的 `newscast` 樣式。 瞭解 [如何在 SSML 中使用說話樣式](speech-synthesis-markup.md#adjust-speaking-styles)。
+- 類 **神經語音已升級為 HiFiNet vocoder，具有更高的音訊精確度及更快速的合成速度** 。 這有助客戶的案例是依賴 wi-fi 音訊或長時間的互動，包括視頻配音、音訊書籍或線上教育教材。 [閱讀詳細資訊，並聆聽我們的技術社區 blog 上的語音範例](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
+- **[自訂語音](https://speech.microsoft.com/customvoice)  &  的 [音訊內容建立 Studio](https://speech.microsoft.com/audiocontentcreation)已當地語系化為17個地區** 設定。 使用者可以輕鬆地將 UI 切換為當地語言，以提供更好的體驗。   
+- **音訊內容建立** ：新增了 XiaoxiaoNeural 的樣式度控制項;調整自訂的中斷功能，以包含50毫秒的累加式中斷。 
+
+**一般 TTS 語音品質改進**
+- 改善 (錯誤率降低的單字層級發音精確度 `pl-PL` ： 51% ) 和 `fi-FI` (錯誤率減少： 58% ) 
+- 改進 `ja-JP` 字典案例的單一字詞閱讀。 減少的發音誤差（80%）。
+- `zh-CN-XiaoxiaoNeural`：改良的情感/CustomerService/Newscast/歡快/生氣樣式語音品質。
+- `zh-CN`：改良的 Erhua 發音和輕量，以及微調的空間韻律，可大幅改善理解性。 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>語音 SDK 1.14.0： 2020-10 月版本
 
@@ -78,6 +92,18 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - `spx * --http header A=B` – (針對 Office 自訂驗證) 新增自訂標頭。 
 - `spx help` –改良的文字和反向刻度文字色彩 (藍色) 。
 
+## <a name="text-to-speech-2020-september-release"></a>文字轉換語音 2020-九月版本
+
+### <a name="new-features"></a>新功能
+
+* **類神經 TTS** 
+    * **已擴充為支援18種新的語言/地區設定。** 它們包括保加利亞文、捷克文、德文 (奧地利) 、德文 (瑞士) 、希臘文、英文 (愛爾蘭) 、法文 (瑞士) 、希伯來文、克羅地亞文、匈牙利文、希伯來文、羅馬尼亞文、斯洛伐克文、希伯來文、泰米爾文、羅馬尼亞文、斯洛伐克文、斯洛伐克文、泰德文和越南文。 
+    * **發行了14項新語音，以豐富現有語言的各種功能。** 請參閱 [完整的語言和語音清單](language-support.md#neural-voices)。
+    * **和語音的新說話風格 `en-US` `zh-CN` 。** Jenny，英文 (US) 的新語音支援聊天機器人、客戶服務和助理樣式。 我們的 zh-CN voice，XiaoXiao 提供了10種新說話風格。 此外，XiaoXiao 神經語音也支援 `StyleDegree` 微調。 瞭解 [如何在 SSML 中使用說話樣式](speech-synthesis-markup.md#adjust-speaking-styles)。
+
+* **容器：在公開預覽版本中發行的神經 TTS 容器，提供14種語言的16種語音。** 深入瞭解 [如何部署適用于類神經 TTS 的語音容器](speech-container-howto.md)  
+
+閱讀 [完整的 Ignite 2020 TTS 更新公告](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544) 
 
 ## <a name="text-to-speech-2020-august-release"></a>文字轉換語音 2020-8 月版本
 
@@ -118,7 +144,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
     | `ja-JP` | Nanami |
     | `ko-KR` | Sun-Hi |
 
-### <a name="bug-fixes"></a>錯誤修正
+### <a name="bug-fixes"></a>Bug 修正
 
 * 使用音訊內容建立工具修正了許多 bug 
     * 已修正自動重新整理的問題。 
@@ -231,7 +257,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
     | `pt-PT` | 77% |
     | `id-ID` | 46% |
 
-### <a name="bug-fixes"></a>錯誤修正
+### <a name="bug-fixes"></a>Bug 修正
 
 * 貨幣讀取
     * 修正了和的貨幣讀取問題 `es-ES``es-MX`
@@ -580,7 +606,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 
 這是 bug 修正版本，只會影響原生/受管理的 SDK。 它不會影響 JavaScript 版本的 SDK。
 
-**錯誤 (bug) 修正**
+**Bug 修正**
 
 - 修正使用麥克風輸入時的記憶體遺漏。 以資料流程為基礎或檔案輸入不受影響。
 

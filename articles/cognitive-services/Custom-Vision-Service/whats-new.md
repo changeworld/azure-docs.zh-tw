@@ -10,16 +10,31 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: a87e76d4a726f7a01b96d602e7f41d60409dae56
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 030b09dae9db11fb14defecde3d14e949b9e6748
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521487"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412726"
 ---
 # <a name="whats-new-in-custom-vision"></a>自訂視覺的新功能
 
 了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
+
+
+## <a name="october-2020"></a>2020 年 10 月 
+
+### <a name="custom-base-model"></a>自訂基底模型
+
+- 有些應用程式有大量的聯合定型資料，但需要分別微調其模型；對於來自不同來源但有些許差異的影像，這會導致較佳的效能。 在此情況下，您可以像平常一樣使用大量的定型資料來定型第一個模型。 然後在要求本文中使用 _CustomBaseModelInfo_ 呼叫 3.4 公開預覽 API 中的 **TrainProject** ，以使用第一個階段定型的模型作為下游專案的基底模型。 如果來源專案和下游目標專案有類似的影像特性，則應該會有更好的效能。 
+
+### <a name="new-domain-information"></a>新的網域資訊
+
+- 從自訂視覺 3.4 公開預覽 API 中的 **GetDomains** 傳回的網域資訊，現在會包含支援的可匯出平台、模型架構的簡短描述，以及精簡網域的模型大小。
+
+### <a name="training-divergence-feedback"></a>定型分歧意見反應
+
+- 自訂視覺 3.4 公開預覽 API 現在會從 **GetIteration** 呼叫傳回 **TrainingErrorDetails** 。 在失敗的反復項目上，這會顯示失敗是否因定型分歧而造成，從而可以利用更多更高品質的定型資料來補救。
 
 ## <a name="july-2020"></a>2020 年 7 月
 

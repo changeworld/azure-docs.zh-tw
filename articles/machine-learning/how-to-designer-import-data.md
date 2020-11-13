@@ -1,7 +1,7 @@
 ---
 title: 將資料匯入至設計工具
 titleSuffix: Azure Machine Learning
-description: 瞭解如何從各種資料來源將資料匯入 Azure Machine Learning 的設計工具。
+description: 瞭解如何使用 Azure Machine Learning 資料集和匯入資料模組，將資料匯入 Azure Machine Learning 的設計工具中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985606"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554711"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>將資料匯入 Azure Machine Learning 設計工具
 
 在本文中，您將了解如何在設計工具中匯入自己的資料，以建立自訂解決方案。 有兩種方式可將資料匯入設計工具中： 
 
-* **Azure Machine Learning 資料集** - 在 Azure Machine Learning 中註冊[資料集](concept-data.md#datasets)，以啟用可協助管理資料的進階功能。
-* **匯入資料模組** - 使用[匯入資料](algorithm-module-reference/import-data.md)模組，直接從線上資料來源存取資料。
+* **Azure Machine Learning 資料集** - 在 Azure Machine Learning 中註冊 [資料集](concept-data.md#datasets)，以啟用可協助管理資料的進階功能。
+* **匯入資料模組** - 使用 [匯入資料](algorithm-module-reference/import-data.md)模組，直接從線上資料來源存取資料。
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -38,13 +38,13 @@ ms.locfileid: "90985606"
 
 1. 選取用來輸出所要註冊資料的模組。
 
-1. 在 [屬性] 窗格中，選取 [**輸出 + 記錄**  >  **註冊資料集**]。
+1. 在 [屬性] 窗格中，選取 [ **輸出 + 記錄**  >  **註冊資料集** ]。
 
     ![顯示如何巡覽至 [註冊資料集] 選項的螢幕擷取畫面](media/how-to-designer-import-data/register-dataset-designer.png)
 
-如果模組輸出資料採用表格格式，您必須選擇將輸出註冊為檔案 **資料集** 或 **表格式資料集**。
+如果模組輸出資料採用表格格式，您必須選擇將輸出註冊為檔案 **資料集** 或 **表格式資料集** 。
 
- - 檔案**資料集會**將模組的輸出檔案夾註冊為檔案資料集。 輸出檔案夾包含設計工具在內部使用的資料檔案和中繼檔案。 如果您想要繼續在設計工具中使用已註冊的資料集，請選取此選項。 
+ - 檔案 **資料集會** 將模組的輸出檔案夾註冊為檔案資料集。 輸出檔案夾包含設計工具在內部使用的資料檔案和中繼檔案。 如果您想要繼續在設計工具中使用已註冊的資料集，請選取此選項。 
 
  - **表格式資料集** 只會將模組的輸出資料檔案註冊為表格式資料集。 這種格式可供其他工具使用，例如自動化 Machine Learning 或 Python SDK。 如果您打算在設計工具之外使用已註冊的資料集，請選取此選項。  
 
@@ -52,7 +52,7 @@ ms.locfileid: "90985606"
 
 ### <a name="use-a-dataset"></a>使用資料集
 
-您已註冊的資料集可以在模組選擇區的 [ **資料集**] 底下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出埠連接至畫布中的其他模組。 
+您已註冊的資料集可以在模組選擇區的 [ **資料集** ] 底下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出埠連接至畫布中的其他模組。 
 
 ![顯示設計工具選擇區中已儲存資料集位置的螢幕擷取畫面](media/how-to-designer-import-data/use-datasets-designer.png)
 

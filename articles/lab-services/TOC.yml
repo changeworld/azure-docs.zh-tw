@@ -58,6 +58,8 @@
               href: class-type-matlab.md
             - name: SolidWorks 電腦輔助設計 (CAD)
               href: class-type-solidworks.md
+            - name: Project Lead the Way
+              href: class-type-pltw.md
         - name: 使用 Teams 內的 Azure 實驗室服務
           items:
             - name: 概觀

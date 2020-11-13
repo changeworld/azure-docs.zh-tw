@@ -76,6 +76,8 @@
       href: concepts/pricing.md
     - name: 隱私權
       href: concepts/privacy.md
+    - name: 身分識別模型
+      href: concepts/identity-model.md
     - name: 驗證
       href: concepts/authentication.md
     - name: 事件處理

@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/30/2020
+ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 070058eae36bf4f8546cfcf4beb85ac5023e9c79
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286167"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553522"
 ---
-# <a name="what-is-the-sql-server-iaas-agent-extension"></a>什麼是 SQL Server IaaS 代理程式擴充功能？
+# <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式擴充功能來自動化管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
 SQL Server IaaS 代理程式延伸模組 (SqlIaasExtension) 會在 Azure 虛擬機器上的 SQL Server 上執行， (Vm) 以自動化管理和管理工作。 
 
-本文提供延伸模組的總覽。 若要在 Azure Vm 上安裝 SQL Server IaaS 擴充功能以 SQL Server，請參閱大量的 [自動安裝](sql-vm-resource-provider-automatic-registration.md)、 [單一 vm](sql-vm-resource-provider-register.md)或 [vm](sql-vm-resource-provider-bulk-register.md)的相關文章。 
+本文提供延伸模組的總覽。 若要在 Azure Vm 上安裝 SQL Server IaaS 擴充功能以 SQL Server，請參閱大量的 [自動安裝](sql-agent-extension-automatic-registration-all-vms.md)、 [單一 vm](sql-agent-extension-manually-register-single-vm.md)或 [vm](sql-agent-extension-manually-register-vms-bulk.md)的相關文章。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 SQL Server IaaS 代理程式擴充功能可為 Azure Vm 上的 SQL Server 提供許多優點： 
 
@@ -39,7 +39,7 @@ SQL Server IaaS 代理程式擴充功能可為 Azure Vm 上的 SQL Server 提供
 
 - **合規性** ：此延伸模組提供了一種簡化的方法，讓您能夠以產品條款中指定的方式啟用 Azure Hybrid Benefit 來通知 Microsoft。 此流程不需要為每項資源管理授權註冊表單。  
 
-- **Free** ：所有三種管理性模式中的擴充功能完全免費。 與資源提供者或變更管理模式都不會產生任何額外費用。 
+- **Free** ：所有三種管理性模式中的擴充功能完全免費。 擴充功能或變更管理模式沒有相關的額外成本。 
 
 - **簡化的授權管理** ：此延伸模組可簡化 SQL Server 授權管理，並可讓您快速識別 Azure Hybrid Benefit 使用 [Azure 入口網站](manage-sql-vm-portal.md)、Azure CLI 或 PowerShell 啟用的 SQL Server vm： 
 
@@ -82,13 +82,13 @@ SQL Server IaaS 代理程式擴充功能會解除管理 SQL Server VM 的一些�
 
 ## <a name="management-modes"></a>管理模式
 
-SQL IaaS 擴充功能有三個管理模式：
+您可以選擇以三種管理模式來註冊您的 SQL IaaS 延伸模組： 
 
-- **輕量** 模式不需要重新啟動 SQL Server，而只支援變更 SQL Server 的授權類型和版本。 針對具有多個執行個體的 SQL Server VM，或參與容錯移轉叢集執行個體 (FCI) 的 SQL Server VM，請使用此選項。 此管理模式會將 SQL IaaS 代理程式擴充二進位檔保留在電腦上，但不會安裝代理程式。 當使用 [自動註冊](sql-vm-resource-provider-automatic-registration.md) 功能，或在手動註冊期間未指定管理類型時，輕量模式是預設的管理模式。 使用輕量模式時，不會對記憶體或 CPU 造成任何影響，也不會產生相關聯的成本。 建議您先在輕量模式中註冊 SQL Server VM，然後在排程的維護期間升級至完整模式。
+- **輕量** 模式會將延伸二進位檔複製到 VM，但不會安裝代理程式，也不會重新開機 SQL Server 服務。 輕量模式僅支援變更 SQL Server 的授權類型和版本，並提供有限的入口網站管理。 針對具有多個實例的 SQL Server Vm，或參與容錯移轉叢集實例 (FCI) 的 Vm，請使用此選項。 當使用 [自動註冊](sql-agent-extension-automatic-registration-all-vms.md) 功能，或在手動註冊期間未指定管理類型時，輕量模式是預設的管理模式。 使用輕量模式時，不會對記憶體或 CPU 造成任何影響，也不會產生相關聯的成本。 建議您先在輕量模式中註冊 SQL Server VM，然後在排程的維護期間升級至完整模式。 
 
-- **完整** 模式提供所有功能，但需要重新啟動 SQL Server 和系統管理員權限。 使用它來管理具有單一執行個體的 SQL Server VM。 完整模式會安裝兩項 Windows 服務，對記憶體和 CPU 的影響最小而且可透過工作管理員來監視。 使用完整的管理模式並不會產生任何相關費用。 
+- **Full** 模式會將 SQL IaaS 代理程式安裝到 VM 以提供所有功能，但需要重新開機 SQL Server 服務和系統管理員許可權。 使用它來管理具有單一執行個體的 SQL Server VM。 完整模式會安裝兩項 Windows 服務，對記憶體和 CPU 的影響最小而且可透過工作管理員來監視。 使用完整的管理模式並不會產生任何相關費用。 
 
-- **NoAgent** 模式專用於安裝在 Windows Server 2008 上的 SQL Server 2008 和 SQL Server 2008 R2。 使用 NoAgent 模式時，不會對記憶體或 CPU 造成任何影響。 使用 NoAgent 管理性模式不會有相關聯的成本。 
+- **NoAgent** 模式專用於安裝在 Windows Server 2008 上的 SQL Server 2008 和 SQL Server 2008 R2。 使用 NoAgent 模式時，不會對記憶體或 CPU 造成任何影響。 使用 NoAgent 管理性模式不會產生任何費用，SQL Server 不會重新開機，也不會將代理程式安裝到 VM。 
 
 您可以使用 Azure PowerShell 來查看 SQL Server IaaS 代理程式的目前模式： 
 
@@ -100,33 +100,34 @@ SQL IaaS 擴充功能有三個管理模式：
 
 ## <a name="installation"></a>安裝
 
-當您向 SQL VM 資源提供者註冊 SQL Server Vm 時，會安裝 SQL Server IaaS 代理程式擴充功能。 向資源提供者註冊會在您的訂用帳戶內建立 **SQL 虛擬機器**_資源_ ，這是與虛擬機器資源 _不同_ 的資源。 向資源提供者取消註冊 SQL Server VM 會移除 **SQL 虛擬機器** 的 _資源_ ，但不會卸載實際的虛擬機器。
+使用 SQL Server IaaS 代理程式擴充功能註冊 SQL Server VM，以在您的訂用帳戶內建立 **SQL 虛擬機器**_資源_ ，這是與虛擬機器資源 _不同_ 的資源。 從擴充功能取消註冊 SQL Server VM 將會移除 **SQL 虛擬機器**_資源_ ，但不會捨棄實際的虛擬機器。
 
-透過 Azure 入口網站部署 SQL Server VM Azure Marketplace 映像，會自動向資源提供者註冊 SQL Server VM。 不過，如果您選擇在 Azure 虛擬機器上自行安裝 SQL Server，或從自訂 VHD 布建 Azure 虛擬機器，則必須向 SQL VM 資源提供者註冊您的 SQL Server VM，以安裝 SQL IaaS 代理程式擴充功能。 
+透過 Azure 入口網站部署 SQL Server VM Azure Marketplace 映射，會自動向延伸模組註冊 SQL Server VM。 但是，如果您選擇在 Azure 虛擬機器上自行安裝 SQL Server，或從自訂 VHD 布建 Azure 虛擬機器，則必須向 SQL IaaS 延伸模組註冊您的 SQL Server VM，以將功能的優點發揮到最大。 
 
-若要安裝擴充功能，請向資源提供者註冊 SQL Server VM：
-- [針對訂用帳戶中所有目前和未來的 Vm 自動進行](sql-vm-resource-provider-automatic-registration.md)
-- [針對單一 VM](sql-vm-resource-provider-register.md)
-- [多個 Vm 大量](sql-vm-resource-provider-bulk-register.md)
+以輕量模式註冊擴充功能將會複製二進位檔，但不會將代理程式安裝到 VM。 當擴充功能更新為完整管理模式時，會將代理程式安裝到 VM。 
+
+有三種方式可以向擴充功能註冊： 
+- [針對訂用帳戶中所有目前和未來的 Vm 自動進行](sql-agent-extension-automatic-registration-all-vms.md)
+- [針對單一 VM 手動](sql-agent-extension-manually-register-single-vm.md)
+- [針對多個 Vm 以手動方式進行大量](sql-agent-extension-manually-register-vms-bulk.md)
 
 ### <a name="named-instance-support"></a>命名實例支援
 
-如果是虛擬機器上唯一可用的 SQL Server 實例，SQL Server IaaS 擴充功能將會與已命名的實例搭配使用 SQL Server。 擴充功能將無法安裝在具有多個 SQL Server 實例的 Vm 上。 
+SQL Server IaaS 代理程式延伸模組適用于 SQL Server 的實例，如果是虛擬機器上唯一可用的 SQL Server 實例。 延伸模組無法安裝在具有多個 SQL Server 實例的 Vm 上。 
 
-若要使用 SQL Server 的已命名實例，請部署 Azure 虛擬機器、在其中安裝一個名為 SQL Server 的實例，然後向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md) 註冊以安裝延伸模組。
+若要使用 SQL Server 的已命名實例，請部署 Azure 虛擬機器、在其中安裝一個名為 SQL Server 的實例，然後使用 [SQL IaaS 擴充](sql-agent-extension-manually-register-single-vm.md)功能來註冊它。
 
 或者，若要使用具有 Azure Marketplace SQL Server 映射的已命名實例，請遵循下列步驟： 
 
    1. 從 Azure Marketplace 部署 SQL Server VM。 
-   1. 從 SQL VM 資源提供者[取消註冊](sql-vm-resource-provider-register.md#unregister-from-rp)SQL Server VM。 
+   1. 從 SQL IaaS 代理程式擴充功能中[取消註冊](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)SQL Server VM。 
    1. 完全解除安裝 SQL Server VM 內的 SQL Server。
    1. 使用 SQL Server VM 中的具名執行個體來安裝 SQL Server。 
-   1. [向 SQL vm 資源提供者註冊 SQL SERVER VM，以](sql-vm-resource-provider-register.md#register-with-rp)安裝 Sql IaaS 代理程式擴充功能。 
+   1. [使用 SQL IaaS 代理程式擴充功能來註冊 VM](sql-agent-extension-manually-register-single-vm.md#register-with-extension)。 
 
 ## <a name="verify-status-of-extension"></a>確認延伸模組的狀態
 
 使用 Azure 入口網站或 Azure PowerShell 檢查延伸模組的狀態。 
-
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -166,44 +167,44 @@ SQL IaaS 代理程式擴充功能只支援：
 
 **我應該註冊從 Azure Marketplace 中 SQL Server 映像佈建的 SQL Server VM 嗎？**
 
-否。 Microsoft 會自動註冊從 Azure Marketplace 中 SQL Server 映像佈建的 VM。 只有當 VM *不是* 從 Azure Marketplace 中的 SQL Server 映像佈建，且已自行安裝 SQL Server 時，才需要向 SQL VM 資源提供者註冊。
+否。 Microsoft 會自動註冊從 Azure Marketplace 中 SQL Server 映像佈建的 VM。 只有當 VM 未從 Azure Marketplace 中的 SQL Server 映射布 *建，* 且 SQL Server 已自行安裝時，才需要向擴充功能註冊。
 
-**SQL VM 資源提供者是否適用於所有客戶？** 
+**SQL IaaS 代理程式擴充功能可供所有客戶使用嗎？** 
 
-是。 如果客戶未使用 Azure Marketplace 中的 SQL Server 映像，而改為自行安裝 SQL Server，或如果客戶攜帶自己的自訂 VHD，則應該向 SQL VM 資源提供者註冊其 SQL Server VM。 所有訂用帳戶類型 (直接、Enterprise 合約和雲端解決方案提供者) 所擁有的 VM 都可向 SQL VM 資源提供者註冊。
+是。 如果客戶未使用來自 Azure Marketplace 的 SQL Server 映射，或是已自行安裝的 SQL Server，或它們有自訂的 VHD，則應該使用擴充功能來註冊其 SQL Server Vm。 所有訂用帳戶類型所擁有的 Vm (Direct、Enterprise 合約和雲端解決方案提供者) 可以向 SQL IaaS 代理程式延伸模組註冊。
 
-**向 SQL VM 資源提供者註冊時的預設管理模式為何？**
+**使用 SQL IaaS 代理程式延伸模組註冊時，預設的管理模式為何？**
 
-當您向 SQL VM 資源提供者註冊時，預設的管理模式很 *輕量* 。 如果您向 SQL VM 資源提供者註冊時未設定 SQL Server 管理屬性，則會將模式設定為輕量，而您的 SQL Server 服務將不會重新開機。 建議您先在輕量模式中向 SQL VM 資源提供者註冊，然後在維護期間升級至完整模式。 同樣地，使用 [自動註冊功能](sql-vm-resource-provider-automatic-registration.md)時，預設管理也很輕量。
+當您向 SQL IaaS 代理程式延伸模組註冊時，預設的管理模式很 *輕量* 。 如果您在註冊擴充功能時未設定 SQL Server 管理屬性，則會將模式設定為輕量，而您的 SQL Server 服務將不會重新開機。 建議您先在輕量模式下註冊 SQL IaaS 代理程式延伸模組，然後在維護期間升級為 full。 同樣地，使用 [自動註冊功能](sql-agent-extension-automatic-registration-all-vms.md)時，預設管理也很輕量。
 
-**向 SQL VM 資源提供者註冊的先決條件為何？**
+**要向 SQL IaaS 代理程式擴充功能註冊的必要條件為何？**
 
-除了在 VM 上安裝 SQL Server 之外，不需要向 SQL VM 資源提供者註冊任何必要條件。 請注意，如果 SQL IaaS 代理程式延伸模組是以完整模式安裝，SQL Server 服務將會重新開機，因此建議在維護期間執行此動作。
+除了在 VM 上安裝 SQL Server 之外，不需要向 SQL IaaS 代理程式延伸註冊任何必要條件。 請注意，如果 SQL IaaS 代理程式延伸模組是以完整模式安裝，SQL Server 服務將會重新開機，因此建議在維護期間執行此動作。
 
-**向 SQL VM 資源提供者註冊會在 VM 上安裝代理程式嗎？**
+**註冊 SQL IaaS 代理程式延伸模組時，會在我的 VM 上安裝代理程式嗎？**
 
-是，以完整管理模式向 SQL VM 資源提供者註冊，會將代理程式安裝到 VM。 以輕量或 NoAgent 模式註冊並不會。 
+是，以完整管理性模式註冊 SQL IaaS 代理程式延伸模組會將代理程式安裝到 VM。 以輕量或 NoAgent 模式註冊並不會。 
 
-以輕量模式向 SQL VM 資源提供者註冊時，只會將 SQL IaaS 代理程式擴充 *二進位* 檔複製到 VM，而不會安裝代理程式。 這些二進位檔接著會在管理模式升級為 full 時，用來安裝代理程式。
+以輕量模式註冊 SQL IaaS 代理程式延伸模組只會將 SQL IaaS 代理程式延伸 *二進位* 檔複製到 VM，而不會安裝代理程式。 這些二進位檔接著會在管理模式升級為 full 時，用來安裝代理程式。
 
 
-**將會向我的 VM 上的 SQL VM 資源提供者重新開機 SQL Server 註冊嗎？**
+**會向我的 VM 上的 SQL IaaS 代理程式延伸模組重新開機 SQL Server 註冊嗎？**
 
 這取決於註冊期間所指定的模式。 如果指定了輕巧或 NoAgent 模式，SQL Server 服務將不會重新開機。 但是，將管理模式指定為 full 會導致 SQL Server 服務重新開機。 自動註冊功能會以輕量模式註冊 SQL Server Vm，除非 Windows Server 版本是2008，在此情況下，會在 NoAgent 模式中註冊 SQL Server VM。 
 
-**向 SQL VM 資源提供者註冊時，輕量和 NoAgent 管理模式有何差異？** 
+**使用 SQL IaaS 代理程式延伸模組註冊時，輕量和 NoAgent 管理模式有何差異？** 
 
 NoAgent 管理模式是 Windows Server 2008 上 SQL Server 2008 和 SQL Server 2008 R2 唯一可用的管理模式。 針對所有更新版的 Windows Server，這兩個可用的管理性模式是輕量且完整。 
 
 NoAgent 模式需要客戶設定 SQL Server 版本和版本屬性。 輕量模式會查詢 VM 以尋找 SQL Server 執行個體的版本和版次。
 
-**我可在未指定 SQL Server 授權類型的情況下，向 SQL VM 資源提供者註冊嗎？**
+**是否可以在不指定 SQL Server 授權類型的情況下，向 SQL IaaS 代理程式延伸模組註冊？**
 
-否。 當向 SQL VM 資源提供者註冊時，SQL Server 授權類型不是選擇性的屬性。 您必須以隨用隨付或 Azure Hybrid Benefit 在所有管理性模式下註冊 SQL VM 資源提供者時，將 SQL Server 授權類型設定為隨用隨付或 (NoAgent、羽量級和 full) 。 如果您已安裝任何免費版本的 SQL Server，例如 Developer 或評估版，您必須向隨用隨付授權註冊。 Azure Hybrid Benefit 僅適用于 SQL Server 的付費版本，例如 Enterprise 和 Standard edition。
+不正確。 當您向 SQL IaaS 代理程式延伸模組註冊時，SQL Server 授權類型不是選擇性屬性。 您必須將 SQL Server 授權類型設定為隨用隨付，Azure Hybrid Benefit 或在所有管理性模式下註冊 SQL IaaS 代理程式延伸模組時， (NoAgent、羽量級和 full) 。 如果您已安裝任何免費版本的 SQL Server，例如 Developer 或評估版，您必須向隨用隨付授權註冊。 Azure Hybrid Benefit 僅適用于 SQL Server 的付費版本，例如 Enterprise 和 Standard edition。
 
 **我可以將 SQL Server IaaS 延伸模組從 NoAgent 模式升級為完整模式嗎？**
 
-否。 NoAgent 模式無法使用 [完整] 或 [輕量] 將管理性模式升級 這是 Windows Server 2008 的技術限制。 您必須先將 OS 升級至 Windows Server 2008 R2 或更新版本，然後才能升級為完整管理模式。 
+不正確。 NoAgent 模式無法使用 [完整] 或 [輕量] 將管理性模式升級 這是 Windows Server 2008 的技術限制。 您必須先將 OS 升級至 Windows Server 2008 R2 或更新版本，然後才能升級為完整管理模式。 
 
 **我可將 SQL Server IaaS 延伸模組從輕量模式升級為完整模式嗎？**
 
@@ -213,31 +214,31 @@ NoAgent 模式需要客戶設定 SQL Server 版本和版本屬性。 輕量模�
 
 否。 不支援降級 SQL Server IaaS 延伸模組管理模式。 管理性模式無法從完整模式降級為輕量或 NoAgent 模式，而且無法從輕量模式降級為 NoAgent 模式。 
 
-若要從完整管理性變更管理性模式，請卸載 SQL 虛擬機器 _資源_ ，然後以不同的管理模式再次向 sql vm 資源提供者重新註冊 SQL Server vm，以從 sql vm 資源提供者 [取消](sql-vm-resource-provider-register.md#unregister-from-rp)註冊 SQL Server VM。
+若要從完整管理性變更管理性模式，請卸載 SQL 虛擬機器 _資源_ ，然後在不同的管理模式下重新登錄具有 Sql Iaas 代理程式擴充功能的 SQL Server vm，以從 Sql Iaas 代理程式擴充功能中 [取消](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)註冊 SQL Server VM。
 
-**我可從 Azure 入口網站向 SQL VM 資源提供者註冊嗎？**
+**我可以從 Azure 入口網站向 SQL IaaS 代理程式延伸模組註冊嗎？**
 
-否。 您無法在 Azure 入口網站中向 SQL VM 資源提供者註冊。 只有 Azure CLI 或 Azure PowerShell 才支援向 SQL VM 資源提供者註冊。 
+不正確。 Azure 入口網站不提供使用 SQL IaaS 代理程式擴充功能註冊。 只有 Azure CLI 或 Azure PowerShell 才支援向 SQL IaaS 代理程式擴充功能註冊。 
 
-**我可在安裝 SQL Server 之前向 SQL VM 資源提供者註冊 VM 嗎？**
+**是否可以在安裝 SQL Server 之前，使用 SQL IaaS 代理程式擴充功能來註冊 VM？**
 
-否。 VM 至少必須有一個 SQL Server (資料庫引擎) 實例，才能成功向 SQL VM 資源提供者註冊。 如果 VM 上沒有 SQL Server 執行個體，則新的 Microsoft.SqlVirtualMachine 資源會處於失敗狀態。
+不正確。 VM 至少必須有一個 SQL Server (資料庫引擎) 實例，才能成功向 SQL IaaS 代理程式延伸模組註冊。 如果 VM 上沒有 SQL Server 執行個體，則新的 Microsoft.SqlVirtualMachine 資源會處於失敗狀態。
 
-**如果有多個 SQL Server 執行個體，我可向 SQL VM 資源提供者註冊 VM 嗎？**
+**如果有多個 SQL Server 實例，是否可以使用 SQL IaaS 代理程式擴充功能來註冊 VM？**
 
-是。 SQL VM 資源提供者只會註冊一個 SQL Server (資料庫引擎) 執行個體。 如果有多個執行個體，則 SQL VM 資源提供者會註冊預設的 SQL Server 執行個體。 如果沒有預設的執行個體，則僅支援在輕量模式中註冊。 若要從輕量升級為完整管理模式，則預設的 SQL Server 執行個體應該存在，或 VM 應該只有一個具名 SQL Server 執行個體。
+是。 SQL IaaS 代理程式擴充功能只會 (資料庫引擎) 實例註冊一個 SQL Server。 SQL IaaS 代理程式擴充功能將會在多個實例的情況下註冊預設的 SQL Server 實例。 如果沒有預設的執行個體，則僅支援在輕量模式中註冊。 若要從輕量升級為完整管理模式，則預設的 SQL Server 執行個體應該存在，或 VM 應該只有一個具名 SQL Server 執行個體。
 
-**我可向 SQL VM 資源提供者註冊 SQL Server 容錯移轉叢集執行個體嗎？**
+**是否可以向 SQL IaaS 代理程式擴充功能註冊 SQL Server 容錯移轉叢集實例？**
 
-是。 在輕量模式中，可以向 SQL VM 資源提供者註冊 Azure VM 上的 SQL Server 容錯移轉叢集執行個體。 不過，您無法將 SQL Server 容錯移轉叢集執行個體升級為完整管理模式。
+是。 Azure VM 上的 SQL Server 容錯移轉叢集實例可以在輕量模式中，使用 SQL IaaS 代理程式擴充功能來註冊。 不過，您無法將 SQL Server 容錯移轉叢集執行個體升級為完整管理模式。
 
-**如果已設定 Always On 可用性群組，可以向 SQL VM 資源提供者註冊我的 VM 嗎？**
+**如果已設定 Always On 可用性群組，可以使用 SQL IaaS 代理程式擴充功能來註冊我的 VM 嗎？**
 
-是。 如果您正在參與 Always On 可用性群組設定，則向 SQL VM 資源提供者註冊 Azure VM 上的 SQL Server 執行個體沒有任何限制。
+是。 如果您要參與 Always On 可用性群組設定，則在具有 SQL IaaS 代理程式擴充功能的 Azure VM 上註冊 SQL Server 實例沒有任何限制。
 
-**向 SQL VM 資源提供者註冊或升級為完整管理模式的費用為何？**
+**註冊 SQL IaaS 代理程式延伸模組，或升級至完整管理能力模式的成本為何？**
 
-無。 向 SQL VM 資源提供者註冊，或使用三種管理模式中的任何一種，都不會產生任何相關聯的費用。 使用資源提供者管理您的 SQL Server VM 完全免費。 
+無。 註冊 SQL IaaS 代理程式延伸模組，或使用這三種管理模式的任何一種，都不會產生任何費用。 使用延伸模組來管理 SQL Server VM 完全免費。 
 
 **使用不同的管理模式會對效能造成什麼影響？**
 
@@ -249,10 +250,10 @@ NoAgent 模式需要客戶設定 SQL Server 版本和版本屬性。 輕量模�
 
 **如何? 移除擴充功能？**
 
-從 SQL VM 資源提供者取消 [註冊](sql-vm-resource-provider-register.md#unregister-from-rp) SQL Server VM，以移除擴充功能。 
+從 SQL IaaS 代理程式擴充功能中取消 [註冊](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) SQL Server VM，以移除擴充功能。 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要在 Azure Vm 上安裝 SQL Server IaaS 擴充功能以 SQL Server，請參閱大量的 [自動安裝](sql-vm-resource-provider-automatic-registration.md)、 [單一 vm](sql-vm-resource-provider-register.md)或 [vm](sql-vm-resource-provider-bulk-register.md)的相關文章。
+若要在 Azure Vm 上安裝 SQL Server IaaS 擴充功能以 SQL Server，請參閱大量的 [自動安裝](sql-agent-extension-automatic-registration-all-vms.md)、 [單一 vm](sql-agent-extension-manually-register-single-vm.md)或 [vm](sql-agent-extension-manually-register-vms-bulk.md)的相關文章。
 
 如需在 Azure 虛擬機器上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 是什麼](sql-server-on-azure-vm-iaas-what-is-overview.md)。

@@ -160,6 +160,8 @@
         - name: 企業安全性概觀
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: 資料加密
+          href: concept-data-encryption.md
         - name: 安全性基準
           href: security-baseline.md
     - name: 負責任的 ML
@@ -182,14 +184,17 @@
       items:
         - name: 身分識別與存取管理
           items:
-            - name: 設定驗證
+            - name: 工作區驗證
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: 管理使用者和角色
+            - name: Web 服務驗證
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: 管理存取權 (授權)
               href: how-to-assign-roles.md
-            - name: 使用適用於存取控制的受控身分識別
+            - name: 用於存取控制的受控身分識別
               href: how-to-use-managed-identities.md
-            - name: 在 AKS 部署中使用 Azure AD 身分識別
+            - name: AKS 部署中的 Azure AD 身分識別
               href: how-to-use-azure-ad-identity.md
         - name: 網路安全性
           items:

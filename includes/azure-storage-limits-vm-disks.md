@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ffb07220267a2c192b4aad2405185c80bd9abbc0
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755759"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523788"
 ---
 您可以將一些資料磁碟連結至 Azure 虛擬機器。 根據 VM 資料磁碟的可擴縮性和效能目標，您可以決定您需要的磁碟數目和類型，以符合您的效能和容量需求。
 
@@ -31,7 +31,7 @@ ms.locfileid: "92755759"
 
 **若為標準儲存體帳戶：** 標準儲存體帳戶的總要求率上限為 20000 IOPS。 在標準儲存體帳戶中，所有虛擬機器磁碟的 IOPS 總數不得超過此限。
   
-    You can roughly calculate the number of highly utilized disks supported by a single Standard storage account based on the request rate limit. For example, for a Basic tier VM, the maximum number of highly utilized disks is about 66, which is 20,000/300 IOPS per disk. The maximum number of highly utilized disks for a Standard tier VM is about 40, which is 20,000/500 IOPS per disk. 
+您可以根據要求率的限制，大致計算單一標準儲存體帳戶可支援的高度使用磁碟數目。 例如，針對基本層 VM，高度使用的磁碟數目上限約為 66 (每一磁碟 20,000/300 IOPS)。 標準層 VM 的高度使用的磁碟數目上限約為 40 (每一磁碟 20,000/500 IOPS)。 
 
 **若為進階儲存體帳戶：** 進階儲存體帳戶的總輸送量速率上限為 50 Gbps。 所有 VM 磁碟的總輸送量不應該超過此限。
 

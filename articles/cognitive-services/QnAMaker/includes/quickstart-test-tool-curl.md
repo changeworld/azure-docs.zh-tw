@@ -4,16 +4,16 @@ description: 包含檔案
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: cbabfc1ae0c54c4ef20d3c689506e486bf4b6a66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132875"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386598"
 ---
 這個以 cURL 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
@@ -34,9 +34,17 @@ ms.locfileid: "87132875"
 1. 從知識庫的 [設定] 頁面，選取 [CURL] 索引標籤來查看用來從知識庫產生答案的 cURL 命令範例。
 1. 將命令複製到可編輯的環境 (例如文字檔) 以便編輯命令。 如下所示編輯問題值，以將 `service:qna_maker` 的中繼資料作為 QnA 配對的篩選條件。
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
+
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+    
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H   "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+    ---
 
     此問題就只有一個字 `size`，其可以傳回兩個 QnA 配對的其中一個。 `strictFilters` 陣列會辨別回應，而將回應減少到只剩 `qna_maker` 答案。
 
@@ -79,7 +87,7 @@ ms.locfileid: "87132875"
 
 ## <a name="use-debug-query-property"></a>使用 debug 查詢屬性
 > [!NOTE]
->不建議針對任何相依性使用 Debug 屬性。 已新增此屬性以協助產品小組進行疑難排解。
+>不建議針對相依性使用 Debug 屬性。 已新增此屬性以協助產品小組進行疑難排解。
 
 偵錯資訊可協助您了解所傳回答案的判斷方式。 此資訊雖然有用，但並非必要。 若要使用偵錯資訊來產生答案，請新增 `debug` 屬性：
 
@@ -89,9 +97,15 @@ Debug: {Enable:true}
 
 1. 編輯 cURL 命令以納入 debug 屬性來查看詳細資訊。
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+    ---
 
 1. 回應包含答案的相關資訊。 在下列 JSON 輸出中，某些偵錯詳細資料已取代為省略號以求簡潔。
 
@@ -194,11 +208,16 @@ isTest:true
 ```
 
 cURL 命令看起來像這樣：
-
+# <a name="qna-maker-ga"></a>[QnA Maker 正式發行](#tab/v1)
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+```bash
+curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
 
+---
 JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
 
 > [!NOTE]
@@ -207,10 +226,17 @@ JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>使用 cURL 查詢閒聊答案
 
 1. 在支援 cURL 的終端機中，將 `Thank you` 之類以 Bot 對話結尾的使用者陳述作為問題。 除此之外，沒有任何其他要設定的屬性。
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+    ---
 
 1. 執行 Curl 命令並接收 JSON 回應，包括分數和答案。
 
@@ -302,9 +328,15 @@ JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
 
 1. 新增 `threshold` 屬性來要求閾值為 80% 以上的 `size` 答案。 因為問題的分數是 71%，所以知識庫應該不會找到該答案。 結果會傳回您在建立知識庫時所提供的預設答案。
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+    ---
 
 1. 執行 cURL 命令並接收 JSON 回應。
 
@@ -328,10 +360,16 @@ JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
     QnA Maker 會傳回代表沒有信心的 `0` 分。 它也會傳回預設答案。
 
 1. 將閾值變更為 60%，然後再次要求查詢：
-
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ---
 
     傳回的 JSON 找到了答案。
 

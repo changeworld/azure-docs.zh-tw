@@ -1,7 +1,7 @@
 ---
 title: 使用 studio 部署在設計工具中定型的模型
 titleSuffix: Azure Machine Learning
-description: 使用 Azure Machine Learning studio 來部署在設計工具中定型的模型。
+description: 使用 Azure Machine Learning studio 部署機器學習模型，而不需要撰寫任何一行程式碼。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927578"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554677"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用 studio 部署在設計工具中定型的模型
 

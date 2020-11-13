@@ -171,7 +171,7 @@
           href: sql/overview-features.md
         - name: 資源耗用模型
           href: sql/resource-consumption-models.md
-        - name: 已處理的資料量
+        - name: 無伺服器 SQL 集區的成本管理
           href: sql/data-processed.md
         - name: 最佳做法無伺服器 SQL 集區
           href: sql/best-practices-sql-on-demand.md
@@ -218,7 +218,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -996,6 +996,8 @@
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
       href: /rest/api/synapse/
+    - name: Microsoft Spark 公用程式
+      href: ./spark/microsoft-spark-utilities.md
     - name: 範例
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: 系統檢視表

@@ -1,0 +1,73 @@
+### YamlMime:Landing
+title: 遷移至 Azure SQL
+summary: '尋找文件來了解如何遷移至雲端中 SQL Server 資料庫引擎產品的 Azure SQL 系列：Azure VM 上的 Azure SQL Database、Azure SQL 受控執行個體和 SQL Server。 '
+metadata:
+  title: 遷移至 Azure SQL
+  description: 尋找文件來協助您從 Azure SQL Database 中的完全受控資料庫、Azure SQL 受控執行個體中完全受控的執行個體，或安裝到 Azure 虛擬機器中的 SQL Server，遷移至 Azure SQL (雲端中的 SQL Server 資料庫引擎產品系列)。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: sstein
+  ms.date: 11/06/2020
+  ms.openlocfilehash: 940f28fa76a8f735318010eab4b55d464295c25a
+  ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94495269"
+landingContent:
+- title: Azure SQL Database
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 概觀
+      url: database/sql-server-to-sql-database-overview.md
+    - text: 從 SQL Server
+      url: database/sql-server-to-sql-database-guide.md
+    - text: 從 DB2
+      url: database/db2-to-sql-database-guide.md
+- title: Azure SQL 受控執行個體
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 概觀
+      url: managed-instance/sql-server-to-managed-instance-overview.md
+    - text: 從 SQL Server
+      url: managed-instance/sql-server-to-managed-instance-guide.md
+    - text: 從 DB2
+      url: managed-instance/db2-to-managed-instance-guide.md
+- title: Azure VM 上的 SQL Server
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 概觀
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+    - text: 從 SQL Server
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+    - text: 從 DB2
+      url: virtual-machines/db2-to-sql-on-azure-vm-guide.md
+- title: 移轉工具
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Migrate
+      url: /azure/migrate/migrate-services-overview
+    - text: Azure 資料庫移轉服務 (DMS)
+      url: /azure/dms/dms-overview
+    - text: Data Migration Assistant (DMA)
+      url: /sql/dma/dma-migrateonpremsqltosqldb
+    - text: 異動複寫
+      url: /sql/relational-databases/replication/transactional/transactional-replication
+    - text: 匯入和匯出服務/BACPAC
+      url: ../database/database-import.md
+    - text: 大量複製
+      url: /sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server
+    - text: Azure Data Factory
+      url: /azure/data-factory/connector-azure-sql-database
+    - text: SQL 資料同步
+      url: ../database/sql-data-sync-data-sql-server-sql-database.md

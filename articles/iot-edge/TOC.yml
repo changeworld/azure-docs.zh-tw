@@ -1,5 +1,7 @@
 - name: Azure IoT Edge 文件
   href: index.yml
+- name: Azure IoT Edge 版本
+  href: version-history.md
 - name: 概觀
   items:
     - name: 關於 Azure IoT Edge
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: 教學課程
   items:
-    - name: 1. 設定開發環境
+    - name: 設定開發環境
       items:
         - name: 針對 Linux 裝置開發
           href: tutorial-develop-for-linux.md
         - name: 針對 Windows 裝置開發
           href: tutorial-develop-for-windows.md
-    - name: 2. 開發自訂程式碼模組
+    - name: 開發自訂程式碼模組
       items:
         - name: C
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. 將 Azure 服務部署為模組
+    - name: 將 Azure 服務部署為模組
       items:
         - name: 使用 Azure Functions 篩選資料
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: 使用 SQL 在本機儲存資料
           href: tutorial-store-data-sql-server.md
-    - name: 4. 邊緣計算機器學習的端對端範例
+    - name: 使用 IoT Edge 作為閘道
+      items:
+        - name: 建立 IoT Edge 裝置的階層
+          href: tutorial-nested-iot-edge.md
+    - name: 邊緣計算機器學習的端對端範例
       items:
         - name: 簡介
           href: tutorial-machine-learning-edge-01-intro.md
@@ -187,16 +193,26 @@
           href: how-to-access-built-in-metrics.md
     - name: 使用 IoT Edge 裝置作為閘道
       items:
-        - name: 設定透明閘道
-          href: how-to-create-transparent-gateway.md
-        - name: 驗證下游裝置
-          href: how-to-authenticate-downstream-device.md
-        - name: 連線下游裝置
-          href: how-to-connect-downstream-device.md
-        - name: Modbus 通訊協定閘道
-          href: deploy-modbus-gateway.md
+        - name: IoT 裝置的閘道
+          items:
+            - name: 設定透明閘道
+              href: how-to-create-transparent-gateway.md
+            - name: 驗證下游裝置
+              href: how-to-authenticate-downstream-device.md
+            - name: 連線下游裝置
+              href: how-to-connect-downstream-device.md
+            - name: Modbus 通訊協定閘道
+              href: deploy-modbus-gateway.md
+        - name: IoT Edge 裝置的閘道
+          items:
+            - name: 設定 IoT Edge 裝置的閘道
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: 設定 API Proxy 模組
+              href: how-to-configure-api-proxy-module.md
     - name: 設定 Proxy 支援
       href: how-to-configure-proxy-support.md
+    - name: 使用 IoT Edge 來發佈和訂閱
+      href: how-to-publish-subscribe.md
     - name: IoT Edge 上的 Azure Blob 儲存體
       items:
         - name: 了解邊緣的 Blob 儲存體

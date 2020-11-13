@@ -92,6 +92,8 @@
           href: multiclass-neural-network.md
         - name: 「一對多」多元分類
           href: one-vs-all-multiclass.md
+        - name: 「一對一」多元分類
+          href: one-vs-one-multiclass.md
         - name: 二元平均感知器
           href: two-class-averaged-perceptron.md
         - name: 二元促進式決策樹

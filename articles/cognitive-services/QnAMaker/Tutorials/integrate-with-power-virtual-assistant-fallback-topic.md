@@ -4,13 +4,13 @@ description: 在本教學課程中，使用主動式學習來改善知識庫的�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777417"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376293"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>教學課程：將知識庫新增至 Power Virtual Agents
 建立並擴充 [Power Virtual Agents](https://powervirtualagents.microsoft.com/) Bot，以從您的知識庫提供解答。
@@ -79,7 +79,7 @@ ms.locfileid: "91777417"
 
 1. [登入 Power Virtual Agents](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409)。 使用您的學校或公司電子郵件帳戶。
 
-1. 如果這是您的第一個 Bot，您應該位於代理程式的**首頁**。 如果這不是您的第一個 Bot，請從頁面右上方的區域選取 Bot，然後選取 [+ 新增 Bot]。
+1. 如果這是您的第一個 Bot，您應該位於代理程式的 **首頁** 。 如果這不是您的第一個 Bot，請從頁面右上方的區域選取 Bot，然後選取 [+ 新增 Bot]。
 
     > [!div class="mx-imgBorder"]
     > ![Power Virtual Agents 首頁的螢幕擷取畫面](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
@@ -125,7 +125,7 @@ ms.locfileid: "91777417"
 
 1. 選取流至 [訊息] 方塊的 **+** 連接器，然後選取 [呼叫動作]。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="呼叫動作的部分螢幕擷取畫面。":::
 
 1. 選取 [建立流程]。 此流程會帶您前往 Power Automate 入口網站。
 
@@ -135,9 +135,12 @@ ms.locfileid: "91777417"
 
     Power Automate 會開啟新的範本。 您將不會使用這個新範本。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Power Automate 的部分螢幕擷取畫面，其中顯示新流程範本。":::
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>建立 Power Automate 流程以連線到您的知識庫
+
+> [!NOTE]
+> Power Automate 範本目前不支援 QnA Maker 受控 (預覽) 端點。 若要將 QnA Maker 受控 (預覽) 知識庫新增至 Power Automate，請略過此步驟，並手動將端點新增至其中。 
 
 以下程序會建立 Power Automate 流程，以便：
 * 接受傳入的使用者文字，並傳送至 QnA Maker。
@@ -145,16 +148,16 @@ ms.locfileid: "91777417"
 
 1. 在 **Power Automate** 中，從左側導覽區選取 [範本]。 如果系統詢問您是否要離開瀏覽器頁面，請接受 [離開]。
 
-1. 在範本頁面上，搜尋**使用 QnA Maker 產生答案**範本，然後選取該範本。 此範本具有使用您的知識庫設定呼叫 QnA Maker 的所有步驟，而且會傳回最熱門的答案虛擬機器範本。
+1. 在範本頁面上，搜尋 **使用 QnA Maker 產生答案** 範本，然後選取該範本。 此範本具有使用您的知識庫設定呼叫 QnA Maker 的所有步驟，而且會傳回最熱門的答案虛擬機器範本。
 
 1. 在 QnA Maker 流程的新畫面上，選取 [繼續]。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="QnA Maker 範本流程的部分螢幕擷取畫面，其中已醒目提示 [繼續] 按鈕。":::
 
-1. 選取 [產生答案] 動作方塊，然後填入來自先前標題為[建立和發佈知識庫](#create-and-publish-a-knowledge-base)之小節的 QnA Maker 設定。 下圖中的**服務主機**指的是您的知識庫主機 **Host**，其格式為 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
+1. 選取 [產生答案] 動作方塊，然後填入來自先前標題為[建立和發佈知識庫](#create-and-publish-a-knowledge-base)之小節的 QnA Maker 設定。 下圖中的 **服務主機** 指的是您的知識庫主機 **Host** ，其格式為 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker 範本流程的局部螢幕擷取畫面，其中已反白顯示 [產生答案 (預覽)]。":::
 
 1. 選取 [儲存] 以儲存流程。
 
@@ -188,13 +191,13 @@ ms.locfileid: "91777417"
 
 1. 選取 [訊息] 動作方塊上方的 **+** 連接器，以在流程中插入新步驟。 然後選取 [呼叫動作]。
 
-1. 從 [流程] 快顯視窗中，選取名為**使用 QnA Maker 知識庫產生答案 ...** 的新流程。新動作會出現在流程中。
+1. 從 [流程] 快顯視窗中，選取名為 **使用 QnA Maker 知識庫產生答案 ...** 的新流程。新動作會出現在流程中。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="新增 QnA Maker 流程後，Power Virtual Agent 主題交談畫布的部分螢幕擷取畫面。":::
 
 1. 若要正確地將輸入變數設定為 QnA Maker 動作，請選取 [選取變數]，然後選取 [bot.UnrecognizedTriggerPhrase]。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="輸入變數時，Power Virtual Agent 主題交談畫布的部分螢幕擷取畫面。":::
 
 
 1. 若要正確地將輸出變數設定為 QnA Maker 動作，請在 [訊息] 動作中選取 [UnrecognizedTriggerPhrase]，然後選取圖示以插入變數 `{x}`，然後選取 [FinalAnswer]。
@@ -221,7 +224,7 @@ ms.locfileid: "91777417"
     |5|是|用以回覆 `Can I help with anything else?`|
     |6|如何改善查詢預測的輸送量效能？|此問題會觸發後援動作，該動作會將文字傳送給您的知識庫進行回答， 而後就會顯示解答。 個別動作的綠色核取記號表示每個動作都成功。|
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="聊天機器人的螢幕擷取畫面，其畫布會指出成功動作的綠色核取記號。":::
 
 ## <a name="publish-your-bot"></a>發佈您的 Bot
 

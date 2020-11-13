@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a9c8fce87b48b47f4bf82e5fd25fda12a25758
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192411"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553500"
 ---
 # <a name="operating-system-upgrade"></a>作業系統升級
 本文件會詳述 Hana 大型執行個體作業系統升級的詳細資訊。
@@ -29,7 +29,7 @@ ms.locfileid: "82192411"
 在快速布建的過程中，Microsoft 作業小組會安裝作業系統。
 隨時間過去，會需要維護 HLI 單元上的作業系統 (例如：修補、調整、升級等)。
 
-在您對作業系統進行重大變更之前 (例如，將 SP1 升級至 SP2) 之前，您必須先開啟支援票證以洽詢 Microsoft Operations 團隊。
+在您對作業系統進行重大變更之前 (例如，將 SP1 升級至 SP2) 之前，您應該先開啟支援票證以洽詢 Microsoft Operations 團隊。
 
 包含在您的票證中：
 
@@ -38,11 +38,9 @@ ms.locfileid: "82192411"
 * 您打算套用的修補等級。
 * 您打算進行變更的日期。 
 
-建議您在合適的升級日期之前，開啟此票證至少一周，因為作業小組會檢查您的伺服器刀鋒視窗上是否需要進行韌體升級。
-
+建議您在需要的升級前至少一周開啟此票證，讓作業小組知道所需的固件版本。
 
 如需具有不同 Linux 版本之 SAP HANA 版本的支援矩陣，請參閱 [SAP 附註 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。
-
 
 ## <a name="known-issues"></a>已知問題
 
@@ -55,16 +53,17 @@ ms.locfileid: "82192411"
 作業系統設定可能會因為修補、系統升級以及客戶所做的變更，而與建議的設定漂移。 此外，Microsoft 還會找出現有系統所需的更新，以確保它們獲得最佳效能和復原能力的最佳設定。 下列指示概述可解決網路效能、系統穩定性和最佳 HANA 效能的建議。
 
 ### <a name="compatible-enicfnic-driver-versions"></a>相容的 eNIC/fNIC 驅動程式版本
-  為了具有適當的網路效能和系統穩定性，建議您確定已安裝作業系統特定的適當版本 eNIC 和 fNIC 驅動程式，如下列相容性表格所示。 伺服器會傳遞給具有相容版本的客戶。 請注意，在某些情況下，OS/核心修補期間，可以將驅動程式回復為預設的驅動程式版本。 請確定作業系統/核心修補作業之後，有適當的驅動程式版本正在執行。
+  為了具有適當的網路效能和系統穩定性，建議您確定已安裝作業系統特定的適當 eNIC 和 fNIC 驅動程式版本，如下列相容性表格所示。 伺服器會傳遞給具有相容版本的客戶。 在某些情況下，在作業系統/核心修補期間，可以將驅動程式回復為預設的驅動程式版本。 確定在作業系統/核心修補作業之後，有適當的驅動程式版本正在執行。
        
       
   |  作業系統廠商    |  作業系統套件版本     |  韌體版本  |  eNIC 驅動程式 |  fNIC 驅動程式 | 
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
-  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP5            |   3.2.3 i           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7.2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
@@ -88,6 +87,15 @@ rpm -ivh <enic/fnic.rpm>
 modinfo enic
 modinfo fnic
 ```
+
+#### <a name="steps-for-enicfnic-drivers-installation-during-os-upgrade"></a>OS 升級期間的 eNIC/fNIC 驅動程式安裝步驟
+
+* 升級作業系統版本
+* 移除舊的 rpm 套件
+* 根據已安裝的 OS 版本安裝相容的 eNIC/fNIC 驅動程式
+* 重新開機系統
+* 重新開機之後，請檢查 eNIC/fNIC 版本
+
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE Hli GRUB 更新失敗
 Azure 上的 SAP HANA 大型實例 (類型 I) 在升級之後可能處於非可開機狀態。 下列程式會修正此問題。
@@ -117,7 +125,6 @@ blacklist edac_core
 ```
 需要重新開機，才能進行變更。 執行 `lsmod` 命令，並在輸出中確認模組不存在。
 
-
 ### <a name="kernel-parameters"></a>核心參數
    請確定 `transparent_hugepage` 已套用、、和的正確設定 `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` 。
 
@@ -126,7 +133,6 @@ blacklist edac_core
 * transparent_hugepage = 永不
 * numa_balancing = 停用
 * mce = ignore_ce
-
 
 #### <a name="execution-steps"></a>執行步驟
 
@@ -141,6 +147,6 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 * 重新開機系統。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 請參閱類型 I 的 SKU 類別作業系統的[備份和還原](hana-overview-high-availability-disaster-recovery.md)。
 - 請參閱類型 II SKU 類別 [的修訂3的類型 Ii Sku 類型的 OS 備份](os-backup-type-ii-skus.md) 。

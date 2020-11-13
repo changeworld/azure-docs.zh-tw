@@ -36,6 +36,20 @@
       href: quickstart-multi-container.md
 - name: 教學課程
   items:
+    - name: 保護應用程式存取儲存體和 Microsoft Graph
+      items:
+        - name: 概觀
+          href: scenario-secure-app-overview.md
+        - name: 設定 App Service 驗證
+          href: scenario-secure-app-authentication-app-service.md
+        - name: 保護應用程式存取儲存體
+          href: scenario-secure-app-access-storage.md
+        - name: 以使用者身分保護應用程式存取 Microsoft Graph
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: 以應用程式身分保護應用程式存取 Microsoft Graph
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: 清除資源
+          href: scenario-secure-app-clean-up-resources.md
     - name: App with DB
       items:
         - name: .NET Core with SQL DB

@@ -11,8 +11,7 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 設定 Azure NetApp Files 並建立 NFS 磁碟區 - ARM 範本
-      displayName: Resource Manager
+    - name: 設定 Azure NetApp Files 並建立 NFS 磁碟區
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: 概念
   items:
@@ -114,8 +113,6 @@
           href: develop-rest-api-powershell.md
         - name: SDK、CLI 工具和 ARM 範本
           href: azure-netapp-files-sdk-cli.md
-        - name: 針對 Azure NetApp Files 資源提供者錯誤進行疑難排解
-          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: 疑難排解
       items:
         - name: 針對容量集區進行疑難排解
@@ -126,6 +123,8 @@
           href: troubleshoot-dual-protocol-volumes.md
         - name: 針對快照集原則進行疑難排解
           href: troubleshoot-snapshot-policies.md
+        - name: 針對資源提供者錯誤進行疑難排解
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: 參考
   items:
     - name: REST

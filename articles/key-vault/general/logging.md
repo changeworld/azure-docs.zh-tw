@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286709"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488531"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -93,12 +93,14 @@ ms.locfileid: "93286709"
 | **VaultDelete** |[刪除金鑰保存庫](/rest/api/keyvault/vaults) |
 | **VaultPatch** |[更新金鑰保存庫](/rest/api/keyvault/vaults) |
 | **VaultList** |[列出資源群組中的所有金鑰保存庫](/rest/api/keyvault/vaults) |
+| **VaultPurge** |[清除已刪除的保存庫](/rest/api/keyvault/vaults/purgedeleted) |
+| **VaultRecover** |復原已刪除的保存庫|
+| **VaultGetDeleted** |[取得已刪除的保存庫](/rest/api/keyvault/vaults/getdeleted) |
+| **VaultListDeleted** |[列出已刪除的保存庫](/rest/api/keyvault/vaults/listdeleted) |
 | **KeyCreate** |[建立金鑰](/rest/api/keyvault/createkey) |
 | **KeyGet** |[取得金鑰的相關資訊](/rest/api/keyvault/getkey) |
 | **KeyImport** |[將金鑰匯入保存庫](/rest/api/keyvault/vaults) |
-| **KeyBackup** |[備份金鑰](/rest/api/keyvault/backupkey) |
 | **KeyDelete** |[刪除金鑰](/rest/api/keyvault/deletekey) |
-| **KeyRestore** |[還原金鑰](/rest/api/keyvault/restorekey) |
 | **KeySign** |[使用金鑰簽署](/rest/api/keyvault/sign) |
 | **KeyVerify** |[使用金鑰驗證](/rest/api/keyvault/vaults) |
 | **KeyWrap** |[包裝金鑰](/rest/api/keyvault/wrapkey) |
@@ -106,14 +108,56 @@ ms.locfileid: "93286709"
 | **KeyEncrypt** |[使用金鑰加密](/rest/api/keyvault/encrypt) |
 | **KeyDecrypt** |[使用金鑰解密](/rest/api/keyvault/decrypt) |
 | **KeyUpdate** |[更新金鑰](/rest/api/keyvault/updatekey) |
-| **KeyList** |[列出保存庫中的金鑰](/rest/api/keyvault/vaults) |
+| **KeyList** |[列出保存庫中的金鑰](/rest/api/keyvault/getkeys) |
 | **KeyListVersions** |[列出金鑰的版本](/rest/api/keyvault/getkeyversions) |
+| **KeyPurge** |[清除金鑰](/rest/api/keyvault/purgedeletedkey) |
+| **KeyBackup** |[備份金鑰](/rest/api/keyvault/backupkey) |
+| **KeyRestore** |[還原金鑰](/rest/api/keyvault/restorekey) |
+| **KeyRecover** |[復原金鑰](/rest/api/keyvault/recoverdeletedkey) |
+| **KeyGetDeleted** |[取得已刪除的金鑰](/rest/api/keyvault/getdeletedkey) |
+| **KeyListDeleted** |[列出保存庫中已刪除的金鑰](/rest/api/keyvault/getdeletedkeys) |
+| **CertificateGet** |[取得憑證的相關資訊](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[建立憑證](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[將憑證匯入保存庫](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[更新憑證](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[列出保存庫中的憑證](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[列出憑證的版本](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[刪除憑證](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[清除憑證](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[備份憑證](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[還原憑證](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[復原憑證](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[取得已刪除的憑證](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[列出保存庫中已刪除的憑證](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[取得憑證原則](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[更新憑證原則](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[建立憑證原則](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[取得憑證連絡人](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[設定憑證連絡人](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[刪除憑證連絡人](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[取得憑證簽發者](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[設定憑證簽發者](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[更新憑證簽發者](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[刪除憑證簽發者](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[列出憑證簽發者](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |註冊憑證 |
+| **CertificateRenew** |更新憑證 |
+| **CertificatePendingGet** |擷取擱置中的憑證 |
+| **CertificatePendingMerge** |擱置憑證合併 |
+| **CertificatePendingUpdate** |擱置憑證更新 |
+| **CertificatePendingDelete** |刪除擱置中的憑證 |
 | **SecretSet** |[建立密碼](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[取得祕密](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[更新密碼](/rest/api/keyvault/updatesecret) |
 | **SecretDelete** |[刪除秘密](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[列出保存庫中的密碼](/rest/api/keyvault/vaults) |
+| **SecretList** |[列出保存庫中的密碼](/rest/api/keyvault/getsecrets) |
 | **SecretListVersions** |[列出密碼的版本](/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[清除秘密](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[備份秘密](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[還原秘密](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[復原秘密](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[取得已刪除的秘密](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[列出保存庫中已刪除的秘密](/rest/api/keyvault/getdeletedsecrets) |
 | **VaultAccessPolicyChangedEventGridNotification** | 已發佈保存庫存取原則已變更事件 |
 | **SecretNearExpiryEventGridNotification** |已發佈祕密即將過期事件 |
 | **SecretExpiredEventGridNotification** |已發佈祕密已過期事件 |

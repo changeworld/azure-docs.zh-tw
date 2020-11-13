@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785488"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553551"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 將 SQL Server VM 移至 Azure 中的另一個區域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,7 +131,7 @@ ms.locfileid: "92785488"
 1. 從在上一節中監視容錯移轉測試時所檢視的相同 [Site Recovery 作業] 頁面中，您可監視容錯移轉處理序。 
 1. 作業完成後，請確認 SQL Server VM 如預期般出現在目標區域中。 
 1. 巡覽回保存庫，選取 [已複寫的項目]，選取 [SQL Server VM]，然後選取 [認可]，vio 完成移至目標區域的移動處理序。 請等候認可作業完成。 
-1. 將 SQL Server VM 註冊到 SQL VM 資源提供者，以在與資源提供者建立關聯的 Azure 入口網站和功能中啟用 **SQL 虛擬機器** 管理能力。 如需詳細資訊，請參閱 [使用 SQL vm 資源提供者註冊 SQL SERVER VM](sql-vm-resource-provider-register.md)。 
+1. 使用 SQL IaaS 代理程式延伸模組註冊 SQL Server VM，以在與擴充功能相關聯的 Azure 入口網站和功能中啟用 **SQL 虛擬機器** 管理能力。 如需詳細資訊，請參閱 [使用 SQL IaaS 代理程式擴充功能註冊 SQL SERVER VM](sql-agent-extension-manually-register-single-vm.md)。 
 
   > [!WARNING]
   > 只有應用程式一致的快照集才會保證 SQL Server 資料一致性。 當損毀復原快照集無法保證 SQL Server 資料一致性時， **最新處理** 快照集即無法用於 SQL Server 容錯移轉。 
