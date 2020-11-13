@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595218"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566515"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 根據 URL 路由傳送網路流量
 
@@ -32,11 +32,11 @@ ms.locfileid: "89595218"
 
 您可以依偏好使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 入口網站](create-url-route-portal.md)來完成此程序。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教學課程需要 Azure CLI 的版本2.0.4 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用 `az network vnet create` 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 然後使用 `az network vnet subnet create` 新增名為 myBackendSubnet** 的子網路，後端伺服器需要該子網路。 使用 `az network public-ip create` 建立名為 myAGPublicIPAddress** 的公用 IP 位址。
+使用 `az network vnet create` 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後使用 `az network vnet subnet create` 新增名為 myBackendSubnet 的子網路，後端伺服器需要該子網路。 使用 `az network public-ip create` 建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -76,7 +76,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>建立包含 URL 對應的應用程式閘道
 
-使用 `az network application-gateway create` 建立名為 myAppGateway** 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給 myAGSubnet 和 myAGPublicIPAddress。
+使用 `az network application-gateway create` 建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給 myAGSubnet 和 myAGPublicIPAddress。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -107,7 +107,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-a-port"></a>新增映像和視訊後端集區及連接埠
 
-使用 `az network application-gateway address-pool create`，將名為 imagesBackendPool** 和 videoBackendPool** 的後端集區新增至應用程式閘道。 使用 `az network application-gateway frontend-port create` 新增集區的前端連接埠。
+使用 `az network application-gateway address-pool create`，將名為 imagesBackendPool 和 videoBackendPool 的後端集區新增至應用程式閘道。 使用 `az network application-gateway frontend-port create` 新增集區的前端連接埠。
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -129,7 +129,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>新增後端接聽程式
 
-使用 `az network application-gateway http-listener create` 新增名為 backendListener**、路由流量所需的後端接聽程式。
+使用 `az network application-gateway http-listener create` 新增名為 backendListener、路由流量所需的後端接聽程式。
 
 
 ```azurecli-interactive
@@ -143,7 +143,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-a-url-path-map"></a>新增 URL 路徑對應
 
-URL 路徑對應可確保特定 URL 會路由傳送到特定的後端集區。 使用 `az network application-gateway url-path-map create` 和 `az network application-gateway url-path-map rule create`，建立名為 imagePathRule** 和 videoPathRule** 的 URL 路徑對應。
+URL 路徑對應可確保特定 URL 會路由傳送到特定的後端集區。 使用 `az network application-gateway url-path-map create` 和 `az network application-gateway url-path-map rule create`，建立名為 imagePathRule 和 videoPathRule 的 URL 路徑對應。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -168,7 +168,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-a-routing-rule"></a>新增路由規則
 
-路由規則會將 URL 對應與您所建立的接聽程式產生關聯。 使用 `az network application-gateway rule create` 新增名為 rule2** 的規則。
+路由規則會將 URL 對應與您所建立的接聽程式產生關聯。 使用 `az network application-gateway rule create` 新增名為 rule2 的規則。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -183,7 +183,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在本文中，您會建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 建立名為 myvmss1**、myvmss2** 和 myvmss3** 的擴展集。 每個擴展集都會包含兩個您安裝 NGINX 的虛擬機器執行個體。
+在本文中，您會建立三個虛擬機器擴展集，以支援您所建立的三個後端集區。 建立名為 myvmss1、myvmss2 和 myvmss3 的擴展集。 每個擴展集都會包含兩個您安裝 NGINX 的虛擬機器執行個體。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

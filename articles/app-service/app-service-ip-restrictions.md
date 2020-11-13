@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e074be91f343e04ba3049aea51f83f7f6364cdb0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564033"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576439"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>設定 Azure App Service 存取限制
 
@@ -179,7 +179,7 @@ ms.locfileid: "94564033"
 存取限制也適用于具有 App Service 方案相同功能的函式應用程式。 當您啟用存取限制時，也會針對任何不允許的 Ip 停用 Azure 入口網站程式碼編輯器。
 
 ## <a name="next-steps"></a>後續步驟
-[Azure Functions 的存取限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)  
+[Azure Functions 的存取限制](../azure-functions/functions-networking-options.md#inbound-access-restrictions)  
 [應用程式閘道與服務端點的整合](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->

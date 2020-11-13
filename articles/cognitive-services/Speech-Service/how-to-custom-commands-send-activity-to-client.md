@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839209"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566090"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>將自訂命令活動傳送至用戶端應用程式
 
@@ -35,16 +35,18 @@ ms.locfileid: "91839209"
 
 ## <a name="setup-send-activity-to-client"></a>設定傳送活動至用戶端 
 1. 開啟您先前建立的自訂命令應用程式
-1. 選取 [ **TurnOnOff** ] 命令，選取 [完成規則] 下的 [ **ConfirmationResponse** ]，然後選取 [**新增動作**]
-1. 在 [**新增動作-類型**] 下，選取 [**傳送活動至用戶端**]
+1. 選取 [ **TurnOnOff** ] 命令，選取 [完成規則] 下的 [ **ConfirmationResponse** ]，然後選取 [ **新增動作** ]
+1. 在 [ **新增動作-類型** ] 下，選取 [ **傳送活動至用戶端** ]
 1. 將下列 JSON 複製到 **活動內容**
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
 1. 按一下 [ **儲存** ] 以建立具有傳送活動動作的新規則、 **定型** 及 **發佈** 變更
 
@@ -55,7 +57,7 @@ ms.locfileid: "91839209"
 
 在 how [to：使用語音 sdk (Preview) 設定用戶端應用程式 ](./how-to-custom-commands-setup-speech-sdk.md)中，您已建立 UWP 用戶端應用程式，其中包含處理命令的語音 sdk `turn on the tv` ，例如， `turn off the fan` 。 新增一些視覺效果之後，您就可以看到這些命令的結果。
 
-若要加入標示為開啟或**關閉**之文字的加**上**標籤的方塊，請將下列 StackPanel XML 區塊加入至 `MainPage.xaml` 。
+若要加入標示為開啟或 **關閉** 之文字的加 **上** 標籤的方塊，請將下列 StackPanel XML 區塊加入至 `MainPage.xaml` 。
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -83,8 +85,8 @@ ms.locfileid: "91839209"
 由於您已建立 JSON 承載，因此您需要加入 [JSON.NET](https://www.newtonsoft.com/json) 程式庫的參考以處理還原序列化。
 
 1. 將您的解決方案向右用戶端。
-1. 選擇 [ **管理解決方案的 NuGet 套件**]，然後選取 **[流覽]** 
-1. 如果您已經 ** 在上安裝Newtonsoft.js**，請確定其版本至少為12.0.3。 如果沒有，請移至 [ **管理解決方案的 NuGet 套件-更新**]，搜尋 **Newtonsoft.js** 更新。 本指南使用版本12.0.3。
+1. 選擇 [ **管理解決方案的 NuGet 套件** ]，然後選取 **[流覽]** 
+1. 如果您已經 **在上安裝Newtonsoft.js** ，請確定其版本至少為12.0.3。 如果沒有，請移至 [ **管理解決方案的 NuGet 套件-更新** ]，搜尋 **Newtonsoft.js** 更新。 本指南使用版本12.0.3。
 
     > [!div class="mx-imgBorder"]
     > ![傳送活動裝載](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {

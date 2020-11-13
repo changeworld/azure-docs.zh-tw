@@ -4,12 +4,12 @@ description: Azure 容器執行個體服務的計算和記憶體資源在不同 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395864"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576609"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 
@@ -55,6 +55,9 @@ ms.locfileid: "93395864"
 
 下列資源可供使用 [GPU 資源](container-instances-gpu.md) 部署 (預覽版) 的容器群組使用。
 
+> [!IMPORTANT]
+> 目前，在 Azure 虛擬網路部署中，不支援使用 GPU 資源的部署，且僅適用于 Linux 容器群組。
+
 | GPU Sku | GPU 計數 | 最大 CPU | 最大記憶體 (GB)  | 儲存體 (GB) |
 | --- | --- | --- | --- | --- |
 | K80 | 1 | 6 | 56 | 50 |
@@ -67,6 +70,9 @@ ms.locfileid: "93395864"
 ## <a name="windows-container-groups"></a>Windows 容器群組
 
 [支援和預覽](container-instances-faq.md#what-windows-base-os-images-are-supported)Windows Server 容器的容器群組可使用下欄區域和資源上限。
+
+> [!IMPORTANT]
+> 目前，在 Azure 虛擬網路部署中，不支援使用 Windows 容器群組進行部署。
 
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 

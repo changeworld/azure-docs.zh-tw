@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 遠端桌面閘道服務
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 實現遠端桌面閘道服務的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff099d41970ad4d78d5c6035a60f448f29ab24b1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114124"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576790"
 ---
 # <a name="remote-desktop-gateway-services"></a>遠端桌面閘道服務
 
@@ -32,15 +32,15 @@ ms.locfileid: "92114124"
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：存取應用程式 Proxy 所提供的 RDS。
+* **使用者** ：存取應用程式 Proxy 所提供的 RDS。
 
-* **Web 瀏覽器**：使用者與之互動的元件，以存取應用程式的外部 URL。
+* **Web 瀏覽器** ：使用者與之互動的元件，以存取應用程式的外部 URL。
 
-* **Azure AD**：驗證使用者。 
+* **Azure AD** ：驗證使用者。 
 
-* **應用程式 Proxy 服務**：作為反向 Proxy，將要求從使用者轉寄到 RDS。 應用程式 Proxy 也可以強制執行任何條件式存取原則。 
+* **應用程式 Proxy 服務** ：作為反向 Proxy，將要求從使用者轉寄到 RDS。 應用程式 Proxy 也可以強制執行任何條件式存取原則。 
 
-* **遠端桌面服務**：作為個別虛擬化應用程式的平臺，提供安全的行動和遠端桌面存取，並讓使用者能夠從雲端執行其應用程式和桌上型電腦。 
+* **遠端桌面服務** ：作為個別虛擬化應用程式的平臺，提供安全的行動和遠端桌面存取，並讓使用者能夠從雲端執行其應用程式和桌上型電腦。 
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>使用 Azure AD 來執行遠端桌面閘道服務
 

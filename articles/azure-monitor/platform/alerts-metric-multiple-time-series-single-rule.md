@@ -4,14 +4,14 @@ description: 針對多個時間序列使用單一警示規則的大規模警示
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 10/04/2020
+ms.date: 11/12/2020
 ms.subservice: alerts
-ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704475"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566498"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>監視單一計量警示規則中的多個時間序列
 
@@ -43,7 +43,7 @@ ms.locfileid: "91704475"
 
 
 針對此警示規則，會監視單一計量時間序列：
--   *Resource*= ' myVM1 ' > 70% 的 CPU 百分比
+-   *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
 
 ![單一時間序列上的警示規則](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
@@ -65,18 +65,18 @@ ms.locfileid: "91704475"
 -   閾值： *70*
 
 針對此警示規則，會另外監視兩個計量時間序列：
--   *Resource*= ' myVM1 ' > 70% 的 CPU 百分比
--   *Resource*= ' myVM2 ' > 70% 的 CPU 百分比
+-   *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
+-   *Resource* = ' myVM2 ' > 70% 的 CPU 百分比
 
 ![多重資源警示規則](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
 在多重資源警示規則中，會針對每個資源的每個計量時間序列對應， **個別評估每個資源的條件** (或更精確地) 。 這表示也會分別對每個資源引發警示。
 
 例如，假設我們已設定上方的警示規則來監視超過70% 的 CPU。 在評估期間 (也就是最後5分鐘) 
--   *MyVM1*的*CPU 百分比*大於70% 
--   *MyVM2*的*百分比 CPU*是50%
+-   *MyVM1* 的 *CPU 百分比* 大於70% 
+-   *MyVM2* 的 *百分比 CPU* 是50%
 
-警示規則會在 *myVM1*（但不是 *myVM2*）上觸發。 這些觸發的警示是獨立的。 它們也可以在不同的時間解決，視每個虛擬機器的個別行為而定。
+警示規則會在 *myVM1* （但不是 *myVM2* ）上觸發。 這些觸發的警示是獨立的。 它們也可以在不同的時間解決，視每個虛擬機器的個別行為而定。
 
 如需多重資源警示規則和這項功能所支援資源類型的詳細資訊，請參閱 [Azure 監視器中的計量警示大規模監視](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。
 
@@ -101,8 +101,8 @@ ms.locfileid: "91704475"
 
 針對此警示規則，系統會監視兩個計量時間序列：
 
-- *Resource*= ' myVM1 ' > 70% 的 CPU 百分比
-- Network In Total *Resource*= ' myVM1 ' > 20 MB
+- *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
+- Network In Total *Resource* = ' myVM1 ' > 20 MB
 
 ![多重條件警示規則](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
@@ -114,7 +114,7 @@ ms.locfileid: "91704475"
 
 ## <a name="multiple-dimensions-multi-dimension"></a>多維度)  (多維度
 
-單一計量警示規則也可以監視度量的多個維度值。 計量的維度是名稱/值組，其中包含用來描述度量值的額外資料。 例如，儲存體帳戶的 **交易** 計量有一個稱為 **api 名稱**的維度，其描述每個交易所呼叫的 Api 名稱 (例如 GetBlob、DeleteBlob、PutPage) 。 維度的使用是選擇性的，但它可讓您篩選計量並僅監視特定的時間序列，而不是監視計量，以將所有維度值組合在一起。 
+單一計量警示規則也可以監視度量的多個維度值。 計量的維度是名稱/值組，其中包含用來描述度量值的額外資料。 例如，儲存體帳戶的 **交易** 計量有一個稱為 **api 名稱** 的維度，其描述每個交易所呼叫的 Api 名稱 (例如 GetBlob、DeleteBlob、PutPage) 。 維度的使用是選擇性的，但它可讓您篩選計量並僅監視特定的時間序列，而不是監視計量，以將所有維度值組合在一起。 
 
 例如，您可以選擇在所有 API 名稱中的交易數目很高 (（匯總資料) ）時引發警示，或進一步將其細分為只有當特定 API 名稱的交易數目很高時，才會發出警示。 
 
@@ -129,9 +129,9 @@ ms.locfileid: "91704475"
 
 針對此警示規則，系統會監視三個計量時間序列：
 
-- *資源*= ' myStorage1 ' 和*API 名稱*= ' GetBlob ' > 70 的交易
-- *資源*= ' myStorage1 ' 和*API 名稱*= ' DeleteBlob ' > 70 的交易
-- *資源*= ' myStorage1 ' 和*API 名稱*= ' PutPage ' > 70 的交易
+- *資源* = ' myStorage1 ' 和 *API 名稱* = ' GetBlob ' > 70 的交易
+- *資源* = ' myStorage1 ' 和 *API 名稱* = ' DeleteBlob ' > 70 的交易
+- *資源* = ' myStorage1 ' 和 *API 名稱* = ' PutPage ' > 70 的交易
 
 ![具有來自某個維度之值的多維度警示規則](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
@@ -149,12 +149,12 @@ ms.locfileid: "91704475"
 
 針對此警示規則，會另外監視六個計量時間序列：
 
-- *資源*= ' myStorage1 '、 *API 名稱*= ' GetBlob ' 和*Authentication*= ' SAS ' > 70 的交易
-- *資源*= ' myStorage1 '、 *API 名稱*= ' GetBlob ' 和*Authentication*= ' AccountKey ' > 70 的交易
-- *資源*= ' myStorage1 '、 *API 名稱*= ' DeleteBlob ' 和*Authentication*= ' SAS ' > 70 的交易
-- *資源*= ' myStorage1 '、 *API 名稱*= ' DeleteBlob ' 和*Authentication*= ' AccountKey ' > 70 的交易
-- *資源*= ' myStorage1 '、 *API 名稱*= ' PutPage ' 和*Authentication*= ' SAS ' > 70 的交易
-- *資源*= ' myStorage1 '、 *API 名稱*= ' PutPage ' 和*Authentication*= ' AccountKey ' > 70 的交易
+- *資源* = ' myStorage1 '、 *API 名稱* = ' GetBlob ' 和 *Authentication* = ' SAS ' > 70 的交易
+- *資源* = ' myStorage1 '、 *API 名稱* = ' GetBlob ' 和 *Authentication* = ' AccountKey ' > 70 的交易
+- *資源* = ' myStorage1 '、 *API 名稱* = ' DeleteBlob ' 和 *Authentication* = ' SAS ' > 70 的交易
+- *資源* = ' myStorage1 '、 *API 名稱* = ' DeleteBlob ' 和 *Authentication* = ' AccountKey ' > 70 的交易
+- *資源* = ' myStorage1 '、 *API 名稱* = ' PutPage ' 和 *Authentication* = ' SAS ' > 70 的交易
+- *資源* = ' myStorage1 '、 *API 名稱* = ' PutPage ' 和 *Authentication* = ' AccountKey ' > 70 的交易
 
 ![多維度警示規則，其中包含來自多個維度的值](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
@@ -163,6 +163,7 @@ ms.locfileid: "91704475"
 1.  **選取所有目前和未來的維度** -您可以選擇監視維度的所有可能值，包括未來的值。 這類警示規則會自動調整以監視維度的所有值，而不需要在每次新增或移除維度值時修改警示規則。
 2.  **排除維度** –選取 ' ≠ ' (將維度值排除) 運算子相當於選取該維度的所有其他值，包括未來的值。
 3.  **新的和自訂維度** – Azure 入口網站中顯示的維度值是以過去三天內收集的計量資料為基礎。 如果您要尋找的維度值尚未發出，則可以加入自訂維度值。
+4. **使用前置** 詞比對維度-您可以選擇監視所有以特定模式開頭的維度值，方法是選取 [開頭為] 運算子，然後輸入自訂前置詞。
 
 ![Advanced 多重維度功能](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)
 

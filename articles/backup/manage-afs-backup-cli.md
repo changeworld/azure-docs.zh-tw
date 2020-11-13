@@ -3,29 +3,27 @@ title: 使用 Azure CLI 管理 Azure 檔案共用備份
 description: 瞭解如何使用 Azure CLI 來管理及監視由 Azure 備份備份的 Azure 檔案共用。
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 44c095d58e2da5a74985ce216268aab15922ed1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332741"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566447"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 檔案共用備份
 
 Azure CLI 提供用來管理 Azure 資源的命令列體驗。 它是建立自訂自動化以使用 Azure 資源的絕佳工具。 本文說明如何執行工作，以管理及監視 [Azure 備份](./backup-overview.md)所備份的 Azure 檔案共用。 您也可以使用 [Azure 入口網站](https://portal.azure.com/)來執行這些步驟。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-若要在本機安裝和使用 CLI，您必須執行 Azure CLI 2.0.18 版版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
 ## <a name="prerequisites"></a>必要條件
 
 本文假設您已有 [Azure 備份](./backup-overview.md)所備份的 Azure 檔案共用。 如果您沒有帳戶，請參閱 [使用 CLI 備份 Azure 檔案共用](backup-afs-cli.md) ，以設定檔案共用的備份。 在本文中，您將使用下列資源：
-
-* **資源群組**： *azurefiles*
-* **RecoveryServicesVault**： *azurefilesvault*
-* **儲存體帳戶**： *afsaccount*
-* 檔案**共用**： *azurefiles*
+   -  **資源群組** ： *azurefiles*
+   -  **RecoveryServicesVault** ： *azurefilesvault*
+   -  **儲存體帳戶** ： *afsaccount*
+   -  檔案 **共用** ： *azurefiles*
+  
+  [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+   - 本教學課程需要 Azure CLI 的版本2.0.18 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="monitor-jobs"></a>監視工作
 
@@ -98,11 +96,11 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 
 若要變更原則，請定義下列參數：
 
-* **--容器-名稱**：裝載檔案共用的儲存體帳戶名稱。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
-* **--name**：您要變更原則的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
-* **--policy-name**：您要為檔案共用設定的備份原則名稱。 您可以使用 [az 備份原則清單](/cli/azure/backup/policy#az-backup-policy-list) 來查看您保存庫的所有原則。
+* **--容器-名稱** ：裝載檔案共用的儲存體帳戶名稱。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
+* **--name** ：您要變更原則的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
+* **--policy-name** ：您要為檔案共用設定的備份原則名稱。 您可以使用 [az 備份原則清單](/cli/azure/backup/policy#az-backup-policy-list) 來查看您保存庫的所有原則。
 
-下列範例會針對*afsaccount*儲存體帳戶中存在的*azurefiles*檔案共用設定*schedule2*備份原則。
+下列範例會針對 *afsaccount* 儲存體帳戶中存在的 *azurefiles* 檔案共用設定 *schedule2* 備份原則。
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --name "AzureFileShare;azurefiles" --backup-management-type azurestorage --out table
@@ -110,8 +108,8 @@ az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name
 
 您也可以提供下列兩個額外的參數，藉由使用容器和專案的易記名稱來執行上一個命令：
 
-* **--備份-管理-類型**： *azurestorage*
-* **--工作負載類型**： *azurefileshare*
+* **--備份-管理-類型** ： *azurestorage*
+* **--工作負載類型** ： *azurefileshare*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --name azurefiles --backup-management-type azurestorage --out table
@@ -136,8 +134,8 @@ fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 
 若要停止保護檔案共用，請定義下列參數：
 
-* **--容器-名稱**：裝載檔案共用的儲存體帳戶名稱。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
-* **--專案名稱**：您要停止保護的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
+* **--容器-名稱** ：裝載檔案共用的儲存體帳戶名稱。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
+* **--專案名稱** ：您要停止保護的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>停止保護並保留復原點
 
@@ -151,8 +149,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 您也可以提供下列兩個額外的參數，藉由使用容器和專案的易記名稱來執行上一個命令：
 
-* **--備份-管理-類型**： *azurestorage*
-* **--工作負載類型**： *azurefileshare*
+* **--備份-管理-類型** ： *azurestorage*
+* **--工作負載類型** ： *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --out table
@@ -168,7 +166,7 @@ fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 
 ### <a name="stop-protection-without-retaining-recovery-points"></a>停止保護而不保留復原點
 
-若要在不保留復原點的情況下停止保護，請在 [**刪除-備份-資料**] 選項設定為 [ **true**] 時，使用[az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) Cmdlet。
+若要在不保留復原點的情況下停止保護，請在 [ **刪除-備份-資料** ] 選項設定為 [ **true** ] 時，使用 [az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) Cmdlet。
 
 下列範例會停止保護 *azurefiles* 檔案共用，而不會保留復原點。
 
@@ -178,8 +176,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 您也可以提供下列兩個額外的參數，藉由使用容器和專案的易記名稱來執行上一個命令：
 
-* **--備份-管理-類型**： *azurestorage*
-* **--工作負載類型**： *azurefileshare*
+* **--備份-管理-類型** ： *azurestorage*
+* **--工作負載類型** ： *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --delete-backup-data true --out table
@@ -191,11 +189,11 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 若要繼續保護檔案共用，請定義下列參數：
 
-* **--容器-名稱**：裝載檔案共用的儲存體帳戶名稱。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
-* **--專案名稱**：您要繼續保護的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
-* **--policy-name**：您要為其繼續保護檔案共用的備份原則名稱。
+* **--容器-名稱** ：裝載檔案共用的儲存體帳戶名稱。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
+* **--專案名稱** ：您要繼續保護的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
+* **--policy-name** ：您要為其繼續保護檔案共用的備份原則名稱。
 
-下列範例會使用[az backup protection resume](/cli/azure/backup/protection#az-backup-protection-resume) Cmdlet，以使用*schedule1*備份原則來繼續保護*azurefiles*檔案共用。
+下列範例會使用 [az backup protection resume](/cli/azure/backup/protection#az-backup-protection-resume) Cmdlet，以使用 *schedule1* 備份原則來繼續保護 *azurefiles* 檔案共用。
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --policy-name schedule2 --out table
@@ -203,8 +201,8 @@ az backup protection resume --vault-name azurefilesvault --resource-group azuref
 
 您也可以提供下列兩個額外的參數，藉由使用容器和專案的易記名稱來執行上一個命令：
 
-* **--備份-管理-類型**： *azurestorage*
-* **--工作負載類型**： *azurefileshare*
+* **--備份-管理-類型** ： *azurestorage*
+* **--工作負載類型** ： *azurefileshare*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --policy-name schedule2 --out table
@@ -224,7 +222,7 @@ Name                                  ResourceGroup
 
 您需要提供容器名稱以取消註冊儲存體帳戶。 若要取出容器的 **名稱** 或 **易記名稱** ，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
 
-下列範例會使用[az backup container 取消註冊](/cli/azure/backup/container#az-backup-container-unregister)Cmdlet，從*azurefilesvault*中取消註冊*afsaccount*儲存體帳戶。
+下列範例會使用 [az backup container 取消註冊](/cli/azure/backup/container#az-backup-container-unregister)Cmdlet，從 *azurefilesvault* 中取消註冊 *afsaccount* 儲存體帳戶。
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --out table
@@ -232,7 +230,7 @@ az backup container unregister --vault-name azurefilesvault --resource-group azu
 
 您也可以藉由提供下列額外參數，來執行上一個 Cmdlet，方法是使用容器的易記名稱：
 
-* **--備份-管理-類型**： *azurestorage*
+* **--備份-管理-類型** ： *azurestorage*
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --out table

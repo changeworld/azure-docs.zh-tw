@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 的 RADIUS 驗證
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 達到 RADIUS 驗證的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff6210741d87602b4f695633b11d2641a6bb6781
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 155b359c109de948ab9b9d6862ef7507ee76f619
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114162"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576807"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 的 RADIUS 驗證
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) 會啟用以 RADIUS 為基礎系統的多重�
 
 Windows NPS 伺服器會根據 Active Directory 來驗證使用者的認證，然後將 Multi-Factor Authentication 要求傳送至 Azure。 使用者接著會在其行動驗證器上收到挑戰。 成功之後，用戶端應用程式就可以連接到服務。 
 
-## <a name="usewhen"></a>使用時機： 
+## <a name="use-when"></a>使用時機： 
 
 您必須將 Multi-Factor Authentication 新增至應用程式，例如
 * 虛擬私人網路 (VPN) 
@@ -45,19 +45,19 @@ Windows NPS 伺服器會根據 Active Directory 來驗證使用者的認證，�
 ![架構圖](./media/authentication-patterns/radius-auth.png)
 
 
-## <a name="componentsofthe-system"></a>系統的元件 
+## <a name="components-of-the-system"></a>系統的元件 
 
-* **用戶端應用程式 (VPN 用戶端) **：將驗證要求傳送至 RADIUS 用戶端。
+* **用戶端應用程式 (VPN 用戶端)** ：將驗證要求傳送至 RADIUS 用戶端。
 
-* **RADIUS 用戶端**：從用戶端應用程式轉換要求，並將其傳送至已安裝 NPS 擴充功能的 RADIUS 伺服器。
+* **RADIUS 用戶端** ：從用戶端應用程式轉換要求，並將其傳送至已安裝 NPS 擴充功能的 RADIUS 伺服器。
 
-* **Radius 伺服器**：與 Active Directory 連接，以執行 RADIUS 要求的主要驗證。 成功時，會將要求傳遞至 Azure Multi-Factor Authentication NPS 擴充功能。
+* **Radius 伺服器** ：與 Active Directory 連接，以執行 RADIUS 要求的主要驗證。 成功時，會將要求傳遞至 Azure Multi-Factor Authentication NPS 擴充功能。
 
-* **NPS 擴充**功能：觸發對 Azure Multi-Factor Authentication 的要求以進行次要驗證。 如果成功，NPS 延伸模組會提供 RADIUS 伺服器安全性權杖（包含由 Azure 安全性權杖服務所發出的 Multi-Factor Authentication 宣告）來完成驗證要求。
+* **NPS 擴充** 功能：觸發對 Azure Multi-Factor Authentication 的要求以進行次要驗證。 如果成功，NPS 延伸模組會提供 RADIUS 伺服器安全性權杖（包含由 Azure 安全性權杖服務所發出的 Multi-Factor Authentication 宣告）來完成驗證要求。
 
-* **Azure Multi-Factor Authentication**：與 Azure AD 通訊以取得使用者的詳細資料，並使用使用者所設定的驗證方法執行次要驗證。
+* **Azure Multi-Factor Authentication** ：與 Azure AD 通訊以取得使用者的詳細資料，並使用使用者所設定的驗證方法執行次要驗證。
 
-## <a name="implementradiuswith-azure-ad"></a>使用 Azure AD 來執行 RADIUS 
+## <a name="implement-radius-with-azure-ad"></a>使用 Azure AD 來執行 RADIUS 
 
 * [使用 NPS 提供 Azure Multi-Factor Authentication 功能](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
 

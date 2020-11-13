@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 48884e6faa5f26f027c772b44d5f960979a40d1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447628"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566617"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Red Hat Enterprise Linux 就地升級
 
@@ -22,10 +22,12 @@ ms.locfileid: "94447628"
 > Red Hat Enterprise Linux 優惠上的 SQL Server 不支援在 Azure 上進行就地升級。
 
 ## <a name="what-to-expect-during-the-upgrade"></a>升級期間的預期事項
-在升級期間，系統會重新開機幾次，而且是正常的。 最後一次重新開機會將 VM 升級至 RHEL 8 最新次要版本。
+在升級期間，系統會重新開機幾次，而且是正常的。 最後一次重新開機會將 VM 升級至 RHEL 8 最新次要版本。 
+
+升級程式可能需要花費20分鐘到數小時的時間，這取決於數個因素，例如 VM 大小和系統上安裝的套件數目。
 
 ## <a name="preparations-for-the-upgrade"></a>升級的準備工作
-Red Hat 和 Azure 的就地升級是正式建議的方式，可讓客戶將您的系統升級至下一個主要版本。 在這裡執行升級之前，您應該先留意並考慮。 
+「就地升級」是 Red Hat 和 Azure 正式建議的方式，可讓客戶將系統升級至下一個主要版本。 在這裡執行升級之前，您應該先留意並考慮。 
 
 >[!Important] 
 > 執行升級之前，請先取得映射的快照集。
@@ -39,6 +41,12 @@ Red Hat 和 Azure 的就地升級是正式建議的方式，可讓客戶將您�
     ```bash
     leapp preupgrade --no-rhsm
     ```
+* 確定序列主控台可正常運作，因為這可讓您在升級過程中進行監視。
+
+* 啟用 SSH 根目錄存取 `/etc/ssh/sshd_config`
+    1. 開啟檔案 `/etc/ssh/sshd_config`
+    1. 搜尋 ' #PermitRootLogin yes '
+    1. 移除 ' # ' 以取消批註
 
 ## <a name="steps-for-performing-the-upgrade"></a>執行升級的步驟
 
@@ -46,7 +54,7 @@ Red Hat 和 Azure 的就地升級是正式建議的方式，可讓客戶將您�
 
 1. 執行 yum 更新，以提取最新的用戶端套件。
     ```bash
-    yum update
+    yum update -y
     ```
 
 1. 安裝 leapp-用戶端套件。
@@ -58,35 +66,66 @@ Red Hat 和 Azure 的就地升級是正式建議的方式，可讓客戶將您�
     1. 下載檔案。
     1. 使用下列命令將內容解壓縮，並移除檔案：
     ```bash
-     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
+    tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
-    
-
 
 1. 新增 ' Leapp ' 的「解答」檔案。
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
-    ```
-    
-1. 在/etc/ssh/sshd_config 中啟用 PermitRootLogin
-    1. 開啟 file/etc/ssh/sshd_config
-    1. 搜尋 ' #PermitRootLogin yes '
-    1. 移除 ' # ' 以取消批註
-
-
+    ``` 
 
 1. 執行 ' Leapp ' 升級。
     ```bash
     leapp upgrade --no-rhsm
     ```
+1.  `leapp upgrade`命令順利完成後，請手動重新開機系統以完成此程式。 系統將會重新開機幾次，在這段期間將無法使用。 使用序列主控台監視處理常式。
+
+1.  確認升級已順利完成。
+    ```bash
+    uname -a && cat /etc/redhat-release
+    ```
+
+1. 升級完成之後，請移除根 ssh 存取。
+    1. 開啟檔案 `/etc/ssh/sshd_config`
+    1. 搜尋 ' #PermitRootLogin yes '
+    1. 新增 ' # ' 以進行批註
+
 1. 重新開機 sshd 服務，變更才會生效
     ```bash
     systemctl restart sshd
     ```
-1. 再次批註/etc/ssh/sshd_config 中的 PermitRootLogin
-    1. 開啟 file/etc/ssh/sshd_config
-    1. 搜尋 ' #PermitRootLogin yes '
-    1. 新增 ' # ' 以進行批註
+
+## <a name="common-issues"></a>常見問題
+這些是 `leapp preupgrade` 或進程可能失敗的一些常見實例 `leapp upgrade` 。
+
+**錯誤：找不到下列已停用外掛程式模式的相符專案**
+```plaintext
+STDERR:
+No matches found for the following disabled plugin patterns: subscription-manager
+Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+```
+**解決方式**\
+藉由編輯檔案 `/etc/yum/pluginconf.d/subscription-manager.conf` 並將 [已啟用] 變更為，以停用訂用帳戶管理員外掛程式 `enabled=0` 。
+
+這是因為訂用帳戶管理員 yum 外掛程式已啟用，但未用於 PAYG Vm。
+
+**錯誤：使用根的遠端登入可能發生問題**`leapp preupgrade`可能會因為下列錯誤而失敗：
+```structured-text
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+
+Upgrade has been inhibited due to the following problems:
+    1. Inhibitor: Possible problems with remote login using root account
+Consult the pre-upgrade report for details and possible remediation.
+
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+```
+**解決方式**\
+啟用的根目錄存取 `/etc/sshd_conf` 。
+這是因為「 `/etc/sshd_conf` [升級準備工作](#preparations-for-the-upgrade)」一節中的「根 ssh 存取」未啟用。 
 
 ## <a name="next-steps"></a>後續步驟
 * 深入瞭解 [Azure 中的 Red Hat 映射](./redhat-images.md)。

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287157"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575861"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密
 
@@ -169,9 +169,11 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 > [!Important]
 > Azure 認知搜尋中的加密內容設定為使用特定的 Azure Key Vault 金鑰搭配特定 **版本** 。 如果您變更索引鍵或版本，則必須先更新索引或同義字對應，才能使用新的 key\version， **然後再** 刪除先前的 key\version。 如果無法這樣做，將會導致無法使用索引或同義字地圖，當金鑰存取遺失時，您將無法解密內容。
 
+<a name="encrypt-content"></a>
+
 ## <a name="5---encrypt-content"></a>5-加密內容
 
-若要在索引或同義字地圖上加入客戶管理的金鑰，請使用 REST API 或 SDK 來建立其定義包含的物件 `encryptionKey` 。
+若要在索引、資料來源、技能集、索引子或同義字地圖上加入客戶管理的金鑰，您必須使用 [搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 或 SDK。 入口網站不會公開同義字地圖或加密屬性。 當您使用有效的 API 索引時，資料來源、技能集、索引子和同義字地圖支援最上層的 **encryptionKey** 屬性。
 
 這個範例會使用 REST API，以及 Azure Key Vault 和 Azure Active Directory 的值：
 
@@ -192,6 +194,12 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 > [!Note]
 > 這些金鑰保存庫的詳細資料都不會被視為秘密，而且可以藉由流覽至 Azure 入口網站中相關的 Azure Key Vault 金鑰頁面來輕鬆取出。
 
+## <a name="example-index-encryption"></a>範例：索引加密
+
+使用 [Create index Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)建立加密索引。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+> [!Note]
+> 這些金鑰保存庫的詳細資料都不會被視為秘密，而且可以藉由流覽至 Azure 入口網站中相關的 Azure Key Vault 金鑰頁面來輕鬆取出。
+
 ## <a name="rest-examples"></a>REST 範例
 
 本節顯示加密索引和同義字對應的完整 JSON
@@ -202,7 +210,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ```json
 {
- "name": "hotels",  
+ "name": "hotels",
  "fields": [
   {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
   {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -231,19 +239,19 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ### <a name="synonym-map-encryption"></a>同義字地圖加密
 
-若要透過 REST API 建立新同義字地圖的詳細資料，請參閱 [Create 同義字 map (REST API) ](/rest/api/searchservice/create-synonym-map)，其中唯一的差別在於將加密金鑰詳細資料指定為同義字對應定義的一部分： 
+使用「 [建立同義字對應」 Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)來建立加密的同義字地圖。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
 
 ```json
-{   
-  "name" : "synonymmap1",  
-  "format" : "solr",  
+{
+  "name" : "synonymmap1",
+  "format" : "solr",
   "synonyms" : "United States, United States of America, USA\n
   Washington, Wash. => WA",
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
     "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "activeDirectoryAccessCredentials": {
+    "accessCredentials": {
       "applicationId": "00000000-0000-0000-0000-000000000000",
       "applicationSecret": "myApplicationSecret"
     }
@@ -252,6 +260,86 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 ```
 
 您現在可以傳送同義字對應建立要求，然後正常地開始使用它。
+
+## <a name="example-data-source-encryption"></a>範例：資料來源加密
+
+使用 [Create Data source (Azure 認知搜尋 REST API) ](https://docs.microsoft.com/rest/api/searchservice/create-data-source)建立加密的資料來源。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+您現在可以傳送資料來源建立要求，然後正常地開始使用它。
+
+## <a name="example-skillset-encryption"></a>範例：技能集加密
+
+使用 [Create 技能集 Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)來建立加密的技能集。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+您現在可以傳送技能集建立要求，然後正常地開始使用。
+
+## <a name="example-indexer-encryption"></a>範例：索引子加密
+
+使用 [Create 索引子 Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)來建立加密的索引子。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+
+```json
+{
+  "name": "indexer1",
+  "dataSourceName": "datasource1",
+  "skillsetName": "skillset1",
+  "parameters": {
+      "configuration": {
+          "imageAction": "generateNormalizedImages"
+      }
+  },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+您現在可以傳送索引子建立要求，然後正常地開始使用它。
 
 >[!Important]
 > 雖然 `encryptionKey` 無法新增至現有的搜尋索引或同義字對應，但它可能會藉由提供三個金鑰保存庫詳細資料的不同值來更新 (例如，更新金鑰版本) 。 變更為新的 Key Vault 金鑰或新的金鑰版本時，必須先更新使用該金鑰的任何搜尋索引或同義字對應，才能使用新的 key\version， **然後再** 刪除先前的 key\version。 如果無法這樣做，將無法使用索引或同義字對應，因為它在金鑰存取遺失之後將無法解密內容。 雖然稍後還原金鑰保存庫存取權限會還原內容存取。
@@ -265,7 +353,6 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 一般而言，受控識別可讓您的搜尋服務驗證 Azure Key Vault，而不需要在程式碼中儲存 (ApplicationID 或 ApplicationSecret) 的認證。 這種受控識別的生命週期會系結至搜尋服務的生命週期，而此服務只能有一個受控識別。 如需受控識別如何運作的詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 1. 將您的搜尋服務設為受信任的服務。
-
    ![開啟系統指派的受控識別](./media/search-managed-identities/turn-on-system-assigned-identity.png "開啟系統指派的受控識別")
 
 1. 在 Azure Key Vault 中設定存取原則時，請選擇受信任的搜尋服務作為原則 (，而不是以 AD 註冊的應用程式) 。 指派相同的許可權 (多個取得、包裝、解除包裝) ，如同授與存取金鑰許可權步驟中的指示。

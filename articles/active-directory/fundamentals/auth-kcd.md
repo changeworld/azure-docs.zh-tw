@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 的 Kerberos 限制委派
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 達到 Kerberos 限制委派的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f90cd7aa8d972226a8f134eaa7b3abfe7bea66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114145"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577119"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows 驗證-具有 Azure Active Directory 的 Kerberos 限制委派
 
@@ -36,19 +36,19 @@ Azure Active Directory 應用程式 Proxy 可以提供單一登入 (SSO) 和遠�
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：存取應用程式 Proxy 所提供的繼承應用程式。
+* **使用者** ：存取應用程式 Proxy 所提供的繼承應用程式。
 
-* **Web 瀏覽器**：使用者與之互動的元件，以存取應用程式的外部 URL。
+* **Web 瀏覽器** ：使用者與之互動的元件，以存取應用程式的外部 URL。
 
-* **Azure AD**：驗證使用者。 
+* **Azure AD** ：驗證使用者。 
 
-* **應用程式 Proxy 服務**：作為反向 Proxy，將要求從使用者傳送至內部部署應用程式。 它位於 Azure AD 中。 應用程式 Proxy 也可以強制執行任何條件式存取原則。
+* **應用程式 Proxy 服務** ：作為反向 Proxy，將要求從使用者傳送至內部部署應用程式。 它位於 Azure AD 中。 應用程式 Proxy 也可以強制執行任何條件式存取原則。
 
-* **應用程式 Proxy 連接器**：安裝在 Windows 伺服器上的內部部署環境，以提供應用程式的連線能力。 傳回 Azure AD 的回應。 使用 Active Directory 執行 KCD 協商，模擬使用者以取得應用程式的 Kerberos 權杖。
+* **應用程式 Proxy 連接器** ：安裝在 Windows 伺服器上的內部部署環境，以提供應用程式的連線能力。 傳回 Azure AD 的回應。 使用 Active Directory 執行 KCD 協商，模擬使用者以取得應用程式的 Kerberos 權杖。
 
-* **Active Directory**：將應用程式的 Kerberos 權杖傳送至應用程式 Proxy 連接器。
+* **Active Directory** ：將應用程式的 Kerberos 權杖傳送至應用程式 Proxy 連接器。
 
-* **繼承應用程式**：從應用程式 Proxy 接收使用者要求的應用程式。 繼承應用程式會將回應傳回給應用程式 Proxy 連接器。
+* **繼承應用程式** ：從應用程式 Proxy 接收使用者要求的應用程式。 繼承應用程式會將回應傳回給應用程式 Proxy 連接器。
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>使用 Azure AD 執行 Windows 驗證 (KCD) 
 

@@ -13,16 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116289"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575878"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory 條件式存取功能的開發人員指引
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
+
+> [!NOTE]
+> 如需本文的 Microsoft 身分識別平臺版本，請參閱 [Azure Active Directory 條件式存取的開發人員指引](/azure/active-directory/develop/v2-conditional-access-dev-guide)。
 
 您可以使用 Azure Active Directory (Azure AD) 中條件式存取功能所提供的其中一種方式，來保護您的應用程式及保護服務。 條件式存取可讓開發人員和企業客戶以多種方式保護服務，包括：
 
@@ -40,7 +43,7 @@ ms.locfileid: "88116289"
 
 ### <a name="app-types-impacted"></a>受影響的應用程式類型
 
-在最常見的案例中，條件式存取不會變更應用程式的行為，或是需要從開發人員進行任何變更。 只有當應用程式以間接或無訊息方式要求權杖提供服務的特定案例中，應用程式才會要求程式碼變更，以處理條件式存取「挑戰」。 這有如執行互動式登入要求一樣簡單。
+在最常見的案例中，條件式存取不會變更應用程式的行為，或是需要從開發人員進行任何變更。  只有當應用程式以間接或無訊息方式要求權杖提供服務的特定案例中，應用程式才會要求程式碼變更，以處理條件式存取「挑戰」。  這有如執行互動式登入要求一樣簡單。
 
 具體而言，下列案例需要程式碼來處理條件式存取「挑戰」：
 

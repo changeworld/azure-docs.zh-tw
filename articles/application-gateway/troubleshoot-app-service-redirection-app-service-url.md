@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396884"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575980"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>針對應用程式閘道中的 App Service 問題進行疑難排解
 
 瞭解當 Azure App Service 用來作為具有 Azure 應用程式閘道的後端目標時，如何診斷並解決您可能會遇到的問題。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在本文中，您將瞭解如何針對下列問題進行疑難排解：
 
@@ -93,7 +93,7 @@ X-Powered-By: ASP.NET
 
 您必須擁有自訂網域，並遵循此程式：
 
-- 向 app service 的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 的 FQDN 的 CNAME。 如需詳細資訊，請參閱 [將現有的自訂 DNS 名稱對應至 Azure App Service](//azure/app-service/app-service-web-tutorial-custom-domain)。
+- 向 app service 的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 的 FQDN 的 CNAME。 如需詳細資訊，請參閱 [將現有的自訂 DNS 名稱對應至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)。
 
     ![App service 自訂網域清單](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

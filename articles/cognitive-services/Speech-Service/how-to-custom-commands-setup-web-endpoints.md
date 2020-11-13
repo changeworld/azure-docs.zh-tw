@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341952"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566243"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -115,24 +115,24 @@ ms.locfileid: "92341952"
 
 ## <a name="integrate-with-client-application"></a>與用戶端應用程式整合
 
-在[操作說明：將活動傳送至用戶端應用程式 (預覽)](./how-to-custom-commands-send-activity-to-client.md)中，您已新增**將活動傳送至用戶端**動作。 無論**呼叫 Web 端點**動作是否成功，都會將活動傳送至用戶端應用程式。
+在 [操作說明：將活動傳送至用戶端應用程式 (預覽)](./how-to-custom-commands-send-activity-to-client.md)中，您已新增 **將活動傳送至用戶端** 動作。 無論 **呼叫 Web 端點** 動作是否成功，都會將活動傳送至用戶端應用程式。
 不過，在大部分的情況下，您只想要在 Web 端點呼叫成功時，才將活動傳送至用戶端應用程式。 在此範例中，這是當裝置的狀態成功更新時。
 
-1. 刪除您先前新增的**將活動傳送至用戶端**動作。
+1. 刪除您先前新增的 **將活動傳送至用戶端** 動作。
 1. 編輯呼叫 Web 端點： 
     1. 在 [設定] 中，確定 [查詢參數] 是 `item={SubjectDevice}&&value={OnOff}`
     1. 在 [成功時] 中，將 [要執行的動作] 變更為 [將活動傳送至用戶端]
     1. 將下列 JSON 複製到 [活動內容]
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![成功時傳送活動](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 現在，只有當針對 Web 端點的要求成功時，您才會將活動傳送至用戶端。
 
@@ -149,7 +149,7 @@ ms.locfileid: "92341952"
 
 ### <a name="sync-device-state"></a>同步裝置狀態 
 
-在 `MainPage.xaml.cs` 中，新增參考 `using Windows.Web.Http;`。 將下列程式碼新增至 `MainPage` 類別。 這個方法會將 GET 要求傳送至範例端點，並擷取應用程式目前的裝置狀態。 請務必將 `<your_app_name>` 變更為您在自訂命令 Web 端點的**標頭**中所使用的內容
+在 `MainPage.xaml.cs` 中，新增參考 `using Windows.Web.Http;`。 將下列程式碼新增至 `MainPage` 類別。 這個方法會將 GET 要求傳送至範例端點，並擷取應用程式目前的裝置狀態。 請務必將 `<your_app_name>` 變更為您在自訂命令 Web 端點的 **標頭** 中所使用的內容
 
 ```C#
 private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs e)
@@ -207,3 +207,4 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 
 > [!div class="nextstepaction"]
 > [將自訂命令應用程式匯出為遠端技能](./how-to-custom-commands-integrate-remote-skills.md)
+

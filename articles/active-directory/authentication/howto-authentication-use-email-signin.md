@@ -10,14 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964531"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576014"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用電子郵件作為替代登入識別碼 (預覽版來登入 Azure Active Directory) 
+
+> [!NOTE]
+> 使用替代登入識別碼的電子郵件登入 Azure AD，是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 許多組織想要讓使用者使用與其內部部署目錄環境相同的認證，來登入 Azure Active Directory (Azure AD) 。 使用這種稱為混合式驗證的方法，使用者只需要記住一組認證。
 
@@ -27,12 +30,12 @@ ms.locfileid: "91964531"
 * 變更 Azure AD UPN 會在內部部署和 Azure AD 環境之間建立不相符的情況，這可能會導致某些應用程式和服務發生問題。
 * 由於商務或合規性的理由，組織不會想要使用內部部署 UPN 來登入 Azure AD。
 
-若要協助移至混合式驗證，您現在可以設定 Azure AD，讓使用者以您的已驗證網域中的電子郵件登入，作為替代登入識別碼。 例如，若將 *Contoso* 改為 *Fabrikam*，現在可以使用替代登入識別碼的電子郵件登入，不用繼續使用舊的 `balas@contoso.com` UPN 登入。 若要存取應用程式或服務，使用者會使用其指派的電子郵件（例如）登入 Azure AD `balas@fabrikam.com` 。
+若要協助移至混合式驗證，您現在可以設定 Azure AD，讓使用者以您的已驗證網域中的電子郵件登入，作為替代登入識別碼。 例如，若將 *Contoso* 改為 *Fabrikam* ，現在可以使用替代登入識別碼的電子郵件登入，不用繼續使用舊的 `balas@contoso.com` UPN 登入。 若要存取應用程式或服務，使用者會使用其指派的電子郵件（例如）登入 Azure AD `balas@fabrikam.com` 。
 
 本文說明如何啟用和使用電子郵件作為替代登入識別碼。 這項功能可在 Azure AD Free 版和更新版本中使用。
 
 > [!NOTE]
-> 使用替代登入識別碼的電子郵件登入 Azure AD，是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 這項功能僅適用于雲端驗證的 Azure AD 使用者。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD 登入方法概觀
 
@@ -44,7 +47,7 @@ ms.locfileid: "91964531"
 
 此問題的常見因應措施是將 Azure AD UPN 設定為使用者預期用來登入的電子郵件地址。 這種方法的運作方式，雖然會導致內部部署 AD 與 Azure AD 之間的不同 Upn，但此設定與所有 Microsoft 365 工作負載不相容。
 
-另一種方法是將 Azure AD 和內部部署 Upn 同步處理為相同的值，然後將 Azure AD 設定為允許使用者使用已驗證的電子郵件登入 Azure AD。 若要提供這項功能，請在內部部署目錄中的使用者 *ProxyAddresses* 屬性定義一或多個電子郵件地址。 然後， *ProxyAddresses*會使用 Azure AD Connect 自動同步處理 Azure AD。
+另一種方法是將 Azure AD 和內部部署 Upn 同步處理為相同的值，然後將 Azure AD 設定為允許使用者使用已驗證的電子郵件登入 Azure AD。 若要提供這項功能，請在內部部署目錄中的使用者 *ProxyAddresses* 屬性定義一或多個電子郵件地址。 然後， *ProxyAddresses* 會使用 Azure AD Connect 自動同步處理 Azure AD。
 
 ## <a name="preview-limitations"></a>預覽限制
 
@@ -73,7 +76,7 @@ ms.locfileid: "91964531"
 
 ![Azure AD 混合式身分識別與傳遞驗證圖](media/howto-authentication-use-email-signin/hybrid-pass-through-authentication.png)
 
-Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses*。 若使用者在內部部署 AD DS 環境中，將電子郵件地址定義為 *ProxyAddresses* 屬性的一部分，其就會自動同步至 Azure AD。 此電子郵件地址就可直接作為 Azure AD 登入過程中的替代登入識別碼使用。
+Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses* 。 若使用者在內部部署 AD DS 環境中，將電子郵件地址定義為 *ProxyAddresses* 屬性的一部分，其就會自動同步至 Azure AD。 此電子郵件地址就可直接作為 Azure AD 登入過程中的替代登入識別碼使用。
 
 > [!IMPORTANT]
 > 只有租用戶已驗證網域中的電子郵件會同步至 Azure AD。 每個 Azure AD 租用戶都有一或多個您已證明具有擁有權的已驗證網域，而且會唯一繫結到您的租用戶。
@@ -112,7 +115,7 @@ Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses*�
 
 1. 若目前未設定任何原則，此命令就不會傳回任何內容。 若傳回原則，請略過此步驟，並繼續下一個步驟以更新現有的原則。
 
-    若要將 *HomeRealmDiscoveryPolicy* 原則新增至租用戶，請使用 [New-AzureADPolicy][New-AzureADPolicy] Cmdlet，並將 *AlternateIdLogin* 屬性設為 *"Enabled": true*，如下列範例所示：
+    若要將 *HomeRealmDiscoveryPolicy* 原則新增至租用戶，請使用 [New-AzureADPolicy][New-AzureADPolicy] Cmdlet，並將 *AlternateIdLogin* 屬性設為 *"Enabled": true* ，如下列範例所示：
 
     ```powershell
     New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
@@ -169,13 +172,79 @@ Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses*�
 
 若要測試使用者可否使用電子郵件登入，請瀏覽至 [https://myprofile.microsoft.com][my-profile]，並依據其電子郵件地址 (例如 `balas@fabrikam.com` ) 而不是其 UPN (例如 `balas@contoso.com` )，以使用者帳戶登入。 登入體驗和 UPN 式登入事件應該完全相同。
 
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>啟用分段推出以測試使用電子郵件地址的使用者登入  
+
+[分段推出][staged-rollout] 可讓租使用者系統管理員啟用特定群組的功能。 建議租使用者系統管理員使用分段推出，測試使用電子郵件地址的使用者登入。 當系統管理員準備好將此功能部署至整個租使用者時，他們應該使用主領域探索原則。  
+
+
+您需要有「租用戶系統管理員」權限，才能完成下列步驟：
+
+1. 以系統管理員身分開啟 PowerShell 會話，然後使用 [安裝模組][Install-Module]Cmdlet 來安裝 *AzureADPreview* 模組：
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    若出現提示，請選取 [Y] 來安裝 NuGet，或從未受信任的存放庫安裝。
+
+2. 以「租用戶系統管理員」身分使用 [Connect-AzureAD][Connect-AzureAD] Cmdlet 登入您的 Azure AD 租用戶：
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    命令會傳回您帳戶、環境與租用戶識別碼的相關資訊。
+
+3. 使用下列 Cmdlet 列出所有現有的分段推出原則：
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. 如果沒有此功能的現有分段推出原則，請建立新的分段推出原則，並記下原則識別碼：
+
+   ```powershell
+   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   ```
+
+5. 尋找要新增至分段推出原則的群組 directoryObject 識別碼。 請注意針對 *Id* 參數傳回的值，因為它將在下一個步驟中使用。
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. 將群組新增至分段推出原則，如下列範例所示。 將 *-Id* 參數中的值取代為步驟4中原則識別碼所傳回的值，並將 *-RefObjectId* 參數中的值取代為步驟5中所述的 *識別碼* 。 最多可能需要1小時的時間，群組中的使用者才可以使用其 proxy 位址登入。
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+針對新增至群組的新成員，最多可能需要24小時的時間，才能使用其 proxy 位址登入。
+
+### <a name="removing-groups"></a>移除群組
+
+若要從分段推出原則移除群組，請執行下列命令：
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>移除原則
+
+若要移除分段推出原則，請先停用該原則，然後將它從系統中移除：
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
+
 ## <a name="troubleshoot"></a>疑難排解
 
 如果使用者的使用電子郵件地址登入事件發生問題，請檢閱下列疑難排解步驟：
 
 1. 確定使用者帳戶已在內部部署 AD DS 環境的 *ProxyAddresses* 屬性中設定其電子郵件地址。
 1. 驗證已設定 Azure AD Connect，並成功將使用者帳戶從內部部署 AD DS 環境同步至 Azure AD。
-1. 確認 Azure AD *HomeRealmDiscoveryPolicy* 原則已將 *AlternateIdLogin* 屬性設為 *"Enabled": true*：
+1. 確認 Azure AD *HomeRealmDiscoveryPolicy* 原則已將 *AlternateIdLogin* 屬性設為 *"Enabled": true* ：
 
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
@@ -202,4 +271,5 @@ Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses*�
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91545489"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94573837"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure 認知服務容器安全性
 
@@ -33,7 +33,7 @@ ms.locfileid: "91545489"
 
 ### <a name="container-networking"></a>容器網路服務
 
-需要有認知服務容器，才能提交計量資訊以供計費之用。 唯一的例外狀況是 *離線容器* ，因為它們遵循不同的計費方法。 若無法允許列出認知服務容器所依賴的各種網路通道，將會導致容器無法運作。
+需要有認知服務容器，才能提交計量資訊以供計費之用。 若無法允許列出認知服務容器所依賴的各種網路通道，將會導致容器無法運作。
 
 #### <a name="allow-list-cognitive-services-domains-and-ports"></a>允許列出認知服務網域和埠
 

@@ -7,12 +7,12 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 10/14/2020
 ms.author: victorh
-ms.openlocfilehash: 789a60c80d14301c107824d178a3566d358d287f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056390"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566566"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 應用程式防火牆 (WAF) 原則總覽
 
@@ -57,7 +57,7 @@ Adatum.com/payments URI 是您需要小心的地方。 因此，請在該 URI �
 
 ## <a name="existing-waf-configurations"></a>現有的 WAF 設定
 
-所有新的 Web 應用程式防火牆的 WAF 設定 (自訂規則、受控規則集設定、排除專案等等。 ) 存在於 WAF 原則中。 如果您有現有的 WAF，這些設定可能仍存在於您的 WAF 設定中。 如需移至新 WAF 原則的詳細資訊，請 [將 WAF 設定遷移至 WAF 原則](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
+所有新的 Web 應用程式防火牆的 WAF 設定 (自訂規則、受控規則集設定、排除專案等等。 ) 存在於 WAF 原則中。 如果您有現有的 WAF，這些設定可能仍存在於您的 WAF 設定中。 如需移至新 WAF 原則的詳細資訊，請 [將 WAF 設定遷移至 WAF 原則](./migrate-policy.md)。 
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08d3d5bcdace113d3319b5af6375fff21405159a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21562bc17d4bfd4913c9085755d962382d207c79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790010"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566787"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教學課程：在 Azure 虛擬機器上的 SQL Server 上建立可用性群組的必要條件
 
@@ -234,7 +234,7 @@ Azure 會建立虛擬機器。
     ![[新增角色] 對話方塊](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. 選取 **[下一步]** ，直到您到達 [ **確認** ] 區段為止。 選取 [必要時自動重新啟動目的地伺服器] 核取方塊。
-8. 選取 [安裝]  。
+8. 選取 [安裝]。
 9. 功能安裝完畢後，請回到 [伺服器管理員]  儀表板。
 10. 在左側窗格中選取新的 [AD DS]  選項。
 11. 選取黃色警告列上的 [ **更多** ] 連結。
@@ -250,7 +250,7 @@ Azure 會建立虛擬機器。
     | **網域控制站選項** |**DSRM 密碼** = Contoso!0000<br/>**確認密碼** = Contoso!0000 |
 
 14. 選取 **[下一步** ] 以流覽嚮導中的其他頁面。 在 [先決條件檢查] 頁面上，確認是否出現下列訊息： **已順利通過所有先決條件檢查** 。 您可以檢閱任何適用的警告訊息，但是仍可以繼續進行安裝。
-15. 選取 [安裝]  。 **ad-primary-dc** 虛擬機器會自動重新開機。
+15. 選取 [安裝]。 **ad-primary-dc** 虛擬機器會自動重新開機。
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>請注意主要網域控制站的 IP 位址
 
@@ -388,6 +388,10 @@ Azure 會建立虛擬機器。
 
    本教學課程針對虛擬機器使用公用 IP 位址。 公用 IP 位址可讓您透過網際網路直接遠端連線至虛擬機器，並讓設定步驟更容易。 在生產環境中，Microsoft 僅建議使用私人 IP 位址，以降低 SQL Server 執行個體 VM 資源出現弱點的機率。
 
+* **網路-針對每部伺服器建議單一 NIC** 
+
+針對每部伺服器使用單一 NIC (叢集節點) 和單一子網。 Azure 網路功能具有實體冗余，讓 Azure 虛擬機器來賓叢集上不需要額外的 Nic 和子網。 叢集驗證報告會警告您節點只能在單一網路上觸達。 您可以在 Azure 虛擬機器來賓容錯移轉叢集上忽略此警告。
+
 ### <a name="create-and-configure-the-sql-server-vms"></a>建立及設定 SQL Server VM
 
 接下來，建立三個 Vm：兩個 SQL Server Vm，另一個用於其他叢集節點的 VM。 若要建立每個 Vm，請回到 **SQL-HA-RG** 資源群組，然後選取 [ **新增** ]。 搜尋適當的主機庫專案，選取 [ **虛擬機器** ]，然後選取 [ **從元件庫** ]。 使用下表中的資訊可協助您建立 VM：
@@ -457,7 +461,7 @@ Azure 會建立虛擬機器。
 
 1. 以滑鼠右鍵按一下 [登入]。 選取 **[新增登** 入]。
 
-1. 在 [登入 - 新增]  中，選取 [搜尋]  。
+1. 在 [登入 - 新增] 中，選取 [搜尋]。
 
 1. 選取 [ **位置** ]。
 
@@ -532,6 +536,10 @@ Azure 會建立虛擬機器。
   > 此步驟 (以及實際將 SQL Server VM 加入到容錯移轉叢集) 現在可以使用 [Azure SQL VM CLI](./availability-group-az-commandline-configure.md) 與 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來自動化。
   >
 
+### <a name="tuning-failover-cluster-network-thresholds"></a>調整容錯移轉叢集網路閾值
+
+在具有 SQL Server AlwaysOn 的 Azure Vm 中執行 Windows 容錯移轉叢集節點時，建議將叢集設定變更為較寬鬆的監視狀態。  這會讓叢集更穩定且更可靠。  如需有關此功能的詳細資訊，請參閱 [使用 SQL AlwaysOn 的 IaaS-調整容錯移轉叢集網路閾值](/windows-server/troubleshoot/iaas-sql-failover-cluser)。
+
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> 在每個 SQL Server VM 上設定防火牆
 
@@ -554,7 +562,7 @@ Azure 會建立虛擬機器。
 
    ![SQL 防火牆](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. 選取 [下一步]  。
+5. 選取 [下一步]。
 6. 在 [ **動作** ] 頁面上，保持選取 **[允許連接** ]，然後選取 **[下一步]** 。
 7. 在 [ **設定檔** ] 頁面上，接受預設設定，然後選取 **[下一步]** 。
 8. 在 [ **名稱** ] 頁面上，在 [ **名稱** ] 文字方塊中指定規則名稱 (例如 **Azure LB 探查** ) ，然後選取 **[完成]** 。

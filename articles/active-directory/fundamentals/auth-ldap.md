@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 的 LDAP 驗證
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 達到 LDAP 驗證的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114135"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577051"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 的 LDAP 驗證
 
@@ -40,23 +40,23 @@ Azure Active Directory (Azure AD) 透過 Azure AD Domain Services (AD DS) 支援
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：透過瀏覽器存取 LDAP 相依的應用程式。
+* **使用者** ：透過瀏覽器存取 LDAP 相依的應用程式。
 
-* **Web 瀏覽器**：使用者互動的介面，以存取應用程式的外部 URL。
+* **Web 瀏覽器** ：使用者互動的介面，以存取應用程式的外部 URL。
 
-* **虛擬網路**： Azure 中的私人網路，讓繼承應用程式可以使用 LDAP 服務。 
+* **虛擬網路** ： Azure 中的私人網路，讓繼承應用程式可以使用 LDAP 服務。 
 
-* **繼承應用程式**：需要在 Azure 中的虛擬網路中部署 LDAP 的應用程式或伺服器工作負載，或可透過網路路由查看 AD DS 實例 ip 的應用程式或伺服器工作負載。 
+* **繼承應用程式** ：需要在 Azure 中的虛擬網路中部署 LDAP 的應用程式或伺服器工作負載，或可透過網路路由查看 AD DS 實例 ip 的應用程式或伺服器工作負載。 
 
-* **Azure AD**：透過 Azure AD Connect 從組織的內部部署目錄同步身分識別資訊。
+* **Azure AD** ：透過 Azure AD Connect 從組織的內部部署目錄同步身分識別資訊。
 
-* **Azure AD Domain Services (AD DS) **：從 Azure AD 執行單向同步處理，以提供一組集中使用者、群組和認證的存取權。 AD DS 實例會指派給虛擬網路。 Azure 中的應用程式、服務和 Vm 連接到指派給 AD DS 的虛擬網路，可以使用一般的 AD DS 功能，例如 LDAP、網域加入、群組原則、Kerberos 和 NTLM 驗證。
+* **Azure AD Domain Services (AD DS)** ：從 Azure AD 執行單向同步處理，以提供一組集中使用者、群組和認證的存取權。 AD DS 實例會指派給虛擬網路。 Azure 中的應用程式、服務和 Vm 連接到指派給 AD DS 的虛擬網路，可以使用一般的 AD DS 功能，例如 LDAP、網域加入、群組原則、Kerberos 和 NTLM 驗證。
    > [!NOTE]
    >  在組織無法同步處理密碼雜湊的環境中，或使用者使用智慧卡登入時，我們建議您在 AD DS 中使用資源樹系。 
 
-* **Azure AD Connect**：將內部部署身分識別資訊同步處理至 Microsoft Azure AD 的工具。 部署嚮導和引導式體驗可協助您設定連線所需的必要條件和元件，包括同步處理和從 Active Directory 登入 Azure AD。 
+* **Azure AD Connect** ：將內部部署身分識別資訊同步處理至 Microsoft Azure AD 的工具。 部署嚮導和引導式體驗可協助您設定連線所需的必要條件和元件，包括同步處理和從 Active Directory 登入 Azure AD。 
 
-* **Active Directory**：儲存 [內部部署身分識別資訊（例如使用者和帳戶資訊](https://www.dnsstuff.com/active-directory-service-accounts)）和安全性資訊（如密碼）的目錄服務。
+* **Active Directory** ：儲存 [內部部署身分識別資訊（例如使用者和帳戶資訊](https://www.dnsstuff.com/active-directory-service-accounts)）和安全性資訊（如密碼）的目錄服務。
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>使用 Azure AD 來執行 LDAP 驗證
 

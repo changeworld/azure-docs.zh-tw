@@ -8,7 +8,6 @@
     - name: 支援的資料存放區
       href: supported-data-stores.md
 - name: 快速入門
-  expanded: true
   items:
     - name: 共用資料 - Azure 入口網站
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: 教學課程
+  expanded: true
   items:
     - name: 共用資料
       href: share-your-data.md

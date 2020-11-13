@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108808"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566481"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -26,7 +26,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 ## <a name="metrics-and-dimensions-supported"></a>支援的計量和維度
 新版計量警示支援針對使用維度的計量發出警示。 您可以使用維度來將計量篩選到正確層級。 從 [Azure 監視器 - 計量瀏覽器](./metrics-charts.md)，即可探索並以視覺化方式檢視所有支援的計量及適用的維度。
 
-以下是新版警示所支援的 Azure 監視器計量來源完整清單：
+以下是較新警示所支援之 Azure 監視器計量來源的完整清單：
 
 |資源類型  |支援的維度 |多資源警示| 可用的計量|
 |---------|---------|-----|----------|

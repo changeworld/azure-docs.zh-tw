@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 523f28cdd32c5176160587a8531aa66c0621d5a7
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330666"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566702"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "94330666"
 為了提供更好的撰寫體驗，Azure Data Factory 可讓您使用 Azure Repos 或 GitHub 來設定 Git 存放庫。 Git 是一種版本控制系統，可讓您更輕鬆地追蹤變更和共同作業。 本文將概述如何在 git 存放庫中設定及使用，以及反白顯示最佳作法和疑難排解指南。
 
 > [!NOTE]
-> Azure資料處理站 Git 整合無法在 Azure Government 雲端中使用。
+> Azure Government 雲端無法使用 Azure Data Factory 的 git 整合。
 
 若要深入瞭解 Azure Data Factory 如何與 Git 整合，請參閱下列15分鐘的教學課程影片：
 

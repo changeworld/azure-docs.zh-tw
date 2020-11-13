@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208351"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566464"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>虛擬 WAN 合作夥伴的自動化指導方針
 
@@ -33,9 +33,9 @@ ms.locfileid: "88208351"
 
 ### <a name="additional-information"></a><a name ="additional"></a>其他資訊
 
-* 自動建立虛擬中樞的[REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) 將虛擬 WAN 的 Azure VPN 閘道自動化
-* 將 VPNSite 連線到 Azure VPN 中樞的[REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
+* 自動建立虛擬中樞的[REST API](/rest/api/virtualwan/virtualhubs)
+* [REST API](/rest/api/virtualwan/vpngateways) 將虛擬 WAN 的 Azure VPN 閘道自動化
+* 將 VPNSite 連線到 Azure VPN 中樞的[REST API](/rest/api/virtualwan/vpnconnections)
 * [預設 IPsec 原則](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>客戶體驗
@@ -63,11 +63,11 @@ ms.locfileid: "88208351"
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>上傳分支裝置資訊
 
-您應設計使用者體驗，以將分支 (內部部署網站) 資訊上傳至 Azure。 您可以使用適用于 VPNSite 的 [REST api](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) ，在虛擬 WAN 中建立網站資訊。 您可以提供所有分支 SDWAN/VPN 裝置，或選取適當的裝置自訂。
+您應設計使用者體驗，以將分支 (內部部署網站) 資訊上傳至 Azure。 您可以使用適用于 VPNSite 的 [REST api](/rest/api/virtualwan/vpnsites) ，在虛擬 WAN 中建立網站資訊。 您可以提供所有分支 SDWAN/VPN 裝置，或選取適當的裝置自訂。
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>裝置設定下載和連線
 
-這個步驟涉及下載 Azure 設定，並設定從分支裝置到 Azure 虛擬 WAN 的連線。 在此步驟中，未使用提供者的客戶將手動下載 Azure 設定，並將之套用到內部部署的 SDWAN/VPN 裝置。 身為提供者，您應該將這個步驟自動化。 如需其他資訊，請參閱下載 [REST api](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) 。 裝置控制器可呼叫「GetVpnConfiguration」 REST API 以下載 Azure 設定。
+這個步驟涉及下載 Azure 設定，並設定從分支裝置到 Azure 虛擬 WAN 的連線。 在此步驟中，未使用提供者的客戶將手動下載 Azure 設定，並將之套用到內部部署的 SDWAN/VPN 裝置。 身為提供者，您應該將這個步驟自動化。 如需其他資訊，請參閱下載 [REST api](/rest/api/virtualwan/vpnsitesconfiguration/download) 。 裝置控制器可呼叫「GetVpnConfiguration」 REST API 以下載 Azure 設定。
 
 **設定注意事項**
 
@@ -81,23 +81,23 @@ ms.locfileid: "88208351"
 * **vpnSiteConfiguration -** 此區段表示網站連線至虛擬 WAN 時設定的裝置詳細資料。 其中包含分支裝置的名稱和公用 IP 位址。
 * **vpnSiteConnections -** 此區段提供下列相關資訊：
 
-    * 虛擬中樞的**位址空間** (s) VNet。<br>範例：
+    * 虛擬中樞的 **位址空間** (s) VNet。<br>範例：
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * 連線至中樞之 Vnet 的**位址空間**。<br>範例：
+    * 連線至中樞之 Vnet 的 **位址空間** 。<br>範例：
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * 虛擬中樞 Vpngateway 的 **IP 位址**。 由於 Vpngateway 的每個連線都由「主動對主動」設定中的 2 個通道組成，因此您會看到此檔案中列出這兩個 IP 位址。 在此範例中，您會看到每個網站的 "Instance0" 和 "Instance1"。<br>範例：
+    * 虛擬中樞 Vpngateway 的 **IP 位址** 。 由於 Vpngateway 的每個連線都由「主動對主動」設定中的 2 個通道組成，因此您會看到此檔案中列出這兩個 IP 位址。 在此範例中，您會看到每個網站的 "Instance0" 和 "Instance1"。<br>範例：
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Vpngateway 連線設定詳細資料**，例如 BGP、預先共用金鑰等等。PSK 是自動為您產生的預先共用金鑰。 您隨時都可以在自訂 PSK 的 [概觀] 頁面中編輯連線。
+    * **Vpngateway 連線設定詳細資料** ，例如 BGP、預先共用金鑰等等。PSK 是自動為您產生的預先共用金鑰。 您隨時都可以在自訂 PSK 的 [概觀] 頁面中編輯連線。
   
 **範例裝置設定檔**
 

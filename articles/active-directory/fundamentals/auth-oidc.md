@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory OpenID Connect 驗證
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 達到 OpenID Connect 驗證的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f2ad3b5e86eebfc2d6f1f42f8a2ab0520144b5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114126"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576983"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>使用 Azure Active Directory OpenID Connect 驗證
 
@@ -38,13 +38,13 @@ OIDC 的設計目標是「簡化簡單、複雜的事物」。 OIDC 可讓開發
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：從應用程式要求服務。
+* **使用者** ：從應用程式要求服務。
 
-* **受信任的代理程式**：使用者所互動的元件。 此受信任的代理程式通常是網頁瀏覽器。
+* **受信任的代理程式** ：使用者所互動的元件。 此受信任的代理程式通常是網頁瀏覽器。
 
-* **應用**程式：應用程式或資源伺服器是資源或資料所在的位置。 它會信任身分識別提供者，以安全地驗證及授權受信任的代理程式。 
+* **應用** 程式：應用程式或資源伺服器是資源或資料所在的位置。 它會信任身分識別提供者，以安全地驗證及授權受信任的代理程式。 
 
-* **Azure AD**： OIDC 提供者（也稱為身分識別提供者）會安全地管理任何與使用者資訊、使用者存取權，以及流程中合作物件之間的信任關係。 它會驗證使用者的身分識別、授與及撤銷資源的存取權，以及發行權杖。 
+* **Azure AD** ： OIDC 提供者（也稱為身分識別提供者）會安全地管理任何與使用者資訊、使用者存取權，以及流程中合作物件之間的信任關係。 它會驗證使用者的身分識別、授與及撤銷資源的存取權，以及發行權杖。 
 
 ## <a name="implement-oidc-with-azure-ad"></a>使用 Azure AD 來執行 OIDC
 

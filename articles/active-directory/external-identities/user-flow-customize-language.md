@@ -1,6 +1,6 @@
 ---
 title: Azure AD 使用者流程中的語言自訂
-description: 深入了解使用者流程中的自訂語言體驗。
+description: 瞭解如何在 Azure Active Directory 中自訂使用者流程的語言體驗。
 services: active-directory
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441431"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576507"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory 中的語言自訂 (預覽)
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 中的語言自訂可讓您的使用者流程�
 3. 選取您要啟用翻譯的使用者流程。
 4. 選取 [語言]。
 5. 在使用者流程的 [語言] 頁面上，選取您想要自訂的語言。
-6. 展開**屬性集合頁面**。
+6. 展開 **屬性集合頁面** 。
 7. 選取 [下載預設值] (如果您先前已編輯這個語言，請按一下 [下載覆寫])。
 
 上述步驟會向您提供 JSON 檔案，以供您用來開始編輯字串。
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 中的語言自訂可讓您的使用者流程�
 1. 選取 [使用者流程]，然後按一下您想要啟用翻譯的使用者流程。
 1. 選取 [語言]。
 1. 選取您想要轉譯成什麼語言。
-1. 選取**屬性集合頁面**。
+1. 選取 **屬性集合頁面** 。
 1. 選取資料夾圖示，然後選取要上傳的 JSON 檔案。
 
 這些變更會自動儲存到您的使用者流程。

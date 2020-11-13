@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399103"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566634"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虛擬 WAN 和安全中樞與中國互相連線
 
@@ -111,7 +111,7 @@ ExpressRoute Global Reach 在某些區域無法使用。 例如，如果您需�
 
 所有這些選項都會使用 Azure 虛擬 WAN 安全中樞，在香港中進行直接 Microsoft 365 連線。 這些架構也支援 [Microsoft 365 多地理](/microsoft-365/enterprise/microsoft-365-multi-geo) 位置的合規性需求，並讓該流量保持在下一個 Azure Front Door 位置附近。 因此，這也能夠改善中國境外的 Microsoft 365 使用狀況。
 
-將 Azure 虛擬 WAN 與網際網路連線搭配使用時，每個連線都可以受益於其他服務，例如 [Microsoft Azure 對等互連服務 (MAPS)](https://docs.microsoft.com/azure/peering-service/about)。 建立 MAPS 的目的在於將協力網際網路服務供應廠商至 Microsoft 全球網路的流量最佳化。
+將 Azure 虛擬 WAN 與網際網路連線搭配使用時，每個連線都可以受益於其他服務，例如 [Microsoft Azure 對等互連服務 (MAPS)](../peering-service/about.md)。 建立 MAPS 的目的在於將協力網際網路服務供應廠商至 Microsoft 全球網路的流量最佳化。
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>選項 1：SDWAN 或 VPN
 
@@ -151,4 +151,4 @@ ExpressRoute Global Reach 在某些區域無法使用。 例如，如果您需�
 
 * [設定虛擬 WAN 保護的中樞](../firewall-manager/secure-cloud-network.md)
 
-* [Azure 對等互連服務預覽概觀](https://docs.microsoft.com/azure/peering-service/about)
+* [Azure 對等互連服務預覽概觀](../peering-service/about.md)

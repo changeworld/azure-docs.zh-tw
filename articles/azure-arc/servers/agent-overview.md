@@ -3,19 +3,19 @@ title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370163"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577578"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
 啟用 Azure Arc 的伺服器連線的機器代理程式，可讓您在公司網路或其他雲端提供者上，管理裝載于 Azure 外部的 Windows 和 Linux 機器。 本文將詳細說明代理程式的概觀、系統和網路需求以及不同的部署方法。
 
 >[!NOTE]
->從2020年9月開始 Azure Arc 已啟用伺服器的正式發行版本起，Azure Connected Machine 代理程式 (的所有發行前版本，將于) 1.0**年2月 2 2021 日****淘汰**。  此時間範圍可讓您升級至1.0 版或更高版本，然後預先發行的代理程式無法再與已啟用 Azure Arc 的伺服器服務進行通訊。
+>從2020年9月開始 Azure Arc 已啟用伺服器的正式發行版本起，Azure Connected Machine 代理程式 (的所有發行前版本，將于) 1.0 **年2月 2 2021 日****淘汰** 。  此時間範圍可讓您升級至1.0 版或更高版本，然後預先發行的代理程式無法再與已啟用 Azure Arc 的伺服器服務進行通訊。
 
 ## <a name="agent-component-details"></a>代理程式元件詳細資料
 
@@ -58,9 +58,9 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 ### <a name="required-permissions"></a>所需的權限
 
-* 若要使電腦上線，您必須是 **Azure Connected Machine 上線**角色的成員。
+* 若要使電腦上線，您必須是 **Azure Connected Machine 上線** 角色的成員。
 
-* 若要讀取、修改、重新上架和刪除電腦，您是 **Azure Connected Machine 資源管理員** 角色的成員。 
+* 若要讀取、修改和刪除電腦，您是 **Azure Connected Machine 資源管理員** 角色的成員。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
@@ -68,7 +68,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 ### <a name="transport-layer-security-12-protocol"></a>傳輸層安全性1.2 通訊協定
 
-為了確保資料傳送至 Azure 時的安全性，我們強烈建議您將機器設定為使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。
+為了確保資料傳送至 Azure 時的安全性，我們強烈建議您將機器設定為使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並 **不建議使用** 這些版本。
 
 |平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
@@ -199,7 +199,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|記錄有關延伸模組代理程式元件的詳細資料。|
     |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|記錄已安裝之延伸模組的詳細資料。|
 
-* 會建立**混合式代理程式延伸模組應用程式**的本機安全性群組。
+* 會建立 **混合式代理程式延伸模組應用程式** 的本機安全性群組。
 
 * 解除安裝代理程式期間，不會移除下列成品。
 

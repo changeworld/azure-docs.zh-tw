@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737090"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565920"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自動備份應用程式設定存放區
 
@@ -37,14 +37,17 @@ ms.locfileid: "92737090"
 
 在本教學課程中，您將在區域中建立次要存放區 `centralus` ，並在該區域中建立所有其他資源 `westus` 。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-- Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/)。 
-- 包含 Azure 開發工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+## <a name="prerequisites"></a>必要條件 
+
+- 使用 Azure 開發工作負載[Visual Studio 2019](https://visualstudio.microsoft.com/vs) 。
+
 - [.NET Core SDK](https://dotnet.microsoft.com/download)。
-- Azure CLI (2.3.1 或更新版本) 的最新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您是使用 Azure CLI，就必須先使用登入 `az login` 。 您可以選擇性地使用 Azure Cloud Shell。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本教學課程需要 Azure CLI 的2.3.1 或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

@@ -1,6 +1,6 @@
 ---
 title: 以密碼為基礎的驗證 Azure Active Directory
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 達成密碼驗證的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f05bf8f5f7ec4907c2cd61ff48e3438dfa1e097a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114125"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576927"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>以密碼為基礎的驗證 Azure Active Directory
 
@@ -35,13 +35,13 @@ ms.locfileid: "92114125"
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：從我的應用程式或直接造訪網站存取以格式為基礎的應用程式。 
+* **使用者** ：從我的應用程式或直接造訪網站存取以格式為基礎的應用程式。 
 
-* **Web 瀏覽器**：使用者與之互動的元件，以存取應用程式的外部 URL。 使用者透過 MyApps 延伸模組存取表單架構應用程式。 
+* **Web 瀏覽器** ：使用者與之互動的元件，以存取應用程式的外部 URL。 使用者透過 MyApps 延伸模組存取表單架構應用程式。 
 
-* **MyApps 延伸**模組：識別已設定的密碼型 SSO 應用程式，並將認證提供給登入表單。 MyApps 延伸模組會安裝在網頁瀏覽器上。 
+* **MyApps 延伸** 模組：識別已設定的密碼型 SSO 應用程式，並將認證提供給登入表單。 MyApps 延伸模組會安裝在網頁瀏覽器上。 
 
-* **Azure AD**：驗證使用者。
+* **Azure AD** ：驗證使用者。
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>使用 Azure AD 來執行密碼型 SSO
 
