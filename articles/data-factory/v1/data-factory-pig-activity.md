@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Factory 中的 Pig 活動轉換資料
-description: 瞭解如何使用 Azure data factory v1 中的 Pig 活動，在隨選/您自己的 HDInsight 叢集上執行 Pig 腳本。
+description: 瞭解如何使用 Azure Data Factory v1 中的 Pig 活動，在隨選/您自己的 HDInsight 叢集上執行 Pig 腳本。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 35990312658492e1e41b47096a43748c3a4e653e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c94d66bf98645e12a6c603f2b35d229080717734
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359895"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616853"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Pig 活動轉換資料
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359895"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -107,7 +107,7 @@ Data Factory [管線](data-factory-create-pipelines.md)中的 HDInsight Pig 活�
 .....
 ```
 
-用來處理此資料的「Pig 指令碼」 **** ：
+用來處理此資料的「Pig 指令碼」  ：
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -121,10 +121,10 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 若要在 Data Factory 管線中執行此 Pig 指令碼，請執行下列步驟：
 
-1. 建立連結服務以註冊[您自己的 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或設定[隨選 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 讓我們來呼叫此連結的服務 **HDInsightLinkedService**。
-2. 建立 [連結服務](data-factory-azure-blob-connector.md) 以設定裝載資料之 Azure Blob 儲存體的連接。 讓我們將此連結服務命名為 **StorageLinkedService**。
-3. 建立指向輸入和輸出資料的 [資料集](data-factory-create-datasets.md) 。 讓我們將此輸出資料集命名為 **PigSampleIn**，以及將輸出資料集命名為 **PigSampleOut**。
-4. 複製「Azure Blob 儲存體」在步驟 #2 所設定之檔案中的Pig 查詢。 如果裝載資料的 Azure 儲存體與裝載查詢檔案的儲存體不同，請建立個別的「Azure 儲存體」連結服務。 請參考活動組態中的連結服務。 使用 **scriptPath** 來指定 pig 腳本檔案和 **scriptLinkedService**的路徑。 
+1. 建立連結服務以註冊[您自己的 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或設定[隨選 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 讓我們來呼叫此連結的服務 **HDInsightLinkedService** 。
+2. 建立 [連結服務](data-factory-azure-blob-connector.md) 以設定裝載資料之 Azure Blob 儲存體的連接。 讓我們將此連結服務命名為 **StorageLinkedService** 。
+3. 建立指向輸入和輸出資料的 [資料集](data-factory-create-datasets.md) 。 讓我們將此輸出資料集命名為 **PigSampleIn** ，以及將輸出資料集命名為 **PigSampleOut** 。
+4. 複製「Azure Blob 儲存體」在步驟 #2 所設定之檔案中的Pig 查詢。 如果裝載資料的 Azure 儲存體與裝載查詢檔案的儲存體不同，請建立個別的「Azure 儲存體」連結服務。 請參考活動組態中的連結服務。 使用 **scriptPath** 來指定 pig 腳本檔案和 **scriptLinkedService** 的路徑。 
    
    > [!NOTE]
    > 您也可以使用 **script** 屬性，在活動定義中以內嵌方式提供 Pig 指令碼。 不過，不建議使用此方法，因為必須逸出指令碼中的所有特殊字元，而且可能造成偵錯問題。 最佳做法是遵循步驟 #4。
@@ -172,7 +172,7 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 若要使用參數化 Pig 指令碼，請執行下列動作：
 
-* 定義 **defines**中的參數。
+* 定義 **defines** 中的參數。
 
     ```JSON
     {
@@ -210,7 +210,7 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
       }
     }
     ```
-* 在 Pig 指令碼中，使用 '**$parameterName**' 參考參數，如下列範例所示：
+* 在 Pig 指令碼中，使用 ' **$parameterName** ' 參考參數，如下列範例所示：
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: af2a58ecb97e4c62f437d0c693ec79a4b5f618b0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579227"
+ms.locfileid: "94591507"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>適用於 MySQL 的 Azure 資料庫版本控制原則
 
@@ -30,7 +30,7 @@ ms.locfileid: "94579227"
 
 
 ## <a name="major-version-support"></a>主要版本支援
-從 Azure 開始支援版本的日期起，適用於 MySQL 的 Azure 資料庫會支援 MySQL 的每個主要版本，直到 MySQL 社區淘汰版本為止（如 [版本設定原則](https://en.wikipedia.org/wiki/mysql)中所提供）。
+從 Azure 開始支援版本的日期起，適用於 MySQL 的 Azure 資料庫會支援 MySQL 的每個主要版本，直到 MySQL 社區淘汰版本為止（如 [版本設定原則](https://www.mysql.com/support/eol-notice.html)中所提供）。
 
 ## <a name="minor-version-support"></a>次要版本支援
 適用於 MySQL 的 Azure 資料庫會在定期維護過程中，自動執行 Azure 慣用 MySQL 版本的次要版本升級。 

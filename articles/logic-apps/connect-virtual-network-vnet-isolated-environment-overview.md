@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2020
-ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500380"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616921"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源
 
-有時，您的邏輯應用程式需要存取受保護的資源，例如虛擬機器 (Vm) ，以及內部或連接至 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的其他系統或服務。 若要設定此存取權，您可以 [ (ISE) 建立 *整合服務環境* ](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是 Logic Apps 服務的實例，它會使用專用的資源，並與「全域」多租使用者 Logic Apps 服務分開執行。
+有時，您的邏輯應用程式需要存取受保護的資源，例如虛擬機器 (Vm) ，以及內部或連接至 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的其他系統或服務。 若要設定此存取權，您可以 [ (ISE) 建立 *整合服務環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是 Logic Apps 服務的實例，它會使用專用的資源，並與「全域」多租使用者 Logic Apps 服務分開執行。
 
 例如，某些 Azure 虛擬網路會使用私人端點（您可以透過 [Azure Private Link](../private-link/private-link-overview.md)設定），以提供 azure PaaS 服務的存取權，例如 azure 上託管的 Azure 儲存體、Azure Cosmos DB 或 Azure SQL Database、合作夥伴服務或客戶服務。 如果您的邏輯應用程式需要存取使用私人端點的虛擬網路，您必須在 ISE 內建立、部署和執行這些邏輯應用程式。
 
@@ -53,7 +53,7 @@ ms.locfileid: "89500380"
 
 * 內建的觸發程式和動作（例如 HTTP）會顯示 **核心** 標籤，並在與邏輯應用程式相同的 ISE 中執行。
 
-* 顯示 **ISE** 標籤的受控連接器是特別針對 ise 所設計，而且 *一律在與邏輯應用程式相同的 ISE 中執行*。 例如，以下是一些 [提供 ISE 版本的連接器](../connectors/apis-list.md#ise-connectors)：<p>
+* 顯示 **ISE** 標籤的受控連接器是特別針對 ise 所設計，而且 *一律在與邏輯應用程式相同的 ISE 中執行* 。 例如，以下是一些 [提供 ISE 版本的連接器](../connectors/apis-list.md#ise-connectors)：<p>
 
   * Azure Blob 儲存體、檔案儲存體及表格儲存體
   * Azure 服務匯流排、Azure 佇列、Azure 事件中樞
@@ -65,9 +65,9 @@ ms.locfileid: "89500380"
 
   在罕見的情況下，如果 ISE 連接器適用于內部部署系統或資料來源，您就可以直接連接，而不需要使用內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 如需詳細資訊，請參閱本主題稍後的 [存取內部部署系統](#on-premises) 。
 
-* 未顯示 **ise** 標籤的受控連接器會繼續在 ise 內的邏輯應用程式中運作。 這些連接器 *一律會在多租使用者 Logic Apps 服務中執行*，而不是在 ISE 中執行。
+* 未顯示 **ise** 標籤的受控連接器會繼續在 ise 內的邏輯應用程式中運作。 這些連接器 *一律會在多租使用者 Logic Apps 服務中執行* ，而不是在 ISE 中執行。
 
-* 您在 *ise 之外*建立的自訂連接器（不論是否需要內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)）都能繼續處理 ise 內的邏輯應用程式。 不過，您在 *ISE 內* 建立的自訂連接器將無法使用內部部署資料閘道。 如需詳細資訊，請參閱內部 [部署系統的存取權](#on-premises)。
+* 您在 *ise 之外* 建立的自訂連接器（不論是否需要內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)）都能繼續處理 ise 內的邏輯應用程式。 不過，您在 *ISE 內* 建立的自訂連接器將無法使用內部部署資料閘道。 如需詳細資訊，請參閱內部 [部署系統的存取權](#on-premises)。
 
 <a name="on-premises"></a>
 
@@ -79,15 +79,15 @@ ms.locfileid: "89500380"
 
 * 適用于內部部署系統或資料來源的 **ISE** 連接器（如果有的話）
 
-  如果 ISE 連接器可供使用，您可以在不使用內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)的情況下直接存取系統或資料來源。 但是，如果您需要從 ISE 存取 SQL Server 並使用 Windows 驗證，您必須使用連接器的非 ISE 版本和內部部署資料閘道。 連接器的 ISE 版本不支援 Windows 驗證。 如需詳細資訊，請參閱 [ISE 連接器](../connectors/apis-list.md#ise-connectors) 和 [從整合服務環境連接](../connectors/apis-list.md#integration-service-environment)。
+  如果 ISE 連接器可供使用，您就可以直接存取系統或資料來源，而不需要內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 但是，如果您需要從 ISE 存取 SQL Server 並使用 Windows 驗證，您必須使用連接器的非 ISE 版本和內部部署資料閘道。 連接器的 ISE 版本不支援 Windows 驗證。 如需詳細資訊，請參閱 [ISE 連接器](../connectors/apis-list.md#ise-connectors) 和 [從整合服務環境連接](../connectors/apis-list.md#integration-service-environment)。
 
 * 自訂連接器
 
-  * 您在 *ise 之外*建立的自訂連接器（不論是否需要內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)）都能繼續處理 ise 內的邏輯應用程式。
+  * 您在 *ise 之外* 建立的自訂連接器（不論是否需要內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)）都能繼續處理 ise 內的邏輯應用程式。
 
   * 您在 *ISE 內* 建立的自訂連接器無法與內部部署資料閘道搭配使用。 不過，這些連接器可以直接存取內部部署系統和內部部署系統，以及內部或連接到裝載 ISE 之虛擬網路的資料來源。 因此，在存取這些資源時，ISE 內的邏輯應用程式通常不需要資料閘道。
 
-若要存取內部部署系統和沒有 ISE 連接器的資料來源、在虛擬網路外部，或未連線到您的虛擬網路，您仍然必須使用內部部署資料閘道。 ISE 中的邏輯應用程式可以繼續使用沒有 **核心** 或 **ISE** 標籤的連接器。 這些連接器只會在多租使用者 Logic Apps 服務中執行，而不是在您的 ISE 中執行。 
+若要存取內部部署系統和沒有 ISE 連接器的資料來源、在虛擬網路外部，或未連線到您的虛擬網路，您仍然必須使用內部部署資料閘道。 ISE 中的邏輯應用程式可以繼續使用沒有 **核心** 或 **ISE** 標籤的連接器。 這些連接器會在多租使用者 Logic Apps 服務中執行，而不是在您的 ISE 中執行。 
 
 <a name="ise-level"></a>
 
@@ -117,18 +117,26 @@ ms.locfileid: "89500380"
 > [!IMPORTANT]
 > 您只能在 ISE 建立期間選取存取端點，且稍後無法變更此選項。
 
-* **內部**：私人端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式在您的 *虛擬網路內*的執行歷程記錄的輸入和輸出。
+* **內部** ：私人端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式在您的 *虛擬網路內* 的執行歷程記錄的輸入和輸出。
 
   > [!IMPORTANT]
-  > 請確定您的私人端點與電腦之間有網路連線，而您想要從中存取執行歷程記錄。 否則，當您嘗試查看邏輯應用程式的執行歷程記錄時，會出現錯誤訊息指出「未預期的錯誤。 無法提取」。
+  > 如果您需要使用這些以 webhook 為基礎的觸發程式，當您建立 ISE 時，請使用外部端點， *而不* 是內部端點：
+  > 
+  > * Azure DevOps
+  > * Azure Event Grid
+  > * Common Data Service
+  > * Office 365
+  > * SAP (ISE 版本) 
+  > 
+  > 此外，請確定您的私人端點與電腦之間有網路連線，而您想要從中存取執行歷程記錄。 否則，當您嘗試查看邏輯應用程式的執行歷程記錄時，會出現錯誤訊息指出「未預期的錯誤。 無法提取」。
   >
   > ![因為無法透過防火牆傳送流量，而導致 Azure 儲存體動作錯誤](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
   >
   > 例如，您的用戶端電腦可以存在於 ISE 的虛擬網路內，或是在透過對等互連或虛擬私人網路連線到 ISE 虛擬網路的虛擬網路內。 
 
-* **外部**：公用端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式從 *虛擬網路外部*執行歷程記錄的輸入和輸出。 如果您使用 (Nsg) 的網路安全性群組，請確定它們已設定輸入規則，以允許存取執行歷程記錄的輸入和輸出。 如需詳細資訊，請參閱 [啟用 ISE 的存取](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+* **外部** ：公用端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式從 *虛擬網路外部* 執行歷程記錄的輸入和輸出。 如果您使用 (Nsg) 的網路安全性群組，請確定它們已設定輸入規則，以允許存取執行歷程記錄的輸入和輸出。 如需詳細資訊，請參閱 [啟用 ISE 的存取](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
 
-若要判斷 ISE 是否使用內部或外部存取端點，請在 ISE 的功能表上，選取 [ **設定**] 下的 [ **屬性**]，然後尋找 [ **存取端點** ] 屬性：
+若要判斷 ISE 是否使用內部或外部存取端點，請在 ISE 的功能表上，選取 [ **設定** ] 下的 [ **屬性** ]，然後尋找 [ **存取端點** ] 屬性：
 
 ![尋找 ISE 存取端點](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
@@ -142,7 +150,7 @@ ms.locfileid: "89500380"
 
 ## <a name="integration-accounts-with-ise"></a>使用 ISE 的整合帳戶
 
-您可以使用整合帳戶搭配整合服務環境 (ISE) 內的邏輯應用程式。 不過，這些整合帳戶必須使用「相同的 ISE」** 作為連結的邏輯應用程式。 ISE 中的 Logic Apps 只能參考位於相同 ISE 中的整合帳戶。 當您建立整合帳戶時，您可以選取您的 ISE，作為您整合帳戶的位置。 若要瞭解如何使用 ISE 整合帳戶的定價和帳單，請參閱 [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。 如需限制資訊，請參閱 [整合帳戶限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
+您可以使用整合帳戶搭配整合服務環境 (ISE) 內的邏輯應用程式。 不過，這些整合帳戶必須使用「相同的 ISE」作為連結的邏輯應用程式。 ISE 中的 Logic Apps 只能參考位於相同 ISE 中的整合帳戶。 當您建立整合帳戶時，您可以選取您的 ISE，作為您整合帳戶的位置。 若要瞭解如何使用 ISE 整合帳戶的定價和帳單，請參閱 [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。 如需限制資訊，請參閱 [整合帳戶限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

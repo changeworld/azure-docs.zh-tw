@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/15/2020
-ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575898"
+ms.locfileid: "94593734"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
 
@@ -19,7 +19,7 @@ ms.locfileid: "94575898"
 
 Azure Data Share 支援以快照集為基礎的共用 Azure SQL Database 和 Azure Synapse Analytics。 本文說明如何共用和接收來自這些來源的資料。
 
-Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先前的 Azure SQL DW) 共用資料表或視圖，以及從 Azure Synapse Analytics (工作區) SQL 集區共用資料表。 資料取用者可以選擇接受資料 Azure Data Lake Storage Gen2 或 Azure Blob 儲存體 csv 或 parquet 檔案，以及 Azure SQL Database 和 Azure Synapse Analytics 資料表。
+Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先前的 Azure SQL DW) 共用資料表和視圖，以及從 Azure Synapse Analytics (工作區) 專用 SQL 集區共用資料表。 目前不支援從 Azure Synapse Analytics 的 (工作區共用) 無伺服器 SQL 集區。 資料取用者可以選擇接受資料 Azure Data Lake Storage Gen2 或 Azure Blob 儲存體 csv 或 parquet 檔案，以及 Azure SQL Database 和 Azure Synapse Analytics 資料表。
 
 將資料接受 Azure Data Lake 存放區 Gen2 或 Azure Blob 儲存體時，完整快照集會覆寫目標檔案的內容（如果已經存在的話）。
 當資料接收到 SQL 資料表，且目標資料表不存在時，Azure Data Share 會建立具有來源架構的 SQL 資料表。 如果目標資料表已經存在且具有相同名稱，則會將它卸載並以最新的完整快照集加以覆寫。 目前不支援增量快照集。
@@ -61,7 +61,7 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>從 Azure Synapse Analytics (工作區共用) SQL 集區的必要條件
 
-* Azure Synapse Analytics (工作區) 具有您要共用之資料表的 SQL 集區。 目前不支援共用 view。
+* Azure Synapse Analytics (工作區) 具有您想要共用之資料表的專用 SQL 集區。 目前不支援共用 view。 目前不支援從無伺服器 SQL 集區共用。
 * 在 Synapse 工作區中寫入 SQL 集區的許可權，其存在於 *Synapse/workspace/sqlPools/write* 中。 此權限存在於 **參與者** 角色中。
 * Data Share 資源的受控識別存取 Synapse 工作區 SQL 集區的許可權。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站中，流覽至 Synapse 工作區。 從左側導覽選取 [SQL Active Directory 系統管理員]，並將自己設定為 **Azure Active Directory 系統管理員** 。
@@ -132,7 +132,7 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
     ![AddDatasets](./media/add-datasets.png "新增資料集")    
 
-1. 選取您的 SQL server 或 Synapse 工作區，並在出現提示時提供認證，然後選取 **[下一步]** 以流覽至您想要共用的物件，然後選取 [新增資料集]。 
+1. 選取您的 SQL server 或 Synapse 工作區，並在出現提示時提供認證，然後選取 **[下一步]** 以流覽至您想要共用的物件，然後選取 [新增資料集]。 您可以從 Azure SQL Database 和 Azure Synapse Analytics (先前的 Azure SQL DW) ，或從 Azure Synapse Analytics (工作區) 專用 SQL 集區的資料表中，選取資料表和 views。 
 
     ![SelectDatasets](./media/select-datasets-sql.png "選取資料集")    
 
@@ -201,7 +201,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>將資料接收到 Azure Synapse Analytics 的 (工作區) SQL 集區的必要條件
 
-* ) SQL 集區的 Azure Synapse Analytics (工作區。
+* ) 專用 SQL 集區的 Azure Synapse Analytics (工作區。 目前不支援將資料接收到無伺服器的 SQL 集區。
 * 在 Synapse 工作區中寫入 SQL 集區的許可權，其存在於 *Synapse/workspace/sqlPools/write* 中。 此權限存在於 **參與者** 角色中。
 * Data Share 資源的受控識別存取 Synapse 工作區 SQL 集區的許可權。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站中，流覽至 Synapse 工作區。 從左側導覽選取 [SQL Active Directory 系統管理員]，並將自己設定為 **Azure Active Directory 系統管理員** 。

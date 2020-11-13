@@ -6,14 +6,14 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 534452d57884045f90c1d8d3ff44aadc3578cd4f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 30bd45cee962395ad6c6b87e393ea0f1b7329908
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542529"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616836"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何搭配 Azure Application Insights Java SDK 使用 Micrometer
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>如何使用 Micrometer 搭配 Azure 應用程式 Insights JAVA SDK (不建議使用) 
 
 > [!IMPORTANT]
 > 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 Micrometer 遙測會隨 Application Insights JAVA 3.0 代理程式自動收集-請遵循 [Application Insights java 3.0 代理程式](./java-in-process-agent.md)的指導方針。

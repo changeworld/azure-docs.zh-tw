@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675112"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594278"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "92675112"
 
 使用 Azure 入口網站或 PowerShell 建立容錯移轉群組，並在其中新增單一資料庫。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請考慮下列必要條件：
 
@@ -196,7 +196,7 @@ ms.locfileid: "92675112"
 
 建立容錯移轉群組，並使用 Azure 入口網站或 PowerShell 將彈性集區新增至該群組。  
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請考慮下列必要條件：
 
@@ -350,7 +350,7 @@ ms.locfileid: "92675112"
 
 基於效能考慮，這兩個受控執行個體都會部署到[配對區域](../../best-practices-availability-paired-regions.md)。 相較於非配對區域，位於異地配對區域中的受控執行個體會有更好的效能。 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請考慮下列必要條件：
 

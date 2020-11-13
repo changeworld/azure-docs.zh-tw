@@ -5,14 +5,14 @@ description: 瞭解如何使用診斷設定來啟用記錄，以及查詢記錄�
 author: baanders
 ms.author: baanders
 ms.date: 11/9/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411744"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616649"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
 
@@ -115,18 +115,18 @@ Azure 數位 Twins 可以為您的服務實例收集記錄，以監視其效能�
 | 欄位名稱 | 資料類型 | 描述 |
 |-----|------|-------------|
 | `Time` | Datetime | 此事件發生的日期和時間（UTC） |
-| `ResourceID` | 字串 | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
-| `OperationName` | 字串  | 在事件期間執行的動作類型 |
-| `OperationVersion` | 字串 | 在事件期間使用的 API 版本 |
-| `Category` | 字串 | 所發出的資源類型 |
-| `ResultType` | 字串 | 事件的結果 |
-| `ResultSignature` | 字串 | 事件的 Http 狀態碼 |
-| `ResultDescription` | 字串 | 事件的其他詳細資料 |
-| `DurationMs` | 字串 | 執行事件花費的時間（以毫秒為單位） |
-| `CallerIpAddress` | 字串 | 事件的遮罩來源 IP 位址 |
+| `ResourceID` | String | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
+| `OperationName` | String  | 在事件期間執行的動作類型 |
+| `OperationVersion` | String | 在事件期間使用的 API 版本 |
+| `Category` | String | 所發出的資源類型 |
+| `ResultType` | String | 事件的結果 |
+| `ResultSignature` | String | 事件的 Http 狀態碼 |
+| `ResultDescription` | String | 事件的其他詳細資料 |
+| `DurationMs` | String | 執行事件花費的時間（以毫秒為單位） |
+| `CallerIpAddress` | String | 事件的遮罩來源 IP 位址 |
 | `CorrelationId` | Guid | 客戶為事件提供的唯一識別碼 |
-| `Level` | 字串 | 事件的記錄嚴重性 |
-| `Location` | 字串 | 事件發生的區域 |
+| `Level` | String | 事件的記錄嚴重性 |
+| `Location` | String | 事件發生的區域 |
 | `RequestUri` | Uri | 在事件期間使用的端點 |
 
 以下是這些記錄類型的範例 JSON 主體。
@@ -201,13 +201,13 @@ Azure 數位 Twins 可以為您的服務實例收集記錄，以監視其效能�
 |欄位名稱 | 資料類型 | 描述 |
 |-----|------|-------------|
 | `Time` | Datetime | 此事件發生的日期和時間（UTC） |
-| `ResourceId` | 字串 | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
-| `OperationName` | 字串  | 在事件期間執行的動作類型 |
-| `Category` | 字串 | 所發出的資源類型 |
-| `ResultDescription` | 字串 | 事件的其他詳細資料 |
-| `Level` | 字串 | 事件的記錄嚴重性 |
-| `Location` | 字串 | 事件發生的區域 |
-| `EndpointName` | 字串 | 在 Azure 數位 Twins 中建立之輸出端點的名稱 |
+| `ResourceId` | String | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
+| `OperationName` | String  | 在事件期間執行的動作類型 |
+| `Category` | String | 所發出的資源類型 |
+| `ResultDescription` | String | 事件的其他詳細資料 |
+| `Level` | String | 事件的記錄嚴重性 |
+| `Location` | String | 事件發生的區域 |
+| `EndpointName` | String | 在 Azure 數位 Twins 中建立之輸出端點的名稱 |
 
 以下是這些記錄類型的範例 JSON 主體。
 

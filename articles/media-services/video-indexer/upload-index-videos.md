@@ -8,17 +8,19 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506170"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592918"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
+
+上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編制索引的分鐘數。如需詳細資訊，請參閱 [媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
 使用影片索引器 API 上傳視訊時，您會有下列上傳選項： 
 
@@ -26,34 +28,10 @@ ms.locfileid: "94506170"
 * 將影片檔案當作要求本文中的位元組陣列傳送、
 * 藉由提供[資產識別碼](../latest/assets-concept.md)來使用現有的 Azure 媒體服務資產 (僅支援付費帳戶)。
 
-上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編制索引的分鐘數。如需詳細資訊，請參閱 [媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
-
 本文說明如何使用下列選項來上傳您的影片並為其編制索引：
 
-* [使用影片索引子網站](#website) 
-* [影片索引子 API](#apis)
-
-## <a name="uploading-considerations-and-limitations"></a>上傳考量與限制
- 
-- 影片名稱不得超過 80 個字元。
-- 若根據 URL 上傳影片 (首選)，則必須使用 TLS 1.2 (或更高版本) 來保護端點。
-- 具有 URL 選項的上傳大小限制為 30GB。
-- 要求 URL 長度限制為 6144 個字元，其中查詢字串 URL 長度限制為 4096 個字元。
-- 具有位元組陣列選項的上傳大小限制為 2GB。
-- 位元組陣列選項會在 30 分鐘後逾時。
-- 在參數中提供的 URL `videoURL` 必須經過編碼。
-- 編製索引媒體服務資產與從 URL 編製索引的限制相同。
-- 影片索引子的最大持續時間限制為單一檔案 4 小時。
-- URL 必須可供存取 (例如公用 URL)。 
-
-    如果是私人 URL，必須在要求中提供存取權杖。
-- URL 必須指向有效的媒體檔案，而不是指向網頁的連結，例如頁面的連結 `www.youtube.com` 。
-- 在付費帳戶中，每分鐘最多可以上傳 50 部電影，在試用帳戶中，每分鐘最多可以上傳 5 部電影。
-
-> [!Tip]
-> 建議使用 .NET Framework 4.6.2 版。 或更高版本，因為舊版 .NET Framework 不會預設使用 TLS 1.2。
->
-> 如果您必須使用舊版 .NET Framework，請在進行 REST API 呼叫之前，在程式碼中新增一行：  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+* [使用影片索引子網站](#upload-and-index-a-video-using-the-video-indexer-website) 
+* [影片索引子 API](#upload-and-index-with-api)
 
 ## <a name="supported-file-formats-for-video-indexer"></a>影片索引子支援的檔案格式
 
@@ -66,7 +44,7 @@ ms.locfileid: "94506170"
 - 您一律可以刪除影片和音訊檔案，以及影片索引子從這些檔案中解壓縮的任何中繼資料和見解。 當您從影片索引器刪除檔案時，該檔案和其中繼資料與見解都會從影片索引器中永久移除。 不過，如果您已在 Azure 儲存體中實作屬於自己的備份解決方案，那些檔案將會保留在您的 Azure 儲存體中。
 - 無論上傳是否已從影片索引子網站或使用上傳 API 來完成，影片的持續性都完全相同。
    
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>使用影片索引子網站上傳影片並為其編制索引
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a>使用影片索引子網站上傳影片並為其編制索引
 
 > [!NOTE]
 > 影片名稱不得超過 80 個字元。
@@ -82,7 +60,7 @@ ms.locfileid: "94506170"
     > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="上傳的進度":::
 1. Video Indexer 完成分析後，您會收到電子郵件，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
 
-## <a name="upload-and-index-with-api"></a><a name="apis"></a>使用 API 上傳和編制索引
+## <a name="upload-and-index-with-api"></a>使用 API 上傳和編制索引
 
 使用上 [傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API，根據 URL 上傳影片並編制其索引。 接下來的程式碼範例包含批註化的程式碼，說明如何上傳位元組陣列。 
 
@@ -364,6 +342,28 @@ public class AccountContractSlim
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|
 |429||試用帳戶每分鐘允許5次上傳。 每分鐘允許付費帳戶50上傳。|
+
+## <a name="uploading-considerations-and-limitations"></a>上傳考量與限制
+ 
+- 影片名稱不得超過 80 個字元。
+- 若根據 URL 上傳影片 (首選)，則必須使用 TLS 1.2 (或更高版本) 來保護端點。
+- 具有 URL 選項的上傳大小限制為 30GB。
+- 要求 URL 長度限制為 6144 個字元，其中查詢字串 URL 長度限制為 4096 個字元。
+- 具有位元組陣列選項的上傳大小限制為 2GB。
+- 位元組陣列選項會在 30 分鐘後逾時。
+- 在參數中提供的 URL `videoURL` 必須經過編碼。
+- 編製索引媒體服務資產與從 URL 編製索引的限制相同。
+- 影片索引子的最大持續時間限制為單一檔案 4 小時。
+- URL 必須可供存取 (例如公用 URL)。 
+
+    如果是私人 URL，必須在要求中提供存取權杖。
+- URL 必須指向有效的媒體檔案，而不是指向網頁的連結，例如頁面的連結 `www.youtube.com` 。
+- 在付費帳戶中，每分鐘最多可以上傳 50 部電影，在試用帳戶中，每分鐘最多可以上傳 5 部電影。
+
+> [!Tip]
+> 建議使用 .NET Framework 4.6.2 版。 或更高版本，因為舊版 .NET Framework 不會預設使用 TLS 1.2。
+>
+> 如果您必須使用舊版 .NET Framework，請在進行 REST API 呼叫之前，在程式碼中新增一行：  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,21 +7,21 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=4
 ms.devlang: ''
 ms.topic: conceptual
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f29a891061dc0e6dcfe8c8f6a65f0f190c6afc
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327607"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593581"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL 中的加速資料庫復原 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**加速資料庫復原 (ADR) ** 是 SQL Server database engine 功能，可透過重新設計 SQL Server 資料庫引擎復原程式，大幅改善資料庫可用性（特別是在有長時間執行的交易時）。 
+**加速資料庫復原 (ADR)** 是 SQL Server database engine 功能，可透過重新設計 SQL Server 資料庫引擎復原程式，大幅改善資料庫可用性（特別是在有長時間執行的交易時）。 
 
 ADR 目前適用于 Azure SQL Database、Azure SQL 受控執行個體、Azure Synapse Analytics 中的資料庫 (目前為預覽) ，以及從 SQL Server 2019 開始的 Azure Vm 上的 SQL Server。 
 
@@ -85,7 +85,7 @@ ADR 復原處理序與目前復原處理序具有相同的三個階段。 下圖
 
   處理序與以往的處理序相同，但會加上重新建構 sLog 並複製未建立版本作業的記錄檔記錄。
   
-- **重做**階段
+- **重做** 階段
 
   分成兩個階段 (P)
   - 階段 1

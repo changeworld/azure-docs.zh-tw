@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744139"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616190"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 JAVA 應用程式
 
@@ -68,11 +68,11 @@ Azure App Service 可讓 JAVA 開發人員在完全受控的服務上快速建�
 
 如需詳細資訊，請參閱 [Cloud Shell 中的串流處理記錄](troubleshoot-diagnostic-logs.md#in-cloud-shell)。
 
+::: zone pivot="platform-linux"
+
 ### <a name="ssh-console-access"></a>SSH 主控台存取
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
-
-::: zone pivot="platform-linux"
 
 ### <a name="troubleshooting-tools"></a>疑難排解工具
 

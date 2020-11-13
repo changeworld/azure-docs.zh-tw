@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/25/2020
-ms.openlocfilehash: cf8ce541c069f78adbb138fa38e2efc506e095ea
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/12/2020
+ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675193"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616938"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -196,7 +196,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
    | **位置** | 是 | <*Azure-datacenter-region*> | 要用來部署環境的 Azure 資料中心區域 |
    | **SKU** | 是 | **進階** 或 **開發人員 (沒有 SLA)** | 要建立和使用的 ISE SKU。 如需這些 SKU 之間的差異，請參閱 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要** ：只有在建立 ISE 時才可使用此選項，而且稍後無法變更。 |
    | **額外容量** | 進階： <br>是 <p><p>開發人員： <br>不適用 | 進階： <br>0 到 10 <p><p>開發人員： <br>不適用 | 此 ISE 資源要額外使用的處理單位數。 若要在建立後新增容量，請參閱[新增 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
-   | **存取端點** | 是 | **內部** 或 **外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中邏輯應用程式上的要求或 Webhook 觸發程序是否可以接收來自您虛擬網路外部的呼叫。 <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中檢視和存取輸入和輸出的方式。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要** ：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
+   | **存取端點** | 是 | **內部** 或 **外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中邏輯應用程式上的要求或 Webhook 觸發程序是否可以接收來自您虛擬網路外部的呼叫。 <p><p>例如，如果您想要使用下列以 webhook 為基礎的觸發程式，請確定您選取 [ **外部** ]： <p><p>-Azure DevOps <br>-Azure 事件方格 <br>-Common Data Service <br>-Office 365 <br>-SAP (ISE 版本)  <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中檢視和存取輸入和輸出的方式。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要** ：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
    | **虛擬網路** | 是 | <*Azure-virtual-network-name*> | 要插入環境的 Azure 虛擬網路，讓該環境中的邏輯應用程式可以存取虛擬網路。 如果您沒有網路，請[先建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)。 <p><p>**重要** ：您「只」可以在建立您的 ISE 時執行此插入作業。 |
    | **子網路** | 是 | <*subnet-resource-list*> | ISE 需要四個 *空白* 子網，這是在您的 ISE 中建立和部署資源所需的子網，供內部 Logic Apps 元件使用，例如連接器和快取效能。 <p>**重要** 事項：請務必 [先檢查子網需求，再繼續進行這些步驟來建立您的子網](#create-subnet)。 |
    |||||
@@ -205,7 +205,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
    **建立子網**
 
-   您的 ISE 需要四個 *空白* 子網，這是在 ISE 中建立和部署資源所需的子網，供內部 Logic Apps 元件使用，例如連接器和快取效能。 您在建立環境之後「無法」變更這些子網路位址。 如果您透過 Azure 入口網站建立並部署 ISE，請確定您不會將這些子網委派給任何 Azure 服務。 但是，如果您透過 REST API、Azure PowerShell 或 Azure Resource Manager 範本來建立及部署 ISE，則需要將一個空的子網 [委派](../virtual-network/manage-subnet-delegation.md) 給 `Microsoft.integrationServiceEnvironment` 。 如需詳細資訊，請參閱 [新增子網委派](../virtual-network/manage-subnet-delegation.md)。
+   您的 ISE 需要四個 *空白* 子網，在您的 ise 中建立和部署資源時需要這些子網，並且由內部 Logic Apps 元件使用，例如連接器和快取效能。 您在建立環境之後「無法」變更這些子網路位址。 如果您透過 Azure 入口網站建立並部署 ISE，請確定您不會將這些子網委派給任何 Azure 服務。 但是，如果您透過 REST API、Azure PowerShell 或 Azure Resource Manager 範本來建立及部署 ISE，則需要將一個空的子網 [委派](../virtual-network/manage-subnet-delegation.md) 給 `Microsoft.integrationServiceEnvironment` 。 如需詳細資訊，請參閱 [新增子網委派](../virtual-network/manage-subnet-delegation.md)。
 
    每個子網路都必須符合下列需求：
 
@@ -277,6 +277,21 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
    > 請參閱[刪除虛擬網路](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
 1. 如果 Azure 在部署完成之後不會自動移至您的環境，且若要檢視您的環境，請選取 [移至資源]。
+
+1. 如果 ISE 具有 *外部* 端點存取權，您必須建立網路安全性群組（如果您還沒有的話），並新增輸入安全性規則，以允許來自受控連接器輸出 IP 位址的流量。 若要設定此規則，請遵循下列步驟：
+
+   1. 在 ISE 功能表的 [ **設定** ] 底下，選取 [ **屬性** ]。
+
+   1. 在 [ **連接器連出 ip 位址** ] 底下，複製 [公用 IP 位址範圍]，這也會出現在本文中， [限制和設定輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
+
+   1. 建立網路安全性群組（如果您還沒有的話）。
+   
+   1. 根據下列資訊，為您複製的公用輸出 IP 位址新增輸入安全性規則。 如需詳細資訊，請參閱 [教學課程：使用 Azure 入口網站的網路安全性群組來篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md#create-a-network-security-group)。
+
+      | 目的 | 來源服務標籤或 IP 位址 | 來源連接埠 | 目的地服務標籤或 IP 位址 | 目的地連接埠 | 注意 |
+      |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+      | 允許來自連接器輸出 IP 位址的流量 | <*連接器-公用-輸出-IP 位址*> | * | ISE 子網路內虛擬網路的位址空間 | * | |
+      |||||||
 
 1. 若要檢查 ISE 的網路健康情況，請參閱[管理您的整合服務環境](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)。
 

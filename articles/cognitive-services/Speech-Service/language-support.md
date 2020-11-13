@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736687"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616785"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Language                          | 地區設定 | 自訂                                   |
+| Language                          | 地區設定 (BCP-47)  | 自訂                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |阿拉伯文 (巴林)，現代標準  |`ar-BH` | 語言模型                                   |
 |阿拉伯文 (埃及)                     |`ar-EG` | 語言模型                                   |
@@ -136,7 +136,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-|Language  | 地區設定           | 性別 | 語音名稱 | 樣式支援 |
+|Language  | 地區設定 (BCP-47)           | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
 | 阿拉伯文 (埃及) | `ar-EG` | Female | `ar-EG-SalmaNeural` | 一般 |
 | 阿拉伯文 (沙烏地阿拉伯) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | 一般 |
@@ -219,7 +219,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 以超過 45 個語言和地區設定提供 75 個以上的標準語音，可讓您將文字轉換為合成語音。 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| Language | 地區設定 | 性別 | 語音名稱 |
+| Language | 地區設定 (BCP-47)  | 性別 | 語音名稱 |
 |--|--|--|--|
 | 阿拉伯文 (阿拉伯文 )   |  `ar-EG`  |  Female  |  `ar-EG-Hoda`|
 | 阿拉伯文 (沙烏地阿拉伯)  |  `ar-SA`  |  Male  |  `ar-SA-Naayf`|
@@ -397,9 +397,9 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 請參閱下表以了解各種說話者辨識 API 支援的語言。 如需說話者辨識的其他詳細資訊，請參閱 [概觀](speaker-recognition-overview.md)。
 
-| Language | 地區設定 | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
+| Language | 地區設定 (BCP-47)  | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
 |----|----|----|----|----|
-|英文 (美國)  |  zh-TW  |  是  |  是  |  是 |
+|英文 (美國)  |  en-US  |  是  |  是  |  是 |
 |中文 (普通話，簡體) | zh-CN     |     n/a |     是 |     是|
 |英文 (澳大利亞)     | en-AU     | n/a     | 是     | 是|
 |英文 (加拿大)     | en-CA     | n/a |     是 |     是|

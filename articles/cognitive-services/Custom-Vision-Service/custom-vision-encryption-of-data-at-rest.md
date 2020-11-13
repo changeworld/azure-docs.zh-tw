@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 39257419f179bdce8c94f2ddb3a7cd8f5ac2d34f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077750"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616207"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>自訂視覺待用資料加密
 
@@ -39,5 +39,5 @@ ms.locfileid: "89077750"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需支援 CMK 的服務完整清單，請參閱 [客戶管理的認知服務金鑰](../encryption/cognitive-services-encryption-keys-portal.md)
-* [什麼是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+* [什麼是 Azure Key Vault](../../key-vault/general/overview.md)？
 * [認知服務 Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)

@@ -1,6 +1,6 @@
 ---
 title: 使用 Hive 活動轉換資料-Azure
-description: 瞭解如何使用 Azure data factory v1 中的 Hive 活動，在隨選/您自己的 HDInsight 叢集上執行 Hive 查詢。
+description: 瞭解如何在 Azure Data Factory v1 中使用 Hive 活動，以在隨選/您自己的 HDInsight 叢集上執行 Hive 查詢。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 36e0d8a0c0ee5e5202c47acdd74b869181cfaf9e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371676"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616768"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hive 活動轉換資料 
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371676"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -177,7 +177,7 @@ FROM HiveSampleIn Group by ProfileID
 
 若要使用參數化的 Hive 指令碼，請執行下列動作
 
-* 定義 **defines**中的參數。
+* 定義 **defines** 中的參數。
 
     ```JSON  
     {

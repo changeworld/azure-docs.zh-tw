@@ -9,24 +9,24 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325582"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616105"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 的互動式調試
 
 
 
-瞭解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/)，以互動方式來偵測 Azure Machine Learning 實驗、管線和部署。
+瞭解如何使用 Visual Studio Code (VS Code) 和 [debugpy](https://github.com/microsoft/debugpy/)，以互動方式來偵測 Azure Machine Learning 實驗、管線和部署。
 
 ## <a name="run-and-debug-experiments-locally"></a>在本機執行和調試實驗
 
 將您的機器學習實驗提交至雲端之前，請先使用 Azure Machine Learning 擴充功能來進行驗證、執行和偵測。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * Azure Machine Learning VS Code 延伸模組 (預覽) 。 如需詳細資訊，請參閱 [設定 Azure Machine Learning VS Code 擴充](tutorial-setup-vscode-extension.md)功能。
 * [Docker](https://www.docker.com/get-started)
@@ -84,7 +84,7 @@ ms.locfileid: "93325582"
 
 在某些情況下，您可能需要以互動方式來偵測 ML 管線中使用的 Python 程式碼。 藉由使用 VS Code 和 debugpy，您可以在定型環境中執行時附加至程式碼。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * 設定為使用 __Azure 虛擬網路__ 的 __Azure Machine Learning 工作區__ 。
 * 在管線步驟中使用 Python 腳本的 __Azure Machine Learning 管線__ 。 例如，PythonScriptStep。

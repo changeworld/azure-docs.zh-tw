@@ -8,16 +8,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446383"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594159"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>將資源移至新的區域-Azure SQL Database & Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,14 +68,14 @@ ms.locfileid: "91446383"
 
 ### <a name="monitor-the-preparation-process"></a>監視準備程式
 
-您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState**的屬性：
+您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState** 的屬性：
 
 - **ReplicationState = 2** (CATCH_UP) 表示資料庫已同步處理，而且可以安全地進行容錯移轉。
 - **ReplicationState = 0** (植入) 表示資料庫尚未植入，嘗試容錯移轉將會失敗。
 
 ### <a name="test-synchronization"></a>測試同步處理
 
-**ReplicationState**之後 `2` ，請使用次要端點連接到每個資料庫或資料庫子集， `<fog-name>.secondary.database.windows.net` 並對資料庫執行任何查詢，以確保連線能力、適當的安全性設定和資料複寫。
+**ReplicationState** 之後 `2` ，請使用次要端點連接到每個資料庫或資料庫子集， `<fog-name>.secondary.database.windows.net` 並對資料庫執行任何查詢，以確保連線能力、適當的安全性設定和資料複寫。
 
 ### <a name="initiate-the-move"></a>起始移動
 
@@ -122,7 +122,7 @@ ms.locfileid: "91446383"
 
 ### <a name="monitor-the-preparation-process"></a>監視準備程式
 
-您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState**的屬性：
+您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState** 的屬性：
 
 - **ReplicationState = 2** (CATCH_UP) 表示資料庫已同步處理，而且可以安全地進行容錯移轉。
 - **ReplicationState = 0** (植入) 表示資料庫尚未植入，嘗試容錯移轉將會失敗。
@@ -170,14 +170,14 @@ ms.locfileid: "91446383"
 
 ### <a name="monitor-the-preparation-process"></a>監視準備程式
 
-您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState**的屬性：
+您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState** 的屬性：
 
 - **ReplicationState = 2** (CATCH_UP) 表示資料庫已同步處理，而且可以安全地進行容錯移轉。
 - **ReplicationState = 0** (植入) 表示資料庫尚未植入，嘗試容錯移轉將會失敗。
 
 ### <a name="test-synchronization"></a>測試同步處理
 
-**ReplicationState**之後 `2` ，請使用次要端點連接到每個資料庫或資料庫子集， `<fog-name>.secondary.database.windows.net` 並對資料庫執行任何查詢，以確保連線能力、適當的安全性設定和資料複寫。
+**ReplicationState** 之後 `2` ，請使用次要端點連接到每個資料庫或資料庫子集， `<fog-name>.secondary.database.windows.net` 並對資料庫執行任何查詢，以確保連線能力、適當的安全性設定和資料複寫。
 
 ### <a name="initiate-the-move"></a>起始移動
 

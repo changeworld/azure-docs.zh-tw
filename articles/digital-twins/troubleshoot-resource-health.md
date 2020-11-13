@@ -1,18 +1,18 @@
 ---
-title: 瞭解您的資源健康狀態
+title: 了解資源的健康情況
 titleSuffix: Azure Digital Twins
 description: 瞭解如何使用 Azure 資源健康狀態來檢查 Azure 數位 Twins 實例的健康情況。
 author: baanders
 ms.author: baanders
 ms.date: 10/6/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9c31345a4ddaf9ac2b75204172dbc47606cb07db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b64ee4d1538276bbbcab3fe09054f399ad20c162
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681492"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616544"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>針對 Azure 數位 Twins 進行疑難排解：資源健康狀態
 

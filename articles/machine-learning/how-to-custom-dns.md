@@ -8,24 +8,24 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/05/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311571"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616088"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配自訂 DNS 伺服器來使用工作區
 
-使用 Azure Machine Learning 搭配虛擬網路時，有 [數種方式可處理 DNS 名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 不過， __使用您自己的自訂 DNS 伺服器時__ ，您必須手動建立工作區的 DNS 專案。
+使用 Azure Machine Learning 搭配虛擬網路時，有 [數種方式可處理 DNS 名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 如果您改為 _使用自己的自訂 DNS 伺服器_ _，則必須手動建立工作區的 dns 專案。
 
 > [!IMPORTANT]
 > 本文僅說明如何尋找 (FQDN 的完整功能變數名稱) 以及這些專案的 IP 位址，而不會提供設定這些專案之 DNS 記錄的相關資訊。 如需有關如何新增記錄的詳細資訊，請參閱您的 DNS 軟體檔。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 使用 [您自己的 DNS 伺服器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)的 Azure 虛擬網路。
 
@@ -40,13 +40,14 @@ ms.locfileid: "93311571"
 下列清單包含您的工作區和私人端點所使用 (FQDN) 的完整功能變數名稱：
 
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.studio.workspace.<region>.api.azureml.ms`
-* `cert-<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* 如果您建立計算實例，則也必須新增 `<instance-name>.<region>.instances.azureml.ms` 具有工作區私人端點私人 IP 的專案。 請注意，您只能從虛擬網路記憶體取計算實例。
+* 如果您建立計算實例，則您也必須 `<instance-name>.<region>.instances.azureml.ms` 使用工作區私人端點的私人 IP 來新增的專案。
+
+    > [!NOTE]
+    > 您只能從虛擬網路記憶體取計算實例。
 
 若要尋找 VNet 中 Fqdn 的內部 IP 位址，請使用下列其中一種方法：
 
@@ -82,8 +83,6 @@ $workspaceDns.CustomDnsConfigs | format-table
 | FQDN | IP 位址 |
 | ----- | ----- |
 | `fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `fb7e20a0-8891-458b-b969-55ddb3382f51.studio.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `cert-fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]

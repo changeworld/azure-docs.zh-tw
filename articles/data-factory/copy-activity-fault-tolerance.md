@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634772"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593635"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory 中複製活動的容錯
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -27,7 +27,7 @@ ms.locfileid: "92634772"
 
 當您將資料從來源複製到目的地存放區時，Azure Data Factory 複製活動會提供特定層級的容錯，以避免在資料移動過程中的失敗而中斷。 例如，您要將數百萬個資料列從來源複製到目的地存放區，其中主索引鍵已在目的地資料庫中建立，但是來源資料庫並未定義任何主索引鍵。 當您從來源將重複的資料列複製到目的地時，您會遇到目的地資料庫上的 PK 違規失敗。 目前，複製活動提供兩種方法來處理這類錯誤： 
 - 一旦發生任何失敗後，您就可以中止複製活動。 
-- 您可以啟用容錯來略過不相容的資料，從而繼續複製其餘部分。 例如，在此情況下，略過重複的資料列。 此外，您可以在複製活動中啟用工作階段記錄，以記錄略過的資料。 
+- 您可以啟用容錯來略過不相容的資料，從而繼續複製其餘部分。 例如，在此情況下，略過重複的資料列。 此外，您可以在複製活動中啟用工作階段記錄，以記錄略過的資料。 您可以參考「 [複製活動」中的會話記錄](copy-activity-log.md) ，以取得更多詳細資料。
 
 ## <a name="copying-binary-files"></a>複製二進位檔案 
 
@@ -61,13 +61,20 @@ ADF 在複製二進位檔案時支援下列容錯案例。 在下列案例中，
         "dataInconsistency": true 
     }, 
     "validateDataConsistency": true, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2", 
-            "type": "LinkedServiceReference" 
-            }, 
-        "path": "sessionlog/" 
-     } 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 屬性 | 描述 | 允許的值 | 必要
@@ -76,7 +83,7 @@ skipErrorFile | 一組屬性，可指定您在資料移動期間想要略過的�
 fileMissing | SkipErrorFile 屬性包中的其中一個機碼值組，用來決定是否要略過檔案，而這些檔案會在 ADF 同時複製時，由其他應用程式刪除。 <br/> -True：您想要略過其他應用程式所刪除的檔案來複製其餘部分。 <br/> -False：您想要在資料移動過程中，從來源存放區刪除任何檔案之後，中止複製活動。 <br/>請注意，此屬性預設會設定為 true。 | True(default) <br/>False | 否
 fileForbidden | SkipErrorFile 屬性包中的其中一個機碼值組，用來決定當那些檔案或資料夾的 ACL 需要比 ADF 中設定的連線更高權限等級時，是否要略過特定的檔案。 <br/> -True：您想要略過檔案以複製其餘部分。 <br/> -False：您想要在取得資料夾或檔案的權限問題後中止複製活動。 | True <br/>False (預設) | 否
 dataInconsistency | SkipErrorFile 屬性包中的其中一個機碼值組，用來決定您是否想要略過來源與目的地存放區之間不一致的資料。 <br/> -True：您想要略過不一致的資料以複製其餘部分。 <br/> -False：您想要在發現不一致的資料後中止複製活動。 <br/>請注意，只有當您將 validateDataConsistency 設定為 True 時，這個屬性才有效。 | True <br/>False (預設) | 否
-logStorageSettings  | 當您想要記錄略過的物件名稱時，可指定的一組屬性。 | &nbsp; | 否
+logSettings  | 當您想要記錄略過的物件名稱時，可指定的一組屬性。 | &nbsp; | 否
 linkedServiceName | 可儲存工作階段記錄檔的 [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties)連結服務或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)。 | `AzureBlobStorage` 或 `AzureBlobFS` 類型連結服務的名稱，以代表您要用來儲存記錄檔的執行個體。 | 否
 path | 記錄檔的路徑。 | 指定用來儲存記錄檔的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
@@ -108,7 +115,7 @@ path | 記錄檔的路徑。 | 指定用來儲存記錄檔的路徑。 如不提
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -175,12 +182,19 @@ Timestamp,Level,OperationName,OperationItem,Message
         "type": "AzureSqlSink" 
     }, 
     "enableSkipIncompatibleRow": true, 
-    "logStorageSettings": { 
-    "linkedServiceName": { 
-        "referenceName": "ADLSGen2", 
-        "type": "LinkedServiceReference" 
-        }, 
-    "path": "sessionlog/" 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
     } 
 }, 
 ```
@@ -188,7 +202,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否要在複製期間略過不相容的資料列。 | True<br/>FALSE (預設值) | 否
-logStorageSettings | 當您想要記錄不相容的資料列時，可指定的一組屬性。 | &nbsp; | 否
+logSettings | 當您想要記錄不相容的資料列時，可指定的一組屬性。 | &nbsp; | 否
 linkedServiceName | [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的連結服務，儲存包含略過之資料列的記錄。 | `AzureBlobStorage` 或 `AzureBlobFS` 類型連結服務的名稱，以代表您要用來儲存記錄檔的執行個體。 | 否
 path | 包含略過之資料列的記錄檔路徑。 | 指定需要用來記錄不相容資料的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
@@ -203,7 +217,7 @@ path | 包含略過之資料列的記錄檔路徑。 | 指定需要用來記錄�
             "rowsSkipped": 2,
             "copyDuration": 16,
             "throughput": 0.01,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "errors": []
         },
 

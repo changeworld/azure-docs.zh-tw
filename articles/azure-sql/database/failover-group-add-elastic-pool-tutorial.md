@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/27/2019
-ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442747"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593972"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教學課程：將 Azure SQL Database 彈性集區新增至容錯移轉群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,14 +55,14 @@ ms.locfileid: "91442747"
     ![選取彈性集區](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. 使用下列值設定您的彈性集區：
-   - **名稱**：提供彈性集區的唯一名稱，例如 `myElasticPool`。
+   - **名稱** ：提供彈性集區的唯一名稱，例如 `myElasticPool`。
    - 訂用帳戶：從下拉式清單中選取訂用帳戶。
-   - **資源群組**：從下拉式清單中，選取您在第 1 節中建立的資源群組 `myResourceGroup`。
-   - **伺服器**：從下拉式清單中，選取您在第 1 節中建立的伺服器。  
+   - **資源群組** ：從下拉式清單中，選取您在第 1 節中建立的資源群組 `myResourceGroup`。
+   - **伺服器** ：從下拉式清單中，選取您在第 1 節中建立的伺服器。  
 
        ![為彈性集區建立新的伺服器](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **計算 + 儲存體**：選取 [設定彈性集區] 以設定您的計算和儲存體，並將您的單一資料庫新增至彈性集區。 在 [集區設定] 索引標籤上保留預設值 Gen5，以及 2 個虛擬核心和 32gb。
+   - **計算 + 儲存體** ：選取 [設定彈性集區] 以設定您的計算和儲存體，並將您的單一資料庫新增至彈性集區。 在 [集區設定] 索引標籤上保留預設值 Gen5，以及 2 個虛擬核心和 32gb。
 
 1. 在 [設定] 頁面上選取 [資料庫] 索引標籤，然後選擇 [新增資料庫]。 選擇您在第 1 節中建立的資料庫，然後選取 [套用] 將其新增至您的彈性集區。 再次選取 [套用] 以套用您的彈性集區設定，然後關閉 [設定] 頁面。
 
@@ -144,12 +144,12 @@ ms.locfileid: "91442747"
     ![新增容錯移轉群組](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
 1. 在 [容錯移轉群組] 頁面上輸入或選取下列值，然後選取 [建立]：
-    - **容錯移轉群組名稱**：輸入唯一的容錯移轉群組名稱，例如 `failovergrouptutorial`。
-    - **次要伺服器**：選取 [設定必要設定] 選項，然後選擇 [建立新的伺服器]。 或者，您也可以選擇已存在的伺服器作為次要伺服器。 在為您新的次要伺服器輸入下列值之後，選取 [選取]。
-        - **伺服器名稱**：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary`。
-        - **伺服器管理員登入**：輸入 `azureuser`
-        - **密碼**：輸入符合密碼需求的複雜密碼。
-        - **位置**：從下拉式清單中選擇位置，例如 `East US`。 此位置不可與主要伺服器的位置相同。
+    - **容錯移轉群組名稱** ：輸入唯一的容錯移轉群組名稱，例如 `failovergrouptutorial`。
+    - **次要伺服器** ：選取 [設定必要設定] 選項，然後選擇 [建立新的伺服器]。 或者，您也可以選擇已存在的伺服器作為次要伺服器。 在為您新的次要伺服器輸入下列值之後，選取 [選取]。
+        - **伺服器名稱** ：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary`。
+        - **伺服器管理員登入** ：輸入 `azureuser`
+        - **密碼** ：輸入符合密碼需求的複雜密碼。
+        - **位置** ：從下拉式清單中選擇位置，例如 `East US`。 此位置不可與主要伺服器的位置相同。
 
        > [!NOTE]
        > 伺服器登入和防火牆設定必須符合主要伺服器的設定。

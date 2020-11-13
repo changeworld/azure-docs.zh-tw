@@ -5,14 +5,14 @@ description: 瞭解如何在 Azure 監視器中查看 Azure 數位 Twins 計量�
 author: baanders
 ms.author: baanders
 ms.date: 8/4/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46e053856b05f5a009eb1ae8bc6a7246dfb6167e
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091696"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616683"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -34,12 +34,12 @@ ms.locfileid: "93091696"
     
 3. 您可以選擇將計量資料傳送到事件中樞端點或 Azure 儲存體帳戶，方法是從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定** 。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
 
     如需此程式的詳細資訊，請參閱 [*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
 
 4. 您可以選擇從功能表選取 [ **警示** ]，然後選取 [ **+ 新增警示規則** ]，以設定計量資料的警示。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 [警示] 頁面和要新增之按鈕的螢幕擷取畫面":::
 
     如需此程式的詳細資訊，請參閱 [*疑難排解：設定警示*](troubleshoot-alerts.md)。
 
@@ -96,7 +96,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 維度有助於找出更多關於計量的詳細資料。 某些路由計量會提供每個端點的資訊。 下表列出這些維度的可能值。
 
-| 維度 | 值 |
+| 尺寸 | 值 |
 | --- | --- |
 | 驗證 | OAuth |
 |  (API 要求的作業)  | DigitalTwins/DigitalTwins/delete、 <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read、 <br>DigitalTwins/eventroutes/read、 <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete、 <br>DigitalTwins/模型/讀取、 <br>DigitalTwins/模型/撰寫、 <br>DigitalTwins/模型/刪除、 <br>DigitalTwins/query/action |
@@ -107,6 +107,6 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 | 狀態碼類別 | 2xx、4xx、5xx 等等。 |
 | 狀態文字 | 內部伺服器錯誤、找不到等等。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何管理 Azure 數位 Twins 的已記錄計量，請參閱 [*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。

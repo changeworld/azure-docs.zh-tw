@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900318"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616054"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>複製並移動您的自訂視覺專案
 
@@ -26,11 +26,11 @@ ms.locfileid: "92900318"
 
 如果您的應用程式或企業相依于使用自訂視覺專案，建議您將模型複製到另一個區域中的另一個自訂視覺帳戶。 如果發生區域性中斷，您可以在其複製的區域中存取您的專案。
 
-##  <a name="prerequisites"></a>Prerequisites
+##  <a name="prerequisites"></a>先決條件
 
 - 兩個 Azure 自訂視覺資源。 如果您沒有這些專案，請移至 Azure 入口網站並 [建立新的自訂視覺資源](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。
 - 您自訂視覺資源的定型金鑰和端點 Url。 您可以在 Azure 入口網站上資源的 [ **總覽** ] 索引標籤中找到這些值。
-- 建立的自訂視覺專案。 如需如何進行此動作的指示，請參閱 [建立分類器](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier) 。
+- 建立的自訂視覺專案。 如需如何進行此動作的指示，請參閱 [建立分類器](./getting-started-build-a-classifier.md) 。
 
 ## <a name="process-overview"></a>程序概觀
 
@@ -137,7 +137,7 @@ curl -v -G -X POST "{endpoint}/customvision/v3.3/Training/projects/import"
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本指南中，您已瞭解如何在自訂視覺資源之間複製和移動專案。 接下來，探索 API 參考檔，以瞭解您可以使用自訂視覺的其他功能。
 * [REST API 參考文件](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)

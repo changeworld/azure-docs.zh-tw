@@ -4,14 +4,14 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 ms.date: 03/10/2020
-ms.author: mathoma
+ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84032669"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593940"
 ---
 在此步驟中，您會建立使用 AdventureWorksLT 範例資料的[邏輯 SQL 伺服器](../database/logical-servers.md)和[單一資料庫](../database/single-database-overview.md)。 您可以使用 Azure 入口網站功能表和畫面，或在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 指令碼來建立資料庫。
 
@@ -27,30 +27,30 @@ ms.locfileid: "84032669"
 
    ![新增至 Azure SQL](./media/sql-database-create-single-database/sqldbportal.png)
 
-1. 在 [選取 SQL 部署選項] 頁面上，選取 [SQL 資料庫] 圖格，並在**資源類型**下選取 [單一資料庫]。 您可以選取 [顯示詳細資料]，以檢視不同資料庫的更多資訊。
+1. 在 [選取 SQL 部署選項] 頁面上，選取 [SQL 資料庫] 圖格，並在 **資源類型** 下選取 [單一資料庫]。 您可以選取 [顯示詳細資料]，以檢視不同資料庫的更多資訊。
 1. 選取 [建立]。
 
    ![建立單一資料庫](./media/sql-database-create-single-database/create-single-database.png)
 
-1. 在 **建立 SQL 資料庫**表單的 [基本資料] 索引標籤上，在 [專案詳細資料] 下，選取正確的 Azure **訂用帳戶** (如果尚未選取)。
+1. 在 **建立 SQL 資料庫** 表單的 [基本資料] 索引標籤上，在 [專案詳細資料] 下，選取正確的 Azure **訂用帳戶** (如果尚未選取)。
 1. 在 [資源群組] 下選取 [建立新的]，輸入 myResourceGroup，然後選取 [確定]。
-1. 在 [資料庫詳細資料]下，針對**資料庫名稱**輸入 *mySampleDatabase*。
-1. 在 [伺服器] 中，選取 [建立新的]，並填寫**新伺服器**表單，如下所示：
-   - **伺服器名稱**：輸入 mysqlserver 和一些字元來表示唯一性。
-   - **伺服器管理員登入**：輸入 azureuser。
-   - **密碼**：輸入符合需求的密碼，然後在 [確認密碼] 欄位中再次輸入。
-   - **位置**：下拉並選擇位置，例如 **(美國) 美國東部**。
+1. 在 [資料庫詳細資料]下，針對 **資料庫名稱** 輸入 *mySampleDatabase* 。
+1. 在 [伺服器] 中，選取 [建立新的]，並填寫 **新伺服器** 表單，如下所示：
+   - **伺服器名稱** ：輸入 mysqlserver 和一些字元來表示唯一性。
+   - **伺服器管理員登入** ：輸入 azureuser。
+   - **密碼** ：輸入符合需求的密碼，然後在 [確認密碼] 欄位中再次輸入。
+   - **位置** ：下拉並選擇位置，例如 **(美國) 美國東部** 。
 
    選取 [確定]。
 
    ![New server](./media/sql-database-create-single-database/new-server.png)
 
-   請記錄伺服器管理員登入和密碼，以便登入伺服器及其資料庫。 如果您忘記登入或密碼，可以在建立資料庫後，於 **SQL 伺服器**頁面上取得登入名稱或重設密碼。 若要開啟 **SQL 伺服器**頁面，請選取資料庫**概觀**頁面上的伺服器名稱。
+   請記錄伺服器管理員登入和密碼，以便登入伺服器及其資料庫。 如果您忘記登入或密碼，可以在建立資料庫後，於 **SQL 伺服器** 頁面上取得登入名稱或重設密碼。 若要開啟 **SQL 伺服器** 頁面，請選取資料庫 **概觀** 頁面上的伺服器名稱。
 
 1. 在 [計算 + 儲存體] 下，如果想要重新設定預設值，請選取 [設定資料庫]。
 
    在 [設定] 頁面上，您可以選擇：
-   - 將**計算層**從**已佈建**變更為**無伺服器**。
+   - 將 **計算層** 從 **已佈建** 變更為 **無伺服器** 。
    - 檢閱並變更 [虛擬核心] 和 [資料大小上限] 的設定。
    - 選取 [變更組態] 來變更硬體世代。
 
@@ -61,7 +61,7 @@ ms.locfileid: "84032669"
    ![新的 SQL 資料庫 - 基本資料索引標籤](./media/sql-database-create-single-database/new-sql-database-basics.png)
 
 1. 在 [網路功能] 索引標籤的 [連線方法] 下，選取 [公用端點]。
-1. 在 [防火牆規則] 下，將 [新增目前的用戶端 IP 位址] 設定為 **是**。
+1. 在 [防火牆規則] 下，將 [新增目前的用戶端 IP 位址] 設定為 **是** 。
 1. 完成時，選取 [下一步:其他設定]，位於頁面底部。
 
    ![網路功能索引標籤](./media/sql-database-create-single-database/networking.png)
@@ -87,7 +87,7 @@ ms.locfileid: "84032669"
 
    ![Azure Cloud Shell](./media/sql-database-create-single-database/cloudshell.png)
 
-第一次使用入口網站中的 Cloud Shell 時，請在 [歡迎使用] 對話方塊中選取 [Bash]。 後續的工作階段會在 Bash 環境中使用 Azure CLI；或者您也可以從 Cloud Shell 控制列選取 **Bash**。
+第一次使用入口網站中的 Cloud Shell 時，請在 [歡迎使用] 對話方塊中選取 [Bash]。 後續的工作階段會在 Bash 環境中使用 Azure CLI；或者您也可以從 Cloud Shell 控制列選取 **Bash** 。
 
 下列 Azure CLI 程式碼會建立資源群組、伺服器、單一資料庫，以及適用於伺服器存取權的伺服器層級 IP 防火牆規則。 請務必記錄所產生的資源群組和伺服器名稱，以便您稍後可以管理這些資源。
 
@@ -149,11 +149,11 @@ az sql db create \
 
 | Command | 描述 |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 |
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | 將訂用帳戶設定為目前使用中的訂用帳戶。 |
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 建立裝載資料庫和彈性集區的伺服器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | 建立伺服器層級的防火牆規則。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | 建立資料庫。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | 建立資料庫。 |
 
 如需 Azure SQL Database Azure CLI 的範例 ，請參閱 [Azure CLI 範例](../database/az-cli-script-samples-content-guide.md)。
 

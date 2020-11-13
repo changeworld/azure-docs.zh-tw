@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342142"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616241"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,8 @@ ms.locfileid: "93342142"
 本文以數個 Azure Cosmos DB 概念為基礎，例如 [資料模型](modeling-data.md)化、資料 [分割](partitioning-overview.md)和布 [建的輸送量](request-units.md) ，以示範如何處理實際的資料設計練習。
 
 如果您經常使用關聯式資料庫，您可能已有設計資料模型的習慣和觀念。 基於特定的條件約束，以及 Azure Cosmos DB 的獨特功能，這些最佳做法大多無法發揮實際功效，而可能迫使您選擇次佳的解決方案。 本文的目的，是要引導您在 Azure Cosmos DB 中完成為實際使用案例建立模型的程序，從建立項目模型、實體共置到容器分割，逐步完成。
+
+[下載或查看由社區產生的原始程式碼](https://github.com/jwidmer/AzureCosmosDbBlogExample) ，其中說明本文的概念。 這個程式碼範例是由社區參與者所貢獻，Azure Cosmos DB 小組不支援其維護。
 
 ## <a name="the-scenario"></a>案例
 

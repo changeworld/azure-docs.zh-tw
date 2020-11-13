@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7853ac3ece01057282bc6cb421018020e15273b5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079185"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594261"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
 
@@ -34,23 +34,24 @@ ms.locfileid: "92079185"
 
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure 防禦專門部署至 ***AzureBastionSubnet***。
+Azure 防禦專門部署至 * **AzureBastionSubnet** _。
 
-* **輸入流量：**
+_ 輸入 **流量：**
 
-   * 輸入**來自公用網際網路的流量：** Azure 防禦將會建立一個公用 IP，其需要在公用 IP 上啟用埠443來輸入流量。 不需要在 AzureBastionSubnet 上開啟埠3389/22。
+   * 輸入 **來自公用網際網路的流量：** Azure 防禦將會建立一個公用 IP，其需要在公用 IP 上啟用埠443來輸入流量。 不需要在 AzureBastionSubnet 上開啟埠3389/22。
    * **從 Azure 防禦控制平面輸入流量：** 針對控制平面連線能力，請從 **GatewayManager** 服務標記啟用埠443輸入。 這可讓控制平面（也就是閘道管理員）能夠與 Azure 防禦對話。
+   * **從 Azure Loadbalancer 輸入流量：** 針對健康情況探查，請從 **AzureLoadBalancer** 服務標記啟用埠443輸入。 這會啟用 azure 負載平衡器，以偵測後端的連線能力問題。
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連接的輸入安全性規則。":::
 
 * **輸出流量：**
 
-   * 流向**目標 vm 的輸出流量：** Azure 防禦會透過私人 IP 達到目標 Vm。 Nsg 需要允許埠3389和22的其他目標 VM 子網的輸出流量。
+   * 流向 **目標 vm 的輸出流量：** Azure 防禦會透過私人 IP 達到目標 Vm。 Nsg 需要允許埠3389和22的其他目標 VM 子網的輸出流量。
    * **Azure 中其他公用端點的輸出流量：** Azure 防禦必須能夠連線到 Azure (中的各種公用端點，例如，用來儲存診斷記錄和計量記錄) 。 基於這個理由，Azure 防禦需要輸出至443至 **AzureCloud** 服務標記。
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連線的輸出安全性規則。":::
 
 ### <a name="target-vm-subnet"></a>目標 VM 子網
 這是包含您想要 RDP/SSH 連線之目標虛擬機器的子網。

@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: e4709bf901ed74e0ea7589824a280651f8b73866
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793376"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593941"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教學課程：將 Azure SQL Database 新增至自動容錯移轉群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "92793376"
 若要完成本教學課程，請確定您具有下列必要項目：
 
 - Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/) (如果您還沒有帳戶的話)。
-- 最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ---
 
@@ -199,7 +199,7 @@ ms.locfileid: "92793376"
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 建立裝載資料庫和彈性集區的伺服器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 建立伺服器的防火牆規則。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 建立容錯移轉群組。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | 建立容錯移轉群組。 |
 
 ---
 
@@ -322,8 +322,8 @@ ms.locfileid: "92793376"
 
 | Command | 注意 |
 |---|---|
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出伺服器中的容錯移轉群組。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | 列出伺服器中的容錯移轉群組。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 |
 
 ---
 
@@ -409,14 +409,14 @@ ms.locfileid: "92793376"
 
 | Command | 注意 |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 |
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | 將訂用帳戶設定為目前使用中的訂用帳戶。 |
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 在 Azure SQL Database 中建立裝載單一資料庫和彈性集區的伺服器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 在 Azure SQL Database 中建立伺服器層級的 IP 防火牆規則。 |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | 在 Azure SQL Database 中建立資料庫。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 在 Azure SQL Database 中建立容錯移轉群組。 |
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出 Azure SQL Database 中伺服器的容錯移轉群組。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 |
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | 在 Azure SQL Database 中建立資料庫。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | 在 Azure SQL Database 中建立容錯移轉群組。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | 列出 Azure SQL Database 中伺服器的容錯移轉群組。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 |
 | [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)

@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424594"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616173"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -88,7 +88,8 @@ SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它�
      "location":
  "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
    }
- ```
+}   
+```
 
 ### <a name="table-2-default-user-attribute-mapping"></a>表 2：預設使用者屬性對應
 接著，您可以使用下表來了解應用程式所需的屬性如何對應至 Azure AD 和 SCIM RFC 中的屬性。 您可以[自訂](customize-application-attributes.md)在 Azure AD 與 SCIM 端點之間對應屬性的方式。 請注意，您不需要同時支援使用者和群組或所有屬性，如下所示。 在考量如何將 Azure AD 中的屬性經常對應至 SCIM 通訊協定中的屬性時，可加以參考。 
@@ -126,7 +127,7 @@ SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它�
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
-SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然後再向外擴充。 當您使用自訂屬性時，或結構描述經常變更時，/Schemas 端點會很有幫助。 此端點可讓用戶端自動取得最新的結構描述。 /Bulk 端點在支援群組時特別有用。 下表說明 SCIM 標準中定義的各種端點。 當您使用自訂屬性時，或結構描述經常變更時，/Schemas 端點會很有幫助。 此端點可讓用戶端自動取得最新的結構描述。 /Bulk 端點在支援群組時特別有用。 下表說明 SCIM 標準中定義的各種端點。 
+SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然後再向外擴充。 當您使用自訂屬性時，或結構描述經常變更時，/Schemas 端點會很有幫助。 此端點可讓用戶端自動取得最新的結構描述。 /Bulk 端點在支援群組時特別有用。 下表說明 SCIM 標準中定義的各種端點。
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表 4：決定您想要開發的端點
 |端點|DESCRIPTION|

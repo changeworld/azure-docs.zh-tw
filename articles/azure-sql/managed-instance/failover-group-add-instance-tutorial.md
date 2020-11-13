@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617735"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593989"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教學課程：將 SQL 受控執行個體新增到容錯移轉群組
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,13 +64,13 @@ ms.locfileid: "91617735"
 使用 Azure 入口網站建立資源群組和您的主要受控執行個體。 
 
 1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 `Azure SQL`。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫]**** 圖格上的 [顯示詳細資料]****，以查看不同資料庫的其他資訊。
+1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫] 圖格上的 [顯示詳細資料]，以查看不同資料庫的其他資訊。
 1. 在 [SQL 受控執行個體] 磚上，選取 [建立]。 
 
     ![選取 SQL 受控執行個體](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
 1. 在 [建立 Azure SQL 受控執行個體] 頁面的 [基本資料] 索引標籤上：
-    1. 在 [專案詳細資料] 底下，從下拉式清單選取您的**訂用帳戶**，然後選擇 [建立新的] 資源群組。 輸入資源群組的名稱，例如 `myResourceGroup`。 
+    1. 在 [專案詳細資料] 底下，從下拉式清單選取您的 **訂用帳戶** ，然後選擇 [建立新的] 資源群組。 輸入資源群組的名稱，例如 `myResourceGroup`。 
     1. 在 [SQL 受控執行個體詳細資料] 底下，提供受控執行個體的名稱，以及您想要在其中部署受控執行個體的區域。 保留 [計算 + 儲存體] 的預設值。 
     1. 在 [系統管理員帳戶] 底下，提供管理員登入 (例如 `azureuser`)，以及複雜的管理員密碼。 
 
@@ -161,8 +161,8 @@ ms.locfileid: "91617735"
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -415,7 +415,7 @@ ms.locfileid: "91617735"
 若要確認主要虛擬網路的子網路範圍，請遵循下列步驟：
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的資源群組，然後選取主要執行個體的虛擬網路。  
-2. 選取 [設定] 底下的 [子網路]，並記下**位址範圍**。 次要受控執行個體虛擬網路的子網路位址範圍不能與此重疊。 
+2. 選取 [設定] 底下的 [子網路]，並記下 **位址範圍** 。 次要受控執行個體虛擬網路的子網路位址範圍不能與此重疊。 
 
 
    ![主要子網路](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
@@ -423,7 +423,7 @@ ms.locfileid: "91617735"
 若要建立虛擬網路，請遵循下列步驟：
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源] 並搜尋 [虛擬網路]。 
-1. 選取 Microsoft 發佈的**虛擬網路**選項，然後在下一頁選取 [建立]。 
+1. 選取 Microsoft 發佈的 **虛擬網路** 選項，然後在下一頁選取 [建立]。 
 1. 填寫必要欄位，以設定次要受控執行個體的虛擬網路，然後選取 [建立]。 
 
    下表顯示次要虛擬網路所需的值：
@@ -458,7 +458,7 @@ ms.locfileid: "91617735"
 使用 Azure 入口網站建立次要受控執行個體。 
 
 1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 `Azure SQL`。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫]**** 圖格上的 [顯示詳細資料]****，以查看不同資料庫的其他資訊。
+1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫] 圖格上的 [顯示詳細資料]，以查看不同資料庫的其他資訊。
 1. 在 [SQL 受控執行個體] 磚上，選取 [建立]。 
 
     ![選取 SQL 受控執行個體](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
@@ -750,12 +750,12 @@ ms.locfileid: "91617735"
 使用 Azure 入口網站，為您主要受控執行個體的虛擬網路建立閘道。 
 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後為您的主要受控執行個體選取**虛擬網路**資源。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後為您的主要受控執行個體選取 **虛擬網路** 資源。 
 1. 選取 [設定] 底下的 [子網路]，然後選取新增 [閘道子網路]。 請保留預設值。 
 
    ![為主要受控執行個體新增閘道](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 建立子網路閘道之後，從左側瀏覽窗格中選取 [建立資源]，然後在搜尋方塊中輸入 `Virtual network gateway`。 選取 **Microsoft** 發佈的**虛擬網路閘道**資源。 
+1. 建立子網路閘道之後，從左側瀏覽窗格中選取 [建立資源]，然後在搜尋方塊中輸入 `Virtual network gateway`。 選取 **Microsoft** 發佈的 **虛擬網路閘道** 資源。 
 
    ![建立新的虛擬網路閘道](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
@@ -923,7 +923,7 @@ ms.locfileid: "91617735"
 
 
 1. 從 [Azure 入口網站](https://portal.azure.com)選取 [建立資源]。
-1. 在搜尋方塊中輸入 `connection`，然後按 Enter 鍵進行搜尋，這會帶您前往 Microsoft 發佈的**連線**資源。
+1. 在搜尋方塊中輸入 `connection`，然後按 Enter 鍵進行搜尋，這會帶您前往 Microsoft 發佈的 **連線** 資源。
 1. 選取 [建立] 以建立您的連線。 
 1. 在 [基本資料] 頁面上選取下列值，然後選取 [確定]。 
     1. 選取 `VNet-to-VNet` 作為 [連線類型]。 
@@ -935,8 +935,8 @@ ms.locfileid: "91617735"
     1. 選擇次要網路閘道作為 [第二個虛擬網路閘道]，例如 `secondaryGateway`。 
     1. 選取 [建立雙向連線] 旁的核取方塊。 
     1. 保留預設的主要連線名稱，或將其重新命名為您選擇的值。 
-    1. 提供連線的**共用金鑰 (PSK)** ，例如 `mi1m2psk`。 
-    1. 選取 [確定]**** 儲存設定。 
+    1. 提供連線的 **共用金鑰 (PSK)** ，例如 `mi1m2psk`。 
+    1. 選取 [確定] 儲存設定。 
 
     ![建立閘道連線](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
@@ -1090,7 +1090,7 @@ ms.locfileid: "91617735"
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。 
-1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程序可能需要一些時間才能在背景中完成，在其完成前，您將無法刪除*虛擬叢集*或任何其他相依資源。 監視 [活動] 索引標籤中的刪除作業，確認您的受控執行個體已刪除。 
+1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程序可能需要一些時間才能在背景中完成，在其完成前，您將無法刪除 *虛擬叢集* 或任何其他相依資源。 監視 [活動] 索引標籤中的刪除作業，確認您的受控執行個體已刪除。 
 1. 受控執行個體刪除後，請在資源群組中選取虛擬叢集，然後選擇 [刪除]，加以刪除。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 
 1. 刪除任何剩餘的資源。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 
 1. 選取 [刪除資源群組]、輸入資源群組的名稱 `myResourceGroup`，然後選取 [刪除]，以刪除資源群組。 

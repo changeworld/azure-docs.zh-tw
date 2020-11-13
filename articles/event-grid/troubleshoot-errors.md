@@ -3,15 +3,20 @@ title: Azure 事件方格-疑難排解指南
 description: 本文提供錯誤碼、錯誤訊息、描述和建議動作的清單。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041393"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592986"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>針對 Azure 事件方格錯誤進行疑難排解
-這份疑難排解指南提供 Azure 事件方格錯誤碼清單、錯誤訊息、其描述，以及您在收到這些錯誤時應採取的建議動作。 
+這份疑難排解指南提供下列資訊： 
+
+- Azure 事件方格錯誤碼
+- 錯誤訊息
+- 錯誤的描述
+- 當您收到這些錯誤時，應該採取的建議動作。 
 
 ## <a name="error-code-400"></a>錯誤碼︰400
 | 錯誤碼 | 錯誤訊息 | 描述 | 建議 |
@@ -31,27 +36,17 @@ ms.locfileid: "93041393"
 
 | 錯誤碼 | 錯誤訊息 | 描述 | 建議的動作 |
 | ---------- | ------------- | ----------- | ------------------ |
-| HttpStatusCode。禁止 <br/>403 | 由於 IpAddress 篩選規則的緣故，用戶端 {IpAddress} 發行至 {主題/網域} 遭到拒絕。 | 主題或網域已設定 IP 防火牆規則，且存取僅限於已設定的 IP 位址。 | 將 IP 位址新增至 IP 防火牆規則，請參閱 [設定 ip 防火牆](configure-firewall.md) |
-| HttpStatusCode。禁止 <br/> 403 | 因為來自私人端點的要求，且找不到任何與資源相符的私人端點連線，所以拒絕用戶端發佈至 {主題/網域}。 | 主題或網域已設定私人端點，且發佈要求來自未設定/核准的私人端點。 | 設定主題/網域的私人端點。 [設定私人端點](configure-private-endpoints.md) |
+| HttpStatusCode。禁止 <br/>403 | 由於 IpAddress 篩選規則的原因，用戶端 {IpAddress} 發行至 {主題/網域} 遭到拒絕。 | 主題或網域已設定 IP 防火牆規則，且存取僅限於已設定的 IP 位址。 | 將 IP 位址新增至 IP 防火牆規則，請參閱 [設定 ip 防火牆](configure-firewall.md) |
+| HttpStatusCode。禁止 <br/> 403 | 因為來自私人端點的要求，且找不到任何與資源相符的私人端點連線，所以拒絕用戶端發佈至 {主題/網域}。 | 主題或網域具有私人端點，而發佈要求來自未設定或核准的私人端點。 | 設定主題/網域的私人端點。 [設定私人端點](configure-private-endpoints.md) |
 
-## <a name="troubleshoot-event-subscription-validation"></a>針對事件訂閱驗證進行疑難排解
+此外，檢查您的 webhook 是否位於 Azure 應用程式閘道或 Web 應用程式防火牆後方。 如果是，請停用下列防火牆規則，並再次執行 HTTP POST：
 
-在事件訂閱建立期間，如果您看到錯誤訊息（例如 `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` ），則表示驗證交握失敗。 若要解決此錯誤，請執行以下幾方面的驗證：
+- 920300 (要求遺漏 accept 標頭) 
+- 942430 (受限制的 SQL 字元異常偵測 (args) ：超過 (12) # A5 的特殊字元數
+- 920230 (偵測到多個 URL 編碼) 
+- 942130 (SQL 插入式攻擊：偵測到 SQL tautology。 ) 
+- 931130 (可能的遠端檔案包含 (RFI) 攻擊 = Off 網域參考/連結) 
 
-- 使用 Postman 或捲曲或類似的工具，以 [範例 SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) 要求本文進行 HTTP POST 至 webhook url。
-- 如果您的 webhook 正在執行同步驗證交握機制，請確認 ValidationCode 會作為回應的一部分傳回。
-- 如果您的 webhook 正在執行非同步驗證交握機制，請確認您是 HTTP POST 傳回的是 200 OK。
-- 如果您的 Webhook 在回應中傳回 403 (禁止)，請檢查您的 Webhook 是否位於 Azure 應用程式閘道或 Web 應用程式防火牆後方。 如果是，則您需要停用這些防火牆規則，並再次執行 HTTP POST：
-
-  920300 (要求中遺漏 Accept 標頭，我們可以修正此問題)
-
-  942430 (受限制的 SQL 字元異常偵測 (args): 超出的特殊字元數目 (12))
-
-  920230 (偵測到多個 URL 編碼)
-
-  942130 (SQL 插入式攻擊:檢測到 SQL 恆真式。)
-
-  931130 (可能的遠端檔案包含 (RFI) 攻擊 = 關閉網域參考/連結)
 
 
 ## <a name="next-steps"></a>後續步驟

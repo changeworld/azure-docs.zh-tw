@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377746"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593071"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "93377746"
 
 ## <a name="mobile-phone-verification"></a>行動電話驗證
 
-針對 Azure Multi-Factor Authentication 或 SSPR，使用者可選擇接收含驗證碼的簡訊以在登入介面中輸入，或接到電話並提示他們輸入已定義的 pin 碼。
+針對 Azure Multi-Factor Authentication 或 SSPR，使用者可以選擇接收包含驗證碼的文字訊息，以便在登入介面中輸入或接收電話。
 
 如果使用者不想在目錄中顯示其行動電話號碼，但想要用於密碼重設，系統管理員便不應將電話號碼填入目錄。 使用者反而應該透過合併安全性資訊註冊 (位於 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo))，填入其 **驗證電話** 屬性。 管理員可以在使用者的設定檔中看到此資訊，但該資訊不會發佈在其他地方。
 
@@ -46,11 +46,11 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 
 ### <a name="phone-call-verification"></a>電話驗證
 
-在 SSPR 或 Azure Multi-Factor Authentication 期間使用電話驗證，系統會對使用者註冊的電話號碼進行自動語音通話。 為了完成登入程序，系統會提示使用者輸入其 pin 碼，接著輸入其鍵台上的 #。
+在 SSPR 或 Azure Multi-Factor Authentication 期間使用電話驗證，系統會對使用者註冊的電話號碼進行自動語音通話。 若要完成登入程式，系統會提示使用者在其鍵盤上按 #。
 
 ## <a name="office-phone-verification"></a>辦公室電話驗證
 
-在 SSPR 或 Azure Multi-Factor Authentication 期間使用電話驗證，系統會對使用者註冊的電話號碼進行自動語音通話。 為了完成登入程序，系統會提示使用者輸入其 pin 碼，接著輸入其鍵台上的 #。
+在 SSPR 或 Azure Multi-Factor Authentication 期間使用電話驗證，系統會對使用者註冊的電話號碼進行自動語音通話。 若要完成登入程式，系統會提示使用者在其鍵盤上按 #。
 
 ## <a name="troubleshooting-phone-options"></a>電話選項的疑難排解
 
@@ -61,7 +61,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 * 錯誤的電話號碼或不正確的國家/區域碼，或個人電話號碼與公司電話號碼混淆不清。
    * 針對使用者物件和已設定的驗證方法進行疑難排解。 請確定已註冊正確的電話號碼。
 * 輸入了錯誤的 PIN。
-   * 確認使用者已使用正確的 PIN 來註冊其帳戶。
+   * 確認使用者已使用正確的 PIN 來註冊其帳戶 (MFA Server 使用者僅) 。
 * 電話轉接到語音信箱。
    * 確保使用者電話已開機，且該服務已可在其區域中使用，或使用替代方法。
 * 使用者遭到封鎖
