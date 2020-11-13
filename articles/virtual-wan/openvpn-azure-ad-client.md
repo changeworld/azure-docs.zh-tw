@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043409"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565002"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 P2S OpenVPN 通訊協定連線的 VPN 用戶端：Azure AD 驗證
 
@@ -64,33 +64,33 @@ ms.locfileid: "93043409"
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>匯入用戶端設定檔
 
-1. 在頁面上，選取 [匯入]  。
+1. 在頁面上，選取 [匯入]。
 
     ![螢幕擷取畫面：顯示從加號功能表選取的匯入。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]  。
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]。
 
     ![螢幕擷取畫面顯示開啟的對話方塊，您可以在其中選取檔案。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. 指定設定檔的名稱，然後選取 [儲存]  。
+3. 指定設定檔的名稱，然後選取 [儲存]。
 
     ![螢幕擷取畫面會顯示已新增的連接名稱，並已選取 [儲存] 按鈕。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
-4. 選取 [連線]  以連線至 VPN。
+4. 選取 [連線] 以連線至 VPN。
 
     ![螢幕擷取畫面顯示您剛才建立之連接的 [連線] 按鈕。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]  。
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]。
 
     ![螢幕擷取畫面顯示連接狀態中的連線，以及中斷連線的選項。](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
-1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]  。
+1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]。
 
     ![螢幕擷取畫面：顯示從功能表選取 [移除]。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
-2. 選取 [移除]  以刪除。
+2. 選取 [移除] 以刪除。
 
     ![螢幕擷取畫面顯示確認對話方塊，其中包含移除或取消的選項。](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
@@ -104,7 +104,7 @@ ms.locfileid: "93043409"
 
     ![螢幕擷取畫面：顯示窗格，您可以在其中輸入所需的值。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
-3. 選取 [連線]  以連線至 VPN。
+3. 選取 [連線] 以連線至 VPN。
 
     ![螢幕擷取畫面顯示連接的 [連線] 按鈕。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
@@ -138,11 +138,11 @@ ms.locfileid: "93043409"
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 
-1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]  。
+1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]。
 
     ![螢幕擷取畫面顯示從功能表選取診斷。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. 在 [連線屬性]  頁面上，選取 [執行診斷]  。
+2. 在 [連線屬性] 頁面上，選取 [執行診斷]。
 
     ![螢幕擷取畫面：顯示連接的 [執行診斷] 按鈕。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
@@ -192,7 +192,7 @@ ms.locfileid: "93043409"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 用戶端會使用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出下 `ipconfig /all` 。 若要確認使用中的 DNS 設定，請參閱 PowerShell 中的 [get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
+> OpenVPN Azure AD 用戶端會使用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出下 `ipconfig /all` 。 若要確認使用中的 DNS 設定，請參閱 PowerShell 中的 [get-dnsclientnrptpolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？

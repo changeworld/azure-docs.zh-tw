@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7c1bfa618ea0ddddd7666698bc4fffa3ced5079d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323067"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563812"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -110,7 +110,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 
 * [建立計算實例](#create)。 
 * 重新整理 [計算實例] 索引標籤。
-* 啟動、停止和重新開機計算實例。  當實例正在執行時，您需要支付該實例的費用。 當您未使用計算實例來降低成本時，請將它停止。 停止計算實例會將其解除配置。 然後再於需要時加以啟動。
+* 啟動、停止和重新開機計算實例。  當實例正在執行時，您需要支付該實例的費用。 當您未使用計算實例來降低成本時，請將它停止。 停止計算實例會將其解除配置。 然後再於需要時加以啟動。 請注意，停止計算實例會停止計算時數的計費，但您仍需支付磁片、公用 IP 和標準負載平衡器的費用。
 * 刪除計算實例。
 * 篩選計算實例的清單，只顯示您已建立的實例。
 

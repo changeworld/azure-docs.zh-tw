@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365998"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562163"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>適用於 Android 裝置的共用裝置模式
 
-> [!NOTE]
-> 這項功能處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>[!IMPORTANT]
+> 這項功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 第一線背景工作（例如零售夥伴、航班小組成員和現場服務工作者）通常會使用共用行動裝置來執行其工作。 當他們開始共用密碼或 pin 碼以存取共用裝置上的客戶和商務資料時，就會變成問題。
 
@@ -36,7 +34,7 @@ ms.locfileid: "92365998"
 若要建立共用裝置模式應用程式，開發人員和雲端裝置系統管理員會一起運作：
 
 - 開發人員會撰寫單一帳戶應用程式 (在共用裝置模式下不支援多帳戶應用程式) 、新增 `"shared_device_mode_supported": true` 至應用程式的設定，以及撰寫程式碼來處理共用裝置登出之類的作業。
-- 裝置系統管理員可透過安裝驗證器應用程式，並使用驗證器應用程式將裝置設定為共用模式，來準備要共用的裝置。 只有處於 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator-permissions) 角色的使用者可以使用 [驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置系統管理員**。
+- 裝置系統管理員可透過安裝驗證器應用程式，並使用驗證器應用程式將裝置設定為共用模式，來準備要共用的裝置。 只有處於 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator-permissions) 角色的使用者可以使用 [驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置系統管理員** 。
 
  本文主要著重于開發人員應考慮的事項。
 
@@ -44,7 +42,7 @@ ms.locfileid: "92365998"
 
 使用 Microsoft 驗證程式庫 SDK 撰寫的應用程式 (MSAL) 可以管理單一帳戶或多個帳戶。 如需詳細資訊，請參閱 [單一帳戶模式或多重帳戶模式](single-multi-account.md)。 適用于您應用程式的 Microsoft 身分識別平臺功能會根據應用程式是在單一帳戶模式或多重帳戶模式中執行而有所不同。
 
-**共用裝置模式應用程式只能在單一帳戶模式下運作**。
+**共用裝置模式應用程式只能在單一帳戶模式下運作** 。
 
 > [!IMPORTANT]
 > 僅支援多重帳戶模式的應用程式無法在共用裝置上執行。 如果員工載入不支援單一帳戶模式的應用程式，它就不會在共用裝置上執行。

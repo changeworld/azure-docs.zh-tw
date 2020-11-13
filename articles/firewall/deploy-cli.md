@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7c6640b6634a017819735b9d0f7b906f8dc91d0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075421"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565869"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和設定 Azure 防火牆
 
@@ -44,22 +44,11 @@ ms.locfileid: "89075421"
 
 如果您想要的話，可以使用 [Azure 入口網站](tutorial-firewall-deploy-portal.md) 或 [Azure PowerShell](deploy-ps.md)來完成此程式。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>必要條件
-
-### <a name="azure-cli"></a>Azure CLI
-
-如果您選擇在本機安裝和使用 CLI，請執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 **az--version**。 如需安裝或升級的相關資訊，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
-
-安裝 Azure 防火牆延伸模組：
-
-```azurecli-interactive
-az extension add -n azure-firewall
-```
-
+- 本文需要 Azure CLI 的版本2.0.4 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="set-up-the-network"></a>設定網路
 
@@ -264,7 +253,7 @@ az network firewall network-rule create \
 
 1. 將遠端桌面連線到 **Srv-Jump** 虛擬機器，然後登入。 從該處開啟與 **Srv 工作** 私人 IP 位址的遠端桌面連線，然後登入。
 
-3. 在 **SRV 工作**上，開啟 PowerShell 視窗並執行下列命令：
+3. 在 **SRV 工作** 上，開啟 PowerShell 視窗並執行下列命令：
 
    ```
    nslookup www.google.com

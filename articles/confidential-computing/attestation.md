@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 70a17aacde67744eae74ca263200f2c65fbd300a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86856d1f66b5b7d723c907c17d7179ffcd2b82ab
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994849"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565665"
 ---
 # <a name="attesting-sgx-enclaves"></a>證明 SGX 記憶體保護區
 
@@ -30,11 +30,11 @@ Azure 上的機密運算提供以 Intel SGX 為基礎的虛擬機器，可隔離
 
 證明必須使用與系統軟體和晶片相容的安全證明服務來執行。 您可以使用的一些服務範例如下
 
-- [Microsoft Azure 證明 (preview) ](https://docs.microsoft.com/azure/attestation/overview) 或
+- [Microsoft Azure 證明 (preview) ](../attestation/overview.md) 或
 - [Intel 的證明和布建服務](https://software.intel.com/sgx/attestation-services)
 
 
 這兩者都與 Azure 機密運算 Intel SGX 基礎結構相容。 
 
 ## <a name="next-steps"></a>後續步驟
-試用 [適用于記憶體保護區感知應用程式的 Microsoft Azure 證明範例](https://docs.microsoft.com/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)。
+試用 [適用于記憶體保護區感知應用程式的 Microsoft Azure 證明範例](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)。

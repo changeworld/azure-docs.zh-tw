@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994853"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564373"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure 機密計算虛擬機器 (Vm) 總覽
 
@@ -29,7 +29,7 @@ Azure 是在虛擬化環境中提供機密運算的第一個雲端提供者。 �
 
 Azure 機密運算基礎結構目前由虛擬機器 (VM) 的專用 SKU 組成。 這些 VM 會在具有 Software Guard Extension (Intel SGX) 的 Intel 處理器上執行。 [Intel SGX](https://intel.com/sgx) 是一種元件，可讓我們以機密運算增加保護。 
 
-現今，Azure 提供以 Intel SGX 技術為基礎的 [DCsv2 系列](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)，以便建立以硬體為基礎的記憶體保護區。 您可建置以安全記憶體保護區為基礎的應用程式，以在 DCsv2 系列的 VM 中執行，進而保護您的應用程式資料和使用中的程式碼。 
+現今，Azure 提供以 Intel SGX 技術為基礎的 [DCsv2 系列](../virtual-machines/dcv2-series.md)，以便建立以硬體為基礎的記憶體保護區。 您可建置以安全記憶體保護區為基礎的應用程式，以在 DCsv2 系列的 VM 中執行，進而保護您的應用程式資料和使用中的程式碼。 
 
 [深入](virtual-machine-solutions.md) 瞭解如何使用以硬體為基礎的受信任記憶體保護區來部署 Azure 機密計算虛擬機器。
 
@@ -39,7 +39,7 @@ Azure 機密運算基礎結構目前由虛擬機器 (VM) 的專用 SKU 組成。
 
 基本上，請將記憶體保護區視為一個安全箱。 您可將已加密的程式碼和資料放入這個箱子中。 從箱子外部，您看不到任何東西。 您可為記憶體保護區提供可解密資料的金鑰，然後在從記憶體保護區送出之前，再次處理和加密資料。
 
-每個記憶體保護區都有一組加密頁面快取 (EPC) ，可決定每個記憶體保護區可以保留的記憶體數量。 較大的 DCsv2 虛擬機器有更多 EPC 記憶體。 閱讀 [ [DCsv2 規格](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) ] 頁面，以瞭解每個 VM 大小的最大 EPC。
+每個記憶體保護區都有一組加密頁面快取 (EPC) ，可決定每個記憶體保護區可以保留的記憶體數量。 較大的 DCsv2 虛擬機器有更多 EPC 記憶體。 閱讀 [ [DCsv2 規格](../virtual-machines/dcv2-series.md) ] 頁面，以瞭解每個 VM 大小的最大 EPC。
 
 
 

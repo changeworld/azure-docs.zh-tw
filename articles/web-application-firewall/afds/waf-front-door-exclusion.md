@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 943124982fe1f2ccf142bb9161ec8ada07e63df5
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c2c84b508ee86ebdd82dbcc7040106142187c506
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444974"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563455"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web 應用程式防火牆 (WAF) 與 Front Door Service 排除清單 
 
-有時候，Web 應用程式防火牆 (WAF) 可能會封鎖您想要允許應用程式使用的要求。 例如，Active Directory 插入用於驗證的權杖。 這些權杖可以包含特殊字元，而這些特殊字元可能會觸發 WAF 規則中的假肯定。 WAF 排除清單可讓您略過 WAF 評估的特定要求屬性。  您可以使用  [PowerShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、 [Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 入口網站來設定排除清單。 下列範例顯示 Azure 入口網站設定。 
+有時候，Web 應用程式防火牆 (WAF) 可能會封鎖您想要允許應用程式使用的要求。 例如，Active Directory 插入用於驗證的權杖。 這些權杖可以包含特殊字元，而這些特殊字元可能會觸發 WAF 規則中的假肯定。 WAF 排除清單可讓您略過 WAF 評估的特定要求屬性。  您可以使用  [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0)、 [AZURE CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、 [Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 入口網站來設定排除清單。 下列範例顯示 Azure 入口網站設定。 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>使用 Azure 入口網站設定排除清單
 **管理排除** 專案可從 WAF 入口網站的 **受控規則** 下存取
 

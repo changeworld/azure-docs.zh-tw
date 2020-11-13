@@ -7,22 +7,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 04059ac1feae04cb6fa8b09f7b7077b7e11bac4c
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 84b83c1dd541418c446a89a6f51be668cb41e54e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170367"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562639"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何將事件從 Azure SignalR Service 傳送至事件方格
 
 Azure 事件方格是完全受控的事件路由服務，可使用 pub-sub 模型提供統一的事件耗用量。 在本指南中，您會使用 Azure CLI 建立 Azure SignalR Service、訂閱連接事件，然後部署範例 web 應用程式以接收事件。 最後，您可以連線和中斷連接，並在範例應用程式中查看事件承載。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-本文中的 Azure CLI 命令已針對 **Bash** 殼層進行格式化。 如果您使用不同的殼層 (例如 PowerShell 或命令提示字元)，您可能需要據以調整行接續字元或變數指派行。 本文使用變數來將需要編輯的命令數量降至最低。
+ - 本文中的 Azure CLI 命令已針對 **Bash** 殼層進行格式化。 如果您使用不同的殼層 (例如 PowerShell 或命令提示字元)，您可能需要據以調整行接續字元或變數指派行。 本文使用變數來將需要編輯的命令數量降至最低。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -94,7 +94,7 @@ az deployment group create \
 
 ## <a name="subscribe-to-registry-events"></a>訂閱登錄事件
 
-在事件方格中，您可以訂閱「主題」**，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-訂][az-eventgrid-event-subscription-create] 用帳戶 create 命令會訂閱您所建立的 Azure SignalR Service，並將您的 web 應用程式 URL 指定為它應該傳送事件的目標端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
+在事件方格中，您可以訂閱「主題」，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-訂][az-eventgrid-event-subscription-create] 用帳戶 create 命令會訂閱您所建立的 Azure SignalR Service，並將您的 web 應用程式 URL 指定為它應該傳送事件的目標端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)

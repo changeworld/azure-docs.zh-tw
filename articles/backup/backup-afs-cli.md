@@ -3,14 +3,14 @@ title: 使用 Azure CLI 備份 Azure 檔案共用
 description: 瞭解如何使用 Azure CLI 在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 12d258a3242530745cc8ce31afae18f622323488
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293249"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565886"
 ---
-# <a name="back-up-azure-file-shares-with-cli"></a>使用 CLI 備份 Azure 檔案共用
+# <a name="back-up-azure-file-shares-with-azure-cli"></a>使用 Azure CLI 備份 Azure 檔案共用
 
 Azure 命令列介面 (CLI) 提供用來管理 Azure 資源的命令列體驗。 它是建立自訂自動化以使用 Azure 資源的絕佳工具。 本文將詳細說明如何使用 Azure CLI 來備份 Azure 檔案共用。 您也可以透過 [Azure PowerShell](./backup-azure-afs-automation.md) 或在 [Azure 入口網站](backup-afs.md)中執行這些步驟。
 
@@ -20,9 +20,9 @@ Azure 命令列介面 (CLI) 提供用來管理 Azure 資源的命令列體驗。
 * 啟用 Azure 檔案共用的備份
 * 觸發檔案共用的隨選備份
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-若要在本機安裝和使用 CLI，您必須執行 Azure CLI 2.0.18 版或更新版本。 若要尋找 CLI 版本，請 `run az --version` 。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教學課程需要 Azure CLI 的版本2.0.18 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
@@ -62,7 +62,7 @@ Azure 命令列介面 (CLI) 提供用來管理 Azure 資源的命令列體驗。
 
 若要啟用檔案共用的備份，您必須建立保護原則來定義備份作業的執行時間，以及復原點的儲存時間長度。 您可以使用 [az backup policy create](/cli/azure/backup/policy#az-backup-policy-create) Cmdlet 來建立備份原則。
 
-下列範例會使用[az backup protection azurefileshare](/cli/azure/backup/protection#az-backup-protection-enable-for-azurefileshare) Cmdlet，在*afsaccount*儲存體帳戶中使用*排程 1*備份原則來啟用*azurefiles*檔案共用的備份：
+下列範例會使用 [az backup protection azurefileshare](/cli/azure/backup/protection#az-backup-protection-enable-for-azurefileshare) Cmdlet，在 *afsaccount* 儲存體帳戶中使用 *排程 1* 備份原則來啟用 *azurefiles* 檔案共用的備份：
 
 ```azurecli-interactive
 az backup protection enable-for-azurefileshare --vault-name azurefilesvault --resource-group  azurefiles --policy-name schedule1 --storage-account afsaccount --azure-file-share azurefiles  --output table
@@ -86,7 +86,7 @@ Name                                  ResourceGroup
 * **--專案-名稱** 是您要觸發隨選備份的檔案共用名稱。 若要取出備份專案的 **名稱** 或 **易記名稱** ，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
 * **--保留-直到** 指定您要保留復原點的日期。 值應該以 UTC 時間格式設定 (dd-mm-yyyy) 。
 
-下列範例會在*afsaccount*儲存體帳戶中觸發*azurefiles*檔案共用的隨選備份，保留期限為*20-01-2020*。
+下列範例會在 *afsaccount* 儲存體帳戶中觸發 *azurefiles* 檔案共用的隨選備份，保留期限為 *20-01-2020* 。
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table

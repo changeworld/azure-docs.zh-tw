@@ -7,21 +7,21 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e4b112b93a552ff62b08c102e710cd914265ba5c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339320"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563829"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos Core (SQL) API 資源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 下列指南說明使用 Azure CLI 自動管理 Azure Cosmos DB 帳戶、資料庫及容器的常見命令。 您可以在 [Azure CLI 參考](/cli/azure/cosmosdb)中取得所有 Azure Cosmos DB CLI 命令的參考頁面。 您也可以在[適用於 Azure Cosmos DB 的 Azure CLI 範例](cli-samples.md)中找到更多範例，包括如何針對 MongoDB、Gremlin、Cassandra 及資料表 API建立和管理 Cosmos DB 帳戶、資料庫和容器。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.12.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的版本2.12.1 或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 如需適用於其他 API 的 Azure CLI 範例，請參閱[適用於 Cassandra 的 CLI 範例](cli-samples-cassandra.md)、[適用於 MongoDB API 的 CLI 範例](cli-samples-mongodb.md)、[適用於 Gremlin 的 CLI 範例](cli-samples-gremlin.md)、[適用於資料表的 CLI 範例](cli-samples-table.md)
 

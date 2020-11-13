@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121991"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565767"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>利用 content-type 將 JSON 索引鍵/值儲存在應用程式設定中
 
@@ -25,9 +25,9 @@ ms.locfileid: "88121991"
 ## <a name="overview"></a>概觀
 
 在 [應用程式設定] 中，您可以使用 JSON 媒體類型作為索引鍵-值的內容類型，以使用如下的優點：
-- **更簡單的資料管理**：管理索引鍵/值（例如陣列）在 Azure 入口網站中會變得很簡單。
-- **增強的資料匯出**：資料匯出期間將會保留基本類型、陣列和 JSON 物件。
-- **使用應用程式設定提供者的原生支援**：當應用程式中的應用程式設定提供者程式庫取用時，具有 JSON content-type 的索引鍵/值將可正常運作。
+- **更簡單的資料管理** ：管理索引鍵/值（例如陣列）在 Azure 入口網站中會變得很簡單。
+- **增強的資料匯出** ：資料匯出期間將會保留基本類型、陣列和 JSON 物件。
+- **使用應用程式設定提供者的原生支援** ：當應用程式中的應用程式設定提供者程式庫取用時，具有 JSON content-type 的索引鍵/值將可正常運作。
 
 #### <a name="valid-json-content-type"></a>有效的 JSON 內容類型
 
@@ -53,7 +53,7 @@ ms.locfileid: "88121991"
 - {"ObjectSetting"： {"目標"： {"Default"： true，"Level"： "Information"}}}
 
 > [!NOTE]
-> 在本文的其餘部分中，應用程式設定中具有有效 JSON 內容類型和有效 JSON 值的任何索引鍵/值，都將稱為 JSON 索引 **鍵/值**。 
+> 在本文的其餘部分中，應用程式設定中具有有效 JSON 內容類型和有效 JSON 值的任何索引鍵/值，都將稱為 JSON 索引 **鍵/值** 。 
 
 在本教學課程中，您將了解如何：
 > [!div class="checklist"]
@@ -63,13 +63,11 @@ ms.locfileid: "88121991"
 > * 在您的應用程式中使用 JSON 索引鍵/值。
 
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
-- Azure CLI (2.10.0 或更新版本) 的最新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您使用 Azure CLI，則必須先使用登入 `az login` 。 您可以選擇性地使用 Azure Cloud Shell。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- 本教學課程需要 Azure CLI 的版本2.10.0 或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
 
@@ -82,9 +80,9 @@ ms.locfileid: "88121991"
 
 ### <a name="create-json-key-values-using-azure-portal"></a>使用 Azure 入口網站建立 JSON 索引鍵/值
 
-流覽至您的應用程式設定存放區，然後選取 [ **Configuration Explorer**  >  **建立**索引  >  **鍵/值**]，以新增下列索引鍵/值組：
+流覽至您的應用程式設定存放區，然後選取 [ **Configuration Explorer**  >  **建立** 索引  >  **鍵/值** ]，以新增下列索引鍵/值組：
 
-| 機碼 | 值 | 內容類型 |
+| Key | 值 | 內容類型 |
 |---|---|---|
 | 設定： BackgroundColor | 亮起 | application/json |
 | 設定： FontSize | 24 | application/json |
@@ -150,7 +148,7 @@ az appconfig kv import -s file --format json --path "~/Import.json" --content-ty
 
 請考慮這些索引鍵/值，但不要輸入 JSON content-type：
 
-| 機碼 | 值 | 內容類型 |
+| Key | 值 | 內容類型 |
 |---|---|---|
 | 設定： FontSize | 24 | |
 | 設定： UseDefaultRouting | false | |

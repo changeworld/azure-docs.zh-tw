@@ -7,18 +7,18 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 23b893bad591af5f1e923b68e8d30453f859792b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506408"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563472"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 來設定 Web 應用程式防火牆速率限制規則
 Azure Web 應用程式防火牆 (WAF) 速率限制規則，可讓 Azure Front Door 控制用戶端在一分鐘期間內所允許的要求數目。
 本文說明如何設定 WAF 速率限制規則，以控制從用戶端到 web 應用程式（使用 Azure PowerShell 的 URL 中包含 */promo* ）的要求數目。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 速率限制適用于每個用戶端 IP 位址。 如果您有多個用戶端從不同的 IP 位址存取您的 Front Door，則會套用自己的速率限制。
@@ -26,9 +26,9 @@ Azure Web 應用程式防火牆 (WAF) 速率限制規則，可讓 Azure Front Do
 ## <a name="prerequisites"></a>必要條件
 在您開始設定速率限制原則之前，請先設定 PowerShell 環境並建立 Front Door 設定檔。
 ### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
-Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
+Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 遵循頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell 模組。
+您可以在本機電腦上安裝 [Azure PowerShell](/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 遵循頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell 模組。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式登入對話方塊連線至 Azure
 ```
@@ -105,6 +105,4 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [Front Door](../../frontdoor/front-door-overview.md)。 
-
-
+- 深入瞭解 [Front Door](../../frontdoor/front-door-overview.md)。

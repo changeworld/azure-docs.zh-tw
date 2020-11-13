@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 838c2dc887790bb12b390261d94748595232d8b3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331041"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565852"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 建立具有外部重新導向的應用程式閘道
 
@@ -24,11 +24,11 @@ ms.locfileid: "91331041"
 * 建立接聽程式和重新導向規則
 * 建立應用程式閘道
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教學課程需要 Azure CLI 的版本2.0.4 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源 
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
 
 ```azurecli-interactive
 az network vnet create \
@@ -59,7 +59,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
-您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
+您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet 和 myPublicIPAddress。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -87,7 +87,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-新增重新導向設定，以將流量從*www \. consoto.org*傳送至使用[az network application-閘道重新導向-config create](/cli/azure/network/application-gateway/redirect-config)的應用程式閘道的*www \. contoso.com*接聽程式。
+新增重新導向設定，以將流量從 *www \. consoto.org* 傳送至使用 [az network application-閘道重新導向-config create](/cli/azure/network/application-gateway/redirect-config)的應用程式閘道的 *www \. contoso.com* 接聽程式。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -127,7 +127,7 @@ az network application-gateway rule create \
 
 若要取得應用程式閘道的公用 IP 位址，您可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 將公用 IP 位址複製並貼到您瀏覽器的網址列。
 
-您應該會看到瀏覽器中出現 bing.com**。
+您應該會看到瀏覽器中出現 bing.com。
 
 ## <a name="next-steps"></a>後續步驟
 

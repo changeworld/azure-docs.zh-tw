@@ -10,29 +10,29 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367551"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565784"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>設定 Bing 自訂搜尋體驗
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
-自訂搜尋執行個體可讓您量身訂做搜尋體驗，以便只包含使用者感興趣的網站內容。 Bing 不會執行全網路搜尋，只會搜尋您感興趣的網路配量。 若要建立自訂的網頁檢視，請使用 Bing 自訂搜尋[入口網站](https://customsearch.ai)。
+自訂搜尋執行個體可讓您量身訂做搜尋體驗，以便只包含使用者感興趣的網站內容。 Bing 不會執行全網路搜尋，只會搜尋您感興趣的網路配量。 若要建立自訂的網頁檢視，請使用 Bing 自訂搜尋[入口網站](https://www.customsearch.ai)。
 
 入口網站可讓您建立搜尋執行個體，以指定要 Bing 搜尋的 Web 配量 (網域、子網頁和網頁)，以及不想要搜尋的項目。 入口網站也可建議您需要包含的內容。
 
 定義 Web 配量時，請使用下列項目：
 
-| 配量名稱 | 說明                                                                                                                                                                                                                                                                                                |
+| 配量名稱 | 描述                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | 網域配量包括在某個網際網路網域內找到的所有內容。 例如 `www.microsoft.com`。 省略 `www.` 會使得 Bing 也搜尋該網域的子網域。 例如，如果您指定 `microsoft.com` ，Bing 也會從或傳回 `support.microsoft.com` 結果 `technet.microsoft.com` 。 |
+| Domain     | 網域配量包括在某個網際網路網域內找到的所有內容。 例如，`www.microsoft.com`。 省略 `www.` 會使得 Bing 也搜尋該網域的子網域。 例如，如果您指定 `microsoft.com` ，Bing 也會從或傳回 `support.microsoft.com` 結果 `technet.microsoft.com` 。 |
 | 子頁面    | 子頁面配量包括在子頁面及其下的路徑中找到的所有內容。 您在路徑中最多可以指定兩個子頁面。 例如， `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | 網頁    | 網頁配量在自訂搜尋中只能包括該網頁。 您可以選擇性地指定是否要包括子頁面。                                                                                                                                                                                  |
 
@@ -97,7 +97,7 @@ ms.locfileid: "94367551"
 
 入口網站可讓您調整特定網域、子頁面和網頁內容的搜尋順位。 在預覽窗格中傳送搜尋查詢之後，每個搜尋結果都會包含您可以進行的調整清單：  
 
-| 調整 | 說明 |
+| 調整 | 描述 |
 |------------|-------------|
 | 封鎖      | 將網域、子頁面或網頁移到 [已封鎖] 清單中。 Bing 會在搜尋結果中排除來自所選網站的內容。                    |
 | 提升      | 將搜尋結果中的網域或子頁面的內容提升到較高的順位。                                                                                        |
@@ -134,7 +134,7 @@ ms.locfileid: "94367551"
 > [!NOTE]
 > 使用者的搜尋查詢與釘選的搜尋查詢之間的所有比較都不區分大小寫。
 
-| 值 | 說明                                                                          |
+| 值 | 描述                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 開始於 | 如果使用者的查詢字串開頭為釘選查詢字串，該釘選即為相符項目。 |
 | 結束於   | 如果使用者的查詢字串結尾為釘選查詢字串，該釘選即為相符項目。  |

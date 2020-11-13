@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
-author: shganesh-dev
-ms.author: shganesh
-ms.openlocfilehash: 08a889a0a26f90798f3ac8524cceb6ca83d4955a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: 9821cc8905caa9576662a192fc704c53b35af82d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414522"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564866"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商業 marketplace 分析中的客戶儀表板
 
@@ -82,7 +82,7 @@ ms.locfileid: "94414522"
 
 :::image type="content" source="./media/customer-dashboard/customers-by-orders-usage.png" alt-text="在 [客戶] 頁面上，說明 [客戶的訂單] 和 [使用量] widget 的 [訂單] 索引標籤。":::
 
-注意下列事項：
+請注意：
 
 - 領導者面板會顯示依訂單計數排名的客戶詳細資料。 選取客戶之後，客戶詳細資料會顯示在連續的「詳細資料」、「依 Sku 排序」和「依基座的 Sku」區段中。
 - 當發行者以擁有者角色登入時，此空間中會顯示客戶設定檔詳細資料。 如果發行者是以參與者角色登入，此區段中的詳細資料將無法使用。
@@ -119,7 +119,7 @@ ms.locfileid: "94414522"
 
 [![說明 [客戶] 頁面上 [依地理位置] widget 的 [訂單] 索引標籤。](./media/customer-dashboard/customers-by-geography.png)](./media/customer-dashboard/customers-by-geography.png#lightbox)
 
-注意下列事項：
+請注意：
 
 - 您可以移動地圖以檢視確切位置。
 - 您可以放大特定位置。
@@ -130,7 +130,7 @@ ms.locfileid: "94414522"
 
 [ **客戶詳細資料** ] 資料表會顯示排名最高的1000客戶清單，依他們第一次取得其中一個供應專案的日期排序。 您可以藉由選取 [詳細資料] 功能區中的展開圖示來展開區段。
 
-注意下列事項：
+請注意：
 
 - 客戶的個人資訊必須經過客戶同意才會顯示。 如果您已使用「擁有者」角色層級的許可權登入，就只能查看這項資訊。
 - 方格中的每個資料行皆可排序。

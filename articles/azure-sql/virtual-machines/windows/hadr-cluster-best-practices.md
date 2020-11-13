@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786423"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564560"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>叢集設定最佳做法 (Azure VM 上的 SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,9 +27,13 @@ ms.locfileid: "92786423"
 本文針對 [容錯移轉叢集實例 (fci) ](failover-cluster-instance-overview.md) 和 [可用性群組](availability-group-overview.md) 提供叢集設定的最佳做法，以搭配 Azure vm 上的 SQL Server 使用。 
 
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 
 針對每部伺服器使用單一 NIC (叢集節點) 和單一子網。 Azure 網路功能具有實體冗余，讓 Azure 虛擬機器來賓叢集上不需要額外的 Nic 和子網。 叢集驗證報告會警告您節點只能在單一網路上觸達。 您可以在 Azure 虛擬機器來賓容錯移轉叢集上忽略此警告。
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>調整容錯移轉叢集網路閾值
+
+在具有 SQL Server AlwaysOn 的 Azure Vm 中執行 Windows 容錯移轉叢集節點時，建議將叢集設定變更為較寬鬆的監視狀態。  這會讓叢集更穩定且更可靠。  如需有關此功能的詳細資訊，請參閱 [使用 SQL AlwaysOn 的 IaaS-調整容錯移轉叢集網路閾值](/windows-server/troubleshoot/iaas-sql-failover-cluser)。
 
 ## <a name="quorum"></a>Quorum
 

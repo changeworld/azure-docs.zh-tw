@@ -3,12 +3,12 @@ title: 使用 Azure CLI 來還原 Azure 檔案共用
 description: 瞭解如何使用 Azure CLI 在復原服務保存庫中還原已備份的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: be744fdb79f442eaf0ef632952d9c0b9e709d908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325006"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562316"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>使用 Azure CLI 來還原 Azure 檔案共用
 
@@ -23,26 +23,26 @@ Azure CLI 提供用來管理 Azure 資源的命令列體驗。 它是建立自�
 >[!NOTE]
 > Azure 備份現在支援使用 Azure CLI 將多個檔案或資料夾還原到原始位置或替代位置。 若要深入瞭解，請參閱本檔的「將 [多個檔案或資料夾還原到原始或替代位置](#restore-multiple-files-or-folders-to-original-or-alternate-location) 」一節。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-若要在本機安裝和使用 CLI，您必須執行 Azure CLI 2.0.18 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
 ## <a name="prerequisites"></a>必要條件
 
 本文假設您已經有 Azure 備份所備份的 Azure 檔案共用。 如果您沒有帳戶，請參閱 [使用 CLI 備份 Azure 檔案共用](backup-afs-cli.md) ，以設定檔案共用的備份。 在本文中，您將使用下列資源：
 
-| 檔案共用  | 儲存體帳戶 | 區域 | 詳細資料                                                      |
-| ----------- | --------------- | ------ | ------------------------------------------------------------ |
-| *azurefiles*  | *afsaccount*      | EastUS | 使用 Azure 備份備份的原始來源                 |
-| *azurefiles1* | *afaccount1*      | EastUS | 用於替代位置復原的目的地來源 |
+| 檔案共用 | 儲存體帳戶 | 區域 | 詳細資料 |
+|---|---|---|---|
+| *azurefiles* | *afsaccount* | EastUS | 使用 Azure 備份備份的原始來源 |
+| *azurefiles1* | *afaccount1* | EastUS | 用於替代位置復原的目的地來源 |
 
 您可以針對檔案共用使用類似的結構，以試用本文中所述的不同類型的還原。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+ - 本教學課程需要 Azure CLI 的版本2.0.18 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="fetch-recovery-points-for-the-azure-file-share"></a>提取 Azure 檔案共用的復原點
 
 使用 [az backup new-recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) Cmdlet 來列出已備份檔案共用的所有復原點。
 
-下列範例會針對*afsaccount*儲存體帳戶中的*azurefiles*檔案共用，提取復原點的清單。
+下列範例會針對 *afsaccount* 儲存體帳戶中的 *azurefiles* 檔案共用，提取復原點的清單。
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
@@ -50,8 +50,8 @@ az backup recoverypoint list --vault-name azurefilesvault --resource-group azure
 
 您也可以提供下列兩個額外的參數，藉由使用容器和專案的易記名稱來執行上一個 Cmdlet：
 
-* **--備份-管理-類型**： *azurestorage*
-* **--工作負載類型**： *azurefileshare*
+* **--備份-管理-類型** ： *azurestorage*
+* **--工作負載類型** ： *azurefileshare*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --item-name azurefiles --workload-type azurefileshare --out table
@@ -75,8 +75,8 @@ Name                Time                        Consistency
 
 定義下列參數以執行還原作業：
 
-* **--容器-名稱**：裝載已備份之原始檔案共用的儲存體帳戶名稱。 若要取出容器的名稱或易記名稱，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
-* **--專案名稱**：您要用於還原作業的已備份原始檔案共用名稱。 若要取出備份專案的名稱或易記名稱，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
+* **--容器-名稱** ：裝載已備份之原始檔案共用的儲存體帳戶名稱。 若要取出容器的名稱或易記名稱，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
+* **--專案名稱** ：您要用於還原作業的已備份原始檔案共用名稱。 若要取出備份專案的名稱或易記名稱，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>將完整共用還原至原始位置
 
@@ -100,12 +100,12 @@ Name                                  ResourceGroup
 
 您可以使用此選項將檔案共用還原至替代位置，並保留原始的檔案共用。 指定下列參數進行替代位置復原：
 
-* **--目標-儲存體-帳戶**：還原備份內容的儲存體帳戶。 目標儲存體帳戶必須與保存庫位於相同位置。
+* **--目標-儲存體-帳戶** ：還原備份內容的儲存體帳戶。 目標儲存體帳戶必須與保存庫位於相同位置。
 * **--目標-** 檔案共用：要還原備份內容之目標儲存體帳戶內的檔案共用。
-* **--目的檔案夾**：要在其中還原資料之檔案共用底下的資料夾。 如果備份的內容還原至根資料夾，則將目標資料夾值設為空字串。
-* **--resolve-衝突**：如果與還原的資料發生衝突，則為指令。 可接受的值為 **Overwrite** 或 **Skip**。
+* **--目的檔案夾** ：要在其中還原資料之檔案共用底下的資料夾。 如果備份的內容還原至根資料夾，則將目標資料夾值設為空字串。
+* **--resolve-衝突** ：如果與還原的資料發生衝突，則為指令。 可接受的值為 **Overwrite** 或 **Skip** 。
 
-下列範例會使用[az backup restore restore-azurefileshare](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) with restore mode as *alternatelocation* ，將*afsaccount*儲存體帳戶中的*azurefiles*檔案共用還原至*azurefiles1*儲存體帳戶中的*afaccount1 "* 檔案共用。
+下列範例會使用 [az backup restore restore-azurefileshare](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) with restore mode as *alternatelocation* ，將 *afsaccount* 儲存體帳戶中的 *azurefiles* 檔案共用還原至 *azurefiles1* 儲存體帳戶中的 *afaccount1 "* 檔案共用。
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
@@ -125,14 +125,14 @@ babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 
 定義下列參數以執行還原作業：
 
-* **--容器-名稱**：裝載已備份之原始檔案共用的儲存體帳戶名稱。 若要取出容器的名稱或易記名稱，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
-* **--專案名稱**：您要用於還原作業的已備份原始檔案共用名稱。 若要取出備份專案的名稱或易記名稱，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
+* **--容器-名稱** ：裝載已備份之原始檔案共用的儲存體帳戶名稱。 若要取出容器的名稱或易記名稱，請使用 [az backup container list](/cli/azure/backup/container#az-backup-container-list) 命令。
+* **--專案名稱** ：您要用於還原作業的已備份原始檔案共用名稱。 若要取出備份專案的名稱或易記名稱，請使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
 
 針對您想要復原的專案指定下列參數：
 
-* **SourceFilePath**：檔案的絕對路徑，會在檔案共用內以字串的形式還原。 此路徑與 [az storage file 下載](/cli/azure/storage/file#az-storage-file-download) 或 [az storage file show](/cli/azure/storage/file#az-storage-file-show) CLI 命令中使用的路徑相同。
-* **SourceFileType**：選擇是否選取目錄或檔案。 接受 **目錄** 或 **檔案**。
-* **ResolveConflict**：如果與還原的資料發生衝突，則為指令。 可接受的值為 **Overwrite** 或 **Skip**。
+* **SourceFilePath** ：檔案的絕對路徑，會在檔案共用內以字串的形式還原。 此路徑與 [az storage file 下載](/cli/azure/storage/file#az-storage-file-download) 或 [az storage file show](/cli/azure/storage/file#az-storage-file-show) CLI 命令中使用的路徑相同。
+* **SourceFileType** ：選擇是否選取目錄或檔案。 接受 **目錄** 或 **檔案** 。
+* **ResolveConflict** ：如果與還原的資料發生衝突，則為指令。 可接受的值為 **Overwrite** 或 **Skip** 。
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>將個別檔案或資料夾還原到原始位置
 
@@ -156,11 +156,11 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 
 若要將特定檔案或資料夾還原到替代位置，請使用 [az backup restore restore-azurefiles](/cli/azure/backup/restore#az-backup-restore-restore-azurefiles) Cmdlet，並將 restore 模式設定為 *alternatelocation* ，並指定下列目標相關參數：
 
-* **--目標-儲存體-帳戶**：還原備份內容的儲存體帳戶。 目標儲存體帳戶必須與保存庫位於相同位置。
+* **--目標-儲存體-帳戶** ：還原備份內容的儲存體帳戶。 目標儲存體帳戶必須與保存庫位於相同位置。
 * **--目標-** 檔案共用：要還原備份內容之目標儲存體帳戶內的檔案共用。
-* **--目的檔案夾**：要在其中還原資料之檔案共用底下的資料夾。 如果備份的內容要還原至根資料夾，請將目的檔案夾的值指定為空字串。
+* **--目的檔案夾** ：要在其中還原資料之檔案共用底下的資料夾。 如果備份的內容要還原至根資料夾，請將目的檔案夾的值指定為空字串。
 
-下列範例會將最初存在於*azurefiles*檔案共用中的*RestoreTest.txt*檔案還原至替代位置： *afaccount1*儲存體帳戶所裝載*azurefiles1*檔案共用中的*restoredata*資料夾。
+下列範例會將最初存在於 *azurefiles* 檔案共用中的 *RestoreTest.txt* 檔案還原至替代位置： *afaccount1* 儲存體帳戶所裝載 *azurefiles1* 檔案共用中的 *restoredata* 資料夾。
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
@@ -178,7 +178,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 
 若要執行多個專案的還原，請將 **來源檔案路徑** 參數的值傳遞為您想要還原之所有檔案或資料夾的 **空格分隔** 路徑。
 
-下列範例會在其原始位置中 Report.docx檔案還原 *Restore.txt* 和 *AFS 測試 * 。
+下列範例會在其原始位置中 Report.docx檔案還原 *Restore.txt* 和 *AFS 測試* 。
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table

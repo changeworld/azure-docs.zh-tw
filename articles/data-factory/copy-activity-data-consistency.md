@@ -11,23 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e7c66518cd62ef1debd8ceb1c38ba93101c8395d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634907"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565648"
 ---
-#  <a name="data-consistency-verification-in-copy-activity-preview"></a>複製活動中的資料一致性驗證 (驗證)
+#  <a name="data-consistency-verification-in-copy-activity"></a>複製活動中的資料一致性驗證
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您將資料從來源移至目的地存放區時，Azure Data Factory 複製活動會提供一個選項，讓您執行額外的資料一致性驗證，以確保資料不只會成功從來源複製到目的地存放區，還會在來源與目的地存放區之間驗證為一致。 當資料移動期間發現不一致的檔案時，您可以中止複製活動，或透過啟用容錯設定來繼續複製其餘部分，以略過不一致的檔案。 您可以啟用複製活動中的會話記錄檔設定，以取得略過的檔案名。 
-
-> [!IMPORTANT]
-> 這項功能目前處於預覽狀態，以下為我們正積極處理的限制：
->- 當您在複製活動中啟用工作階段記錄設定來記錄因不一致而略過的檔案時，如果複製活動失敗，則無法保證記錄檔的完整性為 100%。
->- 工作階段記錄僅包含不一致的檔案，其中已成功複製的檔案目前不會記錄下來。
+當您將資料從來源移至目的地存放區時，Azure Data Factory 複製活動會提供一個選項，讓您執行額外的資料一致性驗證，以確保資料不只會成功從來源複製到目的地存放區，還會在來源與目的地存放區之間驗證為一致。 當資料移動期間發現不一致的檔案時，您可以中止複製活動，或透過啟用容錯設定來繼續複製其餘部分，以略過不一致的檔案。 您可以啟用複製活動中的會話記錄檔設定，以取得略過的檔案名。 您可以參考「 [複製活動」中的會話記錄](copy-activity-log.md) ，以取得更多詳細資料。
 
 ## <a name="supported-data-stores-and-scenarios"></a>支援的資料存放區和案例
 
@@ -60,13 +55,19 @@ ms.locfileid: "92634907"
     "skipErrorFile": { 
         "dataInconsistency": true 
     }, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2_storage", 
-            "type": "LinkedServiceReference" 
-        }, 
-        "path": "/sessionlog/" 
-} 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+                "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            }
+        }
+    }
 } 
 ```
 
@@ -74,7 +75,7 @@ ms.locfileid: "92634907"
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | 如果您針對此屬性設定為 true，則在複製二進位檔案時，複製活動會針對從來源複製到目的地存放區的每個二進位檔案，檢查檔案大小、lastModifiedDate 和 MD5 總和檢查碼，以確保來源和目的地存放區之間的資料一致性。 複製表格式資料時，複製活動會在作業完成後檢查總數據列計數，以確保從來源讀取的資料列總數，與複製到目的地的資料列數目，以及略過的不相容資料列數目相同。 請注意，啟用此選項會影響複製效能。  | True<br/>FALSE (預設值) | 否
 dataInconsistency | SkipErrorFile 屬性包中的其中一個索引鍵/值組，用來判斷是否要略過不一致的檔案。 <br/> -True：您想要藉由略過不一致的檔案來複製其餘部分。<br/> -False：當找到不一致的檔案時，您想要中止複製活動。<br/>請注意，只有當您複製二進位檔案，並將 validateDataConsistency 設為 True 時，這個屬性才有效。  | True<br/>FALSE (預設值) | 否
-logStorageSettings | 可指定的一組屬性，可讓會話記錄檔記錄已略過的檔案。 | | 否
+logSettings | 可指定的一組屬性，可讓會話記錄檔記錄已略過的檔案。 | | 否
 linkedServiceName | 可儲存工作階段記錄檔的 [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties)連結服務或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)。 | `AzureBlobStorage` 或 `AzureBlobFS` 類型連結服務的名稱，其代表您要用來儲存記錄檔的執行個體。 | 否
 path | 記錄檔的路徑。 | 指定您想要儲存記錄檔的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
@@ -95,7 +96,7 @@ path | 記錄檔的路徑。 | 指定您想要儲存記錄檔的路徑。 如不
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 

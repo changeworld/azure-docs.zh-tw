@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828075"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564696"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>使用 Azure 虛擬 WAN 的 SD-WAN 連線架構
 
@@ -44,9 +44,9 @@ SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的
 
 ## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>使用 NVA 的直接互連模型-VWAN-中樞
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="直接互連模型":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="使用 NVA 的直接互連模型-VWAN-中樞":::
 
-此架構模型支援協力廠商 [網路虛擬裝置的部署 (NVA 直接) 至虛擬中樞](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub)。 這可讓想要將分支 CPE 連線到虛擬中樞內相同品牌 NVA 的客戶，讓他們能夠在連線到 Azure 工作負載時利用專屬的端對端 SD WAN 功能。 
+此架構模型支援協力廠商 [網路虛擬裝置的部署 (NVA 直接) 至虛擬中樞](./about-nva-hub.md)。 這可讓想要將分支 CPE 連線到虛擬中樞內相同品牌 NVA 的客戶，讓他們能夠在連線到 Azure 工作負載時利用專屬的端對端 SD WAN 功能。 
 
 有幾個虛擬 WAN 夥伴可提供在部署過程中自動設定 NVA 的體驗。 將 NVA 布建到虛擬中樞之後，NVA 所需的任何其他設定都必須透過 NVA 合作夥伴入口網站或管理應用程式來完成。 無法直接存取 NVA。 可以直接部署到 Azure 虛擬 WAN 中樞的 Nva，是專門用在虛擬中樞的程式設計。 針對支援 VWAN hub 中 NVA 的合作夥伴以及其部署指南，請參閱 [虛擬 WAN 合作夥伴](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) 文章。
 
@@ -55,7 +55,7 @@ SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>間接互連模型
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="直接互連模型":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="間接互連模型":::
 
 在此架構模型中，SD-WAN 分支 CPE 會間接連線到虛擬 WAN 中樞。 如圖所示，SD WAN 虛擬 CPE 部署在企業 VNet 中。 接下來，這個虛擬 CPE 會使用 IPsec 連線到虛擬 WAN 中樞。 使用虛擬 CPE 作為進入 Azure 的 SD WAN 閘道。 需要在 Azure 中存取其工作負載的分支將能夠透過 v-CPE 閘道存取工作負載。
 
@@ -63,7 +63,7 @@ SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>受控混合式 WAN 模型
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="直接互連模型":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="受控混合式 WAN 模型":::
 
 在此架構模型中，企業可以利用受控服務提供者 (MSP) 合作夥伴所提供的受控 SD WAN 服務。 此模型與上述的直接或間接模型類似。 不過，在此模型中，SD-WAN 設計、協調流程和作業是由 SD WAN 提供者所傳遞。
 

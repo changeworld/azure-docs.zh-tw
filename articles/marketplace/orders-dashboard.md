@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 2682202b68deeeb1dbbe2493ecb9592acd1788b8
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: ceecaf88f87a94473011eb48e944db7a011b3acc
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414469"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563778"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的訂單儀表板
 
@@ -94,7 +94,7 @@ SaaS 供應專案可以在每個方案中使用兩種定價模型的其中一種
 
 [![說明 [訂單] 儀表板上的地理分散圖。](./media/orders-dashboard/geographical-spread.png)](./media/orders-dashboard/geographical-spread.png#lightbox)
 
-注意下列事項：
+請注意：
 
 - 您可以移動地圖以檢視確切位置。
 - 您可以放大特定位置。

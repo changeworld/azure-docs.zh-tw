@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490112"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565533"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的使用量儀表板
 
@@ -74,7 +74,7 @@ ms.locfileid: "94490112"
 
 ### <a name="orders-by-offers-and-skus"></a>依優惠和 Sku 排序的訂單
 
-依供應專案 **和 SKU 的訂單** 圖表會顯示所有供應專案的量值和趨勢。 注意下列事項：
+依供應專案 **和 SKU 的訂單** 圖表會顯示所有供應專案的量值和趨勢。 請注意：
 
 - 最高的供應專案會顯示在圖形中，其餘的供應專案則會分組為 **rest** 。
 - 您可以選取圖例中的特定供應項目，以在圖形中只顯示這些供應項目。
@@ -99,7 +99,7 @@ ms.locfileid: "94490112"
 
 :::image type="content" source="./media/usage-dashboard/normalized-usage-country.png" alt-text="說明使用量儀表板上的標準化使用國家（地區）圖表。":::
 
-注意下列事項：
+請注意：
 
 - 您可以移動地圖以檢視確切位置。
 - 您可以放大特定位置。
@@ -108,7 +108,7 @@ ms.locfileid: "94490112"
 
 ### <a name="usage-details-table"></a>使用量詳細資料表格
 
-[ **使用量詳細資料** ] 資料表會顯示依使用量排序的前1000使用量記錄號碼清單。 注意下列事項：
+[ **使用量詳細資料** ] 資料表會顯示依使用量排序的前1000使用量記錄號碼清單。 請注意：
 
 - 方格中的每個資料行皆可排序。
 - 資料可以解壓縮至。TSV 或。如果記錄計數小於1000，則為 CSV 檔案。

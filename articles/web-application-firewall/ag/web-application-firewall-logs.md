@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262987b5d5cdccec967193d855b17c5c74e16575
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84753593"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563387"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 應用程式防火牆的資源記錄
 
@@ -24,19 +24,19 @@ ms.locfileid: "84753593"
 
 您可以在 Azure 中使用不同類型的記錄來管理和針對應用程式閘道進行疑難排解。 您可以透過入口網站存取其中一些記錄。 可以從 Azure Blob 儲存體擷取所有記錄，並且在不同的工具中進行檢視 (例如 [Azure 監視器記錄](../../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI)。 您可以從下列清單進一步了解不同類型的記錄：
 
-* **活動記錄**：您可以使用 [azure 活動記錄](../../azure-resource-manager/management/view-activity-logs.md) 來查看提交至您的 Azure 訂用帳戶的所有作業及其狀態。 預設會收集活動記錄，您可在 Azure 入口網站中檢視它們。
-* **存取資源記錄**：您可以使用此記錄來查看應用程式閘道存取模式及分析重要資訊。 這包括呼叫端的 IP、要求的 URL、回應延遲、傳回碼和位元組 in 和 out。每隔300秒會收集一次存取記錄。 此記錄檔包含每個應用程式閘道執行個體的一筆記錄。 應用程式閘道執行個體是由 instanceId 屬性識別。
-* **效能資源記錄**：您可以使用此記錄來查看應用程式閘道實例的執行情況。 此記錄會擷取每個執行個體的效能資訊，包括提供的要求總數、輸送量 (以位元組為單位)、提供的總要求數、失敗的要求計數、狀況良好和狀況不良的後端執行個體計數。 每隔 60 秒會收集一次效能記錄。 效能記錄僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的 [計量](../../application-gateway/application-gateway-metrics.md) 。
-* **防火牆資源記錄**：您可以使用此記錄來查看透過應用程式閘道的偵測或防護模式所記錄的要求，此應用程式閘道已設定 web 應用程式防火牆。
+* **活動記錄** ：您可以使用 [azure 活動記錄](../../azure-resource-manager/management/view-activity-logs.md) 來查看提交至您的 Azure 訂用帳戶的所有作業及其狀態。 預設會收集活動記錄，您可在 Azure 入口網站中檢視它們。
+* **存取資源記錄** ：您可以使用此記錄來查看應用程式閘道存取模式及分析重要資訊。 這包括呼叫端的 IP、要求的 URL、回應延遲、傳回碼和位元組 in 和 out。每隔300秒會收集一次存取記錄。 此記錄檔包含每個應用程式閘道執行個體的一筆記錄。 應用程式閘道執行個體是由 instanceId 屬性識別。
+* **效能資源記錄** ：您可以使用此記錄來查看應用程式閘道實例的執行情況。 此記錄會擷取每個執行個體的效能資訊，包括提供的要求總數、輸送量 (以位元組為單位)、提供的總要求數、失敗的要求計數、狀況良好和狀況不良的後端執行個體計數。 每隔 60 秒會收集一次效能記錄。 效能記錄僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的 [計量](../../application-gateway/application-gateway-metrics.md) 。
+* **防火牆資源記錄** ：您可以使用此記錄來查看透過應用程式閘道的偵測或防護模式所記錄的要求，此應用程式閘道已設定 web 應用程式防火牆。
 
 > [!NOTE]
 > 記錄僅適用於在 Azure Resource Manager 部署模型中部署的資源。 您無法將記錄使用於傳統部署模型中的資源。 若要深入了解這兩個模型，請參閱[了解 Resource Manager 部署和傳統部署](../../azure-resource-manager/management/deployment-models.md)一文。
 
 您有三個選項可用來排序您的記錄：
 
-* **儲存體帳戶**：如果記錄會儲存一段較長的持續期間，並在需要時加以檢閱，則最好針對記錄使用儲存體帳戶。
-* **事件中樞**：事件中樞是整合其他安全性資訊和事件管理的絕佳選項 (SIEM) 工具來取得資源的警示。
-* **Azure 監視器記錄**： Azure 監視器記錄最適合用來進行應用程式的一般即時監視，或查看趨勢。
+* **儲存體帳戶** ：如果記錄會儲存一段較長的持續期間，並在需要時加以檢閱，則最好針對記錄使用儲存體帳戶。
+* **事件中樞** ：事件中樞是整合其他安全性資訊和事件管理的絕佳選項 (SIEM) 工具來取得資源的警示。
+* **Azure 監視器記錄** ： Azure 監視器記錄最適合用來進行應用程式的一般即時監視，或查看趨勢。
 
 ### <a name="enable-logging-through-powershell"></a>透過 PowerShell 啟用記錄功能
 
@@ -61,7 +61,7 @@ ms.locfileid: "84753593"
 
 ### <a name="enable-logging-through-the-azure-portal"></a>透過 Azure 入口網站啟用記錄功能
 
-1. 在 Azure 入口網站中，尋找您的資源，然後選取 [ **診斷設定**]。
+1. 在 Azure 入口網站中，尋找您的資源，然後選取 [ **診斷設定** ]。
 
    應用程式閘道有三個記錄：
 
@@ -69,7 +69,7 @@ ms.locfileid: "84753593"
    * 效能記錄檔
    * 防火牆記錄檔
 
-2. 若要開始收集資料，請選取 [ **開啟診斷**]。
+2. 若要開始收集資料，請選取 [ **開啟診斷** ]。
 
    ![開啟診斷][1]
 
@@ -77,7 +77,7 @@ ms.locfileid: "84753593"
 
    ![啟動設定程序][2]
 
-5. 輸入設定的名稱、確認設定，然後選取 [ **儲存**]。
+5. 輸入設定的名稱、確認設定，然後選取 [ **儲存** ]。
 
 ### <a name="activity-log"></a>活動記錄檔
 
@@ -87,14 +87,14 @@ ms.locfileid: "84753593"
 
 只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個存取會以 JSON 格式記錄，如下列 v1 範例所示：
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
 |clientPort     | 要求的原始連接埠。       |
 |httpMethod     | 要求使用的 HTTP 方法。       |
 |requestUri     | 接收之要求的 URI。        |
-|RequestQuery     | **Server-Routed**：傳送要求的後端集區執行個體。</br>**X-AzureApplicationGateway-LOG-ID**：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 </br>**SERVER-STATUS**：應用程式閘道從後端收到的 HTTP 回應碼。       |
+|RequestQuery     | **Server-Routed** ：傳送要求的後端集區執行個體。</br>**X-AzureApplicationGateway-LOG-ID** ：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 </br>**SERVER-STATUS** ：應用程式閘道從後端收到的 HTTP 回應碼。       |
 |UserAgent     | HTTP 要求標頭中的使用者代理程式。        |
 |httpStatus     | 應用程式閘道傳回用戶端的 HTTP 狀態碼。       |
 |httpVersion     | 要求的 HTTP 版本。        |
@@ -131,7 +131,7 @@ ms.locfileid: "84753593"
 ```
 針對應用程式閘道和 WAF v2，記錄檔會顯示一些詳細資訊：
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -185,7 +185,7 @@ ms.locfileid: "84753593"
 只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的 [計量](../../application-gateway/application-gateway-metrics.md) 。 會記錄下列資料：
 
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     |  將產生此應用程式閘道執行個體的效能資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。        |
 |healthyHostCount     | 後端集區中狀況良好主機的數目。        |
@@ -222,7 +222,7 @@ ms.locfileid: "84753593"
 只有當您如上述步驟所述，在每個應用程式閘道上啟用防火牆記錄，才會產生防火牆記錄。 此記錄也需要在應用程式閘道上設定該 Web 應用程式防火牆。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 會記錄下列資料：
 
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 將產生此應用程式閘道執行個體的防火牆資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。         |
 |clientIp     |   要求的原始 IP。      |
@@ -231,7 +231,7 @@ ms.locfileid: "84753593"
 |ruleSetType     | 規則集類型。 可用的值是 OWASP。        |
 |ruleSetVersion     | 規則集版本。 可用值為 2.2.9 和 3.0。     |
 |ruleId     | 觸發事件的規則識別碼。        |
-|訊息     | 方便使用的觸發事件訊息。 詳細資料區段中會提供詳細資料。        |
+|message     | 方便使用的觸發事件訊息。 詳細資料區段中會提供詳細資料。        |
 |動作     |  對要求採取的動作。 可用的值為 Blocked 和 Allowed。      |
 |site     | 將產生此網站的記錄。 目前只列出 Global，因為規則為全域。|
 |詳細資料     | 觸發事件的詳細資料。        |
@@ -284,8 +284,8 @@ ms.locfileid: "84753593"
 
 您可以使用下列任何方法，檢視和分析活動記錄資料：
 
-* **Azure 工具**：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
-* **Power BI**：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 藉由使用 [Power BI 範本應用程式](https://docs.microsoft.com/power-bi/service-template-apps-overview)，您可以分析您的資料。
+* **Azure 工具** ：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
+* **Power BI** ：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 藉由使用 [Power BI 範本應用程式](/power-bi/service-template-apps-overview)，您可以分析您的資料。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>檢視及分析存取、效能和防火牆記錄
 
@@ -302,7 +302,7 @@ ms.locfileid: "84753593"
 
 我們已發佈會安裝並執行常用 [GoAccess](https://goaccess.io/) 記錄分析器的 Resource Manager 範本，該分析器適用於應用程式閘道存取記錄。 GoAccess 提供實用的 HTTP 流量統計資料，例如非重複訪客、要求的檔案、主機、作業系統、瀏覽器、HTTP 狀態碼等等。 如需詳細資訊，請參閱 [GitHub 中 Resource Manager 範本資料夾中的讀我檔案](https://aka.ms/appgwgoaccessreadme)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 利用 [Azure 監視器記錄](../../azure-monitor/insights/azure-networking-analytics.md)將計數器和事件記錄視覺化。
 * [將您的 Azure 活動記錄檔視覺化 Power BI 的](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blog 文章。

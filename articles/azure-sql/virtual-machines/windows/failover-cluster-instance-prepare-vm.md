@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556330"
+ms.locfileid: "94564458"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "94556330"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 - Microsoft Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - Azure 虛擬機器上的 Windows 網域或內部部署資料中心會透過虛擬網路配對延伸至 Azure。
@@ -58,6 +58,8 @@ ms.locfileid: "94556330"
 
 設定 VM 可用性之後，您就可以開始建立虛擬機器。 您可以選擇使用執行或尚未安裝 SQL Server 的 Azure Marketplace 映射。 不過，如果您為 Azure Vm 上的 SQL Server 選擇映射，則必須先從虛擬機器卸載 SQL Server，然後再設定容錯移轉叢集實例。 
 
+### <a name="considerations"></a>考量
+在 Azure IaaS VM 客體容錯移轉叢集上，建議每個伺服器 (叢集節點) 使用單一 NIC，並且使用單一子網路。 Azure 網路有實體備援，因此 Azure IaaS VM 客體叢集上不需要額外的 NIC 和子網路。 雖然叢集驗證報告會發出節點只能在單一網路上連線的警告，但您可以放心地在 Azure IaaS VM 客體容錯移轉叢集上忽略此警告。
 
 將兩部虛擬機器放置於：
 

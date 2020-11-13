@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413066"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563642"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service 上 Azure Web 應用程式防火牆的常見問題
 
@@ -55,7 +55,7 @@ Front Door 提供 TLS 卸載。 WAF 與 Front Door 原生整合，並可在要�
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>我應該選擇哪一種 Azure WAF 選項？
 
-在 Azure 中套用 WAF 原則時，有兩個選項。 WAF 與 Azure Front Door 是全域散發的邊緣安全性解決方案。 使用應用程式閘道的 WAF 是一個區域專用的解決方案。 建議您根據整體效能和安全性需求來選擇解決方案。 如需詳細資訊，請參閱 [使用 Azure 的應用程式傳遞套件進行負載平衡](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)。
+在 Azure 中套用 WAF 原則時，有兩個選項。 WAF 與 Azure Front Door 是全域散發的邊緣安全性解決方案。 使用應用程式閘道的 WAF 是一個區域專用的解決方案。 建議您根據整體效能和安全性需求來選擇解決方案。 如需詳細資訊，請參閱 [使用 Azure 的應用程式傳遞套件進行負載平衡](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)。
 
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>您是否支援所有整合平臺中的相同 WAF 功能？

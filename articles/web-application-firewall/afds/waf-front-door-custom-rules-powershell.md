@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a0e262db9f5c37189a589eefc451a88dd5ea8c6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005543"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563404"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>使用 Azure PowerShell 來設定 Web 應用程式防火牆原則
 
@@ -21,15 +21,15 @@ Azure Web 應用程式防火牆 (WAF) 原則會定義要求抵達 Front Door 時
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始設定速率限制原則之前，請先設定 PowerShell 環境並建立 Front Door 設定檔。
 
 ### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
 
-Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
+Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 遵循頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell 模組。
+您可以在本機電腦上安裝 [Azure PowerShell](/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 遵循頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell 模組。
 
 #### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -95,7 +95,7 @@ $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $reso
 ## <a name="link-policy-to-a-front-door-front-end-host"></a>將原則連結至 Front Door 前端主機
 
 將安全性原則物件連結至現有的 Front Door 前端主機，並更新 Front Door 屬性。 首先，使用 [為](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)來取出 Front Door 物件。
-接下來，使用[為](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)將前端*WebApplicationFirewallPolicyLink*屬性設定為上一個步驟中所建立 "$MyWAFPolicy $" 的*resourceId* 。 
+接下來，使用 [為](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)將前端 *WebApplicationFirewallPolicyLink* 屬性設定為上一個步驟中所建立 "$MyWAFPolicy $" 的 *resourceId* 。 
 
 下列範例會使用資源組名 *myResourceGroupFD1* ，並假設您已使用 [快速入門：建立 Front Door](../../frontdoor/quickstart-create-front-door.md) 文章中提供的指示來建立 Front Door 設定檔。 此外，在下列範例中，請將 $frontDoorName 取代為您 Front Door 設定檔的名稱。 
 
@@ -110,7 +110,7 @@ $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $reso
 > [!NOTE]
 > 您只需要設定 *WebApplicationFirewallPolicyLink* 屬性一次，即可將安全性原則連結至 Front Door 前端。 後續的原則更新會自動套用至前端。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Front Door](../../frontdoor/front-door-overview.md) 
 - 深入瞭解 [WAF 與 Front Door](afds-overview.md)

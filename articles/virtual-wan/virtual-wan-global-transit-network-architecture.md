@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102318"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563727"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -25,7 +25,7 @@ ms.locfileid: "92102318"
 * 虛擬網路 (Vnet) 
 * 實體分支網站
 * 遠端使用者
-* Internet
+* 網際網路
 
 ![中樞和輪輻](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
@@ -127,7 +127,7 @@ VNet 對 VNet 傳輸可讓 Vnet 彼此連線，以便互相連接跨多個 Vnet 
 
 Azure 虛擬 WAN 中樞會跨混合式網路連接所有網路端點，而且可能會看到所有傳輸網路流量。 虛擬 WAN 中樞可以轉換成安全虛擬中樞，方法是在 VWAN 中樞內部署 Azure 防火牆，以啟用雲端式安全性、存取和原則控制。 Azure 防火牆管理員可以執行虛擬 WAN 中樞內的 Azure 防火牆協調流程。
 
-[Azure 防火牆管理員](https://go.microsoft.com/fwlink/?linkid=2107683) 提供管理和調整全域傳輸網路安全性的功能。 Azure 防火牆管理員可讓您透過協力廠商和 Azure 防火牆，集中管理路由、全域原則管理、先進的網際網路安全性服務。
+[Azure 防火牆管理員](../firewall-manager/index.yml) 提供管理和調整全域傳輸網路安全性的功能。 Azure 防火牆管理員可讓您透過協力廠商和 Azure 防火牆，集中管理路由、全域原則管理、先進的網際網路安全性服務。
 
 ![使用 Azure 防火牆的安全虛擬中樞](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
@@ -177,4 +177,4 @@ VNet 對網際網路可讓 Vnet 透過虛擬 WAN 中樞內的 Azure 防火牆連
 
 * [使用虛擬 WAN 的站對站連線](virtual-wan-site-to-site-portal.md)
 * [使用虛擬 WAN 的 ExpressRoute 連接](virtual-wan-expressroute-portal.md)
-* [在 VWAN 中部署 Azure FW 的 Azure 防火牆管理員](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [在 VWAN 中部署 Azure FW 的 Azure 防火牆管理員](../firewall-manager/index.yml)

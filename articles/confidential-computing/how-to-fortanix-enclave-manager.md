@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462423"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565699"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>How To：使用 Fortanix 記憶體保護區管理員執行應用程式 
 
@@ -60,39 +60,39 @@ Fortanix 是協力廠商軟體廠商，其產品和服務建置於 Azure 基礎�
 
 6. 在本教學課程中，我們將使用 Fortanix 的 docker registry 作為範例應用程式。 填寫下列資訊中的詳細資料。 使用您的私人 docker 登錄來保留輸出映射。 
  
-    - **應用程式名稱**： Python 應用程式伺服器
-    - **描述**： Python Flask Server
-    - **輸入映射名稱**： fortanix/python-flask
-    - **輸出映射名稱**： fortanx-私用/python-flask-sgx
-    - **ISVPRODID**：1
-    - **ISVSVM**：1
-    - **記憶體大小**： 1 GB
-    - **執行緒計數**：128
+    - **應用程式名稱** ： Python 應用程式伺服器
+    - **描述** ： Python Flask Server
+    - **輸入映射名稱** ： fortanix/python-flask
+    - **輸出映射名稱** ： fortanx-私用/python-flask-sgx
+    - **ISVPRODID** ：1
+    - **ISVSVM** ：1
+    - **記憶體大小** ： 1 GB
+    - **執行緒計數** ：128
 
-    *選用*：執行應用程式。
-    - **Docker Hub**： [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
-    - **App**： fortanix/python-flask
+    *選用* ：執行應用程式。
+    - **Docker Hub** ： [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
+    - **App** ： fortanix/python-flask
 
         執行以下命令：
          ```bash
             sudo docker run fortanix/python-flask
          ```
 
-1. 新增憑證。 使用下列詳細資料填入資訊，然後選取 **[下一步]**：
-    - **網域**： myapp. 定義域. dom
-    - **類型**：記憶體保護區 Manager 發出的憑證 
-    - 機**碼路徑**：/appkey.pem
-    - **金鑰類型**： RSA
-    - **憑證路徑**：/appcert.pem
-    - **RSA 金鑰大小**：2048位
+1. 新增憑證。 使用下列詳細資料填入資訊，然後選取 **[下一步]** ：
+    - **網域** ： myapp. 定義域. dom
+    - **類型** ：記憶體保護區 Manager 發出的憑證 
+    - 機 **碼路徑** ：/appkey.pem
+    - **金鑰類型** ： RSA
+    - **憑證路徑** ：/appcert.pem
+    - **RSA 金鑰大小** ：2048位
     
 
 ## <a name="create-an-image"></a>建立映像
 Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與一個記憶體保護區 hash 相關聯， (MRENCLAVE) 。 
-1. 在 [**新增映射**] 頁面上，輸入**輸出映射名稱**的登錄**認證**。 這些認證會用來存取將推送映射的私人 docker 登錄。 
+1. 在 [ **新增映射** ] 頁面上，輸入 **輸出映射名稱** 的登錄 **認證** 。 這些認證會用來存取將推送映射的私人 docker 登錄。 
 
     ![建立映射](media/how-to-fortanix-enclave-manager/create-image.png)
-1. 提供影像標記並選取 [ **建立**]。
+1. 提供影像標記並選取 [ **建立** ]。
 
     ![新增標記](media/how-to-fortanix-enclave-manager/add-tag.png)
 
@@ -113,14 +113,14 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 建立 Fortanix 節點代理程式會將虛擬機器、網路介面、虛擬網路、網路安全性群組和公用 IP 位址部署到您的 Azure 資源群組中。 虛擬機器的 Azure 訂用帳戶將以每小時計費。 建立 Fortanix 節點代理程式之前，請先參閱 DCsv2 系列的 Azure [虛擬機器定價頁面](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 。 刪除不在使用中的 Azure 資源。 
 
 1. 移至 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) 並使用您的 Azure 認證登入。
-1. 在搜尋列中，輸入 **Fortanix 機密計算節點代理程式**。 選取 [搜尋] 方塊中顯示的應用程式，稱為 **Fortanix 機密運算節點代理** 程式，以流覽至供應專案的首頁。 
+1. 在搜尋列中，輸入 **Fortanix 機密計算節點代理程式** 。 選取 [搜尋] 方塊中顯示的應用程式，稱為 **Fortanix 機密運算節點代理** 程式，以流覽至供應專案的首頁。 
      ![搜尋 marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
-1. 選取 [ **立即取得**]，視需要填寫您的資訊，然後選取 [ **繼續**]。 您會被重新導向至 Azure 入口網站。 
+1. 選取 [ **立即取得** ]，視需要填寫您的資訊，然後選取 [ **繼續** ]。 您會被重新導向至 Azure 入口網站。 
 1. 選取 [ **建立** ]，輸入 Fortanix 的機密計算節點代理程式部署頁面。
 1. 在此頁面上，您將會輸入資訊以部署虛擬機器。 具體而言，此 VM 是已安裝 Fortanix Node Agent 軟體的 Azure 中，已啟用 Intel SGX 的虛擬機器 DCsv2-Series。 節點代理程式可讓您的已轉換影像安全地在 Azure 的 Intel SGX 節點上執行。  選取您要在其中部署虛擬機器和相關聯資源的 **訂** 用帳戶和 **資源群組** 。 
  
     > [!NOTE]
-    > 在 Azure 中部署 DCsv2-Series 的虛擬機器時，會有一些限制。 您可能需要為其他核心要求配額。 如需詳細資訊，請參閱 [Azure vm 上的機密計算解決方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
+    > 在 Azure 中部署 DCsv2-Series 的虛擬機器時，會有一些限制。 您可能需要為其他核心要求配額。 如需詳細資訊，請參閱 [Azure vm 上的機密計算解決方案](./virtual-machine-solutions.md) 。 
 
 1. 選取可用的區域。
 1. 在 [ **節點名稱** ] 欄位中輸入虛擬機器的名稱。 
@@ -130,7 +130,7 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
      ![部署資源](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. 選取 [檢閱 + 建立]  。 確定驗證通過，然後選取 [ **建立**]。 當所有資源都部署完成之後，計算節點現在會在記憶體保護區 Manager 中註冊。 
+1. 選取 [檢閱 + 建立]。 確定驗證通過，然後選取 [ **建立** ]。 當所有資源都部署完成之後，計算節點現在會在記憶體保護區 Manager 中註冊。 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>在計算節點上執行應用程式映射
 執行下列命令來執行應用程式。 請務必將節點 IP、埠和已轉換的映射名稱變更為特定應用程式的輸入。 
@@ -148,7 +148,7 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 其中 
 - *52.152.206.164* 是節點代理程式主機 IP
 - *9092* 是節點代理程式所接聽的埠
-- *fortanix-private/python-flask-sgx*是已轉換的應用程式，可在 Fortanix 記憶體保護區管理入口網站中 [**影像**] 資料表的 **[映射]** 索引標籤下找到。 
+- *fortanix-private/python-flask-sgx* 是已轉換的應用程式，可在 Fortanix 記憶體保護區管理入口網站中 [ **影像** ] 資料表的 **[映射]** 索引標籤下找到。 
     
 ## <a name="verify-and-monitor-the-running-application"></a>驗證及監視執行中的應用程式
 1. 回到 [Fortanix 記憶體保護區 Manager](https://em.fortanix.com/console)
@@ -164,9 +164,9 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
 請選取虛擬機器的資源群組，然後選取 [刪除]  。 確認要完成資源刪除作業的資源群組名稱。
 
-若要刪除您所建立的 Fortanix 記憶體保護區管理員帳戶，請移至記憶體保護區管理員中的 [ [帳戶] 頁面](https://em.fortanix.com/accounts) 。 將滑鼠停留在您想要刪除的帳戶上方。 選取右上角的垂直黑色點，然後選取 [ **刪除帳戶**]。
+若要刪除您所建立的 Fortanix 記憶體保護區管理員帳戶，請移至記憶體保護區管理員中的 [ [帳戶] 頁面](https://em.fortanix.com/accounts) 。 將滑鼠停留在您想要刪除的帳戶上方。 選取右上角的垂直黑色點，然後選取 [ **刪除帳戶** ]。
 
-  ![[刪除]](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -174,4 +174,4 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
 若要深入瞭解 Azure 的機密計算供應專案，請參閱 [azure 機密計算總覽](overview.md)
 
- 瞭解如何使用 Azure 上的其他協力廠商供應專案（例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)）來完成類似的工作。  
+ 瞭解如何使用 Azure 上的其他協力廠商供應專案（例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)）來完成類似的工作。
