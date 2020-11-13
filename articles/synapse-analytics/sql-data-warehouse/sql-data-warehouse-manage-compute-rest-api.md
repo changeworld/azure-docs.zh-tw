@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 暫停、繼續、調整
-description: 透過 REST API 管理 Azure Synapse Analytics 資料倉儲中的計算能力。
+description: 透過 REST Api，在 Azure Synapse Analytics 中管理專用 SQL 集區的計算能力 (先前的 SQL DW) 。
 services: synapse-analytics
 author: antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49702051b5399d5079aacc97c00233a23ba8712d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213273"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556007"
 ---
-# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>適用於 Azure Synapse Analytics 資料倉儲的 REST API
+# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>適用于專用 SQL 集區的 REST Api (先前為 SQL DW) Azure Synapse Analytics
 
-用於管理 Azure Synapse Analytics 資料倉儲中計算能力的 REST API。
+用於管理專用 SQL 集區計算的 REST Api (先前的 SQL DW) Azure Synapse Analytics。
 
 ## <a name="scale-compute"></a>調整計算
 
@@ -64,7 +64,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="get-maintenance-schedule"></a>取得維護排程
 
-檢查已針對資料倉儲設定的維護排程。
+檢查已針對專用 SQL 集區設定的維護排程 (先前為 SQL DW) 。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>設定維護排程
 
-設定及更新現有資料倉儲上的維護排程。
+若要在現有的專用 SQL 集區上設定和更新維護排程 (先前為 SQL DW) 。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

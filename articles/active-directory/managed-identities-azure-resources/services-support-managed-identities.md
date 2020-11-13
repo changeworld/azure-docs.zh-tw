@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 37a17105be0b6754bbdfd935c6c17933314114d4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eee711917a732bfc24b10db82c75786fd9734b57
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289585"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555680"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -70,10 +70,20 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 | 
+| 系統指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 |
 | 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
 Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)的身分識別。 所有 Azure Arc 啟用的 Kubernetes 代理程式都會使用受控服務識別憑證來與 Azure 進行通訊。
+
+### <a name="azure-automanage"></a>Azure Automanage
+
+| 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| 系統指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 |
+| 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
+
+如果您已將訂用帳戶移至新的租使用者，請參閱下列檔以重新設定受控識別：
+* [修復中斷的 Automanage 帳戶](../../automanage/repair-automanage-account.md)
 
 ### <a name="azure-blueprints"></a>Azure 藍圖
 
@@ -88,7 +98,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 - [REST API - 藍圖指派](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 
-### <a name="azure-cognitive-search"></a>Azue 認知搜尋
+### <a name="azure-cognitive-search"></a>Azure 認知搜尋
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -151,7 +161,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 
 
-### <a name="azure-event-grid"></a>Azure Event Grid 
+### <a name="azure-event-grid"></a>Azure Event Grid
 
 受控識別類型 |全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -202,7 +212,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | ![可用][check] | 無法使用 | 無法使用 | 
+| 系統指派 | ![可用][check] | ![可用][check] | 無法使用 | 無法使用 |
 | 使用者指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 |
 
 
@@ -222,7 +232,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 - [Azure 入口網站](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager 範本](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning 
+### <a name="azure-machine-learning"></a>Azure Machine Learning
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -264,7 +274,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | 無法使用 | 無法使用 | 無法使用 | 
+| 系統指派 | ![可用][check] | 無法使用 | 無法使用 | 無法使用 |
 | 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
 
@@ -298,7 +308,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 | 
+| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
 | 使用者指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
 
 請參閱下列清單來設定 Azure 虛擬機器的受控識別 (若區域提供)：
@@ -315,7 +325,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 | 
+| 系統指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 | 使用者指派 | [可在支援的區域中使用](../../virtual-machines/windows/image-builder-overview.md#regions) | 無法使用 | 無法使用 | 無法使用 |
 
 若要瞭解如何為 Azure VM 映射產生器設定受控識別 (在可用) 的區域中，請參閱影像產生器 [總覽](../../virtual-machines/windows/image-builder-overview.md#permissions)。

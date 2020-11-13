@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/09/2020
-ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324898"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555578"
 ---
 # <a name="convert-to-image-directory"></a>轉換至映像目錄
 
@@ -47,7 +47,8 @@ ms.locfileid: "93324898"
     
     ![影像範例資料集](./media/module/image-sample-dataset.png)
 
-    針對計分，影像資料集資料夾只需要包含未分類的影像。
+    > [!NOTE]
+    > 針對推斷，映射資料集資料夾只需要包含未分類的影像。
 
 1. 在您的工作區中 [註冊映射資料集做為檔案資料集](../how-to-create-register-datasets.md)，因為 [轉換成映射目錄] 模組的輸入必須是檔案 **資料集** 。
 

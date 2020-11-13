@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 遷移至 Azure SQL
-summary: '尋找文件來了解如何遷移至雲端中 SQL Server 資料庫引擎產品的 Azure SQL 系列：Azure VM 上的 Azure SQL Database、Azure SQL 受控執行個體和 SQL Server。 '
+summary: '尋找有關如何在雲端中遷移至 Azure SQL 系列 SQL Server 資料庫引擎產品的文件：Azure VM 上的 Azure SQL Database、Azure SQL 受控執行個體和 SQL Server。 '
 metadata:
   title: 遷移至 Azure SQL
   description: 尋找文件來協助您從 Azure SQL Database 中的完全受控資料庫、Azure SQL 受控執行個體中完全受控的執行個體，或安裝到 Azure 虛擬機器中的 SQL Server，遷移至 Azure SQL (雲端中的 SQL Server 資料庫引擎產品系列)。
@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 11/06/2020
-  ms.openlocfilehash: 940f28fa76a8f735318010eab4b55d464295c25a
-  ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+  ms.openlocfilehash: 66742b89eac90f707ec156472d7b1f5ebf9fe467
+  ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
   ms.translationtype: HT
   ms.contentlocale: zh-TW
   ms.lasthandoff: 11/11/2020
-  ms.locfileid: "94495269"
+  ms.locfileid: "94505949"
 landingContent:
 - title: Azure SQL Database
   linkLists:

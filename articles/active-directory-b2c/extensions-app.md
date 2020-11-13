@@ -10,16 +10,16 @@ ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388505"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560849"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：擴充功能應用程式
 
-建立 Azure AD B2C 目錄時，會自動在新的目錄內建立名為 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 的應用程式。 此應用程式稱為 **b2c-extensions-app**，會顯示在應用程式註冊** 中。 它是由 Azure AD B2C 服務用來儲存使用者和自訂屬性的相關資訊。 如果將應用程式刪除，Azure AD B2C 就無法正確運作，並會影響您的生產環境。
+建立 Azure AD B2C 目錄時，會自動在新的目錄內建立名為 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 的應用程式。 此應用程式稱為 **b2c-extensions-app** ，會顯示在應用程式註冊中。 它是由 Azure AD B2C 服務用來儲存使用者和自訂屬性的相關資訊。 如果將應用程式刪除，Azure AD B2C 就無法正確運作，並會影響您的生產環境。
 
 > [!IMPORTANT]
 > 除非您打算立即刪除租用戶，否則請勿刪除 b2c-extensions-app。 若將應用程式刪除超過 30 天，使用者資訊就會永久遺失。
@@ -28,8 +28,8 @@ ms.locfileid: "85388505"
 
 若要驗證 b2c-extensions-app 是否存在：
 
-1. 在您的 Azure AD B2C 租用戶中，按一下左側導覽功能表中的 [所有服務]****。
-1. 搜尋並開啟 [應用程式註冊]****。
+1. 在您的 Azure AD B2C 租用戶中，按一下左側導覽功能表中的 [所有服務]。
+1. 搜尋並開啟 [應用程式註冊]。
 1. 尋找以 **b2c-extensions-app** 開頭的應用程式
 
 ## <a name="recover-the-extensions-app"></a>復原擴充功能應用程式
@@ -38,8 +38,8 @@ ms.locfileid: "85388505"
 
 1. 瀏覽至 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。
 1. 針對您需要還原已刪除應用程式的 Azure AD B2C 目錄，以全域系統管理員身分登入站台。 此全域系統管理員必須有類似下列的電子郵件地址：`username@{yourTenant}.onmicrosoft.com`。
-1. 針對 URL `https://graph.windows.net/myorganization/deletedApplications` 發出 HTTP GET，其中 api-version=1.6。 此作業會列出過去 30 天內所有已刪除的應用程式。
-1. 在名稱開頭為 'b2c-extension-app' 的清單中尋找應用程式，並複製其 `objectid` 屬性值。
+1. 針對 URL `https://graph.windows.net/myorganization/deletedApplications` 發出 HTTP GET，其中 api-version=1.6。 這項作業會列出過去 30 天內所有已刪除的應用程式。
+1. 在清單中尋找名稱開頭為 ' b2c-extensions-app ' 的應用程式，並複製其 `objectid` 屬性值。
 1. 針對 URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore` 發出 HTTP POST。 從上一個步驟將 URL 的 `{OBJECTID}` 部分取代為 `objectid`。
 
 您現在應該能夠在 Azure 入口網站中[看到還原的應用程式](#verifying-that-the-extensions-app-is-present)。

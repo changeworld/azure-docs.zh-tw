@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c49f8b2732a1b62760cec69626d56751971e6a44
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789806"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556432"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 虛擬機器上布建 SQL Server
 
@@ -367,12 +367,17 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 
 ## <a name="install-the-sql-iaas-agent"></a>安裝 SQL IaaS 代理程式
 
-SQL Server 虛擬機器能以 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)支援自動化管理功能。 若要在新的 VM 上安裝代理程式，並向資源提供者註冊它，請在建立虛擬機器之後，執行 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 指定 SQL Server VM 的授權類型，透過 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 選擇「隨用隨付」或「自備授權」。 如需授權的詳細資訊，請參閱[授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+SQL Server 虛擬機器能以 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)支援自動化管理功能。 若要向擴充註冊 SQL Server，請在建立虛擬機器之後，執行 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 指定 SQL Server VM 的授權類型，透過 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 選擇「隨用隨付」或「自備授權」。 如需授權模式的相關資訊，請參閱[授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+有三種方式可以向擴充功能註冊： 
+- [針對訂用帳戶中所有目前和未來的 Vm 自動進行](sql-agent-extension-automatic-registration-all-vms.md)
+- [針對單一 VM 手動](sql-agent-extension-manually-register-single-vm.md)
+- [針對多個 Vm 以手動方式進行大量](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>停止或移除 VM

@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 76e7b3d0b0dd514feb7d16a6bc23d1b908be683f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207201"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555561"
 ---
 # <a name="pbr-materials"></a>PBR 材質
 
 *.Pbr* 材質是 Azure 遠端轉譯中的其中一種支援的 [材質類型](../../concepts/materials.md) 。 它們是用於應該會收到實際光源的 [網格](../../concepts/meshes.md) 。
 
-.PBR 代表 **P**hysically **B**機型 gateway **R**endering，表示材質會以實際的合理方式描述介面的視覺屬性，因此在所有光源條件下都可能有實際的結果。 大部分新式遊戲引擎和內容建立工具都支援 .PBR 材質，因為它們被視為即時轉譯的真實世界案例的最佳近似值。
+.PBR 代表 **P** hysically **B** 機型 gateway **R** endering，表示材質會以實際的合理方式描述介面的視覺屬性，因此在所有光源條件下都可能有實際的結果。 大部分新式遊戲引擎和內容建立工具都支援 .PBR 材質，因為它們被視為即時轉譯的真實世界案例的最佳近似值。
 
 ![ARR 所呈現的 Helmet glTF 範例模型](media/helmet.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "92207201"
 
 這些屬性通用於所有材質：
 
-* **albedoColor：** 此色彩會乘以其他色彩，例如*albedoMap*或* :::no-loc text="vertex "::: 色彩*。 如果在材質上啟用 *透明度* ，則會使用 Alpha 色板來調整不透明度，其 `1` 意義完全不透明，而且 `0` 意義完全透明。 預設值為白色。
+* **albedoColor：** 此色彩會乘以其他色彩，例如 *albedoMap* 或 *:::no-loc text="vertex "::: 色彩* 。 如果在材質上啟用 *透明度* ，則會使用 Alpha 色板來調整不透明度，其 `1` 意義完全不透明，而且 `0` 意義完全透明。 預設值為白色。
 
   > [!NOTE]
   > 當 .PBR 材質完全透明時（例如完美的半透明部分），它仍會反映環境。 視覺效果等明亮的點仍然可以在反映中看到。 這對 [色彩材質](color-materials.md)而言是不同的。
@@ -37,17 +37,23 @@ ms.locfileid: "92207201"
 
 * **textureCoordinateScale** 和 **textureCoordinateOffset：** 尺規會乘以 UV 材質座標，並將位移加入其中。 可以用來延展和移出紋理。 預設小數位數為 (1，1) ，位移為 (0，0) 。
 
-* **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，且已啟用此選項，網格的 :::no-loc text="vertex"::: 色彩會乘以 *albedoColor* 和 *albedoMap*。 預設會停用 *useVertexColor* 。
+* **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，且已啟用此選項，網格的 :::no-loc text="vertex"::: 色彩會乘以 *albedoColor* 和 *albedoMap* 。 預設會停用 *useVertexColor* 。
 
 * **isDoubleSided：** 如果雙 sidedness 是設定為 true，則即使攝影機正在查看其背面的臉部，也會轉譯具有此材質的三角形。 針對 .PBR 材質，也會針對背面的臉部正確地計算。 預設會停用此選項。 另請參閱[ :::no-loc text="Single-sided"::: 呈現](single-sided-rendering.md)。
 
 * **TransparencyWritesDepth：** 如果在材質上設定 TransparencyWritesDepth 旗標，且材質是透明的，使用此材質的物件也會對最後的深度緩衝區造成影響。 請參閱下一節中的「.PBR 材質」旗標 *透明* 。 如果您的使用案例需要更合理的最高 [階段 reprojection](late-stage-reprojection.md) 完全透明的場景，建議啟用這項功能。 若為混合的不透明/透明場景，此設定可能會導致 implausible reprojection 行為或 reprojection 成品。 基於這個理由，一般使用案例的預設和建議的設定是停用此旗標。 寫入的深度值取自最接近相機之物件的每個圖元深度層級。
 
+* **FresnelEffect：** 此材質旗標會對個別的資料啟用加法 [fresnel 效果](../../overview/features/fresnel-effect.md) 。 效果的外觀是由下列所述的其他 fresnel 參數所控制。 
+
+* **FresnelEffectColor：** 用於此材質的 fresnel 色彩。 只有在此材質上已設定 fresnel 效果位時才重要 (請參閱上述) 。 這個屬性會控制 fresnel 的基本色彩 (如需完整說明) ，請參閱 [fresnel 效果](../../overview/features/fresnel-effect.md) 。 目前只有 rgb 通道值是很重要的，而且 Alpha 值會被忽略。
+
+* **FresnelEffectExponent：** 用於此材質的 fresnel 指數。 只有在此材質上已設定 fresnel 效果位時才重要 (請參閱上述) 。 這個屬性會控制 fresnel 的照射範圍。 最小值0.01 會導致整個物件的散佈。 最大值10.0 限制只會顯示最 gracing 的邊緣。
+
 ## <a name="pbr-material-properties"></a>.PBR 材質屬性
 
-實際轉譯的核心概念是使用 *BaseColor*、 *Metalness*和 *粗糙度* 屬性來模擬各種不同的真實世界材質。 如需有關 .PBR 的詳細說明，請參閱本文的討論範圍。 如需有關 .PBR 的詳細資訊，請參閱 [其他來源](http://www.pbr-book.org)。 下列是針對 .PBR 材質所特有的屬性：
+實際轉譯的核心概念是使用 *BaseColor* 、 *Metalness* 和 *粗糙度* 屬性來模擬各種不同的真實世界材質。 如需有關 .PBR 的詳細說明，請參閱本文的討論範圍。 如需有關 .PBR 的詳細資訊，請參閱 [其他來源](http://www.pbr-book.org)。 下列是針對 .PBR 材質所特有的屬性：
 
-* **baseColor：** 在 .PBR 資料中， *>albedo 色彩* 稱為「 *基底色彩*」。 在 Azure 遠端轉譯 *>albedo color* 屬性已透過一般材質屬性呈現，因此沒有其他基底色彩屬性。
+* **baseColor：** 在 .PBR 資料中， *>albedo 色彩* 稱為「 *基底色彩* 」。 在 Azure 遠端轉譯 *>albedo color* 屬性已透過一般材質屬性呈現，因此沒有其他基底色彩屬性。
 
 * **粗糙度** 和 **roughnessMap：** 粗糙度定義介面的粗略或平滑程度。 粗略表面會以比平滑表面更多的方向散佈光，讓反射模糊而非清晰。 值範圍是從 `0.0` 到 `1.0` 。 當 `roughness` 等於時 `0.0` ，反射會很清晰。 當 `roughness` 等於時 `0.5` ，反映將會變得模糊。
 
@@ -74,14 +80,14 @@ ms.locfileid: "92207201"
   ![在上圖中，以零到完全透明的提示轉譯 ](./media/transparency.png) ，最右邊的球體是完全透明的，但反映仍然可見。
 
   > [!IMPORTANT]
-  > 如果在執行時間應該將任何材質從不透明切換為透明，則轉譯器必須使用 *TileBasedComposition*轉譯 [模式](../../concepts/rendering-modes.md)。 這項限制並不適用于轉換成透明材質的材質。
+  > 如果在執行時間應該將任何材質從不透明切換為透明，則轉譯器必須使用 *TileBasedComposition* 轉譯 [模式](../../concepts/rendering-modes.md)。 這項限制並不適用于轉換成透明材質的材質。
 
 ## <a name="technical-details"></a>技術詳細資訊
 
 Azure 遠端轉譯使用 Cook-Torrance 的微 facet BRDF 搭配 GGX NDF、Schlick Fresnel，以及 GGX Smith 關聯可見度詞彙與 Lambert 擴散詞彙。 此模型是目前的產業標準。 如需更深入的詳細資料，請參閱這篇文章： [實際呈現-Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Azure 遠端轉譯中所使用之 *Metalness 的非等式* .pbr 模型的替代方式，就是 *反光* 的 .pbr 模型。 此模型可以代表更廣泛的材質。 但是，它的成本較高，而且通常不適用於即時案例。
-由於有* (擴散、反光) *值組無法轉換成* (BaseColor、Metalness) *，因此不一定可以從*反光*到*Metalness 的粗糙度*進行轉換。 另一個方向的轉換更簡單且更精確，因為所有 * (BaseColor、Metalness) * 組都對應至妥善定義的 * (擴散、反射) * 配對。
+由於有 *(擴散、反光)* 值組無法轉換成 *(BaseColor、Metalness)* ，因此不一定可以從 *反光* 到 *Metalness 的粗糙度* 進行轉換。 另一個方向的轉換更簡單且更精確，因為所有 *(BaseColor、Metalness)* 組都對應至妥善定義的 *(擴散、反射)* 配對。
 
 ## <a name="api-documentation"></a>API 文件
 

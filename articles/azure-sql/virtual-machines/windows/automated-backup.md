@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7a7d96c13b47bee9c092be926dc54555979e6c6f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 78b422cd41f4cea72b74257fe70c09471e9d2d5b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790112"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556568"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure 虛擬機器的自動備份 v2 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "92790112"
 **資料庫組態** ：
 
 - 目標 _使用者_ 資料庫必須使用完整復原模式。 系統資料庫不一定要使用完整復原模式。 不過，如果要求針對模型或 MSDB 進行記錄備份，就必須使用完整復原模式。 如需完整復原模型對備份所造成影響的詳細資訊，請參閱[在完整復原模式下備份](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))。 
-- 已在 [完整管理模式](sql-vm-resource-provider-register.md#upgrade-to-full)中向 SQL vm 資源提供者註冊 SQL Server VM。 
+- SQL Server 的 VM 已在 [完整管理模式](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)中向 SQL IaaS 代理程式延伸模組註冊。 
 -  自動備份會依賴完整 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能。 如此一來，只有預設實例的目標資料庫或單一命名實例才支援自動備份。 如果沒有預設實例和多個命名實例，SQL IaaS 擴充功能就會失敗，而且自動備份將無法運作。 
 
 ## <a name="settings"></a>設定

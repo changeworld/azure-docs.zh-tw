@@ -1,15 +1,15 @@
 ---
 title: 鎖定資源以防止變更
-description: 透過將鎖定套用到所有使用者和角色，防止使用者更新或刪除重要的 Azure 資源。
+description: 藉由套用鎖定給所有使用者和角色，防止使用者更新或刪除 Azure 資源。
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340136"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555663"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 
@@ -74,19 +74,91 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 ### <a name="arm-template"></a>ARM 範本
 
-使用 Resource Manager 範本部署鎖定時，您可以根據鎖定的範圍，使用不同的名稱和類型值。
+使用 Azure Resource Manager 範本 (ARM 範本) 部署鎖定時，您必須留意鎖定的範圍和部署的範圍。 若要在部署範圍套用鎖定，例如鎖定資源群組或訂用帳戶，請不要設定 [範圍] 屬性。 鎖定部署範圍內的資源時，請設定 [範圍] 屬性。
 
-將鎖定套用至 **資源** 時，請使用下列格式：
+下列範本會將鎖定套用至它所部署的資源群組。 請注意，鎖定資源上沒有範圍屬性，因為鎖定的範圍符合部署的範圍。 此範本會部署在資源群組層級。
 
-* name - `{resourceName}/Microsoft.Authorization/{lockName}`
-* type - `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-將鎖定套用至 **資源群組** 或 **訂用帳戶** 時，請使用下列格式：
+若要建立資源群組並加以鎖定，請在訂用帳戶層級部署下列範本。
 
-* name - `{lockName}`
-* type - `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-下列範例示範建立應用程式服務方案的範本、網站和網站上的鎖定。 鎖定的資源類型為要鎖定之資源的資源類型和 **/providers/locks** 。 鎖定名稱的建立方式是串連資源名稱與 **/Microsoft.Authorization/** 和鎖定的名稱。
+將鎖定套用至資源群組內的 **資源** 時，請新增 [範圍] 屬性。 將 [範圍] 設定為要鎖定之資源的名稱。
+
+下列範例示範建立應用程式服務方案的範本、網站和網站上的鎖定。 鎖定的範圍會設定為網站。
 
 ```json
 {
@@ -95,6 +167,10 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -103,9 +179,9 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -117,9 +193,9 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -128,9 +204,10 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -142,8 +219,6 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
   ]
 }
 ```
-
-如需在資源群組上設定鎖定的範例，請參閱[建立資源群組，並將其鎖定](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164239"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556330"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "92164239"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 - Microsoft Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - Azure 虛擬機器上的 Windows 網域或內部部署資料中心會透過虛擬網路配對延伸至 Azure。
@@ -47,9 +47,9 @@ ms.locfileid: "92164239"
 
 請小心選取符合您預期叢集設定的 VM 可用性選項： 
 
- - **Azure 共用磁片**：已設定容錯網域和更新網域的 [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 設定為1，並放在 [鄰近放置群組](../../../virtual-machines/windows/proximity-placement-groups-portal.md)內。
- - **Premium 檔案共用**： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 或 [可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 如果您選擇可用性區域作為 Vm 的可用性設定，則 [Premium 檔案共用] 是唯一的共用儲存體選項。 
- - **儲存空間直接存取**： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+ - **Azure 共用磁片** ：已設定容錯網域和更新網域的 [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 設定為1，並放在 [鄰近放置群組](../../../virtual-machines/windows/proximity-placement-groups-portal.md)內。
+ - **Premium 檔案共用** ： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 或 [可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 如果您選擇可用性區域作為 Vm 的可用性設定，則 [Premium 檔案共用] 是唯一的共用儲存體選項。 
+ - **儲存空間直接存取** ： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
 
 >[!IMPORTANT]
 >建立虛擬機器後，您即無法設定或變更可用性設定組。
@@ -71,15 +71,15 @@ ms.locfileid: "92164239"
 
 ## <a name="uninstall-sql-server"></a>解除安裝 SQL Server
 
-在 FCI 建立流程中，您會將 SQL Server 安裝為容錯移轉叢集的叢集實例。 *如果您在沒有 SQL Server 的情況下，使用 Azure Marketplace 映射部署虛擬機器，則可以略過此步驟。* 如果您已部署 SQL Server 預先安裝的映射，您必須從 SQL VM 資源提供者取消註冊 SQL Server VM，然後再卸載 SQL Server。 
+在 FCI 建立流程中，您會將 SQL Server 安裝為容錯移轉叢集的叢集實例。 *如果您在沒有 SQL Server 的情況下，使用 Azure Marketplace 映射部署虛擬機器，則可以略過此步驟。* 如果您已部署 SQL Server 預先安裝的映射，您必須從 SQL IaaS 代理程式擴充功能中取消註冊 SQL Server VM，然後卸載 SQL Server。 
 
-### <a name="unregister-from-the-sql-vm-resource-provider"></a>從 SQL VM 資源提供者取消註冊
+### <a name="unregister-from-the-sql-iaas-agent-extension"></a>從 SQL IaaS 代理程式擴充取消登錄
 
-從 Azure Marketplace SQL Server VM 映射會自動向 SQL VM 資源提供者註冊。 卸載預先安裝的 SQL Server 實例之前，您必須先 [從 SQL VM 資源提供者取消註冊每個 SQL SERVER VM](sql-vm-resource-provider-register.md#unregister-from-rp)。 
+從 Azure Marketplace SQL Server VM 映射會自動向 SQL IaaS 代理程式延伸模組註冊。 卸載預先安裝的 SQL Server 實例之前，您必須先 [從 SQL IaaS 代理程式擴充功能中取消註冊每個 SQL SERVER VM](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)。 
 
 ### <a name="uninstall-sql-server"></a>解除安裝 SQL Server
 
-從資源提供者取消註冊之後，您可以卸載 SQL Server。 請在每部虛擬機器上執行下列步驟： 
+從擴充功能取消註冊之後，您可以卸載 SQL Server。 請在每部虛擬機器上執行下列步驟： 
 
 1. 使用 RDP 連接到虛擬機器。
 
@@ -90,7 +90,7 @@ ms.locfileid: "92164239"
    1. 在 [程式和功能] 中，以滑鼠右鍵按一下 Microsoft SQL Server 201_ (64 位元)，然後選取 [解除安裝/變更]。
    1. 選取 [移除]。
    1. 選取預設執行個體。
-   1. 移除所有在 [Database Engine 服務] 下的功能。 請勿移除 **共用功能**下的任何功能。 您會看到類似下列螢幕擷取畫面的內容：
+   1. 移除所有在 [Database Engine 服務] 下的功能。 請勿移除 **共用功能** 下的任何功能。 您會看到類似下列螢幕擷取畫面的內容：
 
       ![特性選取](./media/failover-cluster-instance-prepare-vm/03-remove-features.png)
 
@@ -107,9 +107,9 @@ ms.locfileid: "92164239"
 
    | 目的 | Port | 注意
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者**：所有 FCI 設定。 |
-   | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由**： FCI 與負載平衡器搭配使用。 |
-   | 檔案共用 | UDP 445 | 檔案共用服務使用的埠。 </br> </br> **消費者**： FCI 與 Premium 檔案共用。 |
+   | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者** ：所有 FCI 設定。 |
+   | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由** ： FCI 與負載平衡器搭配使用。 |
+   | 檔案共用 | UDP 445 | 檔案共用服務使用的埠。 </br> </br> **消費者** ： FCI 與 Premium 檔案共用。 |
 
 ## <a name="join-the-domain"></a>加入網域
 

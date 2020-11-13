@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 249e65b5a9440678015598d9969c0d2ed689c626
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 262e15754ba481ee37b6af9783e5a3bc82d9450c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285357"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556347"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 文件變更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 
 | 變更 | 詳細資料 |
 | --- | --- |
-| **自動 RP 註冊** | 您現在可以啟用 [自動註冊](sql-vm-resource-provider-automatic-registration.md) 功能，自動註冊已部署至您的訂用帳戶的所有 SQL Server vm，以及未來新增的任何 SQL Server vm。  | 
+| **自動延伸註冊** | 您現在可以啟用 [自動註冊](sql-agent-extension-automatic-registration-all-vms.md) 功能，以使用 [SQL IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能，自動註冊已部署至您訂用帳戶的所有 SQL Server vm。 這適用于所有現有的 Vm，也會自動註冊未來新增的所有 SQL Server Vm。   | 
 
 
 ## <a name="august-2020"></a>2020 年 8 月
@@ -49,7 +49,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 | 變更 | 詳細資料 |
 | --- | --- |
 | **將記錄遷移至 ultra 磁片** | 瞭解如何將 [記錄檔遷移至 ultra 磁片](storage-migrate-to-ultradisk.md) ，以利用高效能和低延遲。 | 
-| **使用 PowerShell 建立 AG** | 您現在可以使用 [PowerShell](availability-group-az-commandline-configure.md) 和 Azure CLI 來簡化可用性群組的建立。 | 
+| **使用 Azure PowerShell 建立 AG** | 現在可以使用 [Azure PowerShell](availability-group-az-commandline-configure.md) 和 Azure CLI 來簡化可用性群組的建立。 | 
 
 
 ## <a name="june-2020"></a>2020 年 6 月
@@ -73,7 +73,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 
 | 變更 | 詳細資料 |
 | --- | --- |
-| **Azure Government 支援** | 您現在可以向 [Azure Government](https://azure.microsoft.com/global-infrastructure/government/) 雲端中裝載的虛擬機器，使用 SQL VM 資源提供者註冊 SQL Server 的虛擬機器。 | 
+| **Azure Government 支援** | 您現在可以使用適用于 [Azure Government](https://azure.microsoft.com/global-infrastructure/government/) 雲端中裝載之虛擬機器的 SQL IaaS 代理程式擴充功能來註冊 SQL Server 虛擬機器。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2019"></a>2019
@@ -81,22 +81,22 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 |變更 | 詳細資料 |
  --- | --- |
 | **Azure 中的免費 DR 複本** | 若您具備[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，則可為內部部署 SQL Server 執行個體在 Azure 中裝載[免費的被動執行個體](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)以進行災害復原。 | 
-| **大量資源提供者註冊** | 您現在可以使用資源提供者來 [大量註冊](sql-vm-resource-provider-bulk-register.md) SQL Server 的虛擬機器。 | 
+| **大量 SQL IaaS 延伸模組註冊** | 您現在可以使用[SQL IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能[大量註冊](sql-agent-extension-manually-register-vms-bulk.md)SQL Server 的虛擬機器。 | 
 |**效能優化儲存體設定** | 您現在可在建立新的 SQL Server VM 時[完全自訂儲存體設定](storage-configuration.md#new-vms)。 |
 |**FCI 進階檔案共用** | 您現在可以使用 [Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) ，而不是原始的 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md)方法來建立容錯移轉叢集實例。 
 | **Azure 專用主機** | 您可以在 [Azure 專用主機](dedicated-host.md)上執行 SQL Server VM。 | 
 | **將 VM 遷移至不同區域 SQL Server** | 使用 Azure Site Recovery [將 SQL Server VM 從一個區域遷移至另一個區域](move-sql-vm-different-region.md)。 |
 |  **新的 SQL IaaS 安裝模式** | 您現在可在[輕量模式](sql-server-iaas-agent-extension-automate-management.md)中安裝 SQL Server IaaS 延伸模組來避免重新啟動 SQL Server 服務。  |
 | **SQL Server 版本修改** | 您現在可變更 SQL Server VM 的[版本屬性](change-sql-server-edition.md)。 |
-| **SQL VM 資源提供者的變更** | 您可使用新的 SQL IaaS 模式來[向 SQL VM 資源提供者註冊 SQL Server VM](sql-vm-resource-provider-register.md)。 此功能包括 [Windows Server 2008](sql-server-iaas-agent-extension-automate-management.md#management-modes) 映像。|
+| **SQL IaaS 代理程式擴充功能的變更** | 您可以使用新的 SQL IaaS 模式， [向 SQL Iaas 代理程式擴充功能註冊 SQL SERVER VM](sql-agent-extension-manually-register-single-vm.md) 。 此功能包括 [Windows Server 2008](sql-server-iaas-agent-extension-automate-management.md#management-modes) 映像。|
 | **使用 Azure Hybrid Benefit 的自備授權映像** | 從 Azure Marketplace 部署的自備授權映像現在可[將其授權類型切換至隨用隨付](licensing-model-azure-hybrid-benefit-ahb-change.md#remarks)。| 
 | **Azure 入口網站中的新 SQL Server VM 管理** | 現在有新的方式可用來在 Azure 入口網站中管理 SQL Server VM。 如需詳細資訊，請參閱[在 Azure 入口網站中管理 SQL Server VM](manage-sql-vm-portal.md)。  | 
 | **SQL Server 2008 和 2008 R2 的延伸支援** | 將 SQL Server 2008 和 SQL Server 2008 R2「依現狀」遷移至 Azure VM 的[延伸支援](sql-server-2008-extend-end-of-support.md)。 | 
-| **自訂映像的可支援性** | 您現在可以將 [SQL Server IaaS 延伸](sql-server-iaas-agent-extension-automate-management.md#installation) 模組安裝到自訂 OS 和 SQL Server 映射，以提供 [彈性授權](licensing-model-azure-hybrid-benefit-ahb-change.md)的有限功能。 當您要向 SQL VM 資源提供者註冊自訂映射時，請將授權類型指定為 "AHUB"。 否則註冊將會失敗。 | 
+| **自訂映像的可支援性** | 您現在可以將 [SQL Server IaaS 延伸](sql-server-iaas-agent-extension-automate-management.md#installation) 模組安裝到自訂 OS 和 SQL Server 映射，以提供 [彈性授權](licensing-model-azure-hybrid-benefit-ahb-change.md)的有限功能。 當您使用 SQL IaaS 代理程式延伸模組註冊自訂映射時，請將授權類型指定為 "AHUB"。 否則註冊將會失敗。 | 
 | **具名執行個體的可支援性** | 若預設執行個體已透過適當方式解除安裝，則現在可搭配具名執行個體使用 [SQL Server IaaS 延伸模組](sql-server-iaas-agent-extension-automate-management.md#installation)。 | 
 | **入口網站增強** | 部署 SQL Server VM 的 Azure 入口網站體驗現在已經過改造，以改善可用性。 如需詳細資訊，請參閱簡短的部署 SQL Server VM [快速入門](sql-vm-create-portal-quickstart.md)，以及更完整的[操作指南](create-sql-vm-portal.md)。|
-| **入口網站改善** | 現在您可使用 [Azure 入口網站](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider)將 SQL Server VM 的授權模型從隨用隨付變更為自備授權。|
-| **透過 Azure CLI 簡化可用性群組至 SQL Server VM 的部署** | 現在您可透過比以往更輕鬆的方式，以在 Azure 中將可用性群組部署到 SQL Server VM。 您可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 從命令列建立 Windows 容錯移轉叢集、內部負載平衡器和可用性群組接聽程式。 如需詳細資訊，請參閱 [使用 Azure CLI 為 AZURE VM 上的 SQL Server 設定 Always On 可用性群組](./availability-group-az-commandline-configure.md)。 | 
+| **入口網站改善** | 現在您可使用 [Azure 入口網站](licensing-model-azure-hybrid-benefit-ahb-change.md#change-license-model)將 SQL Server VM 的授權模型從隨用隨付變更為自備授權。|
+| **透過 Azure CLI 簡化可用性群組至 SQL Server VM 的部署** | 現在您可透過比以往更輕鬆的方式，以在 Azure 中將可用性群組部署到 SQL Server VM。 您可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 從命令列建立 Windows 容錯移轉叢集、內部負載平衡器和可用性群組接聽程式。 如需詳細資訊，請參閱 [使用 Azure CLI 為 AZURE VM 上的 SQL Server 設定 Always On 可用性群組](availability-group-az-cli-configure.md)。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -105,8 +105,8 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 | --- | --- |
 |  **SQL Server 叢集的新資源提供者** | 新資源提供者 (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups) 會定義 Windows 容錯移轉叢集的中繼資料。 將 SQL Server VM 加入 *SqlVirtualMachineGroups* 會啟動 Windows Server 容錯移轉叢集 (WSFC) 服務，並將 VM 加入叢集。  |
 | **使用 Azure 快速入門範本自動化可用性群組部署的安裝** |您現在可以使用兩個 Azure 快速入門範本，建立 Windows 容錯移轉叢集、加入 SQL Server Vm、建立接聽程式，並設定內部負載平衡器。 如需詳細資訊，請參閱[使用 Azure 快速入門範本設定 Azure VM 上 SQL Server 的 Always On 可用性群組](availability-group-quickstart-template-configure.md)。 | 
-| **自動化 SQL VM 資源提供者的註冊** | 在本月之後部署的 SQL Server Vm 會自動向新的 SQL VM 資源提供者註冊。 本月之前部署的 SQL Server VM 仍然需要手動註冊。 如需詳細資訊，請參閱[向 SQL VM 資源提供者註冊 Azure 中的 SQL Server 虛擬機器](sql-vm-resource-provider-register.md)。|
-|**新增 SQL VM 資源提供者** |  新資源提供者 (Microsoft.SqlVirtualMachine) 可為 SQL Server VM 提供更佳的管理。 如需註冊 VM 的詳細資訊，請參閱[向 SQL VM 資源提供者註冊 Azure 中的 SQL Server 虛擬機器](sql-vm-resource-provider-register.md)。 |
+| **自動註冊到 SQL IaaS 代理程式擴充功能** | 在本月之後部署 SQL Server Vm 會自動向新的 SQL IaaS 代理程式延伸模組註冊。 本月之前部署的 SQL Server VM 仍然需要手動註冊。 如需詳細資訊，請參閱在 [Azure 中使用 SQL IaaS 代理程式擴充功能註冊 SQL Server 的虛擬機器](sql-agent-extension-manually-register-single-vm.md)。|
+|**新的 SQL IaaS 代理程式擴充功能** |  新資源提供者 (Microsoft.SqlVirtualMachine) 可為 SQL Server VM 提供更佳的管理。 如需註冊 Vm 的詳細資訊，請參閱在 [Azure 中使用 SQL IaaS 代理程式擴充功能註冊 SQL Server 的虛擬機器](sql-agent-extension-manually-register-single-vm.md)。 |
 |**切換授權模型** | 您現在可使用 Azure CLI 或 PowerShell 在依使用量付費與自備授權模型間進行切換。 如需詳細資訊，請參閱[如何變更 Azure 中 SQL Server 虛擬機器的授權模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 | 
 | &nbsp; | &nbsp; |
 

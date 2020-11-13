@@ -13,21 +13,19 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7ec6ab8b52d9d43d898f481a2f36310e5c0897d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530692"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561075"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式 (Preview) 
 
-> [!NOTE]
-> 這項功能處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>[!IMPORTANT]
+> 這項功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-*適用于 apple 裝置的 Microsoft 企業 SSO 外掛程式*可在所有支援 Apple [ (](https://developer.apple.com/documentation/authenticationservices)功能的應用程式中，為 Azure Active Directory Azure AD) 企業單一登入的帳戶提供單一登入 (SSO) 。 Microsoft 與 Apple 密切合作來開發此外掛程式，以提高應用程式的可用性，同時提供 Apple 和 Microsoft 可提供的最佳保護。
+*適用于 apple 裝置的 Microsoft 企業 SSO 外掛程式* 可在所有支援 Apple [ (](https://developer.apple.com/documentation/authenticationservices)功能的應用程式中，為 Azure Active Directory Azure AD) 企業單一登入的帳戶提供單一登入 (SSO) 。 Microsoft 與 Apple 密切合作來開發此外掛程式，以提高應用程式的可用性，同時提供 Apple 和 Microsoft 可提供的最佳保護。
 
 在此公開預覽版本中，企業 SSO 外掛程式僅適用于 iOS 裝置，並在特定的 Microsoft 應用程式中散發。
 
@@ -53,10 +51,10 @@ ms.locfileid: "91530692"
 
 使用下列參數設定適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式：
 
-- **類型**：重新導向
-- **延伸模組識別碼**： `com.microsoft.azureauthenticator.ssoextension`
-- **小組識別碼**： (iOS) 不需要此欄位
-- **Url**：
+- **類型** ：重新導向
+- **延伸模組識別碼** ： `com.microsoft.azureauthenticator.ssoextension`
+- **小組識別碼** ： (iOS) 不需要此欄位
+- **Url** ：
   - `https://login.microsoftonline.com`
   - `https://login.microsoft.com`
   - `https://sts.windows.net`
@@ -80,10 +78,10 @@ SSO 外掛程式可讓任何應用程式參與單一登入，即使它不是使�
 
 使用下列參數，為不是使用 MSAL 的應用程式設定 Microsoft 企業 SSO 外掛程式：
 
-- 機**碼**：`AppAllowList`
-- **輸入**： `String`
-- **值**：允許參與 SSO 之應用程式的應用程式套件組合識別碼清單（以逗號分隔）
-- **範例**：`com.contoso.workapp, com.contoso.travelapp`
+- 機 **碼** ：`AppAllowList`
+- **輸入** ： `String`
+- **值** ：允許參與 SSO 之應用程式的應用程式套件組合識別碼清單（以逗號分隔）
+- **範例** ：`com.contoso.workapp, com.contoso.travelapp`
 
 MDM 系統管理員允許參與 SSO 的[同意應用程式](./application-consent-experience.md)，可以無訊息方式取得終端使用者的權杖。 因此，請務必只將受信任的應用程式新增至允許清單。 
 
@@ -95,9 +93,9 @@ MDM 系統管理員允許參與 SSO 的[同意應用程式](./application-consen
 
 啟用 `browser_sso_interaction_enabled` 旗標可讓非 MSAL 應用程式和 Safari 瀏覽器進行初始啟動載入，並取得共用認證。 如果 Microsoft 企業 SSO 外掛程式尚無共用認證，則會在每次從 Safari 瀏覽器、ASWebAuthenticationSession、SafariViewController 或另一個允許的原生應用程式中的 Azure AD URL 要求登入時，嘗試取得一個認證。  
 
-- 機**碼**：`browser_sso_interaction_enabled`
-- **輸入**： `Integer`
-- **值**：1或0
+- 機 **碼** ：`browser_sso_interaction_enabled`
+- **輸入** ： `Integer`
+- **值** ：1或0
 
 建議您啟用此旗標，以在所有應用程式中獲得更一致的體驗。 此選項預設為停用。 
 
@@ -107,9 +105,9 @@ Microsoft 企業 SSO 外掛程式會將共用認證附加至來自允許應用�
 
 啟用 `disable_explicit_app_prompt` 旗標可限制原生和 web 應用程式在通訊協定層上強制執行使用者提示，並略過 SSO 的能力。
 
-- 機**碼**：`disable_explicit_app_prompt`
-- **輸入**： `Integer`
-- **值**：1或0
+- 機 **碼** ：`disable_explicit_app_prompt`
+- **輸入** ： `Integer`
+- **值** ：1或0
 
 建議您啟用此旗標，以在所有應用程式中獲得更一致的體驗。 此選項預設為停用。 
 

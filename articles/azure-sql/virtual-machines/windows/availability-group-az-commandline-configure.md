@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790078"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556517"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 為 Azure VM 上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,13 +29,13 @@ ms.locfileid: "92790078"
 
 雖然本文使用 PowerShell 和 Az CLI 來設定可用性群組環境，但您也可以從 [Azure 入口網站](availability-group-azure-portal-configure.md)、使用 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)，或 [手動](availability-group-manually-configure-tutorial.md) 方式進行。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要設定 Always On 可用性群組，您必須具備下列必要條件： 
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 - 具有網域控制站的資源群組。 
-- 在 Azure 中執行的一或多個已加入網域的 [vm SQL Server 2016 (或更新版本](./create-sql-vm-portal.md)，在 *相同* 的可用性設定組或已 [向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md)的 *不同* 可用性區域中) Enterprise 版。  
+- 在 Azure 中執行的一或多個已加入網域的 [vm SQL Server 2016 (或更新版本](./create-sql-vm-portal.md)，在 *相同* 的可用性設定組或已 [向 SQL IaaS 代理程式擴充功能註冊](sql-agent-extension-manually-register-single-vm.md)的 *不同* 可用性區域中) Enterprise edition。  
 - [PowerShell](/powershell/scripting/install/installing-powershell)或[Azure CLI](/cli/azure/install-azure-cli)的最新版本。 
 - 兩個可用 (未由任何實體使用) 的 IP 位址。 一個用於內部負載平衡器。 另一個用於與可用性群組位於相同子網路內的可用性群組接聽程式。 如果您是使用現有的負載平衡器，可用性群組接聽程式只需要一個可用的 IP 位址。 
 
@@ -423,9 +423,9 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="remove-listener"></a>移除接聽程式
-如果您稍後需要移除使用 Azure CLI 所設定的可用性群組接聽程式，您必須透過 SQL VM 資源提供者來執行。 由於接聽程式是透過 SQL VM 資源提供者註冊的，因此僅透過 SQL Server Management Studio 加以刪除並不足夠。 
+如果您稍後需要移除使用 Azure CLI 設定的可用性群組接聽程式，則必須經過 SQL IaaS 代理程式擴充功能。 因為接聽程式是透過 SQL IaaS 代理程式擴充功能註冊的，所以透過 SQL Server Management Studio 來刪除是不夠的。 
 
-最好的方法是在 Azure CLI 中使用下列程式碼片段，透過 SQL VM 資源提供者加以刪除。 這麼做可從 SQL VM 資源提供者中移除可用性群組接聽程式的中繼資料。 同時實際從可用性群組中刪除該接聽程式。 
+最佳方法是使用 Azure CLI 中的下列程式碼片段，透過 SQL IaaS 代理程式擴充功能來刪除它。 這樣做會從 SQL IaaS 代理程式擴充功能移除可用性群組接聽程式中繼資料。 同時實際從可用性群組中刪除該接聽程式。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -451,7 +451,7 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 
 ## <a name="remove-cluster"></a>移除叢集
 
-移除叢集中的所有節點以將其終結，然後從 SQL VM 資源提供者中移除叢集中繼資料。 您可以使用 Azure CLI 或 PowerShell 來這麼做。 
+移除叢集中的所有節點以將其終結，然後從 SQL IaaS 代理程式擴充功能移除叢集中繼資料。 您可以使用 Azure CLI 或 PowerShell 來這麼做。 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -468,7 +468,7 @@ az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group 
 
 如果這些是叢集中的唯一 Vm，則叢集將會損毀。 如果叢集中有任何其他 Vm 與已移除的 SQL Server Vm 分開，將不會移除其他 Vm，且不會終結叢集。 
 
-接下來，從 SQL VM 資源提供者中移除叢集中繼資料： 
+接下來，從 SQL IaaS 代理程式擴充功能中移除叢集中繼資料： 
 
 ```azurecli-interactive
 # Remove the cluster from the SQL VM RP metadata
@@ -497,7 +497,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
 
 如果這些是叢集中的唯一 Vm，則叢集將會損毀。 如果叢集中有任何其他 Vm 與已移除的 SQL Server Vm 分開，將不會移除其他 Vm，且不會終結叢集。 
 
-接下來，從 SQL VM 資源提供者中移除叢集中繼資料： 
+接下來，從 SQL IaaS 代理程式擴充功能中移除叢集中繼資料： 
 
 ```powershell-interactive
 # Remove the cluster metadata

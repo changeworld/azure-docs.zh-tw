@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 56509bfcd267a590946eb750bd74ce1f67aecc00
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285281"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556398"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 premium 檔案共用 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -189,7 +189,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 註冊
 
-若要從入口網站管理您的 SQL Server VM，請使用 [輕量管理模式](sql-vm-resource-provider-register.md#lightweight-management-mode)中的 SQL VM 資源提供者 (RP) 來註冊它，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
+若要從入口網站管理您的 SQL Server VM，請在 [輕量管理模式下](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)，使用 SQL IaaS 代理程式擴充功能 (RP) 來註冊它，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
 
 使用 PowerShell 以輕量模式註冊 SQL Server VM (-LicenseType 可以是 `PAYG` 或 `AHUB`) ：
 
@@ -210,7 +210,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 - Windows Server 2016 及更早版本不支援 Microsoft Distributed Transaction Coordinator (MSDTC) 。 
 - 使用進階檔案共用的容錯移轉叢集不支援 Filestream。 若要使用 filestream，請改為使用 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 或 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 來部署叢集。
-- 只支援以 [輕量管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes) 向 SQL VM 資源提供者註冊。 
+- 只支援在 [輕量管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 註冊 SQL IaaS 代理程式擴充功能。 
 
 ## <a name="next-steps"></a>後續步驟
 

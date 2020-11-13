@@ -1,7 +1,7 @@
 ---
 title: 建置模型並加以定型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 來定型模型，包括使用 Scikit-learn-學習、TensorFlow 和 PyTorch 等熱門架構。 Machine Learning 管線可讓您輕鬆地排程自動執行、使用異質計算環境，以及重複使用工作流程的各個部分。 至於回合組態，則可讓您精細地控制定型程序執行所在的計算目標。
+description: 瞭解如何使用 Azure Machine Learning 來定型模型。 探索不同的訓練方法，並為您的專案選擇正確的方法。
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324822"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555884"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 

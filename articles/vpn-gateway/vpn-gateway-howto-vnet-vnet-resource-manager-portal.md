@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: e8323c5a290ee2a78e2a3a131d50883d5f8c5a28
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 723d93b9a5e986501278bdee35835cfa0c234711
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92330983"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555837"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
 
 本文協助您使用 VNet 對 VNet 連線類型來連線虛擬網路 (VNet)。 VNet 可位於不同的區域且來自不同的訂用帳戶。 當您連線來自不同訂用帳戶的 VNet 時，訂用帳戶不需與相同的 Active Directory 租用戶相關聯。 
 
-![v2v 圖表](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 對 VNet 圖表":::
 
 本文中的步驟適用於 Azure Resource Manager 部署模型並使用 Azure 入口網站。 您可以使用下列文章中所述的選項，透過不同的部署工具或模型來建立這個組態：
 
@@ -65,7 +65,7 @@ ms.locfileid: "92330983"
 
 您可以將 VNet 對 VNet 通訊與多站台組態結合。 這些組態可讓您建立使用內部虛擬網路連線結合跨單位連線的網路拓撲，如下圖所示：
 
-![關於連線](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "關於連線")
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 連接圖表":::
 
 本文說明如何使用 VNet 對 VNet 連線類型來連線 VNet。 練習這些步驟時，您可以使用下列範例設定值。 在範例中，虛擬網路位於相同的訂用帳戶，但在不同的資源群組。 如果您的 Vnet 位於不同的訂用帳戶中，就無法在入口網站中建立連線。 改用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 或 [CLI](vpn-gateway-howto-vnet-vnet-cli.md)。 如需 VNet 對 VNet 連線的詳細資訊，請參閱 [VNet 對 VNet 常見問題集](#vnet-to-vnet-faq)。
 
@@ -87,15 +87,15 @@ ms.locfileid: "92330983"
   * **名稱** ： VNet1GW
   * **資源群組** ：美國東部
   * **世代** ：第1代
-  * 閘道類型  ︰選取 [VPN]  。
+  * 閘道類型︰選取 [VPN]。
   * **VPN 類型** ：選取 **路由 * 基礎** 。
-  * **SKU** ：VpnGw1
+  * **SKU** ： VpnGw1
   * **虛擬網路** ： VNet1
   * **閘道子網位址範圍** ： 10.1.255.0/27
   * **公用 IP 位址** ：建立新的
   * **公用 IP 位址名稱** ： VNet1GWpip
 
-* **[連接]**
+* **連線**
   * **名稱** ： VNet1toVNet4
   * **共用金鑰** ：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
 
@@ -115,15 +115,15 @@ ms.locfileid: "92330983"
   * **名稱** ： VNet4GW
   * **資源群組** ：美國西部
   * **世代** ：第1代
-  * 閘道類型  ︰選取 [VPN]  。
-  *  。
-  * **SKU** ：VpnGw1
+  * 閘道類型︰選取 [VPN]。
+  * **VPN 類型** ：選取 [路由型]。
+  * **SKU** ： VpnGw1
   * **虛擬網路** ： VNet4
   * **閘道子網位址範圍** ： 10.41.255.0/27
   * **公用 IP 位址** ：建立新的
   * **公用 IP 位址名稱** ： VNet4GWpip
 
-* **[連接]**
+* **連線**
   * **名稱** ： VNet4toVNet1
   * **共用金鑰** ：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
 
@@ -157,15 +157,15 @@ ms.locfileid: "92330983"
 
 當 VNet1 和 VNet4 的虛擬網路閘道都已完成時，您可以建立虛擬網路閘道連線。 在本節中，您要建立從 VNet1 到 VNet4 的連線。 這些步驟只適用於相同的訂用帳戶中的 VNet。 如果您的 Vnet 位於不同的訂用帳戶中，您必須使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 來進行連線。 不過，如果 Vnet 位於相同訂用帳戶中的不同資源群組，您可以使用入口網站將它們連線。
 
-1. 在 Azure 入口網站中，選取 [所有資源]  ，在搜尋方塊中輸入「虛擬網路閘道」  ，然後瀏覽至您 VNet 的虛擬網路閘道。 例如， **VNet1GW** 。 選取閘道以開啟 [ **虛擬網路閘道** ] 頁面。
+1. 在 Azure 入口網站中，選取 [所有資源]，在搜尋方塊中輸入「虛擬網路閘道」，然後瀏覽至您 VNet 的虛擬網路閘道。 例如， **VNet1GW** 。 選取閘道以開啟 [ **虛擬網路閘道** ] 頁面。
 1. 在 [閘道] 頁面上，移至 [ **設定->連接** ]。 然後選取 [ **+ 新增** ]。
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="連接頁面":::
 1. [ **新增連接** ] 頁面隨即開啟。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="連接頁面":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="加入連接":::
 
-   在 [新增連線]  頁面上，填入您的連線值：
+   在 [新增連線] 頁面上，填入您的連線值：
 
    * **名稱** ：輸入連接的名稱。 例如， *VNet1toVNet4* 。
 
@@ -173,9 +173,9 @@ ms.locfileid: "92330983"
 
    * **第一個虛擬網路閘道** ：由於您是從指定的虛擬網路閘道建立此連線，因此會自動填入此域值。
 
-   * **第二個虛擬網路閘道** ：此欄位是您想要建立連接之 VNet 的虛擬網路閘道。 選取 [選擇另一個虛擬網路閘道]  ，以開啟 [選擇虛擬網路閘道]  頁面。
+   * **第二個虛擬網路閘道** ：此欄位是您想要建立連接之 VNet 的虛擬網路閘道。 選取 [選擇另一個虛擬網路閘道]，以開啟 [選擇虛擬網路閘道] 頁面。
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="連接頁面":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="選擇閘道":::
 
      * 檢視此頁面上列出的虛擬網路閘道。 請注意，只會列出您的訂用帳戶中的虛擬網路閘道。 如果想要連線的虛擬網路閘道不在您的訂用帳戶中，請使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)。
 
@@ -191,16 +191,16 @@ ms.locfileid: "92330983"
 ## <a name="verify-your-connections"></a>確認您的連線
 
 1. 在 Azure 入口網站中找出虛擬網路閘道。 
-1. 在 [虛擬網路閘道]  頁面上，選取 [連線]  ，以檢視虛擬網路閘道的 [連線]  頁面。 建立連線之後，您會看到 [ **狀態** ] 值變更為 [ **已連線** ]。
+1. 在 [虛擬網路閘道] 頁面上，選取 [連線]，以檢視虛擬網路閘道的 [連線] 頁面。 建立連線之後，您會看到 [ **狀態** ] 值變更為 [ **已連線** ]。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="連接頁面":::
-1. 在 [ **名稱** ] 資料行底下，選取其中一個連接以查看詳細資訊。 當資料開始流動時，您會看到 [資料輸入]  和 [資料輸出]  的值。
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="驗證連接":::
+1. 在 [ **名稱** ] 資料行底下，選取其中一個連接以查看詳細資訊。 當資料開始流動時，您會看到 [資料輸入] 和 [資料輸出] 的值。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="連接頁面":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="螢幕擷取畫面顯示資源群組，其中包含資料的值和資料輸出":::
 
 ## <a name="add-additional-connections"></a>新增其他連線
 
-如果您需要新增其他連線，請瀏覽至您想建立連線的虛擬網路閘道，然後選取 [連線]  。 您可以建立另一個 VNet 對 VNet 連線，或建立 IPsec 站對站連線到內部部署位置。 請務必調整 [連線類型]  來符合您需要建立的連線類型。 建立其他連線之前，請確認您虛擬網路的位址空間與任何您需要連線的位址空間不重疊。 如需建立站對站連線的步驟，請參閱[建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+如果您需要新增其他連線，請瀏覽至您想建立連線的虛擬網路閘道，然後選取 [連線]。 您可以建立另一個 VNet 對 VNet 連線，或建立 IPsec 站對站連線到內部部署位置。 請務必調整 [連線類型] 來符合您需要建立的連線類型。 建立其他連線之前，請確認您虛擬網路的位址空間與任何您需要連線的位址空間不重疊。 如需建立站對站連線的步驟，請參閱[建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
 ## <a name="vnet-to-vnet-faq"></a>VNet 對 VNet 常見問題集
 
@@ -208,7 +208,7 @@ ms.locfileid: "92330983"
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需如何在虛擬網路中限制資源網路流量的資訊，請參閱[網路安全性](../virtual-network/security-overview.md)。
 

@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743117"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555431"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -25,7 +25,7 @@ ms.locfileid: "92743117"
 
 ## <a name="vault-support"></a>保存庫支援
 
-Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會使用保存庫儲存已備份的資料。
+Azure 備份使用復原服務保存庫來協調和管理下列工作負載類型的備份： azure vm、Azure Vm 中的 SQL、azure Vm 中的 SAP Hana、azure 檔案共用，以及使用 Azure 備份代理程式 Azure 備份伺服器和 System Center DPM 的內部部署工作負載。 它也會使用復原服務保存庫來儲存這些工作負載的備份資料。
 
 下表描述復原服務保存庫的功能：
 

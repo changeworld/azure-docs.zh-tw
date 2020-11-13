@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 467cbe91f4e516dc6facd2d30c38da1483308b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316965"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556280"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,16 +29,16 @@ ms.locfileid: "91316965"
 
 ## <a name="remarks"></a>備註
 
-- 建議您在 Azure 中使用 [**SQL 虛擬機器**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源來查看和管理您的 SQL Server vm。 但目前，**SQL 虛擬機器**資源不支援管理[已終止支援](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 若要管理已終止支援 SQL Server VM 的設定，請改為使用已過時的 [SQL Server [設定] 索引標籤](#access-the-sql-server-configuration-tab)。 
-- **SQL 虛擬機器**資源僅適用於[已向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md)的 SQL Server VM。 
+- 建議您在 Azure 中使用 [**SQL 虛擬機器**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源來查看和管理您的 SQL Server vm。 但目前， **SQL 虛擬機器** 資源不支援管理 [已終止支援](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 若要管理已終止支援 SQL Server VM 的設定，請改為使用已過時的 [SQL Server [設定] 索引標籤](#access-the-sql-server-configuration-tab)。 
+- **Sql 虛擬機器** 資源僅適用于已向 [Sql IaaS 代理程式擴充功能註冊](sql-agent-extension-manually-register-single-vm.md)SQL Server vm。 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>存取 SQL 虛擬機器資源
-若要存取 **SQL 虛擬機器**資源，請執行下列動作：
+若要存取 **SQL 虛擬機器** 資源，請執行下列動作：
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 
 1. 選取 [所有服務]。 
-1. 在 [搜尋] 方塊中，輸入 **SQL 虛擬機器**。
+1. 在 [搜尋] 方塊中，輸入 **SQL 虛擬機器** 。
 1. (選擇性)：選取 [SQL 虛擬機器] 旁的星號，以將此選項新增至您的 [我的最愛] 功能表。 
 1. 選取 [SQL 虛擬機器]。 
 
@@ -54,16 +54,16 @@ ms.locfileid: "91316965"
    ![查看 SQL 虛擬機器資源](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
-> **SQL 虛擬機器**資源適用於專用的 SQL Server 設定。 在 [虛擬機器] 方塊中選取 VM 的名稱，以開啟 VM 特定但並非 SQL Server 專用的設定。 
+> **SQL 虛擬機器** 資源適用於專用的 SQL Server 設定。 在 [虛擬機器] 方塊中選取 VM 的名稱，以開啟 VM 特定但並非 SQL Server 專用的設定。 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>存取 SQL Server [設定] 索引標籤
-SQL Server [設定] 索引標籤已過時。 目前，它是管理[已終止支援](sql-server-2008-extend-end-of-support.md)之 SQL Server VM，以及尚未[向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md)之 SQL Server VM 的唯一方法。
+SQL Server [設定] 索引標籤已過時。 目前，這是管理 SQL Server Vm 的 [終止支援](sql-server-2008-extend-end-of-support.md) 的唯一方法，以及尚未 [向 SQL IaaS 代理程式擴充功能註冊](sql-agent-extension-manually-register-single-vm.md)SQL Server vm。
 
 若要存取已過時的 SQL Server [設定] 索引標籤，請移至 [虛擬機器] 資源。 使用下列步驟：
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 
 1. 選取 [所有服務]。 
-1. 在 [搜尋] 方塊中，輸入**虛擬機器**。
+1. 在 [搜尋] 方塊中，輸入 **虛擬機器** 。
 1. (選擇性)：選取 [虛擬機器] 旁的星號，以將此選項新增至您的 [我的最愛] 功能表。 
 1. 選取 [虛擬機器]。 
 

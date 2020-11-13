@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b58119ccc1551d12dfc9b09f76f6980618ba6221
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289402"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556285"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure Vm 上 SQL Server 的常見問題
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "93289402"
    
 1. **是否可以建立 SQL Server VM 的一般化 Azure Marketplace SQL Server 映射，並使用它來部署 Vm？**
 
-   是，但您必須[將每個 SQL Server VM 註冊到 SQL Server VM 資源提供者](sql-vm-resource-provider-register.md)，才能在入口網站中管理 SQL Server VM，以及利用自動修補和自動備份等功能。 註冊到資源提供者時，還必須指定每個 SQL Server VM 的授權類型。
+   是，但您必須 [使用 SQL IaaS 代理程式擴充功能來註冊每個 SQL SERVER vm](sql-agent-extension-manually-register-single-vm.md) ，以在入口網站中管理您的 SQL Server VM，以及利用自動修補和自動備份等功能。 使用延伸模組註冊時，您也必須指定每個 SQL Server VM 的授權類型。
 
 1. **如何在 Azure VM 上將 SQL Server 一般化，並使用其來部署新的 VM？**
 
@@ -64,22 +64,22 @@ ms.locfileid: "93289402"
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > Azure VM (包括從自訂一般化映像部署的 VM) 上的 SQL Server 應該[註冊到 SQL VM 資源提供者](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash)，以符合合規性需求，並利用自動修補和自動備份等選擇性功能。 資源提供者還可供為每部 SQL Server VM [指定授權類型](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal)。
+   > Azure Vm 上的 SQL Server （包括從自訂一般化映射部署的 Vm）應該向 [SQL IaaS 代理程式延伸模組註冊](./sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%252cbash) ，以符合合規性需求，並利用自動修補和自動備份等選用功能。 擴充功能也可讓您指定每個 SQL Server VM [的授權類型](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) 。
 
 1. **是否可使用自己的 VHD 來部署 SQL Server VM？**
 
-   是，但必須[將每部 SQL Server VM 註冊到 SQL Server VM 資源提供者](sql-vm-resource-provider-register.md)，才能在入口網站中管理 SQL Server VM，以及利用自動修補和自動備份等功能。
+   是，但您必須 [使用 SQL IaaS 代理程式擴充功能來註冊每個 SQL SERVER vm](sql-agent-extension-manually-register-single-vm.md) ，以在入口網站中管理您的 SQL Server VM，以及利用自動修補和自動備份等功能。
 
 1. **您是否可以設定未顯示在虛擬機器資源庫中的設定 (例如 Windows 2008 R2 + SQL Server 2012) ？**
 
-   否。 針對包含 SQL Server 的虛擬機器資源庫映像，您必須透過 Azure 入口網站或 [PowerShell](create-sql-vm-powershell.md) 選取其中一個提供的映像。 不過，您能夠在其上部署 Windows VM，並自行安裝 SQL Server。 然後，您必須向 [SQL SERVER vm 資源提供者註冊 SQL SERVER VM](sql-vm-resource-provider-register.md) ，以在 Azure 入口網站中管理您的 SQL Server VM，並利用自動修補和自動備份等功能。 
+   否。 針對包含 SQL Server 的虛擬機器資源庫映像，您必須透過 Azure 入口網站或 [PowerShell](create-sql-vm-powershell.md) 選取其中一個提供的映像。 不過，您能夠在其上部署 Windows VM，並自行安裝 SQL Server。 然後，您必須 [使用 SQL IaaS 代理程式延伸模組註冊 SQL SERVER VM](sql-agent-extension-manually-register-single-vm.md) ，以管理 Azure 入口網站中的 SQL Server VM，以及利用自動修補和自動備份等功能。 
 
 
 ## <a name="creation"></a>建立
 
 1. **如何使用 SQL Server 建立 Azure 虛擬機器？**
 
-   最簡單的方法是建立包含 SQL Server 的虛擬機器。 如需註冊 Azure 並從入口網站建立 SQL Server VM 的教學課程，請參閱[在 Azure 入口網站中佈建 SQL Server 虛擬機器](create-sql-vm-portal.md)。 您可以選取使用以秒鐘計費 SQL Server 授權的虛擬機器映像，或者您可以使用映像，讓您自備自己的 SQL Server 授權。 您也可以選擇使用免費授權版本 (Developer 或 Express) 或重複使用內部部署授權，在 VM 上手動安裝 SQL Server。 請務必[將 SQL Server VM 註冊到 SQL Server VM 資源提供者](sql-vm-resource-provider-register.md)，才能在入口網站中管理 SQL Server VM，以及利用自動修補和自動備份等功能。 如果您自備授權，必須具備 [Azure 上透過軟體保證的授權流動性](https://azure.microsoft.com/pricing/license-mobility/)。 如需詳細資訊，請參閱 [SQL Server Azure VM 的定價指導方針](pricing-guidance.md)。
+   最簡單的方法是建立包含 SQL Server 的虛擬機器。 如需註冊 Azure 並從入口網站建立 SQL Server VM 的教學課程，請參閱[在 Azure 入口網站中佈建 SQL Server 虛擬機器](create-sql-vm-portal.md)。 您可以選取使用以秒鐘計費 SQL Server 授權的虛擬機器映像，或者您可以使用映像，讓您自備自己的 SQL Server 授權。 您也可以選擇使用免費授權版本 (Developer 或 Express) 或重複使用內部部署授權，在 VM 上手動安裝 SQL Server。 請務必向 [SQL IaaS 代理程式擴充功能註冊 SQL SERVER VM](sql-agent-extension-manually-register-single-vm.md) ，以在入口網站中管理您的 SQL Server VM，並利用自動修補和自動備份等功能。 如果您自備授權，必須具備 [Azure 上透過軟體保證的授權流動性](https://azure.microsoft.com/pricing/license-mobility/)。 如需詳細資訊，請參閱 [SQL Server Azure VM 的定價指導方針](pricing-guidance.md)。
 
 1. **如何將內部部署 SQL Server 資料庫移轉至雲端？**
 
@@ -89,7 +89,7 @@ ms.locfileid: "93289402"
 
 1. **如何在 Azure VM 上安裝 SQL Server 授權版本？**
 
-   有三種方式可以執行此動作。 如果您是 (EA) 客戶的 Enterprise 合約，您可以布建其中一個 [支援授權的虛擬機器映射](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)，也稱為「自備授權」 (BYOL) 。 如果您有 [軟體保證](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在現有的隨用隨付 (PAYG) 映射上啟用 [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) 。 或者，您可以將 SQL Server 安裝媒體複製到 Windows Server VM 上，然後在 VM 上安裝 SQL Server。 請務必將 SQL Server VM 註冊到[資源提供者](sql-vm-resource-provider-register.md)，以取得入口網站管理、自動備份和自動修補等功能。 
+   有三種方式可以執行此動作。 如果您是 (EA) 客戶的 Enterprise 合約，您可以布建其中一個 [支援授權的虛擬機器映射](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)，也稱為「自備授權」 (BYOL) 。 如果您有 [軟體保證](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在現有的隨用隨付 (PAYG) 映射上啟用 [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) 。 或者，您可以將 SQL Server 安裝媒體複製到 Windows Server VM 上，然後在 VM 上安裝 SQL Server。 請務必向您的 SQL Server VM 註冊 [擴充](sql-agent-extension-manually-register-single-vm.md) 功能，例如入口網站管理、自動備份和自動修補。 
 
 1. **如果是從其中一個隨用隨付資源庫映像建立，可以將 VM 變更為使用自己的 SQL Server 授權嗎？**
 
@@ -97,15 +97,15 @@ ms.locfileid: "93289402"
 
 1. **切換授權模型是否必須讓 SQL Server 停機？**
 
-   否。 [變更授權模型](licensing-model-azure-hybrid-benefit-ahb-change.md)不需要將 SQL Server 停機，因為變更會立即生效，且不需要重新啟動 VM。 不過，若要將 SQL Server VM 註冊到 SQL Server VM 資源提供者，[SQL IaaS 延伸模組](sql-server-iaas-agent-extension-automate-management.md)是先決條件，且以「完整」模式安裝 SQL IaaS 延伸模組後，會重新啟動 SQL Server 服務。 因此，如果需要安裝 SQL IaaS 延伸模組，請以有限功能的「輕量」模式加以安裝，或在維護期間以「完整」模式安裝。 以「輕量」模式安裝的 SQL IaaS 延伸模組可隨時升級為「完整」模式，但需要重新啟動 SQL Server 服務。 
+   否。 [變更授權模型](licensing-model-azure-hybrid-benefit-ahb-change.md)不需要將 SQL Server 停機，因為變更會立即生效，且不需要重新啟動 VM。 不過，若要向 SQL IaaS 代理程式擴充功能註冊 SQL Server VM， [Sql iaas 延伸](sql-server-iaas-agent-extension-automate-management.md) 模組是必要條件，而且在 _完整_ 模式中安裝 sql iaas 擴充功能會重新開機 SQL Server 服務。 因此，如果需要安裝 SQL IaaS 延伸模組，請以有限功能的「輕量」模式加以安裝，或在維護期間以「完整」模式安裝。 以「輕量」模式安裝的 SQL IaaS 延伸模組可隨時升級為「完整」模式，但需要重新啟動 SQL Server 服務。 
    
 1. **是否可以在使用傳統模型部署 SQL Server VM 上切換授權模型？**
 
-   否。 傳統 VM 不支援變更授權模型。 您可以將 VM 遷移至 Azure Resource Manager 模型，並向 SQL Server VM 資源提供者註冊。 向 SQL Server VM 資源提供者註冊 VM 後，授權模型變更就會在 VM 上生效。
+   否。 傳統 VM 不支援變更授權模型。 您可以將 VM 遷移至 Azure Resource Manager 模型，並使用 SQL IaaS 代理程式擴充功能進行註冊。 一旦將 VM 註冊到 SQL IaaS 代理程式擴充功能之後，就會在 VM 上提供授權模型變更。
 
 1. **是否可以使用 Azure 入口網站來管理相同 VM 上的多個執行個體？**
 
-   否。 入口網站管理是 SQL Server VM 資源提供者所提供的一項功能，需依賴 SQL Server IaaS 代理程式擴充功能。 因此，資源提供者與擴充功能會受到相同的限制。 入口網站可以僅管理一個預設執行個體，或管理一個指定的執行個體，只要已正確設定即可。 如需這些限制的詳細資訊，請參閱 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。 
+   否。 入口網站管理是 SQL IaaS 代理程式延伸模組所提供的功能，它依賴 SQL Server IaaS 代理程式擴充功能。 因此，相同的限制也適用于擴充功能。 入口網站可以僅管理一個預設執行個體，或管理一個指定的執行個體，只要已正確設定即可。 如需這些限制的詳細資訊，請參閱 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。 
 
 1. **CSP 訂用帳戶是否能啟用 Azure Hybrid Benefit？**
 
@@ -135,27 +135,27 @@ ms.locfileid: "93289402"
    提供軟體保證同等訂用帳戶權限作為固定權益的完整方案，可支援 DR 權益。 這包括 但不限於 Open 值 (OV) 、Open Value 訂用帳戶 (OVS-ES) 、Enterprise 合約 (EA) 、Enterprise 合約訂用帳戶 (EAS) ，以及伺服器和雲端註冊 (SCE) 。 如需詳細資訊，請參閱[產品條款](https://www.microsoft.com/licensing/product-licensing/products)，並洽詢授權連絡人或帳戶管理員。 
 
    
- ## <a name="resource-provider"></a>資源提供者
+ ## <a name="extension"></a>分機
 
-1. **將 VM 註冊到新的 SQL Server VM 資源提供者是否會產生額外成本？**
+1. **使用新的 SQL IaaS 代理程式擴充功能來註冊我的 VM 會帶來額外費用嗎？**
 
-   否。 SQL Server VM 資源提供者只會為 Azure VM 上的 SQL Server 啟用額外管理能力，而不會產生任何額外費用。 
+   否。 SQL IaaS 代理程式擴充功能只會針對 Azure VM 上的 SQL Server 啟用額外的管理性，而不會產生額外費用。 
 
-1. **SQL Server VM 資源提供者是否適用於所有客戶？**
+1. **SQL IaaS 代理程式擴充功能可供所有客戶使用嗎？**
  
-   是，只要 SQL Server VM 是使用 Resource Manager 模型 (而不是傳統模型) 部署到公用雲端即可。 所有其他客戶都能註冊到新的 SQL Server VM 資源提供者。 不過，只有具有[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)權益的客戶可在 SQL Server VM 上啟用 [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) 來使用自己的授權。 
+   是，只要 SQL Server VM 是使用 Resource Manager 模型 (而不是傳統模型) 部署到公用雲端即可。 所有其他客戶都能夠使用新的 SQL IaaS 代理程式擴充功能進行註冊。 不過，只有具有[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)權益的客戶可在 SQL Server VM 上啟用 [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) 來使用自己的授權。 
 
-1. **若移動或捨棄 VM 資源，則資源提供者 ( _Microsoft.SqlVirtualMachine_ ) 資源會發生什麼事？** 
+1. **如果移動或卸載 VM 資源， ( _microsoft.sqlvirtualmachine_ ) 資源的延伸模組會發生什麼事？** 
 
    當 Microsoft.Compute/VirtualMachine 資源被捨棄或移動時，系統會通知關聯的 Microsoft.SqlVirtualMachine 資源，讓其以非同步方式複寫作業。
 
-1. **若捨棄資源提供者 ( _Microsoft.SqlVirtualMachine_ ) 資源，則 VM 會發生什麼事？**
+1. **如果 ( _microsoft.sqlvirtualmachine_ ) 資源的延伸模組，VM 會發生什麼事？**
 
     當 Microsoft.SqlVirtualMachine 資源被卸除時，Microsoft.Compute/VirtualMachine 資源不會受影響。 不過，授權變更將會還原為預設的原始映像來源。 
 
-1. **是否可將自我部署 SQL Server VM 註冊到 SQL Server VM 資源提供者？**
+1. **是否可以向 SQL IaaS 代理程式擴充功能註冊自我部署 SQL Server Vm？**
 
-    是。 若您從自己的媒體部署 SQL Server，而且已安裝 SQL IaaS 延伸模組，您可以向資源提供者註冊您自己的 SQL Server VM，以取得 SQL IaaS 延伸模組所提供的管理能力優點。    
+    是。 如果您是從自己的媒體部署 SQL Server，並已安裝 SQL IaaS 擴充功能，您可以向擴充功能註冊 SQL Server VM，以取得 SQL IaaS 延伸模組所提供的管理能力優點。    
 
 
 ## <a name="administration"></a>系統管理
@@ -186,12 +186,12 @@ ms.locfileid: "93289402"
    1. 如有必要，請備份您的所有資料，包括系統資料庫。 
    1. 完全卸載 SQL Server，包括 SQL IaaS 延伸模組 (（如果有) ）。
    1. 安裝免費的 [SQL Express 版本](https://www.microsoft.com/sql-server/sql-server-downloads)。
-   1. 以 [輕量模式](sql-vm-resource-provider-register.md)向 SQL VM 資源提供者註冊。
+   1. 以 [輕量模式](sql-agent-extension-manually-register-single-vm.md)向 SQL IaaS 代理程式延伸模組註冊。
    1.  (選擇性) 停用服務啟動以停用快速 SQL Server 服務。 
 
 1. **是否可以使用 Azure 入口網站來管理相同 VM 上的多個執行個體？**
 
-   否。 入口網站管理是由 SQL VM 資源提供者所提供，該提供者依賴 SQL Server IaaS 代理程式擴充功能。 因此，相同的限制也適用于資源提供者作為擴充功能。 入口網站只能管理一個預設的實例，或一個名為的實例，前提是它已正確設定。 如需詳細資訊，請參閱[SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能 
+   否。 入口網站管理是由 SQL IaaS 代理程式擴充功能所提供，該擴充功能依賴 SQL Server IaaS 代理程式擴充功能。 因此，相同的限制也適用于擴充功能。 入口網站只能管理一個預設的實例，或一個名為的實例，前提是它已正確設定。 如需詳細資訊，請參閱[SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能 
 
 
 ## <a name="updating-and-patching"></a>更新和修補
@@ -208,7 +208,7 @@ ms.locfileid: "93289402"
 
    虛擬機器可讓您控制主機電腦，包括套用更新的時間與方法。 針對作業系統，您可以手動套用 Windows 更新，或是啟用名為 [自動修補](automated-patching.md)的排程服務。 自動修補會安裝任何標示為重要的更新，包括該類別目錄中的 SQL Server 更新。 其他選擇性的 SQL Server 更新，則必須手動安裝。
 
-1. **是否可在 SQL Server 2008/2008 R2 執行個體註冊到 SQL Server VM 資源提供者之後，將其升級？**
+1. **使用 SQL IaaS 代理程式擴充功能註冊 SQL Server 2008/2008 R2 實例之後，是否可以升級？**
 
    如果作業系統是 Windows Server 2008 R2 或更新版本，則為 [是]。 您可使用任何安裝媒體來升級 SQL Server 的版本與版次，然後將 [SQL IaaS 延伸模組模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)從「無代理程式」升級為「完整」。 這麼做可供利用 SQL IaaS 延伸模組的所有優點，例如入口網站管理能力、自動備份和自動修補。 如果作業系統版本是 Windows Server 2008，則僅支援 NoAgent 模式。 
 

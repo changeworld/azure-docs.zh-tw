@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365903"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561058"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>適用於 iOS 裝置的共用裝置模式
 
-> [!NOTE]
-> 這項功能處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>[!IMPORTANT]
+> 這項功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 第一線背景工作（例如零售夥伴、航班小組成員和現場服務工作者）通常會使用共用行動裝置來執行其工作。 如果您的使用者刻意共用其密碼或 Pin 碼，以存取共用裝置上的客戶和商務資料，這些共用的裝置可能會有安全性風險。
 
@@ -43,7 +41,7 @@ ms.locfileid: "92365903"
 
 1. **裝置系統管理員** 會使用行動裝置管理 (MDM) 提供者（例如 Microsoft Intune）來準備要共用的裝置，以管理其組織中的裝置。 MDM 會將 Microsoft Authenticator 應用程式推送至裝置，並透過裝置的設定檔更新，為每個裝置開啟「共用模式」。 此共用模式設定會變更裝置上支援的應用程式行為。 MDM 提供者的這項設定會設定裝置的共用裝置模式，並為共用裝置模式所需的 [Apple 裝置啟用 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md) 。
 
-1. [**只有在公開預覽期間才需要**]具有 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator) 角色的使用者，接著必須啟動 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) ，並將其裝置加入組織。
+1. [ **只有在公開預覽期間才需要** ]具有 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator) 角色的使用者，接著必須啟動 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) ，並將其裝置加入組織。
 
     若要在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置管理員**
 
@@ -58,10 +56,10 @@ ms.locfileid: "92365903"
 
 1. 在 Intune 設定入口網站中，告訴裝置使用下列設定來啟用 [Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md) ：
 
-    - **類型**：重新導向
-    - **延伸模組識別碼**： azureauthenticator. ssoextension
-    - **小組識別碼**： (iOS) 不需要此欄位
-    - **Url**：   
+    - **類型** ：重新導向
+    - **延伸模組識別碼** ： azureauthenticator. ssoextension
+    - **小組識別碼** ： (iOS) 不需要此欄位
+    - **Url** ：   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -71,7 +69,7 @@ ms.locfileid: "92365903"
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **要設定的其他資料**：
+    - **要設定的其他資料** ：
       - 機碼： sharedDeviceMode
       - 類型：布林值
       - 值： true

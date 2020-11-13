@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76314533"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555595"
 ---
 # <a name="apply-sql-transformation"></a>套用 SQL 轉換
 
@@ -29,11 +29,26 @@ ms.locfileid: "76314533"
 -   執行 SQL 查詢陳述式來篩選或改變資料並傳回查詢結果為資料表。  
 
 > [!IMPORTANT]
-> 此課程模組中使用的 SQL 引擎為 **SQLite**。 如需 SQLite 語法的詳細資訊，請參閱 SQLite 瞭解的 [SQL](https://www.sqlite.org/index.html) ，以取得詳細資訊。  
+> 此課程模組中使用的 SQL 引擎為 **SQLite** 。 如需 SQLite 語法的詳細資訊，請參閱 [由 Sqlite 瞭解的 SQL](https://www.sqlite.org/index.html)。
+> 此模組會將資料增加至 SQLite （在記憶體資料庫中），因此模組執行需要更多的記憶體，而且可能會遇到 `Out of memory` 錯誤。 請確定您的電腦有足夠的 RAM。
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>如何設定套用 SQL 轉換  
 
 此模組最多可能需要以三個資料集做為輸入。 當您參考連接到每個輸入埠的資料集時，您必須使用名稱 `t1` 、 `t2` 和 `t3` 。 這些數字表示輸入連接埠的索引。  
+
+以下是說明如何聯結兩個數據表的範例程式碼。 t1 和 t2 是連接到「套用 **SQL 轉換** 」之左方和中間輸入埠的兩個資料集：
+
+```sql
+SELECT t1.*
+    , t3.Average_Rating
+FROM t1 join
+    (SELECT placeID
+        , AVG(rating) AS Average_Rating
+    FROM t2
+    GROUP BY placeID
+    ) as t3
+on t1.placeID = t3.placeID
+```
   
 其餘的參數是 SQL 查詢，會使用 SQLite 語法。 在 [ **SQL 腳本** ] 文字方塊中輸入多行時，請使用分號來結束每個語句。 否則，插入換行符號會轉換成空格。  
 

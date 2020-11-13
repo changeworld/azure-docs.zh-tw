@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 資料靜態加密 | Microsoft Docs
-description: 本文提供 Microsoft Azure 資料靜態加密概觀、整體功能及一般考量。
+title: Azure 資料靜態加密-Azure 安全性
+description: 本文概要說明 Azure 資料加密、整體功能和一般考慮。
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412777"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556619"
 ---
 # <a name="azure-data-encryption-at-rest"></a>待用 Azure 資料加密
 
@@ -58,9 +58,9 @@ Microsoft 致力於為所有雲端服務提供靜態加密選項，並給予客�
 
 如先前所述，靜態加密的目的，是使用祕密加密金鑰將保存在磁碟上的資料進行加密。 若要達到這個目標，就必須提供安全的金鑰建立、儲存、存取控制，以及加密金鑰管理。 儘管細節可能有所差異，但 Azure 服務「待用加密」實作可以下圖所示的術語來加以說明。
 
-![單元](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
+![元件](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
-### <a name="azure-key-vault"></a>Azure 金鑰保存庫
+### <a name="azure-key-vault"></a>Azure Key Vault
 
 加密金鑰的儲存位置以及這些金鑰的存取控制是靜態加密模型的核心。 金鑰必須是高度安全的，但需可由指定使用者進行管理，且可用於特定服務。 針對 Azure 服務，Azure Key Vault 是建議的金鑰儲存體解決方案，並提供常見的跨服務管理體驗。 金鑰是儲存在金鑰保存庫並加以管理，可以將存取金鑰保存庫提供給使用者或服務。 Azure Key Vault 支援客戶建立金鑰或匯入客戶金鑰，可供在客戶管理的加密金鑰情節下使用。
 
@@ -128,7 +128,7 @@ Microsoft 致力於為所有雲端服務提供靜態加密選項，並給予客�
 
 Azure SQL Database 目前支援針對由 Microsoft 管理之服務端和用戶端加密案例的靜態加密。
 
-伺服器加密的支援目前是透過稱為「透明資料加密」的 SQL 功能所提供。 一旦 Azure SQL Database 客戶啟用 TDE 後，就會為他們自動建立和管理金鑰。 可以在資料庫和伺服器等級啟用靜態加密。 自 2017 年 6 月起，[透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 依預設會在新建立的資料庫上啟用。 Azure SQL Database 支援 Azure Key Vault 中的 RSA 2048 位元客戶管理金鑰。 如需詳細資訊，請參閱 [Azure SQL Database 和資料倉儲的透明資料加密與攜帶您自己的金鑰支援](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)。
+伺服器加密的支援目前是透過稱為「透明資料加密」的 SQL 功能所提供。 一旦 Azure SQL Database 客戶啟用 TDE 後，就會為他們自動建立和管理金鑰。 可以在資料庫和伺服器等級啟用靜態加密。 自 2017 年 6 月起，[透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 依預設會在新建立的資料庫上啟用。 Azure SQL Database 支援 Azure Key Vault 中的 RSA 2048 位元客戶管理金鑰。 如需詳細資訊，請參閱 [Azure SQL Database 和資料倉儲的透明資料加密與攜帶您自己的金鑰支援](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql)。
 
 透過 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能可支援 Azure SQL Database 資料的用戶端加密。 Always Encrypted 會使用用戶端所建立及儲存的金鑰。 客戶可以將主要金鑰儲存在 Windows 憑證存放區、Azure Key Vault 或硬體安全性模組中。 使用 SQL Server Management Studio 時，SQL 使用者會選擇要用來加密哪一個資料行的索引鍵。
 
@@ -140,3 +140,4 @@ Azure SQL Database 目前支援針對由 Microsoft 管理之服務端和用戶�
 
 - 若要深入瞭解服務管理的金鑰和客戶管理的金鑰，請參閱 [資料加密模型](encryption-models.md) 。
 - 瞭解 Azure 如何使用 [雙重加密](double-encryption.md) 來減輕加密資料所帶來的威脅。
+- 瞭解 Microsoft 如何確保主機的 [平臺完整性和安全性](platform.md) ，以進行硬體和固件的組建、整合、運算化和修復管線。

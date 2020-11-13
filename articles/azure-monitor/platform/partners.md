@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460081"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555631"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -253,7 +253,7 @@ Serverless360 是一個平臺工具，可操作、管理及監視 Azure 無伺�
 
 ![SignalFX 標誌](./media/partners/signalfx.png)
 
-SignalFx 是即時營運智慧中的翹楚，適用於資料導向的 DevOps。 此服務會探索並收集雲端中每個元件的計量。 它取代了傳統的點工具，並可即時查看現今的動態環境。 利用可大幅調整的 SignalFx 平台，SaaS 平台已針對容器和微服務型架構進行最佳化，並在所有大小的組織之間提供功能強大視覺效果、主動警示以及共同作業分級功能。 SignalFx 可直接與 Azure 監視器整合，也可以透過開放原始碼連接器（例如 *Telegraf*、 *statsD*和 *collectd* ），為 Azure 提供最佳的類別儀表板、分析和警示。
+SignalFx 是即時營運智慧中的翹楚，適用於資料導向的 DevOps。 此服務會探索並收集雲端中每個元件的計量。 它取代了傳統的點工具，並可即時查看現今的動態環境。 利用可大幅調整的 SignalFx 平台，SaaS 平台已針對容器和微服務型架構進行最佳化，並在所有大小的組織之間提供功能強大視覺效果、主動警示以及共同作業分級功能。 SignalFx 可直接與 Azure 監視器整合，也可以透過開放原始碼連接器（例如 *Telegraf* 、 *statsD* 和 *collectd* ），為 Azure 提供最佳的類別儀表板、分析和警示。
 
 [signalfx 檔](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -301,9 +301,19 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 
 [Turbonomic 簡介](https://turbonomic.com/)
 
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix 標誌](./media/partners/BMCHelix.png)
+
+BMC Helix 是一種自主企業服務和營運 SaaS 平臺。 它與360度情報整合，可讓企業主動且 predictively 探索、監視、服務、補救、優化和提供適用于 IT 和企業營運的全通路體驗。
+此外，透過將 ITSM 和 IT 營運管理緊密整合 (ITOM) ，BMC Helix 可讓 IT 和商務使用者消除 IT 的資料中心、做出資料驅動的商務決策，以及提供領先業界的客戶體驗。
+客戶可以透過其選擇的雲端部署（公用、私人或混合式）來部署 BMC Helix 平臺。 此外，客戶也可以選擇 AI/ML 解決方案，以利用領先業界的提供者。
+
+[深入瞭解 BMC Helix](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
+
 ## <a name="next-steps"></a>後續步驟
 
-- [深入瞭解 Azure 監視器](../overview.md)
+- [深入了解 Azure 監視器](../overview.md)
 - [使用 REST API 存取計量](rest-api-walkthrough.md)
 - [將活動記錄串流至非 Microsoft 服務](./activity-log.md#legacy-collection-methods)
 - [將資源記錄串流至非 Microsoft 服務](./resource-logs.md#send-to-azure-event-hubs)

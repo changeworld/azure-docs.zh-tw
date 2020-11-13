@@ -13,21 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550236"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562078"
 ---
 # <a name="overview-of-shared-device-mode"></a>共用裝置模式的總覽
 
 共用裝置模式是 Azure Active Directory 的功能，可讓您建立支援第一線背景工作的應用程式，並在部署至裝置的裝置上啟用共用裝置模式。
 
-> [!NOTE]
-> 這項功能處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>[!IMPORTANT]
+> 這項功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="what-are-firstline-workers"></a>什麼是第一線 Worker？
 
@@ -45,7 +43,7 @@ ms.locfileid: "80550236"
 
 為了讓組織的員工能夠在這些員工所共用的裝置集區上使用其應用程式，開發人員必須啟用相反的體驗。 員工應該能夠從集區中挑選裝置，並在其變換的持續時間執行單一手勢以「讓它成為他們」。 在移動結束時，他們應該能夠執行另一個手勢，以在裝置上全域登出，並移除其所有的個人和公司資訊，讓他們可以將其退回裝置集區。 此外，如果員工忘記登出，裝置應該會在其排班結束時自動登出，並在一段時間內停止活動之後自動登出。
 
-Azure Active Directory 使用稱為 **共用裝置模式**的功能來啟用這些案例。
+Azure Active Directory 使用稱為 **共用裝置模式** 的功能來啟用這些案例。
 
 ## <a name="introducing-shared-device-mode"></a>共用裝置模式簡介
 
@@ -56,12 +54,12 @@ Azure Active Directory 使用稱為 **共用裝置模式**的功能來啟用這�
 
 ### <a name="build-applications-that-support-firstline-workers"></a>建立支援第一線背景工作的應用程式
 
-您可以使用 Microsoft 驗證程式庫 (MSAL) 和 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) 來啟用稱為 *共用裝置模式*的裝置狀態，以支援您應用程式中的第一線背景工作。 當裝置處於共用裝置模式時，Microsoft 會將資訊提供給您的應用程式，讓它根據裝置上使用者的狀態來修改其行為，以保護使用者資料。
+您可以使用 Microsoft 驗證程式庫 (MSAL) 和 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) 來啟用稱為 *共用裝置模式* 的裝置狀態，以支援您應用程式中的第一線背景工作。 當裝置處於共用裝置模式時，Microsoft 會將資訊提供給您的應用程式，讓它根據裝置上使用者的狀態來修改其行為，以保護使用者資料。
 
 支援的功能包括：
 
-* 透過任何支援的應用程式登**入使用者全裝置**。
-* 透過任何支援的應用程式，**登出使用者全裝置**。
+* 透過任何支援的應用程式登 **入使用者全裝置** 。
+* 透過任何支援的應用程式， **登出使用者全裝置** 。
 * **查詢裝置的狀態** ，以判斷您的應用程式是否位於處於共用裝置模式的裝置上。
 * **查詢裝置上使用者的裝置狀態** ，以判斷自從上次使用您的應用程式之後是否有任何變更。
 
@@ -75,7 +73,7 @@ Azure Active Directory 使用稱為 **共用裝置模式**的功能來啟用這�
 
 一旦您的應用程式支援共用裝置模式，並包含必要的資料和安全性變更，您就可以將它們公告為第一線背景工作可供使用。
 
-組織的裝置系統管理員可以透過行動裝置管理 (MDM) 解決方案（例如 Microsoft Intune），將其裝置和您的應用程式部署到其商店和工作場所。 布建程式的一部分會將裝置標示為 *共用裝置*。 系統管理員可以藉由部署 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) ，並透過設定參數設定共用裝置模式，來設定共用裝置模式。 執行這些步驟之後，所有支援共用裝置模式的應用程式都會使用 Microsoft Authenticator 應用程式來管理其使用者狀態，並提供裝置和組織的安全性功能。
+組織的裝置系統管理員可以透過行動裝置管理 (MDM) 解決方案（例如 Microsoft Intune），將其裝置和您的應用程式部署到其商店和工作場所。 布建程式的一部分會將裝置標示為 *共用裝置* 。 系統管理員可以藉由部署 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) ，並透過設定參數設定共用裝置模式，來設定共用裝置模式。 執行這些步驟之後，所有支援共用裝置模式的應用程式都會使用 Microsoft Authenticator 應用程式來管理其使用者狀態，並提供裝置和組織的安全性功能。
 
 ## <a name="next-steps"></a>後續步驟
 

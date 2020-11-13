@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312048"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556024"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "93312048"
   - 適用於 Azure Synapse Analytics 的 Apache Spark 管理員
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) 中的資料存取控制。
 - Synapse SQL 和 Spark 資料庫的存取控制
-- 
+
 ## <a name="steps-to-secure-a-synapse-workspace"></a>保護 Synapse 工作區的步驟
 
 本文件會使用標準名稱來簡化指示。 請將其取代為您選擇的任何名稱。

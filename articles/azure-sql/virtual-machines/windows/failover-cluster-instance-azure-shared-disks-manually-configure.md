@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285368"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556381"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "93285368"
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -197,7 +197,7 @@ FCI 資料目錄必須位於 Azure 共用磁片上。
 
 ## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 註冊
 
-若要從入口網站管理您的 SQL Server VM，請使用 [輕量管理模式](sql-vm-resource-provider-register.md#lightweight-management-mode)中的 SQL VM 資源提供者 (RP) 來註冊它，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
+若要從入口網站管理您的 SQL Server VM，請在 [輕量的管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)中，使用 SQL IaaS 代理程式擴充功能 (RP) 來註冊它，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
 
 
 使用 PowerShell 以輕量模式註冊 SQL Server VM：  
@@ -217,7 +217,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="limitations"></a>限制
 
-- 只支援以 [輕量管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes) 向 SQL VM 資源提供者註冊。
+- 只支援在 [輕量管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 註冊 SQL IaaS 代理程式擴充功能。
 
 ## <a name="next-steps"></a>後續步驟
 

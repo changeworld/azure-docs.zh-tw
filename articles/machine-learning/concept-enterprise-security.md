@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539646"
+ms.locfileid: "94561313"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性和治理
 
@@ -105,7 +105,13 @@ Azure Machine Learning 會針對每個工作區區域，在您的訂用帳戶中
 
 若要限制實體存取 Azure Machine Learning 資源，您可以使用 Azure 虛擬網路 (VNet) 。 Vnet 可讓您建立部分或完全與公用網際網路隔離的網路環境。 這可減少您的解決方案的受攻擊面，以及資料遭到外泄的機會。
 
-如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。
+如需詳細資訊，請參閱下列文件：
+
+* [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
+* [保護工作區資源](how-to-secure-workspace-vnet.md)
+* [保護訓練環境](how-to-secure-training-vnet.md)
+* [安全推斷環境](how-to-secure-inferencing-vnet.md)
+* [在安全的虛擬網路中使用 studio](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 

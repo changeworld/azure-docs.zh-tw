@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 479e42c2ea48ea56c0b2dd70752a3b1a330f7969
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: 8f85e9c77cc6fed7e2763f694664332b124d0780
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414514"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561789"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的 Marketplace 深入解析儀表板
 
@@ -86,7 +86,7 @@ Marketplace 見解儀表板會在兩個不同的索引標籤中顯示 Azure Mark
 
 :::image type="content" source="./media/insights-dashboard/geographical-spread.png" alt-text="說明 Marketplace 見解儀表板上的地理分散圖。":::
 
-注意下列事項：
+請注意：
 
 - 您可以移動地圖以檢視確切位置。
 - 您可以放大特定位置。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927646"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561092"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>自訂命令概念和定義
 
@@ -49,6 +49,8 @@ ms.locfileid: "92927646"
 ### <a name="required"></a>必要
 這個核取方塊會指出命令履行或完成是否需要此參數的值。 如果參數標示為必要，您必須設定回應以提示使用者提供值。
 
+請注意，如果您將 **必要參數** 設定為具有 **預設值** ，系統仍會明確提示您輸入參數的值。
+
 ### <a name="type"></a>類型
 自訂命令支援下列參數類型：
 
@@ -57,9 +59,9 @@ ms.locfileid: "92927646"
 * 數字
 * String
 
-所有這些參數類型都支援預設值設定，您可以從 Azure 入口網站進行設定。
+除了 Geography 以外的所有參數類型都支援預設值設定，您可以從入口網站進行設定。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 Configuration 是僅針對類型字串定義的參數屬性。 支援下列值：
 
 * **None** ：
@@ -77,7 +79,7 @@ Configuration 是僅針對類型字串定義的參數屬性。 支援下列值�
 ## <a name="rules-configuration"></a>規則設定
 自訂命令中的規則是由一組條件所定義，這些 *條件* 符合時，會執行一組 *動作* 。 規則也可讓您設定後續 *執行狀態* 和下一回合的 *期望* 。
 
-### <a name="types"></a>類型
+### <a name="types"></a>型別
 自訂命令支援下列規則類別：
 
 * **完成規則** ：必須在命令履行時執行這些規則。 此區段中設定的所有規則都會執行條件。 

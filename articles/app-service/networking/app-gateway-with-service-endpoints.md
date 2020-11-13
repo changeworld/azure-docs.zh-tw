@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127819"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560888"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>應用程式閘道與服務端點的整合
 App Service 的三種變化，需要與 Azure 應用程式閘道的整合設定稍有不同。 這些變化包括定期 App Service-也稱為多租使用者、內部 Load Balancer (ILB) App Service 環境 (ASE) 和外部 ASE。 本文將逐步解說如何使用 App Service (多租使用者) 進行設定，以及討論有關 ILB 和外部 ASE 的考慮。
@@ -36,7 +36,7 @@ App Service (多租使用者) 具有公用網際網路面向端點。 您可以�
 1. 使用 App Service 檔中的其中一個快速入門來建立 App Service，例如 [.Net Core 快速入門](../quickstart-dotnetcore.md)
 2. 使用 [入口網站快速入門](../../application-gateway/quick-create-portal.md)來建立應用程式閘道，但略過 [新增後端目標] 區段。
 3. 將 [App Service 設定為應用程式閘道中的後端](../../application-gateway/configure-web-app-portal.md)，但略過 [限制存取] 區段。
-4. 最後， [使用服務端點建立存取限制](../../app-service/app-service-ip-restrictions.md#service-endpoints)。
+4. 最後， [使用服務端點建立存取限制](../../app-service/app-service-ip-restrictions.md#use-service-endpoints)。
 
 您現在可以透過應用程式閘道存取 App Service，但如果您嘗試直接存取 App Service，您應該會收到 403 HTTP 錯誤，表示網站已停止。
 

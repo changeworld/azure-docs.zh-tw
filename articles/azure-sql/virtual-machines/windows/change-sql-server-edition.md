@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 801a9a112615bd6220b5f273b51ed39248ebcd45
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789840"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556466"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM 上 SQL Server 版本的就地變更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ SQL Server 的版本是由產品金鑰所決定，且會在使用安裝媒體進
 若要執行 SQL Server 版本的就地變更，您需要下列項目： 
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
-- 向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)註冊的 [Windows 上的 SQL Server VM](./create-sql-vm-portal.md)。
+- [在 Windows 上](./create-sql-vm-portal.md)使用[SQL IaaS 代理程式擴充](sql-agent-extension-manually-register-single-vm.md)功能註冊的 SQL Server VM。
 - 包含所需 SQL Server **版本** 的安裝媒體。 具備[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客戶可從[大量授權中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)取得安裝媒體。 沒有軟體保證的客戶可使用安裝媒體，其來自包含所需版本 Azure Marketplace SQL Server VM 映像 (通常位於 `C:\SQLServerFull`)。 
 
 
@@ -75,7 +75,7 @@ SQL Server 的版本是由產品金鑰所決定，且會在使用安裝媒體進
 
 ## <a name="change-edition-in-portal"></a>在入口網站中變更版本 
 
-在使用安裝媒體變更 SQL Server 的版本，且向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)註冊 SQL Server VM 後，接著即可使用 Azure 入口網站來修改 SQL Server VM 的版本屬性，以供計費使用。 若要這樣做，請依照下列步驟執行： 
+當您使用安裝媒體變更 SQL Server 的版本，並已向 [SQL IaaS 代理程式擴充](sql-agent-extension-manually-register-single-vm.md)功能註冊 SQL Server vm 之後，您就可以使用 Azure 入口網站來修改 SQL Server VM 的版本屬性，以供計費之用。 若要這樣做，請依照下列步驟執行： 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 1. 前往 SQL Server 虛擬機器資源。 
@@ -91,7 +91,7 @@ SQL Server 的版本是由產品金鑰所決定，且會在使用安裝媒體進
 
 - SQL Server VM 版本屬性必須與為所有 SQL Server 虛擬機器安裝的 SQL Server 執行個體版本相符 (包括隨用隨付和自備授權授權類型)。
 - 如果卸除 SQL Server VM 資源，則會回復為映像的硬式編碼版本設定。
-- 變更版本是 SQL VM 資源提供者的功能之一。 透過 Azure 入口網站部署 Azure Marketplace 映像，會自動向資源提供者註冊 SQL Server VM。 但自行安裝 SQL Server 的客戶將必須手動[註冊其 SQL Server VM](sql-vm-resource-provider-register.md)。
+- 變更版本的功能是 SQL IaaS 代理程式擴充功能的功能。 透過 Azure 入口網站部署 Azure Marketplace 映射時，會自動向 SQL IaaS 代理程式延伸模組註冊 SQL Server VM。 但自行安裝 SQL Server 的客戶將必須手動[註冊其 SQL Server VM](sql-agent-extension-manually-register-single-vm.md)。
 - 將 SQL Server VM 新增至可用性設定組，則需要重新建立 VM。 任何新增至可用性設定組的 VM 都會回到預設版本，且必須再次修改版本。
 
 ## <a name="next-steps"></a>後續步驟
