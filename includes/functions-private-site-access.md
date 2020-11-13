@@ -4,19 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d66e7f497f85141de172c59b67676e1bb93955e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83648808"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578806"
 ---
-私人網站存取是指讓您的應用程式只能透過私人網路 (例如 Azure 虛擬網路) 存取。
+[Azure 私人端點](../articles/private-link/private-endpoint-overview.md)是一種網路介面，可讓您私密安全地連線到 Azure Private Link 所提供的服務。  私人端點會使用您虛擬網路中的私人 IP 位址，有效地將服務帶入您的虛擬網路。
 
-* 設定服務端點時，私人網站存取適用於[進階](../articles/azure-functions/functions-premium-plan.md)、[耗用量](../articles/azure-functions/functions-scale.md#consumption-plan)，以及 [App Service](../articles/azure-functions/functions-scale.md#app-service-plan) 方案。
-    * 服務端點可以根據每個應用程式進行設定，[平台功能] > [網路] > [設定存取限制] > [新增規則]。 現在可以選取 [虛擬網路] 做為 [規則類型]。
-    * 如需詳細資訊，請參閱[虛擬網路服務端點](../articles/virtual-network/virtual-network-service-endpoints-overview.md)。
-    * 請記住，使用服務端點時，即使已設定虛擬網路整合，您的函式仍會擁有網際網路的完整輸出存取權。
-* 您也可以在使用內部負載平衡器 (ILB) 設定的 App Service 環境中，使用私人網站存取。 如需詳細資訊，請參閱[在 App Service Environment 中建立及使用內部負載平衡器](../articles/app-service/environment/create-ilb-ase.md)。
+您可以針對裝載于 [Premium](../articles/azure-functions/functions-premium-plan.md) 和 [App Service](../articles/azure-functions/functions-scale.md#app-service-plan) 方案中的函式使用私用端點。
 
-若要了解如何設定私人網站存取，請參閱[建立 Azure Functions 私人網站存取](../articles/azure-functions/functions-create-private-site-access.md)。
+建立函式的輸入私人端點連線時，您也需要 DNS 記錄來解析私用位址。  依預設，當您使用 Azure 入口網站建立私人端點時，會為您建立私人 DNS 記錄。
+
+若要深入瞭解，請參閱 [使用私用端點進行 Web Apps](../articles/app-service/networking/private-endpoint.md)。

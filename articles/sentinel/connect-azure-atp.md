@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 64c1a7155d0cc4e80f97db138a0626d6e9fdc9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319e0d29ef297f2a675128d498820a2d5b8ac42e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657805"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579516"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>從 Microsoft Defender for Identity (的資料連線先前 Azure 進階威脅防護) 
 
@@ -29,10 +29,10 @@ ms.locfileid: "89657805"
 
 只要按一下，您就可以將 [Microsoft Defender For Identity 的](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) 記錄串流至 Azure Sentinel。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有全域管理員或安全性系統管理員許可權的使用者
-- 您必須是 Microsoft Defender 身分識別的預覽客戶，並啟用 Microsoft Defender 的身分識別與 Microsoft Cloud App Security 之間的整合。 如需詳細資訊，請參閱 [Microsoft Defender 的身分識別整合](https://docs.microsoft.com/cloud-app-security/aatp-integration)。
+- 您必須是 Microsoft Defender 身分識別的預覽客戶，並啟用 Microsoft Defender 的身分識別與 Microsoft Cloud App Security 之間的整合。 如需詳細資訊，請參閱 [Microsoft Defender 的身分識別整合](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection)。
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>連接到 Microsoft Defender 以進行身分識別
 
@@ -40,15 +40,15 @@ ms.locfileid: "89657805"
 如果已部署 Microsoft Defender 的身分識別，並擷取您的資料，則可以輕鬆地將可疑的警示串流至 Azure Sentinel。 最多可能需要24小時的時間，警示才會開始串流至 Azure Sentinel。
 
 
-1. 若要將 Microsoft Defender for Identity 連接到 Azure Sentinel，您必須先啟用 Microsoft Defender for Identity 和 Microsoft Cloud App Security 之間的整合。 如需如何進行此作業的詳細資訊，請參閱 [Microsoft Defender 的身分識別整合](https://docs.microsoft.com/cloud-app-security/aatp-integration)。
+1. 若要將 Microsoft Defender for Identity 連接到 Azure Sentinel，您必須先啟用 Microsoft Defender for Identity 和 Microsoft Cloud App Security 之間的整合。 如需如何進行此作業的詳細資訊，請參閱 [Microsoft Defender 的身分識別整合](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection)。
 
-1. 在 Azure Sentinel 中，選取 [ **資料連線器** ]，然後按一下 [ **適用于身分識別的 Microsoft Defender (預覽]) ** 圖格。
+1. 在 Azure Sentinel 中，選取 [ **資料連線器** ]，然後按一下 [ **適用于身分識別的 Microsoft Defender (預覽])** 圖格。
 
 1. 您可以選取是否要讓 Microsoft Defender for Identity 的警示自動在 Azure Sentinel 自動產生事件。 在 [建立事件] 底下，選取 [啟用] 來啟用預設分析規則，以自動從已連線安全性服務中產生的警示建立事件。 接著，您可以在 [分析] 下編輯此規則，然後編輯 [有效規則]。
 
-1. 按一下 [ **連接**]。
+1. 按一下 [ **連接** ]。
 
-1. 若要在 Log Analytics 中使用適用于 Microsoft Defender 身分識別警示的相關架構，請搜尋 **SecurityAlert**。
+1. 若要在 Log Analytics 中使用適用于 Microsoft Defender 身分識別警示的相關架構，請搜尋 **SecurityAlert** 。
 
 > [!NOTE]
 > 如果警示超過 30 KB，Azure Sentinel 會停止在警示中顯示 [實體] 欄位。

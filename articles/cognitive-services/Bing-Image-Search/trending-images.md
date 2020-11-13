@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 9163868848f2fdbd535a6b601077be570b0b01bf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20050cb373456296ef573368e6b289ec4b7d946d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076719"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591881"
 ---
 # <a name="get-trending-images-from-the-web"></a>從 Web 取得發燒影像
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 若要取得今天的發燒影像，請傳送下列 GET 要求：  
 
@@ -44,7 +44,7 @@ Host: api.cognitive.microsoft.com
 - en-AU (英文，澳洲)  
 - zh-CN (中文，中國)
 
-回應包含 [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) 物件，該物件會依照類別列出影像。 使用類別的 `title` 在您的使用者體驗中將影像分組。 這些類別可能每天變更。  
+回應包含 [TrendingImages](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) 物件，該物件會依照類別列出影像。 使用類別的 `title` 在您的使用者體驗中將影像分組。 這些類別可能每天變更。  
 
 ```json
 {
@@ -93,9 +93,9 @@ Host: api.cognitive.microsoft.com
 }  
 ```  
 
-每個圖格都包含一個影像，以及用於取得相關影響的選項。 若要取得相關影像，您可以使用查詢 `text`，自行呼叫[影像搜尋 API](./search-the-web.md) 並顯示相關影像。 或者，您可以使用 `webSearchUrl` 中的 URL，將使用者導向 Bing 的影像搜尋結果頁面，其中包含相關的影像。
+每個圖格都包含一個影像，以及用於取得相關影響的選項。 若要取得相關影像，您可以使用查詢 `text`，自行呼叫[影像搜尋 API](./overview.md) 並顯示相關影像。 或者，您可以使用 `webSearchUrl` 中的 URL，將使用者導向 Bing 的影像搜尋結果頁面，其中包含相關的影像。
 
-如果您呼叫影像搜尋 API 以取得相關影像，請將 [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) 查詢參數設定為 `id` 欄位中的識別碼。 指定識別碼可確保回應包含影像 (這是回應中的第一個影像) 及其相關的影像。 此外，將 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 查詢參數設定為 `query` 物件的`text` 欄位中的文字。
+如果您呼叫影像搜尋 API 以取得相關影像，請將 [id](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) 查詢參數設定為 `id` 欄位中的識別碼。 指定識別碼可確保回應包含影像 (這是回應中的第一個影像) 及其相關的影像。 此外，將 [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 查詢參數設定為 `query` 物件的`text` 欄位中的文字。
 
 下列範例示範如何使用影像識別碼來取得上述發燒影像 API 回應中的 Mr. Smith 相關影像。
 
@@ -106,4 +106,4 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
-```  
+```

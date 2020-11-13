@@ -1,6 +1,6 @@
 ---
 title: 為專用的 SQL 集區建立使用者定義的還原點
-description: 如何建立專用 SQL 集區的還原點。
+description: 瞭解如何使用 Azure 入口網站，在 Azure Synapse Analytics 中為專用的 SQL 集區建立使用者定義的還原點。
 services: synapse-analytics
 author: joannapea
 manager: igorstan
@@ -11,12 +11,12 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c0835fb48d00fe5277732f34fd6b0de1448f6a78
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94332053"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579533"
 ---
 # <a name="user-defined-restore-points"></a>使用者定義的還原點
 

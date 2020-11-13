@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 的 LDAP 同步處理
-description: 達到此同步處理模式的架構指引
+description: 使用 Azure Active Directory 達到 LDAP 同步處理的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a14149551c0fb33906ab7d1a00b387026d827911
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114109"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578887"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory 的 LDAP 同步處理
 
@@ -34,21 +34,21 @@ Azure Active Directory (Azure AD) 可以用 Azure AD Connect 取代 LDAP 同步�
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：存取依賴使用 LDAP v3 目錄來排序使用者和密碼的應用程式。
+* **使用者** ：存取依賴使用 LDAP v3 目錄來排序使用者和密碼的應用程式。
 
-* **Web 瀏覽器**：使用者與之互動的元件，以存取應用程式的外部 URL
+* **Web 瀏覽器** ：使用者與之互動的元件，以存取應用程式的外部 URL
 
-* **Web 應用**程式：具有 LDAP v3 目錄相依性的應用程式。
+* **Web 應用** 程式：具有 LDAP v3 目錄相依性的應用程式。
 
-* **Azure AD**： Azure AD 同步處理身分識別資訊 (使用者、群組、透過 Azure AD Connect 從組織的內部部署 LDAP 目錄) 的密碼。 
+* **Azure AD** ： Azure AD 同步處理身分識別資訊 (使用者、群組、透過 Azure AD Connect 從組織的內部部署 LDAP 目錄) 的密碼。 
 
-* **Azure AD Connect**：是將內部部署身分識別基礎結構連接到 Microsoft Azure AD 的工具。 Wizard 和引導式體驗可協助您部署及設定連接所需的必要條件和元件。 
+* **Azure AD Connect** ：是將內部部署身分識別基礎結構連接到 Microsoft Azure AD 的工具。 Wizard 和引導式體驗可協助您部署及設定連接所需的必要條件和元件。 
 
-* **自訂連接器**：一般 ldap 連接器可讓您將 Azure AD Connect 同步處理服務與 LDAP v3 伺服器整合。 它位於 Azure AD Connect 上。
+* **自訂連接器** ：一般 ldap 連接器可讓您將 Azure AD Connect 同步處理服務與 LDAP v3 伺服器整合。 它位於 Azure AD Connect 上。
 
-* **Active Directory**： Active Directory 是大部分 Windows Server 作業系統中包含的目錄服務。 執行 Active Directory 目錄服務的伺服器稱為網域控制站，其會驗證並授權 Windows 網域中的所有使用者和電腦。
+* **Active Directory** ： Active Directory 是大部分 Windows Server 作業系統中包含的目錄服務。 執行 Active Directory 目錄服務的伺服器稱為網域控制站，其會驗證並授權 Windows 網域中的所有使用者和電腦。
 
-* **Ldap v3 伺服器**：儲存用於目錄服務驗證之公司使用者和密碼的 ldap 通訊協定相容目錄。
+* **Ldap v3 伺服器** ：儲存用於目錄服務驗證之公司使用者和密碼的 ldap 通訊協定相容目錄。
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>使用 Azure AD 來執行 LDAP 同步處理
 

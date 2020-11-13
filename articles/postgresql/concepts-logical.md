@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421801"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591524"
 ---
 # <a name="logical-decoding"></a>邏輯解碼
  
@@ -37,7 +37,6 @@ ms.locfileid: "93421801"
 * **複本** -更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
 * **邏輯** 更詳細的資訊比 **複本** 更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
 
-此參數變更之後，必須重新開機伺服器。 就內部而言，此參數會設定 Postgres 參數 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
@@ -54,7 +53,7 @@ ms.locfileid: "93421801"
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-1. 將 Azure 複寫支援設定為 **邏輯** 。 選取 [儲存]。
+1. 將 Azure 複寫支援設定為 **邏輯** 。 選取 [儲存]  。
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
 
@@ -86,7 +85,7 @@ ms.locfileid: "93421801"
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. 發出 SQL 命令。 例如︰
+2. 發出 SQL 命令。 例如：
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413083"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578807"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -30,18 +30,36 @@ ms.locfileid: "94413083"
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>輸入 IP 限制
+## <a name="inbound-access-restrictions"></a>輸入存取限制
 
-您可使用 IP 限制，針對允許或拒絕存取應用程式的 IP 位址，定義依優先順序排列的清單。 這份清單可以包含 IPv4 和 IPv6 位址。 有一個或多個項目時，清單結尾會有隱含的「全部拒絕」語句。 IP 限制適用所有函式裝載選項。
+您可以使用存取限制來定義依優先順序排序的 IP 位址清單，以允許或拒絕對您應用程式的存取。 此清單可以包含 IPv4 和 IPv6 位址，或使用 [服務端點](#use-service-endpoints)的特定虛擬網路子網。 有一個或多個項目時，清單結尾會有隱含的「全部拒絕」語句。 IP 限制適用所有函式裝載選項。
+
+存取限制可在 [Premium](functions-premium-plan.md)、 [耗用量](functions-scale.md#consumption-plan)和 [App Service](functions-scale.md#app-service-plan)中取得。
 
 > [!NOTE]
-> 有了網路限制，您只能從虛擬網路使用入口網站編輯器，或是當您在 [安全收件者] 清單上放入用來存取 Azure 入口網站的電腦 IP 位址時，才可使用入口網站編輯器。 不過，您仍然可以從任何電腦存取 [平台功能] 索引標籤上的任何功能。
+> 有了網路限制之後，您就只能從虛擬網路內部署，或是將用來存取 Azure 入口網站的電腦 IP 位址放在 [安全收件者] 清單中。 不過，您仍然可以使用入口網站管理函式。
 
 若要深入了解，請參閱 [Azure App Service 靜態存取限制](../app-service/app-service-ip-restrictions.md)。
 
-## <a name="private-site-access"></a>私人網站存取
+### <a name="use-service-endpoints"></a>使用服務端點
+
+藉由使用服務端點，您可以限制對選取的 Azure 虛擬網路子網的存取。 若要限制對特定子網的存取，請建立具有 **虛擬網路** 類型的限制規則。 然後，您可以選取您想要允許或拒絕存取的訂用帳戶、虛擬網路和子網。 
+
+如果您選取的子網尚未啟用 Microsoft 的服務端點，除非您選取 [ **忽略遺失的 Microsoft web 服務端點** ] 核取方塊，否則系統將會自動啟用它們。 您可能想要在應用程式上啟用服務端點而非子網的案例，主要取決於您是否擁有在子網上啟用它們的許可權。 
+
+如果您需要其他人在子網上啟用服務端點，請選取 [ **忽略遺失的 Microsoft Web 服務端點** ] 核取方塊。 您的應用程式將會針對服務端點進行設定，以便在稍後於子網上啟用。 
+
+![[新增 IP 限制] 窗格的螢幕擷取畫面，其中已選取虛擬網路類型。](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+您無法使用服務端點來限制存取在 App Service 環境中執行的應用程式。 當您的應用程式在 App Service 環境時，您可以藉由套用 IP 存取規則來控制其存取權。 
+
+若要瞭解如何設定服務端點，請參閱 [建立 Azure Functions 私用網站存取](functions-create-private-site-access.md)。
+
+## <a name="private-endpoint-connections"></a>私人端點連接
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+若要呼叫具有私人端點連線的其他服務，例如儲存體或服務匯流排，請務必將您的應用程式設定為對 [私人端點進行輸出呼叫](#private-endpoints)。
 
 ## <a name="virtual-network-integration"></a>虛擬網路整合
 
@@ -80,7 +98,7 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 1. 在受保護的儲存體帳戶中[建立檔案共用](../storage/files/storage-how-to-create-file-share.md#create-file-share)。
 1. 啟用儲存體帳戶的服務端點或私人端點。  
     * 如果您使用服務端點，請務必啟用您函式應用程式專用的子網。
-    * 如果使用私用端點，請務必建立 DNS 記錄，並將您的應用程式設定為使用 [私人端點端點](#azure-dns-private-zones) 。  儲存體帳戶將需要 `file` 和子資源的私人端點 `blob` 。  如果使用特定功能（例如 Durable Functions），您也需要 `queue` `table` 透過私人端點連接來存取。
+    * 如果使用私用端點，請務必建立 DNS 記錄，並將您的應用程式設定為使用 [私人端點端點](#azure-dns-private-zones) 。  儲存體帳戶將需要和子資源的私用端點 `file` `blob` 。  如果使用 Durable Functions 之類的特定功能，您也將需要 `queue` 和 `table` 可透過私人端點連接存取。
 1.  (選擇性) 將檔案和 blob 內容從函數應用程式儲存體帳戶複製到受保護的儲存體帳戶和檔案共用。
 1. 複製此儲存體帳戶的連接字串。
 1. 將函數應用程式的 [設定 **] 下的****應用程式設定** 更新為下列內容：

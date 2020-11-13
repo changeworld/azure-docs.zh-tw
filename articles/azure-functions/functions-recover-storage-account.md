@@ -3,12 +3,12 @@ title: 疑難排解錯誤：無法存取 Azure Functions 執行階段
 description: 了解如何針對無效的儲存體帳戶進行疑難排解。
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 094f4f45be0ae4173af434be178f2eae2b21b6be
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054724"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579006"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>疑難排解錯誤：「無法連線到 Azure Functions 執行階段」
 
@@ -64,7 +64,7 @@ ms.locfileid: "92054724"
 
 如果您已設定每日執行配額，則會暫時停用您的函式應用程式，這會導致許多入口網站控制項變得無法使用。 
 
-若要確認[Azure 入口網站](https://portal.azure.com)中的配額，請在您的函式應用程式中選取**平臺功能**  >  **函數應用程式設定**。 如果您超過所設定的 **每日使用量配額** ，則會顯示下列訊息：
+若要確認 [Azure 入口網站](https://portal.azure.com)中的配額，請在您的函式應用程式中選取 **平臺功能**  >  **函數應用程式設定** 。 如果您超過所設定的 **每日使用量配額** ，則會顯示下列訊息：
 
   > 「函式應用程式已達到每日使用量配額，並已停止到下一個24小時的時間範圍內。」
 
@@ -76,7 +76,7 @@ ms.locfileid: "92054724"
 
 * 您的函式應用程式 [裝載于內部負載平衡的 App Service 環境](../app-service/environment/create-ilb-ase.md) ，並設定為封鎖輸入的網際網路流量。
 
-* 您的函數應用程式具有設定為封鎖網際網路存取的 [輸入 IP 限制](functions-networking-options.md#inbound-ip-restrictions) 。 
+* 您的函數應用程式具有設定為封鎖網際網路存取的 [輸入 IP 限制](functions-networking-options.md#inbound-access-restrictions) 。 
 
 Azure 入口網站直接呼叫執行中的應用程式來提取函式清單，然後對 Kudu 端點進行 HTTP 呼叫。 [ **平臺功能** ] 索引標籤下的平台層級設定仍可使用。
 

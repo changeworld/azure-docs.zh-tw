@@ -4,12 +4,12 @@ description: 使用 Azure Functions 的一些最常見問題和案例的解答�
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538053"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578224"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions 中網路的常見問題
 
@@ -31,11 +31,9 @@ ms.locfileid: "91538053"
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>如何? 將函數應用程式限制為虛擬網路？
 
-您可以使用[服務端點](./functions-networking-options.md#private-site-access)，將函數應用程式的**輸入**流量限制為虛擬網路。 這種設定仍允許函數應用程式對網際網路發出輸出呼叫。
+您可以使用 [服務端點](./functions-networking-options.md#use-service-endpoints)，將函數應用程式的 **輸入** 流量限制為虛擬網路。 這種設定仍允許函數應用程式對網際網路發出輸出呼叫。
 
-完全限制函式的唯一方法，就是使用內部負載平衡的 App Service 環境，讓所有流量流經虛擬網路。 此選項會將您的網站部署在虛擬網路內的專用基礎結構上，並透過虛擬網路傳送所有觸發程式和流量。 
-
-如需使用 App Service 環境的詳細資訊，請從 [建立和使用內部負載平衡器與 App Service 環境](../app-service/environment/create-ilb-ase.md)的文章開始。
+若要完全限制函式，讓所有流量流經虛擬網路，您可以使用具有輸出虛擬網路整合或 App Service 環境的 [私人端點](./functions-networking-options.md#private-endpoint-connections) 。
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>如何從函數應用程式存取虛擬網路中的資源？
 
@@ -47,7 +45,7 @@ ms.locfileid: "91538053"
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>如何從虛擬網路中的資源觸發函式？
 
-您可以使用 [服務端點](./functions-networking-options.md#private-site-access)，允許從虛擬網路呼叫 HTTP 觸發程式。 
+您可以使用 [服務端點](./functions-networking-options.md#use-service-endpoints) 或 [私人端點連接](./functions-networking-options.md#private-endpoint-connections)，允許從虛擬網路呼叫 HTTP 觸發程式。 
 
 您也可以透過將函數應用程式部署至 Premium 方案、App Service 方案或 App Service 環境，從虛擬網路中的所有其他資源觸發函式。 如需詳細資訊，請參閱 [非 HTTP 虛擬網路觸發](./functions-networking-options.md#virtual-network-triggers-non-http) 程式
 

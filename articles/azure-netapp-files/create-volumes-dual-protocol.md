@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963511"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591643"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -37,7 +37,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
 * 確定您符合 [Active Directory 連接的需求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
 * 在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的指標 (PTR) 記錄。 否則，建立雙重通訊協定磁片區將會失敗。
-* 確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
+* 請確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
 * 確定 ad) 的 Active Directory (AD LDAP 伺服器已啟動且正在執行。 您可以在 AD 電腦上安裝並設定 [Active Directory 輕量型目錄服務 (AD LDS) ](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色來這麼做。
 * 請確定使用 [Active Directory 憑證服務 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以在 AD 上建立 (CA) 的憑證授權單位單位。   
 * 雙通訊協定磁片區目前不支援 Azure Active Directory Domain Services (AADDS) 。  
@@ -58,7 +58,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
     ![導覽至磁碟區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  在 [建立磁片區] 視窗中，按一下 [ **建立**]，然後在 [基本] 索引標籤底下提供下欄欄位的資訊：   
+2.  在 [建立磁片區] 視窗中，按一下 [ **建立** ]，然後在 [基本] 索引標籤底下提供下欄欄位的資訊：   
     * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
@@ -74,7 +74,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
         [可用配額] 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。  
 
-    * **輸送量 (MiB/秒) **   
+    * **輸送量 (MiB/秒)**   
         如果磁片區是在手動 QoS 容量集區中建立的，請指定您要用於磁片區的輸送量。   
 
         如果磁片區是建立在自動 QoS 容量集區中，則此欄位中顯示的值會是 (配額 x 服務層級輸送量) 。   
@@ -88,7 +88,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
         指定要用於磁碟區的子網路。  
         您指定的子網路必須委派給 Azure NetApp Files。 
         
-        如果您尚未委派子網路，您可以按一下 [建立磁碟區] 頁面上的 [新建]****。 在 [建立子網路] 頁面上指定子網路資訊，然後選取 [Microsoft.NetApp/volumes] 以委派 Azure NetApp Files 的子網路。 在每個 Vnet 中，只有一個子網可委派給 Azure NetApp Files。   
+        如果您尚未委派子網路，您可以按一下 [建立磁碟區] 頁面上的 [新建]。 在 [建立子網路] 頁面上指定子網路資訊，然後選取 [Microsoft.NetApp/volumes] 以委派 Azure NetApp Files 的子網路。 在每個 Vnet 中，只有一個子網可委派給 Azure NetApp Files。   
  
         ![建立磁碟區](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
@@ -101,7 +101,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
         ![顯示 advanced selection](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 3. 按一下 [通訊協定]  ，然後完成下列動作：  
-    * 選取 [ **雙通訊協定 (NFSv3] 和 [SMB) ** ] 作為磁片區的通訊協定類型。   
+    * 選取 [ **雙通訊協定 (NFSv3] 和 [SMB)** ] 作為磁片區的通訊協定類型。   
 
     * 從下拉式清單中選取 **Active Directory** 連接。  
     您使用的 Active Directory 必須有伺服器根 CA 憑證。 
@@ -135,7 +135,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
     ![憑證匯出精靈](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. 移至 [雙重通訊協定] 磁片區的 NetApp 帳戶、按一下 [ **Active Directory 連接**]，然後使用 [ **加入 Active Directory** ] 視窗上傳根 CA 憑證：  
+4. 移至 [雙重通訊協定] 磁片區的 NetApp 帳戶、按一下 [ **Active Directory 連接** ]，然後使用 [ **加入 Active Directory** ] 視窗上傳根 CA 憑證：  
 
     ![伺服器根 CA 憑證](../media/azure-netapp-files/server-root-ca-certificate.png)
 
@@ -161,5 +161,5 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
 ## <a name="next-steps"></a>後續步驟  
 
-* [雙重通訊協定常見問題](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [設定 Azure NetApp Files 的 NFS 用戶端](configure-nfs-clients.md)
+* [針對雙重通訊協定磁碟區進行疑難排解](troubleshoot-dual-protocol-volumes.md)

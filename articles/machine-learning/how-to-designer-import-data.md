@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554711"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591983"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>將資料匯入 Azure Machine Learning 設計工具
 
@@ -53,6 +53,8 @@ ms.locfileid: "94554711"
 ### <a name="use-a-dataset"></a>使用資料集
 
 您已註冊的資料集可以在模組選擇區的 [ **資料集** ] 底下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出埠連接至畫布中的其他模組。 
+
+如果您註冊檔案資料集，則會 **AnyDirectory** 資料集的輸出埠類型。 如果您註冊表格式資料集，則為資料集的輸出埠類型（如果 **DataFrameDirectory** 的話）。 請注意，如果您將資料集的輸出埠連接到設計工具中的其他模組，則必須對齊資料集和模組的埠類型。
 
 ![顯示設計工具選擇區中已儲存資料集位置的螢幕擷取畫面](media/how-to-designer-import-data/use-datasets-designer.png)
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089310"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591541"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "92089310"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
+不正確。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](./azure-netapp-files-network-topologies.md) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "92089310"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>我可以為 Azure NetApp Files 磁片區設定或選取自己的 IP 位址嗎？  
 
-否。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
+不正確。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files 是否支援 (IPv4 和 IPv6) VNet 的雙重 stack？
 
@@ -150,7 +150,7 @@ Azure NetApp Files 支援 SMB 2.1 和 SMB 3.1 (，其中包含 SMB 3.0) 的支�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支援的 Active Directory 連接數目有多少？
 
-即使 AD 連線位於不同的 NetApp 帳戶，Azure NetApp Files 也不支援在單一 *區域*中使用多個 ACTIVE DIRECTORY (ad) 連接。 不過，您可以在單一 *訂*用帳戶中擁有多個 ad 連線，只要 ad 連線位於不同的區域即可。 如果您在單一區域中需要多個 AD 連接，您可以使用個別的訂用帳戶來執行這項作業。 
+即使 AD 連線位於不同的 NetApp 帳戶，Azure NetApp Files 也不支援在單一 *區域* 中使用多個 ACTIVE DIRECTORY (ad) 連接。 不過，您可以在單一 *訂* 用帳戶中擁有多個 ad 連線，只要 ad 連線位於不同的區域即可。 如果您在單一區域中需要多個 AD 連接，您可以使用個別的訂用帳戶來執行這項作業。 
 
 AD 連線是針對每個 NetApp 帳戶設定;只有透過建立 AD 連線的 NetApp 帳戶才能看到 AD 連接。
 
@@ -174,16 +174,6 @@ SMB 用戶端所報告的磁片區大小是 Azure NetApp Files 磁片區可成�
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
-## <a name="dual-protocol-faqs"></a>雙重通訊協定常見問題
-
-### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>我嘗試使用「根」和「本機使用者」來存取 UNIX 系統上具有 NTFS 安全性樣式的雙重通訊協定磁片區。 為什麼我遇到「許可權被拒」錯誤？   
-
-請參閱 [疑難排解雙重通訊協定磁片](troubleshoot-dual-protocol-volumes.md) 區以取得解決方法。
-
-### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>當我嘗試建立雙重通訊協定磁片區時，為什麼建立程式會失敗，並出現「無法驗證 LDAP 設定，請在修正 LDAP 設定後再試一次」？  
-
-請參閱 [疑難排解雙重通訊協定磁片](troubleshoot-dual-protocol-volumes.md) 區以取得解決方法。
-
 ## <a name="capacity-management-faqs"></a>容量管理常見問題
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>如何? 監視容量集區和 Azure NetApp Files 數量的使用量？ 
@@ -192,7 +182,7 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管管理 Azure NetApp Files 嗎？
 
-否。 Azure 儲存體總管不支援 Azure NetApp Files。
+不正確。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否接近限制大小？
 
@@ -249,11 +239,11 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援遷移 Azure 資料箱？
 
-否。 Azure 資料箱目前不支援 Azure NetApp Files。 
+不正確。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+不正確。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
 
 ## <a name="next-steps"></a>後續步驟  
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ab001636cc6fac921f552070b9b064d9c53a8d7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8f73f2a86e97dad1d6a0b0f05c54f3f896b4b49d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042065"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579210"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -45,9 +45,9 @@ Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging
 |固定儲存體|預覽|預覽|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
 |容器虛刪除|預覽|預覽|[適用于容器的虛刪除 (預覽) ](soft-delete-container-overview.md)|
 |Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
-|Blobfuse|預覽|預覽|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
+|Blobfuse|正式推出|正式推出|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
 |帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blob 容器 ACL|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|
+|Blob 容器 ACL|不受支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不受支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|
 |客戶提供的金鑰|尚不支援|尚不支援|[針對 Blob 儲存體的要求提供加密金鑰](encryption-customer-provided-keys.md)|
 |自訂網域|尚不支援|尚不支援|[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)|
 |加密範圍|尚不支援|尚不支援|[建立及管理加密範圍 (預覽) ](encryption-scope-manage.md)|

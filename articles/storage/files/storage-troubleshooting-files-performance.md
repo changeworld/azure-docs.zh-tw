@@ -1,20 +1,20 @@
 ---
 title: Azure 檔案共用效能疑難排解指南
-description: 針對 Azure 檔案儲存體的已知效能問題進行疑難排解。 當遇到這些問題時，探索潛在的原因和相關的因應措施。
+description: 針對 Azure 檔案共用的已知效能問題進行疑難排解。 當遇到這些問題時，探索潛在的原因和相關的因應措施。
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 52376cabfd837ad7435c8e9c992fe000e0521247
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561109"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577967"
 ---
-# <a name="troubleshoot-azure-file-share-performance-issues"></a>針對 Azure 檔案共用效能問題進行疑難排解
+# <a name="troubleshoot-azure-file-shares-performance-issues"></a>針對 Azure 檔案共用效能問題進行疑難排解
 
 本文列出一些與 Azure 檔案共用相關的常見問題。 當您遇到這些問題時，它會提供潛在的原因和因應措施。
 

@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358332"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579567"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
-
 
 在本文中，您將瞭解如何針對重現性版本和追蹤 Azure Machine Learning 資料集。 資料集版本控制是將資料的狀態設為書簽的一種方式，讓您可以套用特定版本的資料集，以供未來實驗之用。
 
@@ -28,7 +27,7 @@ ms.locfileid: "93358332"
 * 當新資料可供重新訓練時
 * 當您要套用不同的資料準備或特徵工程方法時
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本教學課程中，您需要：
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>版本管線輸出資料集
+## <a name="version-an-ml-pipeline-output-dataset"></a>版本 ML 管線輸出資料集
 
-您可以使用資料集做為每個 Machine Learning 管線步驟的輸入和輸出。 當您重新執行管線時，每個管線步驟的輸出都會註冊為新的資料集版本。
+您可以使用資料集做為每個 [ML 管線](concept-ml-pipelines.md) 步驟的輸入和輸出。 當您重新執行管線時，每個管線步驟的輸出都會註冊為新的資料集版本。
 
-由於 Machine Learning 管線會在每次管線重新執行時，將每個步驟的輸出擴展到新的資料夾，因此可重現已建立版本的輸出資料集。 深入瞭解 [管線中的資料集](how-to-create-your-first-pipeline.md#steps)。
+ML 管線會在每次管線重新執行時，將每個步驟的輸出填入至新的資料夾。 此行為允許可重現已建立版本的輸出資料集。 深入瞭解 [管線中的資料集](how-to-create-your-first-pipeline.md#steps)。
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>在實驗中追蹤資料集
+## <a name="track-datas-in-your-experiments"></a>在您的實驗中追蹤資料
 
-針對每個 Machine Learning 實驗，您可以輕鬆地透過實驗物件來追蹤作為輸入的資料集 `Run` 。
+Azure Machine Learning 在整個實驗中追蹤您的資料做為輸入和輸出資料集。  
+
+以下是您的資料會以 **輸入資料集** 的形式追蹤的案例。 
+
+* `DatasetConsumptionConfig` `inputs` `arguments` `ScriptRunConfig` 當您提交實驗執行時，透過物件的或參數來做為物件。 
+
+* 當您的腳本中呼叫類似、get_by_name ( # A1 或 get_by_id ( # A3 的方法時。 在此案例中，當您將資料集註冊到工作區時，指派給該資料集的名稱是顯示的名稱。 
+
+以下是以 **輸出資料集** 的形式追蹤資料的案例。  
+
+* `OutputFileDatasetConfig` `outputs` `arguments` 提交實驗執行時，透過或參數傳遞物件。 `OutputFileDatasetConfig` 物件也可以用來在管線步驟之間保存資料。 請參閱 [在 ML 管線步驟之間移動資料。](how-to-move-data-in-out-of-pipelines.md)
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 是一個公開預覽類別，包含可能會隨時變更的 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性預覽功能。
+
+* 在您的腳本中註冊資料集。 在此案例中，當您將資料集註冊到工作區時，指派給該資料集的名稱是顯示的名稱。 在下列範例中， `training_ds` 是要顯示的名稱。
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* 在腳本中使用未註冊的資料集來提交子執行。 這會導致匿名儲存的資料集。
+
+### <a name="trace-datasets-in-experiment-runs"></a>實驗執行中的追蹤資料集
+
+針對每個 Machine Learning 實驗，您可以輕鬆地使用實驗物件來追蹤作為輸入的資料集 `Run` 。
 
 下列程式碼會使用 [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) 方法來追蹤哪些輸入資料集與實驗執行搭配使用：
 
@@ -169,7 +195,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-您也可以 `input_datasets` 使用從實驗中尋找 https://ml.azure.com/ 。 
+您也可以 `input_datasets` 使用 [Azure Machine Learning studio]()，從實驗中尋找。 
 
 下圖顯示在 Azure Machine Learning studio 中尋找實驗之輸入資料集的位置。 在此範例中，請移至您的 **實驗** 窗格，然後開啟您的實驗特定執行的 [ **屬性** ] 索引標籤 `keras-mnist` 。
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-註冊之後，您可以使用 Python 或移至來查看使用資料集註冊的模型清單 https://ml.azure.com/ 。
+註冊之後，您可以使用 Python 來查看向資料集註冊的模型清單，或移至 [studio](https://ml.azure.com/)。
 
 下列是來自 [ **資產** ] 下的 [ **資料集** ] 窗格。 選取資料集，然後選取 [ **模型** ] 索引標籤，以取得已向資料集註冊的模型清單。 
 

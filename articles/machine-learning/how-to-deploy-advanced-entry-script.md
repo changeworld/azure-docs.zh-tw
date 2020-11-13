@@ -11,24 +11,27 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b05891500ae5fd66e5ec2381066ccd1d26aa7ec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325571"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578054"
 ---
 # <a name="advanced-entry-script-authoring"></a>進階的輸入腳本製作
 
 本文說明如何撰寫特製化使用案例的進入腳本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已經有想要使用 Azure Machine Learning 部署的已定型機器學習模型。 若要深入瞭解模型部署，請參閱 [此教學](how-to-deploy-and-where.md)課程。
 
 ## <a name="automatically-generate-a-swagger-schema"></a>自動產生 Swagger 結構描述
 
-若要自動產生 web 服務的架構，請在其中一個已定義的類型物件的函式中提供輸入和/或輸出的範例。 型別和範例會用來自動建立架構。 Azure Machine Learning 接著會在部署期間為 web 服務建立 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 規格。
+若要自動產生 web 服務的架構，請在其中一個已定義的類型物件的函式中提供輸入和/或輸出的範例。 型別和範例會用來自動建立架構。 Azure Machine Learning 接著會在部署期間為 web 服務建立 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 規格。 
+
+> [!WARNING]
+> 您不得針對範例輸入或輸出使用敏感性或私用資料。 AML 託管推斷的 Swagger 頁面會公開範例資料。 
 
 目前支援下列類型：
 

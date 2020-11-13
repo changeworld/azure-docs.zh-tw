@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306847"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579346"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽版) 查詢 Parquet 檔
 
@@ -36,6 +36,11 @@ from openrowset(
 ```
 
 請確定您存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂 Azure 身分識別的保護，您將需要設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+> [!IMPORTANT]
+> 請確定您使用的是某些 UTF-8 資料庫定序 (例如) ， `Latin1_General_100_CI_AS_SC_UTF8` 因為 PARQUET 檔中的字串值是使用 utf-8 編碼進行編碼。
+> PARQUET 檔案和定序中的文字編碼不相符可能會導致非預期的轉換錯誤。
+> 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>資料來源使用量
 
@@ -67,6 +72,12 @@ from openrowset(
         format = 'parquet'
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
+
+> [!IMPORTANT]
+> 確定您正在 explicilty 指定某些 UTF-8 定序 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 所有字串資料行 in `WITH` 子句，或在資料庫層級設定部分 utf-8 定序。
+> 檔案和字串資料行定序中的文字編碼不相符可能會導致非預期的轉換錯誤。
+> 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> 您可以使用下列定義，輕鬆地設定上類型的定序： `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
 
 在下列各節中，您可以瞭解如何查詢各種類型的 PARQUET 檔案。
 

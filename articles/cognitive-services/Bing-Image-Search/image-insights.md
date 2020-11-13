@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: cb5da2e3009ca1c50cac05d1bd1f4a8eb55d97d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a4c8aff8694c9d1dde0ab8d34e65f89a7ab4efbd
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084284"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592102"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用 Bing 影像搜尋 API 取得影像見解
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 > [!IMPORTANT]
 > 不要使用 /images/details 端點來取得影像見解，而是應該使用[圖像式搜尋](../bing-visual-search/overview.md)，因為它可提供更完整的見解。
@@ -31,7 +31,7 @@ ms.locfileid: "93084284"
 
 每個影像包括見解權杖，可讓您取得影像的相關資訊。 例如，您可以取得相關影像的集合、包含影像的網頁，或是可以購買影像所示產品的商家清單。  
 
-若要取得影像見解，請擷取回應中的影像 [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-imageinsightstoken) 權杖。
+若要取得影像見解，請擷取回應中的影像 [imageInsightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-imageinsightstoken) 權杖。
 
 ```json
 "value" : [{
@@ -46,9 +46,9 @@ ms.locfileid: "93084284"
 }],
 ```
 
-接下來，呼叫影像詳細資料端點，並將 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數設為 `imageInsightsToken` 中的權杖。  
+接下來，呼叫影像詳細資料端點，並將 [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數設為 `imageInsightsToken` 中的權杖。  
 
-若要指定您希望取得的見解，請設定 `modules` 查詢參數。 若要取得所有見解，請將 `modules` 設為 `All`。 若要只取得標題和集合見解，請將 `modules` 設定為 `Caption%2CCollection`。 如需可能見解的完整清單，請參閱 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)。 並非所有見解都適用於所有影像。 回應會包含您要求的所有見解 (若有)。
+若要指定您希望取得的見解，請設定 `modules` 查詢參數。 若要取得所有見解，請將 `modules` 設為 `All`。 若要只取得標題和集合見解，請將 `modules` 設定為 `Caption%2CCollection`。 如需可能見解的完整清單，請參閱 [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)。 並非所有見解都適用於所有影像。 回應會包含您要求的所有見解 (若有)。
 
 下列範例要求上述影像的所有可用見解。
 
@@ -64,7 +64,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-insights-of-a-known-image"></a>取得已知影像的見解
 
-如果您有想要取得見解的影像 URL，請使用 [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) 查詢參數，而不要使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 參數來指定影像。 或者，如果您有影像檔，您可以在 POST 要求主體中傳送二進位檔影像。 如果您使用 POST 要求，`Content-Type` 標頭必須設定為 `multipart/data-form`。 使用任一選項，影像大小都不能超過 1 MB。  
+如果您有想要取得見解的影像 URL，請使用 [imgUrl](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) 查詢參數，而不要使用 [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 參數來指定影像。 或者，如果您有影像檔，您可以在 POST 要求主體中傳送二進位檔影像。 如果您使用 POST 要求，`Content-Type` 標頭必須設定為 `multipart/data-form`。 使用任一選項，影像大小都不能超過 1 MB。  
 
 如果您有影像的 URL，則下列範例會示範如何要求影像的見解。
 
@@ -80,7 +80,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-all-image-insights"></a>取得所有影像見解  
 
-若要要求影像的所有見解，請將 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 `All`。 若要取得相關的搜尋，要求必須包含使用者的查詢字串。 此範例顯示如何使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 來指定影像。  
+若要要求影像的所有見解，請將 [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 `All`。 若要取得相關的搜尋，要求必須包含使用者的查詢字串。 此範例顯示如何使用 [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 來指定影像。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&insightsToken=mid_68364D764J...&modules=All&mkt=en-us HTTP/1.1  
@@ -92,7 +92,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-最上層的物件是 [ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) 物件，而非 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件。  
+最上層的物件是 [ImageInsightsResponse](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) 物件，而非 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件。  
 
 ```json
 {
@@ -179,12 +179,12 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="recognizing-entities-in-an-image"></a>辨識影像中的實體  
 
-實體辨識功能會識別影像中的實體，目前只能識別人類。 若要識別影像的所有實體，請將 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 `RecognizedEntities`。  
+實體辨識功能會識別影像中的實體，目前只能識別人類。 若要識別影像的所有實體，請將 [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 `RecognizedEntities`。  
 
 > [!NOTE]
 > 您不能與任何其他模組一起指定此模組。 如果您與其他模組一起指定此模組，回應不會包含辨識的實體。  
 
-下列範例示範如何使用 [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) 參數指定影像。 請記得對查詢參數進行 URL 編碼。  
+下列範例示範如何使用 [imgUrl](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) 參數指定影像。 請記得對查詢參數進行 URL 編碼。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=faith+hill&insightsToken=mid_68364D764J...&modules=RecognizedEntities&mkt=en-us HTTP/1.1  
@@ -228,16 +228,16 @@ Host: api.cognitive.microsoft.com
 
 您可以使用 Bing 在後續見解呼叫中傳回的區域。 例如，針對已辨識的實體取得在視覺效果上類似的影像。 如需詳細資訊，請參閱裁剪影像以使用視覺效果類似和實體辨識模組。 以下顯示區域欄位和您用來裁剪影像的查詢參數之間的對應。  
 
--   Left 對應至 [cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
--   Top 對應至 [cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
--   Right 對應至 [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
--   Bottom 對應至 [cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
+-   Left 對應至 [cal](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+-   Top 對應至 [cat](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
+-   Right 對應至 [car](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
+-   Bottom 對應至 [cab](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
 
 ## <a name="finding-visually-similar-images"></a>尋找在視覺效果上類似的影像  
 
-若要尋找與原始影像在視覺效果上類似的影像，請將 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 SimilarImages。  
+若要尋找與原始影像在視覺效果上類似的影像，請將 [modules](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 SimilarImages。  
 
-下列要求會示範如何取得在視覺效果上類似的影像。 要求會使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數來識別原始影像。 若要改善相關性，您應該包含使用者的查詢字串。  
+下列要求會示範如何取得在視覺效果上類似的影像。 要求會使用 [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數來識別原始影像。 若要改善相關性，您應該包含使用者的查詢字串。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?insightsToken=mid_68364D764J...&modules=SimilarImages&mkt=en-us HTTP/1.1  
@@ -270,7 +270,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>裁剪影像以使用視覺效果類似和實體辨識模組  
 
-若要指定 Bing 用來判斷影像是否在視覺效果上類似的影像區域，或用來執行實體辨識的影像區域，請使用 [cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)、[cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)、[cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab) 和 [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car) 查詢參數。 根據預設，Bing 會使用整個影像。  
+若要指定 Bing 用來判斷影像是否在視覺效果上類似的影像區域，或用來執行實體辨識的影像區域，請使用 [cal](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)、[cat](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)、[cab](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab) 和 [car](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car) 查詢參數。 根據預設，Bing 會使用整個影像。  
 
 參數會指定 Bing 用來進行比較的區域左上角和右下角。 請將值指定為原始影像的寬度和高度的分數。 分數值從左上角的 (0.0, 0.0) 開始，到右下角的 (1.0, 1.0) 結束。 例如，若要指定左上角從頂端往下四分之一、從左邊算起四分之一處開始，請將 `cal` 設定為 0.25，將 `cat` 設定為 0.25。  
 
@@ -379,9 +379,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="finding-visually-similar-products"></a>尋找在視覺效果上類似的產品  
 
-若要尋找包含視覺效果類似于原始影像中所找到產品的影像，請將 [模組](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 SimilarProducts。  
+若要尋找包含視覺效果類似于原始影像中所找到產品的影像，請將 [模組](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) 查詢參數設定為 SimilarProducts。  
 
-下列要求會示範如何取得視覺效果類似之產品的影像。 要求會使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數來識別前一個要求中傳回的原始影像。 若要改善相關性，您應該包含使用者的查詢字串。  
+下列要求會示範如何取得視覺效果類似之產品的影像。 要求會使用 [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查詢參數來識別前一個要求中傳回的原始影像。 若要改善相關性，您應該包含使用者的查詢字串。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=anne+klein+dresses&modules=SimilarProducts&insightsToken=ccid_WOeyfoSp*mid_4B0A357&mkt=en-us HTTP/1.1    
@@ -413,7 +413,7 @@ Host: api.cognitive.microsoft.com
 }
 ```
 
-若要取得一份在線上提供該產品的商家清單 (請參閱 [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 欄位)，請再次呼叫 API，然後將 `modules` 設定為 ShoppingSources。 然後，將 `insightsToken` 查詢參數設定為在產品摘要影像中找到的權杖。  
+若要取得一份在線上提供該產品的商家清單 (請參閱 [offerCount](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 欄位)，請再次呼叫 API，然後將 `modules` 設定為 ShoppingSources。 然後，將 `insightsToken` 查詢參數設定為在產品摘要影像中找到的權杖。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

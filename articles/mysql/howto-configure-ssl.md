@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 71e6d024b27ecad09b3339a7b0a8c406c7a3eda1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1c3e5a44e01f3fa43b82644103066f5a03684ad2
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541516"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591575"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫
 
@@ -23,8 +23,11 @@ ms.locfileid: "94541516"
 從使用適用於 MySQL 的 Azure 資料庫伺服器透過 SSL 進行通訊所需的憑證 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ，並將憑證檔案儲存到本機磁片磁碟機 (本教學課程會使用 c:\ssl，例如) 。
 **針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
 
+>[!NOTE]
+> 根據客戶的意見反應，我們已在2021年2月15日之前，為現有的巴爾的摩根 CA 延伸根憑證取代， (02/15/2021) 。
+
 > [!IMPORTANT] 
-> SSL 根憑證設定為從2020年10月26日起算過期 (10/26/2020) 。 請更新您的應用程式以使用 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要深入瞭解，請參閱 [規劃的憑證更新](concepts-certificate-rotation.md)
+> 自2021年2月15日起，SSL 根憑證已設定為過期 (02/15/2021) 。 請更新您的應用程式以使用 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要深入瞭解，請參閱 [規劃的憑證更新](concepts-certificate-rotation.md)
 
 請參閱下列連結以取得主權雲端中伺服器的憑證： [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、 [Azure 中國](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和 [Azure 德國](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
 

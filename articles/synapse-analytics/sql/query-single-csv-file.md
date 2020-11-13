@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9896b62ab347ec3b4751eb517c00222f00ddb1c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321461"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579397"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
@@ -45,6 +45,11 @@ from openrowset(
 ```
 
 選項 `firstrow` 可用來略過 CSV 檔案中代表標頭的第一個資料列（在此案例中）。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您將需要設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+> [!IMPORTANT]
+> 如果您的 CSV 檔案包含 UTF-8 字元，請確定您使用的是某些 UTF-8 資料庫定序 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 。
+> 檔案和定序中的文字編碼不相符可能會導致非預期的轉換錯誤。
+> 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>資料來源使用量
 
@@ -91,9 +96,15 @@ from openrowset(
 
 在子句中的資料類型後面的數位 `WITH` 代表 CSV 檔案中的資料行索引。
 
+> [!IMPORTANT]
+> 如果您的 CSV 檔案包含 UTF-8 字元，請確定您已 explicilty 指定某些 UTF-8 定序 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 所有資料行 in `WITH` 子句，或在資料庫層級設定部分 utf-8 定序。
+> 檔案和定序中的文字編碼不相符可能會導致非預期的轉換錯誤。
+> 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> 您可以使用下列定義，輕鬆地設定上類型的定序： `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8 8`
+
 在下列各節中，您可以瞭解如何查詢各種類型的 CSV 檔案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 第一個步驟是 **建立將在其中建立資料表的資料庫** 。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 

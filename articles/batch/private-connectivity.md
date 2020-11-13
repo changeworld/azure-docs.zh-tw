@@ -4,12 +4,12 @@ description: 瞭解如何使用私人端點私下連接到 Azure Batch 帳戶。
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 38d92d787a8d01dd3f87e1cdcacd336982c8c910
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669025"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579550"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>使用私人端點搭配 Azure Batch 帳戶
 
@@ -35,7 +35,7 @@ Private Link 可讓使用者從虛擬網路或任何對等互連的虛擬網路�
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="私人端點連接":::
 5. 在 [ **基本** ] 窗格中，輸入或選取訂用帳戶、資源群組、私人端點資源名稱和區域詳細資料，然後選取 **[下一步：資源]** 。
 6. 在 [ **資源** ] 窗格中，將 **資源類型** 設定為 **Microsoft.Batch/batchAccounts** 。 選取您要存取的私人 Batch 帳戶，然後選取 **[下一步：設定]** 。
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="私人端點連接":::
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="建立私人端點-資源窗格":::
 7. **在 [設定** ] 窗格中，輸入或選取這項資訊：
    - **虛擬網路** ：選取您的虛擬網路。
    - **子網** ：選取您的子網。
@@ -44,13 +44,18 @@ Private Link 可讓使用者從虛擬網路或任何對等互連的虛擬網路�
 8. 選取 [ **審核] + [建立** ]，然後等待 Azure 驗證您的設定。
 9. 當您看到 [驗證成功] 訊息時，請選取 [建立]。
 
-布建私人端點之後，您可以使用私人端點，從相同虛擬網路中的 Vm 存取 Batch 帳戶。 若要從 Azure 入口網站中查看 IP 位址：
+布建私人端點之後，您可以使用私人端點，從相同虛擬網路中的 Vm 存取 Batch 帳戶。
+
+> [!IMPORTANT]
+> 在布建私人端點的虛擬網路外部執行作業，會在 Azure 入口網站中產生 "AuthorizationFailure" 訊息。
+
+若要從 Azure 入口網站中查看 IP 位址：
 
 1. 選取 [所有資源]。
 2. 搜尋稍早建立的私人端點。
 3. 選取 [概觀] 索引標籤，以查看 DNS 設定和 IP 位址。
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="私人端點連接":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="私人端點 DNS 設定和 IP 位址":::
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 

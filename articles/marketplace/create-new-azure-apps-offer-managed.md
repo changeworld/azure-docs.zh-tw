@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 66da9124a6b46fa34d0a13c8992cd3141b095422
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 85f5beb6188b1f6987934f1c39c579d5a3028a5e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370024"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579482"
 ---
 # <a name="configure-a-managed-application-plan"></a>設定受控應用程式方案
 
@@ -114,7 +114,7 @@ ms.locfileid: "94370024"
 
 ### <a name="assign-a-version-number-for-the-package"></a>指派套件的版本號碼
 
-在 [ **版本** ] 方塊中，提供技術設定的目前版本。 在每次發佈此頁面的變更時，遞增此版本。 版本號碼必須採用下列格式：整數整數。 例如 `1.0.2`。
+在 [ **版本** ] 方塊中，提供技術設定的目前版本。 在每次發佈此頁面的變更時，遞增此版本。 版本號碼必須採用下列格式：整數整數。 例如，`1.0.2`。
 
 ### <a name="upload-a-package-file"></a>上傳套件檔案
 
@@ -138,7 +138,7 @@ ms.locfileid: "94370024"
 - 在 **完整** 模式中，客戶重新部署應用程式將會導致移除受控資源群組中的資源（如果 [mainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)中未定義資源）。
 - 在 **累加模式中** ，應用程式的重新部署會讓現有的資源保持不變。
 
-若要深入了解部署模式，請參閱 [Azure Resource Manager 部署模式](/azure/azure-resource-manager/deployment-modes.md) \(部分機器翻譯\)。
+若要深入了解部署模式，請參閱 [Azure Resource Manager 部署模式](/azure/azure-resource-manager/deployment-modes) \(部分機器翻譯\)。
 
 ### <a name="provide-a-notification-endpoint-url"></a>提供通知端點 URL
 

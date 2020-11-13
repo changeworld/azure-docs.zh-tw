@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 099d79e63795a88a66ef1ec65aa1bfd97037191e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134146"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578643"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制模型
 
@@ -47,7 +47,7 @@ Azure RBAC 會使用角色指派將許可權集套用至 [安全性主體](https
 
 ## <a name="access-control-lists-acls"></a>存取控制清單 (ACL)
 
-Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl*是一種許可權結構，其中包含一系列的*ACL 專案*。 每個 ACL 專案都會將安全性主體與存取層級產生關聯。  若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 中)  (acl 的存取控制清單](data-lake-storage-access-control.md)。
+Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl* 是一種許可權結構，其中包含一系列的 *ACL 專案* 。 每個 ACL 專案都會將安全性主體與存取層級產生關聯。  若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 中)  (acl 的存取控制清單](data-lake-storage-access-control.md)。
 
 ## <a name="how-permissions-are-evaluated"></a>如何評估許可權
 
@@ -71,7 +71,7 @@ Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl*�
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>許可權資料表：結合 Azure RBAC 和 ACL
 
-下表說明如何結合 Azure RBAC 角色和 ACL 專案，讓安全性主體可以執行 [作業] **資料行中所列的** 作業。 下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`/`) 、一個名為**俄勒岡**的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt**] 的 [中**名]** 目錄中的文字檔。 這些資料行中顯示的是授與許可權所需 ACL 專案的 [簡短形式](data-lake-storage-access-control.md#short-forms-for-permissions) 表示。 **N/A** (_不適用_ 的) 會出現在資料行中，如果沒有執行此作業所需的 ACL 專案。
+下表說明如何結合 Azure RBAC 角色和 ACL 專案，讓安全性主體可以執行 [作業] **資料行中所列的** 作業。 下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`/`) 、一個名為 **俄勒岡** 的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt** ] 的 [中 **名]** 目錄中的文字檔。 這些資料行中顯示的是授與許可權所需 ACL 專案的 [簡短形式](data-lake-storage-access-control.md#short-forms-for-permissions) 表示。 **N/A** ( _不適用_ 的) 會出現在資料行中，如果沒有執行此作業所需的 ACL 專案。
 
 |    作業             | 指派的 RBAC 角色               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
@@ -114,7 +114,7 @@ Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl*�
 
 ## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC 角色指派和 ACL 專案的限制
 
-使用群組時，您較不可能會超過每個訂用帳戶的角色指派數目上限，以及每個檔案或目錄的 ACl 專案數目上限。 下表描述了這些限制。
+使用群組時，您較不可能會超過每個訂用帳戶的角色指派數目上限，以及每個檔案或目錄的 ACL 專案數目上限。 下表描述了這些限制。
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

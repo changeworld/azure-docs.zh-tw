@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1b56e3818d2d9701ecb0252328746dc39bb260
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605085"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578309"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>開發適用於 Azure Active Directory 的企業營運應用程式
 本指南概述如何針對 Azure Active Directory (AD) ，開發企業營運 (LoB) 應用程式。目標物件是 Active Directory/Microsoft 365 全域系統管理員。
@@ -27,7 +27,7 @@ ms.locfileid: "90605085"
 
 註冊應用程式以使用 Azure Active Directory。 註冊應用程式意謂著開發人員可以使用 Azure AD 來驗證使用者，以及要求對使用者資源 (例如電子郵件、行事曆及文件) 的存取權。
 
-您目錄的任何成員 (不是來賓) 都可以註冊應用程式，亦稱為 *建立應用程式物件*。
+您目錄的任何成員 (不是來賓) 都可以註冊應用程式，亦稱為 *建立應用程式物件* 。 如果您無法註冊應用程式，則表示目錄的全域管理員已限制這項功能，因此您可能需要聯繫它們，才能 [取得適當的許可權](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#assign-built-in-application-admin-roles) 來註冊應用程式。 若要深入瞭解如何限制使用者的詳細資訊，請參閱 [Azure Active Directory 中的委派應用程式註冊許可權](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#restrict-who-can-create-applications)。
 
 註冊應用程式可讓任一使用者執行下列動作：
 

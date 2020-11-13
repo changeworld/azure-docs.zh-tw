@@ -1,6 +1,6 @@
 ---
-title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
-description: 說明如何使用 Azure PowerShell，在 Azure Stack Edge Pro 裝置上建立和管理 (Vm) 的虛擬機器。
+title: 透過 Azure PowerShell 腳本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
+description: 說明如何使用 Azure PowerShell 腳本，在 Azure Stack Edge Pro 裝置上建立和管理 (Vm) 的虛擬機器。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890652"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578751"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>透過 Azure PowerShell 腳本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
 
@@ -21,7 +21,7 @@ ms.locfileid: "90890652"
 
 本教學課程說明如何使用 Azure PowerShell 腳本，在您的 Azure Stack Edge Pro 裝置上建立和管理 VM。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始使用此腳本在 Azure Stack Edge Pro 裝置上建立和管理 VM 之前，您必須確定已完成下列步驟中所列的必要條件：
 
@@ -31,7 +31,7 @@ ms.locfileid: "90890652"
 
 2. 已啟用網路介面進行計算。 此網路介面 IP 用來建立 VM 部署的虛擬交換器。 下列步驟會逐步引導您進行程序：
 
-    1. 移至 [ **計算] 設定**。 選取您將用來建立虛擬交換器的網路介面。
+    1. 移至 [ **計算] 設定** 。 選取您將用來建立虛擬交換器的網路介面。
 
         > [!IMPORTANT] 
         > 您只能設定一個連接埠進行計算。

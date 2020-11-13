@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310303"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579380"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料 (預覽) 
 
@@ -27,7 +27,7 @@ Synapse 無伺服器 SQL 集區可讓您以近乎即時的方式，在已啟用 
 > [!IMPORTANT]
 > 本教學課程使用具有 [Azure Cosmos DB 妥善定義架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 所提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴沒有子句的結果集架構 `OPENROWSET` `WITH` ，從具有完整精確度架構的容器讀取資料，因為查詢體驗可能會變更，並配合妥善定義的架構。 請在 [Azure Synapse Analytics 意見反應論壇](https://feedback.azure.com/forums/307516-azure-synapse-analytics) 或連絡人 [synapse 連結產品團隊](mailto:cosmosdbsynapselink@microsoft.com) 張貼您的意見反應，以提供意見反應。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要支援查詢及分析 Azure Cosmos DB 分析存放區中的資料，無伺服器 SQL 集區會使用下列 `OPENROWSET` 語法：
 
@@ -42,7 +42,9 @@ OPENROWSET(
 Azure Cosmos DB 連接字串會指定 Azure Cosmos DB 帳戶名稱、資料庫名稱、資料庫帳戶主要金鑰，以及要運作的選擇性區功能變數名稱稱 `OPENROWSET` 。 
 
 > [!IMPORTANT]
-> 請確定您在之後使用別名 `OPENROWSET` 。 如果您未在函式之後指定別名，就會有 [已知的問題](#known-issues) 會造成 Synapse 無伺服器 SQL 端點的連接問題 `OPENROWSET` 。
+> 請確定您使用的是某些 UTF-8 資料庫定序 (例如) ， `Latin1_General_100_CI_AS_SC_UTF8` 因為 Cosmos DB 分析存放區中的字串值會編碼為 utf-8 文字。
+> 檔案和定序中的文字編碼不相符可能會導致非預期的文字轉換錯誤。
+> 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 連接字串的格式如下：
 ```sql
@@ -255,11 +257,11 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | Azure Cosmos DB 屬性類型 | SQL 資料行類型 |
 | --- | --- |
 | 布林值 | bit |
-| 整數 | bigint |
-| Decimal | float |
+| 整數 | BIGINT |
+| Decimal | FLOAT |
 | String | Varchar (UTF8 資料庫定序)  |
 | 日期時間 (ISO 格式化字串)  | Varchar (30)  |
-| 日期時間 (unix 時間戳記)  | bigint |
+| 日期時間 (unix 時間戳記)  | BIGINT |
 | Null | `any SQL type` 
 | 嵌套物件或陣列 | Varchar (max)  (UTF8 資料庫定序) ，序列化為 JSON 文字 |
 
@@ -338,8 +340,8 @@ GROUP BY geo_id
 
 ## <a name="known-issues"></a>已知問題
 
-- 在 **MUST** 函式 `OPENROWSET` (（例如) ）之後，必須指定別名 `OPENROWSET (...) AS function_alias` 。 省略別名可能會導致連線問題，而且 Synapse 無伺服器 SQL 端點可能暫時無法使用。 此問題將在2020年11月解決。
 - 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴沒有子句的架構在 `OPENROWSET` `WITH` 公開預覽期間提供，因為查詢體驗可能會根據客戶的意見反應，與妥善定義的架構對齊。 Contact [Synapse link 產品小組](mailto:cosmosdbsynapselink@microsoft.com) 以提供意見反應。
+- 如果資料 `OPENROSET` 行定序沒有 utf-8 編碼，無伺服器 SQL 集區將不會傳回編譯時期錯誤。 您可以 `OPENROWSET` 使用下列 t-sql 語句，輕鬆地變更目前資料庫中執行之所有函式的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 下表列出可能的錯誤和疑難排解動作：
 

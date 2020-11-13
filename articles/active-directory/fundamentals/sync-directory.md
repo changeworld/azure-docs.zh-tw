@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 的目錄同步作業
-description: 達到此同步處理模式的架構指引
+description: 使用 Azure Active Directory 達到目錄同步作業的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862d17948cb09c18f9372f8b8b981e5efa6be71b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114113"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578904"
 ---
 # <a name="directory-synchronization"></a>目錄同步作業
 
@@ -40,17 +40,17 @@ ms.locfileid: "92114113"
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者**：使用 Azure AD 來存取應用程式。
+* **使用者** ：使用 Azure AD 來存取應用程式。
 
-* **Web 瀏覽器**：使用者與之互動的元件，以存取應用程式的外部 URL。
+* **Web 瀏覽器** ：使用者與之互動的元件，以存取應用程式的外部 URL。
 
-* **應用程式**：依賴使用 Azure AD 進行驗證和授權的 Web 應用程式。
+* **應用程式** ：依賴使用 Azure AD 進行驗證和授權的 Web 應用程式。
 
-* **Azure AD**：透過 Azure AD Connect 從組織的內部部署目錄同步身分識別資訊。 
+* **Azure AD** ：透過 Azure AD Connect 從組織的內部部署目錄同步身分識別資訊。 
 
-* **Azure AD Connect**：用來將內部部署身分識別基礎結構連線至 Microsoft Azure AD 的工具。 Wizard 和引導式體驗可協助您部署和設定連線所需的必要條件和元件，包括同步處理和從 Active Directory 登入 Azure AD。 
+* **Azure AD Connect** ：用來將內部部署身分識別基礎結構連線至 Microsoft Azure AD 的工具。 Wizard 和引導式體驗可協助您部署和設定連線所需的必要條件和元件，包括同步處理和從 Active Directory 登入 Azure AD。 
 
-* **Active Directory**： Active Directory 是大部分 Windows Server 作業系統中包含的目錄服務。 執行 Active Directory Domain Services (AD DS) 的伺服器稱為網域控制站。 他們會驗證並授權網域中的所有使用者和電腦。
+* **Active Directory** ： Active Directory 是大部分 Windows Server 作業系統中包含的目錄服務。 執行 Active Directory Domain Services (AD DS) 的伺服器稱為網域控制站。 他們會驗證並授權網域中的所有使用者和電腦。
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>使用 Azure AD 來執行目錄同步作業
 

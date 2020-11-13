@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995349"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592051"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -61,11 +61,11 @@ ms.locfileid: "91995349"
 * 從 Azure Blob 儲存體中複製 Gzip 壓縮文字 (CSV) 格式的資料，並將其寫入 Azure SQL Database。
 * 許多需要序列化/還原序列化或壓縮/解壓縮的活動。
 
-## <a name="supported-regions"></a>支援區域
+## <a name="supported-regions"></a>支援的區域
 
 啟用複製活動的服務可在 [Azure integration runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中所列的區域和地理位置全域取得。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 查看各 [區域的產品](https://azure.microsoft.com/regions/#services) ，以檢查特定區域中 Data Factory 和資料移動的可用性。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -127,9 +127,9 @@ ms.locfileid: "91995349"
 
 #### <a name="syntax-details"></a>語法詳細資料
 
-| 屬性 | 說明 | 必要？ |
+| 屬性 | 描述 | 必要？ |
 |:--- |:--- |:--- |
-| type | 若為複製活動，請將設定為 `Copy` | 是 |
+| 類型 | 若為複製活動，請將設定為 `Copy` | 是 |
 | 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
 | 輸出 | 指定您所建立指向接收資料的資料集。 複製活動僅支援單一輸出。 | 是 |
 | typeProperties | 指定要設定複製活動的屬性。 | 是 |
@@ -199,7 +199,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 若要以程式設計方式進行設定，請 `additionalColumns` 在複製活動來源中新增屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，並 `value` 指出該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`** -保留變數表示要將來源檔案的相對路徑儲存至資料集內所指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **`$$COLUMN:<source_column_name>`** -保留變數模式指出要將指定的來源資料行複製為另一個資料行<br>- **表達**<br>- **靜態值** | 否 |
 
@@ -250,7 +250,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 將資料複製到 SQL database/Azure Synapse Analytics 時，如果目的地資料表不存在，複製活動支援根據來源資料自動建立。 它的目標是協助您快速開始載入資料並評估 SQL database/Azure Synapse Analytics。 資料內嵌之後，您可以根據您的需求來檢查和調整接收資料表架構。
 
-從任何來源將資料複製到下列接收資料存放區時，支援此功能。 您可以在 *ADF 撰寫 UI* 上找到選項– > *複製活動接收* – > *資料表選項* – > *自動建立資料表*，或透過 `tableOption` 複製活動接收承載中的屬性。
+從任何來源將資料複製到下列接收資料存放區時，支援此功能。 您可以在 *ADF 撰寫 UI* 上找到選項– > *複製活動接收* – > *資料表選項* – > *自動建立資料表* ，或透過 `tableOption` 複製活動接收承載中的屬性。
 
 - [Azure SQL Database](connector-azure-sql-database.md)
 - [Azure SQL Database 受控執行個體](connector-azure-sql-managed-instance.md)
@@ -263,7 +263,14 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 根據預設，複製活動會在來源資料列與接收資料列不相容時，停止複製資料並傳回失敗。 您可以設定複製活動來略過並記錄不相容的資料列，並只複製相容的資料，以使複製成功。 如需詳細資料，請參閱 [複製活動的容錯](copy-activity-fault-tolerance.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="data-consistency-verification"></a>資料一致性驗證
+
+當您將資料從來源移至目的地存放區時，Azure Data Factory 複製活動會提供一個選項，讓您執行額外的資料一致性驗證，以確保資料不只會成功從來源複製到目的地存放區，還會在來源與目的地存放區之間驗證為一致。 當資料移動期間發現不一致的檔案時，您可以中止複製活動，或透過啟用容錯設定來繼續複製其餘部分，以略過不一致的檔案。 您可以啟用複製活動中的會話記錄檔設定，以取得略過的檔案名。 如需詳細資料，請參閱 [複製活動中的資料一致性驗證](copy-activity-data-consistency.md) 。
+
+## <a name="session-log"></a>會話記錄檔
+您可以記錄複製的檔案名，這可協助您進一步確保資料不只能成功地從來源複製到目的地存放區，也可以藉由檢查複製活動會話記錄，在來源和目的地存放區之間保持一致。 如需詳細資訊，請參閱 [複製活動中的會話記錄](copy-activity-log.md) 。
+
+## <a name="next-steps"></a>後續步驟
 請參閱下列快速入門、教學課程和範例：
 
 - [將資料從一個位置複製到相同 Azure Blob 儲存體帳戶中的另一個位置](quickstart-create-data-factory-dot-net.md)

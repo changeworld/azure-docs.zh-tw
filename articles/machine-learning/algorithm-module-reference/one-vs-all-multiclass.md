@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376327"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591864"
 ---
 # <a name="one-vs-all-multiclass"></a>一對多多級
 
@@ -31,6 +31,8 @@ ms.locfileid: "94376327"
 基本上，此模組會建立個別模型的集團，然後合併結果，以建立可預測所有類別的單一模型。 任何二元分類器都可用來做為一對一模型的基礎。  
 
 例如，假設您設定 [兩個類別的支援向量機器](two-class-support-vector-machine.md) 模型，並將它提供給「一對多」多元分類模組的輸入。 模組會針對輸出類別的所有成員建立兩個類別的支援向量機器模型。 然後，它會套用一對多方法來合併所有類別的結果。  
+
+此課程模組使用 sklearn 的 OneVsRestClassifier，您可以在 [此](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)深入瞭解詳細資料。
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>如何設定「一對多」多元分類分類器  
 

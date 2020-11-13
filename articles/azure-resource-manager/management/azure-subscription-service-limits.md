@@ -3,12 +3,12 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: b95c056a8885998c3ca5b5c62cb13049c3a8c66d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412916"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577833"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -155,6 +155,10 @@ ms.locfileid: "94412916"
 ### <a name="action-groups"></a>動作群組
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-action-groups.md)]
+
+### <a name="autoscale"></a>Autoscale
+
+[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-autoscale.md)]
 
 ### <a name="log-queries-and-language"></a>記錄查詢和語言
 
@@ -438,7 +442,7 @@ ms.locfileid: "94412916"
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

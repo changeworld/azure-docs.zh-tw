@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: fe4b2925a34ae7c06bb0b597f0bcdcc3f4d80896
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363216"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579074"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
 
 > [!IMPORTANT] 
-> 這項功能的公開預覽註冊會持續保留，直到進一步通知為止。 
+> * 這項功能的公開預覽註冊會持續保留，直到進一步通知為止。 
+> * 目前不支援動態變更複寫目的地磁片區的服務層級。
 
 您可以藉由將磁片區移至另一個使用磁片區所需 [服務層級](azure-netapp-files-service-levels.md) 的容量集區，來變更現有磁片區的服務層級。 此磁碟區的就地服務層級變更不需要您遷移資料。 它也不會影響對磁片區的存取。  
 

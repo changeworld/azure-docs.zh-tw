@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 的 SCIM 同步處理
-description: 達到此同步處理模式的架構指引
+description: 使用 Azure Active Directory 達到 SCIM 同步處理的架構指引。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367851"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578853"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>Azure Active Directory 的 SCIM 同步處理
 
@@ -35,13 +35,13 @@ SCIM 是兩個端點的標準化定義：/Users 的端點和/Groups 端點。 �
 
 ## <a name="components-of-system"></a>系統的元件 
 
-* **HCM system**：應用程式和技術，可在整個員工生命週期中，提供可支援及自動化 HR 流程的人力資本管理程式和作法。 
+* **HCM system** ：應用程式和技術，可在整個員工生命週期中，提供可支援及自動化 HR 流程的人力資本管理程式和作法。 
 
-* **Azure AD**布建服務：使用 SCIM 2.0 通訊協定進行自動布建。 此服務會連接到應用程式的 SCIM 端點，並使用 SCIM 使用者物件架構和 REST Api 來自動布建和解除布建使用者和群組。  
+* **Azure AD** 布建服務：使用 SCIM 2.0 通訊協定進行自動布建。 此服務會連接到應用程式的 SCIM 端點，並使用 SCIM 使用者物件架構和 REST Api 來自動布建和解除布建使用者和群組。  
 
-* **Azure AD**：用來管理身分識別和其權利之生命週期的使用者存放庫。 
+* **Azure AD** ：用來管理身分識別和其權利之生命週期的使用者存放庫。 
 
-* **目標系統**：具有 SCIM 端點的應用程式或系統，並可搭配 Azure AD 布建來啟用自動布建使用者和群組。  
+* **目標系統** ：具有 SCIM 端點的應用程式或系統，並可搭配 Azure AD 布建來啟用自動布建使用者和群組。  
 
 ## <a name="implement-scim-with-azure-ad"></a>使用 Azure AD 來執行 SCIM 
 

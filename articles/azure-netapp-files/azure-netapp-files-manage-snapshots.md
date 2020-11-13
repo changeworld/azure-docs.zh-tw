@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491642"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591731"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -97,7 +97,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 [儲存]。  
+4.  按一下 [檔案] 。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您建立的原則會出現在 [快照集原則] 頁面中。
@@ -144,6 +144,17 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![快照集原則刪除確認](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>編輯 [隱藏快照路徑] 選項
+[隱藏快照路徑] 選項會控制是否可以看到磁片區的快照集路徑。 在建立 [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) 或 [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) 磁片區期間，您可以選擇是否要隱藏快照集路徑。 然後，您可以視需要編輯 [隱藏快照路徑] 選項。  
+
+> [!NOTE]
+> 對於跨區域複寫的 [目的地磁片](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume) 區，預設會啟用 [隱藏快照路徑] 選項，而且無法修改設定。 
+
+1. 若要查看磁片區的 [隱藏快照路徑] 選項設定，請選取磁片區。 [ **隱藏快照路徑** ] 欄位會顯示是否已啟用選項。   
+    ![描述 [隱藏快照路徑] 欄位的螢幕擷取畫面。](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. 若要編輯 [隱藏快照集路徑] 選項，請按一下 [磁片區] 頁面上的 [ **編輯** ]，然後視需要修改 [ **隱藏快照路徑** ] 選項。   
+    ![描述 [編輯磁片區快照] 選項的螢幕擷取畫面。](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>將快照集還原至新磁碟區
 
 目前，您只能將快照集還原至新的磁碟區。 
@@ -173,11 +184,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 掛接的磁片區包含 NFS 用戶端中名為 (的快照集目錄  `.snapshot` ，) 或可供 `~snapshot` 用戶端存取的 SMB 用戶端) 中的 (。 快照集目錄包含對應到磁片區快照集的子目錄。 每個子目錄都包含快照集的檔案。 如果您不小心刪除或覆寫檔案，您可以將檔案從快照子目錄複寫到讀寫目錄，將檔案還原至父讀寫目錄。 
 
-如果您在建立磁片區時選取 [隱藏快照路徑] 核取方塊，則會隱藏快照集目錄。 您可以藉由選取磁片區來查看磁片區的隱藏快照路徑狀態。 您可以按一下磁片區頁面上的 [ **編輯** ]，以編輯 [隱藏快照路徑] 選項。  
-
-針對跨區域複寫中的目的地磁片區，預設會啟用 [隱藏快照路徑]，而且無法修改設定。
-
-![編輯磁片區快照集選項](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+如果您看不到快照集目錄，它可能會隱藏，因為目前已啟用 [隱藏快照路徑] 選項。 您可以 [編輯 [隱藏快照路徑] 選項](#edit-the-hide-snapshot-path-option) 來停用它。  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>使用 Linux NFS 用戶端來還原檔 
 
@@ -246,7 +253,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 您可以刪除不再需要保留的快照。 
 
-1. 移至磁片區的 [ **快照** 集] 功能表。 以滑鼠右鍵按一下您要刪除的快照集。 選取 [刪除]。
+1. 移至磁片區的 [ **快照** 集] 功能表。 以滑鼠右鍵按一下您要刪除的快照集。 選取 [刪除] 。
 
     ![描述快照之右鍵功能表的螢幕擷取畫面](../media/azure-netapp-files/snapshot-right-click-menu.png) 
 

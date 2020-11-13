@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 入口網站中查看自訂角色指派 |Microsoft Docs
-description: 您現在可以在 Azure AD 系統管理中心查看並管理 Azure AD 系統管理員角色的成員。
+title: 在 Azure Active Directory 入口網站中查看自訂角色指派 |Microsoft Docs
+description: 您現在可以在 Azure Active Directory 系統管理中心查看並管理 Azure Active Directory 系統管理員角色的成員。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505575"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579023"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>使用 Azure Active Directory 查看自訂角色指派
 

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02a08cc0400b4d65577c13282ca4c23cac1d21dc
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120944"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578921"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>處理 MSAL 例外狀況和錯誤
 
@@ -50,7 +50,7 @@ Microsoft 驗證程式庫 (MSAL) 中的例外狀況僅供應用程式開發人�
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001：使用者或系統管理員未同意使用識別碼為 '{appId}'、名稱為 '{appName}' 的應用程式。 請傳送此使用者和資源的互動式授權要求。| 您必須先取得使用者同意。 如果您未使用 .NET Core (因此就沒有任何 Web UI)，請呼叫 `AcquireTokeninteractive` (一次即可)。 如果您使用 .NET core 或不想要執行 `AcquireTokenInteractive`，則使用者可以瀏覽至下列 URL 表示同意：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`。 以呼叫 `AcquireTokenInteractive`：`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079：使用者必須使用[多重要素驗證 (MFA)](../authentication/concept-mfa-howitworks.md)。| 沒有風險降低措施。 如果您的租用戶已設定 MFA，且 Azure Active Directory (AAD) 決定加以強制執行，您就必須退回到 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode` 之類的互動式流程。|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010：不支援透過 */common* 或 */consumers* 端點的授與類型。 請使用 */organizations* 或租用戶專屬端點。 您使用的是 */common*。| 如 Azure AD 的訊息所說明，授權單位必須有一個租用戶或 */organizations*。|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010：不支援透過 */common* 或 */consumers* 端點的授與類型。 請使用 */organizations* 或租用戶專屬端點。 您使用的是 */common* 。| 如 Azure AD 的訊息所說明，授權單位必須有一個租用戶或 */organizations* 。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002：要求本文必須包含下列參數：`client_secret or client_assertion`。| 如果您的應用程式未在 Azure AD 中註冊為公用用戶端應用程式，就會擲回這個例外狀況。 在 Azure 入口網站中，為您的應用程式編輯資訊清單，並將 `allowPublicClient` 設為 `true`。 |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`:無法識別登入的使用者| 程式庫無法查詢目前登入 Windows 的使用者，或這名使用者未加入 AD 或 AAD (不支援已加入工作場所的使用者)。 風險降低措施 1：在 UWP 上，確認應用程式具有下列功能：企業驗證、私人網路 (用戶端和伺服器)、使用者帳戶資訊。 降低風險 2：實作您自己的邏輯以擷取使用者名稱 (例如john@contoso.com)，並使用採用該使用者名稱的 `AcquireTokenByIntegratedWindowsAuth` 表單。|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| 此方法需依賴由 Active Directory (AD) 公開的通訊協定。 如果使用者建立於不具 AD 支援 (「受控」使用者) 的 Azure Active Directory 中，此方法將會失敗。 使用者若建立於 AD 中，並且受 AAD 支援(「同盟」使用者)，則可受益於這種非互動式的驗證方法。 風險降低：使用互動式驗證。|
@@ -576,18 +576,18 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function(accessTokenRespon
 以下是使用用戶端認證流程的精靈應用程式範例。 您可以將其調整為任何可用於取得權杖的方法。
 
 ```csharp
+
+bool retry = false;
 do
 {
-    retry = false;
     TimeSpan? delay;
     try
     {
-         result = await publicClientApplication.AcquireTokenForClient(scopes, account)
-                                           .ExecuteAsync();
+         result = await publicClientApplication.AcquireTokenForClient(scopes, account).ExecuteAsync();
     }
     catch (MsalServiceException serviceException)
     {
-         if (ex.ErrorCode == "temporarily_unavailable")
+         if (serviceException.ErrorCode == "temporarily_unavailable")
          {
              RetryConditionHeaderValue retryAfter = serviceException.Headers.RetryAfter;
              if (retryAfter.Delta.HasValue)

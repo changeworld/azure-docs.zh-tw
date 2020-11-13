@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Stack Edge Pro GPU 裝置上設定 Azure Resource Manager 密碼
-description: 說明如何使用 Azure PowerShell 連接到 Azure Stack Edge Pro GPU 上執行的 Azure Resource Manager。
+description: 說明如何使用 Azure PowerShell 設定 Azure Stack Edge Pro GPU 上的 Azure Resource Manager 密碼。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904487"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578785"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上設定 Azure Resource Manager 密碼
 
@@ -21,18 +21,18 @@ ms.locfileid: "90904487"
 
 本文說明如何設定您的 Azure Resource Manager 密碼。 當您透過 Azure Resource Manager 連接到裝置本機 Api 時，必須設定此密碼。
 
-設定密碼的程式可能會根據您使用的是 Azure 入口網站或 PowerShell Cmdlet 而有所不同。 下列各節將說明每個程式。
+設定密碼的程序可能會根據您使用的是 Azure 入口網站或 PowerShell Cmdlet 而有所不同。 下列各節將說明每個程式。
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>透過 Azure 入口網站重設密碼
 
-1. 在 Azure 入口網站中，移至您所建立的 Azure Stack Edge 資源來管理您的裝置。 移至 [Edge 計算] > [開始使用]。
+1. 在 Azure 入口網站中，移至您所建立的 Azure Stack Edge 資源來管理您的裝置。 移至 [Edge 計算] > [開始使用]  。
 
-2. 在右窗格中，從命令列選取 [ **重設 EDGE ARM 密碼**]。 
+2. 在右側窗格中，從命令列中選取 [重設 Edge ARM 密碼]。 
 
     ![重設 EdgeARM 使用者密碼1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. 在 [ **重設 EdgeArm 使用者密碼** ] 分頁中，提供密碼以透過 Azure Resource Manager 連接到您的裝置本機 api。 確認密碼，然後選取 [ **重設**]。
+3. 在 [ **重設 EdgeArm 使用者密碼** ] 分頁中，提供密碼以透過 Azure Resource Manager 連接到您的裝置本機 api。 確認密碼，然後選取 [ **重設** ]。
 
     ![重設 EdgeARM 使用者密碼2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
@@ -45,10 +45,10 @@ ms.locfileid: "90904487"
     - Azure Stack Edge 資源名稱
     - 訂用帳戶識別碼
 
-2. 移至 [ **設定] > 屬性**。 請記下 [ **屬性** ] 頁面中的下列參數。
+2. 移至 [ **設定] > 屬性** 。 請記下 [ **屬性** ] 頁面中的下列參數。
 
     - 資源群組
-    - CIK 加密金鑰：選取 [view]，然後複製 **加密金鑰**。
+    - CIK 加密金鑰：選取 [view]，然後複製 **加密金鑰** 。
 
     ![取得 CIK 加密金鑰](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
