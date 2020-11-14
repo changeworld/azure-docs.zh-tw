@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: 開始使用 Azure EA 入口網站
           href: manage/ea-portal-get-started.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 設定成本管理 + 計費

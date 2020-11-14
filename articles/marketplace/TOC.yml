@@ -143,10 +143,12 @@
               href: azure-vm-create-properties.md
             - name: 設定 VM 供應項目清單
               href: azure-vm-create-listing.md
-            - name: 建立 VM 方案
-              href: azure-vm-create-plans.md
             - name: 新增預覽對象
               href: azure-vm-create-preview.md
+            - name: 建立 VM 方案
+              href: azure-vm-create-plans.md
+            - name: 透過 CSP 轉售
+              href: azure-vm-create-resell-csp.md
             - name: 建立 VM 技術資產
               items:
                 - name: 從已核准的基底建立 VM

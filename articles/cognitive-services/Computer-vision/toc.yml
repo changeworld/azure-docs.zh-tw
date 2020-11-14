@@ -85,12 +85,14 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: 概念
   items:
-    - name: 內容標記
-      href: concept-tagging-images.md
+    - name: 光學字元辨識 (OCR)
+      href: concept-recognizing-text.md
     - name: 物件偵測
       href: concept-object-detection.md
     - name: 品牌偵測
       href: concept-brand-detection.md
+    - name: 內容標記
+      href: concept-tagging-images.md
     - name: 映像分類
       href: concept-categorizing-images.md
     - name: 映像說明
@@ -105,8 +107,6 @@
       href: concept-detecting-color-schemes.md
     - name: 智慧型裁切縮圖
       href: concept-generating-thumbnails.md
-    - name: 光學字元辨識 (OCR)
-      href: concept-recognizing-text.md
     - name: 成人內容偵測
       href: concept-detecting-adult-content.md
 - name: 負責任的 AI

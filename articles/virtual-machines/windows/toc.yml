@@ -46,7 +46,7 @@
     - name: 13 - 監視 VM
       href: tutorial-monitor.md
     - name: 14 - 管理 VM 安全性
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15 - 安裝 SQL\IIS\.NET 堆疊
       href: tutorial-iis-sql.md
     - name: 16 - 使用 SSL 保護網路伺服器
@@ -197,7 +197,7 @@
               href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 計算最佳化
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../sizes-compute.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Fsv2 系列
               href: ../fsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -232,7 +232,7 @@
               href: storage-performance.md
         - name: GPU - 加速計算
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../sizes-gpu.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -648,8 +648,16 @@
         - name: 交換 OS 磁碟
           href: os-disk-swap.md
         - name: 標記 VM
-          href: tag.md
-        - name: 時間同步
+          items:
+            - name: 入口網站
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: CLI
+              href: ../tag-cli.md
+            - name: 範本
+              href: ../tag-template.md
+            - name: 時間同步
           href: time-sync.md
         - name: 在 VM 上執行指令碼
           href: run-scripts-in-vm.md
@@ -679,7 +687,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
