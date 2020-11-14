@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119890"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628130"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 取得和快取權杖
 
@@ -101,7 +101,7 @@ MSAL 會維護權杖快取 (或) 的機密用戶端應用程式的兩個快取�
 
 針對機密用戶端應用程式 (web 應用程式、web API 或像是 Windows 服務) 的背景程式應用程式，您可以：
 
-- 可以使用[用戶端認證流程](msal-authentication-flows.md#client-credentials)取得**應用程式本身**而非使用者的權杖。 這項技術可以用來同步處理工具，或是用來處理一般使用者而非特定使用者的工具。
+- 可以使用 [用戶端認證流程](msal-authentication-flows.md#client-credentials)取得 **應用程式本身** 而非使用者的權杖。 這項技術可以用來同步處理工具，或是用來處理一般使用者而非特定使用者的工具。
 - 使用 web API 的代理者 [流程](msal-authentication-flows.md#on-behalf-of) 來代表使用者呼叫 API。 應用程式會使用用戶端認證來識別，以根據使用者判斷提示 (SAML 來取得權杖，例如，或) 的 JWT 權杖。 需要在服務對服務的呼叫中存取特定使用者資源的應用程式會使用此流程。
 - 可以在使用者透過授權要求 URL 來登入後，於 Web 應用程式中使用[授權碼流程](msal-authentication-flows.md#authorization-code)來取得權杖。 OpenID Connect 應用程式一般會使用這個機制，這可以讓使用者使用 Open ID Connect 登入，然後代表使用者存取 Web API。
 
@@ -115,6 +115,10 @@ MSAL 會維護權杖快取 (或) 的機密用戶端應用程式的兩個快取�
 - 租用戶識別碼包含找到使用者時其所在的租用戶。 針對來賓使用者 (Azure AD B2B 案例)，租用戶識別碼是來賓租用戶，而非唯一租用戶。 當權杖透過使用者名稱傳遞時，驗證結果也會包含此使用者的相關資訊。 對於不會向使用者要求權杖的機密用戶端流程 (針對應用程式)，此使用者資訊是 Null。
 - 簽發權杖時所適用的範圍。
 - 使用者的唯一識別碼。
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a> (Advanced) 在背景應用程式和服務中存取使用者的快取權杖
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

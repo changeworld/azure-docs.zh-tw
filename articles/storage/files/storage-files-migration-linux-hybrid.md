@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563500"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626345"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 檔案同步從 Linux 遷移至混合式雲端部署
 
@@ -145,7 +145,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
       /MIR
    :::column-end:::
    :::column span="1":::
-      允許在相同的目標/目的地上，依序執行此 Robocopy 命令數次。 它會識別並省略之前複製的內容。 只會處理上次執行之後發生的變更、新增和刪除。 如果之前未執行命令，則不會省略任何內容。 **/MIR**旗標是仍在主動使用和變更之來源位置的絕佳選項。
+      允許在相同的目標/目的地上，依序執行此 Robocopy 命令數次。 它會識別並省略之前複製的內容。 只會處理上次執行之後發生的變更、新增和刪除。 如果之前未執行命令，則不會省略任何內容。 **/MIR** 旗標是仍在主動使用和變更之來源位置的絕佳選項。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -219,6 +219,6 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 深入瞭解 Azure 檔案共用及 Azure 檔案同步。下列文章包含先進的選項、最佳作法和疑難排解的協助。 這些文章會適當地連結到 [Azure 檔案共用檔](storage-files-introduction.md) 。
 
-* [Azure 檔案同步總覽](https://aka.ms/AFS)
+* [Azure 檔案同步總覽](./storage-sync-files-planning.md)
 * [Azure 檔案同步部署指南](storage-files-deployment-guide.md)
 * [Azure 檔案同步疑難排解](storage-sync-files-troubleshoot.md)

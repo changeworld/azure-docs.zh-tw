@@ -3,14 +3,14 @@ title: Azure Functions 的 JavaScript 開發人員參考
 description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422547"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628827"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -204,8 +204,8 @@ module.exports = (context) => {
 | 屬性名稱  | 類型  | 描述 |
 |---------|---------|---------|
 | `invocationId` | String | 提供特定函式呼叫的唯一識別碼。 |
-| `functionName` | 字串 | 提供正在執行之函式的名稱 |
-| `functionDirectory` | 字串 | 提供函數應用程式目錄。 |
+| `functionName` | String | 提供正在執行之函式的名稱 |
+| `functionDirectory` | String | 提供函數應用程式目錄。 |
 
 下列範例顯示如何傳回 `invocationId` 。
 
@@ -508,12 +508,20 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符�
 | Functions 版本 | Windows)  (節點版本 | Linux)  (節點版本 |
 |---|---| --- |
 | 1.x | 6.11.2 (由執行階段鎖定) | n/a |
-| 2.x  | ~ 8<br/>建議) ~ 10 (<br/>~ 12<sup>*</sup> | 約 8 (建議的) <br/>~ 10  |
-| 3.x | ~ 10<br/>約 12 (建議的)   | ~ 10<br/>約 12 (建議的)  |
+| 2.x  | `~8`<br/>`~10` (建議的) <br/>`~12` | `node|8`<br/>`node|10` (建議的)   |
+| 3.x | `~10`<br/>`~12` (建議的) <br/>`~14` (預覽)  | `node|10`<br/>`node|12` (建議的) <br/>`node|14` (預覽) |
 
-<sup>*</sup>在2.x 版的函式執行時間中，目前允許節點 ~ 12。 不過，為了達到最佳效能，我們建議使用函數執行時間3.x 版搭配節點 ~ 12。 
+您可以從任何函式進行記錄，以查看執行時間正在使用的目前版本 `process.version` 。
 
-您可以藉由檢查以上的應用程式設定，或藉由從任何函式列印 `process.version`，來查看執行階段目前正在使用的版本。 將 WEBSITE_NODE_DEFAULT_VERSION [應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings) 設定為支援的 LTS 版本（例如），以在 Azure 中將版本設為目標 `~10` 。
+### <a name="setting-the-node-version"></a>設定節點版本
+
+若為 Windows 函式應用程式，請將 `WEBSITE_NODE_DEFAULT_VERSION` [應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings) 設為支援的 LTS 版本（例如），以在 Azure 中將版本設為目標 `~12` 。
+
+針對 Linux 函式應用程式，請執行下列 Azure CLI 命令以更新節點版本。
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>相依性管理
 若要使用 JavaScript 程式碼中的社群程式庫，如下列範例所示，您必須確定已在 Azure 中的函數應用程式上安裝所有的相依性。

@@ -1,6 +1,6 @@
 ---
 title: Microsoft 身分識別平台的應用程式類型 | Azure
-description: Microsoft 身分識別平台 (v2.0) 端點支援的應用程式類型與案例。
+description: Microsoft 身分識別平臺端點所支援的應用程式和案例類型。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,26 +8,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: aaddev, fasttrack-edit, contperfq2
+ms.openlocfilehash: 4c72d1b4b78c0b7ca9e7fa1f6468beb6fdd4b247
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103147"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628079"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 身分識別平台的應用程式類型
 
-Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構的驗證，它們全都以產業標準通訊協定 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md) 為基礎。 本文描述您可以使用 Microsoft 身分識別平台建置的應用程式類型，不論您慣用的語言或平台是哪一種。 這些資訊是設計來協助您在[開始使用程式碼](v2-overview.md#getting-started)之前先瞭解概要的案例。
+Microsoft 身分識別平臺端點支援各種新式應用程式架構的驗證，它們都是以業界標準通訊協定 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md)為基礎。 本文描述您可以使用 Microsoft 身分識別平台建置的應用程式類型，不論您慣用的語言或平台是哪一種。 此資訊的設計目的是要協助您瞭解高階案例，再開始使用 [應用程式案例](authentication-flows-app-scenarios.md#application-scenarios)中的程式碼。
 
 ## <a name="the-basics"></a>基本概念
 
 您必須在 Azure 入口網站[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)中註冊每個使用 Microsoft 身分識別平台端點的應用程式。 應用程式註冊程序會為您的應用程式收集和指派下列值：
 
-* 可唯一識別應用程式的**應用程式 (用戶端) 識別碼**
+* 可唯一識別應用程式的 **應用程式 (用戶端) 識別碼**
 * 可用來將回應導回到應用程式的「重新導向 URI」
 * 幾個其他案例特定的值，例如支援的帳戶類型
 
@@ -81,10 +81,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 您可以使用接收自 Microsoft 身分識別平台端點的公開簽署金鑰來驗證識別碼權杖，來確保使用者的身分識別。 系統會設定工作階段 Cookie，這可在後續的頁面要求上用來識別使用者。
 
-若要查看此案例的實際運作情形，請在 [Microsoft 身分識別平台開始使用](v2-overview.md#getting-started)一節的 Web 應用程式登入程式碼範例中擇一試用。
+若要查看此案例的實際運作情況，請嘗試在 [Web 應用程式中登入使用者案例的程式](scenario-web-app-sign-user-overview.md)代碼範例。
 
 除了簡易登入之外，Web 伺服器應用程式可能也需要存取其他 Web 服務，例如 REST API。 在此情況下，Web 伺服器應用程式可以使用 [OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)，參與結合了 OpenID Connect 與 OAuth 2.0 的流程。 如需有關此案例的詳細資訊，請參閱[開始使用 Web 應用程式和 Web API](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)。
-
 
 ## <a name="web-apis"></a>Web API
 
@@ -106,7 +105,7 @@ Web API 可以從所有類型的應用程式接收存取權杖，包括 Web 伺�
 
 ![顯示 Web API 驗證流程](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-若要瞭解如何使用 OAuth2 存取權杖來保護 Web API，請查看 [Microsoft 身分識別平台開始使用](v2-overview.md#getting-started)一節中的 Web API 程式碼範例。
+若要瞭解如何使用 OAuth2 存取權杖來保護 web API，請查看 [受保護的 WEB api 案例](scenario-protected-web-api-overview.md)中的 web api 程式碼範例。
 
 在許多情況下，Web API 也需要對受 Microsoft 身分識別平台保護的其他下游 Web API 發出傳出要求。 若要這樣做，Web API 可以利用「代理者」流程，它能允許 Web API 將傳入存取權杖交換為要在傳出要求中使用的另一個存取權杖。 如需詳細資訊，請參閱 [Microsoft 身分識別平台和 OAuth 2.0 代理者流程](v2-oauth2-on-behalf-of-flow.md)。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129587"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628283"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>如何規劃虛擬機器供應專案
 
@@ -100,7 +100,7 @@ VM 供應專案至少需要一個方案。 方案會定義方案範圍和限制�
 
 您可以將映射和定價發佈為私用方案，以限制對一組特定的客戶探索和部署您的 VM。 私用計畫可讓您為最接近的客戶建立專屬供應專案，並提供自訂軟體和條款。 這些自訂條款可讓您突顯各式各樣的案例，包括具有特殊定價和條款的實地主導交易，以及限制版軟體的優先存取權。 私人方案可讓您將特定定價或產品提供給一組有限的客戶。
 
-如需詳細資訊，請參閱 Azure Marketplace 的商業 marketplace 供應專案和[私人優惠](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)[方案和定價](plans-pricing.md)。
+如需詳細資訊，請參閱[Microsoft 商業市集中](private-offers.md)的商業 marketplace 供應專案和私人優惠[方案和定價](plans-pricing.md)。
 
 ## <a name="test-drives"></a>試用產品
 

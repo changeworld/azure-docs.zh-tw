@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278576"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628895"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
@@ -38,14 +38,14 @@ ms.locfileid: "89278576"
 -   您擁有具有同盟網域的 Azure Active Directory (Azure AD) 租用戶。
 
 -   您決定移至這兩個選項的其中之一：
-    - **選項 A**  - * (同步) *  +  的密碼雜湊同步處理*無縫單一登入 (SSO) *。  如需詳細資訊，請參閱 [什麼是密碼雜湊同步處理](whatis-phs.md) 以及 [什麼是無縫 SSO](how-to-connect-sso.md)
-    - **選項 B**  - *傳遞驗證*  + *無縫 SSO*。  如需詳細資訊，請參閱 [什麼是傳遞驗證](how-to-connect-pta.md)  
+    - **選項 A**  - *(同步)*  +  的密碼雜湊同步處理 *無縫單一登入 (SSO)* 。  如需詳細資訊，請參閱 [什麼是密碼雜湊同步處理](whatis-phs.md) 以及 [什麼是無縫 SSO](how-to-connect-sso.md)
+    - **選項 B**  - *傳遞驗證*  + *無縫 SSO* 。  如需詳細資訊，請參閱 [什麼是傳遞驗證](how-to-connect-pta.md)  
     
     雖然「無縫 SSO」為選擇，但我們建議將其啟用，以為正在公司網路內部執行已加入網域電腦的使用者提供無訊息登入體驗。
 
 -   針對正在移轉至雲端驗證的使用者，您已為其設定了所需的所有適當租用戶商標和條件式存取原則。
 
--   如果您打算使用 Azure Multi-Factor Authentication，我們建議您 [針對自助式密碼重設 (SSPR) 和 Multi-Factor Authentication 使用合併的註冊](../authentication/concept-registration-mfa-sspr-combined.md) ，讓您的使用者可以註冊其驗證方法一次。
+-   如果您打算使用 Azure Multi-Factor Authentication，我們建議您 [針對自助式密碼重設 (SSPR) 和 Multi-Factor Authentication 使用合併的註冊](../authentication/concept-registration-mfa-sspr-combined.md) ，讓您的使用者可以註冊其驗證方法一次。 注意-當您在分段推出時使用 SSPR 來重設密碼或使用 MyProfile 頁面來變更密碼時，Azure AD Connect 需要同步處理新的密碼雜湊，在重設之後可能需要最多2分鐘的時間。
 
 -   若要使用分段推出功能，則您必須是租用戶的全域管理員。
 
@@ -95,7 +95,7 @@ ms.locfileid: "89278576"
 
 ## <a name="pre-work-for-password-hash-sync"></a>密碼雜湊同步的前置工作
 
-1. 從 Azure AD Connect 中的 [選用功能](how-to-connect-install-custom.md#optional-features) 頁面，以啟用「密碼雜湊同步」 **  。 
+1. 從 Azure AD Connect 的 [ [選用功能](how-to-connect-install-custom.md#optional-features)] 頁面啟用 *密碼雜湊同步* 處理。 
 
    ![Azure Active Directory Connect 中 [選用功能] 頁面的螢幕擷取畫面](media/how-to-connect-staged-rollout/sr1.png)
 
@@ -109,11 +109,11 @@ ms.locfileid: "89278576"
 
 1. 找出想要執行「傳遞驗證」代理程式的伺服器 (其執行 Windows Server 2012 R2 或更新版本)。 
 
-   「請勿」選擇 Azure AD Connect 伺服器。 請確認伺服器已加入網域、可使用 Active Directory 來驗證所選使用者，並可與輸出連接埠和 URL 上的 Azure AD 通訊。 如需詳細資訊，請參閱[快速入門：Azure AD 無縫單一登入](how-to-connect-sso-quick-start.md)中的＜步驟 1：檢查先決條件＞一節。
+   「請勿」選擇 Azure AD Connect 伺服器。  請確認伺服器已加入網域、可使用 Active Directory 來驗證所選使用者，並可與輸出連接埠和 URL 上的 Azure AD 通訊。 如需詳細資訊，請參閱[快速入門：Azure AD 無縫單一登入](how-to-connect-sso-quick-start.md)中的＜步驟 1：檢查先決條件＞一節。
 
-1. [下載 Azure AD Connect 驗證代理程式](https://aka.ms/getauthagent)並在伺服器上安裝。 
+1. [下載 Azure AD Connect 驗證代理程式](https://aka.ms/getauthagent)並在伺服器上安裝。 
 
-1. 若要獲得 [高可用性](how-to-connect-sso-quick-start.md)，請在其他伺服器上安裝額外驗證代理程式。
+1. 若要啟用 [高可用性](how-to-connect-sso-quick-start.md)，請在其他伺服器上安裝其他驗證代理程式。
 
 1. 請確認已適當設定[智慧型鎖定設定](../authentication/howto-password-smart-lockout.md)。 這樣有助於確保使用者的內部部署 Active Directory 帳戶不會遭到不良執行者鎖定。
 
@@ -121,25 +121,25 @@ ms.locfileid: "89278576"
 
 ## <a name="pre-work-for-seamless-sso"></a>無縫 SSO 的前置工作
 
-使用 PowerShell 在 Active Directory 樹系中啟用「無縫 SSO」 **  。 如果有超過一個 Active Directory 樹系，請為每個樹系個別啟用此功能。「無縫 SSO」 ** 只會針對已選取要進行分段推出的使用者觸發。 不會影響現有的同盟設定。
+使用 PowerShell 在 Active Directory 樹系上啟用 *無縫 SSO* 。 如果您有多個 Active Directory 樹系，請針對每個樹系個別啟用它。 只有針對已選取進行分段推出的使用者，才會觸發 *無縫 SSO* 。 不會影響現有的同盟設定。
 
 執行下列動作以啟用「無縫 SSO」：
 
 1. 登入 Azure AD Connect 伺服器。
 
-2. 前往  *%programfiles%\\Microsoft Azure Active Directory Connect*  資料夾。
+2. 移至 *% programfiles% \\ Microsoft Azure Active Directory Connect* 資料夾。
 
-3. 使用下列命令匯入「無縫 SSO」PowerShell 模組： 
+3. 使用下列命令匯入「無縫 SSO」PowerShell 模組： 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. 以系統管理員身分執行 PowerShell。 在 PowerShell 中，呼叫  `New-AzureADSSOAuthenticationContext`。 此命令會開啟一個窗格，您可在其中輸入租用戶的全域管理員認證。
+4. 以系統管理員身分執行 PowerShell。 在 PowerShell 中，呼叫 `New-AzureADSSOAuthenticationContext`。 此命令會開啟一個窗格，您可在其中輸入租用戶的全域管理員認證。
 
-5. 呼叫 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令會顯示已啟用這項功能的 Active Directory 樹系清單 (查看 [網域] 清單)。 根據預設，在租用戶層級會設為 False。
+5. 呼叫 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令會顯示已啟用這項功能的 Active Directory 樹系清單 (查看 [網域] 清單)。 根據預設，在租用戶層級會設為 False。
 
    ![Windows PowerShell 輸出的範例](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. 呼叫 `$creds = Get-Credential`。 出現提示時，輸入預定 Active Directory 樹系的網域管理員認證。
+6. 呼叫 `$creds = Get-Credential`。 出現提示時，輸入預定 Active Directory 樹系的網域管理員認證。
 
 7. 呼叫 `Enable-AzureADSSOForest -OnPremCredentials $creds`。 此命令會從 Active Directory 樹系的內部部署網域控制站建立「無縫 SSO」所需 AZUREADSSOACC 電腦帳戶。
 
@@ -165,7 +165,7 @@ ms.locfileid: "89278576"
 
 2. 選取 [啟用受控使用者登入的分段推出 (預覽)] 連結。
 
-   例如，如果想要啟用「選項 A」，請將「密碼雜湊同步」和「無縫單一登入」控制項滑動至**開啟**，如下列影像所示。
+   例如，如果想要啟用「選項 A」，請將「密碼雜湊同步」和「無縫單一登入」控制項滑動至 **開啟** ，如下列影像所示。
 
    ![[Azure AD Connect] 頁面](./media/how-to-connect-staged-rollout/sr4.png)
 
@@ -229,7 +229,7 @@ ms.locfileid: "89278576"
 
 ## <a name="remove-a-user-from-staged-rollout"></a>將使用者從分段推出移除
 
-從群組移除使用者時，會停用該使用者的分段推出。 若要停用分段推出功能，請將控制項滑動回**關閉**。
+從群組移除使用者時，會停用該使用者的分段推出。 若要停用分段推出功能，請將控制項滑動回 **關閉** 。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

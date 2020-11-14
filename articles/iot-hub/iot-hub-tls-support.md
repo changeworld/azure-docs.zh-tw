@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/13/2020
 ms.author: jlian
-ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006035"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628793"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT 中樞的 TLS 支援
 
@@ -107,4 +107,4 @@ TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請
 
 ## <a name="device-authentication"></a>裝置驗證
 
-成功進行 TLS 信號交換之後，IoT 中樞可以使用對稱金鑰或 x.509 憑證來驗證裝置。 若是以憑證為基礎的驗證，這可以是任何的 x.509 憑證（包括 ECC）。 IoT 中樞會根據您提供的憑證指紋或憑證授權單位單位來驗證憑證 (CA) 。 IoT 中樞不支援以 x.509 為基礎的相互驗證，但 (的 mTLS) 。 若要深入瞭解，請參閱 [支援的 x.509 憑證](iot-hub-devguide-security.md#supported-x509-certificates)。
+成功進行 TLS 信號交換之後，IoT 中樞可以使用對稱金鑰或 x.509 憑證來驗證裝置。 若是以憑證為基礎的驗證，這可以是任何的 x.509 憑證（包括 ECC）。 IoT 中樞會根據您提供的憑證指紋或憑證授權單位單位來驗證憑證 (CA) 。 若要深入瞭解，請參閱 [支援的 x.509 憑證](iot-hub-devguide-security.md#supported-x509-certificates)。

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 08/27/2020
-ms.openlocfilehash: 9f58d03e2cfa7e1ab9c359cdb6600c42c8970a9a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/02/2020
+ms.openlocfilehash: a9d2c10d665af6899ec79312353676467a623735
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125796"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628878"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 
@@ -40,13 +40,13 @@ ms.locfileid: "93125796"
 
 ### <a name="open-developer-settings"></a>開啟開發人員設定
 
-[帳戶設定] 位於合作夥伴中心內[商業市集儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace)的右上角。 選取齒輪圖示 (位於儀表板右上角附近)，然後選取 [開發人員設定] **** 。
+在合作夥伴中心的 [ [商用 marketplace] 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace) 中，選取右上角的 [ **設定** ] (齒輪圖示) ，然後選取 [ **開發人員設定** ]。
 
 ![合作夥伴中心的 [帳戶設定] 功能表](./media/dashboard-developer-settings.png)
 
-在 [帳戶設定] 內，您將能夠檢視：
+在 [ **帳戶設定** ] 中，您可以看到：
 - **帳戶詳細資料** ：帳戶類型和帳戶狀態
-- **發行者識別碼** ：賣方識別碼、使用者識別碼、發行者識別碼、Azure AD 租用戶等
+- **發行者** 識別碼：賣方識別碼、使用者識別碼、發行者識別碼、Azure AD 租使用者等等
 - **連絡人資訊** ：發行者顯示名稱、賣方連絡人名稱、電子郵件、電話和地址
 - **追蹤 GUID** ：與您的帳戶相關聯的任何追蹤 GUID
 

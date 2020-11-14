@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: b8c12048283cb8cc4220cb325762b272cde4a68f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92541310"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 入口網站中建立站對站連線
@@ -45,10 +45,10 @@ ms.locfileid: "92541310"
 
 * **資源群組：** TestRG1
 * **名稱：** VNet1
-* **區域：** (us) 美國東部
+* **區域：** (美國) 美國東部
 * **IPv4 位址空間：** 10.1.0.0/16
-* **子網名稱：** 前端
-* **子網位址空間：** 10.1.0.0/24
+* **子網路名稱：** FrontEnd
+* **子網路位址空間：** 10.1.0.0/24
 
 [!INCLUDE [About cross-premises addresses](../../includes/vpn-gateway-cross-premises.md)]
 
@@ -68,16 +68,16 @@ ms.locfileid: "92541310"
 
 * **名稱：** VNet1GW
 * **區域：** 美國東部
-* **閘道類型：** Vpn
+* **閘道類型：** VPN
 * **VPN 類型：** 以路由為基礎
 * **SKU：** VpnGw1
-* **世代：** Generation1.xml
+* **世代：** Generation1
 * **虛擬網路：** VNet1
-* **閘道子網位址範圍：** 10.1.255.0/27
-* **公用 IP 位址：** 建立新的
+* **閘道子網路位址範圍：** 10.1.255.0/27
+* **公用 IP 位址：** 新建
 * **公用 IP 位址名稱：** VNet1GWpip
-* **啟用主動-主動模式：** 禁用
-* **設定 BGP：** 禁用
+* **啟用主動-主動模式：** 已停用
+* **設定 BGP：** 已停用
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -141,7 +141,7 @@ ms.locfileid: "92541310"
 1. 如果您要使用站對站進行連線，且您尚未建立所需連線之站台的區域網路閘道，您可以新建立一個。
 1. 指定您要使用的共用金鑰，然後選取 **[確定]** 以建立連線。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 * 如需強制通道的相關資訊，請參閱[關於強制通道](vpn-gateway-forced-tunneling-rm.md)。

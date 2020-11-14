@@ -4,10 +4,10 @@ description: 允許將現有的 Azure 服務匯流排標準命名空間遷移至
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "85340749"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>將現有的 Azure 服務匯流排標準命名空間遷移至 premium 層
@@ -208,7 +208,7 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
     >
     > 完成遷移之後，接收者應用程式會中斷與標準命名空間的連線，並自動連接到 premium 命名空間。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [標準與 Premium 訊息之間的差異](./service-bus-premium-messaging.md)。
 * 瞭解 [服務匯流排 premium 的高可用性和 Geo-Disaster 復原層面](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)。

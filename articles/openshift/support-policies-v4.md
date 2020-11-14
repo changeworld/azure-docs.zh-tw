@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e396cfa032a3030467b2e2318d61393713894cd4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408401"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628215"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支援原則
 
@@ -23,6 +23,7 @@ Azure Red Hat OpenShift 4 叢集的某些設定可能會影響您叢集的可支
 ## <a name="cluster-configuration-requirements"></a>叢集設定需求
 
 * 所有 OpenShift 叢集運算子必須保持在受控狀態。 您可以藉由執行 `oc get clusteroperators` 來傳回叢集運算子清單。
+* 叢集至少必須有一個背景工作節點。 請勿將叢集工作者調整為零。
 * 請勿移除或修改叢集 Prometheus 與 Alertmanager s服務。
 * 請勿移除服務 Alertmanager 規則。
 * 請勿移除或修改 Azure Red Hat OpenShift 服務記錄 (mdsd Pod)。

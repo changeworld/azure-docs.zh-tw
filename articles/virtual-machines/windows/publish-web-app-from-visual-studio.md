@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "87088388"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>從 Visual Studio 將 ASP.NET Web 應用程式發行到 Azure VM
 
 本檔說明如何使用 Visual Studio 2019 中的 **Microsoft Azure 虛擬機器** 發行功能，將 ASP.NET web 應用程式發佈至 Azure 虛擬機器 (VM) 。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要使用 Visual Studio 將 ASP.NET 專案發行到 Azure VM，必須正確設定 VM。
 
 - 電腦必須設定為執行 ASP.NET web 應用程式，並已安裝 WebDeploy。 如需詳細資訊，請參閱 [使用 WebDeploy 建立 ASP.NET VM](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)。
@@ -32,12 +32,12 @@ ms.locfileid: "87088388"
 下列章節說明如何將現有的 ASP.NET Web 應用程式發行到 Azure 虛擬機器。
 
 1. 在 Visual Studio 2019 中開啟您的 web 應用程式解決方案。
-2. 在方案總管中以滑鼠右鍵按一下專案，並選擇 [發行...] 
-3. 使用頁面右邊的箭頭捲動發行選項，直到您找到 [Microsoft Azure 虛擬機器]  為止。  
+2. 在方案總管中以滑鼠右鍵按一下專案，並選擇 [發行...]
+3. 使用頁面右邊的箭頭捲動發行選項，直到您找到 [Microsoft Azure 虛擬機器] 為止。  
 
    ![發行頁面 - 發行按鈕]
 
-4. 選取 [Microsoft Azure 虛擬機器]  圖示，然後選擇 [發行]  。
+4. 選取 [Microsoft Azure 虛擬機器] 圖示，然後選擇 [發行]。
 
    ![發行頁面 - Microsoft Azure 虛擬機器圖示]
 
@@ -79,7 +79,7 @@ ms.locfileid: "87088388"
 
 ### <a name="re-publish"></a>重新發行
 
-若要將更新發佈到 Web 應用程式，請選取發行頁面上的 [發行]  按鈕。  
+若要將更新發佈到 Web 應用程式，請選取發行頁面上的 [發行] 按鈕。  
 - 若出現提示，請輸入使用者名稱和密碼。  
 - 會立即開始發行。
 
@@ -87,7 +87,7 @@ ms.locfileid: "87088388"
 
 ### <a name="modify-publish-profile-settings"></a>修改發行設定檔設定
 
-若要檢視和修改發行設定檔設定，請選取 [設定...]  。  
+若要檢視和修改發行設定檔設定，請選取 [設定...]。  
 
 ![發行頁面 - 設定按鈕]
 
@@ -97,7 +97,7 @@ ms.locfileid: "87088388"
 
 #### <a name="save-user-name-and-password"></a>儲存使用者名稱和密碼
 - 請避免在每次發行時提供驗證資訊。 若要這樣做，請填入 [ **使用者名稱** ] 和 [ **密碼** ] 欄位，然後選取 [ **儲存密碼** ] 方塊。
-- 使用 [驗證連線]  按鈕可確認您已輸入正確的資訊。
+- 使用 [驗證連線] 按鈕可確認您已輸入正確的資訊。
 
 #### <a name="deploy-to-clean-web-server"></a>部署到乾淨的 Web 伺服器
 
@@ -107,7 +107,7 @@ ms.locfileid: "87088388"
 
 ![發行設定 - 設定頁面]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>設定 CI/CD 以自動化部署到 Azure VM
 

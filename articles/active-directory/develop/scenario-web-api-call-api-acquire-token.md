@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 56bcc4e4936371b58d78f6de5ce4c2d25fbf614d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 465544f1d861fc09d4b843270c6f3527036ee6a8
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442798"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94627996"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 web API：取得應用程式的權杖
 
@@ -25,7 +25,7 @@ ms.locfileid: "94442798"
 
 ## <a name="code-in-the-controller"></a>控制器中的程式碼
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 *Web.config* 會新增擴充方法，以提供用來呼叫 Microsoft Graph 或下游 Web API 的便利服務。 這些方法會在 [呼叫 Web api 的 WEB api 中詳細說明：呼叫 API](scenario-web-api-call-api-call-api.md)。 使用這些 helper 方法時，您不需要手動取得權杖。
 
@@ -63,7 +63,8 @@ public class MyApiController : Controller
 
 如需此方法的詳細資訊 `callTodoListService` ，請參閱  [呼叫 web api 的 web Api：呼叫 API](scenario-web-api-call-api-call-api.md)。
 
-# <a name="java"></a>[Java](#tab/java)
+### <a name="java"></a>[Java](#tab/java)
+
 以下是在 API 控制器的動作中呼叫的程式碼範例。 它會呼叫下游 API Microsoft Graph。
 
 ```java
@@ -84,9 +85,13 @@ public class ApiController {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Python web API 需要使用中介軟體來驗證從用戶端收到的持有人權杖。 然後，web API 就可以藉由呼叫方法，使用 MSAL Python 程式庫來取得下游 API 的存取權杖 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 。 使用 MSAL Python 示範此流程的範例還無法使用。
+
+## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a> (Advanced) 從背景應用程式、Api 和服務存取已登入使用者的權杖快取
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ---
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890140"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>將其他 S2S 連線新增至 VNet： Azure 入口網站
@@ -47,8 +47,8 @@ ms.locfileid: "92890140"
 1. 在 [ **連接** ] 頁面上，選取 [ **+ 新增** ]。
 1. 這會開啟 [ **加入連接** ] 頁面。
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="VPN 閘道連線":::
-1. 在 [新增連線]  頁面上，填寫下列欄位︰
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="新增連接頁面":::
+1. 在 [新增連線] 頁面上，填寫下列欄位︰
 
    * **名稱︰** 為您要建立連線的網站提供名稱。
    * **連線類型：** 選取 [ **站對站] (IPsec)** 。
@@ -58,8 +58,8 @@ ms.locfileid: "92890140"
 1. 在 [ **局域網路閘道** ] 欄位中，選取 **_[選擇局域網路閘道_ ] *。這會開啟 [* 選擇局域網路閘道** ] 頁面。
 1. 選取 [ **+ 建立新** 的] 以開啟 [ **建立局域網路閘道** ] 頁面。
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="VPN 閘道連線":::
-1. 在 [建立區域網路閘道]  頁面上，填寫下列欄位︰
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="[建立局域網路閘道] 頁面":::
+1. 在 [建立區域網路閘道] 頁面上，填寫下列欄位︰
 
    * **名稱：** 您要給區域網路閘道資源的名稱。
    * **端點：** 您要連接之網站上 VPN 裝置的公用 IP 位址，或端點的 FQDN。
@@ -80,6 +80,6 @@ ms.locfileid: "92890140"
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱 [虛擬機器學習路徑](/learn/paths/deploy-a-website-with-azure-virtual-machines/)。

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443223"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628096"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -183,7 +183,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI 很重要，因為其為互動式的。 `AcquireTokenInteractive` 具有一個特定的選擇性參數，可以針對支援的平台指定父 UI。 在傳統型應用程式中使用時，`.WithParentActivityOrWindow` 具有不同的類型，這取決於平台。 或者，如果您不想要控制登入對話方塊出現在螢幕上的位置，也可以省略選擇性的父視窗參數來建立視窗。 這適用于以命令列為基礎的應用程式，用來將呼叫傳遞給任何其他後端服務，而不需要任何 windows 進行使用者互動。 
+UI 很重要，因為其為互動式的。 `AcquireTokenInteractive` 具有一個特定的選擇性參數，可以針對支援的平台指定父 UI。 在傳統型應用程式中使用時，`.WithParentActivityOrWindow` 具有不同的類型，這取決於平台。 或者，如果您不想要控制登入對話方塊出現在螢幕上的位置，也可以省略選擇性的父視窗參數來建立視窗。 這適用于以命令列為基礎的應用程式，用來將呼叫傳遞給任何其他後端服務，而不需要任何 windows 進行使用者互動。
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ MSAL.NET 小組已重新撰寫 UI 測試，以使用此擴充性機制。 如果
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>提供 SystemWebViewOptions 的絕佳體驗
 
-從 MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，您可以指定：
+從 MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) 中，您可以指定：
 
 - 在系統網頁瀏覽器中登入或同意錯誤時，所要前往的 URI (`BrowserRedirectError`) 或所要顯示的 HTML 片段 (`HtmlMessageError`)。
 - 在成功登入或同意時，所要前往的 URI (`BrowserRedirectSuccess`) 或所要顯示的 HTML 片段 (`HtmlMessageSuccess`)。
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>其他選擇性參數
 
-若要深入了解 `AcquireTokenInteractive` 的所有其他選用參數，請參閱 [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
+若要深入了解 `AcquireTokenInteractive` 的所有其他選用參數，請參閱 [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-如需 AcquireTokenByIntegratedWindowsAuthentication 上可能的修改程式清單，請參閱 [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)。
+如需 AcquireTokenByIntegratedWindowsAuthentication 上可能的修改程式清單，請參閱 [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-如需可套用至 `AcquireTokenByUsernamePassword` 之所有修改程式的詳細資訊，請參閱 [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)。
+如需可套用至 `AcquireTokenByUsernamePassword` 之所有修改程式的詳細資訊，請參閱 [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a> (Advanced) 在背景應用程式和服務中存取使用者的快取權杖
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

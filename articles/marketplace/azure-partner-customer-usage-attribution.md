@@ -3,17 +3,17 @@ title: 商業 marketplace 夥伴和客戶使用方式屬性
 description: 概略了解如何追蹤 Azure Marketplace 解決方案的客戶使用狀況。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337894"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628385"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -74,9 +74,9 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
    * 合作夥伴可以註冊多個 GUID。
    * 合作夥伴可以註冊非市集解決方案範本和供應項目的 GUID。
 
-1. 在右上角，選取 [設定] 齒輪圖示，然後選取 [開發人員設定]。
+1. 選取右上角的 [ **設定** ] (齒輪圖示) > **帳戶設定** ]。
 
-1. 在 [帳戶設定] 頁面上，選取 [新增追蹤 GUID]。
+1. 在 [ **組織設定檔**  >  **識別碼** ] 上，選取 [ **新增追蹤 GUID** ]。
 
 1. 在 [GUID] 方塊中，輸入追蹤 GUID。 只輸入不含前置詞的 GUID `pid-` 。 在 [描述] 方塊中，輸入供應項目名稱或描述。
 
@@ -183,9 +183,10 @@ var azure = Microsoft.Azure.Management.Fluent.Azure
 
 當您使用 Azure CLI 來附加您的 GUID 時，請設定 **AZURE_HTTP_USER_AGENT** 環境變數。 您可以在指令碼的範圍內設定此變數。 您也可以針對殼層範圍設定全域變數：
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 如需詳細資訊，請參閱 [Azure SDK for Go](/azure/developer/go/)。
 
 ## <a name="use-terraform"></a>使用 Terraform
@@ -206,7 +207,6 @@ provider "azurerm" {
 
 * 建立 GUID (應該為每個供應項目或 SKU 新增 GUID)
 * 更新其 Azure Provider，將 *partner_id* 的值設定為 GUID (GUID 開頭「不要」加上 "pid-"，設定為實際 GUID 即可)
-
 
 ## <a name="verify-the-guid-deployment"></a>驗證 GUID 部署
 
@@ -263,11 +263,11 @@ foreach ($deployment in $deployments){
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Resource Manager 範本部署的通知
 
-當您部署此範本時，Microsoft 可以透過 \<PARTNER> 已部署的 Azure 資源來識別軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
+當您部署此範本時，Microsoft 可以透過 \<PARTNER> 已部署的 Azure 資源來識別軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 這項資料是由 Microsoft 的隱私權原則所收集及控管，可在中找到 [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) 。
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK 或 API 部署的通知
 
-當您部署 \<PARTNER> 軟體時，Microsoft 可以透過 \<PARTNER> 已部署的 Azure 資源來識別軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
+當您部署 \<PARTNER> 軟體時，Microsoft 可以透過 \<PARTNER> 已部署的 Azure 資源來識別軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 這項資料是由 Microsoft 的隱私權原則所收集及控管，可在中找到 [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) 。
 
 ## <a name="get-support"></a>取得支援
 
@@ -282,6 +282,7 @@ foreach ($deployment in $deployments){
     * 完成/檢閱連絡人資訊。
     * 可能已預先填入諮詢詳細資料，否則請從下拉式清單中選取。
     * 輸入問題的標題和描述 (越詳細越好)。
+
 1. 按一下 [提交]
 
 在[使用技術售前和部署服務](https://aka.ms/TechConsultInstructions)，上，透過螢幕擷取畫面來檢視逐步指示。

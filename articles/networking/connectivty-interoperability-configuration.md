@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "86171851"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
@@ -23,7 +23,7 @@ ms.locfileid: "86171851"
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]  。
+下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]。
 
 [![1]][1]
 
@@ -45,11 +45,11 @@ ms.locfileid: "86171851"
 
 下圖顯示 Azure 區域 1 ExpressRoute 線路至內部部署位置 1 客戶 Edge (CE) 路由器的設定：
 
-[![億]][4]
+[![4]][4]
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
-[![5]][5]
+[![.5]][5]
 
 下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。  (Cisco ASR1000 路由器在測試設定中是用來做為 CE 路由器。 ) 當站對站 VPN 和 ExpressRoute 線路平行設定為將內部部署網路連線到 Azure 時，Azure 預設會排定 ExpressRoute 電路的優先順序。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
@@ -160,11 +160,11 @@ ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
 下圖顯示第二個 ExpressRoute 線路和中樞 VNet 之間的連線設定：
 
-[![7]][7]
+[![型]][7]
 
 ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 1 連線至遠端 Vnet：
 
-[![八角]][8]
+[![8]][8]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute 和站對站 VPN 連線串聯
 
@@ -194,7 +194,7 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 如需詳細資訊，請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 了解測試設定的[控制平面分析][Control-Analysis]以及拓撲中不同 VNet 或 VLAN 的檢視。
 

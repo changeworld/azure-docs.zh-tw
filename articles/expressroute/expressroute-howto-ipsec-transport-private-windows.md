@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92208238"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>設定 ExpressRoute 私人對等互連的 IPsec 傳輸模式
@@ -147,7 +147,7 @@ ms.locfileid: "92208238"
 8. 在 [自訂安全性方法設定] 頁面上，選取 [資料完整性和加密 (ESP)：SHA1、3DES]。 然後按一下 **[確定]** 。
 
    [![22]][22]
-9. 在 [管理篩選動作] 頁面上，您會看到 **myEncryption** 篩選條件已成功新增。 按一下 [關閉]。
+9. 在 [管理篩選動作] 頁面上，您會看到 **myEncryption** 篩選條件已成功新增。 按一下 [關閉]  。
 
    [![23]][23]
 

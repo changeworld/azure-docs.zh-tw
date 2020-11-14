@@ -9,17 +9,17 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92479539"
 ---
 1. 開啟虛擬網路閘道的頁面。 您可以透過以下方式瀏覽至閘道：移至 [您的 VNet 名稱] -> [概觀] -> [已連線的裝置] -> [您的閘道名稱]，另外也有其他多種方式可以瀏覽至閘道。
 1. 在閘道的頁面上，選取 [連線]。 在 [連線] 頁面的頂部，選取 [+新增] 以開啟 [新增連線] 頁面。
 
    :::image type="content" source="./media/vpn-gateway-add-site-to-site-connection-portal-include/connection.png" alt-text="站對站連線":::
-1. 在 [新增連線]  頁面上，設定您連線的值。
+1. 在 [新增連線] 頁面上，設定您連線的值。
 
    * **名稱：** 為您的連線命名。
    * **連線類型：** 選取 [站對站 (IPSec)]。

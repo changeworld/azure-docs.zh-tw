@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004777"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626736"
 ---
 # <a name="use-azure-files-with-linux"></a>搭配 Linux 使用 Azure 檔案
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 可以使用 [SMB 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用裝載在 Linux 發行版本中。 本文將說明掛接 Azure 檔案共用的兩種方式：使用 `mount` 命令的隨選掛接，以及建立項目 `/etc/fstab` 的開機掛接。
@@ -34,26 +34,26 @@ ms.locfileid: "90004777"
 uname -r
 ```
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**確定已安裝 cifs 公用程式套件。**  
     可使用套件管理員將 cifs-utils 套件安裝在所選擇的 Linux 發行版本上。 
 
-    在 **Ubuntu** 和 **Debian 型**發行版本上，請使用 `apt` 封裝管理員：
+    在 **Ubuntu** 和 **Debian 型** 發行版本上，請使用 `apt` 封裝管理員：
 
     ```bash
     sudo apt update
     sudo apt install cifs-utils
     ```
 
-    在 **Fedora**、 **Red Hat Enterprise Linux 8 +** 及 **CentOS 8 +** 上，使用 `dnf` 套件管理員：
+    在 **Fedora** 、 **Red Hat Enterprise Linux 8 +** 及 **CentOS 8 +** 上，使用 `dnf` 套件管理員：
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    在較舊版本的 **Red Hat Enterprise Linux** 和 **CentOS**上，使用 `yum` 套件管理員：
+    在較舊版本的 **Red Hat Enterprise Linux** 和 **CentOS** 上，使用 `yum` 套件管理員：
 
     ```bash
     sudo yum install cifs-utils 
@@ -67,9 +67,9 @@ uname -r
 
     在其他發行版本上，請使用適當的封裝管理員或[從來源編譯](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **最新版本的 Azure 命令列介面 (CLI) 。** 如需有關如何安裝 Azure CLI 的詳細資訊，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 並選取您的作業系統。 如果您想要在 PowerShell 6 + 中使用 Azure PowerShell 模組，您可能會看到下列的 Azure CLI 的指示。
+* **最新版本的 Azure 命令列介面 (CLI) 。** 如需有關如何安裝 Azure CLI 的詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 並選取您的作業系統。 如果您想要在 PowerShell 6 + 中使用 Azure PowerShell 模組，您可能會看到下列的 Azure CLI 的指示。
 
-* **請確定已開啟連接埠 445**：SMB 透過 TCP 通訊埠 445 進行通訊 - 請檢查您的防火牆不會將 TCP 通訊埠 445 從用戶端電腦封鎖。  取代 `<your-resource-group>` ， `<your-storage-account>` 然後執行下列腳本：
+* **請確定已開啟連接埠 445** ：SMB 透過 TCP 通訊埠 445 進行通訊 - 請檢查您的防火牆不會將 TCP 通訊埠 445 從用戶端電腦封鎖。  取代 `<your-resource-group>` ， `<your-storage-account>` 然後執行下列腳本：
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -99,7 +99,7 @@ uname -r
 如有需要，您可以將相同的 Azure 檔案共用掛接至多個掛接點。
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 隨需掛接 Azure 檔案共用
-1. **建立掛接點的資料夾**：將 `<your-resource-group>` 、和取代為 `<your-storage-account>` `<your-file-share>` 您環境的適當資訊：
+1. **建立掛接點的資料夾** ：將 `<your-resource-group>` 、和取代為 `<your-storage-account>` `<your-file-share>` 您環境的適當資訊：
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -111,7 +111,7 @@ uname -r
     sudo mkdir -p $mntPath
     ```
 
-1. **使用 mount 命令掛接 Azure 檔案共用**。 在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示會根據檔案/目錄 Linux 擁有者) 、讀取和執行擁有者群組中的使用者，以及讀取和執行系統上的其他使用者，來讀取、寫入和執行擁有者 (。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需有關如何設定許可權的詳細資訊，請參閱維琪百科上的 [UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) 。 
+1. **使用 mount 命令掛接 Azure 檔案共用** 。 在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示會根據檔案/目錄 Linux 擁有者) 、讀取和執行擁有者群組中的使用者，以及讀取和執行系統上的其他使用者，來讀取、寫入和執行擁有者 (。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需有關如何設定許可權的詳細資訊，請參閱維琪百科上的 [UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) 。 
 
     ```bash
     # This command assumes you have logged in with az login
@@ -135,7 +135,7 @@ uname -r
 使用 Azure 檔案共用後，即可使用 `sudo umount $mntPath` 取消掛接共用。
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 建立 Azure 檔案共用的持續掛接點
-1. **建立掛接點的資料夾**：掛接點的資料夾可以在檔案系統上的任何位置建立，但在/mnt。下建立它是常見的慣例 例如，下列命令會建立新的目錄、將 `<your-resource-group>` 、和取代為 `<your-storage-account>` `<your-file-share>` 您環境的適當資訊：
+1. **建立掛接點的資料夾** ：掛接點的資料夾可以在檔案系統上的任何位置建立，但在/mnt。下建立它是常見的慣例 例如，下列命令會建立新的目錄、將 `<your-resource-group>` 、和取代為 `<your-storage-account>` `<your-file-share>` 您環境的適當資訊：
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -174,7 +174,7 @@ uname -r
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **使用下列命令，將 `/etc/fstab` 下行附加至**：在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示會根據檔案/目錄 Linux 擁有者) 、讀取和執行擁有者群組中使用者的讀取和執行，以及讀取和執行系統上的其他使用者，來讀取、寫入和執行擁有者的 (。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需有關如何設定許可權的詳細資訊，請參閱維琪百科上的 [UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) 。
+1. **使用下列命令，將 `/etc/fstab` 下行附加至** ：在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示會根據檔案/目錄 Linux 擁有者) 、讀取和執行擁有者群組中使用者的讀取和執行，以及讀取和執行系統上的其他使用者，來讀取、寫入和執行擁有者的 (。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需有關如何設定許可權的詳細資訊，請參閱維琪百科上的 [UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) 。
 
     ```bash
     # This command assumes you have logged in with az login
@@ -202,16 +202,16 @@ uname -r
 
     您可以在您選擇的 Linux 散發套件上，使用套件管理員來安裝 autofs 套件。 
 
-    在 **Ubuntu** 和 **Debian 型**發行版本上，請使用 `apt` 封裝管理員：
+    在 **Ubuntu** 和 **Debian 型** 發行版本上，請使用 `apt` 封裝管理員：
     ```bash
     sudo apt update
     sudo apt install autofs
     ```
-    在 **Fedora**、 **Red Hat Enterprise Linux 8 +** 及 **CentOS 8 +** 上，使用 `dnf` 套件管理員：
+    在 **Fedora** 、 **Red Hat Enterprise Linux 8 +** 及 **CentOS 8 +** 上，使用 `dnf` 套件管理員：
     ```bash
     sudo dnf install autofs
     ```
-    在較舊版本的 **Red Hat Enterprise Linux** 和 **CentOS**上，使用 `yum` 套件管理員：
+    在較舊版本的 **Red Hat Enterprise Linux** 和 **CentOS** 上，使用 `yum` 套件管理員：
     ```bash
     sudo yum install autofs 
     ```
@@ -219,7 +219,7 @@ uname -r
     ```bash
     sudo zypper install autofs
     ```
-2. **為共用 () 建立掛接點 **：
+2. **為共用 () 建立掛接點** ：
    ```bash
     sudo mkdir /fileshares
     ```
@@ -326,5 +326,5 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 請參閱這些連結，以取得 Azure 檔案服務的詳細資訊：
 
 * [規劃 Azure 檔案部署](storage-files-planning.md)
-* [常見問題集](../storage-files-faq.md)
+* [常見問題集](./storage-files-faq.md)
 * [疑難排解](storage-troubleshoot-linux-file-connection-problems.md)

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/13/2020
+ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461187"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628742"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 代理程式收集 IIS 記錄檔
 Internet Information Services (IIS) 會將使用者活動儲存在 log Analytics 代理程式所收集並儲存在 [Azure 監視器記錄](data-platform.md)檔中的記錄檔。
@@ -26,12 +26,14 @@ Azure 監視器會從 IIS 建立的記錄檔收集項目，因此您必須[設�
 
 Azure 監視器只支援以 W3C 格式儲存的 IIS 記錄檔，不支援自訂欄位或 IIS 進階記錄。 它不會收集 NCSA 或 IIS 原生格式的記錄。
 
-從 Log Analytics 代理程式的 [ [Advanced Settings] （Advanced Settings）功能表](agent-data-sources.md#configuring-data-sources) ，在 Azure 監視器中設定 IIS 記錄。  您只需選取 [Collect W3C format IIS log files]\(收集 W3C 格式的 IIS 記錄檔) **** 即可完成設定。
+從 Log Analytics 代理程式的 [ [Advanced Settings] （Advanced Settings）功能表](agent-data-sources.md#configuring-data-sources) ，在 Azure 監視器中設定 IIS 記錄。  您只需選取 [Collect W3C format IIS log files]\(收集 W3C 格式的 IIS 記錄檔) 即可完成設定。
 
 
-## <a name="data-collection"></a>資料集合
-Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式收集 IIS 記錄專案。 每隔 **5 分鐘**就會讀取一次記錄。 如果基於任何原因，IIS 在建立新檔案時不會更新變換時間的時間戳記，則會在建立新檔案之後收集項目。 新檔案建立的頻率是由 IIS 網站的 **記錄檔變換排程** 設定所控制，預設為一天一次。 如果設定為 [ **每**小時]，Azure 監視器每小時會收集記錄檔。 如果設定為 [ **每日**]，Azure 監視器每隔24小時會收集記錄一次。
+## <a name="data-collection"></a>資料收集
+Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式收集 IIS 記錄專案。 每隔 **5 分鐘** 就會讀取一次記錄。 如果基於任何原因，IIS 在建立新檔案時不會更新變換時間的時間戳記，則會在建立新檔案之後收集項目。 新檔案建立的頻率是由 IIS 網站的 **記錄檔變換排程** 設定所控制，預設為一天一次。 如果設定為 [ **每** 小時]，Azure 監視器每小時會收集記錄檔。 如果設定為 [ **每日** ]，Azure 監視器每隔24小時會收集記錄一次。
 
+> [!IMPORTANT]
+> 建議將 **記錄檔變換排程** 設定為 **每小時** 。 如果設定為 **每天** ，您可能會遇到資料的尖峰，因為每天只會收集一次。
 
 ## <a name="iis-log-record-properties"></a>IIS 記錄檔記錄屬性
 IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：

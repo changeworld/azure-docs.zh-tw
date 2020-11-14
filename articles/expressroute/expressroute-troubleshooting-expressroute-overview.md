@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92204634"
 ---
 # <a name="verifying-expressroute-connectivity"></a>確認 ExpressRoute 連線
@@ -83,9 +83,9 @@ ms.locfileid: "92204634"
 
 ![4][4]    
 
-在 ExpressRoute [基本資料] 中，[路線狀態]  指出 Microsoft 端路線的狀態。 [提供者狀態]  指出在服務提供者端是否「已佈建/未佈建」  路線。 
+在 ExpressRoute [基本資料] 中，[路線狀態] 指出 Microsoft 端路線的狀態。 [提供者狀態] 指出在服務提供者端是否「已佈建/未佈建」路線。 
 
-[路線狀態]  必須是 [已啟用]  ，且[提供者狀態]  必須是 [已佈建]  ，ExpressRoute 路線才能運作。
+[路線狀態] 必須是 [已啟用]，且[提供者狀態] 必須是 [已佈建]，ExpressRoute 路線才能運作。
 
 > [!NOTE]
 > 設定 ExpressRoute 線路之後，如果 *線路狀態* 為 [未啟用] 狀態，請聯絡 [Microsoft 支援服務][Support]。 另一方面，如果 *提供者狀態* 為 [未布建] 狀態，請洽詢您的服務提供者。

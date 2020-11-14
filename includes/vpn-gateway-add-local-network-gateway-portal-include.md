@@ -9,14 +9,14 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5358bbbca716f5152a943c90cb7a5f735ae12047
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92479541"
 ---
 1. 在 [Azure 入口網站](https://portal.azure.com)的 [搜尋資源、服務和文件 (G+/)] 中，鍵入 [區域網路閘道]。 在搜尋結果中，找到 [Marketplace] 下的 [區域網路閘道]，然後加以選取。 這會開啟 [建立區域網路閘道] 頁面。
-1. 在 [建立區域網路閘道]  頁面中，指定區域網路閘道的值。
+1. 在 [建立區域網路閘道] 頁面中，指定區域網路閘道的值。
 
    :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-ip.png" alt-text="建立具有 IP 位址的區域網路閘道":::
 
@@ -36,4 +36,4 @@ ms.locfileid: "92479541"
    > * Azure VPN 閘道會以每 5 分鐘重新整理一次的方式維護 DNS 快取。 閘道只會嘗試解析已中斷連線通道的 FQDN。 重設閘道也會觸發 FQDN 解析。
    >
 
-1. 當您完成值的指定時，請選取頁面底部的 [建立]  按鈕，以建立區域網路閘道。
+1. 當您完成值的指定時，請選取頁面底部的 [建立] 按鈕，以建立區域網路閘道。

@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91761771"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道
@@ -58,9 +58,9 @@ ms.locfileid: "91761771"
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="新增閘道子網路":::
 
-1. 子網路的 [名稱]  會自動填入 'GatewaySubnet' 這個值。 為了讓 Azure 將此子網路視為閘道子網路，需要有這個值。 調整自動填入的 [位址範圍] 值，以符合您的組態需求。 建議您以 /27 或更大的值 (/26、/25 等) 建立閘道子網路。 然後，選取 [確定] 來儲存值並建立閘道子網路。
+1. 子網路的 [名稱] 會自動填入 'GatewaySubnet' 這個值。 為了讓 Azure 將此子網路視為閘道子網路，需要有這個值。 調整自動填入的 [位址範圍] 值，以符合您的組態需求。 建議您以 /27 或更大的值 (/26、/25 等) 建立閘道子網路。 然後，選取 [確定] 來儲存值並建立閘道子網路。
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="新增閘道子網路":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="新增子網路":::
 
 ## <a name="create-the-virtual-network-gateway"></a>建立虛擬網路閘道
 
@@ -76,18 +76,18 @@ ms.locfileid: "91761771"
     | 閘道類型 | 選取 [ExpressRoute]|
     | SKU | 從下拉式清單中選取閘道 SKU。 |
     | 虛擬網路 | 選取 [TestVNet]。 |
-    | 公用 IP 位址 | 選取 [建立新的]  。|
+    | 公用 IP 位址 | 選取 [建立新的]。|
     | 公用 IP 位址名稱 | 提供公用 IP 位址的名稱。 |
 
 1. 選取 [檢閱+建立]，然後選取 [建立] 以開始建立閘道。 系統會驗證設定並部署閘道。 建立虛擬網路閘道最多可能需要花費 45 分鐘的時間來完成。
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="新增閘道子網路":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="[建立虛擬網路閘道] 頁面欄位":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您不再需要 ExpressRoute 閘道，請在虛擬網路資源群組中找出閘道，然後選取 [刪除]。 請確定閘道沒有與任何線路連線。
 
-:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="新增閘道子網路":::
+:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="刪除虛擬網路閘道":::
 
 ## <a name="next-steps"></a>後續步驟
 建立 VNet 閘道之後，您可以將 VNet 連結至 ExpressRoute 循環。 

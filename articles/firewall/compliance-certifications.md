@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa61046ee87c1cac3c8a8bb93ed97b577019e016
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85602715"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628436"
 ---
 # <a name="azure-firewall-certifications"></a>Azure 防火牆認證
 
@@ -48,7 +48,7 @@ Azure 防火牆是支付卡產業 (PCI) 、服務組織控制 (SOC) 、國際標
 - GLBA (美國)
 - Germany C5
 - GxP (FDA 21 CFR Part 11)
-- HIPPA
+- HIPAA
 - 高科技 Act (US) 
 - HITRUST
 - ISO 20000-1:2011
@@ -117,7 +117,7 @@ ICSA Labs 是在協力廠商測試和憑證安全性與健康 IT 產品，以及
 Azure 防火牆是取得 ICSA Labs 公司防火牆認證的第一個雲端防火牆服務。 針對 Azure 防火牆認證報告，請參閱 [ICSA Labs 憑證測試和審核報告](https://aka.ms/ICSALabsCertification)。 如需詳細資訊，請參閱 [ICSA Labs 防火牆認證計畫](https://www.icsalabs.com/technology-program/firewalls) 頁面。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Microsoft 合規性的詳細資訊，請參閱下列資訊。
 

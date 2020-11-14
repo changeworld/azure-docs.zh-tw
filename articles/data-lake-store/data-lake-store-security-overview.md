@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92146322"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
@@ -52,7 +52,7 @@ ms.locfileid: "92146322"
 
 | 角色 | 管理權限 | 資料存取權限 | 說明 |
 | --- | --- | --- | --- |
-| 未指派角色 |None |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
+| 未指派角色 |無 |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
 | 擁有者 |全部 |全部 |擁有者角色是超級使用者。 此角色可管理所有事項，且具有資料的完整存取權。 |
 | 讀取者 |唯讀 |由 ACL 控管 |讀取者角色可以檢視有關帳戶管理的所有事項，例如哪個使用者被指派給哪個角色。 讀取者角色無法進行任何變更。 |
 | 參與者 |除了新增和移除角色以外的一切 |由 ACL 控管 |參與者角色可以管理帳戶的某些層面，例如部署以及警示建立和管理。 參與者無法新增或移除角色。 |
@@ -99,7 +99,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如需帳戶管理稽核線索，請檢視並選擇您想要記錄的資料行。 您也可以將活動記錄匯出至 Azure 儲存體。
 
-![活動記錄](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
+![活動記錄檔](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
 
 如需使用活動記錄的詳細資訊，請參閱[檢視活動記錄以稽核對資源的動作](../azure-resource-manager/management/view-activity-logs.md)。
 

@@ -1,19 +1,19 @@
 ---
-title: 在合作夥伴中心中建立商業 marketplace 帳戶
+title: 在合作夥伴中心中建立商用 marketplace 帳戶以 Azure Marketplace
 description: 瞭解如何在合作夥伴中心中建立 Microsoft 商用 marketplace 帳戶。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: deb64d1c8268268061a8121151c00ccb55902274
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e15937797077e3fa46a12e726a3ce690c3979cbd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130454"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628776"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心中建立商業 marketplace 帳戶
 
@@ -65,9 +65,9 @@ ms.locfileid: "93130454"
     > [!IMPORTANT]
     > 若要接受這些條款，您必須獲得授權，代表您的公司採取行動。
 
-    註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。 
-    
-1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **夥伴設定**  >  **程式** ]。
+    註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。
+
+1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請在右上角選取 [ **設定** ] (齒輪圖示) > **開發人員設定**  >  **程式** ]。
 
 您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 繼續 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -91,19 +91,19 @@ ms.locfileid: "93130454"
 > 您必須擁有 **帳戶管理員** 或 **全域管理員** 角色，才能登入 Microsoft 合作夥伴網路。
 
 1. 使用您的 Microsoft 合作夥伴網路帳戶登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/) 。
-1. 選取 [ **設定**  >  **夥伴設定**  >  **程式**  >  **開始** ]。
+1. 選取 [ **設定**  >  **開發人員設定**  >  **程式**  >  **開始** ]。
 
    Microsoft 合作夥伴網路會偵測您的訂用帳戶，並顯示 [ **發行者設定檔** ] 窗格。
-   
+
 1. 輸入您的公司名稱和 MPN 識別碼。
 1. 閱讀 [Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)中的條款及條件，然後選取 [ **接受] 並繼續** 完成您的註冊。
 
     > [!IMPORTANT]
     > 若要接受這些條款，您必須獲得授權，代表您的公司採取行動。
 
-    註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。 
-    
-1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **夥伴設定**  >  **程式** ]。
+    註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。
+
+1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **開發人員設定**  >  **程式** ]。
 
 您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 繼續 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -112,9 +112,9 @@ ms.locfileid: "93130454"
 >[!NOTE]
 >若要在您用來登入的相同帳戶下註冊商業 marketplace，您必須已在合作夥伴中心中註冊公司帳戶。 如果您已向個別帳戶註冊，您的商業 marketplace 註冊將會出現在新的帳戶下。
 >
->個別帳戶適用于自行工作的開發人員。 公司帳戶適用于組織和企業。 公司帳戶可讓您使用其他功能來提交應用程式。 
+>個別帳戶適用于自行工作的開發人員。 公司帳戶適用于組織和企業。 公司帳戶可讓您使用其他功能來提交應用程式。
 >
-> 為了確定您已獲授權為公司設定帳戶，我們在註冊之後需要額外的公司帳戶驗證。 這項驗證可能需要幾天到幾周的時間，而且通常會包含對您公司的電話通話。 這兩種類型的帳戶都可讓您提交應用程式、增益集和服務。 如需詳細資訊，請參閱 [帳戶類型、位置和費用](/windows/uwp/publish/account-types-locations-and-fees)。
+> 為了確定您已獲授權為公司設定帳戶，我們在註冊之後需要額外的公司帳戶驗證。 這項驗證可能需要幾天到幾周的時間，而且通常會包含對您公司的電話通話。 這兩種類型的帳戶都可讓您提交應用程式、增益集和服務。 如需詳細資訊，請參閱 [帳戶類型、位置和費用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
 
 當您使用與開發人員計畫相同的帳戶註冊商業 marketplace 方案時，您可以在合作夥伴中心的左窗格中看到所有現有的程式註冊。
 
@@ -126,9 +126,9 @@ ms.locfileid: "93130454"
     >[!Important]
     > 若要接受這些條款，您必須獲得授權，代表您的公司採取行動。
 
-    註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。 
-    
-1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **夥伴設定**  >  **程式** ]。
+    註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。
+
+1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **開發人員設定**  >  **程式** ]。
 
 您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需新增發行者的協助，請繼續 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -142,10 +142,10 @@ ms.locfileid: "93130454"
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>將新的發行者新增至商用 marketplace 方案
 
-組織可以有多個與商業 marketplace 帳戶相關聯的發行者。 現有的使用者可以選取 **帳戶設定**  >  **發行者**  >  **新增發行者** ，在登入合作夥伴中心之後，新增更多發行者。
+組織可以有多個與商業 marketplace 帳戶相關聯的發行者。 現有的使用者可以在登入合作夥伴中心之後，藉由選取 [ **設定**  >  **Developer settings**  >  **publisher**  >  **add publisher]** 來新增更多發行者。
 
 >[!NOTE]
->在您加入新的「發行者」之前，請先登入合作夥伴中心並選取  。
+>在您加入新的「發行者」之前，請先登入合作夥伴中心並選取 **帳戶設定** 發行者，以檢查現有的發行者清單  >  **** 。
 
 相同 Azure Active Directory 租使用者中的其他使用者可以使用下列步驟來加入新的發行者。
 

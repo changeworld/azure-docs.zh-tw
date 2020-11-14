@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何使用 Azure PowerShell 來部署�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 08/28/2020
+ms.date: 11/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62640aa02c76c13b2c49b2e33aea742f6b8a09e4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071698"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628338"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和設定 Azure 防火牆
 
@@ -29,9 +29,9 @@ ms.locfileid: "89071698"
 
 * **AzureFirewallSubnet** - 防火牆位於此子網路。
 * **Workload-SN** - 工作負載伺服器位於此子網路。 此子網路的網路流量會通過防火牆。
-* **Jump-SN** - 跳板機位於此子網路。 跳板機具有公用 IP 位址，您可以使用遠端桌面與其連線。 接著，您可以從此處 (使用其他的遠端桌面) 連線到工作負載伺服器。
+* **AzureBastionSubnet** -用於 Azure 防禦的子網，用來連接到工作負載伺服器。 如需 Azure 防禦的詳細資訊，請參閱 [什麼是 azure 防禦？](../bastion/bastion-overview.md)
 
-![教學課程網路基礎結構](media/tutorial-firewall-rules-portal/Tutorial_network.png)
+![教學課程網路基礎結構](media/deploy-ps/tutorial-network.png)
 
 在本文中，您將學會如何：
 
@@ -47,7 +47,7 @@ ms.locfileid: "89071698"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此程式需要您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
@@ -63,56 +63,55 @@ ms.locfileid: "89071698"
 New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 ```
 
-### <a name="create-a-vnet"></a>建立 VNet
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>建立虛擬網路和 Azure Bastion 主機
 
-此虛擬網路有三個子網：
+此虛擬網路有四個子網：
 
 > [!NOTE]
 > AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
 
 ```azurepowershell
+$Bastionsub = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.0.0/27
 $FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
-$Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
 現在，建立虛擬網路：
 
 ```azurepowershell
 $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG `
--Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $FWsub, $Worksub, $Jumpsub
+-Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $Bastionsub, $FWsub, $Worksub
 ```
-
-### <a name="create-virtual-machines"></a>建立虛擬機器
-
-現在建立跳板和工作負載虛擬機器，並將它們放在適當的子網路中。
-出現提示時，請輸入虛擬機器的使用者名稱和密碼。
-
-建立 Srv-Jump 的虛擬機器。
+### <a name="create-public-ip-address-for-azure-bastion-host"></a>建立 Azure Bastion 主機的公用 IP 位址
 
 ```azurepowershell
-New-AzVm `
-    -ResourceGroupName Test-FW-RG `
-    -Name "Srv-Jump" `
-    -Location "East US" `
-    -VirtualNetworkName Test-FW-VN `
-    -SubnetName Jump-SN `
-    -OpenPorts 3389 `
-    -Size "Standard_DS2"
+$publicip = New-AzPublicIpAddress -ResourceGroupName Test-FW-RG -Location "East US" `
+   -Name Bastion-pip -AllocationMethod static -Sku standard
 ```
 
-建立不含公用 IP 位址的工作負載虛擬機器。
+### <a name="create-azure-bastion-host"></a>建立 Azure Bastion 主機
+
+```azurepowershell
+New-AzBastion -ResourceGroupName Test-FW-RG -Name Bastion-01 -PublicIpAddress $publicip -VirtualNetwork $testVnet
+```
+### <a name="create-a-virtual-machine"></a>建立虛擬機器
+
+現在，建立工作負載虛擬機器，並將它放在適當的子網中。
+出現提示時，請輸入虛擬機器的使用者名稱和密碼。
+
+
+建立工作負載虛擬機器。
 出現提示時，請輸入虛擬機器的使用者名稱和密碼。
 
 ```azurepowershell
 #Create the NIC
-$NIC = New-AzNetworkInterface -Name Srv-work -ResourceGroupName Test-FW-RG `
- -Location "East US" -Subnetid $testVnet.Subnets[1].Id 
+$wsn = Get-AzVirtualNetworkSubnetConfig -Name  Workload-SN -VirtualNetwork $testvnet
+$NIC01 = New-AzNetworkInterface -Name Srv-Work -ResourceGroupName Test-FW-RG -Location "East us" -Subnet $wsn
 
 #Define the virtual machine
 $VirtualMachine = New-AzVMConfig -VMName Srv-Work -VMSize "Standard_DS2"
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName Srv-Work -ProvisionVMAgent -EnableAutoUpdate
-$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2016-Datacenter' -Version latest
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC01.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
 
 #Create the virtual machine
 New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -Verbose
@@ -127,7 +126,7 @@ New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -
 $FWpip = New-AzPublicIpAddress -Name "fw-pip" -ResourceGroupName Test-FW-RG `
   -Location "East US" -AllocationMethod Static -Sku Standard
 # Create the firewall
-$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetworkName Test-FW-VN -PublicIpName fw-pip
+$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetwork $testVnet -PublicIpAddress $FWpip
 
 #Save the firewall private IP address for future use
 
@@ -205,24 +204,20 @@ Set-AzFirewall -AzureFirewall $Azfw
 基於測試目的，請設定伺服器的主要和次要 DNS 位址。 這不是一般的 Azure 防火牆需求。
 
 ```azurepowershell
-$NIC.DnsSettings.DnsServers.Add("209.244.0.3")
-$NIC.DnsSettings.DnsServers.Add("209.244.0.4")
-$NIC | Set-AzNetworkInterface
+$NIC01.DnsSettings.DnsServers.Add("209.244.0.3")
+$NIC01.DnsSettings.DnsServers.Add("209.244.0.4")
+$NIC01 | Set-AzNetworkInterface
 ```
 
 ## <a name="test-the-firewall"></a>測試防火牆
 
 現在請測試防火牆，以確認其運作符合預期。
 
-1. 請注意 **Srv 工作** 虛擬機器的私人 IP 位址：
+1. 使用防禦連接至 **Srv 工作** 虛擬機器，並登入。 
 
-   ```
-   $NIC.IpConfigurations.PrivateIpAddress
-   ```
+   :::image type="content" source="media/deploy-ps/bastion.png" alt-text="使用防禦進行連接。":::
 
-1. 將遠端桌面連線到 **Srv-Jump** 虛擬機器，然後登入。 從該處開啟與 **Srv 工作** 私人 IP 位址的遠端桌面連線，然後登入。
-
-3. 在 **SRV 工作**上，開啟 PowerShell 視窗並執行下列命令：
+3. 在 **Srv 工作** 上，開啟 PowerShell 視窗並執行下列命令：
 
    ```
    nslookup www.google.com
