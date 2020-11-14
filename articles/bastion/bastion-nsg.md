@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 822a90aa2bd3a19cf3459924e6b577cc416aa3a5
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594261"
+ms.locfileid: "94616819"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
 
@@ -40,7 +40,7 @@ _ 輸入 **流量：**
 
    * 輸入 **來自公用網際網路的流量：** Azure 防禦將會建立一個公用 IP，其需要在公用 IP 上啟用埠443來輸入流量。 不需要在 AzureBastionSubnet 上開啟埠3389/22。
    * **從 Azure 防禦控制平面輸入流量：** 針對控制平面連線能力，請從 **GatewayManager** 服務標記啟用埠443輸入。 這可讓控制平面（也就是閘道管理員）能夠與 Azure 防禦對話。
-   * **從 Azure Loadbalancer 輸入流量：** 針對健康情況探查，請從 **AzureLoadBalancer** 服務標記啟用埠443輸入。 這會啟用 azure 負載平衡器，以偵測後端的連線能力問題。
+   * **Azure Load Balancer 的輸入流量：** 針對健康情況探查，請從 **AzureLoadBalancer** 服務標記啟用埠443輸入。 這可讓 Azure Load Balancer 偵測連線能力 
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連接的輸入安全性規則。":::
