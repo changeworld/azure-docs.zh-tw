@@ -8,15 +8,15 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394232"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630544"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT Connector for FHIR (預覽) 對應範本
-本文將詳細說明如何使用對應範本設定適用于 FHIR 的 Azure IoT Connector *。
+本文將詳細說明如何使用對應範本來設定快速健康照護互通資源 (FHIR&#174;) * 的 Azure IoT Connector。
 
 適用于 FHIR 的 Azure IoT Connector 需要兩種類型的 JSON 型對應範本。 第一個類型（ **裝置對應** ）負責對應傳送至 `devicedata` Azure 事件中樞端點的裝置承載。 它會將類型、裝置識別碼、測量日期時間，以及測量值 (s 解壓縮) 。 第二種類型 **FHIR 對應** 會控制 FHIR 資源的對應。 它允許設定觀察期間的長度、用來儲存值的 FHIR 資料類型，以及術語代碼 (s) 。 
 
@@ -368,7 +368,7 @@ CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。 
 | 屬性 | 描述 
 | --- | --- 
 |**單位**| 單位標記法。
-|**程式碼**| 單位的編碼形式。
+|「程式碼」| 單位的編碼形式。
 |**系統**| 定義編碼單元表單的系統。
 
 ### <a name="codeableconcept"></a>CodeableConcept
@@ -567,6 +567,4 @@ CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。 
 >[!div class="nextstepaction"]
 >[適用于 FHIR 的 Azure IoT Connector 常見問題](fhir-faq.md)
 
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
+* 在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT Connector (preview) 。 FHIR 是 HL7 的注冊商標，可搭配 HL7 的許可權使用。

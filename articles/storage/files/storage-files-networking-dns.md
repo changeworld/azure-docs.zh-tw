@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320263"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630187"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>設定 Azure 檔案儲存體的 DNS 轉送
 Azure 檔案儲存體可讓您針對包含檔案共用的儲存體帳戶建立私人端點。 雖然適用於許多不同的應用程式，但私人端點特別適用於透過 VPN 或 ExpressRoute 連線，使用私人對等互連從內部部署網路連線至您的 Azure 檔案共用。 
@@ -43,7 +43,7 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 
 - 一個儲存體帳戶，其中包含您想要掛接的 Azure 檔案共用。 若要了解如何建立儲存體帳戶和 Azure 檔案共用，請參閱[建立 Azure 檔案共用](storage-how-to-create-file-share.md)。
 - 儲存體帳戶的私人端點。 若要了解如何建立 Azure 檔案儲存體的私人端點，請參閱[建立私人端點](storage-files-networking-endpoints.md#create-a-private-endpoint)。
-- [Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)的最新版本。
+- [Azure PowerShell 模組](/powershell/azure/install-az-ps)的最新版本。
 
 > [!Important]  
 > 本指南假設您使用的 DNS 伺服器位在內部部署環境中的 Windows Server 內。 本指南中所述的所有步驟可用於任何 DNS 伺服器，而非僅限於 Windows DNS 伺服器。

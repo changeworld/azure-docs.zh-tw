@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592918"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630255"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -66,7 +66,7 @@ ms.locfileid: "94592918"
 
 ### <a name="configurations-and-params"></a>設定與參數
 
-本節將說明一些選擇性參數及設定這些參數的時機。
+本節將說明一些選擇性參數及設定這些參數的時機。 如需最新的參數資訊，請參閱 [上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API。
 
 #### <a name="externalid"></a>externalID 
 

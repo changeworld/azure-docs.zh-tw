@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785607"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628912"
 ---
 # <a name="migrate-to-azure-file-shares"></a>遷移至 Azure 檔案共用
 
@@ -134,7 +134,7 @@ Active Directory 的使用者（也就是其內部部署網域控制站）可以
 
 #### <a name="robocopy-from-microsoft-corporation"></a>Microsoft Corporation 的 RoboCopy
 
-RoboCopy 是最適合檔案遷移的工具之一。 它是 Windows 的一部分。 主要 [RoboCopy 檔](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 是這項工具許多選項的實用資源。
+RoboCopy 是最適合檔案遷移的工具之一。 它是 Windows 的一部分。 主要 [RoboCopy 檔](/windows-server/administration/windows-commands/robocopy) 是這項工具許多選項的實用資源。
 
 #### <a name="treesize-from-jam-software-gmbh"></a>TreeSize from 卡住 Software GmbH
 

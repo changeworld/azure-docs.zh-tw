@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: c6f4b932bb8f16af3c0368ab219bd8a12bf2face
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f6dc523050fdcdbf54a6b9864f0a752698a85eed
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357975"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628929"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure 檔案儲存體監視資料參考
 
@@ -36,7 +36,7 @@ Azure 檔案儲存體在 Azure 監視器中提供下列容量計量。
 
 #### <a name="azure-files"></a>Azure 檔案
 
-下表顯示 [Azure 檔案儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)。
+下表顯示 [Azure 檔案儲存體計量](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |
@@ -85,7 +85,7 @@ Azure 檔案儲存體針對 Azure 監視器中的計量支援下列維度。
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - 如需監視 Azure 儲存體的說明，請參閱 [監視 Azure 檔案儲存體](storage-files-monitoring-reference.md) 。
 - 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322200"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630272"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>將 StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -45,7 +45,7 @@ StorSimple 8000 系列將于2022年12月 [結束使用](https://support.microsof
 
 Azure 檔案共用會開啟全新的商機，以結構化您的檔案服務部署。 Azure 檔案共用只是雲端中的一個 SMB 共用，您可以設定讓使用者使用熟悉的 Kerberos 驗證和現有的 NTFS 許可權直接透過 SMB 通訊協定存取， (檔案和資料夾 Acl) 以原生方式運作。 深入瞭解 [以身分識別為基礎的 Azure 檔案共用存取](storage-files-active-directory-overview.md)。
 
-[Azure 檔案同步](https://aka.ms/AFS)直接存取的替代方法。Azure 檔案同步是可在內部部署環境中快取常用檔案的直接類比功能。
+[Azure 檔案同步](./storage-sync-files-planning.md)直接存取的替代方法。Azure 檔案同步是可在內部部署環境中快取常用檔案的直接類比功能。
 
 Azure 檔案同步是 Microsoft 雲端服務，以兩個主要元件為基礎：
 
@@ -56,7 +56,7 @@ Azure 檔案共用會在儲存的檔案（如屬性、許可權和時間戳記�
 
 本文著重于遷移步驟。 如果您想要在遷移之前深入瞭解 Azure 檔案同步，請參閱下列文章：
 
-* [Azure 檔案同步總覽](https://aka.ms/AFS "總覽")
+* [Azure 檔案同步總覽](./storage-sync-files-planning.md "概觀")
 * [Azure 檔案同步部署指南](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple 服務資料加密金鑰
@@ -209,7 +209,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
         :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Azure 入口網站螢幕擷取畫面，其中顯示新的檔案共用 UI。":::
     :::column-end:::
     :::column:::
-        </br>**名稱**</br>支援小寫字母、數位及連字號。</br></br>**配額**</br>此處的配額相當於 Windows Server 實例上的 SMB 硬配額。 最佳做法是不要在此設定配額，因為達到配額時，您的遷移和其他服務將會失敗。</br></br>**階層**</br>選取 [針對您的新檔案共用 **優化的交易** ]。 在遷移期間，將會發生許多交易。 更符合成本效益的方式，就是將您的階層變更為最適合您工作負載的層級。
+        </br>**Name**</br>支援小寫字母、數位及連字號。</br></br>**配額**</br>此處的配額相當於 Windows Server 實例上的 SMB 硬配額。 最佳做法是不要在此設定配額，因為達到配額時，您的遷移和其他服務將會失敗。</br></br>**階層**</br>選取 [針對您的新檔案共用 **優化的交易** ]。 在遷移期間，將會發生許多交易。 更符合成本效益的方式，就是將您的階層變更為最適合您工作負載的層級。
     :::column-end:::
 :::row-end:::
 
@@ -385,7 +385,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 * [如何設定 Windows P2S VPN](storage-files-configure-p2s-vpn-windows.md)
 * [如何設定 Linux P2S VPN](storage-files-configure-p2s-vpn-linux.md)
 * [如何設定 DNS 轉送](storage-files-networking-dns.md)
-* [設定 DFS-N](https://aka.ms/AzureFiles/Namespaces)
+* [設定 DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
@@ -535,7 +535,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 如果您有 DFS-N 部署，可以將 DFN-Namespaces 指向新的伺服器資料夾位置。 如果您沒有 DFS-N 部署，而您在本機使用 Windows Server 實例前端8100或8600設備，則可以將該伺服器從網域中取出。 然後，網域加入新的 Azure 檔案同步啟用的 Windows Server 實例。 在這個過程中，請為伺服器提供與舊伺服器相同的伺服器名稱和共用名稱，讓您的使用者、群組原則和腳本的剪取保持透明。
 
-深入瞭解 [DFS-N](https://aka.ms/AzureFiles/Namespaces)。
+深入瞭解 [DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview)。
 
 ## <a name="deprovision"></a>取消佈建
 
@@ -561,7 +561,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 [Azure 檔案同步： aka.ms/AFS](https://aka.ms/AFS)。
+* 深入瞭解 [Azure 檔案同步： aka.ms/AFS](./storage-sync-files-planning.md)。
 * 瞭解 [雲端分層](storage-sync-cloud-tiering.md) 原則的彈性。
 * 在 Azure 檔案共用上[啟用 Azure 備份](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane)，以排程快照集並定義備份保留排程。
 * 如果您在 Azure 入口網站中看到某些檔案永久未同步，請參閱 [疑難排解指南](storage-sync-files-troubleshoot.md) 以取得解決這些問題的步驟。

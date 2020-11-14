@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319790"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629337"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -41,7 +41,7 @@ Azure 檔案服務會提供兩種廣泛的方法給用戶端應用程式：伺�
 
 API | 使用時機 | 注意
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 您的應用程式： <ul><li>需要使用 SMB 讀取/寫入檔案</li><li>正在可透過連接埠 445 存取您 Azure 檔案服務帳戶的裝置上執行</li><li>不需要管理檔案共用的任何系統管理設定</li></ul> | 使用 Azure 檔案儲存體 over SMB 執行的檔案 i/o 通常與任何網路檔案共用或本機存放裝置的 i/o 相同。 如需 .NET 中許多功能的簡介，包括檔案 i/o，請參閱 [主控台應用程式](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) 教學課程。
+[System.IO](/dotnet/api/system.io) | 您的應用程式： <ul><li>需要使用 SMB 讀取/寫入檔案</li><li>正在可透過連接埠 445 存取您 Azure 檔案服務帳戶的裝置上執行</li><li>不需要管理檔案共用的任何系統管理設定</li></ul> | 使用 Azure 檔案儲存體 over SMB 執行的檔案 i/o 通常與任何網路檔案共用或本機存放裝置的 i/o 相同。 如需 .NET 中許多功能的簡介，包括檔案 i/o，請參閱 [主控台應用程式](/dotnet/csharp/tutorials/console-teleprompter) 教學課程。
 [Azure。共用](/dotnet/api/azure.storage.files.shares) | 您的應用程式： <ul><li>因為防火牆或 ISP 條件約束，所以無法在埠445上使用 SMB 存取 Azure 檔案儲存體</li><li>需要系統管理功能，例如設定檔案共用的配額，或建立共用存取簽章的能力</li></ul> | 本文將示範如何使用 `Azure.Storage.Files.Shares` REST 而非 SMB 和檔案共用的管理來使用檔案 i/o。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>建立主控台應用程式並取得組件
@@ -51,8 +51,8 @@ API | 使用時機 | 注意
 在 Visual Studio 中，建立新的 Windows 主控台應用程式。 下列步驟說明如何在 Visual Studio 2019 中建立主控台應用程式。 這些步驟類似其他 Visual Studio 版本中的步驟。
 
 1. 啟動 Visual Studio，然後選取 [建立新專案]。
-1. 在 [ **建立新專案**] 中，選擇 [ **主控台應用程式 (] .NET Framework) ** 的 c #，然後選取 **[下一步]**。
-1. 在 [ **設定您的新專案**] 中，輸入應用程式的名稱，然後選取 [ **建立**]。
+1. 在 [ **建立新專案** ] 中，選擇 [ **主控台應用程式 (] .NET Framework)** 的 c #，然後選取 **[下一步]** 。
+1. 在 [ **設定您的新專案** ] 中，輸入應用程式的名稱，然後選取 [ **建立** ]。
 
 將本文中的所有程式碼範例新增至 `Program` *Program.cs* 檔案中的類別。
 
@@ -67,10 +67,10 @@ API | 使用時機 | 注意
 - [適用于 .net 的 Azure 儲存體 Files 用戶端程式庫](https://www.nuget.org/packages/Azure.Storage.Files.Shares/)：此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
 - [適用于 .net 的系統 Configuration Manager 程式庫](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/)：此套件提供可在設定檔中儲存和取出值的類別。
 
-您可以使用 NuGet 來取得套件。 遵循這些步驟：
+您可以使用 NuGet 來取得套件。 請遵循這些步驟：
 
-1. 在 **方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 **Azure Core**，然後選取 [ **安裝**]。
+1. 在 **方案總管** 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件** ]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 **Azure Core** ，然後選取 [ **安裝** ]。
 
    此步驟會安裝封裝及其相依性。
 
@@ -87,10 +87,10 @@ API | 使用時機 | 注意
 - [適用于 .net 的 Microsoft Azure 儲存體檔案庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)：此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
 - [適用于 .net 的 Microsoft Azure Configuration Manager 程式庫](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此套件提供一個類別，可讓您在應用程式執行所在的位置剖析設定檔中的連接字串。
 
-您可以使用 NuGet 來取得套件。 遵循這些步驟：
+您可以使用 NuGet 來取得套件。 請遵循這些步驟：
 
-1. 在 **方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure**]，然後選取 [ **安裝**]。
+1. 在 **方案總管** 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件** ]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure** ]，然後選取 [ **安裝** ]。
 
    此步驟會安裝封裝及其相依性。
 1. 搜尋並安裝這些封裝：
@@ -103,7 +103,7 @@ API | 使用時機 | 注意
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>將儲存體帳號憑證儲存至 App.config 檔案
 
-接下來，將您的認證儲存在專案的 *App.config* 檔案中。 在 **方案總管**中，按兩下 `App.config` 並編輯檔案，使其類似于下列範例。
+接下來，將您的認證儲存在專案的 *App.config* 檔案中。 在 **方案總管** 中，按兩下 `App.config` 並編輯檔案，使其類似于下列範例。
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -135,7 +135,7 @@ API | 使用時機 | 注意
 
 ## <a name="add-using-directives"></a>新增 using 指示詞
 
-在 **方案總管**中，開啟 *Program.cs* 檔案，並將下列 using 指示詞新增至檔案頂端。
+在 **方案總管** 中，開啟 *Program.cs* 檔案，並將下列 using 指示詞新增至檔案頂端。
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -316,7 +316,7 @@ if (share.Exists())
 
 從 Azure 檔案儲存體用戶端程式庫5.x 版開始，您可以將檔案複製到另一個檔案、將檔案複製到 blob，或將 blob 複製到檔案。
 
-您也可以使用 AzCopy 將檔案複製到另一個檔案，或將 blob 複製到檔案，或複製到檔案中。 請參閱[開始使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+您也可以使用 AzCopy 將檔案複製到另一個檔案，或將 blob 複製到檔案，或複製到檔案中。 請參閱[開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
 
 > [!NOTE]
 > 如果要將 Blob 複製到檔案，或將檔案複製到 Blob，您必須使用共用存取簽章 (SAS) 來授權來源物件的存取全，即使是在相同的儲存體帳戶內進行複製也一樣。
@@ -624,10 +624,10 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 ### <a name="tooling-support-for-file-storage"></a>檔案儲存體的工具支援
 
-- [開始使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-- [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+- [開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>參考資料
+### <a name="reference"></a>參考
 
 - [適用於 .NET 的 Azure 儲存體 API](/dotnet/api/overview/azure/storage)
 - [檔案服務 REST API](/rest/api/storageservices/File-Service-REST-API) \(英文\)

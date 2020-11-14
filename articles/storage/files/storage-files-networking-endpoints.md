@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880eeb87d8727d65b2aaecdad8b0ed9ccaacea7a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612824"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629847"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 
@@ -31,7 +31,7 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 
 - 本文會假設您已經建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 - 本文假設您已在儲存體帳戶中建立 Azure 檔案共用，而您想要從內部部署連接到該儲存體帳戶。 若要了解如何建立 Azure 檔案共用，請參閱[建立 Azure 檔案共用](storage-how-to-create-file-share.md)。
-- 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- 如果您想要使用 Azure PowerShell，請[安裝最新版本](/powershell/azure/install-az-ps)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="endpoint-configurations"></a>端點設定
@@ -39,15 +39,15 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 您可以設定端點，以限制對儲存體帳戶的網路存取。 有兩種方法可以將對於儲存體帳戶的存取限制在虛擬網路內：
 
 - [為儲存體帳戶建立一個或多個私人端點](#create-a-private-endpoint)，並限制所有對公用端點的存取。 這可確保只有來自所要虛擬網路內的流量，才能存取儲存體帳戶內的 Azure 檔案共用。
-- 將[公用端點限制為一或多個虛擬網路](#restrict-public-endpoint-access)。 其運作方式是使用稱為「服務端點」** 的虛擬網路功能。 當您透過服務端點來限制對儲存體帳戶的流量時，仍會透過公用 IP 位址存取儲存體帳戶，但只能從您在設定中指定的位置存取。
+- 將[公用端點限制為一或多個虛擬網路](#restrict-public-endpoint-access)。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 當您透過服務端點來限制對儲存體帳戶的流量時，仍會透過公用 IP 位址存取儲存體帳戶，但只能從您在設定中指定的位置存取。
 
 ### <a name="create-a-private-endpoint"></a>建立私人端點
 
 為您的儲存體帳戶建立私人端點時會部署下列 Azure 資源：
 
-- **私人端點**：代表儲存體帳戶私人端點的 Azure 資源。 您可以將此視為連線儲存體帳戶和網路介面的資源。
+- **私人端點** ：代表儲存體帳戶私人端點的 Azure 資源。 您可以將此視為連線儲存體帳戶和網路介面的資源。
 - **網路介面 (NIC)** ：維護指定虛擬網路/子網路中私人 IP 位址的網路介面。 這與您部署虛擬機器時所部署的資源完全相同，但此資源不會指派給 VM，而是由私人端點所擁有。
-- **私人 DNS 區域**：如果您之前從未對此虛擬網路部署過私人端點，系統將會為虛擬網路部署新的私人 DNS 區域。 同時也會為此 DNS 區域中的儲存體帳戶建立 DNS A 記錄。 如果您已在此虛擬網路中部署私人端點，新的儲存體帳戶 A 記錄將會新增至現有 DNS 區域。 部署 DNS 區域是選擇性的，但強烈建議您部署，而且如果您使用 AD 服務主體或 FileREST API 來掛接 Azure 檔案共用，則這是必要動作。
+- **私人 DNS 區域** ：如果您之前從未對此虛擬網路部署過私人端點，系統將會為虛擬網路部署新的私人 DNS 區域。 同時也會為此 DNS 區域中的儲存體帳戶建立 DNS A 記錄。 如果您已在此虛擬網路中部署私人端點，新的儲存體帳戶 A 記錄將會新增至現有 DNS 區域。 部署 DNS 區域是選擇性的，但強烈建議您部署，而且如果您使用 AD 服務主體或 FileREST API 來掛接 Azure 檔案共用，則這是必要動作。
 
 > [!Note]  
 > 本文會針對 Azure 公用區域使用儲存體帳戶 DNS 尾碼 `core.windows.net`。 此註解也適用於 Azure 主權雲端 (例如 Azure 美國政府雲端和 Azure 中國雲端)，只需替換為適合您環境的尾碼即可。 

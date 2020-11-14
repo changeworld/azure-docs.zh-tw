@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 941435e90f91a4c3a4e41c2869e35157da41d8b0
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592170"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629643"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>發佈和訂閱 Azure IoT Edge
 
@@ -31,8 +31,10 @@ ms.locfileid: "94592170"
 - SKU 的 **IoT 中樞** ，也就是 F1、S1、S2 或 S3。
 - 具有 **1.2 版或更新版本的 IoT Edge 裝置** 。 由於 IoT Edge MQTT broker 目前處於公開預覽狀態，因此請在 edgeHub 容器上將下列環境變數設為 true，以啟用 MQTT 訊息代理程式：
 
-    - experimentalFeatures__enabled
-    - mqttbroker__enabled
+   | 名稱 | 值 |
+   | - | - |
+   | `experimentalFeatures__enabled` | `true` |
+   | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
 - Mosquitto 安裝在 IoT Edge 裝置上的 **用戶端** 。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的熱門 Mosquitto 用戶端。 您可以改為使用其他 MQTT 用戶端。 若要在 Ubuntu 裝置上安裝 Mosquitto 用戶端，請執行下列命令：
 

@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628978"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630357"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>傳輸中的 IPSec 加密 Azure HDInsight
 
 本文討論 Azure HDInsight 叢集節點之間的通訊在傳輸中的執行方式。
-
-> [!Note]
-> 目前已在下欄區域啟用傳輸中加密：美國東部、美國中南部、西歐美國2。
 
 ## <a name="background"></a>背景
 
@@ -42,7 +39,7 @@ Azure HDInsight 提供各種安全性功能來保護您的企業資料。 這些
 
 1. 在 [ **安全性 + 網路** ] 索引標籤上，選取 [ **啟用傳輸中加密** ] 核取方塊。
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="[建立叢集-安全性和網路] 索引標籤。":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="建立叢集-在傳輸中啟用加密。":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>使用透過 Azure CLI 啟用傳輸中加密來建立叢集
 

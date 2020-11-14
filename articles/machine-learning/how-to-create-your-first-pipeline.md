@@ -1,7 +1,7 @@
 ---
 title: 建立和執行 ML 管線
 titleSuffix: Azure Machine Learning
-description: 使用適用於 Python 的 Azure Machine Learning SDK 來建立及執行機器學習管線。 使用 ML 管線來建立和管理將機器學習服務 (ML) 階段拼接在一起的工作流程。 這些階段包括資料準備、模型定型、模型部署，以及推斷/評分。
+description: 建立並執行機器學習管線，以建立和管理將機器學習服務 (ML) 階段拼接在一起的工作流程。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 76369d3bc3ed152bf9e0b13f7bf4b4386a974c33
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322085"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630119"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
@@ -32,7 +32,7 @@ ML 管線是在計算目標上執行 (查看 [Azure Machine Learning) 中的計�
 
 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 建立 [Azure Machine Learning 工作區](how-to-manage-workspace.md)以保存您的所有管線資源。
 

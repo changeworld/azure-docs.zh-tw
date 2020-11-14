@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 334495eeef410c42fb45445c400a86ff1b777061
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/13/2020
+ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790333"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629184"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -108,6 +108,9 @@ ms.locfileid: "92790333"
 
 您可以從伺服器或受控實例資源的 Azure 入口網站還原已刪除的資料庫。
 
+> [!TIP]
+> 最近刪除的資料庫可能需要幾分鐘的時間才會出現在 Azure 入口網站的 [ **已刪除的資料庫** ] 頁面上，或以程式設計 [方式](#programmatic-recovery-using-automated-backups)顯示已刪除的資料庫時。
+
 #### <a name="sql-database"></a>SQL Database
 
 若要使用 Azure 入口網站將已刪除的資料庫復原到刪除時間，請開啟 [伺服器總覽] 頁面，然後選取 [ **已刪除的資料庫** ]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
@@ -155,7 +158,7 @@ ms.locfileid: "92790333"
 若要從您選擇的區域和伺服器中的 Azure 入口網站異地還原單一資料庫，請遵循下列步驟：
 
 1. 從 **儀表板** 選取 [ **新增**  >  **建立 SQL Database** ]。 在 [ **基本** ] 索引標籤上，輸入必要的資訊。
-2. 選取 [其他設定]  。
+2. 選取 [其他設定]。
 3. 若要 **使用現有的資料** ，請選取 [ **備份** ]。
 4. 針對 [ **備份** ]，請從可用的異地還原備份清單中選取備份。
 
@@ -165,7 +168,7 @@ ms.locfileid: "92790333"
 
 #### <a name="sql-managed-instance"></a>SQL 受控執行個體
 
-若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 請遵循下列步驟：
+若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 請遵循這些步驟：
 
 1. 選取 [ **新增資料庫** ]。
 2. 輸入所需的資料庫名稱。

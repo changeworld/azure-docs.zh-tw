@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e6490babb5a4e68c1ecd931251ea4eb99d6c3f5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577967"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630136"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>針對 Azure 檔案共用效能問題進行疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "94577967"
 
 ### <a name="cause-1-share-was-throttled"></a>原因1：已節流共用
 
-當達到檔案共用的每秒 i/o 作業 (IOPS) 、輸入或輸出限制時，就會對要求進行節流。 若要瞭解標準和 premium 檔案共用的限制，請參閱檔案 [共用和檔案調整目標](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。
+當達到檔案共用的每秒 i/o 作業 (IOPS) 、輸入或輸出限制時，就會對要求進行節流。 若要瞭解標準和 premium 檔案共用的限制，請參閱檔案 [共用和檔案調整目標](./storage-files-scale-targets.md#file-share-and-file-scale-targets)。
 
 若要確認您的共用是否正在進行節流，您可以在入口網站中存取和使用 Azure 計量。
 
@@ -45,8 +45,8 @@ ms.locfileid: "94577967"
 
 ### <a name="solution"></a>解決方案
 
-- 如果您使用的是標準檔案共用，請在儲存體帳戶上啟用 [大型檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) 。 大型檔案共用支援每個共用最高 10000 IOPS。
-- 如果您使用的是 premium 檔案共用，請增加布建的檔案共用大小，以增加 IOPS 限制。 若要深入瞭解，請參閱《 [Azure 檔案儲存體規劃指南》](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares)中的「瞭解 premium 檔案共用的布建」一節。
+- 如果您使用的是標準檔案共用，請在儲存體帳戶上啟用 [大型檔案共用](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) 。 大型檔案共用支援每個共用最高 10000 IOPS。
+- 如果您使用的是 premium 檔案共用，請增加布建的檔案共用大小，以增加 IOPS 限制。 若要深入瞭解，請參閱《 [Azure 檔案儲存體規劃指南》](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares)中的「瞭解 premium 檔案共用的布建」一節。
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>原因2：中繼資料或命名空間繁重的工作負載
 

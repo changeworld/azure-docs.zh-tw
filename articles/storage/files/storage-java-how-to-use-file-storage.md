@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462593"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629762"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 開發 Azure 檔案服務
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "89462593"
 * 上傳、下載及刪除檔案
 
 > [!Note]  
-> 由於 Azure 檔案服務可透過 SMB 存取，因此便可使用標準 Java I/O 類別撰寫應用程式以存取 Azure 檔案共用。 本文將說明如何撰寫使用 Azure 儲存體 Java SDK 的應用程式，它會使用 [Azure 檔案服務 REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) 與 Azure 檔案服務通訊。
+> 由於 Azure 檔案服務可透過 SMB 存取，因此便可使用標準 Java I/O 類別撰寫應用程式以存取 Azure 檔案共用。 本文將說明如何撰寫使用 Azure 儲存體 Java SDK 的應用程式，它會使用 [Azure 檔案服務 REST API](/rest/api/storageservices/file-service-rest-api) 與 Azure 檔案服務通訊。
 
 ## <a name="create-a-java-application"></a>建立 Java 應用程式
 若要建置範例，您將需要 Java Development Kit (JDK) 和 [Azure Storage SDK for Java](https://github.com/Azure/azure-storage-java)。 您也應該建立 Azure 儲存體帳戶。
@@ -60,7 +60,7 @@ public static final String storageConnectionString =
 > 
 
 ## <a name="connecting-to-an-azure-storage-account"></a>連接到 Azure 儲存體帳戶
-若要連接到您的儲存體帳戶，您必須使用 **CloudStorageAccount** 物件，將連接字串傳遞至其**剖析**方法。
+若要連接到您的儲存體帳戶，您必須使用 **CloudStorageAccount** 物件，將連接字串傳遞至其 **剖析** 方法。
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -74,7 +74,7 @@ try {
 **CloudStorageAccount.parse** 會擲回 InvalidKeyException，因此您必須將其放在 try/catch 區塊內。
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
-Azure 檔案服務中的所有檔案和目錄都位於名為 [共用]**** 的容器中。 您的儲存體帳戶可以有帳戶容量允許數量的共用。 若要取得共用及其內容的存取權，您必須使用 Azure 檔案服務用戶端。
+Azure 檔案服務中的所有檔案和目錄都位於名為 [共用] 的容器中。 您的儲存體帳戶可以有帳戶容量允許數量的共用。 若要取得共用及其內容的存取權，您必須使用 Azure 檔案服務用戶端。
 
 ```java
 // Create the Azure Files client.
@@ -96,7 +96,7 @@ if (share.createIfNotExists()) {
 }
 ```
 
-目前，**共用**會將參考保留至名為 **sampleshare** 的共用。
+目前， **共用** 會將參考保留至名為 **sampleshare** 的共用。
 
 ## <a name="delete-an-azure-file-share"></a>刪除 Azure 檔案共用
 刪除共用可以藉由在 CloudFileShare 物件呼叫 **deleteIfExists** 方法來完成。 以下是執行該作業的範例程式碼。
@@ -204,7 +204,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>刪除檔案
-另一個常見的 Azure 檔案服務作業是刪除檔案。 下列程式碼會刪除儲存在名為 **sampledir**之目錄內名為 SampleFile.txt 的檔案。
+另一個常見的 Azure 檔案服務作業是刪除檔案。 下列程式碼會刪除儲存在名為 **sampledir** 之目錄內名為 SampleFile.txt 的檔案。
 
 ```java
 // Get a reference to the root directory for the share.
@@ -229,7 +229,7 @@ if ( file.deleteIfExists() ) {
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
 * [Azure 儲存體用戶端 SDK 參考](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Azure 儲存體服務 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure 儲存體團隊部落格](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [使用 AzCopy 命令列公用程式傳輸資料](../common/storage-use-azcopy.md)
+* [Azure 儲存體服務 REST API](/rest/api/storageservices/)
+* [Azure 儲存體團隊部落格](/archive/blogs/windowsazurestorage/)
+* [使用 AzCopy 命令列公用程式傳輸資料](../common/storage-use-azcopy-v10.md)
 * [針對 Azure 檔案服務問題進行疑難排解 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

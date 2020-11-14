@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267783"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629354"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure 檔案同步的網路功能考量
 您可以透過兩種方式連線至 Azure 檔案共用：
@@ -55,7 +55,7 @@ Azure 檔案同步需要下列服務的 IP 位址範圍，就如同它們的服�
 | Azure Resource Manager | Azure Resource Manager 是 Azure 的管理介面。 所有管理呼叫 (包括 Azure 檔案同步伺服器註冊與進行中的同步處理伺服器工作) 都是透過 Azure Resource Manager 進行的。 | `AzureResourceManager` |
 | Azure Active Directory | Azure Active Directory (或 Azure AD) 包含授權對儲存體同步服務進行伺服器註冊時所需的使用者主體，以及授權 Azure 檔案同步存取您的雲端資源時所需的服務主體。 | `AzureActiveDirectory` |
 
-如果您在 Azure 中使用 Azure 檔案同步，即使其是不同的區域，您也可以直接在您的網路安全性群組中使用服務標籤的名稱，以允許對該服務傳送流量。 若要深入了解如何執行此操作，請參閱[網路安全性群組](../../virtual-network/security-overview.md)。 
+如果您在 Azure 中使用 Azure 檔案同步，即使其是不同的區域，您也可以直接在您的網路安全性群組中使用服務標籤的名稱，以允許對該服務傳送流量。 若要深入了解如何執行此操作，請參閱[網路安全性群組](../../virtual-network/network-security-groups-overview.md)。 
 
 如果您是使用 Azure 檔案同步內部部署，就可利用服務標籤 API 來取得您防火牆允許清單的特定 IP 位址範圍。 有兩種方法可以取得此資訊：
 
@@ -65,9 +65,9 @@ Azure 檔案同步需要下列服務的 IP 位址範圍，就如同它們的服�
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - 服務標籤探索 API (預覽) 可讓您以程式設計方式擷取目前的服務標籤清單。 在預覽中，服務標籤探索 API 傳回的資訊，可能沒有從 Microsoft 下載中心上發佈的 JSON 文件所傳回的資訊那麼新。 您可以根據您的自動化喜好設定來使用 API 介面：
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 若要深入了解如何使用服務標籤 API 來擷取您服務的位址，請參閱 [Azure 檔案同步 IP 位址的允許清單](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses)。
 

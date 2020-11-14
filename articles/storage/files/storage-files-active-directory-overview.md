@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486384"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629320"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,11 +26,11 @@ ms.locfileid: "92486384"
 
 -   **Kerberos 驗證**
 
-    Kerberos 是用來驗證的使用者或主機身分識別的驗證通訊協定。 如需有關 Kerberos 的詳細資訊，請參閱 [Kerberos 驗證概觀](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview)。
+    Kerberos 是用來驗證的使用者或主機身分識別的驗證通訊協定。 如需有關 Kerberos 的詳細資訊，請參閱 [Kerberos 驗證概觀](/windows-server/security/kerberos/kerberos-authentication-overview)。
 
 -  **伺服器訊息區 (SMB) 通訊協定**
 
-    SMB 是業界標準網路檔案共用通訊協定。 SMB 亦稱為 Common Internet File System 或 CIFS。 如需有關 SMB 的詳細資訊，請參閱 [Microsoft SMB 通訊協定和 CIFS 通訊協定概觀](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)。
+    SMB 是業界標準網路檔案共用通訊協定。 SMB 亦稱為 Common Internet File System 或 CIFS。 如需有關 SMB 的詳細資訊，請參閱 [Microsoft SMB 通訊協定和 CIFS 通訊協定概觀](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)。
 
 -   **Azure Active Directory (Azure AD)**
 
@@ -40,9 +40,9 @@ ms.locfileid: "92486384"
 
     Azure AD DS 提供受控網域服務，例如網域加入、群組原則、LDAP 和 Kerberos/NTLM 驗證。 這些服務與 Active Directory Domain Services 完全相容。 如需詳細資訊，請參閱 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)。
 
-- **內部部署 Active Directory Domain Services (AD DS) **
+- **內部部署 Active Directory Domain Services (AD DS)**
 
-    內部部署 Active Directory Domain Services (AD DS) 與 Azure 檔案儲存體整合提供儲存目錄資料的方法，同時讓網路使用者和系統管理員使用。 安全性透過登入驗證和存取控制，與目錄中的物件整合 AD DS。 透過單一網路登入，系統管理員可以管理整個網路中的目錄資料和組織，而授權的網路使用者可以存取網路上任何位置的資源。 在內部部署環境中，企業通常會採用 AD DS，並使用 AD DS 認證作為存取控制的身分識別。 如需詳細資訊，請參閱 [Active Directory Domain Services 總覽](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+    內部部署 Active Directory Domain Services (AD DS) 與 Azure 檔案儲存體整合提供儲存目錄資料的方法，同時讓網路使用者和系統管理員使用。 安全性透過登入驗證和存取控制，與目錄中的物件整合 AD DS。 透過單一網路登入，系統管理員可以管理整個網路中的目錄資料和組織，而授權的網路使用者可以存取網路上任何位置的資源。 在內部部署環境中，企業通常會採用 AD DS，並使用 AD DS 認證作為存取控制的身分識別。 如需詳細資訊，請參閱 [Active Directory Domain Services 總覽](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
 -   **Azure 角色型存取控制 (Azure RBAC)**
 
@@ -116,7 +116,7 @@ Azure 檔案共用會利用 Kerberos 通訊協定，以內部部署 AD DS 或 Az
 
 - 其次，存在於 Azure AD 中的所有使用者都可以進行驗證和授權。 使用者可以是僅限雲端或混合式。 從 Azure AD 到 Azure AD DS 的同步處理是由平臺所管理，不需要任何使用者設定。 不過，用戶端必須已加入網域 Azure AD DS，才能 Azure AD 加入或註冊。 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="描繪 Azure 檔案共用透過 SMB 進行內部部署 AD DS 驗證的圖表。":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="圖表":::
 
 ### <a name="enable-identity-based-authentication"></a>啟用以身分識別為基礎的驗證
 
@@ -128,7 +128,7 @@ Azure 檔案共用會利用 Kerberos 通訊協定，以內部部署 AD DS 或 Az
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>設定 Azure 檔案儲存體的目錄或檔案層級許可權
 
-Azure 檔案共用會在目錄和檔案層級（包括根目錄）強制執行標準 Windows 檔案許可權。 SMB 和 REST 都支援目錄或檔案層級許可權的設定。 使用 Windows 檔案總管、Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或 [Set ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) 命令，從您的 VM 掛接目標檔案共用並設定許可權。
+Azure 檔案共用會在目錄和檔案層級（包括根目錄）強制執行標準 Windows 檔案許可權。 SMB 和 REST 都支援目錄或檔案層級許可權的設定。 使用 Windows 檔案總管、Windows [icacls](/windows-server/administration/windows-commands/icacls)或 [Set ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) 命令，從您的 VM 掛接目標檔案共用並設定許可權。
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>為超級使用者權限使用儲存體帳戶金鑰
 
@@ -139,7 +139,7 @@ Azure 檔案共用會在目錄和檔案層級（包括根目錄）強制執行�
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>將資料匯入至 Azure 檔案共用時保留目錄和檔案 Acl
 
-Azure 檔案儲存體支援在將資料複製到 Azure 檔案共用時保留目錄或檔案層級 Acl。 您可以使用 Azure 檔案同步或一般檔案移動工具組，將目錄或檔案上的 Acl 複製到 Azure 檔案共用。 例如，您可以搭配使用 [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 和旗標，將 `/copy:s` 資料和 Acl 複製到 Azure 檔案共用。 預設會保留 Acl，您不需要在儲存體帳戶上啟用以身分識別為基礎的驗證，就能保留 Acl。
+Azure 檔案儲存體支援在將資料複製到 Azure 檔案共用時保留目錄或檔案層級 Acl。 您可以使用 Azure 檔案同步或一般檔案移動工具組，將目錄或檔案上的 Acl 複製到 Azure 檔案共用。 例如，您可以搭配使用 [robocopy](/windows-server/administration/windows-commands/robocopy) 和旗標，將 `/copy:s` 資料和 Acl 複製到 Azure 檔案共用。 預設會保留 Acl，您不需要在儲存體帳戶上啟用以身分識別為基礎的驗證，就能保留 Acl。
 
 ## <a name="pricing"></a>定價
 在您的儲存體帳戶上啟用透過 SMB 進行以身分識別為基礎的驗證沒有額外的服務費用。 如需定價的詳細資訊，請參閱 [Azure 檔案儲存體定價](https://azure.microsoft.com/pricing/details/storage/files/) 和 [Azure AD Domain Services 定價](https://azure.microsoft.com/pricing/details/active-directory-ds/)。

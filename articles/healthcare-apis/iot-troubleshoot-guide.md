@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/09/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 403b6656a47f56508682dcda2438a85d513fbfb1
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540938"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630493"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>適用于 FHIR 的 Azure IoT Connector (preview) 疑難排解指南
 
-本文提供針對 FHIR 的常見 Azure IoT Connector * 錯誤訊息和條件進行疑難排解的步驟。  
+本文提供的步驟可讓您針對快速健康照護互通資源 (FHIR&#174;) * 錯誤訊息和條件的常見 Azure IoT Connector 進行疑難排解。  
 
 您也將瞭解如何建立適用于 FHIR 轉換對應 JSON (的 Azure IoT Connector 複本，例如：裝置和 FHIR) 。  
 
@@ -102,7 +102,7 @@ ms.locfileid: "94540938"
 
 |資料流程階段|描述|
 |---------------|-----------|
-|安裝程式|IoT Connector 設定實例的特定作業|
+|設定|IoT Connector 設定實例的特定作業|
 |正規化|用來正規化裝置資料的資料流程階段|
 |群組|將正規化資料分組的資料流程階段|
 |FHIRConversion|將群組標準化資料轉換成 FHIR 資源的資料流程階段|
@@ -116,7 +116,7 @@ ms.locfileid: "94540938"
 |---------------|-----------|
 |警告|資料流程進程中有一些小問題，但是裝置訊息的處理未停止|
 |錯誤|特定裝置訊息的處理已遇到錯誤，其他訊息可能會如預期般繼續執行|
-|Critical|IoT Connector 有某些系統層級的問題，而且沒有任何訊息需要處理|
+|重大|IoT Connector 有某些系統層級的問題，而且沒有任何訊息需要處理|
 
 ### <a name="the-type-of-the-error"></a>錯誤的類型
 
@@ -139,13 +139,13 @@ ms.locfileid: "94540938"
 |錯誤名稱|描述|錯誤類型 (s) |錯誤嚴重性|資料流程階段 (s) |
 |----------|-----------|-------------|--------------|------------------|
 |MultipleResourceFoundException|在 FHIR 伺服器中找到多個患者或裝置資源時，如果裝置訊息中有各自的識別碼，就會發生錯誤|FHIRResourceError|錯誤|FHIRConversion|
-|TemplateNotFoundException|裝置或 FHIR 對應範本未設定 IoT Connector 的實例|DeviceTemplateError, FHIRTemplateError|Critical|正規化、FHIRConversion|
+|TemplateNotFoundException|裝置或 FHIR 對應範本未設定 IoT Connector 的實例|DeviceTemplateError, FHIRTemplateError|重大|正規化、FHIRConversion|
 |CorrelationIdNotDefinedException|裝置對應範本中未指定相互關聯識別碼。 CorrelationIdNotDefinedException 是條件式錯誤，只有在 FHIR 觀察必須使用相互關聯識別碼來群組裝置度量，但未正確設定時，才會發生|DeviceMessageError|錯誤|正規化|
 |PatientDeviceMismatchException|當 FHIR 伺服器上的裝置資源具有患者資源的參考，而該資源與訊息中的患者識別碼不相符時，就會發生此錯誤|FHIRResourceError|錯誤|FHIRConversionError|
 |PatientNotFoundException|裝置 FHIR 資源（與裝置訊息中出現的裝置識別碼關聯）不會參考任何患者 FHIR 資源。 請注意，只有在使用 *查閱* 解析類型設定 IoT Connector 實例時，才會發生此錯誤|FHIRConversionError|錯誤|FHIRConversion|
 |DeviceNotFoundException|與裝置訊息中的裝置識別碼相關聯的 FHIR 伺服器上不存在任何裝置資源|DeviceMessageError|錯誤|正規化|
-|PatientIdentityNotDefinedException|當裝置對應範本上未設定從裝置訊息剖析患者識別碼的運算式，或裝置訊息中沒有患者識別碼時，就會發生此錯誤。 注意：只有當 IoT Connector 的解決類型設定為 [ *建立* ] 時，才會發生此錯誤|DeviceTemplateError|Critical|正規化|
-|DeviceIdentityNotDefinedException|當裝置對應範本上未設定從裝置訊息剖析裝置識別碼的運算式，或裝置訊息中沒有裝置識別碼時，就會發生此錯誤|DeviceTemplateError|Critical|正規化|
+|PatientIdentityNotDefinedException|當裝置對應範本上未設定從裝置訊息剖析患者識別碼的運算式，或裝置訊息中沒有患者識別碼時，就會發生此錯誤。 注意：只有當 IoT Connector 的解決類型設定為 [ *建立* ] 時，才會發生此錯誤|DeviceTemplateError|重大|正規化|
+|DeviceIdentityNotDefinedException|當裝置對應範本上未設定從裝置訊息剖析裝置識別碼的運算式，或裝置訊息中沒有裝置識別碼時，就會發生此錯誤|DeviceTemplateError|重大|正規化|
 |NotSupportedException|收到不支援格式的裝置訊息時，發生錯誤|DeviceMessageError|錯誤|正規化|
 
 ## <a name="creating-copies-of-the-azure-iot-connector-for-fhir-preview-conversion-mapping-json"></a>建立 Azure IoT Connector for FHIR (preview 的複本) 轉換對應 JSON
@@ -191,6 +191,4 @@ ms.locfileid: "94540938"
 >[!div class="nextstepaction"]
 >[適用于 FHIR 的 Azure IoT Connector 常見問題](fhir-faq.md)
 
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
+* 在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT Connector (preview) 。 FHIR 是 HL7 的注冊商標，可搭配 HL7 的許可權使用。

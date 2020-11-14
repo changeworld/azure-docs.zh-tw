@@ -7,20 +7,20 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746839"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629490"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
-[Azure 檔案儲存體](storage-files-introduction.md) 提供雲端中完全受控的檔案共用，可透過業界標準 [伺服器訊息區（ (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) ）來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
+[Azure 檔案儲存體](storage-files-introduction.md) 提供雲端中完全受控的檔案共用，可透過業界標準 [伺服器訊息區（ (SMB) 通訊協定](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) ）來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
 
 本文將回答有關 Azure 檔案服務特性與功能 (包括將 Azure 檔案同步與 Azure 檔案搭配使用) 的常見問題。 如果您找不到問題的答案，可透過下列管道 (依先後順序) 和我們連絡：
 
 1. 本文的留言區。
-2. [Azure 儲存體的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-file-storage.html)。
+2. [Azure 儲存體的 Microsoft 問與答頁面](/answers/topics/azure-file-storage.html)。
 3. [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\)。 
 4. Microsoft 支援服務。 若要建立新的支援要求，在 Azure 入口網站的 [說明] 索引標籤上，選取 [說明 + 支援] 按鈕，然後選取 [新增支援要求]。
 
@@ -80,7 +80,7 @@ ms.locfileid: "92746839"
 
 * <a id="file-locking"></a>
   **Azure 檔案儲存體是否支援檔案鎖定？**  
-    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式檔案鎖定，[請參閱詳細資料](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。
+    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式檔案鎖定，[請參閱詳細資料](/rest/api/storageservices/managing-file-locks)。
 
 * <a id="give-us-feedback"></a>
   **我真的希望 Azure 檔案服務中能加入某個特定功能。是否有此可能？**  
@@ -158,7 +158,7 @@ ms.locfileid: "92746839"
     
 * <a id="afs-resource-move"></a>
   **是否可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者？**  
-   是，可以將儲存體同步服務和/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式 (請參閱 [確定 Azure 檔案同步可存取儲存體帳戶](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)) 。
+   是，可以將儲存體同步服務和/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式 (請參閱 [確定 Azure 檔案同步可存取儲存體帳戶](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)) 。
 
     > [!Note]  
     > 建立雲端端點時，儲存體同步服務和儲存體帳戶必須位於相同的 Azure AD 租用戶中。 建立雲端端點之後，可以將儲存體同步服務和儲存體帳戶移至不同的 Azure AD 租用戶。
@@ -184,7 +184,7 @@ ms.locfileid: "92746839"
 
     - Azure 檔案同步會保留並複製所有判別 ACL 或 DACL (不論是以 Active Directory 為基礎或本機) 到它要同步的所有伺服器端點。 
     
-    您可以參閱[授權存取 Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，以取得 Azure 儲存體服務上所有支援通訊協定的完整表示法。 
+    您可以參閱[授權存取 Azure 儲存體](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)，以取得 Azure 儲存體服務上所有支援通訊協定的完整表示法。 
     
 * <a id="encryption-at-rest"></a>
 **如何確保我的 Azure 檔案共用會進行待用加密？**  
@@ -209,14 +209,14 @@ ms.locfileid: "92746839"
 * <a id="data-compliance-policies"></a>
 **Azure 檔案服務支援哪些資料合規性原則？**  
 
-   Azure 檔案服務和 Azure 儲存體的其他儲存體中所使用的服務都是在相同的儲存體架構上運作。 Azure 檔案服務會套用其他 Azure 儲存體服務中所使用的相同資料合規性原則。 如需 Azure 儲存體資料合規性的詳細資訊，您可以參閱 [Azure 儲存體合規性供應項目](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)，並前往 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
+   Azure 檔案服務和 Azure 儲存體的其他儲存體中所使用的服務都是在相同的儲存體架構上運作。 Azure 檔案服務會套用其他 Azure 儲存體服務中所使用的相同資料合規性原則。 如需 Azure 儲存體資料合規性的詳細資訊，您可以參閱 [Azure 儲存體合規性供應項目](../common/storage-compliance-offerings.md)，並前往 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
 
 * <a id="file-auditing"></a>
 **如何在 Azure 檔案儲存體中審核檔案存取和變更？**
 
   有兩個選項可提供 Azure 檔案儲存體的審核功能：
-  - 如果使用者直接存取 Azure 檔案共用， [Azure 儲存體記錄 (預覽) ](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) 可以用來追蹤檔案變更和使用者存取權。 這些記錄可用於疑難排解用途，且要求會以最大的方式登入。
-  - 如果使用者透過已安裝 Azure 檔案同步代理程式的 Windows Server 來存取 Azure 檔案共用，請使用 [稽核原則](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) 或協力廠商產品來追蹤檔案變更和 windows server 上的使用者存取權。 
+  - 如果使用者直接存取 Azure 檔案共用， [Azure 儲存體記錄 (預覽) ](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) 可以用來追蹤檔案變更和使用者存取權。 這些記錄可用於疑難排解用途，且要求會以最大的方式登入。
+  - 如果使用者透過已安裝 Azure 檔案同步代理程式的 Windows Server 來存取 Azure 檔案共用，請使用 [稽核原則](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) 或協力廠商產品來追蹤檔案變更和 windows server 上的使用者存取權。 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS 驗證
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ ms.locfileid: "92746839"
 * <a id="ad-aad-smb-files"></a>
 **如何檢查是否已在我的儲存體帳戶上啟用 AD DS 驗證，以及擷取網域資訊？**
 
-    如需相關指示，請參閱[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)。
+    如需相關指示，請參閱[這裡](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled)。
 
 * <a id=""></a>
 **Azure 檔案儲存體 Azure AD 驗證是否支援 Linux VM？**
@@ -288,19 +288,14 @@ ms.locfileid: "92746839"
     是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 AD 驗證。本機檔案伺服器上目錄/檔案 NTFS ACL 的變更將分層至 Azure 檔案儲存體，反之亦然。
 
 * <a id="ad-aad-smb-files"></a>
-**如何檢查是否已在我的儲存體帳戶上啟用 AD 驗證，以及 AD 網域資訊？**
-
-    您可以參閱[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)所提供的指示，來驗證是否已在您的儲存體帳戶上啟用 Azure 檔案儲存體 AD 驗證，以及擷取 AD 網域資訊。
-
-* <a id="ad-aad-smb-files"></a>
 **建立電腦帳戶或服務登入帳戶來代表 AD 中的儲存體帳戶，是否有任何差異？**
 
-    建立[電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (預設) 或[服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)與驗證使用 Azure 檔案儲存體的方式沒有任何差異。 您可以自行選擇如何在 AD 環境中，將儲存體帳戶表示為身分識別。 在 Join-AzStorageAccountForAuth 中設定的預設 DomainAccountType 是電腦帳戶。 不過，對於電腦或服務登入帳戶，AD 環境中設定的密碼到期日可能會有所不同，而且您必須在 [更新 AD 中您儲存體帳戶身分識別的密碼](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)時將其納入考慮。
+    建立[電腦帳戶](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (預設) 或[服務登入帳戶](/windows/win32/ad/about-service-logon-accounts)與驗證使用 Azure 檔案儲存體的方式沒有任何差異。 您可以自行選擇如何在 AD 環境中，將儲存體帳戶表示為身分識別。 在 Join-AzStorageAccountForAuth 中設定的預設 DomainAccountType 是電腦帳戶。 不過，對於電腦或服務登入帳戶，AD 環境中設定的密碼到期日可能會有所不同，而且您必須在 [更新 AD 中您儲存體帳戶身分識別的密碼](./storage-files-identity-ad-ds-update-password.md)時將其納入考慮。
  
 * <a id="ad-support-rest-apis"></a>
 **是否有 REST Api 可支援取得/設定/複製目錄/檔案 Windows Acl？**
 
-    是，我們支援在使用 [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (或更新版本) REST API 時，針對目錄或檔案取得、設定或複製 NTFS ACL 的 REST API。 我們也支援以 REST 為基礎的工具保存 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
+    是，我們支援在使用 [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (或更新版本) REST API 時，針對目錄或檔案取得、設定或複製 NTFS ACL 的 REST API。 我們也支援以 REST 為基礎的工具保存 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
 
 ## <a name="network-file-system"></a>網路檔案系統
 
@@ -324,7 +319,7 @@ ms.locfileid: "92746839"
 * <a id="port-445-blocked"></a>
 **我的 ISP 或 IT 封鎖連接埠 445，這使得 Azure 檔案儲存體裝載失敗。我該怎麼辦？**
 
-    您可以在[這裡](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)了解各種因應措施來解決封鎖的連接埠 445。 Azure 檔案儲存體只允許從區域或資料中心外部使用 SMB 3.0 (搭配加密支援) 進行的連線。 SMB 3.0 通訊協定引進了許多安全性功能，包括通道加密，這在網際網路上使用時非常安全。 不過，因為在較低的 SMB 版本中發現弱點的歷史原因，所以可能已封鎖埠445。 在理想的情況下，應該只針對 SMB 1.0 流量封鎖連接埠，並應在所有用戶端上關閉 SMB 1.0。
+    您可以在[這裡](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)了解各種因應措施來解決封鎖的連接埠 445。 Azure 檔案儲存體只允許從區域或資料中心外部使用 SMB 3.0 (搭配加密支援) 進行的連線。 SMB 3.0 通訊協定引進了許多安全性功能，包括通道加密，這在網際網路上使用時非常安全。 不過，因為在較低的 SMB 版本中發現弱點的歷史原因，所以可能已封鎖埠445。 在理想的情況下，應該只針對 SMB 1.0 流量封鎖連接埠，並應在所有用戶端上關閉 SMB 1.0。
 
 * <a id="expressroute-not-required"></a>
 **我必須使用 Azure ExpressRoute 來連線到 Azure 檔案服務，還是必須在內部部署中使用 Azure 檔案同步？**  
@@ -339,7 +334,7 @@ ms.locfileid: "92746839"
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **如何備份我的 Azure 檔案共用？**  
-    您可以使用定期[共用快照集](storage-snapshots-files.md)來防範意外刪除的情況。 您也可以使用 AzCopy、RoboCopy，或是可備份已掛接檔案共用的協力廠商備份工具。 Azure 備份會提供 Azure 檔案的備份。 深入了解如何[使用 Azure 備份來備份 Azure 檔案共用](https://docs.microsoft.com/azure/backup/backup-azure-files)。
+    您可以使用定期[共用快照集](storage-snapshots-files.md)來防範意外刪除的情況。 您也可以使用 AzCopy、RoboCopy，或是可備份已掛接檔案共用的協力廠商備份工具。 Azure 備份會提供 Azure 檔案的備份。 深入了解如何[使用 Azure 備份來備份 Azure 檔案共用](../../backup/backup-afs.md)。
 
 ## <a name="share-snapshots"></a>共用快照集
 
@@ -450,11 +445,11 @@ ms.locfileid: "92746839"
 ## <a name="features-and-interoperability-with-other-services"></a>功能及與其他服務的互通性
 * <a id="cluster-witness"></a>
 **我可以使用 Azure 檔案共用作為 Windows Server 容錯移轉叢集的「檔案共用見證」嗎？**  
-    Azure 檔案共用目前不支援此設定。 如需如何為 Azure Blob 儲存體設定此項的詳細資訊，請參閱[為容錯移轉叢集部署雲端見證](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) \(機器翻譯\)。
+    Azure 檔案共用目前不支援此設定。 如需如何為 Azure Blob 儲存體設定此項的詳細資訊，請參閱[為容錯移轉叢集部署雲端見證](/windows-server/failover-clustering/deploy-cloud-witness) \(機器翻譯\)。
 
 * <a id="containers"></a>
 **我是否可以在 Azure 容器執行個體上掛接 Azure 檔案共用？**  
-    是，當您想要保存超過容器執行個體存留期的資訊時，Azure 檔案共用是一個絕佳的選項。 如需詳細資訊，請參閱[使用 Azure 容器執行個體來掛接 Azure 檔案共用](../../container-instances/container-instances-mounting-azure-files-volume.md)。
+    是，當您想要保存超過容器執行個體存留期的資訊時，Azure 檔案共用是一個絕佳的選項。 如需詳細資訊，請參閱[使用 Azure 容器執行個體來掛接 Azure 檔案共用](../../container-instances/container-instances-volume-azure-files.md)。
 
 * <a id="rest-rename"></a>
 **REST API 中是否有重新命名作業？**  

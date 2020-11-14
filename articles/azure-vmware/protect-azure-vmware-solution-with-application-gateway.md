@@ -2,13 +2,13 @@
 title: 使用 Azure 應用程式閘道來保護 Azure VMware 解決方案上的 web 應用程式
 description: 設定 Azure 應用程式閘道，以安全地公開在 Azure VMware 解決方案上執行的 web 應用程式。
 ms.topic: how-to
-ms.date: 10/13/2020
-ms.openlocfilehash: 7956ea51421f5cfa893942401c1d9a5871039689
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/13/2020
+ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578454"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628959"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 應用程式閘道來保護 Azure VMware 解決方案上的 web 應用程式
 
@@ -26,14 +26,14 @@ ms.locfileid: "94578454"
 ## <a name="topology"></a>拓撲
 下圖顯示如何使用應用程式閘道來保護 (Vm) 、Azure 虛擬機器擴展集或內部部署伺服器上的 Azure IaaS 虛擬機器。 應用程式閘道會將 Azure VMware 解決方案 Vm 視為內部部署伺服器。 
 
-![應用程式閘道可保護 Azure VMware 解決方案 Vm。](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-protects.png)
+![此圖顯示應用程式閘道如何保護 (Vm) 、Azure 虛擬機器擴展集或內部部署伺服器上的 Azure IaaS 虛擬機器。](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-protects.png)
 
 > [!IMPORTANT]
 > Azure 應用程式閘道目前是公開在 Azure VMware 解決方案 Vm 上執行之 web 應用程式的唯一支援方法。
 
 下圖顯示用來驗證使用 Azure VMware 解決方案 web 應用程式之應用程式閘道的測試案例。
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="應用程式閘道與執行 web 應用程式的 Azure VMware 解決方案整合" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="此圖顯示用來驗證 Azure VMware 解決方案 web 應用程式的應用程式閘道的測試案例。" border="false":::
 
 應用程式閘道實例會部署在中樞的專用子網中。 它有 Azure 公用 IP 位址。 建議您啟用虛擬網路的標準 DDoS 保護。 Web 服務器裝載于位於 NSX T0 和 T1 路由器後方的 Azure VMware 解決方案私用雲端。 Azure VMware 解決方案使用 [ExpressRoute Global 觸及](../expressroute/expressroute-global-reach.md) ，以啟用與中樞和內部部署系統的通訊。
 
@@ -48,7 +48,7 @@ ms.locfileid: "94578454"
 
 2. 提供基本的詳細資料，如下圖所示：然後選取 **[下一步：前端>]** 。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="應用程式閘道建立":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="顯示 Azure 入口網站中 [建立應用程式閘道] 頁面的螢幕擷取畫面。":::
 
 3. 選擇前端 IP 位址類型。 若為公用，請選擇現有的公用 IP 位址，或建立一個新的位址。 選取 **[下一步：後端>]** 。
 
@@ -92,7 +92,7 @@ ms.locfileid: "94578454"
 
 1. 在您的私人雲端中，建立兩個不同的 Vm 集區。 其中一個代表 Contoso 和第二個 Fabrikam。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs.png" alt-text="建立 Vm。":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="顯示 VSphere 用戶端中網頁伺服器詳細資料摘要的螢幕擷取畫面。":::
 
     我們使用 Windows Server 2016 搭配 Internet Information Services (安裝的 IIS) 角色來說明本教學課程。 一旦安裝 Vm 之後，請執行下列 PowerShell 命令，在每個 Vm 上設定 IIS。 
 
@@ -103,13 +103,13 @@ ms.locfileid: "94578454"
 
 2. 在現有的應用程式閘道實例中，從左側功能表中選取 [ **後端** 集區]  **，選取 [新增]** ，然後輸入新集區的詳細資料。 選取右窗格中的 [ **新增** ]。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-02.png" alt-text="新增後端集區。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="新增後端集區的後端集區頁面螢幕擷取畫面。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png":::
 
 3. **在 [接聽** 程式] 區段中，為每個網站建立新的接聽程式。 輸入每個接聽程式的詳細資料，然後選取 [ **新增** ]。
 
 4. 在左側選取 [ **HTTP 設定** ]，然後選取左窗格中的 [ **新增** ]。 填入詳細資料以建立新的 HTTP 設定，然後選取 [ **儲存** ]。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png" alt-text="填入詳細資料以建立新的 HTTP 設定，然後選取 [儲存]。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="[HTTP 設定] 頁面的螢幕擷取畫面，可建立新的 HTTP 設定。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
 
 5. 在左側功能表的 [ **規則** ] 區段中建立規則。 將每個規則與對應的接聽程式產生關聯。 選取 [新增]  。
 
@@ -117,7 +117,7 @@ ms.locfileid: "94578454"
 
 7. 測試連接。 開啟您慣用的瀏覽器，並流覽至裝載于 Azure VMware 解決方案環境的不同網站，例如 http://www.fabrikam.com 。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-07.png" alt-text="測試連接。":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="顯示成功測試連接的瀏覽器頁面螢幕擷取畫面。":::
 
 ### <a name="routing-by-url"></a>依 URL 路由
 
@@ -125,7 +125,7 @@ ms.locfileid: "94578454"
 
 1. 在您的私人雲端中，建立虛擬機器集區來代表 web 伺服陣列。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs.png" alt-text="在 Azure VMware 解決方案上建立 Vm 的集區。":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool.png" alt-text="VMSphere 用戶端中頁面的螢幕擷取畫面，其中顯示另一部 VM 的摘要。":::
 
     已使用已安裝 IIS 角色的 Windows Server 2016 來說明此教學課程。 一旦安裝 Vm 之後，請執行下列 PowerShell 命令，為每個 VM 教學課程設定 IIS。 
 
@@ -160,31 +160,31 @@ ms.locfileid: "94578454"
    1. 選取 [新增]  。 
    1. 針對 **contoso-images** 和 **contoso-video** 重複此程式，並新增一個唯一的 VM 作為目標。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png" alt-text="新增三個新的後端集區。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="[後端集區] 頁面的螢幕擷取畫面，其中顯示三個新的後端集區。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png":::
 
 3. **在 [接聽** 程式] 區段中，使用通訊埠8080建立 [基本] 類型的新接聽程式。
 
 4. 在左側導覽中，選取 [ **HTTP 設定** ]，然後選取左窗格中的 [ **新增** ]。 填入詳細資料以建立新的 HTTP 設定，然後選取 [ **儲存** ]。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-04.png" alt-text="HTP 設定。":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="[新增 HTTP 設定] 頁面的螢幕擷取畫面，其中顯示 HTTP 設定的設定。":::
 
 5. 在左側功能表的 [ **規則** ] 區段中建立規則。 將每個規則與先前建立的接聽程式產生關聯。 然後設定主要後端集區和 HTTP 設定。 選取 [新增]  。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-07.png" alt-text="在左側功能表的 [規則] 區段中建立規則。":::
+    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="[新增路由規則] 頁面的螢幕擷取畫面，可將路由規則設定為後端目標。":::
 
 6. 測試設定。 存取 Azure 入口網站上的應用程式閘道，並在 [ **總覽** ] 區段中複製公用 IP 位址。 
 
    1. 開啟新的瀏覽器視窗，並輸入 URL `http://<app-gw-ip-address>:8080` 。 
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-08.png" alt-text="測試 Azure 入口網站的設定。":::
+      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="顯示成功測試設定的瀏覽器頁面螢幕擷取畫面。":::
 
    1. 將 URL 變更為 `http://<app-gw-ip-address>:8080/images/test.htm`。
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-09.png" alt-text="變更 URL。":::
+      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="另一個成功測試的螢幕擷取畫面，其中包含新的 URL。":::
 
    1. 請再次將 URL 變更為 `http://<app-gw-ip-address>:8080/video/test.htm` 。
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-10.png" alt-text="再次變更 URL。":::
+      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="具有最終 URL 的成功測試螢幕擷取畫面。":::
 
 ## <a name="next-steps"></a>後續步驟
 

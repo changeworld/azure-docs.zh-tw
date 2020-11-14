@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 128a974c41b1c09196ecab2070136d9568b08f5d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331782"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629473"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
 
 強烈建議您先閱讀[規劃 Azure 檔案服務部署](storage-files-planning.md)和[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)，再完成本文章中描述的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -48,7 +48,7 @@ ms.locfileid: "94331782"
     > [!Important]  
     > 如果您打算使用伺服器註冊 UI，而不是直接向 PowerShell 註冊，您必須使用 PowerShell 5.1。
 
-1. 如果您選擇使用 PowerShell 5.1，請確定至少已安裝 .NET 4.7.2。 深入瞭解您系統上的 [.NET Framework 版本和](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) 相依性。
+1. 如果您選擇使用 PowerShell 5.1，請確定至少已安裝 .NET 4.7.2。 深入瞭解您系統上的 [.NET Framework 版本和](/dotnet/framework/migration-guide/versions-and-dependencies) 相依性。
 
     > [!Important]  
     > 如果您要在 Windows Server Core 上安裝 .NET 4.7.2 +，就必須使用 `quiet` 和 `norestart` 旗標安裝，否則安裝將會失敗。 例如，如果安裝 .NET 4.8，命令看起來會如下所示：
@@ -56,7 +56,7 @@ ms.locfileid: "94331782"
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-1. Az PowerShell 模組，您可以依照此處的指示來安裝： [安裝和設定 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+1. Az PowerShell 模組，您可以依照此處的指示來安裝： [安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps)。
      
     > [!Note]  
     > 當您安裝 Az PowerShell 模組時，現在會自動安裝 Az. Microsoft.storagesync 模組。
@@ -70,13 +70,13 @@ ms.locfileid: "94331782"
 
 1. [安裝 Azure CLI](/cli/azure/install-azure-cli)
 
-   如果您想要的話，也可以使用 Azure Cloud Shell 來完成本教學課程中的步驟。  Azure Cloud Shell 是透過瀏覽器使用的互動式 Shell 環境。  使用下列其中一種方法來開始 Cloud Shell：
+   您也可以使用 Azure Cloud Shell 來完成本教學課程中的步驟。  Azure Cloud Shell 是互動式殼層環境，可在瀏覽器中使用。  使用下列其中一種方法啟動 Cloud Shell：
 
    - 選取程式碼區塊右上角的 [試試看]。 **試用它** 將會開啟 Azure Cloud Shell，但不會自動將程式碼複製到 Cloud Shell。
 
-   - 開啟 Cloud Shell，方法是前往 [https://shell.azure.com](https://shell.azure.com)
+   - 前往 [https://shell.azure.com](https://shell.azure.com) 來開啟 Cloud Shell
 
-   - 在 [ [Azure 入口網站](https://portal.azure.com)中右上角的功能表列上，選取 [ **Cloud Shell** ] 按鈕
+   - 選取 [Azure 入口網站](https://portal.azure.com)右上角功能表列上的 [Cloud Shell] 按鈕
 
 1. 登入。
 
@@ -573,7 +573,7 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 預設的 VSS 快照集數目上限為每個磁片區 (64) ，以及要取得的預設排程，最多會導致資訊工作者可從中還原的舊版45天，取決於您可以在磁片區上儲存的 VSS 快照集數目。
 
-如果每個磁片區的最大 64 VSS 快照集不是正確的設定，您可以透過登錄機 [碼來變更](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)該值。
+如果每個磁片區的最大 64 VSS 快照集不是正確的設定，您可以透過登錄機 [碼來變更](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)該值。
 若要讓新的限制生效，您必須重新執行 Cmdlet，以在先前啟用的每個磁片區上啟用先前的版本相容性，並使用-Force 旗標，將每個磁片區的最大 VSS 快照集數目帶到帳戶。 這會導致新計算的相容天數。 請注意，這項變更只會在新階層的檔案上生效，並覆寫您可能進行的 VSS 排程上的任何自訂。
 
 <a id="proactive-recall"></a>
@@ -581,7 +581,7 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 使用代理程式第11版時，伺服器端點上會出現新的模式。 這種模式可讓分散在世界各地的公司在本機使用者存取任何檔案之前，預先填入遠端區域中的伺服器快取。 在伺服器端點上啟用時，此模式會導致此伺服器重新叫用在 Azure 檔案共用中建立或變更的檔案。
 
-### <a name="scenario"></a>狀況
+### <a name="scenario"></a>案例
 
 全球各地的公司在美國和印度都有分公司。 早上 (US 時間) 資訊工作者為全新的專案建立新的資料夾和新的檔案，並在每日工作。 Azure 檔案同步會將資料夾和檔案同步至 Azure 檔案共用 (雲端端點) 。 印度的資訊工作者將繼續以其時區處理專案。 當他們抵達早上，印度的本機 Azure 檔案同步啟用的伺服器必須在本機提供這些新檔案，以便印度的團隊可以有效率地使用本機快取。 啟用此模式可讓初始檔案存取速度變慢，因為視需要重新叫用，並可讓伺服器在檔案于 Azure 檔案共用中變更或建立時，主動地重新叫用檔案。
 
@@ -599,7 +599,7 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 # <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
 
-您可以透過 [AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) 指令 Cmdlet 修改 PowerShell 中的伺服器端點屬性。
+您可以透過 [AzStorageSyncServerEndpoint](/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) 指令 Cmdlet 修改 PowerShell 中的伺服器端點屬性。
 
 ```powershell
 # Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"

@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568466"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629303"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 檔案共用通訊協定
 
-Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔案共用。 [伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) 。 Azure 檔案儲存體目前不支援多重通訊協定存取，因此共用只能是 NFS 共用或 SMB 共用。 基於這個原因，建議您在建立 Azure 檔案共用之前，判斷哪一個通訊協定最適合您的需求。
+Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔案共用。 [伺服器訊息區 (SMB) 通訊協定](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) 。 Azure 檔案儲存體目前不支援多重通訊協定存取，因此共用只能是 NFS 共用或 SMB 共用。 基於這個原因，建議您在建立 Azure 檔案共用之前，判斷哪一個通訊協定最適合您的需求。
 
 ## <a name="differences-at-a-glance"></a>差異一覽
 
@@ -26,17 +26,17 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 |存取通訊協定     |NFS 4。1         |SMB 2.1、SMB 3。0         |
 |支援的 OS     |Linux 核心4.3 版 +         |Windows 2008 R2 +、Linux 核心版本 4.11 +         |
 |[可用層](storage-files-planning.md#storage-tiers)     |進階儲存體         |Premium 儲存體、交易優化、經常性存取、非經常性存取         |
-|[備援性](storage-files-planning.md#redundancy)     |LRS         |LRS、ZRS、GRS         |
+|[備援](storage-files-planning.md#redundancy)     |LRS         |LRS、ZRS、GRS         |
 |驗證     |僅限以主機為基礎的驗證        |以身分識別為基礎的驗證，以使用者為基礎的驗證         |
 |權限     |UNIX 樣式許可權         |NTFS 樣式許可權         |
 |檔案系統語義     |POSIX 相容         |不符合 POSIX 規範         |
 |區分大小寫     |區分大小寫         |不區分大小寫         |
-|硬連結支援     |支援         |不支援         |
-|符號連結支援     |支援         |不支援         |
-|刪除或修改開啟的檔案     |支援         |不支援         |
+|硬連結支援     |支援         |不受支援         |
+|符號連結支援     |支援         |不受支援         |
+|刪除或修改開啟的檔案     |支援         |不受支援         |
 |鎖定     |位元組範圍諮詢網路鎖定管理員         |支援         |
-|公用 IP 安全清單 | 不支援 | 支援|
-|通訊協定 interop| 不支援 | FileREST|
+|公用 IP 安全清單 | 不受支援 | 支援|
+|通訊協定 interop| 不受支援 | FileREST|
 
 ## <a name="nfs-shares-preview"></a>NFS 共用 (預覽) 
 
@@ -64,7 +64,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 - [私人端點](storage-files-networking-overview.md#private-endpoints)
 - [Azure VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
     - [點對站 (P2S) VPN](../../vpn-gateway/point-to-site-about.md)
-    - [站對站](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
+    - [站對站](../../vpn-gateway/design.md#s2smulti)
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)
 - [受限制的公用端點](storage-files-networking-overview.md#storage-account-firewall-settings)
 

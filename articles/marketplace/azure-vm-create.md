@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: bfd67688ce30b62002e26cea9f7be4df1cb6e622
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ef80d26336ddbe3c015dfcde0c5ed29b762f39b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126442"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629711"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>如何在 Azure Marketplace 上建立虛擬機器供應專案
 
@@ -22,13 +22,13 @@ ms.locfileid: "93126442"
 
 ## <a name="before-you-begin"></a>開始之前
 
-如果您還沒有這麼做，請參閱 [規劃虛擬機器供應](marketplace-virtual-machines.md)專案。 它將說明虛擬機器的技術需求，並列出您在建立供應專案時所需的資訊和資產。 
+如果您還沒有這麼做，請參閱 [規劃虛擬機器供應](marketplace-virtual-machines.md)專案。 它將說明虛擬機器的技術需求，並列出您在建立供應專案時所需的資訊和資產。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左窗格上，選取 [商業 Marketplace] > [概觀]。
-3. 在 [概觀] 頁面上，選取 [新增供應項目] > [Azure 虛擬機器]。
+3. 在 [ **總覽** ] 頁面上，選取 [ **+ 新增供應** 專案  >  **Azure 虛擬機器** ]。
 
     ![顯示左窗格功能表選項和 [新增供應項目] 按鈕的螢幕擷取畫面。](./media/create-vm/new-offer-azure-virtual-machine.png)
 
@@ -45,6 +45,8 @@ ms.locfileid: "93126442"
 
 - Azure Marketplace 上不使用此名稱。 其與向客戶顯示的供應項目名稱和其他值不同。
 
+選取 [建立] 以產生供應項目並繼續。 合作夥伴中心開啟 **供應專案設定** 頁面。
+
 ## <a name="enable-a-test-drive-optional"></a>啟用 (選用) 的試用產品
 
 試用產品是為潛在客戶展示您的供應專案的絕佳方式，方法是讓他們能夠存取預先設定的環境一段固定的時數。 提供試用產品會產生更高的轉換率，並產生高度合格的潛在客戶。 若要深入瞭解試用產品，請參閱 [什麼是試用產品？](./what-is-test-drive.md)。
@@ -52,16 +54,14 @@ ms.locfileid: "93126442"
 > [!TIP]
 > 試用產品不同于免費試用版。 您可以提供試用產品、免費試用或兩者。 它們都能提供客戶一段固定時間的解決方案。 但是，試用產品也包含實際操作的自我引導式導覽，說明您產品的主要功能，以及在實際執行案例中所示範的優點。
 
-**啟用試用產品**
-1.  在 [ **測試磁片磁碟機** ] 下，選取 [ **啟用試用** 產品] 核取方塊。
-1.  從顯示的清單中選取 [試用產品] 類型。
+若要啟用測試磁片磁碟機，請選取 [ **啟用試用** 產品] 核取方塊。 您稍後將會設定試用產品。 使用試用產品時，需要設定 CRM (請參閱下一節) 。
 
-## <a name="configure-lead-management"></a>設定潛在客戶管理
+## <a name="configure-customer-leads-management"></a>設定客戶潛在客戶管理
 
-當您使用合作夥伴中心將供應項目發佈到商業 Marketplace 時，將其連線到客戶關係管理 (CRM) 系統。 這可讓您在有人對您的產品感興趣或使用您的產品時，立即收到客戶連絡人資訊。 如果您想要啟用試用產品，則需要連接到 CRM (請參閱) 上一節。 否則，可以選擇連線到 CRM。
+當您使用合作夥伴中心將供應專案發佈至商用 marketplace 時，請將它連線到您的客戶關係管理 (CRM) 系統。 這可在有人對您的產品感興趣或加以使用時，讓您立即收到客戶連絡人資訊。 如果您想要啟用試用產品，則需要連接到 CRM (請參閱) 上一節。 否則，可以選擇連線到 CRM。
 
 1. 在 [ **客戶潛在客戶** ] 下，選取 [連線 **]** 連結。
-1. 在 [ **連接詳細資料** ] 對話方塊中，從清單中選取潛在客戶目的地。
+1. 在 [ **連接詳細資料** ] 對話方塊中，選取潛在客戶目的地。
 1. 完成顯示的欄位。 如需詳細步驟，請參閱下列文章：
 
    - [設定供應項目以將潛在客戶傳送至 Azure 資料表](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
@@ -71,15 +71,11 @@ ms.locfileid: "93126442"
    - [設定您的供應項目，以便將潛在客戶傳送至 Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. 若要驗證您所提供的設定，請選取 [ **驗證** ] 連結。
-1. 若要關閉對話方塊，請選取 **[確定]** 。
+1. 選取 [連接]  。
 
-## <a name="resell-through-csps"></a>透過 CSP 轉售
-
-在[雲端解決方案提供者 (CSP)](https://azure.microsoft.com/offers/ms-azr-0145p/) 方案中，將供應項目提供給合作夥伴，以延伸您供應項目的觸角。 所有自備授權 (BYOL) 方案都會自動加入方案中。 您也可以選擇加入非 BYOL 方案。
-
-選取 [建立] 以產生供應項目並繼續。
+選取 [ **儲存草稿** ]，然後繼續前往左側導覽功能表中的下一個索引標籤 [ **屬性** ]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [設定虛擬機器供應專案屬性](azure-vm-create-properties.md)
+- [如何設定虛擬機器供應專案屬性](azure-vm-create-properties.md)
 - [陳列供應項目的最佳做法](gtm-offer-listing-best-practices.md)

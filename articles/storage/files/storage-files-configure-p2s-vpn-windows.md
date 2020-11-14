@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515313"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629252"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>在 Windows 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體
 您可以使用點對站 (P2S) VPN 連線，從 Azure 外部透過 SMB 掛接 Azure 檔案共用，而不需要開啟連接埠 445。 點對站 VPN 連線是 Azure 與個別用戶端之間的 VPN 連線。 若要將 P2S VPN 連線用於 Azure 檔案儲存體，必須為每個要連線的用戶端設定 P2S VPN 連線。 如果您有許多用戶端需要從內部部署網路連線至 Azure 檔案共用，您可以對每個用戶端使用站對站 (S2S) VPN 連線，而不使用點對站連線。 若要深入了解，請參閱[設定站對站 VPN 以用於 Azure 檔案儲存體](storage-files-configure-s2s-vpn.md)。
@@ -22,7 +22,7 @@ ms.locfileid: "85515313"
 本文將詳細說明在 Windows (Windows 用戶端和 Windows Server) 上設定點對站 VPN 以直接在內部部署掛接 Azure 檔案共用的步驟。 如果您想要透過 VPN 來路由傳送 Azure 檔案同步流量，請參閱[設定 Azure 檔案同步 Proxy 和防火牆設定](storage-sync-files-firewall-and-proxy.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
-- 最新版本的 Azure PowerShell 模組。 如需如何安裝 Azure PowerShell 的詳細資訊，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)，並選取您的作業系統。 您也可以在 Windows 上使用 Azure CLI，但以下顯示的是適用於 Azure PowerShell 的指示。
+- 最新版本的 Azure PowerShell 模組。 如需如何安裝 Azure PowerShell 的詳細資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)，並選取您的作業系統。 您也可以在 Windows 上使用 Azure CLI，但以下顯示的是適用於 Azure PowerShell 的指示。
 
 - 您要在內部部署掛接的 Azure 檔案共用。 Azure 檔案共用會部署在儲存體帳戶中，也就是代表儲存體共用集區的管理結構，您可以在此集區中部署多個檔案共用，以及其他儲存體資源 (例如，Blob 容器或佇列)。 您可以在[建立 Azure 檔案共用](storage-how-to-create-file-share.md)中深入了解如何部署 Azure 檔案共用和儲存體帳戶。
 
@@ -212,7 +212,7 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>設定 VPN 用戶端
-Azure 虛擬網路閘道會建立可供下載的套件，其中包含在您的內部部署 Windows 機器上初始化 VPN 連線所需的組態檔。 我們將使用 Windows 10/Windows Server 2016+ 的 [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) 功能來設定 VPN 連線。 此套件也包含可執行檔套件，會在需要時設定舊版 Windows VPN 用戶端。 本指南使用 Always On VPN，而不是舊版 Windows VPN 用戶端，因為 Always On VPN 用戶端可讓使用者直接從 Azure VPN 進行連線/中斷連線，而無須具備機器的系統管理員權限。 
+Azure 虛擬網路閘道會建立可供下載的套件，其中包含在您的內部部署 Windows 機器上初始化 VPN 連線所需的組態檔。 我們將使用 Windows 10/Windows Server 2016+ 的 [Always On VPN](/windows-server/remote/remote-access/vpn/always-on-vpn/) 功能來設定 VPN 連線。 此套件也包含可執行檔套件，會在需要時設定舊版 Windows VPN 用戶端。 本指南使用 Always On VPN，而不是舊版 Windows VPN 用戶端，因為 Always On VPN 用戶端可讓使用者直接從 Azure VPN 進行連線/中斷連線，而無須具備機器的系統管理員權限。 
 
 下列指令碼會安裝對虛擬網路閘道進行驗證、下載及安裝 VPN 套件所需的用戶端憑證。 請記得將 `<computer1>` 和 `<computer2>` 取代為所需的電腦。 您可以視需要在不限數量的機器上執行此指令碼，只要將更多 PowerShell 工作階段新增至 `$sessions` 陣列即可。 您的使用帳戶必須是每個機器上的系統管理員。 如果其中一個機器是您執行指令碼的本機電腦，則您必須從提升權限的 PowerShell 工作階段執行指令碼。 
 

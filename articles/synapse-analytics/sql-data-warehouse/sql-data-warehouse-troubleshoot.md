@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2019
+ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9811710971b411aaaed64ec0072dcf7b6b116d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340272"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630051"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse SQL 疑難排解
 
@@ -39,6 +39,12 @@ ms.locfileid: "93340272"
 | Visual Studio 物件總管中遺漏 Azure AD 使用者           | 這是已知的問題。  解決方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中檢視使用者。  若要深入瞭解如何搭配使用 Azure Active Directory 與專用的 SQL 集區，請參閱 [Azure Synapse 的驗證](sql-data-warehouse-authentication.md) 。 |
 | 手動撰寫指令碼、使用指令碼精靈，或透過 SSMS 連線很緩慢、無回應或產生錯誤 | 請確定已在主要資料庫中建立使用者。 在腳本選項中，也請確認引擎版本設定為 "Microsoft Azure Synapse Analytics Edition"，且引擎類型為 "Microsoft Azure SQL Database"。 |
 | 無法在 SSMS 中產生指令碼                               | 如果 [產生相依物件的腳本] 選項設定為 "True"，則為專用的 SQL 集區產生腳本會失敗。 因應措施是，使用者必須手動移至 **[工具] -> [選項] -> [SQL Server 物件總管] -> [產生相依物件的指令碼] 選項，並設定為 false** |
+
+## <a name="data-ingestion-and-preparation"></a>資料內嵌和準備
+
+| 問題                                                        | 解決方案                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 使用 CETAS 匯出空字串會在 Parquet 和 ORC 檔案中產生 Null 值。 注意：如果您要從不是 Null 條件約束的資料行匯出空字串，則 CETAS 會產生拒絕的記錄，而且匯出可能會失敗。 | 移除 CETAS 的 SELECT 語句中的空字串或違規資料行。 |
 
 ## <a name="performance"></a>效能
 

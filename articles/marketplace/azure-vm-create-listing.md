@@ -7,37 +7,37 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 2af96c0c2e850d8e1be67c23e71aa677773c1e03
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283910"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629592"
 ---
 # <a name="how-to-configure-virtual-machine-offer-listing-details"></a>如何設定虛擬機器供應專案清單詳細資料
 
-在 [供應項目清單] 頁面上，您可以定義供應項目詳細資料，例如供應項目名稱、描述、連結和連絡人。
+在 [ **供應專案清單** ] 頁面上 (從合作夥伴中心) 的左側導覽功能表中選取，您可以定義供應專案詳細資料，例如供應專案名稱、描述、連結和連絡人。
 
 > [!NOTE]
-> 您的供應專案清單內容（例如描述、檔、螢幕擷取畫面及使用規定）不一定要使用英文，只要供應專案描述是以片語開頭，「此應用程式僅適用于」 \<non-English language> 。 您也可以針對以不同於供應項目清單內容中所使用的語言提供內容的網站，提供連結 URL。
+> 您的供應專案清單內容（例如描述、檔、螢幕擷取畫面及使用規定）不一定要使用英文，只要供應專案描述是以片語開頭，「此應用程式僅適用于」 \<non-English language> 。 您也可以提供網址來連結至網站，而該網站提供的語言不是供應專案清單內容中所使用的語言內容。
 
 ## <a name="marketplace-details"></a>Marketplace 詳細資料
 
 ### <a name="name"></a>名稱
 
-您在此處輸入的名稱會當作供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會自動填入您在 [供應項目別名] 方塊中輸入的名稱。 您稍後可以變更此名稱。 名稱：
+您在此處輸入的名稱會當作供應項目清單標題向客戶顯示。 當您建立供應專案時，此欄位會自動填入您在 [ **供應專案別名** ] 方塊中輸入的名稱。 名稱：
 
-- 可以是商標。 您可以包含商標和著作權符號。
-- 不得包含超過 50 個字元。
+- 可以包含商標和著作權符號。
+- 必須為50個字元或更少。
 - 不可包含表情圖示。
 
 ### <a name="search-results-summary"></a>搜尋結果摘要
 
-提供供應項目的簡短描述，以顯示在 Azure Marketplace 搜尋結果中。 簡短描述最多可以包含 100 個字元。
+提供供應專案的簡短描述，以顯示在 Azure Marketplace 搜尋結果中。 簡短描述最多可以包含 100 個字元。
 
-### <a name="long-summary"></a>完整摘要
+### <a name="short-description"></a>簡短描述
 
-提供供應項目的完整描述，以顯示在 Azure Marketplace 搜尋結果中。 完整描述最多可以包含 256 個字元。
+提供供應專案的較長描述，以顯示在 Azure Marketplace 搜尋結果中。 完整描述最多可以包含 256 個字元。
 
 ### <a name="description"></a>描述
 
@@ -49,14 +49,14 @@ ms.locfileid: "92283910"
 
 ### <a name="privacy-policy-link"></a>隱私權原則連結
 
-輸入貴組織隱私權原則的網址 (URL)。 確保您的供應項目符合隱私權法律及規定。 您也必須在網站上張貼有效的隱私權原則。
+輸入貴組織隱私權原則的網址 (URL)。 確定您的供應專案符合隱私權法律和規定。 您也必須在網站上張貼有效的隱私權原則。
 
 ## <a name="useful-links"></a>實用的連結
 
-提供有關您供應項目的補充線上文件。 若要新增連結，請選取 [新增連結]，然後完成下列欄位：
+提供有關您供應項目的補充線上文件。 若要新增連結，請選取 [ **新增連結** ] 並完成下欄欄位：
 
-- **Name**：客戶將會在 [詳細資料] 頁面上看到名稱。
-- **連結 (URL)** ：輸入可讓客戶檢視線上文件的連結。
+- **Name** ：客戶將會在 [詳細資料] 頁面上看到名稱。
+- **連結** ：輸入可讓客戶查看線上檔的網址。
 
 ## <a name="customer-support-links"></a>客戶支援連結
 
@@ -67,34 +67,30 @@ ms.locfileid: "92283910"
 
 ## <a name="partner-support-contact"></a>合作夥伴支援連絡人
 
-提供連絡人資訊，讓 Microsoft 合作夥伴在您的客戶開立支援票證時使用。 Azure Marketplace 上不會列出此資訊。
-
-- 名稱
-- 電子郵件
-- 電話
+提供客戶開啟支援票證時，Microsoft 合作夥伴所要使用的 **名稱** 、 **電子郵件** 和 **電話** 。 Azure Marketplace 上不會列出此資訊。
 
 ## <a name="engineering-contact"></a>工程連絡人
 
-提供當您的供應項目有問題 (包括認證的問題) 時，Microsoft 所要使用的連絡人資訊。 Azure Marketplace 上不會列出此資訊。
+當您的供應專案發生問題（包括認證問題）時，請提供 Microsoft 所要使用的 **名稱** 、 **電子郵件** 和 **電話** 。 Azure Marketplace 上不會列出此資訊。
 
-- 名稱
-- 電子郵件
-- 電話
+## <a name="cloud-solution-provider-program-contact"></a>雲端解決方案提供者計畫連絡人
 
-## <a name="azure-marketplace-media"></a>Azure Marketplace 媒體
+如果適用) ，請提供負責處理您的 CSP 方案 (之人員的 **名稱** 、 **電子郵件** 和 **電話** 。 Azure Marketplace 上不會列出此資訊。 針對 [ **CSP 方案行銷** 資料]，請輸入此方案中的合作夥伴可以在其中查看行銷資料的網址。
 
-提供要搭配您供應項目使用的標誌和影像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
+## <a name="marketplace-media"></a>Marketplace 媒體
+
+提供要搭配您供應項目使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
 [!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
-### <a name="azure-marketplace-logos"></a>Azure Marketplace 標誌
+### <a name="logos"></a>標誌
 
 提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- 從 216 x 216 到 350 x 350 px 的 **大型** (，需要) 
 - **中型** (90 x 90 px，選擇性) 
 - **Small** (48 x 48 px，選擇性) 
 
@@ -114,8 +110,8 @@ ms.locfileid: "92283910"
 
 如需其他 Marketplace 清單資源，請參閱 [Marketplace 供應項目清單的最佳做法](gtm-offer-listing-best-practices.md) \(部分機器翻譯\)。
 
-選取 [儲存草稿]，然後再繼續。
+選取 [ **儲存草稿** ]，然後繼續前往左側導覽功能表中的下一個索引標籤， **預覽物件** 。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立方案](azure-vm-create-plans.md)
+- [建立預覽物件](azure-vm-create-preview.md)

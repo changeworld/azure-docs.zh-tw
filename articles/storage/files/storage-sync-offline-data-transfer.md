@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034340"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630221"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 將大量資料遷移至 Azure 檔案同步
 您可以透過兩種方式將大量資料移轉至 Azure 檔案同步：
@@ -25,7 +25,7 @@ ms.locfileid: "88034340"
 ## <a name="migration-tools"></a>移轉工具
 我們在本文中描述的程式不僅適用于資料箱，也適用于其他離線遷移工具。 它也適用于直接透過網際網路運作的 AzCopy、Robocopy 或合作夥伴工具和服務等工具。 不過，若要克服最初的上傳挑戰，請遵循本文中的步驟，以與 Azure 檔案同步相容的方式來使用這些工具。
 
-在某些情況下，您必須先從一部 Windows Server 移至另一部 Windows Server，再採用 Azure 檔案同步。 [儲存體遷移服務](https://aka.ms/storagemigrationservice) (SMS) 可協助您解決這種情況。 無論您是否需要遷移至 Azure 檔案同步 (Windows Server 2012R2 和) 更新版本所支援的伺服器作業系統版本，或是因為您購買了新系統以進行 Azure 檔案同步，SMS 有許多功能和優點可協助您順利完成遷移。
+在某些情況下，您必須先從一部 Windows Server 移至另一部 Windows Server，再採用 Azure 檔案同步。 [儲存體遷移服務](/windows-server/storage/storage-migration-service/overview) (SMS) 可協助您解決這種情況。 無論您是否需要遷移至 Azure 檔案同步 (Windows Server 2012R2 和) 更新版本所支援的伺服器作業系統版本，或是因為您購買了新系統以進行 Azure 檔案同步，SMS 有許多功能和優點可協助您順利完成遷移。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>使用工具離線傳送資料的優點
 以下是使用傳輸工具（例如資料箱進行離線遷移）的主要優點：
@@ -51,10 +51,10 @@ ms.locfileid: "88034340"
 
 | 步驟 | 詳細資料 |
 |---|---------------------------------------------------------------------------------------|
-| ![步驟 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [訂購資料箱](../../databox/data-box-deploy-ordered.md)。 資料箱系列提供 [數種產品](https://azure.microsoft.com/services/storage/databox/data) 來滿足您的需求。 當您收到資料箱時，請依照其[檔將您的資料複製](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到資料箱上的此 UNC 路徑： * \\<DeviceIPAddres \> \<StorageAccountName_AzFile\> \<ShareName\> *。 在這裡， *共用* 名是暫存共用的名稱。 將資料箱送回 Azure。 |
+| ![步驟 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [訂購資料箱](../../databox/data-box-deploy-ordered.md)。 資料箱系列提供 [數種產品](https://azure.microsoft.com/services/storage/databox/data) 來滿足您的需求。 當您收到資料箱時，請依照其 [檔將您的資料複製](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到資料箱上的此 UNC 路徑： *\\<DeviceIPAddres \> \<StorageAccountName_AzFile\> \<ShareName\>* 。 在這裡， *共用* 名是暫存共用的名稱。 將資料箱送回 Azure。 |
 | ![步驟 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 等候您的檔案顯示在您選擇作為暫時暫存共用的 Azure 檔案共用中。 *請勿啟用這些共用的同步處理。* |
 | ![步驟 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>針對資料箱為您建立的每個檔案共用，建立新的空白共用。 這個新的共用應該位於與資料箱共用相同的儲存體帳戶中。 [如何建立新的 Azure 檔案共用](storage-how-to-create-file-share.md)。</li><li>在儲存體同步服務中[建立同步處理群組](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)。 參考空的共用作為雲端端點。 針對每個資料箱檔案共用，重複此步驟。 [設定 Azure 檔案同步](storage-sync-files-deployment-guide.md)。</li></ul> |
-| ![步驟 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [將您的即時伺服器目錄新增為伺服器端點](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此程式中，指定您已將檔案移至 Azure，並參考預備共用。 您可以視需要啟用或停用雲端階層處理。 在您的即時伺服器上建立伺服器端點時，請參考預備共用。 在 [ **新增伺服器端點** ] 分頁的 [ **離線資料傳輸**] 下，選取 [ **已啟用**]，然後選取與雲端端點必須位於相同儲存體帳戶中的暫存共用。 在這裡，可用的共用清單會依儲存體帳戶和尚未同步的共用進行篩選。 下表中的螢幕擷取畫面顯示如何在 Azure 入口網站中的伺服器端點建立期間參考資料箱共用。 |
+| ![步驟 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [將您的即時伺服器目錄新增為伺服器端點](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此程式中，指定您已將檔案移至 Azure，並參考預備共用。 您可以視需要啟用或停用雲端階層處理。 在您的即時伺服器上建立伺服器端點時，請參考預備共用。 在 [ **新增伺服器端點** ] 分頁的 [ **離線資料傳輸** ] 下，選取 [ **已啟用** ]，然後選取與雲端端點必須位於相同儲存體帳戶中的暫存共用。 在這裡，可用的共用清單會依儲存體帳戶和尚未同步的共用進行篩選。 下表中的螢幕擷取畫面顯示如何在 Azure 入口網站中的伺服器端點建立期間參考資料箱共用。 |
 | ![步驟 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | 當您在上一個步驟中新增伺服器端點之後，資料就會自動從正確的來源開始流動。 [ [同步共用](#syncing-the-share) ] 區段說明從資料箱共用或從 Windows Server 流向資料流程的時間 |
 | |
 
@@ -75,13 +75,13 @@ Azure 檔案同步可確保即使您使用的大量遷移工具一開始未傳�
 當您啟用同步處理時，伺服器的內容會決定命名空間的形狀。 如果在資料箱快照集和遷移完成之後，從本機伺服器刪除檔案，這些檔案不會移入即時的同步命名空間。 它們會留在暫存共用中，但不會複製它們。 這是必要的，因為同步處理會根據即時伺服器保留命名空間。 資料箱 *快照* 集只是有效率的檔案複製的預備基礎。 它不是即時命名空間圖形的授權單位。
 
 ## <a name="cleaning-up-after-bulk-migration"></a>大量遷移之後進行清除 
-當伺服器完成其命名空間的初始同步處理時，資料箱大量遷移的檔案會使用暫存檔案共用。 在 [ **伺服器端點屬性** ] 視窗中 Azure 入口網站的 [ **離線資料傳輸** ] 區段中，狀態會從 [ **進行中** ] 變更為 [ **已完成**]。 
+當伺服器完成其命名空間的初始同步處理時，資料箱大量遷移的檔案會使用暫存檔案共用。 在 [ **伺服器端點屬性** ] 視窗中 Azure 入口網站的 [ **離線資料傳輸** ] 區段中，狀態會從 [ **進行中** ] 變更為 [ **已完成** ]。 
 
 ![[伺服器端點屬性] 分頁的螢幕擷取畫面，其中的 [離線資料傳輸] 的狀態和停用控制項位於](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
 
 現在您可以清除暫存共用以節省成本：
 
-1. 在 [ **伺服器端點屬性** ] 分頁上，當狀態為 [ **已完成**] 時，選取 [ **停用離線資料傳輸**]。
+1. 在 [ **伺服器端點屬性** ] 分頁上，當狀態為 [ **已完成** ] 時，選取 [ **停用離線資料傳輸** ]。
 2. 請考慮刪除暫存共用以節省成本。 暫存共用可能不包含檔案和資料夾 Acl，所以不太可能很有用。 基於備份時間點的目的，請建立 [同步處理 Azure 檔案共用](storage-snapshots-files.md)的真實快照集。 您可以 [設定 Azure 備份，以依排程拍攝快照集]( ../../backup/backup-afs.md) 。
 
 只有當狀態為 [ **已完成** ] 或因為設定不正確而要取消時，才停用離線資料傳輸模式。 如果您在部署期間停用模式，即使您的預備共用仍然可用，檔案仍會開始從伺服器上傳。
@@ -94,7 +94,7 @@ Azure 檔案同步可確保即使您使用的大量遷移工具一開始未傳�
 如果您的 Azure 檔案共用中有植入的檔案，其方式與資料箱不同，例如透過 AzCopy、從雲端備份或任何其他方法進行 RoboCopy，您仍然應該遵循本文中所述的 [離線資料傳輸](#process-for-offline-data-transfer) 程式。 您只需要在檔案移至雲端的方法時，忽略資料箱。 不過，請務必確保您仍然遵循將檔案植入 *暫存共用* 的程式，而不是最後一個 Azure 檔案同步連線共用。
 
 > [!WARNING]
-> **遵循將檔案植入暫存共用的程式，而不是最後一個**Azure 檔案同步連線共用。 如果不這麼做，則可能會發生檔案衝突 (這兩個檔案版本都將儲存) 以及在即時伺服器上刪除的檔案，如果它們仍然存在於您較舊的植入的檔案中，則可能會回來。 此外，資料夾變更會彼此合併，因此很難在這類錯誤之後分隔命名空間。
+> **遵循將檔案植入暫存共用的程式，而不是最後一個** Azure 檔案同步連線共用。 如果不這麼做，則可能會發生檔案衝突 (這兩個檔案版本都將儲存) 以及在即時伺服器上刪除的檔案，如果它們仍然存在於您較舊的植入的檔案中，則可能會回來。 此外，資料夾變更會彼此合併，因此很難在這類錯誤之後分隔命名空間。
 
 ## <a name="next-steps"></a>後續步驟
 - [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)

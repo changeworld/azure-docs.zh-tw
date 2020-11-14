@@ -1,7 +1,7 @@
 ---
 title: 調試 & 針對 ML 管線進行疑難排解
 titleSuffix: Azure Machine Learning
-description: 在 Python 中進行 Azure Machine Learning 管線的偵錯工具。 瞭解開發管線的常見陷阱，以及協助您在遠端執行前後進行腳本的偵錯工具。
+description: 在 Python 中進行 Azure Machine Learning 管線的偵錯工具。 瞭解常見的錯誤和秘訣，以協助您在遠端執行前後進行腳本的偵錯工具。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 80bc5034e6e192c1b493a65e61b94ae1b785a430
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325595"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630102"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 
@@ -176,7 +176,7 @@ parallelrun_step = ParallelRunStep(
 
 下表提供管線的不同偵錯工具選項的資訊。 這並不是詳盡的清單，因為除了此處顯示的 Azure Machine Learning、Python 和 OpenCensus 之外，還有其他選項存在。
 
-| 程式庫                    | 類型   | 範例                                                          | 目的地                                  | 資源                                                                                                                                                                                                                                                                                                                    |
+| 程式庫                    | 類型   | 範例                                                          | Destination                                  | 資源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | 計量 | `run.log(name, val)`                                             | Azure Machine Learning 入口網站 UI             | [如何追蹤實驗](how-to-track-experiments.md)<br>[azureml. 核心. 執行類別](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
 | Python 列印/記錄    | 記錄    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |

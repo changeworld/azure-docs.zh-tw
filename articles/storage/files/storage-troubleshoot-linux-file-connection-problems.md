@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715996"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630170"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>針對 Linux (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -47,7 +47,7 @@ ms.locfileid: "91715996"
 - 您嘗試從 Azure VM 連線到 Azure 檔案共用，而該 VM 與儲存體帳戶位於不同的區域。
 - 如果儲存體帳戶上已啟用 [需要安全傳輸]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定，則 Azure 檔案服務僅允許使用 SMB 3.0 加密的連線。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 若要解決此問題，請使用[適用於 Linux 上 Azure 檔案服務掛接錯誤的疑難排解工具](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux)。 這項工具可以：
 
@@ -61,14 +61,14 @@ ms.locfileid: "91715996"
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：通訊通道未加密
 
-基於安全考量，如果通訊通道未加密，而且未從 Azure 檔案共用所在的相同資料中心進行連線嘗試，與 Azure 檔案共用的連線就會遭到封鎖。 如果儲存體帳戶上啟用[需要安全傳輸](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定，則也可能會封鎖相同資料中心內未加密的連線。 唯有當使用者的用戶端 OS 支援 SMB 加密時，系統才會提供加密的通訊通道。
+基於安全考量，如果通訊通道未加密，而且未從 Azure 檔案共用所在的相同資料中心進行連線嘗試，與 Azure 檔案共用的連線就會遭到封鎖。 如果儲存體帳戶上啟用[需要安全傳輸](../common/storage-require-secure-transfer.md)設定，則也可能會封鎖相同資料中心內未加密的連線。 唯有當使用者的用戶端 OS 支援 SMB 加密時，系統才會提供加密的通訊通道。
 
 若要深入了解，請參閱[以 Linux 和 cifs-utils 套件掛接 Azure 檔案共用的必要條件](storage-how-to-use-files-linux.md#prerequisites)。 
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解決方案
 
 1. 從支援 SMB 加密的用戶端，或從與用於 Azure 檔案共用的 Azure 儲存體帳戶相同資料中心中的虛擬機器進行連線。
-2. 如果用戶端不支援 SMB 加密，請確認儲存體帳戶上的[需要安全傳輸](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定已經停用。
+2. 如果用戶端不支援 SMB 加密，請確認儲存體帳戶上的[需要安全傳輸](../common/storage-require-secure-transfer.md)設定已經停用。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：已在儲存體帳戶上啟用虛擬網路或防火牆規則 
 
@@ -76,7 +76,7 @@ ms.locfileid: "91715996"
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
-確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]****。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md)。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>當您嘗試開啟檔案時，「[使用權限被拒] 超出磁碟配額」
@@ -91,23 +91,23 @@ ms.locfileid: "91715996"
 
 單一檔案或目錄的開啟控制碼配額為2000。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 關閉一些控點以減少同時開啟的控點數，然後再次嘗試操作。
 
-若要查看檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet。  
+若要查看檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet。  
 
-若要關閉檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet。
+若要關閉檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet。
 
 > [!Note]  
-> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>從 Linux 中的 Azure 檔案服務複製檔案或將檔案複製到其中的速度變慢
 
 - 如果您沒有特定的 I/O 大小需求下限，建議您使用 1 MB 的 I/O 大小以獲得最佳效能。
 - 使用正確的複製方法：
-    - 針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 。
+    - 針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) 。
     - 使用具有平行的 cp 或 dd 可以改善複製速度，執行緒數目取決於您的使用案例和工作負載。 下列範例使用六個： 
     - cp 範例 (cp 將使用檔案系統的預設區塊大小作為區塊大小) ： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` 。
     - dd 範例 (此命令會將區塊大小明確設定為 1 MiB) ： `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
@@ -127,7 +127,7 @@ ms.locfileid: "91715996"
 
 部分 Linux 散發套件尚未支援 SMB 3.0 中的加密功能。 如果使用者嘗試使用 SMB 3.0 來掛接 Azure 檔案，可能會因缺少功能而收到「115」錯誤訊息。 目前僅有使用 Ubuntu 16.04 或更新版本時才支援 SMB 3.0 與完整加密。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可從內部部署或不同 Azure 區域的 Azure 檔案共用進行掛接。 某些 Linux 散發套件可能會將4.11 核心的 backport 變更為它們所維護的舊版 Linux 核心。 若要協助判斷您的 Linux 版本是否支援使用加密的 SMB 3.0，請參閱 [使用 Azure 檔案儲存體與 Linux](storage-how-to-use-files-linux.md)。 
 
@@ -144,13 +144,13 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解決方案
 
-確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]****。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md)。
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因2：您的使用者帳戶沒有儲存體帳戶的存取權
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
-瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]****，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
+瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](../blobs/security-recommendations.md#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>無法刪除 Azure 檔案共用中的檔案或目錄
@@ -158,16 +158,16 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ### <a name="cause"></a>原因
 如果檔案或目錄具有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
-- 使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet 來查看開啟的控制碼。
+- 使用 [>get-azstoragefilehandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet 來查看開啟的控制碼。
 
-- 使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet 來關閉開啟的控制碼。 
+- 使用 [>get-azstoragefilehandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet 來關閉開啟的控制碼。 
 
 > [!Note]  
-> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>掛接在 Linux VM 上的 Azure 檔案共用效能變慢
@@ -182,7 +182,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 
 **Cache=none** 表示已停用快取。 使用預設的 mount 命令或明確地為 mount 命令加上 **cache=strict** 選項來重新掛接共用，以確保啟用預設快取或 "strict" 快取模式。
 
-在某些情況下，**serverino** 掛接選項可能導致 **ls** 命令對每個目錄項目執行 stat。 當您列出大型目錄時，此行為會導致效能降低。 您可以檢查 **/etc/fstab** 項目中的掛接選項：
+在某些情況下， **serverino** 掛接選項可能導致 **ls** 命令對每個目錄項目執行 stat。 當您列出大型目錄時，此行為會導致效能降低。 您可以檢查 **/etc/fstab** 項目中的掛接選項：
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
@@ -192,11 +192,11 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-如果沒有 **cache=strict** 或 **serverino** 選項，請執行[文件](../storage-how-to-use-files-linux.md)中的掛接命令，將 Azure 檔案服務卸載並再次掛接。 然後，重新檢查 **/etc/fstab** 項目是否有正確的選項。
+如果沒有 **cache=strict** 或 **serverino** 選項，請執行 [文件](./storage-how-to-use-files-linux.md)中的掛接命令，將 Azure 檔案服務卸載並再次掛接。 然後，重新檢查 **/etc/fstab** 項目是否有正確的選項。
 
 ### <a name="cause-2-throttling"></a>原因2：節流
 
-您可能會遇到節流，而您的要求會傳送至佇列。 您可以利用 [Azure 監視器中的 Azure 儲存體計量](../common/storage-metrics-in-azure-monitor.md)來確認這一點。
+您可能會遇到節流，而您的要求會傳送至佇列。 您可以利用 [Azure 監視器中的 Azure 儲存體計量](../blobs/monitor-blob-storage.md)來確認這一點。
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
@@ -227,7 +227,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp-p-f** 。 此
 **ls：無法存取 '&lt;path&gt;'：輸入/輸出錯誤**
 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 將 Linux 核心升級為下列已修正此問題的版本：
 
 - 4.4.87+
@@ -243,7 +243,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp-p-f** 。 此
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 Linux CIFS 用戶端不支援透過 SMB 2 或 SMB 3 通訊協定，建立 Windows 樣式的符號連結。 Linux 用戶端目前支援另一種符號連結樣式，稱為 [Minshall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (Mishall + 法文符號連結)，可用於建立和遵循作業。 需要符號連結的客戶可以使用 "mfsymlinks" 掛接選項。 我們建議您使用 "mfsymlinks"，因為它也是 Mac 使用的格式。
 
 若要使用符號連結，請將下列內容新增至 CIFS 掛接命令結尾：
@@ -274,7 +274,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 -   使用預設的「軟」掛接選項時，造成無法重新建立 TCP 連線以連線到伺服器的網路通訊失敗
 -   未出現在較舊核心中的最近重新連線修正
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 此 Linux 核心中的重新連線問題已隨下列變更修正：
 
@@ -294,9 +294,9 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 ## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>當您使用 SMB 3.0 掛接 Azure 檔案共用時，出現「CIFS VFS：用來取得介面清單的 ioctl 錯誤-22」
 
 ### <a name="cause"></a>原因
-因為 Azure 檔案儲存體 [目前不支援 SMB 多重](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)通道，所以會記錄此錯誤。
+因為 Azure 檔案儲存體 [目前不支援 SMB 多重](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)通道，所以會記錄此錯誤。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 可以忽略這個錯誤。
 
 
@@ -308,7 +308,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 從將名稱結尾的字元編碼至不同字元的系統上傳資料夾或檔案時，從 Macintosh 電腦上傳的檔案可能會有 "0xF028" 或 "0xF029" 字元，而不是 0x20 (空間) 或 0X2E (點) 。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 在 Linux 上裝載共用時，請在共用上使用 mapchars 選項： 
 

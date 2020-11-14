@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 1c02f9de5b41d58e40001ba103191f3ef015f5c5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bcfd14572b632cdc455babf7b9f8d67be904406c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534901"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629949"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
@@ -67,7 +67,7 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 建立叢集時，HDInsight 服務需要連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [ **設定伺服器防火牆** ]，在 Azure 入口網站中啟用此選項。 然後， **選取** [ **拒絕公用網路存取** ] 下方， **[是] 下的 [是]** **可讓 Azure 服務和資源存取此伺服器** 以進行 Azure SQL Database。 如需詳細資訊，請參閱 [建立和管理 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-不支援 SQL 存放區的私人端點。
+只有使用 ResourceProviderConnection 建立的叢集才支援 SQL 存放區的私人端點 `outbound` 。 若要深入瞭解，請參閱此 [documentationa](https://docs.microsoft.com/azure/hdinsight/hdinsight-private-link)。
 
 ![[設定伺服器防火牆] 按鈕](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -110,6 +110,6 @@ Apache Oozie 是一個可管理 Hadoop 作業的工作流程協調系統。 Oozi
 
 若要在 HDInsight 上搭配 Apache Ambari 使用您自己的外部資料庫，請參閱 [自訂 Apache Ambari 資料庫](hdinsight-custom-ambari-db.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集](./hdinsight-hadoop-provision-linux-clusters.md)

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bf75537c0baf029bc3fc63e320f6290a1f41a524
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738831"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629456"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何建立 NFS 磁碟區
 
@@ -38,7 +38,7 @@ Azure 檔案共用是在雲端中完全受控的檔案共用。 您可以使用�
     - [在 Linux 上設定點對站 (P2S) VPN，以搭配 Azure 檔案儲存體使用](storage-files-configure-p2s-vpn-linux.md)。
     - [設定與 Azure 檔案儲存體搭配使用的站對站 VPN](storage-files-configure-s2s-vpn.md)。
     - 設定 [ExpressRoute](../../expressroute/expressroute-introduction.md)。
-- 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 如果您想要使用 Azure CLI，請[安裝最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="register-the-nfs-41-protocol"></a>註冊 NFS 4.1 通訊協定
 
@@ -110,7 +110,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   若要升級您的 PowerShell 版本，請參閱 [升級現有的 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+   若要升級您的 PowerShell 版本，請參閱 [升級現有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
     
 1. 安裝最新版本的 PowershellGet 模組。
 
@@ -126,7 +126,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   如需如何安裝 PowerShell 模組的詳細資訊，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+   如需如何安裝 PowerShell 模組的詳細資訊，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-3.0.0)
    
 1. 若要使用 Azure PowerShell 模組建立 premium 檔案共用，請使用 [AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) Cmdlet。
 

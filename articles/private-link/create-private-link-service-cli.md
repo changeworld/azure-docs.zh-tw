@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2b97bcc9fe902480364ade19efdae863556ac1e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358146"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629422"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 建立 Private Link 服務
 本文說明如何使用 Azure CLI 在 Azure 中建立 Private Link 服務。
@@ -29,19 +29,19 @@ ms.locfileid: "91358146"
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 建立虛擬網路。 這個範例會建立名為 *myVirtualNetwork* 的預設虛擬網路，其中包含一個名為 *>mysubnet*的子網：
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 建立虛擬網路。 這個範例會建立名為 *myVirtualNetwork* 的預設虛擬網路，其中包含一個名為 *>mysubnet* 的子網：
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>建立子網路
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)來建立虛擬網路的子網。 此範例會在*myVirtualNetwork*虛擬網路中建立名為 *>mysubnet*的子網：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)來建立虛擬網路的子網。 此範例會在 *myVirtualNetwork* 虛擬網路中建立名為 *>mysubnet* 的子網：
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
 ```
 ### <a name="create-a-internal-load-balancer"></a>建立內部 Load Balancer 
-建立具有 [az network lb create](/cli/azure/network/lb#az-network-lb-create)的內部負載平衡器。 此範例會在名為*myResourceGroup*的資源群組中建立名為*myILB*的內部負載平衡器。 
+建立具有 [az network lb create](/cli/azure/network/lb#az-network-lb-create)的內部負載平衡器。 此範例會在名為 *myResourceGroup* 的資源群組中建立名為 *myILB* 的內部負載平衡器。 
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroup --name myILB --sku standard --vnet-name MyVirtualNetwork --subnet mySubnet --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool
@@ -62,7 +62,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 
-負載平衡器規則可定義連入流量的前端 IP 組態及接收流量的後端 IP 集區，以及所需的來源和目的地連接埠。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 建立負載平衡器規則 myHTTPRule**，用來接聽前端集區 myFrontEnd** 中的連接埠 80，以及用來將負載平衡的網路流量傳送到後端位址集區 myBackEndPool** (也是使用連接埠 80)。 
+負載平衡器規則可定義連入流量的前端 IP 組態及接收流量的後端 IP 集區，以及所需的來源和目的地連接埠。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 建立負載平衡器規則 myHTTPRule，用來接聽前端集區 myFrontEnd 中的連接埠 80，以及用來將負載平衡的網路流量傳送到後端位址集區 myBackEndPool (也是使用連接埠 80)。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -78,7 +78,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 ```
 ### <a name="create-backend-servers"></a>建立後端伺服器
 
-在此範例中，我們不會涵蓋虛擬機器的建立。 您可以遵循 [使用 Azure CLI 建立內部負載平衡器來平衡 vm 的負載](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) ，以建立兩個虛擬機器，作為負載平衡器的後端伺服器使用。 
+在此範例中，我們不會涵蓋虛擬機器的建立。 您可以遵循快速入門中的步驟 [：使用 Azure CLI 建立內部負載平衡器來平衡 vm 的負載](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers) ，以建立兩個虛擬機器，作為負載平衡器的後端伺服器使用。 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>在子網上停用 Private Link 服務網路原則 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service-using-standard-load-balancer"></a>使用 Standard Load Balancer 建立 Private Link 服務 
  
-使用 Standard Load Balancer 前端 IP 設定搭配 [az network Private-Link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create)來建立 Private Link 服務。 此範例會在名為*myResourceGroup*的資源群組中，使用名為*myLoadBalancer*的 Standard Load Balancer，建立名為*myPLS*的 Private Link 服務。 
+使用 Standard Load Balancer 前端 IP 設定搭配 [az network Private-Link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create)來建立 Private Link 服務。 此範例會在名為 *myResourceGroup* 的資源群組中，使用名為 *myLoadBalancer* 的 Standard Load Balancer，建立名為 *myPLS* 的 Private Link 服務。 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -111,7 +111,7 @@ az network private-link-service create \
 ## <a name="private-endpoints"></a>私人端點
 
 ### <a name="create-the-virtual-network"></a>建立虛擬網路 
-建立具有 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)的虛擬網路。 此範例會 *myPEVNet*   在名為*myResourcegroup*的資源群組中建立名為 myPEVNet 的虛擬網路： 
+建立具有 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)的虛擬網路。 此範例會  *myPEVNet*   在名為 *myResourcegroup* 的資源群組中建立名為 myPEVNet 的虛擬網路： 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>建立子網 
-在具有 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)的虛擬網路中建立子網。 此範例會在名為 *mySubnet*   *myResourcegroup*的資源群組中名為*myPEVnet*的虛擬網路中建立名為 >mysubnet 的子網： 
+在具有 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)的虛擬網路中建立子網。 此範例會在名為  *mySubnet*   *myResourcegroup* 的資源群組中名為 *myPEVnet* 的虛擬網路中建立名為 >mysubnet 的子網： 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -152,7 +152,7 @@ az network private-endpoint create \
 --location westcentralus 
 ```
 您可以透過 Private Link 服務取得 *私人連線資源識別碼* `az network private-link-service show` 。 識別碼看起來會像這樣：   
-/subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
+/subscriptions/subID/resourceGroups/ *resourcegroupname* /providers/Microsoft.Network/privateLinkServices/ **privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>顯示 Private Link 服務連接 
  

@@ -1,23 +1,23 @@
 ---
-title: 透過診斷設定為 FHIR (預覽) 計量匯出 Azure IoT Connector
+title: 透過診斷設定匯出 Azure IoT Connector for FHIR (預覽) 計量
 description: 本文說明如何透過診斷設定，將 Azure IoT Connector for FHIR (preview) 計量匯出
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 14fd5378f37ebfc20b2d7084c08f15ea8f7a00b2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394249"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630527"
 ---
-# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>透過診斷設定為 FHIR (預覽) 計量匯出 Azure IoT Connector
+# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>透過診斷設定匯出 Azure IoT Connector for FHIR (預覽) 計量
 
-在本文中，您將瞭解如何匯出適用于 FHIR * 計量記錄的 Azure IoT Connector。 啟用計量記錄的功能是 Azure 入口網站中的 [**診斷設定**](../azure-monitor/platform/diagnostic-settings.md) 。 
+在本文中，您將瞭解如何匯出適用于快速健康照護互通資源 (FHIR&#174;) * 計量記錄的 Azure IoT Connector。 啟用計量記錄的功能是 Azure 入口網站中的 [**診斷設定**](../azure-monitor/platform/diagnostic-settings.md) 。 
 
 > [!TIP]
 > 遵循 Azure API for FHIR 中的「 [啟用診斷記錄」和「Azure IoT Connector FOR FHIR](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) 」中的指引來設定「審核記錄」。
@@ -60,6 +60,4 @@ ms.locfileid: "93394249"
 >[!div class="nextstepaction"]
 >[適用于 FHIR 的 Azure IoT Connector 常見問題](fhir-faq.md)
 
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
+* 在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT Connector (preview) 。 FHIR 是 HL7 的注冊商標，可搭配 HL7 的許可權使用。

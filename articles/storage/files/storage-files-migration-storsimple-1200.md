@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510338"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630476"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 遷移至 Azure 檔案同步
 
@@ -32,7 +32,7 @@ Azure 檔案同步是 Microsoft 雲端服務，以兩個主要元件為基礎：
 
 本文著重于遷移步驟。 在遷移之前，您想要深入瞭解 Azure 檔案同步，建議您執行下列文章：
 
-* [Azure 檔案同步-總覽](https://aka.ms/AFS "概觀")
+* [Azure 檔案同步-總覽](./storage-sync-files-planning.md "概觀")
 * [Azure 檔案同步-部署指南](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>移轉目標
@@ -155,7 +155,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
       /MIR
    :::column-end:::
    :::column span="1":::
-      允許在相同的目標/目的地上，依序執行此 RoboCopy 命令數次。 它會識別之前複製的內容，並將其省略。 只有在上次執行之後，才會處理變更、新增和「*刪除*」。 如果之前未執行命令，則不會省略任何內容。 這是仍在主動使用和變更的來源位置的絕佳選項。
+      允許在相同的目標/目的地上，依序執行此 RoboCopy 命令數次。 它會識別之前複製的內容，並將其省略。 只有在上次執行之後，才會處理變更、新增和「 *刪除* 」。 如果之前未執行命令，則不會省略任何內容。 這是仍在主動使用和變更的來源位置的絕佳選項。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -210,20 +210,20 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 您可以嘗試平行執行一些這些複本。 建議您一次處理一個 Azure 檔案共用的範圍。
 
 > [!WARNING]
-> 當您將所有資料從 StorSimple 移至 Windows Server 並完成遷移之後：回到 Azure 入口網站中的 ***所有***  同步處理群組，並將 [雲端階層處理磁片區可用空間百分比] 值調整為更適合快取使用率的值，例如20%。 
+> 當您將所有資料從 StorSimple 移到 Windows Server，且您的遷移完成後：請回到 Azure 入口網站中的 * **all** * 同步群組，並將 [雲端階層處理磁片區可用空間百分比] 值調整為更適合快取使用率的內容，例如20%。 
 
 雲端階層處理磁片區可用空間原則會在磁片區層級上運作，而且可能會有多個伺服器端點與其同步。 如果您忘記調整偶數伺服器端點上的可用空間，同步處理將繼續套用最嚴格的規則，並嘗試保留99% 的可用磁碟空間，使本機快取不會如您預期般執行。 除非您的目標只有一個磁片區的命名空間只包含很少存取的封存資料。
 
 ## <a name="troubleshoot"></a>疑難排解
 
-您最可能遇到的問題是，RoboCopy 命令在 Windows Server 端上失敗，並出現「磁片區已 *滿* 」。 如果是這種情況，則您的下載速度可能比上傳速度更好。 雲端階層處理會每小時處理一次，以從已同步處理的本機 Windows Server 磁片撤除內容。
+您最可能遇到的問題是，RoboCopy 命令失敗，並在 Windows Server 端出現 _ 「磁片區已滿」 *。 如果是這種情況，則您的下載速度可能比上傳速度更好。 雲端階層處理會每小時處理一次，以從已同步處理的本機 Windows Server 磁片撤除內容。
 
 讓同步進度和雲端階層處理釋放磁碟空間。 您可以在 Windows Server 上的檔案總管中觀察到。
 
 當您的 Windows 伺服器有足夠的可用容量時，重新執行命令將會解決此問題。 當您進入這種情況時，不會有任何中斷，而且您可以放心地繼續進行。 重新執行命令的不便是唯一的結果。
 
 您也可以遇到其他 Azure 檔案同步問題。
-如果發生這種情況，請查看 **Azure 檔案同步疑難排解指南的連結**。
+如果發生這種情況，請查看 **Azure 檔案同步疑難排解指南的連結** 。
 
 ## <a name="relevant-links"></a>相關連結
 
@@ -233,6 +233,6 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 Azure 檔案同步內容：
 
-* [AFS 總覽](https://aka.ms/AFS)
+* [AFS 總覽](./storage-sync-files-planning.md)
 * [AFS 部署指南](storage-files-deployment-guide.md)
 * [AFS 疑難排解](storage-sync-files-troubleshoot.md)

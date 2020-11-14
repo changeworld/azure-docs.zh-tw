@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515396"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629694"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 開發 Azure 檔案服務
 
@@ -32,7 +32,7 @@ ms.locfileid: "85515396"
 * 為使用共用上所定義之共用存取原則的檔案建立共用存取簽章 (SAS 金鑰)。
 
 > [!Note]  
-> 由於 Azure 檔案服務可透過 SMB 存取，因此您可以使用標準 C++ I/O 類別和函式撰寫簡單的應用程式，以存取 Azure 檔案共用。 本文將說明如何撰寫使用 Azure 儲存體 C++ SDK 的應用程式，其會使用 [File REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) 與 Azure 檔案服務通訊。
+> 由於 Azure 檔案服務可透過 SMB 存取，因此您可以使用標準 C++ I/O 類別和函式撰寫簡單的應用程式，以存取 Azure 檔案共用。 本文將說明如何撰寫使用 Azure 儲存體 C++ SDK 的應用程式，其會使用 [File REST API](/rest/api/storageservices/file-service-rest-api) 與 Azure 檔案服務通訊。
 
 ## <a name="create-a-c-application"></a>建立 C++ 應用程式
 
@@ -41,7 +41,7 @@ ms.locfileid: "85515396"
 若要安裝適用於 C++ 的 Azure 儲存體用戶端 2.4.0，您可以使用下列其中一個方法：
 
 * **Linux：** 遵循 [Azure Storage Client Library for C++ 讀我檔案](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) 頁面中提供的指示進行。
-* **Windows：** 在 Visual Studio 中，按一下 [工具]&gt;[NuGet 套件管理員]&gt;[套件管理員主控台]****。 在 [NuGet 套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 中輸入下列命令，然後按下 **Enter**。
+* **Windows：** 在 Visual Studio 中，按一下 [工具]&gt;[NuGet 套件管理員]&gt;[套件管理員主控台]。 在 [NuGet 套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 中輸入下列命令，然後按下 **Enter** 。
   
 
 ```powershell
@@ -103,7 +103,7 @@ if (share.create_if_not_exists()) {
 }
 ```
 
-目前，**共用**會將參考保留至名為 **my-sample-share** 的共用。
+目前， **共用** 會將參考保留至名為 **my-sample-share** 的共用。
 
 ## <a name="delete-an-azure-file-share"></a>刪除 Azure 檔案共用
 
@@ -363,7 +363,7 @@ if (share.exists())
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需深入了解 Azure 儲存體，請探索這些資源：
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 6251894018ceeb2a99ebb62939b6e446fea825a2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220715"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630391"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一個部分：啟用 Azure 檔案共用的 AD DS authentication 
 
@@ -28,20 +28,20 @@ AzFilesHybrid PowerShell 模組中的 Cmdlet 會進行必要的修改，並為�
 
 ### <a name="download-azfileshybrid-module"></a>下載 AzFilesHybrid 模組
 
-- [下載並解壓縮 AzFilesHybrid 模組 (GA 模組： v 0.2.0 +) ](https://github.com/Azure-Samples/azure-files-samples/releases) 請注意，v 0.2.2 或更新版本支援 AES 256 kerberos 加密。 如果您已在 v 0.2.2 以下的 AzFilesHybrid 版本中啟用此功能，而且想要更新以支援 AES 256 Kerberos 加密，請參閱 [這篇文章](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。 
+- [下載並解壓縮 AzFilesHybrid 模組 (GA 模組： v 0.2.0 +) ](https://github.com/Azure-Samples/azure-files-samples/releases) 請注意，v 0.2.2 或更新版本支援 AES 256 kerberos 加密。 如果您已在 v 0.2.2 以下的 AzFilesHybrid 版本中啟用此功能，而且想要更新以支援 AES 256 Kerberos 加密，請參閱 [這篇文章](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。 
 - 使用具有在目標 AD 中建立服務登入帳戶或電腦帳戶的許可權 AD DS 認證，在已加入內部部署 AD DS 網域的裝置中安裝並執行模組。
 -  使用同步處理至您 Azure AD 的內部部署 AD DS 認證來執行腳本。 內部部署 AD DS 認證必須有儲存體帳戶擁有者或參與者 Azure 角色許可權。
 
 ### <a name="run-join-azstorageaccountforauth"></a>執行 Join-AzStorageAccountForAuth
 
-此 `Join-AzStorageAccountForAuth` Cmdlet 會代表指定的儲存體帳戶執行對等的離線網域聯結。 腳本會使用 Cmdlet 在您的 AD 網域中建立 [電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) 。 如果基於任何原因而無法使用電腦帳戶，您可以改為變更腳本來建立 [服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) 。 如果您選擇手動執行命令，則應該選取最適合您環境的帳戶。
+此 `Join-AzStorageAccountForAuth` Cmdlet 會代表指定的儲存體帳戶執行對等的離線網域聯結。 腳本會使用 Cmdlet 在您的 AD 網域中建立 [電腦帳戶](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) 。 如果基於任何原因而無法使用電腦帳戶，您可以改為變更腳本來建立 [服務登入帳戶](/windows/win32/ad/about-service-logon-accounts) 。 如果您選擇手動執行命令，則應該選取最適合您環境的帳戶。
 
 Cmdlet 所建立的 AD DS 帳戶代表儲存體帳戶。 如果 AD DS 帳戶是在組織單位下建立， (OU) 強制密碼到期，您必須在密碼最長使用期限之前更新密碼。 在該日期之前無法更新帳戶密碼會導致驗證在存取 Azure 檔案共用時失敗。 若要瞭解如何更新密碼，請參閱 [更新 AD DS 帳戶密碼](storage-files-identity-ad-ds-update-password.md)。
 
 在 PowerShell 中執行之前，請將預留位置值取代為下列參數中您自己的值。
 > [!IMPORTANT]
-> 網域加入 Cmdlet 會建立 AD 帳戶，以代表 AD 中 (檔案共用) 的儲存體帳戶。 您可以選擇註冊為電腦帳戶或服務登入帳戶，請參閱 [常見問題](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) 以取得詳細資料。 針對電腦帳戶，在 AD 中有30天的預設密碼到期期限設定。 同樣地，服務登入帳戶可能會在 AD 網域或組織單位 (OU) 上設定預設的密碼到期時間。
-> 針對這兩種帳戶類型，建議您檢查 AD 環境中設定的密碼到期時間，並規劃在密碼最長使用期限之前，更新 AD 帳戶的 [儲存體帳戶身分識別密碼](storage-files-identity-ad-ds-update-password.md) 。 您可以考慮 [在 ad 中建立新的 Ad 組織單位)  (OU](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ，並據以停用 [電腦帳戶](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) 或服務登入帳戶上的密碼到期原則。 
+> 網域加入 Cmdlet 會建立 AD 帳戶，以代表 AD 中 (檔案共用) 的儲存體帳戶。 您可以選擇註冊為電腦帳戶或服務登入帳戶，請參閱 [常見問題](./storage-files-faq.md#security-authentication-and-access-control) 以取得詳細資料。 針對電腦帳戶，在 AD 中有30天的預設密碼到期期限設定。 同樣地，服務登入帳戶可能會在 AD 網域或組織單位 (OU) 上設定預設的密碼到期時間。
+> 針對這兩種帳戶類型，建議您檢查 AD 環境中設定的密碼到期時間，並規劃在密碼最長使用期限之前，更新 AD 帳戶的 [儲存體帳戶身分識別密碼](storage-files-identity-ad-ds-update-password.md) 。 您可以考慮 [在 ad 中建立新的 Ad 組織單位)  (OU](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ，並據以停用 [電腦帳戶](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) 或服務登入帳戶上的密碼到期原則。 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>正在檢查環境
 
-首先，您必須檢查環境的狀態。 具體而言，您必須檢查是否已安裝 [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) ，以及是否以系統管理員許可權執行 shell。 然後進行檢查以了解是否已安裝 [Az.Storage 2.0 模組](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果不是則加以安裝。 完成這些檢查之後，請檢查您的 AD DS，查看是否有 [電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (預設) 或 [服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) ，此帳戶已使用 SPN/UPN 作為 "cifs/您的儲存體-帳戶-名稱- 如果帳戶不存在，請建立一個帳戶，如下一節所述。
+首先，您必須檢查環境的狀態。 具體而言，您必須檢查是否已安裝 [Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) ，以及是否以系統管理員許可權執行 shell。 然後進行檢查以了解是否已安裝 [Az.Storage 2.0 模組](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果不是則加以安裝。 完成這些檢查之後，請檢查您的 AD DS，查看是否有 [電腦帳戶](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (預設) 或 [服務登入帳戶](/windows/win32/ad/about-service-logon-accounts) ，此帳戶已使用 SPN/UPN 作為 "cifs/您的儲存體-帳戶-名稱- 如果帳戶不存在，請建立一個帳戶，如下一節所述。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>以手動方式建立代表 AD 儲存體帳戶的身分識別
 

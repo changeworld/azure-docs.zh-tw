@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85511970"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629677"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 檔案共用 – 無法刪除 Azure 檔案共用中的檔案
 
@@ -34,9 +34,9 @@ Not enough quota is available to process this command
 
 ## <a name="cause"></a>原因
 
-當您在掛接檔案共用的電腦上達到檔案所允許的並行開啟控制碼上限時，會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 儲存體效能和擴充性檢查清單](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)。
+當您在掛接檔案共用的電腦上達到檔案所允許的並行開啟控制碼上限時，會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 儲存體效能和擴充性檢查清單](../blobs/storage-performance-checklist.md)。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
 關閉一些控點以減少同時開啟的控制碼數目。
 
@@ -44,7 +44,7 @@ Not enough quota is available to process this command
 
 ### <a name="install-the-latest-azure-powershell-module"></a>安裝最新的 Azure PowerShell 模組
 
-* [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>連接到 Azure：
 
@@ -72,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>範例結果：
 
-|HandleId|Path|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|路徑|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12：16：50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12：36：20Z|0|0|9507758546259807489|
@@ -88,7 +88,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 # Close-AzStorageFileHandle -Context $Context -ShareName "FileShareName" -Path 'New folder/test.zip' -CloseAll
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [針對 Windows 中的 Azure 檔案服務進行疑難排解](storage-troubleshoot-windows-file-connection-problems.md)
 * [針對 Linux 中的 Azure 檔案服務進行疑難排解](storage-troubleshoot-linux-file-connection-problems.md)

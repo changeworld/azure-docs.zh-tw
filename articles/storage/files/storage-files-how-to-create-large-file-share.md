@@ -8,22 +8,22 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330303"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629218"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用和建立大型檔案共用
 
 當您在儲存體帳戶上啟用大型檔案共用時，您的檔案共用最多可擴大至 100 TiB，同時也增加了標準共用的 IOPS 和輸送量限制。 您也可以針對現有的檔案共用，在現有的儲存體帳戶上啟用這種調整。 如需詳細資訊，請參閱檔案 [共用和檔案調整目標](storage-files-scale-targets.md#azure-files-scale-targets) 。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-- 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- 如果您想要使用 Azure PowerShell 模組，請 [安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)。
+- 如果您想要使用 Azure CLI，請[安裝最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 如果您想要使用 Azure PowerShell 模組，請 [安裝最新版本](/powershell/azure/install-az-ps?view=azps-4.6.0)。
 
 ## <a name="restrictions"></a>限制
 
@@ -61,11 +61,11 @@ ms.locfileid: "94330303"
 
     ![Azure 入口網站中新儲存體帳戶的 [已啟用] 選項按鈕的螢幕擷取畫面](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-首先，請 [安裝最新版本的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ，讓您可以啟用大型檔案共用。
+首先，請 [安裝最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ，讓您可以啟用大型檔案共用。
 
 若要建立已啟用大型檔案共用的儲存體帳戶，請使用下列命令。 `<yourStorageAccountName>`將、 `<yourResourceGroup>` 和取代 `<yourDesiredRegion>` 為您的資訊。
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-首先，請 [安裝最新版的 PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) ，讓您可以啟用大型檔案共用。
+首先，請 [安裝最新版的 PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0) ，讓您可以啟用大型檔案共用。
 
 若要建立已啟用大型檔案共用的儲存體帳戶，請使用下列命令。 `<yourStorageAccountName>`將、 `<yourResourceGroup>` 和取代 `<yourDesiredRegion>` 為您的資訊。
 
