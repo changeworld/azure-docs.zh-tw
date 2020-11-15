@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 30cdc9924d41fdbe27156fcf90688d4baf440487
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209870"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636855"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Confluent 架構登錄的 Apache Kafka
 
@@ -34,7 +34,7 @@ Kafka Schema Registry 提供的序列化程式，會插入 Apache Kafka 用戶�
 
 1. 選取下方的 [部署至 Azure]  按鈕來登入 Azure，並開啟 Resource Manager 範本。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/schema-registry/hdi-deploy-to-azure1.png"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
 
 1. 在 [自訂部署] 範本中，填入欄位，如下所述：
 
@@ -44,12 +44,12 @@ Kafka Schema Registry 提供的序列化程式，會插入 Apache Kafka 用戶�
     |資源群組|從下拉式清單中選取現有資源群組，或選取 [新建]。|
     |區域|從下拉式清單中，選取要在其中建立叢集的區域。|
     |叢集名稱|輸入全域唯一名稱。 或保持原狀以使用預設名稱。|
-    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin**。|
+    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin** 。|
     |叢集登入密碼|請提供密碼。|
-    |SSH 使用者名稱|提供使用者名稱，預設值為 **sshuser**。|
+    |SSH 使用者名稱|提供使用者名稱，預設值為 **sshuser** 。|
     |SSH 密碼|請提供密碼。|
 
-    將其他欄位保留原狀。 選取 [檢閱 + 建立]  繼續執行。
+    將其他欄位保留原狀。 選取 [檢閱 + 建立] 以繼續執行。
 
 1. 檢查部署詳細資料，然後選取 [ **建立** ] 以初始化部署。 部署可能需要45分鐘的時間才能完成。
 
@@ -113,7 +113,7 @@ Kafka Schema Registry 提供的序列化程式，會插入 Apache Kafka 用戶�
     debug=true
     ```
 
-1. 若要儲存檔案，請使用 **Ctrl + X**、**Y** 和 **Enter** 鍵。
+1. 若要儲存檔案，請使用 **Ctrl + X** 、 **Y** 和 **Enter** 鍵。
 
 1. 啟動架構登錄，並將其指向使用更新的架構登錄屬性檔。 執行下列命令：
 
@@ -215,7 +215,7 @@ Kafka Schema Registry 提供的序列化程式，會插入 Apache Kafka 用戶�
     }
     ```
 
-    使用下列命令來啟動 **Kafka Avro 主控台生產者**：
+    使用下列命令來啟動 **Kafka Avro 主控台生產者** ：
 
     ```bash
     /usr/bin/kafka-avro-console-producer     --broker-list $KAFKABROKERS     --topic agkafkaschemareg     --property parse.key=true --property key.schema='{"type" : "int", "name" : "id"}'     --property value.schema='{ "type" : "record", "name" : "example_schema", "namespace" : "com.example", "fields" : [ { "name" : "cust_id", "type" : "int", "doc" : "Id of the customer account" }, { "name" : "year", "type" : "int", "doc" : "year of expense" }, { "name" : "expenses", "type" : {"type": "array", "items": "float"}, "doc" : "Expenses for the year" } ], "doc:" : "A basic schema for storing messages" }'

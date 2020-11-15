@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372552"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636379"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -48,7 +48,7 @@ ms.locfileid: "94372552"
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步驟 1： 在您的 SQL server 主機上布建 Log Analytics 代理程式：
 
-- **AZURE vm 上的 SQL Server** -如果您的 SQL 機器裝載于 azure vm 上，您可以自動布建 [Log Analytics 代理程式](security-center-enable-data-collection.md#workspace-configuration)。 或者，您也可以依照手動程式來將 [Azure Stack vm 上架](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)。
+- **AZURE vm 上的 SQL Server** -如果您的 SQL 機器裝載于 azure vm 上，您可以 [啟用 Log Analytics 代理 <a name="auto-provision-mma"></a> 程式的自動](security-center-enable-data-collection.md#auto-provision-mma)布建。 或者，您也可以依照手動程式來將 [Azure Stack vm 上架](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)。
 - **SQL Server Azure Arc** -如果您的 SQL Server 是由 [Azure Arc](../azure-arc/index.yml) 啟用的伺服器管理，您可以使用資訊安全中心建議的「log analytics 代理程式應該安裝在 Windows 架構的 Azure Arc 電腦 (Preview) 」來部署 log analytics 代理程式。 或者，您可以遵循 [Azure Arc 檔](../azure-arc/servers/manage-vm-extensions.md)中所述的安裝方法。
 
 - **SQL Server 內部內部部署** -如果您的 SQL Server 裝載于內部部署 Windows 機器上，而沒有 Azure Arc，您有兩個選項可將其連接到 Azure：

@@ -1,6 +1,6 @@
 ---
-title: 從受限的網路連接到 Synapse Studio 工作區資源
-description: 本文將告訴您如何從受限制的網路連線到您的 Azure Synapse Studio 工作區資源
+title: 從受限制的網路連接到 Azure Synapse Analytics Studio 中的工作區資源
+description: 本文將告訴您如何從受限制的網路連線到您的工作區資源
 author: xujxu
 ms.service: synapse-analytics
 ms.topic: how-to
@@ -8,112 +8,119 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: d94ee3145fb073dae982019fd4096cc2ceb7cd86
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578326"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637127"
 ---
-# <a name="connect-to-synapse-studio-workspace-resources-from-a-restricted-network"></a>從受限的網路連接到 Synapse Studio 工作區資源
+# <a name="connect-to-workspace-resources-from-a-restricted-network"></a>從受限制的網路連接到工作區資源
 
-本文的目標讀者是管理公司受限網路的公司 IT 系統管理員。 IT 系統管理員即將在 Azure Synapse Studio 與此受限網路內的工作站之間啟用網路連線。
+假設您是 IT 系統管理員，負責管理您組織的受限網路。 您想要在 Azure Synapse Analytics Studio 和此受限網路內的工作站之間啟用網路連線。 本文將說明如何做到。
 
-在本文中，您將瞭解如何從受限制的網路環境連接到您的 Azure Synapse 工作區。 
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * **Azure 訂** 用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立 [免費的 azure 帳戶](https://azure.microsoft.com/free/) 。
-* **Azure Synapse 工作區** ：如果您沒有 Synapse Studio，請從 Azure Synapse Analytics 建立 Synapse 工作區。 下列步驟4將需要工作區名稱。
-* **受限制的網路** ：受限制的網路由公司 IT 系統管理員維護。 it 系統管理員有權設定網路原則。 下列步驟3將需要虛擬網路名稱和其子網。
+* **Azure Synapse Analytics 工作區** ：您可以從 Azure Synapse Analytics 建立一個。 您需要步驟4中的工作區名稱。
+* **受限制的網路** ： IT 系統管理員會為組織維護受限的網路，並且擁有設定網路原則的許可權。 您需要在步驟3中的虛擬網路名稱和子網。
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>步驟1：將網路輸出安全性規則新增至受限的網路
 
-您必須使用四個服務標籤新增四個網路輸出安全性規則。 深入瞭解 [服務標記總覽](/azure/virtual-network/service-tags-overview) 
+您必須使用四個服務標籤新增四個網路輸出安全性規則。 
 * AzureResourceManager
 * AzureFrontDoor.Frontend
 * AzureActiveDirectory
-* AzureMonitor (選擇性。 只有當您想要將資料與 Microsoft 共用時，才新增此類型的規則。 ) 
+* AzureMonitor (這種類型的規則是選擇性的。 只有當您想要與 Microsoft 共用資料時，才將其加入。 ) 
 
-**Azure Resource Manager** 輸出規則詳細資料，如下所示。 當您建立其他三個規則時，請從下拉式選單中選擇服務標籤名稱 " **AzureFrontDoor** "、" **AzureActiveDirectory** "、" **AzureMonitor** "，以取代 " **Destination service tag** " 的值。
+下列螢幕擷取畫面顯示 Azure Resource Manager 輸出規則的詳細資料。
 
-![AzureResourceManager](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
+![Azure Resource Manager 服務標記詳細資料的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
+當您建立其他三個規則時，請將 **目的地服務標記** 的值取代為清單中的 **AzureFrontDoor 前端** 、 **AzureActiveDirectory** 或 **AzureMonitor** 。
 
-## <a name="step-2-create-azure-synapse-analytics-private-link-hubs"></a>步驟2：建立 Azure Synapse Analytics (private link 中樞) 
+如需詳細資訊，請參閱 [服務標記總覽](/azure/virtual-network/service-tags-overview.md)。
 
-您必須從 Azure 入口網站建立 Azure Synapse Analytics (private link 中樞) 。 透過 Azure 入口網站搜尋「 **Azure Synapse Analytics (private link hub)** 」，然後填入所需的欄位並加以建立。 
+## <a name="step-2-create-private-link-hubs"></a>步驟2：建立私人連結中樞
 
-> [!Note]
-> 此區域應該與您的 Synapse 工作區所在的區域相同。
-
-![正在建立 Synapse Analytics private link 中樞](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
-
-## <a name="step-3-create-private-endpoint-for-synapse-studio-gateway"></a>步驟3：建立 Synapse Studio 閘道的私人端點
-
-若要存取 Synapse Studio 閘道，您必須從 Azure 入口網站建立私人端點。 透過 Azure 入口網站搜尋「 **Private Link** 」。 選取 [ **Private Link 中心** ] 中的 [ **建立私人端點** ]，然後填入所需的欄位並加以建立。 
+接下來，從 Azure 入口網站建立私用連結中樞。 若要在入口網站中尋找此資訊，請搜尋 *Azure Synapse Analytics (private link 中樞)* ，然後填入所需的資訊加以建立。 
 
 > [!Note]
-> 此區域應該與您的 Synapse 工作區所在的區域相同。
+> 確定 **區域** 值與 Azure Synapse Analytics 工作區的值相同。
 
-![建立 Synapse studio 1 的私人端點](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
+![建立 Synapse private link hub 的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-在 [ **資源** ] 的下一個索引標籤中，選擇私人連結中樞（在上述步驟2中建立）。
+## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>步驟3：建立閘道的私人端點
 
-![建立 Synapse studio 2 的私人端點](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
+若要存取 Azure Synapse Analytics Studio 閘道，您必須從 Azure 入口網站建立私人端點。 若要在入口網站中尋找此項，請搜尋 *Private Link* 。 在 [ **Private Link 中心** ] 中，選取 [ **建立私人端點** ]，然後填入所需的資訊加以建立。 
 
-在 [ **設定] 的** 下一個索引標籤中， 
-* 選擇您的「 **虛擬網路** 」限制的虛擬網路名稱。
-* 選擇 [ **子網** ] 受限制虛擬網路的子網。 
-* 選取 [ **是** ] 以「 **與私人 DNS 區域整合** 」。
+> [!Note]
+> 確定 **區域** 值與 Azure Synapse Analytics 工作區的值相同。
 
-![建立 Synapse studio 3 的私人端點](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
+![[建立私人端點]、[基本] 索引標籤的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
 
-建立私人連結端點之後，您可以存取 Synapse studio web 工具的登入頁面。 不過，您無法存取 Synapse 工作區中的資源，直到您需要完成下一個步驟。
+在 [ **資源** ] 索引標籤上，選擇您在步驟2中建立的私人連結中樞。
 
-## <a name="step-4-create-private-endpoints-for-synapse-studio-workspace-resource"></a>步驟4：建立 Synapse Studio 工作區資源的私人端點
+![[建立私人端點，資源] 索引標籤的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
 
-若要存取 Synapse Studio 工作區資源內的資源，您必須建立至少一個具有「 **目標子資源** 」類型 **Dev** 的私人連結端點，以及兩個類型為「 **Sql** 」或「 **SqlOnDemand** 」的選擇性私用連結端點，取決於您想要存取的 Synapse Studio 工作區中的哪些資源。 此 Synapse studio 工作區的私人連結端點建立類似于上面建立的端點。  
+**在 [設定** ] 索引標籤上： 
+* 針對 [ **虛擬網路** ]，選取受限制的虛擬網路名稱。
+* 針對 [ **子網** ]，選取受限制虛擬網路的子網。 
+* 針對 [ **與私人 DNS 區域整合** ]，選取 **[是]** 。
 
-在 [ **資源** ] 索引標籤中注意以下區域：
-* 在 [ **資源類型** ] 中選取 [ **Synapse]/[工作區** ]。
-* 選取 [ **YourWorkSpaceName** ] 至您先前建立的 [ **資源** ]。
-* 選取 [ **目標子資源** ] 中的端點類型：
-  * **Sql** ：適用于 sql 集區中的 SQL 查詢執行。
-  * **SqlOnDemand** ：適用于 SQL 內建查詢執行。
-  * **Dev** ：適用于存取 Synapse Studio 工作區中的其他專案。 您至少必須使用此類型來建立的 private link 端點。
+![建立私人端點 [設定] 索引標籤的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
 
-![正在建立 Synapse studio 工作區的私人端點](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
+建立私人連結端點之後，您可以存取 Azure Synapse Analytics Studio web 工具的登入頁面。 不過，您還無法存取工作區中的資源。 若要這樣做，您必須完成下一個步驟。
+
+## <a name="step-4-create-private-endpoints-for-your-workspace-resource"></a>步驟4：建立工作區資源的私人端點
+
+若要存取 Azure Synapse Analytics Studio 工作區資源內的資源，您需要建立下列各項：
+
+- 至少一個具有 **目標子資源****開發** 類型的私用連結端點。
+- 具有 **Sql** 或 **SqlOnDemand** 類型的其他兩個選擇性私用連結端點，視您要存取的工作區中的資源而定。
+
+建立這些功能類似于您在上一個步驟中建立端點的方式。  
+
+在 [ **資源** ] 索引標籤上：
+
+* 針對 [ **資源類型** ]，選取 [ **Synapse]/[工作區** ]。
+* 針對 [ **資源** ]，選取您先前建立的工作區名稱。
+* 針對 [ **目標子資源** ]，選取端點類型：
+  * **Sql 適用** 于 sql 集區中的 SQL 查詢執行。
+  * **SqlOnDemand** 適用于 SQL 內建查詢執行。
+  * **開發** 用來存取 Azure Synapse Analytics Studio 工作區中的其他專案。 您必須建立至少一個此類型的私用連結端點。
+
+![[建立私人端點、資源] 索引標籤、[工作區] 的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
 
 
-## <a name="step-5-create-private-endpoints-for-synapse-studio-workspace-linked-storage"></a>步驟5：建立 Synapse Studio 工作區連結儲存體的私人端點
+## <a name="step-5-create-private-endpoints-for-workspace-linked-storage"></a>步驟5：建立工作區連結儲存體的私人端點
 
-若要使用 Synapse Studio 工作區中的儲存體 explorer 來存取連結的儲存體，您必須使用上述步驟3中的相同步驟來建立一個私人端點。 
+若要在 Azure Synapse Analytics Studio 工作區中使用儲存體 explorer 來存取連結的儲存體，您必須建立一個私人端點。 這與步驟3的步驟類似。 
 
-在 [ **資源** ] 索引標籤中注意以下區域：
-* 在 [ **資源類型** ] 中選取 " **Synapse/storageAccounts** "。
-* 選取 [ **YourWorkSpaceName** ] 至您先前建立的 [ **資源** ]。
-* 選取 [ **目標子資源** ] 中的端點類型：
-  * **blob** ：適用于 Azure blob 儲存體。
-  * **dfs** ：適用于 Azure Data Lake Storage Gen2。
+在 [ **資源** ] 索引標籤上：
+* 針對 [ **資源類型** ]，選取 [ **Synapse]/[storageAccounts** ]。
+* 針對 [ **資源** ]，選取您先前建立的儲存體帳戶名稱。
+* 針對 [ **目標子資源** ]，選取端點類型：
+  * **blob** 適用于 Azure Blob 儲存體。
+  * **dfs** 適用于 Azure Data Lake Storage Gen2。
 
-![建立 Synapse studio 工作區連結儲存體的私人端點](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
+![[建立私人端點]、[資源] 索引標籤、[儲存體] 的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
 
-現在，您可以從 vNet 內 Synapse Studio 工作區中的儲存體 explorer 存取連結的儲存體資源。
+現在，您可以存取連結的儲存體資源。 在您的虛擬網路中，您可以在 Azure Synapse Analytics Studio 工作區中，使用儲存體 explorer 來存取連結的儲存體資源。
 
-如果您的工作區在建立工作區期間有「 **啟用受控虛擬網路** 」，如下所示。
+您可以為您的工作區啟用受管理的虛擬網路，如下列螢幕擷取畫面所示：
 
-![建立 Synapse studio 工作區連結儲存體的私人端點1](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
+![[建立 Synapse] 工作區的螢幕擷取畫面，其中已醒目提示 [啟用受控虛擬網路] 選項。](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
 
-您希望您的筆記本能夠在特定儲存體帳戶下存取連結的儲存體資源，您需要在 Synapse Studio 下新增「 **受控私人端點** 」。 「 **儲存體帳戶名稱** 」應該是您筆記本需要存取的名稱。 瞭解如何在您的 [資料來源中建立受控私人端點](./how-to-create-managed-private-endpoints.md)的詳細步驟。
+如果您想要讓筆記本存取特定儲存體帳戶下的連結儲存體資源，請在您的 Azure Synapse Analytics Studio 下新增受控私人端點。 儲存體帳戶名稱應該是您的筆記本需要存取的名稱。 如需詳細資訊，請參閱為 [您的資料來源建立受控私人端點](./how-to-create-managed-private-endpoints.md)。
 
-建立此端點之後，[ **核准狀態** ] 將會是 [ **擱置** 中]，您需要要求此儲存體帳戶的擁有者，才能在 Azure 入口網站的此儲存體帳戶的 [ **私人端點** 連線] 索引標籤中核准它。 核准之後，您的筆記本將能夠存取此儲存體帳戶下的連結儲存體資源。
+建立此端點之後，核准狀態會顯示 [ **擱置** 中] 狀態。 在 Azure 入口網站中此儲存體帳戶的 [ **私人端點** 連線] 索引標籤中，要求核准此儲存體帳戶的擁有者。 核准之後，您的筆記本就可以存取此儲存體帳戶下的連結儲存體資源。
 
-現在已設定。 您可以存取 Synapse studio 工作區資源。
+現在已設定。 您可以存取 Azure Synapse Analytics Studio 工作區資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 [受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)
+深入瞭解 [受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)。
 
-深入了解[受控私人端點](./synapse-workspace-managed-private-endpoints.md)
+深入瞭解 [受控私人端點](./synapse-workspace-managed-private-endpoints.md)。

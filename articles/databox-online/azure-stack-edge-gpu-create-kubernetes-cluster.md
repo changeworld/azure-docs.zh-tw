@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903214"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635903"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>透過您 Azure Stack Edge Pro GPU 裝置上的 kubectl 來連線及管理 Kubernetes 叢集
 
-在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，您就可以從用戶端電腦在本機連線到叢集，並透過 *kubectl*之類的原生工具來管理叢集。
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，您就可以從用戶端電腦在本機連線到叢集，並透過 *kubectl* 之類的原生工具來管理叢集。
 
-本文說明如何連線到 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集，然後使用 *kubectl*進行管理。 
+本文說明如何連線到 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集，然後使用 *kubectl* 進行管理。 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
@@ -44,7 +44,7 @@ ms.locfileid: "90903214"
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>透過 RBAC 設定叢集存取
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>透過 Kubernetes RBAC 設定叢集存取
 
 建立 Kubernetes 叢集之後，您可以透過 cmdline 使用 *kubectl* 來存取叢集。 
 
@@ -125,7 +125,7 @@ ms.locfileid: "90903214"
     例如，如果 Kubernetes 主要節點正在執行 v 1.15.2，請在用戶端上安裝 v 1.15.2。
 
     > [!IMPORTANT]
-    > 下載用戶端，而該用戶端不會從主伺服器進行超過一個次要版本的扭曲。 用戶端版本，但可能會導致主伺服器最多一個次要版本。 例如，v1.0 主機應該適用于 v1.1、v1.0 和 v1.0 節點，而且應該適用于 v1.0、1.3 和1.4 版用戶端。 如需 Kubernetes 用戶端版本的詳細資訊，請參閱 [Kubernetes 版本和版本扭曲支援原則](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 如需 Azure Stack Edge Pro 上 Kubernetes server 版本的詳細資訊，請移至取得 Kubernetes 伺服器版本。<!-- insert link-->
+    > 下載的用戶端不應超過主機一個次要版本以上。 用戶端版本，但可能會導致主伺服器最多一個次要版本。 例如，v1.0 主機應該適用于 v1.1、v1.0 和 v1.0 節點，而且應該適用于 v1.0、1.3 和1.4 版用戶端。 如需 Kubernetes 用戶端版本的詳細資訊，請參閱 [Kubernetes 版本和版本扭曲支援原則](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 如需 Azure Stack Edge Pro 上 Kubernetes server 版本的詳細資訊，請移至取得 Kubernetes 伺服器版本。<!-- insert link-->
     > 有時候， `kubectl` 如果您正在執行適用於 Windows 的 Docker 或其他工具，則會預先安裝在您的系統上。 請務必下載的特定版本，如本節 `kubectl` 所示，以使用此 kubernetes 叢集。 
 
     安裝需要幾分鐘的時間。
@@ -160,7 +160,7 @@ ms.locfileid: "90903214"
 您現在可以在命名空間中部署應用程式，然後查看這些應用程式及其記錄。
 
 > [!IMPORTANT]   
-> 您將無法執行許多命令，例如需要您擁有系統管理員存取權的命令。 您只能執行命名空間所允許的作業。
+> 您將無法執行許多命令，例如需要您擁有系統管理員存取權的命令。 您只能執行命名空間上允許的作業。
 
 
 ## <a name="remove-kubernetes-cluster"></a>移除 Kubernetes 叢集

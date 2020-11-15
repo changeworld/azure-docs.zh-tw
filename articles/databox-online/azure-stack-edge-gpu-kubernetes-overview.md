@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899243"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636913"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置上的 Kubernetes
 
@@ -67,7 +67,7 @@ Kubernetes 網路功能可讓您設定 Kubernetes 網路內的通訊，包括容
 
 ## <a name="access-monitoring"></a>存取，監視
 
-您 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集允許 (RBAC) 的角色型存取控制。 如需詳細資訊，請參閱 [Azure Stack Edge Pro 裝置上的 Kubernetes 叢集角色型存取控制](azure-stack-edge-gpu-kubernetes-rbac.md)。
+您 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集允許 Kubernetes 角色型存取控制 (Kubernetes RBAC) 。 如需詳細資訊，請參閱在 [Azure Stack Edge PRO GPU 裝置上 Kubernetes 角色型存取控制](azure-stack-edge-gpu-kubernetes-rbac.md)。
 
 您也可以透過 Kubernetes 儀表板來監視叢集和資源的健康情況。 也可以使用容器記錄。 如需詳細資訊，請參閱 [使用 Kubernetes 儀表板來監視您 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集健康](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)情況。
 

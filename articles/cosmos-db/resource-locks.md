@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341955"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636685"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>防止刪除或變更 Azure Cosmos DB 資源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93341955"
 
 當您在父範圍套用鎖定時，該範圍內的所有資源都會都繼承相同的鎖定。 甚至您稍後新增的資源都會繼承父項的鎖定。 繼承中限制最嚴格的鎖定優先順序最高。
 
-不同於角色型存取控制，您可以使用管理鎖定來對所有使用者和角色套用限制。 若要瞭解 Azure Cosmos DB 的 RBAC，請參閱 [Azure Cosmos DB 中以角色為基礎的存取控制](role-based-access-control.md)。
+不同于 Azure 角色型存取控制，您可以使用管理鎖定來對所有使用者和角色套用限制。 若要瞭解適用于 Azure Cosmos DB 的 Azure RBAC，請參閱 [Azure Cosmos DB 中的 azure 角色型存取控制](role-based-access-control.md)。
 
 Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳送至 https://management.azure.com 的作業。 鎖定並不會限制資源執行自己功能的方式。 已限制資源變更，但未限制資源作業。 例如，Azure Cosmos 容器上的 ReadOnly 鎖定會防止您刪除或修改容器。 它不會讓您無法建立、更新或刪除容器中的資料。 允許資料交易，因為那些作業並不會傳送到 https://management.azure.com。
 

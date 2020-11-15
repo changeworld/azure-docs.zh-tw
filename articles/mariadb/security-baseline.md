@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6071a3675b1ad6aa5d49395fb9050c941af9be0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 043a2481647076abb5a6e242ffa2ea8b3f282c4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532742"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637161"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>適用于適用於 MariaDB 的 Azure 資料庫的 Azure 安全性基準
 
@@ -818,9 +818,9 @@ Microsoft 會管理適用于 mariadb 的基礎結構，並已實行嚴格的控�
 
 **指導** 方針：如果您適用於 MariaDB 的 Azure 資料庫伺服器和相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-如何在 Azure DevOps 中儲存程式碼： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
+[如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true
+[Azure Repos 文件](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure 資訊安全中心監視** ：不適用
 

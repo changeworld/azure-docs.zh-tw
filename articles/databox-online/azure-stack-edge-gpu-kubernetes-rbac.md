@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320807"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635835"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上 Kubernetes 以角色為基礎的存取控制
 
 
-在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 您可以使用 Kubernetes 角色型存取控制 (RBAC) 來限制對您裝置上叢集資源的存取。
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 您可以使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) 來限制對您裝置上叢集資源的存取。
 
-本文概述 Kubernetes 提供的 RBAC 系統，以及如何在您的 Azure Stack Edge Pro 裝置上執行 Kubernetes RBAC。 
+本文概述 Kubernetes 所提供的 Kubernetes RBAC 系統，以及如何在您的 Azure Stack Edge Pro 裝置上執行 Kubernetes RBAC。 
 
-## <a name="rbac-for-kubernetes"></a>適用于 Kubernetes 的 RBAC
+## <a name="kubernetes-rbac"></a>Kubernetes RBAC
 
 Kubernetes RBAC 可讓您指派使用者或使用者群組，以執行建立或修改資源等作業的許可權，或從執行中的應用程式工作負載來查看記錄。 這些許可權可以設定為單一命名空間，或授與整個叢集的範圍。 
 
@@ -42,7 +42,7 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
     - kube-系統
     - metallb-系統
     - dbe-命名空間
-    - default
+    - 預設
     - kubernetes-儀表板
     - kube-節點-租用
     - kube-public
@@ -61,21 +61,21 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
 
 在真實世界中，請務必將叢集分割成多個命名空間。 
 
-- **多個使用者**：如果您有多個使用者，則多個命名空間可讓這些使用者各自在其特定命名空間中部署其應用程式和服務。 
-- **單一使用者**：即使有單一使用者，多個命名空間仍允許該使用者在相同的 Kubernetes 叢集中執行多個版本的應用程式。
+- **多個使用者** ：如果您有多個使用者，則多個命名空間可讓這些使用者各自在其特定命名空間中部署其應用程式和服務。 
+- **單一使用者** ：即使有單一使用者，多個命名空間仍允許該使用者在相同的 Kubernetes 叢集中執行多個版本的應用程式。
 
 ### <a name="roles-and-rolebindings"></a>角色和 RoleBindings
 
 Kubernetes 具有角色和角色系結的概念，可讓您將許可權授與命名空間層級和叢集層級的使用者或資源。 
 
-- **角色**：您可以將許可權定義為 **角色** ，然後在命名空間中使用 **角色** 來授與許可權。 
-- **RoleBindings**：定義角色之後，您可以使用 **RoleBindings** 指派指定命名空間的角色。 
+- **角色** ：您可以將許可權定義為 **角色** ，然後在命名空間中使用 **角色** 來授與許可權。 
+- **RoleBindings** ：定義角色之後，您可以使用 **RoleBindings** 指派指定命名空間的角色。 
 
 這種方法可讓您以邏輯方式區隔單一 Kubernetes 叢集，讓使用者只能存取其指派命名空間中的應用程式資源。 
 
-## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的 RBAC
+## <a name="kubernetes-rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的 Kubernetes RBAC
 
-在目前的 RBAC 實施中，Azure Stack Edge Pro 可讓您從受限制的 PowerShell 執行時間採取下列動作：
+在目前的 Kubernetes RBAC 實施中，Azure Stack Edge Pro 可讓您從受限制的 PowerShell 執行空間中採取下列動作：
 
 - 建立命名空間。  
 - 建立其他使用者。
@@ -85,9 +85,9 @@ Kubernetes 具有角色和角色系結的概念，可讓您將許可權授與命
 
 Azure Stack Edge Pro 裝置具有多個系統命名空間，而且您可以使用檔案來建立使用者命名空間， `kubeconfig` 以存取這些命名空間。 使用者可以完全掌控這些命名空間，也可以建立或修改使用者，或授與使用者存取權。 只有叢集系統管理員具有系統命名空間和整個叢集資源的完整存取權。 `aseuser`具有系統命名空間的唯讀存取權。
 
-以下圖表描述 Azure Stack Edge Pro 裝置上的 RBAC 的執行。
+以下圖表說明 Azure Stack Edge Pro 裝置上 Kubernetes RBAC 的執行情況。
 
-![Azure Stack Edge Pro 裝置上的 RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Azure Stack Edge Pro 裝置上的 Kubernetes RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 在此圖中，Alice、Bob 和 Chuck 只能存取指派的使用者命名空間，在此案例中為 `ns1` 、 `ns2` 和 `ns3` 分別為。 在這些命名空間中，它們具有系統管理員存取權。 另一方面，叢集系統管理員可以存取系統命名空間和整個叢集的資源。
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 7679c613c4804f7df315918ee5d6946c07eb8b4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 49a89228afd3b46f38afafb8ff16bc63a40dd35b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787732"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635206"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>防止 Azure 儲存體帳戶的共用金鑰授權 (預覽) 
 
@@ -67,7 +67,7 @@ Azure 儲存體帳戶的每個安全要求都必須獲得授權。 根據預設�
 
 設定計量之後，對您儲存體帳戶的要求就會開始出現在圖形上。 下圖顯示以共用金鑰授權或使用 SAS 權杖進行授權的要求。 過去三十天內的要求是每天匯總的。
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="螢幕擷取畫面，顯示如何設定計量來加總以共用金鑰或 SAS 進行的交易":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="顯示以共用金鑰授權之匯總要求的螢幕擷取畫面":::
 
 您也可以設定警示規則，以在針對您的儲存體帳戶進行共用金鑰授權的特定要求數目時通知您。 如需詳細資訊，請參閱[使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
@@ -93,7 +93,7 @@ Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記�
 1. 在 [ **類別細節** ] 下的 [ **記錄** ] 區段中，選擇 [ **StorageRead** ]、[ **StorageWrite** ] 和 [ **StorageDelete** ]，將所有資料要求記錄到選取的服務。
 1. 在 [ **目的地詳細資料** ] 底下，選取 [ **傳送至 Log Analytics** ]。 選取您的訂用帳戶和您稍早建立的 Log Analytics 工作區，如下列影像所示。
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="螢幕擷取畫面，顯示如何設定計量來加總以共用金鑰或 SAS 進行的交易":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
 
 您可以針對儲存體帳戶中的每個 Azure 儲存體資源類型建立診斷設定。
 
@@ -133,7 +133,7 @@ StorageBlobLogs
 1. 在 [ **設定** ] 下找 **出設定。**
 1. 將 [ **允許共用金鑰存取** ] 設定為 **停用** 。
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="螢幕擷取畫面，顯示如何設定計量來加總以共用金鑰或 SAS 進行的交易":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="顯示如何禁止帳戶共用金鑰存取的螢幕擷取畫面":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -213,10 +213,10 @@ resources
 
 | Azure 工具 | Azure AD Azure 儲存體的授權 |
 |-|-|
-| Azure 入口網站 | 支援。 如需從 Azure 入口網站授權 Azure AD 帳戶的相關資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-blob-access-portal.md)。 |
+| Azure 入口網站 | 支援。 如需從 Azure 入口網站授權 Azure AD 帳戶的相關資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-data-operations-portal.md)。 |
 | AzCopy | 支援 Blob 儲存體。 如需授權 AzCopy 作業的相關資訊，請參閱 AzCopy 檔中的 [選擇如何提供授權認證](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) 。 |
 | Azure 儲存體總管 | 僅支援 Blob 儲存體及 Azure Data Lake Storage Gen2。 不支援對佇列儲存體 Azure AD 存取。 請務必選取正確的 Azure AD 租使用者。 如需詳細資訊，請參閱 [開始使用儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
-| Azure PowerShell | 支援。 如需有關如何使用 Azure AD 為 blob 或佇列作業授權 PowerShell 命令的詳細資訊，請參閱以 [Azure AD 認證執行 powershell 命令以存取 blob 資料](../blobs/authorize-active-directory-powershell.md) ，或 [使用 Azure AD 認證來執行 powershell 命令以存取佇列資料](../queues/authorize-active-directory-powershell.md)。 |
+| Azure PowerShell | 支援。 如需有關如何使用 Azure AD 為 blob 或佇列作業授權 PowerShell 命令的詳細資訊，請參閱以 [Azure AD 認證執行 powershell 命令以存取 blob 資料](../blobs/authorize-data-operations-powershell.md) ，或 [使用 Azure AD 認證來執行 powershell 命令以存取佇列資料](../queues/authorize-data-operations-powershell.md)。 |
 | Azure CLI | 支援。 如需如何使用 Azure AD 存取 blob 和佇列資料的授權 Azure CLI 命令的詳細資訊，請參閱 [使用 Azure AD 認證執行 Azure CLI 命令以存取 blob 或佇列資料](authorize-data-operations-cli.md)。 |
 | Azure IoT 中樞 | 支援。 如需詳細資訊，請參閱 [虛擬網路的 IoT 中樞支援](../../iot-hub/virtual-network-support.md)。 |
 | Azure Cloud Shell | Azure Cloud Shell 是 Azure 入口網站中的整合式 Shell。 Azure Cloud Shell 會在儲存體帳戶中裝載 Azure 檔案共用的持續性檔案。 如果該儲存體帳戶不允許共用金鑰授權，這些檔案將變成無法存取。 如需詳細資訊，請參閱 [連接您的 Microsoft Azure 檔案儲存體](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要在 Azure Cloud Shell 中執行命令以管理不允許共用金鑰存取的儲存體帳戶，請先確定您已透過 Azure RBAC) 的 Azure 角色型訪問 (控制，授與這些帳戶所需的許可權。 如需詳細資訊，請參閱 [什麼是 AZURE RBAC)  (的 azure 角色型存取控制？](../../role-based-access-control/overview.md)。 |

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 45f5a7e66c80dff5e78e575463becd95bcc7fca1
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242172"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636192"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Private Link
 
@@ -67,6 +67,7 @@ az vm create \
   --name myVm \
   --image Win2019Datacenter
 ```
+
  請記下 VM 的公用 IP 位址。 在下一個步驟中，您將使用此位址來從網際網路連線至 VM。
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>建立適用於 PostgreSQL 的 Azure 資料庫單一伺服器 
@@ -99,6 +100,7 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>設定私人 DNS 區域 
 建立于 postgresql 伺服器網域的私人 DNS 區域，並建立與虛擬網路的關聯連結。 
+
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -126,7 +128,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 > [!NOTE]
 > 某些案例中，適用於 PostgreSQL 的 Azure 資料庫和 VNet 子網路是在不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
-> - 請確定這兩個訂用帳戶都已註冊 **DBforPostgreSQL** 資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
+> - 請確定這兩個訂用帳戶都已註冊 **DBforPostgreSQL** 資源提供者。 如需詳細資訊，請參閱 [資源提供者](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 
@@ -140,14 +142,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 開啟 *downloaded.rdp* 檔案。
 
-    1. 如果出現提示，請選取 [連接]  。
+    1. 如果出現提示，請選取 [連接]。
 
     1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -159,27 +161,28 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 2. 輸入  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`。 
 
-    您將收到如下訊息：
-    ```azurepowershell
-    Server:  UnKnown
-    Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
-    Address:  10.1.3.4
-    ```
+   您將收到如下訊息：
 
-3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 在下列範例中，我使用了 [Azure Data studio](/sql/azure-data-studio/download?view=sql-server-ver15) 來進行操作。
+   ```azurepowershell
+   Server:  UnKnown
+   Address:  168.63.129.16
+   Non-authoritative answer:
+   Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
+   Address:  10.1.3.4
+   ```
+
+3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 下列範例會使用 [Azure Data studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) 來執行操作。
 
 4. 在 [ **新增連接** ] 中，輸入或選取這項資訊：
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 伺服器類型| 選取 [ **于 postgresql** ]。|
-    | 伺服器名稱| 選取 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | 使用者名稱 | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
-    |密碼 |輸入在於 postgresql 伺服器建立期間提供的密碼。 |
-    |SSL|選取 [ **必要** ]。|
-    ||
+   | 設定 | 值 |
+   | ------- | ----- |
+   | 伺服器類型| 選取 [ **于 postgresql** ]。|
+   | 伺服器名稱| 選取 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
+   | 使用者名稱 | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
+   |密碼 |輸入在於 postgresql 伺服器建立期間提供的密碼。 |
+   |SSL|選取 [ **必要** ]。|
+   ||
 
 5. 選取 [連線]。
 
@@ -198,6 +201,3 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [什麼是 Azure 私人端點](../private-link/private-endpoint-overview.md)
-
-<!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

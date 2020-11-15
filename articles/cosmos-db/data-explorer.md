@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: d5958ea947f6b786e9fbc6c44ab914ea895d6e08
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096796"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637110"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 總管處理資料 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,7 +50,7 @@ Azure Cosmos DB Gremlin 和資料表 API 帳戶目前尚未支援可讓您暫時
 
 目前，資料總管中不支援使用包含 UUID 的檔來進行流覽。 這不會影響載入集合，只會查看個別檔或包含這些檔的查詢。 若要查看及管理這些檔，使用者應該繼續使用原本用來建立這些檔的工具。
 
-收到 HTTP-401 錯誤的客戶可能是因為客戶的 Azure 帳戶沒有足夠的 RBAC 許可權，特別是當帳戶具有自訂 RBAC 角色時。 任何自訂角色都必須 `Microsoft.DocumentDB/databaseAccounts/listKeys/*` 要有動作才能使用資料總管如果使用其 Azure Active Directory 認證進行登入。
+收到 HTTP-401 錯誤的客戶可能是因為客戶的 Azure 帳戶沒有足夠的 Azure RBAC 許可權，特別是當帳戶有自訂角色時。 任何自訂角色都必須 `Microsoft.DocumentDB/databaseAccounts/listKeys/*` 要有動作才能使用資料總管如果使用其 Azure Active Directory 認證進行登入。
 
 ## <a name="next-steps"></a>後續步驟
 

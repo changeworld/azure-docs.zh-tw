@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604065"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636872"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -37,7 +37,12 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >[!NOTE]
 >發行新版 Azure AD Connect 是需要數個品質控制步驟來確保服務作業功能的程序，而當進行此程序時，新版本的版本號碼及發行狀態將會更新，以反映最新狀態。
 當進行此程序時，發行版本號碼將會以 "X" 顯示在次要版本號碼位置，如 "1.3.X.0" 中所示 - 這表示此文件中版本資訊適用於開頭為 "1.3." 的所有版本。 完成發行程序之後，發行版本號碼將會更新為最近發行的版本，而發行狀態將會更新為「已發行，可供下載和自動升級」。
-並非所有版本的 Azure AD Connect 都可自動升級。 發行狀態會指出版本是否可自動升級或僅供下載。 如果您的 Azure AD Connect 伺服器上已啟用自動升級，則該伺服器將會自動升級為可自動升級的最新版 Azure AD Connect。 請注意，並非所有 Azure AD Connect 組態都符合自動升級的資格。 請遵循下列連結來深入了解[自動升級](how-to-connect-install-automatic-upgrade.md)
+並非所有版本的 Azure AD Connect 都可自動升級。 發行狀態會指出版本是否可自動升級或僅供下載。 如果您的 Azure AD Connect 伺服器上已啟用自動升級，則該伺服器將會自動升級為可自動升級的最新版 Azure AD Connect。 請注意，並非所有 Azure AD Connect 組態都符合自動升級的資格。 
+
+為了明確地說明如何使用自動升級，其目的是要將所有重要的更新和重大修正推送至您。 這不一定是最新的版本，因為並非所有版本都需要或包含一項重大安全性問題的修正 (只是許多) 的一個範例。 這類問題會透過自動升級所提供的新版本來解決。 如果沒有這類問題，就不會使用自動升級來推送任何更新，一般而言，如果您使用的是最新的自動升級版本，您應該會很好。
+但是，如果您想要所有最新的功能和更新，查看此頁面是否有任何問題，最好的方式是檢查此頁面，並視需要加以安裝。 
+
+請遵循下列連結來深入了解[自動升級](how-to-connect-install-automatic-upgrade.md)
 
 >[!IMPORTANT]
 > 自 2020 年 11 月 1 日起，將開始實作淘汰程序。根據此程序，超過 18 個月前發行的 Azure AD Connect 版本將會被淘汰。 屆時，我們將開始此程序，淘汰版本為 1.3.20.0 (於 2019 年 4 月 24 日發行) 及更舊版本的所有 Azure AD Connect 版本，然後我們會繼續在每次有新版本發行時，評估是否要淘汰舊版的 Azure AD Connect。

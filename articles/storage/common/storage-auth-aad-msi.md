@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21b563bf383dce486de86bc51913feac7863d8e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791166"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635155"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別來授權 blob 和佇列資料的存取
 
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [使用 AZURE RBAC 管理儲存體資料的存取權限](./storage-auth-aad-rbac-portal.md)。
 - 搭配[使用 Azure AD 與儲存體應用程式](storage-auth-aad-app.md)。
-- [使用 Azure AD 認證來執行 PowerShell 命令以存取 blob 資料](../blobs/authorize-active-directory-powershell.md)
+- [使用 Azure AD 認證來執行 PowerShell 命令以存取 blob 資料](../blobs/authorize-data-operations-powershell.md)

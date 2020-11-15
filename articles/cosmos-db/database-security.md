@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5b2457018daf716052b81a8b99c21e3248f185eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096779"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636906"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 的安全性 - 概觀
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "93096779"
 |網路安全性|使用 IP 防火牆是保護資料庫的第一道防線。 Azure Cosmos DB 支援原則驅動的 IP 型存取控制，以提供輸入防火牆支援。 IP 型存取控制類似于傳統資料庫系統所使用的防火牆規則，但會加以擴充，以便只能從一組核准的機器或雲端服務存取 Azure Cosmos 資料庫帳戶。 若要深入瞭解，請參閱 [Azure Cosmos DB 防火牆支援](how-to-configure-firewall.md) 文章。<br><br>Azure Cosmos DB 可讓您啟用特定的 IP 位址 (168.61.48.0)、IP 範圍 (168.61.48.0/8)，以及 IP 和範圍的組合。 <br><br>Azure Cosmos DB 會封鎖此允許清單之外的機器發出的所有要求。 因此，核准的機器和雲端服務發出的要求必須完成驗證程序，才能獲得資源的存取控制。<br><br> 您可以使用 [虛擬網路服務](../virtual-network/service-tags-overview.md) 標籤來達成網路隔離，並保護您的 Azure Cosmos DB 資源免于受到一般網際網路的限制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如，AzureCosmosDB) 在規則的適當來源或目的地欄位中，您可以允許或拒絕對應服務的流量。|
 |授權|Azure Cosmos DB 使用雜湊式訊息驗證碼 (HMAC) 來進行授權。 <br><br>每個要求都經過祕密帳戶金鑰的雜湊處理，而後續的 base 64 編碼雜湊會隨著每次呼叫 Azure Cosmos DB 一起傳送。 為了驗證要求，Azure Cosmos DB 服務會使用正確的祕密金鑰和屬性產生雜湊，然後比較此值與要求中的值。 如果兩個值相符，則會成功授權作業，並處理要求，否則授權會失敗，也會拒絕要求。<br><br>您可以使用 [主要金鑰](#primary-keys)或 [資源權杖](secure-access-to-data.md#resource-tokens) ，讓您可以更細緻地存取資源（例如檔）。<br><br>請參閱[保護 Azure Cosmos DB 資源的存取](secure-access-to-data.md)以深入了解。|
 |使用者和權限|使用帳戶的主要金鑰時，您可以為每個資料庫建立使用者資源和許可權資源。 資源權杖與資料庫中的權限相關聯，將決定使用者是否能夠存取 (讀寫、唯讀或無法存取) 資料庫中的應用程式資源。 應用程式資源包括容器、文件、附件、預存程序、觸發程序和 UDF。 然後，驗證期間會使用資源權杖來允許或拒絕存取資源。<br><br>請參閱[保護 Azure Cosmos DB 資源的存取](secure-access-to-data.md)以深入了解。|
-|Azure 目錄整合 (RBAC)| 您也可以使用 Azure 入口網站中的存取控制 (IAM) ，來提供或限制 Cosmos 帳戶、資料庫、容器和供應專案 (輸送量) 的存取權。 IAM 提供角色型存取控制，並與 Active Directory 整合。 您可以針對個人和群組使用內建角色或自訂角色。 如需詳細資訊，請參閱 [Active Directory 整合](role-based-access-control.md) 文章。|
+| (Azure RBAC) 的 Active directory 整合| 您也可以使用 Azure 入口網站中的存取控制 (IAM) ，來提供或限制 Cosmos 帳戶、資料庫、容器和供應專案 (輸送量) 的存取權。 IAM 提供角色型存取控制，並與 Active Directory 整合。 您可以針對個人和群組使用內建角色或自訂角色。 如需詳細資訊，請參閱 [Active Directory 整合](role-based-access-control.md) 文章。|
 |全球複寫|Azure Cosmos DB 提供現成的全域散發，您只要按一下按鈕，就能將資料複寫至 Azure 的任何一個全球資料中心。 全球複寫可讓您擴大到全球規模，確保存取世界各地資料時的低延遲性。<br><br>在安全性方面，全域複寫可確保資料不受區域性失敗影響。<br><br>請參閱[將資料分散到全球](distribute-data-globally.md)以深入了解。|
 |區域性容錯移轉|如果您已將資料複寫至多個資料中心，萬一某個區域資料中心離線，Azure Cosmos DB 會自動轉移您的作業。 您可以使用已複寫資料的區域，建立容錯移轉區域的優先順序清單。 <br><br>請參閱 [Azure Cosmos DB 的區域性容錯移轉](high-availability.md)以深入了解。|
 |區域複寫|即使在單一資料中心內，Azure Cosmos DB 也會自動複寫資料來達到高可用性，還可讓您選擇[一致性層級](consistency-levels.md)。 這種複寫保證所有單一區域帳戶和所有多重區域帳戶的 99.99% [可用性 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) ，在所有多區域資料庫帳戶上都有寬鬆的一致性，以及99.999% 的讀取可用性。|

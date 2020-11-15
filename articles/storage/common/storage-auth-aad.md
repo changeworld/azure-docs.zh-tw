@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7128a11ae9d5c9844353404309f8ad40cba53972
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d03496634c5d30d30b23a76b5b47b1e810af288
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787579"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635393"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
@@ -79,11 +79,11 @@ Azure 入口網站可以使用您的 Azure AD 帳戶或帳戶存取金鑰來存�
 
 若要使用您的 Azure AD 帳戶從 Azure 入口網站存取 blob 或佇列資料，您需要存取 blob 和佇列資料的許可權，而且您也需要許可權，才能流覽 Azure 入口網站中的儲存體帳戶資源。 Azure 儲存體提供的內建角色會授與對 blob 和佇列資源的存取權，但不會將許可權授與儲存體帳戶資源。 基於這個理由，入口網站的存取權也需要指派 Azure Resource Manager 角色，例如 [讀者](../../role-based-access-control/built-in-roles.md#reader) 角色，範圍設定為儲存體帳戶或更高的層級。 **讀取** 者角色會授與最受限制的許可權，但也可以接受另一個授與儲存體帳戶管理資源存取權的 Azure Resource Manager 角色。 若要深入瞭解如何將許可權指派給使用者，以使用 Azure AD 帳戶在 Azure 入口網站中進行資料存取，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-portal.md)。
 
-Azure 入口網站指出當您流覽至容器或佇列時，所使用的授權配置。 如需有關入口網站中資料存取的詳細資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-blob-access-portal.md) ，以及 [選擇如何授權存取 Azure 入口網站中的佇列資料](../queues/authorize-queue-access-portal.md)。
+Azure 入口網站指出當您流覽至容器或佇列時，所使用的授權配置。 如需有關入口網站中資料存取的詳細資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-data-operations-portal.md) ，以及 [選擇如何授權存取 Azure 入口網站中的佇列資料](../queues/authorize-data-operations-portal.md)。
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>從 PowerShell 或 Azure CLI 的資料存取
 
-Azure CLI 和 PowerShell 支援使用 Azure AD 認證登入。 登入之後，您的會話就會在這些認證下執行。 若要深入瞭解，請參閱 [使用 Azure AD 認證執行 Azure CLI 或 PowerShell 命令，以存取 blob 或佇列資料](../blobs/authorize-active-directory-powershell.md)。
+Azure CLI 和 PowerShell 支援使用 Azure AD 認證登入。 登入之後，您的會話就會在這些認證下執行。 若要深入瞭解，請參閱 [使用 Azure AD 認證執行 Azure CLI 或 PowerShell 命令，以存取 blob 或佇列資料](../blobs/authorize-data-operations-powershell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

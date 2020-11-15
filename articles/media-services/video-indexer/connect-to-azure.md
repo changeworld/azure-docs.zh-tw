@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504498"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634883"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "94504498"
 
 如果您要從 *試用版* 移至 *付費* 影片索引子帳戶，您可以選擇將所有的影片和模型自訂複製到新的帳戶，如 [從試用帳戶匯入內容](#import-your-content-from-the-trial-account) 一節中所述。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。
 
@@ -193,6 +193,10 @@ ms.locfileid: "94504498"
 
     請參閱 [媒體服務帳戶建立範本](https://github.com/Azure-Samples/media-services-v3-arm-templates)的範例。
 1. [以媒體服務和 Azure AD 應用程式呼叫建立帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+完成本教學課程之後，請刪除您不打算使用的資源。
 
 ## <a name="next-steps"></a>後續步驟
 

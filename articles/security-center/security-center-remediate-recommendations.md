@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569130"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637078"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的補救建議
 
@@ -38,25 +38,32 @@ ms.locfileid: "89569130"
 
 ## <a name="quick-fix-remediation"></a>快速修正補救<a name="one-click"></a>
 
-快速修正可讓您快速補救多個資源上的建議。 它只適用于特定的建議。 快速修正可簡化補救，並可讓您快速增加安全分數，進而提升環境的安全性。
+快速修正可簡化補救，並可讓您快速增加安全分數，進而提升環境的安全性。
+
+快速修正可讓您快速補救多個資源上的建議。 
+
+> [!TIP]
+> 快速修正僅適用于特定的建議。 若要尋找具有快速修正選項的建議，請使用建議清單頂端的專用篩選：
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建議清單上方的篩選準則來尋找具有快速修正選項的建議":::
 
 若要執行快速修正修復：
 
-1. 從有**快速修正**的建議清單中！ 標籤上，按一下建議。
+1. 從有 **快速修正** 的建議清單中！ 標籤上，按一下建議。
 
     [![選取 [快速修正]！](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. 從 [ **狀況不良的資源** ] 索引標籤中，選取您要執行建議的資源，然後按一下 [ **修復**]。
+1. 從 [ **狀況不良的資源** ] 索引標籤中，選取您要執行建議的資源，然後按一下 [ **修復** ]。
 
     > [!NOTE]
     > 某些列出的資源可能已停用，因為您沒有適當的許可權可以修改它們。
 
 1. 在確認方塊中，閱讀補救詳細資料和含意。
 
-    ![快速檢修](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![快速修正](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
     > [!NOTE]
-    > 在按一下 [**補救**] 之後開啟的 [**補救資源**] 視窗的灰色方塊中會列出這些含意。 它們會列出繼續進行快速修正補救時所發生的變更。
+    > 在按一下 [ **補救** ] 之後開啟的 [ **補救資源** ] 視窗的灰色方塊中會列出這些含意。 它們會列出繼續進行快速修正補救時所發生的變更。
 
 1. 如有必要，請插入相關的參數，並核准補救。
 

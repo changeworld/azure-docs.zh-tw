@@ -1,7 +1,7 @@
 ---
 title: 在您開發的行動裝置應用程式中支援單一登入和應用程式保護原則 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 建立支援單一登入和應用程式保護原則的行動應用程式的說明和總覽
+description: 使用 Microsoft 身分識別平臺建立支援單一登入和應用程式保護原則的行動應用程式，以及與 Azure Active Directory 整合的說明和總覽。
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331601"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634849"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在您開發的 mobile apps 中支援單一登入和應用程式保護原則
 
-單一登入 (SSO) 為您的應用程式使用者提供簡單且安全的登入。 應用程式保護原則 (應用程式) 支援可保護使用者資料安全的金鑰安全性原則。 這些功能一起可讓使用者登入和管理您的應用程式資料。
+單一登入 (SSO) 是 Microsoft 身分識別平臺和 Azure Active Directory 的重要供應專案，可為您的應用程式使用者提供簡單且安全的登入。 此外，應用程式保護原則 (應用程式) 支援可保護使用者資料安全的金鑰安全性原則。 這些功能一起可讓使用者登入和管理您的應用程式資料。
 
 本文說明 SSO 和應用程式為何很重要，並提供建立支援這些功能之行動應用程式的高階指引。 這適用于手機和平板電腦應用程式。 如果您是 IT 系統管理員，想要在組織的 Azure Active Directory 租使用者中部署 SSO，請參閱我們 [的指引，以規劃單一登入部署](../manage-apps/plan-sso-deployment.md)
 

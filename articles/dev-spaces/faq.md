@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 尋找有關 Azure Dev Spaces 的一些常見問題解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 9870ba52424f6f59cc908e4d70bf1560f7d69165
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970294"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636090"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>關於 Azure Dev Spaces 的常見問題
 
@@ -36,13 +36,13 @@ Azure Dev Spaces 支援 [AKS 中所有目前支援的正式運作 (GA) 版本的
 
 使用您自己的 Dockerfile 或 Helm 圖表時，有下列限制：
 * 如果只使用一個 Dockerfile，它必須包含啟用開發案例所需的所有專案，例如語言 SDK 而不只是執行時間。 如果針對 Azure Dev Spaces 使用不同的 Dockerfile （例如 Dockerfile），則您必須在該 Dockerfile 中包含啟用開發案例所需的一切。
-* 您的 Helm 圖必須支援將部分或整個影像標記作為值 *. yaml*的值傳遞。
+* 您的 Helm 圖必須支援將部分或整個影像標記作為值 *. yaml* 的值傳遞。
 * 如果您要使用輸入來修改任何事物，也可以更新您的 Helm 圖表，以使用 Azure Dev Spaces 所提供的輸入解決方案。
-* 如果您想要使用 [Azure Dev Spaces 所提供的路由功能][dev-spaces-routing]，個別專案的所有服務都必須符合單一 Kubernetes 命名空間，而且必須以簡單的命名（例如 *服務-a*）進行部署。 在標準 Helm 圖中，您可以藉由指定 *fullnameOverride* 屬性的值來完成此具名更新。
+* 如果您想要使用 [Azure Dev Spaces 所提供的路由功能][dev-spaces-routing]，個別專案的所有服務都必須符合單一 Kubernetes 命名空間，而且必須以簡單的命名（例如 *服務-a* ）進行部署。 在標準 Helm 圖中，您可以藉由指定 *fullnameOverride* 屬性的值來完成此具名更新。
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>我可以修改 Azure Dev Spaces 產生的檔案嗎？
 
-是，您可以在[準備專案時修改 Azure Dev Spaces 所產生][dev-spaces-prep]的*Yaml*檔案、Dockerfile 和 Helm 圖表。 修改這些檔案會變更建立和執行專案的方式。
+是，您可以在 [準備專案時修改 Azure Dev Spaces 所產生][dev-spaces-prep]的 *Yaml* 檔案、Dockerfile 和 Helm 圖表。 修改這些檔案會變更建立和執行專案的方式。
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>我是否可以在不使用公用 IP 位址的情況下使用 Azure Dev Spaces？
 
@@ -72,9 +72,9 @@ Azure Dev Spaces 支援 [AKS 中所有目前支援的正式運作 (GA) 版本的
 
 是的，您可以在 AKS 叢集上使用 Azure Dev Spaces，並在允許正確的 Fqdn 之後啟用叢集 [節點的限制輸出流量][aks-restrict-egress-traffic] 。 如需有關使用 AKS 叢集搭配 Azure Dev Spaces 啟用的叢集節點之受限制輸出流量的詳細資訊，請參閱 [這裡](configure-networking.md#ingress-and-egress-network-traffic-requirements)。
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>我可以在啟用 RBAC 的 AKS 叢集上使用 Azure Dev Spaces 嗎？
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>我可以在已啟用 Kubernetes RBAC 的 AKS 叢集上使用 Azure Dev Spaces 嗎？
 
-是的，您可以在 AKS 叢集上使用 Azure Dev Spaces，不論是否已啟用 RBAC。
+是，您可以在 AKS 叢集上使用 Azure Dev Spaces，不論是否有 Kubernetes 角色型存取控制， (Kubernetes RBAC) 已啟用。
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>當我在 Visual Studio 中啟用專案的輸入時，會發生什麼事？
 

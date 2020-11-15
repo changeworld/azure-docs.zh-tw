@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578807"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636464"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -97,8 +97,8 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 1. 建立或設定不同的儲存體帳戶。  這會是我們使用服務端點保護的儲存體帳戶，並連接我們的函式。
 1. 在受保護的儲存體帳戶中[建立檔案共用](../storage/files/storage-how-to-create-file-share.md#create-file-share)。
 1. 啟用儲存體帳戶的服務端點或私人端點。  
-    * 如果您使用服務端點，請務必啟用您函式應用程式專用的子網。
-    * 如果使用私用端點，請務必建立 DNS 記錄，並將您的應用程式設定為使用 [私人端點端點](#azure-dns-private-zones) 。  儲存體帳戶將需要和子資源的私用端點 `file` `blob` 。  如果使用 Durable Functions 之類的特定功能，您也將需要 `queue` 和 `table` 可透過私人端點連接存取。
+    * 如果使用私人端點連接，則儲存體帳戶將需要和子資源的私用 `file` 端點 `blob` 。  如果使用 Durable Functions 之類的特定功能，您也將需要 `queue` 和 `table` 可透過私人端點連接存取。
+    * 如果使用服務端點，請啟用您的函式應用程式專用於儲存體帳戶的子網。
 1.  (選擇性) 將檔案和 blob 內容從函數應用程式儲存體帳戶複製到受保護的儲存體帳戶和檔案共用。
 1. 複製此儲存體帳戶的連接字串。
 1. 將函數應用程式的 [設定 **] 下的****應用程式設定** 更新為下列內容：
@@ -106,6 +106,9 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
     - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 指向受保護儲存體帳戶的連接字串。
     - `WEBSITE_CONTENTSHARE` 至在安全儲存體帳戶中建立的檔案共用名稱。
     - 使用的名稱和值建立新的設定 `WEBSITE_CONTENTOVERVNET` `1` 。
+    - 如果儲存體帳戶使用私人端點連線，請確認或新增下列設定
+        - `WEBSITE_VNET_ROUTE_ALL` 值為的 `1` 。
+        - `WEBSITE_DNS_SERVER` 值為 `168.63.129.16` 
 1. 儲存應用程式設定。  
 
 函式應用程式將會重新開機，且現在會連接到安全的儲存體帳戶。

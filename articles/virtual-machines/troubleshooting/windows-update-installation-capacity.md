@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999100"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635700"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>針對 OS 啟動進行疑難排解 - Windows Update 安裝容量
 
@@ -27,7 +27,7 @@ ms.locfileid: "86999100"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用開機診斷來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows Update (KB) 進行中，但是失敗且具有以下錯誤碼：**C01A001D**。 下圖顯示 Windows Update (KB) 卡在下列訊息，「套用更新作業 ##### 之 ##### (######) 時發生錯誤 C01A001D」：
+當您使用開機診斷來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows Update (KB) 進行中，但是失敗且具有以下錯誤碼： **C01A001D** 。 下圖顯示 Windows Update (KB) 卡在下列訊息，「套用更新作業 ##### 之 ##### (######) 時發生錯誤 C01A001D」：
 
 ![Windows Update (KB) 卡在下列訊息，「套用更新作業 Y 之 X (Z) 時發生錯誤 C01A001D」。](./media/troubleshoot-windows-update-installation-capacity/1.png)
 
@@ -62,8 +62,6 @@ ms.locfileid: "86999100"
 
 1. 檢查磁碟是否已滿。 如果磁碟大小低於 1 TB，請[使用 PowerShell](../windows/expand-os-disk.md) 將其擴充至 1 TB 的上限。
 1. 如果磁碟已經是 1 TB，您需要執行磁碟清理。
-   1. [從中斷的 VM](../windows/detach-disk.md) 卸離資料磁碟。
-   1. 將資料磁碟連結[至運作中的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
    1. 使用[磁碟清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)釋放空間。
 1. 調整大小和清除完成之後，請使用下列命令對磁碟機進行磁碟重組：
 
@@ -75,21 +73,21 @@ ms.locfileid: "86999100"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>啟用序列主控台和記憶體傾印集合
 
-**建議**：重建 VM 之前，請先藉由執行下列指令碼來啟用序列主控台和記憶體傾印集合：
+**建議** ：重建 VM 之前，請先藉由執行下列指令碼來啟用序列主控台和記憶體傾印集合：
 
 1. 以系統管理員身分開啟提升權限的命令提示字元工作階段。
 1. 執行下列命令：
 
-   **啟用序列主控台**：
+   **啟用序列主控台** ：
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
 
-1. 確認作業系統磁碟上的可用空間大於 VM 上的記憶體大小 (RAM)。
+1. 確認 OS 磁碟上的可用空間大於 VM 上的記憶體大小 (RAM)。
 
-   如果作業系統磁碟上沒有足夠的空間，請變更記憶體傾印檔案的建立位置，並將其指向任何已與具有足夠可用空間 VM 連結的資料磁碟位置。 若要變更位置，請使用下列命令，將 **%SystemRoot%** 取代為資料磁碟的磁碟機代號 (例如 **F:** )。
+   如果 OS 磁碟上沒有足夠的空間，請變更記憶體傾印檔案的建立位置，並將該位置指向任何已與 VM 連結且具有足夠可用空間的資料磁碟位置。 若要變更位置，請使用下列命令，將 **%SystemRoot%** 取代為資料磁碟的磁碟機代號 (例如 **F:** )。
 
    啟用作業系統傾印的建議設定：
 
@@ -99,7 +97,7 @@ ms.locfileid: "86999100"
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **在 ControlSet001 上啟用**：
+   **在 ControlSet001 上啟用** ：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -107,7 +105,7 @@ ms.locfileid: "86999100"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **在 ControlSet002 上啟用**：
+   **在 ControlSet002 上啟用** ：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -115,7 +113,7 @@ ms.locfileid: "86999100"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **卸載中斷的作業系統磁碟**：
+   **卸載中斷的作業系統磁碟** ：
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM
@@ -123,4 +121,4 @@ ms.locfileid: "86999100"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。

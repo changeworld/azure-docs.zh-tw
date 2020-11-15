@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364162"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636804"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -26,7 +26,7 @@ ms.locfileid: "92364162"
 
 若為 Visual Studio，請將 `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 環境變數設定為 1。 請務必重新啟動 Visual Studio，讓環境變數生效。 啟用之後，詳細記錄會寫入至您的 `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` 目錄。
 
-在命令執行期間，您可以在 CLI 中使用 `--verbose` 參數輸出更多資訊。 您也可以在 `%TEMP%\Azure Dev Spaces` 中瀏覽更多詳細的記錄。 在 Mac 上，可以在終端視窗執行 `echo $TMPDIR` 來找出 *TEMP* 目錄。 在 Linux 電腦上，*TEMP* 目錄通常是 `/tmp`。 此外，請確認已在 [Azure CLI 設定檔](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中啟用記錄。
+在命令執行期間，您可以在 CLI 中使用 `--verbose` 參數輸出更多資訊。 您也可以在 `%TEMP%\Azure Dev Spaces` 中瀏覽更多詳細的記錄。 在 Mac 上，可以在終端視窗執行 `echo $TMPDIR` 來找出 *TEMP* 目錄。 在 Linux 電腦上， *TEMP* 目錄通常是 `/tmp`。 此外，請確認已在 [Azure CLI 設定檔](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中啟用記錄。
 
 Azure Dev Spaces 在針對單一執行個體 (或 Pod) 進行偵錯時也能達到最佳效果。 `azds.yaml` 檔案包含一個 *replicaCount* 設定，此設定會指出 Kubernetes 將為服務執行的 Pod 數目。 如果您變更 *replicaCount* 以將應用程式設定成針對指定的服務執行多個 Pod，偵錯工具將會連結至第一個 Pod (依字母順序列出時)。 偵錯工具會在該原始 Pod 回收時連結至不同的 Pod，而可能導致非預期的行為。
 
@@ -138,7 +138,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-上述命令顯示服務的 Pod 已指派給 *virtual-node-aci-linux*，其為虛擬節點。
+上述命令顯示服務的 Pod 已指派給 *virtual-node-aci-linux* ，其為虛擬節點。
 
 若要修正此問題，請更新服務的 Helm 圖表，以移除任何允許服務在虛擬節點上執行的 *nodeSelector* 或 *tolerations* 值。 這些值通常會定義在圖表的 `values.yaml` 檔案中。
 
@@ -160,9 +160,9 @@ Container image build failed
 
 ### <a name="existing-dockerfile-not-used-to-build-a-container"></a>現有的 Dockerfile 未用來建立容器
 
-Azure Dev Spaces 可以設定為指向您專案中的特定 _Dockerfile_。 如果發生 Azure Dev Spaces 未使用您預期的 Dockerfile 來建置容器的情形，您可能需要明確告訴 Azure Dev Spaces 要使用哪個 Dockerfile。 
+Azure Dev Spaces 可以設定為指向您專案中的特定 _Dockerfile_ 。 如果發生 Azure Dev Spaces 未使用您預期的 Dockerfile 來建置容器的情形，您可能需要明確告訴 Azure Dev Spaces 要使用哪個 Dockerfile。 
 
-若要修正此問題，請在專案中開啟 Azure Dev Spaces 所產生的 _azds.yaml_ 檔案。 更新 *configurations: develop: build: dockerfile*，以指向您想要使用的 Dockerfile。 例如：
+若要修正此問題，請在專案中開啟 Azure Dev Spaces 所產生的 _azds.yaml_ 檔案。 更新 *configurations: develop: build: dockerfile* ，以指向您想要使用的 Dockerfile。 例如：
 
 ```yaml
 ...
@@ -218,7 +218,7 @@ azds up --verbose --output json
 在 Visual Studio 中：
 
 1. 開啟 [工具] > [選項]，然後在 [專案和解決方案] 底下選擇 [建置並執行]。
-2. 將 **MSBuild 專案建置輸出詳細資訊**的設定變更為 [詳細] 或 [診斷]。
+2. 將 **MSBuild 專案建置輸出詳細資訊** 的設定變更為 [詳細] 或 [診斷]。
 
     ![工具選項對話方塊的螢幕擷取畫面](media/common/VerbositySetting.PNG)
 
@@ -261,20 +261,20 @@ Service cannot be started.
 
 使用 [Azure Dev Spaces 將 AKS 叢集連線到您的開發機器](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes)時，可能會遇到無法在您的開發機器和 AKS 叢集之間轉送網路流量的問題。
 
-將您的開發機器連接到 AKS 叢集時，Azure Dev Spaces 藉由修改開發機器的 `hosts` 檔案，來轉送 AKS 叢集與開發機器之間的網路流量。 Azure Dev Spaces 會在 `hosts` 中建立一個項目，其中包含您要取代為主機名稱的 Kubernetes 服務位址。 此項目會與埠轉送搭配使用，以引導您的開發機器與 AKS 叢集之間的網路流量。 如果開發機器上的服務與您要取代的 Kubernetes 服務連接埠發生衝突，Azure Dev Spaces 無法轉送 Kubernetes 服務的網路流量。 例如，*Windows BranchCache* 服務通常會繫結至 *0.0.0.0:80*，而衝突會導致所有本機 IP 上的連接埠 80 發生衝突。
+將您的開發機器連接到 AKS 叢集時，Azure Dev Spaces 藉由修改開發機器的 `hosts` 檔案，來轉送 AKS 叢集與開發機器之間的網路流量。 Azure Dev Spaces 會在 `hosts` 中建立一個項目，其中包含您要取代為主機名稱的 Kubernetes 服務位址。 此項目會與埠轉送搭配使用，以引導您的開發機器與 AKS 叢集之間的網路流量。 如果開發機器上的服務與您要取代的 Kubernetes 服務連接埠發生衝突，Azure Dev Spaces 無法轉送 Kubernetes 服務的網路流量。 例如， *Windows BranchCache* 服務通常會繫結至 *0.0.0.0:80* ，而衝突會導致所有本機 IP 上的連接埠 80 發生衝突。
 
-若要修正此問題，您必須停止與您嘗試取代的 Kubernetes 服務連接埠發生衝突的任何服務或處理常式。 您可以使用工具 (例如 *netstat*) 來檢查開發機器上的哪些服務或處理常式衝突。
+若要修正此問題，您必須停止與您嘗試取代的 Kubernetes 服務連接埠發生衝突的任何服務或處理常式。 您可以使用工具 (例如 *netstat* ) 來檢查開發機器上的哪些服務或處理常式衝突。
 
 例如，若要停止和停用 *Windows BranchCache* 服務：
 * 從命令提示字元執行 `services.msc`。
 * 以滑鼠右鍵按一下 [BranchCache]，然後選取 [屬性]。
 * 按一下 [停止]。
-* 或者，您可以將*啟動類型*設定為*停用*來停用它。
+* 或者，您可以將 *啟動類型* 設定為 *停用* 來停用它。
 * 按一下 [確定]。
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>錯誤「找不到適用于 pod 的 AzureAssignedIdentity： azds/azds-webhook-部署- \<id\> 處於已指派狀態」
 
-當您在已安裝 [受控識別](../aks/use-managed-identity.md) 和 [pod 受控](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) 識別的 AKS 叢集上執行具有 Azure Dev Spaces 的服務時，此程式可能會在 *圖表安裝* 步驟之後停止回應。 如果您檢查 *azds* 命名空間中的 *azds-injector-webhook*，您可能會看到此錯誤。
+當您在已安裝 [受控識別](../aks/use-managed-identity.md) 和 [pod 受控](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) 識別的 AKS 叢集上執行具有 Azure Dev Spaces 的服務時，此程式可能會在 *圖表安裝* 步驟之後停止回應。 如果您檢查 *azds* 命名空間中的 *azds-injector-webhook* ，您可能會看到此錯誤。
 
 在您的叢集上執行的服務 Azure Dev Spaces 會使用叢集的受控識別，與叢集外的 Azure Dev Spaces 後端服務溝通。 安裝 Pod 受控身分識別時，會在叢集的節點上設定網路規則，以便將受控識別認證的所有呼叫重新導向至叢集上安裝的 [Node 受控識別 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 會識別呼叫的 Pod，並確保 Pod 已妥善標示為可存取要求的受控識別。 Azure Dev Spaces 無法偵測叢集是否已安裝 Pod 受控識別，且無法執行必要的設定，以允許 Azure Dev Spaces 服務存取叢集的受控識別。 由於 Azure Dev Spaces 服務尚未設定為存取叢集的受控識別，因此 NMI DaemonSet 將不會允許它們取得受控識別的 Azure AD 權杖，而且無法與 Azure Dev Spaces 後端服務進行通訊。
 
@@ -299,7 +299,7 @@ spec:
 kubectl apply -f webhookException.yaml
 ```
 
-若要更新 Azure Dev Spaces 檢測的 Pod 以存取受控識別，請更新下列 YAML 定義中的*命名空間*，並使用 `kubectl` 套用到每個開發空間。
+若要更新 Azure Dev Spaces 檢測的 Pod 以存取受控識別，請更新下列 YAML 定義中的 *命名空間* ，並使用 `kubectl` 套用到每個開發空間。
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -459,7 +459,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="new-pods-arent-starting"></a>新 Pod 未啟動
 
-Kubernetes 初始化運算式無法對新的 Pod 套用 PodSpec，因為叢集中「叢集管理員」角色有 RBAC 權限上的變更。 新的 Pod 可能也會有不正確 PodSpec，例如與 Pod 相關聯的服務帳戶已不存在。 若要查看因初始化運算式問題而處於「擱置」狀態的 Pod，請使用 `kubectl get pods` 命令：
+Kubernetes 初始化運算式無法對新的 pod 套用 PodSpec，因為對叢集中叢集 *管理員* 角色的 Kubernetes RBAC 許可權變更。 新的 Pod 可能也會有不正確 PodSpec，例如與 Pod 相關聯的服務帳戶已不存在。 若要查看因初始化運算式問題而處於「擱置」狀態的 Pod，請使用 `kubectl get pods` 命令：
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -488,7 +488,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 重新安裝您的控制器之後，請重新部署您的 Pod。
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>呼叫 Dev Spaces 控制器和 API 的 RBAC 權限不正確
+### <a name="incorrect-azure-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>呼叫 Dev Spaces 控制器和 Api 的 Azure RBAC 許可權不正確
 
 存取 Azure Dev Spaces 控制器的使用者必須擁有讀取 AKS 叢集上的系統管理員 kubeconfig 所需的存取權。 例如，[內建 Azure Kubernetes Service 叢集系統管理員角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)提供此權限。 存取 Azure Dev Spaces 控制器的使用者也必須擁有該控制器的 *參與者* 或 *擁有* 者 Azure 角色。 如需更新 AKS 叢集使用者權限的詳細資訊，請參閱[這裡](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
 
@@ -530,7 +530,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 您在嘗試存取服務時，可能會看到這個錯誤。 例如，當您在瀏覽器中移至服務的 URL 時。 此錯誤表示容器連接埠無法使用。 這可能是因為下列原因：
 
 * 容器仍處於建置和部署程序。 如果您執行 `azds up` 或啟動偵錯工具，然後在容器成功部署之前嘗試存取容器，就有可能發生這個問題。
-* 您的 _Dockerfile_、Helm 圖表及開啟連接埠的任何伺服器代碼之間的連接埠組態不一致。
+* 您的 _Dockerfile_ 、Helm 圖表及開啟連接埠的任何伺服器代碼之間的連接埠組態不一致。
 
 若要修正此問題：
 
@@ -594,7 +594,7 @@ kubectl -n my-namespace delete pod --all
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>「 \<cluster\> 在訂用帳戶中找不到叢集」錯誤 \<subscriptionId\>
 
-如果您的 kubeconfig 檔案針對的叢集或訂閱不同於搭配 Azure Dev Spaces 用戶端工具使用的叢集或訂閱，您可能會看到此錯誤。 Azure Dev Spaces 的用戶端工具會複寫 *kubectl* 的行為，這會使用[一個或多個 kubeconfig 檔案](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)來選取叢集並與叢集進行通訊。
+如果您的 kubeconfig 檔案針對的叢集或訂閱不同於搭配 Azure Dev Spaces 用戶端工具使用的叢集或訂閱，您可能會看到此錯誤。 Azure Dev Spaces 的用戶端工具會複寫 *kubectl* 的行為，這會使用 [一個或多個 kubeconfig 檔案](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)來選取叢集並與叢集進行通訊。
 
 若要修正此問題：
 

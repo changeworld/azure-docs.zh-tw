@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e69cf8d90f004d397778c2eeb6b5f774196574
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 99cad2a4218995ad10488d97ce19eeef36b642ae
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098734"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636991"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -138,7 +138,7 @@ Azure Private Link 總覽： https://docs.microsoft.com/azure/private-link/priva
 
 - Cosmos DB 應該使用虛擬網路服務端點
 
-您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品 (例如 Azure Resource Manager 範本、角色型存取控制 (RBAC) 和原則)，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，將金鑰環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 和原則）封裝在單一藍圖定義中，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -285,15 +285,15 @@ Azure Cosmos DB 的威脅防護警示清單： https://docs.microsoft.com/azure/
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導** 方針：您可以使用 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格來設定角色型存取控制 (RBAC) ，以及維護 Azure Cosmos DB 資源上的清查。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
+**指導** 方針：您可以使用 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格，來設定 azure 角色型存取控制 (azure RBAC) ，並維護 Azure Cosmos DB 資源的清查。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
 
-Azure Cosmos DB 針對 Azure Cosmos DB 中的常見管理案例提供內建的 RBAC。 在 Azure Active Directory (AD) 中具有設定檔的個人可以將這些 Azure 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕存取 Azure Cosmos DB 資源的資源和作業。
+Azure Cosmos DB 針對 Azure Cosmos DB 中的常見管理案例提供內建的 Azure RBAC。 在 Azure Active Directory (AD) 中具有設定檔的個人可以將這些 Azure 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕存取 Azure Cosmos DB 資源的資源和作業。
 
 您也可以使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
 
 此外，Azure Cosmos DB 中的某些動作可以透過 Azure Active Directory 和帳戶特定的主鍵來控制。  使用 ' disableKeyBasedMetadataWriteAccess ' 帳戶設定來控制金鑰存取權。
 
-瞭解 Azure Cosmos DB 中的角色型存取控制： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+瞭解 Azure Cosmos DB 中的 Azure 角色型存取控制： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 使用 Azure Cosmos DB 動作 ( # B0 umentDB 命名空間) 來建立您自己的自訂角色： https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
@@ -529,9 +529,9 @@ Cosmos DB 安全性的總覽： https://docs.microsoft.com/azure/cosmos-db/datab
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導** 方針： Azure Cosmos DB 針對 Azure Cosmos DB 中常見的管理案例，提供內建的角色型存取控制 (RBAC) 。 在 Azure Active Directory 中具有設定檔的個人可以將這些 Azure 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕對 Azure Cosmos DB 資源的資源和作業的存取權。 角色指派的範圍僅限於控制平面存取，其中包括存取 Azure Cosmos 帳戶、資料庫、容器，以及 (輸送量) 的優惠。
+**指導** 方針： Azure Cosmos DB 為 Azure Cosmos DB 中常見的管理案例，提供內建的 azure 角色型存取控制 (azure RBAC) 。 在 Azure Active Directory 中具有設定檔的個人可以將這些 Azure 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕對 Azure Cosmos DB 資源的資源和作業的存取權。 角色指派的範圍僅限於控制平面存取，其中包括存取 Azure Cosmos 帳戶、資料庫、容器，以及 (輸送量) 的優惠。
 
-如何在 Azure Cosmos DB 中執行 RBAC： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+如何在 Azure Cosmos DB 中執行 Azure RBAC： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 **Azure 資訊安全中心監視** ：不適用
 

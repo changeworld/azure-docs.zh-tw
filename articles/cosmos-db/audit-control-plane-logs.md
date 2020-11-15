@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092801"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636838"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何 audit Azure Cosmos DB 控制平面作業
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您在 Azure Cosmos
 
 ## <a name="disable-key-based-metadata-write-access"></a>停用金鑰型中繼資料寫入存取
 
-在 Azure Cosmos DB 中審核控制平面作業之前，請先停用帳戶上的金鑰型中繼資料寫入存取權。 停用金鑰型中繼資料寫入存取時，透過帳戶金鑰連接至 Azure Cosmos 帳戶的用戶端，將無法存取該帳戶。 您可以藉由將屬性設定為 true 來停用寫入存取 `disableKeyBasedMetadataWriteAccess` 。 設定此屬性之後，任何資源的變更都可以從具有適當角色型存取控制的使用者發生， (RBAC) 角色和認證。 若要深入瞭解如何設定此屬性，請參閱 [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes) 文章。 
+在 Azure Cosmos DB 中審核控制平面作業之前，請先停用帳戶上的金鑰型中繼資料寫入存取權。 停用金鑰型中繼資料寫入存取時，透過帳戶金鑰連接至 Azure Cosmos 帳戶的用戶端，將無法存取該帳戶。 您可以藉由將屬性設定為 true 來停用寫入存取 `disableKeyBasedMetadataWriteAccess` 。 設定此屬性之後，任何資源的變更都可能會從具有適當 Azure 角色和認證的使用者進行。 若要深入瞭解如何設定此屬性，請參閱 [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes) 文章。 
 
 開啟之後 `disableKeyBasedMetadataWriteAccess` ，如果以 SDK 為基礎的用戶端執行建立或更新作業，則 *不允許在資源 ' ContainerNameorDatabaseName ' 上* 的「作業 ' POST '」傳回 Azure Cosmos DB 端點。 您必須為您的帳戶開啟這類作業的存取權，或透過 Azure Resource Manager、Azure CLI 或 Azure PowerShell 來執行建立/更新作業。 若要切換回，請使用「 [防止 COSMOS SDK 的變更](role-based-access-control.md#prevent-sdk-changes)」一文所述的 Azure CLI，將 disableKeyBasedMetadataWriteAccess 設定為 **false** 。 請務必將的值變更 `disableKeyBasedMetadataWriteAccess` 為 false，而不是 true。
 
@@ -70,17 +70,17 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您在 Azure Cosmos
 
 下列螢幕擷取畫面會在 Azure Cosmos 帳戶的一致性層級變更時捕捉記錄：
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="啟用控制平面要求記錄":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="新增 VNet 時的控制平面記錄":::
 
 下列螢幕擷取畫面會在建立 Cassandra 帳戶的 keyspace 或資料表，以及更新輸送量時，捕捉記錄。 在資料庫上建立和更新作業的控制平面記錄和容器會分開記錄，如下列螢幕擷取畫面所示：
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="啟用控制平面要求記錄":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="更新輸送量時的控制平面記錄":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>識別與特定作業相關聯的身分識別
 
 如果您想要進一步進行偵錯工具，您可以使用活動識別碼或作業的時間戳記，來識別 **活動記錄** 中的特定作業。 某些 Resource Manager 不會明確傳遞活動識別碼的用戶端會使用時間戳。 活動記錄會提供有關用來起始作業之身分識別的詳細資料。 下列螢幕擷取畫面顯示如何使用活動識別碼，並在活動記錄中尋找與其相關聯的作業：
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="啟用控制平面要求記錄":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="使用活動識別碼並尋找作業":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos 帳戶的控制平面作業
 
@@ -227,7 +227,7 @@ AzureDiagnostics
 {id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [探索適用於 Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
 * [使用 Azure Cosmos DB 中的計量進行監視及偵錯](use-metrics.md)
