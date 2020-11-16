@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341833"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638785"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
@@ -109,24 +109,28 @@ ms.locfileid: "92341833"
 
 若要選取現有的 Log Analytics 工作區：
 
-1. 在 [安全性原則 - 資料收集] 下，選取 [使用其他工作區]。
+1. 在資訊安全中心功能表中，選取 [定價和設定]。
+1. 選取相關的訂用帳戶。
+1. 開啟 **自動** 布建頁面，s
+1. 針對 Log Analytics 代理程式，請選取 [ **編輯** 設定]。 
 
-    ![使用其他工作區][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="使用自動部署時要使用的 Log Analytics 代理程式設定" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. 從下拉式功能表中，選取要儲存收集資料的工作區。
+1. 選取 **[將 Azure vm 連線到不同的工作區]** ，然後選擇您現有的工作區。
 
-    > [!NOTE]
-    > 在下拉式功能表中，只會顯示您可存取，而且在您 Azure 訂用帳戶中的工作區。
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="選取您的 Log Analytics 代理程式要報告的非預設工作區" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > 此清單只包含您有權存取的工作區，以及您 Azure 訂用帳戶中的工作區。
 
 1. 選取 [儲存]。 系統會詢問您是否要重新設定受監視的 VM。
 
-    - 如果您希望新的工作區設定**僅套用在新的虛擬機器**，請選取 [否]。 新的工作區設定只會套用在新安裝的代理程式，以及新探索到的未安裝 Log Analytics 代理程式的 VM。
-    - 如果您希望新的工作區設定**套用在所有虛擬機器**，請選取 [是]。 此外，每個連線到資訊安全中心建立之工作區的虛擬機器會重新連線到新的目標工作區。
+    - 如果您希望新的工作區設定 **僅套用在新的虛擬機器** ，請選取 [否]。 新的工作區設定只會套用在新安裝的代理程式，以及新探索到的未安裝 Log Analytics 代理程式的 VM。
+    - 如果您希望新的工作區設定 **套用在所有虛擬機器** ，請選取 [是]。 此外，每個連線到資訊安全中心建立之工作區的虛擬機器會重新連線到新的目標工作區。
 
     > [!NOTE]
     > 如果您選取 [是]，在所有 VM 均重新連線至新的目標工作區之前，請不要刪除資訊安全中心所建立的任何工作區。 如果過早刪除工作區，這項作業將會失敗。
 
-    - 若要取消作業，請選取 [取消]。
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果已在 VM 上將 Log Analytics 代理程式安裝為延伸模組，將會如何？<a name="mmaextensioninstalled"></a>
 
@@ -162,14 +166,19 @@ ms.locfileid: "92341833"
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>我要如何避免自動安裝代理程式和建立工作區？
 
-您可以在安全性原則中關閉訂用帳戶的自動佈建，但不建議您這麼做。 關閉自動佈建會限制資訊安全中心的建議和警示。 若要停用自動佈建：
+您可以在安全性原則中關閉訂用帳戶的自動佈建，但不建議您這麼做。 關閉自動布建會限制安全性中心的建議和警示。 若要停用自動佈建：
 
-1. 如果您的訂用帳戶已啟用 Azure Defender，請開啟該訂用帳戶的安全性原則，並選取 [ **關閉 Azure defender**]。
+1. 在資訊安全中心功能表中，選取 [定價和設定]。
+1. 選取相關的訂用帳戶。
+1. 如果您的訂用帳戶已啟用 Azure Defender，請開啟 **Azure defender 方案** ，然後選取 [ **關閉 azure defender** ]。
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="啟用或停用 Azure Defender":::
 
-1. 接下來，請選取 [安全性原則 – 資料收集] 頁面上的 [關閉]，來停用自動佈建。
-   ![資料收集][2]
+1. 從 [ **自動** 布建] 頁面的 [  **安全性原則–資料收集** ] 頁面選取 [畫筆] 和 [關閉自動布建]。
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="啟用 Log Analytics 代理程式的自動部署":::
+
+1. 選取 [儲存]  。
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>我應該要退出自動安裝代理程式和建立工作區嗎？
@@ -214,7 +223,7 @@ ms.locfileid: "92341833"
 
 若要手動移除代理程式：
 
-1.    在入口網站中，開啟**Log Analytics**。
+1.    在入口網站中，開啟 **Log Analytics** 。
 
 1.    在 [Log Analytics] 頁面上，選取工作區：
 
@@ -232,13 +241,11 @@ ms.locfileid: "92341833"
 
 如果您已啟用，但現在想要停用它：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟 [ **安全性中心** ]，然後選取 [ **安全性原則**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟 [ **安全性中心** ]，然後選取 [ **定價和設定** ]。
 
 1. 選取您要停用自動布建的訂用帳戶。
 
-    **安全性原則-資料收集** 隨即開啟。
-
-1. 在 [自動佈建] 之下，選取 [關閉]。
+1. 在 [ **自動** 布建] 下，關閉 Log Analytics 代理程式的切換。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>我要如何啟用資料收集？

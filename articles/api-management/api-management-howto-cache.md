@@ -11,18 +11,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250476"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638728"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>新增快取以改善 Azure API 管理的效能
 
-可以設定 API 管理中的作業進行回應快取。 對於不常變更的資料，回應快取可大幅降低 API 延遲、頻寬耗用量和 Web 服務負載。
+API 管理中的 Api 和作業可以設定回應快取。 回應快取可大幅減少 API 呼叫端的延遲，以及 API 提供者的後端負載。
+
+> [!IMPORTANT]
+> 內建快取是暫時性的，而且在相同的 API 管理服務中，相同區域中的所有單位都會共用這些快取。
 
 如需快取的詳細資訊，請參閱 [API 管理快取原則](api-management-caching-policies.md)和[在 Azure API 管理中自訂快取](api-management-sample-cache-by-key.md)。
 
@@ -37,7 +40,7 @@ ms.locfileid: "86250476"
 ## <a name="availability"></a>可用性
 
 > [!NOTE]
-> 內部快取不適用於 Azure API 管理的 [耗用量]**** 層。 您可以[改用外部 Azure Redis 快取](api-management-howto-cache-external.md)。
+> 內部快取不適用於 Azure API 管理的 [耗用量] 層。 您可以[改用外部 Azure Redis 快取](api-management-howto-cache-external.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -54,7 +57,7 @@ ms.locfileid: "86250476"
 2. 瀏覽至您的 APIM 執行個體。
 3. 選取 [ **API** ] 索引標籤。
 4. 按一下 API 清單中的 [示範會議 API]。
-5. 選取 **GetSpeakers**。
+5. 選取 **GetSpeakers** 。
 6. 選取畫面頂端的 [設計] 索引標籤。
 7. 在 [輸入處理] 區段中，按一下 **</>** 圖示。
 
@@ -76,7 +79,7 @@ ms.locfileid: "86250476"
    <cache-store duration="20" />
    ```
 
-    [持續期間]**** 指定快取回應的到期間隔。 在本範例中，間隔為 **20** 秒。
+    [持續期間] 指定快取回應的到期間隔。 在本範例中，間隔為 **20** 秒。
 
 > [!TIP]
 > 如果您使用外部快取 (如[在 Azure API 管理中使用外部 Azure Redis 快取](api-management-howto-cache-external.md)所述)，則可以指定快取原則的 `caching-type` 屬性。 如需詳細資訊，請參閱 [API 管理快取原則](api-management-caching-policies.md)。
@@ -88,7 +91,7 @@ ms.locfileid: "86250476"
 2. 選取 [ **api** ] 索引標籤。
 3. 選取您已新增快取原則的 API。
 4. 選取 **GetSpeakers** 作業。
-5. 按一下右上方功能表中的 [測試]**** 索引標籤。
+5. 按一下右上方功能表中的 [測試] 索引標籤。
 6. 按 [傳送]  。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟

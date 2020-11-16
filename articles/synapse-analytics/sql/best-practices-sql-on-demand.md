@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317436"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638864"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 的無伺服器 SQL 集區 (預覽) 的最佳作法
 
@@ -127,13 +127,17 @@ FROM
 
 查詢 CSV 檔案時，您可以使用效能最佳化剖析器。 如需詳細資料，請參閱 [PARSER_VERSION](develop-openrowset.md)。
 
+## <a name="manually-create-statistics-for-csv-files"></a>手動建立 CSV 檔案的統計資料
+
+無伺服器 SQL 集區依賴統計資料來產生最佳查詢執行計畫。 當需要時，會自動為 Parquet 檔中的資料行建立統計資料。 目前，系統不會自動為 CSV 檔案中的資料行建立統計資料，而且您應該針對在查詢中使用的資料行，以手動方式建立統計資料，尤其是在相異、聯結、WHERE、ORDER BY 和 GROUP BY 中使用的資料行。 查看 [無伺服器 SQL 集區中的統計資料](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) ，以取得詳細資料。
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 來增強查詢效能和聯結
 
 [CETAS](develop-tables-cetas.md) 是無伺服器 SQL 集區中最重要的其中一項功能。 CETAS 是平行作業，可建立外部資料表中繼資料，並將 SELECT 查詢結果匯出至儲存體帳戶中的一組檔案。
 
 您可以使用 CETAS，將經常使用的查詢部分 (例如聯結的參考資料表) 儲存到新的一組檔案。 然後您可以聯結至這個單一外部資料表，而不是在多個查詢中重複常見的聯結。
 
-CETAS 產生 Parquet 檔案後，當第一個查詢以此外部資料表為目標時，系統就會自動建立統計資料，進而提升效能。
+當 CETAS 產生 Parquet 檔案時，會在第一個查詢以這個外部資料表為目標時，自動建立統計資料，進而改善後續查詢（以 CETAS 產生的資料表為目標）的效能。
 
 ## <a name="azure-ad-pass-through-performance"></a>Azure AD 傳遞效能
 

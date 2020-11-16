@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071365"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638898"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理進階原則
 
@@ -156,7 +156,7 @@ ms.locfileid: "92071365"
 ### <a name="policy-statement"></a>原則陳述式
 
 ```xml
-<forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" fail-on-error-status-code="false | true"/>
+<forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" buffer-response="true | false" fail-on-error-status-code="false | true"/>
 ```
 
 ### <a name="examples"></a>範例
@@ -255,6 +255,7 @@ ms.locfileid: "92071365"
 | timeout="integer"                             | 在引發逾時錯誤之前，等候後端服務傳回 HTTP 回應標頭的時間長度（以秒為單位）。 最小值為0秒。 可能無法接受大於240秒的值，因為基礎網路基礎結構可能會在這段時間之後卸載閒置連接。 | 否       | None    |
 | 跟著-重新導向 = "false &#124; true"          | 指定來自後端服務的重新導向會由閘道遵循或傳回給呼叫者。                                                                                                                                                                                                    | 否       | false   |
 | 緩衝區-要求-主體 = "false &#124; true"       | 當設定為 "true" 時，會緩衝處理要求，並在 [重試](api-management-advanced-policies.md#Retry)時重複使用。                                                                                                                                                                                               | 否       | false   |
+| 緩衝區-回應 = "false &#124; true" | 影響區塊回應的處理。 當設定為 "false" 時，從後端收到的每個區塊都會立即傳回給呼叫端。 當設定為 "true" 時，會緩衝處理 (8KB 的區塊，除非偵測到資料流程的結尾) ，而且只傳回給呼叫端。 | 否 | true |
 | 失敗-錯誤-狀態-代碼 = "false &#124; true" | 當設為 true 時，會在 [錯誤](api-management-error-handling-policies.md) 區段中觸發回應碼，範圍從400到599（含）。                                                                                                                                                                      | 否       | false   |
 
 ### <a name="usage"></a>使用方式
@@ -469,9 +470,9 @@ status code and media type. If no example or schema found, the content is empty.
 | first-fast-retry | 如果設定為 `true` ，則會立即執行第一次重試嘗試。                                                                                  | 否       | `false` |
 
 > [!NOTE]
-> 當只有指定 `interval` 時，會執行**固定**間隔的重試。
-> 當只有指定 `interval` 和 `delta` 時，會使用**線性**的間隔重試演算法，其中，重試之間的等待時間會根據下列公式來進行計算：`interval + (count - 1)*delta`。
-> 當指定了 `interval`、`max-interval` 和 `delta` 時，則會套用**指數**的間隔重試演算法，其中，重試之間的等待時間會根據下列公式，以指數方式從 `interval` 的值增加到 `max-interval` 的值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
+> 當只有指定 `interval` 時，會執行 **固定** 間隔的重試。
+> 當只有指定 `interval` 和 `delta` 時，會使用 **線性** 的間隔重試演算法，其中，重試之間的等待時間會根據下列公式來進行計算：`interval + (count - 1)*delta`。
+> 當指定了 `interval`、`max-interval` 和 `delta` 時，則會套用 **指數** 的間隔重試演算法，其中，重試之間的等待時間會根據下列公式，以指數方式從 `interval` 的值增加到 `max-interval` 的值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
 ### <a name="usage"></a>使用方式
 
@@ -945,7 +946,7 @@ status code and media type. If no example or schema found, the content is empty.
 | 元素  | 描述                                                                                                                                          | 必要 |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | 追蹤    | 根元素。                                                                                                                                        | 是      |
-| 訊息  | 要記錄的字串或運算式。                                                                                                                 | 是      |
+| message  | 要記錄的字串或運算式。                                                                                                                 | 是      |
 | 中繼資料 | 將自訂屬性新增至 Application Insights 的 [追蹤](../azure-monitor/app/data-model-trace-telemetry.md) 遙測。 | 否       |
 
 ### <a name="attributes"></a>屬性
@@ -1025,7 +1026,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 屬性 | 描述                                                                                                                                                                                                                                                                                                                                                                                                            | 必要 | 預設 |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| 對象       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
+| for       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
 
 ### <a name="usage"></a>使用方式
 
