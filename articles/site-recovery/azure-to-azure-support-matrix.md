@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: b73a6b8c024cfa5ed7188bbf3fed2bbb7142a2a0
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186632"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646367"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -54,7 +54,7 @@ Azure Government    | US Gov 維吉尼亞州、US Gov 愛荷華州、US Gov 亞�
 
 >[!NOTE]
 >
-> - 對於 **巴西南部** ，您可以複寫並容錯移轉至這些區域：美國中南部、美國中西部、美國東部、美國東部 2、美國西部、美國西部 2 和美國中北部。
+> - 對於 **巴西南部**，您可以複寫並容錯移轉至這些區域：美國中南部、美國中西部、美國東部、美國東部 2、美國西部、美國西部 2 和美國中北部。
 > - 巴西南部只能用來做為 VM 可以從中使用 Site Recovery 進行複寫的來源區域。 其無法當作目標區域。 這是由於地理距離所造成的延遲問題。 請注意，如果您將巴西南部當作來源區域容錯移轉至目標，則支援從目標地區域容錯回復至巴西南部。
 > - 您可以在具有適當存取權的區域內運作。
 > - 如果您要建立保存庫的區域未顯示，請確定您的訂用帳戶具有可在該區域中建立資源的存取權。
@@ -100,10 +100,10 @@ Windows 7 (x64)，含 SP1 和更新版本 | 從適用於 Azure Vm 的行動服�
 --- | ---
 Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609/)
 CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 預先 GA 版本](https://support.microsoft.com/help/4578241/)、7.9 熱修正程式支援 9.37 ga 版本 * * </br> 8.0、8.1、 [8.2](https://support.microsoft.com/en-us/help/4570609)
-Ubuntu 14.04 LTS 伺服器 | 包含所有14.04 的支援。 *x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
-Ubuntu 16.04 LTS 伺服器 | 包含所有16.04 的支援。 *x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用密碼型驗證和登入並使用雲端 init 封裝來設定雲端 VM 的 Ubuntu 伺服器，可能對容錯移轉停用密碼型登入 (取決於 cloudinit 組態)。 針對已容錯移轉的 VM，從 Azure 入口網站中的 [支援] > [疑難排解] > [設定功能表] 中重設密碼，即可在虛擬機器上重新啟用密碼型登入。
-Ubuntu 18.04 LTS 伺服器 | 包含所有18.04 的支援。 *x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
-Ubuntu 20.04 LTS 伺服器 | 包含所有20.04 的支援。 *x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+Ubuntu 14.04 LTS 伺服器 | 包含所有14.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
+Ubuntu 16.04 LTS 伺服器 | 包含所有16.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用密碼型驗證和登入並使用雲端 init 封裝來設定雲端 VM 的 Ubuntu 伺服器，可能對容錯移轉停用密碼型登入 (取決於 cloudinit 組態)。 針對已容錯移轉的 VM，從 Azure 入口網站中的 [支援] > [疑難排解] > [設定功能表] 中重設密碼，即可在虛擬機器上重新啟用密碼型登入。
+Ubuntu 18.04 LTS 伺服器 | 包含所有18.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
+Ubuntu 20.04 LTS 伺服器 | 包含所有20.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | 包含所有7的支援。 *x* 版本 [支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | 包含所有8的支援。 *x* 版本 [支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 9 | 包含9.1 到9.13 的支援。 不支援 Debian 9.0。 [支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
@@ -131,7 +131,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 18.04 LTS | [9.36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-generic 至 4.15.0-112-generic </br> 4.18.0-13-generic 至 4.18.0-25-generic </br> 5.0.0-15-泛型至 5.0.0-58-generic </br> 5.3.0-19-generic 至 5.3.0-65-generic </br> 5.4.0-37-generic 至 5.4.0-42-generic</br> 4.15.0-1009-azure 到 4.15.0-1092-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1032-azure </br> 5.4.0-1020-azure 到 5.4.0-1022-azure </br> 5.0.0-60-generic & 5.3.0-1035-azure 到9.36 熱修正修補程式 * *|
 18.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-generic 至 4.15.0-108-generic </br> 4.18.0-13-generic 至 4.18.0-25-generic </br> 5.0.0-15-泛型至 5.0.0-52-泛型 </br> 5.3.0-19-generic 至 5.3.0-61-generic </br> 4.15.0-1009-azure 到 4.15.0-1089-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1031-azure </br> 4.15.0-109-generic、5.0.0-53-generic、5.3.0-62-generic、4.15.0-1091-azure & 5.3.0-1032-azure 到9.35 熱修正修補程式 * *|
 |||
-20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic 至 5.4.0-48 </br> -一般 5.4.0-1010-azure 到 5.4.0-1026-azure </br> 5.4.0-51-generic、5.4.0-52-generic、5.8.0 開始-23-generic、5.4.0-1031-azure 到9.38 熱修正修補程式 * *
+20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic 至 5.4.0-48 </br> -一般 5.4.0-1010-azure 到 5.4.0-1026-azure </br> 5.4.0-51-generic、5.4.0-52-generic、5.8.0 開始-23-generic、5.8.0 開始-25-generic、5.4.0-1031-azure 到9.38 熱修正修補程式 * *
 20.04 LTS |[9.37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-generic 至 5.4.0-45 </br> -一般 5.4.0-1010-azure 到 5.4.0-1023-azure </br> 5.4.0-47-generic、5.4.0-48-generic、5.4.0-1025-azure、5.4.0-1026-azure 到9.37 熱修正修補程式 * *
 20.04 LTS |[9.36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-generic 至 5.4.0-42 </br> -一般 5.4.0-1010-azure 到 5.4.0-1022-azure
 
@@ -146,7 +146,7 @@ Debian 7 |  [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https:/
 Debian 8 | [9.35](https://support.microsoft.com/help/4573888/, )、 [9.36](https://support.microsoft.com/help/4578241/)、 [9.37](https://support.microsoft.com/help/4582666/)、 [9.38](https://support.microsoft.com/help/4590304/) | 3.16.0-4-amd64 至 3.16.0-11-amd64、4.9.0 4.9.0-. bpo. 4-amd64 至 4.9.0 4.9.0-. bpo. 11-amd64 |
 Debian 8 | [9.34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 至 4.9.0-0.bpo.11-amd64 |
 |||
-Debian 9。1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 至 4.9.0-13-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 11-amd64 </br> 4.19.0 4.9.0-. bpo. 1-4.19.0 4.9.0-. bpo. 11-a </br> 
+Debian 9。1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 至 4.9.0-13-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 11-amd64 </br> 4.19.0 4.9.0-. bpo. 1-4.19.0 4.9.0-. bpo. 11-a </br> 4.9.0-14-amd64、4.19.0 4.9.0-bpo. 12-amd64、4.19.0 4.9.0-. bpo. 12-雲端-amd64 至9.38 熱修正修補程式 * *
 Debian 9。1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 至 4.9.0-13-amd64、4.19.0 4.9.0-. bpo. 6-amd64 至 4.19.0 4.9.0-. bpo. 10-amd64、4.19.0 4.9.0-. bpo. 6-a-a-i 至 4.19.0 4.9.0-. bpo. 10-雲端
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 SUSE Linux Enterprise Server 12 核心版本

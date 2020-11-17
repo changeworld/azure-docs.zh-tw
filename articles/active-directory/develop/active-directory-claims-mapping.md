@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647591"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -36,9 +36,9 @@ ms.locfileid: "92275789"
 
 ## <a name="claims-mapping-policy-type"></a>宣告對應原則類型
 
-在 Azure AD 中，**原則**物件代表個別應用程式或組織中的所有應用程式上強制執行的一組規則。 每個類型的原則都具有包含一組屬性的獨特結構，這些屬性會接著套用至它們已被指派的物件。
+在 Azure AD 中，**原則** 物件代表個別應用程式或組織中的所有應用程式上強制執行的一組規則。 每個類型的原則都具有包含一組屬性的獨特結構，這些屬性會接著套用至它們已被指派的物件。
 
-宣告對應原則是一種**原則**物件，會修改針對特定應用程式所核發之權杖所發出的宣告。
+宣告對應原則是一種 **原則** 物件，會修改針對特定應用程式所核發之權杖所發出的宣告。
 
 ## <a name="claim-sets"></a>宣告集
 
@@ -239,6 +239,9 @@ ms.locfileid: "92275789"
 
 若要控制發出哪些宣告、資料來源為何，請使用宣告對應原則的屬性。 如果未設定任何原則，系統發出的權杖會包含核心宣告集、基本宣告集，以及應用程式選擇要收到的任何[選擇性宣告](active-directory-optional-claims.md)。
 
+> [!NOTE]
+> 核心宣告集中的宣告會出現在每個權杖中，不論此屬性的設定為何。
+
 ### <a name="include-basic-claim-set"></a>包含基本宣告集
 
 **字串：** IncludeBasicClaimSet
@@ -250,8 +253,7 @@ ms.locfileid: "92275789"
 - 如果設為 True，此原則所影響到的權杖中就會發出基本宣告集。
 - 如果設為 False，權杖中將不會包含基本宣告集的宣告，除非相同原則的宣告結構描述屬性中個別新增了這些宣告。
 
-> [!NOTE]
-> 核心宣告集中的宣告會出現在每個權杖中，不論此屬性的設定為何。
+
 
 ### <a name="claims-schema"></a>宣告結構描述
 
@@ -260,7 +262,7 @@ ms.locfileid: "92275789"
 **資料類型：** 具有一或多個宣告結構描述項目的 JSON blob
 
 **摘要：** 此屬性會定義除了基本宣告集和核心宣告集以外，原則所影響到的權杖中還會有哪些宣告。
-此屬性中所定義的每個宣告結構描述項目必須有某些資訊。 指定資料來自 (**值**、 **來源/識別碼**組或 **來源/ExtensionID** 組) ，以及資料是以 (宣告 **類型**) 的形式發出。
+此屬性中所定義的每個宣告結構描述項目必須有某些資訊。 指定資料來自 (**值**、 **來源/識別碼** 組或 **來源/ExtensionID** 組) ，以及資料是以 (宣告 **類型**) 的形式發出。
 
 ### <a name="claim-schema-entry-elements"></a>宣告結構描述項目的元素
 
@@ -372,10 +374,10 @@ ms.locfileid: "92275789"
 - **ClaimTypeReferenceId** 會與宣告結構描述項目的識別碼元素聯結以尋找適當的輸入宣告。
 - **TransformationClaimType** 則可用來為此輸入指定唯一的名稱。 此名稱必須符合轉換方法的其中一個預期輸入。
 
-**InputParameters：** 使用 InputParameters 元素可對轉換傳遞常數值。 它有兩個屬性：**值**和**識別碼**。
+**InputParameters：** 使用 InputParameters 元素可對轉換傳遞常數值。 它有兩個屬性：**值** 和 **識別碼**。
 
-- **值**是要傳遞的實際常數值。
-- **識別碼**可用來為此輸入指定唯一的名稱。 名稱必須符合轉換方法的其中一個預期輸入。
+- **值** 是要傳遞的實際常數值。
+- **識別碼** 可用來為此輸入指定唯一的名稱。 名稱必須符合轉換方法的其中一個預期輸入。
 
 **OutputClaims：** 使用 OutputClaims 元素可保留轉換所產生的資料，並將資料繫結到宣告結構描述項目。 它有兩個屬性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -439,8 +441,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，當您可以為特定的服務主體自訂權杖中所發出的宣告時，許多案例便可能實現。 在本節中，我們將逐步解說一些常見案例，以協助您掌握如何使用宣告對應原則類型。
 
-> [!NOTE]
-> 建立宣告對應原則時，您也可以從權杖中的目錄架構延伸模組屬性發出宣告。 在擴充屬性中使用 *ExtensionID* ，而非元素中的 *識別碼* `ClaimsSchema` 。  如需擴充功能屬性的詳細資訊，請參閱 [使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。
+建立宣告對應原則時，您也可以從權杖中的目錄架構延伸模組屬性發出宣告。 在擴充屬性中使用 *ExtensionID* ，而非元素中的 *識別碼* `ClaimsSchema` 。  如需擴充功能屬性的詳細資訊，請參閱 [使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。
 
 #### <a name="prerequisites"></a>Prerequisites
 

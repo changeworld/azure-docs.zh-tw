@@ -4,7 +4,7 @@ description: 在 Azure Active Directory 中建立及管理安全性群組或 Mic
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 6425809cfa6dde20b8ef2b1f6d4cfaf04cbef6e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578173"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647081"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>在 Azure Active Directory 中設定自助群組管理 
 
@@ -44,13 +44,13 @@ ms.locfileid: "94578173"
 ## <a name="make-a-group-available-for-user-self-service"></a>提供可供使用者自助服務的群組
 
 1. 使用具備目錄全域管理員身分的帳戶來登入 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 選取 [ **群組** ]，然後選取 **[一般** 設定]。
-1. 設定 **擁有者可以在存取面板中管理群組成員資格要求** 為 **[是]** 。
-1. 將 **存取面板中群組的 [限制存取** ] 設定為 [ **否** ]。
+1. 選取 [ **群組**]，然後選取 **[一般** 設定]。
+1. 設定 **擁有者可以在存取面板中管理群組成員資格要求** 為 **[是]**。
+1. 將 **存取面板中群組的 [限制存取** ] 設定為 [ **否**]。
 1. 如果您設定 **使用者可以在 azure 入口網站中建立安全性群組** ，或 **使用者可以在 azure 入口網站中建立 Microsoft 365 群組** 至
 
-    - **是** ：您 Azure AD 組織中的所有使用者都可以建立新的安全性群組，並將成員新增至這些群組。 這些新的群組也會顯示在其他所有使用者的 [存取面板] 中。 如果群組上的原則設定允許，其他使用者可以建立要求來加入這些群組
-    - **否** ：使用者無法建立群組，也無法變更其為擁有者的現有群組。 不過，他們仍然可以管理這些群組的成員資格，以及核准其他使用者加入其群組的要求。
+    - **是**：您 Azure AD 組織中的所有使用者都可以建立新的安全性群組，並將成員新增至這些群組。 這些新的群組也會顯示在其他所有使用者的 [存取面板] 中。 如果群組上的原則設定允許，其他使用者可以建立要求來加入這些群組
+    - **否**：使用者無法建立群組，也無法變更其為擁有者的現有群組。 不過，他們仍然可以管理這些群組的成員資格，以及核准其他使用者加入其群組的要求。
 
 您也可以使用 **可在 Azure 入口網站中將成員指派為群組擁有者的擁有者** ，以對使用者進行自助群組管理，以取得更細微的存取控制。
 

@@ -4,21 +4,21 @@ description: 在 Azure AD 系統管理中心的 Azure Active Directory 中大量
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 08/11/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e6ab8fd726eaba309f0949020139901dd3712f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 42e26e9b1e3548d3caeff58079ec489c2d282a63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374838"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646877"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中大量建立使用者
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 支援大量使用者建立和刪除作業，�
 
    ![選取您會在其中列出想要新增之使用者的本機 CSV 檔案](./media/users-bulk-add/upload-button.png)
 
-1. 開啟 CSV 檔案，並為您想要建立的每位使用者新增一行。 必要值只有**名稱**、**使用者主體名稱**、**初始密碼**和**封鎖登入 (是/否)** 。 然後儲存檔案。
+1. 開啟 CSV 檔案，並為您想要建立的每位使用者新增一行。 必要值只有 **名稱**、**使用者主體名稱**、**初始密碼** 和 **封鎖登入 (是/否)** 。 然後儲存檔案。
 
    [![CSV 檔案包含要建立之使用者的名稱和識別碼](./media/users-bulk-add/add-csv-file.png)](./media/users-bulk-add/add-csv-file.png#lightbox)
 

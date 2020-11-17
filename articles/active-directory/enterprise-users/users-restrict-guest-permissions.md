@@ -5,20 +5,20 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 09/04/2020
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8fdeefab150a2992edf40076a44c936d35b14dc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374795"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646588"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制來賓存取許可權 (預覽) 
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 可讓您限制外部來賓使用者在其組�
 
 1. 使用全域管理員許可權登入 [Azure AD admin center](https://aad.portal.azure.com) 。
 1. 在您組織的 **Azure Active Directory** 總覽] 頁面上，選取 [ **使用者設定**]。
-1. 在 [ **外部使用者**] 下，選取 [ **管理外部**共同作業設定]。
+1. 在 [ **外部使用者**] 下，選取 [ **管理外部** 共同作業設定]。
 1. 在 [ **外部** 共同作業設定] 頁面上，選取 [ **來賓使用者存取限制為其自己的目錄物件的屬性和成員資格]** 選項。
 
     ![Azure AD 外部共同作業設定頁面](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
@@ -147,7 +147,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 - 表單
 - 小組中的規劃工具
 - Planner 應用程式
-- 專案
+- 隨附此逐步解說的專案
 - Yammer
 
 ## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)

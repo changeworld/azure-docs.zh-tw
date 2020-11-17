@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: c0333f9faeae99ee83beda381f77f4f95b0a9192
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372333"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636110"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -37,7 +37,8 @@ ms.locfileid: "94372333"
 
 - [已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [NIST SP 800 171 R2 已新增至資訊安全中心的法規合規性儀表板](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-
+- [建議清單現在包含篩選器](#recommendations-list-now-includes-filters)
+- [自動佈建體驗已改善並擴充](#auto-provisioning-experience-improved-and-expanded)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
 
@@ -78,6 +79,30 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 如需此合規性標準的詳細資訊，請參閱 [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)。
 
 
+### <a name="recommendations-list-now-includes-filters"></a>建議清單現在包含篩選器
+
+您現在可以根據準則範圍來篩選安全性建議清單。 在下列範例中，已篩選建議清單以顯示下列建議：
+
+- **正式推出** (亦即不預覽)
+- 用於 **儲存體帳戶**
+- 支援 **快速修正** 補救
+
+:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="建議清單的篩選器":::
+
+
+### <a name="auto-provisioning-experience-improved-and-expanded"></a>自動佈建體驗已改善並擴充
+
+自動佈建功能會透過在新的和現有的 Azure VM 上安裝必要的擴充功能，以協助降低管理負荷，以便其可從資訊安全中心的保護中獲益。 
+
+隨著 Azure 資訊安全中心成長，已開發更多擴充功能，而資訊安全中心可以監視更大的資源類型清單。 自動佈建工具現在已進行擴充，以利用 Azure 原則的功能來支援額外的擴充功能和資源類型。
+
+您現在可以設定的自動佈建：
+
+- Log Analytics 代理程式
+- (新增) Kubernetes 的 Azure 原則附加元件
+- (新增) Microsoft Dependency Agent
+
+如需深入了解，請[從 Azure 資訊安全中心自動佈建代理程式和擴充功能](security-center-enable-data-collection.md)。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -433,7 +458,7 @@ Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後�
 
 探索到新威脅時，資訊安全中心會透過新建議來提供新的安全性意見。 為了避免意外變更您的安全分數，以及提供可讓您在新建議影響到分數之前先進行探索的寬限期，標示為 **預覽** 的建議已不再包含於您的安全分數計算中。 這些建議仍會盡可能進行補救，以在預覽期間結束時計入您的分數。
 
-此外， **預覽** 建議不會將資源轉譯為「狀況不良」。
+此外，**預覽** 建議不會將資源轉譯為「狀況不良」。
 
 預覽建議的範例：
 
@@ -489,7 +514,7 @@ Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後�
 
 已加入新建議，建議使用管理憑證來管理其訂用帳戶的資訊安全中心客戶切換到服務主體。
 
-「 **應使用服務主體來保護訂用帳戶，而不是使用管理憑證** 」的建議會勸您使用服務主體或 Azure Resource Manager，以更安全地管理您的訂用帳戶。 
+「**應使用服務主體來保護訂用帳戶，而不是使用管理憑證**」的建議會勸您使用服務主體或 Azure Resource Manager，以更安全地管理您的訂用帳戶。 
 
 深入了解 [Azure Active Directory 中的應用程式和服務主體物件](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
 
@@ -648,7 +673,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 自適性應用程式控制功能已收到兩個重大更新：
 
-* 新建議會識別先前未允許的可能合理行為。 「 **您應該更新自適性應用程式控制原則中的允許清單規則** 」建議會提示您將新規則新增至現有原則，以減少自適性應用程式控制違規警示中的誤判數量。
+* 新建議會識別先前未允許的可能合理行為。 「**您應該更新自適性應用程式控制原則中的允許清單規則**」建議會提示您將新規則新增至現有原則，以減少自適性應用程式控制違規警示中的誤判數量。
 
 * 路徑規則現在支援萬用字元。 在此更新中，您可以使用萬用字元來設定允許的路徑規則。 支援的案例有兩種：
 
@@ -723,7 +748,7 @@ Azure 資訊安全中心的 SQL 機器進階資料安全性現在會保護裝載
 - **Windows 版 Azure Arc 機器上應安裝 Log Analytics 代理程式 (預覽)**
 - **Linux 版 Azure Arc 機器上應安裝 Log Analytics 代理程式 (預覽)**
 
-這些新建議會出現在與現有 (相關) 建議 ( **您的機器上應安裝監視代理程式** ) 相同的四個安全性控制項中：補救安全性設定、套用自適性應用程式控制、套用系統更新，以及啟用端點保護。
+這些新建議會出現在與現有 (相關) 建議 (**您的機器上應安裝監視代理程式**) 相同的四個安全性控制項中：補救安全性設定、套用自適性應用程式控制、套用系統更新，以及啟用端點保護。
 
 這些建議也包含快速修正功能，可協助加速部署程序。 
 
@@ -762,7 +787,7 @@ Azure 資訊安全中心的 SQL 機器進階資料安全性現在會保護裝載
 
 - **應使用網路安全性群組保護非網際網路對應的虛擬機器**
 
-「 **網際網路面向虛擬機器應使用網路安全性群組加以保護** 」的現有建議，並無法區分網際網路面向和非網際網路面向的 VM。 針對這兩種情況，如果 VM 未指派給網路安全性群組，就會產生高嚴重性建議。 這項新的建議會區隔非網際網路面向的機器，以減少誤判，並避免不必要的高嚴重性警示。
+「**網際網路面向虛擬機器應使用網路安全性群組加以保護**」的現有建議，並無法區分網際網路面向和非網際網路面向的 VM。 針對這兩種情況，如果 VM 未指派給網路安全性群組，就會產生高嚴重性建議。 這項新的建議會區隔非網際網路面向的機器，以減少誤判，並避免不必要的高嚴重性警示。
 
 請在[網路建議](recommendations-reference.md#recs-network)資料表中深入了解。
 

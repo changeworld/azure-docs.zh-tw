@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: e39884f6d62fc43943f892aed0dac650a01d6c40
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd25c7638bd7e178cdb963ba528cccefde6b9eca
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462909"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646469"
 ---
 # <a name="reset-a-vpn-gateway"></a>重設 VPN 閘道
 
@@ -52,7 +52,7 @@ VPN 閘道是由兩個在「作用中-待命」設定中執行的 VM 執行個�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Reset-AzVirtualNetworkGateway** 是可用來重設閘道的 Cmdlet。 執行重設之前，請確定您有最新版的 [PowerShell Az Cmdlet](https://docs.microsoft.com/powershell/module/az.network)。 下列範例會重設 TestRG1 資源群組中名為 VNet1GW 的虛擬網路閘道：
+**Reset-AzVirtualNetworkGateway** 是可用來重設閘道的 Cmdlet。 執行重設之前，請確定您有最新版的 [PowerShell Az Cmdlet](/powershell/module/az.network)。 下列範例會重設 TestRG1 資源群組中名為 VNet1GW 的虛擬網路閘道：
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
@@ -61,11 +61,11 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 結果：
 
-當您收到傳回的結果時，可能會認為閘道已成功重設。 不過，傳回結果中並沒有明確指出已成功重設。 如果您想要進一步查看歷程記錄，以確實掌握閘道重設發生的時間，您可以在 [Azure 入口網站](https://portal.azure.com)中檢視該項資訊。 在入口網站中，瀏覽至 'GatewayName' -> [資源健康狀態]****。
+當您收到傳回的結果時，可能會認為閘道已成功重設。 不過，傳回結果中並沒有明確指出已成功重設。 如果您想要進一步查看歷程記錄，以確實掌握閘道重設發生的時間，您可以在 [Azure 入口網站](https://portal.azure.com)中檢視該項資訊。 在入口網站中，瀏覽至 'GatewayName' -> [資源健康狀態]。
 
 ### <a name="classic-deployment-model"></a><a name="resetclassic"></a>傳統部署模型
 
-**Reset-AzureVNetGateway** 是可用來重設閘道的 Cmdlet。 適用于服務管理的 Azure PowerShell Cmdlet 必須安裝在您的桌面本機。 您無法使用 Azure Cloud Shell。 執行重設之前，請確認您已安裝最新版的 [Service Management (SM) PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets)。 使用此命令時，請確定您使用的是虛擬網路的完整名稱。 使用入口網站建立的傳統 Vnet 具有 PowerShell 所需的完整名稱。 您可以使用 ' >set-azurevnetconfig-ExportToFile C:\Myfoldername\NetworkConfig.xml ' 來查看完整名稱。
+**Reset-AzureVNetGateway** 是可用來重設閘道的 Cmdlet。 適用于服務管理的 Azure PowerShell Cmdlet 必須安裝在您的桌面本機。 您無法使用 Azure Cloud Shell。 執行重設之前，請確認您已安裝最新版的 [Service Management (SM) PowerShell Cmdlet](/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets)。 使用此命令時，請確定您使用的是虛擬網路的完整名稱。 使用入口網站建立的傳統 Vnet 具有 PowerShell 所需的完整名稱。 您可以使用 ' >set-azurevnetconfig-ExportToFile C:\Myfoldername\NetworkConfig.xml ' 來查看完整名稱。
 
 下列範例會重設名為 "Group TestRG1 TestVNet1" 之虛擬網路的閘道， (在入口網站中顯示為「TestVNet1」) ：
 
@@ -86,7 +86,7 @@ StatusCode     : OK
 
 ## <a name="azure-cli"></a><a name="cli"></a>Azure CLI
 
-若要重設閘道，請使用 [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) 命令。 下列範例會重設 TestRG5 資源群組中名為 VNet5GW 的虛擬網路閘道：
+若要重設閘道，請使用 [az network vnet-gateway reset](/cli/azure/network/vnet-gateway) 命令。 下列範例會重設 TestRG5 資源群組中名為 VNet5GW 的虛擬網路閘道：
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5
@@ -94,4 +94,4 @@ az network vnet-gateway reset -n VNet5GW -g TestRG5
 
 結果：
 
-當您收到傳回的結果時，可能會認為閘道已成功重設。 不過，傳回結果中並沒有明確指出已成功重設。 如果您想要進一步查看歷程記錄，以確實掌握閘道重設發生的時間，您可以在 [Azure 入口網站](https://portal.azure.com)中檢視該項資訊。 在入口網站中，瀏覽至 'GatewayName' -> [資源健康狀態]****。
+當您收到傳回的結果時，可能會認為閘道已成功重設。 不過，傳回結果中並沒有明確指出已成功重設。 如果您想要進一步查看歷程記錄，以確實掌握閘道重設發生的時間，您可以在 [Azure 入口網站](https://portal.azure.com)中檢視該項資訊。 在入口網站中，瀏覽至 'GatewayName' -> [資源健康狀態]。

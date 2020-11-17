@@ -4,8 +4,8 @@ description: 在 Azure Active Directory 系統管理中心大量新增群組成�
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2a6e0a5459fbf53698b4204b8ae1f47a6a17bc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 227a8261aef7953c07bcc12f7754a56dd8e7fafa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647421"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中大量新增群組成員
 
@@ -56,7 +56,7 @@ ms.locfileid: "92374931"
 
     ![[匯入成員] 命令位於群組的設定檔頁面](./media/groups-bulk-import-members/import-panel.png)
 
-1. 開啟 CSV 檔案，並為您要匯入至群組的每個群組成員新增一行 (必要值為**成員物件識別碼**或**使用者主體名稱**)。 然後儲存檔案。
+1. 開啟 CSV 檔案，並為您要匯入至群組的每個群組成員新增一行 (必要值為 **成員物件識別碼** 或 **使用者主體名稱**)。 然後儲存檔案。
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV 檔案包含要匯入之成員的名稱和識別碼":::
 

@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 07/07/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50915aebc9cb76c7bb67235e40564ff32ce656b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374886"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647013"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory 中的使用者或群組變更授權指派
 
@@ -47,7 +47,7 @@ ms.locfileid: "92374886"
 
 1. 使用 Azure AD 組織中的授權系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
 1. 選取 [ **Azure Active Directory**  >  **使用者**]，然後開啟使用者的 [**設定檔**] 頁面。
-1. 選取 [授權] ****。
+1. 選取 [授權] 。
 1. 選取 [ **指派** ] 以編輯使用者或群組的授權指派。 [ **指派** ] 頁面可讓您解決授權指派衝突。
 1. 選取 Office 365 E3 的核取方塊，並確認已選取 [已指派給使用者的所有 E1 服務] 至少。
 1. 清除 [Office 365 E1] 的核取方塊。
@@ -61,8 +61,8 @@ Azure AD 套用新的授權，並同時移除舊授權以提供服務持續性�
 ## <a name="change-group-license-assignments"></a>變更群組授權指派
 
 1. 使用 Azure AD 組織中的授權系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
-1. 選取**Azure Active Directory**  >  **群組**]，然後開啟群組的 [**總覽**] 頁面。
-1. 選取 [授權] ****。
+1. 選取 **Azure Active Directory**  >  **群組**]，然後開啟群組的 [**總覽**] 頁面。
+1. 選取 [授權] 。
 1. 選取 [ **指派** ] 命令以編輯使用者或群組的授權指派。
 1. 選取 Office 365 E3 的核取方塊。 若要維護服務的持續性，請務必選取已指派給使用者的所有 E1 服務。
 1. 清除 [Office 365 E1] 的核取方塊。

@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 11/13/2020
 ms.author: duau
-ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55eefe7a7490df050aa7ebc2bb41fbadcc8d8279
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819086"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646333"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在 Front Door 上將根或 apex 網域上線
 Azure Front Door 使用 CNAME 記錄來驗證網域擁有權，以進行自訂網域的上架。 Front Door 不會公開與您 Front Door 設定檔相關聯的前端 IP 位址。 因此，如果您的目的是要將頂點網域上架到 Azure Front Door，您就無法將其對應至 IP 位址。
@@ -34,7 +34,7 @@ DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果�
 
 1. 建立或編輯區域頂點的記錄。
 
-1. 選取記錄**類型***作為記錄*，然後針對 [**別名記錄集** *] 選取 [是]* 。 **別名類型** 應設定為 *Azure 資源*。
+1. 選取記錄 **類型***作為記錄*，然後針對 [**別名記錄集** *] 選取 [是]* 。 **別名類型** 應設定為 *Azure 資源*。
 
 1. 選取用來裝載 Front Door 設定檔的 Azure 訂用帳戶。 然後從 [ **Azure 資源** ] 下拉式清單中選取 Front Door 資源。
 
@@ -54,15 +54,15 @@ DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果�
 
 1. 選取 [ **儲存** ] 以提交變更。
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="區域頂點的別名記錄":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="[自訂網域] 功能表":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>在您的自訂網域上啟用 HTTPS
 
 1. 選取已新增的自訂網域，並在 [ **自訂網域 HTTPS**] 區段下，將 [狀態] 變更為 [ **已啟用**]。
 
-1. 選取 [*使用我自己的憑證*] 的**憑證管理類型**。
+1. 選取 [*使用我自己的憑證*] 的 **憑證管理類型**。
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="區域頂點的別名記錄":::    
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="自訂網域 HTTPS 設定":::    
 
    > [!WARNING]
    > 頂點或根域目前不支援 Front Door 受控憑證管理類型。 針對 Front Door 在頂點或 root 網域上啟用 HTTPS 的唯一可用選項，是使用您自己在 Azure Key Vault 上裝載的自訂 TLS/SSL 憑證。

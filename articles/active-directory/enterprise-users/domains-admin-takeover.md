@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d0472b2adb3213338b9fbc4e3a17a2c3444eb113
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393620"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647574"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>如何以系統管理員身分接管 Azure Active Directory 中非受控目錄
 
@@ -46,7 +46,7 @@ ms.locfileid: "93393620"
   
    ![[成為管理員] 的第一個螢幕擷取畫面](./media/domains-admin-takeover/become-admin-first.png)
   
-5. 在您的網域名稱登錄器新增 TXT 記錄，以證明您擁有網域名稱 **fourthcoffee.xyz** 。 在此範例中為 GoDaddy.com。
+5. 在您的網域名稱登錄器新增 TXT 記錄，以證明您擁有網域名稱 **fourthcoffee.xyz**。 在此範例中為 GoDaddy.com。
   
    ![新增網域名稱的 txt 記錄](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -59,11 +59,11 @@ ms.locfileid: "93393620"
 1. 開啟 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 2. 選取 [ **使用者** ] 索引標籤，並使用不使用自訂功能變數名稱的名稱（例如 *使用者 \@ fourthcoffeexyz.onmicrosoft.com* ）建立新的使用者帳戶。 
 3. 請確定新的使用者帳戶具有 Azure AD 組織的全域管理員許可權。
-4. 開啟 Microsoft 365 系統管理中心中的 [ **網域** ] 索引標籤，選取功能變數名稱，然後選取 [ **移除** ]。 
+4. 開啟 Microsoft 365 系統管理中心中的 [ **網域** ] 索引標籤，選取功能變數名稱，然後選取 [ **移除**]。 
   
    ![從 Microsoft 365 移除功能變數名稱](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. 如果 Microsoft 365 中有任何使用者或群組參考移除的功能變數名稱，則必須將這些使用者或群組重新命名為 onmicrosoft.com 網域。 如果您強制刪除功能變數名稱，則會自動將所有使用者重新命名，在此範例中為 *使用者 \@ fourthcoffeexyz.onmicrosoft.com* 。
+5. 如果 Microsoft 365 中有任何使用者或群組參考移除的功能變數名稱，則必須將這些使用者或群組重新命名為 onmicrosoft.com 網域。 如果您強制刪除功能變數名稱，則會自動將所有使用者重新命名，在此範例中為 *使用者 \@ fourthcoffeexyz.onmicrosoft.com*。
   
 6. 使用 Azure AD 組織的全域管理員帳戶登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
   
@@ -144,12 +144,12 @@ Cmdlet | 使用方式
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    例如︰
+    例如：
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. 複製從此命令傳回的值 (挑戰)。 例如︰
+4. 複製從此命令傳回的值 (挑戰)。 例如：
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +160,7 @@ Cmdlet | 使用方式
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   例如︰
+   例如：
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force

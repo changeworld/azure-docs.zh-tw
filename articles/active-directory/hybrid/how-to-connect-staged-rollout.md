@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628895"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646571"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
@@ -38,8 +38,8 @@ ms.locfileid: "94628895"
 -   您擁有具有同盟網域的 Azure Active Directory (Azure AD) 租用戶。
 
 -   您決定移至這兩個選項的其中之一：
-    - **選項 A**  - *(同步)*  +  的密碼雜湊同步處理 *無縫單一登入 (SSO)* 。  如需詳細資訊，請參閱 [什麼是密碼雜湊同步處理](whatis-phs.md) 以及 [什麼是無縫 SSO](how-to-connect-sso.md)
-    - **選項 B**  - *傳遞驗證*  + *無縫 SSO* 。  如需詳細資訊，請參閱 [什麼是傳遞驗證](how-to-connect-pta.md)  
+    - **選項 A**  - *(同步)*  +  的密碼雜湊同步處理 *無縫單一登入 (SSO)*。  如需詳細資訊，請參閱 [什麼是密碼雜湊同步處理](whatis-phs.md) 以及 [什麼是無縫 SSO](how-to-connect-sso.md)
+    - **選項 B**  - *傳遞驗證*  + *無縫 SSO*。  如需詳細資訊，請參閱 [什麼是傳遞驗證](how-to-connect-pta.md)  
     
     雖然「無縫 SSO」為選擇，但我們建議將其啟用，以為正在公司網路內部執行已加入網域電腦的使用者提供無訊息登入體驗。
 
@@ -95,7 +95,7 @@ ms.locfileid: "94628895"
 
 ## <a name="pre-work-for-password-hash-sync"></a>密碼雜湊同步的前置工作
 
-1. 從 Azure AD Connect 的 [ [選用功能](how-to-connect-install-custom.md#optional-features)] 頁面啟用 *密碼雜湊同步* 處理。 
+1. 從 Azure AD Connect 的 [[選用功能](how-to-connect-install-custom.md#optional-features)] 頁面啟用 *密碼雜湊同步* 處理。 
 
    ![Azure Active Directory Connect 中 [選用功能] 頁面的螢幕擷取畫面](media/how-to-connect-staged-rollout/sr1.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "94628895"
 
 2. 選取 [啟用受控使用者登入的分段推出 (預覽)] 連結。
 
-   例如，如果想要啟用「選項 A」，請將「密碼雜湊同步」和「無縫單一登入」控制項滑動至 **開啟** ，如下列影像所示。
+   例如，如果想要啟用「選項 A」，請將「密碼雜湊同步」和「無縫單一登入」控制項滑動至 **開啟**，如下列影像所示。
 
    ![[Azure AD Connect] 頁面](./media/how-to-connect-staged-rollout/sr4.png)
 
@@ -178,6 +178,7 @@ ms.locfileid: "94628895"
    >[!NOTE]
    >群組中的成員會自動啟用，以進行分段推出。 不支援巢狀和動態群組進行分段推出。
    >新增群組時，群組中的使用者 (最多200的使用者，而新群組) 將會更新為使用受控驗證 immidiatly。 編輯群組 (新增或移除使用者) ，最多可能需要24小時的時間，變更才會生效。
+   >只有當使用者位於無縫 SSO 群組以及 PTA 或 PHS 群組中時，才會套用無縫 SSO。
 
 ## <a name="auditing"></a>稽核
 
@@ -229,7 +230,7 @@ ms.locfileid: "94628895"
 
 ## <a name="remove-a-user-from-staged-rollout"></a>將使用者從分段推出移除
 
-從群組移除使用者時，會停用該使用者的分段推出。 若要停用分段推出功能，請將控制項滑動回 **關閉** 。
+從群組移除使用者時，會停用該使用者的分段推出。 若要停用分段推出功能，請將控制項滑動回 **關閉**。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -239,7 +240,7 @@ A：是，您可在生產租用戶者中使用這項功能，但建議先在測�
 
 **問：這項功能是否可用來維護永久性的「共存」，其中某些使用者使用同盟驗證，而其他則使用雲端驗證？**
 
-A：不可以，這項功能設計用來在各階段從同盟移轉至雲端驗證，最後再完全移轉至雲端驗證。 我們不建議使用永久性混合狀態，因為此方法可能會導致非預期的驗證流程。
+答：否，這項功能是專為測試雲端驗證所設計。 成功測試幾個使用者群組之後，您應該剪下雲端驗證。 我們不建議使用永久性混合狀態，因為此方法可能會導致非預期的驗證流程。
 
 **問：我可使用 PowerShell 來執行分段推出嗎？**
 
