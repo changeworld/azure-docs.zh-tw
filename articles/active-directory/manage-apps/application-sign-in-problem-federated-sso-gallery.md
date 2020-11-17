@@ -12,28 +12,28 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357907"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651544"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登入已設定 SAML 型單一登入的應用程式時發生問題
 若要針對下列登入問題進行疑難排解，建議您遵循下列步驟來更妥善地進行診斷，並將解決步驟自動化：
 
-- 安裝 [我的應用程式安全瀏覽器延伸](access-panel-extension-problem-installing.md) 模組，以協助 Azure Active Directory (Azure AD) ，以在使用 Azure 入口網站中的測試體驗時提供更佳的診斷和解決方式。
-- 使用 Azure 入口網站的 [應用程式設定] 頁面中的測試體驗來重現錯誤。 深入瞭解如何 [調試 SAML 型單一登入應用程式](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- 安裝 [我的應用程式安全瀏覽器延伸](./access-panel-deployment-plan.md) 模組，以協助 Azure Active Directory (Azure AD) ，以在使用 Azure 入口網站中的測試體驗時提供更佳的診斷和解決方式。
+- 使用 Azure 入口網站的 [應用程式設定] 頁面中的測試體驗來重現錯誤。 深入瞭解如何 [調試 SAML 型單一登入應用程式](./debug-saml-sso-issues.md)
 
-如果您使用 Azure 入口網站中的 [測試體驗](../azuread-dev/howto-v1-debug-saml-sso-issues.md) 搭配我的應用程式安全瀏覽器延伸模組，則不需要手動遵循下列步驟來開啟 [SAML 型單一登入設定] 頁面。
+如果您使用 Azure 入口網站中的 [測試體驗](./debug-saml-sso-issues.md) 搭配我的應用程式安全瀏覽器延伸模組，則不需要手動遵循下列步驟來開啟 [SAML 型單一登入設定] 頁面。
 
 若要開啟 [SAML 型單一登入設定] 頁面：
 1.  開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或 **共同管理員** 身分登入。
-1.  選取主左側導覽功能表頂端的 [ **所有服務** ]，以開啟 **Azure Active Directory 擴充** 功能。
+1.  選取主左側導覽功能表頂端的 [**所有服務**]，以開啟 **Azure Active Directory 擴充** 功能。
 1.  在篩選搜尋方塊中輸入 **"Azure Active Directory"** ，然後選取 **Azure Active Directory** 專案。
 1.  從 Azure Active Directory 左側導覽功能表中選取 [ **企業應用程式** ]。
 1.  選取 [ **所有應用程式** ] 以查看您所有應用程式的清單。
-    如果您在這裡看不到您想要顯示的應用程式，請使用 [ **所有應用程式] 清單** 頂端的 [ **篩選** ] 控制項，並將 [ **顯示** ] 選項設定為 [ **所有應用程式** ]。
+    如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單** 頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式**]。
 1.  選取您要設為單一登入的應用程式。
 1. 應用程式載入之後，請從應用程式的左側導覽功能表中選取 [ **單一登入** ]。
 1. 選取 [SAML 型 SSO]。
@@ -88,7 +88,7 @@ Azure AD 不支援應用程式為單一登入傳送的 SAML 要求。 以下為�
 
 **解決方法**
 
-1. 捕捉 SAML 要求。 遵循教學課程，以瞭解如何對 [Azure AD 中的應用程式進行 saml 型單一登入的偵錯工具](../azuread-dev/howto-v1-debug-saml-sso-issues.md) ，以瞭解如何捕獲 saml 要求。
+1. 捕捉 SAML 要求。 遵循教學課程，以瞭解如何對 [Azure AD 中的應用程式進行 saml 型單一登入的偵錯工具](./debug-saml-sso-issues.md) ，以瞭解如何捕獲 saml 要求。
 1. 請連絡應用程式廠商並提供下列資訊︰
     - SAML 要求
     - [Azure AD 單一登入 SAML 通訊協定需求](../develop/single-sign-on-saml-protocol.md)
@@ -118,8 +118,8 @@ Azure AD 不支援應用程式為單一登入傳送的 SAML 要求。 以下為�
 **解決方法**
 
 若要刪除與建立新的憑證，請依照下列步驟執行：
-1. 在 [SAML SSO 設定] 畫面上，選取 [ **saml 簽署憑證** ] 區段底下的 [ **建立新憑證** ]。
-1. 選取 [到期日]，然後按一下 [ **儲存** ]。
+1. 在 [SAML SSO 設定] 畫面上，選取 [ **saml 簽署憑證**] 區段底下的 [**建立新憑證**]。
+1. 選取 [到期日]，然後按一下 [ **儲存**]。
 1. 核取 [ **讓新憑證成為** 使用中] 以覆寫作用中的憑證。 然後按一下窗格頂端的 [儲存]，並按 [接受] 以啟動變換憑證。
 1. 在 [SAML 簽署憑證] 區段下，按一下 [移除] 以移除 **未使用** 的憑證。
 
@@ -174,5 +174,5 @@ Azure AD 無法識別 HTTP 要求中 URL 參數內的 SAML 要求。 如果應�
 
 ## <a name="next-steps"></a>後續步驟
 - [應用程式管理快速入門系列](add-application-portal-assign-users.md)
-- [如何偵錯 SAML 型單一登入 Azure Active Directory 中的應用程式](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Azure AD 單一登入 SAML 通訊協定需求](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [如何偵錯 SAML 型單一登入 Azure Active Directory 中的應用程式](./debug-saml-sso-issues.md)
+- [Azure AD 單一登入 SAML 通訊協定需求](../develop/single-sign-on-saml-protocol.md)

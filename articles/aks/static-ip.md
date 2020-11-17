@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何搭配 Azure Kubernetes Service (AKS) 負載平衡器來建立和使用靜態 IP 位址。
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
-ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/14/2020
+ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651884"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>使用靜態公用 IP 位址和 DNS 標籤搭配 Azure Kubernetes Service (AKS) 負載平衡器
 
@@ -22,13 +22,13 @@ ms.locfileid: "86243931"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 本文涵蓋使用 *標準* sku IP 與 *標準* sku 負載平衡器。 如需詳細資訊，請參閱 [Azure 中的 IP 位址類型及配置方法][ip-sku]。
 
 ## <a name="create-a-static-ip-address"></a>建立靜態 IP 位址
 
-使用 [az network public ip create][az-network-public-ip-create] 命令來建立靜態公用 ip 位址。 以下會在*myResourceGroup*資源群組中建立名為*MYAKSPUBLICIP*的靜態 IP 資源：
+使用 [az network public ip create][az-network-public-ip-create] 命令來建立靜態公用 ip 位址。 以下會在 *myResourceGroup* 資源群組中建立名為 *MYAKSPUBLICIP* 的靜態 IP 資源：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -53,7 +53,7 @@ az network public-ip create \
 }
 ```
 
-您稍後可以使用 [az network public-ip list][az-network-public-ip-list] 命令來取得公用 IP 位址。 指定節點資源群組的名稱以及您建立的公用 IP 位址，然後查詢 ipAddress**，如下列範例所示：
+您稍後可以使用 [az network public-ip list][az-network-public-ip-list] 命令來取得公用 IP 位址。 指定節點資源群組的名稱以及您建立的公用 IP 位址，然後查詢 ipAddress，如下列範例所示：
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -74,7 +74,10 @@ az role assignment create \
 
 或者，您可以將系統指派的受控識別用於許可權，而非服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
-若要建立具有靜態公用 IP 位址的 *LoadBalancer* 服務，請將 `loadBalancerIP` 靜態公用 ip 位址的屬性和值新增至 YAML 資訊清單。 建立名為 `load-balancer-service.yaml` 的檔案，然後將下列 YAML 複製進來。 提供您在上一個步驟中所建立的自有公用 IP 位址。 下列範例也會將批註設定為名為 *myResourceGroup*的資源群組。 提供您自己的資源組名。
+> [!IMPORTANT]
+> 如果您自訂了輸出 IP，請確定您的叢集身分識別具有輸出公用 IP 和此輸入公用 IP 的許可權。
+
+若要建立具有靜態公用 IP 位址的 *LoadBalancer* 服務，請將 `loadBalancerIP` 靜態公用 ip 位址的屬性和值新增至 YAML 資訊清單。 建立名為 `load-balancer-service.yaml` 的檔案，然後將下列 YAML 複製進來。 提供您在上一個步驟中所建立的自有公用 IP 位址。 下列範例也會將批註設定為名為 *myResourceGroup* 的資源群組。 提供您自己的資源組名。
 
 ```yaml
 apiVersion: v1
@@ -130,7 +133,7 @@ spec:
 kubectl describe service azure-load-balancer
 ```
 
-Kubernetes 服務資源的相關資訊即會顯示。 下列範例輸出結尾的 *Events* 指出「找不到使用者提供的 IP 位址」**。 在這些案例中，請確認您已在節點資源群組中建立靜態公用 IP 位址，以及 Kubernetes 服務資訊清單中所指定的 IP 位址正確無誤。
+Kubernetes 服務資源的相關資訊即會顯示。 下列範例輸出結尾的 *Events* 指出「找不到使用者提供的 IP 位址」。 在這些案例中，請確認您已在節點資源群組中建立靜態公用 IP 位址，以及 Kubernetes 服務資訊清單中所指定的 IP 位址正確無誤。
 
 ```
 Name:                     azure-load-balancer
@@ -154,7 +157,7 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要進一步控制應用程式的網路流量，您可能想要改為[建立輸入控制器][aks-ingress-basic]。 您也可以[使用靜態公用 IP 位址建立輸入控制器][aks-static-ingress]。
 

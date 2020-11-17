@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375029"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650303"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中整合 LinkedIn 帳戶連接
 
@@ -42,7 +42,7 @@ ms.locfileid: "92375029"
 1. 使用 Azure AD 組織的全域系統管理員帳戶登入 [Azure AD admin center](https://aad.portal.azure.com/) 。
 1. 選取 [使用者]。
 1. 在 [ **使用者** ] 頁面上，選取 [ **使用者設定**]。
-1. 在 [ **LinkedIn 帳戶**連線] 下，允許使用者連線其帳戶以存取其在某些 Microsoft 應用程式內的 LinkedIn 連線。 在使用者同意連接其帳戶之前，不會共用任何資料。
+1. 在 [ **LinkedIn 帳戶** 連線] 下，允許使用者連線其帳戶以存取其在某些 Microsoft 應用程式內的 LinkedIn 連線。 在使用者同意連接其帳戶之前，不會共用任何資料。
 
     * 選取 **[是]** 可為您組織中的所有使用者啟用服務
     * 選取 [選取的 **群組** ]，只針對組織中的一組選定使用者啟用該服務
@@ -91,13 +91,13 @@ ms.locfileid: "92375029"
 1. 下載 [Office 2016 系統管理範本檔案 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 1. 解壓縮 **ADMX** 檔案，並將其複製到中央存放區。
 1. 開啟 [群組原則管理]。
-1. 使用下列設定建立群組原則物件：使用者設定**User Configuration**  >  **系統管理範本**  >  **Microsoft Office 2016**  >  **其他**  >  **在 Office 應用程式中顯示 LinkedIn 功能**。
-1. 選取 [啟用]**** 或 [停用]****。
+1. 使用下列設定建立群組原則物件：使用者設定 **User Configuration**  >  **系統管理範本**  >  **Microsoft Office 2016**  >  **其他**  >  **在 Office 應用程式中顯示 LinkedIn 功能**。
+1. 選取 [啟用] 或 [停用]。
   
    狀態 | 效果
    ------ | ------
-   **已啟用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已啟用。 您組織中的使用者可以在其 Office 2016 應用程式中使用 LinkedIn 功能。
-   **停用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已停用，而且終端使用者無法變更此設定。 組織中的使用者無法在其 Office 2016 應用程式中使用 LinkedIn 功能。
+   **Enabled** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能] 設定已啟用。 您組織中的使用者可以在其 Office 2016 應用程式中使用 LinkedIn 功能。
+   **停用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能] 設定已停用，而且終端使用者無法變更此設定。 組織中的使用者無法在其 Office 2016 應用程式中使用 LinkedIn 功能。
 
 這個群組原則只會影響本機電腦的 Office 2016 應用程式。 如果使用者在其 Office 2016 應用程式中停用 LinkedIn，他們仍然可以在 Microsoft 365 中看到 LinkedIn 功能。
 

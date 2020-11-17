@@ -4,8 +4,8 @@ description: 在 Azure Active Directory 的 Azure 系統管理中心內大量刪
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4146fb6bfe6c06e699df1f563e1f26e0716b023
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b312ef8735477e0921bcb9cdec541f97ba3003eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374834"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650269"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory 中的大量刪除使用者
 
@@ -57,7 +57,7 @@ ms.locfileid: "92374834"
 
    ![CSV 檔案包含要刪除之使用者的名稱和識別碼](./media/users-bulk-delete/delete-csv-file.png)
 
-1. 在 [ **大量刪除使用者** ] 頁面的 [ **上傳您的 csv**檔案] 底下，流覽至該檔案。 當您選取檔案，並按一下 [提交] 時，就會啟動 CSV 檔案的驗證。
+1. 在 [ **大量刪除使用者** ] 頁面的 [ **上傳您的 csv** 檔案] 底下，流覽至該檔案。 當您選取檔案，並按一下 [提交] 時，就會啟動 CSV 檔案的驗證。
 1. 當檔案內容經過驗證後，您會看到「檔案已成功上傳」。 如果發生錯誤，您必須修正這些錯誤，才能提交作業。
 1. 當您的檔案通過驗證時，請選取 [ **提交** ] 以啟動刪除使用者的 Azure 大量操作。
 1. 當刪除作業完成時，您會看到大量作業成功的通知。

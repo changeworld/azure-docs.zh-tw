@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c78b61798e72d87ec245082a5822bcfc58a1b61
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 58d5cc64b21207efbdefdafe020248212eed7efe
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374975"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650558"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>使用群組管理 SaaS 應用程式的存取權
 
@@ -32,12 +32,12 @@ ms.locfileid: "92374975"
 
 ## <a name="to-assign-access-for-a-user-or-group-to-a-saas-application"></a>將使用者或群組存取權指派給 SaaS 應用程式
 
-1. 在 [Azure AD 系統管理中心](https://aad.portal.azure.com)內，選取 [企業應用程式]****。
+1. 在 [Azure AD 系統管理中心](https://aad.portal.azure.com)內，選取 [企業應用程式]。
 2. 選取從應用程式庫新增的應用程式以加以開啟。
-3. 選取 [使用者和群組]****，然後選取 [新增使用者]****。
-4. 在 [新增指派]**** 上，選取 [使用者和群組]**** 以開啟 [使用者和群組]**** 選擇清單。
-6. 視需要選取多個群組或使用者，然後按一下或點選 [選取]**** 將其新增至 [新增指派]**** 清單。 在這個階段，您也可以將角色指派給使用者。
-7. 選取 [指派]**** 以將使用者或群組指派給選取的企業應用程式。
+3. 選取 [使用者和群組]，然後選取 [新增使用者]。
+4. 在 [新增指派] 上，選取 [使用者和群組] 以開啟 [使用者和群組] 選擇清單。
+6. 視需要選取多個群組或使用者，然後按一下或點選 [選取] 將其新增至 [新增指派] 清單。 在這個階段，您也可以將角色指派給使用者。
+7. 選取 [指派] 以將使用者或群組指派給選取的企業應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 這些文章提供有關 Azure Active Directory 的其他資訊。

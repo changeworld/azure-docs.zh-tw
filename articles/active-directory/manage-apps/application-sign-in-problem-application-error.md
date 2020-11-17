@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 779286a43f8b20ce9a9a528e14eaa930763d82b4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759533"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651578"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>應用程式頁面會在使用者登入之後顯示錯誤訊息
 
@@ -29,7 +29,7 @@ ms.locfileid: "84759533"
 
 應用程式不接受來自 Azure AD 的回應有幾個可能的原因。 如果錯誤訊息無法清楚地找出回應中缺少的內容，請嘗試下列動作：
 
--   如果應用程式是 Azure AD 資源庫，請確認您已遵循 [如何在 Azure AD 中對應用程式進行 SAML 型單一登入](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)的步驟。
+-   如果應用程式是 Azure AD 資源庫，請確認您已遵循 [如何在 Azure AD 中對應用程式進行 SAML 型單一登入](./debug-saml-sso-issues.md)的步驟。
 
 -   使用 [Fiddler](https://www.telerik.com/fiddler) 之類的工具來捕捉 SAML 要求、回應和權杖。
 
@@ -50,7 +50,7 @@ ms.locfileid: "84759533"
 5. 選取 [ **所有應用程式** ] 以查看您的應用程式清單。
 
    > [!NOTE]
-   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選器**] 控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單** 頂端的 [**篩選器**] 控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
@@ -62,7 +62,7 @@ ms.locfileid: "84759533"
 
    1. 選取 [ **加入屬性**]。 輸入 **名稱**，然後從下拉式清單中選取 **值** 。
 
-   1.  選取 [儲存]****。 您會在資料表中看到新的屬性。
+   1.  選取 [儲存]。 您會在資料表中看到新的屬性。
 
 9. 儲存組態。
 
@@ -72,7 +72,7 @@ ms.locfileid: "84759533"
 
 登入應用程式失敗，因為 SAML 回應缺少角色之類的屬性。 或它會失敗，因為應用程式預期 **NameID** (使用者識別碼) 屬性有不同的格式或值。
 
-如果您使用 [Azure AD 自動化使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) 布建來建立、維護及移除應用程式中的使用者，請確認使用者已布建至 SaaS 應用程式。 如需詳細資訊，請參閱 [未將任何使用者布建至 Azure AD 資源庫應用程式](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)。
+如果您使用 [Azure AD 自動化使用者](../app-provisioning/user-provisioning.md) 布建來建立、維護及移除應用程式中的使用者，請確認使用者已布建至 SaaS 應用程式。 如需詳細資訊，請參閱 [未將任何使用者布建至 Azure AD 資源庫應用程式](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)。
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>將屬性新增至 Azure AD 應用程式設定
 
@@ -89,7 +89,7 @@ ms.locfileid: "84759533"
 5. 選取 [ **所有應用程式** ] 以查看您的應用程式清單。
 
    > [!NOTE]
-   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選器**] 控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單** 頂端的 [**篩選器**] 控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
 
 6. 選取您要為 SSO 設定的應用程式。
 
@@ -99,9 +99,9 @@ ms.locfileid: "84759533"
 
 ## <a name="change-the-nameid-format"></a>變更 NameID 格式
 
-如果應用程式需要 **NameID** (使用者識別碼) 屬性的另一個格式，請參閱 [編輯 NameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) 以變更 nameid 格式。
+如果應用程式需要 **NameID** (使用者識別碼) 屬性的另一個格式，請參閱 [編輯 NameID](../develop/active-directory-saml-claims-customization.md#editing-nameid) 以變更 nameid 格式。
 
-Azure AD 會根據選取的值或 SAML AuthRequest 中的應用程式所要求的格式，來選取 **NameID** 屬性的格式 (使用者識別碼) 。 如需詳細資訊，請參閱 [單一登入 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)的「NameIDPolicy」一節。
+Azure AD 會根據選取的值或 SAML AuthRequest 中的應用程式所要求的格式，來選取 **NameID** 屬性的格式 (使用者識別碼) 。 如需詳細資訊，請參閱 [單一登入 SAML 通訊協定](../develop/single-sign-on-saml-protocol.md#nameidpolicy)的「NameIDPolicy」一節。
 
 ## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>應用程式預期 SAML 回應會有不同的簽章方法
 
@@ -118,7 +118,7 @@ Azure AD 會根據選取的值或 SAML AuthRequest 中的應用程式所要求�
 5. 選取 [ **所有應用程式** ] 以查看您的應用程式清單。
 
    > [!NOTE]
-   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單**頂端的**篩選**控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單** 頂端的 **篩選** 控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
@@ -151,7 +151,7 @@ Azure AD 會根據選取的值或 SAML AuthRequest 中的應用程式所要求�
 5. 選取 [ **所有應用程式** ] 以查看您的應用程式清單。
 
    > [!NOTE]
-   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單**頂端的**篩選**控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單** 頂端的 **篩選** 控制項。 將 [ **顯示** ] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
@@ -163,5 +163,5 @@ Azure AD 會根據選取的值或 SAML AuthRequest 中的應用程式所要求�
 
    下次當使用者登入應用程式時，Azure AD 會使用 SHA-1 演算法簽署 SAML 權杖。
 
-## <a name="next-steps"></a>接下來的步驟
-[如何對 Azure AD 中的應用程式進行 SAML 型單一登入的偵錯工具](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)。
+## <a name="next-steps"></a>後續步驟
+[如何對 Azure AD 中的應用程式進行 SAML 型單一登入的偵錯工具](./debug-saml-sso-issues.md)。

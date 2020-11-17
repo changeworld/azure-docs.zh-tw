@@ -3,12 +3,12 @@ title: 使用可靠的集合
 description: 瞭解在 Azure Service Fabric 應用程式中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255790"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651901"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠的集合
 Service Fabric 透過可靠的集合向 .NET 開發人員提供具狀態的程式設計模型。 具體來說，Service Fabric 提供了可靠的字典和可靠的佇列類別。 當您使用這些類別時，您的狀態是分割的 (延展性)、複寫的 (可用性)，且在分割區內交易 (ACID 語意)。 讓我們看看可靠字典物件的一般用法，並看看它實際上的作用。
@@ -35,6 +35,7 @@ catch (TimeoutException)
 {
    // choose how to handle the situation where you couldn't get a lock on the file because it was 
    // already in use. You might delay and retry the operation
+   await Task.Delay(100);
 }
 ```
 
@@ -218,7 +219,7 @@ public struct ItemId
 
 或者，您也可以執行通稱為兩階段升級的功能。 透過兩階段升級，您可以將服務從 V1 升級至 V2： V2 包含知道如何處理新架構變更的程式碼，但這段程式碼不會執行。 當 V2 程式碼讀取 V1 資料時，它會在其上操作並寫入 V1 資料。 然後，在跨所有升級網域的升級都完成之後，您就可以通知執行中的 V2 執行個體，升級已完成。  (一種指示這種情況的方式，就是推出設定升級;這是讓這項作業成為兩階段升級的結果 ) 。現在，V2 實例可以讀取 V1 資料、將它轉換為 V2 資料、操作它，然後寫出做為 V2 資料。 當其他執行個體讀取 V2 資料時，不需要轉換它，只要操作並寫出 V2 資料即可。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要了解如何建立正向相容的資料合約，請參閱[正向相容的資料合約](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts) \(機器翻譯\)。
 
 若要了解資料合約版本設定的最佳做法，請參閱[資料合約版本設定](/dotnet/framework/wcf/feature-details/data-contract-versioning) \(機器翻譯\)。

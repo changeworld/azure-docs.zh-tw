@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e3e0c10a7ec6b42420db30955ae4911bca27cc0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763647"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651221"
 ---
 # <a name="cloud-app-visibility-and-control"></a>雲端應用程式的可見性和控制
 
@@ -36,8 +36,8 @@ ms.locfileid: "84763647"
  
 ### <a name="learn-more"></a>深入了解
 
-- [探索和管理網路中的影子 IT](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [使用 Cloud App Security 探索到的應用程式](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [探索和管理網路中的影子 IT](/cloud-app-security/tutorial-shadow-it)
+- [使用 Cloud App Security 探索到的應用程式](/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>使用者工作階段可見性和控制 
 
@@ -53,7 +53,7 @@ ms.locfileid: "84763647"
  
 ### <a name="learn-more"></a>深入了解
 
-- [使用 Cloud App Security 中的工作階段控制保護應用程式](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [使用 Cloud App Security 中的工作階段控制保護應用程式](/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>進階應用程式可見性和控制 
 
@@ -61,11 +61,11 @@ ms.locfileid: "84763647"
  
 ### <a name="learn-more"></a>深入了解  
 
-- [在 Cloud App Security 中連線應用程式](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [在 Cloud App Security 中連線應用程式](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [探索和管理網路中的影子 IT](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [使用 Cloud App Security 探索到的應用程式](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [使用 Cloud App Security 中的工作階段控制保護應用程式](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [在 Cloud App Security 中連線應用程式](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [探索和管理網路中的影子 IT](/cloud-app-security/tutorial-shadow-it)
+- [使用 Cloud App Security 探索到的應用程式](/cloud-app-security/discovered-apps)
+- [使用 Cloud App Security 中的工作階段控制保護應用程式](/cloud-app-security/proxy-intro-aad)
+- [在 Cloud App Security 中連線應用程式](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

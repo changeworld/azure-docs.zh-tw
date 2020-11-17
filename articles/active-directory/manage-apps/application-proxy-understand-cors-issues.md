@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759924"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651850"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>瞭解並解決 Azure Active Directory 應用程式 Proxy CORS 問題
 
-[跨原始資源分享 (CORS) ](https://www.w3.org/TR/cors/)  有時可能會對您透過 Azure Active Directory 應用程式 Proxy 發佈的應用程式和 Api 帶來挑戰。 本文討論 Azure AD 的應用程式 Proxy CORS 問題和解決方案。
+[跨原始資源分享 (CORS) ](https://www.w3.org/TR/cors/) 有時可能會對您透過 Azure Active Directory 應用程式 Proxy 發佈的應用程式和 api 帶來挑戰。 本文討論 Azure AD 的應用程式 Proxy CORS 問題和解決方案。
 
 瀏覽器安全性通常會防止網頁對另一個網域提出 AJAX 要求。 這項限制稱為 *相同來源原則*，可防止惡意網站從另一個網站讀取敏感性資料。 不過，有時候您可能會想要讓其他網站呼叫您的 web API。 CORS 是一種 W3C 標準，可讓伺服器放寬相同來源原則，並允許某些跨原始來源的要求，同時拒絕其他要求。
 
@@ -52,7 +52,7 @@ ms.locfileid: "84759924"
 
 ## <a name="cors-challenges-with-application-proxy"></a>應用程式 Proxy 的 CORS 挑戰
 
-下列範例顯示典型的 Azure AD 應用程式 Proxy CORS 案例。 內部伺服器會裝載**CORSWebService** web API 控制器，以及呼叫**CORSWebService**的**CORSWebClient** 。 有一個從 **CORSWebClient** 到 **CORSWebService**的 AJAX 要求。
+下列範例顯示典型的 Azure AD 應用程式 Proxy CORS 案例。 內部伺服器會裝載 **CORSWebService** web API 控制器，以及呼叫 **CORSWebService** 的 **CORSWebClient** 。 有一個從 **CORSWebClient** 到 **CORSWebService** 的 AJAX 要求。
 
 ![內部部署的相同原始要求](./media/application-proxy-understand-cors-issues/image1.png)
 
@@ -66,13 +66,13 @@ ms.locfileid: "84759924"
 
 ### <a name="option-1-set-up-a-custom-domain"></a>選項1：設定自訂網域
 
-使用 Azure AD 應用程式 Proxy [自訂網域](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) 從相同的來源發佈，而不需要對應用程式來源、程式碼或標頭進行任何變更。 
+使用 Azure AD 應用程式 Proxy [自訂網域](./application-proxy-configure-custom-domain.md) 從相同的來源發佈，而不需要對應用程式來源、程式碼或標頭進行任何變更。 
 
 ### <a name="option-2-publish-the-parent-directory"></a>選項2：發行上層目錄
 
 發佈這兩個應用程式的父目錄。 如果 web 伺服器上只有兩個應用程式，則此解決方案的運作效果特別好。 您可以發佈共同的父目錄，而不是個別發佈每個應用程式，這會導致相同的來源。
 
-下列範例顯示 CORSWebClient 應用程式的入口網站 Azure AD 應用程式 Proxy] 頁面。  當 **內部 URL** 設定為 *contoso.com/CORSWebClient*時，應用程式無法對 *contoso.com/CORSWebService* 目錄提出成功的要求，因為它們是跨原始來源。 
+下列範例顯示 CORSWebClient 應用程式的入口網站 Azure AD 應用程式 Proxy] 頁面。  當 **內部 URL** 設定為 *contoso.com/CORSWebClient* 時，應用程式無法對 *contoso.com/CORSWebService* 目錄提出成功的要求，因為它們是跨原始來源。 
 
 ![個別發佈應用程式](./media/application-proxy-understand-cors-issues/image4.png)
 
@@ -117,4 +117,4 @@ X-支援： ASP.NET \
 ## <a name="see-also"></a>另請參閱
 - [教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md) 
 - [規劃 Azure AD 應用程式 Proxy 部署](application-proxy-deployment-plan.md) 
-- [透過 Azure Active Directory 應用程式 Proxy 從遠端存取內部部署應用程式](application-proxy.md) 
+- [透過 Azure Active Directory 應用程式 Proxy 從遠端存取內部部署應用程式](application-proxy.md)

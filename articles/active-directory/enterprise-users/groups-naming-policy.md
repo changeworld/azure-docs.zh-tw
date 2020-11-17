@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e404b3eeadd8eef45e413eea2bd753d08cc505ca
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489449"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650626"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 的 Microsoft 365 群組上強制執行命名原則
 
@@ -94,7 +94,7 @@ ms.locfileid: "94489449"
 1. 在 [命名原則] 頁面上，選取 [群組命名原則]。
 1. 您可以選取您想要在命名原則時強制執行的屬性或字串，以個別檢視或編輯目前的前置詞或後置詞命名原則。
 1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]。 您同時可以刪除多個項目。
-1. 藉由選取 [ **儲存** ]，儲存新原則的變更以開始生效。
+1. 藉由選取 [ **儲存**]，儲存新原則的變更以開始生效。
 
 ### <a name="edit-custom-blocked-words"></a>編輯自訂封鎖字組
 
@@ -104,7 +104,7 @@ ms.locfileid: "94489449"
 
 1. 選取 [下載] 可檢視或編輯目前的自訂封鎖字組清單。
 1. 選取 [檔案] 圖示可上傳新的自訂封鎖字組清單。
-1. 藉由選取 [ **儲存** ]，儲存新原則的變更以開始生效。
+1. 藉由選取 [ **儲存**]，儲存新原則的變更以開始生效。
 
 ## <a name="install-powershell-cmdlets"></a>安裝 PowerShell Cmdlet
 
@@ -123,7 +123,7 @@ ms.locfileid: "94489449"
    Install-Module AzureADPreview
    ```
 
-   如果系統提示您存取未受信任的儲存機制，請輸入 **Y** 。安裝新模組可能需要幾分鐘的時間。
+   如果系統提示您存取未受信任的儲存機制，請輸入 **Y**。安裝新模組可能需要幾分鐘的時間。
 
 ## <a name="configure-naming-policy-in-powershell"></a>在 PowerShell 中設定命名原則
 

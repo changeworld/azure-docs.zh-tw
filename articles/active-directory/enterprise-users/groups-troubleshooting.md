@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: troubleshooting
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d114896319929a0506f0201905d72d081b6408a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374891"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650507"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>針對群組問題進行疑難排解並加以解決
 
@@ -51,7 +51,7 @@ ms.locfileid: "92374891"
 
 **我針對某個群組設定了一個規則，但是群組中的成員資格沒有任何更新**<br/>
 1. 確認規則中的使用者或裝置屬性值。 確定有符合規則的使用者。 針對裝置，請檢查裝置屬性，以確定任何同步的屬性都包含預期的值。<br/>
-2. 檢查成員資格處理狀態以確認是否已完成。 您可以在群組的 [**總覽**] 頁面上檢查[成員資格處理狀態](groups-create-rule.md#check-processing-status-for-a-rule)和上次更新日期。
+2. 檢查成員資格處理狀態以確認是否已完成。 您可以在群組的 [**總覽**] 頁面上檢查 [成員資格處理狀態](groups-create-rule.md#check-processing-status-for-a-rule)和上次更新日期。
 
 如果一切良好，請等候一段時間，以填入群組。 視 Azure AD 組織的大小而定，群組最多可能需要24小時的時間，才能首次或在規則變更之後填入。
 

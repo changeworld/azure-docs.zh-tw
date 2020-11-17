@@ -7,31 +7,27 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74754c973dbe11d954a1714e9a98d99de639acd4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226891"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651136"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
-
-
 
 ## <a name="cloud-provisioning-agent-requirements"></a>雲端佈建代理程式需求
 需要下列各項才能使用 Azure AD Connect 雲端佈建：
     
 - 不是來賓使用者的 Azure AD 租使用者的混合式身分識別系統管理員帳戶。
 - 佈建代理程式的 Windows 2012 R2 或更新版本內部部署伺服器。  此伺服器應該是以 [Active Directory 系統管理層模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)為基礎的第0層伺服器。
+- 網域系統管理員或企業系統管理員認證，可建立 Azure AD Connect Cloud Sync gMSA (群組受管理的服務帳戶) 來執行代理程式服務。
 - 內部部署防火牆設定。
-
->[!NOTE]
->佈建代理程式目前只能安裝在英文版伺服器上。 在非英文版伺服器上安裝英文語言套件不是有效的因應措施，且會導致代理程式無法安裝。 
 
 本文件其餘部分會提供這些先決條件的逐步指示。
 
@@ -51,13 +47,15 @@ ms.locfileid: "89226891"
 1. 本機伺服器上的 PowerShell 執行原則必須設定為 Undefined 或 RemoteSigned。
 
 1. 如果伺服器與 Azure AD 之間有防火牆，請設定下列項目：
-   - 確定代理程式可透過下列連接埠對 Azure AD 提出*輸出*要求：
+   - 確定代理程式可透過下列連接埠對 Azure AD 提出 *輸出* 要求：
 
         | 連接埠號碼 | 使用方式 |
         | --- | --- |
         | **80** | 驗證 TLS/SSL 憑證時下載憑證撤銷清單 (CRL)。  |
         | **443** | 處理服務的所有輸出通訊。 |
+        |**8082**|如果您想要設定其管理 API，則需要安裝此參數。  此埠可在代理程式安裝完成後移除，如果您不打算使用 API。   |
         | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站中。 |
+   
      
    - 如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
    - 如果防火牆或 Proxy 允許指定安全尾碼，請將連線新增至 \*.msappproxy.net 和 \*.servicebus.windows.net。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
@@ -66,6 +64,17 @@ ms.locfileid: "89226891"
 
 >[!NOTE]
 > 不支援在 Windows Server Core 上安裝雲端佈建代理程式。
+
+## <a name="group-managed-service-accounts"></a>群組受管理的服務帳戶
+群組受管理的服務帳戶是受控網域帳戶，可提供自動密碼管理、簡化的服務主體名稱 (SPN) 管理、將管理委派給其他系統管理員的能力，以及將這項功能延伸到多部伺服器。  Azure AD Connect Cloud Sync 支援並使用 gMSA 來執行代理程式。  系統會在安裝期間提示您輸入系統管理認證，以便建立此帳戶。  帳戶會顯示為 (domain\provAgentgMSA $) 。  如需 gMSA 的詳細資訊，請參閱 [群組受管理的服務帳戶](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+
+### <a name="prerequisites-for-gmsa"></a>GMSA 的必要條件：
+1.  GMSA 網域樹系中的 Active Directory 架構必須更新為 Windows Server 2012
+2.  網域控制站上的[POWERSHELL RSAT 模組](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+3.  網域中至少有一個網域控制站必須執行 Windows Server 2012。
+4.  安裝代理程式的已加入網域伺服器必須是 Windows Server 2012 或更新版本。
+
+如需有關如何將現有的代理程式升級為使用 gMSA 帳戶的步驟，請參閱 [群組受管理的服務帳戶](how-to-install.md#group-managed-service-accounts)。
 
 
 ### <a name="additional-requirements"></a>其他需求
@@ -90,6 +99,8 @@ ms.locfileid: "89226891"
     ```
 
 1. 重新啟動伺服器。
+
+
 
 
 ## <a name="next-steps"></a>後續步驟 

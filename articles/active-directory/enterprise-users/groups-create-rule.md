@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f9fcdd2ce17e967be432f8edc910dcf2fcdbed3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375000"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650898"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立或更新動態群組
 
@@ -48,7 +48,7 @@ Azure AD 提供規則建立器，可讓您更快速建立和更新重要的規�
 
 1. 使用 Azure AD 組織的全域系統管理員、Intune 管理員或使用者系統管理員角色的帳戶登入 [Azure AD admin center](https://aad.portal.azure.com) 。
 1. 搜尋並選取 **群組**。
-1. 選取 [所有群組]****，然後選取 [新增群組]****。
+1. 選取 [所有群組]，然後選取 [新增群組]。
 
    ![選取命令以新增群組](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
@@ -84,11 +84,11 @@ Azure AD 提供規則建立器，可讓您更快速建立和更新重要的規�
 
 ## <a name="check-processing-status-for-a-rule"></a>檢查規則的處理狀態
 
-您可以在群組的 [概觀]**** 頁面上看到成員資格處理狀態和上次更新日期。
+您可以在群組的 [概觀] 頁面上看到成員資格處理狀態和上次更新日期。
   
   ![顯示動態群組狀態](./media/groups-create-rule/group-status.png)
 
-可能會針對**成員資格處理**狀態顯示下列狀態訊息：
+可能會針對 **成員資格處理** 狀態顯示下列狀態訊息：
 
 - **評估中**：已收到群組變更，而且正在評估更新。
 - **處理中**：正在處理更新。
@@ -96,13 +96,13 @@ Azure AD 提供規則建立器，可讓您更快速建立和更新重要的規�
 - **處理錯誤**：因為評估成員資格規則時發生錯誤，所以無法完成處理。
 - **已暫停更新**：系統管理員已暫停動態成員資格規則更新。 MembershipRuleProcessingState 設定為「已暫停」。
 
-可能會針對**成員資格上次更新**狀態顯示下列狀態訊息：
+可能會針對 **成員資格上次更新** 狀態顯示下列狀態訊息：
 
 - &lt;**日期和時間** &gt; ：上次更新成員資格的時間。
 - **進行中**：目前正在更新。
 - **未知**：無法抓取上次更新時間。 群組可能是新的。
 
-如果處理特定群組的成員資格規則時發生錯誤，則會在群組的 [概觀]**** 頁面頂端顯示警示。 如果無法針對組織內的所有群組處理任何擱置中的動態成員資格更新超過24小時，則會在 **所有群組**的頂端顯示警示。
+如果處理特定群組的成員資格規則時發生錯誤，則會在群組的 [概觀] 頁面頂端顯示警示。 如果無法針對組織內的所有群組處理任何擱置中的動態成員資格更新超過24小時，則會在 **所有群組** 的頂端顯示警示。
 
 ![處理錯誤訊息警示](./media/groups-create-rule/processing-error.png)
 

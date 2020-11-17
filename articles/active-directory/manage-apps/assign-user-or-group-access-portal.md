@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604320"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651272"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理應用程式的使用者指派
 
@@ -58,7 +58,7 @@ ms.locfileid: "90604320"
 若要瞭解如何使用 Azure 入口網站指派或取消指派使用者或群組，請參閱 [應用程式管理的快速入門系列](add-application-portal-assign-users.md)。
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>使用圖形 API 指派或取消指派應用程式的使用者和群組
-您可以使用圖形 API 指派或取消指派應用程式的使用者和群組。 若要深入瞭解，請參閱 [應用程式角色指派](https://docs.microsoft.com/graph/api/resources/approleassignment)。
+您可以使用圖形 API 指派或取消指派應用程式的使用者和群組。 若要深入瞭解，請參閱 [應用程式角色指派](/graph/api/resources/approleassignment)。
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>使用 PowerShell 將使用者和群組指派給應用程式
 1. 開啟已提高權限的 Windows PowerShell 命令提示字元。
@@ -81,11 +81,11 @@ ms.locfileid: "90604320"
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-如需有關如何將使用者指派給應用程式角色的詳細資訊，請參閱 [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) 的文件。
+如需有關如何將使用者指派給應用程式角色的詳細資訊，請參閱 [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) 的文件。
 
 若要將群組指派給企業應用程式，您必須將 `Get-AzureADUser` 取代為 `Get-AzureADGroup` 並將 `New-AzureADUserAppRoleAssignment` 取代為 `New-AzureADGroupAppRoleAssignment`。
 
-如需有關如何將群組指派給應用程式角色的詳細資訊，請參閱 [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0) 的文件。
+如需有關如何將群組指派給應用程式角色的詳細資訊，請參閱 [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0) 的文件。
 
 ### <a name="example"></a>範例
 
@@ -154,6 +154,6 @@ ms.locfileid: "90604320"
 ## <a name="next-steps"></a>後續步驟
 
 - [查看我的所有群組](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [從企業應用程式中移除使用者或群組指派](remove-user-or-group-access-portal.md)
+- [從企業應用程式中移除使用者或群組指派]()
 - [停用企業應用程式的使用者登入](disable-user-sign-in-portal.md)
-- [變更企業應用程式的名稱或標誌](change-name-or-logo-portal.md)
+- [變更企業應用程式的名稱或標誌](./add-application-portal-configure.md)

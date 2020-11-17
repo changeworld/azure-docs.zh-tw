@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f3544d81059cd4c25c584d8af1b6fcd45a41b8bb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374983"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650711"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>設定 Microsoft 365 群組的到期原則
 
@@ -83,9 +83,9 @@ User | 可以更新他們擁有的 Microsoft 365 群組<br>可以還原他們所
     - 指定當群組沒有擁有者時應該傳送續訂和到期通知的電子郵件地址。
     - 選取過期的 Microsoft 365 群組。 您可以設定到期日：
       - **全部** Microsoft 365 群組
-      - **所選**Microsoft 365 群組的清單
+      - **所選** Microsoft 365 群組的清單
       - **無** 可限制所有群組的到期日
-    - 當您完成時，選取 [儲存]**** 會儲存您的設定。
+    - 當您完成時，選取 [儲存] 會儲存您的設定。
 
 > [!NOTE]
 > - 當您第一次設定到期日時，任何早于到期間隔的群組會設定為35天直到到期為止，除非群組自動更新或擁有者更新該群組。
