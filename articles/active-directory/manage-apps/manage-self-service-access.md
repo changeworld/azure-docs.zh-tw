@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfa7530617830de99d752edcf4545300525ddbe8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362360"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649206"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何設定自助應用程式指派
 
-您必須先針對您想要允許使用者自行探索和要求存取的任何應用程式，啟用 **自助應用程式存取** ，才能讓使用者從其我的應用程式自行探索應用程式。 這項功能適用于從 [Azure AD 資源庫](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)新增的應用程式， [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ，或透過 [使用者或系統管理員同意](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)新增的應用程式。 
+您必須先針對您想要允許使用者自行探索和要求存取的任何應用程式，啟用 **自助應用程式存取** ，才能讓使用者從其我的應用程式自行探索應用程式。 這項功能適用于從 [Azure AD 資源庫](./add-application-portal.md)新增的應用程式， [Azure AD 應用程式 Proxy](./application-proxy.md) ，或透過 [使用者或系統管理員同意](../develop/application-consent-experience.md)新增的應用程式。 
 
 此功能極有助於節省 IT 群組的時間和成本，非常建議在搭配 Azure Active Directory 進行現代化應用程式部署時使用。
 
@@ -59,7 +59,7 @@ ms.locfileid: "92362360"
 
 4. 在左側導覽功能表中，選取 [ **自助**]。
 
-5. 若要啟用此應用程式的自助式應用程式存取，請將 [要允許使用者要求此應用程式的存取權嗎?]**** 切換開關切換為 [是]****。
+5. 若要啟用此應用程式的自助式應用程式存取，請將 [要允許使用者要求此應用程式的存取權嗎?] 切換開關切換為 [是]。
 
 6. 在 [ **要將指派的使用者新增至哪個群組**] 旁，按一下 [ **選取群組**]。 選擇群組，然後按一下 [ **選取**]。 當使用者的要求獲得核准後，就會新增至這個群組。 當您查看此群組的成員資格時，您將能夠看到誰已透過自助存取權授與應用程式的存取權。
   
@@ -75,9 +75,9 @@ ms.locfileid: "92362360"
     >[!NOTE]
     >不支援群組。 您最多可以選取10個個別商務核准者。 如果您指定多個核准者，則任何一位核准者都可以核准存取要求。
 
-10. **選擇性：** **對於公開角色的應用程式**，若要將已核准的使用者指派給角色，請 **在此應用程式中應指派給使用者的角色**旁，按一下 [ **選取角色**]，然後選擇要指派給這些使用者的角色。 然後按一下 [選取] 。
+10. **選擇性：** **對於公開角色的應用程式**，若要將已核准的使用者指派給角色，請 **在此應用程式中應指派給使用者的角色** 旁，按一下 [ **選取角色**]，然後選擇要指派給這些使用者的角色。 然後按一下 [選取] 。
 
-11. 按一下窗格頂端的 [儲存]**** 按鈕以完成此動作。
+11. 按一下窗格頂端的 [儲存] 按鈕以完成此動作。
 
 完成自助應用程式設定之後，使用者可以流覽至其 [我的應用程式](https://myapps.microsoft.com/) ，然後按一下 [ **新增自助應用程式** ] 按鈕，以尋找可透過自助存取啟用的應用程式。 商務核准者也會在其 [我的應用程式](https://myapps.microsoft.com/)中看到通知。 您可以啟用電子郵件，通知他們有使用者已要求存取應用程式，需要他們核准。
 

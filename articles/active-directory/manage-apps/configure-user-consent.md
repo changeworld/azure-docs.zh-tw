@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427629"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649495"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -57,7 +57,7 @@ ms.locfileid: "92427629"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)，選擇哪個應用程式同意原則會控管應用程式的使用者同意。
+您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview)，選擇哪個應用程式同意原則會控管應用程式的使用者同意。
 
 #### <a name="disable-user-consent"></a>停用使用者同意
 
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>以風險為基礎的逐步同意
 
-以風險為基礎的升級同意有助於降低使用者暴露於進行[非法同意要求](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的惡意應用程式風險。 如果 Microsoft 偵測到有風險的使用者同意要求，則要求需要「升級」以進行管理員同意。 這項功能預設為啟用，但是只有在啟用使用者同意時，才會導致行為變更。
+以風險為基礎的升級同意有助於降低使用者暴露於進行[非法同意要求](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的惡意應用程式風險。 如果 Microsoft 偵測到有風險的使用者同意要求，則要求需要「升級」以進行管理員同意。 這項功能預設為啟用，但是只有在啟用使用者同意時，才會導致行為變更。
 
 當偵測到有風險的同意要求時，同意提示會顯示一則訊息，指出需要系統管理員核准。 如果已啟用[管理員同意要求工作流程](configure-admin-consent-workflow.md)，則使用者可以將要求傳送給系統管理員，以便直接從同意提示進行進一步的檢閱。 如果未啟用，將會顯示下列訊息：
 
@@ -114,9 +114,9 @@ Set-AzureADMSAuthorizationPolicy `
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>使用 PowerShell 來停用或重新啟用以風險為基礎的升級同意
 
-您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，停用在 Microsoft 偵測到風險的情況下必要的升級至管理員同意，或是在先前停用時重新啟用。
+您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)，停用在 Microsoft 偵測到風險的情況下必要的升級至管理員同意，或是在先前停用時重新啟用。
 
-1. 請確定您使用的是 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組。 如果您已安裝 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模組和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組兩者，則這個步驟很重要。
+1. 請確定您使用的是 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模組。 如果您已安裝 [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) 模組和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模組兩者，則這個步驟很重要。
 
     ```powershell
     Remove-Module AzureAD
@@ -129,7 +129,7 @@ Set-AzureADMSAuthorizationPolicy `
    Connect-AzureAD
    ```
 
-1. 擷取您租用戶中**同意原則設定**目錄設定的目前值。 這需要檢查是否已建立這項功能的目錄設定，如果未建立，則使用對應目錄設定範本中的值。
+1. 擷取您租用戶中 **同意原則設定** 目錄設定的目前值。 這需要檢查是否已建立這項功能的目錄設定，如果未建立，則使用對應目錄設定範本中的值。
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -182,7 +182,7 @@ Set-AzureADMSAuthorizationPolicy `
 * [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 * [了解如何管理對應用程式的同意及評估同意要求](manage-consent-requests.md)
 * [對應用程式授與全租用戶的管理員同意](grant-admin-consent.md)
-* [Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft 身分識別平台中的權限和同意](../develop/v2-permissions-and-consent.md)
 
 若要取得協助或尋找您的問題解答：
 * [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

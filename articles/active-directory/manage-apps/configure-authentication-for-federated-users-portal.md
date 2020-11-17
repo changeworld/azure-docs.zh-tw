@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 873a87ed2c75d41e0a249bde4b6a29921b7e5ce5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763579"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648050"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
@@ -150,7 +150,7 @@ ms.locfileid: "84763579"
 - 列出已設定原則的應用程式。
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 在下列範例中，您將建立、更新、連結和刪除 Azure AD 中應用程式服務主體上的原則。
 
 1.  若要開始，請下載最新的 Azure AD PowerShell Cmdlet 預覽版。 
@@ -207,7 +207,7 @@ Get-AzureADPolicy
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>步驟 2：尋找服務主體以對其指派原則  
 您需要原則要指派到之服務主體的 **ObjectID**。 有幾種方式可尋找服務主體的 **ObjectID**。    
 
-您可以使用入口網站，或者您可以查詢 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 
+您可以使用入口網站，或者您可以查詢 [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 
 
 由於您使用的是 PowerShell，因此您可以使用下列 Cmdlet 來列出服務主體及其識別碼。
 
@@ -266,7 +266,7 @@ Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -P
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-## <a name="next-steps"></a>接下來的步驟
-- 如需如何在 Azure AD 中進行驗證的詳細資訊，請參閱 [Azure AD 的驗證案例](../develop/authentication-scenarios.md)。
+## <a name="next-steps"></a>後續步驟
+- 如需如何在 Azure AD 中進行驗證的詳細資訊，請參閱 [Azure AD 的驗證案例](../develop/authentication-vs-authorization.md)。
 - 如需使用者單一登入的詳細資訊，請參閱 [Azure Active Directory 中的單一登入應用程式](what-is-single-sign-on.md)。
 - 請造訪 [Microsoft 身分識別平臺](../develop/v2-overview.md) ，以取得所有開發人員相關內容的總覽。

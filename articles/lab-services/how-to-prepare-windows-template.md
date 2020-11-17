@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396683"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647897"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>在 Azure 實驗室服務中設定 Windows 範本電腦的指南
 
@@ -47,7 +47,7 @@ Write-Host "Installing OneDrive..."
 
 ### <a name="onedrive-customizations"></a>OneDrive 自訂
 
-有許多 [可對 OneDrive 進行的自訂](https://docs.microsoft.com/onedrive/use-group-policy)。 讓我們來討論一些較常見的自訂。
+有許多 [可對 OneDrive 進行的自訂](/onedrive/use-group-policy)。 讓我們來討論一些較常見的自訂。
 
 #### <a name="silently-move-windows-known-folders-to-onedrive"></a>以無訊息方式將 Windows 已知資料夾移至 OneDrive
 
@@ -61,7 +61,7 @@ Write-Host "Installing OneDrive..."
 
 如果您的虛擬機器已連線到 Active Directory，您可以將範本電腦設定為自動提示您的學生將已知資料夾移至 OneDrive。  
 
-您必須先取得您的組織識別碼。  如需進一步的指示，請參閱 [尋找您的 Microsoft 365 組織識別碼](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)。  您也可以使用下列 PowerShell 取得組織識別碼。
+您必須先取得您的組織識別碼。  如需進一步的指示，請參閱 [尋找您的 Microsoft 365 組織識別碼](/onedrive/find-your-office-365-tenant-id)。  您也可以使用下列 PowerShell 取得組織識別碼。
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -137,7 +137,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="change-the-microsoft-365-update-channel"></a>變更 Microsoft 365 更新通道
 
-您可以使用 Office Configuration Tool 設定 Office 接收更新的頻率。 但是，如果您需要修改 Office 在安裝後接收更新的頻率，您可以變更更新通道 URL。 您可以在 [變更組織中裝置的 Microsoft 365 Apps 更新通道](https://docs.microsoft.com/deployoffice/change-update-channels)，找到更新通道 URL 位址。 下列範例顯示如何將 Microsoft 365 設定為使用每月更新通道。
+您可以使用 Office Configuration Tool 設定 Office 接收更新的頻率。 但是，如果您需要修改 Office 在安裝後接收更新的頻率，您可以變更更新通道 URL。 您可以在 [變更組織中裝置的 Microsoft 365 Apps 更新通道](/deployoffice/change-update-channels)，找到更新通道 URL 位址。 下列範例顯示如何將 Microsoft 365 設定為使用每月更新通道。
 
 ```powershell
 # Update to the Microsoft 365 Monthly Channel
@@ -153,7 +153,7 @@ Set-ItemProperty
 
 基於安全性考慮，建議您在範本電腦上安裝最新的 Microsoft 更新，然後再發佈範本 VM。  當更新在非預期的時間執行時，它也可能會避免學生中斷其工作。
 
-1. 從 [開始] 功能表啟動**設定**
+1. 從 [開始] 功能表啟動 **設定**
 2. 按一下 [ **更新** & 安全性]
 3. 按一下 [**檢查更新**]
 4. 更新將會下載並安裝。
@@ -188,7 +188,7 @@ Set-ExecutionPolicy default -Force
 
 ### <a name="stop-automatic-windows-updates"></a>停止自動 Windows 更新
 
-將 Windows 更新至最新版本之後，您可以考慮停止 Windows Update。  自動更新可能會干擾已排程的類別時間。  如果您的課程執行時間較長，請考慮要求學生手動檢查更新，或在已排程的類別時數以外的時間設定自動更新。  如需 Windows Update 自訂選項的詳細資訊，請參閱 [管理其他 Windows Update 設定](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings)。
+將 Windows 更新至最新版本之後，您可以考慮停止 Windows Update。  自動更新可能會干擾已排程的類別時間。  如果您的課程執行時間較長，請考慮要求學生手動檢查更新，或在已排程的類別時數以外的時間設定自動更新。  如需 Windows Update 自訂選項的詳細資訊，請參閱 [管理其他 Windows Update 設定](/windows/deployment/update/waas-wu-settings)。
 
 自動 Windows Update 可能會使用下列 PowerShell 腳本停止。
 

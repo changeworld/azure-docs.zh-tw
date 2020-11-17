@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 027cd8eb9c855afb845b08ce6aada7ddfd44daba
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e44437bb926e8d2d1ffcd3134bbc63538a112ff0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147006"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648305"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色指派
 
@@ -28,9 +28,9 @@ ms.locfileid: "93147006"
 > [!NOTE]
 > 如果您的組織具有外包管理功能給使用 [Azure 委派資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服務提供者，此服務提供者所授權的角色指派將不會顯示在此處。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](../cloud-shell/overview.md)
 
 ## <a name="list-role-assignments-for-a-user"></a>列出使用者的角色指派
 
@@ -185,6 +185,6 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
     az role assignment list --assignee {objectId}
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md)

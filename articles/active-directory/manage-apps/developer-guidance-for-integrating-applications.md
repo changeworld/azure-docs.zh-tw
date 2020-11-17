@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1b56e3818d2d9701ecb0252328746dc39bb260
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578309"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649155"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>開發適用於 Azure Active Directory 的企業營運應用程式
 本指南概述如何針對 Azure Active Directory (AD) ，開發企業營運 (LoB) 應用程式。目標物件是 Active Directory/Microsoft 365 全域系統管理員。
 
 ## <a name="overview"></a>概觀
-建立與 Azure AD 整合的應用程式，可讓您組織中的使用者使用 Microsoft 365 進行單一登入。 將應用程式置於 Azure AD 中可讓您掌控應用程式設定的驗證原則。 若要深入瞭解條件式存取，以及如何使用多重要素驗證保護應用程式 (MFA) 請參閱設定 [存取規則](../conditional-access/app-based-mfa.md)。
+建立與 Azure AD 整合的應用程式，可讓您組織中的使用者使用 Microsoft 365 進行單一登入。 將應用程式置於 Azure AD 中可讓您掌控應用程式設定的驗證原則。 若要深入瞭解條件式存取，以及如何使用多重要素驗證保護應用程式 (MFA) 請參閱設定 [存取規則](../authentication/tutorial-enable-azure-mfa.md)。
 
 註冊應用程式以使用 Azure Active Directory。 註冊應用程式意謂著開發人員可以使用 Azure AD 來驗證使用者，以及要求對使用者資源 (例如電子郵件、行事曆及文件) 的存取權。
 
-您目錄的任何成員 (不是來賓) 都可以註冊應用程式，亦稱為 *建立應用程式物件* 。 如果您無法註冊應用程式，則表示目錄的全域管理員已限制這項功能，因此您可能需要聯繫它們，才能 [取得適當的許可權](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#assign-built-in-application-admin-roles) 來註冊應用程式。 若要深入瞭解如何限制使用者的詳細資訊，請參閱 [Azure Active Directory 中的委派應用程式註冊許可權](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#restrict-who-can-create-applications)。
+您目錄的任何成員 (不是來賓) 都可以註冊應用程式，亦稱為 *建立應用程式物件*。 如果您無法註冊應用程式，則表示目錄的全域管理員已限制這項功能，因此您可能需要聯繫它們，才能 [取得適當的許可權](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) 來註冊應用程式。 若要深入瞭解如何限制使用者的詳細資訊，請參閱 [Azure Active Directory 中的委派應用程式註冊許可權](../roles/delegate-app-roles.md#restrict-who-can-create-applications)。
 
 註冊應用程式可讓任一使用者執行下列動作：
 
@@ -55,14 +55,14 @@ ms.locfileid: "94578309"
 * 隱藏預設的使用者同意體驗
 
 ## <a name="configure-access-rules"></a>設定存取規則
-針對您的 SaaS 應用程式設定每個應用程式的存取規則 例如，您可以要求執行 MFA 或只允許受信任網路上的使用者進行存取。 如需這方面的詳細資料，請參閱[設定存取規則](../conditional-access/app-based-mfa.md)文件。
+針對您的 SaaS 應用程式設定每個應用程式的存取規則 例如，您可以要求執行 MFA 或只允許受信任網路上的使用者進行存取。 如需這方面的詳細資料，請參閱[設定存取規則](../authentication/tutorial-enable-azure-mfa.md)文件。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>設定應用程式要求指派使用者並指派使用者
 根據預設，使用者不須獲得指派，即可存取應用程式。 但是，如果應用程式公開角色，或您想要讓應用程式出現在使用者的我的應用程式上，您應該需要使用者指派。
 
 如果您是 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 的訂閱者，則強烈建議使用群組。 將群組指派給應用程式，可讓您將持續進行的存取管理委派給群組擁有者。 您可以建立群組，或使用群組管理功能要求您組織中負責的對象建立群組。
 
-[將使用者和群組指派給應用程式](methods-for-assigning-users-and-groups.md)  
+[將使用者和群組指派給應用程式](./assign-user-or-group-access-portal.md)  
 
 
 ## <a name="suppress-user-consent"></a>隱藏使用者同意
@@ -70,9 +70,8 @@ ms.locfileid: "94578309"
 
 對於您信任的應用程式，您可以代表您的組織來同意應用程式，以簡化使用者體驗。
 
-如需有關 Azure 中使用者同意和同意體驗的詳細資訊，請參閱 [整合應用程式與 Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
+如需有關 Azure 中使用者同意和同意體驗的詳細資訊，請參閱 [整合應用程式與 Azure Active Directory](../develop/quickstart-register-app.md)。
 
 ## <a name="related-articles"></a>相關文章
 * [使用 Azure AD 應用程式 Proxy 啟用對內部部署應用程式的安全遠端存取](application-proxy.md)
 * [使用 Azure AD 管理應用程式的存取](what-is-access-management.md)
-

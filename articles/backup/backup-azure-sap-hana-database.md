@@ -3,12 +3,12 @@ title: 使用 Azure 備份將 SAP Hana 資料庫備份至 Azure
 description: 在本文中，您將了解如何使用 Azure 備份服務，將 SAP Hana 資料庫備份至 Azure 虛擬機器。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: a0a03a0d126845b1beba6d247f82950b0a9a35ab
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 28c9716bfb2dd0a6ac380d9ffd6dcd7fd5eb4978
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172982"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649429"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>將 SAP Hana 資料庫備份到 Azure VM
 
@@ -28,7 +28,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 >從 2020 年 8 月 1 日起，適用於 RHEL 的 SAP Hana 備份 (7.4、7.6、7.7 和 8.1) 已正式推出。
 
 >[!NOTE]
->**Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 虛刪除**現在已有預覽版。<br>
+>**Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 虛刪除** 現在已有預覽版。<br>
 >若要註冊預覽，請在這裡寫信 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -169,7 +169,12 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
     ![差異備份原則](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > 目前不支援增量備份。
+    > 公開預覽現在支援增量備份。 您可以選擇差異或增量做為每日備份，但不能同時選擇兩者。
+7. 在 [ **增量備份原則**] 中，選取 [ **啟用** ] 以開啟頻率和保留控制項。
+    * 您一天最多可以觸發一次增量備份。
+    * 增量備份最多可保留180天。 如果您需要保留更久，則必須使用完整備份。
+
+    ![增量備份原則](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
 7. 選取 [確定]  以儲存原則，然後返回主要 [備份原則]  功能表。
 8. 選取 [記錄備份]，以新增交易記錄備份原則。

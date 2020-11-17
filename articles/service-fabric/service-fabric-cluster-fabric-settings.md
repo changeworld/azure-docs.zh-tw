@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055115"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648220"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -243,7 +243,7 @@ ms.locfileid: "89055115"
 |QuorumLossWaitDuration | 時間 (秒)，預設值為 MaxValue |靜態|以秒為單位指定時間範圍。 FaultAnalysisService 的 QuorumLossWaitDuration。 |
 |ReplicaDropWaitDurationInSeconds|整數，預設值為 600|靜態|呼叫了資料遺失 API 時，便會使用此參數。 此參數會控制在系統內部叫用移除複本之後，系統要等候多久才會捨棄複本。 |
 |ReplicaRestartWaitDuration |時間 (秒)，預設值為 60 分鐘|靜態|以秒為單位指定時間範圍。 FaultAnalysisService 的 ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration| 時間 (秒)，預設值為 (60*24*7) 分鐘 |靜態|以秒為單位指定時間範圍。 FaultAnalysisService 的 StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration| 時間 (秒)，預設值為 (60 *24* 7) 分鐘 |靜態|以秒為單位指定時間範圍。 FaultAnalysisService 的 StandByReplicaKeepDuration。 |
 |StoredActionCleanupIntervalInSeconds | 整數，預設值為 3600 |靜態|這是存放區的清除頻率。 只有處於終止狀態且在至少 CompletedActionKeepDurationInSeconds 秒前完成的動作會遭到移除。 |
 |StoredChaosEventCleanupIntervalInSeconds | 整數，預設值為 3600 |靜態|這是會稽核存放區是否要清除的頻率，如果事件數目超過 30000，就會開始清除作業。 |
 |TargetReplicaSetSize |整數，預設值為 0 |靜態|NOT_PLATFORM_UNIX_START。FaultAnalysisService 的 TargetReplicaSetSize。 |
@@ -423,14 +423,14 @@ ms.locfileid: "89055115"
 |AzureStorageMaxConnections | 整數，預設值為 5000 |動態|Azure 儲存體的並行連線數目上限。 |
 |AzureStorageMaxWorkerThreads | 整數，預設值為 25 |動態|平行背景工作執行緒的數目上限。 |
 |AzureStorageOperationTimeout | 時間 (秒)，預設值為 6000 |動態|以秒為單位指定時間範圍。 可供 xstore 作業完成的逾時值。 |
-|CleanupApplicationPackageOnProvisionSuccess|布林值，預設值為 FALSE |動態|在成功佈建時，啟用或停用應用程式套件的自動清除。
-
-*最佳做法是使用 `true` 。* | |CleanupUnusedApplicationTypes |Bool，預設值為 FALSE |動態 |如果啟用此設定，可讓自動取消註冊未使用的應用程式類型版本，略過最新三個未使用的版本，藉此修剪映射存放區所佔用的磁碟空間。 自動清除將會在該特定應用程式類型的成功佈建結束時觸發，而且所有應用程式類型也會一天定期執行一次。 可使用參數 "MaxUnusedAppTypeVersionsToKeep" 設定要略過的未使用版本數目。 
-
-*最佳做法是使用 `true` 。*
-| |DisableChecksumValidation |Bool，預設值為 false |靜態 |這種設定可讓我們在應用程式布建期間啟用或停用總和檢查碼驗證。 | |DisableServerSideCopy |Bool，預設值為 false |靜態 |此設定會在應用程式布建期間，啟用或停用 ImageStore 上應用程式套件的伺服器端複本。 | |ImageCachingEnabled |Bool，預設值為 true |靜態 |此設定可讓我們啟用或停用快取。 | |ImageStoreConnectionString |SecureString |靜態 |ImageStore 根目錄的連接字串。 | |ImageStoreMinimumTransferBPS |整數，預設值為 1024 |動態 |叢集與 ImageStore 之間的最小傳輸速率。 此值可用來決定外部 ImageStore 的存取逾時。 只有在叢集和 ImageStore 之間的延遲偏高時才需變更此值，以允許叢集有更多時間可從外部 ImageStore 進行下載。 | |MaxUnusedAppTypeVersionsToKeep |整數，預設值為 3 |動態 |此設定會定義要略過清除的未使用應用程式類型版本數目。 只有在啟用參數 CleanupUnusedApplicationTypes 時，此參數才適用。
-
-*一般最佳作法是使用預設的 (`3`) 。*|
+|CleanupApplicationPackageOnProvisionSuccess|布林值，預設值為 FALSE |動態|在成功佈建時，啟用或停用應用程式套件的自動清除。<br/> *最佳做法是使用 `true` 。*
+|CleanupUnusedApplicationTypes|布林值，預設值為 FALSE |動態|此組態若啟用，允許自動取消註冊未使用的應用程式類型版本，略過最新三個未使用的版本，藉以修剪映像存放區所佔用的磁碟空間。 自動清除將會在該特定應用程式類型的成功佈建結束時觸發，而且所有應用程式類型也會一天定期執行一次。 可使用參數 "MaxUnusedAppTypeVersionsToKeep" 設定要略過的未使用版本數目。 <br/> *最佳做法是使用 `true` 。*
+|DisableChecksumValidation | 布林值，預設值為 false |靜態| 此組態可讓我們在應用程式佈建期間啟用或停用總和檢查碼驗證。 |
+|DisableServerSideCopy | 布林值，預設值為 false |靜態|此組態會在應用程式佈建期間，啟用或停用 ImageStore 上應用程式套件的伺服器端複製作業。 |
+|ImageCachingEnabled | 布林值，預設值為 true |靜態|此組態可讓我們啟用或停用快取。 |
+|ImageStoreConnectionString |SecureString |靜態|ImageStore 根目錄的連接字串。 |
+|ImageStoreMinimumTransferBPS | 整數，預設值為 1024 |動態|叢集與 ImageStore 之間的傳輸速率下限。 此值可用來決定外部 ImageStore 的存取逾時。 只有在叢集和 ImageStore 之間的延遲偏高時才需變更此值，以允許叢集有更多時間可從外部 ImageStore 進行下載。 |
+|MaxUnusedAppTypeVersionsToKeep | 整數，預設值為 3 |動態|此組態會定義要略過清除的未使用應用程式類型版本數目。 只有在啟用參數 CleanupUnusedApplicationTypes 時，此參數才適用。 <br/>*一般最佳作法是使用預設的 (`3`) 。小於1的值無效。*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -890,7 +890,7 @@ ms.locfileid: "89055115"
 |PlacementConstraints | 字串，預設值為 "" |靜態| UpgradeOrchestrationService 的 PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒)，預設值為 MaxValue |靜態| 以秒為單位指定時間範圍。 UpgradeOrchestrationService 的 QuorumLossWaitDuration。 |
 |ReplicaRestartWaitDuration | 時間 (秒)，預設值為 60 分鐘|靜態| 以秒為單位指定時間範圍。 UpgradeOrchestrationService 的 ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration | 時間 (秒)，預設值為 60*24*7 分鐘 |靜態| 以秒為單位指定時間範圍。 UpgradeOrchestrationService 的 StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration | 時間 (秒)，預設值為 60 *24* 7 分鐘 |靜態| 以秒為單位指定時間範圍。 UpgradeOrchestrationService 的 StandByReplicaKeepDuration。 |
 |TargetReplicaSetSize |整數，預設值為 0 |靜態 |UpgradeOrchestrationService 的 TargetReplicaSetSize。 |
 |UpgradeApprovalRequired | 布林值，預設值為 false | 靜態|讓程式碼升級作業需要系統管理員核准後才能繼續的設定。 |
 

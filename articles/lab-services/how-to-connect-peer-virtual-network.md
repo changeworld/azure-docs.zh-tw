@@ -3,12 +3,12 @@ title: 連線到 Azure Lab Services 中的對等網路 | Microsoft Docs
 description: 了解如何將實驗室網路與其他網路連線，成為對等項目。 例如，在 Azure 中將內部部署組織/大學網路與實驗室的虛擬網路連線。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 20e47113d5c2439c9c8ea355288442b5f41d90ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445826"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647982"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>將實驗室的網路與 Azure Lab Services 中的對等虛擬網路連線
 
@@ -26,7 +26,7 @@ ms.locfileid: "85445826"
 某些內部部署網路會透過 [ExpressRoute](../expressroute/expressroute-introduction.md) 或[虛擬網路閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)連線到 Azure 虛擬網路。 這些服務必須在 Azure Lab Services 外部設定。 若要深入瞭解如何使用 ExpressRoute 將內部部署網路連線到 Azure，請參閱 [ExpressRoute 概觀](../expressroute/expressroute-introduction.md)。 如需使用虛擬網路閘道進行內部部署連線，閘道、指定的虛擬網路和實驗室帳戶必須全都位於相同的區域中。
 
 > [!NOTE]
-> 建立將與實驗室帳戶對等互連的 Azure 虛擬網路時，請務必了解虛擬網路的區域對於教室實驗室的建立位置有何影響。  如需詳細資訊，請參閱系統管理員指南的[區域\位置](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)一節。
+> 建立將與實驗室帳戶對等互連的 Azure 虛擬網路時，請務必了解虛擬網路的區域對於教室實驗室的建立位置有何影響。  如需詳細資訊，請參閱系統管理員指南的[區域\位置](./administrator-guide.md#regionslocations)一節。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在建立實驗室帳戶時設定
 
@@ -36,9 +36,9 @@ ms.locfileid: "85445826"
 
 ### <a name="address-range"></a>位址範圍
 
-您也可選擇為實驗室的虛擬機器提供 [位址範圍]。  只有在針對實驗室啟用**對等虛擬網路**時，才會套用**位址範圍**屬性。 如果已提供位址範圍，實驗室帳戶之下的所有虛擬機器將會建立於該位址範圍內。 此位址範圍應採用 CIDR 標記法 (例如，10.20.0.0/20)，而且不會與任何現有的位址範圍重疊。  在提供位址範圍時，請務必考慮將會建立的「實驗室」數目，並提供位址範圍來容納該數量。 Lab Services 假設每個實驗室最多有 512 部虛擬機器。  例如，具有 '/23' 的 IP 範圍只能建立一個實驗室。  具有 '/21' 的範圍將允許建立四個實驗室。
+您也可選擇為實驗室的虛擬機器提供 [位址範圍]。  只有在針對實驗室啟用 **對等虛擬網路** 時，才會套用 **位址範圍** 屬性。 如果已提供位址範圍，實驗室帳戶之下的所有虛擬機器將會建立於該位址範圍內。 此位址範圍應採用 CIDR 標記法 (例如，10.20.0.0/20)，而且不會與任何現有的位址範圍重疊。  在提供位址範圍時，請務必考慮將會建立的「實驗室」數目，並提供位址範圍來容納該數量。 Lab Services 假設每個實驗室最多有 512 部虛擬機器。  例如，具有 '/23' 的 IP 範圍只能建立一個實驗室。  具有 '/21' 的範圍將允許建立四個實驗室。
 
-如果未指定**位址範圍**，則在建立要與您的虛擬網路對等互連的虛擬網路時，Lab Services 會使用 Azure 提供的預設位址範圍。  範圍通常類似於 10.x.0.0/16。  這可能會導致 IP 範圍重疊，因此務必在實驗室設定中指定位址範圍，或檢查要對等互連之虛擬網路的位址範圍。
+如果未指定 **位址範圍**，則在建立要與您的虛擬網路對等互連的虛擬網路時，Lab Services 會使用 Azure 提供的預設位址範圍。  範圍通常類似於 10.x.0.0/16。  這可能會導致 IP 範圍重疊，因此務必在實驗室設定中指定位址範圍，或檢查要對等互連之虛擬網路的位址範圍。
 
 > [!NOTE]
 > 如果實驗室帳戶已對等互連至虛擬網路，但 IP 位址範圍太窄，則實驗室建立可能會失敗。 如果實驗室帳戶中有太多實驗室 (每個實驗室都使用 512 個位址)，則位址範圍中的空間可能不足。 
@@ -47,7 +47,7 @@ ms.locfileid: "85445826"
 
 ## <a name="configure-after-the-lab-account-is-created"></a>在建立實驗室帳戶後進行設定
 
-如果您並未在建立實驗室帳戶時設定對等網路，則可從 [實驗室帳戶] 頁面的 [實驗室設定] 索引標籤啟用相同的屬性。 對此設定所做的變更，只會套用至變更後所建立的實驗室。 如您在映像中所見，您可以在實驗室帳戶中啟用或停用實驗室的**對等互連虛擬網路**。
+如果您並未在建立實驗室帳戶時設定對等網路，則可從 [實驗室帳戶] 頁面的 [實驗室設定] 索引標籤啟用相同的屬性。 對此設定所做的變更，只會套用至變更後所建立的實驗室。 如您在映像中所見，您可以在實驗室帳戶中啟用或停用實驗室的 **對等互連虛擬網路**。
 
 ![在實驗室建立後啟用或停用 VNet 對等互連](./media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png)
 

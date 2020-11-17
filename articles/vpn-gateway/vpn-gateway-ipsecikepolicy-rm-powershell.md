@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392645"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649257"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>設定 S2S VPN 或 VNet 對 VNet 連線的 IPsec/IKE 原則
 
@@ -34,9 +34,8 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 
 > [!IMPORTANT]
 > 1. 請注意，IPsec/IKE 原則僅適用於下列閘道 SKU：
->    * ***VpnGw1、VpnGw2、VpnGw3*** (路由式)
->    * ***Standard*** 和 ***HighPerformance*** (路由式)
-> 2. 每個給定的連線只能指定***一個***原則組合。
+>    * ***VpnGw1、VpnGw2、VpnGw3** _ (以路由為基礎的) _ ***標準** _ 和 _*_HighPerformance_*_ (以路由為基礎的) 
+> 2. 您只能為指定的連接指定 _*_一個_*_ 原則組合。
 > 3. 您必須同時對 IKE (主要模式) 和 IPsec (快速模式) 指定所有的演算法和參數。 系統不允許只指定一部分原則。
 > 4. 請確認 VPN 裝置廠商規格，確保內部部署 VPN 裝置支援原則。 如果原則不相容，則無法建立 S2S 或 VNet 對 VNet 連線。
 
@@ -56,7 +55,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 
 下表列出可供客戶設定的支援密碼編譯演算法和金鑰強度：
 
-| **IPsec/IKEv2**  | **選項**    |
+| _ *IPsec/IKEv2**  | **選項**    |
 | ---  | --- 
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5  |
@@ -117,7 +116,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 
 ### <a name="before-you-begin"></a><a name="before"></a>開始之前
 
-* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * 您必須安裝 Azure Resource Manager PowerShell Cmdlet。 如需安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>步驟1 - 建立虛擬網路、VPN 閘道和區域網路閘道
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.連接至您的訂用帳戶並建立新的資源群組
 
-請確定您切換為 PowerShell 模式以使用資源管理員 Cmdlet。 如需詳細資訊，請參閱 [搭配使用 Windows PowerShell 與 Resource Manager](../powershell-azure-resource-manager.md)。
+請確定您切換為 PowerShell 模式以使用資源管理員 Cmdlet。 如需詳細資訊，請參閱 [搭配使用 Windows PowerShell 與 Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md)。
 
 開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776437"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647965"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>如何使用 Azure 實驗室服務中的共用資源建立實驗室
 
@@ -38,12 +38,12 @@ ms.locfileid: "91776437"
 授權伺服器必須連線到對等互連至實驗室的虛擬網路，因此授權伺服器必須位於與實驗室帳戶相同的區域中。
 
 #### <a name="static-private-ip-and-mac-address"></a>靜態私人 IP 和 MAC 位址
-依預設，虛擬機器有一個動態私人 ip，在 [您設定任何軟體之前，請先將私人 ip 設定為靜態](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal)。 這會將私人 IP 和 MAC 位址設定為靜態。  
+依預設，虛擬機器有一個動態私人 ip，在 [您設定任何軟體之前，請先將私人 ip 設定為靜態](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 這會將私人 IP 和 MAC 位址設定為靜態。  
 
 #### <a name="control-access"></a>控制存取權
 控制授權伺服器的存取是關鍵的。  VM 設定完成之後，仍需要進行維護、疑難排解和更新的存取。  以下是一些不同的方法。
-- [設定及時 (JIT) 在 Azure 資訊安全中心內的存取。](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
-- [設定網路安全性群組以限制存取。](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [設定及時 (JIT) 在 Azure 資訊安全中心內的存取。](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [設定網路安全性群組以限制存取。](../virtual-network/network-security-groups-overview.md)
 - [設定防禦以允許對授權伺服器的安全存取。](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>實驗室帳戶

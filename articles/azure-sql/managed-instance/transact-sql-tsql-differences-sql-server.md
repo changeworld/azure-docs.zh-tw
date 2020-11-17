@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506374"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649308"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ SQL 受控執行個體無法存取檔案共用及 Windows 資料夾，因此適�
 
 請參閱 [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) 和 [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql)。 
  
-因應 **措施：不** 是建立憑證的備份並還原備份、 [取得憑證二進位內容和私密金鑰、將其儲存為 .sql 檔案，以及從二進位檔建立](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)：
+因應 **措施：不** 是建立憑證的備份並還原備份、[取得憑證二進位內容和私密金鑰、將其儲存為 .sql 檔案，以及從二進位檔建立](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)：
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,7 +153,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - 不支援將對應至 Azure AD 群組的 Azure AD 登入設定為資料庫擁有者。
 - 支援使用其他 Azure AD 主體模擬 Azure AD 伺服器層級主體，例如 [EXECUTE as](/sql/t-sql/statements/execute-as-transact-sql) 子句。 EXECUTE AS 限制如下：
 
-  - 當名稱與登入名稱不同時，不支援 Azure AD 使用者的 EXECUTE AS USER。 例如，當使用者從 LOGIN [] 的 CREATE USER [myAadUser] 語法建立時，就會 john@contoso.com 透過 EXEC （user = _myAadUser_ ）嘗試模擬。 當您從 Azure AD 伺服器主體 (登入) 建立 **使用者** 時，請將 user_name 指定為與 **登** 入相同的 login_name。
+  - 當名稱與登入名稱不同時，不支援 Azure AD 使用者的 EXECUTE AS USER。 例如，當使用者從 LOGIN [] 的 CREATE USER [myAadUser] 語法建立時，就會 john@contoso.com 透過 EXEC （user = _myAadUser_）嘗試模擬。 當您從 Azure AD 伺服器主體 (登入) 建立 **使用者** 時，請將 user_name 指定為與 **登** 入相同的 login_name。
   - 只有屬於角色的 SQL Server 層級主體 (登入) `sysadmin` 可以執行以 Azure AD 主體為目標的下列作業：
 
     - EXECUTE AS USER
@@ -517,12 +517,11 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 ### <a name="failover-groups"></a>容錯移轉群組
 系統資料庫不會複寫至容錯移轉群組中的次要實例。 因此，除非在次要資料庫上以手動方式建立物件，否則不可能在次要實例上相依于系統資料庫中物件的案例。
 
-### <a name="failover-groups"></a>容錯移轉群組
-系統資料庫不會複寫至容錯移轉群組中的次要實例。 因此，除非在次要資料庫上以手動方式建立物件，否則不可能在次要實例上相依于系統資料庫中物件的案例。
-
 ### <a name="tempdb"></a>Tempdb
-
-一般用途層上的最大檔案大小 `tempdb` 不可超過每個核心 24 GB。 `tempdb`商務關鍵層的最大大小受限於 SQL 受控執行個體儲存體大小。 `Tempdb` 一般用途層的記錄檔大小限制為 120 GB。 如果查詢的每個核心需要 24 GB 以上， `tempdb` 或產生超過 120 GB 的記錄資料，則可能會傳回錯誤。
+- 一般用途層上的最大檔案大小 `tempdb` 不可超過每個核心 24 GB。 `tempdb`商務關鍵層的最大大小受限於 SQL 受控執行個體儲存體大小。 `Tempdb` 一般用途層的記錄檔大小限制為 120 GB。 如果查詢的每個核心需要 24 GB 以上， `tempdb` 或產生超過 120 GB 的記錄資料，則可能會傳回錯誤。
+- `Tempdb` 一律會分割成12個資料檔案：1個主要，也稱為 master、資料檔案和11個非主要資料檔案。 無法變更檔案結構，也無法將新檔案加入至 `tempdb` 。 
+- 不支援[記憶體優化的 `tempdb` 中繼資料](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)，這是新的 SQL Server 2019 記憶體內部資料庫功能。
+- 在模型資料庫中建立的物件無法在 `tempdb` 重新開機或容錯移轉之後自動建立，因為不 `tempdb` 會從複寫的模型資料庫取得其初始物件清單。 
 
 ### <a name="msdb"></a>MSDB
 

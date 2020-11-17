@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533515"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648016"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 筆記本設定實驗室來教授資料科學
 本文概述如何在實驗室服務中設定範本虛擬機器 (VM) ，其中包含指導學生如何使用 [Jupyter 筆記本](http://jupyter-notebook.readthedocs.io/)的工具，以及學生如何在其虛擬機器 (vm) 上連線至其筆記本。
@@ -20,7 +20,7 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
 ## <a name="set-up-the-lab"></a>設定實驗室
 
 ### <a name="lab-configuration"></a>實驗室組態
-若要設定此實驗室，您需要存取 Azure 訂用帳戶和實驗室帳戶。 與貴組織的系統管理員討論，查看您是否可以存取現有的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+若要設定此實驗室，您需要存取 Azure 訂用帳戶和實驗室帳戶。 與貴組織的系統管理員討論，查看您是否可以存取現有的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/)，再開始進行。
 
 擁有 Azure 訂用帳戶之後，請遵循教學課程： [設定實驗室帳戶](tutorial-setup-lab-account.md)中的指示，在 Azure 實驗室服務中建立新的實驗室帳戶。 您也可以使用現有的實驗室帳戶。
 
@@ -57,7 +57,7 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
 如果您想要使用 Azure Machine Learning 的範例筆記本，請參閱 [如何設定具有 Jupyter 筆記本的環境](../machine-learning/how-to-configure-environment.md#jupyter)。 
 
 ### <a name="optional-enable-graphical-desktop-for-linux"></a>選擇性：啟用適用于 Linux 的圖形桌面 
-**資料科學虛擬機器– Ubuntu**映射已布建 X2GO 伺服器，並已準備好接受用戶端連線。 設定範本 VM 時，不需要進一步的步驟。 
+**資料科學虛擬機器– Ubuntu** 映射已布建 X2GO 伺服器，並已準備好接受用戶端連線。 設定範本 VM 時，不需要進一步的步驟。 
 
 ### <a name="publish-the-template-machine"></a>發佈範本電腦
 當您發行範本時，每個註冊至實驗室的學生都會取得範本 VM 的複本，其中包含您已在其中設定的所有本機工具和筆記本。
@@ -86,7 +86,7 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
 下列各節提供這些連接到 Jupyter 筆記本的方式詳細資料。 
 
 #### <a name="ssh-to-virtual-machine"></a>透過 SSH 連線到虛擬機器
-學生可以從終端機會話透過 SSH 連線至其 Linux Vm。 如需詳細步驟，請參閱 [如何存取教室實驗室](how-to-use-classroom-lab.md)。 如果他們使用 Windows 用戶端電腦，則需要從命令提示字元下載 [PuTTY](https://www.putty.org/) 或 [在 Windows 中啟用 OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) ，以啟用 ssh 用戶端。 
+學生可以從終端機會話透過 SSH 連線至其 Linux Vm。 如需詳細步驟，請參閱 [如何存取教室實驗室](how-to-use-classroom-lab.md)。 如果他們使用 Windows 用戶端電腦，則需要從命令提示字元下載 [PuTTY](https://www.putty.org/) 或 [在 Windows 中啟用 OpenSSH](/windows-server/administration/openssh/openssh_install_firstuse) ，以啟用 ssh 用戶端。 
 
 1.  啟動 VM。
 2.  VM 執行之後，請按一下 **[連線]**，這會顯示一個對話方塊，其中提供 SSH 命令字串，如下列範例所示：
@@ -100,7 +100,7 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
 一旦學生連線至 Vm 之後，他們就可以在本機存取和執行 Jupyter 筆記本。
 
 #### <a name="x2go-to-virtual-machine"></a>X2Go 至虛擬機器
-**資料科學虛擬機器– Ubuntu**映射已布建 X2GO 伺服器，並已準備好接受用戶端連線。 若要連接到 Linux 電腦的圖形化桌面，學生必須遵循下列一次性步驟，在其用戶端電腦上設定 X2Go：
+**資料科學虛擬機器– Ubuntu** 映射已布建 X2GO 伺服器，並已準備好接受用戶端連線。 若要連接到 Linux 電腦的圖形化桌面，學生必須遵循下列一次性步驟，在其用戶端電腦上設定 X2Go：
 
 1.  下載並安裝適用于您用戶端平臺的 [X2Go 用戶端](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 。
 2.  在 [Azure 實驗室服務入口網站](https://labs.azure.com)中，確定您要連接的 Linux VM 已啟動。
@@ -113,10 +113,10 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
 5.  在 [ **會話喜好** 設定] 窗格中填入下列值：
     - **會話名稱**：它可以是您想要的任何名稱，但建議您使用實驗室 VM 的名稱。
      - **主機**： `ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
-     - **登**入： student
+     - **登** 入： student
      - **SSH 埠**：12345
      - **會話類型**： XFCE
-6. 選取 [確定]  。 
+6. 選取 [確定]。 
 
     > [!NOTE]
      > 建立新的 X2Go 會話時，請務必使用 SSH 埠， **而不** 是 RDP 埠。
@@ -139,7 +139,7 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
     ```bash
      ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
      ```
-3. 在您的本機電腦上，啟動終端機或命令提示字元，並將 SSH 連接字串複製到其中。 然後，將新增 `-L 8888:localhost:8888` 至命令字串，以在埠**tunnel**之間建立通道。 最終字串看起來應該像這樣：
+3. 在您的本機電腦上，啟動終端機或命令提示字元，並將 SSH 連接字串複製到其中。 然後，將新增 `-L 8888:localhost:8888` 至命令字串，以在埠 **tunnel** 之間建立通道。 最終字串看起來應該像這樣：
 
     ```bash
      ssh –L 8888:localhost:8888 -p 12345 student@ml-lab-b720853e-570f-49ac-9cb2-bd0bd2aeec35.eastus.cloudapp.azure.com

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3fc54829be301c063440bd3508472287b6db265
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648296"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 新增或移除 Azure 角色指派
 
@@ -27,12 +27,12 @@ ms.locfileid: "86146652"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要新增或移除角色指派，您必須具有：
 
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
-- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [的 PowerShell](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [的 PowerShell](../cloud-shell/overview.md)
 
 ## <a name="get-object-ids"></a>取得物件識別碼
 
@@ -58,7 +58,7 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 
 ### <a name="application"></a>應用程式
 
-若要取得應用程式) 所使用的 Azure AD 服務主體 (身分識別的物件識別碼，您可以使用 [>get-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
+若要取得應用程式) 所使用的 Azure AD 服務主體 (身分識別的物件識別碼，您可以使用 [>get-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 對於服務主體，請使用物件識別碼，而 **不是** 應用程式識別碼。
 
 ```azurepowershell
 Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
@@ -98,7 +98,7 @@ CanDelegate        : False
 有幾個時候角色名稱可能會變更，例如：
 
 - 您正在使用自己的自訂角色，並決定變更名稱。
-- 您使用的預覽角色在名稱中有 ** (預覽) ** 。 釋放角色時，就會重新命名角色。
+- 您使用的預覽角色在名稱中有 **(預覽)** 。 釋放角色時，就會重新命名角色。
 
 > [!IMPORTANT]
 > 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
@@ -112,7 +112,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍的*alain \@ example.com*使用者。 若要取得唯一角色識別碼，您可以使用 [>get-azroledefinition](/powershell/module/az.resources/get-azroledefinition) ，或查看 [Azure 內建角色](built-in-roles.md)。
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給 *醫藥-sales* 資源群組範圍的 *alain \@ example.com* 使用者。 若要取得唯一角色識別碼，您可以使用 [>get-azroledefinition](/powershell/module/az.resources/get-azroledefinition) ，或查看 [Azure 內建角色](built-in-roles.md)。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -207,7 +207,7 @@ CanDelegate        : False
 
 在 Azure RBAC 中，若要移除存取權，您可以使用 [>new-azroleassignment](/powershell/module/az.resources/remove-azroleassignment)移除角色指派。
 
-下列範例會從*醫藥-sales*資源群組上的*alain \@ Example.com*使用者移除「*虛擬機器參與者*」角色指派：
+下列範例會從 *醫藥-sales* 資源群組上的 *alain \@ Example.com* 使用者移除「*虛擬機器參與者*」角色指派：
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -227,7 +227,7 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 
 如果您收到錯誤訊息：「提供的資訊未對應至角色指派」，請確定您也指定了 `-Scope` 或 `-ResourceGroupName` 參數。 如需詳細資訊，請參閱 [疑難排解 AZURE RBAC](troubleshooting.md#role-assignments-with-identity-not-found)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure PowerShell 列出 Azure 角色指派](role-assignments-list-powershell.md)
 - [教學課程：使用 Azure PowerShell 為群組授與 Azure 資源的存取權](tutorial-role-assignments-group-powershell.md)

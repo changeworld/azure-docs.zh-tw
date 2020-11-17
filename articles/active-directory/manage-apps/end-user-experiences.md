@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605119"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649223"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中的應用程式使用者體驗
 
@@ -37,13 +37,13 @@ Azure Active Directory (Azure AD) 提供幾種可自訂的方式，來對您組�
 
 我的應用程式與 Azure 入口網站不同，不需要使用者擁有 Azure 訂用帳戶或 Microsoft 365 訂用帳戶。
 
-如需有關 Azure AD 我的應用程式的詳細資訊，請參閱 [我的應用程式的簡介](../user-help/active-directory-saas-access-panel-introduction.md)。
+如需有關 Azure AD 我的應用程式的詳細資訊，請參閱 [我的應用程式的簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365 應用程式啟動器
 
 針對已部署 Microsoft 365 的組織，透過 Azure AD 指派給使用者的應用程式也會出現在 Office 365 入口網站中 [https://portal.office.com/myapps](https://portal.office.com/myapps) 。 這可讓組織中的使用者輕鬆且方便地啟動其應用程式，而不需要使用第二個入口網站，而且是使用 Microsoft 365 之組織的建議應用程式啟動解決方案。
 
-如需有關 Office 365 應用程式啟動程式的詳細資訊，請參閱 [讓您的應用程式出現在 Office 365 應用程式啟動程式中](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)。
+如需有關 Office 365 應用程式啟動程式的詳細資訊，請參閱 [讓您的應用程式出現在 Office 365 應用程式啟動程式中](/previous-versions/office/office-365-api/)。
 
 ## <a name="direct-sign-on-to-federated-apps"></a>直接登入同盟應用程式
 

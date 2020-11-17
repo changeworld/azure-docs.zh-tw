@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375003"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647710"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中刪除租用戶
 
@@ -52,7 +52,7 @@ ms.locfileid: "92375003"
 
 ## <a name="if-you-cant-delete-the-organization"></a>如果您無法刪除組織
 
-當您設定 Azure AD 組織時，也可能為組織啟用了以授權為基礎的訂用帳戶，例如 Azure AD Premium P2、Microsoft 365 商務版 Standard 或 Enterprise Mobility + Security E5。 為了避免意外的資料遺失，您在訂用帳戶完全刪除之前，無法刪除組織。 訂用帳戶的狀態必須為**取消佈建**，組織才能刪除。 **過期**或**取消**的訂用帳戶會進入**停用**狀態，而最終階段為**取消佈建**狀態。
+當您設定 Azure AD 組織時，也可能為組織啟用了以授權為基礎的訂用帳戶，例如 Azure AD Premium P2、Microsoft 365 商務版 Standard 或 Enterprise Mobility + Security E5。 為了避免意外的資料遺失，您在訂用帳戶完全刪除之前，無法刪除組織。 訂用帳戶的狀態必須為 **取消佈建**，組織才能刪除。 **過期** 或 **取消** 的訂用帳戶會進入 **停用** 狀態，而最終階段為 **取消佈建** 狀態。
 
 若要瞭解試用版 Microsoft 365 訂用帳戶到期的情況 (不包括付費夥伴/CSP、Enterprise 合約或大量授權) ，請參閱下表。 如需 Microsoft 365 資料保留和訂閱生命週期的詳細資訊，請參閱 [當我的商務用 Microsoft 365 結束時，我的資料和存取權會發生什麼情況？](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)。 
 
@@ -65,11 +65,11 @@ ms.locfileid: "92375003"
 
 ## <a name="delete-a-subscription"></a>刪除訂用帳戶
 
-您可以使用 Microsoft 365 系統管理中心讓訂用帳戶進入**取消佈建**狀態，以在 3 天內刪除。
+您可以使用 Microsoft 365 系統管理中心讓訂用帳戶進入 **取消佈建** 狀態，以在 3 天內刪除。
 
 1. 使用具備組織全域管理員身分的帳戶來登入 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。 若您嘗試刪除初始預設網域為 contoso.onmicrosoft.com 的 “Contoso” 組織，請使用 admin@contoso.onmicrosoft.com 這樣的 UPN 登入。
 
-2. 藉由確認已啟用**嘗試新的系統管理中心**切換，預覽新的 Microsoft 365 系統管理中心。
+2. 藉由確認已啟用 **嘗試新的系統管理中心** 切換，預覽新的 Microsoft 365 系統管理中心。
 
    ![預覽新的 M365 系統管理中心體驗](./media/directory-delete-howto/preview-toggle.png)
 
@@ -117,7 +117,7 @@ Deleted | 資料已刪除 | 使用者無法存取自助式註冊產品、檔案�
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>如何刪除 Azure 入口網站中的自助式註冊產品？
 
-您可以讓自助式註冊產品 (例如 Microsoft Power BI 或 Azure Rights Management Services) 進入**刪除**狀態，以在 Azure AD 入口網站中立即刪除。
+您可以讓自助式註冊產品 (例如 Microsoft Power BI 或 Azure Rights Management Services) 進入 **刪除** 狀態，以在 Azure AD 入口網站中立即刪除。
 
 1. 使用組織中全域系統管理員身分的帳戶來登入 [Azure AD 系統管理中心](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。 若您嘗試刪除初始預設網域為 contoso.onmicrosoft.com 的 “Contoso” 組織，請使用 admin@contoso.onmicrosoft.com 這樣的 UPN 登入。
 
@@ -133,7 +133,7 @@ Deleted | 資料已刪除 | 使用者無法存取自助式註冊產品、檔案�
 
     ![顯示 [授權-自助式註冊產品] 頁面的螢幕擷取畫面，其中顯示 [正在刪除] 通知。](./media/directory-delete-howto/progress-message.png)
 
-5. 現在，自助式註冊產品狀態已變更為**已刪除**。 當您重新整理頁面時，產品應該會從 [自助式註冊產品] 頁面中移除。  
+5. 現在，自助式註冊產品狀態已變更為 **已刪除**。 當您重新整理頁面時，產品應該會從 [自助式註冊產品] 頁面中移除。  
 
     ![顯示 [授權-自助式註冊產品] 頁面的螢幕擷取畫面，其右側會顯示 [已刪除自助式註冊產品] 窗格。](./media/directory-delete-howto/product-deleted.png)
 

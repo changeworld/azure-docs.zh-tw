@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825899"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649563"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 遠端存取應用程式的安全性考量
 
@@ -49,7 +49,7 @@ Azure AD 應用程式 Proxy 依賴 Azure AD Security Token Service (STS) 來進�
 
 [條件式存取](../conditional-access/concept-conditional-access-cloud-apps.md)可讓您定義限制，以規定如何允許使用者存取您的應用程式。 您可以位置、驗證強度和使用者風險狀況作為基礎，來建立限制登入的原則。
 
-您也可以使用條件式存取來設定 Multi-Factor Authentication 原則，讓使用者驗證多一層安全性。 此外，您的應用程式也可以透過 Azure AD 條件式存取來路由至 Microsoft Cloud App Security，以透過[存取](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[工作階段](https://docs.microsoft.com/cloud-app-security/session-policy-aad)原則提供即時監視和控制
+您也可以使用條件式存取來設定 Multi-Factor Authentication 原則，讓使用者驗證多一層安全性。 此外，您的應用程式也可以透過 Azure AD 條件式存取來路由至 Microsoft Cloud App Security，以透過[存取](/cloud-app-security/access-policy-aad)和[工作階段](/cloud-app-security/session-policy-aad)原則提供即時監視和控制
 
 ### <a name="traffic-termination"></a>流量終止
 
@@ -69,7 +69,7 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 取得最新的安全性保護。
 
-因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)，其中包含來自 Microsoft Security Response Center 和 Digital Crimes Unit 的資料。 我們共同主動識別遭入侵的帳戶，並提供來自高風險登入的防護。我們將許多因素納入考量，以判斷哪些登入嘗試具有高度風險。 這些因素包括標記受感染的裝置、匿名網路，以及非典型或假位置。
+因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)，其中包含來自 Microsoft Security Response Center 和 Digital Crimes Unit 的資料。 我們共同主動識別遭入侵的帳戶，並提供來自高風險登入的防護。我們將許多因素納入考量，以判斷哪些登入嘗試具有高度風險。 這些因素包括標記受感染的裝置、匿名網路，以及非典型或假位置。
 
 這些報告和事件中有許多已可透過 API 與安全性資訊和事件管理 (SIEM) 系統整合。
 
@@ -107,8 +107,8 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 
 第一次設定連接器時，會發生下列流程事件：
 
-1. 連接器註冊服務會做為連接器安裝的一部分。 系統會提示使用者輸入其 Azure AD 系統管理員認證。 接著會向 Azure AD 應用程式 Proxy 服務顯示此驗證的必要權杖。
-2. 應用程式 Proxy 服務會評估權杖。 它會檢查使用者在租用戶是否為公司系統管理員。 如果使用者不是系統管理員，就會終止流程。
+1. 連接器註冊服務會做為連接器安裝的一部分。 系統會提示使用者輸入其 Azure AD 系統管理員認證。  接著會向 Azure AD 應用程式 Proxy 服務顯示此驗證的必要權杖。
+2. 應用程式 Proxy 服務會評估權杖。 它會檢查使用者在租用戶是否為公司系統管理員。  如果使用者不是系統管理員，就會終止流程。
 3. 連接器會產生用戶端憑證要求，並與權杖一起傳遞至應用程式 Proxy 服務。 服務接著會驗證權杖，並簽署用戶端憑證要求。
 4. 連接器可以使用此用戶端憑證，以便未來與應用程式 Proxy 服務通訊。
 5. 連接器會使用其用戶端憑證從服務執行系統設定資料的初始提取，而它現在已準備好接受要求。
@@ -173,7 +173,7 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 
 在收到回應後，連接器會建立對應用程式 Proxy 服務的輸出連線，以傳回標頭詳細資料，並開始串流傳回的資料。
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5.服務會將資料串流給使用者。 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5.服務會將資料串流給使用者。 
 
 應用程式的一些處理可能會在這裡發生。 如果您將應用程式中的應用程式 Proxy 應用程式設定為轉譯標頭或 URL，會視需要在此步驟進行該處理。
 

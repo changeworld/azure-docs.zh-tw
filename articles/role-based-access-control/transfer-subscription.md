@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545339"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648237"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
@@ -68,7 +68,7 @@ ms.locfileid: "92545339"
 | 自訂角色 | 是 | 是 | [列出自訂角色](#save-custom-roles) | 所有自訂角色都會永久刪除。 您必須重新建立自訂角色和任何角色指派。 |
 | 系統指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須停用並重新啟用受控識別。 您必須重新建立角色指派。 |
 | 使用者指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須刪除、重新建立，然後將受控識別附加至適當的資源。 您必須重新建立角色指派。 |
-| Azure 金鑰保存庫 | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
+| Azure Key Vault | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
 | 已啟用 Azure AD authentication 整合的 Azure SQL 資料庫 | 是 | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure 儲存體和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
@@ -83,11 +83,11 @@ ms.locfileid: "92545339"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成這些步驟，您將需要：
 
-- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](../cloud-shell/overview.md)
 - 您要在來原始目錄中傳輸之訂用帳戶的帳戶管理員
 - 目標目錄中的[擁有](built-in-roles.md#owner)者角色
 
@@ -111,7 +111,7 @@ ms.locfileid: "92545339"
 
 ### <a name="install-the-azure-resource-graph-extension"></a>安裝 Azure Resource Graph 擴充功能
 
- [Azure Resource Graph](../governance/resource-graph/index.yml)的 Azure CLI 擴充 *功能* ，可讓您使用 [az Graph](/cli/azure/ext/resource-graph/graph)命令來查詢 Azure Resource Manager 所管理的資源。 您將在稍後的步驟中使用此命令。
+ [Azure Resource Graph](../governance/resource-graph/index.yml)的 Azure CLI 擴充 *功能*，可讓您使用 [az Graph](/cli/azure/ext/resource-graph/graph)命令來查詢 Azure Resource Manager 所管理的資源。 您將在稍後的步驟中使用此命令。
 
 1. 使用 [az 延伸模組清單](/cli/azure/extension#az_extension_list) ，查看是否已安裝 *resource graph* 延伸模組。
 
@@ -378,7 +378,7 @@ ms.locfileid: "92545339"
 
 1. 若為使用憑證的資源，請更新憑證。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

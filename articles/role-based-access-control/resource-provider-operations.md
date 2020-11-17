@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309377"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649138"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -591,7 +591,7 @@ Azure 服務： [虛擬機器](../virtual-machines/index.yml)、 [虛擬機器�
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/read | 取得使用虛擬機器擴展集建立的網路介面其中一個或所有 IP 設定屬性。 IP 設定代表私人 IP |
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/publicIPAddresses/read | 取得使用虛擬機器擴展集建立的公用 IP 位址屬性。 虛擬機器擴展集最多可以在每個 ipconfiguration (私人 IP) 建立一個公用 IP |
 > | Microsoft. Compute/virtualMachineScaleSets/Vmsize/read | 列出在虛擬機器擴展集中建立或更新虛擬機器的可用大小 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Compute/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
 
@@ -792,7 +792,7 @@ Azure 服務：傳統部署模型虛擬網路
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure](../bastion/index.yml)防禦、 [Azure DDoS 保護](../virtual-network/ddos-protection-overview.md)、 [Azure DNS](../dns/index.yml)、 [azure ExpressRoute](../expressroute/index.yml)、 [azure 防火牆](../firewall/index.yml)、 [Azure Front Door service](../frontdoor/index.yml)、 [Azure Private Link](../private-link/index.yml)、 [Load Balancer](../load-balancer/index.yml)、 [網路](../network-watcher/index.yml)監看員、 [流量管理員](../traffic-manager/index.yml)、 [虛擬網路](../virtual-network/index.yml)、 [虛擬 WAN](../virtual-wan/index.yml)、 [VPN 閘道](../vpn-gateway/index.yml)
+Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure](../bastion/index.yml)防禦、 [Azure DDoS 保護](../ddos-protection/ddos-protection-overview.md)、 [Azure DNS](../dns/index.yml)、 [azure ExpressRoute](../expressroute/index.yml)、 [azure 防火牆](../firewall/index.yml)、 [Azure Front Door service](../frontdoor/index.yml)、 [Azure Private Link](../private-link/index.yml)、 [Load Balancer](../load-balancer/index.yml)、 [網路](../network-watcher/index.yml)監看員、 [流量管理員](../traffic-manager/index.yml)、 [虛擬網路](../virtual-network/index.yml)、 [虛擬 WAN](../virtual-wan/index.yml)、 [VPN 閘道](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -1423,7 +1423,7 @@ Azure 服務： [Azure 資料箱](../databox/index.yml)
 > | 資料箱/位置/availableSkus/讀取 | 列出或取得可用的 Sku |
 > | Microsoft.DataBox/locations/operationResults/read | 列出或取得作業結果 |
 > | 資料箱/operations/read | 列出或取得作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.DataBox/register/action | 註冊提供者 Microsoft.Databox |
 > | 資料箱/取消註冊/動作 | Un-Register 提供者資料箱 |
 > | Microsoft.DataBox/jobs/cancel/action | 取消進行中的訂單。 |
@@ -1611,7 +1611,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/tables/read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/tables/write |  |
 > | Microsoft.Storage/usages/read | 傳回指定訂用帳戶資源的限制和目前的使用量計數 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
@@ -1941,7 +1941,7 @@ Azure 服務： [Azure 地圖服務](../azure-maps/index.yml)
 > | Microsoft. Maps/accounts/privateAtlases/read | 取得私人的塔。 |
 > | Microsoft. Maps/accounts/privateAtlases/delete | 刪除私人的塔。 |
 > | Microsoft. Maps/operations/read | 讀取提供者作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. Maps/accounts/services/data/read | 允許讀取資料上傳服務和私用的資料。 |
 > | Microsoft. Maps/accounts/services/data/delete | 允許刪除資料上傳服務和私用的資料 |
 > | Microsoft. Maps/accounts/services/data/write | 允許寫入或更新資料上傳服務和私用的資料。 |
@@ -2123,7 +2123,7 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/write | 核准或拒絕私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR Private Link 資源 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.signalrservice/SignalR/auth/accessKey/action | 產生暫時 AccessKey 來簽署 ClientTokens。 |
 > | Microsoft.signalrservice/SignalR/auth/clientToken/action | 產生用來啟動用戶端連接的 ClientToken。 |
 > | Microsoft.signalrservice/SignalR/clientConnection/send/action | 將訊息直接傳送至用戶端連接。 |
@@ -2790,7 +2790,7 @@ Azure 服務： [Azure Kubernetes Service (AKS) ](../aks/index.yml)
 > | Microsoft.ContainerService/openShiftManagedClusters/write | 建立新的或更新現有的 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/openShiftManagedClusters/delete | 刪除 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/operations/read | 列出 Microsoft.ContainerService 資源提供者的可用作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除/DeletesCollection initializerconfigurations 資源 |
@@ -3850,7 +3850,7 @@ Azure 服務： [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure SQL 受控執行個體](../azure-sql/managed-instance/index.yml) [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../sql-data-warehouse/index.yml)
+Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure SQL 受控執行個體](../azure-sql/managed-instance/index.yml) [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../synapse-analytics/sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4331,7 +4331,7 @@ Azure 服務： [azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
-Azure 服務： [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
+Azure 服務： [Azure Databricks](/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4522,7 +4522,7 @@ Azure 服務： [事件中樞](../event-hubs/index.yml)
 > | Microsoft.EventHub/operations/read | 取得作業 |
 > | Microsoft.EventHub/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.EventHub/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft EventHub/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft EventHub/命名空間/訊息/接收/動作 | 接收訊息 |
 > | Microsoft EventHub/命名空間/架構/讀取 | 取出架構 |
@@ -4619,7 +4619,7 @@ Azure 服務： [azure 資料總管](/azure/data-explorer/)
 
 ### <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
-Azure 服務： [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
+Azure 服務： [Power BI Embedded](/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4705,14 +4705,14 @@ Azure 服務： [Azure 區塊鏈服務](../blockchain/workbench/index.yml)
 > | 區塊鏈/位置/checkNameAvailability/動作 | 檢查資源名稱是否有效且不在使用中。 |
 > | 區塊鏈/位置/blockchainMemberOperationResults/讀取 | 取得區塊鏈成員的作業結果。 |
 > | 區塊鏈/operations/read | 列出 Microsoft 區塊鏈資源提供者中的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
 
 ## <a name="ai--machine-learning"></a>AI + 機器學習
 
 ### <a name="microsoftbotservice"></a>Microsoft.BotService
 
-Azure 服務： [Azure Bot service](https://docs.microsoft.com/azure/bot-service/)
+Azure 服務： [Azure Bot service](/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4787,7 +4787,7 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | CognitiveServices/位置/deleteVirtualNetworkOrSubnets/動作 | 正在刪除 VirtualNetworks 或子網的 Microsoft 通知。 |
 > | CognitiveServices/位置/operationresults/讀取 | 讀取非同步作業的狀態。 |
 > | Microsoft.CognitiveServices/Operations/read | 列出所有可用的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/整個/偵測/動作 | 這項作業會使用整個數列產生模型，且每個點都會使用相同的模型來偵測。<br>使用這個方法時，會使用特定點前後的點來判斷它是否為異常。<br>整個偵測可為使用者提供時間序列的整體狀態。 |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/last/偵測/action | 這項作業會使用最新的點來產生模型。 使用這個方法時，只有歷程記錄點會用來判斷目標點是否為異常。 偵測到的最新點會符合即時監視商務計量的案例。 |
 > | CognitiveServices/accounts/自動建議/search/action | 這種作業會針對給定的查詢或部分查詢提供建議。 |
@@ -5570,7 +5570,7 @@ Azure 服務： [Azure 空間錨點](../spatial-anchors/index.yml)
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/read | 取得 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/write | 建立或更新 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/metricDefinitions/read | 取得 MixedReality/spatialAnchorsAccounts 的可用計量 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/動作 | 建立模型內嵌作業 |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/讀取 | 取得模型內嵌作業狀態 |
 > | MixedReality/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
@@ -5846,7 +5846,7 @@ Azure 服務：核心
 > | AppConfiguration/configurationStores/providers/Microsoft. Insights/metricDefinitions/read | 取得 Microsoft 應用程式設定的所有度量定義。 |
 > | AppConfiguration/位置/operationsStatus/讀取 | 取得作業的狀態。 |
 > | AppConfiguration/operations/read | 列出 Microsoft 應用程式設定所支援的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | AppConfiguration/configurationStores/keyValues/read | 從設定存放區讀取機碼值。 |
 > | AppConfiguration/configurationStores/keyValues/write | 建立或更新設定存放區中的索引鍵/值。 |
 > | AppConfiguration/configurationStores/keyValues/delete | 從設定存放區刪除現有的索引鍵/值。 |
@@ -6187,7 +6187,7 @@ Azure 服務： [Logic Apps](../logic-apps/index.yml)
 
 ### <a name="microsoftrelay"></a>Microsoft.Relay
 
-Azure 服務： [Azure 轉送](../service-bus-relay/relay-what-is-it.md)
+Azure 服務： [Azure 轉送](../azure-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -6257,7 +6257,7 @@ Azure 服務： [Azure 轉送](../service-bus-relay/relay-what-is-it.md)
 
 ### <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-Azure 服務： [服務匯流排](../service-bus/index.md)
+Azure 服務： [服務匯流排](../service-bus-messaging/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -6353,7 +6353,7 @@ Azure 服務： [服務匯流排](../service-bus/index.md)
 > | Microsoft.ServiceBus/operations/read | 取得作業 |
 > | Microsoft.ServiceBus/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.ServiceBus/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. 執行空間/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft. 執行空間/命名空間/訊息/接收/動作 | 接收訊息 |
 
@@ -6555,7 +6555,7 @@ Azure 服務： [Key Vault](../key-vault/index.yml)
 > | KeyVault/保存庫/金鑰/版本/讀取 | 列出指定之金鑰的版本，或讀取指定的金鑰版本。 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看秘密的屬性，而非其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 建立新的秘密，或更新現有秘密的值。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | KeyVault/保存庫/certificatecas/刪除 | 刪除憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/read | 讀取憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/寫入 | 寫入憑證簽發者 |
@@ -6957,7 +6957,7 @@ Azure 服務： [Azure 實驗室服務](../lab-services/index.yml)
 
 ### <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
-Azure 服務： [Azure DevOps](https://docs.microsoft.com/azure/devops/)
+Azure 服務： [Azure DevOps](/azure/devops/)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -6976,7 +6976,7 @@ Azure 服務： [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft.VisualStudio/Project/Delete | 刪除專案 |
 > | Microsoft.VisualStudio/Project/Read | 讀取專案 |
 
-## <a name="migrate"></a>遷移
+## <a name="migrate"></a>移轉
 
 ### <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -7436,7 +7436,7 @@ Azure 服務： [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft.OffAzure/VMwareSites/vcenters/read | 取得 VMware vCenter 的屬性 |
 > | Microsoft.OffAzure/VMwareSites/vcenters/write | 建立或更新 VMware vCenter |
 
-## <a name="monitor"></a>監視
+## <a name="monitor"></a>監視器
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -7927,7 +7927,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft Insights/活頁簿/撰寫 | 建立或更新活頁簿 |
 > | Microsoft Insights/活頁簿/刪除 | 刪除活頁簿 |
 > | Microsoft Insights/活頁簿/讀取 | 讀取活頁簿 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft Insights/DataCollectionRules/資料/寫入 | 將資料傳送至資料收集規則 |
 > | Microsoft.Insights/Metrics/Write | 寫入計量 |
 
@@ -8367,7 +8367,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | operationalinsights/workspace/scopedPrivateLinkProxies/read | 取得範圍 Private Link Proxy。 |
 > | operationalinsights/workspace/scopedPrivateLinkProxies/write | 將範圍設定 Private Link Proxy。 |
 > | operationalinsights/workspace/scopedPrivateLinkProxies/delete | 刪除範圍 Private Link Proxy。 |
-> | microsoft.operationalinsights/workspaces/search/read | 取得搜尋結果。 已被取代。 |
+> | microsoft.operationalinsights/workspaces/search/read | 取得搜尋結果。 已取代。 |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write | 建立新的儲存體組態。 這些組態可用來提取現有儲存體帳戶中來自某個位置的資料。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read | 取得儲存體組態。 |
@@ -8665,7 +8665,7 @@ Azure 服務： [批次](../batch/index.yml)
 > | Microsoft.Batch/locations/accountOperationResults/read | 取得長時間執行 Batch 帳戶作業的結果 |
 > | Microsoft.Batch/locations/quotas/read | 取得指定訂用帳戶在指定 Azure 區域內的 Batch 配額 |
 > | Microsoft.Batch/operations/read | 列出可對 Microsoft.Batch 資源提供者進行的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Batch/batchAccounts/jobs/read | 列出 Batch 帳戶的作業或取得作業的屬性 |
 > | Microsoft.Batch/batchAccounts/jobs/write | 在 Batch 帳戶上建立新的作業，或更新現有的作業 |
 > | Microsoft.Batch/batchAccounts/jobs/delete | 從 Batch 帳戶刪除作業 |
@@ -8824,7 +8824,7 @@ Azure 服務： [成本管理](../cost-management-billing/index.yml)
 > | Microsoft.Consumption/reservationTransactions/read | 依管理群組列出保留執行個體的交易記錄。 |
 > | Microsoft.Consumption/tags/read | 列出 EA 和訂用帳戶的標記。 |
 > | Microsoft.Consumption/tenants/register/action | 依某個租用戶註冊 Microsoft.Consumption 範圍的動作。 |
-> | Microsoft. 耗用量/租使用者/讀取 | 列出租使用者 |
+> | Microsoft. 耗用量/租使用者/讀取 | 列出租用戶 |
 > | Microsoft.Consumption/terms/read | 列出適用於訂用帳戶或管理群組的條款。 |
 > | Microsoft.Consumption/usageDetails/read | 針對適用於 EA 與 WebDirect 訂用帳戶的範圍列出使用狀況詳細資料。 |
 
@@ -8924,7 +8924,7 @@ Azure 服務： [Azure Arc](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
-Azure 服務： [Azure Arc 啟用 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+Azure 服務： [Azure Arc 啟用 Kubernetes](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -8934,7 +8934,7 @@ Azure 服務： [Azure Arc 啟用 Kubernetes](https://docs.microsoft.com/azure/a
 > | Kubernetes/connectedClusters/Delete | 刪除 connectedClusters |
 > | Kubernetes/connectedClusters/listClusterUserCredentials/action | 列出 clusterUser 認證 |
 > | Kubernetes/RegisteredSubscriptions/read | 讀取已註冊的訂閱 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除 initializerconfigurations |
@@ -9305,7 +9305,7 @@ Azure 服務： [Azure 原則](../governance/policy/index.yml)
 > | Microsoft.PolicyInsights/remediations/delete | 刪除原則補救。 |
 > | Microsoft.PolicyInsights/remediations/cancel/action | 取消進行中的 Microsoft 原則補救。 |
 > | Microsoft.PolicyInsights/remediations/listDeployments/read | 列出原則補救所需的部署。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.PolicyInsights/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
 > | Microsoft.PolicyInsights/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
 
@@ -9677,7 +9677,7 @@ Azure 服務： Microsoft Monitoring Insights
 
 ### <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
-Azure 服務： [Bing 地圖](https://docs.microsoft.com/BingMaps/)服務
+Azure 服務： [Bing 地圖](/BingMaps/)服務
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -9715,7 +9715,7 @@ Azure 服務： [Azure 數位 Twins](../digital-twins/index.yml)
 > | DigitalTwins/位置/checkNameAvailability/動作 | 檢查數位 Twins 資源提供者中的資源名稱可用性 |
 > | DigitalTwins/位置/operationsResults/讀取 | 讀取任何作業結果 |
 > | DigitalTwins/operations/read | 讀取所有作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | DigitalTwins/query/action | 查詢任何數位 Twins 圖形 |
 > | DigitalTwins/DigitalTwins/read | 讀取任何數位對應項 |
 > | DigitalTwins/DigitalTwins/write | 建立或更新任何數位對應項 |

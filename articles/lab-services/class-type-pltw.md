@@ -3,12 +3,12 @@ title: 使用 Azure 實驗室服務的實驗室來設定專案負責人
 description: 瞭解如何設定實驗室，讓專案組長以類別的方式教授。
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: 8585d09759319eef04da5ed68fec603cfa390093
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e3783ae4fa07bf783841022903c4bcf3ab6fbe23
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496679"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647999"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>以類別的方式為專案負責人設定實驗室
 
@@ -53,12 +53,12 @@ ms.locfileid: "94496679"
 請參閱 PLTW 的網站，以取得每個類別的 [完整軟體清單](https://www.pltw.org/pltw-software) 。
 
 ## <a name="lab-configuration"></a>實驗室組態
-若要設定 PLTW 的實驗室，您需要 Azure 訂用帳戶和實驗室帳戶才能開始使用。 如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/)。 取得 Azure 訂用帳戶之後，您可以在 Azure 實驗室服務中建立新的實驗室帳戶。 如需建立新實驗室帳戶的詳細資訊，請參閱 [如何設定實驗室帳戶](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)的教學課程。 您也可以使用現有的實驗室帳戶。
+若要設定 PLTW 的實驗室，您需要 Azure 訂用帳戶和實驗室帳戶才能開始使用。 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/)，再開始進行。 取得 Azure 訂用帳戶之後，您可以在 Azure 實驗室服務中建立新的實驗室帳戶。 如需建立新實驗室帳戶的詳細資訊，請參閱 [如何設定實驗室帳戶](./tutorial-setup-lab-account.md)的教學課程。 您也可以使用現有的實驗室帳戶。
 
 擁有實驗室帳戶之後，您應該為學校所提供的 PLTW 類別的每個會話建立個別的實驗室。  我們也建議您為每一種類型的 PLTW 類別建立個別的映射。  如需有關如何結構您的實驗室和影像的詳細資訊，請閱讀 blog 文章： [從實體實驗室移至 Azure 實驗室服務](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)。
 
 ### <a name="lab-account-settings"></a>實驗室帳戶設定
-針對實驗室帳戶啟用下表所述的設定。 如需有關如何啟用 marketplace 映射的詳細資訊，請參閱有關 [如何指定實驗室建立者可用之 marketplace 映射](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)的文章。
+針對實驗室帳戶啟用下表所述的設定。 如需有關如何啟用 marketplace 映射的詳細資訊，請參閱有關 [如何指定實驗室建立者可用之 marketplace 映射](./specify-marketplace-images.md)的文章。
 
 | 實驗室帳戶設定 | Instructions |
 | -------------------- | ----- |
@@ -69,8 +69,8 @@ ms.locfileid: "94496679"
 
 | 實驗室設定 | 值/指示 |
 | ------------ | ------------------ |
-|虛擬機器大小| **小型 GPU (視覺效果)** 。  此 VM 最適合用來進行遠端視覺效果、串流、遊戲、使用 OpenGL 和 DirectX 等架構的編碼。  針對下列 PLTW 類別，我們建議使用此大小：民事工程和架構、數位設備、電腦整合式製造;和工程設計與開發。
-|虛擬機器大小| **龐大** 。  此大小最適合用於需要更快 CPU、更高本機磁碟效能、大型資料庫、大型記憶體快取的應用程式。  針對下列 PLTW 類別，我們建議使用此大小：設計設計、工程原則、電腦科學基本概念、電腦科學原則，以及電腦科學 A 的簡介。
+|虛擬機器大小| **小型 GPU (視覺效果)**。  此 VM 最適合用來進行遠端視覺效果、串流、遊戲、使用 OpenGL 和 DirectX 等架構的編碼。  針對下列 PLTW 類別，我們建議使用此大小：民事工程和架構、數位設備、電腦整合式製造;和工程設計與開發。
+|虛擬機器大小| **龐大**。  此大小最適合用於需要更快 CPU、更高本機磁碟效能、大型資料庫、大型記憶體快取的應用程式。  針對下列 PLTW 類別，我們建議使用此大小：設計設計、工程原則、電腦科學基本概念、電腦科學原則，以及電腦科學 A 的簡介。
 
 ### <a name="licensing-server"></a>授權伺服器
 上述 PLTW 類別中使用的大部分軟體 *_都不需要_* 存取授權伺服器。  但是，如果您打算針對下列軟體使用 Autodesk 的網路授權模型，您將需要存取授權伺服器：
@@ -80,19 +80,19 @@ ms.locfileid: "94496679"
 
 若要搭配使用網路授權與 Autodesk 的軟體，PLTW 提供在授權伺服器上安裝 Autodesk 之授權管理員的 [詳細步驟](https://www.pltw.org/pltw-software) 。  此授權伺服器通常位於您的內部部署網路中，或是裝載于 azure 虛擬機器上的 Azure 虛擬機器 (VM) 在 Azure 虛擬網路 (VNet) 中。
 
-設定授權伺服器之後，您必須將 [VNet 對等](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) 互連至您的 [實驗室帳戶](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)。 必須執行網路對等互連 _before * 建立實驗室，讓實驗室虛擬機器可以存取授權伺服器，反之亦然。
+設定授權伺服器之後，您必須將 [VNet 對等](./how-to-connect-peer-virtual-network.md) 互連至您的 [實驗室帳戶](./tutorial-setup-lab-account.md)。 必須執行網路對等互連 _before * 建立實驗室，讓實驗室虛擬機器可以存取授權伺服器，反之亦然。
 
 Autodesk 產生的授權檔案會內嵌授權伺服器的 MAC 位址。  如果您決定使用 Azure VM 來裝載授權伺服器，請務必確定授權伺服器的 MAC 位址不會變更。   否則，當 MAC 位址變更時，就必須重新產生您的授權檔案。  遵循這些秘訣，以防止您的 MAC 位址變更：
 
-- 為裝載授權伺服器的 Azure VM[設定靜態私人 IP 和 MAC 位址](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource#static-private-ip-and-mac-address)。
+- 為裝載授權伺服器的 Azure VM[設定靜態私人 IP 和 MAC 位址](./how-to-create-a-lab-with-shared-resource.md#static-private-ip-and-mac-address)。
 - 請確定您已在具有足夠 VM 容量的 region\location 中設定實驗室帳戶和授權伺服器的 VNet，如此您就不需要在稍後將這些資源移至新的 region\location。
 
-此外，如需詳細資訊，請參閱有關 [如何設定授權伺服器作為共用資源](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource) 的文章。
+此外，如需詳細資訊，請參閱有關 [如何設定授權伺服器作為共用資源](./how-to-create-a-lab-with-shared-resource.md) 的文章。
 
 ### <a name="template-machine"></a>範本電腦
 您需要 PLTW 的一些安裝檔案很大，而且在您將其下載至實驗室的範本機器時，需要較長的時間才能複製。
 
-我們建議您在實體環境中建立 PLTW 映射，而不是將安裝檔案下載到範本電腦，並在該處安裝所有專案。  然後，您可以將映射匯入共用映射庫，讓您可以使用這些自訂映射來建立您的實驗室。  如需詳細資訊，請參閱下列文章： [將自訂映射上傳至共用映射庫](https://docs.microsoft.com/azure/lab-services/upload-custom-image-shared-image-gallery)。
+我們建議您在實體環境中建立 PLTW 映射，而不是將安裝檔案下載到範本電腦，並在該處安裝所有專案。  然後，您可以將映射匯入共用映射庫，讓您可以使用這些自訂映射來建立您的實驗室。  如需詳細資訊，請參閱下列文章： [將自訂映射上傳至共用映射庫](./upload-custom-image-shared-image-gallery.md)。
 
 遵循這項建議，以下是設定實驗室的主要工作：
 
@@ -103,11 +103,11 @@ Autodesk 產生的授權檔案會內嵌授權伺服器的 MAC 位址。  如果�
     > [!NOTE]    
     > 當您安裝 Autodesk 的應用程式時，您要安裝 Autodesk 的電腦必須能夠與您的授權伺服器通訊 (Autodesk 的安裝精靈會提示您指定) 上裝載授權伺服器之電腦的電腦名稱稱。  如果您要在 Azure VM 上裝載授權伺服器，您可能需要等候在實驗室的範本電腦上安裝 Autodesk，讓 Autodesk 的安裝精靈可以存取您的授權伺服器
 
-    b.  [安裝和設定 OneDrive](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-onedrive) (或您學校可能會使用的其他備份選項) 。
+    b.  [安裝和設定 OneDrive](./how-to-prepare-windows-template.md#install-and-configure-onedrive) (或您學校可能會使用的其他備份選項) 。
     
-    c.  [安裝和設定 Windows 更新](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-updates)。
+    c.  [安裝和設定 Windows 更新](./how-to-prepare-windows-template.md#install-and-configure-updates)。
 
-1.  將自訂映射上傳至 [您的實驗室帳戶所附加的共用映射庫](https://docs.microsoft.com/azure/lab-services/how-to-attach-detach-shared-image-gallery)。
+1.  將自訂映射上傳至 [您的實驗室帳戶所附加的共用映射庫](./how-to-attach-detach-shared-image-gallery.md)。
 
 1.  建立實驗室，然後選取您在上一個步驟上傳的自訂映射。
 
@@ -118,9 +118,9 @@ Autodesk 產生的授權檔案會內嵌授權伺服器的 MAC 位址。  如果�
 ## <a name="student-devices"></a>學生裝置
 您的學生可以從 Windows\Mac 電腦和 Chromebook 連線至其實驗室 Vm。  以下是每個選項的指示連結：
 
-- [從 Windows 連線](https://docs.microsoft.com/azure/lab-services/how-to-use-classroom-lab#connect-to-the-vm)
-- [從 Mac 連接](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-mac-remote-desktop)
-- [從 Chromebook 連接](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-chromebook-remote-desktop)
+- [從 Windows 連線](./how-to-use-classroom-lab.md#connect-to-the-vm)
+- [從 Mac 連接](./connect-virtual-machine-mac-remote-desktop.md)
+- [從 Chromebook 連接](./connect-virtual-machine-chromebook-remote-desktop.md)
 
 ## <a name="cost"></a>成本
 讓我們來討論上述 PLTW 類別的可能成本預估。  此預估不包含執行授權伺服器或使用共用映射庫的成本。  我們將使用25名學生的課程。  排程的類別時間有20小時。  此外，每位學生都可以針對排定的課程時間以外的作業或指派，取得10小時的配額。  針對 **大型** 和 **小型 GPU (視覺效果)** 大小，請參閱下列成本估計值。
@@ -145,4 +145,4 @@ Autodesk 產生的授權檔案會內嵌授權伺服器的 MAC 位址。  如果�
 - [新增使用者](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [設定配額](how-to-configure-student-usage.md#set-quotas-for-users)
 - [設定排程](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [學生的電子郵件註冊連結](how-to-configure-student-usage.md#send-invitations-to-users)。 
+- [學生的電子郵件註冊連結](how-to-configure-student-usage.md#send-invitations-to-users)。

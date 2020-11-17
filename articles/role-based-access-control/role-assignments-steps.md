@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604261"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648271"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>新增角色指派的步驟
 
@@ -26,14 +26,14 @@ ms.locfileid: "91604261"
 
 ![角色指派的安全性主體](./media/shared/rbac-security-principal.png)
 
-- 使用者 - 在 Azure Active Directory 中具有設定檔的個人。 您也可以指派角色給其他租用戶中的使用者。 如需有關其他組織中使用者的資訊，請參閱 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)。
+- 使用者 - 在 Azure Active Directory 中具有設定檔的個人。 您也可以指派角色給其他租用戶中的使用者。 如需有關其他組織中使用者的資訊，請參閱 [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md)。
 - 群組 - 在 Azure Active Directory 中建立的一組使用者。 當您將角色指派給群組時，該群組內的所有使用者都具有該角色。 
 - 服務主體 - 應用程式或服務用來存取特定 Azure 資源的安全性身分識別。 您可以將它視為應用程式的「使用者身分識別」(使用者名稱和密碼或憑證)。
 - 受控識別 (MSI) - 在 Azure Active Directory 中由 Azure 自動管理的身分識別。 您通常會在開發雲端應用程式來管理 Azure 服務驗證所需的認證時，使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="step-2-find-the-appropriate-role"></a>步驟2：尋找適當的角色
 
-許可權會群組在一起成為 *角色定義*。 一般會直接稱之為*角色*。 您可以從數個內建角色的清單中選取。 如果內建角色無法滿足您組織的特定需求，您可以建立自己的自訂角色。
+許可權會群組在一起成為 *角色定義*。 一般會直接稱之為 *角色*。 您可以從數個內建角色的清單中選取。 如果內建角色無法滿足您組織的特定需求，您可以建立自己的自訂角色。
 
 ![角色指派的角色定義](./media/shared/rbac-role-definition.png)
 

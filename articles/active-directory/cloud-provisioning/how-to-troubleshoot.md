@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650086"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>雲端布建疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "89226942"
 
 ## <a name="common-troubleshooting-areas"></a>常見的疑難排解區域
 
-|名稱|描述|
+|名稱|說明|
 |-----|-----|
 |[代理程式問題](#agent-problems)|確認代理程式已正確安裝，而且與 Azure Active Directory (Azure AD) 進行通訊。|
 |[物件同步處理問題](#object-synchronization-problems)|使用布建記錄來針對物件同步處理問題進行疑難排解。|
@@ -47,11 +47,11 @@ ms.locfileid: "89226942"
 1. 從左側選取 [Azure Active Directory]  > [Azure AD Connect]。 在中間選取 [管理佈建 (預覽)]。
 1. 在 [Azure AD 佈建 (預覽)] 畫面上，選取 [檢閱所有代理程式]。
 
-   ![檢查所有代理程式](media/how-to-install/install7.png)</br>
+   ![檢查所有代理程式](media/how-to-install/install-7.png)</br>
  
 1. 在 [ **內部部署布建代理** 程式] 畫面上，您會看到已安裝的代理程式。 確認有問題的代理程式存在，而且標示為「 *狀況良好*」。
 
-   ![內部部署佈建代理程式畫面](media/how-to-install/install8.png)</br>
+   ![內部部署佈建代理程式畫面](media/how-to-install/install-8.png)</br>
 
 ### <a name="verify-the-port"></a>驗證埠
 
@@ -59,14 +59,14 @@ ms.locfileid: "89226942"
 
 此測試會確認您的代理程式可以透過埠443與 Azure 進行通訊。 開啟瀏覽器，然後從安裝代理程式的伺服器上移至先前的 URL。
 
-![驗證通訊埠是否可連線](media/how-to-install/verify2.png)
+![驗證通訊埠是否可連線](media/how-to-install/verify-2.png)
 
 ### <a name="on-the-local-server"></a>在本機伺服器上
 
 若要確認代理程式正在執行中，請遵循下列步驟。
 
 1. 在安裝代理程式的伺服器上，藉由流覽至 [**服務**] 或移至 [**開始**  >  **執行**  >  **services.msc**] 來開啟服務。
-1. 在 [服務] 底下，確定 **Microsoft Azure AD Connect 代理程式更新程式**和 **Microsoft Azure AD Connect 佈建代理程式**皆位於該處，且狀態為 [執行中]。
+1. 在 [服務] 底下，確定 **Microsoft Azure AD Connect 代理程式更新程式** 和 **Microsoft Azure AD Connect 佈建代理程式** 皆位於該處，且狀態為 [執行中]。
 
    ![服務畫面](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "89226942"
 
 此問題通常是因為代理程式無法連線到混合式識別服務所造成的，而需要您設定 HTTP Proxy。 若要解決此問題，請設定輸出 Proxy。 
 
-布建代理程式支援使用輸出 proxy。 您可以藉由編輯代理程式設定檔 *C:\Program Files\Microsoft Azure AD Connect *布建 Agent\AADConnectProvisioningAgent.exe.config來設定它。將下列幾行加入至結束記號之前的檔案結尾 `</configuration>` 。
+布建代理程式支援使用輸出 proxy。 您可以藉由編輯代理程式設定檔 *C:\Program Files\Microsoft Azure AD Connect* 布建 Agent\AADConnectProvisioningAgent.exe.config來設定它。將下列幾行加入至結束記號之前的檔案結尾 `</configuration>` 。
 `[proxy-server]` `[proxy-port]` 以您的 proxy 伺服器名稱和埠值取代變數。
 
 ```xml
@@ -124,13 +124,13 @@ ms.locfileid: "89226942"
 
 ### <a name="log-files"></a>記錄檔
 
-根據預設，代理程式會發出最少的錯誤訊息和堆疊追蹤資訊。 您可以在 *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect*布建 Agent\Trace 資料夾中找到這些追蹤記錄。
+根據預設，代理程式會發出最少的錯誤訊息和堆疊追蹤資訊。 您可以在 *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect* 布建 Agent\Trace 資料夾中找到這些追蹤記錄。
 
 若要收集與代理程式相關問題疑難排解的其他詳細資料，請遵循下列步驟。
 
 1. 停止服務 **Microsoft Azure AD 連接布建代理程式**。
-1. 建立原始設定檔的複本： *C:\Program Files\Microsoft Azure AD Connect *布建 Agent\AADConnectProvisioningAgent.exe.config。
-1. 將現有區段取代為 `<system.diagnostics>` 下列內容，所有追蹤訊息都會移至 *ProvAgentTrace*檔案。
+1. 建立原始設定檔的複本： *C:\Program Files\Microsoft Azure AD Connect* 布建 Agent\AADConnectProvisioningAgent.exe.config。
+1. 將現有區段取代為 `<system.diagnostics>` 下列內容，所有追蹤訊息都會移至 *ProvAgentTrace* 檔案。
 
    ```xml
      <system.diagnostics>
@@ -191,7 +191,7 @@ ms.locfileid: "89226942"
 
 ### <a name="resolve-a-quarantine"></a>解析隔離
 
-- 使用 Azure 入口網站重新開機布建作業。 在 [代理程式設定] 頁面上，選取 [ **重新開機**布建]。
+- 使用 Azure 入口網站重新開機布建作業。 在 [代理程式設定] 頁面上，選取 [ **重新開機** 布建]。
 
   ![重新開機布建](media/how-to-troubleshoot/quarantine3.png)
 

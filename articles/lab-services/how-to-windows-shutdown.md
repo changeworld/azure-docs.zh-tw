@@ -3,19 +3,19 @@ title: 在 Azure 實驗室服務中控制 Windows 關機行為的指南 |Microso
 description: 自動關機閒置的 Windows 虛擬機器，並移除 Windows 關機命令的步驟。
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541555"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647693"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>控制 Windows 關機行為的指南
 
 Azure Lab Services 提供數個成本控制，以確保 Windows 虛擬機器 (Vm) 未預期地執行：
- - [設定排程](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [設定使用者的配額](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [在中斷連線時啟用 VM 的自動關機](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [設定排程](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [設定使用者的配額](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [在中斷連線時啟用 VM 的自動關機](./how-to-enable-shutdown-disconnect.md)
 
 即使有了這些成本控制，在某些情況下，Windows VM 可能會意外地繼續執行;因此，從學生的配額中扣除：
 
@@ -25,7 +25,7 @@ Azure Lab Services 提供數個成本控制，以確保 Windows 虛擬機器 (Vm
 
 - **Windows shutdown 命令可用來關閉 VM**
   
-    學生可以使用 Windows 關機命令或 Windows 中提供的其他關機機制來關閉 VM，而不是使用 [Azure 實驗室服務](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)的 [停止] 按鈕。  發生這種情況時，從 Azure 實驗室服務的觀點來看，VM 仍在使用中。
+    學生可以使用 Windows 關機命令或 Windows 中提供的其他關機機制來關閉 VM，而不是使用 [Azure 實驗室服務](./how-to-use-classroom-lab.md#start-or-stop-the-vm)的 [停止] 按鈕。  發生這種情況時，從 Azure 實驗室服務的觀點來看，VM 仍在使用中。
     
 為了協助您避免發生這些情況，本指南提供了自動關機閒置 Windows VM，並從 [ **開始** ] 功能表移除 windows 關機命令的步驟。  
 
@@ -44,7 +44,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 或者，您可以選擇使用範本 VM 來執行下列手動步驟：
 
-1. 按 Windows 鍵，輸入 **gpedit.msc**，然後選取 [ **編輯群組原則] (控制台]) **。
+1. 按 Windows 鍵，輸入 **gpedit.msc**，然後選取 [ **編輯群組原則] (控制台])**。
 
 1. 移至 [ **電腦設定 >] 系統管理範本 > [開始] 功能表和工作列**。  
 

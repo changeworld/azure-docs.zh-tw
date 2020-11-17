@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: df50231b03f71008f967c4f09ce09c5b5890802f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d5c42675b182fbc34354c75778214463adfe491f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427648"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648135"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>設定群組擁有者同意存取群組資料的應用程式
 
-群組和小組擁有者可以授權應用程式，例如協力廠商發行的應用程式，以存取您組織與群組相關聯的資料。 例如，Microsoft Teams 中的小組擁有者可以允許應用程式讀取小組中的所有 Teams 訊息，或列出群組成員的基本設定檔。 若要深入瞭解，請參閱 [Microsoft 小組中的資源特定同意](https://docs.microsoft.com/microsoftteams/resource-specific-consent) 。
+群組和小組擁有者可以授權應用程式，例如協力廠商發行的應用程式，以存取您組織與群組相關聯的資料。 例如，Microsoft Teams 中的小組擁有者可以允許應用程式讀取小組中的所有 Teams 訊息，或列出群組成員的基本設定檔。 若要深入瞭解，請參閱 [Microsoft 小組中的資源特定同意](/microsoftteams/resource-specific-consent) 。
 
 ## <a name="manage-group-owner-consent-to-apps"></a>管理應用程式的群組擁有者同意
 
@@ -42,9 +42,9 @@ ms.locfileid: "92427648"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，啟用或停用群組擁有者同意應用程式存取其所擁有貴組織群組資料的能力。
+您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)，啟用或停用群組擁有者同意應用程式存取其所擁有貴組織群組資料的能力。
 
-1. 請確定您使用的是 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組。 如果您已安裝 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模組和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組兩者，則這個步驟很重要。
+1. 請確定您使用的是 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模組。 如果您已安裝 [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) 模組和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模組兩者，則這個步驟很重要。
 
     ```powershell
     Remove-Module AzureAD
@@ -57,7 +57,7 @@ ms.locfileid: "92427648"
    Connect-AzureAD
    ```
 
-1. 擷取您租用戶中**同意原則設定**目錄設定的目前值。 這需要檢查是否已建立這項功能的目錄設定，如果未建立，則使用對應目錄設定範本中的值。
+1. 擷取您租用戶中 **同意原則設定** 目錄設定的目前值。 這需要檢查是否已建立這項功能的目錄設定，如果未建立，則使用對應目錄設定範本中的值。
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -121,7 +121,7 @@ ms.locfileid: "92427648"
 * [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 * [了解如何管理對應用程式的同意及評估同意要求](manage-consent-requests.md)
 * [對應用程式授與全租用戶的管理員同意](grant-admin-consent.md)
-* [Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft 身分識別平台中的權限和同意](../develop/v2-permissions-and-consent.md)
 
 若要取得協助或尋找您的問題解答：
 * [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

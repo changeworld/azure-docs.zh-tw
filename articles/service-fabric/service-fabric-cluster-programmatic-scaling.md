@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd47e5e39684bd4b684cd1e12dd9a3d420640ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005800"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648203"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以程式設計方式調整 Service Fabric 叢集 
 
@@ -121,5 +121,5 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 若要開始實作您自己的自動調整邏輯，請先熟悉下列概念和實用的 API：
 
 - [以手動方式或透過自動調整規則進行調整](./service-fabric-cluster-scale-in-out.md)
-- [適用於 .NET 的 Fluent Azure 管理程式庫](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (適用於與 Service Fabric 叢集的基礎虛擬機器擴展集互動)
+- [適用于 .net 的 Azure 管理程式庫](https://github.com/Azure/azure-libraries-for-net) (適用于與 Service Fabric 叢集的基礎虛擬機器擴展集互動) 
 - [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) (適用於與 Service Fabric 叢集及其節點互動)

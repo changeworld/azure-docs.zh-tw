@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613032"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648067"
 ---
 # <a name="manage-your-cache"></a>管理您的快取
 
@@ -29,7 +29,7 @@ Azure 入口網站中的 [快取總覽] 頁面會顯示快取的專案詳細資�
 * [**Flush**](#flush-cached-data) -將變更的資料寫入儲存體目標
 * [**升級**](#upgrade-cache-software) -更新快取軟體
 * [**收集診斷**](#collect-diagnostics) -上傳偵錯工具資訊
-* 重新**整理-重載**總覽頁面
+* 重新 **整理-重載** 總覽頁面
 * [**Delete**](#delete-the-cache) -永久終結快取
 
 請參閱下列選項的詳細資訊。
@@ -46,7 +46,7 @@ Azure 入口網站中的 [快取總覽] 頁面會顯示快取的專案詳細資�
 
 ### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-**停止**按鈕會暫停使用中的快取。 當快取的狀態為**狀況良好**或**降級**時，即可使用 [**停止**] 按鈕。
+**停止** 按鈕會暫停使用中的快取。 當快取的狀態為 **狀況良好** 或 **降級** 時，即可使用 [**停止**] 按鈕。
 
 ![顯示 [停用] 停用的上方按鈕的螢幕擷取畫面，以及描述停止動作並詢問「您要繼續嗎？」的彈出訊息 具有 Yes (預設) 和沒有按鈕](media/stop-cache.png)
 
@@ -58,9 +58,9 @@ Azure 入口網站中的 [快取總覽] 頁面會顯示快取的專案詳細資�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 [az hpc cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) 命令暫時暫停快取。 只有當快取的狀態為 **狀況良好** 或 **降級**時，此動作才有效。
+使用 [az hpc cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) 命令暫時暫停快取。 只有當快取的狀態為 **狀況良好** 或 **降級** 時，此動作才有效。
 
 快取會在停止之前，自動將其內容排清到儲存目標。 此程式可能需要一些時間，但可確保資料的一致性。
 
@@ -113,7 +113,7 @@ $ az hpc-cache start --name doc-cache0629
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 [az hpc cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) 來強制快取將所有變更的資料寫入儲存體目標。
 
@@ -161,7 +161,7 @@ $
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 在 Azure CLI 上，新的軟體資訊會包含在快取狀態報表的結尾。  (使用 [az hpc cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) 進行檢查。 ) 在訊息中尋找 "upgradeStatus" 字串。
 
@@ -225,7 +225,7 @@ $
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 命令 [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) 來永久移除快取。
 

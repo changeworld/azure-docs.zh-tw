@@ -10,23 +10,23 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2eb90e2418b57e5e0a358fbd6282b20ddc9e7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597646"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648356"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文說明如何使用 Azure CLI 指派角色。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要新增或移除角色指派，您必須具有：
 
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
-- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](../cloud-shell/overview.md)
 
 ## <a name="steps-to-add-a-role-assignment"></a>新增角色指派的步驟
 
@@ -54,7 +54,7 @@ az ad group show --group "{groupName}" --query "objectId" --output tsv
 
 **服務主體**
 
-針對 Azure AD 服務主體 (應用程式) 所使用的身分識別，您需要服務主體物件識別碼。 若要取得物件識別碼，您可以使用 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list)。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
+針對 Azure AD 服務主體 (應用程式) 所使用的身分識別，您需要服務主體物件識別碼。 若要取得物件識別碼，您可以使用 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list)。 對於服務主體，請使用物件識別碼，而 **不是** 應用程式識別碼。
 
 ```azurecli
 az ad sp list --all --query "[].{displayName:displayName, objectId:objectId}" --output tsv
@@ -185,7 +185,7 @@ az role assignment create --assignee "{assignee}" \
 
 ### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>新增特定 blob 容器資源範圍的角色指派
 
-將[儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給 blob 容器 *-01*blob 容器之資源範圍中的物件識別碼為*55555555-5555-5555-5555-555555555555*的服務主體。
+將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給 blob 容器 *-01* blob 容器之資源範圍中的物件識別碼為 *55555555-5555-5555-5555-555555555555* 的服務主體。
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -195,7 +195,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>為儲存體帳戶資源範圍中的所有 blob 容器新增角色指派
 
-針對名為*storage12345*的儲存體帳戶，將[儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給資源範圍中具有物件識別碼*55555555-5555-5555-5555-555555555555*的服務主體。
+針對名為 *storage12345* 的儲存體帳戶，將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給資源範圍中具有物件識別碼 *55555555-5555-5555-5555-555555555555* 的服務主體。
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -205,7 +205,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>在特定虛擬網路資源範圍中新增群組的角色指派
 
-針對名為*醫藥*的虛擬網路，將[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)角色指派給名為22222222-2222-2222-2222-222222222222 的*王 mack」團隊*群組（名為的資源範圍）。
+針對名為 *醫藥* 的虛擬網路，將 [虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)角色指派給名為22222222-2222-2222-2222-222222222222 的 *王 mack」團隊* 群組（名為的資源範圍）。
 
 ```azurecli
 az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
@@ -215,7 +215,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 
 ### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>在資源群組範圍新增使用者的角色指派
 
-將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍的*patlong \@ contoso.com*使用者。
+將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給 *醫藥-sales* 資源群組範圍的 *patlong \@ contoso.com* 使用者。
 
 ```azurecli
 az role assignment create --assignee "patlong@contoso.com" \
@@ -228,11 +228,11 @@ az role assignment create --assignee "patlong@contoso.com" \
 有幾個時候角色名稱可能會變更，例如：
 
 - 您正在使用自己的自訂角色，並決定變更名稱。
-- 您使用的預覽角色在名稱中有 ** (預覽) ** 。 釋放角色時，就會重新命名角色。
+- 您使用的預覽角色在名稱中有 **(預覽)** 。 釋放角色時，就會重新命名角色。
 
 即使角色已重新命名，角色識別碼也不會變更。 如果您使用腳本或自動化來建立角色指派，最好使用唯一角色識別碼，而不是角色名稱。 因此，如果角色已重新命名，您的腳本可能會更有作用。
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍的*patlong \@ contoso.com*使用者。
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給 *醫藥-sales* 資源群組範圍的 *patlong \@ contoso.com* 使用者。
 
 ```azurecli
 az role assignment create --assignee "patlong@contoso.com" \
@@ -242,7 +242,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 
 ### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>為資源群組範圍中的所有 blob 容器新增角色指派
 
-在*範例-rg*資源群組範圍中，將[儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給物件識別碼為*55555555-5555-5555-5555-555555555555*的服務主體。
+在 *範例-rg* 資源群組範圍中，將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給物件識別碼為 *55555555-5555-5555-5555-555555555555* 的服務主體。
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -282,7 +282,7 @@ az role assignment create --assignee-object-id "{assigneeObjectId}" \
 --scope "/subscriptions/{subscriptionId}"
 ```
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍的*msi 測試*受控識別：
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給 *醫藥-sales* 資源群組範圍的 *msi 測試* 受控識別：
 
 ```azurecli
 az role assignment create --assignee-object-id "33333333-3333-3333-3333-333333333333" \
@@ -335,7 +335,7 @@ az role assignment create --assignee "alain@example.com" \
 
 在 Azure RBAC 中，若要移除存取權，您可以使用 [az 角色指派刪除](/cli/azure/role/assignment#az_role_assignment_delete)來移除角色指派。
 
-下列範例會從*醫藥-sales*資源群組上的*patlong \@ Contoso.com*使用者移除「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派：
+下列範例會從 *醫藥-sales* 資源群組上的 *patlong \@ Contoso.com* 使用者移除「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派：
 
 ```azurecli
 az role assignment delete --assignee "patlong@contoso.com" \
@@ -343,7 +343,7 @@ az role assignment delete --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-移除在訂用帳戶範圍中識別碼為22222222-2222-2222-2222-222222222222 的*王 Mack」團隊*群組中的[讀取](built-in-roles.md#reader)者角色。
+移除在訂用帳戶範圍中識別碼為22222222-2222-2222-2222-222222222222 的 *王 Mack」團隊* 群組中的 [讀取](built-in-roles.md#reader)者角色。
 
 ```azurecli
 az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
@@ -351,7 +351,7 @@ az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-從管理群組範圍的*alain \@ example.com*使用者移除[帳單讀者](built-in-roles.md#billing-reader)角色。
+從管理群組範圍的 *alain \@ example.com* 使用者移除 [帳單讀者](built-in-roles.md#billing-reader)角色。
 
 ```azurecli
 az role assignment delete --assignee "alain@example.com" \
@@ -362,4 +362,4 @@ az role assignment delete --assignee "alain@example.com" \
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure CLI 列出 Azure 角色指派](role-assignments-list-cli.md)
-- [使用 Azure CLI 管理 Azure 資源和資源群組](../azure-resource-manager/cli-azure-resource-manager.md)
+- [使用 Azure CLI 管理 Azure 資源和資源群組](../azure-resource-manager/management/manage-resources-cli.md)
