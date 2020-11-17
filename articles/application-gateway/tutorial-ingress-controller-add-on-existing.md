@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 10f78167b9c3f557fa16061cfac8aad080519415
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7a7a3669c5462adba3828bb1fd6c2fc9c4b3213c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397122"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566158"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教學課程：使用現有的應用程式閘道，透過 Azure CLI (預覽) 啟用現有 AKS 叢集的應用程式閘道輸入控制器附加元件
 
@@ -29,38 +29,25 @@ ms.locfileid: "93397122"
 > * 使用 AGIC 在 AKS 叢集上輸入，以部署範例應用程式
 > * 檢查是否可透過應用程式閘道連線到應用程式
 
-## <a name="prerequisites"></a>Prerequisites
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - 本教學課程需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-如果您選擇在本機安裝和使用 CLI，本教學課程需要您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+ - 使用 [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令註冊 AKS-IngressApplicationGatewayAddon 功能旗標，如下列範例所示；當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次：
+     ```azurecli-interactive
+     az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
+     ```
+    狀態需要幾分鐘才會顯示「已註冊」。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
+     ```azurecli-interactive
+     az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
+     ```
 
-使用 [az feature register](/cli/azure/feature#az-feature-register) 命令註冊 AKS-IngressApplicationGatewayAddon 功能旗標，如下列範例所示；當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次：
-```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
-```
-
-狀態需要幾分鐘才會顯示「已註冊」。 您可以使用 [az feature list](/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-```
-
-準備就緒時，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-請務必安裝/更新本教學課程的 aks-preview 擴充功能；使用下列 Azure CLI 命令
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
+ - 準備就緒時，使用 [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
+    ```azurecli-interactive
+    az provider register --namespace Microsoft.ContainerService
+    ```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

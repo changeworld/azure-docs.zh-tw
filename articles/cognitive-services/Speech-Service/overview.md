@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521504"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377882"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -46,14 +46,12 @@ ms.locfileid: "92521504"
 
 在下列步驟中，您同時需要 Microsoft 帳戶和 Azure 帳戶。 如果您沒有 Microsoft 帳戶，則可以在 [Microsoft 帳戶入口網站](https://account.microsoft.com/account)免費註冊。 選取 [使用 Microsoft 帳戶登入]，然後在系統要求您登入時選取 [建立 Microsoft 帳戶]。 依照步驟來建立及驗證新的 Microsoft 帳戶。
 
-有了 Microsoft 帳戶之後，請移至 [Azure 註冊頁面](https://azure.microsoft.com/free/ai/)、選取 [免費開始]，然後使用 Microsoft 帳戶建立新的 Azure 帳戶。
+有了 Microsoft 帳戶之後，請移至 [Azure 註冊頁面](https://azure.microsoft.com/free/ai/)、選取 [免費開始]，然後使用 Microsoft 帳戶建立新的 Azure 帳戶。 以下是[如何註冊 Azure 免費帳戶](https://www.youtube.com/watch?v=GWT2R1C_uUU)的影片。
 
 > [!NOTE]
-> 語音服務有兩個服務層級：免費和訂用帳戶，其各有不同的限制和權益。 當您註冊免費 Azure 帳戶時，其隨附 200 美元的服務點數，您可以將此點數應用於有效時間長達 30 天的付費語音服務訂用帳戶。
+> 當您註冊免費 Azure 帳戶時，其隨附 200 美元的服務點數，您可以將此點數應用於有效時間長達 30 天的付費語音服務訂用帳戶。 如果點數用完或在 30 天結束時過期，Azure 服務就會停用。 若要繼續使用 Azure 服務，則必須將您的帳戶升級。 如需詳細資訊，請參閱[如何升級您的 Azure 免費帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription)。 
 >
-> 如果您使用免費的低容量語音服務層級，則即使在免費試用或服務點數到期後，您仍可保留此免費訂用帳戶。
->
-> 如需詳細資訊，請參閱[認知服務定價 - 語音服務](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 語音服務有兩個服務層級：免費 (f0) 和訂用帳戶 (s0)，其各有不同的限制和權益。 如果您使用免費的低容量語音服務層級，則即使在免費試用或服務點數到期後，您仍可保留此免費訂用帳戶。 如需詳細資訊，請參閱[認知服務定價 - 語音服務](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="create-the-azure-resource"></a>建立 Azure 資源
 
@@ -72,11 +70,11 @@ ms.locfileid: "92521504"
 1. 選取 [建立]，然後：
 
    - 為您的新資源提供唯一的名稱。 此名稱可協助您區分繫結至相同服務的多個訂用帳戶。
-   - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。
-   - 選擇將使用此資源的[區域](regions.md)。
-   - 選擇免費 (F0) 或付費 (S0) 的定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [檢視完整定價詳細資料]。 如需您可以為每個訂用帳戶建立的資源限制，請參閱 [Azure 認知服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)。
+   - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。 這是[如何在 Azure 入口網站中建立 Azure 訂用帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal)的簡介。
+   - 選擇將使用此資源的[區域](regions.md)。 Azure 是在全球各地許多地區正式推出的全域雲端平台。 若要取得最佳效能，請選取最接近您或您應用程式執行位置的區域。 語音服務的可用性會因不同區域而有所差異。 請確定您是在支援的區域中建立資源。 請參閱[語音服務的區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)。
+   - 選擇免費 (F0) 或付費 (S0) 的定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [檢視完整定價詳細資料]，或是參閱[語音服務定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 如需了解資源的限制，請參閱 [Azure 認知服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)。
    - 為此語音訂用帳戶建立新的資源群組，或將該訂用帳戶指派給現有的資源群組。 資源群組可協助組織各種 Azure 訂用帳戶。
-   - 選取 [建立]  。 這會帶您前往部署概觀並顯示部署進度訊息。
+   - 選取 [建立]  。 這會帶您前往部署概觀並顯示部署進度訊息。  
 <!--
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.

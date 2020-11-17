@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文件處理
-ms.openlocfilehash: 287315440199c4dc3ded1298532167d37d89a877
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976142"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360865"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -32,11 +32,19 @@ ms.locfileid: "91976142"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="建立表單辨識器資源"  target="_blank">建立表單辨識器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至表單辨識器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451) (下載 *sample_data .zip* 並將其解壓縮) 來進行本快速入門。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
+* 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可使用 [範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451) (下載 *sample_data .zip* 並將其解壓縮) 來進行本快速入門。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>試做
+
+若要線上試用表單辨識器的範例標籤工具，請移至 [FOTT 網站](https://fott-preview.azurewebsites.net/)。
+
+> [!div class="nextstepaction"]
+> [表單辨識器的範例標籤工具](https://fott-preview.azurewebsites.net/)
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>設定範例標籤工具
 
@@ -139,7 +147,7 @@ ms.locfileid: "91976142"
 * **API 金鑰** - 您的表單辨識器訂用帳戶金鑰。
 * **描述** - 選擇性 - 專案描述
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="範例標籤工具的連線設定。":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="範例標籤工具上的新增專案頁面。":::
 
 ## <a name="label-your-forms"></a>為表單加上標籤
 
@@ -155,7 +163,7 @@ ms.locfileid: "91976142"
 
 其也會顯示哪些資料表已自動擷取。 按一下文件左側的 [資料表/格線] 圖示，以查看已擷取的資料表。 因為本快速入門會自動擷取資料表內容，所以我們不會為資料表內容加上標籤，而是會仰賴自動化擷取。
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="範例標籤工具的連線設定。":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="範例標籤工具中的資料表視覺效果。":::
 
 ### <a name="apply-labels-to-text"></a>將標籤套用至文字
 
@@ -185,7 +193,7 @@ ms.locfileid: "91976142"
    1. 按一下 **+** 以建立新標記。
    1. 輸入標記名稱。
    1. 按 Enter 以儲存標記。
-1. 在主要編輯器中，按一下以從醒目提示的文字元素中選取字組。 在 _v2.1 預覽_中，您也可以按一下以選取 [選取標記] (如選項按鈕和核取方塊) 來作為索引鍵值組。 表單辨識器會識別選取標記是「已選取」或「未選取」作為值。
+1. 在主要編輯器中，按一下以從醒目提示的文字元素中選取字組。 在 _v2.1 預覽_ 中，您也可以按一下以選取 [選取標記] (如選項按鈕和核取方塊) 來作為索引鍵值組。 表單辨識器會識別選取標記是「已選取」或「未選取」作為值。
 1. 按一下您要套用的標記，或按對應的鍵盤按鍵。 數字鍵會指派為前 10 個標記的快速鍵。 您可以使用標籤編輯器窗格中的向上和向下箭號圖示來重新排序標籤。
     > [!Tip]
     > 當您要標記表單時，請記住下列秘訣。
@@ -201,7 +209,7 @@ ms.locfileid: "91976142"
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="範例標籤工具的連線設定。":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="範例標籤工具的主要編輯器視窗。":::
 
 
 請遵循上述步驟，至少為您表單中的五個表單加上標籤。
@@ -256,7 +264,7 @@ ms.locfileid: "91976142"
 * 標籤的清單，以及每個標籤的預估精確度。
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="範例標籤工具的連線設定。":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="定型檢視。":::
 
 定型完成後，請查看 [平均精確度] 值。 如果該值偏低，您應新增更多輸入文件，並重複上述步驟。 您已加上標籤的文件會保留在專案索引中。
 
@@ -275,7 +283,7 @@ ms.locfileid: "91976142"
 
 若要在範例標籤工具中撰寫模型，請按一下左側的 [模型撰寫 (合併箭號)] 圖示。 在左側，選取您想要一起撰寫的模型。 具有箭號圖示的模型是已經撰寫好的模型。 按一下 [撰寫] 按鈕。 在快顯視窗中，為新撰寫的模型命名，然後按一下 [撰寫]。 當作業完成時，新撰寫的模型應該就會出現在清單中。 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="範例標籤工具的連線設定。":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型撰寫 UX 檢視。":::
 
 ---
 

@@ -47,8 +47,6 @@
           href: customize-person-model-overview.md
 - name: 使用說明指南
   items:
-    - name: 連線到 Azure
-      href: connect-to-azure.md
     - name: 管理與 Azure 連線的帳戶
       href: manage-account-connected-to-azure.md
     - name: 上傳並為影片製作索引

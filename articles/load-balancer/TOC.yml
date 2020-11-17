@@ -67,9 +67,9 @@
       href: load-balancer-ha-ports-overview.md
     - name: 多個前端
       href: load-balancer-multivip-overview.md
-    - name: 輸出 Proxy
+    - name: 對網際網路進行輸出連線的 SNAT
       href: load-balancer-outbound-connections.md
-    - name: 輸出規則
+    - name: 設定輸出規則
       href: outbound-rules.md
     - name: 逾時時的 TCP 重設
       href: load-balancer-tcp-reset.md

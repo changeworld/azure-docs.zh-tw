@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: 透過 Azure 原則在 VM 上啟用
       href: virtual-machines-policy-enable.md
+    - name: 修復中斷的 Automanage 帳戶
+      href: repair-automanage-account.md
 - name: 資源
   expanded: true
   items:

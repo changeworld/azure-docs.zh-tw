@@ -2,6 +2,8 @@
   href: cut-planes.md
 - name: 偵錯轉譯
   href: debug-rendering.md
+- name: Fresnel 效果
+  href: fresnel-effect.md
 - name: 階層式狀態覆寫
   href: override-hierarchical-state.md
 - name: 相機

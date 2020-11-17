@@ -28,8 +28,6 @@
       items:
         - name: 變更語音辨識的來源語言
           href: how-to-specify-source-language.md
-        - name: 以自訂語音提高精確度
-          href: how-to-custom-speech.md
         - name: 使用壓縮的音訊輸入格式
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: 自訂
       items:
+        - name: 什麼是自訂語音？
+          href: custom-speech-overview.md
         - name: 在語音 Studio 中使用音訊檔案測試模型
           href: quickstarts/speech-studio-test-model.md
         - name: 準備自訂語音的資料
           href: how-to-custom-speech-test-and-train.md
         - name: 檢查自訂語音資料
           href: how-to-custom-speech-inspect-data.md
-        - name: 評估自訂語音精確度
+        - name: 評估和改善自訂語音精確度
           href: how-to-custom-speech-evaluate-data.md
-        - name: 改善自訂語音精確度
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: 定型自訂語音的模型
+        - name: 定型和部署自訂語音模型
           href: how-to-custom-speech-train-model.md
-        - name: 部署自訂模型
-          href: how-to-custom-speech-deploy-model.md
         - name: 自訂語音的 CI/CD
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: 建立人為標記的轉譯
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: 將自訂命令應用程式匯出為技能
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: 從用戶端應用程式更新命令
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: 從 Web 端點更新命令
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: 部署
                   items:
                     - name: 使用 Azure DevOps 進行持續部署

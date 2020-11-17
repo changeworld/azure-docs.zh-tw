@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146683"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504385"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的 Always On 可用性群組
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,13 +72,13 @@ DNN 接聽程式是 Azure 中建議的 HADR 連線解決方案，因為其可簡
 
 有多個選項可用於將可用性群組部署至 Azure VM 上的 SQL Server，有些選項比其他選項更加自動化。 
 
-下表提供可用選項的比較： 
+下表提供可用選項的比較：
 
-| |**[Azure 入口網站](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[快速入門範本](availability-group-quickstart-template-configure.md)**|**[手動](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | Azure 入口網站 | Azure CLI/PowerShell | 快速入門範本 | 手動 |
+|---------|---------|---------|---------|---------|
 |**SQL Server 版本** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server 版本** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
-|**Windows Server 版本**| 2016 + | 2016 + | 2016 + | 全部| 
+|**Windows Server 版本**| 2016 + | 2016 + | 2016 + | 全部|
 |**為您建立叢集**|是|是 | 是 |否|
 |**為您建立可用性群組** |是 |否|否|否|
 |**獨立建立接聽程式和負載平衡器** |否|否|否|是|
@@ -90,9 +90,8 @@ DNN 接聽程式是 Azure 中建議的 HADR 連線解決方案，因為其可簡
 |**相同區域中的多重地區進行災害復原**|是|是|是|是|
 |**沒有 AD 的分散式 AG**|否|否|否|是|
 |**沒有叢集的分散式 AG** |否|否|否|是|
-||||||
 
-
+如需詳細資訊，請參閱 [Azure 入口網站](availability-group-azure-portal-configure.md)、[Azure CLI / PowerShell](./availability-group-az-commandline-configure.md)、[快速入門範本](availability-group-quickstart-template-configure.md)和[手動設定](availability-group-manually-configure-prerequisites-tutorial.md)。
 
 ## <a name="considerations"></a>考量 
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836866"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505235"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 的新功能
 
@@ -23,6 +23,14 @@ ms.locfileid: "87836866"
 
 了解 QnA Maker 的新功能。
 
+### <a name="november-2020"></a>2020 年 11 月
+
+* 新版 QnA Maker 會以免費的公開預覽版推出。 您可以在[這裡](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)深入了解.
+* 簡化的資源建立
+* 端對端區域支援
+* 深度學習排名模型
+* 取得精確答案的機器閱讀理解
+  
 ### <a name="july-2020"></a>2020 年 7 月
 
 * [中繼資料：多個中繼資料配對的 `OR` 邏輯組合](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)

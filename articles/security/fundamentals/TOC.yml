@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: 資料保護
           href: protection-customer-data.md
+    - name: 平台完整性和安全性
+      href: platform.md
+      items:
+        - name: 韌體安全性
+          href: firmware.md
+        - name: 安全開機
+          href: secure-boot.md
+        - name: 測量開機和主機證明
+          href: measured-boot-host-attestation.md
+        - name: 專案 Cerberus
+          href: project-cerberus.md
+        - name: 待用加密
+          href: encryption-atrest.md
+        - name: Hypervisor 安全性
+          href: hypervisor.md
     - name: Azure 雲端中的隔離
       href: isolation-choices.md
 - name: 身分識別管理

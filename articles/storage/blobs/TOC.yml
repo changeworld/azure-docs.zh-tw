@@ -328,11 +328,11 @@
             - name: 使用者適用的授權選項
               items:
                 - name: 入口網站
-                  href: authorize-blob-access-portal.md
+                  href: authorize-data-operations-portal.md
                 - name: PowerShell
-                  href: authorize-active-directory-powershell.md
+                  href: authorize-data-operations-powershell.md
                 - name: Azure CLI
-                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  href: authorize-data-operations-cli.md
             - name: 使用 Azure RBAC 管理存取權限
               items:
                 - name: 入口網站
@@ -655,7 +655,7 @@
   items:
     - name: 切換至 Data Lake Storage Gen1 文件
       href: /azure/data-lake-store/
-    - name: 總覽
+    - name: 概觀
       items:
         - name: Data Lake Storage 簡介
           href: data-lake-storage-introduction.md

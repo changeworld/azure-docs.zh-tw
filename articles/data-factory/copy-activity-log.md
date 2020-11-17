@@ -26,7 +26,7 @@ ms.locfileid: "94593634"
 
 當您在複製活動中啟用容錯設定以略過錯誤的資料時，也可以記錄略過的檔案和略過的資料列。  您可以從「 [複製活動」中的容錯](copy-activity-fault-tolerance.md)取得更多詳細資料。 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 下列範例會提供 JSON 定義，以啟用複製活動中的會話記錄： 
 
 ```json

@@ -275,7 +275,7 @@
               href: platform/logs-data-export.md
             - name: 使用 Logic Apps 匯出
               href: platform/logs-export-logic-app.md
-            - name: 使用資料總管查詢匯出的資料
+            - name: 使用 Azure 資料總管查詢資料
               href: platform/azure-data-explorer-query-storage.md
             - name: 傳送至 Excel
               href: log-query/log-excel.md

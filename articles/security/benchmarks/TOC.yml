@@ -93,6 +93,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure 防火牆安全性基準
       href: ../../firewall/security-baseline.md
+    - name: Azure Front Door 安全性基準
+      href: ../../frontdoor/security-baseline.md
     - name: Azure Functions 安全性基準
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT 中樞安全性基準
@@ -139,6 +141,8 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB 安全性基準
       href: ../../cosmos-db/security-baseline.md
+    - name: 成本管理安全性基準
+      href: ../../cost-management-billing/security-baseline.md
     - name: 客戶加密箱安全性基準
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics 安全性基準
