@@ -2,19 +2,19 @@
 title: 常見問題集 - Azure Synapse Analytics (工作區預覽)
 description: Azure Synapse Analytics (工作區預覽) 常見問題集
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7e8ea231dd6db9eab6cf9115f6ce2e62893371a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 530ebe09ee0ca44b0a5fbd4b8da2784e2c7ae7ea
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305409"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843888"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
 
@@ -101,8 +101,6 @@ A：是，您可以使用協力廠商商務應用程式 (例如 Tableau 和 Powe
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立工作區](quickstart-create-workspace.md)
-- [使用 Synapse Studio](quickstart-synapse-studio.md)
-- [建立專用 SQL 集區](quickstart-create-sql-pool-portal.md)
-- [使用無伺服器 SQL 集區](quickstart-sql-on-demand.md)
-- [建立無伺服器 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md) 
+* [開始使用 Azure Synapse Analytics](get-started.md)
+* [建立工作區](quickstart-create-workspace.md)
+* [使用無伺服器 SQL 集區](quickstart-sql-on-demand.md)

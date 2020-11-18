@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289544"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844500"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -31,9 +31,9 @@ Azure Key Vault 使用者可以直接從其 Key Vault 產生 DigiCert 憑證。 
 
 若要完成本指南，您必須具備下列資源。
 * 一個金鑰保存庫。 您可以使用現有的金鑰保存庫，或依照下列其中一個快速入門中的步驟建立新的金鑰保存庫：
-   - [使用 Azure CLI 建立金鑰保存庫](../secrets/quick-create-cli.md)
-   - [使用 Azure PowerShell 建立金鑰保存庫](../secrets/quick-create-powershell.md)
-   - [使用 Azure 入口網站建立金鑰保存庫](../secrets/quick-create-portal.md)。
+   - [使用 Azure CLI 建立金鑰保存庫](../general/quick-create-cli.md)
+   - [使用 Azure PowerShell 建立金鑰保存庫](../general/quick-create-powershell.md)
+   - [使用 Azure 入口網站建立金鑰保存庫](../general/quick-create-portal.md)。
 *   您必須啟動 DigiCert CertCentral 帳戶。 [註冊](https://www.digicert.com/account/signup/)您的 CertCentral 帳戶。
 *   帳戶中的管理員層級許可權。
 
@@ -56,11 +56,11 @@ Azure Key Vault 使用者可以直接從其 Key Vault 產生 DigiCert 憑證。 
 4.  選取 [新增] 選項。
  ![新增憑證授權單位](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  在 [建立憑證授權單位] 畫面上，選擇下列值：
-    -   **Name** ：新增可識別的簽發者名稱。 範例 DigicertCA
-    -   **提供者** ：從功能表中選取 DigiCert。
-    -   **帳戶識別碼** ：輸入您的 DigiCert CertCentral 帳戶識別碼
-    -   **帳戶密碼** ：輸入您在 DigiCert CertCentral 帳戶中產生的 API 金鑰
-    -   **組織識別碼** ：輸入從 DigiCert CertCentral 帳戶收集的 OrgID 
+    -   **Name**：新增可識別的簽發者名稱。 範例 DigicertCA
+    -   **提供者**：從功能表中選取 DigiCert。
+    -   **帳戶識別碼**：輸入您的 DigiCert CertCentral 帳戶識別碼
+    -   **帳戶密碼**：輸入您在 DigiCert CertCentral 帳戶中產生的 API 金鑰
+    -   **組織識別碼**：輸入從 DigiCert CertCentral 帳戶收集的 OrgID 
     -   按一下 [建立]。
    
 6.  您會看到 DigicertCA 現在已加入憑證授權單位清單中。
@@ -89,7 +89,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 您必須針對金鑰保存庫使用唯一名稱。 這裡的 "Contoso-Vaultname" 是本指南中 Key Vault 的名稱。
 
 - **保存庫名稱** Contoso-Vaultname。
-- **資源群組名稱** ：ContosoResourceGroup。
+- **資源群組名稱**：ContosoResourceGroup。
 - **位置** EastUS。
 
 ```azurepowershell-interactive
@@ -108,12 +108,12 @@ $org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCer
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 ```
 
-4. 設定 **簽發者** 。 這會將 Digicert 新增為金鑰保存庫中的憑證授權單位。 若要深入了解參數，請[閱讀這裡](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
+4. 設定 **簽發者**。 這會將 Digicert 新增為金鑰保存庫中的憑證授權單位。 若要深入了解參數，請[閱讀這裡](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
 Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
-5. **設定憑證的原則，並直接在 Key Vault 內從 DigiCert 發出憑證** 。
+5. **設定憑證的原則，並直接在 Key Vault 內從 DigiCert 發出憑證**。
 
 ```azurepowershell-interactive
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
@@ -124,7 +124,7 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 ## <a name="troubleshoot"></a>疑難排解
 
-如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視 **憑證作業** ，來檢閱該憑證的 DigiCert 錯誤訊息。
+如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視 **憑證作業**，來檢閱該憑證的 DigiCert 錯誤訊息。
 
  ![憑證作業](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 

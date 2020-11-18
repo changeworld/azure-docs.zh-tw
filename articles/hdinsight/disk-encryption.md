@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548025"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844739"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
 
@@ -71,17 +71,17 @@ HDInsight 支援兩種不同層級的多種加密類型：
 
 ### <a name="create-azure-key-vault"></a>建立 Azure Key Vault
 
-建立金鑰保存庫。 如需特定步驟，請參閱 [建立 Azure Key Vault](../key-vault/secrets/quick-create-portal.md) 。
+建立金鑰保存庫。 如需特定步驟，請參閱 [建立 Azure Key Vault](../key-vault/general/quick-create-portal.md) 。
 
 HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，則可以將自己的金鑰匯入 Azure Key Vault 中。 請記住，金鑰保存庫必須啟用虛 **刪除** 。 如需如何匯入現有金鑰的詳細資訊，請瀏覽[關於金鑰、祕密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
 
 ### <a name="create-key"></a>建立金鑰
 
-1. 在新的金鑰保存庫中，流覽至 [ **設定** 機  >  **碼**  >  **+ 產生/匯入** ]。
+1. 在新的金鑰保存庫中，流覽至 [**設定** 機  >  **碼**  >  **+ 產生/匯入**]。
 
     ![在 Azure Key Vault 中產生新的金鑰](./media/disk-encryption/create-new-key.png "在 Azure Key Vault 中產生新的金鑰")
 
-1. 提供名稱，然後選取 [ **建立** ]。 維護 **RSA** 的預設 **金鑰類型** 。
+1. 提供名稱，然後選取 [ **建立**]。 維護 **RSA** 的預設 **金鑰類型**。
 
     ![產生金鑰名稱](./media/disk-encryption/create-key.png "產生金鑰名稱")
 
@@ -95,16 +95,16 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 ### <a name="create-access-policy"></a>建立存取原則
 
-1. 在新的金鑰保存庫中，流覽至 [ **設定**  >  **存取** 原則]  >  **+ [新增存取原則** ]。
+1. 在新的金鑰保存庫中，流覽至 [**設定**  >  **存取** 原則]  >  **+ [新增存取原則**]。
 
     ![建立新的 Azure Key Vault 存取原則](./media/disk-encryption/key-vault-access-policy.png)
 
 1. 在 [ **新增存取原則** ] 頁面中，提供下列資訊：
 
-    |屬性 |描述|
+    |屬性 |說明|
     |---|---|
-    |金鑰許可權|選取 [ **取得** ]、[解除包裝 **金鑰** ] 和 [ **包裝金鑰** ]。|
-    |秘密許可權|選取 [ **取得** ]、[ **設定** ] 和 [ **刪除** ]。|
+    |金鑰許可權|選取 [ **取得**]、[解除包裝 **金鑰**] 和 [ **包裝金鑰**]。|
+    |秘密許可權|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|
     |選取主體|選取您稍早建立的使用者指派受控識別。|
 
     ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -121,7 +121,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-在叢集建立期間，請提供完整的 **金鑰識別碼** ，包括金鑰版本。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
+在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
 
 ![建立新的叢集](./media/disk-encryption/create-cluster-portal.png)
 
@@ -359,7 +359,7 @@ New-AzResourceGroupDeployment `
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-若要輪替金鑰，您需要基底金鑰保存庫 URI。 完成之後，請移至入口網站中的 [HDInsight 叢集屬性] 區段，然後按一下 [ **磁片加密金鑰 URL** ] 下的 [ **變更金鑰** ]。 輸入新的金鑰 url，並提交以旋轉金鑰。
+若要輪替金鑰，您需要基底金鑰保存庫 URI。 完成之後，請移至入口網站中的 [HDInsight 叢集屬性] 區段，然後按一下 [**磁片加密金鑰 URL**] 下的 [**變更金鑰**]。 輸入新的金鑰 url，並提交以旋轉金鑰。
 
 ![輪替磁片加密金鑰](./media/disk-encryption/change-key.png)
 
@@ -467,7 +467,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 是什麼](../key-vault/general/overview.md)。
 * [Azure HDInsight 中的企業安全性總覽](./domain-joined/hdinsight-security-overview.md)。

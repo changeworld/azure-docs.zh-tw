@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977743"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843548"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中的虛擬機器上保護及使用原則
 
@@ -39,7 +39,7 @@ Azure 受控磁碟依預設會在將資料保存到雲端時，自動加密您�
 
 加密不會影響受控磁片的效能。 加密沒有額外的費用。
 
-您可以依賴由平台管理的金鑰來加密受控磁碟，也可以使用您自己的金鑰來管理加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定*客戶管理的金鑰*，以用於加密和解密受控磁碟中的所有資料。 
+您可以依賴由平台管理的金鑰來加密受控磁碟，也可以使用您自己的金鑰來管理加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定 *客戶管理的金鑰*，以用於加密和解密受控磁碟中的所有資料。 
 
 若要深入瞭解伺服器端加密，請參閱 [Windows](windows/disk-encryption.md) 或 [Linux](linux/disk-encryption.md)的文章。
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) 中適用於 Azure 資源的受控識別功能
 
 [Azure 原則](../governance/policy/overview.md)可用來為您組織的 [Windows VM](./windows/policy.md) 和 [Linux VM](./linux/policy.md) 定義所要的行為。 藉由使用原則，組織可以強制執行整個企業的各種慣例和規則。 強制執行所要的行為有助於降低風險，同時促進組織的成功。
 
-## <a name="role-based-access-control"></a>角色型存取控制
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)，您可以將小組內的職責區隔，並只授與 VM 上執行其工作所需的使用者存取權。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](/cli/azure/role) 或 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)，在 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)中設定 VM 的存取控制。
 

@@ -3,13 +3,13 @@ title: 使用專用集區來執行工作（task）
 description: 在登錄中設定 (代理程式組件區) 專用的計算集區，以執行 Azure Container Registry 工作。
 ms.topic: article
 ms.date: 10/12/2020
-ms.custom: references_regions
-ms.openlocfilehash: 86c539c3b34ca0e54d65f15c4d9d01a99f9b31c6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 94956af14aad2b62e6455f443329bcd3232095c0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997224"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844909"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>在專用的代理程式組件區上執行 ACR 工作
 
@@ -22,7 +22,7 @@ ms.locfileid: "91997224"
 - **彈性的選項** -從不同的 [集區層](#pool-tiers) 和調整選項中進行選擇，以符合您的工作負載需求。
 - **Azure 管理** -工作集區會由 azure 修補及維護，並提供保留配置，而不需要維護個別 vm。
 
-**進階**容器登錄服務層級中提供這項功能。 如需登錄服務層和限制的相關資訊，請參閱 [Azure Container Registry sku][acr-tiers]。
+**進階** 容器登錄服務層級中提供這項功能。 如需登錄服務層和限制的相關資訊，請參閱 [Azure Container Registry sku][acr-tiers]。
 
 > [!IMPORTANT]
 > 此功能目前在預覽階段，但[有某些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
@@ -44,7 +44,7 @@ ms.locfileid: "91997224"
 
 代理程式組件區層會在集區中的每個實例提供下列資源。
 
-|服務層級    | 類型  |  CPU  |記憶體 (GB)  |
+|層    | 類型  |  CPU  |記憶體 (GB)  |
 |---------|---------|---------|---------|
 |S1     |  標準    | 2       |    3     |
 |S2     |  標準    | 4       |    8     |
@@ -93,20 +93,20 @@ az acr agentpool update \
 
 工作代理程式組件區需要存取下列 Azure 服務。 您必須將下列防火牆規則新增到任何現有的網路安全性群組或使用者定義的路由。
 
-| Direction | 通訊協定 | 來源         | 來源連接埠 | Destination          | 目的地埠 | 已使用    |
+| 方向 | 通訊協定 | 來源         | 來源連接埠 | Destination          | 目的地埠 | 已使用    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
-| 輸出  | TCP      | VirtualNetwork | 任意         | AzureKeyVault        | 443       | Default |
-| 輸出  | TCP      | VirtualNetwork | 任意         | 儲存體              | 443       | Default |
-| 輸出  | TCP      | VirtualNetwork | 任意         | EventHub             | 443       | Default |
-| 輸出  | TCP      | VirtualNetwork | 任意         | AzureActiveDirectory | 443       | Default |
-| 輸出  | TCP      | VirtualNetwork | 任意         | AzureMonitor         | 443       | Default |
+| 輸出  | TCP      | VirtualNetwork | 任意         | AzureKeyVault        | 443       | 預設 |
+| 輸出  | TCP      | VirtualNetwork | 任意         | 儲存體              | 443       | 預設 |
+| 輸出  | TCP      | VirtualNetwork | 任意         | EventHub             | 443       | 預設 |
+| 輸出  | TCP      | VirtualNetwork | 任意         | AzureActiveDirectory | 443       | 預設 |
+| 輸出  | TCP      | VirtualNetwork | 任意         | AzureMonitor         | 443       | 預設 |
 
 > [!NOTE]
 > 如果您的工作需要來自公用網際網路的其他資源，請新增對應的規則。 例如，需要額外的規則來執行 docker 組建工作，以從 Docker Hub 提取基礎映射，或還原 NuGet 套件。
 
 ### <a name="create-pool-in-vnet"></a>在 VNet 中建立集區
 
-下列範例會在網路*myvnet*的 *>mysubnet*子網中建立代理程式組件區：
+下列範例會在網路 *myvnet* 的 *>mysubnet* 子網中建立代理程式組件區：
 
 ```azurecli
 # Get the subnet ID
@@ -174,7 +174,7 @@ az acr agentpool show \
     --queue-count
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需雲端中容器映射組建和維護的更多範例，請參閱 [ACR 工作的教學課程系列](container-registry-tutorial-quick-task.md)。
 

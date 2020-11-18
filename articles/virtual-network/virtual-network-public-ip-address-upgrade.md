@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353351"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843735"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升級公用 IP 位址
 
@@ -118,13 +118,13 @@ $validate.ValidationMessages
 Move-AzureReservedIP -ReservedIPName $name -Prepare
 Move-AzureReservedIP -ReservedIPName $name -Commit
 ```
-Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移保留的 IP (名稱所建立，它會是資源群組 **>myreservedip 遷移的** ) 。
+Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移保留的 IP (名稱所建立，它會是資源群組 **>myreservedip 遷移的**) 。
 
 # <a name="reserved-to-basic---cli"></a>[**保留至基本-CLI**](#tab/option-migrate-cli)
 
 下列範例假設先前在 **myResourceGroup** 中建立傳統 Azure 保留的 IP **>myreservedip** 。 另一項遷移的必要條件是確保 Azure Resource Manager 的訂用帳戶已註冊進行遷移。 本 [頁面](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)的步驟3和4將詳細說明這一點。
 
-為了遷移保留的 IP，請使用 Azure CLI 執行下列命令。  請注意，如果 IP 位址未與任何服務相關聯 (下面有一個名為 **myService** And deployment **myDeployment** ) 的服務，則可以略過該步驟。
+為了遷移保留的 IP，請使用 Azure CLI 執行下列命令。  請注意，如果 IP 位址未與任何服務相關聯 (下面有一個名為 **myService** And deployment **myDeployment**) 的服務，則可以略過該步驟。
 
 ```azurecli-interactive
 ## Variables for the command ##
@@ -142,30 +142,20 @@ azure network reserved-ip validate-migration $name
 azure network reserved-ip prepare-migration $name
 azure network reserved-ip commit-migration $name
 ```
-Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移保留的 IP (名稱所建立，它會是資源群組 **>myreservedip 遷移的** ) 。
+Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移保留的 IP (名稱所建立，它會是資源群組 **>myreservedip 遷移的**) 。
 
 ---
 
 ## <a name="limitations"></a>限制
 
-* 這項功能目前僅適用于下欄區域：<br>
-美國中西部<br>
-美國中北部<br>
-美國西部<br>
-美國西部 2<br>
-挪威東部<br>
-南非北部<br>
-美國東部<br>
-北歐<br>
-南韓中部<br>
-印度中部<br>
-美國東部 2<br>
-瑞士北部<br>
-印度西部<br>
-德國北部<br>
-加拿大中部<br>
-法國南部<br>
-印度西部
+* 這項功能目前無法在下欄區域使用：<br>
+US Gov 維吉尼亞州<br>
+US DoD 東部<br>
+US DoD 中部<br>
+中國東部<br>
+中國東部 2<br>
+中國北部<br>
+中國北部 2
 
 * 為了升級基本公用 IP，它無法與任何 Azure 資源相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯的詳細資訊。  同樣地，若要遷移保留的 IP，則無法與任何雲端服務相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) ，以取得如何將保留的 ip 解除關聯的詳細資訊。  
 * 從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) ，因此無法與區域冗余或區域性的 Azure 資源相關聯。  請注意，這只適用于提供可用性區域的區域。

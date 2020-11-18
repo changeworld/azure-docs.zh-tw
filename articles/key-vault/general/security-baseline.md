@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1abbabd3c231a70ca473c4b64e9a8c75d2119c89
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7d116010d5e6fea5e1ba8a66431b874194506283
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445518"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843446"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 
@@ -39,9 +39,9 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：監視和記錄 VNet、子網路與 NIC 的設定和流量
 
@@ -51,18 +51,18 @@ https://docs.microsoft.com/azure/key-vault/private-link-service
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
-**指引** ：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
@@ -74,9 +74,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 Azure 服務層 Azure 資訊安全中心的威脅偵測： https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
@@ -90,9 +90,9 @@ Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
@@ -106,18 +106,18 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
-**指引** ：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
@@ -126,9 +126,9 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 Azure 服務標記總覽： https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
@@ -149,9 +149,9 @@ https://docs.microsoft.com/azure/governance/policy/samples/#networ
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
@@ -166,9 +166,9 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
@@ -183,9 +183,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
@@ -196,9 +196,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 **指導** 方針：不適用;Microsoft 會針對記錄檔中的時間戳記，維護 Azure 資源（例如 Azure Key Vault）所使用的時間來源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -213,9 +213,9 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
@@ -226,18 +226,18 @@ Azure Key Vault 記錄：
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
@@ -246,9 +246,9 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 變更資料保留期限： https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
@@ -267,9 +267,9 @@ Azure 監視器中的記錄查詢入門：
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
@@ -288,36 +288,36 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
 **指導** 方針：不適用;Azure Key Vault 不會處理或產生反惡意程式碼的相關記錄。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
 **指導** 方針：不適用;Azure Key Vault 不會處理或產生 DNS 相關記錄。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
@@ -338,18 +338,18 @@ https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registerin
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
 **指導** 方針：不適用;Azure Key Vault 沒有預設密碼的概念，因為 Active Directory 提供驗證，並使用 Azure 角色型存取控制 (Azure RBAC) 進行保護。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
@@ -360,9 +360,9 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
@@ -374,15 +374,15 @@ https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
 **指導** 方針：啟用 Azure Active Directory Multi-Factor Authentication，並遵循目前為預覽狀態的 Azure 資訊安全中心身分識別和存取管理 () 建議，以協助保護您的已啟用事件中樞資源。
 
-規劃以雲端為基礎的 Azure Multi-Factor Authentication 部署：
+規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署：
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -391,23 +391,23 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導** 方針：使用具特殊許可權的存取工作站 (PAW) 搭配 Azure MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入並設定 Key Vault 啟用的資源。 
+**指導** 方針：使用特殊許可權存取工作站 (PAW) 與 Azure AD MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和設定 Key Vault 啟用的資源。 
 
 特殊許可權存取工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-規劃以雲端為基礎的 Azure Multi-Factor Authentication 部署： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：針對來自系統管理帳戶的可疑活動留下記錄和發出警示
 
@@ -427,9 +427,9 @@ Azure Active Directory 風險偵測： https://docs.microsoft.com/azure/active-d
 
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
@@ -439,9 +439,9 @@ Azure Active Directory 條件式存取中的位置條件為何？： https://doc
 
 
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -454,9 +454,9 @@ Azure Active Directory 條件式存取中的位置條件為何？： https://doc
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
@@ -471,9 +471,9 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視對已停用帳戶的存取嘗試
 
@@ -485,9 +485,9 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
@@ -500,9 +500,9 @@ Azure Active Directory 入口網站中有風險的登入報告： https://docs.m
 如何上架 Azure Sentinel：  https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
@@ -512,9 +512,9 @@ Azure Active Directory 入口網站中有風險的登入報告： https://docs.m
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="data-protection"></a>資料保護
 
@@ -528,9 +528,9 @@ Azure Active Directory 入口網站中有風險的登入報告： https://docs.m
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
@@ -544,9 +544,9 @@ Azure Key Vault 的虛擬網路服務端點： https://docs.microsoft.com/azure/
 
 
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
@@ -560,9 +560,9 @@ Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
@@ -574,18 +574,18 @@ Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
 **指導** 方針：不適用;Azure Key Vault 中 (秘密、金鑰和憑證) 的所有資料都會被視為機密。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
@@ -596,9 +596,9 @@ Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-l
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
@@ -613,9 +613,9 @@ Azure 客戶資料保護：
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
@@ -626,9 +626,9 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 - [加密模型和金鑰管理表](../../security/fundamentals/encryption-atrest.md)
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
@@ -640,9 +640,9 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="vulnerability-management"></a>弱點管理
 
@@ -653,34 +653,34 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 **指導** 方針： Microsoft 會在支援 Azure Key Vault 的基礎系統上執行弱點管理。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
 **指導** 方針： N/A;Microsoft 會在支援 Key Vault 的基礎系統上執行修補程式管理。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自動化的第三方軟體修補程式管理解決方案
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
 **指導** 方針： Microsoft 會在支援 Key Vault 的基礎系統上執行弱點管理。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
@@ -691,9 +691,9 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
@@ -715,9 +715,9 @@ https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
@@ -727,9 +727,9 @@ https://docs.microsoft.com/azure/role-based-access-control/overview
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
@@ -746,17 +746,17 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 使用標記來組織您的 Azure 資源： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護受核准 Azure 資源和軟體標題的清查
 
 **指導** 方針：定義您的計算資源的已核准 Azure 資源清單和已核准的軟體
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
@@ -774,36 +774,36 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
 **指導** 方針：不適用;這項建議適用于整個 Azure 和計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
@@ -819,18 +819,18 @@ Azure 原則範例： https://docs.microsoft.com/azure/governance/policy/samples
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="610-implement-approved-application-list"></a>6.10：實作已核准的應用程式清單
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11：限制使用者透過腳本與 AzureResources Manager 互動的能力
 
@@ -841,27 +841,27 @@ Azure 原則範例： https://docs.microsoft.com/azure/governance/policy/samples
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行指令碼的能力
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指引** ：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="secure-configuration"></a>安全設定
 
@@ -892,18 +892,18 @@ https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
@@ -919,18 +919,18 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
@@ -944,18 +944,18 @@ Azure Repos 文件：
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系統設定管理工具
 
@@ -965,18 +965,18 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統設定管理工具
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：為 Azure 服務實作自動化的設定監視
 
@@ -988,18 +988,18 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
 **指導** 方針：不適用;此基準測試適用于計算資源。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
@@ -1021,9 +1021,9 @@ https://docs.microsoft.com/azure/key-vault/general/authentication
 
 https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
@@ -1039,19 +1039,19 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 * [如何指派 Key Vault 存取原則](assign-access-policy-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
-**指引** ：實作認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。  
+**指引**：實作認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。  
   
  如何設定認證掃描器： https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
@@ -1059,12 +1059,12 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指引** ：不適用，這項建議主要用於計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
+**指引**：不適用，這項建議主要用於計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
@@ -1074,18 +1074,18 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware： https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確保更新反惡意程式碼軟體和簽章
 
-**指引** ：不適用，這項建議主要用於計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
+**指引**：不適用，這項建議主要用於計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="data-recovery"></a>資料復原
 
@@ -1117,9 +1117,9 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份客戶管理的任何金鑰
 
@@ -1147,9 +1147,9 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
@@ -1172,9 +1172,9 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 如何還原 Key Vault 秘密： https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
@@ -1184,9 +1184,9 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="incident-response"></a>事件回應
 
@@ -1194,7 +1194,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指引** ：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。 這些程式應著重于保護機密系統，例如使用 Key Vault 秘密的系統。
+**指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。 這些程式應著重于保護機密系統，例如使用 Key Vault 秘密的系統。
 
 如何設定 Azure 資訊安全中心內的工作流程自動化：  
 
@@ -1212,18 +1212,18 @@ https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-sec
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
-**指引** ：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性會依據資訊安全中心對用於發出警示的發現或分析其信心程度，以及信賴等級具有活動背後會導致警示的惡意意圖。 此外，清楚地標示訂用帳戶 (例如 生產、非生產) 以及建立命名系統來清楚識別和分類 Azure 資源，特別是處理敏感性資料，例如 Azure Key Vault 秘密。
+**指引**：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性會依據資訊安全中心對用於發出警示的發現或分析其信心程度，以及信賴等級具有活動背後會導致警示的惡意意圖。 此外，清楚地標示訂用帳戶 (例如 生產、非生產) 以及建立命名系統來清楚識別和分類 Azure 資源，特別是處理敏感性資料，例如 Azure Key Vault 秘密。
 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
@@ -1233,21 +1233,21 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指引** ：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。  事後檢討事件，確保問題已解決。
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。  事後檢討事件，確保問題已解決。
 
 如何設定 Azure 資訊安全中心的安全性連絡人： 
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
@@ -1265,9 +1265,9 @@ https://docs.microsoft.com/azure/security-center/continuous-export
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
@@ -1279,9 +1279,9 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
@@ -1299,9 +1299,9 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 

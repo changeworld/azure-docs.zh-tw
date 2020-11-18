@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f5ed221cfdd48ebbe20ea30e0b11e4fc2d23f359
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 003bf5241611df450fa6d0ecadff264c4d5de243
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547311"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842850"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>適用于 Azure IoT 中樞的 Azure 安全性基準
 
@@ -37,9 +37,9 @@ IoT 中樞功能 (包括訊息路由、檔案上傳和大量裝置匯入/匯出)
 - [Azure Private Link 總覽](../private-link/private-link-overview.md)
 - [Azure 網路安全性群組](../virtual-network/network-security-groups-overview.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
@@ -51,17 +51,17 @@ IoT 中樞功能 (包括訊息路由、檔案上傳和大量裝置匯入/匯出)
  
 - [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
-**指引** ：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
@@ -77,17 +77,17 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [Azure 資訊安全中心內的威脅防護](../security-center/azure-defender.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
 **指導** 方針：不適用;這項建議適用于產生可供客戶記錄和查看之網路封包的供應專案。 IoT 中樞不會產生面向客戶的網路封包，且不會直接部署到 Azure 虛擬網路。
 
-**Azure 資訊安全中心監視** ：否
+**Azure 資訊安全中心監視**：否
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
@@ -101,17 +101,17 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何使用 Azure 防火牆設定警示](../firewall/threat-intel.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
-**指引** ：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
@@ -120,9 +120,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [如何使用 Azure IoT 的服務標記](iot-hub-understand-ip-address.md)
 - [如需使用服務標記的詳細資訊](../virtual-network/service-tags-overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
@@ -130,9 +130,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
@@ -140,9 +140,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
@@ -152,9 +152,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
@@ -164,9 +164,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導** 方針： Microsoft 會維護用於 Azure 資源的時間來源，例如記錄中時間戳記的 Azure IoT 中樞。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -175,9 +175,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [設定 Azure IoT 記錄](monitor-iot-hub-reference.md#resource-logs)
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
@@ -189,17 +189,17 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [瞭解 Azure 中的記錄和不同的記錄類型](../azure-monitor/platform/platform-logs-overview.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
@@ -207,9 +207,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何設定記錄保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
@@ -224,9 +224,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
    
 - [ 如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
@@ -238,33 +238,33 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
 **指導** 方針：不適用;Azure IoT 中樞不會處理或產生反惡意程式碼的相關記錄。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
 **指導** 方針：不適用;Azure IoT 中樞不會處理或產生 DNS 相關的記錄。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
@@ -278,29 +278,29 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
 **指導** 方針： Azure IoT 中樞資源的存取管理是透過 Azure Active Directory (Azure AD) 來控制。 Azure AD 沒有預設密碼的概念。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指引** ：建立使用專用系統管理帳戶的標準作業程序。
+**指引**：建立使用專用系統管理帳戶的標準作業程序。
 
 您也可以使用 Azure AD Privileged Identity Management 和 Azure Resource Manager 來啟用系統管理帳戶的即時存取。
 
 - [深入瞭解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
@@ -308,9 +308,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
@@ -320,9 +320,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
@@ -332,9 +332,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
@@ -343,9 +343,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
@@ -353,9 +353,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [如何設定 Azure AD 命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -366,13 +366,13 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 - [IoT 中樞安全性權杖](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引** ：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure AD 身分識別和存取評論，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定只有適當的使用者可以繼續存取。 
+**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure AD 身分識別和存取評論，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定只有適當的使用者可以繼續存取。 
 
 當環境中發生可疑或不安全的活動時，請使用 Azure AD Privileged Identity Management (PIM) 來產生記錄和警示。
 
@@ -380,9 +380,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
 - [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
@@ -396,9 +396,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [設定 IoT 中樞的資源記錄](monitor-iot-hub.md#collection-and-routing)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
@@ -410,17 +410,17 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
   
 - [ 如何上架 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
 **指導** 方針：在 Microsoft 需要存取客戶資料的支援案例中，系統會直接向客戶要求。 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="data-protection"></a>資料保護
 
@@ -428,13 +428,13 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
-**指引** ：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
+**指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
  
 - [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
@@ -444,9 +444,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [ 如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 - [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
@@ -456,9 +456,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
@@ -469,9 +469,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [IoT 中樞的 TLS 支援](iot-hub-tls-support.md)
 - [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
@@ -481,9 +481,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
@@ -493,21 +493,21 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
 Microsoft 管理 Azure IoT 中樞的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
@@ -519,9 +519,9 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 - [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
@@ -529,9 +529,9 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 - [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="vulnerability-management"></a>弱點管理
 
@@ -541,41 +541,41 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 **指導** 方針：不適用;Microsoft 會在支援 Azure IoT 中樞的基礎系統上執行弱點管理。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
 **指導** 方針：不適用;Microsoft 會在支援 Azure IoT 中樞的基礎系統上執行修補程式管理。 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
@@ -583,11 +583,11 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
@@ -595,9 +595,9 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
@@ -609,9 +609,9 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
   
 - [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
@@ -621,9 +621,9 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 - [IoT 中樞身分識別登錄](iot-hub-devguide-identity-registry.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
@@ -635,33 +635,33 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
@@ -675,17 +675,17 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：維護已核准軟體標題的清查
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制使用者與 Azure Resource Manager 互動的能力
 
@@ -693,25 +693,25 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
   
 - [ 如何設定條件式存取以封鎖存取 Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12：限制使用者在計算資源中執行腳本的能力
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指引** ：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="secure-configuration"></a>安全設定
 
@@ -733,37 +733,37 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 - [安全性建議 - 參考指南](../security-center/recommendations-reference.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指引** ：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，以對 Azure 資源強制使用安全設定。 此外，您可以使用 Azure Resource Manager 範本，維護您的組織所需的 Azure 資源安全性設定。  
+**指引**：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，以對 Azure 資源強制使用安全設定。 此外，您可以使用 Azure Resource Manager 範本，維護您的組織所需的 Azure 資源安全性設定。  
  
 - [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 - [建立和管理原則以強制執行合規性](../governance/policy/tutorials/create-and-manage.md)
 - [Azure Resource Manager 範本總覽](../azure-resource-manager/templates/overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
@@ -772,17 +772,17 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 - [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 - [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
@@ -791,17 +791,17 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用別名](../governance/policy/concepts/definition-structure.md#aliases)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的設定管理工具
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
@@ -809,17 +809,17 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
  
 - [ 如何修復 Azure 資訊安全中心中的建議](../security-center/security-center-remediate-recommendations.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
-**指引** ：不適用，這項準則主要用於計算資源。
+**指引**：不適用，這項準則主要用於計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
@@ -830,12 +830,12 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 - [IoT 中樞安全性權杖](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [如何使用適用于 IoT 中樞的受控識別](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
-- [如何建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md)
+- [如何建立金鑰保存庫](../key-vault/general/quick-create-portal.md)
 - [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
@@ -846,19 +846,19 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 - [IoT 中樞安全性權杖](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [如何設定 IoT 中樞的受控識別](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
-**指引** ：實作認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。 
+**指引**：實作認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。 
  
 - [  如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
@@ -866,13 +866,13 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指引** ：不適用，這項建議主要用於計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 支援 Azure 服務的基礎主機 (例如 Azure App Service) 已啟用 Microsoft 反惡意程式碼功能，但不會在客戶內容上執行該功能。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
@@ -880,17 +880,17 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 您必須負責預先掃描即將上傳至非計算 Azure 資源的任何內容。 Microsoft 無法存取客戶資料，因此無法代表您執行客戶內容的反惡意程式碼掃描。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8.3：確定已更新反惡意程式碼軟體和簽章
 
 **指導** 方針：不適用;此基準測試適用于計算資源。 支援 Azure 服務的基礎主機上已啟用 Microsoft Antimalware，但不會對客戶內容執行。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ## <a name="data-recovery"></a>資料復原
 
@@ -904,9 +904,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 - [如何複製 IoT 中樞](iot-hub-how-to-clone.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份並備份任何客戶管理的金鑰
 
@@ -916,9 +916,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 - [IoT 中樞裝置身分識別匯出](iot-hub-bulk-identity-mgmt.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
@@ -930,9 +930,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 - [IoT 中樞裝置身分識別匯出](iot-hub-bulk-identity-mgmt.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
@@ -942,9 +942,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 - [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="incident-response"></a>事件回應
 
@@ -960,9 +960,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
  
 - [  使用 NIST 的電腦安全性性事件處理指南來協助建立您自己的事件回應計畫](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
@@ -975,9 +975,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
   
 - [ 使用標記來組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
@@ -985,19 +985,19 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
   
 - [ NIST 的發行--測試、訓練和練習適用于 IT 計畫和功能的指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指引** ：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
   
 - [ 如何設定 Azure 資訊安全中心安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
@@ -1007,9 +1007,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
  
 - [ 如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
@@ -1017,9 +1017,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
   
 - [ 如何在安全性中心設定工作流程自動化](../security-center/workflow-automation.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
@@ -1029,13 +1029,13 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 **指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
 
-- [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 - [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 

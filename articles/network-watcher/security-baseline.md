@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 28b3bc5adfc3c2e83de658947193b6046a455c32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00594c3ec060076ad249af7e93e0a3d5a1eccdb4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231498"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845147"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>適用于網路監看員的 Azure 安全性基準
 
@@ -24,11 +24,11 @@ ms.locfileid: "89231498"
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指導**方針：不適用;網路監看員能夠監視端點和虛擬機器之間的連線，但無法由虛擬網路、網路安全性群組或 Azure 防火牆保護。
+**指導** 方針：不適用;網路監看員能夠監視端點和虛擬機器之間的連線，但無法由虛擬網路、網路安全性群組或 Azure 防火牆保護。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -36,7 +36,7 @@ ms.locfileid: "89231498"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
-**指導**方針：不適用;Azure 網路監看員能夠分析流量記錄並提供豐富的資料視覺效果，不過，網路監看員本身不會產生流量記錄或 capturable 封包。
+**指導** 方針：不適用;Azure 網路監看員能夠分析流量記錄並提供豐富的資料視覺效果，不過，網路監看員本身不會產生流量記錄或 capturable 封包。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -52,7 +52,7 @@ ms.locfileid: "89231498"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
-**指導**方針：不適用;Azure 網路監看員不是有可能暴露在公用網路中的資源，而這些網路需要受到保護以防止惡意流量。
+**指導** 方針：不適用;Azure 網路監看員不是有可能暴露在公用網路中的資源，而這些網路需要受到保護以防止惡意流量。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -60,7 +60,7 @@ ms.locfileid: "89231498"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：不適用;Azure 網路監看員能夠分析流量記錄並提供豐富的資料視覺效果，不過，網路監看員本身不會產生流量記錄或 capturable 封包。
+**指導** 方針：不適用;Azure 網路監看員能夠分析流量記錄並提供豐富的資料視覺效果，不過，網路監看員本身不會產生流量記錄或 capturable 封包。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -68,7 +68,7 @@ ms.locfileid: "89231498"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
-**指導**方針：不適用;Azure 網路監看員不是有可能暴露在公用網路中的資源，而這些網路需要受到保護以防止惡意流量。
+**指導** 方針：不適用;Azure 網路監看員不是有可能暴露在公用網路中的資源，而這些網路需要受到保護以防止惡意流量。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -84,7 +84,7 @@ ms.locfileid: "89231498"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指導**方針：不適用;Azure 網路監看員能夠分析流量記錄並提供豐富的資料視覺效果，不過，網路監看員本身並不是可讓您篩選或允許使用服務標籤或網路安全性群組的流量的端點。
+**指導** 方針：不適用;Azure 網路監看員能夠分析流量記錄並提供豐富的資料視覺效果，不過，網路監看員本身並不是可讓您篩選或允許使用服務標籤或網路安全性群組的流量的端點。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -92,7 +92,7 @@ ms.locfileid: "89231498"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：使用 Azure 原則為 Azure 網路監看員定義和實行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對網路監看員實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
+**指導** 方針：使用 Azure 原則為 Azure 網路監看員定義和實行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對網路監看員實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
 
 於虛擬網路建立時部署網路監看員
 
@@ -108,7 +108,7 @@ ms.locfileid: "89231498"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：不適用;雖然 Azure 網路監看員支援標籤，但網路監看員本身並不會控制網路流量的流程。
+**指導** 方針：不適用;雖然 Azure 網路監看員支援標籤，但網路監看員本身並不會控制網路流量的流程。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -116,7 +116,7 @@ ms.locfileid: "89231498"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指導**方針：使用 Azure 活動記錄來監視對 Azure 網路監看員所做的變更。 您可以在 Azure 監視器中建立會在變更發生時觸發的警示。
+**指導** 方針：使用 Azure 活動記錄來監視對 Azure 網路監看員所做的變更。 您可以在 Azure 監視器中建立會在變更發生時觸發的警示。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -128,11 +128,11 @@ ms.locfileid: "89231498"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指導**方針：不適用;Microsoft 會針對記錄檔中的時間戳記，維護 Azure 資源（例如 Azure 網路監看員）所使用的時間來源。
+**指導** 方針：不適用;Microsoft 會針對記錄檔中的時間戳記，維護 Azure 資源（例如 Azure 網路監看員）所使用的時間來源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -140,7 +140,7 @@ ms.locfileid: "89231498"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指導**方針：使用 Azure 活動記錄來監視設定，以及偵測 Azure 網路監看員實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，網路監看員本身不會產生與網路流量相關的記錄。 網路監看員提供工具來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
+**指導** 方針：使用 Azure 活動記錄來監視設定，以及偵測 Azure 網路監看員實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，網路監看員本身不會產生與網路流量相關的記錄。 網路監看員提供工具來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -152,7 +152,7 @@ ms.locfileid: "89231498"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指導**方針：使用 Azure 活動記錄來監視設定，以及偵測 Azure 網路監看員實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，網路監看員本身不會產生審核記錄。 網路監看員提供工具來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
+**指導** 方針：使用 Azure 活動記錄來監視設定，以及偵測 Azure 網路監看員實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，網路監看員本身不會產生審核記錄。 網路監看員提供工具來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -172,7 +172,7 @@ ms.locfileid: "89231498"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指導**方針：在 Azure 監視器中，根據您組織的合規性法規，設定與 Azure 網路監看員相關聯的 log Analytics 工作區記錄保留期限。
+**指導** 方針：在 Azure 監視器中，根據您組織的合規性法規，設定與 Azure 網路監看員相關聯的 log Analytics 工作區記錄保留期限。
 
 * [如何設定記錄保留參數](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
@@ -182,7 +182,7 @@ ms.locfileid: "89231498"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指導**方針：使用 Azure 活動記錄來監視設定，以及偵測 Azure 網路監看員實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，網路監看員本身不會產生與網路流量相關的記錄。 網路監看員提供工具來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
+**指導** 方針：使用 Azure 活動記錄來監視設定，以及偵測 Azure 網路監看員實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，網路監看員本身不會產生與網路流量相關的記錄。 網路監看員提供工具來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -194,7 +194,7 @@ ms.locfileid: "89231498"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指導**方針：您可以設定，以根據與 Azure 網路監看員相關的活動記錄來接收警示。 Azure 監視器可讓您設定警示以傳送電子郵件通知、呼叫 webhook，或叫用 Azure 邏輯應用程式。
+**指導** 方針：您可以設定，以根據與 Azure 網路監看員相關的活動記錄來接收警示。 Azure 監視器可讓您設定警示以傳送電子郵件通知、呼叫 webhook，或叫用 Azure 邏輯應用程式。
 
 * [如何在 Azure 資訊安全中心中管理警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
 
@@ -204,7 +204,7 @@ ms.locfileid: "89231498"
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
-**指導**方針：不適用;Azure 網路監看員不會處理或產生反惡意程式碼的相關記錄。
+**指導** 方針：不適用;Azure 網路監看員不會處理或產生反惡意程式碼的相關記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -212,7 +212,7 @@ ms.locfileid: "89231498"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針：不適用;Azure 網路監看員不會處理或產生 DNS 相關的記錄。
+**指導** 方針：不適用;Azure 網路監看員不會處理或產生 DNS 相關的記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -228,11 +228,11 @@ ms.locfileid: "89231498"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指導**方針：維護具有控制平面之系統管理存取權的使用者帳戶清查 (例如 Azure 入口網站 Azure 網路監看員) 。 若要使用網路監看員功能，您用來登入 Azure 的帳戶必須指派給擁有者、參與者或網路參與者內建角色，或指派給指派給特定網路監看員功能所列出之動作的自訂角色。
+**指導** 方針：維護具有控制平面之系統管理存取權的使用者帳戶清查 (例如 Azure 入口網站 Azure 網路監看員) 。 若要使用網路監看員功能，您用來登入 Azure 的帳戶必須指派給擁有者、參與者或網路參與者內建角色，或指派給指派給特定網路監看員功能所列出之動作的自訂角色。
 
 您可以使用訂用帳戶 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格，來設定 Azure 角色型存取控制 (Azure RBAC) 。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。
 
@@ -271,7 +271,7 @@ ms.locfileid: "89231498"
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指導**方針：不適用;單一登入 (SSO) 在使用者以 Azure Active Directory (AD) 登入自訂應用程式時，增加安全性和便利性。 Azure 網路監看員的存取已與 Azure Active Directory 整合，並且可透過 Azure 入口網站和 Azure Resource Manager REST API 進行存取。
+**指導** 方針：不適用;單一登入 (SSO) 在使用者以 Azure Active Directory (AD) 登入自訂應用程式時，增加安全性和便利性。 Azure 網路監看員的存取已與 Azure Active Directory 整合，並且可透過 Azure 入口網站和 Azure Resource Manager REST API 進行存取。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -279,7 +279,7 @@ ms.locfileid: "89231498"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指導**方針：啟用 Azure Active Directory Multi-Factor Authentication，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
+**指導** 方針：啟用 Azure Active Directory Multi-Factor Authentication，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
 * [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -291,11 +291,11 @@ ms.locfileid: "89231498"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導**方針：使用具特殊許可權的存取工作站 (PAW) 搭配 Azure MULTI-FACTOR AUTHENTICATION (MFA) 已啟用，可登入及設定 Azure Sentinel 相關的資源。
+**指導** 方針：使用特殊許可權存取工作站 (PAW) ，Azure AD Multi-Factor Authentication 已啟用 MFA (，以登入並設定) 相關的資源。
 
 * [特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [規劃雲端式 Azure Multi-Factor Authentication 部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) \(部分機器翻譯\)
+* [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -327,7 +327,7 @@ ms.locfileid: "89231498"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory (Azure AD) 作為 Azure Sentinel 實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
+**指導** 方針：使用 Azure Active Directory (Azure AD) 作為 Azure Sentinel 實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -337,7 +337,7 @@ ms.locfileid: "89231498"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指導**方針： AZURE ACTIVE DIRECTORY (AD) 提供記錄檔，以協助您探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
+**指導** 方針： AZURE ACTIVE DIRECTORY (AD) 提供記錄檔，以協助您探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
 
 * [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -349,7 +349,7 @@ ms.locfileid: "89231498"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 網路監看員的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
+**指導** 方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 網路監看員的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
 您可以存取 Azure AD 登入活動、audit 和風險事件記錄檔來源，讓您可以與 Azure Sentinel 或協力廠商 SIEM 整合。
 
@@ -365,7 +365,7 @@ ms.locfileid: "89231498"
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指導**方針：對於控制項平面上的帳戶登入行為偏差 (例如 Azure 入口網站) ，請使用 Azure AD Identity Protection 和風險偵測功能，來設定偵測到與使用者身分識別相關的可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+**指導** 方針：對於控制項平面上的帳戶登入行為偏差 (例如 Azure 入口網站) ，請使用 Azure AD Identity Protection 和風險偵測功能，來設定偵測到與使用者身分識別相關的可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 * [如何查看 Azure AD 具風險的登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -379,7 +379,7 @@ ms.locfileid: "89231498"
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
-**指導**方針：不適用;客戶加密箱不適用於 Azure 網路監看員。
+**指導** 方針：不適用;客戶加密箱不適用於 Azure 網路監看員。
 
 * [客戶加密箱支援的服務清單](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
@@ -389,7 +389,7 @@ ms.locfileid: "89231498"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
@@ -415,7 +415,7 @@ ms.locfileid: "89231498"
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指導**方針： Microsoft 會管理 Azure 網路監看員和相關資源的基礎結構，並已實行嚴格的控制，以防止遺失或洩漏客戶資料。
+**指導** 方針： Microsoft 會管理 Azure 網路監看員和相關資源的基礎結構，並已實行嚴格的控制，以防止遺失或洩漏客戶資料。
 
 * [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -425,7 +425,7 @@ ms.locfileid: "89231498"
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針：如果您使用 Azure VPN 閘道在內部部署網路與 Azure 虛擬網路之間建立安全連線，請確定您的內部部署局域網路閘道已設定相容的 IPsec 通訊和加密參數。 任何設定錯誤都會導致內部部署網路與 Azure 之間的連線中斷。
+**指導** 方針：如果您使用 Azure VPN 閘道在內部部署網路與 Azure 虛擬網路之間建立安全連線，請確定您的內部部署局域網路閘道已設定相容的 IPsec 通訊和加密參數。 任何設定錯誤都會導致內部部署網路與 Azure 之間的連線中斷。
 
 * [Azure VPN 閘道支援的 IPSec 參數](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity)
 
@@ -437,7 +437,7 @@ ms.locfileid: "89231498"
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
-**指導**方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
+**指導** 方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -445,7 +445,7 @@ ms.locfileid: "89231498"
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：您可以使用訂用帳戶 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格，來設定 azure RBAC)  (azure 角色型存取控制。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
+**指導** 方針：您可以使用訂用帳戶 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格，來設定 azure RBAC)  (azure 角色型存取控制。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
 
 若要使用網路監看員功能，您用來登入 Azure 的帳戶必須指派給擁有者、參與者或網路參與者內建角色，或指派給指派給特定網路監看員功能所列出之動作的自訂角色。
 
@@ -469,7 +469,7 @@ ms.locfileid: "89231498"
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。 網路監看員會將記錄和其他資訊儲存在待用資料加密 Azure 儲存體中。
+**指導** 方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。 網路監看員會將記錄和其他資訊儲存在待用資料加密 Azure 儲存體中。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -477,7 +477,7 @@ ms.locfileid: "89231498"
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 azure 活動記錄，以建立 azure 網路監看員和其他重要或相關資源發生變更時的警示。
+**指導** 方針：使用 Azure 監視器搭配 azure 活動記錄，以建立 azure 網路監看員和其他重要或相關資源發生變更時的警示。
 
 * [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
@@ -487,11 +487,11 @@ ms.locfileid: "89231498"
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱 [安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針：不適用;Microsoft 會在支援 Azure 網路監看員的基礎系統上執行弱點管理。
+**指導** 方針：不適用;Microsoft 會在支援 Azure 網路監看員的基礎系統上執行弱點管理。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -515,7 +515,7 @@ ms.locfileid: "89231498"
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
-**指導**方針：不適用;Microsoft 會在支援 Azure 網路監看員的基礎系統上執行弱點管理。
+**指導** 方針：不適用;Microsoft 會在支援 Azure 網路監看員的基礎系統上執行弱點管理。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -523,7 +523,7 @@ ms.locfileid: "89231498"
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：不適用;Microsoft 會在支援 Azure 網路監看員的基礎系統上執行弱點管理。
+**指導** 方針：不適用;Microsoft 會在支援 Azure 網路監看員的基礎系統上執行弱點管理。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -531,7 +531,7 @@ ms.locfileid: "89231498"
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -587,7 +587,7 @@ ms.locfileid: "89231498"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指導**方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
+**指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
 使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
 
@@ -673,11 +673,11 @@ ms.locfileid: "89231498"
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱 [安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導**方針：使用 Azure 原則為 Azure 網路監看員定義和實行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對網路監看員實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
+**指導** 方針：使用 Azure 原則為 Azure 網路監看員定義和實行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對網路監看員實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
 
 * [於虛擬網路建立時部署網路監看員](https://github.com/Azure/azure-policy/blob/master/samples/built-in-policy/deploy-network-watcher-in-vnet-regions/README.md)
 
@@ -719,7 +719,7 @@ ms.locfileid: "89231498"
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
+**指導** 方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
 * [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -739,11 +739,11 @@ ms.locfileid: "89231498"
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
-**指導**方針：使用 Azure 原則為 Azure 網路監看員定義和實行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對網路監看員實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
+**指導** 方針：使用 Azure 原則為 Azure 網路監看員定義和實行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對網路監看員實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
 
 * [於虛擬網路建立時部署網路監看員](https://github.com/Azure/azure-policy/blob/master/samples/built-in-policy/deploy-network-watcher-in-vnet-regions/README.md)
 
-也請參閱：
+另請參閱：
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -763,7 +763,7 @@ ms.locfileid: "89231498"
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
-**指導**方針：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則的別名來建立自訂的 Azure 原則定義，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署（如果不存在）]，自動強制執行 Azure 資源的設定。
+**指導** 方針：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則的別名來建立自訂的 Azure 原則定義，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署（如果不存在）]，自動強制執行 Azure 資源的設定。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -781,7 +781,7 @@ ms.locfileid: "89231498"
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
-**指導**方針：不適用;Azure 網路監看員沒有相關聯的密碼、秘密或金鑰。
+**指導** 方針：不適用;Azure 網路監看員沒有相關聯的密碼、秘密或金鑰。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -789,7 +789,7 @@ ms.locfileid: "89231498"
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指導**方針：不適用;Azure 網路監看員不會利用受控識別。
+**指導** 方針：不適用;Azure 網路監看員不會利用受控識別。
 
 * [支援受控識別的 Azure 服務](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
 
@@ -809,7 +809,7 @@ ms.locfileid: "89231498"
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -837,11 +837,11 @@ ms.locfileid: "89231498"
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱 [安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
-**指導**方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
+**指導** 方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -849,7 +849,7 @@ ms.locfileid: "89231498"
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份並備份任何客戶管理的金鑰
 
-**指導**方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
+**指導** 方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -857,7 +857,7 @@ ms.locfileid: "89231498"
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指導**方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
+**指導** 方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -865,7 +865,7 @@ ms.locfileid: "89231498"
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
+**指導** 方針：不適用;Azure 網路監看員本身不會保存任何客戶資料。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -873,7 +873,7 @@ ms.locfileid: "89231498"
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -945,7 +945,7 @@ ms.locfileid: "89231498"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 

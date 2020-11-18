@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684503"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843990"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>關於 Azure IaaS VM 磁碟及受控和非受控進階磁碟的常見問題集
 
@@ -76,7 +76,7 @@ ms.locfileid: "94684503"
 
 您需要為 VM 診斷設定私人儲存體帳戶。
 
-**受控磁碟適用何種角色型存取控制支援？**
+**受控磁碟有何種 Azure 角色型存取控制支援？**
 
 受控磁碟支援三個主要預設角色︰
 
@@ -489,7 +489,7 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **我可以使用磁片/快照集的 SAS URI，將 VM 的基礎 VHD 下載為與該磁片相關聯之私人端點的子網嗎？**
 
-可以。
+是。
 
 **我可以使用磁片/快照集的 SAS URI，將不在相同子網中的 VM 基礎 VHD 下載為與該磁片沒有關聯之私人端點的子網嗎？**
 

@@ -1,19 +1,19 @@
 ---
 title: 快速入門：建立伺服器 - Azure CLI - 適用於 MySQL 的 Azure 資料庫彈性伺服器
 description: 本快速入門說明如何使用 Azure CLI 在 Azure 資源群組中建立適用於 MySQL 的 Azure 資料庫彈性伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 65cc3d2fdcbdea934e80a5f0012ca4f3da157ca3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545016"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843429"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫彈性伺服器
 
@@ -32,7 +32,7 @@ ms.locfileid: "92545016"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼**。
 
 ```azurecli-interactive
 az login
@@ -107,7 +107,7 @@ Make a note of your password. If you forget, you would have to reset your passwo
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin** 。 以下是 JSON 輸出的範例： 
+結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin**。 以下是 JSON 輸出的範例： 
 
 ```json
 {

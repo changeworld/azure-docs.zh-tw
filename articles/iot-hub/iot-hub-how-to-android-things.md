@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6008ca1549629bcbb582f38de2ab1b453cd73a99
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151732"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843752"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 針對 Android Things 平台進行開發
 
@@ -20,7 +20,7 @@ ms.locfileid: "92151732"
 
 本教學課程說明使用 Azure IoT Java SDK 在 Android Things 上建置裝置端應用程式的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 支援 Android Things 的硬體，且可執行 Android Things OS。  您可以依循 [Android Things 文件](https://developer.android.com/things/get-started/kits#flash-at)，以了解如何刷新 Android Things OS。  請確定您的 Android Things 裝置已連接必要週邊設備 (例如鍵盤、顯示器和滑鼠) 並已連線到網際網路。  本教學課程使用 Raspberry Pi 3。
 
@@ -28,7 +28,7 @@ ms.locfileid: "92151732"
 
 * 最新版的 [Git](https://git-scm.com/)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -87,7 +87,7 @@ ms.locfileid: "92151732"
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-您可以透過 IoT 中樞檢視所收到的資料。 IoT 中樞 CLI 擴充功能可以連線到 IoT 中樞上的服務端**事件**端點。 擴充功能會接收模擬裝置所傳送的「裝置到雲端」訊息。 IoT 中樞後端應用程式通常在雲端中執行，以接收和處理「裝置到雲端」訊息。
+您可以透過 IoT 中樞檢視所收到的資料。 IoT 中樞 CLI 擴充功能可以連線到 IoT 中樞上的服務端 **事件** 端點。 擴充功能會接收模擬裝置所傳送的「裝置到雲端」訊息。 IoT 中樞後端應用程式通常在雲端中執行，以接收和處理「裝置到雲端」訊息。
 
 在 Azure Cloud Shell 中執行下列命令，以您的 IoT 中樞名稱取代 `YourIoTHubName`：
 

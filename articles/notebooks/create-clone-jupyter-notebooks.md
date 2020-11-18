@@ -3,24 +3,24 @@ title: 建立和複製 Jupyter 筆記本-Azure Notebooks 預覽
 description: Azure Notebooks 預覽專案會管理一組筆記本和相關檔案，您可以從另一個來源建立新的或複製。
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e5930178b7951ff5f701228cee4ea7cb5f0e6da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181486"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844381"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>在 Azure Notebooks 預覽版中建立和複製專案
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群組，稱為*專案*。 首先將專案建立成容器，接著在資料夾中，與其他專案檔建立或複製一個或多個筆記本。 ([教學課程](tutorial-create-run-jupyter-notebook.md)會示範此流程。)
+Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群組，稱為 *專案*。 首先將專案建立成容器，接著在資料夾中，與其他專案檔建立或複製一個或多個筆記本。 ([教學課程](tutorial-create-run-jupyter-notebook.md)會示範此流程。)
 
 專案還會維護，影響執行筆記本伺服器的中繼資料和其他組態設定，包括自訂設定步驟和套件安裝。 如需詳細資訊，請參閱[管理和設定專案](configure-manage-azure-notebooks-projects.md)。
 
 ## <a name="use-the-my-projects-dashboard"></a>使用 [我的專案] 儀表板
 
-`https://notebooks.azure.com/<userID>/projects` 所在的 [我的專案]**** 儀表板是您檢視、管理和建立專案的位置：
+`https://notebooks.azure.com/<userID>/projects` 所在的 [我的專案]儀表板是您檢視、管理和建立專案的位置：
 
 [![Azure Notebooks 中的 [我的專案] 儀表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
@@ -39,7 +39,7 @@ Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群
 
 ### <a name="obtain-a-launch-badge"></a>取得啟動徽章
 
-當您使用**共用**命令，並選取 [內嵌]**** 索引標籤，就可以複製 HTML 程式碼或建立 「 啟動筆記本」徽章的 Markdown：
+當您使用 **共用** 命令，並選取 [內嵌]索引標籤，就可以複製 HTML 程式碼或建立 「 啟動筆記本」徽章的 Markdown：
 
 ![啟動筆記本徽章](https://notebooks.azure.com/launch.png)
 
@@ -55,13 +55,13 @@ Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群
 
 ## <a name="create-a-new-project"></a>建立新專案
 
-當您使用 **+ 新增專案**命令時，會顯示 Azure Notebooks 會顯示**建立新專案**快顯。 在此快顯中，輸入下列資訊，然後選取 [建立]****︰
+當您使用 **+ 新增專案** 命令時，會顯示 Azure Notebooks 會顯示 **建立新專案** 快顯。 在此快顯中，輸入下列資訊，然後選取 [建立]︰
 
 | 欄位 | 描述 |
 | --- | --- |
 | 專案名稱 | Azure Notebooks 用於顯示用途的專案易記名稱。 例如，「我的筆記本專案」。 |
 | 專案識別碼 | 自訂識別碼會成為您用來共用專案 URL 的一部分 (格式為 `https://notebooks.azure.com/<user_id>/projects/<project_id>`)。 此識別碼只能使用字母、數位和連字號，限制為30個字元，而且不能是 [保留的專案識別碼](#reserved-project-ids)。 如果您不確定要使用的項目，常見的慣例是使用專案名稱的小寫版本，讓空格轉變成連字號，例如 「 my-notebook-project 」 (必要時，可截斷以符合長度限制)。 |
-| 公用 | 如果設定，可讓任何人存取的專案連結。 建立私人專案時，請清除此選項。 |
+| 公開 | 如果設定，可讓任何人存取的專案連結。 建立私人專案時，請清除此選項。 |
 | 使用讀我檔案初始化此專案 | 如果設定，會在專案中建立預設 *README.md* 檔案。 如有需要，*README.md* 檔案是您為專案提供文件的地方。 |
 
 ### <a name="reserved-project-ids"></a>保留的專案識別碼
@@ -102,7 +102,7 @@ Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群
 
 ## <a name="import-a-project-from-github"></a>從 GitHub 匯入專案
 
-您可以輕鬆地將整個公用 GitHub 存放庫，匯入成包括任何資料和 *README.md* 檔案的專案。 使用**上傳 GitHub 存放庫**命令，在快顯中以提供下列詳細資料，然後選取 [匯入]****：
+您可以輕鬆地將整個公用 GitHub 存放庫，匯入成包括任何資料和 *README.md* 檔案的專案。 使用 **上傳 GitHub 存放庫** 命令，在快顯中以提供下列詳細資料，然後選取 [匯入]：
 
 | 欄位 | 說明 |
 | --- | --- |
@@ -110,7 +110,7 @@ Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群
 | 以遞迴方式複製 | GitHub 存放庫可以包含多個子存放庫。 如果您想要複製父存放庫及其所有子系，請設定此選項。 因為存放庫可以擁有多個子系，除非您知道 有需要，不然請清除此選項。 |
 | 專案名稱 | Azure Notebooks 用於顯示用途的專案易記名稱。 |
 | 專案識別碼 | 自訂識別碼會成為您用來共用專案 URL 的一部分 (格式為 `https://notebooks.azure.com/<user_id>/projects/<project_id>`)。 此識別碼只能使用字母、數位和連字號，限制為30個字元，而且不能是 [保留的專案識別碼](#reserved-project-ids)。 如果您不確定要使用的項目，常見的慣例是使用專案名稱的小寫版本，讓空格轉變成連字號，例如 「 my-notebook-project 」 (必要時，可截斷以符合長度限制)。 |
-| 公用 | 如果設定，可讓任何人存取的專案連結。 建立私人專案時，請清除此選項。 |
+| 公開 | 如果設定，可讓任何人存取的專案連結。 建立私人專案時，請清除此選項。 |
 
 從 GitHub 匯入存放庫也會匯入其記錄。 您可以從終端機使用標準的 Git 命令，來認可新的變更，從 GitHub 提取變更等等。
 
@@ -120,15 +120,15 @@ Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群
 
 若要複製專案：
 
-1. 在 [我的專案]**** 儀表板上，以滑鼠右鍵按一下所需的專案，然後選取 [複製]**** (鍵盤快速鍵： c)。
+1. 在 [我的專案]儀表板上，以滑鼠右鍵按一下所需的專案，然後選取 [複製] (鍵盤快速鍵： c)。
 
     ![在專案操作功能表上的複製命令](media/clone-command.png)
 
-1. 在**複製專案**快顯中，輸入複製的名稱和識別碼，並指定複製是否為公用。 這些設定與[新專案](#create-a-new-project)的設定相同。
+1. 在 **複製專案** 快顯中，輸入複製的名稱和識別碼，並指定複製是否為公用。 這些設定與[新專案](#create-a-new-project)的設定相同。
 
     ![複製專案快顯](media/clone-project.png)
 
-1. 選取 [複製]**** 按鈕後，Azure Notebooks 會直接巡覽至複本。
+1. 選取 [複製]按鈕後，Azure Notebooks 會直接巡覽至複本。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -138,4 +138,4 @@ Azure Notebooks 會將您的 Jupyter Notebooks 和相關檔案整理成邏輯群
 - [如何：顯示投影片放映](present-jupyter-notebooks-slideshow.md)
 - [如何：使用資料檔案](work-with-project-data-files.md)
 - [如何：存取資料資源](access-data-resources-jupyter-notebooks.md)
-- [如何：使用 Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [如何：使用 Azure Machine Learning](../machine-learning/samples-notebooks.md)

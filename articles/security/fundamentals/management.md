@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 779330d7881040026f45a031f95f44d770f39a56
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412760"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844858"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
 Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下，系統管理功能是透過 web 式主控台（例如 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)）來執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
@@ -112,7 +112,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 將 RD 閘道加入至相同的[管理網域](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10))以做為系統管理員的工作站。 當您在具有對 Azure AD 之單向信任的網域內使用網站間 IPsec VPN 或 ExpressRoute 時，或是如果您要同盟內部部署 AD DS 執行個體與 Azure AD 之間的認證，就必須這麼做。
 * 設定[用戶端連線授權原則](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11))，讓 RD 閘道驗證用戶端電腦名稱是否有效 (已加入網域)，並允許存取 Azure 入口網站。
 * 針對 [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) 使用 IPsec 以進一步防止管理流量遭到竊聽以及權杖遭竊，或考慮使用透過 [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) 的隔離網際網路連結。
-* 針對透過 RD 閘道登入的系統管理員啟用 Multi-Factor Authentication (透過 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) 或智慧卡驗證。
+* 透過 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) 或透過 RD 閘道登入之系統管理員的智慧卡驗證，啟用多重要素驗證 (。
 * 在 Azure 中設定來源 [IP 位址限制](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)或[網路安全性群組](../../virtual-network/network-security-groups-overview.md)以將允許的管理端點數目降到最低。
 
 ## <a name="security-guidelines"></a>安全性方針
@@ -123,7 +123,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 您部署至 Azure 的某些應用程式或服務可能會針對使用者和系統管理員存取擁有自己的驗證機制，而其他應用程式或服務則會充分利用 Azure AD。 根據您是透過 Active Directory Federation Services (AD FS)、使用目錄同步作業或僅在雲端中維護使用者帳戶來同盟認證，使用 [Microsoft Identity Manager](/microsoft-identity-manager/) (Azure AD Premium 的一部分) 可協助您管理資源之間的身分識別生命週期。
 
-### <a name="connectivity"></a>連接性
+### <a name="connectivity"></a>連線能力
 有數種機制可供協助保護用戶端與 Azure 虛擬網路的連線。 這些機制的其中兩個 ([網站間 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) 和[點對站 VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) (P2S)) 可使用業界標準 IPsec (S2S) 或[安全通訊端通道通訊協定](/previous-versions/technet-magazine/cc162322(v=msdn.10)) (SSTP) (P2S) 來進行加密和通道傳輸。 當 Azure 連接至公開的 Azure 服務管理 (例如 Azure 入口網站) 時，Azure 需要超文字安全傳輸通訊協定 (HTTPS)。
 
 未透過 RD 閘道連線至 Azure 的獨立強化後工作站應該使用 SSTP 架構的點對站 VPN 來建立與 Azure 虛擬網路的初始連線，然後再從 VPN 通道建立與個別虛擬機器的 RDP 連線。
@@ -138,7 +138,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ## <a name="client-configuration"></a>用戶端組態
 針對強化後的工作站，我們有三種主要組態建議。 這三者之間最大的差異在於成本、可用性和存取性，但它們提供的所有選項都有類似的安全性設定檔。 下表扼要分析其各自的優點與風險。 (請注意，「公司電腦」指的是將為所有網域使用者 (不論角色為何) 部署的標準桌面電腦組態)。
 
-| 設定 | 優點 | 缺點 |
+| 組態 | 優點 | 缺點 |
 | --- | --- | --- |
 | 獨立的強化後工作站 |受到嚴格控制的工作站 |專用桌上型電腦的成本較高 |
 | - | 降低應用程式入侵風險 |增加管理工作 |

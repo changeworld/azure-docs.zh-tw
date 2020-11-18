@@ -5,13 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
-ms.custom: mvc, devcenter
-ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: eda0b62729343b0a138d027548d8750b1e0fc74f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86248402"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844398"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視和診斷
 Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 Service Fabric Mesh 的監視和診斷可歸類為三種主要診斷資料類型：
@@ -51,11 +51,11 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 | AllocatedMemory | 依據 Azure Resource Manager 範本配置的記憶體 | MB |
 | ActualCpu | CPU 使用量 | Millicore |
 | ActualMemory | 記憶體使用量 | MB |
-| ContainerStatus | 0-無效：容器狀態不明 <br> 1-暫止：容器已排程啟動 <br> 2-正在啟動：容器正在啟動的進程中 <br> 3-已啟動：容器已順利啟動 <br> 4-正在停止：正在停止容器 <br> 5-已停止：容器已成功停止 | N/A |
-| ApplicationStatus | 0-未知：無法抓取狀態 <br> 1-就緒：應用程式執行成功 <br> 2-正在升級：升級進行中 <br> 3-正在建立：正在建立應用程式 <br> 4-正在刪除：正在刪除應用程式 <br> 5-失敗：無法部署應用程式 | N/A |
-| ServiceStatus | 0-無效：服務目前沒有健全狀況狀態 <br> 1-確定：服務狀況良好  <br> 2-警告：可能有某些錯誤需要調查 <br> 3-錯誤：發生錯誤，需要調查 <br> 4-未知：無法抓取狀態 | N/A |
-| ServiceReplicaStatus | 0-無效：複本目前沒有健全狀況狀態 <br> 1-確定：服務狀況良好  <br> 2-警告：可能有某些錯誤需要調查 <br> 3-錯誤：發生錯誤，需要調查 <br> 4-未知：無法抓取狀態 | N/A | 
-| RestartCount | 容器重新開機的數目 | N/A |
+| ContainerStatus | 0-無效：容器狀態不明 <br> 1-暫止：容器已排程啟動 <br> 2-正在啟動：容器正在啟動的進程中 <br> 3-已啟動：容器已順利啟動 <br> 4-正在停止：正在停止容器 <br> 5-已停止：容器已成功停止 | 不適用 |
+| ApplicationStatus | 0-未知：無法抓取狀態 <br> 1-就緒：應用程式執行成功 <br> 2-正在升級：升級進行中 <br> 3-正在建立：正在建立應用程式 <br> 4-正在刪除：正在刪除應用程式 <br> 5-失敗：無法部署應用程式 | 不適用 |
+| ServiceStatus | 0-無效：服務目前沒有健全狀況狀態 <br> 1-確定：服務狀況良好  <br> 2-警告：可能有某些錯誤需要調查 <br> 3-錯誤：發生錯誤，需要調查 <br> 4-未知：無法抓取狀態 | 不適用 |
+| ServiceReplicaStatus | 0-無效：複本目前沒有健全狀況狀態 <br> 1-確定：服務狀況良好  <br> 2-警告：可能有某些錯誤需要調查 <br> 3-錯誤：發生錯誤，需要調查 <br> 4-未知：無法抓取狀態 | 不適用 | 
+| RestartCount | 容器重新開機的數目 | 不適用 |
 
 > [!NOTE]
 > .Servicestatus 和 ServiceReplicaStatus 值與 Service Fabric 中的 [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) 相同。 
@@ -116,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 若要深入了解 Service Fabric Mesh，請閱讀 [Service Fabric Mesh 概觀](service-fabric-mesh-overview.md)。
 * 若要深入瞭解 Azure 監視器計量命令，請參閱 [AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔。

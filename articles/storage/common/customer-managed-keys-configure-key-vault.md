@@ -1,5 +1,5 @@
 ---
-title: 使用儲存在 Azure Key Vault 中客戶管理的金鑰來設定加密
+title: 使用儲存在 Azure Key Vault 中的客戶受控金鑰來設定加密 (機器翻譯)
 titleSuffix: Azure Storage
 description: 瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI，以 Azure Key Vault 儲存在客戶管理的金鑰來設定 Azure 儲存體加密。
 services: storage
@@ -10,15 +10,15 @@ ms.date: 09/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782377"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843378"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用儲存在 Azure Key Vault 中客戶管理的金鑰來設定加密
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用儲存在 Azure Key Vault 中的客戶受控金鑰來設定加密 (機器翻譯)
 
 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以管理自己的金鑰。 客戶管理的金鑰必須儲存在 Azure Key Vault 或 Key Vault 受控硬體安全性模型 (HSM)  (preview) 。
 
@@ -35,15 +35,15 @@ Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設�
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站建立金鑰保存庫](../../key-vault/general/quick-create-portal.md)。 當您建立金鑰保存庫時，請選取 [ **啟用清除保護** ]，如下圖所示。
+若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站建立金鑰保存庫](../../key-vault/general/quick-create-portal.md)。 當您建立金鑰保存庫時，請選取 [ **啟用清除保護**]，如下圖所示。
 
 :::image type="content" source="media/customer-managed-keys-configure-key-vault/configure-key-vault-portal.png" alt-text="顯示如何在建立金鑰保存庫時啟用清除保護的螢幕擷取畫面":::
 
 若要在現有的金鑰保存庫上啟用清除保護，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至您的金鑰保存庫。
-1. 在 [ **設定** ] 底下，選擇 [ **屬性** ]。
-1. 在 [ **清除保護** ] 區段中，選擇 [ **啟用清除保護** ]。
+1. 在 [ **設定**] 底下，選擇 [ **屬性**]。
+1. 在 [ **清除保護** ] 區段中，選擇 [ **啟用清除保護**]。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -175,22 +175,22 @@ Azure 儲存體可以自動更新用來加密的客戶管理金鑰，以使用�
 若要使用 Azure 入口網站中的金鑰版本自動更新來設定客戶管理的金鑰，請遵循下列步驟：
 
 1. 瀏覽至儲存體帳戶。
-1. 在儲存體帳戶的 [設定]  刀鋒視窗上，按一下 [加密]  。 選取 [ **客戶管理的金鑰** ] 選項，如下圖所示。
+1. 在儲存體帳戶的 [設定] 刀鋒視窗上，按一下 [加密]。 選取 [ **客戶管理的金鑰** ] 選項，如下圖所示。
 
     ![顯示加密選項的入口網站螢幕擷取畫面](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
-1. 選擇 [從 Key Vault 選取]  選項。
-1. 選取 [ **選取金鑰保存庫與金鑰** ]。
+1. 選擇 [從 Key Vault 選取] 選項。
+1. 選取 [ **選取金鑰保存庫與金鑰**]。
 1. 選取包含您要使用之金鑰的金鑰保存庫。
 1. 選取金鑰保存庫中的金鑰。
 
    ![顯示如何選取金鑰保存庫和金鑰的螢幕擷取畫面](./media/customer-managed-keys-configure-key-vault/portal-select-key-from-key-vault.png)
 
-1. 儲存變更。
+1. 儲存您的變更。
 
 當您指定金鑰之後，Azure 入口網站會指出已啟用金鑰版本的自動更新，並顯示目前用於加密的金鑰版本。
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="顯示如何在建立金鑰保存庫時啟用清除保護的螢幕擷取畫面":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="螢幕擷取畫面，顯示已啟用金鑰版本的自動更新":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -251,7 +251,7 @@ az storage account update
    ![顯示如何輸入金鑰 URI 的螢幕擷取畫面](./media/customer-managed-keys-configure-key-vault/portal-specify-key-uri.png)
 
 1. 指定包含金鑰保存庫的訂用帳戶。
-1. 儲存變更。
+1. 儲存您的變更。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -310,7 +310,7 @@ az storage account update
 
 1. 流覽至您的儲存體帳戶，並顯示 **加密** 設定。
 1. 選取金鑰保存庫，然後選擇新的金鑰。
-1. 儲存變更。
+1. 儲存您的變更。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

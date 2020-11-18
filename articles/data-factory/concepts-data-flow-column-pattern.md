@@ -6,28 +6,28 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: dab065f4d2b025fa15966d81b66b41acb12c54b3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/17/2020
+ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027120"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844996"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>在對應資料流程中使用資料行模式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-許多對應的資料流程轉換可讓您根據模式參考樣板資料行，而不是以硬式編碼的資料行名稱為基礎。 這種比對稱為資料 *行模式* 。 您可以根據名稱、資料類型、資料流程、來源或位置來定義要比對資料行的模式，而不需要完全相同的功能變數名稱。 有兩種案例可以用來提供資料行模式：
+許多對應的資料流程轉換可讓您根據模式參考樣板資料行，而不是以硬式編碼的資料行名稱為基礎。 這種比對稱為資料 *行模式*。 您可以根據名稱、資料類型、資料流程、來源或位置來定義要比對資料行的模式，而不需要完全相同的功能變數名稱。 有兩種案例可以用來提供資料行模式：
 
 * 如果傳入來源欄位經常變更，例如變更文字檔或 NoSQL 資料庫中的資料行。 此案例稱為 [架構漂移](concepts-data-flow-schema-drift.md)。
 * 如果您想要對大型資料行群組進行一般作業。 例如，想要將其資料行名稱中有 ' total ' 的每個資料行轉換成雙精度浮點數。
 
-資料行模式目前可用於衍生的資料行、匯總、選取和接收轉換。
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4Iui1]
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>衍生的資料行和匯總中的資料行模式
 
-若要在「衍生的資料行」、「匯總」或「視窗」轉換中加入資料行模式，請按一下資料行清單上方的 [ **加入** ]，或現有衍生資料行旁的加號圖示。 選擇 [ **加入資料行模式** ]。
+若要在「衍生的資料行」、「匯總」或「視窗」轉換中加入資料行模式，請按一下資料行清單上方的 [ **加入** ]，或現有衍生資料行旁的加號圖示。 選擇 [ **加入資料行模式**]。
 
 ![螢幕擷取畫面顯示新增資料行模式的加號圖示。](media/data-flow/add-column-pattern.png "資料行模式")
 
@@ -43,11 +43,17 @@ ms.locfileid: "93027120"
 
 ![螢幕擷取畫面：顯示 [輸出架構] 索引標籤。](media/data-flow/columnpattern3.png "資料行模式")
 
+### <a name="hierarchical-pattern-matching"></a>階層式模式比對
+
+您也可以在複雜階層結構內建立模式比對。 展開將在您的 `Each MoviesStruct that matches` 資料流程中提示您輸入每個階層的區段。 然後，您可以為該所選階層內的屬性建立相符的模式。
+
+![顯示階層式資料行模式的螢幕擷取畫面。](media/data-flow/patterns-hierarchy.png "階層中的資料行模式")
+
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select 和 sink 中以規則為基礎的對應
 
 對應來源和選取轉換中的資料行時，您可以加入固定對應或以規則為基礎的對應。 根據、、、 `name` `type` 和資料 `stream` `origin` 行進行 `position` 比對。 您可以使用固定和以規則為基礎的對應組合。 依預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，以符合每個資料行，並輸出輸入的名稱。 
 
-若要加入以規則為基礎的對應，請按一下 [ **新增對應** ]，然後選取 [ **規則型對應** ]。
+若要加入以規則為基礎的對應，請按一下 [ **新增對應** ]，然後選取 [ **規則型對應**]。
 
 ![螢幕擷取畫面顯示從 [新增對應] 選取的規則型對應。](media/data-flow/rule2.png "規則型對應")
 
@@ -77,7 +83,7 @@ ms.locfileid: "93027120"
 
 ## <a name="pattern-matching-expression-values"></a>模式比對運算式值。
 
-* `$$` 在執行時間轉譯為每個相符項的名稱或值
+* `$$` 在執行時間轉譯為每個相符項的名稱或值。 `$$`將視為相當於 `this` 。
 * `name` 表示每個傳入資料行的名稱。
 * `type` 表示每個傳入資料行的資料類型
 * `stream` 代表與您流程中的每個資料流程或轉換相關聯的名稱

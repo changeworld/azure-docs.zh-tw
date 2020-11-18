@@ -16,12 +16,13 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 93b692574588396f776c4d62bd24072382ae8471
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+- devx-track-azurecli
+ms.openlocfilehash: 8627681d843d15658882529424375486a4cdb1b9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912135"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845164"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中樞的存取權
 
@@ -43,7 +44,7 @@ ms.locfileid: "92912135"
 
 您可以透過下列方式授與[權限](#iot-hub-permissions)：
 
-* **IoT 中樞層級的共用存取原則** 。 共用存取原則可以授與上面所列[權限](#iot-hub-permissions)的任意組合。 您可以使用 [IoT 中樞資源 REST API](/rest/api/iothub/iothubresource)，或使用 [az iot hub policy](/cli/azure/iot/hub/policy) CLI，以程式設計方式在 [Azure 入口網站](https://portal.azure.com)中定義原則。 新建立的 IoT 中樞有下列預設原則︰
+* **IoT 中樞層級的共用存取原則**。 共用存取原則可以授與上面所列[權限](#iot-hub-permissions)的任意組合。 您可以使用 [IoT 中樞資源 REST API](/rest/api/iothub/iothubresource)，或使用 [az iot hub policy](/cli/azure/iot/hub/policy) CLI，以程式設計方式在 [Azure 入口網站](https://portal.azure.com)中定義原則。 新建立的 IoT 中樞有下列預設原則︰
   
   | 共用的存取原則 | 權限 |
   | -------------------- | ----------- |
@@ -53,7 +54,7 @@ ms.locfileid: "92912135"
   | registryRead | **RegistryRead** 權限 |
   | registryReadWrite | **RegistryRead** 和 **RegistryWrite** 權限 |
 
-* **各裝置的安全性認證** 。 每個 IoT 中樞均包含 [身分識別登錄](iot-hub-devguide-identity-registry.md)。對於此身分識別登錄中的每個裝置，您可以設定安全性認證，以對應的裝置端點為範圍來授與 **DeviceConnect** 權限。
+* **各裝置的安全性認證**。 每個 IoT 中樞均包含 [身分識別登錄](iot-hub-devguide-identity-registry.md)。對於此身分識別登錄中的每個裝置，您可以設定安全性認證，以對應的裝置端點為範圍來授與 **DeviceConnect** 權限。
 
 例如，在典型的 IoT 解決方案中︰
 
@@ -116,7 +117,7 @@ HTTPS 實作驗證的方式是在 **Authorization** 要求標頭中包含有效�
 
 ## <a name="scope-iot-hub-level-credentials"></a>設定 IoT 中樞層級認證的範圍
 
-使用受限制的資源 URI 建立權杖，可以設定 IoT 中樞層級安全性原則的範圍。 例如，要從裝置傳送「裝置到雲端」訊息的端點是 **/devices/{deviceId}/messages/events** 。 您也可以使用 IoT 中樞層級的共用存取原則搭配 **DeviceConnect** 權限，簽署 resourceURI 為 **/devices/{deviceId}** 的權杖。 這個做法會建立僅可用來代表裝置 **deviceId** 傳送訊息的權杖。
+使用受限制的資源 URI 建立權杖，可以設定 IoT 中樞層級安全性原則的範圍。 例如，要從裝置傳送「裝置到雲端」訊息的端點是 **/devices/{deviceId}/messages/events**。 您也可以使用 IoT 中樞層級的共用存取原則搭配 **DeviceConnect** 權限，簽署 resourceURI 為 **/devices/{deviceId}** 的權杖。 這個做法會建立僅可用來代表裝置 **deviceId** 傳送訊息的權杖。
 
 這個機制類似於[事件中樞發行者原則](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) \(英文\)，讓您可實作自訂驗證方法。
 
@@ -144,13 +145,13 @@ IoT 中樞也允許裝置使用 [X.509 憑證](iot-hub-devguide-security.md#supp
 
 | 值 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要** ：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。 |
+| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。 |
 | {resourceURI} |可使用此權杖存取之端點的 URI 前置詞 (依區段)，開頭為 IoT 中樞的主機名稱 (無通訊協定)。 例如， `myHub.azure-devices.net/devices/device1` |
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
 | {URL-encoded-resourceURI} |小寫資源 URI 的小寫 URL 編碼 |
 | {policyName} |此權杖所參考的共用存取原則名稱。 在權杖參考裝置登錄認證的情況下不存在。 |
 
-**前置詞的注意事項** ︰URI 前置詞是依區段 (而不是依字元) 計算。 例如，`/a/b` 是 `/a/b/c` 的前置詞，而不是 `/a/bc` 的前置詞。
+**前置詞的注意事項**︰URI 前置詞是依區段 (而不是依字元) 計算。 例如，`/a/b` 是 `/a/b/c` 的前置詞，而不是 `/a/bc` 的前置詞。
 
 下列 Node.js 程式碼片段顯示稱為 **generateSasToken** 的函式，它會從輸入 `resourceUri, signingKey, policyName, expiresInMins` 計算權杖。 下一節將詳細說明如何初始化不同權杖使用案例的不同輸入。
 
@@ -377,11 +378,11 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 支援的憑證包含：
 
-* **現有的 X.509 憑證** 。 裝置可能已經有與其關聯的 X.509 憑證。 裝置可以使用此憑證向「IoT 中樞」進行驗證。 適用於指紋或 CA 驗證。 
+* **現有的 X.509 憑證**。 裝置可能已經有與其關聯的 X.509 憑證。 裝置可以使用此憑證向「IoT 中樞」進行驗證。 適用於指紋或 CA 驗證。 
 
-* **CA 簽署的 X.509 憑證** 。 若要識別裝置並向 IoT 中樞驗證它，您可以使用「憑證授權單位」(CA) 所產生和簽署的 X.509 憑證。 適用於指紋或 CA 驗證。
+* **CA 簽署的 X.509 憑證**。 若要識別裝置並向 IoT 中樞驗證它，您可以使用「憑證授權單位」(CA) 所產生和簽署的 X.509 憑證。 適用於指紋或 CA 驗證。
 
-* **自我產生及自我簽署的 X-509 憑證** 。 裝置製造商或公司內部的部署人員可以產生這些憑證，並將對應的私密金鑰 (和憑證) 存放在裝置上。 您可以使用 [OpenSSL](https://www.openssl.org/) \(英文\) 和 [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 公用程式之類的工具來達到此目的。 只適用於指紋驗證。
+* **自我產生及自我簽署的 X-509 憑證**。 裝置製造商或公司內部的部署人員可以產生這些憑證，並將對應的私密金鑰 (和憑證) 存放在裝置上。 您可以使用 [OpenSSL](https://www.openssl.org/) \(英文\) 和 [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 公用程式之類的工具來達到此目的。 只適用於指紋驗證。
 
 裝置可以使用 X.509 憑證或安全性權杖來進行驗證，但不可同時使用兩者。 使用 x.509 憑證驗證時，請確定您已準備好在現有憑證過期時處理憑證變換的策略。
 
@@ -400,7 +401,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="c-support"></a>C\# 支援
 
-**RegistryManager** 類別提供一個程式設計方式來註冊裝置。 特別是， **AddDeviceAsync** 和 **UpdateDeviceAsync** 方法可讓您在「IoT 中樞」身分識別登錄中註冊和更新裝置。 這兩種方法都會採用 **Device** 執行個體做為輸入。 **Device** 類別包含 **Authentication** 屬性，這可讓您指定主要和次要 X.509 憑證指紋。 憑證指紋代表 X.509 憑證的 SHA-256 雜湊 (使用二進位 DER 編碼來儲存)。 您可以選擇指定主要指紋或次要指紋，或是同時指定兩者。 支援主要和次要指紋是為了處理憑證變換情況。
+**RegistryManager** 類別提供一個程式設計方式來註冊裝置。 特別是，**AddDeviceAsync** 和 **UpdateDeviceAsync** 方法可讓您在「IoT 中樞」身分識別登錄中註冊和更新裝置。 這兩種方法都會採用 **Device** 執行個體做為輸入。 **Device** 類別包含 **Authentication** 屬性，這可讓您指定主要和次要 X.509 憑證指紋。 憑證指紋代表 X.509 憑證的 SHA-256 雜湊 (使用二進位 DER 編碼來儲存)。 您可以選擇指定主要指紋或次要指紋，或是同時指定兩者。 支援主要和次要指紋是為了處理憑證變換情況。
 
 以下是使用 X.509 憑證指紋來註冊裝置的範例 C\# 程式碼片段︰
 

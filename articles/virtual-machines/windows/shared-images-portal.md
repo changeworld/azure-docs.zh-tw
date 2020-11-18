@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e10b1955d50450e43d1dbb180f4d533b6b6ae8b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 57cebed8ac229ed54945d75786b84b3cd2a36252
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978049"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844194"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用入口網站建立 Azure 共用映射庫
 
@@ -21,7 +21,7 @@ ms.locfileid: "91978049"
 
 共用映像資源庫可讓您與 AAD 租用戶中區域內或跨區域組織中的其他人共用自訂 VM 映像。 選擇您要共用的映像、您要開放使用的區域，以及您要共用的對象。 您可以建立多個資源庫，讓您可以根據邏輯群組共用映像。 
 
-資源庫是一種頂層資源，可提供完整的角色型存取控制 (RBAC)。 可建立映像版本，並且您可以選擇將每個映像版本複寫到不同的 Azure 區域集合。 資源庫僅適用於受控映像。
+資源庫是最上層資源，可 (Azure RBAC) 提供完整的 Azure 角色型存取控制。 可建立映像版本，並且您可以選擇將每個映像版本複寫到不同的 Azure 區域集合。 資源庫僅適用於受控映像。
 
 共用映像庫具有多個資源類型。 我們將在這篇文章中使用或建置這些資源類型：
 
@@ -38,7 +38,7 @@ ms.locfileid: "91978049"
  
 ## <a name="create-vms"></a>建立 VM
 
-現在您可以建立一或多個新的 Vm。 此範例會在*美國東部*資料中心的*myResourceGroup*中建立名為*myVM*的 VM。
+現在您可以建立一或多個新的 Vm。 此範例會在 *美國東部* 資料中心的 *myResourceGroup* 中建立名為 *myVM* 的 VM。
 
 1. 移至您的映射定義。 您可以使用資源篩選來顯示所有可用的映射定義。
 1. 在您映射定義的頁面上，從頁面頂端的功能表中選取 [ **建立 VM** ]。
@@ -49,7 +49,7 @@ ms.locfileid: "91978049"
 1. **Image** `latest` 如果您是從映射定義的頁面開始，則影像的值會自動填入映射版本。
 1. 針對 [ **大小**]，從可用大小清單中選擇 VM 大小，然後選擇 [ **選取**]。
 1. 在 [ **系統管理員帳戶**] 下，如果映射是一般化的，您需要提供使用者名稱，例如 *>azureuser* 和密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果您的映射是特製化的，使用者名稱和密碼欄位將呈現灰色，因為會使用來源 VM 的使用者名稱和密碼。
-1. 如果您想要允許遠端存取 VM，請在 [ **公用輸入埠**] 下，選擇 [ **允許選取的埠** ]，然後從下拉式清單中選取 **RDP (3389) ** 。 如果您不想要允許遠端存取 VM，請將 [ **未** 選取] 用於 **公用輸入埠**。
+1. 如果您想要允許遠端存取 VM，請在 [ **公用輸入埠**] 下，選擇 [ **允許選取的埠** ]，然後從下拉式清單中選取 **RDP (3389)** 。 如果您不想要允許遠端存取 VM，請將 [ **未** 選取] 用於 **公用輸入埠**。
 1. 當您完成時，請選取頁面底部的 [ **檢查 + 建立** ] 按鈕。
 1. 在 VM 通過驗證之後，請選取頁面底部的 [ **建立** ] 以開始部署。
 

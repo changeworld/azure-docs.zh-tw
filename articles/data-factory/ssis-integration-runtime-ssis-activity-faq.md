@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632204"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844177"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>針對 SSIS 整合執行時間中的封裝執行進行疑難排解
 
@@ -38,7 +38,7 @@ ms.locfileid: "92632204"
 * 資料來源或目的地已多載。 檢查資料來源或目的地的負載，並查看它是否有足夠的容量。 例如，如果您使用 Azure SQL Database，請考慮在資料庫可能會有時間時相應增加。
 * SSIS 整合執行時間與資料來源或目的地之間的網路不穩定，尤其是當連線在內部部署與 Azure 之間的連線時。 依照下列步驟，在 SSIS 套件中套用重試模式：
   * 請確定您的 SSIS 套件可在失敗時重新執行，而不會產生副作用 (例如，資料遺失或資料重複) 。
-  * 在 [ **一般** ] 索引標籤上設定 [ **執行 SSIS 套件** ] 活動的 **重試** 和 **重試間隔** 。 ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * 在 [**一般**] 索引標籤上設定 [**執行 SSIS 套件**] 活動的 **重試** 和 **重試間隔**。 ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * 若為 ADO.NET 和 OLE DB 來源或目的地元件，請在 SSIS 封裝或 SSIS 活動連線管理員中設定 **ConnectRetryCount** 和 **ConnectRetryInterval** 。
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>錯誤訊息：「ADO NET 來源無法取得連接」 ...」 使用建立與 SQL Server 的連接時發生網路相關或實例特定的錯誤。 找不到或無法存取伺服器。」
@@ -108,7 +108,7 @@ ms.locfileid: "92632204"
 錯誤大多是暫時性問題所致，所以請嘗試重新執行封裝執行。 依照下列步驟，在 SSIS 套件中套用重試模式：
 
 * 請確定您的 SSIS 套件可在失敗時重新執行，而不會產生副作用 (例如，資料遺失或資料重複) 。
-* 在 [ **一般** ] 索引標籤上設定 [ **執行 SSIS 套件** ] 活動的 **重試** 和 **重試間隔** 。 ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* 在 [**一般**] 索引標籤上設定 [**執行 SSIS 套件**] 活動的 **重試** 和 **重試間隔**。 ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * 若為 ADO.NET 和 OLE DB 來源或目的地元件，請在 SSIS 封裝或 SSIS 活動連線管理員中設定 **ConnectRetryCount** 和 **ConnectRetryInterval** 。
 
 ### <a name="error-message-there-is-no-active-worker"></a>錯誤訊息：「沒有作用中的背景工作角色」。
@@ -121,14 +121,14 @@ ms.locfileid: "92632204"
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>錯誤訊息：「適用于 Analysis Services 的 Microsoft OLE DB 提供者。 ' Hresult： 0x80004005 Description： ' COM error： COM error： mscorlib;調用的目標已擲回例外狀況」
 
-其中一個可能的原因是，Azure Multi-Factor Authentication 啟用的使用者名稱或密碼已設定為 Azure Analysis Services Authentication。 SSIS 整合執行時間不支援此驗證。 嘗試使用 Azure Analysis Services authentication 的服務主體：
+其中一個可能的原因是已針對 Azure Analysis Services 驗證設定 Azure AD Multi-Factor Authentication 啟用的使用者名稱或密碼。 SSIS 整合執行時間不支援此驗證。 嘗試使用 Azure Analysis Services authentication 的服務主體：
 
 1. [依照自動化中的服務主體](../analysis-services/analysis-services-service-principal.md)描述來準備服務主體。
-2. 在連線管理員中，設定 **使用特定的使用者名稱和密碼** ：將 **AppID** 設定為使用者名稱，並 **clientSecret** 為密碼。
+2. 在連線管理員中，設定 **使用特定的使用者名稱和密碼**：將 **AppID** 設定為使用者名稱，並 **clientSecret** 為密碼。
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>錯誤訊息：「ADONET 來源無法取得連接 {GUID}，出現下列錯誤訊息：使用受控識別時，使用者 ' NT AUTHORITY\ANONYMOUS Login ' 的登入失敗
 
-當參數 *>connectusingmanagedidentity* 為 **True** 時，請確定您未將連線管理員的驗證方法設定為 **Active Directory 密碼驗證** 。 您可以改為將它設定為 **SQL 驗證** ，如果設定了 *>connectusingmanagedidentity* ，則會忽略此項。
+當參數 *>connectusingmanagedidentity* 為 **True** 時，請確定您未將連線管理員的驗證方法設定為 **Active Directory 密碼驗證**。 您可以改為將它設定為 **SQL 驗證** ，如果設定了 *>connectusingmanagedidentity* ，則會忽略此項。
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>錯誤訊息：「0xC020801F at ...，OData Source [...]：無法從執行時間連接管理員取得 managed 連接」
 

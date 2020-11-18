@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297394"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844313"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接至媒體服務 v3 API-.NET
 
@@ -43,7 +43,7 @@ ms.locfileid: "89297394"
 
 本主題中的範例應用程式為目標 `netcoreapp2.0` 。 此程式碼會使用從 c # 7.1 開始提供的「async main」。 如需詳細資訊，請參閱此 [blog](/archive/blogs/benwilli/async-main-is-available-but-hidden) 。
 
-## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
+## <a name="add-required-nuget-packagesassemblies"></a>新增必要的 NuGet 套件/元件
 
 1. 在 Visual Studio 中，選取 [**工具**  >  **nuget 封裝管理員**  >  **nuget 管理員主控台**]。
 2. 在 **封裝管理員主控台** 視窗中，使用 `Install-Package` 命令新增下列 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media` 。
@@ -51,16 +51,20 @@ ms.locfileid: "89297394"
 |Package|描述|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure 媒體服務 SDK。 <br/>若要確定您使用的是最新的 Azure 媒體服務套件，請檢查 [Microsoft Azure 管理媒體](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)。|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|適用于 Azure SDK for NET 的 ADAL authentication library|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|從環境變數和本機 JSON 檔案讀取設定值|
-|`Microsoft.Extensions.Configuration.Json`|從環境變數和本機 JSON 檔案讀取設定值
-|`WindowsAzure.Storage`|儲存體 SDK|
+
+### <a name="other-required-assemblies"></a>其他必要元件
+
+- Azure. Blob
+- Microsoft.Extensions.Configuration
+- Microsoft.Extensions.Configuration。EnvironmentVariables
+- Microsoft.Extensions.Configuration.Js開啟
+- Microsoft.Rest.ClientRuntime.Azure.Authentication
 
 ## <a name="create-and-configure-the-app-settings-file"></a>建立並設定應用程式佈建檔
 
 ### <a name="create-appsettingsjson"></a>建立 appsettings.js于
 
-1. 移至**一般**  >  **文字檔**。
+1. 移至 **一般**  >  **文字檔**。
 1. 將它命名為「appsettings.js開啟」。
 1. 將 json 檔案的 [複製到輸出目錄] 屬性設定為 [有更新時才複製] (，讓應用程式在發佈) 時可以存取它。
 
@@ -136,9 +140,9 @@ namespace ConsoleApp1
             get { return new Uri(_config["ArmEndpoint"]); }
         }
 
-        public string Region
+        public string Location
         {
-            get { return _config["Region"]; }
+            get { return _config["Location"]; }
         }
     }
 }
@@ -243,7 +247,7 @@ namespace ConsoleApp1
 - [使用媒體服務建立篩選 - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [搭配使用 Azure Functions v2 與媒體服務 v3 的進階影片隨選範例](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [.NET 參考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET 參考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
 * 如需更多程式碼範例，請參閱 [.NET SDK 範例](https://github.com/Azure-Samples/media-services-v3-dotnet) 存放庫。

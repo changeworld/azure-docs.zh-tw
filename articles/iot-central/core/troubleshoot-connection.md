@@ -7,13 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.custom: device-developer
-ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: device-developer, devx-track-azurecli
+ms.openlocfilehash: f4f35aed10465fb06460f2818a876444bf989e01
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424475"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843956"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>針對裝置中的資料未顯示在 Azure IoT Central 的原因進行疑難排解
 
@@ -130,9 +130,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| 裝置布建狀態 | 描述 | 可能的緩和措施 |
+| 裝置布建狀態 | 說明 | 可能的緩和措施 |
 | - | - | - |
-| 已佈建 | 沒有立即可辨識的問題。 | N/A |
+| 已佈建 | 沒有立即可辨識的問題。 | 不適用 |
 | 已登錄 | 裝置尚未連線到 IoT Central。 | 檢查您的裝置記錄是否有連線問題。 |
 | 封鎖 | 裝置遭到封鎖而無法連接到 IoT Central。 | 裝置遭到封鎖而無法連接到 IoT Central 應用程式。 請在 IoT Central 中解除封鎖裝置，然後重試。 若要深入瞭解，請參閱 [封鎖裝置](concepts-get-connected.md#device-status-values)。 |
 | 未經 批准 | 裝置未通過核准。 | 裝置未獲核准，無法連接至 IoT Central 應用程式。 請在 IoT Central 中核准裝置，然後重試。 若要深入瞭解，請參閱 [核准裝置](concepts-get-connected.md#connect-without-registering-devices) |

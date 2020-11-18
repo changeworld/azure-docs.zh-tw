@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 32e79e12eae9997df8163401d2abc5f06bc02fc0
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 739245a8a17c97f3a8081cfee7e7bb31e4135952
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993488"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843973"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -110,10 +110,6 @@ Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建
 
 將 Oracle 軟體和工作負載從內部部署遷移至 Microsoft Azure 時，Oracle 會提供如 [Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 所述的授權行動性。
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-
-Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節點叢集組態中，減少發生單一節點錯誤的機率。 它依賴以下兩個內部部署技術，而這兩個技術並非大規模公用雲端環境的原生技術︰網路多點傳送和共用磁碟。 如果您的資料庫解決方案需要 Azure 中的 Oracle RAC，您需要有協力廠商軟體才能啟用這些技術。 如需 Oracle RAC 的詳細資訊，請參閱 [FlashGrid SkyCluster 頁面](https://www.flashgrid.io/oracle-rac-in-azure/)。
-
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和災害復原考量
 
 在 Azure 中使用 Oracle 資料庫時，您必須負責實作高可用性和災害復原解決方案，以避免任何停機。
@@ -130,7 +126,7 @@ Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節�
 
 ## <a name="support-for-jd-edwards"></a>JD Edwards 的支援
 
-根據 Oracle 支援附註 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)，符合其特定 `Minimum Technical Requirements` (MTR) 的**任何公用雲端供應項目**都支援 JD Edwards EnterpriseOne 9.2 版和更新版本。  您必須建立符合其 OS 和軟體應用程式相容性之 MTR 規格的自訂映像。
+根據 Oracle 支援附註 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)，符合其特定 `Minimum Technical Requirements` (MTR) 的 **任何公用雲端供應項目** 都支援 JD Edwards EnterpriseOne 9.2 版和更新版本。  您必須建立符合其 OS 和軟體應用程式相容性之 MTR 規格的自訂映像。
 
 ## <a name="oracle-weblogic-server-virtual-machine-offers"></a>Oracle WebLogic Server 虛擬機器供應項目
 

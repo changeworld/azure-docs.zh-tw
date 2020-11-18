@@ -3,12 +3,12 @@ title: Azure Notebooks 預覽概觀
 description: 使用不需要安裝或設定的免費 Azure Notebooks 預覽服務，在雲端中執行 Jupyter Notebook。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85831398"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845130"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 預覽概觀
 
@@ -111,4 +111,4 @@ Azure Notebooks 已預先設定下列 Jupyter 擴充功能：
   - [放映投影片](present-jupyter-notebooks-slideshow.md)
   - [使用資料檔案](work-with-project-data-files.md)
   - [存取資料資源](access-data-resources-jupyter-notebooks.md)
-  - [使用 Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+  - [使用 Azure Machine Learning](../machine-learning/samples-notebooks.md)

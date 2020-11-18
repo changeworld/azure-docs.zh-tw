@@ -3,12 +3,12 @@ title: 建議的安全性作法
 description: 使用 Azure Lighthouse 時，請務必考慮安全性和存取控制。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399375"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843718"
 ---
 # <a name="recommended-security-practices"></a>建議的安全性作法
 
@@ -17,11 +17,11 @@ ms.locfileid: "91399375"
 > [!TIP]
 > 這些建議也適用于使用 Azure Lighthouse [管理多個](enterprise.md) 租使用者的企業。
 
-## <a name="require-azure-multi-factor-authentication"></a>要求使用 Azure Multi-Factor Authentication
+## <a name="require-azure-ad-multi-factor-authentication"></a>需要 Azure AD Multi-Factor Authentication
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (也稱為雙步驟驗證) 有助於防止攻擊者藉由要求多個驗證步驟來取得帳戶的存取權。 您應要求管理租使用者中的所有使用者 Multi-Factor Authentication，包括可存取委派客戶資源的使用者。
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (也稱為雙步驟驗證) 有助於防止攻擊者藉由要求多個驗證步驟來取得帳戶的存取權。 您應要求管理租使用者中的所有使用者 Multi-Factor Authentication，包括可存取委派客戶資源的使用者。
 
-我們建議您要求客戶也在其租用戶中實作 Azure Multi-Factor Authentication。
+我們建議您也要求您的客戶在其租使用者中執行 Azure AD Multi-Factor Authentication。
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>使用最低權限原則將權限指派給群組
 
@@ -47,5 +47,5 @@ ms.locfileid: "91399375"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [部署 Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)。
+- [部署 Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)。
 - 了解[跨租用戶管理體驗](cross-tenant-management-experience.md)。

@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909704"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843038"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -59,10 +59,10 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求，包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求。
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
-您可以使用下列通訊協定搭配 Azure 服務匯流排來傳送和接收訊息：
+您可以使用下列通訊協定搭配 Azure 事件中樞來傳送和接收事件：
 
-- AMQP
-- HTTP
+- Advanced Message 佇列 Protocol 1.0 (AMQP) 
+- 使用 TLS (HTTPS) 的超文字傳輸通訊協定1。1
 - Apache Kafka
 
 請參閱下表，了解您需要開啟哪些輸出連接埠，以使用這些通訊協定與 Azure 事件中樞進行通訊。 
@@ -70,8 +70,21 @@ Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存�
 | 通訊協定 | 連接埠 | 詳細資料 | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 與 5672 | 請參閱 [AMQP 通訊協定指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTP、HTTPS | 80、443 |  |
+| HTTPS | 443 | 此埠用於 HTTP/REST API 以及 AMQP over Websocket。 |
 | Kafka | 9093 | 請參閱[從 Kafka 應用程式使用事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
+
+當透過埠5671使用 AMQP 時，也需要 HTTPS 埠才能進行輸出通訊，因為用戶端 Sdk 所執行的數項管理作業，以及使用) 透過 HTTPS 執行時，會從 Azure Active Directory (取得權杖。 
+
+正式的 Azure Sdk 通常會使用 AMQP 通訊協定來從事件中樞傳送和接收事件。 AMQP over Websocket 通訊協定選項會透過埠 TCP 443 （如同 HTTP API）來執行，但在功能上與一般 AMQP 相同。 此選項的初始連線延遲較高，因為有額外的交握往返，而且會稍微增加額外的負荷，以因應共用 HTTPS 埠的取捨。 如果選取此模式，則 TCP 埠443已足夠進行通訊。 下列選項可讓您選取 [一般 AMQP] 或 [AMQP Websocket] 模式：
+
+| 語言 | 選項   |
+| -------- | ----- |
+| .NET     | 具有[EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true)或[EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true)的[EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true)屬性 |
+| Java     | [eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) with [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) or [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
+| 節點  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) 具有 `webSocketOptions` 屬性。 |
+| Python | 使用[TransportType. Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python)或 TransportType 的[EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) [。 AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+
+
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>我需要允許哪些 IP 位址？
 若要尋找要新增至連線允許清單的正確 IP 位址，請遵循下列步驟：
@@ -148,7 +161,7 @@ security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
 ```
-注意:如果 sasl.jaas.config 不是您架構中支援的設定，請尋找用來設定 SASL 使用者名稱和密碼的設定，並改用那些設定。 將使用者名稱設定為 $ConnectionString，並將密碼設定為您的事件中樞連接字串。
+注意：如果 sasl.jaas.config 不是您架構中支援的設定，請尋找用來設定 SASL 使用者名稱和密碼的設定，並改用這些設定。 將使用者名稱設定為 $ConnectionString，並將密碼設定為您的事件中樞連接字串。
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>適用於事件中樞的訊息/事件大小為何？
 針事件中樞所允許的訊息大小上限為 1 MB。
@@ -193,9 +206,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 1. 在 [ **事件匯流排命名空間** ] 頁面上，選取左側功能表上的 [ **新增支援要求** ]。 
 1. 在 [ **新增支援要求** ] 頁面上，依照下列步驟執行：
-    1. 如需 **摘要** ，請使用幾個字來描述問題。 
-    1. 針對 [問題類型]  選取 [配額]  。 
-    1. 針對 **問題子類型** ，請選取 [ **要求增加或減少輸送量單位** ]。 
+    1. 如需 **摘要**，請使用幾個字來描述問題。 
+    1. 針對 [問題類型] 選取 [配額]。 
+    1. 針對 **問題子類型**，請選取 [ **要求增加或減少輸送量單位**]。 
     
         :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="支援要求頁面":::
 
@@ -229,15 +242,15 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 1. 在 [ **事件匯流排命名空間** ] 頁面上，選取左側功能表上的 [ **新增支援要求** ]。 
 1. 在 [ **新增支援要求** ] 頁面上，依照下列步驟執行：
-    1. 如需 **摘要** ，請使用幾個字來描述問題。 
-    1. 針對 [問題類型]  選取 [配額]  。 
-    1. 針對 **問題子類型** ，選取 [ **分割區變更的要求** ]。 
+    1. 如需 **摘要**，請使用幾個字來描述問題。 
+    1. 針對 [問題類型] 選取 [配額]。 
+    1. 針對 **問題子類型**，選取 [ **分割區變更的要求**]。 
     
-        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="支援要求頁面":::
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="增加分割區計數":::
 
 分割區計數可以增加到精確的40。 在此情況下，Tu 的數目也必須增加到40。 如果您稍後決定將 TU 限制減少回 <= 20，則最大分割區限制也會減少為32。 
 
-分割區的減少並不會影響現有的事件中樞，因為分割區是在事件中樞層級套用，而且在建立中樞之後是不可變的。 
+分割區的減少不會影響現有的事件中樞，因為分割區是在事件中樞層級套用，而且在建立中樞之後是不可變的。 
 
 ## <a name="pricing"></a>定價
 
@@ -257,7 +270,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 每個傳送到事件中樞的事件都算是可計費訊息。 *輸入事件* 的定義為小於或等於 64 KB 的資料單位。 任何大小小於或等於 64 KB 的事件均視為一個可計費事件。 如果事件大於 64 KB，可計費事件的數目乃根據事件大小來計算 (64 KB 的倍數)。 例如，一個傳送到事件中樞的 8 KB 事件將視為一個事件來計費，不過，一則傳送到事件中樞的 96 KB 訊息將視為兩個事件來計費。
 
-自事件中樞取用的事件，以及管理作業和控制呼叫 (如檢查點)，不會計入可計費輸入事件，但會累積在輸送量單位額度內。
+從事件中樞取用的事件，以及管理作業和控制呼叫（例如檢查點）都不會計入為可計費的輸入事件，但會累積到輸送量單位額度。
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>代理連線費用適用於事件中樞嗎？
 
@@ -299,9 +312,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>使用 Azure Blob 儲存體做為檢查點存放區時，如何以特定版本的 Azure 儲存體 SDK 為目標？
-如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 支援的儲存體 Blob SDK 版本可能與 Azure 上通常有的不同。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建所支援的 Azure 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，並在您的程式碼中以該版本作為目標。 
+如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則您將會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 支援的儲存體 Blob SDK 版本可能與 Azure 上通常有的不同。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建支援的 AZURE 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version) ，並以您程式碼中的版本為目標。 
 
-例如，如果您是在 Azure Stack Hub 2005 版上執行，則儲存體服務的最高可用版本是2019-02-02 版。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2019-02-02 為目標。 如需如何以特定儲存體 API 版本為目標的範例，請參閱下列 c #、JAVA、Python 和 JavaScript/TypeScript 範例。  
+例如，如果您是在 Azure Stack Hub 2005 版上執行，則儲存體服務的最高可用版本是2019-02-02 版。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了遵循本節中的步驟之外，您還需要新增程式碼以儲存體服務 API 2019-02-02 版為目標。 如需如何以特定儲存體 API 版本為目標的範例，請參閱下列 c #、JAVA、Python 和 JavaScript/TypeScript 範例。  
 
 如需如何從程式碼將特定儲存體 API 版本設為目標的範例，請參閱 GitHub 上的下列範例： 
 

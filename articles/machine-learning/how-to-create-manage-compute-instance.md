@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: bdae8d77dc5e51cf4a181459ab2e159f31f06e31
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543097"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842884"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 
@@ -42,7 +42,7 @@ ms.locfileid: "94543097"
 
 ## <a name="create"></a>建立
 
-**預估時間** ：大約5分鐘。
+**預估時間**：大約5分鐘。
 
 建立計算實例是工作區的一次性進程。 您可以將此計算重複使用於開發工作站或作為定型的計算目標。 您可以將多個計算實例附加至工作區。
 

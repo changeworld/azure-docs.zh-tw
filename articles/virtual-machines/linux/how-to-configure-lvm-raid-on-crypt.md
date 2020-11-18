@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 46d2c039806e4e6a72e091458d44e7b21b3dfa70
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911812"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843514"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>設定加密裝置上的 LVM 和 RAID
 
@@ -42,7 +42,7 @@ ms.locfileid: "92911812"
 
 以類似的方式，會在磁片上的加密層級上建立 RAID 裝置。 系統會在 RAID 裝置上建立檔案系統，並新增至/etc/fstab 作為一般裝置。
 
-## <a name="considerations"></a>考量事項
+## <a name="considerations"></a>考量
 
 我們建議您在 crypt 上使用 LVM。 當 LVM 因為特定的應用程式或環境限制而無法使用時，可以選擇使用 RAID。
 
@@ -458,7 +458,7 @@ shutdown -r now
 lsblk
 df -h
 ```
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [調整以 Azure 磁碟加密加密的邏輯磁片區管理裝置大小](how-to-resize-encrypted-lvm.md)
 - [Azure 磁碟加密的疑難排解](disk-encryption-troubleshooting.md)

@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js
-ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250023"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844807"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>設定 Azure Static Web Apps 預覽版本的應用程式設定
 
@@ -144,7 +144,7 @@ Azure CLI 命令需要幾個您帳戶的專屬值才能執行上傳。 從您的
 2. 資源群組名稱
 3. 訂用帳戶識別碼
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps 的設定檢視":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps 概觀":::
 
 4. 從終端機或命令列，執行下列命令。 請務必將預留位置 `<YOUR_STATIC_SITE_NAME>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_SUBSCRIPTION_ID>` 取代為您在 [概觀] 視窗中的值。
 

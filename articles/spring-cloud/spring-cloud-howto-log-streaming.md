@@ -6,13 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: 04b03e3857bc5b01c25112f2a0d60c6468ecd42a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093917"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843599"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>即時串流 Azure Spring Cloud 應用程式記錄
 
@@ -20,7 +20,7 @@ ms.locfileid: "92093917"
 
 Azure 春季 Cloud 可在 Azure CLI 中進行記錄串流，以取得即時應用程式主控台記錄以進行疑難排解。 您也可以 [使用診斷設定來分析記錄和計量](./diagnostic-services.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 安裝適用于春季雲端的 [Azure CLI 擴充](/cli/azure/install-azure-cli) 功能，最小版本0.2.0。
 * 具有正在執行之應用程式的 **Azure 春季雲端** 實例，例如 [春季 cloud app](./spring-cloud-quickstart.md)。

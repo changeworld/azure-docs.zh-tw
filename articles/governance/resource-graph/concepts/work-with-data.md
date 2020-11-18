@@ -3,13 +3,13 @@ title: 使用大型資料集
 description: 了解如何在使用 Azure Resource Graph 時取得、格式化、分頁及略過大型資料集中的記錄。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 6054d2cd2cf012c21f451ece87db672897fa0398
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578490"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843344"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>使用大型 Azure 資源資料集
 
@@ -22,7 +22,7 @@ Azure Resource Graph 是設計來使用和取得 Azure 環境中資源的相關�
 根據預設，Resource Graph 會將所有查詢限制為只傳回 **100** 筆記錄。 此控制項可保護使用者和服務，以防止會產生大型資料集的非預期查詢。 此事件大多會在客戶利用符合其特定需求的方式來實驗查詢以尋找並篩選資源時發生。 此控制項不同於使用 [top](/azure/kusto/query/topoperator) 或 [limit](/azure/kusto/query/limitoperator) Azure 資料總管語言運算子來限制結果。
 
 > [!NOTE]
-> 使用 **第一個**時，建議至少依照一個具有 `asc` 或 `desc` 的資料行來排序結果。 若未排序，傳回的結果會是隨機的且不可重複。
+> 使用 **第一個** 時，建議至少依照一個具有 `asc` 或 `desc` 的資料行來排序結果。 若未排序，傳回的結果會是隨機的且不可重複。
 
 預設限制可以透過與 Resource Graph 互動的所有方法來覆寫。 下列範例示範如何將資料集大小限制變更為 _200_：
 
@@ -38,17 +38,17 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 
 「限制最嚴格」的控制項將會勝出。 例如，如果您的查詢會使用 **top** 或 **limit** 運算子並產生比 **First** 還多的記錄，則傳回的記錄數目上限會等於 **First**。 同樣地，如果 **top** 或 **limit** 小於 **First**，傳回的記錄集會是小於 **top** 或 **limit** 所設定的值。
 
-**First** 目前允許的最大值為 _5000_，藉由一次將結果 _1000_ 筆記錄[分頁](#paging-results)即可達成。
+**First** 目前允許的最大值為 _5000_，藉由一次將結果 _1000_ 筆記錄 [分頁](#paging-results)即可達成。
 
 > [!IMPORTANT]
-> 當 **First** 設定為大於 _1000_ 筆記錄時，查詢必須**推算** **id** 欄位，以便讓分頁正常運作。 如果查詢中遺漏了 First，回應將不會進行[分頁](#paging-results)，且結果受限於 _1000_ 筆記錄。
+> 當 **First** 設定為大於 _1000_ 筆記錄時，查詢必須 **推算** **id** 欄位，以便讓分頁正常運作。 如果查詢中遺漏了 First，回應將不會進行 [分頁](#paging-results)，且結果受限於 _1000_ 筆記錄。
 
 ## <a name="skipping-records"></a>略過記錄
 
 使用大型資料集的下一個選項是 **Skip** 控制項。 此控制項可讓查詢先跳過或略過所定義的記錄數目，然後再傳回結果。 **Skip** 適用於以有意義的方式排序結果的查詢，其目的是取得位於結果集中間某處的記錄。 如果所需的結果位於所傳回資料集的結尾處，則使用不同的排序設定，並改為從資料集頂端擷取結果會更有效率。
 
 > [!NOTE]
-> 使用 **Skip**時，建議至少依照一個具有 `asc` 或 `desc` 的資料行來排序結果。 若未排序，傳回的結果會是隨機的且不可重複。 如果 `limit` `take` 在查詢中使用或，就會忽略 **Skip** 。
+> 使用 **Skip** 時，建議至少依照一個具有 `asc` 或 `desc` 的資料行來排序結果。 若未排序，傳回的結果會是隨機的且不可重複。 如果 `limit` `take` 在查詢中使用或，就會忽略 **Skip** 。
 
 下列範例示範如何略過查詢所產生的前 _10_ 筆記錄，改為從所傳回結果集的第 11 筆記錄開始：
 
@@ -65,11 +65,11 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ## <a name="paging-results"></a>分頁結果
 
 如果需要將結果集分解為較小的記錄集以進行處理，或者因為結果集可能超過 _1000_ 筆傳回記錄的允許值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)的 
- **QueryResponse**會提供值，以指出結果集已中斷： **>resulttruncated**和 **$skipToken**。 **resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
+ **QueryResponse** 會提供值，以指出結果集已中斷： **>resulttruncated** 和 **$skipToken**。 **resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
 
- 當已停用或無法使用任何分頁時， **>resulttruncated**為**true** ，因為沒有任何資料 `id` 行，或當查詢所要求的資源不足時。 當 **>resulttruncated** 為 **true**時，不會設定 **$skipToken** 屬性。
+ 當已停用或無法使用任何分頁時， **>resulttruncated** 為 **true** ，因為沒有任何資料 `id` 行，或當查詢所要求的資源不足時。 當 **>resulttruncated** 為 **true** 時，不會設定 **$skipToken** 屬性。
 
-下列範例示範如何**略過**前 3000 筆記錄，並在使用 Azure CLI 和 Azure PowerShell 略過這些記錄之後，傳回 **前** 1000 筆記錄：
+下列範例示範如何 **略過** 前 3000 筆記錄，並在使用 Azure CLI 和 Azure PowerShell 略過這些記錄之後，傳回 **前** 1000 筆記錄：
 
 ```azurecli-interactive
 az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
@@ -80,7 +80,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 ```
 
 > [!IMPORTANT]
-> 查詢必須**投影** **識別碼**欄位，才能使分頁運作。 如果查詢中遺漏了 Skip，回應將不會包含 **$skipToken**。
+> 查詢必須 **投影** **識別碼** 欄位，才能使分頁運作。 如果查詢中遺漏了 Skip，回應將不會包含 **$skipToken**。
 
 如需範例，請參閱 REST API 文件中的[下一頁查詢](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query)。
 
@@ -92,7 +92,7 @@ Resource Graph 查詢的結果會以兩種格式提供：_Table_ 和 _ObjectArra
 
 ### <a name="format---table"></a>格式 - Table
 
-預設格式 _Table_會以 JSON 格式傳回結果，其設計訴求是要醒目提示查詢所傳回屬性的資料行設計和資料列值。 此格式與結構化資料表或試算表中定義的資料非常類似，其中先列出已識別的資料行，接著是代表與這些資料行一致之資料的每個資料列。
+預設格式 _Table_ 會以 JSON 格式傳回結果，其設計訴求是要醒目提示查詢所傳回屬性的資料行設計和資料列值。 此格式與結構化資料表或試算表中定義的資料非常類似，其中先列出已識別的資料行，接著是代表與這些資料行一致之資料的每個資料列。
 
 以下是 _Table_ 格式的查詢結果範例：
 

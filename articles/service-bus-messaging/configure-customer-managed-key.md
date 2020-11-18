@@ -3,12 +3,12 @@ title: 設定您自己的金鑰來加密待用 Azure 服務匯流排資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 服務匯流排資料 rest 的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32fcdad28b06df1763ab1efb1740d87d0b247b0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400580"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843395"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密 Azure 服務匯流排待用資料
 Azure 服務匯流排 Premium 提供加密待用資料，以及 (Azure SSE) Azure 儲存體服務加密。 服務匯流排 Premium 依賴 Azure 儲存體來儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
@@ -25,7 +25,7 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管
 
 您可以使用 Azure Key Vault 來管理您的金鑰，並審核您的金鑰使用方式。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
 
-本文說明如何使用 Azure 入口網站，透過客戶管理的金鑰來設定金鑰保存庫。 若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站從 Azure Key Vault 設定和取出秘密](../key-vault/secrets/quick-create-portal.md)。
+本文說明如何使用 Azure 入口網站，透過客戶管理的金鑰來設定金鑰保存庫。 若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站建立 Azure Key Vault](../key-vault/general/quick-create-portal.md)。
 
 > [!IMPORTANT]
 > 使用客戶管理的金鑰搭配 Azure 服務匯流排需要已設定兩個必要屬性的金鑰保存庫。 它們是：虛  **刪除** ，且 **不會清除**。 當您在 Azure 入口網站中建立新的金鑰保存庫時，預設會啟用這些屬性。 但是，如果您需要在現有的金鑰保存庫上啟用這些屬性，您必須使用 PowerShell 或 Azure CLI。
@@ -56,11 +56,11 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管
     az keyvault update --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. 遵循下列步驟來建立金鑰：
-    1. 若要建立新的金鑰，從 [設定]**** 下方的 [金鑰]**** 功能表中選取 [產生/匯入]****。
+    1. 若要建立新的金鑰，從 [設定] 下方的 [金鑰] 功能表中選取 [產生/匯入]。
         
         ![選取 [產生/匯入] 按鈕](./media/configure-customer-managed-key/select-generate-import.png)
 
-    1. 將 [選項]**** 設定為 [產生]****，並為金鑰提供名稱。
+    1. 將 [選項] 設定為 [產生]，並為金鑰提供名稱。
 
         ![建立金鑰](./media/configure-customer-managed-key/create-key.png) 
 
@@ -102,9 +102,9 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管
 撤銷加密金鑰之後，加密命名空間上的服務匯流排服務將變成無法運作。 如果已啟用金鑰的存取權，或還原已刪除的金鑰，服務匯流排服務將會挑選金鑰，讓您可以從加密的服務匯流排命名空間存取資料。
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>使用 Resource Manager 範本啟用加密
-本節說明如何使用 **Azure Resource Manager 範本**來執行下列工作。 
+本節說明如何使用 **Azure Resource Manager 範本** 來執行下列工作。 
 
-1. 使用**受控服務識別**建立**premium**服務匯流排命名空間。
+1. 使用 **受控服務識別** 建立 **premium** 服務匯流排命名空間。
 2. 建立 **金鑰保存庫** ，並將服務身分識別存取權授與金鑰保存庫。 
 3. 使用金鑰保存庫資訊更新服務匯流排命名空間 (索引鍵/值) 。 
 
@@ -160,7 +160,7 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管
        }
     }
     ```
-2. 建立名為： **CreateServiceBusPremiumNamespaceParams.js的**範本參數檔案。 
+2. 建立名為： **CreateServiceBusPremiumNamespaceParams.js的** 範本參數檔案。 
 
     > [!NOTE]
     > 取代下列值： 

@@ -3,13 +3,13 @@ title: 快速入門 - 在 Azure 中建立隨選的容器映像
 description: 使用 Azure Container Registry 命令，在 Azure 雲端中快速建置、推送和執行隨選的 Docker 容器映像。
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: adb63b716172c979ca31f1ef70bf1523ff1ad5cc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098904"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845045"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
-使用 [az acr create][az-acr-create] 命令建立容器登錄。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例將使用 *myContainerRegistry008* 。 請將此更新為唯一的值。
+使用 [az acr create][az-acr-create] 命令建立容器登錄。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例將使用 *myContainerRegistry008*。 請將此更新為唯一的值。
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup \

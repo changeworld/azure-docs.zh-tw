@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009251"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843633"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面中建立租使用者和主機集區 (傳統) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "88009251"
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>取得 Windows 10 企業版多會話映射
 
-若要使用 Windows 10 企業版多會話映射，請移至 Azure Marketplace， **Get Started**  >  並[針對虛擬桌面1809版](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)選取開始**Microsoft Windows 10** > 和 Windows 10 企業版。
+若要使用 Windows 10 企業版多會話映射，請移至 Azure Marketplace， **Get Started**  >  並 [針對虛擬桌面1809版](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)選取開始 **Microsoft Windows 10** > 和 Windows 10 企業版。
 
 > [!div class="mx-imgBorder"]
 > ![選取虛擬桌面1809版 Windows 10 企業版的螢幕擷取畫面。](../media/AzureMarketPlace.png)
@@ -166,7 +166,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因2：** 功能變數名稱無法解析。
 
-**修正2：** 請參閱錯誤：[工作階段主機 VM](troubleshoot-vm-configuration-2019.md)設定中的[功能變數名稱無法解析](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve)。
+**修正2：** 請參閱錯誤：[工作階段主機 VM](troubleshoot-vm-configuration-2019.md)設定中的 [功能變數名稱無法解析](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve)。
 
 **原因3：** 您的虛擬網路 (VNET) DNS 設定會設定為 **預設值**。
 
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>錯誤：使用者需要 Azure Multi-Factor Authentication (MFA)
+### <a name="error-user-requires-azure-ad-multi-factor-authentication-mfa"></a>錯誤：使用者需要 Azure AD Multi-Factor Authentication (MFA) 
 
 > [!div class="mx-imgBorder"]
 > ![因為沒有 Multi-Factor Authentication (MFA，所以部署的螢幕擷取畫面失敗) ](../media/MFARequiredError.png)
@@ -386,7 +386,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**原因：** 指定的 Windows 虛擬桌面租使用者系統管理員需要 Azure Multi-Factor Authentication (MFA) 才能登入。
+**原因：** 指定的 Windows 虛擬桌面租使用者系統管理員需要 Azure AD Multi-Factor Authentication (MFA) 才能登入。
 
 **修正：** 遵循 [教學課程：使用 PowerShell 建立服務主體和角色指派](create-service-principal-role-powershell.md)中的步驟，建立服務主體並為其指派 Windows 虛擬桌面租使用者的角色。 確認您可以使用服務主體登入 Windows 虛擬桌面之後，請視您使用的方法而定，重新執行 Azure Marketplace 供應專案或 GitHub Azure Resource Manager 範本。 請遵循下列指示，為您的方法輸入正確的參數。
 
@@ -408,7 +408,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 **原因：** 在 WVD Marketplace 範本中，UI 只會顯示一個子網，其中至少有一個 IP 位址可作為範本中指定的 Vm 總數。 子網中的可用 IP 位址的實際數目只需等於部署的新 Vm 數目，但無法由目前的 UI 計算。
 
-**修正：** 您可以指定一個子網，其中至少要有多個 IP 位址可供使用，而不使用 Marketplace UI，您可以在重新[部署現有的部署](expand-existing-host-pool-2019.md#redeploy-from-azure)或[使用來自 GITHUB 的基礎 ARM 範本進行部署](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)時，指定 "**existingSubnetName**" 參數中的子網名稱。
+**修正：** 您可以指定一個子網，其中至少要有多個 IP 位址可供使用，而不使用 Marketplace UI，您可以在重新 [部署現有的部署](expand-existing-host-pool-2019.md#redeploy-from-azure)或 [使用來自 GITHUB 的基礎 ARM 範本進行部署](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)時，指定 "**existingSubnetName**" 參數中的子網名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

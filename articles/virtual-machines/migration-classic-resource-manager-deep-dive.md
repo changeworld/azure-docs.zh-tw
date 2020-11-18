@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9476b7278cbe64bf90911c3b85a09922a1afbf1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970005"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843939"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討
 
@@ -48,7 +48,7 @@ ms.locfileid: "91970005"
 * 規劃非上班時間的移轉，以便因應移轉期間可能發生的任何非預期失敗。
 * 使用 PowerShell、命令列介面 (CLI) 命令或 REST API 來下載現行的 VM 組態，以便在完成準備步驟之後能夠更容易進行驗證。
 * 先更新用來處理 Resource Manager 部署模型的自動化和作業化指令碼，再開始移轉。 當資源處於已準備就緒狀態時，您可以視需要執行 GET 作業。
-* 在移轉完成之後，評估傳統部署模型中 IaaS 資源上設定的角色型存取控制 (RBAC) 原則並備妥計劃。
+* 評估 Azure 角色型存取控制 (Azure RBAC) 原則，這些原則是在傳統部署模型中的 IaaS 資源上設定，並在完成遷移之後進行規劃。
 
 移轉工作流程如下：
 

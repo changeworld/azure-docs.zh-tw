@@ -11,23 +11,23 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442101"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843922"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
 
 瞭解如何設定 Azure Machine Learning 工作區的驗證。 Azure Machine Learning 工作區的驗證是以 __Azure Active Directory__ (Azure AD) 為基礎。 一般情況下，您可以在連接到工作區時使用三個驗證工作流程：
 
-* __互動式__ ：您在 Azure Active Directory 中使用您的帳戶來直接驗證，或取得用於驗證的權杖。 互動式驗證會在 _實驗和反復開發_ 期間使用。 互動式驗證可讓您控制對資源的存取 (例如，以每個使用者為基礎的 web 服務) 。
+* __互動式__：您在 Azure Active Directory 中使用您的帳戶來直接驗證，或取得用於驗證的權杖。 互動式驗證會在 _實驗和反復開發_ 期間使用。 互動式驗證可讓您控制對資源的存取 (例如，以每個使用者為基礎的 web 服務) 。
 
-* __服務主體__ ：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要 _自動化程式來_ 向服務驗證，而不需要使用者互動時，就會使用服務主體。 例如，每次定型程式碼變更時，會訓練並測試模型的持續整合和部署腳本。
+* __服務主體__：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要 _自動化程式來_ 向服務驗證，而不需要使用者互動時，就會使用服務主體。 例如，每次定型程式碼變更時，會訓練並測試模型的持續整合和部署腳本。
 
-* __受控識別__ ：當您 _在 azure 虛擬機器上_ 使用 Azure Machine Learning SDK 時，您可以使用 azure 的受控識別。 此工作流程可讓 VM 使用受控識別來連線到工作區，而不需將認證儲存在 Python 程式碼中，或提示使用者進行驗證。 您也可以將 Azure Machine Learning 計算叢集設定為使用受控識別，以在 _定型模型_ 時使用受控識別來存取工作區。
+* __受控識別__：當您 _在 azure 虛擬機器上_ 使用 Azure Machine Learning SDK 時，您可以使用 azure 的受控識別。 此工作流程可讓 VM 使用受控識別來連線到工作區，而不需將認證儲存在 Python 程式碼中，或提示使用者進行驗證。 您也可以將 Azure Machine Learning 計算叢集設定為使用受控識別，以在 _定型模型_ 時使用受控識別來存取工作區。
 
 > [!IMPORTANT]
 > 無論使用哪一種驗證工作流程，Azure 角色型存取控制 (Azure RBAC) 用來限定資源 (授權) 的存取層級。 例如，系統管理員或自動化程式可能具有建立計算實例的存取權，但不能使用它，而資料科學家可以使用它，但無法刪除或建立。 如需詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
@@ -141,7 +141,7 @@ ms.locfileid: "94442101"
 
 1. [針對 VM 上的 Azure 資源啟用系統指派的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
-1. 從 [Azure 入口網站](https://portal.azure.com)選取您的工作區，然後選取 [ __存取控制] (IAM)__ ]、[ __新增角色指派__ ]，然後從 [ __將存取權指派給__ ] 下拉式清單選取 [ __虛擬機器__ ]。 最後，選取您 VM 的身分識別。
+1. 從 [Azure 入口網站](https://portal.azure.com)選取您的工作區，然後選取 [__存取控制] (IAM)__]、[__新增角色指派__]，然後從 [__將存取權指派給__] 下拉式清單選取 [__虛擬機器__]。 最後，選取您 VM 的身分識別。
 
 1. 選取要指派給此身分識別的角色。 例如，參與者或自訂角色。 如需詳細資訊，請參閱 [控制資源的存取權](how-to-assign-roles.md)。
 
@@ -154,7 +154,7 @@ ms.locfileid: "94442101"
 ## <a name="use-interactive-authentication"></a>使用互動式驗證
 
 > [!IMPORTANT]
-> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括) 協力廠商 cookie。 如果您已停用 cookie，可能會收到「我們無法將您登入」之類的錯誤。 如果您已啟用 [Azure 多重要素驗證](../active-directory/authentication/concept-mfa-howitworks.md)，也可能會發生此錯誤。
+> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括) 協力廠商 cookie。 如果您已停用 cookie，可能會收到「我們無法將您登入」之類的錯誤。 如果您已啟用 [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)，也可能會發生此錯誤。
 
 檔和範例中的大部分範例都會使用互動式驗證。 例如，使用 SDK 時，有兩個函式呼叫會自動提示您使用以 UI 為基礎的驗證流程：
 

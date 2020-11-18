@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: ca8d359638d97f77377f02d47d824fa216acdcc8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928105"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844053"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -34,7 +34,7 @@ ms.locfileid: "92928105"
 
     ![傳送記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. 您可以選擇想要傳送的記錄檔。 針對 *自我裝載 ir* ，您可以上傳與失敗活動相關的記錄，或自我裝載 ir 節點上的所有記錄。 針對 *共用 IR* ，您只能上傳與失敗活動相關的記錄。
+1. 您可以選擇想要傳送的記錄檔。 針對 *自我裝載 ir*，您可以上傳與失敗活動相關的記錄，或自我裝載 ir 節點上的所有記錄。 針對 *共用 IR*，您只能上傳與失敗活動相關的記錄。
 
     ![選擇記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
@@ -47,6 +47,21 @@ ms.locfileid: "92928105"
 
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>自我裝載 IR 常見失敗或錯誤
+
+### <a name="out-of-memory-issue"></a>記憶體不足問題
+
+#### <a name="symptoms"></a>徵兆
+
+嘗試使用連結的 IR 或自我裝載 IR 來執行查閱活動時，會發生 "OutOfMemoryException" 問題。
+
+#### <a name="cause"></a>原因
+
+如果 IR 電腦目前的記憶體使用量很高，新活動可以符合 OOM (OutOfMemory) 問題。 問題可能是因為並行活動執行的大規模而造成，而錯誤則是設計所致。
+
+#### <a name="resolution"></a>解決方法
+
+請檢查 IR 節點上的資源使用方式和並行活動執行。 調整活動執行的內部和觸發時間，以避免同時在相同 IR 節點上執行太多的作業。
+
 
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL 憑證問題
 
@@ -62,7 +77,7 @@ ms.locfileid: "92928105"
 
 這是 WCF 的已知問題：WCF TLS/SSL 驗證只會檢查 SAN 中的最後一個 DNSName。 
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通常是因為 SSL 憑證不正確而發生。 SAN 中的最後一個 DNSName 應該是有效的。 請遵循下列步驟來驗證。 
 1.  開啟管理主控台，再從憑證詳細資料中，再次檢查 *主體* 和 *主體替代名稱* 。 例如，在上述案例中， *主體別名* 中的最後一個專案是「DNS 名稱 = microsoft.com.com」，並不合法。
@@ -98,7 +113,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 處理與 SSL/TLS 交握相關的案例時，可能會遇到一些與憑證鏈結驗證相關的問題。 
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 - 以下是針對 x.509 憑證鏈組建失敗進行疑難排解的快速且直覺的方式。
  
@@ -169,7 +184,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ![設定篩選](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 您可以找到 **System.ValueTuple.dll** 位於 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* 資料夾。 將 **System.ValueTuple.dll** 複製到 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* 資料夾，以解決此問題。
 
@@ -199,9 +214,9 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 - 已刪除自我裝載的 IR 節點或入口網站中的邏輯自我裝載 IR。
 - 已完成完整的解除安裝作業。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
-如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway* ，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照[這裡](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的指示，稽核刪除該檔案的人員。
+如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照[這裡](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的指示，稽核刪除該檔案的人員。
 
 ![檢查設定檔案](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +225,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 #### <a name="symptoms"></a>徵兆
 
-建立來源和目的地資料存放區的自我裝載 IR 後，您想將兩個 IR 連接在一起，以完成複本。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式* ; *目的地 IR 無法存取來源* 。
+建立來源和目的地資料存放區的自我裝載 IR 後，您想將兩個 IR 連接在一起，以完成複本。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式*; *目的地 IR 無法存取來源*。
  
 #### <a name="cause"></a>原因
 
@@ -218,7 +233,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
  
 在上述情況下，每個資料存放區的連結服務都應該使用相同的 IR 建立，而該 IR 應該能夠透過網路存取這兩個資料存放區。 無論 IR 是安裝在來源資料存放區、目的地資料存放區或第三部電腦上，如果有兩個連結服務是使用不同的 IR 建立的，但在相同的複製活動中使用，則會使用目的地 IR，而且這兩個資料存放區的驅動程式必須安裝在目的地 IR 電腦上。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 將來源和目的地驅動程式安裝在目的地 IR 上，並確定其可以存取來源資料存放區。
  
@@ -235,7 +250,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 您的自我裝載整合執行階段是以具有兩個節點的 HA 模式建立，但這兩者的狀態並非認證同步，這表示儲存在發送器節點中的認證不會同步處理至其他背景工作角色節點。 如果從發送器節點到背景工作節點發生任何容錯移轉，但認證只存在於先前的發送器節點中，則當嘗試存取認證時，工作將會失敗，而且您會遇到上述錯誤。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 避免此問題的唯一方法是確保兩個節點都處於認證同步狀態。 否則，您必須重新針對新發送器輸入認證。
 
@@ -254,7 +269,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 - 使用者帳戶權限太低，無法存取私密金鑰。
 - 憑證是以簽章的形式產生，並非作為金鑰交換。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 1.  使用可存取私密金鑰的特殊權限帳戶來操作 UI。
 2.  執行下列命令以匯入憑證：
@@ -282,20 +297,20 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 有許多資源只會授與服務帳戶。 將服務帳戶變更為另一個帳戶時，所有相依資源的許可權都會保持不變。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 移至 Integration Runtime 事件記錄檔以檢查錯誤。
 
 ![IR 事件記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-如果錯誤顯示為上述 *system.unauthorizedaccessexception* ，請遵循下列指示：
+如果錯誤顯示為上述 *system.unauthorizedaccessexception*，請遵循下列指示：
 
 
 1. 檢查 Windows 服務面板中的 *DIAHostService* logon service 帳戶。
 
     ![登入服務帳戶](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. 檢查登入服務帳戶是否具有資料夾的 R/W 許可權： *%programdata%\Microsoft\DataTransfer\DataManagementGateway* 。
+2. 檢查登入服務帳戶是否具有資料夾的 R/W 許可權： *%programdata%\Microsoft\DataTransfer\DataManagementGateway*。
 
     - 根據預設，如果服務登入帳戶尚未變更，它應該具有 R/W 的許可權。
 
@@ -305,7 +320,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
         1. 清除 [將目前的自我裝載 IR 卸載]。
         1. 安裝自我裝載 IR 位。
         1. 請遵循下列指示來變更服務帳戶： 
-            1. 移至 selfhosted IR 的安裝資料夾，切換到下列資料夾： *Microsoft Integration Runtime\4.0\Shared* 。
+            1. 移至 selfhosted IR 的安裝資料夾，切換到下列資料夾： *Microsoft Integration Runtime\4.0\Shared*。
             1. 使用較高的許可權啟動命令列。 *\<user>* 將和取代 *\<password>* 為您自己的使用者名稱和密碼，然後執行下列命令：
                        
                 ```
@@ -325,7 +340,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
             1. 您可以使用本機/網域使用者作為 IR 服務登入帳戶。            
         1. 註冊 Integration Runtime。
 
-如果錯誤顯示為： *服務 ' Integration Runtime service ' (DIAHostService) 無法啟動。確認您有足夠的許可權可以啟動系統服務* ，請遵循下列指示：
+如果錯誤顯示為： *服務 ' Integration Runtime service ' (DIAHostService) 無法啟動。確認您有足夠的許可權可以啟動系統服務*，請遵循下列指示：
 
 1. 檢查 Windows 服務面板中的 *DIAHostService* logon service 帳戶。
    
@@ -353,7 +368,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 自 *Integration Runtime 3.0* 版起，已移除現有 Integration Runtime 節點上的 [ **註冊** ] 按鈕，以啟用更清楚且更安全的環境。 若某個節點已註冊到某個 Integration Runtime (無論是否為線上)，若要將該節點重新註冊至另一個 Integration Runtime，您必須先解除安裝舊有的節點，再安裝並註冊該節點。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 1. 移至 [控制台] 卸載現有的 Integration Runtime。
 
@@ -382,7 +397,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 解決 localhost 時通常會發生此問題。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 使用 Localhost 127.0.0.1 來裝載檔案並解決這類問題。
 
@@ -402,6 +417,47 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 - CPU 使用率過高
 - MSI 檔案裝載于較慢的網路位置
 - 某些系統檔案或登錄不慎觸及
+
+
+### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>IR 服務帳戶無法提取憑證存取權
+
+#### <a name="symptoms"></a>徵兆
+
+透過 Microsoft Integration Runtime Configuration manager 安裝自我裝載 IR 時，會產生具有信任 CA 的憑證。 無法套用憑證來加密兩個節點之間的通訊。 
+
+錯誤資訊如下所示： 
+
+`Failed to change Intranet communication encryption mode: Failed to grant Integration Runtime service account the access of to the certificate 'XXXXXXXXXX'. Error code 103`
+
+![無法授與 IR 服務帳戶憑證存取權](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+
+#### <a name="cause"></a>原因
+
+憑證使用 KSP (金鑰儲存提供者) ，但目前尚不支援此功能。 SHIR 目前僅支援 CSP (密碼編譯服務提供者) 憑證。
+
+#### <a name="resolution"></a>解決方法
+
+在此情況下，建議使用 CSP 憑證。
+
+**解決方案1：** 使用下列命令匯入憑證：
+
+```
+Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx 
+```
+
+![使用 certutil](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+
+**解決方案2：** 憑證的轉換：
+
+openssl pkcs12-in .\xxxx.pfx-out。 \ xxxx_new pem-password pass：*\<EnterPassword>*
+
+openssl pkcs12-export-in xxxx_new xxxx_new .pfx
+
+轉換前後：
+
+![憑證變更之前](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+
+![憑證變更之後](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>自我裝載 IR 連接問題
@@ -569,7 +625,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
  
     *來自 Linux 系統 A 且 TTL 為64的網路封裝-> B TTL 64 減 1 = 63-> C TTL 63 減去 1 = 62-> TTL 62 減 1 = 61 自我裝載 IR*
 
-- 在理想的情況下，TTL 將會是128，這表示 Windows 系統正在執行 Data Factory。 如下列範例所示， *128 – 107 = 21 個躍點* ，表示封裝的21個躍點在 TCP 3 信號交換期間，從 Data Factory 傳送到自我裝載的 IR。
+- 在理想的情況下，TTL 將會是128，這表示 Windows 系統正在執行 Data Factory。 如下列範例所示， *128 – 107 = 21 個躍點*，表示封裝的21個躍點在 TCP 3 信號交換期間，從 Data Factory 傳送到自我裝載的 IR。
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -590,7 +646,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 這表示您無法根據埠 **888** 對 **8.8.8.8** 伺服器端進行 TCP 連線，因此您會在該處看到兩個 **SynReTransmit** 額外的套件。 由於來源 **自我 host2.contoso.com** 無法連接到第一個封裝的 **8.8.8.8** ，因此會繼續進行連接。
 
 > [!TIP]
-> - 您可以按一下 [ **載入篩選器**  ->  **標準篩選器**  ->  **定址**  ->  **IPv4 位址** ]。
+> - 您可以按一下 [**載入篩選器**  ->  **標準篩選器**  ->  **定址**  ->  **IPv4 位址**]。
 > - 輸入 **IPv4. Address = = 8.8.8.8** as filter， **然後按一下 [** 套用]。 之後，您將只會看到從本機電腦到目的地 **8.8.8.8** 的通訊。
 
 ![篩選位址1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)

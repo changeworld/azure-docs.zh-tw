@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: a32a5a04c5c71cc06d60f3d2f21946f5361a2afd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080449"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843242"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 擴展集 VM 的執行個體識別碼
 本文說明擴展集的執行個體識別碼和它們呈現的各種方式。
@@ -60,7 +60,7 @@ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 如您所見，"instanceId" 屬性是十進位數字。 一旦將舊的執行個體刪除後，執行個體識別碼便可重複用於新的執行個體。
 
 >[!NOTE]
-> **不保證**將執行個體識別碼指派給擴展集中 VM 的方式。 它們可能有時看似循序遞增，但並不一定都是如此。 請勿依賴將執行個體識別碼指派給 VM 的特定方式。
+> **不保證** 將執行個體識別碼指派給擴展集中 VM 的方式。 它們可能有時看似循序遞增，但並不一定都是如此。 請勿依賴將執行個體識別碼指派給 VM 的特定方式。
 
 ## <a name="scale-set-vm-names"></a>擴展集 VM 名稱
 

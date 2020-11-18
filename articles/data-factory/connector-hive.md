@@ -9,16 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84987056"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844929"
 ---
-# <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure Data Factory 從 Hive 複製資料 
+# <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>使用 Azure Data Factory 從 Hive 複製和轉換資料 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Hive 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
@@ -34,7 +34,7 @@ ms.locfileid: "84987056"
 
 Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此連接器您不需要手動安裝任何驅動程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -68,6 +68,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | allowHostNameCNMismatch | 指定在透過 TLS 連線時，是否要求 CA 發出的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | 否 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| storageReference | 在對應資料流程中用於暫存資料之儲存體帳戶的連結服務參考。 只有在對應資料流程中使用 Hive 連結服務時，才需要此項 | 否 |
 
 **範例︰**
 
@@ -164,6 +165,53 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
     }
 ]
 ```
+
+## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
+
+在對應資料流程中，以 [內嵌資料集](data-flow-source.md#inline-datasets) 來源的形式支援 hive 連接器。 使用查詢或直接從 HDInsight 中的 Hive 資料表讀取。 Hive 資料會在儲存體帳戶中暫存為 parquet 檔案，然後再轉換成資料流程的一部分。 
+
+### <a name="source-properties"></a>來源屬性
+
+下表列出 hive 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
+
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 市集 | 商店必須是 `hive` | 是 |  `hive` | store | 
+| 格式 | 是否從資料表或查詢讀取 | 是 | `table` 或 `query` | format |
+| 結構描述名稱 | 如果從資料表讀取，則為來源資料表的架構 |  是，如果格式為 `table` | 字串 | schemaName |
+| 資料表名稱 | 如果從資料表讀取，則為數據表名稱 |   是，如果格式為 `table` | 字串 | tableName |
+| 查詢 | 如果格式為 `query` ，則為 Hive 連結服務上的來源查詢 | 是，如果格式為 `query` | 字串 | 查詢 |
+| 上演 | 系統一律會暫存 Hive 資料表。 | 是 | `true` | 上演 |
+| 儲存體容器 | 用來暫存資料，然後從 Hive 讀取或寫入 Hive 的儲存體容器。 Hive 叢集必須具有此容器的存取權。 | 是 | 字串 | storageContainer |
+| 暫存資料庫 | 在連結服務中指定的使用者帳戶可以存取的架構/資料庫。 它是用來在暫存期間建立外部資料表，之後再卸載 | 否 | `true` 或 `false` | stagingDatabaseName |
+| 預先 SQL 腳本 | 要在讀取資料前于 Hive 資料表上執行的 SQL 程式碼 | 否 | 字串 | preSQLs |
+
+#### <a name="source-example"></a>來源範例
+
+以下是 Hive 來源設定的範例：
+
+![Hive 來源範例](media/data-flow/hive-source.png "[Hive 來源範例")
+
+這些設定會轉譯成下列資料流程腳本：
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    ignoreNoFilesFound: false,
+    format: 'table',
+    store: 'hive',
+    schemaName: 'default',
+    tableName: 'hivesampletable',
+    staged: true,
+    storageContainer: 'khive',
+    storageFolderPath: '',
+    stagingDatabaseName: 'default') ~> hivesource
+```
+### <a name="known-limitations"></a>已知限制
+
+* 不支援讀取複雜類型，例如陣列、對應、結構和等位。 
+* Hive 連接器只支援4.0 版或更高版本 (Apache Hive 3.1.0 的 Azure HDInsight Hive 資料表) 
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 

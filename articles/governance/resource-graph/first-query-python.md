@@ -3,13 +3,13 @@ title: 快速入門：您的第一個 Python 查詢
 description: 在本快速入門中，您將遵循步驟以啟用 Python 的 Resource Graph 程式庫，並執行第一個查詢。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: d7ffa8aee7087e77ff14808327251ef495e88f6f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 01e0fd5bfbc5f353474c8305eefc044390c3586a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057394"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845099"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入門：使用 Python 執行您的第一個 Resource Graph 查詢
 
@@ -32,7 +32,7 @@ ms.locfileid: "92057394"
 1. 確認已安裝最新的 Azure CLI (至少 **2.5.1**)。 如果尚未安裝，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
    > [!NOTE]
-   > Azure CLI 是啟用 Python 以在下列範例中使用 **CLI 型驗證**的必要項目。 如需其他選項的相關資訊，請參閱[使用適用於 Python 的 Azure 管理程式庫進行驗證](/azure/developer/python/azure-sdk-authenticate)。
+   > Azure CLI 是啟用 Python 以在下列範例中使用 **CLI 型驗證** 的必要項目。 如需其他選項的相關資訊，請參閱[使用適用於 Python 的 Azure 管理程式庫進行驗證](/azure/developer/python/azure-sdk-authenticate)。
 
 1. 透過 Azure CLI 進行驗證。
 
@@ -65,7 +65,7 @@ ms.locfileid: "92057394"
 
 ## <a name="run-your-first-resource-graph-query"></a>執行第一個 Resource Graph 查詢
 
-在 Python 程式庫新增至您選擇的環境後，現在可以試試看簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的**名稱**與**資源類型**。
+在 Python 程式庫新增至您選擇的環境後，現在可以試試看簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的 **名稱** 與 **資源類型**。
 
 1. 使用已安裝的程式庫和 `resources` 方法，執行您的第一個 Azure Resource Graph 查詢：
 
@@ -108,7 +108,7 @@ ms.locfileid: "92057394"
    > [!NOTE]
    > 當此查詢範例未提供排序修飾詞，例如 `order by`，多次執行此查詢可能會為每個要求產生不同的資源集。
 
-1. 更新 `getresources` 的呼叫，並將查詢變更為 `order by` **名稱**屬性：
+1. 更新 `getresources` 的呼叫，並將查詢變更為 `order by` **名稱** 屬性：
 
    ```python
    getresources("Resources | project name, type | limit 5 | order by name asc")
@@ -117,13 +117,13 @@ ms.locfileid: "92057394"
    > [!NOTE]
    > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
-1. 更新 `getresources` 的呼叫，並變更查詢，以先 `order by` **名稱**屬性，然後 `limit` 為只顯示前五個結果：
+1. 更新 `getresources` 的呼叫，並變更查詢，以先 `order by` **名稱** 屬性，然後 `limit` 為只顯示前五個結果：
 
    ```python
    getresources("Resources | project name, type | order by name asc | limit 5")
    ```
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依 **名稱** 屬性排序，但仍限制為只顯示前五個結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 

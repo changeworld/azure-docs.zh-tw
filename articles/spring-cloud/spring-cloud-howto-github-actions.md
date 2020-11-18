@@ -6,20 +6,20 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b2ab22cff7a008cb55c7e3d2170113a2504ff697
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093968"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843667"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>使用 GitHub Actions 的 Azure 春季 Cloud CI/CD
 
 GitHub Actions 支援自動化軟體發展生命週期工作流程。 您可以使用適用于 Azure 春季雲端的 GitHub Actions，在您的存放庫中建立工作流程，以建立、測試、封裝、發行及部署至 Azure。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 此範例需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 ::: zone pivot="programming-language-csharp"

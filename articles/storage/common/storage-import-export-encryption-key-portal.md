@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783771"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843361"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在 Azure Key Vault 中使用客戶管理的金鑰進行匯入/匯出服務
 
@@ -33,9 +33,9 @@ Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 Bit
     - 建立檔案的匯[入作業](storage-import-export-data-to-files.md)。
     - [建立 blob 的匯出作業](storage-import-export-data-from-blobs.md)
 
-2. 您有一個現有的 Azure Key Vault，其中有一個金鑰可用來保護您的 BitLocker 金鑰。 若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站從 Azure Key Vault 設定和取出秘密](../../key-vault/secrets/quick-create-portal.md)。
+2. 您有一個現有的 Azure Key Vault，其中有一個金鑰可用來保護您的 BitLocker 金鑰。 若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站建立 Azure Key Vault](../../key-vault/general/quick-create-portal.md)。
 
-    - [虛 **刪除** ] 和 [不要 **清除** ] 是在您現有的 Key Vault 上設定的。 這些屬性預設不會啟用。 若要啟用這些屬性，請參閱下列其中一篇文章中標題為 **啟用虛刪除** 和 **啟用清除保護** 的章節：
+    - [虛 **刪除**] 和 [不要 **清除**] 是在您現有的 Key Vault 上設定的。 這些屬性預設不會啟用。 若要啟用這些屬性，請參閱下列其中一篇文章中標題為 **啟用虛刪除** 和 **啟用清除保護** 的章節：
 
         - [如何搭配 PowerShell 使用虛刪除](../../key-vault/general/key-vault-recovery.md)。
         - [如何搭配 CLI 使用虛刪除](../../key-vault/general/key-vault-recovery.md)。
@@ -48,31 +48,31 @@ Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 Bit
 為您的匯入/匯出服務設定客戶管理的金鑰是選擇性的。 根據預設，匯入/匯出服務會使用 Microsoft 管理的金鑰來保護您的 BitLocker 金鑰。 若要在 Azure 入口網站中啟用客戶管理的金鑰，請遵循下列步驟：
 
 1. 移至您匯入作業的 **總覽** 分頁。
-2. 在右窗格中，選取 **[選擇加密 BitLocker 金鑰的方式** ]。
+2. 在右窗格中，選取 **[選擇加密 BitLocker 金鑰的方式**]。
 
     ![選擇加密選項](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
-3. 在 [ **加密** ] 分頁中，您可以查看並複製裝置 BitLocker 金鑰。 在 [ **加密類型** ] 下，您可以選擇要如何保護 BitLocker 金鑰。 預設會使用 Microsoft 管理的金鑰。
+3. 在 [ **加密** ] 分頁中，您可以查看並複製裝置 BitLocker 金鑰。 在 [ **加密類型**] 下，您可以選擇要如何保護 BitLocker 金鑰。 預設會使用 Microsoft 管理的金鑰。
 
     ![查看 BitLocker 金鑰](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. 您可以選擇指定客戶管理的金鑰。 選取客戶管理的金鑰之後，請 **選取 [金鑰保存庫] 和 [金鑰** ]。
+4. 您可以選擇指定客戶管理的金鑰。 選取客戶管理的金鑰之後，請 **選取 [金鑰保存庫] 和 [金鑰**]。
 
     ![選取客戶管理的金鑰](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
-5. 在 Azure Key Vault 分頁的 **Select 機碼** 中，系統會自動填入訂用帳戶。 針對 **金鑰保存庫** ，您可以從下拉式清單中選取現有的金鑰保存庫。
+5. 在 Azure Key Vault 分頁的 **Select 機碼** 中，系統會自動填入訂用帳戶。 針對 **金鑰保存庫**，您可以從下拉式清單中選取現有的金鑰保存庫。
 
     ![選取或建立 Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. 您也可以選取 [ **建立新** 的] 來建立新的金鑰保存庫。 在 [ **建立金鑰保存庫** ] 分頁中，輸入資源群組和金鑰保存庫名稱。 接受所有其他預設值。 選取 [檢閱 + 建立]  。
+6. 您也可以選取 [ **建立新** 的] 來建立新的金鑰保存庫。 在 [ **建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 接受所有其他預設值。 選取 [檢閱 + 建立]。
 
     ![建立新的 Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. 檢查與金鑰保存庫相關聯的資訊，然後選取 [ **建立** ]。 等候幾分鐘讓金鑰保存庫建立完成。
+7. 檢查與金鑰保存庫相關聯的資訊，然後選取 [ **建立**]。 等候幾分鐘讓金鑰保存庫建立完成。
 
     ![建立 Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
-8. 在 Azure Key Vault 的 [ **選取金鑰** ] 中，您可以選取現有金鑰保存庫中的金鑰。
+8. 在 Azure Key Vault 的 [ **選取金鑰**] 中，您可以選取現有金鑰保存庫中的金鑰。
 
 9. 如果您已建立新的金鑰保存庫，請選取 [ **建立新** 的] 來建立金鑰。 RSA 金鑰大小可以是2048或更高的版本。
 
@@ -80,11 +80,11 @@ Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 Bit
 
     如果您在建立金鑰保存庫時未啟用虛刪除和清除保護，將會更新金鑰保存庫，以啟用虛刪除和清除保護。
 
-10. 提供金鑰的名稱、接受其他預設值，然後選取 [ **建立** ]。
+10. 提供金鑰的名稱、接受其他預設值，然後選取 [ **建立**]。
 
     ![建立新的金鑰](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. 選取 **版本** ，然後選擇 [ **選取** ]。 系統會通知您金鑰保存庫中已建立金鑰。
+11. 選取 **版本** ，然後選擇 [ **選取**]。 系統會通知您金鑰保存庫中已建立金鑰。
 
     ![在 key vault 中建立的新金鑰](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 

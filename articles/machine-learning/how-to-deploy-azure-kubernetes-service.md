@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1, deploy
+ms.custom: how-to, contperfq1, deploy, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2ac565b8c6dfce52daeadd20cf3357bc22cd281
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325196"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843803"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 
@@ -152,7 +152,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 處理 Azure ML 模型部署自動調整的元件是 azureml-fe，也就是智慧型要求路由器。 因為所有推斷要求都會通過它，所以它具有必要的資料來自動調整已部署的模型 () 。
 
 > [!IMPORTANT]
-> * **請勿啟用模型部署的 Kubernetes 水準 Pod 自動調整程式 (HPA)** 。 這麼做會導致兩個自動調整元件互相競爭。 Azureml-fe 是設計用來自動調整 Azure ML 所部署的模型，其中 HPA 必須從一般計量（例如 CPU 使用量或自訂計量設定）猜測或估計模型使用率。
+> * **請勿啟用模型部署的 Kubernetes 水準 Pod 自動調整程式 (HPA)**。 這麼做會導致兩個自動調整元件互相競爭。 Azureml-fe 是設計用來自動調整 Azure ML 所部署的模型，其中 HPA 必須從一般計量（例如 CPU 使用量或自訂計量設定）猜測或估計模型使用率。
 > 
 > * **Azureml-fe 無法調整 AKS** 叢集中的節點數目，因為這可能會導致非預期的成本增加。 相反地，它會在實體叢集界限內 **調整模型的複本數目** 。 如果您需要調整叢集中的節點數目，您可以手動調整叢集或 [設定 AKS 叢集自動調整程式](../aks/cluster-autoscaler.md)。
 
@@ -194,14 +194,14 @@ replicas = ceil(concurrentRequests / maxReqPerContainer)
 
 使用端點以受控制的方式分析和升級模型版本。 您最多可以在單一端點後方部署六個版本。 端點提供下列功能：
 
-* 設定 __傳送至每個端點的評分流量百分比__ 。 例如，將20% 的流量路由傳送至端點「測試」，而80% 到「生產」。
+* 設定 __傳送至每個端點的評分流量百分比__。 例如，將20% 的流量路由傳送至端點「測試」，而80% 到「生產」。
 
     > [!NOTE]
     > 如果您沒有考慮100% 的流量，則會將剩餘的百分比路由傳送至 __預設__ 的端點版本。 例如，如果您將端點版本 ' test ' 設定為取得10% 的流量，而「生產」為30%，則剩餘的60% 會傳送至預設的端點版本。
     >
     > 第一個建立的端點版本會自動設定為預設值。 您可以在 `is_default=True` 建立或更新端點版本時設定此變更。
      
-* 將端點版本戳記為 __控制__ 或 __處理__ 。 例如，目前的生產端點版本可能是控制，而可能的新模型會部署為處理版本。 在評估處理版本的效能之後，如果其中一個控制項超越目前的控制項，它可能會升級為新的生產/控制項。
+* 將端點版本戳記為 __控制__ 或 __處理__。 例如，目前的生產端點版本可能是控制，而可能的新模型會部署為處理版本。 在評估處理版本的效能之後，如果其中一個控制項超越目前的控制項，它可能會升級為新的生產/控制項。
 
     > [!NOTE]
     > 您只能有 __一個__ 控制項。 您可以有多個治療。

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
-ms.openlocfilehash: ed2ce13ab10c09dc738e522566742078819e8341
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148383"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845198"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>設定 HDInsight 叢集以 Active Directory 與企業安全性套件整合
 
@@ -48,9 +48,9 @@ ms.locfileid: "93148383"
 
 您搭配 Azure AD DS 使用的功能變數名稱必須為39個字元或更少，才能與 HDInsight 搭配使用。
 
-您可以選擇只同步需要存取 HDInsight 叢集的群組。 這個僅同步特定群組的選項，稱為 *特定範圍同步處理* 。 如需相關指示，請參閱 [設定從 Azure AD 到受控網域的限域同步](../../active-directory-domain-services/scoped-synchronization.md)處理。
+您可以選擇只同步需要存取 HDInsight 叢集的群組。 這個僅同步特定群組的選項，稱為 *特定範圍同步處理*。 如需相關指示，請參閱 [設定從 Azure AD 到受控網域的限域同步](../../active-directory-domain-services/scoped-synchronization.md)處理。
 
-當您啟用安全 LDAP 時，請將功能變數名稱放在主體名稱中。 和憑證中的主體替代名稱。 如果您的功能變數名稱是 *contoso100.onmicrosoft.com* ，請確定您的憑證主體名稱和主體別名中有正確的名稱。 如需詳細資訊，請參閱[針對 Azure AD DS 受控網域設定安全的 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)。
+當您啟用安全 LDAP 時，請將功能變數名稱放在主體名稱中。 和憑證中的主體替代名稱。 如果您的功能變數名稱是 *contoso100.onmicrosoft.com*，請確定您的憑證主體名稱和主體別名中有正確的名稱。 如需詳細資訊，請參閱[針對 Azure AD DS 受控網域設定安全的 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)。
 
 下列範例會建立自我簽署憑證。 功能變數名稱 *contoso100.onmicrosoft.com* 同時位於 `Subject` (主體名稱) 和 `DnsName` (主體替代名稱) 。
 
@@ -62,7 +62,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> 只有租使用者系統管理員具有啟用 Azure AD DS 的許可權。 如果叢集儲存體是 Azure Data Lake Storage Gen1 或 Gen2，您必須只針對需要使用基本 Kerberos 驗證存取叢集的使用者停用 Azure Multi-Factor Authentication。
+> 只有租使用者系統管理員具有啟用 Azure AD DS 的許可權。 如果叢集存放裝置是 Azure Data Lake Storage Gen1 或 Gen2，您必須針對需要使用基本 Kerberos 驗證存取叢集的使用者停用 Azure AD Multi-Factor Authentication。
 >
 > 您可以使用 [信任的 ip](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) 或 [條件式存取](../../active-directory/conditional-access/overview.md) ，只在特定使用者存取 HDInsight 叢集虛擬網路的 IP 範圍時， *才* 停用 Multi-Factor Authentication。 如果您是使用條件式存取，請確定已在 HDInsight 虛擬網路上啟用 Active Directory 服務端點。
 >
@@ -70,7 +70,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 ### <a name="check-azure-ad-ds-health-status"></a>檢查 Azure AD DS 健全狀況狀態
 
-選取 [ **管理** ] 類別中的 [ **健全** 狀況]，以查看 Azure Active Directory Domain Services 的健全狀況狀態。 確定 Azure AD DS 的狀態為綠色 (執行) 且同步處理已完成。
+選取 [**管理**] 類別中的 [**健全** 狀況]，以查看 Azure Active Directory Domain Services 的健全狀況狀態。 確定 Azure AD DS 的狀態為綠色 (執行) 且同步處理已完成。
 
 ![Azure AD DS 健全狀況](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
@@ -88,7 +88,7 @@ HDInsight 企業安全性套件需要某些網域服務作業，例如建立 Ou 
 
 指派 **HDInsight 網域服務參與者** 角色，可確保此身分識別具有適當的 (`on behalf of`) 存取 Azure AD DS 網域上的網域服務作業。 這些作業包括建立和刪除 Ou。
 
-將角色授與受控識別之後，Azure AD DS 系統管理員會管理使用它的人員。 首先，系統管理員會在入口網站中選取受控識別。 然後選取 **[總覽** ] **(IAM) 的 [存取控制** ]。 系統管理員將 **受控識別操作員** 角色指派給想要建立 ESP 叢集的使用者或群組。
+將角色授與受控識別之後，Azure AD DS 系統管理員會管理使用它的人員。 首先，系統管理員會在入口網站中選取受控識別。 然後選取 **[總覽**] **(IAM) 的 [存取控制**]。 系統管理員將 **受控識別操作員** 角色指派給想要建立 ESP 叢集的使用者或群組。
 
 例如，Azure AD DS 系統管理員可以將此角色指派給 **sjmsi** 受控識別的 **MarketingTeam** 群組。 範例如下圖所示。 此指派可確保組織中適當的人員可以使用受控識別來建立 ESP 叢集。
 
@@ -99,11 +99,11 @@ HDInsight 企業安全性套件需要某些網域服務作業，例如建立 Ou 
 > [!NOTE]  
 > Azure AD DS 必須部署在以 Azure Resource Manager 為基礎的虛擬網路中。 Azure AD DS 不支援傳統虛擬網路。 如需詳細資訊，請參閱 [使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)。
 
-啟用 Azure AD DS。 然後，本機網域名稱系統 (DNS) server 會在 Active Directory 的虛擬機器上執行)  (Vm。 設定您的 Azure AD DS 虛擬網路，以使用這些自訂 DNS 伺服器。 若要找出正確的 IP 位址，請選取 [ **管理** ] 類別 **中的 [** 內容]，然後查看 [ **虛擬網路上的 IP 位址** ]。
+啟用 Azure AD DS。 然後，本機網域名稱系統 (DNS) server 會在 Active Directory 的虛擬機器上執行)  (Vm。 設定您的 Azure AD DS 虛擬網路，以使用這些自訂 DNS 伺服器。 若要找出正確的 IP 位址，請選取 [**管理**] 類別 **中的 [** 內容]，然後查看 [**虛擬網路上的 IP 位址**]。
 
 ![找出本機 DNS 伺服器的 IP 位址](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
-變更 Azure AD DS 虛擬網路中的 DNS 伺服器設定。 若要使用這些自訂 Ip，請選取 [ **設定** ] 類別中的 [ **DNS 伺服器** ]。 然後選取 [ **自訂** ] 選項，並在文字方塊中輸入第一個 IP 位址，然後選取 [ **儲存** ]。 使用相同的步驟來新增更多 IP 位址。
+變更 Azure AD DS 虛擬網路中的 DNS 伺服器設定。 若要使用這些自訂 Ip，請選取 [**設定**] 類別中的 [ **DNS 伺服器**]。 然後選取 [ **自訂** ] 選項，並在文字方塊中輸入第一個 IP 位址，然後選取 [ **儲存**]。 使用相同的步驟來新增更多 IP 位址。
 
 ![正在更新虛擬網路 DNS 設定](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
@@ -136,11 +136,11 @@ HDInsight 企業安全性套件需要某些網域服務作業，例如建立 Ou 
 
 當您建立具有 ESP 的 HDInsight 叢集時，您必須提供下列參數：
 
-* 叢集系統 **管理員使用者** ：從已同步的 Azure AD DS 實例中，為您的叢集選擇系統管理員。 此網域帳戶必須已同步，而且可在 Azure AD DS 中使用。
+* 叢集系統 **管理員使用者**：從已同步的 Azure AD DS 實例中，為您的叢集選擇系統管理員。 此網域帳戶必須已同步，而且可在 Azure AD DS 中使用。
 
-* 叢集 **存取群組** ：您要同步其使用者並具有叢集存取權的安全性群組，應可在 Azure AD DS 中使用。 例如，HiveUsers 群組。 如需詳細資訊，請參閱[在 Azure Active Directory 中建立群組和新增使用者](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+* 叢集 **存取群組**：您要同步其使用者並具有叢集存取權的安全性群組，應可在 Azure AD DS 中使用。 例如，HiveUsers 群組。 如需詳細資訊，請參閱[在 Azure Active Directory 中建立群組和新增使用者](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-* **LDAPS URL** ：範例為 `ldaps://contoso.com:636` 。
+* **LDAPS URL**：範例為 `ldaps://contoso.com:636` 。
 
 當您建立新的叢集時，可以從 [ **使用者指派的受控識別** ] 下拉式清單中選擇您所建立的受控識別。
 

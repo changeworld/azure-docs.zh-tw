@@ -10,13 +10,13 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f5eab8f53fb4c9e15606223707292261b4615e0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330286"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844007"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式 \(部分機器翻譯\)
 
@@ -39,10 +39,10 @@ Azure 儲存體提供下列類型的複寫：
 
 | 開關 | ...LRS | ...GRS/RA-GRS | ...ZRS | ...GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>...從 LRS</b> | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br /> 或 <br /><br /> 要求即時移轉 | 執行手動遷移 <br /><br /> 或 <br /><br /> 先切換至 GRS/RA-GRS，然後要求即時移轉<sup>1</sup> |
-| <b>...從 GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A | 執行手動遷移 <br /><br /> 或 <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 或 <br /><br /> 要求即時移轉 |
-| <b>...從 ZRS</b> | 執行手動遷移 | 執行手動遷移 | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1、2</sup> |
-| <b>...從 GZRS/RA-GZRS</b> | 執行手動遷移 | 執行手動遷移 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A |
+| <b>...從 LRS</b> | 不適用 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br /> 或者 <br /><br /> 要求即時移轉 | 執行手動遷移 <br /><br /> 或者 <br /><br /> 先切換至 GRS/RA-GRS，然後要求即時移轉<sup>1</sup> |
+| <b>...從 GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | 不適用 | 執行手動遷移 <br /><br /> 或者 <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 或者 <br /><br /> 要求即時移轉 |
+| <b>...從 ZRS</b> | 執行手動遷移 | 執行手動遷移 | 不適用 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1、2</sup> |
+| <b>...從 GZRS/RA-GZRS</b> | 執行手動遷移 | 執行手動遷移 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | 不適用 |
 
 <sup>1</sup> 會產生一次性出口費用。<br />
 下欄區域不支援從<sup>ZRS 轉換為</sup>GZRS/RA-GZRS，反之亦然：美國東部2、美國東部、西歐。
@@ -123,21 +123,21 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 您可以透過 [Azure 支援入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)要求即時移轉。 從入口網站中，選取您想要轉換成 ZRS 的儲存體帳戶。
 
-1. 選取 [ **新增支援要求** ]。
+1. 選取 [ **新增支援要求**]。
 2. 根據您的帳戶資訊完成 **基本概念** ： 
-    - **問題類型** ：選取 [ **技術** ]。
-    - **服務** ：選取 [ **我的服務** 和 **儲存體帳戶管理** ]。
-    - **資源** ：選取您想要轉換成 ZRS 的資源。
+    - **問題類型**：選取 [ **技術**]。
+    - **服務**：選取 [ **我的服務** 和 **儲存體帳戶管理**]。
+    - **資源**：選取您想要轉換成 ZRS 的資源。
 3. 選取 [下一步]。
 4. 在 [問題] 區段中，指定下列值︰
-    - **嚴重性** ：將預設值保持不變。
-    - **問題類型** ：選取 [資料移轉]。
-    - **類別** ：選取 [ **遷移至 ZRS** ]。
-    - **標題** ：輸入描述性標題，例如 **ZRS 帳戶移轉** 。
-    - **詳細資料** ：在 [ **詳細資料** ] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
+    - **嚴重性**：將預設值保持不變。
+    - **問題類型**：選取 [資料移轉]。
+    - **類別**：選取 [ **遷移至 ZRS**]。
+    - **標題**：輸入描述性標題，例如 **ZRS 帳戶移轉**。
+    - **詳細資料**：在 [**詳細資料**] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
 5. 選取 [下一步]。
 6. 確認 [連絡人資訊] 刀鋒視窗上的連絡人資訊正確。
-7. 選取 [建立]  。
+7. 選取 [建立]。
 
 支援人員將會與您連絡，並提供您所需的一切協助。
 
@@ -157,7 +157,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 傳統 ZRS 會以非同步方式在一至兩個區域內的資料中心間複寫資料。 除非 Microsoft 起始對次要區域的容錯移轉，否則複寫的資料可能無法供使用。 傳統 ZRS 帳戶無法以 LRS、GRS 或 RA-GRS 作為轉換目標或來源。 傳統 ZRS 帳戶也不支援計量或記錄。
 
-傳統 ZRS 僅適用於一般用途 V1 (GPv1) 儲存體帳戶中的 **區塊 Blob** 。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
+傳統 ZRS 僅適用於一般用途 V1 (GPv1) 儲存體帳戶中的 **區塊 Blob**。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
 若要手動將 ZRS 帳戶資料移轉至 LRS、GRS、RA GRS 或 ZRS 傳統帳戶，請使用下列其中一種工具： AzCopy、Azure 儲存體總管、PowerShell 或 Azure CLI。 您也可以使用其中一個 Azure 儲存體用戶端程式庫，自行建置移轉解決方案。
 
@@ -165,7 +165,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 # <a name="portal"></a>[入口網站](#tab/portal)
 
-若要在 Azure 入口網站中升級至 ZRS，請流覽至帳戶 **的設定，然後選擇 [** **升級** ]：
+若要在 Azure 入口網站中升級至 ZRS，請流覽至帳戶 **的設定，然後選擇 [** **升級**]：
 
 ![在入口網站中將傳統 ZRS 升級至 ZRS](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 

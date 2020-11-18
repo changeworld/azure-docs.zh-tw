@@ -3,13 +3,13 @@ title: 依 GitHub 動作部署容器實例
 description: 設定 GitHub 動作，以自動化建立、推送及部署容器映射至 Azure 容器實例的步驟
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019183"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843650"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>設定 GitHub 動作以建立容器執行個體
 
@@ -31,7 +31,7 @@ ms.locfileid: "92019183"
 > [!IMPORTANT]
 > Azure 容器實例的 GitHub 動作目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * **GitHub 帳戶** -如果您還沒有帳戶，請建立一個帳戶 https://github.com 。
 * **Azure CLI** -您可以使用 Azure CLI 的 Azure Cloud Shell 或本機安裝來完成 Azure CLI 步驟。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
@@ -128,8 +128,8 @@ az role assignment create \
 
 1. 在 GitHub UI 中，選取 [**動作**  >  **新增工作流程**]。
 1. 選取 [ **自行設定工作流程**]。
-1. 在 [ **編輯新**檔案] 中，貼上下列 YAML 內容以覆寫範例程式碼。 接受預設檔案名 `main.yml` ，或提供您選擇的檔案名。
-1. 選取 [ **開始認可**]，選擇性地提供認可的簡短和延伸描述，然後選取 [ **認可新**檔案]。
+1. 在 [ **編輯新** 檔案] 中，貼上下列 YAML 內容以覆寫範例程式碼。 接受預設檔案名 `main.yml` ，或提供您選擇的檔案名。
+1. 選取 [ **開始認可**]，選擇性地提供認可的簡短和延伸描述，然後選取 [ **認可新** 檔案]。
 
 ```yml
 on: [push]
@@ -179,7 +179,7 @@ jobs:
 
 如需有關在您的工作流程中查看每個步驟的狀態和結果的詳細資訊，請參閱 [管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) 。 如果工作流程未完成，請參閱 [查看記錄以診斷失敗](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)。
 
-當工作流程順利完成時，請執行[az container show][az-container-show]命令以取得名為*aci-sampleapp*的容器實例的相關資訊。 以您的資源組名取代： 
+當工作流程順利完成時，請執行 [az container show][az-container-show]命令以取得名為 *aci-sampleapp* 的容器實例的相關資訊。 以您的資源組名取代： 
 
 ```azurecli
 az container show \
@@ -220,7 +220,7 @@ az extension add \
 
 如需尋找、安裝和管理延伸模組的相關資訊，請參閱搭配 [使用擴充功能與 Azure CLI](/cli/azure/azure-cli-extensions-overview)。
 
-### <a name="run-az-container-app-up"></a>執行 `az container app up`
+### <a name="run-az-container-app-up"></a>`az container app up`執行
 
 若要執行 [az container app up][az-container-app-up] 命令，請至少提供：
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>命令進度
 
-* 出現提示時，請提供您的 GitHub 認證，或提供[github 個人存取權杖](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) ，其中具有存放庫和*使用者**範圍，可*使用您的 GitHub 帳戶進行驗證。 如果您提供 GitHub 認證，此命令會為您建立 PAT。 遵循其他提示來設定工作流程。
+* 出現提示時，請提供您的 GitHub 認證，或提供 [github 個人存取權杖](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) ，其中具有存放庫和 *使用者**範圍，可* 使用您的 GitHub 帳戶進行驗證。 如果您提供 GitHub 認證，此命令會為您建立 PAT。 遵循其他提示來設定工作流程。
 
 * 此命令會建立工作流程的存放庫秘密：
 
@@ -262,7 +262,7 @@ Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer
 
 ### <a name="validate-workflow"></a>驗證工作流程
 
-工作流程會使用 GitHub 存放庫的基底名稱（在此案例中為 *helloworld-node*）來部署 Azure 容器實例。 當工作流程順利完成時，執行[az container show][az-container-show]命令以取得名為*acr-helloworld-node*的容器實例的相關資訊。 以您的資源組名取代： 
+工作流程會使用 GitHub 存放庫的基底名稱（在此案例中為 *helloworld-node*）來部署 Azure 容器實例。 當工作流程順利完成時，執行 [az container show][az-container-show]命令以取得名為 *acr-helloworld-node* 的容器實例的相關資訊。 以您的資源組名取代： 
 
 ```azurecli
 az container show \

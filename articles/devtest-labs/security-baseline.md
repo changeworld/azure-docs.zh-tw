@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207286"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843191"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -34,7 +34,7 @@ ms.locfileid: "92207286"
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 **指導方針：** 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在管理平面層級的 Azure DevTest Labs 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 DevTest Labs 實例的管理平面層級完成。
 
-如需詳細資訊，請參閱 [建立診斷設定，以將平臺記錄和計量傳送至不同的目的地](../azure-monitor/platform/diagnostic-settings.md)。
+如需詳細資訊，請參閱[建立診斷設定以將平台記錄和計量傳送至不同目的地](../azure-monitor/platform/diagnostic-settings.md)。
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -43,7 +43,7 @@ ms.locfileid: "92207286"
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 **指導方針：** 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在管理平面層級的 Azure DevTest Labs 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 DevTest Labs 實例的管理平面層級完成。
 
-如需詳細資訊，請參閱 [建立診斷設定，以將平臺記錄和計量傳送至不同的目的地](../azure-monitor/platform/diagnostic-settings.md)。
+如需詳細資訊，請參閱[建立診斷設定以將平台記錄和計量傳送至不同目的地](../azure-monitor/platform/diagnostic-settings.md)。
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -62,7 +62,7 @@ ms.locfileid: "92207286"
 **責任：** 客戶
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
-***指導方針：** 在 Azure 監視器中，根據您組織的合規性法規，為與您的 Azure DevTest Labs 實例相關聯的 Log Analytics 工作區設定記錄保留期限。
+**_指導方針：_* 在 Azure 監視器中，根據您組織的合規性法規，為與您的 Azure DevTest Labs 實例相關聯的 Log Analytics 工作區設定記錄保留期限。
 
 如需詳細資訊，請參閱下列文章： [如何設定記錄保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -160,7 +160,7 @@ DevTest Labs 沒有預設密碼的概念。
 **指導方針：** DevTest Labs 使用 Azure AD 服務進行身分識別管理。 當您授與使用者以 DevTest Labs 為基礎之環境的存取權時，請考慮下列兩個重要層面：
 
 - **資源管理：** 它會提供 Azure 入口網站的存取權來管理資源 (建立 Vm、建立環境、啟動、停止、重新開機、刪除和套用成品等等) 。 在 Azure 中使用 azure 角色型存取控制 (Azure RBAC) 來進行資源管理。 您將角色指派給使用者，並設定資源和存取層級許可權。
-- **虛擬機器 (網路層級) **：在預設設定中，vm 會使用本機系統管理員帳戶。 如果有可用的網域 (Azure AD Domain Services、內部部署網域或雲端架構網域) ，則可以將電腦加入網域。 接著，使用者可以使用網域聯結構件來連線至電腦，以使用其網域型身分識別。 
+- **虛擬機器 (網路層級)**：在預設設定中，vm 會使用本機系統管理員帳戶。 如果有可用的網域 (Azure AD Domain Services、內部部署網域或雲端架構網域) ，則可以將電腦加入網域。 接著，使用者可以使用網域聯結構件來連線至電腦，以使用其網域型身分識別。 
 
 - [DevTest Labs 的參考架構](devtest-lab-reference-architecture.md#architecture)
 - [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
@@ -175,9 +175,9 @@ DevTest Labs 沒有預設密碼的概念。
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
-**Azure 資訊安全中心監視：*** 是
+**Azure 資訊安全中心監視：** _ 是
 
-**責任：** 客戶
+_ *責任：** 客戶
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
@@ -387,7 +387,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 **責任：** 客戶
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自動化的第三方軟體修補程式管理解決方案
-***指導方針：*** 作為實驗室系統管理員，您可以使用 [DevTest Labs 構件](add-artifact-vm.md) 來自動化實驗室自訂映射的更新，包括安全性修補程式和其他更新。 
+**_指導方針：_* _ 作為實驗室系統管理員，您可以使用 [DevTest Labs 構件](add-artifact-vm.md) 來自動化實驗室自訂映射的更新，包括安全性修補程式和其他更新。 
 
 深入瞭解 [DevTest Labs 映射](image-factory-create.md)處理站，這是一個設定即程式碼的解決方案，可讓您定期自動建立及發佈映射，並使用所有所需的設定。 
 
@@ -396,7 +396,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 - [Azure 中的更新管理解決方案](../automation/update-management/update-mgmt-overview.md)
 - [管理 Vm 的更新和修補程式](../automation/update-management/update-mgmt-overview.md)
 
-**Azure 資訊安全中心監視：** 不適用
+_ *Azure 資訊安全中心監視：** 不適用
 
 **責任：** 客戶
 
@@ -417,7 +417,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 **責任：** 客戶
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
+*如需詳細資訊，請參閱 [安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 **指導方針：** 使用 Azure Resource Graph 來查詢及探索所有資源， (包括訂用帳戶內) 的 DevTest Labs 資源。 確定您有適當的 (讀取租使用者中) 許可權，而且可以列舉訂用帳戶中的所有 Azure 訂用帳戶和資源。
@@ -515,7 +515,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 - 不允許的資源類型
 - 允許的資源類型
 
-請參閱下列文章： 
+查看下列文章： 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
@@ -692,7 +692,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 
 - [設定受控識別，以在 DevTest Labs 中部署 Azure Resource Manager 環境](use-managed-identities-environments.md)
 - [設定受控識別在 DevTest Labs 中部署虛擬機器](enable-managed-identities-lab-vms.md)
-- [如何建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md)
+- [如何建立金鑰保存庫](../key-vault/general/quick-create-portal.md)
 - [如何驗證 Key Vault](../key-vault/general/authentication.md)
 - [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
@@ -758,7 +758,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 **責任：** 客戶
 
 ## <a name="data-recovery"></a>資料復原
-*如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
+*如需詳細資訊，請參閱 [安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確定定期自動備份
 **指導方針：** 目前 Azure DevTest Labs 不支援 VM 備份和快照集。 不過，您可以在 DevTest Labs 託管的基礎 Azure Vm 上啟用和設定 Azure 備份。 此外，只要您有適當的基礎計算資源存取權，您也可以設定自動備份所需的頻率和保留期限。 
