@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ee28cbffd6f047b4991d29781e0b131a44c7dfae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409173"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698813"
 ---
 # <a name="security-control-data-recovery"></a>安全性控制：資料復原
 
@@ -58,7 +58,7 @@ ms.locfileid: "94409173"
 |--|--|--|
 | 9.4 | 10.4 | 客戶 |
 
-針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。 使用角色型存取控制來保護備份和客戶管理的金鑰。  
+針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。 使用 Azure 角色型存取控制來保護備份和客戶管理的金鑰。  
 
 在 Key Vault 中啟用 Soft-Delete 和清除保護，以防止金鑰遭到意外或惡意刪除。  如果使用 Azure 儲存體來儲存備份，請在刪除 blob 或 blob 快照集時，啟用虛刪除來儲存及復原您的資料。 
 

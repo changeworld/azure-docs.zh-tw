@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058745"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700671"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer 的 IPv6 概觀
 
 
 >[!NOTE] 
->此內容已由 IPv6 取代 [為 Azure VNet 總覽](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。 Azure 建議新的 IPv6 部署使用適用于 Azure 虛擬網路功能的新 IPv6。
+>此內容已由 IPv6 取代 [為 Azure VNet 總覽](../virtual-network/ipv6-overview.md)。 Azure 建議新的 IPv6 部署使用適用于 Azure 虛擬網路功能的新 IPv6。
 
 >[!NOTE]
->Azure Load Balancer 支援兩種不同類型：基本和標準。 本文討論基本 Load Balancer。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](load-balancer-standard-overview.md)。
+>Azure Load Balancer 支援兩種不同類型：基本和標準。 本文討論基本 Load Balancer。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](./load-balancer-overview.md)。
 
 您可以使用 IPv6 位址來部署基本 SKU 的網際網路面向負載平衡器。 除了 IPv4 連線功能，這還具有下列功能︰
 
@@ -40,7 +40,7 @@ ms.locfileid: "90058745"
 
 部署之後，已啟用 IPv4 或 IPv6 的網際網路用戶端可以與網際網路面向的 Azure Load Balancer 公用 IPv4 或 IPv6 位址 (或主機名稱) 進行通訊。 負載平衡器會使用網路位址轉譯 (NAT) 將 IPv6 封包傳送至 VM 的私人 IPv6 位址。 IPv6 網際網路用戶端無法與 VM 的 IPv6 位址直接通訊。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 透過 Azure Resource Manager部署的原生 IPv6 支援提供︰
 
@@ -77,11 +77,11 @@ ms.locfileid: "90058745"
 * Azure VM 無法透過 IPv6 與其他 VM、其他 Azure 服務、或內部部署裝置連線， 只能透過 IPv6 與 Azure Load Balancer 通訊。 不過，它們可以使用 IPv4 與這些其他資源通訊。
 * 雙重堆疊 (IPv4 + IPv6) 部署支援 IPv4 的網路安全性群組 (NSG) 保護。 NSG 不適用於 IPv6 端點。
 * VM 上的 IPv6 端點不會直接向網際網路公開， 而是擺在負載平衡器後。 透過 IPv6 存取只能存取負載平衡器規則中指定的連接埠。
-* **目前不支援**變更 IPv6 的 IdleTimeout 參數。 預設為四分鐘。
-* **目前不支援**變更 IPv6 的 loadDistributionMethod 參數。
+* **目前不支援** 變更 IPv6 的 IdleTimeout 參數。 預設為四分鐘。
+* **目前不支援** 變更 IPv6 的 loadDistributionMethod 參數。
 * 基本 Load Balancer 的 IPv6 已鎖定為 **動態** SKU。  Standard Load Balancer 的 IPv6 已鎖定為 **靜態** SKU。
 * 不支援 NAT64 (IPv6 至 IPv4 的轉譯)。
-* **目前不支援**將參考 IPv6 子網的次要 NIC 連接到後端集區。
+* **目前不支援** 將參考 IPv6 子網的次要 NIC 連接到後端集區。
 
 ## <a name="next-steps"></a>後續步驟
 

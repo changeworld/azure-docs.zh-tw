@@ -10,22 +10,22 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeca560989c174bcb654116eb13da40d6ec79e60
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808376"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700506"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 取得 Load Balancer 使用計量
 
-使用[Azure REST API](/rest/api/azure/)收集一段時間的[Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)所處理的位元組數目。
+使用[Azure REST API](/rest/api/azure/)收集一段時間的[Standard Load Balancer](./load-balancer-overview.md)所處理的位元組數目。
 
 REST API 的完整參考文件和其他範例可於 [Azure 監視器 REST 參考](/rest/api/monitor)中取得。 
 
 ## <a name="build-the-request"></a>建立要求
 
-請使用下列 GET 要求以從 Standard Load Balancer 收集 [ByteCount 計量](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)。 
+請使用下列 GET 要求以從 Standard Load Balancer 收集 [ByteCount 計量](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)。 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -44,10 +44,10 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 | 名稱 | 描述 |
 | :--- | :---------- |
-| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱使用 [多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱使用 [多個訂閱](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含資源的資源群組名稱。 您可以從 Azure Resource Manager API、CLI 或入口網站取得這個值。 |
 | loadBalancerName | Azure Load Balancer 的名稱。 |
-| 度量名稱 | 以逗號分隔的有效 [Load Balancer 計量](/azure/load-balancer/load-balancer-standard-diagnostics)清單。 |
+| 度量名稱 | 以逗號分隔的有效 [Load Balancer 計量](./load-balancer-standard-diagnostics.md)清單。 |
 | api-version | 要用於要求的 API 版本。<br /><br /> 本文件涵蓋 api-version `2018-01-01`，內含於上述 URL 中。  |
 | 時間範圍 | 查詢的時間範圍。 它是具有下列格式的字串 `startDateTime_ISO/endDateTime_ISO` 。 此選用參數會設定為傳回此範例中一天份的資料。 |
 | &nbsp; | &nbsp; |

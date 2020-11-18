@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675583"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700217"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>建立及管理 Azure 認知搜尋服務的 api 金鑰
 
 搜尋服務的所有要求都需要 `api-key` 專為您的服務產生的唯讀。 `api-key`是驗證搜尋服務端點存取權的唯一機制，必須包含在每個要求中。 
 
-+ 在 [REST 解決方案](search-get-started-postman.md)中，通常會在要求標頭中指定 api 金鑰
++ 在 [REST 解決方案](search-get-started-rest.md)中，通常會在要求標頭中指定 api 金鑰
 
 + 在[.net 解決方案](search-howto-dotnet-sdk.md)中，索引鍵通常會指定為設定設定，然後以[AzureKeyCredential](/dotnet/api/azure.azurekeycredential)的形式傳遞。
 
@@ -35,7 +35,7 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 
 |Key|描述|限制|  
 |---------|-----------------|------------|  
-|管理|授與所有作業的完整權限，包括能夠管理服務、建立和刪除索引、索引子及資料來源。<br /><br /> 當服務建立時，在入口網站中會產生兩個系統管理金鑰 (稱為「主要」  和「次要」  金鑰)，而且您可以視需要個別重新產生這些金鑰。 擁有兩個金鑰可讓您在變換一個金鑰時，使用第二個金鑰來繼續存取服務。<br /><br /> 指定管理金鑰時，只能在 HTTP 要求標頭中指定。 您無法將管理 API 金鑰放在 URL 中。|每個服務的上限為 2 個|  
+|系統管理員|授與所有作業的完整權限，包括能夠管理服務、建立和刪除索引、索引子及資料來源。<br /><br /> 當服務建立時，在入口網站中會產生兩個系統管理金鑰 (稱為「主要」和「次要」金鑰)，而且您可以視需要個別重新產生這些金鑰。 擁有兩個金鑰可讓您在變換一個金鑰時，使用第二個金鑰來繼續存取服務。<br /><br /> 指定管理金鑰時，只能在 HTTP 要求標頭中指定。 您無法將管理 API 金鑰放在 URL 中。|每個服務的上限為 2 個|  
 |查詢|授與索引和文件的唯讀存取權，且通常會分派給發出搜尋要求的用戶端應用程式。<br /><br /> 查詢金鑰是視需要建立的。 您可以在入口網站中手動建立這些金鑰，或是透過[管理 REST API](/rest/api/searchmanagement/) \(英文\) 以程式設計方式建立這些金鑰。<br /><br /> 您可以在 HTTP 要求標頭中指定查詢金鑰，以進行查詢、建議或查閱作業。 或者，您也可以在 URL 上將查詢金鑰當作參數來傳遞。 視您用戶端應用程式制定要求的方式而定，將金鑰當作查詢參數來傳遞可能會較為簡單：<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|每個服務 50 個|  
 
  管理金鑰或查詢金鑰在外觀上並無差別。 兩種金鑰都是由 32 個隨機產生的英數字元所組成。 如果您忘記在應用程式中指定的是哪種類型的金鑰，您可以[在入口網站中查看金鑰值](https://portal.azure.com)，或使用 [REST API](/rest/api/searchmanagement/) 來傳回值和金鑰類型。  
@@ -49,9 +49,9 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 列出您訂用帳戶的[搜尋服務](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-3. 選取服務，然後在 [總覽] 頁面上，按一下 [ **設定**  > **金鑰** ] 以查看管理員和查詢金鑰。
+3. 選取服務，然後在 [總覽] 頁面上，按一下 [**設定**  > **金鑰**] 以查看管理員和查詢金鑰。
 
-   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="入口網站頁面、取得設定、金鑰區段" border="false":::
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="入口網站頁面、視圖設定、金鑰區段" border="false":::
 
 ## <a name="create-query-keys"></a>建立查詢金鑰
 
@@ -61,11 +61,11 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 列出您訂用帳戶的[搜尋服務](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-3. 選取服務，然後按一下 [總覽] 頁面上的 [ **設定**  > **金鑰** ]。
-4. 按一下 [ **管理查詢金鑰** ]。
+3. 選取服務，然後按一下 [總覽] 頁面上的 [**設定**  > **金鑰**]。
+4. 按一下 [ **管理查詢金鑰**]。
 5. 使用已為您的服務產生的查詢金鑰，或建立最多50個新的查詢金鑰。 預設的查詢金鑰未命名，但可以命名其他查詢金鑰以進行管理。
 
-   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="入口網站頁面、取得設定、金鑰區段" border="false":::
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="建立或使用查詢金鑰" border="false":::
 
 > [!Note]
 > 在 [c # 中查詢 Azure 認知搜尋索引時](./search-get-started-dotnet.md)，可以找到顯示查詢金鑰使用方式的程式碼範例。
@@ -76,7 +76,7 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 
 系統會為每個服務建立兩個系統管理金鑰，讓您可以使用次要金鑰來旋轉主要金鑰，以進行商務持續性。
 
-1. 在 [ **設定**  > **金鑰** ] 頁面中，複製次要金鑰。
+1. 在 [**設定**  > **金鑰**] 頁面中，複製次要金鑰。
 2. 針對所有的應用程式，更新 API 金鑰設定以使用次要金鑰。
 3. 重新產生主要金鑰。
 4. 更新所有應用程式以使用新的主要金鑰。
@@ -90,14 +90,14 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 ## <a name="secure-api-keys"></a>保護 API 金鑰
 藉由限制透過入口網站或 Resource Manager 介面 (PowerShell 或命令列介面) 的存取來確保金鑰安全性。 如前所述，訂用帳戶系統管理員可以檢視及重新產生所有的 API 金鑰。 為以防萬一，請檢閱角色指派以了解誰具有管理員金鑰存取權。
 
-+ 在服務儀表板中，按一下 [存取控制 (IAM)]  ，然後按一下 [角色指派]  索引標籤，以檢視您服務的角色指派。
++ 在服務儀表板中，按一下 [存取控制 (IAM)]，然後按一下 [角色指派] 索引標籤，以檢視您服務的角色指派。
 
 下列角色的成員可以檢視及重新產生金鑰：擁有者、參與者、[搜尋服務參與者](../role-based-access-control/built-in-roles.md#search-service-contributor)
 
 > [!Note]
 > 針對搜尋結果的身分識別型存取，您可以建立安全性篩選，依身分識別修剪結果、移除要求者不應具備存取權的文件。 如需詳細資訊，請參閱[安全性篩選](search-security-trimming-for-azure-search.md)和[使用 Active Directory 保護安全](search-security-trimming-for-azure-search-with-aad.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [Azure 認知搜尋中的 Azure 角色型存取控制](search-security-rbac.md)
 + [使用 Powershell 管理](search-manage-powershell.md) 

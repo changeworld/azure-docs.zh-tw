@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 7b0ea9cc1788065a92e168e41a0c293bb1f4ea9b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409352"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698660"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 作業安全性概觀
 
@@ -87,7 +87,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](./identity-managemen
 - 磁碟加密驗證。
 - 網路型攻擊。
 
-「安全性中心」會使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。 RBAC 會提供[內建角色](../../role-based-access-control/built-in-roles.md)，可指派給 Azure 中的使用者、群組與服務。
+「安全性中心」會使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。 Azure RBAC 提供 [內建角色](../../role-based-access-control/built-in-roles.md) ，可指派給 azure 中的使用者、群組和服務。
 
 資訊安全中心會評估資源的組態，以識別安全性問題與弱點。 在資訊安全中心，只有當您獲指派為資源所屬訂用帳戶或資源群組的擁有者、參與者或讀取者角色時，才能看到與資源相關的資訊。
 

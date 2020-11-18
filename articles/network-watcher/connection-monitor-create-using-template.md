@@ -1,7 +1,7 @@
 ---
-title: 建立連線監視器預覽-ARMClient
+title: 建立連線監視器-ARMClient
 titleSuffix: Azure Network Watcher
-description: 瞭解如何使用 ARMClient 建立連線監視器 (預覽) 。
+description: 瞭解如何使用 ARMClient 建立連線監視器。
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447593"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699095"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>使用 ARMClient 建立連線監視器 (預覽) 
+# <a name="create-a-connection-monitor-using-the-armclient"></a>使用 ARMClient 建立連線監視
 
-瞭解如何建立連線監視器 (預覽版) ，以使用 ARMClient 監視資源之間的通訊。 它支援混合式和 Azure 雲端部署。
+瞭解如何建立連線監視器，以使用 ARMClient 監視資源之間的通訊。 它支援混合式和 Azure 雲端部署。
 
 ## <a name="before-you-begin"></a>開始之前 
 
-在您于連線監視器中建立的連線監視器 (預覽版) ，您可以將內部部署機器和 Azure Vm 作為來源來新增。 這些連線監視器也可以監視端點的連線能力。 端點可以位於 Azure 或任何其他 URL 或 IP 上。
+在您于連線監視器中建立的連線監視器中，您可以新增內部部署機器和 Azure Vm 作為來源。 這些連線監視器也可以監視端點的連線能力。 端點可以位於 Azure 或任何其他 URL 或 IP 上。
 
-連接監視器 (預覽) 包含下列實體：
+連接監視包含下列實體：
 
-* 連線 **監視器資源** –區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
+* 連線 **監視器資源**–區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
 * **端點** –參與連線能力檢查的來源或目的地。 端點的範例包括 Azure Vm、內部部署代理程式、Url 和 Ip。
 * **測試** 設定–適用于測試的通訊協定特定設定。 根據您選擇的通訊協定，您可以定義埠、閾值、測試頻率及其他參數。
 * **測試群組** –包含來源端點、目的地端點和測試設定的群組。 連接監視器可以包含一個以上的測試群組。
@@ -359,7 +359,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 * 端點
     * 名稱-每個端點的唯一名稱
-    * resourceId –針對 Azure 端點，資源識別碼是指虛擬機器的 Azure resource manager 資源識別碼。針對非 Azure 端點，資源識別碼是指連結至非 Azure 代理程式之 Log Analytics 工作區的 Azure resource manager 資源識別碼。
+    * resourceId –針對 Azure 端點，資源識別碼指的是虛擬機器的 Azure Resource Manager 資源識別碼。針對非 Azure 端點，資源識別碼是指連結至非 Azure 代理程式之 Log Analytics 工作區的 Azure Resource Manager 資源識別碼。
     * 位址-只有在未指定任何資源識別碼或資源識別碼為 Log Analytics 工作區時適用。 如果與 Log Analytics 資源識別碼搭配使用，這會參考可用於監視的代理程式 FQDN。 如果在沒有資源識別碼的情況下使用，則可以是任何公用端點的 URL 或 IP。
     * 篩選-針對非 Azure 端點，請使用篩選器從 Log Analytics 工作區選取將用於監視連線監視資源的代理程式。 如果未設定篩選準則，屬於 Log Analytics 工作區的所有代理程式都可以用於監視
         * 類型–將類型設定為 [代理程式位址]

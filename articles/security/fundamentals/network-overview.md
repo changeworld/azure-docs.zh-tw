@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 526947c4d2db9fd87727fdd60c33bcaa9e75c6ff
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413287"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699860"
 ---
 # <a name="azure-network-security-overview"></a>Azure 網路安全性概觀
 
@@ -81,7 +81,7 @@ NSG 未提供應用程式層級檢查或已驗證的存取控制。
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just-In-Time VM 存取
 
-[Azure 資訊安全中心](../../security-center/security-center-introduction.md)可以管理 VM 上的 NSG 及鎖定對 VM 的存取，直到具有適當角色型存取控制 [RBAC](../../role-based-access-control/overview.md) 權限的使用者要求存取為止。 當使用者成功獲得授權後，ASC 便會對 NSG 進行修改，以允許在指定的時間內對選取的連接埠進行存取。 在這段時間到期後，NSG 就會還原為其先前受保護的狀態。
+[Azure 資訊安全中心](../../security-center/security-center-introduction.md) 可以管理 vm 上的 nsg，並鎖定對 vm 的存取，直到具有 [適當 azure 角色型存取控制的](../../role-based-access-control/overview.md) 使用者要求存取權為止。 當使用者成功獲得授權後，ASC 便會對 NSG 進行修改，以允許在指定的時間內對選取的連接埠進行存取。 在這段時間到期後，NSG 就會還原為其先前受保護的狀態。
 
 深入了解：
 
@@ -317,7 +317,7 @@ Azure 會以 Azure DNS 的形式提供高可用性且高效能的外部 DNS 解�
 分散式阻斷服務 (DDoS) 攻擊是將應用程式移至雲端的客戶所面臨的最大可用性和安全性顧慮之一。 DDoS 攻擊會嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。
 Microsoft 提供在 Azure 平台中名為 **基本** 的 DDoS 保護。 此功能不收費，且會持續監視和即時緩解常見的網路層級攻擊。 除了隨附於 DDoS 保護 **基本** 的保護功能以外，您也可以啟用 **標準** 選項。 DDoS Protection Standard 功能包括：
 
-* **原生平台整合** ：原生整合到 Azure。 包括透過 Azure 入口網站進行設定。 DDoS Protection Standard 了解您的資源和資源組態。
+* **原生平台整合**：原生整合到 Azure。 包括透過 Azure 入口網站進行設定。 DDoS Protection Standard 了解您的資源和資源組態。
 * **現成的保護：** 經過簡化的組態會在啟用 DDoS Protection Standard 後，立即保護虛擬網路上的所有資源。 不需要任何介入或使用者定義。 一旦偵測到攻擊，DDoS Protection Standard 就會立即自動減輕攻擊。
 * **永遠可用流量監視：** 您的應用程式流量模式受到全年無休的全天候監視，以尋找 DDoS 攻擊的指標。 超出保護原則時，就會執行安全防護功能。
 * **攻擊風險降低報** 攻擊風險降低報告會使用彙總的網路流量資料，提供有關以您資源為目標的攻擊詳細資訊。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408935"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698796"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全性控制 V2：備份和復原
 
@@ -36,9 +36,9 @@ ms.locfileid: "94408935"
 
 - [如何啟用跨區域還原](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [原則和標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -58,7 +58,7 @@ ms.locfileid: "94408935"
 
 針對使用 Azure 備份的內部部署備份，會使用您提供的複雜密碼來提供靜態加密。 針對一般的 Azure 服務備份，系統會使用 Azure 平臺管理的金鑰自動加密備份資料。 您可以選擇使用客戶管理的金鑰來加密備份。 在此情況下，請確定金鑰保存庫中的客戶管理金鑰也在備份範圍中。 
 
-在 Azure 備份、Azure Key Vault 或其他資源中使用角色型存取控制，以保護備份和客戶管理的金鑰。 此外，您可以啟用 advanced security 功能來要求 MFA，然後才能改變或刪除備份。
+在 Azure 備份、Azure Key Vault 或其他資源中使用 Azure 角色型存取控制，以保護備份和客戶管理的金鑰。 此外，您可以啟用 advanced security 功能來要求 MFA，然後才能改變或刪除備份。
 
 - [Azure 備份中的安全性功能概觀](../../backup/security-overview.md)
 
@@ -68,9 +68,9 @@ ms.locfileid: "94408935"
 
 - [協助保護混合式備份免于遭受攻擊的安全性功能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -90,9 +90,9 @@ ms.locfileid: "94408935"
 
 - [如何在 Azure 中還原 Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -108,9 +108,9 @@ ms.locfileid: "94408935"
 
 - [如何啟用 Key Vault 中的虛刪除和清除保護](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 

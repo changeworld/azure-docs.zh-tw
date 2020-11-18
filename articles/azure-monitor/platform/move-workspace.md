@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555527"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699741"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>將 Log Analytics 工作區移至不同的訂用帳戶或資源群組
 
@@ -30,7 +30,7 @@ ms.locfileid: "94555527"
 
 ## <a name="workspace-move-considerations"></a>工作區移動考慮
 - 在工作區中安裝的受控解決方案會隨著 Log Analytics 工作區移動作業而移動。 
-- 工作區金鑰會隨著工作區移動 (主要和次要) 重新產生。 如果您的工作區金鑰是保存庫，請使用新產生的金鑰來更新它們。 
+- 使用工作區移動作業時，會重新產生主要和次要)  (工作區金鑰。 如果您在金鑰保存庫中保存工作區金鑰的複本，請使用工作區移動之後產生的新金鑰來更新它們。 
 - 連線的代理程式會保持連線，並在移動之後繼續將資料傳送到工作區。 
 - 因為移動作業需要來自工作區的連結服務，所以必須移除依賴該連結的解決方案，以允許工作區移動。 在您可以取消連結自動化帳戶之前，必須先移除的方案：
   - 更新管理
@@ -60,7 +60,7 @@ ms.locfileid: "94555527"
 
 1. 開啟已安裝任何解決方案之資源群組的功能表。
 2. 選取要移除的解決方案。
-3. 按一下 [ **刪除資源** ]，然後按一下 [ **刪除** ] 以確認要移除的資源。
+3. 按一下 [ **刪除資源** ]，然後按一下 [ **刪除**] 以確認要移除的資源。
 
 ![刪除方案](media/move-workspace/delete-solutions.png)
 
@@ -77,9 +77,9 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 ### <a name="remove-alert-rules-for-startstop-vms-solution"></a>移除啟動/停止 Vm 解決方案的警示規則
 若要移除 **啟動/停止 vm** 解決方案，您也必須移除解決方案所建立的警示規則。 使用 Azure 入口網站中的下列程式移除這些規則。
 
-1. 開啟 [ **監視** ] 功能表，然後選取 [ **警示** ]。
-2. 按一下 [ **管理警示規則** ]。
-3. 選取下列三個警示規則，然後按一下 [ **刪除** ]。
+1. 開啟 [ **監視** ] 功能表，然後選取 [ **警示**]。
+2. 按一下 [ **管理警示規則**]。
+3. 選取下列三個警示規則，然後按一下 [ **刪除**]。
 
    - AutoStop_VM_Child
    - ScheduledStartStop_Parent
@@ -91,7 +91,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 使用下列程式，利用 Azure 入口網站將自動化帳戶與工作區取消連結：
 
 1. 開啟 [ **自動化帳戶** ] 功能表，然後選取要移除的帳戶。
-2. 在功能表的 [ **相關資源** ] 區段中，選取 [ **連結的工作區** ]。 
+2. 在功能表的 [ **相關資源** ] 區段中，選取 [ **連結的工作區**]。 
 3. 按一下 [ **取消連結工作區** ]，將工作區與您的自動化帳戶取消連結。
 
     ![取消連結工作區](media/move-workspace/unlink-workspace.png)
@@ -102,9 +102,9 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 使用下列程式，利用 Azure 入口網站來移動您的工作區：
 
 1. 開啟 **Log Analytics 工作區** 功能表，然後選取您的工作區。
-2. 在 [ **總覽** ] 頁面中，按一下 [ **資源群組** 或 **訂** 用帳戶] 旁的 [ **變更** ]。
+2. 在 [**總覽**] 頁面中，按一下 [**資源群組** 或 **訂** 用帳戶] 旁的 [**變更**]。
 3. 新頁面隨即開啟，其中包含與工作區相關的資源清單。 選取要移至相同目的地訂用帳戶和資源群組的資源，以作為工作區。 
-4. 選取目的地 **訂** 用帳戶和 **資源群組** 。 如果您要將工作區移到相同訂用帳戶中的另一個資源群組，您將不會看到 **訂** 用帳戶選項。
+4. 選取目的地 **訂** 用帳戶和 **資源群組**。 如果您要將工作區移到相同訂用帳戶中的另一個資源群組，您將不會看到 **訂** 用帳戶選項。
 5. 按一下 **[確定]** 以移動工作區和選取的資源。
 
     ![螢幕擷取畫面會顯示 Log Analytics 工作區中的 [總覽] 窗格，其中包含變更資源群組和訂用帳戶名稱的選項。](media/move-workspace/portal.png)

@@ -1,6 +1,6 @@
 ---
-title: 連接監視器 (預覽) |Microsoft Docs
-description: 瞭解如何使用連線監視器 (預覽版) 來監視分散式環境中的網路通訊。
+title: 連接監視器 |Microsoft Docs
+description: 瞭解如何使用連線監視器來監視分散式環境中的網路通訊。
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447604"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699231"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>使用連線監視器 (預覽) 的網路連線能力監視
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用連線監視器進行網路連線監視
 
-連線監視器 (預覽版) 可在 Azure 網路監看員中提供整合的端對端連線監視。 連接監視器 (預覽版) 功能支援混合式和 Azure 雲端部署。 網路監看員提供工具來監視、診斷和查看 Azure 部署的連線相關計量。
+連線監視器可在 Azure 網路監看員中提供整合的端對端連線監視。 連線監視器功能支援混合式和 Azure 雲端部署。 網路監看員提供工具來監視、診斷和查看 Azure 部署的連線相關計量。
 
-以下是連線監視器 (預覽) 的一些使用案例：
+以下是連線監視器的一些使用案例：
 
 - 您的前端網頁伺服器 VM 會與多層式應用程式中的資料庫伺服器 VM 進行通訊。 您想要檢查兩部 Vm 之間的網路連線能力。
 - 您想要讓美國東部區域中的 Vm 偵測美國中部區域中的 Vm，而您想要比較跨區域網路延遲。
@@ -34,9 +34,9 @@ ms.locfileid: "94447604"
 - 混合式應用程式需要連線到 Azure 儲存體端點。 您的內部部署網站和 Azure 應用程式會連接到相同的 Azure 儲存體端點。 您想要比較內部部署網站的延遲與 Azure 應用程式的延遲。
 - 您想要檢查內部部署環境與裝載雲端應用程式的 Azure Vm 之間的連線能力。
 
-在其預覽階段中，連線監視器結合了兩項功能的最大功能：網路監看員連線 [監視器](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和網路效能監控 (NPM) [服務連線監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、 [ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)和 [效能監視](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) 功能。
+連線監視器結合了兩項功能的最大功能：網路監看員連線 [監視器 (傳統) ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和網路效能監控 (NPM) [服務連線監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、 [ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)和 [效能監視](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) 功能。
 
-以下是連接監視器 (Preview) 的一些優點：
+以下是連接監視的一些優點：
 
 * 適用于 Azure 和混合式監視需求的統一、直覺體驗
 * 跨區域、跨工作區的連線能力監視
@@ -47,7 +47,7 @@ ms.locfileid: "94447604"
 
 ![顯示連線監視器如何與 Azure Vm、非 Azure 主機、端點和資料儲存位置進行互動的圖表](./media/connection-monitor-2-preview/hero-graphic.png)
 
-若要開始使用連線監視器 (預覽) 進行監視，請遵循下列步驟： 
+若要開始使用連接監視進行監視，請遵循下列步驟： 
 
 1. 安裝監視代理程式。
 1. 在您的訂用帳戶上啟用網路監看員。
@@ -59,7 +59,7 @@ ms.locfileid: "94447604"
 
 ## <a name="install-monitoring-agents"></a>安裝監視代理程式
 
-連線監視器依賴輕量可執行檔來執行連線檢查。  它支援來自 Azure 環境與內部部署環境的連線能力檢查。 您所使用的可執行檔取決於您的 VM 是裝載于 Azure 或內部部署。
+連線監視器依賴輕量可執行檔來執行連線檢查。 它支援來自 Azure 環境與內部部署環境的連線能力檢查。 您所使用的可執行檔取決於您的 VM 是裝載于 Azure 或內部部署。
 
 ### <a name="agents-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的代理程式
 
@@ -89,21 +89,21 @@ ms.locfileid: "94447604"
 
 來源可以是已安裝監視代理程式的 Azure Vm 或內部部署機器。 目的地端點可以是 Microsoft 365 Url、Dynamics 365 Url、自訂 Url、Azure VM 資源識別碼、IPv4、IPv6、FQDN 或任何功能變數名稱。
 
-### <a name="access-connection-monitor-preview"></a>存取連線監視器 (預覽) 
+### <a name="access-connection-monitor"></a>存取連線監視器
 
 1. 在 Azure 入口網站首頁上，移至 **網路** 監看員。
-1. 在左側的 [ **監視** ] 區段中，選取 [連線 **監視器 (預覽])** 。
-1. 您會看到在連線監視器中建立的所有連線監視器 (Preview) 。 若要查看在連線監視器的傳統體驗中建立的連線監視器，請移至 [連線 **監視器** ] 索引標籤。
+1. 在左側的 [ **監視** ] 區段中，選取 [連線 **監視器**]。
+1. 您會看到在連線監視器中建立的所有連線監視器。 若要查看在連線監視器的傳統體驗中建立的連線監視器，請移至 [連線 **監視器** ] 索引標籤。
     
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="顯示連線監視器中所建立連線監視器的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>建立連線監視
 
-在您于連線監視器中建立的連線監視器 (預覽版) ，您可以將內部部署機器和 Azure Vm 作為來源來新增。 這些連線監視器也可以監視端點的連線能力。 端點可以位於 Azure 或任何其他 URL 或 IP 上。
+在您于連線監視器中建立的連線監視器中，您可以新增內部部署機器和 Azure Vm 作為來源。 這些連線監視器也可以監視端點的連線能力。 端點可以位於 Azure 或任何其他 URL 或 IP 上。
 
-連接監視器 (預覽) 包含下列實體：
+連接監視包含下列實體：
 
-* 連線 **監視器資源** –區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
+* 連線 **監視器資源**–區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
 * **端點** –參與連線能力檢查的來源或目的地。 端點的範例包括 Azure Vm、內部部署代理程式、Url 和 Ip。
 * **測試** 設定–適用于測試的通訊協定特定設定。 根據您選擇的通訊協定，您可以定義埠、閾值、測試頻率及其他參數。
 * **測試群組** –包含來源端點、目的地端點和測試設定的群組。 連接監視器可以包含一個以上的測試群組。
@@ -111,7 +111,7 @@ ms.locfileid: "94447604"
 
  ![顯示連接監視器、定義測試群組與測試之間關聯性的圖表](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-您可以使用[Azure 入口網站](connection-monitor-preview-create-using-portal.md)或[ARMClient](connection-monitor-preview-create-using-arm-client.md)建立連線監視器預覽
+您可以使用[Azure 入口網站](connection-monitor-preview-create-using-portal.md)或[ARMClient](connection-monitor-preview-create-using-arm-client.md)建立連線監視
 
 您加入至測試群組的所有來源、目的地和測試設定都會細分為個別測試。 以下是來源和目的地如何細分的範例：
 
@@ -151,7 +151,7 @@ ms.locfileid: "94447604"
 
 ### <a name="checks-in-a-test"></a>測試中的簽入
 
-根據您在測試設定中選擇的通訊協定， (Preview) 的連線監視器會針對來源-目的地配對執行一系列檢查。 檢查會根據您所選擇的測試頻率執行。
+連線監視器會根據您在測試設定中選擇的通訊協定來執行一系列的來源-目的地配對檢查。 檢查會根據您所選擇的測試頻率執行。
 
 如果您使用 HTTP，此服務會計算傳回有效回應碼的 HTTP 回應數目。 您可以使用 PowerShell 和 CLI 來設定有效的回應碼。 結果會決定失敗檢查的百分比。 為了計算 RTT，服務會測量 HTTP 呼叫和回應之間的時間。
 
@@ -164,14 +164,14 @@ ms.locfileid: "94447604"
 * **Pass** –失敗檢查的百分比實際值，而 RTT 在指定的閾值內。
 * **失敗** –失敗的檢查或 RTT 百分比的實際值超過指定的閾值。 如果未指定任何臨界值，當失敗檢查的百分比為100時，測試便會進入失敗狀態。
 * **警告** – 
-     * 如果指定了臨界值，且連線監視器 (預覽) 觀察到的閾值超過80% 的閾值，則測試會標示為「警告」。
-     * 如果沒有指定的閾值，連接監視器 (預覽) 會自動指派閾值。 當超過該臨界值時，測試狀態會變更為 [警告]。若為 TCP 或 ICMP 測試中的往返時間，則會750msec 臨界值。 針對檢查失敗的百分比，閾值為10%。 
+     * 如果指定了臨界值，且連線監視器觀察到失敗百分比超過80% 的臨界值，則測試會標示為「警告」。
+     * 如果沒有指定的閾值，連線監視器會自動指派閾值。 當超過該臨界值時，測試狀態會變更為 [警告]。若為 TCP 或 ICMP 測試中的往返時間，則會750msec 臨界值。 針對檢查失敗的百分比，閾值為10%。 
 * **不定**  – Log Analytics 工作區中沒有任何資料。檢查計量。 
 * **未執行**  –停用測試群組  
 
 ### <a name="data-collection-analysis-and-alerts"></a>資料收集、分析和警示
 
-連線監視器 (預覽版) 收集的資料會儲存在 Log Analytics 工作區中。 當您建立連線監視器時，會設定此工作區。 
+連接監視器所收集的資料會儲存在 Log Analytics 工作區中。 當您建立連線監視器時，會設定此工作區。 
 
 Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來保留您的監視資料，只要您想要。 Azure 監視器預設只會儲存30天的度量。 
 
@@ -181,9 +181,9 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 在監視儀表板上，您會看到可供您存取的連線監視器清單、區域、時間戳記、來源和目的地類型。
 
-當您從網路監看員移至連線監視器 (預覽版) 時，您可以透過下列方式來查看資料：
+當您從網路監看員移至連線監視器時，您可以透過下列方式來查看資料：
 
-* 連線 **監視器** –針對您的訂用帳戶、區域、時間戳記、來源和目的地類型所建立的所有連線監視器清單。 此檢視為預設。
+* 連線 **監視器**–針對您的訂用帳戶、區域、時間戳記、來源和目的地類型所建立的所有連線監視器清單。 此檢視為預設。
 * **測試群組** –針對您的訂用帳戶、區域、時間戳記、來源和目的地類型建立的所有測試群組清單。 這些測試群組不會透過連接監視器進行篩選。
 * **測試** –針對您的訂用帳戶、區域、時間戳記、來源和目的地類型執行的所有測試清單。 這些測試不會依連接監視器或測試群組進行篩選。
 
@@ -197,24 +197,24 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 * 以 **狀態為基礎的篩選** 條件–依連線監視器、測試群組或測試的狀態進行篩選。 請參閱下圖中的 box 2。
 * **警示型篩選** 器-依連線監視器資源上引發的警示進行篩選。 請參閱下圖中的 box 3。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="螢幕擷取畫面，顯示如何在連線監視器中篩選連線監視器、測試群組和測試的視圖 (預覽) " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="螢幕擷取畫面，顯示如何在連線監視器中篩選連線監視器、測試群組和測試的視圖 " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
-例如，若要查看連線監視器中的所有測試 (預覽版) 10.192.64.56 來源 IP：
+例如，若要查看連線監視器中10.192.64.56 來源 IP 的所有測試：
 1. 變更要 **測試** 的視圖。
 1. 在 [搜尋] 欄位中，輸入 *10.192.64.56*
-1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **來源** ]。
+1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **來源**]。
 
-若只要在連線監視器中顯示失敗的測試 (預覽) 10.192.64.56 來源 IP 的來源 IP：
+若只要在10.192.64.56 來源 IP 的連線監視器中顯示失敗的測試：
 1. 變更要 **測試** 的視圖。
-1. 如果是以狀態為基礎的篩選準則，請選取 [ **失敗** ]。
+1. 如果是以狀態為基礎的篩選準則，請選取 [ **失敗**]。
 1. 在 [搜尋] 欄位中，輸入 *10.192.64.56*
-1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **來源** ]。
+1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **來源**]。
 
-若只要在連線監視器中顯示失敗的測試 (預覽) 目的地為 outlook.office365.com：
-1. 將 view 變更為 **Test** 。
-1. 如果是以狀態為基礎的篩選準則，請選取 [ **失敗** ]。
+若只要在 outlook.office365.com 目的地的連線監視器中顯示失敗的測試：
+1. 將 view 變更為 **Test**。
+1. 如果是以狀態為基礎的篩選準則，請選取 [ **失敗**]。
 1. 在 [搜尋] 欄位中，輸入 *outlook.office365.com*
-1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **目的地** ]。
+1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **目的地**]。
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="螢幕擷取畫面，顯示已篩選成隻顯示 Outlook.Office365.com 目的地失敗測試的視圖" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
@@ -265,13 +265,13 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 #### <a name="metrics-in-azure-monitor"></a>Azure 監視器中的計量
 
-在連線監視器之前建立的連線監視器 (預覽版) 體驗中，總共提供四個度量：% 探查失敗、AverageRoundtripMs、ChecksFailedPercent (Preview) 和 RoundTripTimeMs (Preview) 。 在連線監視器中建立的連線監視器 (預覽) 體驗中，資料僅適用于以 *(Preview)* 標記的度量。
+在連線監視器體驗之前建立的連線監視器中，有四個可用的度量：% 探查 Failed、AverageRoundtripMs、ChecksFailedPercent (Preview) 和 RoundTripTimeMs (Preview) 。 在連線監視器體驗中建立的連線監視器中，資料僅適用于以 *(Preview)* 標記的度量。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="顯示連線監視器 (預覽) 中計量的螢幕擷取畫面 " lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="顯示連線監視器計量的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 當您使用計量時，請將資源類型設為 Microsoft. Network/networkWatchers/connectionMonitors
 
-| 計量 | 顯示名稱 | 單位 | 彙總類型 | 說明 | 維度 |
+| 計量 | 顯示名稱 | 單位 | 彙總類型 | 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | 失敗的探查百分比 | 百分比 | 平均 | 連線能力監視探查的百分比失敗。 | 無維度 |
 | AverageRoundtripMs | Avg.來回時間 (毫秒) | 毫秒 | Average | 在來源與目的地之間傳送之連線能力監視探查的平均網路 RTT。 |             無維度 |
@@ -282,19 +282,19 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 您可以使用下列方法，在連線監視器上建立計量警示 
 
-1. 從連線監視器 (預覽) 在[使用 Azure 入口網站](connection-monitor-preview-create-using-portal.md#)建立連線監視器期間 
-1. 從連線監視器 (預覽) ，在儀表板中使用 [設定警示] 
+1. 從連線監視器，[使用 Azure 入口網站](connection-monitor-preview-create-using-portal.md#)建立連線監視器期間 
+1. 從連線監視器，在儀表板中使用 [設定警示] 
 1. 從 Azure 監視器-在 Azure 監視器中建立警示： 
-    1. 選擇您在連線監視器中建立的連線監視器資源 (Preview) 。
+    1. 選擇您在連線監視器中建立的連線監視器資源。
     1. 確定計量 **顯示為連線監視的信號** 類型。
-    1. 在 [ **新增條件** ] 的 [ **信號名稱** ] 中，選取 [ **ChecksFailedPercent (Preview])** 或 [ **RoundTripTimeMs (預覽])** 。
-    1. 針對 [ **信號類型** ]，選擇 [ **計量** ]。 例如，選取 [ **ChecksFailedPercent (預覽])** 。
+    1. 在 [ **新增條件**] 的 [ **信號名稱**] 中，選取 [ **ChecksFailedPercent (Preview])** 或 [ **RoundTripTimeMs (預覽])**。
+    1. 針對 [ **信號類型**]，選擇 [ **計量**]。 例如，選取 [ **ChecksFailedPercent (預覽])**。
     1. 系統會列出度量的所有維度。 選擇維度名稱和維度值。 例如，選取 [ **來源位址** ]，然後輸入連線監視器中任何來源的 IP 位址。
     1. 在 **警示邏輯** 中，填寫下列詳細資料：
-        * **條件類型** ： **靜態** 。
-        * **條件** 和 **臨界值** 。
-        * **匯總的資料細微性和評估頻率** ：連線監視器 (預覽) 每分鐘更新資料。
-    1. 在 [ **動作** ] 中，選擇您的動作群組。
+        * **條件類型**： **靜態**。
+        * **條件** 和 **臨界值**。
+        * **匯總細微性和評估頻率**：連線監視器每分鐘會更新資料。
+    1. 在 [ **動作**] 中，選擇您的動作群組。
     1. 提供警示詳細資料。
     1. 建立警示規則。
 
@@ -302,7 +302,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 ## <a name="diagnose-issues-in-your-network"></a>診斷網路中的問題
 
-連線監視器 (預覽) 可協助您診斷連線監視器和網路中的問題。 您稍早安裝的 Log Analytics 代理程式會偵測到混合式網路中的問題。 網路監看員延伸模組偵測到 Azure 中的問題。 
+連接監視器可協助您診斷連線監視器和網路中的問題。 您稍早安裝的 Log Analytics 代理程式會偵測到混合式網路中的問題。 網路監看員延伸模組偵測到 Azure 中的問題。 
 
 您可以在網路拓撲中查看 Azure 網路中的問題。
 
@@ -348,5 +348,5 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 ## <a name="next-steps"></a>後續步驟
     
-   * 瞭解 [如何使用 Azure 入口網站建立連線監視器 (預覽版) ](connection-monitor-preview-create-using-portal.md)  
-   * 瞭解 [如何使用 ARMClient 建立連線監視器 (預覽版) ](connection-monitor-preview-create-using-arm-client.md)  
+   * 瞭解 [如何使用 Azure 入口網站建立連線監視器](connection-monitor-preview-create-using-portal.md)  
+   * 瞭解 [如何使用 ARMClient 建立連線監視器](connection-monitor-preview-create-using-arm-client.md)  

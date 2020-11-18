@@ -3,12 +3,12 @@ title: 使用 PowerShell 在 Azure 中設定 Application Insights | Microsoft Do
 description: 自動設定 Azure 診斷，以將資料傳送至 Application Insights。
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd69b90ce6329041f96b8e3173f1f17270f68ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320352"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699724"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 設定 Azure 雲端服務的 Application Insights
 
@@ -126,5 +126,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ## <a name="see-also"></a>另請參閱
 * [使用 Application Insights 監視 Azure 雲端服務應用程式](./cloudservices.md)
 * [將 Azure 診斷傳送至 Application Insights](../platform/diagnostics-extension-to-application-insights.md)
-* [自動化設定警示](powershell-alerts.md)
+
 

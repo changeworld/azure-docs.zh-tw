@@ -1,7 +1,7 @@
 ---
 title: 'Azure Machine Learning (預覽中的模型可解譯性) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning SDK 來說明模型為何會進行預測。 您可以在定型和推斷期間使用它，以瞭解您的模型如何進行預測。
+description: 瞭解如何瞭解 & 說明您的機器學習模型如何使用 Azure Machine Learning Python SDK 在定型 & 推斷期間進行預測。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: dff0aeaf84ce87ed728d333cb68aee3a349bc111
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311521"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699384"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning (預覽中的模型可解譯性) 
 
@@ -53,7 +53,7 @@ ms.locfileid: "93311521"
 + 使用互動式視覺效果儀表板來探索資料中的模式和定型時間的說明
 
 
-在機器學習中， **功能** 是用來預測目標資料點的資料欄位。 例如，若要預測信用風險，可能會使用年齡、帳戶大小和帳戶存留期的資料欄位。 在此情況下，年齡、帳戶大小和帳戶存留期都是 **功能** 。 功能重要性會告訴您每個資料欄位如何影響模型的預測。 例如，年齡可能會在預測中大量使用，而帳戶大小和年齡不會大幅影響預測值。 此程式可讓資料科學家說明產生的預測，讓專案關係人可以看到模型中最重要的功能。
+在機器學習中， **功能** 是用來預測目標資料點的資料欄位。 例如，若要預測信用風險，可能會使用年齡、帳戶大小和帳戶存留期的資料欄位。 在此情況下，年齡、帳戶大小和帳戶存留期都是 **功能**。 功能重要性會告訴您每個資料欄位如何影響模型的預測。 例如，年齡可能會在預測中大量使用，而帳戶大小和年齡不會大幅影響預測值。 此程式可讓資料科學家說明產生的預測，讓專案關係人可以看到模型中最重要的功能。
 
 在這裡瞭解支援的可解譯性技術、支援的機器學習模型，以及支援的執行環境。
 
@@ -83,8 +83,8 @@ ms.locfileid: "93311521"
 
 `TabularExplainer` 也透過直接 SHAP Explainers 進行了大幅的功能和效能增強功能：
 
-* **初始化資料集的摘要** 。 在說明速度最重要的情況下，我們摘要了初始設定資料集，並產生一組小型的代表性範例，以加速產生整體和個別的特徵重要性值。
-* **取樣評估資料集** 。 如果使用者傳入大量的評估範例，但實際上並不需要進行評估，則可以將取樣參數設為 true，以加速整體模型說明的計算。
+* **初始化資料集的摘要**。 在說明速度最重要的情況下，我們摘要了初始設定資料集，並產生一組小型的代表性範例，以加速產生整體和個別的特徵重要性值。
+* **取樣評估資料集**。 如果使用者傳入大量的評估範例，但實際上並不需要進行評估，則可以將取樣參數設為 true，以加速整體模型說明的計算。
 
 下圖顯示目前支援的 explainers 結構。
 

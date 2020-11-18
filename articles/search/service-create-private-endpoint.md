@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280405"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700149"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點，以 Azure 認知搜尋的安全連線
 
@@ -45,7 +45,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 設定 | 值 |
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶|
-    | 資源群組 | 選取 [ **建立新**的]，輸入 *myResourceGroup*，然後選取 **[確定]** |
+    | 資源群組 | 選取 [ **建立新** 的]，輸入 *myResourceGroup*，然後選取 **[確定]** |
     | 名稱 | 輸入 *MyVirtualNetwork* |
     | 區域 | 選取您想要的區域 |
     |||
@@ -67,15 +67,15 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **執行個體詳細資料** |  |
     | URL | 輸入唯一名稱。 |
-    | 位置 | 選取所需的區域。 |
-    | 定價層 | 選取 [ **變更定價層** ]，然後選擇您想要的服務層級。 **免費**層上的 (不支援。 必須是 **基本** 或更高的版本。 )  |
+    | Location | 選取所需的區域。 |
+    | 定價層 | 選取 [ **變更定價層** ]，然後選擇您想要的服務層級。 **免費** 層上的 (不支援。 必須是 **基本** 或更高的版本。 )  |
     |||
   
 1. 選取 **[下一步：調整]**。
 
 1. 將值保留為預設值，然後選取 **[下一步：網路]**。
 
-1. 在 [ **新的搜尋服務-網路**] 中，選取 [ **私人** ]， ** (資料) 的端點連線能力 **。
+1. 在 [ **新的搜尋服務-網路**] 中，選取 [ **私人** ]， **(資料) 的端點連線能力**。
 
 1. 在 [**新搜尋服務-網路**] 中，選取 [**私人端點**] 底下的 [ **+ 新增**]。 
 
@@ -85,18 +85,18 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
-    | 位置 | 選取 [美國西部]****。|
+    | Location | 選取 [美國西部]。|
     | 名稱 | 輸入 myPrivateEndpoint。  |
     | 目標子資源 | 保留預設 **searchService**。 |
     | **網路** |  |
-    | 虛擬網路  | 從 [資源群組*myResourceGroup*] 中選取 [ *MyVirtualNetwork* ]。 |
+    | 虛擬網路  | 從 [資源群組 *myResourceGroup*] 中選取 [ *MyVirtualNetwork* ]。 |
     | 子網路 | 選取 [mySubnet]。 |
     | **私人 DNS 整合** |  |
-    | 與私人 DNS 區域整合  | 保留預設值 [ **是]**。 |
+    | 與私人 DNS 區域整合  | 保留預設值 [是]。 |
     | 私人 DNS 區域  | 保留預設值 [ (新的) privatelink.search.windows.net * *。 |
     |||
 
-1. 選取 [確定]  。 
+1. 選取 [確定]。 
 
 1. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 
@@ -131,7 +131,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 確認密碼 | 再次輸入密碼。 |
     | **輸入連接埠規則** |  |
     | 公用輸入連接埠 | 保留預設的 [ **允許選取的埠**]。 |
-    | 選取輸入連接埠 | 將預設的 **RDP (3389) **。 |
+    | 選取輸入連接埠 | 將預設的 **RDP (3389)**。 |
     | **節省費用** |  |
     | 已經有 Windows 授權？ | 保留預設值 [否]。 |
     |||
@@ -182,7 +182,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -208,19 +208,19 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     Aliases:  [search service name].search.windows.net
     ```
 
-1. 從 VM 連接到搜尋服務，並建立索引。 您可以遵循本 [快速入門](search-get-started-postman.md) ，使用 REST API 在 Postman 的服務中建立新的搜尋索引。 從 Postman 設定要求需要搜尋服務端點 (HTTPs：//[搜尋服務名稱].. a n t) ，以及您在上一個步驟中複製的管理員 api 金鑰。
+1. 從 VM 連接到搜尋服務，並建立索引。 您可以遵循本 [快速入門](search-get-started-rest.md) ，使用 REST API 在您的服務中建立新的搜尋索引。 從 Web API 測試控管設定要求需要搜尋服務端點 (HTTPs：//[搜尋服務名稱].. a n t) ，以及您在上一個步驟中複製的管理員 API 金鑰。
 
 1. 從 VM 完成快速入門是您確認服務可完全運作。
 
-1. 關閉 *myVM*的遠端桌面連線。 
+1. 關閉對 *myVM* 的遠端桌面連線。 
 
 1. 若要確認您的服務無法在公用端點上存取，請在您的本機工作站上開啟 Postman，然後嘗試快速入門中的前幾個工作。 如果您收到遠端伺服器不存在的錯誤，表示您已成功設定搜尋服務的私人端點。
 
 ## <a name="clean-up-resources"></a>清除資源 
 當您完成使用私人端點、搜尋服務和 VM 時，請刪除資源群組及其包含的所有資源：
-1.  *myResourceGroup*   在入口網站頂端的 [**搜尋**] 方塊中輸入 myResourceGroup，然後 *myResourceGroup*   從搜尋結果中選取 [myResourceGroup]。 
+1.  *myResourceGroup*   在入口網站頂端的 [**搜尋**] 方塊中輸入 myResourceGroup，然後  *myResourceGroup*   從搜尋結果中選取 [myResourceGroup]。 
 1. 選取 [刪除資源群組]。 
-1. 輸入 *myResourceGroup*   **資源組名類型的**MyResourceGroup，然後選取 [**刪除**]。
+1. 輸入  *myResourceGroup*   **資源組名類型的** MyResourceGroup，然後選取 [**刪除**]。
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已在虛擬網路上建立 VM，並在具有私人端點的搜尋服務上建立。 您已從網際網路連線到 VM，並使用 Private Link 安全地傳達給搜尋服務。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點？](../private-link/private-endpoint-overview.md)。

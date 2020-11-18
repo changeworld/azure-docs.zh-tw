@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410040"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700754"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 可用的安全性服務與技術
 
@@ -67,7 +67,7 @@ ms.locfileid: "94410040"
 ## <a name="identity-and-access-management"></a>身分識別和存取管理
 |服務|描述|
 |------|--------|
-| [Azure&nbsp;角色&nbsp;型&nbsp;存取控制](../../role-based-access-control/role-assignments-portal.md)|存取控制功能，旨在根據使用者在其組織內的角色，只允許他們存取必須存取的資源。  |
+| [Azure &nbsp; 角色型 &nbsp; 存取控制](../../role-based-access-control/role-assignments-portal.md)|存取控制功能，旨在根據使用者在其組織內的角色，只允許他們存取必須存取的資源。  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|雲端式驗證存放庫，可支援多租用戶、雲端式目錄，以及 Azure 內的多項身分識別管理服務。  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|身分識別管理服務，可控制客戶在使用以 Azure 為基礎的應用程式時如何註冊、登入及管理其設定檔。   |
 | [Azure Active Directory 網域服務](../../active-directory-domain-services/overview.md)| Active Directory Domain Services 的雲端式受控版本。 |

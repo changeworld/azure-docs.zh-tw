@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c68bb9c7a94cf32bd1d9342660a9f0029f5d10d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410397"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698779"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作負載的安全性最佳作法
 本文說明適用於 VM 和作業系統的最佳做法。
@@ -37,16 +37,16 @@ ms.locfileid: "94410397"
 >
 >
 
-**最佳做法** ：控制 VM 存取。   
-**詳細資訊** ：使用 [Azure 原則](../../governance/policy/overview.md)為組織資源制定慣例及建立自訂原則。 將這些原則套用到資源，例如[資源群組](../../azure-resource-manager/management/overview.md)。 屬於某資源群組的 VM 會繼承其原則。
+**最佳做法**：控制 VM 存取。   
+**詳細資訊**：使用 [Azure 原則](../../governance/policy/overview.md)為組織資源制定慣例及建立自訂原則。 將這些原則套用到資源，例如[資源群組](../../azure-resource-manager/management/overview.md)。 屬於某資源群組的 VM 會繼承其原則。
 
-如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](../../governance/management-groups/overview.md) 提供了訂用帳戶之上的範圍層級。 您可將訂用帳戶整理到管理群組 (容器) 中，並將治理條件套用至這些群組。 管理群組內的所有訂用帳戶都會自動繼承套用到該群組的條件。 無論具有何種類型的訂用帳戶，管理群組都可為您提供企業級的大規模管理功能。
+如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](../../governance/management-groups/overview.md) 提供了訂用帳戶之上的範圍層級。 您可將訂用帳戶整理到管理群組 (容器) 中，並將治理條件套用至這些群組。 管理群組內的所有訂用帳戶都會自動繼承套用到該群組的條件。 無論您具有何種類型的訂用帳戶，管理群組都可為您提供企業級的大規模管理功能。
 
-**最佳做法** ：降低 VM 設定和部署的變化性。   
-**詳細資訊** ：使用 [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) 範本強化部署選項，更輕鬆了解及清查環境中的 VM。
+**最佳做法**：降低 VM 設定和部署的變化性。   
+**詳細資訊**：使用 [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) 範本強化部署選項，更輕鬆了解及清查環境中的 VM。
 
-**最佳做法** ：特殊權限的安全存取。   
-**詳細資訊** ：使用 [最低權限的方法](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)和內建的 Azure 角色來讓使用者存取和設定 VM：
+**最佳做法**：特殊權限的安全存取。   
+**詳細資訊**：使用 [最低權限的方法](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)和內建的 Azure 角色來讓使用者存取和設定 VM：
 
 - [虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)：可以管理 VM，但無法管理他們連接的虛擬網路或儲存體帳戶。
 - [傳統虛擬機器參與者](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor)：可以管理使用傳統的部署模型建立的 VM，但無法管理 VM 連接的虛擬網路或儲存體帳戶。
@@ -74,17 +74,17 @@ Microsoft Antimalware 包含下列功能：即時防護、排程掃描、惡意�
 
 您可以將 Microsoft Antimalware 和合作夥伴解決方案與 [Azure 資訊安全中心](../../security-center/index.yml)整合，以方便部署和執行內建偵測 (警示與事件)。
 
-**最佳做法** ：安裝反惡意程式碼解決方案以抵禦惡意程式碼。   
-**詳細資訊** ： [安裝 Microsoft 合作夥伴解決方案或 Microsoft Antimalware](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-)
+**最佳做法**：安裝反惡意程式碼解決方案以抵禦惡意程式碼。   
+**詳細資訊**：[安裝 Microsoft 合作夥伴解決方案或 Microsoft Antimalware](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-)
 
-**最佳做法** ：整合反惡意程式碼解決方案與資訊安全中心，確實監視您的防護狀態。   
-**詳細資訊** ： [透過資訊安全中心管理端點保護問題](../../security-center/security-center-partner-integration.md)
+**最佳做法**：整合反惡意程式碼解決方案與資訊安全中心，確實監視您的防護狀態。   
+**詳細資訊**：[透過資訊安全中心管理端點保護問題](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>管理您的 VM 更新
 Azure VM 就跟所有內部部署 VM 一樣，受控於使用者。 Azure 不會向使用者推送 Windows 更新。 您需自行管理 VM 更新。
 
-**最佳做法** ：讓 VM 保持最新狀態。   
-**詳細資訊** ：使用 Azure 自動化中的 [更新管理](../../automation/update-management/overview.md)解決方案，以便管理 Azure、內部部署環境或其他雲端提供者中所部署 Windows 和 Linux 電腦的作業系統更新。 您可以快速評估所有代理程式電腦上可用更新的狀態，並管理為伺服器安裝必要更新的程序。
+**最佳做法**：讓 VM 保持最新狀態。   
+**詳細資訊**：使用 Azure 自動化中的 [更新管理](../../automation/update-management/overview.md)解決方案，以便管理 Azure、內部部署環境或其他雲端提供者中所部署 Windows 和 Linux 電腦的作業系統更新。 您可以快速評估所有代理程式電腦上可用更新的狀態，並管理為伺服器安裝必要更新的程序。
 
 「更新管理」所管理的電腦會使用下列設定來執行評估和更新部署：
 
@@ -95,20 +95,20 @@ Azure VM 就跟所有內部部署 VM 一樣，受控於使用者。 Azure 不會
 
 若您使用 Windows Update，請讓自動安裝 Windows Update 設定保持啟用狀態。
 
-**最佳做法** ：部署時確認您建置的映像包含最新一輪的 Windows 更新。   
-**詳細資訊** ：檢查並安裝所有 Windows 更新是每個部署的第一個步驟。 在部署來自您或您自己的程式庫之映像時，套用此量值特別重要。 雖然從 Azure Marketplace 取得的映像會自動更新，但根據預設，在公開發行之後可能會有一段延隔時間 (最多數週)。
+**最佳做法**：部署時確認您建置的映像包含最新一輪的 Windows 更新。   
+**詳細資訊**：檢查並安裝所有 Windows 更新是每個部署的第一個步驟。 在部署來自您或您自己的程式庫之映像時，套用此量值特別重要。 雖然從 Azure Marketplace 取得的映像會自動更新，但根據預設，在公開發行之後可能會有一段延隔時間 (最多數週)。
 
-**最佳做法** ：定期重新部署 VM 以強制執行最新版的作業系統。   
-**詳細資訊** ：使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來定義 VM，以便輕鬆重新部署。 使用範本可讓您在需要時取得經過修補的安全 VM。
+**最佳做法**：定期重新部署 VM 以強制執行最新版的作業系統。   
+**詳細資訊**：使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來定義 VM，以便輕鬆重新部署。 使用範本可讓您在需要時取得經過修補的安全 VM。
 
-**最佳做法** ：快速將安全性更新套用至 vm。   
-**詳細資料** ：啟用 Azure 資訊安全中心 (免費層或標準層) 來 [識別遺漏的安全性更新，並加以](../../security-center/asset-inventory.md)套用。
+**最佳做法**：快速將安全性更新套用至 vm。   
+**詳細資料**：啟用 Azure 資訊安全中心 (免費層或標準層) 來 [識別遺漏的安全性更新，並加以](../../security-center/asset-inventory.md)套用。
 
-**最佳做法** ：安裝最新的安全性更新。   
-**詳細資訊** ：客戶移至 Azure 的第一批工作負載中包括實驗室和對外系統。 如果 Azure VM 會裝載需要開放網際網路存取的應用程式或服務，請對修補作業保持警戒。 作業系統之外的修補。 合作夥伴應用程式上未修補的弱點也可能造成問題，但只要妥善管理修補程式即可避免這類問題。
+**最佳做法**：安裝最新的安全性更新。   
+**詳細資訊**：客戶移至 Azure 的第一批工作負載中包括實驗室和對外系統。 如果 Azure VM 會裝載需要開放網際網路存取的應用程式或服務，請對修補作業保持警戒。 作業系統之外的修補。 合作夥伴應用程式上未修補的弱點也可能造成問題，但只要妥善管理修補程式即可避免這類問題。
 
-**最佳做法** ：部署和測試備份解決方案。   
-**詳細資訊** ：備份的處理方式必須和任何其他作業的處理方式相同。 您生產環境中延伸至雲端的系統很適合採用這種作法。
+**最佳做法**：部署和測試備份解決方案。   
+**詳細資訊**：備份的處理方式必須和任何其他作業的處理方式相同。 您生產環境中延伸至雲端的系統很適合採用這種作法。
 
 測試和開發系統都必須遵循備份策略，而這些備份策略能夠根據使用者的內部部署環境經驗，為使用者提供他們已經習慣的類似還原功能。 可能的話，移至 Azure 的生產工作負載應該與現有的備份解決方案整合。 或者，您可以使用 [Azure 備份](../../backup/backup-azure-vms-first-look-arm.md)來協助您滿足備份需求。
 
@@ -151,17 +151,17 @@ Azure VM 就跟所有內部部署 VM 一樣，受控於使用者。 Azure 不會
 
 以下是使用 Azure 磁碟加密的最佳做法：
 
-**最佳做法** ：在 VM 上啟用加密。   
-**詳細資訊** ：Azure Disk 磁碟加密會產生加密金鑰並將其寫入金鑰保存庫。 在金鑰保存庫中管理加密金鑰需要 Azure AD 驗證。 基於此目的，請建立 Azure AD 應用程式。 基於驗證目的，您可以使用用戶端密碼式驗證或 [用戶端憑證 Azure AD 驗證](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)。
+**最佳做法**：在 VM 上啟用加密。   
+**詳細資訊**：Azure Disk 磁碟加密會產生加密金鑰並將其寫入金鑰保存庫。 在金鑰保存庫中管理加密金鑰需要 Azure AD 驗證。 基於此目的，請建立 Azure AD 應用程式。 基於驗證目的，您可以使用用戶端密碼式驗證或 [用戶端憑證 Azure AD 驗證](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)。
 
-**最佳做法** ：使用金鑰加密金鑰 (KEK) 來為加密金鑰額外添加一層安全性。 將 KEK 新增至金鑰保存庫。   
-**詳細資料** ：使用 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) 指令 Cmdlet 在金鑰保存庫中建立金鑰加密金鑰。 您也可以從內部部署硬體安全性模組 (HSM) 匯入 KEK 以管理金鑰。 如需詳細資訊，請參閱 [Key Vault 文件](../../key-vault/keys/hsm-protected-keys.md)。 若指定了金鑰加密金鑰，Azure 磁碟加密會先使用該金鑰包裝加密祕密，再寫入 Key Vault。 將此金鑰的委付複本保存在內部部署金鑰管理 HSM，可提供額外保護，以防意外刪除金鑰。
+**最佳做法**：使用金鑰加密金鑰 (KEK) 來為加密金鑰額外添加一層安全性。 將 KEK 新增至金鑰保存庫。   
+**詳細資料**：使用 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) 指令 Cmdlet 在金鑰保存庫中建立金鑰加密金鑰。 您也可以從內部部署硬體安全性模組 (HSM) 匯入 KEK 以管理金鑰。 如需詳細資訊，請參閱 [Key Vault 文件](../../key-vault/keys/hsm-protected-keys.md)。 若指定了金鑰加密金鑰，Azure 磁碟加密會先使用該金鑰包裝加密祕密，再寫入 Key Vault。 將此金鑰的委付複本保存在內部部署金鑰管理 HSM，可提供額外保護，以防意外刪除金鑰。
 
-**最佳做法** ：在磁碟加密前製作 [快照集](../../virtual-machines/windows/snapshot-copy-managed-disk.md)及/或進行備份。 如果在加密期間發生非預期的失敗，備份可提供復原選項。   
-**詳細資訊** ：具有受控磁碟的 VM 需要有備份才能進行加密。 進行備份之後，您可以藉由指定 *-skipVmBackup* 參數，使用 **>set-azvmdiskencryptionextension** 指令程式將受控磁片加密。 如需如何備份和還原已加密 VM 的詳細資訊，請參閱 [Azure 備份](../../backup/backup-azure-vms-encryption.md)一文。
+**最佳做法**：在磁碟加密前製作 [快照集](../../virtual-machines/windows/snapshot-copy-managed-disk.md)及/或進行備份。 如果在加密期間發生非預期的失敗，備份可提供復原選項。   
+**詳細資訊**：具有受控磁碟的 VM 需要有備份才能進行加密。 進行備份之後，您可以藉由指定 *-skipVmBackup* 參數，使用 **>set-azvmdiskencryptionextension** 指令程式將受控磁片加密。 如需如何備份和還原已加密 VM 的詳細資訊，請參閱 [Azure 備份](../../backup/backup-azure-vms-encryption.md)一文。
 
-**最佳做法** ：為了確保加密密碼不會跨出區域界限，Azure 磁碟加密需要讓金鑰保存庫和 VM 共置於相同區域中。   
-**詳細資訊** ：在和所要加密 VM 相同的區域中建立並使用金鑰保存庫。
+**最佳做法**：為了確保加密密碼不會跨出區域界限，Azure 磁碟加密需要讓金鑰保存庫和 VM 共置於相同區域中。   
+**詳細資訊**：在和所要加密 VM 相同的區域中建立並使用金鑰保存庫。
 
 套用 Azure 磁碟加密時，可滿足下列業務需求：
 
@@ -171,14 +171,14 @@ Azure VM 就跟所有內部部署 VM 一樣，受控於使用者。 Azure 不會
 ## <a name="restrict-direct-internet-connectivity"></a>限制直接網際網路連線能力
 監視和限制 VM direct 網際網路連線能力。 攻擊者會針對開放管理埠持續掃描公用雲端 IP 範圍，並嘗試「簡單」的攻擊，例如常見密碼和已知未修補的弱點。 下表列出有助於防範這些攻擊的最佳作法：
 
-**最佳做法** ：防止意外暴露在網路路由和安全性。   
-**詳細資料** ：使用 RBAC 確保只有中央網路群組具有網路資源的許可權。
+**最佳做法**：防止意外暴露在網路路由和安全性。   
+**詳細資料**：使用 Azure RBAC 來確保只有中央網路群組具有網路資源的許可權。
 
-**最佳做法** ：識別及修復允許從「任何」來源 IP 位址存取的公開 vm。   
-**詳細資料** ：使用 Azure 資訊安全中心。 如果您的任何網路安全性群組有一或多個輸入規則允許來自「任何」來源 IP 位址的存取，則資訊安全中心會建議您限制透過網際網路面向端點的存取。 安全性中心會建議您編輯這些輸入規則，以 [限制存取](../../security-center/security-center-network-recommendations.md) 真正需要存取的來源 IP 位址。
+**最佳做法**：識別及修復允許從「任何」來源 IP 位址存取的公開 vm。   
+**詳細資料**：使用 Azure 資訊安全中心。 如果您的任何網路安全性群組有一或多個輸入規則允許來自「任何」來源 IP 位址的存取，則資訊安全中心會建議您限制透過網際網路面向端點的存取。 安全性中心會建議您編輯這些輸入規則，以 [限制存取](../../security-center/security-center-network-recommendations.md) 真正需要存取的來源 IP 位址。
 
-**最佳做法** ：限制管理埠 (RDP、SSH) 。   
-**詳細資料** ： [即時 (JIT) VM 存取](../../security-center/security-center-just-in-time.md) 可用於鎖定 Azure vm 的輸入流量、降低暴露于攻擊的風險，同時在需要時提供簡單的存取權來連線至 vm。 啟用 JIT 時，安全性中心會藉由建立網路安全性群組規則來鎖定 Azure Vm 的輸入流量。 系統會鎖定選取的 VM 連接埠的輸入流量。 這些埠是由 JIT 解決方案所控制。
+**最佳做法**：限制管理埠 (RDP、SSH) 。   
+**詳細資料**： [即時 (JIT) VM 存取](../../security-center/security-center-just-in-time.md) 可用於鎖定 Azure vm 的輸入流量、降低暴露于攻擊的風險，同時在需要時提供簡單的存取權來連線至 vm。 啟用 JIT 時，安全性中心會藉由建立網路安全性群組規則來鎖定 Azure Vm 的輸入流量。 系統會鎖定選取的 VM 連接埠的輸入流量。 這些埠是由 JIT 解決方案所控制。
 
 ## <a name="next-steps"></a>後續步驟
 如需更多安全性最佳做法，請參閱 [Azure 安全性最佳做法與模式](best-practices-and-patterns.md)，以便在使用 Azure 設計、部署和管理雲端解決方案時使用。

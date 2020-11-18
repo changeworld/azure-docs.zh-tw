@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96be79a349478db7d0452cae1ff07ee1c48aaa3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83744489"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700081"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>將 Microsoft Authenticator 應用程式設定為您的驗證方法
 
@@ -45,6 +45,11 @@ ms.locfileid: "83744489"
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>從安全性資訊頁面設定 Microsoft Authenticator 應用程式
 
 根據您組織的設定，您可能可以使用驗證應用程式作為其中一個安全性資訊方法。 如果沒有一定要使用 Microsoft Authenticator 應用程式，您可以在設定期間選擇不同的應用程式。 不過，本文是使用 Microsoft Authenticator 應用程式。
+
+>[!Important]
+> 如果您在5部不同的裝置上設定 Microsoft Authenticator 應用程式或5個硬體權杖，您將無法設定第六個裝置，而且可能會看到下列錯誤訊息。
+> 
+> **因為您已經有五個驗證器應用程式或硬體權杖，所以無法設定 Microsoft Authenticator。請洽詢您的系統管理員，以刪除其中一個驗證器應用程式或硬體權杖。**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>設定 Microsoft Authenticator 應用程式
 
@@ -123,7 +128,7 @@ ms.locfileid: "83744489"
 
 ## <a name="change-your-default-security-info-method"></a>變更預設的安全性資訊方法
 
-如果您想要在使用雙因素驗證登入公司或學校帳戶時，或提出密碼重設要求時，使用驗證器應用程式作為預設方法，您可以從安全性**資訊**頁面進行設定。
+如果您想要在使用雙因素驗證登入公司或學校帳戶時，或提出密碼重設要求時，使用驗證器應用程式作為預設方法，您可以從安全性 **資訊** 頁面進行設定。
 
 ### <a name="to-change-your-default-security-info-method"></a>變更預設的安全性資訊方法
 
@@ -147,7 +152,7 @@ ms.locfileid: "83744489"
 
 - **行動裝置或公司電話。** 輸入您的行動裝置號碼，然後等候來電以進行雙步驟驗證或密碼重設。 如需如何透過電話號碼驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)。
 
-- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並將其搭配 PIN 使用以便進行雙步驟驗證或密碼重設。 如需如何透過安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並搭配 PIN 使用以便進行雙步驟驗證或密碼重設。 如需如何透過安全性金鑰驗證身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 
