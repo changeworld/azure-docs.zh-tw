@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: victorh
-ms.openlocfilehash: a0333f9afa69b533ac28dc302987e6d057bfeeb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69890e2d846a63a70c1b7459b1df13ce5e891289
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090154"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659466"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火牆記錄和計量
 
@@ -142,7 +142,7 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 
     單位：計數
 
-- 已**處理的資料**-在指定的時間範圍內，對防火牆進行資料的總和。
+- 已 **處理的資料**-在指定的時間範圍內，對防火牆進行資料的總和。
 
     單位：位元組
 
@@ -173,6 +173,6 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要了解如何監視 Azure 防火牆記錄和計量，請參閱[教學課程：監視 Azure 防火牆記錄](tutorial-diagnostics.md)。
+- 若要了解如何監視 Azure 防火牆記錄和計量，請參閱[教學課程：監視 Azure 防火牆記錄](./firewall-diagnostics.md)。
 
 - 若要深入瞭解 Azure 監視器中的計量，請參閱 [Azure 監視器中的計量](../azure-monitor/platform/data-platform-metrics.md)。

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f35adcc797e903bb44852e9ba52e1a023f51a0d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292129"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659517"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>準備適用於 Azure 的 SLES 或 openSUSE 虛擬機器
 
@@ -32,7 +32,7 @@ ms.locfileid: "87292129"
 
 SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)發佈 SLES 的 BYOS (自備訂用帳戶，Bring Your Own Subscription) 映像。
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>準備 SUSE Linux Enterprise Server 11 SP4
+## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>準備 Azure 的 SUSE Linux Enterprise Server
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
 2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 3. 註冊您的 SUSE Linux Enterprise 系統，以允許下載更新並安裝封裝。
@@ -41,57 +41,53 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
     ```console
     # sudo zypper update
     ```
-
-1. 從 SLES 存放庫 (SLE11-Public-Cloud-Module) 安裝 Azure Linux 代理程式：
+    
+5. 安裝 Azure Linux 代理程式和雲端初始化
 
     ```console
+    # SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
     # sudo zypper install python-azure-agent
+    # sudo zypper install cloud-init
     ```
 
-1. 檢查 chkconfig 中的 waagent 是否設為「啟用」，若否，請啟用以便自動啟動：
+6. 啟用 waagent & 雲端初始化以在開機時啟動
 
     ```console
     # sudo chkconfig waagent on
+    # systemctl enable cloud-init-local.service
+    # systemctl enable cloud-init.service
+    # systemctl enable cloud-config.service
+    # systemctl enable cloud-final.service
+    # systemctl daemon-reload
+    # cloud-init clean
     ```
 
-7. 檢查 waagent 服務是否正在執行，若否，請加以啟動： 
+7. 更新 waagent 和雲端初始設定
 
     ```console
-    # sudo service waagent start
+    # sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    # sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    # sudo sh -c 'printf "datasource:\n  Azure:" > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg'
+    # sudo sh -c 'printf "reporting:\n  logging:\n    type: log\n  telemetry:\n    type: hyperv" > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg'
     ```
 
-8. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 作法是，在文字編輯器中開啟 "/boot/grub/menu.lst"，並確定預設核心包含以下參數：
+8. 編輯/etc/default/grub 檔案，以確保主控台記錄會傳送到序列埠，然後以 grub2-grub2-mkconfig-o/boot/grub2/grub.cfg 來更新主要設定檔
 
     ```config-grub
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     ```
-
     這將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。
-9. 確認 /boot/grub/menu.lst 和 /etc/fstab 兩者參考的磁碟是使用其 UUID (by-uuid) 而非磁碟識別碼 (by-id) 。 
-   
-    取得磁碟 UUID
-
-    ```console
-    # ls /dev/disk/by-uuid/
-    ```
-
-    如果您是使用 /dev/disk/by-id/，請以適當的 by-uuid 值，更新 /boot/grub/menu.lst 和 /etc/fstab
-   
-    變更之前
-   
-    `root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1`
-   
-    變更之後
-   
-    `root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
-
+    
+9. 確定/etc/fstab 檔案使用其 UUID (（uuid）參考磁片) 
+         
 10. 修改 udev 角色可防止產生乙太網路介面的靜態規則。 在 Microsoft Azure 或 Hyper-V 中複製虛擬機器時，這些規則可能會造成問題：
 
     ```console
     # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
-
+   
 11. 建議您編輯檔案 "/etc/sysconfig/network/dhcp"，並將 `DHCLIENT_SET_HOSTNAME` 參數變更如下：
 
     ```config
@@ -105,7 +101,8 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
     ```
 
-13. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
+13. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。 這通常是預設值。
+
 14. 請勿在作業系統磁碟上建立交換空間。
     
     Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是 *暫存* 磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：

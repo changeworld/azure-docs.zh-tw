@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542313"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659483"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight 叢集管理最佳作法
 
@@ -49,7 +49,7 @@ ms.locfileid: "92542313"
 
 | 錯誤 | 詳細資訊 |
 |---|---|
-| 無配額 | 您可以在每個區域的訂用帳戶上建立配額數目配額。 如需詳細資訊，請參閱 [容量規劃：配額](./hdinsight-capacity-planning.md)。 |
+| 無配額 | 您可以在每個區域的訂用帳戶上建立的核心數目配額。 如需詳細資訊，請參閱 [容量規劃：配額](./hdinsight-capacity-planning.md)。 |
 | 沒有其他可用的 IP 位址 | 每個 VNet 的 IP 位址數目有限。 當您建立 HDInsight 叢集時，每個節點 (包括 zookeeper 和閘道節點) 會使用其中一些已分配的 IP 位址。 當所有 IP 位址都在使用中時，您將會遇到此錯誤。  |
 | 網路安全性群組 (NSG) 規則不允許與 HDInsight 資源提供者進行通訊 | 如果您使用 Nsg 或使用者定義的路由 (Udr) 來控制您 HDInsight 叢集的輸入流量，您必須確定您的叢集可以與重要的 Azure 健康狀態和管理服務進行通訊。 如需詳細資訊，請參閱[網路安全性群組 (NSG) Azure HDInsight 的服務](./hdinsight-service-tags.md)標籤 |
 | 重複使用叢集名稱 | 當您使用之前用過的叢集名稱時，必須先等候 X 分鐘數，再重新建立叢集。 否則，您會看到該資源已經存在的訊息。 |
@@ -76,7 +76,7 @@ AzureActivity
 | where ResourceProvider == "Microsoft.HDInsight" and (OperationName == "Create or Update Cluster" or OperationName == "Delete Cluster") and ActivityStatus == "Succeeded"
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [HDInsight 叢集的容量規劃](./hdinsight-capacity-planning.md)
 * [Azure HDInsight 的預設和建議節點設定為何？](./hdinsight-supported-node-configuration.md)
