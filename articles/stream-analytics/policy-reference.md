@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 串流分析的內建原則定義
 description: 列出適用於 Azure 串流分析的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8a9836771b8e2a52cf23e069c28e40b788d24c45
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ee74b6977813bdbfd8f122ccec7cce1f772d6879
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331867"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94735106"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stream-analytics"></a>適用於 Azure 串流分析的 Azure 原則內建定義
 

@@ -4,27 +4,27 @@ description: 此文章描述商業市集交易選項的定價、計費、發票�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a975ee863e81a9f542e717d734f12db850f749e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130318"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738317"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
-本文說明 Microsoft 商用 marketplace 的定價、計費、發票和付款考慮。 
+本文說明 Microsoft 商用 marketplace 的定價、計費、發票和付款考慮。
 
 ## <a name="transactions-by-listing-option"></a>交易（依清單選項）
 
-發行者或 Microsoft 負責管理商業市集中供應項目的軟體授權交易。 您為供應專案選擇的清單選項，會決定誰管理交易。 如需每個發行選項的可用性和說明，請參閱 [挑選清單選項](./determine-your-listing-type.md#choose-a-listing-option) 。
+發行者或 Microsoft 負責管理商業市集中供應項目的軟體授權交易。 您為供應專案選擇的清單選項，會決定誰管理交易。 如需每個發行選項的可用性和說明，請參閱 [清單選項簡介](determine-your-listing-type.md)
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>聯絡我、免費試用和 BYOL 選項
 
-發行者可以選擇「 _聯絡我_ 」和「 _免費試用_ 」選項，以供促銷和使用者取得之用。 針對某些供應專案類型，發行者可以選擇 [自備授權 (BYOL) ] 選項，讓客戶使用他們直接向您購買的授權購買供應專案的訂用帳戶。 使用這些發行選項，Microsoft 不會在發行者的軟體授權交易中直接參與，且沒有相關的交易費用。 
+發行者可以選擇「 _聯絡我_ 」和「 _免費試用_」選項，以供促銷和使用者取得之用。 針對某些供應專案類型，發行者可以選擇 [自備授權 (BYOL) ] 選項，讓客戶使用他們直接向您購買的授權購買供應專案的訂用帳戶。 使用這些發行選項，Microsoft 不會在發行者的軟體授權交易中直接參與，且沒有相關的交易費用。
 
 發行者負責支援軟體授權交易的所有層面。 這包括但不限於訂單、履行、計量、計費、發票開立、付款和收集。 使用 [Contact me] 清單選項，發行者會保留從客戶收集的發行者軟體授權費用100%。
 
@@ -46,9 +46,9 @@ ms.locfileid: "93130318"
 
 ### <a name="billing-infrastructure-costs"></a>基礎結構成本計費
 
-針對 **虛擬機器** 和 **azure 應用程式** ，azure 基礎結構使用費用會向客戶的 azure 訂用帳戶收取費用。 基礎結構的使用費用和軟體提供者的授權費用，在客戶的發票上會分開計價及呈現。
+針對 **虛擬機器** 和 **azure 應用程式**，azure 基礎結構使用費用會向客戶的 azure 訂用帳戶收取費用。 基礎結構的使用費用和軟體提供者的授權費用，在客戶的發票上會分開計價及呈現。
 
-對於 **SaaS 應用程式** ，發行者必須將 Azure 基礎結構使用費用及軟體授權費用為算為單一的成本項目。  其以一般費用向客戶呈現。 Azure 基礎結構的使用方式會直接由發行者管理並計費。 客戶不會看到實際的基礎結構使用量費用。 發行者通常選擇將 Azure 基礎結構使用量費用算在他們的軟體授權定價中。 軟體授權費用不是計量付費或根據使用者的耗用量。
+對於 **SaaS 應用程式**，發行者必須將 Azure 基礎結構使用費用及軟體授權費用為算為單一的成本項目。  其以一般費用向客戶呈現。 Azure 基礎結構的使用方式會直接由發行者管理並計費。 客戶不會看到實際的基礎結構使用量費用。 發行者通常選擇將 Azure 基礎結構使用量費用算在他們的軟體授權定價中。 軟體授權費用不是計量付費或根據使用者的耗用量。
 
 ## <a name="pricing-models"></a>定價模式
 
@@ -57,7 +57,7 @@ ms.locfileid: "93130318"
 - **立即取得 (免費)** –軟體授權不收費。 使用免費供應專案時，不會向客戶收取 Azure Marketplace 費用。 免費優惠無法轉換成付費供應專案。 客戶必須訂購付費供應專案。
 - **自備授權** (BYOL) - 軟體授權任何適用的費用，在發行者與客戶之間直接管理。 Microsoft 僅處理 Azure 基礎結構費用。 如果供應專案列在商業 marketplace 中，則在商業市場以外取得存取或使用供應專案的客戶不會收取商業 marketplace 費用。
 - **訂** 用帳戶定價–軟體授權費用以每月或每年的週期性訂用帳戶費用顯示，以固定費率或每一基座計費。 針對長期客戶取消或未使用的服務，週期性的訂用帳戶費用不會按比例計算。 如果客戶在訂用帳戶期限內升級或降級其訂用帳戶，則週期性訂用帳戶費用可能會按比例計算。
-- 以 **使用量為基礎的定價** –針對 Azure 虛擬機器供應專案，客戶會根據其使用供應專案的程度向您收費。 針對虛擬機器映射，客戶需依發行者所設定的每小時 Azure Marketplace 費用計費，以使用從 VM 映射部署的虛擬機器。 每小時的費用依虛擬機器的大小而採均一價或變動價。 不到一小時以分鐘計。 方案會按月計費。
+- 以 **使用量為基礎的定價**–針對 Azure 虛擬機器供應專案，客戶會根據其使用供應專案的程度向您收費。 針對虛擬機器映射，客戶需依發行者所設定的每小時 Azure Marketplace 費用計費，以使用從 VM 映射部署的虛擬機器。 每小時的費用依虛擬機器的大小而採均一價或變動價。 不到一小時以分鐘計。 方案會按月計費。
 - **計量付費定價** –針對 Azure 應用程式供應專案和 SaaS 供應專案，發行者可以使用 [Marketplace 計量服務](./partner-center-portal/marketplace-metering-service-apis.md) ，根據所選的計量維度來收取耗用量的費用。 例如，已處理的頻寬、票證或電子郵件。 發行者可以為每個方案定義一個或多個計量維度。 發行者負責追蹤個別客戶的使用方式，以及供應專案中定義的每個計量。 事件在一小時內應回報給 Microsoft。 Microsoft 會根據發行者就適用計費期間報告的使用量資訊向客戶收費。
 - **免費試用** –根據供應專案類型而定，從30天到六個月的軟體授權免費。 如果發行者在相同供應專案內的多個方案上提供免費試用，客戶可以切換到另一個方案的免費試用，但試用期不會重新開機。 針對虛擬機器供應專案，客戶會向 Azure 基礎結構收取在試用期間使用供應專案的費用。 在試用期到期後，除非客戶在試用期間結束前取消，否則會自動向客戶收取根據標準費率所嘗試的最後一個計畫。
 
@@ -84,7 +84,15 @@ Microsoft 讓客戶能訂購、授權和使用您的軟體，客戶必須遵守 
 
 除了使用供應項目類型和計費模型來創造供應項目的獲利，您也可以交易私人供應項目，按照交涉、交易特定的定價或自訂設定來完成。 所有 3 個交易發行選項都支援私人供應項目。
 
-此選項允許高於或低於公開提供供應項目的定價。 私人供應項目可用於為供應項目折扣或加入進階功能。 藉由將客戶的 Azure 訂用帳戶加入供應項目層級的允許清單，他們就能取得私人供應項目。
+此選項允許高於或低於公開提供供應項目的定價。 您可以使用私人優惠來對供應專案進行折扣或新增 premium。 您可以透過在供應專案層級將其 Azure 訂用帳戶列入白名單，以將私人供應專案提供給一或多個客戶。
+
+### <a name="commercial-marketplace-service-fees"></a>商業 marketplace 服務費用
+
+當客戶從商業 marketplace 購買您的交易供應專案時，我們會收取20% 標準商店服務費用。 如需這項費用的詳細資訊，請參閱 [Microsoft Publisher 合約](https://go.microsoft.com/fwlink/?LinkID=699560)的第5c 節。
+
+針對您發佈到商用市集中的特定可交易供應專案，您可能會有10% 的商店服務費用降低資格。 若要讓供應專案符合資格，必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得每月減少的 Marketplace 服務費用。
+
+降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受控應用程式，以及透過商業 Marketplace 提供的任何其他合格可交易 IaaS 解決方案。 與一個 Microsoft 小組應用程式相關聯的付費 SaaS 供應專案，或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) ，併發布至 Microsoft AppSource 也會收到這項折扣。
 
 ### <a name="examples"></a>範例
 
@@ -143,10 +151,6 @@ BYOL 具有下列成本結構：
 |---------|---------|
 |Microsoft 向您支付授權成本的 80% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式支付 90% 授權成本給您   |   每月 $80.00 <br> \* 每月 $90.00    |
 |Microsoft 保留授權成本的 20% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式保留 10% 授權成本。  |  每月 $20.00 <br> \* $10.00     |
-
-### <a name="reduced-service-fee"></a>降低服務費用
-
-針對您在商業市集中發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從 20% (降低，如 [Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得每月減少的 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受控應用程式，以及透過商業市場提供的任何其他合格可交易 IaaS 供應專案。 與一個 Microsoft 小組應用程式相關聯的付費 SaaS 供應專案，或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) ，並在 AppSource 上發佈也會收到這項折扣。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客戶發票開立、付款和收帳
 

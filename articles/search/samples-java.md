@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: babd40e0e3a3b7a254a8410313c5d4e3bb2832f0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686678"
+ms.locfileid: "94701852"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 JAVA 程式碼範例
 
@@ -47,5 +47,5 @@ Azure SDK for JAVA 包含許多範例，以及涵蓋套件安裝的 [快速入�
 
 | 範例 | 描述 | 
 |---------|-------------|
-| [快速入門](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/Quickstart) | [快速入門的原始程式碼：建立搜尋索引](search-get-started-javascript.md)。 此範例會呼叫 REST Api。 |
+| [快速入門](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | [快速入門的原始程式碼：以 JAVA 建立搜尋索引](search-get-started-java.md)。 此範例會呼叫 REST Api。 |
 | [搜尋-java-索引子-示範](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | 示範 JAVA 中的 Azure Cosmos DB 索引子。 此範例會呼叫 REST Api。 |

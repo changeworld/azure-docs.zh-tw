@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27395fe377972f51c849f8a61f51a628612ed54d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202662"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701869"
 ---
 # <a name="textures"></a>紋理
 
@@ -21,12 +21,12 @@ ms.locfileid: "92202662"
 
 不同的紋理類型具有不同的使用案例：
 
-* **2D 紋理**主要用於 [材質](materials.md)。
-* **立方體地圖**可用於[天空](../overview/features/sky.md)。
+* **2D 紋理** 主要用於 [材質](materials.md)。
+* **立方體地圖** 可用於 [天空](../overview/features/sky.md)。
 
 ## <a name="supported-texture-formats"></a>支援的紋理格式
 
-提供給 ARR 的所有紋理都必須是 [DDS 格式](https://en.wikipedia.org/wiki/DirectDraw_Surface)。 最好使用 Mipmap 和紋理壓縮。 如果您要將轉換流程自動化，請參閱 [TexConv 命令列工具](../resources/tools/tex-conv.md)。
+提供給 ARR 的所有紋理都必須是 [DDS 格式](https://en.wikipedia.org/wiki/DirectDraw_Surface)。 最好使用 Mipmap 和紋理壓縮。
 
 ## <a name="loading-textures"></a>載入紋理
 

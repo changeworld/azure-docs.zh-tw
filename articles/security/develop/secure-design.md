@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ad3980db6348867e92664e314326d23b4274abcc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517150"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701563"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上設計安全的應用程式
 在本文中，我們會提供在您設計雲端應用程式時要考慮的安全性活動和控制項。 訓練資源，以及在 Microsoft [安全性開發生命週期 ](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的需求和設計階段時要考慮的安全性問題和概念 (SDL) 的涵蓋範圍。 目標是協助您定義活動和 Azure 服務，您可以使用這些服務來設計更安全的應用程式。
@@ -217,7 +217,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 [最小許可權](https://en.wikipedia.org/wiki/Principle_of_least_privilege)的概念表示讓使用者進行工作所需的精確存取和控制層級，而不需要執行任何動作。
 
-軟體發展人員需要網域系統管理員許可權嗎？ 系統管理助理需要存取其個人電腦上的系統管理控制項嗎？ 評估軟體的存取權並無不同。 如果您使用 [角色型存取控制 (RBAC) ](../../role-based-access-control/overview.md) 在您的應用程式中提供使用者不同的能力和授權，您就不會讓每個人都能存取所有專案。 藉由限制每個角色所需的存取權，您可以限制發生安全性問題的風險。
+軟體發展人員需要網域系統管理員許可權嗎？ 系統管理助理需要存取其個人電腦上的系統管理控制項嗎？ 評估軟體的存取權並無不同。 如果您使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) 在您的應用程式中提供使用者不同的功能和授權，您就不會讓每個人都能存取所有專案。 藉由限制每個角色所需的存取權，您可以限制發生安全性問題的風險。
 
 確定您的應用程式在其存取模式中強制執行 [最低許可權](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) 。
 
@@ -233,7 +233,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 ### <a name="require-re-authentication-for-important-transactions"></a>需要重新驗證重要交易
 
-[跨網站要求偽造](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (也稱為 *XSRF* 或 *CSRF* ) 是針對 web 裝載的應用程式進行攻擊，其中惡意的 web 應用程式會影響用戶端瀏覽器與信任該瀏覽器的 web 應用程式之間的互動。 跨網站要求偽造攻擊的可能原因是，網頁瀏覽器會自動傳送某些類型的驗證權杖，並對網站提出每個要求。
+[跨網站要求偽造](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (也稱為 *XSRF* 或 *CSRF*) 是針對 web 裝載的應用程式進行攻擊，其中惡意的 web 應用程式會影響用戶端瀏覽器與信任該瀏覽器的 web 應用程式之間的互動。 跨網站要求偽造攻擊的可能原因是，網頁瀏覽器會自動傳送某些類型的驗證權杖，並對網站提出每個要求。
 這種形式的惡意探索也稱為單鍵 *攻擊* 或 *會話騎* ，因為攻擊會利用使用者先前經過驗證的會話。
 
 防禦這類攻擊的最佳方式，是詢問使用者只有使用者可以在每一項重要交易之前提供的內容，例如購買、帳戶停用或密碼變更。 您可能會要求使用者重新輸入其密碼、完成 captcha，或提交只有使用者所擁有的秘密權杖。 最常見的方法是秘密權杖。
@@ -244,7 +244,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 一律將您的金鑰、憑證、秘密和連接字串放在金鑰管理解決方案中。 您可以使用集中式解決方案，將金鑰和秘密儲存在硬體安全模組 (Hsm) 。 Azure 可讓您在雲端中使用 [Azure Key Vault](../../key-vault/general/overview.md)的 HSM。
 
-Key Vault 是 *秘密存放區* ：這是用來儲存應用程式秘密的集中式雲端服務。 Key Vault 藉由將應用程式秘密保存在單一中央位置，並提供安全存取、許可權控制和存取記錄，讓您的機密資料保持安全。
+Key Vault 是 *秘密存放區*：這是用來儲存應用程式秘密的集中式雲端服務。 Key Vault 藉由將應用程式秘密保存在單一中央位置，並提供安全存取、許可權控制和存取記錄，讓您的機密資料保持安全。
 
 秘密會儲存在個別的保存 *庫* 中。 每個保存庫都有自己的設定和安全性原則來控制存取權。 您可以透過 REST API 或透過適用于大部分程式設計語言的用戶端 SDK 來取得資料。
 

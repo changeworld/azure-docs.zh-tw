@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491625"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738096"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -144,7 +144,7 @@ az monitor diagnostic-settings create \
 
 
 ## <a name="analyzing-metric-data"></a>分析計量資料
-您可以使用計量瀏覽器來分析虛擬機器的計量，方法是從虛擬機器的功能表開啟 **計量** 。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../platform/metrics-getting-started.md)。 
+您可以使用計量瀏覽器來分析虛擬機器的計量，方法是從虛擬機器的功能表開啟 **計量**。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../platform/metrics-getting-started.md)。 
 
 虛擬機器會將三個命名空間用於計量：
 
@@ -207,7 +207,7 @@ Azure 監視器中的[警示](../platform/alerts-overview.md)會在監視資料�
 
 ```kusto
 Heartbeat
-| where TimeGenerated < ago(10m)
+| where TimeGenerated > ago(10m)
 | where ResourceGroup == "my-resource-group"
 | summarize max(TimeGenerated) by Computer
 ```
@@ -218,7 +218,7 @@ Heartbeat
 
 ```kusto
 Event
-| where TimeGenerated < ago(1hr)
+| where TimeGenerated > ago(1hr)
 | where EventID == 4625
 ```
 

@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948635"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701111"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 認知搜尋中的同義字
 
 搜尋引擎中與對等詞彙相關聯的同義字，讓使用者不必實際提供詞彙，就能以隱含方式擴充查詢範圍。 例如，給定詞彙「狗」與關聯的同義字「犬科動物」和「小狗」，任何包含「狗」、「犬科動物」和「小狗」的文件都會包含在查詢範圍內。
 
-在 Azure 認知搜尋中，同義字展開是在查詢時完成的。 您可以在不中斷現有作業的情況下，新增同義字地圖至服務中。 您無需重建索引，就可以將 synonymMaps**** 屬性新增至欄位定義。
+在 Azure 認知搜尋中，同義字展開是在查詢時完成的。 您可以在不中斷現有作業的情況下，新增同義字地圖至服務中。 您無需重建索引，就可以將 synonymMaps 屬性新增至欄位定義。
 
 ## <a name="create-synonyms"></a>建立同義字
 
-沒有建立同義字的入口網站支援，但是您可以使用 REST API 或 .NET SDK。 若要開始使用 REST，建議使用下列 API 來 [使用 Postman](search-get-started-postman.md) 和編寫要求： [建立同義字對應](/rest/api/searchservice/create-synonym-map)。 針對 c # 開發人員，您可以 [使用 c # 在 Azure 認知搜尋中開始新增同義字](search-synonyms-tutorial-sdk.md)。
+沒有建立同義字的入口網站支援，但是您可以使用 REST API 或 .NET SDK。 若要開始使用 REST，我們建議使用此 API 來 [Postman 或 Visual Studio Code](search-get-started-rest.md) 及編寫要求： [建立同義字對應](/rest/api/searchservice/create-synonym-map)。 針對 c # 開發人員，您可以 [使用 c # 在 Azure 認知搜尋中開始新增同義字](search-synonyms-tutorial-sdk.md)。
 
 （選擇性）如果您使用 [客戶管理的金鑰](search-security-manage-encryption-keys.md) 進行服務端加密，您可以將該保護套用至同義字對應的內容。
 
@@ -185,7 +185,7 @@ WA\, USA, WA, Washington
 
 如果您在開發 (非生產) 環境中有現有的索引，可以使用小型的字典進行試驗，看看增加同義字能如何改變搜尋體驗，包含對於評分檔案、點閱數醒目提示以及搜尋建議的影響。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [建立同義字地圖](/rest/api/searchservice/create-synonym-map)

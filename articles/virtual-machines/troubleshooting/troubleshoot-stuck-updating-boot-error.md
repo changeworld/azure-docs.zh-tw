@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084013"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734560"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 啟動程序停滯於 Windows Update
 
@@ -36,7 +36,7 @@ ms.locfileid: "86084013"
 - 套用更新作業 ##### (共 ##### 項) 時發生嚴重錯誤 <錯誤碼> ($$...)
 
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 執行更新程序可能需要一些時間，視要更新或回復的更新數而定。 請將 VM 保持在此狀態 8 小時。 如果 VM 在這段期間後仍處於此狀態，請從 Azure 入口網站重新啟動 VM，並確認是否正常啟動。 如果此步驟無法解決問題，請嘗試下列解決方案。
 
@@ -44,7 +44,7 @@ ms.locfileid: "86084013"
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。 
 2. [將 OS 磁片連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。
-3. 當 OS 磁碟連結至復原 VM 後，請執行 **diskmgmt.msc** 來開啟磁碟管理，並確認連結的磁碟是**連線**狀態。 記下為已連結而包含 \windows 資料夾的 OS 磁碟指派的磁碟機代號。 如果該磁碟已加密，請先將其解密，再繼續進行本文件中的後續步驟。
+3. 當 OS 磁碟連結至復原 VM 後，請執行 **diskmgmt.msc** 來開啟磁碟管理，並確認連結的磁碟是 **連線** 狀態。 記下為已連結而包含 \windows 資料夾的 OS 磁碟指派的磁碟機代號。 如果該磁碟已加密，請先將其解密，再繼續進行本文件中的後續步驟。
 
 4. 開啟提升權限的命令提示字元執行個體 (以系統管理員身分執行)。 執行下列命令以取得連結的 OS 磁碟上包含的更新套件清單：
 
@@ -58,7 +58,7 @@ ms.locfileid: "86084013"
     dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
     ```
 
-5. 開啟 C:\temp\Patch_level.txt 檔案，然後由下至上閱讀。 找出處於 [安裝擱置中]**** 或 [解除安裝擱置中]**** 狀態的更新。  以下是更新狀態的範例：
+5. 開啟 C:\temp\Patch_level.txt 檔案，然後由下至上閱讀。 找出處於 [安裝擱置中] 或 [解除安裝擱置中] 狀態的更新。  以下是更新狀態的範例：
 
     ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -80,4 +80,4 @@ ms.locfileid: "86084013"
     > [!NOTE] 
     > 根據套件的大小，DISM 工具將需要一些時間來處理解除安裝程序。 此程序通常會在 16 分鐘內完成。
 
-7. [將 OS 磁碟中斷連結並建立 VM](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk)。 然後檢查問題是否已解決。
+7. [將 OS 磁碟中斷連結並建立 VM](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk)。 然後檢查問題是否已解決。

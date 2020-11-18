@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac2690a5f18bb58c29b433f4a07e52096bbd268b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934883"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701580"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>模糊搜尋以更正拼寫錯誤和打字錯誤
 
@@ -73,7 +73,7 @@ Azure 認知搜尋支援模糊搜尋，這是一種查詢類型，可針對輸�
 
 ## <a name="testing-fuzzy-search"></a>測試模糊搜尋
 
-針對簡單的測試，建議使用 [Search explorer](search-explorer.md) 或 [Postman](search-get-started-postman.md) 來逐一查看查詢運算式。 這兩種工具都是互動式的，這表示您可以快速地逐步執行多個詞彙的變化，並評估傳回的回應。
+針對簡單的測試，建議使用 [Search explorer](search-explorer.md) 或 [Postman](search-get-started-rest.md) 來逐一查看查詢運算式。 這兩種工具都是互動式的，這表示您可以快速地逐步執行多個詞彙的變化，並評估傳回的回應。
 
 當結果不明確時，搜尋醒目 [提示可協助](search-pagination-page-layout.md#hit-highlighting) 您識別回應中的相符項。 
 

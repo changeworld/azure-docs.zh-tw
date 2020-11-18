@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380206"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701597"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -38,7 +38,7 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 * FQDN HTTP/HTTPS 端點可以放在您的防火牆裝置。
 * 萬用字元 HTTP/HTTPS 端點是相依性，可能會因數個限定詞而不同于您的 AKS 叢集。
 * AKS 會使用許可控制器將 FQDN 做為環境變數插入 kube 系統和閘道管理員系統下的所有部署，以確保節點和 API 伺服器之間的所有系統通訊都使用 API 伺服器 FQDN，而不是 API 伺服器 IP。 
-* 如果您有需要與 API 伺服器通訊的應用程式或解決方案，則必須新增 **額外** 的網路規則，以允許 *對 api 伺服器 IP 的埠443進行 TCP 通訊* 。
+* 如果您有需要與 API 伺服器通訊的應用程式或解決方案，則必須新增 **額外** 的網路規則，以允許 *對 api 伺服器 IP 的埠443進行 TCP 通訊*。
 * 在罕見的情況下，如果有維護作業，則您的 API 伺服器 IP 可能會變更。 可變更 API 伺服器 IP 的預定維護作業，一律會事先進行通訊。
 
 
@@ -209,8 +209,10 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 
 | FQDN                                          | 連接埠      | 使用      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此位址是用來確保 Azure 原則的正確運作。 (目前在 AKS 中為預覽狀態) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此位址是用來從 GitHub 提取內建原則，以確保 Azure 原則的正確運作。 (目前在 AKS 中為預覽狀態) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | 此位址可用來提取 Kubernetes 原則，並將叢集合規性狀態回報給原則服務。 |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | 此位址用來提取內建原則的閘道管理員構件。 |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此位址是用來確保 Azure 原則的正確運作。  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此位址是用來從 GitHub 提取內建原則，以確保 Azure 原則的正確運作。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure 原則附加元件，其會將遙測資料傳送至 Application Insights 端點。 |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火牆限制輸出流量

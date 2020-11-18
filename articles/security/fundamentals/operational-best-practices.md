@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a0e4e0de15348f4f52d7f0f68bad728a27f6387e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413015"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701026"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 作業安全性最佳做法
 本文提供一組操作最佳做法，以保護您在 Azure 中的資料、應用程式和其他資產。
@@ -34,14 +34,14 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 ## <a name="manage-and-monitor-user-passwords"></a>管理及監視使用者密碼
 下表列出與管理使用者密碼相關的一些最佳作法：
 
-**最佳做法** ：確定您在雲端中具有適當的密碼保護層級。   
-**詳細資料** ：遵循 [microsoft 密碼指引](https://www.microsoft.com/research/publication/password-guidance/)中的指導方針，其範圍是 microsoft 身分識別平臺的使用者 (Azure Active Directory、Active Directory 和 Microsoft 帳戶) 。
+**最佳做法**：確定您在雲端中具有適當的密碼保護層級。   
+**詳細資料**：遵循 [microsoft 密碼指引](https://www.microsoft.com/research/publication/password-guidance/)中的指導方針，其範圍是 microsoft 身分識別平臺的使用者 (Azure Active Directory、Active Directory 和 Microsoft 帳戶) 。
 
-**最佳做法** ：監視與您的使用者帳戶相關的可疑動作。   
-**詳細資料** ：使用 Azure AD 安全性報告來監視風險和具風險登 [入](../../active-directory/identity-protection/overview-identity-protection.md)的 [使用者](../../active-directory/identity-protection/overview-identity-protection.md)。
+**最佳做法**：監視與您的使用者帳戶相關的可疑動作。   
+**詳細資料**：使用 Azure AD 安全性報告來監視風險和具風險登 [入](../../active-directory/identity-protection/overview-identity-protection.md)的 [使用者](../../active-directory/identity-protection/overview-identity-protection.md)。
 
-**最佳做法** ：自動偵測及補救高風險的密碼。   
-**詳細資料** ： [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) 是 Azure AD Premium P2 版本的一項功能，可讓您：
+**最佳做法**：自動偵測及補救高風險的密碼。   
+**詳細資料**： [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) 是 Azure AD Premium P2 版本的一項功能，可讓您：
 
 - 偵測影響您組織身分識別的潛在弱點
 - 針對偵測到的與您組織的身分識別有關的可疑動作，設定自動回應
@@ -59,25 +59,25 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 
 以下是使用管理群組的一些最佳作法：
 
-**最佳做法** ：確定新的訂用帳戶會在新增時套用治理元素，例如原則和許可權。   
-**詳細資料** ：使用根管理群組指派適用于所有 Azure 資產的全企業安全性元素。 原則和許可權是元素的範例。
+**最佳做法**：確定新的訂用帳戶會在新增時套用治理元素，例如原則和許可權。   
+**詳細資料**：使用根管理群組指派適用于所有 Azure 資產的全企業安全性元素。 原則和許可權是元素的範例。
 
-**最佳做法** ：使管理群組的最上層層級與分割策略一致，以提供每個區段內的控制和原則一致性點。   
-**詳細資料** ：為根管理群組底下的每個區段建立單一管理群組。 請勿在根目錄下建立任何其他管理群組。
+**最佳做法**：使管理群組的最上層層級與分割策略一致，以提供每個區段內的控制和原則一致性點。   
+**詳細資料**：為根管理群組底下的每個區段建立單一管理群組。 請勿在根目錄下建立任何其他管理群組。
 
-**最佳做法** ：限制管理群組深度，以避免妨礙作業和安全性的混淆。   
-**詳細資料** ：將您的階層限制為三個層級（包括根）。
+**最佳做法**：限制管理群組深度，以避免妨礙作業和安全性的混淆。   
+**詳細資料**：將您的階層限制為三個層級（包括根）。
 
-**最佳做法** ：謹慎地選取要將哪些專案套用至具有根管理群組的整個企業。   
-**詳細資料** ：確定根管理群組元素有明確的需求，必須套用到每個資源，而且它們的影響很低。
+**最佳做法**：謹慎地選取要將哪些專案套用至具有根管理群組的整個企業。   
+**詳細資料**：確定根管理群組元素有明確的需求，必須套用到每個資源，而且它們的影響很低。
 
 良好的候選人包括：
 
 - 具有明確業務影響的法規需求 (例如，與資料主權相關的限制) 
-- 對作業有近乎零潛在負面影響的需求，例如已仔細審核的原則與審核效果或 RBAC 許可權指派
+- 對作業有近乎零潛在負面影響的需求，例如具有審核效果的原則或已仔細審核的 Azure RBAC 許可權指派
 
-**最佳做法** ：先仔細規劃和測試根目錄管理群組上的所有全企業變更，再套用 (原則、RBAC 模型等) 。   
-**詳細資料** ：根管理群組中的變更可能會影響 Azure 上的每個資源。 雖然它們提供強大的方式來確保企業之間的一致性，但錯誤或不正確的使用方式可能會對生產作業造成負面影響。 在測試實驗室或生產試驗中測試對根管理群組所做的所有變更。
+**最佳做法**：先仔細規劃並測試根目錄管理群組上的所有全企業變更，再將其套用 (原則、Azure RBAC 模型等) 。   
+**詳細資料**：根管理群組中的變更可能會影響 Azure 上的每個資源。 雖然它們提供強大的方式來確保企業之間的一致性，但錯誤或不正確的使用方式可能會對生產作業造成負面影響。 在測試實驗室或生產試驗中測試對根管理群組所做的所有變更。
 
 ## <a name="streamline-environment-creation-with-blueprints"></a>使用藍圖簡化環境建立
 [Azure 藍圖](../../governance/blueprints/overview.md) 服務可讓雲端架構設計人員和中央資訊技術群組定義一組可重複使用的 Azure 資源，以符合組織的標準、模式和需求。 Azure 藍圖可讓開發小組使用一組內建元件，以及在組織合規性中建立這些環境的信心，來快速建立新環境並使其成為新環境。
@@ -104,25 +104,25 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 
 以下是防止、偵測及回應威脅的一些最佳作法：
 
-**最佳做法** ：使用雲端式 SIEM 來提高 SIEM 解決方案的速度和擴充性。   
-**詳細資料** ：調查 [Azure Sentinel](../../sentinel/overview.md) 的特性和功能，並將其與您目前在內部部署環境中使用的功能做比較。 如果符合您組織的 SIEM 需求，請考慮採用 Azure Sentinel。
+**最佳做法**：使用雲端式 SIEM 來提高 SIEM 解決方案的速度和擴充性。   
+**詳細資料**：調查 [Azure Sentinel](../../sentinel/overview.md) 的特性和功能，並將其與您目前在內部部署環境中使用的功能做比較。 如果符合您組織的 SIEM 需求，請考慮採用 Azure Sentinel。
 
-**最佳做法** ：找出最嚴重的安全性弱點，讓您可以設定調查的優先順序。   
-**詳細資料** ：檢查您的 [azure 安全分數](../../security-center/secure-score-security-controls.md) ，以查看 Azure 資訊安全中心內建的 azure 原則和方案所產生的建議。 這些建議可協助解決最高的風險，例如安全性更新、endpoint protection、加密、安全性設定、遺失 WAF、已連線到網際網路的 Vm，以及其他許多風險。
+**最佳做法**：找出最嚴重的安全性弱點，讓您可以設定調查的優先順序。   
+**詳細資料**：檢查您的 [azure 安全分數](../../security-center/secure-score-security-controls.md) ，以查看 Azure 資訊安全中心內建的 azure 原則和方案所產生的建議。 這些建議可協助解決最高的風險，例如安全性更新、endpoint protection、加密、安全性設定、遺失 WAF、已連線到網際網路的 Vm，以及其他許多風險。
 
 以網際網路安全性為中心的安全分數 (CIS) 控制項，可讓您將組織的 Azure 安全性與外部來源進行基準測試。 外部驗證有助於驗證及擴充您小組的安全性策略。
 
-**最佳做法** ：監視機器、網路、儲存體和資料服務以及應用程式的安全性狀態，以找出並優先處理潛在的安全性問題。  
-**詳細資料** ：遵循資訊安全中心的 [安全性建議](../../security-center/security-center-recommendations.md) ，從最高優先順序的專案開始。
+**最佳做法**：監視機器、網路、儲存體和資料服務以及應用程式的安全性狀態，以找出並優先處理潛在的安全性問題。  
+**詳細資料**：遵循資訊安全中心的 [安全性建議](../../security-center/security-center-recommendations.md) ，從最高優先順序的專案開始。
 
-**最佳做法** ：將資訊安全中心警示整合到您的安全性資訊和事件管理 (SIEM) 解決方案。   
-**詳細資料** ：有 SIEM 的大部分組織都會將其作為需要分析師回應之安全性警示的中央 clearinghouse。 由安全性中心所產生的已處理事件，會發佈到 Azure 活動記錄檔中，其中一個可透過 Azure 監視器使用的記錄。 Azure 監視器提供合併的管線，將您的所有監視資料路由傳送至 SIEM 工具。 如需相關指示，請參閱將 [警示串流至 SIEM、SOAR 或 IT 服務管理解決方案](../../security-center/export-to-siem.md) 。 如果您是使用 Azure Sentinel，請參閱 [連接 Azure 資訊安全中心](../../sentinel/connect-azure-security-center.md)。
+**最佳做法**：將資訊安全中心警示整合到您的安全性資訊和事件管理 (SIEM) 解決方案。   
+**詳細資料**：有 SIEM 的大部分組織都會將其作為需要分析師回應之安全性警示的中央 clearinghouse。 由安全性中心所產生的已處理事件，會發佈到 Azure 活動記錄檔中，其中一個可透過 Azure 監視器使用的記錄。 Azure 監視器提供合併的管線，將您的所有監視資料路由傳送至 SIEM 工具。 如需相關指示，請參閱將 [警示串流至 SIEM、SOAR 或 IT 服務管理解決方案](../../security-center/export-to-siem.md) 。 如果您是使用 Azure Sentinel，請參閱 [連接 Azure 資訊安全中心](../../sentinel/connect-azure-security-center.md)。
 
-**最佳做法** ：整合 Azure 記錄與您的 SIEM。   
+**最佳做法**：整合 Azure 記錄與您的 SIEM。   
 **詳細** 資料：使用 [Azure 監視器來收集和匯出資料](../../azure-monitor/overview.md#integrate-and-export-data)。 這種作法對於啟用安全性事件調查而言很重要，而且線上記錄保留期有限。 如果您是使用 Azure Sentinel，請參閱 [連接資料來源](../../sentinel/connect-data-sources.md)。
 
-**最佳做法** ：將端點偵測和回應 (EDR) 功能整合到攻擊調查中，以加速您的調查和搜尋程式，並減少誤報。   
-**詳細資料** ： [啟用 Microsoft Defender 以](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) 透過資訊安全中心安全性原則進行端點整合。 請考慮使用 Azure Sentinel 進行威脅搜尋和事件回應。
+**最佳做法**：將端點偵測和回應 (EDR) 功能整合到攻擊調查中，以加速您的調查和搜尋程式，並減少誤報。   
+**詳細資料**： [啟用 Microsoft Defender 以](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) 透過資訊安全中心安全性原則進行端點整合。 請考慮使用 Azure Sentinel 進行威脅搜尋和事件回應。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>監視以端對端案例為基礎的網路監視
 客戶可以結合網路資源 (例如虛擬網路、ExpressRoute、應用程式閘道及負載平衡器)，在 Azure 中建置端對端網路。 每個網路資源都可進行監視。
@@ -131,31 +131,31 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 
 以下是網路監視及可用工具的最佳作法。
 
-**最佳做法** ：利用封包擷取自動化遠端網路監視作業。  
-**詳細資料** ：使用網路監看員無須登入您的 VM，就能監視及診斷網路問題。 您可以設定警示來觸發[封包擷取](../../network-watcher/network-watcher-alert-triggered-packet-capture.md)，並能存取封包層級的即時效能資訊。 當您發現問題時，可以詳加調查，從而進行更好的診斷。
+**最佳做法**：利用封包擷取自動化遠端網路監視作業。  
+**詳細資料**：使用網路監看員無須登入您的 VM，就能監視及診斷網路問題。 您可以設定警示來觸發[封包擷取](../../network-watcher/network-watcher-alert-triggered-packet-capture.md)，並能存取封包層級的即時效能資訊。 當您發現問題時，可以詳加調查，從而進行更好的診斷。
 
-**最佳做法** ：使用流量記錄獲取對網路流量的見解。  
-**詳細資料** ：使用 [網路安全性群組流量記錄](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)，更深入了解您的網路流量模式。 流量記錄中的資訊可協助您收集合規性資料，並稽核及監視您的網路安全性設定檔。
+**最佳做法**：使用流量記錄獲取對網路流量的見解。  
+**詳細資料**：使用 [網路安全性群組流量記錄](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)，更深入了解您的網路流量模式。 流量記錄中的資訊可協助您收集合規性資料，並稽核及監視您的網路安全性設定檔。
 
-**最佳做法** ：診斷 VPN 連線問題。  
-**詳細資料** ：使用網路監看員 [診斷最常見的 VPN 閘道及連線問題](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 您不僅可以找出問題，還可以使用詳細的記錄進一步調查。
+**最佳做法**：診斷 VPN 連線問題。  
+**詳細資料**：使用網路監看員 [診斷最常見的 VPN 閘道及連線問題](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 您不僅可以找出問題，還可以使用詳細的記錄進一步調查。
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>使用經證實的 DevOps 工具進行安全的部署
 使用下列 DevOps 最佳做法以確保您企業和團隊的生產力與效率。
 
-**最佳做法** ：自動建置及部署服務。  
-**詳細資料** ： [基礎架構即程式碼](/azure/devops/learn/what-is-infrastructure-as-code)是一組技術和實作，可協助 IT 專業人員減輕每日建置及管理模組化基礎架構的負擔。 它可讓 IT 專業人員建置並維護其新式伺服器環境，就像是軟體開發人員建置並維護應用程式程式碼一樣。
+**最佳做法**：自動建置及部署服務。  
+**詳細資料**：[基礎架構即程式碼](/azure/devops/learn/what-is-infrastructure-as-code)是一組技術和實作，可協助 IT 專業人員減輕每日建置及管理模組化基礎架構的負擔。 它可讓 IT 專業人員建置並維護其新式伺服器環境，就像是軟體開發人員建置並維護應用程式程式碼一樣。
 
 您可以使用 [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) 搭配宣告式範本佈建應用程式。 在單一的範本中，您可以部署多個服務及其相依性。 您可以使用相同的範本，在應用程式生命週期的每個階段重複部署應用程式。
 
-**最佳做法** ：自動建置並部署至 Azure Web 應用程式或雲端服務。  
-**詳細資料** ：您可以將 Azure DevOps Projects 設定為  [自動建立並部署](/azure/devops/pipelines/index) 至 Azure web apps 或雲端服務。 Azure DevOps 會在每次程式碼簽入之後，對 Azure 執行組建後，自動部署二進位檔。 套件建置程序等同於 Visual Studio 中的 [套件] 命令，而發佈步驟等同於 Visual Studio 中的 [發佈] 命令。
+**最佳做法**：自動建置並部署至 Azure Web 應用程式或雲端服務。  
+**詳細資料**：您可以將 Azure DevOps Projects 設定為  [自動建立並部署](/azure/devops/pipelines/index) 至 Azure web apps 或雲端服務。 Azure DevOps 會在每次程式碼簽入之後，對 Azure 執行組建後，自動部署二進位檔。 套件建置程序等同於 Visual Studio 中的 [套件] 命令，而發佈步驟等同於 Visual Studio 中的 [發佈] 命令。
 
-**最佳做法** ：自動化發行管理。  
-**詳細資料** ： [Azure Pipelines](/azure/devops/pipelines/index) 是用於自動化多階段部署及管理發行程序的解決方案。 建立受控持續部署管線以快速、輕鬆且經常發行。 您可以使用 Azure Pipelines，將發行程序自動化，而且可以擁有預先定義的核准工作流程。 在內部部署及部署至雲端、擴充，並視需要自訂。
+**最佳做法**：自動化發行管理。  
+**詳細資料**：[Azure Pipelines](/azure/devops/pipelines/index) 是用於自動化多階段部署及管理發行程序的解決方案。 建立受控持續部署管線以快速、輕鬆且經常發行。 您可以使用 Azure Pipelines，將發行程序自動化，而且可以擁有預先定義的核准工作流程。 在內部部署及部署至雲端、擴充，並視需要自訂。
 
-**最佳做法** ：在您啟動應用程式或將更新部署至生產環境之前，請先檢查該應用程式的效能。  
-**詳細資料** ：執行以雲端為基礎的 [負載測試](/azure/devops/test/load-test/overview#alternatives) ，以：
+**最佳做法**：在您啟動應用程式或將更新部署至生產環境之前，請先檢查該應用程式的效能。  
+**詳細資料**：執行以雲端為基礎的 [負載測試](/azure/devops/test/load-test/overview#alternatives) ，以：
 
 - 尋找您應用程式中的效能問題。
 - 提升部署品質。
@@ -164,28 +164,28 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 
 [Apache JMeter](https://jmeter.apache.org/) 是一種免費的熱門開放原始碼工具，具備強大的技術支援。
 
-**最佳做法** ：監視應用程式效能。  
-**詳細資料** ： [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 是多個平台上的 Web 開發人員所適用的可延伸「應用程式效能管理」(APM) 服務。 使用 Application Insights 監視您的即時 Web 應用程式。 它會自動偵測效能異常。 其中包括分析工具可協助您診斷問題，並了解使用者實際如何運用您的應用程式。 它是設計來協助您持續改善效能和可用性。
+**最佳做法**：監視應用程式效能。  
+**詳細資料**：[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 是多個平台上的 Web 開發人員所適用的可延伸「應用程式效能管理」(APM) 服務。 使用 Application Insights 監視您的即時 Web 應用程式。 它會自動偵測效能異常。 其中包括分析工具可協助您診斷問題，並了解使用者實際如何運用您的應用程式。 它是設計來協助您持續改善效能和可用性。
 
 ## <a name="mitigate-and-protect-against-ddos"></a>減少並防範 DDoS
 分散式阻斷服務 (DDoS) 是一種嘗試耗盡應用程式資源的攻擊類型。 目標是影響應用程式的可用性，及其處理合法要求的能力。 這些攻擊會變得越來越複雜，而且大小和影響越來越大。 它們可以鎖定可透過網際網路公開觸達的任何端點。
 
 設計和建置 DDoS 復原需要規劃與設計各種不同的失敗模式。 以下是在 Azure 上建置 DDoS 復原服務的最佳做法。
 
-**最佳做法** ：確保安全性在應用程式的整個生命週期 (從設計和實作到部署與作業) 中具有優先順序。 應用程式可能存在一些錯誤 (bug)，讓非常小量的要求使用大量資源，因而導致服務中斷。  
-**詳細資料** ：若要協助保護在 Microsoft Azure 上執行的服務，您應該對您應用程式架構有良好的了解，而且必須專注於 [軟體品質的五大要素](/azure/architecture/guide/pillars)。 您應該了解一般流量、應用程式與其他應用程式之間的連線模型，以及公開至公用網際網路的服務端點。
+**最佳做法**：確保安全性在應用程式的整個生命週期 (從設計和實作到部署與作業) 中具有優先順序。 應用程式可能存在一些錯誤 (bug)，讓非常小量的要求使用大量資源，因而導致服務中斷。  
+**詳細資料**：若要協助保護在 Microsoft Azure 上執行的服務，您應該對您應用程式架構有良好的了解，而且必須專注於 [軟體品質的五大要素](/azure/architecture/guide/pillars)。 您應該了解一般流量、應用程式與其他應用程式之間的連線模型，以及公開至公用網際網路的服務端點。
 
 確保應用程式有足夠的彈性，能夠處理以應用程式本身為目標的阻斷服務，至關重要。 從[安全性開發週期 (SDL)](https://www.microsoft.com/sdl) 開始，安全性和隱私權便會內建於 Azure 平台之中。 SDL 會在每個開發階段處理安全性，並確保 Azure 會持續更新以使其更為安全。
 
-**最佳做法** ：將應用程式設計為可 [水平調整](/azure/architecture/guide/design-principles/scale-out)以滿足放大負載的需求，遭遇 DDoS 攻擊時尤其需要。 如果您的應用程式相依於服務的單一執行個體，它會建立單一失敗點。 佈建多個執行個體可讓系統更有彈性且更具延展性。  
-**詳細資料** ：若是 [Azure App Service](../../app-service/overview.md)，選取可提供多個執行個體的 [App Service 方案](../../app-service/overview-hosting-plans.md)。
+**最佳做法**：將應用程式設計為可 [水平調整](/azure/architecture/guide/design-principles/scale-out)以滿足放大負載的需求，遭遇 DDoS 攻擊時尤其需要。 如果您的應用程式相依於服務的單一執行個體，它會建立單一失敗點。 佈建多個執行個體可讓系統更有彈性且更具延展性。  
+**詳細資料**：若是 [Azure App Service](../../app-service/overview.md)，選取可提供多個執行個體的 [App Service 方案](../../app-service/overview-hosting-plans.md)。
 
 對於 Azure 雲端服務，設定您的每個角色以使用[多個執行個體](../../cloud-services/cloud-services-choose-me.md)。
 
 對於 [Azure 虛擬機器](../../virtual-machines/windows/overview.md)，確保 VM 架構包含多個 VM，而且每個 VM 都包含於[可用性設定組](../../virtual-machines/windows/tutorial-availability-sets.md)中。 建議您使用虛擬機器擴展集，自動調整功能。
 
-**最佳做法** ：將應用程式中的安全性防禦分層，可降低成功攻擊的機會。 使用 Azure 平台的內建功能，為您的應用程式實作安全設計。  
-**詳細資料** ：攻擊的風險會隨著應用程式大小 (介面區) 而提高。 您可以使用核准清單來關閉已公開的 IP 位址空間，以及負載平衡器 ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 應用程式閘道](../../application-gateway/application-gateway-create-probe-portal.md)) 不需要的接聽埠，藉此減少介面區。
+**最佳做法**：將應用程式中的安全性防禦分層，可降低成功攻擊的機會。 使用 Azure 平台的內建功能，為您的應用程式實作安全設計。  
+**詳細資料**：攻擊的風險會隨著應用程式大小 (介面區) 而提高。 您可以使用核准清單來關閉已公開的 IP 位址空間，以及負載平衡器 ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 應用程式閘道](../../application-gateway/application-gateway-create-probe-portal.md)) 不需要的接聽埠，藉此減少介面區。
 
 [網路安全性群組](../../virtual-network/network-security-groups-overview.md)是減少攻擊面的另一種方法。 您可以使用[服務標記](../../virtual-network/network-security-groups-overview.md#service-tags)和[應用程式安全性群組](../../virtual-network/network-security-groups-overview.md#application-security-groups)，將建立安全性規則與設定網路安全性的複雜性近可能降低，直到成為應用程式結構的自然延伸。
 
@@ -207,16 +207,16 @@ Azure 有兩個 DDoS [服務供應項目](../../virtual-network/ddos-protection-
 
 以下是在您採用 Azure 原則之後所要遵循的一些安全性最佳作法：
 
-**最佳做法** ：原則支援數種類型的效果。 您可以在 [Azure 原則定義結構](../../governance/policy/concepts/definition-structure.md#policy-rule)中閱讀相關資訊。 企業營運可能會受到 **拒絕** 效果和 **補救** 效果的負面影響，因此請從 **審核** 效果開始，以限制從原則產生負面影響的風險。   
-**詳細資料** ： [以 audit 模式啟動原則部署](../../governance/policy/concepts/definition-structure.md#policy-rule) ，然後在稍後進行以 **拒絕** 或 **補救** 。 在您移至 [ **拒絕** ] 或 [ **修復** ] 之前，請先測試並檢查 audit 效果的結果。
+**最佳做法**：原則支援數種類型的效果。 您可以在 [Azure 原則定義結構](../../governance/policy/concepts/definition-structure.md#policy-rule)中閱讀相關資訊。 企業營運可能會受到 **拒絕** 效果和 **補救** 效果的負面影響，因此請從 **審核** 效果開始，以限制從原則產生負面影響的風險。   
+**詳細資料**： [以 audit 模式啟動原則部署](../../governance/policy/concepts/definition-structure.md#policy-rule) ，然後在稍後進行以 **拒絕** 或 **補救**。 在您移至 [ **拒絕** ] 或 [ **修復**] 之前，請先測試並檢查 audit 效果的結果。
 
 如需詳細資訊，請參閱 [建立和管理原則以強制執行合規性](../../governance/policy/tutorials/create-and-manage.md)。
 
-**最佳做法** ：識別負責監視原則違規的角色，並確保快速採取正確的補救動作。   
-**詳細資料** ：透過 [Azure 入口網站](../../governance/policy/how-to/get-compliance-data.md#portal) 或透過 [命令列](../../governance/policy/how-to/get-compliance-data.md#command-line)，將指派的角色監視合規性。
+**最佳做法**：識別負責監視原則違規的角色，並確保快速採取正確的補救動作。   
+**詳細資料**：透過 [Azure 入口網站](../../governance/policy/how-to/get-compliance-data.md#portal) 或透過 [命令列](../../governance/policy/how-to/get-compliance-data.md#command-line)，將指派的角色監視合規性。
 
-**最佳做法** ： Azure 原則是組織書面原則的技術標記法。 將所有 Azure 原則定義對應到組織原則，以減少混淆並提高一致性。   
-**詳細資料** ：在 [原則定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description) 或 [方案定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata) 描述中新增組織原則的參考，以在組織檔或 Azure 原則定義本身中進行檔對應。
+**最佳做法**： Azure 原則是組織書面原則的技術標記法。 將所有 Azure 原則定義對應到組織原則，以減少混淆並提高一致性。   
+**詳細資料**：在 [原則定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description) 或 [方案定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata) 描述中新增組織原則的參考，以在組織檔或 Azure 原則定義本身中進行檔對應。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>監視 Azure AD 風險報告
 大部分的安全性缺口出現於當攻擊者藉由竊取使用者的身分識別來取得環境的存取權時。 探索遭入侵的身分識別並不容易。 Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個偵測到的可疑動作都會儲存在稱為 [風險偵測](../../active-directory/identity-protection/overview-identity-protection.md)的記錄中。 風險偵測會記錄在 Azure AD 的安全性報告中。 如需詳細資訊，請參閱具有 [風險的使用者安全性報告](../../active-directory/identity-protection/overview-identity-protection.md) 和具風險的登 [入安全性報告](../../active-directory/identity-protection/overview-identity-protection.md)。

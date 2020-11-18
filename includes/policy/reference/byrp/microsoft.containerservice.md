@@ -2,21 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 77613cbc0317691a60089156769e2d39d503d5e1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 67472ef55a9bd6824333ee4c7a85a3e3aafbd4b0
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317881"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738712"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Kubernetes Services 上應定義授權 IP 範圍](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |僅將 API 存取權授與特定範圍內的 IP 位址，以限制對 Kubernetes Service 管理 API 的存取。 建議僅限存取授權 IP 範圍，以確保只有來自允許網路的應用程式可以存取叢集。 |Audit, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
 |[您的叢集應安裝及啟用適用於 Kubernetes Service (AKS) 的 Azure 原則附加元件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |適用於 Kubernetes Service (AKS) 的 Azure 原則附加元件是 Gatekeeper v3 (Gatekeeper v3 是開放原則代理程式 (OPA) 的許可控制器 Webhook) 的延伸，可以統一集中的方式，大規模地對您的叢集實施及施行保護。 |Audit, Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
-|[將 Azure 原則附加元件部署至 Azure Kubernetes Service 叢集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |您可以使用 Azure 原則附加元件來管理和報告 Azure Kubernetes Service (AKS) 叢集的合規性狀態。 如需詳細資訊，請參閱 [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc)。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
+|[將 Azure 原則附加元件部署至 Azure Kubernetes Service 叢集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |使用 Azure 原則附加元件來管理和報告 Azure Kubernetes Service (AKS) 叢集的合規性狀態。 如需詳細資訊，請參閱 [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc)。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[將 GitOps 部署至 Kubernetes 叢集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |此原則會將 'sourceControlConfiguration' 部署到 Kubernetes 叢集，確保叢集會從定義的 Git 存放庫取得其真實來源。 如需使用此原則的指示，請造訪 [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy)。 |DeployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
 |[在 Kubernetes 叢集中不允許特殊權限的容器](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |此原則不允許在 Kubernetes 叢集中建立特殊權限容器。 此原則已針對 Kubernetes Service (AKS) 正式推出，以及 AKS 引擎和已啟用 Azure Arc Kubernetes 的預覽。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[在 Kubernetes 叢集中強制使用 HTTPS 輸入](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |此原則在 Kubernetes 叢集中強制使用 HTTPS 輸入。 此原則已針對 Kubernetes Service (AKS) 正式推出，以及 AKS 引擎和已啟用 Azure Arc Kubernetes 的預覽。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |

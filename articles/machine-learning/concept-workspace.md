@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541346"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701648"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -89,7 +89,7 @@ ms.locfileid: "94541346"
 有多種方式可建立工作區：  
 
 * 使用點按一下介面的 [Azure 入口網站](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) ，逐步引導您完成每個步驟。
-* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) ，從 Python 腳本或木星筆記本即時建立工作區
+* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) ，從 Python 腳本或 Jupyter 筆記本即時建立工作區
 * 當您需要使用企業安全性標準來自動化或自訂建立時，請使用 [Azure Resource Manager 範本](how-to-create-workspace-template.md) 或 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) 。
 * 如果您在 Visual Studio Code 中工作，請使用 [VS Code 擴充](how-to-manage-resources-vscode.md#create-a-workspace)功能。
 

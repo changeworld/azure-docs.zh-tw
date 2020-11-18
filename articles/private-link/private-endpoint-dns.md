@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: fe8f4229a2bc967f1368e263d2c055b153c3717d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369959"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734373"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -22,12 +22,14 @@ ms.locfileid: "92369959"
 與私人端點相關聯的網路介面包含設定 DNS 所需的一組完整資訊，包括針對特定私人連結資源所配置的 FQDN 和私人 IP 位址。 
  
 您可以使用下列選項來設定私人端點的 DNS 設定： 
-- **使用主機檔案 (只建議用於測試) **。 您可以使用虛擬機器上的主機檔案來覆寫 DNS。  
+- **使用主機檔案 (只建議用於測試)**。 您可以使用虛擬機器上的主機檔案來覆寫 DNS。  
 - **使用私人 DNS 區域** 您可以使用 [私人 DNS 區域](../dns/private-dns-privatednszone.md) 覆寫特定私人端點的 dns 解析。 私人 DNS 區域可以連結至您的虛擬網路，以解析特定網域。
-- **使用您的 DNS 轉寄站 (選擇性) **。 您可以使用 DNS 轉寄站來覆寫特定私人連結資源的 DNS 解析。 如果您的 [DNS 伺服器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)裝載在虛擬網路上，可以建立 DNS 轉送規則來使用私人 DNS 區域，以簡化所有私人連結資源的設定。
- 
+- **使用您的 DNS 轉寄站 (選擇性)**。 您可以使用 DNS 轉寄站來覆寫特定私人連結資源的 DNS 解析。 如果您的 [DNS 伺服器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)裝載在虛擬網路上，可以建立 DNS 轉送規則來使用私人 DNS 區域，以簡化所有私人連結資源的設定。
+
 > [!IMPORTANT]
 > 不建議覆寫主動使用的區域來解析公用端點。 若未將 DNS 轉送至公用 DNS，將無法正確解析資源的連線。 為避免發生問題，請建立不同的網域名稱，或遵循下列每個服務的建議名稱。 
+
+
 
 ## <a name="azure-services-dns-zone-configuration"></a>Azure 服務 DNS 區域設定
 Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄 (CNAME) ，以將解析重新導向至建議的私人功能變數名稱。 您可以使用私人端點的私人 IP 位址來覆寫解析。 
@@ -93,6 +95,8 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 - [使用 DNS 轉寄站的內部部署工作負載](#on-premises-workloads-using-a-dns-forwarder)
 - [使用 DNS 轉寄站的虛擬網路和內部部署工作負載](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)
 
+> [!NOTE]
+> 您可以使用[Azure 防火牆 dns proxy](../firewall/dns-settings.md#dns-proxy) ，作為[內部部署工作負載](#on-premises-workloads-using-a-dns-forwarder)的 dns 轉寄站，以及使用 Dns 轉寄站的[虛擬網路工作負載](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)。
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>沒有自訂 DNS 伺服器的虛擬網路工作負載
 
@@ -123,7 +127,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 
 在此案例中，有一個 [中樞和輪輻](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 網路拓撲，內含可共用共同私人端點的輪輻網路，而且所有輪輻虛擬網路都會連結到相同的私人 DNS 區域。 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 Azure 提供之 DNS 的中樞與輪輻":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 轉寄站的內部部署工作負載
 
@@ -144,7 +148,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 
 下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署網路中的 DNS 解析順序，其中的解析是由 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域所建立：
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="使用 Azure DNS 的內部部署":::
 
 這項設定可以針對已經有 DNS 解決方案的內部部署網路進行擴充。 內部部署 DNS 解決方案必須設定為透過參考 Azure 中部署之 DNS 轉寄站的 [條件](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) 轉寄站，將 DNS 流量轉送至 Azure DNS。
 
@@ -164,7 +168,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 > [!IMPORTANT]
 > 條件式轉送必須對建議的 [公用 DNS 區域](#azure-services-dns-zone-configuration)轉寄站進行。 例如： `database.windows.net` 而不是 **privatelink**. database.windows.net。
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="內部部署轉送至 Azure DNS":::
 
 ## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 轉寄站的虛擬網路和內部部署工作負載
 
@@ -191,7 +195,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 
 下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署和虛擬網路中的 DNS 解析順序，其中會透過 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域進行解析：
 
-:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="混合式案例":::
 
 ## <a name="next-steps"></a>後續步驟
 - [深入瞭解私人端點](private-endpoint-overview.md)

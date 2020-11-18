@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675950"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701835"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>快速入門：使用舊版的 v10 用戶端程式庫建立搜尋索引
 
@@ -55,7 +55,7 @@ ms.locfileid: "92675950"
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+![取得 HTTP 端點和存取金鑰](media/search-get-started-rest/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 

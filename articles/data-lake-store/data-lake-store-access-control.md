@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190156"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701444"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 ## <a name="access-control-lists-on-files-and-folders"></a>檔案和資料夾的存取控制清單
 
-存取控制清單 (ACL) 有兩種類型，**存取 ACL** 和**預設 ACL**。
+存取控制清單 (ACL) 有兩種類型，**存取 ACL** 和 **預設 ACL**。
 
 * **存取 ACL**：這些控制物件的存取權。 檔案和資料夾均有存取 ACL。
 
@@ -43,17 +43,17 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 ## <a name="permissions"></a>權限
 
-檔案系統物件的權限為 [讀取]****、[寫入]**** 和 [執行]****，這些權限可以用於下表所示的檔案和資料夾：
+檔案系統物件的權限為 [讀取]、[寫入] 和 [執行]，這些權限可以用於下表所示的檔案和資料夾：
 
 |            |    檔案     |   資料夾 |
 |------------|-------------|----------|
-| **讀取 (R)** | 可以讀取檔案的內容 | 需要 [讀取]**** 和 [執行]**** 才能列出資料夾內容|
-| **寫入 (W)** | 可寫入或附加至檔案 | 需要 [寫入]**** 和 [執行]**** 才能在資料夾中建立子項目 |
+| **讀取 (R)** | 可以讀取檔案的內容 | 需要 [讀取] 和 [執行] 才能列出資料夾內容|
+| **寫入 (W)** | 可寫入或附加至檔案 | 需要 [寫入] 和 [執行] 才能在資料夾中建立子項目 |
 | **執行 (X)** | 不表示 Data Lake Storage Gen1 內容中的任何項目 | 需要周遊資料夾的子項目 |
 
 ### <a name="short-forms-for-permissions"></a>權限的簡短形式
 
-**RWX** 用來表示 [讀取 + 寫入 + 執行]****。 有更壓縮的數字形式存在，其中 [讀取 = 4]****、[寫入 = 2]**** 和 [執行 = 1]****，其總和代表各種權限。 以下有一些範例。
+**RWX** 用來表示 [讀取 + 寫入 + 執行]。 有更壓縮的數字形式存在，其中 [讀取 = 4]、[寫入 = 2] 和 [執行 = 1]，其總和代表各種權限。 以下有一些範例。
 
 | 數值形式 | 簡短形式 |      代表的意義     |
 |--------------|------------|------------------------|
@@ -104,11 +104,11 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 超級使用者具有 Data Lake Storage Gen1 帳戶中所有使用者的大多數權限。 超級使用者：
 
-* 具有**所有**檔案和資料夾的 RWX 權限。
+* 具有 **所有** 檔案和資料夾的 RWX 權限。
 * 可以變更任何檔案或資料夾的權限。
 * 可以變更任何檔案或資料夾的擁有使用者或擁有群組。
 
-身為 Data Lake Storage Gen1 帳戶 [擁有者]**** 角色成員的所有使用者都會自動成為超級使用者。
+身為 Data Lake Storage Gen1 帳戶 [擁有者] 角色成員的所有使用者都會自動成為超級使用者。
 
 ### <a name="the-owning-user"></a>擁有使用者
 
@@ -118,7 +118,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 * 只要擁有使用者也是目標群組的成員，請變更所擁有檔案的擁有群組。
 
 > [!NOTE]
-> 擁有使用者「無法」** 變更檔案或資料夾的擁有使用者。 只有超級使用者可以變更檔案或資料夾的擁有使用者。
+> 擁有使用者「無法」變更檔案或資料夾的擁有使用者。 只有超級使用者可以變更檔案或資料夾的擁有使用者。
 >
 >
 
@@ -142,7 +142,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 * 擁有使用者，如果擁有使用者也是目標群組的成員。
 
 > [!NOTE]
-> 擁有群組「無法」** 變更檔案或資料夾的 ACL。
+> 擁有群組「無法」變更檔案或資料夾的 ACL。
 >
 > 若為在 2018 年 9 月或之前建立的帳戶，擁有群組已設定為在上述根資料夾案例 (**案例 1**) 中建立帳戶的使用者。  單一使用者帳戶不適用於透過擁有群組提供權限，因此此預設設定不會授與任何權限。 您可以將此權限指派給有效的使用者群組。
 
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>遮罩
 
-如＜存取檢查演算法＞所述，遮罩會限制**具名使用者**、**擁有群組**及**具名群組**的存取權。  
+如＜存取檢查演算法＞所述，遮罩會限制 **具名使用者**、**擁有群組** 及 **具名群組** 的存取權。  
 
 > [!NOTE]
 > 對於新的 Data Lake Storage Gen1 帳戶，根資料夾 ("/") 的存取 ACL 遮罩會預設為 RWX。
@@ -216,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含 **擁有使用者**、 **擁有群組**和 **其他**的 RWX 值。
+建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含 **擁有使用者**、 **擁有群組** 和 **其他** 的 RWX 值。
 
 Azure Data Lake Storage Gen1 的 umask 是設定為007的固定值。 此值會轉譯成
 
@@ -254,11 +254,11 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>若要以遞迴方式刪除資料夾與其內容，需要哪些權限？
 
-* 父資料夾必須具有 [寫入 + 執行]**** 權限。
-* 要刪除的資料夾及其中的每個資料夾，都需要 [讀取 + 寫入 + 執行]**** 權限。
+* 父資料夾必須具有 [寫入 + 執行] 權限。
+* 要刪除的資料夾及其中的每個資料夾，都需要 [讀取 + 寫入 + 執行] 權限。
 
 > [!NOTE]
-> 您不需要寫入權限即可刪除資料夾中的檔案。 此外，**決不**會刪除根資料夾 "/"。
+> 您不需要寫入權限即可刪除資料夾中的檔案。 此外，**決不** 會刪除根資料夾 "/"。
 >
 >
 
@@ -280,7 +280,11 @@ ACL 中的項目會儲存為對應於 Azure AD 中使用者的 GUID。 API 會�
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>當我使用 Azure 入口網站時，為什麼有時候會在 ACL 中看到 GUID？
 
-當使用者已不存在於 Azure AD 時，將會顯示 GUID。 當使用者已離開公司，或已在 Azure AD 中刪除其帳戶時，通常會發生這種情形。
+當使用者已不存在於 Azure AD 時，將會顯示 GUID。 當使用者已離開公司，或已在 Azure AD 中刪除其帳戶時，通常會發生這種情形。 此外，請確定您使用的是正確的識別碼來設定 Acl (以下問題的詳細資料) 。
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>使用服務主體時，我應該使用哪個識別碼來設定 Acl？
+
+在 Azure 入口網站中，移至 **Azure Active Directory-> 企業應用程式** ，然後選取您的應用程式。 [ **總覽** ] 索引標籤應該會顯示物件識別碼，而這就是新增資料存取 (的 acl，而不是應用程式識別碼) 時應該使用的內容。
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage Gen1 是否支援 ACL 的繼承？
 

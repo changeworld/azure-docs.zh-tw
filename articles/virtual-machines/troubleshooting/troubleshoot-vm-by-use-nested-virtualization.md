@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f950cb63b5083a85ab5420434abdd9a720115b1a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76119613"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734543"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>在 Azure 中使用嵌套虛擬化對錯誤的 Azure VM 進行疑難排解
 
 本文說明如何在 Microsoft Azure 中建立嵌套虛擬化環境，以便您可以在 Hyper-v 主機上掛接故障 VM 的磁片， (修復 VM) 以進行疑難排解。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 為了掛接故障的 VM，修復 VM 必須使用相同類型的儲存體帳戶 (Standard 或 Premium) 作為故障的 VM。
 
@@ -44,19 +44,19 @@ ms.locfileid: "76119613"
 
 3.  在伺服器管理員中，選取 [**管理**  >  **新增角色及功能**]。
 
-4.  在 [安裝類型]**** 區段中，選取 [角色型或功能型安裝]****。
+4.  在 [安裝類型] 區段中，選取 [角色型或功能型安裝]。
 
-5.  在 [選取目的地伺服器]**** 區段中，確定已選取「救援 VM」。
+5.  在 [選取目的地伺服器] 區段中，確定已選取「救援 VM」。
 
 6.  選取 [ **hyper-v 角色**  >  **新增功能**]。
 
-7.  在 [功能]**** 區段上選取 [下一步]****。
+7.  在 [功能] 區段上選取 [下一步]。
 
 8.  如果提供虛擬交換器，請選取它。 否則請選取 **[下一步]**。
 
-9.  在 [移轉]**** 區段中，選取 [下一步]****
+9.  在 [移轉] 區段中，選取 [下一步]
 
-10. 在 [預設存放區]**** 區段中，選取 [下一步]****。
+10. 在 [預設存放區] 區段中，選取 [下一步]。
 
 11. 視需要勾選方塊，以自動重新啟動伺服器。
 
@@ -72,27 +72,27 @@ ms.locfileid: "76119613"
 
 3.  開啟「磁碟管理」(diskmgmt.msc)。 確定故障 VM 的磁片設定為 **離線**。
 
-4.  開啟 [Hyper-V 管理員]：在 [伺服器管理員]**** 中，選取 [Hyper-V 角色]****。 以滑鼠右鍵按一下伺服器，然後選取 [Hyper-V 管理員]****。
+4.  開啟 [Hyper-V 管理員]：在 [伺服器管理員] 中，選取 [Hyper-V 角色]。 以滑鼠右鍵按一下伺服器，然後選取 [Hyper-V 管理員]。
 
 5.  在 [hyper-v 管理員] 中，以滑鼠右鍵按一下修復 VM，然後選取 [**新增**  >  **虛擬機器**  >  **]**。
 
-6.  輸入 VM 的名稱，然後選取 [下一步]****。
+6.  輸入 VM 的名稱，然後選取 [下一步]。
 
-7.  選取 [第 1 代]****。
+7.  選取 [第 1 代]。
 
 8.  將啟動記憶體設定為 1024 MB 以上。
 
 9. 如果適用，請選取已建立的 Hyper-V 網路交換器。 否則，請移至下一頁。
 
-10. 選取 [稍後連接虛擬硬碟]****。
+10. 選取 [稍後連接虛擬硬碟]。
 
     ![「稍後連接虛擬硬碟」選項的圖片](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-11. 建立 VM 後，選取 [完成]****。
+11. 建立 VM 後，選取 [完成]。
 
-12. 以滑鼠右鍵按一下您建立的 VM，然後選取 [設定]****。
+12. 以滑鼠右鍵按一下您建立的 VM，然後選取 [設定]。
 
-13. 選取 [IDE 控制器 0]****，選取 [硬碟]****，然後按一下 [新增]****。
+13. 選取 [IDE 控制器 0]，選取 [硬碟]，然後按一下 [新增]。
 
     ![新增硬碟的圖片](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
@@ -111,7 +111,7 @@ ms.locfileid: "76119613"
 
 1.  讓 VM 恢復上線之後，在 Hyper-V 管理員中關閉 VM。
 
-2.  [卸載並卸離已修復的 OS 磁片](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+2.  [卸載並卸離已修復的 OS 磁片](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk
 )。
 3.  將[VM 使用的 os 磁片更換為修復的 os 磁片](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
 )。

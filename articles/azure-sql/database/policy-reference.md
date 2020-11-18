@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure SQL Database 的內建原則定義
 description: 列出適用於 Azure SQL Database 與 SQL 受控執行個體的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8e6bae47a18cac40845b50aa4508c165092d2ca3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 603bddf5da4b3b3d200f8f4ee1869d25abd9292a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320045"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94736212"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>適用於 Azure SQL Database 與 SQL 受控執行個體的 Azure 原則內建定義
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

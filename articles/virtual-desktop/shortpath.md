@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: aee3f5602d0bd1ff12717d903d662ce4605de61d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683755"
+ms.locfileid: "94701774"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虛擬桌面 RDP Shortpath (preview) 
 
@@ -176,7 +176,7 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 若要確認會話是否使用 RDP Shortpath 傳輸：
 
 1. 使用 Windows 虛擬桌面用戶端連線到 VM 桌面。
-2. 啟動事件檢視器，然後流覽至下列節點： **應用程式和服務記錄檔 > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > 操作**
+2. 啟動事件檢視器，然後流覽至下列節點： [ **應用程式及服務記錄檔] > microsoft > windows > RemoteDesktopServices-RdpCoreCDV > RemoteDesktopServices-windows-RdpCoreCDV/Operational**
 3. 若要判斷是否使用 RDP Shortpath 傳輸，請尋找事件識別碼131。
 
 ### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>使用 Log Analytics 來確認 Shortpath 連線能力

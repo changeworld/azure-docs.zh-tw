@@ -15,18 +15,18 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c7edafd8a4a85e00a02486c646c77ddff5ff3e6b
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458046"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737093"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步來實作密碼雜湊同步處理
 本文提供您所需資訊，以讓您將使用者密碼從內部部署 Active Directory 執行個體同步處理至雲端式 Azure Active Directory (Azure AD) 執行個體。
 
 ## <a name="how-password-hash-synchronization-works"></a>密碼雜湊同步處理如何運作
-Active Directory 網域服務是以使用者實際密碼的雜湊值表示法格式來儲存密碼。 雜湊值是單向數學函式 (「雜湊演算法」**) 的計算結果。 沒有任何方法可將單向函式的結果還原為純文字版本的密碼。 
+Active Directory 網域服務是以使用者實際密碼的雜湊值表示法格式來儲存密碼。 雜湊值是單向數學函式 (「雜湊演算法」) 的計算結果。 沒有任何方法可將單向函式的結果還原為純文字版本的密碼。 
 
 為了同步密碼，Azure AD Connect 同步處理會從內部部署的 Active Directory 執行個體擷取您的密碼雜湊。 在將密碼雜湊與 Azure Active Directory 驗證服務同步之前，會進行額外的安全性處理。 密碼會以每個使用者為基礎，依照時間先後順序來進行同步處理。
 
@@ -53,7 +53,7 @@ Active Directory 網域服務是以使用者實際密碼的雜湊值表示法格
 
 1. AD Connect 伺服器上的密碼雜湊同步處理代理程式每隔兩分鐘就會向 DC 要求儲存的密碼雜湊 (unicodePwd 屬性)。  此要求是使用標準 [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) \(英文\)複寫通訊協定，用來在 DC 之間同步資料。 服務帳戶必須具有複寫目錄變更和複寫目錄變更所有 AD 權限 (預設在安裝時授與)，以取得密碼雜湊。
 2. 在傳送之前，DC 會使用金鑰 (它是 RPC 工作階段金鑰和 salt 的 [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) 雜湊)，來加密 MD4 密碼雜湊。 然後它會透過 RPC 將結果傳送給密碼雜湊同步處理代理程式。 DC 也會使用 DC 複寫通訊協定將 salt 傳送至同步處理代理程式，讓代理程式可以解密信封。
-3. 在密碼雜湊同步處理代理程式將信封加密後，它會使用 [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider?view=netcore-3.1) 和 salt 來產生金鑰，以將接收的資料解密回其原始 MD4 格式。 密碼雜湊同步處理代理程式永遠不會存取純文字密碼。 密碼雜湊同步處理代理程式使用 MD5 純粹是為了與 DC 的複寫通訊協定相容，並且只會在內部部署環境中的 DC 和密碼雜湊同步處理代理程式之間使用。
+3. 在密碼雜湊同步處理代理程式將信封加密後，它會使用 [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider?view=netcore-3.1) 和 salt 來產生金鑰，以將接收的資料解密回其原始 MD4 格式。 密碼雜湊同步處理代理程式永遠不會存取純文字密碼。 密碼雜湊同步處理代理程式使用 MD5 完全是為了與 DC 的複寫通訊協定相容性，而且只會在 DC 和密碼雜湊同步處理代理程式之間的內部部署使用。
 4. 密碼雜湊同步處理代理程式會將 16 位元組二進位密碼雜湊擴展成 64 位元組，方法是先將該雜湊轉換成 32 位元組十六進位字串，再將此字串轉換回具有 UTF-16 編碼的二進位檔。
 5. 密碼雜湊同步處理代理程式會將每位使用者 salt 處理 (由 10 位元組長度 salt 所組成) 新增至 64 位元組二進位檔，以進一步保護原始雜湊。
 6. 接著，密碼雜湊同步處理代理程式會結合 MD4 雜湊加上每位使用者 salt 處理，然後將其輸入至 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函式。 系統會使用 [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) 索引雜湊演算法的 1000 次反覆運算。 
@@ -172,8 +172,8 @@ Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 
 1. Azure AD Connect 會抓取租使用者之 Azure AD Domain Services 實例的公開金鑰。
 1. 當使用者變更其密碼時，內部部署網域控制站會將密碼變更的結果儲存 () 兩個屬性中的雜湊：
-    * NTLM 密碼雜湊的*unicodePwd* 。
-    * Kerberos 密碼雜湊的*supplementalCredentials* 。
+    * NTLM 密碼雜湊的 *unicodePwd* 。
+    * Kerberos 密碼雜湊的 *supplementalCredentials* 。
 1. Azure AD Connect 透過目錄複寫通道偵測密碼變更， (屬性變更需要複寫至其他網域控制站) 。
 1. 針對每個已變更密碼的使用者，Azure AD Connect 執行下列步驟：
     * 產生隨機 AES 256 位對稱金鑰。
@@ -199,7 +199,7 @@ Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 >[!IMPORTANT]
 >如果您要從 AD FS (或其他同盟技術) 遷移至密碼雜湊同步處理，強烈建議您遵循我們在[此處](https://aka.ms/adfstophsdpdownload) \(英文\) 發佈的詳細部署指南。
 
-當您使用 [快速設定]**** 選項來安裝 Azure AD Connect 時，系統會自動啟用密碼雜湊同步處理。 如需詳細資訊，請參閱[利用快速設定開始使用 Azure AD Connect](how-to-connect-install-express.md)。
+當您使用 [快速設定] 選項來安裝 Azure AD Connect 時，系統會自動啟用密碼雜湊同步處理。 如需詳細資訊，請參閱[利用快速設定開始使用 Azure AD Connect](how-to-connect-install-express.md)。
 
 如果您在安裝 Azure AD Connect 時使用自訂設定，在使用者登入頁面上便會提供密碼雜湊同步處理。 如需詳細資訊，請參閱[自訂 Azure AD Connect 安裝](how-to-connect-install-custom.md)。
 

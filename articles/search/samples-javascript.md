@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 6cd696bf0853b1e6bafc06f2e99b2808970fed25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6bcdb4a48f71e28514229116c10bd25747b55616
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686657"
+ms.locfileid: "94701818"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 JavaScript 程式碼範例
 
@@ -38,7 +38,7 @@ Azure SDK for JAVA 包含許多範例和快速入門 [頁面](https://github.com
 | [索引](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  示範如何建立、更新、取得、列出、重設及刪除 [索引子](search-indexer-overview.md)。|
 | [技能](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   示範如何建立、更新、取得、列出和刪除附加索引子的 [技能集](cognitive-search-working-with-skillsets.md) ，以及在編制索引期間執行以 AI 為基礎的擴充。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | 示範如何建立、更新、取得、列出和刪除 [同義字對應](search-synonyms.md)。  |
-| [查詢](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | 查詢是唯讀的。 此範例查詢會針對 Microsoft 所裝載的公用索引執行。  |
+| [查詢](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | 示範針對 Microsoft 所裝載的唯讀公用索引執行查詢。  |
 
 ## <a name="typescript-samples"></a>TypeScript 範例
 
@@ -51,7 +51,7 @@ SDK 也會提供 TypeScript 範例，在這裡列出以方便您參考。
 | [索引](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  示範如何建立、更新、取得、列出、重設及刪除 [索引子](search-indexer-overview.md)。|
 | [技能](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   示範如何建立、更新、取得、列出和刪除附加索引子的 [技能集](cognitive-search-working-with-skillsets.md) ，以及在編制索引期間執行以 AI 為基礎的擴充。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | 示範如何建立、更新、取得、列出和刪除 [同義字對應](search-synonyms.md)。  |
-| [查詢](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.js) | 示範針對 Microsoft 所裝載的唯讀公用索引執行查詢。  |
+| [查詢](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | 示範針對 Microsoft 所裝載的唯讀公用索引執行查詢。  |
 
 ## <a name="documentation-samples"></a>文件和範例
 
@@ -59,7 +59,7 @@ SDK 也會提供 TypeScript 範例，在這裡列出以方便您參考。
 
 | 範例 | 描述 | 
 |---------|-------------|
-| [快速入門](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/Quickstart) | [快速入門的原始程式碼：以 JavaScript 建立搜尋索引](search-get-started-javascript.md)。  |
+| [快速入門](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | [快速入門的原始程式碼：以 JavaScript 建立搜尋索引](search-get-started-javascript.md)。  |
 
 ## <a name="standalone-samples"></a>獨立範例
 

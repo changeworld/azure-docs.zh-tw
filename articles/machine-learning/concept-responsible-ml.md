@@ -1,20 +1,20 @@
 ---
 title: '什麼是負責機器學習 (預覽版) '
 titleSuffix: Azure Machine Learning
-description: 瞭解什麼是負責的機器學習，以及如何在 Azure Machine Learning 中使用它
+description: 瞭解什麼是負責的機器學習，以及如何搭配 Azure Machine Learning 使用它來瞭解模型、保護資料及控制模型生命週期。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
-ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324849"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701427"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>什麼是負責機器學習服務？ (預覽)
 

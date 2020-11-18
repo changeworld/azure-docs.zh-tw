@@ -1,20 +1,20 @@
 ---
 title: Azure Machine Learning 的 Git 整合
 titleSuffix: Azure Machine Learning
-description: 瞭解 Azure Machine Learning 如何與本機 Git 存放庫整合。 從 Git 存放庫的本機目錄提交定型回合時，會在執行過程中追蹤存放庫、分支和目前認可的相關資訊。
+description: 瞭解 Azure Machine Learning 如何與本機 Git 存放庫整合，以追蹤儲存機制、分支和目前的認可資訊，作為定型執行的一部分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
-ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324762"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701631"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning 的 Git 整合
 
@@ -153,9 +153,9 @@ Git 資訊會儲存在定型回合的屬性中。 您可以使用 Azure 入口�
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 從 [studio 入口網站](https://ml.azure.com)中，選取您的工作區。
-1. 選取 [ __實驗__ ]，然後選取您的其中一個實驗。
+1. 選取 [ __實驗__]，然後選取您的其中一個實驗。
 1. 從 [ __執行編號__ ] 資料行中選取其中一個執行。
-1. 選取 [ __輸出 + 記錄__ ]，然後展開 __記錄__ 和 __azureml__ 專案。 選取以 __### \_ azure__ 開頭的連結。
+1. 選取 [ __輸出 + 記錄__]，然後展開 __記錄__ 和 __azureml__ 專案。 選取以 __### \_ azure__ 開頭的連結。
 
 記錄的資訊包含類似下列 JSON 的文字：
 

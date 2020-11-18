@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2be9b5e6fd489b331982d31693bf810d488d92b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a1eab081a7c1e83a57ef4735c6eb5248d92defc
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87484142"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734101"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>透過使用 Azure CLI 的虛擬網路服務端點來限制對 PaaS 資源的網路存取
 
@@ -35,11 +35,11 @@ ms.locfileid: "87484142"
 * 確認從子網路對資源的存取
 * 確認從子網路和網際網路對資源的存取遭到拒絕
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>啟用服務端點 
 
-您只能針對支援服務端點的服務啟用服務端點。 使用 [az network vnet list-endpoint-services](/cli/azure/network/vnet) 來檢視 Azure 位置中所提供之已啟用服務端點的服務。 下列範例會傳回 eastus** 區域中所提供且已啟用服務端點的服務。 隨著更多 Azure 服務啟用服務端點，所傳回的服務清單會隨著時間成長。
+您只能針對支援服務端點的服務啟用服務端點。 使用 [az network vnet list-endpoint-services](/cli/azure/network/vnet) 來檢視 Azure 位置中所提供之已啟用服務端點的服務。 下列範例會傳回 eastus 區域中所提供且已啟用服務端點的服務。 隨著更多 Azure 服務啟用服務端點，所傳回的服務清單會隨著時間成長。
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 在虛擬網路中建立其他的子網路。 在此範例中，系統會針對子網路建立 Microsoft.Storage** 的服務端點： 
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 在虛擬網路中建立其他的子網路。 在此範例中，系統會針對子網路建立 Microsoft.Storage 的服務端點： 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>限制子網路的網路存取
 
-使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例會建立名為 myNsgPrivate** 的網路安全性群組。
+使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例會建立名為 myNsgPrivate 的網路安全性群組。
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-請使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet) 將網路安全性群組與「私人」** 子網路建立關聯。 下列範例會將 myNsgPrivate** 網路安全性群組與「私人」** 子網路建立關聯：
+請使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet) 將網路安全性群組與「私人」子網路建立關聯。 下列範例會將 myNsgPrivate 網路安全性群組與「私人」子網路建立關聯：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -201,7 +201,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>拒絕所有對儲存體帳戶的網路存取
 
-根據預設，儲存體帳戶會接受來自任何網路用戶端的網路連線。 若要限制對選取網路的存取，請使用 [az storage account update](/cli/azure/storage/account) 將預設動作變更為「拒絕」**。 一旦網路存取遭到拒絕後，就無法從任何網路存取儲存體帳戶。
+根據預設，儲存體帳戶會接受來自任何網路用戶端的網路連線。 若要限制對選取網路的存取，請使用 [az storage account update](/cli/azure/storage/account) 將預設動作變更為「拒絕」。 一旦網路存取遭到拒絕後，就無法從任何網路存取儲存體帳戶。
 
 ```azurecli-interactive
 az storage account update \
@@ -212,7 +212,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>啟用子網路的網路存取
 
-使用 [az storage account network-rule add](/cli/azure/storage/account/network-rule) 允許從「私人」** 子網路對儲存體帳戶的網路存取。
+使用 [az storage account network-rule add](/cli/azure/storage/account/network-rule) 允許從「私人」子網路對儲存體帳戶的網路存取。
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -227,7 +227,7 @@ az storage account network-rule add \
 
 ### <a name="create-the-first-virtual-machine"></a>建立第一部虛擬機器
 
-使用 [az vm create](/cli/azure/vm) 在「公用」** 子網路中建立虛擬機器。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。
+使用 [az vm create](/cli/azure/vm) 在「公用」子網路中建立虛擬機器。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。
 
 ```azurecli-interactive
 az vm create \
@@ -272,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>確認對儲存體帳戶的存取
 
-使用 SSH 連線到 myVmPrivate** VM。 取代 *\<publicIpAddress>* 為 *myVmPrivate* VM 的公用 IP 位址。
+使用 SSH 連線到 myVmPrivate VM。 取代 *\<publicIpAddress>* 為 *myVmPrivate* VM 的公用 IP 位址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -290,7 +290,7 @@ sudo mkdir /mnt/MyAzureFileShare
 sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-您會收到 `user@myVmPrivate:~$` 提示字元。 Azure 檔案共用已成功裝載到 /mnt/MyAzureFileShare**。
+您會收到 `user@myVmPrivate:~$` 提示字元。 Azure 檔案共用已成功裝載到 /mnt/MyAzureFileShare。
 
 確認 VM 沒有任何以其他公用 IP 位址為目標的輸出連線：
 
@@ -298,13 +298,13 @@ sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-s
 ping bing.com -c 4
 ```
 
-您不會收到回應，因為與「私人」** 子網路相關聯的網路安全性群組只允許對指派給 Azure 儲存體服務的位址進行輸出存取，此位址以外的公用 IP 位址一律不允許。
+您不會收到回應，因為與「私人」子網路相關聯的網路安全性群組只允許對指派給 Azure 儲存體服務的位址進行輸出存取，此位址以外的公用 IP 位址一律不允許。
 
-結束對 myVmPrivate** VM 的 SSH 工作階段。
+結束對 myVmPrivate VM 的 SSH 工作階段。
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>確認對儲存體帳戶的存取遭到拒絕
 
-使用下列命令來建立使用 myVmPublic** VM 的 SSH 工作階段。 以 myVmPublic** VM 的公用 IP 位址取代 `<publicIpAddress>`： 
+使用下列命令來建立使用 myVmPublic VM 的 SSH 工作階段。 以 myVmPublic VM 的公用 IP 位址取代 `<publicIpAddress>`： 
 
 ```bash 
 ssh <publicIpAddress>
@@ -322,9 +322,9 @@ sudo mkdir /mnt/MyAzureFileShare
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-存取遭到拒絕，且您收到 `mount error(13): Permission denied` 錯誤，因為 myVmPublic** VM 是部署在「公用」** 子網路中。 「公用」** 子網路沒有已啟用的服務端點可供 Azure 儲存體使用，且儲存體帳戶只允許「私人」** 子網路而不允許「公用」** 子網路的網路存取。
+存取遭到拒絕，且您收到 `mount error(13): Permission denied` 錯誤，因為 myVmPublic VM 是部署在「公用」子網路中。 「公用」子網路沒有已啟用的服務端點可供 Azure 儲存體使用，且儲存體帳戶只允許「私人」子網路而不允許「公用」子網路的網路存取。
 
-結束對 myVmPublic** VM 的 SSH 工作階段。
+結束對 myVmPublic VM 的 SSH 工作階段。
 
 嘗試從您的電腦使用 [az storage share list](/cli/azure/storage/share?view=azure-cli-latest) 來檢視儲存體帳戶中的共用。 將 `<account-name>` 和 `<account-key>` 取代為儲存體帳戶名稱和[建立儲存體帳戶](#create-a-storage-account)中的金鑰：
 
@@ -334,7 +334,7 @@ az storage share list \
   --account-key <account-key>
 ```
 
-存取遭到拒絕，且您收到「此要求未獲授權執行此作業」** 錯誤，因為您的電腦不在 MyVirtualNetwork** 虛擬網路的「私人」** 子網路中。
+存取遭到拒絕，且您收到「此要求未獲授權執行此作業」錯誤，因為您的電腦不在 MyVirtualNetwork 虛擬網路的「私人」子網路中。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -344,7 +344,7 @@ az storage share list \
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已啟用虛擬網路子網路的服務端點。 您已了解可以針對使用多個 Azure 服務部署的資源啟用服務端點。 您已建立 Azure 儲存體帳戶，並將儲存體帳戶的網路存取限制為只能存取虛擬網路子網路內的資源。 若要深入了解服務端點，請參閱[服務端點概觀](virtual-network-service-endpoints-overview.md)和[管理子網路](virtual-network-manage-subnet.md)。
 

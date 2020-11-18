@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Data Lake Storage Gen1 的內建原則定義
 description: 列出適用於 Azure Data Lake Storage Gen1 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4f8ed8bfd17a30dfaa4fe82f3ca8083ff803c151
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f2e54a364d46670f39af1c5ac3d9ebf36b82f93
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314923"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94736878"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>適用於 Azure Data Lake Storage Gen1 的 Azure 原則內建定義
 

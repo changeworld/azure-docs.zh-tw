@@ -1,7 +1,7 @@
 ---
 title: 策展的環境
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 中提供的策劃環境集合
+description: 瞭解 Azure Machine Learning 策劃環境，這是一組預先設定的環境，可協助減少實驗和部署準備時間。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -9,13 +9,13 @@ ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.date: 09/03/2020
-ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: 0e6817e03c5e5363ad925367b0632e26fc2da4a2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662086"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701393"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning 策劃環境
 

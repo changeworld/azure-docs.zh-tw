@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408917"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701043"
 ---
 # <a name="security-control-v2-data-protection"></a>安全性控制 V2：資料保護
 
@@ -34,9 +34,9 @@ ms.locfileid: "94408917"
 
 - [如何執行 Azure SQL 資料探索](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -50,19 +50,19 @@ ms.locfileid: "94408917"
 |--|--|--|--|
 | DP-2 | 13.2、2.10 | SC-7、AC-4 |
 
-藉由使用 Azure 角色型存取控制來限制存取權， (Azure RBAC) 、網路型存取控制和 Azure 服務中的特定控制項 (例如 SQL 中的加密和其他資料庫) 。 
+藉由使用 Azure 角色型存取控制 (Azure RBAC) 、網路型存取控制和 Azure (服務中的特定控制項（例如 SQL 和其他資料庫) 中的加密）來限制存取，以保護敏感性資料。 
 
 為了確保存取控制的一致性，所有類型的存取控制都應符合您的企業分割策略。 企業分割策略也應由機密或業務關鍵資料和系統的位置來通知。
 
 針對 Microsoft 所管理的基礎平臺，Microsoft 會將所有客戶內容視為機密資料，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料保持安全，Microsoft 已實行一些預設的資料保護控制項和功能。
 
-- [Azure 角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)
+- [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [瞭解 Azure 中的客戶資料保護](../fundamentals/protection-customer-data.md)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -88,9 +88,9 @@ Azure 資訊保護 (AIP) 為已分類及標示的資訊提供監視功能。
 
 - [啟用 Azure 儲存體 ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Azure 資訊保護 (AIP) 為已分類及標示的資訊提供監視功能。
 
 - [Azure 資料傳輸中的雙重加密](../fundamentals/double-encryption.md#data-in-transit)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -146,9 +146,9 @@ Azure 預設會提供待用資料的加密。 針對高度敏感的資料，您�
 
 - [Azure 中的待用資料加密](../fundamentals/double-encryption.md#data-at-rest)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

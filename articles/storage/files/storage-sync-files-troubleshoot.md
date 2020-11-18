@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: dd9e67b8cea88421986d4ca9e3545c6dce618672
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626396"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737008"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -70,7 +70,7 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<
 
 若要在 PowerShell 5.1 上安裝 Az 或 AzureRM 模組，請執行下列步驟：
 
-1. 在提升權限的命令提示字元中輸入 **powershell** ，然後按下 Enter。
+1. 在提升權限的命令提示字元中輸入 **powershell**，然後按下 Enter。
 2. 參閱下列文件來安裝最新的 Az 或 AzureRM 模組：
     - [Az 模組 (需要 .NET 4.7.2)](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
     - [AzureRM 模組]( https://go.microsoft.com/fwlink/?linkid=856959)
@@ -154,7 +154,7 @@ Reset-StorageSyncServer
 發生此錯誤的原因是 Azure 檔案同步不支援磁碟區上的伺服器端點，因為這些磁碟區具有壓縮的「系統磁碟區資訊」資料夾。 若要解決此問題，請將「系統磁碟區資訊」資料夾解壓縮。 如果「系統磁碟區資訊」資料夾是磁碟區上唯一已壓縮的資料夾，請執行下列步驟：
 
 1. 下載 [PsExec](/sysinternals/downloads/psexec) 工具。
-2. 從提升權限的命令提示字元執行下列命令，以啟動在系統帳戶下執行的命令提示字元： **PsExec.exe -i -s -d cmd**
+2. 從提升權限的命令提示字元執行下列命令，以啟動在系統帳戶下執行的命令提示字元：**PsExec.exe -i -s -d cmd**
 3. 從系統帳戶下執行的命令提示字元中，輸入下列命令，然後按 Enter 鍵：   
     **cd /d "drive letter:\System Volume Information"**  
     **compact /u /s**
@@ -196,15 +196,15 @@ Set-AzStorageSyncServerEndpoint `
 
 在入口網站中 [顯示為離線] 的伺服器上，查看遙測事件記錄檔中的事件識別碼 9301 (位於 [事件檢視器] 中的 Applications and Services\Microsoft\FileSync\Agent)，以判斷伺服器無法存取 Azure 檔案同步服務的原因。 
 
-- 如果記錄 **已完成 GetNextJob，且狀態為：0** ，則該伺服器便可與 Azure 檔案同步服務進行通訊。 
+- 如果記錄 **已完成 GetNextJob，且狀態為：0**，則該伺服器便可與 Azure 檔案同步服務進行通訊。 
     - 在伺服器上開啟工作管理員，並確認儲存體同步監視器 (AzureStorageSyncMonitor.exe) 程序正在執行。 如果此程序未執行，先嘗試重新啟動伺服器。 如果重新啟動伺服器無法解決此問題，請升級至最新版 Azure 檔案同步[代理程式版本](./storage-files-release-notes.md)。 
 
-- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347756** ，則表示伺服器會因防火牆或 Proxy 而無法與 Azure 檔案同步服務進行通訊。 
+- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347756**，則表示伺服器會因防火牆或 Proxy 而無法與 Azure 檔案同步服務進行通訊。 
     - 如果伺服器位於防火牆後方，請確認允許連接埠 443 輸出。 如果防火牆限制僅允許對特定網域的流量，請確認您可以存取防火牆[文件](./storage-sync-files-firewall-and-proxy.md#firewall)中列出的網域。
     - 如果伺服器位於 Proxy 後方，請依照 Proxy [文件](./storage-sync-files-firewall-and-proxy.md#proxy)中的步驟設定整部電腦或應用程式專屬的 Proxy 設定。
     - 使用 Test-StorageSyncNetworkConnectivity Cmdlet 來檢查與服務端點的網路連線能力。 若要深入了解，請參閱[測試與服務端點的網路連線能力](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints) (機器翻譯)。
 
-- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347764** ，則表示伺服器的憑證已到期或刪除，所以無法與 Azure 檔案同步服務進行通訊。  
+- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347764**，則表示伺服器的憑證已到期或刪除，所以無法與 Azure 檔案同步服務進行通訊。  
     - 在伺服器上執行下列 PowerShell 命令，以重新設定要用於驗證的憑證：
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
@@ -852,10 +852,10 @@ PerItemErrorCount: 1006.
 若要解決此問題，請執行下列步驟：
 
 1. 下載 [Psexec](/sysinternals/downloads/psexec) 工具。
-2. 從提升權限的命令提示字元執行下列命令，以使用系統帳戶啟動命令提示字元： **PsExec.exe -i -s -d cmd** 
-3. 在系統帳戶所執行的命令提示字元中，執行下列命令以確認 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權： **cacls "drive letter:\system volume information" /T /C**
-4. 如果 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權，請執行下列命令： **cacls  "drive letter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
-    - 如果步驟 #4 因存取遭拒而失敗，請執行下列命令來取得 [系統磁碟區資訊] 資料夾的擁有權，然後重複步驟 #4： **takeown /A /R /F "drive letter:\System Volume Information"**
+2. 從提升權限的命令提示字元執行下列命令，以使用系統帳戶啟動命令提示字元：**PsExec.exe -i -s -d cmd** 
+3. 在系統帳戶所執行的命令提示字元中，執行下列命令以確認 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權：**cacls "drive letter:\system volume information" /T /C**
+4. 如果 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權，請執行下列命令：**cacls  "drive letter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
+    - 如果步驟 #4 因存取遭拒而失敗，請執行下列命令來取得 [系統磁碟區資訊] 資料夾的擁有權，然後重複步驟 #4：**takeown /A /R /F "drive letter:\System Volume Information"**
 
 <a id="-2134375810"></a>**因為已刪除並重新建立 Azure 檔案共用，所以同步失敗。**  
 
@@ -1004,7 +1004,7 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**確定 Azure 檔案同步具有儲存體帳戶的存取權。**  
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 按一下左側目錄的 [存取控制 (IAM)]。
-1. 按一下 [角色指派] 索引標籤，列出可存取儲存體帳戶的使用者和應用程式 ( *服務主體* )。
+1. 按一下 [角色指派] 索引標籤，列出可存取儲存體帳戶的使用者和應用程式 (*服務主體*)。
 1. 確認 [Microsoft.StorageSync] 或 [混合式檔案同步服務] (舊的應用程式名稱) 出現在清單中，且包含 [讀者及資料存取] 角色。 
 
     ![此螢幕擷取畫面顯示儲存體帳戶的存取控制索引標籤所包含的「混合式檔案同步服務」服務主體](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
@@ -1013,7 +1013,7 @@ if ($fileShare -eq $null) {
 
     - 按一下 [新增] 。
     - 在 [角色] 欄位中，選取 [讀取者及資料存取]。
-    - 在 [選取] 欄位中，輸入 **Microsoft.StorageSync** ，選取角色並按一下 [儲存]。
+    - 在 [選取] 欄位中，輸入 **Microsoft.StorageSync**，選取角色並按一下 [儲存]。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1266,7 +1266,24 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 如果問題未解決，請執行 AFSDiag 工具，並將其 .zip 檔案輸出傳送給支援工程師，以供進一步診斷。
 
-若要執行 AFSDiag，請執行下列步驟：
+若要執行 AFSDiag，請執行下列步驟。
+
+針對代理程式版本 v11 和更新版本：
+1. 開啟提升權限的 PowerShell 視窗，然後執行下列命令 (每個命令後要按 Enter 鍵)：
+
+    > [!NOTE]
+    >AFSDiag 會先建立輸出目錄和其中的暫存資料夾，再收集記錄檔，並在執行後刪除暫存資料夾。 指定不包含資料的輸出位置。
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. 重現問題。 完成時，輸入 **D**。
+3. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。 
+
+針對代理程式版本 v10 和更早版本：
 1. 建立將用來儲存 AFSDiag 輸出的目錄 (例如 C:\Output)。
     > [!NOTE]
     >AFSDiag 會先刪除輸出目錄中的所有內容，然後再收集記錄檔。 指定不包含資料的輸出位置。
@@ -1280,8 +1297,9 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 3. 針對 Azure 檔案同步核心模式追蹤層級，輸入 **1** (除非為了建立更詳細的追蹤而指定其他值)，然後按 Enter。
 4. 針對 Azure 檔案同步使用者模式追蹤層級，輸入 **1** (除非為了建立更詳細的追蹤而指定其他值)，然後按 Enter。
-5. 重現問題。 完成時，輸入 **D** 。
+5. 重現問題。 完成時，輸入 **D**。
 6. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。
+
 
 ## <a name="see-also"></a>另請參閱
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

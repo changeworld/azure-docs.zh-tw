@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9af6311165f50023cfca8f9253f77b4c84c25dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7589b13dc517a23e8d9d65907fb3342e4e2490a9
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500924"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734334"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>使用 Azure CLI 透過網路安全性群組篩選網路流量
 
@@ -33,12 +33,11 @@ ms.locfileid: "87500924"
 * 將虛擬機器 (VM) 部署至子網路中
 * 測試流量篩選
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
-
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
 
@@ -70,7 +69,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>建立網路安全性群組
 
-使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例會建立名為 myNsg** 的網路安全性群組： 
+使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例會建立名為 myNsg 的網路安全性群組： 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -119,7 +118,7 @@ az network nsg rule create \
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork** 的虛擬網路：
+使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork 的虛擬網路：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +127,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 將子網路新增至虛擬網路。 下列範例會將名為 mySubnet** 的子網路新增至虛擬網路，並將其與 myNsg** 網路安全性群組產生關聯：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 將子網路新增至虛擬網路。 下列範例會將名為 mySubnet 的子網路新增至虛擬網路，並將其與 myNsg 網路安全性群組產生關聯：
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -196,7 +195,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>測試流量篩選
 
-使用下列命令建立 myVmMgmt** VM 的 SSH 工作階段。 *\<publicIpAddress>* 以您 VM 的公用 IP 位址取代。 在上述範例中，IP 位址是 *13.90.242.231*。
+使用下列命令建立 myVmMgmt VM 的 SSH 工作階段。 *\<publicIpAddress>* 以您 VM 的公用 IP 位址取代。 在上述範例中，IP 位址是 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -204,17 +203,17 @@ ssh azureuser@<publicIpAddress>
 
 出現輸入密碼的提示時，請輸入您在[建立 VM](#create-virtual-machines) 中輸入的密碼。
 
-由於允許連接埠 22 從網際網路將流量輸入連結至 myVmMgmt** VM 的網路介面所在的 myAsgMgmtServers** 應用程式安全性群組，因此連線會成功。
+由於允許連接埠 22 從網際網路將流量輸入連結至 myVmMgmt VM 的網路介面所在的 myAsgMgmtServers 應用程式安全性群組，因此連線會成功。
 
-使用下列命令，從 myVmMgmt** VM 透過 SSH 連線至 myVmWeb** VM：
+使用下列命令，從 myVmMgmt VM 透過 SSH 連線至 myVmWeb VM：
 
 ```bash 
 ssh azureuser@myVmWeb
 ```
 
-由於每個網路安全性群組中的預設安全性規則允許透過所有連接埠在虛擬網路內的所有 IP 位址之間傳輸流量，因此連線會成功。 您無法透過 SSH 網際網路連線至 myVmWeb** VM，因為 myAsgWebServers** 的安全性規則不允許從網際網路的連接埠 22 輸入。
+由於每個網路安全性群組中的預設安全性規則允許透過所有連接埠在虛擬網路內的所有 IP 位址之間傳輸流量，因此連線會成功。 您無法透過 SSH 網際網路連線至 myVmWeb VM，因為 myAsgWebServers 的安全性規則不允許從網際網路的連接埠 22 輸入。
 
-使用下列命令在 myVmWeb** VM 上安裝 nginx Web 伺服器：
+使用下列命令在 myVmWeb VM 上安裝 nginx Web 伺服器：
 
 ```bash 
 # Update package source
@@ -224,13 +223,13 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-由於預設安全性規則允許所有對網際網路的輸出流量，因此允許 MyVmWeb** VM 輸出至網際網路以擷取 nginx。 結束 myVmWeb** SSH 工作階段，這樣會讓您停留在 myVmMgmt** VM 的 `username@myVmMgmt:~$` 提示上。 若要從 myVmWeb** VM 擷取 nginx 歡迎畫面，請輸入下列命令：
+由於預設安全性規則允許所有對網際網路的輸出流量，因此允許 MyVmWeb VM 輸出至網際網路以擷取 nginx。 結束 myVmWeb SSH 工作階段，這樣會讓您停留在 myVmMgmt VM 的 `username@myVmMgmt:~$` 提示上。 若要從 myVmWeb VM 擷取 nginx 歡迎畫面，請輸入下列命令：
 
 ```bash
 curl myVmWeb
 ```
 
-登出 myVmMgmt** VM。 若要確認您可以從 Azure 外部存取 myVmWeb** Web 伺服器，請從您自己的電腦輸入 `curl <publicIpAddress>`。 連線成功，因為允許埠80從網際網路輸入至連結至*myVmWeb* VM 的網路介面所屬的*myAsgWebServers*應用程式安全性群組。
+登出 myVmMgmt VM。 若要確認您可以從 Azure 外部存取 myVmWeb Web 伺服器，請從您自己的電腦輸入 `curl <publicIpAddress>`。 連線成功，因為允許埠80從網際網路輸入至連結至 *myVmWeb* VM 的網路介面所屬的 *myAsgWebServers* 應用程式安全性群組。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -240,7 +239,7 @@ curl myVmWeb
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已建立網路安全性群組，並將其與虛擬網路子網路產生關聯。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)和[管理網路安全性群組](manage-network-security-group.md)。
 

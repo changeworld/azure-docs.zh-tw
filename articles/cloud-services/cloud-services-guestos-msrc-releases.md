@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/13/2020
+ms.date: 11/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 8919ae8f43cd699b0ff79afc7ac39cbb39d2798e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626751"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737824"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
@@ -78,34 +78,31 @@ ms.locfileid: "94626751"
 
 
 ## <a name="october-2020-guest-os"></a>2020年10月的來賓 OS
->[!NOTE] 
-
->我們目前正在將 10 月客體 OS 推展到已設定要自動更新的雲端服務 VM。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 10 月客體 OS 中。 此清單會隨時變動。 
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-10 |  [4577010]  |  IE 累積更新 | 2.103、3.90、4.83 | 2020年9月8日 |
-|  Rel 20-10 |  [4580325]  |  Flash 更新 | 3.90、4.83、5.48、6.24 | 2020年10月13日 |
-|  Rel 20-10 |  [4577668]  |  最新的累積更新 | 6.24 | 2020年10月13日 |
-|  Rel 20-10 |  [4580346]  |  最新的累積更新 | 5.48 | 2020年10月13日 |
-|  Rel 20-10 |  [4580970]  |  服務堆疊更新 | 2.103 | 2020年10月13日 |
-|  Rel 20-10 |  [4580345]  |  每月彙總 | 2.103 | 2020年10月13日 |
-|  Rel 20-10 |  [4578952]  |  .NET Framework 3.5.1 安全性和品質匯總套件 | 2.103 | 2020年10月13日 |
-|  Rel 20-10 |  [4578955]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 2.103 | 2020年10月13日 |
-|  Rel 20-10 |  [4566426]  |  服務堆疊更新 | 3.90 | 2020年7月14日 |
-|  Rel 20-10 |  [4580382]  |  每月彙總 | 3.90 | 2020年10月13日 |
-|  Rel 20-10 |  [4578950]  |  .NET Framework 3.5 安全性和品質匯總套件 | 3.90 | 2020年10月13日 |
-|  Rel 20-10 |  [4578954]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 3.90 | 2020年10月13日 |
-|  Rel 20-10 |  [4566425]  |  服務堆疊更新 | 4.83 | 2020年7月14日 |
-|  Rel 20-10 |  [4580347]  |  每月彙總 | 4.83 | 2020年10月13日 |
-|  Rel 20-10 |  [4578953]  |  .NET Framework 3.5 安全性和品質匯總套件 | 4.83 | 2020年10月13日 |
-|  Rel 20-10 |  [4578956]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 4.83 | 2020年10月13日 |
-|  Rel 20-10 |  [4578013]  |  獨立安全性更新 | 4.83 | 2020年8月19日 |
-|  Rel 20-10 |  [4576750]  |  服務堆疊更新 | 5.48 | 2020年9月8日 |
-|  Rel 20-10 |  [4494175]  |  微碼 | 5.48 | 2020年9月1日 |
-|  Rel 20-10 |  [4577667]  |  服務堆疊更新 | 6.24 | 2020年10月13日 |
-|  Rel 20-10 |  [4578966]  |  .NET Framework 3.5 和4.7.2 累計更新 | 6.24 | 2020年10月13日 |
-|  Rel 20-10 |  [4494174]  |  微碼 | 6.24 | 2020年9月3日 |
+|  Rel 20-10 |  [4577010]  |  IE 累積更新 | [2.103]、 [3.90]、 [4.83] | 2020年9月8日 |
+|  Rel 20-10 |  [4580325]  |  Flash 更新 | [3.90]、 [4.83]、 [5.48]、 [6.24] | 2020年10月13日 |
+|  Rel 20-10 |  [4577668]  |  最新的累積更新 | [6.24] | 2020年10月13日 |
+|  Rel 20-10 |  [4580346]  |  最新的累積更新 | [5.48] | 2020年10月13日 |
+|  Rel 20-10 |  [4580970]  |  服務堆疊更新 | [2.103] | 2020年10月13日 |
+|  Rel 20-10 |  [4580345]  |  每月彙總 | [2.103] | 2020年10月13日 |
+|  Rel 20-10 |  [4578952]  |  .NET Framework 3.5.1 安全性和品質匯總套件 | [2.103] | 2020年10月13日 |
+|  Rel 20-10 |  [4578955]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | [2.103] | 2020年10月13日 |
+|  Rel 20-10 |  [4566426]  |  服務堆疊更新 | [3.90] | 2020年7月14日 |
+|  Rel 20-10 |  [4580382]  |  每月彙總 | [3.90] | 2020年10月13日 |
+|  Rel 20-10 |  [4578950]  |  .NET Framework 3.5 安全性和品質匯總套件 | [3.90] | 2020年10月13日 |
+|  Rel 20-10 |  [4578954]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | [3.90] | 2020年10月13日 |
+|  Rel 20-10 |  [4566425]  |  服務堆疊更新 | [4.83] | 2020年7月14日 |
+|  Rel 20-10 |  [4580347]  |  每月彙總 | [4.83] | 2020年10月13日 |
+|  Rel 20-10 |  [4578953]  |  .NET Framework 3.5 安全性和品質匯總套件 | [4.83] | 2020年10月13日 |
+|  Rel 20-10 |  [4578956]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | [4.83] | 2020年10月13日 |
+|  Rel 20-10 |  [4578013]  |  獨立安全性更新 | [4.83] | 2020年8月19日 |
+|  Rel 20-10 |  [4576750]  |  服務堆疊更新 | [5.48] | 2020年9月8日 |
+|  Rel 20-10 |  [4494175]  |  微碼 | [5.48] | 2020年9月1日 |
+|  Rel 20-10 |  [4577667]  |  服務堆疊更新 | [6.24] | 2020年10月13日 |
+|  Rel 20-10 |  [4578966]  |  .NET Framework 3.5 和4.7.2 累計更新 | [6.24] | 2020年10月13日 |
+|  Rel 20-10 |  [4494174]  |  微碼 | [6.24] | 2020年9月3日 |
 
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -130,6 +127,11 @@ ms.locfileid: "94626751"
 [4577667]: https://support.microsoft.com/kb/4577667
 [4578966]: https://support.microsoft.com/kb/4578966
 [4494174]: https://support.microsoft.com/kb/4494174
+[2.103]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.48]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.24]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="september-2020-guest-os"></a>2020年9月的來賓 OS
@@ -1885,7 +1887,7 @@ ms.locfileid: "94626751"
 | MS15-014 |[3004361] |SMB 中的弱點可能會允許略過安全性功能 |4.17、3.24、2.36 |N/A |
 | MS15-015 |[3031432] |Microsoft Windows 中的弱點可能會允許權限提高 |4.17、3.24、2.36 |N/A |
 | MS15-016 |[3029944] |Microsoft 圖形元件中的弱點可能會允許資訊洩漏 |4.17、3.24、2.36 |N/A |
-| N/A |[3004375] |可改善 Windows 命令列稽核的更新<p/>**注意** ：更新已安裝，但啟用所需的登錄機碼為關閉狀態 |4.17、3.24、2.36 |N/A |
+| N/A |[3004375] |可改善 Windows 命令列稽核的更新<p/>**注意**：更新已安裝，但啟用所需的登錄機碼為關閉狀態 |4.17、3.24、2.36 |N/A |
 
 ## <a name="january-2015-guest-os"></a>2015 年 1 月客體 OS
 | 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |

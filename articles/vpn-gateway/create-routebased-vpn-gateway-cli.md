@@ -7,22 +7,24 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e43f324a8c32615eded782e75291b575852c4382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bbd7e39ee65ba304ec62697b6fcc77bea133b41
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393653"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737212"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 來建立路由型 VPN 閘道
 
 本文將協助您使用 Azure CLI 來快速建立路由型 Azure VPN 閘道。 建立與內部部署網路的 VPN 連線時，會使用 VPN 閘道。 您也可以使用 VPN 閘道來連線至 VNet。
 
-本文中的步驟將會建立 VNet、子網路、閘道子網路，以及路由型 VPN 閘道 (虛擬網路閘道)。 虛擬網路閘道的建立作業可能需要花費 45 分鐘以上的時間。 完成閘道建立之後，您接著就可建立連線。 這些步驟需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+本文中的步驟將會建立 VNet、子網路、閘道子網路，以及路由型 VPN 閘道 (虛擬網路閘道)。 虛擬網路閘道的建立作業可能需要花費 45 分鐘以上的時間。 完成閘道建立之後，您接著就可建立連線。 這些步驟需要 Azure 訂用帳戶。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- 本文需要 Azure CLI 的版本2.0.4 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -56,7 +58,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>要求公用 IP 位址
@@ -67,7 +69,7 @@ VPN 閘道必須具有動態配置的公用 IP 位址。 公用 IP 位址將會�
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>建立 VPN 閘道

@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660758"
+ms.locfileid: "94701308"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -64,6 +64,10 @@ ms.locfileid: "94660758"
 - 如果您使用的是 .NET v12 SDK，請指定 [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)列舉的 **中繼資料** 值。
 
 - 如果您使用的是 .NET v11 SDK，請指定 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的 **中繼資料** 值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
+
+### <a name="list-blob-versions-or-snapshots"></a>列出 blob 版本或快照集
+
+若要使用 .NET v12 用戶端程式庫列出 blob 版本或快照集，請使用 [**版本**] 或 [**快照**] 欄位指定 [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates)參數。 版本和快照集會從最舊到最新的清單。 如需列出版本的詳細資訊，請參閱 [列出 blob 版本](versioning-enable.md#list-blob-versions)。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>簡單列表與階層式清單
 
