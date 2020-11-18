@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - Azure Toolkit for IntelliJ (Spark 應用程式)
-description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至 Apache Spark 集區 (預覽)。
+description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至無伺服器 Apache Spark 集區 (預覽)。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: be127d4214577e017522aec6a1b61b8f62638ed9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368735"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325232"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區搭配 IntelliJ 來建立 Apache Spark 應用程式
 
-本教學課程說明如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至 Spark 集區 (預覽)。 您可以利用數個方式來使用此外掛程式：
+本教學課程說明如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至無伺服器 Apache Spark 集區 (預覽)。 您可以利用數個方式來使用此外掛程式：
 
 - 在 Spark 集區上開發並提交 Scala Spark 應用程式。
 - 存取 Spark 集區資源。
@@ -40,7 +40,7 @@ ms.locfileid: "92368735"
 - 下列必要條件僅適用於 Windows 使用者：
 
   在 Windows 電腦上執行本機 Spark Scala 應用程式時，可能會發生如 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的例外狀況。 發生這個例外狀況是因為 Windows 上遺失 WinUtils.exe。
-  若要解決這個錯誤，請將 [WinUtils 可執行檔](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)下載至 **C:\WinUtils\bin** 之類的位置。 然後，新增環境變數 **HADOOP_HOME** ，並將變數的值設為 **C:\WinUtils** 。
+  若要解決這個錯誤，請將 [WinUtils 可執行檔](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)下載至 **C:\WinUtils\bin** 之類的位置。 然後，新增環境變數 **HADOOP_HOME**，並將變數的值設為 **C:\WinUtils**。
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>建立適用於 Spark 集區的 Spark Scala 應用程式
 
@@ -49,8 +49,8 @@ ms.locfileid: "92368735"
 3. 選取主視窗中的 [Spark 專案與範例 (Scala)]。
 4. 從 [建置工具] 下拉式清單中，選取下列其中一種類型：
 
-   - **Maven** ：建立 Scala 專案精靈支援。
-   - **SBT** ：可供管理相依性並建置 Scala 專案。
+   - **Maven**：建立 Scala 專案精靈支援。
+   - **SBT**：可供管理相依性並建置 Scala 專案。
 
     ![IntelliJ IDEA 的新增專案對話方塊](./media/intellij-tool-synapse/create-synapse-application01.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "92368735"
     |專案名稱| 輸入名稱。 本教學課程使用 `myApp`。|
     |專案&nbsp;位置| 輸入所要的位置以儲存您的專案。|
     |專案 SDK| 您第一次使用 IDEA 時，這可能是空白的。 選取 [新增...] 並瀏覽至您的 JDK。|
-    |Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 Synapse 僅支援 **Spark 2.4.0** 。|
+    |Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 Synapse 僅支援 **Spark 2.4.0**。|
     |||
 
     ![選取 Apache Spark SDK](./media/intellij-tool-synapse/create-synapse-application02.png)
@@ -78,7 +78,7 @@ ms.locfileid: "92368735"
 
     ![對話方塊中的成品資訊](./media/intellij-tool-synapse/default-artifact-dialog.png)
 
-9. 從 **myApp** > **src** > **main** > **scala**> **sample**> **LogQuery** 尋找 **LogQuery** 。 本教學課程使用 **LogQuery** 來執行。
+9. 從 **myApp** > **src** > **main** > **scala**> **sample**> **LogQuery** 尋找 **LogQuery**。 本教學課程使用 **LogQuery** 來執行。
 
    ![從專案中建立 Scala 類別的命令](./media/intellij-tool-synapse/select-run-file.png)
 

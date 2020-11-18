@@ -8,16 +8,16 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992143"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445212"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>受控 HSM 本機 RBAC 內建角色
 
-受控 HSM 本機 RBAC 有數個內建角色，可供您指派給使用者、服務主體、群組和受控識別。 若要允許主體執行作業，您必須為其指派適當角色，藉以授與執行該作業的權限。 這些角色和作業都只能讓您管理資料平面作業的權限。 若要管理受控 HSM 資源的控制平面權限 (例如，建立新的受控 HSM，或更新、移動、刪除現有的受控 HSM)，您必須使用 [Azure 角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)。
+受控 HSM 本機 RBAC 有數個內建角色，可供您指派給使用者、服務主體、群組和受控識別。 若要允許主體執行作業，您必須為其指派適當角色，藉以授與執行該作業的權限。 這些角色和作業都只能讓您管理資料平面作業的權限。 若要管理受控 HSM 資源的控制平面權限 (例如，建立新的受控 HSM，或更新、移動、刪除現有的受控 HSM)，您必須使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ## <a name="built-in-roles"></a>內建角色
 
@@ -77,5 +77,5 @@ ms.locfileid: "90992143"
 
 ## <a name="next-steps"></a>下一步
 
-- 請參閱 [Azure 角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 的概觀。
+- 請參閱 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 的概觀。
 - 請參閱[受控 HSM 角色管理](role-management.md)的教學課程

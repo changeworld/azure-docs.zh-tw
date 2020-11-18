@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949807"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379548"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教學課程：使用自訂動作和資源建立受控應用程式
 
@@ -41,7 +41,7 @@ ms.locfileid: "91949807"
 
 在本教學課程中，您會建立受控應用程式，且其受控資源群組將包含自訂提供者執行個體、儲存體帳戶和函式。 此範例中使用的 Azure 函式會實作 API，以處理動作和資源的自訂提供者作業。 Azure 儲存體帳戶可作為您自訂提供者資源的基本儲存體。
 
-用來建立受控應用程式執行個體的使用者介面包含 `funcname` 和 `storagename` 輸入元素。 儲存體帳戶名稱函式名稱必須是全域唯一的。 根據預設，函式檔案會從[範例函式套件](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)部署，但您可以在 *createUIDefinition.json* 中新增套件連結的輸入元素來變更此行為：
+用來建立受控應用程式執行個體的使用者介面包含 `funcname` 和 `storagename` 輸入元素。 儲存體帳戶名稱函式名稱必須是全域唯一的。 根據預設，函式檔案會從[範例函式套件](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)部署，但您可以在「createUiDefinition.json」 中新增套件連結的輸入元素來變更此行為：
 
 ```json
 {
@@ -74,7 +74,7 @@ ms.locfileid: "91949807"
 }
 ```
 
-此外也可在 *createUIDefinition.json* 中新增輸出：
+此外也可在「createUiDefinition.json」 中新增輸出：
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ ms.locfileid: "91949807"
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-如需完整的 *createUIDefinition.json* 範例，請至[參考：使用者介面元素成品](reference-createuidefinition-artifact.md)。
+如需完整的「createUiDefinition.json」範例，請至[參考：使用者介面元素成品](reference-createuidefinition-artifact.md)。
 
 ## <a name="template-with-custom-provider"></a>自訂提供者的範本
 
 若要使用自訂提供者建立受控應用程式執行個體，您必須在 **mainTemplate.json** 中定義名為 **public** 的自訂提供者資源和類型 **Microsoft.CustomProviders/resourceProviders**。 在該資源中，您會為您的服務定義資源類型和動作。 若要部署 Azure 函式和 Azure 儲存體帳戶執行個體，請分別定義 `Microsoft.Web/sites` 和 `Microsoft.Storage/storageAccounts` 類型的資源。
 
-在本教學課程中，您將建立一個 `users` 資源類型、`ping` 自訂動作，以及將在 `users` 自訂資源的內容中執行的 `users/contextAction` 自訂動作。 請為每個資源類型和動作提供一個端點，且該端點應指向函式名稱已提供於 [createUIDefinition.json](#user-interface-definition) 中的函式。 針對資源類型請將 **routingType** 指定為 `Proxy,Cache`，並指定 `Proxy` 作為動作：
+在本教學課程中，您將建立一個 `users` 資源類型、`ping` 自訂動作，以及將在 `users` 自訂資源的內容中執行的 `users/contextAction` 自訂動作。 請為每個資源類型和動作提供一個端點，且該端點應指向函式名稱已提供於 [createUiDefinition.json](#user-interface-definition) 中的函式。 針對資源類型請將 **routingType** 指定為 `Proxy,Cache`，並指定 `Proxy` 作為動作：
 
 ```json
 {
@@ -123,7 +123,7 @@ ms.locfileid: "91949807"
 }
 ```
 
-如需完整的 *mainTemplate.json* 範例，請至[參考：部署範本成品](reference-main-template-artifact.md)。
+如需完整的 *mainTemplate.json* 範例，請至 [參考：部署範本成品](reference-main-template-artifact.md)。
 
 ## <a name="view-definition-artifact"></a>檢視定義成品
 
@@ -175,7 +175,7 @@ ms.locfileid: "91949807"
   }
 ```
 
-如需完整的 *viewDefinition.json* 範例，請至[參考：檢視定義成品](reference-view-definition-artifact.md)。
+如需完整的 *viewDefinition.json* 範例，請至 [參考：檢視定義成品](reference-view-definition-artifact.md)。
 
 ## <a name="managed-application-definition"></a>受控應用程式定義
 
@@ -247,14 +247,14 @@ az managedapp definition create \
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入**受控應用程式中心**，並加以選取。
+1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入 **受控應用程式中心**，並加以選取。
 2. 在 [受控應用程式中心]  上選擇 [服務類別目錄應用程式定義]  ，然後按一下 [新增]  。 
     
     ![新增服務類別目錄](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
 3. 提供用來建立服務類別目錄定義的值：
 
-    * 提供服務類別目錄定義的唯一**名稱**、**顯示名稱**和*描述* (選擇性)。
+    * 提供服務類別目錄定義的唯一 **名稱**、**顯示名稱** 和 *描述* (選擇性)。
     * 選取 [訂用帳戶]  、[資源群組]  ，以及將在其中建立應用程式定義的 [位置]  。 您可以使用 zip 套件所使用的相同資源群組，或建立新的資源群組。
     * 針對 [套件檔案 URI]  ，提供您在先前的步驟中建立之 zip 檔案的路徑。
 
@@ -303,7 +303,7 @@ az managedapp create \
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入**受控應用程式中心**，並加以選取。
+1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入 **受控應用程式中心**，並加以選取。
 2. 在 [受控應用程式中心]  上選擇 [服務類別目錄應用程式]  ，然後按一下 [新增]  。 
 
     ![新增受控應用程式](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
@@ -327,11 +327,11 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>自訂動作和資源
 
-在部署服務目錄應用程式執行個體之後，您會有兩個新的資源群組。 第一個資源群組 `applicationGroup` 包含受控應用程式的執行個體，第二個資源群組 `managedResourceGroup` 會保存受控應用程式的資源，包括**自訂提供者**。
+在部署服務目錄應用程式執行個體之後，您會有兩個新的資源群組。 第一個資源群組 `applicationGroup` 包含受控應用程式的執行個體，第二個資源群組 `managedResourceGroup` 會保存受控應用程式的資源，包括 **自訂提供者**。
 
 ![應用程式資源群組](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 
-您可以移至受控應用程式執行個體，並執行 [概觀] 頁面中的**自訂動作**、在 [使用者] 頁面中建立**使用者**自訂資源，以及在自訂資源上執行**自訂內容動作**。
+您可以移至受控應用程式執行個體，並執行 [概觀] 頁面中的 **自訂動作**、在 [使用者] 頁面中建立 **使用者** 自訂資源，以及在自訂資源上執行 **自訂內容動作**。
 
 * 移至 [概觀] 頁面，然後按一下 [Ping 動作] 按鈕：
 
@@ -339,11 +339,11 @@ az managedapp create \
 
 * 移至 [使用者] 頁面，然後按一下 [新增] 按鈕。 提供用來建立資源及提交表單的輸入：
 
-![建立自訂資源](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
+![顯示從 [使用者] 所選取 [新增] 按鈕的螢幕擷取畫面。](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
 
 * 移至 [使用者] 頁面，選取 [使用者] 資源，然後按一下 [自訂內容動作]：
 
-![建立自訂資源](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
+![顯示已選取自訂內容動作的螢幕擷取畫面。](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
 
 [!INCLUDE [clean-up-section-portal](../../../includes/clean-up-section-portal.md)]
 

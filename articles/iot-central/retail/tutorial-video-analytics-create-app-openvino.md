@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: e16342b4b46a189a5a5c4c0554fb2d870c9cdcac
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876623"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426718"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>教學課程：在 Azure IoT Central 中建立影片分析 - 物件和動作偵測應用程式 (OpenVINO&trade;)
 
@@ -62,7 +62,7 @@ ms.locfileid: "91876623"
 
 1. 範本不會在 IoT Central 中公開這些屬性，因此您需要將媒體服務設定值新增至部署資訊清單。 找出 `lvaEdge` 模組，並將預留位置取代為您在建立媒體服務帳戶時，從 scratchpad.txt 檔案中記下的值。
 
-    `azureMediaServicesArmId` 就是您在建立媒體服務帳戶時，從 *scratchpad.txt* 檔案中記下的**資源識別碼**。
+    `azureMediaServicesArmId` 就是您在建立媒體服務帳戶時，從 *scratchpad.txt* 檔案中記下的 **資源識別碼**。
 
     您已在為媒體服務建立服務主體時，從 *scratchpad.txt* 檔案中記下 `aadTenantId`、`aadServicePrincipalAppId` 和 `aadServicePrincipalSecret`：
 
@@ -109,7 +109,7 @@ ms.locfileid: "91876623"
 
 ### <a name="replace-the-manifest"></a>取代資訊清單
 
-在 [LVA Edge 閘道] 頁面上，選取 [+ 取代資訊清單]。
+在 [LVA Edge 閘道 v2] 頁面上，選取 [+ 取代資訊清單]。
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="取代資訊清單":::
 

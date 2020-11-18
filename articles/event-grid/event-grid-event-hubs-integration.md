@@ -4,12 +4,12 @@ description: 教學課程：說明如何使用 Azure 事件方格和事件中樞
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270542"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305280"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教學課程：將巨量資料串流處理至資料倉儲
 Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您對應用程式和服務發出的通知 (事件) 做出回應。 例如，它可以觸發 Azure 函式以處理已擷取至 Azure Blob 儲存體或 Azure Data Lake Storage 的事件中樞資料，並將資料移轉至其他資料存放庫。 此[事件中樞和事件方格整合範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)說明如何使用事件中樞與事件方格，將已擷取的事件中樞資料從 Blob 儲存體順暢地遷移至 Azure Synapse Analytics (先前為 SQL 資料倉儲)。
@@ -129,7 +129,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
         ```powershell
         New-AzResourceGroup -Name rgDataMigration -Location eastus
         ```
-    2. 指定**資源群組**的名稱。
+    2. 指定 **資源群組** 的名稱。
     3. 按 ENTER 鍵。 
 3. 執行下列命令，以部署上一節中提到的所有資源 (事件中樞、儲存體帳戶、函式應用程式、Azure Synapse Analytics)：
     1. 複製下列命令並貼到 Cloud Shell 視窗中。 或者，您可以複製/貼到自己選擇的編輯器中，並在設定值之後將命令複製到 Cloud Shell 中。 
@@ -165,11 +165,11 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 ### <a name="create-a-table-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立資料表
 執行 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 指令碼，在您的資料倉儲中建立資料表。 若要執行指令碼，您可以在入口網站中使用 Visual Studio 或查詢編輯器。 下列步驟說明如何使用查詢編輯器： 
 
-1. 在資源群組中的資源清單內，選取您的 **Synapse SQL 集區 (資料倉儲)** 。 
+1. 在資源群組中的資源清單內，選取您的 **專用 SQL 集區**。 
 2. 在 Azure Synapse Analytics 頁面中，選取左側功能表中的 [查詢編輯器 (預覽)]。 
 
     ![Azure Synapse Analytics 頁面](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. 輸入 SQL 伺服器的**使用者名稱**和**密碼**，然後選取 [確定]。 您可能需要將您的用戶端 IP 位址新增到防火牆，才能成功登入 SQL 伺服器。 
+2. 輸入 SQL 伺服器的 **使用者名稱** 和 **密碼**，然後選取 [確定]。 您可能需要將您的用戶端 IP 位址新增到防火牆，才能成功登入 SQL 伺服器。 
 
     ![SQL 伺服器驗證](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. 在查詢視窗中，複製並執行下列 SQL 指令碼： 

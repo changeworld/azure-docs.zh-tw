@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 791b50f1458ba7ee127d45ee374b5589ade588e0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674939"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308202"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教學課程：實作資料湖擷取模式以更新 Databricks 差異資料表
 
@@ -37,7 +37,7 @@ ms.locfileid: "92674939"
 
 * 建立具有階層命名空間的儲存體帳戶 (Azure Data Lake Storage Gen2)。 本教學課程使用名為 `contosoorders` 的儲存體帳戶。 確定您已對使用者帳戶指派[儲存體 Blob 資料參與者角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)。
 
-  請參閱[建立 Azure Data Lake Storage Gen2 帳戶](data-lake-storage-quickstart-create-account.md)。
+   請參閱[建立儲存體帳戶以與 Azure Data Lake Storage Gen2 搭配使用](create-data-lake-storage-account.md)。
 
 * 建立服務主體。 請參閱[如何：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "92674939"
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. 將此檔案儲存到您的本機電腦，並將其命名為 **data.csv** 。
+4. 將此檔案儲存到您的本機電腦，並將其命名為 **data.csv**。
 
 5. 在儲存體總管中，將此檔案上傳至 **input** 資料夾。  
 
@@ -291,7 +291,7 @@ ms.locfileid: "92674939"
 
    [新增函式]  窗格隨即出現。
 
-9. 在 [新增函式]  窗格中，將函式命名為 **UpsertOrder** ，然後按一下 [建立]  按鈕。
+9. 在 [新增函式]  窗格中，將函式命名為 **UpsertOrder**，然後按一下 [建立]  按鈕。
 
 10. 將程式碼檔案的內容取代為此程式碼，然後按一下 [儲存]  按鈕：
 

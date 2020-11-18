@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: fc67012dff5931fb86452ea95c2ea074a426953c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee431df89128a516e3a1cabeb43b5cbe9e356dae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075659"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927850"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教學課程 – 使用 PowerShell 將 HSM 部署至現有的虛擬網路
 
@@ -233,7 +233,7 @@ SSH 工具用於連線至虛擬機器。 此命令將如下所示，但採用您
 
 其輸出應類似下圖所示：
 
-![佈建狀態](media/tutorial-deploy-hsm-powershell/output.png)
+![螢幕擷取畫面，顯示 hsm (顯示命令) 的輸出。](media/tutorial-deploy-hsm-powershell/output.png)
 
 此時，您已配置所有資源，以提供高可用性、兩個 HSM 部署和已驗證的存取和操作狀態。 任何進一步的設定或測試都牽涉到更多 HSM 裝置本身的工作。 為此，您應該遵循 Gemalto Luna Network HSM 7 Administration Guide 第 7 章的指示，來初始化 HSM 及建立分割區。 您在 Gemalto 客戶支援入口網站中註冊且具有客戶識別碼後，可以直接從 Gemalto 下載所有文件和軟體。 下載用戶端軟體 7.2 版，以取得所有必要的元件。
 

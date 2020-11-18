@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426259"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334664"
 ---
 ::: zone target="docs"
 
@@ -103,7 +103,7 @@ ms.locfileid: "92426259"
     
     ![檔案總管中顯示的共用](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾** 。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
+    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
     
 使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 
@@ -229,11 +229,11 @@ C:\Users>
 
 選取 [下載問題清單]。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤 2](media/data-box-deploy-copy-data/view-errors-2.png)
+![連線並複製、下載問題清單](media/data-box-deploy-copy-data/view-errors-2.png)
 
 開啟清單以檢視錯誤的詳細資料，並選取 [解析 URL] 以檢視建議的解決方法。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤 3](media/data-box-deploy-copy-data/view-errors-3.png)
+![連線並複製、下載及檢視錯誤](media/data-box-deploy-copy-data/view-errors-3.png)
 
 如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
 

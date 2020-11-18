@@ -1,23 +1,23 @@
 ---
 title: UK OFFICIAL 與 UK NHS 藍圖範例控制項
 description: UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 352ba30a21c638c68401e2f8e471096a777fbde9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931267"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420252"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應
 
 下列文章詳細說明 UK OFFICIAL 和 UK NHS 藍圖範例如何對應至 UK OFFICIAL 和 UK NHS 控制項。 如需控制項的詳細資訊，請參閱 [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications)。
 
-以下是 **UK OFFICIAL** 和 **UK NHS** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 UK OFFICIAL 和 UK NHS 控制項並部署特定的 VM 擴充功能，以支援稽核需求**內建原則計畫。
+以下是 **UK OFFICIAL** 和 **UK NHS** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 UK OFFICIAL 和 UK NHS 控制項並部署特定的 VM 擴充功能，以支援稽核需求** 內建原則計畫。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的 **符合規範** 只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md) \(英文\)。
 
 ## <a name="1-data-in-transit-protection"></a>1 傳輸中的資料保護
 
@@ -26,7 +26,6 @@ ms.locfileid: "91931267"
 - 應該只允許對 Redis Cache 的安全連線
 - 應啟用儲存體帳戶的安全傳輸
 - 從未使用安全通訊協定的 Windows 網頁伺服器顯示稽核結果
-- 部署必要條件以稽核未使用安全通訊協定的 Windows 網頁伺服器
 - Web 應用程式應只可經由 HTTPS 存取
 - 函式應用程式應只可經由 HTTPS 存取
 - API 應用程式應只可經由 HTTPS 存取
@@ -55,7 +54,7 @@ ms.locfileid: "91931267"
 - 應修復 SQL 資料庫的弱點
 - 弱點評量解決方案應修復弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
-- SQL 受控執行個體上應啟用弱點評定
+- SQL 受控執行個體應啟用弱點評估
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 應在 SQL 受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性
@@ -64,10 +63,10 @@ ms.locfileid: "91931267"
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以提供不受限存取、允許清單活動和威脅的防護監視，藉此協助您保護資訊系統資產。
 
-- 稽核不受限制的儲存體帳戶網路存取
-- 應在虛擬機器上啟用自適性應用程式控制
+- 儲存體帳戶應限制網路存取
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 - 稽核未設定災害復原的虛擬機器
-- 應啟用 DDoS 保護標準
+- 應啟用 Azure DDoS 保護標準
 - 在 SQL 受控執行個體的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
 - 在 SQL 伺服器的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
 - 在 SQL 伺服器上部署威脅偵測
@@ -115,11 +114,6 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 
 此藍圖指派了 Azure 原則定義，用以稽核未強制執行最低強度和其他密碼需求的 Windows VM，以協助您強制執行強式密碼。 確知有哪些 VM 違反密碼強度原則可協助您採取更正措施，以確保所有 VM 使用者帳戶的密碼均符合原則。
 
-- 部署必要條件以稽核未啟用密碼複雜度設定的 Windows VM
-- 部署必要條件以稽核最大密碼存留期不是 70 天的 Windows VM
-- 部署必要條件以稽核最小密碼存留期不是 1 天的 Windows VM
-- 部署必要條件以稽核最小密碼長度未限制為 14 個字元的 Windows VM
-- 部署必要條件以稽核允許重複使用前 24 個舊密碼的 Windows VM
 - 從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
 - 從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
 - 從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
@@ -128,8 +122,6 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 
 此藍圖也指派了 Azure 原則定義來協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。 了解有哪些資源違反這些原則可協助您採取修正動作，以確保 Azure 資源僅限定給經授權的使用者存取。
 
-- 部署需求以稽核有不具密碼帳戶的 Linux VM
-- 部署需求以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
 - 從帳戶沒有密碼的 Linux VM 顯示稽核結果
 - 從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
 - 儲存體帳戶應移轉至新的 Azure Resource Manager 資源
@@ -141,14 +133,14 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 除了使用超過 25 個原則來進行適當的安全使用者管理以外，此藍圖也指派了 [Azure 原則](../../../policy/overview.md)定義以監視不受限的儲存體帳戶，藉此協助您保護服務介面免於遭受未經授權的存取。
 存取不受限制的儲存體帳戶可允許資訊系統內所包含的資訊受到非預期的存取。 此藍圖也指派一個原則，以在虛擬機器上啟用自適性應用程式控制。
 
-- 稽核不受限制的儲存體帳戶網路存取
-- 應在虛擬機器上啟用自適性應用程式控制
+- 儲存體帳戶應限制網路存取
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 - 應限制透過網際網路面向端點存取
 - 應在網際網路對應虛擬機器中套用自適性網路強化建議
 - 應在虛擬機器擴展集上安裝端點保護解決方案
-- Just-In-Time 網路存取控制應套用在虛擬機器上
+- 應使用 Just-In-Time 網路存取控制來保護虛擬機器的管理連接埠
 - 函式應用程式的遠端偵錯應關閉
-- Web 應用程式的遠端偵錯應關閉
+- 應關閉 Web 應用程式的遠端偵錯
 - 應關閉 API 應用程式的遠端偵錯
 
 ## <a name="13-audit-information-for-users"></a>13 稽核使用者的資訊
@@ -161,6 +153,7 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 - 於虛擬網路建立時部署網路監看員
+
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,18 +1,18 @@
 ---
-title: 將 IoT 隨插即用範例 C 裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 建置並執行使用多個元件的 IoT 隨插即用範例 C 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 教學課程 - 將 IoT 隨插即用範例 C 裝置程式碼連線至 Azure IoT 中樞 | Microsoft Docs
+description: 教學課程 - 建置並執行使用多個元件的 IoT 隨插即用範例 C 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e1a2a45d0f5743874ce0c0b20190d7d396094e43
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0bf0e45f6e9b088567dd48d3eb12ae979ba679e4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046378"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421476"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>教學課程：將在 Linux 或 Windows 上執行的 IoT 隨插即用多個元件裝置應用程式連線至 IoT 中樞 (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 若要在 Windows 上完成此教學課程，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在 [安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含 **使用 C++ 的桌面開發** 工作負載。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 
@@ -79,7 +79,7 @@ git submodule update --init
 ### <a name="use-visual-studio"></a>使用 Visual Studio
 
 1. 開啟所複製存放庫的根資料夾。 幾秒後，Visual Studio 中的 **CMake** 支援就會建立執行和偵錯專案所需的所有項目。
-1. 當 Visual Studio 準備就緒時，在**方案總管**中瀏覽至 iothub_client/samples/pnp/pnp_temperature_controller/ 範例。
+1. 當 Visual Studio 準備就緒時，在 **方案總管** 中瀏覽至 iothub_client/samples/pnp/pnp_temperature_controller/ 範例。
 1. 以滑鼠右鍵按一下 pnp_temperature_controller.c 檔案，然後選取 [新增偵錯設定]。 選取 [預設]。
 1. Visual Studio 會開啟 launch.vs.json 檔案。 編輯此檔案，以下列程式碼片段所示的方式，設定必要的環境變數。 當您完成下列程序後，您會記下範圍識別碼和註冊主要金鑰：[設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)：
 

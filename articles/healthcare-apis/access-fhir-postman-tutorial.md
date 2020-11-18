@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844842"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145645"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 存取 Azure API for FHIR
 
@@ -121,7 +121,7 @@ Azure API for FHIR 的中繼資料 URL 為 `https://MYACCOUNT.azurehealthcareapi
 
 點擊 [傳送]，您應該會看到已成功建立病患：
 
-![已建立病患](media/tutorial-postman/postman-patient-created.png)
+![顯示已成功建立病患的螢幕擷取畫面。](media/tutorial-postman/postman-patient-created.png)
 
 如果您重複執行病患搜尋，現在應該會看到病患記錄：
 

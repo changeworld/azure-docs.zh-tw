@@ -4,14 +4,15 @@ description: 在本教學課程中，您將使用祕密存放區容器儲存體�
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368650"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488635"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -35,7 +36,7 @@ ms.locfileid: "92368650"
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 開始本教學課程之前，請先安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
+* 開始本教學課程之前，請先安裝 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>建立服務主體，或使用受控識別
 
@@ -52,11 +53,17 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 請複製 **appId** 和 **password** 認證以供稍後使用。
 
+## <a name="flow-for-using-managed-identity"></a>使用受控識別的流程
+
+下圖說明受控識別的 AKS–Key Vault 整合流程：
+
+![圖表說明受控識別的 AKS–Key Vault 整合流程](../media/aks-key-vault-integration-flow.png)
+
 ## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>使用 Azure CLI 部署 Azure Kubernetes Service (AKS) 叢集
 
 您不需要使用 Azure Cloud Shell。 已安裝 Azure CLI 的命令提示字元 (終端機) 就已足夠。 
 
-完成[使用 Azure CLI 部署 Azure Kubernetes Service 叢集](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough)中的＜建立資源群組＞、＜建立 AKS 叢集＞和＜連線到叢集＞等節。 
+完成[使用 Azure CLI 部署 Azure Kubernetes Service 叢集](../../aks/kubernetes-walkthrough.md)中的＜建立資源群組＞、＜建立 AKS 叢集＞和＜連線到叢集＞等節。 
 
 > [!NOTE] 
 > 如果您打算使用 Pod 身分識別而非務主體，請務必在建立 Kubernetes 叢集時加以啟用，如下列命令所示：
@@ -103,7 +110,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 ## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>建立 Azure 金鑰保存庫並設定祕密
 
-若要建立您自己的金鑰保存庫並設定祕密，請遵循 [使用 Azure CLI 從 Azure Key Vault 設定和擷取秘密](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli)中的指示。
+若要建立您自己的金鑰保存庫並設定祕密，請遵循 [使用 Azure CLI 從 Azure Key Vault 設定和擷取秘密](../secrets/quick-create-cli.md)中的指示。
 
 > [!NOTE] 
 > 您無須使用 Azure Cloud Shell，也無須建立新的資源群組， 您可以使用先前為 Kubernetes 叢集建立的資源群組。
@@ -171,9 +178,9 @@ spec:
 
 ### <a name="assign-a-service-principal"></a>指派服務主體
 
-如果您要使用服務主體，請授與權限以使其能夠存取您的金鑰保存庫並擷取秘密。 執行下列命令，以指派*讀者*角色，並向服務主體授與可從金鑰保存庫*取得*祕密的權限：
+如果您要使用服務主體，請授與權限以使其能夠存取您的金鑰保存庫並擷取秘密。 執行下列命令，以指派 *讀者* 角色，並向服務主體授與可從金鑰保存庫 *取得* 祕密的權限：
 
-1. 將服務主體指派給現有的金鑰保存庫。 **$AZURE_CLIENT_ID** 參數是您在建立服務主體之後複製的**應用程式識別碼**。
+1. 將服務主體指派給現有的金鑰保存庫。 **$AZURE_CLIENT_ID** 參數是您在建立服務主體之後複製的 **應用程式識別碼**。
     ```azurecli
     az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
     ```
@@ -210,7 +217,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 若要使用受控識別，請為您建立的 AKS 叢集，指派特定的角色。 
 
-1. 若要建立、列出或讀取使用者指派的受控識別，您必須為 AKS 叢集指派[受控識別操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 請確定 **$clientId** 是 Kubernetes 叢集的 clientId。 至於範圍，其會在您的 Azure 訂用帳戶服務下，特別是建立 AKS 叢集時所建立的節點資源群組。 此範圍會確保只有該群組內的資源會受到下列指派角色所影響。 
+1. 若要建立、列出或讀取使用者指派的受控識別，您必須為 AKS 叢集指派[受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色。 請確定 **$clientId** 是 Kubernetes 叢集的 clientId。 至於範圍，其會在您的 Azure 訂用帳戶服務下，特別是建立 AKS 叢集時所建立的節點資源群組。 此範圍會確保只有該群組內的資源會受到下列指派角色所影響。 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
@@ -233,7 +240,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. 將*讀者*角色指派給您在上一個步驟中為金鑰保存庫建立的 Azure AD 身分識別，然後向身分識別授與可從金鑰保存庫取得秘密的權限。 使用 Azure AD 身分識別中的 **clientId** 和 **principalId**。
+1. 將 *讀者* 角色指派給您在上一個步驟中為金鑰保存庫建立的 Azure AD 身分識別，然後向身分識別授與可從金鑰保存庫取得秘密的權限。 使用 Azure AD 身分識別中的 **clientId** 和 **principalId**。
     ```azurecli
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
@@ -335,7 +342,7 @@ kubectl describe pod/nginx-secrets-store-inline
 
 ![Azure CLI 輸出的螢幕擷取畫面，其中顯示 Pod 的「執行中」狀態，且所有事件均顯示為「正常」 ](../media/kubernetes-key-vault-6.png)
 
-在輸出視窗中，已部署的 Pod 應該會處於*執行中*狀態。 在底部的 [事件] 區段中，所有事件類型均顯示為*正常*。
+在輸出視窗中，已部署的 Pod 應該會處於 *執行中* 狀態。 在底部的 [事件] 區段中，所有事件類型均顯示為 *正常*。
 
 確認 Pod 正在執行之後，您可以確認 Pod 是否包含金鑰保存庫中的秘密。
 
@@ -355,4 +362,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 若要協助確保金鑰保存庫可以復原，請參閱：
 > [!div class="nextstepaction"]
-> [開啟虛刪除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
+> [開啟虛刪除](./soft-delete-cli.md)

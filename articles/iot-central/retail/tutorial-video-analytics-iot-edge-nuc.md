@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748642"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427984"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Intel NUC)
 
@@ -115,11 +115,11 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
         symmetric_key: "{symmetric_key}"
     ```
 
-1. 將 `{scope_id}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **識別碼範圍** 。
+1. 將 `{scope_id}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **識別碼範圍**。
 
-1. 將 `{registration_id}` 取代為 lva-gateway-001，也就是您在上一個教學課程中建立的裝置。
+1. 將 `{registration_id}` 取代為「gateway-001」，也就是您在上一個教學課程中建立的裝置。
 
-1. 將 `{symmetric_key}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **lva-gateway-001** 裝置 **主要金鑰** 。
+1. 將 `{symmetric_key}` 取代為上一個教學課程中，您從「scratchpad.txt」檔案中記下的 **gateway-001** 裝置 **主要金鑰**。
 
 1. 執行下列命令以重新啟動 IoT Edge 精靈：
 

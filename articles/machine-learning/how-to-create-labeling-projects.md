@@ -1,19 +1,19 @@
 ---
 title: 建立資料標記專案
 titleSuffix: Azure Machine Learning
-description: 了解如何建立及執行標記專案，以將用於機器學習的資料加上標籤。  這些工具包括 ml 輔助標記，以及標記迴圈中協助此工作的人類。
+description: 了解如何建立及執行標記專案，以將用於機器學習的資料加上標籤。  使用 ML 輔助標記，以及標記迴圈中協助此工作的人類。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776114"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543216"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -105,7 +105,7 @@ ms.locfileid: "91776114"
 
 ## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> 設定累加式重新整理
 
-若您打算將新的映像加入至您的資料集，請使用累加式重新整理將這些新影像新增至您的專案。   當**累加式重新整理**啟用時，會根據標籤完成率定期檢查資料集，以尋找要新增至專案的新影像。   當專案包含 500,000 個影像 (此為上限) 時，會停止檢查新資料。
+若您打算將新的映像加入至您的資料集，請使用累加式重新整理將這些新影像新增至您的專案。   當 **累加式重新整理** 啟用時，會根據標籤完成率定期檢查資料集，以尋找要新增至專案的新影像。   當專案包含 500,000 個影像 (此為上限) 時，會停止檢查新資料。
 
 若要將更多影像新增至您的專案，請使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，將影像上傳至 Blob 儲存體中的適當資料夾。 
 
@@ -152,9 +152,9 @@ ms.locfileid: "91776114"
 * 叢集
 * 預先標記
 
-啟動輔助標記所需的確切標記影像數目並不固定，  且可能會因為一個標記專案而產生很大的差異。 針對某些專案，有時可能會在以手動方式標記 300 個影像之後，看到預先標記或叢集工作。 ML 輔助標記會使用稱為*轉移學習*的技術，使用預先定型的模型開始訓練流程。 如果您的資料集類別與預先定型的模型類似，則只有在以手動標記數百個影像之後，才可以使用預先標記。 如果您的資料集與用來預先定型模型的資料有很大的不同，則可能需要更長的時間。
+啟動輔助標記所需的確切標記影像數目並不固定，  且可能會因為一個標記專案而產生很大的差異。 針對某些專案，有時可能會在以手動方式標記 300 個影像之後，看到預先標記或叢集工作。 ML 輔助標記會使用稱為 *轉移學習* 的技術，使用預先定型的模型開始訓練流程。 如果您的資料集類別與預先定型的模型類似，則只有在以手動標記數百個影像之後，才可以使用預先標記。 如果您的資料集與用來預先定型模型的資料有很大的不同，則可能需要更長的時間。
 
-由於最終標籤仍仰賴標籤者的輸入，因此此項技術有時也稱為*人為迴圈*標記。
+由於最終標籤仍仰賴標籤者的輸入，因此此項技術有時也稱為 *人為迴圈* 標記。
 
 > [!NOTE]
 > ML 輔助資料標示不支援在[虛擬網路](how-to-network-security-overview.md)後方受到保護的預設儲存體帳戶。 您必須使用非預設儲存體帳戶來標示 ML 輔助資料。 非預設儲存體帳戶可以在虛擬網路後方受到保護。 
@@ -175,7 +175,7 @@ ms.locfileid: "91776114"
 
 ## <a name="initialize-the-labeling-project"></a>初始化加上標籤專案
 
-在標籤專案初始化後，專案的某些層面將是不可變的。 您無法變更工作類型或資料集。 您*可以*修改標籤，以及工作描述的 URL。 在建立專案之前，請仔細檢閱設定。 提交專案之後，您就會回到 [資料標記] 首頁，此處會將專案顯示為 [正在初始化]。
+在標籤專案初始化後，專案的某些層面將是不可變的。 您無法變更工作類型或資料集。 您 *可以* 修改標籤，以及工作描述的 URL。 在建立專案之前，請仔細檢閱設定。 提交專案之後，您就會回到 [資料標記] 首頁，此處會將專案顯示為 [正在初始化]。
 
 > [!NOTE]
 > 此頁面可能不會自動重新整理。 因此，在暫停之後，請手動重新整理頁面，以確認專案的狀態是否為 [已建立]。
@@ -183,13 +183,13 @@ ms.locfileid: "91776114"
 ## <a name="run-and-monitor-the-project"></a>執行和監視專案
 在您初始化專案後，Azure 就會開始執行該專案。 選取主要 [資料標記] 頁面上的專案，以查看專案詳細資料。
 
-若要暫停或重新啟動專案，請在右上方切換**執行**狀態。 只有在專案執行時，您才可以為資料加上標籤。
+若要暫停或重新啟動專案，請在右上方切換 **執行** 狀態。 只有在專案執行時，您才可以為資料加上標籤。
 
 ### <a name="dashboard"></a>儀表板
 
 [儀表板] 索引標籤會顯示標籤工作的進度。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="加上標籤專案建立精靈":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="資料標記儀表板":::
 
 進度圖表會顯示已加上標籤的項目數，以及尚未完成的項目數。  擱置中的項目可能是：
 
@@ -237,7 +237,7 @@ ms.locfileid: "91776114"
 使用下列步驟將一或多個標籤新增至專案：
 
 1. 在主要 [資料標記] 頁面上選取專案。
-1. 在頁面的右上方，將**執行**切換為**暫停**以停止標籤人員的活動。
+1. 在頁面的右上方，將 **執行** 切換為 **暫停** 以停止標籤人員的活動。
 1. 選取 [詳細資料] 索引標籤。
 1. 在左側清單中，選取 [標籤類別]。
 1. 在清單頂端，選取 [+ 新增標籤] ![新增標籤](media/how-to-create-labeling-projects/add-label.png)
@@ -246,7 +246,7 @@ ms.locfileid: "91776114"
     * 重新開始並保留所有現有的標籤。  選擇此選項可將所有資料標記為未標記，但讓先前已標記的影像保留現有標籤來作為預設標籤。
     * 繼續並保留所有現有的標籤。 選擇此選項可讓所有已標記的資料保持原狀，並開始針對尚未標記的資料使用新標籤。
 1. 視需要針對新標籤修改您的指示頁面。
-1. 新增了所有新標籤後，請在頁面頂端將**暫停**切換為**執行**來重新啟動專案。  
+1. 新增了所有新標籤後，請在頁面頂端將 **暫停** 切換為 **執行** 來重新啟動專案。  
 
 ## <a name="export-the-labels"></a>匯出標籤
 
@@ -260,4 +260,4 @@ COCO 檔案會建立在 Azure Machine Learning 工作區的預設 Blob 存放區
 
 * [教學課程：建立您的第一個影像分類標籤專案](tutorial-labeling.md)。
 * 為影像加上標籤以進行[影像分類或物體偵測](how-to-label-images.md)
-* 深入了解 [Azure Machine Learning 和 Machine Learning Studio (傳統)](compare-azure-ml-to-studio-classic.md)
+* 深入了解 [Azure Machine Learning 和 Machine Learning Studio (傳統)](./overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)

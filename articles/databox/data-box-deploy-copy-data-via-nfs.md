@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: eee5119336be02621a27b315cb26ca8dd1fd9cb4
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766265"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337656"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 
@@ -62,7 +62,7 @@ ms.locfileid: "91766265"
 
 2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
 
-    ![設定 NFS 用戶端存取 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
+    ![設定 NFS 用戶端的 IP 位址](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
 2. 確定 Linux 主機電腦已安裝NFS 用戶端的[支援版本](data-box-system-requirements.md)。 針對您的 Linux 發行版本，請使用特定版本。 
 
@@ -137,7 +137,7 @@ ms.locfileid: "91766265"
      建議您一開始先使用 16 個平行複製，然後再根據可用的資源增加執行緒數目。
 
 > [!IMPORTANT]
-> 不支援下列 Linux 檔案類型：符號連結、字元檔案、區塊檔案、通訊端和管線。 這些檔案類型會導致在**準備寄送**步驟期間發生失敗。
+> 不支援下列 Linux 檔案類型：符號連結、字元檔案、區塊檔案、通訊端和管線。 這些檔案類型會導致在 **準備寄送** 步驟期間發生失敗。
 
 在複製程序期間如果發生任何錯誤，您會看到通知。
 

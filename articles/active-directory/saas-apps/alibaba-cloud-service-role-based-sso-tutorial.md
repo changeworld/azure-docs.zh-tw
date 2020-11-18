@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e4e45cdefc9342ec5727bae8ea10fe133df1627
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 84bf1b5ebac158135cf4e19cdbd0afdb181905d9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318849"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079201"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Alibaba Cloud Service (角色型 SSO) 整合
 
@@ -26,9 +26,7 @@ ms.locfileid: "92318849"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Alibaba Cloud Service (角色型 SSO)。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -45,22 +43,22 @@ ms.locfileid: "92318849"
 
 若要設定將 Alibaba Cloud Service (角色型 SSO) 整合到 Azure AD 中，您必須將 Alibaba Cloud Service (角色型 SSO) 從資源庫新增到受控 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Alibaba Cloud Service (角色型 SSO)** 。
 1. 從結果面板中選取 [Alibaba Cloud Service (角色型 SSO)]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
-5. 在 [Alibaba Cloud Service (角色型 SSO)]  頁面上，按一下左側瀏覽窗格中的 [屬性]  ，然後複製**物件識別碼**並將其儲存在電腦上以供後續使用。
+5. 在 [Alibaba Cloud Service (角色型 SSO)]  頁面上，按一下左側瀏覽窗格中的 [屬性]  ，然後複製 **物件識別碼** 並將其儲存在電腦上以供後續使用。
 
     ![屬性設定](./media/alibaba-cloud-service-role-based-sso-tutorial/Properties.png)
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-alibaba-cloud-service-role-based-sso"></a>設定及測試適用於 Alibaba Cloud Service (角色型 SSO) 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-alibaba-cloud-service-role-based-sso"></a>設定及測試適用於 Alibaba Cloud Service (角色型 SSO) 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Alibaba Cloud Service (角色型 SSO) 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Alibaba Cloud Service (角色型 SSO) 中相關使用者之間的連結關聯性。
 
-若要設定及測試與 Alibaba Cloud Service (角色型 SSO) 搭配運作的 Azure AD SSO，請完成下列建置組塊：
+若要設定與 Alibaba Cloud Service (角色型 SSO) 搭配運作的 Azure AD SSO 並且進行測試，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
@@ -68,7 +66,7 @@ ms.locfileid: "92318849"
 2. **[在 Alibaba Cloud Service 中設定角色型單一登入](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** - 讓您的使用者能夠使用此功能。
     1. **[設定 Alibaba Cloud Service (角色型 SSO) 的 SSO](#configure-alibaba-cloud-service-role-based-sso-sso)** - 在應用程式端設定單一登入設定。
     1. **[建立 Alibaba Cloud Service (角色型 SSO) 測試使用者](#create-alibaba-cloud-service-role-based-sso-test-user)** ：使 Alibaba Cloud Service (角色型 SSO) 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
-3. **[測試單一 SSO](#test-sso)** - 驗證組態是否能運作。
+3. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
@@ -80,14 +78,16 @@ ms.locfileid: "92318849"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
-
-    >[!NOTE]
-    >您會從這個 [URL](https://signin.alibabacloud.com/saml-role/sp-metadata.xml) 取得服務提供者中繼資料
+4. 如果您有 **服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
+
+    
+    >[!NOTE]
+    >1. 針對 Alibaba Cloud 國際網站，請從[這個](https://signin.alibabacloud.com/saml-role/sp-metadata.xml)連結下載服務提供者中繼資料。
+    > 1. 針對 Alibaba Cloud Service (CN) 網站，請從[這個](https://signin.aliyun.com/saml-role/sp-metadata.xml)連結下載服務提供者中繼資料。
 
     c. 當中繼資料檔案成功上傳後，會自動在 [Alibaba Cloud Service (角色型 SSO)] 區段文字方塊中填入 [識別碼]  及 [回覆 URL]  值：
 
@@ -123,20 +123,14 @@ ms.locfileid: "92318849"
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Alibaba Cloud Service (角色型 SSO)]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
 1. 在 [使用者和群組]  索引標籤上，選取使用者清單中的 u2，然後按一下 [選取]  。 然後，按一下 [指派]  。
 
-    ![顯示 Alibaba [新增指派] 窗格的螢幕擷取畫面，其中未選取使用者和群組。](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![指派 Azure AD 測試使用者1](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. 檢視指派的角色並測試 Alibaba Cloud Service (角色型 SSO)。
 
-    ![顯示為使用者 u2 所指派角色的螢幕擷取畫面。](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![指派 Azure AD 測試使用者2](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >在指派使用者 (u2) 後，所建立的角色會自動連結至使用者。 如果您已建立多個角色，則必須視需要將適當的角色連結至使用者。 如果您想要將角色型 SSO 從 Azure AD 實作到多個 Alibaba 雲端帳戶，請重複上述步驟。
@@ -164,25 +158,25 @@ ms.locfileid: "92318849"
 
     b. 按一下 [修改權限]  以取得用於建立角色的必要權限。
 
-    ![顯示 Graph 總管驗證的螢幕擷取畫面，其中具有修改權限連結。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![圖表設定1](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. 從清單中選取下列權限，然後按一下 [修改權限]  ，如下圖所示。
 
-    ![顯示要選取的權限螢幕擷取畫面：Directory.AccessAsUser.All、Directory.Read.All 和 Directory.ReadWrite.All。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![圖表設定2](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >授與權限之後，再次登入 Graph 總管。
 
     d. 在 [Graph 總管] 頁面上，選取第一個下拉式清單中的 [GET]  和第二個下拉式清單中的 [beta]  。 然後在下拉式清單旁邊的欄位中輸入 `https://graph.microsoft.com/beta/servicePrincipals`，並按一下 [執行查詢]  。
 
-    ![顯示 Graph 總管的螢幕擷取畫面，其中已選取 GET 和搶鮮版 (Beta)，並且已呼叫 [執行查詢] 按鈕。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![圖表設定3](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >如果您要使用多個目錄，則可以在查詢的欄位中輸入 `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`。
 
     e. 在 [回應預覽]  區段中，從 [服務主體] 擷取 appRoles 屬性以供後續使用。
 
-    ![顯示 [回應預覽] 區段中純文字的螢幕擷取畫面，您可以在其中取得 appRoles 屬性。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![圖表設定4](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >您可以在查詢的欄位中輸入 `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` 來找到 appRoles 屬性。 請注意，`objectID` 是您從 Azure AD 的 [屬性]  頁面所複製的物件識別碼。
@@ -218,7 +212,7 @@ ms.locfileid: "92318849"
     > [!NOTE]
     > `value` 是您在 RAM 主控台中所建立 IdP 和角色的 ARN。 在這裡，您可以視需要新增多個角色。 Azure AD 會在 SAML 回應中以宣告值的形式傳送這些角色的值。 但是，您只能在修補作業的 `msiam_access` 部分之後新增角色。 若要讓建立程序變得順利，建議您使用識別碼產生器 (例如 GUID 產生器) 來即時產生識別碼。
 
-    g. [服務主體] 在使用必要角色進行修補之後，請遵循教學課程中**指派 Azure AD 測試使用者**一節的步驟將角色連結至 Azure AD 使用者 (u2)。
+    g. [服務主體] 在使用必要角色進行修補之後，請遵循教學課程中 **指派 Azure AD 測試使用者** 一節的步驟將角色連結至 Azure AD 使用者 (u2)。
 
 ### <a name="configure-alibaba-cloud-service-role-based-sso-sso"></a>設定 Alibaba Cloud Service (角色型 SSO) 的 SSO
 
@@ -234,26 +228,21 @@ ms.locfileid: "92318849"
 
 1. 在 Azure 入口網站中，移至 [Alibaba Cloud Service (角色型 SSO)]  頁面、選取 [單一登入]  ，然後按一下 [測試]  。
 
-    ![顯示使用 Alibaba Cloud Service 測試單一登入的螢幕擷取畫面，其中具有 [測試] 按鈕。](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![測試設定1](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. 按一下 [以目前使用者身分登入]  。
 
-    ![顯示以目前使用者身分登入連結的螢幕擷取畫面。](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![測試設定2](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. 在 [帳戶選取] 頁面中，選取 [u2]。
 
-    ![顯示已選取使用者 u2 的 SSO 登入選項螢幕擷取畫面。](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![測試設定3](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. 隨即會顯示下列頁面，指出角色型 SSO 已成功。
 
-    ![顯示 [產品和服務] 頁面的螢幕擷取畫面，其中表示測試成功。 ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![測試設定4](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>其他資源
+## <a name="next-steps"></a>後續步驟
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
+設定 Alibaba Cloud Service (角色型 SSO) 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
-
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
-
-- [嘗試搭配 Azure AD 使用 Alibaba Cloud Service (角色型 SSO)](https://aad.portal.azure.com/)

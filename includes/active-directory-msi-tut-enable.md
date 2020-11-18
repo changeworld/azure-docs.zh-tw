@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
-ms.openlocfilehash: ab6e3426096f6fbaf7dfa44984a26c939f3b91fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0bc51fcd3a56af2f836377da736af3a1976463e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75971871"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135584"
 ---
 啟用系統指派的受控識別是單鍵體驗。 您可以在建立 VM 時或在現有 VM 的屬性中啟用此服務。
 
-![建立新的儲存體帳戶](./media/active-directory-msi-tut-enable/identity.png)
+![螢幕擷取畫面，顯示虛擬機器的系統指派索引標籤，您可以在其中開啟系統指派狀態。](./media/active-directory-msi-tut-enable/identity.png)
 
 
 **在新 VM 上啟用系統指派的受控識別：** 

@@ -4,12 +4,12 @@ description: 建立 Azure Container Registry、設定異地複寫、準備 Docke
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739493"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027222"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
 
@@ -50,14 +50,14 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 為新的登錄進行以下設定。 在 [基本] 索引標籤中：
 
-* **登錄名稱** ：建立登錄名稱，其必須在 Azure 中是全域唯一且包含 5-50 個英數字元
-* **資源群組** ： **新建** > `myResourceGroup`
-* **位置** ：`West US`
-* **SKU** ：`Premium` (異地複寫的必要項目)
+* **登錄名稱**：建立登錄名稱，其必須在 Azure 中是全域唯一且包含 5-50 個英數字元
+* **資源群組**：**新建** > `myResourceGroup`
+* **位置**：`West US`
+* **SKU**：`Premium` (異地複寫的必要項目)
 
 選取 [檢閱+建立]，然後選取 [建立] 來建立登錄執行個體。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 入口網站中建立容器登錄":::容器登錄
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 入口網站中設定":::容器登錄
 
 在本教學課程的其餘部分，我們使用 `<acrName>` 作為您所選容器 **登錄名稱** 的預留位置。
 
@@ -70,19 +70,19 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取 **服務** 下方的 [複寫]：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 入口網站中建立容器登錄":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 入口網站的容器登錄 UI 中進行複寫":::
 
 系統會顯示地圖，並以綠色六邊形代表適用於異地複寫的 Azure 區域：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="在 Azure 入口網站中建立容器登錄":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure 入口網站的區域圖":::
 
 選取美國東部地區的綠色六邊形，然後選取 [建立複寫] 下方的 [建立]，將登錄複寫到美國東部地區：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="在 Azure 入口網站中建立容器登錄":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="在 Azure 入口網站中建立複寫 UI":::
 
 完成複寫時，入口網站會將這兩個區域顯示為 [就緒]。 使用 [重新整理] 按鈕，以重新整理複寫的狀態；建立並同步處理複本可能需要一分鐘左右的時間。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="在 Azure 入口網站中建立容器登錄":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure 入口網站中的複寫狀態 UI":::
 
 
 ## <a name="enable-admin-account"></a>啟用系統管理員帳戶
@@ -91,7 +91,7 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取 **設定** 下方的 [存取金鑰]。 在 [管理使用者] 下，選取 [啟用]。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="在 Azure 入口網站中建立容器登錄":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="啟用 Azure 入口網站中的系統管理員帳戶":::
 
 
 ## <a name="container-registry-login"></a>Container Registry 登入
@@ -110,7 +110,7 @@ az acr login --name <acrName>
 
 本教學課程的範例包含一個由 [ASP.NET Core][aspnet-core] 建置的小型 Web 應用程式。 該應用程式有一個 HTML 網頁，可顯示 Azure Container Registry 部署映像的來源區域。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="在 Azure 入口網站中建立容器登錄":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="在瀏覽器中顯示的教學課程應用程式":::
 
 使用 git 將此範例下載到本機目錄中，並將 `cd` 下載到目錄中：
 
@@ -123,19 +123,19 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>更新 Dockerfile
 
-範例隨附的 Dockerfile 會示範如何建置容器。 此作業會先從官方 [aspnetcore][dockerhub-aspnetcore] 映像開始，將應用程式檔案複製到容器內、安裝相依性，再使用官方 [aspnetcore-build][dockerhub-aspnetcore-build] 映像編譯輸出，最後建置最佳化的 aspnetcore 映像。
+範例隨附的 Dockerfile 會示範如何建置容器。 此作業會先從官方 ASP.NET Core 映像開始，將應用程式檔案複製到容器內、安裝相依性，再使用官方 .NET Core SDK 映像編譯輸出，最後建置最佳化的 aspnetcore 映像。
 
 [Dockerfile][dockerfile] 位於複製來源中的 `./AcrHelloworld/Dockerfile`。
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -169,7 +169,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-接著，使用登錄的登入伺服器的 FQDN 更新 `ENV DOCKER_REGISTRY` 這一行。 此範例會反映範例登錄名稱 *uniqueregistryname* ：
+接著，使用登錄的登入伺服器的 FQDN 更新 `ENV DOCKER_REGISTRY` 這一行。 此範例會反映範例登錄名稱 *uniqueregistryname*：
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -187,8 +187,8 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -245,6 +245,4 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

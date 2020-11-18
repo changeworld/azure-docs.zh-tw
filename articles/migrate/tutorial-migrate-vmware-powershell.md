@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 185979fcc0eeaebbe1c3b09d74050e05899737af
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043539"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376794"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>將 VMware VM 遷移至 Azure (無代理程式) - PowerShell
 
@@ -87,6 +87,9 @@ Azure Migrate 會使用輕量型 [Azure Migrate 設備](migrate-appliance-archit
 
 若要在 Azure Migrate 專案中擷取特定的 VMware VM，請指定 Azure Migrate 專案的名稱 (`ProjectName`)、Azure Migrate 專案的資源群組 (`ResourceGroupName`)，以及 VM 名稱 (`DisplayName`)。 
 
+> [!NOTE]
+> **VM 名稱 (`DisplayName`) 參數值區分大小寫**。
+
 ```azurepowershell
 # Get a specific VMware VM in an Azure Migrate project
 $DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName "MyTestVM"
@@ -146,7 +149,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-
 - **目標虛擬網路和子網路** - 使用 `TargetNetworkId` 和 `TargetSubnetName` 參數，分別指定 VM 應遷移到的 Azure 虛擬網路的識別碼和子網路名稱。 
 - **目標 VM 名稱** - 使用 `TargetVMName` 參數，指定要建立的 Azure VM 名稱。
 - **目標 VM 大小** - 使用 `TargetVMSize` 參數，指定要用於複寫 VM 的 Azure VM 大小。 例如，若要將 VM 遷移至 Azure 中的 D2_v2 VM，請將 `TargetVMSize` 的值指定為 "Standard_D2_v2"。  
-- **授權** - 若要將 Azure Hybrid Benefit 用於有效的軟體保證或 Windows Server 訂用帳戶所涵蓋的 Windows Server 機器，請將 `LicenseType` 參數的值指定為 "AHUB"。 否則，請將 `LicenseType` 參數的值指定為 "NoLicenseType"。
+- **授權** - 若要將 Azure Hybrid Benefit 用於有效的軟體保證或 Windows Server 訂用帳戶所涵蓋的 Windows Server 機器，請將 `LicenseType` 參數的值指定為 "WindowsServer"。 否則，請將 `LicenseType` 參數的值指定為 "NoLicenseType"。
 - **OS 磁碟** - 指定具有作業系統開機載入器和安裝程式之磁碟的唯一識別碼。 要使用的磁碟識別碼是使用 `Get-AzMigrateServer` Cmdlet 擷取之磁碟的唯一識別碼 (UUID) 屬性。
 - **磁碟類型** - 指定 `DiskType` 參數的值，如下所示。
     - 若要使用進階受控磁碟，請指定 "Premium_LRS" 作為 `DiskType` 參數的值。 
@@ -156,7 +159,8 @@ Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-
     - 可用性區域，將已遷移的機器釘選到該區域中特定的可用性區域。 使用此選項可將形成多節點應用程式層的伺服器散發到可用性區域。 只有選取要移轉的目標區域支援可用性區域時，才可以使用此選項。 若要使用可用性區域，請指定 `TargetAvailabilityZone` 參數的可用性區域值。
     - 可用性設定組，可將遷移的電腦放在可用性設定組中。 選取的目標資源群組必須有一或多個可用性設定組，才能使用此選項。 若要使用可用性設定組，請指定 `TargetAvailabilitySet` 參數的可用性設定組識別碼。 
 
-在本教學課程中，我們將複寫探索到的 VM 的所有磁碟，並為 Azure 中的 VM 指定新的名稱。 我們會將探索到的伺服器的第一個磁碟指定為 OS 磁碟，並以標準 HDD 的形式遷移所有磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。
+### <a name="replicate-vms-with-all-disks"></a>使用所有磁碟複寫 VM
+在本教學課程中，我們將複寫探索到的 VM 的所有磁碟，並為 Azure 中的 VM 指定新的名稱。 我們會將探索到的伺服器的第一個磁碟指定為 OS 磁碟，並以標準 HDD 的形式遷移所有磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
 
 ```azurepowershell
 # Retrieve the resource group that you want to migrate to
@@ -178,6 +182,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
+### <a name="replicate-vms-with-select-disks"></a>使用選取的磁碟複寫 VM
 您也可以使用 `New-AzMigrateDiskMapping` Cmdlet，並將其提供作為 `New-AzMigrateServerReplication` Cmdlet 中 `DiskToInclude` 參數的輸入，以選擇性地複寫探索到的 VM 的磁碟。 您也可以使用 `New-AzMigrateDiskMapping` Cmdlet，為每個要複寫的個別磁碟指定不同的目標磁碟類型。 
 
 指定 `New-AzMigrateDiskMapping` Cmdlet 的下列參數值。
@@ -186,7 +191,7 @@ Write-Output $MigrateJob.State
 - **IsOSDisk** - 如果要遷移的磁碟是 VM 的 OS 磁碟，請指定 "true"，否則指定 "false"。
 - **DiskType** - 指定要在 Azure 中使用的磁碟類型。 
 
-在下列範例中，我們只會為探索到的 VM 複寫其兩個磁碟。 我們將指定 OS 磁碟，並且為每個要複寫的磁碟使用不同的磁碟類型。
+在下列範例中，我們只會為探索到的 VM 複寫其兩個磁碟。 我們將指定 OS 磁碟，並且為每個要複寫的磁碟使用不同的磁碟類型。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
 
 ```azurepowershell
 # View disk details of the discovered server
@@ -308,9 +313,18 @@ $replicatingserver.ProviderSpecificDetail | convertto-json
 - 在初始複寫期間，系統會建立 VM 快照集。 快照集內的磁碟資料會複寫至 Azure 中的複本受控磁碟。
 - 初始複寫完成後，就會開始進行差異複寫。 對內部部署磁碟的累加變更會定期複寫至 Azure 中的複本磁碟。
 
+## <a name="retrieve-the-status-of-a-job"></a>取出作業的狀態
+
+您可以使用 `Get-AzMigrateJob` Cmdlet 來監視作業的狀態。 
+
+```azurepowershell
+# Retrieve the updated status for a job
+$job = Get-AzMigrateJob -InputObject $job
+```
+
 ## <a name="update-properties-of-a-replicating-vm"></a>更新複寫 VM 的屬性
 
-[Azure Migrate：伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)可讓您變更複寫 VM 的目標屬性，例如名稱、大小、資源群組、NIC 設定等等。 
+[Azure Migrate：伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)可讓您變更複寫 VM 的目標屬性，例如名稱、大小、資源群組、NIC 設定等等。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
 
 ```azurepowershell
 # Retrieve the replicating VM details by using the discovered VM identifier
@@ -348,6 +362,15 @@ $NicMapping += $NicMapping2
 
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize "Standard_DS13_v2" -TargetVMName "MyMigratedVM" -NicToUpdate $NicMapping
+
+# Track job status to check for completion
+while (($UpdateJob.State -eq "InProgress") -or ($UpdateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $UpdateJob.State
 ```
 
 您也可以列出 Azure Migrate 專案中的所有複寫伺服器，然後使用複寫 VM 識別碼來更新 VM 屬性。
@@ -363,7 +386,7 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 
 ## <a name="run-a-test-migration"></a>執行測試移轉
 
-在差異複寫開始後，您可以在執行對 Azure 的完整移轉之前，為 VM 執行測試移轉。 強烈建議您對每個機器都至少執行一次測試移轉，然後再遷移機器。
+在差異複寫開始後，您可以在執行對 Azure 的完整移轉之前，為 VM 執行測試移轉。 強烈建議您對每個機器都至少執行一次測試移轉，然後再遷移機器。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
 
 - 執行測試移轉會檢查移轉是否如預期運作。 測試移轉不會影響內部部署機器，這類機器仍可運作，且會繼續進行複寫。 
 - 測試移轉會使用複寫的資料建立 Azure VM，來模擬移轉 (通常會移轉至 Azure 訂用帳戶中的非生產 VNet)。
@@ -377,32 +400,69 @@ $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
 
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
+
+# Track job status to check for completion
+while (($TestMigrationJob.State -eq "InProgress") -or ($TestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $TestMigrationJob.State
 ```
 
-測試完成後，請使用 `Start-AzMigrateTestMigrationCleanup` Cmdlet 清除測試移轉。
+測試完成後，請使用 `Start-AzMigrateTestMigrationCleanup` Cmdlet 清除測試移轉。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
 
 ```azurepowershell
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
+
+# Track job status to check for completion
+while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $CleanupTestMigrationJob.State
 ```
 
 ## <a name="migrate-vms"></a>移轉 VM
 
-確認測試移轉如預期運作之後，您就可以使用下列 Cmdlet 遷移複寫伺服器。
+確認測試移轉如預期運作之後，您就可以使用下列 Cmdlet 遷移複寫伺服器。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
+
+如果您不想要關閉來源伺服器，請不要使用 `TurnOffSourceServer` 參數。
 
 ```azurepowershell
 # Start migration for a replicating server and turn off source server as part of migration
 $MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer 
+
+# Track job status to check for completion
+while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $MigrateJob.State
 ```
-如果您不想要關閉來源伺服器，請不要使用 `TurnOffSourceServer` 參數。
 
 ## <a name="complete-the-migration"></a>完成移轉
 
-1. 完成遷移之後，請使用下列 Cmdlet 停止內部部署機器的複寫，並清除 VM 的複寫狀態資訊。
+1. 完成遷移之後，請使用下列 Cmdlet 停止內部部署機器的複寫，並清除 VM 的複寫狀態資訊。 此 Cmdlet 會傳回作業，此作業可追蹤以監視作業狀態。 
 
 ```azurepowershell
 # Stop replication for a migrated server
 $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer 
+
+# Track job status to check for completion
+while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $StopReplicationJob.State
 ```
 
 2. 在已遷移的機器上安裝 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理程式。

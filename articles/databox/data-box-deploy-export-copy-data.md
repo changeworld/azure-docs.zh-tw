@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123903"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335208"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>教學課程：透過 SMB 從 Azure 資料箱複製資料 (預覽)
 
@@ -54,7 +54,7 @@ ms.locfileid: "92123903"
 
 2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 選取 [確定]。
     
-    ![取得共用認證 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![取得共用認證、存取共用及複製資料](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
 3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 *exportbvtdataset2*)，請開啟命令視窗。 在命令提示字元中，輸入：
 
@@ -73,13 +73,13 @@ ms.locfileid: "92123903"
     The command completed successfully.
     ```
 
-4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 選取 [確定] 以開啟檔案總管。
+5. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 選取 [確定] 以開啟檔案總管。
     
-    ![透過檔案總管連線至共用](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![透過檔案總管連線至共用，輸入裝置 IP](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     您現在應可看到以資料夾形式呈現的共用。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![透過檔案總管連線至共用，檢視共用](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
 使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 

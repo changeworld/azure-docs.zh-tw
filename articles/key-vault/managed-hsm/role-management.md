@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149111"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445637"
 ---
 # <a name="managed-hsm-role-management"></a>受控 HSM 角色管理
 
 > [!NOTE]
-> Key Vault 支援兩種類型的資源：保存庫和受控 HSM。 本文討論 **受控 HSM** 。 如果您想要了解如何管理保存庫，請參閱[使用 Azure CLI 來管理 Key Vault](../general/manage-with-cli2.md)。
+> Key Vault 支援兩種類型的資源：保存庫和受控 HSM。 本文討論 **受控 HSM**。 如果您想要了解如何管理保存庫，請參閱[使用 Azure CLI 來管理 Key Vault](../general/manage-with-cli2.md)。
 
 如需受控 HSM 的概觀，請參閱[什麼是受控 HSM？](overview.md)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -113,7 +113,7 @@ az keyvault role definition list --hsm-name ContosoMHSM
 
 ## <a name="next-steps"></a>下一步
 
-- 請參閱 [Azure 角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 的概觀。
+- 請參閱 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 的概觀。
 - 請參閱[受控 HSM 角色管理](role-management.md)的教學課程
 - 深入了解[受控 HSM 存取控制模型](access-control.md)
 - 查看所有[受控 HSM 本機 RBAC 的內建角色](built-in-roles.md)

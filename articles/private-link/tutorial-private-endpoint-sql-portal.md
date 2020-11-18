@@ -1,20 +1,20 @@
 ---
-title: 教學課程 - 使用 Azure 私人端點連線到 Azure SQL 伺服器
-description: 使用此教學課程來了解如何建立具有私人端點的 Azure SQL 伺服器。
+title: 教學課程 - 使用 Azure 私人端點連線到 Azure SQL 伺服器 - 入口網站
+description: 使用此教學課程來了解如何使用 Azure 入口網站建立具有私人端點的 Azure SQL 伺服器。
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: d12b377d053ac546efef05d5594568c1c1dbcd0e
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: def14cec9d010104876acaf9588560722dd98884
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344750"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145662"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint"></a>教學課程 - 使用 Azure 私人端點連線到 Azure SQL 伺服器
+# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>教學課程 - 使用 Azure 私人端點連線到 Azure SQL 伺服器 - Azure 入口網站
 
 Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。
 
@@ -73,7 +73,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 7. 選取 [儲存]。
 
-8. 選取 [安全性]  索引標籤。
+8. 選取 [安全性] 索引標籤。
 
 9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
 
@@ -142,16 +142,16 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     | ------- | ----- |
     | **專案詳細資料** | |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 **CreateSQLEndpointTutorial** 。 您已在上一節中建立此資源群組。|
+    | 資源群組 | 選取 **CreateSQLEndpointTutorial**。 您已在上一節中建立此資源群組。|
     | **資料庫詳細資料** |  |
-    | 資料庫名稱  | 輸入 **mysqldatabase** 。 如果此名稱已被使用，請建立唯一名稱。 |
+    | 資料庫名稱  | 輸入 **mysqldatabase**。 如果此名稱已被使用，請建立唯一名稱。 |
     | 伺服器 | 選取 [建立新的]。 |
 
 6. 在 [新增伺服器] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 伺服器名稱  | 輸入 mysqlserver  。 如果此名稱已被使用，請建立唯一名稱。|
+    | 伺服器名稱  | 輸入 mysqlserver。 如果此名稱已被使用，請建立唯一名稱。|
     | 伺服器管理員登入 | 輸入您所選擇的系統管理員名稱。 |
     | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 8 個字元，而且符合定義的需求。 |
     | Location | 選取 [美國東部] |
@@ -174,9 +174,9 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     | 設定 | 值 |
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 **CreateSQLEndpointTutorial** 。 |
+    | 資源群組 | 選取 **CreateSQLEndpointTutorial**。 |
     | Location | 選取 [美國東部]  。 |
-    | Name | 輸入 **myPrivateSQLendpoint** 。 |
+    | Name | 輸入 **myPrivateSQLendpoint**。 |
     | 目標子資源 | 選取 [SQLServer]。 |
     | **網路功能** |  |
     | 虛擬網路 | 選取 [myVNet]。 |
@@ -197,9 +197,9 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 1. 在左側瀏覽窗格中，選取 [資源群組]。
 
-2. 選取 **CreateSQLEndpointTutorial** 。
+2. 選取 **CreateSQLEndpointTutorial**。
 
-3. 選取 [myVM]  。
+3. 選取 [myVM]。
 
 4. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
@@ -246,7 +246,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 ## <a name="clean-up-resources"></a>清除資源 
 在私人端點、SQL Server 和 VM 使用完畢後，請刪除資源群組及其包含的所有資源： 
-1. 在入口網站頂端的 **搜尋** 方塊中，輸入 **CreateSQLEndpointTutorial** ，然後從搜尋結果中選取 [CreateSQLEndpointTutorial]。 
+1. 在入口網站頂端的 **搜尋** 方塊中，輸入 **CreateSQLEndpointTutorial**，然後從搜尋結果中選取 [CreateSQLEndpointTutorial]。 
 2. 選取 [刪除資源群組]。 
 3. 針對 [輸入資源群組名稱] 輸入 CreateSQLEndpointTutorial，然後選取 [刪除]。
 

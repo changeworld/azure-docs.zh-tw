@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895880"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393213"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教學課程：執行 "Hello world!" Python 指令碼 (第 2 部分，共 4 部分)
 
 在本教學課程中，您將了解如何使用 Azure Machine Learning SDK for Python 來提交和執行 Python "Hello world!" 指令碼。
 
-本教學課程是 *四部分教學課程系列的第 2 部分* ，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定您 Azure Machine Learning 的本機電腦](tutorial-1st-experiment-sdk-setup-local.md)中所完成的工作。
+本教學課程是 *四部分教學課程系列的第 2 部分*，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定您 Azure Machine Learning 的本機電腦](tutorial-1st-experiment-sdk-setup-local.md)中所完成的工作。
 
 在本教學課程中，您將：
 
@@ -99,7 +99,7 @@ print(aml_url)
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [工作區](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)會連線到您的 Azure Machine Learning 工作區，讓您可以與 Azure Machine Learning 資源進行通訊。
+      [工作區](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)會連線到您的 Azure Machine Learning 工作區，讓您可以與 Azure Machine Learning 資源進行通訊。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -107,7 +107,7 @@ print(aml_url)
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [實驗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)會提供在單一名稱下組織多個執行的簡單方式。 稍後您將了解實驗如何讓數十個執行之間的計量比較變得簡單。
+      [實驗](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)會提供在單一名稱下組織多個執行的簡單方式。 稍後您將了解實驗如何讓數十個執行之間的計量比較變得簡單。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -115,7 +115,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 會包裝您的 `hello.py` 程式碼，並將其傳遞至您的工作區。 如其名所示，您可以使用此類別來「設定」指令碼在 Azure Machine Learning 中的「執行」方式。 也會指定要對其執行指令碼的計算目標。 在此程式碼中，目標是您在[設定教學課程](tutorial-1st-experiment-sdk-setup-local.md)中建立的計算叢集。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 會包裝您的 `hello.py` 程式碼，並將其傳遞至您的工作區。 如其名所示，您可以使用此類別來「設定」指令碼在 Azure Machine Learning 中的「執行」方式。 也會指定要對其執行指令碼的計算目標。 在此程式碼中，目標是您在[設定教學課程](tutorial-1st-experiment-sdk-setup-local.md)中建立的計算叢集。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,7 +123,7 @@ print(aml_url)
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       提交您的指令碼。 此提交行為稱為[回合 (Run)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)。 一個回合會封裝程式碼的單次執行。 使用回合來監視指令碼進度、擷取輸出、分析結果、將計量視覺化等等。
+       提交您的指令碼。 此提交行為稱為[回合 (Run)](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)。 一個回合會封裝程式碼的單次執行。 使用回合來監視指令碼進度、擷取輸出、分析結果、將計量視覺化等等。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -138,6 +138,14 @@ print(aml_url)
 ## <a name="submit-and-run-your-code-in-the-cloud"></a>在雲端中提交並執行您的程式碼
 
 執行您的控制指令碼，該程式碼會在您於[設定教學課程](tutorial-1st-experiment-sdk-setup-local.md)中建立的計算叢集上執行 `hello.py`。
+
+第一次執行需要 5-10 分鐘的時間才能完成。 這是因為會發生下列情形：
+
+* Docker 映像建置於雲端
+* 計算叢集的大小從 0 調整為 1 個節點
+* Docker 映像會下載至計算。 
+
+當 Docker 映像在計算上快取時，後續執行的速度會更快 (~15 秒)，您可以在第一次執行完成之後，重新提交下列程式碼來測試此作業。
 
 ```bash
 python 03-run-hello.py

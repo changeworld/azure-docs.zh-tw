@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206726"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335792"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -123,7 +123,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 
 您可以使用 [Azure Cloud Shell](https://shell.azure.com/)，這是裝載於 Azure 中的互動式殼層環境，在瀏覽器中執行 CLI 命令。 Azure Cloud Shell 支援 Bash 或 Windows PowerShell 搭配 Azure 服務。 Azure CLI 可預先安裝和設定，以便與您的帳戶搭配使用。 選取 Azure 入口網站右上方功能表上的 [Cloud Shell] 按鈕：
 
-![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
+![Cloud Shell 功能表選取項目](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 按鈕會啟動互動式殼層，可讓您用來執行本操作說明文章中所述的步驟。
 
@@ -215,11 +215,11 @@ PS C:\Windows\System32>
 1. 使用您的 Microsoft Azure 認證在以下 URL 登入：[https://portal.azure.com](https://portal.azure.com)。
 2. 選取 [+ 建立資源]，然後搜尋「Azure 資料箱」。 選取 [Azure 資料箱]。
 
-   ![[搜尋] 欄位中具有 Azure 資料箱的 [新增] 區段螢幕擷取畫面。](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![[搜尋] 欄位中具有 Azure 資料箱的 [新增] 區段螢幕擷取畫面](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. 選取 [建立]。
 
-   ![[Azure 資料箱] 區段的螢幕擷取畫面，其中已呼叫 [建立] 選項。](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![[Azure 資料箱] 區段的螢幕擷取畫面，其中已呼叫 [建立] 選項](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. 確認您的區域是否適用資料箱服務。 輸入或選取下列資訊，然後選取 [套用]。
 
@@ -231,11 +231,11 @@ PS C:\Windows\System32>
     |來源國家/區域    |    選取您的資料目前所在的國家/地區。         |
     |目的地 Azure 區域     |     選取要傳輸資料的 Azure 區域。 <br> 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。            |
 
-    [![Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![開始 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. 選取 [資料箱]。 單一訂單的最大可用容量是 80 TB。 您可以建立多份訂單以訂購更大的資料大小。
 
-    ![有不同資料大小可供選取的螢幕擷取畫面：資料箱磁碟 40 TB、資料箱 100 TB、Data Box Heavy、1000 TB，以及將 1 TB 傳送給您自己的磁碟。](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![可用的資料大小：資料箱磁碟 40 TB、資料箱 100 TB、Data Box Heavy 1000 TB，以及將 1 TB 傳送給您自己的磁碟](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. 在 [訂購] 中，移至 [基本] 索引標籤。輸入或選取下列資訊，然後選取 [下一步:資料目的地>]。
 
@@ -245,7 +245,7 @@ PS C:\Windows\System32>
     |資源群組    | 您先前選取的資源群組。 |
     |匯入訂單名稱 | 提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。    |
 
-    ![[訂單] 精靈的螢幕擷取畫面，其中顯示精靈的基本步驟，並已填入正確資訊。](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![已填入正確資訊的資料箱匯入訂單精靈，基本畫面](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     根據預設，裝置解除鎖定密碼會使用 Microsoft 管理的金鑰進行加密。 完成訂單之後，您可以新增客戶自控金鑰。 客戶自控金鑰可讓您使用來自 Azure Key Vault、屬於您自己的金鑰，以保護您的裝置解除鎖定密碼。 如需詳細資訊，請參閱[針對 Azure 資料箱使用 Azure Key Vault 中的客戶自控金鑰](data-box-customer-managed-encryption-key-portal.md)。
 
@@ -253,47 +253,47 @@ PS C:\Windows\System32>
 
     如果使用 **儲存體帳戶** 作為儲存體目的地，就會看到下列螢幕擷取畫面：
 
-    ![Azure 資料箱資料目的地](media/data-box-deploy-ordered/select-data-box-import-07.png)
+    ![已選取儲存體帳戶的資料箱匯入訂單精靈，資料目的地畫面](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    根據指定的 Azure 區域，從現有儲存體帳戶的篩選清單中選取一或多個儲存體帳戶。 資料箱可以與最多 10 個儲存體帳戶連結。 您也可以建立新的 **一般用途 v1** 、 **一般用途 v2** 或 **Blob 儲存體帳戶** 。
+    根據指定的 Azure 區域，從現有儲存體帳戶的篩選清單中選取一或多個儲存體帳戶。 資料箱可以與最多 10 個儲存體帳戶連結。 您也可以建立新的 **一般用途 v1**、**一般用途 v2** 或 **Blob 儲存體帳戶**。
 
     支援具有虛擬網路的儲存體帳戶。 若要允許資料箱服務使用受保護的儲存體帳戶來運作，請在儲存體帳戶網路防火牆設定內啟用受信任的服務。 如需詳細資訊，請參閱如何[新增 Azure 資料箱作為受信任的服務](../storage/common/storage-network-security.md#exceptions)。
 
-    如果使用資料箱以從內部部署虛擬硬碟 (VHD) 建立 **受控磁碟** ，您也必須提供下列資訊：
+    如果使用資料箱以從內部部署虛擬硬碟 (VHD) 建立 **受控磁碟**，您也必須提供下列資訊：
 
     |設定  |值  |
     |---------|---------|
     |資源群組     | 如果您想要從內部部署 VHD 建立受控磁碟，請建立新的資源群組。 只有當資源群組是在資料箱服務建立受控磁碟的資料箱訂單之前建立的，您才能使用現有的資源群組。 <br> 指定以分號分隔的多個資源群組。 最多支援 10 個資源群組。|
 
-    ![[訂單] 精靈的螢幕擷取畫面，其中顯示精靈的資料目的地步驟，並已填入正確資訊。](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![已選取受控磁碟的資料箱匯入訂單精靈，資料目的地畫面](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     針對受控磁碟指定的儲存體帳戶不能當成暫存的儲存體帳戶來使用。 資料箱服務會先將 VHD 以分頁 Blob 形式上傳至暫存的儲存體帳戶，然後再將它轉換為受控磁碟並移至資源群組。 如需詳細資訊，請參閱[確認資料上傳至 Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
    > [!NOTE]
    > 如果分頁 Blob 未成功轉換為受控磁碟，其會保留在儲存體帳戶中，您需要支付儲存體費用。
 
-    完成時，選取 [下一步: **安全性]** 以繼續作業。
+    完成時，選取 [下一步:**安全性]** 以繼續作業。
 
     [安全性] 畫面可讓您使用自己的裝置和共用密碼，並選擇使用雙重加密。 
 
     [安全性] 畫面上的所有設定都是選擇性的。 如果您未變更任何設定，將會套用預設設定。
 
-    ![資料箱匯入訂單的安全性畫面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+    ![資料箱匯入訂單精靈的安全性畫面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-1. 如果您不想使用系統所產生且 Azure 資料箱預設使用得密碼，請展開 [自備密碼]。
+8. 如果您不想使用系統所產生且 Azure 資料箱預設使用得密碼，請展開 [自備密碼]。
 
    系統產生的密碼是安全的，除非您的組織要求，否則建議使用。
 
-   ![已針對資料箱匯入訂單展開 [自備密碼] 選項](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+   ![已針對資料箱匯入訂單在 [安全性] 畫面展開 [自備密碼] 選項](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
 
    - 若要對新裝置使用自己的密碼，請 [設定裝置密碼的喜好設定]，選取 [使用自己的密碼]，然後輸入符合安全性需求的密碼。
    
-     ![資料箱匯入的安全性畫面，可供使用自有裝置密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+     ![在 [安全性] 畫面上針對資料箱匯入訂單使用自己的裝置密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
    - 若要將自己的密碼使用於共用：
 
      1. 藉由 [設定共用密碼的喜好設定]，選取 [使用自己的密碼]，然後 [選取共用的密碼]。
      
-        ![資料箱匯入的安全性畫面，可供使用自有共用密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+        ![在 [安全性] 畫面上針對資料箱匯入訂單使用自己的共用密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
      1. 依序輸入每個儲存體帳戶的密碼。 此密碼將會使用於儲存體帳戶的所有共用。
      
@@ -301,11 +301,11 @@ PS C:\Windows\System32>
      
         ![用於輸入資料箱匯入訂單共用密碼的畫面](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
 
-       在 [安全性] 畫面上，您可以使用 [變更密碼的檢視] 來變更密碼。
+       在 [安全性] 畫面上，您可以使用 [檢視或變更密碼] 來變更密碼。
 
-1. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請展開 [雙重加密 (適用於高度安全的環境)]，然後選取 [為訂單啟用雙重加密]。
+9. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請展開 [雙重加密 (適用於高度安全的環境)]，然後選取 [為訂單啟用雙重加密]。
 
-   ![資料箱匯入的安全性畫面，針對資料箱訂單啟用以軟體為基礎的加密](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+   ![在 [安全性] 畫面上針對資料箱匯入訂單啟用以軟體為基礎的加密選項](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
 
@@ -314,29 +314,29 @@ PS C:\Windows\System32>
 
    完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
 
-8. 在 [連絡人詳細資料] 中，選取 [+ 新增交貨位址]。
+10. 在 [連絡人詳細資料] 中，選取 [+ 新增交貨位址]。
 
-    ![[訂單] 精靈的螢幕擷取畫面，其中顯示精靈的連絡人詳細資料步驟，並已呼叫 [新增交貨位址] 選項。](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![從 [連絡人詳細資料] 畫面中，將交貨地址新增至您的 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
-9. 在 [交貨地址] 中，提供您的姓名、公司的名稱和郵寄地址，以及有效的電話號碼。 選取 [驗證地址]。 服務會驗證交貨地址以確認服務可用性。 如果服務可提供至指定的交貨地址，您將會收到該項通知。
+11. 在 [交貨地址] 中，提供您的姓名、公司的名稱和郵寄地址，以及有效的電話號碼。 然後選取 [驗證地址]。 服務會檢查地址的服務可用性。 如果服務可提供至交貨地址，您將會收到該項通知。
 
-   ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中已呼叫 [交貨方式] 選項和 [新增交貨位址] 選項。](media/data-box-deploy-ordered/select-data-box-import-10.png)
+     ![[新增交貨位址] 對話方塊，其中已呼叫 [交貨方式] 選項和 [新增交貨地址] 選項](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
-   成功下達訂單後，如果選取自我管理運送，您會收到電子郵件通知。 如需有關自我管理運送的詳細資訊，請參閱[使用自我管理運送](data-box-portal-customer-managed-shipping.md)。
+    成功下達訂單後，如果選取自我管理運送，您會收到電子郵件通知。 如需有關自我管理運送的詳細資訊，請參閱[使用自我管理運送](data-box-portal-customer-managed-shipping.md)。
 
-10. 成功驗證出貨詳細資料之後，選取 [新增交貨位址]。 您將返回 [連絡人詳細資料] 索引標籤。
+12. 成功驗證出貨詳細資料之後，選取 [新增交貨位址]。 您將返回 [連絡人詳細資料] 索引標籤。
 
-11. 當您返回 [連絡人詳細資料] 之後，新增一或多個電子郵件地址。 服務會將關於任何訂單狀態更新的電子郵件通知傳送至指定的電子郵件地址。
+13. 當您返回 [連絡人詳細資料] 之後，新增一或多個電子郵件地址。 服務會將關於任何訂單狀態更新的電子郵件通知傳送至指定的電子郵件地址。
 
     建議您使用群組電子郵件，以便在群組中的管理員離開時繼續接收通知。
 
-    ![[電子郵件] 區段的螢幕擷取畫面，此區段屬於 [訂單] 精靈的連絡人詳細資料步驟，並已呼叫 [電子郵件] 文字方塊和 [下一步：檢閱和訂購] 選項。](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![訂單精靈中連絡人詳細資料的電子郵件區段](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. 在 [檢閱 + 訂購] 中，檢閱與訂單、連絡人、通知和隱私權條款相關的資訊。 請勾選隱私權條款合約的對應方塊。
 
 13. 選取 [訂單]。 建立訂單需要幾分鐘的時間。
 
-    ![[訂單] 精靈的螢幕擷取畫面，其中顯示檢閱和訂購步驟，並已呼叫 [訂單] 選項。](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![訂單精靈的檢閱和訂單畫面](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -526,11 +526,11 @@ PS C:\Windows\System32>
 
 裝置準備完成後，入口網站會顯示訂單處於 [已處理] 狀態。
 
-![資料箱訂單已處理](media/data-box-overview/data-box-order-status-processed.png)
+![已處理的資料箱訂單](media/data-box-overview/data-box-order-status-processed.png)
 
 接著，Microsoft 會準備裝置，並透過區域貨運公司派送給您。 在裝置送達後，您會收到追蹤號碼。 入口網站會顯示訂單處於 [已分派] 狀態。
 
-![資料箱訂單分派](media/data-box-overview/data-box-order-status-dispatched.png)
+![已分派的資料箱訂單](media/data-box-overview/data-box-order-status-dispatched.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

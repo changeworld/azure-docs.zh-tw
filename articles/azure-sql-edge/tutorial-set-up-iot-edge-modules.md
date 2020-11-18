@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886491"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422122"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>設定 IoT Edge 模組和連線
 
@@ -25,7 +25,7 @@ ms.locfileid: "90886491"
 
 ## <a name="specify-container-registry-credentials"></a>指定容器登錄認證
 
-您可以對裝載模組映像的容器登錄指定認證。 您可在資源群組中建立的容器登錄找到這些認證。 瀏覽至**存取金鑰**區段。 記下下列欄位：
+您可以對裝載模組映像的容器登錄指定認證。 您可在資源群組中建立的容器登錄找到這些認證。 瀏覽至 **存取金鑰** 區段。 記下下列欄位：
 
 - 登錄名稱
 - 登入伺服器
@@ -36,7 +36,7 @@ ms.locfileid: "90886491"
 
 1. 瀏覽至您在資源群組中建立的 IoT 中樞。
 
-2. 在**自動裝置管理**下的 **IoT Edge** 區段中，按一下 [裝置識別碼]。 在本教學課程中，識別碼為 `IronOrePredictionDevice`。
+2. 在 **自動裝置管理** 下的 **IoT Edge** 區段中，按一下 [裝置識別碼]。 在本教學課程中，識別碼為 `IronOrePredictionDevice`。
 
 3. 選取 [設定模組] 區段。
 
@@ -49,27 +49,30 @@ ms.locfileid: "90886491"
    使用者名稱|使用者名稱
    密碼|密碼
   
-## <a name="deploy-the-data-generator-module"></a>部署資料產生器模組
+## <a name="build-push-and-deploy-the-data-generator-module"></a>建置、推送及部署資料產生器模組
 
-1. 在**自動裝置管理**下的 **IoT Edge** 區段中，按一下 [裝置識別碼]。 在本教學課程中，識別碼為 `IronOrePredictionDevice`，然後按一下 [設定模組]。
-
-2.  在 [在裝置上設定模組：] 頁面上的 [IoT Edge 模組] 底下，按一下 [+ 新增]，然後選取 [IoT Edge 模組]。
-
-3. 為 IoT Edge 模組提供有效的名稱和映像 URI。
-   您可以在本教學課程的第一部分中所建立的資源群組內，於容器登錄中找到映像 URI。 選取 [服務]底下的 [存放庫] 區段。 在本教學課程中，選擇名為 `silicaprediction` 的存放庫。 選取適當的標籤。 映像 URI 的格式會是：
-
-   login server of the containerregistry/repository name:tag name
-
-   例如：
-
+1. 將[專案檔案](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica)複製到您的電腦。
+2. 使用 Visual Studio 2019 開啟 **IronOre_Silica_Predict.sln**
+3. 更新 **deployment.template.json** 中的容器登錄詳細資料 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. 更新 **modules.json** 檔案以指定目標容器登錄 (或模組的存放庫)
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. 讓 [重新啟動原則] 和 [所需狀態] 欄位保持原狀。
-
-5. 按一下 [新增] 。
-
+5. 在偵錯或發行模式中執行專案，以確保專案執行時不會發生任何問題 
+6. 以滑鼠右鍵按一下專案名稱然後選取 [建置和推送 IoT Edge 模組]，將專案推送至您的容器登錄。
+7. 將資料產生器模組作為 IoT Edge 模組部署到您的 Edge 裝置。 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>部署 Azure SQL Edge 模組
 
@@ -77,9 +80,9 @@ ms.locfileid: "90886491"
 
 2. 在 [IoT Edge 模組 Marketplace] 刀鋒視窗上，搜尋 *Azure SQL Edge*，然後挑選 [Azure SQL Edge 開發人員]。 
 
-3. 按一下 [IoT Edge 模組] 底下新增的 [Azure SQL Edge] 模組，以設定 Azure SQL Edge 模組。 如需設定選項的詳細資訊，請參閱[部署 Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)。
+3. 按一下 [IoT Edge 模組] 底下新增的 [Azure SQL Edge] 模組，以設定 Azure SQL Edge 模組。 如需設定選項的詳細資訊，請參閱[部署 Azure SQL Edge](./deploy-portal.md)。
 
-4. 將 `MSSQL_PACKAGE` 環境變數新增至 *Azure SQL Edge* 模組部署，並指定資料庫 dacpac 檔案的 SAS URL (您在本教學課程[第一部份](tutorial-deploy-azure-resources.md)的步驟 8 中建立了這個檔案)。
+4. 將 `MSSQL_PACKAGE` 環境變數新增至 *Azure SQL Edge* 模組部署，並指定資料庫 dacpac 檔案的 SAS URL (您在本教學課程 [第一部份](tutorial-deploy-azure-resources.md)的步驟 8 中建立了這個檔案)。
 
 5. 按一下 [更新]
 
@@ -107,7 +110,7 @@ ms.locfileid: "90886491"
 
 1. 開啟 Azure Data Studio。
 
-2. 在**歡迎使用**索引標籤中，使用下列詳細資料開始新的連線：
+2. 在 **歡迎使用** 索引標籤中，使用下列詳細資料開始新的連線：
 
    |_欄位_|_ReplTest1_|
    |-------|-------|

@@ -1,68 +1,79 @@
 ---
-title: 使用 Azure Site Recovery 設定 Azure VM 災害復原
-description: 了解如何使用 Azure Site Recovery 服務，設定 Azure VM 到不同 Azure 區域的災害復原。
+title: 使用 Azure Site Recovery 設定 Azure VM 災害復原的教學課程
+description: 在本教學課程中，使用 Site Recovery 服務設定從 Azure VM 到另一個 Azure 區域的災害復原。
 ms.topic: tutorial
-ms.date: 1/24/2020
-ms.author: raynew
+ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87421411"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394025"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms"></a>設定適用於 Azure VM 的災害復原
+# <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>教學課程：設定適用於 Azure VM 的災害復原
 
-[Azure Site Recovery](site-recovery-overview.md) 服務可藉由管理及協調內部部署電腦與 Azure 虛擬機器 (VM) 的複寫、容錯移轉及容錯回復，為您的災害復原策略做出貢獻。
-
-本教學課程說明如何為 Azure VM 設定災害復原，讓 VM 可以從一個 Azure 區域移至另一個。 在本教學課程中，您會了解如何：
+本教學課程說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 為 Azure VM 設定災害復原。 在本文中，您將學會如何：
 
 > [!div class="checklist"]
+> * 確認 Azure 設定和權限
+> * 準備您要複寫的 VM
 > * 建立復原服務保存庫
-> * 驗證目標資源設定
-> * 設定 VM 的輸出網路連線
 > * 啟用 VM 複寫
 
+當您為 VM 啟用複寫已設定災害復原時，將會在 VM 上安裝 Site Recovery 行動服務擴充功能，並向 Azure Site Recovery 註冊該擴充功能。 在複寫期間，VM 磁碟寫入會傳送至來源區域中的快取儲存體帳戶。 資料會從該處傳送到目標區域，並從資料產生復原點。 當您在災害復原期間將 VM 容錯移轉時，會使用復原點來還原目標區域中的 VM。
+
 > [!NOTE]
-> 本文將說明如何以最簡單的設定部署災害復原。 如果您想深入了解自訂設定，請檢閱[操作說明區段](azure-to-azure-how-to-enable-replication.md)中的文章。
+> 教學課程會就最簡單的預設設定提供指示。 如果您想要使用自訂設定來設定 Azure VM 災害復原，請參閱[這篇文章](azure-to-azure-how-to-enable-replication.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-若要完成本教學課程：
+## <a name="prerequisites"></a>必要條件
 
-- 檢閱[案例架構和元件](./azure-to-azure-architecture.md)。
-- 開始之前，請檢閱[支援需求](./azure-to-azure-support-matrix.md)。
+開始進行本教學課程之前，請先：
 
-## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
+- [檢閱支援的區域](azure-to-azure-support-matrix.md#region-support)。 您可以為相同地理位置中任何兩個區域之間的 Azure VM 設定災害復原。
+- 您需要一或多個 Azure VM。 確認支援 [Windows](azure-to-azure-support-matrix.md#windows) 或 [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage) VM。
+- 檢閱 VM [計算](azure-to-azure-support-matrix.md#replicated-machines---compute-settings)、[儲存體](azure-to-azure-support-matrix.md#replicated-machines---storage)和[網路](azure-to-azure-support-matrix.md#replicated-machines---networking)需求。
+- 本教學課程假設 VM 不會加密。 如果您想要為加密的 VM 設定災害復原，請[遵循這篇文章](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 
-在來源區域以外的任何區域中建立保存庫。
+## <a name="check-azure-settings"></a>檢查 Azure 設定
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。 然後，選取 [IT 和管理工具] > [備份和 Site Recovery]。
-1. 在 [名稱] 中，指定保存庫的易記識別名稱。 如果您有多個訂用帳戶，請選取適當的一個。
-1. 建立資源群組，或選取現有的資源群組。 指定 Azure 區域。 若要查看支援的區域，請參閱 [Azure Site Recovery 定價詳細資料](https://azure.microsoft.com/pricing/details/site-recovery/)。
-1. 若要從儀表板存取保存庫，請選取 [釘選到儀表板]，然後選取 [建立]。
+檢查權限以及目標區域中的設定。
 
-   ![新增保存庫](./media/azure-to-azure-tutorial-enable-replication/new-vault-settings.png)
+### <a name="check-permissions"></a>請檢查權限
 
-新的保存庫會新增到主要 [復原服務保存庫] 頁面上 [所有資源] 之下的 [儀表板]。
+您的 Azure 帳戶必須具有建立復原服務保存庫的權限，以及在目標區域中建立 VM 的權限。
 
-## <a name="verify-target-resource-settings"></a>驗證目標資源設定
+- 如果您僅建立了免費 Azure 訂用帳戶，且您就是帳戶管理員，則無須採取進一步的動作。
+- 如果您不是管理員，請與管理員合作以取得您所需的權限。
+    - **建立保存庫**：訂用帳戶的管理員或擁有者權限。 
+    - **管理保存庫中的 Site Recovery 作業**：*Site Recovery 參與者* 內建 Azure 角色。
+    - **在目標區域中建立 Azure VM**：內建 *虛擬機器參與者* 角色，或下列項目的權限：
+        - 在所選的虛擬網路中建立 VM。
+        - 寫入至 Azure 儲存體帳戶。
+        - 寫入至 Azure 受控磁碟。
 
-檢查您 Azure 訂用帳戶中的目標區域。
+### <a name="verify-target-settings"></a>確認目標設定
 
-- 確認您的 Azure 訂用帳戶允許您在目標區域中建立 VM。 請連絡支援人員啟用所需的配額。
-- 確定您的訂用帳戶具有足夠的資源，可支援大小與來源 VM 相符的 VM。 Site Recovery 會為目標 VM 挑選相同的大小或最接近的大小。
+在探索復原期間，當您從來源區域進行容錯移轉時，將會在目標區域中建立 VM。 
 
-## <a name="set-up-outbound-network-connectivity-for-vms"></a>設定 VM 的輸出網路連線
+請確認您的訂用帳戶在目標區域中有足夠的資源。 您必須能夠建立大小與來源區域中的 VM 相符的 VM。 當您設定災害復原時，Site Recovery 會為目標 VM 挑選相同的大小 (或最接近的大小)。
 
-若要 Site Recovery 如預期運作，必須從您需要複寫的 VM 中修改輸出網路連線能力。
+
+## <a name="prepare-vms"></a>準備 VM
+
+請確定 VM 具有輸出連線能力，以及最新的根憑證。 
+
+
+### <a name="set-up-vm-connectivity"></a>設定 VM 連線能力
+
+您要複寫的 VM 需要輸出網路連線能力。
 
 > [!NOTE]
 > Site Recovery 不支援使用驗證 Proxy 來控制網路連線能力。
 
-### <a name="outbound-connectivity-for-urls"></a>URL 的輸出連線能力
+#### <a name="outbound-connectivity-for-urls"></a>URL 的輸出連線能力
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
 
@@ -73,118 +84,107 @@ ms.locfileid: "87421411"
 | 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
 
-### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
+#### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
-如果您使用網路安全性群組 (NSG)，請針對 Azure 儲存體、Azure Active Directory、Site Recovery 服務和 Site Recovery 監視的存取權建立以服務標籤為基礎的 NSG 規則。 [深入了解](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。
+如果您使用網路安全性群組 (NSG) 來控制連線，請建立以服務標籤為基礎的 NSG 規則，以允許這些[服務標籤](../virtual-network/service-tags-overview.md#available-service-tags) (IP 位址群組) 透過 HTTPS 輸出至連接埠 443：
 
-## <a name="verify-azure-vm-certificates"></a>驗證 Azure VM 憑證
+**Tag** | **允許** 
+--- | ---
+儲存體標籤  |允許將資料從 VM 寫入快取儲存體帳戶中。   
+Azure AD 標籤 | 允許存取對應至 Azure AD 的所有 IP 位址。   
+EventsHub 標籤 | 允許存取 Site Recovery 監視。  
+AzureSiteRecovery 標籤 | 任何區域中的 Site Recovery 服務存取權。   
+GuestAndHybridManagement 標籤 | 如果要自動升級在已啟用複寫之 VM 上執行的 Site Recovery 行動代理程式，請使用此標籤。
 
-請檢查您想要複寫的 VM 是否具有最新的根憑證。 如果沒有的話，VM 會因安全性限制而無法註冊至 Site Recovery。
+[深入了解](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)必要的標籤和標記範例。
 
-- 若為 Windows VM，請安裝所有最新的 Windows 更新，讓所有的受信任根憑證都在機器上。 在中斷連線的環境中，請遵循您組織的標準 Windows Update 和憑證更新程序。
-- 若為 Linux VM，請遵循 Linux 散發者提供的指引，以取得最新的受信任根憑證及 VM 的憑證撤銷清單。
+### <a name="verify-vm-certificates"></a>驗證 VM 憑證
 
-## <a name="set-permissions-on-the-account"></a>設定帳戶的權限
+確認 VM 具有最新的根憑證。 如果沒有的話，VM 會因安全性限制而無法註冊至 Site Recovery。
 
-Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作業。
+- **Windows VM**：在 VM 上安裝所有最新的 Windows 更新，讓機器上具有所有受信任的根憑證。 在中斷連線的環境中，請依照 Windows Update 和憑證更新的標準程序操作。
+- **Linux VM**：請依照 Linux 散發者提供的指引，取得最新受信任的根憑證及憑證撤銷清單 (CRL)。
 
-- **Site Recovery 參與者**：此角色具有在復原服務保存庫中管理 Azure Site Recovery 作業所需的所有權限。 不過，具有此角色的使用者無法建立或刪除復原服務保存庫，也無法為其他使用者指派存取權限。 此角色最適合災害復原系統管理員，他們可以為應用程式或整個組織啟用和管理災害復原。
+## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
-- **Site Recovery 操作員** - 此角色具有執行和管理容錯移轉和容錯回復作業的權限。 具有此角色的使用者無法啟用或停用複寫、建立或刪除保存庫、註冊新的基礎結構，也無法為其他使用者指派存取權限。 此角色最適合災害復原操作員，在應用程式擁有者和 IT 系統管理員的指示下，操作員可以對虛擬機器或應用程式進行容錯移轉。 災害解決後，災害復原操作員可以重新保護和容錯回復虛擬機器。
+在任何區域 (您要從中複寫 VM 的來源區域除外) 中建立復原服務保存庫。
 
-- **Site Recovery 讀者**：此角色擁有可檢視所有 Site Recovery 管理作業的權限。 此角色最適合 IT 監督主管，以便監控目前的保護狀態並提出支援票證。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 在搜尋方塊中，輸入 *recovery*。 在 [服務] 底下，選取 [復原服務保存庫]。
 
-深入了解 [Azure 內建角色](../role-based-access-control/built-in-roles.md)。
+    ![搜尋復原服務保存庫](./media/azure-to-azure-tutorial-enable-replication/search.png)
 
-## <a name="enable-replication-for-a-vm"></a>啟用 VM 複寫
+3. 在 [復原服務保存庫] 中，選取 [新增]。
+4. 在 [建立復原服務保存庫] > [基本資料] 中，選取要在其中建立保存庫的訂用帳戶。
+5. 在 [資源群組] 中，為保存庫選取現有的資源群組，或建立新的資源群組。
+6. 在 [保存庫名稱] 中，指定保存庫的易記名稱。
+7. 在 [區域] 中，選取要在其中放置保存庫的 Azure 區域。 [檢查支援的區域](https://azure.microsoft.com/pricing/details/site-recovery/)。
+8. 選取 [檢閱 + 建立]。
 
-以下各節將說明如何啟用複寫。
+   ![用來建立新保存庫之頁面上的保存庫設定](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 
-### <a name="select-the-source"></a>選取來源
+9. 在 [檢閱 + 建立] 中，選取 [建立]。
 
-若要開始進行複寫設定，請選擇您的 Azure VM 執行所在的來源。
+10. 保存庫部署隨即開始。 在通知中追蹤進度。
+11. 部署保存庫之後，請選取 [釘選到儀表板] 加以儲存，以便參考。 選取 [前往資源] 以開啟新的保存庫。 
+    
+    ![在部署後開啟保存庫，以及釘選到儀表板的按鈕](./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png)
 
-1. 移至 [復原服務保存庫]，選取保存庫名稱，然後選取 [+複寫]。
-1. 針對 [來源]，選取 [Azure]。
-1. 在 [來源位置] 中，選取 VM 目前執行所在的來源 Azure 區域。
-1. 選取虛擬機器執行所在的**來源訂用帳戶**。 這可以是您的復原服務保存庫所在的相同 Azure Active Directory 租用戶內的任何訂用帳戶。
-1. 選取 [來源資源群組]，然後選取 [確定] 以儲存設定。
+### <a name="enable-site-recovery"></a>啟用 Site Recovery
 
-   ![設定來源](./media/azure-to-azure-tutorial-enable-replication/source.png)
+在保存庫設定中，選取 [啟用 Site Recovery]。
+
+![在保存庫中啟用 Site Recovery 的選取項目](./media/azure-to-azure-tutorial-enable-replication/enable-site-recovery.png)
+
+## <a name="enable-replication"></a>啟用複寫
+
+選取來源設定，並啟用 VM 複寫。 
+
+### <a name="select-source-settings"></a>選取來源設定
+
+1. 在 [保存庫 > Site Recovery] 頁面的 [Azure 虛擬機器] 底下，選取 [啟用複寫]。
+
+    ![為 Azure VM 啟用複寫的選取項目](./media/azure-to-azure-tutorial-enable-replication/enable-replication.png)
+
+2. 在 [來源]> [來源位置] 中，選取 VM 目前執行所在的來源 Azure 區域。
+3. 在 [Azure 虛擬機器部署模型] 中，保留預設的 [Resource Manager] 設定。
+4. 在 [來源訂用帳戶] 中，選取 VM 執行所在的訂用帳戶。 您可以選取與保存庫位於相同 Azure Active Directory (AD) 租用戶中的任何訂用帳戶。
+5. 在 [來源資源群組] 中，選取包含 VM 的資源群組。
+6. 在 [可用性區域之間的災害復原] 中，保留預設的 [無] 設定。
+
+     ![設定來源](./media/azure-to-azure-tutorial-enable-replication/source.png)
+
+7. 選取 [下一步]。
 
 ### <a name="select-the-vms"></a>選取 VM
 
-Site Recovery 會擷取與訂用帳戶和資源群組/雲端服務相關聯的 VM 清單。
+Site Recovery 會擷取與選取的訂用帳戶/資源群組相關聯的 VM。
 
-1. 在 [虛擬機器] 中，選取您要複寫的 VM。
-1. 選取 [確定]  。
+1. 在 [虛擬機器] 中，選取您要為災害復原啟用的 VM。
 
-### <a name="configure-replication-settings"></a>設定複寫設定
+     ![用來選取要複寫之 VM 的頁面](./media/azure-to-azure-tutorial-enable-replication/select-vm.png)
 
-Site Recovery 會設定目標區域的預設設定和複寫原則。 您可以視需要變更這些設定。
+2. 選取 [下一步]。
 
-1. 選取 [設定] 以檢視目標和複寫設定。
+### <a name="review-replication-settings"></a>檢閱複寫設定
 
-1. 若要覆寫預設目標設定，請選取 [資源群組、網路、儲存體和可用性] 旁的 [自訂]。
+1. 在 [複寫設定] 中檢查設定。 Site Recovery 會建立目標區域的預設設定/原則。 基於本教學課程的目的，我們會使用預設設定。
+2. 選取 [啟用複寫]  。
 
-   ![進行設定](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+    ![自訂設定和啟用複寫的頁面](./media/azure-to-azure-tutorial-enable-replication/enable-vm-replication.png)   
 
-1. 自訂目標設定，如下表所摘要的內容。
+3. 在通知中追蹤複寫進度。
 
-   | **設定** | **詳細資料** |
-   | --- | --- |
-   | **目標訂用帳戶** | 根據預設，目標訂用帳戶會與來源訂用帳戶相同。 選取 [自訂]，以選取相同 Azure Active Directory 租用戶內的不同目標訂用帳戶。 |
-   | **目標位置** | 用於災害復原的目標區域。<br/><br/> 我們建議目標位置符合 Site Recovery 保存庫的位置。 |
-   | **目標資源群組** | 目標區域中在容錯移轉後保留 Azure VM 的資源群組。<br/><br/> 根據預設，Site Recovery 會在目標區域中建立具有 `asr` 尾碼的新資源群組。 目標資源群組的位置可以是任何區域，但是裝載您來源虛擬機器所在的區域除外。 |
-   | **目標虛擬網路** | 目標區域中 VM 在容錯移轉後所在的網路。<br/><br/> 根據預設，Site Recovery 會在目標區域中建立具有 `asr` 尾碼的新虛擬網路 (和子網路)。 |
-   | **快取儲存體帳戶** | Site Recovery 會使用來源區域中的儲存體帳戶。 來源 VM 的變更會在複寫到目標位置之前，先傳送到此帳戶。<br/><br/> 如果您使用啟用防火牆的快取儲存體帳戶，請確定您已啟用 [允許信任的 Microsoft 服務]。 [深入了解](../storage/common/storage-network-security.md#exceptions)。 此外，請確保您允許存取來源 Vnet 的至少一個子網路。 |
-   | **目標儲存體帳戶 (來源 VM 使用非受控磁碟)** | 根據預設，Site Recovery 會在目標區域中建立新的儲存體帳戶，以反映來源 VM 儲存體帳戶。<br/><br/> 如果您使用啟用防火牆的快取儲存體帳戶，請啟用**允許信任的 Microsoft 服務**。 |
-   | **複本受控磁碟 (如果來源 VM 使用受控磁碟)** | 根據預設，Site Recovery 會在目標區域中建立與來源 VM 受控磁碟具有相同儲存體類型 (標準或進階) 的複本受控磁碟，以反映來源 VM 的受控磁碟。 您只能自訂磁碟類型。 |
-   | **目標可用性設定組** | 根據預設，Azure Site Recovery 會針對來源區域的可用性設定組中的 VM，在目標區域中建立名稱尾碼為 `asr` 的新可用性設定組。 如果 Azure Site Recovery 建立的可用性設定組已存在，則會重複使用。 |
-   | **目標可用性區域** | 根據預設，如果目標區域支援可用性區域，則 Site Recovery 會在目標區域中指派與來源區域相同的區域編號。<br/><br/> 如果目標區域不支援可用性區域，則目標 VM 會預設為單一執行個體。<br/><br/> 選取 [自訂]，將 VM 設定為目標區域中可用性設定組的一部分。<br/><br/> 啟用複寫之後，便無法變更可用性類型 (單一執行個體、可用性設定組或可用性區域)。 若要變更可用性類型，請先停用複寫再重新加以啟用。 |
+     ![在通知中追蹤進度](./media/azure-to-azure-tutorial-enable-replication/notification.png) ![追蹤成功複寫通知](./media/azure-to-azure-tutorial-enable-replication/notification-success.png)
 
-1. 若要自訂複寫原則設定，請選取 [複寫原則] 旁的 [自訂]，並根據需求修改設定。
+4. 您啟用的 VM 會出現在 [保存庫 > 複寫的項目] 頁面上。
 
-   | **設定** | **詳細資料** |
-   | --- | --- |
-   | **複寫原則名稱** | 原則名稱。 |
-   | **復原點保留期** | Site Recovery 預設會保留復原點 24 小時。 您可以設定介於 1 與 72 小時之間的值。 |
-   | **應用程式一致的快照頻率** | Site Recovery 預設會每隔 4 小時建立一份應用程式一致快照集。 您可以設定介於 1 與 12 小時之間的任何值。<br/><br/> 應用程式一致快照集是 VM 內的應用程式資料的時間點快照集。 磁碟區陰影複製服務 (VSS) 可確保在建立快照集時，VM 上的應用程式處於一致狀態。 |
-   | **複寫群組** | 如果您的應用程式需要 VM 之間的多部 VM 具有一致性，您可以為這些 VM 建立複寫群組。 根據預設，選取的 VM 不屬於任何複寫群組。 |
+    ![[複寫的項目] 頁面上的 VM](./media/azure-to-azure-tutorial-enable-replication/replicated-items.png)
 
-1. 如果您想要將 VM 新增至新的或現有的複寫群組，請在 [自訂] 中的多部 VM 一致性上選取 [是]。 然後選取 [確定]。
-
-   > [!NOTE]
-   > - 在容錯移轉時，複寫群組中的所有機器都會共用當機時保持一致和應用程式一致復原點。
-   > - 啟用多 VM 一致性可能會影響工作負載的效能 (因為需耗用大量 CPU)。 應該只有在機器執行相同工作負載，且多部機器之間需要一致性時，才使用此功能。
-   > - 在複寫群組中，您最多可以有 16 個 VM。
-   > - 如果您啟用多部 VM 一致性，則複寫群組中的機器會透過連接埠 20004 彼此通訊。 請確定防火牆並未封鎖 VM 之間透過此連接埠進行的內部通訊。
-   > - 針對複寫群組中的 Linux VM，請確定已根據 Linux 版本的指引手動開啟連接埠 20004 上的輸出流量。
-
-### <a name="configure-encryption-settings"></a>加密設定
-
-如果來源 VM 已啟用 Azure 磁碟加密 (ADE)，請檢閱設定。
-
-1. 確認設定：
-   1. **磁碟加密金鑰保存庫**：根據預設，Site Recovery 會在來源 VM 磁碟加密金鑰上建立新的金鑰保存庫，且加上 `asr` 尾碼。 如果金鑰保存庫已存在，則會重複使用。
-   1. **金鑰加密金鑰保存庫**：根據預設，Site Recovery 會在目標區域中建立新的金鑰保存庫。 名稱會有 `asr` 尾碼，並且會以來源 VM 金鑰加密金鑰為基礎。 如果 Site Recovery 建立的金鑰保存庫已經存在，則會重複使用。
-1. 選取 [自訂] 以選取自訂金鑰保存庫。
-
->[!NOTE]
-> 對於執行 Windows 作業系統的 VM，Site Recovery 目前支援 ADE (無論是否具有 Azure Active Directory (AAD))。 對於 Linux 作業系統，我們僅支援不具 AAD 的 ADE。 此外，機器若執行 ADE 1.1 (不具 AAD)，則 VM 必須使用受控磁碟。 使用非受控磁碟的 VM 不受支援。 如果您從 ADE 0.1 (具有 AAD) 切換至 1.1，則必須在啟用 1.1 後停用 VM 的複寫，然後再啟用複寫。
-
-### <a name="track-replication-status"></a>追蹤複寫狀態
-
-啟用複寫後，您可以追蹤作業的狀態。
-
-1. 在 [設定] 中，選取 [重新整理] 以取得最新狀態。
-1. 追蹤進度和狀態如下所示：
-   1. 在 [設定] > [作業] > [Site Recovery 作業] 中，追蹤 [啟用保護] 作業的進度。
-   1. 在 [設定] > [複寫的項目] 中，您可以檢視 VM 的狀態和初始複寫進度。 選取 VM 可向下切入其設定。
 
 ## <a name="next-steps"></a>後續步驟
 
-您已在本教學課程中設定 Azure VM 的災害復原。 現在，您可以執行災害復原演練，以確認容錯移轉是否如預期運作。
+在本教學課程中，您已為 Azure VM 啟用災害復原。 接下來，請執行演練以檢查容錯移轉是否如預期運作。
 
 > [!div class="nextstepaction"]
 > [執行災害復原演練](azure-to-azure-tutorial-dr-drill.md)

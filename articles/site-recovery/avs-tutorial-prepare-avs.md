@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 進行 Azure VMware 解決方案 VM 災害復原的準備
+title: 準備 Azure VMware 解決方案以進行 Azure Site Recovery 的災害復原
 description: 了解如何準備 Azure VMware 解決方案伺服器，以使用 Azure Site Recovery 服務來進行 Azure 的災害復原。
 author: Harsha-CS
 manager: rochakm
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 8e77ede7b04c95bfd6b6b8f660c8d811e7434c0f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91814216"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395439"
 ---
-# <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>準備 Azure VMware 解決方案伺服器以進行 Azure 的災害復原
+# <a name="prepare-azure-vmware-solution-for-disaster-recovery-to-azure-site-recovery"></a>準備 Azure VMware 解決方案以進行 Azure Site Recovery 的災害復原
 
 本文說明如何準備 Azure VMware 解決方案伺服器，以使用 [Azure Site Recovery](site-recovery-overview.md) 服務進行 Azure 的災害復原。 
 
@@ -91,13 +91,13 @@ Site Recovery 需要存取 Azure VMware 解決方案伺服器，才能：
 
 若要在容錯移轉後使用 RDP 連線到 Windows VM，請執行下列作業：
 
-- **網際網路存取**。 在容錯移轉之前，先在 Azure VMware 解決方案 VM 上啟用 RDP，再進行容錯移轉。 確定已針對 [公用]**** 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。
+- **網際網路存取**。 在容錯移轉之前，先在 Azure VMware 解決方案 VM 上啟用 RDP，再進行容錯移轉。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。
 - **站對站 VPN 存取**：
     - 在容錯移轉之前，請在 Azure VMware 解決方案 VM 上啟用 RDP。
     - 您應該在 [Windows 防火牆] -> [允許的應用程式與功能] 中，針對 [網域] 和 [私人] 網路允許 RDP。
-    - 確認作業系統的 SAN 原則已設為 [OnlineAll]****。 [深入了解](https://support.microsoft.com/kb/3031135)。
+    - 確認作業系統的 SAN 原則已設為 [OnlineAll]。 [深入了解](https://support.microsoft.com/kb/3031135)。
 - 觸發容錯移轉時，VM 上不應該有任何擱置的 Windows 更新。 如果有，在更新完成之前，您將無法登入虛擬機器。
-- 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷] 以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 若要在容錯移轉後使用 SSH 連線到 Linux VM，請執行下列作業：
 
@@ -105,7 +105,7 @@ Site Recovery 需要存取 Azure VMware 解決方案伺服器，才能：
 - 確認防火牆規則允許 SSH 連線。
 - 在容錯移轉之後，於 Azure VM 上，針對已容錯移轉之 VM 上的網路安全性群組規則及其所連線的 Azure 子網路，允許 SSH 連接埠的連入連線。
 - [新增 VM 的公用 IP 位址](./site-recovery-monitor-and-troubleshoot.md)。
-- 您可以勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。
+- 您可以勾選 [開機診斷] 以檢視 VM 的螢幕擷取畫面。
 
 
 ## <a name="failback-requirements"></a>容錯回復需求

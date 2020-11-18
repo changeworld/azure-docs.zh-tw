@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: d497ff1a829902c0623740f01a457e6496db2401
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744964"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427406"
 ---
 # <a name="monitor-your-synapse-workspace"></a>監視您的 Synapse 工作區
 
-在本教學課程中，您將了解如何監視 Synapse 工作區中的活動。 您可以監視 SQL、Apache Spark 的目前活動和過往活動。 和管線。 
+在本教學課程中，您將了解如何監視 Synapse 工作區中的活動。 您可以監視 SQL、Apache Spark 和管線的目前活動和過往活動。 
 
 ## <a name="introduction-to-the-monitor-hub"></a>監視中樞簡介
 
@@ -31,8 +31,7 @@ ms.locfileid: "92744964"
 ## <a name="integration"></a>整合
 
 1. 瀏覽至 [整合] > [管線]。 在此檢視中，您可以在每次管線於工作區中執行時看到。 
-1. 找出您在上一個步驟中執行的管線，然後按一下其 [管線名稱]。
-1. 現在您可以看到該管線內的個別活動如何執行。
+1. 找出您在上一個步驟中執行的管線，然後按一下其 [管線名稱] 以檢視詳細資料。
 1. 按一下 Synapse Studio 頂端附近的 [階層連結列]，然後按一下 [所有管線執行] 以返回上一個檢視。
 
 ## <a name="apache-spark-activities"></a>Apache Spark 活動

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/18/2019
+ms.date: 09/29/2020
 ms.author: jeedes
-ms.openlocfilehash: d872c50174ba2fe7dfa321ac568e51fdaa80affc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 455c15ec97d5621b51a4d8af87cc3a2968dd65dd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514736"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095965"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Sonarqube 整合
 
@@ -26,9 +26,7 @@ ms.locfileid: "92514736"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Sonarqube。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -48,18 +46,18 @@ ms.locfileid: "92514736"
 
 若要設定將 Sonarqube 整合到 Azure AD 中，您需要從資源庫將 Sonarqube 新增到受控 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Sonarqube** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Sonarqube**。
 1. 從結果面板選取 [Sonarqube]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sonarqube"></a>設定及測試 Sonarqube 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-sonarqube"></a>設定和測試 Sonarqube 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Sonarqube 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Sonarqube 中相關使用者之間的連結關聯性。
 
-若要設定及測試與 Sonarqube 搭配運作的 Azure AD SSO，請完成下列建置組塊：
+若要設定及測試與 Sonarqube 搭配運作的 Azure AD SSO，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
@@ -72,8 +70,8 @@ ms.locfileid: "92514736"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Sonarqube]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 Azure 入口網站的 [Sonarqube] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -108,7 +106,7 @@ ms.locfileid: "92514736"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -117,34 +115,34 @@ ms.locfileid: "92514736"
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Sonarqube]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-sonarqube-sso"></a>設定 Sonarqube SSO
 
 1. 開啟新的網頁瀏覽器視窗，並以系統管理員身分登入您的 Sonarqube 公司網站。
 
-2. 從 Sonarqube 市集位置安裝 SAML 外掛程式。
+1. 按一下 [系統管理] > [設定] > [安全性] 並移至 [SAML 外掛程式] 以執行下列步驟。
 
-3. 在頁面的左上方，按一下 [管理員]  ，然後瀏覽至 [SAML]  。
+1. 複製 IdP 中繼資料中的下列詳細資料，並將其貼到 SonarQube 外掛程式的對應文字欄位中。
+    1. IdP 實體識別碼
+    2. 登入 URL
+    3. X.509 憑證 
+1. 儲存所有詳細資料。
+    ![SAML 外掛程式 IDP](./media/sonarqube-tutorial/sso-idp-metadata.png)
 
-4. 在 [SAML]  頁面上，執行下列步驟：
+1. 在 [SAML]  頁面上，執行下列步驟：
 
     ![Sonarqube 設定](./media/sonarqube-tutorial/config01.png)
 
     a. 將 [啟用]  選項切換為 [是]  。
 
-    b. 在 [應用程式識別碼]  文字方塊中輸入名稱，例如 **sonarqube** 。
+    b. 在 [應用程式識別碼]  文字方塊中輸入名稱，例如 **sonarqube**。
 
-    c. 在 [提供者名稱]  文字方塊中輸入名稱，例如 **SAML** 。
+    c. 在 [提供者名稱]  文字方塊中輸入名稱，例如 **SAML**。
 
     d. 在 [提供者識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
@@ -166,16 +164,14 @@ ms.locfileid: "92514736"
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-當您在存取面板中按一下 [Sonarqube] 圖格時，應該會自動登入您已設定 SSO 的 Sonarqube。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向您可以在其中起始登入流程的 Sonarqube 登入 URL。 
 
-## <a name="additional-resources"></a>其他資源
+2. 直接移至 Sonarqube 登入 URL，然後從該處起始登入流程。
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
+3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Sonarqube 圖格時，將會重新導向至 Sonarqube 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
-
-- [嘗試搭配 Azure AD 使用 Sonarqube](https://aad.portal.azure.com/)
+* 設定 Sonarqube 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

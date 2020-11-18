@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131287"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>教學課程：設定記錄分析精靈
 
@@ -66,7 +66,7 @@ ms.locfileid: "92362564"
 
 1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋**記錄分析工作區**。
+2. 搜尋 **記錄分析工作區**。
 
     ![搜尋資源服務和文件](./media/tutorial-log-analytics-wizard/search-services.png)
 
@@ -96,11 +96,11 @@ ms.locfileid: "92362564"
 
 7. 搜尋 **Azure Active Directory**。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![顯示 Azure 搜尋中 Azure Active Directory 的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. 在 [監視] 區段中，按一下 [診斷設定]。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![螢幕擷取畫面，顯示從監視選取的診斷設定。](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. 在 [診斷設定] 頁面上，按一下 [新增診斷設定]。
 
@@ -128,7 +128,7 @@ ms.locfileid: "92362564"
 
 2. 搜尋 **Azure Active Directory**。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![顯示 Azure 搜尋中 Azure Active Directory 的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. 在 [監視] 區段中，按一下 [記錄]。
 
@@ -210,7 +210,7 @@ ms.locfileid: "92362564"
 
 2. 搜尋 **Azure Active Directory**。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![顯示 Azure 搜尋中 Azure Active Directory 的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. 在 [監視] 區段中，按一下 [記錄]。
 
@@ -301,7 +301,7 @@ ms.locfileid: "92362564"
 
 2. 搜尋 **Azure Active Directory**。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![顯示 Azure 搜尋中 Azure Active Directory 的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. 在 [監視] 區段中，按一下 [活頁簿]。
 
@@ -330,9 +330,9 @@ ms.locfileid: "92362564"
 
 9. 在 [查詢] 文字方塊中，輸入：`SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
-10. 按一下 [Run Query (執行查詢)]****。
+10. 按一下 [Run Query (執行查詢)]。
 
-    ![執行查詢](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![顯示 [執行查詢] 按鈕的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
 11. 在工具列的 [視覺效果] 底下，按一下 [圓形圖]。
 
@@ -353,7 +353,7 @@ ms.locfileid: "92362564"
 
 2. 搜尋 **Azure Active Directory**。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![顯示 Azure 搜尋中 Azure Active Directory 的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. 在 [監視] 區段中，按一下 [活頁簿]。
 
@@ -361,11 +361,11 @@ ms.locfileid: "92362564"
 
 4. 在 [條件式存取] 區段中，按一下 [條件式存取深入解析和報告]。
 
-    ![條件式存取範本](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![顯示 [條件式存取深入解析] 和 [報告] 選項的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
 5. 在工具列中，按一下 [編輯]。
 
-    ![條件式存取範本](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![顯示 [編輯] 按鈕的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
 6. 在工具列中，按一下三個點，然後依序選取 [新增] 和 [新增查詢]。
 
@@ -373,9 +373,9 @@ ms.locfileid: "92362564"
 
 7. 在 [查詢] 文字方塊中，輸入：`SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
-8. 按一下 [Run Query (執行查詢)]****。
+8. 按一下 [Run Query (執行查詢)]。
 
-    ![執行查詢](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![顯示 [執行查詢] 按鈕以執行此查詢的螢幕擷取畫面。](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
 9. 按一下 [時間範圍]，然後選取 [在查詢中設定]。
 

@@ -1,5 +1,5 @@
 ---
-title: 準備 Azure 資源，以使用 Azure Site Recovery 進行 Azure VMware 解決方案的災害復原
+title: 準備 Azure Site Recovery 資源，以進行 Azure VMware 解決方案 VM 的災害復原
 description: 了解如何使用 Azure Site Recovery 來準備 Azure 資源，以進行 Azure VMware 解決方案電腦的災害復原。
 services: site-recovery
 author: Harsha-CS
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 83e2c46e1ce1977d0dd136e821c90843ce2de481
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 2bd305e3760a8c3d743037e7d90b71f5e9579eda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91814215"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395473"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-azure-vmware-solution-to-azure"></a>準備 Azure 資源以便將 Azure VMware 解決方案災害復原至 Azure
+# <a name="prepare-azure-site-recovery-resources-for-disaster-recovery-of-azure-vmware-solution-vms"></a>準備 Azure Site Recovery 資源，以進行 Azure VMware 解決方案 VM 的災害復原
 
 本文說明如何準備 Azure 資源和元件，讓您可以使用 [Azure Site Recovery](site-recovery-overview.md) 服務來設定 Azure VMware 解決方案 VM 的災害復原。 [Azure VMware 解決方案](../azure-vmware/introduction.md)會在 Azure 中提供私人雲端。 這些私人雲端包含 vSphere 叢集，從專用的裸機 Azure 基礎結構加以建置。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91814215"
 3. 在 [建立復原服務保存庫]  頁面中，選取 [訂閱]  。 我們使用 **Contoso 訂閱**。
 4. 在 [資源群組]  中選取現有的資源群組，或建立新的資源群組。 在本教學課程中，我們將使用 **contosoRG**。
 5. 在 [保存庫名稱]  中，輸入易記名稱以識別保存庫。 在這一組教學課程中，我們會使用 **ContosoVMVault**。
-6. 在 [區域]  中，選取保存庫應位於的區域。 我們使用**西歐**。
+6. 在 [區域]  中，選取保存庫應位於的區域。 我們使用 **西歐**。
 7. 選取 [檢閱 + 建立]  。
 
    ![建立復原服務保存庫頁面的螢幕擷取畫面。](./media/tutorial-prepare-azure/new-vault-settings.png)
@@ -80,7 +80,7 @@ ms.locfileid: "91814215"
 3. 在 [名稱]  中，輸入網路名稱。 此名稱必須是 Azure 資源群組中的唯一名稱。 在本教學課程中，我們使用 **ContosoASRnet**。
 4. 在 [位址空間]  中，以 CIDR 標記法輸入虛擬網路的位址範圍。 我們使用 **10.1.0.0/24**。
 5. 在 [訂用帳戶]  中，選取要在其中建立網路的訂用帳戶。
-6. 指定要在其中建立網路的**資源群組**。 我們使用現有的資源群組 **contosoRG**。
+6. 指定要在其中建立網路的 **資源群組**。 我們使用現有的資源群組 **contosoRG**。
 7. 在 [位置]  中，選取與在其中建立復原服務保存庫相同的區域。 在本教學課程中為 [西歐]  。 此網路必須位於與保存庫相同的區域中。
 8. 在 [位址範圍]  中，輸入網路範圍。 我們正在使用 **10.1.0.0/24**，而不使用子網路。
 9. 我們保留基本 DDoS 保護的預設選項，且網路上沒有任何服務端點或防火牆。

@@ -1,5 +1,5 @@
 ---
-title: 教學課程：在 Azure 靜態 Web Apps 上部署伺服器轉譯的 Next.js 網站
+title: 教學課程：Azure Static Web Apps 上部署靜態轉譯的 Next.js 網站
 description: 使用 Azure 靜態 Web Apps 產生及部署 Next.js 動態網站。
 services: static-web-apps
 author: christiannwamba
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 835ee926de776b7a25295485d18ce25f883a2c5f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951157"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441608"
 ---
-# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽版上部署伺服器轉譯的 Next.js 網站
+# <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure Static Web Apps 預覽版上部署靜態轉譯的 Next.js 網站
 
 在本教學課程中，您將了解如何將 [Next.js](https://nextjs.org) 產生的靜態網站部署至 [Azure 靜態 Web Apps](overview.md)。 首先，您應了解如何安裝、設定及部署 Next.js 應用程式。 在此過程中，您也將了解如何解決使用 Next.js 產生靜態頁面時常會出現的難題
 
@@ -63,7 +63,7 @@ ms.locfileid: "91951157"
 
 當您按一下架構/程式庫時，您應該會看到關於所選項目的詳細資料頁面：
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="啟動 Next.js 應用程式":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="詳細資料頁面":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>從 Next.js 組建產生靜態網站
 
@@ -146,18 +146,18 @@ Azure 靜態 Web Apps 會從 GitHub 存放庫部署您的應用程式，並針�
 1. 在 [區域] 下拉式清單中，選擇離您最近您的區域。
 1. 從 [SKU] 下拉式清單中選取 [免費]。
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="啟動 Next.js 應用程式":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="建立靜態 Web 應用程式":::
 
 ### <a name="add-a-github-repository"></a>新增 GitHub 存放庫
 
 新的靜態 Web Apps 帳戶必須能使用您的 Next.js 應用程式存取存放庫，以便自動部署認可。
 
 1. 按一下 [以 GitHub 登入] 按鈕
-1. 選取您用來為 Next.js 專案建立存放庫的**組織**，這可能是您的 GitHub 使用者名稱。
+1. 選取您用來為 Next.js 專案建立存放庫的 **組織**，這可能是您的 GitHub 使用者名稱。
 1. 尋找並選取您先前建立的存放庫名稱。
 1. 從 [分支] 下拉式清單中選擇 [主要] 作為分支。
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="啟動 Next.js 應用程式":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="連接 GitHub":::
 
 ### <a name="configure-the-build-process"></a>設定建置程序
 
@@ -165,7 +165,7 @@ Azure 靜態 Web Apps 會從 GitHub 存放庫部署您的應用程式，並針�
 
 1. 按一下 [建置] 索引標籤，以設定靜態輸出檔案夾。
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="啟動 Next.js 應用程式":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="建置索引標籤":::
 
 2. 在 [應用程式成品位置] 文字方塊中輸入 **out**。
 
@@ -195,7 +195,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 瀏覽至新部署的網站，然後按一下其中一個架構或程式庫標誌。 您會收到 404 錯誤頁面，而不是取得詳細資料頁面。
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="啟動 Next.js 應用程式":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="動態路由上的 404":::
 
 此錯誤的原因是，Next.js 僅根據應用程式組態產生了首頁。
 
@@ -231,7 +231,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 2. 將新的變更推送至您的 GitHub 存放庫，並等候幾分鐘的時間，讓 GitHub 動作重新建置您的網站。 建置完成後，404 錯誤就會消失。
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="啟動 Next.js 應用程式":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="動態路由上的 404 已修正":::
 
 > [!div class="nextstepaction"]
 > [設定自訂網域](custom-domain.md)

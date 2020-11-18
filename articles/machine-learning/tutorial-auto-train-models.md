@@ -1,7 +1,7 @@
 ---
 title: 迴歸教學課程：自動化 ML
 titleSuffix: Azure Machine Learning
-description: 在此教學課程中，您會了解如何使用自動化機器學習來產生機器學習模型。 Azure Machine Learning 可以用自動化方式，為您執行資料前處理、演算法選擇及超參數選擇。
+description: 建立自動化機器學習實驗，以根據您所提供的定型資料和組態設定來為您產生迴歸模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896783"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358604"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教學課程：使用自動化機器學習預測計程車車資
 
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>設定工作區
 
-從現有的工作區建立工作區物件。 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) \(英文\) 是會接受您 Azure 訂用帳戶和資源資訊的類別。 它也會建立雲端資源來監視及追蹤您的模型執行。 `Workspace.from_config()` 會讀取 **config.json** 檔案，並將驗證詳細資料載入名為 `ws` 的物件中。 `ws` 用於本教學課程的其餘程式碼。
+從現有的工作區建立工作區物件。 [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) \(英文\) 是會接受您 Azure 訂用帳戶和資源資訊的類別。 它也會建立雲端資源來監視及追蹤您的模型執行。 `Workspace.from_config()` 會讀取 **config.json** 檔案，並將驗證詳細資料載入名為 `ws` 的物件中。 `ws` 用於本教學課程的其餘程式碼。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>探索結果
 
-使用 [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)，探索自動定型的結果。 這項小工具可讓您查看所有個別執行反覆項目的圖表和資料表，以及定型精確度計量和中繼資料。 此外，您也可以使用下拉式清單選取器，來篩選主要計量以外的不同精確度計量。
+使用 [Jupyter 小工具](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)，探索自動定型的結果。 這項小工具可讓您查看所有個別執行反覆項目的圖表和資料表，以及定型精確度計量和中繼資料。 此外，您也可以使用下拉式清單選取器，來篩選主要計量以外的不同精確度計量。
 
 ```python
 from azureml.widgets import RunDetails

@@ -1,18 +1,18 @@
 ---
-title: 將 IoT 隨插即用範例 Python 元件裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 建置並執行使用多個元件的 IoT 隨插即用範例 Python 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 教學課程 - 將 IoT 隨插即用範例 Python 元件裝置程式碼連線至 Azure IoT 中樞 | Microsoft Docs
+description: 教學課程 - 建置並執行使用多個元件的 IoT 隨插即用範例 Python 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 0a4130688d479902f7836ae09c4006bb36fc16d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613657"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421391"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>教學課程：將範例 IoT 隨插即用多重元件裝置應用程式連線至 IoT 中樞 (Python)
 

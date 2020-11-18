@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2020
+ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4a4df1ff0561e180ca0a3fd36363ceff7da042df
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e645f4075aa1c4c027e8ea884108fdeb708467af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522422"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279943"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Nitro Productivity Suite 整合
 
@@ -26,9 +26,7 @@ ms.locfileid: "92522422"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Nitro Productivity Suite。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要：
 
@@ -41,17 +39,16 @@ ms.locfileid: "92522422"
 
 * Nitro Productivity Suite 支援由 **SP** 和 **IDP** 起始的 SSO。
 * Nitro Productivity Suite 支援 **Just In Time** 使用者佈建。
-* 設定 Nitro Productivity Suite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>從資源庫新增 Nitro Productivity Suite
 
 若要設定以將 Nitro Productivity Suite 整合到 Azure AD 中，您需要從資源庫將 Nitro Productivity Suite 新增到受控的 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左窗格上，選取 [Azure Active Directory]  。
-1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左窗格上，選取 [Azure Active Directory]。
+1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Nitro Productivity Suite** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Nitro Productivity Suite**。
 1. 從結果中選取 [Nitro Productivity Suite]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -62,18 +59,20 @@ ms.locfileid: "92522422"
 若要設定及測試與 Nitro Productivity Suite 搭配運作的 Azure AD SSO，請完成下列建構元素：
 
 1. [設定 Azure AD SSO](#configure-azure-ad-sso)，讓您的使用者能夠使用此功能。
-    1. [建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)，以使用 B.Simon 測試 Azure AD 單一登入。
-    1. [指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)，讓 B.Simon 能夠使用 Azure AD 單一登入。
-1. [設定 Nitro Productivity Suite SSO](#configure-nitro-productivity-suite-sso) 以在應用程式端設定單一登入設定。
-    1. [建立 Nitro Productivity Suite 測試使用者](#create-a-nitro-productivity-suite-test-user) - 使 Nitro Productivity Suite 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
+
+    a. [建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)，以使用 B.Simon 測試 Azure AD 單一登入。
+    
+    b. [指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)，讓 B.Simon 能夠使用 Azure AD 單一登入。
+    
+2. [建立 Nitro Productivity Suite 測試使用者](#create-a-nitro-productivity-suite-test-user) - 使 Nitro Productivity Suite 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
 1. [測試 SSO](#test-sso)，以驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Nitro Productivity Suite]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 Azure 入口網站的 [Nitro Productivity Suite] 應用程式整合頁面上，尋找 [管理] 區段。 選取 [單一登入]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
 
     ![已醒目提示 [下載] 連結的 [SAML 簽署憑證] 區段螢幕擷取畫面](common/certificatebase64.png)
@@ -139,20 +138,10 @@ ms.locfileid: "92522422"
 1. 在 Azure 入口網站中，選取 [企業應用程式]   > [所有應用程式]  。
 1. 在應用程式清單中，選取 [Nitro Productivity Suite]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![管理區段的螢幕擷取畫面，醒目提示使用者和群組](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  。 然後，在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
-
-    ![使用者和群組使用者及群組頁面的螢幕擷取畫面，其中已醒目提示 [新增使用者]](common/add-assign-user.png)
-
 1. 在 [使用者和群組]  對話方塊的使用者清單中，選取 [B.Simon]  。 然後，選擇畫面底部的 [選取]  按鈕。
-1. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當的使用者角色。 然後，選擇畫面底部的 [選取]  按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派]  對話方塊中，選取 [指派]  。
-
-## <a name="configure-nitro-productivity-suite-sso"></a>設定 Nitro Productivity Suite SSO
-
-若要在 Nitro Productivity Suite 端設定單一登入，請將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 [Nitro Productivity Suite 支援小組](https://www.gonitro.com/support)。 此支援小組會確定兩端的 SAML SSO 連線都已正確設定。
 
 ### <a name="create-a-nitro-productivity-suite-test-user"></a>建立 Nitro Productivity Suite 測試使用者
 
@@ -160,20 +149,21 @@ Nitro Productivity Suite 支援依預設啟用的 Just-In-Time 使用者佈建�
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-當您在存取面板中選取 Nitro Productivity Suite 圖格時，您會自動登入您已設定 SSO 的 Nitro Productivity Suite。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="sp-initiated"></a>SP 起始：
 
-## <a name="additional-resources"></a>其他資源
+1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向您可以在其中起始登入流程的 Nitro Productivity Suite 登入 URL。  
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
+2. 直接移至 Nitro Productivity Suite 登入 URL，並從該處起始登入流程。
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 起始：
 
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
+* 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Nitro Productivity Suite 
 
-- [嘗試搭配 Azure AD 使用 Nitro Productivity Suite](https://aad.portal.azure.com/)
+您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Nitro Productivity Suite 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Nitro Productivity Suite。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [使用進階可見性和控制項保護 Nitro Productivity Suite](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>後續步驟
+
+設定 Nitro Productivity Suite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

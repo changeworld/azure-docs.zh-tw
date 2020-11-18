@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 伺服器評量來探索內部部�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7cbd7939248686a251fdf56bf1a5f1acc952a3a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 83ff63392c6cbcaa6a2ea011eb60199f61844bb1
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314076"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148332"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>教學課程：使用伺服器評量來探索實體伺服器
 
@@ -69,24 +69,28 @@ ms.locfileid: "92314076"
 
     ![在 [使用者設定] 中確認使用者可以註冊 Active Directory 應用程式](./media/tutorial-discover-physical/register-apps.png)
 
-9. 或者，租用戶/全域管理員可為帳戶指派**應用程式開發人員**角色，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. 或者，租用戶/全域管理員可為帳戶指派 **應用程式開發人員** 角色，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-physical-servers"></a>準備實體伺服器
 
 設定可供設備用來存取實體伺服器的帳戶。
 
-- 針對 Windows 伺服器，請在要包含於探索中的所有 Windows 伺服器上設定本機使用者帳戶。 將使用者帳戶新增至下列群組：- 遠端管理使用者 - 效能監視器使用者 - 效能記錄使用者。
-- 對於 Linux 伺服器，您在要探索的 Linux 伺服器上需要有根帳戶。 或者，設定存取權，如下所示：
-    - setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk
-    - setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk (如果 /usr/sbin/fdisk 不存在)<br/> - setcap "cap_dac_override, cap_dac_read_search, cap_fowner,cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap=+eip" /sbin/lvm
-    - setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode chmod a+r /sys/class/dmi/id/product_uuid
+- 若為 Windows 伺服器，對已加入網域的機器使用網域帳戶，對未加入網域的機器使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。
+- 對於 Linux 伺服器，您在要探索的 Linux 伺服器上需要有根帳戶。 或者，您可以使用下列命令來設定具有必要功能的非根帳號：
+
+**命令** | **目的**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk _(if /usr/sbin/fdisk is not present)_ | 若要收集磁碟設定資料
+setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | 若要收集磁碟效能資料
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | 若要收集 BIOS 序號
+chmod a+r /sys/class/dmi/id/product_uuid | 若要收集 BIOS GUID
 
 
 ## <a name="set-up-a-project"></a>設定專案
 
 設定新的 Azure Migrate 專案。
 
-1. 在 Azure 入口網站 > [所有服務]**** 中，搜尋 **Azure Migrate**。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
 2. 在 [服務] 下，選取 [Azure Migrate]。
 3. 在 [概觀] 中，選取 [建立專案]。
 5. 在 [建立專案] 中，選取您的 Azure 訂用帳戶和資源群組。 如果您還沒有資源群組，請加以建立。
@@ -97,7 +101,7 @@ ms.locfileid: "92314076"
 7. 選取 [建立]。
 8. 等候幾分鐘讓 Azure Migrate 專案完成部署。
 
-**Azure Migrate：伺服器評量**工具依預設會新增至新專案中。
+**Azure Migrate：伺服器評量** 工具依預設會新增至新專案中。
 
 ![顯示依預設新增伺服器評量工具的頁面](./media/tutorial-discover-physical/added-tool.png)
 
@@ -114,15 +118,15 @@ ms.locfileid: "92314076"
 ### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
-2. 在**探索電腦** > **電腦是否已虛擬化？** 中，選取 [實體或其他 (AWS、GCP、Xen 等。)]。
-3. 在 **1：產生 Azure Migrate 專案金鑰**中，為您要為探索之實體或虛擬伺服器設定的 Azure Migrate 設備命名。名稱應使用英數位元，且長度不超過 14 個字元。
+2. 在 **探索電腦** > **電腦是否已虛擬化？** 中，選取 [實體或其他 (AWS、GCP、Xen 等。)]。
+3. 在 **1：產生 Azure Migrate 專案金鑰** 中，為您要為探索之實體或虛擬伺服器設定的 Azure Migrate 設備命名。名稱應使用英數位元，且長度不超過 14 個字元。
 1. 按一下 [產生金鑰] ，開始建立必要的 Azure 資源。 在建立資源期間，請勿關閉探索的電腦頁面。
 1. 成功建立 Azure 資源之後，系統會產生 **Azure Migrate 專案金鑰**。
 1. 複製金鑰，您在設定期間需要此金鑰才能完成設備的註冊。
 
 ### <a name="download-the-installer-script"></a>下載安裝程式指令碼
 
-在 **2：下載 Azure Migrate 設備**中，按一下 [下載]。
+在 **2：下載 Azure Migrate 設備** 中，按一下 [下載]。
 
 
 ### <a name="verify-security"></a>確認安全性
@@ -137,13 +141,13 @@ ms.locfileid: "92314076"
 3.  確認最新的設備版本與雜湊值：
     - 對於公用雲端：
 
-        **案例** | **下載*** | **雜湊值**
+        **案例** | **下載** _ | _ *雜湊值**
         --- | --- | ---
         實體 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
 
     - 對於 Azure Government：
 
-        **案例** | **下載*** | **雜湊值**
+        **案例** | **下載** _ | _ *雜湊值**
         --- | --- | ---
         實體 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
@@ -190,7 +194,7 @@ ms.locfileid: "92314076"
 1. 在任何可連線至設備的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以按一下應用程式捷徑，從桌面開啟應用程式。
-2. 接受**授權條款**，並閱讀第三方資訊。
+2. 接受 **授權條款**，並閱讀第三方資訊。
 1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
     - **連線能力**：應用程式會確認伺服器是否能夠存取網際網路。 如果伺服器使用 Proxy：
         - 按一下 [設定 Proxy] 以指定 Proxy 位址 (格式為 http://ProxyIPAddress 或 http://ProxyFQDN) ) 和接聽連接埠。
@@ -202,7 +206,7 @@ ms.locfileid: "92314076"
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至**伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
+1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至 **伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
 1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
 1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
    
@@ -216,20 +220,20 @@ ms.locfileid: "92314076"
 
 現在，從設備連線至要探索的實體伺服器，然後開始探索。
 
-1. 在 [步驟 1：選取復原點]**提供認證以探索 Windows 和 Linux 實體或虛擬伺服器**中，按一下 [新增認證] 來指定認證的自訂名稱、為 Windows 或 Linux 伺服器新增**使用者名稱**和**密碼**。 按一下 [ **儲存**]。
+1. 在 [步驟 1：選取復原點]**提供認證以探索 Windows 和 Linux 實體或虛擬伺服器** 中，按一下 [新增認證] 來指定認證的自訂名稱、為 Windows 或 Linux 伺服器新增 **使用者名稱** 和 **密碼**。 按一下 [ **儲存**]。
 1. 如果想要一次新增多個認證，請按一下 [新增更多] 以儲存並新增更多認證。 實體伺服器探索支援使用多個認證。
-1. 在**步驟 2：提供實體或虛擬伺服器詳細資料**中，按一下 [新增探索來源] 來指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，以連線到伺服器。
-1. 您可以一次**新增單一項目**，或**新增多個項目**。 另外也可透過**匯入 CSV** 提供伺服器詳細資料。
+1. 在 **步驟 2：提供實體或虛擬伺服器詳細資料** 中，按一下 [新增探索來源] 來指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，以連線到伺服器。
+1. 您可以一次 **新增單一項目**，或 **新增多個項目**。 另外也可透過 **匯入 CSV** 提供伺服器詳細資料。
 
 
-    - 如果您選擇**新增單一項目**，可以選擇 OS 類型、指定認證的自訂名稱、新增伺服器 **IP 位址/FQDN**，然後按一下 [儲存]。
-    - 如果您選擇**新增多個項目**，可以在文字方塊中指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，一次新增多筆記錄。**確認**新增的記錄，然後按一下 [儲存]。
-    - 如果您選擇**匯入 CSV** (預設選項)，您可以下載 CSV 範本檔案，並在檔案中填入伺服器 **IP 位址/FQDN** 和憑證的自訂名稱。 然後將檔案匯入設備，**確認**檔案中的記錄，然後按一下 [儲存]。
+    - 如果您選擇 **新增單一項目**，可以選擇 OS 類型、指定認證的自訂名稱、新增伺服器 **IP 位址/FQDN**，然後按一下 [儲存]。
+    - 如果您選擇 **新增多個項目**，可以在文字方塊中指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，一次新增多筆記錄。**確認** 新增的記錄，然後按一下 [儲存]。
+    - 如果您選擇 **匯入 CSV** (預設選項)，您可以下載 CSV 範本檔案，並在檔案中填入伺服器 **IP 位址/FQDN** 和憑證的自訂名稱。 然後將檔案匯入設備，**確認** 檔案中的記錄，然後按一下 [儲存]。
 
-1. 按一下儲存時，設備會嘗試驗證已新增的伺服器連線，並在資料表中顯示每部伺服器的**驗證狀態**。
+1. 按一下儲存時，設備會嘗試驗證已新增的伺服器連線，並在資料表中顯示每部伺服器的 **驗證狀態**。
     - 如果伺服器驗證失敗，請按一下資料表狀態欄中的 [驗證失敗] 以檢閱錯誤。 修正問題，然後再次驗證。
     - 若要移除伺服器，請選取 [刪除]。
-1. 您可以在啟動探索之前，隨時**重新驗證**伺服器的連線功能是否正常。
+1. 您可以在啟動探索之前，隨時 **重新驗證** 伺服器的連線功能是否正常。
 1. 按一下 [開始探索]，以開始探索成功驗證的伺服器。 成功起始探索之後，您可以在資料表中檢查每部伺服器的探索狀態。
 
 

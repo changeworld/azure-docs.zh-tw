@@ -5,27 +5,28 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d03d0267ff4fb16042d5cc2016e87139b88281a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056577"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411196"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
-本教學課程會示範如何使用虛擬 WAN，透過 IPsec/IKE (IKEv2) 或 OpenVPN VPN 連線來與 Azure 中的資源連線。 此類型的連線需要在用戶端電腦上設定用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)
+本教學課程會示範如何使用虛擬 WAN，透過 IPsec/IKE (IKEv2) 或 OpenVPN VPN 連線來與 Azure 中的資源連線。 此類型的連線需要在用戶端電腦上設定 VPN 用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 建立 WAN
+> * 建立虛擬 WAN
 > * 建立 P2S 設定
-> * 建立中樞
+> * 建立虛擬中樞
 > * 指定 DNS 伺服器
-> * 下載 VPN 用戶端設定檔
+> * 產生 VPN 用戶端設定檔組態套件
+> * 設定 VPN 用戶端
 > * 檢視您的虛擬 WAN
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwanp2s.png)
@@ -42,27 +43,28 @@ ms.locfileid: "92056577"
 
 點對站 (P2S) 設定會定義用於連線遠端用戶端的參數。
 
-[!INCLUDE [Create client profiles](../../includes/virtual-wan-p2s-configuration-include.md)]
+[!INCLUDE [Create P2S configuration](../../includes/virtual-wan-p2s-configuration-include.md)]
 
-## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>建立具有點對站閘道的中樞
+## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>建立虛擬中樞與閘道
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>指定 DNS 伺服器
 
-虛擬 WAN 使用者 VPN 閘道可讓您指定最多 5 部 DNS 伺服器。 您可以在中樞建立過程中進行此設定，或在稍後修改。 若要這麼做，請找出虛擬中樞。 在**使用者 VPN (點對站)** 上選取 [設定]，然後在 [自訂 DNS 伺服器] 文字方塊中輸入 DNS 伺服器 IP 位址。
+您可以在建立中樞時進行此設定，或在稍後修改。 若要修改，請找出虛擬中樞。 在 [使用者 VPN (點對站)] 上選取 [設定]，然後在 [自訂 DNS 伺服器] 文字方塊中輸入 DNS 伺服器 IP 位址。 您可以指定最多 5 部 DNS 伺服器。
 
    :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="自訂 DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
-## <a name="download-vpn-profile"></a><a name="download"></a>下載 VPN 設定檔
+## <a name="generate-vpn-client-profile-package"></a><a name="download"></a>產生 VPN 用戶端設定檔套件
 
-使用 VPN 設定檔來設定用戶端。
+產生並下載 VPN 用戶端設定檔套件，以設定您的 VPN 用戶端。
 
 [!INCLUDE [Download profile](../../includes/virtual-wan-p2s-download-profile-include.md)]
 
-### <a name="configure-user-vpn-clients"></a>設定使用者 VPN 用戶端
+## <a name="configure-vpn-clients"></a><a name="configure-client"></a>設定 VPN 用戶端
 
-使用下載的設定檔來設定遠端存取用戶端。 每個作業系統的程序都不同，請遵循適用於您的系統的指示。
+使用下載的設定檔套件來設定遠端存取 VPN 用戶端。 每個作業系統的程序各不相同。 依照您的系統適用的指示進行。
+完成用戶端的設定之後，您就可以連線。
 
 [!INCLUDE [Configure clients](../../includes/virtual-wan-p2s-configure-clients-include.md)]
 
@@ -70,7 +72,7 @@ ms.locfileid: "92056577"
 
 1. 瀏覽至虛擬 WAN。
 1. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。
-1. 在**中樞與連線**區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
+1. 在 **中樞與連線** 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 

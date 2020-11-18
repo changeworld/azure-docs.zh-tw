@@ -3,13 +3,13 @@ title: 部署及設定 Azure VMware 解決方案
 description: 了解如何使用在規劃階段中收集到的資訊來部署 Azure VMware 解決方案私人雲端。
 ms.topic: tutorial
 ms.author: tredavis
-ms.date: 10/02/2020
-ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/09/2020
+ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152034"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336330"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署及設定 Azure VMware 解決方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "92152034"
 ## <a name="create-the-jump-box"></a>建立跳躍箱
 
 >[!IMPORTANT]
->如果您在 [建立私人雲端] 畫面上的初始佈建步驟期間，將 [虛擬網路] 選項保留空白，請先完成 [設定 VMware 私人雲端的網路功能](tutorial-configure-networking.md)教學課程 **之後** ，再繼續進行本節。  
+>如果您在 [建立私人雲端] 畫面上的初始佈建步驟期間，將 [虛擬網路] 選項保留空白，請先完成 [設定 VMware 私人雲端的網路功能](tutorial-configure-networking.md)教學課程 **之後**，再繼續進行本節。  
 
 部署 Azure VMware 解決方案之後，您將建立虛擬網路的跳躍箱，以連線至 vCenter 和 NSX。 設定 ExpressRoute 電路和 ExpressRoute Global Reach 之後，就不需要跳躍箱。  但是，在您的 Azure VMware 解決方案中觸達 vCenter 和 NSX 十分方便。  
 
@@ -59,7 +59,7 @@ ms.locfileid: "92152034"
 
 在 [有效路由] 清單中，您應該會看到在 Azure VMware 解決方案部署過程中建立的網路。 您會在本文稍早的[部署步驟](#deploy-azure-vmware-solution)期間，看到多個衍生自[`/22`您所定義網路](production-ready-deployment-steps.md#ip-address-segment)的網路。
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="建立 Azure VMware 解決方案跳躍箱" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="確認從 Azure VMware 解決方案公告到 Azure 虛擬網路的網路路由" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 在此範例中，部署期間輸入的 10.74.72.0/22 網路會衍生 /24 網路。  如果您看到類似的內容，您可以連線到 Azure VMware 解決方案中的 vCenter。
 
@@ -97,10 +97,10 @@ ms.locfileid: "92152034"
 
 如果您打算在您的 NSX-T 區段上使用 DHCP，請繼續進行本節。 否則，請跳至[在 NSX-T 網路區段上新增 VM](#add-a-vm-on-the-nsx-t-network-segment)一節。  
 
-現在您已建立了您的 NSX-T 網路區段，可以執行下列其中一種方式：
+現在您已建立您的 NSX-T 網路區段，您可以透過兩種方式來建立和管理 Azure VMware 解決方案中的 DHCP：
 
-* 針對建立的區段，使用 NSX-T 做為 DHCP 伺服器。 在此選項中，您想要[在 NSX-T 中建立 DHCP 伺服器](manage-dhcp.md#create-dhcp-server)，並[轉送至該伺服器](manage-dhcp.md#create-dhcp-relay-service)。
-* 將來自 NSX-T 區段的 DHCP 要求轉送至您環境中其他位置的 DHCP 伺服器。 針對此選項，[僅進行轉送組態](manage-dhcp.md#create-dhcp-relay-service)。
+* 如果您是使用 NSX-T 來裝載 DHCP 伺服器，您必須[建立 DHCP 伺服器](manage-dhcp.md#create-a-dhcp-server)並[轉送到該伺服器](manage-dhcp.md#create-dhcp-relay-service)。 
+* 如果您在網路中使用第三方外部 DHCP 伺服器，您必須[建立 DHCP 轉送服務](manage-dhcp.md#create-dhcp-relay-service)。  針對此選項，[僅進行轉送組態](manage-dhcp.md#create-dhcp-relay-service)。
 
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>在 NSX-T 網路區段上新增 VM

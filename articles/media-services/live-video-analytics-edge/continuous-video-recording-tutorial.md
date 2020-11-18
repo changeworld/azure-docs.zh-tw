@@ -3,12 +3,12 @@ title: 將連續影片錄製到雲端並從雲端播放的教學課程 - Azure
 description: 在本教學課程中，您將了解如何在Azure IoT Edge 上使用 Azure Live Video Analytics，以持續將影片錄製到雲端，並使用 Azure 媒體服務串流該影片的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774023"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346361"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將連續影片錄製移到雲端並從雲端播放
 
@@ -93,7 +93,7 @@ ms.locfileid: "91774023"
     IoT 中樞連接字串可讓您使用 Visual Studio Code 透過 Azure IoT 中樞將命令傳送至邊緣模組。
     
 1. 接下來，瀏覽至 src/edge 資料夾，並建立名為 **.env** 的檔案。
-1. 複製 ~/clouddrive/lva-sample/.env 檔案中的內容。 文字應會顯示如下：
+1. 複製 ~/clouddrive/lva-sample/edge-deployment/.env 檔案中的內容。 文字應會顯示如下：
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -141,7 +141,7 @@ ms.locfileid: "91774023"
 1. 以滑鼠右鍵按一下 src/edge/config/deployment.amd64.json，然後選取 [建立單一裝置的部署]。
 
    ![建立單一裝置的部署](./media/quickstarts/create-deployment-single-device.png)
-1. 接著，系統會要求您**選取 IoT 中樞裝置**。 從下拉式清單中選取 [lva-sample-device]。
+1. 接著，系統會要求您 **選取 IoT 中樞裝置**。 從下拉式清單中選取 [lva-sample-device]。
 1. 在大約 30 秒後，重新整理左下方區段中的 Azure IoT 中樞。 您應該會看到邊緣裝置已部署下列模組：
     * IoT Edge 上的 Live Video Analytics (模組名稱為 **lvaEdge**)
     * RTSP 模擬器 (模組名稱為 **rtspsim**)
@@ -164,11 +164,63 @@ ms.locfileid: "91774023"
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="媒體圖表":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="媒體圖表"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
+1. <!--In Visual Studio Code, go-->移至 src/cloud-to-device-console-app/operations.json。
+1. 在 **GraphTopologySet** 節點底下，編輯下列內容：
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+1. 接下來，在 **GraphInstanceSet** 和 **GraphTopologyDelete** 節點下，確定 **topologyName** 的值符合上述圖表拓撲中的 **name** 屬性值：
+
+    `"topologyName" : "CVRToAMSAsset"`  
+1. 在瀏覽器中開啟[拓撲](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)，並查看 assetNamePattern。 若要確定您有一個具有唯一名稱的資產，您可能需要變更 operations.json 檔案中的圖表執行個體名稱 (從預設值 Sample-Graph-1 變更)。
+
+    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
+1. 選取 F5 來啟動偵錯工作階段。 您會在 [終端機] 視窗中看到一些列印的訊息。
+1. operations.json 檔案首先會呼叫 GraphTopologyList 和 GraphInstanceList。 如果您已在先前的快速入門或教學課程之後清除資源，此動作會傳回空白清單並暫停以讓您選取 **Enter**，如下所示：
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+1. 當您在 [終端機] 視窗中選取 **Enter** 後，將會進行下一組直接方法的呼叫：
+   * 使用先前的 topologyUrl 呼叫 GraphTopologySet
+   * 使用下列主體呼叫 GraphInstanceSet
+     
+     ```
+     {
+       "@apiVersion": "1.0",
+       "name": "Sample-Graph-1",
+       "properties": {
+         "topologyName": "CVRToAMSAsset",
+         "description": "Sample graph description",
+         "parameters": [
+           {
+             "name": "rtspUrl",
+             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+           },
+           {
+             "name": "rtspUserName",
+             "value": "testuser"
+           },
+           {
+             "name": "rtspPassword",
+             "value": "testpassword"
            }
          ]
        }
@@ -308,7 +360,7 @@ body 區段包含有關輸出位置的資訊，在此案例中，是用來錄製
 
 1. 開啟網頁瀏覽器，然後移至 [Azure 入口網站](https://portal.azure.com/)。 輸入您的認證來登入此入口網站。 預設檢視是您的服務儀表板。
 1. 在訂用帳戶的資源中找出您的媒體服務帳戶，然後開啟 [帳戶] 窗格。
-1. 選取 [媒體服務] 清單中的**資產**。
+1. 選取 [媒體服務] 清單中的 **資產**。
 
     ![媒體服務資產](./media/continuous-video-recording-tutorial/assets.png)
 1. 您會發現以 sampleAsset-CVRToAMSAsset-Sample-Graph-1 作為名稱列出的資產。 這是在您的圖表拓撲檔案中選擇的命名模式。

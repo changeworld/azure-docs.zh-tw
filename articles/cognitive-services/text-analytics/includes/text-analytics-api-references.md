@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: assafi
-ms.openlocfilehash: b412308bf11a5e73287401e8b4b0cc522b26d623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e27199726df2d98dd2144f3f5338c969d528e3b
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779081"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523680"
 ---
 > [!Tip]
 > 如需詳細的 API 技術文件及查看其運作方式，請使用下列連結。 您也可以從內建的 API 測試主控台傳送 POST 要求。 不需要進行任何設定，只要將您的資源金鑰和 JSON 文件貼到要求中即可：
 > - 最新穩定版 API - [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
-> - 最新預覽 API - [v3.1-Preview.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-1)
+> - 最新預覽 API - [v3.1-Preview.2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2)

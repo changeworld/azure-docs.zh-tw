@@ -1,6 +1,6 @@
 ---
-title: 教學課程：將 Azure 函式部署為模組 - Azure IoT Edge
-description: 在本教學課程中，您會將 Azure 函式部署為 IoT Edge 模組，然後將它部署至邊緣裝置。
+title: 教學課程：將 Azure Functions 部署為模組 - Azure IoT Edge
+description: 在本教學課程中，您會將 Azure Functions 部署為 IoT Edge 模組，然後將其部署至邊緣裝置。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e148adfe6db62e6fdaea53165a5c23d9a08efba
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042366"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534835"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教學課程：將 Azure Functions 部署為 IoT Edge 模組
 
@@ -71,7 +71,7 @@ ms.locfileid: "92042366"
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱 (例如 **FunctionSolution**)，或接受預設值。 |
    | 選取模組範本 | 選擇 [Azure Functions - C#]  。 |
    | 提供模組名稱 | 將模組命名為 **CSharpFunction**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 最終字串看起來會類似於：\<registry name\>.azurecr.io/CSharpFunction。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 最終字串看起來會類似於：\<registry name\>.azurecr.io/CSharpFunction。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-deploy-function/repository.png)
 
@@ -213,7 +213,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 3. 瀏覽至 **CSharpFunction** 所在的解決方案資料夾。 開啟 config 資料夾、選取 **deployment.amd64.json** 檔案，然後選擇 [選取 Edge 部署資訊清單]。
 
-4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **CSharpFunction** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
+4. 請展開裝置下的 **模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **CSharpFunction** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
 
     新模組可能需要一些時間才會出現。 IoT Edge 裝置必須從 IoT 中樞擷取其新的部署資訊、啟動新容器，然後向 IoT 中樞回報狀態。
 

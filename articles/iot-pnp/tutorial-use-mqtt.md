@@ -1,20 +1,20 @@
 ---
-title: 使用 MQTT 建立 IoT 隨插即用裝置用戶端 | Microsoft Docs
-description: 直接使用 MQTT 通訊協定建立 IoT 隨插即用裝置用戶端，而無須使用 Azure IoT 裝置 SDK
+title: 教學課程 - 使用 MQTT 建立 Azure IoT 隨插即用裝置用戶端 | Microsoft Docs
+description: 教學課程 - 直接使用 MQTT 通訊協定建立 IoT 隨插即用裝置用戶端，而無須使用 Azure IoT 裝置 SDK
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046276"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421374"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>使用 MQTT 開發 IoT 隨插即用裝置用戶端
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>教學課程 - 使用 MQTT 開發 IoT 隨插即用裝置用戶端
 
 如果可能，您應該使用其中一個 Azure IoT 裝置 SDK 來建置您的 IoT 隨插即用裝置用戶端。 不過，在使用記憶體限制裝置的案例中，您可能需要使用 MQTT 程式庫來與 IoT 中樞通訊。
 
@@ -26,13 +26,13 @@ ms.locfileid: "92046276"
 
 若要在 Windows 上完成此教學課程，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在 [安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含 **使用 C++ 的桌面開發** 工作負載
 * [Git](https://git-scm.com/download/)
 * [CMake](https://cmake.org/download/)
 
-使用 *Azure IoT 總管*工具，將新裝置新增至您的 IoT 中樞。 當您完成下列程序後，您即已設定 IoT 中樞和 Azure IoT 總管工具：[設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)：
+使用 *Azure IoT 總管* 工具，將新裝置新增至您的 IoT 中樞。 當您完成下列程序後，您即已設定 IoT 中樞和 Azure IoT 總管工具：[設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)：
 
-1. 啟動 **Azure IoT 總管**工具。
+1. 啟動 **Azure IoT 總管** 工具。
 1. 在 [IoT 中樞] 頁面上，選取 [檢視此中樞內的裝置]。
 1. 在 [裝置] 頁面上，選取 [+ 新增]。
 1. 建立使用自動產生的對稱金鑰、名稱為 *my-mqtt-device* 的裝置。
@@ -96,7 +96,7 @@ cd vcpkg
 
 在 Azure IoT 總管中，您可以看到裝置並非 IoT 隨插即用裝置：
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="MQTT 範例應用程式的輸出":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Azure IoT 總管中的非 IoT 隨插即用裝置":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>讓裝置成為 IoT 隨插即用裝置
 
@@ -117,11 +117,11 @@ IoT 隨插即用裝置必須遵循一組簡單的慣例。 如果裝置在連線
 
 裝置對應項現在包含模型識別碼：
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="MQTT 範例應用程式的輸出":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="在 Azure IoT 總管中檢視模型識別碼":::
 
 您現在可以瀏覽 IoT 隨插即用元件：
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="MQTT 範例應用程式的輸出":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="在 Azure IoT 總管中檢視元件":::
 
 您現在可以修改裝置程式碼，以實作模型中所定義的遙測、屬性和命令。 若要查看使用 Mosquitto 程式庫之控溫器裝置的範例實作，請參閱 GitHub 上的 [在 Windows 中使用 MQTT PnP 搭配 Azure IoTHub (不含 IoT SDK)](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32)。
 

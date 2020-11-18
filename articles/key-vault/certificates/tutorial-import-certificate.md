@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503118"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289728"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教學課程：在 Azure Key Vault 中匯入憑證
 
@@ -41,7 +41,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ## <a name="create-a-vault"></a>建立保存庫
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]。
+1. 從 Azure 入口網站功能表或 **首頁**，選取 [建立資源]。
 2. 在 [搜尋] 方塊中輸入 **Key Vault**。
 3. 從結果清單中，選擇 [Key Vault]。
 4. 在 [金鑰保存庫] 區段上選擇 [建立]。
@@ -82,11 +82,11 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ![憑證屬性](../media/certificates/tutorial-import-cert/cert-import.png)
 
-藉由使用**匯入**方法來新增憑證，Azure 金鑰保存庫會自動填入憑證參數 (也就是有效期間、簽發者名稱、啟用日期等)。
+藉由使用 **匯入** 方法來新增憑證，Azure 金鑰保存庫會自動填入憑證參數 (也就是有效期間、簽發者名稱、啟用日期等)。
 
 一旦收到已成功匯入憑證的訊息，即可按一下清單上的憑證以檢視其屬性。 
 
-![憑證屬性](../media/certificates/tutorial-import-cert/current-version-hidden.png)
+![顯示檢視憑證屬性位置所在的螢幕擷取畫面。](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
 ## <a name="import-a-certificate-using-azure-cli"></a>使用 Azure CLI 來匯入憑證
 
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-深入了解[參數](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)。
+深入了解[參數](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)。
 
-匯入憑證之後，您可以使用[憑證顯示](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show)來檢視憑證
+匯入憑證之後，您可以使用[憑證顯示](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show)來檢視憑證
 
 
 ```azurecli
@@ -135,7 +135,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-深入了解[參數](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)。
+深入了解[參數](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)。
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -152,6 +152,6 @@ Import-AzureKeyVaultCertificate
 
 在本教學課程中，您已建立 Key Vault 並於其中匯入憑證。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
-- 深入了解如何[在 Azure Key Vault 中管理憑證建立](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)
+- 深入了解如何[在 Azure Key Vault 中管理憑證建立](./create-certificate-scenarios.md)
 - 請參閱[使用 REST API 來匯入憑證](/rest/api/keyvault/importcertificate/importcertificate)的範例
 - 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)

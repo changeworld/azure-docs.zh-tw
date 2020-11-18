@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93360e48dad13b9ec57175d31ecb61d32974f066
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248542"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128397"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教學課程：使用 Data Factory 複製精靈建立具有複製活動的管線
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "85248542"
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
 
 
-本教學課程說明如何使用**複製精靈**，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 
+本教學課程說明如何使用 **複製精靈**，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 
 
 Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將資料從支援的來源資料存放區複製到支援的目的地資料存放區。 因此，建議在第一個步驟中使用精靈來建立資料移動案例的範例管線。 如需作為來源和目的地支援的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。  
 
@@ -43,7 +43,7 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
 請先完成 [教學課程概觀](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 一文中列出的必要條件，再執行本教學課程。
 
 ## <a name="create-data-factory"></a>建立資料處理站
-在此步驟中，您會使用 Azure 入口網站來建立名為 **ADFTutorialDataFactory**的 Azure Data Factory。
+在此步驟中，您會使用 Azure 入口網站來建立名為 **ADFTutorialDataFactory** 的 Azure Data Factory。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 按一下左上角的 [建立資源]，按一下 [資料 + 分析]，然後按一下 [Data Factory]。 
@@ -51,7 +51,7 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
    ![新增->DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. 在 [ **新增 Data Factory** ] 刀鋒視窗中：
    
-   1. 輸入 **ADFTutorialDataFactory** 做為**名稱**。
+   1. 輸入 **ADFTutorialDataFactory** 做為 **名稱**。
        Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤：`Data factory name “ADFTutorialDataFactory” is not available`，請變更資料處理站名稱 (例如 yournameADFTutorialDataFactoryYYYYMMDD)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。  
       
        ![Data Factory 名稱無法使用](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
@@ -100,10 +100,10 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
    1. 按兩下 **adftutorial** (資料夾)。
    2. 選取 **emp.txt**，然後按一下 [選擇]
       
-      ![複製工具 - 選擇輸入檔案或資料夾](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
+      ![此螢幕擷取畫面顯示輸入檔的 [選擇] 選項。](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. 在 [選擇輸入檔案或資料夾] 頁面上，按 [下一步]。 請勿選取 [二進位複本] 。 
    
-    ![複製工具 - 選擇輸入檔案或資料夾](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
+    ![此螢幕擷取畫面顯示輸入的 [二進位複製] 選項。](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
 7. 在 [檔案格式設定] 頁面上，您會看到分隔符號以及精靈藉由剖析檔案自動偵測到的結構描述。 您也可以手動輸入複製精靈的分隔符號，以停止自動偵測或進行覆寫。 檢閱分隔符號並預覽資料之後，請按 [下一步]。 
    
     ![複製工具 - 檔案格式設定](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
@@ -120,7 +120,7 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
    6. 按 [下一步] 。  
       
       ![複製工具 - 指定 Azure SQL Database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
-10. 在 [資料表對應] 頁面上，從 [目的地] 欄位的下拉式清單中選取 **emp**，按一下**向下箭號** (選擇性) 以查看結構描述及預覽資料。
+10. 在 [資料表對應] 頁面上，從 [目的地] 欄位的下拉式清單中選取 **emp**，按一下 **向下箭號** (選擇性) 以查看結構描述及預覽資料。
     
      ![複製工具 - 資料表對應](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
 11. 在 [結構描述對應] 頁面上，按 [下一步]。
@@ -128,10 +128,10 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
     ![複製工具 - 結構描述對應](./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png)
 12. 在 [效能設定] 頁面上，按 [下一步]。 
     
-    ![複製工具 - 效能設定](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
+    ![此螢幕擷取畫面顯示可讓您選取 [下一步] 的 [效能設定] 頁面。](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
 13. 在 [摘要] 頁面中檢閱資訊，然後按一下 [完成]。 此精靈會在 Data Factory (從您啟動複製精靈的位置) 中建立兩個連結服務、兩個資料集 (輸入和輸出)，以及一個管線。 
     
-    ![複製工具 - 效能設定](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
+    ![此螢幕擷取畫面顯示可讓您選取 [下一步] 的 [摘要] 窗格。](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## <a name="launch-monitor-and-manage-application"></a>啟動監視及管理應用程式
 1. 在 [部署] 頁面上，按一下連結︰`Click here to monitor copy pipeline`。

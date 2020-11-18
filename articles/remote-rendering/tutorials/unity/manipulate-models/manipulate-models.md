@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d9a7d7db93e00b9fcccab08522b3363935badf26
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203835"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565965"
 ---
 # <a name="tutorial-manipulating-models"></a>教學課程：操作模型
 
@@ -167,7 +167,7 @@ ms.locfileid: "92203835"
 
 ## <a name="move-rotate-and-scale"></a>移動、旋轉和調整  
 
-移動、旋轉和調整遠端轉譯物件的方式，與任何其他 Unity 物件的運作方式相同。 **RemoteRenderingCoordinator**在其 `LateUpdate` 方法中，會在目前使用中的工作階段呼叫 `Update`。 `Update` 所執行的工作，就是同步處理本機模型實體轉換與其遠端對應專案。 若要移動、旋轉或調整遠端轉譯模型，您只需要移動、旋轉或縮放代表遠端模型之 GameObject 的轉換。 在這裡，我們將修改已附加 **RemoteRenderedModel** 指令碼之父 GameObject 的轉換。
+移動、旋轉和調整遠端轉譯物件的方式，與任何其他 Unity 物件的運作方式相同。 **RemoteRenderingCoordinator** 在其 `LateUpdate` 方法中，會在目前使用中的工作階段呼叫 `Update`。 `Update` 所執行的工作，就是同步處理本機模型實體轉換與其遠端對應專案。 若要移動、旋轉或調整遠端轉譯模型，您只需要移動、旋轉或縮放代表遠端模型之 GameObject 的轉換。 在這裡，我們將修改已附加 **RemoteRenderedModel** 指令碼之父 GameObject 的轉換。
 
 本教學課程使用 MRTK 來進行物件互動。 大部分用於移動、旋轉和調整物件的 MRTK 特定實作，都不在本教學課程的討論範圍內。 在 [模型工具] 功能表的 **AppMenu** 內，會預先設定模型檢視控制器。
 
@@ -176,7 +176,7 @@ ms.locfileid: "92203835"
 1. 按下 Unity 的播放按鈕來播放場景，然後在 **AppMenu** 內開啟 [模型工具] 功能表。
 ![檢視控制器](./media/model-with-view-controller.png)
 
-**AppMenu** 有一個子功能表**模型工具**，其會實作與模型繫結的檢視控制器。 當 GameObject 包含 **RemoteBounds** 元件時，檢視控制器將會新增 [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html)元件，這是 MRTK 元件，會在含有 **BoxCollider** 的物件周圍呈現周框方塊。 [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator) 負責與手部互動。 這些指令碼會合併，讓我們能夠移動、旋轉和調整遠端轉譯模型。
+**AppMenu** 有一個子功能表 **模型工具**，其會實作與模型繫結的檢視控制器。 當 GameObject 包含 **RemoteBounds** 元件時，檢視控制器將會新增 [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html)元件，這是 MRTK 元件，會在含有 **BoxCollider** 的物件周圍呈現周框方塊。 [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator) 負責與手部互動。 這些指令碼會合併，讓我們能夠移動、旋轉和調整遠端轉譯模型。
 
 1. 將滑鼠移至遊戲面板，並在其中按一下以對焦。
 1. 使用 [MRTK 的手部模擬](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)，按住左側 Shift 鍵。
@@ -308,7 +308,7 @@ ms.locfileid: "92203835"
 
 按一下以傳送光線轉換的要求，這是查詢遠端物件的有效原則。 不過，這不是理想的使用者體驗，因為資料指標與方塊碰撞器衝突，而不是模型本身。
 
-您也可以建立新的 MRTK 指標，以便更頻繁地在遠端工作階段中轉換光線。 雖然這個方法更加複雜，但能帶來較佳的使用者體驗。 此策略已超出本教學課程的範圍，但您可以在展示應用程式中看到這種方法的範例，位於 [ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)中。
+您也可以建立新的 MRTK 指標，以便更頻繁地在遠端工作階段中轉換光線。 雖然這個方法更加複雜，但能帶來較佳的使用者體驗。 此策略已超出本教學課程的範圍，但您可以在展示應用程式中看到這種方法的範例，位於 [ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)中。
 
 當 **RemoteRayCastPointerHandler** 中的光線轉換成功完成時，會從 `OnRemoteEntityClicked` Unity 事件叫用 `Entity`。 為了回應該事件，我們將建立可接受 `Entity` 並對其執行動作的協助程式指令碼。 先從指令碼開始，透過指令碼將 `Entity` 的名稱列印到偵錯工具記錄檔。
 
@@ -334,7 +334,7 @@ ms.locfileid: "92203835"
 2. 在先前建立的 **TestModel** GameObject 上，新增 **RemoteRayCastPointerHandler** 元件和 **RemoteEntityHelper** 元件。
 1. 將 `EntityToDebugLog` 方法指派給 `OnRemoteEntityClicked` 事件。 當事件的輸出類型和方法的輸入類型相符時，我們可以使用 Unity 的動態事件連結，這會自動將事件值傳遞至方法。
     1. 建立新的回呼欄位 ![新增回呼](./media/add-callback-remote-entity-clicked.png)
-    1. 將**遠端實體協助程式**元件拖曳到 [物件] 欄位中，以參考父系 GameObject ![指派物件](./media/assign-object.png)
+    1. 將 **遠端實體協助程式** 元件拖曳到 [物件] 欄位中，以參考父系 GameObject ![指派物件](./media/assign-object.png)
     1. 將 `EntityToDebugLog` 指派為回呼 ![指派回呼](./media/remote-entity-event.png)
 1. 按下 Unity 編輯器中的播放以啟動場景，連線到遠端工作階段並載入測試模型。
 1. 使用 MRTK 的手部模擬，按住左側 Shift 鍵。

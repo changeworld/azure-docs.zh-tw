@@ -1,100 +1,106 @@
 ---
-title: 在 Azure API 管理中監視發佈的原則 | Microsoft Docs
-description: 依照此教學課程的步驟，了解如何在 Azure API 管理中監視您的 API。
+title: 教學課程 - 在 Azure API 管理中監視發佈的原則 | Microsoft Docs
+description: 依照本教學課程的步驟，了解如何使用計量、警示、活動記錄和資源記錄，在 Azure API 管理中監視您的 API。
 services: api-management
 author: vladvino
-manager: cfowler
 ms.service: api-management
-ms.workload: mobile
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093577"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379302"
 ---
-# <a name="monitor-published-apis"></a>監視發佈的 API
+# <a name="tutorial-monitor-published-apis"></a>教學課程：監視發佈的 API
 
-您可以使用 Azure 監視器來視覺化、查詢、路由、封存及針對來自 Azure 資源的度量或記錄採取行動。
+您可以使用 Azure 監視器，對來自 Azure API 管理服務的計量或記錄進行視覺化、查詢、路由、封存及操作。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 檢視活動記錄
-> * 檢視資源記錄
 > * 檢視 API 的計量 
-> * 在 API 收到未經授權的呼叫時，設定警示規則
-
-下列影片示範如何使用 Azure 監視器來監視 API 管理。 
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
+> * 設定警示規則 
+> * 檢視活動記錄
+> * 啟用和檢視資源記錄
 
 ## <a name="prerequisites"></a>必要條件
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
++ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 + 此外，請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="view-metrics-of-your-apis"></a>檢視 API 的計量
 
-API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是兩個最常使用的計量。 如需所有可用計量的清單，請參閱[支援的計量](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)。
+API 管理會每分鐘發出[計量](../azure-monitor/platform/data-platform-metrics.md)，讓您近乎即時地了解 API 的狀態和健康情況。 以下是兩個最常使用的計量。 如需所有可用計量的清單，請參閱[支援的計量](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)。
 
-* 容量：協助您決定是否升級/降級 APIM 服務。 計量每分鐘發出，並反映提出報告時的閘道容量。 計量的範圍為 0 到 100，是根據 CPU 和記憶體使用率等閘道資源計算而來。
-* 要求：協助您分析通過 APIM 服務的 API 流量。 計量會每分鐘發出，並回報具有維度的閘道要求數目，包括回應碼、位置、主機名稱和錯誤。 
+* **容量** - 協助您決定是否升級/降級 APIM 服務。 計量每分鐘發出，並反映提出報告時的閘道容量。 計量的範圍為 0 到 100，是根據 CPU 和記憶體使用率等閘道資源計算而來。
+* **要求** - 協助您分析通過 API 管理服務的 API 流量。 計量會每分鐘發出，並回報具有維度的閘道要求數目，包括回應碼、位置、主機名稱和錯誤。 
 
 > [!IMPORTANT]
 > 下列計量已於 2019 年 5 月被取代，將於 2023 日 8 月淘汰：閘道要求總數、成功的閘道要求、未經授權的閘道要求、失敗的閘道要求、其他閘道要求。 請遷移至可提供對等功能的要求計量。
 
-![計量圖表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+:::image type="content" source="media/api-management-howto-use-azure-monitor/apim-monitor-metrics.png" alt-text="API 管理概觀中的計量的螢幕擷取畫面":::
 
 存取計量：
 
-1. 從靠近頁面底部的功能表中，選取 [計量]  。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 API 管理執行個體。 在 [概觀] 頁面上，檢閱您 API 的重要計量。
+1. 若要詳細調查計量，請從頁面底部附近的功能表中選取 [計量]。
 
-    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-metrics-blade.png" alt-text="[監視] 功能表中的計量項目的螢幕擷取畫面":::
 
-2. 從下拉式清單中，選取您想了解的計量。 例如， **要求** 。 
-3. 該圖表會顯示 API 呼叫的總數。
-4. 您可以使用 [要求]  計量的維度來篩選圖表。 例如，按一下 [新增篩選]  ，選擇 [後端回應碼]  ，輸入500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
+1. 從下拉式清單中，選取您想了解的計量。 例如， **要求**。 
+1. 該圖表會顯示 API 呼叫的總數。
+1. 您可以使用 [要求] 計量的維度來篩選圖表。 例如，選取 [新增篩選]，選取 [後端回應碼類別]，並輸入 500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
 
-## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>針對未經授權的要求設定警示規則
+## <a name="set-up-an-alert-rule"></a>設定警示規則 
 
-您可以進行設定來收到以計量和活動記錄為基礎的警示。 Azure 監視器可讓您將警示設定為在觸發時執行下列動作︰
+您可以根據計量和活動記錄來接收[警示](../azure-monitor/platform/alerts-metric-overview.md)。 Azure 監視器可讓您[將警示設定為](../azure-monitor/platform/alerts-metric.md)在觸發時執行下列動作︰
 
 * 傳送電子郵件通知
 * 呼叫 Webhook
 * 叫用 Azure 邏輯應用程式
 
-設定警示：
+若要根據要求計量來設定範例警示規則：
 
-1. 從靠近頁面底部的功能表列中選取 [警示]  。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 API 管理執行個體。
+1. 從靠近頁面底部的功能表列中選取 [警示]。
 
-    ![此螢幕擷取畫面在靠近頁面底部的功能表中顯示 [警示]。](./media/api-management-azure-monitor/alert-menu-item.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/alert-menu-item.png" alt-text="[監視] 功能表中的 [警示] 選項的螢幕擷取畫面":::
 
-2. 按一下此警示的 [新警示規則]  。
-3. 按一下 [新增條件]  。
-4. 在 [訊號類型] 下拉式清單中選取 [計量]  。
-5. 選取 [未經授權的閘道要求]  作為要監視的訊號。
+1. 選取 [+ 新增警示規則]。
+1. 在 [建立警示規則] 視窗中，按一下 [選取條件]。
+1. 在 [設定訊號邏輯] 視窗中：
+    1. 在 [訊號類型] 中，選取 [計量]。
+    1. 在 [訊號名稱] 中，選取 [要求]。
+    1. 在 [依維度分割] 的 [維度名稱] 中，選取 [閘道回應碼類別]。
+    1. 在 [維度值] 中，針對用戶端錯誤 (例如未經授權或無效的要求) 選取 [4xx]。
+    1. 在 [警示邏輯] 中，指定應觸發警示的閾值，然後選取 [完成]。
 
-    ![此螢幕擷取畫面醒目提示 [訊號類型] 欄位和 [未經授權的閘道要求] 訊號名稱。](./media/api-management-azure-monitor/signal-type.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/threshold.png" alt-text="設定訊號邏輯視窗的螢幕擷取畫面":::
 
-6. 在 [設定訊號邏輯]  檢視中，指定應觸發警示的閾值，然後按一下 [完成]  。
+1. 選取現有的動作群組或建立新的群組。 在下列範例中，會建立新的動作群組。 系統會將通知電子郵件傳送至 admin@contoso.com。 
 
-    ![顯示 [設定訊號邏輯] 檢視的螢幕擷取畫面。](./media/api-management-azure-monitor/threshold.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/action-details.png" alt-text="新動作群組的通知的螢幕擷取畫面":::
 
-7. 選取現有動作群組或建立新的群組。 在下列範例中，系統會傳送電子郵件給系統管理員。 
+1. 輸入警示規則的名稱和說明，然後選取嚴重性層級。 
+1. 選取 [建立警示規則]。
+1. 接著，在沒有 API 金鑰的情況下呼叫 Conference API，藉以測試警示規則。 例如：
 
-    ![alerts](./media/api-management-azure-monitor/action-details.png)
+    ```bash
+    curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 
+    ```
 
-8. 提供警示規則的名稱和描述，並選擇嚴重性層級。 
-9. 按 [建立警示規則]  。
-10. 現在，嘗試呼叫沒有 API 金鑰的會議 API。 系統會觸發警示並傳送電子郵件送給系統管理員。 
+    系統會根據評估期間觸發警示，並將電子郵件傳送至 admin@contoso.com。 
+
+    警示也會出現在 API 管理執行個體的 [警示] 頁面上。
+
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/portal-alerts.png" alt-text="入口網站中的警示的螢幕擷取畫面":::
 
 ## <a name="activity-logs"></a>活動記錄
 
@@ -105,127 +111,104 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 
 您可以在 API 管理服務中存取活動記錄，或在 Azure 監視器中存取所有 Azure 資源的記錄。 
 
-![活動記錄](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+:::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-activity-logs.png" alt-text="入口網站中的活動記錄的螢幕擷取畫面":::
 
-檢視活動記錄：
+若要檢視活動記錄：
 
-1. 選取您的 APIM 服務執行個體。
-2. 按一下 [活動記錄]  。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 API 管理執行個體。
 
-    ![活動記錄](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
+1. 選取 [活動記錄]。
 
-3. 選取所需的篩選範圍，然後按一下 [套用]  。
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-activity-logs-blade.png" alt-text="[監視] 功能表中的活動記錄項目的螢幕擷取畫面":::
+1. 選取所需的篩選範圍，然後選取 [套用]。
 
 ## <a name="resource-logs"></a>資源記錄
 
-資源記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 資源記錄與活動記錄不同。 活動記錄可讓您深入了解 Azure 資源上所執行的作業。 資源記錄能讓您了解資源執行的作業。
+資源記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 資源記錄與活動記錄不同。 活動記錄可讓您深入了解在 Azure 資源上執行的作業。 資源記錄能讓您了解資源執行的作業。
 
 若要設定資源記錄：
 
-1. 選取您的 APIM 服務執行個體。
-2. 按一下 [診斷設定]  。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 API 管理執行個體。
+2. 選取 [診斷設定]。
 
-    ![資源記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-diagnostic-logs-blade.png" alt-text="[監視] 功能表中的診斷設定項目的螢幕擷取畫面":::
 
-3. 按一下 [開啟診斷]  。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
+1. 選取 [+新增診斷設定]。
+1. 選取您要收集的記錄或計量。
 
-APIM 目前提供關於個別 API 要求的資源記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
+   您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Log Analytics 工作區。 
 
-```json
-{  
-    "isRequestSuccess" : "",
-    "time": "",
-    "operationName": "",
-    "category": "",
-    "durationMs": ,
-    "callerIpAddress": "",
-    "correlationId": "",
-    "location": "",
-    "httpStatusCodeCategory": "",
-    "resourceId": "",
-    "properties": {   
-        "method": "", 
-        "url": "", 
-        "clientProtocol": "", 
-        "responseCode": , 
-        "backendMethod": "", 
-        "backendUrl": "", 
-        "backendResponseCode": ,
-        "backendProtocol": "",  
-        "requestSize": , 
-        "responseSize": , 
-        "cache": "", 
-        "cacheTime": "", 
-        "backendTime": , 
-        "clientTime": , 
-        "apiId": "",
-        "operationId": "", 
-        "productId": "", 
-        "userId": "", 
-        "apimSubscriptionId": "", 
-        "backendId": "",
-        "lastError": { 
-            "elapsed" : "", 
-            "source" : "", 
-            "scope" : "", 
-            "section" : "" ,
-            "reason" : "", 
-            "message" : ""
-        } 
-    }      
-}  
+如需詳細資訊，請參閱[建立診斷設定以將平台記錄和計量傳送至不同目的地](../azure-monitor/platform/diagnostic-settings.md)。
+
+## <a name="view-diagnostic-data-in-azure-monitor"></a>在 Azure 監視器中檢視診斷資料
+
+如果您在 Log Analytics 工作區中啟用收集 GatewayLogs 或計量的功能，則可能需要幾分鐘的時間，資料才會出現在 Azure 監視器中。 若要檢視資料：
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 API 管理執行個體。
+1. 從靠近頁面底部的功能表中，選取 [記錄]。
+
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="[監視] 功能表中的記錄項目的螢幕擷取畫面":::
+
+執行查詢以檢視資料。 您可以使用數個隨附的[範例查詢](../azure-monitor/log-query/saved-queries.md)，或執行您自己的查詢。 例如，下列查詢會從 GatewayLogs 資料表中擷取最近 24 小時的資料：
+
+```kusto
+ApiManagementGatewayLogs
+| where TimeGenerated > ago(1d) 
 ```
 
-| 屬性  | 類型 | 描述 |
-| ------------- | ------------- | ------------- |
-| isRequestSuccess | boolean | 如果已完成 HTTP 要求，但回應狀態碼在 2xx 或 3xx 範圍內，則為 true |
-| time | date-time | 閘道開始處理要求時的時間戳記 |
-| operationName | 字串 | 常數值 'Microsoft.ApiManagement/GatewayLogs' |
-| category | 字串 | 常數值 'GatewayLogs' |
-| durationMs | integer | 從閘道收到要求到完整傳送回應時的毫秒數。 其中包括 clienTime、cacheTime 和 backendTime。 |
-| callerIpAddress | 字串 | 立即閘道呼叫端的 IP 位址 (可以是中繼項目) |
-| correlationId | 字串 | API 管理所指派的唯一 http 要求識別碼 |
-| location | 字串 | 處理要求的閘道所在的 Azure 區域名稱 |
-| httpStatusCodeCategory | 字串 | HTTP 回應狀態碼的類別：成功 (301 或更小或 304 或 307)、未經授權 (401、403、429)、錯誤 (400，介於 500 與 600 之間)、其他 |
-| resourceId | 字串 | API 管理資源的識別碼 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
-| properties | 物件 (object) | 目前要求的屬性 |
-| method | 字串 | 連入要求的 HTTP 方法 |
-| url | 字串 | 連入要求的 URL |
-| clientProtocol | 字串 | 連入要求的 HTTP 通訊協定版本 |
-| responseCode | integer | 傳送至用戶端之 HTTP 回應的狀態碼 |
-| backendMethod | 字串 | 傳送至後端之要求的 HTTP 方法 |
-| backendUrl | 字串 | 傳送至後端之要求的 URL |
-| backendResponseCode | integer | 從後端接收之 HTTP 回應的代碼 |
-| backendProtocol | 字串 | 傳送至後端之要求的 HTTP 通訊協定版本 | 
-| requestSize | integer | 在要求處理期間從用戶端接收的位元組數目 | 
-| responseSize | integer | 在要求處理期間傳送至用戶端的位元組數目 | 
-| 快取 | 字串 | 要求處理中 API 管理快取參與的狀態 (亦即，命中、錯過、無) | 
-| cacheTime | integer | 整體 API 管理快取 IO (連線、傳送及接收位元組) 所耗費的毫秒數 | 
-| backendTime | integer | 整體後端 IO (連線、傳送及接收位元組) 所耗費的毫秒數 | 
-| clientTime | integer | 整體用戶端 IO (連線、傳送及接收位元組) 所耗費的毫秒數 | 
-| apiId | 字串 | 目前要求的 API 實體識別碼 | 
-| operationId | 字串 | 目前要求的作業實體識別碼 | 
-| productId | 字串 | 目前要求的產品實體識別碼 | 
-| userId | 字串 | 目前要求的使用者實體識別碼 | 
-| apimSubscriptionId | 字串 | 目前要求的訂用帳戶實體識別碼 | 
-| backendId | 字串 | 目前要求的後端實體識別碼 | 
-| LastError | 物件 (object) | 上次要求處理錯誤 | 
-| elapsed | integer | 從閘道收到要求到發生錯誤時所經過的毫秒數 | 
-| source | 字串 | 導致錯誤的原則或處理內部處理常式名稱 | 
-| scope | 字串 | 包含導致錯誤之原則的原則文件範圍 | 
-| section | 字串 | 包含導致錯誤之原則的原則文件區段 | 
-| reason | 字串 | 錯誤原因 | 
-| message | 字串 | 錯誤訊息 | 
+如需與使用 API 管理的資源記錄有關的詳細資訊，請參閱：
+
+* [開始使用 Azure 監視器 Log Analytics](../azure-monitor/log-query/get-started-portal.md)，或參閱 [Log Analytics 示範環境](https://portal.loganalytics.io/demo)。
+
+* [Azure 監視器中的記錄查詢概觀](../azure-monitor/log-query/log-query-overview.md)。
+
+下列 JSON 會針對成功的 API 要求，指出 GatewayLogs 中的範例項目。 如需詳細資訊，請參閱[結構描述參考](gateway-log-schema-reference.md)。 
+
+```json
+{
+    "Level": 4,
+    "isRequestSuccess": true,
+    "time": "2020-10-14T17:xx:xx.xx",
+    "operationName": "Microsoft.ApiManagement/GatewayLogs",
+    "category": "GatewayLogs",
+    "durationMs": 152,
+    "callerIpAddress": "xx.xx.xxx.xx",
+    "correlationId": "3f06647e-xxxx-xxxx-xxxx-530eb9f15261",
+    "location": "East US",
+    "properties": {
+        "method": "GET",
+        "url": "https://apim-hello-world.azure-api.net/conference/speakers",
+        "backendResponseCode": 200,
+        "responseCode": 200,
+        "responseSize": 41583,
+        "cache": "none",
+        "backendTime": 87,
+        "requestSize": 526,
+        "apiId": "demo-conference-api",
+        "operationId": "GetSpeakers",
+        "apimSubscriptionId": "master",
+        "clientTime": 65,
+        "clientProtocol": "HTTP/1.1",
+        "backendProtocol": "HTTP/1.1",
+        "apiRevision": "1",
+        "clientTlsVersion": "1.2",
+        "backendMethod": "GET",
+        "backendUrl": "https://conferenceapi.azurewebsites.net/speakers"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/APIM-HELLO-WORLD"
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
-> * 檢視活動記錄
-> * 檢視資源記錄
 > * 檢視 API 的計量
-> * 在 API 收到未經授權的呼叫時，設定警示規則
+> * 設定警示規則 
+> * 檢視活動記錄
+> * 啟用和檢視資源記錄
+
 
 前進到下一個教學課程：
 

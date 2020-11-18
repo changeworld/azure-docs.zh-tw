@@ -1,18 +1,18 @@
 ---
-title: 將 IoT 隨插即用範例 C# 元件裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 建置並執行使用多個元件的 IoT 隨插即用範例 C# 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 教學課程 - 將 IoT 隨插即用範例 C# 元件裝置程式碼連線至 Azure IoT 中樞 | Microsoft Docs
+description: 教學課程 - 建置並執行使用多個元件的 IoT 隨插即用範例 C# 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f7a1aa85c4456bdcf7ed50e42382fc440618ec7d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945527"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421442"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>教學課程：將在 Windows 上執行的 IoT 隨插即用多個元件裝置應用程式連線至 IoT 中樞 (C#)
 

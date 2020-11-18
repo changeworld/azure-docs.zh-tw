@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: bc27b1fea97471e9ca1991467902e666c1451605
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 12a282b1f53dde570f5f6647a45df82808b20350
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675553"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080782"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Salesforce Sandbox 整合
 
@@ -52,7 +52,7 @@ ms.locfileid: "92675553"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Salesforce Sandbox** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Salesforce Sandbox**。
 1. 從結果面板中選取 [Salesforce Sandbox]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -74,12 +74,12 @@ ms.locfileid: "92675553"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Salesforce Sandbox]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案** ，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
+4. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案**，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
@@ -149,35 +149,35 @@ ms.locfileid: "92675553"
 
 2. 按一下分頁右上角 **設定圖示** 底下的 [設定]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![顯示已選取右上方的 [設定] 圖示，並從下拉式清單中選取 [設定] 的螢幕擷取畫面。](./media/salesforce-sandbox-tutorial/configure1.png)
 
 3. 在左側瀏覽窗格中向下捲動至 [設定]  ，按一下 [識別]  以展開相關的區段。 然後按一下 [單一登入設定]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![顯示左窗格中的 [設定] 功能表，並從 [身分識別] 功能表中選取 [單一登入設定] 的螢幕擷取畫面。](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
 4. 在 [單一登入設定]  頁面上，按一下 [編輯]  按鈕。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](./media/salesforce-sandbox-tutorial/configure3.png)
 
 5. 選取 [啟用 SAML]  ，然後按一下 [儲存]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [已啟用 SAML] 核取方塊，並選取了 [儲存] 按鈕。](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 6. 若要設定 SAML 單一登入設定，請按一下 [從中繼資料檔案新增]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [從中繼資料檔案新增] 按鈕。](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-7. 按一下 [ **選擇檔案** ] 以上傳您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [ **建立** ]。
+7. 按一下 [**選擇檔案**] 以上傳您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [**建立**]。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [選擇檔案] 和 [建立] 按鈕。](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
 8. 在 [SAML 單一登入設定]  頁面上，欄位會自動填入，然後按一下 [儲存]。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/salesforcexml.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已填入欄位並選取 [儲存] 按鈕。](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
 9. 在 [單一登入設定]  頁面上，按一下 [下載中繼資料]  按鈕以下載服務提供者中繼資料檔案。 在 Azure 入口網站的 [基本 SAML 組態]  區段中使用此檔案，以便如上所述設定必要的 URL。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/configure4.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [下載中繼資料] 按鈕。](./media/salesforce-sandbox-tutorial/configure4.png)
 
 10. 如果您想要以 **SP** 起始模式設定應用程式，下列是此動作的必要條件：
 
@@ -202,31 +202,31 @@ ms.locfileid: "92675553"
 
 13. 按一下分頁右上角 **設定圖示** 底下的 [設定]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![顯示已選取右上方的 [設定] 圖示，並從下拉式功能表中選取 [設定] 的螢幕擷取畫面。](./media/salesforce-sandbox-tutorial/configure1.png)
 
 14. 在左側瀏覽窗格中向下捲動至 [設定]  ，按一下 [識別]  以展開相關的區段。 然後按一下 [單一登入設定]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![顯示左側瀏覽窗格中的 [設定] 功能表，並從 [身分識別] 功能表中選取 [單一登入設定] 的螢幕擷取畫面。](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
 15. 在 [單一登入設定]  頁面上，按一下 [編輯]  按鈕。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](./media/salesforce-sandbox-tutorial/configure3.png)
 
 16. 選取 [啟用 SAML]  ，然後按一下 [儲存]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已核取 [已啟用 SAML] 方塊，並選取了 [儲存] 按鈕。](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 17. 若要設定 SAML 單一登入設定，請按一下 [從中繼資料檔案新增]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![顯示 [單一登入設定] 頁面，且已選取 [從中繼資料檔案新增] 按鈕的螢幕擷取畫面。](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 18. 按一下 [選擇檔案]  來上傳中繼資料 XML 檔案，然後按一下 [建立]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [選擇檔案] 按鈕和 [建立] 按鈕。](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. 在 [SAML 單一登入設定]  頁面上，欄位會自動填入資料，請在 [名稱]  文字方塊中輸入設定的名稱 (例如： *SPSSOWAAD_Test* )，然後按一下 [儲存]。
+19. 在 [SAML 單一登入設定]  頁面上，欄位會自動填入資料，請在 [名稱]  文字方塊中輸入設定的名稱 (例如：*SPSSOWAAD_Test*)，然後按一下 [儲存]。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已填入欄位、[名稱] 文字方塊中包含範例名稱，並已選取 [儲存] 按鈕。](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
 20. 若要在 Salesforce 沙箱上啟用網域，請執行下列步驟：
 
@@ -235,11 +235,11 @@ ms.locfileid: "92675553"
 
 21. 在 Salesforce 沙箱的左方導覽窗格中，按一下 [公司設定]  以展開相關的區段，然後按一下 [我的網域]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
+    ![顯示從左側瀏覽窗格中選取 [公司設定] 和 [我的網域] 的螢幕擷取畫面。](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
 22. 在 [驗證組態]  區段中，按一下 [編輯]  。
 
-    ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
+    ![顯示 [驗證設定] 區段的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
 23. 在 [驗證設定]  區段中，針對 [驗證服務]  ，選取在 Salesforce 沙箱中設定 SSO 期間所設定的 SAML 單一登入設定名稱，然後按一下 [儲存]  。
 

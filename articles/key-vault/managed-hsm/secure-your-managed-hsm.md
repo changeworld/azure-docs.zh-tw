@@ -1,6 +1,6 @@
 ---
 title: 保護對受控 HSM 的存取 - Azure Key Vault 受控 HSM
-description: 了解如何使用 Azure RBAC 和本機受控 HSM RBAC 保護對受控 HSM 的存取
+description: 了解如何使用 Azure RBAC 和受控 HSM 本機 RBAC 保護對受控 HSM 的存取
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992159"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445314"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>保護對受控 HSM 的存取
 
 Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這是敏感且具業務關鍵性的資料，因此您必須藉由僅允許獲得授權的應用程式和使用者存取受控 HSM，來保護其存取。 本文提供受控 HSM 控制存取模型的概觀。 文中會說明驗證和授權，並說明如何保護對受控 HSM 的存取權。
 
-本教學課程將逐步引導您完成簡單的範例，以說明如何使用 Azure RBAC 和本機受控 HSM RBAC 來達成職責區分和存取控制。 請參閱[受控 HSM 存取控制](access-control.md)，以了解受控 HSM 存取控制模型。
+本教學課程將逐步引導您完成簡單的範例，以說明如何使用 Azure RBAC 和受控 HSM 本機 RBAC 來達成職責區分和存取控制。 請參閱[受控 HSM 存取控制](access-control.md)，以了解受控 HSM 存取控制模型。
 
 ## <a name="prerequisites"></a>必要條件
 

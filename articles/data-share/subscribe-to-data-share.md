@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9031ea2d862a23df5d597b790fffc49e624e53fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216567"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491914"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 接受和接收資料  
 
@@ -74,7 +74,7 @@ ms.locfileid: "92216567"
 
 1. 您可以從電子郵件或直接從 Azure 入口網站開啟邀請。 
 
-   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為**來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
+   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為 **來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
 
    若要直接從 Azure 入口網站開啟邀請，請在 Azure 入口網站中搜尋 **Data Share 邀請**。 這會帶您前往 Data Share 邀請的清單。
 
@@ -99,12 +99,12 @@ ms.locfileid: "92216567"
 
    同時會帶您前往資料共用帳戶中所接收的共用。 
 
-   如果您不想要接受邀請，請選取 [拒絕]**。 
+   如果您不想要接受邀請，請選取 [拒絕]。 
 
 ## <a name="configure-received-share"></a>設定已接收的共用
 請遵循下列步驟來設定要接收資料的位置。
 
-1. 選取**資料集**索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
+1. 選取 **資料集** 索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
 
    ![對應到目標](./media/dataset-map-target.png "對應到目標") 
 
@@ -125,12 +125,19 @@ ms.locfileid: "92216567"
 
    ![觸發快照集](./media/trigger-snapshot.png "觸發快照集") 
 
-1. 當最後一次執行的狀態為「成功」** 時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]****，然後按一下 [目標路徑] 中的連結。 
+1. 當最後一次執行的狀態為「成功」時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]，然後按一下 [目標路徑] 中的連結。 
 
    ![取用者資料集](./media/consumer-datasets.png "取用者資料集對應") 
 
 ## <a name="view-history"></a>檢視歷程記錄
-此步驟僅適用於以快照集為基礎的共用。 若要檢視快照集的記錄，請選取 [歷程記錄] 索引標籤。您會在這裡找到過去 30 天所有產生的快照集歷程記錄。 
+此步驟僅適用於以快照集為基礎的共用。 若要檢視快照集的記錄，請選取 [歷程記錄] 索引標籤。您會在這裡找到過去 30 天所有產生的快照集歷程記錄。
+
+## <a name="clean-up-resources"></a>清除資源
+
+當不再需要資源時，請移至 [Data Share 概觀] 頁面，然後選取 [刪除] 來移除資源。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已了解如何接受和接收 Azure Data Share。 若要深入了解 Azure Data Share 概念，請繼續閱讀[概念：Azure Data Share 術語](terminology.md)。
+在本教學課程中，您已了解如何接受和接收 Azure Data Share。 若要深入了解 Azure Data Share 概念，請繼續閱讀 Azure Data Share 詞彙。
+
+> [!div class="nextstepaction"]
+> [Azure Data Share 概念](terminology.md)

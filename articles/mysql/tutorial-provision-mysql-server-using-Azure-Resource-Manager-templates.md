@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6923f0a1d568cc695b86d1538ba55a3eb3444da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543690"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341477"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本佈建「適用於 MySQL 的 Azure 資料庫」伺服器
 
@@ -29,6 +29,8 @@ Azure Resource Manager 會利用基礎的 REST API 來宣告和程式化大規�
 > * 載入範例資料
 > * 查詢資料
 > * 更新資料
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -115,7 +117,7 @@ az group deployment create -g $ ExampleResourceGroup   --template-file $ {templa
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin** 。
+結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin**。
 ```json
 {
   "administratorLogin": "myadmin",
@@ -199,13 +201,47 @@ UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>清除資源
+
+如果不再需要，請刪除資源群組，這會刪除資源群組中的資源。
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [資源群組]。
+
+2. 在 [資源群組] 清單中，選擇資源群組的名稱。
+
+3. 在資源群組的 [概觀] 頁面中，選取 [刪除資源群組]。
+
+4. 在確認對話方塊凹輸入您的資源群組名稱，然後選取 [刪除]。
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解：
 > [!div class="checklist"]
 > * 使用 Azure Resource Manager 範本在 VNet 服務端點建立「適用於 MySQL 的 Azure 資料庫」伺服器
-> * 使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)建立資料庫
+> * 使用 mysql 命令列工具建立資料庫
 > * 載入範例資料
 > * 查詢資料
 > * 更新資料
-> 
+
+> [!div class="nextstepaction"]
 > [如何將應用程式連線至 Azure Database for MySQL](./howto-connection-string.md)

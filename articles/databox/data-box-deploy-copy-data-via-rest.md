@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742514"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337588"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>教學課程：使用 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 
@@ -85,7 +85,7 @@ ms.locfileid: "91742514"
 
 1. 登入 Azure 入口網站。
 2. 移至您的資料箱訂單，並巡覽至 [一般] > [裝置詳細資料]。
-3. 在 [裝置認證] 下方，移至 [裝置的 API 存取]。 按一下 [下載] 。 此動作會下載 **\<your order name>.cer** 憑證檔案。 **儲存**這個檔案。 您會將此憑證安裝在將用來連線到裝置的用戶端或主機電腦上。
+3. 在 [裝置認證] 下方，移至 [裝置的 API 存取]。 按一下 [下載] 。 此動作會下載 **\<your order name>.cer** 憑證檔案。 **儲存** 這個檔案。 您會將此憑證安裝在將用來連線到裝置的用戶端或主機電腦上。
 
     ![在 Azure 入口網站下載憑證](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -111,15 +111,15 @@ ms.locfileid: "91742514"
 1. 以滑鼠右鍵按一下 `.cer` 檔案，然後選取 [安裝憑證]。 這個動作會啟動 [憑證匯入精靈]。
 2. [存放區位置] 請選取 [本機電腦]，然後按一下 [下一步]。
 
-    ![使用 PowerShell 匯入憑證](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![憑證匯入精靈，Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
 3. 選取 [將所有憑證放入以下的存放區]，然後按一下 [瀏覽]。 導覽至遠端主機的根存放區，然後按一下 [ **下一步**]。
 
-    ![使用 PowerShell 匯入憑證 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![憑證匯入精靈，憑證存放區](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. 按一下 [完成] 。 會出現訊息告訴您匯入成功。
 
-    ![使用 PowerShell 匯入憑證 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![憑證匯入精靈，完成匯入](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>使用 Linux 系統
 
@@ -173,10 +173,10 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 2. 在左窗格中，展開您要在其中建立 blob 容器的儲存體帳戶。
 3. 以滑鼠右鍵按一下 [Blob 容器]，從捷徑功能表中，選取 [建立 Blob 容器]。
 
-   ![建立 Blob 容器內容功能表](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![Blob 容器內容功能表，建立 Blob 容器](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. [Blob 容器] 資料夾下方會出現一個文字方塊。 輸入 blob 容器的名稱。 請參閱[建立容器與設定權限](../storage/blobs/storage-quickstart-blobs-dotnet.md)，以取得為 Blob 容器命名之規則和限制的相關資訊。
-5. 完成建立 blob 容器時按下 **Enter**鍵，或按下 **Esc** 鍵取消。 成功建立 Blob 容器之後，它就會顯示在所選儲存體帳戶的 [Blob 容器] 資料夾下方。
+5. 完成建立 blob 容器時按下 **Enter** 鍵，或按下 **Esc** 鍵取消。 成功建立 Blob 容器之後，它就會顯示在所選儲存體帳戶的 [Blob 容器] 資料夾下方。
 
    ![Blob 容器已建立](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
 

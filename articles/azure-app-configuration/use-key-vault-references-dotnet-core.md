@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff11546225a3b07cbe9f8773dab2139636af787e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213248"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124793"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用 Key Vault 參考
 
@@ -51,7 +51,7 @@ ms.locfileid: "88213248"
 
 1. 選取 Azure 入口網站左上角的 [建立資源]  選項：
 
-    ![Key Vault 建立完成後的輸出](./media/quickstarts/search-services.png)
+    ![顯示 Azure 入口網站中 [建立資源] 選項的螢幕擷取畫面。](./media/quickstarts/search-services.png)
 1. 在 [搜尋] 方塊中輸入 **Key Vault**。
 1. 從結果清單，選取左側的 [金鑰保存庫]  。
 1. 在 [金鑰保存庫]  中，選取 [新增]  。
@@ -65,7 +65,7 @@ ms.locfileid: "88213248"
 
 此時，您的 Azure 帳戶是唯一獲得授權可存取此新保存庫的帳戶。
 
-![Key Vault 建立完成後的輸出](./media/quickstarts/vault-properties.png)
+![顯示金鑰保存庫的螢幕擷取畫面。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>將祕密新增至 Key Vault
 
@@ -74,8 +74,8 @@ ms.locfileid: "88213248"
 1. 從 Key Vault 屬性頁面，選取 [祕密]  。
 1. 選取 [產生/匯入]  。
 1. 在 [建立祕密]  窗格中，輸入下列值：
-    - **上傳選項**：輸入**手動**。
-    - **Name**：輸入**訊息**。
+    - **上傳選項**：輸入 **手動**。
+    - **Name**：輸入 **訊息**。
     - **值**：輸入 **Hello from Key Vault**。
 1. 保留其他 [建立祕密]  屬性的預設值。
 1. 選取 [建立]  。
@@ -89,7 +89,7 @@ ms.locfileid: "88213248"
 1. 選取 [+ 建立]   > [金鑰保存庫參考]  ，然後指定下列值：
     - **金鑰**：選取 **TestApp:Settings:KeyVaultMessage**。
     - **標籤**︰將此值保留空白。
-    - **訂用帳戶**、**資源群組**與**金鑰保存庫**：輸入與您在上一節中建立之金鑰保存庫對應的值。
+    - **訂用帳戶**、**資源群組** 與 **金鑰保存庫**：輸入與您在上一節中建立之金鑰保存庫對應的值。
     - **祕密**：選取您在上一節中所建立、名為 **Message** 的祕密。
 
 ## <a name="connect-to-key-vault"></a>連線到 Key Vault

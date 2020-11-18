@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d661800c53cc0795efde1f411675d17661fb968
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400565"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345528"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>教學課程：在 .NET 中使用 Azure 儲存體佇列
 
@@ -95,6 +95,8 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
    C:\Tutorials\QueueApp>_
    ```
 
+<!-- markdownlint-disable MD023 -->
+
 ## <a name="add-the-azure-client-libraries"></a>新增 Azure 用戶端程式庫
 
 1. 使用 `dotnet add package` 命令，將 Azure 儲存體用戶端程式庫新增至專案。
@@ -122,7 +124,7 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 ### <a name="add-using-statements"></a>新增 using 陳述式
 
-1. 從專案目錄中的命令列輸入 `code .`，以在目前的目錄中開啟 Visual Studio Code。 將命令列視窗保持開啟。 稍後將會執行其他命令。 如果系統提示您新增建置和偵錯所需的 C# 資產，請按一下 [是]**** 按鈕。
+1. 從專案目錄中的命令列輸入 `code .`，以在目前的目錄中開啟 Visual Studio Code。 將命令列視窗保持開啟。 稍後將會執行其他命令。 如果系統提示您新增建置和偵錯所需的 C# 資產，請按一下 [是] 按鈕。
 
 1. 開啟 **Program.cs** 來源檔案，並緊接在 `using System;` 陳述式後面新增下列命名空間。 此應用程式會使用這些命名空間中的類型連線至 Azure 儲存體，並使用佇列。
 
@@ -140,7 +142,7 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 由於應用程式使用雲端資源，因此程式碼會以非同步方式執行。
 
-1. 更新 **Main** 方法，以非同步方式執行。 將 **void** 取代為**非同步工作**傳回值。
+1. 更新 **Main** 方法，以非同步方式執行。 將 **void** 取代為 **非同步工作** 傳回值。
 
    ```csharp
    static async Task Main(string[] args)
@@ -200,7 +202,7 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-1. **選擇性** 根據預設，訊息的存留時間上限會設為 7 天。 您可以指定任何正數的訊息存留時間。 下列程式碼片段會新增「永不」** 過期的訊息。
+1. **選擇性** 根據預設，訊息的存留時間上限會設為 7 天。 您可以指定任何正數的訊息存留時間。 下列程式碼片段會新增「永不」過期的訊息。
 
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 

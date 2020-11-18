@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777304"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565716"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教學課程：在 .NET 聊天機器人中使用個人化工具
 
@@ -43,19 +43,19 @@ ms.locfileid: "91777304"
 |--|--|--|
 |未輸入文字 - 聊天機器人開始對話。|`This is a simple chatbot example that illustrates how to use Personalizer. The bot learns what coffee or tea order is preferred by customers given some context information (such as weather, temperature, and day of the week) and information about the user.`<br>`To use the bot, just follow the prompts. To try out a new imaginary context, type “Reset” and a new one will be randomly generated.`<br>`Welcome to the coffee bot, please tell me if you want to see the menu or get a coffee or tea suggestion for today. Once I’ve given you a suggestion, you can reply with ‘like’ or ‘don’t like’. It’s Tuesday today and the weather is Snowy.`|聊天機器人會用說明文字來開始對話，並讓您知道所處的內容為何：`Tuesday`、`Snowy`。|
 |`Show menu`|`Here is our menu: Coffee: Cappuccino Espresso Latte Macchiato Mocha Tea: GreenTea Rooibos`|使用 LUIS 判斷查詢的意圖，然後顯示咖啡和茶品項的菜單選項。 動作的特性包括 |
-|`What do you suggest`|`How about Latte?`|使用 LUIS 判斷查詢的意圖，然後呼叫**排名 API**，並顯示排名最高的選項作為問題 `How about {response.RewardActionId}?`。 也會顯示 JSON 呼叫和回應，以供說明之用。|
-|`I like it`|`That’s great! I’ll keep learning your preferences over time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|使用 LUIS 判斷查詢的意圖，然後以獎勵 `1` 呼叫**獎勵 API**，顯示 JSON 呼叫和回應以供說明之用。|
-|`I don't like it`|`Oh well, maybe I’ll guess better next time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|使用 LUIS 判斷查詢的意圖，然後以獎勵 `0` 呼叫**獎勵 API**，顯示 JSON 呼叫和回應以供說明之用。|
+|`What do you suggest`|`How about Latte?`|使用 LUIS 判斷查詢的意圖，然後呼叫 **排名 API**，並顯示排名最高的選項作為問題 `How about {response.RewardActionId}?`。 也會顯示 JSON 呼叫和回應，以供說明之用。|
+|`I like it`|`That’s great! I’ll keep learning your preferences over time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|使用 LUIS 判斷查詢的意圖，然後以獎勵 `1` 呼叫 **獎勵 API**，顯示 JSON 呼叫和回應以供說明之用。|
+|`I don't like it`|`Oh well, maybe I’ll guess better next time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|使用 LUIS 判斷查詢的意圖，然後以獎勵 `0` 呼叫 **獎勵 API**，顯示 JSON 呼叫和回應以供說明之用。|
 |`Reset`|傳回說明文字。|使用 LUIS 判斷查詢的意圖，然後顯示說明文字並重設內容。|
 
 
 ### <a name="personalizer-in-this-bot"></a>此聊天機器人中的個人化工具
 
-此聊天機器人會使用個人化工具，根據_動作_清單 (某些內容類型) 和內容特性來選取排名最高的動作 (特定咖啡或茶)。
+此聊天機器人會使用個人化工具，根據 _動作_ 清單 (某些內容類型) 和內容特性來選取排名最高的動作 (特定咖啡或茶)。
 
 聊天機器人會將動作清單連同內容特性傳送至個人化工具迴圈。 個人化工具會向聊天機器人傳回單一的最佳動作，聊天機器人則將其顯示出來。
 
-在本教學課程中，**動作**是咖啡和茶的類型：
+在本教學課程中，**動作** 是咖啡和茶的類型：
 
 |咖啡|茶|
 |--|--|
@@ -63,10 +63,10 @@ ms.locfileid: "91777304"
 
 **排名 API：** 為了協助個人化工具了解您的動作，聊天機器人會在每個排名 API 要求中傳送下列資訊：
 
-* _具有特性_的動作
+* _具有特性_ 的動作
 * 內容特性
 
-模型的**特性**是可跨聊天機器人使用者群體的成員加以彙總 (群組) 的動作或內容相關資訊。 特性_不會_具有個別特定性質 (例如使用者識別碼) 或高度特定性 (例如一天之中的確切時間)。
+模型的 **特性** 是可跨聊天機器人使用者群體的成員加以彙總 (群組) 的動作或內容相關資訊。 特性 _不會_ 具有個別特定性質 (例如使用者識別碼) 或高度特定性 (例如一天之中的確切時間)。
 
 特性可用來讓動作符合模型中的目前內容。 模型代表個人化工具過去關於動作、內容及其特性的知識，可讓其做出明智決策。
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 若要使用此聊天機器人，您必須建立適用於個人化工具和 Language Understanding (LUIS) 的 Azure 資源。
 
-* [建立 LUIS 資源](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 在建立步驟中選取**兩者**，因為您同時需要撰寫和預測資源。
+* [建立 LUIS 資源](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 在建立步驟中選取 **兩者**，因為您同時需要撰寫和預測資源。
 * [建立個人化工具資源](how-to-create-resource.md)，然後從 Azure 入口網站複製金鑰和端點。 您將需要在 .NET 專案的 `appsettings.json` 檔案中設定這些值。
 
 ### <a name="create-luis-app"></a>建立 LUIS 應用程式
@@ -178,18 +178,18 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 1. 開啟 Bot Framework Emulator，然後選取 [開啟聊天機器人]。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="顯示聊天機器人網站的瀏覽器螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="聊天機器人模擬器啟動畫面的螢幕擷取畫面。":::
 
 
-1. 使用下列**聊天機器人 URL** 來設定聊天機器人，然後選取 [連線]：
+1. 使用下列 **聊天機器人 URL** 來設定聊天機器人，然後選取 [連線]：
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="顯示聊天機器人網站的瀏覽器螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="聊天機器人模擬器開啟聊天機器人設定的螢幕擷取畫面。":::
 
     模擬器會連線至聊天機器人，並顯示說明文字以及有助於進行本機開發的記錄和偵錯資訊。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="顯示聊天機器人網站的瀏覽器螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="第一回對話中聊天機器人模擬器的螢幕擷取畫面。":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>在聊天機器人模擬器中使用聊天機器人
 
@@ -421,7 +421,7 @@ private async Task RewardAsync(ITurnContext turnContext, string eventId, double 
 此範例旨在示範聊天機器人中個人化工具的簡單端對端解決方案。 您的使用案例可能會更加複雜。
 
 如果您打算在生產環境的聊天機器人中使用個人化工具，請做以下規劃：
-* _每次_需要經過排名的選項時，就即時存取個人化工具。 排名 API 無法批次處理或快取。  獎勵呼叫可延遲或卸載至不同程序，而且如果您未在一段時間內傳回獎勵，則會為該事件設定預設獎勵值。
+* _每次_ 需要經過排名的選項時，就即時存取個人化工具。 排名 API 無法批次處理或快取。  獎勵呼叫可延遲或卸載至不同程序，而且如果您未在一段時間內傳回獎勵，則會為該事件設定預設獎勵值。
 * 以使用案例為基礎來計算獎勵：此範例顯示了兩個值為零的獎勵，一個沒有範圍區間，且分數沒有負數值。 您的系統需要更細微的評分。
 * 聊天機器人通道：這個範例會使用單一通道，但如果您想要使用多個通道，或在單一通道上使用聊天機器人的變種，則可能需要將其視為個人化工具模型內容特性的一部分。
 

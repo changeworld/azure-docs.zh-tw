@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 689de4d9fbd9eafeda54b8c157e5174d200c93da
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338251"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566532"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -27,7 +27,7 @@ ms.locfileid: "94338251"
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>設定 Cloud Shell 工作階段
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
@@ -36,11 +36,11 @@ ms.locfileid: "94338251"
 
 ## <a name="get-started-with-the-building-scenario"></a>開始使用建築案例
 
-本教學課程中使用的範例專案代表真實世界的 **建築案例** ，包含樓層、房間和溫控裝置。 這些元件會以數位方式呈現在 Azure Digital Twins 執行個體中，然後連線到 [IoT 中樞](../iot-hub/about-iot-hub.md)、[事件方格](../event-grid/overview.md)和兩個 [Azure 函式](../azure-functions/functions-overview.md)，以加速資料移動。
+本教學課程中使用的範例專案代表真實世界的 **建築案例**，包含樓層、房間和溫控裝置。 這些元件會以數位方式呈現在 Azure Digital Twins 執行個體中，然後連線到 [IoT 中樞](../iot-hub/about-iot-hub.md)、[事件方格](../event-grid/overview.md)和兩個 [Azure 函式](../azure-functions/functions-overview.md)，以加速資料移動。
 
 以下是表示完整案例的圖表。 
 
-您會先建立 Azure Digital Twins 執行個體 (圖中的 **A 區** )，然後在數位分身中設定遙測資料流程 ( **B 箭號** )，再透過對應項圖形 ( **C 箭號** ) 設定資料傳播。
+您會先建立 Azure Digital Twins 執行個體 (圖中的 **A 區**)，然後在數位分身中設定遙測資料流程 (**B 箭號**)，再透過對應項圖形 (**C 箭號**) 設定資料傳播。
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="完整建築案例的圖形。描繪資料從裝置流入 IoT 中樞的過程：透過 Azure 函式 (B 箭號) 到 Azure Digital Twins 執行個體 (A 區)，再透過事件方格到另一個 Azure 函式 (C 箭號) 處理":::
 
@@ -48,16 +48,16 @@ ms.locfileid: "94338251"
 
 以下是建築案例 *AdtSampleApp* 範例應用程式實作的元件：
 * 裝置驗證 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 使用範例 (請參閱 *CommandLoop.cs* )
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 使用範例 (請參閱 *CommandLoop.cs*)
 * 呼叫 Azure Digital Twins API 的主控台介面
-* *SampleClientApp* ：範例 Azure Digital Twins 解決方案
-* *SampleFunctionsApp* ：Azure Functions 應用程式，可將 Azure Digital Twins 圖形更新為來自 IoT 中樞和 Azure Digital Twins 事件的遙測結果
+* *SampleClientApp*：範例 Azure Digital Twins 解決方案
+* *SampleFunctionsApp*：Azure Functions 應用程式，可將 Azure Digital Twins 圖形更新為來自 IoT 中樞和 Azure Digital Twins 事件的遙測結果
 
 範例專案也包含互動式的授權元件。 每次啟動專案時，瀏覽器視窗都會隨即開啟，提示您使用 Azure 帳戶登入。
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>具現化預先建立的對應項圖形
 
-首先，您要使用範例專案的 *AdtSampleApp* 解決方案，建置端對端案例的 Azure Digital Twins 片段 ( **A 區** )：
+首先，您要使用範例專案的 *AdtSampleApp* 解決方案，建置端對端案例的 Azure Digital Twins 片段 (**A 區**)：
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="完整建築案例圖形的摘錄，並醒目提示 A 區，亦即 Azure Digital Twins 執行個體":::
 
@@ -101,8 +101,8 @@ Query
 ## <a name="set-up-the-sample-function-app"></a>設定範例函數應用程式
 
 下一步是設定將在本教學課程中用來處理資料的 [Azure Functions 應用程式](../azure-functions/functions-overview.md)。 函數應用程式 *SampleFunctionsApp* 包含兩個函式：
-* *ProcessHubToDTEvents* ：處理傳入的 IoT 中樞資料，並據以更新 Azure Digital Twins
-* *ProcessDTRoutedData* ：處理來自數位分身的資料，並據以更新 Azure Digital Twins 中的父系對應項
+* *ProcessHubToDTEvents*：處理傳入的 IoT 中樞資料，並據以更新 Azure Digital Twins
+* *ProcessDTRoutedData*：處理來自數位分身的資料，並據以更新 Azure Digital Twins 中的父系對應項
 
 在本節中，您要發佈預先撰寫的函數應用程式，並確保此函數應用程式可以藉由指派 Azure Active Directory (Azure AD) 身分識別來存取 Azure Digital Twins。 完成這些步驟，即可讓教學課程的其餘部分使用函數應用程式內的函式。 
 
@@ -126,7 +126,7 @@ Query
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio：發佈專案":::
 
-在接下來的 [發佈] 頁面中，保留選取預設目標 **Azure** ，然後按 [下一步]。 
+在接下來的 [發佈] 頁面中，保留選取預設目標 **Azure**，然後按 [下一步]。 
 
 針對特定的目標，選擇 [Azure 函數應用程式 (Windows)]，然後按 [下一步]。
 
@@ -198,7 +198,7 @@ Azure Digital Twins 圖形應由實際裝置的遙測所驅動。
 
 在這個步驟中，您要將在 [IoT 中樞](../iot-hub/about-iot-hub.md)中註冊的模擬溫控裝置，連線到在 Azure Digital Twins 中的數位分身。 當模擬裝置發出遙測時，此資料就會透過觸發數位分身對應更新的 *ProcessHubToDTEvents* Azure 函式導向。 如此一來，數位分身的資料就會和實際裝置保持一致。 在 Azure Digital Twins 中，將事件資料從某個位置導向至另一個位置的過程，稱為 [**路由事件**](concepts-route-events.md)。
 
-這發生在此端對端案例的這個部分 ( **B 箭號** )：
+這發生在此端對端案例的這個部分 (**B 箭號**)：
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="完整建築案例圖形的摘錄，並醒目提示 B 箭號，亦即 Azure Digital Twins 執行個體：裝置、IoT 中樞和第一個 Azure 函式":::
 
@@ -227,7 +227,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 接下來，將您的 IoT 中樞連線至您稍早在函數應用程式中發佈的 *ProcessHubToDTEvents* Azure 函式，讓資料可以透過函式從裝置流入 IoT 中樞，這會更新 Azure Digital Twins。
 
-若要這麼做，您要在 IoT 中樞上建立 **事件訂用帳戶** ，並以 Azure 函式為端點。 這會「訂閱」在 IoT 中樞中發生的事件函式。
+若要這麼做，您要在 IoT 中樞上建立 **事件訂用帳戶**，並以 Azure 函式為端點。 這會「訂閱」在 IoT 中樞中發生的事件函式。
 
 在 [Azure 入口網站](https://portal.azure.com/)中，導覽至您新建立的 IoT 中樞，方法是在頂端的搜尋列中搜尋其名稱。 從 [中樞] 功能表中選取 [事件]，然後選取 [+ 事件訂用帳戶]。
 
@@ -239,11 +239,11 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 填寫下列欄位 (不會提及依預設填入的欄位)：
 * 「事件訂用帳戶詳細資料」 > [名稱]：命名事件訂用帳戶。
-* *主題詳細資料* > **系統主題名稱** ：提供要用於系統主題的名稱。 
+* *主題詳細資料* > **系統主題名稱**：提供要用於系統主題的名稱。 
 * 「事件類型」 > [篩選至事件類型]：從功能表選項中選取「裝置遙測」。
 * 「端點詳細資料」 > [端點類型]：從功能表選項中選取「Azure 函式」。
 * 「端點詳細資料」 > [端點]：按「選取端點」 連結。 這會開啟「選取 Azure 函式」 視窗：:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure 入口網站事件訂用帳戶：選取 Azure 函式" border="false":::
-    - 填入您的 [訂用帳戶]、[資源群組]、[函數應用程式] 和 [函式] ( *ProcessHubToDTEvents* )。 在您選取訂用帳戶後，其中有些可能會自動填入。
+    - 填入您的 [訂用帳戶]、[資源群組]、[函數應用程式] 和 [函式] (*ProcessHubToDTEvents*)。 在您選取訂用帳戶後，其中有些可能會自動填入。
     - 按 [確認選取項目]。
 
 回到「建立事件訂用帳戶」 頁面，按 [建立]。
@@ -278,12 +278,12 @@ az iot hub device-identity connection-string show --device-id thermostat67 --hub
 
 您要將這些值插入本機專案的裝置模擬器程式碼中，將模擬器連線到此 IoT 中樞和 IoT 中樞裝置。
 
-在新的 Visual Studio 視窗中，(從下載的解決方案資料夾) 開啟裝置模擬器 > _**DeviceSimulator.sln**_ 。
+在新的 Visual Studio 視窗中，(從下載的解決方案資料夾) 開啟裝置模擬器 > _**DeviceSimulator.sln**_。
 
 >[!NOTE]
-> 您現在應該有兩個 Visual Studio 視窗，一個是 _**DeviceSimulator.sln**_ ，另一個則是稍早的 _**AdtE2ESample.sln**_ 。
+> 您現在應該有兩個 Visual Studio 視窗，一個是 _**DeviceSimulator.sln**_，另一個則是稍早的 _**AdtE2ESample.sln**_。
 
-從這個新 Visual Studio 視窗的方案總管窗格中，選取 _DeviceSimulator/ **AzureIoTHub.cs**_ ，使用編輯視窗開啟。 將下列連接字串值變更為您在前面收集到的值：
+從這個新 Visual Studio 視窗的方案總管窗格中，選取 _DeviceSimulator/**AzureIoTHub.cs**_，使用編輯視窗開啟。 將下列連接字串值變更為您在前面收集到的值：
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>
@@ -324,7 +324,7 @@ ObserveProperties thermostat67 Temperature
 
 截至目前為止，您已在本教學課程中了解如何利用外部裝置資料更新 Azure Digital Twins。 接下來，您將會看到如何透過 Azure Digital Twins 圖形傳播以變更一個數位分身，換句話說，如何利用服務 - 內部資料更新對應項。
 
-若要這樣做，在更新連線的 *Thermostat* 對應項時，您要使用 *ProcessDTRoutedData* Azure 函式來更新 *Room* 對應項。 這發生在此端對端案例的這個部分 ( **C 箭號** )：
+若要這樣做，在更新連線的 *Thermostat* 對應項時，您要使用 *ProcessDTRoutedData* Azure 函式來更新 *Room* 對應項。 這發生在此端對端案例的這個部分 (**C 箭號**)：
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="完整建築案例圖形的摘錄，並醒目提示 C 箭號，亦即 Azure Digital Twins 執行個體：事件方格和第二個 Azure 函式":::
 
@@ -391,7 +391,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 接下來，請訂閱您稍早建立之事件方格主題的 *ProcessDTRoutedData* Azure 函式，讓遙測資料可以透過事件方格主題，從 *thermostat67* 對應項流入函式，回到 Azure Digital Twins，據此更新 *room21* 對應項。
 
-若要這麼做，您要在事件方格主題中，建立以 *ProcessDTRoutedData* Azure 函式為端點的 **事件方格訂用帳戶** 。
+若要這麼做，您要在事件方格主題中，建立以 *ProcessDTRoutedData* Azure 函式為端點的 **事件方格訂用帳戶**。
 
 在 [Azure 入口網站](https://portal.azure.com/)中，導覽至您的事件方格主題，方法是在頂端的搜尋列中搜尋其名稱。 選取 [+ 事件訂用帳戶]。
 
@@ -403,7 +403,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 * 「事件訂用帳戶詳細資料」 > [名稱]：命名事件訂用帳戶。
 * 「端點詳細資料」 > [端點類型]：從功能表選項中選取「Azure 函式」。
 * 「端點詳細資料」 > [端點]：按「選取端點」 連結。 這會開啟「選取 Azure 函式」 視窗：
-    - 填入您的 [訂用帳戶]、[資源群組]、[函數應用程式] 和 [函式] ( *ProcessDTRoutedData* )。 在您選取訂用帳戶後，其中有些可能會自動填入。
+    - 填入您的 [訂用帳戶]、[資源群組]、[函數應用程式] 和 [函式] (*ProcessDTRoutedData*)。 在您選取訂用帳戶後，其中有些可能會自動填入。
     - 按 [確認選取項目]。
 
 回到「建立事件訂用帳戶」 頁面，按 [建立]。
@@ -426,7 +426,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-您應該會看到「來自 Azure Digital Twins 執行個體」的即時更新溫度，每隔 10 秒就會記錄到主控台中。 請注意， *room21* 的溫度正在更新，以符合 *thermostat67* 的更新。
+您應該會看到「來自 Azure Digital Twins 執行個體」的即時更新溫度，每隔 10 秒就會記錄到主控台中。 請注意，*room21* 的溫度正在更新，以符合 *thermostat67* 的更新。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="顯示溫控器和房間溫度訊息記錄的主控台輸出":::
 
@@ -437,8 +437,8 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 以下是您在本教學課程中建立的案例回顧。
 
 1. Azure Digital Twins 執行個體會以數位方式顯示樓層、房間和溫控器 (如下圖的 **A 區** 所示)
-2. 模擬裝置遙測會傳送至 IoT 中樞，其中 *ProcessHubToDTEvents* Azure 函式正在接聽遙測事件。 *ProcessHubToDTEvents* Azure 函式會使用這些事件中的資訊，設定 *thermostat67* (圖中的 **B 箭號** ) 的「溫度」屬性。
-3. Azure Digital Twins 的屬性變更事件會路由至事件方格主題，其中 *ProcessDTRoutedData* Azure 函式正在接聽事件。 *ProcessHubToDTEvents* Azure 函式會使用這些事件中的資訊，設定 *room21* (圖中的 **C 箭號** ) 的「溫度」屬性。
+2. 模擬裝置遙測會傳送至 IoT 中樞，其中 *ProcessHubToDTEvents* Azure 函式正在接聽遙測事件。 *ProcessHubToDTEvents* Azure 函式會使用這些事件中的資訊，設定 *thermostat67* (圖中的 **B 箭號**) 的「溫度」屬性。
+3. Azure Digital Twins 的屬性變更事件會路由至事件方格主題，其中 *ProcessDTRoutedData* Azure 函式正在接聽事件。 *ProcessHubToDTEvents* Azure 函式會使用這些事件中的資訊，設定 *room21* (圖中的 **C 箭號**) 的「溫度」屬性。
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="完整建築案例的圖形。描繪資料從裝置流入 IoT 中樞的過程：透過 Azure 函式 (B 箭號) 到 Azure Digital Twins 執行個體 (A 區)，再透過事件方格到另一個 Azure 函式 (C 箭號) 處理":::
 

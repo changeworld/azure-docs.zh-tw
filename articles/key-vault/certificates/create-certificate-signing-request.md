@@ -10,18 +10,18 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569368"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289616"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中建立和合併 CSR
 
 Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證儲存在金鑰保存庫中。 其支援建立具有私人/公開金鑰組的憑證簽署要求，這可由任何任何指定的憑證授權單位簽署。 其可以是內部企業 CA 或外部公用 CA。 憑證簽署要求 (也就是 CSR 或認證要求) 是由使用者傳送到憑證授權單位 (CA) 的訊息，目的是要求發行憑證。
 
-如需更多有關憑證的一般資訊，請參閱 [Azure Key Vault 憑證](/azure/key-vault/certificates/about-certificates)。
+如需更多有關憑證的一般資訊，請參閱 [Azure Key Vault 憑證](./about-certificates.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -41,7 +41,7 @@ Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證�
     ```
 
 
-2. 建立**憑證簽署要求**
+2. 建立 **憑證簽署要求**
 
    ```azurepowershell
    $csr = Add-AzKeyVaultCertificate -VaultName ContosoKV -Name ContosoManualCSRCertificate -CertificatePolicy $policy
@@ -74,10 +74,10 @@ Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證�
     ![憑證屬性](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  您會看到憑證現在已新增至 [憑證] 清單中。 選取您剛才建立的新憑證。 憑證的目前狀態會是「已停用」，因為 CA 尚未發行該憑證。
 7. 按一下 [憑證作業] 索引標籤，然後選取 [下載 CSR]。
- ![憑證屬性](../media/certificates/create-csr-merge-csr/download-csr.png)
+ ![醒目提示 [下載 CSR] 按鈕的螢幕擷取畫面。](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  將 .csr 檔案帶到 CA，以簽署要求。
-9.  一旦 CA 簽署要求之後，請將憑證檔案帶回，以在同一個憑證作業畫面中**合併已簽署的要求**。
+9.  一旦 CA 簽署要求之後，請將憑證檔案帶回，以在同一個憑證作業畫面中 **合併已簽署的要求**。
 
 現在已成功合併憑證要求。
 
@@ -105,7 +105,7 @@ Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證�
 - 合併 CSR 後，整個鏈結都會合併嗎？
     是的，系統會合併整個鏈結，前提是使用者已送回 p7b 檔案以合併。
 
-- 如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視**憑證作業**，來檢閱該憑證的錯誤訊息。
+- 如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視 **憑證作業**，來檢閱該憑證的錯誤訊息。
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
 

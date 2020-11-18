@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517356"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287046"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
@@ -17,7 +17,7 @@ ms.locfileid: "92517356"
 此快速入門的程序會產生生產環境就緒的環境，以便建立虛擬機器 (VM) 和移轉。 
 
 >[!IMPORTANT]
->建立 Azure VMware 解決方案資源之前，請遵循[如何啟用 Azure VMware 解決方案資源](enable-azure-vmware-solution.md)文章來提交支援票證，以配置您的節點。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。 
+>建立 Azure VMware 解決方案資源之前，請遵循[如何啟用 Azure VMware 解決方案資源](enable-azure-vmware-solution.md)文章來提交支援票證，以配置您的主機。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的主機。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多主機，您將會經歷相同的程序。 
 
 
 ## <a name="subscription"></a>訂用帳戶
@@ -39,9 +39,9 @@ ms.locfileid: "92517356"
 
 定義您將在部署期間使用的資源名稱。  資源名稱是易記且描述性的名稱，您可以在其中為您的 Azure VMware 解決方案私人雲端做為標題。
 
-## <a name="size-nodes"></a>大小節點
+## <a name="size-hosts"></a>主機大小
 
-識別您想要在部署 Azure VMware 解決方案時使用的大小節點。  如需完整清單，請參閱 [Azure VMware 解決方案私人雲端和叢集](concepts-private-clouds-clusters.md#hosts)文件。
+識別您想要在部署 Azure VMware 解決方案時使用的主機大小。  如需完整清單，請參閱 [Azure VMware 解決方案私人雲端和叢集](concepts-private-clouds-clusters.md#hosts)文件。
 
 ## <a name="number-of-hosts"></a>主機數目
 

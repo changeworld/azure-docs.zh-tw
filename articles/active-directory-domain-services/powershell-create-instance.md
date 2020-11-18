@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 10/02/2020
 ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967948"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041962"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 啟用 Azure Active Directory Domain Services
 
@@ -37,22 +37,22 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 * 安裝並設定 Azure AD PowerShell。
     * 請依需要遵循指示，[安裝 Azure AD PowerShell 模組並連線至 Azure AD](/powershell/azure/active-directory/install-adv2)。
     * 務必使用 [Connect-AzureAD][Connect-AzureAD] Cmdlet 登入您的 Azure AD 租用戶。
-* 您必須擁有 Azure AD 租用戶的*全域管理員*權限，才能啟用 Azure AD DS。
+* 您必須擁有 Azure AD 租用戶的 *全域管理員* 權限，才能啟用 Azure AD DS。
 * 您需要 Azure 訂用帳戶中的「參與者」權限，才能建立必要的 Azure AD DS 資源。
 
 ## <a name="create-required-azure-ad-resources"></a>建立所需的 Azure AD 資源
 
 Azure AD DS 需要服務主體和 Azure AD 群組。 這些資源可讓 Azure AD DS 受控網域同步處理資料，以及定義受控網域中具有管理權限的使用者。
 
-首先，建立 Azure AD 服務主體，以供 Azure AD DS 通訊和自我驗證。 系統會使用特定的應用程式識別碼，其名稱為「網域控制站服務」以及 2565bd9d-da50-47d4-8b85-4c97f669dc36 的識別碼。 請勿變更此應用程式識別碼。
+首先，建立 Azure AD 服務主體，以供 Azure AD DS 通訊和自我驗證。 系統會使用特定的應用程式識別碼，其名稱為「網域控制站服務」以及「6ba9a5d4-8456-4118-b521-9c5ca10cdf84」 的識別碼。 請勿變更此應用程式識別碼。
 
 使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] Cmdlet 來建立 Azure AD 服務主體：
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
-現在建立名為 *AAD DC 管理員*的 Azure AD 群組。 系統會授與新增至此群組的使用者權限，以在受控網域上執行管理工作。
+現在建立名為 *AAD DC 管理員* 的 Azure AD 群組。 系統會授與新增至此群組的使用者權限，以在受控網域上執行管理工作。
 
 首先，使用 [Get-AzureADGroup][Get-AzureADGroup] Cmdlet，取得「AAD DC 管理員」群組物件識別碼。 如果群組不存在，則使用 [New-AzureADGroup][New-AzureADGroup] Cmdlet 以「AAD DC 管理員」群組加以建立：
 
@@ -252,7 +252,7 @@ Connect-AzureAD
 Connect-AzAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `

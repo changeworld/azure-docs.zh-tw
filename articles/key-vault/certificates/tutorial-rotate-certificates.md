@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83201518"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289743"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教學課程：在 Key Vault 中設定憑證的自動輪替
 
@@ -41,13 +41,13 @@ ms.locfileid: "83201518"
 
 ## <a name="create-a-vault"></a>建立保存庫
 
-建立金鑰保存庫，或選取現有的保存庫以執行作業 (請參閱[建立金鑰保存庫的步驟](../quick-create-portal.md))。 在此範例中，金鑰保存庫名稱為 **Example-Vault**。
+建立金鑰保存庫，或選取現有的保存庫以執行作業 (請參閱[建立金鑰保存庫的步驟](../secrets/quick-create-portal.md))。 在此範例中，金鑰保存庫名稱為 **Example-Vault**。
 
 ![金鑰保存庫建立完成後的輸出](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>在 Key Vault 中建立憑證
 
-建立憑證或將憑證匯入金鑰保存庫中 (請參閱[在 Key Vault 中建立憑證的步驟](../quick-create-portal.md))。 在此案例中，您會處理名為 **ExampleCertificate** 的憑證。
+建立憑證或將憑證匯入金鑰保存庫中 (請參閱[在 Key Vault 中建立憑證的步驟](../secrets/quick-create-portal.md))。 在此案例中，您會處理名為 **ExampleCertificate** 的憑證。
 
 ## <a name="update-certificate-lifecycle-attributes"></a>更新憑證生命週期屬性
 
@@ -82,7 +82,7 @@ Key Vault 會透過與 CA 已有的合作關係自動輪替憑證。 因為 Key 
 
         |  在指定時間自動更新| 在指定時間傳送電子郵件給所有連絡人 |
         |-----------|------|
-        |選取此選項將會*開啟*自動輪替。 | 選取此選項將*不會*進行自動輪替，而只會對連絡人發出警示。|
+        |選取此選項將會 *開啟* 自動輪替。 | 選取此選項將 *不會* 進行自動輪替，而只會對連絡人發出警示。|
 
 1. 選取 [建立]。
 
@@ -95,7 +95,7 @@ Key Vault 會透過與 CA 已有的合作關係自動輪替憑證。 因為 Key 
 1. 選取您要更新的憑證。 在此案例中，您會處理名為 **ExampleCertificate** 的憑證。
 1. 從頂端功能表列中選取 [發行原則]。
 
-   ![憑證屬性](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![醒目提示 [發行原則] 按鈕的螢幕擷取畫面。](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. 在 [發行原則] 畫面上，更新下列值：
 
@@ -134,7 +134,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-若要深入了解參數，請參閱 [az keyvault certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes)。
+若要深入了解參數，請參閱 [az keyvault certificate](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -152,5 +152,5 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 
 在本教學課程中，您已更新憑證的生命週期屬性。 若要深入了解 Key Vault 以及如何將其與應用程式整合，請繼續閱讀下列文章：
 
-- 深入了解如何[在 Azure Key Vault 中管理憑證建立](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)。
+- 深入了解如何[在 Azure Key Vault 中管理憑證建立](./create-certificate-scenarios.md)。
 - 檢閱 [Key Vault 概觀](../general/overview.md)。

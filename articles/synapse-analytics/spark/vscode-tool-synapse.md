@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - Spark & Hive Tools for VSCode (Spark 應用程式)
-description: 教學課程 - 使用 Spark & Hive Tools for VSCode 開發以 Python 撰寫的 Spark 應用程式，並將其提交至 Apache Spark 集區 (預覽)。
+description: 教學課程 - 使用 Spark & Hive Tools for VSCode 開發以 Python 撰寫的 Spark 應用程式，並將其提交至無伺服器 Apache Spark 集區 (預覽)。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 6778d78ff5e342d97c1c9bc477c1a88eca42a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b2b04d0f29d92b503cc0bed2460b79cfa6c354
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91337705"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315661"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區搭配 VSCode 來建立 Apache Spark 應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "91337705"
 
 若要完成此文章中的步驟，將會需要下列項目：
 
-- Apache Spark 集區。 若要建立 Apache Spark 集區，請參閱[使用 Azure 入口網站建立 Apache Spark 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
+- 無伺服器 Apache Spark 集區。 若要建立無伺服器 Apache Spark 集區，請參閱[使用 Azure 入口網站建立 Apache Spark 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
 - [Mono](https://www.mono-project.com/docs/getting-started/install/) \(英文\)。 只有 Linux 和 macOS 才需要 Mono。
 - [Visual Studio Code 的 PySpark 互動式環境](../../hdinsight/set-up-pyspark-interactive-environment.md)。
@@ -52,9 +52,9 @@ ms.locfileid: "91337705"
 
 若要在 Visual Studio Code 中開啟工作資料夾並建立檔案，請執行下列步驟：
 
-1. 從功能表列中，瀏覽至 [檔案] > [開啟資料夾...] > **C:\HD\Synaseexample**，然後選取 [選取資料夾] 按鈕。 該資料夾會出現在左側的 [檔案總管]**** 檢視中。
+1. 從功能表列中，瀏覽至 [檔案] > [開啟資料夾...] > **C:\HD\Synaseexample**，然後選取 [選取資料夾] 按鈕。 該資料夾會出現在左側的 [檔案總管] 檢視中。
 
-2. 在 [檔案總管] 檢視中選取 [Synaseexample] 資料夾，然後選取工作資料夾旁的**新增檔案**圖示：
+2. 在 [檔案總管] 檢視中選取 [Synaseexample] 資料夾，然後選取工作資料夾旁的 **新增檔案** 圖示：
 
      ![Visual Studio Code 的新增檔案圖示](./media/vscode-tool-synapse/visual-studio-code-new-file.png)
 
@@ -76,9 +76,9 @@ ms.locfileid: "91337705"
 
 ## <a name="set-the-default-spark-pool"></a>設定預設 Spark 集區
 
-1. 重新開啟[先前](#open-a-work-folder)所討論的 **Synaseexample** 資料夾 (如果已關閉)。  
+1. 重新開啟 [先前](#open-a-work-folder)所討論的 **Synaseexample** 資料夾 (如果已關閉)。  
 
-2. 選取[先前](#open-a-work-folder)所建立的 **HelloWorld.py** 檔案。 檔案會在指令碼編輯器中開啟。
+2. 選取 [先前](#open-a-work-folder)所建立的 **HelloWorld.py** 檔案。 檔案會在指令碼編輯器中開啟。
 
 3. 以滑鼠右鍵按一下指令碼編輯器，然後選取 [Synapse:設定預設 Spark 集區]。  
 
@@ -95,9 +95,9 @@ ms.locfileid: "91337705"
 ### <a name="using-the-synapse-pyspark-interactive-command-in-py-file"></a>在 PY 檔案中使用 Synapse PySpark interactive 命令
 使用 PySpark interactive 命令提交查詢，並執行下列步驟：
 
-1. 重新開啟[先前](#open-a-work-folder)所討論的 **Synaseexample** 資料夾 (如果已關閉)。  
+1. 重新開啟 [先前](#open-a-work-folder)所討論的 **Synaseexample** 資料夾 (如果已關閉)。  
 
-2. 依照[先前的](#open-a-work-folder)步驟建立新檔案 **HelloWorld.py**。
+2. 依照 [先前的](#open-a-work-folder)步驟建立新檔案 **HelloWorld.py**。
 
 3. 將下列程式碼複製並貼到該指令檔：
 
@@ -174,7 +174,7 @@ for (word, count) in sortedCollection:
 
 1. 您可以從命令選擇區使用命令建立 Jupyter Notebook，或藉由在工作區中建立新的 .ipynb 檔案來建立。 如需詳細資訊，請參閱[在 Visual Studio Code 中使用 Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support)
 
-2. 按一下 [執行資料格] 按鈕，依照提示**設定預設 Spark 集區** (強烈建議在每次開啟筆記本之前都設定預設叢集/集區)，然後**重新載入**視窗。
+2. 按一下 [執行資料格] 按鈕，依照提示 **設定預設 Spark 集區** (強烈建議在每次開啟筆記本之前都設定預設叢集/集區)，然後 **重新載入** 視窗。
 
      ![設定預設 Spark 集區並重新載入](./media/vscode-tool-synapse/set-the-default-spark-pool-and-reload.png)
 
@@ -193,9 +193,9 @@ for (word, count) in sortedCollection:
 
 ## <a name="submit-pyspark-batch-job-to-spark-pool"></a>將 PySpark 批次作業提交至 Spark 集區
 
-1. 重新開啟您[先前](#open-a-work-folder)討論的 **Synaseexample** 資料夾 (如果已關閉)。  
+1. 重新開啟您 [先前](#open-a-work-folder)討論的 **Synaseexample** 資料夾 (如果已關閉)。  
 
-2. 依照[先前](#open-a-work-folder)的步驟建立新檔案 **BatchFile.py**。
+2. 依照 [先前](#open-a-work-folder)的步驟建立新檔案 **BatchFile.py**。
 
 3. 將下列程式碼複製並貼到該指令檔：
 

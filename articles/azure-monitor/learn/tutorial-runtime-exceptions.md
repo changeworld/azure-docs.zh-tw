@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357857"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926626"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 尋找並診斷執行階段例外狀況
 
@@ -81,7 +81,7 @@ Application Insights 會收集應用程式中的任何失敗，並可讓您檢�
 
 3. 具有有效值的第一個呼叫是 **ValidZipCode**，我們可以看到提供的郵遞區號含有無法轉譯成整數的字母。  這似乎是程式碼中需要修正的錯誤。
 
-    ![偵錯快照集](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![螢幕擷取畫面，顯示程式碼中需要更正的錯誤。    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
 4. 您可以接著選擇將此快照集下載至 Visual Studio，以在其中尋找需要修正的實際程式碼。 若要這麼做，請按一下 [下載快照集]  。
 5. 快照集就會載入到 Visual Studio。

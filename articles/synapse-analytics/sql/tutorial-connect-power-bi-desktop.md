@@ -1,6 +1,6 @@
 ---
-title: 教學課程：將 SQL 隨選連線至 Power BI Desktop 並建立報告
-description: 在本教學課程中，您將了解如何將 Azure Synapse Analytics 中的 SQL 隨選連線至 Power BI Desktop，並根據檢視建立示範報告。
+title: 教學課程：將無伺服器 SQL 集區連線至 Power BI Desktop 並建立報告
+description: 在本教學課程中，您將了解如何將 Azure Synapse Analytics 中的無伺服器 SQL 集區連線至 Power BI Desktop，並根據檢視建立示範報告。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539549"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317191"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>教學課程：使用 SQL 隨選搭配 Power BI Desktop 並建立報告
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>教學課程：搭配使用無伺服器 SQL 集區和 Power BI Desktop 並建立報告
 
 在本教學課程中，您將了解如何：
 
@@ -24,7 +24,7 @@ ms.locfileid: "91539549"
 >
 > - 建立示範資料庫
 > - 建立用於報告的檢視
-> - 將 Power BI Desktop 連線到 SQL 隨選
+> - 將 Power BI Desktop 連線到無伺服器 SQL 集區
 > - 根據檢視來建立報告
 
 ## <a name="prerequisites"></a>必要條件
@@ -42,8 +42,8 @@ ms.locfileid: "91539549"
 
 | 參數                                 | 描述                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL 隨選服務端點位址    | 作為伺服器名稱                                   |
-| SQL 隨選服務端點區域     | 用來判斷範例中使用的儲存體 |
+| 無伺服器 SQL 集區服務端點位址    | 作為伺服器名稱                                   |
+| 無伺服器 SQL 集區服務端點區域     | 用來判斷範例中使用的儲存體 |
 | 用來存取端點的使用者名稱和密碼 | 用來存取端點                               |
 | 您將用來建立檢視的資料庫     | 範例中用來作為起點的資料庫       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 - 建立資料來源
 
-需要有資料來源才能讓 SQL 隨選服務存取儲存體中的檔案。 為與您端點位於相同區域的儲存體帳戶建立資料來源。 雖然 SQL 隨選可存取來自不同區域的儲存體帳戶，但讓儲存體和端點位於相同區域將會提供較佳的效能。
+需要有資料來源才能讓無伺服器 SQL 集區服務存取儲存體中的檔案。 為與您端點位於相同區域的儲存體帳戶建立資料來源。 雖然無伺服器 SQL 集區可存取來自不同區域的儲存體帳戶，但讓儲存體和端點位於相同區域將會提供較佳的效能。
 
 執行下列 Transact-SQL (T-SQL) 指令碼來建立資料來源：
 

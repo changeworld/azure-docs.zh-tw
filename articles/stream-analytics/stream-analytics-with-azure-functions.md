@@ -7,18 +7,21 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006885"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489942"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教學課程：從 Azure 串流分析作業執行 Azure Functions 
 
 您可以將 Functions 設定為串流分析作業的其中一個輸出接收，藉以從 Azure 串流分析執行 Azure Functions。 Functions 是事件導向隨選計算的體驗，可讓您實作在 Azure 或第三方服務中發生之事件所觸發的程式碼。 Functions 回應觸發程序的功能，很適合作為串流分析作業的輸出。
 
 串流分析會透過 HTTP 觸發程序叫用 Functions。 Functions 輸出配接器可以讓使用者將 Functions 連接至串流分析，如此便可以根據串流分析的查詢來觸發事件。 
+
+> [!NOTE]
+> 不支援從執行於多租用戶叢集中的串流分析作業連線至虛擬網路 (VNet) 內的 Azure Functions。
 
 在本教學課程中，您會了解如何：
 
@@ -44,7 +47,7 @@ ms.locfileid: "89006885"
 
 1. 使用在[建立快取](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)中所述的步驟，在 Azure Cache for Redis 中建立快取。  
 
-2. 建立快取後，請在 [設定]  底下，選取 [存取金鑰]  。 記下**主要連接字串**。
+2. 建立快取後，請在 [設定]  底下，選取 [存取金鑰]  。 記下 **主要連接字串**。
 
    ![Azure Cache for Redis 連接字串的螢幕擷取畫面](./media/stream-analytics-with-azure-functions/image2.png)
 
@@ -128,13 +131,13 @@ ms.locfileid: "89006885"
 
    ```
  
-4. 回到 Azure 入口網站。 至**平台功能**索引標籤，瀏覽至您的函式。 選取 [開發工具]  下的 [App Service 編輯器]  。 
+4. 回到 Azure 入口網站。 至 **平台功能** 索引標籤，瀏覽至您的函式。 選取 [開發工具]  下的 [App Service 編輯器]  。 
  
-   ![App Service 編輯器的螢幕擷取畫面](./media/stream-analytics-with-azure-functions/image3.png)
+   ![顯示 [平台功能] 索引標籤的螢幕擷取畫面，其中已選取 [App Service 編輯器]。](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. 在 App Service 編輯器中，以滑鼠右鍵按一下根目錄，並上傳 **project.json** 檔案。 上傳成功後，重新整理頁面。 現在應該會看到名稱為 **project.lock.json** 的自動產生檔案。 自動產生檔案包含 project.json 檔案中對於 .dll 檔案指定的參考。  
 
-   ![App Service 編輯器的螢幕擷取畫面](./media/stream-analytics-with-azure-functions/image4.png)
+   ![顯示從功能表中選取 [上傳檔案] 的螢幕擷取畫面。](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>使用函式做為輸出，更新串流分析作業
 
@@ -198,7 +201,7 @@ ms.locfileid: "89006885"
 
 在 Azure 入口網站中，您嘗試將最大批次大小/最大批次計數值重設為空 (預設值) 時，值將儲存時變更回先前輸入的值。 在此情況下，請手動將預設值輸入欄位。
 
-串流分析目前不支援在 Azure Functions 上使用 [HTTP 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
+串流分析目前不支援在 Azure Functions 上使用 [HTTP 路由](/sandbox/functions-recipes/routes?tabs=csharp)。
 
 不會啟用連線到虛擬網路中所裝載 Azure Functions 的支援。
 

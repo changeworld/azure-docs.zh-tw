@@ -1,6 +1,6 @@
 ---
 title: 使用 Power BI Professional 連線到 Synapse SQL
-description: 在本教學課程中，我們將逐步解說如何將 Power BI Desktop 連線到 SQL 隨選 (預覽) 的步驟。
+description: 在本教學課程中，我們將逐步解說如何將 Power BI Desktop 連線到無伺服器 SQL 集區 (預覽) 的步驟。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899124"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316464"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>使用 Power BI Professional 連線到 Synapse SQL
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>使用 Power BI Professional 連線到無伺服器 SQL 集區
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "92899124"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-在本教學課程中，我們將逐步解說用來將 Power BI Desktop 連線到 SQL 隨選 (預覽) 的步驟。
+在本教學課程中，我們將逐步解說用來將 Power BI Desktop 連線到無伺服器 SQL 集區 (預覽) 的步驟。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,17 +43,17 @@ ms.locfileid: "92899124"
 
 | 參數                                 | 描述                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL 隨選服務端點位址    | 會用來作為伺服器名稱                                   |
-| SQL 隨選服務端點區域     | 會用來決定要在範例中使用的儲存體 |
+| 無伺服器 SQL 集區服務端點位址    | 會用來作為伺服器名稱                                   |
+| 無伺服器 SQL 集區服務端點區域     | 會用來決定要在範例中使用的儲存體 |
 | 用來存取端點的使用者名稱和密碼 | 將用來存取端點                               |
-| 您將用來建立檢視的資料庫     | 此資料庫將用來作為範例中的起點       |
+| 您將用來建立檢視的資料庫       | 此資料庫將用來作為範例中的起點       |
 
 ## <a name="first-time-setup"></a>第一次設定
 
 在使用範例前有兩個步驟：
 
 1. 為檢視建立資料庫
-2. 建立可讓 SQL 隨選用來存取儲存體中檔案的認證
+2. 建立可讓無伺服器 SQL 集區用來存取儲存體中檔案的認證
 
 ### <a name="create-database"></a>建立資料庫
 
@@ -70,12 +70,12 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>建立認證
 
-我們必須先建立認證，然後才能執行查詢。 SQL 隨選服務會使用此認證來存取儲存體中的檔案。
+我們必須先建立認證，然後才能執行查詢。 無伺服器 SQL 集區服務會使用此認證來存取儲存體中的檔案。
 
 > [!NOTE]
-> 您需要建立認證以存取儲存體帳戶。 雖然 SQL 隨選可以存取不同區域的儲存體，但在相同區域中擁有儲存體和 Azure Synapse 工作區可提供更好的效能體驗。
+> 您需要建立認證以存取儲存體帳戶。 雖然無伺服器 SQL 集區可以存取不同區域的儲存體，但在相同區域中擁有儲存體和 Azure Synapse 工作區可提供更好的效能體驗。
 
-**有關如何為人口普查資料容器建立認證的程式碼片段** ，請執行：
+**有關如何為人口普查資料容器建立認證的程式碼片段**，請執行：
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -108,5 +108,4 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-前進到[查詢儲存體檔案](get-started-azure-data-studio.md)以了解如何使用 Azure Data Studio 連線到 SQL 隨選。
- 
+前進到[查詢儲存體檔案](get-started-azure-data-studio.md)以了解如何使用 Azure Data Studio 連線到無伺服器 SQL 集區。

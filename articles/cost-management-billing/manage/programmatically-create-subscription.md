@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de93d96085269c2cc8fcf6c18d7e6643facfcaa4
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043278"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372705"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>使用最新的 API 以程式設計方式建立 Azure 訂用帳戶
 
@@ -736,7 +736,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 此時會傳回進行中狀態，在 `provisioningState` 下顯示為 `Accepted` 狀態。 
 
-在 API 的要求本文中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
+在 API 的要求本文中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
 
@@ -762,7 +762,7 @@ New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Sub
 }
 ```
 
-在 `New-AzSubscriptionAlias` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
+在 `New-AzSubscriptionAlias` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MPA)
 
@@ -788,7 +788,7 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 }
 ```
 
-在 `az account alias create` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
+在 `az account alias create` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
 
 ---
 
@@ -798,7 +798,15 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 
 ### <a name="prerequisites"></a>Prerequisites
 
-您必須是發票區段上的擁有者、參與者或 Azure 訂用帳戶角色，或是帳單設定檔或計費帳戶上的擁有者或參與者角色，才能建立訂用帳戶。 如需詳細資訊，請參閱[訂用帳戶計費角色和工作](understand-mca-roles.md#subscription-billing-roles-and-tasks)。
+若要建立訂用帳戶，您必須具有下列其中一個角色： 
+
+- 發票區段上的 Azure 訂用帳戶擁有者
+- 發票區段上的 Azure 訂用帳戶參與者
+- 發票區段上的 Azure 訂用帳戶建立者角色
+- 帳單設定檔或帳單帳戶上的 Azure 訂用帳戶擁有者
+- 帳單設定檔或帳單帳戶上的 Azure 訂用帳戶參與者角色
+
+ 如需詳細資訊，請參閱[訂用帳戶計費角色和工作](understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
 此外，由於您將執行 ARM 範本部署，因此必須具有根物件的寫入權限。 因此，如果您要在管理群組下建立 ARM 部署，則必須具有管理群組的寫入權限。 請注意，此動作純粹是用來建立 ARM 部署，如果建立訂用帳戶，該訂用帳戶只會建立於 ARM 範本所指定的管理群組中。
 

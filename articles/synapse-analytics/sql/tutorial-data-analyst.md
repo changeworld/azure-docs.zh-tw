@@ -1,6 +1,6 @@
 ---
-title: 教學課程：在 Azure Synapse Studio (預覽) 中使用 SQL 隨選 (預覽) 來分析 Azure 開放資料集
-description: 本教學課程說明如何使用 SQL 隨選 (預覽) 輕鬆執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 中將結果視覺化。
+title: 教學課程：在 Azure Synapse Studio (預覽) 中使用無伺服器 SQL 集區 (預覽) 來分析 Azure 開放資料集
+description: 本教學課程說明如何使用無伺服器 SQL 集區 (預覽) 輕鬆執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 中將結果視覺化。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539515"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309283"
 ---
-# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>教學課程：使用隨選 SQL 來分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化
+# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>教學課程：使用無伺服器 SQL 集區來分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化
 
-在本教學課程中，您將了解如何使用 SQL 隨選合併不同的 Azure 開放資料集，然後在 Azure Synapse Studio 中將結果視覺化，以執行探勘資料分析。
+在本教學課程中，您將了解如何使用無伺服器 SQL 集區合併不同的 Azure 開放資料集，然後在 Azure Synapse Studio 中將結果視覺化，以執行探勘資料分析。
 
 具體來說，您會分析[紐約市 (NYC) 計程車資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)，其中包括：
 
@@ -102,7 +102,7 @@ ORDER BY 1 ASC
 
 ![每年計程車乘車結果程式碼片段數](./media/tutorial-data-analyst/4.png)
 
-您可以在 Synapse Studio 中從 [資料表] 檢視切換至 [圖表] 檢視，以視覺方式呈現資料。 您可以選擇不同的圖表類型，例如**區域圖**、**橫條圖**、**直條圖**、**折線圖**、**圓形圖** 和**散佈圖**。 在本案例中，我們要將 [類別] 資料行設定為 [current_year] 的情況下繪製**直條圖**：
+您可以在 Synapse Studio 中從 [資料表] 檢視切換至 [圖表] 檢視，以視覺方式呈現資料。 您可以選擇不同的圖表類型，例如 **區域圖**、**橫條圖**、**直條圖**、**折線圖**、**圓形圖** 和 **散佈圖**。 在本案例中，我們要將 [類別] 資料行設定為 [current_year] 的情況下繪製 **直條圖**：
 
 ![顯示每年乘車次數的直條圖](./media/tutorial-data-analyst/5.png)
 
@@ -131,7 +131,7 @@ ORDER BY 1 ASC
 
 ![2016 年每日乘車次數結果程式碼片段](./media/tutorial-data-analyst/6.png)
 
-同樣地，您可以在 **[類別]** 資料行設定為 **[current_day]** 且 **[圖例 (數列)]** 資料行設定為 **[rides_per_day]** 的情況下繪製**直條圖**，輕鬆地用視覺方式呈現資料。
+同樣地，您可以在 **[類別]** 資料行設定為 **[current_day]** 且 **[圖例 (數列)]** 資料行設定為 **[rides_per_day]** 的情況下繪製 **直條圖**，輕鬆地用視覺方式呈現資料。
 
 ![顯示 2016 年每日乘車次數的直條圖](./media/tutorial-data-analyst/7.png)
 
@@ -213,9 +213,9 @@ WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND sta
 - 天氣很冷 (溫度低於攝氏零度)。
 - 當天風大 (風速大約 10 公尺/秒)。
 
-本教學課程已示範資料分析師要如何快速執行探勘資料分析、使用 SQL 隨選輕鬆地合併不同資料集，以及使用 Azure Synapse Studio 將結果視覺化。
+本教學課程已示範資料分析師要如何快速執行探勘資料分析、使用無伺服器 SQL 集區輕鬆地合併不同資料集，以及使用 Azure Synapse Studio 將結果視覺化。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何將 SQL 隨選連線到 Power BI Desktop 並建立報告，請參閱[將 SQL 隨選連線到 Power BI Desktop 並建立報告](tutorial-connect-power-bi-desktop.md)。
+若要了解如何將無伺服器 SQL 集區連線到 Power BI Desktop 並建立報告，請參閱[將無伺服器 SQL 集區連線到 Power BI Desktop 並建立報告](tutorial-connect-power-bi-desktop.md)。
  

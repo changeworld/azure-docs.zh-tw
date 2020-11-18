@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: f94a68833347d662f427fa0944dd83d33458bd14
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e727d06670c9d07ec1aa18b92504433f6c519d6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746005"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518289"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教學課程：使用 Azure 範本自動調整虛擬機器擴展集
 當建立擴展集時，您會定義您想要執行的 VM 執行個體數目。 當您的應用程式需求變更時，您可以自動增加或減少 VM 執行個體數目。 自動調整的能力可讓您在整個應用程式的生命週期中，跟上客戶的需求或對應用程式效能變更做出回應。 在本教學課程中，您將了解如何：
@@ -25,11 +25,11 @@ ms.locfileid: "92746005"
 > * 對 VM 執行個體進行壓力測試，並觸發自動調整規則
 > * 在需求降低時重新自動相應縮小
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，則在本教學課程中，您必須執行 Azure CLI 2.0.29 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+- 本文需要 2.0.29 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 
 
 
 ## <a name="define-an-autoscale-profile"></a>定義自動調整設定檔
@@ -143,7 +143,7 @@ ms.locfileid: "92746005"
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，請使用 [az group deployment create](/cli/azure/group/deployment) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱 (例如 *azureuser* )，以及作為每個 VM 執行個體之認證的密碼：
+現在，請使用 [az group deployment create](/cli/azure/group/deployment) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱 (例如 *azureuser*)，以及作為每個 VM 執行個體之認證的密碼：
 
 ```azurecli-interactive
 az group deployment create \
@@ -188,7 +188,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs: *10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
+當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
 
 若要確認 **stress** 產生了 CPU 負載，請使用 **top** 公用程式檢查作用中的系統負載：
 
@@ -196,7 +196,7 @@ sudo stress --cpu 10 --timeout 420 &
 top
 ```
 
-結束 **top** ，然後關閉 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
+結束 **top**，然後關閉 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
 ```console
 Ctrl-c
@@ -209,14 +209,14 @@ exit
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
-安裝並執行 **stress** ，然後在第二個 VM 執行個體上啟動十個背景工作。
+安裝並執行 **stress**，然後在第二個 VM 執行個體上啟動十個背景工作。
 
 ```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs: *10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
+再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
 
 關閉第二個 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
@@ -225,7 +225,7 @@ exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>監視作用中的自動調整規則
-若要監視擴展集中的 VM 執行個體數目，請使用 **watch** 。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **stress** 對每個 VM 執行個體產生的 CPU 負載：
+若要監視擴展集中的 VM 執行個體數目，請使用 **watch**。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **stress** 對每個 VM 執行個體產生的 CPU 負載：
 
 ```azurecli-interactive
 watch az vmss list-instances \

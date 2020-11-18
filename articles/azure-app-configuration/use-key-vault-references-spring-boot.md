@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748854"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127088"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>教學課程：在 Java Spring 應用程式中使用 Key Vault 參考
 
@@ -51,32 +51,32 @@ ms.locfileid: "92748854"
 
 1. 選取 Azure 入口網站左上角的 [建立資源]  選項：
 
-    ![Key Vault 建立完成後的輸出](./media/quickstarts/search-services.png)
-1. 在 [搜尋] 方塊中輸入 **Key Vault** 。
+    ![顯示 Azure 入口網站中 [建立資源] 選項的螢幕擷取畫面。](./media/quickstarts/search-services.png)
+1. 在 [搜尋] 方塊中輸入 **Key Vault**。
 1. 從結果清單，選取左側的 [金鑰保存庫]  。
 1. 在 [金鑰保存庫]  中，選取 [新增]  。
 1. 在 [建立金鑰保存庫]  的右側，提供下列資訊：
     * 選取 [訂用帳戶]  以選擇訂用帳戶。
     * 在 [資源群組]  中，選取 [新建]  ，然後輸入資源群組名稱。
-    * 在 [金鑰保存庫名稱]  中，需要唯一的名稱。 針對此教學課程，請輸入 **Contoso-vault2** 。
+    * 在 [金鑰保存庫名稱]  中，需要唯一的名稱。 針對此教學課程，請輸入 **Contoso-vault2**。
     * 在 [區域]  下拉式清單中，選擇一個位置。
 1. 將其他 [建立金鑰保存庫]  選項維持為預設值。
 1. 選取 [建立]  。
 
 此時，您的 Azure 帳戶是唯一獲得授權可存取此新保存庫的帳戶。
 
-![Key Vault 建立完成後的輸出](./media/quickstarts/vault-properties.png)
+![顯示金鑰保存庫的螢幕擷取畫面。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>將祕密新增至 Key Vault
 
-若要將祕密新增至保存庫，您只需要採取一些額外步驟。 在此案例中，請新增一則您可以用來測試 Key Vault 擷取的訊息。 此訊息稱為 **Message** ，而您要將 "Hello from Key Vault" 的值儲存於其中。
+若要將祕密新增至保存庫，您只需要採取一些額外步驟。 在此案例中，請新增一則您可以用來測試 Key Vault 擷取的訊息。 此訊息稱為 **Message**，而您要將 "Hello from Key Vault" 的值儲存於其中。
 
 1. 從 Key Vault 屬性頁面，選取 [祕密]  。
 1. 選取 [產生/匯入]  。
 1. 在 [建立祕密]  窗格中，輸入下列值：
-    * **上傳選項** ：輸入 **手動** 。
-    * **Name** ：輸入 **訊息** 。
-    * **值** ：輸入 **Hello from Key Vault** 。
+    * **上傳選項**：輸入 **手動**。
+    * **Name**：輸入 **訊息**。
+    * **值**：輸入 **Hello from Key Vault**。
 1. 保留其他 [建立祕密]  屬性的預設值。
 1. 選取 [建立]  。
 
@@ -87,10 +87,10 @@ ms.locfileid: "92748854"
 1. 選取 [組態總管]  。
 
 1. 選取 [+ 建立]   > [金鑰保存庫參考]  ，然後指定下列值：
-    * **金鑰** ：選取 [/application/config.keyvaultmessage] 
-    * **標籤** ︰將此值保留空白。
-    * **訂用帳戶** 、 **資源群組** 與 **金鑰保存庫** ：輸入與您在上一節所建立金鑰保存庫中的值相對應的值。
-    * **祕密** ：選取您在上一節中所建立、名為 **Message** 的祕密。
+    * **金鑰**：選取 [/application/config.keyvaultmessage] 
+    * **標籤**︰將此值保留空白。
+    * **訂用帳戶**、**資源群組** 與 **金鑰保存庫**：輸入與您在上一節所建立金鑰保存庫中的值相對應的值。
+    * **祕密**：選取您在上一節中所建立、名為 **Message** 的祕密。
 
 ## <a name="connect-to-key-vault"></a>連線到 Key Vault
 
@@ -129,7 +129,7 @@ ms.locfileid: "92748854"
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. 建立環境變數 **AZURE_CLIENT_ID** 、 **AZURE_CLIENT_SECRET** 和 **AZURE_TENANT_ID** 。 使用先前步驟中所顯示的服務主體值。 在命令列執行下列命令，然後重新啟動命令提示字元，讓變更生效：
+1. 建立環境變數 **AZURE_CLIENT_ID**、**AZURE_CLIENT_SECRET** 和 **AZURE_TENANT_ID**。 使用先前步驟中所顯示的服務主體值。 在命令列執行下列命令，然後重新啟動命令提示字元，讓變更生效：
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -162,7 +162,7 @@ ms.locfileid: "92748854"
 1. 建立稱為 **APP_CONFIGURATION_ENDPOINT** 的環境變數。 將其值設定為應用程式組態存放區的端點。 您可以在 Azure 入口網站中的 [存取金鑰]  刀鋒視窗上找到此端點。 重新啟動命令提示字元，讓變更生效。 
 
 
-1. 在 *resources* 資料夾中開啟 *bootstrap.properties* 。 更新此檔案，以使用 **APP_CONFIGURATION_ENDPOINT** 值。 移除此檔案中連接字串的任何參考。 
+1. 在 *resources* 資料夾中開啟 *bootstrap.properties*。 更新此檔案，以使用 **APP_CONFIGURATION_ENDPOINT** 值。 移除此檔案中連接字串的任何參考。 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}

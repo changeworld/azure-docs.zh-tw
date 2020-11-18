@@ -1,23 +1,23 @@
 ---
 title: 標記標籤專案中的影像
 title.suffix: Azure Machine Learning
-description: 了解如何在 Azure Machine Learning 標籤專案中使用資料標記工具。
+description: 了解如何使用資料標記工具，快速地在 Azure Machine Learning 標籤專案中準備 Machine Learning 的資料。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897568"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542179"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像 
 
-當您的專案系統管理員在 Azure Machine Learning 中[建立標籤專案](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)之後，您就可以使用標籤工具 (公開預覽) 快速準備機器學習專案的資料。 本文章說明：
+當您的專案系統管理員在 Azure Machine Learning 中[建立標籤專案](./how-to-create-labeling-projects.md#create-a-labeling-project)之後，您就可以使用標籤工具快速準備機器學習專案的資料。 本文章說明：
 
 > [!div class="checklist"]
 > * 如何存取您的標籤專案
@@ -70,9 +70,9 @@ ms.locfileid: "90897568"
 
 可能已觸發機器學習演算法。 如果您的專案中已啟用這些演算法，可能會看到下列內容：
 
-* 在標記過部分影像之後，您可能會在畫面頂端的專案名稱旁看到**工作已叢集處理**。  這表示影像會群組在一起，以在相同頁面上呈現類似的影像。  若是如此，請切換到多個影像檢視的其中一個，以利用分組功能帶來的好處。  
+* 在標記過部分影像之後，您可能會在畫面頂端的專案名稱旁看到 **工作已叢集處理**。  這表示影像會群組在一起，以在相同頁面上呈現類似的影像。  若是如此，請切換到多個影像檢視的其中一個，以利用分組功能帶來的好處。  
 
-* 稍後，您可能會在專案名稱旁看到**工作已預先標記**。  然後，影像會顯示來自機器學習服務分類模型的建議標籤。 機器學習模型的精確度不會是 100%。 雖然我們只使用信心水準高的模型影像，這些影像仍有可能未預先套用正確的標記。  當您看到這些標籤時，請更正任何錯誤的標籤再提交頁面。  
+* 稍後，您可能會在專案名稱旁看到 **工作已預先標記**。  然後，影像會顯示來自機器學習服務分類模型的建議標籤。 機器學習模型的精確度不會是 100%。 雖然我們只使用信心水準高的模型影像，這些影像仍有可能未預先套用正確的標記。  當您看到這些標籤時，請更正任何錯誤的標籤再提交頁面。  
 
 * 對於物件偵測模型，您可能會看到周框方塊和標籤已經存在。  請更正任何不正確的項目，然後再提交頁面。
 
@@ -86,7 +86,7 @@ ms.locfileid: "90897568"
 
 ## <a name="tag-images-for-multi-label-classification"></a>標記影像以進行多標籤分類
 
-如果您處理屬於「影像分類多標籤」類型的專案，您會將*一或多個*標籤套用至影像。 若要查看專案特定指示，請選取 [指示]，並移至 [檢視詳細指示]。
+如果您處理屬於「影像分類多標籤」類型的專案，您會將 *一或多個* 標籤套用至影像。 若要查看專案特定指示，請選取 [指示]，並移至 [檢視詳細指示]。
 
 選取要加上標籤的影像，然後選取標籤。 標籤會套用到所有選取的影像，然後影像會取消選取。 若要套用更多標籤，您必須重新選擇影像。 下列動畫顯示多標籤的標記：
 
@@ -108,7 +108,7 @@ ms.locfileid: "90897568"
 如果您的專案屬於「物件識別 (週框方塊)」類型，您將在影像中指定一或多個週框方塊，並將標籤套用至各個方塊。 影像可以有多個週框方塊，而每個方塊分別有單一標籤。 請使用 [檢視詳細指示] 來判斷您的專案中是否使用多個週框方塊。
 
 1. 為您要建立的週框方塊選取標籤。
-1. 選取**矩形方塊**工具 ![矩形方塊工具](./media/how-to-label-images/rectangular-box-tool.png)，或選取 "R"。
+1. 選取 **矩形方塊** 工具 ![矩形方塊工具](./media/how-to-label-images/rectangular-box-tool.png)，或選取 "R"。
 3. 在您的目標上按住滑鼠並往對角拖曳，以建立粗略的週框方塊。 若要調整週框方塊，請拖曳邊緣或角落。
 
 ![周框方塊建立](./media/how-to-label-images/bounding-box-sequence.png)
@@ -117,15 +117,37 @@ ms.locfileid: "90897568"
 
 您無法變更現有週框方塊的標籤。 如果您的標籤指派有誤，您必須刪除週框方塊，並以正確的標籤建立新的方塊。
 
-根據預設，您可以編輯現有的週框方塊。 **鎖定/解除鎖定區域**工具 ![鎖定/解除鎖定區域工具](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或 "L" 會切換該行為。 如果區域已鎖定，您就只能變更新週框方塊的形狀或位置。
+根據預設，您可以編輯現有的週框方塊。 **鎖定/解除鎖定區域** 工具 ![鎖定/解除鎖定區域工具](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或 "L" 會切換該行為。 如果區域已鎖定，您就只能變更新週框方塊的形狀或位置。
 
-使用**區域操作**工具 ![區域操作工具](./media/how-to-label-images/regions-tool.png) 或 "M" 可調整現有的週框方塊。 拖曳邊緣或角落，以調整形狀。 按住內部，可以拖曳整個週框方塊。 如果您無法編輯區域，表示您可能切換了**鎖定/解除鎖定區域**工具。
+使用 **區域操作** 工具 ![區域操作工具](./media/how-to-label-images/regions-tool.png) 或 "M" 可調整現有的週框方塊。 拖曳邊緣或角落，以調整形狀。 按住內部，可以拖曳整個週框方塊。 如果您無法編輯區域，表示您可能切換了 **鎖定/解除鎖定區域** 工具。
 
-使用**範本型方塊**工具 ![範本方塊工具](./media/how-to-label-images/template-box-tool.png) 或 "T"，可建立相同大小的多個週框方塊。 如果影像沒有週框方塊，當您啟用範本型方塊後，此工具將會產生 50x50 像素的方塊。 如果您在建立週框方塊後啟用了範本型方塊，則新週框方塊的大小將會與您建立的最後一個方塊相同。 範本型方塊在放置後可調整大小。 調整範本型方塊的大小時，只會調整特定方塊的大小。
+使用 **範本型方塊** 工具 ![範本方塊工具](./media/how-to-label-images/template-box-tool.png) 或 "T"，可建立相同大小的多個週框方塊。 如果影像沒有週框方塊，當您啟用範本型方塊後，此工具將會產生 50x50 像素的方塊。 如果您在建立週框方塊後啟用了範本型方塊，則新週框方塊的大小將會與您建立的最後一個方塊相同。 範本型方塊在放置後可調整大小。 調整範本型方塊的大小時，只會調整特定方塊的大小。
 
-若要刪除目前影像中的*所有*週框方塊，請選取**刪除所有區域**工具 ![刪除區域工具](./media/how-to-label-images/delete-regions-tool.png)。
+若要刪除目前影像中的 *所有* 週框方塊，請選取 **刪除所有區域** 工具 ![刪除區域工具](./media/how-to-label-images/delete-regions-tool.png)。
 
 建立影像的周框方塊後，請選取 [提交] 以儲存您的工作，否則進行中的工作將不會儲存。
+
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>標記影像並指定影像分割的多邊形 
+
+如果您的專案屬於「執行個體分割 (多邊形)」類型，您將在影像中指定一或多個多邊形，並將標記套用至每個多邊形。 影像可以有多個週框多邊形，而每個多邊形分別有單一標記。 請使用 [檢視詳細指示] 來判斷您的專案中是否使用多個週框多邊形。
+
+1. 為您要建立的週框多邊形選取標記。
+1. 選取 **繪製多邊形區域** 工具![繪製多邊形區域工具](./media/how-to-label-images/polygon-tool.png)或選取 [P]。
+3. 按一下多邊形中的每個點。  當您完成圖形時，請按兩下以完成。
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="建立適用於貓和狗的多邊形":::
+
+若要刪除週框多邊形，請在建立之後，按一下出現在週框多邊形旁的 X 形目標。
+
+如果您想要變更多邊形的標記，請選取 [移動區域] 工具，按一下多邊形，然後選取正確的標記。
+
+您可以編輯現有的多邊形。 **鎖定/解除鎖定區域** 工具![使用鎖定/解除鎖定區域工具編輯多邊形](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或 [L] 以切換該行為。 如果區域已鎖定，您就只能變更新多邊形的形狀或位置。
+
+使用 **新增或移除多邊形點** 工具![新增或移除多邊形點工具](./media/how-to-label-images/add-remove-points-tool.png)或 [U] 來調整現有的多邊形。 按一下多邊形以新增或移除點。 如果您無法編輯區域，表示您可能切換了 **鎖定/解除鎖定區域** 工具。
+
+若要刪除目前影像中的「所有」多邊形，請選取 **刪除所有區域** 工具![刪除所有區域工具](./media/how-to-label-images/delete-regions-tool.png)。
+
+建立影像的多邊形之後，請選取 [提交] 以儲存您的工作，否則進行中的工作將不會儲存。
 
 ## <a name="finish-up"></a>完成
 
@@ -135,5 +157,4 @@ ms.locfileid: "90897568"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[在 Azure 中將影像分類模型定型](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
-
+* 了解如何[在 Azure 中將影像分類模型定型](./tutorial-train-models-with-aml.md)
