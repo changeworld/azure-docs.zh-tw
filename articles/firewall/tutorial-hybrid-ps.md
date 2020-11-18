@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069403"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658633"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合式網路中部署及設定 Azure 防火牆
 
@@ -46,9 +46,9 @@ ms.locfileid: "89069403"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-本文需要您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
+本文需要您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
 
 要讓此案例正常運作有三項重要需求：
 
@@ -68,9 +68,9 @@ ms.locfileid: "89069403"
 >[!NOTE]
 >即使 UDR 指向「Azure 防火牆」作為預設閘道，系統仍會直接路由直接對等互連之 VNet 間的流量。 在此案例中若要將子網路對子網路流量傳送到防火牆，UDR 必須在這兩個子網路上同時明確包含目標子網路網路首碼。
 
-若要檢閱相關的 Azure PowerShell 參考文件，請參閱 [Azure PowerShell 參考](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)。
+若要檢閱相關的 Azure PowerShell 參考文件，請參閱 [Azure PowerShell 參考](/powershell/module/az.network/new-azfirewall)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
 
 ## <a name="declare-the-variables"></a>宣告變數
 
@@ -138,7 +138,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-要求一個公用 IP 位址，以配置給您將建立給虛擬網路使用的 VPN 閘道。 請注意，AllocationMethod** 為 [動態]****。 您無法指定想要使用的 IP 位址。 該 IP 位址會以動態方式配置給您的 VPN 閘道。
+要求一個公用 IP 位址，以配置給您將建立給虛擬網路使用的 VPN 閘道。 請注意，AllocationMethod 為 [動態]。 您無法指定想要使用的 IP 位址。 該 IP 位址會以動態方式配置給您的 VPN 閘道。
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +177,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-要求一個公用 IP 位址，以配置給您將建立給虛擬網路使用的閘道。 請注意，AllocationMethod** 為 [動態]****。 您無法指定想要使用的 IP 位址。 該 IP 位址會以動態方式配置給您的閘道。
+要求一個公用 IP 位址，以配置給您將建立給虛擬網路使用的閘道。 請注意，AllocationMethod 為 [動態]。 您無法指定想要使用的 IP 位址。 該 IP 位址會以動態方式配置給您的閘道。
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -292,13 +292,13 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>驗證連線
 
-您可以使用 Get-AzVirtualNetworkGatewayConnection** Cmdlet，並在搭配或不搭配 -Debug** 的情況下驗證連線是否成功。 請使用下列 Cmdlet 範例，並將值設定為與您狀況相符的值。 出現提示時，請選取 **A** 以執行 [全部]****。 在此範例中，-Name** 是指您想要測試的連線名稱。
+您可以使用 Get-AzVirtualNetworkGatewayConnection Cmdlet，並在搭配或不搭配 -Debug 的情況下驗證連線是否成功。 請使用下列 Cmdlet 範例，並將值設定為與您狀況相符的值。 出現提示時，請選取 **A** 以執行 [全部]。 在此範例中，-Name 是指您想要測試的連線名稱。
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
 ```
 
-完成 Cmdlet 之後，請檢視值。 在下列範例中，連線狀態會顯示為 [已連線]**，且您可以看見輸入和輸出位元組。
+完成 Cmdlet 之後，請檢視值。 在下列範例中，連線狀態會顯示為 [已連線]，且您可以看見輸入和輸出位元組。
 
 ```
 "connectionStatus": "Connected",
@@ -477,7 +477,7 @@ $NIC.IpConfigurations.privateipaddress
 - 您可以瀏覽輪輻虛擬網路上的網頁伺服器。
 - 您可以使用 RDP 連線到輪輻虛擬網路上的伺服器。
 
-接下來，將防火牆網路規則集合動作變更為 [拒絕]，確認防火牆規則會如預期般運作。 請執行下列指令碼，將規則集合動作變更為 [拒絕]****。
+接下來，將防火牆網路規則集合動作變更為 [拒絕]，確認防火牆規則會如預期般運作。 請執行下列指令碼，將規則集合動作變更為 [拒絕]。
 
 ```azurepowershell
 $rcNet = $azfw.GetNetworkRuleCollectionByName("RCNet01")
@@ -496,4 +496,4 @@ Set-AzFirewall -AzureFirewall $azfw
 
 接下來，您可以監視 Azure 防火牆記錄。
 
-[教學課程：監視 Azure 防火牆記錄](./tutorial-diagnostics.md)
+[教學課程：監視 Azure 防火牆記錄](./firewall-diagnostics.md)

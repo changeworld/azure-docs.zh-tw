@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210855"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658395"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 應用程式 Proxy：版本發行歷程記錄
 本文列出已發行的 Azure Active Directory (Azure AD) 應用程式 Proxy 的版本和功能。 Azure AD 團隊會定期以新的特性和功能更新應用程式 Proxy。 發行新版本時，會自動更新應用程式 Proxy 連接器。 
@@ -38,7 +38,7 @@ Azure AD 應用程式 Proxy 連接器下載 |  [下載最新的連接器](https:
 2020年7月22日：發行為下載此版本，僅可透過下載頁面進行安裝。 此版本的自動升級版本將于稍後發行。
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
--   改進對 Azure Government 雲端環境的支援。 如需如何正確安裝 Azure Government cloud 連接器的步驟，請參閱 [先決條件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) 和 [安裝步驟](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。
+-   改進對 Azure Government 雲端環境的支援。 如需如何正確安裝 Azure Government cloud 連接器的步驟，請參閱 [先決條件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) 和 [安裝步驟](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。
 - 支援將遠端桌面服務 web 用戶端與應用程式 Proxy 搭配使用。 如需詳細資訊，請參閱 [使用 Azure AD 應用程式 Proxy 發佈遠端桌面](application-proxy-integrate-with-remote-desktop-services.md) 。
 - 改進 websocket 延伸模組的協商。 
 

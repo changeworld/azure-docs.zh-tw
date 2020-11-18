@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 403fa4cab94ad6149e388b10acccd9d5e7a2b7a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764582"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658157"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>應用程式 Proxy 連接器和應用程式的高可用性和負載平衡
 
@@ -39,7 +39,7 @@ ms.locfileid: "84764582"
 
 1. 用戶端裝置上的使用者嘗試存取透過應用程式 Proxy 發佈的內部部署應用程式。
 2. 要求會經過 Azure Load Balancer，以判斷哪個應用程式 Proxy 服務實例應該取得要求。 每個區域都有數十個實例可接受要求。 這種方法有助於將流量平均分散到服務實例。
-3. 要求會傳送至 [服務匯流排](https://docs.microsoft.com/azure/service-bus-messaging/)。
+3. 要求會傳送至 [服務匯流排](../../service-bus-messaging/index.yml)。
 4. 服務匯流排會向可用的連接器發出信號。 然後，連接器會從服務匯流排挑選要求。
    - 在步驟2中，要求會移至不同的應用程式 Proxy 服務實例，因此更可能使用不同的連接器來建立連接。 如此一來，在群組內幾乎會平均使用連接器。
 5. 連接器會將要求傳遞至應用程式的後端伺服器。 然後，應用程式會將回應傳回給連接器。
@@ -92,10 +92,10 @@ ms.locfileid: "84764582"
 
 請參閱軟體廠商的檔，以瞭解後端應用程式的負載平衡需求。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)
 - [啟用單一登入](application-proxy-configure-single-sign-on-with-kcd.md)
 - [啟用條件式存取](application-proxy-integrate-with-sharepoint-server.md)
 - [使用應用程式 Proxy 疑難排解您遇到的問題](application-proxy-troubleshoot.md)
-- [瞭解 Azure AD 架構如何支援高可用性](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [瞭解 Azure AD 架構如何支援高可用性](../fundamentals/active-directory-architecture.md)

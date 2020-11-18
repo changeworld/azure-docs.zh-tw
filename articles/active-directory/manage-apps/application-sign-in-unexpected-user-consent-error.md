@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874538"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658480"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
-這篇文章討論對應用程式進行同意的程序期間會發生的錯誤。 如果您正在針對未包含任何錯誤訊息的非預期同意提示進行疑難排解，請參閱 [Azure AD 的驗證案例](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)。
+這篇文章討論對應用程式進行同意的程序期間會發生的錯誤。 如果您正在針對未包含任何錯誤訊息的非預期同意提示進行疑難排解，請參閱 [Azure AD 的驗證案例](../develop/authentication-vs-authorization.md)。
 
 許多與 Azure Active Directory 整合的應用程式需要能存取其他資源的權限，才能夠運作。 當這些資源也與 Azure Active Directory 整合時，通常會使用一般的同意架構來要求存取這些資源的權限。 會顯示同意提示，一般會發生在第一次使用應用程式時，但也會發生在後續使用應用程式時。
 
@@ -90,8 +90,6 @@ ms.locfileid: "91874538"
 
 ## <a name="next-steps"></a>後續步驟 
 
-[Azure Active Directory 中的應用程式、權限及同意 (v1 端點)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Azure Active Directory 中的應用程式、權限及同意 (v1 端點)](../develop/quickstart-register-app.md)<br>
 
-[Azure Active Directory v2.0 端點中的範圍、權限及同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Azure Active Directory v2.0 端點中的範圍、權限及同意](../develop/v2-permissions-and-consent.md)

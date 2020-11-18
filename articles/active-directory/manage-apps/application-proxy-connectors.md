@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 923b83b388b58313e9613f0f8b71f266dcbeb028
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: be5ce5b3eebb2f784469680cf7614df6ca750b55
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282141"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658259"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 應用程式 Proxy 連接器
 
@@ -61,13 +61,13 @@ ms.locfileid: "92282141"
 
 ![範例： Azure AD 應用程式 Proxy 連接器](./media/application-proxy-connectors/app-proxy-connectors.png)
 
-您不必手動刪除未使用的連接器。 當連接器執行時，它在連接到服務時會保持作用中。 未使用的連接器會標記為_非作用中_，且將在未作用 10 天之後移除。 不過，如果您需要將連接器解除安裝，請從伺服器將連接器服務和更新程式服務解除安裝。 重新啟動電腦，才能完全移除此服務。
+您不必手動刪除未使用的連接器。 當連接器執行時，它在連接到服務時會保持作用中。 未使用的連接器會標記為 _非作用中_，且將在未作用 10 天之後移除。 不過，如果您需要將連接器解除安裝，請從伺服器將連接器服務和更新程式服務解除安裝。 重新啟動電腦，才能完全移除此服務。
 
 ## <a name="automatic-updates"></a>自動更新
 
 Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程式 Proxy 連接器更新程式服務正在執行，您的連接器便會自動更新。 如果您在伺服器上沒有看到連接器更新程式服務，則需要[重新安裝您的連接器](application-proxy-add-on-premises-application.md)以取得任何更新。
 
-如果不想等候您的連接器自動更新，您可以執行手動升級。 移至您的連接器所在伺服器上的[連接器下載頁面](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)並選取 [下載]****。 此流程就會開始進行本機連接器的升級。
+如果不想等候您的連接器自動更新，您可以執行手動升級。 移至您的連接器所在伺服器上的[連接器下載頁面](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)並選取 [下載]。 此流程就會開始進行本機連接器的升級。
 
 對於具有多個連接器的租用戶，自動更新會一次以每個群組中的一個連接器為目標，以免您的環境發生停機。
 
@@ -104,7 +104,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 > [!NOTE]
 > 在 4、8 和 16 核心的機器之間，最大 TPS 沒有太大差異。 它們之間的主要差異在於預期延遲。
 >
-> 此表格也會根據其安裝所在的電腦類型，將重點放在連接器的預期效能。 這與應用程式 Proxy 服務的節流限制不同，請參閱 [服務限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。
+> 此表格也會根據其安裝所在的電腦類型，將重點放在連接器的預期效能。 這與應用程式 Proxy 服務的節流限制不同，請參閱 [服務限制和限制](../enterprise-users/directory-service-limits-restrictions.md)。
 
 ## <a name="security-and-networking"></a>安全性和網路服務
 
@@ -155,7 +155,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 
 第一次成功更新憑證之後， (Network Service) 的 Azure AD 應用程式 Proxy 連接器服務沒有任何許可權可從本機電腦存放區中移除舊的憑證。 如果憑證已過期或服務不再使用它，您可以安全地將其刪除。
 
-若要避免憑證更新時發生問題，請確定已啟用從連接器到所 [記錄目的地](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) 的網路通訊。
+若要避免憑證更新時發生問題，請確定已啟用從連接器到所 [記錄目的地](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) 的網路通訊。
 
 如果連接器有數個月未連線至服務，它的憑證可能會過期。 在此情況下，請解除安裝並重新安裝連接器以觸發註冊。 您可以執行下列 PowerShell 命令：
 
@@ -178,9 +178,9 @@ Register-AppProxyConnector -EnvironmentName "AzureCloud"
 
 ![使用效能監視器將計數器新增至連接器](./media/application-proxy-connectors/performance-monitor.png)
 
-連接器同時具有系統 **管理員** 和 **會話** 記錄。 系統 **管理員** 記錄檔包含主要事件和錯誤。 **會話**記錄包含所有交易及其處理詳細資料。
+連接器同時具有系統 **管理員** 和 **會話** 記錄。 系統 **管理員** 記錄檔包含主要事件和錯誤。 **會話** 記錄包含所有交易及其處理詳細資料。
 
-若要查看記錄，請開啟**事件檢視器**並移至 [**應用程式和服務記錄**檔  >  **Microsoft**  >  **microsoftaadapplicationproxy**  >  **連接器**]。 若要讓 **會話** 記錄顯示，請在 [ **View** ] 功能表上選取 [ **顯示分析和調試記錄**]。 **會話**記錄通常用於疑難排解，而且預設為停用。 讓它開始收集事件，並在不再需要時加以停用。
+若要查看記錄，請開啟 **事件檢視器** 並移至 [**應用程式和服務記錄** 檔  >  **Microsoft**  >  **microsoftaadapplicationproxy**  >  **連接器**]。 若要讓 **會話** 記錄顯示，請在 [ **View** ] 功能表上選取 [ **顯示分析和調試記錄**]。 **會話** 記錄通常用於疑難排解，而且預設為停用。 讓它開始收集事件，並在不再需要時加以停用。
 
 您可以檢查 [服務] 視窗中的服務狀態。 連接器包含兩個 Windows 服務︰實際連接器和更新程式。 這兩者必須一直執行。
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635893"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658684"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -94,7 +94,7 @@ ms.locfileid: "92635893"
 
     ![階段檢視](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  建立新的工作。 搜尋 **ARM 範本部署** ，然後選取 [ **新增** ]。
+    b.  建立新的工作。 搜尋 **ARM 範本部署**，然後選取 [ **新增**]。
 
     c.  在部署工作中，選取目標資料處理站的訂用帳戶、資源群組和位置。 視需要提供認證。
 
@@ -109,7 +109,7 @@ ms.locfileid: "92635893"
     h. 針對 [部署模式] 選取 [增量]。
 
     > [!WARNING]
-    > 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除** 。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](../azure-resource-manager/templates/deployment-modes.md)
+    > 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除**。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](../azure-resource-manager/templates/deployment-modes.md)
 
     ![Data Factory 生產部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -633,19 +633,23 @@ ms.locfileid: "92635893"
 
 10.   將 Hotfix 中的變更新增至開發分支，後續的發行就不會包含相同的錯誤 (bug)。
 
+請參閱下面的影片，以深入瞭解如何針對您的環境進行熱修正。 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
 ## <a name="best-practices-for-cicd"></a>CI/CD 的最佳做法
 
 如果您將 Git 整合與資料處理站搭配使用，而且具有 CI/CD 管線，可將您的變更從開發轉移到測試，然後再轉移到生產，我們建議採用以下最佳做法：
 
--   **Git 整合** 。 只要使用 Git 整合設定您的開發資料處理站。 測試與生產變更已透過 CI/CD 部署，而且不需要 Git 整合。
+-   **Git 整合**。 只要使用 Git 整合設定您的開發資料處理站。 測試與生產變更已透過 CI/CD 部署，而且不需要 Git 整合。
 
--   **部署前後指令碼** 。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止並重新開機觸發程序以及執行清除作業。 我們建議您在部署工作前後使用 PowerShell 指令碼。 如需詳細資訊，請參閱[更新使用中的觸發程序](#updating-active-triggers)。 資料處理站小組已[提供可用的指令碼](#script) (位於此頁面的底部)。
+-   **部署前後指令碼**。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止並重新開機觸發程序以及執行清除作業。 我們建議您在部署工作前後使用 PowerShell 指令碼。 如需詳細資訊，請參閱[更新使用中的觸發程序](#updating-active-triggers)。 資料處理站小組已[提供可用的指令碼](#script) (位於此頁面的底部)。
 
--   **整合執行階段和共用** 。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
+-   **整合執行階段和共用**。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
 
--   **受控私人端點部署** 。 如果私人端點已經存在於 factory 中，而您嘗試部署的 ARM 範本包含具有相同名稱但具有已修改屬性的私人端點，則部署將會失敗。 換句話說，您可以成功部署私人端點，只要它的屬性與處理站中現有的相同。 如果環境之間有不同的屬性，您可以將該屬性參數化，並在部署期間提供個別的值來覆寫它。
+-   **受控私人端點部署**。 如果私人端點已經存在於 factory 中，而您嘗試部署的 ARM 範本包含具有相同名稱但具有已修改屬性的私人端點，則部署將會失敗。 換句話說，您可以成功部署私人端點，只要它的屬性與處理站中現有的相同。 如果環境之間有不同的屬性，您可以將該屬性參數化，並在部署期間提供個別的值來覆寫它。
 
--   **Key Vault** 。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
+-   **Key Vault**。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
 
 -  **資源命名** 由於 ARM 範本條件約束的緣故，如果您的資源在名稱中包含空格，則可能會發生部署問題。 Azure Data Factory 團隊建議使用 ' _ ' 或 '-' 字元，而不是資源的空格。 例如，' Pipeline_1 ' 會是比 ' Pipeline 1 ' 更理想的名稱。
 

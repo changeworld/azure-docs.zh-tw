@@ -12,18 +12,18 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0a103ac9b8e6d29830b5ecd6732cd19547014b0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601134"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659058"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中隱藏終端使用者的企業應用程式
 
 如何從終端使用者的 MyApps 面板或 Microsoft 365 啟動器隱藏應用程式的指示。 隱藏應用程式時，使用者仍有應用程式的權限。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 需要應用程式系統管理員許可權，才能從 MyApps 面板和 Microsoft 365 啟動器中隱藏應用程式。
 
@@ -35,19 +35,19 @@ ms.locfileid: "90601134"
 
 1.  以目錄的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2.  選取 **Azure Active Directory**。
-3.  選取 [企業應用程式]。 [企業應用程式 - 所有應用程式]**** 刀鋒視窗隨即開啟。
-4.  在 [應用程式類型]**** 下，選取 [企業應用程式]\(如果尚未選取)****。
+3.  選取 [企業應用程式]。 [企業應用程式 - 所有應用程式] 刀鋒視窗隨即開啟。
+4.  在 [應用程式類型] 下，選取 [企業應用程式]\(如果尚未選取)。
 5.  搜尋您想要隱藏的庫應用程式，然後按一下該應用程式。  應用程式的概觀隨即開啟。
-6.  按一下 **[屬性]** 。 
-7.  針對 [是否要向使用者顯示]**** 問題，按一下 [否]****。
-8.  按一下 **[儲存]** 。
+6.  按一下 **[屬性]**。 
+7.  針對 [是否要向使用者顯示] 問題，按一下 [否]。
+8.  按一下 [檔案] 。
 
 > [!NOTE]
 > 這些指示僅適用于企業應用程式。
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>使用 Azure AD PowerShell 來隱藏應用程式
 
-若要從 MyApps 面板隱藏應用程式，您可以手動將 HideApp 標記加入至應用程式的服務主體。 執行下列 [AzureAD PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) 命令，將應用程式 **Visible** 屬性設定為 [ **否**]。 
+若要從 MyApps 面板隱藏應用程式，您可以手動將 HideApp 標記加入至應用程式的服務主體。 執行下列 [AzureAD PowerShell](/powershell/module/azuread/?view=azureadps-2.0#service_principals) 命令，將應用程式 **Visible** 屬性設定為 [ **否**]。 
 
 ```PowerShell
 Connect-AzureAD
@@ -67,13 +67,12 @@ Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 2.  選取 **Azure Active Directory**。
 3.  選取 [使用者]。
 4.  選取 [ **使用者設定**]。
-5.  在 [企業應用程式]**** 之下，按一下 [管理終端使用者如何啟動及檢視其應用程式]****。
-6.  針對 [使用者只能在 Office 365 入口網站看到 Office 365 應用程式]****，按一下 [是]****。
+5.  在 [企業應用程式] 之下，按一下 [管理終端使用者如何啟動及檢視其應用程式]。
+6.  針對 [使用者只能在 Office 365 入口網站看到 Office 365 應用程式]，按一下 [是]。
 7.  按一下 [檔案] 。
 
 ## <a name="next-steps"></a>後續步驟
 * [查看我的所有群組](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [將使用者或群組指派給企業應用程式](assign-user-or-group-access-portal.md)
-* [從企業應用程式中移除使用者或群組指派](remove-user-or-group-access-portal.md)
-* [變更企業應用程式的名稱或標誌](change-name-or-logo-portal.md)
-
+* [從企業應用程式中移除使用者或群組指派](./assign-user-or-group-access-portal.md)
+* [變更企業應用程式的名稱或標誌](./add-application-portal-configure.md)

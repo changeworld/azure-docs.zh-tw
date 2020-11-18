@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037829"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658344"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>疑難排解：Azure 站對站 VPN 連線無法連線並停止運作
 
@@ -22,7 +22,7 @@ ms.locfileid: "86037829"
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 
-若要解決此問題，請先嘗試[重設 Azure VPN 閘道](vpn-gateway-resetgw-classic.md)，並從內部部署 VPN 裝置重設通道。 如果問題持續發生，請依照下列步驟執行以找出問題的原因。
+若要解決此問題，請先嘗試[重設 Azure VPN 閘道](./reset-gateway.md)，並從內部部署 VPN 裝置重設通道。 如果問題持續發生，請依照下列步驟執行以找出問題的原因。
 
 ### <a name="prerequisite-step"></a>必要步驟
 
@@ -30,7 +30,7 @@ ms.locfileid: "86037829"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 
-2. 檢查 VPN 閘道的 [概觀]**** 頁面來取得類型資訊。
+2. 檢查 VPN 閘道的 [概觀] 頁面來取得類型資訊。
     
     ![閘道概觀](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
@@ -72,7 +72,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>步驟 3： 確認 VPN 對等互連 IP
 
--   Azure 中「區域網路閘道」**** 物件內的 IP 定義應與內部部署裝置 IP 相符合。
+-   Azure 中「區域網路閘道」物件內的 IP 定義應與內部部署裝置 IP 相符合。
 -   內部部署裝置上設定的 Azure 閘道 IP 定義應與 Azure 閘道 IP 相符合。
 
 ### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>步驟 4： 檢查閘道子網路上的 UDR 和 NSG
@@ -81,14 +81,14 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>步驟 5。 檢查內部部署 VPN 裝置外部介面位址
 
-- 如果 Azure 的**區域網路**定義中包含 VPN 裝置的網際網路對應 IP 位址，則您可能偶爾會遇到連線中斷的情況。
+- 如果 Azure 的 **區域網路** 定義中包含 VPN 裝置的網際網路對應 IP 位址，則您可能偶爾會遇到連線中斷的情況。
 - 裝置的外部介面必須直接位在網際網路上。 網際網路與裝置之間不應該有網路位址轉譯或防火牆。
 - 若要設定防火牆叢集以具有虛擬 IP，您必須解散叢集，並直接將 VPN 設備公開給閘道可介接的公用介面。
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>步驟 6. 確認子網路完全相符合 (Azure 原則式閘道)
 
 -   確認 Azure 虛擬網路和內部部署定義的子網路位址空間完全相符。
--   確認子網路在**區域網路閘道**和內部部署網路的內部部署定義之間完全相符合。
+-   確認子網路在 **區域網路閘道** 和內部部署網路的內部部署定義之間完全相符合。
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>步驟 7： 確認 Azure 閘道健康狀態探查
 
@@ -108,7 +108,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 完整轉寄密碼功能可能會造成連線中斷的問題。 如果 VPN 裝置已啟用完整轉寄密碼，請停用該功能。 然後更新 VPN 閘道 IPsec 原則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 -   [設定虛擬網路的站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [設定站對站 VPN 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)

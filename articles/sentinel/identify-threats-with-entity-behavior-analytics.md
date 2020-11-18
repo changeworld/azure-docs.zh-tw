@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425927"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658786"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
 
@@ -30,7 +30,7 @@ ms.locfileid: "94425927"
 >    - 歐洲西部區域
 >    - 澳大利亞地理位置
 >
-> - 在所有其他地理位置和區域中，這些功能仍可供 **預覽** 。 請參閱 [**Microsoft Azure 預覽的補充使用條款**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，以取得適用于 Azure 功能（Beta、預覽或尚未發行正式運作）的其他法律條款。
+> - 在所有其他地理位置和區域中，這些功能仍可供 **預覽**。 請參閱 [**Microsoft Azure 預覽的補充使用條款**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，以取得適用于 Azure 功能（Beta、預覽或尚未發行正式運作）的其他法律條款。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什麼是使用者和實體行為分析 (UEBA) ？
 
@@ -109,7 +109,7 @@ Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內�
 
 ### <a name="entity-pages"></a>實體頁面
 
-當您在搜尋、警示或調查中遇到目前限制為使用者和主機) 的任何實體 (時，您可以選取實體，然後將其移至 **實體頁面** ，這是與該實體相關的實用資訊資料表。 您將在此頁面上找到的資訊類型包括關於實體的基本事實、與此實體相關的值得注意事件時間軸，以及實體行為的見解。
+當您在搜尋、警示或調查中遇到目前限制為使用者和主機) 的任何實體 (時，您可以選取實體，然後將其移至 **實體頁面**，這是與該實體相關的實用資訊資料表。 您將在此頁面上找到的資訊類型包括關於實體的基本事實、與此實體相關的值得注意事件時間軸，以及實體行為的見解。
  
 實體頁面包含三個部分：
 - 左邊的面板包含實體的識別資訊，從資料來源（例如 Azure Active Directory、Azure 監視器、Azure 資訊安全中心和 Microsoft Defender）收集。
@@ -180,7 +180,7 @@ Entity insights 是 Microsoft 安全性研究人員所定義的查詢，可協�
 
 ### <a name="querying-behavior-analytics-data"></a>查詢行為分析資料
 
-使用 [KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/)，我們可以查詢行為分析資料表。
+使用 [KQL](/azure/data-explorer/kusto/query/)，我們可以查詢行為分析資料表。
 
 例如，如果我們想要尋找使用者無法登入 Azure 資源的所有案例，在此情況下，使用者第一次嘗試從指定的國家/地區進行連線，而該國家/地區的連線即使是使用者的對等，也是不常見的，我們可以使用下列查詢：
 

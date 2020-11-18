@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442254"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659041"
 ---
 # <a name="manage-app-consent-policies"></a>管理應用程式同意原則
 
@@ -31,7 +31,7 @@ ms.locfileid: "94442254"
 
 ## <a name="pre-requisites"></a>必要條件
 
-1. 請確定您使用的是 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組。 如果您已安裝 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模組和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組兩者，則這個步驟很重要。
+1. 請確定您使用的是 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模組。 如果您已安裝 [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) 模組和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模組兩者，則這個步驟很重要。
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -133,7 +133,7 @@ ms.locfileid: "94442254"
 | 條件 | 說明|
 |:---------------|:----------|
 | PermissionClassification | 所授與之許可權的 [許可權分類](configure-permission-classifications.md) ，或「全部」符合任何許可權分類 (包括未分類) 的許可權。 預設值為 "all"。 |
-| PermissionType | 所授與之許可權的許可權類型。 使用「應用程式」以取得應用程式許可權 (例如) 的應用程式角色或委派許可權的「委派」。 <br><br>**注意** ： "delegatedUserConsentable" 值指出 API 發行者尚未設定為需要系統管理員同意的委派許可權，此值可用於內建許可權授與原則，但不能用於自訂許可權授與原則。 必要。 |
+| PermissionType | 所授與之許可權的許可權類型。 使用「應用程式」以取得應用程式許可權 (例如) 的應用程式角色或委派許可權的「委派」。 <br><br>**注意**： "delegatedUserConsentable" 值指出 API 發行者尚未設定為需要系統管理員同意的委派許可權，此值可用於內建許可權授與原則，但不能用於自訂許可權授與原則。 必要。 |
 | ResourceApplication | 資源應用程式的 **AppId** (例如，將授與許可權的 API) ，或符合任何資源應用程式或 API 的「任何」。 預設值為「任何」。 |
 | 權限 | 要比對之特定許可權的許可權識別碼清單，或具有單一值「全部」以符合任何許可權的清單。 預設值為單一值 "all"。 <ul><li>委派的許可權識別碼可以在 API 的 ServicePrincipal 物件的 **OAuth2Permissions** 屬性中找到。</li><li>應用程式許可權識別碼可以在 API 的 ServicePrincipal 物件的 **AppRoles** 屬性中找到。</li></ol> |
 | ClientApplicationIds | 要比對之用戶端應用程式的 **AppId** 值清單，或具有單一值「全部」以符合任何用戶端應用程式的清單。 預設值為單一值 "all"。 |
@@ -149,7 +149,7 @@ ms.locfileid: "94442254"
 * [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 * [了解如何管理對應用程式的同意及評估同意要求](manage-consent-requests.md)
 * [對應用程式授與全租用戶的管理員同意](grant-admin-consent.md)
-* [Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft 身分識別平台中的權限和同意](../develop/v2-permissions-and-consent.md)
 
 若要取得協助或尋找您的問題解答：
 * [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

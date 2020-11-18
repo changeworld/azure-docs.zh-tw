@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591541"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659143"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "94591541"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-不正確。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
+否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](./azure-netapp-files-network-topologies.md) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "94591541"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>我可以為 Azure NetApp Files 磁片區設定或選取自己的 IP 位址嗎？  
 
-不正確。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
+否。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files 是否支援 (IPv4 和 IPv6) VNet 的雙重 stack？
 
@@ -168,6 +168,10 @@ Azure NetApp Files 支援 Active Directory Domain Services 版的 Windows Server
 
 SMB 用戶端所報告的磁片區大小是 Azure NetApp Files 磁片區可成長的大小上限。 SMB 用戶端上所顯示的 Azure NetApp Files 磁片區大小，並不會反映磁片區的配額或大小。 您可以透過 Azure 入口網站或 API 取得 Azure NetApp Files 磁片區大小或配額。
 
+### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>我連接到 SMB 共用時發生問題。 我該怎麼辦？
+
+最佳做法是將電腦時鐘同步處理的最大容錯設定為五分鐘。 如需詳細資訊，請參閱 [電腦時鐘同步處理的最大容錯](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11))。 
+
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 
@@ -182,7 +186,7 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管管理 Azure NetApp Files 嗎？
 
-不正確。 Azure 儲存體總管不支援 Azure NetApp Files。
+否。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否接近限制大小？
 
@@ -239,11 +243,11 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援遷移 Azure 資料箱？
 
-不正確。 Azure 資料箱目前不支援 Azure NetApp Files。 
+否。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-不正確。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
 
 ## <a name="next-steps"></a>後續步驟  
 

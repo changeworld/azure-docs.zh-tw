@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 744fe22b6b2c9fbeb9b149760145267ccb6fa6f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7256f94b8e8376cf98a279d085a131a4ce84826f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435207"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658617"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 設定 Azure 防火牆應用程式規則
 
@@ -24,16 +24,16 @@ ms.locfileid: "89435207"
 - 從內部部署到 Azure SQL 受控執行個體或在 VNet 中執行的 SQL IaaS。
 - 從支點對支點到 Azure SQL 受控執行個體或在 VNet 中執行的 SQL IaaS。
 
-只有 [Proxy 模式](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)才支援 SQL FQDN 篩選 (連接埠 1433)。 如果您在預設的重新導向模式下使用 SQL，可以使用 SQL 服務標籤篩選存取，作為[網路規則](features.md#network-traffic-filtering-rules)的一部分。
+只有 [Proxy 模式](../azure-sql/database/connectivity-architecture.md#connection-policy)才支援 SQL FQDN 篩選 (連接埠 1433)。 如果您在預設的重新導向模式下使用 SQL，可以使用 SQL 服務標籤篩選存取，作為[網路規則](features.md#network-traffic-filtering-rules)的一部分。
 如果您針對 SQL IaaS 流量使用非預設的連接埠，可以在防火牆應用程式規則中設定那些連接埠。
 
 ## <a name="configure-using-azure-cli"></a>使用 Azure CLI 進行設定
 
 1. 部署[使用 Azure CLI 的 Azure 防火牆](deploy-cli.md)。
-2. 如果您篩選 Azure SQL Database、Azure Synapse Analytics 或 SQL 受控執行個體的流量，請確定 SQL 連線模式設定為 **Proxy**。 若要了解如何切換 SQL 連線模式，請參閱 [Azure SQL 連線能力設定](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli) \(英文\)。
+2. 如果您篩選 Azure SQL Database、Azure Synapse Analytics 或 SQL 受控執行個體的流量，請確定 SQL 連線模式設定為 **Proxy**。 若要了解如何切換 SQL 連線模式，請參閱 [Azure SQL 連線能力設定](../azure-sql/database/connectivity-settings.md#change-the-connection-policy-via-the-azure-cli) \(英文\)。
 
    > [!NOTE]
-   > 相較於*重新導向*，SQL *Proxy* 模式可能會導致更多延遲。 如果您想要繼續使用重新導向模式 (這是用戶端在 Azure 內連線時的預設值)，可以在防火牆[網路規則](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服務標籤](service-tags.md)篩選存取。
+   > 相較於 *重新導向*，SQL *Proxy* 模式可能會導致更多延遲。 如果您想要繼續使用重新導向模式 (這是用戶端在 Azure 內連線時的預設值)，可以在防火牆[網路規則](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服務標籤](service-tags.md)篩選存取。
 
 3. 使用 SQL FQDN 設定應用程式規則以允許存取 SQL Server：
 
@@ -52,10 +52,10 @@ ms.locfileid: "89435207"
 
 ## <a name="configure-using-the-azure-portal"></a>使用 Azure 入口網站進行設定
 1. 部署[使用 Azure CLI 的 Azure 防火牆](deploy-cli.md)。
-2. 如果您篩選 Azure SQL Database、Azure Synapse Analytics 或 SQL 受控執行個體的流量，請確定 SQL 連線模式設定為 **Proxy**。 若要了解如何切換 SQL 連線模式，請參閱 [Azure SQL 連線能力設定](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli) \(英文\)。  
+2. 如果您篩選 Azure SQL Database、Azure Synapse Analytics 或 SQL 受控執行個體的流量，請確定 SQL 連線模式設定為 **Proxy**。 若要了解如何切換 SQL 連線模式，請參閱 [Azure SQL 連線能力設定](../azure-sql/database/connectivity-settings.md#change-the-connection-policy-via-the-azure-cli) \(英文\)。  
 
    > [!NOTE]
-   > 相較於*重新導向*，SQL *Proxy* 模式可能會導致更多延遲。 如果您想要繼續使用重新導向模式 (這是用戶端在 Azure 內連線時的預設值)，可以在防火牆[網路規則](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服務標籤](service-tags.md)篩選存取。
+   > 相較於 *重新導向*，SQL *Proxy* 模式可能會導致更多延遲。 如果您想要繼續使用重新導向模式 (這是用戶端在 Azure 內連線時的預設值)，可以在防火牆[網路規則](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服務標籤](service-tags.md)篩選存取。
 3. 利用適當的通訊協定、連接埠和 SQL FQDN，新增應用程式規則，然後選取 [儲存]。
    ![使用 SQL FQDN 的應用程式規則](media/sql-fqdn-filtering/application-rule-sql.png)
 4. 在 VNet 中，從透過防火牆篩選流量的虛擬機器存取 SQL。 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448339"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658548"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變儲存體儲存業務關鍵 Blob 資料
 
@@ -38,7 +38,7 @@ Azure Blob 儲存體的固定儲存體可讓使用者以 WORM (一次寫入，�
 
 不可變的儲存體支援下列功能：
 
-- 以**[時間為基礎的保留原則支援](#time-based-retention-policies)**：使用者可以設定原則，以在指定的間隔內儲存資料。 設定以時間為基礎的保留原則時，可以建立和讀取 blob，但無法修改或刪除 blob。 保留期限到期後，就可以刪除 blob 但不會覆寫 blob。
+- 以 **[時間為基礎的保留原則支援](#time-based-retention-policies)**：使用者可以設定原則，以在指定的間隔內儲存資料。 設定以時間為基礎的保留原則時，可以建立和讀取 blob，但無法修改或刪除 blob。 保留期限到期後，就可以刪除 blob 但不會覆寫 blob。
 
 - **[合法保存原則支援](#legal-holds)**：若不知道保留間隔，使用者可以設定合法保存來儲存不可變的資料，直到清除合法保存為止。  設定合法保存原則之後，就可以建立和讀取 blob，但無法修改或刪除 blob。 每個合法保存都會與使用者定義的英數位元標籤相關聯 (例如，用來做為識別碼字串的 ) 案例識別碼、事件名稱等。 
 
@@ -63,7 +63,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 在容器上套用以時間為基礎的保留原則時，容器中的所有 blob 在 *有效* 保留期間內都會保持固定狀態。 Blob 的有效保留期限等於 blob **建立時間** 與使用者指定保留間隔之間的差異。 因為使用者可以延長保留間隔，所以固定儲存體會使用使用者所指定保留間隔的最新值，計算有效的保留期間。
 
-例如，假設使用者建立以時間為基礎的保留原則，其保留間隔為五年。 該容器中的現有 blob _testblob1) _是在一年前建立的，因此， _testblob1) _ 的有效保留期限是四年。 當新的 blob （ _testblob2_）上傳至容器時， _testblob2_ 的有效保留期限是自其建立時間起的五年。
+例如，假設使用者建立以時間為基礎的保留原則，其保留間隔為五年。 該容器中的現有 blob _testblob1)_ 是在一年前建立的，因此， _testblob1)_ 的有效保留期限是四年。 當新的 blob （ _testblob2_）上傳至容器時， _testblob2_ 的有效保留期限是自其建立時間起的五年。
 
 建議僅針對功能測試使用解除鎖定的以時間為基礎的保留原則，而且必須鎖定原則，才能符合 SEC 17a-4 (f) 和其他法規合規性。 一旦鎖定以時間為基礎的保留原則之後，就無法移除原則，而且允許的有效保留期限最多可有五個增加。
 
@@ -102,17 +102,21 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 - 針對容器，原則的持續時間最多會保留10個合法保存原則審核記錄。
 
 ## <a name="scenarios"></a>案例
+
 下表顯示針對不同的不可變案例停用的 Blob 儲存體作業類型。 如需詳細資訊，請參閱 [Azure Blob 服務 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 檔。
 
-|案例  |Blob 狀態  |Blob 作業拒絕  |容器與帳戶保護
-|---------|---------|---------|---------|
-|Blob 上的有效保留間隔尚未過期及/或已設定合法保存     |固定：防刪與防寫保護         | Put Blob<sup>1</sup>、put block<sup>1</sup>、put Block List<sup>1</sup>、Delete Container、delete Blob、Set Blob Metadata、Put Page、set Blob Properties、Snapshot Blob、增量複製 blob、Append Block<sup>2</sup>         |已拒絕刪除容器;拒絕刪除儲存體帳戶         |
-|Blob 的有效保留間隔已過期，且未設定合法保存    |僅限防寫保護 (允許刪除作業)         |Put Blob<sup>1</sup>、put block<sup>1</sup>、put Block List<sup>1</sup>、set Blob Metadata、Put 頁面、設定 blob 屬性、快照集 Blob、累加複製 Blob、附加區塊<sup>2</sup>         |如果至少有1個 blob 存在於受保護的容器中，則會拒絕刪除容器;只有 *鎖定* 的以時間為基礎的原則，才會拒絕刪除儲存體帳戶         |
-|未套用任何 WORM 原則 (沒有以時間為基礎的保留，且沒有合法的保留標記)      |可變動         |無         |無         |
+| 狀況 | Blob 狀態 | Blob 作業拒絕 | 容器與帳戶保護 |
+|--|--|--|--|
+| Blob 上的有效保留間隔尚未過期及/或已設定合法保存 | 固定：防刪與防寫保護 | Put Blob<sup>1</sup>、put block<sup>1</sup>、put Block List<sup>1</sup>、Delete Container、delete Blob、Set Blob Metadata、Put Page、set Blob Properties、Snapshot Blob、增量複製 blob、Append Block<sup>2</sup> | 已拒絕刪除容器;拒絕刪除儲存體帳戶 |
+| Blob 的有效保留間隔已過期，且未設定合法保存 | 僅限防寫保護 (允許刪除作業) | Put Blob<sup>1</sup>、put block<sup>1</sup>、put Block List<sup>1</sup>、set Blob Metadata、Put 頁面、設定 blob 屬性、快照集 Blob、累加複製 Blob、附加區塊<sup>2</sup> | 如果至少有1個 blob 存在於受保護的容器中，則會拒絕刪除容器;只有 *鎖定* 的以時間為基礎的原則，才會拒絕刪除儲存體帳戶 |
+| 未套用任何 WORM 原則 (沒有以時間為基礎的保留，且沒有合法的保留標記)  | 可變動 | None | None |
 
 <sup>1</sup> blob 服務可讓這些作業建立新的 blob 一次。 在不可變的容器中，不允許在現有 blob 路徑上進行所有後續的覆寫作業。
 
 只有啟用屬性的以時間為基礎的保留原則時，才允許<sup>2</sup>個附加區塊 `allowProtectedAppendWrites` 。 如需詳細資訊，請參閱「 [允許受保護的附加 Blob 寫入](#allow-protected-append-blobs-writes) 」一節。
+
+> [!IMPORTANT]
+> 某些工作負載（例如 [SQL 備份至 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)）會建立 blob，然後將其新增至其中。 如果容器具有以時間為基礎的有效保留原則或合法保存，此模式將不會成功。
 
 ## <a name="pricing"></a>定價
 
@@ -122,7 +126,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **您可以提供 WORM 合規性的檔嗎？**
 
-是。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門針對記錄管理和資訊治理（Cohasset 相關），以評估不可變的 Blob 儲存體，並符合金融服務產業的特定需求。 Cohasset 驗證了不可變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，符合 CFTC 規則 1.31 (c)  (d) 、FINRA Rule 4511 和 SEC Rule 17a-4 的相關儲存需求。 Microsoft 已將這組規則設為目標，因為它們代表金融機構記錄保留範圍內的最規範指導方針。 您可以從 [Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得 Cohasset 報告。 若要向 Microsoft 要求有關 WORM 永久性合規性的信件證明，請聯絡 Azure 支援。
+可以。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門針對記錄管理和資訊治理（Cohasset 相關），以評估不可變的 Blob 儲存體，並符合金融服務產業的特定需求。 Cohasset 驗證了不可變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，符合 CFTC 規則 1.31 (c)  (d) 、FINRA Rule 4511 和 SEC Rule 17a-4 的相關儲存需求。 Microsoft 已將這組規則設為目標，因為它們代表金融機構記錄保留範圍內的最規範指導方針。 您可以從 [Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得 Cohasset 報告。 若要向 Microsoft 要求有關 WORM 永久性合規性的信件證明，請聯絡 Azure 支援。
 
 **這項功能只適用于區塊 blob 和附加 blob，也適用于分頁 blob 嗎？**
 
@@ -162,13 +166,13 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **您是否提供試用此功能的試用版或寬限期？**
 
-是。 當您第一次建立以時間為基礎的保留原則時，它會處於已 *解除鎖定* 的狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 此鎖定的原則可防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」** 狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
+可以。 當您第一次建立以時間為基礎的保留原則時，它會處於已 *解除鎖定* 的狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 此鎖定的原則可防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
 
 **我可以搭配不可變的 blob 原則使用虛刪除嗎？**
 
 是，如果您的合規性需求允許啟用虛刪除。 [Azure Blob 儲存體](storage-blob-soft-delete.md) 的虛刪除適用于儲存體帳戶內的所有容器，而不論合法保存或以時間為基礎的保留原則。 建議您先啟用虛刪除以進行額外保護，再套用並確認任何不可變的蠕蟲原則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [設定和管理 Blob 儲存體的不變性原則](storage-blob-immutability-policies-manage.md)
 - [設定規則以使用生命週期管理自動分層和刪除 blob 資料](storage-lifecycle-management-concepts.md)

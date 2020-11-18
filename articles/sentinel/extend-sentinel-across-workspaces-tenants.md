@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578473"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658939"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作區和租用戶擴充 Azure Sentinel
 
@@ -84,7 +84,7 @@ Azure Sentinel 支援 [多個工作區事件](./multiple-workspace-view.md) ，�
 Azure Sentinel 支援 [在單一查詢中查詢多個工作區](../azure-monitor/log-query/cross-workspace-query.md)，可讓您在單一查詢中搜尋多個工作區的資料並使其相互關聯。 
 
 - 使用 [工作區 ( # A1 運算式](../azure-monitor/log-query/workspace-expression.md) 來參考不同工作區中的資料表。 
-- 使用 [union 運算子](https://docs.microsoft.com/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) 以及工作空間 ( # A1 運算式，在多個工作區的資料表之間套用查詢。
+- 使用 [union 運算子](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) 以及工作空間 ( # A1 運算式，在多個工作區的資料表之間套用查詢。
 
 您可以 [使用已儲存的函](../azure-monitor/log-query/functions.md) 式來簡化跨工作區查詢。 例如，如果工作區的參考很長，您可能會想要將運算式儲存 `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` 為稱為的函式 `SecurityEventCustomerA` 。 然後您可以將查詢撰寫為 `SecurityEventCustomerA | where ...` 。
 

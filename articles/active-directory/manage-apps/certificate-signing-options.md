@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc43bb2fa99f95a462dcc4c68d27840199b45c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763681"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658531"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>在 Azure Active Directory 中，針對資源庫應用程式使用 SAML 權杖中的進階憑證簽署選項
 
@@ -47,14 +47,14 @@ Azure AD 支援兩種簽署演算法，或 (Sha) 的安全雜湊演算法來簽�
 
 * **SHA-256**。 Azure AD 使用這個預設演算法簽署 SAML 回應。 這是最新的演算法，而且比 SHA-1 更安全。 大部分的應用程式都支援 SHA-256 演算法。 如果應用程式僅支援 SHA-1 作為簽署演算法，您可以加以變更。 否則，我們建議使用 SHA-256 演算法簽署 SAML 回應。
 
-* **Sha-1**。 這是較舊的演算法，而且被視為比 SHA-256 更不安全。 如果應用程式僅支援此簽署演算法，您可以在 [簽署演算法]**** 下拉式清單中選取此選項。 接著，Azure AD 會使用 SHA-1 演算法簽署 SAML 回應。
+* **Sha-1**。 這是較舊的演算法，而且被視為比 SHA-256 更不安全。 如果應用程式僅支援此簽署演算法，您可以在 [簽署演算法] 下拉式清單中選取此選項。 接著，Azure AD 會使用 SHA-1 演算法簽署 SAML 回應。
 
 ## <a name="change-certificate-signing-options-and-signing-algorithm"></a>變更憑證簽署選項和簽署演算法
 
 若要變更應用程式的 SAML 憑證簽署選項和憑證簽署演算法，請選取有問題的應用程式：
 
 1. 在 [Azure Active Directory 入口網站](https://aad.portal.azure.com/)中，登入您的帳戶。 **Azure Active Directory 系統管理中心**] 頁面隨即出現。
-1. 在左側窗格中，選取 [企業應用程式]****。 您帳戶中的企業應用程式清單隨即出現。
+1. 在左側窗格中，選取 [企業應用程式]。 您帳戶中的企業應用程式清單隨即出現。
 1. 選取應用程式。 應用程式的 [總覽] 頁面隨即出現。
 
    ![範例：應用程式總覽頁面](./media/certificate-signing-options/application-overview-page.png)
@@ -73,7 +73,7 @@ Azure AD 支援兩種簽署演算法，或 (Sha) 的安全雜湊演算法來簽�
 1. 在 [簽署演算法] 下拉式清單中，選擇 [SHA-1] 或 [SHA-256]。 這些選項的描述會在本文稍早的 [憑證簽署演算法](#certificate-signing-algorithms) 一節中顯示。
 1. 如果您對選擇感到滿意，請選取 [ **儲存** ] 以套用新的 SAML 簽署憑證設定。 否則，請選取 **X** 以捨棄變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* [設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](configure-federated-single-sign-on-non-gallery-applications.md)
-* [針對 SAML 型單一登入進行疑難排解](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](./configure-saml-single-sign-on.md)
+* [針對 SAML 型單一登入進行疑難排解](./debug-saml-sso-issues.md)

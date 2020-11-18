@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: a2b97bcc9fe902480364ade19efdae863556ac1e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629422"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658565"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 建立 Private Link 服務
 本文說明如何使用 Azure CLI 在 Azure 中建立 Private Link 服務。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您決定在本機安裝和使用 Azure CLI，本快速入門會要求您使用最新的 Azure CLI 版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的最新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+
 ## <a name="create-a-private-link-service"></a>建立 Private Link 服務
 ### <a name="create-a-resource-group"></a>建立資源群組
 
@@ -152,7 +153,7 @@ az network private-endpoint create \
 --location westcentralus 
 ```
 您可以透過 Private Link 服務取得 *私人連線資源識別碼* `az network private-link-service show` 。 識別碼看起來會像這樣：   
-/subscriptions/subID/resourceGroups/ *resourcegroupname* /providers/Microsoft.Network/privateLinkServices/ **privatelinkservicename** 
+/subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>顯示 Private Link 服務連接 
  

@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff97d0a69efbe624e959f92f5320f921476a306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510873"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658973"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>在 Azure Active Directory 中對 overprivileged 或可疑應用程式採取動作
 
@@ -25,16 +25,16 @@ ms.locfileid: "88510873"
 
 如需同意應用程式的詳細資訊，請參閱 [Azure Active Directory 同意架構](../develop/consent-framework.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要執行下列動作，您必須以全域管理員、應用程式系統管理員或雲端應用程式系統管理員的身分登入。
 
-若要限制應用程式的存取權，您必須要求指派使用者，然後將使用者或群組指派給應用程式。  如需詳細資訊，請參閱[指派使用者和群組的方法](methods-for-assigning-users-and-groups.md)。
+若要限制應用程式的存取權，您必須要求指派使用者，然後將使用者或群組指派給應用程式。  如需詳細資訊，請參閱[指派使用者和群組的方法](./assign-user-or-group-access-portal.md)。
 
 您可以存取 Azure AD 入口網站，以取得內容相關的 PowerShell 腳本來執行動作。
  
 1. 以全域管理員、應用程式管理員或雲端應用程式管理員的身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory**  >  **企業應用程式**。
+2. 選取 **Azure Active Directory**  >  **企業應用程式**。
 3. 選取您要限制存取的應用程式。
 4. 選取 [權限]。 在命令列中，選取 [ **審核許可權**]。
 
@@ -46,7 +46,7 @@ ms.locfileid: "88510873"
 建議您開啟 **使用者指派** 設定，以限制應用程式的存取權。
 
 1. 以全域管理員、應用程式管理員或雲端應用程式管理員的身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory**  >  **企業應用程式**。
+2. 選取 **Azure Active Directory**  >  **企業應用程式**。
 3. 選取您要限制存取的應用程式。
 4. 選取 [ **屬性**]，然後將 [ **需要使用者需求** ] 設定為 **[是]**。
 5. 選取 [ **使用者和群組**]，然後移除指派給該應用程式的不必要使用者。
@@ -64,7 +64,7 @@ ms.locfileid: "88510873"
 （選擇性）您可以停用應用程式，讓使用者無法存取應用程式，並讓應用程式無法存取您的資料。
 
 1. 以全域管理員、應用程式管理員或雲端應用程式管理員的身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory**  >  **企業應用程式**。
+2. 選取 **Azure Active Directory**  >  **企業應用程式**。
 3. 選取您要限制存取的應用程式。
 4. 選取 [ **屬性**]，然後將 [ **啟用使用者登入？** ] 設定為 [ **否**]。
 
@@ -73,7 +73,7 @@ ms.locfileid: "88510873"
 建議您開啟 **使用者指派** 設定，以限制應用程式的存取權。 然後檢查使用者和系統管理員已授與應用程式的許可權。
 
 1. 以全域管理員、應用程式管理員或雲端應用程式管理員的身分登入 [Azure 入口網站](https://portal.azure.com)。
-3. 選取**Azure Active Directory**  >  **企業應用程式**。
+3. 選取 **Azure Active Directory**  >  **企業應用程式**。
 5. 選取您要限制存取的應用程式。
 6. 選取 [ **屬性**]，然後將 [ **需要使用者需求** ] 設定為 **[是]**。
 7. 選取 **許可權**，並檢查系統管理員和使用者同意的許可權。
@@ -92,7 +92,7 @@ ms.locfileid: "88510873"
 建議您停用應用程式，以封鎖使用者的存取權，並讓應用程式無法存取您的資料。 如果您改為刪除應用程式，則使用者可以重新同意應用程式，並將存取權授與您的資料。
 
 1. 以全域管理員、應用程式管理員或雲端應用程式管理員的身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory**  >  **企業應用程式**。
+2. 選取 **Azure Active Directory**  >  **企業應用程式**。
 3. 選取您要限制存取的應用程式。
 4. 選取 [ **屬性**]，然後複製物件識別碼。
 
@@ -102,7 +102,7 @@ ms.locfileid: "88510873"
 取得服務主體物件識別碼。
 
 1. 以全域管理員、應用程式管理員或雲端應用程式管理員的身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory**  >  **企業應用程式**。
+2. 選取 **Azure Active Directory**  >  **企業應用程式**。
 3. 選取您要限制存取的應用程式。
 4. 選取 [ **屬性**]，然後複製物件識別碼。
 

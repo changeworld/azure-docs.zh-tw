@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642413"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658276"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>規劃 Azure AD 應用程式 Proxy 部署
 
-Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應用程式的安全且符合成本效益的遠端存取解決方案。 它會針對「雲端優先」組織提供立即的轉換路徑，以管理尚無法使用新式通訊協定的舊版內部部署應用程式的存取權。 如需其他簡介資訊，請參閱 [什麼是應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)。
+Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應用程式的安全且符合成本效益的遠端存取解決方案。 它會針對「雲端優先」組織提供立即的轉換路徑，以管理尚無法使用新式通訊協定的舊版內部部署應用程式的存取權。 如需其他簡介資訊，請參閱 [什麼是應用程式 Proxy](./application-proxy.md)。
 
 建議應用程式 Proxy 讓遠端使用者存取內部資源。 應用程式 Proxy 會取代這些遠端存取使用案例的 VPN 或反向 Proxy 需求。 它不適合公司網路上的使用者。 使用應用程式 Proxy 進行內部網路存取的使用者，可能會遇到不理想的效能問題。
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 下一節提供主要規劃專案的廣泛觀點，這些專案將會為您設定有效率的部署體驗。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 開始執行之前，您必須符合下列必要條件。 您可以在本 [教學](application-proxy-add-on-premises-application.md)課程中看到有關設定環境的詳細資訊，包括這些必要條件。
 
@@ -47,9 +47,9 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
      * 必須先 [啟用 TLS 1.2 的](application-proxy-add-on-premises-application.md) 連接器電腦，才能安裝連接器。
 
      * 可能的話，請將連接器部署在與後端 web 應用程式伺服器 [相同的網路](application-proxy-network-topology.md) 和區段中。 在您完成應用程式探索後，最好先部署連接器。
-     * 我們建議每個連接器群組都至少有兩個連接器，以提供高可用性和規模。 如果您在任何時間點都可能需要為機器提供服務，則有三個連接器是最佳的。 請參閱 [連接器容量表](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) ，以協助決定要安裝連接器的電腦類型。 電腦愈大，連接器將會是更多的緩衝區。
+     * 我們建議每個連接器群組都至少有兩個連接器，以提供高可用性和規模。 如果您在任何時間點都可能需要為機器提供服務，則有三個連接器是最佳的。 請參閱 [連接器容量表](./application-proxy-connectors.md#capacity-planning) ，以協助決定要安裝連接器的電腦類型。 電腦愈大，連接器將會是更多的緩衝區。
 
-* **網路存取設定**： Azure AD 應用程式 Proxy 連接器透過 [HTTPS 連接到 Azure (tcp 埠 443) 和 HTTP (tcp 埠 80) ](application-proxy-add-on-premises-application.md)。
+* **網路存取設定**： Azure AD 應用程式 Proxy 連接器透過 [HTTPS 連接到 Azure (tcp 埠 443) 和 HTTP (tcp 埠 80)](application-proxy-add-on-premises-application.md)。
 
    * 不支援終止連接器 TLS 流量，並且會防止連接器使用其各自的 Azure App Proxy 端點來建立安全通道。
 
@@ -61,11 +61,11 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 必須符合下列核心需求，才能設定和執行 Azure AD 應用程式 Proxy。
 
-*  **Azure**上線：在部署應用程式 proxy 之前，使用者身分識別必須從內部部署目錄同步處理，或直接在您的 Azure AD 租使用者中建立。 身分識別同步處理可讓 Azure AD 在允許使用者存取 App Proxy 發佈的應用程式之前，先預先驗證使用者，以及具有執行單一登入 (SSO) 所需的使用者識別碼資訊。
+*  **Azure** 上線：在部署應用程式 proxy 之前，使用者身分識別必須從內部部署目錄同步處理，或直接在您的 Azure AD 租使用者中建立。 身分識別同步處理可讓 Azure AD 在允許使用者存取 App Proxy 發佈的應用程式之前，先預先驗證使用者，以及具有執行單一登入 (SSO) 所需的使用者識別碼資訊。
 
-* **條件式存取需求**：我們不建議使用應用程式 Proxy 進行內部網路存取，因為這樣會增加影響使用者的延遲。 建議您使用應用程式 Proxy 搭配預先驗證和條件式存取原則，以從網際網路進行遠端存取。  為內部網路用途提供條件式存取的方法是將應用程式現代化，以便直接向 AAD 進行驗證。 如需詳細資訊，請參閱將 [應用程式遷移至 AAD 的資源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) 。
+* **條件式存取需求**：我們不建議使用應用程式 Proxy 進行內部網路存取，因為這樣會增加影響使用者的延遲。 建議您使用應用程式 Proxy 搭配預先驗證和條件式存取原則，以從網際網路進行遠端存取。  為內部網路用途提供條件式存取的方法是將應用程式現代化，以便直接向 AAD 進行驗證。 如需詳細資訊，請參閱將 [應用程式遷移至 AAD 的資源](./migration-resources.md) 。
 
-* **服務限制**：為了保護個別租使用者的資源過度耗用，有針對每個應用程式和租使用者設定的節流限制。 若要查看這些限制，請參閱 [Azure AD 服務限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 這些節流限制是以比一般使用量更高的基準效能為基礎，而且會針對大部分的部署提供大量的緩衝區。
+* **服務限制**：為了保護個別租使用者的資源過度耗用，有針對每個應用程式和租使用者設定的節流限制。 若要查看這些限制，請參閱 [Azure AD 服務限制和限制](../enterprise-users/directory-service-limits-restrictions.md)。 這些節流限制是以比一般使用量更高的基準效能為基礎，而且會針對大部分的部署提供大量的緩衝區。
 
 * **公開憑證**：如果您使用自訂功能變數名稱，您必須購買 TLS/SSL 憑證。 根據您的組織需求，取得憑證可能需要一些時間，建議您儘早開始處理。 Azure 應用程式 Proxy 支援以標準、 [萬用字元](application-proxy-wildcard.md)或 SAN 為基礎的憑證。 如需詳細資訊，請參閱 [使用 Azure AD 應用程式 Proxy 設定自訂網域](application-proxy-configure-custom-domain.md)。
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 * **Url 的 DNS 記錄**
 
-   * 在應用程式 Proxy 中使用自訂網域之前，您必須在公用 DNS 中建立 CNAME 記錄，以允許用戶端將自訂定義的外部 URL 解析為預先定義的應用程式 Proxy 位址。 無法為使用自訂網域的應用程式建立 CNAME 記錄，將會讓遠端使用者無法連線到應用程式。 新增 CNAME 記錄所需的步驟可能會因 DNS 提供者而異，因此請瞭解如何 [使用 Azure 入口網站來管理 dns 記錄和記錄集](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-portal)。
+   * 在應用程式 Proxy 中使用自訂網域之前，您必須在公用 DNS 中建立 CNAME 記錄，以允許用戶端將自訂定義的外部 URL 解析為預先定義的應用程式 Proxy 位址。 無法為使用自訂網域的應用程式建立 CNAME 記錄，將會讓遠端使用者無法連線到應用程式。 新增 CNAME 記錄所需的步驟可能會因 DNS 提供者而異，因此請瞭解如何 [使用 Azure 入口網站來管理 dns 記錄和記錄集](../../dns/dns-operations-recordsets-portal.md)。
 
    * 同樣地，連接器主機必須能夠解析所發佈之應用程式的內部 URL。
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
    * **連接器安裝** 需要本機系統管理員許可權，才能安裝在其上的 Windows server。 它也需要至少一個 *應用程式系統管理員* 角色來進行驗證，並向您的 Azure AD 租使用者註冊連接器實例。
 
-   * **應用程式發佈和管理** 需要 *應用程式系統管理員* 角色。 應用程式系統管理員可以管理目錄中的所有應用程式，包括註冊、SSO 設定、使用者和群組指派和授權、應用程式 Proxy 設定，以及同意。 它不會授與管理條件式存取的能力。 *雲端應用程式系統管理員*角色具有應用程式系統管理員的所有能力，但它不允許管理應用程式 Proxy 設定。
+   * **應用程式發佈和管理** 需要 *應用程式系統管理員* 角色。 應用程式系統管理員可以管理目錄中的所有應用程式，包括註冊、SSO 設定、使用者和群組指派和授權、應用程式 Proxy 設定，以及同意。 它不會授與管理條件式存取的能力。 *雲端應用程式系統管理員* 角色具有應用程式系統管理員的所有能力，但它不允許管理應用程式 Proxy 設定。
 
 * **授權**：透過 Azure AD Premium 訂用帳戶可取得應用程式 Proxy。 如需授權選項和功能的完整清單，請參閱 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory/) 。
 
@@ -97,7 +97,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 | 網域成員資格| Web 服務器的完整功能變數名稱 (FQDN)  |
 | 應用程式位置 | Web 服務器或伺服器陣列位於您基礎結構中的位置 |
 | 內部存取 | 在內部存取應用程式時所使用的正確 URL。 <br> 如果是伺服器陣列，使用何種類型的負載平衡？ <br> 應用程式是否從本身以外的來源繪製內容。<br> 判斷應用程式是否透過 Websocket 運作。 |
-| 外部存取 | 應用程式已向外部公開的廠商解決方案。 <br> 您要用於外部存取的 URL。 如果是 SharePoint，請確定已根據 [本指南](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)設定替代存取對應。 如果沒有，您將需要定義外部 Url。 |
+| 外部存取 | 應用程式已向外部公開的廠商解決方案。 <br> 您要用於外部存取的 URL。 如果是 SharePoint，請確定已根據 [本指南](/SharePoint/administration/configure-alternate-access-mappings)設定替代存取對應。 如果沒有，您將需要定義外部 Url。 |
 | 公開憑證 | 如果使用自訂網域，則購買具有對應主體名稱的憑證。 如果有憑證存在，請注意可從中取得的序號和位置。 |
 | 驗證類型| 應用程式支援所支援的驗證類型，例如基本、Windows 整合驗證、以表單為基礎、以標頭為基礎的宣告。 <br>如果應用程式設定為在特定網域帳戶下執行，請注意服務帳戶 (FQDN) 的完整功能變數名稱。<br> 如果是以 SAML 為基礎的，則識別碼和回復 Url。 <br> 如果是以標頭為基礎，則為廠商解決方案，以及處理驗證類型的特定需求。 |
 | 連接器組名 | 將指定為此後端應用程式提供管道和 SSO 之連接器群組的邏輯名稱。 |
@@ -176,7 +176,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 發佈應用程式時，假設您已滿足所有必要條件，而且您在 [應用程式 Proxy] 頁面中有數個顯示為已註冊和作用中的連接器。
 
-您也可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)來發佈應用程式。
+您也可以使用 [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview)來發佈應用程式。
 
 以下是發佈應用程式時要遵循的一些最佳作法：
 
@@ -218,9 +218,9 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 如果啟用，使用者將能夠登入 MyApps 入口網站並要求存取權，並可自動核准並新增至已允許的自助群組，或需要指定核准者的核准。
 
-來賓使用者也可以 [受邀透過 AZURE AD B2B 存取透過應用程式 Proxy 發佈的內部應用程式](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker)。
+來賓使用者也可以 [受邀透過 AZURE AD B2B 存取透過應用程式 Proxy 發佈的內部應用程式](../external-identities/add-users-information-worker.md)。
 
-對於通常可以匿名存取的內部部署應用程式，如果不需要驗證，您可能會想要停用位於應用程式 **屬性**中的選項。
+對於通常可以匿名存取的內部部署應用程式，如果不需要驗證，您可能會想要停用位於應用程式 **屬性** 中的選項。
 
 ![圖26](media/App-proxy-deployment-plan/assignment-required.png)
 
@@ -233,9 +233,9 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 確認您的應用程式可透過透過外部 URL 存取它的應用程式 Proxy 存取。
 
-1. 流覽至**Azure Active Directory**  >  **企業應用**程式  >  的**所有應用程式**]，然後選擇您想要管理的應用程式。
+1. 流覽至 **Azure Active Directory**  >  **企業應用** 程式  >  的 **所有應用程式**]，然後選擇您想要管理的應用程式。
 
-2. 選取 [應用程式 Proxy]****。
+2. 選取 [應用程式 Proxy]。
 
 3. 在 [ **預先驗證** ] 欄位中，使用下拉式清單選取 **Azure Active Directory**，然後選取 [ **儲存**]。
 
@@ -253,9 +253,9 @@ SSO 能提供最佳的使用者體驗和安全性，因為使用者只需要在�
 
 ###  <a name="working-with-other-types-of-applications"></a>使用其他類型的應用程式
 
-Azure AD 應用程式 Proxy 也可以支援已開發的應用程式，以使用 [Microsoft 驗證程式庫 (MSAL) ](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。 它支援原生用戶端應用程式，方法是使用在用戶端要求的標頭資訊中收到的 Azure AD 發行權杖，以代表使用者執行預先驗證。
+Azure AD 應用程式 Proxy 也可以支援已開發的應用程式，以使用 [Microsoft 驗證程式庫 (MSAL) ](../develop/v2-overview.md)。 它支援原生用戶端應用程式，方法是使用在用戶端要求的標頭資訊中收到的 Azure AD 發行權杖，以代表使用者執行預先驗證。
 
-閱讀 [發佈原生和行動用戶端應用](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) 程式和 [宣告式應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) ，以瞭解應用程式 Proxy 的可用設定。
+閱讀 [發佈原生和行動用戶端應用](./application-proxy-configure-native-client-application.md) 程式和 [宣告式應用程式](./application-proxy-configure-for-claims-aware-applications.md) ，以瞭解應用程式 Proxy 的可用設定。
 
 ### <a name="use-conditional-access-to-strengthen-security"></a>使用條件式存取來加強安全性
 
@@ -263,11 +263,11 @@ Azure AD 應用程式 Proxy 也可以支援已開發的應用程式，以使用 
 
 下列功能可以用來支援 Azure AD 應用程式 Proxy：
 
-* 以位置為基礎的 [條件式存取原則](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)，根據地理位置或 IP 位址限制使用者存取，來保護敏感性資料的保護。
+* 以位置為基礎的 [條件式存取原則](../conditional-access/location-condition.md)，根據地理位置或 IP 位址限制使用者存取，來保護敏感性資料的保護。
 
-* 以裝置為基礎的條件式存取：確定只有已註冊、已核准且符合規範的裝置可以使用 [裝置型條件式存取](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)來存取公司資料。
+* 以裝置為基礎的條件式存取：確定只有已註冊、已核准且符合規範的裝置可以使用 [裝置型條件式存取](../conditional-access/require-managed-devices.md)來存取公司資料。
 
-* 以應用程式為基礎的條件式存取：當使用者不在公司網路上時，不需要停止工作。 [安全存取公司雲端和內部部署應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) ，並使用條件式存取維持控制。
+* 以應用程式為基礎的條件式存取：當使用者不在公司網路上時，不需要停止工作。 [安全存取公司雲端和內部部署應用程式](../conditional-access/app-based-conditional-access.md) ，並使用條件式存取維持控制。
 
 * 以風險為基礎的條件式存取：利用以 [風險為基礎的條件式存取原則](https://www.microsoft.com/cloud-platform/conditional-access) ，保護您的資料免于惡意駭客的攻擊，不論是在內部部署或雲端中，都可以套用至所有應用程式和所有使用者。
 
@@ -277,7 +277,7 @@ Azure AD 應用程式 Proxy 也可以支援已開發的應用程式，以使用 
 
 ### <a name="required-roles"></a>必要的角色
 
-Microsoft 提倡授與最低可能許可權的原則，以 Azure AD 執行所需的工作。 [檢查可用的不同 Azure 角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) ，然後選擇正確的角色來滿足每個角色的需求。 某些角色可能需要暫時套用，並在部署完成後移除。
+Microsoft 提倡授與最低可能許可權的原則，以 Azure AD 執行所需的工作。 [檢查可用的不同 Azure 角色](../roles/permissions-reference.md) ，然後選擇正確的角色來滿足每個角色的需求。 某些角色可能需要暫時套用，並在部署完成後移除。
 
 | 商務角色| 商務工作| Azure AD 角色 |
 |---|---|---|
@@ -288,7 +288,7 @@ Microsoft 提倡授與最低可能許可權的原則，以 Azure AD 執行所需
 
 將可以存取安全資訊或資源的人數降到最低，將有助於降低惡意執行者取得未授權存取的機會，或已授權的使用者不小心影響到敏感性資源。
 
-不過，使用者仍然需要執行日常的特殊許可權作業，因此強制使用即時 (JIT) 型 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) 原則，以提供對 Azure 資源的隨選特殊許可權存取，而 Azure AD 則是有效管理管理存取和審核的建議方法。
+不過，使用者仍然需要執行日常的特殊許可權作業，因此強制使用即時 (JIT) 型 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 原則，以提供對 Azure 資源的隨選特殊許可權存取，而 Azure AD 則是有效管理管理存取和審核的建議方法。
 
 ### <a name="reporting-and-monitoring"></a>報告和監控
 
@@ -296,17 +296,17 @@ Azure AD 透過 [審核記錄和報表，](../reports-monitoring/concept-provisi
 
 #### <a name="application-audit-logs"></a>應用程式稽核記錄
 
-這些記錄提供有關使用應用程式 Proxy 設定的應用程式登入的詳細資訊，以及裝置與存取應用程式的使用者。 [Audit 記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 檔位於 Azure 入口網站和 [audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) for export 中。 此外，您的應用程式也可以使用 [使用量和深入解析報表](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。
+這些記錄提供有關使用應用程式 Proxy 設定的應用程式登入的詳細資訊，以及裝置與存取應用程式的使用者。 [Audit 記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 檔位於 Azure 入口網站和 [audit API](/graph/api/resources/directoryaudit?view=graph-rest-beta) for export 中。 此外，您的應用程式也可以使用 [使用量和深入解析報表](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。
 
 #### <a name="application-proxy-connector-monitoring"></a>應用程式 Proxy 連接器監視
 
-連接器和服務會負責所有高可用性的工作。 您可以從 Azure AD 入口網站的 [應用程式 Proxy] 頁面監視連接器的狀態。 如需連接器維護的詳細資訊，請參閱 [瞭解 Azure AD 應用程式 Proxy 連接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)。
+連接器和服務會負責所有高可用性的工作。 您可以從 Azure AD 入口網站的 [應用程式 Proxy] 頁面監視連接器的狀態。 如需連接器維護的詳細資訊，請參閱 [瞭解 Azure AD 應用程式 Proxy 連接器](./application-proxy-connectors.md#maintenance)。
 
 ![範例： Azure AD 應用程式 Proxy 連接器](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows 事件記錄檔和效能計數器
 
-連接器同時具有系統管理員和會話記錄。 系統管理記錄包含索引鍵事件和其錯誤。 這些工作階段記錄包含所有交易，以及它們的處理詳細資料。 記錄檔和計數器位於 Windows 事件記錄檔中，如需詳細資訊，請參閱 [瞭解 Azure AD 應用程式 Proxy 連接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood)。 遵循本 [教學課程，在 Azure 監視器中設定事件記錄檔資料來源](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)。
+連接器同時具有系統管理員和會話記錄。 系統管理記錄包含索引鍵事件和其錯誤。 這些工作階段記錄包含所有交易，以及它們的處理詳細資料。 記錄檔和計數器位於 Windows 事件記錄檔中，如需詳細資訊，請參閱 [瞭解 Azure AD 應用程式 Proxy 連接器](./application-proxy-connectors.md#under-the-hood)。 遵循本 [教學課程，在 Azure 監視器中設定事件記錄檔資料來源](../../azure-monitor/platform/data-sources-windows-events.md)。
 
 ### <a name="troubleshooting-guide-and-steps"></a>疑難排解指南和步驟
 
@@ -323,7 +323,7 @@ Azure AD 透過 [審核記錄和報表，](../reports-monitoring/concept-provisi
 * [在應用程式中設定單一登入](application-proxy-config-sso-how-to.md)
 * [在管理入口網站中建立應用程式時發生問題](application-proxy-config-problem.md)
 * [設定 Kerberos 限制委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [使用 PingAccess 設定](application-proxy-back-end-ping-access-how-to.md)
+* [使用 PingAccess 設定](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
 * [「無法存取此公司應用程式」錯誤](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [安裝應用程式 Proxy 代理程式連接器時遇到問題](application-proxy-connector-installation-problem.md)
 * [登入問題](application-sign-in-problem-on-premises-application-proxy.md)

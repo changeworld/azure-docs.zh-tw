@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85339157"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659192"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>使用 AD FS 應用程式活動報告 (預覽) 將應用程式遷移至 Azure AD
 
@@ -32,13 +32,13 @@ Azure 入口網站中的 AD FS 應用程式活動報表 (preview) 可讓您快�
 
 AD FS 的應用程式活動資料可供指派任何系統管理員角色的使用者使用：全域管理員、報表讀取者、安全性讀取者、應用程式系統管理員或雲端應用程式系統管理員。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 您的組織目前必須使用 AD FS 來存取應用程式。
 * 您必須在 Azure AD 租使用者中啟用 Azure AD Connect Health。
 * 必須安裝 AD FS agent 的 Azure AD Connect Health。
-   * [深入瞭解 Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
-   * [開始設定 Azure AD Connect Health，並安裝 AD FS 代理程式](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+   * [深入瞭解 Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
+   * [開始設定 Azure AD Connect Health，並安裝 AD FS 代理程式](../hybrid/how-to-connect-health-agent-install.md)
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>探索可遷移的 AD FS 應用程式 
 
@@ -48,7 +48,7 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 2. 選取 **Azure Active Directory**，然後選取 [ **企業應用程式**]。
 
-3. 在 [ **活動**] 下，選取 [ **使用量 & 見解] ([預覽]) **，然後選取 [ **AD FS 應用程式活動** ] 以開啟您組織中所有 AD FS 應用程式的清單。
+3. 在 [ **活動**] 下，選取 [ **使用量 & 見解] ([預覽])**，然後選取 [ **AD FS 應用程式活動** ] 以開啟您組織中所有 AD FS 應用程式的清單。
 
    ![AD FS 應用程式活動](media/migrate-adfs-application-activity/adfs-application-activity.png)
 
@@ -76,23 +76,23 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 |結果  |Pass/警告/失敗  |描述  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> 偵測到至少有一個非可移轉規則的 AdditionalAuthentication。       | Pass/警告          | 信賴憑證者有規則，可提示 (MFA) 的多重要素驗證。 若要移至 Azure AD，請將這些規則轉譯成條件式存取原則。 如果您使用的是內部部署 MFA，建議您移至 Azure MFA。 [深入瞭解條件式存取](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)。        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> 偵測到至少有一個非可移轉規則的 AdditionalAuthentication。       | Pass/警告          | 信賴憑證者有規則，可提示 (MFA) 的多重要素驗證。 若要移至 Azure AD，請將這些規則轉譯成條件式存取原則。 如果您使用的是內部部署 MFA，建議您移至 Azure MFA。 [深入瞭解條件式存取](../authentication/concept-mfa-howitworks.md)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> 信賴憑證者的 AdditionalWSFedEndpoint 設為 true。       | 通過/失敗          | AD FS 中的信賴憑證者允許多個 WS-Fed 判斷提示端點。Azure AD 目前僅支援一個。如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
-|Test-ADFSRPAllowedAuthenticationClassReferences <br> 信賴憑證者已設定 AllowedAuthenticationClassReferences。       | 通過/失敗          | AD FS 中的這項設定可讓您指定是否將應用程式設定為只允許特定的驗證類型。 我們建議使用條件式存取來達成這項功能。 如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication)。  [深入瞭解條件式存取](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)。          |
-|Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | 通過/失敗          | AD FS 中的這項設定可讓您指定是否要將應用程式設定為忽略 SSO cookie，並 **一律提示進行驗證**。 在 Azure AD 中，您可以使用條件式存取原則來管理驗證會話，以達成類似的行為。 [深入瞭解如何使用條件式存取設定驗證會話管理](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。          |
+|Test-ADFSRPAllowedAuthenticationClassReferences <br> 信賴憑證者已設定 AllowedAuthenticationClassReferences。       | 通過/失敗          | AD FS 中的這項設定可讓您指定是否將應用程式設定為只允許特定的驗證類型。 我們建議使用條件式存取來達成這項功能。 如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication)。  [深入瞭解條件式存取](../authentication/concept-mfa-howitworks.md)。          |
+|Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | 通過/失敗          | AD FS 中的這項設定可讓您指定是否要將應用程式設定為忽略 SSO cookie，並 **一律提示進行驗證**。 在 Azure AD 中，您可以使用條件式存取原則來管理驗證會話，以達成類似的行為。 [深入瞭解如何使用條件式存取設定驗證會話管理](../conditional-access/howto-conditional-access-session-lifetime.md)。          |
 |Test-ADFSRPAutoUpdateEnabled <br> 信賴憑證者的 AutoUpdateEnabled 設為 true       | Pass/警告          | AD FS 中的這項設定可讓您指定是否將 AD FS 設定為根據同盟中繼資料內的變更自動更新應用程式。 Azure AD 目前不支援此項，但不應該封鎖將應用程式遷移至 Azure AD。           |
-|Test-ADFSRPClaimsProviderName <br> 信賴憑證者已啟用多個 Claimsprovider       | 通過/失敗          | AD FS 中的這項設定會呼叫信賴憑證者接受宣告的身分識別提供者。 在 Azure AD 中，您可以使用 Azure AD B2B 來啟用外部共同作業。 [深入瞭解 AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)。          |
-|Test-ADFSRPDelegationAuthorizationRules      | 通過/失敗          | 應用程式已定義自訂委派授權規則。 這是 Azure AD 使用新式驗證通訊協定（例如 OpenID Connect 和 OAuth 2.0）支援的 WS-Trust 概念。 [深入瞭解 Microsoft 身分識別平臺](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc)。          |
-|Test-ADFSRPImpersonationAuthorizationRules       | Pass/警告          | 應用程式已定義自訂模擬授權規則。這是 Azure AD 使用新式驗證通訊協定（例如 OpenID Connect 和 OAuth 2.0）支援的 WS-Trust 概念。 [深入瞭解 Microsoft 身分識別平臺](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc)。          |
-|Test-ADFSRPIssuanceAuthorizationRules <br> 偵測到至少有一個非可移轉規則的 IssuanceAuthorization。       | Pass/警告          | 應用程式已在 AD FS 中定義了自訂的發佈授權規則。Azure AD 透過 Azure AD 條件式存取支援此功能。 [深入瞭解條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)。 <br> 您也可以依指派給應用程式的使用者或群組，限制對應用程式的存取。 [深入瞭解如何指派使用者和群組以存取應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)。            |
-|Test-ADFSRPIssuanceTransformRules <br> 偵測到至少有一個非可移轉規則的 IssuanceTransform。       | Pass/警告          | 應用程式已在 AD FS 中定義了自訂發行轉換規則。 Azure AD 支援自訂權杖中所發出的宣告。 若要深入瞭解，請參閱 [針對企業應用程式自訂在 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。           |
+|Test-ADFSRPClaimsProviderName <br> 信賴憑證者已啟用多個 Claimsprovider       | 通過/失敗          | AD FS 中的這項設定會呼叫信賴憑證者接受宣告的身分識別提供者。 在 Azure AD 中，您可以使用 Azure AD B2B 來啟用外部共同作業。 [深入瞭解 AZURE AD B2B](../external-identities/what-is-b2b.md)。          |
+|Test-ADFSRPDelegationAuthorizationRules      | 通過/失敗          | 應用程式已定義自訂委派授權規則。 這是 Azure AD 使用新式驗證通訊協定（例如 OpenID Connect 和 OAuth 2.0）支援的 WS-Trust 概念。 [深入瞭解 Microsoft 身分識別平臺](../develop/v2-protocols-oidc.md)。          |
+|Test-ADFSRPImpersonationAuthorizationRules       | Pass/警告          | 應用程式已定義自訂模擬授權規則。這是 Azure AD 使用新式驗證通訊協定（例如 OpenID Connect 和 OAuth 2.0）支援的 WS-Trust 概念。 [深入瞭解 Microsoft 身分識別平臺](../develop/v2-protocols-oidc.md)。          |
+|Test-ADFSRPIssuanceAuthorizationRules <br> 偵測到至少有一個非可移轉規則的 IssuanceAuthorization。       | Pass/警告          | 應用程式已在 AD FS 中定義了自訂的發佈授權規則。Azure AD 透過 Azure AD 條件式存取支援此功能。 [深入瞭解條件式存取](../conditional-access/overview.md)。 <br> 您也可以依指派給應用程式的使用者或群組，限制對應用程式的存取。 [深入瞭解如何指派使用者和群組以存取應用程式](./assign-user-or-group-access-portal.md)。            |
+|Test-ADFSRPIssuanceTransformRules <br> 偵測到至少有一個非可移轉規則的 IssuanceTransform。       | Pass/警告          | 應用程式已在 AD FS 中定義了自訂發行轉換規則。 Azure AD 支援自訂權杖中所發出的宣告。 若要深入瞭解，請參閱 [針對企業應用程式自訂在 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。           |
 |Test-ADFSRPMonitoringEnabled <br> 信賴憑證者的 MonitoringEnabled 設為 true。       | Pass/警告          | AD FS 中的這項設定可讓您指定是否將 AD FS 設定為根據同盟中繼資料內的變更自動更新應用程式。 Azure AD 目前不支援此項，但不應該封鎖將應用程式遷移至 Azure AD。           |
 |Test-ADFSRPNotBeforeSkew <br> NotBeforeSkewCheckResult      | Pass/警告          | AD FS 允許以 SAML 權杖中的 NotBefore 和 NotOnOrAfter 時間為基礎的時間誤差。 Azure AD 預設會自動處理此情況。          |
-|Test-ADFSRPRequestMFAFromClaimsProviders <br> 信賴憑證者的 RequestMFAFromClaimsProviders 設為 true。       | Pass/警告          | AD FS 中的這項設定會決定當使用者來自不同的宣告提供者時，MFA 的行為。 在 Azure AD 中，您可以使用 Azure AD B2B 來啟用外部共同作業。 然後，您可以套用條件式存取原則來保護來賓存取。 深入瞭解 [AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) 和 [條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)。          |
+|Test-ADFSRPRequestMFAFromClaimsProviders <br> 信賴憑證者的 RequestMFAFromClaimsProviders 設為 true。       | Pass/警告          | AD FS 中的這項設定會決定當使用者來自不同的宣告提供者時，MFA 的行為。 在 Azure AD 中，您可以使用 Azure AD B2B 來啟用外部共同作業。 然後，您可以套用條件式存取原則來保護來賓存取。 深入瞭解 [AZURE AD B2B](../external-identities/what-is-b2b.md) 和 [條件式存取](../conditional-access/overview.md)。          |
 |Test-ADFSRPSignedSamlRequestsRequired <br> 信賴憑證者的 SignedSamlRequestsRequired 設為 true       | 通過/失敗          | 應用程式會在 AD FS 中設定，以驗證 SAML 要求中的簽章。 Azure AD 接受已簽署的 SAML 要求;不過，它不會驗證簽章。 Azure AD 有不同的方法可防止惡意呼叫。 例如，Azure AD 使用在應用程式中設定的回復 Url 來驗證 SAML 要求。 Azure AD 只會傳送權杖給針對應用程式設定的回復 Url。 如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature)。          |
-|Test-ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Pass/警告         | 應用程式會設定為自訂權杖存留期。 AD FS 預設值為一小時。Azure AD 使用條件式存取支援此功能。 若要深入瞭解，請參閱 [使用條件式存取設定驗證會話管理](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。          |
-|信賴憑證者設定為加密宣告。 Azure AD 支援此功能       | 通過          | 使用 Azure AD，您就可以加密傳送至應用程式的權杖。 若要深入瞭解，請參閱 [設定 AZURE AD SAML 權杖加密](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption)。          |
-|EncryptedNameIdRequiredCheckResult      | 通過/失敗          | 應用程式會設定為加密 SAML 權杖中的 nameID 宣告。使用 Azure AD，您就可以加密傳送至應用程式的整個權杖。尚未支援特定宣告的加密。 若要深入瞭解，請參閱 [設定 AZURE AD SAML 權杖加密](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption)。         |
+|Test-ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Pass/警告         | 應用程式會設定為自訂權杖存留期。 AD FS 預設值為一小時。Azure AD 使用條件式存取支援此功能。 若要深入瞭解，請參閱 [使用條件式存取設定驗證會話管理](../conditional-access/howto-conditional-access-session-lifetime.md)。          |
+|信賴憑證者設定為加密宣告。 Azure AD 支援此功能       | 通過          | 使用 Azure AD，您就可以加密傳送至應用程式的權杖。 若要深入瞭解，請參閱 [設定 AZURE AD SAML 權杖加密](./howto-saml-token-encryption.md)。          |
+|EncryptedNameIdRequiredCheckResult      | 通過/失敗          | 應用程式會設定為加密 SAML 權杖中的 nameID 宣告。使用 Azure AD，您就可以加密傳送至應用程式的整個權杖。尚未支援特定宣告的加密。 若要深入瞭解，請參閱 [設定 AZURE AD SAML 權杖加密](./howto-saml-token-encryption.md)。         |
 
 ## <a name="check-the-results-of-claim-rule-tests"></a>檢查宣告規則測試的結果
 
@@ -112,15 +112,15 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 |屬性  |描述  |
 |---------|---------|
-|UNSUPPORTED_CONDITION_PARAMETER      | Condition 語句會使用正則運算式來評估宣告是否符合特定模式。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換（例如 IfEmpty ( # A1、StartWith ( # A3），其中包含 ( # A5 等等。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。          |
-|UNSUPPORTED_CONDITION_CLASS      | 條件陳述式具有多個必須在執行發行語句之前評估的條件。Azure AD 可能會使用宣告的轉換函式來支援這項功能，您可以在其中評估多個宣告值。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。          |
-|UNSUPPORTED_RULE_TYPE      | 無法辨識宣告規則。 如需有關如何在 Azure AD 中設定宣告的詳細資訊，請參閱 [針對企業應用程式自訂在 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。          |
+|UNSUPPORTED_CONDITION_PARAMETER      | Condition 語句會使用正則運算式來評估宣告是否符合特定模式。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換（例如 IfEmpty ( # A1、StartWith ( # A3），其中包含 ( # A5 等等。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
+|UNSUPPORTED_CONDITION_CLASS      | 條件陳述式具有多個必須在執行發行語句之前評估的條件。Azure AD 可能會使用宣告的轉換函式來支援這項功能，您可以在其中評估多個宣告值。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
+|UNSUPPORTED_RULE_TYPE      | 無法辨識宣告規則。 如需有關如何在 Azure AD 中設定宣告的詳細資訊，請參閱 [針對企業應用程式自訂在 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
 |CONDITION_MATCHES_UNSUPPORTED_ISSUER      | Condition 語句使用 Azure AD 中不支援的簽發者。目前，Azure AD 不是 Active Directory 或 Azure AD 不同的存放區的來源宣告。 如果這會封鎖您將應用程式遷移至 Azure AD，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire)。         |
-|UNSUPPORTED_CONDITION_FUNCTION      | 不論相符專案數目為何，條件陳述式都會使用彙總函式來發出或加入單一宣告。在 Azure AD 中，您可以評估使用者的屬性，以決定要使用哪些函式作為宣告的值，例如 IfEmpty ( # A1、StartWith ( # A3、包含 ( # A5，還有其他。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。          |
-|RESTRICTED_CLAIM_ISSUED      | Condition 語句使用 Azure AD 中受限制的宣告。 您可以發出受限的宣告，但無法修改其來源或套用任何轉換。 如需詳細資訊，請參閱 [Azure AD 中的針對特定應用程式自訂權杖所發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)。          |
+|UNSUPPORTED_CONDITION_FUNCTION      | 不論相符專案數目為何，條件陳述式都會使用彙總函式來發出或加入單一宣告。在 Azure AD 中，您可以評估使用者的屬性，以決定要使用哪些函式作為宣告的值，例如 IfEmpty ( # A1、StartWith ( # A3、包含 ( # A5，還有其他。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
+|RESTRICTED_CLAIM_ISSUED      | Condition 語句使用 Azure AD 中受限制的宣告。 您可以發出受限的宣告，但無法修改其來源或套用任何轉換。 如需詳細資訊，請參閱 [Azure AD 中的針對特定應用程式自訂權杖所發出的宣告](../develop/active-directory-claims-mapping.md)。          |
 |EXTERNAL_ATTRIBUTE_STORE      | 此發行語句使用 Active Directory 的屬性存放區。 目前，Azure AD 不是 Active Directory 或 Azure AD 不同的存放區的來源宣告。 如果此結果封鎖您將應用程式遷移至 Azure AD，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire)。          |
-|UNSUPPORTED_ISSUANCE_CLASS      | 此發行語句使用 ADD，將宣告新增至連入宣告集。 在 Azure AD 中，這可以設定為多個宣告轉換。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)。         |
-|UNSUPPORTED_ISSUANCE_TRANSFORMATION      | 發行語句會使用正則運算式來轉換要發出的宣告值。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換，例如將 ( # A1、Trim ( # A3、ToLower 和其他專案之間的解壓縮。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。          |
+|UNSUPPORTED_ISSUANCE_CLASS      | 此發行語句使用 ADD，將宣告新增至連入宣告集。 在 Azure AD 中，這可以設定為多個宣告轉換。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-claims-mapping.md)。         |
+|UNSUPPORTED_ISSUANCE_TRANSFORMATION      | 發行語句會使用正則運算式來轉換要發出的宣告值。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換，例如將 ( # A1、Trim ( # A3、ToLower 和其他專案之間的解壓縮。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
 
 
 ## <a name="next-steps"></a>後續步驟

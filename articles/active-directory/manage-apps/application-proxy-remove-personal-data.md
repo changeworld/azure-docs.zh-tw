@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99fb466debd5a2ee4bb659aea3494469a8bbe8e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759958"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658412"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>移除 Azure Active Directory 應用程式 Proxy 的個人資料
 
@@ -35,7 +35,7 @@ Azure Active Directory 應用程式 Proxy 需要您在裝置上安裝連接器�
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>從 Windows 事件記錄移除個人資料
 
-如需如何設定 Windows 事件記錄之資料保留的資訊，請參閱 [Settings for event logs](https://technet.microsoft.com/library/cc952132.aspx) (事件記錄的設定)。 若要深入了解 Windows 事件記錄，請參閱 [Using Windows Event Log](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx) (使用 Windows 事件記錄)。
+如需如何設定 Windows 事件記錄之資料保留的資訊，請參閱 [Settings for event logs](https://technet.microsoft.com/library/cc952132.aspx) (事件記錄的設定)。 若要深入了解 Windows 事件記錄，請參閱 [Using Windows Event Log](/windows/win32/wes/using-windows-event-log) (使用 Windows 事件記錄)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ Azure Active Directory 應用程式 Proxy 需要您在裝置上安裝連接器�
 
 若要檢視或匯出特定資料，請在每個連接器事件記錄中搜尋相關項目。 記錄位於 `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`。
 
-由於記錄是文字檔，因此您可以使用 [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) 來搜尋與使用者相關的文字項目。  
+由於記錄是文字檔，因此您可以使用 [findstr](/windows-server/administration/windows-commands/findstr) 來搜尋與使用者相關的文字項目。  
 
 若要尋找個人資料，請搜尋 UserID 的記錄檔。
 
@@ -79,6 +79,6 @@ Azure Active Directory 應用程式 Proxy 需要您在裝置上安裝連接器�
 
 ![顯示程式碼片段，其中包含要移除的反白顯示程式碼](./media/application-proxy-remove-personal-data/01.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需應用程式 Proxy 的概觀，請參閱[如何為內部部署應用程式提供安全的遠端存取](application-proxy.md)。

@@ -11,21 +11,21 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: a49dff0e4ac41670800073c02c5a507eb433c326
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: c470987fe6e699a186fa44d17bc731da048a2262
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280442"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658752"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>將應用程式移轉至 Azure Active Directory 的資源
 
 協助您將應用程式存取權限和驗證移轉至 Azure Active Directory (Azure AD) 的資源。
 
-| 資源  | 描述  |
+| 資源  | 說明  |
 |:-----------|:-------------|
 |[將您的應用程式移轉至 Azure AD](https://aka.ms/migrateapps/whitepaper) \(英文\) | 此白皮書提供移轉的優點，並以下列四個清楚描述的階段，說明如何規劃移轉：探索、分類、移轉和持續管理。 您將會透過逐步引導，了解如何思考流程，並將您的專案細分成便於取用的片段。 此文件全篇都有在過程中可協助您的重要資源連結。 |
-|[解決方案指南：從 Active Directory 同盟服務 (AD FS) 將應用程式移轉到 Azure AD](https://aka.ms/migrateapps/adfssolutionguide) \(英文\) | 此解決方案指南將以比移轉白皮書中更概略的說明方式，引導您完成相同的規劃四階段，並執行應用程式移轉專案。 在本指南中，您將了解如何將那些階段，套用至從 Active Directory 同盟服務 (AD FS) 移動應用程式到 Azure AD 的特定目標。|
+|[解決方案指南：從 Active Directory 同盟服務 (AD FS) 將應用程式移轉到 Azure AD](./migrate-adfs-apps-to-azure.md) \(英文\) | 此解決方案指南將以比移轉白皮書中更概略的說明方式，引導您完成相同的規劃四階段，並執行應用程式移轉專案。 在本指南中，您將了解如何將那些階段，套用至從 Active Directory 同盟服務 (AD FS) 移動應用程式到 Azure AD 的特定目標。|
 |[開發人員教學課程：適用于開發人員的 Azure AD 應用程式遷移腳本 AD FS](https://aka.ms/adfsplaybook) | 這一組 ASP.NET 程式碼範例和隨附的教學課程可協助您瞭解如何安全地將與 Active Directory 同盟服務 (AD FS) 整合的應用程式遷移至 Azure Active Directory (Azure AD) 。 本教學課程著重于開發人員，而這些開發人員不只需要瞭解如何在 AD FS 和 Azure AD 上設定應用程式，同時也可感知其程式碼基底在此程式中所需的變更。|
 | [工具：Active Directory 同盟服務移轉整備指令碼](https://aka.ms/migrateapps/adfstools) \(英文\) | 這是您可以在內部部署 Active Directory 同盟服務 (AD FS) 伺服器上執行的指令碼，可用來判斷要移轉至 Azure AD 之應用程式的整備程度。|
 | [部署方案：從 AD FS 移轉至密碼雜湊同步處理](https://aka.ms/ADFSTOPHSDPDownload) \(英文\) | 使用密碼雜湊同步處理時，可以將使用者密碼的雜湊從內部部署 Active Directory 同步至 Azure AD。 這可讓 Azure AD 驗證使用者，而不需要與內部部署 Active Directory 互動。| 
@@ -33,5 +33,3 @@ ms.locfileid: "93280442"
 | [部署方案：使用 Azure AD 啟用單一登入至 SaaS 應用程式](https://aka.ms/SSODPDownload) \(英文\) | 單一登入 (SSO) 可協助您只使用單一使用者帳戶登入一次，然後就能夠存取所有進行工作所需的應用程式和資源。 例如，在使用者登入之後，使用者可以從 Microsoft Office 移至 SalesForce、Box，而不需要二次驗證 (例如輸入密碼)。 
 | [部署方案：使用應用程式 Proxy 將應用程式延伸到 Azure AD](https://aka.ms/AppProxyDPDownload) \(英文\)| 傳統上，提供從員工的膝上型電腦和其他裝置存取內部部署應用程式的權限會涉及虛擬私人網路 (VPN) 或周邊網路 (DMZ)。 這些解決方案不僅複雜且難以確保安全，而且設定及管理成本也很高。 Azure AD 應用程式 Proxy 可讓存取內部部署應用程式變得更輕鬆。 |
 | [部署計劃](../fundamentals/active-directory-deployment-plans.md) | 尋找部署功能的部署計畫，例如多重要素驗證、條件式存取、使用者布建、無縫 SSO、自助式密碼重設及更多功能！ |
-
-

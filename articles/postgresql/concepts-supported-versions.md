@@ -5,14 +5,14 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f03016c9a44968db49cd68bfec025c328861fc07
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286430"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658514"
 ---
 # <a name="supported-postgresql-major-versions"></a>支援的于 postgresql 主要版本
 
@@ -32,11 +32,14 @@ ms.locfileid: "93286430"
 ## <a name="postgresql-version-95"></a>于 postgresql 版本9。5
 目前的次要版本是9.5.20。 請參閱 [于 postgresql 檔](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) ，以瞭解此次要版本中的改進功能與修正。
 
+> [!NOTE]
+> 適用於 PostgreSQL 的 Azure 資料庫將于2021年2月11日淘汰 Postgres 9.5 版，以與 Postgres 社區 [版本控制原則](https://www.postgresql.org/support/versioning/)一致。 如需詳細資訊和限制，請參閱 [適用於 PostgreSQL 的 Azure 資料庫版本控制原則](concepts-version-policy.md) 。
+
 ## <a name="managing-upgrades"></a>管理升級
 于 postgresql 專案會定期發出次要版本來修正回報的錯誤。 適用於 PostgreSQL 的 Azure 資料庫在服務的每月部署期間自動修補具有次要版本的伺服器。 
 
 不支援主要版本的自動就地升級。 若要升級至下一個主要版本，您可以 
-   * 請參閱 [使用傾印和還原的主要版本升級](./how-to-upgrade-using-dump-and-restore.md)
+   * 查看使用傾印[和還原執行主要版本升級](./how-to-upgrade-using-dump-and-restore.md)的各種方法
    * 使用 [pg_dump 和 pg_restore](./howto-migrate-using-dump-and-restore.md) 將資料庫移至使用新引擎版本建立的伺服器
    * 或者，您可以使用[Azure 資料庫移轉服務](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)，從于 postgresql 10 升級為11
 
