@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341375"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657086"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -29,9 +29,9 @@ ms.locfileid: "92341375"
 
 ![Azure 入口網站中專案詳細資料頁面的螢幕擷取畫面](media/hpc-cache-create-basics.png)
 
-在 [專案詳細資料]**** 中，選取將要裝載快取的訂用帳戶和資源群組。
+在 [專案詳細資料] 中，選取將要裝載快取的訂用帳戶和資源群組。
 
-在 [服務詳細資料]**** 中，設定快取名稱和其他屬性：
+在 [服務詳細資料] 中，設定快取名稱和其他屬性：
 
 * 位置 - 選取其中一個[支援的區域](hpc-cache-overview.md#region-availability)。
 * 虛擬網路 - 您可以選取現有的虛擬網路，或建立一個新的虛擬網路。
@@ -40,7 +40,7 @@ ms.locfileid: "92341375"
 ## <a name="set-cache-capacity"></a>設定快取容量
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-在 [快取]**** 頁面上，您必須設定快取的容量。 此處設定的值會決定您的快取可以保存多少資料，以及它服務用戶端要求的速度。
+在 [快取] 頁面上，您必須設定快取的容量。 此處設定的值會決定您的快取可以保存多少資料，以及它服務用戶端要求的速度。
 
 容量也會影響快取的成本。
 
@@ -59,7 +59,7 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>啟用 Azure Key Vault 加密 (選擇性) 
 
-如果您的快取位於支援客戶管理的加密金鑰的區域，[**磁片加密金鑰** **] 頁面**會出現**在 [** 快取] 和 [標籤] 索引標籤之間。 若要深入瞭解區域支援，請參閱 [區域可用性](hpc-cache-overview.md#region-availability) 。
+如果您的快取位於支援客戶管理的加密金鑰的區域，[**磁片加密金鑰** **] 頁面** 會出現 **在 [** 快取] 和 [標籤] 索引標籤之間。 若要深入瞭解區域支援，請參閱 [區域可用性](hpc-cache-overview.md#region-availability) 。
 
 如果您想要管理用於快取儲存體的加密金鑰，請在 [ **磁片加密金鑰** ] 頁面上提供您的 Azure Key Vault 資訊。 金鑰保存庫必須位於相同的區域，且與快取位於相同的訂用帳戶中。
 
@@ -81,17 +81,17 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ## <a name="add-resource-tags-optional"></a>新增資源標記 (選擇性)
 
-[標籤]**** 頁面可讓您將[資源標籤](../azure-resource-manager/management/tag-resources.md)新增至 Azure HPC Cache 執行個體。
+[標籤] 頁面可讓您將[資源標籤](../azure-resource-manager/management/tag-resources.md)新增至 Azure HPC Cache 執行個體。
 
 ## <a name="finish-creating-the-cache"></a>完成建立快取
 
-設定新的快取之後，請按一下 [ **檢查 + 建立** ] 索引標籤。入口網站會驗證您的選擇，並可讓您檢查您的選擇。 如果所有設定都正確，請按一下 [建立]****。
+設定新的快取之後，請按一下 [ **檢查 + 建立** ] 索引標籤。入口網站會驗證您的選擇，並可讓您檢查您的選擇。 如果所有設定都正確，請按一下 [建立]。
 
 建立快取需要大約 10 分鐘。 您可以在 Azure 入口網站的通知面板中追蹤進度。
 
 ![入口網站中快取建立的「部署進行中」和「通知」頁面螢幕擷取畫面](media/hpc-cache-deploy-status.png)
 
-建立完成後，會出現包含新 Azure HPC Cache 執行個體連結的通知，而快取會出現在訂用帳戶的**資源**清單中。
+建立完成後，會出現包含新 Azure HPC Cache 執行個體連結的通知，而快取會出現在訂用帳戶的 **資源** 清單中。
 
 ![Azure 入口網站中 Azure HPC Cache 執行個體的螢幕擷取畫面](media/hpc-cache-new-overview.png)
 
@@ -102,7 +102,7 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ## <a name="create-the-cache-with-azure-cli"></a>使用 Azure CLI 建立快取
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 > [!NOTE]
 > Azure CLI 目前不支援使用客戶管理的加密金鑰來建立快取。 使用 Azure 入口網站。

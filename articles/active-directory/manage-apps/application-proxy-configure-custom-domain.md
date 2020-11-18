@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bef120e754c84798b2d1b48f4f00fbb8f5fb3c1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587764"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656372"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 設定自訂網域
 
@@ -26,7 +26,7 @@ ms.locfileid: "88587764"
 
 建議您盡可能為您的應用程式設定自訂網域。 使用自訂網域的一些原因包括：
 
-- 應用程式之間的連結甚至可以在公司網路外部運作。 在沒有自訂網域的情形下，如果您的應用程式具有硬式編碼的內部連結指向應用程式 Proxy 外部的目標，且連結無法從外部解析，則會中斷。 當您的內部和外部 URL 相同時，即可避免這個問題。 如果您無法使用自訂網域，請參閱[重新導向使用 Azure AD 應用程式 Proxy 發佈之應用程式的硬式編碼連結](../application-proxy-link-translation.md)，以取得解決此問題的其他方式。 
+- 應用程式之間的連結甚至可以在公司網路外部運作。 在沒有自訂網域的情形下，如果您的應用程式具有硬式編碼的內部連結指向應用程式 Proxy 外部的目標，且連結無法從外部解析，則會中斷。 當您的內部和外部 URL 相同時，即可避免這個問題。 如果您無法使用自訂網域，請參閱[重新導向使用 Azure AD 應用程式 Proxy 發佈之應用程式的硬式編碼連結](./application-proxy-configure-hard-coded-link-translation.md)，以取得解決此問題的其他方式。 
   
 - 您的使用者會有更輕鬆的體驗，因為他們可以從您的網路內部或外部透過相同的 URL 移至應用程式。 他們不需要得知不同的內部和外部 URL，或追蹤其目前的位置。 
 

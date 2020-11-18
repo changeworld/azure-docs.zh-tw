@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340303"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657171"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
@@ -63,7 +63,7 @@ Azure 入口網站的 [ **新增儲存體目標** ] 頁面包含選項，可在�
 
   如需您可以使用之儲存體帳戶類型的詳細資訊，請參閱 [Blob 儲存體需求](hpc-cache-prerequisites.md#blob-storage-requirements)。
 
-* **儲存體容器** -選取此目標的 Blob 容器，或按一下 [ **建立新**的]。
+* **儲存體容器** -選取此目標的 Blob 容器，或按一下 [ **建立新** 的]。
 
   ![對話方塊的螢幕擷取畫面，用來指定新容器 (私人) 的名稱和存取層級](media/add-blob-new-container.png)
 
@@ -82,7 +82,7 @@ Azure HPC Cache 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based
 
 新增 Azure 角色的步驟：
 
-1. 開啟儲存體帳戶 ** (IAM) 頁面的存取控制 ** 。  ([ **新增儲存體目標** ] 頁面中的連結，就會自動為選取的帳戶開啟此頁面。 ) 
+1. 開啟儲存體帳戶 **(IAM) 頁面的存取控制** 。  ([ **新增儲存體目標** ] 頁面中的連結，就會自動為選取的帳戶開啟此頁面。 ) 
 
 1. 按一下 **+** 頁面頂端的，然後選擇 [ **新增角色指派**]。
 
@@ -103,9 +103,9 @@ Azure HPC Cache 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
 ### <a name="prerequisite-storage-account-access"></a>先決條件：儲存體帳戶存取
+
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 在您新增 blob 儲存體目標之前，請先檢查快取是否有正確的角色可存取儲存體帳戶，以及防火牆設定是否允許儲存體目標建立。
 
@@ -185,9 +185,9 @@ NFS 儲存體目標有不同于 Blob 儲存體目標的設定。 使用量模型
 
 | 使用量模型                   | 快取模式 | 後端驗證 | 最大回寫延遲 |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| 大量讀取、不頻繁的寫入 | 讀取         | 永不                 | 無                     |
+| 大量讀取、不頻繁的寫入 | 讀取         | 永不                 | None                     |
 | 大於15% 寫入       | 讀取/寫入   | 永不                 | 1 小時                   |
-| 用戶端略過快取      | 讀取         | 30 秒            | 無                     |
+| 用戶端略過快取      | 讀取         | 30 秒            | None                     |
 
 ### <a name="create-an-nfs-storage-target"></a>建立 NFS 儲存體目標
 
@@ -217,7 +217,7 @@ NFS 儲存體目標有不同于 Blob 儲存體目標的設定。 使用量模型
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 命令 [az hpc-cache nfs-storage-目標新增](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) 來建立儲存體目標。
 
@@ -244,7 +244,7 @@ NFS 儲存體目標有不同于 Blob 儲存體目標的設定。 使用量模型
   * ``nfs-export`` -要與面向用戶端路徑建立關聯的儲存體系統匯出
   * ``target-path`` (選擇性) -匯出的子目錄（如有需要）
 
-  範例： ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
+  範例：``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
   若要深入瞭解虛擬命名空間功能，請參閱 [設定匯總的命名空間](hpc-cache-namespace.md) 。
 
@@ -301,7 +301,7 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 [az hpc cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 選項來顯示快取的現有儲存目標。 提供快取名稱和資源群組 (，除非您已將它設定為全域) 。
 

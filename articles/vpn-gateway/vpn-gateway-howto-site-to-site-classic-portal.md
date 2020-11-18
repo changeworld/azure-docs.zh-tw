@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892816"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656951"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 入口網站建立站對站連線 (傳統)
 
@@ -46,10 +46,10 @@ ms.locfileid: "91892816"
 * **資源群組：** TestRG1
 * **VNet 名稱：** TestVNet1
 * **位址空間：** 10.11.0.0/16
-* **子網名稱：** 前端
+* **子網路名稱：** FrontEnd
 * **子網位址範圍：** 10.11.0.0/24
 * **GatewaySubnet：** 10.11.255.0/27
-* **區域：** (us) 美國東部
+* **區域：** (美國) 美國東部
 * **本機網站名稱︰** Site2
 * **用戶端位址空間：** 位於內部部署網站上的位址空間。
 
@@ -73,14 +73,14 @@ ms.locfileid: "91892816"
 
 本機網站通常是指您的內部部署位置。 它包含您要建立連線之 VPN 裝置的 IP 位址，以及將透過 VPN 閘道路由傳送至 VPN 裝置的 IP 位址範圍。
 
-1. 在 VNet 的頁面上，選取 [ **設定**] 下的 [ **站對站**連線]。
+1. 在 VNet 的頁面上，選取 [ **設定**] 下的 [ **站對站** 連線]。
 1. 在 [站對站連接] 頁面上，選取 [ **+ 新增**]。
 1. 在 [ **設定 VPN 連線和閘道** ] 頁面上，針對 [連線 **類型**] 將 [ **站對站** ] 保持選取狀態。 在此練習中，您必須使用 [範例值](#values) 的組合和您自己的值。
 
    * **VPN 閘道 IP 位址：** 這是您內部部署網路之 VPN 裝置的公用 IP 位址。 VPN 裝置需要 IPv4 公用 IP 位址。 為您要連線的 VPN 裝置指定有效的公用 IP 位址。 它必須可由 Azure 存取。 如果您不知道 VPN 裝置的 IP 位址，您可以一律放入預留位置值 (只要其為有效的公用 IP 位址格式即可)，然後稍後加以變更。
 
    * **用戶端位址空間︰** 列出您要透過此閘道路由傳送至本機內部部署網路的 IP 位址範圍。 您可以加入多個位址空間範圍。 確定您在此指定的範圍，不會與虛擬網路要連接的其他網路範圍重疊，或與虛擬網路本身的位址範圍重疊。
-1. 在頁面底部，請勿選取 [審核 + 建立]。 請改 **為選取 [下一步：閘道>] **。
+1. 在頁面底部，請勿選取 [審核 + 建立]。 請改 **為選取 [下一步：閘道>]**。
 
 ### <a name="to-configure-the-virtual-network-gateway"></a><a name="sku"></a>設定虛擬網路閘道
 
@@ -131,11 +131,11 @@ ms.locfileid: "91892816"
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
-如有連線問題，請參閱左窗格中目錄的 [疑難排解]**** 區段。
+如有連線問題，請參閱左窗格中目錄的 [疑難排解] 區段。
 
 ## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>如何重設 VPN 閘道
 
-如果您遺失一或多個站對站 VPN 通道上的跨單位 VPN 連線，重設 Azure VPN 閘道會很有幫助。 在此情況下，您的所有內部部署 VPN 裝置都會運作正常，但無法使用 Azure VPN 閘道建立 IPsec 通道。 如需相關步驟，請參閱[重設 VPN 閘道](vpn-gateway-resetgw-classic.md#resetclassic)。
+如果您遺失一或多個站對站 VPN 通道上的跨單位 VPN 連線，重設 Azure VPN 閘道會很有幫助。 在此情況下，您的所有內部部署 VPN 裝置都會運作正常，但無法使用 Azure VPN 閘道建立 IPsec 通道。 如需相關步驟，請參閱[重設 VPN 閘道](./reset-gateway.md#resetclassic)。
 
 ## <a name="how-to-change-a-gateway-sku"></a><a name="changesku"></a>如何變更閘道 SKU
 
@@ -143,5 +143,5 @@ ms.locfileid: "91892816"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。
+* 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](../index.yml)。
 * 如需強制通道的相關資訊，請參閱 [關於強制通道](vpn-gateway-about-forced-tunneling.md)。

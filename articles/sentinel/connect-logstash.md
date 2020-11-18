@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 7fe47289dcc6b6d6af4d13b36b5c3b1dae3baaf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89663908"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655675"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>使用 Logstash 將資料來源連接到 Azure Sentinel
 
 > [!IMPORTANT]
 > 使用 Logstash 輸出外掛程式的資料內嵌目前處於公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-針對 **Logstash 資料收集引擎**使用 Azure Sentinel 的新輸出外掛程式，您現在可以透過 Logstash 直接將您想要的任何類型記錄傳送至 Azure Sentinel 中的 log Analytics 工作區。 您的記錄會傳送至您將使用輸出外掛程式定義的自訂資料表。
+針對 **Logstash 資料收集引擎** 使用 Azure Sentinel 的新輸出外掛程式，您現在可以透過 Logstash 直接將您想要的任何類型記錄傳送至 Azure Sentinel 中的 log Analytics 工作區。 您的記錄會傳送至您將使用輸出外掛程式定義的自訂資料表。
 
 若要深入瞭解如何使用 Logstash 資料收集引擎，請參閱 [Logstash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)使用者入門。
 
@@ -48,8 +48,8 @@ Logstash 引擎是由三個元件所組成：
 
 適用于 Logstash 的 Azure Sentinel 輸出外掛程式會使用 Log Analytics HTTP 資料收集器 REST API，將 JSON 格式的資料傳送到您的 Log Analytics 工作區。 資料會內嵌至自訂記錄。
 
-- 深入瞭解 [Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics/create-request)。
-- 深入瞭解 [自訂記錄](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs)。
+- 深入瞭解 [Log Analytics REST API](/rest/api/loganalytics/create-request)。
+- 深入瞭解 [自訂記錄](../azure-monitor/platform/data-sources-custom-logs.md)。
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>在 Logstash 中部署 Azure Sentinel 輸出外掛程式
 
@@ -57,7 +57,7 @@ Logstash 引擎是由三個元件所組成：
 
 Azure Sentinel 輸出外掛程式可在 Logstash 集合中取得。
 
-- 遵循 Logstash [使用外掛程式](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) 檔中的指示來安裝 ***Logstash-loganalytics*** 外掛程式。
+- 遵循 Logstash [使用外掛程式](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) 檔中的指示，安裝 **_Logstash-輸出-azure-loganalytics_* _ 外掛程式。
    
 - 如果您的 Logstash 系統沒有網際網路存取權，請遵循 Logstash [離線外掛程式管理](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) 檔中的指示來準備和使用離線外掛程式套件。  (此情況下，您必須建立另一個具有網際網路存取權的 Logstash 系統。 ) 
 
@@ -67,15 +67,15 @@ Azure Sentinel 輸出外掛程式可在 Logstash 集合中取得。
 
 | 欄位名稱 | 資料類型 | 描述 |
 |----------------|---------------|-----------------|
-| `workspace_id` | 字串 | 輸入您的工作區識別碼 GUID。 * |
+| `workspace_id` | 字串 | 輸入您的工作區識別碼 GUID。 _ |
 | `workspace_key` | 字串 | 輸入您的工作區主要金鑰 GUID。 * |
-| `custom_log_table_name` | 字串 | 設定要內嵌記錄檔的資料表名稱。 每個輸出外掛程式只可設定一個資料表名稱。 記錄資料表將會出現 Azure Sentinel 在 [**記錄**] 底下的 [記錄檔] 中，並在 [**自訂記錄**] 分類的**資料表**中，加上 `_CL` 尾碼 |
+| `custom_log_table_name` | 字串 | 設定要內嵌記錄檔的資料表名稱。 每個輸出外掛程式只可設定一個資料表名稱。 記錄資料表將會出現 Azure Sentinel 在 [**記錄**] 底下的 [記錄檔] 中，並在 [**自訂記錄**] 分類的 **資料表** 中，加上 `_CL` 尾碼 |
 | `endpoint` | 字串 | 選擇性欄位。 根據預設，這是 Log Analytics 端點。 使用此欄位來設定替代端點。 |
 | `time_generated_field` | 字串 | 選擇性欄位。 這個屬性會覆寫 Log Analytics 中的預設 **TimeGenerated** 欄位。 在資料來源中輸入時間戳記欄位的名稱。 欄位中的資料必須符合 ISO 8601 格式的 (`YYYY-MM-DDThh:mm:ssZ`)  |
 | `key_names` | array | 輸入 Log Analytics 輸出架構欄位的清單。 每個清單專案都應該以單引號括住，並以逗號分隔專案，以及以方括弧括住的整個清單。 請參閱以下的範例。 |
-| `plugin_flush_interval` | 數字 | 選擇性欄位。 設定以定義訊息傳輸到 Log Analytics 之間的最大間隔 (以秒為單位) 。 預設值為 5。 |
+| `plugin_flush_interval` | 數目 | 選擇性欄位。 設定以定義訊息傳輸到 Log Analytics 之間的最大間隔 (以秒為單位) 。 預設值為 5。 |
     | `amount_resizing` | boolean | true 或 false。 啟用或停用自動調整機制，這會根據所接收的記錄資料量來調整訊息緩衝區大小。 |
-| `max_items` | 數字 | 選擇性欄位。 只有在 `amount_resizing` 設為 "false" 時才適用。 用來設定訊息緩衝區大小的上限， (記錄) 。 預設值為 2000。  |
+| `max_items` | 數目 | 選擇性欄位。 只有在 `amount_resizing` 設為 "false" 時才適用。 用來設定訊息緩衝區大小的上限， (記錄) 。 預設值為 2000。  |
 
 \* 您可以在工作區資源的 [ **代理程式管理**] 下，找到工作區識別碼和主要金鑰。
 
@@ -162,7 +162,7 @@ Azure Sentinel 輸出外掛程式可在 Logstash 集合中取得。
 
 1. 若要查看資料表中的記錄，請使用資料表名稱做為架構來查詢資料表。
 
-   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="記錄檔隱藏自訂記錄檔的螢幕擷取畫面。":::
+   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="記錄檔隱藏自訂記錄查詢的螢幕擷取畫面。":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>監視輸出外掛程式的審核記錄
 

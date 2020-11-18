@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88078932"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656746"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>在網路裝置註冊服務 (NDES) 伺服器上與 Azure AD 應用程式 Proxy 整合
 
@@ -26,7 +26,7 @@ Azure Active Directory (AD) 應用程式 Proxy 可讓您在網路內發行應用
 
 如果您不熟悉 Azure AD 的應用程式 Proxy，而且想要深入瞭解，請參閱 [透過 Azure AD 應用程式 Proxy 遠端存取內部部署應用程式](application-proxy.md)。
 
-Azure AD 的應用程式 Proxy 建置於 Azure 上。 它提供大量的網路頻寬和伺服器基礎結構，以提供更佳的保護，以防範分散式阻絕服務 (DDOS) 攻擊和卓越的可用性。 此外，您不需要對內部部署網路開啟外部防火牆埠，也不需要 DMZ 伺服器。 所有流量都會產生輸入。 如需輸出埠的完整清單，請參閱 [Azure Active Directory 中的教學課程：新增內部部署應用程式以透過應用程式 Proxy 進行遠端存取](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)。
+Azure AD 的應用程式 Proxy 建置於 Azure 上。 它提供大量的網路頻寬和伺服器基礎結構，以提供更佳的保護，以防範分散式阻絕服務 (DDOS) 攻擊和卓越的可用性。 此外，您不需要對內部部署網路開啟外部防火牆埠，也不需要 DMZ 伺服器。 所有流量都會產生輸入。 如需輸出埠的完整清單，請參閱 [Azure Active Directory 中的教學課程：新增內部部署應用程式以透過應用程式 Proxy 進行遠端存取](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)。
 
 > Azure AD 應用程式 Proxy 是一項功能，只有當您使用的是 Premium 或 Basic 版本的 Azure Active Directory 時才可使用。 如需詳細資訊，請參閱 [Azure Active Directory 價格](https://azure.microsoft.com/pricing/details/active-directory/)。 
 > 如果您有 (EMS) 授權的企業行動套件，您就有資格使用此解決方案。
@@ -57,7 +57,7 @@ Azure AD 的應用程式 Proxy 建置於 Azure 上。 它提供大量的網路�
    * 如果您安裝連接器的伺服器已開啟 Internet Explorer 增強式安全性設定，則可能會封鎖註冊畫面。 若要允許存取，請依照錯誤訊息中的指示進行，或在安裝程式期間關閉 Internet Explorer 增強式安全性。
    * 如果連接器註冊失敗，請參閱 [疑難排解應用程式 Proxy](application-proxy-troubleshoot.md)。
 1. 在設定結束時，會針對具有輸出 proxy 的環境顯示附注。 若要將 Azure AD 應用程式 Proxy 連接器設定為透過輸出 Proxy 運作，請執行提供的腳本，例如 `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` 。
-1. 在 Azure 入口網站的 [應用程式 proxy] 頁面上，會列出新的連接器，並顯示狀態為 [作用中 *]，如*下列範例所示：
+1. 在 Azure 入口網站的 [應用程式 proxy] 頁面上，會列出新的連接器，並顯示狀態為 [作用中 *]，如* 下列範例所示：
 
     ![新的 Azure AD 應用程式 Proxy 連接器在 Azure 入口網站中顯示為作用中](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
 
@@ -96,4 +96,4 @@ Azure AD 的應用程式 Proxy 建置於 Azure 上。 它提供大量的網路�
 
 ## <a name="next-steps"></a>後續步驟
 
-使用與 NDES 整合的 Azure AD 應用程式 Proxy，發行應用程式以供使用者存取。 如需詳細資訊，請參閱 [使用 Azure AD 應用程式 Proxy 發佈應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)。
+使用與 NDES 整合的 Azure AD 應用程式 Proxy，發行應用程式以供使用者存取。 如需詳細資訊，請參閱 [使用 Azure AD 應用程式 Proxy 發佈應用程式](./application-proxy-add-on-premises-application.md)。

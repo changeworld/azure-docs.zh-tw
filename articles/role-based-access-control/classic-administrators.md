@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370622"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657733"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
@@ -40,7 +40,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 1. 按一下 [存取控制 (IAM)]。
 
-1. 按一下 [傳統管理員]**** 索引標籤。
+1. 按一下 [傳統管理員] 索引標籤。
 
     ![開啟傳統系統管理員的螢幕擷取畫面](./media/classic-administrators/classic-administrators.png)
 
@@ -58,7 +58,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 - 來賓使用者必須存在於您的目錄中。 這表示使用者已受邀前往您的目錄，並接受邀請。
 
-如需有關如何將來賓使用者新增至目錄的詳細資訊，請參閱 [Azure 入口網站中的新增 AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/add-users-administrator.md)共同作業使用者。
+如需有關如何將來賓使用者新增至目錄的詳細資訊，請參閱 [Azure 入口網站中的新增 AZURE ACTIVE DIRECTORY B2B](../active-directory/external-identities/add-users-administrator.md)共同作業使用者。
 
 ### <a name="differences-for-guest-users"></a>來賓使用者的差異
 
@@ -85,13 +85,13 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 1. 按一下 [存取控制 (IAM)]。
 
-1. 按一下 [傳統管理員]**** 索引標籤。
+1. 按一下 [傳統管理員] 索引標籤。
 
 1. 在要移除的共同管理員旁邊新增核取記號。
 
 1. 按一下 **[移除]** 。
 
-1. 在出現的訊息方塊中，按一下 [確定]****。
+1. 在出現的訊息方塊中，按一下 [確定]。
 
     ![移除共同管理員的螢幕擷取畫面](./media/classic-administrators/remove-coadmin.png)
 
@@ -99,7 +99,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 只有帳戶管理員可以變更訂用帳戶的服務管理員。 根據預設，註冊 Azure 訂用帳戶時系統會將服務管理員與帳戶管理員設為同一人。 具有帳戶管理員角色的使用者無法存取 Azure 入口網站。 具有服務管理員角色的使用者可完整存取 Azure 入口網站。 如果帳戶管理員和服務管理員是相同的使用者，並且您將服務管理員變更為不同的使用者，則帳戶管理員將失去 Azure 入口網站的存取權限。 不過，帳戶管理員可隨時使用帳戶中心，將自己變更回服務管理員。
 
-請遵循下列步驟來變更 **帳戶中心**內的服務管理員。
+請遵循下列步驟來變更 **帳戶中心** 內的服務管理員。
 
 ### <a name="account-center"></a>帳戶中心
 
@@ -113,7 +113,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
     ![顯示帳戶中心裡 [編輯訂用帳戶] 按鈕的螢幕擷取畫面](./media/classic-administrators/editsub.png)
 
-1. 在 [服務管理員 **** ] 方塊中，輸入新的服務管理員的電子郵件地址。
+1. 在 [服務管理員  ] 方塊中，輸入新的服務管理員的電子郵件地址。
 
     ![顯示應變更服務管理員電子郵件之方塊的螢幕擷取畫面](./media/classic-administrators/change-service-admin.png)
 
@@ -142,7 +142,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 1. 開啟[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，並選取訂用帳戶。
 
-1. 按一下 **[屬性]** 。
+1. 按一下 **[屬性]**。
 
     訂用帳戶的帳戶管理員會顯示在 [ **帳戶管理員** ] 方塊中。
 

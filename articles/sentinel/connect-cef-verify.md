@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515705"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655726"
 ---
 # <a name="step-3-validate-connectivity"></a>步驟3：驗證連線能力
 
 當您在步驟1中部署記錄轉寄站 () 並設定您的安全性解決方案，以在步驟 2)  (傳送 CEF 訊息，請遵循下列指示來確認安全性解決方案與 Azure Sentinel 之間的連線能力。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須在記錄轉寄站電腦上擁有較高的許可權 (sudo) 。
 
 - 您必須在記錄轉寄站電腦上安裝 **python 2.7** 或 **3** 。<br>
 使用 `python –version` 命令來檢查。
 
-- 在此程式中的某個時間點，您可能需要工作區識別碼和工作區主要金鑰。 您可以在工作區資源的 [代理程式 **管理** ] 下找到它們。
+- 在此程式中的某個時間點，您可能需要工作區識別碼和工作區主要金鑰。 您可以在工作區資源的 [代理程式 **管理**] 下找到它們。
 
 ## <a name="how-to-validate-connectivity"></a>如何驗證連線能力
 
@@ -247,6 +247,5 @@ ms.locfileid: "94515705"
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 CEF 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
+- 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。
 - [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
-

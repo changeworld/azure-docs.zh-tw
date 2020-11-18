@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 4daac353c69677021245e95c0b11550372f5d4ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4d378151b72ab09e8b51467ce09ec9d43c517813
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748785"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657953"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 建立 HDInsight 叢集
 
@@ -23,13 +23,9 @@ ms.locfileid: "92748785"
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
-
-Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli) 以取得相關步驟。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-a-cluster"></a>建立叢集
 
@@ -44,7 +40,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](/cli/
 
 2. 設定環境變數。 本文中使用的變數是以 Bash 為基礎。 針對其他環境，會需要一點變化。 請參閱 [az-hdinsight-建立](/cli/azure/hdinsight#az-hdinsight-create) 以取得建立叢集的可能參數完整清單。
 
-    |參數 | 描述 |
+    |參數 | 說明 |
     |---|---|
     |`--workernode-count`| 叢集中的背景工作節點數目。 本文使用變數 `clusterSizeInNodes` 作為傳遞給的值 `--workernode-count` 。 |
     |`--version`| HDInsight 叢集版本。 本文使用變數 `clusterVersion` 作為傳遞給的值 `--version` 。 另請參閱： [支援的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|

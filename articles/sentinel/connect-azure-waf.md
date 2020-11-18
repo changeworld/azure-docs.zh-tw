@@ -9,19 +9,19 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88263923"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655896"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>從 Azure Web 應用程式防火牆連接資料 (WAF) 
 
-Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目標。 Azure Web 應用程式防火牆 (WAF) 為您的 Web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和威脅，例如程式碼插入和跨網站腳本。 Azure WAF 可以部署在 [Azure 應用程式閘道](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) 服務、 [Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) 服務，以及透過 [AZURE 內容傳遞網路 (CDN) ](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF 原則 (目前處於公開預覽狀態的) 。
+Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目標。 Azure Web 應用程式防火牆 (WAF) 為您的 Web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和威脅，例如程式碼插入和跨網站腳本。 Azure WAF 可以部署在 [Azure 應用程式閘道](../web-application-firewall/ag/ag-overview.md) 服務、 [Azure Front Door](../web-application-firewall/afds/afds-overview.md) 服務，以及透過 [AZURE 內容傳遞網路 (CDN) ](../web-application-firewall/cdn/cdn-overview.md) WAF 原則 (目前處於公開預覽狀態的) 。
 您可以將 Azure WAF 記錄連線到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並加以合併以改善您的調查。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
@@ -31,7 +31,7 @@ Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目�
 
 1. 從 Azure Sentinel 導覽功能表中，選取 [ **資料連線器**]。
 
-1. 從資料連線器資源庫選取 [ **Azure web 應用程式防火牆] (WAF) ** ，然後選取 [預覽] 窗格上的 [ **開啟連接器] 頁面** 。
+1. 從資料連線器資源庫選取 [ **Azure web 應用程式防火牆] (WAF)** ，然後選取 [預覽] 窗格上的 [ **開啟連接器] 頁面** 。
 
 1. 選取您想要連線之記錄的 WAF 資源類型連結- **開啟應用程式閘道資源 >**、 **開啟 Front Door 資源 >**，或 **開啟 [內容傳遞網路 (CDN) WAF 原則 >** ]，然後在資源清單的畫面中，從清單中選擇 WAF 資源。
 
@@ -52,13 +52,13 @@ Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目�
         | CDN WAF 原則      | WebApplicationFirewallLogs |
         |
 
-    1. 選取 [儲存]****。
+    1. 選取 [儲存]。
 
 ### <a name="next-steps-tab"></a>後續步驟索引標籤
 
 - 請參閱隨附于 **azure web 應用程式防火牆** 資料連線器的建議活頁簿、查詢範例和分析規則範本，以深入瞭解您的 azure WAF 記錄資料。
 
-- 若要在 **記錄**中查詢 Azure WAF 資料，請在查詢視窗中輸入 **AzureDiagnostics** 。
+- 若要在 **記錄** 中查詢 Azure WAF 資料，請在查詢視窗中輸入 **AzureDiagnostics** 。
 
 > [!NOTE]
 >

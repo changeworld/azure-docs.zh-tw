@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108196"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657324"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安裝應用程式 Proxy 代理程式連接器時遇到問題
 
@@ -39,7 +39,7 @@ Microsoft Azure Active Directory 應用程式 Proxy 連接器是內部網域元�
 
 **目標：** 確認連接器電腦可以連接至應用程式 Proxy 註冊端點以及 Microsoft 登入頁面。
 
-1.  在連接器伺服器上，使用 [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) 或其他埠測試控管來執行埠測試，以確認埠443和80已開啟。
+1.  在連接器伺服器上，使用 [telnet](/windows-server/administration/windows-commands/telnet) 或其他埠測試控管來執行埠測試，以確認埠443和80已開啟。
 
 2.  如果這些埠中有任何一個不成功，請確認防火牆或後端 proxy 可以存取所需的網域和埠，請參閱 [準備您的內部部署環境](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)。
 
@@ -74,19 +74,19 @@ Microsoft Azure Active Directory 應用程式 Proxy 連接器是內部網域元�
 </ConnectorTrustSettingsFile>
 ```
 
-可能的 **IsInUserStore** 值為 **true** 和 **false**。 **True**值表示自動更新的憑證會儲存在 Network Service 的使用者憑證存放區中的個人容器內。 **False**值表示用戶端憑證是在安裝期間建立的，或是 Register-AppProxyConnector 命令起始的註冊期間所建立，並儲存在本機電腦憑證存放區的個人容器中。
+可能的 **IsInUserStore** 值為 **true** 和 **false**。 **True** 值表示自動更新的憑證會儲存在 Network Service 的使用者憑證存放區中的個人容器內。 **False** 值表示用戶端憑證是在安裝期間建立的，或是 Register-AppProxyConnector 命令起始的註冊期間所建立，並儲存在本機電腦憑證存放區的個人容器中。
 
 如果值為 **true**，請遵循下列步驟來確認憑證：
-1. 下載 [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
-2. 從封裝中解壓縮 [psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，然後從提升許可權的命令提示字元執行 **psexec-i-u "nt authority\network service" cmd.exe** 。
-3. 在新出現的命令提示字元中執行**certmgr.msc**
+1. 下載 [PsTools.zip](/sysinternals/downloads/pstools)
+2. 從封裝中解壓縮 [psexec](/sysinternals/downloads/psexec) ，然後從提升許可權的命令提示字元執行 **psexec-i-u "nt authority\network service" cmd.exe** 。
+3. 在新出現的命令提示字元中執行 **certmgr.msc**
 4. 在管理主控台中，展開 [個人] 容器，然後按一下 [憑證]。
-5. 找出**connectorregistrationca.msappproxy.net**發出的憑證
+5. 找出 **connectorregistrationca.msappproxy.net** 發出的憑證
 
 如果值為 **false**，請遵循下列步驟來確認憑證：
 1. 執行 **certlm.msc services.msc**
 2. 在管理主控台中，展開 [個人] 容器，然後按一下 [憑證]。
-3. 找出**connectorregistrationca.msappproxy.net**發出的憑證
+3. 找出 **connectorregistrationca.msappproxy.net** 發出的憑證
 
 **若要更新用戶端憑證：**
 
@@ -101,7 +101,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-若要深入瞭解 Register-AppProxyConnector 命令，請參閱 [建立 Azure AD 應用程式 Proxy 連接器的自動安裝腳本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
+若要深入瞭解 Register-AppProxyConnector 命令，請參閱 [建立 Azure AD 應用程式 Proxy 連接器的自動安裝腳本](./application-proxy-register-connector-powershell.md)
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>確認是以系統管理員身分安裝連接器
 
@@ -109,7 +109,7 @@ Register-AppProxyConnector
 
 **確認認證是否正確：**
 
-連線至 `https://login.microsoftonline.com` 並使用相同的認證。 確定登入成功。 您可以前往 [ **Azure Active Directory**  - &gt; **使用者] 並**將  - &gt; **所有使用者**分組，以檢查使用者角色。 
+連線至 `https://login.microsoftonline.com` 並使用相同的認證。 確定登入成功。 您可以前往 [ **Azure Active Directory**  - &gt; **使用者] 並** 將  - &gt; **所有使用者** 分組，以檢查使用者角色。 
 
 選取您的使用者帳戶，然後在結果功能表中選取 [目錄角色]。 確認選取的角色為 [應用程式系統管理員]。 如果您無法存取這些步驟上的任何頁面，表示您沒有必要的角色。
 

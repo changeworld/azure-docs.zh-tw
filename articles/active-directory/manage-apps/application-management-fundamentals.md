@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642430"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656402"
 ---
 # <a name="application-management-best-practices"></a>應用程式管理的最佳做法
 
@@ -30,7 +30,7 @@ ms.locfileid: "88642430"
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>雲端應用程式和單一登入建議
 | 建議 | 註解 |
 | --- | --- |
-| 檢查應用程式的 Azure AD 應用程式資源庫  | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式，這些應用程式會使用企業單一登入 (SSO) 來啟用。 如需應用程式特定的安裝指引，請參閱 [SaaS 應用程式教學課程清單](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)。  | 
+| 檢查應用程式的 Azure AD 應用程式資源庫  | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式，這些應用程式會使用企業單一登入 (SSO) 來啟用。 如需應用程式特定的安裝指引，請參閱 [SaaS 應用程式教學課程清單](../saas-apps/tutorial-list.md)。  | 
 | 使用同盟 SAML 型 SSO  | 當應用程式支援時，請搭配 Azure AD 使用同盟的 SAML 型 SSO，而不是以密碼為基礎的 SSO 和 ADFS。  | 
 | 使用 SHA-256 進行憑證簽署  | Azure AD 預設會使用 SHA-256 演算法來簽署 SAML 回應。 除非應用程式需要 SHA-1 (請參閱 [憑證簽章選項](certificate-signing-options.md) 和 [應用程式登入問題](application-sign-in-problem-application-error.md)，否則請使用 sha-256。 )   | 
 | 需要使用者指派  | 依預設，使用者可以存取您的企業應用程式，而不需指派給他們。 但是，如果應用程式公開角色，或您想要讓應用程式出現在使用者的我的應用程式上，則需要使用者指派。  (請參閱 [整合應用程式的開發人員指引](developer-guidance-for-integrating-applications.md)。 )   | 
@@ -41,7 +41,7 @@ ms.locfileid: "88642430"
 ## <a name="provisioning-recommendations"></a>布建建議
 | 建議 | 註解 |
 | --- | --- |
-| 使用教學課程設定雲端應用程式的布建 | 請參閱 [SaaS 應用程式教學課程清單](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) ，以取得針對您要新增的資源庫應用程式設定布建的逐步指引。 |
+| 使用教學課程設定雲端應用程式的布建 | 請參閱 [SaaS 應用程式教學課程清單](../saas-apps/tutorial-list.md) ，以取得針對您要新增的資源庫應用程式設定布建的逐步指引。 |
 | 使用布建記錄 (預覽) 監視狀態 | 布建 [記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 會提供布建服務所執行之所有動作的詳細資料，包括個別使用者的狀態。 |
 | 將通訊群組指派給布建通知電子郵件 | 若要提高布建服務所傳送之重大警示的可見度，請將通訊群組指派給 [通知電子郵件] 設定。 |
 

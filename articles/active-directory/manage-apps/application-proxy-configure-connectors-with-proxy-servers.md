@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 81a735966b2a0ebdd7c8fcd9e9aa467d68aac354
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792747"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656322"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用現有的內部部署 Proxy 伺服器
 
@@ -116,7 +116,7 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 | &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | 連接器和應用程式 Proxy 雲端服務之間的通訊 |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | 連接器會使用這些 URL 來確認憑證。 |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | 連接器會在註冊程序進行期間使用這些 URL。 |
-| ctldl.windowsupdate.com | 80/HTTP | 連接器會在註冊過程中使用此 URL。 |
+| ctldl.windowsupdate.com | 80/HTTP | 連接器會在註冊程序進行期間使用此 URL。 |
 
 如果防火牆或 Proxy 可供設定 DNS 允許清單，則可允許連往 \*.msappproxy.net 和 \*.servicebus.windows.net 的連線。
 
@@ -208,4 +208,4 @@ SYN 封包是傳送到建立 TCP 連線的第一個封包。 如果此封包未�
 ## <a name="next-steps"></a>後續步驟
 
 * [了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
-* 如果連接器連線有問題，請在 [Azure Active Directory 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)中提出問題，或向支援小組建立票證。
+* 如果連接器連線有問題，請在 [Azure Active Directory 的 Microsoft 問與答頁面](/answers/topics/azure-active-directory.html)中提出問題，或向支援小組建立票證。

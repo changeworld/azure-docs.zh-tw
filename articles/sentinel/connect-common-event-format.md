@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517966"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655845"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
@@ -48,7 +48,7 @@ ms.locfileid: "94517966"
 
 若要使用 Syslog 來源與 Syslog 轉寄站之間的 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 請確定您用來作為記錄轉寄站的 Linux 機器正在執行下列其中一個作業系統：
 
@@ -94,5 +94,4 @@ ms.locfileid: "94517966"
 
 若要深入瞭解您在 Azure Sentinel 中收集到的資料，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
-
+- 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。

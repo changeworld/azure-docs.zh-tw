@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555415"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655692"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>將 F5 ASM 連線到 Azure Sentinel
 
@@ -43,6 +43,5 @@ ms.locfileid: "85555415"
 ## <a name="next-steps"></a>後續步驟
 在本文件中，您已了解如何將 F5 ASM 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
+- 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。
 - [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
-

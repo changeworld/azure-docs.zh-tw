@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372475"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656729"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
 
@@ -54,10 +54,10 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 我的應用程式是免費的，而且不需要在基本層級使用任何授權。 不過，您目錄中的物件數目和您想要部署的其他功能可能需要額外的授權。 某些具有授權需求的常見 Azure AD 案例包含下列安全性功能：
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-* [以群組為基礎的成員資格](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-* [自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-* [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [以群組為基礎的成員資格](../fundamentals/active-directory-manage-groups.md)
+* [自助式密碼重設](../authentication/tutorial-enable-sspr.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 
 如需 Azure AD，請參閱 [完整的授權指南](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -65,17 +65,17 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 開始此專案之前，請先完成下列必要條件：
 
-* [整合應用程式 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-* [管理 Azure AD 使用者和群組基礎結構](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [整合應用程式 SSO](./plan-sso-deployment.md)
+* [管理 Azure AD 使用者和群組基礎結構](../fundamentals/active-directory-manage-groups.md)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>規劃 Azure AD 我的應用程式部署
 
 下表概述我的應用程式部署的主要使用案例：
 
-| 區域| 描述 |
+| 區域| 說明 |
 | - | - |
-| 存取| 您可以從公司網路內的公司和個人裝置存取我的應用程式入口網站。 |
-|存取 | 您可以從公司網路外部的公司裝置存取我的應用程式入口網站。 |
+| Access| 您可以從公司網路內的公司和個人裝置存取我的應用程式入口網站。 |
+|Access | 您可以從公司網路外部的公司裝置存取我的應用程式入口網站。 |
 | 稽核| 使用量資料會每隔29天下載到公司系統。 |
 | 控管| 定義和監視使用者指派給 Azure AD 連線應用程式和群組的生命週期。 |
 | 安全性| 資源的存取權是透過使用者和群組指派來控制。 只有經過授權的使用者可以管理資源存取權。 |
@@ -117,7 +117,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 下表列出幾個重要的我的應用程式設定，以及您可能使用的一般值：
 
-| 組態| 一般值 |
+| 設定| 一般值 |
 | - | - |
 | 判斷試驗群組| 識別要使用的 Azure AD 安全性群組，並確定所有試驗成員都是群組的一部分。 |
 | 判斷要為生產環境啟用的群組或群組。| 識別要使用的 Azure AD 安全性群組或已同步處理至 Azure AD 的 Active Directory 群組。 確定所有試驗成員都是群組的一部分。 |
@@ -166,23 +166,23 @@ Microsoft 會為 [電子郵件提供可自訂的範本，以及我的應用程�
 
 當應用程式支援時，使用同盟 SSO 搭配 Azure AD (OpenID Connect/SAML) ，而不是以密碼為基礎的 SSO 和 ADFS。
 
-如需如何部署及設定 SaaS 應用程式的詳細資訊，請參閱 [SAAS SSO 部署計畫](https://aka.ms/deploymentplans/sso)。
+如需如何部署及設定 SaaS 應用程式的詳細資訊，請參閱 [SAAS SSO 部署計畫](./plan-sso-deployment.md)。
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>規劃部署我的應用程式瀏覽器擴充功能
 
-當使用者登入密碼型 SSO 應用程式時，他們必須安裝並使用我的應用程式安全登入延伸模組。 延伸模組會執行腳本，將密碼傳輸至應用程式的登入表單。 當使用者第一次啟動密碼型 SSO 應用程式時，系統會提示他們安裝此延伸模組。 有關延伸模組的詳細資訊，請參閱本檔中有關 [安裝我的應用程式瀏覽器延伸](access-panel-extension-problem-installing.md)模組的資訊。
+當使用者登入密碼型 SSO 應用程式時，他們必須安裝並使用我的應用程式安全登入延伸模組。 延伸模組會執行腳本，將密碼傳輸至應用程式的登入表單。 當使用者第一次啟動密碼型 SSO 應用程式時，系統會提示他們安裝此延伸模組。 有關延伸模組的詳細資訊，請參閱本檔中有關 [安裝我的應用程式瀏覽器延伸]()模組的資訊。
 
-如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大規模部署擴充功能。 這些選項包括：
+如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](../user-help/my-apps-portal-end-user-access.md)大規模部署擴充功能。 選項包括：
 
-* [Internet Explorer 的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-* [Internet Explorer 的 Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-* [適用于 Chrome、Firefox、Microsoft Edge 或 IE 的使用者導向下載和設定](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Internet Explorer 的群組原則]()
+* [Internet Explorer 的 Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [適用于 Chrome、Firefox、Microsoft Edge 或 IE 的使用者導向下載和設定](../user-help/my-apps-portal-end-user-access.md)
 
 不使用密碼型 SSO 應用程式的使用者也可受益于擴充功能。 這些優點包括從其搜尋列啟動任何應用程式、尋找最近使用的應用程式存取權，以及有我的應用程式頁面連結的功能。
 
 #### <a name="plan-for-mobile-access"></a>行動裝置存取規劃
 
-使用 Intune 原則保護的瀏覽器 (Microsoft Edge 或 Intune Managed Browser) 對於啟動密碼型 SSO 應用程式的行動使用者而言是必要的。 受原則保護的瀏覽器可讓您傳送針對應用程式所儲存的密碼。 Microsoft Edge 或受管理的瀏覽器會提供一組 web 資料保護功能。 您也可以在 iOS 和 Android 裝置上使用適用于企業案例的 Microsoft Edge。 Microsoft Edge 支援與 Intune Managed Browser 相同的管理案例，並改善使用者體驗。 深入瞭解： [使用 Microsoft Intune 受原則保護的瀏覽器管理 web 存取](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
+使用 Intune 原則保護的瀏覽器 (Microsoft Edge 或 Intune Managed Browser) 對於啟動密碼型 SSO 應用程式的行動使用者而言是必要的。 受原則保護的瀏覽器可讓您傳送針對應用程式所儲存的密碼。 Microsoft Edge 或受管理的瀏覽器會提供一組 web 資料保護功能。 您也可以在 iOS 和 Android 裝置上使用適用于企業案例的 Microsoft Edge。 Microsoft Edge 支援與 Intune Managed Browser 相同的管理案例，並改善使用者體驗。 深入瞭解： [使用 Microsoft Intune 受原則保護的瀏覽器管理 web 存取](/intune/app-configuration-managed-browser)。
 
 ## <a name="plan-your-my-apps-deployment"></a>規劃您的我的應用程式部署
 
@@ -248,7 +248,7 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 設定 SSO 的應用程式之後，會將存取權指派給群組。 指派的群組中的使用者將擁有存取權，並會在其我的應用程式中看到應用程式，以及 Microsoft 365 應用程式啟動器。
 
-請參閱 [Active Directory 中的將使用者和群組指派給應用程式](methods-for-assigning-users-and-groups.md)。
+請參閱 [Active Directory 中的將使用者和群組指派給應用程式](./assign-user-or-group-access-portal.md)。
 
 如果您要在測試或部署期間新增群組，但尚未允許應用程式在我的應用程式中顯示，請參閱 [Azure Active Directory 中的使用者體驗中隱藏應用程式](hide-application-from-user-portal.md)。
 
@@ -294,7 +294,7 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 ### <a name="rollback-steps"></a>復原步驟
 
-請務必規劃無法如預期部署時的因應措施。 如果 SSO 設定在部署期間失敗，您必須瞭解如何針對 [sso 問題進行疑難排解](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) ，並降低對使用者的影響。 在極端情況下，您可能需要 [復原 SSO](../manage-apps/plan-sso-deployment.md#rollback-process)。
+請務必規劃無法如預期部署時的因應措施。 如果 SSO 設定在部署期間失敗，您必須瞭解如何針對 [sso 問題進行疑難排解](../hybrid/tshoot-connect-sso.md) ，並降低對使用者的影響。 在極端情況下，您可能需要 [復原 SSO](../manage-apps/plan-sso-deployment.md#rollback-process)。
 
 
 ## <a name="manage-your-implementation"></a>管理您的實作為
@@ -303,13 +303,13 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|
-| 技術服務人員管理| 第1層支援| 無 |
+| 技術服務人員管理| 第1層支援| None |
 | 身分識別管理員| 在問題影響時進行設定和調試 Azure AD| 全域系統管理員 |
-| 應用程式管理員| 應用程式中的使用者證明，具有許可權的使用者設定| 無 |
+| 應用程式管理員| 應用程式中的使用者證明，具有許可權的使用者設定| None |
 | 基礎結構系統管理員| 憑證變換擁有者| 全域系統管理員 |
-| 商務擁有者/專案關係人| 應用程式中的使用者證明，具有許可權的使用者設定| 無 |
+| 商務擁有者/專案關係人| 應用程式中的使用者證明，具有許可權的使用者設定| None |
 
 您可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 管理您的角色，為具有目錄許可權的使用者提供額外的審核、控制和存取權審核。
 
 ## <a name="next-steps"></a>後續步驟
-[規劃 Azure Multi-Factor Authentication 的部署](https://aka.ms/deploymentplans/mfa)
+[規劃 Azure Multi-Factor Authentication 的部署](../authentication/howto-mfa-getstarted.md)

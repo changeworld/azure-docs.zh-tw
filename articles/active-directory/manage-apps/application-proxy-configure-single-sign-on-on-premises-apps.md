@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90838b0b613c043ae41a71c76b5e9023d21df3a6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e7d51aa7e75d7e94d1c2ac66d7edb92a3ef9395b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025845"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657460"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>使用應用程式 Proxy 進行內部部署應用程式的 SAML 單一登入
 
@@ -39,11 +39,11 @@ SAML SSO 與應用程式 Proxy 也可搭配 SAML 權杖加密功能使用。 如
 
 ## <a name="create-an-application-and-set-up-saml-sso"></a>建立應用程式並設定 SAML SSO
 
-1. 在 [Azure 入口網站中，選取 [ **Azure Active Directory > 企業應用程式** ]，然後選取 [ **新增應用程式** ]。
+1. 在 [Azure 入口網站中，選取 [ **Azure Active Directory > 企業應用程式** ]，然後選取 [ **新增應用程式**]。
 
-2. 輸入新應用程式的顯示名稱，選取 **[整合您在資源庫中找不到的任何其他應用程式** ]，然後選取 [ **建立** ]。
+2. 輸入新應用程式的顯示名稱，選取 **[整合您在資源庫中找不到的任何其他應用程式**]，然後選取 [ **建立**]。
 
-3. 在應用程式的 **[總覽** ] 頁面上，選取 [ **單一登入** ]。
+3. 在應用程式的 **[總覽** ] 頁面上，選取 [ **單一登入**]。
 
 4. 選取 [ **SAML** ] 作為單一登入方法。
 
@@ -52,13 +52,13 @@ SAML SSO 與應用程式 Proxy 也可搭配 SAML 權杖加密功能使用。 如
 6. 將至少一個使用者新增至應用程式，並確定測試帳戶具有應用程式的存取權。 連線到公司網路時，請使用測試帳戶來查看您是否有應用程式的單一登入。 
 
    > [!NOTE]
-   > 設定應用程式 Proxy 之後，您將會返回並更新 SAML **回復 URL** 。
+   > 設定應用程式 Proxy 之後，您將會返回並更新 SAML **回復 URL**。
 
 ## <a name="publish-the-on-premises-application-with-application-proxy"></a>使用應用程式 Proxy 發佈內部部署應用程式
 
 在您可以為內部部署應用程式提供 SSO 之前，您必須先啟用應用程式 Proxy 並安裝連接器。 請參閱教學課程 [中的新增內部部署應用程式，以透過應用程式 Proxy 在 Azure AD 中進行遠端存取](application-proxy-add-on-premises-application.md) ，以瞭解如何準備您的內部部署環境、安裝及註冊連接器，以及測試連接器。 然後遵循下列步驟，使用應用程式 Proxy 發佈新的應用程式。 針對以下所述的其他設定，請參閱教學課程中的將內部 [部署應用程式新增至 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) 一節。
 
-1. 當應用程式仍在 Azure 入口網站中開啟時，請選取 [ **應用程式 Proxy** ]。 提供應用程式的 **內部 URL** 。 如果您使用自訂網域，您也必須上傳應用程式的 TLS/SSL 憑證。 
+1. 當應用程式仍在 Azure 入口網站中開啟時，請選取 [ **應用程式 Proxy**]。 提供應用程式的 **內部 URL** 。 如果您使用自訂網域，您也必須上傳應用程式的 TLS/SSL 憑證。 
    > [!NOTE]
    > 最佳做法是盡可能使用自訂網域，以獲得最佳的使用者體驗。 深入瞭解如何 [在 Azure AD 應用程式 Proxy 中使用自訂網域](application-proxy-configure-custom-domain.md)。
 
@@ -70,9 +70,9 @@ SAML SSO 與應用程式 Proxy 也可搭配 SAML 權杖加密功能使用。 如
 
 ## <a name="update-the-saml-configuration"></a>更新 SAML 設定
 
-1. 當應用程式仍在 Azure 入口網站中開啟時，請選取 [ **單一登入** ]。 
+1. 當應用程式仍在 Azure 入口網站中開啟時，請選取 [ **單一登入**]。 
 
-2. 在 [ **以 SAML 設定單一 Sign-On** ] 頁面中，移至 [ **基本 saml** 設定] 標題，然後選取其 **編輯** 圖示 (鉛筆) 。 請確定您在 [應用程式 Proxy] 中設定的 **外部 URL** 已填入 [ **識別碼** ]、[ **回復 URL** ] 和 [ **登出 URL** ] 欄位中。 這些 Url 是應用程式 Proxy 正常運作所需的 Url。 
+2. 在 [ **以 SAML 設定單一 Sign-On** ] 頁面中，移至 [ **基本 saml** 設定] 標題，然後選取其 **編輯** 圖示 (鉛筆) 。 請確定您在 [應用程式 Proxy] 中設定的 **外部 URL** 已填入 [ **識別碼**]、[ **回復 URL**] 和 [ **登出 URL** ] 欄位中。 這些 Url 是應用程式 Proxy 正常運作所需的 Url。 
 
 3. 編輯稍早設定的 **回復 URL** ，使其網域可透過應用程式 Proxy 在網際網路上連線。 例如，如果您的 **外部 url** 是， `https://contosotravel-f128.msappproxy.net` 而且原始的 **回復 url** 是 `https://contosotravel.com/acs` ，您必須將原始的 **回復 url** 更新為 `https://contosotravel-f128.msappproxy.net/acs` 。
 
@@ -97,5 +97,5 @@ SAML SSO 與應用程式 Proxy 也可搭配 SAML 權杖加密功能使用。 如
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure AD 應用程式 Proxy 如何提供單一登入？](application-proxy-single-sign-on.md)
+- [Azure AD 應用程式 Proxy 如何提供單一登入？](./what-is-single-sign-on.md)
 - [疑難排解應用程式 Proxy](application-proxy-troubleshoot.md)

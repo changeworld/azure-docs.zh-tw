@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 512e5e0140038b27b7ffc9f2affb4a0e5b28b41b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516732"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655828"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步驟1：部署記錄轉寄站
 
@@ -34,7 +34,7 @@ ms.locfileid: "94516732"
     - 在 TCP 埠514上接聽來自安全性解決方案的 Syslog 訊息
     - 使用 TCP 通訊埠25226，只將它識別為 CEF 的訊息轉送到 localhost 上的 Log Analytics 代理程式
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須在指定的 Linux 電腦上擁有較高的許可權 (sudo) 。
 
@@ -42,13 +42,13 @@ ms.locfileid: "94516732"
 
 - 在您安裝 Log Analytics 代理程式之前，必須先將 Linux 電腦連線到任何 Azure 工作區。
 
-- 在此程式中的某個時間點，您可能需要工作區識別碼和工作區主要金鑰。 您可以在工作區資源的 [代理程式 **管理** ] 下找到它們。
+- 在此程式中的某個時間點，您可能需要工作區識別碼和工作區主要金鑰。 您可以在工作區資源的 [代理程式 **管理**] 下找到它們。
 
 ## <a name="run-the-deployment-script"></a>執行部署指令碼
  
-1. 在 Azure Sentinel 導覽功能表中，按一下 [ **資料連線器** ]。 從連接器清單中，按一下 [ **常見事件格式] (CEF)** 磚，然後按一下右下方的 [ **開啟連接器] 頁面** 按鈕。 
+1. 在 Azure Sentinel 導覽功能表中，按一下 [ **資料連線器**]。 從連接器清單中，按一下 [ **常見事件格式] (CEF)** 磚，然後按一下右下方的 [ **開啟連接器] 頁面** 按鈕。 
 
-1. 在 **1.2 的 Linux 機器上安裝 CEF 收集器** ，複製下執行下列腳本下提供的連結， **以安裝並套用 CEF 收集器** ，或從下面的文字 (套用工作區識別碼和主要金鑰來取代預留位置) ：
+1. 在 **1.2 的 Linux 機器上安裝 CEF 收集器**，複製下執行下列腳本下提供的連結， **以安裝並套用 CEF 收集器**，或從下面的文字 (套用工作區識別碼和主要金鑰來取代預留位置) ：
 
     ```bash
     sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
@@ -212,5 +212,4 @@ ms.locfileid: "94516732"
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何部署 Log Analytics 代理程式，以將 CEF 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
-
+- 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。

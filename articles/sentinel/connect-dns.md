@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555433"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655658"
 ---
 # <a name="connect-your-domain-name-server"></a>連接您的功能變數名稱伺服器
 
@@ -46,16 +46,16 @@ ms.locfileid: "85555433"
 | [Windows 代理程式](../azure-monitor/platform/agent-windows.md) | 是 | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
 | [Linux 代理程式](../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
 | [System Center Operations Manager 管理群組](../azure-monitor/platform/om-agents.md) | 是 | 此解決方案會收集來自連線 Operations Manager 管理群組的代理程式之中的 DNS 資訊。 Operations Manager 代理程式不需要直接連線到 Azure 監視器。 資料會從管理群組轉送至 Log Analytics 工作區。 |
-| [Azure 儲存體帳戶](../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | 此解決方案沒有使用 Azure 儲存體。 |
+| [Azure 儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | 此解決方案沒有使用 Azure 儲存體。 |
 
 ### <a name="data-collection-details"></a>資料收集詳細資料
 
-此解決方案會從已安裝 Log Analytics 代理程式的 DNS 伺服器收集 DNS 清查和 DNS 事件相關資料。 清查相關資料 (例如 DNS 伺服器數目、區域和資源記錄) 的收集方式是執行 DNS PowerShell Cmdlet。 此資料每兩天會更新一次。 事件相關資料是以接近即時的方式，從 Windows Server 2012 R2 增強的 DNS 記錄與診斷功能所提供的[分析和稽核記錄](https://technet.microsoft.com/library/dn800669.aspx#enhanc)進行收集。
+此解決方案會從已安裝 Log Analytics 代理程式的 DNS 伺服器收集 DNS 清查和 DNS 事件相關資料。 清查相關資料 (例如 DNS 伺服器數目、區域和資源記錄) 的收集方式是執行 DNS PowerShell Cmdlet。 此資料每兩天會更新一次。 事件相關資料是以接近即時的方式，從 Windows Server 2012 R2 增強的 DNS 記錄與診斷功能所提供的[分析和稽核記錄](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)進行收集。
 
 
 ## <a name="connect-your-dns-appliance"></a>連接您的 DNS 設備
 
-1. 在 Azure Sentinel 入口網站中，選取 [ **資料連線器** ]，然後選擇 [ **DNS (預覽]) ** 圖格。
+1. 在 Azure Sentinel 入口網站中，選取 [ **資料連線器** ]，然後選擇 [ **DNS (預覽])** 圖格。
 1. 如果您的 DNS 機器位於 Azure 中：
     1. 按一下 [ **在 Azure Windows 虛擬機器上安裝代理程式**]。
     1. 在 [ **虛擬機器** ] 清單中，選取您要串流至 AZURE SENTINEL 的 DNS 機器。 請確定這是 Windows VM。
@@ -64,8 +64,8 @@ ms.locfileid: "85555433"
 
 2. 如果您的 DNS 機器不是 Azure VM：
     1. 按一下 [ **在非 Azure 電腦上安裝代理程式**]。
-    1. 在 [ **直接代理程式** ] 視窗中，選取 [ **下載 windows 代理程式 (64 位) ** 或 **下載 windows 代理程式 (32 位]) **。
-    1. 在您的 DNS 機器上安裝代理程式。 複製 **工作區識別碼**、 **主要金鑰**和 **次要金鑰** ，並在安裝期間出現提示時使用它們。
+    1. 在 [ **直接代理程式** ] 視窗中，選取 [ **下載 windows 代理程式 (64 位)** 或 **下載 windows 代理程式 (32 位])**。
+    1. 在您的 DNS 機器上安裝代理程式。 複製 **工作區識別碼**、 **主要金鑰** 和 **次要金鑰** ，並在安裝期間出現提示時使用它們。
 
 3. 若要在 Log Analytics 中針對 DNS 記錄使用相關的架構，請搜尋 **DnsEvents**。
 
@@ -76,13 +76,13 @@ ms.locfileid: "85555433"
 ## <a name="troubleshooting"></a>疑難排解
 
 如果查閱查詢未顯示在 Azure Sentinel 中，請遵循下列步驟，以正確地顯示查詢：
-1. 開啟伺服器上 [DNS 分析記錄](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))檔。
+1. 開啟伺服器上 [DNS 分析記錄](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))檔。
 2. 請確定 DNSEvents 出現在您的 Log Analytics 集合清單中。
 3. 開啟 [Azure DNS 分析](../azure-monitor/insights/dns-analytics.md)。
-4. 在 Azure DNS Analytics 的 [設定] **底下，變更**任何設定並加以儲存，然後視需要將其變更回，然後再次儲存。
+4. 在 Azure DNS Analytics 的 [設定] **底下，變更** 任何設定並加以儲存，然後視需要將其變更回，然後再次儲存。
 5. 請檢查 Azure DNS 分析，以確定目前正在顯示查詢。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本檔中，您已瞭解如何將 DNS 內部部署設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。

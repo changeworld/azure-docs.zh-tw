@@ -5,16 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776556"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657885"
 ---
-# <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>透過 ExpressRoute 私用對等互連設定站對站 VPN 連線 (預覽版) 
+# <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>透過 ExpressRoute 私用對等互連設定站對站 VPN 連線
 
 您可以使用 RFC 1918 IP 位址，透過 ExpressRoute 私用對等互連來設定虛擬網路閘道的站對站 VPN。 這項設定提供下列優點：
 
@@ -76,14 +76,14 @@ ms.locfileid: "91776556"
 
    區域冗余 Sku 在 SKU 結尾有 "AZ"。 例如， **VpnGw1AZ**。 區域多餘的閘道僅適用于可用性區域服務可用的區域。 如需支援可用性區域的區域相關資訊，請參閱 [支援可用性](../availability-zones/az-region.md)區域的區域。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="圖1":::
-1. 在閘道上啟用私人 Ip。 選取 **[** 設定]，然後將 [ **閘道私人 ip** ] 設定為 [ **啟用**]。 選取 [儲存] 來儲存變更。
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="閘道私人 Ip":::
+1. 在閘道上啟用私人 Ip。 選取 **[** 設定]，然後將 [ **閘道私人 ip** ] 設定為 [ **啟用**]。 選取 [儲存]  來儲存變更。
 1. 在 [ **總覽** ] 頁面上，選取 [ **查看更多** ] 以查看私人 IP 位址。 寫下此資訊，以供稍後在設定步驟中使用。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="圖1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="概觀分頁" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. 若要在連線上啟用 [ **使用 Azure 私人 IP 位址** ]，  **請選取 [** 設定]。 將 [ **使用 Azure 私人 IP 位址** ] 設定為 [ **已啟用**]，然後選取 [ **儲存**]。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="圖1":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="閘道私人 Ip-已啟用":::
 1. 從您的防火牆，偵測您在步驟3中記下的私人 IP。 私人 IP 應可透過 ExpressRoute 私用對等互連來連線。
 1. 使用此私人 IP 做為您內部部署防火牆上的遠端 IP，以透過 ExpressRoute 私用對等互連來建立站對站通道。
 

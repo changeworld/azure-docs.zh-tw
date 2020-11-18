@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032419"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657919"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>關於密碼編譯需求和 Azure VPN 閘道
 
@@ -20,7 +20,7 @@ ms.locfileid: "88032419"
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>關於 Azure VPN 連接的 IKEv1 和 IKEv2
 
-傳統上，我們只允許基本 Sku 的 IKEv1 連線，以及基本 Sku 以外的所有 VPN 閘道 Sku 允許的 IKEv2 連接。 基本 Sku 只允許1個連線，以及其他限制（例如效能），使用只支援 IKEv1 通訊協定之舊版裝置的客戶擁有有限的體驗。 為了加強使用 IKEv1 通訊協定之客戶的體驗，我們現在允許所有 VPN 閘道 Sku 的 IKEv1 連線，但基本 SKU 除外。 如需詳細資訊，請參閱 [VPN 閘道 sku](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)。
+傳統上，我們只允許基本 Sku 的 IKEv1 連線，以及基本 Sku 以外的所有 VPN 閘道 Sku 允許的 IKEv2 連接。 基本 Sku 只允許1個連線，以及其他限制（例如效能），使用只支援 IKEv1 通訊協定之舊版裝置的客戶擁有有限的體驗。 為了加強使用 IKEv1 通訊協定之客戶的體驗，我們現在允許所有 VPN 閘道 Sku 的 IKEv1 連線，但基本 SKU 除外。 如需詳細資訊，請參閱 [VPN 閘道 sku](./vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 ![Azure VPN 閘道 IKEv1 和 IKEv2 連接](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 

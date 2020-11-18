@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659648"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655947"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>從 Azure 資訊安全中心連接 Azure Defender 警示資料
 
-使用 Azure Defender 警示連接器從 [Azure 資訊安全中心](../security-center/security-center-intro.md) 內嵌 Azure defender 警示，並將其串流至 Azure Sentinel。 
+使用 Azure Defender 警示連接器從 [Azure 資訊安全中心](../security-center/security-center-introduction.md) 內嵌 Azure defender 警示，並將其串流至 Azure Sentinel。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您的使用者必須具有您所串流記錄的訂用帳戶中的「安全性讀取者」角色。
 
@@ -32,9 +32,9 @@ ms.locfileid: "89659648"
 
 1. 從 [資料連線器資源庫] 中，選取 [ASC (可能仍會被呼叫 Azure 資訊安全中心) ] 的 [ **Azure Defender 警示** ]，然後按一下 [ **開啟連接器頁面** ] 按鈕。
 
-1. 在 [設定] 底下，按一下您想要串流至 Azure Sentinel 的每個訂 **用帳戶旁**的 **[** 連線]。 只有當您有必要的許可權時，[連接] 按鈕才會出現。
+1. 在 [設定] 底下，按一下您想要串流至 Azure Sentinel 的每個訂 **用帳戶旁** 的 **[** 連線]。 只有當您有必要的許可權時，[連接] 按鈕才會出現。
 
-1. 您可以選取是否要讓 Azure Defender 的警示在 Azure Sentinel 中自動產生事件。 在 [ **建立事件**] 底下，選取 [ **已啟用** ] 以開啟自動從警示建立事件的預設分析規則。 然後，您可以在 [作用中**規則**] 索引標籤的 [**分析**] 下編輯此規則。
+1. 您可以選取是否要讓 Azure Defender 的警示在 Azure Sentinel 中自動產生事件。 在 [ **建立事件**] 底下，選取 [ **已啟用** ] 以開啟自動從警示建立事件的預設分析規則。 然後，您可以在 [作用中 **規則**] 索引標籤的 [**分析**] 下編輯此規則。
 
 1. 若要在 Log Analytics 中使用適用于 Azure Defender 警示的相關架構，請搜尋 **SecurityAlert**。
 

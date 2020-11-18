@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614550"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657103"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>設定匯總的命名空間
 
@@ -57,7 +57,7 @@ Azure Blob 儲存體目標只能有一個命名空間路徑。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 時，您必須在建立儲存體目標時新增命名空間路徑。 如需詳細資料，請參閱 [新增 Azure Blob 儲存體目標](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) 。
 
@@ -119,7 +119,7 @@ NFS 儲存體系統的所有命名空間路徑都是在一個儲存體目標上�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[設定 Azure HPC Cache 的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 時，您必須在建立儲存體目標時新增至少一個命名空間路徑。 如需詳細資料，請參閱 [新增 NFS 儲存體目標](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) 。
 

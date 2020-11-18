@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 97873c9f59dc0d99293d2b1ebaf87af309dbcf47
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 432104c7e2cb9486dfb47a793ae73829d8705b60
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208289"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655811"
 ---
 # <a name="connect-data-sources"></a>連線資料來源
 
@@ -83,7 +83,7 @@ Azure Sentinel 支援下列資料連線方法：
     - [Zimperium](connect-zimperium-mtd.md)
 
 
-- 透過**代理程式的外部解決方案**： Azure Sentinel 可以透過代理程式連接到任何其他可使用 Syslog 通訊協定執行即時記錄資料流程的資料來源。
+- 透過 **代理程式的外部解決方案**： Azure Sentinel 可以透過代理程式連接到任何其他可使用 Syslog 通訊協定執行即時記錄資料流程的資料來源。
 
     大部分設備會使用 Syslog 通訊協定來傳送事件訊息，包含記錄本身和記錄的相關資料。 記錄檔的格式會有所不同，但大部分的設備也都支援記錄資料以 CEF 為基礎的格式。 
 
@@ -137,17 +137,17 @@ Azure Sentinel 支援下列資料連線方法：
 | AzureActivity | [連線 Azure 活動](connect-azure-activity.md)和[活動記錄概觀](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Connect Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Connect Azure AD](connect-azure-active-directory.md)  | &#10003; | |
-| AzureFirewall |[Azure 診斷](../firewall/tutorial-diagnostics.md) | &#10003; | |
-| InformationProtectionLogs_CL  | [Azure 資訊保護報告](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[連線 Azure 資訊保護](connect-azure-information-protection.md)  | &#10003; | 除了資料類型之外，這通常會使用 **InformationProtectionEvents**函式。 如需詳細資訊，請參閱[如何修改報告及建立自訂查詢](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
+| AzureFirewall |[Azure 診斷](../firewall/firewall-diagnostics.md) | &#10003; | |
+| InformationProtectionLogs_CL  | [Azure 資訊保護報告](/azure/information-protection/reports-aip)<br>[連線 Azure 資訊保護](connect-azure-information-protection.md)  | &#10003; | 除了資料類型之外，這通常會使用 **InformationProtectionEvents** 函式。 如需詳細資訊，請參閱[如何修改報告及建立自訂查詢](/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
 | AzureNetworkAnalytics_CL  | [流量分析結構描述](../network-watcher/traffic-analytics.md) [流量分析](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [連線 CEF](connect-common-event-format.md)  | &#10003; | |
 | OfficeActivity | [連線 Office 365](connect-office-365.md) | &#10003; | |
-| SecurityEvents | [連線 Windows 安全性事件](connect-windows-security-events.md)  | &#10003; | 若為不安全的通訊協定活頁簿，請參閱[不安全的通訊協定活頁簿設定](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
+| SecurityEvents | [連線 Windows 安全性事件](connect-windows-security-events.md)  | &#10003; | 若為不安全的通訊協定活頁簿，請參閱[不安全的通訊協定活頁簿設定](./quickstart-get-visibility.md#use-built-in-workbooks)  |
 | syslog | [連線 Syslog](connect-syslog.md) | &#10003; | |
-| Microsoft Web 應用程式防火牆 (WAF) - (AzureDiagnostics) |[連線 Microsoft Web 應用程式防火牆](connect-microsoft-waf.md) | &#10003; | |
+| Microsoft Web 應用程式防火牆 (WAF) - (AzureDiagnostics) |[連線 Microsoft Web 應用程式防火牆](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [連線 Symantec](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [連線威脅情報](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure 監視服務對應](../azure-monitor/insights/service-map.md)<br>[Azure 監視器 VM 見解上線](../azure-monitor/insights/vminsights-onboard.md) <br> [啟用 Azure 監視器 VM 見解](../azure-monitor/insights/vminsights-enable-overview.md) <br> [使用單一 VM 上線](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [使用透過原則上線](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| &#10007; | VM 見解活頁簿  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure 監視服務對應](../azure-monitor/insights/service-map.md)<br>[Azure 監視器 VM 見解上線](../azure-monitor/insights/vminsights-enable-overview.md) <br> [啟用 Azure 監視器 VM 見解](../azure-monitor/insights/vminsights-enable-overview.md) <br> [使用單一 VM 上線](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [使用透過原則上線](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM 見解活頁簿  |
 | DnsEvents | [連線 DNS](connect-dns.md) | &#10003; | |
 | W3CIISLog | [連線 IIS 記錄](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [連線 Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
@@ -157,7 +157,7 @@ Azure Sentinel 支援下列資料連線方法：
 | ASC SecurityAlert  | 從 Azure 資訊安全中心連線[到 Azure Defender 警示](connect-azure-security-center.md)  | &#10003; | |
 | MCAS SecurityAlert  | [連線 Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (事件) | [連線 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [連線 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [取得 Sysmon 剖析器](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 預設不會在虛擬機器上安裝 Sysmon 集合。 如需有關如何安裝 Sysmon 代理程式的詳細資訊，請參閱 [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon)。 |
+| Sysmon (事件) | [連線 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [連線 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [取得 Sysmon 剖析器](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 預設不會在虛擬機器上安裝 Sysmon 集合。 如需有關如何安裝 Sysmon 代理程式的詳細資訊，請參閱 [Sysmon](/sysinternals/downloads/sysmon)。 |
 | ConfigurationData  | [自動執行 VM 清查](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [自動執行 VM 追蹤](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [連線 F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

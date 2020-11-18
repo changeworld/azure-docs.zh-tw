@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 648de447a08e593af28d11a3be206a2cfee80902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf379b051ba42be2d7df7d288f07cdc2a0002a1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790087"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657630"
 ---
 # <a name="list-azure-deny-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 拒絕指派
 
@@ -27,12 +27,12 @@ ms.locfileid: "84790087"
 > [!NOTE]
 > 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱 [Azure 拒絕指派](deny-assignments.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要取得拒絕指派的相關資訊，您必須具備：
 
 - `Microsoft.Authorization/denyAssignments/read`包含在大部分[Azure 內建角色](built-in-roles.md)中的許可權
-- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [的 PowerShell](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [的 PowerShell](../cloud-shell/overview.md)
 
 ## <a name="list-deny-assignments"></a>列出拒絕指派
 
@@ -123,7 +123,7 @@ Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解 Azure 拒絕指派](deny-assignments.md)
 - [使用 Azure 入口網站列出 Azure 拒絕指派](deny-assignments-portal.md)

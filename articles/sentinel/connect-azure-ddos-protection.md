@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8e44f69965af1987bd5f023644d966b3caf1c77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505820"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656049"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>從 Azure DDoS 保護連接資料
 
@@ -22,15 +22,15 @@ ms.locfileid: "89505820"
 > Azure Sentinel 中的 Azure DDoS 保護資料連線器目前處於公開預覽狀態。
 > 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-分散式阻斷服務 (DDoS) 攻擊嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。 結合應用程式設計最佳做法的[Azure DDoS 保護](../virtual-network/ddos-protection-overview.md)，可針對 DDoS 攻擊提供穩固的防禦。 您可以將 Azure DDoS 保護記錄連接到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並加以合併以改善您的調查。 
+分散式阻斷服務 (DDoS) 攻擊嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。 結合應用程式設計最佳做法的[Azure DDoS 保護](../ddos-protection/ddos-protection-overview.md)，可針對 DDoS 攻擊提供穩固的防禦。 您可以將 Azure DDoS 保護記錄連接到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並加以合併以改善您的調查。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
-- 您必須有已設定的 [Azure DDoS 標準保護計劃](../virtual-network/manage-ddos-protection.md#create-a-ddos-protection-plan)。
+- 您必須有已設定的 [Azure DDoS 標準保護計劃](../ddos-protection/manage-ddos-protection.md#create-a-ddos-protection-plan)。
 
-- 您必須有已設定的 [虛擬網路，且已啟用 Azure DDoS Standard](../virtual-network/manage-ddos-protection.md#enable-ddos-for-a-new-virtual-network)。
+- 您必須有已設定的 [虛擬網路，且已啟用 Azure DDoS Standard](../ddos-protection/manage-ddos-protection.md#enable-ddos-protection-for-a-new-virtual-network)。
 
 ## <a name="connect-to-azure-ddos-protection"></a>連接到 Azure DDoS 保護
     
@@ -49,9 +49,9 @@ ms.locfileid: "89505820"
 
        - 標示 [ **傳送至 Log Analytics** ] 核取方塊。 其中會顯示兩個新的欄位。 選擇 Azure Sentinel 所在) 的相關 **訂** 用帳戶和 **Log Analytics 工作區** (。
 
-       - 標示您想要內嵌其記錄檔之規則類型的核取方塊。 我們建議 **DDoSProtectionNotifications**、 **DDoSMitigationFlowLogs**和 **DDoSMitigationReports**。
+       - 標示您想要內嵌其記錄檔之規則類型的核取方塊。 我們建議 **DDoSProtectionNotifications**、 **DDoSMitigationFlowLogs** 和 **DDoSMitigationReports**。
 
-    1. 按一下畫面頂端的 [儲存]****。 針對您已啟用 DDoS 保護的任何其他防火牆 (公用 IP 位址) 重複此程式。
+    1. 按一下畫面頂端的 [儲存]。 針對您已啟用 DDoS 保護的任何其他防火牆 (公用 IP 位址) 重複此程式。
 
 1. 若要在 Log Analytics 中使用相關的架構來 Azure DDoS 保護警示，請搜尋 **AzureDiagnostics**。
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: a66b76350da6f3b3804dac73a7aeb9f54d2e34eb
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938367"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657069"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用憑證驗證設定點對站連線 (傳統)
 
@@ -58,15 +58,15 @@ ms.locfileid: "91938367"
 * **資源群組：** >testrg
 * **VNet 名稱：** VNet1
 * **位址空間：** 192.168.0.0/16 <br>在此範例中，我們只使用一個位址空間。 您可以針對 VNet 使用一個以上的位址空間。
-* **子網名稱：** 前端
+* **子網路名稱：** FrontEnd
 * **子網路位址範圍：** 192.168.1.0/24
 * **GatewaySubnet：** 10.11.255.0/27
-* **區域：** (us) 美國東部
+* **區域：** (美國) 美國東部
 * **用戶端位址空間：** 172.16.201.0/24 <br> 使用這個點對站連線來連線到 VNet 的 VPN 用戶端，會收到來自指定集區的 IP 位址。
 * **連線類型**：選取 **點對站**。
 * **GatewaySubnet 位址範圍 (CIDR 區塊) ：** 192.168.200.0/24
 
-在開始之前，請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
+在開始之前，請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 
 ## <a name="create-a-virtual-network"></a><a name="vnet"></a>建立虛擬網路
 
@@ -85,10 +85,10 @@ ms.locfileid: "91938367"
    * 連線類型：點對站
    * 用戶端位址空間：新增 VPN 用戶端在連線時接收 IP 位址的 IP 位址範圍。 使用不會重疊的私人 IP 位址範圍搭配您從其連線的內部部署位置，或搭配您連線至的 VNet。
 1. 將 [ **不要設定閘道** ] 核取方塊保留為未選取狀態。 我們將建立閘道。
-1. 在頁面底部，選取 **[下一步：閘道 >] **。
+1. 在頁面底部，選取 **[下一步：閘道 >]**。
 1. 在 [ **閘道** ] 索引標籤上，選取下列值：
 
-   * **大小：** 大小是虛擬網路閘道的閘道 SKU。 在 Azure 入口網站中，預設的 SKU 是**預設**。 如需閘道 Sku 的詳細資訊，請參閱 [關於 VPN 閘道設定](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+   * **大小：** 大小是虛擬網路閘道的閘道 SKU。 在 Azure 入口網站中，預設的 SKU 是 **預設**。 如需閘道 Sku 的詳細資訊，請參閱 [關於 VPN 閘道設定](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
    * **路由類型：** 您必須選取 [ **動態** ] 以進行點對站設定。 靜態路由將無法運作。
    * **閘道子網：** 此欄位已自動填入。 您無法變更名稱。 如果您嘗試使用 PowerShell 或任何其他方式來變更名稱，閘道將無法正常運作。
    * **位址範圍 (CIDR 區塊) ：** 雖然您可以建立小至/29 的閘道子網，但我們建議您選取至少/28 或/27，建立包含更多位址的較大子網。 這麼做將回有足夠的位址可供容納您未來可能需要的其他組態。 使用閘道子網路時，避免將網路安全性群組 (NSG) 與閘道子網路產生關聯。 將網路安全性群組與此子網路產生關聯，可能會導致您的 VPN 閘道未能如預期般運作。
@@ -114,7 +114,7 @@ ms.locfileid: "91938367"
 建立閘道之後，請將受信任根憑證的 .cer 檔案 (其中包含公開金鑰資訊) 上傳至 Azure 伺服器。 請勿上傳根憑證的私密金鑰。 您上傳憑證之後，Azure 就可以用它來驗證已安裝從受信任根憑證產生之用戶端憑證的用戶端。 如有需要，您稍後可以上傳其他受信任的根憑證檔案 (最多 20 個)。
 
 1. 流覽至您所建立的虛擬網路。
-1. 在 [ **設定**] 底下，選取 [ **點對站**連線]。
+1. 在 [ **設定**] 底下，選取 [ **點對站** 連線]。
 1. 選取 [ **管理憑證**]。
 1. 選取 [上傳] 。
 1. 在 [上 **傳憑證** ] 窗格中，選取資料夾圖示，然後流覽至您想要上傳的憑證。
@@ -132,8 +132,8 @@ ms.locfileid: "91938367"
 1. 流覽至您 VNet 的 **點對站** 連線設定。
 1. 在頁面頂端，選取對應至將安裝它之用戶端作業系統的下載套件：
 
-   * 若為64位用戶端，請選取 **VPN 用戶端 (64 位) **。
-   * 若為32位用戶端，請選取 **VPN 用戶端 (32 位) **。
+   * 若為64位用戶端，請選取 **VPN 用戶端 (64 位)**。
+   * 若為32位用戶端，請選取 **VPN 用戶端 (32 位)**。
 
 1. Azure 會使用用戶端所需的特定設定產生套件。 每次變更 VNet 或閘道時，您都需要下載新的用戶端設定套件，並將其安裝在用戶端電腦上。
 1. 封裝產生之後，請選取 [ **下載**]。
@@ -153,7 +153,7 @@ ms.locfileid: "91938367"
 
 1. 在用戶端電腦上，移至 [VPN 設定]。
 1. 選取您所建立的 VPN。 如果您使用範例設定，連接將會標示為 [ **群組 >testrg VNet1**]。
-1. 選取 [連接]。
+1. 選取 [連接]  。
 1. 在 [Windows Azure 虛擬網路] 方塊中，選取 **[連線]**。 如果出現有關憑證的快顯訊息，請選取 [ **繼續** ] 以使用較高的許可權，並選取 **[是]** 以接受設定變更。
 1. 當您的連線成功時，您會看到 **連線** 的通知。
 
@@ -202,11 +202,11 @@ ms.locfileid: "91938367"
 
 您可以藉由將指紋新增至撤銷清單來撤銷用戶端憑證。
 
-1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱[做法：擷取憑證的指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
+1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱[做法：擷取憑證的指紋](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)。
 1. 將資訊複製到文字編輯器，並移除其空格，讓其成為連續字串。
-1. 流覽至 **點對站 VPN**連線，然後選取 [ **管理憑證**]。
-1. 選取 [撤銷清單]**** 來開啟 [撤銷清單]**** 頁面。
-1. 在 [指紋]**** 中，貼上連續一行文字且不含空格的憑證指紋。
+1. 流覽至 **點對站 VPN** 連線，然後選取 [ **管理憑證**]。
+1. 選取 [撤銷清單] 來開啟 [撤銷清單] 頁面。
+1. 在 [指紋] 中，貼上連續一行文字且不含空格的憑證指紋。
 1. 選取 [ **+ 新增至清單** ]，將憑證指紋新增至 (CRL) 的憑證撤銷清單。
 
 更新完成之後，憑證無法再用於連線。 嘗試使用此憑證進行連線的用戶端會收到訊息，指出憑證不再有效。
@@ -217,8 +217,8 @@ ms.locfileid: "91938367"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 連線完成後，就可以將虛擬機器新增至您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。
+* 連線完成後，就可以將虛擬機器新增至您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](../index.yml)。
 
-* 若要深入了解網路與 Linux 虛擬機器，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/linux/network-overview.md)。
+* 若要深入了解網路與 Linux 虛擬機器，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/network-overview.md)。
 
 * 如需 P2S 疑難排解的相關資訊，請參閱[針對 Azure 點對站連線進行疑難排解](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

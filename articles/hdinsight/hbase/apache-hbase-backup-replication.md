@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3ed55387034a383e402d027fd5cab60c4a59c23c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542772"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657035"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>設定 HDInsight 上的 Apache HBase 和 Apache Phoenix 備份和複寫
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>快照集
 
-[快照](https://hbase.apache.org/book.html#ops.snapshots) 集可讓您對 HBase 資料存放區中的資料進行時間點備份。 快照集的額外負荷最低，幾秒就能完成，因為快照集作業實際上是擷取該瞬間儲存體中所有檔案名稱的中繼資料作業。 建立快照集時，不會真的複製任何資料。 快照集依賴 HDFS 中儲存之資料的不可變本質 ，HDFS 中的更新、刪除、插入都會以新資料表示。 您可以在同一個叢集上還原 (複製  ) 快照集，或將快照集匯出至其他叢集。
+[快照](https://hbase.apache.org/book.html#ops.snapshots) 集可讓您對 HBase 資料存放區中的資料進行時間點備份。 快照集的額外負荷最低，幾秒就能完成，因為快照集作業實際上是擷取該瞬間儲存體中所有檔案名稱的中繼資料作業。 建立快照集時，不會真的複製任何資料。 快照集依賴 HDFS 中儲存之資料的不可變本質 ，HDFS 中的更新、刪除、插入都會以新資料表示。 您可以在同一個叢集上還原 (複製) 快照集，或將快照集匯出至其他叢集。
 
 若要建立快照集，請透過 SSH 連線至 HDInsight HBase 叢集的前端節點並啟動 `hbase` Shell：
 
@@ -219,6 +219,12 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -cop
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
+如果您的目的地叢集是 ADLS Gen 2 叢集，請變更上述命令以針對 ADLS Gen 2 所使用的設定進行調整：
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<account_name>.dfs.core.windows.net=<key> -Dfs.azure.account.auth.type.<account_name>.dfs.core.windows.net=SharedKey -Dfs.azure.always.use.https.<account_name>.dfs.core.windows.net=false -Dfs.azure.account.keyprovider.<account_name>.dfs.core.windows.net=org.apache.hadoop.fs.azurebfs.services.SimpleKeyProvider -snapshot 'Snapshot1' -copy-to 'abfs://<container>@<account_name>.dfs.core.windows.net/hbase'
+```
+
 匯出快照集之後，請透過 SSH 連線到目的地叢集的前端節點，並使用前面所述的命令來還原快照集 `restore_snapshot` 。
 
 快照集可提供資料表在執行 `snapshot` 命令時的完整備份。 快照集無法讓您依時間視窗執行增量快照集，也不能指定要包含在快照集內的資料行系列的子集。
@@ -242,7 +248,7 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.mya
 
 若要在 HDInsight 上啟用複寫，請對執行中的來源 HDInsight 叢集套用指令碼動作。 如需在叢集中啟用複寫的逐步解說，或要使用 Azure 資源管理範本在虛擬網路中建立的範例叢集上試驗複寫，請參閱[設定 Apache HBase 複寫](apache-hbase-replication.md)。 這篇文章也包含啟用 Phoenix 中繼資料複寫的指示。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [設定 Apache HBase 複寫](apache-hbase-replication.md)
 * [使用 HBase 匯入和匯出公用程式](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

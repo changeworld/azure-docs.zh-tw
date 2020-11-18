@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09e813e0dff09885f104e43099b10d6f6f8a7f9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165068"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657426"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何讓原生用戶端應用程式與 Proxy 應用程式互動
 
@@ -31,7 +31,7 @@ ms.locfileid: "88165068"
 
 ![使用者、Azure AD 和已發佈應用程式之間的關係](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-若要發佈原生應用程式，請使用 Microsoft 驗證程式庫，該程式庫會處理驗證並支援許多用戶端環境。 應用程式 Proxy 適合[代表登入使用者呼叫 Web API 的傳統型應用程式](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user)案例。
+若要發佈原生應用程式，請使用 Microsoft 驗證程式庫，該程式庫會處理驗證並支援許多用戶端環境。 應用程式 Proxy 適合[代表登入使用者呼叫 Web API 的傳統型應用程式](../develop/authentication-flows-app-scenarios.md#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user)案例。
 
 本文引導您完成使用應用程式 Proxy 和 Azure AD 驗證程式庫發佈原生應用程式的四個步驟。
 
@@ -68,7 +68,7 @@ ms.locfileid: "88165068"
 1. 在新應用程式註冊頁面的側邊欄中，選取 [API 權限]。 新應用程式註冊的 [API 權限] 頁面隨即顯示。
 1. 選取 [新增權限]。 [要求 API 權限] 頁面隨即顯示。
 1. 在 [選取 API] 設定底下，選取 [我的組織使用的 API]。 清單隨即顯示，其中包含您目錄中公開 API 的應用程式。
-1. 在搜尋方塊中輸入，或捲動以尋找您在[步驟 1：發佈您的 Proxy 應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-native-client-application#step-1-publish-your-proxy-application)中發佈的 Proxy 應用程式，然後選取 Proxy 應用程式。
+1. 在搜尋方塊中輸入，或捲動以尋找您在[步驟 1：發佈您的 Proxy 應用程式](#step-1-publish-your-proxy-application)中發佈的 Proxy 應用程式，然後選取 Proxy 應用程式。
 1. 在 [您的應用程式需要什麼類型的權限？] 標題中，選取權限類型。 如果您的原生應用程式需要以登入使用者的身分存取 Proxy 應用程式 API，請選擇 [委派的權限]。
 1. 在 [選取權限] 標題中，選取所需的權限，然後選取 [新增權限]。 您的原生應用程式的 [API 權限] 頁面現在會顯示您新增的 Proxy 應用程式和權限 API。
 

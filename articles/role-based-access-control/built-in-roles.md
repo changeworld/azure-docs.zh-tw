@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 701c901cb9b85aeaf329846c13e6ed051ea52e63
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2ffa5d65675b8fe6eeecbcc71c49d7aa8ebb7eaf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288504"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657766"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -63,17 +63,17 @@ ms.locfileid: "93288504"
 > | [讀取者及資料存取](#reader-and-data-access) | 可讓您檢視所有內容，但無法讓您刪除或建立儲存體帳戶或內含的資源。 也可透過存取儲存體帳戶金鑰，對儲存體帳戶中內含的所有資料進行讀取/寫入存取。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [儲存體帳戶參與者](#storage-account-contributor) | 允許管理儲存體帳戶。 支援存取帳戶金鑰，以透過共用金鑰授權來存取資料。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [儲存體帳戶金鑰操作員服務角色](#storage-account-key-operator-service-role) | 允許列出及重新產生儲存體帳戶存取金鑰。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [儲存體 Blob 資料參與者](#storage-blob-data-contributor) | 讀取、寫入和刪除 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
-> | [儲存體 Blob 資料擁有者](#storage-blob-data-owner) | 支援完整存取 Azure 儲存體 blob 容器和資料，包括指派 POSIX 存取控制。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
-> | [儲存體 Blob 資料讀者](#storage-blob-data-reader) | 讀取和列出 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
-> | [儲存體 Blob 委派者](#storage-blob-delegator) | 取得使用者委派金鑰，以針對使用 Azure AD 認證所簽署的容器或 blob，建立共用存取簽章。 如需詳細資訊，請參閱[建立使用者委派 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
+> | [儲存體 Blob 資料參與者](#storage-blob-data-contributor) | 讀取、寫入和刪除 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [儲存體 Blob 資料擁有者](#storage-blob-data-owner) | 支援完整存取 Azure 儲存體 blob 容器和資料，包括指派 POSIX 存取控制。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
+> | [儲存體 Blob 資料讀者](#storage-blob-data-reader) | 讀取和列出 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | [儲存體 Blob 委派者](#storage-blob-delegator) | 取得使用者委派金鑰，以針對使用 Azure AD 認證所簽署的容器或 blob，建立共用存取簽章。 如需詳細資訊，請參閱[建立使用者委派 SAS](/rest/api/storageservices/create-user-delegation-sas)。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
 > | [儲存體檔案資料 SMB 共用參與者](#storage-file-data-smb-share-contributor) | 允許讀取、寫入及刪除 Azure 檔案共用上的檔案/目錄。 此角色在 Windows 檔案伺服器上沒有內建的對等項。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | [儲存體檔案資料 SMB 共用提升權限的參與者](#storage-file-data-smb-share-elevated-contributor) | 允許對 Azure 檔案共用上的檔案/目錄，讀取、寫入、刪除和修改 ACL。 此角色相當於 Windows 檔案伺服器上的「變更」檔案共用 ACL。 | a7264617-510b-434b-a828-9731dc254ea7 |
 > | [儲存體檔案資料 SMB 共用讀者](#storage-file-data-smb-share-reader) | 允許讀取 Azure 檔案共用上的檔案/目錄。 此角色相當於 Windows 檔案伺服器上的「讀取」檔案共用 ACL。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
-> | [儲存體佇列資料參與者](#storage-queue-data-contributor) | 讀取、寫入及刪除 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
-> | [儲存體佇列資料訊息處理者](#storage-queue-data-message-processor) | 從 Azure 儲存體佇列中瞄核、擷取和刪除訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
-> | [儲存體佇列資料訊息傳送者](#storage-queue-data-message-sender) | 將訊息新增至 Azure 儲存體佇列。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
-> | [儲存體佇列資料讀者](#storage-queue-data-reader) | 讀取和列出 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [儲存體佇列資料參與者](#storage-queue-data-contributor) | 讀取、寫入及刪除 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | [儲存體佇列資料訊息處理者](#storage-queue-data-message-processor) | 從 Azure 儲存體佇列中瞄核、擷取和刪除訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | [儲存體佇列資料訊息傳送者](#storage-queue-data-message-sender) | 將訊息新增至 Azure 儲存體佇列。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | [儲存體佇列資料讀者](#storage-queue-data-reader) | 讀取和列出 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
 > | [Azure 地圖服務資料讀者](#azure-maps-data-reader) | 授權從 Azure 地圖服務帳戶讀取地圖相關資料。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [搜尋服務參與者](#search-service-contributor) | 可讓您管理「搜尋」服務，但無法存取它們。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
@@ -180,9 +180,9 @@ ms.locfileid: "93288504"
 > | **監視** |  |  |
 > | [Application Insights 元件參與者](#application-insights-component-contributor) | 可以管理 Application Insights 元件 | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights 快照集偵錯工具](#application-insights-snapshot-debugger) | 給予使用者權限，以便檢視及下載使用 Application Insights 快照偵錯工具所收集的偵錯快照。 請注意，[擁有者](#owner)或[參與者](#contributor)角色未包含這些權限。 將 Application Insights 快照偵錯者角色指派給使用者時，您必須直接將此角色授與使用者。 此角色若新增至自訂角色，則無法辨識。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [監視參與者](#monitoring-contributor) | 可以讀取所有監視資料並編輯監視設定。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [監視參與者](#monitoring-contributor) | 可以讀取所有監視資料並編輯監視設定。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [監視計量發行者](#monitoring-metrics-publisher) | 針對 Azure 資源啟用發佈計量 | 3913510d-42f4-4e42-8a64-420c390055eb |
-> | [監視讀取器](#monitoring-reader) | 可以讀取所有監視資料 (計量、記錄等等)。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [監視讀取器](#monitoring-reader) | 可以讀取所有監視資料 (計量、記錄等等)。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [活頁簿參與者](#workbook-contributor) | 可以儲存共用活頁簿。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [活頁簿讀者](#workbook-reader) | 可以讀取活頁簿。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **管理和治理** |  |  |
@@ -2114,7 +2114,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-blob-data-contributor"></a>儲存體 Blob 資料參與者
 
-讀取、寫入和刪除 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+讀取、寫入和刪除 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2167,7 +2167,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-blob-data-owner"></a>儲存體 Blob 資料擁有者
 
-支援完整存取 Azure 儲存體 blob 容器和資料，包括指派 POSIX 存取控制。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+支援完整存取 Azure 儲存體 blob 容器和資料，包括指派 POSIX 存取控制。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2210,7 +2210,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-blob-data-reader"></a>儲存體 Blob 資料讀者
 
-讀取和列出 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+讀取和列出 Azure 儲存體的容器和 blob。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2253,7 +2253,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-blob-delegator"></a>儲存體 Blob 委派者
 
-取得使用者委派金鑰，以針對使用 Azure AD 認證所簽署的容器或 blob，建立共用存取簽章。 如需詳細資訊，請參閱[建立使用者委派 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 [深入了解](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
+取得使用者委派金鑰，以針對使用 Azure AD 認證所簽署的容器或 blob，建立共用存取簽章。 如需詳細資訊，請參閱[建立使用者委派 SAS](/rest/api/storageservices/create-user-delegation-sas)。 [深入了解](/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2419,7 +2419,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-queue-data-contributor"></a>儲存體佇列資料參與者
 
-讀取、寫入及刪除 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+讀取、寫入及刪除 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2468,7 +2468,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-queue-data-message-processor"></a>儲存體佇列資料訊息處理者
 
-從 Azure 儲存體佇列中瞄核、擷取和刪除訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+從 Azure 儲存體佇列中瞄核、擷取和刪除訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2509,7 +2509,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-queue-data-message-sender"></a>儲存體佇列資料訊息傳送者
 
-將訊息新增至 Azure 儲存體佇列。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+將訊息新增至 Azure 儲存體佇列。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -2548,7 +2548,7 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 
 ### <a name="storage-queue-data-reader"></a>儲存體佇列資料讀者
 
-讀取和列出 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
+讀取和列出 Azure 儲存體的佇列和佇列訊息。 若要了解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的權限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [深入了解](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4214,7 +4214,7 @@ ACR 隔離資料寫入者
 
 ### <a name="sql-security-manager"></a>SQL 安全性管理員
 
-可讓您管理 SQL 伺服器及資料庫的安全性相關原則，但無法存取它們。 [深入了解](../sql-database/sql-database-advanced-data-security.md)
+可讓您管理 SQL 伺服器及資料庫的安全性相關原則，但無法存取它們。 [深入了解](../azure-sql/database/azure-defender-for-sql.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4339,7 +4339,7 @@ ACR 隔離資料寫入者
 
 ### <a name="sql-server-contributor"></a>SQL Server 參與者
 
-可讓您管理 SQL 伺服器及資料庫，但無法存取這些伺服器及資料庫，也無法存取其安全性相關原則。 [深入了解](../sql-database/sql-database-aad-authentication-configure.md)
+可讓您管理 SQL 伺服器及資料庫，但無法存取這些伺服器及資料庫，也無法存取其安全性相關原則。 [深入了解](../azure-sql/database/authentication-aad-configure.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -7727,7 +7727,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 
 ### <a name="monitoring-contributor"></a>監視參與者
 
-可以讀取所有監視資料並編輯監視設定。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 [深入了解](../azure-monitor/platform/roles-permissions-security.md)
+可以讀取所有監視資料並編輯監視設定。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 [深入了解](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -7875,7 +7875,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 
 ### <a name="monitoring-reader"></a>監視讀取器
 
-可以讀取所有監視資料 (計量、記錄等等)。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 [深入了解](../azure-monitor/platform/roles-permissions-security.md)
+可以讀取所有監視資料 (計量、記錄等等)。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 [深入了解](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
