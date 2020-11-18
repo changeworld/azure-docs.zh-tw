@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8bfe6f07fead700ae71bba1c28ccb13aa700513c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677355"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842765"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能的 Azure Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 
 一般而言，例如 HDInsight 和 Azure Data Lake Analytics 的分析引擎都有每個檔案的額外負荷。 如果您將資料儲存為許多小型檔案，會造成效能的負面影響。 一般情況下，將您的資料組織成較大大小的檔案，以提升效能 (大小可從 256MB 到 100GB)。 某些引擎和應用程式可能無法有效率地處理大小大於 100 GB 的檔案。
 
-有時候，資料管線對於具有大量小型檔案的未經處理資料，具有受限制的控制權。 建議進行「cooking」程序，該程序會產生較大的檔案，以用於下游應用程式。
+有時候，資料管線對於具有大量小型檔案的未經處理資料，具有受限制的控制權。 一般來說，我們建議您的系統有某種程式可將小型檔案匯總成較大的檔案，以供下游應用程式使用。
 
 ### <a name="organizing-time-series-data-in-folders"></a>組織資料夾中的時間序列資料
 

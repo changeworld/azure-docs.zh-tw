@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
-ms.custom: mvc
-ms.openlocfilehash: 75d76c64c10bf3ecc28c32452618048119bb9a59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d43fab43b05ccfd88308390f58ba48ff9111b295
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547617"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842816"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫彈性伺服器
 
@@ -32,7 +32,7 @@ ms.locfileid: "92547617"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼**。
 
 ```azurecli-interactive
 az login
@@ -79,7 +79,7 @@ az postgres flexible-server create
 az postgres flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin** 。
+結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin**。
 
 <!--FIXME-->
 ```json

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698746"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842748"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
@@ -54,15 +54,15 @@ Azure 也支援 Symantec Endpoint Protection (SEP)。 透過入口網站整合�
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication 是一種驗證方法，其需要使用一個以上的驗證方法。 它可以為使用者登入和交易新增重要的第二層安全性。
+Azure AD Multi-Factor Authentication 是一種需要使用一個以上驗證方法的驗證方法。 它可以為使用者登入和交易新增重要的第二層安全性。
 
 Multi-Factor Authentication 有助於保護對資料與應用程式的存取，同時滿足使用者對簡單登入程序的需求。 它可以透過一系列的驗證選項 (例如電話、簡訊，或是行動應用程式通知或驗證碼) 和第三方 OATH 權杖來提供強大的驗證功能。
 
 深入了解：
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [什麼是 Azure Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure Multi-Factor Authentication 的作用](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [什麼是 Azure AD Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication 的運作方式](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 

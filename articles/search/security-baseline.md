@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f4782b923222208bbf759ba8415162621a55e0e1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e594dab3e4bf36fedee7a068068934501ca02f24
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631150"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842782"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>適用于 Azure 認知搜尋的 Azure 安全性基準
 
-此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md) 的指引套用至 Azure 認知搜尋。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure 認知搜尋的相關指引來分組。 不適用 Azure 認知搜尋的 **控制項** ，或已排除的客戶。
+此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md) 的指引套用至 Azure 認知搜尋。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure 認知搜尋的相關指引來分組。 不適用 Azure 認知搜尋的 **控制項**，或已排除的客戶。
 
 若要查看 Azure 認知搜尋如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure 認知搜尋安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
@@ -34,9 +34,9 @@ ms.locfileid: "92631150"
 
 - [如何設定 Azure 認知搜尋防火牆](./service-configure-firewall.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
@@ -48,17 +48,17 @@ ms.locfileid: "92631150"
 
 - [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
@@ -66,9 +66,9 @@ ms.locfileid: "92631150"
 
 - [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
@@ -80,9 +80,9 @@ ms.locfileid: "92631150"
 
 - [如何啟用網路監看員](../network-watcher/network-watcher-create.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
@@ -92,17 +92,17 @@ ms.locfileid: "92631150"
 
 - [如何從索引和同義字地圖取得客戶管理的金鑰資訊](./search-security-get-encryption-keys.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
@@ -112,17 +112,17 @@ ms.locfileid: "92631150"
 
 - [虛擬網路服務標籤](../virtual-network/service-tags-overview.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
 **指導** 方針：認知搜尋不會依設計而依賴網路資源。 與您的搜尋應用程式相關的用戶端應用程式和資料來源可能位於虛擬網路上，但是搜尋服務本身不會部署在網路中。 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
@@ -140,17 +140,17 @@ ms.locfileid: "92631150"
 
 - [如何使用網路安全性群組規則來篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
 **指導** 方針：認知搜尋沒有或依賴任何網路元件，所以無法監視這些資源的設定。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
@@ -160,9 +160,9 @@ ms.locfileid: "92631150"
 
 **指導** 方針：認知搜尋不支援設定您自己的時間同步處理來源。 搜尋服務依賴 Microsoft 時間同步處理來源，而不會向客戶公開進行設定。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -175,9 +175,9 @@ ms.locfileid: "92631150"
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
@@ -187,17 +187,17 @@ ms.locfileid: "92631150"
 
 - [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
@@ -209,9 +209,9 @@ ms.locfileid: "92631150"
 
 - [如何設定 Azure 儲存體客戶紀錄的保留原則](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
@@ -227,9 +227,9 @@ ms.locfileid: "92631150"
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
@@ -241,33 +241,33 @@ ms.locfileid: "92631150"
 
 - [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
 **指導** 方針：不適用認知搜尋。 Microsoft 會管理基礎平臺的反惡意程式碼解決方案。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
 **指導** 方針：不適用認知搜尋。 它不會產生或使用 DNS 記錄。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
 **指導** 方針：不適用認知搜尋。 無法使用命令列審核進行認知搜尋。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
@@ -286,17 +286,17 @@ ms.locfileid: "92631150"
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole)
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
 **指導** 方針：不適用認知搜尋。 它並沒有預設密碼的概念。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
@@ -308,9 +308,9 @@ ms.locfileid: "92631150"
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
@@ -320,9 +320,9 @@ ms.locfileid: "92631150"
 
 - [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
@@ -332,9 +332,9 @@ ms.locfileid: "92631150"
 
 - [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
@@ -346,9 +346,9 @@ ms.locfileid: "92631150"
 - [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
  
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
@@ -358,17 +358,17 @@ ms.locfileid: "92631150"
 
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
 **指導** 方針：不適用認知搜尋。 它不支援使用已核准的位置作為存取的條件。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -378,9 +378,9 @@ ms.locfileid: "92631150"
 
 - [建立及管理 Azure 認知搜尋服務的 api 金鑰](./search-security-api-keys.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
@@ -394,9 +394,9 @@ ms.locfileid: "92631150"
 
 - [監視 Azure 認知搜尋的作業和活動](./search-monitor-usage.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
@@ -406,9 +406,9 @@ ms.locfileid: "92631150"
 
 - [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
@@ -420,17 +420,17 @@ ms.locfileid: "92631150"
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md) 
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
 **指導** 方針：不適用認知搜尋。 客戶加密箱不支援認知搜尋。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="data-protection"></a>資料保護
 
@@ -438,15 +438,15 @@ ms.locfileid: "92631150"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
-**指引** ：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
+**指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引** ：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應以虛擬網路/子網分隔、正確標記，並在網路安全性群組或 Azure 防火牆內受到保護。 儲存或處理敏感性資料的資源應該是隔離的。 使用 Private Link 將私人端點設定為認知搜尋。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應以虛擬網路/子網分隔、正確標記，並在網路安全性群組或 Azure 防火牆內受到保護。 儲存或處理敏感性資料的資源應該是隔離的。 使用 Private Link 將私人端點設定為認知搜尋。
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
@@ -454,9 +454,9 @@ ms.locfileid: "92631150"
 
 - [如何建立認知搜尋的私人端點](./service-create-private-endpoint.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
@@ -466,9 +466,9 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
@@ -476,9 +476,9 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
@@ -488,9 +488,9 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
@@ -500,9 +500,9 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
  
 - [如何使用角色進行認知搜尋的系統管理存取](./search-security-rbac.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
@@ -512,9 +512,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
@@ -524,9 +524,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
@@ -536,9 +536,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [如何建立認知搜尋活動的警示](./search-monitor-logs.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="vulnerability-management"></a>弱點管理
 
@@ -548,41 +548,41 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 **指導** 方針：目前無法供認知搜尋使用。  針對儲存搜尋服務內容的叢集，Microsoft 會負責這些叢集的弱點管理。
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
 **指導** 方針：不適用認知搜尋。 Microsoft 會在支援認知搜尋服務的基礎系統上執行弱點管理。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：Microsoft
+**責任**：Microsoft
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
 **指導** 方針：不適用認知搜尋。 它沒有任何標準風險評等或計分系統可用於弱點掃描結果。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
@@ -600,9 +600,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
@@ -610,9 +610,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
@@ -623,17 +623,17 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
 **指導** 方針：在認知搜尋中定義與編制索引和技能集處理相關的已核准 Azure 資源清單。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
@@ -643,9 +643,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
@@ -653,25 +653,25 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 建議您根據您的組織原則和安全性標準，針對已依據您的組織原則和安全性標準進行核准的軟體應用程式清查，並監視您的 Azure 計算資源上安裝的任何未核准的軟體標題。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
 **指導** 方針：不適用認知搜尋。 它不會公開任何計算資源，也不會允許在其任何資源上安裝軟體應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
@@ -686,17 +686,17 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md) 
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：維護已核准軟體標題的清查
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于在計算資源上執行的應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制使用者與 Azure Resource Manager 互動的能力
 
@@ -704,25 +704,25 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 控制用來驗證所有其他作業之要求的金鑰存取權，特別是與認知搜尋內容相關的金鑰。
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12：限制使用者在計算資源中執行腳本的能力
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="secure-configuration"></a>安全設定
 
@@ -742,17 +742,17 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 - [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
@@ -768,17 +768,17 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [Azure Resource Manager 範本總覽](../azure-resource-manager/templates/overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
@@ -788,17 +788,17 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [Azure Repos 文件](/azure/devops/repos/index)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
@@ -812,17 +812,17 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的設定管理工具
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
@@ -832,29 +832,29 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](./security-controls-policy.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
 **指導** 方針：不適用認知搜尋。 這項建議適用于計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
 **指導** 方針：使用 Azure 受控識別搭配 Azure Key Vault，以簡化雲端應用程式的秘密管理。
 - [如何使用適用于 Azure 資源的受控識別](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
-- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md) 
+- [如何建立 Key Vault](../key-vault/general/quick-create-portal.md) 
 
 - [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md) 
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
@@ -864,17 +864,17 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [使用受控識別設定客戶管理的金鑰進行資料加密](./search-security-manage-encryption-keys.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
 **指導** 方針：不適用認知搜尋。 它不會裝載程式碼，也不會有任何要識別的認證。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
@@ -886,9 +886,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Azure 認知搜尋) ，但不會對客戶內容執行。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：不適用
+**責任**：不適用
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
@@ -896,9 +896,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 您必須負責預先掃描即將上傳至非計算 Azure 資源的任何內容。 Microsoft 無法存取客戶資料，因此無法代表您執行客戶內容的反惡意程式碼掃描。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8.3：確定已更新反惡意程式碼軟體和簽章
 
@@ -906,9 +906,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 針對您的組織所擁有並用於搜尋解決方案的任何計算資源，請遵循安全性中心的建議、計算 &amp; 應用程式，以確保所有端點都是最新的簽章。 針對 Linux，請使用協力廠商反惡意程式碼解決方案。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="data-recovery"></a>資料復原
 
@@ -920,9 +920,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [GitHub 索引-備份-還原範例](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/index-backup-restore)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份並備份任何客戶管理的金鑰
 
@@ -932,9 +932,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [如何在 Azure 中備份 Key Vault 金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
@@ -944,9 +944,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [如何在 Azure 中還原 Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
@@ -960,9 +960,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="incident-response"></a>事件回應
 
@@ -978,13 +978,13 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [客戶也可以利用 NIST 的電腦安全性性事件處理指南來協助建立自己的事件回應計畫](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
-**指引** ：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性是以資訊安全中心在尋找或 analytically 中的信心，以及導致警示的活動背後有惡意意圖的信賴等級為基礎。
+**指引**：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性是以資訊安全中心在尋找或 analytically 中的信心，以及導致警示的活動背後有惡意意圖的信賴等級為基礎。
 
 此外，使用標記標記訂用帳戶，並建立命名系統來識別和分類 Azure 資源，尤其是處理敏感性資料。 您必須負責根據發生事件的 Azure 資源和環境的重要性來排定補救警示的優先順序。
 
@@ -992,29 +992,29 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引** ：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
+**指引**：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
 
 - [請參閱 NIST 的發行集、「測試、訓練和練習適用于 IT 計畫和功能的指南」。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指引** ：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
 - [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
@@ -1024,19 +1024,19 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指引** ：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
+**指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
 - [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
@@ -1045,12 +1045,12 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
 **指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
-- [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 

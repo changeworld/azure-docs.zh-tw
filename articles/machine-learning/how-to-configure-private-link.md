@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: cfa6dcb0b1fc173bdf3612308227b8309491e9fa
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312729"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842697"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>設定 Azure Machine Learning 工作區的 Azure Private Link
 
@@ -29,7 +29,7 @@ Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點
 >
 > 如果您使用 Mozilla Firefox，您可能會遇到嘗試存取工作區私人端點的問題。 此問題可能與 Mozilla 的 HTTPS DNS 相關。 我們建議使用 Google Chrome Microsoft Edge 作為因應措施。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如果您計畫使用具有客戶管理金鑰的已啟用私人連結的工作區，您必須使用支援票證要求這項功能。 如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
@@ -39,7 +39,7 @@ Azure Government 區域或 Azure 中國的世紀區域無法使用具有 private
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用私人端點的工作區
 
-使用下列其中一種方法來建立具有私人端點的工作區。 這兩種方法都 __需要現有的虛擬網路__ ：
+使用下列其中一種方法來建立具有私人端點的工作區。 這兩種方法都 __需要現有的虛擬網路__：
 
 > [!TIP]
 > 如果您想要同時建立工作區、私人端點和虛擬網路，請參閱 [使用 Azure Resource Manager 範本來建立 Azure Machine Learning 的工作區](how-to-create-workspace-template.md)。
@@ -113,10 +113,10 @@ az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取 [ __+ 私人端點__ ]。 使用欄位來建立新的私人端點。
+從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取 [ __+ 私人端點__]。 使用欄位來建立新的私人端點。
 
 * 選取 __區域__ 時，請選取與您的虛擬網路相同的區域。 
-* 選取 __資源類型__ 時，請使用 __MachineLearningServices/工作區__ 。 
+* 選取 __資源類型__ 時，請使用 __MachineLearningServices/工作區__。 
 * 將 __資源__ 設定為您的工作區名稱。
 
 最後，選取 [ __建立__ ] 以建立私人端點。
@@ -146,7 +146,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取您想要移除的端點。 最後，選取 [ __移除__ ]。
+從入口網站的 [Azure Machine Learning] 工作區中，選取 [ __私人端點__ 連線]，然後選取您想要移除的端點。 最後，選取 [ __移除__]。
 
 ---
 

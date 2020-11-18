@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700754"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842731"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 可用的安全性服務與技術
 
@@ -71,7 +71,7 @@ ms.locfileid: "94700754"
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|雲端式驗證存放庫，可支援多租用戶、雲端式目錄，以及 Azure 內的多項身分識別管理服務。  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|身分識別管理服務，可控制客戶在使用以 Azure 為基礎的應用程式時如何註冊、登入及管理其設定檔。   |
 | [Azure Active Directory 網域服務](../../active-directory-domain-services/overview.md)| Active Directory Domain Services 的雲端式受控版本。 |
-| [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| 安全性佈建，其在允許存取受保護的資訊前，採用數種不同形式的驗證。 |
+| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| 安全性佈建，其在允許存取受保護的資訊前，採用數種不同形式的驗證。 |
 
 ## <a name="backup-and-disaster-recovery"></a>備份和災害復原
 |服務|描述|

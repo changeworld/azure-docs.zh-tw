@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e5456c53ca891a7c88797f9661a6a3b9b9935e08
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 208e99f61694f5a81a98dbc649e2a6035f57891b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660902"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842578"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>整合 Azure VPN 閘道 RADIUS 驗證與 NPS 伺服器以進行多重要素驗證 
 
@@ -49,9 +49,9 @@ ms.locfileid: "94660902"
 
 
  
-### <a name="step-2-configure-the-nps-for-azure-mfa"></a>步驟 2：設定 Azure MFA 的 NPS
+### <a name="step-2-configure-the-nps-for-azure-ad-mfa"></a>步驟2設定 Azure AD MFA 的 NPS
 
-1. 在 NPS 伺服器上，[安裝 Azure MFA 的 NPS 延伸模組](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)。
+1. 在 NPS 伺服器上， [安裝 AZURE AD MFA 的 nps 擴充](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)功能。
 2. 開啟 NPS 主控台，在 [ **RADIUS 用戶端**] 上按一下滑鼠右鍵，然後選取 [ **新增**]。 藉由指定下列設定來建立 RADIUS 用戶端：
 
     - **易記名稱**：輸入任何名稱。
@@ -81,5 +81,5 @@ ms.locfileid: "94660902"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
-- [將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](../active-directory/authentication/howto-mfa-nps-extension.md)
+- [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
+- [將現有的 NPS 基礎結構與 Azure AD Multi-Factor Authentication 整合](../active-directory/authentication/howto-mfa-nps-extension.md)

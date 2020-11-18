@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002282"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842629"
 ---
 # <a name="security-best-practices"></a>安全性最佳做法
 
@@ -70,7 +70,7 @@ Windows 虛擬桌面有許多內建的安全性控制項。 在本節中，您�
 
 ### <a name="require-multi-factor-authentication"></a>需要多重要素驗證
 
-Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗證，可改善整個部署的安全性。 若要深入瞭解，請參閱 [啟用適用于 Windows 虛擬桌面的 Azure Multi-Factor Authentication](set-up-mfa.md)。
+Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗證，可改善整個部署的安全性。 若要深入瞭解，請參閱 [啟用 Windows 虛擬桌面的 Azure AD Multi-Factor Authentication](set-up-mfa.md)。
 
 ### <a name="enable-conditional-access"></a>啟用條件式存取
 
