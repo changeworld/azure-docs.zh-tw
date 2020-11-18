@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 930c1f94446eb145a093bf7a8706485d40eec210
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313770"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379653"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 受控私人端點 (預覽)
 
@@ -49,7 +49,7 @@ Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure 虛�
 
 建立工作區時，Azure Synapse 會在該工作區中建立兩個受控私人端點，一個供專用 SQL 集區使用，另一個供無伺服器 SQL 集區使用。 
 
-這兩個受控私人端點會列在 Azure Synapse Studio 中。 選取左側導覽中的 [管理]，然後選取 [受控虛擬網路] 以在 Studio 中查看。
+這兩個受控私人端點會列在 Synapse Studio 中。 選取左側導覽中的 [管理]，然後選取 [受控私人端點] 以在 Studio 中查看。
 
 以 SQL 集區為目標的受控私人端點稱為 *synapse-ws-sql--\<workspacename\>* ，而以無伺服器 SQL 集區為目標的受控私人端點則稱為 *synapse-ws-sqlOnDemand--\<workspacename\>* 。
 

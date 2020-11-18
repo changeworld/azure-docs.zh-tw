@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927969"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348282"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫 - 彈性伺服器 (預覽)
 
@@ -75,7 +75,7 @@ ms.locfileid: "92927969"
    * 使用 VPN 或 ExpressRoute 從非 Azure 資源連線到您的彈性伺服器
    * 沒有公用端點
 
-* **公用存取 (允許的 IP 位址)** - 您可以使用公用端點部署彈性伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為 **防火牆規則** 。
+* **公用存取 (允許的 IP 位址)** - 您可以使用公用端點部署彈性伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為 **防火牆規則**。
 
 若要深入了解，請參閱[網路概念](concepts-networking.md)。
 
@@ -89,9 +89,9 @@ ms.locfileid: "92927969"
 
 MySQL 是一種熱門的資料庫引擎，可執行網際網路規模的 Web 和行動應用程式。 我們有許多客戶將其用於線上教育服務、影片串流服務、數位付款解決方案、電子商務平台、遊戲服務、新聞入口網站、政府和醫療保健網站。 當 Web 或行動裝置應用程式上的流量增加時，需要這些服務才能提供和調整流量。
 
-在應用程式端，應用程式通常是以 JAVA 或 php 開發，並遷移到 [Azure 虛擬機器擴展集](/azure/virtual-machine-scale-sets/overview.md) 或  [Azure App 服務](/azure/app-service/overview.md) 上執行，或會容器化以在 [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes.md) 上執行。 以虛擬機器擴展集、App Service 或 AKS 作為基礎結構，藉由立即佈建新的 VM 並複寫應用程式的無狀態元件以滿足要求，而簡化了應用程式調整，但最後資料庫通常是集中式具狀態元件的瓶頸。
+在應用程式端，應用程式通常是以 JAVA 或 php 開發，並遷移到 [Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/overview.md) 或  [Azure App 服務](../../app-service/overview.md) 上執行，或會容器化以在 [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) 上執行。 以虛擬機器擴展集、App Service 或 AKS 作為基礎結構，藉由立即佈建新的 VM 並複寫應用程式的無狀態元件以滿足要求，而簡化了應用程式調整，但最後資料庫通常是集中式具狀態元件的瓶頸。
 
-讀取複本功能可讓您將資料從適用於 MySQL 的 Azure 資料庫彈性伺服器複寫到唯讀伺服器。 您可以從來源伺服器複寫到 **最多 10個複本** 。 複本會使用 MySQL 引擎的原生[二進位記錄 (binlog) 檔案位置型複寫技術](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)來進行非同步更新。 您可以使用負載平衡器 Proxy 解決方案，例如 [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)，順暢地擴增您的應用程式工作負載以讀取複本，而不需要任何應用程式重構成本。 
+讀取複本功能可讓您將資料從適用於 MySQL 的 Azure 資料庫彈性伺服器複寫到唯讀伺服器。 您可以從來源伺服器複寫到 **最多 10個複本**。 複本會使用 MySQL 引擎的原生[二進位記錄 (binlog) 檔案位置型複寫技術](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)來進行非同步更新。 您可以使用負載平衡器 Proxy 解決方案，例如 [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)，順暢地擴增您的應用程式工作負載以讀取複本，而不需要任何應用程式重構成本。 
 
 若要深入了解，請參閱[讀取複本概念](concepts-read-replicas.md)。 
 

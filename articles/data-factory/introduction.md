@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89536307"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491268"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
 
@@ -22,7 +22,7 @@ ms.locfileid: "89536307"
 
 在巨量資料的世界中，未經處理、未經組織的資料通常是儲存在關聯式、非關聯式及其他儲存體系統中。 不過，未經處理資料本身並沒有適當的內容或意義，因此無法為分析人員、資料科學人員或業務決策者提供有意義的深入解析。 
 
-巨量資料需要以下服務：可協調和運作程序，將這些龐大的未經處理資料存放區精簡成可操作的業務見解。 Azure Data Factory 是一個針對這些複雜的混合式「擷取、轉換和載入」(ELT)、「擷取、載入和轉換」(ELT) 及資料整合專案建立的受控雲端服務。
+巨量資料需要以下服務：可協調和運作程序，將這些龐大的未經處理資料存放區精簡成可操作的商業見解。 Azure Data Factory 是一個針對這些複雜的混合式「擷取、轉換和載入」(ELT)、「擷取、載入和轉換」(ELT) 及資料整合專案建立的受控雲端服務。
 
 例如，想像有一個收集雲端遊戲所產生之數 PB 遊戲記錄的遊戲公司。 該公司想要分析這些記錄，深入了解客戶喜好設定、人口統計和使用行為。 這家公司也想要識別向上銷售和交叉銷售機會，開發強大的新功能來推動業務成長，以及為客戶提供更好的體驗。
 
@@ -30,7 +30,7 @@ ms.locfileid: "89536307"
 
 為了擷取深入解析，它希望使用雲端中的 Spark 叢集 (Azure HDInsight) 來處理聯結的資料，然後將轉換後的資料發佈到雲端資料倉儲 (例如 Azure Synapse Analytics (前稱為 SQL 資料倉儲))，來輕鬆地以該資料建立報告。 他們想要自動執行此工作流程，並且每日按照排程監視和管理此工作流程。 他們也想要在檔案進入 Blob 存放區容器時執行該工作流程。
 
-Azure Data Factory 就是解決這類資料案例的平台。 這是一項*雲端式 ETL 和資料整合服務，可讓您在建立資料驅動工作流程，以便協調資料移動和大規模轉換資料*。 使用 Azure Data Factory，可以建立並排程資料驅動的工作流程 (稱為管線)，它可以從不同的資料存放區擷取資料。 您可以建立複雜的 ETL 程序，透過資料流程或使用計算服務 (例如 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL Database) 以視覺化方式轉換資料。 
+Azure Data Factory 就是解決這類資料案例的平台。 這是一項 *雲端式 ETL 和資料整合服務，可讓您在建立資料驅動工作流程，以便協調資料移動和大規模轉換資料*。 使用 Azure Data Factory，可以建立並排程資料驅動的工作流程 (稱為管線)，它可以從不同的資料存放區擷取資料。 您可以建立複雜的 ETL 程序，透過資料流程或使用計算服務 (例如 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL Database) 以視覺化方式轉換資料。 
 
 此外，您可以將已轉換的資料發佈至資料存放區，例如 Azure Synapse Analytics，讓商業智慧 (BI) 應用程式取用。 最後，透過 Azure Data Factory，即可將未經處理資料組織到有意義的資料存放區和資料湖中，以供做出更好的業務決策。
 
@@ -91,7 +91,7 @@ Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或�
 
 Data Factory 中的連結服務，有兩個用途：
 
-- 用來代表**資料存放區**，其中包含 (但不限於) SQL Server資料庫、Oracle 資料庫、檔案共用或Azure Blob 儲存體帳戶。 如需所支援資料存放區的清單，請參閱[複製活動](copy-activity-overview.md)一文。
+- 用來代表 **資料存放區**，其中包含 (但不限於) SQL Server資料庫、Oracle 資料庫、檔案共用或Azure Blob 儲存體帳戶。 如需所支援資料存放區的清單，請參閱[複製活動](copy-activity-overview.md)一文。
 
 - 用來代表可裝載活動執行的 **計算資源** 。 例如，HDInsightHive 活動會在 HDInsight Hadoop 叢集上執行。 如需轉換活動和所支援計算環境的清單，請參閱[轉換資料](transform-data.md)一文。
 

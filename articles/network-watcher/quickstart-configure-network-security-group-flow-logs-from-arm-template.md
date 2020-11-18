@@ -1,28 +1,28 @@
 ---
-title: 快速入門：使用 Azure Resource Manager 範本設定 NSG 流程記錄
-description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 和 Azure PowerShell，以程式設計方式啟用 NSG 流量記錄。
+title: 快速入門：使用 Azure Resource Manager 範本 (ARM 範本) 設定網路安全性群組流量記錄
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 和 Azure PowerShell，以程式設計方式啟用網路安全性群組 (NSG) 流量記錄。
 services: network-watcher
 author: damendo
-Customer intent: I need to enable the NSG flow logs using Azure Resource Manager Template
+Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
 ms.date: 07/22/2020
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: 96f30c05527754cbce3b7593c8d62fb56844d41e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 563f111a656376899fcd0201b42f87bfea445865
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042748"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488024"
 ---
-# <a name="quickstart-configure-nsg-flow-logs-using-an-arm-template"></a>快速入門：使用 ARM 範本設定 NSG 流量記錄
+# <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>快速入門：使用 ARM 範本設定網路安全性群組流量記錄
 
-在本快速入門中，您會使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 範本 (ARM 範本) 和 Azure PowerShell啟用 [NSG 流量記錄](network-watcher-nsg-flow-logging-overview.md)。
+在本快速入門中，您將了解如何使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 範本 (ARM 範本) 和 Azure PowerShell 啟用[網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-一開始會先提供 NSG Flow 記錄物件的屬性概觀，再加上幾個範例範本。 然後會使用本機 PowerShell 執行個體來部署範本。
+首先我們會概述 NSG flow 記錄物件的屬性。 我們將提供範例範本。 然後，我們會使用本機 Azure PowerShell 執行個體來部署範本。
 
 如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
 
@@ -34,18 +34,18 @@ ms.locfileid: "93042748"
 
 ## <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)。
+我們在本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)。
 
 :::code language="json" source="~/quickstart-templates/101-networkwatcher-flowlogs-create/azuredeploy.json":::
 
-範本中定義了多個資源：
+範本中定義了下列資源：
 
 - [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 - [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments)
 
 ## <a name="nsg-flow-logs-object"></a>NSG 流量記錄物件
 
-具有所有參數的 NSG Flow 記錄物件如下所示。 如需屬性的完整概觀，請參閱 [networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs)。
+下列程式碼顯示 NSG flow 記錄物件及其參數。 若要建立 `Microsoft.Network/networkWatchers/flowLogs` 資源，請將此程式碼新增至範本的資源區段：
 
 ```json
 {
@@ -76,20 +76,20 @@ ms.locfileid: "93042748"
 }
 ```
 
-若要建立 `Microsoft.Network/networkWatchers/flowLogs` 資源，請將上述 JSON 新增到範本的資源區段。
+如需 NSG 記錄物件屬性的完整概觀，請參閱 [networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs)。
 
-## <a name="creating-your-template"></a>建立範本
+## <a name="create-your-template"></a>建立您自己的範本
 
-如果您是第一次使用 ARM 範本，可以使用下列連結深入了解。
+如果您是第一次使用 ARM 範本，請參閱下列文章以深入了解 ARM 範本：
 
 - [使用 ARM 範本與 Azure PowerShell 來部署資源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [教學課程：建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)。
+下列範例是完整的範本。 這也是最簡單的範本版本。 此範例包含要設定 NSG 流量記錄所需傳遞的基本參數。 如需更多範例，請參閱概觀文章[從 Azure Resource Manager 範本設定 NSG 流程記錄](network-watcher-nsg-flow-logging-azure-resource-manager.md)。
 
-以下完整範本範例是最簡單的版本，藉由傳遞最少的參數來設定 NSG 流量記錄。 如需更多範例，請移至此[操作指南](network-watcher-nsg-flow-logging-azure-resource-manager.md)。
+### <a name="example"></a>範例
 
-**範例** ：下列範本會在目標 NSG 上啟用 NSG 流量記錄，並將這些記錄儲存在指定的儲存體帳戶中。
+下列範本會啟用 NSG 的流量記錄，然後將記錄儲存在特定的儲存體帳戶中：
 
 ```json
 {
@@ -116,16 +116,19 @@ ms.locfileid: "93042748"
 ```
 
 > [!NOTE]
-> - 資源名稱的格式為「Parent Resource_Child resource」。 在這裡，父代資源是區域網路監看員執行個體 (格式：NetworkWatcher_RegionName。 範例：NetworkWatcher_centraluseuap)
+> - 資源名稱會使用 _ParentResource_ChildResource_ 的格式。 在我們的範例中，父資源是區域 Azure 網路監看員執行個體：
+>    - **Format**︰NetworkWatcher_RegionName
+>    - **範例**：NetworkWatcher_centraluseuap
 > - `targetResourceId` 是目標 NSG 的資源識別碼。
 > - `storageId` 是目的地儲存體帳戶的資源識別碼。
 
 ## <a name="deploy-the-template"></a>部署範本
 
-本教學課程假設您有現有的資源群組，以及可啟用流量記錄的 NSG。
-您可以在本機將上述範例範本儲存為 `azuredeploy.json`。 更新屬性值，使其指向您訂閱中的有效資源。
+本教學課程假設您具有現有的資源群組，以及可啟用流量記錄的 NSG。
 
-若要部署範本，請在 PowerShell 中執行下列命令。
+您可以將本文中顯示的任何範例範本以 *azuredeploy.json* 的形式儲存在本機。 更新屬性值，使其指向您訂用帳戶中的有效資源。
+
+若要部署範本，請在 Azure PowerShell 中執行下列命令：
 
 ```azurepowershell-interactive
 $context = Get-AzSubscription -SubscriptionId <subscription Id>
@@ -135,29 +138,34 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 ```
 
 > [!NOTE]
-> 上述命令會將資源部署至 NetworkWatcherRG 資源群組，而不是包含 NSG 的資源群組
+> 這些命令會將資源部署至範例 NetworkWatcherRG 資源群組，而不是包含 NSG 的資源群組。
 
 ## <a name="validate-the-deployment"></a>驗證部署
 
-有幾種方式可以檢查您的部署是否成功。 您的 PowerShell 主控台應該會將 `ProvisioningState` 顯示為 `Succeeded`。 此外，您可以瀏覽 [NSG 流量記錄入口網站頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)以確認您的變更。 如果部署發生問題，請查看[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)。
+您有兩個選項可檢視部署是否成功：
+
+- 您的 PowerShell 主控台會將 `ProvisioningState` 顯示為 `Succeeded`。
+- 移至 [NSG 流量記錄入口網站頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)以確認您的變更。 
+
+如果部署發生問題，請查看[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-Azure 可透過 `Complete` 部署模式來刪除資源。 若要刪除流量記錄資源，請在 `Complete` 模式中指定部署，而不包含您想要刪除的資源。 深入瞭解[完整部署模式](../azure-resource-manager/templates/deployment-modes.md#complete-mode)。
+您可以使用完整的部署模式來刪除 Azure 資源。 若要刪除流量記錄資源，請在「完整」模式中指定部署，而不包含您想要刪除的資源。 深入了解[完整部署模式](../azure-resource-manager/templates/deployment-modes.md#complete-mode)。
 
-或者，您可以根據下列步驟，從 Azure 入口網站停用 NSG 流量記錄：
+您也可以在 Azure 入口網站中停用 NSG 流量記錄：
 
-1. 登入 Azure 入口網站
-1. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入 _網路監看員_ 。 當搜尋結果中出現 **網路監看員** 時，請加以選取。
+1. 登入 Azure 入口網站。
+1. 選取 [所有服務]。 在 [篩選] 方塊中，輸入 **網路監看員**。 在搜尋結果中，選取 [網路監看員]。
 1. 在 [記錄] 底下，選取 [NSG 流量記錄]。
-1. 從 NSG 清單中，選取您想要停用流量記錄的 NSG。
-1. 在 [流量記錄設定] 底下，將 [流程記錄狀態] 設定為 [關閉]。
-1. 向下捲動，然後選取 [儲存]。
+1. 在 NSG 清單中，選取您要停用流量記錄的 NSG。
+1. 在 [流量記錄設定] 底下，選取 [關閉]。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已啟用 NSG 流量記錄。 現在，您必須了解如何使用下列項目將 NSG 流量記錄視覺化：
+在本快速入門中，您已了解如何使用 ARM 範本來啟用 NSG 流量記錄。 接下來，請了解如何使用下列其中一個選項將 NSG 流量資料視覺化：
 
 - [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-- [開啟來源工具](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [開放原始碼工具](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 - [Azure 流量分析](traffic-analytics.md)

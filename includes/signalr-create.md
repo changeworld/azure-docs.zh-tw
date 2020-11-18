@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86050251"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406732"
 ---
 1. 若要建立 Azure SignalR Service 資源，請先登入 [Azure 入口網站](https://portal.azure.com)。 在頁面的左側，選取 [+ 建立資源]  。 在 [搜尋 Marketplace]  文字方塊中，輸入 **SignalR Service**。
 
@@ -30,9 +30,11 @@ ms.locfileid: "86050251"
     | 定價層 | *免費* | 目前有 [免費]  和 [標準]  選項可供使用。 |
     | 釘選到儀表板 | ✔ | 選取此方塊可將資源釘選到儀表板，因此很方便尋找。 |
 
-4. 選取 [建立]  。 部署可能需要幾分鐘的時間才能完成。
+4. 選取 [檢閱 + 建立]。 等待驗證完成。 
 
-5. 部署完成後，選取 [設定] 下方的 [金鑰]。 複製主索引鍵的連接字串。 您稍後會將此字串用於設定應用程式，使其使用 Azure SignalR Service 資源。
+5. 選取 [建立]。 部署可能需要幾分鐘的時間才能完成。
+
+6. 部署完成後，選取 [設定] 下方的 [金鑰]。 複製主索引鍵的連接字串。 您稍後會將此字串用於設定應用程式，使其使用 Azure SignalR Service 資源。
 
     連接字串的格式如下：
     

@@ -6,47 +6,47 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520229"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359864"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
 
-本教學課程的目的是要說明您需要執行的步驟，以將工作者設定檔從 Workday 布建到內部部署 Active Directory (AD) 。
+本教學課程的目的是要說明需要執行什麼步驟，才能將人員設定檔從 Workday 佈建至內部部署 Active Directory (AD)。
 
 >[!NOTE]
->如果您想要從 Workday 布建的使用者需要內部部署 AD 帳戶和 Azure AD 帳戶，請使用此教學課程。 
->* 如果 Workday 的使用者只需要 Azure AD 帳戶 (僅限雲端的使用者) ，請參閱設定 Workday 的教學課程， [以 Azure AD](workday-inbound-cloud-only-tutorial.md) 使用者布建。 
->* 若要設定將屬性（例如電子郵件地址、使用者名稱和電話號碼）從 Azure AD 到 Workday 的回寫，請參閱 [設定 workday 回寫](workday-writeback-tutorial.md)的教學課程。
+>如果您想要從 Workday 佈建的使用者需要內部部署 AD 帳戶和 Azure AD 帳戶，則請使用本教學課程。 
+>* 如果 Workday 的使用者只需要 Azure AD 帳戶 (僅限雲端的使用者)，則請參閱關於如何[設定 Workday 至 Azure AD](workday-inbound-cloud-only-tutorial.md) 使用者佈建的教學課程。 
+>* 若要將屬性 (例如電子郵件地址、使用者名稱和電話號碼) 設定為從 Azure AD 回寫至 Workday，則請參閱關於如何[設定 Workday 回寫](workday-writeback-tutorial.md)的教學課程。
 
 
 ## <a name="overview"></a>概觀
 
 [Azure Active Directory 使用者佈建服務](../app-provisioning/user-provisioning.md)與 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 整合以佈建使用者帳戶。 Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，可讓下列人力資源和身分識別生命週期管理案例的自動化：
 
-* **雇用新員工** ：當新的員工加入 Workday 時，系統會自動在 Active Directory、Azure Active Directory 中建立使用者帳戶，並選擇性地 Microsoft 365 及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)，並將 IT 管理的連絡人資訊回寫至 Workday。
+* **雇用新員工** - 將新員工新增至 Workday 時，系統會在 Active Directory、Azure Active Directory、Microsoft 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動建立使用者帳戶，並將由 IT 管理的連絡人資訊回寫到 Workday。
 
-* **員工屬性和設定檔更新** -在 Workday 中更新員工記錄時 (例如其名稱、標題或管理員) ，其使用者帳戶將會自動更新 Active Directory、Azure Active Directory，以及選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工屬性和設定檔更新** - 在 Workday 中更新員工記錄時 (例如姓名、職稱或經理)，系統會在 Active Directory、Azure Active Directory、Microsoft 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動更新其使用者帳戶。
 
-* **員工終止** -當員工在 Workday 結束時，其使用者帳戶會在 Active Directory、Azure Active Directory 中自動停用，並選擇性地 Microsoft 365 及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中停用。
+* **員工離職** - 在 Workday 中將員工設定為離職時，系統會在 Active Directory、Azure Active Directory、Microsoft 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動停用其使用者帳戶。
 
-* **員工重新雇用** -在 Workday 中 workday 重新雇用員工時，根據您的喜好設定) Active Directory、Azure Active Directory，以及 [其他 Microsoft 365 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)，可以自動重新開機或重新布建舊帳戶 (。
+* **重新雇用員工** - 在 Workday 中重新雇用員工時，系統會自動重新啟用其舊帳戶或將其重新佈建 (取決於您的喜好設定) 至 Active Directory、Azure Active Directory、Microsoft 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
 ### <a name="whats-new"></a>新功能
-本節將捕獲最近的 Workday 整合增強功能。 如需完整更新、已規劃的變更和封存清單，請流覽 [Azure Active Directory 的新功能頁面。](../fundamentals/whats-new.md) 
+本節會擷取最近的 Workday 整合增強功能。 如需更新、計劃性變更和封存的完整清單，請造訪 [Azure Active Directory 的新增功能？](../fundamentals/whats-new.md)頁面 
 
-* **5 月 2020-將電話號碼回寫至 Workday 的能力：** 除了電子郵件和使用者名稱之外，您現在也可以將公司電話號碼和行動電話號碼從 Azure AD 回寫至 Workday。 如需詳細資訊，請參閱 [回寫應用程式教學](workday-writeback-tutorial.md)課程。
+* **2020 年 5 月 - 能夠將電話號碼回寫到 Workday：** 除了電子郵件和使用者名稱之外，您現在也可以將公司電話號碼和行動電話號碼從 Azure AD 回寫到 Workday。 如需詳細資訊，請參閱[回寫應用程式教學課程](workday-writeback-tutorial.md)。
 
-* **2020 年4月-支援最新版本的 Workday Web 服務 (WWS) API：** 每年3月和9月兩次，Workday 提供功能豐富的更新，可協助您滿足您的業務目標和不斷變化的員工需求。 為了跟上 Workday 所提供的新功能，您現在可以直接指定您要在連接 URL 中使用的 WWS API 版本。 如需有關如何指定 Workday API 版本的詳細資訊，請參閱設定 [workday 連接](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)的一節。 
+* **2020 年 4 月 - 支援最新版的 Workday Web 服務 (WWS) API：** Workday 會每年提供兩次 (於 3 月和 9 月) 功能豐富的更新，以協助您實現業務目標及不斷變化的人力需求。 為了跟上 Workday 所提供的新功能，您現在可以直接在連線 URL 中指定想要使用的 WWS API 版本。 如需如何指定 Workday API 版本的詳細資訊，請參閱關於如何[設定 Workday 連線能力](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)的章節。 
 
-* **Jan 2020-設定 AD accountExpires 屬性的能力：** 使用函式 [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) ，您現在可以對應 Workday 日期欄位，例如 *EndContractDate* 或 *StatusTerminationDate*。 
+* **2020 年 1 月 - 能夠設定 AD accountExpires 屬性：** 您現在可以使用函式 [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) 對應 Workday 日期欄位，例如 *EndContractDate* 或 *StatusTerminationDate*。 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>誰最適合使用此使用者佈建解決方案？
 
@@ -60,14 +60,14 @@ ms.locfileid: "92520229"
 
 * 需要僅根據在 Workday HCM 模組中偵測到的變更資訊聯結、移動及保留使用者，使其同步至一或多個 Active Directory 樹系、網域和 OU 的組織 (請參閱 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
-* 使用電子郵件 Microsoft 365 的組織
+* 使用 Microsoft 365 來收發電子郵件的組織
 
 ## <a name="solution-architecture"></a>方案架構
 
 本節針對常見的混合式環境，說明端對端使用者佈建方案架構。 有兩個相關的流程：
 
-* **權威 HR 資料流程–從 Workday 到內部部署 Active Directory：** 在這個流程中，背景工作事件 (例如新進員工、轉移、終止) 先發生在 cloud Workday HR 租使用者中，然後事件資料會透過 Azure AD 和布建代理程式流入內部部署 Active Directory。 視事件而定，它可能會在 AD 中產生建立/更新/啟用/停用作業。
-* **回寫流程–從內部部署 Active Directory 到 Workday：** 在 Active Directory 中完成帳戶建立後，它會透過 Azure AD Connect 與 Azure AD 同步處理，例如電子郵件、使用者名稱和電話號碼等資訊都可以回寫至 Workday。
+* **授權 HR 資料流程 - 從 Workday 到內部部署 Active Directory：** 在此流程中，人員事件 (例如新雇用、調動、解雇) 會先發生在雲端 Workday HR 租用戶，然後事件資料會透過 Azure AD 和佈建代理程式流入內部部署 Active Directory。 視事件而定，它可能會在 AD 中產生建立/更新/啟用/停用作業。
+* **回寫流程 - 從內部部署 Active Directory 到 Workday：** 在 Active Directory 中建立帳戶之後，帳戶會透過 Azure AD Connect 來與 Azure AD 同步，而且可以將電子郵件、使用者名稱和電話號碼等資訊回寫到 Workday。
 
 ![概觀](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -79,16 +79,16 @@ ms.locfileid: "92520229"
 4. Azure AD Connect 佈建代理程式使用服務帳戶來新增/更新 AD 帳戶資料。
 5. Azure AD Connect / AD 同步引擎會執行差異同步來提取 AD 中的更新。
 6. Active Directory 會與 Azure Active Directory 同步更新。
-7. 如果已設定 [Workday 回寫](workday-writeback-tutorial.md) 應用程式，它會將電子郵件、使用者名稱和電話號碼等屬性寫回 workday。
+7. 如果已設定 [Workday 回寫](workday-writeback-tutorial.md)應用程式，其便會將電子郵件、使用者名稱和電話號碼等屬性回寫到 Workday。
 
 ## <a name="planning-your-deployment"></a>規劃您的部署
 
-將 Workday 設定為 Active Directory 使用者布建時，需要大量的規劃來涵蓋不同的層面，例如：
-* Azure AD Connect 布建代理程式的設定 
-* 要部署之 AD 使用者布建應用程式的 Workday 數目
-* 選取右邊相符的識別碼、屬性對應、轉換和範圍篩選
+將 Workday 設定為 Active Directory 使用者佈建需要進行相當多涵蓋不同層面的規劃，例如：
+* 設定 Azure AD Connect 佈建代理程式 
+* 要部署的 Workday 至 AD 使用者佈建應用程式數目
+* 選取正確的相符識別碼、屬性對應、轉換和範圍篩選器
 
-如需完整的指導方針和建議的最佳作法，請參閱 [雲端 HR 部署計畫](../app-provisioning/plan-cloud-hr-provision.md) 。 
+如需完整的指導方針和建議的最佳做法，請參閱[雲端 HR 部署計劃](../app-provisioning/plan-cloud-hr-provision.md)。 
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中設定整合系統使用者
 
@@ -129,8 +129,8 @@ ms.locfileid: "92520229"
 1. 在搜尋方塊中輸入 create security group，然後按一下 [建立安全性群組] 連結。
 
    > [!div class="mx-imgBorder"]
-   > ![顯示在搜尋方塊中輸入「建立安全性群組」的螢幕擷取畫面，以及搜尋結果中顯示的「建立安全性群組-工作」。](./media/workday-inbound-tutorial/wd_isu_03.png)
-2. 完成**建立安全性群組**工作。 
+   > ![螢幕擷取畫面：顯示已在搜尋方塊中輸入「建立安全性群組」，且搜尋結果中顯示了「建立安全性群組 - 工作」。](./media/workday-inbound-tutorial/wd_isu_03.png)
+2. 完成 **建立安全性群組** 工作。 
 
    * Workday 中有兩種類型的安全性群組：
      * **不受限制：** 此安全性群組的所有成員都可以存取此安全性群組所保護的所有資料執行個體。
@@ -152,9 +152,9 @@ ms.locfileid: "92520229"
 
 **設定網域安全性原則權限：**
 
-1. 在搜尋方塊中輸入**網域安全性設定**，然後按一下 [網域安全性設定報告] 上的連結。  
+1. 在搜尋方塊中輸入 **網域安全性設定**，然後按一下 [網域安全性設定報告] 上的連結。  
    >[!div class="mx-imgBorder"]
-   >![在 [搜尋] 方塊中顯示 [網域安全性設定] 的螢幕擷取畫面，其中顯示 [網域安全性設定-報表] 顯示在結果中。](./media/workday-inbound-tutorial/wd_isu_06.png "網域安全性原則")  
+   >![螢幕擷取畫面：顯示搜尋方塊中的「網域安全性設定」，且結果顯示「網域安全性設定 - 報告」。](./media/workday-inbound-tutorial/wd_isu_06.png "網域安全性原則")  
 2. 在 [網域] 文字方塊中，搜尋下列網域，並將它們一一新增到篩選。  
    * *外部帳戶佈建*
    * *人員資料：人員*
@@ -166,10 +166,10 @@ ms.locfileid: "92520229"
    * *Workday 帳戶*
    
      >[!div class="mx-imgBorder"]
-     >![顯示 [網域] 文字方塊中包含「外部帳戶」之網域安全性設定報告的螢幕擷取畫面。](./media/workday-inbound-tutorial/wd_isu_07.png "網域安全性原則")  
+     >![螢幕擷取畫面：顯示網域安全性設定報告，且 [網域] 文字方塊中有 [外部帳戶]。](./media/workday-inbound-tutorial/wd_isu_07.png "網域安全性原則")  
 
      >[!div class="mx-imgBorder"]
-     >![顯示網域安全性設定報告的螢幕擷取畫面，其中包含已選取的網域清單。](./media/workday-inbound-tutorial/wd_isu_08.png "網域安全性原則") 
+     >![螢幕擷取畫面：顯示網域安全性設定報告，其中已選取網域清單。](./media/workday-inbound-tutorial/wd_isu_08.png "網域安全性原則") 
 
      按一下 [確定]。
 
@@ -177,11 +177,11 @@ ms.locfileid: "92520229"
    >[!div class="mx-imgBorder"]
    >![網域安全性原則](./media/workday-inbound-tutorial/wd_isu_09.png "網域安全性原則")  
 
-4. 在 [編輯網域安全性原則權限] 頁面上，向下捲動至 [整合權限] 區段。 按一下 [+] 符號，將整合系統群組新增到具有**取得**和**放入**整合權限的安全性群組清單中。
+4. 在 [編輯網域安全性原則權限] 頁面上，向下捲動至 [整合權限] 區段。 按一下 [+] 符號，將整合系統群組新增到具有 **取得** 和 **放入** 整合權限的安全性群組清單中。
    >[!div class="mx-imgBorder"]
-   >![顯示反白顯示 [Integration Permissons] 區段的螢幕擷取畫面。](./media/workday-inbound-tutorial/wd_isu_10.png "編輯權限")  
+   >![螢幕擷取畫面：顯示已醒目提示 [整合權限] 區段。](./media/workday-inbound-tutorial/wd_isu_10.png "編輯權限")  
 
-5. 按一下 [+] 符號，將整合系統群組新增到具有**取得**和**放入**整合權限的安全性群組清單中。
+5. 按一下 [+] 符號，將整合系統群組新增到具有 **取得** 和 **放入** 整合權限的安全性群組清單中。
 
    >[!div class="mx-imgBorder"]
    >![編輯權限](./media/workday-inbound-tutorial/wd_isu_11.png "編輯權限")  
@@ -203,19 +203,19 @@ ms.locfileid: "92520229"
 在此步驟中，您會為安全性群組的人員資料授與「商務程序安全性」原則權限。 
 
 > [!NOTE]
-> 只有設定 Workday 回寫應用程式連接器時，才需要執行此步驟。
+> 只有在設定「Workday 回寫」應用程式連接器時才需要執行此步驟。
 
 **設定商務程序安全性原則權限：**
 
-1. 在搜尋方塊中輸入**商務程序原則**，然後按一下連結 [編輯商務程序安全性原則] 工作。  
+1. 在搜尋方塊中輸入 **商務程序原則**，然後按一下連結 [編輯商務程序安全性原則] 工作。  
 
    >[!div class="mx-imgBorder"]
-   >![在 [搜尋] 方塊中顯示 [商務程式原則]，並選取 [編輯商務程式安全性原則-工作] 的螢幕擷取畫面。](./media/workday-inbound-tutorial/wd_isu_12.png "商務程序安全性原則")  
+   >![螢幕擷取畫面：在搜尋方塊中顯示「商務程序原則」，並已選取 [編輯商務程序安全性原則 - 工作]。](./media/workday-inbound-tutorial/wd_isu_12.png "商務程序安全性原則")  
 
-2. 在 [商務程序類型] 文字方塊中，搜尋*連絡人*，然後選取 [工作連絡人變更] 商務程序，並按一下 [確定]。
+2. 在 [商務程序類型] 文字方塊中，搜尋 *連絡人*，然後選取 [工作連絡人變更] 商務程序，並按一下 [確定]。
 
    >[!div class="mx-imgBorder"]
-   >![顯示在 [商務程式類型] 功能表中選取 [編輯商務程式安全性原則] 頁面和 [工作連絡人變更] 的螢幕擷取畫面。](./media/workday-inbound-tutorial/wd_isu_13.png "商務程序安全性原則")  
+   >![螢幕擷取畫面：顯示 [編輯商務程序安全性原則] 頁面，且 [商務程序類型] 功能表中已選取 [工作連絡人變更]。](./media/workday-inbound-tutorial/wd_isu_13.png "商務程序安全性原則")  
 
 3. 在 [編輯商務程序安全性原則] 頁面上，捲動到 [維護工作連絡人資訊 (Web 服務)] 區段。
     
@@ -243,33 +243,33 @@ ms.locfileid: "92520229"
 
 ## <a name="configure-active-directory-service-account"></a>設定 Active Directory 服務帳戶
 
-本節說明安裝和設定 Azure AD Connect 布建代理程式所需的 AD 服務帳戶許可權。
+本節說明要安裝和設定 Azure AD Connect 佈建代理程式所需的 AD 服務帳戶權限。
 
-### <a name="permissions-required-to-run-the-provisioning-agent-installer"></a>執行布建代理程式安裝程式所需的許可權
-一旦您識別出將裝載布建代理程式的 Windows 伺服器之後，請使用本機系統管理員或網域系統管理員認證來登入伺服器主機。 代理程式安裝程式會建立安全金鑰存放區認證檔案，並更新主機伺服器上的服務設定檔設定。 這需要裝載代理程式之伺服器上的系統管理員存取權。 
+### <a name="permissions-required-to-run-the-provisioning-agent-installer"></a>要執行佈建代理程式安裝程式所需的權限
+識別出將會裝載佈建代理程式的 Windows Server 之後，請使用本機管理員或網域管理員認證登入伺服器主機。 代理程式設定程序會建立安全的金鑰存放區認證檔案，並更新主機伺服器上的服務設定檔設定。 這需要擁有代理程式裝載所在伺服器上的管理員存取權。 
 
-### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>設定布建代理程式服務所需的許可權
-使用下列步驟來設定可用於布建代理程式作業的服務帳戶。 
-1.  在 AD 網域控制站上，開啟 *Active Directory 消費者和電腦* 嵌入式管理單元。 
-2.  建立新的網域使用者 (範例： *provAgentAdmin*)   
-3.  以滑鼠右鍵按一下 OU 或功能變數名稱，然後選取 [ *委派控制* ]，將會開啟 *控制 Wizard 的委派*。 
+### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>要設定佈建代理程式服務所需的權限
+請使用下列步驟來設定可用於佈建代理程式作業的服務帳戶。 
+1.  在 AD 網域控制站上，開啟 [Active Directory 使用者和電腦] 嵌入式管理單元。 
+2.  建立新的網域使用者 (例如：*provAgentAdmin*)  
+3.  以滑鼠右鍵按一下 OU 或網域名稱，然後選取 [委派控制] 以開啟 [委派控制精靈]。 
 
 > [!NOTE] 
-> 如果您想要將布建代理程式限制為只基於測試目的而從特定 OU 建立和讀取使用者，建議您在測試執行期間，于適當的 OU 層級委派控制項。
+> 如果您想要限制佈建代理程式，使其只能從特定 OU 建立和讀取使用者以進行測試，則建議您在測試回合進行期間，於適當的 OU 層級委派控制。
 
-4. 按一下 [歡迎使用] 畫面上的 **[下一步]** 。 
-5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按 [下一步]  。
+4. 在歡迎使用畫面上按 [下一步]。 
+5. 在 [選取使用者或群組] 畫面上，新增您在步驟 2 中建立的網域使用者。 按一下 [下一步] 。
    >[!div class="mx-imgBorder"]
    >![新增畫面](./media/workday-inbound-tutorial/delegation-wizard-01.png "新增畫面")
 
-6. 在 [ **要委派** 的工作] 畫面上，選取下列工作： 
+6. 在 [要委派的工作] 畫面上，選取下列工作： 
    * 建立、刪除及管理使用者帳戶
    * 讀取所有使用者資訊
 
    >[!div class="mx-imgBorder"]
    >![工作畫面](./media/workday-inbound-tutorial/delegation-wizard-02.png "工作畫面")
 
-7. 按 **[下一步]** 並 **儲存** 設定
+7. 按 [下一步] 並 [儲存] 設定
 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>設定將使用者從 Workday 佈建至 Active Directory
@@ -294,7 +294,7 @@ ms.locfileid: "92520229"
 
 4. 選取 [新增應用程式]，然後選取 [全部] 類別。
 
-5. 搜尋 **Workday 以 Active Directory 使用者**布建，並從資源庫新增該應用程式。
+5. 搜尋 **Workday 至 Active Directory 使用者佈建**，並從資源庫新增該應用程式。
 
 6. 新增應用程式且出現應用程式詳細資料畫面之後，請選取 [佈建]。
 
@@ -328,7 +328,7 @@ ms.locfileid: "92520229"
    >[!div class="mx-imgBorder"]
    >![Connect Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "連線 Azure AD")
    
-1. 使用混合式身分識別管理員認證來驗證您的 Azure AD 實例。
+1. 使用混合式身分識別管理員認證來向 Azure AD 執行個體進行驗證。
 
    >[!div class="mx-imgBorder"]
    >![管理員驗證](./media/workday-inbound-tutorial/pa_install_screen_3.png "管理員驗證")
@@ -373,7 +373,7 @@ ms.locfileid: "92520229"
 1. 開啟 [服務] 嵌入式管理單元，並尋找名為 "Microsoft Azure AD Connect Provisioning Agent" 的服務，以確認代理程式已安裝且在執行中
 
    >[!div class="mx-imgBorder"]
-   >![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面。](./media/workday-inbound-tutorial/services.png)
+   >![螢幕擷取畫面：在服務中執行的 Microsoft Azure AD Connect 佈建代理程式。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在佈建應用程式中，設定 Workday 和 Active Directory 的連線能力
 在此步驟中，我們將在 Azure 入口網站中建立 Workday 和 Active Directory 的連線能力。 
@@ -386,18 +386,18 @@ ms.locfileid: "92520229"
 
    * **Workday 密碼** – 輸入 Workday 整合系統帳戶的密碼
 
-   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 URL 會決定連接器使用的 Workday Web 服務 API 版本。 
+   * **Workday Web Services API URL** – 輸入租用戶的 Workday Web 服務端點 URL。 URL 會決定連接器所使用的 Workday Web 服務 API 版本。 
    
-     | URL 格式 | 使用的 WWS API 版本 | 需要 XPATH 變更 |
+     | URL 格式 | 使用的 WWS API 版本 | 需要變更 XPATH |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21。1 | 否 |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | 否 |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | 是 |
+     | https://####.workday.com/ccx/service/tenantName | v21.1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v21.1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v##.# | 是 |
 
       > [!NOTE]
-     > 如果未在 URL 中指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
+     > 如果 URL 中未指定任何版本資訊，則應用程式會使用 Workday Web 服務 (WWS) v21.1，而且不需要對應用程式隨附的預設 XPATH API 運算式進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
      > 範例： `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
-     > <br> 如果您是使用 WWS API v 30.0 +，在開啟布建作業之前，請更新 [屬性對應] 下的 **XPATH API 運算式** **-> Advanced Options-> 編輯屬性清單（workday** 參考 [管理您](#managing-your-configuration) 的設定和 [Workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)的區段）。  
+     > <br> 如果您使用 WWS API v30.0+，在開啟佈建作業之前，請先更新 [屬性對應 -> 進階選項-> 編輯 Workday 的屬性清單] 下的 [XPATH API 運算式]。請參閱 [管理您的設定](#managing-your-configuration)和 [Workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)這兩節。  
 
    * **Active Directory 樹系** – 向代理程式註冊的 Active Directory 網域「名稱」。 請使用下拉式清單來選取用於佈建的目標網域。 此值通常是如下的字串：*contoso.com*
 
@@ -415,7 +415,7 @@ ms.locfileid: "92520229"
    * 按一下 [測試連線] 按鈕。 如果連線測試成功，請按一下頂端的 [儲存] 按鈕。 如果失敗，請仔細檢查代理程式上設定的 Workday 認證和 AD 認證是否有效。
 
      >[!div class="mx-imgBorder"]
-     >![顯示輸入認證的 [布建] 頁面的螢幕擷取畫面。](./media/workday-inbound-tutorial/wd_1.png)
+     >![螢幕擷取畫面：顯示已輸入認證的 [佈建] 頁面。](./media/workday-inbound-tutorial/wd_1.png)
 
    * 順利儲存認證之後，[對應] 區段會顯示 [Synchronize Workday Workers to On Premises Active Directory] \(將 Workday 人員同步至內部部署 Active Directory\) 預設對應
 
@@ -480,7 +480,7 @@ ms.locfileid: "92520229"
 
 1. 若要儲存您的對應，請按一下 [屬性對應] 區段頂端的 [儲存]。
    >[!div class="mx-imgBorder"]
-   >![顯示 [屬性對應] 頁面的螢幕擷取畫面，其中已選取 [儲存] 動作。](./media/workday-inbound-tutorial/wd_2.png)
+   >![螢幕擷取畫面：顯示已選取 [儲存] 動作的 [屬性對應] 頁面。](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>以下是 Workday 與 Active Directory 之間的一些範例屬性對應，以及一些常用運算式
 
@@ -515,7 +515,7 @@ ms.locfileid: "92520229"
 | **Fax**      | facsimileTelephoneNumber     |     |    建立 + 更新 |
 | **Mobile**  |    mobile       |     |       建立 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  建立 + 更新 |                                               
-| **Switch (\[ 自治區 \] ，"OU = Default USERS，DC = CONTOSO，dc = com"，"達拉斯"，"OU = 達拉斯，Ou = USERS，DC = CONTOSO，dc = com"，"奧斯丁"，"Ou = 奧斯丁，OU = USERS，DC = CONTOSO，DC = com"，"西雅圖"，"Ou = 西雅圖，Ou = USERS，dc = CONTOSO，dc = com"，"倫敦"，"Ou = 倫敦，Ou = USERS，dc = CONTOSO，dc = com" ) **  | parentDistinguishedName     |     |  建立 + 更新 |
+| **Switch(\[Municipality\], "OU=Default Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  建立 + 更新 |
 
 完成屬性對應設定之後，您現在便可以[啟用及啟動使用者佈建服務](#enable-and-launch-user-provisioning)。
 
@@ -536,7 +536,7 @@ ms.locfileid: "92520229"
 
 5. 在初始同步完成之後，它會在 [佈建] 索引標籤中寫入稽核摘要報告，如下所示。
    > [!div class="mx-imgBorder"]
-   > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+   > ![佈建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
 
 
@@ -637,7 +637,7 @@ ms.locfileid: "92520229"
 
 #### <a name="what-is-the-ga-version-of-the-provisioning-agent"></a>佈建代理程式的 GA 版本是哪一版？
 
-請參閱 [Azure AD Connect 布建代理程式：](../app-provisioning/provisioning-agent-release-version-history.md) 布建代理程式的最新 GA 版本的版本發行歷程記錄。  
+請參閱 [Azure AD Connect 佈建代理程式：版本發行歷程記錄](../app-provisioning/provisioning-agent-release-version-history.md)，以取得佈建代理程式的最新正式發行版本。  
 
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>如何得知我的佈建代理程式版本？
 
@@ -650,7 +650,7 @@ ms.locfileid: "92520229"
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Microsoft 是否會自動推送佈建代理程式更新？
 
-是，如果 Windows 服務 **Microsoft Azure AD Connect 代理程式更新** 程式已啟動且正在執行，Microsoft 會自動更新布建代理程式。
+是，如果 Windows 服務 **Microsoft Azure AD Connect 代理程式更新程式** 已啟動並執行，則 Microsoft 會自動更新佈建代理程式。
 
 #### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect"></a>我是否可以將佈建代理程式安裝在執行 Azure AD Connect 的同一部伺服器上？
 
@@ -679,7 +679,7 @@ ms.locfileid: "92520229"
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>如何確保佈建代理程式能夠與 Azure AD 租用戶進行通訊，而沒有任何防火牆封鎖代理程式所需的連接埠？
 
-您也可以檢查是否已開啟所有 [必要的埠](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) 。
+您也可以檢查[所需的連接埠](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)是否皆已開啟。
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>是否可以設定讓一個佈建代理程式佈建多個 AD 網域？
 
@@ -913,7 +913,7 @@ SelectUniqueValue(
 
   ![LDAP 搜尋](media/workday-inbound-tutorial/wd_event_viewer_03.png)
 
-  緊接其後且 [事件識別碼] 為*2* 的記錄會擷取搜尋作業的結果，以及它是否有傳回任何結果。
+  緊接其後且 [事件識別碼] 為 *2* 的記錄會擷取搜尋作業的結果，以及它是否有傳回任何結果。
 
   ![LDAP 結果](media/workday-inbound-tutorial/wd_event_viewer_04.png)
 
@@ -942,11 +942,11 @@ SelectUniqueValue(
 
   尋找與匯出作業之時間戳記對應且 [事件識別碼] 為 *2* 的 HTTP POST 記錄。 此記錄將包含佈建服務傳送給佈建代理程式的屬性值。
 
-  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="顯示「布建代理程式」記錄檔中「HTTP 貼文」記錄的螢幕擷取畫面。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="螢幕擷取畫面：在「佈建代理程式」記錄中顯示「HTTP POST」記錄。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   緊接在上述事件之後，應該有另一個事件，此事件會擷取建立 AD 帳戶作業的回應。 此事件會傳回 AD 中建立的新 objectGuid，且它會設定為佈建服務中的 TargetAnchor 屬性。
 
-  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="顯示「布建代理程式」記錄檔中「HTTP 貼文」記錄的螢幕擷取畫面。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="螢幕擷取畫面：顯示「佈建代理程式」記錄，其中已反白顯示在 AD 中建立的 objectGuid。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>了解管理員更新作業的記錄
 
@@ -1040,14 +1040,14 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
 5. 選取 [外部]，然後選取您在步驟 2 下載的 Human_Resources WSDL 檔案。
 
-    ![顯示在 Workday Studio 中開啟 "Human_Resources" 檔案的螢幕擷取畫面。](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![螢幕擷取畫面：顯示 Workday Studio 中已開啟「Human_Resources」檔案。](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. 將 [位置] 欄位設定為 `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`，但是以您實際的執行個體類型取代 "IMPL-CC"，並以您實際的租用戶名稱取代 "TENANT"。
 
 7. 將 [作業] 設定為 [Get_Workers]
 
-8.    按一下 [要求]/[回應] 窗格下方的小型**設定**連結，以設定您的 Workday 認證。 勾選 [驗證]，然後輸入 Workday 整合系統帳戶的使用者名稱和密碼。 請務必將使用者名稱的格式設為 \@，並保持選取 [WS-Security UsernameToken] 選項。
-   ![顯示 [安全性] 索引標籤的螢幕擷取畫面，其中已輸入 [使用者名稱] 和 [密碼]，並已選取 [WS-Security 使用者名稱權杖]。](./media/workday-inbound-tutorial/wdstudio2.png)
+8.    按一下 [要求]/[回應] 窗格下方的小型 **設定** 連結，以設定您的 Workday 認證。 勾選 [驗證]，然後輸入 Workday 整合系統帳戶的使用者名稱和密碼。 請務必將使用者名稱的格式設為 \@，並保持選取 [WS-Security UsernameToken] 選項。
+   ![螢幕擷取畫面：顯示 [安全性] 索引標籤，其中已輸入 [使用者名稱] 和 [密碼]，並已選取 [WS-Security 使用者名稱權杖]。](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. 選取 [確定]。
 
@@ -1086,7 +1086,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
 13. 在 Workday Studio 的命令列中，選取 [File] \(檔案\) > [Open File...] \(開啟檔案...\) 並開啟您剛儲存的 XML 檔案。 此動作會在 Workday Studio XML 編輯器中開啟該檔案。
 
-    ![在 "Workday Studio X M L 編輯器" 中開啟之 X M L 檔案的螢幕擷取畫面。](./media/workday-inbound-tutorial/wdstudio3.png)
+    ![螢幕擷取畫面：在「Workday Studio XML 編輯器」中開啟的 XML 檔案。](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. 在檔案樹狀目錄中，一一瀏覽 **[/env:Envelope] > [env:Body] > [wd:Get_Workers_Response] > [wd:Response_Data] > [wd:Worker]** 以尋找使用者的資料。
 
@@ -1112,7 +1112,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
 5. 選取 [編輯 Workday 的屬性清單]。
 
-    ![顯示「Workday 至 Azure A D 使用者布建布建」頁面的螢幕擷取畫面，其中已醒目提示 [workday 的編輯屬性清單] 動作。](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![螢幕擷取畫面：顯示 [Workday 至 Azure AD 使用者佈建 - 佈建] 頁面，其中已醒目提示 [編輯 Workday 的屬性清單] 動作。](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. 捲動到輸入欄位所在屬性清單的底部。
 
@@ -1146,7 +1146,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
 適用於 Active Directory 的 Workday 佈建解決方案會要求在內部部署 Windows Server 上安裝佈建代理程式，而此代理程式會在 Windows 事件記錄中建立可能包含個人資料 (視您的 Workday 至 AD 屬性對應而定) 的記錄。 為了符合使用者隱私權義務，您可以藉由設定 Windows 排程工作來清除事件記錄，確保沒有任何資料會在事件記錄中保留超過 48 小時。
 
-Azure AD 佈建服務會歸類到 GDPR 分類的**資料處理器**類別。 作為資料處理器管線，服務會對重要合作夥伴和終端取用者提供資料處理服務。 Azure AD 佈建服務不會產生使用者資料，也不會自行控制要收集哪些個人資料以及如何使用這些資料。 在 Azure AD 佈建服務中，資料的擷取、彙總、分析和報告都會以現有的企業資料為基礎。
+Azure AD 佈建服務會歸類到 GDPR 分類的 **資料處理器** 類別。 作為資料處理器管線，服務會對重要合作夥伴和終端取用者提供資料處理服務。 Azure AD 佈建服務不會產生使用者資料，也不會自行控制要收集哪些個人資料以及如何使用這些資料。 在 Azure AD 佈建服務中，資料的擷取、彙總、分析和報告都會以現有的企業資料為基礎。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 

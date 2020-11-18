@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 875d04751475d1d5236e9f15fbca585cdc9b1ab0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897620"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359913"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>快速入門：CentOS 8 上的 WildFly
 
@@ -49,7 +49,9 @@ WildFly 可以在 **獨立伺服器** 模式下開機 - 獨立伺服器執行個
 
 例如，若要使用具有叢集功能的 Jakarta EE Platform 8，請使用下列命令：
 
-`./standalone.sh --server-config=standalone-full-ha.xml`
+```
+./standalone.sh --server-config=standalone-full-ha.xml
+```
 
 若要深入了解這些設定，請參閱 [WildFly 使用者入門指南](https://docs.wildfly.org/18/Getting_Started_Guide.html#wildfly-10-configurations)。
 
@@ -63,15 +65,23 @@ Azure CentOS 8 映像是隨用隨付 (PAYG) VM 映射，使用者無需取得授
 
 - 使用 PowerShell - 執行下列命令部署範本：(如需有關安裝和設定 Azure PowerShell 的資訊，請參閱[ Azure PowerShell](https://docs.microsoft.com/powershell/azure/))。
 
-    `New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
     
 - 使用 Azure CLI - 執行下列命令部署範本：(如需有關安裝和設定 Azure 跨平台命令列介面的詳細資訊，請參閱 [Azure 跨平台命令列](https://docs.microsoft.com/cli/azure/install-azure-cli))。
 
-    `az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
 
 - 使用 Azure 入口網站 - 按一下<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">此處</a>並登入 Azure 入口網站以部署範本。
 
@@ -81,7 +91,7 @@ Azure CentOS 8 映像是隨用隨付 (PAYG) VM 映射，使用者無需取得授
 
 ## <a name="resource-links"></a>資源連結
 
-* 深入了解 [WildFly 18](https://wildfly.org/18)
+* 深入了解 [WildFly 18](https://docs.wildfly.org/18/)
 * 深入了解[Azure 上的 Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
 * [適用於 Java 開發人員的 Azure 文件](https://github.com/JasonFreeberg/jboss-on-app-service)
 

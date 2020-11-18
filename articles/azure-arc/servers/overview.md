@@ -2,18 +2,18 @@
 title: 已啟用 Azure Arc 的伺服器概觀
 description: 了解如何使用已啟用 Azure Arc 的伺服器來管理裝載於 Azure 外部的伺服器，如同 Azure 資源一樣。
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 10/15/2020
+ms.date: 11/04/2020
 ms.topic: overview
-ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460847"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360576"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什麼是已啟用 Azure Arc 的伺服器？
 
-已啟用 Azure Arc 的伺服器可讓您在公司網路或其他雲端提供者上管理裝載於 Azure 外部的 Windows 和 Linux 機器，就如同您管理原生 Azure 虛擬機器一樣。 混合式機器連線到 Azure 時就會變成已連線的機器，並且視為 Azure 中的資源。 每個已連線的機器都有資源識別碼，可在訂用帳戶內作為資源群組的一部分來管理，並可從標準的 Azure 結構中 (例如 Azure 原則和套用標籤) 獲益。 管理客戶內部部署基礎結構的服務提供者可以透過 Azure Arc 使用 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 管理其混合式電腦，就像目前在多個客戶環境中使用原生 Azure 資源一樣。
+已啟用 Azure Arc 的伺服器可讓您在公司網路或其他雲端提供者上管理裝載於 Azure 外部的 Windows 和 Linux 機器，就如同您管理原生 Azure 虛擬機器一樣。 混合式機器連線到 Azure 時就會變成已連線的機器，並且視為 Azure 中的資源。 每個已連線的機器都有資源識別碼，且包含在資源群組中，並可從標準的 Azure 結構 (例如 Azure 原則和套用標籤) 獲益。 管理客戶內部部署基礎結構的服務提供者可以透過 Azure Arc 使用 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 管理其混合式電腦，就像目前在多個客戶環境中使用原生 Azure 資源一樣。
 
 若要對裝載於 Azure 外部的混合式機器提供這項體驗，您必須在計畫連線到 Azure 的每部機器上安裝 Azure Connected Machine 代理程式。 此代理程式不會提供任何其他功能，也不會取代 Azure [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-introduction.md))。
 
@@ -29,7 +29,10 @@ ms.locfileid: "92460847"
 
 - 使用適用於非 Azure Windows 或 Linux 機器的受支援 [Azure VM 擴充功能](manage-vm-extensions.md)，簡化其他 Azure 服務 (例如 Azure 自動化[狀態組態](../../automation/automation-dsc-overview.md)和 Azure 監視器 Log Analytics 工作區) 的部署。 這包括使用自訂指令碼擴充功能來執行部署後設定或軟體安裝。
 
-- 使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)，來管理 Windows 和 Linux 伺服器的作業系統更新。
+- 使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)，管理 Windows 和 Linux 伺服器的作業系統更新
+
+    > [!NOTE]
+    > 目前不支援直接從已啟用 Arc 的伺服器啟用更新管理。 請參閱[從您的自動化帳戶啟用更新管理](../../automation/update-management/enable-from-automation-account.md)以了解需求，以及如何為您的伺服器啟用此功能。
 
 - 納入非 Azure 伺服器以執行威脅偵測，並使用 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)主動監視潛在安全性威脅。
 
@@ -45,7 +48,7 @@ ms.locfileid: "92460847"
 
 ### <a name="agent-status"></a>代理程式狀態
 
-Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果服務停止接收來自機器的這些活動訊號訊息，系統會將該機器視為離線，且入口網站中的狀態會在 15 到 30 分鐘內自動變更為 **中斷連線** 。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為 **連線** 。
+Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果服務停止接收來自機器的這些活動訊號訊息，系統會將該機器視為離線，且入口網站中的狀態會在 15 到 30 分鐘內自動變更為 **中斷連線**。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為 **連線**。
 
 ## <a name="next-steps"></a>後續步驟
 

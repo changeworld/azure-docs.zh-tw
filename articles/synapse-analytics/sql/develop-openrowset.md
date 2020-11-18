@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341326"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337741"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 使用 OPENROWSET
 
@@ -261,12 +261,12 @@ Parquet 檔案包含每個資料行的類型描述。 下表說明 Parquet 類�
 | BINARY |UTF8 |varchar \*(UTF8 collation) |
 | BINARY |STRING |varchar \*(UTF8 collation) |
 | BINARY |ENUM|varchar \*(UTF8 collation) |
-| BINARY |UUID |UNIQUEIDENTIFIER |
+| FIXED_LEN_BYTE_ARRAY |UUID |UNIQUEIDENTIFIER |
 | BINARY |DECIMAL |decimal |
-| BINARY |JSON |varchar(max) \*(UTF8 collation) |
-| BINARY |BSON |varbinary(max) |
+| BINARY |JSON |varchar(8000) \*(UTF8 定序) |
+| BINARY |BSON | 不受支援 |
 | FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
-| BYTE_ARRAY |INTERVAL |varchar(max)，序列化為標準格式 |
+| BYTE_ARRAY |INTERVAL | 不受支援 |
 | INT32 |INT(8, true) |SMALLINT |
 | INT32 |INT(16, true) |SMALLINT |
 | INT32 |INT(32, true) |int |
@@ -279,10 +279,10 @@ Parquet 檔案包含每個資料行的類型描述。 下表說明 Parquet 類�
 | INT64 |INT(64, true) |BIGINT |
 | INT64 |INT(64, false) |decimal(20,0) |
 | INT64 |DECIMAL |decimal |
-| INT64 |TIME (MICROS / NANOS) |time |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |清單 |varchar(max)，序列化為 JSON |
-|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max)，序列化為 JSON |
+| INT64 |TIME (MICROS) |time - 不支援 TIME(NANOS) |
+|INT64 |TIMESTAMP (MILLIS / MICROS) |datetime2 - 不支援 TIMESTAMP (NANOS) |
+|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |清單 |varchar(8000)，序列化為 JSON |
+|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(8000)，序列化為 JSON |
 
 ## <a name="examples"></a>範例
 

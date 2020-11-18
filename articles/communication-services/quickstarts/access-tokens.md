@@ -3,27 +3,27 @@ title: 快速入門 - 建立和管理存取權杖
 titleSuffix: An Azure Communication Services quickstart
 description: 了解如何使用 Azure 通訊服務系統管理用戶端程式庫來管理身分識別和存取權杖。
 author: tomaschladek
-manager: jken
+manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
 ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: e323f1f50fe6c67a841c300fcbec1eed3afc4497
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b67d0808643797d88628b626403c1b9d97cf1cad
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074119"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506221"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>快速入門：建立和管理存取權杖
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-使用通訊服務系統管理用戶端程式庫來佈建和管理您的存取權杖，以開始使用 Azure 通訊服務。 存取權杖可讓您的聊天和通話用戶端程式庫直接針對 Azure 通訊服務進行驗證。 這些權杖會在您實作的伺服器端權杖佈建服務上產生。 然後，會將其用來初始化用戶端裝置上的通訊服務用戶端程式庫。
+使用通訊服務系統管理用戶端程式庫，以開始使用 Azure 通訊服務。 此程式庫可讓您建立身分識別和管理您的存取權杖。 身分識別會在 Azure 通訊服務中代表您應用程式的實體 (例如，使用者或裝置)。 存取權杖可讓您的聊天和通話用戶端程式庫直接針對 Azure 通訊服務進行驗證。 建議您在伺服器端服務上產生存取權杖。 存取權杖隨後會用來初始化用戶端裝置上的通訊服務用戶端程式庫。
 
-請注意，在本教學課程影像中所見的任何價格僅供範例之用。
+在本教學課程的影像中所見的任何價格，皆僅供示範之用。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/user-access-token-net.md)]
@@ -46,15 +46,14 @@ ms.locfileid: "92074119"
 ```console
 Azure Communication Services - Access Tokens Quickstart
 
-Issued a access token with 'voip' scope for identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050:
+Created an identity: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
+
+Issued a access token with 'voip' scope for identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502:
 <token signature here>
 
-Issued a access token with 'chat' scope for identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050:
-<token signature here>
+Successfully deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 
-Successfully deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050
-
-Deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050
+Deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 ```
 <!---cSpell:enable --->
 
@@ -81,3 +80,4 @@ Deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-
  - [了解驗證](../concepts/authentication.md)
  - [將聊天新增至您的應用程式](./chat/get-started.md)
  - [了解用戶端與根伺服器架構](../concepts/client-and-server-architecture.md)
+ 

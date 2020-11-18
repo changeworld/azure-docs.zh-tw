@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273665"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357635"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教學課程︰設定 BlueJeans 來自動佈建使用者
 
@@ -42,7 +42,7 @@ ms.locfileid: "91273665"
 
 **若要從 Azure AD 應用程式庫新增 BlueJeans，請執行下列步驟：**
 
-1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory**]。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，選取 [Azure Active Directory]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "91273665"
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要加入新的應用程式，請選取窗格頂端的 [ **新增應用程式** ] 按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [新增應用程式] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **BlueJeans**，在 [結果] 面板中選取 [ **BlueJeans** ]，然後選取 [ **新增** ] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **BlueJeans**，在結果面板中選取 [BlueJeans]，然後選取 [新增] 按鈕以新增應用程式。
 
     ![結果清單中的 BlueJeans](common/search-new-app.png)
 
@@ -70,7 +70,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 * 建議將單一 Azure AD 使用者指派給 BlueJeans，以測試自動使用者佈建的設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 BlueJeans 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特有角色 (如果有的話)。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 BlueJeans 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特有角色 (如果有的話)。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>對 BlueJeans 設定自動使用者佈建
 
@@ -81,61 +81,61 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>在 Azure AD 中為 BlueJeans 設定自動使用者佈建：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) 並選取 [ **企業應用程式**]，選取 [ **所有應用程式**]，然後選取 [ **BlueJeans**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，依序選取 [企業應用程式]、[所有應用程式] 及 [BlueJeans]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [BlueJeans]****。
+2. 在應用程式清單中，選取 [BlueJeans]。
 
     ![應用程式清單中的 BlueJeans 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
-    ![BlueJeans 企業應用程式提要欄位的螢幕擷取畫面，其中已醒目提示並呼叫布建選項。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![[BlueJeans 企業應用程式] 提要欄位的螢幕擷取畫面，其中已醒目提示並指出 [佈建] 選項。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
-    ![已呼叫「布建模式」和「管理員認證」區段之布建頁面的螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![[佈建] 頁面的螢幕擷取畫面，其中已指出 [佈建模式] 和 [管理員認證] 區段。](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
-5. 在 [管理員認證]**** 區段下，輸入 BlueJeans 帳戶的 [管理員使用者名稱]**** 和 [管理員密碼]****。 這些值的範例如下：
+5. 在 [管理員認證] 區段下，輸入 BlueJeans 帳戶的 [管理員使用者名稱] 和 [管理員密碼]。 這些值的範例如下：
 
-   * 在 [管理員使用者名稱]**** 欄位中，填入 BlueJeans 租用戶中管理帳戶的使用者名稱。 範例： admin@contoso.com.
+   * 在 [管理員使用者名稱] 欄位中，填入 BlueJeans 租用戶中管理帳戶的使用者名稱。 範例： admin@contoso.com.
 
-   * 在 [管理員密碼]**** 欄位中，填入與管理員使用者名稱相對應的密碼。
+   * 在 [管理員密碼] 欄位中，填入與管理員使用者名稱相對應的密碼。
 
-6. 如步驟 5 所示填寫欄位後，按一下 [測試連線]**** 以確認 Azure AD 可以連線到 BlueJeans。 如果連線失敗，請確定您的 BlueJeans 帳戶具有系統管理員權限並再試一次。
+6. 如步驟 5 所示填寫欄位後，按一下 [測試連線] 以確認 Azure AD 可以連線到 BlueJeans。 如果連線失敗，請確定您的 BlueJeans 帳戶具有系統管理員權限並再試一次。
 
-    ![[系統管理員認證] 區段的螢幕擷取畫面，其中已呼叫 [測試連接] 選項。](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![[管理員認證] 區段的螢幕擷取畫面，其中已指出 [測試連線] 選項。](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+7. 在 [通知電子郵件]  欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]  核取方塊。
 
-    ![通知電子郵件文字方塊的螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![[通知電子郵件] 文字方塊的螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
 8. 按一下 **[儲存]** 。
 
-9. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 BlueJeans]****。
+9. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 BlueJeans]。
 
-    ![反白顯示 [同步處理 Azure Active Directory 使用者至 BlueJeans] 選項的 [對應] 區段螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中已醒目提示 [將 Azure Active Directory 使用者同步至 BlueJeans] 選項。](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
-10. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 BlueJeans 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 BlueJeans 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+10. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 BlueJeans 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 BlueJeans 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
     ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
 11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-12. 若要啟用 BlueJeans 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****。
+12. 若要啟用 BlueJeans 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
-    ![[設定] 區段的螢幕擷取畫面，其中的 [布建狀態] 選項設為 [開啟]。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![[設定] 區段的螢幕擷取畫面，其中 [佈建狀態] 選項設為 [開啟]。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
-13. 透過在 [設定]**** 區段的 [範圍]**** 中選擇需要的值，可定義要佈建到 BlueJeans 的使用者和/或群組。
+13. 透過在 [設定] 區段的 [範圍] 中選擇需要的值，可定義要佈建到 BlueJeans 的使用者和/或群組。
 
-    ![醒目提示 [僅同步已指派的使用者和群組] 選項之 [領域] 設定的螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![[範圍] 設定的螢幕擷取畫面：已醒目提示 [只同步已指派的使用者與群組] 選項。](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
-14. 當您準備好要佈建時，按一下 [儲存]。
+14. 當您準備好要佈建時，按一下 [儲存]  。
 
-    ![BlueJeans Enterprise 應用程式提要欄位的螢幕擷取畫面，其中已呼叫 [儲存] 選項。](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![[BlueJeans 企業應用程式] 提要欄位的螢幕擷取畫面，其中已指出 [儲存] 選項。](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並遵循連結來佈建活動報告，當中會描述 BlueJeans 上的 Azure AD 佈建服務所執行之所有動作。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並遵循連結來佈建活動報告，當中會描述 BlueJeans 上的 Azure AD 佈建服務所執行之所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 

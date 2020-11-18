@@ -1,6 +1,6 @@
 ---
-title: 與連線至 Azure IoT 解決方案的 IoT 隨插即用裝置互動 (Java) | Microsoft Docs
-description: 使用 Java 連線至已連線 Azure IoT 解決方案的 IoT 隨插即用裝置，並與其互動。
+title: 快速入門 - 與連線至 Azure IoT 解決方案的 IoT 隨插即用裝置互動 (Java) | Microsoft Docs
+description: 快速入門 - 使用 Java 連線至已連線 Azure IoT 解決方案的 IoT 隨插即用裝置，並與其互動。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/17/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7229eedc82dfa7b76ae4a22d095f20c41f102e16
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046480"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421527"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Java)
 
@@ -50,7 +50,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 1. 開啟終端機視窗，並瀏覽至本機資料夾，此資料夾中包含從 GitHub 複製的適用於 Java 存放庫的 Microsoft Azure IoT SDK。
 
-1. 此終端機視窗會作為您的**裝置**終端機。 移至所複製存放庫的根資料夾。 執行下列命令以安裝所有相依性：
+1. 此終端機視窗會作為您的 **裝置** 終端機。 移至所複製存放庫的根資料夾。 執行下列命令以安裝所有相依性：
 
 1. 執行下列命令以建置範例裝置應用程式：
 
@@ -76,9 +76,9 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 在本快速入門中，您會使用以 Java 撰寫的範例 IoT 解決方案，與您剛剛設定的範例裝置進行互動。
 
 > [!NOTE]
-> 這個範例會使用 **IoT 中樞服務用戶端**中的 **com.microsoft.azure.sdk.iot.service** 命名空間。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
+> 這個範例會使用 **IoT 中樞服務用戶端** 中的 **com.microsoft.azure.sdk.iot.service** 命名空間。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
 
-1. 開啟另一個終端機視窗，作為您的**服務**終端機。
+1. 開啟另一個終端機視窗，作為您的 **服務** 終端機。
 
 1. 在複製的 Java SDK 存放庫中，瀏覽至 ervice\iot-service-samples\pnp-service-sample\thermostat-service-samples 資料夾。
 

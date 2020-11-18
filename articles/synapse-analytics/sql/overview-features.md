@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 03995166df5d40f7f8be7054aed0727be254ed73
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310319"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376888"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支援的 Transact-SQL 功能
 
 Azure Synapse SQL 是一種巨量資料分析服務，可讓您使用 T-SQL 語言來查詢和分析資料。 您可以使用在 SQL Server 和 Azure SQL Database 上用來分析資料、符合 ANSI 規範的標準 SQL 語言方言。 
 
-Transact-SQL 語言可用於 Synapse SQL 的無伺服器模型和已佈建模型中，兩者會參考不同物件，且所支援的功能集會有一些差異。 在此頁面中，您可以找到 Synapse SQL 耗用量模型之間的高階 Transact-SQL 語言差異。
+Transact-SQL 語言可用於 Synapse SQL 的無伺服器模型和專用模型中，兩者會參考不同物件，且所支援的功能集會有一些差異。 在此頁面中，您可以找到 Synapse SQL 耗用量模型之間的高階 Transact-SQL 語言差異。
 
 ## <a name="database-objects"></a>資料庫物件
 
 Synapse SQL 中的使用量模型可讓您使用不同的資料庫物件。 下表顯示所支援物件類型的比較：
 
-|   | 已佈建 | 無伺服器 |
+|   | 專用 | 無伺服器 |
 | --- | --- | --- |
 | **資料表** | [是](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否，無伺服器模型只能查詢放在 [Azure 儲存體](#storage-options)上的外部資料 |
-| **檢視** | [是](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 檢視可以使用已佈建模型中可用的[查詢語言元素](#query-language)。 | [是](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 檢視可以使用無伺服器模型中可用的[查詢語言元素](#query-language)。 |
+| **檢視** | [是](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 檢視可以使用專用模型中可用的[查詢語言元素](#query-language)。 | [是](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 檢視可以使用無伺服器模型中可用的[查詢語言元素](#query-language)。 |
 | **結構描述** | [是](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [是](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |
 | **暫存資料表** | [是](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 否 |
 | **程序** | [是](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
@@ -48,7 +48,7 @@ Synapse SQL 中的使用量模型可讓您使用不同的資料庫物件。 下�
 
 Synapse SQL 中使用的查詢語言會根據耗用量模型而支援不同的功能。 下表概述 Transact-SQL 方言中最重要的查詢語言差異：
 
-|   | 已佈建 | 無伺服器 |
+|   | 專用 | 無伺服器 |
 | --- | --- | --- |
 | **SELECT 陳述式** | 是。 不支援 Transact-SQL 查詢子句 [FOR XML/FOR JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 | 是。 不支援 Transact-SQL 查詢子句 [FOR XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和查詢提示。 [OFFSET/FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) 和 [PIVOT/UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 可用來查詢系統物件 (非外部資料)。 |
 | **INSERT 陳述式** | 是 | 否 |
@@ -73,7 +73,7 @@ Synapse SQL 中使用的查詢語言會根據耗用量模型而支援不同的�
 
 Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控制存取。 下表會比較 Synapse SQL 耗用量模型之間的高階差異。
 
-|   | 已佈建 | 無伺服器 |
+|   | 專用 | 無伺服器 |
 | --- | --- | --- |
 | **登入** | N/A (資料庫只支援所包含的使用者) | 是 |
 | **使用者** |  N/A (資料庫只支援所包含的使用者) | 是 |
@@ -109,7 +109,7 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 
 您可以使用各種工具來連線到 Synapse SQL 以查詢資料。
 
-|   | 已佈建 | 無伺服器 |
+|   | 專用 | 無伺服器 |
 | --- | --- | --- |
 | **Synapse Studio** | 是，SQL 指令碼 | 是，SQL 指令碼 |
 | **Power BI** | 是 | [是](tutorial-connect-power-bi-desktop.md) |
@@ -120,13 +120,13 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 > [!NOTE]
 > 您可以使用 SSMS 來連線到無伺服器 SQL 集區 (預覽) 和查詢。 其從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 
-大部分的應用程式都會使用標準的 Transact-SQL 語言，因此都可以查詢 Synapse SQL 的已佈建和無伺服器耗用量模型。
+大部分的應用程式都會使用標準的 Transact-SQL 語言，因此都可以查詢 Synapse SQL 的專用和無伺服器耗用量模型。
 
 ## <a name="storage-options"></a>儲存體選項
 
 所分析的資料可以儲存在各種儲存體類型上。 下表列出所有可用的儲存體選項：
 
-|   | 已佈建 | 無伺服器 |
+|   | 專用 | 無伺服器 |
 | --- | --- | --- |
 | **內部儲存體** | 是 | 否 |
 | **Azure Data Lake v2** | 是 | 是 |
@@ -137,7 +137,7 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 
 所分析的資料可使用各種儲存體格式來儲存。 下表列出可以分析的所有可用資料格式：
 
-|   | 已佈建 | 無伺服器 |
+|   | 專用 | 無伺服器 |
 | --- | --- | --- |
 | **Delimited (分隔檔)** | [是](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [是](query-single-csv-file.md) |
 | **CSV** | 是 (不支援多字元分隔符號) | [是](query-single-csv-file.md) |

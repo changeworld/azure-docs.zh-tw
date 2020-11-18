@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932000"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445093"
 ---
 # <a name="about-azure-key-vault"></a>關於 Azure Key Vault
 
@@ -39,7 +39,7 @@ Azure Key Vault 有兩個服務層級：標準層 (使用軟體金鑰進行加�
 
 金鑰保存庫的存取權需要先經過適當的驗證和授權，呼叫者 (使用者或應用程式) 才能取得存取權。 驗證會建立呼叫者的身分識別，授權則會判斷呼叫者可以執行的作業。
 
-驗證會透過 Azure Active Directory 進行。 授權可以透過角色型存取控制 (RBAC) 或 Key Vault 存取原則進行。 在處理保存庫的管理時會使用 RBAC，而在嘗試存取保存庫中儲存的資料時會使用金鑰保存庫存取原則。
+驗證會透過 Azure Active Directory 進行。 授權可透過 Azure 角色型存取控制 (Azure RBAC) 或 Key Vault 存取原則來完成。 在處理保存庫的管理時會使用 Azure RBAC，而在嘗試存取保存庫中儲存的資料時會使用金鑰保存庫存取原則。
 
 Azure Key Vault 可能受軟體保護或搭配 Azure Key Vault 進階層，讓硬體受到硬體安全模組 (HSM) (HSM) 保護。 Azure 會使用業界標準演算法和金鑰長度，來保護受軟體保護的金鑰、祕密和憑證。  在您需要加強保證的情況下，您可以在 HSM 中匯入或產生無需離開 HSM 界限的金鑰。 Azure Key Vault 會使用經過美國聯邦資訊處理標準 (FIPS) 140-2 Level 2 驗證的 HSM。 您可以使用 nCipher 工具將金鑰從您的 HSM 移至 Azure Key Vault。
 

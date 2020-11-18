@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2020
+ms.date: 11/09/2020
 ms.author: memildin
-ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: df863372cbf7abfb6fee145b7d13bb00d8deb074
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026712"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380157"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>未來 Azure 資訊安全中心的重要變更
 
@@ -31,49 +31,48 @@ ms.locfileid: "93026712"
 
 ## <a name="planned-changes"></a>規劃的變更
 
-### <a name="recommendations-related-to-azure-security-benchmark-to-be-added-preview"></a>預計新增 Azure 安全性效能評定相關的建議 (預覽)
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-getting-sub-recommendations"></a>「您應在機器上安裝系統更新」建議有子建議
+
+#### <a name="summary"></a>摘要
 
 | 層面 | 詳細資料 |
 |---------|---------|
-|公告日期 | 2020 年 10 月 26 日  |
-|此變更的日期  |  2020 年 11 月 |
-|影響     | 可能會有更多要檢閱的建議。<br>對安全分數沒有立即性的影響 - 預覽建議不會影響您的安全分數。<br>對資源的健全狀態沒有立即性的影響 - 預覽建議不會將資源轉譯為「狀況不良」。|
+|公告日期 | 2020 年 11 月 9 日  |
+|此變更的日期  |  2020 年 11 月中下旬 |
+|影響     | 從這項建議的目前版本轉換為取代建議期間，您的安全分數可能會改變。 |
 |  |  |
 
-Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的一組 Azure 特定指導方針。 [深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)。
+我們即將發行 **您應在機器上安裝系統更新** 建議的增強版。 新版本將 *取代* 套用系統更新安全性控制中的目前版本，並提供下列改進：
 
-接下來會在 Azure 資訊安全中心新增 18 個新的建議，以增加評定的涵蓋範圍。
+- 每個遺漏的更新已有子建議
+- Azure 入口網站的 Azure 資訊安全中心頁面會提供經過重新設計的體驗
+- Azure Resource Graph 的建議有更豐富的資料
 
-預覽建議不會將資源轉譯為「狀況不良」，這些項目也不會納入您安全分數的計算範圍。 您可以盡可能加以補救，以在預覽期間結束時計入您的分數。 若要了解如何回應這些建議，請參閱[Azure 資訊安全中心的補救建議](security-center-remediate-recommendations.md)。
+#### <a name="transition-period"></a>轉換期間
 
-- 應該為虛擬機器啟用 Azure 備份
-- 應為 MySQL 資料庫伺服器啟用 [強制執行 SSL 連線]
-- 應為 PostgreSQL 資料庫伺服器啟用 [強制執行 SSL 連線]
-- 應為適用於 MariaDB 的 Azure 資料庫啟用異地備援備份
-- 應為適用於 MySQL 的 Azure 資料庫啟用異地備援備份
-- 應為適用於 PostgreSQL 的 Azure 資料庫啟用異地備援備份
-- API 應用程式的 Java 應該更新為最新版本
-- 函式應用程式的 Java 應該更新為最新版本
-- Web 應用程式的 Java 應該更新為最新版本
-- API 應用程式的 PHP 應該更新為最新版本
-- Web 應用程式的 PHP 應該更新為最新版本
-- MariaDB 伺服器應啟用私人端點
-- MySQL 伺服器應啟用私人端點
-- PostgreSQL 伺服器應啟用私人端點
-- API 應用程式的 Python 應該更新為最新版本
-- 函式應用程式的 Python 應該更新為最新版本
-- Web 應用程式的 Python 應該更新為最新版本
-- Web 應用程式應該要求所有要求提供 SSL 憑證
+轉換期間大約為 36 小時。 為了盡可能避免任何潛在的中斷情況，我們排定在週末進行更新。 在轉換期間，您的安全分數可能會受到影響。
 
-相關連結：
+#### <a name="redesigned-portal-experience"></a>重新設計的入口網站體驗
 
-- [深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)
-- [深入了解 Azure API 應用程式](../app-service/app-service-web-tutorial-rest-api.md)
-- [深入了解 Azure 函式應用程式](../azure-functions/functions-overview.md)
-- [深入了解 Azure Web 應用程式](../app-service/overview.md)
-- [深入了解適用於 MariaDB 的 Azure 資料庫](../mariadb/overview.md)
-- [深入了解適用於 MySQL 的 Azure 資料庫](../mysql/overview.md)
-- [深入了解適用於 PostgreSQL 的 Azure 資料庫](../postgresql/overview.md)
+**您應在機器上安裝系統更新** 的建議詳細資料包含結果清單，如下所示。 當您選取單一結果時，詳細資料窗格隨即開啟，其中含有補救資訊的連結和受影響的資源清單。
+
+:::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="在入口網站體驗中開啟其中一個子建議，以取得更新的建議":::
+
+
+#### <a name="richer-data-from-azure-resource-graph"></a>Azure Resource Graph 有更豐富的資料
+
+Azure Resource Graph 是 Azure 中的一項服務，旨在提供有效率的資源探索。 您可以使用 ARG 在一組指定的訂用帳戶中大規模查詢，以便有效率地控管您的環境。 
+
+對於 Azure 資訊安全中心，您可以使用 ARG 和 [Kusto 查詢語言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 來查詢各種安全性狀態資料。
+
+如果您查詢 **您應在機器上安裝系統更新** 的目前版本，ARG 唯一會提供的資訊將是必須在機器上補強建議。 在發行更新的版本時，下列查詢將會傳回每個遺漏的系統更新 (依機器分組)。
+
+```kusto
+securityresources
+| where type =~ "microsoft.security/assessments/subassessments"
+| where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+| where properties.status.code == "Unhealthy"
+```
 
 ## <a name="next-steps"></a>後續步驟
 

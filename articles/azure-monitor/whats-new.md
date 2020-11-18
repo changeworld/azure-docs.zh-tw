@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151813"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487987"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -157,7 +157,7 @@ ms.locfileid: "92151813"
 ### <a name="alerts"></a>警示
 - [Azure 監視器警示的動作規則](platform/alerts-action-rules.md) - 新增了 CLI 程序。
 - [在 Azure 入口網站中建立和管理動作群組](platform/action-groups.md) - 有所更新以反映 UI 中的變更。
-- [Azure 監視器 Log Analytics 中儲存的查詢](log-query/saved-queries.md) - 新文章。
+- [Azure 監視器 Log Analytics 中的範例查詢](log-query/example-queries.md) - 新文章。
 - [針對 Azure 監視器中的記錄警示進行疑難排解](platform/alerts-troubleshoot-log.md) - 新增了關於警示規則配額的章節。
 - [針對 Azure 計量警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新增了關於尚未發出的自訂計量上警示規則的章節。
 - [了解計量警示在 Azure 監視器中的運作方式。](platform/alerts-metric-overview.md) - 新增了彙總細微性的選取建議。

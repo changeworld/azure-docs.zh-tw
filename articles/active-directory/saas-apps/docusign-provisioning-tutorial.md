@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: 185b61f77b275ed78050f5d8efb820c5333f6e1f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454672"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358570"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教學課程︰設定 DocuSign 來自動佈建使用者
 
@@ -57,47 +57,47 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 本節的目的是要說明如何對 DocuSign 啟用 Active Directory 使用者帳戶的使用者佈建。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory > 企業應用程式 > 所有應用程式] 區段。
 
-1. 如果您已經設定單一登入的 DocuSign，使用 [搜尋] 欄位搜尋您的 DocuSign 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [DocuSign]****。 從搜尋結果中選取 DocuSign，並將它新增至您的應用程式清單。
+1. 如果您已經設定單一登入的 DocuSign，使用 [搜尋] 欄位搜尋您的 DocuSign 執行個體。 否則，請選取 [新增]，並在應用程式庫中搜尋 [DocuSign]。 從搜尋結果中選取 DocuSign，並將它新增至您的應用程式清單。
 
-1. 選取您的 DocuSign 執行個體，然後選取 [佈建]**** 索引標籤。
+1. 選取您的 DocuSign 執行個體，然後選取 [佈建] 索引標籤。
 
 1. 將 [佈建模式]  設定為 [自動]  。 
 
-    ![Azure 入口網站中 DocuSign [布建] 索引標籤的螢幕擷取畫面。 布建模式設定為 [自動] 和 [管理員使用者名稱]、[密碼] 和 [測試連接]。](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面：Azure 入口網站中 DocuSign 的 [佈建] 索引標籤。 [佈建模式] 設定為 [自動]，且已醒目提示 [管理員使用者名稱]、[密碼] 和 [測試連線]。](./media/docusign-provisioning-tutorial/provisioning.png)
 
-1. 在 [管理員認證]**** 區段下，提供下列組態設定：
+1. 在 [管理員認證] 區段下，提供下列組態設定：
    
-    a. 在 [管理員使用者名稱]**** 文字方塊中，輸入在 DocuSign.com 已指派 **System Administrator** 設定檔的 DocuSign 帳戶名稱。
+    a. 在 [管理員使用者名稱] 文字方塊中，輸入在 DocuSign.com 已指派 **System Administrator** 設定檔的 DocuSign 帳戶名稱。
    
-    b. 在 [管理員密碼]**** 文字方塊中，輸入這個帳戶的密碼。
+    b. 在 [管理員密碼] 文字方塊中，輸入這個帳戶的密碼。
 
 > [!NOTE]
-> 如果已設定 SSO 和使用者布建，則用於布建的授權認證必須設定為使用 SSO 和使用者名稱/密碼。
+> 如果同時設定了 SSO 和使用者佈建，則用於佈建的授權認證必須設定為同時與 SSO 和使用者名稱/密碼搭配運作。
 
-1. 在 Azure 入口網站中，按一下 [測試連線]**** 以確保 Azure AD 可以連線到您的 DocuSign 應用程式。
+1. 在 Azure 入口網站中，按一下 [測試連線]以確保 Azure AD 可以連線到您的 DocuSign 應用程式。
 
-1. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
-
-1. 按一下 [儲存]。
-
-1. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 DocuSign]****。
-
-1. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 DocuSign 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 DocuSign 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
-
-1. 若要啟用 DocuSign 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態]**** 變更為 [開啟]****
+1. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
 1. 按一下 [儲存]。
 
-這會啟動在 [使用者和群組] 區段中指派給 DocuSign 之任何使用者的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 DocuSign 應用程式上佈建服務所執行的所有動作。
+1. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 DocuSign]。
+
+1. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 DocuSign 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 DocuSign 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+
+1. 若要啟用 DocuSign 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]
+
+1. 按一下 [儲存]。
+
+這會啟動在 [使用者和群組] 區段中指派給 DocuSign 之任何使用者的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 DocuSign 應用程式上佈建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="troubleshooting-tips"></a>疑難排解秘訣
-* 您可以使用參數對應中的運算式，在 Docusign 中為使用者布建角色或許可權設定檔，方法是使用 [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) 和 [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) 函數。 例如，下列運算式會在使用者已在 Azure AD 中指派「DS 系統管理員」角色時，布建識別碼 "8032066"。 如果使用者未在 Azure AD 端指派角色，則不會布建任何許可權設定檔。 您可以從 DocuSign [入口網站](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)中取出識別碼。
+* 若要在 Docusign 中佈建使用者的角色或權限設定檔，您可以在屬性對應中使用運算式來完成，方法是使用 [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) 和 [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) 函式。 例如，下列運算式會在已於 Azure AD 中為使用者指派「DS 管理員」角色時，佈建識別碼 "8032066"。 如果未在 Azure AD 端為使用者指派角色，則不會佈建任何權限設定檔。 您可以從 DocuSign [入口網站](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)中擷取識別碼。
 
-Switch (SingleAppRoleAssignment ( [appRoleAssignments] ) 、""、"8032066"、"DS Admin" ) 
+Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
 
 
 ## <a name="additional-resources"></a>其他資源

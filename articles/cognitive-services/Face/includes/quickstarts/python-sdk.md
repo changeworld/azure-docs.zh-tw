@@ -7,24 +7,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: ec23ec58a020cc314f301e33b72b4787f4e32e14
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: cf7b82ec1da660ac68c6031434c0e0748ee67b3d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918667"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523665"
 ---
 開始使用適用於 Python 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
 使用適用於 Python 的臉部用戶端程式庫來：
 
-* 偵測影像中的人臉
-* 尋找類似臉部
-* 建立並訓練人員群組
-* 識別臉部
-* 驗證臉部
+* [偵測影像中的臉部](#detect-faces-in-an-image)
+* [尋找類似臉部](#find-similar-faces)
+* [建立並訓練人員群組](#create-and-train-a-person-group)
+* [識別臉部](#identify-a-face)
+* [驗證臉部](#verify-faces)
 
 [參考文件](/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [套件 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [範例](/samples/browse/?products=azure&term=face)
 
@@ -102,7 +102,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 > [!TIP]
-> 您也可以偵測本機影像中的臉部。 請參閱 [FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) 方法，例如 **detect_with_stream** 。
+> 您也可以偵測本機影像中的臉部。 請參閱 [FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) 方法，例如 **detect_with_stream**。
 
 ### <a name="display-and-frame-faces"></a>顯示和框出臉部
 
@@ -134,7 +134,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="create-and-train-a-person-group"></a>建立並訓練人員群組
 
-下列程式碼會建立有三個不同 **Person** 物件的 **PersonGroup** 。 其會將每個 **Person** 與一組影像範例產生關聯，然後進行訓練以辨識每個人。 
+下列程式碼會建立有三個不同 **Person** 物件的 **PersonGroup**。 其會將每個 **Person** 與一組影像範例產生關聯，然後進行訓練以辨識每個人。 
 
 ### <a name="create-persongroup"></a>建立 PersonGroup
 
@@ -157,17 +157,17 @@ pip install --upgrade azure-cognitiveservices-vision-face
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
 > [!TIP]
-> 您也可以從 URL 所參考的遠端影像，建立 **PersonGroup** 。 請參閱 [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) 方法，例如 **add_face_from_url** 。
+> 您也可以從 URL 所參考的遠端影像，建立 **PersonGroup**。 請參閱 [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) 方法，例如 **add_face_from_url**。
 
 ### <a name="train-persongroup"></a>訓練 PersonGroup
 
-指派臉部之後，您必須訓練 **PersonGroup** ，使其能夠識別與其每個 **Person** 物件相關聯的視覺功能。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
+指派臉部之後，您必須訓練 **PersonGroup**，使其能夠識別與其每個 **Person** 物件相關聯的視覺功能。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
 
 ## <a name="identify-a-face"></a>識別臉部
 
-識別作業會取用個人 (或多人) 的影像，並尋找影像中每個臉部的身分識別 (臉部辨識搜尋)。 其會比較所偵測到的每個臉部與 **PersonGroup** ，該資料庫具有已知臉部特徵的不同 **Person** 物件。
+識別作業會取用個人 (或多人) 的影像，並尋找影像中每個臉部的身分識別 (臉部辨識搜尋)。 其會比較所偵測到的每個臉部與 **PersonGroup**，該資料庫具有已知臉部特徵的不同 **Person** 物件。
 
 > [!IMPORTANT]
 > 若要執行這個範例，您必須先執行[建立並訓練人員群組](#create-and-train-a-person-group)中的程式碼。
@@ -225,7 +225,7 @@ python quickstart-file.py
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-如果您在本快速入門中建立了 **PersonGroup** ，但想要將其刪除，請在指令碼中執行下列程式碼：
+如果您在本快速入門中建立了 **PersonGroup**，但想要將其刪除，請在指令碼中執行下列程式碼：
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
 

@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: cad098ed2dedc7abba57394ef1e26b9b7c87cd9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb55e4633ef64bee0577b1c1defba27dad24a3b7
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855466"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515826"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立和修改 ExpressRoute 線路的對等互連
 
@@ -61,23 +61,21 @@ ms.locfileid: "91855466"
 
 ### <a name="to-create-microsoft-peering"></a>建立 Microsoft 對等
 
-1. 設定 ExpressRoute 電路。 檢查**提供者狀態**以確定連線提供者已完整佈建線路，再繼續作業。
+1. 設定 ExpressRoute 電路。 檢查 **提供者狀態** 以確定連線提供者已完整佈建線路，再繼續作業。
 
    若您的連線提供者提供受控第 3 層服務，您可以要求連線提供者為您啟用 Microsoft 對等互連。 您不需要遵循後續幾節所列的指示。 不過，如果您的連線提供者不管理路由，請在建立線路之後繼續進行這些步驟。
 
    **線路 - 提供者狀態：未佈建**
 
-   [![顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「未佈建」的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
-
+    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/not-provisioned.png" alt-text="顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「未佈建」的提供者狀態":::
 
    **線路 - 提供者狀態：已佈建**
 
-   [![顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「已佈建」的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/provisioned.png" alt-text="顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「已佈建」的提供者狀態":::
 
 2. 設定線路的 Microsoft 對等。 繼續之前，請確定您擁有下列資訊。
 
-   * 主要連結的 /30 子網路。 地址區塊必須是您所擁有且註冊在 RIR / IRR 中的有效公用 IPv4 前置詞。 您會從這個子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。
-   * 次要連結的 /30 子網路。 地址區塊必須是您所擁有且註冊在 RIR / IRR 中的有效公用 IPv4 前置詞。 您會從這個子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。
+   * 您所擁有、且已在 RIR/IRR 中註冊的一對 /30 子網路。 這必須是有效的公用 IPv4 首碼。 一個子網路將用於主要連結，另一個將用於次要連結。 您會從這些子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。
    * 供建立此對等的有效 VLAN ID。 請確定線路有沒有其他對等使用相同的 VLAN ID。 如果同時需要主要和次要連結，則必須使用相同的 VLAN 識別碼。
    * 對等的 AS 編號。 您可以使用 2 位元組和 4 位元組 AS 編號。
    * 公告的首碼：您要提供一份您打算透過 BGP 工作階段公告的所有前置詞清單。 只接受公用 IP 位址首碼。 如果計劃傳送一組首碼，可以傳送以逗號分隔的清單。 這些首碼必須在 RIR / IRR 中註冊給您。
@@ -86,10 +84,11 @@ ms.locfileid: "91855466"
    * **選用：** MD5 雜湊 (如果選擇使用)。
 3. 如下列範例所示，您可以選取要設定的對等互連。 選取 Microsoft 對等資料列。
 
-   [![選取 Microsoft 對等互連資料列](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "選取 Microsoft 對等互連資料列")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
-4. 設定 Microsoft 對等。 指定所有參數後，請**儲存**組態。 下圖顯示範例組態：
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-microsoft-peering.png" alt-text="選取 Microsoft 對等互連資料列":::
 
-   ![設定 Microsoft 對等互連](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
+4. 設定 Microsoft 對等。 指定所有參數後，請 **儲存** 組態。 下圖顯示範例組態：
+
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/configuration-m-validation-needed.png" alt-text="設定所需的 Microsoft 對等互連驗證":::
 
 > [!IMPORTANT]
 > Microsoft 會驗證指定的「已公告公用首碼」和「對等互連 ASN」(或「客戶 ASN」) 是否已在網際網路路由登錄中指派給您。 如果您要從另一個實體取得公用首碼，以及如果未使用路由登錄來記錄指派，則自動驗證將不會完成，而且需要手動驗證。 如果自動驗證失敗，您會看到「需要驗證」訊息。 
@@ -99,22 +98,23 @@ ms.locfileid: "91855466"
 
    如果您的線路處於「需要驗證」狀態，您必須開啟支援票證，向我們的支援小組出示首碼擁有權的證明。 如下列範例所示，您可以直接從入口網站開立支援票證：
 
-   ![需要驗證 - 支援票證](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png" alt-text="需要驗證 - 支援票證":::
 
 5. 成功接受設定後，會出現類似下圖的畫面：
 
-   ![對等互連狀態：已設定](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "對等互連狀態：已設定")
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/microsoft-peering-validation-configured.png" alt-text="對等互連狀態：已設定":::
 
 ### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>檢視 Microsoft 對等詳細資訊
 
 選取對等互連的資料列，即可檢視 Microsoft 對等互連的屬性。
 
-[![檢視 Microsoft 對等互連屬性](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "檢視屬性")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png" alt-text="檢視 Microsoft 對等互連屬性":::
+
 ### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>更新 Microsoft 對等組態
 
 您可以選取想要修改的對等互連資料列，然後修改對等互連屬性並儲存您的修改。
 
-![選取對等互連資料列](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png" alt-text="選取對等互連資料列":::
 
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure 私用對等互連
 
@@ -128,60 +128,60 @@ ms.locfileid: "91855466"
 
    **線路 - 提供者狀態：未佈建**
 
-   [![顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「未佈建」的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-private.png" alt-text="顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「未佈建」的提供者狀態":::
 
    **線路 - 提供者狀態：已佈建**
 
-   [![顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「已佈建」的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/provisioned-private-peering.png" alt-text="顯示 ExpressRoute 示範線路 [概觀] 頁面的螢幕擷取畫面，其中具有紅色方塊醒目提示設為「已佈建」的提供者狀態":::
 
 2. 設定線路的 Azure 私用對等。 繼續執行接下來的步驟之前，請確定您有下列項目：
 
-   * 主要連結的 /30 子網路。 子網路不能在保留給虛擬網路的任何位址空間中。 您會從這個子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。
-   * 次要連結的 /30 子網路。 子網路不能在保留給虛擬網路的任何位址空間中。 您會從這個子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。
+   * 您所擁有、且已在 RIR/IRR 中註冊的一對 /30 子網路。 一個子網路將用於主要連結，另一個將用於次要連結。 您會從這些子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。 這對子網路有三個選項可供使用：
    * 供建立此對等的有效 VLAN ID。 請確定線路有沒有其他對等使用相同的 VLAN ID。 如果同時需要主要和次要連結，則必須使用相同的 VLAN 識別碼。
    * 對等的 AS 編號。 您可以使用 2 位元組和 4 位元組 AS 編號。 除了編號 65515 到 65520 (含) 以外，您可以將私人 AS 編號用於此對等互連。
    * 當您設定私人對等互連時，必須透過 BGP 將路由從內部部署邊緣路由器公告至 Azure。
    * **選用：** MD5 雜湊 (如果選擇使用)。
 3. 如下列範例所示，選取 Azure 私人對等互連資料列：
 
-   [![選取私人對等互連資料列](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "選取私人對等互連資料列")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
-4. 設定私用對等。 指定所有參數後，請**儲存**組態。
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-private-peering.png" alt-text="選取私人對等互連資料列":::
 
-   ![設定私用對等互連](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
+4. 設定私用對等。 指定所有參數後，請 **儲存** 組態。
+
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/private-peering-configuration.png" alt-text="設定私人對等互連":::
+
 5. 成功接受設定後，會出現類似下列範例的畫面：
 
-   ![已儲存私人對等互連](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/save-private-peering.png" alt-text="已儲存私人對等互連":::
 
 ### <a name="to-view-azure-private-peering-details"></a><a name="getprivate"></a>檢視 Azure 私用對等詳細資訊
 
 選取 Azure 私用對等，即可檢視該對等的屬性。
 
-[![檢視私人對等互連屬性](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "檢視私人對等互連屬性")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png" alt-text="檢視私人對等互連屬性":::
 
 ### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>更新 Azure 私用對等組態
 
 您可以選取對等的資料列並修改對等屬性。 更新之後，請儲存您的變更。
 
-![更新私用對等互連](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/update-private-peering.png" alt-text="更新私人對等互連":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
 ### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>刪除 Microsoft 對等
 
-如下圖所示，您可以按一下刪除圖示來移除對等互連設定：
+您可以在對等互連上按一下滑鼠右鍵，然後選取 [刪除] 以移除 Microsoft 對等互連設定，如下圖所示：
 
-![刪除對等互連](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/delete-microsoft-peering.png" alt-text="刪除 Microsoft 對等互連":::
 
 ### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>刪除 Azure 私用對等
 
-如下圖所示，您可以選取刪除圖示來移除對等互連設定：
+您可以在對等互連上按一下滑鼠右鍵，然後選取 [刪除] 以移除私人對等互連設定，如下圖所示：
 
 > [!WARNING]
-> 執行此範例之前，您必須確定已移除所有虛擬網路與 ExpressRoute Global Reach 連線。 
-> 
+> 執行此作業之前，您必須確定已移除所有虛擬網路與 ExpressRoute Global Reach 連線。 
 > 
 
-![刪除私用對等互連](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/delete-private-peering.png" alt-text="刪除私人對等互連":::
 
 ## <a name="next-steps"></a>後續步驟
 

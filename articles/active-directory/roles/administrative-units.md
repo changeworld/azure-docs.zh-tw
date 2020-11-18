@@ -7,31 +7,29 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb24d0cd2714969b5a888b1036f524c4c062d76
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027613"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394589"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理單位
 
 本文說明 Azure Active Directory (Azure AD) 中的管理單位。 管理單位是一種 Azure AD 資源，可以是其他 Azure AD 資源的容器。 管理單位只能包含使用者和群組。
 
-使用管理單位可讓您授與系統管理權限，這些權限受限於您所定義組織的部門、區域或其他區段。 您可以使用管理單位將權限委派給區域管理員或以細微的層級設定原則。 例如，使用者帳戶管理員可以更新設定檔資訊、重設密碼，且只針對其管理單位中的使用者指派授權。
-
-例如，您可能會將[服務台管理員](permissions-reference.md#helpdesk-administrator)角色委派給地區支援專家，此角色受限於僅管理其所支援區域中的使用者。
+管理單位會將角色中的權限限制為您所定義之組織的任何部分。 例如，您可以使用管理單位，將[服務台管理員](permissions-reference.md#helpdesk-administrator)角色委派給區域支援專家，讓他們只能管理其支援區域中的使用者。
 
 ## <a name="deployment-scenario"></a>部署案例
 
-在由任何種類的獨立部門所構成的組織中，使用管理單位來限制系統管理範圍可能非常有用。 假設有一家由許多自主運作之學院 (商學院、工學院等) 所組成的大型大學。 每個學院都有一個 IT 管理員小組，負責控制存取、管理使用者，以及為學校設定原則。 
+在由任何種類的獨立部門所構成的組織中，使用管理單位來限制系統管理範圍可能非常有用。 假設有一家由許多自主運作之學院 (商學院、工學院等) 所組成的大型大學。 每個學院都有一個 IT 管理員小組，負責控制存取、管理使用者，以及為學校設定原則。
 
 中央系統管理員可以：
 
@@ -54,38 +52,45 @@ ms.locfileid: "93027613"
 
 ### <a name="plan-your-administrative-units"></a>規劃您的管理單位
 
-管理單位可用來以邏輯方式將 Azure AD 資源分組。 例如，對於 IT 部門分散在全球各地的組織而言，建立可定義這些地理界限的管理單位可能很合理。 在多國組織具有不同半自主運作「子組織」的另一種情況下，可能會以管理單位來表示每個子組織。
+管理單位可用來以邏輯方式將 Azure AD 資源分組。 IT 部門分散在全球各地的組織，可建立管理單位以定義相關地理界限。 另一個案例中，跨國組織具有半自主運作的子組織，則可用管理單位來表示這些子組織。
 
 組織的獨特需求將會引導管理單位的建立準則。 管理單位是跨 Microsoft 365 服務定義結構的常見方式。 我們建議您在準備管理單位時考量到其跨 Microsoft 365 服務使用的特性。 如果您可讓管理單位之下跨 Microsoft 365 的通用資源產生關聯，即可從管理單位獲得最大價值。
 
 您可預期在組織中建立管理單位，以進行下列階段：
 
-1. **初步採用** ：您的組織會根據初始準則開始建立管理單位，而管理單位數目會隨著準則的精簡而增加。
-1. **裁撤** ：定義好準則後，將會刪除不再需要的管理單位。
-1. **穩定** ：您的組織結構已妥善定義，而且管理單位數目在短期內不會大幅變更。
+1. **初步採用**：您的組織會根據初始準則開始建立管理單位，而管理單位數目會隨著準則的精簡而增加。
+1. **裁撤**：定義好準則後，將會刪除不再需要的管理單位。
+1. **穩定**：您的組織結構已妥善定義，而且管理單位數目在短期內不會大幅變更。
 
 ## <a name="currently-supported-scenarios"></a>目前支援的案例
 
-作為全域管理員或特殊權限的角色管理員，您可以使用 Azure AD 入口網站來建立管理單位、將使用者新增為管理單位的成員，然後將 IT 人員指派給管理單位範圍的系統管理員角色。 管理單位範圍的系統管理員可接著使用 Microsoft 365 系統管理中心，在其管理單位中進行使用者的基本管理。
+身為全域管理員或特殊權限角色管理員，您可以使用 Azure AD 入口網站執行下列動作：
 
-此外，您也可以將群組新增為管理單位的成員。 管理單位範圍的群組管理員可使用 PowerShell、Microsoft Graph 和 Azure AD 入口網站來管理成員。
+- 建立管理單位
+- 新增管理單位的使用者和群組成員
+- 將 IT 人員指派給管理單位範圍的系統管理員角色。
 
-下表說明目前對管理單位案例的支援：
+管理單位範圍的系統管理員可使用 Microsoft 365 系統管理中心，在其管理單位中進行使用者的基本管理。 具有管理單位範圍的群組管理員，可使用 PowerShell、Microsoft Graph 和 Microsoft 365 系統管理中心來管理群組。
+
+>[!Note]
+>只有本節中說明的功能可在 Microsoft 365 系統管理中心使用。 具有管理單位範圍的 Azure AD 角色無法使用組織層級功能。
+
+以下幾節說明目前對管理單位案例的支援。
 
 ### <a name="administrative-unit-management"></a>管理單位的管理
 
-| 權限 |   Graph/PowerShell   | Azure AD 入口網站 | Microsoft 365 系統管理中心 | 
-| -- | -- | -- | -- |
-| 建立和刪除管理單位   |    支援    |   支援   |    不支援 | 
-| 個別新增和移除管理單位成員    |   支援    |   支援   |    不支援 | 
-| 使用 CSV 檔案大量新增和移除管理單位成員   |    不支援     |  支援   |    沒有支援計劃 | 
-| 指派管理單位範圍的系統管理員  |     支援    |   支援    |   不支援 | 
-| 根據屬性動態新增和移除管理單位成員 | 不支援 | 不支援 | 不支援 
+| 權限 |   Graph/PowerShell   | Azure AD 入口網站 | Microsoft 365 系統管理中心 |
+| --- | --- | --- | --- |
+| 建立和刪除管理單位   |    支援    |   支援   |    不支援 |
+| 個別新增和移除管理單位成員    |   支援    |   支援   |    不支援 |
+| 使用 CSV 檔案大量新增和移除管理單位成員   |    不支援     |  支援   |    沒有支援計劃 |
+| 指派管理單位範圍的系統管理員  |     支援    |   支援    |   不支援 |
+| 根據屬性動態新增和移除管理單位成員 | 不支援 | 不受支援 | 不支援
 
 ### <a name="user-management"></a>使用者管理
 
 | 權限 |   Graph/PowerShell   | Azure AD 入口網站 | Microsoft 365 系統管理中心 |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | 管理單位範圍的使用者屬性、密碼和授權管理   |    支援     |  支援   |   支援 |
 | 管理單位範圍的使用者登入封鎖和解除封鎖    |   支援   |    支援   |    支援 |
 | 管理單位範圍的使用者多重要素驗證認證管理   |    支援   |   支援   |   不支援 |
@@ -93,10 +98,9 @@ ms.locfileid: "93027613"
 ### <a name="group-management"></a>群組管理
 
 | 權限 |   Graph/PowerShell   | Azure AD 入口網站 | Microsoft 365 系統管理中心 |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | 管理單位範圍的群組屬性和成員管理     |  支援   |    支援    |  不支援 |
 | 管理單位範圍的群組授權管理   |    支援  |    支援   |   不支援 |
-
 
 管理單位只會將範圍套用至管理權限。 其不會阻止成員或系統管理員使用其[預設使用者權限](../fundamentals/users-default-permissions.md)來瀏覽管理單位以外的其他使用者、群組或資源。 在 Microsoft 365 系統管理中心，系統會篩選出範圍管理員之管理單位以外的使用者。但您可以在 Azure AD 入口網站、PowerShell 和其他 Microsoft 服務中瀏覽其他使用者。
 

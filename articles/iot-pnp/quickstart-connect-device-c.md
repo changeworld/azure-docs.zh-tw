@@ -1,18 +1,18 @@
 ---
-title: 將 IoT 隨插即用範例 C 裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 在 Linux 或 Windows 上建置並執行連線至 IoT 中樞的 IoT 隨插即用範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 快速入門 - 將 IoT 隨插即用範例 C 裝置程式碼連線至 Azure IoT 中樞 | Microsoft Docs
+description: 快速入門 - 在 Linux 或 Windows 上建置並執行連線至 IoT 中樞的 IoT 隨插即用範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e490171fd533783aab9fd44798a9c81c55faf89f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d69eca10a3ee19919d7cd9e748486e30db95e749
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047925"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421663"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>快速入門：將在 Linux 或 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 若要在 Windows 上完成本快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在 [安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含 **使用 C++ 的桌面開發** 工作負載。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 

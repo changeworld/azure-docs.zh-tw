@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ea7211ea895c5f6db3e84e382632737468898fb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.openlocfilehash: 25767a7ddb83acf3ad10698f9f2ff8949a0ad55f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319100"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357193"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教學課程：設定 8x8 來自動佈建使用者
 
@@ -58,7 +58,7 @@ ms.locfileid: "92319100"
 
    ![顯示使用者佈建](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
-3. 複製 **8x8 URL** 和 **8x8 API 權杖**值。 這些值會分別輸入到 Azure 入口網站 8x8 應用程式 [佈建] 索引標籤中的 [租用戶 URL] 和 [祕密權杖] 欄位。
+3. 複製 **8x8 URL** 和 **8x8 API 權杖** 值。 這些值會分別輸入到 Azure 入口網站 8x8 應用程式 [佈建] 索引標籤中的 [租用戶 URL] 和 [祕密權杖] 欄位。
 
    ![複製 URL 和權杖](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
@@ -94,17 +94,17 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。按一下 [開始使用]。
 
-    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
+    ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
    ![[開始使用] 刀鋒視窗](./media/8x8-provisioning-tutorial/get-started.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
+    ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [管理員認證] 區段下，將 **8x8 URL** 從 Configuration Manager 複製到**租用戶 URL**。 將 **8x8 API 權杖** 從 Configuration Manager 複製到**祕密權杖**。 按一下 [測試連線]，以確保 Azure AD 可以連線至 8x8。 如果連線失敗，請確定您的 8x8 帳戶具有系統管理員權限並再試一次。
+5. 在 [管理員認證] 區段下，將 **8x8 URL** 從 Configuration Manager 複製到 **租用戶 URL**。 將 **8x8 API 權杖** 從 Configuration Manager 複製到 **祕密權杖**。 按一下 [測試連線]，以確保 Azure AD 可以連線至 8x8。 如果連線失敗，請確定您的 8x8 帳戶具有系統管理員權限並再試一次。
 
-    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/8x8-provisioning-tutorial/provisioning.png)
+    ![顯示 [管理員認證] 對話方塊的螢幕擷取畫面，您可以在其中輸入您的租用戶 URL 和祕密權杖。](./media/8x8-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

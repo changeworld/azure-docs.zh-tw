@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518920"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422666"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "92518920"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme) | 適用於 .NET 的 Azure SDK | Azure SDK 團隊發行了 .NET 用戶端程式庫，其設計是為了與其他 .NET 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30，但尚不支援知識存放區、地理空間類型或 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)。 <br/><br/>如需詳細資訊，請參閱[快速入門：建立索引](search-get-started-dotnet.md)和[升級至 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式推出。 </br> 安裝來自 NuGet 的 [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
+| [Azure.Search.Documents 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme) | 適用於 .NET 的 Azure SDK | Azure SDK 團隊發行了 .NET 用戶端程式庫，其設計是為了與其他 .NET 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30，但尚不支援知識存放區或地理空間類型。 <br/><br/>如需詳細資訊，請參閱[快速入門：建立索引](search-get-started-dotnet.md)和[升級至 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式推出。 </br> 安裝來自 NuGet 的 [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
 | [azure.search.documents 用戶端程式庫](/python/api/overview/azure/search-documents-readme)  | 適用於 Python 的 Azure SDK| Azure SDK 團隊發行了 Python 用戶端程式庫，其設計是為了與其他 Python 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 安裝來自 PyPI 的 [azure-search-documents 套件](https://pypi.org/project/azure-search-documents/)。 |
 | [@azure/search-documents用戶端程式庫](/javascript/api/overview/azure/search-documents-readme)  | 適用於 JavaScript 的 Azure SDK | Azure SDK 團隊發行了 JavaScript 用戶端程式庫，其設計是為了與其他 JavaScript 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 從 npm 安裝[@azure/search-documents 套件](https://www.npmjs.com/package/@azure/search-documents)。 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "92518920"
 | [**適用於內建防火牆支援的 IP 規則**](service-configure-firewall.md) | 安全性 | 將搜尋服務端點的存取限制為特定 IP 位址。 | 正式推出。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更新版本，或是入口網站。 |
 | [**私人搜尋端點的 Azure Private Link**](service-create-private-endpoint.md) | 安全性| 藉由以私人連結資源的形式執行搜尋服務，可使其在公用網際網路中受到保護，並且只能讓相同虛擬網路上的用戶端應用程式和其他 Azure 服務存取。 | 正式推出。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更新版本，或是入口網站。 |
 | [**系統管理的識別 (預覽)**](search-howto-managed-identities-data-sources.md) | 安全性 (索引子) | 使用 Azure Active Directory 將搜尋服務註冊為受信任的服務，即可對支援的 Azure 資料來源設定連線來進行索引。 適用於來自 Azure 資料來源 (例如 Azure SQL Database、Azure Cosmos DB 和 Azure 儲存體) 內嵌內容的[索引子](search-indexer-overview.md)。 | 公開預覽。 </br> 使用入口網站來註冊搜尋服務。 |
-| [**sessionId 查詢參數**](index-similarity-and-scoring.md)， [scoringStatistics=global 參數](index-similarity-and-scoring.md#scoring-statistics) | 查詢 (相關性) | 將 sessionID 新增至查詢，以建立計算搜尋分數的工作階段，並使用 scoringStatistics=global 來收集所有分區的分數，以提供更一致的搜尋分數計算。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
+| [**sessionId 查詢參數**](index-similarity-and-scoring.md)，[scoringStatistics=global 參數](index-similarity-and-scoring.md#scoring-statistics) | 查詢 (相關性) | 將 sessionID 新增至查詢，以建立計算搜尋分數的工作階段，並使用 scoringStatistics=global 來收集所有分區的分數，以提供更一致的搜尋分數計算。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
 | [**featuresMode (預覽)**](index-similarity-and-scoring.md#featuresMode-param) | 查詢 | 新增此查詢參數來展開相關性分數，可顯示更多詳細資料：每個欄位的相似性分數、每個欄位的字詞頻率，以及每個欄位的相符唯一語彙基元數目。 您可以使用自訂評分演算法中的這些資料點。 如需示範此功能的範例，請參閱[新增機器學習服務 (LearnToRank) 以搜尋相關性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
 ## <a name="march-2020"></a>2020 年 3 月
@@ -119,7 +119,7 @@ ms.locfileid: "92518920"
 
 ## <a name="new-service-name"></a>新服務名稱
 
-Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋** ，以反映核心作業中已展開 (但為選用功能) 的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都沒有變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
+Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核心作業中已展開 (但為選用功能) 的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都沒有變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
 
 ## <a name="service-updates"></a>服務更新
 

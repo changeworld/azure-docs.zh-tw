@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9dcb2fa8be22c21cc2b005cce1bf8bb1c614381
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324275"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505065"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用 SQL 集區 (預覽)
 
@@ -59,6 +59,9 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 3. 完成時，選取 [下一步:其他設定]。
 4. 選取 [無] 以佈建不含資料的專用 SQL 集區。 保留選取預設定序。
+
+    如果您要從還原點還原專用 SQL 集區，請選取 [還原點]。 如需關於如何執行還原的詳細資訊，請參閱[操作說明：還原現有的專用 SQL 集區](backuprestore/restore-sql-pool.md)
+
 ![專用 SQL 集區建立流程 - [其他設定] 索引標籤。](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. 選取 [檢閱 + 建立]。
@@ -84,7 +87,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 如果您想要刪除專用 SQL 集區，請完成下列步驟：
 
 1. 瀏覽至工作區刀鋒視窗中的 SQL 集區刀鋒視窗
-1. 選取要刪除的專用 SQL 集區 (在此案例中為 **contosowdw** )
+1. 選取要刪除的專用 SQL 集區 (在此案例中為 **contosowdw**)
 1. 選取之後，請按 [刪除]
 1. 確認刪除，然後按 [刪除] 按鈕 ![專用 SQL 集區概觀 - 反白顯示刪除確認。](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. 當流程成功完成時，專用 SQL 集區就不會再列入工作區資源中。

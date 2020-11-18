@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 22b202d0ef54984ea2818112b49bbdf7f1098833
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 07c0169dcbadc6dc8ae293d69e197c2cd1ec2275
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341612"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489789"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -30,6 +30,17 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 
 若要了解 Azure 防火牆功能，請參閱 [Azure 防火牆功能](features.md)。
 
+## <a name="pricing-and-sla"></a>價格和 SLA
+
+如需 Azure 防火牆的定價資訊，請參閱 [Azure 防火牆定價](https://azure.microsoft.com/pricing/details/azure-firewall/)。
+
+如需 Azure 防火牆的 SLA 資訊，請參閱 [Azure 防火牆 SLA](https://azure.microsoft.com/support/legal/sla/azure-firewall/)。
+
+## <a name="whats-new"></a>新增功能
+
+若要了解 Azure 防火牆的新功能，請參閱 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Firewall)。
+
+
 ## <a name="known-issues"></a>已知問題
 
 Azure 防火牆有下列已知問題：
@@ -42,10 +53,10 @@ Azure 防火牆有下列已知問題：
 |不支援將防火牆移動到不同的資源群組或訂用帳戶|不支援將防火牆移動到不同的資源群組或訂用帳戶。|在我們的規劃中，未來會支援這項功能。 若要將防火牆移動到不同的資源群組或訂用帳戶，您必須刪除目前的執行個體，並將其重新建立在新的資源群組或訂用帳戶中。|
 |威脅情報警示可能會遮罩處理|目的地為 80/443 的網路規則，可供輸出篩選遮罩處理設定為僅限警示模式的威脅情報警示。|使用應用程式規則建立 80/443 的輸出篩選。 或者，將威脅情報模式變更為 [警示並拒絕]。|
 |Azure 防火牆 DNAT 不適用於私人 IP 目的地|Azure 防火牆 DNAT 支援受限於網際網路輸出/輸入。 DNAT 目前不適用於私人 IP 目的地。 例如，輪輻至輪輻。|這是目前的限制。|
-|無法移除第一個公用 IP 設定|每個 Azure 防火牆公用 IP 位址會指派給一個 *IP 設定* 。  第一個 IP 設定會在防火牆部署期間指派，且通常也會包含防火牆子網路的參考 (除非透過範本部署明確做了不同的設定)。 您無法刪除此 IP 設定，因為這樣會將防火牆解除配置。 如果至少還有一個其他公用 IP 位址可供使用，您仍然可以變更或移除與此 IP 設定相關聯的公用 IP 位址。|這是原廠設定。|
+|無法移除第一個公用 IP 設定|每個 Azure 防火牆公用 IP 位址會指派給一個 *IP 設定*。  第一個 IP 設定會在防火牆部署期間指派，且通常也會包含防火牆子網路的參考 (除非透過範本部署明確做了不同的設定)。 您無法刪除此 IP 設定，因為這樣會將防火牆解除配置。 如果至少還有一個其他公用 IP 位址可供使用，您仍然可以變更或移除與此 IP 設定相關聯的公用 IP 位址。|這是原廠設定。|
 |可用性區域只能在部署期間進行設定。|可用性區域只能在部署期間進行設定。 在部署防火牆之後，您無法設定可用性區域。|這是原廠設定。|
 |輸入連線上的 SNAT|除了 DNAT，透過防火牆公用 IP 位址 (輸入) 的連線已對其中一個防火牆私人 IP 進行 SNAT 轉譯。 這項需求現在也適用於主動/主動 NVA 以確保對稱式路由。|若要保留 HTTP/S 的原始來源，請考慮使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 標題。 例如，在防火牆前使用 [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) 或 [Azure 應用程式閘道](../application-gateway/rewrite-http-headers.md)等服務。 您也可以將 WAF 新增為 Azure Front Door 的一部分和防火牆鏈結。
-|SQL FQDN 篩選支援僅限於 Proxy 模式 (連接埠 1433)|針對 Azure SQL Database、Azure Synapse Analytics 和 Azure SQL 受控執行個體：<br><br>在預覽期間，只有 Proxy 模式可支援 SQL FQDN 篩選 (連接埠 1433)。<br><br>針對 Azure SQL IaaS：<br><br>如果您使用非標準連接埠，您可以在應用程式規則中指定這些連接埠。|在重新導向模式中使用 SQL 時 (這是從 Azure 內連線時的預設值)，您可以改為使用 SQL 服務標籤作為 Azure 防火牆網路規則的一部分來篩選存取。
+|SQL FQDN 篩選支援僅限於 Proxy 模式 (連接埠 1433)|針對 Azure SQL Database、Azure Synapse Analytics 和 Azure SQL 受控執行個體：<br><br>只有 Proxy 模式才支援 SQL FQDN 篩選 (連接埠 1433)。<br><br>針對 Azure SQL IaaS：<br><br>如果您使用非標準連接埠，您可以在應用程式規則中指定這些連接埠。|在重新導向模式中使用 SQL 時 (這是從 Azure 內連線時的預設值)，您可以改為使用 SQL 服務標籤作為 Azure 防火牆網路規則的一部分來篩選存取。
 |不允許 TCP 連接埠 25 上的輸出流量| 使用 TCP 連接埠 25 的輸出 SMTP 連線會遭到封鎖。 連接埠 25 主要用於未經驗證的電子郵件傳遞。 這是虛擬機器的預設平台行為。 如需詳細資訊，請參閱[針對 Azure 中的輸出 SMTP 連線能力問題進行疑難排解](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。 不過，與虛擬機器不同的是，目前無法在 Azure 防火牆上啟用此功能。 注意：若要允許經過驗證的 SMTP (連接埠 587)，或允許 SMTP 通過連接埠 25 以外的連接埠，請確定您已設定網路規則，而不是應用程式規則，因為系統目前不支援 SMTP 檢查。|依照 SMTP 疑難排解文章中所述的建議方式來傳送電子郵件。 或者，從預設傳送至防火牆的路由中排除需要輸出 SMTP 存取的虛擬機器， 並將輸出存取改為直接以網際網路為目標。
 |不支援主動式 FTP|Azure 防火牆上的主動式 FTP 已停用，以防禦使用 FTP PORT 命令進行 FTP 彈跳式攻擊。|您可以改用被動式 FTP。 您仍然必須在防火牆上明確開啟 TCP 連接埠 20 和 21。
 |SNAT 連接埠使用率記量顯示 0%|即使已使用 SNAT 連接埠，Azure 防火牆 SNAT 連接埠使用率計量仍可能會顯示 0%。 在此情況下，若使用計量作為防火牆健康情況計量的一部分，則會提供不正確的結果。|此問題已修正，而正式推出日期訂於 2020 年 5 月。 在某些情況下，防火牆重新部署會解決此問題，但並不會一直都是如此。 作為中繼因應措施，請只使用防火牆健全狀態來尋找 status=degraded，而不是 status=unhealthy。 連接埠耗盡時會顯示為 degraded (已降級)。 Not healthy (狀態不良) 會保留，以在日後有更多計量影響防火牆健康情況時使用。
@@ -56,9 +67,10 @@ Azure 防火牆有下列已知問題：
 |不支援在 64000 與 65535 之間使用連接埠的 NAT 規則|Azure 防火牆允許網路和應用程式規則使用 1-65535 範圍中的任何連接埠，不過 NAT 規則只支援 1-63999 範圍中的連接埠。|這是目前的限制。
 |組態更新平均可能需要 5 分鐘|Azure 防火牆組態更新平均可能需要三到五分鐘，而且不支援平行更新。|我們正在調查提供修正程式的可能性。|
 |Azure 防火牆會使用 SNI TLS 標頭來篩選 HTTPS 和 MSSQL 流量|如果瀏覽器或伺服器軟體不支援伺服器名稱指示 (SNI) 擴充功能，您就無法透過 Azure 防火牆連線。|如果瀏覽器或伺服器軟體不支援 SNI，您或許能夠使用網路規則 (而不是應用程式規則) 來控制連線。 如需可支援 SNI 的軟體，請參閱[伺服器名稱指示](https://wikipedia.org/wiki/Server_Name_Indication)。|
-|自訂 DNS (預覽) 無法與強制通道搭配運作|如果已啟用強制通道，自訂 DNS (預覽) 就無法運作。|我們正在調查提供修正程式的可能性。|
+|自訂 DNS 無法與強制通道搭配運作|如果已啟用強制通道，自訂 DNS 就無法運作。|我們正在調查提供修正程式的可能性。|
 |多個可用性區域支援新的公用 IP 位址|當您部署具有兩個可用性區域 (1 和 2、2 和 3，或 1 和 3) 的防火牆時，無法新增公用 IP 位址|這是公用 IP 位址資源限制。|
 |啟動/停止無法用於在強制通道模式中設定的防火牆|啟動/停止無法用於在強制通道模式中設定的 Azure 防火牆。 嘗試啟動已設定強制通道的 Azure 防火牆時，會產生下列錯誤：<br><br>*Set-AzFirewall：AzureFirewall FW-xx 管理 IP 組態無法新增至現有的防火牆。如果要使用強制通道支援，請使用管理 IP 組態重新部署。<br>StatusCode：400<br>ReasonPhrase：不正確的要求*|調查中。<br><br>您可以刪除現有的防火牆，並使用相同的參數建立新的防火牆作為因應措施。|
+|無法使用入口網站新增防火牆原則標籤|Azure 防火牆原則具有修補支援限制，會防止您使用 Azure 入口網站新增標籤。 系統會產生下列錯誤：*無法儲存資源的標籤*。|我們正在調查提供修正程式的可能性。 或者，您可以使用 Azure PowerShell Cmdlet `Set-AzFirewallPolicy` 來更新標籤。
 
 
 ## <a name="next-steps"></a>後續步驟

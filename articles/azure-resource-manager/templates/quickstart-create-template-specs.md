@@ -2,15 +2,15 @@
 title: 建立和部署範本規格
 description: 了解如何從 ARM 範本建立範本規格。 然後，將範本規格部署至您訂用帳戶中的資源群組。
 author: tfitzmac
-ms.date: 10/02/2020
+ms.date: 11/10/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728772"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506357"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入門：建立和部署範本規格 (預覽)
 
@@ -88,7 +88,7 @@ ms.locfileid: "91728772"
 1. 當您使用 ARM 範本來建立範本規格時，此範本會內嵌於資源定義中。 複製下列範本並將其儲存在本機名為 **azuredeploy.json** 的檔案。 本快速入門假設您已儲存至 **c:\Templates\azuredeploy.json** 的路徑，但是您可以使用任何路徑。
 
     > [!NOTE]
-    > 在內嵌的範本中，所有左括號都必須以第二個左括號進行逸出。 使用 `[[`，而不是 `[`。
+    > 在內嵌的範本中，所有[範本運算式](template-expressions.md)都必須以第二個左括弧進行逸出。 使用 `"[[`，而不是 `"[`。 JSON 陣列仍會使用單一左括弧。
 
     ```json
     {

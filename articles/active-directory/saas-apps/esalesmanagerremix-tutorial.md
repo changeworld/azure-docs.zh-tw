@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: df993aae4e6c572c8f99688fd0053bdd07aefd56
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: c06595b683092abf52300481068daab26394c4cb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453923"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358740"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
 
@@ -30,7 +30,7 @@ ms.locfileid: "92453923"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 E Sales Manager Remix 整合，您需要下列項目：
 
@@ -38,7 +38,7 @@ ms.locfileid: "92453923"
 - 已啟用 E Sales Manager Remix SSO 的訂用帳戶
 
 > [!NOTE]
-> 當您測試本教學課程中的步驟時，「不」** 建議您使用生產環境。
+> 當您測試本教學課程中的步驟時，「不」建議您使用生產環境。
 
 若要測試本教學課程中的步驟，請遵循下列建議：
 
@@ -64,11 +64,11 @@ ms.locfileid: "92453923"
 
     ![企業應用程式視窗][2]
     
-1. 若要新增應用程式，請選取視窗頂端的 [新增應用程式]****。
+1. 若要新增應用程式，請選取視窗頂端的 [新增應用程式]。
 
     ![新增應用程式按鈕][3]
 
-1. 在搜尋方塊中，輸入 **E Sales Manager Remix**，從結果清單中選取 [E Sales Manager Remix]****，然後選取 [新增]****。
+1. 在搜尋方塊中，輸入 **E Sales Manager Remix**，從結果清單中選取 [E Sales Manager Remix]，然後選取 [新增]。
 
     ![結果清單中的 E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -84,48 +84,48 @@ ms.locfileid: "92453923"
 
 您會在 Azure 入口網站中啟用 Azure AD 單一登入，然後在您的 E Sales Manager Remix 應用程式中設定單一登入，做法如下：
 
-1. 在 Azure 入口網站的 [E Sales Manager Remix]**** 應用程式整合網頁上，選取 [單一登入]****。
+1. 在 Azure 入口網站的 [E Sales Manager Remix] 應用程式整合網頁上，選取 [單一登入]。
 
     ![單一登入連結][4]
 
-1. 在 [單一登入]**** 視窗的 [單一登入模式]**** 方塊中，選取 [SAML 登入]****。
+1. 在 [單一登入] 視窗的 [單一登入模式] 方塊中，選取 [SAML 登入]。
  
     ![單一登入視窗](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-1. 在 [E Sales Manager Remix 網域與 URL]**** 區段下，執行下列步驟：
+1. 在 [E Sales Manager Remix 網域與 URL] 區段下，執行下列步驟：
 
     ![E Sales Manager Remix 網域及 URL 單一登入資訊](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. 在 [登**入 url** ] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> /esales-pc*。
+    a. 在 [登入 URL] 方塊中，以下列格式輸入 URL︰*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*。
 
-    b. 在 [**識別碼**] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> / *。
+    b. 在 [識別碼] 方塊中，以下列格式鍵入 URL︰*https://\<Server-Based-URL>/\<sub-domain>/* 。
 
-    c. 記下**識別碼**的值，您稍後會在本教學課程中使用。
+    c. 記下 **識別碼** 的值，您稍後會在本教學課程中使用。
     
     > [!NOTE] 
     > 上述值並非真正的值。 使用實際的登入 URL 及識別碼來更新這些值。 請連絡 [E Sales Manager Remix 用戶端支援小組](mailto:esupport@softbrain.co.jp)以取得這些值。
 
-1. 在 [SAML 簽署憑證]**** 下，選取 [憑證 (Base64)]****，然後將憑證檔案儲存到您的電腦。
+1. 在 [SAML 簽署憑證] 下，選取 [憑證 (Base64)]，然後將憑證檔案儲存到您的電腦。
 
     ![憑證 (Base64) 下載連結](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-1. 選取 [檢視及編輯所有其他使用者屬性]**** 核取方塊，然後選取 **emailaddress** 屬性。
+1. 選取 [檢視及編輯所有其他使用者屬性] 核取方塊，然後選取 **emailaddress** 屬性。
     
     ![使用者屬性視窗](./media/esalesmanagerremix-tutorial/configure1.png)
 
-    [編輯屬性]**** 視窗隨即開啟。
+    [編輯屬性] 視窗隨即開啟。
 
-1. 複製 [命名空間]**** 和 [名稱]**** 的值。 以模式產生值 *\<Namespace>/\<Name>* ，並加以儲存，以供稍後在本教學課程中使用。
+1. 複製 [命名空間] 和 [名稱] 的值。 產生 *\<Namespace>/\<Name>* 模式的值，儲存起來供本教學課程稍後使用。
 
     ![編輯屬性視窗](./media/esalesmanagerremix-tutorial/configure2.png)
 
-1. 在 [E Sales Manager Remix 設定]**** 下，選取 [設定 E Sales Manager Remix]****。
+1. 在 [E Sales Manager Remix 設定] 下，選取 [設定 E Sales Manager Remix]。
 
-    ![螢幕擷取畫面，顯示已選取 [設定 E Sales Manager Remix] 的 [E Sales Manager Remix Configuration] 區段。](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![顯示 [E Sales Manager Remix 設定] 區段的螢幕擷取畫面，其中已選取 [設定 E Sales Manager Remix]。](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
-    [設定登入]**** 視窗隨即開啟。
+    [設定登入] 視窗隨即開啟。
 
-1. 在 [快速參考]**** 區段中，複製登出 URL 和 SAML 單一登入服務 URL。
+1. 在 [快速參考] 區段中，複製登出 URL 和 SAML 單一登入服務 URL。
 
 1. 選取 [儲存]。
 
@@ -133,40 +133,40 @@ ms.locfileid: "92453923"
 
 1. 以系統管理員身分登入您的 E Sales Manager Remix 應用程式。
 
-1. 選取右上方的 [到系統管理功能表]****。
+1. 選取右上方的 [到系統管理功能表]。
 
     ![到系統管理功能表命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 在左窗格中，選取**System settings**[  >  **與外部系統合作的**系統設定]。
+1. 在左窗格中，選取 [系統設定] >  [與外部系統合作]。
 
     ![系統設定以及與外部系統合作連結](./media/esalesmanagerremix-tutorial/configure5.png)
     
-1. 在 [與外部系統合作]**** 視窗中，選取 [SAML]****。
+1. 在 [與外部系統合作] 視窗中，選取 [SAML]。
 
     ![與外部系統合作視窗](./media/esalesmanagerremix-tutorial/configure6.png)
 
-1. 在 [SAML 驗證設定]**** 下，執行下列步驟：
+1. 在 [SAML 驗證設定] 下，執行下列步驟：
 
     ![SAML 驗證設定區段](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a. 選取 [PC 版本]**** 核取方塊。
+    a. 選取 [PC 版本] 核取方塊。
     
-    b. 在 [共同作業項目]**** 區段中，從下拉式清單中選取 [電子郵件]****。
+    b. 在 [共同作業項目] 區段中，從下拉式清單中選取 [電子郵件]。
 
-    c. 在 [共同作業項目]**** 方塊中，貼上您從 Azure 入口網站複製的宣告值，也就是 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**。
+    c. 在 [共同作業項目] 方塊中，貼上您從 Azure 入口網站複製的宣告值，也就是 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**。
 
-    d. 在 [簽發者 (實體 ID)]**** 方塊中，貼上您之前從 Azure 入口網站的 [E Sales Manager Remix 網域和 URL]**** 區段中複製的識別碼值。
+    d. 在 [簽發者 (實體 ID)] 方塊中，貼上您之前從 Azure 入口網站的 [E Sales Manager Remix 網域和 URL] 區段中複製的識別碼值。
 
-    e. 若要從 Azure 入口網站上傳已下載的憑證，選取 [檔案選取]****。
+    e. 若要從 Azure 入口網站上傳已下載的憑證，選取 [檔案選取]。
 
-    f. 在 [識別提供者登入 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的 SAML 單一登入服務 URL。
+    f. 在 [識別提供者登入 URL] 方塊中，貼上您之前從 Azure 入口網站複製的 SAML 單一登入服務 URL。
 
-    g. 在 [識別提供者登出 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的登出 URL 值。
+    g. 在 [識別提供者登出 URL] 方塊中，貼上您之前從 Azure 入口網站複製的登出 URL 值。
 
-    h. 選取 [設定完成]****。
+    h. 選取 [設定完成]。
 
 > [!TIP]
-> 當您設定此應用程式時，可以在 [Azure 入口網站](https://portal.azure.com)中閱讀先前那些指示的簡要版本。 在 [ **Active Directory**  >  **企業應用程式**] 區段中新增應用程式之後，請選取 [**單一登入**] 索引標籤，然後在底部的 [ **Configuration**設定] 區段中存取內嵌的檔。 如需內嵌文件功能的詳細資訊，請參閱 [Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)。
+> 當您設定此應用程式時，可以在 [Azure 入口網站](https://portal.azure.com)中閱讀先前那些指示的簡要版本。 在 [Active Directory] >  [企業應用程式] 區段中新增應用程式之後，請選取 [單一登入] 索引標籤，然後在底部的 [組態] 區段中存取內嵌的文件。 如需內嵌文件功能的詳細資訊，請參閱 [Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
@@ -175,57 +175,57 @@ ms.locfileid: "92453923"
 
 ![建立 Azure AD 測試使用者][100]
 
-1. 在 [Azure 入口網站] 的左窗格中，選取 [ **Azure Active Directory**]。
+1. 在 Azure 入口網站的左側窗格中，選取 [Azure Active Directory]。
 
     ![Azure Active Directory 連結](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. 若要顯示目前的使用者清單，請選取 [**使用者和群組**  >  **所有使用者**]。
+1. 若要顯示目前使用者清單，請選取 [使用者和群組] >  [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-1. 在 [所有使用者]**** 視窗頂端，選取 [新增]****。
+1. 在 [所有使用者] 視窗頂端，選取 [新增]。
 
     ![[新增] 按鈕](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
-    [使用者]**** 視窗隨即開啟。
+    [使用者] 視窗隨即開啟。
 
-1. 在 [使用者]**** 視窗中，執行下列操作：
+1. 在 [使用者] 視窗中，執行下列操作：
 
     ![[使用者] 視窗](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
-    a. 在 [名稱]**** 方塊中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 方塊中，輸入 **BrittaSimon**。
 
-    b. 在 [使用者名稱]**** 方塊中，輸入使用者 Britta Simon 的電子郵件地址。
+    b. 在 [使用者名稱] 方塊中，輸入使用者 Britta Simon 的電子郵件地址。
 
-    c. 選取 [ **顯示密碼** ] 核取方塊，然後記下 [ **密碼** ] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 選取 [建立]。
+    d. 選取 [建立]  。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>建立 E Sales Manager Remix 測試使用者
 
 1. 以系統管理員身分登入您的 E Sales Manager Remix 應用程式。
 
-1. 從右上方的功能表選取 [到系統管理功能表]****。
+1. 從右上方的功能表選取 [到系統管理功能表]。
 
     ![E Sales Manager Remix 設定](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 選取**貴公司的**  >  **部門和員工設定維護**，然後選取 [**已註冊的員工**]。
+1. 選取 [您的公司設定] >  [維護部門和員工]，然後選取 [已註冊員工]。
 
     ![已註冊員工索引標籤](./media/esalesmanagerremix-tutorial/user1.png)
 
-1. 在 [新增員工註冊]**** 區段中，執行下列步驟：
+1. 在 [新增員工註冊] 區段中，執行下列步驟：
     
     ![新增員工註冊區段](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. 在 [員工名稱]**** 方塊中，輸入使用者的名稱 (例如 **Britta**)。
+    a. 在 [員工名稱] 方塊中，輸入使用者的名稱 (例如 **Britta**)。
 
     b. 完成其餘必要欄位。
     
-    c. 如果您啟用 SAML，系統管理員將無法從登入頁面登入。 選取 [系統管理員登入]**** 核取方塊，將系統管理員登入權限授與給使用者。
+    c. 如果您啟用 SAML，系統管理員將無法從登入頁面登入。 選取 [系統管理員登入] 核取方塊，將系統管理員登入權限授與給使用者。
 
-    d. 選取 [註冊]****。
+    d. 選取 [註冊]。
 
-1. 日後若要以系統管理員身分登入，請以具有系統管理員權限的使用者身分登入，然後在右上角選取 [到系統管理功能表]****。
+1. 日後若要以系統管理員身分登入，請以具有系統管理員權限的使用者身分登入，然後在右上角選取 [到系統管理功能表]。
 
     ![到系統管理功能表命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
@@ -235,27 +235,27 @@ ms.locfileid: "92453923"
 
 ![指派使用者角色][200] 
 
-1. 在 Azure 入口網站中，開啟 [應用程式]**** 檢視、移至 [目錄]**** 檢視，然後選取 [企業應用程式]**** >  [所有應用程式]****。
+1. 在 Azure 入口網站中，開啟 [應用程式] 檢視、移至 [目錄] 檢視，然後選取 [企業應用程式] >  [所有應用程式]。
 
     ![[企業應用程式] 和 [所有應用程式] 連結][201] 
 
-1. 在 [應用程式]**** 清單中，選取 [E Sales Manager Remix]****。
+1. 在 [應用程式] 清單中，選取 [E Sales Manager Remix]。
 
     ![E Sales Manager Remix 連結](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. 在左窗格中，選取 [ **使用者和群組**]。
+1. 在左側窗格中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結][202]
 
-1. 選取 [新增]****，然後在 [新增指派]**** 窗格中，選取 [使用者和群組]****。
+1. 選取 [新增]，然後在 [新增指派] 窗格中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格][203]
 
-1. 在 [使用者和群組]**** 視窗的 [使用者]**** 清單中，選取 [Britta Simon]****。
+1. 在 [使用者和群組] 視窗的 [使用者] 清單中，選取 [Britta Simon]。
 
 1. 選取 [選取]  按鈕。
 
-1. 在 [新增指派]**** 視窗中，選取 [指派]****。
+1. 在 [新增指派] 視窗中，選取 [指派]。
     
 ### <a name="test-single-sign-on"></a>測試單一登入
 

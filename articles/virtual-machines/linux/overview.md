@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95e4ac884e0eda3b4f469484226962e3fd2e2eea
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654339"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375375"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器
 
@@ -30,7 +30,7 @@ Azure 虛擬機器可用於許多用途。 部份範例如下：
 您的應用程式所使用的 VM 數目可以擴大及擴增為符合您需求的任何內容。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>我在建立 VM 之前需要先考慮什麼？
-當您在 Azure 中建置應用程式基礎結構時，總是會有許多[設計考量](/azure/architecture/reference-architectures/n-tier/windows-vm)。 在您開始之前，仔細考量 VM 的這些層面很重要︰
+當您在 Azure 中建置應用程式基礎結構時，總是會有許多[設計考量](/azure/architecture/reference-architectures/n-tier/linux-vm)。 在您開始之前，仔細考量 VM 的這些層面很重要︰
 
 * 應用程式資源的名稱
 * 將儲存資源的位置
@@ -41,7 +41,7 @@ Azure 虛擬機器可用於許多用途。 部份範例如下：
 * VM 需要的相關資源
 
 ### <a name="locations"></a>位置
-Azure 中所建立的所有資源分散在世界各地的多個[地理區域](https://azure.microsoft.com/regions/)。 通常，當您建立 VM 時，區域稱為**位置**。 針對 VM，位置會指定虛擬硬碟所儲存的位置。
+Azure 中所建立的所有資源分散在世界各地的多個[地理區域](https://azure.microsoft.com/regions/)。 通常，當您建立 VM 時，區域稱為 **位置**。 針對 VM，位置會指定虛擬硬碟所儲存的位置。
 
 下表顯示一些您可以取得可用位置清單的方式。
 
@@ -74,24 +74,24 @@ Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.micro
 您也可以在每個 Azure 區域中使用單一儲存體帳戶管理自訂映像，並使用映像在相同訂用帳戶中建立數百個 VM。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../managed-disks-overview.md)。
 
 ## <a name="distributions"></a>散發 
-Microsoft Azure 支援執行由多家合作夥伴提供和維護的眾多熱門 Linux 散發套件。  您可以在 Azure Marketplace 中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 及 FreeBSD 等散發套件。 Microsoft 與各個 Linux 社群積極合作，以便為[經 Azure 背書的 Linux 散發套件](endorsed-distros.md)清單新增更多版本選項。
+Microsoft Azure 支援執行由多家合作夥伴提供和維護的眾多熱門 Linux 散發套件。  您可以在 Azure Marketplace 中找到可用的散發套件。 Microsoft 與各個 Linux 社群積極合作，以便為[經 Azure 背書的 Linux 散發套件](endorsed-distros.md)清單新增更多版本選項。
 
 如果您慣用的 Linux 散發套件選項目前未出現在映像庫中，您可以[建立 Linux VHD 並上傳到 Azure](create-upload-generic.md)來「自備 Linux」VM。
 
-Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 Azure 執行階段進行最佳化。  如需 Azure 合作夥伴的詳細資訊，請參閱下列連結：
+Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 Azure 執行階段進行最佳化。  如需 Azure 合作夥伴供應項目的詳細資訊，請參閱下列連結：
 
 * [Azure 背書散發套件上的 Linux](endorsed-distros.md)
-* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?search=suse%20sles&page=1)
-* Red Hat - [Azure Marketplace - Red Hat Enterprise Linux 8.1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
+* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=suse)
+* Red Hat - [Azure Marketplace - Red Hat Enterprise Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Red%20Hat%20Enterprise%20Linux)
 * Canonical - [Azure Marketplace - Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
-* Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian)
-* FreeBSD - [Azure Marketplace - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-* CoreOS - [Azure Marketplace - 由 CoreOS 提供的 Container Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
+* Debian - [Azure Marketplace - Debian](https://azuremarketplace.microsoft.com/marketplace/apps?search=Debian&page=1)
+* FreeBSD - [Azure Marketplace - FreeBSD](https://azuremarketplace.microsoft.com/marketplace/apps?search=freebsd&page=1)
+* Flatcar - [Azure Marketplace - Flatcar Container Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Flatcar&page=1)
 * RancherOS - [Azure Marketplace - RancherOS](https://azuremarketplace.microsoft.com/marketplace/apps/rancher.rancheros)
 * Bitnami - [適用於 Azure 的 Bitnami 程式庫](https://azure.bitnami.com/)
 * Mesosphere - [Azure Marketplace - Azure 上的 Mesosphere DC/OS](https://azure.microsoft.com/services/kubernetes-service/mesosphere/)
 * Docker - [Azure Marketplace - Docker 映像](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
-* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
+* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 
 ## <a name="cloud-init"></a>Cloud-init 
@@ -99,7 +99,7 @@ Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 
 為了實現適當的 DevOps 文化特性，所有基礎結構都必須是程式碼。  當所有基礎結構都留存在程式碼中時，便可以輕鬆地重新建立基礎結構。  Azure 可以與所有主要的自動化工具 (例如 Ansible、Chef、SaltStack 及 Puppet) 搭配運作。  Azure 也有自己的自動化工具：
 
 * [Azure 範本](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](../extensions/vmaccess.md)
+* [Azure `VMaccess`](../extensions/vmaccess.md)
 
 在支援 [cloud-init](https://cloud-init.io/) 的多數 Linux 散發版本上，Azure 均支援 cloud-init。  我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。
 
@@ -115,6 +115,11 @@ Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 
 * [Azure 中的 IP 位址](../../virtual-network/public-ip-addresses.md)
 * [對 Azure 中的 Linux VM 開啟連接埠](nsg-quickstart.md)
 * [在 Azure 入口網站中建立完整格式的網域名稱](portal-create-fqdn.md)
+
+
+## <a name="data-residency"></a>資料存留處
+
+在 Azure 中，將客戶資料儲存在單一區域中的功能目前僅適用於亞太地區的東南亞區域 (新加坡)，以及巴西地區的巴西南部 (聖保羅州) 區域。 至於其他所有區域，客戶資料會儲存在地區中。 如需詳細資訊，請參閱[信任中心](https://azuredatacentermap.azurewebsites.net/)。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752543"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369557"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入門：建置您的第一個靜態 Web 應用程式
 
@@ -20,7 +20,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 如果您沒有 Azure 訂用帳戶，請[建立免費試用帳戶](https://azure.microsoft.com/free)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [GitHub](https://github.com) 帳戶
 - [Azure](https://portal.azure.com) 帳戶
@@ -42,29 +42,29 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
     > [!NOTE]
     > 需要 Azure 和 GitHub 登入。 如果您尚未從 Visual Studio Code 登入 Azure 和 GitHub，此擴充功能會在建立過程中提示您登入。
 
-1. 將滑鼠游標放在 [Static Web Apps] 標籤上，然後選取**加號**。
+1. 將滑鼠游標放在 [Static Web Apps] 標籤上，然後選取 **加號**。
 
-    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="應用程式名稱":::
 
 1. 命令選擇區會在編輯器的頂端開啟，並提示您為應用程式命名。
 
     輸入 **my-first-static-web-app**，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="建立靜態 Web 應用程式":::
 
 1. 選取 [主要] 分支，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="分支名稱":::
 
 1. 選取 **/** 作為應用程式程式碼的位置，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="應用程式程式碼位置":::
 
 1. 擴充功能正在尋找應用程式中的 API 位置。 本文不會實作 API。
 
     選取 [暫時跳過]，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API 位置":::
 
 1. 選取應用程式中針對生產環境建置檔案的位置。
 
@@ -72,39 +72,39 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
     清除此方塊，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="應用程式檔案路徑":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
     輸入 **dist/angular-basic**，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular 應用程式檔案路徑":::
 
     # <a name="react"></a>[React](#tab/react)
 
     輸入 **build**，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React 應用程式檔案路徑":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
     輸入 **dist**，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue 應用程式檔案路徑":::
 
     ---
 
 1. 選取最接近您的位置，然後按 **Enter**。
 
-    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="資源位置":::
 
 1. 建立應用程式之後，Visual Studio Code 中就會顯示確認通知。
 
-    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="已建立確認":::
 
-1. 在 [Visual Studio Code 總管] 視窗中，返回 [Static Web Apps] 區段，然後在 [生產] 上按一下滑鼠右鍵，然後選取 [在入口網站中開啟]，以在 Azure 入口網站中檢視應用程式。
+1. 在 [Visual Studio Code 總管] 視窗中，瀏覽至具有您的訂用帳戶名稱的節點，並將其展開。 請注意，部署可能需要數分鐘才能完成。 然後，返回 [Static Web Apps] 區段，並選取您的應用程式名稱，然後以滑鼠右鍵按一下 my-first-static-web-app，並選取 [在入口網站中開啟]，以在 Azure 入口網站中檢視應用程式。
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Azure 標誌":::
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="開啟入口網站":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -114,7 +114,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 在 [Visual Studio Code 總管] 視窗中，返回 [Static Web Apps] 區段，然後以滑鼠右鍵按一下 [my-first-static-web-app]，然後選取 [刪除]。
 
-:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Azure 標誌":::
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="刪除應用程式":::
 
 ## <a name="next-steps"></a>後續步驟
 

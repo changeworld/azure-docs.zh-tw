@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 011071c9aa1722b8f1cf81ec8d9ef88e8d91ea03
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503754"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359046"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教學課程：設定 Hootsuite 來自動佈建使用者
 
@@ -36,7 +36,7 @@ ms.locfileid: "92503754"
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
 * Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
-* 具有組織**管理成員**權限的 [Hootsuite](http://www.hootsuite.com/) \(英文\) 使用者帳戶。
+* 具有組織 **管理成員** 權限的 [Hootsuite](http://www.hootsuite.com/) \(英文\) 使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃您的佈建部署
 1. 了解[佈建服務的運作方式](../app-provisioning/user-provisioning.md) \(部分機器翻譯\)。
@@ -49,7 +49,7 @@ ms.locfileid: "92503754"
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Hootsuite
 
-從 Azure AD 應用程式庫新增 Hootsuite，以開始管理對 Hootsuite 的佈建。 如果您先前已設定 SSO 的 Hootsuite，您可以使用相同的應用程式。 不過，建議在一開始測試整合時，建立個別的應用程式。 [在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式庫新增 Hootsuite，以開始管理對 Hootsuite 的佈建。 如果您先前已針對 SSO 設定 Hootsuite，則可使用相同的應用程式。 不過，建議在一開始測試整合時，建立個別的應用程式。 [在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
@@ -78,17 +78,17 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 3. 選取 [佈建] 索引標籤。按一下 [開始使用]。
 
-    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
+    ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
     ![[開始使用] 刀鋒視窗](./media/hootsuite-provisioning-tutorial/get-started.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
+    ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下的 [租用戶 URL] 中輸入 `https://platform.hootsuite.com/scim/v2`。 輸入稍早在＜步驟 2＞中所擷取之可長時間使用的祕密權杖。 按一下 [測試連線]，以確保 Azure AD 可以連線至 Hootsuite。 如果連線失敗，請確定您的 Hootsuite 帳戶具有管理員權限，然後再試一次。
 
-    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/hootsuite-provisioning-tutorial/provisioning.png)
+    ![顯示 [管理員認證] 對話方塊的螢幕擷取畫面，您可以在其中輸入您的租用戶 URL 和祕密權杖。](./media/hootsuite-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
@@ -111,9 +111,9 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
    |name.givenName|String|
    |name.familyName|String|
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組**]。
+10. 在 [對應] 區段底下，選取 [同步 Azure Active Directory 群組]。
 
-11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Hootsuite 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Hootsuite 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+11. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Hootsuite 的群組屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute) 會用來比對 Hootsuite 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
       |屬性|類型|
       |---|---|
@@ -146,8 +146,8 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 ## <a name="change-log"></a>變更記錄
 
-* 10/22/2020-已新增對使用者屬性 "givenName" 和 "name. familyName" 的支援。 已移除使用者的自訂延伸模組屬性 "organizationIds" 和 "teamIds"。
-新增對群組屬性 "displayName"、"members" 和 "externalId" 的支援。
+* 10/22/2020 - 已新增 "name.givenName" 和 "name.familyName" 使用者屬性。 已移除使用者的自訂擴充屬性 "organizationIds" 和 "teamIds"。
+已新增對群組屬性 "displayName"、"members" 和 "externalId" 的支援。
 
 ## <a name="additional-resources"></a>其他資源
 

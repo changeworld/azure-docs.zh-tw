@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b592591f3d2190fdcc9ed7b3b12b2eca20a25a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675839"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359777"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -56,13 +56,13 @@ ms.locfileid: "92675839"
 
    ![ServiceNow 管理員角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. 請檢查以確定 ServiceNow 中 **已停用** 下列設定：
+3. 請檢查確定 ServiceNow 中 **已停用** 下列設定：
 
-   1. 選取 [ **系統安全性**  >  **高安全性設定**  >  **需要驗證傳入架構要求的基本驗證** ]。
-   2. 選取 [ **系統屬性** ]  >  **Web 服務**  >  **需要連入 SOAP 要求的基本授權** 。
+   1. 選取 [系統安全性] > [高安全性設定] > [要求傳入的 SCHEMA 要求進行基本驗證]。
+   2. 選取 [系統屬性] > [Web 服務] > [要求傳入的 SOAP 要求進行基本授權]。
      
    > [!IMPORTANT]
-   > 如果 *啟用* 這些設定，布建引擎將無法與 ServiceNow 進行通訊。
+   > 如果 *已啟用* 這些設定，佈建引擎將無法與 ServiceNow 通訊。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 ServiceNow
 
@@ -93,15 +93,15 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
+    ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
 4. 將 [佈建模式]  設定為 [自動]  。
 
-    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
+    ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下，輸入您的 ServiceNow 管理員認證和使用者名稱。 按一下 [測試連線]，以確保 Azure AD 可以連線至 ServiceNow。 如果連線失敗，請確定您的 ServiceNow 帳戶具有管理員權限，然後再試一次。
 
-    ![螢幕擷取畫面顯示服務布建頁面，您可以在其中輸入系統管理員認證。](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面：顯示 [服務佈建] 頁面，您可以在其中輸入管理員認證。](./media/servicenow-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
@@ -149,10 +149,10 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   此錯誤表示與 ServiceNow 實例通訊時發生問題。 請仔細檢查以確定 ServiceNow 中 *已停用* 下列設定：
+   此錯誤表示與 ServiceNow 執行個體通訊時發生問題。 請再次檢查以確定 ServiceNow 中 *已停用* 下列設定：
    
-   1. 選取 [ **系統安全性**  >  **高安全性設定**  >  **需要驗證傳入架構要求的基本驗證** ]。
-   2. 選取 [ **系統屬性** ]  >  **Web 服務**  >  **需要連入 SOAP 要求的基本授權** 。
+   1. 選取 [系統安全性] > [高安全性設定] > [要求傳入的 SCHEMA 要求進行基本驗證]。
+   2. 選取 [系統屬性] > [Web 服務] > [要求傳入的 SOAP 要求進行基本授權]。
 
 ## <a name="additional-resources"></a>其他資源
 

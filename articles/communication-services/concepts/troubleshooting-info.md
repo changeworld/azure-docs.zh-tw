@@ -8,16 +8,16 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4921078e9e7b5d9de06fbbc9a97dc4a964569e04
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754656"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357618"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通訊服務中的疑難排解
 
-本文件會協助您收集所需資訊以針對通訊服務解決方案進行疑難排解。
+本文件將協助您對您在通訊服務解決方案中可能遇到的問題進行疑難排解。 如果您要對 SMS 進行疑難排解，您可以[使用事件方格啟用傳遞報告](../quickstarts/telephony-sms/handle-sms-events.md)以擷取 SMS 傳遞詳細資料。
 
 ## <a name="getting-help"></a>取得說明
 
@@ -30,9 +30,11 @@ ms.locfileid: "92754656"
 
 為了協助您針對特定類型的問題進行疑難排解，系統可能會要求您提供下列任何資訊：
 
-* **MS-CV 識別碼** ：此識別碼用來針對呼叫和訊息進行疑難排解。 
-* **呼叫識別碼** ：這個識別碼是用來識別通訊服務呼叫。
-* **SMS 訊息識別碼** ：此識別碼是用來識別 SMS 訊息。
+* **MS-CV 識別碼**：此識別碼用來針對呼叫和訊息進行疑難排解。 
+* **呼叫識別碼**：這個識別碼是用來識別通訊服務呼叫。
+* **SMS 訊息識別碼**：此識別碼是用來識別 SMS 訊息。
+* **通話記錄**：這些記錄包含可用來對通話和網路問題進行疑難排解的詳細資訊。
+
 
 ## <a name="access-your-ms-cv-id"></a>存取您的 MS-CV 識別碼
 
@@ -126,6 +128,44 @@ console.log(result); // your message ID will be in the result
 }
 ```
 ---
+
+## <a name="enable-and-access-call-logs"></a>啟用和存取通話記錄
+
+
+
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+下列程式碼可用來設定 `AzureLogger`，以使用 JavaScript 用戶端程式庫將記錄輸出至主控台：
+
+```javascript
+import { AzureLogger } from '@azure/logger'; 
+
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
+
+callClient = new CallClient({logger: AzureLogger}); 
+```
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+對 iOS 進行開發時，您的記錄會儲存在 `.blog` 檔案中。 請注意，記錄會加密，因此您無法直接檢視。
+
+您可以開啟 Xcode 加以存取。 移至 [Windows] > [裝置和模擬器] > [裝置]。 選取您的裝置。 在 [已安裝的應用程式] 底下選取您的應用程式，然後按一下 [下載容器]。 
+
+您將會取得 `xcappdata` 檔案。 以滑鼠右鍵按一下此檔案，然後選取 [顯示套件內容]。 接著，您會看到隨後可以將附加至 Azure 支援要求的 `.blog` 檔案。
+
+# <a name="android"></a>[Android](#tab/android)
+
+對 Android 進行開發時，您的記錄會儲存在 `.blog` 檔案中。 請注意，記錄會加密，因此您無法直接檢視。
+
+在 Android Studio 上，從模擬器和裝置選取 [檢視] > [工具視窗] > [裝置檔案總管]，以瀏覽至 [裝置檔案總管]。 `.blog` 檔案會位於應用程式的目錄中，看起來會像是 `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog`。 您可以將此檔案附加至您的支援要求。 
+   
+
+---
+
 
 ## <a name="related-information"></a>相關資訊
 - [記錄與診斷](logging-and-diagnostics.md)

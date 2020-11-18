@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88924362"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379968"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋知識存放區
 
@@ -21,7 +21,7 @@ ms.locfileid: "88924362"
 
 管線會接受非結構化文字與影像內容、套用由認知服務 (例如 OCR 與自然語言處理) 提供的 AI，並輸出先前不存在的新結構與資訊。 管線所建立的其中一個實體成品是[知識存放區](knowledge-store-concept-intro.md)，您可以透過工具存取加以存取，以分析和探索內容。
 
-在本快速入門中，您將結合 Azure 雲端中的服務和資料以建立知識存放區。 一切都備妥之後，您即可在入口網站中執行**匯入資料**精靈，以將其全部提取。 最終結果是原始文字內容和 AI 產生的內容，而您可以在入口網站 ([儲存體總管](knowledge-store-view-storage-explorer.md)) 中加以檢視。
+在本快速入門中，您將結合 Azure 雲端中的服務和資料以建立知識存放區。 一切都備妥之後，您即可在入口網站中執行 **匯入資料** 精靈，以將其全部提取。 最終結果是原始文字內容和 AI 產生的內容，而您可以在入口網站 ([儲存體總管](knowledge-store-view-storage-explorer.md)) 中加以檢視。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -150,7 +150,7 @@ ms.locfileid: "88924362"
 
 認知技能的索引編製需要比一般文字的索引編製更長的時間來完成。 精靈應該會在 [概觀] 頁面中開啟索引子清單，方便您追蹤進度。 若要自行瀏覽，請移至 [概觀] 頁面，然後按一下 [索引子]。
 
-在 Azure 入口網站中，您也可以監視通知活動記錄中是否有可點選的 **Azure 認知搜尋通知**狀態連結。 執行作業可能需要幾分鐘的時間才能完成。
+在 Azure 入口網站中，您也可以監視通知活動記錄中是否有可點選的 **Azure 認知搜尋通知** 狀態連結。 執行作業可能需要幾分鐘的時間才能完成。
 
 ## <a name="next-steps"></a>後續步驟
 

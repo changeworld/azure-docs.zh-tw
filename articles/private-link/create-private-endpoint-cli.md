@@ -1,198 +1,283 @@
 ---
 title: 快速入門 - 使用 Azure CLI 建立 Azure 私人端點
-description: 在本快速入門中了解 Azure 私人端點
+description: 使用本快速入門了解如何使用 Azure CLI 建立私人端點。
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 09/16/2019
+ms.date: 11/07/2020
 ms.author: allensu
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e7c098ba06086781306960f76978aac9e4fa06bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bba912930a9dff0a79e0b0d81025b7524c238db0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502659"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368673"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>快速入門：使用 Azure CLI 建立私人端點
 
-私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本快速入門中，您將了解如何使用 Azure CLI 在虛擬網路上建立 VM，以及建立 SQL Database 中具有私人端點的伺服器。 然後，您可以存取 VM，並安全地存取私人連結資源 (在此範例中為 SQL Database 中的私人伺服器)。
+藉由使用私人端點來安全地連線到 Azure Web 應用程式，以開始使用 Azure Private Link。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+在本快速入門中，您將建立 Azure Web 應用程式的私人端點，並部署虛擬機器來測試私人連線。  
 
-如果您決定改為在本機安裝和使用 CLI，本快速入門會要求您使用 Azure CLI 2.0.28 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+您可以針對不同類型的 Azure 服務 (例如，Azure SQL 和 Azure 儲存體) 建立私人端點。
+
+## <a name="prerequisites"></a>必要條件
+
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 在 Azure 訂用帳戶中部署具有 **PremiumV2 層** 或更高層級 App Service 方案的 Azure Web 應用程式。  
+    * 如需詳細資訊和範例，請參閱[快速入門：在 Azure 中建立 ASP.NET Core Web 應用程式](../app-service/quickstart-dotnetcore.md)。 
+    * 如需關於建立 Web 應用程式和端點的詳細教學課程，請參閱[教學課程：使用 Azure 私人端點連線至 Web 應用程式](tutorial-private-endpoint-webapp-portal.md)。
+* 登入 Azure 入口網站，並執行 `az login` 檢查您的訂用帳戶是否有效。
+* 執行 `az --version`，在終端機或命令視窗中檢查您的 Azure CLI 版本。 如需最新版本，請參閱[最新版本資訊](/cli/azure/release-notes-azure-cli?tabs=azure-cli)。
+  * 如果您沒有最新版本，請遵循[適用於您作業系統或平台的安裝指南](/cli/azure/install-azure-cli)，更新您的安裝。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-建立任何資源之前，您必須先建立資源群組來裝載虛擬網路。 使用 [az group create](/cli/azure/group) 來建立資源群組。 此範例會在 westcentralus 位置建立名為 myResourceGroup 的資源群組：
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
+
+使用 [az group create](/cli/azure/group#az_group_create) 來建立資源群組：
+
+* 具名的 **CreatePrivateEndpointQS-rg**。 
+* 在 **eastus** 位置中。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westcentralus
+az group create \
+    --name CreatePrivateEndpointQS-rg \
+    --location eastus
 ```
 
-## <a name="create-a-virtual-network"></a>建立虛擬網路
+## <a name="create-a-virtual-network-and-bastion-host"></a>建立虛擬網路和堡壘主機
 
-使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 此範例會建立一個名為 myVirtualNetwork 的預設虛擬網路，其中含有一個名為 mySubnet 的子網路：
+在本節中，您會建立虛擬網路、子網路和堡壘主機。 
+
+堡壘主機將用來安全地連線到虛擬機器，以測試私人端點。
+
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 建立虛擬網路
+
+* 具名 **myVNet**。
+* 位址前置詞 **10.0.0.0/16**。
+* 名為 **MyBackendSubnet** 的子網路。
+* 子網路前置詞 **10.0.0.0/24**。
+* 在 **CreatePrivateEndpointQS-rg** 資源群組中。
+* **eastus** 的位置。
 
 ```azurecli-interactive
 az network vnet create \
- --name myVirtualNetwork \
- --resource-group myResourceGroup \
- --subnet-name mySubnet
+    --resource-group CreatePrivateEndpointQS-rg\
+    --location eastus \
+    --name myVNet \
+    --address-prefixes 10.0.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.0.0.0/24
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>停用子網路的私人端點原則
-
-Azure 會將資源部署到虛擬網路內的子網路，因此您必須建立或更新子網路，以停用私人端點網路原則。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)，更新子網路以停用私人端點的私人端點網路原則：
 
 ```azurecli-interactive
 az network vnet subnet update \
- --name mySubnet \
- --resource-group myResourceGroup \
- --vnet-name myVirtualNetwork \
- --disable-private-endpoint-network-policies true
+    --name myBackendSubnet \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --vnet-name myVNet \
+    --disable-private-endpoint-network-policies true
 ```
 
-## <a name="create-the-vm"></a>建立 VM
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 建立堡壘主機的公用 IP 位址：
 
-使用 az vm create 建立 VM。 出現提示時，請提供密碼以作為 VM 的登入認證。 此範例會建立名為 myVm 的 VM：
+* 建立名為 **myBastionIP** 的標準區域備援公用 IP 位址。
+* 在 **CreatePrivateEndpointQS-rg** 中。
+
+```azurecli-interactive
+az network public-ip create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myBastionIP \
+    --sku Standard
+```
+
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) 建立 Bastion 子網路：
+
+* 命名為 **AzureBastionSubnet**。
+* 位址前置詞 **10.0.1.0/24**。
+* 在虛擬網路 **MyVNet** 中。
+* 在資源群組 **CreatePrivateEndpointQS-rg** 中。
+
+```azurecli-interactive
+az network vnet subnet create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name AzureBastionSubnet \
+    --vnet-name myVNet \
+    --address-prefixes 10.0.1.0/24
+```
+
+使用 [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) 建立堡壘主機：
+
+* 命名為 **myBastionHost**。
+* 在 **CreatePrivateEndpointQS-rg** 中。
+* 與公用 IP **myBastionIP** 相關聯。
+* 與虛擬網路 **myVNet** 相關聯。
+* 在 **eastus** 位置中。
+
+```azurecli-interactive
+az network bastion create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myBastionHost \
+    --public-ip-address myBastionIP \
+    --vnet-name myVNet \
+    --location eastus
+```
+
+部署 Azure Bastion 主機需要幾分鐘的時間。
+
+## <a name="create-test-virtual-machine"></a>建立測試虛擬機器
+
+在本節中，您將建立將用來測試私人端點的虛擬機器。
+
+使用  [az vm create](/cli/azure/vm#az_vm_create) 建立 VM。 出現提示時，請提供密碼以作為 VM 的認證：
+
+* 具名的 **myVM**。
+* 在 **CreatePrivateEndpointQS-rg** 中。
+* 在虛擬網路 **myVNet** 中。
+* 在子網路 **MyBackendSubnet** 中。
+* 伺服器映像 **Win2019Datacenter**。
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm \
-  --image Win2019Datacenter
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myVM \
+    --image Win2019Datacenter \
+    --public-ip-address "" \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet \
+    --admin-username azureuser
 ```
 
-請記下 VM 的公用 IP 位址。 在下一個步驟中，您將使用此位址來從網際網路連線至 VM。
+## <a name="create-private-endpoint"></a>建立私人端點
 
-## <a name="create-a-server-in-sql-database"></a>在 SQL Database 中建立伺服器
+在本節中，您會建立私人端點。
 
-使用 theaz sql 建立命令檔，在 SQL Database 中建立伺服器。 請記住，您的伺服器名稱在整個 Azure 中必須是唯一的，因此請以您自己的唯一值取代括弧中的預留位置值：
+使用 [az Webapp list](/cli/azure/webapp#az_webapp_list) 將您先前建立之 Web 應用程式的資源識別碼放入殼層變數中。
 
-```azurecli-interactive
-# Create a server in the resource group
-az sql server create \
-    --name "myserver"\
-    --resource-group myResourceGroup \
-    --location WestUS \
-    --admin-user "sqladmin" \
-    --admin-password "CHANGE_PASSWORD_1"
+使用 [az network private-endpoint create立](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) 建立端點和連線：
 
-# Create a database in the server with zone redundancy as false
-az sql db create \
-    --resource-group myResourceGroup  \
-    --server myserver \
-    --name mySampleDatabase \
-    --sample-name AdventureWorksLT \
-    --edition GeneralPurpose \
-    --family Gen4 \
-    --capacity 1
-```
-
-伺服器識別碼類似於  ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` 您將在下一個步驟中使用該伺服器識別碼。
-
-## <a name="create-the-private-endpoint"></a>建立私人端點
-
-在您的虛擬網路中建立邏輯 SQL 伺服器的私人端點：
+* 具名的 **myPrivateEndpoint**。
+* 在資源群組 **CreatePrivateEndpointQS-rg** 中。
+* 在虛擬網路 **MyVNet** 中。
+* 在子網路 **MyBackendSubnet** 中。
+* 名為 **myConnection** 的連線。
+* 您的 Webapp **\<webapp-resource-group-name>** 。
 
 ```azurecli-interactive
-az network private-endpoint create \  
-    --name myPrivateEndpoint \  
-    --resource-group myResourceGroup \  
-    --vnet-name myVirtualNetwork  \  
-    --subnet mySubnet \  
-    --private-connection-resource-id "<server ID>" \  
-    --group-ids sqlServer \  
+id=$(az webapp list \
+    --resource-group <webapp-resource-group-name> \
+    --query '[].[id]' \
+    --output tsv)
+
+az network private-endpoint create \
+    --name myPrivateEndpoint \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --vnet-name myVNet --subnet myBackendSubnet \
+    --private-connection-resource-id $id \
+    --group-id sites \
     --connection-name myConnection  
- ```
+```
 
 ## <a name="configure-the-private-dns-zone"></a>設定私人 DNS 區域
 
-建立 SQL Database 網域的私人 DNS 區域、建立與虛擬網路的關聯連結，以及建立 DNS 區域群組，以將私人端點與私人 DNS 區域建立關聯。 
+在本節中，您會使用 [az network private-dns zone create](/cli/azure/ext/privatedns/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)建立和設定私人 DNS 區域。  
+
+您將使用 [az network private-dns link vnet create](/cli/azure/ext/privatedns/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) 建立 DNS 區域的虛擬網路連結。
+
+您將會使用 [az network private-endpoint dns-zone-group create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)建立 DNS 區域群組。
+
+* 名為 **privatelink.azurewebsites.net** 的區域
+* 在虛擬網路 **MyVNet** 中。
+* 在資源群組 **CreatePrivateEndpointQS-rg** 中。
+* 名為 **myDNSLink** 的 DNS 連結。
+* 與 **myPrivateEndpoint** 相關聯。
+* 名為 **MyZoneGroup** 的區域群組。
 
 ```azurecli-interactive
-az network private-dns zone create --resource-group myResourceGroup \
-   --name  "privatelink.database.windows.net"
-az network private-dns link vnet create --resource-group myResourceGroup \
-   --zone-name  "privatelink.database.windows.net"\
-   --name MyDNSLink \
-   --virtual-network myVirtualNetwork \
-   --registration-enabled false
+az network private-dns zone create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name "privatelink.azurewebsites.net"
+
+az network private-dns link vnet create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --zone-name "privatelink.azurewebsites.net" \
+    --name MyDNSLink \
+    --virtual-network myVNet \
+    --registration-enabled false
+
 az network private-endpoint dns-zone-group create \
-   --resource-group myResourceGroup \
+   --resource-group CreatePrivateEndpointQS-rg \
    --endpoint-name myPrivateEndpoint \
    --name MyZoneGroup \
-   --private-dns-zone "privatelink.database.windows.net" \
-   --zone-name sql
+   --private-dns-zone "privatelink.azurewebsites.net" \
+   --zone-name webapp
 ```
 
-## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
+## <a name="test-connectivity-to-private-endpoint"></a>測試對私人端點的連線能力
 
-從網際網路連線至 VM：myVm，如下所示：
+在本節中，您將使用您在上一個步驟中建立的虛擬機器，連線到私人端點上的 SQL 伺服器。
 
-1. 在入口網站的搜尋列中，輸入 myVm。
+1. 登入 [Azure 入口網站](https://portal.azure.com) 
+ 
+2. 在左側瀏覽窗格中，選取 [資源群組]。
 
-1. 選取 [連線]  按鈕。 選取 [連線] 按鈕之後，隨即會開啟 [連線至虛擬機器]。
+3. 選取 [CreatePrivateEndpointQS-rg]。
 
-1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
+4. 選取 [myVM]。
 
-1. 開啟下載的 .rdp* 檔案。
+5. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
-    1. 如果出現提示，請選取 [連接]。
+6. 選取藍色 [使用堡壘] 按鈕。
 
-    1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
+7. 輸入您在虛擬機器建立期間輸入的使用者名稱和密碼。
 
-        > [!NOTE]
-        > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
+8. 連線之後，在伺服器上開啟 Windows PowerShell。
 
-1. 選取 [確定]。
+9. 輸入 `nslookup <your-webapp-name>.azurewebsites.net`。 以您在上一個步驟中建立的 Web 應用程式名稱取代 **\<your-webapp-name>** 。  您會收到類似下面所顯示的訊息：
 
-1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
-
-1. 當 VM 桌面出現之後，將它最小化以回到您的本機桌面。  
-
-## <a name="access-sql-database-privately-from-the-vm"></a>從 VM 私人存取 SQL Database
-
-在本節中，您將會使用私人端點從 VM 連線到 SQL Database。
-
-1. 在 myVm 的遠端桌面中，開啟 PowerShell。
-2. 輸入 nslookup myserver.database.windows.net
-
-   您將收到如下訊息：
-
-    ```
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
+
     Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
+    Name:    mywebapp8675.privatelink.azurewebsites.net
     Address:  10.0.0.5
-    Aliases:  myserver.database.windows.net
+    Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-3. 安裝 SQL Server Management Studio
-4. 在 [連線至伺服器] 中，輸入或選取這項資訊：
+    針對 Web 應用程式名稱，會傳回 **10.0.0.5** 的私人 IP 位址。  此位址位於您先前所建立虛擬網路的子網路中。
 
-   - 伺服器類型：選取 [資料庫引擎]。
-   - 伺服器名稱：選取 myserver.database.windows.net
-   - 使用者名稱：輸入在建立期間提供的使用者名稱。
-   - 密碼：輸入在建立期間提供的密碼。
-   - 記住密碼：選取 [是]。
+10. 在與 **myVM** 的堡壘連線中，開啟 Internet Explorer。
 
-5. 選取 [連接]。
-6. 瀏覽左側功能表中的**資料庫**。
-7. (選擇性) 從 mydatabase 建立或查詢資訊
-8. 關閉對 myVm 的遠端桌面連線。
+11. 輸入 Web 應用程式的 URL：**https://\<your-webapp-name>.azurewebsites.net**.。
 
-## <a name="clean-up-resources"></a>清除資源
+12. 如果您尚未部署應用程式，則會收到預設的 Web 應用程式頁面：
 
-您可以使用 az group delete 來移除不再需要的資源群組，以及其所具有的所有資源：
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="預設 Web 應用程式頁面。" border="true":::
+
+13. 關閉與 **myVM** 的連線。
+
+## <a name="clean-up-resources"></a>清除資源 
+在私人端點和 VM 使用完畢後，請使用 [az group delete](/cli/azure/group#az_group_delete) 移除資源群組及其包含的所有資源：
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+    --name CreatePrivateEndpointQS-rg
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 [Azure Private Link](private-link-overview.md)
+在本快速入門中，您已建立一個：
+
+* 建立虛擬網路和堡壘主機。
+* 虛擬機器。
+* Azure Web 應用程式的私人端點。
+
+您已使用虛擬機器在私人端點上安全地測試與 Web 應用程式的連線。
+
+若要深入了解可支援私人端點的服務，請參閱：
+> [!div class="nextstepaction"]
+> [Private Link 可用性](private-link-overview.md#availability)

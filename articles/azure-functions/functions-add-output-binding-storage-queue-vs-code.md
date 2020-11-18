@@ -5,18 +5,18 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 4f4733a52d1d58cbec4413140a613a93c8074188
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b709981e199d63c32426381ba48665402de820ce
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323408"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422700"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 將 Azure Functions 連線至 Azure 儲存體
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-此文章說明如何使用 Visual Studio Code 將您在[先前的快速入門文章](functions-create-first-function-vs-code.md)中建立的函式連線至 Azure 儲存體。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至位於 Azure 佇列儲存體佇列中的訊息。 
+此文章說明如何使用 Visual Studio Code 將 Azure 儲存體連線至您在上一篇快速入門文章中建立的函式。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至位於 Azure 佇列儲存體佇列中的訊息。 
 
 大部分的繫結都需要函式用來存取繫結服務的預存連接字串。 為了方便作業，您可以使用您以函式應用程式建立的儲存體帳戶。 此帳戶的連線已儲存在名為 `AzureWebJobsStorage` 的應用程式設定中。  
 
@@ -32,7 +32,24 @@ ms.locfileid: "91323408"
 * 安裝 [.NET Core CLI 工具](/dotnet/core/tools/?tabs=netcore2x)。
 ::: zone-end
 
-* 完成 [Visual Studio Code 快速入門第 1 部分](functions-create-first-function-vs-code.md)中的步驟。 
+::: zone pivot="programming-language-csharp"  
+* 完成 [Visual Studio Code 快速入門第 1 部分](create-first-function-vs-code-csharp.md)中的步驟。 
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+* 完成 [Visual Studio Code 快速入門第 1 部分](create-first-function-vs-code-node.md)中的步驟。 
+::: zone-end   
+::: zone pivot="programming-language-java"  
+* 完成 [Visual Studio Code 快速入門第 1 部分](create-first-function-vs-code-java.md)中的步驟。 
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+* 完成 [Visual Studio Code 快速入門第 1 部分](create-first-function-vs-code-typescript.md)中的步驟。 
+::: zone-end   
+::: zone pivot="programming-language-python"  
+* 完成 [Visual Studio Code 快速入門第 1 部分](create-first-function-vs-code-python.md)中的步驟。 
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+* 完成 [Visual Studio Code 快速入門第 1 部分](create-first-function-vs-code-powershell.md)中的步驟。 
+::: zone-end   
 
 此文章假設您已從 Visual Studio Code 登入您的 Azure 訂用帳戶。 您可以從命令選擇區執行 `Azure: Sign In` 來登入。 
 
@@ -205,33 +222,42 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 
 您已建立資源來完成這些快速入門。 您可能必須支付這些資源，取決於您的[帳戶狀態](https://azure.microsoft.com/account/)和[服務定價](https://azure.microsoft.com/pricing/)。 如果您不再需要資源，刪除方式如下：
 
-[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
 您已更新 HTTP 觸發的函式，以將資料寫入至儲存體佇列。 現在，您可以深入了解如何使用 Visual Studio Code 來開發 Functions：
 
 + [使用 Visual Studio Code 來開發 Azure Functions](functions-develop-vs-code.md)
+
++ [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)。
 ::: zone pivot="programming-language-csharp"  
 + [C# 中完整函式專案的範例](/samples/browse/?products=azure-functions&languages=csharp)。
+
 + [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [JavaScript 中完整函式專案的範例](/samples/browse/?products=azure-functions&languages=javascript)。
+
 + [Azure Functions JavaScript 開發人員指南](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java 中完整函式專案的範例](/samples/browse/?products=azure-functions&languages=java)。
+
++ [Azure Functions Java 開發人員指南](functions-reference-java.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [TypeScript 中完整函式專案的範例](/samples/browse/?products=azure-functions&languages=typescript)。
+
 + [Azure Functions TypeScript 開發人員指南](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Python 中完整函式專案的範例](/samples/browse/?products=azure-functions&languages=python)。
+
 + [Azure Functions Python 開發人員指南](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [PowerShell 中完整函式專案的例](/samples/browse/?products=azure-functions&languages=azurepowershell)。
+
 + [Azure Functions PowerShell 開發人員指南](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)。
-+ [Functions 定價頁面](https://azure.microsoft.com/pricing/details/functions/)
-+ [估計使用方案成本](functions-consumption-costs.md)文章。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8a42711bba8f77070e2b30a9b07d29d5b5095945
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9ff05f2cf9f29ef86a6db9955e7d28c9035e1bf4
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973881"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376956"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虛擬機器
 
@@ -41,7 +41,7 @@ Azure 虛擬機器可用於許多用途。 部份範例如下：
 * VM 需要的相關資源
 
 ### <a name="locations"></a>位置
-Azure 中所建立的所有資源分散在世界各地的多個[地理區域](https://azure.microsoft.com/regions/)。 通常，當您建立 VM 時，區域稱為**位置**。 針對 VM，位置會指定虛擬硬碟所儲存的位置。
+Azure 中所建立的所有資源分散在世界各地的多個[地理區域](https://azure.microsoft.com/regions/)。 通常，當您建立 VM 時，區域稱為 **位置**。 針對 VM，位置會指定虛擬硬碟所儲存的位置。
 
 下表顯示一些您可以取得可用位置清單的方式。
 
@@ -104,6 +104,12 @@ VM [擴充](../extensions/features-windows.md?toc=/azure/virtual-machines/window
 | [公用 IP 位址](../../virtual-network/public-ip-addresses.md) |否 |可以有公用 IP 位址指派給 VM，以從遠端存取它。 |
 | [網路介面](../../virtual-network/virtual-network-network-interface.md) |是 |VM 需要網路介面以在網路中進行通訊。 |
 | [資料磁碟](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |否 |VM 可以包含資料磁碟來擴充儲存體功能。 |
+
+
+## <a name="data-residency"></a>資料存留處
+
+在 Azure 中，將客戶資料儲存在單一區域中的功能目前僅適用於亞太地區的東南亞區域 (新加坡)，以及巴西地區的巴西南部 (聖保羅州) 區域。 至於其他所有區域，客戶資料會儲存在地區中。 如需詳細資訊，請參閱[信任中心](https://azuredatacentermap.azurewebsites.net/)。
+
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
-title: 教學課程：使用 Azure Active Directory 設定 BlogIn 來自動布建使用者 |Microsoft Docs
-description: 瞭解如何從 Azure AD 將使用者帳戶自動布建和取消布建至 BlogIn。
+title: 教學課程：以 Azure Active Directory 設定 BlogIn 來自動佈建使用者 | Microsoft Docs
+description: 了解如何將使用者帳戶從 Azure AD 針對 BlogIn 進行自動佈建和取消佈建。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -12,30 +12,30 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4b77208ca7869288ac13e28c6535b1b3972aa22c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
-ms.translationtype: MT
+ms.openlocfilehash: f50c8d612ca088c97754b1eb90ed049113e33c6e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928734"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358200"
 ---
-# <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>教學課程：設定 BlogIn 來自動布建使用者
+# <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>教學課程：設定 BlogIn 來自動佈建使用者
 
-本教學課程說明在 BlogIn 和 Azure Active Directory (Azure AD) 設定自動使用者布建時所需執行的步驟。 當設定時，Azure AD 會使用 Azure AD 布建服務，自動將使用者和群組布建和取消布建至 [BlogIn](https://blogin.co/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+此教學課程說明您需要在 BlogIn 與 Azure Active Directory (Azure AD) 中執行哪些步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [BlogIn](https://blogin.co/) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
 > * 在 BlogIn 中建立使用者
-> * 當使用者不再需要存取權時，請移除 BlogIn 中的使用者
-> * Azure AD 與 BlogIn 之間保持使用者屬性同步
-> * 在 BlogIn 中布建群組和群組成員資格
-> * BlogIn (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/blogin-tutorial)) 
+> * 當使用者不再需要存取時，將其從 BlogIn 中移除
+> * 讓 Azure AD 與 BlogIn 之間的使用者屬性保持同步
+> * 在 BlogIn 中佈建群組和群組成員資格
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/blogin-tutorial)至 BlogIn (建議使用)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -46,37 +46,37 @@ ms.locfileid: "92928734"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
 1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
-3. 判斷要 [在 Azure AD 與 BlogIn 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
+3. 判斷哪些資料要[在 Azure AD 與 BlogIn 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。 
 
-## <a name="step-2-configure-blogin-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 BlogIn 以支援 Azure AD 的布建
+## <a name="step-2-configure-blogin-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 BlogIn 以支援使用 Azure AD 進行佈建
 
-若要在 **BlogIn** 上設定使用者布建，請登入您的 BlogIn 帳戶，並遵循下列步驟：
+若要對 **BlogIn** 設定使用者佈建，請登入您的 BlogIn 帳戶並依照下列步驟操作：
 
-1. 流覽至 **設定**  >  **使用者驗證** 設定  >  **SSO & 使用者** 布建。
-2. 切換至 [ **使用者** 布建] 索引標籤，將使用者布建狀態變更為 [ **開啟** ]。
-3. 按一下 [儲存變更] 按鈕。 第一次儲存時，將會產生 **秘密 (持有人) 權杖** 。
-4. 將 **基底 (租使用者) URL** 和 **秘密 (持有人) 權杖** 值。 這些值將會在 Azure 入口網站中您 BlogIn 應用程式的 [布建] 索引標籤中輸入至 [租使用者 URL] 和 [秘密權杖] 欄位中。
+1. 瀏覽至 [設定] > [使用者驗證] > [設定 SSO 和使用者佈建]。
+2. 切換至 [使用者佈建] 索引標籤，並將 [使用者佈建狀態] 變更為 [開啟]。
+3. 按一下 [儲存變更] 按鈕。 第一次儲存時，將會產生 [秘密 (持有人) 權杖]。
+4. 複製 [基底 (租用戶) URL] 和 [秘密 (持有人) 權杖] 值。 在 Azure 入口網站中，這些值會輸入至 BlogIn 應用程式的 [佈建] 索引標籤中的 [租用戶 URL] 和 [祕密權杖] 欄位。
 
-如需在 BlogIn 上設定使用者布建的詳細說明，請參閱透過 [SCIM 設定使用者](https://blogin.co/blog/set-up-user-provisioning-via-scim-254/)布建。 如果您有任何疑問或需要協助，請與 [BlogIn 支援小組](mailto:support@blogin.co) 聯繫。
+如需在 BlogIn 上設定使用者佈建的詳細說明，請參閱[透過 SCIM 設定使用者佈建](https://blogin.co/blog/set-up-user-provisioning-via-scim-254/)。 如有任何疑問或需要協助，請聯繫 [BlogIn 支援小組](mailto:support@blogin.co)。
 
-## <a name="step-3-add-blogin-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 BlogIn
+## <a name="step-3-add-blogin-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 BlogIn
 
-從 Azure AD 應用程式資源庫新增 BlogIn，以開始管理布建至 BlogIn。 如果您先前已設定 SSO 的 BlogIn，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式庫新增 BlogIn，以開始管理對 BlogIn 的佈建。 如果您先前已針對 SSO 設定 BlogIn，則可使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 BlogIn 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 BlogIn 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-blogin"></a>步驟 5。 設定自動使用者布建至 BlogIn 
+## <a name="step-5-configure-automatic-user-provisioning-to-blogin"></a>步驟 5。 設定使用者自動佈建至 BlogIn 
 
 此節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TestApp 中建立、更新和停用使用者和/或群組。
 
-### <a name="to-configure-automatic-user-provisioning-for-blogin-in-azure-ad"></a>若要在 Azure AD 中為 BlogIn 設定自動使用者布建：
+### <a name="to-configure-automatic-user-provisioning-for-blogin-in-azure-ad"></a>在 Azure AD 中為 BlogIn 設定自動使用者佈建：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [企業應用程式]，然後選取 [所有應用程式]。
 
@@ -92,9 +92,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![自動布建索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤 [自動]](common/provisioning-automatic.png)
 
-5. 在 [系統 **管理員認證** ] 區段下，輸入您的 BlogIn 租使用者 URL 和秘密權杖。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Clarizen。 如果連線失敗，請確定您的 Clarizen 帳戶具有系統管理員權限並再試一次。
+5. 在 [管理員認證] 區段底下，輸入您的 BlogIn 租用戶 URL 和秘密權杖。 按一下 [測試連線]，以確定 Azure AD 可連線至 BlogIn。 如果連線失敗，請確定您的 Clarizen 帳戶具有系統管理員權限並再試一次。
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -104,9 +104,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 BlogIn** ]。
+8. 在 [對應] 區段中，選取 [將 Azure Active Directory 使用者同步處理至 BlogIn]。
 
-9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 BlogIn 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 BlogIn 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您將必須確定 BlogIn API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 BlogIn 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 BlogIn 中的使用者帳戶以進行更新作業。 如果您選擇變更[比對目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則必須確定 BlogIn API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
    |屬性|類型|
    |---|---|
@@ -119,9 +119,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |name.formatted|String|
    |phoneNumbers[type eq "work"].value|String|
 
-10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 BlogIn** ]。
+10. 在 [對應] 區段底下，選取 [將 Azure Active Directory 群組同步處理至 BlogIn]。
 
-11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 BlogIn 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 BlogIn 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+11. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 BlogIn 的群組屬性。 選取為 [比對] 屬性的屬性會用來比對 BlogIn 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
       |屬性|類型|
       |---|---|
@@ -130,11 +130,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 BlogIn Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
+13. 若要啟用 BlogIn 的 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 BlogIn 的使用者和/或群組。
+14. 藉由在 [設定] 區段的 [範圍] 中選擇所需的值，定義要佈建至 BlogIn 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

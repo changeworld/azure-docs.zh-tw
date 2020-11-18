@@ -2,15 +2,16 @@
 title: 快速入門：建立 Python 應用程式
 description: 藉由將您的第一個 Python 應用程式部署至 App Service 中的 Linux 容器來開始使用 Azure App Service。
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+adobe-target: true
+ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741098"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506187"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -63,7 +64,7 @@ az login
 
 登入之後，您可以使用 Azure CLI 執行 Azure 命令，以使用訂用帳戶中的資源。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ [請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="clone-the-sample"></a>複製範例
 
@@ -95,7 +96,7 @@ cd python-docs-hello-django
 
 此範例包含 Azure App Service 在啟動應用程式時所辨識的架構特定程式碼。 如需詳細資訊，請參閱[容器的啟動程序](configure-language-python.md#container-startup-process)。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ [請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="run-the-sample"></a>執行範例
 
@@ -145,7 +146,7 @@ cd python-docs-hello-django
 1. 在終端機視窗中，按 **Ctrl**+**C** 以結束開發伺服器。
 ::: zone-end
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ [請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="deploy-the-sample"></a>部署範例
 
@@ -166,13 +167,13 @@ az webapp up --sku F1 --name <app-name>
 
 ![az webapp up 命令範例輸出](./media/quickstart-python/az-webapp-up-output.png)
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ 請先參閱[疑難排解指南](configure-language-python.md#troubleshooting)，否則，[請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 [!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>瀏覽至應用程式
 
-使用網頁瀏覽器瀏覽至已部署的應用程式 (URL 為 `http://<app-name>.azurewebsites.net`)。 初次啟動應用程式需要一些時間。
+使用網頁瀏覽器瀏覽至已部署的應用程式 (URL 為 `http://<app-name>.azurewebsites.net`)。 應用程式可能需要一或兩分鐘才能啟動，因此，如果您看到預設的應用程式頁面，請稍待片刻，然後重新整理瀏覽器。
 
 Python 範例程式碼目前使用內建映像在 App Service 中執行 Linux 容器。
 
@@ -180,7 +181,7 @@ Python 範例程式碼目前使用內建映像在 App Service 中執行 Linux �
 
 **恭喜！** 您已將 Python 應用程式部署至 App Service。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ 請先參閱[疑難排解指南](configure-language-python.md#troubleshooting)，否則，[請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="redeploy-updates"></a>重新部署更新
 
@@ -217,7 +218,7 @@ az webapp up
 
 ![在 Azure 中執行已更新的範例 Python 應用程式](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ 請先參閱[疑難排解指南](configure-language-python.md#troubleshooting)，否則，[請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 > [!TIP]
 > Visual Studio Code 針對 Python 和 Azure App Service 提供強大的擴充功能，以簡化將 Python Web 應用程式部署至 App Service 的程序。 如需詳細資訊，請參閱[從 Visual Studio Code 將 Python 應用程式部署至 App Service](/azure/python/tutorial-deploy-app-service-on-linux-01)。
@@ -238,9 +239,9 @@ az webapp log tail
 
 您也可以在瀏覽器中的 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 檢查記錄檔。
 
-您可以隨時在終端機中按 **Ctrl**+**C** ，以停止記錄串流。
+您可以隨時在終端機中按 **Ctrl**+**C**，以停止記錄串流。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ [請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 應用程式
 
@@ -258,7 +259,7 @@ az webapp log tail
 
 App Service 功能表提供不同的頁面來設定您的應用程式。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ 請先參閱[疑難排解指南](configure-language-python.md#troubleshooting)，否則，[請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -274,7 +275,7 @@ az group delete --no-wait
 
 `--no-wait` 引數可讓命令在作業完成之前傳回。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
+有問題嗎？ [請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="next-steps"></a>後續步驟
 

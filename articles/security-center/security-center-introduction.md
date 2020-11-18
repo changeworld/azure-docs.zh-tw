@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901546"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372263"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -37,11 +37,11 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 為了協助您面對這些挑戰，資訊安全中心為您提供工具：
 
--   **加強安全性狀態** ：資訊安全中心會評估您的環境，並讓您了解資源的狀態，以及資源是否安全無虞。
+-   **加強安全性狀態**：資訊安全中心會評估您的環境，並讓您了解資源的狀態，以及資源是否安全無虞。
 
--   **抵禦威脅** ：資訊安全中心會評估您的工作負載，並提出威脅預防建議和安全性警示。
+-   **抵禦威脅**：資訊安全中心會評估您的工作負載，並提出威脅預防建議和安全性警示。
 
--   **更快保障安全** ：在資訊安全中心的一切都是以雲端速度完成。 因為原生整合，使得部署資訊安全中心相當容易，能夠使用 Azure 服務為您自動佈建和提供保護。
+-   **更快保障安全**：在資訊安全中心的一切都是以雲端速度完成。 因為原生整合，使得部署資訊安全中心相當容易，能夠使用 Azure 服務為您自動佈建和提供保護。
 
 > [!NOTE]
 > 此服務支援 [Azure Lighthouse](../lighthouse/overview.md)，可讓服務提供者登入其本身的租用戶，以管理客戶所委派的訂用帳戶和資源群組。 針對 Azure 資訊安全中心案例，必須委派訂用帳戶，而不是個別的資源群組。
@@ -54,7 +54,7 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 從代理程式和從 Azure 收集的事件會在安全性分析引擎中相互關聯，為您提供可據以確保工作負載安全的個人化建議 (強化工作)，以及安全性警示。 您應該儘速調查這類警示，確保您的工作負載並未遭受惡意攻擊。
 
-當您啟用資訊安全中心時，內建到資訊安全中心的安全性原則會反映在 Azure 原則中，並作為資訊安全中心類別下的內建方案。 內建方案會自動指派給所有註冊資訊安全中心的訂用帳戶 (免費或標準定價層)。 內建方案僅包含稽核原則。 如需有關 Azure 原則中資訊安全中心原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
+當您啟用資訊安全中心時，內建到資訊安全中心的安全性原則會反映在 Azure 原則中，並作為資訊安全中心類別下的內建方案。 內建方案會自動指派給所有註冊資訊安全中心的訂用帳戶 (無論是否已啟用 Azure Defender)。 內建方案僅包含稽核原則。 如需有關 Azure 原則中資訊安全中心原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
 
 ## <a name="strengthen-security-posture"></a>鞏固安全性現況
 
@@ -66,7 +66,7 @@ Azure 資訊安全中心可讓您加強安全性狀態。 這表示其可協助�
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="原則管理頁面":::
 
-資訊安全中心可協助您 **識別影子 IT 訂用帳戶** 。 查看儀表板中標記為 **未涵蓋** 的訂用帳戶，即可在有新的訂用帳戶建立時立即得知，以及確保其涵蓋在原則中，並受到 Azure 資訊安全中心保護。
+資訊安全中心可協助您 **識別影子 IT 訂用帳戶**。 查看儀表板中標記為 **未涵蓋** 的訂用帳戶，即可在有新的訂用帳戶建立時立即得知，以及確保其涵蓋在原則中，並受到 Azure 資訊安全中心保護。
 
 :::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="資訊安全中心原則儀表板":::
 
@@ -80,7 +80,7 @@ Azure 資訊安全中心可讓您加強安全性狀態。 這表示其可協助�
 
 ### <a name="network-map"></a>網路地圖
 
-資訊安全中心所提供，用來持續監視網路安全性狀態的最強大工具之一，就是 **網路地圖** 。 此地圖可讓您查看工作負載的拓撲，如此便可了解是否已正確設定每個節點。 您可以查看節點的連線方式，幫助您封鎖來路不明且可能讓攻擊者趁機沿著網路蔓延的連線。
+資訊安全中心所提供，用來持續監視網路安全性狀態的最強大工具之一，就是 **網路地圖**。 此地圖可讓您查看工作負載的拓撲，如此便可了解是否已正確設定每個節點。 您可以查看節點的連線方式，幫助您封鎖來路不明且可能讓攻擊者趁機沿著網路蔓延的連線。
 
 :::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="資訊安全中心網路地圖":::
 
@@ -137,6 +137,6 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 - 若要開始使用資訊安全中心，您需要 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/free/)。
 
-- 第一次在 Azure 入口網站中造訪 Azure 資訊安全中心儀表板，或是以程式設計方式透過 API 啟用時，就會在所有目前的 Azure 訂用帳戶上啟用資訊安全中心的免費定價層。 若要利用進階安全性管理和威脅偵測功能，您必須升級為標準定價層。 標準層可以免費試用 30 天。 如需詳細資訊，請參閱[資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+- 第一次在 Azure 入口網站中造訪 Azure 資訊安全中心儀表板，或是以程式設計方式透過 API 啟用時，就會在所有目前的 Azure 訂用帳戶上啟用資訊安全中心的免費定價層。 若要利用進階安全性管理和威脅偵測功能，您必須啟用 Azure Defender。 Azure Defender 可以免費試用 30 天。 如需詳細資訊，請參閱[資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-- 如果您已準備好要立即啟用資訊安全中心標準，[快速入門：將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)將引導您逐步完成相關步驟。
+- 如果您已準備好立即啟用 Azure Defender，[快速入門：設定 Azure 資訊安全中心](security-center-get-started.md)會引導您完成相關步驟。

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455415"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358206"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教學課程︰設定 Concur 來自動佈建使用者
 
@@ -58,11 +58,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 Concur 顧問或用戶端系統管理員必須建立不同的 Web 服務系統管理員設定檔，而且用戶端系統管理員必須使用這個設定檔來執行 Web 服務系統管理員功能 (例如，啟用應用程式)。 這些設定檔必須與用戶端系統管理員的每日 T&E 系統管理員設定檔分開保存 (T&E 系統管理員設定檔不應該指派 WS 系統管理員角色)。
 
-當您建立要用於啟用應用程式的設定檔時，請在使用者設定檔欄位中，輸入用戶端系統管理員的名稱。 這會對設定檔指派擁有權。 在建立一或多個設定檔之後，用戶端必須使用這個設定檔登入，並針對合作夥伴應用程式，按一下 [Web 服務] 功能表中的 [啟用]** 按鈕。
+當您建立要用於啟用應用程式的設定檔時，請在使用者設定檔欄位中，輸入用戶端系統管理員的名稱。 這會對設定檔指派擁有權。 在建立一或多個設定檔之後，用戶端必須使用這個設定檔登入，並針對合作夥伴應用程式，按一下 [Web 服務] 功能表中的 [啟用] 按鈕。
 
 基於下列原因，不應該透過用於一般 T&E 系統管理的設定檔完成這項動作。
 
-* 用戶端必須在啟用應用程式之後所顯示的對話方塊視窗中，按一下 [是]**。 這個點選動作可確認用戶端是否願意讓合作夥伴應用程式存取其資料，因此您或合作夥伴無法按 [是] 按鈕。
+* 用戶端必須在啟用應用程式之後所顯示的對話方塊視窗中，按一下 [是]。 這個點選動作可確認用戶端是否願意讓合作夥伴應用程式存取其資料，因此您或合作夥伴無法按 [是] 按鈕。
 
 * 如果使用 T&E 系統管理員設定檔啟用應用程式的用戶端系統管理員已離職 (導致設定檔被停用)，在使用另一個現用 WS 系統管理員設定檔啟用應用程式之前，使用該設定檔啟用的所有應用程式都無法正常運作。 因此，您必須建立不同的 WS 系統管理員設定檔。
 
@@ -72,45 +72,45 @@ Concur 顧問或用戶端系統管理員必須建立不同的 Web 服務系統�
 
 1. 登入您的 **Concur** 租用戶。
 
-2. 從 [管理]**** 功能表中，選取 [Web 服務]****。
+2. 從 [管理] 功能表中，選取 [Web 服務]。
    
     ![Concur 租用戶](./media/concur-provisioning-tutorial/IC721729.png "Concur 租用戶")
 
-3. 在左側的 [Web 服務]**** 窗格中，選取 [啟用合作夥伴應用程式]****。
+3. 在左側的 [Web 服務] 窗格中，選取 [啟用合作夥伴應用程式]。
    
     ![啟用合作夥伴應用程式](./media/concur-provisioning-tutorial/ic721730.png "啟用合作夥伴應用程式")
 
-4. 從 [啟用應用程式]**** 清單中，選取 **Azure Active Directory**，然後按一下 [啟用]****。
+4. 從 [啟用應用程式] 清單中，選取 **Azure Active Directory**，然後按一下 [啟用]。
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. 按一下 [是]**** 關閉 [確認動作]**** 對話方塊。
+5. 按一下 [是] 關閉 [確認動作] 對話方塊。
    
     ![確認動作](./media/concur-provisioning-tutorial/ic721732.png "確認動作")
 
-6. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
+6. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory > 企業應用程式 > 所有應用程式] 區段。
 
-7. 如果您已經設定單一登入的 Concur，使用 [搜尋] 欄位搜尋您的 Concur 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [Concur]****。 從搜尋結果中選取 Concur，並將它新增至您的應用程式清單。
+7. 如果您已經設定單一登入的 Concur，使用 [搜尋] 欄位搜尋您的 Concur 執行個體。 否則，請選取 [新增]，並在應用程式庫中搜尋 [Concur]。 從搜尋結果中選取 Concur，並將它新增至您的應用程式清單。
 
-8. 選取您的 Concur 執行個體，然後選取 [佈建]**** 索引標籤。
+8. 選取您的 Concur 執行個體，然後選取 [佈建] 索引標籤。
 
 9. 將 [佈建模式]  設定為 [自動]  。 
  
-    ![Azure 入口網站中 Concur [布建] 索引標籤的螢幕擷取畫面。 [布建模式] 設定為 [自動]，[測試連接] 按鈕會反白顯示。](./media/concur-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面：Azure 入口網站中 Concur 的 [佈建] 索引標籤。 [佈建模式] 已設定為 [自動]，且已醒目提示 [測試連線] 按鈕。](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. 在 [管理員認證]**** 區段下，輸入 Concur 系統管理員的**使用者名稱**和**密碼**。
+10. 在 [管理員認證] 區段下，輸入 Concur 系統管理員的 **使用者名稱** 和 **密碼**。
 
-11. 在 Azure 入口網站中，按一下 [測試連接]**** 以確保 Azure AD 可以連接到您的 Concur 應用程式。 如果連接失敗，請確定您的 Concur 帳戶具有小組系統管理員權限。
+11. 在 Azure 入口網站中，按一下 [測試連接]以確保 Azure AD 可以連接到您的 Concur 應用程式。 如果連接失敗，請確定您的 Concur 帳戶具有小組系統管理員權限。
 
-12. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選核取方塊。
+12. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選核取方塊。
 
 13. 按一下 [儲存]。
 
-14. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Concur]****。
+14. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Concur]。
 
-15. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 Concur 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Concur 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+15. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Concur 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Concur 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
-16. 若要啟用 Concur 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
+16. 若要啟用 Concur 的 Azure AD 佈建服務，在 [設定]區段中，將 [佈建狀態] 變更為 [開啟]
 
 17. 按一下 [儲存]。
 

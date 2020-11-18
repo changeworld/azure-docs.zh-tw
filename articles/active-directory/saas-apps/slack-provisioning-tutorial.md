@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 41ed942ea8962e845b7392656639e0d6bcdccbf5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 58fe99164c390d8a9435e5aa65e55fe7fca5d6db
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515910"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359471"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教學課程︰設定 Slack 來自動佈建使用者
 
@@ -73,22 +73,22 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
+    ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
+    ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [系統管理員認證]**** 區段下，按一下 [授權]****。 這會在新的瀏覽器視窗中開啟 Slack 授權對話方塊。
+5. 在 [系統管理員認證] 區段下，按一下 [授權]。 這會在新的瀏覽器視窗中開啟 Slack 授權對話方塊。
 
     ![螢幕擷取畫面，顯示 [授權管理員認證] 按鈕。](media/slack-provisioning-tutorial/authorization.png)
 
 
-6. 在新視窗中，使用您的小組系統管理帳戶登入 Slack。 在產生的授權對話方塊中，選取您想要啟用佈建的 Slack 小組，然後選取 [授權]****。 一旦完成後，回到 Azure 入口網站以完成佈建組態。
+6. 在新視窗中，使用您的小組系統管理帳戶登入 Slack。 在產生的授權對話方塊中，選取您想要啟用佈建的 Slack 小組，然後選取 [授權]。 一旦完成後，回到 Azure 入口網站以完成佈建組態。
 
     ![授權對話方塊](./media/slack-provisioning-tutorial/slackauthorize.png)
 
-7. 在 Azure 入口網站中，按一下 [測試連接]**** 以確保 Azure AD 可以連接到您的 Slack 應用程式。 如果連接失敗，請確定您的 Slack 帳戶具有小組系統管理員權限，並再試一次「授權」步驟。
+7. 在 Azure 入口網站中，按一下 [測試連接]以確保 Azure AD 可以連接到您的 Slack 應用程式。 如果連接失敗，請確定您的 Slack 帳戶具有小組系統管理員權限，並再試一次「授權」步驟。
 
 8. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
@@ -96,9 +96,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 9. 選取 [儲存]。
 
-10. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Slack]****。
+10. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Slack]。
 
-11. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 Slack 的使用者屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 Slack 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+11. 在 [屬性對應] 區段中，檢閱將從 Azure AD 同步至 Slack 的使用者屬性。 請注意，選取為 [比對] 屬性的屬性會用來比對 Slack 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
    |屬性|類型|
    |---|---|
@@ -134,7 +134,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 群組至 Slack]。
 
-13. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 Slack 的群組屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 Slack 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+13. 在 [屬性對應] 區段中，檢閱將從 Azure AD 同步至 Slack 的群組屬性。 請注意，選取為 [比對] 屬性的屬性會用來比對 Slack 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
       |屬性|類型|
       |---|---|
@@ -143,7 +143,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 14. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-15. 若要啟用 Slack 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
+15. 若要啟用 Slack 的 Azure AD 佈建服務，在 [設定]區段中，將 [佈建狀態] 變更為 [開啟]
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
@@ -176,7 +176,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
   
   * displayName 屬性不能含有 '@' 字元。 如果包含 '@'，您可能會在佈建記錄中找到具有 "AttributeValidationFailed" 說明的已略過事件。
 
-  * 只有在 Slack 的工作場所/組織中設定了下列這兩個設定時才會更新：**已啟用設定檔同步處理**及**使用者無法變更其顯示名稱**。
+  * 只有在 Slack 的工作場所/組織中設定了下列這兩個設定時才會更新：**已啟用設定檔同步處理** 及 **使用者無法變更其顯示名稱**。
 
 * Slack 的 **userName** 屬性必須少於 21 個字元且具備唯一值。
 

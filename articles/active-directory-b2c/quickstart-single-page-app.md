@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6471d1b5a5ad2b8ba34080ae1220872fa0e2e232
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921753"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421051"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入門：設定使用 Azure Active Directory B2C 的單頁應用程式登入
 
@@ -29,12 +29,12 @@ Azure Active Directory B2C (Azure AD B2C) 提供雲端身分識別管理，使�
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google 或 Microsoft 的社交帳戶
-- GitHub 中的程式碼範例：[active-directory-b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- GitHub 中的程式碼範例：[ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
 
-    您可以[下載 zip 封存](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或複製存放庫：
+    您可以[下載 zip 封存](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)或複製存放庫：
 
     ```console
-    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
     ```
 
 ## <a name="run-the-application"></a>執行應用程式
@@ -42,7 +42,6 @@ Azure Active Directory B2C (Azure AD B2C) 提供雲端身分識別管理，使�
 1. 從 Node.js 命令提示字元執行下列命令，以啟動伺服器：
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
     npm install && npm update
     npm start
     ```
@@ -60,7 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供雲端身分識別管理，使�
 ## <a name="sign-in-using-your-account"></a>使用您的帳戶登入
 
 1. 選取 [登入]  來開始使用者旅程圖。
-1. Azure AD B2C 會針對範例 Web 應用程式，呈現 Fabrikam 虛構公司的登入頁面。 若要使用社交識別提供者註冊，選取您要使用的識別提供者按鈕。
+1. Azure AD B2C 會針對範例 Web 應用程式，呈現 "Fabrikam" 虛構公司的登入頁面。 若要使用社交識別提供者註冊，選取您要使用的識別提供者按鈕。
 
     ![顯示識別提供者按鈕的登入或註冊頁面](./media/quickstart-single-page-app/sign-in-or-sign-up-spa.png)
 

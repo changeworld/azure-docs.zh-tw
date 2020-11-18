@@ -1,19 +1,19 @@
 ---
-title: 與連線至 Azure IoT 解決方案的 IoT 隨插即用裝置互動 (Node.js) | Microsoft Docs
-description: 使用 Node.js 連線至已連接 Azure IoT 解決方案的 IoT 隨插即用裝置，並與其互動。
+title: 快速入門 - 與連線至 Azure IoT 解決方案的 IoT 隨插即用裝置互動 (Node.js) | Microsoft Docs
+description: 快速入門 - 使用 Node.js 連線至已連接 Azure IoT 解決方案的 IoT 隨插即用裝置，並與其互動。
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 814221997bc927cf411e531b523d693f3ef5854c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735998"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421510"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Node.js)
 
@@ -69,8 +69,8 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 在 [設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)，您建立了兩個環境變數，以設定連線至 IoT 中樞和裝置的範例：
 
-* **IOTHUB_CONNECTION_STRING** ：您先前記下的 IoT 中樞連接字串。
-* **IOTHUB_DEVICE_ID** ：`"my-pnp-device"`。
+* **IOTHUB_CONNECTION_STRING**：您先前記下的 IoT 中樞連接字串。
+* **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
 
 在本快速入門中，您會使用 Node.js 中的範例 IoT 解決方案，與您剛剛設定的範例裝置進行互動。
 

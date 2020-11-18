@@ -1,21 +1,21 @@
 ---
 title: 教學課程︰以 Azure Active Directory 設定 Salesforce 沙箱來自動佈建使用者 | Microsoft Docs
-description: 瞭解您需要在 Salesforce 沙箱中執行的步驟，以及 Azure AD 從 Azure AD 到 Salesforce 沙箱的自動布建和解除布建使用者帳戶。
+description: 了解您需要在 Salesforce 沙箱和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 Salesforce 沙箱。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: cc094376ed6d5a183b65a598ca9d0a55670be70e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.openlocfilehash: 7e3f8e5e975468b468712ae8907cdca0e80a5f9f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676719"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352603"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 沙箱來自動佈建使用者
 
@@ -55,7 +55,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 本節的目的是要說明如何對 Salesforce 沙箱啟用 Active Directory 使用者帳戶的使用者佈建。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory > 企業應用程式 > 所有應用程式] 區段。
 
 1. 如果您已經設定單一登入的 Salesforce 沙箱，請使用 [搜尋] 欄位搜尋您的 Salesforce 沙箱執行個體。 否則，請選取 [新增]，並在應用程式庫中搜尋 [Salesforce 沙箱]。 從搜尋結果中選取 Salesforce 沙箱，並將它新增至您的應用程式清單。
 
@@ -63,7 +63,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 將 [佈建模式]  設定為 [自動]  。
 
-    ![螢幕擷取畫面顯示 [Salesforce 沙箱布建] 頁面，其中布建模式設定為 [自動] 和其他您可以設定的值。](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面：顯示 [Salesforce 沙箱佈建] 頁面，並已將 [佈建模式] 設定為 [自動] 以及其他您可以設定的值。](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 1. 在 [管理員認證] 區段下，提供下列組態設定：
    
@@ -73,15 +73,15 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 若要取得您的 Salesforce 沙箱安全性權杖，請開啟新索引標籤並登入相同的 Salesforce 沙箱管理帳戶。 在頁面右上角，按一下您的名稱，然後按一下 [設定]。
 
-     ![螢幕擷取畫面顯示選取的設定連結。](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
+     ![螢幕擷取畫面：顯示已選取 [設定] 連結。](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
 
 1. 在左方導覽窗格上，按一下 [我的個人資訊] 以展開相關的區段，然後按一下 [重設我的安全性權杖]。
   
-    ![螢幕擷取畫面顯示從我的個人資訊中選取了 [重設我的安全性權杖]。](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
+    ![螢幕擷取畫面：顯示已從 [我的個人資訊] 中選取 [重設我的安全性權杖]。](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
 
 1. 在 [重設安全性權杖] 頁面上，按一下 [重設安全性權杖] 按鈕。
 
-    ![顯示 Rest 安全性權杖頁面的螢幕擷取畫面，其中包含解說文字和重設安全性權杖的選項](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "啟用自動使用者佈建")
+    ![螢幕擷取畫面：顯示 [重設安全性權杖] 頁面，其中有解說文字和 [重設安全性權杖] 的選項](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "啟用自動使用者佈建")
 
 1. 檢查與此系統管理員帳戶相關聯的電子郵件收件匣。 尋找來自 Salesforce Sandbox.com，包含新安全性權杖的電子郵件。
 

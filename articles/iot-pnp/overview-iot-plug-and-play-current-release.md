@@ -8,14 +8,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4bd1bb93c9ce0f491c5bf1153917491b88d55109
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5e9d9e762568c01d31f0c3a29be809a5f90b6b44
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043709"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421646"
 ---
-# <a name="whats-in-the-current-iot-plug-and-play-release"></a>目前 IoT 隨插即用版本中的內容
+# <a name="what-is-in-the-current-iot-plug-and-play-release"></a>目前的 IoT 隨插即用版本包含哪些內容？
 
 本文摘要說明支援目前 IoT 隨插即用版本的工具、SDK 和 API。 所顯示的版本號碼會反映 IoT 隨插即用正式推出時的版本號碼。 版本號碼可能會隨發行而遞增。
 

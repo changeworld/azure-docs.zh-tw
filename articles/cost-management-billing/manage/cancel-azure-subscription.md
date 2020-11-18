@@ -7,28 +7,28 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/09/2020
 ms.author: banders
-ms.openlocfilehash: 16ba70717d04c44e950ce2ed2c47e54859c4be47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684876"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408017"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 訂用帳戶
 
 如果您不再需要訂用帳戶，您可以在 Azure 入口網站中取消您的 Azure 訂用帳戶。
 
-雖然並非必要，但 Microsoft *建議*您在取消訂用帳戶之前採取下列動作：
+雖然並非必要，但 Microsoft *建議* 您在取消訂用帳戶之前採取下列動作：
 
 * 備份您的資料。 例如，如果您將資料儲存在 Azure 儲存體或 SQL，請下載複本。 如果您有虛擬機器，請將其映像儲存在本機。
-* 關閉您的服務。 移至[管理入口網站中的資源頁面](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)，並**停止**任何執行中的虛擬機器、應用程式或其他服務。
+* 關閉您的服務。 移至 [管理入口網站中的資源頁面](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)，並 **停止** 任何執行中的虛擬機器、應用程式或其他服務。
 * 考慮移轉您的資料。 請參閱[將資源移動到新的資源群組或訂用帳戶](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 * 刪除所有資源和所有資源群組。
 * 如果您在`AssignableScopes`中有任何參考此訂用帳戶的自訂角色，您應該更新這些自訂角色以移除訂用帳戶。 如果您嘗試在取消訂用帳戶之後更新自訂角色，可能會收到錯誤。 如需詳細資訊，請參閱[針對自訂角色的問題進行疑難排解](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles)和 [Azure 自訂角色](../../role-based-access-control/custom-roles.md)。
 
-如果您取消付費 Azure 支援方案，則剩餘的訂閱期間仍會計費。 如需詳細資訊，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)。
+如果您取消付費 Azure 支援方案，剩餘的訂閱期間仍會計費。 如需詳細資訊，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)。
 
 ## <a name="cancel-subscription-in-the-azure-portal"></a>在 Azure 入口網站中取消訂用帳戶
 
@@ -58,7 +58,7 @@ ms.locfileid: "88684876"
 
 ## <a name="delete-free-trial-subscription"></a>刪除免費試用訂用帳戶
 
-如果您有免費試用訂用帳戶，則不需要等待 30 天的時間，訂用帳戶就會自動刪除。 在取消訂用帳戶後經過*三天*，就可以將其刪除。 在您取消訂用帳戶後，要經過三天才可使用 [刪除訂用帳戶] 選項。
+如果您有免費試用訂用帳戶，則不需要等待 30 天的時間，訂用帳戶就會自動刪除。 在取消訂用帳戶後經過 *三天*，就可以將其刪除。 在您取消訂用帳戶後，要經過三天才可使用 [刪除訂用帳戶] 選項。
 
 1. 因此，請在取消訂用帳戶後等候三天的時間。
 1. 在 Azure 入口網站的 [[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)] 頁面上選取您的訂用帳戶。
@@ -69,11 +69,23 @@ ms.locfileid: "88684876"
 
 如果您不小心取消採用隨用隨付費率的訂用帳戶，您可以[在帳戶中心重新啟動它](subscription-disabled.md)。
 
-如果您的訂用帳戶不是採用隨用隨付費率的訂用帳戶，請在取消後 90 天內與支援服務連絡，以重新啟動您的訂用帳戶。
+如果您的訂用帳戶不是採用隨用隨付費率的訂用帳戶，請在取消後的 90 天內與支援服務連絡，以重新啟用您的訂用帳戶。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
+## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>為何我在 Azure 入口網站上看不到 [取消訂用帳戶] 選項？ 
 
-如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+您可能沒有取消訂用帳戶所需的權限。 請參閱[誰可以取消訂用帳戶？](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription)，了解哪些人可取消不同類型的訂用帳戶。
+
+## <a name="how-do-i-delete-my-azure-account"></a>如何刪除我的 Azure 帳戶？
+
+*我需要移除帳戶，包括我所有的個人資訊在內。我已取消了我的作用中 (免費試用) 訂用帳戶。我沒有任何作用中的訂用帳戶，且想要完全刪除我的帳戶*。
+
+* 如果您透過組織而擁有 Azure Active Directory 帳戶，則 Azure AD 系統管理員可以刪除該帳戶。 在這之後，您的服務將會停用。 這表示系統會解除配置您的虛擬機器、釋出暫時 IP 位址，且儲存體會變成唯讀。 總之，當您取消之後，計費會立即停止。
+
+* 如果您沒有透過組織取得的 Azure AD 帳戶，則可以自行取消並刪除您的 Azure 訂用帳戶，然後從該帳戶中移除您的信用卡。 此動作不會刪除帳戶，但會使其無法運作。 如果相關聯的 Microsoft 帳戶未用於其他用途，您可以進一步同時將其刪除。
+
+## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>如何取消 Visual Studio Professional 帳戶？
+
+請參閱[續約和取消](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation)一文。 如果您有任何 Visual Studio 的 Azure 訂用帳戶，則必須一併加以取消和刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

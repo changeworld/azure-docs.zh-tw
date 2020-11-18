@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9880834cf722b1898316ef1dfcfe89ad945ffadf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: f060a6ee2b5968c1d1daf3c668b6e7009b6ccd69
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459249"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358128"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教學課程：設定 Juno Journey 來自動佈建使用者
 
@@ -46,7 +46,7 @@ ms.locfileid: "92459249"
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Juno Journey 以支援使用 Azure AD 進行佈建
 
-1. 如需**祕密權杖**和**租用戶 URL**，請透過 support@the-juno.com 連絡 Juno Journey 支援小組。 這些值會分別輸入到 Azure 入口網站中 Juno Journey 應用程式 [佈建] 索引標籤的 [祕密權杖] 和 [租用戶 URL] 欄位。 
+1. 如需 **祕密權杖** 和 **租用戶 URL**，請透過 support@the-juno.com 連絡 Juno Journey 支援小組。 這些值會分別輸入到 Azure 入口網站中 Juno Journey 應用程式 [佈建] 索引標籤的 [祕密權杖] 和 [租用戶 URL] 欄位。 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Juno Journey
 
@@ -77,15 +77,15 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
+    ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
+    ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下，輸入稍早在 [租用戶 URL] 中擷取的租用戶 URL 值。 輸入稍早在 [祕密權杖] 中所擷取的祕密權杖值。 按一下 [測試連線]，以確保 Azure AD 可連線至 Juno Journey。 如果連線失敗，請確定 Juno Journey 帳戶具有管理員權限，然後再試一次。
 
-    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/juno-journey-provisioning-tutorial/provisioning.png)
+    ![顯示 [管理員認證] 對話方塊的螢幕擷取畫面，您可以在其中輸入您的租用戶 URL 和祕密權杖。](./media/juno-journey-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932408"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421697"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files 的新功能
 
 Azure NetApp Files 會定期更新。 本文提供最新功能和增強功能的摘要。 
+
+## <a name="november-2020"></a>2020 年 11 月
+
+* [快照集還原](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+
+    快照集還原功能可讓您快速地將磁碟區還原為建立特定快照集時所處的狀態。 在大部分的情況下，還原磁碟區的速度會比將個別檔案從快照集還原至作用中檔案系統快得多。 相較於將快照集還原至新的磁碟區，其空間利用率也較高。
 
 ## <a name="september-2020"></a>2020 年 9 月
 

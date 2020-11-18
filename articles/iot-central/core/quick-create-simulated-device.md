@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 1c37742b7ed31d8253f7908c3adac35ca0b4d5d8
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170323"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376548"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>快速入門：將模擬裝置新增至 IoT Central 應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "92170323"
 
 裝置範本會為連線至 IoT Central 應用程式的裝置定義功能。 這些功能包括裝置傳送的遙測資料、裝置屬性，以及裝置所回應的命令。 建置者或操作員可從裝置範本將實際和模擬的裝置新增至應用程式。 模擬裝置可讓您在連線實際裝置之前先測試應用程式的行為。
 
-在本快速入門中，您會新增 MXChip IoT DevKit  (DevKit) 面板的裝置範本，並建立模擬裝置。 若要完成本快速入門，您不需要實際的裝置，而是使用模擬裝置。 DevKit 裝置：
+在本快速入門中，您會新增 [*MXChip IoT DevKit* (DevKit)](https://aka.ms/iot-devkit-purchase) 面板的裝置範本，並建立模擬裝置。 若要完成本快速入門，您不需要實際的裝置，而是使用模擬裝置。 DevKit 裝置：
 
 * 傳送遙測資料，例如溫度。
 * 報告裝置特定屬性，例如亮度層級。
@@ -60,7 +60,7 @@ ms.locfileid: "92170323"
 
     ![MXChip IoT DevKit 裝置範本](./media/quick-create-simulated-device/devkit-template.png)
 
-    MXChip IoT DevKit 功能模型包含 **mxchip_sensor** 、 **mxchip_settings** 和 [裝置資訊]  等介面。 介面會定義 MXChip IoT DevKit 裝置的功能。 這些功能包括裝置傳送的遙測資料、裝置所報告的屬性，以及裝置所回應的命令。
+    MXChip IoT DevKit 功能模型包含 **mxchip_sensor**、**mxchip_settings** 和 [裝置資訊]  等介面。 介面會定義 MXChip IoT DevKit 裝置的功能。 這些功能包括裝置傳送的遙測資料、裝置所報告的屬性，以及裝置所回應的命令。
 
 ### <a name="add-cloud-properties"></a>新增雲端屬性
 
@@ -142,7 +142,7 @@ ms.locfileid: "92170323"
 
     * [關於]  會顯示屬性值，包括您新增到檢視的雲端屬性。
 
-    * [命令]  檢視可讓您執行命令，例如在裝置上 **閃爍** 。
+    * [命令]  檢視可讓您執行命令，例如在裝置上 **閃爍**。
 
     * [管理裝置]  檢視是您為操作員所建立的表單，可用來管理裝置。
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 9719aea3a16a07f8c4ccbd21ea53c8b8982aefd5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7260683ab42a64381f80af834ee2b3945b0c1e4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674990"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490911"
 ---
 # <a name="azure-for-students"></a>Azure 學生版
 
@@ -20,7 +20,7 @@ ms.locfileid: "92674990"
 
 Azure 學生版提供您 12 個月內可用的 $100 點數。 其中包含超過 25 個免費服務的存取權，包括計算、網路、儲存體和資料庫。 這段期間所產生的任何費用都會從點數中扣除。 您可於 [Azure 贊助入口網站](https://www.microsoftazuresponsorships.com/)查看剩餘點數。
 
-當您用盡可用點數或在 12 個月結束之後，您的 Azure 訂用帳戶就會變成停用狀態。 Azure 學生版訂用帳戶無法續約。 若要繼續使用 [Azure](https://account.azure.com/)，您可以在 Azure 帳戶入口網站中升級為隨用隨付訂用帳戶。 如果您在 12 個月結束時或用盡美金 $100 元的點數時 (以先發生者為準) 決定不要升級，您部署的所有產品都會解除，您也無法再加以存取。 您在免費訂用帳戶結束之後的 90 天內可以升級為隨用隨付訂用帳戶。
+當您用盡可用點數或在 12 個月結束之後，您的 Azure 訂用帳戶就會變成停用狀態。 Azure 學生版訂用帳戶無法續約。 若要繼續使用 Azure，您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中升級為隨用隨付訂用帳戶。 如果您在 12 個月結束時或用盡美金 $100 元的點數時 (以先發生者為準) 決定不要升級，您部署的所有產品都會解除，您也無法再加以存取。 您在免費訂用帳戶結束之後的 90 天內可以升級為隨用隨付訂用帳戶。
 
 若要取得適用於 Azure 學生版的詳細使用規定，請參閱[供應項目條款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
 
