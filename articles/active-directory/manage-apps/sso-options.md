@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7ec8a913634322be5a1eb854972cfa2a0217381
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604201"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651918"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 中的單一登入選項
 
@@ -49,7 +49,7 @@ ms.locfileid: "90604201"
 | [已連結](#linked-sign-on) | 雲端和內部部署 | 當應用程式已經在其他識別提供者服務中設定單一登入時，選擇已連結的登入。 此選項不會將單一登入新增至應用程式。 不過，應用程式可能已經使用另一個服務 (例如 Active Directory 同盟服務) 來實作單一登入。|
 | [Disabled](#disabled-sso) | 雲端和內部部署 | 當應用程式尚未準備好設定單一登入時，請選擇已停用的單一登入。 當您建立應用程式時，此模式是預設值。|
 | [整合式 Windows 驗證 (IWA)](#integrated-windows-authentication-iwa-sso) | 僅內部部署 | 請針對使用[整合式 Windows 驗證 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的應用程式或宣告感知的應用程式，選擇 IWA 單一登入。 至於 IWA，應用程式 Proxy 連接器會使用 Kerberos 限制委派 (KCD) 來向應用程式驗證使用者。 |
-| [標頭式](#header-based-sso) | 僅內部部署 | 當應用程式是使用標頭進行驗證時，請使用標頭式單一登入。 標頭式單一登入需要適用於 Azure AD 的 PingAccess。 應用程式 Proxy 會使用 Azure AD 來驗證使用者，然後透過連接器服務傳遞流量。  |
+| [標頭式](#header-based-sso) | 僅內部部署 | 當應用程式是使用標頭進行驗證時，請使用標頭式單一登入。 應用程式 Proxy 會使用 Azure AD 來驗證使用者，然後透過連接器服務傳遞流量。  |
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect 和 OAuth
 
@@ -59,7 +59,7 @@ ms.locfileid: "90604201"
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
-- [Microsoft 身分識別平台開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+- [Microsoft 身分識別平台開發人員指南](../develop/index.yml)
 
 ## <a name="saml-sso"></a>SAML SSO
 
@@ -137,7 +137,7 @@ ms.locfileid: "90604201"
 
 ### <a name="linked-sign-on-for-application-migration"></a>用於應用程式移轉的連結型登入
 
-當您於一段時間內移轉應用程式時，連結型登入可以提供一致的使用者體驗。 如果您要將應用程式移轉至 Azure Active Directory，您可以使用連結型登入快速將連結發行至您想要遷移的所有應用程式。  使用者可以在 [MyApps 入口網站](../user-help/active-directory-saas-access-panel-introduction.md)或 [Microsoft 365 應用程式啟動器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中找到所有連結。 使用者不會知道他們存取的是已連結的應用程式或已移轉的應用程式。  
+當您於一段時間內移轉應用程式時，連結型登入可以提供一致的使用者體驗。 如果您要將應用程式移轉至 Azure Active Directory，您可以使用連結型登入快速將連結發行至您想要遷移的所有應用程式。  使用者可以在 [MyApps 入口網站](../user-help/my-apps-portal-end-user-access.md)或 [Microsoft 365 應用程式啟動器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中找到所有連結。 使用者不會知道他們存取的是已連結的應用程式或已移轉的應用程式。  
 
 使用者與連結的應用程式驗證之後，需要先建立帳戶記錄，系統才會提供使用者單一登入存取權。 佈建此帳戶記錄可以是自動執行，或是由系統管理員手動執行。
 
@@ -180,24 +180,14 @@ ms.locfileid: "90604201"
 
 ## <a name="header-based-sso"></a>標頭式 SSO
 
-標頭式單一登入適用於使用 HTTP 標頭進行驗證的應用程式。 此登入方法會使用名為 PingAccess 的協力廠商驗證服務。 使用者只需要向 Azure AD 驗證。
+標頭式單一登入適用於使用 HTTP 標頭進行驗證的應用程式。
 
-已為應用程式設定應用程式 Proxy 和 PingAccess 時，請選擇標題式單一登入。
+已為內部部署應用程式設定應用程式 Proxy 時，請選擇標頭式單一登入。
 
-若要設定標頭式驗證，請參閱[適用於使用應用程式 Proxy 之單一登入的標頭式驗證](application-proxy-configure-single-sign-on-with-ping-access.md)。
+若要深入了解標頭式驗證，請參閱[標頭式 SSO](application-proxy-configure-single-sign-on-with-headers.md)。
 
-### <a name="what-is-pingaccess-for-azure-ad"></a>什麼是 Azure AD 的 PingAccess？
-
-使用適用於 Azure AD 的 PingAccess，使用者就能存取和單一登入至使用標頭驗證的應用程式。 應用程式 Proxy 會如同任何其他應用程式一樣處理這些應用程式，使用 Azure AD 驗證存取，然後透過連接器服務傳遞流量。 驗證發生之後，PingAccess 服務會將 Azure AD 存取權杖翻譯成傳送到應用程式的標頭格式。
-
-使用者在登入使用您公司的應用程式時，將不會注意到什麼不同。 這些還是可以在任何裝置上從任何地方運作。 應用程式 Proxy 連接器將遠端流量導向至所有應用程式，然後它們會繼續自動進行負載平衡。
-
-### <a name="how-do-i-get-a-license-for-pingaccess"></a>如何取得 PingAccess 的授權？
-
-這種情況是透過 Azure AD 和 PingAccess 之間的合作關係提供，因此您會需要這兩種服務的授權。 不過，Azure AD Premium 訂用帳戶所包含的基本 PingAccess 授權最多可涵蓋 20 個應用程式。 如果您需要發佈 20 個以上的標頭應用程式，可以從 PingAccess 取得額外的授權。
-
-如需詳細資訊，請參閱 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
 ## <a name="next-steps"></a>後續步驟
 * [應用程式管理快速入門系列](view-applications-portal.md)
 * [規劃單一登入部署](plan-sso-deployment.md)
+* [使用內部部署應用程式進行單一登入](application-proxy-config-sso-how-to.md)

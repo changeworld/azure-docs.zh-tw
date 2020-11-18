@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b6c879d126b0c16f2dc6ceb41a1dfcc3ecf6a2d5
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886488"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94639632"
 ---
 <a name="HOLTop"></a>
 
@@ -107,7 +107,7 @@ npm install @azure/cognitiveservices-computervision
 本節中的程式碼會分析遠端影像，以擷取各種視覺功能。 您可以在用戶端物件的 **analyzeImage** 方法中執行這些作業，也可以使用個別的方法來呼叫它們。 如需詳細資訊，請參閱[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)。
 
 > [!NOTE]
-> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **analyzeImageInStream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **analyzeImageInStream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
 
 ### <a name="get-image-description"></a>取得影像說明
 
@@ -215,7 +215,7 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="extract-text-ocr-with-read"></a>使用讀取來擷取文字 (OCR)
+## <a name="read-printed-and-handwritten-text"></a>讀取印刷和手寫文字
 
 電腦視覺可以擷取影像中的可見文字，並將其轉換成字元串流。 這個範例會使用讀取作業。
 
@@ -226,7 +226,7 @@ npm install @azure/cognitiveservices-computervision
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 > [!NOTE]
-> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **readInStream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
+> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **readInStream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
 
 ### <a name="call-the-read-api"></a>呼叫讀取 API
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850586"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652139"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火牆功能
 
@@ -84,7 +84,7 @@ Azure 防火牆可以隨著您的需求擴大，以容納多變的網路流量�
 
 所有輸出虛擬網路流量 IP 位址都會轉譯成 Azure 防火牆公用 IP (來源網路位址轉譯)。 您可以識別源自您虛擬網路的流量，並且允許其流向遠端網際網路目的地。 目的地 IP 為 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的私人 IP 範圍時，Azure 防火牆不會進行 SNAT 轉譯。 
 
-如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 您可以將 Azure 防火牆設定為**不要** SNAT 公用 IP 位址範圍。 如需詳細資訊，請參閱 [Azure 防火牆 SNAT 私人 IP 位址範圍](snat-private-range.md)。
+如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 您可以將 Azure 防火牆設定為 **不要** SNAT 公用 IP 位址範圍。 如需詳細資訊，請參閱 [Azure 防火牆 SNAT 私人 IP 位址範圍](snat-private-range.md)。
 
 ## <a name="inbound-dnat-support"></a>輸入 DNAT 支援
 
@@ -103,7 +103,7 @@ Azure 防火牆可以隨著您的需求擴大，以容納多變的網路流量�
 
 所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。 如 Azure 監視器記錄範例，請參閱 [Azure 防火牆 Azure 監視器記錄](log-analytics-samples.md)。
 
-如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄和計量](tutorial-diagnostics.md)。 
+如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄和計量](./firewall-diagnostics.md)。 
 
 Azure 防火牆活頁簿為 Azure 防火牆資料分析提供了彈性的畫布。 您可以使用它，在 Azure 入口網站中建立豐富的視覺效果報表。 如需詳細資訊，請參閱 [使用 Azure 防火牆活頁簿監視記錄](firewall-workbook.md)。
 

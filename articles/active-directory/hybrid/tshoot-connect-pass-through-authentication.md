@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741188"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652513"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
@@ -34,7 +34,7 @@ ms.locfileid: "91741188"
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>檢查此功能和驗證代理程式的狀態
 
-確定您租用戶上的傳遞驗證功能仍為 [已啟用]****，而驗證代理程式的狀態會顯示 [作用中]****，而不是 [非作用中]****。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的 [Azure AD Connect]**** 刀鋒視窗來檢查狀態。
+確定您租用戶上的傳遞驗證功能仍為 [已啟用]，而驗證代理程式的狀態會顯示 [作用中]，而不是 [非作用中]。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的 [Azure AD Connect] 刀鋒視窗來檢查狀態。
 
 ![Azure Active Directory 管理中心 - Azure AD Connect 刀鋒視窗](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "91741188"
 
 如果使用者無法登入使用傳遞驗證，他們可能會在 Azure AD 登入畫面中看到下列其中之一的使用者錯誤： 
 
-|錯誤|說明|解決方案
+|錯誤|說明|解決方法
 | --- | --- | ---
 |AADSTS80001|無法連線至 Active Directory|確定代理程式伺服器和必須驗證其密碼的使用者都是相同 AD 樹系的成員，而且都能連線到 Active Directory。  
 |AADSTS8002|連線至 Active Directory 時發生逾時|請檢查以確定 Active Directory 可用，並且會回應來自代理程式的要求。
@@ -83,9 +83,9 @@ ms.locfileid: "91741188"
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-流覽至**Azure Active Directory**  ->  Azure Active Directory 系統[管理中心](https://aad.portal.azure.com/)的 Azure Active Directory**登入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+流覽至 **Azure Active Directory**  ->  Azure Active Directory 系統 [管理中心](https://aad.portal.azure.com/)的 Azure Active Directory **登入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方案
+|登入錯誤碼|登入失敗原因|解決方法
 | --- | --- | ---
 | 50144 | 使用者的 Active Directory 密碼已到期。 | 在您的內部部署 Active Directory 中重設使用者密碼。
 | 80001 | 沒有可用的驗證代理程式。 | 安裝並註冊驗證代理程式。
@@ -156,6 +156,8 @@ ms.locfileid: "91741188"
 如需與驗證代理程式相關的錯誤，請開啟伺服器上的事件檢視器應用程式，並於 **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** 下查看。
 
 如需詳細分析，請啟用「工作階段」記錄 (以滑鼠右鍵按一下事件檢視器應用程式內部，可找到此選項)。 不要使用正常作業期間啟用的記錄檔執行驗證代理程式，此記錄檔只適用於進行疑難排解。 只有再次停用此記錄檔之後，才能看見記錄檔的內容。
+
+您可以在 [這裡](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster)找到 PTA 代理程式事件資訊清單。
 
 ### <a name="detailed-trace-logs"></a>詳細的追蹤記錄
 
