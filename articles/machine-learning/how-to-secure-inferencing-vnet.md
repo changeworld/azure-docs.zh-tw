@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361160"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873806"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -115,6 +115,8 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 建立程序完成之後，您可以在虛擬網路背後的 AKS 叢集上執行推斷或模型評分。 如需詳細資訊，請參閱[部署至 AKS 的方式](how-to-deploy-and-where.md)。
 
+如需有關搭配 Kubernetes 使用 Role-Based 存取控制的詳細資訊，請參閱 [使用 AZURE RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)。
+
 ## <a name="network-contributor-role"></a>網路參與者角色
 
 > [!IMPORTANT]
@@ -152,7 +154,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 有兩種方法可將 AKS 叢集的流量與虛擬網路隔離：
 
 * __私用 AKS__ 叢集：此方法會使用 Azure Private Link 來保護與叢集的通訊，以進行部署/管理作業。
-* __內部 AKS 負載平衡器__ ：此方法會將您部署的端點設定為 AKS，以使用虛擬網路內的私人 IP。
+* __內部 AKS 負載平衡器__：此方法會將您部署的端點設定為 AKS，以使用虛擬網路內的私人 IP。
 
 > [!WARNING]
 > 內部負載平衡器無法與使用 kubenet 的 AKS 叢集搭配使用。 如果您想要同時使用內部負載平衡器和私人 AKS 叢集，請使用 Azure 容器網路介面設定私人 AKS 叢集 (CNI) 。 如需詳細資訊，請參閱 [Azure Kubernetes Service 中的設定 AZURE CNI 網路](../aks/configure-azure-cni.md)。
@@ -247,7 +249,7 @@ aks_target.wait_for_completion(show_output = True)
 
 ## <a name="enable-azure-container-instances-aci"></a>啟用 (ACI) 的 Azure 容器實例
 
-部署模型時會以動態方式建立 Azure 容器執行個體。 若要讓 Azure Machine Learning 能夠在虛擬網路內部建立 ACI，您必須為部署所使用的子網路啟用 __子網路委派__ 。
+部署模型時會以動態方式建立 Azure 容器執行個體。 若要讓 Azure Machine Learning 能夠在虛擬網路內部建立 ACI，您必須為部署所使用的子網路啟用 __子網路委派__。
 
 > [!WARNING]
 > 使用虛擬網路中的 Azure 容器實例時，虛擬網路必須位於與您的 Azure Machine Learning 工作區相同的資源群組中。

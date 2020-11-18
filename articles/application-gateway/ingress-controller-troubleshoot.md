@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f2b9f79f0914e645c736f8a577c46baa42587332
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397360"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874605"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>針對輸入控制器的常見問題或問題進行疑難排解
 
@@ -132,7 +132,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 
 
 下列必須備妥，AGIC 才能如預期般運作：
-  1. AKS 必須有一或多個 **狀況良好的 pod** 。
+  1. AKS 必須有一或多個 **狀況良好的 pod**。
      從 [Cloud Shell](https://shell.azure.com/) 確認這一點 `kubectl get pods -o wide --show-labels` ，如果您有一個 Pod `apsnetapp` ，則您的輸出看起來可能像這樣：
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
@@ -141,7 +141,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. 一或多個 **服務** ，藉由比對標籤來參考上面的 pod `selector` 。
+  2. 一或多個 **服務**，藉由比對標籤來參考上面的 pod `selector` 。
      從 [Cloud Shell](https://shell.azure.com/) 驗證此 `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -236,7 +236,7 @@ AGIC 有3個記錄層級。 層級1是預設值，而且會顯示最少的記錄
 Kubernetes 社區已為 [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) 工具建立9個記錄層級。 在此存放庫中，我們會利用類似的語法來使用其中的3個：
 
 
-| 詳細程度 | 描述 |
+| 詳細程度 | 說明 |
 |-----------|-------------|
 |  1        | 預設記錄層級;顯示啟動詳細資料、警告和錯誤 |
 |  3        | 有關事件和變更的擴充資訊;已建立物件的清單 |
@@ -292,7 +292,7 @@ armAuth:
 #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
 
 ################################################################################
-# Specify if the cluster is RBAC enabled or not
+# Specify if the cluster is Kubernetes RBAC enabled or not
 rbac:
     enabled: false # true/false
 

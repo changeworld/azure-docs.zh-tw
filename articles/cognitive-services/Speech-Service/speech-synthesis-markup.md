@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311633"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873772"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -56,7 +56,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `version` | 指出用來解讀檔標記之 SSML 規格的版本。 目前的版本為1.0。 | 必要 |
 | `xml:lang` | 指定根文檔的語言。 此值可能包含小寫、兩個字母的語言代碼 (例如 `en`) ，或語言代碼和大寫國家/地區 (例如 `en-US`) 。 | 必要 |
@@ -76,7 +76,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `name` | 識別用於文字到語音轉換輸出的語音。 如需支援的語音的完整清單，請參閱 [語言支援](language-support.md#text-to-speech)。 | 必要 |
 
@@ -99,7 +99,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `name` | 識別用於文字到語音轉換輸出的語音。 如需支援的語音的完整清單，請參閱 [語言支援](language-support.md#text-to-speech)。 | 必要 |
 
@@ -200,25 +200,46 @@ speechConfig!.setPropertyTo(
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunxiNeural` (預覽)
+* `zh-CN-XiaohanNeural` (預覽)
+* `zh-CN-XiaomoNeural` (預覽)
+* `zh-CN-XiaoxuanNeural` (預覽)
+* `zh-CN-XiaoruiNeural` (預覽)
 
-變更會在句子層級套用，而樣式則會因語音而異。 如果不支援某個樣式，則服務會以預設的中性說話樣式傳回語音。 您可以透過 [語音清單 API](rest-text-to-speech.md#get-a-list-of-voices)查詢每個語音所支援的樣式。
+說話樣式的濃度可以進一步變更，以更符合您的使用案例。 您可以指定更強或更柔和的樣式， `styledegree` 讓語音更具表達性或 subdued。 
 
-針對中文 voice XiaoxiaoNeural，說話樣式的濃度可以進一步變更，以更符合您的使用案例。 您可以指定更強或更柔和的樣式， `styledegree` 讓語音更具表達性或 subdued。
+目前，下列類神經語音支援說話樣式調整：
+* `zh-CN-XiaoxiaoNeural`
+
+除了調整說話樣式和樣式的角度之外，您也可以調整 `role` 參數，讓聲音模仿不同的年齡和性別。 例如，男性聲音可以提高音調，並將聲調變更為模仿女性心聲。
+
+目前，下列類神經語音支援角色扮演調整：
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+上述變更會在句子層級套用，而樣式和角色播放則會因語音而異。 如果不支援樣式或角色扮演，服務將會以預設的中性說話方式傳回語音。 您可以透過 [語音清單 API](rest-text-to-speech.md#get-a-list-of-voices) 或透過無程式碼的 [音訊內容建立](https://aka.ms/audiocontentcreation) 平臺，查看每個語音所支援的樣式和角色播放。
 
 **語法**
 
 ```xml
+<mstts:express-as style="string"></mstts:express-as>
+```
+```xml
 <mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
 > [!NOTE]
-> 目前 `styledegree` 僅支援 XiaoxiaoNeural。 
+> 目前 `styledegree` 只支援 zh-CN-XiaoxiaoNeural。 `role` 只支援 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `style` | 指定說出的樣式。 目前，說話樣式是語音特定的。 | 如果為類神經語音調整說話樣式，則為必要。 如果使用 `mstts:express-as` ，則必須提供樣式。 如果提供的值無效，則會忽略這個元素。 |
-| `styledegree` | 指定說話樣式的濃度。 **接受的值** ：0.01 到2（含）。 預設值為1，表示預先定義的樣式濃度。 最小單位為0.01，這會造成目標樣式稍微傾向。 值為2會導致預設樣式濃度加倍。  | 選擇性 (目前 `styledegree` 僅支援 XiaoxiaoNeural。 ) |
+| `styledegree` | 指定說話樣式的濃度。 **接受的值**：0.01 到2（含）。 預設值為1，表示預先定義的樣式濃度。 最小單位為0.01，這會造成目標樣式稍微傾向。 值為2會導致預設樣式濃度加倍。  | 選擇性 (目前 `styledegree` 僅支援 zh-CN-XiaoxiaoNeural。 ) |
+| `role` | 指定說話角色的播放。 語音會扮演不同的年齡和性別。  | 選擇性 (目前 `role` 僅支援 zh-cn-XiaomoNeural 和 zh-cn-XiaoxuanNeural。 ) |
 
 您可以使用此資料表來判斷每個神經語音支援哪些說話樣式。
 
@@ -250,6 +271,52 @@ speechConfig!.setPropertyTo(
 |                         | `style="gentle"`          | 以較低的音調和關切這個領域能源來表達輕微、親切、愉快的語氣         |   
 |                         | `style="lyrical"`         | 以 melodic 和感情因素存在的方式表達表情         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  | 
+| `zh-CN-YunxiNeural`    | `style="cheerful"`        | 以更高的音調和關切這個領域能源表示樂觀和熱心語氣                         |
+|                         | `style="sad"`             | 以較高的音調、較低的濃度和較低的關切這個領域能源來表示 sorrowful 的色調。 這種表情的常見指標會在語音期間 whimpers 或哭泣。            |
+|                         | `style="angry"`           | 以較低的音調、更高的強度和更高的關切這個領域能源來表示生氣和感到苦惱的語氣。 說話者處於 irate、displeased 和感冒的狀態。       |
+|                         | `style="fearful"`         | 以較高的音調、更高的關切這個領域能源及更快的速率表示害怕和緊張語氣。 喇叭處於 tenseness 和 uneasiness 的狀態。                          |
+|                         | `style="disgruntled"`     | 表示 disdainful 和抱怨語氣。 此表情的語音會顯示不悅和藐視。              |
+|                         | `style="serious"`         | 表示嚴格和命令的色調。 說話者通常會 stiffer，而且會有公司的步調更寬鬆。    |
+|                         | `style="depressed"`       | 以較低的音調和能源來表示 melancholic 和 despondent 語氣    |
+|                         | `style="embarrassed"`     | 在說話者感覺不舒服時，表達不確定和遲疑的語氣   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | 以更高的音調和關切這個領域能源表示樂觀和熱心語氣                         |
+|                         | `style="sad"`             | 以較高的音調、較低的濃度和較低的關切這個領域能源來表示 sorrowful 的色調。 這種表情的常見指標會在語音期間 whimpers 或哭泣。            |
+|                         | `style="angry"`           | 以較低的音調、更高的強度和更高的關切這個領域能源來表示生氣和感到苦惱的語氣。 說話者處於 irate、displeased 和感冒的狀態。       |
+|                         | `style="fearful"`         | 以較高的音調、更高的關切這個領域能源及更快的速率表示害怕和緊張語氣。 喇叭處於 tenseness 和 uneasiness 的狀態。                          |
+|                         | `style="disgruntled"`     | 表示 disdainful 和抱怨語氣。 此表情的語音會顯示不悅和藐視。              |
+|                         | `style="serious"`         | 表示嚴格和命令的色調。 說話者通常會 stiffer，而且會有公司的步調更寬鬆。    |
+|                         | `style="embarrassed"`     | 在說話者感覺不舒服時，表達不確定和遲疑的語氣   |
+|                         | `style="affectionate"`    | 以更高的音調和關切這個領域能源來表示暖和 affectionate 的色調。 說話者的狀態是吸引接聽程式的注意力。 說話者的「個人化」通常是可愛本質。          |     
+|                         | `style="gentle"`          | 以較低的音調和關切這個領域能源來表達輕微、親切、愉快的語氣         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | 以更高的音調和關切這個領域能源表示樂觀和熱心語氣                         |
+|                         | `style="angry"`           | 以較低的音調、更高的強度和更高的關切這個領域能源來表示生氣和感到苦惱的語氣。 說話者處於 irate、displeased 和感冒的狀態。       |
+|                         | `style="fearful"`         | 以較高的音調、更高的關切這個領域能源及更快的速率表示害怕和緊張語氣。 喇叭處於 tenseness 和 uneasiness 的狀態。                          |
+|                         | `style="disgruntled"`     | 表示 disdainful 和抱怨語氣。 此表情的語音會顯示不悅和藐視。              |
+|                         | `style="serious"`         | 表示嚴格和命令的色調。 說話者通常會 stiffer，而且會有公司的步調更寬鬆。    |
+|                         | `style="depressed"`       | 以較低的音調和能源來表示 melancholic 和 despondent 語氣    |
+|                         | `style="gentle"`          | 以較低的音調和關切這個領域能源來表達輕微、親切、愉快的語氣         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | 以更高的音調和關切這個領域能源表示樂觀和熱心語氣                         |
+|                         | `style="angry"`           | 以較低的音調、更高的強度和更高的關切這個領域能源來表示生氣和感到苦惱的語氣。 說話者處於 irate、displeased 和感冒的狀態。       |
+|                         | `style="fearful"`         | 以較高的音調、更高的關切這個領域能源及更快的速率表示害怕和緊張語氣。 喇叭處於 tenseness 和 uneasiness 的狀態。                          |
+|                         | `style="disgruntled"`     | 表示 disdainful 和抱怨語氣。 此表情的語音會顯示不悅和藐視。              |
+|                         | `style="serious"`         | 表示嚴格和命令的色調。 說話者通常會 stiffer，而且會有公司的步調更寬鬆。    |
+|                         | `style="depressed"`       | 以較低的音調和能源來表示 melancholic 和 despondent 語氣    |
+|                         | `style="gentle"`          | 以較低的音調和關切這個領域能源來表達輕微、親切、愉快的語氣         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | 以較高的音調、較低的濃度和較低的關切這個領域能源來表示 sorrowful 的色調。 這種表情的常見指標會在語音期間 whimpers 或哭泣。            |
+|                         | `style="angry"`           | 以較低的音調、更高的強度和更高的關切這個領域能源來表示生氣和感到苦惱的語氣。 說話者處於 irate、displeased 和感冒的狀態。       |
+|                         | `style="fearful"`         | 以較高的音調、更高的關切這個領域能源及更快的速率表示害怕和緊張語氣。 喇叭處於 tenseness 和 uneasiness 的狀態。                          |
+
+您可以使用此資料表來判斷每個神經語音支援哪些角色。
+
+| 語音                   | 角色                       | 描述                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | 語音 imitates 給年輕成人女性。                 |
+|                         | `role="OlderAdultMale"`    | 語音 imitates 到較舊的成人男性。                   |
+|                         | `role="Girl"`              | Imitates 至女孩的聲音。                               |
+|                         | `role="Boy"`               | 將語音 imitates 到男孩。                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | 語音 imitates 給年輕成人女性。                 |
+|                         | `role="OlderAdultFemale"`  | 語音 imitates 到較舊的成人女性。                 |
+|                         | `role="OlderAdultMale"`    | 語音 imitates 到較舊的成人男性。                   |
 
 **範例**
 
@@ -278,6 +345,23 @@ speechConfig!.setPropertyTo(
 </speak>
 ```
 
+這個 SSML 程式碼片段說明如何 `role` 使用屬性來變更 XiaomoNeural 的角色扮演。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>新增或移除中斷/暫停
 
 您 `break` 可以使用元素來插入暫停 (或在文字之間中斷) ，或防止文字轉換語音服務自動暫停。
@@ -294,12 +378,12 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
-| `time` | 指定暫停的絕對持續時間（以秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選擇性 |
+| `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位），此值應設為小於5000毫秒。 有效值的範例包括 `2s` 和 `500ms` | 選擇性 |
 
-| 強度                      | 描述 |
+| 強度                      | 說明 |
 |-------------------------------|-------------|
 | 無，或如果未提供任何值 | 0毫秒        |
 | x-弱式                        | 250 毫秒      |
@@ -316,6 +400,37 @@ speechConfig!.setPropertyTo(
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
+```
+## <a name="add-silence"></a>新增無聲
+
+您 `mstts:silence` 可以使用元素來插入在文字之前或之後暫停，或在2個連續的句子之間插入。 
+
+> [!NOTE]
+>和之間的 `mstts:silence` 差異 `break` 是 `break` 可以加入至文字中的任何位置，但無回應只適用于輸入文字的開頭或結尾，或2個相鄰句子的界限。  
+
+
+**語法**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**屬性**
+
+| 屬性 | 說明 | 必要/選用 |
+|-----------|-------------|---------------------|
+| `type` | 指定要新增無聲的位置： <ul><li>前置-在文字開頭 </li><li>尾端–在文字結尾 </li><li>Sentenceboundary –相鄰句子之間 </li></ul> | 必要 |
+| `Value` | 指定暫停的絕對持續時間（以秒或毫秒為單位），此值應設為小於5000毫秒。 有效值的範例包括 `2s` 和 `500ms` | 必要 |
+
+**範例** 在此範例中， `mtts:silence` 是用來在兩個句子之間新增200毫秒的靜音。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>指定段落和句子
@@ -356,6 +471,9 @@ speechConfig!.setPropertyTo(
 
 語音字母是由電話組成，也就是由字母、數位或字元組成，有時會組合。 每個電話都描述語音的獨特音效。 這與拉丁字母相反，其中任何字母可能代表多個說話音效。 請考慮字母 "c" 的不同發音（以「糖果」和「停止」文字），或在「內容」和「那些」字組的不同發音中加上字母組合「th」。
 
+> [!NOTE]
+> 這5個語音不支援音素標籤 (et-AnuNeural、ga-IE-OrlaNeural、lt-OnaNeural、lv-LV-EveritaNeural 和 mt-GarceNeural) 目前。
+
 **語法**
 
 ```XML
@@ -364,7 +482,7 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `alphabet` | 指定當合成屬性中字串的發音時，所要使用的拼音字母 `ph` 。 指定字母的字串必須以小寫字母來指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話組</a></li></ul><br>字母只適用于 `phoneme` 元素中的。 | 選擇性 |
 | `ph` | 字串，包含指定元素中單字發音的電話 `phoneme` 。 如果指定的字串包含無法辨識的電話，則文字轉換語音 (TTS) 服務會拒絕整個 SSML 檔，並且不會產生檔中指定的任何語音輸出。 | 如果使用音素，則為必要。 |
@@ -402,6 +520,10 @@ speechConfig!.setPropertyTo(
 > [!NOTE]
 > 自訂字典目前支援 UTF-8 編碼。 
 
+> [!NOTE]
+> 自訂字典不支援這些5個語音 (et-AnuNeural、ga-IE-OrlaNeural、lt-OnaNeural、lv-LV-EveritaNeural 和 mt-GarceNeural) 目前。
+
+
 **語法**
 
 ```XML
@@ -410,7 +532,7 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 描述                               | 必要/選用 |
+| 屬性 | 說明                               | 必要/選用 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部另外檔的位址。 | 必要。           |
 
@@ -533,14 +655,14 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如： `<prosody pitch="600Hz">some text</prosody>` 。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如：`<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul> | 選擇性 |
+| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如： `<prosody pitch="600Hz">some text</prosody>` 。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如：`<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>預設</li></ul></li></ul> | 選擇性 |
 | `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
 | `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
-| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
-| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms* 。 持續時間僅支援標準語音。| 選擇性 |
-| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest* 。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選擇性 |
+| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>預設</li></ul></li></ul> | 選擇性 |
+| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 持續時間僅支援標準語音。| 選擇性 |
+| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>預設</li></ul></li></ul> | 選擇性 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -616,7 +738,7 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指出元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
 | `format` | 針對可能具有不明確格式的內容類型，提供有關專案文字精確格式的其他資訊。 SSML 會定義使用這些內容類型的格式 (請參閱下表) 。 | 選擇性 |
@@ -631,7 +753,7 @@ speechConfig!.setPropertyTo(
 | `address` | | 文字是以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法庭華盛頓州 redmond」。 |
 | `cardinal`, `number` | | 文字會以基本數位的形式讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三個替代方案」。 |
 | `characters`, `spell-out` | | 文字會以個別字母的形式讀出 (拼寫) 。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />As "T E S T." |
-| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文字會以日期的形式讀出。 `format`屬性會指定日期格式 ( *d = day、m = month 和 y = year* ) 。 語音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />「今天是10月第十九個2016」。 |
+| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文字會以日期的形式讀出。 `format`屬性會指定日期格式 (*d = day、m = month 和 y = year*) 。 語音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />「今天是10月第十九個2016」。 |
 | `digits`, `number_digit` | | 文字是以個別數位的序列來讀出。 語音合成引擎 pronounces：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />為 "1 2 3 4 5 6 7 8 9"。 |
 | `fraction` | | 文字會以小數的形式讀出。 語音合成引擎 pronounces：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />「三個八位的三個」。 |
 | `ordinal` | | 文字是以序數的形式讀出。 語音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />作為 [選取第三個選項]。 |
@@ -678,7 +800,7 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 
 **屬性**
 
-| 屬性 | 描述                                   | 必要/選用                                        |
+| 屬性 | 說明                                   | 必要/選用                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | 指定音訊檔案的位置/URL。 | 如果在 SSML 檔中使用音訊元素，則為必要專案。 |
 
@@ -714,12 +836,12 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 
 **屬性**
 
-| 屬性 | 描述 | 必要/選用 |
+| 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值** ： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
-| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值** ： `0` 至 `10000` 內含。  | 選擇性 |
-| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值** ： `0` 至 `10000` 內含。  | 選擇性 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
+| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 
 **範例**
 

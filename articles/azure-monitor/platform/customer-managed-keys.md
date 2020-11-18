@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/09/2020
-ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 11/18/2020
+ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443376"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873517"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -21,11 +21,13 @@ ms.locfileid: "94443376"
 
 ## <a name="customer-managed-key-overview"></a>客戶管理的金鑰總覽
 
-[靜態加密](../../security/fundamentals/encryption-atrest.md) 是組織中常見的隱私權和安全性需求。 您可以讓 Azure 完全管理待用加密，而您可以使用各種選項來嚴密管理加密或加密金鑰。
+[靜態加密](../../security/fundamentals/encryption-atrest.md) 是組織中常見的隱私權和安全性需求。 您可以讓 Azure 完全管理待用加密，而您可以使用各種選項來更緊密地管理加密和加密金鑰。
 
-Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和儲存的查詢都會加密。 Azure 監視器也提供使用您自己的金鑰進行加密的選項，該金鑰儲存在您的 [Azure Key Vault](../../key-vault/general/overview.md) 中，並供儲存體用來進行資料加密。 金鑰可以是 [軟體或硬體 HSM 保護](../../key-vault/general/overview.md)。 Azure 監視器使用加密等同于 [Azure 儲存體加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) 的運作方式。
+Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和儲存的查詢都會加密。 Azure 監視器也提供使用您自己的金鑰進行加密的選項，該金鑰儲存在您的 [Azure Key Vault](../../key-vault/general/overview.md) 中，並可讓您隨時撤銷對您資料的存取權。 Azure 監視器使用加密等同于 [Azure 儲存體加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) 的運作方式。
 
-客戶管理的金鑰功能可在專用的 Log Analytics 叢集上傳遞。 它可讓您使用 [密碼箱](#customer-lockbox-preview) 控制來保護您的資料，並讓您隨時都能撤銷對您資料的存取權。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料加密，並在2021的上半年 Customer-Managed 金鑰。
+Customer-Managed 金鑰會在專用的 Log Analytics 叢集上傳遞，以提供更高的保護層級和控制。 使用 Microsoft 管理的金鑰或客戶管理的金鑰，在服務層級進行資料內嵌的資料加密兩次，而在基礎結構層級使用兩個不同的加密演算法和兩個不同的金鑰。 [雙精確度加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) 可防止其中一個加密演算法或金鑰可能會遭到入侵的案例。 在此情況下，額外的加密層級會繼續保護您的資料。 專用叢集也可讓您使用加密 [箱](#customer-lockbox-preview) 控制來保護您的資料。
+
+過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料加密，並在2021的上半年 Customer-Managed 金鑰。
 
 [Log Analytics 叢集定價模型](./manage-cost-storage.md#log-analytics-dedicated-clusters)會使用每日層級的容量保留，起價為 1000 GB。
 
@@ -74,77 +76,18 @@ Azure 入口網站中不支援 Customer-Managed 金鑰設定，而布建是透�
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-部分設定步驟會以非同步方式執行，因為它們無法快速完成。 在設定中使用 REST 要求時，在接受時，回應一開始會傳回 HTTP 狀態碼 200 (OK) 和標頭與 *Azure AsyncOperation* 屬性：
+部分設定步驟會以非同步方式執行，因為它們無法快速完成。 使用 REST 時，回應一開始會傳回 HTTP 狀態碼 200 (確定) 和標頭，並在接受時使用 *Azure AsyncOperation* 屬性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-然後，您可以將 GET 要求傳送至 *Azure AsyncOperation* 標頭值，以檢查非同步作業的狀態：
+您可將 GET 要求傳送至 *Azure-AsyncOperation* 標頭值來檢查非同步作業的狀態：
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
-其回應會包含作業及其「狀態」的相關資訊。 其可以是下列其中一項：
-
-作業進行中
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "InProgress", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-}
-```
-
-金鑰識別碼更新作業進行中
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Updating", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-正在刪除叢集 <--當您刪除已連結工作區的叢集時，會以非同步方式為每個工作區執行取消連結作業，而作業可能需要一段時間。
-當您刪除沒有連結工作區的叢集時，這是不相關的。在此情況下，會立即刪除叢集。
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Deleting", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-作業完成
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Succeeded", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-作業失敗
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Failed", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-    "error" : { 
-        "code": "error-code",  
-        "message": "error-message" 
-    }
-}
-```
+`status`In 回應 contains 可以是下列其中之一： ' InProgress '、' 更新 '、' 刪除 '、' Succeeded '、' Failed '，包括錯誤碼。
 
 ### <a name="allowing-subscription"></a>允許訂用帳戶
 
@@ -476,7 +419,7 @@ Content-type: application/json
   - 叢集 (預設) -- 計費會歸類到裝載叢集資源的訂用帳戶
   - 工作區 -- 計費會按比例歸類到裝載工作區的訂用帳戶
   
-  遵循 [更新](#update-cluster-with-key-identifier-details) 叢集，並提供新的 billingType 值。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 *billingType* ：
+  遵循 [更新](#update-cluster-with-key-identifier-details) 叢集，並提供新的 billingType 值。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 *billingType*：
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -511,7 +454,7 @@ Content-type: application/json
 
   - **檢查工作區連結狀態**
   
-  在工作區上執行取得作業，並觀察 [ *clusterResourceId* ] 屬性是否存在於 [ *功能* ] 下的 [回應] 中。 連結的工作區會有 *clusterResourceId* 屬性。
+  在工作區上執行取得作業，並觀察 [ *clusterResourceId* ] 屬性是否存在於 [ *功能*] 下的 [回應] 中。 連結的工作區會有 *clusterResourceId* 屬性。
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
@@ -593,9 +536,9 @@ Content-type: application/json
 
 - 某些作業很長，可能需要一段時間才能完成，這些作業包括叢集建立、叢集金鑰更新和叢集刪除。 您可以透過兩種方式來檢查作業狀態：
   1. 使用 REST 時，請從回應中複製 Azure-AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
-  2. 將 GET 要求傳送至叢集或工作區，並觀察回應。 例如，未連結的工作區不會有 [ *功能* ] 下的 *clusterResourceId* 。
+  2. 將 GET 要求傳送至叢集或工作區，並觀察回應。 例如，未連結的工作區不會有 [*功能*] 下的 *clusterResourceId* 。
 
-- 如需客戶管理的金鑰相關支援和說明，請連絡 Microsoft 連絡人。
+- 如果區域中有雙重加密，則會自動為從2020年10月建立的叢集設定[雙重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以建立叢集，但已停用雙重加密。 建立叢集之後，即無法啟用或停用。 若要在區域中不支援雙重加密時建立叢集，請新增 `"properties": {"isDoubleEncryptionEnabled": false}` REST 要求主體。
 
 - 錯誤訊息
   

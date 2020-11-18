@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677508"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873313"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>使用 Microsoft Graph 安全性和 Azure Logic Apps 整合安全性作業，改善威脅防護功能
 
@@ -30,9 +30,9 @@ ms.locfileid: "92677508"
 
 您的邏輯應用程式工作流程可使用從 Microsoft Graph 安全性連接器取得回應的動作，並讓該輸出提供給工作流程中的其他動作使用。 您也可以讓您工作流程中的其他動作使用來自 Microsoft Graph 安全性連接器動作的輸出。 例如，如果您透過 Microsoft Graph 安全性連接器取得高嚴重性警示，您可以使用 Outlook 連接器將那些警示以電子郵件訊息傳送。 
 
-若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](/graph/security-concept-overview)。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Microsoft Flow 或 PowerApps，請參閱 [何謂 Flow？](https://flow.microsoft.com/) 或 [什麼是 PowerApps？](https://powerapps.microsoft.com/)
+若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](/graph/security-concept-overview)。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Power Automate 或 PowerApps，請參閱 [什麼是 Power Automate？](https://flow.microsoft.com/) 或 [什麼是 powerapps？](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
@@ -64,11 +64,11 @@ ms.locfileid: "92677508"
 
    -或-
 
-   針對現有的邏輯應用程式，請在您要新增 Microsoft Graph 安全性動作的最後一個步驟底下，選取 [ **新增步驟** ]。
+   針對現有的邏輯應用程式，請在您要新增 Microsoft Graph 安全性動作的最後一個步驟底下，選取 [ **新增步驟**]。
 
    -或-
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取出現的加號 (+) ，然後選取 [ **新增動作** ]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取出現的加號 (+) ，然後選取 [ **新增動作**]。
 
 1. 在搜尋方塊中，輸入「Microsoft Graph 安全性」作為篩選條件。 從 [動作] 清單中，選取您想要的動作。
 
@@ -94,7 +94,7 @@ ms.locfileid: "92677508"
    | 屬性 | 屬性 (JSON) | 必要 | 類型 | 說明 |
    |----------|-----------------|----------|------|-------------|
    | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p><p>- 月：1-16 個月 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
-   | **頻率** | `frequency` | 是 | String | 重複的時間單位： **秒** 、 **分鐘** 、 **小時** 、 **天** 、 **週** 或 **月** |
+   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週** 或 **月** |
    | **時區** | `timeZone` | 否 | String | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
    | **開始時間** | `startTime` | 否 | String | 以下列格式提供開始日期和時間： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要在2017年9月18日下午2:00，則請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來的時間最多為49年，且必須遵循 [ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) （ [utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)），但不含 [utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||

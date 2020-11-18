@@ -3,12 +3,12 @@ title: 概念-私用雲端和叢集
 description: 深入瞭解 Azure VMware 解決方案軟體定義的資料中心和 vSphere 叢集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337316"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874010"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解決方案私用雲端和叢集概念
 
@@ -59,7 +59,7 @@ Azure VMware 解決方案私人雲端叢集中所使用 VMware 軟體的目前�
 
 針對私人雲端中的任何新叢集，軟體版本會符合目前正在執行的專案。 針對訂用帳戶中的任何新私人雲端，會安裝軟體堆疊的最新版本。
 
-您可以在「 [升級概念](concepts-upgrades.md) 」一文所述的 Azure VMware 解決方案平臺軟體中找到一般升級原則和程式。
+您可以針對 [私人雲端更新和升級](concepts-upgrades.md)中所述的 Azure VMware 解決方案平臺軟體，找到一般升級原則和流程。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>主機維護和生命週期管理
 

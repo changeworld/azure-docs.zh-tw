@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695096"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874707"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -45,7 +45,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>是否可將 vSphere Vm 從內部部署環境遷移至 Azure VMware 解決方案私人雲端？
 
-可以。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
+是。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>內部部署環境中是否需要特定版本的 vSphere？
 
@@ -196,7 +196,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 
 #### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware 解決方案可以使用 Azure 虛擬 WAN 裝載的 ExpressRoute 閘道嗎？
-可以。
+是。
 
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>在內部部署與 Azure VMware 解決方案之間，透過 ExpressRoute 全球各地的 Azure 虛擬 WAN 來建立傳輸連線能力嗎？
 Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN ExpressRoute 閘道之間提供可轉移的路由。 使用 ExpressRoute Global 觸及可允許內部部署與 Azure VMware 解決方案之間的連線，但會透過 Microsoft 的全球網路（而不是虛擬 WAN 中樞）進行連線。
@@ -237,7 +237,7 @@ Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN Ex
 
 Microsoft 提供對 Azure VMware 解決方案的支援。 您可以提交 [支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 
 
-針對 CSP 管理的訂用帳戶，解決方案提供者會提供第一層級的支援，其方式與 CSP 為其他 Azure 服務提供的方式相同。
+針對受 CSP 管理的訂用帳戶，解決方案提供者會提供第一層支援，與 CSP 針對其他 Azure 服務的方式相同。
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>我需要哪些帳戶才能建立 Azure VMware 解決方案私人雲端？
 
@@ -253,12 +253,12 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>如何? 要求增加 Azure VMware 解決方案的主機配額嗎？
 
-針對 CSP 管理的訂用帳戶，客戶必須向合作夥伴執行要求，且合作夥伴小組會與 Microsoft 合作，以增加訂用帳戶的配額。 如需詳細資訊，請參閱 [如何啟用 Azure VMware 解決方案資源文章](enable-azure-vmware-solution.md) 以取得詳細資料。 
+針對 CSP 管理的訂用帳戶，客戶必須將要求提交給合作夥伴。 夥伴小組接著會與 Microsoft 合作，以增加訂用帳戶的配額。 如需詳細資料，請參閱 [如何啟用 Azure VMware 解決方案資源文章](enable-azure-vmware-solution.md) 。 
 
-若是 EA 訂閱，客戶必須遵循此程式。
+針對 EA 訂閱，請使用下列程式。 首先，您需要：
 
-* 您將需要 [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md) 的 Microsoft。
-* Azure 訂閱需要 Azure 帳戶。
+* [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md)與 Microsoft 一起使用。
+* Azure 訂用帳戶中的 Azure 帳戶。
 
 建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
 
@@ -298,11 +298,15 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
-Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
 
 #### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
 
-No. Currently Azure VMware Solution does not offer multi-tenancy.
+No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+
+#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+
+Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
 
 
 ## Customer communication

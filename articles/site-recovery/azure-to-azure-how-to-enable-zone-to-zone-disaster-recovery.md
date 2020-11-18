@@ -5,14 +5,14 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a7d29d8487c6be6915ae4171b3759f0980f5448
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007786"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874350"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>啟用可用性區域之間的 Azure VM 嚴重損壞修復
 
@@ -69,11 +69,11 @@ Site Recovery 服務會在規劃和未規劃的中斷期間，讓您的商務應
 
 |功能  | 支援聲明  |
 |---------|---------|
-|傳統 VM   |     不支援    |
+|傳統 VM   |     不受支援    |
 |ARM Vm    |    支援    |
 |Azure 磁碟加密 v1 (雙重傳遞，Azure Active Directory (Azure AD) # A3     |     支援   |
 |Azure 磁碟加密 v2 (單一傳遞，但不 Azure AD)     |    支援    |
-|非受控磁碟    |    不支援    |
+|非受控磁碟    |    不受支援    |
 |受控磁碟    |    支援    |
 |客戶管理的金鑰    |    支援    |
 |鄰近位置群組    |    支援    |

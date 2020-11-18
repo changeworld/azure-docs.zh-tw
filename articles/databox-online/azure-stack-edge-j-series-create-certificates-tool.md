@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891093"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874469"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge Pro 的憑證 
 
@@ -37,12 +37,12 @@ ms.locfileid: "90891093"
 - VPN 憑證
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要為 Azure Stack Edge Pro 裝置部署建立 Csr，請確定： 
 
 - 您有執行 Windows 10 或 Windows Server 2016 或更新版本的用戶端。 
-- 您已從這個系統上 [的 PowerShell 資源庫](https://aka.ms/AzsReadinessChecker) 下載 Microsoft Azure Stack Hub 1.2002.1133.85 檢查工具。 您可能需要搜尋此套件。 只有此版本的工具可以建立 Azure Stack Edge Pro 裝置的憑證。
+- 您已從這個系統上 [的 PowerShell 資源庫](https://aka.ms/AzsReadinessChecker) 下載 Microsoft Azure Stack Hub 就緒檢查工具。
 - 您有下列憑證資訊：
   - 裝置名稱
   - 節點序號
@@ -56,7 +56,7 @@ ms.locfileid: "90891093"
 2. 安裝 Azure Stack Hub 的就緒檢查工具。 在 PowerShell 提示字元中，輸入： 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
     若要確認已安裝的版本，請輸入：  

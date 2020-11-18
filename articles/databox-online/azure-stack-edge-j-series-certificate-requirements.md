@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41bd030ea73ac68bfac5fbfbd03ae14cf7980f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891387"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874231"
 ---
 # <a name="certificate-requirements"></a>憑證需求
 
@@ -30,12 +30,13 @@ ms.locfileid: "90891387"
 * 憑證的 [ *發行至：* ] 欄位不得與其 [ *簽發者：* ] 欄位相同，除了根 CA 憑證之外。
 
 
-
 ## <a name="certificate-algorithms"></a>憑證演算法
 
 憑證演算法必須有下列需求：
 
 * 憑證必須使用 RSA 金鑰演算法。
+
+* 僅支援使用 Microsoft RSA/Schannel 密碼編譯提供者的 RSA 憑證。
 
 * 憑證簽章演算法不能是 SHA1。
 
@@ -74,13 +75,15 @@ Azure Stack Edge Pro 裝置上安裝的 PFX 憑證應符合下列需求：
 
 * 憑證的 PFX 加密應該是 3DES。 這是從 Windows 10 用戶端或 Windows Server 2016 憑證存放區匯出時使用的預設加密。 如需與3DES 相關的詳細資訊，請參閱 [三重 DES](https://en.wikipedia.org/wiki/Triple_DES)。
 
-* 憑證 PFX 檔案的 [*金鑰使用*方法] 欄位中必須有有效的*數位簽章*和*KeyEncipherment*值。
+* 憑證 PFX 檔案的 [*金鑰使用* 方法] 欄位中必須有有效的 *數位簽章* 和 *KeyEncipherment* 值。
 
-* 憑證 PFX 檔案的 [*增強金鑰使用*方法] 欄位中必須有 [*伺服器驗證 (1.3.6.1.5.5.7.3.1) *和*用戶端驗證 (1.3.6.1.5.5.7.3.2) *的值。
+* 憑證 PFX 檔案的 [*增強金鑰使用* 方法] 欄位中必須有 [*伺服器驗證 (1.3.6.1.5.5.7.3.1)* 和 *用戶端驗證 (1.3.6.1.5.5.7.3.2)* 的值。
 
 * 如果您使用 Azure Stack 準備就緒檢查工具，則在部署時，所有憑證 PFX 檔案的密碼都必須相同。 如需詳細資訊，請參閱 [使用 Azure Stack Hub 就緒檢查工具來建立 Azure Stack Edge Pro 的憑證](azure-stack-edge-j-series-create-certificates-tool.md)。
 
 * 憑證 PFX 的密碼必須是複雜密碼。 請記下此密碼，因為它是用來作為部署參數。
+
+* 使用 RSA 憑證搭配 Microsoft RSA/Schannel 密碼編譯提供者。
 
 如需詳細資訊，請參閱 [匯出具有私密金鑰的 PFX 憑證](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)。
 

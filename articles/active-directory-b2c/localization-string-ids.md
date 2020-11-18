@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840658"
+ms.locfileid: "94873364"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -64,7 +64,7 @@ ms.locfileid: "94840658"
 
 下列範例示範在註冊或登入頁面中使用某些使用者介面元素的方式：
 
-![註冊或登入頁面 UX 元素](./media/localization-string-ids/localization-susi-2.png)
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="顯示註冊或登入頁面 U X 元素的螢幕擷取畫面。":::
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>註冊或登入身分識別提供者
 

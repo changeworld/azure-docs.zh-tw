@@ -3,12 +3,12 @@ title: 部署流量管理員以平衡 Azure VMware 解決方案 (AVS) 工作負�
 description: 瞭解如何將流量管理員與 Azure VMware Solution (AVS) 整合，以平衡不同區域中多個端點之間的應用程式工作負載。
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593113"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874273"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>部署流量管理員以平衡 Azure VMware 解決方案 (AVS) 工作負載
 
@@ -30,9 +30,9 @@ Azure 流量管理員是以 DNS 為基礎的流量負載平衡器，可讓您以
 
 在兩個 AVS 私用雲端區域、美國西部和西歐以及美國東部的內部部署伺服器之間的虛擬網路連線，會使用 ExpressRoute 閘道。   
 
-![流量管理員與 Azure VMware 解決方案整合的架構圖表](media/traffic-manager/traffic-manager-topology.png)
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="流量管理員與 Azure VMware 解決方案整合的架構圖表" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 三部虛擬機器設定為在不同 AVS 區域中執行的 Microsoft IIS 伺服器：美國西部、西歐和內部部署。 
 
@@ -75,7 +75,7 @@ Azure 流量管理員是以 DNS 為基礎的流量負載平衡器，可讓您以
 
 1. 選取 **區段** 以查看已設定的區段。 在此情況下，我們看到 Contoso segment1 連接到 Contoso-T01 閘道，這是第1層彈性的路由器。
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="顯示 NSX-T 管理員中區段設定檔的螢幕擷取畫面。":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="顯示 NSX-T 管理員中區段設定檔的螢幕擷取畫面。" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
 2. 選取 **第1層閘道** ，以查看具有連結區段數目的第1層閘道清單。 選取連結至 Contoso-T01 的區段。 隨即開啟一個視窗，顯示在第1層路由器上設定的邏輯介面。 這可做為連接到區段的後端集區成員虛擬機器的閘道。
 
@@ -83,27 +83,27 @@ Azure 流量管理員是以 DNS 為基礎的流量負載平衡器，可讓您以
 
 3. 在 VM vSphere 用戶端中，選取虛擬機器以查看其詳細資料。 請注意，其 IP 位址符合我們在上一節的步驟3中看到的內容：172.29.1.10。
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="顯示 VSphere 用戶端中 VM 詳細資料的螢幕擷取畫面。":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="顯示 VSphere 用戶端中 VM 詳細資料的螢幕擷取畫面。" lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
 
 4. 選取虛擬機器，然後按一下 [ **動作] > [編輯設定** ]，以確認連接到 NSX-T 區段。
 
 ## <a name="create-your-traffic-manager-profile"></a>建立您的流量管理員設定檔
 
-1. 登入 [Azure 入口網站](https://rc.portal.azure.com/#home)。 在 [ **Azure 服務 > 網路** ] 下，選取 [ **流量管理員設定檔** ]。
+1. 登入 [Azure 入口網站](https://rc.portal.azure.com/#home)。 在 [ **Azure 服務 > 網路**] 下，選取 [ **流量管理員設定檔**]。
 
 2. 選取 [ **+ 新增** ] 以建立新的流量管理員設定檔。
  
-3. 提供設定檔名稱，路由方法 (我們將在此案例中使用加權;請參閱 [流量管理員路由方法](../traffic-manager/traffic-manager-routing-methods.md)) 、訂用帳戶和資源群組，然後選取 [ **建立** ]。
+3. 提供設定檔名稱，路由方法 (我們將在此案例中使用加權;請參閱 [流量管理員路由方法](../traffic-manager/traffic-manager-routing-methods.md)) 、訂用帳戶和資源群組，然後選取 [ **建立**]。
 
 ## <a name="add-external-endpoints-into-the-traffic-manager-profile"></a>將外部端點新增至流量管理員設定檔
 
-1. 從搜尋結果窗格中選取流量管理員設定檔，選取 [ **端點** ]，然後按一下 [ **+ 新增** ]。
+1. 從搜尋結果窗格中選取流量管理員設定檔，選取 [ **端點** ]，然後按一下 [ **+ 新增**]。
 
-2. 輸入必要的詳細資料：類型、名稱、完整功能變數名稱 (FQDN) 或 IP，以及在此案例中 (權數，我們會將權數1指派給每個端點) 。 選取 [新增]  。 這會建立外部端點。 監視器狀態必須在 **線上** 。 重複相同的步驟，以建立兩個外部端點，一個位於不同的區域，另一個在內部部署。 建立之後，所有三個都會顯示在流量管理員設定檔中，而所有三個的狀態都應該是 **線上** 。
+2. 輸入必要的詳細資料：類型、名稱、完整功能變數名稱 (FQDN) 或 IP，以及在此案例中 (權數，我們會將權數1指派給每個端點) 。 選取 [新增]  。 這會建立外部端點。 監視器狀態必須在 **線上**。 重複相同的步驟，以建立兩個外部端點，一個位於不同的區域，另一個在內部部署。 建立之後，所有三個都會顯示在流量管理員設定檔中，而所有三個的狀態都應該是 **線上**。
 
-3. 選取 [概觀]。 在 [ **DNS 名稱** ] 底下複製 URL。
+3. 選取 [概觀]。 在 [ **DNS 名稱**] 底下複製 URL。
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="顯示流量管理員端點總覽的螢幕擷取畫面，其中已反白顯示 DNS 名稱。"::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="顯示流量管理員端點總覽的螢幕擷取畫面，其中已反白顯示 DNS 名稱。" lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
 4. 將 DNS 名稱 URL 貼到瀏覽器中。 下列螢幕擷取畫面顯示導向西歐區域的流量。
 

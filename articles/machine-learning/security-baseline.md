@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2468bde9dd969ad604f96835a3dc0bfad06c1cd2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f2498dbb3a555db262c591c9badacbe0e4e2548
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844654"
+ms.locfileid: "94874656"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -529,6 +529,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 **指導** 方針： Azure Machine Learning 支援使用 Azure Active Directory (Azure AD) 來授權 Machine Learning 資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (RBAC) 將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
 
 - [管理對 Azure Machine Learning 工作區的存取](how-to-assign-roles.md)
+- [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -911,6 +912,8 @@ Azure Machine Learning 完全支援用於追蹤工作的 Git 存放庫;您可以
 - [如何設定 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [共用映像資源庫概觀](../virtual-machines/windows/shared-image-galleries.md)
+
+- [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)
 
 **Azure 資訊安全中心監視**：不適用
 

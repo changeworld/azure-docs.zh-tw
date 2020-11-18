@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 04d8a77cd051823559aba42d5dfc1418e6343ecc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 5e3473a9afefe73fe7b07d3efda1f53675264fc8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397377"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874622"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何使用新的應用程式閘道 (AGIC) 安裝應用程式閘道輸入控制器
 
@@ -40,7 +40,7 @@ ms.locfileid: "93397377"
 
 遵循下列步驟來建立 Azure Active Directory (AAD) [服務主體物件](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 請記錄 `appId` 、 `password` 和值， `objectId` 這些會在下列步驟中使用。
 
-1. 建立 AD 服務主體 ([閱讀有關 RBAC) 的詳細資訊](../role-based-access-control/overview.md) ：
+1. 建立 AD 服務主體 ([閱讀有關 AZURE RBAC) 的詳細資訊](../role-based-access-control/overview.md) ：
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -66,7 +66,7 @@ ms.locfileid: "93397377"
     }
     EOF
     ```
-    若要部署已啟用 **RBAC** 的叢集，請將 `aksEnableRBAC` 欄位設定為 `true`
+    若要部署已啟用 **KUBERNETES RBAC** 的叢集，請將 `aksEnableRBAC` 欄位設定為 `true`
 
 ## <a name="deploy-components"></a>部署元件
 此步驟會將下列元件新增至您的訂用帳戶：
@@ -131,13 +131,13 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 若要將 AAD Pod 身分識別安裝到您的叢集：
 
-   - *已啟用 RBAC* AKS 叢集
+   - *KUBERNETES RBAC 已啟用* AKS 叢集
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - *已停用 RBAC* AKS 叢集
+   - *KUBERNETES RBAC 已停用* AKS 叢集
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -148,7 +148,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 1. 安裝 [Helm](../aks/kubernetes-helm.md) ，並執行下列步驟以新增 `application-gateway-kubernetes-ingress` Helm 套件：
 
-    - *已啟用 RBAC* AKS 叢集
+    - *KUBERNETES RBAC 已啟用* AKS 叢集
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - *已停用 RBAC* AKS 叢集
+    - *KUBERNETES RBAC 已停用* AKS 叢集
 
         ```bash
         helm init
@@ -228,7 +228,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c2679be2ca1db9017cbc37219402fa4e1c0666a5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130029"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874418"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商業 marketplace 中的 SaaS 履行 Api 第2版
 
@@ -28,7 +28,7 @@ ms.locfileid: "93130029"
 
 ![Marketplace 中 SaaS 訂用帳戶的生命週期](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>已購買但尚未啟用 ( *PendingFulfillmentStart* ) 
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>已購買但尚未啟用 (*PendingFulfillmentStart*) 
 
 在終端客戶 (或 CSP) 在 marketplace 中購買 SaaS 供應專案後，發行者應會收到購買通知，以便在發行者端為終端客戶建立及設定新的 SaaS 帳戶。
 
@@ -82,11 +82,14 @@ ms.locfileid: "93130029"
 
 ##### <a name="update-initiated-from-the-marketplace"></a>從 marketplace 起始的更新
 
-在此流程中，客戶會從 M365 系統管理中心變更訂用帳戶方案或基座數量。  
+在此流程中，客戶會從 Azure 入口網站或 M365 系統管理中心變更訂用帳戶方案或基座數量。  
 
 1. 一旦輸入更新後，Microsoft 會呼叫發行者的 webhook URL，在合作夥伴中心的 [連線 **webhook** ] 欄位中設定，並提供適當的 *動作* 和其他相關參數值。  
 1. 發行者端應該對 SaaS 服務進行必要的變更，並在變更完成時，藉由呼叫作業 [API 的更新狀態](#update-the-status-of-an-operation)來通知 Microsoft。
 1. 如果修補程式是以「失敗」狀態傳送，則不會在 Microsoft 端完成更新程式。  SaaS 訂用帳戶將會保留現有的方案和基座數量。
+
+> [!NOTE]
+> 發行者應該叫用修補程式，以在收到 webhook 通知之後，于 *10 秒的時間範圍內*，以失敗/成功回應 [更新作業 API 的狀態](#update-the-status-of-an-operation)。 如果未在10秒內收到作業狀態的修補程式，則會自動將變更計畫 *修補為成功*。 
 
 Marketplace 起始之更新案例的 API 呼叫順序如下所示。
 
@@ -108,7 +111,7 @@ Marketplace 起始之更新案例的 API 呼叫順序如下所示。
 
 #### <a name="suspended-suspended"></a>擱置的 (已 *暫* 止) 
 
-此狀態表示尚未收到客戶的 SaaS 服務付款。 Microsoft 將會在 SaaS 訂用帳戶狀態中通知發行者此項變更。 通知是透過呼叫 webhook，並將 *action* 參數設定為 [已 *暫停* ] 來完成。
+此狀態表示尚未收到客戶的 SaaS 服務付款。 Microsoft 將會在 SaaS 訂用帳戶狀態中通知發行者此項變更。 通知是透過呼叫 webhook，並將 *action* 參數設定為 [已 *暫停*] 來完成。
 
 「發行者」不一定會在「發行者」端變更 SaaS 服務。 我們建議發行者將此資訊提供給已被擱置的客戶使用，並限制或封鎖客戶對 SaaS 服務的存取。  永遠不會收到付款的機率。
 
@@ -135,7 +138,7 @@ Microsoft 會為客戶提供30天的寬限期，然後再自動取消訂用帳�
 
 只有已暫止的訂閱可以恢復。  當 SaaS 訂用帳戶恢復時，其狀態會維持在暫停狀態。  這項作業完成後，訂用帳戶的狀態將會變成作用中狀態。
 
-#### <a name="renewed-subscribed"></a> ( *訂閱* ) 更新
+#### <a name="renewed-subscribed"></a> (*訂閱*) 更新
 
 訂用帳戶期限 (在一個月或一年) 之後，Microsoft 會自動更新 SaaS 訂用帳戶。  所有 SaaS 訂閱的自動續約設定預設值都是 *true* 。 使用中的 SaaS 訂用帳戶將繼續以定期更新。 當訂用帳戶更新時，Microsoft 不會通知發行者。 客戶可以透過 M365 系統管理員入口網站或 Azure 入口網站，關閉 SaaS 訂用帳戶的自動續約。  在此情況下，SaaS 訂用帳戶將會在目前的帳單期限結束時自動取消。  客戶也可以在任何時間點取消 SaaS 訂用帳戶。
 
@@ -311,7 +314,7 @@ TLS 1.2 版將會在最基本版本的 HTTPS 通訊之後強制執行。 請務�
 
 此 API 會傳回編頁結果。 頁面大小為100。
 
-##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>獲取`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 查詢參數：
 
@@ -788,9 +791,9 @@ TLS 1.2 版將會在最基本版本的 HTTPS 通訊之後強制執行。 請務�
 
 #### <a name="get-operation-status"></a>取得作業狀態
 
-讓發行者追蹤指定之非同步作業的狀態：  **取消訂閱** 、 **ChangePlan** 或 **ChangeQuantity** 。
+讓發行者追蹤指定之非同步作業的狀態：  **取消訂閱**、 **ChangePlan** 或 **ChangeQuantity**。
 
-`operationId`此 API 呼叫的可以從作業 **-位置** 、取得暫止的作業 API 呼叫，或 `<id>` 在 webhook 呼叫中收到的參數值的值中取出。
+`operationId`此 API 呼叫的可以從作業 **-位置**、取得暫止的作業 API 呼叫，或 `<id>` 在 webhook 呼叫中收到的參數值的值中取出。
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>獲取 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -962,7 +965,7 @@ Response body:
 
 您可以根據供應專案發佈的位置，從 Azure 入口網站或 Microsoft AppSource 的網站觸發購買流程。
 
-*變更計畫* 、 *變更數量* 和 *取消訂閱* 動作都會從發行者端進行測試。  從 Microsoft 端開始 *，您* 可以從 Azure 入口網站和系統管理中心 (入口網站中的 Microsoft AppSource 購買) 進行管理。  您只能從系統管理中心觸發 *變更數量和方案* 。
+*變更計畫*、 *變更數量* 和 *取消訂閱* 動作都會從發行者端進行測試。  從 Microsoft 端開始 *，您* 可以從 Azure 入口網站和系統管理中心 (入口網站中的 Microsoft AppSource 購買) 進行管理。  您只能從系統管理中心觸發 *變更數量和方案*。
 
 ## <a name="get-support"></a>取得支援
 

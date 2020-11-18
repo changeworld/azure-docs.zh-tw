@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568347"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874248"
 ---
 # <a name="troubleshooting-certificate-errors"></a>針對憑證錯誤進行疑難排解
 
@@ -46,6 +46,7 @@ ms.locfileid: "91568347"
 | CertificateManagement_MissingServerOid | 具有主體名稱的憑證沒有 {0} 伺服器驗證 OID。 檢查您的憑證屬性，並在需要時帶入新的憑證。|
 | CertificateManagement_NameMismatch | 憑證類型不符。 預期的範圍： {0} ，找到 {1} 。 上傳適當的憑證。|
 | CertificateManagement_NoPrivateKeyPresent | 具有主體名稱的憑證 {0} 沒有私密金鑰存在。 上傳具有私密金鑰的 .pfx 憑證。|
+| CertificateManagement_NoRSACryptoPrivateKey | 無法存取具有主體名稱的憑證私密金鑰 {0} 。 請確定您使用的是支援的憑證。 僅支援 Microsoft RSA/Schannel 密碼編譯提供者。 |
 | CertificateManagement_NotSelfSignedCertificate | 具有主體名稱的憑證 {0} 不是自我簽署的。 根憑證應該自我簽署 |
 | CertificateManagement_NotSupportedOnVirtualAppliance | 虛擬裝置不支援這項操作。 此錯誤表示只有在策略性雲端設備中執行的資料箱閘道，才會進行簽署。 透過 Windows PowerShell 管理裝置時，會發生此錯誤。|
 | CertificateManagement_SelfSignedCertificate | 具有主體名稱的憑證 {0} 是自我簽署的。 上傳已正確簽署的憑證。|
@@ -57,6 +58,8 @@ ms.locfileid: "91568347"
 | CertificateImportFailure | {0}未在節點上匯入具有指紋的憑證 {1} 。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
 | CertificateApplyFailure | 具有指紋的憑證 {0} 未套用於節點 {1} 。 如果問題持續發生，請連絡 Microsoft 支援服務。|
 | NodeNotReachable | 無法驗證的憑證 {0} 。 檢查系統硬體和軟體健康情況。|
+| 取得錯誤碼 | 無法存取此憑證的私密金鑰。 請確定您使用的是支援的憑證。 僅支援 Microsoft RSA/Schannel 密碼編譯提供者。 |
+
 
 ## <a name="next-steps"></a>後續步驟
 

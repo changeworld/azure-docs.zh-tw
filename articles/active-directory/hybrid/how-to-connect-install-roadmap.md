@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662147"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873262"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安裝藍圖
 
@@ -29,7 +29,7 @@ ms.locfileid: "89662147"
 
 您可以在 [Microsoft 下載中心](https://go.microsoft.com/fwlink/?LinkId=615771)下載 Azure AD Connect。
 
-| 解決方法 | 狀況 |
+| 解決方法 | 案例 |
 | --- | --- |
 | 開始之前 - [硬體和必要條件](how-to-connect-install-prerequisites.md) |<li>開始安裝 Azure AD Connect 之前所應完成的步驟。</li> |
 | [快速設定](how-to-connect-install-express.md) |<li>如果您有單一樹系 AD，則這是建議使用的選項。</li> <li>使用密碼同步處理以相同的密碼進行使用者登入。</li> |
@@ -143,12 +143,12 @@ ADFS 可以設定為支援 [多個網域](how-to-connect-install-multiple-domain
 * 確定您符合 Azure AD Connect Health 的[需求](how-to-connect-health-agent-install.md#requirements)。
 * 開始使用適用於 AD FS 的 Azure AD Connect Health
     * [下載適用於 AD FS 的 Azure AD Connect Health 代理程式](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [請參閱安裝指示](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
+    * [請參閱安裝指示](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)。
 * 開始使用適用於同步處理的 Azure AD Connect Health
     * [下載並安裝最新版的 Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771)。 適用於同步處理的健康狀態代理程式將會隨著 Azure AD Connect 安裝 (1.0.9125.0 或更高版本) 一起安裝。
 * 開始使用適用於 AD DS 的 Azure AD Connect Health
     * [下載 AD DS 的 Azure AD Connect Health 代理程式](https://go.microsoft.com/fwlink/?LinkID=820540)。
-    * [請參閱安裝指示](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
+    * [請參閱安裝指示](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds)。
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health 入口網站
@@ -159,14 +159,14 @@ Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情�
     
 ![Azure AD Connect Health 入口網站](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **快速入門**︰當您選取此選項時，[快速入門]**** 刀鋒視窗隨即開啟。 您可以選取 [取得工具]**** 下載 Azure AD Connect Health 代理程式。 您也可以存取文件，並提供意見反應。
-* **Azure Active Directory Connect (同步處理)**：此選項會顯示 Azure AD Connect Health 目前正在監視的 Azure AD Connect 伺服器。 [同步錯誤]**** 項目會依照類別顯示第一個上線同步處理服務的基本同步錯誤。 當您選取 [同步處理服務]**** 時，開啟的刀鋒視窗會顯示 Azure AD Connect 伺服器的相關資訊。 如需深入了解這些功能，請參閱[使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)。
+* **快速入門**︰當您選取此選項時，[快速入門] 刀鋒視窗隨即開啟。 您可以選取 [取得工具] 下載 Azure AD Connect Health 代理程式。 您也可以存取文件，並提供意見反應。
+* **Azure Active Directory Connect (同步處理)**：此選項會顯示 Azure AD Connect Health 目前正在監視的 Azure AD Connect 伺服器。 [同步錯誤] 項目會依照類別顯示第一個上線同步處理服務的基本同步錯誤。 當您選取 [同步處理服務] 時，開啟的刀鋒視窗會顯示 Azure AD Connect 伺服器的相關資訊。 如需深入了解這些功能，請參閱[使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)。
 * **Active Directory Federation Services**：此選項會顯示 Azure AD Connect Health 目前正在監視的所有 AD FS 服務。 當您選取執行個體時，開啟的刀鋒視窗會顯示該服務執行個體的相關資訊。 這項資訊包括概觀、屬性、警示、監視和使用情況分析。 如需深入了解這些功能，請參閱[搭配 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。
 * **Active Directory Domain Services**：此選項會顯示 Azure AD Connect Health 目前正在監視的所有 AD DS 樹系。 當您選取樹系時，開啟的刀鋒視窗會顯示該樹系的相關資訊。 這項資訊包括基本資訊概觀、網域控制站儀表板、複寫狀態儀表板、警示和監視。 如需深入了解這些功能，請參閱[在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
 * **設定**︰本節包含開啟或關閉下列功能的選項︰
 
    - Azure AD Connect Health 代理程式 **自動更新** 為最新版本：當有新版本可用時，Azure AD Connect Health 代理程式會自動更新。 這個選項預設為啟用。
-   - 由 Microsoft 的 Azure AD 目錄完整性**存取資料**，僅供疑難排解之用：如果啟用此選項，microsoft 可以存取使用者所查看的相同資料。 此資訊有助於進行疑難排解和提供必要的協助。 預設會停用此選項
+   - 由 Microsoft 的 Azure AD 目錄完整性 **存取資料**，僅供疑難排解之用：如果啟用此選項，microsoft 可以存取使用者所查看的相同資料。 此資訊有助於進行疑難排解和提供必要的協助。 預設會停用此選項
 * **角色型存取控制 (IAM)** 是用來管理角色基底中 Connect Health 資料存取權的區段。 
 
 ## <a name="next-steps"></a>後續步驟

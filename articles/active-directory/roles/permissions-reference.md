@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396510"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874673"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -233,7 +233,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 >- [Onedrive 系統管理中心](https://admin.onedrive.com/) -onedrive 系統管理中心不支援全域讀者角色
 >- [M365 系統管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全域讀取者無法讀取客戶加密箱要求。 在 M365 系統管理中心的左窗格中，您找不到 [支援] 底下的 [客戶加密箱要求] 索引標籤。
 >- [Office 安全性與合規性中心](https://sip.protection.office.com/homepage) - 全域讀取者無法讀取 SCC 稽核記錄、進行內容搜尋，或查看安全分數。
->- [Teams 系統管理中心](https://admin.teams.microsoft.com) - 全域讀取者無法讀取 **Teams 生命週期** 、 **分析與報告** 、 **IP 電話裝置管理** 和 **應用程式目錄** 。
+>- [Teams 系統管理中心](https://admin.teams.microsoft.com) - 全域讀取者無法讀取 **Teams 生命週期**、**分析與報告**、**IP 電話裝置管理** 和 **應用程式目錄**。
 >- [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) 不支援全域讀取者角色。
 >- [Azure 資訊保護](/azure/information-protection/what-is-information-protection) - 只有進行[集中報告](/azure/information-protection/reports-aip)，以及當 Azure AD 組織不在[統一標籤平台](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上時，才支援全域讀取者。
 >
@@ -311,7 +311,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 請勿使用。 此角色會從 Commerce 自動指派，不適用於、也不支援任何其他用途。 請參閱下面的詳細資料。
 
-新式商務使用者角色會提供特定使用者存取 Microsoft 365 系統管理中心的許可權，並查看 **首頁** 、 **帳單** 和 **支援** 的左側導覽專案。 這些區域中可用的內容是由指派給使用者的[商務專用角色](../../cost-management-billing/manage/understand-mca-roles.md)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
+新式商務使用者角色會提供特定使用者存取 Microsoft 365 系統管理中心的許可權，並查看 **首頁**、 **帳單** 和 **支援** 的左側導覽專案。 這些區域中可用的內容是由指派給使用者的[商務專用角色](../../cost-management-billing/manage/understand-mca-roles.md)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
 
 具有新式商務使用者角色的使用者通常會擁有其他 Microsoft 購買系統的系統管理許可權，但沒有用來存取系統管理中心的全域管理員或計費管理員角色。 
 
@@ -1513,7 +1513,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 ### <a name="power-platform-administrator-permissions"></a>Power Platform 管理員權限
 
-可建立及管理 Microsoft Dynamics 365、PowerApps 及 Microsoft Flow 的所有層面。 
+可以建立及管理 Microsoft Dynamics 365、PowerApps 和 Power Automate 的所有層面。
 
 > [!NOTE]
 > 此角色具有 Azure Active Directory 以外的其他權限。 如需詳細資訊，請參閱前述角色說明。
@@ -1524,7 +1524,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立及管理目錄層級服務的 Azure 支援票證。 |
 | microsoft.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的所有層面。 |
-| microsoft.flow/allEntities/allTasks | 管理 Microsoft Flow 的所有層面。 |
+| microsoft.flow/allEntities/allTasks | 管理 Power Automate 的所有層面。 |
 | microsoft.powerApps/allEntities/allTasks | 管理 PowerApps 的所有層面。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Microsoft 365 服務健康狀態。 |
