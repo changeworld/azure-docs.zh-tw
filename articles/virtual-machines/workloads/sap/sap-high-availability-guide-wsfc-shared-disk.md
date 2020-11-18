@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3dc49e3e2d8492882507918a59edb0b9da41fcf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f9bfcaa1299f4aacbc11110308ba14093b09f7d5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167248"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684299"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
 
@@ -32,7 +32,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 開始本文中的工作之前，請檢閱下列文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -46,7 +46,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 Azure 雲端平台不提供設定虛擬 IP 位址的選項，例如浮動 IP 位址。 您需要一個替代解決方案來設定虛擬 IP，以便連線到雲端的叢集資源。 
 
-Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」**。 使用內部負載平衡器，用戶端可透過叢集虛擬 IP 位址連線叢集。 
+Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」。 使用內部負載平衡器，用戶端可透過叢集虛擬 IP 位址連線叢集。 
 
 在包含叢集節點的資源群組中部署內部負載平衡器。 接著，使用內部負載平衡器的探查連接埠來設定所有必要的連接埠轉送規則。 用戶端可以透過虛擬主機名稱進行連線。 DNS 伺服器會解析叢集 IP 位址，而內部負載平衡器則會處理對作用中叢集節點的轉送。
 
@@ -78,7 +78,7 @@ SAP ASCS/SCS 執行個體包含下列元件：
 
 _SAP ASCS/SCS 實例的進程、檔案結構和全域主機 sapmnt 檔案共用_
 
-在高可用性設定中，您要將 SAP ASCS/SCS 執行個體進行叢集處理。 我們會使用*叢集共用磁碟* (在我們的範例為 S 磁碟機) 來放置 SAP ASCS/SCS 和 SAP 全域主機檔案。
+在高可用性設定中，您要將 SAP ASCS/SCS 執行個體進行叢集處理。 我們會使用 *叢集共用磁碟* (在我們的範例為 S 磁碟機) 來放置 SAP ASCS/SCS 和 SAP 全域主機檔案。
 
 ![圖 3：含共用磁碟的 SAP ASCS/SCS HA 架構][sap-ha-guide-figure-8002]
 
@@ -122,7 +122,7 @@ _具有共用磁片的 SAP ASCS/SCS HA 架構_
 
 在 Azure 中的 windows 容錯移轉叢集中，有兩個共用磁片選項：
 
-- [Azure 共用磁片](../../windows/disks-shared.md) -功能，可讓您同時將 Azure 受控磁片連結到多個 vm。 
+- [Azure 共用磁片](../../disks-shared.md) -功能，可讓您同時將 Azure 受控磁片連結到多個 vm。 
 - 使用協力廠商軟體 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) 來建立鏡像儲存體，以模擬叢集共用儲存體。 
 
 為共用磁片選取技術時，請記住下列考慮：
@@ -131,7 +131,7 @@ _具有共用磁片的 SAP ASCS/SCS HA 架構_
 - 可讓您同時將 Azure 受控磁片連結到多個 Vm，而不需要額外的軟體來維護和操作 
 - 您將在一個儲存體叢集上使用單一 Azure 共用磁片。 這會影響您的 SAP 解決方案的可靠性。
 - 目前唯一支援的部署是在可用性設定組中使用 Azure shared Premium 磁片。 區域部署不支援 Azure 共用磁片。     
-- 請務必使用 [進階 SSD 範圍](../../windows/disks-shared.md#disk-sizes) 中所指定的最小磁片大小來布建 Azure Premium 磁片，以同時連接到所需的 vm 數目 (通常是2個用於 SAP ASCS Windows 容錯移轉叢集 ) 。 
+- 請務必使用 [進階 SSD 範圍](../../disks-shared.md#disk-sizes) 中所指定的最小磁片大小來布建 Azure Premium 磁片，以同時連接到所需的 vm 數目 (通常是2個用於 SAP ASCS Windows 容錯移轉叢集 ) 。 
 - SAP 工作負載不支援 Azure 共用 Ultra 磁片，因為它不支援可用性設定組或區域部署中的部署。  
  
 **SIOS**
@@ -142,19 +142,19 @@ _具有共用磁片的 SAP ASCS/SCS HA 架構_
 
 ### <a name="shared-disk-using-azure-shared-disk"></a>使用 Azure 共用磁片的共用磁片
 
-Microsoft 提供 [Azure 共用磁片](../../windows/disks-shared.md)，可用來利用共用磁片選項來執行 SAP ASCS/SCS 高可用性。
+Microsoft 提供 [Azure 共用磁片](../../disks-shared.md)，可用來利用共用磁片選項來執行 SAP ASCS/SCS 高可用性。
 
 #### <a name="prerequisites-and-limitations"></a>必要條件和限制
 
 目前，您可以使用 Azure 進階 SSD 磁片作為 SAP ASCS/SCS 實例的 Azure 共用磁片。 目前已有下列限制：
 
 -  [Azure Ultra 磁片](../../disks-types.md#ultra-disk) 不支援作為 SAP 工作負載的 Azure 共用磁片。 目前無法在可用性設定組中使用 Azure Ultra 磁片來放置 Azure Vm
--  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](../../windows/disks-shared.md)。 可用性區域部署中並不支援此功能。 
+-  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](../../disks-shared.md)。 可用性區域部署中並不支援此功能。 
 -  Azure 共用磁片值 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) 決定可使用共用磁片的叢集節點數目。 通常針對 SAP ASCS/SCS 實例，您將在 Windows 容錯移轉叢集中設定兩個節點，因此的值 `maxShares` 必須設定為 [2]。
 -  所有 SAP ASCS/SCS 叢集 Vm 都必須部署在相同的 [Azure 鄰近放置群組](../../windows/proximity-placement-groups.md)中。   
    雖然您可以在沒有 PPG 的情況下，使用 Azure 共用磁片在可用性設定組中部署 Windows 叢集 Vm，PPG 將可確保接近 Azure 共用磁片和叢集 Vm 的實體鄰近程度，因此可在 Vm 和儲存層之間達到較低的延遲。    
 
-如需 Azure 共用磁片限制的進一步詳細資料，請仔細閱讀 Azure 共用磁片檔的 [限制](../../linux/disks-shared.md#limitations) 一節。
+如需 Azure 共用磁片限制的進一步詳細資料，請仔細閱讀 Azure 共用磁片檔的 [限制](../../disks-shared.md#limitations) 一節。
 
 > [!IMPORTANT]
 > 使用 Azure 共用磁片部署 SAP ASCS/SCS Windows 容錯移轉叢集時，請注意，您的部署將會使用一個儲存體叢集中的單一共用磁片來運作。 您的 SAP ASCS/SCS 實例會受到影響，以防儲存體叢集發生問題，也就是部署 Azure 共用磁片的位置。    

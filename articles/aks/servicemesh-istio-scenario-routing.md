@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670937"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684027"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>透過 Istio 在 Azure Kubernetes Service (AKS) 中使用智慧型路由和 Canary 版本
 
@@ -33,7 +33,7 @@ ms.locfileid: "92670937"
 > [!NOTE]
 > 此案例已針對 Istio `1.3.2` 版進行測試。
 
-此文章中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes `1.13` 和更新版本，且已啟用 RBAC)，並已建立與叢集的 `kubectl` 連線。 您也必須在叢集中安裝 Istio。
+本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 KUBERNETES RBAC) 並已建立與叢集的連線 `kubectl` 。 您也必須在叢集中安裝 Istio。
 
 如果您需要前述任何項目的協助，請參閱 [AKS 快速入門][aks-quickstart]與[在 AKS 中安裝 Istio][istio-install] 指導方針。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure SignalR Service 的疑難排解指南
-description: Learn
+description: 瞭解如何針對常見的問題進行疑難排解
 author: YanJin
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 5b8360134ace3852fb3c7fbe458ca2572f45b624
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663484"
+ms.locfileid: "94684112"
 ---
-# <a name="troubleshooting-guide"></a>疑難排解指南
+# <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service 常見問題的疑難排解指南
 
 本指南旨在根據客戶在過去幾年所符合和解決的常見問題，提供實用的疑難排解指南。
 
@@ -347,3 +347,9 @@ Azure SignalR Service 會定期發行新的版本，而且有時會修補或升�
 
     * [ASP.NET JavaScript 用戶端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
+## <a name="next-steps"></a>後續步驟
+
+在本指南中，您已瞭解如何處理一般問題。 您也可以深入瞭解一般的疑難排解方法。 
+
+> [!div class="nextstepaction"]
+> [如何針對連線能力和訊息傳遞問題進行疑難排解](./signalr-howto-troubleshoot-method.md)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660350"
+ms.locfileid: "94684197"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的公用 Standard Load Balancer) 
 
@@ -225,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-此範例會為您的叢集中的每個節點提供4000配置的輸出埠，而7個 Ip 則會有 *每個節點4000個埠 * 100 node = 400k 的埠總數 < = 448k total 埠 = 7 個 ip * 每個 IP 的64k 埠*。 這可讓您安全地擴充至100節點，並擁有預設的升級作業。 針對升級和其他作業所需的其他節點配置足夠的埠是很重要的。 AKS 預設為一個要升級的緩衝區節點，在此範例中，這需要在任何給定的時間點都有4000的可用埠。 如果使用 [maxSurge 值](upgrade-cluster.md#customize-node-surge-upgrade-preview)，請將每個節點的輸出埠乘以 maxSurge 值。
+此範例會為您的叢集中的每個節點提供4000配置的輸出埠，而7個 Ip 則會有 *每個節點4000個埠 * 100 node = 400k 的埠總數 < = 448k total 埠 = 7 個 ip * 每個 IP 的64k 埠*。 這可讓您安全地擴充至100節點，並擁有預設的升級作業。 針對升級和其他作業所需的其他節點配置足夠的埠是很重要的。 AKS 預設為一個要升級的緩衝區節點，在此範例中，這需要在任何給定的時間點都有4000的可用埠。 如果使用 [maxSurge 值](upgrade-cluster.md#customize-node-surge-upgrade)，請將每個節點的輸出埠乘以 maxSurge 值。
 
 若要安全地前往100節點，您必須新增更多 Ip。
 

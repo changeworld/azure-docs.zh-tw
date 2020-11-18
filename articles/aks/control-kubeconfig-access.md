@@ -4,18 +4,18 @@ description: 了解如何控制叢集管理員和叢集使用者對 Kubernetes �
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 371628b02ebecee23697e996ee0d484688167875
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009285"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684809"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 角色型存取控制來定義 Azure Kubernetes Service (AKS 中 Kubernetes 設定檔的存取權) 
 
 您可以使用 `kubectl` 工具與 Kubernetes 叢集互動。 Azure CLI 可讓您使用 `kubectl` 輕鬆地存取連線到 AKS 叢集所需的認證和組態資訊。 若要限制誰可以取得該 Kubernetes 設定 (*kubeconfig*) 資訊，以及限制他們所擁有的許可權，您可以使用 azure 角色型存取控制 (azure RBAC) 。
 
-本文將說明如何指派 RBAC 角色，以限制誰可以取得 AKS 叢集的組態資訊。
+本文說明如何指派 Azure 角色，以限制誰可以取得 AKS 叢集的設定資訊。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -25,20 +25,20 @@ ms.locfileid: "88009285"
 
 ## <a name="available-cluster-roles-permissions"></a>可用的叢集角色權限
 
-當您使用 `kubectl` 工具與 AKS 叢集互動時，組態檔會用來定義叢集連線資訊。 此設定檔通常會儲存在 *~/.kube/config*中。您可以在此 *kubeconfig* 檔中定義多個叢集。 您可以使用 [kubectl config use-context][kubectl-config-use-context] 命令在叢集間進行切換。
+當您使用 `kubectl` 工具與 AKS 叢集互動時，組態檔會用來定義叢集連線資訊。 此設定檔通常會儲存在 *~/.kube/config* 中。您可以在此 *kubeconfig* 檔中定義多個叢集。 您可以使用 [kubectl config use-context][kubectl-config-use-context] 命令在叢集間進行切換。
 
-[az aks get-credentials][az-aks-get-credentials] 命令可讓您取得 AKS 叢集的存取認證，並將其合併至 kubeconfig** 檔案。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來控制這些認證的存取權。 這些 Azure 角色可讓您定義誰可以取得 *kubeconfig* 檔案，以及它們在叢集中的許可權。
+[az aks get-credentials][az-aks-get-credentials] 命令可讓您取得 AKS 叢集的存取認證，並將其合併至 kubeconfig 檔案。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來控制這些認證的存取權。 這些 Azure 角色可讓您定義誰可以取得 *kubeconfig* 檔案，以及它們在叢集中的許可權。
 
 兩個內建角色如下：
 
 * **Azure Kubernetes Service 叢集管理員角色**  
-  * 允許存取 Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action** API 呼叫。 此 API 呼叫會[列出叢集管理員認證][api-cluster-admin]。
-  * 下載 *clusterAdmin* 角色的 kubeconfig**。
+  * 允許存取 Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action API 呼叫。 此 API 呼叫會[列出叢集管理員認證][api-cluster-admin]。
+  * 下載 *clusterAdmin* 角色的 kubeconfig。
 * **Azure Kubernetes Service 叢集使用者角色**
-  * 允許存取 Microsoft.ContainerService/managedClusters/listClusterUserCredential/action** API 呼叫。 此 API 呼叫會[列出叢集使用者認證][api-cluster-user]。
-  * 下載 clusterUser** 角色的 kubeconfig**。
+  * 允許存取 Microsoft.ContainerService/managedClusters/listClusterUserCredential/action API 呼叫。 此 API 呼叫會[列出叢集使用者認證][api-cluster-user]。
+  * 下載 clusterUser 角色的 kubeconfig。
 
-這些 RBAC 角色可以套用至 Azure Active Directory (AD) 使用者或群組。
+這些 Azure 角色可套用至 Azure Active Directory (AD) 使用者或群組。
 
 > [!NOTE]
 > 在使用 Azure AD 的叢集上，具有 *clusterUser* 角色的使用者會有空白 *kubeconfig* 檔案，以提示登入。 登入之後，使用者會根據其 Azure AD 使用者或群組設定來存取。 具有 *clusterAdmin* 角色的使用者具有系統管理員存取權。
@@ -49,7 +49,7 @@ ms.locfileid: "88009285"
 
 若要指派其中一個可用角色，您需要取得 AKS 叢集的資源識別碼，以及 Azure AD 使用者帳戶或群組的識別碼。 下列命令範例：
 
-* 針對*myResourceGroup*資源群組中名為*myAKSCluster*的叢集，使用[az aks SHOW][az-aks-show]命令取得叢集資源識別碼。 如有需要，請提供您自己的叢集和資源群組名稱。
+* 針對 *myResourceGroup* 資源群組中名為 *myAKSCluster* 的叢集，使用 [az aks SHOW][az-aks-show]命令取得叢集資源識別碼。 如有需要，請提供您自己的叢集和資源群組名稱。
 * 使用 [az account show][az-account-show] 和 [az ad user show][az-ad-user-show] 命令來取得您的使用者識別碼。
 * 最後，使用 [az role assign create][az-role-assignment-create] 命令指派角色。
 
@@ -71,9 +71,9 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 如果您想要將許可權指派給 Azure AD 群組，請 `--assignee` 使用 *群組* 的物件識別碼（而非 *使用者*）來更新上述範例中所示的參數。 若要取得群組的物件識別碼，請使用 [az ad group show][az-ad-group-show] 命令。 下列範例會取得名為 *appdev*之 Azure AD 群組的物件識別碼： `az ad group show --group appdev --query objectId -o tsv`
+> 如果您想要將許可權指派給 Azure AD 群組，請 `--assignee` 使用 *群組* 的物件識別碼（而非 *使用者*）來更新上述範例中所示的參數。 若要取得群組的物件識別碼，請使用 [az ad group show][az-ad-group-show] 命令。 下列範例會取得名為 *appdev* 之 Azure AD 群組的物件識別碼： `az ad group show --group appdev --query objectId -o tsv`
 
-如有需要，您可以將上述指派變更為「叢集使用者角色」**。
+如有需要，您可以將上述指派變更為「叢集使用者角色」。
 
 下列範例輸出顯示已成功建立角色指派：
 
@@ -92,13 +92,13 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>取得及驗證組態資訊
 
-透過已指派的 RBAC 角色，使用 [az aks get-credentials][az-aks-get-credentials] 命令來取得您 AKS 叢集的 kubeconfig** 定義。 下列範例會取得 --admin** 認證，如果使用者已獲派「叢集管理員角色」**，則認證可正常運作：
+在指派 Azure 角色的情況下，使用 [az aks 取得認證][az-aks-get-credentials] 命令來取得 aks 叢集的 *kubeconfig* 定義。 下列範例會取得 --admin 認證，如果使用者已獲派「叢集管理員角色」，則認證可正常運作：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-接著，您可以使用 [kubectl config view][kubectl-config-view] 命令，確認叢集的「內容」** 會顯示已套用管理員組態資訊：
+接著，您可以使用 [kubectl config view][kubectl-config-view] 命令，確認叢集的「內容」會顯示已套用管理員組態資訊：
 
 ```
 $ kubectl config view

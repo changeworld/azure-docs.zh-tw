@@ -2,13 +2,13 @@
 title: 概念-監視和修復 Azure VMware 解決方案私人雲端
 description: 瞭解 Azure VMware 解決方案如何監視和修復 Azure VMware 解決方案私人雲端上的 VMware ESXi 伺服器。
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: bee08304cd14f2aeec6995203638b5a37d9a861c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 11a3c53bff7ce7b67b677977eddb9829f336672d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342317"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684690"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>監視及修復 Azure VMware 解決方案私人雲端
 
@@ -42,4 +42,10 @@ Azure VMware 解決方案會監視主機上失敗狀況的下列各項：
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解 [Azure VMware 解決方案私用雲端升級](concepts-upgrades.md)。  
+以下是您可能想要深入瞭解的一些主題：
+
+- [Azure VMware 解決方案私用雲端升級](concepts-upgrades.md)
+- [Azure VMware 解決方案 Vm 的生命週期管理](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [使用 Azure 資訊安全中心整合來保護您的 Azure VMware 解決方案 Vm](azure-security-integration.md)
+- [使用 Azure 備份伺服器備份 Azure VMware 解決方案 Vm](backup-azure-vmware-solution-virtual-machines.md)
+- [使用 Azure VMware 解決方案完成虛擬機器的嚴重損壞修復](disaster-recovery-for-virtual-machines.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5ad53c0040009e9ed1f28072540b46ce7b0b9a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86244120"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683914"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中安裝和使用 Consul
 
@@ -33,7 +33,7 @@ ms.locfileid: "86244120"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。 確定您的叢集在 Linux 節點集區中至少有3個節點。
+本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 KUBERNETES RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。 確定您的叢集在 Linux 節點集區中至少有3個節點。
 
 您將需要 [Helm][helm] ，才能遵循這些指示並安裝 Consul。 建議您在叢集中正確安裝並設定最新的穩定版本。 如果您在安裝 Helm 時需要協助，請參閱 [AKS Helm 安裝指南][helm-install]。 所有 Consul pod 也都必須排程在 Linux 節點上執行。
 
@@ -156,7 +156,7 @@ helm delete --purge consul
 kubectl delete namespace consul
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要探索更多 Consul 的安裝和設定選項，請參閱下列官方 Consul 文章：
 

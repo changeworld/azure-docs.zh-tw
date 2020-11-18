@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973695"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684503"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>關於 Azure IaaS VM 磁碟及受控和非受控進階磁碟的常見問題集
 
@@ -171,7 +171,7 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 
 **哪些區域支援共用磁碟？**
 
-如需區域資訊，請參閱我們的 [概念性文章](./linux/disks-shared.md)。
+如需區域資訊，請參閱我們的 [概念性文章](disks-shared.md)。
 
 **可使用共用磁碟作為 OS 磁碟嗎？**
 
@@ -179,7 +179,7 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 
 **哪些磁碟大小支援共用磁碟？**
 
-如需支援的大小，請參閱我們的 [概念性文章](./linux/disks-shared.md)。
+如需支援的大小，請參閱我們的 [概念性文章](disks-shared.md)。
 
 **如果我有現有的磁片，可以在其上啟用共用磁片嗎？**
 
@@ -473,15 +473,15 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **我可以將多個虛擬網路連結到相同的磁片存取物件嗎？**
 
-不可以。 目前，您只能將磁片存取物件連結至一個虛擬網路。
+否。 目前，您只能將磁片存取物件連結至一個虛擬網路。
 
 **我可以將虛擬網路連結至另一個訂用帳戶中的磁片存取物件嗎？**
 
-不可以。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
+否。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
 
 **我可以將虛擬網路連結至另一個訂用帳戶中的磁片存取物件嗎？**
 
-不可以。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
+否。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
 
 **使用相同磁片存取物件的匯出或匯入次數可能會同時發生？**
 
@@ -493,7 +493,7 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **我可以使用磁片/快照集的 SAS URI，將不在相同子網中的 VM 基礎 VHD 下載為與該磁片沒有關聯之私人端點的子網嗎？**
 
-不可以。
+否。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果這裡沒有解答我的問題該怎麼辦？
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 260631e36d113b6ccd190f66ce61caa7ba1b187b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900887"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683126"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes Service (AKS)  (preview 中使用 Azure 磁片容器存放裝置介面 (CSI) 驅動程式) 
 Azure 磁片容器存放裝置介面 (CSI) 驅動程式是符合 [CSI 規格規範](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驅動程式，AZURE KUBERNETES SERVICE (AKS) 用來管理 Azure 磁片的生命週期。
@@ -275,7 +275,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## <a name="shared-disk"></a>共用磁片
 
-[Azure 共用磁片](../virtual-machines/windows/disks-shared.md) 是 azure 受控磁片的功能，可同時將 azure 磁片附加至代理程式節點。 例如，將受控磁片連結至多個代理程式節點可讓您將新的叢集應用程式部署至 Azure，或將其遷移至 Azure。
+[Azure 共用磁片](../virtual-machines/disks-shared.md) 是 azure 受控磁片的功能，可同時將 azure 磁片附加至代理程式節點。 例如，將受控磁片連結至多個代理程式節點可讓您將新的叢集應用程式部署至 Azure，或將其遷移至 Azure。
 
 > [!IMPORTANT] 
 > 目前， `volumeMode: Block` Azure 磁片 CSI 驅動程式只支援原始區塊裝置 () 。 應用程式應該在共用磁片上管理寫入、讀取、鎖定、快取、裝載和隔離的協調和控制，這會以原始區塊裝置的形式公開。

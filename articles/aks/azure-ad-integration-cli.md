@@ -6,18 +6,18 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4aa63493bb14db69821ac04db1d2c5a846de7dbe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612413"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682463"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI (舊版) 將 Azure Active Directory 與 Azure Kubernetes Service 整合
 
-Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您可以使用 Azure AD 驗證權杖來登入 AKS 叢集。 叢集操作員也可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 以角色為基礎的存取控制 (RBAC) 。
+Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您可以使用 Azure AD 驗證權杖來登入 AKS 叢集。 叢集操作員也可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制 (Kubernetes RBAC) 。
 
-本文說明如何建立必要的 Azure AD 元件，然後部署已啟用 Azure AD 的叢集，並在 AKS 叢集中建立基本的 RBAC 角色。
+本文說明如何建立必要的 Azure AD 元件，然後部署已啟用 Azure AD 的叢集，並在 AKS 叢集中建立基本 Kubernetes 角色。
 
 如需本文中使用的完整範例腳本，請參閱 [Azure CLI 範例-AKS 與 Azure AD 整合][complete-script]。
 
@@ -54,7 +54,7 @@ aksname="myakscluster"
 
 若要與 AKS 整合，您可以建立和使用 Azure AD 應用程式，作為身分識別要求的端點。 您需要的第一個 Azure AD 應用程式 Azure AD 使用者的群組成員資格。
 
-使用 [az ad app create][az-ad-app-create] 命令來建立伺服器應用程式元件，然後使用 [az ad app update][az-ad-app-update] 命令來更新群組成員資格宣告。 下列範例會使用 [[在您開始前](#before-you-begin)] 區段中定義的*aksname*變數，並建立變數。
+使用 [az ad app create][az-ad-app-create] 命令來建立伺服器應用程式元件，然後使用 [az ad app update][az-ad-app-update] 命令來更新群組成員資格宣告。 下列範例會使用 [[在您開始前](#before-you-begin)] 區段中定義的 *aksname* 變數，並建立變數。
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -164,9 +164,9 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 ```
 
-## <a name="create-rbac-binding"></a>建立 RBAC 繫結
+## <a name="create-kubernetes-rbac-binding"></a>建立 Kubernetes RBAC 系結
 
-必須先建立角色繫結或叢集角色繫結，Azure Active Directory 帳戶才能搭配 AKS 叢集使用。 「角色」** 會定義要授與的權限，而「繫結」** 會將角色套用至需要的使用者。 這些指派可以套用至指定的命名空間或在整個叢集中套用。 如需詳細資訊，請參閱[使用 RBAC 授權][rbac-authorization]。
+必須先建立角色繫結或叢集角色繫結，Azure Active Directory 帳戶才能搭配 AKS 叢集使用。 「角色」會定義要授與的權限，而「繫結」會將角色套用至需要的使用者。 這些指派可以套用至指定的命名空間或在整個叢集中套用。 如需詳細資訊，請參閱 [使用 KUBERNETES RBAC 授權][rbac-authorization]。
 
 使用 [az ad 登入-使用者顯示][az-ad-signed-in-user-show] 命令，取得目前登入使用者的使用者主體名稱 (UPN) 。 在下一個步驟中，此使用者帳戶已啟用 Azure AD 整合。
 
@@ -175,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> 如果您授與 RBAC 系結的使用者位於相同的 Azure AD 租使用者中，請根據 *userPrincipalName*指派許可權。 如果使用者位於不同的 Azure AD 租使用者中，請改為查詢並使用 *objectId* 屬性。
+> 如果您授與 Kubernetes RBAC 系結的使用者位於相同的 Azure AD 租使用者中，請根據 *userPrincipalName* 指派許可權。 如果使用者位於不同的 Azure AD 租使用者中，請改為查詢並使用 *objectId* 屬性。
 
 建立名為的 YAML 資訊清單 `basic-azure-ad-binding.yaml` ，並貼上下列內容。 在最後一行中，使用上一個命令中的 UPN 或物件識別碼輸出來取代 *userPrincipalName_or_objectId*  ：
 
@@ -247,11 +247,11 @@ error: You must be logged in to the server (Unauthorized)
 * 使用者不是 200 個以上的群組成員。
 * 在應用程式註冊中為伺服器定義的秘密符合使用設定的值 `--aad-server-app-secret`
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需包含本文中所示命令的完整腳本，請參閱 [AKS 範例存放庫中的 Azure AD 整合腳本][complete-script]。
 
-若要使用 Azure AD 的使用者和群組來控制對叢集資源的存取，請參閱 [在 AKS 中使用角色型存取控制和 Azure AD 身分識別來控制][azure-ad-rbac]對叢集資源的存取。
+若要使用 Azure AD 的使用者和群組來控制對叢集資源的存取，請參閱 [在 AKS 中使用 Kubernetes 角色型存取控制和 Azure AD][azure-ad-rbac]身分識別來控制對叢集資源的存取。
 
 如需有關如何保護 Kubernetes 叢集的詳細資訊，請參閱 [AKS) 的存取和識別選項 ][rbac-authorization]。
 
@@ -281,7 +281,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

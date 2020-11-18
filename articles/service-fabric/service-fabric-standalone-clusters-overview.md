@@ -3,12 +3,12 @@ title: 獨立 Service Fabric 叢集總覽
 description: Service Fabric 叢集會在 Windows Server 或 Linux 上執行，這表示您能夠在任何您可以執行 Windows Server 和 Linux 的環境中部署和裝載 Service Fabric 應用程式。
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841062"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683993"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 叢集獨立叢集的概觀
 
@@ -43,10 +43,10 @@ Windows 安全性也可以針對 Windows 獨立叢集啟用。 如果您有 Wind
 
 如需詳細資訊，請參閱[用戶端對節點安全性](service-fabric-cluster-security.md#client-to-node-security)
 
-### <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
+### <a name="service-fabric-role-based-access-control"></a>Service Fabric 以角色為基礎的存取控制
 Service Fabric 也支援存取控制來限制不同使用者群組對特定叢集作業的存取。 這樣有助於讓叢集更安全。 針對連線到叢集的用戶端，支援兩種存取控制類型：系統管理員角色和使用者角色。  
 
-如需詳細資訊，請參閱[角色型存取控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。
+如需詳細資訊，請參閱 [Service Fabric 角色型存取控制](service-fabric-cluster-security.md#service-fabric-role-based-access-control)。
 
 ## <a name="scaling"></a>調整大小
 

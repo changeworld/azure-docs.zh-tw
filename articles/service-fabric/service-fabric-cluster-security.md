@@ -4,12 +4,12 @@ description: 深入了解 Azure Service Fabric 叢集的安全性情節，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 642356f08a946cae5d2b2d395aaddd8e4dad27ed
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946190"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682786"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 叢集安全性案例
 
@@ -19,7 +19,7 @@ Azure Service Fabric 叢集是您擁有的資源。 保護叢集是您的責任�
 
 * 節點對節點安全性
 * 用戶端對節點安全性
-* 角色型存取控制 (RBAC)
+* Service Fabric 以角色為基礎的存取控制
 
 ## <a name="node-to-node-security"></a>節點對節點安全性
 
@@ -60,7 +60,7 @@ Service Fabric 會使用您建立叢集時，在節點類型組態中指定的 X
 
 建立叢集時，可在 Azure 入口網站中，使用 Resource Manager 範本或使用獨立 JSON 範本來設定用戶端對節點憑證安全性。 若要建立憑證，請指定管理員用戶端憑證或使用者用戶端憑證。 您指定的系統管理用戶端憑證和使用者用戶端憑證，應不同於您針對[節點對節點安全性](#node-to-node-security)指定的主要和次要憑證，以作為最佳做法。 叢集憑證與用戶端系統管理員憑證具有相同的許可權。 不過，它們只能由叢集使用，而不應由系統管理使用者使用，作為安全性最佳作法。
 
-用戶端如果是使用系統管理憑證來連接到叢集，就會擁有管理功能的完整存取權。 用戶端如果是使用唯讀使用者用戶端憑證來連接到叢集，則只會擁有管理功能的唯讀存取權。 這些憑證是用於我們在本文稍後所述的 RBAC。
+用戶端如果是使用系統管理憑證來連接到叢集，就會擁有管理功能的完整存取權。 用戶端如果是使用唯讀使用者用戶端憑證來連接到叢集，則只會擁有管理功能的唯讀存取權。 這些憑證會用於本文稍後所述的 Service Fabric RBAC。
 
 若要了解如何在適用於 Azure 的叢集中設定憑證安全性，請參閱[使用 Azure Resource Manager 範本來設定叢集](service-fabric-cluster-creation-via-arm.md)。
 
@@ -85,13 +85,13 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 對於獨立 Windows Server 叢集，如果您有 Windows Server 2012 R2 和 Windows Active Directory，建議您使用 Windows 安全性與群組受控服務帳戶。 否則，使用 Windows 安全性與 Windows 帳戶。
 
-## <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
+## <a name="service-fabric-role-based-access-control"></a>Service Fabric 以角色為基礎的存取控制
 
 您可以使用存取控制來限制存取不同使用者群組的特定叢集作業。 這樣有助於讓叢集更安全。 針對連線到叢集的用戶端，支援兩種存取控制類型：系統管理員角色和使用者角色。
 
 指派為系統管理員角色的使用者可以完整存取管理功能，包括讀取和寫入功能。 獲指派使用者角色的使用者預設只具有管理功能的讀取存取權 (例如查詢功能)。 它們也可以解析應用程式和服務。
 
-當您建立叢集時，請設定系統管理員和使用者用戶端角色。 為每種角色類型提供個別的身分識別 (例如，使用憑證或 Azure AD)，從而 指派角色。 如需有關預設存取控制設定及如何變更預設設定的詳細資訊，請參閱[適用於 Service Fabric 用戶端的角色型存取控制](service-fabric-cluster-security-roles.md)。
+當您建立叢集時，請設定系統管理員和使用者用戶端角色。 為每種角色類型提供個別的身分識別 (例如，使用憑證或 Azure AD)，從而 指派角色。 如需預設存取控制設定及如何變更預設設定的詳細資訊，請參閱 [Service Fabric Service Fabric 用戶端的角色型存取控制](service-fabric-cluster-security-roles.md)。
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 憑證和 Service Fabric
 
@@ -108,7 +108,7 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 需有這些憑證 (一個主要憑證和選擇性次要憑證) 以便保護叢集，並避免未經授權的存取。 這些憑證會提供叢集和伺服器驗證。
 
-叢集驗證會驗證叢集同盟的節點對節點通訊。 只有可使用此憑證提供其身分識別的節點可以加入叢集。 伺服器驗證會向管理用戶端驗證叢集管理端點，管理用戶端就能知道它正在交談的對象是真正的叢集，而非「中間人 (man in the middle)」。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 的 Service Fabric Explorer 提供 TLS。 當用戶端或節點驗證節點時，其中一項初始檢查是 [主體]**** 欄位中的一般名稱值。 此一般名稱或其中一個憑證主體別名 (SAN) 必須存在於允許的一般名稱清單中。
+叢集驗證會驗證叢集同盟的節點對節點通訊。 只有可使用此憑證提供其身分識別的節點可以加入叢集。 伺服器驗證會向管理用戶端驗證叢集管理端點，管理用戶端就能知道它正在交談的對象是真正的叢集，而非「中間人 (man in the middle)」。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 的 Service Fabric Explorer 提供 TLS。 當用戶端或節點驗證節點時，其中一項初始檢查是 [主體] 欄位中的一般名稱值。 此一般名稱或其中一個憑證主體別名 (SAN) 必須存在於允許的一般名稱清單中。
 
 憑證必須符合下列要求：
 
@@ -118,9 +118,9 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 需考量的其他事項：
 
-* [主體]**** 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是*一般名稱*) 的**CN** (;例如， **CN = www \. contoso.com**。
-* [主體]**** 欄位可以是空白。
-* 如果選擇性 [主體別名]**** 欄位已填入資料，此欄位就必須具有憑證的一般名稱，以及每個 SAN 的一個項目。 這些會以 **DNS 名稱** 值的形式輸入。 若要深入了解如何產生具有 SAN 的憑證，請參閱[如何將主體別名新增至安全 LDAP 憑證](https://support.microsoft.com/kb/931351)。
+* [主體] 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是 *一般名稱*) 的 **CN** (;例如， **CN = www \. contoso.com**。
+* [主體] 欄位可以是空白。
+* 如果選擇性 [主體別名] 欄位已填入資料，此欄位就必須具有憑證的一般名稱，以及每個 SAN 的一個項目。 這些會以 **DNS 名稱** 值的形式輸入。 若要深入了解如何產生具有 SAN 的憑證，請參閱[如何將主體別名新增至安全 LDAP 憑證](https://support.microsoft.com/kb/931351)。
 * 憑證的 [使用 **目的** ] 欄位值應該包含適當的值，例如 [ **伺服器驗證** ] 或 [ **用戶端驗證**]。
 
 ### <a name="application-certificates-optional"></a>應用程式憑證 (選用)
@@ -134,7 +134,7 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 ### <a name="client-authentication-certificates-optional"></a>用戶端驗證憑證 (選擇性)
 
-您可以針對管理員或使用者用戶端作業指定任意數目的其他憑證。 用戶端可以在需要相互驗證時使用這些憑證。 用戶端憑證通常不是由第三方 CA 所發行。 然而，目前使用者位置的個人存放區通常包含由根授權單位所放置的用戶端憑證。 憑證的**預定目的**值應是**用戶端驗證**。  
+您可以針對管理員或使用者用戶端作業指定任意數目的其他憑證。 用戶端可以在需要相互驗證時使用這些憑證。 用戶端憑證通常不是由第三方 CA 所發行。 然而，目前使用者位置的個人存放區通常包含由根授權單位所放置的用戶端憑證。 憑證的 **預定目的** 值應是 **用戶端驗證**。  
 
 根據預設，叢集憑證具有管理員用戶端權限。 這些額外的用戶端憑證不會安裝到叢集中，但會指定為允許存在叢集組態中。  不過，用戶端憑證必須安裝在用戶端機器上，以連線到叢集並執行任何作業。
 

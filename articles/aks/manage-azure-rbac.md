@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 管理 Kubernetes 中的 RBAC
+title: 從 Azure 管理 Kubernetes 中的 Azure RBAC
 titleSuffix: Azure Kubernetes Service
 description: 瞭解如何使用適用于 Kubernetes 授權的 Azure RBAC 搭配 Azure Kubernetes Service (AKS) 。
 services: container-service
@@ -7,23 +7,23 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346038"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684214"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用適用於 Kubernetes 的 Azure RBAC 授權 (預覽)
 
 現在您可以在 [Azure Active Directory (Azure AD) 和 AKS 之間運用整合式驗證](managed-aad.md)。 啟用時，這項整合可讓客戶使用 Azure AD 使用者、群組或服務主體作為 Kubernetes RBAC 的主旨，請參閱 [這裡](azure-ad-rbac.md)的詳細資訊。
-這項功能可讓您不必針對 Kubernetes 個別管理使用者身分識別和認證。 不過，您仍然必須個別設定及管理 Azure RBAC 和 Kubernetes RBAC。 如需有關 AKS 上的驗證、授權和 RBAC 的詳細資訊，請參閱 [這裡](concepts-identity.md)。
+這項功能可讓您不必針對 Kubernetes 個別管理使用者身分識別和認證。 不過，您仍然必須個別設定及管理 Azure RBAC 和 Kubernetes RBAC。 如需在 AKS 上使用 RBAC 進行驗證和授權的詳細資訊，請參閱 [這裡](concepts-identity.md)。
 
 本檔涵蓋新的方法，可讓您跨 Azure 資源、AKS 和 Kubernetes 資源進行統一的管理和存取控制。
 
 ## <a name="before-you-begin"></a>開始之前
 
-從 Azure 管理 Kubernetes 資源之 RBAC 的功能，可讓您選擇使用 Azure 或原生 Kubernetes 機制來管理叢集資源的 RBAC。 啟用時，Azure AD 主體會由 Azure RBAC 獨佔驗證，而一般 Kubernetes 使用者和服務帳戶則由 Kubernetes RBAC 獨佔驗證。 如需有關 AKS 上的驗證、授權和 RBAC 的詳細資訊，請參閱 [這裡](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
+從 Azure 管理 Kubernetes 資源之 RBAC 的功能，可讓您選擇使用 Azure 或原生 Kubernetes 機制來管理叢集資源的 RBAC。 啟用時，Azure AD 主體會由 Azure RBAC 獨佔驗證，而一般 Kubernetes 使用者和服務帳戶則由 Kubernetes RBAC 獨佔驗證。 如需在 AKS 上使用 RBAC 進行驗證和授權的詳細資訊，請參閱 [這裡](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -245,7 +245,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 ### <a name="clean-role-assignment"></a>清除角色指派
 
@@ -272,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請 [在這裡](concepts-identity.md)閱讀更多有關 AKS Authentication、授權和 RBAC 的資訊。
+- 請 [在這裡](concepts-identity.md)閱讀更多有關 AKS Authentication、Authorization、Kubernetes Rbac 和 Azure RBAC 的資訊。
 - [在此](../role-based-access-control/overview.md)閱讀更多有關 Azure RBAC 的資訊。
 - 深入瞭解您可以用來在 [此](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)為 Kubernetes 授權定義自訂 Azure 角色的所有動作。
 

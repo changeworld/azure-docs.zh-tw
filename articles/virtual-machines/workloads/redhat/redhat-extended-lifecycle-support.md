@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux 外延生命週期支援
+title: Red Hat Enterprise Linux 擴充生命週期支援
 description: 深入瞭解新增 Red Hat Enterprise 擴充生命週期支援新增至
 author: mathapli
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: e7c9f9b158d01204536712f8024ed098cd7a5037
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372867"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684350"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) 延伸生命週期支援
 本文提供 Red Hat Enterprise 映射的延伸生命週期支援相關資訊：
@@ -40,7 +40,7 @@ ms.locfileid: "94372867"
 
 #### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a> (ELS) 存放庫中新增擴充生命週期支援的程式，以繼續接收軟體維護 (bug 和安全性修正) 和 Red Hat Enterprise Linux 6 的支援？
 
-立即註冊 ELS 的端對端程式將在此提供， (2020 年11月15日) 的最新版本。
+即將註冊的 ELS 的端對端程式即將于) 2020 年11月30日 (最新版本推出。
 
 ## <a name="next-steps"></a>後續步驟
 

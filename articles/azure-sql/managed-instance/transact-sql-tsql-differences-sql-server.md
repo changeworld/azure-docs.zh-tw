@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649308"
+ms.locfileid: "94684913"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -521,7 +521,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 - 一般用途層上的最大檔案大小 `tempdb` 不可超過每個核心 24 GB。 `tempdb`商務關鍵層的最大大小受限於 SQL 受控執行個體儲存體大小。 `Tempdb` 一般用途層的記錄檔大小限制為 120 GB。 如果查詢的每個核心需要 24 GB 以上， `tempdb` 或產生超過 120 GB 的記錄資料，則可能會傳回錯誤。
 - `Tempdb` 一律會分割成12個資料檔案：1個主要，也稱為 master、資料檔案和11個非主要資料檔案。 無法變更檔案結構，也無法將新檔案加入至 `tempdb` 。 
 - 不支援[記憶體優化的 `tempdb` 中繼資料](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)，這是新的 SQL Server 2019 記憶體內部資料庫功能。
-- 在模型資料庫中建立的物件無法在 `tempdb` 重新開機或容錯移轉之後自動建立，因為不 `tempdb` 會從複寫的模型資料庫取得其初始物件清單。 
+- 在模型資料庫中建立的物件無法在 `tempdb` 重新開機或容錯移轉之後自動建立，因為不 `tempdb` 會從模型資料庫取得其初始物件清單。 您必須在 `tempdb` 每次重新開機或容錯移轉之後，手動建立物件。
 
 ### <a name="msdb"></a>MSDB
 

@@ -8,22 +8,18 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1efd4baf80c9ba30b1d1ea35390386bc4e7659d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747791"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683586"
 ---
 # <a name="enable-shared-disk"></a>啟用共用磁碟
 
 本文涵蓋如何啟用 Azure 受控磁片的共用磁片功能。 Azure 共用磁片是 Azure 受控磁片的新功能，可讓您將受控磁片連結到多部虛擬機器， (Vm) 同時進行。 將受控磁片連結至多個 Vm，可讓您將新的叢集應用程式部署至 Azure，或將其遷移至 Azure。 
 
-如果您要尋找已啟用共用磁片之受控磁片的概念資訊，請參閱：
-
-* 針對 Linux： [Azure 共用磁片](linux/disks-shared.md)
-
-* 針對 Windows： [Azure 共用磁片](windows/disks-shared.md)
+如果您要尋找已啟用共用磁片之受控磁片的概念資訊，請參閱 [Azure 共用磁片](disks-shared.md)。
 
 ## <a name="limitations"></a>限制
 

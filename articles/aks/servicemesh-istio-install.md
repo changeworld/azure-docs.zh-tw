@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/02/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 285fa34db3886cf405a3682438a27a17c75d81ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c42e9c31397e9313898d7029366bc8de169d368e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666689"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683823"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中安裝和使用 Istio
 
@@ -35,7 +35,7 @@ ms.locfileid: "91666689"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.16` ，並已啟用 RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
+本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.16` ，並已啟用 KUBERNETES RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
 
 請確定您已閱讀 [Istio 效能和擴充性](https://istio.io/docs/concepts/performance-and-scalability/) 檔，以瞭解在 AKS 叢集中執行 Istio 的其他資源需求。 核心和記憶體需求會根據您的特定工作負載而有所不同。 選擇適當的節點數目和 VM 大小，以滿足您的設定。
 

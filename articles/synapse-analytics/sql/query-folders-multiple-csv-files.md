@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340983"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684554"
 ---
 # <a name="query-folders-and-multiple-files"></a>查詢資料夾和多個檔案  
 
@@ -22,9 +22,9 @@ ms.locfileid: "93340983"
 
 無伺服器 SQL 集區支援使用萬用字元讀取多個檔案/資料夾，類似于 Windows OS 中使用的萬用字元。 不過，因為允許多個萬用字元，所以會有更大的彈性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-您的第一個步驟是 **建立資料庫** ，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+您的第一個步驟是 **建立資料庫**，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
 您將使用資料夾 *csv/計程車* 來遵循範例查詢。 它包含從2016年7月到6月2018的 NYC 計程車-黃色計程車行程記錄資料。 *Csv/計程車* 中的檔案會使用下列模式，以年和月命名： yellow_tripdata_ <year> - <month> .csv
 

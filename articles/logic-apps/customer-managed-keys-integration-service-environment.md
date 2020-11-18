@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318455"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682769"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料
 
@@ -25,7 +25,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 * 目前，客戶管理的 ISE 金鑰支援僅適用于下列 Azure 區域：美國西部2、美國東部和美國中南部
 
-* 您 *只能在建立 ISE 時*指定客戶管理的金鑰，而不能在之後指定。 您無法在 ISE 建立之後停用此金鑰。 目前不支援為 ISE 輪替客戶管理的金鑰。
+* 您 *只能在建立 ISE 時* 指定客戶管理的金鑰，而不能在之後指定。 您無法在 ISE 建立之後停用此金鑰。 目前不支援為 ISE 輪替客戶管理的金鑰。
 
 * 若要支援客戶管理的金鑰，您的 ISE 要求必須啟用其 [系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) 。 此身分識別可讓 ISE 驗證其他 Azure Active Directory (Azure AD) 租使用者中資源的存取權，如此您就不需要使用您的認證登入。
 
@@ -39,7 +39,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 * 已啟用虛 **刪除** 和 **未清除** 屬性的 Azure key vault
 
-  如需有關啟用這些屬性的詳細資訊，請參閱 [Azure Key Vault 虛刪除總覽](../key-vault/general/soft-delete-overview.md) 和 [使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)。 如果您不熟悉 Azure Key Vault，請瞭解如何使用 Azure 入口網站或使用 Azure PowerShell 命令[>new-azkeyvault](/powershell/module/az.keyvault/new-azkeyvault)[來建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md#create-a-vault)。
+  如需有關啟用這些屬性的詳細資訊，請參閱 [Azure Key Vault 虛刪除總覽](../key-vault/general/soft-delete-overview.md) 和 [使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)。 如果您不熟悉 [Azure Key Vault](../key-vault/general/overview.md)，請瞭解如何使用 [Azure 入口網站](../key-vault/general/quick-create-portal.md)、 [Azure CLI](../key-vault/general/quick-create-cli.md)或 [Azure PowerShell](../key-vault/general/quick-create-powershell.md)來建立金鑰保存庫。
 
 * 在您的金鑰保存庫中，使用這些屬性值建立的金鑰：
 
@@ -47,7 +47,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
   |----------|-------|
   | **索引鍵類型** | RSA |
   | **RSA 金鑰大小** | 2048 |
-  | **已啟用** | 是 |
+  | **Enabled** | 是 |
   |||
 
   ![建立客戶管理的加密金鑰](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -203,7 +203,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟您的 Azure 金鑰保存庫。
 
-1. 在 [金鑰保存庫] 功能表上，選取 [**存取**原則  >  **新增存取原則**]，例如：
+1. 在 [金鑰保存庫] 功能表上，選取 [**存取** 原則  >  **新增存取原則**]，例如：
 
    ![新增系統指派的受控識別的存取原則](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
@@ -219,7 +219,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
       ![選取 [金鑰管理] > [金鑰許可權]](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. 針對 [ **選取主體**]，選取 [ **未**選取]。 在 [ **主體** ] 窗格開啟之後，在 [搜尋] 方塊中尋找並選取您的 ISE。 當您完成時，請選擇 [**選取**  >  **新增**]。
+   1. 針對 [ **選取主體**]，選取 [ **未** 選取]。 在 [ **主體** ] 窗格開啟之後，在 [搜尋] 方塊中尋找並選取您的 ISE。 當您完成時，請選擇 [**選取**  >  **新增**]。
 
       ![選取您的 ISE 以作為主體](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

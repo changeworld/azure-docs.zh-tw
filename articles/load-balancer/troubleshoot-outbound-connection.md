@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628990"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684830"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> 針對輸出連接失敗進行疑難排解
 
@@ -63,7 +63,7 @@ ms.locfileid: "91628990"
 如果您擴增到下一個較大後端集區大小的層級，且必須將已配置的連接埠重新配置，則部分輸出連線可能會逾時。  如果您只使用部分 SNAT 連接埠，則相應放大到下一個較大後端集區大小並無意義。  每當您移至下一個後端集區層級時，會有一半的現有連接埠重新配置。  如果您不希望發生這種情形，則必須讓部署符合層大小。  或確保您的應用程式可以視需要偵測及重試。  TCP 存留可協助在 SNAT 連接埠因為重新配置而無法運作時進行偵測。
 
 ## <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>使用 Keepalive 來重設輸出閒置逾時
-連出連線有 4 分鐘的閒置逾時。 此逾時可透過[輸出規則](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)調整。 您也可以使用傳輸 (例如 TCP Keepalive) 或應用程式層 Keepalive 來重新整理閒置流程，然後視需要重設此閒置逾時。  
+連出連線有 4 分鐘的閒置逾時。 此逾時可透過[輸出規則](outbound-rules.md)調整。 您也可以使用傳輸 (例如 TCP Keepalive) 或應用程式層 Keepalive 來重新整理閒置流程，然後視需要重設此閒置逾時。  
 
 使用 TCP 存留時，在連線的一端啟用它們就已足夠。 例如，只在伺服器端啟用它們來重設流程的閒置計時器就已足夠，不需要在兩端都起始 TCP 存留。  應用程式層也有類似概念，包括資料庫用戶端-伺服器組態。  檢查伺服器端是否有應用程式特定 keepalive 的選項。
 

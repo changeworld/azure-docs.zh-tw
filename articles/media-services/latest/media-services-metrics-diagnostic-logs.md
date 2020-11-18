@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309066"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685166"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>使用 Azure 監視器監視媒體服務計量和診斷記錄
 
@@ -67,8 +67,8 @@ ms.locfileid: "93309066"
 |Requests|Requests|提供串流端點所服務的 HTTP 要求總數。|
 |輸出|輸出|每分鐘的輸出位元組總計（每個串流端點）。|
 |SuccessE2ELatency|成功端對端延遲|當傳送回應的最後一個位元組時，從串流端點收到要求時的持續時間。|
-|CPU 使用量| Premium 串流端點的 CPU 使用量。 標準串流端點無法使用此資料。 |
-|輸出頻寬 | 每秒位數的輸出頻寬。|
+|CPU 使用量| | Premium 串流端點的 CPU 使用量。 標準串流端點無法使用此資料。 |
+|輸出頻寬 | | 每秒位數的輸出頻寬。|
 
 ### <a name="metrics-are-useful"></a>計量很有用
 

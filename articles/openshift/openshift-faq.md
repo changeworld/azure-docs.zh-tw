@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816230"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683500"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常見問題
 
@@ -45,7 +45,7 @@ Azure Red Hat OpenShift 3.11 具有50個 pod 節點的限制和20個計算節點
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>叢集是否可以部署到多個可用性區域？
 
-是。 如果您的叢集部署至支援可用性區域的 Azure 區域，則會自動發生這種情況。 如需詳細資訊，請參閱[可用性區域](../availability-zones/az-overview.md#availability-zones)。
+可以。 如果您的叢集部署至支援可用性區域的 Azure 區域，則會自動發生這種情況。 如需詳細資訊，請參閱[可用性區域](../availability-zones/az-overview.md#availability-zones)。
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>控制平面節點是否會隨著 Azure Kubernetes Service (AKS) 而抽象化？
 
@@ -163,15 +163,15 @@ Azure Red Hat OpenShift 使用標準 Azure Load Balancer，且無法設定。
 
 ### <a name="can-an-admin-manage-users-and-quotas"></a>系統管理員可以管理使用者和配額嗎？
 
-是。 Azure Red Hat OpenShift 系統管理員除了存取所有使用者建立的專案之外，還可以管理使用者和配額。
+可以。 Azure Red Hat OpenShift 系統管理員除了存取所有使用者建立的專案之外，還可以管理使用者和配額。
 
 ### <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>我可以將叢集限制為只有特定 Azure AD 的使用者嗎？
 
-是。 您可以藉由設定 Azure AD 應用程式，來限制使用者可以登入叢集的 Azure AD。 如需詳細資訊，請參閱 [如何：將您的應用程式限制為一組使用者](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
+可以。 您可以藉由設定 Azure AD 應用程式，來限制使用者可以登入叢集的 Azure AD。 如需詳細資訊，請參閱 [如何：將您的應用程式限制為一組使用者](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
 
 ### <a name="can-i-restrict-users-from-creating-projects"></a>我可以限制使用者建立專案嗎？
 
-是。 以系統管理員身分登入您的叢集，然後執行此命令：
+可以。 以系統管理員身分登入您的叢集，然後執行此命令：
 
 ```
 oc adm policy \
@@ -186,13 +186,13 @@ oc adm policy \
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>IaaS) 中 (的 UNIX 許可權可用於 master/基礎結構/應用程式節點？
 
-針對4.x 叢集，節點存取可透過叢集管理員角色取得。 如需詳細資訊，請參閱 [RBAC 總覽](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
+針對4.x 叢集，節點存取可透過叢集管理員角色取得。 如需詳細資訊，請參閱 [KUBERNETES RBAC 總覽](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
 
 針對3.11 叢集，禁止存取節點。
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>我們有哪些 OCP 權利？ 叢集-系統管理員？ 專案-系統管理員？
 
-針對4.x 叢集，可以使用叢集管理員角色。 如需詳細資訊，請參閱 [RBAC 總覽](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
+針對4.x 叢集，可以使用叢集管理員角色。 如需詳細資訊，請參閱 [KUBERNETES RBAC 總覽](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
 
 針對3.11 叢集，請參閱叢集 [管理總覽](https://docs.openshift.com/aro/admin_guide/index.html) 以取得詳細資料。
 

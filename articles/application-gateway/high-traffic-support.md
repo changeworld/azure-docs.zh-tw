@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 3854e7f3c19f1724a2df1508c9fa519809e07ba9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658667"
+ms.locfileid: "94683334"
 ---
 # <a name="application-gateway-high-traffic-support"></a>應用程式閘道高流量支援
 
@@ -30,6 +30,8 @@ ms.locfileid: "94658667"
 ### <a name="set-your-instance-count-based-on-your-peak-cpu-usage"></a>根據您的尖峰 CPU 使用量設定您的實例計數
 如果您使用 v1 SKU 閘道，您可以將應用程式閘道設定為最多32實例以進行調整。 在過去一個月內檢查應用程式閘道的 CPU 使用率是否有任何超過80% 的尖峰，可作為您要監視的度量。 建議您根據尖峰使用量設定實例計數，並使用10% 到20% 的額外緩衝區來處理任何流量尖峰。
 
+:::image type="content" source="./media/application-gateway-covid-guidelines/v1-cpu-utilization-inline.png" alt-text="V1 CPU 使用率計量" lightbox="./media/application-gateway-covid-guidelines/v1-cpu-utilization-exp.png":::
+
 ### <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>使用 v2 SKU 而非 v1，以取得其自動調整功能和效能優點
 v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量增加而擴大。 與 v1 相比，其還具有其他顯著的效能優勢，例如提升 5 倍的 TLS 卸載效能、更快的部署和更新時間，區域備援等等。 如需詳細資訊，請參閱我們的 [v2 檔](./application-gateway-autoscaling-zone-redundant.md) ，並查看 v1 至 v2 的 [遷移檔](./migrate-v1-v2.md) ，以瞭解如何將現有的 v1 sku 閘道遷移至 v2 sku。 
 
@@ -41,6 +43,8 @@ v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量�
 
 請務必檢查您子網中的子網大小和可用的 IP 位址計數，並根據該值設定最大實例計數。 如果您的子網沒有足夠的空間可容納，您將必須在具有足夠容量的相同或不同子網中重新建立閘道。 
 
+:::image type="content" source="./media/application-gateway-covid-guidelines/v2-autoscaling-max-instances-inline.png" alt-text="V2 自動調整設定" lightbox="./media/application-gateway-covid-guidelines/v2-autoscaling-max-instances-exp.png":::
+
 ### <a name="set-your-minimum-instance-count-based-on-your-average-compute-unit-usage"></a>根據您的平均計算單位使用量來設定最小實例計數
 
 針對應用程式閘道 v2 SKU，自動調整需要六到七分鐘的時間來向外延展，並布建額外的實例集，準備好接受流量。 在那之前，如果流量有短暫的尖峰，您現有的閘道實例可能會在壓力下發生，這可能會導致非預期的流量延遲或遺失。 
@@ -48,6 +52,8 @@ v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量�
 建議您將最小實例計數設定為最佳層級。 例如，如果您需要50實例來處理尖峰負載的流量，則將最小值25設定為30是不錯的想法，而不是在 <10，所以即使流量有短暫的高載，應用程式閘道也可以處理它，並提供足夠的時間讓自動調整回應並生效。
 
 檢查您的計算單位計量是否已超過一個月。 計算單位計量是您閘道 CPU 使用率的標記法，並根據尖峰使用量除以10，您可以設定所需的實例數目下限。 請注意，1個應用程式閘道實例最少可以處理10個計算單位
+
+:::image type="content" source="./media/application-gateway-covid-guidelines/compute-unit-metrics-inline.png" alt-text="V2 計算單位計量" lightbox="./media/application-gateway-covid-guidelines/compute-unit-metrics-exp.png":::
 
 ## <a name="manual-scaling-for-application-gateway-v2-sku-standard_v2waf_v2"></a>應用程式閘道 v2 SKU 的手動調整 (Standard_v2/WAF_v2) 
 
@@ -79,6 +85,17 @@ v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量�
 
 當失敗的要求計量超出閾值時建立警示。 您應觀察生產環境中的閘道，以判斷靜態閾值或針對警示使用動態閾值。
 
+### <a name="example-setting-up-an-alert-for-more-than-100-failed-requests-in-the-last-5-minutes"></a>範例：在過去5分鐘內設定超過100個失敗要求的警示
+
+此範例示範如何使用 Azure 入口網站，在過去5分鐘內失敗的要求計數超過100時設定警示。
+1. 瀏覽至您的 **應用程式閘道**。
+2. 在左側面板中，選取 [監視] 索引標籤下的 [計量]。 
+3. 新增 **失敗要求** 的度量。
+4. 按一下 [ **新增警示規則** ]，然後定義您的條件和動作
+5. 按一下 [ **建立警示規則** ] 以建立和啟用警示
+
+:::image type="content" source="./media/application-gateway-covid-guidelines/create-alerts-inline.png" alt-text="V2 建立警示" lightbox="./media/application-gateway-covid-guidelines/create-alerts-exp.png":::
+
 ## <a name="alerts-for-application-gateway-v2-sku-standard_v2waf_v2"></a>應用程式閘道 v2 SKU 的警示 (Standard_v2/WAF_v2) 
 
 ### <a name="alert-if-compute-unit-utilization-crosses-75-of-average-usage"></a>如果計算單位使用率超過平均使用量的75%，則發出警示 
@@ -91,9 +108,9 @@ v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量�
 1. 瀏覽至您的 **應用程式閘道**。
 2. 在左側面板中，選取 [監視] 索引標籤下的 [計量]。 
 3. 新增 [平均目前計算單位] 的計量。 
-![設定 WAF 計量](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
 4. 如果您已將最小執行個體計數設定為您的平均 CU 使用量，請繼續設定會在已使用最小執行個體計數的 75% 時觸發的警示。 例如，如果您的平均使用量是 10 個 CU，請針對 7.5 個 CU 設定警示。 這會在使用量增加時提醒您，並給您時間回應。 如果您認為此流量將會持續，則可以提高最小值以在流量可能增加時提示您。 
-![設定 WAF 警示](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
+
+:::image type="content" source="./media/application-gateway-covid-guidelines/compute-unit-alert-inline.png" alt-text="V2 計算單位警示" lightbox="./media/application-gateway-covid-guidelines/compute-unit-alert-exp.png":::
 
 > [!NOTE]
 > 您可以視您對潛在流量尖峰的所需敏感性程度，將警示設定為在較低或較高的 CU 使用量百分比時發生。
@@ -122,8 +139,8 @@ v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量�
 
 這是來自應用程式閘道接收 HTTP 要求的第一個位元組到最後一個回應位元組傳送給用戶端的時間的間隔。 如果後端回應延遲比平常的特定臨界值更高，則應建立警示。 例如，他們可以設定此值，以在總時間延遲從一般值增加超過30% 時收到警示。
 
-## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>設定具有地理篩選和 Bot 保護的 WAF 以阻止攻擊
-如果您想要在應用程式前方加入額外的安全性層級，請使用應用程式閘道 WAF_v2 SKU 來取得 WAF 功能。 您可以設定 v2 SKU 以只允許從指定的國家/地區存取您的應用程式。 您可以設定 WAF 自訂規則，以根據地理位置明確允許或封鎖流量。 如需詳細資訊，請參閱[地理篩選自訂規則](../web-application-firewall/ag/geomatch-custom-rules.md) \(部分機器翻譯\) 和[如何透過 PowerShell 設定應用程式閘道 WAF_v2 SKU 上的自訂規則](../web-application-firewall/ag/configure-waf-custom-rules.md) \(部分機器翻譯\)。
+## <a name="set-up-waf-with-geo-filtering-and-bot-protection-to-stop-attacks"></a>使用地區篩選和 bot 防護設定 WAF 以停止攻擊
+如果您想要在應用程式前方加入額外的安全性層級，請使用應用程式閘道 WAF_v2 SKU 來取得 WAF 功能。 您可以設定 v2 SKU 以只允許從指定的國家/地區存取您的應用程式。 您可以設定 WAF 自訂規則，以明確地允許或封鎖以地理位置為基礎的流量。 如需詳細資訊，請參閱 [地區篩選自訂規則](../web-application-firewall/ag/geomatch-custom-rules.md) ，以及 [如何透過 PowerShell 在應用程式閘道上設定自訂規則 WAF_v2 SKU](../web-application-firewall/ag/configure-waf-custom-rules.md)。
 
 啟用 Bot 保護以封鎖已知的不良 Bot。 這應該會減少到達您應用程式的流量。 如需詳細資訊，請參閱 [Bot 保護與設定指示](../web-application-firewall/ag/configure-waf-custom-rules.md) \(部分機器翻譯\)。
 

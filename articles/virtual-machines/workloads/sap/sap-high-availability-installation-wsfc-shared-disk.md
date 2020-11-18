@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c914afb3a72ccac4753a1942b6c4303850654a2e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963630"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682633"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中的 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟上安裝 SAP NetWeaver HA
 
@@ -147,12 +147,12 @@ ms.locfileid: "91963630"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-本文說明針對為 SAP ASCS/SCS 執行個體進行叢集處理，如何使用 Windows Server 容錯移轉和叢集共用磁碟在 Azure 中安裝及設定高可用性 SAP 系統。 如 [架構指南所述：使用叢集共用磁片在 Windows 容錯移轉叢集上叢集 SAP ASCS/SCS 實例][sap-high-availability-guide-wsfc-shared-disk]，叢集 *共用磁片*有兩種替代方案：
+本文說明針對為 SAP ASCS/SCS 執行個體進行叢集處理，如何使用 Windows Server 容錯移轉和叢集共用磁碟在 Azure 中安裝及設定高可用性 SAP 系統。 如 [架構指南所述：使用叢集共用磁片在 Windows 容錯移轉叢集上叢集 SAP ASCS/SCS 實例][sap-high-availability-guide-wsfc-shared-disk]，叢集 *共用磁片* 有兩種替代方案：
 
-- [Azure 共用磁碟](../../windows/disks-shared.md)
+- [Azure 共用磁碟](../../disks-shared.md)
 - 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 建立鏡像儲存體，以模擬叢集共用磁片 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始安裝之前，請檢閱這些文章：
 
@@ -250,7 +250,7 @@ ms.locfileid: "91963630"
 不過，這對某些叢集組態不會產生作用，因為只有一個執行個體是主動的。 另一個執行個體是被動的，而且不接受任何工作負載。 當 Azure 內部負載平衡器偵測到使用中的實例，而且只以作用中的實例為目標時，探查功能會有所説明。  
 
 > [!IMPORTANT]
-> 在此範例設定中， **ProbePort** 會設定為 620**Nr**。 若為具有數位 **00** 的 SAP ASCS 實例，則為 620**00**。 您將需要調整設定，以符合您的 SAP 實例號碼和 SAP SID。
+> 在此範例設定中， **ProbePort** 會設定為 620 **Nr**。 若為具有數位 **00** 的 SAP ASCS 實例，則為 620 **00**。 您將需要調整設定，以符合您的 SAP 實例號碼和 SAP SID。
 
 若要新增探查埠，請在其中一個叢集 Vm 上執行此 PowerShell 模組：
 

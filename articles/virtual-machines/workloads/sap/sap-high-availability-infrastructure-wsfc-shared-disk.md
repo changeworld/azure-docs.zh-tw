@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4538654b255aad99ff00477134c9eeb5845e50d6
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167333"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682752"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>使用 SAP ASCS/SCS 的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構
 
@@ -165,7 +165,7 @@ ms.locfileid: "92167333"
 本文說明在 Windows 容錯移轉叢集上使用叢集 *共用磁片* 作為叢集 SAP ASCS 實例的選項，準備 Azure 基礎結構以在 Windows 容錯移轉叢集上安裝和設定高可用性 SAP ASCS/SCS 實例時，所採取的步驟。
 叢集 *共用磁片* 的兩個替代方案會顯示在檔中：
 
-- [Azure 共用磁碟](../../windows/disks-shared.md)
+- [Azure 共用磁碟](../../disks-shared.md)
 - 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 建立鏡像儲存體，以模擬叢集共用磁片 
 
 呈現的設定會依賴 [Azure 鄰近放置群組 (PPG) ](./sap-proximity-placement-scenarios.md) ，以達到 SAP 工作負載的最佳網路延遲。 檔未涵蓋資料庫層。  
@@ -174,7 +174,7 @@ ms.locfileid: "92167333"
 > Azure 鄰近放置群組是使用 Azure 共用磁片的先決條件。
  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始安裝之前，請檢閱這篇文章：
 
@@ -194,7 +194,7 @@ ms.locfileid: "92167333"
 | 第2個叢集節點 ASCS/SCS 叢集 |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
 | 叢集網路名稱 | pr1clust |10.0.0.42 (**僅** 適用于 Win 2016 叢集)  | n/a | n/a |
 | ASCS 叢集網路名稱 | pr1-ascscl |10.0.0.43 | n/a | n/a |
-| **僅**針對 ERS2) ERS 叢集網路名稱 ( | pr1-erscl |10.0.0.44 | n/a | n/a |
+| **僅** 針對 ERS2) ERS 叢集網路名稱 ( | pr1-erscl |10.0.0.44 | n/a | n/a |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> 建立 Azure 內部負載平衡器
@@ -213,17 +213,17 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 - 後端組態  
     新增應屬於 () SCS/ERS 叢集一部分的所有虛擬機器。 在此範例中，Vm **pr1-ascs-10** 和 **pr1-ascs-11**。
 - 探查連接埠
-    - 埠 620**nr** 保留 PROTOCOL (TCP) 的預設選項，間隔 (5) ，狀況不良閾值 (2) 
+    - 埠 620 **nr** 保留 PROTOCOL (TCP) 的預設選項，間隔 (5) ，狀況不良閾值 (2) 
 - 負載平衡規則
     - 若使用 Standard Load Balancer，請選取 [HA 連接埠]
     - 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
-        - 32**nr** TCP
-        - 36**nr** TCP
-        - 39**nr** TCP
-        - 81**nr** TCP
-        - 5**nr**13 TCP
-        - 5**nr**14 TCP
-        - 5**nr**16 TCP
+        - 32 **nr** TCP
+        - 36 **nr** TCP
+        - 39 **nr** TCP
+        - 81 **nr** TCP
+        - 5 **nr** 13 TCP
+        - 5 **nr** 14 TCP
+        - 5 **nr** 16 TCP
 
     - 請確定 [閒置超時] (分鐘) 設定為 [最大值 30]，而且已啟用 [直接伺服器傳回) ] 浮動 IP (。
 
@@ -237,17 +237,17 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
   Vm 已新增至 ILB 後端集區。  
 
 - 第2個探查埠
-    - 連接埠 621**nr**  
+    - 連接埠 621 **nr**  
     保留通訊協定 (TCP) 的預設選項、間隔 (5) 、狀況不良的閾值 (2) 
 
 - 第2個負載平衡規則
     - 若使用 Standard Load Balancer，請選取 [HA 連接埠]
     - 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
-        - 32**nr** TCP
-        - 33**nr** TCP
-        - 5**nr**13 TCP
-        - 5**nr**14 TCP
-        - 5**nr**16 TCP
+        - 32 **nr** TCP
+        - 33 **nr** TCP
+        - 5 **nr** 13 TCP
+        - 5 **nr** 14 TCP
+        - 5 **nr** 16 TCP
 
     - 請確定 [閒置超時] (分鐘) 設定為 [最大值 30]，而且已啟用 [直接伺服器傳回) ] 浮動 IP (。
 
@@ -466,13 +466,13 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 
    _SIOS DataKeeper 安裝的第一頁_
 
-2. 在對話方塊中，選取 [是]****。
+2. 在對話方塊中，選取 [是]。
 
    ![圖 32：DataKeeper 通知將停用某個服務][sap-ha-guide-figure-3032]
 
    _DataKeeper 通知您將停用服務_
 
-3. 在對話方塊中，建議您選取 [網域或伺服器帳戶]****。
+3. 在對話方塊中，建議您選取 [網域或伺服器帳戶]。
 
    ![圖 33：SIOS DataKeeper 的使用者選取項目][sap-ha-guide-figure-3033]
 

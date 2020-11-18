@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 947ecaa2efbfb013f1f3e8203d1c4296b9ca329f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 645be03df3c8ee2a1451b4bfea0327542c29aa38
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422156"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683109"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>輸出規則 Azure Load Balancer
 
@@ -48,7 +48,7 @@ ms.locfileid: "93422156"
 
 ## <a name="outbound-rule-definition"></a>輸出規則定義
 
-輸出規則遵循與負載平衡和輸入 NAT 規則相同的熟悉語法： **前端**  +  **參數**  +  **後端集** 區。 
+輸出規則遵循與負載平衡和輸入 NAT 規則相同的熟悉語法：**前端**  +  **參數**  +  **後端集** 區。 
 
 輸出規則會將「後端集區所識別的所有虛擬機器」的輸出 NAT 設定為轉譯成「前端」。  
 
@@ -106,7 +106,7 @@ ms.locfileid: "93422156"
 
 
 * 設定一組特定公用 Ip 或首碼的輸出連線。
-* 修改 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠配置。
+* 修改 [SNAT](load-balancer-outbound-connections.md) 埠配置。
 * 僅啟用輸出。
 * Vm 的輸出 NAT 只 (沒有任何輸入) 。
 * 內部標準負載平衡器的輸出 NAT。
@@ -135,28 +135,28 @@ ms.locfileid: "93422156"
 5. 在公用負載平衡器上設定輸出規則，以使用前端為 Vm 啟用輸出 NAT。 不建議針對輸出使用負載平衡規則，在負載平衡規則上停用輸出 SNAT。
 
 
-### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>案例2：修改 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠配置
+### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>案例2：修改 [SNAT](load-balancer-outbound-connections.md)埠配置
 
 
 #### <a name="details"></a>詳細資料
 
 
-您可以使用輸出規則來調整[根據後端集區大小的自動 SNAT 連接埠配置](load-balancer-outbound-connections.md#preallocatedports)。 
+您可以 [根據後端集區大小](load-balancer-outbound-connections.md#preallocatedports)，使用輸出規則來調整自動 SNAT 埠配置。 
 
 
-如果您遇到 SNAT 耗盡的情況，請增加提供預設值1024的 [snat](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠數目。 
+如果您遇到 SNAT 耗盡的情況，請增加提供預設值1024的 [snat](load-balancer-outbound-connections.md)埠數目。 
 
 
-每個公用 IP 位址最多可占64000個暫時埠。 後端集區中的 Vm 數目會決定分散至每部 VM 的埠數目。 後端集區中的一個 VM 可以存取最多64000個埠。 針對兩個 Vm，可以使用輸出規則來指定最多32000個 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠， (2x 32000 = 64000) 。 
+每個公用 IP 位址最多可占64000個暫時埠。 後端集區中的 Vm 數目會決定分散至每部 VM 的埠數目。 後端集區中的一個 VM 可以存取最多64000個埠。 針對兩個 Vm，可以使用輸出規則來指定最多32000個 [SNAT](load-balancer-outbound-connections.md)埠， (2x 32000 = 64000) 。 
 
 
-您可以使用輸出規則來微調預設提供的 SNAT 埠。 您可以提供比預設 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠配置更多或更少的配置。 來自輸出規則前端的每個公用 IP 位址，最多可提供64000個暫時埠，作為 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠使用。 
+您可以使用輸出規則來微調預設提供的 SNAT 埠。 您可以提供比預設 [SNAT](load-balancer-outbound-connections.md)埠配置更多或更少的配置。 來自輸出規則前端的每個公用 IP 位址，最多可提供64000個暫時埠，作為 [SNAT](load-balancer-outbound-connections.md)埠使用。 
 
 
-負載平衡器會以8的倍數提供 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠。 如果您提供的值無法與 8 整除，則會拒絕設定作業。 每個負載平衡規則和輸入 NAT 規則都會耗用8個埠的範圍。 如果負載平衡或輸入 NAT 規則與另一個相同的8範圍共用，將不會使用其他埠。
+負載平衡器會以8的倍數提供 [SNAT](load-balancer-outbound-connections.md)埠。 如果您提供的值無法與 8 整除，則會拒絕設定作業。 每個負載平衡規則和輸入 NAT 規則都會耗用8個埠的範圍。 如果負載平衡或輸入 NAT 規則與另一個相同的8範圍共用，將不會使用其他埠。
 
 
-如果您嘗試提供的 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠數目超過公用 IP 位址的可用數量，則會拒絕設定作業。 例如，如果您為每個 VM 提供10000個埠，且後端集區中有七個 Vm 共用單一公用 IP，則會拒絕設定。 七乘以10000超過64000埠的限制。 將更多公用 IP 位址新增至輸出規則的前端以啟用此案例。 
+如果您嘗試提供的 [SNAT](load-balancer-outbound-connections.md)埠數目超過公用 IP 位址的可用數量，則會拒絕設定作業。 例如，如果您為每個 VM 提供10000個埠，且後端集區中有七個 Vm 共用單一公用 IP，則會拒絕設定。 七乘以10000超過64000埠的限制。 將更多公用 IP 位址新增至輸出規則的前端以啟用此案例。 
 
 
 針對埠數目指定0，以還原為 [預設的埠配置](load-balancer-outbound-connections.md#preallocatedports) 。 第一個 50 VM 實例將會取得1024埠，51-100 VM 實例會取得512到最大實例。 如需預設 SNAT 埠配置的詳細資訊，請參閱 [snat 埠配置表](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)。
@@ -195,7 +195,7 @@ ms.locfileid: "93422156"
 
 
 
-使用前置詞或公用 IP 來調整 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 埠。 將輸出連接的來源新增至允許或拒絕清單。
+使用前置詞或公用 IP 來調整 [SNAT](load-balancer-outbound-connections.md)埠。 將輸出連接的來源新增至允許或拒絕清單。
 
 
 
@@ -225,7 +225,7 @@ ms.locfileid: "93422156"
 使用公用標準負載平衡器時，所提供的自動輸出 NAT 會符合負載平衡規則的傳輸通訊協定。 
 
 
-1. 在負載平衡規則上停用輸出 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 。 
+1. 在負載平衡規則上停用輸出 [SNAT](load-balancer-outbound-connections.md)。 
 2. 在相同的負載平衡器上設定輸出規則。
 3. 重複使用 VM 已使用的後端集區。 
 4. 指定 "protocol": "All" 作為輸出規則的一部分。 

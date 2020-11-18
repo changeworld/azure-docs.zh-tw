@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380427"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684180"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-受控 Azure Active Directory 整合
 
@@ -18,17 +18,17 @@ AKS 管理的 Azure AD 整合旨在簡化 Azure AD 整合體驗，其中使用�
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 驗證總覽
 
-叢集系統管理員可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制 (RBAC) 。 透過 OpenID Connect 對 AKS 叢集提供 Azure AD 驗證。 OpenID Connect 是以 OAuth 2.0 通訊協定為建置基礎的身分識別層。 如需 OpenID Connect 的詳細資訊，請參閱 [OPEN ID Connect 檔][open-id-connect]。
+叢集系統管理員可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制 (Kubernetes RBAC) 。 透過 OpenID Connect 對 AKS 叢集提供 Azure AD 驗證。 OpenID Connect 是以 OAuth 2.0 通訊協定為建置基礎的身分識別層。 如需 OpenID Connect 的詳細資訊，請參閱 [OPEN ID Connect 檔][open-id-connect]。
 
 深入瞭解 [Azure Active Directory 整合概念檔](concepts-identity.md#azure-active-directory-integration)上的 Azure AD 整合流程。
 
 ## <a name="limitations"></a>限制 
 
 * 無法停用 AKS 管理的 Azure AD 整合
-* AKS 管理的 Azure AD 整合不支援已啟用非 RBAC 的叢集
+* AKS 管理的 Azure AD 整合不支援已啟用非 Kubernetes RBAC 的叢集
 * 不支援變更與 AKS 管理 Azure AD 整合相關聯的 Azure AD 租使用者
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * Azure CLI 2.11.0 版版或更新版本
 * 最低版本為[1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181)或[kubelogin](https://github.com/Azure/kubelogin)的 Kubectl
@@ -136,7 +136,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster 
 
 ## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>在現有的叢集上啟用 AKS 管理的 Azure AD 整合
 
-您可以在現有已啟用 RBAC 的叢集上啟用 AKS 管理的 Azure AD 整合。 請務必設定您的系統管理員群組，以在您的叢集上保留存取權。
+您可以在現有已啟用 Kubernetes RBAC 的叢集上啟用 AKS 管理的 Azure AD 整合。 請務必設定您的系統管理員群組，以在您的叢集上保留存取權。
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]

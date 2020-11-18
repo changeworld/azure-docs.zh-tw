@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6f819d9b6ba4d74612da304aafea0118f9094bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91451495"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684426"
 ---
 Azure 共用磁片是 Azure 受控磁片的新功能，可讓您將受控磁片連結到多部虛擬機器， (Vm) 同時進行。 Attaching a managed disk to multiple VMs allows you to either deploy new or migrate existing clustered applications to Azure.
 
@@ -54,9 +54,9 @@ WSFC 上執行的一些熱門應用程式包括：
 ### <a name="linux"></a>Linux
 
 Azure 共用磁片支援：
-- [適用于 SAP 和 SUSE SLE 15 SP1 和更新版本的 SUSE SLE](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [適用于 SAP 和 SUSE SLE 15 SP1 和更新版本的 SUSE SLE](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18.04 和更新版本](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
-- [Rhel 8 版本上的 RHEL developer preview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [Rhel 8 版本上的 RHEL developer preview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 Linux 叢集可以運用叢集管理員，例如 [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)。 Pacemaker 是以 [Corosync](http://corosync.github.io/corosync/) 為基礎，可針對部署在高可用性環境中的應用程式啟用叢集通訊。 一些常見的叢集檔案系統包括 [ocfs2](https://oss.oracle.com/projects/ocfs2/) 和 [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)。 您可以使用 SCSI 持續保留 (SCSI PR) 和/或 STONITH 封鎖裝置 (SBD) 型叢集模型，以仲裁對磁片的存取。 使用 SCSI PR 時，您可以使用 [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) 和 [sg_persist](https://linux.die.net/man/8/sg_persist)之類的公用程式來操作保留和註冊。
@@ -131,19 +131,19 @@ Ultra 磁碟具有獨特的功能，可讓您藉由公開可修改的屬性來�
 
 以下是使用叢集共用磁碟區的 2 節點 WSFC 範例。 使用這項設定時，這兩個 Vm 都具有磁片的同時寫入存取權，這會導致在 `ReadWrite` 兩個 vm 之間分割節流，而 `ReadOnly` 不使用節流。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="資料表的影像，描述保留持有者、已註冊和其他的「唯讀」或「讀取/寫入」存取權。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 節點 Ultra 範例":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>沒有叢集共用磁碟區的 2 節點叢集
 
 以下是未使用叢集共用磁碟區的 2 節點 WSFC 範例。 使用此設定時，只有一個 VM 具有磁碟的寫入存取權。 這會導致 `ReadWrite` 僅針對主要 VM 使用節流，而 `ReadOnly` 只有次要使用節流。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="資料表的影像，描述保留持有者、已註冊和其他的「唯讀」或「讀取/寫入」存取權。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 節點沒有 csv ultra 磁碟範例":::
 
 ##### <a name="four-node-linux-cluster"></a>4 節點的 Linux 叢集
 
 以下範例是具有單一寫入器和三個向外延展讀取器的 4 節點 Linux 叢集。 使用此設定時，只有一個 VM 具有磁碟的寫入存取權。 這會導致 `ReadWrite` 節流是專門用於主要 vm，而 `ReadOnly` 節流是由次要 vm 進行分割。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="資料表的影像，描述保留持有者、已註冊和其他的「唯讀」或「讀取/寫入」存取權。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="4 節點 Ultra 節流範例":::
 
 #### <a name="ultra-pricing"></a>Ultra 定價
 

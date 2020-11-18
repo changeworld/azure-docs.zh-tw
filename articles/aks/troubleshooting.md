@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286762"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684163"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -46,7 +46,7 @@ ms.locfileid: "93286762"
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade` 。
    1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
    
-   根據預設，AKS 叢集會將最大的 (升級緩衝區) 值設定為一個 (1) ，但您可以藉由設定 [節點集區的最大激增值](upgrade-cluster.md#customize-node-surge-upgrade-preview) 來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
+   根據預設，AKS 叢集會將最大的 (升級緩衝區) 值設定為一個 (1) ，但您可以藉由設定 [節點集區的最大激增值](upgrade-cluster.md#customize-node-surge-upgrade) 來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
 
 1. AKS create 或 AKS Nodepool add
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested for the node pool` 。
@@ -86,13 +86,13 @@ AKS 具有 HA 控制平面，可根據核心數目垂直調整，以確保其服
 
 這些超時可能與節點封鎖之間的內部流量有關。 確認未封鎖此流量，例如，您叢集節點的子網上的 [網路安全性群組](concepts-security.md#azure-network-security-groups) 。
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我正嘗試在現有叢集上啟用角色型存取控制 (RBAC)。 如何執行該作業？
+## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我正嘗試在現有叢集上啟用 Kubernetes 角色型存取控制 (Kubernetes RBAC) 。 如何執行該作業？
 
-目前不支援在現有叢集上啟用角色型存取控制 (RBAC)，其必須在建立新叢集時加以設定。 使用 CLI、入口網站或高於 `2020-03-01` 的 API 版本時，預設會啟用 RBAC。
+目前不支援在現有的叢集上啟用 Kubernetes 角色型存取控制 (Kubernetes RBAC) ，必須在建立新叢集時設定。 使用 CLI、入口網站或稍後的 API 版本時，預設會啟用 Kubernetes RBAC `2020-03-01` 。
 
-## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>我建立了已啟用 RBAC 的叢集，而現在我在 Kubernetes 儀表板上看到許多警告。 該儀表板一直可正常運作，而且未產生任何警告。 我該怎麼辦？
+## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>我建立了已啟用 Kubernetes RBAC 的叢集，但現在我在 Kubernetes 儀表板上看到許多警告。 該儀表板一直可正常運作，而且未產生任何警告。 我該怎麼辦？
 
-警告的原因是叢集已啟用 RBAC，而對儀表板的存取現在預設會受到限制。 這種方法通常是良好的做法，因為預設向叢集的所有使用者公開該儀表板可能會導致安全性威脅。 如果您仍然想要啟用該儀表板，請依照[這篇部落格文章](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/) \(英文\) 中的步驟執行。
+警告的原因是叢集已啟用 Kubernetes RBAC，現在預設會限制儀表板的存取權。 這種方法通常是良好的做法，因為預設向叢集的所有使用者公開該儀表板可能會導致安全性威脅。 如果您仍然想要啟用該儀表板，請依照[這篇部落格文章](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/) \(英文\) 中的步驟執行。
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>我無法使用 kubectl 記錄取得記錄，或無法連線到 API 伺服器。 我收到「伺服器發生錯誤: 撥接後端時發生錯誤: 撥接 tcp...」。 我該怎麼辦？
 
@@ -113,7 +113,7 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 當叢集因多種原因而進入失敗狀態時，就會發生此錯誤。 重試先前失敗的作業之前，請先遵循下列步驟來解決叢集失敗狀態：
 
 1. 在叢集離開 `failed` 狀態之前，`upgrade` 和 `scale` 作業都將失敗。 常見的根本問題與解決方式包括：
-    * 進行調整時 **計算 (CRP) 配額不足** 。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循這些[步驟來要求提高計算配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然後再次嘗試擴大以超過初始配額限制。
+    * 進行調整時 **計算 (CRP) 配額不足**。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循這些[步驟來要求提高計算配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然後再次嘗試擴大以超過初始配額限制。
     * 使用進階網路和 **不足的子網路 (網路) 資源** 來調整叢集。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循[這些步驟來要求提高資源配額](../azure-resource-manager/templates/error-resource-quota.md#solution)，然後再次嘗試擴大以超過初始配額限制。
 2. 解決升級失敗的根本原因之後，您的叢集應該會處於成功狀態。 確認成功狀態之後，請重試原始作業。
 
@@ -130,7 +130,7 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>我是否可以將叢集移至不同的訂用帳戶，或將含有叢集的訂用帳戶新增至新的租用戶？
 
-如果您已將 AKS 叢集移至不同的訂用帳戶，或將叢集的訂用帳戶移至新的租用戶，該叢集將因缺少叢集身分識別權限而無法運作。 由於這個限制式，因此 **AKS 不支援在訂用帳戶或租用戶之間移動叢集** 。
+如果您已將 AKS 叢集移至不同的訂用帳戶，或將叢集的訂用帳戶移至新的租用戶，該叢集將因缺少叢集身分識別權限而無法運作。 由於這個限制式，因此 **AKS 不支援在訂用帳戶或租用戶之間移動叢集**。
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>我在嘗試使用需要虛擬機器擴展集的功能時收到錯誤
 
@@ -154,10 +154,10 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 命名限制會透過 Azure 平台和 AKS 來實作。 如果資源名稱或參數違反這其中一個限制，即會傳回錯誤，要求您提供不同的輸入。 下列一般命名指導方針適用：
 
 * 叢集名稱必須是 1-63 個字元。 唯一允許的字元是字母、數字、破折號和底線。 第一個和最後一個字元必須是字母或數字。
-* AKS 節點/ *MC_* 資源群組名稱會合併資源群組名稱與資源名稱。 自動產生的 `MC_resourceGroupName_resourceName_AzureRegion` 語法不得超過 80 個字元。 視需要縮短資源群組名稱或 AKS 叢集名稱的長度。 您也可以[自訂節點資源群組名稱](cluster-configuration.md#custom-resource-group-name)。
+* AKS 節點/*MC_* 資源群組名稱會合併資源群組名稱與資源名稱。 自動產生的 `MC_resourceGroupName_resourceName_AzureRegion` 語法不得超過 80 個字元。 視需要縮短資源群組名稱或 AKS 叢集名稱的長度。 您也可以[自訂節點資源群組名稱](cluster-configuration.md#custom-resource-group-name)。
 * *dnsPrefix* 必須以英數字元值開頭和結束，且必須介於 1-54 個字元之間。 有效字元包含英數字元值和連字號 (-)。 *dnsPrefix* 不能包含特殊字元，例如句號 (.)。
 * 針對 Linux 節點集區，AKS 節點集區名稱必須全部小寫且為 1-11 個字元，針對 Windows 節點集區則是 1-6 個字元。 名稱的開頭必須是字母，而唯一允許的字元為字母與數字。
-* 系統管理員使用者 *名稱* （設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只可包含字母、數位、連字號和底線，且長度上限為64個字元。
+* 系統管理員使用者 *名稱*（設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只可包含字母、數位、連字號和底線，且長度上限為64個字元。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在嘗試建立、更新、調整、刪除或升級叢集時收到錯誤，指出因為另一個作業正在進行，所以不允許該作業。
 
@@ -388,7 +388,7 @@ parameters:
 一些其他有用的 *mountOptions* 設定：
 
 * *mfsymlinks* 將讓 Azure 檔案儲存體掛接 (cifs) 支援符號連結
-* *nobrl* 會防止將位元組範圍鎖定要求傳送至伺服器。 對於以 cifs 樣式強制位元組範圍鎖定中斷的特定應用程式而言，這是必要的設定。 大部分的 cifs 伺服器尚未支援要求諮詢位元組範圍鎖定。 如果未使用 *nobrl* ，以 cifs 樣式強制位元組範圍鎖定中斷的應用程式可能會導致類似下列的錯誤訊息：
+* *nobrl* 會防止將位元組範圍鎖定要求傳送至伺服器。 對於以 cifs 樣式強制位元組範圍鎖定中斷的特定應用程式而言，這是必要的設定。 大部分的 cifs 伺服器尚未支援要求諮詢位元組範圍鎖定。 如果未使用 *nobrl*，以 cifs 樣式強制位元組範圍鎖定中斷的應用程式可能會導致類似下列的錯誤訊息：
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -404,7 +404,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 此錯誤是由使用 cifs/SMB 通訊協定的 Azure 檔案儲存體外掛程式所造成。 使用 cifs/SMB 通訊協定時，無法在掛接之後變更檔案和目錄權限。
 
-若要解決此問題，請搭配 Azure 磁碟外掛程式使用 *subPath* 。 
+若要解決此問題，請搭配 Azure 磁碟外掛程式使用 *subPath*。 
 
 > [!NOTE] 
 > 針對 ext3/4 磁碟類型，在將磁碟格式化之後，即會有 lost+found 目錄。
@@ -476,7 +476,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁碟連結變慢，GetAzureDiskLun 需要花費 10 到 15 分鐘的時間，而您會收到錯誤
 
-在 **早於 1.15.0** 的 Kubernetes 版本上，您可能會收到類似下列的錯誤： **錯誤 WaitForAttach 找不到磁碟的 Lun** 。  此問題的因應措施是大約等候 15 分鐘，然後重試。
+在 **早於 1.15.0** 的 Kubernetes 版本上，您可能會收到類似下列的錯誤：**錯誤 WaitForAttach 找不到磁碟的 Lun**。  此問題的因應措施是大約等候 15 分鐘，然後重試。
 
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>使用具有 kubernetes.io 前置詞的節點標籤時，Kubernetes 1.16 升級失敗的原因

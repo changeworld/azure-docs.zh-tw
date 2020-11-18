@@ -4,12 +4,12 @@ description: 本文說明如何在不使用 kubectl 搭配容器 Azure 監視器
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4966ab0d64745c36ee53f27ba4063714f18e35da
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6fdd2d0a97357a2126ff37c0840b1f7da2859da5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648101"
+ms.locfileid: "94682667"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料 (預覽) 功能
 
@@ -136,7 +136,7 @@ AKS 在2020年1月發行這個新的角色系結，因此在2020年1月之前建
 >[!IMPORTANT]
 >如果您授與 RBAC 系結的使用者位於相同的 Azure AD 租使用者中，請根據 userPrincipalName 指派許可權。 如果使用者位於不同的 Azure AD 租使用者中，請查詢並使用 objectId 屬性。
 
-如需設定 AKS 叢集 **ClusterRoleBinding** 的其他協助，請參閱 [建立 RBAC](../../aks/azure-ad-integration-cli.md#create-rbac-binding)系結。
+如需設定 AKS 叢集 **ClusterRoleBinding** 的其他協助，請參閱 [建立 Kubernetes RBAC](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding)系結。
 
 ## <a name="next-steps"></a>後續步驟
 

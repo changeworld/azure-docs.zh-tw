@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b2ec220bbf14a79247ed2c78a0e84f4717fae3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77593703"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684231"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中安裝 Linkerd) 
 
@@ -35,7 +35,7 @@ ms.locfileid: "77593703"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
+本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 KUBERNETES RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
 
 所有 Linkerd pod 都必須排程在 Linux 節點上執行-此設定是以下詳述的安裝方法中的預設值，不需要額外的設定。
 
