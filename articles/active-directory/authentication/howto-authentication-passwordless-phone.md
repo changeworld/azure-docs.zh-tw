@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05f3d422c9a504a0089290f3c2e1e68d809366ac
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592952"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839517"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 應用程式 (預覽版來啟用無密碼登入) 
 
@@ -32,11 +32,11 @@ Microsoft Authenticator 應用程式可用來登入任何 Azure AD 帳戶 (而�
 2. 選擇 [核准]。
 3. 提供他們的 PIN 或生物特徵辨識。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要在 Microsoft Authenticator 應用程式中使用無密碼手機登入，必須符合下列必要條件：
 
-- Azure Multi-Factor Authentication，並允許推播通知作為驗證方法。
+- Azure AD Multi-Factor Authentication，並允許推播通知作為驗證方法。
 - 在執行 iOS 8.0 或更新版本或 Android 6.0 或更新版本的裝置上安裝的最新版 Microsoft Authenticator。
 
 > [!NOTE]
@@ -57,18 +57,18 @@ Azure AD 可讓您選擇在登入程式期間可以使用的驗證方法。 然�
 若要啟用無密碼手機登入的驗證方法，請完成下列步驟：
 
 1. 使用 *全域管理員* 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋並選取 *Azure Active Directory* ，然後流覽至 **安全性**  >  **驗證方法** 的  >  **驗證方法原則 (Preview)**
-1. 在 [ **無密碼 phone 登入** ] 底下，選擇下列選項：
+1. 搜尋並選取 *Azure Active Directory*，然後流覽至 **安全性**  >  **驗證方法** 的  >  **驗證方法原則 (Preview)**
+1. 在 [ **無密碼 phone 登入**] 底下，選擇下列選項：
    1. **啟用** -是或否
    1. **目標** -所有使用者或選取使用者
-1. 若要套用新的原則，請選取 [ **儲存** ]。
+1. 若要套用新的原則，請選取 [ **儲存**]。
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Microsoft Authenticator 的使用者註冊與管理
 
 使用者會使用下列步驟，自行註冊 Azure AD 的無密碼 authentication 方法：
 
 1. 瀏覽至 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。
-1. 登入，然後選取 [ **新增方法 > 驗證器應用程式** ]，然後 **新增** ，以新增驗證器應用程式。
+1. 登入，然後選取 [ **新增方法 > 驗證器應用程式**]，然後 **新增**，以新增驗證器應用程式。
 1. 遵循指示，在裝置上安裝和設定 Microsoft Authenticator 應用程式。
 1. 選取 [ **完成** ] 以完成驗證器設定。
 1. 在 **Microsoft Authenticator** 中，從已註冊帳戶的下拉式功能表中選擇 [ **啟用手機登入** ]。
@@ -89,9 +89,9 @@ Azure AD 可讓您選擇在登入程式期間可以使用的驗證方法。 然�
 使用者第一次啟動手機登入程式時，使用者會執行下列步驟：
 
 1. 在登入頁面上輸入她的名稱。
-2. 選取 **[下一步]** 。
-3. 如有必要，請選取 **其他登入方式** 。
-4. 選取 [ **在我的 Microsoft Authenticator 應用程式上核准要求** ]。
+2. 選取 **[下一步]**。
+3. 如有必要，請選取 **其他登入方式**。
+4. 選取 [ **在我的 Microsoft Authenticator 應用程式上核准要求**]。
 
 然後，使用者會看到一個數位。 應用程式會提示使用者選取適當的號碼來進行驗證，而不是輸入密碼。
 
@@ -118,7 +118,7 @@ Azure AD 可讓您選擇在登入程式期間可以使用的驗證方法。 然�
 
 當使用者已啟用任何無密碼認證時，Azure AD 登入程式就會停止使用登入 \_ 提示。 因此，此程式不再加速使用者前往同盟登入位置。
 
-此邏輯通常會防止混合式租使用者中的使用者被導向 Active Directory 同盟服務， (AD FS) 進行登入驗證。 但是，使用者會保留按一下 [ **改用您的密碼** ] 的選項。
+此邏輯通常會防止混合式租使用者中的使用者被導向 Active Directory 同盟服務， (AD FS) 進行登入驗證。 但是，使用者會保留按一下 [ **改用您的密碼**] 的選項。
 
 ### <a name="azure-mfa-server"></a>Azure MFA Server
 
@@ -141,4 +141,4 @@ Azure AD 可讓您選擇在登入程式期間可以使用的驗證方法。 然�
 
 - [瞭解無密碼 authentication 的運作方式](concept-authentication-passwordless.md)
 - [深入了解裝置註冊](../devices/overview.md#getting-devices-in-azure-ad)
-- [深入了解 Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [瞭解 Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

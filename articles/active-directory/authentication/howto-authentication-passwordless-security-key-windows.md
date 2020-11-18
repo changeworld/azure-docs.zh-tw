@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 01/30/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526981"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839466"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入 Windows 10 裝置) 
 
@@ -25,11 +25,11 @@ ms.locfileid: "90526981"
 > [!NOTE]
 > FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需預覽的詳細資訊，請參閱  [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 | 裝置類型 | 已聯結的 Azure AD | 已聯結的混合式 Azure AD |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [合併的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md) | X | X |
 | 相容的 [FIDO2 安全性金鑰](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN 需要 Windows 10 1903 版或更高版本 | X | X |
@@ -79,7 +79,7 @@ ms.locfileid: "90526981"
 若要使用 Intune 啟用安全性金鑰，請完成下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Microsoft Intune**  >  **裝置註冊**  >  **Windows 註冊**  >  **Windows Hello 企業版**  >  **屬性**。
+1. 流覽至 **Microsoft Intune**  >  **裝置註冊**  >  **Windows 註冊**  >  **Windows Hello 企業版**  >  **屬性**。
 1. 在 [ **設定**] 底下，將 [ **使用安全性金鑰登入** ] 設定為 [ **啟用**]。
 
 設定安全性金鑰以進行登入，並不會相依于設定 Windows Hello 企業版。
@@ -89,7 +89,7 @@ ms.locfileid: "90526981"
 若要以特定裝置群組為目標，以啟用認證提供者，請透過 Intune 使用下列自訂設定：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Microsoft Intune**  >  **裝置配置**  >  **檔**  >  **建立設定檔**。
+1. 流覽至 **Microsoft Intune**  >  **裝置配置**  >  **檔**  >  **建立設定檔**。
 1. 使用下列設定來設定新的設定檔：
    - 名稱： Windows Sign-In 的安全性金鑰
    - 描述：啟用在 Windows 登入期間使用的 FIDO 安全性金鑰
@@ -114,13 +114,13 @@ ms.locfileid: "90526981"
 1. 將布建 *套件* 保留為選取的 **專案工作流程** ，然後選取 **[下一步]**。
 1. 在 **[選擇要查看及設定的設定**] 底下選取 [*所有 Windows 桌上出版本*]，然後選取 **[下一步]**。
 1. 選取 [完成]。
-1. 在新建立的專案中，流覽至**執行時間設定**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**。
+1. 在新建立的專案中，流覽至 **執行時間設定**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**。
 1. 將 **UseSecurityKeyForSignIn** 設定為 [ *已啟用*]。
-1. 選取**匯出**布建  >  **套件**
-1. 在 [描述布建**套件**] 下的 [**組建**] 視窗中保留預設值，然後選取 **[下一步]**。
-1. 在 [建立布建**套件的安全性詳細資料**] 下的 [**組建**] 視窗中保留預設值，然後選取 **[下一步**
-1. 請在 [**選取要儲存**布建套件的位置] 下的 [**組建**] 視窗中，或選取 [**下一步]** 來變更路徑。
-1. 在 [組建布**建套件**] 頁面上選取 [**建立**]。
+1. 選取 **匯出** 布建  >  **套件**
+1. 在 [描述布建 **套件**] 下的 [**組建**] 視窗中保留預設值，然後選取 **[下一步]**。
+1. 在 [建立布建 **套件的安全性詳細資料**] 下的 [**組建**] 視窗中保留預設值，然後選取 **[下一步**
+1. 請在 [**選取要儲存** 布建套件的位置] 下的 [**組建**] 視窗中，或選取 [**下一步]** 來變更路徑。
+1. 在 [組建布 **建套件**] 頁面上選取 [**建立**]。
 1. 將 (*ppkg* 和 *貓*) 建立的兩個檔案儲存至您稍後可以將它們套用到電腦的位置。
 1. 若要套用您建立的布建套件，請參閱套用布建 [套件](/windows/configuration/provisioning-packages/provisioning-apply-package)。
 
@@ -129,7 +129,7 @@ ms.locfileid: "90526981"
 
 ### <a name="enable-with-group-policy"></a>使用群組原則啟用
 
-針對已 **加入混合式 Azure AD 的裝置**，組織可以設定下列群組原則設定，以啟用 FIDO 安全性金鑰登入。 您可以在 [**電腦**設定] 底下找到此設定  >  **系統管理範本**  >  **系統**  >  **登**  >  **入安全性金鑰登入**：
+針對已 **加入混合式 Azure AD 的裝置**，組織可以設定下列群組原則設定，以啟用 FIDO 安全性金鑰登入。 您可以在 [**電腦** 設定] 底下找到此設定  >  **系統管理範本**  >  **系統**  >  **登**  >  **入安全性金鑰登入**：
 
 - 將此原則設定為 [ **已啟用** ]，可讓使用者以安全性金鑰登入。
 - 將此原則設定為 [ **已停** 用] 或 [ **未設定** ]，會阻止使用者以安全性金鑰登入。
@@ -145,7 +145,7 @@ ms.locfileid: "90526981"
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>管理安全性金鑰生物特徵辨識、PIN 或重設安全性金鑰
 
 * Windows 10 版本1903或更高版本
-   * 使用者可以在其裝置上開啟**Windows 設定**>**帳戶**  >  **安全性金鑰**
+   * 使用者可以在其裝置上開啟 **Windows 設定**>**帳戶**  >  **安全性金鑰**
    * 使用者可以變更 PIN 碼、更新生物識別，或重設其安全性金鑰
 
 ## <a name="troubleshooting-and-feedback"></a>疑難排解和意見反應
@@ -164,4 +164,4 @@ ms.locfileid: "90526981"
 
 [深入瞭解裝置註冊](../devices/overview.md)
 
-[深入了解 Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[深入瞭解 Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

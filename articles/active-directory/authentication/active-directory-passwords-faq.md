@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 078b24e7fc3668e9b5832f0bfa46024db9b33848
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965551"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840095"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設的常見問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "91965551"
 
   > **答：** 是。 只要已啟用密碼重設功能且使用者已獲得授權，他們就可以前往密碼重設註冊入口網站 (https://aka.ms/ssprsetup) ) 註冊其驗證資訊。 使用者也可以透過「存取面板」(https://myapps.microsoft.com) ) 進行註冊。 若要透過「存取面板」註冊，使用者必須選取其個人資料圖片，請選取 [設定檔]，然後選取 [註冊密碼重設] 選項。
   >
-  > 如果您啟用 [合併註冊](concept-registration-mfa-sspr-combined.md)，使用者可以同時註冊 SSPR 和 Azure Multi-Factor Authentication。
+  > 如果您啟用 [合併註冊](concept-registration-mfa-sspr-combined.md)，使用者可以同時註冊 SSPR 和 Azure AD Multi-Factor Authentication。
 * **問：如果針對群組啟用密碼重設，之後又決定針對所有人啟用，我的使用者需要重新註冊嗎？**
 
   > **答：** 否。 已填入驗證資料的使用者不需要重新註冊。
@@ -192,7 +192,7 @@ ms.locfileid: "91965551"
 
 * **問：我的使用者應該到何處變更密碼？**
 
-  > **答：** 使用者可以在出現個人資料圖片或圖示的任何位置變更其密碼 (例如在其 [Office 365](https://portal.office.com) 入口網站或[存取面板](https://myapps.microsoft.com)的右上角)。 使用者可以從[存取面板設定檔頁面](https://account.activedirectory.windowsazure.com/r#/profile)變更其密碼。 如果使用者的密碼已到期，Azure AD 登入頁面也可能自動要求使用者變更密碼。 最後，如果使用者想要變更其密碼，也可以直接瀏覽至 [Azure AD 密碼變更入口網站](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)。
+  > **答：** 使用者可以在出現個人資料圖片或圖示的任何位置變更其密碼 (例如在其 [Office 365](https://portal.office.com) 入口網站或 [存取面板](https://myapps.microsoft.com)的右上角)。 使用者可以從[存取面板設定檔頁面](https://account.activedirectory.windowsazure.com/r#/profile)變更其密碼。 如果使用者的密碼已到期，Azure AD 登入頁面也可能自動要求使用者變更密碼。 最後，如果使用者想要變更其密碼，也可以直接瀏覽至 [Azure AD 密碼變更入口網站](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)。
   >
   >
 * **問：當我使用者的內部部署密碼到期時，Office 入口網站是否會通知他們？**
@@ -243,7 +243,7 @@ ms.locfileid: "91965551"
 
 * **問：密碼回寫如何在幕後運作？**
 
-  > **答：** 請參閱[密碼回寫的運作方式](./tutorial-enable-sspr-writeback.md)一文，以了解啟用密碼回寫時會發生的情況，以及資料如何透過系統回流到您的內部部署環境。
+  > **答：** 請參閱 [密碼回寫的運作方式](./tutorial-enable-sspr-writeback.md)一文，以了解啟用密碼回寫時會發生的情況，以及資料如何透過系統回流到您的內部部署環境。
   >
   >
 * **問：密碼回寫需要多久時間才會運作？是否有像是使用密碼雜湊同步處理時的同步處理延遲？**

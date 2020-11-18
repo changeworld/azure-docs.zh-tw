@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: c5ae0e0d312aa9a959b114d576f887bfa5072f49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a166a451c405c2321453e02751baad91c2a14c60
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965500"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840012"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -26,13 +26,13 @@ ms.locfileid: "91965500"
 
 無密碼驗證方法（例如 Windows Hello、FIDO2 安全性金鑰和 Microsoft Authenticator 應用程式）提供最安全的登入事件。
 
-Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新增額外的安全性。 系統會提示使用者輸入其他形式的驗證，例如回應推播通知、輸入軟體或硬體權杖中的程式碼，或回應 SMS 或來電。
+Azure AD Multi-Factor Authentication 只會在使用者登入時，使用密碼新增額外的安全性。 系統會提示使用者輸入其他形式的驗證，例如回應推播通知、輸入軟體或硬體權杖中的程式碼，或回應 SMS 或來電。
 
 若要簡化使用者的上線體驗，並同時註冊 MFA 和 SSPR，建議您 [啟用合併的安全性資訊註冊](howto-registration-mfa-sspr-combined.md)。 為了復原，建議您要求使用者註冊多個驗證方法。 當使用者在登入或 SSPR 期間無法使用一個方法時，他們可以選擇使用其他方法進行驗證。 如需詳細資訊，請參閱 [Azure AD 中的建立復原存取控制管理原則](concept-resilient-controls.md)。
 
 ## <a name="authentication-method-strength-and-security"></a>驗證方法強度和安全性
 
-當您在組織中部署 Azure Multi-Factor Authentication 之類的功能時，請參閱可用的驗證方法。 根據安全性、可用性和可用性，選擇符合或超越您需求的方法。 可能的話，請使用具有最高層級安全性的驗證方法。
+當您在組織中部署 Azure AD Multi-Factor Authentication 之類的功能時，請參閱可用的驗證方法。 根據安全性、可用性和可用性，選擇符合或超越您需求的方法。 可能的話，請使用具有最高層級安全性的驗證方法。
 
 下表概述可用驗證方法的安全性考慮。 可用性是指使用者可以使用驗證方法，而不是 Azure AD 中服務可用性的指示：
 
@@ -43,7 +43,7 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 |  (預覽版的 FIDO2 安全性金鑰)    | 高     | 高      | 高         |
 | OATH 硬體權杖 (預覽) | 適中   | 適中    | 高         |
 | OATH 軟體權杖           | 適中   | 適中    | 高         |
-| SMS                            | 中   | 高      | 中       |
+| sms                            | 中型   | 高      | 中       |
 | 語音                          | 適中   | 適中    | 適中       |
 | 密碼                       | 低度      | 高      | 高         |
 
@@ -54,7 +54,7 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 
 ## <a name="how-each-authentication-method-works"></a>每個驗證方法的運作方式
 
-當您登入應用程式或裝置時（例如使用 FIDO2 安全性金鑰或密碼），某些驗證方法可用來作為主要因素。 當您使用 Azure Multi-Factor Authentication 或 SSPR 時，其他驗證方法只會以次要因素的形式提供。
+當您登入應用程式或裝置時（例如使用 FIDO2 安全性金鑰或密碼），某些驗證方法可用來作為主要因素。 當您使用 Azure AD Multi-Factor Authentication 或 SSPR 時，其他驗證方法只會以次要因素的形式提供。
 
 下表概述在登入事件期間可以使用驗證方法的時機：
 
@@ -65,7 +65,7 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 |  (預覽版的 FIDO2 安全性金鑰)    | 是                    | MFA                       |
 | OATH 硬體權杖 (預覽) | 否                     | MFA                       |
 | OATH 軟體權杖           | 否                     | MFA                       |
-| SMS                            | 是 (預覽)          | MFA 和 SSPR              |
+| sms                            | 是 (預覽)          | MFA 和 SSPR              |
 | 語音通話                     | 否                     | MFA 和 SSPR              |
 | 密碼                       | 是                    |                           |
 
@@ -83,25 +83,25 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 * 密碼
 
 > [!NOTE]
-> 在 Azure AD 中，密碼通常是其中一個主要驗證方法。 您無法停用密碼驗證方法。 如果您使用密碼作為主要驗證因素，請使用 Azure Multi-Factor Authentication 來提高登入事件的安全性。
+> 在 Azure AD 中，密碼通常是其中一個主要驗證方法。 您無法停用密碼驗證方法。 如果您使用密碼作為主要驗證因素，請使用 Azure AD Multi-Factor Authentication 來提高登入事件的安全性。
 
 下列其他驗證方法可用於某些案例：
 
-* [應用程式密碼](howto-mfa-app-passwords.md) -用於不支援新式驗證的繼承應用程式，且可針對每位使用者的 Azure Multi-Factor Authentication 進行設定。
+* [應用程式密碼](howto-mfa-app-passwords.md) -用於不支援新式驗證的舊應用程式，且可針對每個使用者 Azure AD Multi-Factor Authentication 進行設定。
 * [安全性問題](concept-authentication-security-questions.md) -僅用於 SSPR
 * [電子郵件地址](concept-sspr-howitworks.md#authentication-methods) -僅用於 SSPR
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，請參閱[自助式密碼重設 (SSPR) 的教學課程][tutorial-sspr]和 [Azure Multi-Factor Authentication][tutorial-azure-mfa]。
+若要開始使用，請參閱 [自助式密碼重設的教學課程 (SSPR) ][tutorial-sspr] 和 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]。
 
 若要深入了解 SSPR 概念，請參閱 [Azure AD 自助式密碼重設的運作方式][concept-sspr]。
 
-若要深入了解 MFA 概念，請參閱 [Azure Multi-Factor Authentication 的運作方式][concept-mfa]。
+若要深入瞭解 MFA 概念，請參閱 [Azure AD Multi-Factor Authentication 的運作方式][concept-mfa]。
 
 深入瞭解如何使用 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)來設定驗證方法。
 
-若要查看使用中的驗證方法，請參閱使用 [PowerShell 的 Azure Multi-Factor Authentication 驗證方法分析](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
+若要查看使用中的驗證方法，請參閱使用 [PowerShell Azure AD Multi-Factor Authentication 驗證方法分析](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6af2f65aa2e2052a79f4c5cffd7ff4a38a9fc838
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366559"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839704"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
 
@@ -28,10 +28,10 @@ ms.locfileid: "92366559"
 
 本文件藉由下列案例提供有關組織所應採用策略的指引，這些策略可提供靈活彈性，以在發生未預期的中斷情況期間降低鎖定風險：
 
- 1. 組織可以藉由實作風險降低策略或應變計劃來提升其靈活彈性，以**在中斷情況發生前**降低鎖定風險。
- 2. 組織可以藉由備妥風險降低策略和應變計劃，**在中斷情況發生期間**繼續存取他們所選擇的應用程式和資源。
- 3. 組織應確定保留**在中斷情況發生後**及回復所實作之任何應變措施前的資訊 (例如記錄)。
- 4. 組織如果尚未實作預防策略或替代計劃，可以實作**緊急選項**來處理中斷情況。
+ 1. 組織可以藉由實作風險降低策略或應變計劃來提升其靈活彈性，以 **在中斷情況發生前** 降低鎖定風險。
+ 2. 組織可以藉由備妥風險降低策略和應變計劃，**在中斷情況發生期間** 繼續存取他們所選擇的應用程式和資源。
+ 3. 組織應確定保留 **在中斷情況發生後** 及回復所實作之任何應變措施前的資訊 (例如記錄)。
+ 4. 組織如果尚未實作預防策略或替代計劃，可以實作 **緊急選項** 來處理中斷情況。
 
 ## <a name="key-guidance"></a>主要指引
 
@@ -55,21 +55,21 @@ ms.locfileid: "92366559"
 
 ### <a name="administrator-lockout-contingency"></a>系統管理員鎖定應變措施
 
-為了將系統管理員對您租用戶的存取權解除鎖定，您應該建立緊急存取帳戶。 這些緊急存取帳戶 (也稱為「急用」** 帳戶) 可允許在無法使用一般特殊權限帳戶存取程序時，進行存取來管理 Azure AD 設定。 依照[緊急存取帳戶建議]( ../users-groups-roles/directory-emergency-access.md)，應該至少建立兩個緊急存取帳戶。
+為了將系統管理員對您租用戶的存取權解除鎖定，您應該建立緊急存取帳戶。 這些緊急存取帳戶 (也稱為「急用」帳戶) 可允許在無法使用一般特殊權限帳戶存取程序時，進行存取來管理 Azure AD 設定。 依照[緊急存取帳戶建議]( ../users-groups-roles/directory-emergency-access.md)，應該至少建立兩個緊急存取帳戶。
 
 ### <a name="mitigating-user-lockout"></a>降低使用者鎖定風險
 
- 若要降低使用者鎖定的風險，請使用條件式存取原則搭配多個控制項，讓使用者能夠選擇其存取應用程式和資源的方式。 例如，藉由讓使用者能夠選擇使用 MFA 進行登入****、從受控裝置進行登入**或**從公司網路進行登入，當其中一個存取控制措施無法供使用時，使用者便還有其他選項來繼續工作。
+ 若要降低使用者鎖定的風險，請使用條件式存取原則搭配多個控制項，讓使用者能夠選擇其存取應用程式和資源的方式。 例如，藉由讓使用者能夠選擇使用 MFA 進行登入、從受控裝置進行登入 **或** 從公司網路進行登入，當其中一個存取控制措施無法供使用時，使用者便還有其他選項來繼續工作。
 
 #### <a name="microsoft-recommendations"></a>Microsoft 建議
 
 針對組織現有的條件式存取原則，納入下列存取控制：
 
-1. 為倚賴不同通訊通道的每個使用者佈建多個驗證方法，例如 Microsoft Authenticator 應用程式 (網際網路型)、OATH 權杖 (於裝置上產生) 及 SMS (電話)。 下列 PowerShell 腳本將協助您事先識別，您的使用者應該註冊的其他方法有： [用於 Azure MFA 驗證方法分析的腳本](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
+1. 為倚賴不同通訊通道的每個使用者佈建多個驗證方法，例如 Microsoft Authenticator 應用程式 (網際網路型)、OATH 權杖 (於裝置上產生) 及 SMS (電話)。 下列 PowerShell 腳本將協助您事先識別，您的使用者應該註冊的額外方法有： [用於 AZURE AD MFA 驗證方法分析的腳本](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 2. 在 Windows 10 裝置上部署「Windows Hello 企業版」以直接從裝置登入滿足 MFA 需求。
 3. 透過 [Azure AD 混合式聯結](../devices/overview.md)或 [Microsoft Intune 受控裝置](/intune/planning-guide)使用受信任的裝置。 受信任的裝置將可改善使用者體驗，因為受信任的裝置本身無須向使用者提出 MFA 挑戰，即可滿足原則的增強式驗證需求。 而在註冊新裝置時，以及從非受信任裝置存取應用程式或資源時，則會需要 MFA。
 4. 使用 Azure AD 身分識別保護風險型原則來取代固定的 MFA 原則，以在使用者或登入有風險時防止存取。
-5. 如果您要使用 Azure MFA NPS 擴充功能來保護 VPN 存取，請考慮將您的 VPN 解決方案與 [SAML 應用程式](../manage-apps/view-applications-portal.md) 同盟，並依照下列建議來判斷應用程式類別。 
+5. 如果您要使用 Azure AD MFA NPS 擴充功能來保護 VPN 存取，請考慮將您的 VPN 解決方案與 [SAML 應用程式](../manage-apps/view-applications-portal.md) 同盟，並依照下列建議來判斷應用程式類別。 
 
 >[!NOTE]
 > 風險型原則會要求要有 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 授權。
@@ -112,7 +112,7 @@ ms.locfileid: "92366559"
 
 #### <a name="microsoft-recommendations"></a>Microsoft 建議
 
-應變條件式存取原則是一種 **備份原則** ，可省略 Azure MFA、協力廠商 MFA、以風險為基礎或以裝置為基礎的控制項。 若要在啟用應變原則時將非預期的中斷情況降到最低，則在不使用時，原則應該維持為僅限報表模式。 系統管理員可以使用條件式存取深入解析活頁簿，來監視其應變原則的潛在影響。 當您的組織決定啟用您的應變計劃時，系統管理員可以啟用此原則，並停用一般以控制項為基礎的原則。
+應變條件式存取原則是一種 **備份原則** ，會省略 Azure AD MFA、協力廠商 MFA、以風險為基礎或以裝置為基礎的控制項。 若要在啟用應變原則時將非預期的中斷情況降到最低，則在不使用時，原則應該維持為僅限報表模式。 系統管理員可以使用條件式存取深入解析活頁簿，來監視其應變原則的潛在影響。 當您的組織決定啟用您的應變計劃時，系統管理員可以啟用此原則，並停用一般以控制項為基礎的原則。
 
 >[!IMPORTANT]
 > 當已備妥應變計劃時，停用會對使用者強制執行安全性的原則將會降低安全性狀態，即使只是暫時停用也一樣。
@@ -124,13 +124,13 @@ ms.locfileid: "92366559"
   * 設定一個將受限工作階段宣告傳送給 Exchange 和 SharePoint 的備份原則。
   * 如果您的組織使用 Microsoft Cloud App Security，請考慮切換回會牽涉 MCAS 的原則，然後 MCAS 就會允許唯讀存取而非上傳。
 * 為您的原則命名，以確定在中斷期間可以輕易找到這些原則。 請在原則名稱中包含下列元素：
-  * 原則的標籤號碼**。
+  * 原則的標籤號碼。
   * 用來指出此原則僅供緊急狀況使用的文字。 例如： **在緊急情況下啟用**
-  * 適用的*中斷情況*。 例如： **MFA 中斷期間**
-  * ** 以序號顯示您必須啟動原則的順序。
-  * 適用的應用程式**。
-  * 適用的控制項**。
-  * 所需的條件**。
+  * 適用的 *中斷情況*。 例如： **MFA 中斷期間**
+  * 以序號顯示您必須啟動原則的順序。
+  * 適用的應用程式。
+  * 適用的控制項。
+  * 所需的條件。
   
 應變原則的這個命名標準將顯示如下： 
 
@@ -138,7 +138,7 @@ ms.locfileid: "92366559"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-下列範例： **可還原任務關鍵性共同作業應用程式之存取權的範例 A-應變 CA 原則**，是典型的公司應變。 在此案例中，組織通常會針對所有 Exchange Online 和 SharePoint Online 存取要求使用 MFA，而在此情況下，中斷係指客戶的 MFA 提供者發生中斷狀況 (不論是 Azure MFA、內部部署 MFA 提供者，還是協力廠商 MFA)。 此原則可降低此中斷狀況的風險，方法是允許特定的目標使用者從受信任的 Windows 裝置存取這些應用程式，但只有在從受信任的公司網路存取應用程式時才允許。 它也會將緊急帳戶和核心系統管理員從這些限制中排除。 目標使用者將得以存取 Exchange Online 和 SharePoint Online，而其他使用者仍將因中斷而無法存取應用程式。 此範例將需要一個具名的網路位置 **CorpNetwork** 和一個安全性群組 **ContingencyAccess** (含有目標使用者)、一個名為 **CoreAdmins** 的群組 (含有核心系統管理員)，以及一個名為 **EmergencyAccess** 的群組 (含有緊急存取帳戶)。 此應變措施需要四個原則來提供所需的存取權。 
+下列範例： **可還原任務關鍵性共同作業應用程式之存取權的範例 A-應變 CA 原則**，是典型的公司應變。 在此案例中，組織通常要求所有 Exchange Online 和 SharePoint Online 存取都需要 MFA，而在此情況下，當客戶的 MFA 提供者發生中斷 (是否 Azure AD MFA、內部部署 MFA 提供者或協力廠商 MFA) 。 此原則可降低此中斷狀況的風險，方法是允許特定的目標使用者從受信任的 Windows 裝置存取這些應用程式，但只有在從受信任的公司網路存取應用程式時才允許。 它也會將緊急帳戶和核心系統管理員從這些限制中排除。 目標使用者將得以存取 Exchange Online 和 SharePoint Online，而其他使用者仍將因中斷而無法存取應用程式。 此範例將需要一個具名的網路位置 **CorpNetwork** 和一個安全性群組 **ContingencyAccess** (含有目標使用者)、一個名為 **CoreAdmins** 的群組 (含有核心系統管理員)，以及一個名為 **EmergencyAccess** 的群組 (含有緊急存取帳戶)。 此應變措施需要四個原則來提供所需的存取權。 
 
 **範例 A - 用以還原對任務關鍵性共同作業應用程式之存取權的應變 CA 原則：**
 
@@ -208,7 +208,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>從內部內部部署資源鎖定使用者 (NPS 延伸模組) 的應變
 
-如果您要使用 Azure MFA NPS 擴充功能來保護 VPN 存取，請考慮將您的 VPN 解決方案與 [SAML 應用程式](../manage-apps/view-applications-portal.md) 同盟，並依照下列建議來判斷應用程式類別。 
+如果您要使用 Azure AD MFA NPS 擴充功能來保護 VPN 存取，請考慮將您的 VPN 解決方案與 [SAML 應用程式](../manage-apps/view-applications-portal.md) 同盟，並依照下列建議來判斷應用程式類別。 
 
 如果您已部署 Azure AD MFA NPS 延伸模組以使用 MFA 來保護內部內部部署資源（例如 VPN 和遠端桌面閘道），則在發生緊急狀況時，您應該事先考慮是否已準備好停用 MFA。
 
@@ -280,7 +280,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
  > 如果您擴大受信任的 IP 位址來解除封鎖存取，與 IP 位址相關聯的風險偵測 (例如，將不會產生不可能的移動或不熟悉的位置) 。
 
 >[!NOTE]
- > 只有在使用 [Azure AD Premium 授權](./concept-mfa-licensing.md)的情況下，才能為 Azure MFA 設定[受信任的 IP](./howto-mfa-mfasettings.md)。
+ > Azure AD MFA 設定 [受信任的 ip](./howto-mfa-mfasettings.md) 僅適用于 [Azure AD Premium 授權](./concept-mfa-licensing.md)。
 
 ## <a name="learn-more"></a>深入了解
 

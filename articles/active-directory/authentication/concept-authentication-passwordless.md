@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992825"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840078"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -62,7 +62,7 @@ Windows Hello 企業版 [規劃指南](/windows/security/identity-protection/hel
 
 驗證器應用程式會將任何 iOS 或 Android 手機變成強式無密碼認證。 使用者可以登入任何平臺或瀏覽器，方法是取得電話的通知、比對畫面上顯示的數位與手機上的數位，然後使用其生物特徵辨識 (觸控或臉部) 或 PIN 來確認。 如需安裝詳細資料，請參閱 [下載並安裝 Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-download-install.md) 。
 
-無密碼使用 Microsoft Authenticator 應用程式登入 Azure AD 目前為預覽狀態。 使用 Microsoft Authenticator 應用程式進行 Azure Multi-Factor Authentication 的次要驗證、自助式密碼重設 (SSPR) 或 OATH 軟體權杖正式運作。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+無密碼使用 Microsoft Authenticator 應用程式登入 Azure AD 目前為預覽狀態。 使用 Microsoft Authenticator 應用程式進行 Azure AD Multi-Factor Authentication 的次要驗證、自助式密碼重設 (SSPR) 或 OATH 軟體權杖正式運作。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用驗證器應用程式的無密碼 authentication，會遵循與 Windows Hello 企業版相同的基本模式。 由於必須識別使用者，讓 Azure AD 可以找到所使用的 Microsoft Authenticator 應用程式版本，因此會稍微複雜一點：
 
@@ -174,7 +174,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 
 使用下表來選擇可支援您的需求和使用者的方法。
 
-|角色|狀況|環境|無密碼技術|
+|角色|案例|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|安全存取裝置以進行管理工作|指派 Windows 10 裝置|Windows Hello 企業版及/或 FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|
@@ -182,7 +182,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 |**資訊工作者**|生產力工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|
 |**Frontline 背景工作**|工廠、工廠、零售或資料輸入的 kiosk|共用的 Windows 10 裝置|FIDO2 安全性金鑰|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用 Azure AD 中的無密碼，請完成下列其中一個作法：
 

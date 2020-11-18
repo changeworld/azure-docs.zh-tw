@@ -1,6 +1,6 @@
 ---
-title: 設定 Azure Multi-Factor Authentication - Azure Active Directory
-description: 瞭解如何在 Azure 入口網站中設定 Azure Multi-Factor Authentication 的設定
+title: 設定 Azure AD Multi-Factor Authentication-Azure Active Directory
+description: 瞭解如何在 Azure 入口網站中設定 Azure AD Multi-Factor Authentication 的設定
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,26 +12,26 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 17fbba605f6f20fa384d59a8c89ee536a9b121bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: adca22b3a8d9b93dfbc62202106127a5833a4c38
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964430"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839194"
 ---
-# <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
+# <a name="configure-azure-ad-multi-factor-authentication-settings"></a>設定 Azure AD Multi-Factor Authentication 設定
 
-若要自訂 Azure Multi-Factor Authentication 的終端使用者體驗，您可以設定帳戶鎖定閾值或詐騙警示和通知等設定的選項。 某些設定會直接在 Azure 入口網站中，Azure Active Directory (Azure AD) ，有些設定則是在不同的 Azure Multi-Factor Authentication 入口網站中。
+若要自訂 Azure AD Multi-Factor Authentication 的終端使用者體驗，您可以設定帳戶鎖定閾值或詐騙警示和通知等設定的選項。 某些設定會直接在 Azure 入口網站中，Azure Active Directory (Azure AD) ，有些設定會在個別 Azure AD Multi-Factor Authentication 入口網站中。
 
-下列 Azure Multi-Factor Authentication 設定可在 Azure 入口網站中取得：
+Azure 入口網站提供下列 Azure AD Multi-Factor Authentication 設定：
 
-| 特徵 | 描述 |
+| 功能 | 說明 |
 | ------- | ----------- |
-| [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，則暫時鎖定帳戶以使用 Azure Multi-Factor Authentication。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
-| [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |
+| [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，請使用 Azure AD Multi-Factor Authentication 暫時鎖定帳戶。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
+| [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure AD Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |
 | [詐騙警示](#fraud-alert) | 設定可讓使用者報告詐騙驗證要求的設定。 |
 | [通知](#notifications) | 啟用 MFA 伺服器中事件的通知。 |
-| [OATH 權杖](concept-authentication-oath-tokens.md) | 用於雲端式 Azure MFA 環境，以管理使用者的 OATH 權杖。 |
+| [OATH 權杖](concept-authentication-oath-tokens.md) | 用於以雲端為基礎的 Azure AD MFA 環境中，以管理使用者的 OATH 權杖。 |
 | [通話設定](#phone-call-settings) | 設定雲端和內部部署環境之通話和問候語相關的設定。 |
 | 提供者 | 這會顯示任何可能已與您帳戶建立關聯的現有驗證提供者。 自 2018 年 9 月 1 日起，可能無法建立新的驗證提供者 |
 
@@ -50,14 +50,14 @@ ms.locfileid: "91964430"
 若要設定帳戶鎖定設定，請完成下列設定：
 
 1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**  >  **帳戶鎖定**。
+1. 流覽至 **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **帳戶鎖定**。
 1. 輸入您的環境所需的值，然後選取 [ **儲存**]。
 
     ![Azure 入口網站中帳戶鎖定設定的螢幕擷取畫面](./media/howto-mfa-mfasettings/account-lockout-settings.png)
 
 ## <a name="block-and-unblock-users"></a>封鎖及解除封鎖使用者
 
-如果使用者的裝置遺失或遭竊，您可以封鎖相關聯帳戶的 Azure Multi-Factor Authentication 嘗試。 系統會自動拒絕已封鎖使用者的任何 Azure Multi-Factor Authentication 嘗試。 使用者自封鎖的時刻起，將持續封鎖 90 天。
+如果使用者的裝置遺失或遭竊，您可以封鎖相關聯帳戶的 Azure AD Multi-Factor Authentication 嘗試。 系統會自動拒絕已封鎖使用者的任何 Azure AD Multi-Factor Authentication 嘗試。 使用者自封鎖的時刻起，將持續封鎖 90 天。
 
 ### <a name="block-a-user"></a>封鎖使用者
 
@@ -85,8 +85,8 @@ ms.locfileid: "91964430"
 
 有下列詐騙警示設定選項可供使用：
 
-* **自動封鎖回報詐騙的使用者**：如果使用者回報詐騙，使用者帳戶的 Azure MFA 驗證嘗試會封鎖90天，或直到系統管理員解除封鎖其帳戶為止。 系統管理員可以使用登入報告來檢閱登入，並採取適當的動作以避免未來的詐騙。 系統管理員接著可以[解除封鎖](#unblock-a-user)使用者的帳戶。
-* **在初始問候語期間回報詐騙**的程式碼：當使用者收到電話以執行多重要素驗證時，通常會按下 **#** 確認其登入。 若要報告詐騙，則需要在按 **#** 之前輸入代碼。 根據預設，此代碼是 **0**，但您可以自訂。
+* **自動封鎖回報詐騙的使用者**：如果使用者回報詐騙，使用者帳戶的 Azure AD MFA 驗證嘗試會封鎖90天，或直到系統管理員解除封鎖其帳戶為止。 系統管理員可以使用登入報告來檢閱登入，並採取適當的動作以避免未來的詐騙。 系統管理員接著可以[解除封鎖](#unblock-a-user)使用者的帳戶。
+* **在初始問候語期間回報詐騙** 的程式碼：當使用者收到電話以執行多重要素驗證時，通常會按下 **#** 確認其登入。 若要報告詐騙，則需要在按 **#** 之前輸入代碼。 根據預設，此代碼是 **0**，但您可以自訂。
 
    > [!NOTE]
    > Microsoft 的預設語音問候語會指示使用者按 **0#** 以提交詐騙警示。 如果您要使用 **0** 以外的代碼，則應該記錄下來，並上傳您自己的自訂語音問候語和適當的指示。
@@ -110,7 +110,7 @@ ms.locfileid: "91964430"
 
 若要設定詐騙警示通知，請完成下列設定：
 
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **Multi-Factor Authentication**  >  **通知**。
+1. 流覽至 **Azure Active Directory**  >  **安全性**  >  **Multi-Factor Authentication**  >  **通知**。
 1. 輸入要新增至下一個方塊的電子郵件地址。
 1. 若要移除現有的電子郵件地址，請選取所需電子郵件地址旁的 [ **...** ] 選項，然後選取 [ **刪除**]。
 1. 在準備就緒時，選取 [儲存]。
@@ -156,7 +156,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> 透過公用電話網絡放置 Azure Multi-Factor Authentication 通話時，有時會透過不支援呼叫者識別碼的貨運公司來傳送通話。 基於這個原因，即使 Azure Multi-Factor Authentication 一律會傳送，也不保證呼叫端識別碼。 這適用于電話和 Azure Multi-Factor Authentication 所提供的文字訊息。 如果您需要驗證文字訊息是否來自 Azure Multi-Factor Authentication，請參閱 [哪些 SMS 簡短程式碼用於傳送訊息？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
+> 當 Azure AD Multi-Factor Authentication 呼叫透過公用電話網絡放置時，有時會透過不支援呼叫者識別碼的貨運公司來傳送通話。 基於這個原因，雖然 Azure AD Multi-Factor Authentication 一律會傳送呼叫端識別碼，但仍不保證。 這適用于電話和 Azure AD Multi-Factor Authentication 所提供的文字訊息。 如果您需要驗證文字訊息是否來自 Azure AD Multi-Factor Authentication，請參閱 [哪些 SMS 簡短程式碼用於傳送訊息？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 若要設定您自己的呼叫者識別碼，請完成下列步驟：
 
@@ -166,7 +166,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 
 ### <a name="custom-voice-messages"></a>自訂語音訊息
 
-您可以使用自己的錄製或適用于 Azure Multi-Factor Authentication 的問候語搭配自訂語音訊息功能。 除了或取代預設的 Microsoft 錄製之外，您還可以使用這些訊息。
+您可以使用自己的錄製或問候語來 Azure AD Multi-Factor Authentication 與自訂語音訊息功能。 除了或取代預設的 Microsoft 錄製之外，您還可以使用這些訊息。
 
 開始之前，請留意下列限制：
 
@@ -220,23 +220,23 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [MFA] > [通話設定]。
 1. 選取 [新增問候語]。
-1. 選擇問候語的 **類型** ，例如 *問候語 (標準) * 或  *驗證成功*。
-1. 根據[自訂訊息語言行為](#custom-message-language-behavior)的上一節，選取**語言**。
+1. 選擇問候語的 **類型** ，例如 *問候語 (標準)* 或  *驗證成功*。
+1. 根據 [自訂訊息語言行為](#custom-message-language-behavior)的上一節，選取 **語言**。
 1. 流覽並選取要上傳的 *mp3* 或 *.wav* 音效檔。
 1. 準備好時，請選取 [ **新增**]，然後按一下 [ **儲存**]。
 
 ## <a name="mfa-service-settings"></a>MFA 服務設定
 
-Azure Multi-Factor Authentication 的應用程式密碼、受信任的 IP、驗證選項和成員多重要素驗證等設定，位於服務設定中。 這是舊版入口網站的一部分，而不是一般 Azure AD 入口網站的一部分。
+您可以在 [服務設定] 中找到應用程式密碼、信任的 Ip、驗證選項，以及 Azure AD Multi-Factor Authentication 的多重要素驗證的設定。 這是舊版入口網站的一部分，而不是一般 Azure AD 入口網站的一部分。
 
 從 Azure 入口網站瀏覽至 [Azure Active Directory] > [安全性] > [MFA] > [開始使用] > [設定] > [其他雲端式 MFA 設定] 以存取服務設定。 新的視窗或索引標籤隨即開啟，其中包含其他 *服務設定* 選項。
 
 ## <a name="trusted-ips"></a>信任的 IP
 
-Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已定義的 IP 位址範圍登入之使用者的多重要素驗證提示。 您可以為您的內部部署環境設定信任的 IP 範圍，以供使用者在其中一個位置時，沒有 Azure Multi-Factor Authentication 提示。
+Azure AD 的 _受信任 ip_ 功能 Multi-Factor Authentication 會針對從定義的 IP 位址範圍登入的使用者，略過多因素驗證提示。 您可以為內部部署環境設定受信任的 IP 範圍，讓使用者在其中一個位置時，不會有 Azure AD 的 Multi-Factor Authentication 提示。
 
 > [!NOTE]
-> 只有當您使用 MFA Server 時，信任的 ip 才可包含私人 IP 範圍。 針對雲端式 Azure Multi-Factor Authentication，您只能使用公用 IP 位址範圍。
+> 只有當您使用 MFA Server 時，信任的 ip 才可包含私人 IP 範圍。 針對雲端式 Azure AD Multi-Factor Authentication，您只能使用公用 IP 位址範圍。
 >
 > 只有 [命名位置 (預覽版) ](../conditional-access/location-condition.md#preview-features) 介面支援 IPv6 範圍。
 
@@ -244,7 +244,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 | Azure AD 租用戶類型 | 信任的 IP 功能選項 |
 |:--- |:--- |
-| 受管理 |**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 最多可設定50個信任的 IP 範圍。|
+| 受控 |**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 最多可設定50個信任的 IP 範圍。|
 | 同盟 |**所有同盟使用者**：從組織內部登入的所有同盟使用者都可以略過多重要素驗證。 使用者可使用 Active Directory Federation Services (AD FS) 所發出的宣告來略過驗證。<br/>**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 |
 
 受信任的 IP 略過只能從公司內部網路內部運作。 如果您選取 [ **所有同盟使用者** ] 選項，且使用者從公司內部網路外部登入，則使用者必須使用多重要素驗證進行驗證。 即使使用者提供 AD FS 宣告，程序還是相同的。
@@ -263,7 +263,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 您可以使用條件式存取規則，使用下列步驟來定義命名位置：
 
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後**Security**流覽至  >  **Conditional Access**  >  **名為 [位置**] 的安全性條件式存取。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後 **Security** 流覽至  >  **Conditional Access**  >  **名為 [位置**] 的安全性條件式存取。
 1. 選取 [新增位置]。
 1. 輸入位置的名稱。
 1. 選取 [標記為受信任的位置]。
@@ -274,7 +274,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 若要使用條件式存取原則啟用受信任的 Ip，請完成下列步驟：
 
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後**Security**流覽至  >   **Conditional Access**  >  **名為 [位置**] 的安全性條件式存取。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後 **Security** 流覽至  >   **Conditional Access**  >  **名為 [位置**] 的安全性條件式存取。
 1. 選取 [設定 MFA 信任的 IP]。
 1. 在 [服務設定] 頁面的 [信任的 IP] 下方，選擇下列兩個選項中的任一項：
 
@@ -291,7 +291,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服務設定啟用信任的 IP 功能
 
-如果您不想要使用條件式存取原則來啟用受信任的 Ip，您可以使用下列步驟來設定 Azure Multi-Factor Authentication 的 *服務設定* ：
+如果您不想要使用條件式存取原則來啟用受信任的 Ip，您可以使用下列步驟來設定 Azure AD Multi-Factor Authentication 的 *服務設定* ：
 
 1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後選擇 [ **使用者**]。
 1. 選取 [多重要素驗證]。
@@ -311,7 +311,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 ## <a name="verification-methods"></a>驗證方法
 
-您可以在服務設定入口網站中選擇可供使用者使用的驗證方法。 使用者將其帳戶註冊進行 Azure Multi-Factor Authentication 時，會在您已啟用的選項中選擇慣用驗證方法。 [設定我的帳戶進行多重要素驗證](../user-help/multi-factor-authentication-end-user-first-time.md)時，會提供使用者註冊程式的指引。
+您可以在服務設定入口網站中選擇可供使用者使用的驗證方法。 當您的使用者註冊 Azure AD Multi-Factor Authentication 的帳戶時，他們會從您已啟用的選項中選擇慣用的驗證方法。 [設定我的帳戶進行多重要素驗證](../user-help/multi-factor-authentication-end-user-first-time.md)時，會提供使用者註冊程式的指引。
 
 以下是可用的驗證方法：
 
@@ -336,7 +336,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 ## <a name="remember-multi-factor-authentication"></a>記住 Multi-Factor Authentication
 
-_記住 Multi-Factor Authentication_功能可讓使用者在使用 Multi-Factor Authentication 成功登入裝置之後，略過指定天數的後續驗證。 若要增強可用性並將使用者在相同裝置上執行 MFA 的次數降到最低，請選取90天或更多的持續時間。
+_記住 Multi-Factor Authentication_ 功能可讓使用者在使用 Multi-Factor Authentication 成功登入裝置之後，略過指定天數的後續驗證。 若要增強可用性並將使用者在相同裝置上執行 MFA 的次數降到最低，請選取90天或更多的持續時間。
 
 > [!IMPORTANT]
 > 若帳戶或裝置遭到入侵，請記住受信任裝置的 Multi-Factor Authentication 可能會影響安全性。 如果公司帳戶遭入侵或信任的裝置遺失或遭竊，您應該[撤銷 MFA 工作階段](howto-mfa-userdevicesettings.md)。
@@ -347,7 +347,7 @@ _記住 Multi-Factor Authentication_功能可讓使用者在使用 Multi-Factor 
 
 當使用者在登入時選取 [X 天內不要再問我] 選項時，記住 Multi-Factor Authentication 功能就會設定瀏覽器上的永續性 cookie。 該相同的瀏覽器不會再次提示使用者進行 Multi-Factor Authentication，直到 cookie 到期為止。 如果使用者在相同的裝置上開啟不同的瀏覽器或清除其 cookie，系統會提示他們再次確認。
 
-非瀏覽器應用程式上不會顯示 [X 天內不要再問我] 選項，不論應用程式是否支援新式驗證。 這些應用程式使用每隔一小時會提供新存取權杖的_重新整理權杖_。 驗證重新整理權杖時，Azure AD 會檢查在指定天數內是否發生最後一個多重要素驗證。
+非瀏覽器應用程式上不會顯示 [X 天內不要再問我] 選項，不論應用程式是否支援新式驗證。 這些應用程式使用每隔一小時會提供新存取權杖的 _重新整理權杖_。 驗證重新整理權杖時，Azure AD 會檢查在指定天數內是否發生最後一個多重要素驗證。
 
 此功能會減少 web 應用程式上的驗證次數，一般每次皆會提示。 如果設定較低的期間，此功能可能會增加通常每隔90天提示的新式驗證用戶端的驗證次數。 若與條件式存取原則結合，也可能可以增加驗證次數。
 
@@ -376,4 +376,4 @@ _記住 Multi-Factor Authentication_功能可讓使用者在使用 Multi-Factor 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解在 Azure Multi-Factor Authentication 中使用的可用方法，請參閱 [Azure Active Directory 中有哪些驗證和驗證方法？](concept-authentication-methods.md)
+若要深入瞭解 Azure AD Multi-Factor Authentication 中使用的可用方法，請參閱 [Azure Active Directory 提供哪些驗證和驗證方法？](concept-authentication-methods.md)

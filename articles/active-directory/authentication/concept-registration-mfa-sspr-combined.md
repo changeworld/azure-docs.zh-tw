@@ -1,6 +1,6 @@
 ---
-title: SSPR 和 Azure Multi-Factor Authentication Azure Active Directory 的合併註冊
-description: 瞭解 Azure Active Directory 的綜合註冊體驗，讓使用者註冊 Azure Multi-Factor Authentication 和自助式密碼重設
+title: SSPR 和 Azure AD Multi-Factor Authentication 的合併註冊-Azure Active Directory
+description: 瞭解 Azure Active Directory 的綜合註冊體驗，讓使用者註冊 Azure AD Multi-Factor Authentication 和自助式密碼重設
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378001"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839789"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 總覽的結合安全性資訊註冊
 
-在有合併註冊之前，使用者要分開註冊 Azure Multi-Factor Authentication 和自助式密碼重設 (SSPR) 的驗證方法。 人們搞不清楚，Multi-Factor Authentication 和 SSPR 使用類似的方法，但他們必須註冊這兩項功能。 現在，透過結合註冊，使用者可以註冊一次，並獲得 Multi-Factor Authentication 和 SSPR 的優點。
+在合併註冊之前，使用者已將 Azure AD Multi-Factor Authentication 和自助式密碼重設的驗證方法，分別 (SSPR) 。 人們搞不清楚，Multi-Factor Authentication 和 SSPR 使用類似的方法，但他們必須註冊這兩項功能。 現在，透過結合註冊，使用者可以註冊一次，並獲得 Multi-Factor Authentication 和 SSPR 的優點。
 
 > [!NOTE]
 > 自2020年8月15日起，所有新的 Azure AD 租使用者都會自動啟用合併註冊。
@@ -142,8 +142,8 @@ Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，請參閱教學課程以 [啟用自助式密碼重設](tutorial-enable-sspr.md) 和 [啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+若要開始使用，請參閱教學課程以 [啟用自助式密碼重設](tutorial-enable-sspr.md) 和 [啟用 Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
 
 瞭解如何 [在您的租使用者中啟用合併註冊](howto-registration-mfa-sspr-combined.md) ，或 [強制使用者重新註冊驗證方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
-您也可以檢閱 [Azure Multi-Factor Authentication 與 SSPR 的可用方法](concept-authentication-methods.md)。
+您也可以複習 [Azure AD Multi-Factor Authentication 和 SSPR 的可用方法](concept-authentication-methods.md)。

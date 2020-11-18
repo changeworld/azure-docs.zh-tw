@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication 部署考量
-description: 了解成功實作 Azure Multi-Factor Authentication 的部署考量和策略
+title: Azure AD Multi-Factor Authentication 的部署考慮
+description: 瞭解成功實施 Azure AD Multi-Factor Authentication 的部署考慮和策略
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,36 +11,36 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6aa093411e40b2fc60c52c2a22434658bab78e59
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366474"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839245"
 ---
-# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>規劃 Azure Multi-Factor Authentication 部署
+# <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>規劃 Azure AD Multi-Factor Authentication 部署
 
 人們與組織資源連線的情況日益複雜。 大家會使用智慧型手機、平板電腦、個人電腦和筆記型電腦，以組織擁有的裝置、個人裝置和公用裝置連線到公司網路來來去去，而且通常會連上多個平台。 在這種時時保持連線，使用多重裝置、多種平台的世界裡，使用者帳戶的安全性更勝以往。 在多種裝置、網路和平台上使用的密碼，無論複雜程度有多高，都不再足以確保使用者帳戶的安全性。若使用者傾向多個帳戶使用同組密碼，更是如此。 複雜巧妙的網路釣魚和其他社交工程攻擊，可能會導致使用者名稱和密碼遭放上暗網銷售。
 
-[Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) 有助於保護資料與應用程式的存取權限， 提供第二種形式的驗證，能再增加一層安全防護。 組織可以使用[條件式存取](../conditional-access/overview.md)，打造符合自身特定需求的解決方案。
+[Azure AD Multi-Factor Authentication (MFA) ](concept-mfa-howitworks.md) 可協助保護資料和應用程式的存取。 提供第二種形式的驗證，能再增加一層安全防護。 組織可以使用[條件式存取](../conditional-access/overview.md)，打造符合自身特定需求的解決方案。
 
-此部署指南會說明如何規劃並測試 Azure Multi-Factor Authentication 的新服務。
+此部署指南說明如何規劃 Azure AD Multi-Factor Authentication 推出，然後加以測試。
 
-若要先快速認識 Azure Multi-Factor Authentication 的運作方式，再回來了解更多部署上的考量：
+若要快速查看 Azure AD Multi-Factor Authentication 運作，然後返回以瞭解其他部署考慮：
 
 > [!div class="nextstepaction"]
-> [啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
+> [啟用 Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始部署 Azure Multi-Factor Authentication 之前，需先考慮一些必要條件。
+開始部署 Azure AD Multi-Factor Authentication 之前，必須考慮一些必要條件專案。
 
 | 狀況 | 必要條件 |
 | --- | --- |
-| **僅限雲端**的身分識別環境 (含新式驗證) | **無需額外必要工作** |
-| **混合式**身分識別案例 | 部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)，且使用者身分識別會與內部部署的 Active Directory Domain Services (含 Azure Active Directory) 同步處理或建立同盟。 |
+| **僅限雲端** 的身分識別環境 (含新式驗證) | **無需額外必要工作** |
+| **混合式** 身分識別案例 | 部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)，且使用者身分識別會與內部部署的 Active Directory Domain Services (含 Azure Active Directory) 同步處理或建立同盟。 |
 | 發佈供雲端存取的內部部署舊版應用程式 | 部署 Azure AD [應用程式 Proxy](../manage-apps/application-proxy.md)。 |
-| 搭配使用 Azure MFA 與 RADIUS 驗證 | 部署[網路原則伺服器 (NPS)](howto-mfa-nps-extension.md)。 |
+| 使用 Azure AD MFA 搭配 RADIUS 驗證 | 部署[網路原則伺服器 (NPS)](howto-mfa-nps-extension.md)。 |
 | 使用者具有 Microsoft Office 2010 或更早版本，或適用於 iOS 11 或更早版本的 Apple Mail | 升級至 [Microsoft Office 2013 或以後版本](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o)和 iOS 12 或以後版本的 Apple Mail。 舊版驗證通訊協定目前不支援條件式存取。 |
 
 ## <a name="plan-user-rollout"></a>規劃使用者推出
@@ -49,13 +49,13 @@ ms.locfileid: "92366474"
 
 ### <a name="user-communications"></a>與使用者溝通
 
-請務必在規劃的溝通訊息中，通知使用者即將進行的變更、Azure MFA 註冊需求，以及任何必要的使用者動作。 建議您與來自組織的代表共同開發溝通訊息，例如通訊部門、變更管理部門或人力資源部門。
+通知使用者、規劃的通訊、即將進行的變更、Azure AD MFA 註冊需求，以及任何必要的使用者動作，是很重要的。 建議您與來自組織的代表共同開發溝通訊息，例如通訊部門、變更管理部門或人力資源部門。
 
-Microsoft 提供[通訊範本](https://aka.ms/mfatemplates)和[終端使用者文件](../user-help/security-info-setup-signin.md)，可協助您草擬溝通訊息。 選取該頁面的**安全性資訊**連結，即可將使用者傳送至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 直接註冊。
+Microsoft 提供[通訊範本](https://aka.ms/mfatemplates)和[終端使用者文件](../user-help/security-info-setup-signin.md)，可協助您草擬溝通訊息。 選取該頁面的 **安全性資訊** 連結，即可將使用者傳送至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 直接註冊。
 
 ## <a name="deployment-considerations"></a>部署考量因素
 
-Azure Multi-factor Authentication 會強制執行具有條件式存取的原則，以此方式進行部署。 條件式存取原則可能會要求使用者在符合特定條件時執行多重要素驗證，例如：
+Azure AD 的 Multi-Factor Authentication 是藉由使用條件式存取來強制執行原則來部署。 條件式存取原則可能會要求使用者在符合特定條件時執行多重要素驗證，例如：
 
 * 所有使用者、特定使用者、群組成員或指派的角色
 * 目前存取特定的雲端應用程式
@@ -74,7 +74,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 
 條件式存取原則會強制註冊，要求在第一次登入時取消註冊的使用者完成註冊，這是重要的安全性考量。
 
-[Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) 會同時為 Azure Multi-Factor Authentication 案例提供註冊原則，並將風險偵測和補救原則自動化。 當身分識別遭受入侵威脅時，可建立原則來強制變更密碼，或在登入視為有所風險時要求進行 MFA，如下列[事件](../identity-protection/overview-identity-protection.md)：
+[Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) 針對 Azure AD Multi-Factor Authentication 案例提供了註冊原則，以及自動化的風險偵測和補救原則。 當身分識別遭受入侵威脅時，可建立原則來強制變更密碼，或在登入視為有所風險時要求進行 MFA，如下列[事件](../identity-protection/overview-identity-protection.md)：
 
 * 認證外洩
 * 從匿名 IP 位址登入
@@ -110,14 +110,14 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 系統管理員可以選擇可供使用者使用的[驗證方法](../authentication/concept-authentication-methods.md)。 請務必允許使用一種以上的驗證方法，如此無法使用在主要方法的情況下，使用者才有備份方法可供使用。 系統管理員可以透過下列方法啟用：
 
 > [!TIP]
-> Microsoft 建議使用 Microsoft Authenticator (行動應用程式) 作為 Azure Multi-Factor Authentication 的主要方法，以獲得更安全且更佳的使用者體驗。 Microsoft Authenticator 應用程式也 [符合](https://azure.microsoft.com/resources/microsoft-nist/) 美國國家標準和技術驗證器保證等級。 
+> Microsoft 建議使用 Microsoft Authenticator (行動應用程式) 做為 Azure AD Multi-Factor Authentication 的主要方法，以獲得更安全且更佳的使用者體驗。 Microsoft Authenticator 應用程式也 [符合](https://azure.microsoft.com/resources/microsoft-nist/) 美國國家標準和技術驗證器保證等級。 
 
 ### <a name="notification-through-mobile-app"></a>行動應用程式的通知
 
 此時會有推播通知傳送到您行動裝置上的 Microsoft Authenticator 應用程式。 使用者會看到通知，然後選取 [核准] 完成驗證。 透過行動應用程式的推播通知，能夠為使用者提供干擾度最小的選項。 而且也最為安全可靠，因為其使用的是資料連線而非電話語音。
 
 > [!NOTE]
-> 如果您的組織有員工在中國工作或旅行，在 **Android 裝置**上**透過行動應用程式通知**的方法無法在該國家/地區中使用。 請為這些使用者提供替代方法。
+> 如果您的組織有員工在中國工作或旅行，在 **Android 裝置** 上 **透過行動應用程式通知** 的方法無法在該國家/地區中使用。 請為這些使用者提供替代方法。
 
 ### <a name="verification-code-from-mobile-app"></a>行動應用程式傳回的驗證碼
 
@@ -147,7 +147,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 
 ## <a name="plan-registration-policy"></a>規劃註冊原則
 
-系統管理員必須判斷使用者會如何註冊其方法。 建議組織啟用適用於 Azure MFA 和自助式密碼重設 (SSPR) 的[全新合併式註冊體驗](howto-registration-mfa-sspr-combined.md)。 SSPR 可讓使用者以安全的方式，透過與多重要素驗證相同的方法重設密碼。 我們建議使用這種合併的註冊，是因為能提供良好的使用體驗，且兩種服務只須註冊一次即可。 在 SSPR 和 Azure MFA 啟用相同的方法，即可讓您的使用者同時註冊使用這兩項功能。
+系統管理員必須判斷使用者會如何註冊其方法。 組織應針對 Azure AD MFA 和自助式密碼重設 (SSPR) [啟用新的綜合註冊體驗](howto-registration-mfa-sspr-combined.md) 。 SSPR 可讓使用者以安全的方式，透過與多重要素驗證相同的方法重設密碼。 我們建議使用這種合併的註冊，是因為能提供良好的使用體驗，且兩種服務只須註冊一次即可。 啟用相同的 SSPR 和 Azure AD MFA 方法，可讓您的使用者註冊以使用這兩項功能。
 
 ### <a name="registration-with-identity-protection"></a>使用 Identity Protection 註冊
 
@@ -165,7 +165,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 2. 使用條件式存取，對此群組強制執行多重要素驗證以存取所有資源。
 3. 定期重新評估群組成員資格，並移除已從群組註冊的使用者。
 
-您可以使用依賴 [MSOnline PowerShell 模組](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) (英文) 的 PowerShell 命令，識別已註冊和未註冊的 Azure MFA 使用者。
+您可以使用依賴 [MSOnline powershell 模組](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)的 powershell 命令，識別已註冊和未註冊的 Azure AD MFA 使用者。
 
 #### <a name="identify-registered-users"></a>識別已註冊的使用者
 
@@ -181,7 +181,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>將使用者從單使用者 MFA 轉換成條件式存取形式的 MFA
 
-如果您的使用者是透過單使用者啟用，且強制執行 Azure 多重要素驗證，下列 PowerShell 可以協助您轉換成條件式存取形式的 Azure Multi-Factor Authentication。
+如果您的使用者已啟用並強制執行每個使用者 Azure AD Multi-Factor Authentication 下列 PowerShell 可協助您根據 Azure AD Multi-Factor Authentication 進行條件式存取的轉換。
 
 在 ISE 視窗中執行此 PowerShell，或儲存為 `.PS1` 檔案在本機執行。
 
@@ -262,26 +262,26 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 直接使用 Azure AD 驗證並具有新式驗證 (WS-Fed、SAML、OAuth、OpenID Connect) 的應用程式，可以直接使用條件式存取原則。
 
-### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>搭配使用 Azure MFA 和 Azure AD 應用程式 Proxy
+### <a name="use-azure-ad-mfa-with-azure-ad-application-proxy"></a>搭配 Azure AD 應用程式 Proxy 使用 Azure AD MFA
 
-位於內部部署的應用程式可以透過 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md) 發佈至您的 Azure AD 租用戶，且如果設定為使用 Azure AD 預先驗證，則可以利用 Azure Multi-Factor Authentication。
+位於內部部署的應用程式可以透過 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md) 發佈到您的 Azure AD 租使用者，如果設定為使用 Azure AD 預先驗證，則可以利用 Azure AD Multi-Factor Authentication。
 
-這些應用程式受限於強制執行 Azure Multi-Factor Authentication 的條件式存取原則，如同其他任何 Azure AD 整合式應用程式。
+這些應用程式受限於強制執行 Azure AD Multi-Factor Authentication 的條件式存取原則，就像任何其他 Azure AD 整合型應用程式一樣。
 
-同樣地，如果在所有使用者登入時強制執行 Azure Multi-Factor Authentication，使用 Azure AD 應用程式 Proxy 發佈的內部部署應用程式將會受到保護。
+同樣地，如果對所有使用者登入強制執行 Azure AD Multi-Factor Authentication，將會保護以 Azure AD 應用程式 Proxy 發佈的內部部署應用程式。
 
-### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>整合適用於網路原則伺服器的 Azure Multi-Factor Authentication
+### <a name="integrating-azure-ad-multi-factor-authentication-with-network-policy-server"></a>整合 Azure AD Multi-Factor Authentication 與網路原則伺服器
 
-Azure MFA 的網路原則伺服器 (NPS) 擴充功能可使用現有伺服器將雲端式 MFA 功能新增至驗證基礎結構。 有了 NPS 擴充功能，您便可以在現有的驗證流程中新增通話、簡訊或電話應用程式驗證。 此項整合具有下列限制：
+Azure AD MFA (NPS) 擴充功能的網路原則伺服器，會使用現有的伺服器，將雲端式 MFA 功能新增至您的驗證基礎結構。 有了 NPS 擴充功能，您便可以在現有的驗證流程中新增通話、簡訊或電話應用程式驗證。 此項整合具有下列限制：
 
 * 使用 CHAPv2 通訊協定時，只支援驗證器應用程式推播通知和語音通話。
 * 無法套用條件式存取原則。
 
-NPS 擴充功能可作為 RADIUS 與雲端式 Azure MFA 之間的配接器，以提供第二種驗證因素來保護 [VPN](howto-mfa-nps-extension-vpn.md)、[遠端桌面閘道連線](howto-mfa-nps-extension-rdg.md)，或其他可使用 RADIUS 的應用程式。 在此環境中註冊 Azure MFA 的使用者將會面臨所有驗證嘗試的查問，缺少條件式存取原則表示一律需要 MFA。
+NPS 擴充功能可做為 RADIUS 與雲端式 Azure AD MFA 之間的介面卡，以提供第二個驗證因素來保護 [VPN](howto-mfa-nps-extension-vpn.md)、 [遠端桌面閘道](howto-mfa-nps-extension-rdg.md)連線或其他具有 RADIUS 功能的應用程式。 在此環境中註冊 Azure AD MFA 的使用者將會面臨所有驗證嘗試的挑戰，缺少條件式存取原則表示一律需要 MFA。
 
 #### <a name="implementing-your-nps-server"></a>實作 NPS 伺服器
 
-如果您有已部署且已在使用的 NPS 執行個體，請[將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。 如果您是第一次設定 NPS，請參閱[網路原則伺服器 (NPS)](/windows-server/networking/technologies/nps/nps-top) 以取得相關指示。 如需疑難排解指導方針，請參閱[解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息](howto-mfa-nps-extension-errors.md)一文。
+如果您已部署 NPS 實例且已在使用中，則參考會將 [現有的 Nps 基礎結構與 Azure AD Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。 如果您是第一次設定 NPS，請參閱[網路原則伺服器 (NPS)](/windows-server/networking/technologies/nps/nps-top) 以取得相關指示。 您可以 [從 Azure AD Multi-Factor Authentication 的 NPS 延伸模組的「解決錯誤訊息](howto-mfa-nps-extension-errors.md)」一文中找到疑難排解指引。
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>為未註冊 MFA 的使用者準備 NPS
 
@@ -302,19 +302,19 @@ NPS 擴充功能可作為 RADIUS 與雲端式 Azure MFA 之間的配接器，以
 
 ### <a name="integrate-with-active-directory-federation-services"></a>整合 Active Directory 同盟服務
 
-如果您的組織已和 Azure AD 建立同盟，即可使用 [Azure Multi-Factor Authentication 保護 AD FS 資源](multi-factor-authentication-get-started-adfs.md)，雲端和內部部署均包含在內。 Azure MFA 可讓您減少密碼用量，提供更安全的驗證方式。 從 Windows Server 2016 開始，現在可設定 Azure MFA 進行主要驗證。
+如果您的組織與 Azure AD 同盟，您可以使用 [Azure AD Multi-Factor Authentication 來保護](multi-factor-authentication-get-started-adfs.md)內部部署和雲端中的 AD FS 資源。 Azure AD MFA 可讓您減少密碼，並提供更安全的驗證方式。 從 Windows Server 2016 開始，您現在可以設定 Azure AD MFA 以進行主要驗證。
 
-不同於 Windows Server 2012 R2 中的 AD FS，AD FS 2016 Azure MFA 配接器會直接與 Azure AD 整合，不需要內部部署 Azure MFA 伺服器。 Azure MFA 配接器內建於 Windows Server 2016，不需要額外的安裝。
+不同于 Windows Server 2012 R2 中的 AD FS，AD FS 2016 Azure AD MFA adapter 會直接與 Azure AD 整合，不需要內部部署 Azure MFA 伺服器。 Azure AD MFA 介面卡內建于 Windows Server 2016 中，因此不需要額外的安裝。
 
-搭配使用 Azure MFA 與 AD FS 2016，且目標應用程式受條件式存取原則制約時，則有其他考量：
+使用 Azure AD MFA 搭配 AD FS 2016 且目標應用程式受條件式存取原則的制約時，還有其他考慮：
 
 * 當應用程式是 Azure AD 的信賴憑證者，並以 AD FS 2016 或更新版本同盟時，就可以使用條件式存取。
 * 當應用程式是 AD FS 2016 或 AD FS 2019 的信賴憑證者，且為受控或與 AD FS 2016 或 AD FS 2019 同盟時，就無法使用條件式存取。
-* 當 AD FS 2016 或 AD FS 2019 設定為使用 Azure MFA 做為主要驗證方法時，也無法使用條件式存取。
+* 當 AD FS 2016 或 AD FS 2019 設定為使用 Azure AD MFA 作為主要驗證方法時，也無法使用條件式存取。
 
 #### <a name="ad-fs-logging"></a>AD FS 記錄
 
-Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 和 2019 記錄，包含了驗證要求及其成功或失敗的相關資訊。 這些事件內的事件記錄檔資料會指出是否已使用 Azure MFA。 例如，AD FS 的稽核事件識別碼 1200 可能包含：
+Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 和 2019 記錄，包含了驗證要求及其成功或失敗的相關資訊。 這些事件內的事件記錄檔資料會指出是否已使用 Azure AD MFA。 例如，AD FS 的稽核事件識別碼 1200 可能包含：
 
 ```
 <MfaPerformed>true</MfaPerformed>
@@ -323,11 +323,11 @@ Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 �
 
 #### <a name="renew-and-manage-certificates"></a>更新及管理憑證
 
-在每部 AD FS 伺服器上的 [本機電腦] [我的存放區] 中，會有名為 OU = Microsoft AD FS Azure MFA 的自我簽署 Azure MFA 憑證，其中包含憑證到期日。 請檢查每個 AD FS 伺服器上此憑證的有效期間，以判斷到期日。
+在每部 AD FS 伺服器上，在本機電腦的存放區中，會有一個名為 OU = Microsoft AD FS Azure MFA 的自我簽署 Azure AD MFA 憑證，其中包含憑證到期日。 請檢查每個 AD FS 伺服器上此憑證的有效期間，以判斷到期日。
 
 如果憑證的有效期間即將到期，[在每個 AD FS 伺服器](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)上產生並驗證新的 MFA 憑證。
 
-下列指引會詳細說明如何在您的 AD FS 伺服器上管理 Azure MFA 憑證。 當您使用 Azure MFA 設定 AD FS 時，透過 `New-AdfsAzureMfaTenantCertificate` PowerShell Cmdlet 產生的憑證有效期間為兩年。 請在到期前更新並安裝已更新的憑證，以避免 MFA 服務中斷。
+下列指引詳細說明如何在 AD FS 伺服器上管理 Azure AD MFA 憑證。 當您使用 Azure AD MFA 設定 AD FS 時，透過 PowerShell Cmdlet 產生的憑證 `New-AdfsAzureMfaTenantCertificate` 有效期限為兩年。 請在到期前更新並安裝已更新的憑證，以避免 MFA 服務中斷。
 
 ## <a name="implement-your-plan"></a>實作您的方案
 
@@ -353,9 +353,9 @@ Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 �
 
 ## <a name="manage-your-solution"></a>管理您的解決方案
 
-Azure MFA 的報告
+Azure AD MFA 的報告
 
-Azure Multi-Factor Authentication 透過 Azure 入口網站提供報告：
+Azure AD Multi-Factor Authentication 透過 Azure 入口網站提供報表：
 
 | Report | Location | 描述 |
 | --- | --- | --- |
@@ -363,11 +363,11 @@ Azure Multi-Factor Authentication 透過 Azure 入口網站提供報告：
 
 ## <a name="troubleshoot-mfa-issues"></a>針對 MFA 問題進行疑難排解
 
-如需 Azure MFA 常見問題的解決方案，請參閱 Microsoft 支援服務中心的[對 Azure 多重要素驗證問題進行故障排除](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues)一文。
+在 Microsoft 支援服務 Center 的 [疑難排解 Azure AD Multi-Factor Authentication 文章](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) 中尋找 Azure AD MFA 的常見問題解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要查看作用中的 Azure Multi-Factor Authentication，請完成下列教學課程：
+若要查看 Azure AD Multi-Factor Authentication 運作方式，請完成下列教學課程：
 
 > [!div class="nextstepaction"]
-> [啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
+> [啟用 Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md)

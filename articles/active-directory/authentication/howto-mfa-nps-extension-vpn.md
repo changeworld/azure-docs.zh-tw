@@ -1,6 +1,6 @@
 ---
-title: 使用 NPS 擴充功能搭配 Azure MFA 使用 VPN - Azure Active Directory
-description: 使用 Microsoft Azure 的網路原則伺服器擴充功能來整合您的 VPN 基礎結構與 Azure MFA。
+title: 使用 NPS 擴充功能 Azure AD MFA 的 VPN-Azure Active Directory
+description: 使用適用于 Microsoft Azure 的網路原則伺服器擴充功能，將您的 VPN 基礎結構與 Azure AD MFA 整合。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7243857db9a3726bb42815ac4c9eef661f52e47
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73fa82c3f162b546517ce40ef1447c002351d5b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964718"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839534"
 ---
-# <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 的網路原則伺服器擴充功能來整合您的 VPN 基礎結構與 Azure MFA
+# <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用適用于 Azure 的網路原則伺服器擴充功能，將您的 VPN 基礎結構與 Azure AD MFA 整合
 
-Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為基礎的 [Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md) (可提供雙步驟驗證) 來保護遠端驗證撥入使用者服務 (RADIUS) 用戶端驗證。
+適用于 Azure 的網路原則伺服器 (NPS) 擴充功能，可讓組織使用以雲端為基礎) Azure AD Multi-Factor Authentication [MFA (](howto-mfaserver-nps-rdg.md)（可提供雙步驟驗證）來保護遠端驗證撥入消費者服務 (RADIUS) 用戶端驗證。
 
 本文提供指示，引導您使用 Azure 的 NPS 擴充功能來整合 NPS 基礎結構與 MFA。 此程序可針對嘗試使用 VPN 連線到您網路的使用者提供安全的雙步驟驗證。
 
@@ -43,7 +43,7 @@ Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為�
 * 提供強制驗證和授權的方法，以供存取具有 802.1x 功能的無線存取點及乙太網路交換器。
   如需詳細資訊，請參閱[網路原則伺服器](/windows-server/networking/technologies/nps/nps-top)。
 
-為了加強安全性並提供高水準的合規性，組織可以整合 NPS 與 Azure Multi-Factor Authentication 來確保使用雙步驟驗證的使用者能夠連線到 VPN 伺服器上的虛擬連接埠。 使用者若要獲得存取權，就必須提供其使用者名稱和密碼的組合以及使用者所掌握的其他資訊。 這項資訊必須是受信任且無法輕易複製的。 可以是行動電話號碼、有線電話號碼或行動裝置上的應用程式。
+為了加強安全性並提供高層級的合規性，組織可以整合 NPS 與 Azure AD Multi-Factor Authentication，以確保使用者使用雙步驟驗證來連線到 VPN 伺服器上的虛擬埠。 使用者若要獲得存取權，就必須提供其使用者名稱和密碼的組合以及使用者所掌握的其他資訊。 這項資訊必須是受信任且無法輕易複製的。 可以是行動電話號碼、有線電話號碼或行動裝置上的應用程式。
 
 在 Azure 的 NPS 擴充功能推出前，想要對整合式的 NPS 與 MFA 環境實作雙步驟驗證的客戶，必須在內部部署環境中另外設定及維護一部 MFA Server。 此類型的驗證由使用 RADIUS 的遠端桌面閘道和 Azure Multi-Factor Authentication Server 提供。
 
@@ -66,9 +66,9 @@ Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為�
 1. VPN 伺服器收到來自 VPN 使用者的驗證要求，其中包含用來連線到某項資源 (例如，遠端桌面工作階段) 的使用者名稱和密碼。
 2. VPN 伺服器作為 RADIUS 用戶端，以將要求轉換為 RADIUS *Access-Request* 訊息，並將此訊息 (密碼會經過加密) 傳送至 NPS 擴充功能安裝所在的 RADIUS 伺服器。
 3. 使用者名稱和密碼組合在 Active Directory 中進行驗證。 如果使用者名稱或密碼不正確，RADIUS 伺服器會傳送 *Access-Reject* 訊息。
-4. 如果 NPS 連線要求與網路原則中所指定的所有條件 (例如，一天當中的時間或群組成員資格限制) 皆能符合，NPS 擴充功能就會觸發要求，以便使用 Azure Multi-Factor Authentication 進行第二項驗證。
-5. Azure Multi-Factor Authentication 會與 Azure Active Directory 通訊、擷取使用者的詳細資料，並使用使用者所設定的方法執行次要驗證 (撥打行動電話、簡訊或行動裝置應用程式)。
-6. MFA 挑戰成功後，Azure Multi-Factor Authentication 會將結果傳遞給 NPS 擴充功能。
+4. 如果符合 NPS 連線要求和網路原則中所指定的所有條件 (例如，一天中的時間或群組成員資格限制) ，NPS 擴充功能就會觸發要求以 Azure AD Multi-Factor Authentication 進行次要驗證。
+5. Azure AD Multi-Factor Authentication 會與 Azure Active Directory 進行通訊、抓取使用者的詳細資料，並使用使用者所設定的方法 (行動電話、文字訊息或行動裝置應用程式) 來執行次要驗證。
+6. 當 MFA 挑戰成功時，Azure AD Multi-Factor Authentication 會將結果傳達給 NPS 擴充功能。
 7. 當連線嘗試通過驗證並獲得授權後，擴充功能安裝所在的 NPS 就會傳送 RADIUS *Access-Accept* 訊息給 VPN 伺服器 (RADIUS 用戶端)。
 8. 使用者會獲得 VPN 伺服器上之虛擬連接埠的存取權，並建立加密的 VPN 通道。
 
@@ -78,7 +78,7 @@ Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為�
 
 * VPN 基礎結構
 * 網路原則與存取服務角色
-* Azure Multi-Factor Authentication 授權
+* Azure AD Multi-Factor Authentication 授權
 * Windows Server 軟體
 * 程式庫
 * 與內部部署 Active Directory 同步的 Azure Active Directory (Azure AD)
@@ -96,9 +96,9 @@ Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為�
 
 如需有關安裝網路原則與存取服務角色服務 Windows Server 2012 或更新版本的資訊，請參閱[安裝 NAP 健康原則伺服器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)) \(英文\)。 Windows Server 2016 已淘汰 NAP。 如需 NPS 最佳做法的說明 (包括在網域控制站上安裝 NPS 的建議)，請參閱 [NPS 的最佳做法](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)) \(英文\)。
 
-### <a name="azure-mfa-license"></a>Azure MFA 授權
+### <a name="azure-ad-mfa-license"></a>Azure AD MFA 授權
 
-Azure Multi-Factor Authentication 需要授權，而且可透過 Azure AD Premium、Enterprise Mobility + Security 或 Multi-Factor Authentication 獨立授權提供。 Azure MFA 以使用情況為基礎的授權 (例如每位使用者或每次驗證授權) 與 NPS 擴充功能並不相容。 如需詳細資訊，請參閱[如何取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)。 若要進行測試，您可以使用試用版訂用帳戶。
+Azure AD Multi-Factor Authentication 需要授權，而且可透過 Azure AD Premium、Enterprise Mobility + Security 或 Multi-Factor Authentication 獨立授權取得。 Azure AD MFA 的取用型授權（例如每位使用者或每次驗證授權）與 NPS 擴充功能不相容。 如需詳細資訊，請參閱 [如何取得 Azure AD Multi-Factor Authentication](concept-mfa-licensing.md)。 若要進行測試，您可以使用試用版訂用帳戶。
 
 ### <a name="windows-server-software"></a>Windows Server 軟體
 
@@ -228,9 +228,9 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 
 2. 在 [伺服器管理員] 中選取 [工具]，然後選取 [路由及遠端存取]。
 
-3. 在 [**路由及遠端存取**] 視窗中，以滑鼠右鍵按一下 [ ** \<server name> (本機) **]，然後選取 [**屬性**]。
+3. 在 [**路由及遠端存取**] 視窗中，以滑鼠右鍵按一下 [ **\<server name> (本機)**]，然後選取 [**屬性**]。
 
-4. 在 [ ** \<server name> (本機) 屬性**] 視窗中，選取 [**安全性**] 索引標籤。
+4. 在 [ **\<server name> (本機) 屬性**] 視窗中，選取 [**安全性**] 索引標籤。
 
 5. 在 [安全性] 索引標籤的 [驗證提供者] 底下選取 [RADIUS 驗證]，然後按選取 [設定]。
 
@@ -302,7 +302,7 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 
 ## <a name="configure-multi-factor-authentication"></a>設定 Multi-Factor Authentication
 
-如需設定 Multi-Factor Authentication 之使用者的協助，請參閱[規劃雲端式 Azure Multi-Factor Authentication 部署](howto-mfa-getstarted.md#create-conditional-access-policy)和[對我的帳戶進行雙步驟驗證設定](../user-help/multi-factor-authentication-end-user-first-time.md)文章
+如需設定 Multi-Factor Authentication 使用者的協助，請參閱[規劃雲端式 Azure AD Multi-Factor Authentication 部署](howto-mfa-getstarted.md#create-conditional-access-policy)和[設定我的帳戶進行雙步驟驗證](../user-help/multi-factor-authentication-end-user-first-time.md)的文章
 
 ## <a name="install-and-configure-the-nps-extension"></a>安裝和設定 NPS 擴充功能
 
@@ -312,17 +312,17 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 > REQUIRE_USER_MATCH 登錄機碼區分大小寫。 所有值都必須以大寫格式設定。
 >
 
-在安裝並設定了 NPS 擴充功能後，由此伺服器負責處理的所有 RADIUS 型用戶端驗證都必須使用 MFA。 如果所有的 VPN 使用者都未在 Azure Multi-Factor Authentication 中註冊，您可以執行下列其中一項：
+在安裝並設定了 NPS 擴充功能後，由此伺服器負責處理的所有 RADIUS 型用戶端驗證都必須使用 MFA。 如果您的所有 VPN 使用者未在 Azure AD Multi-Factor Authentication 中註冊，您可以執行下列其中一項動作：
 
 * 設定另一部 RADIUS 伺服器來驗證尚未設定為使用 MFA 的使用者。
 
-* 建立登錄項目，來允許受到挑戰的使用者提供第二個驗證要素，但前提是他們必須已在 Azure Multi-Factor Authentication 中註冊。
+* 建立登錄專案，以在 Azure AD Multi-Factor Authentication 註冊時，讓挑戰使用者提供第二個驗證因素。
 
-_在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_建立名為 REQUIRE_USER_MATCH 的新字串值，並將值設定為*TRUE*或*FALSE*。
+_在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_ 建立名為 REQUIRE_USER_MATCH 的新字串值，並將值設定為 *TRUE* 或 *FALSE*。
 
 ![「需要使用者比對」設定](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-如果值設定為 *TRUE* 或空白，則所有驗證要求都受限於 MFA 挑戰。 如果值設定為 *FALSE*，MFA 挑戰只會發給在 Azure Multi-Factor Authentication 中註冊的使用者。 在上架期間，只能在測試或生產環境中使用 [ *FALSE* ] 設定。
+如果值設定為 *TRUE* 或空白，則所有驗證要求都受限於 MFA 挑戰。 如果值設定為 *FALSE*，MFA 挑戰只會發出給已在 Azure AD Multi-Factor Authentication 中註冊的使用者。 在上架期間，只能在測試或生產環境中使用 [ *FALSE* ] 設定。
 
 
 
@@ -332,7 +332,7 @@ _在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_建立名為 REQUIRE_USER_MATCH 的新
 
 1. 以 Azure 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
-1. 在 [ **總覽** ] 頁面上會顯示 *租使用者資訊* 。 在租使用者 *識別碼*旁邊，選取 **複製** 圖示，如下列範例螢幕擷取畫面所示：
+1. 在 [ **總覽** ] 頁面上會顯示 *租使用者資訊* 。 在租使用者 *識別碼* 旁邊，選取 **複製** 圖示，如下列範例螢幕擷取畫面所示：
 
    ![從 Azure 入口網站取得租使用者識別碼](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
@@ -346,11 +346,11 @@ NPS 擴充功能必須安裝於已安裝「網路原則與存取服務」角色�
 
 3. 在 NPS 伺服器上按兩下 **NpsExtnForAzureMfaInstaller.exe**，在系統提示時選取 [執行]。
 
-4. 在 [Azure MFA 安裝程式的 NPS 擴充功能] 視窗中檢閱軟體授權條款，選取 [我同意授權條款和條件] 核取方塊，然後選取 [安裝]。
+4. 在 [ **AZURE AD MFA 安裝程式的 NPS 擴充** 功能] 視窗中，檢查軟體授權條款，選取 [ **我同意授權條款及條件** ] 核取方塊，然後選取 [ **安裝**]。
 
-    ![[Azure MFA 安裝程式的 NPS 擴充功能] 視窗](./media/howto-mfa-nps-extension-vpn/image36.png)
+    ![[Azure AD MFA 安裝程式的 NPS 擴充功能] 視窗](./media/howto-mfa-nps-extension-vpn/image36.png)
 
-5. 在 [Azure MFA 安裝程式的 NPS 擴充功能] 視窗中，選取 [關閉]。  
+5. 在 [ **AZURE AD MFA 安裝程式的 NPS 擴充** 功能] 視窗中，選取 [ **關閉**]。  
 
     ![[安裝成功] 確認視窗](./media/howto-mfa-nps-extension-vpn/image37.png)
 
@@ -402,7 +402,7 @@ NPS 擴充功能必須安裝於已安裝「網路原則與存取服務」角色�
 
 ![Windows 設定 VPN 視窗](./media/howto-mfa-nps-extension-vpn/image42.png)
 
-如果您已成功地使用先前在 Azure MFA 中設定的次要驗證方法來進行驗證，就會連線到資源。 不過，如果次要驗證失敗，系統就會拒絕讓您存取資源。
+如果您已成功使用先前在 Azure AD MFA 中設定的次要驗證方法來進行驗證，您就會連線到資源。 不過，如果次要驗證失敗，系統就會拒絕讓您存取資源。
 
 在下列範例中，Windows Phone 上的 Microsoft Authenticator 應用程式提供次要驗證：
 
@@ -424,7 +424,7 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 ![範例網路原則伺服器記錄](./media/howto-mfa-nps-extension-vpn/image45.png)
 
-在安裝了 Azure Multi-Factor Authentication NPS 擴充功能的伺服器上，您可以在 *Application and Services Logs\Microsoft\AzureMfa* 找到擴充功能專屬的事件檢視器應用程式記錄。
+在安裝 Azure AD Multi-Factor Authentication 之 NPS 擴充功能的伺服器上，您可以在 [ *應用程式與服務 Logs\Microsoft\AzureMfa*] 中找到擴充功能專屬的事件檢視器應用程式記錄檔。
 
 ```powershell
 Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
@@ -436,15 +436,15 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 如果設定未如預期般運作，請確認使用者是否已設為使用 MFA 以開始疑難排解。 讓使用者連線到 [Azure 入口網站](https://portal.azure.com)。 如果使用者收到次要驗證提示而且可以成功地完成驗證，您就可以排除是 MFA 設定不正確的問題。
 
-如果 Azure MFA 對使用者有效，請檢閱相關的事件檢視器記錄。 記錄包括安全性事件記錄、閘道運作記錄，以及上一節中討論的 Azure Multi-Factor Authentication 記錄。
+如果 Azure MFA 對使用者有效，請檢閱相關的事件檢視器記錄。 這些記錄檔包含安全性事件、閘道運作，以及上一節所討論的 Azure AD Multi-Factor Authentication 記錄。
 
 顯示失敗登入事件 (事件識別碼 6273) 的安全性記錄範例如下：
 
 ![顯示失敗登入事件的安全性記錄](./media/howto-mfa-nps-extension-vpn/image47.png)
 
-Azure Multi-Factor Authentication 記錄中的相關事件顯示如下：
+Azure AD Multi-Factor Authentication 記錄檔中的相關事件如下所示：
 
-![Azure Multi-Factor Authentication 記錄](./media/howto-mfa-nps-extension-vpn/image48.png)
+![Azure AD Multi-Factor Authentication 記錄](./media/howto-mfa-nps-extension-vpn/image48.png)
 
 若要執行進階的疑難排解，請參閱安裝了 NPS 服務的 NPS 資料庫格式記錄檔。 記錄會建立於 _%SystemRoot%\System32\Logs_ 資料夾，並以逗號分隔文字檔的形式存在。 如需這些記錄檔的說明，請參閱[解譯 NPS 資料庫格式記錄檔](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)) \(英文\)。
 
@@ -456,11 +456,11 @@ Azure Multi-Factor Authentication 記錄中的相關事件顯示如下：
 
 ![Microsoft Message Analyzer 顯示篩選的流量](./media/howto-mfa-nps-extension-vpn/image50.png)
 
-如需詳細資訊，請參閱[將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。
+如需詳細資訊，請參閱 [將現有的 NPS 基礎結構與 Azure AD Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-[取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)
+[取得 Azure AD Multi-Factor Authentication](concept-mfa-licensing.md)
 
 [使用 RADIUS 的遠端桌面閘道器和 Azure Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)
 

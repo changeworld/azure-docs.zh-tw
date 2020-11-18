@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a1da460933269a21afaf8ec7d805ec6f43fce926
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166621"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839400"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure Active Directory 設定及啟用使用者的 SMS 型驗證 (預覽)
 
@@ -45,7 +45,7 @@ ms.locfileid: "92166621"
 
 在 SMS 型驗證的公開預覽期間，適用下列限制：
 
-* SMS 型驗證目前與 Azure Multi-Factor Authentication 不相容。
+* SMS 驗證目前不相容 Azure AD Multi-Factor Authentication。
 * 除了 Teams 以外，SMS 型驗證目前與原生 Office 應用程式不相容。
 * 不建議針對 B2B 帳戶使用 SMS 型驗證。
 * 同盟使用者不會在主租用戶中進行驗證。 他們只會在雲端中進行驗證。
@@ -91,7 +91,7 @@ ms.locfileid: "92166621"
 
 使用者現在已啟用 SMS 型驗證，但是其電話號碼必須與 Azure AD 中的使用者設定檔建立關聯，才能登入。 使用者可以在 [我的設定檔] 中[自行設定此電話號碼](../user-help/sms-sign-in-explainer.md)，或者您可以使用 Azure 入口網站指派電話號碼。 電話號碼可以由「全域管理員」、「驗證管理員」，或「特殊權限驗證管理員」來設定。
 
-設定 SMS 登入的電話號碼時，也可以與 [Azure Multi-Factor Authentication][tutorial-azure-mfa] 和[自助式密碼重設][tutorial-sspr]搭配使用。
+設定 SMS 簽署的電話號碼之後，也可以搭配 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa] 和 [自助式密碼重設][tutorial-sspr]使用。
 
 1. 搜尋並選取 [Azure Active Directory]。
 1. 從 Azure Active Directory 視窗左側的導覽功能表中，選取 [使用者]。
@@ -100,7 +100,7 @@ ms.locfileid: "92166621"
 
     輸入使用者的電話號碼，包括國家/地區代碼，例如「+1 xxxxxxxxx」。 Azure 入口網站會驗證電話號碼的格式是否正確。
 
-    然後，在 [ *電話類型* ] 下拉式功能表 *中，視需要選取 [* 行動裝置]、[ *替代*行動裝置] 或 [ *其他* ]。
+    然後，在 [ *電話類型* ] 下拉式功能表 *中，視需要選取 [* 行動裝置]、[ *替代* 行動裝置] 或 [ *其他* ]。
 
     :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="在 Azure 入口網站中設定使用者的電話號碼，與 SMS 型驗證搭配使用":::
 
@@ -132,9 +132,9 @@ ms.locfileid: "92166621"
 
 ### <a name="phone-number-already-set-for-a-user-account"></a>已經為使用者帳戶設定電話號碼
 
-如果使用者已註冊 Azure Multi-Factor Authentication 和/或自助式密碼重設 (SSPR)，他們的帳戶就已經有相關聯的電話號碼。 此電話號碼不會自動與 SMS 型登入搭配使用。
+如果使用者已註冊 Azure AD 的 Multi-Factor Authentication 及/或自助式密碼重設 (SSPR) ，他們就已有與其帳戶相關聯的電話號碼。 此電話號碼不會自動與 SMS 型登入搭配使用。
 
-系統會針對其帳戶已設定電話號碼的使用者，在其 [我的設定檔] 頁面中顯示 [針對 SMS 登入啟用] 按鈕。 選取此按鈕，就會啟用帳戶與 SMS 型登入和先前的 Azure Multi-Factor Authentication 或 SSPR 註冊搭配使用。
+系統會針對其帳戶已設定電話號碼的使用者，在其 [我的設定檔] 頁面中顯示 [針對 SMS 登入啟用] 按鈕。 選取此按鈕，並啟用帳戶以用於 SMS 登入和先前的 Azure AD Multi-Factor Authentication 或 SSPR 註冊。
 
 如需使用者體驗的詳細資訊，請參閱[電話號碼的 SMS 登入使用者體驗 (預覽)](../user-help/sms-sign-in-explainer.md)。
 

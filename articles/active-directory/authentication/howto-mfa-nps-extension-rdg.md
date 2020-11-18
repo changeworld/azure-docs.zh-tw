@@ -1,6 +1,6 @@
 ---
-title: 整合 RDG 與 Azure MFA NPS 擴充功能-Azure Active Directory
-description: 使用 Microsoft Azure 的網路原則伺服器延伸模組，來整合遠端桌面閘道基礎結構與 Azure MFA
+title: 整合 RDG 與 Azure AD MFA NPS 擴充功能-Azure Active Directory
+description: 使用適用于 Microsoft Azure 的網路原則伺服器延伸模組，將您的遠端桌面閘道基礎結構與 Azure AD MFA 整合
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7399c378053859f96746840942c8c549b7b89a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5ad3d76227e833f648070bd55469861dffe3d540
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964701"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839551"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用網路原則伺服器 (NPS) 擴充功能和 Azure AD 整合遠端桌面閘道基礎結構
 
-本文提供使用 Microsoft Azure 的網路原則伺服器 (NPS) 擴充功能來整合遠端桌面閘道基礎結構與 Azure Multi-Factor Authentication (MFA) 的詳細資訊。
+本文提供詳細資料，說明如何使用適用于) 的網路原則伺服器 (NPS) 擴充功能，將遠端桌面閘道基礎結構整合至 Azure AD Multi-Factor Authentication (MFA Microsoft Azure。
 
 適用于 Azure 的網路原則伺服器 (NPS) 擴充功能可讓客戶使用 Azure 以雲端為基礎的 [) MULTI-FACTOR AUTHENTICATION MFA (](./concept-mfa-howitworks.md)，來保護遠端驗證撥入消費者服務 (RADIUS) 用戶端驗證。 此解決方案提供雙步驟驗證，以便為使用者登入和交易增加第二層安全性。
 
-本文提供逐步指示，引導您使用 Azure 的 NPS 擴充功能來整合 NPS 基礎結構與 Azure MFA。 這可為嘗試登入遠端桌面閘道的使用者能夠安全地進行驗證。
+本文提供逐步指示，說明如何使用適用于 Azure 的 NPS 擴充功能來整合 NPS 基礎結構與 Azure AD MFA。 這可為嘗試登入遠端桌面閘道的使用者能夠安全地進行驗證。
 
 > [!NOTE]
-> 本文不適用於 MFA Server 部署，僅適用於 Azure MFA (雲端式) 部署。
+> 本文不應與 MFA Server 部署搭配使用，而且只能搭配 Azure AD MFA (雲端式) 部署使用。
 
 網路原則與存取服務 (NPS) 為組織提供執行下列作業的能力：
 
@@ -37,9 +37,9 @@ ms.locfileid: "91964701"
 
 一般而言，組織會使用 NPS (RADIUS) 來簡化和集中管理 VPN 原則。 不過，許多組織也會使用 NPS 來簡化和集中管理 RD 桌面連線授權原則 (RD CAP)。
 
-組織也可以整合 NPS 與 Azure MFA 來增強安全性，並提供高層級的合規性。 這有助於確保使用者建立雙步驟驗證來登入遠端桌面閘道。 使用者若要獲得存取權，就必須提供其使用者名稱/密碼的組合以及使用者所掌握的資訊。 這項資訊必須能夠讓人信任且無法輕易複製，例如行動電話號碼、室內電話號碼、行動裝置上的應用程式等等。 RDG 目前支援來自適用于2FA 的 Microsoft 驗證器應用程式方法的通話和推播通知。 如需支援之驗證方法的詳細資訊，請參閱[判斷您的使用者可以使用的驗證方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)。
+組織也可以整合 NPS 與 Azure AD MFA 來增強安全性，並提供高層級的合規性。 這有助於確保使用者建立雙步驟驗證來登入遠端桌面閘道。 使用者若要獲得存取權，就必須提供其使用者名稱/密碼的組合以及使用者所掌握的資訊。 這項資訊必須能夠讓人信任且無法輕易複製，例如行動電話號碼、室內電話號碼、行動裝置上的應用程式等等。 RDG 目前支援來自適用于2FA 的 Microsoft 驗證器應用程式方法的通話和推播通知。 如需支援之驗證方法的詳細資訊，請參閱[判斷您的使用者可以使用的驗證方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)。
 
-在適用于 Azure 的 NPS 擴充功能推出之前，想要對整合式 NPS 和 Azure MFA 環境執行雙步驟驗證的客戶，必須在內部部署環境中設定及維護個別的 MFA 伺服器，如 [遠端桌面閘道和 Azure Multi-Factor Authentication Server 使用 RADIUS](howto-mfaserver-nps-rdg.md)所述。
+在適用于 Azure 的 NPS 擴充功能推出之前，想要對整合式 NPS 和 Azure AD MFA 環境執行雙步驟驗證的客戶，必須在內部部署環境中設定及維護個別的 MFA 伺服器，如 [遠端桌面閘道和 Azure Multi-Factor Authentication Server 使用 RADIUS](howto-mfaserver-nps-rdg.md)所述。
 
 隨著 Azure 的 NPS 擴充功能推出，組織現在可以選擇要部署內部部署型 MFA 解決方案還是雲端型 MFA 解決方案，以保護 RADIUS 用戶端驗證。
 
@@ -53,18 +53,18 @@ ms.locfileid: "91964701"
 
 1. 遠端桌面閘道伺服器會收到遠端桌面使用者要連線到某項資源 (例如遠端桌面工作階段) 的驗證要求。 作為 RADIUS 用戶端的遠端桌面閘道伺服器，會將此要求轉換為 RADIUS Access-Request 訊息，並將此訊息傳送至 NPS 擴充功能安裝所在的 RADIUS (NPS) 伺服器。
 1. 使用者名稱和密碼組合會在 Active Directory 中進行驗證，且使用者已經過驗證。
-1. 如果 NPS 連線要求與網路原則中所指定的所有條件 (例如，一天當中的時間或群組成員資格限制) 皆能符合，NPS 擴充功能就會觸發要求，以便使用 Azure MFA 進行第二項驗證。
-1. Azure MFA 與 Azure AD 進行通訊、捕獲使用者的詳細資料，並使用支援的方法執行次要驗證。
-1. 成功通過 MFA 挑戰後，Azure MFA 會將結果告知 NPS 擴充功能。
+1. 如果 NPS 連線要求和網路原則中所指定的所有條件都符合 (例如，一天中的時間或群組成員資格限制) ，NPS 擴充功能就會觸發要求以 Azure AD MFA 進行次要驗證。
+1. Azure AD MFA 會與 Azure AD 通訊、捕獲使用者的詳細資料，並使用支援的方法執行次要驗證。
+1. 當 MFA 挑戰成功時，Azure AD MFA 會將結果傳達給 NPS 擴充功能。
 1. 安裝擴充功能的 NPS 伺服器會將 RD CAP 原則的 RADIUS Access-Accept 訊息傳送至遠端桌面閘道伺服器。
 1. 使用者便取得透過 RD 閘道存取要求之網路資源的權限。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-本節會詳述在整合 Azure MFA 與遠端桌面閘道之前所需具備的必要條件。 開始之前，您必須先具備下列必要條件。  
+本節將詳細說明整合 Azure AD MFA 與遠端桌面閘道之前所需的必要條件。 開始之前，您必須先具備下列必要條件。  
 
 * 遠端桌面服務 (RDS) 基礎結構
-* Azure MFA 授權
+* Azure AD MFA 授權
 * Windows Server 軟體
 * 網路原則與存取服務 (NPS) 角色
 * 與內部部署 Active Directory 同步的 Azure Active Directory
@@ -77,9 +77,9 @@ ms.locfileid: "91964701"
 如果您想要以手動方式快速建立內部部署 RDS 基礎結構以供測試，請遵循下列步驟來部署一個。
 **深入瞭解**： [使用 Azure 快速入門部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 和 [基本 RDS 基礎結構部署](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
-### <a name="azure-mfa-license"></a>Azure MFA 授權
+### <a name="azure-ad-mfa-license"></a>Azure AD MFA 授權
 
-必需是 Azure MFA 的授權，可透過 Azure AD Premium 或包含它的其他套件組合取得。 Azure MFA 以使用情況為基礎的授權 (例如每位使用者或每次驗證授權) 與 NPS 擴充功能並不相容。 如需詳細資訊，請參閱[如何取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)。 若要進行測試，您可以使用試用版訂用帳戶。
+必要項是 Azure AD MFA 的授權，可透過 Azure AD Premium 或其他包含它的配套進行取得。 Azure AD MFA 的取用型授權（例如每位使用者或每次驗證授權）與 NPS 擴充功能不相容。 如需詳細資訊，請參閱 [如何取得 Azure AD Multi-Factor Authentication](concept-mfa-licensing.md)。 若要進行測試，您可以使用試用版訂用帳戶。
 
 ### <a name="windows-server-software"></a>Windows Server 軟體
 
@@ -101,24 +101,24 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ## <a name="configure-multi-factor-authentication"></a>設定 Multi-Factor Authentication
 
-這一節提供用於整合 Azure MFA 與遠端桌面閘道的指示。 身為管理員的您必須先設定 Azure MFA 服務，使用者才能自行註冊其多因素裝置或應用程式。
+本節提供將 Azure AD MFA 與遠端桌面閘道整合的指示。 系統管理員必須先設定 Azure AD MFA 服務，使用者才能自行註冊其多重要素裝置或應用程式。
 
-請遵循[開始在雲端使用 Azure Multi-factor Authentication](howto-mfa-getstarted.md)中的步驟，以對 Azure AD 使用者啟用 MFA。
+遵循雲端中開始 [使用 Azure AD Multi-Factor Authentication 中](howto-mfa-getstarted.md) 的步驟，為您的 Azure AD 使用者啟用 MFA。
 
 ### <a name="configure-accounts-for-two-step-verification"></a>為帳戶設定雙步驟驗證
 
 在帳戶啟用 MFA 之後，您便無法登入 MFA 原則所控管的資源，除非您成功地設定受信任的裝置來作為第二個驗證要素，並使用雙步驟驗證通過驗證。
 
-遵循 [Azure Multi-factor Authentication 什麼適合我？](../user-help/multi-factor-authentication-end-user-first-time.md)中的步驟，了解及正確設定您的裝置，以便透過您的使用者帳戶進行 MFA。
+請依照「 [Azure AD Multi-Factor Authentication 代表我的意思](../user-help/multi-factor-authentication-end-user-first-time.md) 」中的步驟執行，以瞭解並使用您的使用者帳戶適當地設定您的裝置以進行 MFA。
 
 > [!IMPORTANT]
-> 遠端桌面閘道的登入行為未提供使用 Azure Multi-Factor Authentication 輸入驗證碼的選項。 您必須使用推播通知，設定使用者帳戶以進行電話驗證或 Microsoft Authenticator 應用程式。
+> 遠端桌面閘道的登入行為未提供使用 Azure AD Multi-Factor Authentication 輸入驗證碼的選項。 您必須使用推播通知，設定使用者帳戶以進行電話驗證或 Microsoft Authenticator 應用程式。
 >
-> 如果未針對使用者設定這兩種驗證方法的其中一種，他們將無法完成 Azure Multi-Factor Authentication 挑戰並登入遠端桌面閘道。
+> 如果未針對使用者設定這兩種驗證方法的其中一種，他們將無法完成 Azure AD Multi-Factor Authentication 挑戰並登入遠端桌面閘道。
 
 ## <a name="install-and-configure-nps-extension"></a>安裝和設定 NPS 擴充功能
 
-本節會提供指示，引導您將 RDS 基礎結構設定為使用 Azure MFA 讓用戶端向遠端桌面閘道進行驗證。
+本節提供的指示說明如何設定 RDS 基礎結構，以使用 Azure AD MFA 進行用戶端驗證遠端桌面閘道。
 
 ### <a name="acquire-azure-active-directory-tenant-id"></a>取得 Azure Active Directory 租使用者識別碼
 
@@ -126,7 +126,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 1. 以 Azure 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
-1. 在 [ **總覽** ] 頁面上會顯示 *租使用者資訊* 。 在租使用者 *識別碼*旁邊，選取 **複製** 圖示，如下列範例螢幕擷取畫面所示：
+1. 在 [ **總覽** ] 頁面上會顯示 *租使用者資訊* 。 在租使用者 *識別碼* 旁邊，選取 **複製** 圖示，如下列範例螢幕擷取畫面所示：
 
    ![從 Azure 入口網站取得租使用者識別碼](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
@@ -141,9 +141,9 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 1. 下載 [NPS 擴充功能](https://aka.ms/npsmfa)。
 1. 將安裝程式可執行檔 (NpsExtnForAzureMfaInstaller.exe) 複製到 NPS 伺服器。
-1. 在 NPS 伺服器上按兩下 **NpsExtnForAzureMfaInstaller.exe**。 出現提示時，按一下 [執行]****。
-1. 檢閱 [Azure MFA 安裝程式的 NPS 擴充功能] 對話方塊中的軟體授權條款，勾選 [我同意授權條款和條件]****，然後按一下 [安裝]****。
-1. 在 [Azure MFA 安裝程式的 NPS 擴充功能] 對話方塊中，按一下 [關閉]****。
+1. 在 NPS 伺服器上按兩下 **NpsExtnForAzureMfaInstaller.exe**。 出現提示時，按一下 [執行]。
+1. 在 [Azure AD MFA 安裝程式的 NPS 擴充功能] 對話方塊中，檢查軟體授權條款，勾選 [ **我同意授權條款及條件**]，然後按一下 [ **安裝**]。
+1. 在 [Azure AD MFA 安裝程式的 NPS 擴充功能] 對話方塊中，按一下 [ **關閉**]。
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>使用 PowerShell 指令碼來設定要用於 NPS 擴充功能的憑證
 
@@ -167,7 +167,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![在 Azure AD PowerShell 中執行 AzureMfaNpsExtnConfigSetup.ps1](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. 在指令碼確認您已安裝 PowerShell 模組後，它會顯示 [Azure Active Directory PowerShell 模組] 對話方塊。 在對話方塊中，輸入您的 Azure 系統管理認證和密碼，然後按一下 [登入]****。
+1. 在指令碼確認您已安裝 PowerShell 模組後，它會顯示 [Azure Active Directory PowerShell 模組] 對話方塊。 在對話方塊中，輸入您的 Azure 系統管理認證和密碼，然後按一下 [登入]。
 
    ![在 PowerShell 中驗證 Azure AD](./media/howto-mfa-nps-extension-rdg/image5.png)
 
@@ -187,19 +187,19 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>設定遠端桌面閘道連線授權原則以使用中央存放區
 
-遠端桌面連線授權原則 (RD CAP) 會指定連線至遠端桌面閘道伺服器的需求。 RD CAP 可以儲存在本機 (預設值)，也可以儲存在執行 NPS 的中央 RD CAP 存放區中。 若要設定 Azure MFA 與 RDS 的整合，您必須指定使用中央存放區。
+遠端桌面連線授權原則 (RD CAP) 會指定連線至遠端桌面閘道伺服器的需求。 RD CAP 可以儲存在本機 (預設值)，也可以儲存在執行 NPS 的中央 RD CAP 存放區中。 若要設定 Azure AD MFA 與 RDS 的整合，您必須指定使用中央存放區。
 
-1. 在 RD 閘道伺服器上，開啟 [伺服器管理員]****。
-1. 在功能表上，按一下 [工具]****，指向 [遠端桌面服務]****，然後按一下 [遠端桌面閘道管理員]****。
-1. 在 [RD 閘道管理員中，以滑鼠右鍵按一下 [ ** \[ 伺服器名稱] \] ([本機) **]，然後按一下 [**屬性**]。
+1. 在 RD 閘道伺服器上，開啟 [伺服器管理員]。
+1. 在功能表上，按一下 [工具]，指向 [遠端桌面服務]，然後按一下 [遠端桌面閘道管理員]。
+1. 在 [RD 閘道管理員中，以滑鼠右鍵按一下 [ **\[ 伺服器名稱] \] ([本機)**]，然後按一下 [**屬性**]。
 1. 在 [屬性] 對話方塊中，選取 [ **RD CAP 存放區** ] 索引標籤。
 1. 在 [RD CAP 存放區] 索引標籤上，選取 [執行 **NPS 的中央伺服器**]。 
-1. 在 [輸入執行 NPS 之伺服器的名稱或 IP 位址]**** 欄位中，輸入您安裝 NPS 擴充功能之伺服器的 IP 位址或伺服器名稱。
+1. 在 [輸入執行 NPS 之伺服器的名稱或 IP 位址] 欄位中，輸入您安裝 NPS 擴充功能之伺服器的 IP 位址或伺服器名稱。
 
    ![輸入 NPS 伺服器的名稱或 IP 位址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
 1. 按一下 [新增] 。
-1. 在 [共用祕密]**** 對話方塊中，輸入共用祕密，然後按一下 [確定]****。 務必記錄此共用祕密並安全地儲存記錄。
+1. 在 [共用祕密] 對話方塊中，輸入共用祕密，然後按一下 [確定]。 務必記錄此共用祕密並安全地儲存記錄。
 
    >[!NOTE]
    >共用祕密用於建立 RADIUS 伺服器與用戶端之間的信任。 建立長而複雜的密碼。
@@ -207,47 +207,47 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![建立共用密碼以建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 按一下 [確定]  關閉對話方塊。
+1. 按一下 **[確定]** ，關閉對話方塊。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在遠端桌面閘道 NPS 上設定 RADIUS 逾時值
 
 為了確保有時間驗證使用者的認證、執行雙步驟驗證、接收回應，以及回應 RADIUS 訊息，您必須調整 RADIUS 超時值。
 
-1. 在 RD 閘道伺服器上，開啟 [伺服器管理員]。 在功能表中，按一下 [工具]****，然後按一下 [網路原則伺服器]****。
-1. 在 [NPS (本機)]**** 主控台中，展開 [RADIUS 用戶端和伺服器]****，然後選取 [遠端 RADIUS 伺服器]****。
+1. 在 RD 閘道伺服器上，開啟 [伺服器管理員]。 在功能表中，按一下 [工具]，然後按一下 [網路原則伺服器]。
+1. 在 [NPS (本機)] 主控台中，展開 [RADIUS 用戶端和伺服器]，然後選取 [遠端 RADIUS 伺服器]。
 
    ![顯示遠端 RADIUS 伺服器的網路原則伺服器管理主控台](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-1. 在詳細資料窗格中，按兩下 [TS GATEWAY SERVER GROUP]****。
+1. 在詳細資料窗格中，按兩下 [TS GATEWAY SERVER GROUP]。
 
    >[!NOTE]
    >設定 NPS 原則的中央伺服器時，已建立此 RADIUS 伺服器群組。 RD 閘道會將 RADIUS 訊息轉送到此伺服器或伺服器群組 (如果群組中超過一個伺服器)。
    >
 
-1. 在 [TS GATEWAY SERVER GROUP 屬性]**** 對話方塊中，選取您設定用來儲存 RD CAP 之 NPS 伺服器的 IP 位址或名稱，然後按一下 [編輯]****。
+1. 在 [TS GATEWAY SERVER GROUP 屬性] 對話方塊中，選取您設定用來儲存 RD CAP 之 NPS 伺服器的 IP 位址或名稱，然後按一下 [編輯]。
 
    ![選取先前設定的 NPS 伺服器 IP 或名稱](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-1. 在 [編輯 RADIUS 伺服器]**** 對話方塊中，選取 [負載平衡]**** 索引標籤。
-1. 在 [負載平衡]**** 索引標籤的 [要求被丟棄前，無回應的秒數]**** 欄位中，將預設值從 3 變更為介於 30 與 60 秒之間的值。
-1. 在 [伺服器被識別為無法使用時，要求之間的間隔秒數]**** 欄位中，將預設值 30 秒變更為等於或大於您在上一個步驟中指定的值。
+1. 在 [編輯 RADIUS 伺服器] 對話方塊中，選取 [負載平衡] 索引標籤。
+1. 在 [負載平衡] 索引標籤的 [要求被丟棄前，無回應的秒數] 欄位中，將預設值從 3 變更為介於 30 與 60 秒之間的值。
+1. 在 [伺服器被識別為無法使用時，要求之間的間隔秒數] 欄位中，將預設值 30 秒變更為等於或大於您在上一個步驟中指定的值。
 
    ![在 [負載平衡] 索引標籤上編輯 Radius 伺服器超時設定](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1. 按兩次 [確定]**** 以關閉對話方塊。
+1. 按兩次 [確定] 以關閉對話方塊。
 
 ### <a name="verify-connection-request-policies"></a>驗證連線要求原則
 
-根據預設，當您將 RD 閘道設定為使用連線授權原則的中央原則存放區時，則 RD 閘道會被設定為將 CAP 要求轉送到 NPS 伺服器。 已安裝 Azure MFA 擴充功能的 NPS 伺服器，會處理 RADIUS 存取要求。 下列步驟顯示如何確認預設連線要求原則。  
+根據預設，當您將 RD 閘道設定為使用連線授權原則的中央原則存放區時，則 RD 閘道會被設定為將 CAP 要求轉送到 NPS 伺服器。 已安裝 Azure AD MFA 擴充功能的 NPS 伺服器會處理 RADIUS 存取要求。 下列步驟顯示如何確認預設連線要求原則。  
 
-1. 在 RD 閘道上，於 [NPS (本機)] 主控台中展開 [原則]****，然後選取 [連線要求原則]****。
-1. 按兩下 [TS 閘道授權原則]****。
-1. 在 [TS GATEWAY AUTHORIZATION POLICY 屬性]**** 對話方塊中，按一下 [設定]**** 索引標籤。
-1. 在 [設定]**** 索引標籤上，按一下 [轉送連線要求] 之下的 [驗證]****。 RADIUS 用戶端會設定為轉送要求進行驗證。
+1. 在 RD 閘道上，於 [NPS (本機)] 主控台中展開 [原則]，然後選取 [連線要求原則]。
+1. 按兩下 [TS 閘道授權原則]。
+1. 在 [TS GATEWAY AUTHORIZATION POLICY 屬性] 對話方塊中，按一下 [設定] 索引標籤。
+1. 在 [設定] 索引標籤上，按一下 [轉送連線要求] 之下的 [驗證]。 RADIUS 用戶端會設定為轉送要求進行驗證。
 
    ![設定指定伺服器群組的驗證設定](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. 按一下 [取消]****。
+1. 按一下 [取消]。
 
 >[!NOTE]
 > 如需有關建立連線要求原則的詳細資訊，請參閱一文，設定相同的連線 [要求原則](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) 檔。 
@@ -260,10 +260,10 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 若要讓 NPS 伺服器在本案例中正常運作，您必須在 Active Directory 中加以註冊。
 
-1. 在 NPS 伺服器上，開啟 [伺服器管理員]****。
-1. 在 [伺服器管理員] 中按一下 [工具]****，然後按一下 [網路原則伺服器]****。
-1. 在 [網路原則伺服器] 主控台中，以滑鼠右鍵按一下 [NPS (本機)]****，然後按一下 [在 Active Directory 中註冊伺服器]****。
-1. 按兩次 [確定]****。
+1. 在 NPS 伺服器上，開啟 [伺服器管理員]。
+1. 在 [伺服器管理員] 中按一下 [工具]，然後按一下 [網路原則伺服器]。
+1. 在 [網路原則伺服器] 主控台中，以滑鼠右鍵按一下 [NPS (本機)]，然後按一下 [在 Active Directory 中註冊伺服器]。
+1. 按兩次 [確定]。
 
    ![在 Active Directory 中註冊 NPS 伺服器](./media/howto-mfa-nps-extension-rdg/image16.png)
 
@@ -273,12 +273,12 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 必須將遠端桌面閘道設定為 NPS 伺服器的 RADIUS 用戶端。
 
-1. 在安裝 NPS 擴充功能的 NPS 伺服器上，於 [NPS (本機)]**** 主控台中，以滑鼠右鍵按一下 [RADIUS 用戶端]**** 並按一下 [新增]****。
+1. 在安裝 NPS 擴充功能的 NPS 伺服器上，於 [NPS (本機)] 主控台中，以滑鼠右鍵按一下 [RADIUS 用戶端] 並按一下 [新增]。
 
    ![在 NPS 主控台中建立新的 RADIUS 用戶端](./media/howto-mfa-nps-extension-rdg/image17.png)
 
 1. 在 [ **新增 RADIUS 用戶端** ] 對話方塊中，提供易記的名稱（例如 _閘道_），以及遠端桌面閘道伺服器的 IP 位址或 DNS 名稱。
-1. 在 [共用祕密]**** 和 [確認共用祕密]**** 欄位中，輸入您之前使用的相同祕密。
+1. 在 [共用祕密] 和 [確認共用祕密] 欄位中，輸入您之前使用的相同祕密。
 
    ![設定易記名稱和 IP 或 DNS 位址](./media/howto-mfa-nps-extension-rdg/image18.png)
 
@@ -286,42 +286,42 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ### <a name="configure-network-policy"></a>設定網路原則
 
-請記住，具備 Azure MFA 擴充功能的 NPS 伺服器是連線授權原則 (CAP) 的指定中央原則存放區。 因此，您需要在 NPS 伺服器上實作 CAP，才能授權有效的連線要求。  
+回想一下，Azure AD MFA 擴充功能的 NPS 伺服器是連線授權原則 (CAP) 的指定中央原則存放區。 因此，您需要在 NPS 伺服器上實作 CAP，才能授權有效的連線要求。  
 
-1. 在 NPS 伺服器上，開啟 [NPS (本機)] 主控台，展開 [原則]****，然後按一下 [網路原則]****。
-1. 以滑鼠右鍵按一下 [ **其他存取伺服器**的連線]，然後按一下 [ **複製原則**]。
+1. 在 NPS 伺服器上，開啟 [NPS (本機)] 主控台，展開 [原則]，然後按一下 [網路原則]。
+1. 以滑鼠右鍵按一下 [ **其他存取伺服器** 的連線]，然後按一下 [ **複製原則**]。
 
    ![複製與其他存取伺服器原則的連接](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. 以滑鼠右鍵按一下 [複製其他存取伺服器的連線]****，然後按一下 [屬性]****。
-1. 在 [ **與其他存取伺服器的連接副本** ] 對話方塊的 [ **原則名稱**] 中，輸入適當的名稱，例如 _RDG_CAP_。 勾選 [ **啟用原則**]，然後選取 **[授與存取權**]。 (選擇性) 在 [網路存取伺服器類型]**** 中選取 [遠端桌面閘道]****，您也可以將它保留為 [未指定]****。
+1. 以滑鼠右鍵按一下 [複製其他存取伺服器的連線]，然後按一下 [屬性]。
+1. 在 [ **與其他存取伺服器的連接副本** ] 對話方塊的 [ **原則名稱**] 中，輸入適當的名稱，例如 _RDG_CAP_。 勾選 [ **啟用原則**]，然後選取 **[授與存取權**]。 (選擇性) 在 [網路存取伺服器類型] 中選取 [遠端桌面閘道]，您也可以將它保留為 [未指定]。
 
    ![命名原則、啟用和授與存取權](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1. 按一下 [條件約束]**** 索引標籤，然後勾選 [允許用戶端沒有交涉驗證方法仍然可以連線]****。
+1. 按一下 [條件約束] 索引標籤，然後勾選 [允許用戶端沒有交涉驗證方法仍然可以連線]。
 
    ![修改驗證方法，以允許用戶端連接](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-1. (選擇性) 按一下 [條件]**** 索引標籤，並新增必須符合才能授權連線的條件，例如，特定 Windows 群組中的成員資格。
+1. (選擇性) 按一下 [條件] 索引標籤，並新增必須符合才能授權連線的條件，例如，特定 Windows 群組中的成員資格。
 
    ![選擇性地指定連接條件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 按一下 [確定]。 當系統提示您檢視對應的說明主題時，請按一下 [否]****。
+1. 按一下 [確定]。 當系統提示您檢視對應的說明主題時，請按一下 [否]。
 1. 請確定新原則位於清單的頂端，已啟用原則，而且它會授與存取權。
 
    ![將您的原則移至清單頂端](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>驗證組態
 
-若要驗證組態，您必須使用適當的 RDP 用戶端登入遠端桌面閘道。 請務必使用您的連線授權原則所允許的帳戶並已啟用 Azure MFA。
+若要驗證組態，您必須使用適當的 RDP 用戶端登入遠端桌面閘道。 請務必使用連線授權原則所允許的帳戶，並啟用 Azure AD MFA。
 
-如下圖所示，您可以使用 [遠端桌面 Web 存取]**** 頁面。
+如下圖所示，您可以使用 [遠端桌面 Web 存取] 頁面。
 
 ![在遠端桌面 Web 存取中測試](./media/howto-mfa-nps-extension-rdg/image25.png)
 
 在成功輸入您的認證進行主要驗證時，[遠端桌面連線] 對話方塊會顯示 [起始遠端連線] 的狀態，如下所示。 
 
-如果您已成功地使用先前在 Azure MFA 中設定的次要驗證方法進行驗證，您就會連線到資源。 不過，如果次要驗證失敗，系統就會拒絕讓您存取資源。 
+如果您使用先前在 Azure AD MFA 中設定的次要驗證方法成功進行驗證，則您已連線到資源。 不過，如果次要驗證失敗，系統就會拒絕讓您存取資源。 
 
 ![遠端桌面連線起始遠端連線](./media/howto-mfa-nps-extension-rdg/image26.png)
 
@@ -335,7 +335,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 若要檢視 Windows 事件檢視器記錄中的成功登入事件，您可以發出下列 Windows PowerShell 命令來查詢 Windows 終端機服務和 Windows 安全性記錄。
 
-若要查詢閘道操作記錄 (Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)__ 中的成功登入事件，使用下列 PowerShell 命令：
+若要查詢閘道操作記錄 (Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational) 中的成功登入事件，使用下列 PowerShell 命令：
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * 此命令顯示的 Windows 事件顯示使用者符合資源授權原則需求 (RD RAP) 並已取得存取權。
@@ -358,15 +358,15 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ![網路原則與存取服務事件檢視器](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-在安裝了 Azure MFA NPS 擴充功能的伺服器上，您可以在 _Application and Services Logs\Microsoft\AzureMfa_ 找到擴充功能專屬的事件檢視器應用程式記錄。
+在您安裝 Azure AD MFA 之 NPS 擴充功能的伺服器上，您可以在 _應用程式和服務 Logs\Microsoft\AzureMfa_ 找到延伸模組專屬的事件檢視器應用程式記錄。
 
 ![事件檢視器 AuthZ 應用程式記錄檔](./media/howto-mfa-nps-extension-rdg/image32.png)
 
 ## <a name="troubleshoot-guide"></a>疑難排解指南
 
-如果組態未如預期般運作，確認使用者是否已設為使用 Azure MFA 是疑難排解的起點。 讓使用者連線到 [Azure 入口網站](https://portal.azure.com)。 如果使用者收到次要驗證提示而且可以成功地完成驗證，您就可以排除 Azure MFA 設定不正確的可能性。
+如果設定未如預期般運作，首先要開始進行疑難排解的地方是確認使用者是否已設定為使用 Azure AD MFA。 讓使用者連線到 [Azure 入口網站](https://portal.azure.com)。 如果系統提示使用者進行次要驗證，而且可以成功驗證，您可以排除 Azure AD MFA 的設定不正確。
 
-如果 Azure MFA 對使用者有效，請檢閱相關的事件記錄。 這些記錄包括安全性事件記錄、閘道運作記錄，以及上一節中討論的 Azure MFA 記錄。
+如果 Azure AD MFA 正在) 的使用者 (，您應該檢查相關的事件記錄檔。 其中包括安全性事件、閘道運作，以及在上一節中討論的 Azure AD MFA 記錄。
 
 以下是安全性記錄的輸出範例，其中顯示了失敗登入事件 (事件識別碼 6273)。
 
@@ -374,9 +374,9 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 以下是來自 Azure MFA 記錄的相關事件：
 
-![事件檢視器的範例 Azure MFA 登入](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Azure AD MFA 登入事件檢視器的範例](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-若要執行進階的疑難排解選項，請參閱安裝了 NPS 服務的 NPS 資料庫格式記錄檔。 這些記錄會建立於 %SystemRoot%\System32\Logs__ 資料夾，並以逗號分隔文字檔的形式存在。
+若要執行進階的疑難排解選項，請參閱安裝了 NPS 服務的 NPS 資料庫格式記錄檔。 這些記錄會建立於 %SystemRoot%\System32\Logs 資料夾，並以逗號分隔文字檔的形式存在。
 
 如需這些記錄檔的說明，請參閱[解譯 NPS 資料庫格式記錄檔](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))。 這些記錄檔中的項目若不匯入到試算表或資料庫，將難以解譯。 您可以在線上找到數個 IAS 剖析器來協助您解譯記錄檔。
 
@@ -392,7 +392,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ## <a name="next-steps"></a>後續步驟
 
-[如何取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)
+[如何取得 Azure AD Multi-Factor Authentication](concept-mfa-licensing.md)
 
 [使用 RADIUS 的遠端桌面閘道器和 Azure Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)
 

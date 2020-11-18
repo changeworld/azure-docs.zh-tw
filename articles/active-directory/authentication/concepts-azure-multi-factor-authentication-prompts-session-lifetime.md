@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication 提示和會話存留期
-description: 瞭解 Azure Multi-Factor Authentication 的重新驗證提示，以及如何套用會話存留期的建議設定。
+title: Azure AD Multi-Factor Authentication 提示和會話存留期
+description: 瞭解 Azure AD Multi-Factor Authentication 的重新驗證提示，以及如何套用會話存留期的建議設定。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964939"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839670"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure Multi-Factor Authentication 的會話存留期
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure AD Multi-Factor Authentication 的會話存留期
 
 Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重新驗證的頻率。 這種重新驗證可能是第一個因素，例如 password、FIDO 或無密碼 Microsoft Authenticator，或 (MFA) 執行多重要素驗證。 您可以視需要為您自己的環境和您想要的使用者體驗，設定這些重新驗證設定。
 
@@ -53,9 +53,9 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 使用者可能會在 Azure AD 中沒有身分識別的裝置上看到多個 MFA 提示。 當每個應用程式都有自己的 OAuth 重新整理權杖，而該權杖未與其他用戶端應用程式共用時，會產生 在此案例中，因為每個應用程式要求使用 MFA 驗證 OAuth 重新整理權杖，所以 MFA 會提示多次。
 
-在 Azure AD 中，會話存留期限制最嚴格的原則會決定使用者何時需要重新驗證。 請考慮下列案例：
+在 Azure AD 中，會話存留期限制最嚴格的原則會決定使用者何時需要重新驗證。 考慮下列案例：
 
-* 您會啟用 *保持登入*狀態，它會使用持續性瀏覽器 cookie，而
+* 您會啟用 *保持登入* 狀態，它會使用持續性瀏覽器 cookie，而
 * 您也可啟用 *記住 MFA 14 天*
 
 在此範例案例中，使用者必須每隔14天重新驗證一次。 此行為會遵循限制最嚴格的原則，即使 *讓我保持登入* 本身並不需要使用者在瀏覽器上重新驗證也一樣。
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 ![保持登入的範例提示螢幕擷取畫面](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/stay-signed-in-prompt.png)
 
-如果您有 Azure AD Premium 1 授權，建議您針對 *持續性瀏覽器會話*使用條件式存取原則。 此原則會覆寫 [ *保持登入* ] 設定，並提供改善的使用者體驗。 如果您沒有 Azure AD Premium 1 授權，建議您為使用者啟用 [保持登入] 設定。
+如果您有 Azure AD Premium 1 授權，建議您針對 *持續性瀏覽器會話* 使用條件式存取原則。 此原則會覆寫 [ *保持登入* ] 設定，並提供改善的使用者體驗。 如果您沒有 Azure AD Premium 1 授權，建議您為使用者啟用 [保持登入] 設定。
 
 如需設定選項讓使用者保持登入的詳細資訊，請參閱 [自訂您的 Azure AD 登入頁面](../fundamentals/customize-branding.md#customize-your-azure-ad-sign-in-page)。
 
@@ -88,7 +88,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 ### <a name="authentication-session-management-with-conditional-access"></a>使用條件式存取進行驗證會話管理
 
-登**入頻率**可讓系統管理員選擇同時適用于用戶端和瀏覽器中的第一個和第二個因素的登入頻率。 在需要限制驗證會話的情況下（例如針對重要商務應用程式），我們建議使用這些設定，以及使用受管理的裝置。
+登 **入頻率** 可讓系統管理員選擇同時適用于用戶端和瀏覽器中的第一個和第二個因素的登入頻率。 在需要限制驗證會話的情況下（例如針對重要商務應用程式），我們建議使用這些設定，以及使用受管理的裝置。
 
 **持續性瀏覽器會話** 可讓使用者在關閉並重新開啟其瀏覽器視窗之後，保持登入狀態。 類似于 *保持登入* 的設定，它會在瀏覽器上設定持續性 cookie。 不過，由於系統管理員已設定此設定，因此不需要使用者在 [*保持登入嗎？* ] 選項中選取 **[是]** ，以提供更好的使用者體驗。 如果您使用 [ *保持登入？* ] 選項，建議您改為啟用 **持續性瀏覽器會話** 原則。
 
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 ### <a name="configurable-token-lifetimes"></a>可設定的權杖存留期
 
-這項設定可讓您設定 Azure Active Directory 所簽發的權杖存留期。 這項原則會由 *具有條件式存取的驗證會話管理*取代。 如果您目前使用 *可* 設定的權杖存留期，我們建議您開始遷移至條件式存取原則。
+這項設定可讓您設定 Azure Active Directory 所簽發的權杖存留期。 這項原則會由 *具有條件式存取的驗證會話管理* 取代。 如果您目前使用 *可* 設定的權杖存留期，我們建議您開始遷移至條件式存取原則。
 
 ## <a name="review-your-tenant-configuration"></a>檢查您的租使用者設定  
 
@@ -105,7 +105,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 若要設定或檢查 *保持登入* 的選項，請完成下列步驟：
 
 1. 在 Azure AD 入口網站中，搜尋並選取 [ *Azure Active Directory*]。
-1. 選取 [ **公司商標**]，然後針對每個地區設定選擇 [ **顯示選項] 以保持登入**狀態。
+1. 選取 [ **公司商標**]，然後針對每個地區設定選擇 [ **顯示選項] 以保持登入** 狀態。
 1. 選擇 [ *是]*，然後選取 [ **儲存**]。
 
 若要記住多重要素驗證設定，請完成下列步驟：
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 若要檢查權杖存留期，請 [使用 Azure AD PowerShell 來查詢任何 Azure AD 原則](../develop/configure-token-lifetimes.md#prerequisites)。 停用任何您已備妥的原則。
 
-如果您的租使用者中已啟用一個以上的設定，建議您根據可用的授權更新您的設定。 例如，如果您有 Azure AD premium 授權，您應該只使用登 *入頻率* 和 *持續性瀏覽器會話*的條件式存取原則。 如果您有 Microsoft 365 apps 或 Azure AD 免費授權，您應該使用 [ *保持登入？* ] 設定。
+如果您的租使用者中已啟用一個以上的設定，建議您根據可用的授權更新您的設定。 例如，如果您有 Azure AD premium 授權，您應該只使用登 *入頻率* 和 *持續性瀏覽器會話* 的條件式存取原則。 如果您有 Microsoft 365 apps 或 Azure AD 免費授權，您應該使用 [ *保持登入？* ] 設定。
 
 如果您已啟用可設定的權杖存留期，很快就會移除這項功能。 規劃遷移至條件式存取原則。
 
@@ -136,4 +136,4 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，請完成教學課程以 [使用 Azure Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md) ，或 [使用風險偵測讓使用者登入觸發 Azure Multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md)。
+若要開始使用，請完成教學課程以使用 [Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md) ，或 [使用風險偵測讓使用者登入觸發 Azure AD Multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md)。

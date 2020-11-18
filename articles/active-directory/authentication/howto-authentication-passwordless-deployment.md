@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964871"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839568"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>規劃 Azure Active Directory 中的無密碼 authentication 部署
 
@@ -54,22 +54,22 @@ Microsoft 的無密碼 authentication 方法可實現不同的案例。 請考�
 | 案例 | 電話驗證 | 安全性金鑰 | Windows Hello 企業版 |
 | --- | --- | --- | --- |
 | **電腦登入**： <br> 從指派的 Windows 10 裝置 | **否** | **是** <br> 使用生物特徵辨識，PIN | **是**<br>使用生物識別辨識和或 PIN |
-| **電腦登入**： <br> 從共用 Windows 10 裝置 | **否** | **是** <br> 使用生物特徵辨識，PIN  | 否 |
+| **電腦登入**： <br> 從共用 Windows 10 裝置 | **否** | **是** <br> 使用生物特徵辨識，PIN  | **否** |
 | **Web 應用程式登入**： <br>從使用者專用的電腦 | **是** | **是** <br> 電腦登入會啟用對應用程式提供的單一登入 | **是**<br> 電腦登入會啟用對應用程式提供的單一登入 |
 | **Web 應用程式登入**： <br> 從行動裝置或非 windows 裝置 | **是** | **否** | **否** |
 | **電腦登入**： <br> 非 Windows 電腦 | **否** | **否** | **否** |
 
 如需為您的組織選取最佳方法的詳細資訊，請參閱 [決定無密碼方法](./concept-authentication-passwordless.md#choose-a-passwordless-method)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始進行無密碼部署之前，組織必須符合下列必要條件：
 
 | 必要條件 | 驗證器應用程式 | FIDO2 安全性金鑰 |
 | --- | --- | --- |
-| 已啟用[Azure 多重要素驗證和自助式密碼重設的合併註冊 (SSPR) ](howto-registration-mfa-sspr-combined.md)已啟用 | √ | √ |
-| [使用者可以執行 Azure 多重要素驗證](howto-mfa-getstarted.md) | √ | √ |
-| [使用者已註冊 Azure 多重要素驗證和 SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| 已啟用[Azure AD Multi-Factor Authentication 和自助式密碼重設的組合註冊 (SSPR) ](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| [使用者可以執行 Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | √ | √ |
+| [使用者已註冊 Azure AD Multi-Factor Authentication 和 SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [使用者已註冊其行動裝置以 Azure Active Directory](../devices/overview.md) | √ |   |
 | 使用支援的瀏覽器（例如 Microsoft Edge 或 Mozilla Firefox） Windows 10 1809 版或更高版本 <br>  (67 版或更高版本的) 。 <br> *Microsoft 建議的版本為1903或更高版本，以提供原生支援*。 |   | √ |
 | 相容的 FIDO2 安全性金鑰。 確定您使用的是 [Microsoft 測試及驗證](./concept-authentication-passwordless.md) 的 FIDO2 安全性裝置，或其他相容的 FIDO2 安全性裝置。 |   | √ |
@@ -78,9 +78,9 @@ Microsoft 的無密碼 authentication 方法可實現不同的案例。 請考�
 
 Windows Hello 的必要條件高度取決於您要部署的是內部部署、混合式或僅限雲端的設定。 如需詳細資訊，請參閱 [Windows Hello 企業版的必要條件完整清單](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
-使用者會將其無密碼方法註冊為 Azure 多重要素驗證註冊流程的一部分。 具有使用者名稱和密碼的多重要素驗證以及另一個已註冊的方法，在某些案例中無法使用其電話或安全性金鑰時，可以用來作為備用。
+使用者會在 Azure AD Multi-Factor Authentication 註冊流程中註冊其無密碼方法。 具有使用者名稱和密碼的多重要素驗證以及另一個已註冊的方法，在某些案例中無法使用其電話或安全性金鑰時，可以用來作為備用。
 
 ### <a name="licensing"></a>授權 
 無密碼 authentication 沒有額外的成本，不過某些必要條件可能需要 premium 訂用帳戶。 如需 [Azure Active Directory 授權頁面](https://azure.microsoft.com/pricing/details/active-directory/)中的詳細功能和授權資訊。 
@@ -93,7 +93,7 @@ Windows Hello 的必要條件高度取決於您要部署的是內部部署、混
 
 下表列出此專案期間要執行的使用案例。
 
-| 區域 | 描述 |
+| 區域 | 說明 |
 | --- | --- |
 | **存取** | 您可以從公司網路內部或外部的公司或個人裝置，使用無密碼登入。 |
 | **稽核** | 系統管理員可使用資料，以近乎即時的方式進行審查。 <br> 使用量資料會每隔29天下載到公司系統，或使用 SIEM 工具。 |
@@ -118,7 +118,7 @@ Windows Hello 的必要條件高度取決於您要部署的是內部部署、混
 - [在 Microsoft Authenticator 應用程式中註冊](howto-authentication-passwordless-phone.md)
 - [使用您的電話登入](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft 提供多重要素驗證 [通訊範本](https://aka.ms/mfatemplates)、Self-Service 密碼重設 (SSPR) [通訊範本](https://www.microsoft.com/download/details.aspx?id=56768)，以及可協助您進行通訊的 [使用者檔](../user-help/security-info-setup-signin.md) 。 選取該頁面的**安全性資訊**連結，即可將使用者傳送至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 直接註冊。
+Microsoft 提供多重要素驗證 [通訊範本](https://aka.ms/mfatemplates)、Self-Service 密碼重設 (SSPR) [通訊範本](https://www.microsoft.com/download/details.aspx?id=56768)，以及可協助您進行通訊的 [使用者檔](../user-help/security-info-setup-signin.md) 。 選取該頁面的 **安全性資訊** 連結，即可將使用者傳送至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 直接註冊。
 
 ### <a name="plan-to-pilot"></a>規劃試驗
 
@@ -140,7 +140,7 @@ Microsoft Authenticator 的應用程式可從 Google Play 或 Apple App Store �
 
 **AD FS 整合** -當使用者啟用 Microsoft Authenticator 無密碼認證時，該使用者的驗證會預設為傳送通知以供核准。 混合式租使用者中的使用者除非選取 [改為使用您的密碼]，否則無法將其導向至 ADFS 進行登入。 此程式也會略過任何內部部署的條件式存取原則和傳遞驗證流程。 但是，如果指定了 *login_hint* ，則會將使用者轉送到 ADFS，並略過使用無密碼認證的選項。
 
-**Azure 多重要素驗證服務器** -透過組織內部部署 Azure MFA 伺服器啟用多重要素驗證的終端使用者，可以建立並使用單一無密碼手機登入認證。 如果使用者嘗試使用認證升級多個安裝 (5 個或更多) Microsoft Authenticator，這項變更可能會導致錯誤。
+Azure AD 透過組織內部部署 Azure MFA 伺服器啟用多重要素驗證的 **Multi-Factor Authentication 伺服器** 端使用者，可以建立並使用單一無密碼手機登入認證。 如果使用者嘗試使用認證升級多個安裝 (5 個或更多) Microsoft Authenticator，這項變更可能會導致錯誤。
 
 **裝置註冊** ：若要使用驗證器應用程式進行無密碼 authentication，裝置必須在 Azure AD 租使用者中註冊，且不能是共用裝置。 裝置只能在單一租使用者中註冊。 這項限制表示只有一個工作或學校帳戶支援使用驗證器應用程式進行手機登入。
 
@@ -292,7 +292,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 ### <a name="required-administrative-roles"></a>必要的系統管理角色
 
-| Azure AD 角色 | 描述 |
+| Azure AD 角色 | 說明 |
 | --- | --- |
 | 全域管理員|具有最小許可權的角色，可執行結合的註冊體驗。 |
 | 驗證系統管理員 | 具有最小許可權的角色可以執行和管理驗證方法。 |
