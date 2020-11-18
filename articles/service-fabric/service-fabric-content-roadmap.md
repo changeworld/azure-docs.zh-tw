@@ -3,12 +3,12 @@ title: 深入瞭解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要領域。 提供 Service Fabric 及如何建立微服務的延伸概觀。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 6cbc99b56df18448add47a70b42742aa8dabbeb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461493"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681732"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>您想要了解 Service Fabric 嗎？
 Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。  Service Fabric 有相當大的介面區，不過，要了解的方面很多。  本文提供 Service Fabric 的概述，並描述核心概念、程式設計模型、應用程式生命週期、測試、叢集及健康情況監視。 如需相關簡介及了解如何使用 Service Fabric 來建立微服務，請參閱[概觀](service-fabric-overview.md)和[什麼是微服務？](service-fabric-overview-microservices.md)。 本文並未包含完整的內容清單，但有連結到 Service Fabric 每個領域的概觀與入門文章。 
@@ -69,7 +69,7 @@ Service Fabric 提供多種撰寫和管理服務的方式。 服務可以使用 
 ### <a name="containers"></a>容器
 根據預設，Service Fabric 會以處理程序形式部署和啟用這些服務。 Service Fabric 也可以在[容器](service-fabric-containers-overview.md)中部署服務。 重要的是，您可以在相同應用程式中混合容器中的服務和處理序中的服務。 Service Fabric 支援在 Windows Server 2016 上部署 Linux 容器和 Windows 容器。 您可以在容器中部署現有的應用程式、無狀態服務或具狀態服務。 
 
-### <a name="reliable-services"></a>Reliable Services
+### <a name="reliable-services"></a>可靠的服務
 [Reliable Services](service-fabric-reliable-services-introduction.md) 是用來撰寫服務的輕量架構，這些服務可與 Service Fabric 平臺整合，並受益于完整的平臺功能組合。 Reliable Services 可以是無狀態的 (類似大多數服務平台，例如「Azure 雲端服務」中的 Web 伺服器或「背景工作角色」)，其中狀態會保存在外部解決方案中，例如 Azure DB 或「Azure 資料表儲存體」。 Reliable Services 也可以是具狀態的，其狀態是使用 Reliable Collections 直接保存在服務本身中。 狀態透過複寫變得[高度可用](service-fabric-availability-services.md)，並透過[資料分割](service-fabric-concepts-partitioning.md)散發，全由 Service Fabric 自動管理。
 
 ### <a name="reliable-actors"></a>Reliable Actors
@@ -131,7 +131,7 @@ Service Fabric 提供安裝套件，可讓您在內部部署環境或任何雲�
 叢集安全性案例包括：
 * 節點對節點安全性
 * 用戶端對節點安全性
-* 角色型存取控制 (RBAC)
+* Service Fabric 以角色為基礎的存取控制
 
 如需詳細資訊，請參閱[保護叢集](service-fabric-cluster-security.md)。
 

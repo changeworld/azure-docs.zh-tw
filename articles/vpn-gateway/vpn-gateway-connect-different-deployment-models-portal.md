@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2bcd919629eb03581c35a2090d53e451141d94a4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f307ff9e7d609628bc22374fc5874dcbf993e4c2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487038"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661183"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>使用入口網站從不同的部署模型連接虛擬網路
 
@@ -86,46 +86,46 @@ SKU = VpnGw1 <br>
 
 ### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> 建立傳統 VNet
 
-如果您沒有傳統 VNet，而且正在執行這些步驟作為練習，您可以使用[這篇文章](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)和上述的[範例](#values)設定值來建立 VNet。
+如果您沒有傳統 VNet，而且正在執行這些步驟作為練習，您可以使用[這篇文章](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)和上述的[範例](#values)設定值來建立 VNet。
 
 如果您已經有具備 VPN 閘道的 VNet，請確認閘道是動態的。 如果是靜態，您必須先刪除 VPN 閘道後，才能繼續進行[設定本機站台](#local)。
 
 1. 開啟 [Azure 入口網站](https://ms.portal.azure.com)並使用您的 Azure 帳戶登入。
-2. 按一下 [+ 建立資源]**** 可開啟 [新增] 頁面。
+2. 按一下 [+ 建立資源] 可開啟 [新增] 頁面。
 3. 在 [搜尋 Marketplace] 欄位中，輸入「虛擬網路」。 如果您改為選取 [網路功能]-> [虛擬網路]，將無法取得建立傳統 VNet 的選項。
 4. 在傳回的清單中找出 [虛擬網路]，然後按一下以開啟 [虛擬網路] 頁面。 
 5. 在 [虛擬網路] 頁面上，選取 [傳統] 以建立傳統的 VNet。 如果您在這裡採用預設值，就會改為得到 Resource Manager VNet。
 
 ### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> 設定本機網站
 
-1. 瀏覽至 [所有資源]****，並且在清單中找出 **ClassicVNet**。
+1. 瀏覽至 [所有資源]，並且在清單中找出 **ClassicVNet**。
 2. 在功能表的 [**設定**] 區段中按一下 [**閘道**]，然後按一下橫幅以建立閘道。
   ![設定 VPN 閘道](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "設定 VPN 閘道")
-3. 在 [新增 VPN 連線]**** 頁面上，針對 [連線類型]**** 選取 [站對站]****。
-4. 針對 [本機站台]****，按一下 [設定必要設定]****。 這會開啟 [本機網站]**** 頁面。
-5. 在 [本機網站]**** 頁面上，建立用來參照 Resource Manager VNet 的名稱。 例如，'RMVNetLocal'。
-6. 如果 Resource Manager VNet 的 VPN 閘道已經有公用 IP 位址，請使用 [VPN 閘道 IP 位址]**** 欄位的值。 如果您要執行這些步驟作為練習，或者您的 Resource Manager VNet 還沒有虛擬網路閘道，您可以自行設定預留位置 IP 位址。 請確定預留位置 IP 位址使用有效的格式。 稍後，將預留位置 IP 位址以 Resource Manager 虛擬網路閘道的公用 IP 位址取代。
-7. 針對 [用戶端位址空間]****，使用 Resource Manager VNet 的虛擬網路 IP 位址空間的[值](#connectoverview)。 此設定是用來指定要路由傳送至 Resource Manager 虛擬網路的位址空間。 在範例中，我們使用 192.168.0.0/16，RMVNet 的位址範圍。
-8. 按一下 [確定]**** 來儲存值，並返回 [新增 VPN 連線]**** 頁面。
+3. 在 [新增 VPN 連線] 頁面上，針對 [連線類型] 選取 [站對站]。
+4. 針對 [本機站台]，按一下 [設定必要設定]。 這會開啟 [本機網站] 頁面。
+5. 在 [本機網站] 頁面上，建立用來參照 Resource Manager VNet 的名稱。 例如，'RMVNetLocal'。
+6. 如果 Resource Manager VNet 的 VPN 閘道已經有公用 IP 位址，請使用 [VPN 閘道 IP 位址] 欄位的值。 如果您要執行這些步驟作為練習，或者您的 Resource Manager VNet 還沒有虛擬網路閘道，您可以自行設定預留位置 IP 位址。 請確定預留位置 IP 位址使用有效的格式。 稍後，將預留位置 IP 位址以 Resource Manager 虛擬網路閘道的公用 IP 位址取代。
+7. 針對 [用戶端位址空間]，使用 Resource Manager VNet 的虛擬網路 IP 位址空間的[值](#connectoverview)。 此設定是用來指定要路由傳送至 Resource Manager 虛擬網路的位址空間。 在範例中，我們使用 192.168.0.0/16，RMVNet 的位址範圍。
+8. 按一下 [確定] 來儲存值，並返回 [新增 VPN 連線] 頁面。
 
 ### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3. 建立虛擬網路閘道
 
-1. 在 [新增 VPN 連線]**** 頁面上，選取 [立即建立閘道]**** 核取方塊。
-2. 按一下 [選擇性閘道組態]**** 可開啟 [閘道組態]**** 頁面。
+1. 在 [新增 VPN 連線] 頁面上，選取 [立即建立閘道] 核取方塊。
+2. 按一下 [選擇性閘道組態] 可開啟 [閘道組態] 頁面。
 
    ![開啟閘道設定頁面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "開啟閘道設定頁面")
-3. 按一下 [子網路 - 設定必要設定]**** 以開啟 [新增子網路]**** 頁面。 [名稱]**** 已使用必要值 **GatewaySubnet** 進行設定。
-4. [位址範圍]**** 指的是閘道子網路的範圍。 雖然您可以使用 /29 位址範圍 (3 個位址) 建立閘道子網路，但是我們建議您建立包含更多 IP 位址的閘道子網路。 這可以容納未來可能需要更多可用 IP 位址的組態。 可能的話，請使用 /27 或 /28。 如果您使用這些步驟作為練習，您可以參考[範例值](#values)。 在此範例中，我們使用 '10.0.0.32/28'。 按一下 [確定]**** 以建立閘道子網路。
-5. 在 [閘道設定]**** 頁面上，[大小]**** 指的是閘道 SKU。 選取您 VPN 閘道的閘道 SKU。
-6. 確認 [路由類型]**** 是 [動態]****，然後按一下 [確定]**** 以返回 [新增 VPN 連線]**** 頁面。
-7. 在 [新增 VPN 連線]**** 頁面上，按一下 [確定]**** 以開始建立您的 VPN 閘道。 建立 VPN 閘道可能需要 45 分鐘的時間才能完成。
+3. 按一下 [子網路 - 設定必要設定] 以開啟 [新增子網路] 頁面。 [名稱] 已使用必要值 **GatewaySubnet** 進行設定。
+4. [位址範圍] 指的是閘道子網路的範圍。 雖然您可以使用 /29 位址範圍 (3 個位址) 建立閘道子網路，但是我們建議您建立包含更多 IP 位址的閘道子網路。 這可以容納未來可能需要更多可用 IP 位址的組態。 可能的話，請使用 /27 或 /28。 如果您使用這些步驟作為練習，您可以參考[範例值](#values)。 在此範例中，我們使用 '10.0.0.32/28'。 按一下 [確定] 以建立閘道子網路。
+5. 在 [閘道設定] 頁面上，[大小] 指的是閘道 SKU。 選取您 VPN 閘道的閘道 SKU。
+6. 確認 [路由類型] 是 [動態]，然後按一下 [確定] 以返回 [新增 VPN 連線] 頁面。
+7. 在 [新增 VPN 連線] 頁面上，按一下 [確定] 以開始建立您的 VPN 閘道。 建立 VPN 閘道可能需要 45 分鐘的時間才能完成。
 
 ### <a name="4-copy-the-virtual-network-gateway-public-ip-address"></a><a name="ip"></a>4. 複製虛擬網路閘道的公用 IP 位址
 
 建立虛擬網路閘道之後，您可以檢視閘道 IP 位址。 
 
-1. 導覽至您的傳統 VNet，然後按一下 [概觀]****。
-2. 按一下 [VPN 連線]**** 以開啟 [VPN 連線] 頁面。 在 [VPN 連線] 頁面上，您可以檢視公用 IP 位址。 這是指派給虛擬網路閘道的公用 IP 位址。 記下 IP 位址。 當您在稍後的步驟中處理 Resource Manager 區域網路閘道組態設定時，便會用到該 IP 位址。 
+1. 導覽至您的傳統 VNet，然後按一下 [概觀]。
+2. 按一下 [VPN 連線] 以開啟 [VPN 連線] 頁面。 在 [VPN 連線] 頁面上，您可以檢視公用 IP 位址。 這是指派給虛擬網路閘道的公用 IP 位址。 記下 IP 位址。 當您在稍後的步驟中處理 Resource Manager 區域網路閘道組態設定時，便會用到該 IP 位址。 
 3. 您可以檢視閘道連線的狀態。 請注意，您所建立的區域網路網站會列為「連線中」。 在您建立連線之後，狀態會變更。 當您完成檢視狀態時，可以關閉此頁面。
 
 ## <a name="section-2---configure-the-resource-manager-vnet-settings"></a><a name="rmvnet"></a>第 2 節 - 進行 Resource Manager VNet 設定
@@ -184,34 +184,34 @@ SKU = VpnGw1 <br>
 在本節中，您會使用 Resource Manager VPN 閘道 IP 位址，取代在指定本機網站設定時所使用的預留位置 IP 位址。 本節會使用傳統 (SM) PowerShell Cmdlet。
 
 1. 在 Azure 入口網站中，瀏覽至傳統虛擬網路。
-2. 在您虛擬網路的頁面上，按一下 [概觀]****。
-3. 在 [VPN 連線]**** 區段中，按一下圖形中您本機站台的名稱。
+2. 在您虛擬網路的頁面上，按一下 [概觀]。
+3. 在 [VPN 連線] 區段中，按一下圖形中您本機站台的名稱。
 
    ![VPN-連接](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 連線")
-4. 在 [站對站 VPN 連線]**** 頁面上，按一下站台的名稱。
+4. 在 [站對站 VPN 連線] 頁面上，按一下站台的名稱。
 
    ![網站名稱](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "本機網站名稱")
-5. 在您本機站台的 [連線] 頁面上，按一下本機站台的名稱以開啟 [本機站台]**** 頁面。
+5. 在您本機站台的 [連線] 頁面上，按一下本機站台的名稱以開啟 [本機站台] 頁面。
 
    ![開啟-本機網站](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "開啟本機網站")
-6. 在 [本機網站]**** 頁面上，使用 Resource Manager 閘道的 IP 位址取代 [VPN 閘道 IP 位址]****。
+6. 在 [本機網站] 頁面上，使用 Resource Manager 閘道的 IP 位址取代 [VPN 閘道 IP 位址]。
 
    ![閘道 ip 位址](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "閘道 IP 位址")
-7. 按一下 [確定]**** 以更新 IP 位址。
+7. 按一下 [確定] 以更新 IP 位址。
 
 ## <a name="section-4---create-resource-manager-to-classic-connection"></a><a name="RMtoclassic"></a>第 4 節 - 建立 Resource Manager 與傳統的連線
 
 在這些步驟中，您會使用 Azure 入口網站設定從 Resource Manager VNet 到傳統 VNet 的連線。
 
-1. 在 [所有資源]**** 中，找出區域網路閘道。 在我們的範例中，區域網路閘道是 **ClassicVNetLocal**。
-2. 按一下 [組態]****，並確認 IP 位址值是傳統 VNet 的 VPN 閘道。 視需要更新，然後按一下 [儲存]****。 關閉頁面。
-3. 在 [所有資源]**** 中，按一下區域網路閘道。
-4. 按一下 [連線]**** 以開啟 [連線] 頁面。
-5. 在 [連線]**** 頁面上，按一下 **+** 以新增連線。
-6. 在 [新增連線]**** 頁面上，為連線命名。 例如，'RMtoClassic'。
-7. 已在此頁面上選取 [站對站]****。
+1. 在 [所有資源] 中，找出區域網路閘道。 在我們的範例中，區域網路閘道是 **ClassicVNetLocal**。
+2. 按一下 [組態]，並確認 IP 位址值是傳統 VNet 的 VPN 閘道。 視需要更新，然後按一下 [儲存]。 關閉頁面。
+3. 在 [所有資源] 中，按一下區域網路閘道。
+4. 按一下 [連線] 以開啟 [連線] 頁面。
+5. 在 [連線] 頁面上，按一下 **+** 以新增連線。
+6. 在 [新增連線] 頁面上，為連線命名。 例如，'RMtoClassic'。
+7. 已在此頁面上選取 [站對站]。
 8. 選取您想要與此網站產生關聯的虛擬網路閘道。
-9. 建立**共用金鑰**。 這個金鑰也會用於您建立之傳統 VNet 到 Resource Manager VNet 的連線。 您可以產生金鑰或自行建立金鑰。 在我們的範例中，我們使用的是 'abc123'，但是您可以(且應該) 使用更為複雜的值。
+9. 建立 **共用金鑰**。 這個金鑰也會用於您建立之傳統 VNet 到 Resource Manager VNet 的連線。 您可以產生金鑰或自行建立金鑰。 在我們的範例中，我們使用的是 'abc123'，但是您可以(且應該) 使用更為複雜的值。
 10. 按一下 [確定] 來建立連線。
 
 ## <a name="section-5---create-classic-to-resource-manager-connection"></a><a name="classictoRM"></a>第 5 節 - 建立傳統到 Resource Manager 的連線
@@ -277,7 +277,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 - 在此範例中，**-VNetName** 是在網路組態檔中找到的傳統 VNet 名稱。 
 - **-LocalNetworkSiteName** 是您為網路組態檔中找到之本機網站指定的名稱。
-- **-SharedKey**是您產生和指定的值。 針對此範例，我們使用的是 *abc123*，但是您可以使用更為複雜的值。 重要的是，您在此指定的值必須與您在建立 Resource Manager 到傳統連線時指定的值相同。
+- **-SharedKey** 是您產生和指定的值。 針對此範例，我們使用的是 *abc123*，但是您可以使用更為複雜的值。 重要的是，您在此指定的值必須與您在建立 Resource Manager 到傳統連線時指定的值相同。
 
 ```powershell
 Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `

@@ -1,6 +1,6 @@
 ---
 title: 修復損壞的 Azure Automanage 帳戶
-description: 瞭解如何修正中斷的 Automanage 帳戶
+description: 如果您最近將包含 Automanage 帳戶的訂用帳戶移至新的租使用者，則需要重新設定它。 在本文中，您將瞭解做法。
 author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,24 +8,24 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: ad54b37da8a4945162b507232f33083890ec1fff
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557570"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681834"
 ---
-# <a name="repair-a-broken-automanage-account"></a>修復中斷的 Automanage 帳戶
-[Automanage 帳戶](./automanage-virtual-machines.md#automanage-account)是安全性內容或執行自動化作業所用的身分識別。 如果您最近將包含 Automanage 帳戶的訂用帳戶移至新的租使用者，則必須重新設定您的 Automanage 帳戶。 若要重新設定您的 Automanage 帳戶，您必須重設身分識別類型，並為帳戶指派適當的角色。
+# <a name="repair-an-automanage-account"></a>修復 Automanage 帳戶
+您的 [Azure Automanage 帳戶](./automanage-virtual-machines.md#automanage-account) 是在其下進行自動化作業所用的安全性內容或身分識別。 如果您最近將包含 Automanage 帳戶的訂用帳戶移至新的租使用者，則需要重新設定帳戶。 若要重新設定，您必須重設身分識別類型，並為帳戶指派適當的角色。
 
-## <a name="step-1-reset-automanage-account-identity-type"></a>步驟1：重設 Automanage 帳戶身分識別類型
-使用下方的 Azure Resource Manager (ARM) 範本，重設 Automanage 帳戶身分識別類型。 以或類似的方式將檔案儲存在本機 `armdeploy.json` 。 記下您的 Automanage 帳戶名稱和位置，因為這些是 ARM 範本中的必要參數。
+## <a name="step-1-reset-the-automanage-account-identity-type"></a>步驟1：重設 Automanage 帳戶身分識別類型
+使用下列 Azure Resource Manager (ARM) 範本來重設 Automanage 帳戶身分識別類型。 在本機將檔案儲存為 armdeploy.js或類似的名稱。 請注意您的 Automanage 帳戶名稱和位置，因為它們是 ARM 範本中的必要參數。
 
-1. 使用下列範本建立新的 ARM 部署，並使用 `identityType = None`
-    * 您可以使用 Azure CLI 來這麼做 `az deployment sub create` 。 若要深入瞭解此命令，請參閱 `az deployment sub` 。 [here](https://docs.microsoft.com/cli/azure/deployment/sub)
-    * 您也可以使用此模組，透過 PowerShell 來完成此動作 `New-AzDeployment` 。 若要深入瞭解 `New AzDeployment` 此[here](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)課程模組，請參閱。
+1. 使用下列範本建立 Resource Manager 部署。 請使用 `identityType = None`。
+    * 您可以使用在 Azure CLI 中建立部署 `az deployment sub create` 。 如需詳細資訊，請參閱 [az deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub)。
+    * 您可以使用模組，在 PowerShell 中建立部署 `New-AzDeployment` 。 如需詳細資訊，請參閱 [test-azdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)。
 
-1. 再次執行相同的 ARM 範本 `identityType = SystemAssigned`
+1. 使用再次執行相同的 ARM 範本 `identityType = SystemAssigned` 。
 
 ```json
 {
@@ -59,24 +59,24 @@ ms.locfileid: "94557570"
 ```
 
 ## <a name="step-2-assign-appropriate-roles-for-the-automanage-account"></a>步驟2：為 Automanage 帳戶指派適當的角色
-Automanage 帳戶需要訂用帳戶上的「參與者」和「資源原則參與者」角色，該訂用帳戶包含 Automanage 正在管理的 Vm。 您可以使用 Azure 入口網站、ARM 範本或 Azure CLI 來指派這些角色。
+Automanage 帳戶需要訂用帳戶上的「參與者」和「資源原則參與者」角色，且該訂用帳戶包含 Automanage 正在管理的 Vm。 您可以使用 Azure 入口網站、ARM 範本或 Azure CLI 來指派這些角色。
 
-如果您使用 ARM 範本或 Azure CLI，則需要主體識別碼 (也稱為 Automanage 帳戶的物件識別碼)  (如果您使用 Azure 入口網站) ，就不需要這麼做。 您可以使用下列方法，找到 Automanage 帳戶 (物件識別碼) 的主體識別碼：
+如果您使用 ARM 範本或 Azure CLI，則需要主體識別碼 (也稱為 Automanage 帳戶的物件識別碼) 。  (如果您使用 Azure 入口網站，則不需要識別碼。 ) 您可以使用下列方法來尋找此識別碼：
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp)：使用命令 `az ad sp list --display-name <name of your Automanage Account>` 。
 
-- Azure 入口網站：流覽至 **Azure Active Directory** ，並依名稱搜尋您的 Automanage 帳戶。 在 [ **企業應用程式** ] 下，選取顯示的 Automanage 帳戶名稱。
+- Azure 入口網站：移至 **Azure Active Directory** ，並依名稱搜尋您的 Automanage 帳戶。 在 [ **企業應用程式**] 下，選取出現的 Automanage 帳戶名稱。
 
 ### <a name="azure-portal"></a>Azure 入口網站
-1. 在 [ **訂用帳戶** ] 底下，流覽至包含 Automanaged vm 的訂用帳戶。
-1. 流覽至 **(IAM) 的存取控制** 。
-1. 按一下 [ **新增角色指派** ]。
+1. 在 [ **訂用帳戶**] 下，移至包含 automanaged vm 的訂用帳戶。
+1. 移至 [ **存取控制] (IAM)**。
+1. 選取 [ **新增角色指派**]。
 1. 選取 [ **參與者** ] 角色，然後輸入您的 Automanage 帳戶名稱。
-1. 按下 [儲存] 。
-1. 重複步驟3-5，這次使用 **資源原則參與者** 角色。
+1. 選取 [儲存]。
+1. 重複步驟3到5，這次使用 **資源原則參與者** 角色。
 
 ### <a name="arm-template"></a>ARM 範本
-執行下列 ARM 範本。 您將需要 Automanage 帳戶的主體識別碼-取得主要識別碼的步驟步驟。 出現提示時，請輸入。
+執行下列 ARM 範本。 您將需要 Automanage 帳戶的主體識別碼。 取得此步驟的步驟位於本節的開頭。 當系統提示您時，請輸入識別碼。
 
 ```json
 {
@@ -121,10 +121,10 @@ Automanage 帳戶需要訂用帳戶上的「參與者」和「資源原則參與
 執行下列命令：
 
 ```azurecli
-az role assignment create --assignee-object-id <your Automanage Account's object id> --role "Contributor" --scope /subscriptions/<your subscription id>
+az role assignment create --assignee-object-id <your Automanage Account Object ID> --role "Contributor" --scope /subscriptions/<your subscription ID>
 
-az role assignment create --assignee-object-id <your Automanage Account's object id> --role "Resource Policy Contributor" --scope /subscriptions/<your subscription id>
+az role assignment create --assignee-object-id <your Automanage Account Object ID> --role "Resource Policy Contributor" --scope /subscriptions/<your subscription ID>
 ```
 
 ## <a name="next-steps"></a>後續步驟
-[在這裡](./automanage-virtual-machines.md)深入瞭解 Azure Automanage。
+[深入瞭解 Azure Automanage](./automanage-virtual-machines.md)

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63505f470410234f720dd28c29e87c4a2a6d123f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082047"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661132"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 從不同的部署模型連接虛擬網路
 
@@ -35,7 +35,7 @@ ms.locfileid: "87082047"
 
 ### <a name="prerequisites"></a><a name="pre"></a>必要條件
 
-* 已建立兩個 Vnet。 如果您需要建立資源管理員虛擬網路，請參閱[建立資源群組和虛擬網路](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)。 若要建立重統虛擬網路，請參閱[建立傳統 VNet](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)。
+* 已建立兩個 Vnet。 如果您需要建立資源管理員虛擬網路，請參閱[建立資源群組和虛擬網路](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)。 若要建立重統虛擬網路，請參閱[建立傳統 VNet](/previous-versions/azure/virtual-network/create-virtual-network-classic)。
 * Vnet 的位址範圍不會彼此重疊，或與閘道可能連接的任何其他連線範圍重疊。
 * 您已安裝最新的 PowerShell Cmdlet。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/) 。 確定安裝服務管理 (SM) 和 Resource Manager (RM) Cmdlet。 
 
@@ -90,7 +90,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
    ```azurepowershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-3. 開啟您下載的 .xml 檔案加以編輯。 如需網路組態檔的範例，請參閱 [網路組態結構描述](https://msdn.microsoft.com/library/jj157100.aspx)。
+3. 開啟您下載的 .xml 檔案加以編輯。 如需網路組態檔的範例，請參閱 [網路組態結構描述](/previous-versions/azure/reference/jj157100(v=azure.100))。
 
 ### <a name="2-verify-the-gateway-subnet"></a>2. 確認閘道子網
 在 **VirtualNetworkSites** 元素中，將閘道子網路 (若已建立) 加入至您的 VNet。 使用網路組態檔時，閘道子網路必須命名為 "GatewaySubnet"，否則 Azure 無法辨識並將它當作閘道子網路。
@@ -217,11 +217,11 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -AllocationMethod Dynamic
    ```
 
-4. 確認您的虛擬網路有閘道子網路。 如果閘道器子網路不存在，請新增一個。 確定閘道子網路命名為 GatewaySubnet **。
+4. 確認您的虛擬網路有閘道子網路。 如果閘道器子網路不存在，請新增一個。 確定閘道子網路命名為 GatewaySubnet 。
 5. 擷取用於閘道的子網路。 在此步驟中，我們也會設定要用於下一個步驟中的變數。
    
    **-Name** 是 Resource Manager VNet 的名稱。<br>
-   **-ResourceGroupName** 與 VNet 相關聯的資源群組。 此閘道子網路必須已為此 VNet 存在且命名為 GatewaySubnet ** ，才能正常運作。<br>
+   **-ResourceGroupName** 與 VNet 相關聯的資源群組。 此閘道子網路必須已為此 VNet 存在且命名為 GatewaySubnet  ，才能正常運作。<br>
 
    ```azurepowershell-interactive
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name GatewaySubnet `
@@ -245,7 +245,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -IpConfigurations $gwipconfig `
    -EnableBgp $false -VpnType RouteBased
    ```
-8. 一旦 VPN 閘道建立好後，複製公用 IP 位址 。 您會在進行傳統 VNet 的區域網路設定時用到它。 您可以使用下列 Cmdlet 來擷取公用 IP 位址。 公用 IP 位址會在傳回資料中列為 IpAddress **。
+8. 一旦 VPN 閘道建立好後，複製公用 IP 位址 。 您會在進行傳統 VNet 的區域網路設定時用到它。 您可以使用下列 Cmdlet 來擷取公用 IP 位址。 公用 IP 位址會在傳回資料中列為 IpAddress 。
 
    ```azurepowershell-interactive
    Get-AzPublicIpAddress -Name gwpip -ResourceGroupName RG1
@@ -274,7 +274,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ## <a name="section-4---create-a-connection-between-the-gateways"></a><a name="connect"></a>第 4 節 - 在閘道之間建立連線
 在閘道之間建立連線需要 PowerShell。 您可能需要新增 Azure 帳戶，才能使用傳統版 PowerShell Cmdlet。 若要這麼做，請使用 **Add-azureaccount**。
 
-1. 在 PowerShell 主控台中，設定您的共用金鑰。 執行 Cmdlet 之前，請參閱您針對 Azure 預期看到的確切名稱所下載的網路組態檔。 當指定包含空格的 VNet 名稱時，請使用單引號括住值。<br><br>在下列範例中，**-VNetName** 是傳統 VNet 的名稱，**-LocalNetworkSiteName** 是您為區域網路網站指定的名稱。 **-SharedKey**是您產生和指定的值。 在範例中，我們使用的是 'abc123'，但是您可以產生並使用更為複雜的值。 重要的是，您在此指定的值必須與您在下一個步驟中建立連線時指定的值相同。 傳回應顯示 [狀態: 成功]****。
+1. 在 PowerShell 主控台中，設定您的共用金鑰。 執行 Cmdlet 之前，請參閱您針對 Azure 預期看到的確切名稱所下載的網路組態檔。 當指定包含空格的 VNet 名稱時，請使用單引號括住值。<br><br>在下列範例中，**-VNetName** 是傳統 VNet 的名稱，**-LocalNetworkSiteName** 是您為區域網路網站指定的名稱。 **-SharedKey** 是您產生和指定的值。 在範例中，我們使用的是 'abc123'，但是您可以產生並使用更為複雜的值。 重要的是，您在此指定的值必須與您在下一個步驟中建立連線時指定的值相同。 傳回應顯示 [狀態: 成功]。
 
    ```azurepowershell
    Set-AzureVNetGatewayKey -VNetName ClassicVNet `

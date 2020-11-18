@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424347"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661149"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>關於 VPN 閘道組態設定
 
@@ -104,7 +104,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 * ExpressRoute
 * VPNClient
 
-在下列 PowerShell 範例中，我們會建立需要 *IPsec*連線類型的 S2S 連線。
+在下列 PowerShell 範例中，我們會建立需要 *IPsec* 連線類型的 S2S 連線。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
@@ -176,7 +176,7 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 | **傳統** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | 不支援 | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>後續步驟

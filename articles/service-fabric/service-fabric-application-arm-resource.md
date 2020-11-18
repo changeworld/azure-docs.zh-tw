@@ -3,12 +3,12 @@ title: 使用 Azure Resource Manager 部署和升級
 description: 了解如何使用 Azure Resource Manager 範本將應用程式和服務部署到 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256504"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681664"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>將應用程式和服務視為 Azure Resource Manager 進行管理
 
@@ -17,8 +17,8 @@ ms.locfileid: "86256504"
 這是部署叢集所需之任何設定、治理或叢集管理應用程式的建議方法。 包括[修補程式協調流程應用程式](service-fabric-patch-orchestration-application.md)、監視程式，或是任何需要在叢集中執行其他應用程式或服務才能部署的應用程式。 
 
 當可行時，將應用程式視為 Resource Manager 資源來管理有助於改善：
-* 稽核記錄：Resource Manager 會稽核每一項作業並保留詳細的*活動記錄*，協助您追蹤這些應用程式和叢集的變更。
-* 角色型存取控制 (RBAC)：您可以透過同樣的 Resource Manager 範本來管理叢集和叢集上部署之應用程式的存取權限。
+* 稽核記錄：Resource Manager 會稽核每一項作業並保留詳細的 *活動記錄*，協助您追蹤這些應用程式和叢集的變更。
+* Azure 角色型存取控制 (Azure RBAC) ：管理叢集的存取權，以及部署在叢集上的應用程式，可以透過相同的 Resource Manager 範本來完成。
 * Azure Resource Manager (透過 Azure 入口網站) 能一次滿足您管理叢集和重要應用程式部署的需求。
 
 下列程式碼片段展示可透過範本管理的各種資源：
@@ -56,7 +56,7 @@ ms.locfileid: "86256504"
 1. 準備好叢集的 Resource Manager 範本，以供部署之用。 如需詳細資訊，請參閱[使用 Azure Resource Manager 來建立 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)。
 2. 思考幾個您計劃部署在叢集中的應用程式。 是否有任何應用程式將隨時保持執行狀態，讓其他應用程式得以依賴？ 您是否有部署任何叢集治理或設定應用程式的計劃？ 這類應用程式最適合透過 Resource Manager 範本管理，如同前文所討論。 
 3. 一旦想好要利用這種方法部署哪些應用程式後，您必須封裝、壓縮應用程式，再將它們放在檔案共用上。 共用必須可透過 REST 端點存取，Azure Resource Manager 才能在部署期間取用。
-4. 在 Resource Manager 範本的叢集宣告下方，描述每個應用程式的屬性。 這些屬性包括複本或執行個體計數，以及資源 (其他應用程式或服務) 之間的任何相依性鏈結。 如需完整屬性的清單，請參閱 [REST API Swagger 規格](https://aka.ms/sfrpswaggerspec)。請注意，這不會取代應用程式或服務資訊清單，而是在叢集的 Resource Manager 範本中說明其中的部分。 以下是範例範本，其中包括部署 *Application1*無狀態服務 *Service1* 和具狀態服務 *Service2*：
+4. 在 Resource Manager 範本的叢集宣告下方，描述每個應用程式的屬性。 這些屬性包括複本或執行個體計數，以及資源 (其他應用程式或服務) 之間的任何相依性鏈結。 如需完整屬性的清單，請參閱 [REST API Swagger 規格](https://aka.ms/sfrpswaggerspec)。請注意，這不會取代應用程式或服務資訊清單，而是在叢集的 Resource Manager 範本中說明其中的部分。 以下是範例範本，其中包括部署 *Application1* 無狀態服務 *Service1* 和具狀態服務 *Service2*：
 
    ```json
    {
@@ -266,7 +266,7 @@ Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/provide
 > [!NOTE]
 > 若要讓叢集升級忽略狀況不良的應用程式，客戶可以在 “upgradeDescription/healthPolicy” 區段指定 “maxPercentUnhealthyApplications: 100”；所有設定的詳細說明位於 [Service Fabric REST API 叢集升級原則文件](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 使用 [Service Fabric CLI](service-fabric-cli.md) 或 [PowerShell](service-fabric-deploy-remove-applications.md) 將其他應用程式部署到叢集。 
 * [升級 Service Fabric 叢集](service-fabric-cluster-upgrade.md)

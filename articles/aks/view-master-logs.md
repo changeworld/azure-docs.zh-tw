@@ -4,20 +4,20 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 K
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 82570606aee294aafe7da5ffaf581b11b6775073
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a0e58174c38ec19d42f524b9bc94247e05296467
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899937"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682225"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
-使用 Azure Kubernetes Service (AKS) 時， *kube-apiserver* 和 *kube-controller-manager* 等主要元件是以受控服務的形式提供。 您會建立並管理執行 *kubelet* 和容器執行階段的節點，並透過受控 Kubernetes API 伺服器部署應用程式。 為了協助對應用程式和服務進行疑難排解，您可能需要檢視由這些主要元件所產生的記錄。 本文會示範如何使用 Azure 監視器記錄來啟用和查詢來自 Kubernetes 主要元件的記錄。
+使用 Azure Kubernetes Service (AKS) 時，*kube-apiserver* 和 *kube-controller-manager* 等主要元件是以受控服務的形式提供。 您會建立並管理執行 *kubelet* 和容器執行階段的節點，並透過受控 Kubernetes API 伺服器部署應用程式。 為了協助對應用程式和服務進行疑難排解，您可能需要檢視由這些主要元件所產生的記錄。 本文會示範如何使用 Azure 監視器記錄來啟用和查詢來自 Kubernetes 主要元件的記錄。
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文需要您的 Azure 帳戶中有正在執行的現有 AKS 叢集。 若您沒有 AKS 叢集，請使用 [Azure CLI][cli-quickstart] 或 [Azure 入口網站][portal-quickstart]建立一個。 Azure 監視器記錄可同時搭配已啟用 RBAC 和未啟用 RBAC 的 AKS 叢集運作。
+本文需要您的 Azure 帳戶中有正在執行的現有 AKS 叢集。 若您沒有 AKS 叢集，請使用 [Azure CLI][cli-quickstart] 或 [Azure 入口網站][portal-quickstart]建立一個。 Azure 監視器記錄適用于 Kubernetes RBAC、Azure RBAC 和未啟用 RBAC 的 AKS 叢集。
 
 ## <a name="enable-resource-logs"></a>啟用資源記錄
 
@@ -25,21 +25,21 @@ ms.locfileid: "92899937"
 
 Azure 監視器記錄會在 Azure 入口網站中啟用和管理。 若要在 AKS 叢集中啟用 Kubernetes 主要元件的記錄收集，請在網頁瀏覽器中開啟 Azure 入口網站並完成下列步驟：
 
-1. 選取適用於您 AKS 叢集的資源群組，例如 *myResourceGroup* 。 請勿選取包含個別 AKS 叢集資源的資源群組，例如 *MC_myResourceGroup_myAKSCluster_eastus* 。
-1. 選擇左邊的 [診斷設定]  。
-1. 選取您的 AKS 叢集（例如 *myAKSCluster* ），然後選擇 **新增診斷設定** 。
-1. 輸入名稱 (例如 myAKSClusterLogs  )，然後選取 [傳送至 Log Analytics]  選項。
+1. 選取適用於您 AKS 叢集的資源群組，例如 *myResourceGroup*。 請勿選取包含個別 AKS 叢集資源的資源群組，例如 *MC_myResourceGroup_myAKSCluster_eastus*。
+1. 選擇左邊的 [診斷設定]。
+1. 選取您的 AKS 叢集（例如 *myAKSCluster*），然後選擇 **新增診斷設定**。
+1. 輸入名稱 (例如 myAKSClusterLogs)，然後選取 [傳送至 Log Analytics] 選項。
 1. 選取現有的工作區，或建立一個新的工作區。 如果您建立工作區，請提供工作區名稱、資源群組和位置。
-1. 在可用的記錄清單中，選取想要啟用的記錄。 在此範例中，請啟用 *kube-audit* and *kube-audit-admin* 記錄。 常見的記錄包括 *kube-apiserver* 、 *kube-controller* 和 *kube* 排程器。 您可以在啟用 Log Analytics 工作區之後返回這裡並變更收集的記錄。
-1. 準備好後，請選取 [儲存]  以啟用所選取記錄的收集。
+1. 在可用的記錄清單中，選取想要啟用的記錄。 在此範例中，請啟用 *kube-audit* and *kube-audit-admin* 記錄。 常見的記錄包括 *kube-apiserver*、 *kube-controller* 和 *kube* 排程器。 您可以在啟用 Log Analytics 工作區之後返回這裡並變更收集的記錄。
+1. 準備好後，請選取 [儲存] 以啟用所選取記錄的收集。
 
 ## <a name="log-categories"></a>記錄類別
 
 除了 Kubernetes 撰寫的專案之外，您專案的 audit 記錄也有來自 AKS 的專案。
 
-Audit 記錄會記錄到三個類別中： *kube-audit* 、 *kube-audit-admin* 和 *guard* 。
+Audit 記錄會記錄到三個類別中： *kube-audit*、 *kube-audit-admin* 和 *guard*。
 
-- *Kube-audit* 類別包含每個 audit 事件的所有審核記錄資料，包括 *get* 、 *list* 、 *create* 、 *update* 、 *delete* 、 *patch* 和 *post* 。
+- *Kube-audit* 類別包含每個 audit 事件的所有審核記錄資料，包括 *get*、 *list*、 *create*、 *update*、 *delete*、 *patch* 和 *post*。
 - *Kube-audit-admin* 類別是 *kube-audit* 記錄類別的子集。 *kube-audit-系統管理員* 會從記錄檔中排除 *get* 和 *list* audit 事件，以大幅減少記錄檔的數目。
 - 此 *防護* 類別是受控 Azure AD 和 Azure RBAC 的審核。 針對 managed Azure AD：中的權杖，使用者資訊輸出。針對 Azure RBAC：存取簽入和傳出。
 
@@ -84,7 +84,7 @@ pod/nginx created
 
 在 Azure 入口網站中，流覽至您的 AKS 叢集，然後選取左側的 [ **記錄** 檔]。 如果出現 [ *查詢範例* ] 視窗，請加以關閉。
 
-選擇左邊的 [記錄]  。 若要查看 *kube-audit* 記錄檔，請在文字方塊中輸入下列查詢：
+選擇左邊的 [記錄]。 若要查看 *kube-audit* 記錄檔，請在文字方塊中輸入下列查詢：
 
 ```
 AzureDiagnostics

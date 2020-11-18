@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: a89ff56eb9e0f0a29b5b1fed7543c5f718425e51
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a56922c972efeb21c188413522bd05f83b74ca12
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92325977"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681817"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>使用媒體服務將您自己的金鑰 (客戶管理的金鑰) 
 
@@ -37,9 +37,11 @@ ms.locfileid: "92325977"
 > [!WARNING]
 > 媒體服務會監視客戶金鑰的存取權。 如果客戶金鑰變成無法存取 (例如，金鑰已遭刪除，或已刪除 Key Vault 或已移除存取權授與) ，則媒體服務會將帳戶轉換為客戶金鑰無法存取的狀態， (有效地停用帳戶) 。 不過，您可以在此狀態下刪除帳戶。 唯一支援的作業是帳戶取得、列出和刪除;所有其他要求 (編碼、串流等) 將會失敗，直到帳戶金鑰的存取權還原為止。
 
-## <a name="tutorial"></a>教學課程
-請嘗試 [使用客戶管理的金鑰，或攜帶您自己的金鑰 (BYOK) 使用媒體服務](tutorial-byok.md) ，以瞭解如何使用 Postman 和 Azure REST API 來設定和使用客戶管理的金鑰。
+## <a name="tutorials"></a>教學課程
+
+- [使用 Azure 入口網站搭配媒體服務使用客戶管理的金鑰或 BYOK](tutorial-byok-portal.md)
+- [使用客戶管理的金鑰或 BYOK 搭配媒體服務 REST API](tutorial-byok-postman.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：透過媒體服務使用客戶管理的金鑰或攜帶您自己的金鑰 (BYOK) ](tutorial-byok.md)
+[使用媒體服務動態加密來保護您的內容](content-protection-overview.md)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 164b3f9e0426db1f36360fee8f836216d4cad86a
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d425853b04a1d6f3b1f818e63154eadd1c7b3a2d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918669"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94680840"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
@@ -32,17 +32,19 @@ ms.locfileid: "92918669"
 
 ## <a name="setting-up"></a>設定
 
+### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
+
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
 使用 Visual Studio，建立新的 .NET Core 應用程式。 
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Azure.AI.FormRecognizer`。 選取版本 `3.0.0`，然後 **安裝** 。 
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Azure.AI.FormRecognizer`。 選取版本 `3.0.0`，然後 **安裝**。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `formrecognizer-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *program.cs* 。 
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `formrecognizer-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*program.cs*。 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -63,15 +65,15 @@ Build succeeded.
  0 Error(s)
 ...
 ```
----
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-在應用程式目錄中，使用下列命令來安裝適用於 .NET 的 [產品名稱] 用戶端程式庫：
+在應用程式目錄中，使用下列命令安裝適用於 .NET 的表單辨識器用戶端程式庫：
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
+---
 
 > [!TIP]
 > 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上找到該檔案，其中包含本快速入門中的程式碼範例。
@@ -164,7 +166,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
 > [!TIP]
-> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeContent** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
+> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeContent**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
 
 此工作的其餘部分會將內容資訊列印至主控台。
 
@@ -214,7 +216,7 @@ Table 0 has 2 rows and 6 columns.
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeReceipts** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
+> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeReceipts**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
 
 傳回的值會是 `RecognizedReceipt` 物件的集合：提交的文件每頁各一個。 下列程式碼會處理位於指定 URI 的收據，並將主要欄位和值列印至主控台。
 
@@ -409,7 +411,7 @@ Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
 > [!TIP]
-> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeCustomForms** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
+> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeCustomForms**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
 
 傳回的值會是 `RecognizedForm` 物件的集合：提交的文件每頁各一個。 下列程式碼會將分析結果列印至主控台。 列印內容包括辨識到的每個欄位和對應的值，以及信賴分數。
 

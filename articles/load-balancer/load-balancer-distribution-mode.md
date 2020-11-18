@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2d2cda59f23ef0b961ccac60b119996423688e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051384"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682310"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>設定 Azure Load Balancer 的分配模式
 
@@ -66,11 +66,11 @@ Azure Load Balancer 的預設分散模式是 5 Tuple 雜湊。
 1. 登入 Azure 入口網站，並按一下 **資源群組**，找出包含您想要變更之負載平衡器的資源群組。
 2. 在 [負載平衡器] 總覽畫面中，按一下 [**設定**] 下的 [**負載平衡規則**]。
 3. 在 [負載平衡規則] 畫面中，按一下您想要變更分配模式的負載平衡規則。
-4. 在此規則下，藉由變更 [ **會話持續** 性] 下拉式方塊來變更分佈模式。  有下列選項可供使用：
+4. 在此規則下，藉由變更 [ **會話持續** 性] 下拉式方塊來變更分佈模式。  可用選項如下：
     
-    * **無 (雜湊式) ** -指定來自相同用戶端的後續要求可以由任何虛擬機器處理。
-    * **用戶端 IP (來源 ip 親和性 2-元組) ** -指定來自相同用戶端 ip 位址的後續要求會由相同的虛擬機器處理。
-    * **用戶端 IP 和通訊協定 (來源 ip 親和性 3-元組) ** -指定來自相同用戶端 IP 位址和通訊協定組合的後續要求會由相同的虛擬機器處理。
+    * **無 (雜湊式)** -指定來自相同用戶端的後續要求可以由任何虛擬機器處理。
+    * **用戶端 IP (來源 ip 親和性 2-元組)** -指定來自相同用戶端 ip 位址的後續要求會由相同的虛擬機器處理。
+    * **用戶端 IP 和通訊協定 (來源 ip 親和性 3-元組)** -指定來自相同用戶端 IP 位址和通訊協定組合的後續要求會由相同的虛擬機器處理。
 
 5. 選擇分配模式，然後按一下 [ **儲存**]。
 
@@ -201,6 +201,6 @@ Date: Thu, 16 Oct 2014 22:49:21 GMT
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 內部負載平衡器概觀](load-balancer-internal-overview.md)
+* [Azure 負載平衡器概觀](load-balancer-overview.md)
 * [開始設定網際網路對應負載平衡器](quickstart-load-balancer-standard-public-powershell.md)
 * [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)

@@ -4,12 +4,12 @@ description: 本文概述如何使用 Azure Resource Manager 來管理 Azure Ser
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258733"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681681"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 應用程式資源模型
 
@@ -55,7 +55,7 @@ ms.locfileid: "86258733"
 您可以藉由將公用存取層級設定為 [ **私人**] 來保護叢集中的資源。 您可以透過多種方式授與存取權：
 
 * 使用 [Azure Active Directory](../storage/common/storage-auth-aad-app.md)來授權 blob 和佇列的存取權。
-* [在 Azure 入口網站中使用 RBAC](../storage/common/storage-auth-aad-rbac-portal.md)來授與 Azure blob 和佇列資料的存取權。
+* [在 Azure 入口網站中使用 AZURE RBAC](../storage/common/storage-auth-aad-rbac-portal.md)來授與 azure blob 和佇列資料的存取權。
 * 使用 [共用存取](/rest/api/storageservices/delegate-access-with-shared-access-signature)簽章來委派存取權。
 
 下列螢幕擷取畫面中的範例會使用 blob 的匿名讀取權限。
@@ -71,7 +71,7 @@ ms.locfileid: "86258733"
 1. 在 Visual Studio 中，以滑鼠右鍵按一下 **投票** 專案，然後選取 [ **封裝**]。
 
    ![封裝應用程式][PackageApplication]  
-1. 移至 *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug* 目錄。 將內容壓縮成名為 *Voting.zip*的檔案。 *ApplicationManifest.xml*檔案應位於 zip 檔案中的根目錄。
+1. 移至 *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug* 目錄。 將內容壓縮成名為 *Voting.zip* 的檔案。 *ApplicationManifest.xml* 檔案應位於 zip 檔案中的根目錄。
 
    ![Zip 應用程式][ZipApplication]  
 1. 將檔案重新命名，以將副檔名從 .zip 變更為 *sfpkg*。
@@ -87,11 +87,11 @@ ms.locfileid: "86258733"
 範例應用程式包含可用來部署應用程式 [Azure Resource Manager 範本](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) 。 範本檔案名 *UserApp.js開啟* 並 *UserApp.Parameters.js*。
 
 > [!NOTE]
-> 檔案 * 上的UserApp.Parameters.js* 必須以您的叢集名稱更新。
+> 檔案 *上的UserApp.Parameters.js* 必須以您的叢集名稱更新。
 >
 >
 
-| 參數              | 說明                                 | 範例                                                      | 註解                                                     |
+| 參數              | 描述                                 | 範例                                                      | 註解                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 您正在部署的叢集名稱 | sf-cluster123                                                |                                                              |
 | 應用程式            | 應用程式的名稱                 | 投票                                                       |
@@ -178,7 +178,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 取得應用程式資源模型的相關資訊：
 

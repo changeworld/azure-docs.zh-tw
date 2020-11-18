@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314512"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681613"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>存取 Azure Kubernetes Service (AKS) 中的 Kubernetes Web 儀表板
 
@@ -20,7 +20,7 @@ Kubernetes 包含的 Web 儀表板可用來執行基本的管理作業。 此儀
 如需 Kubernetes 儀表板的詳細資訊，請參閱 [Kubernetes WEB UI 儀表板][kubernetes-dashboard]。 AKS 使用2.0 版和更高版本的開放原始碼儀表板。
 
 > [!WARNING]
-> **AKS 儀表板附加元件已設定為取代。請改 [為使用 Azure 入口網站 (預覽) 中的 Kubernetes 資源檢視 ][kubernetes-portal] 。** 
+> **AKS 儀表板附加元件已設定為取代。請改 [為使用 Azure 入口網站 (預覽) 中的 Kubernetes 資源檢視][kubernetes-portal] 。** 
 > * Kubernetes 儀表板預設會針對執行低於1.18 之 Kubernetes 版本的叢集啟用。
 > * 預設會停用 Kubernetes 1.18 或更新版本上建立的所有新叢集的儀表板附加元件。 
  > * 從 Kubernetes 1.19 預覽版開始，AKS 將不再支援安裝 managed kube 儀表板附件。 
@@ -30,7 +30,7 @@ Kubernetes 包含的 Web 儀表板可用來執行基本的管理作業。 此儀
 
 本檔中詳述的步驟假設您已建立 AKS 叢集，並已建立與叢集的 `kubectl` 連接。 如果您需要建立 AKS 叢集，請參閱 [快速入門：使用 Azure CLI 部署 Azure Kubernetes Service][aks-quickstart]叢集。
 
-您也需要安裝並設定 Azure CLI 2.6.0 版或更新版本。 執行  `az --version`  以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="disable-the-kubernetes-dashboard"></a>停用 Kubernetes 儀表板
 
@@ -44,7 +44,7 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 
 若要在叢集上啟動 Kubernetes 儀表板，請使用 [az aks browse][az-aks-browse] 命令。 此命令需要在叢集上安裝 kube 儀表板附加元件，此附加元件預設會在執行任何版本超過 Kubernetes 1.18 的叢集上包含。
 
-下列範例會在名為 myResourceGroup** 的資源群組中，針對名為 myAKSCluster** 的叢集開啟儀表：
+下列範例會在名為 myResourceGroup 的資源群組中，針對名為 myAKSCluster 的叢集開啟儀表：
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -71,7 +71,7 @@ You have the following options to sign in to your cluster's dashboard:
 > 
 > When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If you do choose to use the default dashboard service account and your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
@@ -79,16 +79,16 @@ You have the following options to sign in to your cluster's dashboard:
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
+> You can now access the Kubernetes dashboard in your Kubernetes RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> If your cluster does not use Kubernetes RBAC, it is not recommended to create a *ClusterRoleBinding*.
 > 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
 After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
 
 > [!IMPORTANT]
-> If your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 > 
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command. The following example shows how to create a sample binding, however, this sample binding does not apply any additional authentication components and may lead to insecure use. The Kubernetes dashboard is open to anyone with access to the URL. Do not expose the Kubernetes dashboard publicly.
 >
@@ -104,7 +104,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 > [!IMPORTANT]
 > [從 Kubernetes 儀表板](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1)或 Kubernetes v 1.16 + v 1.10.1 +，服務帳戶 "Kubernetes-儀表板" 無法再用來取得資源[，因為該版本中有安全性修正](https://github.com/kubernetes/dashboard/pull/3400)。 因此，沒有驗證資訊的要求會傳回 [401 未授權錯誤](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)。 從服務帳戶取出的持有人權杖仍然可以像在這個 [Kubernetes 儀表板範例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中使用，但這會影響儀表板附加元件的登入流程（相較于較舊的版本）。
 >
->如果您仍要執行1.16 之前的版本，您仍然可以將許可權授與「kubernetes 儀表板」服務帳戶，但 **不建議**您這樣做：
+>如果您仍要執行1.16 之前的版本，您仍然可以將許可權授與「kubernetes 儀表板」服務帳戶，但 **不建議** 您這樣做：
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
@@ -124,7 +124,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 
 **使用權杖**
 
-1. 針對 **未啟用 Azure AD**的叢集，請執行 `kubectl config view` 並複製與您叢集的使用者帳戶相關聯的權杖。
+1. 針對 **未啟用 Azure AD** 的叢集，請執行 `kubectl config view` 並複製與您叢集的使用者帳戶相關聯的權杖。
 1. 在登入時，貼到 token 選項中。    
 1. 按一下 `Sign In`
 
@@ -148,16 +148,16 @@ kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROU
 
 若要建立應用程式，請完成下列步驟：
 
-1. 選取右上方視窗中的 [建立]**** 按鈕。
-1. 若要使用圖形化精靈，請選擇 [建立應用程式]****。
+1. 選取右上方視窗中的 [建立] 按鈕。
+1. 若要使用圖形化精靈，請選擇 [建立應用程式]。
 1. 為部署提供名稱，例如 *nginx*
 1. 輸入要使用之容器映像的名稱，例如 *nginx:1.15.5*
-1. 若要公開連接埠 80 以供 Web 流量使用，您需建立 Kubernetes 服務。 在 [服務]**** 底下，選取 [外部]****，然後針對連接埠和目標連接埠輸入 **80**。
-1. 準備就緒時，選取 [部署]**** 來建立應用程式。
+1. 若要公開連接埠 80 以供 Web 流量使用，您需建立 Kubernetes 服務。 在 [服務] 底下，選取 [外部]，然後針對連接埠和目標連接埠輸入 **80**。
+1. 準備就緒時，選取 [部署] 來建立應用程式。
 
 ![在 Kubernetes Web 儀表板中建立應用程式](./media/kubernetes-dashboard/create-app.png)
 
-將公用外部 IP 位址指派給 Kubernetes 服務需要一兩分鐘的時間。 在左側的 [探索與負載平衡]**** 底下，選取 [服務]****。 其中會列出您的應用程式 (包括 [外部端點]**)，如以下範例所示：
+將公用外部 IP 位址指派給 Kubernetes 服務需要一兩分鐘的時間。 在左側的 [探索與負載平衡] 底下，選取 [服務]。 其中會列出您的應用程式 (包括 [外部端點])，如以下範例所示：
 
 ![檢視服務與端點清單](./media/kubernetes-dashboard/view-services.png)
 
@@ -169,7 +169,7 @@ kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROU
 
 Kubernetes 儀表板可以提供基本監視計量，以及針對資訊 (例如記錄) 進行疑難排解。
 
-若要查看有關您應用程式 Pod 的詳細資訊，請選取左側功能表中的 [Pod]****。 隨即會顯示可用的 Pod 清單。 請選擇您的 *nginx* Pod 以檢視資訊，例如資源耗用量：
+若要查看有關您應用程式 Pod 的詳細資訊，請選取左側功能表中的 [Pod]。 隨即會顯示可用的 Pod 清單。 請選擇您的 *nginx* Pod 以檢視資訊，例如資源耗用量：
 
 ![檢視 Pod 資訊](./media/kubernetes-dashboard/view-pod-info.png)
 
@@ -179,14 +179,14 @@ Kubernetes 儀表板可以提供基本監視計量，以及針對資訊 (例如�
 
 編輯部署：
 
-1. 選取左側功能表中的 [部署]****，然後選擇您的 *nginx* 部署。
-1. 選取右上方導覽列中的 [編輯]****。
+1. 選取左側功能表中的 [部署]，然後選擇您的 *nginx* 部署。
+1. 選取右上方導覽列中的 [編輯]。
 1. 找出 `spec.replica` 值 (大約在第 20 行)。 若要增加應用程式複本的數目，請將此值從 *1* 變更為 *3*。
-1. 就緒後請選取 [更新]****。
+1. 就緒後請選取 [更新]。
 
 ![編輯部署以更新複本數目](./media/kubernetes-dashboard/edit-deployment.png)
 
-在複本集內建立新 Pod 需要一些時間。 請在左側功能表上，選擇 [複本集]****，然後選擇您的 *nginx* 複本集。 Pod 清單現在會反映已更新的複本計數，如以下範例輸出所示：
+在複本集內建立新 Pod 需要一些時間。 請在左側功能表上，選擇 [複本集]，然後選擇您的 *nginx* 複本集。 Pod 清單現在會反映已更新的複本計數，如以下範例輸出所示：
 
 ![檢視複本集的相關資訊](./media/kubernetes-dashboard/view-replica-set.png)
 
