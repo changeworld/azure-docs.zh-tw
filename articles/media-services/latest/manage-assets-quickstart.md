@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261406"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683007"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入門：使用入口網站上傳、編碼和串流內容
 
@@ -24,7 +24,7 @@ ms.locfileid: "91261406"
   
 ## <a name="overview"></a>概觀
 
-* 若要在 Azure 中開始管理、加密、編碼、分析和串流媒體內容，您需要建立媒體服務帳戶，並將您的高品質數位媒體檔案上傳至**資產**。 
+* 若要在 Azure 中開始管理、加密、編碼、分析和串流媒體內容，您需要建立媒體服務帳戶，並將您的高品質數位媒體檔案上傳至 **資產**。 
     
     > [!NOTE]
     > 如果您的影片先前已使用媒體服務 v3 API 上傳至媒體服務帳戶，或已根據即時輸出產生內容，則不會在 Azure 入口網站中看到 [編碼]、[分析] 或 [加密] 按鈕。 使用媒體服務 v3 API 來執行這些工作。
@@ -40,7 +40,7 @@ ms.locfileid: "91261406"
         目前，使用 Azure 入口網站時，您可以執行下列動作：產生 TTML 和 WebVTT 隱藏式輔助字幕檔案。 這些格式的檔案可以用來讓具有聽力障礙的人存取音訊和視訊檔案。 您也可以從內容中擷取關鍵字。
 
         如需可讓您從影片和音訊檔案擷取深入解析的豐富體驗，請使用媒體服務 v3 預設值 (如[教學課程：透過媒體服務 v3 分析影片](analyze-videos-tutorial-with-api.md)中所述)。 <br/>如果您想要更多詳細的深入解析，請直接使用[影片索引子](../video-indexer/index.yml)。    
-* 一旦處理了您的內容，您就可以將媒體內容提供給用戶端播放程式。 若要讓輸出資產中的影片可供用戶端播放，您必須建立**串流定位器**。 建立**串流定位器**時，您必須指定**串流原則**。 **串流原則**可讓您定義**串流定位器**的串流通訊協定和加密選項 (如果有的話)。
+* 一旦處理了您的內容，您就可以將媒體內容提供給用戶端播放程式。 若要讓輸出資產中的影片可供用戶端播放，您必須建立 **串流定位器**。 建立 **串流定位器** 時，您必須指定 **串流原則**。 **串流原則** 可讓您定義 **串流定位器** 的串流通訊協定和加密選項 (如果有的話)。
     
     檢閱：
 
@@ -54,7 +54,7 @@ ms.locfileid: "91261406"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[建立媒體服務帳戶](create-account-howto.md#use-the-azure-portal)
+[建立媒體服務帳戶](create-account-howto.md)
 
 ## <a name="upload"></a>上傳
 

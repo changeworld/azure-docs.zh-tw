@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776097"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835793"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>補救風險並解除封鎖使用者
 
@@ -37,7 +37,7 @@ ms.locfileid: "91776097"
 
 ### <a name="self-remediation-with-risk-policy"></a>具有風險原則的自我補救
 
-如果您允許使用者透過 Azure Multi-Factor Authentication (MFA) 和自助式密碼重設 (SSPR) 在您的風險原則中進行自我補救，則可以在偵測到風險時將其解除封鎖。 這些偵測接著會被視為已關閉。 使用者先前必須註冊 Azure MFA 和 SSPR，才能在偵測到風險時使用。
+如果您允許使用者使用 Azure AD Multi-Factor Authentication (MFA) 和自助式密碼重設 (在風險原則中) SSPR，他們可以在偵測到風險時解除封鎖。 這些偵測接著會被視為已關閉。 使用者先前必須註冊 Azure AD MFA 和 SSPR，才能在偵測到風險時使用。
 
 某些偵測可能不會對需要使用者自行補救的層級引發風險，但系統管理員仍應評估這些偵測。 系統管理員可以判斷需要額外的量值，例如 [封鎖位置的存取](../conditional-access/howto-conditional-access-policy-location.md) ，或降低其原則中可接受的風險。
 
@@ -49,7 +49,7 @@ ms.locfileid: "91776097"
 
 - **產生臨時密碼** - 藉由產生暫時密碼，您可以立即讓身分識別回到安全狀態。 此方法需要聯繫受影響的使用者，因為他們需要知道暫時密碼是什麼。 由於密碼是暫時性的，因此系統會提示使用者在下次登入時，將密碼變更為新的密碼。
 
-- **要求使用者重設密碼** - 要求使用者重設密碼能夠自行復原，而不需要連絡技術支援中心或系統管理員。 此方法僅適用于已註冊 Azure MFA 和 SSPR 的使用者。 針對尚未註冊的使用者，則無法使用此選項。
+- **要求使用者重設密碼** - 要求使用者重設密碼能夠自行復原，而不需要連絡技術支援中心或系統管理員。 此方法僅適用于註冊 Azure AD MFA 和 SSPR 的使用者。 針對尚未註冊的使用者，則無法使用此選項。
 
 ### <a name="dismiss-user-risk"></a>解除使用者風險
 

@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4897b9187caab50be4db75bbc0af03e3d35aa4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950199"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835980"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 的使用者體驗
 
 透過 Azure Active Directory Identity Protection，您可以：
 
-* 要求使用者註冊 Azure Multi-Factor Authentication (MFA) 
+* 要求使用者註冊 Azure AD Multi-Factor Authentication (MFA) 
 * 自動補救具風險的登入和遭盜用的使用者
 
-所有身分識別保護原則都會影響使用者的登入體驗。 允許使用者註冊及使用 Azure MFA 和自助式密碼重設等工具可以降低影響。 這些工具以及適當的原則選項，可讓使用者在需要時提供自行修復的選項。
+所有身分識別保護原則都會影響使用者的登入體驗。 允許使用者註冊及使用 Azure AD MFA 和自助式密碼重設等工具，可減輕影響。 這些工具以及適當的原則選項，可讓使用者在需要時提供自行修復的選項。
 
 ## <a name="multi-factor-authentication-registration"></a>Multi-Factor Authentication 註冊
 
-啟用需要多重要素驗證註冊並將所有使用者設為目標的身分識別保護原則，將可確保他們能夠使用 Azure MFA 在未來進行自我修復。 設定此原則可讓您的使用者有14天的時間，在這段期間內，他們可以選擇註冊，並在結束時強制註冊。 使用者體驗如下所述。 如需詳細資訊，請參閱檔中的終端使用者檔、 [雙因素驗證和您的公司或學校帳戶的總覽](../user-help/multi-factor-authentication-end-user-first-time.md)。
+啟用需要多重要素驗證註冊並將所有使用者設為目標的身分識別保護原則，可確保他們能夠使用 Azure AD MFA 在未來進行自我修復。 設定此原則可讓您的使用者有14天的時間，在這段期間內，他們可以選擇註冊，並在結束時強制註冊。 使用者體驗如下所述。 如需詳細資訊，請參閱檔中的終端使用者檔、 [雙因素驗證和您的公司或學校帳戶的總覽](../user-help/multi-factor-authentication-end-user-first-time.md)。
 
 ### <a name="registration-interrupt"></a>註冊中斷
 
@@ -37,7 +37,7 @@ ms.locfileid: "88950199"
    
     ![需要更多資訊](./media/concept-identity-protection-user-experience/identity-protection-experience-more-info-mfa.png)
 
-1. 完成註冊 Azure Multi-Factor Authentication 的引導式步驟，並完成您的登入。
+1. 完成引導式步驟以註冊 Azure AD Multi-Factor Authentication 並完成登入。
 
 ## <a name="risky-sign-in-remediation"></a>有風險的登入補救
 
@@ -49,7 +49,7 @@ ms.locfileid: "88950199"
    
     ![不尋常的提示](./media/concept-identity-protection-user-experience/120.png)
 
-1. 使用者必須透過其先前註冊的其中一個方法來完成 Azure MFA，以證明其身分識別。 
+1. 使用者必須使用其先前註冊的其中一個方法來完成 Azure AD MFA，以證明其身分識別。 
 
 ### <a name="risky-sign-in-administrator-unblock"></a>有風險的登入系統管理員解除封鎖
 
@@ -69,7 +69,7 @@ IT 人員可以依照 [ [解除封鎖使用者](howto-identity-protection-remedi
    
     ![修復](./media/concept-identity-protection-user-experience/101.png)
 
-1. 使用者必須透過其先前註冊的其中一個方法來完成 Azure MFA，以證明其身分識別。 
+1. 使用者必須使用其先前註冊的其中一個方法來完成 Azure AD MFA，以證明其身分識別。 
 1. 最後，會強制使用者使用自助式密碼重設來變更其密碼，因為其他人可能會擁有其帳戶的存取權。
 
 ## <a name="risky-sign-in-administrator-unblock"></a>有風險的登入系統管理員解除封鎖
@@ -80,7 +80,7 @@ IT 人員可以依照 [ [解除封鎖使用者](howto-identity-protection-remedi
 
 IT 人員可以依照 [ [解除封鎖使用者](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) ] 一節中的指示，讓使用者重新登入。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [補救風險並解除封鎖使用者](howto-identity-protection-remediate-unblock.md)
 

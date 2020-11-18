@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 12190a50579bf5b87685fc4b19ec7b2907e5ee9c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e1fa97fb8a3dcae3a78ba0bc85cf59db2c167dea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547039"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696773"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 來建立內部負載平衡器以平衡 VM 的負載
 
@@ -44,7 +44,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組：
 
-* 名為 **CreateIntLBQS-rg** 。
+* 名為 **CreateIntLBQS-rg**。
 * 在 **eastus** 位置中。
 
 ```azurepowershell-interactive
@@ -69,13 +69,13 @@ New-AzResourceGroup -Name $rg -Location $loc
 
 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路：
 
-* 具名 **myVNet** 。
+* 具名 **myVNet**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 名為 **MyBackendSubnet** 的子網路。
-* 虛擬網路 **10.0.0.0/16** 。
-* 子網路 **10.0.0.0/24** 。
-* 子網路的名稱為 **AzureBastionSubnet** 。
-* 子網路 **10.0.1.0/24** 。
+* 虛擬網路 **10.0.0.0/16**。
+* 子網路 **10.0.0.0/24**。
+* 子網路的名稱為 **AzureBastionSubnet**。
+* 子網路 **10.0.1.0/24**。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -109,7 +109,7 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 * 命名為 **myPublicIPBastion**
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
-* 配置方法為 **static** 。
+* 配置方法為 **static**。
 * **標準** SKU。
 
 ```azurepowershell-interactive
@@ -128,7 +128,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 
 使用 [New-AzBastion](/powershell/module/az.network/new-azbastion) 建立堡壘主機：
 
-* 命名為 **myBastion** 。
+* 命名為 **myBastion**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 與公用 IP 位址 **myPublicIPBastion** 相關聯。
@@ -151,16 +151,16 @@ New-AzBastion -ResourceGroupName $rg -Name $nmn -PublicIpAddress $publicip -Virt
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>建立連接埠 80 的網路安全性群組規則
 使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立網路安全性群組規則：
 
-* 具名 **myNSGRuleHTTP** 。
+* 具名 **myNSGRuleHTTP**。
 * **允許 HTTP** 的描述。
 * **允許** 的存取權。
 * 通訊協定 **(*)** 。
-* 方向 **輸入** 。
-* 優先順序 **2000** 。
+* 方向 **輸入**。
+* 優先順序 **2000**。
 * **網際網路** 的來源。
 * **(*)** 的來源連接埠範圍。
 * **(*)** 摸目的地位址前置詞。
-* 目的地 **連接埠 80** 。
+* 目的地 **連接埠 80**。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -183,7 +183,7 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 
 使用 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組：
 
-* 具名 **myNSG** 。
+* 具名 **myNSG**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 使用在先前步驟中建立的安全性規則，儲存在變數中。
@@ -212,8 +212,8 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -Sec
 
 使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 建立前端 IP：
 
-* 具名 **myFrontEnd** 。
-* 私人 IP 位址為 **10.0.0.4** 。
+* 具名 **myFrontEnd**。
+* 私人 IP 位址為 **10.0.0.4**。
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
@@ -230,7 +230,7 @@ New-AzLoadBalancerFrontendIpConfig -Name $fe -PrivateIpAddress $ip -SubnetId $vn
 
 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 建立後端位址集區： 
 
-* 具名 **myBackendPool** 。
+* 具名 **myBackendPool**。
 * 在其餘步驟中，VM 會連結至此後端集區。
 
 ```azurepowershell-interactive
@@ -250,9 +250,9 @@ New-AzLoadBalancerBackendAddressPoolConfig -Name $be
 使用 [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) 建立健康情況探查：
 
 * 監視虛擬機器的健康情況。
-* 具名 **myHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 監視 **連接埠 80** 。
+* 具名 **myHealthProbe**。
+* 通訊協定 **TCP**。
+* 監視 **連接埠 80**。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -277,11 +277,11 @@ New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath 
 使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 建立負載平衡器規則： 
 
 * 已命名為 **myHTTPRule**
-* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80** 。
-* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool** 。 
-* 使用健康情況探查 **MyHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 閒置逾時時間為 **15 分鐘** 。
+* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80**。
+* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**。 
+* 使用健康情況探查 **MyHealthProbe**。
+* 通訊協定 **TCP**。
+* 閒置逾時時間為 **15 分鐘**。
 * 啟用 TCP 重設。
 
 ```azurepowershell-interactive
@@ -297,7 +297,7 @@ $rule =
 New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 >[!NOTE]
->後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](../virtual-network/nat-overview.md)**
 
 
 ### <a name="create-load-balancer-resource"></a>建立負載平衡器資源
@@ -327,13 +327,13 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 #### <a name="vm-1"></a>VM 1
 
-* 具名 **myNicVM1** 。
+* 具名 **myNicVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
-* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer** 。
+* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer**。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -363,13 +363,13 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 #### <a name="vm-2"></a>VM 2
 
-* 具名 **myNicVM2** 。
+* 具名 **myNicVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
-* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer** 。
+* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer**。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -399,7 +399,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell
 $cred = Get-Credential
@@ -416,10 +416,10 @@ $cred = Get-Credential
 
 #### <a name="vm1"></a>VM1
 
-* 具名 **myVM1** 。
+* 具名 **myVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 已連結至網路介面 **myNicVM1** 。
-* 已連結至負載平衡器 **myLoadBalancer** 。
+* 已連結至網路介面 **myNicVM1**。
+* 已連結至負載平衡器 **myLoadBalancer**。
 * 在 **區域 1** 中。
 * 在 **eastus** 位置中。
 
@@ -447,10 +447,10 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 #### <a name="vm2"></a>VM2
 
-* 具名 **myVM2** 。
+* 具名 **myVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 連結到網路介面 **myNicVM2** 。
-* 已連結至負載平衡器 **myLoadBalancer** 。
+* 連結到網路介面 **myNicVM2**。
+* 已連結至負載平衡器 **myLoadBalancer**。
 * 在 **區域 2** 中。
 * 在 **eastus** 位置中。
 
@@ -488,13 +488,13 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路：
 
-* 具名 **myVNet** 。
+* 具名 **myVNet**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 名為 **MyBackendSubnet** 的子網路。
-* 虛擬網路 **10.0.0.0/16** 。
-* 子網路 **10.0.0.0/24** 。
-* 子網路的名稱為 **AzureBastionSubnet** 。
-* 子網路 **10.0.1.0/24** 。
+* 虛擬網路 **10.0.0.0/16**。
+* 子網路 **10.0.0.0/24**。
+* 子網路的名稱為 **AzureBastionSubnet**。
+* 子網路 **10.0.1.0/24**。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -528,7 +528,7 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 * 命名為 **myPublicIPBastion**
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
-* 配置方法為 **static** 。
+* 配置方法為 **static**。
 * **標準** SKU。
 
 ```azurepowershell-interactive
@@ -547,7 +547,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 
 使用 [New-AzBastion](/powershell/module/az.network/new-azbastion) 建立堡壘主機：
 
-* 命名為 **myBastion** 。
+* 命名為 **myBastion**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 與公用 IP 位址 **myPublicIPBastion** 相關聯。
@@ -571,16 +571,16 @@ New-AzBastion -ResourceGroupName $rg -Name $nmn -PublicIpAddress $publicip -Virt
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>建立連接埠 80 的網路安全性群組規則
 使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立網路安全性群組規則：
 
-* 具名 **myNSGRuleHTTP** 。
+* 具名 **myNSGRuleHTTP**。
 * **允許 HTTP** 的描述。
 * **允許** 的存取權。
 * 通訊協定 **(*)** 。
-* 方向 **輸入** 。
-* 優先順序 **2000** 。
+* 方向 **輸入**。
+* 優先順序 **2000**。
 * **網際網路** 的來源。
 * **(*)** 的來源連接埠範圍。
 * **(*)** 摸目的地位址前置詞。
-* 目的地 **連接埠 80** 。
+* 目的地 **連接埠 80**。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -603,7 +603,7 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 
 使用 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組：
 
-* 具名 **myNSG** 。
+* 具名 **myNSG**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 使用在先前步驟中建立的安全性規則，儲存在變數中。
@@ -632,8 +632,8 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -Sec
 
 使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 建立前端 IP：
 
-* 具名 **myFrontEnd** 。
-* 私人 IP 位址為 **10.0.0.4** 。
+* 具名 **myFrontEnd**。
+* 私人 IP 位址為 **10.0.0.4**。
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
@@ -650,7 +650,7 @@ New-AzLoadBalancerFrontendIpConfig -Name $fe -PrivateIpAddress $ip -SubnetId $vn
 
 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 建立後端位址集區： 
 
-* 具名 **myBackendPool** 。
+* 具名 **myBackendPool**。
 * 在其餘步驟中，VM 會連結至此後端集區。
 
 ```azurepowershell-interactive
@@ -670,9 +670,9 @@ New-AzLoadBalancerBackendAddressPoolConfig -Name $be
 使用 [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) 建立健康情況探查：
 
 * 監視虛擬機器的健康情況。
-* 具名 **myHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 監視 **連接埠 80** 。
+* 具名 **myHealthProbe**。
+* 通訊協定 **TCP**。
+* 監視 **連接埠 80**。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -697,11 +697,11 @@ New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath 
 使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 建立負載平衡器規則： 
 
 * 已命名為 **myHTTPRule**
-* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80** 。
-* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool** 。 
-* 使用健康情況探查 **MyHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 閒置逾時時間為 **15 分鐘** 。
+* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80**。
+* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**。 
+* 使用健康情況探查 **MyHealthProbe**。
+* 通訊協定 **TCP**。
+* 閒置逾時時間為 **15 分鐘**。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -743,13 +743,13 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 #### <a name="vm-1"></a>VM 1
 
-* 具名 **myNicVM1** 。
+* 具名 **myNicVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
-* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer** 。
+* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer**。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -779,13 +779,13 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 #### <a name="vm-2"></a>VM 2
 
-* 具名 **myNicVM2** 。
+* 具名 **myNicVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
-* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer** 。
+* 已連結至 **myBackEndPool** 中的負載平衡器 **myLoadBalancer**。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -817,7 +817,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) 建立虛擬機器的可用性設定組：
 
-* 具名 **myAvSet** 。
+* 具名 **myAvSet**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 
@@ -832,7 +832,7 @@ New-AzAvailabilitySet -ResourceGroupName $rg -Name $avs -Location $loc
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell
 $cred = Get-Credential
@@ -849,10 +849,10 @@ $cred = Get-Credential
 
 #### <a name="vm1"></a>VM1
 
-* 具名 **myVM1** 。
+* 具名 **myVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 已連結至網路介面 **myNicVM1** 。
-* 已連結至負載平衡器 **myLoadBalancer** 。
+* 已連結至網路介面 **myNicVM1**。
+* 已連結至負載平衡器 **myLoadBalancer**。
 * 在 **eastus** 位置中。
 * 在 **myAvSet** 可用性設定組中。
 
@@ -880,10 +880,10 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 #### <a name="vm2"></a>VM2
 
-* 具名 **myVM2** 。
+* 具名 **myVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 連結到網路介面 **myNicVM2** 。
-* 已連結至負載平衡器 **myLoadBalancer** 。
+* 連結到網路介面 **myNicVM2**。
+* 已連結至負載平衡器 **myLoadBalancer**。
 * 在 **eastus** 位置中。
 * 在 **myAvSet** 可用性設定組中。
 
@@ -914,7 +914,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ## <a name="install-iis"></a>安裝 IIS
 
-使用 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) 來安裝自訂指令碼擴充功能。 
+使用 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension?view=latest) 來安裝自訂指令碼擴充功能。 
 
 擴充功能會執行 PowerShell Add-WindowsFeature Web-Server 以安裝 IIS Web 伺服器，然後更新 Default.htm 頁面以顯示 VM 的主機名稱：
 
@@ -956,7 +956,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 #### <a name="mytestvm"></a>myTestVM
 
-* 命名為 **myNicTestVM** 。
+* 命名為 **myNicTestVM**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在 **eastus** 位置中。
 * 在虛擬網路 **MyVNet** 中。
@@ -986,7 +986,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -Networ
 
 ### <a name="create-virtual-machine"></a>建立虛擬機器
 
-使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell
 $cred = Get-Credential
@@ -1003,9 +1003,9 @@ $cred = Get-Credential
 
 #### <a name="mytestvm"></a>myTestVM
 
-* 命名為 **myTestVM** 。
+* 命名為 **myTestVM**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 已連結至網路介面 **myNicTestVM** 。
+* 已連結至網路介面 **myNicTestVM**。
 * 在 **eastus** 位置中。
 
 ```azurepowershell-interactive
@@ -1043,7 +1043,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 
 6. 輸入在 VM 建立期間輸入的使用者名稱和密碼。
 
-7. 在 **myTestVM** 上開啟 **Internet Explorer** 。
+7. 在 **myTestVM** 上開啟 **Internet Explorer**。
 
 8. 在瀏覽器的網址列中，輸入上一個步驟中的 IP 位址。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
 
@@ -1074,5 +1074,3 @@ Remove-AzResourceGroup -Name $rg
 若要深入了解 Azure Load Balancer，請繼續...
 > [!div class="nextstepaction"]
 > [什麼是 Azure Load Balancer？](load-balancer-overview.md)
-
-

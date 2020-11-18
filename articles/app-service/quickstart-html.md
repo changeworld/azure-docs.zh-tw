@@ -6,13 +6,13 @@ ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: d624d332fa35bf458e9158e00aaf83ce495b9061
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: ec3929219a6297bd4a3d8d3e0eff93d2ed847ba0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835215"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中建立靜態 HTML Web 應用程式
 
@@ -102,7 +102,7 @@ az webapp up --location westeurope --name <app_name> --html
 az webapp up --location westeurope --name <app_name> --html
 ```
 
-部署完成後，切換回在**瀏覽至應用程式**步驟中開啟的瀏覽器視窗，然後重新整理頁面。
+部署完成後，切換回在 **瀏覽至應用程式** 步驟中開啟的瀏覽器視窗，然後重新整理頁面。
 
 ![已更新的範例應用程式首頁](media/quickstart-html/hello-azure-in-browser-az.png)
 

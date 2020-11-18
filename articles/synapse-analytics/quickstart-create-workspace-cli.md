@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5c9b47bf5d638f3c15416416a435653eeb68505
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 46ab1df1b776bf8dc9d6d917e5394c3efeec0de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172054"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659381"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure Synapse 工作區
 
@@ -22,7 +22,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
 
 在本快速入門中，您會了解如何使用 Azure CLI 建立 Synapse 工作區。
 
-如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -32,28 +32,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
     > [!IMPORTANT]
     > Azure Synapse 工作區必須能夠讀取和寫入選取的 ADLS Gen2 帳戶。 此外，對於您連結為主要儲存體帳戶的任何儲存體帳戶，您必須已在建立儲存體帳戶時啟用 [階層式命名空間]，如[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)頁面所述。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-the-azure-cli-locally"></a>在本機安裝 Azure CLI
-
-如果您選擇在本機安裝和使用 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-如果您要在本機執行 Azure CLI，則必須登入並進行驗證。 如果您要使用 Azure Cloud Shell，則不需要執行此步驟。 若要登入 Azure CLI，請在瀏覽器視窗中執行 `az login` 並進行驗證：
-
-```azurecli
-az login
-```
-
-如需關於使用 Azure CLI 進行驗證的詳細資訊，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli)。
-
-## <a name="install-azure-synapse-extension-for-azure-cli"></a>安裝適用於 Azure CLI 的 Azure Synapse 擴充功能
-
-```azurecli
-az extension add --name synapse
-```
-
-> [!WARNING]
-> 適用於 Azure CLI 的 Azure Synapse 擴充功能處於預覽狀態。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-cli"></a>使用 Azure CLI 建立 Azure Synapse 工作區
 
@@ -139,7 +118,7 @@ az extension add --name synapse
 > [!WARNING]
 > 刪除 Azure Synapse 工作區將會移除分析引擎和儲存在包含 SQL 集區和工作區繼資料之資料庫中的資料。 您無法再連線到 SQL 或 Apache Spark 端點。 系統將刪除所有程式碼成品 (查詢、筆記本、作業定義和管線)。
 >
-> 刪除工作區**不會**影響連結到工作區之 Data Lake Store Gen2 中的資料。
+> 刪除工作區 **不會** 影響連結到工作區之 Data Lake Store Gen2 中的資料。
 
 如果想刪除 Azure Synapse 工作區，請完成下列命令：
 

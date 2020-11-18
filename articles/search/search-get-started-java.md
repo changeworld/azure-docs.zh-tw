@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791217"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698942"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入門：使用 REST API 在 Java 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "92791217"
 > * [入口網站](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 建立 Java 主控台應用程式，以使用 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/) 和 [Azure 認知搜尋 REST API](/rest/api/searchservice/) 來建立、載入和查詢搜尋索引。 本文提供如何建立應用程式的逐步指示。 或者，您可以[下載並執行完整應用程式](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/) \(英文\)。
 
@@ -67,9 +67,9 @@ ms.locfileid: "92791217"
 1. 選取 [Maven]  。
 1. 在 [專案 SDK]  清單中，選取 Java 11 SDK。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="建立 Maven 專案" border="false":::
 
-1. 針對 **GroupId** 和 **ArtifactId** ，輸入 `AzureSearchQuickstart`。
+1. 針對 **GroupId** 和 **ArtifactId**，輸入 `AzureSearchQuickstart`。
 1. 接受其餘預設值以開啟專案。
 
 ### <a name="specify-maven-dependencies"></a>指定 Maven 相依性
@@ -78,7 +78,7 @@ ms.locfileid: "92791217"
 1. 在 [設定]  視窗中，選取 [建置、執行、部署]   > [建置工具]   > [Maven]   > [匯入]  。
 1. 選取 [自動匯入 Maven 專案]  核取方塊，然後按一下 [確定]  以關閉視窗。 現在，當您在下一個步驟中更新 pom .xml 檔案時，Maven 外掛程式和其他相依性將會自動同步處理。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="IntelliJ 設定中的 Maven 匯入選項" border="false":::
 
 1. 開啟 pom.xml 檔案，並將內容取代為下列 Maven 組態詳細資料。 其中包括 [Exec Maven 外掛程式](https://www.mojohaus.org/exec-maven-plugin/)和 [JSON 介面 API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) 的參考
 
@@ -140,7 +140,7 @@ ms.locfileid: "92791217"
 
     完成作業後，專案樹狀結構應該會如下圖所示。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="專案目錄結構" border="false":::
 
 1. 按一下 [ **確定** ] 關閉視窗。
 
@@ -373,10 +373,10 @@ ms.locfileid: "92791217"
 
 1. 確認您的專案具有下列結構。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="專案目錄結構加上類別" border="false":::
 
 1. 開啟 [Maven]  工具視窗，並執行下列 Maven 目標：`verify exec:java`
-:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
+:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="執行 Maven 目標：驗證 exec:java" border="false":::
 
 在處理完成後，尋找其後有零 (0) 結束代碼的「建置成功」訊息。
 

@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c8bce6afd914a22be80a57ae234e39161d182b7f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a084295aec2cafadd07d47e85a0116a89d37c985
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499157"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816905"
 ---
 藉由使用通訊服務 C# SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92499157"
 
 ### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `SmsQuickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： **Program.cs** 。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `SmsQuickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：**Program.cs**。
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -59,7 +59,7 @@ dotnet build
 若您仍在應用程式目錄中，請使用 `dotnet add package` 命令安裝適用於 .NET 套件的 Azure 通訊服務 SMS 用戶端程式庫。
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.3
 ```
 
 將 `using` 指示詞新增至 **Program.cs** 的頂端，以包含 `Azure.Communication` 命名空間。
@@ -82,7 +82,7 @@ using Azure.Communication.Sms;
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
- 在文字編輯器中開啟 **Program.cs** ，並將 `Main` 方法的本文取代為程式碼，以使用您的連接字串來初始化 `SmsClient`。 以下程式碼會從名為 `COMMUNICATION_SERVICES_CONNECTION_STRING` 的環境變數中，擷取資源的連接字串。 了解如何[管理資源的連接字串](../../create-communication-resource.md#store-your-connection-string)。
+ 在文字編輯器中開啟 **Program.cs**，並將 `Main` 方法的本文取代為程式碼，以使用您的連接字串來初始化 `SmsClient`。 以下程式碼會從名為 `COMMUNICATION_SERVICES_CONNECTION_STRING` 的環境變數中，擷取資源的連接字串。 了解如何[管理資源的連接字串](../../create-communication-resource.md#store-your-connection-string)。
 
 
 ```csharp

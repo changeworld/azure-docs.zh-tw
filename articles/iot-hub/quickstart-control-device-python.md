@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: edbce93036652b338f192df237e8c5b09017ad33
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5db51e78a6770a642728cc058f425baf7c7e095b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747497"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832155"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入門：控制連線到 IoT 中樞的裝置 (Python)
 
@@ -37,15 +37,7 @@ ms.locfileid: "92747497"
 
 * 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
-
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -63,17 +55,17 @@ az extension add --name azure-iot
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
-    **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-    **MyPythonDevice** ：這是您要註冊之裝置的名稱。 建議您使用 **MyPythonDevice** ，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+    **MyPythonDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyPythonDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得 _裝置連接字串_ ：
+2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得 _裝置連接字串_：
 
-    **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
@@ -85,9 +77,9 @@ az extension add --name azure-iot
 
     您稍後會在快速入門中使用此值。
 
-3. 您也需要 _服務連接字串_ ，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
+3. 您也需要 _服務連接字串_，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
 
-    **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -136,7 +128,7 @@ az extension add --name azure-iot
 
 1. 在您選擇的文字編輯器中開啟 **BackEndApplication.py** 檔案。
 
-    使用稍早所記錄的服務連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將您的變更儲存到 **BackEndApplication.py** 。
+    使用稍早所記錄的服務連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將您的變更儲存到 **BackEndApplication.py**。
 
 1. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫：
 

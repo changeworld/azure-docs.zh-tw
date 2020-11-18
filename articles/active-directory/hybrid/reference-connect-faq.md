@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014628"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836065"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -181,10 +181,10 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境中
 否。 此選項不會擷取所有組態設定，因此不應使用。 應改用精靈在第二部伺服器上建立基底組態，並使用同步處理規則編輯器產生 PowerShell 指令碼，以在伺服器之間移動任何自訂規則。 如需詳細資訊，請參閱[變換移轉](how-to-upgrade-previous-version.md#swing-migration)。
 
 **問：是否可以針對 Azure 登入頁面進行密碼快取，以及是否可以因為此快取包含具有 *autocomplete = "false"* 屬性的密碼輸入元素而防止進行此快取？**  
-目前不支援修改**密碼**欄位的 HTML 屬性，包括自動完成標記。 我們目前正在開發適用於自訂 JavaScript 的功能，可讓您將任何屬性新增至 [密碼] 欄位。
+目前不支援修改 **密碼** 欄位的 HTML 屬性，包括自動完成標記。 我們目前正在開發適用於自訂 JavaScript 的功能，可讓您將任何屬性新增至 [密碼] 欄位。
 
 **問：Azure 登入頁面會顯示先前登入成功的使用者名稱。可以關閉此行為嗎？**  
-目前不支援修改**密碼**輸入欄位的 HTML 屬性，包括自動完成標記。 我們目前正在開發適用於自訂 JavaScript 的功能，可讓您將任何屬性新增至 [密碼] 欄位。
+目前不支援修改 **密碼** 輸入欄位的 HTML 屬性，包括自動完成標記。 我們目前正在開發適用於自訂 JavaScript 的功能，可讓您將任何屬性新增至 [密碼] 欄位。
 
 **問：是否有方法可防止並行的工作階段？**  
 否。
@@ -261,7 +261,7 @@ Office 小組正在處理 Office 入口網站更新，以反映目前的產品�
 ## <a name="operational-best-practice"></a>操作最佳做法    
 以下是在 Windows Server Active Directory 和 Azure Active Directory 之間進行同步處理時，應執行的一些最佳作法。
 
-**對所有同步處理的帳戶套用 Multi-Factor Authentication** Azure Multi-Factor Authentication 可協助保護資料和應用程式的存取，同時為使用者提供簡單的簡化。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的驗證方法來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。 您可以在這裡閱讀有關 MFA 的詳細資訊： https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**對所有同步處理的帳戶套用 Multi-Factor Authentication** Azure AD Multi-Factor Authentication 可協助保護資料和應用程式的存取，同時為使用者保持簡單性。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的驗證方法來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。 您可以在這裡閱讀有關 MFA 的詳細資訊： https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
 **遵循 Azure AD Connect server 安全性指導方針** Azure AD Connect 伺服器包含重要的身分識別資料，而且應該視為 [Active Directory 系統管理層級模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中記載的第0層元件。 請參閱我們 [的指導方針，以保護您的 AADConnect 伺服器](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)。
 

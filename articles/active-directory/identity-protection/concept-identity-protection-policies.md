@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368786"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835963"
 ---
 # <a name="identity-protection-policies"></a>身分識別保護原則
 
@@ -24,11 +24,11 @@ Azure Active Directory Identity Protection 包含三個可由管理員選擇啟�
 
 ![身分識別保護原則](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
-## <a name="azure-mfa-registration-policy"></a>Azure MFA 註冊原則
+## <a name="azure-ad-mfa-registration-policy"></a>Azure AD MFA 註冊原則
 
-Identity Protection 可協助組織使用在登入時需要註冊的條件式存取原則，來推出 Azure Multi-Factor Authentication (MFA)。 啟用此原則，是確保組織中的新使用者在一開始就註冊 MFA 的絕佳方式。 多重要素驗證是 Identity Protection 內的風險事件適用的自我補救方法之一。 自我補救可讓您的使用者自行採取因應措施，以減少服務台的通話量。
+Identity Protection 可協助組織使用要求在登入時註冊的條件式存取原則，來 Azure AD Multi-Factor Authentication (MFA) 。 啟用此原則，是確保組織中的新使用者在一開始就註冊 MFA 的絕佳方式。 多重要素驗證是 Identity Protection 內的風險事件適用的自我補救方法之一。 自我補救可讓您的使用者自行採取因應措施，以減少服務台的通話量。
 
-如需 Azure Multi-Factor Authentication 的詳細資訊，請參閱[運作方式：Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)。
+如需 Azure AD Multi-Factor Authentication 的詳細資訊，請參閱文章中的 [運作方式： Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)。
 
 ## <a name="sign-in-risk-policy"></a>登入風險原則
 
@@ -37,7 +37,7 @@ Identity Protection 會分析每一次登入的訊號 (包括即時和離線)，
 如果偵測到風險，使用者可執行多重要素驗證以進行自我補救，並關閉有風險的登入事件，以避免對管理員造成不必要的干擾。
 
 > [!NOTE] 
-> 使用者必須先註冊 Azure Multi-Factor Authentication，才能觸發登入風險原則。
+> 使用者之前必須先註冊 Azure AD Multi-Factor Authentication，才能觸發登入風險原則。
 
 ### <a name="custom-conditional-access-policy"></a>自訂條件式存取原則
 
@@ -58,8 +58,8 @@ Identity Protection 可以計算其認定為正常使用者行為的標準，並
 
 - [啟用 Azure AD 自助式密碼重設](../authentication/howto-sspr-deployment.md)
 
-- [啟用 Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [啟用 Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
-- [啟用 Azure Multi-Factor Authentication 註冊原則](howto-identity-protection-configure-mfa-policy.md)
+- [啟用 Azure AD Multi-Factor Authentication 註冊原則](howto-identity-protection-configure-mfa-policy.md)
 
 - [啟用登入與使用者風險原則](howto-identity-protection-configure-risk-policies.md)

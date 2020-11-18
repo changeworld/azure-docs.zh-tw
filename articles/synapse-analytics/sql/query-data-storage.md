@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310960"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685659"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>具有無伺服器 SQL 集區 (預覽) 的查詢儲存體檔案不支援此語法
 
@@ -66,7 +66,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 - ESCAPE_CHAR = 'char' 會指定檔案中用來將本身和所有分隔符號值逸出的字元。 如果逸出字元後面接著本身或任何分隔符號值以外的值，讀取值時就會捨棄逸出字元。
 無論 FIELDQUOTE 已啟用或未啟用，都會套用 ESCAPE_CHAR 參數。 其不會用來逸出引號字元。 引號字元必須以另一個引號字元來逸出。 只有在以引號字元封住值時，引號字元才能在資料行值中出現。
 - FIELDTERMINATOR ='field_terminator' 會指定要使用的欄位結束字元。 預設的欄位結束字元為逗號 (" **,** ")
-- ROWTERMINATOR ='row_terminator' 會指定要使用的資料列結束字元。 預設的資料列結束字元是新行字元： **\r\n** 。
+- ROWTERMINATOR ='row_terminator' 會指定要使用的資料列結束字元。 預設的資料列結束字元是新行字元： **\r\n**。
 
 ## <a name="file-schema"></a>檔案結構描述
 
@@ -228,7 +228,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ### <a name="demo-setup"></a>示範設定
 
-您的第一個步驟是 **建立資料庫** ，您將在其中執行查詢。 然後，您將在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 
+您的第一個步驟是 **建立資料庫**，您將在其中執行查詢。 然後，您將在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 
 
 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用來讀取這些範例中資料的外部檔案格式。
 

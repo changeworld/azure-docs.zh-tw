@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463751"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835895"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>在 Identity Protection 中模擬風險偵測
 
@@ -40,12 +40,12 @@ ms.locfileid: "84463751"
 要完成下列程序，您必須使用：
 
 - [Tor 瀏覽器](https://www.torproject.org/projects/torbrowser.html.en)，用以模擬匿名 IP 位址。 如果您的組織對 Tor 瀏覽器的使用有所限制，您可能需要使用虛擬機器。
-- 尚未針對 Azure Multi-Factor Authentication 註冊的測試帳戶。
+- 尚未針對 Azure AD Multi-Factor Authentication 註冊的測試帳戶。
 
 **若要模擬從匿名 IP 登入，請執行下列步驟**：
 
 1. 使用 [Tor 瀏覽器](https://www.torproject.org/projects/torbrowser.html.en)，瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)。   
-2. 輸入您要在 [從匿名 IP 位址登入] **** 報告中顯示之帳戶的認證。
+2. 輸入您要在 [從匿名 IP 位址登入]  報告中顯示之帳戶的認證。
 
 登入將會在 10 - 15 分鐘內顯示於 [身分識別保護] 儀表板上。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "84463751"
 要完成下列程序，您必須使用符合下列條件的使用者帳戶：
 
 - 至少有 30 天的登入歷程記錄。
-- Azure Multi-Factor Authentication 已啟用。
+- Azure AD Multi-Factor Authentication 已啟用。
 
 **若要模擬從不熟悉的位置登入，請執行下列步驟**：
 
@@ -93,13 +93,13 @@ ms.locfileid: "84463751"
 若要測試使用者風險安全性原則，請執行下列步驟：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **總覽**。
+1. 流覽至 **Azure Active Directory**  >  **安全性**  >  **總覽**。
 1. 選取 [ **設定使用者風險原則**]。
-   1. 在**指派**下
+   1. 在 **指派** 下
       1. **使用者** -選擇 [ **所有使用者** ] **，或選取 [個人和群組** ] 以限制您的首度發行。
          1. （選擇性）您可以選擇將使用者從原則中排除。
-      1. **條件**  - **使用者風險**Microsoft 的建議是將此選項設定為 [**高**]。
-   1. 在**控制項**下
+      1. **條件**  - **使用者風險** Microsoft 的建議是將此選項設定為 [**高**]。
+   1. 在 **控制項** 下
       1. **存取** -Microsoft 的建議是 **允許存取** ，而且 **需要變更密碼**。
    1. **強制執行原則**  - **關閉**
    1. **儲存** -此動作會讓您回到 [ **總覽** ] 頁面。
@@ -113,19 +113,19 @@ ms.locfileid: "84463751"
 若要測試登入風險原則，請執行下列步驟：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **總覽**。
+1. 流覽至 **Azure Active Directory**  >  **安全性**  >  **總覽**。
 1. 選取 [ **設定登入風險原則**]。
-   1. 在**指派**下
+   1. 在 **指派** 下
       1. **使用者** -選擇 [ **所有使用者** ] **，或選取 [個人和群組** ] 以限制您的首度發行。
          1. （選擇性）您可以選擇將使用者從原則中排除。
-      1. **條件**  - 登**入風險**Microsoft 的建議是將此選項設定為 [**中] 或更高**的版本。
-   1. 在**控制項**下
+      1. **條件**  - 登 **入風險** Microsoft 的建議是將此選項設定為 [**中] 或更高** 的版本。
+   1. 在 **控制項** 下
       1. **存取** -Microsoft 的建議是 **允許存取** ，而且 **需要多重要素驗證**。
    1. **強制執行原則**  - **開啟**
    1. **儲存** -此動作會讓您回到 [ **總覽** ] 頁面。
 1. 您現在可以使用具風險的會話登入來測試登入風險型條件式存取 (例如，使用 Tor 瀏覽器) 。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [什麼是風險？](concept-identity-protection-risks.md) (機器翻譯)
 

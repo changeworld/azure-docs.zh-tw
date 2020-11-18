@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311124"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686203"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 連線到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ ms.locfileid: "93311124"
   
     ![連線至伺服器 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **伺服器名稱** ：輸入先前找到的 **伺服器名稱** 。
-   * **驗證** ：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
-   * **使用者名稱** 和 **密碼** ：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * **伺服器名稱**：輸入先前找到的 **伺服器名稱** 。
+   * **驗證**：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
+   * **使用者名稱** 和 **密碼**：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
 
 1. 在 **物件總管** 中展開您的 Azure SQL Server。 您可以檢視與伺服器相關聯的資料庫，例如範例 AdventureWorksDW 資料庫。 您可以展開資料庫以查看資料表：
    
@@ -72,9 +72,9 @@ ms.locfileid: "93311124"
    
     ![連線至伺服器 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **伺服器名稱** ：輸入先前找到的 **伺服器名稱** 。
-   * **驗證** ：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]：
-   * **使用者名稱** 和 **密碼** ：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * **伺服器名稱**：輸入先前找到的 **伺服器名稱** 。
+   * **驗證**：選取驗證類型，像是 [SQL Server 驗證] 或 [Active Directory 整合式驗證]：
+   * **使用者名稱** 和 **密碼**：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
    * 選取 [連接]  。
 
 4. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開 *示範* 以查看範例資料庫中的內容。

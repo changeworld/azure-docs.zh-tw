@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44f6ba313ab57933a1078e96533c88cc4b4b59b3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6ac76b3d3cc8fb27734730275836fba0dbfb08fe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490844"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700302"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立內部負載平衡器以平衡 VM 的負載
 
@@ -45,9 +45,9 @@ ms.locfileid: "92490844"
 
 當您建立內部負載平衡器時，會將虛擬網路設定為負載平衡器的網路。 
 
-虛擬網路中的私人 IP 位址會設定為負載平衡器的前端 (命名為 **LoadBalancerFrontend** )。 
+虛擬網路中的私人 IP 位址會設定為負載平衡器的前端 (命名為 **LoadBalancerFrontend**)。 
 
-前端公用 IP 位址可以是 **靜態** 或 **動態** 。
+前端公用 IP 位址可以是 **靜態** 或 **動態**。
 
 ## <a name="create-the-virtual-network"></a>建立虛擬網路
 
@@ -109,13 +109,13 @@ ms.locfileid: "92490844"
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
-    | 資源群組         | 選取您在上一個步驟中建立的 **CreateIntLBQS-rg** 。|
+    | 資源群組         | 選取您在上一個步驟中建立的 **CreateIntLBQS-rg**。|
     | 名稱                   | 輸入 **myLoadBalancer**                                   |
     | 區域         | 選取 [西歐]  。                                        |
     | 類型          | 選取 [內部]。                                        |
     | SKU           | 選取 [標準] |
-    | 虛擬網路 | 選取您在上一個步驟中建立的 **myVNet** 。 |
-    | 子網路  | 選取您在上一個步驟中建立的 **myBackendSubnet** 。 |
+    | 虛擬網路 | 選取您在上一個步驟中建立的 **myVNet**。 |
+    | 子網路  | 選取您在上一個步驟中建立的 **myBackendSubnet**。 |
     | IP 位址指派 | 選取 [動態]。 |
     | 可用性區域 | 選取 [區域備援] |
 
@@ -137,9 +137,9 @@ ms.locfileid: "92490844"
 
 後端位址集區會包含已連線至負載平衡器之虛擬 NIC 的 IP 位址。 
 
-建立後端位址集區 **myBackendPool** ，以包含用於平衡網際網路流量負載的虛擬機器。
+建立後端位址集區 **myBackendPool**，以包含用於平衡網際網路流量負載的虛擬機器。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 底下選取 [後端集區]，然後選取 [新增]。
 
@@ -153,15 +153,15 @@ ms.locfileid: "92490844"
 
 建立名為 myHealthProbe 的健康狀態探查，以監視 VM 的健康狀態。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 底下選取 [健康狀態探查]，然後選取 [新增]。
     
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 **myHealthProbe** 。 |
+    | 名稱 | 輸入 **myHealthProbe**。 |
     | 通訊協定 | 選取 [HTTP]  。 |
-    | 連接埠 | 輸入 **80** 。|
+    | 連接埠 | 輸入 **80**。|
     | 間隔 | 輸入 **15** 作為探查嘗試之間的 [間隔]  秒數。 |
     | 狀況不良臨界值 | 選取 [2] 作為 [狀況不良閾值] 的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
     | | |
@@ -174,12 +174,12 @@ ms.locfileid: "92490844"
 
 在本節中，您將建立負載平衡器規則：
 
-* 已命名為 **myHTTPRule** 。
+* 已命名為 **myHTTPRule**。
 * 在名為 **LoadBalancerFrontEnd** 的前端中。
-* 接聽 **連接埠 80** 。
+* 接聽 **連接埠 80**。
 * 將負載平衡的流量導向至 **連接埠 80** 上名為 **myBackendPool** 的後端。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 下選取 [負載平衡規則]，然後選取 [新增]。
 
@@ -187,22 +187,22 @@ ms.locfileid: "92490844"
     
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 **myHTTPRule** 。 |
+    | 名稱 | 輸入 **myHTTPRule**。 |
     | IP 版本 | 選取 **IPv4** |
     | 前端 IP 位址 | 選取 **LoadBalancerFrontEnd** |
     | 通訊協定 | 選取 [TCP]  。 |
-    | 連接埠 | 輸入 **80** 。|
-    | 後端連接埠 | 輸入 **80** 。 |
+    | 連接埠 | 輸入 **80**。|
+    | 後端連接埠 | 輸入 **80**。 |
     | 後端集區 | 選取 [myBackendPool]。|
     | 健全狀況探查 | 選取 [myHealthProbe]。 |
-    | 閒置逾時 (分鐘) | 將滑桿移至 **15 分鐘** 。 |
+    | 閒置逾時 (分鐘) | 將滑桿移至 **15 分鐘**。 |
     | TCP 重設 | 選取 [啟用]  。 |
-    | 輸出來源網路位址轉譯 (SNAT) | **使用輸出規則，提供對網際網路的後端集區成員存取權** 。 |
+    | 輸出來源網路位址轉譯 (SNAT) | **使用輸出規則，提供對網際網路的後端集區成員存取權**。 |
 
 4. 保留其餘的預設值，然後選取 [確定]。
 
 >[!NOTE]
->後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>建立後端伺服器
 
@@ -213,7 +213,7 @@ ms.locfileid: "92490844"
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-在本節中，您將建立二個 VM ( **myVM1** 和 **myVM2** )。
+在本節中，您將建立二個 VM (**myVM1** 和 **myVM2**)。
 
 這些 VM 會新增至先前建立之負載平衡器的後端集區。
 
@@ -250,7 +250,7 @@ ms.locfileid: "92490844"
     | 子網路 | **myBackendSubnet** |
     | 公用 IP | 選取 [無] |
     | NIC 網路安全性群組 | 選取 [進階]|
-    | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG** 。 </br> 選取 [確定] |
+    | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG**。 </br> 選取 [確定] |
     | **負載平衡**  |
     | 要將此虛擬機器放在現有負載平衡解決方案後面嗎? | 選取 [是] |
     | **負載平衡設定** |
@@ -280,9 +280,9 @@ ms.locfileid: "92490844"
 
 當您建立內部負載平衡器時，會將虛擬網路設定為負載平衡器的網路。 
 
-虛擬網路中的私人 IP 位址會設定為負載平衡器的前端 (命名為 **LoadBalancerFrontend** )。 
+虛擬網路中的私人 IP 位址會設定為負載平衡器的前端 (命名為 **LoadBalancerFrontend**)。 
 
-前端公用 IP 位址可以是 **靜態** 或 **動態** 。
+前端公用 IP 位址可以是 **靜態** 或 **動態**。
 
 ## <a name="create-the-virtual-network"></a>建立虛擬網路
 
@@ -344,13 +344,13 @@ ms.locfileid: "92490844"
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
-    | 資源群組         | 選取您在上一個步驟中建立的 **CreateIntLBQS-rg** 。|
+    | 資源群組         | 選取您在上一個步驟中建立的 **CreateIntLBQS-rg**。|
     | 名稱                   | 輸入 **myLoadBalancer**                                   |
     | 區域         | 選取 [西歐]。                                        |
     | 類型          | 選取 [內部]。                                        |
     | SKU           | 選取 [基本] |
-    | 虛擬網路 | 選取您在上一個步驟中建立的 **myVNet** 。 |
-    | 子網路  | 選取您在上一個步驟中建立的 **myBackendSubnet** 。 |
+    | 虛擬網路 | 選取您在上一個步驟中建立的 **myVNet**。 |
+    | 子網路  | 選取您在上一個步驟中建立的 **myBackendSubnet**。 |
     | IP 位址指派 | 選取 [動態]。 |
 
 3. 接受其餘設定的預設值，然後選取 [檢閱 + 建立]。
@@ -371,9 +371,9 @@ ms.locfileid: "92490844"
 
 後端位址集區會包含已連線至負載平衡器之虛擬 NIC 的 IP 位址。 
 
-建立後端位址集區 **myBackendPool** ，以包含用於平衡網際網路流量負載的虛擬機器。
+建立後端位址集區 **myBackendPool**，以包含用於平衡網際網路流量負載的虛擬機器。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 底下選取 [後端集區]，然後選取 [新增]。
 
@@ -381,7 +381,7 @@ ms.locfileid: "92490844"
     
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 **myBackendPool** 。 |
+    | 名稱 | 輸入 **myBackendPool**。 |
     | 虛擬網路 | 選取 [myVNet]。 |
     | 與下列產生關聯： | 選取 [虛擬機器] |
 
@@ -395,15 +395,15 @@ ms.locfileid: "92490844"
 
 建立名為 myHealthProbe 的健康狀態探查，以監視 VM 的健康狀態。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 底下選取 [健康狀態探查]，然後選取 [新增]。
     
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 **myHealthProbe** 。 |
+    | 名稱 | 輸入 **myHealthProbe**。 |
     | 通訊協定 | 選取 [HTTP]。 |
-    | 連接埠 | 輸入 **80** 。|
+    | 連接埠 | 輸入 **80**。|
     | Path | 輸入 **/** |
     | 間隔 | 輸入 **15** 作為探查嘗試之間的 [間隔]  秒數。 |
     | 狀況不良臨界值 | 選取 [2] 作為 [狀況不良閾值] 的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
@@ -416,12 +416,12 @@ ms.locfileid: "92490844"
 
 在本節中，您將建立負載平衡器規則：
 
-* 已命名為 **myHTTPRule** 。
+* 已命名為 **myHTTPRule**。
 * 在名為 **LoadBalancerFrontEnd** 的前端中。
-* 接聽 **連接埠 80** 。
+* 接聽 **連接埠 80**。
 * 將負載平衡的流量導向至 **連接埠 80** 上名為 **myBackendPool** 的後端。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 下選取 [負載平衡規則]，然後選取 [新增]。
 
@@ -429,15 +429,15 @@ ms.locfileid: "92490844"
     
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 **myHTTPRule** 。 |
+    | 名稱 | 輸入 **myHTTPRule**。 |
     | IP 版本 | 選取 **IPv4** |
     | 前端 IP 位址 | 選取 **LoadBalancerFrontEnd** |
     | 通訊協定 | 選取 [TCP]。 |
-    | 連接埠 | 輸入 **80** 。|
-    | 後端連接埠 | 輸入 **80** 。 |
+    | 連接埠 | 輸入 **80**。|
+    | 後端連接埠 | 輸入 **80**。 |
     | 後端集區 | 選取 [myBackendPool]。|
     | 健全狀況探查 | 選取 [myHealthProbe]。 |
-    | 閒置逾時 (分鐘) | 將滑桿移至 **15 分鐘** 。 |
+    | 閒置逾時 (分鐘) | 將滑桿移至 **15 分鐘**。 |
  
 4. 保留其餘的預設值，然後選取 [確定]。
 
@@ -451,7 +451,7 @@ ms.locfileid: "92490844"
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-在本節中，您將建立二個 VM ( **myVM1** 和 **myVM2** )。
+在本節中，您將建立二個 VM (**myVM1** 和 **myVM2**)。
 
 這二個 VM 將會新增至名為 **myAvailabilitySet** 的可用性設定組中。
 
@@ -470,7 +470,7 @@ ms.locfileid: "92490844"
     | 虛擬機器名稱 | 輸入 **myVM1** |
     | 區域 | 選取 [西歐] |
     | 可用性選項 | 選取 [可用性設定組] |
-    | 可用性設定組 | 選取 [建立新的]。 </br> 在 [名稱] 中輸入 **myAvailabilitySet** 。 </br> 選取 [確定] |
+    | 可用性設定組 | 選取 [建立新的]。 </br> 在 [名稱] 中輸入 **myAvailabilitySet**。 </br> 選取 [確定] |
     | 映像 | **Windows Server 2019 Datacenter** |
     | Azure Spot 執行個體 | 選取 [否] |
     | 大小 | 選擇 VM 大小或接受預設設定 |
@@ -490,7 +490,7 @@ ms.locfileid: "92490844"
     | 子網路 | 選取 [myBackendSubnet]。 |
     | 公用 IP | 選取 [無] |
     | NIC 網路安全性群組 | 選取 [進階]|
-    | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG** 。 </br> 選取 [確定] |
+    | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG**。 </br> 選取 [確定] |
     | **負載平衡**  |
     | 要將此虛擬機器放在現有負載平衡解決方案後面嗎? | 選取 [否] |
 
@@ -510,7 +510,7 @@ ms.locfileid: "92490844"
 
 在先前步驟中建立的 VM 必須新增至 **myLoadBalancer** 的後端集區。
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer** 。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
 
 2. 在 [設定] 底下選取 [後端集區]，然後選取 [myBackendPool]。
 
@@ -561,7 +561,7 @@ ms.locfileid: "92490844"
     | 子網路 | **myBackendSubnet** |
     | 公用 IP | 選取 [無]。 |
     | NIC 網路安全性群組 | 選取 [進階]|
-    | 設定網路安全性群組 | 選取您在上一個步驟中建立的 **MyNSG** 。|
+    | 設定網路安全性群組 | 選取您在上一個步驟中建立的 **MyNSG**。|
        
 5. 選取 [檢閱 + 建立]。 
   
@@ -613,7 +613,7 @@ ms.locfileid: "92490844"
 
 6. 輸入在 VM 建立期間輸入的使用者名稱和密碼。
 
-7. 在 **myTestVM** 上開啟 **Internet Explorer** 。
+7. 在 **myTestVM** 上開啟 **Internet Explorer**。
 
 8. 在瀏覽器的網址列中，輸入上一個步驟中的 IP 位址。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
 
@@ -623,7 +623,7 @@ ms.locfileid: "92490844"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，可刪除資源群組、負載平衡器和所有相關資源。 若要這樣做，請選取包含資源的資源群組 **CreateIntLBQS-rg** ，然後選取 [刪除]。
+若不再需要，可刪除資源群組、負載平衡器和所有相關資源。 若要這樣做，請選取包含資源的資源群組 **CreateIntLBQS-rg**，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -635,4 +635,4 @@ ms.locfileid: "92490844"
 
 若要深入了解 Azure Load Balancer，請繼續...
 > [!div class="nextstepaction"]
-> [什麼是 Azure Load Balancer？](load-balancer-overview.md) 
+> [什麼是 Azure Load Balancer？](load-balancer-overview.md)

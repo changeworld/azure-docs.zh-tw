@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409539"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695736"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中部署 Azure 機密運算 VM
 
@@ -62,7 +62,7 @@ ms.locfileid: "91409539"
 
     * **選擇影像**：在本教學課程中，請選取 Ubuntu 18.04 LTS。 您也可以選取 Windows Server 2019、Windows Server 2016 或 Ubuntu 16.04 LTS。 如果您選擇這麼做，本教學課程會據此將您重新導向。
     
-    * **切換 Gen 2 的映像**：機密運算虛擬機器只會在 [Gen 2](../virtual-machines/linux/generation-2.md) 映像上執行。 確保您選取的映像是 Gen 2 映像。 按一下您要在其上設定虛擬機器的 [進階] 索引標籤。 向下捲動，直到您找到標示為「VM 世代」的區段為止。 選取 [Gen 2]，然後回到 [基本資料] 索引標籤。
+    * **切換 Gen 2 的映像**：機密運算虛擬機器只會在 [Gen 2](../virtual-machines/generation-2.md) 映像上執行。 確保您選取的映像是 Gen 2 映像。 按一下您要在其上設定虛擬機器的 [進階] 索引標籤。 向下捲動，直到您找到標示為「VM 世代」的區段為止。 選取 [Gen 2]，然後回到 [基本資料] 索引標籤。
     
 
         ![進階索引標籤](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -111,7 +111,7 @@ ms.locfileid: "91409539"
 
 1. 選取 [檢閱 + 建立]。
 
-1. 在 [檢閱 + 建立] 窗格中，選取 [建立]。
+1. 在 [檢閱 + 建立]  窗格中，選取 [建立]  。
 
 > [!NOTE]
 > 如果您已部署 Linux VM，請繼續下一節並繼續進行本教學課程。 如果您已部署 Windows VM，請[遵循這些步驟來連線到您的 Windows VM](../virtual-machines/windows/connect-logon.md)，然後 [在 Windows 上安裝 OE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)。
@@ -142,7 +142,7 @@ ssh azureadmin@40.55.55.555
 如需有關連線至 Linux VM 的詳細資訊，請參閱[使用入口網站在 Azure 上建立 Linux VM](../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
-> 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是] 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]。 如果您不信任此主機，請選取 [取消] 以放棄連線。
+> 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是] 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]。 如果您不信任此主機，請選取 [取消]  以放棄連線。
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>安裝 Open Enclave SDK (OE SDK) <a id="Install"></a>
 
@@ -168,7 +168,7 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -193,7 +193,7 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 
 
-請選取虛擬機器的資源群組，然後選取 [刪除]。 確認要完成資源刪除作業的資源群組名稱。
+請選取虛擬機器的資源群組，然後選取 [刪除]  。 確認要完成資源刪除作業的資源群組名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

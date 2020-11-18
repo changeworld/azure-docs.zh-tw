@@ -8,24 +8,24 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 611068fa020321be88be6e1d6da663266029c658
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330242"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660180"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>快速入門：使用 Azure CLI 設定 IoT 中樞裝置佈建服務
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門詳細說明如何使用 Azure CLI 來建立 IoT 中樞和 IoT 中樞裝置佈建服務，以及將這兩項服務連結在一起。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > 您在本快速入門中建立的 IoT 中樞與佈建服務，均可作為 DNS 端點公開探索。 如果您決定變更這些資源所用的名稱，請務必避免使用任何敏感性資訊。
 >
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
@@ -95,7 +95,7 @@ echo $hubConnectionString
 
 使用 [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) 命令來連結 IoT 中樞與佈建服務。 
 
-下列範例會在 westus 位置建立名為 my-sample-hub 的 IoT 中樞，以及建立名為 my-sample-dps 的裝置佈建服務。 請將這些名稱取代為您先前選擇的唯一 IoT 中樞和裝置佈建服務名稱。 此命令會使用在先前的步驟中儲存在 hubConnectionString** 變數中之 IoT 中樞的連接字串。
+下列範例會在 westus 位置建立名為 my-sample-hub 的 IoT 中樞，以及建立名為 my-sample-dps 的裝置佈建服務。 請將這些名稱取代為您先前選擇的唯一 IoT 中樞和裝置佈建服務名稱。 此命令會使用在先前的步驟中儲存在 hubConnectionString 變數中之 IoT 中樞的連接字串。
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus
@@ -107,12 +107,12 @@ az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample
 
 使用 [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show) 命令取得佈建服務的詳細資料。
 
-下列範例會取得名為 my-sample-dps** 的佈建服務詳細資料。 請將此名稱取代為您自己的裝置佈建服務名稱。
+下列範例會取得名為 my-sample-dps 的佈建服務詳細資料。 請將此名稱取代為您自己的裝置佈建服務名稱。
 
 ```azurecli-interactive
 az iot dps show --name my-sample-dps
 ```
-連結的 IoT 中樞會顯示在 properties.iotHubs** 集合中。
+連結的 IoT 中樞會顯示在 properties.iotHubs 集合中。
 
 ![驗證佈建服務](./media/quick-setup-auto-provision-cli/verify-provisioning-service.png)
 

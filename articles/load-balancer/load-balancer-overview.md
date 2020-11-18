@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96c0242414c67d97fc324977b1259f63c27c3a26
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017721"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696807"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
@@ -44,29 +44,29 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 您可以使用 Standard Load Balancer 完成的主要案例包括：
 
-- 將 **[內部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** 和 **[外部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** 流量負載平衡至 Azure 虛擬機器。
+- 將 **[內部](./quickstart-load-balancer-standard-internal-portal.md)** 和 **[外部](./tutorial-load-balancer-standard-manage-portal.md)** 流量負載平衡至 Azure 虛擬機器。
 
-- 藉由 **[在區域內](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** 及 **[跨區域](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** 分配資源來提高可用性。
+- 藉由 **[在區域內](./tutorial-load-balancer-standard-public-zonal-portal.md)** 及 **[跨區域](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** 分配資源來提高可用性。
 
-- 為 Azure 虛擬機器設定 **[輸出連線](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** 。
+- 為 Azure 虛擬機器設定 **[輸出連線](./load-balancer-outbound-connections.md)** 。
 
-- 使用 **[健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** 來監視已進行負載平衡的資源。
+- 使用 **[健康情況探查](./load-balancer-custom-probe-overview.md)** 來監視已進行負載平衡的資源。
 
-- 使用 **[連接埠轉送](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** ，透過公用 IP 位址和連接埠存取虛擬網路中的虛擬機器。
+- 使用 **[連接埠轉送](./tutorial-load-balancer-port-forwarding-portal.md)** ，透過公用 IP 位址和連接埠存取虛擬網路中的虛擬機器。
 
-- 啟用 **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** 的 **[負載平衡](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** 支援。
+- 啟用 **[IPv6](../virtual-network/ipv6-overview.md)** 的 **[負載平衡](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** 支援。
 
-- Standard Load Balancer 可透過 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)提供多維度計量。  您可針對指定維度篩選、分組及劃分這些計量，  且您可深入檢視服務目前和過去的效能和健康情況。  此外也支援資源健康情況。 如需詳細資訊，請參閱 **[Standard Load Balancer 診斷](load-balancer-standard-diagnostics.md)** 。
+- Standard Load Balancer 可透過 [Azure 監視器](../azure-monitor/overview.md)提供多維度計量。  您可針對指定維度篩選、分組及劃分這些計量，  且您可深入檢視服務目前和過去的效能和健康情況。  此外也支援資源健康情況。 如需詳細資訊，請參閱 **[Standard Load Balancer 診斷](load-balancer-standard-diagnostics.md)** 。
 
-- 平衡 **[多個連接埠、多個 IP 位址或這兩者](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** 上的服務負載。
+- 平衡 **[多個連接埠、多個 IP 位址或這兩者](./load-balancer-multivip-overview.md)** 上的服務負載。
 
-- 在 Azure 區域之間移動 **[內部](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** 和 **[外部](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** 的負載平衡器資源。
+- 在 Azure 區域之間移動 **[內部](./move-across-regions-internal-load-balancer-portal.md)** 和 **[外部](./move-across-regions-external-load-balancer-portal.md)** 的負載平衡器資源。
 
-- 使用 **[HA 連接埠](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** ，同時對所有連接埠上的 TCP 和 UDP 流量進行負載平衡。
+- 使用 **[HA 連接埠](./load-balancer-ha-ports-overview.md)** ，同時對所有連接埠上的 TCP 和 UDP 流量進行負載平衡。
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>預設保護
 
-Standard Load Balancer 在本質上建置於零信任網路安全性模型上。 Standard Load Balancer 受到預設的保護，而且是虛擬網路的一部分。 虛擬網路是私人的隔離式網路。  這表示對於輸入流量會關閉 Standard Load Balancer 和標準公用 IP 位址，除非網路安全性群組加以開啟。 NSG 可用來明確准許允許的流量。  如果您沒有子網路的 NSG 或虛擬機器資源的 NIC，系統不會允許流量存取此資源。 若要深入了解 NSG 及如何將其套用至您的案例，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
+Standard Load Balancer 在本質上建置於零信任網路安全性模型上。 Standard Load Balancer 受到預設的保護，而且是虛擬網路的一部分。 虛擬網路是私人的隔離式網路。  這表示對於輸入流量會關閉 Standard Load Balancer 和標準公用 IP 位址，除非網路安全性群組加以開啟。 NSG 可用來明確准許允許的流量。  如果您沒有子網路的 NSG 或虛擬機器資源的 NIC，系統不會允許流量存取此資源。 若要深入了解 NSG 及如何將其套用至您的案例，請參閱[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
 依預設會對網際網路開放基本負載平衡器。 此外，Load Balancer 不會儲存客戶資料。
 
 ## <a name="pricing-and-sla"></a>價格和 SLA
@@ -84,4 +84,3 @@ Standard Load Balancer 在本質上建置於零信任網路安全性模型上。
 請參閱[建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
 
 如需 Azure Load Balancer 限制和元件的詳細資訊，請參閱 [Azure Load Balancer 元件](./components.md)和 [Azure Load Balancer 概念](./concepts.md)
-

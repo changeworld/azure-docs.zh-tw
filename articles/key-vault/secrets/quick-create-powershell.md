@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d8375b4a47df8454ceb4aba4cb2e695255161409
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c28dbc25abfd701450cf9f232ea1a4b5e16841aa
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324745"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686171"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入門：使用 PowerShell 從 Azure Key Vault 設定及擷取祕密
 
@@ -45,9 +45,9 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 雖然我們在此快速入門中使用 "Contoso KeyVault2" 作為我們的 Key Vault 名稱，但您必須使用唯一的名稱。
 
-- **保存庫名稱** ：Contoso-Vault2。
-- **資源群組名稱** ：ContosoResourceGroup。
-- **位置** ：美國東部。
+- **保存庫名稱**：Contoso-Vault2。
+- **資源群組名稱**：ContosoResourceGroup。
+- **位置**：美國東部。
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
@@ -55,8 +55,8 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 此 Cmdlet 的輸出會顯示新建立金鑰保存庫的屬性。 請記下下列兩個屬性：
 
-* **保存庫名稱** ：在此範例中是 **Contoso-Vault2** 。 您將在其他金鑰保存庫 Cmdlet 中使用此名稱。
-* **保存庫 URI** ：在此範例中是 https://Contoso-Vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
+* **保存庫名稱**：在此範例中是 **Contoso-Vault2**。 您將在其他金鑰保存庫 Cmdlet 中使用此名稱。
+* **保存庫 URI**：在此範例中是 https://Contoso-Vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 在保存庫建立後，您的 Azure 帳戶是唯一能夠在這個新保存庫上執行任何作業的帳戶。
 
@@ -69,7 +69,7 @@ Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@
 
 ## <a name="adding-a-secret-to-key-vault"></a>將祕密新增至 Key Vault
 
-若要將祕密新增至保存庫，您只需要採取一些步驟。 在此情況下，您會新增應用程式可以使用的密碼。 此密碼稱為 **ExamplePassword** ，且其中會儲存 **hVFkk965BuUv** 值。
+若要將祕密新增至保存庫，您只需要採取一些步驟。 在此情況下，您會新增應用程式可以使用的密碼。 此密碼稱為 **ExamplePassword**，且其中會儲存 **hVFkk965BuUv** 值。
 
 第一次將 **hVFkk965BuUv** 值轉換為安全的字串時，請輸入：
 
@@ -79,9 +79,12 @@ $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 
 然後，輸入下列 PowerShell 命令，以在 Key Vault 中建立稱為 **ExamplePassword** 並具有 **hVFkk965BuUv** 值的祕密：
 
+
 ```azurepowershell-interactive
 $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
+
+## <a name="retrieve-a-secret-from-key-vault"></a>從 Key Vault 擷取祕密
 
 若要以純文字檢視包含在祕密中的值：
 

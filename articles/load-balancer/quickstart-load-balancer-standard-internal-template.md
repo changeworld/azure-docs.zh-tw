@@ -5,15 +5,15 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 41c90bb58e6ece968f8e2bf211a14e4e4e98211f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 749b233b827c27d2c998cfd6be66cf79cf48089d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910860"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831645"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立內部負載平衡器以平衡 VM 的負載
 
@@ -90,4 +90,4 @@ az deployment group create \
 如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署您的第一個 ARM 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教學課程：建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

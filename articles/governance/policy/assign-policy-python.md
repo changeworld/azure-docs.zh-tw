@@ -3,17 +3,17 @@ title: 快速入門：使用 Python 進行新原則指派
 description: 在本快速入門中，您會使用 Python 建立 Azure 原則指派，以識別不符合規範的資源。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: b2bbe38ce979dd12694908240a6adab317332a35
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074085"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832189"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>快速入門：使用 Python 建立原則指派，以識別不符合規範的資源
 
-了解 Azure 中合規性的第一個步驟是識別您資源的狀態。 在本快速入門中，您會建立原則指派，以識別未使用受控磁碟的虛擬機器。 完成時，您會識別出「不符合規範」__ 的虛擬機器。
+了解 Azure 中合規性的第一個步驟是識別您資源的狀態。 在本快速入門中，您會建立原則指派，以識別未使用受控磁碟的虛擬機器。 完成時，您會識別出「不符合規範」的虛擬機器。
 
 Python 程式庫可用來從命令列或在指令碼中管理 Azure 資源。 本指南說明如何使用 Python 程式庫建立原則指派。
 
@@ -32,7 +32,7 @@ Python 程式庫可用來從命令列或在指令碼中管理 Azure 資源。 �
 1. 確認已安裝最新的 Azure CLI (至少 **2.5.1**)。 如果尚未安裝，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
    > [!NOTE]
-   > Azure CLI 是啟用 Python 以在下列範例中使用 **CLI 型驗證**的必要項目。 如需其他選項的相關資訊，請參閱[使用適用於 Python 的 Azure 管理程式庫進行驗證](/azure/developer/python/azure-sdk-authenticate)。
+   > Azure CLI 是啟用 Python 以在下列範例中使用 **CLI 型驗證** 的必要項目。 如需其他選項的相關資訊，請參閱[使用適用於 Python 的 Azure 管理程式庫進行驗證](/azure/developer/python/azure-sdk-authenticate)。
 
 1. 透過 Azure CLI 進行驗證。
 
@@ -65,7 +65,7 @@ Python 程式庫可用來從命令列或在指令碼中管理 Azure 資源。 �
 
 ## <a name="create-a-policy-assignment"></a>建立原則指派
 
-在本快速入門中，您會建立一個原則指派，並且指派**稽核沒有受控磁碟的虛擬機器** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義。 此原則定義會識別與原則定義中設定之條件不相符的資源。
+在本快速入門中，您會建立一個原則指派，並且指派 **稽核沒有受控磁碟的虛擬機器** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義。 此原則定義會識別與原則定義中設定之條件不相符的資源。
 
 執行下列程式碼以建立新的原則指派：
 
@@ -92,8 +92,8 @@ print(policyAssignment)
 上述命令會使用下列資訊：
 
 指派詳細資料：
-- **display_name** - 原則指派的顯示名稱。 在此案例中，您會使用_稽核沒有受控磁碟指派的虛擬機器_。
-- **policy_definition_id** – 原則定義路徑，這是您用來建立指派的根基。 在此案例中，即為原則定義_稽核沒有受控磁碟的虛擬機器_的 ID。 在此範例中，原則定義是內建的，而且路徑不包含管理群組或訂用帳戶資訊。
+- **display_name** - 原則指派的顯示名稱。 在此案例中，您會使用 _稽核沒有受控磁碟指派的虛擬機器_。
+- **policy_definition_id** – 原則定義路徑，這是您用來建立指派的根基。 在此案例中，即為原則定義 _稽核沒有受控磁碟的虛擬機器_ 的 ID。 在此範例中，原則定義是內建的，而且路徑不包含管理群組或訂用帳戶資訊。
 - **scope** - 範圍會決定在哪些資源或資源群組上強制執行原則指派。 此範圍可包含管理群組到個別資源。 請務必將 `{scope}` 取代為下列其中一個模式：
   - 管理群組：`/providers/Microsoft.Management/managementGroups/{managementGroup}`
   - 訂用帳戶：`/subscriptions/{subscriptionId}`
@@ -104,7 +104,7 @@ print(policyAssignment)
 指派建立：
 
 - Scope - 此範圍會決定原則指派的儲存位置。 指派詳細資料中設定的範圍必須存在於此範圍內。
-- Name - 指派的實際名稱。 例如，我們使用了 audit-vm-manageddisks__。
+- Name - 指派的實際名稱。 例如，我們使用了 audit-vm-manageddisks。
 - Policy assignment - 在上一個步驟中建立的 Python **PolicyAssignment** 物件。
 
 您現在可以識別不相容的資源，以了解環境的相容性狀態。
@@ -147,7 +147,7 @@ print(results)
 }
 ```
 
-結果會符合原則指派在 Azure 入口網站檢視中的 [資源合規性]**** 索引標籤所顯示的內容。
+結果會符合原則指派在 Azure 入口網站檢視中的 [資源合規性] 索引標籤所顯示的內容。
 
 ## <a name="clean-up-resources"></a>清除資源
 

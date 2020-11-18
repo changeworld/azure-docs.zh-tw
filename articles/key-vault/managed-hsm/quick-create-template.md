@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4d1488d6dd2e5d08ae774ca88b7ab41b2020efe5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998285"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831747"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立 Key Vault 受控 HSM
 
@@ -79,9 +79,8 @@ az ad user show --id <your-email-address> --query "objectId"
     - **資源群組**：選取 [新建]，輸入資源群組的唯一名稱，然後按一下 [確認]。
     - **位置**：選取位置。 例如，**美國中南部**。
     - **managedHSMName**：輸入受控 HSM 的名稱。
-    - **SKU**：輸入您要建立之受控 HSM 的名稱和系列。  在本快速入門中，請輸入名稱 "Standard_B1" 和系列 "B"。
     - **租用戶識別碼**：範本功能會自動擷取您的租用戶識別碼；請勿變更預設值。  如果沒有值，請輸入您在[必要條件](#prerequisites)中擷取的租用戶識別碼。
-    * **initialAdminObjectIds**：輸入您在[必要條件](#prerequisites)中擷取的物件識別碼。
+    * **initialAdminObjectIds**：輸入您在 [必要條件](#prerequisites)中擷取的物件識別碼。
 
 3. 選取 [購買]。 成功部署金鑰保存庫之後，您會收到通知：
 

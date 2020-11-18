@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649325"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835692"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 來保護對內部部署 Api 的存取
 
@@ -36,7 +36,7 @@ ms.locfileid: "94649325"
 
 Azure AD 的應用程式 Proxy 形成解決方案骨幹、作為 API 存取的公用端點，以及提供驗證和授權。 您可以使用 [Microsoft 驗證程式庫 (MSAL) 程式庫 ](../azuread-dev/active-directory-authentication-libraries.md) ，從大量的平臺存取您的 api。
 
-由於 Azure AD 的應用程式 Proxy 驗證和授權是以 Azure AD 為基礎，因此您可以使用 Azure AD 條件式存取，確保只有受信任的裝置可以存取透過應用程式 Proxy 發佈的 Api。 針對桌上型電腦使用 Azure AD 聯結或 Azure AD 混合式聯結，以及針對裝置管理 Intune。 您也可以利用 Azure Multi-Factor Authentication 的 Azure Active Directory Premium 功能，以及 [Azure Identity Protection](../identity-protection/overview-identity-protection.md)的機器學習支援安全性。
+由於 Azure AD 的應用程式 Proxy 驗證和授權是以 Azure AD 為基礎，因此您可以使用 Azure AD 條件式存取，確保只有受信任的裝置可以存取透過應用程式 Proxy 發佈的 Api。 針對桌上型電腦使用 Azure AD 聯結或 Azure AD 混合式聯結，以及針對裝置管理 Intune。 您也可以利用 Azure Active Directory Premium 功能（例如 Azure AD Multi-Factor Authentication），以及 [Azure Identity Protection](../identity-protection/overview-identity-protection.md)的機器學習支援安全性。
 
 ## <a name="prerequisites"></a>先決條件
 

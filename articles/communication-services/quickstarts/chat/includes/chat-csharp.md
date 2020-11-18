@@ -10,18 +10,18 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 994f2829d260223567dcb5aed859812aa1fef3d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829202"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816606"
 ---
 ## <a name="prerequisites"></a>必要條件
 開始之前，請務必：
 - 建立具有有效訂閱的 Azure 帳戶。 如需詳細資訊，請參閱[免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 安裝 [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
-- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../../create-communication-resource.md)。 您必須在本快速入門中記錄您的資源**端點**。
+- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../../create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **端點**。
 - [使用者存取權杖](../../access-tokens.md)。 請務必將範圍設定為 "chat"，並記下 token 字串和 userId 字串。
 
 ## <a name="setting-up"></a>設定
@@ -46,7 +46,7 @@ dotnet build
 安裝適用於 .NET 的 Azure 通訊聊天用戶端程式庫
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.2
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
 ``` 
 
 ## <a name="object-model"></a>物件模型
@@ -77,7 +77,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
 
 使用 `createChatThread` 方法來建立聊天對話。
 - 使用 `topic` 來提供對話主題；在使用 `UpdateThread` 函式建立聊天對話之後，可以更新主題。
-- 使用 `members` 屬性來傳遞要加入聊天對話的 `ChatThreadMember` 物件清單。 `ChatThreadMember` 物件要以 `CommunicationUser` 物件初始化。 若要取得 `CommunicationUser` 物件，您必須將您依照[建立使用者](../../access-tokens.md#create-a-user)指示所建立的存取識別碼傳遞出來
+- 使用 `members` 屬性來傳遞要加入聊天對話的 `ChatThreadMember` 物件清單。 `ChatThreadMember` 物件要以 `CommunicationUser` 物件初始化。 若要取得 `CommunicationUser` 物件，您必須將您依照[建立使用者](../../access-tokens.md#create-an-identity)指示所建立的存取識別碼傳遞出來
 
 回應 `chatThreadClient` 是用來在建立的聊天對話上執行作業：將成員新增至聊天對話、傳送訊息、刪除訊息等等。其中的 `Id` 屬性，是聊天對話的唯一識別碼。 
 

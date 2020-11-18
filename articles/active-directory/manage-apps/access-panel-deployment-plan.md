@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656729"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835657"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 我的應用程式是網頁型入口網站，�
 * 探索並存取其所有公司的 Azure AD 連線資源，例如應用程式
 * 要求存取新的應用程式和群組
 * 為其他人管理這些資源的存取權
-* 管理自助式密碼重設和 Azure Multi-Factor Authentication 設定
+* 管理自助式密碼重設和 Azure AD Multi-Factor Authentication 設定
 * 管理其裝置
 
 它也可讓系統管理員管理：
@@ -54,7 +54,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 我的應用程式是免費的，而且不需要在基本層級使用任何授權。 不過，您目錄中的物件數目和您想要部署的其他功能可能需要額外的授權。 某些具有授權需求的常見 Azure AD 案例包含下列安全性功能：
 
-* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [以群組為基礎的成員資格](../fundamentals/active-directory-manage-groups.md)
 * [自助式密碼重設](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -117,7 +117,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 下表列出幾個重要的我的應用程式設定，以及您可能使用的一般值：
 
-| 設定| 一般值 |
+| 組態| 一般值 |
 | - | - |
 | 判斷試驗群組| 識別要使用的 Azure AD 安全性群組，並確定所有試驗成員都是群組的一部分。 |
 | 判斷要為生產環境啟用的群組或群組。| 識別要使用的 Azure AD 安全性群組或已同步處理至 Azure AD 的 Active Directory 群組。 確定所有試驗成員都是群組的一部分。 |
@@ -172,7 +172,7 @@ Microsoft 會為 [電子郵件提供可自訂的範本，以及我的應用程�
 
 當使用者登入密碼型 SSO 應用程式時，他們必須安裝並使用我的應用程式安全登入延伸模組。 延伸模組會執行腳本，將密碼傳輸至應用程式的登入表單。 當使用者第一次啟動密碼型 SSO 應用程式時，系統會提示他們安裝此延伸模組。 有關延伸模組的詳細資訊，請參閱本檔中有關 [安裝我的應用程式瀏覽器延伸]()模組的資訊。
 
-如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](../user-help/my-apps-portal-end-user-access.md)大規模部署擴充功能。 選項包括：
+如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](../user-help/my-apps-portal-end-user-access.md)大規模部署擴充功能。 這些選項包括：
 
 * [Internet Explorer 的群組原則]()
 * [Internet Explorer 的 Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -303,13 +303,13 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|
-| 技術服務人員管理| 第1層支援| None |
+| 技術服務人員管理| 第1層支援| 無 |
 | 身分識別管理員| 在問題影響時進行設定和調試 Azure AD| 全域系統管理員 |
-| 應用程式管理員| 應用程式中的使用者證明，具有許可權的使用者設定| None |
+| 應用程式管理員| 應用程式中的使用者證明，具有許可權的使用者設定| 無 |
 | 基礎結構系統管理員| 憑證變換擁有者| 全域系統管理員 |
-| 商務擁有者/專案關係人| 應用程式中的使用者證明，具有許可權的使用者設定| None |
+| 商務擁有者/專案關係人| 應用程式中的使用者證明，具有許可權的使用者設定| 無 |
 
 您可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 管理您的角色，為具有目錄許可權的使用者提供額外的審核、控制和存取權審核。
 
 ## <a name="next-steps"></a>後續步驟
-[規劃 Azure Multi-Factor Authentication 的部署](../authentication/howto-mfa-getstarted.md)
+[規劃 Azure AD 的部署 Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

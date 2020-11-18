@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: a157396318075522d5b3263c9cf0f749eafc2476
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658803"
 ---
 # <a name="what-is-application-management"></a>什麼是應用程式管理？
 
@@ -25,7 +25,7 @@ Azure AD 是身分識別與存取權管理 (IAM) 系統。 其提供單一位置
 
 Azure AD 必須設定為與應用程式整合。 換句話說，Azure AD 需要知道哪些應用程式使用其作為身分識別系統。 讓 Azure AD 知道這些應用程式，以及其處理方式，稱為應用程式管理。
 
-您可以在位於 Azure Active Directory 入口網站 [管理] 區段中的 [企業應用程式]**** 刀鋒視窗上，管理應用程式。
+您可以在位於 Azure Active Directory 入口網站 [管理] 區段中的 [企業應用程式] 刀鋒視窗上，管理應用程式。
 
 ![Azure AD 入口網站 [管理] 區段下的 [企業應用程式] 選項。](media/what-is-application-management/enterprise-applications-in-nav.png)
 
@@ -55,9 +55,9 @@ Azure AD 可藉由為雲端和內部部署應用程式提供單一的身分識�
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>哪些類型的應用程式可與 Azure AD 整合？
 
-可在**企業應用程式**中新增並使用 Azure AD 來管理的應用程式有四大類型：
+可在 **企業應用程式** 中新增並使用 Azure AD 來管理的應用程式有四大類型：
 
-- **Azure AD 資源庫應用程式** – Azure AD 擁有資源庫，內含數千個已預先整合而能使用 Azure AD 來進行單一登入的應用程式。 您組織使用的某些應用程式可能就在資源庫中。 [請了解如何規劃應用程式整合](plan-an-application-integration.md)，或在 [SaaS 應用程式教學課程](https://docs.microsoft.com/azure/active-directory/saas-apps/)中取得個別應用程式的詳細整合步驟。
+- **Azure AD 資源庫應用程式** – Azure AD 擁有資源庫，內含數千個已預先整合而能使用 Azure AD 來進行單一登入的應用程式。 您組織使用的某些應用程式可能就在資源庫中。 [請了解如何規劃應用程式整合](plan-an-application-integration.md)，或在 [SaaS 應用程式教學課程](/azure/active-directory/saas-apps/)中取得個別應用程式的詳細整合步驟。
 
 - **內部部署應用程式搭配應用程式 Proxy** – 使用 Azure AD 應用程式 Proxy 時，您可以整合內部部署 Web 應用程式與 Azure AD 以支援單一登入。 然後，使用者可以使用存取 Microsoft 365 和其他 SaaS 應用程式的相同方式來存取內部部署 Web 應用程式，請參閱[透過 Azure AD 的應用程式 Proxy，提供內部部署應用程式的遠端存取](application-proxy.md)。
 
@@ -66,10 +66,10 @@ Azure AD 可藉由為雲端和內部部署應用程式提供單一的身分識�
 - **不在資源庫內的應用程式** – 引進您自己的應用程式！ 支援藉由將其他應用程式新增至 Azure AD 來啟用其單一登入功能。 有多種方式可以整合應用程式，以下列出其中部分。 如需詳細資訊，請參閱[設定 SAML 單一登入](configure-saml-single-sign-on.md)。
 
 >[!TIP]
->即使應用程式尚未預先設定且未在應用程式資源庫中，您也可以整合 Azure AD 與應用程式。 您可以**整合 Azure AD 與任何**下列項目
-> - 會轉譯**使用者名稱和密碼欄位**的任何 Web 連結或應用程式。
-> - 支援 **SAML 或 OpenID Connect 通訊協定**的任何應用程式。
-> - 支援**跨網域身分識別管理系統 (SCIM)** 標準的任何應用程式。
+>即使應用程式尚未預先設定且未在應用程式資源庫中，您也可以整合 Azure AD 與應用程式。 您可以 **整合 Azure AD 與任何** 下列項目
+> - 會轉譯 **使用者名稱和密碼欄位** 的任何 Web 連結或應用程式。
+> - 支援 **SAML 或 OpenID Connect 通訊協定** 的任何應用程式。
+> - 支援 **跨網域身分識別管理系統 (SCIM)** 標準的任何應用程式。
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>使用條件式存取原則來管理風險
 
@@ -79,7 +79,7 @@ Azure AD 可藉由為雲端和內部部署應用程式提供單一的身分識�
 
 在應用程式和 Microsoft 365 上啟用單一登入 (SSO)，能透過減少或消除登入提示，來為現有的使用者提供更優異的登入體驗。 透過免除看見多次提示，或是管理多組密碼的需求，使用者的作業環境將會變得更為一致，且較不容易令人分心。 商務群組可透過自助服務及動態成員資格來管理及核准存取權。 透過僅允許公司中的適當人員來管理應用程式的存取權，便能改善身分識別系統的安全性。
 
-SSO 能改善安全性。 「在沒有單一登入的情況下」**，系統管理員便需要逐一針對個別應用程式建立並更新使用者帳戶，這需要花費許多時間。 此外，使用者必須記住多個認證來存取其應用程式。 如此一來，使用者會傾向將密碼寫下，或使用其他密碼管理解決方案，而這會帶來資料安全性上的風險。 [深入了解單一登入](what-is-single-sign-on.md)。
+SSO 能改善安全性。 「在沒有單一登入的情況下」，系統管理員便需要逐一針對個別應用程式建立並更新使用者帳戶，這需要花費許多時間。 此外，使用者必須記住多個認證來存取其應用程式。 如此一來，使用者會傾向將密碼寫下，或使用其他密碼管理解決方案，而這會帶來資料安全性上的風險。 [深入了解單一登入](what-is-single-sign-on.md)。
 
 ## <a name="address-governance-and-compliance"></a>處理治理和合規性
 

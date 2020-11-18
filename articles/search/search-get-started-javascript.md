@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ccbe1035c5cc73993e069c7683d6b15ae18e21c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795523"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698891"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>快速入門：使用 JavaScript SDK 建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -24,10 +24,10 @@ ms.locfileid: "92795523"
 > * [入口網站](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 
-使用[適用於 Azure 認知搜尋的 JAVAscript/Typscript SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) 在 JavaScript 中建立 Node.js 應用程式，以建立、載入和查詢搜尋索引。
+使用[適用於 Azure 認知搜尋的 JAVAscript/Typscript SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) 在 JavaScript 中建立 Node.js 應用程式，以建立、載入和查詢搜尋索引。
 
 本文示範如何逐步建立應用程式。 或者，您可以[下載原始程式碼和資料](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11)，並從命令列執行應用程式。
 
@@ -58,7 +58,7 @@ ms.locfileid: "92795523"
 
 2. 在 [設定] > [金鑰] 中，取得管理員金鑰以獲得服務的完整權限 (必須有完整權限才能建立或刪除物件)。 共有兩個可交換的主要和次要金鑰。 您可以使用任一個。
 
-   ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+   ![取得 HTTP 端點和存取金鑰](media/search-get-started-rest/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
@@ -80,7 +80,7 @@ ms.locfileid: "92795523"
     ```
      接受預設值，但 [授權] 除外，您應將其設定為 [MIT]。 
 
-3. 安裝 `@azure/search-documents`，這是[適用於 Azure 認知搜尋的 JAVAscript/Typscript SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)。
+3. 安裝 `@azure/search-documents`，這是[適用於 Azure 認知搜尋的 JAVAscript/Typscript SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme)。
 
     ```cmd
     npm install @azure/search-documents
@@ -171,7 +171,7 @@ main().catch((err) => {
 
 建立 **hotels_quickstart_index.json** 檔案。  此檔案會定義 Azure 認知搜尋將如何處理您要在下一個步驟中載入的文件。 每個欄位都會由 `name` 識別，並具有指定的 `type`。 每個欄位也有一系列的索引屬性，可指定 Azure 認知搜尋是否可在欄位上進行搜尋、篩選、排序和 Facet 處理。 大部分的欄位都是簡單的資料類型，但有些 (像是 `AddressType`) 則為複雜類型，其可讓您在索引中建立豐富的資料結構。  您可以深入了解[支援的資料類型](/rest/api/searchservice/supported-data-types)和[索引屬性](./search-what-is-an-index.md#index-attributes)。 
 
-將下列內容新增至 **hotels_quickstart_index.json** ，或 [下載檔案](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json)。 
+將下列內容新增至 **hotels_quickstart_index.json**，或 [下載檔案](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json)。 
 
 ```json
 {
@@ -362,7 +362,7 @@ node index.js
 
 您應會看到一系列的訊息，描述程式所採取的動作。 
 
-在 Azure 入口網站中開啟搜尋服務的 **概觀** 。 選取 [索引] 標籤。您應該會看到如下的內容：
+在 Azure 入口網站中開啟搜尋服務的 **概觀**。 選取 [索引] 標籤。您應該會看到如下的內容：
 
 :::image type="content" source="media/search-get-started-javascript/create-index-no-data.png" alt-text="Azure 入口網站、搜尋服務概觀、索引標籤的螢幕擷取畫面" border="false":::
 

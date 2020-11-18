@@ -9,12 +9,12 @@ ms.custom: mvc, contperfq1
 ms.date: 11/10/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 07c0169dcbadc6dc8ae293d69e197c2cd1ec2275
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e714e88e47ec20adec44a104c659d03e62d8010a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658378"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -47,7 +47,7 @@ Azure 防火牆有下列已知問題：
 
 |問題  |描述  |降低  |
 |---------|---------|---------|
-非 TCP/UDP 通訊協定 (例如 ICMP) 的網路篩選規則，不適用於流向網際網路的流量|非 TCP/UDP 通訊協定的網路篩選規則，無法與 SNAT 搭配用於您的公用 IP 位址。 在輪輻子網路與 VNet 之間支援非 TCP/UDP 通訊協定。|Azure 防火牆會使用 Standard Load Balancer，[目前針對 IP 通訊協定不支援 SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。 我們正在探索選項，以在未來的版本中支援這種案例。|
+非 TCP/UDP 通訊協定 (例如 ICMP) 的網路篩選規則，不適用於流向網際網路的流量|非 TCP/UDP 通訊協定的網路篩選規則，無法與 SNAT 搭配用於您的公用 IP 位址。 在輪輻子網路與 VNet 之間支援非 TCP/UDP 通訊協定。|Azure 防火牆會使用 Standard Load Balancer，[目前針對 IP 通訊協定不支援 SNAT](../load-balancer/load-balancer-overview.md)。 我們正在探索選項，以在未來的版本中支援這種案例。|
 |對於 ICMP 缺少 PowerShell 和 CLI 支援|Azure PowerShell 和 CLI 不支援在網路規則中將 ICMP 作為有效的通訊協定。|您仍可透過入口網站和 REST API 來使用 ICMP 作為通訊協定。 我們正努力盡快在 PowerShell 和 CLI 中新增 ICMP。|
 |FQDN 標籤需要設定「通訊協定:連接埠」|具有 FQDN 標籤的應用程式規則需要「連接埠: 通訊協定」定義。|您可以使用 **https** 作為「連接埠:通訊協定」值。 我們正努力讓此欄位在使用 FQDN 標籤時可作為選擇性欄位。|
 |不支援將防火牆移動到不同的資源群組或訂用帳戶|不支援將防火牆移動到不同的資源群組或訂用帳戶。|在我們的規劃中，未來會支援這項功能。 若要將防火牆移動到不同的資源群組或訂用帳戶，您必須刪除目前的執行個體，並將其重新建立在新的資源群組或訂用帳戶中。|
@@ -61,7 +61,7 @@ Azure 防火牆有下列已知問題：
 |不支援主動式 FTP|Azure 防火牆上的主動式 FTP 已停用，以防禦使用 FTP PORT 命令進行 FTP 彈跳式攻擊。|您可以改用被動式 FTP。 您仍然必須在防火牆上明確開啟 TCP 連接埠 20 和 21。
 |SNAT 連接埠使用率記量顯示 0%|即使已使用 SNAT 連接埠，Azure 防火牆 SNAT 連接埠使用率計量仍可能會顯示 0%。 在此情況下，若使用計量作為防火牆健康情況計量的一部分，則會提供不正確的結果。|此問題已修正，而正式推出日期訂於 2020 年 5 月。 在某些情況下，防火牆重新部署會解決此問題，但並不會一直都是如此。 作為中繼因應措施，請只使用防火牆健全狀態來尋找 status=degraded，而不是 status=unhealthy。 連接埠耗盡時會顯示為 degraded (已降級)。 Not healthy (狀態不良) 會保留，以在日後有更多計量影響防火牆健康情況時使用。
 |啟用強制通道時不支援 DNAT|因為非對稱式路由，部署了強制通道的防火牆無法支援來自網際網路的輸入存取。|這是因為非對稱式路由的設計。 輸入連線的傳回路徑會透過內部部署防火牆進行，而此防火牆並未顯示已建立的連線。
-|視您的 FTP 伺服器設定而定，輸出被動 FTP 可能不適用於具有多個公用 IP 位址的防火牆。|被動 FTP 會針對控制和資料通道建立不同的連線。 當具有多個公用 IP 位址的防火牆傳送輸出資料時，會為來源 IP 位址隨機選取其中一個公用 IP 位址。 視您的 FTP 伺服器設定而定，當資料和控制通道使用不同的來源 IP 位址時，FTP 可能會失敗。|已規劃了明確的 SNAT 組態。 在此同時，您可以將 FTP 伺服器設定為接受來自不同來源 IP 位址的資料和控制通道 (請參閱 [IIS](https://docs.microsoft.com/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity) 的範例)。 或者也可以考慮使用單一 IP 位址。|
+|視您的 FTP 伺服器設定而定，輸出被動 FTP 可能不適用於具有多個公用 IP 位址的防火牆。|被動 FTP 會針對控制和資料通道建立不同的連線。 當具有多個公用 IP 位址的防火牆傳送輸出資料時，會為來源 IP 位址隨機選取其中一個公用 IP 位址。 視您的 FTP 伺服器設定而定，當資料和控制通道使用不同的來源 IP 位址時，FTP 可能會失敗。|已規劃了明確的 SNAT 組態。 在此同時，您可以將 FTP 伺服器設定為接受來自不同來源 IP 位址的資料和控制通道 (請參閱 [IIS](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity) 的範例)。 或者也可以考慮使用單一 IP 位址。|
 |視您的 FTP 伺服器設定而定，可能無法使用輸入被動 FTP |被動 FTP 會針對控制和資料通道建立不同的連線。 Azure 防火牆上的輸入連線會透過 SNA 轉譯到其中一個防火牆私人 IP 位址，以確保路由對稱。 視您的 FTP 伺服器設定而定，當資料和控制通道使用不同的來源 IP 位址時，FTP 可能會失敗。|保留正在調查的原始來源 IP 位址。 在此同時，您可以將 FTP 伺服器設定為接受來自不同來源 IP 位址的資料和控制通道。|
 |NetworkRuleHit 計量缺少通訊協定維度|ApplicationRuleHit 計量允許篩選型的通訊協定，但對應的 NetworkRuleHit 計量中缺少這項功能。|我們正在調查提供修正程式的可能性。|
 |不支援在 64000 與 65535 之間使用連接埠的 NAT 規則|Azure 防火牆允許網路和應用程式規則使用 1-65535 範圍中的任何連接埠，不過 NAT 規則只支援 1-63999 範圍中的連接埠。|這是目前的限制。

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323818"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685744"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>使用 Azure Data Studio (預覽) 連線到 Synapse SQL
 
@@ -46,7 +46,7 @@ ms.locfileid: "93323818"
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net。
 >
-> 如果您想要使用 **專用 SQL 集區** ，URL 應如下所示：
+> 如果您想要使用 **專用 SQL 集區**，URL 應如下所示：
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
@@ -61,11 +61,11 @@ ms.locfileid: "93323818"
 
 ![AAD 驗證](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-下列螢幕擷取畫面顯示 **Windows 驗證** 的 **連線詳細資料** ：
+下列螢幕擷取畫面顯示 **Windows 驗證** 的 **連線詳細資料**：
 
 ![Windows 驗證](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-下列螢幕擷取畫面顯示使用 **SQL 登入** 的 **連線詳細資料** ：
+下列螢幕擷取畫面顯示使用 **SQL 登入** 的 **連線詳細資料**：
 
 ![SQL 登入](./media/get-started-azure-data-studio/2-database-details.png)
 
