@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014234"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653788"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -339,7 +339,7 @@ WireData
 
 如果您的程式碼會傳送這類資料，就有可能。 如果堆疊追蹤中的變數包含個人資料，也可能發生這種情況。 您的開發小組應該進行風險評估，以確保正確處理個人資料。 [深入了解資料保留和隱私權](app/data-retention-privacy.md)。
 
-在查閱地理位置屬性之後，用戶端 Web 位址的**所有**八位元資料一律會設定為 0。
+在查閱地理位置屬性之後，用戶端 Web 位址的 **所有** 八位元資料一律會設定為 0。
 
 ### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我可以在網頁原始碼中看見檢測金鑰。 
 
@@ -399,13 +399,13 @@ WireData
 
 ### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>如何? 將 Application Insights 資源移至新區域？
 
-**目前不支援**將現有的 Application Insights 資源從某個區域移至另一個區域。 您所收集的歷程記錄資料 **無法遷移** 至新的區域。 唯一的部分解決方法是：
+**目前不支援** 將現有的 Application Insights 資源從某個區域移至另一個區域。 您所收集的歷程記錄資料 **無法遷移** 至新的區域。 唯一的部分解決方法是：
 
 1. 在新區域中建立全新的 Application Insights 資源 ([傳統](app/create-new-resource.md) 或以 [工作區為基礎](/azure/azure-monitor/app/create-workspace-resource) 的) 。
 2. 重新建立新資源中原始資源專屬的所有唯一自訂。
 3. 修改您的應用程式，以使用新區域資源的 [檢測金鑰](app/create-new-resource.md#copy-the-instrumentation-key) 或 [連接字串](app/sdk-connection-string.md)。  
 4. 測試以使用新的 Application Insights 資源，確認一切都如預期般繼續運作。 
-5. 至此，您可以刪除會導致 **所有歷程記錄資料遺失**的原始資源。 或者，在資料保留設定的持續時間內，保留原始資源以供歷程記錄報表之用。
+5. 至此，您可以刪除會導致 **所有歷程記錄資料遺失** 的原始資源。 或者，在資料保留設定的持續時間內，保留原始資源以供歷程記錄報表之用。
 
 在新區域中通常需要手動重新建立或更新資源的唯一自訂，包括但不限於：
 
@@ -603,7 +603,7 @@ OpenTelemetry 收集器會在其 [GitHub 讀我檔案](https://github.com/open-t
 
 **其他** 程式的目的是要協助您清楚瞭解節點上資源使用量很高的根本原因。 這可讓您區分容器化處理序與非容器化處理序之間的使用量。
 
-這些**其他處理序**是什麼？ 
+這些 **其他處理序** 是什麼？ 
 
 這些是在您節點上執行的非容器化處理序。  
 
@@ -611,7 +611,7 @@ OpenTelemetry 收集器會在其 [GitHub 讀我檔案](https://github.com/open-t
 
 **其他處理序** = 「來自 CAdvisor 的總使用量」 - 「來自容器化處理序的使用量」
 
-**其他處理序**包括：
+**其他處理序** 包括：
 
 - 自我管理或受控 Kubernetes 非容器化處理序 
 
@@ -682,7 +682,7 @@ ContainerInventory 資料表包含已停止和執行中容器的相關資訊。 
  
 ### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>如何解決「缺少訂用帳戶註冊」錯誤？
 
-如果您收到**缺少 Microsoft.OperationsManagement 的訂用帳戶註冊**錯誤，您可以在定義工作區的訂用帳戶中註冊資源提供者 **Microsoft.OperationsManagement** 來解決此問題。 您可以在[這裡](../azure-resource-manager/templates/error-register-resource-provider.md)找到作法的相關文件。
+如果您收到 **缺少 Microsoft.OperationsManagement 的訂用帳戶註冊** 錯誤，您可以在定義工作區的訂用帳戶中註冊資源提供者 **Microsoft.OperationsManagement** 來解決此問題。 您可以在[這裡](../azure-resource-manager/templates/error-register-resource-provider.md)找到作法的相關文件。
 
 ### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>是否支援已啟用 RBAC 的 AKS 叢集？
 
@@ -690,7 +690,7 @@ ContainerInventory 資料表包含已停止和執行中容器的相關資訊。 
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>我如何透過 Helm 在 kube 系統命名空間中啟用容器的記錄檔收集？
 
-kube 系統命名空間中容器的記錄檔收集預設為停用。 透過設定 omsagent 上的環境變數，可啟用記錄檔收集。 如需詳細資訊，請參閱[適用於容器的 Azure 監視器](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) \(英文\) GitHub 頁面。 
+kube 系統命名空間中容器的記錄檔收集預設為停用。 透過設定 omsagent 上的環境變數，可啟用記錄檔收集。 如需詳細資訊，請參閱[適用於容器的 Azure 監視器](https://aka.ms/azuremonitor-containers-helm-chart) \(英文\) GitHub 頁面。 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>如何將 omsagent 更新為最新的發行版本？
 

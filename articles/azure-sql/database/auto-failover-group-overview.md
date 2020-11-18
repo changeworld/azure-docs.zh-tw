@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/28/2020
-ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/16/2020
+ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675294"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653737"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,14 +97,17 @@ ms.locfileid: "92675294"
 
 - **自動容錯移轉原則**
 
-  容錯移轉群組預設是利用自動容錯移轉原則設定。 Azure 會在偵測到失敗且寬限期已過期之後觸發容錯移轉。 系統必須確認內建的 [高可用性基礎結構](high-availability-sla.md) 因影響的規模而無法緩和中斷。 如果您想要控制應用程式的容錯移轉工作流程，可以關閉自動容錯移轉。
+  容錯移轉群組預設是利用自動容錯移轉原則設定。 Azure 會在偵測到失敗且寬限期已過期之後觸發容錯移轉。 系統必須確認內建的 [高可用性基礎結構](high-availability-sla.md) 因影響的規模而無法緩和中斷。 如果您想要控制應用程式或手動的容錯移轉工作流程，可以關閉自動容錯移轉。
   
   > [!NOTE]
   > 因為驗證中斷的規模以及可緩和的速度，牽涉到營運團隊的人為動作，所以寬限期不能在以下一小時內設定。 這項限制適用于容錯移轉群組中的所有資料庫（不論其資料同步處理狀態為何）。
 
 - **唯讀的容錯移轉原則**
 
-  根據預設，唯讀接聽程式的容錯移轉已停用。 它可確保在次要伺服器離線時不會影響主要伺服器的性能。 不過，這也表示在次要伺服器恢復之前，唯讀的工作階段將無法連線。 如果您無法容忍唯讀會話的停機時間，而且可以暫時將主要複本用於唯讀和讀寫流量，但代價是主資料庫可能會降低效能，您可以藉由設定屬性來啟用唯讀接聽程式的容錯移轉 `AllowReadOnlyFailoverToPrimary` 。 在此情況下，如果次要資料庫無法使用，唯讀流量將會自動重新導向至主要複本。
+  根據預設，唯讀接聽程式的容錯移轉已停用。 它可確保在次要伺服器離線時不會影響主要伺服器的性能。 不過，這也表示在次要伺服器恢復之前，唯讀的工作階段將無法連線。 如果您無法容忍唯讀會話的停機時間，而且可以使用主要的唯讀和讀寫流量，但代價是主資料庫可能會降低效能，您可以藉由設定屬性來啟用唯讀接聽程式的容錯移轉 `AllowReadOnlyFailoverToPrimary` 。 在此情況下，如果次要資料庫無法使用，唯讀流量將會自動重新導向至主要複本。
+
+  > [!NOTE]
+  > `AllowReadOnlyFailoverToPrimary`只有在啟用自動容錯移轉原則，且 Azure 已觸發自動容錯移轉時，屬性才會生效。 在此情況下，如果屬性設定為 True，新的主要複本將會同時為讀寫和唯讀會話提供服務。
 
 - **規劃的容錯移轉**
 
@@ -120,7 +123,7 @@ ms.locfileid: "92675294"
 
 - **手動容錯移轉**
 
-  無論自動容錯移轉設定為何，您都可以在任何時候手動起始容錯移轉。 如果未設定自動容錯移轉原則，就需要手動容錯移轉才能將容錯移轉群組中的資料庫復原至次要資料庫。 您可以起始強制或易用容錯移轉 (具有完整的資料同步處理)。 後者可用來將主要資料庫重新放置到次要區域。 容錯移轉完成時，DNS 記錄會自動更新以確保能連線到新的主要伺服器
+  無論自動容錯移轉設定為何，您都可以在任何時候手動起始容錯移轉。 如果未設定自動容錯移轉原則，就需要手動容錯移轉才能將容錯移轉群組中的資料庫復原至次要資料庫。 您可以起始強制或易用容錯移轉 (具有完整的資料同步處理)。 後者可用來將主要資料庫重新放置到次要區域。 當容錯移轉完成時，DNS 記錄會自動更新以確保能連線到新的主要複本。
 
 - **資料遺失的寬限期**
 
@@ -128,7 +131,7 @@ ms.locfileid: "92675294"
 
 - **多個容錯移轉群組**
 
-  您可以為相同的兩部伺服器設定多個容錯移轉群組來控制容錯移轉的規模。 每個群組分別進行容錯移轉。 如果您的多租用戶應用程式使用彈性集區，可以使用這項功能來混合每個集區中的主要和次要資料庫。 如此一來，可以讓中斷只影響一半的租用戶。
+  您可以為同一組伺服器設定多個容錯移轉群組，以控制容錯移轉的範圍。 每個群組分別進行容錯移轉。 如果您的多租用戶應用程式使用彈性集區，可以使用這項功能來混合每個集區中的主要和次要資料庫。 如此一來，可以讓中斷只影響一半的租用戶。
 
   > [!NOTE]
   > SQL 受控執行個體不支援多個容錯移轉群組。
@@ -173,7 +176,7 @@ ms.locfileid: "92675294"
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>針對唯讀工作負載使用唯讀接聽程式
 
-如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 針對唯讀工作階段，請使用 `<fog-name>.secondary.database.windows.net` 作為伺服器 URL，連線會自動導向至次要伺服器。 也建議您使用，在連接字串讀取意圖中表示 `ApplicationIntent=ReadOnly` 。 如果您想要確保唯讀工作負載可以在容錯移轉之後重新連線，或在次要伺服器離線時重新連接，請務必設定 `AllowReadOnlyFailoverToPrimary` 容錯移轉原則的屬性。
+如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 針對唯讀工作階段，請使用 `<fog-name>.secondary.database.windows.net` 作為伺服器 URL，連線會自動導向至次要伺服器。 也建議您使用，在連接字串讀取意圖中表示 `ApplicationIntent=ReadOnly` 。
 
 ### <a name="preparing-for-performance-degradation"></a>準備效能降低
 
@@ -264,20 +267,20 @@ ms.locfileid: "92675294"
 如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 若要直接連接到異地複寫的次要執行個體，請使用 `<fog-name>.secondary.<zone_id>.database.windows.net` 作為伺服器 URL，並直接連接到異地複寫的次要執行個體。
 
 > [!NOTE]
-> 在某些服務層級中，SQL Database 支援使用 [唯讀](read-scale-out.md) 複本，以使用一個唯讀複本的容量，並 `ApplicationIntent=ReadOnly` 在連接字串中使用參數來對唯讀查詢工作負載進行負載平衡。 當您已設定異地複寫的次要執行個體時，可以使用此功能連接至主要位置或異地複寫位置中的唯讀複本。
+> 在 Premium、Business Critical 和超大規模服務層級中，SQL Database 使用連接字串中的參數，支援使用一或多個唯讀複本的 [容量來執行唯讀查詢](read-scale-out.md) 工作負載 `ApplicationIntent=ReadOnly` 。 當您已設定異地複寫的次要執行個體時，可以使用此功能連接至主要位置或異地複寫位置中的唯讀複本。
 >
-> - 若要連線至主要位置的唯讀複本，請使用 `<fog-name>.<zone_id>.database.windows.net`。
-> - 若要連接到次要位置的唯讀複本，請使用 `<fog-name>.secondary.<zone_id>.database.windows.net` 。
+> - 若要連接到主要位置的唯讀複本，請使用 `ApplicationIntent=ReadOnly` 和 `<fog-name>.<zone_id>.database.windows.net` 。
+> - 若要連接到次要位置的唯讀複本，請使用 `ApplicationIntent=ReadOnly` 和 `<fog-name>.secondary.<zone_id>.database.windows.net` 。
 
 ### <a name="preparing-for-performance-degradation"></a>準備效能降低
 
-一般的 Azure 應用程式會使用多個 Azure 服務，並由多個元件組成。 容錯移轉群組的自動容錯移轉會根據 Azure SQL 元件本身的狀態觸發。 主要區域中的其他 Azure 服務可能不會受到中斷影響，且其元件可能仍可在該區域中使用。 主資料庫切換至 DR 區域之後，相依元件之間的延遲可能會增加。 若要避免對應用程式效能造成較高延遲的影響，請確定 DR 區域中所有應用程式元件的冗余，並遵循這些 [網路安全性指導方針](#failover-groups-and-network-security)。
+一般的 Azure 應用程式會使用多個 Azure 服務，並由多個元件組成。 容錯移轉群組的自動容錯移轉會根據 Azure SQL 元件本身的狀態觸發。 主要區域中的其他 Azure 服務可能不會受到中斷影響，且其元件可能仍可在該區域中使用。 主資料庫切換至次要區域之後，相依元件之間的延遲可能會增加。 若要避免應用程式效能較高延遲的影響，請確定次要區域中所有應用程式元件的複本，並將應用程式元件與資料庫一起容錯移轉。 在設定時，請遵循 [網路安全性指導方針](#failover-groups-and-network-security) ，以確保與次要區域中資料庫的連接。
 
 ### <a name="preparing-for-data-loss"></a>準備資料遺失
 
-如果偵測到中斷，如果資料遺失，就會觸發讀寫容錯移轉，以獲得我們的知識。 否則，會等候您所指定的期間。 否則，它會等候您透過 `GracePeriodWithDataLossHours` 所指定的這段時間。 如果您指定 `GracePeriodWithDataLossHours`，請針對資料遺失做好準備。 服務中斷期間，Azure 一般會傾向維持可用性。 如果您無法承擔資料遺失情況，請務必將 GracePeriodWithDataLossHours 設定為足夠大的數字，例如 24 小時。
+如果偵測到中斷，如果資料遺失，就會觸發讀寫容錯移轉，以獲得我們的知識。 否則，就會在您使用指定的期間延遲容錯移轉 `GracePeriodWithDataLossHours` 。 如果您指定 `GracePeriodWithDataLossHours`，請針對資料遺失做好準備。 服務中斷期間，Azure 一般會傾向維持可用性。 如果您無法承受資料遺失的情況，請務必將 >graceperiodwithdatalosshours 設定為夠大的數位，例如24小時，或停用自動容錯移轉。
 
-在起始容錯移轉之後，將立即發生讀寫接聽程式的 DNS 更新。 這項作業不會導致資料遺失。 但是，在正常情況下，切換資料庫角色的程序最多可能需要 5 分鐘的時間。 在完成之前，新的主要執行個體中的某些資料庫仍會處於唯讀模式。 如果使用 PowerShell 起始容錯移轉，則整個作業是同步的。 如果是使用 Azure 入口網站起始，UI 將會指出完成狀態。 如果使用 REST API 來起始，請使用標準 Azure Resource Manager 的輪詢機制來監視完成情況。
+在起始容錯移轉之後，將立即發生讀寫接聽程式的 DNS 更新。 這項作業不會導致資料遺失。 但是，在正常情況下，切換資料庫角色的程序最多可能需要 5 分鐘的時間。 在完成之前，新的主要執行個體中的某些資料庫仍會處於唯讀模式。 如果使用 PowerShell 起始容錯移轉，則切換主要複本角色的作業是同步的。 如果是使用 Azure 入口網站起始，UI 將會指出完成狀態。 如果使用 REST API 來起始，請使用標準 Azure Resource Manager 的輪詢機制來監視完成情況。
 
 > [!IMPORTANT]
 > 使用手動群組容錯移轉，將主要資料庫移回原始位置。 當造成容錯移轉的中斷情況趨緩時，您可以將主要資料庫移動到原始位置。 若要這樣做，您應該起始群組的手動容錯移轉。
@@ -423,7 +426,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -461,7 +464,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |

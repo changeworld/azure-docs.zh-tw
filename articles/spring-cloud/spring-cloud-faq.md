@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655046"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -59,7 +59,7 @@ Azure 春季雲端具有下列已知限制：
 
 如果您在 Azure 春季雲端遇到任何問題，請建立 [Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 若要提交功能要求或提供意見反應，請前往 [Azure 意見](https://feedback.azure.com/forums/34192--general-feedback)反應。
 
-## <a name="development"></a>開發
+## <a name="development"></a>部署
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是春季雲端開發人員，但不熟悉 Azure。 最快的方式是瞭解如何開發 Azure 春季雲端應用程式？
 
@@ -75,11 +75,11 @@ Azure Spring Cloud 支援 Java 8 和 11。 請參閱 [JAVA 執行時間和作業
 
 在 [應用程式概觀] 索引標籤和 [Azure 監視器](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer) \(部分機器翻譯\) 索引標籤中尋找計量。
 
-Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring* 。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
+Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring*。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支援分散式追蹤？
 
-是。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
+可以。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服務繫結支援的資源類型為何？
@@ -92,7 +92,22 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>我可以從我的應用程式內查看、新增或移動永久性磁片區嗎？
 
-是。
+可以。
+
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure 春季雲端實例有多少輸出公用 IP 位址？
+
+輸出公用 IP 位址的數目可能會根據層級和其他因素而有所不同。 
+
+| Azure 春季雲端實例類型 | 預設的輸出公用 IP 位址數目 |
+| -------------------------------- | ---------------------------------------------- |
+| 基本層實例             | 1                                              |
+| 標準層實例          | 2                                              |
+| VNet 插入實例         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>我可以增加輸出公用 IP 位址的數目嗎？
+
+是，您可以開啟 [支援票證](https://azure.microsoft.com/support/faq/)  來要求更多輸出公用 IP 位址。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>當我刪除/移動 Azure 春天雲端服務實例時，是否也會刪除/移動其擴充功能資源？
 
@@ -154,7 +169,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季雲端是否支援藍綠部署？
-是。 如需詳細資訊，請參閱 [設定預備環境](spring-cloud-howto-staging-environment.md)。
+可以。 如需詳細資訊，請參閱 [設定預備環境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
@@ -162,11 +177,11 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
-是。 如需詳細資訊，請參閱 [從原始程式碼啟動您的春季 Cloud 應用程式](spring-cloud-quickstart.md)。
+可以。 如需詳細資訊，請參閱 [從原始程式碼啟動您的春季 Cloud 應用程式](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 
-是。  如需詳細資訊，請參閱 [設定自動](spring-cloud-tutorial-setup-autoscale.md)調整。
+可以。  如需詳細資訊，請參閱 [設定自動](spring-cloud-tutorial-setup-autoscale.md)調整。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>將現有的春季 Cloud 微服務遷移到 Azure 春季雲端的最佳作法為何？

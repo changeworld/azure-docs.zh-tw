@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b1d7f95711017feba52cad97f05128d83734da
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655165"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>建立 Intune 設定檔以部署 VPN 用戶端設定檔
 
@@ -22,7 +22,7 @@ ms.locfileid: "91578116"
 > 此方法僅適用于部署使用 Azure Active Directory 或一般憑證進行用戶端驗證的設定檔。 如果使用唯一的用戶端憑證，則每位使用者都必須在 Azure VPN Client 內手動選取正確的憑證。
 >
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 裝置已向 Intune MDM 註冊。
 * 已在用戶端電腦上部署 Windows 10 的 Azure VPN Client。
@@ -35,7 +35,7 @@ ms.locfileid: "91578116"
 * 自動連接開啟
 * 受信任的網路偵測已啟用。
 
-如需其他支援的選項，請參閱 [>VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) 文章。
+如需其他支援的選項，請參閱 [>VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) 文章。
 
 1. 從 Azure 入口網站下載 VPN 設定檔，並從套件中解壓縮 *azurevpnconfig.xml* 檔案。
 1. 將下列文字複製並貼到新的文字編輯器檔案中。
@@ -75,19 +75,19 @@ ms.locfileid: "91578116"
 
     * **名稱：** 輸入設定的名稱。
     * **描述：** 選擇性描述。
-    * **OMA-URI：** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (可以在<name> </name>標記) 的 azurevpnconfig.xml 檔案中找到這項資訊。
+    * **OMA-URI：** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (可以在 <name></name>標記) 的 azurevpnconfig.xml 檔案中找到這項資訊。
     * **資料類型：** (XML 檔案) 的字串。
 
-   選取資料夾圖示，然後選取您在步驟6中儲存的檔案（ [XML](#xml) 步驟）。 選取 [新增]。
+   選取資料夾圖示，然後選取您在步驟6中儲存的檔案（ [XML](#xml) 步驟）。 選取 [加入]  。
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="組態設定檔" lightbox="./media/create-profile-intune/configuration-settings.png":::
-1. 選取 [下一步]  。
-1. 在 [指派] 底下，選取您要推送 **設定**的群組。 然後，選取 [下一步]****。
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="組態設定" lightbox="./media/create-profile-intune/configuration-settings.png":::
+1. 選取 [下一步]。
+1. 在 [指派] 底下，選取您要推送 **設定** 的群組。 然後，選取 [下一步]。
 1. 適用性規則是選擇性的。 視需要定義任何規則，然後選取 **[下一步]**。
 1. 在 [ **審核 + 建立** ] 頁面上，選取 [ **建立**]。
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="組態設定檔":::
-1. 現在已建立您的自訂設定檔。 如需部署此設定檔的 Microsoft Intune 步驟，請參閱 [指派使用者和裝置設定檔](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign)。
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="建立設定檔":::
+1. 現在已建立您的自訂設定檔。 如需部署此設定檔的 Microsoft Intune 步驟，請參閱 [指派使用者和裝置設定檔](/mem/intune/configuration/device-profile-assign)。
  
 ## <a name="next-steps"></a>後續步驟
 

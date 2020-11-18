@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89178921"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655365"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>將 Office 365 記錄連線至 Azure Sentinel
 
-[Office 365](https://docs.microsoft.com/office/)記錄連接器將 Azure Sentinel 資訊帶入**Exchange**和**SharePoint**中進行中的使用者和系統管理活動 (包括**OneDrive**) ，現在也是在**小組**中。 這項資訊包含動作的詳細資料，例如檔案下載、傳送的存取要求、群組事件的變更、信箱作業、小組事件 (例如聊天、小組、成員和頻道事件) ，以及執行動作之使用者的詳細資料。 將 Office 365 記錄檔連接到 Azure Sentinel 可讓您在活頁簿中查看和分析此資料、查詢它以建立自訂警示，並將其納入以改善您的調查流程，讓您更深入瞭解 Office 365 安全性。
+[Office 365](/office/)記錄連接器將 Azure Sentinel 資訊帶入 **Exchange** 和 **SharePoint** 中進行中的使用者和系統管理活動 (包括 **OneDrive**) ，現在也是在 **小組** 中。 這項資訊包含動作的詳細資料，例如檔案下載、傳送的存取要求、群組事件的變更、信箱作業、小組事件 (例如聊天、小組、成員和頻道事件) ，以及執行動作之使用者的詳細資料。 將 Office 365 記錄檔連接到 Azure Sentinel 可讓您在活頁簿中查看和分析此資料、查詢它以建立自訂警示，並將其納入以改善您的調查流程，讓您更深入瞭解 Office 365 安全性。
 
 > [!IMPORTANT]
 > Office 365 記錄連接器的 **Microsoft 團隊記錄延伸** 模組目前處於公開預覽狀態。
 > 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
@@ -38,9 +38,9 @@ ms.locfileid: "89178921"
 - 您的 Office 365 部署必須與您的 Azure Sentinel 工作區位於相同的租使用者上。
 
 > [!IMPORTANT]
-> - 為了讓連接器能夠透過 Office 365 管理活動 API 存取資料，您必須在 Office 365 部署上啟用 **整合的審核記錄** 。 視您擁有的 Office 365/Microsoft 365 授權類型而定，預設可能不會啟用。 請參閱「 [Office 365 安全性與合規性中心](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center) 」，以根據您的授權類型來檢查統一審核記錄的狀態。
-> - 您也可以手動啟用、停用和檢查 Office 365 統一審核記錄的目前狀態。 如需相關指示，請參閱[開啟或關閉 Office 365 稽核記錄搜尋](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)。
-> - 如需詳細資訊，請參閱 [Office 365 管理活動 API 參考](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference)。
+> - 為了讓連接器能夠透過 Office 365 管理活動 API 存取資料，您必須在 Office 365 部署上啟用 **整合的審核記錄** 。 視您擁有的 Office 365/Microsoft 365 授權類型而定，預設可能不會啟用。 請參閱「 [Office 365 安全性與合規性中心](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center) 」，以根據您的授權類型來檢查統一審核記錄的狀態。
+> - 您也可以手動啟用、停用和檢查 Office 365 統一審核記錄的目前狀態。 如需相關指示，請參閱[開啟或關閉 Office 365 稽核記錄搜尋](/office365/securitycompliance/turn-audit-log-search-on-or-off)。
+> - 如需詳細資訊，請參閱 [Office 365 管理活動 API 參考](/office/office-365-management-api/office-365-management-activity-api-reference)。
 
 
    > [!NOTE]
@@ -63,11 +63,10 @@ ms.locfileid: "89178921"
 
 - 請參閱與 **Office 365** 記錄連接器配套的建議活頁簿、查詢範例和分析規則範本，以深入瞭解您的 SharePoint、OneDrive、Exchange 和團隊記錄資料。
 
-- 若要在 **記錄**檔中手動查詢 Office 365 記錄檔資料，請 `OfficeActivity` 在查詢視窗的第一行輸入。
+- 若要在 **記錄** 檔中手動查詢 Office 365 記錄檔資料，請 `OfficeActivity` 在查詢視窗的第一行輸入。
    - 若要篩選特定記錄類型的查詢，請 `| where OfficeWorkload == "<logtype>"` 在查詢的第二行中輸入，其中 *\<logtype\>* 是 `SharePoint` 、 `OneDrive` 、 `Exchange` 或 `MicrosoftTeams` 。
 
 ## <a name="next-steps"></a>後續步驟
 在本文件中，您已了解如何將 Office 365 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 瞭解如何深入瞭解 [您的資料和潛在威脅](quickstart-get-visibility.md)。
 - 使用 [內建](tutorial-detect-threats-built-in.md) 或 [自訂](tutorial-detect-threats-custom.md) 規則開始偵測 Azure Sentinel 的威脅。
-

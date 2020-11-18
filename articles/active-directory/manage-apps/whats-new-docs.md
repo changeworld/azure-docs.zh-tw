@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 7c011c55728db53f0c64ac063c3372a610ef8f2f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542451"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654004"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 應用程式管理：新功能
 
@@ -43,7 +43,7 @@ ms.locfileid: "94542451"
 ### <a name="new-articles"></a>新文章
 - [快速入門：為您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定 OIDC 型單一登入 (SSO)](add-application-portal-setup-oidc-sso.md)
 - [快速入門：將使用者指派給以 Azure AD 作為識別提供者的應用程式](add-application-portal-assign-users.md)
-- [檔有哪些新功能？](whats-new-docs.md)
+- [Docs 有哪些新功能？](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>更新的文章
@@ -70,7 +70,7 @@ ms.locfileid: "94542451"
 - [什麼是單一登入 (SSO)？](what-is-single-sign-on.md)
 - [在 Azure Active Directory 中對 overprivileged 或可疑應用程式採取動作](manage-application-permissions.md)
 - [快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定屬性](add-application-portal-configure.md)
-- [使用 Microsoft Graph API 將 SAML 型 SSO 應用程式設定自動化](application-saml-sso-configure-api.md)
+- [使用 Microsoft Graph API 將 SAML 型 SSO 應用程式設定自動化](/graph/application-saml-sso-configure-api)
 
 
 ## <a name="july-2020"></a>2020 年 7 月

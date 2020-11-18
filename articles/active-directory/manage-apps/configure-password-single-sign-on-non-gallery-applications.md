@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b647e15d3fc99a7f15fbc24e2b6050fdfdc6e93
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598333"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654706"
 ---
 # <a name="understand-password-based-single-sign-on"></a>瞭解以密碼為基礎的單一登入
 
@@ -29,11 +29,11 @@ ms.locfileid: "91598333"
 
 - 針對需要使用者名稱和密碼以外的更多欄位才能登入的應用程式，支援需要多個登入欄位的應用程式
 
-- 自訂使用者輸入認證時，使用者在 [我的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) 看到的使用者名稱和密碼欄位標籤
+- 自訂使用者輸入認證時，使用者在 [我的應用程式](../user-help/my-apps-portal-end-user-access.md) 看到的使用者名稱和密碼欄位標籤
 
 - 允許您的使用者為其手動輸入的任何現有應用程式帳戶提供自己的使用者名稱和密碼。
 
-- 允許商務群組的成員使用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能，指定要指派給使用者的使用者名稱和密碼
+- 允許商務群組的成員使用[自助應用程式存取](./manage-self-service-access.md)功能，指定要指派給使用者的使用者名稱和密碼
 
 -   允許系統管理員指定當個人或群組以更新認證功能登入應用程式時，所要使用的使用者名稱和密碼 
 
@@ -42,9 +42,9 @@ ms.locfileid: "91598333"
 使用 Azure AD 作為身分識別提供者 (IdP) 並設定單一登入 (SSO) 可以簡單或複雜，視所使用的應用程式而定。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速地快速增加知識，請逐步解說應用程式管理的 [快速入門系列](view-applications-portal.md) 。 如果您要新增的應用程式很簡單，您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要自訂設定，而您需要使用密碼型 SSO，則這篇文章適用于您。
 
 > [!IMPORTANT] 
-> 在某些案例中，在**企業應用**程式中，**單一登入**選項不會在應用程式的導覽中。 
+> 在某些案例中，在 **企業應用** 程式中，**單一登入** 選項不會在應用程式的導覽中。 
 >
-> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](../develop/reference-app-manifest.md)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)。 
 >
 > 當應用程式裝載于另一個租使用者時，或您的帳戶沒有必要許可權 (全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者) 時，流覽中將遺失 **單一登入** 的情況。 許可權也可能會導致您無法開啟 **單一登入** ，但無法儲存的情況。 若要深入瞭解 Azure AD 系統管理角色，請參閱 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
@@ -60,14 +60,14 @@ ms.locfileid: "91598333"
 
 輸入 URL 之後，請選取 [ **儲存**]。 Azure AD 會針對使用者名稱和密碼輸入欄位剖析登入頁面的 HTML。 如果嘗試成功，您就完成了。
  
-下一步是要將 [使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)。 指派使用者和群組之後，您可以在使用者登入應用程式時，提供要用於使用者的認證。 選取 [ **使用者和群組**]，選取使用者或群組之資料列的核取方塊，然後選取 [ **更新認證**]。 最後，輸入使用者或群組要使用的使用者名稱和密碼。 如果不這麼做，系統會在啟動時提示使用者自行輸入認證。
+下一步是要將 [使用者或群組指派給應用程式](./assign-user-or-group-access-portal.md)。 指派使用者和群組之後，您可以在使用者登入應用程式時，提供要用於使用者的認證。 選取 [ **使用者和群組**]，選取使用者或群組之資料列的核取方塊，然後選取 [ **更新認證**]。 最後，輸入使用者或群組要使用的使用者名稱和密碼。 如果不這麼做，系統會在啟動時提示使用者自行輸入認證。
  
 
 ## <a name="manual-configuration"></a>手動設定
 
 如果 Azure AD 的剖析嘗試失敗，您可以手動設定登入。
 
-1. 在 [設定] 底下，選取 [**設定 \<application name> 密碼單一登入設定** ** \<application name> ]，以**顯示 [**設定登入**] 頁面。 
+1. 在 [設定] 底下，選取 [**設定 \<application name> 密碼單一登入設定** **\<application name> ]，以** 顯示 [**設定登入**] 頁面。 
 
 2. 選取 [手動偵測登 **入欄位**]。 描述手動偵測登入欄位的其他指示隨即出現。
 
@@ -80,13 +80,13 @@ ms.locfileid: "91598333"
 5. 在具有所輸入 URL 的索引標籤中，進行登入程式。 填入 [使用者名稱] 和 [密碼] 欄位，然後嘗試登入。  (您不需要提供正確的密碼。 ) 
 
    提示會要求您儲存已捕捉的登入欄位。
-6. 選取 [確定]  。 瀏覽器擴充功能會使用已 **更新的應用程式訊息中繼資料來**更新 [capture status] 頁面。 [瀏覽器] 索引標籤會關閉。
+6. 選取 [確定]。 瀏覽器擴充功能會使用已 **更新的應用程式訊息中繼資料來** 更新 [capture status] 頁面。 [瀏覽器] 索引標籤會關閉。
 
 7. 在 Azure AD **設定** 登入] 頁面中，選取 **[確定]，我可以成功登入應用程式**。
 
-8. 選取 [確定]  。
+8. 選取 [確定]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)
+- [將使用者或群組指派給應用程式](./assign-user-or-group-access-portal.md)
 - [設定使用者帳戶自動佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

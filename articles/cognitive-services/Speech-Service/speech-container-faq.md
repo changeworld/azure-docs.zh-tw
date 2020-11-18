@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918463"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653533"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>語音服務容器的常見問題 (常見問題) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "88918463"
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-最後，您可以使用變數，在 *單一* 容器內設定您想要的解碼器數目 `DECODER MAX_COUNT` 。 因此，基本上，我們應該從您的 SKU 開始 (的 CPU/記憶體) ，我們可以建議如何充分運用它。 很棒的起點是指建議的主機機器資源規格。
+您可以使用變數，在 *單一* 容器內設定您想要的解碼器數目 `DECODER MAX_COUNT` 。 因此，基本上，我們應該從您的 SKU 開始 (的 CPU/記憶體) ，我們可以建議如何充分運用它。 很棒的起點是指建議的主機機器資源規格。
 
 <br>
 </details>
@@ -133,7 +133,7 @@ RECOGNIZED: SpeechRecognitionResult(
 
 我們目前只能傳遞一個模型識別碼，也就是自訂語言模型或自訂聲場模型。
 
-**答：***不*同時支援聲場和語言模型的決策。 這會持續生效，直到建立統一的識別碼以減少 API 中斷為止。 可惜的是，目前不支援此功能。
+**答：***不* 同時支援聲場和語言模型的決策。 這會持續生效，直到建立統一的識別碼以減少 API 中斷為止。 可惜的是，目前不支援此功能。
 
 <br>
 </details>
@@ -367,7 +367,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 檔說要公開不同的埠，我這麼做，但 LUIS 容器仍在接聽埠5000？
 
-**答：** 請試試看 `-p <outside_unique_port>:5000` 。 例如： `-p 5001:5000` 。
+**答：** 請試試看 `-p <outside_unique_port>:5000` 。 例如 `-p 5001:5000`。
 
 
 <br>
@@ -419,7 +419,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 |-----------------------|---------------------|---------------------|
 | 自訂文字轉換語音 | 1核心，2 GB 記憶體 | 2核心，3 GB 記憶體 |
 
-***
+**_
 
 - 每個核心都必須至少有 2.6 GHz 或更快。
 - 針對檔案，節流將會在語音 SDK 中，2 (前5秒的音訊不會受到節流) 。
@@ -438,7 +438,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>語音容器是否支援標點符號？</b>
 </summary>
 
-**答：** 在內部部署容器中可使用 (ITN) 大小寫。 標點符號與語言相依，而且不支援某些語言，包括中文和日文。
+_ *答：** 在內部部署的容器中，我們有 (ITN) 的大小寫。 標點符號與語言相依，而且不支援某些語言，包括中文和日文。
 
 針對現有的容器 *，我們有* 隱含和基本標點符號的支援，但它是 `off` 預設的。 這表示您可以取得 `.` 範例中的字元，而不是 `。` 字元。 為了啟用此隱含邏輯，以下是如何使用語音 SDK 在 Python 中執行此作業的範例 (它會與其他語言) 類似：
 
@@ -480,6 +480,16 @@ Content-Length: 0
 
 **答：** 我們不支援語音轉換文字容器中的 REST API，我們僅透過語音 SDK 支援 Websocket。 請一律參考官方檔，請參閱 [查詢預測端點](speech-container-howto.md#query-the-containers-prediction-endpoint)。
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> 為什麼容器以非根使用者的身份執行？可能會發生什麼問題？</b>
+</summary>
+
+**答：** 請注意，容器內的預設使用者是非根使用者。 這可保護容器的程式，並取得主機節點的提升許可權。 依預設，某些平臺（例如 OpenShift 容器平臺）已藉由使用任意指派的使用者識別碼執行容器來執行此作業。 在這些平臺中，非根使用者必須有許可權可寫入任何需要寫入的外部對應磁片區。 例如，記錄資料夾或自訂模型下載資料夾。
 <br>
 </details>
 

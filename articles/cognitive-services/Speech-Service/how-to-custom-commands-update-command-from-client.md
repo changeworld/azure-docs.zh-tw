@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 290f9ee9c23071ac56b1ff0c65ddc03decbc7344
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571167"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654336"
 ---
 # <a name="update-a-command-from-the-client"></a>從用戶端更新命令
 
 在本文中，我們將瞭解如何從用戶端應用程式更新進行中的命令。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 > [!div class = "checklist"]
 > * 先前[建立的自訂命令應用程式](quickstart-custom-commands-application.md)
 
@@ -121,19 +121,32 @@ ms.locfileid: "94571167"
 若要測試此案例，讓我們在目前的應用程式中建立新的命令。
 1. 建立名為 GetDeviceInfo 的新命令。
 1. 使用「取得裝置資訊」新增範例句子。
-1. 在完成規則「完成」中，新增「傳送語音回應」動作。
+1. 在完成規則「完成」中，新增包含 clientCoNtext 屬性的傳送語音回應動作。
     > ![傳送具有內容的語音回應](media/custom-commands/send-speech-response-context.png)
-1. 儲存並定型您的應用程式。
-1. 測試您的應用程式。
+1. 儲存、定型及測試您的應用程式。
+1. 在 [測試] 視窗中，傳送活動以更新用戶端內容。
+    > ```json
+    >{
+    >   "type": "event",
+    >   "name": "RemoteUpdate",
+    >   "value": {
+    >     "clientContext": {
+    >       "deviceId": "12345",
+    >       "deviceName": "My device"
+    >     },
+    >     "processTurn": false
+    >   }
+    >}
+    > ```
+1. 傳送文字「取得裝置資訊」。
     > ![傳送用戶端內容活動](media/custom-commands/send-client-context-activity.png)
 
 請注意幾件事。
 1. 您只需要將此活動傳送一次， (在您啟動連線) 之後，最好立即傳送。
-1. 您可以使用 ClientCoNtext 的複雜物件。
-1. 您可以在語音回應中使用 ClientCoNtext，以傳送活動以及呼叫 web 端點。
-
+1. 您可以使用 clientCoNtext 的複雜物件。
+1. 您可以在語音回應中使用 clientCoNtext，以傳送活動以及呼叫 web 端點。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [從 web 端點更新命令](./how-to-custom-commands-update-command-from-web-endpoint.md)
+> [從 Web 端點更新命令](./how-to-custom-commands-update-command-from-web-endpoint.md)

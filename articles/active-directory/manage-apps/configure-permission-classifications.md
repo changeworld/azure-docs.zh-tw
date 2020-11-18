@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b72530868b2b12e5f95e79be6ad5a2d7ce170b62
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427663"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654672"
 ---
 # <a name="configure-permission-classifications"></a>設定權限分類
 
@@ -45,7 +45,7 @@ ms.locfileid: "92427663"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，來分類權限。 權限分類是在 API (發佈權限) 的 **ServicePrincipal** 物件上設定。
+您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)，來分類權限。 權限分類是在 API (發佈權限) 的 **ServicePrincipal** 物件上設定。
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>列出 API 目前的許可權分類
 
@@ -123,7 +123,7 @@ ms.locfileid: "92427663"
 * [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 * [了解如何管理對應用程式的同意及評估同意要求](manage-consent-requests.md)
 * [對應用程式授與全租用戶的管理員同意](grant-admin-consent.md)
-* [Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft 身分識別平台中的權限和同意](../develop/v2-permissions-and-consent.md)
 
 若要取得協助或尋找您的問題解答：
 * [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

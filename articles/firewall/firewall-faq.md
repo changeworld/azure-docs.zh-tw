@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412998"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653414"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -40,9 +40,9 @@ Azure 防火牆支援規則和規則集合。 規則集合是一組共用相同�
 
 規則集合有三種類型：
 
-* *應用程式規則* ：設定可從子網路存取的完整網域名稱 (FQDN)。
-* *網路規則* ：設定包含來源位址、通訊協定、目的地連接埠及目的地位址的規則。
-* *NAT 規則* ：設定 DNAT 規則以允許傳入的網際網路連線。
+* *應用程式規則*：設定可從子網路存取的完整網域名稱 (FQDN)。
+* *網路規則*：設定包含來源位址、通訊協定、目的地連接埠及目的地位址的規則。
+* *NAT 規則*：設定 DNAT 規則以允許傳入的網際網路連線。
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火牆是否支援輸入流量篩選？
 
@@ -50,7 +50,7 @@ Azure 防火牆支援輸入和輸出篩選。 連入保護通常用於非 HTTP/S
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure 防火牆支援哪些記錄和分析服務？
 
-「Azure 防火牆」已與「Azure 監視器」整合，可檢視和分析防火牆記錄。 記錄可以傳送至 Log Analytics、「Azure 儲存體」或「事件中樞」。 這些記錄可以在 Log Analytics 中進行分析，或透過不同的工具 (例如 Excel 和 Power BI) 進行分析。 如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄](tutorial-diagnostics.md)。
+「Azure 防火牆」已與「Azure 監視器」整合，可檢視和分析防火牆記錄。 記錄可以傳送至 Log Analytics、「Azure 儲存體」或「事件中樞」。 這些記錄可以在 Log Analytics 中進行分析，或透過不同的工具 (例如 Excel 和 Power BI) 進行分析。 如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄](./firewall-diagnostics.md)。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure 防火牆的運作方式與市集中現有的服務 (例如 NVA) 有何不同？
 
@@ -139,9 +139,9 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>如何在應用程式規則中將萬用字元用於目標 FQDN？
 
-目前只能在 FQDN 的左邊使用萬用字元。 例如，* *_. contoso.com_* 和 * *_contoso.com_* 。
+目前只能在 FQDN 的左邊使用萬用字元。 例如，**_. contoso.com_* 和 **_contoso.com_*。
 
-如果您設定 * *_. contoso.com_* ，它會允許 *anyvalue* ，但無法 (網域頂點) 的 contoso.com。 如果您想要允許網域頂點，您必須明確地將其設定為目標 FQDN。
+如果您設定 **_. contoso.com_*，它會允許 *anyvalue*，但無法 (網域頂點) 的 contoso.com。 如果您想要允許網域頂點，您必須明確地將其設定為目標 FQDN。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>[佈建狀態:失敗] 是什麼意思？
 
@@ -217,7 +217,7 @@ TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背�
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火牆的 TCP 閒置超時為何？
 
-網路防火牆的標準行為是確保 TCP 連接保持運作，並在沒有任何活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為四分鐘。 這是無法設定的設定。 如果閒置期間超過 timeout 值，就不保證會保留 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱 [.net 範例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+網路防火牆的標準行為是確保 TCP 連接保持運作，並在沒有任何活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為四分鐘。 這是無法設定的設定。 如果閒置期間超過 timeout 值，就不保證會保留 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱 [.net 範例](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以在不使用公用 IP 位址的情況下部署 Azure 防火牆？
 

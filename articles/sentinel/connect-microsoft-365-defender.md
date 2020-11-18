@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: e9e892ae08c65ee5c5008bbdc1b419d8dec30183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 756c245fe06ae81545a125dd98f30fb27fdff2dd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934101"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655574"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>將資料從 Microsoft 365 Defender 連接至 Azure Sentinel
 
@@ -33,9 +33,9 @@ ms.locfileid: "90934101"
 
 ## <a name="background"></a>背景
 
-新的 [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-threat-protection) 連接器可讓您將 **advanced 搜尋** 記錄（一種原始事件資料類型）串流至 Azure Sentinel 的 Microsoft 365 Defender。 
+新的 [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) 連接器可讓您將 **advanced 搜尋** 記錄（一種原始事件資料類型）串流至 Azure Sentinel 的 Microsoft 365 Defender。 
 
-藉由將 [Microsoft defender For endpoint (MDATP) ](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) 至 Microsoft 365 defender 安全層，您現在可以使用 Microsoft 365 defender 連接器收集您的 microsoft Defender for endpoint [advanced 搜尋](https://aka.ms/mdatpAH) 事件，並將它們直接串流至您 Azure Sentinel 工作區中的新用途內建資料表。 這些資料表是以 Microsoft 365 Defender 入口網站中使用的相同架構為基礎，可讓您完整存取一組完整的 advanced 搜尋記錄，並允許您執行下列作業：
+藉由將 [Microsoft defender For endpoint (MDATP) ](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) 至 Microsoft 365 defender 安全層，您現在可以使用 Microsoft 365 defender 連接器收集您的 microsoft Defender for endpoint [advanced 搜尋](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) 事件，並將它們直接串流至您 Azure Sentinel 工作區中的新用途內建資料表。 這些資料表是以 Microsoft 365 Defender 入口網站中使用的相同架構為基礎，可讓您完整存取一組完整的 advanced 搜尋記錄，並允許您執行下列作業：
 
 - 輕鬆地將您現有的 Microsoft Defender ATP advanced 搜尋查詢複製到 Azure Sentinel。
 
@@ -47,9 +47,9 @@ ms.locfileid: "90934101"
 >
 > Microsoft 365 Defender 連接器目前處於公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- 您必須擁有適用于 Microsoft Defender for Endpoint 的有效授權，如 [安裝 Microsoft defender 以進行端點部署](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
+- 您必須擁有適用于 Microsoft Defender for Endpoint 的有效授權，如 [安裝 Microsoft defender 以進行端點部署](/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 
 - 您必須在 Azure Active Directory) 中，將租使用者 (上的「全域管理員」角色指派給您的使用者。
 
@@ -57,7 +57,7 @@ ms.locfileid: "90934101"
 
 如果已部署 Microsoft Defender for Endpoint 並擷取您的資料，則可以輕鬆地將事件記錄串流至 Azure Sentinel。
 
-1. 在 Azure Sentinel 中，選取 [ **資料連線器**]，從資源庫選取 [ **Microsoft 365 Defender (預覽) ** ]，然後選取 [ **開啟連接器] 頁面**。
+1. 在 Azure Sentinel 中，選取 [ **資料連線器**]，從資源庫選取 [ **Microsoft 365 Defender (預覽)** ]，然後選取 [ **開啟連接器] 頁面**。
 
 1. 您可以從對應的「advanced 搜尋」資料表收集下列類型的事件。 標示您想要收集之事件種類的核取方塊：
 
@@ -74,7 +74,7 @@ ms.locfileid: "90934101"
     | 其他事件種類 | DeviceEvents |
     |
 
-1. 按一下 [套用變更]****。 
+1. 按一下 [套用變更]。 
 
 1. 若要查詢 Log Analytics 中的「advanced 搜尋」資料表，請在查詢視窗的上方清單中輸入資料表名稱。
 
@@ -101,4 +101,4 @@ let Now = now();
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何使用 Microsoft 365 Defender 連接器，從 Microsoft Defender for Endpoint 取得原始事件資料至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
+- 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。

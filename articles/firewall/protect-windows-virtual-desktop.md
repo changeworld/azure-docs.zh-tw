@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400150"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654978"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>使用 Azure 防火牆來保護 Windows 虛擬桌面部署
 
@@ -22,7 +22,7 @@ Windows 虛擬桌面是在 Azure 上執行的桌面和應用程式虛擬化服�
 
 遵循本文中的指導方針，使用 Azure 防火牆為您的 Windows 虛擬桌面主機集區提供額外的保護。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 
  - 已部署的 Windows 虛擬桌面環境和主機集區。
@@ -63,7 +63,7 @@ Windows 虛擬桌面是在 Azure 上執行的桌面和應用程式虛擬化服�
 
 視您的組織需求而定，您可能會想要為終端使用者啟用安全的輸出網際網路存取。 如果允許的目的地清單定義完善 (例如， [Microsoft 365 存取](/microsoft-365/enterprise/microsoft-365-ip-web-service)) 您可以使用 Azure 防火牆應用程式和網路規則來設定所需的存取權。 這會將終端使用者流量直接路由傳送至網際網路，以獲得最佳效能。
 
-如果您想要使用現有的內部部署安全 web 閘道來篩選輸出使用者的網際網路流量，您可以使用明確的 proxy 設定，設定在 Windows 虛擬桌面主機集區上執行的網頁瀏覽器或其他應用程式。 例如，請參閱 [如何使用 Microsoft Edge 命令列選項來設定 proxy 設定](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings)。 這些 proxy 設定只會影響您的終端使用者網際網路存取，讓 Windows 虛擬桌面平臺可透過 Azure 防火牆直接輸出流量。
+如果您想要使用現有的內部部署安全 web 閘道來篩選輸出使用者的網際網路流量，您可以使用明確的 proxy 設定，設定在 Windows 虛擬桌面主機集區上執行的網頁瀏覽器或其他應用程式。 例如，請參閱 [如何使用 Microsoft Edge 命令列選項來設定 proxy 設定](/deployedge/edge-learnmore-cmdline-options-proxy-settings)。 這些 proxy 設定只會影響您的終端使用者網際網路存取，讓 Windows 虛擬桌面平臺可透過 Azure 防火牆直接輸出流量。
 
 ## <a name="additional-considerations"></a>其他考量
 

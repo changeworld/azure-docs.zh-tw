@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604133"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654128"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 ## <a name="the-future-of-remote-access"></a>遠端存取的未來
 
-在現今的數位職場中，使用者會在任何地方使用多個裝置和應用程式來工作。 唯一不變的就是使用者身分識別。 因此，現今要打造安全網路環境的第一步，就是使用 [Azure AD 的身分識別管理](https://docs.microsoft.com/azure/security/security-identity-management-overview)功能來作為安全性控制平面。 使用身分識別作為控制平面的模型一般會由下列元件組成：
+在現今的數位職場中，使用者會在任何地方使用多個裝置和應用程式來工作。 唯一不變的就是使用者身分識別。 因此，現今要打造安全網路環境的第一步，就是使用 [Azure AD 的身分識別管理](../../security/fundamentals/identity-management-overview.md)功能來作為安全性控制平面。 使用身分識別作為控制平面的模型一般會由下列元件組成：
 
 * 識別提供者，用來追蹤使用者和使用者相關資訊。
 * 裝置目錄，用來維護可存取公司資源的裝置清單。 此目錄包含對應的裝置資訊 (例如，裝置類型、完整性等)。
@@ -76,7 +76,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 這項功能的元件包括應用程式 Proxy 服務 (在雲端中執行)、應用程式 Proxy 連接器 (在內部部署伺服器上執行的輕量型代理程式) 和 Azure AD (作為識別提供者)。 這三個元件一起運作，便可為使用者提供用來存取內部部署 Web 應用程式的單一登入體驗。
 
-登入之後，外部使用者可以使用熟悉的 URL 或 [我的應用程式](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) 從其桌面或 IOS/MAC 裝置存取內部部署 web 應用程式。 例如，應用程式 Proxy 可以為遠端桌面、SharePoint 網站、Tableau、Qlik、Outlook 網頁版和企業營運 (LOB) 應用程式提供遠端存取和單一登入。
+登入之後，外部使用者可以使用熟悉的 URL 或 [我的應用程式](../user-help/my-apps-portal-end-user-access.md) 從其桌面或 IOS/MAC 裝置存取內部部署 web 應用程式。 例如，應用程式 Proxy 可以為遠端桌面、SharePoint 網站、Tableau、Qlik、Outlook 網頁版和企業營運 (LOB) 應用程式提供遠端存取和單一登入。
 
 ![Azure AD 應用程式 Proxy 的架構](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 * Web 應用程式
 * 您想要公開給不同裝置上豐富應用程式的 Web API
 * 裝載在遠端桌面閘道之後的應用程式
-* 與 [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) 整合的豐富型用戶端應用程式
+* 與 [Microsoft Authentication Library (MSAL)](../develop/v2-overview.md) 整合的豐富型用戶端應用程式
 
 應用程式 Proxy 適用於使用下列原生驗證通訊協定的應用程式：
 
@@ -95,7 +95,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 應用程式 Proxy 也支援搭配第三方整合或在特定的設定案例中使用下列驗證通訊協定：
 
-* [**標頭型驗證**](application-proxy-configure-single-sign-on-with-ping-access.md)。 此登入方法會使用名為 PingAccess 的第三方驗證服務，使用時機則在應用程式使用標頭進行驗證時。 在此案例中，驗證會由 PingAccess 處理。
+* [**標頭型驗證**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)。 此登入方法會使用名為 PingAccess 的第三方驗證服務，使用時機則在應用程式使用標頭進行驗證時。 在此案例中，驗證會由 PingAccess 處理。
 * [**表單或密碼型驗證**](application-proxy-configure-single-sign-on-password-vaulting.md)。 若使用此驗證方法，使用者在第一次存取應用程式時，要以使用者名稱和密碼登入應用程式。 第一次登入之後，Azure AD 就會向應用程式提供使用者名稱和密碼。 在此案例中，驗證會由 Azure AD 處理。
 * [**SAML 驗證**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 使用 SAML 2.0 或 WS-同盟通訊協定的應用程式都支援 SAML 型單一登入。 使用 SAML 單一登入時，Azure AD 會使用使用者的 Azure AD 帳戶向應用程式驗證。
 
@@ -109,11 +109,11 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 * **條件式存取**。 在建立通往您網路的連線之前，可以先套用更豐富的原則控制。 使用條件式存取，就可以對允許連上後端應用程式的流量來定義限制。 您可以位置、驗證強度和使用者風險狀況作為基礎，來建立限制登入的原則。 條件式存取隨著發展新增了更多的控制以提供額外的安全性，例如與 Microsoft Cloud App Security (MCAS) 整合。 MCAS 整合可讓您藉由利用條件式存取來根據條件式存取原則即時監視並控制工作階段，而為內部部署應用程式設定[即時監視](application-proxy-integrate-with-microsoft-cloud-application-security.md)。
 * **流量終止**。 在向後端伺服器重新建立工作階段時，雲端中的應用程式 Proxy 服務會終止所有流向後端應用程式的流量。 此連線策略表示您的後端伺服器不會對直接 HTTP 流量公開。 由於您的防火牆不會遭受攻擊，因此這些伺服器能更好地防禦目標型 DoS (拒絕服務) 攻擊。
 * **所有存取都是輸出**。 應用程式 Proxy 連接器只會透過連接埠 80 和 443，來使用目的地為雲端中應用程式 Proxy 服務的輸出連線。 由於沒有輸入連線，因此不需要為 DMZ 中的連入連線或元件開啟防火牆連接埠。 所有連線皆為輸出且透過安全通道進行。
-* **以安全性分析和 Machine Learning (ML) 為基礎的情報**。 因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview) (需要 [Premium P2 授權](https://azure.microsoft.com/pricing/details/active-directory/))。 Azure AD Identity Protection 會結合機器學習安全情報與來自 Microsoft [數位犯罪防治中心](https://news.microsoft.com/stories/cybercrime/index.html)和 [Microsoft Security Response Center](https://www.microsoft.com/msrc) 的資料摘要，來主動識別遭到入侵的帳戶。 Identity Protection 可即時防範高風險的登入。其會考量各種因素 (如來自受感染裝置的存取、透過匿名網路的存取，或來自非典型與虛假位置的存取)，以增加工作階段的風險概況。 此風險概況可用於提供即時保護。 這些報告和事件中有許多已可透過 API 與 SIEM 系統整合。
+* **以安全性分析和 Machine Learning (ML) 為基礎的情報**。 因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) (需要 [Premium P2 授權](https://azure.microsoft.com/pricing/details/active-directory/))。 Azure AD Identity Protection 會結合機器學習安全情報與來自 Microsoft [數位犯罪防治中心](https://news.microsoft.com/stories/cybercrime/index.html)和 [Microsoft Security Response Center](https://www.microsoft.com/msrc) 的資料摘要，來主動識別遭到入侵的帳戶。 Identity Protection 可即時防範高風險的登入。其會考量各種因素 (如來自受感染裝置的存取、透過匿名網路的存取，或來自非典型與虛假位置的存取)，以增加工作階段的風險概況。 此風險概況可用於提供即時保護。 這些報告和事件中有許多已可透過 API 與 SIEM 系統整合。
 
 * **遠端存取即服務**。 您不必煩惱要如何維護及修補內部部署伺服器以實現遠端存取。 應用程式 Proxy 是 Microsoft 自有的網際網路級別服務，因此您永遠會獲得最新的安全性修補程式和升級。 未更新的軟體仍需負責處理大量攻擊。 根據美國國土安全部的調查，多達 [85% 的目標型攻擊是可以預防的](https://www.us-cert.gov/ncas/alerts/TA15-119A)。 使用此服務模型，您就不必再艱辛管理邊緣伺服器並視需要加以修補。
 
-* **Intune 整合**。 使用 Intune 時，公司流量會與個人流量分開進行路由。 應用程式 Proxy 可確保公司流量會經過驗證。 [應用程式 Proxy 與 Intune Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) 功能也可一起使用，而讓遠端使用者能夠安全地從 iOS 和 Android 裝置存取內部網站。
+* **Intune 整合**。 使用 Intune 時，公司流量會與個人流量分開進行路由。 應用程式 Proxy 可確保公司流量會經過驗證。 [應用程式 Proxy 與 Intune Managed Browser](/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) 功能也可一起使用，而讓遠端使用者能夠安全地從 iOS 和 Android 裝置存取內部網站。
 
 ### <a name="roadmap-to-the-cloud"></a>雲端藍圖
 
@@ -131,16 +131,16 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 2. 成功登入之後，Azure AD 會向使用者的用戶端裝置傳送權杖。
 3. 用戶端會將權杖傳送至應用程式 Proxy 服務，該服務會取出權杖的使用者主體名稱 (UPN) 和安全性主體名稱 (SPN)。
 4. 應用程式 Proxy 會轉送要求 (要求會由應用程式 Proxy [連接器](application-proxy-connectors.md)接收)。
-5. 連接器會代表使用者執行任何額外的必要驗證 (選擇性功能，視驗證方法而定**)、要求應用程式伺服器的內部端點，並將要求傳送至內部部署應用程式。
+5. 連接器會代表使用者執行任何額外的必要驗證 (選擇性功能，視驗證方法而定)、要求應用程式伺服器的內部端點，並將要求傳送至內部部署應用程式。
 6. 來自該應用程式伺服器的回應會透過連接器傳送給應用程式 Proxy 服務。
 7. 回應會從應用程式 Proxy 服務傳送給使用者。
 
 |**元件**|**說明**|
 |:-|:-|
-|端點|端點可以是 URL 或 [終端使用者入口網站](end-user-experiences.md)。 使用者可以藉由存取外部 URL，來連線網路外部的應用程式。 您網路內的使用者可以透過 URL 或使用者入口網站存取應用程式。 使用者存取這些端點的其中一個時，會在 Azure AD 中進行驗證，然後透過連接器路由至內部部署應用程式。|
+|端點|端點可以是 URL 或[使用者入口網站](end-user-experiences.md)。 使用者可以藉由存取外部 URL，來連線網路外部的應用程式。 您網路內的使用者可以透過 URL 或使用者入口網站存取應用程式。 使用者存取這些端點的其中一個時，會在 Azure AD 中進行驗證，然後透過連接器路由至內部部署應用程式。|
 |Azure AD|Azure AD 使用儲存在雲端中的租用戶目錄執行驗證。|
 |應用程式 Proxy 服務|此應用程式 Proxy 服務作為 Azure AD 的一部分在雲端中執行。 它會將登入權杖從使用者傳遞至應用程式 Proxy 連接器時。 應用程式 Proxy 在請求上轉送任何可存取的標頭，並根據其通訊協定將標頭設定為用戶端 IP 位址。 如果對 Proxy 的連入要求中已經有該標頭，則將用戶端 IP 位址加入到以逗號分隔清單的結尾，該用戶端 IP 位址是標頭的值。|
-|應用程式 Proxy 連接器|連接器是位於網路內部 Windows 伺服器上執行的輕量型代理程式。 連接器管理雲端中的應用程式 Proxy 服務與內部部署應用程式之間的通訊。 連接器僅使用輸出連線，因此您不需要開啟任何輸入連接埠，或在 DMZ 中放置任何物件。 連接器是無狀態的，且在必要時會從雲端提取資訊。 如需連接器的詳細資訊，例如如何負載平衡和驗證，請參閱 [了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)。|
+|應用程式 Proxy 連接器|連接器是位於網路內部 Windows 伺服器上執行的輕量型代理程式。 連接器管理雲端中的應用程式 Proxy 服務與內部部署應用程式之間的通訊。 連接器僅使用輸出連線，因此您不需要開啟任何輸入連接埠，或在 DMZ 中放置任何物件。 連接器是無狀態的，且在必要時會從雲端提取資訊。 如需連接器的詳細資訊，例如如何負載平衡和驗證，請參閱[了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)。|
 |Active Directory (AD)|Active Directory 在內部部署執行以對網域帳戶執行驗證。 設定單一登入之後，連接器將與 AD 通訊以執行所需的任何額外的驗證。|
 |內部部署應用程式|最後，使用者就能夠存取內部部署應用程式。|
 
@@ -181,7 +181,7 @@ Azure AD 應用程式 Proxy 是由雲端式應用程式 Proxy 服務和內部部
 
 到目前為止，我們的焦點一直放在使用應用程式 Proxy 來對外發佈內部部署應用程式，同時讓所有雲端和內部部署應用程式實現單一登入。 不過，另外還有一些值得一提的應用程式 Proxy 使用案例。 其中包括：
 
-* **安全發佈 REST API**。 當您讓商務邏輯或 API 在內部部署環境中執行，或裝載於雲端中的虛擬機器時，應用程式 Proxy 會提供用來進行 API 存取的公用端點。 API 端點存取可讓您控制驗證和授權，而不需要有連入連接埠。 其可透過 Azure AD Premium 功能 (例如，使用 Intune 的桌面、iOS、MAC 和 Android 裝置，會有多重要素驗證和裝置型條件式存取) 來提供額外的安全性。 若要深入了解，請參閱[如何讓原生用戶端應用程式能與 Proxy 應用程式互動](application-proxy-configure-native-client-application.md)以及[使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)。
+* **安全發佈 REST API**。 當您讓商務邏輯或 API 在內部部署環境中執行，或裝載於雲端中的虛擬機器時，應用程式 Proxy 會提供用來進行 API 存取的公用端點。 API 端點存取可讓您控制驗證和授權，而不需要有連入連接埠。 其可透過 Azure AD Premium 功能 (例如，使用 Intune 的桌面、iOS、MAC 和 Android 裝置，會有多重要素驗證和裝置型條件式存取) 來提供額外的安全性。 若要深入了解，請參閱[如何讓原生用戶端應用程式能與 Proxy 應用程式互動](application-proxy-configure-native-client-application.md)以及[使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](../../api-management/api-management-howto-protect-backend-with-aad.md)。
 * **遠端桌面服務** **(RDS)** 。 需要使用開啟的輸入連線才能進行標準 RDS 部署。 不過，[使用應用程式 Proxy 的 RDS 部署](application-proxy-integrate-with-remote-desktop-services.md)具有來自連接器服務執行所在伺服器的永久輸出連線。 如此一來，您就可以透過遠端桌面服務發佈內部部署應用程式，藉此來提供更多應用程式給終端使用者。 您也可以向 RDS 提供一組有限的雙步驟驗證和條件式存取控制，來減少部署的受攻擊面。
 * **發佈使用 Websocket 來連線的應用程式**。 [Qlik Sense](application-proxy-qlik.md) 支援目前為公開預覽狀態，未來會擴展至其他應用程式。
 * **讓原生用戶端應用程式與 Proxy 應用程式互動**。 您可以使用 Azure AD 應用程式 Proxy 來發佈 Web 應用程式，但其也可用來發佈使用 Azure AD 驗證程式庫 (ADAL) 所設定的[原生用戶端應用程式](application-proxy-configure-native-client-application.md)。 原生用戶端應用程式與 Web 應用程式不同，因為這種應用程式會安裝在裝置上，而 Web 應用程式則是透過瀏覽器存取。
