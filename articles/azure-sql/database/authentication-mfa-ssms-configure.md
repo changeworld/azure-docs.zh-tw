@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 2de48946088316e9070e13396f124148a4ff6099
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675020"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841235"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>設定適用於 SQL Server Management Studio 和 Azure AD 的多重要素驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,8 +29,8 @@ ms.locfileid: "92675020"
 
 ## <a name="configuration-steps"></a>組態步驟
 
-1. **設定 Azure Active Directory** - 如需詳細資訊，請參閱 [管理 Azure AD 目錄](/previous-versions/azure/azure-services/hh967611(v=azure.100))、 [整合內部部署身分識別與 Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md)、 [將您自己的網域名稱新增至 Azure AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、 [Microsoft Azure 現在支援與 Windows Server Active Directory 同盟](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、 [使用 Windows PowerShell 管理 Azure AD](/previous-versions/azure/jj151815(v=azure.100))。
-2. **設定 MFA** - 如需逐步指示，請參閱 [什麼是 Azure Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md)、 [使用 Azure SQL Database 和資料倉儲的條件式存取 (MFA)](conditional-access-configure.md)。  (完整條件式存取需要 Premium Azure Active Directory。 有限的 MFA 適用於標準 Azure AD。)
+1. **設定 Azure Active Directory** - 如需詳細資訊，請參閱 [管理 Azure AD 目錄](/previous-versions/azure/azure-services/hh967611(v=azure.100))、[整合內部部署身分識別與 Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md)、[將您自己的網域名稱新增至 Azure AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure 現在支援與 Windows Server Active Directory 同盟](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、[使用 Windows PowerShell 管理 Azure AD](/previous-versions/azure/jj151815(v=azure.100))。
+2. **設定 mfa** -如需逐步指示，請參閱 [什麼是 Azure AD Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md)、條件式 [存取 (MFA) 與 Azure SQL Database 和資料倉儲](conditional-access-configure.md)。  (完整條件式存取需要 Premium Azure Active Directory。 有限的 MFA 適用於標準 Azure AD。)
 3. **設定 Azure AD 驗證** -如需逐步指示，請參閱 [使用 Azure Active Directory 驗證連接到 SQL Database、SQL 受控執行個體或 Azure Synapse](authentication-aad-overview.md)。
 4. **下載 SSMS** - 在用戶端電腦上，從 [下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 下載最新的 SSMS。
 
@@ -40,7 +40,7 @@ ms.locfileid: "92675020"
 
 [!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
-1. 若要使用通用驗證進行連線，請在 [連線 **到伺服器** ] 對話方塊的 [SQL SERVER MANAGEMENT STUDIO (SSMS) 中選取 [ **具有 MFA 支援的 Active Directory-通用** ]。 (如果您看到 **Active Directory 通用驗證** ，則表示您不是使用最新的 SSMS 版本。)
+1. 若要使用通用驗證進行連線，請在 [連線 **到伺服器** ] 對話方塊的 [SQL SERVER MANAGEMENT STUDIO (SSMS) 中選取 [ **具有 MFA 支援的 Active Directory-通用**]。 (如果您看到 **Active Directory 通用驗證**，則表示您不是使用最新的 SSMS 版本。)
 
    ![S s M S 中 [連接到伺服器] 對話方塊中 [連接屬性] 索引標籤的螢幕擷取畫面。已在 [連接到資料庫] 下拉式清單中選取 [MyDatabase]。](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. 使用 Azure Active Directory 認證完成 [使用者名稱] 方塊 (採用 `user_name@domain.com` 格式)。
@@ -50,11 +50,11 @@ ms.locfileid: "92675020"
 
    ![S s M S 中 [連接到伺服器] 對話方塊中 [連接屬性] 索引標籤的螢幕擷取畫面。已在 [連接到資料庫] 下拉式清單中選取 [MyDatabase]。](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
-   但是，如果您是使用 SSMS 17. x 或更舊的來賓使用者來連線，則必須按一下 [ **選項** ]，然後在 [連線 **屬性** ] 對話方塊中，完成 [ **AD 功能變數名稱] 或 [租使用者識別碼** ] 方塊。
+   但是，如果您是使用 SSMS 17. x 或更舊的來賓使用者來連線，則必須按一下 [ **選項**]，然後在 [連線 **屬性** ] 對話方塊中，完成 [ **AD 功能變數名稱] 或 [租使用者識別碼** ] 方塊。
 
    ![[連接到伺服器] 對話方塊中 S s M S 的 [連線屬性] 索引標籤螢幕擷取畫面。已填入 [AD 功能變數名稱] 或 [租使用者識別碼] 屬性選項。](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. 選取 [ **選項** ]，並在 [ **選項** ] 對話方塊上指定資料庫。  (如果已連線的使用者是 (亦即) 的來賓使用者 joe@outlook.com ，您必須核取此方塊，並新增目前的 AD 功能變數名稱或租使用者識別碼作為選項的一部分。 請參閱 [SQL Database 的通用驗證，並 Azure Synapse Analytics (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。 然後按一下 [ **連接** ]。  
+4. 選取 [ **選項** ]，並在 [ **選項** ] 對話方塊上指定資料庫。  (如果已連線的使用者是 (亦即) 的來賓使用者 joe@outlook.com ，您必須核取此方塊，並新增目前的 AD 功能變數名稱或租使用者識別碼作為選項的一部分。 請參閱 [SQL Database 的通用驗證，並 Azure Synapse Analytics (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。 然後按一下 [ **連接**]。  
 5. 當 [登入您的帳戶]  對話方塊顯示時，請提供您 Azure Active Directory 身分識別的帳戶和密碼。 如果使用者不屬於與 Azure AD 同盟的網域，則不需要密碼。
 
    ![Azure SQL Database 和資料倉儲的 [登入帳戶] 對話方塊的螢幕擷取畫面。 系統會填入帳戶和密碼。](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

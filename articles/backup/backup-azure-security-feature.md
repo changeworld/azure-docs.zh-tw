@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份的安全性功能，讓備份更安
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c671b1b54b937f518f7179bb6940f31a28a78d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181675"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841013"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
 
@@ -17,7 +17,7 @@ ms.locfileid: "89181675"
 
 - **預防**。 每當執行重要作業 (如變更複雜密碼) 時，就會多一道驗證。 這項驗證用來確保只有具備有效 Azure 認證的使用者，才能執行這類作業。
 - **警示**。 每當執行重要作業 (如刪除備份資料) 時，就會傳送電子郵件通知給訂用帳戶管理員。 這封電子郵件可確保使用者迅速獲知這類動作。
-- **Recovery**復原。 已刪除的備份資料會額外保留 14 天 (從刪除日期算起)。 這可確保指定時間週期內的資料復原能力，所以即使發生攻擊，也不會遺失任何資料。 而且會維護更多的復原點，以防範資料損毀。
+- **Recovery** 復原。 已刪除的備份資料會額外保留 14 天 (從刪除日期算起)。 這可確保指定時間週期內的資料復原能力，所以即使發生攻擊，也不會遺失任何資料。 而且會維護更多的復原點，以防範資料損毀。
 
 > [!NOTE]
 > 如果您要使用基礎結構即服務 (IaaS) VM 備份，則不應啟用安全性功能。 這些功能尚無法用於 IaaS VM 備份，所以啟用它們不會有任何影響。 只有當您使用時，才應該啟用安全性功能： <br/>
@@ -35,7 +35,7 @@ ms.locfileid: "89181675"
 如果您要建立復原服務保存庫，您可以使用所有安全性功能。 如果您正在使用現有的保存庫，請遵循下列步驟來啟用安全性功能：
 
 1. 使用您的 Azure 認證登入 Azure 入口網站。
-2. 選取 [瀏覽]****，然後輸入 [復原服務]****。
+2. 選取 [瀏覽]，然後輸入 [復原服務]。
 
     ![Azure 入口網站瀏覽選項的螢幕擷取畫面](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
@@ -48,10 +48,10 @@ ms.locfileid: "89181675"
     ![復原服務保存庫屬性的螢幕擷取畫面](./media/backup-azure-security-feature/security-settings-update.png)
 
     [更新] 連結會開啟 [ **安全性設定** ] 窗格，其中提供功能的摘要，並讓您啟用這些功能。
-5. 從下拉式清單中， **您已設定 azure Multi-Factor Authentication？**，請選取值以確認您是否已啟用 [azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)。 若已啟用，系統會要求您從另一部裝置進行驗證 (例如，行動電話) 登入 Azure 入口網站。
+5. 從下拉式清單中， **您已設定 Azure AD Multi-Factor Authentication？**]，選取一個值來確認您是否已啟用 [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)。 若已啟用，系統會要求您從另一部裝置進行驗證 (例如，行動電話) 登入 Azure 入口網站。
 
-   當您在備份中執行重要作業時，您必須輸入安全 PIN 碼 (可在 Azure 入口網站上取得)。 啟用 Multi-Factor Authentication 可多一道安全性。 只有具備有效 Azure 認證且從第二個裝置驗證的授權使用者，才能存取 Azure 入口網站。
-6. 若要儲存安全性設定，請選取 [ **啟用** ]，然後選取 [ **儲存**]。 只有當您在上一個步驟從 [是否已設定 Azure Multi-Factor Authentication?]**** 清單中選取一個值之後，才能選取 [啟用]****。
+   當您在備份中執行重要作業時，您必須輸入安全 PIN 碼 (可在 Azure 入口網站上取得)。 啟用 Azure AD Multi-Factor Authentication 會增加一層安全性。 只有具備有效 Azure 認證且從第二個裝置驗證的授權使用者，才能存取 Azure 入口網站。
+6. 若要儲存安全性設定，請選取 [ **啟用** ]，然後選取 [ **儲存**]。 您可以選取在上一個步驟中選取 [**已設定 Azure AD Multi-Factor Authentication？** ] 清單中的值之後，才選取 [**啟用**]。
 
     ![安全性設定的螢幕擷取畫面](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
@@ -59,12 +59,12 @@ ms.locfileid: "89181675"
 
 備份會保留已刪除的備份資料額外14天，如果執行 [ **停止備份並刪除備份資料** ] 作業，則不會立即將其刪除。 若要在14天的期間內還原此資料，請執行下列步驟，視您使用的內容而定：
 
-**Azure 復原服務代理程式**使用者：
+**Azure 復原服務代理程式** 使用者：
 
 1. 如果發生備份的電腦仍可使用，請重新保護已刪除的資料來源，並使用 Azure 復原服務中的 [相同電腦復原資料](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) ，以從所有舊的復原點復原。
 2. 如果無法使用這部電腦，請使用 [ [復原到其他電腦](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) ]，以使用另一部 Azure 復原服務電腦來取得此資料。
 
-若為 **Azure 備份伺服器**使用者：
+若為 **Azure 備份伺服器** 使用者：
 
 1. 如果發生備份的伺服器仍可使用，請重新保護已刪除的資料來源，並使用 [ **復原資料** ] 功能從所有舊的復原點復原。
 2. 如果無法使用此伺服器，請使用另一個 [Azure 備份伺服器的復原資料](backup-azure-alternate-dpm-server.md) ，以使用另一個 Azure 備份伺服器實例來取得此資料。
@@ -89,7 +89,7 @@ ms.locfileid: "89181675"
 若要收到這個 PIN：
 
 1. 登入 Azure 入口網站。
-2. 流覽至 [復原**服務保存庫**]  >  **設定**  >  **屬性**。
+2. 流覽至 [復原 **服務保存庫**]  >  **設定**  >  **屬性**。
 3. 在 [ **安全性 PIN**] 底下，選取 [ **產生**]。 這會開啟一個窗格，其中包含要在 Azure 復原服務代理程式使用者介面中輸入的 PIN。
     此 PIN 碼的有效時間只有五分鐘，而且會在該期間後自動產生。
 
@@ -97,10 +97,10 @@ ms.locfileid: "89181675"
 
 為了確保永遠都有有效的復原點可用，已新增下列檢查︰
 
-- 若為每日保留，最少應該保留**七**天。
-- 若為每週保留，最少應該保留**四**週。
-- 若為每月保留，最少應該保留**三**個月。
-- 若為每年保留，最少應該保留**一**年。
+- 若為每日保留，最少應該保留 **七** 天。
+- 若為每週保留，最少應該保留 **四** 週。
+- 若為每月保留，最少應該保留 **三** 個月。
+- 若為每年保留，最少應該保留 **一** 年。
 
 ## <a name="notifications-for-critical-operations"></a>重要作業的通知
 
@@ -110,7 +110,7 @@ ms.locfileid: "89181675"
 
 ## <a name="troubleshooting-errors"></a>疑難排解錯誤
 
-| 作業 | 錯誤詳細資料 | 解決方案 |
+| 作業 | 錯誤詳細資料 | 解決方法 |
 | --- | --- | --- |
 | 原則變更 |無法修改備份原則。 錯誤：由於發生內部服務錯誤 [0x29834]，導致目前的操作失敗。 請稍後再重試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |**原因：**<br/>啟用安全性設定時，如果您嘗試將保留範圍縮減至低於上述指定的最小值，而且您是在不支援的版本 (支援的版本會在本文的第一次) 中指定，則會出現此錯誤。 <br/>**建議的動作：**<br/> 在此情況下，您應該將保留期限設定為高於指定的最小保留期限 (若是每日則 7 天、若是每週則 4 週、若是每月則 3 個月，若是每年則 1 年)，以繼續進行與原則有關的更新。 （選擇性）建議的方法是更新備份代理程式、Azure 備份伺服器及/或 DPM UR，以利用所有安全性更新。 |
 | 變更複雜密碼 |輸入的安全性 PIN 碼不正確。 (識別碼：100130) 請提供正確的安全性 PIN 碼以完成此作業。 |**原因：**<br/> 當您在執行重要作業 (例如變更複雜密碼) 時輸入無效或已到期的安全性 PIN 碼時，就會出現此錯誤。 <br/>**建議的動作：**<br/> 若要完成作業，您必須輸入有效的安全性 PIN 碼。 若要取得 PIN，請登入 Azure 入口網站，然後流覽至 [復原服務保存庫] > [設定] > 屬性 > 產生安全性 PIN。 請使用這個 PIN 碼來變更複雜密碼。 |

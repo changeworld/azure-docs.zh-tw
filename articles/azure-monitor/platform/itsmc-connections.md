@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682413"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842289"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](./itsmc-overview.md)。
@@ -41,6 +41,7 @@ ms.locfileid: "94682413"
 - 已建立及設定的混合式連線。 詳細資訊：[設定混合式連線](#configure-the-hybrid-connection)。
 - Service Manager 的支援版本：2012 R2 或 2016。
 - 使用者角色：[進階操作員](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
+- 現在，從 Azure 監視器傳送的警示可在 System Center Service Manager 事件中建立。
 
 > [!NOTE]
 > 
@@ -186,7 +187,7 @@ ms.locfileid: "94682413"
 請確保已符合下列必要條件︰
 - 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-overview.md#add-it-service-management-connector)。
 - ServiceNow 支援的版本：奧蘭多、紐約、馬德里、倫敦、Kingston、雅加達、伊斯坦布爾、赫爾辛基、Geneva。
-- 現在，從 Azure 監視器傳送的警示可在 ServiceNow 中建立下列其中一個元素：事件、Incedents 或警示。
+- 現在，從 Azure 監視器傳送的警示可在 ServiceNow 中建立下列其中一個元素：事件、事件或警示。
 > [!NOTE]
 > ITSMC 僅支援 Service Now 提供的官方 SaaS 供應項目。 目前不支援 Service Now 的私人部署。 
 

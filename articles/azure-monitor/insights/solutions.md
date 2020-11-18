@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150534"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841915"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
@@ -20,7 +20,7 @@ Azure 監視器中的監視解決方案可讓您分析特定 Azure 應用程式�
 
 ## <a name="use-monitoring-solutions"></a>使用監視解決方案
 
-Azure 監視器中的 [解決方案 **總覽** ] 頁面會顯示 Log Analytics 工作區中安裝的每個解決方案的磚。 若要開啟此頁面，請移至[Azure 入口網站](https://ms.portal.azure.com)中的**Azure 監視器**。 在 [ **見解** ] 功能表中，選取 [ **更多** ] 以開啟 [ **見解中樞**]，然後按一下 [ **Log Analytics 工作區**]。
+Azure 監視器中的 [解決方案 **總覽** ] 頁面會顯示 Log Analytics 工作區中安裝的每個解決方案的磚。 若要開啟此頁面，請移至 [Azure 入口網站](https://ms.portal.azure.com)中的 **Azure 監視器**。 在 [ **見解** ] 功能表中，選取 [ **更多** ] 以開啟 [ **見解中樞**]，然後按一下 [ **Log Analytics 工作區**]。
 
 [![見解中樞](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
@@ -111,11 +111,11 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 1. 安裝 Azure CLI
 
-   您必須先 [安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能執行 CLI 參考命令。  如果您想要的話，也可以使用 Azure Cloud Shell 來完成本文中的步驟。  Azure Cloud Shell 是透過瀏覽器使用的互動式 Shell 環境。  使用下列其中一種方法來開始 Cloud Shell：
+   您必須先 [安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能執行 CLI 參考命令。  如果您想要的話，也可以使用 Azure Cloud Shell 來完成本文中的步驟。  Azure Cloud Shell 是互動式殼層環境，可在瀏覽器中使用。  使用下列其中一種方法啟動 Cloud Shell：
 
-   - 開啟 Cloud Shell，方法是前往 [https://shell.azure.com](https://shell.azure.com)
+   - 前往 [https://shell.azure.com](https://shell.azure.com) 來開啟 Cloud Shell
 
-   - 在 [ [Azure 入口網站](https://portal.azure.com)中右上角的功能表列上，選取 [ **Cloud Shell** ] 按鈕
+   - 選取 [Azure 入口網站](https://portal.azure.com)右上角功能表列上的 [Cloud Shell] 按鈕
 
 1. 登入。
 
@@ -173,14 +173,14 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 1. 安裝 Azure PowerShell
 
-   您必須先 [安裝 Azure PowerShell](/powershell/azure/install-az-ps) ，才能執行 Azure PowerShell 參考命令。 如果您想要的話，也可以使用 Azure Cloud Shell 來完成本文中的步驟。 Azure Cloud Shell 是透過瀏覽器使用的互動式 Shell 環境。 使用下列其中一種方法來開始 Cloud Shell：
+   您必須先 [安裝 Azure PowerShell](/powershell/azure/install-az-ps) ，才能執行 Azure PowerShell 參考命令。 如果您想要的話，也可以使用 Azure Cloud Shell 來完成本文中的步驟。 Azure Cloud Shell 是互動式殼層環境，可在瀏覽器中使用。 使用下列其中一種方法啟動 Cloud Shell：
 
-   - 開啟 Cloud Shell，方法是前往 [https://shell.azure.com](https://shell.azure.com)
+   - 前往 [https://shell.azure.com](https://shell.azure.com) 來開啟 Cloud Shell
 
-   - 在 [ [Azure 入口網站](https://portal.azure.com)中右上角的功能表列上，選取 [ **Cloud Shell** ] 按鈕
+   - 選取 [Azure 入口網站](https://portal.azure.com)右上角功能表列上的 [Cloud Shell] 按鈕
 
    > [!IMPORTANT]
-   > **MonitoringSolutions** PowerShell 模組目前為預覽狀態，您必須使用指令程式個別進行安裝 `Install-Module` 。 在此 PowerShell 模組正式推出之後，它將會成為未來 Az PowerShell 模組版本的一部分，而且預設會從 Azure Cloud Shell 內提供。
+   > **MonitoringSolutions** PowerShell 模組目前為預覽狀態，您必須使用指令程式個別進行安裝 `Install-Module` 。 此 PowerShell 模組正式推出後，便會成為未來 Az PowerShell 模組版本的一部分，且預設可從 Azure Cloud Shell 內使用。
 
    ```azurepowershell-interactive
    Install-Module -Name Az.MonitoringSolutions

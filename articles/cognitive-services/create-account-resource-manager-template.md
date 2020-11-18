@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.custom: subject-armqs
-ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363386"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842102"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>快速入門：使用 ARM 範本建立認知服務資源
 
@@ -61,7 +61,7 @@ Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端式�
     |---------|---------|
     | **訂用帳戶** | 選取 Azure 訂用帳戶。 |
     | **資源群組** | 選取 [新建]，輸入資源群組的唯一名稱，然後按一下 [確認]。 |
-    | **區域** | 選取區域。  例如， **美國東部** |
+    | **區域** | 選取區域。  例如，**美國東部** |
     | **認知服務名稱** | 以您資源的唯一名稱取代。 當您在下一節中驗證部署時，會需要用到此名稱。 |
     | **位置** | 取代為上方使用的區域。 |
     | **Sku** | 您資源的[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/)。 |

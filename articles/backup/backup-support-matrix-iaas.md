@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 650c239423db23bcd4329ab38080b82809fa4f09
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925640"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842170"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -27,7 +27,7 @@ ms.locfileid: "92925640"
 
 **案例** | **Backup** | **代理程式** |**Restore**
 --- | --- | --- | ---
-直接備份 Azure VM  | 備份整部 VM。  | Azure VM 上不需要其他代理程式。 Azure 備份會將擴充功能安裝並使用於 VM 上執行的 [AZURE vm 代理程式](../virtual-machines/extensions/agent-windows.md) 。 | 以下列方式進行還原：<br/><br/> - **建立基本 VM** 。 此方式適用於 VM 沒有特殊設定 (例如多個 IP 位址) 的情況。<br/><br/> - **還原 VM 磁碟** 。 還原磁碟。 然後將其連結至現有 VM，或使用 PowerShell 從磁碟建立新的 VM。<br/><br/> - **取代 VM 磁碟** 。 如果有 VM 存在，且該 VM 使用受控磁碟 (未加密)，您可以還原某個磁碟，並用它來取代 VM 上現有的磁碟。<br/><br/> - **還原特定檔案/資料夾** 。 您可還原單一 VM (而非整個 VM) 中的檔案/資料夾。
+直接備份 Azure VM  | 備份整部 VM。  | Azure VM 上不需要其他代理程式。 Azure 備份會將擴充功能安裝並使用於 VM 上執行的 [AZURE vm 代理程式](../virtual-machines/extensions/agent-windows.md) 。 | 以下列方式進行還原：<br/><br/> - **建立基本 VM**。 此方式適用於 VM 沒有特殊設定 (例如多個 IP 位址) 的情況。<br/><br/> - **還原 VM 磁碟**。 還原磁碟。 然後將其連結至現有 VM，或使用 PowerShell 從磁碟建立新的 VM。<br/><br/> - **取代 VM 磁碟**。 如果有 VM 存在，且該 VM 使用受控磁碟 (未加密)，您可以還原某個磁碟，並用它來取代 VM 上現有的磁碟。<br/><br/> - **還原特定檔案/資料夾**。 您可還原單一 VM (而非整個 VM) 中的檔案/資料夾。
 直接備份 Azure VM (僅限 Windows)  | 備份特定檔案/資料夾/磁碟區。 | 安裝 [Azure 復原服務代理程式](backup-azure-file-folder-backup-faq.md)。<br/><br/> 您可以將 MARS 代理程式與 Azure VM 代理程式的備份擴充功能一起執行，以在檔案/資料夾層級備份 VM。 | 還原特定資料夾/檔案。
 將 Azure VM 備份至備份伺服器  | 將檔案/資料夾/磁碟區、系統狀態/裸機檔案、應用程式資料備份至 System Center DPM 或 Microsoft Azure 備份伺服器 (MABS)。<br/><br/> 然後，DPM/MABS 會再備份至備份保存庫。 | 在 VM 上安裝 DPM/MABS 保護代理程式。 在 DPM/MABS 上安装 MARS 代理程式。| 還原檔案/資料夾/磁碟區、系統狀態/裸機檔案、應用程式資料。
 
@@ -109,7 +109,7 @@ DPM/MABS 磁碟上的復原點 | 64 個 (檔案伺服器) 及 448 個 (應用程
 
 **Restore** | **支援**
 --- | ---
-跨作業系統還原檔案 | 您可以在任何與備份的 VM 具有相同 (或相容) 作業系統的機器上還原檔案。 請參閱[相容的作業系統表格](backup-azure-restore-files-from-vm.md#system-requirements)。
+跨作業系統還原檔案 | 您可以在任何與備份的 VM 具有相同 (或相容) 作業系統的機器上還原檔案。 請參閱[相容的作業系統表格](backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script)。
 從加密的 VM 還原檔案 | 不支援。
 從有網路限制的儲存體帳戶還原檔案 | 不支援。
 使用 Windows 儲存空間還原 VM 上的檔案 | 不支援在相同的 VM 上還原。<br/><br/> 請在相容的 VM 上還原檔案。
@@ -160,7 +160,7 @@ Azure VM 資料磁碟 | 支援最多32個磁片的 Azure Vm 備份。<br><br> �
 儲存體類型 | 標準 HDD、標準 SSD、進階 SSD。
 受控磁碟 | 支援。
 加密磁碟 | 支援。<br/><br/> 可備份已啟用 Azure 磁碟加密的 Azure VM (無論是否具有 Azure AD 應用程式)。<br/><br/> 已加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整部 VM。<br/><br/> 您可以對已受到 Azure 備份保護的 VM 啟用加密。
-已啟用寫入加速器的磁碟 | 不支援。<br/><br/> Azure 備份會在備份期間自動排除寫入加速器 (WA) 啟用的磁片。 因為它們不會備份，所以您無法從 VM 的復原點還原這些磁片。 <br><br> **重要注意事項** ：具有 WA 磁碟的虛擬機器需要網際網路連線才能成功備份 (即使這些磁碟已從備份中排除也一樣。)
+已啟用寫入加速器的磁碟 | 不支援。<br/><br/> Azure 備份會在備份期間自動排除寫入加速器 (WA) 啟用的磁片。 因為它們不會備份，所以您無法從 VM 的復原點還原這些磁片。 <br><br> **重要注意事項**：具有 WA 磁碟的虛擬機器需要網際網路連線才能成功備份 (即使這些磁碟已從備份中排除也一樣。)
 備份和還原已刪除重複資料的 VM/磁碟 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這篇[文章](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure 備份不會跨復原服務保存庫中的 Vm 刪除 <br/> <br/>  -如果在還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫無法理解格式。 不過，您可以成功執行完整的 VM 還原。
 將磁碟新增至受保護的 VM | 支援。
 在受保護的 VM 上調整磁碟大小 | 支援。
@@ -203,7 +203,7 @@ Azure 備份支援傳輸中和待用資料的加密：
 資料安全性：
 
 - 備份 Azure VM 時，您必須在虛擬機器「內部」設定加密。
-- Azure 備份支援 Azure 磁碟加密，其會在 Windows 虛擬機器上使用 BitLocker，且在 Linux 虛擬機器上使用 **dm-crypt** 。
+- Azure 備份支援 Azure 磁碟加密，其會在 Windows 虛擬機器上使用 BitLocker，且在 Linux 虛擬機器上使用 **dm-crypt**。
 - 在後端，Azure 備份會使用 [Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)，以保護待用資料。
 
 **機器** | **傳輸中** | **待用**

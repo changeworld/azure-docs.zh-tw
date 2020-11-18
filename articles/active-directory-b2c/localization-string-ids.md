@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410499"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840658"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -27,33 +27,44 @@ ms.locfileid: "94410499"
 
 下列識別碼會用於識別碼為的內容定義 `api.signuporsignin` ，以及自我判斷的 [技術設定檔](self-asserted-technical-profile.md)。
 
-| 識別碼 | 預設值 |
-| -- | ------------- |
-| **local_intro_email** | 使用您的現有帳戶登入 |
-| **logonIdentifier_email** | 電子郵件地址 |
-| **requiredField_email** | 請輸入您的電子郵件 |
-| **invalid_email** | 請輸入有效的電子郵件地址 |
-| **email_pattern** | ^ [a-zA-Z0-9.！# $% & ' ' *+/=？ ^ _ \` { \| } ~-] + @ [Z0-9-] + (？： \\ . [a-zA-Z0-9-] +)*$ |
-| **local_intro_username** | 使用您的使用者名稱登入 |
-| **logonIdentifier_username** | 使用者名稱 |
-| **requiredField_username** | 請輸入您的使用者名稱 |
-| **password** | 密碼 |
-| **requiredField_password** | 請輸入您的密碼 |
-| **invalid_password** | 您輸入的密碼未採用預期的格式。 |
-| **forgotpassword_link** | 忘記密碼了嗎? |
-| **createaccount_intro** | 還沒有帳戶嗎？ |
-| **createaccount_link** | 立即註冊 |
-| **divider_title** | 或 |
-| **cancel_message** | 使用者忘記密碼 |
-| **button_signin** | 登入 |
-| **social_intro** | 使用您的社交帳戶登入 |
-  **remember_me** |讓我保持登入。 |
-| **unknown_error** | 我們無法將您登入。 請稍後再試一次。 |
+| ID | 預設值 | 頁面配置版本 |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | 忘記密碼了嗎? | `All` |
+| **createaccount_intro** | 還沒有帳戶嗎？ | `All` |
+| **button_signin** | 登入 | `All` |
+| **social_intro** | 使用您的社交帳戶登入 | `All` |
+| **remember_me** |讓我保持登入。 | `All` |
+| **unknown_error** | 我們無法將您登入。 請稍後再試一次。 | `All` |
+| **divider_title** | 或者 | `All` |
+| **local_intro_email** | 使用您的現有帳戶登入 | `< 2.0.0` |
+| **logonIdentifier_email** | 電子郵件地址 | `< 2.0.0` |
+| **requiredField_email** | 請輸入您的電子郵件 | `< 2.0.0` |
+| **invalid_email** | 請輸入有效的電子郵件地址 | `< 2.0.0` |
+| **email_pattern** | ^ [a-zA-Z0-9.！# $% & ' ' \* +/=？ ^ \_ \` { \| } ~-] + @ [Z0-9-] + (？： \\ . [a-zA-Z0-9-] +) \* $ |`< 2.0.0` |
+| **local_intro_username** | 使用您的使用者名稱登入 | `< 2.0.0` |
+| **logonIdentifier_username** | 使用者名稱 | `< 2.0.0` |
+| **requiredField_username** | 請輸入您的使用者名稱 | `< 2.0.0` |
+| **password** | 密碼 | `< 2.0.0` |
+| **requiredField_password** | 請輸入您的密碼 | `< 2.0.0` |
+| **createaccount_link** | 立即註冊 | `< 2.0.0` |
+| **cancel_message** | 使用者忘記密碼 | `< 2.0.0` |
+| **invalid_password** | 您輸入的密碼未採用預期的格式。 | `< 2.0.0` |
+| **createaccount_one_link** | 立即註冊 | `>= 2.0.0` |
+| **createaccount_two_links** | 使用或註冊 {0}{1} | `>= 2.0.0` |
+| **createaccount_three_links** | 使用 {0} 、或註冊 {1}{2} | `>= 2.0.0` |
+| **local_intro_generic** | 使用您的 {0} | `>= 2.1.0` |
+| **requiredField_generic** | 請輸入您的 {0} | `>= 2.1.0` |
+| **invalid_generic** | 請輸入有效的 {0} | `>= 2.1.1` |
+| **標題** | 登入 | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * 這類預留位置 {0} 將會自動填入的 `DisplayName` 值 `ClaimType` 。 
+> * 若要瞭解如何當地語系化 `ClaimType` ，請參閱 [註冊或登入範例](#signupsigninexample)。
 
 下列範例示範在註冊或登入頁面中使用某些使用者介面元素的方式：
 
-![註冊或登入頁面 UX 元素](./media/localization-string-ids/localization-susi.png)
-
+![註冊或登入頁面 UX 元素](./media/localization-string-ids/localization-susi-2.png)
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>註冊或登入身分識別提供者
 
@@ -84,7 +95,7 @@ ms.locfileid: "94410499"
 
 ### <a name="sign-up-or-sign-in-error-messages"></a>註冊或登入錯誤訊息
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | 您的密碼不正確。 |
 | **UserMessageIfPasswordExpired**| 您的密碼過期。|
@@ -95,32 +106,28 @@ ms.locfileid: "94410499"
 | **UserMessageIfUserAccountLocked** | 您的帳戶已暫時鎖定以防未經授權的使用。 請稍後再試。 |
 | **AADRequestsThrottled** | 目前的要求過多。 請稍後再重試。 |
 
+<a name="signupsigninexample"></a>
 ### <a name="sign-up-or-sign-in-example"></a>註冊或登入範例
 
 ```xml
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_email">Email Address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_email">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_username">Username</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="password">Password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_link">Sign up now</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_username">Please enter your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_intro">Don't have an account?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has forgotten their password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_password">The password you entered is not in the expected format.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_username">Sign in with your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_email">Sign in with your existing account</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_email">Please enter a valid email address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
     <!-- Uncomment the remember_me only if the keep me signed in is activated. 
     <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
-    <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
@@ -138,20 +145,20 @@ ms.locfileid: "94410499"
 
 以下是內容定義的識別碼，其識別碼為 `api.localaccountsignup` 或開頭為的任何內容定義 `api.selfasserted` ，例如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset` ，以及 [自我判斷技術設定檔](self-asserted-technical-profile.md)。
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 | **ver_sent** | 已將驗證碼傳送至： |
 | **ver_but_default** | 預設 |
 | **cancel_message** | 使用者已取消輸入自動判斷的資訊 |
 | **preloader_alt** | 請稍候 |
 | **ver_but_send** | 傳送驗證碼 |
-| **alert_yes** | Yes |
+| **alert_yes** | 是 |
 | **error_fieldIncorrect** | 有一或多個欄位填寫不正確。 請檢查您的輸入，然後再試一次。 |
 | **year** | Year |
 | **verifying_blurb** | 正在處理您的資訊，請稍候。 |
 | **button_cancel** | 取消 |
 | **ver_fail_no_retry** | 您已嘗試太多次，但都不正確。 請稍後再試一次。 |
-| **month** | 月 |
+| **month** | Month |
 | **ver_success_msg** | 已驗證電子郵件地址。 您現在可以繼續。 |
 | **months** | 一月、二月、三月、四月、五月、六月、七月、八月、九月、十月、十一月、十二月 |
 | **ver_fail_server** | 我們無法驗證您的電子郵件地址。 請輸入有效的電子郵件地址，然後再試一次。 |
@@ -163,7 +170,7 @@ ms.locfileid: "94410499"
 | **ver_incorrect_format** | 格式不正確。 |
 | **ver_but_edit** | 變更電子郵件 |
 | **ver_but_verify** | 檢查驗證碼 |
-| **alert_no** | No |
+| **alert_no** | 否 |
 | **ver_info_msg** | 驗證碼已經傳送到您的收件匣。 請將其複製到下方輸入方塊。 |
 | **day** | 天 |
 | **ver_fail_throttled** | 驗證此電子郵件地址時有過多要求。 請稍候，然後再試一次。 |
@@ -177,7 +184,7 @@ ms.locfileid: "94410499"
 
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>註冊和自我判斷頁面的錯誤訊息
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 已存在具有所指定識別碼的使用者。 請選擇不同的識別碼。 |
 | **UserMessageIfClaimNotVerified** | 宣告未驗證: {0} |
@@ -251,7 +258,7 @@ ms.locfileid: "94410499"
 
 以下是識別碼為之內容定義的識別碼 `api.phonefactor` ，以及 [電話係數技術設定檔](phone-factor-technical-profile.md)。
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 | **button_verify** | 撥電話給我 |
 | **country_code_label** | 國碼 (地區碼) |
@@ -347,7 +354,7 @@ ms.locfileid: "94410499"
 
 以下是具有[頁面配置版本](page-layout.md)2.1.0 或更高版本之[驗證顯示控制項](display-control-verification.md)的識別碼。
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 |intro_msg| 必須進行驗證。 請按一下 [傳送] 按鈕。|
 |success_send_code_msg | 驗證碼已經傳送到您的收件匣。 請將其複製到下方輸入方塊。|
@@ -382,7 +389,7 @@ ms.locfileid: "94410499"
 
 以下是具有[頁面配置版本](page-layout.md)2.0.0 之[驗證顯示控制項](display-control-verification.md)的識別碼。
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 |verification_control_but_change_claims |變更 |
 |verification_control_fail_send_code |無法傳送程式碼，請稍後再試一次。 |
@@ -412,7 +419,7 @@ ms.locfileid: "94410499"
 
 以下是 [Restful 服務技術設定檔](restful-technical-profile.md) 錯誤訊息的識別碼：
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 |DefaultUserMessageIfRequestFailed | 無法建立與 restful 服務端點的連接。 Restful 服務 URL： {0} |
 |UserMessageIfCircuitOpen | {0} Restful 服務 URL： {1} |
@@ -433,11 +440,11 @@ ms.locfileid: "94410499"
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Azure MFA 錯誤訊息
+## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA 錯誤訊息
 
-以下是 [Azure MFA 技術設定檔](multi-factor-auth-technical-profile.md) 錯誤訊息的識別碼：
+以下是 [AZURE AD MFA 技術設定檔](multi-factor-auth-technical-profile.md) 錯誤訊息的識別碼：
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 |UserMessageIfCouldntSendSms | 無法將 SMS 傳送至電話，請嘗試另一個電話號碼。 |
 |UserMessageIfInvalidFormat | 您的電話號碼格式不正確，請更正它，然後再試一次。|
@@ -446,7 +453,7 @@ ms.locfileid: "94410499"
 |UserMessageIfThrottled | 已對您的要求進行節流處理，請稍後再試一次。|
 |UserMessageIfWrongCodeEntered|輸入了錯誤的代碼，請再試一次。|
 
-### <a name="azure-mfa-example"></a>Azure MFA 範例
+### <a name="azure-ad-mfa-example"></a>Azure AD MFA 範例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -465,7 +472,7 @@ ms.locfileid: "94410499"
 
 以下是 [AZURE AD SSPR 技術設定檔](aad-sspr-technical-profile.md) 錯誤訊息的識別碼：
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 |UserMessageIfChallengeExpired | 程式碼已過期。|
 |UserMessageIfInternalError | 電子郵件服務發生內部錯誤，請稍後再試一次。|
@@ -492,7 +499,7 @@ ms.locfileid: "94410499"
 
 以下是 [一次性密碼技術設定檔](one-time-password-technical-profile.md) 錯誤訊息的識別碼
 
-| 識別碼 | 預設值 |
+| ID | 預設值 |
 | -- | ------------- |
 |UserMessageIfMaxRetryAttempted |一次提供的密碼驗證超過嘗試次數上限 |
 |UserMessageIfSessionDoesNotExist |單次密碼驗證會話已過期 |
@@ -518,7 +525,7 @@ ms.locfileid: "94410499"
 
 以下是宣告轉換錯誤訊息的識別碼：
 
-| 識別碼 | 宣告轉換 | 預設值 |
+| ID | 宣告轉換 | 預設值 |
 | -- | ------------- |------------- |
 |UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 宣告類型 "inputClaim" 的布林值宣告值比較失敗。| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 宣告值比較失敗：提供的左運算元大於右運算元。|

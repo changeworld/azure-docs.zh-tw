@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 65a60425f09e9cd7a3e06ca1624621ed8b9fdcbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124963"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842051"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
 
@@ -22,7 +22,7 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 如需 BlockBlobStorage 帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -88,9 +88,9 @@ az login
 ## <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要在 Azure 入口網站中建立 BlockBlobStorage 帳戶，請遵循下列步驟：
 
-1. 在 [Azure 入口網站中， **選取 [儲存體** ] 類別 > [儲存體 **帳戶** ] > 的 **所有服務** 。
+1. 在 [Azure 入口網站中，**選取 [儲存體**] 類別 > [儲存體 **帳戶**] > 的 **所有服務**。
 
-2. 在 [ **儲存體帳戶** ] 下，選取 [ **新增** ]。
+2. 在 [ **儲存體帳戶**] 下，選取 [ **新增**]。
 
 3. 在 [ **訂** 用帳戶] 欄位中，選取要在其中建立儲存體帳戶的訂用帳戶。
 
@@ -109,14 +109,14 @@ az login
    |欄位     |值  |
    |---------|---------|
    |**效能**    |  選取 [Premium]。   |
-   |**帳戶類型**    | 選取 [ **BlockBlobStorage** ]。      |
+   |**帳戶類型**    | 選取 [ **BlockBlobStorage**]。      |
    |**複寫**    |  保留 **本機冗余儲存體 (LRS)** 的預設設定。      |
 
    ![顯示用來建立區塊 blob 儲存體帳戶的入口網站 UI](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
 8. 選擇 [ **Advanced （Advanced** ）] 索引標籤。
 
-9. 如果您想要將資料分析的儲存體帳戶優化，請將 **階層命名空間** 設定為 **已啟用** 。 否則，請將此選項設定為預設值。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
+9. 如果您想要將資料分析的儲存體帳戶優化，請將 **階層命名空間** 設定為 **已啟用**。 否則，請將此選項設定為預設值。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
 
 8. 選取 [ **審核 + 建立** ] 以檢查儲存體帳戶設定。
 

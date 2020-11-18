@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695328"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841983"
 ---
 # <a name="securing-paas-deployments"></a>保護 PaaS 部署
 
@@ -82,14 +82,14 @@ PaaS 與傳統內部部署的另一個重大差異在於一個新觀點，就是
 **最佳做法**：使用可讓您以遠端直接管理這些 VM 的管理介面，保護混合式 PaaS 和 IaaS 服務上的 VM 管理介面。   
 **詳細資料**：可以使用遠端管理通訊協定，例如 [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607) 及 [PowerShell 遠端處理](/powershell/module/microsoft.powershell.core/enable-psremoting)。 一般而言，建議您不要啟用從網際網路直接遠端存取 VM 的功能。
 
-可能的話，請使用替代的方法，例如在 Azure 虛擬網路中使用虛擬私人網路。 如果沒有替代方法可用，則請務必使用複雜密碼和雙因素驗證 (例如 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md))。
+可能的話，請使用替代的方法，例如在 Azure 虛擬網路中使用虛擬私人網路。 如果沒有替代方法可用，請確定您使用複雜的複雜密碼和雙因素驗證 (例如 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) 。
 
 **最佳做法**：使用增強式驗證與授權平台。   
 **詳細資料**：使用 Azure AD 中的同盟身分識別，而不要使用自訂使用者存放區。 使用同盟身分識別時，您可以利用平台型方法並將已授權之身分識別的管理委派給您的合作夥伴。 在員工已被解雇而該資訊必須透過多個身分識別與授權系統來反映時，同盟身分識別方法尤其重要。
 
 使用平台提供的驗證與授權機制，而不要使用自訂程式碼。 原因在於開發自訂驗證程式碼可能容易出錯。 您的大多數開發人員都不是安全性專家，因此可能不是很清楚驗證與授權方面的微妙細節和最新發展。 商業程式碼 (例如，來自 Microsoft) 通常都經過廣泛的安全性檢閱。
 
-使用雙因素驗證。 雙因素驗證是現行的驗證與授權標準，因為它可避免使用者名稱與密碼型驗證中固有的安全性弱點。 您應該將 Azure 管理 (入口網站/遠端 PowerShell) 介面和面向客戶之服務的存取方式都設計並設定成使用 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
+使用雙因素驗證。 雙因素驗證是現行的驗證與授權標準，因為它可避免使用者名稱與密碼型驗證中固有的安全性弱點。 您應設計及設定 Azure 管理 (入口網站/遠端 PowerShell) 介面和客戶面向服務的存取權，以使用 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 使用標準驗證通訊協定，例如 OAuth2 和 Kerberos。 這些通訊協定已經過廣泛的對等檢閱，而可能作為您驗證與授權平台程式庫的一部分來實作。
 

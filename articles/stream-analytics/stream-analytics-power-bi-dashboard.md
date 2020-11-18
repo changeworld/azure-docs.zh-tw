@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745355"
+ms.locfileid: "94842476"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
 
@@ -221,7 +221,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 ```
 
 ### <a name="renew-authorization"></a>更新授權
-如果自從建立作業或上次驗證之後已變更密碼，則您需要重新驗證 Power BI 帳戶。 如果您在 Azure Active Directory (Azure AD) 租用戶上設定 Azure Multi-Factor Authentication，則也需要每 2 週更新一次 Power BI 授權。 如果未更新，作業記錄中會出現一些徵兆，例如缺乏作業輸出或 `Authenticate user error`。
+如果自從建立作業或上次驗證之後已變更密碼，則您需要重新驗證 Power BI 帳戶。 如果 Azure AD Multi-Factor Authentication 設定于 Azure Active Directory (Azure AD) 租使用者，您也需要每兩周更新 Power BI 授權。 如果未更新，作業記錄中會出現一些徵兆，例如缺乏作業輸出或 `Authenticate user error`。
 
 同樣地，如果作業在權杖過期後啟動，則會發生錯誤，作業會失敗。 若要解決這個問題，請停止執行作業並移至 Power BI 輸出。 若要避免資料遺失，請選取 [更新授權] 連結，然後從 [上次停止時間] 重新啟動作業。
 

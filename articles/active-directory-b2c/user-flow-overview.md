@@ -12,12 +12,12 @@ ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87481592"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840184"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者流程
 
@@ -25,7 +25,7 @@ ms.locfileid: "87481592"
 
 - 用於登入的帳戶類型，例如社交帳戶，像是 Facebook 或本機帳戶
 - 要向取用者收集的屬性，例如名字、郵遞區號和鞋子尺寸
-- Azure Multi-Factor Authentication
+- Azure AD Multi-Factor Authentication
 - 使用者介面的自訂
 - 應用程式所接收的資訊 (以權杖中的宣告表示)
 
@@ -73,11 +73,11 @@ Azure AD B2C 包含數種類型的使用者流程：
 >- **建議** 的使用者流程是新的使用者流程預覽版本。 它們經過徹底的測試，並結合舊版 **V2** 和 **v1.1** 版本的所有功能。 未來，將會維護和更新新的建議使用者流程。 一旦您移至這些新的建議使用者流程之後，您就可以在發行時存取新功能。
 >- **標準** 使用者流程（之前稱為 **V1**）已正式推出，可供生產環境使用的使用者流程。 如果您的使用者流程是任務關鍵性的，且相依于高度穩定的版本，您就可以繼續使用標準使用者流程，並意識到這些版本不會進行維護和更新。
 >
->所有舊版預覽使用者流程 (v1.1 和 V2) 都是在 **2021 年8月1日**淘汰的路徑上。 可能的話，強烈建議您儘快 [切換至新的 **建議** 使用者流程](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) ，以便隨時都能利用最新的功能和更新。
+>所有舊版預覽使用者流程 (v1.1 和 V2) 都是在 **2021 年8月1日** 淘汰的路徑上。 可能的話，強烈建議您儘快 [切換至新的 **建議** 使用者流程](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) ，以便隨時都能利用最新的功能和更新。
 
 ## <a name="linking-user-flows"></a>連結使用者流程
 
-使用本機帳戶的**註冊或登入**使用者流程在體驗的第一個頁面上包含[忘記密碼?]**** 連結。 按一下此連結並不會自動觸發密碼重設使用者流程。
+使用本機帳戶的 **註冊或登入** 使用者流程在體驗的第一個頁面上包含[忘記密碼?] 連結。 按一下此連結並不會自動觸發密碼重設使用者流程。
 
 相反地，系統會將錯誤碼 `AADB2C90118` 傳回您的應用程式。 您的應用程式必須藉由執行可重設密碼的特定使用者流程來處理此錯誤碼。 若要查看範例，請看看[簡單的 ASP.NET 範例](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)，該範例示範如何連結使用者流程。
 
@@ -89,6 +89,6 @@ Azure AD B2C 包含數種類型的使用者流程：
 
 只有 **otherMails** 和 **>signinnames.emailaddress** 屬性會透過 Microsoft Graph API 公開。 無法使用強式驗證詳細資料屬性中的電子郵件地址。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要建立建議的使用者流程，請遵循 [教學課程：建立使用者流程](tutorial-create-user-flows.md)中的指示。

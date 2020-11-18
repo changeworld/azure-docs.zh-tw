@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 71a4fba177f5bbbaf9f8d991222b071d0da66d4d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b66d0f20959d196fddeb8356d8171573f1243b58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660384"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842272"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -627,7 +627,7 @@ union *
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>使用 Log Analytics 的資料傳輸費用
 
-將資料傳送至 Log Analytics 可能會產生資料頻寬費用。 如 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)所述，在位於兩個區域的 Azure 服務之間資料傳輸時，會依正常費率向輸出資料傳輸收費。 輸入資料傳輸則是免費的。 不過，相較於 Log Analytics 的資料擷取成本，這項費用很低 (幾 %)。 因此，您必須專注于 [內嵌資料磁片](#understanding-ingested-data-volume)區，才能控制 Log Analytics 的成本。 
+將資料傳送至 Log Analytics 可能會產生資料頻寬費用，但它僅限於已安裝 Log Analytics 代理程式的虛擬機器，並在使用診斷設定或與內建于 Azure Sentinel 的其他連接器時不適用。 如 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)所述，在位於兩個區域的 Azure 服務之間資料傳輸時，會依正常費率向輸出資料傳輸收費。 輸入資料傳輸則是免費的。 不過，相較於 Log Analytics 的資料擷取成本，這項費用很低 (幾 %)。 因此，您必須專注于 [內嵌資料磁片](#understanding-ingested-data-volume)區，才能控制 Log Analytics 的成本。 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>針對 Log Analytics 為什麼不再收集資料的問題進行疑難排解

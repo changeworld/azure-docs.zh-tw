@@ -1,6 +1,6 @@
 ---
 title: Azure AD Domain Services 中的安全遠端 VM 存取 |Microsoft Docs
-description: 瞭解如何使用網路原則伺服器 (NPS) 和 Azure Multi-Factor Authentication，透過 Azure Active Directory Domain Services 受控網域中的遠端桌面服務部署來保護對 Vm 的遠端存取。
+description: 瞭解如何使用網路原則伺服器 (NPS) 和 Azure AD Multi-Factor Authentication 遠端桌面服務受控網域中的 Azure Active Directory Domain Services 部署，來保護對 Vm 的遠端存取。
 services: active-directory-ds
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 2964ca74a05ccbc61646f8a289fc950b46cdad47
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967778"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840231"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中安全地遠端存取虛擬機器
 
-若要保護虛擬機器的遠端存取 () 在 Azure Active Directory Domain Services (Azure AD DS) 受控網域中執行的 Vm，您可以使用遠端桌面服務 (RDS) 和網路原則伺服器 (NPS) 。 Azure AD DS 會在使用者透過 RDS 環境要求存取權時進行驗證。 為了加強安全性，您可以整合 Azure Multi-Factor Authentication，在登入事件期間提供額外的驗證提示。 Azure Multi-Factor Authentication 會使用 NPS 的延伸模組來提供此功能。
+若要保護虛擬機器的遠端存取 () 在 Azure Active Directory Domain Services (Azure AD DS) 受控網域中執行的 Vm，您可以使用遠端桌面服務 (RDS) 和網路原則伺服器 (NPS) 。 Azure AD DS 會在使用者透過 RDS 環境要求存取權時進行驗證。 為了加強安全性，您可以整合 Azure AD Multi-Factor Authentication，在登入事件期間提供額外的驗證提示。 Azure AD Multi-Factor Authentication 會使用 NPS 的延伸模組來提供這項功能。
 
 > [!IMPORTANT]
 > 在 Azure AD DS 受控網域中安全地連線至 Vm 的建議方式是使用 Azure 防禦，這是您在虛擬網路內布建的全平臺受控 PaaS 服務。 防禦主機提供安全且順暢的遠端桌面通訊協定 (RDP) 透過 SSL 直接在 Azure 入口網站透過 SSL 連線到您的 Vm。 當您透過堡壘主機進行連線時，您的 Vm 不需要公用 IP 位址，而且您不需要使用網路安全性群組來公開 TCP 埠3389上的 RDP 存取。
@@ -28,7 +28,7 @@ ms.locfileid: "91967778"
 >
 > 如需詳細資訊，請參閱 [什麼是 Azure 防禦？][bastion-overview]。
 
-本文說明如何在 Azure AD DS 中設定 RDS，並選擇性地使用 Azure Multi-Factor Authentication NPS 擴充功能。
+本文說明如何在 Azure AD DS 中設定 RDS，並選擇性地使用 Azure AD Multi-Factor Authentication NPS 擴充功能。
 
 ![遠端桌面服務 (RDS) 總覽](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
@@ -66,32 +66,32 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 將 RD 部署到受控網域之後，您就可以管理和使用服務，就像使用內部部署 AD DS 網域一樣。
 
-## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>部署及設定 NPS 和 Azure MFA NPS 擴充功能
+## <a name="deploy-and-configure-nps-and-the-azure-ad-mfa-nps-extension"></a>部署及設定 NPS 和 Azure AD MFA NPS 擴充功能
 
-如果您想要提高使用者登入體驗的安全性，您可以選擇性地將 RD 環境與 Azure Multi-Factor Authentication 整合。 使用此設定時，使用者會在登入期間收到額外的提示，以確認其身分識別。
+如果您想要提高使用者登入體驗的安全性，可以選擇性地整合 RD 環境與 Azure AD Multi-Factor Authentication。 使用此設定時，使用者會在登入期間收到額外的提示，以確認其身分識別。
 
-為了提供這項功能，系統會在您的環境中安裝額外的網路原則伺服器 (NPS) ，以及 Azure Multi-Factor Authentication NPS 擴充功能。 此延伸模組會與 Azure AD 整合，以要求並傳回多重要素驗證提示的狀態。
+為了提供這項功能，會在您的環境中安裝額外的網路原則伺服器 (NPS) ，以及 Azure AD Multi-Factor Authentication NPS 擴充功能。 此延伸模組會與 Azure AD 整合，以要求並傳回多重要素驗證提示的狀態。
 
-使用者必須 [註冊才能使用 Azure Multi-Factor Authentication][user-mfa-registration]，這可能需要額外的 Azure AD 授權。
+使用者必須 [註冊才能使用 Azure AD Multi-Factor Authentication][user-mfa-registration]，這可能需要額外的 Azure AD 授權。
 
-若要將 Azure Multi-Factor Authentication 整合到您的 Azure AD DS 遠端桌面環境中，請建立 NPS 伺服器，並安裝此延伸模組：
+若要將 Azure AD Multi-Factor Authentication 整合到您的 Azure AD DS 遠端桌面環境中，請建立 NPS 伺服器，並安裝此延伸模組：
 
 1. 建立額外的 Windows Server 2016 或 2019 VM （例如 *NPSVM01*），以連線至您 Azure AD DS 虛擬網路中的 *工作負載* 子網。 將 VM 加入受控網域。
 1. 以屬於 *AZURE AD DC 系統管理員* 群組的帳戶（例如 *contosoadmin*）登入 NPS VM。
-1. 從 **伺服器管理員**中，選取 [ **新增角色及功能**]，然後安裝 [ *網路原則與存取服務* ] 角色。
-1. 使用現有的操作說明文章來 [安裝和設定 Azure MFA NPS 延伸][nps-extension]模組。
+1. 從 **伺服器管理員** 中，選取 [ **新增角色及功能**]，然後安裝 [ *網路原則與存取服務* ] 角色。
+1. 使用現有的操作說明文章來 [安裝和設定 AZURE AD MFA NPS 擴充][nps-extension]功能。
 
-安裝 NPS 伺服器和 Azure Multi-Factor Authentication NPS 擴充功能之後，請完成下一節，設定它以用於 RD 環境。
+安裝 NPS 伺服器和 Azure AD Multi-Factor Authentication NPS 擴充功能之後，請完成下一節，將其設定為與 RD 環境搭配使用。
 
-## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>整合遠端桌面閘道和 Azure Multi-Factor Authentication
+## <a name="integrate-remote-desktop-gateway-and-azure-ad-multi-factor-authentication"></a>整合遠端桌面閘道和 Azure AD Multi-Factor Authentication
 
-若要整合 Azure Multi-Factor Authentication NPS 擴充功能，請使用現有的操作說明文章，以 [使用網路原則伺服器 (NPS) 延伸模組和 Azure AD 來整合您的遠端桌面閘道基礎結構][azure-mfa-nps-integration]。
+若要整合 Azure AD Multi-Factor Authentication NPS 擴充功能，請使用現有的操作說明文章，以 [使用網路原則伺服器 (NPS) 擴充功能和 Azure AD 來整合您的遠端桌面閘道基礎結構][azure-mfa-nps-integration]。
 
 需要下列額外的設定選項才能與受控網域整合：
 
 1. 請勿 [在 Active Directory 中註冊 NPS 伺服器][register-nps-ad]。 此步驟會在受控網域中失敗。
-1. 在 [設定網路原則的步驟 4][create-nps-policy]中，也請核取 [ **略過使用者帳戶撥入**內容] 核取方塊。
-1. 如果您針對 NPS 伺服器和 Azure Multi-Factor Authentication NPS 擴充功能使用 Windows Server 2019，請執行下列命令來更新安全通道，以允許 NPS 伺服器正確通訊：
+1. 在 [設定網路原則的步驟 4][create-nps-policy]中，也請核取 [ **略過使用者帳戶撥入** 內容] 核取方塊。
+1. 如果您使用 Windows Server 2019 作為 NPS 伺服器，並 Azure AD Multi-Factor Authentication NPS 擴充功能，請執行下列命令來更新安全通道，以允許 NPS 伺服器正確通訊：
 
     ```powershell
     sc sidtype IAS unrestricted
@@ -103,7 +103,7 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 如需改善部署復原的詳細資訊，請參閱 [遠端桌面服務-高可用性][rds-high-availability]。
 
-如需保護使用者登入安全的詳細資訊，請參閱 [其運作方式： Azure Multi-Factor Authentication][concepts-mfa]。
+如需保護使用者登入安全的詳細資訊，請參閱 [運作方式： Azure AD Multi-Factor Authentication][concepts-mfa]。
 
 <!-- INTERNAL LINKS -->
 [bastion-overview]: ../bastion/bastion-overview.md

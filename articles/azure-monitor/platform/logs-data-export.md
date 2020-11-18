@@ -3,16 +3,16 @@ title: 'Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) '
 description: Log Analytics 資料匯出可讓您將所選資料表的資料從 Log Analytics 工作區持續匯出至 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。
 ms.subservice: logs
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427797"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841802"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -66,7 +66,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ### <a name="storage-account"></a>儲存體帳戶
 每小時都會將資料傳送至儲存體帳戶。 資料匯出設定會為儲存體帳戶中的每個資料表建立一個容器，並 *在後面加* 上該資料表的名稱。 例如，資料表 *SecurityEvent* 會傳送至名為 *am-SecurityEvent* 的容器。
 
-儲存體帳戶 blob 路徑為 *WorkspaceResourceId =/subscriptions/subscription-id/resourcegroups/ \<resource-group\> /providers/microsoft.operationalinsights/workspaces/ \<workspace\> /y =/m =/d =/h = \<four-digit numeric year\> \<two-digit numeric month\> \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js開啟* 。 因為附加 blob 僅限於儲存體中的50K 寫入，所以如果附加的數目很高，匯出的 blob 數目可能會擴充。 在這種情況下，blob 的命名模式會是 PT1H_ #，其中 # 是增量 blob 計數。
+儲存體帳戶 blob 路徑為 *WorkspaceResourceId =/subscriptions/subscription-id/resourcegroups/ \<resource-group\> /providers/microsoft.operationalinsights/workspaces/ \<workspace\> /y =/m =/d =/h = \<four-digit numeric year\> \<two-digit numeric month\> \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js開啟*。 因為附加 blob 僅限於儲存體中的50K 寫入，所以如果附加的數目很高，匯出的 blob 數目可能會擴充。 在這種情況下，blob 的命名模式會是 PT1H_ #，其中 # 是增量 blob 計數。
 
 儲存體帳戶資料格式為 [JSON 行](diagnostic-logs-append-blobs.md)。 這表示每筆記錄都是以一個新行分隔，而且沒有外部記錄陣列，而 JSON 記錄之間沒有逗號。 
 
@@ -100,7 +100,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 
 - Microsoft.Insights
 
-此資源提供者可能已經註冊給大部分的 Azure 監視器使用者。 若要確認，請移至 Azure 入口網站中的 [ **訂閱** ]。 選取您的訂用帳戶，然後按一下功能表的 [ **設定** ] 區段中的 [ **資源提供者** ]。 找出 [ **Microsoft Insights** ]。 如果其狀態為 [已 **註冊** ]，表示它已註冊。 如果沒有，請按一下 [ **註冊** ] 進行註冊。
+此資源提供者可能已經註冊給大部分的 Azure 監視器使用者。 若要確認，請移至 Azure 入口網站中的 [ **訂閱** ]。 選取您的訂用帳戶，然後按一下功能表的 [**設定**] 區段中的 [**資源提供者**]。 找出 [ **Microsoft Insights**]。 如果其狀態為 [已 **註冊**]，表示它已註冊。 如果沒有，請按一下 [ **註冊** ] 進行註冊。
 
 您也可以使用任何可用的方法來註冊資源提供者 [，如 Azure 資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md)中所述。 以下是使用 PowerShell 的範例命令：
 
@@ -109,7 +109,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ```
 
 ### <a name="allow-trusted-microsoft-services"></a>允許信任的 Microsoft 服務
-如果您已將儲存體帳戶設定為允許從選取的網路進行存取，您需要新增例外狀況，以允許 Azure 監視器寫入至帳戶。 從儲存體帳戶的 **防火牆和虛擬網路** ，選取 [ **允許信任的 Microsoft 服務存取此儲存體帳戶** ]。
+如果您已將儲存體帳戶設定為允許從選取的網路進行存取，您需要新增例外狀況，以允許 Azure 監視器寫入至帳戶。 從儲存體帳戶的 **防火牆和虛擬網路** ，選取 [ **允許信任的 Microsoft 服務存取此儲存體帳戶**]。
 
 [![儲存體帳戶防火牆和虛擬網路](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
@@ -429,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | 更新 | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
 | UpdateRunProgress | |
 | UpdateSummary | |
-| 使用量 | |
+| 使用方式 | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
 | 關注清單 | |

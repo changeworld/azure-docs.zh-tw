@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8fe6c7ead587d58775984854260bd071215e42
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: eab1a3f81666cd3bddea9954f210e5825a538356
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965568"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840112"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory Microsoft Authenticator 應用程式中的驗證方法
 
-Microsoft Authenticator 的應用程式可為您的 Azure AD 工作或學校帳戶或您的 Microsoft 帳戶提供額外的安全性層級，且適用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594) 和 [iOS](https://go.microsoft.com/fwlink/?linkid=866594)。 使用 Microsoft Authenticator 應用程式，使用者可以在登入期間以無密碼方式進行驗證，或在自助式密碼重設 (SSPR) 或 Azure 多重要素驗證事件期間作為額外的驗證選項。
+Microsoft Authenticator 的應用程式可為您的 Azure AD 工作或學校帳戶或您的 Microsoft 帳戶提供額外的安全性層級，且適用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594) 和 [iOS](https://go.microsoft.com/fwlink/?linkid=866594)。 使用 Microsoft Authenticator 應用程式時，使用者可以在登入期間以無密碼的方式進行驗證，或在自助密碼重設期間以額外的驗證選項 (SSPR) 或 Azure AD Multi-Factor Authentication 事件。
 
 使用者可透過行動應用程式收到通知，以供進行核准或拒絕，或使用 Authenticator 應用程式來產生可在登入介面中輸入的 OATH 驗證碼。 如果您同時啟用通知和驗證碼，則註冊 Authenticator 應用程式的使用者可使用任一種方法來驗證其身分識別。
 

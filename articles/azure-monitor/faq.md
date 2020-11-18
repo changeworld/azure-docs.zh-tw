@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653788"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841898"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -81,7 +81,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
 ### <a name="how-do-i-retrieve-log-data"></a>如何擷取記錄資料？
 使用以 Kusto 查詢語言 (KQL) 撰寫的記錄查詢，從 Log Analytics 工作區中擷取所有資料。 您可以撰寫自己的查詢，或使用解決方案和見解，以包含特定應用程式或服務的記錄查詢。 請參閱 [Azure 監視器中的記錄查詢概觀](log-query/log-query-overview.md)。
-
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>我可以從 Log Analytics 工作區刪除資料嗎？
 資料會根據其 [保留期限](platform/manage-cost-storage.md#change-the-data-retention-period)從工作區中移除。 您可以針對隱私權或合規性因素刪除特定資料。 如需詳細資訊，請參閱 [如何匯出和刪除私用資料](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) 。
 
@@ -594,10 +594,6 @@ OpenTelemetry 收集器會在其 [GitHub 讀我檔案](https://github.com/open-t
 
 
 ## <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
-
-### <a name="health-feature-is-in-private-preview"></a>健康情況功能目前為個人預覽版
-
-我們打算進行一連串變更，以新增功能並處理您的意見反應。 健康情況功能將於 2020 年 6 月底轉換成個人預覽版，如需詳細資訊，請檢閱下列 [Azure 更新通知](https://azure.microsoft.com/updates/ci-health-limited-preview/)。
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>「其他處理序」在 [節點] 檢視底下代表什麼？
 

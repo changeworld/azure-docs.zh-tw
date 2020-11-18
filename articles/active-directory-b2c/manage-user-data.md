@@ -11,12 +11,12 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b7cc772e2a2e44a72af5e47a794c8b0f36aa9786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48c79306d376c2faa1089886881a7b5e9a792c86
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387638"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840537"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理使用者資料
 
@@ -34,7 +34,7 @@ ms.locfileid: "85387638"
 
 下列範例示範可能的資料刪除流程：
 
-1. 使用者登入並選取 [刪除我的資料]****。
+1. 使用者登入並選取 [刪除我的資料]。
 2. 應用程式在應用程式系統管理區段內，提供刪除資料的選項。
 3. 應用程式強制向 Azure AD B2C 驗證。 Azure AD B2C 將包含使用者物件識別碼的權杖提供給應用程式。
 4. 權杖是由應用程式接收，而物件識別碼是用來透過呼叫 Microsoft Graph API 來刪除使用者資料。 Microsoft Graph API 會刪除使用者資料，並傳回狀態碼 200 OK。
@@ -52,7 +52,7 @@ Azure AD B2C 使用者資料僅限於：
 
 在下列匯出資料流程的範例中，所述由應用程式執行的步驟，亦可由後端處理序來執行，或由具有目錄中系統管理員角色的使用者來執行：
 
-1. 使用者登入應用程式。 Azure AD B2C 會依需求強制進行 Azure Multi-Factor Authentication 的驗證。
+1. 使用者登入應用程式。 Azure AD B2C 視需要強制執行 Azure AD Multi-Factor Authentication 的驗證。
 2. 應用程式會使用使用者認證來呼叫 Microsoft Graph API 作業，以取得使用者屬性。 Microsoft Graph API 會提供 JSON 格式的屬性資料。 根據結構描述而定，您可以設定識別碼權杖內容，以包含使用者的所有個人資料。
 3. 應用程式會擷取使用者稽核活動。 Microsoft Graph API 提供事件資料給應用程式。
 4. 應用程式彙總資料，並提供給使用者使用。

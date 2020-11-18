@@ -3,13 +3,13 @@ title: 使用 GitHub Actions 部署 Resource Manager 範本
 description: 描述如何使用 GitHub Actions 部署 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746103"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841677"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure Resource Manager 範本
 
@@ -20,7 +20,7 @@ ms.locfileid: "92746103"
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
+- GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
     - 用於儲存 Resource Manager 範本和工作流程檔案的 GitHub 存放庫。 若要建立一個，請參閱[建立新的存放庫](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository) \(英文\)。
 
 
@@ -91,16 +91,16 @@ ms.locfileid: "92746103"
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-您可以將檔案放置於存放庫中的任何位置。 下一節中的工作流程範例假設範本檔案命名為 **azuredeploy.json** ，並儲存在存放庫的根目錄。
+您可以將檔案放置於存放庫中的任何位置。 下一節中的工作流程範例假設範本檔案命名為 **azuredeploy.json**，並儲存在存放庫的根目錄。
 
 ## <a name="create-workflow"></a>建立工作流程
 
-工作流程檔案必須儲存在存放庫根目錄的 [ **github/** workflow] 資料夾中。 工作流程副檔名可以是 **.yml** 或 **.yaml** 。
+工作流程檔案必須儲存在存放庫根目錄的 [ **github/** workflow] 資料夾中。 工作流程副檔名可以是 **.yml** 或 **.yaml**。
 
 1. 從您的 GitHub 存放庫，選取頂端功能表中的 [動作]。
 1. 選取 [新增工作流程]。
 1. 選取 [自行設定工作流程]。
-1. 如果您偏好使用 **main.yml** 以外的其他名稱，請將工作流程檔案重新命名。 例如： **deployStorageAccount.yml** 。
+1. 如果您偏好使用 **main.yml** 以外的其他名稱，請將工作流程檔案重新命名。 例如：**deployStorageAccount.yml**。
 1. 以下列內容取代 yml 檔案的內容：
 
     ```yml
@@ -136,8 +136,8 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
     工作流程檔案的第一個區段包括：
 
-    - **名稱** ：工作流程的名稱。
-    - **on** ：觸發工作流程的 GitHub 事件名稱。 當主要分支上有推送事件時，工作流程就會觸發，這會在這兩個指定的檔案中至少修改其中一個。 這兩個檔案為工作流程檔案和範本檔案。
+    - **名稱**：工作流程的名稱。
+    - **on**：觸發工作流程的 GitHub 事件名稱。 當主要分支上有推送事件時，工作流程就會觸發，這會在這兩個指定的檔案中至少修改其中一個。 這兩個檔案為工作流程檔案和範本檔案。
 
 1. 選取 [開始認可]。
 1. 選取 [直接認可至主要分支]。

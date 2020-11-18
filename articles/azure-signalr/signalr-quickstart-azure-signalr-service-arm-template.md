@@ -4,15 +4,15 @@ description: 在本快速入門中，您會了解如何使用 Azure Resource Man
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289911"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841610"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>快速入門：使用 ARM 範本來部署 Azure SignalR 服務
 
@@ -70,9 +70,9 @@ ms.locfileid: "93289911"
 
 3. 如果您已建立新的資源群組，請選取資源群組的 [區域]。
 
-4. 如果您想要，請輸入 Azure SignalR 服務的新 [名稱] 和 [位置] (例如 **eastus2** )。 如果您未指定名稱，則會自動產生。 Azure SignalR 服務的位置可以與資源群組的區域相同或不同。 如果您未指定位置，則會將其設定為與資源群組相同的區域。
+4. 如果您想要，請輸入 Azure SignalR 服務的新 [名稱] 和 [位置] (例如 **eastus2**)。 如果您未指定名稱，則會自動產生。 Azure SignalR 服務的位置可以與資源群組的區域相同或不同。 如果您未指定位置，則會將其設定為與資源群組相同的區域。
 
-5. 選擇 [定價層] ( **Free_F1** 或 **Standard_S1** )，輸入 [容量] (SignalR 單位數)，然後選擇 [預設] (需要中樞伺服器)、[無伺服器] (不允許任何伺服器連線) 或 [傳統](只有在中樞具有伺服器連線時才會路由傳送至中樞伺服器) 作為 [服務模式]。 然後選擇是否 [啟用連線記錄] 或 [啟用傳訊記錄]。
+5. 選擇 [定價層] (**Free_F1** 或 **Standard_S1**)，輸入 [容量] (SignalR 單位數)，然後選擇 [預設] (需要中樞伺服器)、[無伺服器] (不允許任何伺服器連線) 或 [傳統](只有在中樞具有伺服器連線時才會路由傳送至中樞伺服器) 作為 [服務模式]。 然後選擇是否 [啟用連線記錄] 或 [啟用傳訊記錄]。
 
     > [!NOTE]
     > 若為 [Free_F1] 定價層，容量限制為 1 單位。
@@ -92,12 +92,12 @@ ms.locfileid: "93289911"
 
 * 新 Azure SignalR 服務的名稱和區域
 * 新資源群組的名稱和區域
-* Azure 定價層 ( **Free_F1** 或 **Standard_S1** )
+* Azure 定價層 (**Free_F1** 或 **Standard_S1**)
 * SignalR 單位容量 (1、2、5、10、20、50 或 100)
   > [!NOTE]
   > 若為 [Free_F1] 定價層，容量限制為 1 單位。
 * 服務模式：[預設] 需要中樞伺服器、[無伺服器] 不允許任何伺服器連線，或 [傳統] 只有在中樞具有伺服器連線時才會路由傳送至中樞伺服器
-* 是否要啟用連線或傳訊的記錄 ( **true** 或 **false** )
+* 是否要啟用連線或傳訊的記錄 (**true** 或 **false**)
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ Read-Host "Press [ENTER] to continue"
 
 * 新 Azure SignalR 服務的名稱和區域
 * 新資源群組的名稱和區域
-* Azure 定價層 ( **Free_F1** 或 **Standard_S1** )
+* Azure 定價層 (**Free_F1** 或 **Standard_S1**)
 * SignalR 單位容量 (1、2、5、10、20、50 或 100)
     > [!NOTE]
     > 若為 [Free_F1] 定價層，容量限制為 1 單位。
 * 服務模式：[預設] 需要中樞伺服器、[無伺服器] 不允許任何伺服器連線，或 [傳統] 只有在中樞具有伺服器連線時才會路由傳送至中樞伺服器
-* 是否要啟用連線或傳訊的記錄 ( **true** 或 **false** )
+* 是否要啟用連線或傳訊的記錄 (**true** 或 **false**)
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&

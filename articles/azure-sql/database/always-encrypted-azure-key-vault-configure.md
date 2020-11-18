@@ -5,19 +5,19 @@ keywords: 資料加密, 加密金鑰, 雲端加密
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
-ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321629"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841456"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 設定 Always Encrypted 
 
@@ -110,7 +110,7 @@ az keyvault set-policy --name $vaultName --key-permissions get list sign unwrapK
 
 開啟 SQL Server Management Studio (SSMS) 並連接到伺服器，或使用您的資料庫進行管理。
 
-1. 開啟 SSMS。  (移至 [ **連接** ]  >  **資料庫引擎** 開啟 [ **連接到伺服器** ] 視窗（如果尚未開啟）。 ) 
+1. 開啟 SSMS。  (移至 [**連接**]  >  **資料庫引擎** 開啟 [**連接到伺服器**] 視窗（如果尚未開啟）。 ) 
 
 2. 輸入您的伺服器名稱或實例名稱和認證。 
 
@@ -123,7 +123,7 @@ az keyvault set-policy --name $vaultName --key-permissions get list sign unwrapK
 在本節中，您將建立資料表來保存病患的資料。 它一開始並未加密 -- 您將在下一節中設定加密。
 
 1. 展開 **[資料庫]** 。
-2. 以滑鼠右鍵按一下資料庫，然後按一下 [追加 **查詢** ]。
+2. 以滑鼠右鍵按一下資料庫，然後按一下 [追加 **查詢**]。
 3. 將下列 Transact-SQL (T-SQL) 貼到新的查詢視窗中並「執行」  它。
 
 ```sql
@@ -146,7 +146,7 @@ GO
 
 SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密金鑰及加密的資料行，來協助您輕鬆設定「一律加密」。
 
-1. 展開 [ **資料庫** 課程  >  **Clinic**  >  **] 資料表** 。
+1. 展開 [**資料庫** 課程  >  **Clinic**  >  **] 資料表**。
 2. 在 [Patients] 資料表上按一下滑鼠右鍵，然後選取 [加密資料行] 以開啟「一律加密精靈」：
 
     ![醒目顯示 [加密資料行] 的螢幕擷取畫面 .。。功能表選項。](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
@@ -159,7 +159,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 請加密每個病患的 **SSN** 和 **BirthDate** 資訊。 SSN 資料行將使用決定性加密，這可支援等式查閱、聯結及群組依據。 BirthDate 資料行將使用不支援操作的隨機加密。
 
-將 SSN 資料行的 [加密類型] 設定為 [決定性]，並將 BirthDate 資料行設定為 [隨機化]。 按 [下一步]  。
+將 SSN 資料行的 [加密類型] 設定為 [決定性]，並將 BirthDate 資料行設定為 [隨機化]。 按 [下一步] 。
 
 ![加密資料行](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,7 +171,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 1. 選取 [Azure 金鑰保存庫] 。
 2. 從下拉式清單中選取想要的金鑰保存庫。
-3. 按 [下一步]  。
+3. 按 [下一步] 。
 
 ![主要金鑰組態](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 
@@ -179,7 +179,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 您現在可以加密資料行，或儲存為 PowerShell 指令碼以供日後執行。 針對這個教學課程，請選取 [繼續以立即完成]，然後按 [下一步]。
 
-### <a name="summary"></a>總結
+### <a name="summary"></a>摘要
 
 確認設定全都正確，然後按一下 [完成]  以完成 [一律加密] 的設定。
 
@@ -193,7 +193,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 - 建立資料行加密金鑰 (CMK) 並將它儲存在「Azure 金鑰保存庫」中。
 - 設定選取的資料行以進行加密。 Patients 資料表目前沒有任何資料，但在所選資料行中的所有現有資料現在都已加密。
 
-您可以藉 **由擴充實務**  >  **安全性**  >  **Always Encrypted 金鑰** ，確認在 SSMS 中建立金鑰。
+您可以藉 **由擴充實務**  >  **安全性**  >  **Always Encrypted 金鑰**，確認在 SSMS 中建立金鑰。
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>建立搭配加密資料使用的用戶端應用程式
 
@@ -202,9 +202,9 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 > [!IMPORTANT]
 > 傳送純文字資料至具有 [一律加密] 資料行的伺服器時，您的應用程式必須使用 [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) 物件。 在不使用 SqlParameter 物件的情況下傳遞常值會導致例外狀況。
 
-1. 開啟 Visual Studio 並建立新的 C# **主控台應用程式** (Visual Studio 2015 和更早版本) 或 **主控台應用程式 (.NET Framework)** (Visual Studio 2017 和更新版本)。 請確定您的專案設定為 **.NET Framework 4.6** 或更新版本。
-2. 將專案命名為 **AlwaysEncryptedConsoleAKVApp** ，然後按一下 [確定]。
-3. 前往 [ **工具**  >  **NuGet 封裝管理員** ]  >  **封裝管理員主控台** ，以安裝下列 NuGet 套件。
+1. 開啟 Visual Studio 並建立新的 C# **主控台應用程式**(Visual Studio 2015 和更早版本) 或 **主控台應用程式 (.NET Framework)** (Visual Studio 2017 和更新版本)。 請確定您的專案設定為 **.NET Framework 4.6** 或更新版本。
+2. 將專案命名為 **AlwaysEncryptedConsoleAKVApp**，然後按一下 [確定]。
+3. 前往 [**工具**  >  **NuGet 封裝管理員**]  >  **封裝管理員主控台**，以安裝下列 NuGet 套件。
 
 在封裝管理員主控台中執行這兩行程式碼：
 
@@ -217,9 +217,9 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 本節說明如何在您的資料庫連接字串中啟用「一律加密」。
 
-若要啟用「一律加密」，您必須將 **Column Encryption Setting** 關鍵字新增到您的連接字串中，並將它設定為 **Enabled** 。
+若要啟用「一律加密」，您必須將 **Column Encryption Setting** 關鍵字新增到您的連接字串中，並將它設定為 **Enabled**。
 
-您可以直接在連接字串中進行此設定，或是使用 [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)來設定它。 下一節中的範例應用程式會示範如何使用 **SqlConnectionStringBuilder** 。
+您可以直接在連接字串中進行此設定，或是使用 [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)來設定它。 下一節中的範例應用程式會示範如何使用 **SqlConnectionStringBuilder**。
 
 ### <a name="enable-always-encrypted-in-the-connection-string"></a>在連接字串中啟用 [一律加密]
 
@@ -576,13 +576,13 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
    ![顯示加密資料行未包含任何純文字資料的螢幕擷取畫面。](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-若要使用 SSMS 來存取純文字資料，您必須先確定使用者有 Azure Key Vault 的適當權限： *get* 、 *unwrapKey* 與 *verify* 。 如需詳細資訊，請參閱[建立和儲存資料行主要金鑰 (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)。
+若要使用 SSMS 來存取純文字資料，您必須先確定使用者有 Azure Key Vault 的適當權限：*get*、*unwrapKey* 與 *verify*。 如需詳細資訊，請參閱[建立和儲存資料行主要金鑰 (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)。
 
 接著，在連線時加入 *Column Encryption Setting=enabled* 參數。
 
 1. 在 SSMS 中，於 [物件總管] 中您的伺服器上按一下滑鼠右鍵，然後選擇 [中斷連線]。
-2. 按一下 [ **連接**  >  **資料庫引擎** ] 以開啟 [ **連接到伺服器** ] 視窗，然後按一下 [ **選項** ]。
-3. 按一下 [其他連接參數] 並輸入 **Column Encryption Setting=enabled** 。
+2. 按一下 [**連接**  >  **資料庫引擎**] 以開啟 [**連接到伺服器**] 視窗，然後按一下 [**選項**]。
+3. 按一下 [其他連接參數] 並輸入 **Column Encryption Setting=enabled**。
 
     ![顯示 [其他修正參數] 索引標籤的螢幕擷取畫面。](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 

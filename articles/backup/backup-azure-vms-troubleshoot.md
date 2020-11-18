@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 6da91248c197eae12fbc59f2da8c5294d95117b6
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173831"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840911"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -27,8 +27,8 @@ ms.locfileid: "92173831"
   * 若要確保沒有快照集擴充功能問題，請[解除安裝擴充功能，以強制重新載入並重試備份](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。
 * 確認 VM 具有網際網路連線。
   * 請確定沒有其他備份服務正在執行。
-* 從 `Services.msc` 中，確定 **Windows Azure 客體代理程式**服務**執行中**。 如果遺漏 **Windows Azure 客體代理程式** 服務，請從[備份復原服務保存庫中的 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)安裝該服務。
-* **事件記錄**檔可能會顯示來自其他備份產品（例如 Windows Server backup）的備份失敗，而不是因為 Azure 備份。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
+* 從 `Services.msc` 中，確定 **Windows Azure 客體代理程式** 服務 **執行中**。 如果遺漏 **Windows Azure 客體代理程式** 服務，請從 [備份復原服務保存庫中的 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)安裝該服務。
+* **事件記錄** 檔可能會顯示來自其他備份產品（例如 Windows Server backup）的備份失敗，而不是因為 Azure 備份。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
   * 如果事件來源或訊息中的專案 **備份** 發生錯誤，請檢查 AZURE IaaS VM 備份備份是否成功，以及是否以所需的快照集類型建立還原點。
   * 如果 Azure 備份運作中，則問題可能與另一個備份解決方案有關。
   * 以下是事件檢視器錯誤517的範例，其中 Azure 備份可正常運作，但 "Windows Server Backup" 失敗： ![ Windows Server Backup 失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
@@ -85,10 +85,10 @@ ms.locfileid: "92173831"
 錯誤碼：ExtensionInstallationFailedMDTC <br/>
 錯誤訊息：擴充功能安裝失敗，發生錯誤「COM+ 無法與 Microsoft Distributed Transaction Coordinator 通話」 <br/>
 
-備份作業失敗，因為 Windows 服務 **COM+ 系統**應用程式發生問題。  若要解決此問題，請依照下列步驟執行︰
+備份作業失敗，因為 Windows 服務 **COM+ 系統** 應用程式發生問題。  若要解決此問題，請依照下列步驟執行︰
 
 * 嘗試重新啟動/重新啟動 Windows 服務 **COM+ System Application** (從提高權限的命令提示字元 **- net start COMSysApp**)。
-* 確定 **分散式交易協調器**服務正在以**網路服務**帳戶的身分執行。 如果不是，請將其變更為以**網路服務** 帳戶的身分執行，然後重新啟動 **COM+ 系統應用程式**。
+* 確定 **分散式交易協調器** 服務正在以 **網路服務** 帳戶的身分執行。 如果不是，請將其變更為以 **網路服務** 帳戶的身分執行，然後重新啟動 **COM+ 系統應用程式**。
 * 如果無法重新開機服務，請遵循下列步驟來重新安裝 **分散式交易協調器** 服務：
   * 停止 MSDTC 服務
   * 開啟命令提示字元 (cmd)
@@ -102,7 +102,7 @@ ms.locfileid: "92173831"
 錯誤碼：ExtensionFailedVssWriterInBadState <br/>
 錯誤訊息：快照集作業失敗，因為 VSS 寫入器處於不良狀態。
 
-發生此錯誤是因為 VSS 寫入器處於不良狀態。 Azure 備份擴充功能會與 VSS 寫入器互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
+發生此錯誤是因為 VSS 寫入器處於不良狀態。 Azure 備份擴充功能會與 VSS 寫入器互動，以取得磁片的快照集。 若要解決此問題，請遵循下列步驟：
 
 步驟1：重新開機處於不良狀態的 VSS 寫入器。
 
@@ -124,8 +124,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 步驟3：如果步驟1和2沒有解決問題，可能是因為因為 IOPS 受限而導致 VSS 寫入器超時。<br>
 
-若要確認，請流覽至 [ ***系統] 並事件檢視器應用程式記錄*** 檔，並檢查下列錯誤訊息：<br>
-*陰影複製提供者會在保存要陰影複製之磁片區的寫入時超時。這可能是因為應用程式或系統服務的磁片區上有過多活動。當磁片區上的活動減少時，稍後再試一次。*<br>
+若要確認，請流覽至 [**系統並事件檢視器應用程式記錄** 檔 _]，並檢查下列錯誤訊息：<br>
+_The 陰影複製提供者在保存要陰影複製的磁片區寫入時超時。 這可能是因為應用程式或系統服務的磁片區上有過多活動。 請稍後再試一次磁片區上的活動減少。 *<br>
 
 解決方案：
 
@@ -138,7 +138,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 錯誤碼： ExtensionFailedVssServiceInBadState <br/>
 錯誤訊息：快照集作業失敗，因為 VSS (磁片區陰影複製) 服務處於不正確的狀態。
 
-發生此錯誤的原因是 VSS 服務處於不良狀態。 Azure 備份擴充功能會與 VSS 服務互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
+發生此錯誤的原因是 VSS 服務處於不良狀態。 Azure 備份擴充功能會與 VSS 服務互動，以取得磁片的快照集。 若要解決此問題，請遵循下列步驟：
 
 重新開機 VSS (磁片區陰影複製) 服務。
 
@@ -157,7 +157,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 發生此錯誤的原因是在還原作業期間選取的 VM 大小是不支援的大小。 <br>
 
-若要解決此問題，請在還原作業期間使用 [ [復原磁碟](./backup-azure-arm-restore-vms.md#restore-disks) ] 選項。 您可以使用這些磁片，透過[Powershell Cmdlet](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)，從[可用的支援 VM 大小](./backup-support-matrix-iaas.md#vm-compute-support)清單中建立 vm。
+若要解決此問題，請在還原作業期間使用 [ [復原磁碟](./backup-azure-arm-restore-vms.md#restore-disks) ] 選項。 您可以使用這些磁片，透過[PowerShell Cmdlet](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)，從[可用的支援 VM 大小](./backup-support-matrix-iaas.md#vm-compute-support)清單中建立 vm。
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM 建立失敗，因為不存在市場採購申請
 
@@ -193,10 +193,10 @@ Azure 備份支援 Azure Marketplace 中可用 Vm 的備份和還原。 當您�
    * 寫入屬性
    * 寫入擴充屬性
    * 讀取權限
-2. 刪除 [發給] 是傳統部署模型或 **Windows Azure CRP 憑證產生器**的所有憑證：
+2. 刪除 [發給] 是傳統部署模型或 **Windows Azure CRP 憑證產生器** 的所有憑證：
 
    * [在本機電腦主控台上開啟憑證](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) \(機器翻譯\)。
-   * 在 [個人] > [憑證] 底下，刪除 [核發對象] 是傳統部署模型或 **Windows Azure CRP 憑證產生器**的所有憑證。
+   * 在 [個人] > [憑證] 底下，刪除 [核發對象] 是傳統部署模型或 **Windows Azure CRP 憑證產生器** 的所有憑證。
 3. 觸發 VM 備份作業。
 
 ### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 擴充狀態不支援備份作業
@@ -244,7 +244,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 這可確保快照集會透過主機 (而非客體資源) 取得。 請重試備份作業。
 
-**步驟 2**：嘗試將備份排程變更為 VM 低於負載 (（例如較少 CPU 或 IOps）的時間) 
+**步驟 2**：嘗試將備份排程變更為 VM 低於負載 (（例如較少 CPU 或 IOPS）的時間) 
 
 **步驟 3**：嘗試 [增加 VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) ，然後再次嘗試操作
 
@@ -283,7 +283,7 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 * 如果 VM 處於 [正在執行] 和 [關機] 之間的暫時性狀態，請等候狀態變更。 然後再觸發備份作業。
 * 如果 VM 是 Linux VM 並使用安全性強化的 Linux 核心模組，請從安全性原則中排除 Azure Linux 代理程式路徑 **/var/lib/waagent**，並確定已安裝備份延伸模組。
 
-* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入瞭解 [Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
+* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 | 深入瞭解 [Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
 
 ### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-快照集作業失敗，因為無法建立安全的網路通道
 
@@ -321,8 +321,8 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 
 在還原之後，您會注意到磁片已離線，然後：
 
-* 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](./backup-azure-restore-files-from-vm.md#system-requirements)。  
-* 請確定您不會還原至相同的來源， [深入瞭解](./backup-azure-restore-files-from-vm.md#original-backed-up-machine-versus-another-machine)。
+* 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script)。  
+* 請確定您不會還原至相同的來源， [深入瞭解](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)。
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound-還原失敗，因為找不到 VM 的快照集
 

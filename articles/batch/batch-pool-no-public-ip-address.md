@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: fcc0538dfef1581a244ae5fd9a3515be3470026c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850926"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842130"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>建立不具公用 IP 位址的 Azure Batch 集區
 
@@ -34,7 +34,7 @@ ms.locfileid: "91850926"
 - **Azure VNet**。 如果您是在 [虛擬網路](batch-virtual-network.md)中建立集區，請遵循這些需求和設定。 若要事先準備具有一個或多個子網路的 VNet，您可以使用 Azure 入口網站、Azure PowerShell、Azure 命令列介面 (CLI) 或其他方法。
   - VNet 必須與您用來建立集區的 Batch 帳戶位於相同的訂用帳戶和區域中。
   - 針對集區指定的子網路必須有足夠的未指派 IP 位址，可容納目標設為集區的 VM 數目；也就是集區之 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 屬性的總和。 如果子網路沒有足夠的未指派 IP 位址，集區會局部配置計算節點，並發生調整大小錯誤。
-  - 您必須停用 private link 服務和端點網路原則。 您可以使用 Azure CLI 來完成這項操作： ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - 您必須停用 private link 服務和端點網路原則。 您可以使用 Azure CLI 來完成這項操作： ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > 針對每個100專用或低優先順序節點，Batch 會配置一個私用連結服務和一個負載平衡器。 這些資源會被訂用帳戶的[資源配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所限制。 針對大型集區，您可能需要為一或多個這些資源 [要求增加配額](batch-quota-limit.md#increase-a-quota) 。 此外，您不應該將資源鎖定套用至 Batch 所建立的任何資源，因為這可避免因為使用者起始的動作（例如刪除集區或調整為零）而造成資源清除。
@@ -49,12 +49,12 @@ ms.locfileid: "91850926"
 
 1. 在 Azure 入口網站中瀏覽至您的 Batch 帳戶。
 1. 在左側的 [ **設定** ] 視窗中， **選取 [** 集區]。
-1. **在 [集**區] 視窗中，選取 [**新增**]。
+1. **在 [集** 區] 視窗中，選取 [**新增**]。
 1. 在 [新增集區] 視窗上，從 [映像類型] 下拉式清單選取您要使用的選項。
 1. 選取您映射的正確 **發行者/供應專案/Sku** 。
-1. 指定其餘的必要設定，包括 **節點大小**、 **目標專用節點**和 **低優先順序節點**，以及任何所需的選擇性設定。
+1. 指定其餘的必要設定，包括 **節點大小**、 **目標專用節點** 和 **低優先順序節點**，以及任何所需的選擇性設定。
 1. 選擇性地選取您想要使用的虛擬網路和子網。 此虛擬網路必須與您建立的集區位於相同的資源群組中。
-1. 在 [ **IP 位址**布建類型] 中，選取 [ **NoPublicIPAddresses**]。
+1. 在 [ **IP 位址** 布建類型] 中，選取 [ **NoPublicIPAddresses**]。
 
 ![[新增集區] 畫面的螢幕擷取畫面，其中已選取 [NoPublicIPAddresses]。](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 

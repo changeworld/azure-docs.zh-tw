@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61471e07dda8fcf0c715dcffe85ad3e39ed8ac3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562871"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840367"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -30,7 +30,7 @@ ms.locfileid: "90562871"
 
 - [Application Insights](application-insights-technical-profile.md) 將事件資料傳送至 [Application Insights](../azure-monitor/app/app-insights-overview.md)。
 - [Azure Active Directory](active-directory-technical-profile.md) - 針對 Azure Active Directory B2C 使用者管理提供支援。
-- [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) -提供使用 Azure MULTI-FACTOR AUTHENTICATION (MFA) 驗證電話號碼的支援。 
+- [Azure AD Multi-Factor Authentication](multi-factor-auth-technical-profile.md) -使用 Azure AD MULTI-FACTOR AUTHENTICATION (MFA) 提供驗證電話號碼的支援。 
 - [宣告轉換](claims-transformation-technical-profile.md) - 呼叫輸出宣告轉換以操作宣告值、驗證宣告，或為一組輸出宣告設定預設值。
 - [識別碼權杖提示](id-token-hint.md) -驗證 `id_token_hint` JWT 權杖簽章、簽發者名稱和權杖物件，並從輸入權杖中解壓縮宣告。
 - [JWT 權杖簽發者](jwt-issuer-technical-profile.md) - 發出會傳回給信賴憑證者應用程式的 JWT 權杖。
@@ -104,7 +104,7 @@ ms.locfileid: "90562871"
 </TechnicalProfile>
 ```
 
-**Aad->aad-userreadusingalternativesecurityid->aad-userreadusingalternativesecurityid-noerror**和**aad >aad-userreadusingalternativesecurityid**都不會指定所需的**通訊協定**元素，因為它是在**AAD 通用**技術設定檔中指定。
+**Aad->aad-userreadusingalternativesecurityid->aad-userreadusingalternativesecurityid-noerror** 和 **aad >aad-userreadusingalternativesecurityid** 都不會指定所需的 **通訊協定** 元素，因為它是在 **AAD 通用** 技術設定檔中指定。
 
 ```xml
 <TechnicalProfile Id="AAD-Common">

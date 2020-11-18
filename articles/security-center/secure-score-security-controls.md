@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: bcbad58935300c765fdcccb1701b64f239de43fd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: fd01e7e6853d69889d0ffba3d8775a0fd92f7cd2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357873"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842527"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -29,7 +29,7 @@ Azure 資訊安全中心有兩個主要目標：
 - 協助您瞭解目前的安全性狀況
 - 協助您有效率且有效地改善安全性
 
-安全中心的集中功能，可讓您達成這些目標的 **安全分數** 。
+安全中心的集中功能，可讓您達成這些目標的 **安全分數**。
 
 資訊安全中心會持續評估資源、訂用帳戶、組織的安全性問題。 然後將所有的發現彙總成一個分數，讓您可以立即得知目前的安全性情況：分數越高，風險層級越低。
 
@@ -39,7 +39,7 @@ Azure 資訊安全中心有兩個主要目標：
 
 若要提高安全性，請參閱「安全性中心」的建議頁面，以瞭解提高分數所需的未完成動作。 每個建議都包含可協助您補救特定問題的指示。
 
-建議會分組為 **安全性控制項** 。 每個控制項都是相關安全性建議的邏輯群組，並反映您的易受攻擊面。 只有在您補救控制項內單一資源的「所有」建議後，分數才會改善。 若要瞭解您的組織如何保護每個個別的受攻擊面，請參閱每個安全性控制的分數。
+建議會分組為 **安全性控制項**。 每個控制項都是相關安全性建議的邏輯群組，並反映您的易受攻擊面。 只有在您補救控制項內單一資源的「所有」建議後，分數才會改善。 若要瞭解您的組織如何保護每個個別的受攻擊面，請參閱每個安全性控制的分數。
 
 如需詳細資訊，請參閱下方的 [安全分數計算方式](secure-score-security-controls.md#how-your-secure-score-is-calculated) 。 
 
@@ -88,7 +88,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
 
 若要使用 ARG 來存取多個訂用帳戶的安全分數：
 
-1. 在 Azure 入口網站中，開啟 **Azure Resource Graph Explorer** 。
+1. 在 Azure 入口網站中，開啟 **Azure Resource Graph Explorer**。
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="啟動 Azure Resource Graph Explorer * * 建議頁面" :::
 
@@ -112,7 +112,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. 選取 [ **執行查詢** ]。
+1. 選取 [ **執行查詢**]。
 
 ## <a name="how-your-secure-score-is-calculated"></a>如何計算您的安全分數 
 
@@ -242,7 +242,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
     <td class="tg-lboi"; width=55%>- Azure SQL Database 伺服器上應啟用 Advanced data security<br>- 應在電腦上的 SQL server 上啟用 Advanced data security<br>- 應在虛擬機器上啟用 Advanced 威脅防護<br>- Azure App Service 方案上應啟用 Advanced 威脅防護<br>- 應在 Azure 儲存體帳戶上啟用 Advanced 威脅防護<br>- 應在 Azure Kubernetes Service 叢集上啟用 Advanced 威脅防護<br>- 應在 Azure Container Registry 登錄上啟用 Advanced 威脅防護<br>- 應在 Azure Key Vault 保存庫上啟用 Advanced 威脅防護</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">實作安全性最佳做法 (最高分數 0)</p></strong>現代的安全性最佳做法「假定」網路周邊有缺口。 基於這個理由，此控制項中的許多最佳做法都著重於管理身分識別。<br>遺失金鑰和認證是相當常見的問題。 <a href="/azure/key-vault/key-vault-overview">Azure Key Vault</a> 藉由加密金鑰、.pfx 檔案、密碼來保護金鑰和秘密。<br>虛擬私人網路 (VPN) 是存取虛擬機器的安全方式。 如果沒有 VPN 可用 ，請使用複雜的密碼和雙重要素驗證，例如 <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure 多重要素驗證</a>。 雙重要素驗證可避免只依賴使用者名稱和密碼而固有的弱點。<br>使用增強式驗證和授權平台是另一個最佳做法。 使用同盟身分識別可讓組織將已授權身分的管理委派他人。 當員工離職，而必須撤銷他們的存取權時，這很重要。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">實作安全性最佳做法 (最高分數 0)</p></strong>現代的安全性最佳做法「假定」網路周邊有缺口。 基於這個理由，此控制項中的許多最佳做法都著重於管理身分識別。<br>遺失金鑰和認證是相當常見的問題。 <a href="/azure/key-vault/key-vault-overview">Azure Key Vault</a> 藉由加密金鑰、.pfx 檔案、密碼來保護金鑰和秘密。<br>虛擬私人網路 (VPN) 是存取虛擬機器的安全方式。 如果 Vpn 無法使用，請使用複雜的複雜密碼和雙因素驗證，例如 <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure AD Multi-Factor Authentication</a>。 雙重要素驗證可避免只依賴使用者名稱和密碼而固有的弱點。<br>使用增強式驗證和授權平台是另一個最佳做法。 使用同盟身分識別可讓組織將已授權身分的管理委派他人。 當員工離職，而必須撤銷他們的存取權時，這很重要。</td>
     <td class="tg-lboi"; width=55%>- 應為您的訂用帳戶指定最多 3 位擁有者<br>- 應從您的訂用帳戶中移除具備讀取權限的外部帳戶<br>- 應為您的訂用帳戶中具有讀取權限的帳戶啟用 MFA<br>- 應限制存取具防火牆與虛擬網路設定的儲存體帳戶<br>- 除了 RootManageSharedAccessKey 外，應從事件中樞命名空間移除所有授權規則<br>- 應針為 SQL 伺服器佈建 Azure Active Directory 管理員<br>- 應啟用受控執行個體的進階資料安全性<br>- 應定義事件中樞執行個體的授權規則<br>- 儲存體帳戶應移轉至新的 Azure Resource Manager 資源<br>- 虛擬機器應移轉至新的 Azure Resource Manager 資源<br>- 子網路應該與網路安全性群組建立關聯<br>- [預覽] 應啟用 Windows 惡意探索防護 <br>- [預覽] 應安裝來賓設定代理程式<br>- 應使用網路安全性群組保護非網際網路面向的虛擬機器<br>- 應針對虛擬機器啟用 Azure 備份<br>- 應針對適用於 MariaDB 的 Azure 資料庫啟用地理位置冗余備份<br>- 應針對適用於 MySQL 的 Azure 資料庫啟用地理位置冗余備份<br>- 應針對適用於 PostgreSQL 的 Azure 資料庫啟用地理位置冗余備份<br>- PHP 應更新為您的 API 應用程式的最新版本<br>- PHP 應更新為您 web 應用程式的最新版本<br>- 您的 API 應用程式應更新為最新版本的 JAVA<br>- JAVA 應更新為您函數應用程式的最新版本<br>- JAVA 應更新為您 web 應用程式的最新版本<br>- Python 應更新為您的 API 應用程式的最新版本<br>- Python 應更新為您函數應用程式的最新版本<br>- Python 應更新為您 web 應用程式的最新版本<br>- SQL server 的審核保留期應設定為至少90天</td>
   </tr>
 </tbody>

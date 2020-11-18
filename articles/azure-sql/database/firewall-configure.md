@@ -5,27 +5,27 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789636"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841099"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-例如，當您在 Azure SQL Database 中建立新的伺服器，或在名為 *mysqlserver* 的 Azure Synapse Analytics 中，伺服器層級防火牆會封鎖可在 *mysqlserver.database.windows.net* ) 存取之伺服器 (的公用端點的所有存取權。 為了簡單起見， *SQL Database* 是用來參考先前在 SQL 資料倉儲)  (SQL Database 和 Azure Synapse Analytics。
+例如，當您在 Azure SQL Database 中建立新的伺服器，或在名為 *mysqlserver* 的 Azure Synapse Analytics 中，伺服器層級防火牆會封鎖可在 *mysqlserver.database.windows.net*) 存取之伺服器 (的公用端點的所有存取權。 為了簡單起見， *SQL Database* 是用來參考先前在 SQL 資料倉儲)  (SQL Database 和 Azure Synapse Analytics。
 
 > [!IMPORTANT]
-> 本文「不」適用於 *Azure SQL Database 受控執行個體* 。 如需網路設定的相關資訊，請參閱 [將您的應用程式連線至 AZURE SQL 受控執行個體](../managed-instance/connect-application-instance.md)。
+> 本文「不」適用於 *Azure SQL Database 受控執行個體*。 如需網路設定的相關資訊，請參閱 [將您的應用程式連線至 AZURE SQL 受控執行個體](../managed-instance/connect-application-instance.md)。
 >
 > Azure Synapse 僅支援伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。
 
@@ -63,11 +63,11 @@ ms.locfileid: "92789636"
 
 *某個資料庫的使用者是否應該完全與另一個資料庫隔離？*
 
-如果 *是* ，請使用資料庫層級 IP 防火牆規則來授與存取權。 此方法可避免使用伺服器層級 IP 防火牆規則，以允許透過防火牆存取所有資料庫。 這樣可以減少防禦的深度。
+如果 *是*，請使用資料庫層級 IP 防火牆規則來授與存取權。 此方法可避免使用伺服器層級 IP 防火牆規則，以允許透過防火牆存取所有資料庫。 這樣可以減少防禦的深度。
 
 *IP 位址的使用者是否需要存取所有資料庫？*
 
-如果 *是* ，請使用伺服器層級 IP 防火牆規則來減少您必須設定 IP 防火牆規則的次數。
+如果 *是*，請使用伺服器層級 IP 防火牆規則來減少您必須設定 IP 防火牆規則的次數。
 
 *設定 IP 防火牆規則的人員或小組是否只能透過 Azure 入口網站、PowerShell 或 REST API 取得存取權？*
 
@@ -98,7 +98,7 @@ ms.locfileid: "92789636"
 
 ### <a name="connections-from-inside-azure"></a>從 Azure 內部連接
 
-若要允許在 Azure 中裝載的應用程式連線到您的 SQL server，必須啟用 Azure 連接。 當來自 Azure 的應用程式嘗試連線到您的伺服器時，防火牆會驗證是否允許 Azure 連接。 您可以設定防火牆規則，並在 [ **防火牆和虛擬網路** ] 設定中，將 [ **允許 Azure 服務和資源存取此伺服器** ] 設定為 [ **開啟** ]，直接從 Azure 入口網站的分頁器開啟此選項。 如果不允許連接，則要求不會到達伺服器。
+若要允許在 Azure 中裝載的應用程式連線到您的 SQL server，必須啟用 Azure 連接。 當來自 Azure 的應用程式嘗試連線到您的伺服器時，防火牆會驗證是否允許 Azure 連接。 您可以設定防火牆規則，並在 [**防火牆和虛擬網路**] 設定中，將 [**允許 Azure 服務和資源存取此伺服器**] 設定為 [**開啟**]，直接從 Azure 入口網站的分頁器開啟此選項。 如果不允許連接，則要求不會到達伺服器。
 
 > [!IMPORTANT]
 > 此選項會將防火牆設定為允許所有來自 Azure 的連線，包括來自其他客戶之訂用帳戶的連接。 如果您選取此選項，請確定您的登入和使用者權限會限制只有授權的使用者才能存取。
@@ -138,17 +138,17 @@ ms.locfileid: "92789636"
 
     伺服器的 [防火牆設定] 頁面會隨即開啟。
 
-2. 選取工具列上的 [ **新增用戶端 IP** ]，以新增您所使用之電腦的 ip 位址，然後選取 [ **儲存** ]。 系統便會為目前的 IP 位址建立伺服器層級 IP 防火牆規則。
+2. 選取工具列上的 [ **新增用戶端 IP** ]，以新增您所使用之電腦的 ip 位址，然後選取 [ **儲存**]。 系統便會為目前的 IP 位址建立伺服器層級 IP 防火牆規則。
 
     ![設定伺服器層級 IP 防火牆規則](./media/firewall-configure/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>從伺服器總覽頁面
 
-您伺服器的 [總覽] 頁面隨即開啟。 它會顯示完整的伺服器名稱 (例如 *mynewserver20170403.database.windows.net* ) ，並提供進一步設定的選項。
+您伺服器的 [總覽] 頁面隨即開啟。 它會顯示完整的伺服器名稱 (例如 *mynewserver20170403.database.windows.net*) ，並提供進一步設定的選項。
 
-1. 若要從這個頁面設定伺服器層級規則，請從左側的 [ **設定** ] 功能表中選取 [ **防火牆** ]。
+1. 若要從這個頁面設定伺服器層級規則，請從左側的 [**設定**] 功能表中選取 [**防火牆**]。
 
-2. 選取工具列上的 [ **新增用戶端 IP** ]，以新增您所使用之電腦的 ip 位址，然後選取 [ **儲存** ]。 系統便會為目前的 IP 位址建立伺服器層級 IP 防火牆規則。
+2. 選取工具列上的 [ **新增用戶端 IP** ]，以新增您所使用之電腦的 ip 位址，然後選取 [ **儲存**]。 系統便會為目前的 IP 位址建立伺服器層級 IP 防火牆規則。
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>使用 Transact-sql 管理 IP 防火牆規則
 
@@ -174,7 +174,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-若要刪除伺服器層級 IP 防火牆規則，請執行 *sp_delete_firewall_rule* 預存程式。 下列範例會刪除規則 *ContosoFirewallRule* ：
+若要刪除伺服器層級 IP 防火牆規則，請執行 *sp_delete_firewall_rule* 預存程式。 下列範例會刪除規則 *ContosoFirewallRule*：
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
@@ -250,7 +250,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
   由於網路位址轉譯 (NAT) ，您的電腦用來連線到 Azure SQL Database 的 IP 位址，可能與您電腦 IP 配置設定中的 IP 位址不同。 若要查看您的電腦用來連接到 Azure 的 IP 位址：
     1. 登入入口網站。
     1. 移至裝載您資料庫的伺服器上的 [ **設定** ] 索引標籤。
-    1. **目前的用戶端 Ip 位址** 會顯示在 [ **允許的 ip 位址** ] 區段中。 針對允許的 **IP 位址** 選取 [ **新增** ]，以允許這部電腦存取伺服器。
+    1. **目前的用戶端 Ip 位址** 會顯示在 [**允許的 ip 位址**] 區段中。 針對允許的 **IP 位址** 選取 [**新增**]，以允許這部電腦存取伺服器。
 
 - **允許清單的變更尚未生效：**
 

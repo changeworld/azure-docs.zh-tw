@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410057"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842017"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -48,7 +48,7 @@ ms.locfileid: "94410057"
 
 在開始進行此檢查清單之前，請確定您不會在閱讀此檢查清單時遭到入侵。 您必須先保護特殊權限帳戶。
 
-攻擊者若掌控了特殊權限帳戶，將會造成極大的破壞，因此請務必先保護這些帳戶。 使用 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)或[條件式存取](../../active-directory/conditional-access/plan-conditional-access.md)，為組織中的所有系統管理員啟用並要求 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA)。 如果您尚未實作 MFA，請立即實作！ 這一點非常重要。
+攻擊者若掌控了特殊權限帳戶，將會造成極大的破壞，因此請務必先保護這些帳戶。 使用[Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)或[條件式存取](../../active-directory/conditional-access/plan-conditional-access.md)，針對組織中的所有系統管理員啟用和要求[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) 。 如果您尚未實作 MFA，請立即實作！ 這一點非常重要。
 
 全都準備好了嗎？ 那就開始進行此檢查清單吧。
 
@@ -59,9 +59,9 @@ ms.locfileid: "94410057"
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>確定組織使用的是強式驗證
 
-有鑑於入侵者經常會猜測、誘騙或以惡意程式碼竊取密碼，使用者也經常會重複使用密碼，所以請務必使用某種形式的強式認證來支援密碼 - 詳情請參閱 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
+由於密碼被猜測、誘騙、遭竊或重複使用，因此使用某種形式的強式認證來備份密碼是很重要的。深入瞭解 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
-若要輕鬆啟用基本層級的身分識別安全性，您可以搭配 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)來使用單鍵啟用。 安全性預設值會對租用戶中的所有使用者強制執行 Azure MFA，並封鎖來自整個舊版通訊協定租用戶的登入。
+若要輕鬆啟用基本層級的身分識別安全性，您可以搭配 [Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)來使用單鍵啟用。 安全性預設值會對租使用者中的所有使用者強制執行 Azure AD MFA，並封鎖來自整個租使用者的舊版通訊協定登入。
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>開始禁用常常受到攻擊的密碼，並關閉傳統的複雜性規則及到期規則。
 

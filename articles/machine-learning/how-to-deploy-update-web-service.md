@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
-ms.custom: deploy
-ms.openlocfilehash: 703f5e360261c47c443320459d601d65a5503f5a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: deploy, devx-track-azurecli
+ms.openlocfilehash: ddd075a5880899a065ee6eaaa4ff0636b6590370
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322430"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840775"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 web 服務
 
 在本文中，您將瞭解如何更新隨 Azure Machine Learning 部署的 web 服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程假設您已部署具有 Azure Machine Learning 的 web 服務。 如果您需要瞭解如何部署 web 服務，請遵循下列 [步驟](how-to-deploy-and-where.md)。
 

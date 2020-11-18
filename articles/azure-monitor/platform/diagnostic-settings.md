@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489433"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842425"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可針對 azure 資源及其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，並通常儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定，以將平臺計量和平臺記錄傳送至不同目的地的詳細資料。
@@ -40,7 +40,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 > 若要解決這些特定度量的限制，建議您使用 [ [計量 REST API](/rest/api/monitor/metrics/list) 手動將它們解壓縮，並使用 [Azure 監視器資料收集器 API](data-collector-api.md)將它們匯入 Azure 監視器記錄中。  
 
 
-## <a name="destinations"></a>Destinations
+## <a name="destinations"></a>目的地
 您可以將平臺記錄和計量傳送至下表中的目的地。 
 
 | Destination | 描述 |
@@ -54,7 +54,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
 在建立診斷設定之前，必須先建立診斷設定的任何目的地。 只要進行設定的使用者有這兩個訂用帳戶的適當 RBAC 存取權，就不一定要將目的地與傳送記錄的資源位於相同的訂用帳戶中。 下表提供每個目的地的獨特需求，包括任何區域限制。
 
-| Destination | 需求 |
+| Destination | 規格需求 |
 |:---|:---|
 | Log Analytics 工作區 | 工作區不一定要與受監視的資源位於相同的區域中。|
 | 事件中樞 | 命名空間的共用存取原則會定義串流機制擁有的許可權。 串流至事件中樞需要管理、傳送和接聽的許可權。 若要更新診斷設定以包含串流，您必須具有該事件中樞授權規則的 ListKey 許可權。<br><br>如果資源是區域，事件中樞命名空間必須位於與所監視資源相同的區域中。 |
@@ -97,9 +97,9 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
     ![新增診斷設定](media/diagnostic-settings/setting-new-blank.png)
 
-4. **類別目錄詳細資料 (路由) ** -核取您想要傳送給稍後指定之目的地的每個資料類別的核取方塊。 每個 Azure 服務的類別清單各有不同。
+4. **類別目錄詳細資料 (路由)** -核取您想要傳送給稍後指定之目的地的每個資料類別的核取方塊。 每個 Azure 服務的類別清單各有不同。
 
-     - **AllMetrics** 會將資源的平臺計量路由至 Azure 記錄存放區，但會以記錄形式傳送。 這些計量通常只會傳送至 Azure 監視器計量時間序列資料庫。 將它們傳送至 Azure 監視器記錄存放區 (可透過 Log Analytics 搜尋，) 您將它們整合到查詢中，以搜尋其他記錄檔。 並非所有資源類型都可使用此選項。 當支援時， [Azure 監視器支援的計量](metrics-supported.md) 會列出針對哪些資源類型收集的計量。
+     - **AllMetrics** 會將資源的平臺計量路由至 Azure 記錄存放區，但會以記錄形式傳送。 這些計量通常只會傳送至 Azure 監視器計量時間序列資料庫。 將它們傳送到可透過 Log) Analytics 搜尋的 Azure 監視器記錄存放區 (，可協助您將它們整合到查詢中，以搜尋其他記錄。 並非所有資源類型都可使用此選項。 當支援時， [Azure 監視器支援的計量](metrics-supported.md) 會列出針對哪些資源類型收集的計量。
 
        > [!NOTE]
        > 請參閱本文稍早的將計量路由至 Azure 監視器記錄的限制。  

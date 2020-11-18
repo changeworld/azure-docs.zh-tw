@@ -13,17 +13,17 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 3b81572266f6ee5bd90662a98988d41479f399cc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675002"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841122"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>使用多重要素 Azure Active Directory 驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 支援使用 *具有 MFA 驗證的 (通用* ，從 [SQL Server Management Studio) SSMS Azure Active Directory](/sql/ssms/download-sql-server-management-studio-ssms)連接。 本文討論各種驗證選項之間的差異，以及在 Azure Active Directory (Azure AD) 的 Azure SQL 中使用通用驗證相關聯的限制。
+Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 支援使用 *具有 MFA 驗證的 (通用*，從 [SQL Server Management Studio) SSMS Azure Active Directory](/sql/ssms/download-sql-server-management-studio-ssms)連接。 本文討論各種驗證選項之間的差異，以及在 Azure Active Directory (Azure AD) 的 Azure SQL 中使用通用驗證相關聯的限制。
 
 **下載最新的 SSMS** - 在用戶端電腦上，從 [下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 下載最新版的 SSMS。 
 
@@ -41,13 +41,13 @@ Azure AD 有兩種非互動式驗證模型，可用於許多不同的應用程�
 - `Azure Active Directory - Password`
 - `Azure Active Directory - Integrated`
 
-也支援 Azure Multi-Factor Authentication (MFA) 的互動式方法如下： 
+也支援 Azure AD Multi-Factor Authentication (MFA) 的互動式方法如下： 
 
 - `Azure Active Directory - Universal with MFA`
 
-Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用者對簡單登入程序的需求。 它利用各種簡單的驗證選項來提供強大的驗證 (包括電話、簡訊、含有 Pin 的智慧卡或行動應用程式通知)，讓使用者能夠選擇自己喜歡的方式。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。
+Azure AD MFA 有助於保護對資料和應用程式的存取，同時滿足使用者對簡單登入程式的需求。 它利用各種簡單的驗證選項來提供強大的驗證 (包括電話、簡訊、含有 Pin 的智慧卡或行動應用程式通知)，讓使用者能夠選擇自己喜歡的方式。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。
 
-如需 Azure Multi-Factor Authentication 的說明，請參閱 [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
+如需 Azure AD Multi-Factor Authentication 的說明，請參閱 [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。
 如需了解組態步驟，請參閱[設定適用於 SQL Server Management Studio 的 Azure SQL Database 多重要素驗證](authentication-mfa-ssms-configure.md)。
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD 網域名稱或租用戶 ID 參數
@@ -58,7 +58,7 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
 
 
 1. 在 SSMS 中開啟連接。 輸入您的伺服器名稱，然後選取 [ **具有 MFA 驗證的 Azure Active Directory-通用** ]。 新增您想要用來登入的 **使用者名稱** 。
-1. 選取 [ **選項** ] 方塊，然後移至 [ **連接屬性** ] 索引標籤。在 [ **連接到資料庫** ] 對話方塊中，完成資料庫的對話方塊。 核取 [AD 網域名稱或租用戶 ID]  方塊並提供驗證授權單位，如網域名稱 ( **contosotest.onmicrosoft.com** ) 或租用戶 ID 的 GUID。 
+1. 選取 [ **選項** ] 方塊，然後移至 [ **連接屬性** ] 索引標籤。在 [ **連接到資料庫** ] 對話方塊中，完成資料庫的對話方塊。 核取 [AD 網域名稱或租用戶 ID]  方塊並提供驗證授權單位，如網域名稱 (**contosotest.onmicrosoft.com**) 或租用戶 ID 的 GUID。 
 
    ![[連線屬性] 索引標籤的螢幕擷取畫面，其中反白顯示 [連接到資料庫] 和 [AD 功能變數名稱] 或 [租使用者識別碼]](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
@@ -76,7 +76,7 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
 建立資料庫使用者之後，使用者就 `steve@gmail.com` 可以 `MyDatabase` 使用 SSMS 驗證選項來登入 `Azure Active Directory – Universal with MFA` 。 依預設， `usergroup` 只有 connect 許可權。 任何進一步的資料存取都必須由具有足夠許可權的使用者在資料庫中 [授](/sql/t-sql/statements/grant-transact-sql) 與。 
 
 > [!NOTE]
-> 針對 SSMS 17. x， `steve@gmail.com` 您必須在 [連線屬性] 對話方塊中，檢查 [ **ad 功能變數名稱] 或 [租使用者識別碼** ] 方塊，然後新增 ad 功能變數名稱，才能使用做為來賓使用者 `contosotest.onmicrosoft.com` 。 **Connection Property** 只有 **具有 MFA 驗證的 Azure Active Directory 通用** ，才支援 **AD 功能變數名稱或租使用者識別碼** 選項。 否則，核取方塊會呈現灰色。
+> 針對 SSMS 17. x， `steve@gmail.com` 您必須在 [連線屬性] 對話方塊中，檢查 [ **ad 功能變數名稱] 或 [租使用者識別碼**] 方塊，然後新增 ad 功能變數名稱，才能使用做為來賓使用者 `contosotest.onmicrosoft.com` 。 **Connection Property** 只有 **具有 MFA 驗證的 Azure Active Directory 通用**，才支援 **AD 功能變數名稱或租使用者識別碼** 選項。 否則，核取方塊會呈現灰色。
 
 ## <a name="universal-authentication-limitations"></a>通用驗證限制
 
@@ -100,4 +100,4 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
 - [將 BACPAC 檔案匯入至新的資料庫](database-import.md)  
 - [從 BACPAC 檔案匯出資料庫](database-export.md)  
 - C# 介面 [IUniversalAuthProvider 介面](/dotnet/api/microsoft.sqlserver.dac.iuniversalauthprovider)  
-- 搭配使用 **Azure Active Directory-通用與 MFA** 驗證時，從 [SSMS 17.3](/sql/ssms/download-sql-server-management-studio-ssms)開始會提供 ADAL 追蹤。 預設為關閉，您可以使用 [Azure 服務]  、[Azure 雲端]  、[ADAL 輸出視窗的追蹤層級]  下的 [工具]  、[選項]  功能表，然後啟用 [檢視]  功能表中的 [輸出]  ，以開啟 ADAL 追蹤功能。 選取 [Azure Active Directory 選項]  時，可以在輸出視窗中取得追蹤結果。
+- 搭配使用 **Azure Active Directory-通用與 MFA** 驗證時，從 [SSMS 17.3](/sql/ssms/download-sql-server-management-studio-ssms)開始會提供 ADAL 追蹤。 預設為關閉，您可以使用 [Azure 服務]、[Azure 雲端]、[ADAL 輸出視窗的追蹤層級] 下的 [工具]、[選項] 功能表，然後啟用 [檢視] 功能表中的 [輸出]，以開啟 ADAL 追蹤功能。 選取 [Azure Active Directory 選項] 時，可以在輸出視窗中取得追蹤結果。

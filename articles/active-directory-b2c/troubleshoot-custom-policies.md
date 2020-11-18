@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384952"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840248"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>針對 Azure AD B2C 自訂原則和身分識別體驗架構進行疑難排解
 
@@ -43,7 +43,7 @@ XML 原則檔的驗證會在上傳時自動執行。 大部分的錯誤會導致
 
 * ClaimType 值可能拼字錯誤，或不存在於結構描述中。
 * ClaimType 值至少必須定義於原則內的其中一個檔案中。
-    例如： `<ClaimType Id="issuerUserId">`
+    例如：`<ClaimType Id="issuerUserId">`
 * 如果 ClaimType 定義於擴充檔案中，但也用於基底檔案的 TechnichalProfile 值中，則上傳基底檔案會導致錯誤。
 
 > 錯誤程式碼片段︰`...makes a reference to a ClaimsTransformation with id...`
@@ -64,7 +64,7 @@ XML 原則檔的驗證會在上傳時自動執行。 大部分的錯誤會導致
 
 * 若要追蹤用戶端瀏覽器和 Azure AD B2C 之間的訊息交換，請使用 [Fiddler](https://www.telerik.com/fiddler)。 它可協助您了解使用者旅程圖在協調流程步驟中的何處失敗。
 
-* 在[開發模式](troubleshoot-with-application-insights.md)中，請使用 **Application Insights** 來追蹤身分識別體驗架構使用者旅程圖的活動。 在 **開發模式**中，您可以觀察 Identity Experience Framework 之間的宣告交換，以及技術設定檔（例如身分識別提供者、API 型服務、Azure AD B2C 使用者目錄和其他服務，例如 Azure Multi-Factor Authentication）所定義的各種宣告提供者。
+* 在 [開發模式](troubleshoot-with-application-insights.md)中，請使用 **Application Insights** 來追蹤身分識別體驗架構使用者旅程圖的活動。 在 **開發模式** 中，您可以觀察 Identity Experience Framework 之間的宣告交換，以及技術設定檔所定義的各種宣告提供者，例如身分識別提供者、API 型服務、Azure AD B2C 的使用者目錄和其他服務，例如 Azure AD Multi-Factor Authentication。
 
 ## <a name="recommended-practices"></a>建議的做法
 

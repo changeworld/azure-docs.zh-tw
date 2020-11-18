@@ -4,12 +4,12 @@ description: 深入瞭解 Azure container registry 的待用加密，以及如�
 ms.topic: article
 ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ad81a94910cb1ed09634801f8706182e17947225
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940662"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842561"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客戶管理的金鑰來加密登錄
 
@@ -17,7 +17,7 @@ ms.locfileid: "91940662"
 
 透過與 [Azure Key Vault](../key-vault/general/overview.md) 的整合，可支援使用客戶管理的金鑰進行伺服器端加密。 您可以建立自己的加密金鑰，然後將其儲存在金鑰保存庫中，或是使用 Azure Key Vault 的 API 來產生金鑰。 您也可以使用 Azure Key Vault 來稽核金鑰使用方式。
 
-**進階**容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
+**進階** 容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
 
 
 ## <a name="things-to-know"></a>須知事項
@@ -210,9 +210,9 @@ az acr encryption show --name <registry-name>
 
 ### <a name="create-a-key-vault"></a>建立金鑰保存庫
 
-如需建立金鑰保存庫的步驟，請參閱[快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密](../key-vault/secrets/quick-create-portal.md)。
+如需建立金鑰保存庫的步驟，請參閱 [快速入門：使用 Azure 入口網站建立 Azure Key Vault](../key-vault/general/quick-create-portal.md)。
 
-為客戶管理的金鑰建立金鑰保存庫時，請在 [基本概念] 索引標籤中，啟用下列保護設定：**虛刪除**和**清除保護**。 這些設定可防止意外刪除金鑰或金鑰保存庫而造成的資料遺失。
+為客戶管理的金鑰建立金鑰保存庫時，請在 [基本概念] 索引標籤中，啟用下列保護設定：**虛刪除** 和 **清除保護**。 這些設定可防止意外刪除金鑰或金鑰保存庫而造成的資料遺失。
 
 ![在 Azure 入口網站中建立金鑰保存庫](./media/container-registry-customer-managed-keys/create-key-vault.png)
 
@@ -231,9 +231,9 @@ az acr encryption show --name <registry-name>
  或者，您也可以使用 [AZURE RBAC Key Vault 的](../key-vault/general/rbac-guide.md) (預覽版) 將許可權指派給身分識別，以存取金鑰保存庫。 例如，將 Key Vault 加密服務加密角色指派給身分識別。
 
 1. 瀏覽至您的金鑰保存庫。
-1. 選取 [**存取控制] (IAM) **  >  **+**[新增  >  **新增角色指派**]。
+1. 選取 [**存取控制] (IAM)**  >  **+**[新增  >  **新增角色指派**]。
 1. 在 [ **新增角色指派** ] 視窗中：
-    1. 選取 **Key Vault 加密服務加密 (預覽) ** 角色。 
+    1. 選取 **Key Vault 加密服務加密 (預覽)** 角色。 
     1. 將存取權指派給 **使用者指派的受控識別**。
     1. 選取使用者指派的受控識別的資源名稱，然後選取 [ **儲存**]。
 
@@ -249,9 +249,9 @@ az acr encryption show --name <registry-name>
 
 1. 選取 [建立資源] > [容器] > [容器登錄]。
 1. 在 [基本概念] 索引標籤中，選取或建立資源群組，然後輸入登錄名稱。 在 **SKU** 中，選取 [進階]。
-1. 在 [加密] 索引標籤的**客戶管理的金鑰**中，選取 [已啟用]。
-1. 在**身分識別**中，選取您建立的受控識別。
-1. 在**加密**中，選取 [從 Key Vault 選取]。
+1. 在 [加密] 索引標籤的 **客戶管理的金鑰** 中，選取 [已啟用]。
+1. 在 **身分識別** 中，選取您建立的受控識別。
+1. 在 **加密** 中，選取 [從 Key Vault 選取]。
 1. 在 [從 Azure Key Vault 選取金鑰] 視窗中，選取您在上一節中建立的金鑰保存庫、金鑰及和版本。
 1. 在 [加密] 索引標籤中，選取 [檢閱+建立]。
 1. 選取 [建立] 以部署登錄執行個體。
@@ -443,7 +443,7 @@ az acr encryption rotate-key \
 
 ### <a name="portal"></a>入口網站
 
-使用登錄的**加密**設定來更新用於客戶管理金鑰的金鑰版本、金鑰、金鑰保存庫或身分識別設定。
+使用登錄的 **加密** 設定來更新用於客戶管理金鑰的金鑰版本、金鑰、金鑰保存庫或身分識別設定。
 
 例如，若要產生並設定新的金鑰版本：
 
@@ -486,7 +486,7 @@ az keyvault delete-policy \
 1. 在入口網站中，瀏覽到您的登錄。
 1. 選取 [設定] >  [識別]。
 1. 在 [系統指派] 下，將 [狀態] 設定為 [開啟]。 選取 [儲存]。
-1. 複製身分識別的**物件識別碼**。
+1. 複製身分識別的 **物件識別碼**。
 
 若要將 Key Vault 存取權授與該身分識別：
 
@@ -500,7 +500,7 @@ az keyvault delete-policy \
 
 1. 在入口網站中，瀏覽到您的登錄。
 1. 在 [設定]下，選取 [加密] > [變更金鑰]。
-1. 在**身分識別**中，選取 [系統指派]，然後選取 [儲存]。
+1. 在 **身分識別** 中，選取 [系統指派]，然後選取 [儲存]。
 
 ### <a name="enable-key-vault-bypass"></a>啟用金鑰保存庫略過
 
