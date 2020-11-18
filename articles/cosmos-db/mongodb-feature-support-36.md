@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7fd52376e6b2d435e3ac6a60243f85ab34e59381
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412922"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635580"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>適用於 MongoDB (3.6 版) 的 Azure Cosmos DB API：支援的功能和語法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -576,7 +576,7 @@ Cosmos DB 支援以文件時間戳記為基礎的存留時間 (TTL)。 前往 [A
 
 ## <a name="user-and-role-management"></a>使用者和角色管理
 
-Cosmos DB 尚不支援使用者和角色。 不過，Cosmos DB 支援可透過 [Azure 入口網站](https://portal.azure.com) ([連接字串] 頁面) 取得的角色型存取控制 (RBAC) 及讀寫和唯讀密碼/金鑰。
+Cosmos DB 尚不支援使用者和角色。 不過，Cosmos DB 支援可透過 [Azure 入口網站](https://portal.azure.com) ([連接字串] 頁面) 取得的 Azure 角色型存取控制 (Azure RBAC) 及讀寫和唯讀密碼/金鑰。
 
 ## <a name="replication"></a>複寫
 

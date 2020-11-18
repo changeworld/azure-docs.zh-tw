@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0dcf05f829cfcdc79fcd7be903b96fb601c095a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7a594d42485510a525ce4e3c7f03b432554100f8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378597"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650592"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>快速入門：Azure Active Directory 中的群組命名原則
 
@@ -34,26 +34,26 @@ ms.locfileid: "92378597"
 ## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>在 Azure 入口網站中設定群組命名原則
 
 1. 使用使用者管理員帳戶登入 [Azure AD 系統管理中心](https://aad.portal.azure.com)。
-1. 選取 [群組]  ，然後選取 [命名原則]  以開啟 [命名原則] 頁面。
+1. 選取 [群組]，然後選取 [命名原則] 以開啟 [命名原則] 頁面。
 
     ![在管理中心開啟 [命名原則] 頁面](./media/groups-quickstart-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>檢視或編輯前置詞後置詞命名原則
 
-1. 在 [命名原則]  頁面上，選取 [群組命名原則]  。
+1. 在 [命名原則] 頁面上，選取 [群組命名原則]。
 1. 您可以選取您想要在命名原則時強制執行的屬性或字串，以個別檢視或編輯目前的前置詞或後置詞命名原則。
-1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]  。 您同時可以刪除多個項目。
-1. 選取 [儲存]  可讓您對原則所做的變更生效。
+1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]。 您同時可以刪除多個項目。
+1. 選取 [儲存] 可讓您對原則所做的變更生效。
 
 ### <a name="view-or-edit-the-custom-blocked-words"></a>檢視或編輯自訂封鎖字組
 
-1. 在 [命名原則]  頁面上，選取 [封鎖的字組]  。
+1. 在 [命名原則] 頁面上，選取 [封鎖的字組]。
 
     ![編輯和上傳命名原則的封鎖字組清單](./media/groups-quickstart-naming-policy/blockedwords.png)
 
-1. 選取 [下載]  可檢視或編輯目前的自訂封鎖字組清單。
+1. 選取 [下載] 可檢視或編輯目前的自訂封鎖字組清單。
 1. 選取 [檔案] 圖示可上傳新的自訂封鎖字組清單。
-1. 選取 [儲存]  可讓您對原則所做的變更生效。
+1. 選取 [儲存] 可讓您對原則所做的變更生效。
 
 就這麼簡單。 您已設定命名原則並新增自訂封鎖字組。
 
@@ -61,7 +61,7 @@ ms.locfileid: "92378597"
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>使用 Azure 入口網站移除命名原則
 
-1. 在 [命名原則]  頁面上，選取 [刪除原則]  。
+1. 在 [命名原則] 頁面上，選取 [刪除原則]。
 1. 確認刪除之後，命名原則就會遭到移除，包括所有前置詞後置詞命名原則以及任何自訂封鎖字組。
 
 ## <a name="next-steps"></a>後續步驟

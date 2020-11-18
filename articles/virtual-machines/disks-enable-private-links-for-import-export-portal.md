@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 1cf6c6516e01774d0345a3f75f6f1c2826451dce
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 68a308952b63d15aa6db90021400f826ef575c0c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289856"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537181"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 入口網站，透過 Private Link 限制受控磁碟的匯入/匯出存取
 
@@ -27,13 +27,10 @@ ms.locfileid: "93289856"
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>區域可用性
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
 
 ## <a name="create-a-disk-access-resource"></a>建立磁碟存取資源
 
-1. 登入 Azure 入口網站，然後使用 [此連結](https://aka.ms/disksprivatelinks)瀏覽至 **磁碟存取** 。
+1. 登入 Azure 入口網站，然後使用 [此連結](https://aka.ms/disksprivatelinks)瀏覽至 **磁碟存取**。
 
     > [!IMPORTANT]
     > 您必須使用[提供的連結](https://aka.ms/disksprivatelinks)瀏覽至 [磁碟存取] 刀鋒視窗。 若未使用此連結，則「磁碟存取」目前不會顯示在公用入口網站中。
@@ -59,7 +56,7 @@ ms.locfileid: "93289856"
 
 1. 選取資源群組
 1. 填入名稱，並選取與您磁碟存取資源建立位置相同的區域。
-1. 完成時，選取 下一步: **資源 >**
+1. 完成時，選取 下一步:**資源 >**
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="私人端點建立工作流程，第一個刀鋒視窗的螢幕擷取畫面。如果您未選取適當的區域，稍後可能會遇到問題。":::
 
@@ -67,7 +64,7 @@ ms.locfileid: "93289856"
 1. 在 [資源類型] 中，選取 [Microsoft.Compute/diskAccesses]
 1. 針對 [資源]，選取您稍早建立的磁碟存取資源
 1. 將 [目標子資源] 保留為 **磁碟**
-1. 選取 下一步： **組態 >** 。
+1. 選取 下一步：**組態 >** 。
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="私人端點建立工作流程，第二個刀鋒視窗的螢幕擷取畫面。已反白顯示所有值 (資源類型、資源、目標子資源)":::
 

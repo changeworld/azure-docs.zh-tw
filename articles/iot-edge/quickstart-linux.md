@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3328fa7d71138ba75fac0c2aed11d7a85081d03a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 720a4d14a73350d98b3f9054f748b93d296be11b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748719"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579246"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置
 
@@ -69,7 +69,7 @@ ms.locfileid: "92748719"
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   如果因您的訂用帳戶中已有免費中樞而發生錯誤，請將 SKU 變更為 **S1** 。 每個訂用帳戶只能有一個免費的 IoT 中樞。 如果您收到無法使用 IoT 中樞名稱的錯誤，則表示其他人已經有該名稱的中樞。 請嘗試新的名稱。
+   如果因您的訂用帳戶中已有免費中樞而發生錯誤，請將 SKU 變更為 **S1**。 每個訂用帳戶只能有一個免費的 IoT 中樞。 如果您收到無法使用 IoT 中樞名稱的錯誤，則表示其他人已經有該名稱的中樞。 請嘗試新的名稱。
 
 ## <a name="register-an-iot-edge-device"></a>註冊 IoT Edge 裝置
 
@@ -116,7 +116,15 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
 * 針對 Bash 或 Cloud Shell 使用者，請將下列命令複製到文字編輯器 (以您的資訊取代預留位置文字)，然後複製到您的 Bash 或 Cloud Shell 視窗：
 
    ```azurecli-interactive
-   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
+   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password'
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * 針對 PowerShell 使用者，請將下列命令複製到您的 PowerShell 視窗，然後以您自己的資訊取代預留位置文字：
@@ -136,12 +144,12 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
 
 | 參數 | 描述 |
 | --------- | ----------- |
-| **resource-group** | 將在其中建立資源的資源群組。 使用我們在本文中使用的預設 **IoTEdgeResources** ，或提供您訂用帳戶中現有資源群組的名稱。 |
+| **resource-group** | 將在其中建立資源的資源群組。 使用我們在本文中使用的預設 **IoTEdgeResources**，或提供您訂用帳戶中現有資源群組的名稱。 |
 | **template-uri** | 我們所用 Resource Manager 範本的指標。 |
 | **dnsLabelPrefix** | 將用來建立虛擬機器主機名稱的字串。 使用範例 **my-edge-vm** 或提供新的字串。 |
 | **adminUsername** | 虛擬機器管理帳戶的使用者名稱。 使用範例 **azureUser** 或提供新的使用者名稱。 |
 | **deviceConnectionString** | IoT 中樞中裝置身分識別的連接字串，用來設定虛擬機器上的 IoT Edge 執行階段。 此參數內的 CLI 命令會為您抓取連接字串。 以您的 IoT 中樞名稱取代預留位置文字。 |
-| **authenticationType** | 管理帳戶的驗證方法。 本快速入門會使用 **密碼** 驗證，但您也可以將此參數設定為 **sshPublicKey** 。 |
+| **authenticationType** | 管理帳戶的驗證方法。 本快速入門會使用 **密碼** 驗證，但您也可以將此參數設定為 **sshPublicKey**。 |
 | **adminPasswordOrKey** | 管理帳戶的 SSH 金鑰密碼或值。 以安全密碼取代預留位置文字。 您的密碼長度必須至少有 12 個字元，而且有下列四項中的三項：小寫字元、大寫字元、數字和特殊字元。 |
 
 部署完成之後，您應該會在 CLI 中收到 JSON 格式的輸出，其中包含連線到虛擬機器的 SSH 資訊。 複製 [輸出] 區段的 [公用 SSH] 項目值：

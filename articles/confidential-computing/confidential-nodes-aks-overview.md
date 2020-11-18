@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125436"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564169"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes Service 上的機密運算節點 (公開預覽)
 
@@ -61,10 +61,10 @@ AKS 支援透過程式設計成在機密節點上執行，並使用透過 SDK �
 
 [機密容器快速入門範例](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU 清單](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU 清單](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

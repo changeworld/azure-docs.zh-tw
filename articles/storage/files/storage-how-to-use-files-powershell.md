@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2d67d3d695ce6ba90e01603e262fb014fffc9709
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8b4bd9ece5f010f1294356ad4673543834e5076a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561562"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626906"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及管理 Azure 檔案共用 
 本指南會逐步說明透過 PowerShell 來使用 [Azure 檔案共用](storage-files-introduction.md)的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準的伺服器訊息區 (SMB) 通訊協定、網路檔案系統 (NFS) 通訊協定 (預覽)，並可橫跨多部機器、應用程式和執行個體來啟用檔案共用。 
@@ -26,7 +26,7 @@ ms.locfileid: "90561562"
 ## <a name="create-a-resource-group"></a>建立資源群組
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 如果您尚未擁有 Azure 資源群組，則可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Cmdlet 來建立一個新資源群組。 
 
-下列範例會在「美國西部 2」區域建立名為 myResourceGroup** 的資源群組：
+下列範例會在「美國西部 2」區域建立名為 myResourceGroup 的資源群組：
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 儲存體帳戶是可供您用來部署 Azure 檔案共用的共用儲存體集區。 儲存體帳戶可包含無限制數目的共用，而共用可儲存無限制數目的檔案，最多可達儲存體帳戶的容量限制。 本範例會建立一般用途第 2 版 (GPv2 儲存體帳戶)，其可以在硬碟 (HDD) 轉動式媒體上儲存標準 Azure 檔案共用或其他儲存體資源 (例如 Blob 或佇列)。 Azure 檔案儲存體也支援進階固態硬碟 (SSD)；FileStorage 儲存體帳戶中可建立進階 Azure 檔案共用。
 
-此範例會使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet 來建立儲存體帳戶。 儲存體帳戶的名稱為 mystorageaccount\<random number>**，而且該儲存體帳戶的參考會儲存在 **$storageAcct** 變數中。 儲存體帳戶名稱必須是唯一的，因此，請使用 `Get-Random` 為名稱附加一個數字，使其成為唯一名稱。 
+此範例會使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet 來建立儲存體帳戶。 儲存體帳戶的名稱為 mystorageaccount\<random number>，而且該儲存體帳戶的參考會儲存在 **$storageAcct** 變數中。 儲存體帳戶名稱必須是唯一的，因此，請使用 `Get-Random` 為名稱附加一個數字，使其成為唯一名稱。 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -70,10 +70,10 @@ New-AzRmStorageShare `
     -QuotaGiB 1024 | Out-Null
 ```
 
-共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
+共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
 
 ## <a name="use-your-azure-file-share"></a>使用您的 Azure 檔案共用
-Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾的方法：業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)和[檔案 REST 通訊協定](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api)。 
+Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾的方法：業界標準[伺服器訊息區 (SMB) 通訊協定](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)和[檔案 REST 通訊協定](/rest/api/storageservices/file-service-rest-api)。 
 
 若要使用 SMB 掛接檔案共用，請根據您的作業系統參閱下列文件：
 - [Windows](storage-how-to-use-files-windows.md)
@@ -193,7 +193,7 @@ Get-AzStorageFile `
 ## <a name="create-and-manage-share-snapshots"></a>建立及管理共用快照集
 可以使用 Azure 檔案共用來執行的另一項實用工作，是建立共用快照集。 快照集會保留 Azure 檔案共用的時間點。 共用快照集類似於您可能已經很熟悉的下列作業系統技術：
 
-- Windows 檔案系統的[磁碟區陰影複製服務 (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)，例如 NTFS 和 ReFS。
+- Windows 檔案系統的[磁碟區陰影複製服務 (VSS)](/windows/desktop/VSS/volume-shadow-copy-service-portal)，例如 NTFS 和 ReFS。
 - Linux 系統的[邏輯磁碟區管理員 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照集。
 - macOS 的 [Apple 檔案系統 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照集。 
 

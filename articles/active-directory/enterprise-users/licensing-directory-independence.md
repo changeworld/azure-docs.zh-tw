@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/29/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db812fb9c1503771bec0b1795ee8c15bb70014a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b35c8630f47910c61e169d405c2117e53d0d536e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378589"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650522"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>了解多個 Azure Active Directory 組織的互動方式
 
@@ -47,7 +47,7 @@ ms.locfileid: "92378589"
 
 ## <a name="add-an-azure-ad-organization"></a>新增 Azure AD 組織
 
-若要在 Azure 入口網站中新增 Azure AD 組織，請使用 Azure AD 全域管理員的帳戶登入  。
+若要在 Azure 入口網站中新增 Azure AD 組織，請使用 Azure AD 全域管理員的帳戶登入[Azure 入口網站](https://portal.azure.com)，然後選取 [新增]。
 
 > [!NOTE]
 > 與其他 Azure 資源不同，Azure AD 組織並非 Azure 訂用帳戶的子資源。 如果您的 Azure 訂用帳戶被取消或到期，您仍然可以使用 Azure PowerShell、Microsoft Graph API 或 Microsoft 365 系統管理中心來存取 Azure AD 組織的資料。 您也可以[將另一個訂用帳戶與組織建立關聯](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。

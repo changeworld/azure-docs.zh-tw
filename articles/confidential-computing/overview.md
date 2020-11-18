@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90967586"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560820"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的機密運算
 
@@ -37,7 +37,7 @@ Azure 機密運算可讓您在雲端處理敏感性資料時加以隔離。 許�
 - 如何防止公司內部具有特殊權限的系統管理員造成安全性威脅？
 - 還有哪些方法可防止第三方存取敏感性客戶資料？
 
-Microsoft Azure 可協助您將受攻擊面最小化，以獲得更強大的資料保護。 Azure 已提供許多工具，以透過用戶端加密和伺服器端加密等模型來保護[**待用資料**](../security/fundamentals/encryption-atrest.md)。 此外，Azure 還提供一些機制，以透過 TLS 和 HTTPS 等安全通訊協定來加密[**傳輸中的資料**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)。 此頁面引進第三階段的資料加密 - 加密**使用中的資料**。
+Microsoft Azure 可協助您將受攻擊面最小化，以獲得更強大的資料保護。 Azure 已提供許多工具，以透過用戶端加密和伺服器端加密等模型來保護 [**待用資料**](../security/fundamentals/encryption-atrest.md)。 此外，Azure 還提供一些機制，以透過 TLS 和 HTTPS 等安全通訊協定來加密 [**傳輸中的資料**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)。 此頁面引進第三階段的資料加密 - 加密 **使用中的資料**。
 
 ## <a name="introduction-to-confidential-computing"></a>機密運算簡介  
 
@@ -84,7 +84,7 @@ Azure 機密運算可讓您在虛擬化環境中運用機密運算功能。 您�
 
 ### <a name="azure-security"></a>Azure 安全性 
 透過驗證方法和硬體繫結金鑰管理，確保您的工作負載安全。 
-- 證明：[Microsoft Azure 證明 (預覽)](https://docs.microsoft.com/azure/attestation/overview)
+- 證明：[Microsoft Azure 證明 (預覽)](../attestation/overview.md)
 - 金鑰管理：受控 HSM (預覽)
 
 ### <a name="develop"></a>開發

@@ -7,20 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c0edd85ea4478ac95ea854b73717056d52a9098b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378614"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647557"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 
@@ -35,9 +35,9 @@ ms.locfileid: "92378614"
 
 ## <a name="terms-and-definitions"></a>詞彙和定義
 
-* **自助式註冊** ：這是使用者用以註冊雲端服務的方法，系統會根據其電子郵件網域在 Azure AD 中自動為其建立身分識別。
-* **非受控 Azure AD 目錄** ：這是建立身分識別的目錄。 非受控目錄是沒有全域管理員的目錄。
-* **電子郵件驗證的使用者** ：這是 Azure AD 中的使用者帳戶類型。 在註冊自助式供應項目後自動建立身分識別的使用者，就是所謂的電子郵件驗證的使用者。 電子郵件驗證的使用者是加上 creationmethod=EmailVerified 標記之目錄的一般成員。
+* **自助式註冊**：這是使用者用以註冊雲端服務的方法，系統會根據其電子郵件網域在 Azure AD 中自動為其建立身分識別。
+* **非受控 Azure AD 目錄**：這是建立身分識別的目錄。 非受控目錄是沒有全域管理員的目錄。
+* **電子郵件驗證的使用者**：這是 Azure AD 中的使用者帳戶類型。 在註冊自助式供應項目後自動建立身分識別的使用者，就是所謂的電子郵件驗證的使用者。 電子郵件驗證的使用者是加上 creationmethod=EmailVerified 標記之目錄的一般成員。
 
 ## <a name="how-do-i-control-self-service-settings"></a>如何控制自助式設定？
 

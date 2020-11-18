@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314957"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553670"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>搭配 Synapse SQL 使用外部資料表
 
@@ -323,7 +323,7 @@ column_name <data_type>
 
 要建立之資料表名稱的第一到第三部分。 針對外部資料表，無伺服器 SQL 集區只會儲存資料表中繼資料。 不會在無伺服器 SQL 集區中移動或儲存任何實際資料。
 
-<column_definition>, ... *n* ]
+<column_definition>, ...*n* ]
 
 CREATE EXTERNAL TABLE 支援設定資料行名稱、資料類型、可 NULL 性和定序功能。 您無法在外部資料表上使用 DEFAULT CONSTRAINT。
 
@@ -332,7 +332,7 @@ CREATE EXTERNAL TABLE 支援設定資料行名稱、資料類型、可 NULL 性�
 
 從 Parquet 檔案讀取時，您只能指定要讀取的資料行，並略過其餘部分。
 
-LOCATION = ' *folder_or_filepath* '
+LOCATION = '*folder_or_filepath*'
 
 指定位於 Azure Blob 儲存體中之實際資料的資料夾或檔案路徑，以及檔案名稱。 位置會從根資料夾開始。 根資料夾是在外部資料來源中指定的資料位置。
 
@@ -388,8 +388,6 @@ SELECT TOP 1 * FROM census_external_table
 - 您必須擁有至少具有 ADLS Gen2 帳戶之儲存體 Blob 資料參與者 ARM 存取角色的工作區存取權
 
 - 您必須至少擁有[建立權限](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)，才能在 SQL 集區或 SQL OD 上建立和查詢外部資料表
-
-- 與 ADLS Gen2 帳戶相關聯的連結服務 **必須具有檔案的存取權** 。 例如，如果連結的服務驗證機制是受控識別，則工作區受控識別必須至少有儲存體帳戶的儲存體 Blob 讀者權限
 
 從 [資料] 面板中，選取想建立外部資料表的來源檔案：
 > [!div class="mx-imgBorder"]

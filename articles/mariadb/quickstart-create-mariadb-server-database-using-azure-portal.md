@@ -1,18 +1,18 @@
 ---
 title: 快速入門：建立伺服器 - Azure 入口網站 - 適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站在五分鐘內快速建立「適用於 MariaDB 的 Azure 資料庫」範例伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b27bff50b4e2cfa57e41919552086ba1d31f217
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88185242"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537045"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立適用於 MariaDB 的 Azure 資料庫伺服器
 
@@ -153,7 +153,7 @@ ms.locfileid: "88185242"
     >
     > 若要解決此錯誤，請確定伺服器組態符合[設定伺服器層級防火牆規則](#configure-firewall-rule)所述的步驟。
 
-4. 若要驗證連線，請在 `mysql>` 提示字元輸入**狀態**來檢查伺服器狀態。
+4. 若要驗證連線，請在 `mysql>` 提示字元輸入 **狀態** 來檢查伺服器狀態。
 
     ```sql
     status

@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Synapse Studio 建立專用 SQL 集區
+title: 快速入門：使用 Synapse Studio 建立專用的 SQL 集區
 description: 遵循本指南中的步驟，使用 Synapse Studio 建立專用 SQL 集區。
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506340"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541839"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立專用的 SQL 集區
 
@@ -110,6 +110,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 1. 確認刪除，然後按 [刪除] 按鈕。
 1. 當流程成功完成時，專用 SQL 集區就不會再列入工作區資源中。
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>後續步驟
+ 
 - 請參閱[快速入門：建立 Apache Spark 筆記本](quickstart-apache-spark-notebook.md)。
 - 請參閱[快速入門：使用 Azure 入口網站建立專用的 SQL 集區](quickstart-create-sql-pool-portal.md)。

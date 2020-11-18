@@ -6,12 +6,12 @@ author: agowdamsft
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 90b74e51dce994c3041c15feec729ff1fae2bb00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998357"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564152"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>使用 SGX 引用協助程式精靈集的平台軟體管理
 
@@ -26,7 +26,7 @@ Intel 支援以兩種證明模式來執行引用產生作業：
  
 使用 Open Enclave SDK 建置的 SGX 應用程式，依預設會使用同處理序證明模式。 SGX 型應用程式允許處理序外模式，而需要額外裝載並公開必要的元件，例如應用程式外部的 Architectural Enclave Service Manager (AESM)。
 
-**強烈建議**使用這項功能，因為此功能可在 Intel 平台更新或 DCAP 驅動程式更新期間，增加記憶體保護區應用程式的運作時間。
+**強烈建議** 使用這項功能，因為此功能可在 Intel 平台更新或 DCAP 驅動程式更新期間，增加記憶體保護區應用程式的運作時間。
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>為何要使用處理序外？它有何優點？
 
@@ -126,10 +126,10 @@ spec:
 
 [機密容器快速入門範例](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU 清單](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU 清單](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

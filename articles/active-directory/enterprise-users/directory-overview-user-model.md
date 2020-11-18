@@ -5,21 +5,21 @@ keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
-ms.reviewer: vincesm
-ms.date: 06/16/2020
+ms.reviewer: krbain
+ms.date: 11/15/2020
 ms.topic: overview
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3083bd524ee7918535c3c3915fe14cc0906f3c0f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e86d61f71a49a502a91b16761fc9feccea6faafd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378617"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650932"
 ---
 # <a name="what-is-enterprise-user-management"></a>什麼是企業使用者管理？
 
@@ -68,7 +68,7 @@ Azure AD 也可讓您更精細地控制在應用程式與群組 (您對其指派
 * 提供認證以連線至應用程式的使用者管理 API
 * 設定對應，控制在使用者帳戶佈建或更新時，Azure AD 與應用程式之間有哪些使用者屬性流動
 * 針對應用程式啟動和停止 Azure AD 佈建服務、清除佈建快取，或重新啟動服務
-* 檢視 **佈建活動報告** ，該報告提供 Azure AD 與應用程式之間已建立、更新及移除的所有使用者和群組記錄，以及檢視 **佈建錯誤報告** ，該報告提供更詳細的錯誤訊息
+* 檢視 **佈建活動報告**，該報告提供 Azure AD 與應用程式之間已建立、更新及移除的所有使用者和群組記錄，以及檢視 **佈建錯誤報告**，該報告提供更詳細的錯誤訊息
 
 ## <a name="next-steps"></a>後續步驟
 

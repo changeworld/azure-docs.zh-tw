@@ -4,12 +4,12 @@ description: 了解如何從命令列建立 JavaScript 函式，然後將本機 
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a77ae054191c4a96026ac74bd9da226542de838
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4a178cb0e69a6e2b666247bcb8e76ab2c7e272e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424650"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635665"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 JavaScript 函式
 
@@ -123,7 +123,7 @@ ms.locfileid: "93424650"
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
     ```azurepowershell
-    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -FunctionsVersion 3 -Location 'West Europe'
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -RuntimeVersion 12 -FunctionsVersion 3 -Location 'West Europe'
     ```
     
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) Cmdlet 會在 Azure 中建立函式應用程式。 如果您使用 Node.js 10，請將 `-RuntimeVersion` 變更為 `10`。

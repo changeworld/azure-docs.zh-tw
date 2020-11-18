@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348766"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646622"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 串流分析作業
 
@@ -23,41 +23,11 @@ ms.locfileid: "93348766"
 
 ## <a name="before-you-begin"></a>開始之前
 
-* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>準備您的環境
-
-1. 登入。
-
-   如果您使用的是 CLI 的本機安裝，請使用 [az login](/cli/azure/reference-index#az-login) 命令登入。
-
-    ```azurecli
-    az login
-    ```
-
-    請遵循您終端機上顯示的步驟，來完成驗證程序。
-
-2. 安裝 Azure CLI 擴充功能。
-
-   當搭配 Azure CLI 的延伸模組參考一起使用時，您必須先安裝延伸模組。  Azure CLI 延伸模組可讓您存取核心 CLI 尚未隨附的實驗性與發行前版本命令。  若要深入了解延伸模組 (包括更新及解除安裝)，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview) (英文)。
-
-   執行下列命令，以安裝[適用於串流分析的延伸模組](/cli/azure/ext/stream-analytics/stream-analytics)：
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   執行下列命令，以安裝 [適用於 Azure IoT 的延伸模組](/cli/azure/ext/azure-iot)：
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. 建立資源群組。
-
-   所有 Azure 資源都必須部署至資源群組。 資源群組可讓您組織和管理相關的 Azure 資源。
+- 建立資源群組。 所有 Azure 資源都必須部署至資源群組。 資源群組可讓您組織和管理相關的 Azure 資源。
 
    針對此快速入門，請使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 eastus 位置中建立一個名為 streamanalyticsrg 的資源群組：
 
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 若不再需要，可刪除資源群組、串流作業和所有相關資源。 刪除作業可避免因為作業使用串流單位而產生費用。 如果您計劃在未來使用該作業，您可以跳過刪除動作，且目前停止作業。 如果您不要繼續使用此作業，請執行下列 Cmdlet，以刪除本快速入門所建立的所有資源：
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

@@ -3,12 +3,12 @@ title: 快速入門：您的第一個 REST API 查詢
 description: 在本快速入門中，您將遵循步驟來呼叫 REST API 的 Resource Graph 端點，並執行您的第一個查詢。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057207"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566073"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>快速入門：使用 REST API 執行您的第一個 Resource Graph 查詢
 
@@ -30,7 +30,7 @@ ms.locfileid: "92057207"
 
 ### <a name="rest-api-and-powershell"></a>REST API 和 PowerShell
 
-如果您還沒有發出 REST API 呼叫的工具，請考慮使用 PowerShell 取得這些指示。 下列程式碼範例會取得向 Azure 進行驗證的標頭。 產生驗證標頭 (有時也稱為**持有人權杖**)，並提供 REST API URI 以連接到任何參數或**要求本文**:
+如果您還沒有發出 REST API 呼叫的工具，請考慮使用 PowerShell 取得這些指示。 下列程式碼範例會取得向 Azure 進行驗證的標頭。 產生驗證標頭 (有時也稱為 **持有人權杖**)，並提供 REST API URI 以連接到任何參數或 **要求本文**:
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -50,11 +50,11 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
 取代 `$restUri` 變數中的 `{subscriptionId}`，以取得您訂用帳戶的相關資訊。
-`$response` 變數會保存 `Invoke-RestMethod` Cmdlet 的結果，其可使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 這類的 Cmdlet 加以剖析。 如果 REST API 服務端點應該有**要求本文**，請提供一個 JSON 格式的變數給 `Invoke-RestMethod` 的 `-Body` 參數。
+`$response` 變數會保存 `Invoke-RestMethod` Cmdlet 的結果，其可使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 這類的 Cmdlet 加以剖析。 如果 REST API 服務端點應該有 **要求本文**，請提供一個 JSON 格式的變數給 `Invoke-RestMethod` 的 `-Body` 參數。
 
 ## <a name="run-your-first-resource-graph-query"></a>執行第一個 Resource Graph 查詢
 
-在 REST API 工具新增至您選擇的環境後，您就可以試試看簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的**名稱**與**資源類型**。
+在 REST API 工具新增至您選擇的環境後，您就可以試試看簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的 **名稱** 與 **資源類型**。
 
 在每個 REST API 呼叫的要求本文中，都有一個變數需要取代為您自己的值：
 
@@ -76,14 +76,13 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
    > [!NOTE]
    > 由於此查詢範例並未提供排序修飾詞 (例如 `order by`)，因此執行此查詢多次將可能會對每個要求產生一組不同的資源。
 
-1. 更新 `resouces` 端點的呼叫，並將**查詢**變更為 `order by` **名稱** 屬性：
+1. 更新 `resouces` 端點的呼叫，並將 **查詢** 變更為 `order by` **名稱** 屬性：
 
    - REST API URI
 
@@ -99,14 +98,13 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
    > [!NOTE]
    > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
-1. 更新 `resources` 端點的呼叫，並變更**查詢**，以先 `order by` **名稱**屬性，然後 `limit` 為只顯示前五個結果：
+1. 更新 `resources` 端點的呼叫，並變更 **查詢**，以先 `order by` **名稱** 屬性，然後 `limit` 為只顯示前五個結果：
 
    - REST API URI
 
@@ -122,11 +120,10 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依 **名稱** 屬性排序，但仍限制為只顯示前五個結果。
 
 如需更多 Azure Resource Graph 的 REST API 呼叫範例，請參閱 [Azure Resource Graph REST 範例](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#examples)。
 

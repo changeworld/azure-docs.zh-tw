@@ -1,75 +1,93 @@
 ---
 title: 快速入門：使用 PHP 連線 - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供數個 PHP 程式碼範例，您可用於從 Azure Database for MySQL 連線及查詢資料。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: ec406208f862eac2450cc6352f13f3596a7c9775
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 10/28/2020
+ms.openlocfilehash: ae767905e24e2d7ddf3b8e12ec77b1efe782cf85
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337382"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535600"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 PHP 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
-本快速入門示範如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 應用程式來連線到 Azure Database for MySQL。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 PHP 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
+本快速入門示範如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 應用程式來連線到 Azure Database for MySQL。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。
 
 ## <a name="prerequisites"></a>Prerequisites
-本快速入門使用在以下任一指南中建立的資源作為起點︰
-- [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
+在本快速入門中，您需要：
 
-> [!IMPORTANT] 
-> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free)。
+- 使用 [Azure 入口網站](./quickstart-create-mysql-server-database-using-azure-portal.md)建立適用於 MySQL 的 Azure 資料庫單一伺服器 <br/> 如果沒有，請使用 [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)。
+- 根據您使用的是公用或私人存取，完成下列 **其中一項** 動作以啟用連線。
 
-## <a name="install-php"></a>安裝 PHP
-在自己的伺服器上安裝 PHP，或建立 Azure [Web 應用程式](../app-service/overview.md) (包括 PHP)。
+    |動作| 連線方法|操作指南|
+    |:--------- |:--------- |:--------- |
+    | **設定防火牆規則** | 公用 | [入口網站](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+    | **設定服務端點** | 公用 | [入口網站](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+    | **設定私人連結** | 私人 | [入口網站](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-### <a name="macos"></a>macOS
-- 下載 [PHP 7.1.4 版本](https://secure.php.net/downloads.php)。
-- 安裝 PHP 並參考 [PHP 手冊](https://secure.php.net/manual/install.macosx.php)以便進一步設定。
+- [建立資料庫和非管理使用者](/howto-create-users?tabs=single-server)
+- 為您的作業系統安裝最新的 PHP 版本
+    - [macOS 上的 PHP](https://secure.php.net/manual/install.macosx.php)
+    - [Linux 上的 PHP](https://secure.php.net/manual/install.unix.php)
+    - [Windows 上的 PHP](https://secure.php.net/manual/install.windows.php)
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- 下載 [PHP 7.1.4 非執行緒安全 (x64) 版本](https://secure.php.net/downloads.php)。
-- 安裝 PHP 並參考 [PHP 手冊](https://secure.php.net/manual/install.unix.php)以便進一步設定。
-
-### <a name="windows"></a>Windows
-- 下載 [PHP 7.1.4 非執行緒安全 (x64) 版本](https://windows.php.net/download#php-7.1)。
-- 安裝 PHP 並參考 [PHP 手冊](https://secure.php.net/manual/install.windows.php)以便進一步設定。
+> [!NOTE]
+> 在本快速入門中，我們使用 [MySQLi](https://www.php.net/manual/en/book.mysqli.php) 程式庫來管理連線及查詢伺服器。
 
 ## <a name="get-connection-information"></a>取得連線資訊
-取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
+您可以依照下列步驟，從 Azure 入口網站取得資料庫伺服器連線資訊：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
-3. 按一下伺服器名稱。
-4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
+2. 瀏覽至 [適用於 MySQL 的 Azure 資料庫] 頁面。 您可以搜尋並選取 [適用於 MySQL 的 Azure 資料庫]。
+:::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="尋找適用於 MySQL 的 Azure 資料庫":::
 
-## <a name="connect-and-create-a-table"></a>連線及建立資料表
-使用下列程式碼搭配 **CREATE TABLE** SQL 陳述式來連線和建立資料表。 
+2. 選取您的 MySQL 伺服器 (例如 **mydemoserver**)。
+3. 在 [概觀] 頁面上，複製 [伺服器名稱] 旁的完整伺服器名稱，以及 [伺服器管理員登入名稱] 旁的管理使用者名稱。 若要複製伺服器名稱或主機名稱，請將滑鼠暫留在其上方，然後選取 [複製] 圖示。
 
-程式碼會使用 PHP 內含的 **MySQL 改良擴充功能** (mysqli) 類別。 程式碼會呼叫 [mysqli_init](https://secure.php.net/manual/mysqli.init.php) 和 [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) 方法來連線到 MySQL。 然後它會呼叫 [mysqli_query](https://secure.php.net/manual/mysqli.query.php) 方法來執行查詢。 然後它會呼叫 [mysqli_close](https://secure.php.net/manual/mysqli.close.php) 方法來關閉連線。
+> [!IMPORTANT]
+> - 如果您忘記密碼，可以[重設密碼](./howto-create-manage-server-portal.md#update-admin-password)。
+> - 請將 **主機、使用者名稱、密碼** 和 **db_name** 參數取代為您自己的值**
 
-以自己的值取代主機、使用者名稱、密碼和 db_name 參數。 
+## <a name="step-1-connect-to-the-server"></a>步驟 1：連接到伺服器
+依預設會啟用 SSL。 您可能需要下載 [DigiCertGlobalRootG2 SSL 憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)，才能從本機環境連線。 此程式碼會呼叫：
+- [mysqli_init](https://secure.php.net/manual/mysqli.init.php)，以初始化 MySQLi。
+- [mysqli_ssl_set](https://www.php.net/manual/en/mysqli.ssl-set.php)，以指向 SSL 憑證路徑。 這對於您的本機環境而言是必要的，但 App Service Web 應用程式或 Azure 虛擬機器則不需要。
+- [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php)，以連線至 MySQL。
+- [mysqli_close](https://secure.php.net/manual/mysqli.close.php)，以關閉連線。
+
 
 ```php
-<?php
 $host = 'mydemoserver.mysql.database.azure.com';
 $username = 'myadmin@mydemoserver';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Initializes MySQLi
 $conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
 
+// If using  Azure Virtual machines or Azure Web App, 'mysqli-ssl_set()' is not required as the certificate is already installed on the machines.
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootG2.crt.pem", NULL, NULL);
+
+// Establish the connection
+mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin@mydemoserver', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);
+
+//If connection failed, show the error
+if (mysqli_connect_errno($conn))
+{
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
+```
+[有任何問題嗎？請告訴我們](https://aka.ms/mysql-doc-feedback)
+
+## <a name="step-2-create-a-table"></a>步驟 2:建立資料表
+使用下列程式碼進行連線。 此程式碼會呼叫：
+- [mysqli_query](https://secure.php.net/manual/mysqli.query.php)，以執行查詢。
+```php
 // Run the create table query
 if (mysqli_query($conn, '
 CREATE TABLE Products (
@@ -82,139 +100,56 @@ PRIMARY KEY (`Id`)
 ')) {
 printf("Table created\n");
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="insert-data"></a>插入資料
-使用下列程式碼搭配 **INSERT** SQL 陳述式來連線和插入資料。
+## <a name="step-3-insert-data"></a>步驟 3：插入資料
+使用下列程式碼搭配 **INSERT** SQL 陳述式來插入資料。 此程式碼會使用下列方法：
+- [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)，用以建立備妥的 insert 陳述式
+- [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php)，為每個插入的資料行值繫結參數。
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php)
+- [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php)，以使用方法關閉陳述式
 
-程式碼會使用 PHP 內含的 **MySQL 改良擴充功能** (mysqli) 類別。 程式碼會使用 [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) 方法來建立已備妥的 insert 陳述式，然後使用 [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) 方法來繫結每個插入資料行值的參數。 程式碼會使用 [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) 方法執行陳述式，之後使用 [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) 方法關閉陳述式。
-
-以自己的值取代主機、使用者名稱、密碼和 db_name 參數。 
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Create an Insert prepared statement and run it
 $product_name = 'BrandNewProduct';
 $product_color = 'Blue';
 $product_price = 15.5;
-if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)")) {
-mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
-mysqli_stmt_execute($stmt);
-printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-mysqli_stmt_close($stmt);
+if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)"))
+{
+    mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
+    mysqli_stmt_execute($stmt);
+    printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
+    mysqli_stmt_close($stmt);
 }
 
-// Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="read-data"></a>讀取資料
-使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。  程式碼會使用 PHP 內含的 **MySQL 改良擴充功能** (mysqli) 類別。 程式碼會使用 [mysqli_query](https://secure.php.net/manual/mysqli.query.php) 方法執行 SQL 查詢，並使用 [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) 方法來擷取結果資料列。
-
-以自己的值取代主機、使用者名稱、密碼和 db_name 參數。 
+## <a name="step-4-read-data"></a>步驟 4：讀取資料
+使用下列程式碼搭配 **SELECT** SQL 陳述式來讀取資料。  此程式碼會使用下列方法：
+- [mysqli_query](https://secure.php.net/manual/mysqli.query.php)，用以執行 **SELECT** 查詢
+- [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php)，用以擷取產生的資料列。
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Select query
 printf("Reading data from table: \n");
 $res = mysqli_query($conn, 'SELECT * FROM Products');
-while ($row = mysqli_fetch_assoc($res)) {
-var_dump($row);
-}
+while ($row = mysqli_fetch_assoc($res))
+ {
+    var_dump($row);
+ }
 
-//Close the connection
-mysqli_close($conn);
-?>
-```
-
-## <a name="update-data"></a>更新資料
-使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。
-
-程式碼會使用 PHP 內含的 **MySQL 改良擴充功能** (mysqli) 類別。 程式碼會使用 [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) 方法來建立已備妥的 update 陳述式，然後使用 [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) 方法來繫結每個更新資料行值的參數。 程式碼會使用 [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) 方法執行陳述式，之後使用 [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) 方法關閉陳述式。
-
-以自己的值取代主機、使用者名稱、密碼和 db_name 參數。 
-
-```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
-//Run the Update statement
-$product_name = 'BrandNewProduct';
-$new_product_price = 15.1;
-if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
-mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
-mysqli_stmt_execute($stmt);
-printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-
-//Close the connection
-mysqli_stmt_close($stmt);
-}
-
-mysqli_close($conn);
-?>
 ```
 
 
-## <a name="delete-data"></a>刪除資料
-使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。 
-
-程式碼會使用 PHP 內含的 **MySQL 改良擴充功能** (mysqli) 類別。 程式碼會使用 [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) 方法來建立已備妥的 delete 陳述式，然後使用 [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) 方法來繫結陳述式中 where 子句的參數。 程式碼會使用 [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) 方法執行陳述式，之後使用 [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) 方法關閉陳述式。
-
-以自己的值取代主機、使用者名稱、密碼和 db_name 參數。 
+## <a name="step-5-delete-data"></a>步驟 5：刪除資料
+使用 **DELETE** SQL 陳述式，以使用下列程式碼刪除資料列。 此程式碼會使用下列方法：
+- [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)，用以建立備妥的 delete 陳述式
+- [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php)，用以繫結參數
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php)，用以執行備妥的 delete 陳述式
+- [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php)，用以關閉陳述式
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Delete statement
 $product_name = 'BrandNewProduct';
 if ($stmt = mysqli_prepare($conn, "DELETE FROM Products WHERE ProductName = ?")) {
@@ -223,10 +158,6 @@ mysqli_stmt_execute($stmt);
 printf("Delete: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -241,4 +172,9 @@ az group delete \
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [透過 SSL 連線到適用於 MySQL 的 Azure 資料庫](howto-configure-ssl.md)
+> [使用入口網站管理適用於 MySQL 的 Azure 資料庫伺服器](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [使用 CLI 管理適用於 MySQL 的 Azure 資料庫伺服器](./how-to-manage-single-server-cli.md)
+
+[找不到您要找的項目嗎？請告訴我們。](https://aka.ms/mysql-doc-feedback)

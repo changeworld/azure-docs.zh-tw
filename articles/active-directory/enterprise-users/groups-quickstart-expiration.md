@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 842cd92e451b8d959dcf04135da504d7cf85a16e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378598"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647200"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>設定 Microsoft 365 群組 Azure Active Directory 中的到期日
 
@@ -45,17 +45,17 @@ ms.locfileid: "92378598"
 
 1. 使用使用者管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [群組]  ，然後選取 [一般]  。
+2. 選取 [群組]，然後選取 [一般]。
   
    ![自助式群組設定頁面](./media/groups-quickstart-expiration/self-service-settings.png)
 
-3. 將 [使用者可以建立 Microsoft 365 群組]  設定為 [是]  。
+3. 將 [使用者可以建立 Microsoft 365 群組] 設定為 [是]。
 
-4. 完成作業後，選取 [儲存]  以儲存群組設定。
+4. 完成作業後，選取 [儲存] 以儲存群組設定。
 
 ## <a name="set-group-expiration"></a>設定群組到期日
 
-1. 登入  > [群組]  > [到期]  ，以開啟到期設定。
+1. 登入 [Azure 入口網站](https://portal.azure.com)、選取 [Azure Active Directory] > [群組] > [到期]，以開啟到期設定。
   
    ![群組的到期設定頁面](./media/groups-quickstart-expiration/expiration-settings.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "92378598"
 
 3. 提供在群組沒有擁有者時，到期通知所應傳送到的電子郵件地址。
 
-4. 在此快速入門中，請將 [啟用這些 Microsoft 365 群組的到期日]  設定為 [全部]  。
+4. 在此快速入門中，請將 [啟用這些 Microsoft 365 群組的到期日] 設定為 [全部]。
 
-5. 完成作業後，選取 [儲存]  以儲存到期設定。
+5. 完成作業後，選取 [儲存] 以儲存到期設定。
 
 就這麼簡單！ 在本快速入門中，您已成功設定所選 Microsoft 365 群組的到期原則。
 
@@ -74,13 +74,13 @@ ms.locfileid: "92378598"
 ### <a name="to-remove-the-expiration-policy"></a>移除到期原則
 
 1. 確實使用具備 Azure AD 組織全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [Azure Active Directory]  > [群組]  > [到期]  。
-3. 將 [啟用這些 Microsoft 365 群組的到期日]  設定為 [無]  。
+2. 選取 [Azure Active Directory] > [群組] > [到期]。
+3. 將 [啟用這些 Microsoft 365 群組的到期日] 設定為 [無]。
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>關閉使用者建立群組的功能
 
-1. 選取 [Azure Active Directory]  > [群組]  > [一般]  。 
-2. 將 **使用者可在 Azure 入口網站中建立 Microsoft 365 群組** 設為 **否** 。
+1. 選取 [Azure Active Directory] > [群組] > [一般]。 
+2. 將 **使用者可在 Azure 入口網站中建立 Microsoft 365 群組** 設為 **否**。
 
 ## <a name="next-steps"></a>後續步驟
 

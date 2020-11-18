@@ -1,19 +1,19 @@
 ---
 title: 快速入門：建立伺服器 - Azure PowerShell - 適用於 MariaDB 的 Azure 資料庫
 description: 本快速入門說明如何使用 PowerShell，在 Azure 資源群組中建立適用於 MariaDB 的 Azure 資料庫伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7db89d315e0df51aad7f4660ec5da64425eae2aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424443"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537793"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>快速入門：使用 PowerShell 建立適用於 MariaDB 的 Azure 資料庫伺服器
 
@@ -63,17 +63,17 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 名稱                       | mydemoserver     | 為您適用於 MariaDB 的 Azure 資料庫伺服器，選擇在 Azure 中不會與其伺服器重複的全域名稱。 伺服器名稱只能包含字母、數字及連字號 (-) 字元。 在建立過程中，指定的任何大寫字元都會自動轉換成小寫。 此名稱必須包含 3 到 63 個字元。 |
 | resourceGroupName          | myresourcegroup  | 提供 Azure 資源群組的名稱。                                                                                                                                                                                                                                                                                            |
-| SKU                        | GP_Gen5_2        | SKU 的名稱。 遵循簡短形式的慣例 **pricing-tier\_compute-generation\_vCores** 。 如需 Sku 參數的詳細資訊，請參閱此表格後面的資訊。                                                                                                                                           |
+| SKU                        | GP_Gen5_2        | SKU 的名稱。 遵循簡短形式的慣例 **pricing-tier\_compute-generation\_vCores**。 如需 Sku 參數的詳細資訊，請參閱此表格後面的資訊。                                                                                                                                           |
 | BackupRetentionDay         | 7                | 備份應保留的時間長度。 單位為天。 範圍為 7-35 天。                                                                                                                                                                                                                                                                       |
 | GeoRedundantBackup         | 啟用          | 是否應針對此伺服器啟用異地備援備份。 此值無法針對基本定價層中的伺服器啟用，而且在伺服器建立之後就無法變更。 允許的值：Enabled、Disabled。                                                                                                      |
 | Location                   | westus           | 伺服器的 Azure 區域。                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | 啟用          | 是否應針對此伺服器啟用 SSL。 允許的值：Enabled、Disabled。                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | 伺服器的儲存體容量 (單位為 MB)。 有效的 StorageInMb 最小值為 5120 MB，並以 1024 MB 的增量增加。 如需儲存體大小限制的詳細資訊，請參閱[適用於 MariaDB 的 Azure 資料庫定價層](./concepts-pricing-tiers.md) (英文)。                                                                               |
 | 版本                    | 5.7              | MariaDB 主要版本。                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | 系統管理員使用者的密碼，其格式為安全字串。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字及非英數字元。                                       |
 
-**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores** ，如下列範例所示。
+**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores**，如下列範例所示。
 
 - `-Sku B_Gen5_1` 對應於基本、第 5 代和 1 個虛擬核心。 此選項是最小的可用 SKU。
 - `-Sku GP_Gen5_32` 對應於一般用途、第 5 代和 32 個 vCore。
@@ -81,7 +81,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 如需各區域和各層有效 **Sku** 值的相關資訊，請參閱 [適用於 MariaDB 的 Azure 資料庫定價層](./concepts-pricing-tiers.md)。
 
-下列範例會在 [美國西部] 區域中建立名為 **mydemoserver** 的 MariaDB 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin** 。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 MariaDB 伺服器系統管理員帳戶的密碼。
+下列範例會在 [美國西部] 區域中建立名為 **mydemoserver** 的 MariaDB 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin**。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 MariaDB 伺服器系統管理員帳戶的密碼。
 
 > [!TIP]
 > 伺服器名稱會對應至 DNS 名稱，而且在 Azure 中必須是全域唯一的。

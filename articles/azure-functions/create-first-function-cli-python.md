@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 9c88feca5bf4bdac91af7f88c24cd342dc1b04cf
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: b4c14417a31f28ea5d6475b3f84ee079d990dd6b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426284"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637059"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 Python 函式
 
@@ -250,7 +250,8 @@ py -m venv .venv
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
     ```
     
-    <a name="the-new-azfunctionapp-cmdlet-creates-the-function-app-in-azure-if-youre-using-python-37-or-36-change--runtimeversion-to-37-or-36-respectively"></a>[New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) Cmdlet 會在 Azure 中建立函式應用程式。 如果您使用 Python 3.7 或 3.6，請分別將 `-RuntimeVersion` 變更為 `3.7` 或 `3.6`。
+    [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) Cmdlet 會在 Azure 中建立函式應用程式。 如果您使用 Python 3.7 或 3.6，請分別將 `-RuntimeVersion` 變更為 `3.7` 或 `3.6`。
+
     ---
     
     在上一個範例中，將 `<STORAGE_NAME>` 取代為您在上一個步驟中使用的帳戶名稱，並將 `<APP_NAME>` 取代為適合您的全域唯一名稱。  `<APP_NAME>` 也是函式應用程式的預設 DNS 網域。 
@@ -275,3 +276,5 @@ func azure functionapp logstream <APP_NAME> --browser
 
 > [!div class="nextstepaction"]
 > [連線至 Azure 儲存體佇列](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/python-functions-qs-survey)

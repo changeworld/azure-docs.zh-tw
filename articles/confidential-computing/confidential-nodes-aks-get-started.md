@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341901"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564339"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>快速入門：使用 Azure CLI 部署具有機密運算節點的 Azure Kubernetes Service (AKS) 叢集 (預覽)
 
@@ -19,7 +19,7 @@ ms.locfileid: "92341901"
 
 ## <a name="overview"></a>概觀
 
-在本快速入門中，您將了解如何使用 Azure CLI 部署具有機密運算節點的 Azure Kubernetes Service (AKS) 叢集，並在記憶體保護區中執行 Hello World 應用程式。 AKS 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 請在[此處](https://docs.microsoft.com/azure/aks/intro-kubernetes)深入了解 AKS。
+在本快速入門中，您將了解如何使用 Azure CLI 部署具有機密運算節點的 Azure Kubernetes Service (AKS) 叢集，並在記憶體保護區中執行 Hello World 應用程式。 AKS 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 請在[此處](../aks/intro-kubernetes.md)深入了解 AKS。
 
 > [!NOTE]
 > 機密運算 DCsv2 VM 採用特殊化硬體，而該硬體受限於較高的定價和區域可用性。 如需詳細資訊，請參閱[可用 SKU 和支援區域](virtual-machine-solutions.md)的虛擬機器頁面。
@@ -27,17 +27,17 @@ ms.locfileid: "92341901"
 ### <a name="deployment-pre-requisites"></a>部署必要條件
 
 1. 具有有效的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-1. 在您的部署機器上安裝並設定 Azure CLI 2.0.64 版或更新版本 (執行 `az --version` 可尋找版本)。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)
+1. 在您的部署機器上安裝並設定 Azure CLI 2.0.64 版或更新版本 (執行 `az --version` 可尋找版本)。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)
 1. [aks-preview 擴充功能](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) (至少 0.4.62 版) 
-1. 您的訂用帳戶中至少要有六個 **DC<x>s-v2** 核心可供使用。 根據預設，每個 Azure 訂用帳戶的機密運算 VM 核心配額為 8 個核心。 如果您預計要佈建需要超過 8 個核心的叢集，請依照[這些](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)指示提出配額增加票證
+1. 您的訂用帳戶中至少要有六個 **DC<x>s-v2** 核心可供使用。 根據預設，每個 Azure 訂用帳戶的機密運算 VM 核心配額為 8 個核心。 如果您預計要佈建需要超過 8 個核心的叢集，請依照[這些](../azure-portal/supportability/per-vm-quota-requests.md)指示提出配額增加票證
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>機密運算節點功能 (DC<x>s-v2)
 
 1. 僅支援 Linux 容器的 Linux 背景工作節點
 1. Ubuntu 第 2 代 2 18.04 虛擬機器
-1. 具有加密頁面快取記憶體 (EPC) 的 Intel SGX 型 CPU。 請在[這裡](https://docs.microsoft.com/azure/confidential-computing/faq)閱讀更多資訊
+1. 具有加密頁面快取記憶體 (EPC) 的 Intel SGX 型 CPU。 請在[這裡](./faq.md)閱讀更多資訊
 1. Kubernetes 1.16 版以上
-1. 預先安裝的 Intel SGX DCAP 驅動程式。 請在[這裡](https://docs.microsoft.com/azure/confidential-computing/faq)閱讀更多資訊
+1. 預先安裝的 Intel SGX DCAP 驅動程式。 請在[這裡](./faq.md)閱讀更多資訊
 1. 預覽期間的 CLI 型部署
 
 
@@ -81,7 +81,7 @@ az provider register --namespace Microsoft.ContainerService
 az group create --name myResourceGroup --location westus2
 ```
 
-現在，使用 az aks create 命令來建立 AKS 叢集。 下列範例會使用 `Standard_DC2s_v2` 大小的單一節點來建立叢集。 您可以從[這裡](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)選擇其他支援的 DCsv2 SKU 清單：
+現在，使用 az aks create 命令來建立 AKS 叢集。 下列範例會使用 `Standard_DC2s_v2` 大小的單一節點來建立叢集。 您可以從[這裡](../virtual-machines/dcv2-series.md)選擇其他支援的 DCsv2 SKU 清單：
 
 ```azurecli-interactive
 az aks create \
@@ -244,6 +244,3 @@ az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resou
 透過機密容器以機密的方式執行 Python、Node 等應用程式，方法是造訪[機密容器範例](https://github.com/Azure-Samples/confidential-container-samples)。
 
 造訪[記憶體保護區感知 Azure 容器範例](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/)，以執行記憶體保護區感知應用程式。
-
-
-

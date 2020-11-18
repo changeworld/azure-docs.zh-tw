@@ -10,19 +10,19 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3c05596e16edc5243b8a97002a5cc5990c69ec43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b7d00335253772683b867acf0765b77fc493e79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943839"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523711"
 ---
 ## <a name="prerequisites"></a>必要條件
 開始之前，請務必：
 
 - 建立具有有效訂閱的 Azure 帳戶。 如需詳細資訊，請參閱[免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 安裝 [Python](https://www.python.org/downloads/)
-- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../../create-communication-resource.md)。 您必須在本快速入門中記錄您的資源**端點**
+- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../../create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **端點**
 - [使用者存取權杖](../../access-tokens.md)。 請務必將範圍設定為 "chat"，並記下 token 字串和 userId 字串。
 
 ## <a name="setting-up"></a>設定
@@ -85,7 +85,7 @@ chat_client = ChatClient(endpoint, CommunicationUserCredential(<Access Token>))
 使用 `create_chat_thread` 方法來建立聊天對話。
 
 - 使用 `topic` 來提供對話主題；在使用 `update_thread` 函式建立聊天對話之後，可以更新主題。
-- 使用 `members` 列出要新增至聊天對話的 `ChatThreadMember`，`ChatThreadMember` 會採用 `user` 作為 `CommunicationUser` 類型，這是您透過[建立使用者](../../access-tokens.md#create-a-user)來建立的結果
+- 使用 `members` 列出要新增至聊天對話的 `ChatThreadMember`，`ChatThreadMember` 會採用 `user` 作為 `CommunicationUser` 類型，這是您透過[建立使用者](../../access-tokens.md#create-an-identity)來建立的結果
 
 `chat_thread_client` 回應會用來在新建的聊天對話上執行作業，例如將成員加入聊天對話、傳送訊息、刪除訊息等等。其中的 `thread_id` 屬性，是聊天對話的唯一識別碼。
 
@@ -158,7 +158,7 @@ chat_messages = chat_thread_client.list_messages()
 使用 `add_members` 方法，將對話成員新增至以 threadId 識別的對話。
 
 - 使用 `members` 列出要新增至聊天對話的成員；
-- (必要) `user` 是您在[建立使用者](../../access-tokens.md#create-a-user)時，透過 `CommunicationIdentityClient` 所建立的 `CommunicationUser`
+- (必要) `user` 是您在[建立使用者](../../access-tokens.md#create-an-identity)時，透過 `CommunicationIdentityClient` 所建立的 `CommunicationUser`
 - (選擇性) `display_name` 是對話成員的顯示名稱。
 - (選擇性) `share_history_time` 是與成員共用聊天記錄的時間。 若要在聊天對話一開始就共用記錄，請將此屬性設定為等於或小於對話建立時間的任何日期。 若要在新增成員時不共用先前的記錄，請將其設定為目前的日期。 若要共用部分記錄，請將其設定為中間的日期。
 
