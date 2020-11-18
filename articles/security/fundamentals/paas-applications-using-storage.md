@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 402fc1b0b436e7e2061cb2e1a922a75c82ac5235
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 082408f357e97a2ed2153d43dbea459ff09ba704
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408051"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693172"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 儲存體保護 PaaS Web 與行動應用程式的最佳做法
 在此文章中，我們將討論用來保護平台即服務 (PaaS) Web 與行動應用程式的 Azure 儲存體安全性最佳做法。 這些最佳做法衍生自我們的 Azure 經驗和客戶 (例如您自己) 的經驗。
@@ -34,7 +34,7 @@ Azure 儲存體提供以下四個服務：Blob 儲存體、表格儲存體、佇
 本文會說明下列最佳做法：
 
 - 共用存取簽章 (SAS)
-- 角色型存取控制 (RBAC)
+- Azure 角色型存取控制 (Azure RBAC)
 - 高價值資料的用戶端加密
 - 儲存體服務加密
 
@@ -55,16 +55,16 @@ SAS 可讓您以您想要的方式來共用內容，而不必交出儲存體帳�
 
 若要深入了解共用存取簽章，請參閱[使用共用存取簽章](../../storage/common/storage-sas-overview.md)。 
 
-## <a name="use-role-based-access-control"></a>使用角色型存取控制
-管理存取權的另一種方式是使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。 若使用 RBAC，您就可以根據須知事項和最低權限安全性原則來專注在為員工提供確實符合其所需的權限。 權限太多可能會讓帳戶暴露在攻擊者的威脅下。 權限太少則會讓員工無法有效率地完成工作。 RBAC 可以為 Azure 提供更細緻的存取管理來協助解決這個問題。 對於想要強制執行資料存取安全性原則的組織，這是必須做的事。
+## <a name="use-azure-role-based-access-control"></a>使用 Azure 角色型存取控制
+管理存取權的另一種方式是使用 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。 使用 Azure RBAC，您可以根據需要知道和最低許可權安全性原則，將焦點放在提供員工所需的確切許可權。 權限太多可能會讓帳戶暴露在攻擊者的威脅下。 權限太少則會讓員工無法有效率地完成工作。 Azure RBAC 藉由提供更細緻的 Azure 存取管理來協助解決此問題。 對於想要強制執行資料存取安全性原則的組織，這是必須做的事。
 
 您可以使用 Azure 中的內建角色，將許可權指派給使用者。 例如，將儲存體帳戶參與者用於需要管理儲存體帳戶的雲端操作者，並使用傳統儲存體帳戶參與者角色管理傳統儲存體帳戶。 對於需要管理 VM 而非其所連線的虛擬網路或儲存體帳戶的雲端操作者，您可以將他們新增至虛擬機器參與者角色。
 
-未利用諸如 RBAC 等功能來強制執行資料存取控制的組織，可能會對其使用者提供超過所需的權限。 這可能會讓某些使用者一開始就能存取他們不應能夠存取的資料，而導致資料外洩。
+未使用 Azure RBAC 等功能來強制執行資料存取控制的組織，可能會為其使用者提供比所需更多的許可權。 這可能會讓某些使用者一開始就能存取他們不應能夠存取的資料，而導致資料外洩。
 
-若要深入了解 RBAC，請參閱：
+若要深入瞭解 Azure RBAC，請參閱：
 
-- [使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 內建角色](../../role-based-access-control/built-in-roles.md)
 - [Azure 儲存體安全性指南](../../storage/blobs/security-recommendations.md) 
 

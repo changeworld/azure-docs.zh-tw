@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 263509ce7d348e51bf4a2a1d7ad83fb5dfdb5e29
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489432"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685574"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集定型
 
@@ -93,7 +93,7 @@ df = dataset.to_pandas_dataframe()
 此程式碼會建立 ScriptRunConfig 物件， `src` 以指定
 
 * 腳本的腳本目錄。 在此目錄中的所有檔案都會上傳到叢集節點以便執行。
-* 定型腳本 *train_titanic .py* 。
+* 定型腳本 *train_titanic .py*。
 * 定型的輸入資料集， `titanic_ds` 做為腳本引數。 當資料傳遞給腳本時，Azure ML 會將其解析為對應的資料集識別碼。
 * 執行的計算目標。
 * 執行的環境。
@@ -104,7 +104,7 @@ from azureml.core import ScriptRunConfig
 src = ScriptRunConfig(source_directory=script_folder,
                       script='train_titanic.py',
                       # pass dataset as an input with friendly name 'titanic'
-                      arguments=['--input-dataset', titanic_ds],
+                      arguments=['--input-data', titanic_ds.as_named_input('titanic')],
                       compute_target=compute_target,
                       environment=myenv)
                              

@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eaf2d7075ca09aeb3cfaa2dfea81fd0f8d65ad
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022491"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685302"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器是什麼？
+# <a name="overview-of-azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器概觀
 
 適用於 VM 的 Azure 監視器會監視虛擬機器和虛擬機器擴展集的效能和健康情況，包括其執行中的進程和其他資源的相依性。 它可找出效能瓶頸和網路問題，以協助提供重要應用程式的可預測效能和可用性，也可協助您瞭解問題是否與其他相依性有關。
 
@@ -26,8 +26,6 @@ ms.locfileid: "89022491"
 - 裝載于其他雲端環境中的虛擬機器
   
 
-
-
 適用於 VM 的 Azure 監視器會將其資料儲存在 Azure 監視器記錄中，這可讓它提供強大的匯總和篩選，並分析一段時間的資料趨勢。 您可以直接從虛擬機器在單一 VM 中查看這項資料，也可以使用 Azure 監視器來提供多個 Vm 的匯總視圖。
 
 ![Azure 入口網站中的虛擬機器深入解析檢視方塊](media/vminsights-overview/vminsights-azmon-directvm.png)
@@ -37,6 +35,7 @@ ms.locfileid: "89022491"
 適用於 VM 的 Azure 監視器不需要直接付費，但會向您收取 Log Analytics 工作區中其活動的費用。 根據 [Azure 監視器價格頁面](https://azure.microsoft.com/pricing/details/monitor/)上所發佈的價格，適用於 VM 的 Azure 監視器會針對下列項目進行計費：
 
 - 從代理程式內嵌並儲存在工作區中的資料。
+- 從來賓健全狀況收集的健全狀況狀態資料 (預覽版) 
 - 以記錄和健康情況資料為基礎的警示規則。
 - 從警示規則傳送的通知。
 

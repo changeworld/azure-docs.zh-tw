@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c5c536b95360c536998a5de87e9307918b15630
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913954"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685982"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -27,7 +27,7 @@ Key Vault VM 擴充功能支援下列 Windows 版本：
 - Windows Server 2016
 - Windows Server 2012
 
-在上傳並轉換為特製化映射以在 Azure 中使用 Windows Server 2019 core 安裝的自訂本機 VM 上，也支援 Key Vault VM extensio。
+您也可以在已上傳並轉換成特製化映射的自訂本機 VM 上支援 Key Vault VM 擴充功能，以在 Azure 中使用 Windows Server 2019 core 安裝。
 
 ### <a name="supported-certificate-content-types"></a>支援的憑證內容類型
 
@@ -81,7 +81,7 @@ Key Vault VM 擴充功能支援下列 Windows 版本：
 > 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!IMPORTANT]
-> 只有具有 **使用者指派** 身分識別的 vm 才 **需要** ' authenticationsettings.instance.setsecretkey ' 屬性。
+> 只有具有 **使用者指派** 身分識別的 vm 才 **需要**' authenticationsettings.instance.setsecretkey ' 屬性。
 > 它會指定要用於驗證 Key Vault 的身分識別。
 
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558040"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686220"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用受控識別
 
@@ -24,8 +24,8 @@ ms.locfileid: "85558040"
 
 您可以將兩種類型的身分識別授與 API 管理實例：
 
-- *系統指派*的身分識別會系結至您的服務，如果您的服務已刪除，則會將其刪除。 服務只能有一個系統指派的身分識別。
-- *使用者指派*的身分識別是可指派給您服務的獨立 Azure 資源。 服務可以有多個使用者指派的身分識別。
+- *系統指派* 的身分識別會系結至您的服務，如果您的服務已刪除，則會將其刪除。 服務只能有一個系統指派的身分識別。
+- *使用者指派* 的身分識別是可指派給您服務的獨立 Azure 資源。 服務可以有多個使用者指派的身分識別。
 
 ## <a name="create-a-system-assigned-managed-identity"></a>建立系統指派的受控識別
 
@@ -34,8 +34,8 @@ ms.locfileid: "85558040"
 若要在 Azure 入口網站中設定受控識別，您必須先建立 API 管理實例，然後再啟用此功能。
 
 1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該網站。
-2. 選取 [ **受控**識別]。
-3. 在 [ **系統指派** ] 索引標籤上，將 [ **狀態** ] 切換為 **開啟**。 選取 [儲存]****。
+2. 選取 [ **受控** 識別]。
+3. 在 [ **系統指派** ] 索引標籤上，將 [ **狀態** ] 切換為 **開啟**。 選取 [儲存]。
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="啟用系統指派的受控識別的選取專案" border="true":::
 
@@ -123,9 +123,9 @@ ms.locfileid: "85558040"
 > [!NOTE]
 > API 管理實例可以同時具有系統指派和使用者指派的身分識別。 在此情況下， `type` 屬性會是 `SystemAssigned,UserAssigned` 。
 
-### <a name="supported-scenarios"></a>支援的案例
+## <a name="supported-scenarios-using-system-assigned-identity"></a>使用系統指派身分識別的支援案例
 
-#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>從 Azure Key Vault 取得 API 管理實例的自訂 TLS/SSL 憑證
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>從 Azure Key Vault 取得 API 管理實例的自訂 TLS/SSL 憑證
 您可以使用 API 管理實例的系統指派身分識別，來取出儲存在 Azure Key Vault 中的自訂 TLS/SSL 憑證。 然後，您可以將這些憑證指派給 API 管理實例中的自訂網域。 請記住這些考量：
 
 - 秘密的內容類型必須是 *application/x-pkcs12*。
@@ -262,7 +262,7 @@ ms.locfileid: "85558040"
 }
 ```
 
-#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>使用 API 管理身分識別來驗證後端
+### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>使用 API 管理身分識別來驗證後端
 
 您可以使用系統指派的身分識別，透過 [驗證管理](api-management-authentication-policies.md#ManagedIdentity) 的身分識別原則來驗證後端。
 
@@ -277,11 +277,11 @@ ms.locfileid: "85558040"
 若要在入口網站中設定受控識別，您必須先建立 API 管理實例，然後再啟用此功能。
 
 1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該網站。
-2. 選取 [ **受控**識別]。
+2. 選取 [ **受控** 識別]。
 3. 在 [ **使用者指派** ] 索引標籤上，選取 [ **新增**]。
-4. 搜尋您稍早建立的身分識別，然後選取它。 選取 [新增]。
+4. 搜尋您稍早建立的身分識別，然後選取它。 選取 [新增]  。
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="啟用系統指派的受控識別的選取專案" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="啟用使用者指派的受控識別的選取專案" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -387,9 +387,32 @@ ms.locfileid: "85558040"
 > [!NOTE]
 > API 管理實例可以同時具有系統指派和使用者指派的身分識別。 在此情況下， `type` 屬性會是 `SystemAssigned,UserAssigned` 。
 
-### <a name="supported-scenarios"></a>支援的案例
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>使用使用者指派的受控識別的支援案例
 
-#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用使用者指派的身分識別來驗證後端
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>從 Azure Key Vault 取得 API 管理實例的自訂 TLS/SSL 憑證
+您可以使用任何使用者指派的身分識別，在 API 管理實例和 KeyVault 之間建立信任。 然後，您可以使用此信任來取出儲存在 Azure Key Vault 中的自訂 TLS/SSL 憑證。 然後，您可以將這些憑證指派給 API 管理實例中的自訂網域。 
+
+請記住這些考量：
+
+- 秘密的內容類型必須是 *application/x-pkcs12*。
+- 使用包含秘密的 Key Vault 憑證秘密端點。
+
+> [!Important]
+> 如果您未提供憑證的物件版本，API 管理會在 Key Vault 中更新後的四個小時內自動取得憑證的較新版本。
+
+如需完整範本，請參閱 [使用以 KeyVault 為基礎的 SSL 的 API 管理（使用使用者指派的身分識別](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json)）。
+
+在此範本中，您將部署：
+
+* Azure API 管理
+* Azure 受控使用者指派的身分識別
+* 用於儲存 SSL/TLS 憑證的 Azure KeyVault
+
+若要自動執行部署，請按一下下列按鈕：
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+
+### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用使用者指派的身分識別來驗證後端
 
 您可以使用使用者指派的身分識別，透過 [驗證管理](api-management-authentication-policies.md#ManagedIdentity) 的身分識別原則來向後端進行驗證。
 
@@ -413,7 +436,7 @@ ms.locfileid: "85558040"
 >
 > 您可以從 Azure Key Vault 憑證切換至內嵌編碼憑證，然後停用受控識別，以解除封鎖。 如需詳細資訊，請參閱[設定自訂網域名稱](configure-custom-domain.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure 資源的受控識別：
 

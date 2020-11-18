@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536492"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693727"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
 ## <a name="overview"></a>概觀
@@ -60,7 +60,7 @@ Azure 的基礎結構設計涵蓋設備與應用程式，可同時裝載數以�
 
 內建功能分為六個功能區域：作業、應用程式、儲存體、網路、計算和身分識別。 您可以透過摘要資訊來提供 Azure 平臺中有關 Azure 平臺所提供之功能的其他詳細資料。
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>Operations
 本節提供關於安全性作業中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="security-and-audit-dashboard"></a>安全性和稽核儀表板
@@ -141,8 +141,8 @@ App Service Web 應用程式會針對來自 Web 伺服器和 Web 應用程式的
 ## <a name="storage"></a>儲存體
 本節提供關於 Azure 儲存體安全性中主要功能的其他資訊，以及這些功能的摘要資訊。
 
-### <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
-您可以使用角色型存取控制 (RBAC) 來保護儲存體帳戶。 對於想要強制執行資料存取安全性原則的組織來說，根據 [需要知道](https://en.wikipedia.org/wiki/Need_to_know) 和 [最低許可權](https://en.wikipedia.org/wiki/Principle_of_least_privilege) 安全性原則來限制存取是不可或缺的。 藉由將適當的 Azure 角色指派給特定範圍的群組和應用程式，即可授與這些存取權限。 您可以使用 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)（例如儲存體帳戶參與者）將許可權指派給使用者。 使用 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) 模型來存取儲存體帳戶的儲存體金鑰，可以透過角色型存取控制 (RBAC) 來控制。
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 角色型存取控制 (Azure RBAC)
+您可以使用 Azure 角色型存取控制 (Azure RBAC) 來保護您的儲存體帳戶。 對於想要強制執行資料存取安全性原則的組織來說，根據 [需要知道](https://en.wikipedia.org/wiki/Need_to_know) 和 [最低許可權](https://en.wikipedia.org/wiki/Principle_of_least_privilege) 安全性原則來限制存取是不可或缺的。 藉由將適當的 Azure 角色指派給特定範圍的群組和應用程式，即可授與這些存取權限。 您可以使用 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)（例如儲存體帳戶參與者）將許可權指派給使用者。 使用 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) 模型來存取儲存體帳戶的儲存體金鑰，可以透過 Azure RBAC 來控制。
 
 ### <a name="shared-access-signature"></a>共用存取簽章
 [ (SAS) 的共用存取](../../storage/common/storage-sas-overview.md)簽章可提供您儲存體帳戶中資源的委派存取權。 SAS 意謂著您可以將儲存體帳戶中物件的有限權限授與用戶端，讓該用戶端可以在一段指定期間內使用一組指定的權限進行存取。 您可以在不須分享您帳戶存取金鑰的情況下，授與這些有限的權限。
@@ -336,7 +336,7 @@ Microsoft 在其產品與服務上使用多個安全性作法與技術來管理�
 
 -   [權杖型驗證](../../active-directory/develop/authentication-vs-authorization.md)可透過 Azure Active Directory 啟用驗證。
 
--   [Azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/built-in-roles.md) 可讓您根據使用者獲指派的角色授與存取權，讓使用者能夠輕鬆地只提供執行其工作所需的存取權數量。 您可以針對每個組織的商務模型和風險承受度自訂 RBAC。
+-   [Azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/built-in-roles.md) 可讓您根據使用者獲指派的角色授與存取權，讓使用者能夠輕鬆地只提供執行其工作所需的存取權數量。 您可以根據組織的商務模型和風險承受度自訂 Azure RBAC。
 
 -   [整合式身分識別管理 (混合式身分識別)](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md) 可讓您維持控制使用者在內部資料中心和雲端平台上的存取權，建立單一使用者身分識別，以便對所有資源進行驗證與授權。
 

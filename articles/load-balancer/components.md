@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317455"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685506"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
@@ -34,7 +34,7 @@ Azure Load Balancer 的 IP 位址。 這是用戶端的連絡點。 這些 IP �
 - **公用 IP 位址**
 - **私人 IP 位址**
 
-IP 位址的性質會決定所建立負載平衡器的 **類型** 。 選取私人 IP 位址會建立內部負載平衡器。 選取公用 IP 位址會建立公用負載平衡器。
+IP 位址的性質會決定所建立負載平衡器的 **類型**。 選取私人 IP 位址會建立內部負載平衡器。 選取公用 IP 位址會建立公用負載平衡器。
 
 |  | 公用 Load Balancer  | 內部負載平衡器 |
 | ---------- | ---------- | ---------- |
@@ -139,7 +139,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 - 請參閱 [建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
 - 深入了解 [Azure Load Balancer](load-balancer-overview.md)。
 - 了解[公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- 了解[私戈 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)
+- 了解[私戈 IP 位址](../virtual-network/private-ip-addresses.md)
 - 了解如何使用[標準 Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
 - 了解[標準 Load Balancer 診斷](load-balancer-standard-diagnostics.md)。
 - 深入了解[閒置時重設 TCP](load-balancer-tcp-reset.md)。

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e7d5d4b730ef1669bd9bb7d74e35924061f5580
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0aff55810508fedcf354fba3d9fca9f7a402029b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146206"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685829"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>叢集資源管理員架構概觀
 Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它會管理叢集中服務的所需狀態，特別是關於資源耗用和任何放置規則。 
@@ -43,7 +43,7 @@ Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它�
 
 <center>
 
-![顯示 Thow 叢集資源管理員服務會匯總來自本機代理程式的所有資訊，並根據其目前的設定進行回應的圖表。][Image1]
+![顯示叢集資源管理員服務的圖表會匯總來自本機代理程式的所有資訊，並根據其目前的設定進行回應。][Image1]
 </center>
 
 執行階段可能發生許多變化。 例如，假設某些服務耗用的資源數量改變、某些服務失敗，以及某些節點加入和離開叢集。 節點上的所有變更會彙總，並定期傳送到叢集資源管理員服務 (1，2)，它們會在其中再次彙總、分析及儲存。 每隔幾秒鐘，服務就會查看變更，並判斷是否需要採取任何動作 (3)。 例如，它可能會注意到某些空的節點已新增至叢集。 如此一來，它會決定要將某些服務移至這些節點。 叢集資源管理員可能也會注意到特定節點是超載的，或者某些服務已失敗或刪除，而在別處釋放資源。
@@ -55,7 +55,7 @@ Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它�
 ![資源平衡器架構][Image2]
 </center>
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解這些相關資訊，請參閱本文，以瞭解如何[描述 Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)叢集
 - 叢集資源管理員的主要責任是重新平衡叢集，以及強制執行放置規則。 如需有關設定這些行為的詳細資訊，請參閱[平衡 Service Fabric 叢集](./service-fabric-cluster-resource-manager-balancing.md)
 

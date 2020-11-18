@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311069"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686152"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連線至 Synapse SQL
 
@@ -52,10 +52,10 @@ ms.locfileid: "93311069"
    
     ![連線到伺服器](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **伺服器名稱** ：輸入先前找到的 **伺服器名稱** 。
-   * **驗證** ：選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]：
-   * **使用者名稱** 和 **密碼** ：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
-   * 按一下 [ **連接** ]。
+   * **伺服器名稱**：輸入先前找到的 **伺服器名稱** 。
+   * **驗證**：選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]：
+   * **使用者名稱** 和 **密碼**：如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * 按一下 [ **連接**]。
 5. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開 AdventureWorksDW 以查看範例資料庫中的資料表。
    
     ![探索 AdventureWorksDW](./media/get-started-visual-studio/explore-sample.png)

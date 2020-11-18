@@ -4,12 +4,12 @@ description: 在 Azure Kubernetes Service (AKS) 中建置和管理應用程式�
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008775"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686254"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建置和管理應用程式的叢集操作員和開發人員最佳做法
 
@@ -30,7 +30,7 @@ ms.locfileid: "88008775"
 * [進階排程器功能的最佳做法](operator-best-practices-advanced-scheduler.md)
     * 包括使用污點與容忍、節點選取器與親和性，以及Inter-pod 親和性和反親和性。
 * [驗證和授權的最佳做法](operator-best-practices-identity.md)
-    * 包含 Azure Active Directory、使用角色型存取控制 (RBAC) 和 pod 身分識別的整合。
+    * 包含與 Azure Active Directory 的整合，使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) 、使用 Azure RBAC 和 pod 身分識別。
 
 **安全性**
 

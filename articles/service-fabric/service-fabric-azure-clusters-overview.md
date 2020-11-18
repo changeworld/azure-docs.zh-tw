@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320516"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685812"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上的 Service Fabric 叢集概觀
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 隸屬於叢集的機器或 VM 稱為叢集模式。 叢集可擴充至數千個節點。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的服務資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。
@@ -29,7 +29,7 @@ Azure 上的 Service Fabric 叢集是 Azure 資源，使用其他 Azure 資源�
 ![Service Fabric 叢集][Image]
 
 ### <a name="virtual-machine"></a>虛擬機器
-屬於叢集的[虛擬機器](../virtual-machines/index.yml)雖然稱為節點，但是技術上叢集節點是 Service Fabric 執行階段程序。 需為每個節點指派節點名稱 (字串)。 節點具有各種特性，如 [placement 屬性](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)。 每部機器或 VM 皆有自動啟動的服務 FabricHost.exe**，該服務會在開機時開始執行，然後啟動兩個可執行檔：Fabric.exe** 和 FabricGateway.exe**，這兩個可執行檔組成節點。 生產環境部署是每個實體或虛擬機器的一個節點。 針對測試案例，您可以藉由執行多個 Fabric.exe** 和 FabricGateway.exe** 執行個體，在單一機器或 VM 上裝載多個節點。
+屬於叢集的[虛擬機器](../virtual-machines/index.yml)雖然稱為節點，但是技術上叢集節點是 Service Fabric 執行階段程序。 需為每個節點指派節點名稱 (字串)。 節點具有各種特性，如 [placement 屬性](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)。 每部機器或 VM 皆有自動啟動的服務 FabricHost.exe，該服務會在開機時開始執行，然後啟動兩個可執行檔：Fabric.exe 和 FabricGateway.exe，這兩個可執行檔組成節點。 生產環境部署是每個實體或虛擬機器的一個節點。 針對測試案例，您可以藉由執行多個 Fabric.exe 和 FabricGateway.exe 執行個體，在單一機器或 VM 上裝載多個節點。
 
 每個 VM 會與虛擬網路介面卡 (NIC) 相關聯，而且每個 NIC 會獲得指派私人 IP 位址。  VM 已透過 NIC 指派給虛擬網路和本機平衡器。
 
@@ -46,9 +46,9 @@ Azure 上的 Service Fabric 叢集是 Azure 資源，使用其他 Azure 資源�
 如需詳細資訊，請參閱 [Azure Service Fabric 節點類型與虛擬機器擴展集](service-fabric-cluster-nodetypes.md)。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM 執行個體加入到 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) 後面，與 [公用 IP 位址](../virtual-network/public-ip-addresses.md)和 DNS 標籤相關聯。  當您使用* &lt; &gt; clustername*布建叢集時，DNS 名稱為* &lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*是與擴展集前方的負載平衡器相關聯的 DNS 標籤。
+VM 執行個體加入到 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) 後面，與 [公用 IP 位址](../virtual-network/public-ip-addresses.md)和 DNS 標籤相關聯。  當您使用 *&lt; &gt; clustername* 布建叢集時，DNS 名稱為 *&lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com* 是與擴展集前方的負載平衡器相關聯的 DNS 標籤。
 
-叢集中的 VM 只有[私人 IP 位址](../virtual-network/private-ip-addresses.md)。  管理流量和服務流量會透過公用對應的負載平衡器進行路由。  網路流量會透過 NAT 規則 (用戶端連線到特定節點/執行個體) 或負載平衡規則 (流量循環前往 VM) 路由傳送到這些機器。  負載平衡器有一個相關聯的公用 IP，其 DNS 名稱的格式為： * &lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*。  公用 IP 是資源群組中的另一個 Azure 資源。  如果您在叢集中定義多個節點類型，會為每個節點類型/擴展集建立負載平衡器。 或者，您可以為多個節點類型設定單一負載平衡器。  主要節點類型具有 DNS 標籤* &lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*，其他節點類型具有 DNS 標籤* &lt; clustername &gt; - &lt; nodetype &gt; 。 &lt;&gt;cloudapp.azure.com*。
+叢集中的 VM 只有[私人 IP 位址](../virtual-network/private-ip-addresses.md)。  管理流量和服務流量會透過公用對應的負載平衡器進行路由。  網路流量會透過 NAT 規則 (用戶端連線到特定節點/執行個體) 或負載平衡規則 (流量循環前往 VM) 路由傳送到這些機器。  負載平衡器有一個相關聯的公用 IP，其 DNS 名稱的格式為： *&lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*。  公用 IP 是資源群組中的另一個 Azure 資源。  如果您在叢集中定義多個節點類型，會為每個節點類型/擴展集建立負載平衡器。 或者，您可以為多個節點類型設定單一負載平衡器。  主要節點類型具有 DNS 標籤 *&lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*，其他節點類型具有 DNS 標籤 *&lt; clustername &gt; - &lt; nodetype &gt; 。 &lt;&gt;cloudapp.azure.com*。
 
 ### <a name="storage-accounts"></a>儲存體帳戶
 每個叢集節點類型受到 [Azure 儲存體帳戶](../storage/common/storage-introduction.md)和受控磁碟支援。
@@ -69,11 +69,11 @@ Service Fabric 叢集是您所擁有的資源。  保護叢集是您的責任，
 如需詳細資訊，請參閱[用戶端對節點安全性](service-fabric-cluster-security.md#client-to-node-security)
 
 ### <a name="role-based-access-control"></a>角色型存取控制
-角色型存取控制 (RBAC) 可讓您指派 Azure 資源的更細緻存取控制。  您可以將不同的存取規則指派給訂用帳戶、資源群組和資源。  RBAC 規則會與資源階層一起繼承，除非在較低層級覆寫。  您可以在具有 RBAC 規則的 AAD 上指派任何使用者或使用者群組，讓指定的使用者和群組可以修改您的叢集。  如需詳細資訊，請參閱 [Azure RBAC 概觀](../role-based-access-control/overview.md)。
+Azure 角色型存取控制 (Azure RBAC) 可讓您在 Azure 資源上指派更細緻的存取控制。  您可以將不同的存取規則指派給訂用帳戶、資源群組和資源。  除非在較低層級進行覆寫，否則 Azure RBAC 規則會沿著資源階層繼承。  您可以使用 Azure RBAC 規則指派 AAD 上的任何使用者或使用者群組，讓指定的使用者和群組可以修改您的叢集。  如需詳細資訊，請參閱 [Azure RBAC 概觀](../role-based-access-control/overview.md)。
 
 Service Fabric 也支援存取控制來限制不同使用者群組對特定叢集作業的存取。 這樣有助於讓叢集更安全。 針對連線到叢集的用戶端，支援兩種存取控制類型：系統管理員角色和使用者角色。  
 
-如需詳細資訊，請參閱 [Service Fabric 角色型存取控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。
+如需詳細資訊，請參閱 [Service Fabric 角色型存取控制](service-fabric-cluster-security.md#service-fabric-role-based-access-control)。
 
 ### <a name="network-security-groups"></a>網路安全性群組 
 網路安全性群組 (NSG) 控制子網路、VM 或特定 NIC 的輸入和輸出流量。  根據預設，當多個 VM 放在相同的虛擬網路上時，它們可以透過任何連接埠彼此通訊。  如果您想要限制機器之間的通訊，可以定義 NSG 來區隔網路或將它們彼此隔離。  如果您在叢集中有多個節點類型，可以將 NSG 套用至子網路，以避免屬於不同節點類型的機器彼此通訊。  

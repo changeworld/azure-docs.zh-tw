@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2786a45ef779b9c66edda4c765a1cf2140f1bf9f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37db72b2b5dadfba930ca003121140fd99c4736d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425278"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686067"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>適用于 Azure Load Balancer 的 Azure 安全性基準
 
@@ -24,13 +24,13 @@ ms.locfileid: "92425278"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指導**方針：使用內部 Azure 負載平衡器，只允許來自特定虛擬網路內的後端資源或對等互連虛擬網路的流量，而不會暴露于網際網路。 使用來源網路位址轉譯來執行外部 Load Balancer， (SNAT) 來偽裝後端資源的 IP 位址，以防止直接網際網路暴露。
+**指導** 方針：使用內部 Azure 負載平衡器，只允許來自特定虛擬網路內的後端資源或對等互連虛擬網路的流量，而不會暴露于網際網路。 使用來源網路位址轉譯來執行外部 Load Balancer， (SNAT) 來偽裝後端資源的 IP 位址，以防止直接網際網路暴露。
 
 Azure 提供兩種類型的 Load Balancer 供應專案：標準和基本。 將 Standard Load Balancer 用於所有生產工作負載。 執行網路安全性群組，並只允許存取您應用程式的受信任埠和 IP 位址範圍。 如果沒有任何網路安全性群組指派給後端虛擬機器的後端子網或 NIC，則不會將流量從負載平衡器允許到這些資源。 使用標準負載平衡器，提供輸出規則來定義具有網路安全性群組的輸出 NAT。 請參閱這些輸出規則來調整輸出連線的行為。 
 
 建議您針對生產工作負載使用 Standard Load Balancer，且通常只會使用基本的 Load Balancer 來進行測試，因為根據預設，基本類型會開放到網際網路的連線，且不需要網路安全性群組來進行操作。 
 
-- [Azure 中的輸出連線](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#outboundrule)
+- [Azure 中的輸出連線](load-balancer-outbound-connections.md)
 
 - [升級 Azure 公用 Load Balancer](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)
 
@@ -40,7 +40,7 @@ Azure 提供兩種類型的 Load Balancer 供應專案：標準和基本。 將 
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
-**指導**方針： Load Balancer 是通過服務，因為它依賴套用至後端資源的網路安全性群組規則，以及設定的輸出規則來控制網際網路存取。
+**指導** 方針： Load Balancer 是通過服務，因為它依賴套用至後端資源的網路安全性群組規則，以及設定的輸出規則來控制網際網路存取。
 
 檢查您的 Standard Load Balancer 針對您的 Load Balancer 設定的輸出規則，以及您可能會啟用隱含輸出規則的負載平衡規則分頁。
 
@@ -66,7 +66,7 @@ Azure 提供兩種類型的 Load Balancer 供應專案：標準和基本。 將 
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
-**指導**方針：透過輸出規則和網路安全性群組，透過您的 Load Balancer 明確定義網際網路連線能力和有效的來源 ip，以使用 Microsoft 的威脅情報來保護您的 web 應用程式。
+**指導** 方針：透過輸出規則和網路安全性群組，透過您的 Load Balancer 明確定義網際網路連線能力和有效的來源 ip，以使用 Microsoft 的威脅情報來保護您的 web 應用程式。
 
 - [整合 Azure 防火牆](https://docs.microsoft.com/azure/firewall/integrate-lb)
 
@@ -76,7 +76,7 @@ Azure 提供兩種類型的 Load Balancer 供應專案：標準和基本。 將 
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指導**方針：在您的 Azure 虛擬網路上啟用 azure 分散式阻絕服務 (DDoS) 標準保護，以防範 ddos 攻擊。 
+**指導** 方針：在您的 Azure 虛擬網路上啟用 azure 分散式阻絕服務 (DDoS) 標準保護，以防範 ddos 攻擊。 
 
 在每個組織的網路界限上部署 Azure 防火牆，並啟用以威脅情報為基礎的篩選，並設定為惡意網路流量的「警示和拒絕」。
 
@@ -116,7 +116,7 @@ Standard Load Balancer 的設計預設為安全的，並且是私人和隔離虛
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：啟用網路監看員封包捕捉以調查異常活動。
+**指導** 方針：啟用網路監看員封包捕捉以調查異常活動。
 
 - [如何建立網路監看員實例](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
 
@@ -126,7 +126,7 @@ Standard Load Balancer 的設計預設為安全的，並且是私人和隔離虛
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
-**指導**方針：利用 Azure Marketplace 中的供應專案，其支援具有您 Load Balancer 環境之承載檢查功能的 IDS/IPS 功能。 
+**指導** 方針：利用 Azure Marketplace 中的供應專案，其支援具有您 Load Balancer 環境之承載檢查功能的 IDS/IPS 功能。 
 
 如果不需要承載檢查，請使用 Azure 防火牆威脅情報。 Azure 防火牆威脅情報型篩選是用來警示和/或封鎖來自已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
 
@@ -144,7 +144,7 @@ Standard Load Balancer 的設計預設為安全的，並且是私人和隔離虛
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
-**指導**方針：透過輸出規則和網路安全性群組，透過您的 Load Balancer 明確定義網際網路連線能力和有效的來源 ip，以使用 Microsoft 的威脅情報功能來保護您的 web 應用程式。
+**指導** 方針：透過輸出規則和網路安全性群組，透過您的 Load Balancer 明確定義網際網路連線能力和有效的來源 ip，以使用 Microsoft 的威脅情報功能來保護您的 web 應用程式。
 
 - [整合 Azure 防火牆](https://docs.microsoft.com/azure/firewall/integrate-lb)
 
@@ -154,7 +154,7 @@ Standard Load Balancer 的設計預設為安全的，並且是私人和隔離虛
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指導**方針：建立安全性規則時，請使用服務標籤來取代特定的 IP 位址。 在規則的 [來源] 或 [目的地] 欄位中指定服務標記名稱，以允許或拒絕對應服務的流量。 
+**指導** 方針：建立安全性規則時，請使用服務標籤來取代特定的 IP 位址。 在規則的 [來源] 或 [目的地] 欄位中指定服務標記名稱，以允許或拒絕對應服務的流量。 
 
 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 
 
@@ -170,7 +170,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：使用 Azure 原則定義和執行網路資源的標準安全性設定。
+**指導** 方針：使用 Azure 原則定義和執行網路資源的標準安全性設定。
 
 使用 Azure 藍圖在單一藍圖定義中封裝重要環境成品（例如 Azure 資源管理員範本、Azure RBAC 控制項和原則），以簡化大規模的 Azure 部署。 
 
@@ -188,7 +188,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：使用網路安全性群組的資源標記，以及與網路安全性和流量流程相關的其他資源。 
+**指導** 方針：使用網路安全性群組的資源標記，以及與網路安全性和流量流程相關的其他資源。 
 
 使用 [描述] 欄位，記錄允許個別網路安全性群組規則的網路流量進出的規則。
 
@@ -208,7 +208,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指導**方針：使用 azure 活動記錄來監視資源設定，並偵測對您 Azure 資源的變更。 
+**指導** 方針：使用 azure 活動記錄來監視資源設定，並偵測對您 Azure 資源的變更。 
 
 在 Azure 監視器中建立警示，以在重大資源變更時通知您。
 
@@ -226,7 +226,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指導**方針：在您的訂用帳戶中查看活動記錄，以查看您的負載平衡器的輸出規則和網路安全性群組的變更。 
+**指導** 方針：在您的訂用帳戶中查看活動記錄，以查看您的負載平衡器的輸出規則和網路安全性群組的變更。 
 
 查看內部主機記錄檔，以確保您的後端資源是安全的。
 
@@ -250,7 +250,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指導**方針：檢查基本 Load Balancer 的活動記錄所捕捉的控制項和管理平面記錄和審核資訊。 預設會啟用這些捕獲設定。 
+**指導** 方針：檢查基本 Load Balancer 的活動記錄所捕捉的控制項和管理平面記錄和審核資訊。 預設會啟用這些捕獲設定。 
 
 使用活動記錄來監視資源的動作，以查看所有活動及其狀態。 
 
@@ -290,7 +290,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指導**方針：依預設會啟用活動記錄，並在 Azure 的事件記錄存放區中保留90天。 根據組織在 Azure 監視器中的合規性法規來設定 Log Analytics 工作區保留期限。 使用 Azure 儲存體帳戶來取得長期和封存儲存體。
+**指導** 方針：依預設會啟用活動記錄，並在 Azure 的事件記錄存放區中保留90天。 根據組織在 Azure 監視器中的合規性法規來設定 Log Analytics 工作區保留期限。 使用 Azure 儲存體帳戶來取得長期和封存儲存體。
 
 - [查看活動記錄以監視資源文章的動作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)
 
@@ -304,7 +304,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指導**方針：使用 [Azure 入口網站] 中的 [Load Balancer] 頁面和 [Azure 監視器] 下的資源健康狀態頁面，來監視、管理 Standard Load Balancer 資源並進行疑難排解。 安全性的可用計量包括來源網路位址轉譯 (SNAT) 連線、埠的相關資訊。 此外，也可以取得 SYN (同步處理) 封包和封包計數器的其他計量。 
+**指導** 方針：使用 [Azure 入口網站] 中的 [Load Balancer] 頁面和 [Azure 監視器] 下的資源健康狀態頁面，來監視、管理 Standard Load Balancer 資源並進行疑難排解。 安全性的可用計量包括來源網路位址轉譯 (SNAT) 連線、埠的相關資訊。 此外，也可以取得 SYN (同步處理) 封包和封包計數器的其他計量。 
 
 使用 Azure 監視器來檢查端點健康情況探查狀態，其中包含適用于標準、外部和內部負載平衡器的多維度計量。 透過 Api 以程式設計方式收集這些計量，並透過 [所有度量] 選項寫入至儲存體帳戶。
 
@@ -338,7 +338,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指導**方針：搭配使用資訊安全中心與 Log Analytics 工作區，來監視和警示有關安全性記錄和事件中 Load Balancer 的異常活動。
+**指導** 方針：搭配使用資訊安全中心與 Log Analytics 工作區，來監視和警示有關安全性記錄和事件中 Load Balancer 的異常活動。
 
 啟用 Azure Sentinel 或使用協力廠商 SIEM 工具的資料。
 
@@ -354,7 +354,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
-**指導**方針：不適用 Azure Load Balancer。 這項建議適用于計算資源。
+**指導** 方針：不適用 Azure Load Balancer。 這項建議適用于計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -362,7 +362,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針：不適用 Azure Load Balancer 是不會進行 DNS 查詢的核心網路服務。
+**指導** 方針：不適用 Azure Load Balancer 是不會進行 DNS 查詢的核心網路服務。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -370,7 +370,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
-**指導**方針：不適用於 Azure Load Balancer，因為這是適用于計算資源的建議。
+**指導** 方針：不適用於 Azure Load Balancer，因為這是適用于計算資源的建議。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -382,7 +382,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 azure 資源（例如您的 Load Balancer）的存取權。 將這些角色指派給使用者、群組服務主體和受控識別。 
+**指導** 方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 azure 資源（例如您的 Load Balancer）的存取權。 將這些角色指派給使用者、群組服務主體和受控識別。 
 
 使用 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具，清查特定資源的預先定義和內建角色。
 
@@ -400,7 +400,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
-**指導**方針：使用 Azure RBAC 來控制 Load Balancer 資源的存取權。
+**指導** 方針：使用 Azure RBAC 來控制 Load Balancer 資源的存取權。
 
 - [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
@@ -410,7 +410,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
-**指導**方針： Load Balancer 是不會儲存客戶資料的通過服務。 它是由 Microsoft 管理之基礎平臺的一部分。 
+**指導** 方針： Load Balancer 是不會儲存客戶資料的通過服務。 它是由 Microsoft 管理之基礎平臺的一部分。 
 
 Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的長度，以防止客戶資料遺失和公開。 
 
@@ -424,7 +424,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，在對重要的 Azure 資源進行變更時建立警示，例如用於重要生產工作負載的負載平衡器。
+**指導** 方針：使用 Azure 監視器搭配 Azure 活動記錄，在對重要的 Azure 資源進行變更時建立警示，例如用於重要生產工作負載的負載平衡器。
 
 - [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
@@ -438,7 +438,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
-**指導**方針：使用 Azure Resource Graph 來查詢和探索所有資源 (例如，您訂用帳戶中) 的計算、儲存體、網路、埠、通訊協定等。 建議 Azure Resource Manager 建立和使用目前的資源。 
+**指導** 方針：使用 Azure Resource Graph 來查詢和探索所有資源 (例如，您訂用帳戶中) 的計算、儲存體、網路、埠、通訊協定等。 建議 Azure Resource Manager 建立和使用目前的資源。 
 
 確定您的租使用者中有適當的 (讀取) 許可權，並列舉訂用帳戶中的所有 Azure 訂用帳戶和資源。
 
@@ -454,7 +454,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
-**指導**方針：使用中繼資料將標記套用至 Azure 資源，以根據分類法以邏輯方式組織。
+**指導** 方針：使用中繼資料將標記套用至 Azure 資源，以根據分類法以邏輯方式組織。
 
 - [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -464,7 +464,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指導**方針：在適當的情況下使用標記、管理群組和個別訂用帳戶來組織和追蹤資產。 
+**指導** 方針：在適當的情況下使用標記、管理群組和個別訂用帳戶來組織和追蹤資產。 
 
 定期協調清查，並確保會及時將未經授權的資源從您的訂用帳戶中刪除。
 
@@ -480,7 +480,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
-**指導**方針：根據您的組織需求建立核准的 Azure 資源清單，您可以利用這些資源作為允許清單機制。 這可讓您的組織在正式審核並核准您組織的一般安全性評估程式之後，將任何新的可用 Azure 服務上線。
+**指導** 方針：根據您的組織需求建立核准的 Azure 資源清單，您可以利用這些資源作為允許清單機制。 這可讓您的組織在正式審核並核准您組織的一般安全性評估程式之後，將任何新的可用 Azure 服務上線。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -488,7 +488,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指導**方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
+**指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
 使用擁有的訂用帳戶內的 Azure Resource Graph 來查詢及探索資源。 
 
@@ -504,7 +504,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制使用者與 Azure Resource Manager 互動的能力
 
-**指導**方針：使用 Azure AD 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，來限制使用者與 Azure Resource Manager 互動的能力。
+**指導** 方針：使用 Azure AD 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，來限制使用者與 Azure Resource Manager 互動的能力。
 
 - [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
@@ -514,7 +514,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指導**方針：商務營運所需但可能會對組織產生更高風險的軟體，應該在自己的虛擬機器和（或）虛擬網路內隔離，並使用 Azure 防火牆或網路安全性群組來充分保護。
+**指導** 方針：商務營運所需但可能會對組織產生更高風險的軟體，應該在自己的虛擬機器和（或）虛擬網路內隔離，並使用 Azure 防火牆或網路安全性群組來充分保護。
 
 - [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
@@ -530,7 +530,7 @@ Microsoft 會將所有客戶內容視為機密資料，並將其移至絕佳的�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導**方針：使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的設定進行審核或強制執行。 使用內建的 Azure 原則定義。
+**指導** 方針：使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的設定進行審核或強制執行。 使用內建的 Azure 原則定義。
 
 Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出範本，這應該經過檢查以確保設定符合您組織的安全性需求。
 
@@ -566,7 +566,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則定義、Azure Resource Manager 範本和 desired state configuration 腳本。 
+**指導** 方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則定義、Azure Resource Manager 範本和 desired state configuration 腳本。 
 
 授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (中所定義之群組的許可權 Azure AD) 如果已與 Azure DevOps 整合，或與 TFS 整合時為 Active Directory。
 
@@ -580,7 +580,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
-**指導**方針：使用 Azure 原則定義和實行適用于 Azure 資源的標準安全性設定。  使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的網路設定進行審核或強制執行。 執行與特定 Azure Load Balancer 資源相關的內建原則定義。  此外，使用 Azure 自動化部署設定變更。 Azure Load Balancer 資源。
+**指導** 方針：使用 Azure 原則定義和實行適用于 Azure 資源的標準安全性設定。  使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的網路設定進行審核或強制執行。 執行與特定 Azure Load Balancer 資源相關的內建原則定義。  此外，使用 Azure 自動化部署設定變更。 Azure Load Balancer 資源。
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -592,7 +592,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
-**指導**方針：使用「安全性中心」為您的 Azure 資源執行基準掃描，並 Azure 原則警示和審核資源設定。
+**指導** 方針：使用「安全性中心」為您的 Azure 資源執行基準掃描，並 Azure 原則警示和審核資源設定。
 
 - [如何修復 Azure 資訊安全中心中的建議](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
 
@@ -624,7 +624,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
-**指導**方針：使用連續匯出功能來匯出您的資訊安全中心警示和建議，以協助找出 Azure 資源的風險。 
+**指導** 方針：使用連續匯出功能來匯出您的資訊安全中心警示和建議，以協助找出 Azure 資源的風險。 
 
 使用安全中心的連續匯出功能，可讓您以手動方式或持續持續的方式來匯出警示和建議。 
 
@@ -640,7 +640,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指導**方針：使用安全中心的工作流程自動化功能，自動觸發安全性警示和建議的回應，以保護您的 Azure 資源。
+**指導** 方針：使用安全中心的工作流程自動化功能，自動觸發安全性警示和建議的回應，以保護您的 Azure 資源。
 
 - [如何在安全性輸入中設定工作流程自動化](https://docs.microsoft.com/azure/security-center/workflow-automation)
 
@@ -654,9 +654,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導**方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。 
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。 
 
-- [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
+- [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
 - [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

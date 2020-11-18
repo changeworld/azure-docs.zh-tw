@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d99295fbb355b3efa22a64c9adc04311508e474
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517558"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693153"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架︰授權 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -32,11 +32,11 @@ ms.locfileid: "94517558"
 | **IoT 雲端閘道** | <ul><li>[使用最低權限的權杖連線到雲端閘道](#cloud-least-privileged)</li></ul> |
 | **Azure 事件中樞** | <ul><li>[使用僅限傳送權限 SAS 金鑰來產生裝置權杖](#sendonly-sas)</li><li>[請勿使用可供直接存取事件中樞的存取權杖](#access-tokens-hub)</li><li>[使用具有所需最低權限的 SAS 金鑰來連線到事件中樞](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[盡可能使用資源權杖來連線到 Azure Cosmos DB](#resource-docdb)</li></ul> |
-| **Azure 信任邊界** | <ul><li>[使用 RBAC 啟用 Azure 訂用帳戶的精細存取管理](#grained-rbac)</li></ul> |
-| **Service Fabric 信任邊界** | <ul><li>[使用 RBAC 限制用戶端對叢集作業的存取](#cluster-rbac)</li></ul> |
+| **Azure 信任邊界** | <ul><li>[使用 Azure RBAC 對 Azure 訂用帳戶啟用更細緻的存取管理](#grained-rbac)</li></ul> |
+| **Service Fabric 信任邊界** | <ul><li>[使用 Azure RBAC 限制用戶端對叢集作業的存取](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[執行安全性模型化並視需要使用欄位層級安全性](#modeling-field)</li></ul> |
 | **Dynamics CRM 入口網站** | <ul><li>[執行入口網站帳戶的安全性模型化，並記住，入口網站的安全性模型與 CRM 的其餘部分不同](#portal-security)</li></ul> |
-| **Azure 儲存體** | <ul><li>[在 Azure 表格儲存體中授與某個實體範圍的精細權限](#permission-entities)</li><li>[使用 Azure Resource Manager 啟用 Azure 儲存體帳戶的角色型存取控制 (RBAC)](#rbac-azure-manager)</li></ul> |
+| **Azure 儲存體** | <ul><li>[在 Azure 表格儲存體中授與某個實體範圍的精細權限](#permission-entities)</li><li>[使用 Azure Resource Manager 來啟用 azure 角色型存取控制 (azure RBAC) 到 Azure 儲存體帳戶](#rbac-azure-manager)</li></ul> |
 | **行動用戶端** | <ul><li>[實作隱含的越獄或 Root 權限入侵偵測](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF 中的弱式類別參考](#weak-class-wcf)</li><li>[WCF-執行授權控制](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[在 ASP.NET Web API 中執行適當的授權機制](#authz-aspnet)</li></ul> |
@@ -229,7 +229,7 @@ WHERE userID=:id < - session var
 | **參考**              | N/A  |
 | **步驟** | 資源權杖會與 Azure Cosmos DB 權限資源相關聯，並擷取資料庫使用者與該使用者所具備之特定 Azure Cosmos DB 應用程式資源 (例如集合、文件) 權限之間的關係。 如果無法放心託付用戶端 (例如行動裝置或桌上型電腦用戶端等使用者應用程式) 處理主要或唯讀金鑰，請一律使用資源權杖來存取 Azure Cosmos DB。請從可以安全地儲存主要金鑰或唯讀金鑰的後端應用程式使用這些金鑰。|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>使用 RBAC 啟用 Azure 訂用帳戶的精細存取管理
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>使用 Azure RBAC 對 Azure 訂用帳戶啟用更細緻的存取管理
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
@@ -237,10 +237,10 @@ WHERE userID=:id < - session var
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [使用角色指派來管理 Azure 訂用帳戶資源的存取權](../../role-based-access-control/role-assignments-portal.md)  |
-| **步驟** | Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 使用 RBAC，您可以僅授與使用者執行其作業所需的存取權。|
+| **參考**              | [新增或移除 Azure 角色指派來管理 Azure 訂用帳戶資源的存取權](../../role-based-access-control/role-assignments-portal.md)  |
+| **步驟** | Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 使用 Azure RBAC，您可以只授與使用者執行其作業所需的存取權數量。|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>使用 RBAC 限制用戶端對於叢集作業的存取
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>使用 Service Fabric RBAC 限制用戶端對叢集作業的存取
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
@@ -248,7 +248,7 @@ WHERE userID=:id < - session var
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure |
-| **參考**              | [角色型存取控制 (適用於 Service Fabric 用戶端)](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **參考**              | [Service Fabric Service Fabric 用戶端的角色型存取控制](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **步驟** | <p>Azure Service Fabric 針對連線到 Service Fabric 叢集的用戶端，支援兩種不同的存取控制類型：系統管理員和使用者。 存取控制可讓叢集系統管理員針對不同的使用者群組限制特定叢集作業的存取權，讓叢集更加安全。</p><p>系統管理員可以完整存取管理功能 (包括讀取/寫入功能)。 使用者預設只具有管理功能的讀取存取權 (例如查詢功能)，以及解析應用程式和服務的能力。</p><p>您可在建立叢集時為每個角色提供個別的憑證，以指定兩個用戶端角色 (系統管理員和用戶端)。</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>執行安全性模型化並視需要使用欄位層級安全性
@@ -284,7 +284,7 @@ WHERE userID=:id < - session var
 | **參考**              | [如何使用 SAS 將存取權委派給 Azure 儲存體帳戶中的物件](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **步驟** | 在特定商務案例中，Azure 表格儲存體可能必須儲存能滿足不同合作夥伴需求的敏感性資料。 例如，與不同國家/地區相關的敏感性資料。 在這種情況下，您可以藉由指定分割區和資料列索引鍵範圍來建立 SAS 簽章，讓使用者可以存取特定國家/地區的特定資料。| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>使用 Azure Resource Manager 啟用 Azure 儲存體帳戶的角色型存取控制 (RBAC)
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>使用 Azure Resource Manager 來啟用 azure 角色型存取控制 (azure RBAC) 到 Azure 儲存體帳戶
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ WHERE userID=:id < - session var
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [如何使用角色型存取控制 (RBAC) 保護儲存體帳戶](../../storage/blobs/security-recommendations.md) |
+| **參考**              | [如何使用 Azure 角色型存取控制來保護儲存體帳戶 (Azure RBAC) ](../../storage/blobs/security-recommendations.md) |
 | **步驟** | <p>當您建立新的儲存體帳戶時，可以選取傳統或 Azure Resource Manager 的部署模型。 在 Azure 中建立資源的傳統模型只允許以孤注一擲的方式存取訂用帳戶，接著存取儲存體帳戶。</p><p>使用 Azure Resource Manager 模型，您可以將儲存體帳戶放置於資源群組中，並使用 Azure Active Directory 來控制該特定儲存體帳戶之管理平面的存取。 例如，您可以為特定使用者提供存取儲存體帳戶金鑰的能力，而其他使用者可以檢視儲存體帳戶的相關資訊，但是無法存取儲存體帳戶金鑰。</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>實作隱含的越獄或 Root 權限入侵偵測

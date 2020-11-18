@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: df611e01fefacd22f4dc026a819d4c71ede6e7e3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970396"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686084"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>使用 Windows server 容錯移轉叢集和 Azure 共用磁片的 SAP ASCS/SCS 實例多重 SID 高可用性
 
@@ -35,12 +35,12 @@ ms.locfileid: "91970396"
 目前，您可以使用 Azure 進階 SSD 磁片作為 SAP ASCS/SCS 實例的 Azure 共用磁片。 下列限制已就緒：
 
 -  [Azure Ultra 磁片](../../disks-types.md#ultra-disk) 不支援作為 SAP 工作負載的 Azure 共用磁片。 目前無法在可用性設定組中使用 Azure Ultra 磁片來放置 Azure Vm
--  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](../../windows/disks-shared.md)。 可用性區域部署中並不支援此功能。 
+-  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](../../disks-shared.md)。 可用性區域部署中並不支援此功能。 
 -  Azure 共用磁片值 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) 決定可使用共用磁片的叢集節點數目。 通常針對 SAP ASCS/SCS 實例，您將在 Windows 容錯移轉叢集中設定兩個節點，因此的值 `maxShares` 必須設定為 [2]。
 -  所有 SAP ASCS/SCS 叢集 Vm 都必須部署在相同的 [Azure 鄰近放置群組](../../windows/proximity-placement-groups.md)中。   
    雖然您可以在沒有 PPG 的情況下，使用 Azure 共用磁片在可用性設定組中部署 Windows 叢集 Vm，PPG 將可確保 Azure 共用磁片和叢集 Vm 的實體接近度，進而達到 Vm 和儲存層之間的延遲。    
 
-如需 Azure 共用磁片限制的進一步詳細資料，請仔細參閱 Azure 共用磁片檔的 [限制](../../linux/disks-shared.md#limitations) 一節。  
+如需 Azure 共用磁片限制的進一步詳細資料，請仔細參閱 Azure 共用磁片檔的 [限制](../../disks-shared.md#limitations) 一節。  
 
 > [!IMPORTANT]
 > 使用 Azure 共用磁片部署 SAP ASCS/SCS Windows 容錯移轉叢集時，請注意，您的部署將會使用一個儲存體叢集中的單一共用磁片來運作。 您的 SAP ASCS/SCS 實例將會受到影響，以防儲存體叢集發生問題，也就是部署 Azure 共用磁片的位置。  
@@ -95,7 +95,7 @@ ms.locfileid: "91970396"
 
 ## <a name="infrastructure-preparation"></a>基礎結構準備
 
-除了**現有**的叢集 sap **PR1** ASCS/SCS 實例以外，我們也會安裝新的 sap SID **PR2**。  
+除了 **現有** 的叢集 sap **PR1** ASCS/SCS 實例以外，我們也會安裝新的 sap SID **PR2**。  
 
 ### <a name="host-names-and-ip-addresses"></a>主機名稱和 IP 位址
 
@@ -105,40 +105,40 @@ ms.locfileid: "91970396"
 | 第2個叢集節點 ASCS/SCS 叢集 |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
 | 叢集網路名稱 | pr1clust |10.0.0.42 (**僅** 適用于 Win 2016 叢集)  | n/a | n/a |
 | **適用于 sid1** ASCS 叢集網路名稱 | pr1-ascscl |10.0.0.43 | n/a | n/a |
-| **適用于 sid1****僅**針對 ERS2) ERS 叢集網路名稱 ( | pr1-erscl |10.0.0.44 | n/a | n/a |
+| **適用于 sid1****僅** 針對 ERS2) ERS 叢集網路名稱 ( | pr1-erscl |10.0.0.44 | n/a | n/a |
 | **SID2** ASCS 叢集網路名稱 | pr2-ascscl |10.0.0.45 | n/a | n/a |
-| **SID2****僅**針對 ERS2) ERS 叢集網路名稱 ( | pr1-erscl |10.0.0.46 | n/a | n/a |
+| **SID2****僅** 針對 ERS2) ERS 叢集網路名稱 ( | pr1-erscl |10.0.0.46 | n/a | n/a |
 
 ### <a name="create-azure-internal-load-balancer"></a>建立 Azure 內部負載平衡器
 
 SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要 [負載平衡器](../../../load-balancer/load-balancer-overview.md) 才能使用虛擬 IP 位址。 我們強烈建議使用 [標準負載平衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
 
-您必須為第二個 SAP SID ASCS/SCS/ERS 實例 **PR2**將設定新增至現有的負載平衡器。 第一個 SAP SID **PR1** 的設定應該已準備就緒。  
+您必須為第二個 SAP SID ASCS/SCS/ERS 實例 **PR2** 將設定新增至現有的負載平衡器。 第一個 SAP SID **PR1** 的設定應該已準備就緒。  
 
-** () SCS PR2 [實例號碼 02]**
+**() SCS PR2 [實例號碼 02]**
 - 前端組態
     - 靜態 ASCS/SCS IP 位址 **10.0.0.45**
 - 後端組態  
     已準備就緒-Vm 已新增至後端集區，同時設定 SAP SID **PR1**
 - 探查連接埠
-    - 埠 620**nr** [**62002**] 保留 Protocol (TCP) 的預設選項，間隔 (5) ，狀況不良閾值 (2) 
+    - 埠 620 **nr** [**62002**] 保留 Protocol (TCP) 的預設選項，間隔 (5) ，狀況不良閾值 (2) 
 - 負載平衡規則
     - 若使用 Standard Load Balancer，請選取 [HA 連接埠]
     - 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
-        - 32**nr** TCP [**3202**]
-        - 36**nr** TCP [**3602**]
-        - 39**nr** TCP [**3902**]
-        - 81**nr** TCP [**8102**]
-        - 5**nr**13 TCP [**50213**]
-        - 5**nr**14 TCP [**50214**]
-        - 5**nr**16 TCP [**50216**]
+        - 32 **nr** TCP [**3202**]
+        - 36 **nr** TCP [**3602**]
+        - 39 **nr** TCP [**3902**]
+        - 81 **nr** TCP [**8102**]
+        - 5 **nr** 13 TCP [**50213**]
+        - 5 **nr** 14 TCP [**50214**]
+        - 5 **nr** 16 TCP [**50216**]
         - 與 **PR2** ASCS 前端 IP、健康情況探查和現有的後端集區建立關聯。  
 
     - 請確定 [閒置超時] (分鐘) 設定為最大值30，而且已啟用 [直接伺服器傳回) ] 浮動 IP (。
 
 **ERS2 PR2 [實例號碼 12]** 
 
-由於排入佇列複寫伺服器 2 (ERS2) 也會叢集化，因此除了 SAP ASCS/SCS IP 之外，也必須在 Azure ILB 上設定 ERS2 虛擬 IP 位址。 本節僅適用于使用 **PR2**的佇列複寫伺服器2架構。  
+由於排入佇列複寫伺服器 2 (ERS2) 也會叢集化，因此除了 SAP ASCS/SCS IP 之外，也必須在 Azure ILB 上設定 ERS2 虛擬 IP 位址。 本節僅適用于使用 **PR2** 的佇列複寫伺服器2架構。  
 - 新的前端設定
     - 靜態 SAP ERS2 IP 位址 **10.0.0.46**
 
@@ -146,16 +146,16 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
   Vm 已新增至 ILB 後端集區。  
 
 - 新增探查埠
-    - 埠 621**nr**  [**62112**] 保留 Protocol (TCP) 的預設選項，間隔 (5) ，狀況不良閾值 (2) 
+    - 埠 621 **nr**  [**62112**] 保留 Protocol (TCP) 的預設選項，間隔 (5) ，狀況不良閾值 (2) 
 
 - 新的負載平衡規則
     - 若使用 Standard Load Balancer，請選取 [HA 連接埠]
     - 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
-        - 32**nr** TCP [**3212**]
-        - 33**nr** TCP [**3312**]
-        - 5**nr**13 TCP [**51212**]
-        - 5**nr**14 TCP [**51212**]
-        - 5**nr**16 TCP [**51212**]
+        - 32 **nr** TCP [**3212**]
+        - 33 **nr** TCP [**3312**]
+        - 5 **nr** 13 TCP [**51212**]
+        - 5 **nr** 14 TCP [**51212**]
+        - 5 **nr** 16 TCP [**51212**]
         - 與 **PR2** ERS2 前端 IP、健康情況探查和現有的後端集區建立關聯。  
 
     - 請確定 [閒置超時] (分鐘) 設定為最大值（例如30），而且已啟用該浮動 IP ([直接伺服器傳回]) 。
@@ -293,12 +293,12 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 不過，這對某些叢集組態不會產生作用，因為只有一個執行個體是主動的。 另一個執行個體是被動的，而且不接受任何工作負載。 當 Azure 內部負載平衡器偵測到使用中的實例，而且只以作用中的實例為目標時，探查功能會有所説明。  
 
 > [!IMPORTANT]
-> 在此範例設定中， **ProbePort** 會設定為 620**Nr**。 若為具有數位 **02** 的 SAP ASCS 實例，則為 620**02**。
+> 在此範例設定中， **ProbePort** 會設定為 620 **Nr**。 若為具有數位 **02** 的 SAP ASCS 實例，則為 620 **02**。
 > 您將需要調整設定，以符合您的 SAP 實例號碼和 SAP SID。
 
 若要新增探查埠，請在其中一個叢集 Vm 上執行此 PowerShell 模組：
 
-- 在 SAP ASC/SCS 實例的實例號碼為**02**的情況下 
+- 在 SAP ASC/SCS 實例的實例號碼為 **02** 的情況下 
    ```powershell
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62002
    ```
@@ -461,7 +461,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 ## <a name="test-the-sap-ascsscs-instance-failover"></a>測試 SAP ASCS/SCS 實例容錯移轉
 針對概述的容錯移轉測試，我們假設在節點 A 上的 SAP ASCS 為作用中。  
 
-1. 確認 SAP 系統可成功從節點 A 容錯移轉到節點 B。在此範例中，會針對 SAPSID **PR2**進行測試。  
+1. 確認 SAP 系統可成功從節點 A 容錯移轉到節點 B。在此範例中，會針對 SAPSID **PR2** 進行測試。  
    請確定每個 SAPSID 都可以成功移至另一個叢集節點。   
    選擇下列其中一個選項，以起始 \<SID\> 從叢集節點 a 到叢集節點 B 的 SAP 叢集群組容錯移轉：
     - 容錯移轉叢集管理員  

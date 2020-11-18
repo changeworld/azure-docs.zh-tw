@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091350"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686271"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署資料
 
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>建立金鑰保存庫資源
 
-使用 [Azure 入口網站](../key-vault/secrets/quick-create-portal.md#create-a-vault)、 [CLI](../key-vault/secrets/quick-create-cli.md)或 [PowerShell](../key-vault/secrets/quick-create-powershell.md)建立 Azure Key Vault。 
+使用 [Azure 入口網站](../key-vault/general/quick-create-portal.md)、 [Azure CLI](../key-vault/general/quick-create-cli.md)或 [Azure PowerShell](../key-vault/general/quick-create-powershell.md)建立 Azure Key Vault。
 
 針對金鑰保存庫的屬性，請使用下列指導方針： 
 * Name：唯一名稱是必要項。 
@@ -73,7 +73,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="generate-a-new-key"></a>產生新的金鑰 
 
-建立金鑰保存庫之後，請流覽至 Azure 入口網站中的資源。 在資源分頁的左側導覽功能表上，按一下 [設定] 下的 [ **金鑰** ]。 在 [索引鍵] 的 [查看] 上，按一下 [產生/匯入] 以產生新的金鑰。 針對此金鑰使用任何唯一的名稱，並根據您的需求使用任何其他喜好設定。 
+建立金鑰保存庫之後，請流覽至 Azure 入口網站中的資源。 在資源分頁的左側導覽功能表上，按一下 [設定] 下的 [ **金鑰**]。 在 [索引鍵] 的 [查看] 上，按一下 [產生/匯入] 以產生新的金鑰。 針對此金鑰使用任何唯一的名稱，並根據您的需求使用任何其他喜好設定。 
 
 ![產生新的金鑰](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,10 +81,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 建立新的存取原則，以允許 ACI 服務存取您的金鑰。
 
-* 一旦產生金鑰之後，請回到您的金鑰保存庫資源分頁，在 [設定] 底下，按一下 [ **存取原則** ]。
-* 在金鑰保存庫的 [存取原則] 頁面上，按一下 [ **新增存取原則** ]。
+* 一旦產生金鑰之後，請回到您的金鑰保存庫資源分頁，在 [設定] 底下，按一下 [ **存取原則**]。
+* 在金鑰保存庫的 [存取原則] 頁面上，按一下 [ **新增存取原則**]。
 * 設定 *金鑰許可權* ，以包含 **取得** 和解除包裝 **金鑰** ![ 集金鑰許可權](./media/container-instances-encrypt-data/set-key-permissions.png)
-* 針對 [ *選取主體* ]，選取 [ **Azure 容器實例服務** ]
+* 針對 [*選取主體*]，選取 [ **Azure 容器實例服務**]
 * 按一下底部的 [ **新增** ] 
 
 存取原則現在應該會顯示在金鑰保存庫的存取原則中。

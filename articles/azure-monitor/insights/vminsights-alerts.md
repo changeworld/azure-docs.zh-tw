@@ -5,16 +5,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/23/2020
-ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: f582f0dc7547a607351fcfc4ff9d39e8c5a077df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254800"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686172"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>如何從適用於 VM 的 Azure 監視器建立警示
 [Azure 監視器中的警示](../platform/alerts-overview.md) 會主動通知您監視資料中有興趣的資料和模式。 適用於 VM 的 Azure 監視器不包含預先設定的警示規則，但您可以根據它所收集的資料來建立自己的警示規則。 本文提供建立警示規則的指引，包括一組範例查詢。
+
+> [!IMPORTANT]
+> 本文所述的警示是根據適用於 VM 的 Azure 監視器所收集資料的記錄查詢。 這與 [VM 來賓健康情況 Azure 監視器](vminsights-health-overview.md) 所建立的警示不同，這是目前處於公開預覽狀態的功能。 因為此功能接近正式運作，所以會合並警示的指引。
 
 
 ## <a name="alert-rule-types"></a>警示規則類型
@@ -31,9 +34,9 @@ Azure 監視器有兩種類型的記錄警示：
 
 首先，請遵循 [使用 Azure 監視器建立、查看和記錄管理警示](../platform/alerts-log.md)中的程式，建立新的警示規則。 針對 **資源**，請選取 Azure 監視器 vm 在您訂用帳戶中使用的 Log Analytics 工作區。 因為記錄警示規則的目標資源一律是 Log Analytics 工作區，所以記錄查詢必須包含特定虛擬機器或虛擬機器擴展集的任何篩選準則。 
 
-針對警示規則的 **條件** ，請使用 [下一節](#sample-alert-queries) 中的其中一個查詢作為 **搜尋查詢**。 查詢必須傳回名為 *AggregatedValue*的數值屬性。 它應該會依電腦摘要資料，讓您可以為每個超過閾值的虛擬機器建立個別的警示。
+針對警示規則的 **條件** ，請使用 [下一節](#sample-alert-queries) 中的其中一個查詢作為 **搜尋查詢**。 查詢必須傳回名為 *AggregatedValue* 的數值屬性。 它應該會依電腦摘要資料，讓您可以為每個超過閾值的虛擬機器建立個別的警示。
 
-在 **警示邏輯**中，選取 [ **計量測量** ]，然後提供 **臨界值**。 在 [ **觸發程式警示依據**] 中，指定在建立警示之前必須超過閾值的次數。 例如，您可能不在意處理器是否超過臨界值一次，然後恢復正常，但如果它持續超過多個連續度量的閾值，您就會在意。
+在 **警示邏輯** 中，選取 [ **計量測量** ]，然後提供 **臨界值**。 在 [ **觸發程式警示依據**] 中，指定在建立警示之前必須超過閾值的次數。 例如，您可能不在意處理器是否超過臨界值一次，然後恢復正常，但如果它持續超過多個連續度量的閾值，您就會在意。
 
 根據區段進行 **評估** 會定義查詢的執行頻率，以及查詢的時間範圍。 在如下所示的範例中，查詢會每隔15分鐘執行一次，並評估過去15分鐘所收集到的效能值。
 

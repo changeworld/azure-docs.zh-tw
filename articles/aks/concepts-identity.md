@@ -1,25 +1,25 @@
 ---
 title: 概念 - Azure Kubernetes Service (AKS) 中的存取與身分識別
-description: 深入了解 Azure Kubernetes Service (AKS) 中的存取與身分識別，包括 Azure Active Directory 整合、Kubernetes 角色型存取控制 (RBAC) 及角色和繫結。
+description: 瞭解 Azure Kubernetes Service (AKS) 中的存取和身分識別，包括 Azure Active Directory 整合、Kubernetes 以角色為基礎的存取控制 (Kubernetes RBAC) ，以及角色和系結。
 services: container-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378222"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686050"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的存取與身分識別選項
 
-有不同的方式可驗證、控制存取/授權和保護 Kubernetes 叢集。 使用 Kubernetes 角色型存取控制 (RBAC) ，您可以將存取權授與使用者、群組和服務帳戶，只存取所需的資源。 使用 Azure Kubernetes Service (AKS) ，您可以使用 Azure Active Directory 和 Azure RBAC 進一步增強安全性和許可權結構。 這些方法可協助您保護叢集存取，並僅提供開發人員和操作員所需的最低許可權。
+有不同的方式可驗證、控制存取/授權和保護 Kubernetes 叢集。 使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) ，您可以授與使用者、群組和服務帳戶只存取所需資源的存取權。 使用 Azure Kubernetes Service (AKS) ，您可以使用 Azure Active Directory 和 Azure RBAC 進一步增強安全性和許可權結構。 這些方法可協助您保護叢集存取，並僅提供開發人員和操作員所需的最低許可權。
 
 本文所介紹的核心概念，可協助您在 AKS 中驗證和指派權限：
 
-- [Kubernetes 以角色為基礎的存取控制 (RBAC) ](#kubernetes-role-based-access-control-rbac)
+- [Kubernetes 以角色為基礎的存取控制 (Kubernetes RBAC) ](#kubernetes-role-based-access-control-kubernetes-rbac)
   - [Roles 和 ClusterRoles](#roles-and-clusterroles)
   - [RoleBindings 和 ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes 服務帳戶](#kubernetes-service-accounts)
@@ -29,11 +29,11 @@ ms.locfileid: "93378222"
   - [適用于 Kubernetes 授權的 Azure RBAC (預覽版) ](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes 以角色為基礎的存取控制 (RBAC) 
+## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes 以角色為基礎的存取控制 (Kubernetes RBAC) 
 
-為了提供使用者可執行之動作的細微篩選，Kubernetes 會使用角色型存取控制 (RBAC) 。 此控制機制可讓您指派權限給使用者或使用者群組，以執行像是建立或修改資源，或檢視執行中應用程式工作負載的記錄等動作。 這些權限可以只限於單一命名空間，或授與給整個 AKS 叢集。 透過 Kubernetes RBAC，您可以建立「角色」來定義權限，然後藉由「角色繫結」將這些角色指派給使用者。
+為了提供使用者可執行之動作的細微篩選，Kubernetes 會使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) 。 此控制機制可讓您指派權限給使用者或使用者群組，以執行像是建立或修改資源，或檢視執行中應用程式工作負載的記錄等動作。 這些權限可以只限於單一命名空間，或授與給整個 AKS 叢集。 透過 Kubernetes RBAC，您可以建立「角色」來定義權限，然後藉由「角色繫結」將這些角色指派給使用者。
 
-如需詳細資訊，請參閱[使用 RBAC 授權][kubernetes-rbac]。
+如需詳細資訊，請參閱 [使用 KUBERNETES RBAC 授權][kubernetes-rbac]。
 
 
 ### <a name="roles-and-clusterroles"></a>Roles 和 ClusterRoles
@@ -46,7 +46,7 @@ ClusterRole 會以同樣方式將權限授與資源，但這些權限可以套�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings 和 ClusterRoleBindings
 
-一旦將角色定義為可授與權限給資源，您就可以透過 RoleBinding 指派這些 Kubernetes RBAC 權限。 如果您的 AKS 叢集 [與 Azure Active Directory 整合](#azure-active-directory-integration)，系結就是這些 Azure AD 使用者授與的許可權，以在叢集中執行動作，請參閱如何 [使用角色型存取控制和 Azure Active Directory 身分識別來控制](azure-ad-rbac.md)對叢集資源的存取。
+一旦將角色定義為可授與權限給資源，您就可以透過 RoleBinding 指派這些 Kubernetes RBAC 權限。 如果您的 AKS 叢集 [與 Azure Active Directory 整合](#azure-active-directory-integration)，系結就是這些 Azure AD 使用者授與在叢集內執行動作之許可權的方式，請參閱如何 [使用 Kubernetes 角色型存取控制和 Azure Active Directory 身分識別來控制](azure-ad-rbac.md)對叢集資源的存取。
 
 角色繫結會用來為指定命名空間指派角色。 此方法可讓您以邏輯方式區隔單一 AKS 叢集，讓使用者只能存取獲派命名空間中的應用程式資源。 如果您需要將角色繫結到整個叢集，或繫結到指定命名空間外部的叢集資源，可以改用 ClusterRoleBindings。
 
@@ -101,13 +101,13 @@ Azure RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/manag
 
  Azure RBAC 是設計用來處理您 Azure 訂用帳戶內的資源，而 Kubernetes RBAC 是設計來處理 AKS 叢集中的 Kubernetes 資源。 
 
-透過 Azure RBAC，您可以建立「角色定義」來概述要套用的權限。 然後，使用者或群組會透過特定 *範圍* 的 *角色指派* （可能是個別資源、資源群組或跨訂用帳戶）指派此角色定義。
+透過 Azure RBAC，您可以建立「角色定義」來概述要套用的權限。 然後，使用者或群組會透過特定 *範圍* 的 *角色指派*（可能是個別資源、資源群組或跨訂用帳戶）指派此角色定義。
 
 如需詳細資訊，請參閱 [什麼是 AZURE RBAC)  (azure 角色型存取控制？][azure-rbac]
 
 完全操作 AKS 叢集所需的存取層級有兩種： 
 1. [存取 Azure 訂用帳戶中的 AKS 資源](#azure-rbac-to-authorize-access-to-the-aks-resource)。 此程式可讓您控制使用 AKS Api 來調整或升級叢集的專案，以及提取您的 kubeconfig。
-2. 存取 Kubernetes API。 這項存取是透過[KUBERNETES RBAC](#kubernetes-role-based-access-control-rbac) (傳統) 或[整合 AZURE RBAC 與 AKS 來 Kubernetes 授權](#azure-rbac-for-kubernetes-authorization-preview)來控制。
+2. 存取 Kubernetes API。 這項存取是透過[KUBERNETES RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) (傳統) 或[整合 AZURE RBAC 與 AKS 來 Kubernetes 授權](#azure-rbac-for-kubernetes-authorization-preview)來控制。
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure RBAC 可授權存取 AKS 資源
 

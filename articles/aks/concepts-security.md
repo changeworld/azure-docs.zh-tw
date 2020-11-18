@@ -6,16 +6,16 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: b81b592cf35d0ca13d1c7bd2281ce35cce827a3c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057853"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686016"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念
 
-當您在 Azure Kubernetes Service (AKS) 中執行應用程式工作負載時，若要保護您的客戶資料，叢集的安全性是一項重要考量。 Kubernetes 包含*網路原則*和*秘密*等安全性元件。 Azure 隨後會新增網路安全性群組和協調的叢集升級等元件。 這些安全性元件可相互結合，使您的 AKS 叢集執行最新的 OS 安全性更新和 Kubernetes 版本，且具有安全的 Pod 流量和機密認證存取。
+當您在 Azure Kubernetes Service (AKS) 中執行應用程式工作負載時，若要保護您的客戶資料，叢集的安全性是一項重要考量。 Kubernetes 包含 *網路原則* 和 *秘密* 等安全性元件。 Azure 隨後會新增網路安全性群組和協調的叢集升級等元件。 這些安全性元件可相互結合，使您的 AKS 叢集執行最新的 OS 安全性更新和 Kubernetes 版本，且具有安全的 Pod 流量和機密認證存取。
 
 本文將介紹對 AKS 中的應用程式進行保護的核心概念：
 
@@ -36,7 +36,7 @@ ms.locfileid: "92057853"
 
 根據預設，Kubernetes API 伺服器會使用公用 IP 位址和完整功能變數名稱)  (FQDN。 您可以使用 [授權的 IP 範圍][authorized-ip-ranges]來限制對 API 伺服器端點的存取。 您也可以建立完整的 [私人][private-clusters] 叢集，以將 API 伺服器存取限制為您的虛擬網路。
 
-您可以使用 Kubernetes 角色型存取控制 (RBAC) 和 Azure Active Directory 來控制對 API 伺服器的存取。 如需詳細資訊，請參閱 [Azure AD 與 AKS 的整合][aks-aad]。
+您可以使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) 和 Azure RBAC 來控制對 API 伺服器的存取。 如需詳細資訊，請參閱 [Azure AD 與 AKS 的整合][aks-aad]。
 
 ## <a name="node-security"></a>節點安全性
 
@@ -50,7 +50,7 @@ Azure 平臺會每晚自動將 OS 安全性修補程式套用至 Linux 節點。
 
 若要防止儲存，節點應使用 Azure 受控磁碟。 就大部分的 VM 節點大小而言，這是指採用高效能 SSD 的進階磁碟。 儲存於受控磁碟上的資料會自動加密，並在 Azure 平台內待用。 若要提高備援性，這些磁碟也會安全地複寫於 Azure 資料中心內。
 
-目前，多租用戶如有惡意的使用，AKS 或其他位置中的 Kubernetes 環境就並不完全安全。 其他安全性功能（例如 *Pod 安全性原則*）或更精細的角色型存取控制 (節點的 RBAC) ，可讓攻擊變得更困難。 不過，在執行惡意的多租用戶工作負載時若要保有真正的安全性，Hypervisor 才是您唯一可信賴的安全性層級。 Kubernetes 的安全性網域會成為整個叢集，而非個別節點。 對於這些類型的惡意多租用戶工作負載，您應使用實際隔離的叢集。 如需有關隔離工作負載方式的詳細資訊，請參閱 [AKS 中叢集隔離的最佳作法][cluster-isolation]。
+目前，多租用戶如有惡意的使用，AKS 或其他位置中的 Kubernetes 環境就並不完全安全。 其他安全性功能（例如 *Pod 安全性原則*）或更精細的 Kubernetes 角色型存取控制 (Kubernetes 節點的 RBAC) ，可讓惡意探索變得更困難。 不過，在執行惡意的多租用戶工作負載時若要保有真正的安全性，Hypervisor 才是您唯一可信賴的安全性層級。 Kubernetes 的安全性網域會成為整個叢集，而非個別節點。 對於這些類型的惡意多租用戶工作負載，您應使用實際隔離的叢集。 如需有關隔離工作負載方式的詳細資訊，請參閱 [AKS 中叢集隔離的最佳作法][cluster-isolation]。
 
 ### <a name="compute-isolation"></a>計算隔離
 
@@ -90,7 +90,7 @@ Azure 平臺會每晚自動將 OS 安全性修補程式套用至 Linux 節點。
 
 ## <a name="kubernetes-secrets"></a>Kubernetes 秘密
 
-Kubernetes *祕密*可用來將敏感性資料插入 Pod 中，例如存取認證或金鑰。 首先，您必須使用 Kubernetes API 建立祕密。 您在定義 Pod 或部署時，系統可能會要求特定秘密。 對於有已排程的 Pod 需要秘密的節點，才會提供秘密，且秘密會儲存在 *tmpfs* 中，不會寫入至磁碟。 當節點上最後一個需要祕密的 Pod 遭刪除時，即會從該節點的 tmpfs 中刪除秘密。 祕密儲存在指定的命名空間內，且僅供相同命名空間中的 Pod 存取。
+Kubernetes *祕密* 可用來將敏感性資料插入 Pod 中，例如存取認證或金鑰。 首先，您必須使用 Kubernetes API 建立祕密。 您在定義 Pod 或部署時，系統可能會要求特定秘密。 對於有已排程的 Pod 需要秘密的節點，才會提供秘密，且秘密會儲存在 *tmpfs* 中，不會寫入至磁碟。 當節點上最後一個需要祕密的 Pod 遭刪除時，即會從該節點的 tmpfs 中刪除秘密。 祕密儲存在指定的命名空間內，且僅供相同命名空間中的 Pod 存取。
 
 使用祕密可減少在 Pod 或服務 YAML 資訊清單中定義的敏感性資訊。 秘密會以 YAML 資訊清單的形式儲存在 Kubernetes API 伺服器中，供您要求。 此方法僅可供特定 Pod 存取祕密。 請注意：原始密碼資訊清單檔案包含 base64 格式的機密資料 (如需詳細資訊，請參閱 [官方檔][secret-risks]) 。 因此，這個檔案應該視為機密資訊，而且永遠不會認可到原始檔控制。
 

@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973439"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693389"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教學課程：使用推送 API 將索引編製最佳化
 
-Azure 認知搜尋支援[兩種基本方法](search-what-is-data-import.md)以供您將資料匯入到搜尋索引中：以程式設計方式將資料*推送*至索引，或將 [Azure 認知搜尋索引子](search-indexer-overview.md)指向受支援的資料來源，以*提取*資料。
+Azure 認知搜尋支援 [兩種基本方法](search-what-is-data-import.md)以供您將資料匯入到搜尋索引中：以程式設計方式將資料 *推送* 至索引，或將 [Azure 認知搜尋索引子](search-indexer-overview.md)指向受支援的資料來源，以 *提取* 資料。
 
 本教學課程說明如何使用[推送模型](search-what-is-data-import.md#pushing-data-to-an-index)有效率地為資料編製索引，方法是批次處理要求並使用指數輪詢重試策略。 您可以[下載並執行範例應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)。 本文會說明應用程式的重要層面，以及為資料編製索引時所應考量的因素。
 
@@ -54,7 +54,7 @@ Azure 認知搜尋支援[兩種基本方法](search-what-is-data-import.md)以�
 需要考量的六個重要因素包括：
 
 + **服務層級和資料分割/複本的數目** - 新增資料分割和增加層級都會增加索引編製速度。
-+ **索引結構描述** - 新增欄位以及在欄位中新增其他屬性 (例如*可搜尋*、*可面向化*或*可篩選*) 都會降低索引編製速度。
++ **索引結構描述** - 新增欄位以及在欄位中新增其他屬性 (例如 *可搜尋*、*可面向化* 或 *可篩選*) 都會降低索引編製速度。
 + **批次大小** - 最佳批次大小會根據索引結構描述與資料集而有所不同。
 + **執行緒/背景工作的數目** - 單一執行緒無法充分利用索引編製速度
 + **重試策略** - 請使用指數輪詢重試策略來將索引編製最佳化。
@@ -73,7 +73,7 @@ API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要�
 
 1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-   ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+   ![取得 HTTP 端點和存取金鑰](media/search-get-started-rest/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
 ## <a name="2---set-up-your-environment"></a>2 - 設定您的環境
 
@@ -153,7 +153,7 @@ DataGenerator dg = new DataGenerator();
 List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 ```
 
-此範例中有兩種飯店大小可供進行測試：**小型**和**大型**。
+此範例中有兩種飯店大小可供進行測試：**小型** 和 **大型**。
 
 您索引的結構描述會顯著影響索引編製的速度。 由於此一影響，因此在完成本教學課程之後，請轉換此類別以產生符合所需索引結構描述的資料。
 
@@ -162,7 +162,7 @@ List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 Azure 認知搜尋支援使用下列 API 來將單一或多個文件載入至索引：
 
 + [新增、更新或刪除文件 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [IndexDocumentsAction 類別](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet)或 [IndexDocumentsBatch 類別](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
++ [IndexDocumentsAction 類別](/dotnet/api/azure.search.documents.models.indexdocumentsaction)或 [IndexDocumentsBatch 類別](/dotnet/api/azure.search.documents.models.indexdocumentsbatch)
 
 以批次方式為文件編製索引會大幅提升索引編製效能。 這些批次最多可達 1000 個文件，或每批次最多 16 MB 左右。
 
@@ -366,7 +366,7 @@ await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
 
 ## <a name="6---explore-index"></a>6 - 探索索引
 
-您可以在執行程式之後，以程式設計方式或使用入口網站中的[**搜尋總管**](search-explorer.md)來探索已填入的搜尋索引。
+您可以在執行程式之後，以程式設計方式或使用入口網站中的 [**搜尋總管**](search-explorer.md)來探索已填入的搜尋索引。
 
 ### <a name="programatically"></a>程式設計方式
 
@@ -394,7 +394,7 @@ var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 
   ![Azure 認知搜尋索引的清單](media/tutorial-optimize-data-indexing/portal-output.png "Azure 認知搜尋索引的清單")
 
-*文件計數*和*儲存體大小*的根據是[取得索引統計資料 API](/rest/api/searchservice/get-index-statistics)，而且可能需要花幾分鐘的時間才會更新。
+*文件計數* 和 *儲存體大小* 的根據是 [取得索引統計資料 API](/rest/api/searchservice/get-index-statistics)，而且可能需要花幾分鐘的時間才會更新。
 
 ## <a name="reset-and-rerun"></a>重設並重新執行
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b74baebd964ee43658f74e0050dff838e29f9b8a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409054"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693173"
 ---
 # <a name="security-control-network-security"></a>安全性控制：網路安全性
 
@@ -148,7 +148,7 @@ ms.locfileid: "94409054"
 
 使用 Azure 原則定義和執行網路資源的標準安全性設定。
 
-您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝重要環境成品（例如 Azure 資源管理員範本、RBAC 控制項和原則）來簡化大規模的 Azure 部署。 您可以將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝關鍵環境成品，例如 Azure 資源管理員範本、Azure RBAC 控制和原則，來簡化大規模的 Azure 部署。 您可以將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
 
 - [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 

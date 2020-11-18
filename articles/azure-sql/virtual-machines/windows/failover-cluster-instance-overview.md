@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5845a3bdc4b86fbbe44c92779e5aae95044eb6b2
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556358"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685931"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體支援使用�
 
 Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server 容錯移轉叢集執行個體的共用儲存體解決方案： 
 
-||[Azure 共用磁碟](../../../virtual-machines/windows/disks-shared.md)|[進階檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[儲存空間直接存取 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共用磁碟](../../../virtual-machines/disks-shared.md)|[進階檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[儲存空間直接存取 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**作業系統最低版本**| 全部 |Windows Server 2012|Windows Server 2016|
 |**最低 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|
@@ -58,7 +58,7 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 ### <a name="azure-shared-disks"></a>Azure 共用磁碟
 
-[Azure 共用磁碟](../../../virtual-machines/windows/disks-shared.md)是 [Azure 受控磁碟](../../../virtual-machines/managed-disks-overview.md)的功能。 Windows Server 容錯移轉叢集支援將 Azure 共用磁碟與容錯移轉叢集執行個體搭配使用。 
+[Azure 共用磁碟](../../../virtual-machines/disks-shared.md)是 [Azure 受控磁碟](../../../virtual-machines/managed-disks-overview.md)的功能。 Windows Server 容錯移轉叢集支援將 Azure 共用磁碟與容錯移轉叢集執行個體搭配使用。 
 
 **支援的 OS**：全部   
 **支援的 SQL 版本**：全部     

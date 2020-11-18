@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 2168ee05ab93655cc0ad87221bff29c1b6b1035d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897584"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686237"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用深入解析來監視和設定您的 Azure Load Balancer
 
-透過 [網路的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/insights-overview#azure-monitor-for-networks-preview)，您就可以為負載平衡器提供功能相依性視覺效果和預先設定的計量儀表板。 這些視覺效果可協助您做出明智的設計決策，以及快速地當地語系化、診斷及解決任何錯誤。
+透過網路的 Azure 監視器，您就可以為負載平衡器提供功能相依性視覺效果和預先設定的計量儀表板。 這些視覺效果可協助您做出明智的設計決策，以及快速地當地語系化、診斷及解決任何錯誤。
 
 >[!NOTE] 
 >請注意這項功能目前為預覽狀態，而且功能相依性視圖和預先設定的儀表板可能會變更以改善這項體驗
