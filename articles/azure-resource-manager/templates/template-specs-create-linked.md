@@ -2,24 +2,24 @@
 title: 使用連結的範本建立範本規格
 description: 瞭解如何使用連結的範本建立範本規格。
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: d86b46a88dde7ebffea81cdeb8dc184dd275c0da
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321591"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747429"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格 (預覽) 
 
 瞭解如何使用主要範本和[連結的範本](linked-templates.md#linked-template)建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的屬性，建立範本規格來封裝主要範本及其連結的範本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要加以使用，您必須[註冊預覽版](https://aka.ms/templateSpecOnboarding)。
+> 範本規格目前為預覽狀態。 若要使用它，您必須安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-linked-templates"></a>建立連結的範本
 
@@ -27,7 +27,7 @@ ms.locfileid: "93321591"
 
 若要連結範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，根據父範本的路徑指定連結範本的相對路徑。
 
-連結的範本會 **在上呼叫linkedTemplate.js** ，並儲存在儲存主要範本的路徑中 **，稱為成品** 的子資料夾。  您可以使用下列其中一個 relativePath 值：
+連結的範本會 **在上呼叫linkedTemplate.js**，並儲存在儲存主要範本的路徑中 **，稱為成品** 的子資料夾。  您可以使用下列其中一個 relativePath 值：
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
@@ -162,7 +162,7 @@ ms.locfileid: "93321591"
 
 ## <a name="create-template-spec"></a>建立範本規格
 
-範本規格會儲存在資源群組中。  建立資源群組，然後使用下列腳本建立範本規格。 範本規格名稱是 **webSpec** 。
+範本規格會儲存在資源群組中。  建立資源群組，然後使用下列腳本建立範本規格。 範本規格名稱是 **webSpec**。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -7,19 +7,19 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321160"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94748058"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>執行資料科學工作：探索、模型化和部署
 
-一般資料科學工作包括資料探索、模型化和部署。 本文示範如何使用 **互動式資料探索、分析與報告 (IDEAR)** 和 **自動模型化與報告 (AMAR)** 公用程式來完成數個常見的資料科學工作，例如互動式資料探索、資料分析、報告和模型建立。 將模型部署到生產環境的選項可能包括：
+一般資料科學工作包括資料探索、模型化和部署。 本文概述完成數個常見的資料科學工作，例如互動式資料探索、資料分析、報告和模型建立的工作。 將模型部署到生產環境的選項可能包括：
 
 - [Azure Machine Learning](../index.yml)
 - [SQL-Server 與 ML 服務](/sql/advanced-analytics/r/r-services)
@@ -32,43 +32,11 @@ ms.locfileid: "93321160"
 
 產品（例如 Azure Machine Learning）也提供資料整頓和探索的 [先進資料準備](../how-to-create-register-datasets.md) ，包括功能建立。 使用者應決定最符合其需求的工具、程式庫和套件。 
 
-在此階段結尾處的交付項目是資料探索報告。 報告應該提供相當完整的資料檢視，以用於模型化及評估資料是否適合繼續進行模型化步驟。 下列各節中針對半自動探索、模型化和報告所討論的 Team Data Science Process (TDSP) 公用程式也提供標準化的資料探索和模型化報告。 
-
-### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>使用 IDEAR 公用程式的互動式資料探索、分析和報告
-
-此 R Markdown 型或 Python Notebook 型公用程式提供彈性且互動式的工具，以評估及瀏覽資料集。 使用者可以使用最少的編碼，從資料集快速產生報告。 使用者可以按一下按鈕，將互動式工具中的探索結果匯出至最終報告，這份報告可以傳遞給用戶端，或用來決定要在後續模型化步驟中包含哪些變數。
-
-目前，此工具只適用於記憶體中的資料框架。 若要指定要探索之資料集的參數，需要 YAML 檔案。 如需詳細資訊，請參閱 [TDSP 資料科學公用程式中的 IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils)。
-
+在此階段結尾處的交付項目是資料探索報告。 報告應該提供相當完整的資料檢視，以用於模型化及評估資料是否適合繼續進行模型化步驟。 
 
 ## <a name="2--modeling"></a>2. <a name='ModelingUtility-2'></a> 模型化
 
 以各種不同的語言提供多種定型模型的工具組和套件。 資料科學家應該可以自由使用任何其習慣的項目，只要針對相關商務使用案例與實際執行情節符合有關精確度和延遲的效能考量。
-
-下一節顯示如何使用半自動模型化的 R 型 TDSP 公用程式。 此 AMAR 公用程式可用來快速產生基準線模型，以及需要進行微調，以提供更佳執行模型的參數。
-下列模型管理章節會顯示如何具備可註冊和管理多個模型的系統。
-
-
-### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>模型定型：使用 AMAR 公用程式模型化和報告
-
-此[自動模型化與報告 (AMAR) 公用程式](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling)提供可自訂的半自動工具，可執行具有超參數清除的模型建立，並且比較這些模型的精確度。 
-
-模型建立公用程式是 R Markdown 檔案，可執行以產生自封式 HTML 輸出，具有目錄以輕鬆瀏覽其不同區段。 執行 Markdown 檔案時會執行三個演算法 (knit)：使用 glmnet 套件的正規化迴歸、使用 randomForest 套件的隨機樹系，以及使用 xgboost 套件的提升樹狀結構)。 每個演算法都會產生定型模型。 然後會比較這些模型的準確度，並且報告相對功能重要性繪圖。 目前有兩個公用程式：一個適用於二進位分類工作，另一個適用於迴歸工作。 兩者之間的主要差異是為這些學習工作指定控制參數和精確度計量的方式。 
-
-YAML 檔案是用來指定：
-
-- 資料輸入 (SQL 來源或 R-資料檔案) 
-- 資料的哪個部分用於定型，哪個部分用於測試
-- 要執行哪些演算法 
-- 模型最佳化之控制參數的選擇：
-    - 交叉驗證 
-    - 啟動程序
-    - 摺疊交叉驗證
-- 每個演算法的超參數集合。 
-
-演算法數目、最佳化的摺疊數目、超參數，以及要執行清除之超參數集合的數目，也可以在 Yaml 檔案中修改以快速地執行模型。 例如，可以使用較低數目的 CV 摺疊、較低數目的參數集合來執行。 如果獲得保證，也可以使用較高數目的 CV 摺疊或較大數目的參數集合，從而更全面地執行。
-
-如需詳細資訊，請參閱 [TDSP 資料科學公用程式中的自動化模型化和報告公用程式](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling)。
 
 ### <a name="model-management"></a>模型管理
 在多個模型都已建置完成之後，您通常需要有可註冊和管理模型的系統。 通常您需要指令碼或 API 以及後端資料庫或版本控制系統的組合。 針對這些管理工作，您可以考慮以下的一些選項：

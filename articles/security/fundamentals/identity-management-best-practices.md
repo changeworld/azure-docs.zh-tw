@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 886597e5490acb94f43d840dc5a3d22092e45849
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698749"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832597"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -157,7 +157,7 @@ ms.locfileid: "94698749"
 
 建議您要求所有使用者都使用雙步驟驗證。 這包括系統管理員，以及組織中帳戶遭到入侵時會造成重大影響的其他人員 (例如財務人員)。
 
-有很多選項可供您要求使用雙步驟驗證。 最適合您的選擇取決於您的目標、您正在執行的 Azure AD 版本，以及您的授權方案。 請參閱[如何要求使用者使用雙步驟驗證](../../active-directory/authentication/howto-mfa-userstates.md)，以判斷最適合您的選項。 如需有關授權和定價的詳細資訊，請參閱 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 定價頁面。
+有很多選項可供您要求使用雙步驟驗證。 最適合您的選擇取決於您的目標、您正在執行的 Azure AD 版本，以及您的授權方案。 請參閱[如何要求使用者使用雙步驟驗證](../../active-directory/authentication/howto-mfa-userstates.md)，以判斷最適合您的選項。 如需授權和定價的詳細資訊，請參閱 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 定價頁面。
 
 以下是啟用雙步驟驗證的選項和優點：
 
@@ -170,14 +170,14 @@ ms.locfileid: "94698749"
 此方法適用於所有授權層級，但不能與現有的條件式存取原則混合使用。 您可以在[Azure AD 安全性預設值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中找到詳細資訊
 
 **選項 2**：[藉由變更使用者狀態來啟用 Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md)。   
-**優點**：這是要求使用雙步驟驗證的傳統方法。 同時適用於[雲端與 Azure Multi-Factor Authentication Server 中的 Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。 如果使用這種方法，則會要求使用者在每次登入時執行雙步驟驗證，並且會覆寫條件式存取原則。
+**優點**：這是要求使用雙步驟驗證的傳統方法。 它適用于 [雲端和 Azure Multi-Factor Authentication Server 中的 Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)。 如果使用這種方法，則會要求使用者在每次登入時執行雙步驟驗證，並且會覆寫條件式存取原則。
 
-若要判斷哪裡需要啟用 Multi-Factor Authentication，請參閱[哪個 Azure MFA 版本適合我的組織？](../../active-directory/authentication/concept-mfa-howitworks.md)。
+若要判斷 Multi-Factor Authentication 需要啟用的位置，請查看 [哪個版本的 AZURE AD MFA 最適合我的組織？](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 **選項 3**：[透過條件式存取原則來啟用 Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)。
 **優點**：此選項可讓您使用 [條件式存取](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)，在特定條件下提示使用雙步驟驗證。 特定條件可以是使用者從不同的位置、不受信任的裝置，或您認為有危險的應用程式登入。 定義您要求使用雙步驟驗證的特定條件，可讓您避免要持續提示使用者，這可能會帶來不愉快的使用者體驗。
 
-這是最具彈性的方法，可為您的使用者啟用雙步驟驗證。 啟用條件式存取原則，只適用於雲端的 Azure Multi-Factor Authentication，而且是 Azure AD 的進階功能。 您可以在[部署雲端式 Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)中找到這個方法的詳細資訊。
+這是最具彈性的方法，可為您的使用者啟用雙步驟驗證。 啟用條件式存取原則只適用于雲端中的 Azure AD Multi-Factor Authentication，而且是 Azure AD 的 premium 功能。 您可以在 [部署雲端式 Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)中找到此方法的詳細資訊。
 
 **選項 4**：藉由評估 [風險型條件式存取原則](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)來為條件式存取原則啟用 Multi-Factor Authentication。   
 **優點**：此選項可讓您：
@@ -269,7 +269,7 @@ ms.locfileid: "94698749"
 **最佳做法**：要求所有重要的系統管理員帳戶都必須是不需要密碼的 (建議選項)，或必須使用 Multi-Factor Authentication。
 **詳細資料**：使用 [Microsoft Authenticator 應用程式](../../active-directory/authentication/howto-authentication-passwordless-phone.md)來登入任何 Azure AD 帳戶 (而不需使用密碼)。 和 [Windows Hello 企業版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)一樣，Microsoft Authenticator 也會使用金鑰型驗證來啟用使用者認證，此認證已繫結至裝置並且會使用生物特徵辨識驗證或 PIN。
 
-所有永久指派給一或多個 Azure AD 管理員角色的個別使用者在進行登入時，都必須進行 Azure Multi-Factor Authentication：全域管理員、特殊權限角色管理員、Exchange Online 管理員和 SharePoint Online 管理員。 啟用[管理員帳戶的 Multi-factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md)，並確定管理員帳戶使用者已完成註冊。
+當所有永久指派給一或多個 Azure AD 系統管理員角色的個別使用者登入時，需要 Azure AD Multi-Factor Authentication：全域管理員、特殊許可權角色管理員、Exchange Online 管理員和 SharePoint Online 系統管理員。 啟用[管理員帳戶的 Multi-factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md)，並確定管理員帳戶使用者已完成註冊。
 
 **最佳做法**：針對重要的系統管理員帳戶，準備不允許進行生產工作 (例如，瀏覽和電子郵件) 的系統管理工作站。 這會保護系統管理員帳戶，使其免於遭受使用瀏覽和電子郵件的攻擊媒介，並大幅降低遭遇重大事件的風險。
 **詳細資料**：使用系統管理工作站。 選擇工作站的安全性等級：

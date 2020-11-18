@@ -4,17 +4,16 @@ description: 瞭解如何在對應的資料流程中設定接收轉換。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 2e26028c47e8c96f8c1adabc468ee6f03e3cb19c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 11/17/2020
+ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427270"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832478"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -65,19 +64,15 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 ![顯示接收設定的螢幕擷取畫面。](media/data-flow/sink-settings.png "顯示接收設定的螢幕擷取畫面。")
 
-**架構漂移** ： [架構漂移](concepts-data-flow-schema-drift.md) 是 Data Factory 能夠以原生方式處理資料流程中的彈性架構，而不需要明確定義資料行變更。 啟用 [ **允許架構漂移** ]，以在接收資料架構中定義的內容上寫入額外的資料行。
+**架構漂移**： [架構漂移](concepts-data-flow-schema-drift.md) 是 Data Factory 能夠以原生方式處理資料流程中的彈性架構，而不需要明確定義資料行變更。 啟用 [ **允許架構漂移** ]，以在接收資料架構中定義的內容上寫入額外的資料行。
 
-**驗證架構** ：如果選取了 [驗證架構]，如果在來源投射中找不到傳入來源架構的任何資料行，或資料類型不相符，資料流程將會失敗。 您可以使用此設定來強制來源資料符合您所定義投射的合約。 這在資料庫來源案例中很有用，可告知資料行名稱或類型已變更。
-
-**使用 TempDB：** 根據預設，Data Factory 會使用全域臨時表，在載入過程中儲存資料。 您也可以取消核取 [使用 TempDB] 選項，並改為要求 Data Factory 將臨時保存資料表儲存在使用者資料庫中，該資料庫位於要用於此接收的資料庫中。
-
-![使用 Temp DB](media/data-flow/tempdb.png "使用 Temp DB")
+**驗證架構**：如果選取了 [驗證架構]，如果在來源投射中找不到傳入來源架構的任何資料行，或資料類型不相符，資料流程將會失敗。 您可以使用此設定來強制來源資料符合您所定義投射的合約。 這在資料庫來源案例中很有用，可告知資料行名稱或類型已變更。
 
 ## <a name="cache-sink"></a>快取接收
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
  
-當資料流程將資料寫入 Spark 快取，而不是資料存放區時，就會有快取 *接收器* 。 在對應資料流程中，您可以使用快取 *查閱* ，多次參考相同流程中的這項資料。 當您想要在運算式中參考資料，但是不想要明確地將資料行聯結至資料行時，這會很有用。 快取接收可協助查閱資料存放區的最大值，以及比對錯誤代碼與錯誤訊息資料庫的常見範例。 
+當資料流程將資料寫入 Spark 快取，而不是資料存放區時，就會有快取 *接收器* 。 在對應資料流程中，您可以使用快取 *查閱*，多次參考相同流程中的這項資料。 當您想要在運算式中參考資料，但是不想要明確地將資料行聯結至資料行時，這會很有用。 快取接收可協助查閱資料存放區的最大值，以及比對錯誤代碼與錯誤訊息資料庫的常見範例。 
 
 若要寫入至快取接收，請新增接收轉換， **然後選取 [** 快取] 作為接收類型。 與其他接收類型不同的是，您不需要選取資料集或連結服務，因為您不會寫入至外部存放區。 
 
@@ -94,13 +89,13 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 ## <a name="field-mapping"></a>欄位對應
 
-類似于「選取」轉換，您可以在接收的 [ **對應** ] 索引標籤上，決定要寫入的內送資料行。 預設會對應所有輸入資料行，包括漂移資料行。 這種行為稱為 *automapping* 。
+類似于「選取」轉換，您可以在接收的 [ **對應** ] 索引標籤上，決定要寫入的內送資料行。 預設會對應所有輸入資料行，包括漂移資料行。 這種行為稱為 *automapping*。
 
 當您關閉 automapping 時，您可以加入固定資料行型對應或以規則為基礎的對應。 使用以規則為基礎的對應，您可以撰寫具有模式比對的運算式。 固定對應會對應邏輯和實體資料行名稱。 如需以規則為基礎的對應詳細資訊，請參閱 [對應資料流程中的資料行模式](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)。
 
 ## <a name="custom-sink-ordering"></a>自訂接收順序
 
-依預設，資料會以不具決定性的順序寫入至多個接收器。 當轉換邏輯已完成時，執行引擎會以平行方式寫入資料，而接收順序可能會因每次執行而有所不同。 若要指定確切的接收順序，請在資料流程的 [ **一般** ] 索引標籤上啟用 **自訂接收順序** 。 啟用時，會依順序以遞增順序寫入接收。
+依預設，資料會以不具決定性的順序寫入至多個接收器。 當轉換邏輯已完成時，執行引擎會以平行方式寫入資料，而接收順序可能會因每次執行而有所不同。 若要指定確切的接收順序，請在資料流程的 [**一般**] 索引標籤上啟用 **自訂接收順序**。 啟用時，會依順序以遞增順序寫入接收。
 
 ![顯示自訂接收順序的螢幕擷取畫面。](media/data-flow/custom-sink-ordering.png "顯示自訂接收順序的螢幕擷取畫面。")
 
@@ -109,9 +104,14 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 ![自訂接收順序](media/data-flow/cache-2.png "自訂接收順序")
 
+## <a name="error-row-handling"></a>處理資料列時發生錯誤
+
+寫入資料庫時，某些資料列可能會因為目的地所設定的限制而失敗。 根據預設，資料流程執行會在其取得的第一個錯誤時失敗。 在某些連接器中，您可以選擇 **在發生錯誤時繼續** 進行，即使個別的資料列發生錯誤，也會允許您的資料流程完成。 目前，這項功能僅適用于 Azure SQL Database。 如需詳細資訊，請參閱 [AZURE SQL DB 中的錯誤資料列處理](connector-azure-sql-database.md#error-row-handling)。
+
 ## <a name="data-preview-in-sink"></a>接收中的資料預覽
 
 當您在偵錯工具叢集上提取資料預覽時，不會將任何資料寫入至您的接收。 將會傳回資料外觀的快照集，但不會將任何內容寫入目的地。 若要測試將資料寫入至您的接收，請從管線畫布執行管線偵錯工具。
 
 ## <a name="next-steps"></a>後續步驟
+
 現在您已建立資料流程，請將 [資料流程活動新增至您的管線](concepts-data-flow-overview.md)。

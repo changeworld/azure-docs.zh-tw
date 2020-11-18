@@ -3,13 +3,13 @@ title: 設定 Azure Functions 的監視
 description: 瞭解如何將您的函數應用程式連接至 Application Insights 進行監視，以及如何設定資料收集。
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217179"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833073"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何設定 Azure Functions 的監視
 
@@ -234,7 +234,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 ### <a name="new-function-app-in-the-portal"></a>入口網站中新的函式應用程式
 
-若要檢閱所建立的 Application Insights 資源，請加以選取以展開 [Application Insights] 視窗。 您可以變更**新資源名稱**，或者在您希望儲存資料的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中，選擇不同的**位置**。
+若要檢閱所建立的 Application Insights 資源，請加以選取以展開 [Application Insights] 視窗。 您可以變更 **新資源名稱**，或者在您希望儲存資料的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中，選擇不同的 **位置**。
 
 ![建立函式應用程式時啟用 Application Insights](media/functions-monitoring/enable-ai-new-function-app.png)
 
@@ -258,7 +258,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
     | **新資源名稱** | 唯一的應用程式名稱 | 最簡單的方式是使用與您函式應用程式一樣的名稱，而這必須是您訂用帳戶中唯一的名稱。 | 
     | **位置** | 西歐 | 可能的話，請使用與函式應用程式相同的[區域](https://azure.microsoft.com/regions/)，或該區域附近的區域。 |
 
-    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="從入口網站啟用 Application Insights":::
+    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="建立 Application Insights 資源":::
 
 1. 選取 [套用]。 
 
@@ -273,7 +273,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 當您啟用 Application Insights，請停用使用 Azure 儲存體的內建記錄。 內建記錄適合用來測試少量的工作負載，但不適用於負載繁重的實際執行環境。 若要監視實際執行環境，建議使用 Application Insights。 如果將內建記錄用於實際執行環境，記錄內容可能會因為 Azure 儲存體的頻寬節流設定而變得不完整。
 
-若要停用內建記錄，請刪除 `AzureWebJobsDashboard` 應用程式設定。 如需在 Azure 入口網站中刪除應用程式設定的相關資訊，請參閱[如何管理函式應用程式](functions-how-to-use-azure-function-app-settings.md#settings)的**應用程式設定**。 刪除應用程式設定之前，確定相同函式應用程式中目前沒有任何函式會使用適用於 Azure 儲存體觸發程序或繫結的設定。
+若要停用內建記錄，請刪除 `AzureWebJobsDashboard` 應用程式設定。 如需在 Azure 入口網站中刪除應用程式設定的相關資訊，請參閱 [如何管理函式應用程式](functions-how-to-use-azure-function-app-settings.md#settings)的 **應用程式設定**。 刪除應用程式設定之前，確定相同函式應用程式中目前沒有任何函式會使用適用於 Azure 儲存體觸發程序或繫結的設定。
 
 ## <a name="next-steps"></a>後續步驟
 

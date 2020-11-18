@@ -10,18 +10,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.custom: how-to, devx-track-python, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: fa1b19ef4ece3011c97c3158d54edd1d39efc09d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441982"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832631"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 
 
-將 Azure Machine Learning 模型部署為 web 服務時，會建立 REST API 端點。 您可以將資料傳送至此端點，並接收模型傳回的預測。 在本文件中，了解如何使用 C#、Go、Java 和 Python 為Web 服務建立用戶端。
+將 Azure Machine Learning 模型部署為 Web 服務可建立 REST API 端點。 您可以將資料傳送至此端點，並接收模型傳回的預測。 在本文件中，了解如何使用 C#、Go、Java 和 Python 為Web 服務建立用戶端。
 
 當您將模型部署到您的本機環境、Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列時，會建立 web 服務 (FPGA) 。 您可以使用 [AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)來取得用來存取 web 服務的 URI。 如果啟用驗證，您也可以使用 SDK 來取得驗證金鑰或權杖。
 
@@ -85,7 +85,7 @@ az ml service show -n <service-name>
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-從 Azure Machine Learning studio 中，選取 [ __端點__ ]、[ __即時端點__ ] 和 [端點名稱]。 在端點的詳細資料中， __REST 端點__ 欄位包含評分 URI。 __SWAGGER uri__ 包含 swagger uri。
+從 Azure Machine Learning studio 中，選取 [ __端點__]、[ __即時端點__] 和 [端點名稱]。 在端點的詳細資料中， __REST 端點__ 欄位包含評分 URI。 __SWAGGER uri__ 包含 swagger uri。
 
 ---
 

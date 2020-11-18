@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: 896254a5577dad1bdcf474b963b9544029a4c81a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/16/2020
+ms.openlocfilehash: 8f0d10b6ed69cd31249447b59114c590bdbeb078
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040126"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832359"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>對應資料流程中的視窗轉換
 
@@ -22,6 +22,8 @@ ms.locfileid: "93040126"
 視窗轉換可供您定義資料流資料行的視窗型彙總。 在運算式產生器中，您可以定義以資料或時間視窗 (SQL OVER 子句) 為基礎的各種彙總，例如 LEAD、LAG、NTILE、CUMEDIST、RANK 等等。 包含這些彙總的輸出中，將產生新的欄位。 您也可以包含選擇性的群組依據欄位。
 
 ![螢幕擷取畫面：顯示從功能表選取的視窗視窗。](media/data-flow/windows1.png "windows 1")
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IAVu]
 
 ## <a name="over"></a>超過
 對於您的視窗轉換設定資料行資料的資料分割。 SQL 對等項目是 SQL 之中 Over 子句的 ```Partition By```。 如果您想要建立計算，或建立要對於資料分割使用的運算式，可以將滑鼠停留在資料行名稱上，並選取「計算資料行」。

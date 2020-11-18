@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213947"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832988"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體觸發程式
 
@@ -20,6 +20,16 @@ ms.locfileid: "88213947"
 Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支援具有階層 [命名空間](../storage/blobs/data-lake-storage-namespace.md) 的儲存體 V2 帳戶。 若要使用僅限 blob 的帳戶，或如果您的應用程式有特殊需求，請參閱使用此觸發程式的替代方案。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-storage-blob.md)。
+
+## <a name="polling"></a>輪詢
+
+輪詢會以混合方式在檢查記錄和執行定期容器掃描之間運作。 Blob 會以10000的群組一次掃描，而且間隔之間會使用接續 token。
+
+> [!WARNING]
+> 此外，[會以「最大努力」建立儲存體記錄](/rest/api/storageservices/About-Storage-Analytics-Logging)。 並不保證會擷取所有事件。 在某些情況下可能會遺失記錄。
+> 
+> 如果您需要更快或更可靠的 blob 處理，請考慮在建立 blob 時建立[佇列訊息](../storage/queues/storage-dotnet-how-to-use-queues.md)。 然後，使用[佇列觸發程序](functions-bindings-storage-queue.md) (而不是 Blob 觸發程序) 處理該 Blob。 另一個選項是使用 Event Grid；請參閱教學課程[使用 Event Grid 自動調整已上傳映像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
+>
 
 ## <a name="alternatives"></a>替代方案
 
@@ -31,7 +41,7 @@ Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支�
 
 - **高規模**：高擴充功能可以鬆散定義為在其中有超過100000個 blob 的容器，或每秒擁有超過100個 blob 更新的儲存體帳戶。
 
-- 將**延遲降至最低**：如果函式應用程式在取用方案上，則處理新 blob 時最多會有10分鐘的延遲，如果函式應用程式已進入閒置狀態。 若要避免這類延遲，可以切換到 App Service 方案並啟用 Always On。 您也可以透過 Blob 儲存體帳戶使用 [Event Grid 觸發程序](functions-bindings-event-grid.md)。 如需範例，請參閱[ Event Grid 教學課程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
+- 將 **延遲降至最低**：如果函式應用程式在取用方案上，則處理新 blob 時最多會有10分鐘的延遲，如果函式應用程式已進入閒置狀態。 若要避免這類延遲，可以切換到 App Service 方案並啟用 Always On。 您也可以透過 Blob 儲存體帳戶使用 [Event Grid 觸發程序](functions-bindings-event-grid.md)。 如需範例，請參閱[ Event Grid 教學課程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
 
 請參閱事件方格範例的事件方格教學課程的 [影像調整大小](../event-grid/resize-images-on-storage-blob-upload-event.md) 。
 
@@ -80,7 +90,7 @@ Blob 觸發程序路徑 `samples-workitems/{name}` 中的字串 `{name}` 會建�
 
 Blob 觸發程序路徑 `samples-workitems/{name}` 中的字串 `{name}` 會建立[繫結運算式](./functions-bindings-expressions-patterns.md)，您可以在函式程式碼中用來存取觸發 Blob 的檔案名稱。 如需詳細資訊，請參閱本文稍後的 [Blob 名稱模式](#blob-name-patterns)。
 
-如需 *function.json* 檔案屬性的詳細資訊，請參閱[設定](#configuration)一節中這些屬性的說明。
+如需 *function.json* 檔案屬性的詳細資訊，請參閱 [設定](#configuration)一節中這些屬性的說明。
 
 以下是繫結至 `Stream` 的 C# 指令碼：
 
@@ -127,7 +137,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 Blob 觸發程序路徑 `samples-workitems/{name}` 中的字串 `{name}` 會建立[繫結運算式](./functions-bindings-expressions-patterns.md)，您可以在函式程式碼中用來存取觸發 Blob 的檔案名稱。 如需詳細資訊，請參閱本文稍後的 [Blob 名稱模式](#blob-name-patterns)。
 
-如需 *function.json* 檔案屬性的詳細資訊，請參閱[設定](#configuration)一節中這些屬性的說明。
+如需 *function.json* 檔案屬性的詳細資訊，請參閱 [設定](#configuration)一節中這些屬性的說明。
 
 以下是 JavaScript 程式碼：
 
@@ -162,7 +172,7 @@ module.exports = function(context) {
 
 Blob 觸發程序路徑 `samples-workitems/{name}` 中的字串 `{name}` 會建立[繫結運算式](./functions-bindings-expressions-patterns.md)，您可以在函式程式碼中用來存取觸發 Blob 的檔案名稱。 如需詳細資訊，請參閱本文稍後的 [Blob 名稱模式](#blob-name-patterns)。
 
-如需 *function.json* 檔案屬性的詳細資訊，請參閱[設定](#configuration)一節中這些屬性的說明。
+如需 *function.json* 檔案屬性的詳細資訊，請參閱 [設定](#configuration)一節中這些屬性的說明。
 
 以下是 Python 程式碼：
 
@@ -203,7 +213,7 @@ public void run(
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下為範例：
+  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下是範例：
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -297,7 +307,7 @@ Python 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用存取 blob 資料的 `context.bindings.<NAME>` 位置 `<NAME>` 符合 *function.json*中定義的值。
+使用存取 blob 資料的 `context.bindings.<NAME>` 位置 `<NAME>` 符合 *function.json* 中定義的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -349,7 +359,7 @@ Python 指令碼不支援屬性。
 "path": "images/{{20140101}}-{name}",
 ```
 
-如果 blob 命名為* {20140101}-soundfile.mp3*，則會soundfile.mp3函式程式 `name` 代碼中的*soundfile.mp3*變數值。
+如果 blob 命名為 *{20140101}-soundfile.mp3*，則會soundfile.mp3函式程式 `name` 代碼中的 *soundfile.mp3* 變數值。
 
 ## <a name="metadata"></a>中繼資料
 
@@ -384,9 +394,9 @@ Python 中無法使用中繼資料。
 
 Azure Functions 執行階段可確保不會針對一樣新或更新的 blob 多次呼叫 blob 觸發程序函式。 為了判斷指定的 blob 版本是否已處理過，它會維護 *blob 回條*。
 
-Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsStorage` 應用程式設定所定義) 的 Azure 儲存體帳戶中名為 *azure-webjobs-hosts*的容器中。 Blob 回條具有下列資訊：
+Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsStorage` 應用程式設定所定義) 的 Azure 儲存體帳戶中名為 *azure-webjobs-hosts* 的容器中。 Blob 回條具有下列資訊：
 
-* 觸發的函式 ( "* &lt; 函數應用程式名稱>*。功能。* &lt; 函數名稱>*"，例如：" MyFunctionApp. CopyBlob ") 
+* 觸發的函式 ( "*&lt; 函數應用程式名稱>*。功能。*&lt; 函數名稱>*"，例如：" MyFunctionApp. CopyBlob ") 
 * 容器名稱
 * Blob 類型 ("BlockBlob" 或 "PageBlob")
 * Blob 名稱
@@ -400,7 +410,7 @@ Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsS
 
 如果 5 次嘗試全都失敗，Azure Functions 會將訊息新增至名為 *webjobs-blobtrigger-poison* 的儲存體佇列。 您可以設定重試次數上限。 相同的 MaxDequeueCount 設定可用於處理有害的 Blob 和處理有害的佇列訊息。 適用於有害 Blob 的佇列訊息是一個 JSON 物件，其中包含下列屬性：
 
-* FunctionId (格式* &lt; 函數應用程式名稱>*。功能。* &lt; 函數名稱>*) 
+* FunctionId (格式 *&lt; 函數應用程式名稱>*。功能。*&lt; 函數名稱>*) 
 * BlobType ("BlockBlob" 或 "PageBlob")
 * ContainerName
 * BlobName
@@ -413,16 +423,6 @@ Blob 觸發程序會在內部使用佇列，因此並行函式叫用數上限由
 取用[方案](functions-scale.md#how-the-consumption-and-premium-plans-work)會將一部虛擬機器上的函式應用程式限制 (VM) 至 1.5 GB 的記憶體。 每個並行執行的函式執行個體和函式執行階段本身都會使用記憶體。 如果 Blob 觸發的函式將整個 Blob 載入記憶體中，則該函式用於 Blob 的記憶體上限為 24 * Blob 大小上限。 例如，若某個函式應用程式有三個 Blob 觸發的函式，則預設的每一 VM 並行存取上限將是 3 * 24 = 72 個函式叫用。
 
 JavaScript 和 JAVA 函式會將整個 blob 載入記憶體中，而 c # 函式則會在您系結至或時，執行此工作 `string` `Byte[]` 。
-
-## <a name="polling"></a>輪詢
-
-輪詢會以混合方式在檢查記錄和執行定期容器掃描之間運作。 Blob 會以10000的群組一次掃描，而且間隔之間會使用接續 token。
-
-> [!WARNING]
-> 此外，[會以「最大努力」建立儲存體記錄](/rest/api/storageservices/About-Storage-Analytics-Logging)。 並不保證會擷取所有事件。 在某些情況下可能會遺失記錄。
-> 
-> 如果您需要更快或更可靠的 blob 處理，請考慮在建立 blob 時建立[佇列訊息](../storage/queues/storage-dotnet-how-to-use-queues.md)。 然後，使用[佇列觸發程序](functions-bindings-storage-queue.md) (而不是 Blob 觸發程序) 處理該 Blob。 另一個選項是使用 Event Grid；請參閱教學課程[使用 Event Grid 自動調整已上傳映像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
->
 
 ## <a name="next-steps"></a>後續步驟
 

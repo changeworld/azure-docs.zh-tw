@@ -3,13 +3,13 @@ title: Azure Functions 中的串流執行記錄
 description: 115-145 個字元，包括空格。 本摘要會顯示於搜尋結果中。
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216091"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832874"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>在 Azure Functions 中啟用串流執行記錄
 
@@ -19,7 +19,7 @@ ms.locfileid: "92216091"
 
 * **內建記錄資料流**：App Service 平台可讓您檢視應用程式記錄檔的資料流。 這相當於您在[本機開發](functions-develop-local.md)期間對函式進行偵錯，以及在入口網站中使用 [測試] 索引標籤時所看到的輸出。 隨即會顯示所有以記錄為基礎的資訊。 如需詳細資訊，請參閱[串流處理記錄](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 此串流處理方法僅支援單一執行個體，且不能與在使用量方案中的 Linux 上執行的應用程式搭配使用。
 
-* **即時計量資料流**：當您的函式應用程式[連線到 Application Insights](configure-monitoring.md#enable-application-insights-integration) 時，您可以在 Azure 入口網站中使用[即時計量資料流](../azure-monitor/app/live-stream.md)，以近乎即時方式來檢視記錄資料和其他計量。 當您在使用量方案中監視在多個執行個體或 Linux 上執行的函式時，請使用此方法。 此方法會使用[取樣資料](configure-monitoring.md#configure-sampling)。
+* **即時計量資料流**：當您的函式應用程式 [連線到 Application Insights](configure-monitoring.md#enable-application-insights-integration) 時，您可以在 Azure 入口網站中使用 [即時計量資料流](../azure-monitor/app/live-stream.md)，以近乎即時方式來檢視記錄資料和其他計量。 當您在使用量方案中監視在多個執行個體或 Linux 上執行的函式時，請使用此方法。 此方法會使用[取樣資料](configure-monitoring.md#configure-sampling)。
 
 您可以在入口網站和大部分的本機開發環境中檢視記錄資料流。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "92216091"
 
 ![在入口網站中啟用資料流記錄](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
-這會將您的應用程式連線至記錄資料流服務，而應用程式記錄會顯示在視窗中。 您可以在**應用程式記錄**和 **Web 伺服器記錄**之間進行切換。  
+這會將您的應用程式連線至記錄資料流服務，而應用程式記錄會顯示在視窗中。 您可以在 **應用程式記錄** 和 **Web 伺服器記錄** 之間進行切換。  
 
 ![在入口網站中檢視資料流記錄](./media/functions-monitoring/streaming-logs-window.png)
 

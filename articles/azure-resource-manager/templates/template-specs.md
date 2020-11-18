@@ -2,15 +2,15 @@
 title: 範本規格總覽
 description: 說明如何建立範本規格，並與組織中的其他使用者共用它們。
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728466"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747395"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格 (預覽) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91728466"
 若要部署範本規格，您可以使用 PowerShell、Azure CLI、Azure 入口網站、REST 和其他支援的 Sdk 和用戶端等標準 Azure 工具。 您可以使用與範本相同的命令。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要加以使用，您必須[註冊等待清單](https://aka.ms/templateSpecOnboarding)。
+> 範本規格目前為預覽狀態。 若要使用它，您必須安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="why-use-template-specs"></a>為何要使用範本規格？
 
@@ -294,7 +294,7 @@ az deployment group create \
 
 例如，您可以建立範本規格來部署網路資源，並建立另一個部署儲存體資源的範本規格。 在 ARM 範本中，您可以在每次需要設定網路功能或存放裝置資源時，連結至這兩個範本規格。
 
-下列範例類似于先前的範例，但您可以使用 `id` 屬性來連結至範本規格，而不是連結 `relativePath` 至本機範本的屬性。 用於 `2020-06-01` 部署資源的 API 版本。 在此範例中，範本規格位於名為 **templateSpecsRG**的資源群組中。
+下列範例類似于先前的範例，但您可以使用 `id` 屬性來連結至範本規格，而不是連結 `relativePath` 至本機範本的屬性。 用於 `2020-06-01` 部署資源的 API 版本。 在此範例中，範本規格位於名為 **templateSpecsRG** 的資源群組中。
 
 ```json
 {

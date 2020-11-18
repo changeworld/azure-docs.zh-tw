@@ -8,20 +8,20 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050857"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831561"
 ---
 # <a name="examine-the-video-indexer-output"></a>檢查影片索引子輸出
 
-當影片編制索引時，影片索引子會 poduces JSON 內容，其中包含指定之影片深入解析的詳細資料。 見解包括：文字記錄、Ocr、臉部、主題、區塊等等。每個見解類型都包含時間範圍的實例，這些實例會顯示深入解析顯示在影片中的時間。 
+當影片編制索引時，影片索引子會產生 JSON 內容，其中包含指定之影片深入解析的詳細資料。 見解包括：文字記錄、Ocr、臉部、主題、區塊等等。每個見解類型都包含時間範圍的實例，這些實例會顯示深入解析顯示在影片中的時間。 
 
-您可以在影片[索引子](https://www.videoindexer.ai/)網站上按影片上的 [**播放**] 按鈕，以視覺化方式檢查影片的摘要見解。 
+您可以在影片 [索引子](https://www.videoindexer.ai/)網站上按影片上的 [**播放**] 按鈕，以視覺化方式檢查影片的摘要見解。 
 
 您也可以藉由呼叫「 **取得影片索引** API」來使用 API，而回應狀態為「確定」，您可以取得詳細的 JSON 輸出作為回應內容。
 
@@ -38,7 +38,7 @@ ms.locfileid: "89050857"
 
 1. 瀏覽至[影片索引子](https://www.videoindexer.ai/)網站並登入。
 1. 尋找您想要檢查其輸出的影片。
-1. 按下 [播放]****。
+1. 按下 [播放]。
 1. 選取 [ **見解** ] 索引標籤 ([摘要資訊]) 或 [ **時間軸** ] 索引標籤， (允許篩選相關的深入解析) 。
 1. 下載成品和其中的專案。
 
@@ -53,7 +53,7 @@ ms.locfileid: "89050857"
 
 ## <a name="root-elements-of-the-insights"></a>深入解析的根項目
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |accountId|播放清單的 VI 帳戶識別碼。|
 |id|播放清單的識別碼。|
@@ -62,7 +62,7 @@ ms.locfileid: "89050857"
 |userName|建立播放清單的使用者名稱。|
 |created|播放清單的建立時間。|
 |privacyMode|播放清單的隱私模式 (私人/公用)。|
-|狀態|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
+|state|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
 |isOwned|指出播放清單是否由目前的使用者所建立。|
 |isEditable|指出目前的使用者是否有權編輯播放清單。|
 |isBase|指出播放清單是基礎播放清單 (影片) 還是以其他影片組成的播放清單 (衍生)。|
@@ -113,12 +113,12 @@ ms.locfileid: "89050857"
 
 ## <a name="videos"></a>videos
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |accountId|影片的 VI 帳戶識別碼。|
 |id|影片的識別碼。|
 |NAME|影片的名稱。
-|狀態|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
+|state|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
 |processingProgress|處理期間的處理進度 (例如 20%)。|
 |failureCode|無法處理時顯示的失敗碼 (例如 'UnsupportedFileType')。|
 |failureMessage|無法處理時顯示的失敗訊息。|
@@ -187,6 +187,7 @@ ms.locfileid: "89050857"
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation)深入解析。|
 |emotions| [表情](#emotions)深入解析。|
 |topics|[主題](#topics)見解。|
+|喇叭|[說話](#speakers)者見解。|
 
 範例：
 
@@ -221,37 +222,46 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|行識別碼。|
-|text|文字記錄本身。|
+|文字|文字記錄本身。|
+|信賴度|文字記錄精確度的信賴度。|
+|speakerId|說話者的識別碼。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
 範例：
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>ocr
@@ -259,7 +269,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|text|OCR 文字。|
+|文字|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -294,7 +304,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|text|關鍵字。|
+|文字|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|
@@ -572,7 +582,7 @@ id|區塊的識別碼。|
 
 #### <a name="statistics"></a>統計資料
 
-|名稱|描述|
+|名稱|說明|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |SpeakerWordCount|每個說話者的字數。|
@@ -585,7 +595,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|音訊效果識別碼。|
-|type|音訊效果類型 (例如，拍手聲、說話、無聲)。|
+|類型|音訊效果類型 (例如，拍手聲、說話、無聲)。|
 |執行個體|此音訊效果曾出現的時間範圍清單。|
 
 ```json
@@ -699,7 +709,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 |名稱|描述|
 |---|---|
 |id|表情識別碼。|
-|type|根據語音和音訊提示所識別的表情時間。表情可能是：歡樂、悲傷、生氣或恐懼。|
+|類型|根據語音和音訊提示所識別的表情時間。表情可能是：歡樂、悲傷、生氣或恐懼。|
 |執行個體|這一個表情出現的時間範圍清單。|
 
 ```json
@@ -827,6 +837,42 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 . . .
 ```
 
+#### <a name="speakers"></a>喇叭
+
+|名稱|描述|
+|---|---|
+|id|說話者識別碼。|
+|NAME|以「說話者」形式表示的喇叭名稱 *<number>* ，例如「喇叭 #1」。|
+|執行個體 |此喇叭出現的時間範圍清單。|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>後續步驟
 
 [影片索引子開發人員入口網站](https://api-portal.videoindexer.ai)

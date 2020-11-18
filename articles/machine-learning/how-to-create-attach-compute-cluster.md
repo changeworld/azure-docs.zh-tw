@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318218"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832682"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>建立 Azure Machine Learning 計算叢集
 
@@ -44,15 +44,15 @@ Azure Machine Learning 計算叢集是受控的計算基礎結構，可讓您輕
 
 ## <a name="limitations"></a>限制
 
-* 請勿從您的工作區 **建立多個同時附加至相同計算的附件** 。 例如，使用兩個不同的名稱將一個計算叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
+* 請勿從您的工作區 **建立多個同時附加至相同計算的附件**。 例如，使用兩個不同的名稱將一個計算叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
 
     如果您想要重新連接計算目標，例如變更叢集設定，您必須先移除現有的附件。
 
-* 本檔中列出的某些案例會標示為 __預覽__ 。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+* 本檔中列出的某些案例會標示為 __預覽__。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 * Azure Machine Learning Compute 有預設限制，例如可配置的核心數目。 如需詳細資訊，請參閱[管理和要求 Azure 資源的配額](how-to-manage-quotas.md)。
 
-* Azure 可讓您將 _鎖定_ 放置在資源上，使其無法被刪除或處於唯讀狀態。 __請勿將資源鎖定套用至包含您工作區的資源群組__ 。 將鎖定套用至包含您工作區的資源群組，將會防止 Azure ML 計算叢集的調整作業。 如需鎖定資源的詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../azure-resource-manager/management/lock-resources.md)。
+* Azure 可讓您將 _鎖定_ 放置在資源上，使其無法被刪除或處於唯讀狀態。 __請勿將資源鎖定套用至包含您工作區的資源群組__。 將鎖定套用至包含您工作區的資源群組，將會防止 Azure ML 計算叢集的調整作業。 如需鎖定資源的詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../azure-resource-manager/management/lock-resources.md)。
 
 > [!TIP]
 > 只要有足夠的配額可滿足所需的核心數目，叢集一般可以擴大為 100 個節點。 例如，叢集預設會設定為已在叢集節點之間啟用節點間通訊，以便支援 MPI 作業。 不過，您可以直接 [提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並要求允許列出您的訂用帳戶或工作區，或使用特定叢集來停用節點間通訊，藉此將叢集調整為數千個節點。 
@@ -60,7 +60,7 @@ Azure Machine Learning 計算叢集是受控的計算基礎結構，可讓您輕
 
 ## <a name="create"></a>建立
 
-**預估時間** ：大約5分鐘。
+**預估時間**：大約5分鐘。
 
 Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作區中的其他使用者共用，並在回合之間保留，且會根據所提交的回合數目以及叢集上設定的 max_nodes 自動擴大或縮小節點。 min_nodes 設定可以控制可用的節點數目下限。
 
@@ -74,8 +74,8 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
 
 若要使用 Python 建立持續性 Azure Machine Learning Compute 資源，請指定 **vm_size** 和 **max_nodes** 屬性。 Azure Machine Learning 接著會對於其他屬性使用智慧型預設值。 
     
-* **vm_size** ：Azure Machine Learning Compute 建立的節點虛擬機器系列。
-* **max_nodes** ：在 Azure Machine Learning Compute 上執行作業時，自動向上調整的最大節點數。
+* **vm_size**：Azure Machine Learning Compute 建立的節點虛擬機器系列。
+* **max_nodes**：在 Azure Machine Learning Compute 上執行作業時，自動向上調整的最大節點數。
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]

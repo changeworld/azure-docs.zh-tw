@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9a1afd1d998fcb3ba715c890cc4deac1f0a7da5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517711"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832525"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架︰驗證 | 緩和措施
 
@@ -30,12 +30,12 @@ ms.locfileid: "94517711"
 | **Web 應用程式**    | <ul><li>[考慮使用標準驗證機制來驗證 Web 應用程式](#standard-authn-web-app)</li><li>[應用程式必須安全地處理失敗的驗證案例](#handle-failed-authn)</li><li>[啟用逐步執行或自我調整驗證](#step-up-adaptive-authn)</li><li>[確保已適當地鎖定系統管理介面](#admin-interface-lockdown)</li><li>[安全地執行忘記的密碼功能](#forgot-pword-fxn)</li><li>[確定已實行密碼和帳戶原則](#pword-account-policy)</li><li>[執行控制項以防止使用者名稱列舉](#controls-username-enum)</li></ul> |
 | **資料庫** | <ul><li>[可能的話，請使用 Windows 驗證連接到 SQL Server](#win-authn-sql)</li><li>[可能的話，請使用 Azure Active Directory Authentication 連接到 SQL Database](#aad-authn-sql)</li><li>[使用 SQL 驗證模式時，確保在 SQL Server 上強制執行帳戶和密碼原則](#authn-account-pword)</li><li>[請勿在自主資料庫中使用 SQL 驗證](#autn-contained-db)</li></ul> |
 | **Azure 事件中樞** | <ul><li>[使用採用 SaS 權杖的每一裝置驗證認證](#authn-sas-tokens)</li></ul> |
-| **Azure 信任邊界** | <ul><li>[啟用 Azure 系統管理員適用的 Azure Multi-Factor Authentication](#multi-factor-azure-admin)</li></ul> |
+| **Azure 信任邊界** | <ul><li>[為 Azure 系統管理員啟用 Azure AD Multi-Factor Authentication](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric 信任邊界** | <ul><li>[限制 Service Fabric 叢集的匿名存取](#anon-access-cluster)</li><li>[確定 Service Fabric 的用戶端對節點憑證與節點對節點憑證不同](#fabric-cn-nn)</li><li>[使用 AAD 來向 service fabric 叢集驗證用戶端](#aad-client-fabric)</li><li>[確保從經過核准的憑證授權單位 (CA) 取得 Service Fabric 憑證](#fabric-cert-ca)</li></ul> |
 | **身分識別伺服器** | <ul><li>[使用 Identity Server 支援的標準驗證案例](#standard-authn-id)</li><li>[以可調整的替代方式覆寫預設身分識別伺服器權杖快取](#override-token)</li></ul> |
 | **電腦信任邊界** | <ul><li>[確保已數位簽署所部署應用程式的二進位檔](#binaries-signed)</li></ul> |
 | **WCF** | <ul><li>[連接到 WCF 中的 MSMQ 佇列時啟用驗證](#msmq-queues)</li><li>[WCF - 請勿將訊息 clientCredentialType 設定為 none](#message-none)</li><li>[WCF-請勿將傳輸 clientCredentialType 設定為 none](#transport-none)</li></ul> |
-| **Web API** | <ul><li>[確保使用標準驗證技術來保護 Web API](#authn-secure-api)</li></ul> |
+| **Web API** | <ul><li>[確保使用標準驗證技術來保護 Web Api](#authn-secure-api)</li></ul> |
 | **Azure AD** | <ul><li>[使用 Azure Active Directory 所支援的標準驗證案例](#authn-aad)</li><li>[使用可調整的替代方式覆寫預設 ADAL 權杖快取](#adal-scalable)</li><li>[確保使用 TokenReplayCache 來防止重新執行 ADAL 驗證權杖](#tokenreplaycache-adal)</li><li>[使用 ADAL 程式庫來管理從 OAuth2 用戶端至 AAD (或內部部署 AD 的權杖要求) ](#adal-oauth2)</li></ul> |
 | **IoT 現場閘道** | <ul><li>[驗證連接到現場閘道的裝置](#authn-devices-field)</li></ul> |
 | **IoT 雲端閘道** | <ul><li>[確保會驗證連線到雲端閘道的裝置](#authn-devices-cloud)</li><li>[使用每一裝置的驗證認證](#authn-cred)</li></ul> |
@@ -173,7 +173,7 @@ ms.locfileid: "94517711"
 | **參考**              | [事件中樞驗證和安全性模型概觀](../../event-hubs/authenticate-shared-access-signature.md) |
 | **步驟** | <p>事件中樞安全性模型是以共用存取簽章 (SAS) 權杖和事件發佈者的組合為基礎。 發佈者代表可接收權杖的 DeviceID。 這有助於讓所產生的權杖與個別的裝置建立關聯。</p><p>在允許偵測承載內部原始來源詐騙嘗試的服務端上，所有訊息都會標示建立者。 驗證裝置時，產生範圍限於唯一發佈者的每個裝置 SaS 權杖。</p>|
 
-## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>啟用 Azure 系統管理員適用的 Azure Multi-Factor Authentication
+## <a name="enable-azure-ad-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>為 Azure 系統管理員啟用 Azure AD Multi-Factor Authentication
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
@@ -181,7 +181,7 @@ ms.locfileid: "94517711"
 | **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [什麼是 Azure Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md) |
+| **參考**              | [什麼是 Azure AD Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md) |
 | **步驟** | <p>多因素驗證 (MFA) 是需要多種驗證方法，並在使用者登入和交易中新增重要的第二層安全性的驗證方法。 其運作方式需要下列其中任何二或多個驗證方法：</p><ul><li>您知道的資訊 (通常是密碼)</li><li>您擁有的事物 (不易複製的受信任裝置，例如電話)</li><li>您身上的某些特徵 (生物識別技術)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>限制 Service Fabric 叢集的匿名存取

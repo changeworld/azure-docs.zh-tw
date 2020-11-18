@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 1eed12593168975b1dfda6e51b07b256cbd0c246
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f01cd6cd8c5f89206888f5123f7b14a524c9f40f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92145816"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94748469"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查詢 Avro 資料
 
@@ -56,7 +56,7 @@ U-SQL 中的 Avro 有一個「擷取程式」。 如需詳細資訊，請參閱 
 
 6. 在 Visual Studio 中，建立 U-SQL 專案。
 
-   !建立 U-SQL 專案](./media/iot-hub-query-avro-data/query-avro-data-6.png)
+   ![建立 U-SQL 專案](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
 7. 將下列指令碼的內容貼到新建立的檔案中。 修改醒目提示的三個部分：Data Lake Analytics 帳戶、相關 DLL 檔案路徑，和儲存體帳戶的正確路徑。
 

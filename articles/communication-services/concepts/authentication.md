@@ -9,32 +9,32 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202951"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832801"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>向 Azure 通訊服務驗證
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-本文提供使用 *存取金鑰* 和 *使用者存取權杖*來向 Azure 通訊服務驗證用戶端的相關資訊。 每個用戶端與 Azure 通訊服務的互動都必須經過驗證。
+本文提供使用 *存取金鑰* 和 *使用者存取權杖* 來向 Azure 通訊服務驗證用戶端的相關資訊。 每個用戶端與 Azure 通訊服務的互動都必須經過驗證。
 
 下表說明 Azure 通訊服務用戶端程式庫支援的驗證選項：
 
 | 用戶端程式庫 | 存取金鑰    | 使用者存取權杖 |
 | -------------- | ------------- | ------------------ |
 | 系統管理 | 支援     | 不支援      |
-| SMS            | 支援     | 不支援      |
+| sms            | 支援     | 不支援      |
 | 聊天           | 不支援 | 支援          |
 | 呼叫        | 不支援 | 支援          |
 
 以下是每個授權選項的簡短說明：
 
-- 適用于 SMS 和管理作業的**存取金鑰**驗證。 存取金鑰驗證適用于在信任的服務環境中執行的應用程式。 若要使用存取金鑰進行驗證，用戶端會 [ (HMAC) 產生雜湊式訊息驗證碼 ](https://en.wikipedia.org/wiki/HMAC) ，並將它包含在 `Authorization` 每個 HTTP 要求的標頭中。 如需詳細資訊，請參閱 [使用存取金鑰進行驗證](#authenticate-with-an-access-key)。
-- 用於聊天和通話的**使用者存取權杖**驗證。 使用者存取權杖可讓您的用戶端應用程式直接向 Azure 通訊服務進行驗證。 這些權杖會在您建立的伺服器端權杖布建服務上產生。 然後，這些用戶端裝置會提供使用權杖初始化聊天和呼叫用戶端程式庫的用戶端裝置。 如需詳細資訊，請參閱 [使用使用者存取權杖進行驗證](#authenticate-with-a-user-access-token)。
+- 適用于 SMS 和管理作業的 **存取金鑰** 驗證。 存取金鑰驗證適用于在信任的服務環境中執行的應用程式。 若要使用存取金鑰進行驗證，用戶端會 [ (HMAC) 產生雜湊式訊息驗證碼 ](https://en.wikipedia.org/wiki/HMAC) ，並將它包含在 `Authorization` 每個 HTTP 要求的標頭中。 如需詳細資訊，請參閱 [使用存取金鑰進行驗證](#authenticate-with-an-access-key)。
+- 用於聊天和通話的 **使用者存取權杖** 驗證。 使用者存取權杖可讓您的用戶端應用程式直接向 Azure 通訊服務進行驗證。 這些權杖會在您建立的伺服器端權杖布建服務上產生。 然後，這些用戶端裝置會提供使用權杖初始化聊天和呼叫用戶端程式庫的用戶端裝置。 如需詳細資訊，請參閱 [使用使用者存取權杖進行驗證](#authenticate-with-a-user-access-token)。
 
 ## <a name="authenticate-with-an-access-key"></a>使用存取金鑰進行驗證
 
@@ -72,11 +72,11 @@ Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signatur
 
 使用者存取權杖可讓您的用戶端應用程式直接向 Azure 通訊服務進行驗證。 為了達成此目的，您應該設定信任的服務，以驗證您的應用程式使用者，並使用管理用戶端程式庫來發出使用者存取權杖。 請造訪 [用戶端和伺服器架構](./client-and-server-architecture.md) 概念檔，以深入瞭解我們的架構考慮。
 
-`CommunicationClientCredential`類別包含提供使用者存取權杖認證給用戶端程式庫以及管理其生命週期的邏輯。
+`CommunicationUserCredential`類別包含提供使用者存取權杖認證給用戶端程式庫以及管理其生命週期的邏輯。
 
 ### <a name="initialize-the-client-libraries"></a>初始化用戶端程式庫
 
-若要初始化需要使用者存取權杖驗證的 Azure 通訊服務用戶端程式庫，您必須先建立 `CommunicationClientCredential` 類別的實例，然後使用它來初始化 API 用戶端。
+若要初始化需要使用者存取權杖驗證的 Azure 通訊服務用戶端程式庫，您必須先建立 `CommunicationUserCredential` 類別的實例，然後使用它來初始化 API 用戶端。
 
 下列程式碼片段示範如何使用使用者存取權杖來初始化聊天用戶端程式庫：
 

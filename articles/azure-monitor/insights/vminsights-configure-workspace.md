@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506289"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747684"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>針對適用於 VM 的 Azure 監視器來設定 Log Analytics 工作區
 適用於 VM 的 Azure 監視器會從 Azure 監視器中的一或多個 Log Analytics 工作區收集其資料。 在將代理程式上架之前，您必須先建立並設定工作區。 本文說明工作區的需求，並針對適用於 VM 的 Azure 監視器進行設定。
@@ -78,13 +78,13 @@ ms.locfileid: "94506289"
 > 當您將 *VMInsights* 解決方案新增至工作區時，所有連線到該工作區的現有虛擬機器都將開始傳送資料至 InsightsMetrics。 在您將 Dependency Agent 新增至連線至工作區的現有虛擬機器之前，將不會收集其他資料類型的資料。
 
 ### <a name="azure-portal"></a>Azure 入口網站
-有三個選項可讓您從 Azure 入口網站設定現有的工作區。
+有三個選項可供您使用 Azure 入口網站設定現有的工作區。 各項說明如下。
 
-若要設定單一工作區，請選取 **其他上線選項** ，然後 **設定工作區** 。 選取訂用帳戶和工作區，然後按一下 [ **設定** ]。
+若要設定單一工作區，請選取 **其他上線選項** ，然後 **設定工作區**。 選取訂用帳戶和工作區，然後按一下 [ **設定**]。
 
 [![設定工作區](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
-若要設定多個工作區，請在 Azure 入口網站的 [ **監視** ] 功能表的 [ **虛擬機器** ] 功能表中，選取 [ **工作區** 設定] 索引標籤 設定篩選值以顯示現有工作區的清單。 選取要啟用的每個工作區旁的核取方塊，然後按一下 [ **設定選取** ]。
+若要設定多個工作區，請在 Azure 入口網站的 [**監視**] 功能表的 [**虛擬機器**] 功能表中，選取 [**工作區** 設定] 索引標籤 設定篩選值以顯示現有工作區的清單。 選取要啟用的每個工作區旁的核取方塊，然後按一下 [ **設定選取** ]。
 
 [![工作區設定](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 

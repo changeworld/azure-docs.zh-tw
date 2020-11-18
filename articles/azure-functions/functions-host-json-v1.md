@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 1.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v1 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167710"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832818"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 host.json 參考
 
@@ -93,7 +93,8 @@ ms.locfileid: "92167710"
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -286,6 +287,7 @@ ms.locfileid: "92167710"
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |屬性  |預設 | 描述 |
@@ -301,7 +303,8 @@ ms.locfileid: "92167710"
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -310,7 +313,8 @@ ms.locfileid: "92167710"
 |---------|---------|---------| 
 |maxConcurrentCalls|16|訊息幫浦應該起始之回呼的並行呼叫數上限。 Functions 執行階段預設會並行處理多個訊息。 若要指示執行階段一次只處理一個佇列或主題訊息，請將 `maxConcurrentCalls` 設定為 1。 | 
 |prefetchCount|n/a|基礎 MessageReceiver 將使用的預設 PrefetchCount。| 
-|autoRenewTimeout|00:05:00|將自動更新訊息鎖定的最大持續時間。| 
+|autoRenewTimeout|00:05:00|將自動更新訊息鎖定的最大持續時間。|
+|autoComplete|true|若為 true，觸發程式將會在成功執行作業時自動完成訊息處理。 若為 false，則表示函式必須在傳回之前完成訊息。|
 
 ## <a name="singleton"></a>singleton
 

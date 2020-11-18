@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370248"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832427"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>使用 Blob 索引標記管理及尋找 Azure Blob 資料 (預覽) 
 
@@ -44,7 +44,7 @@ Blob 索引標記可讓您：
 - *logs/2020/01/01/logfile.txt*
 
 
-這些 blob 會使用 *容器/虛擬資料夾/blob 名稱*的前置詞來分隔。 您可以設定 `Project = Contoso` 這五個 blob 的索引標記屬性，將它們分類在一起，同時維持其目前的前置片語織。 加入索引標籤可讓您藉由使用索引來篩選和尋找資料，來免除移動資料的需要。
+這些 blob 會使用 *容器/虛擬資料夾/blob 名稱* 的前置詞來分隔。 您可以設定 `Project = Contoso` 這五個 blob 的索引標記屬性，將它們分類在一起，同時維持其目前的前置片語織。 加入索引標籤可讓您藉由使用索引來篩選和尋找資料，來免除移動資料的需要。
 
 ## <a name="setting-blob-index-tags"></a>設定 blob 索引標記
 
@@ -115,7 +115,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 
 下表顯示適用于的所有有效運算子 `Find Blobs by Tags` ：
 
-|  運算子  |  描述  | 範例 |
+|  運算子  |  說明  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | `"Status" = 'In Progress'` |
 |     >      |  大於 | `"Date" > '2018-06-18'` |
@@ -140,7 +140,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 
 下表顯示條件式作業的有效運算子：
 
-|  運算子  |  描述  | 範例 |
+|  運算子  |  說明  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | `"Status" = 'In Progress'` |
 |     <>     |   不等於   | `"Status" <> 'Done'` |
@@ -149,7 +149,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 |     <      |  小於   | `"Age" < '32'` |
 |     <=     |  小於或等於  | `"Company" <= 'Contoso'` |
 |    AND     |  邏輯 and  | `"Rank" >= '010' AND "Rank" < '100'` |
-|     OR     | 邏輯 or   | `"Status" = 'Done' OR "Priority" >= '05'` |
+|     或者     | 邏輯 or   | `"Status" = 'Done' OR "Priority" >= '05'` |
 
 > [!NOTE]
 > Blob 作業的條件式標頭中允許有兩個額外的運算子，不等於和邏輯 or， `x-ms-if-tags` 但不存在於作業中 `Find Blobs by Tags` 。
@@ -164,7 +164,7 @@ Blob 索引標記不僅可協助您分類、管理及搜尋您的 blob 資料，
 
 您可以將 blob 索引比對設定為生命週期規則中所設定的獨立篩選器，以對已標記的資料套用動作。 或者，您可以結合前置詞和 blob 索引，以符合更特定的資料集。 在生命週期規則中指定多個篩選準則會套用邏輯 AND 運算。 只有當 *所有* 篩選準則相符時，才會套用動作。
 
-下列範例生命週期管理規則會套用至名為 *videofiles*之容器中的區塊 blob。 只有當資料符合的 blob 索引標記準則時，才會將規則分層 blob 保存到封存儲存體 `"Status" == 'Processed' AND "Source" == 'RAW'` 。
+下列範例生命週期管理規則會套用至名為 *videofiles* 之容器中的區塊 blob。 只有當資料符合的 blob 索引標記準則時，才會將規則分層 blob 保存到封存儲存體 `"Status" == 'Processed' AND "Source" == 'RAW'` 。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -269,7 +269,7 @@ Blob 索引標記和中繼資料都提供將任意使用者定義的索引鍵/�
 |--------------|--------------|--------------------|
 | **限制**      | 沒有數值限制、8 KB 總計、不區分大小寫 | 每個 blob 最多10個標籤，每個標記768個位元組，區分大小寫 |
 | **更新**    | 封存層不允許， `Set Blob Metadata` 取代所有現有的中繼資料， `Set Blob Metadata` 變更 blob 的上次修改時間 | 允許所有存取層， `Set Blob Tags` 取代所有現有的標記，而 `Set Blob Tags` 不會變更 blob 的上次修改時間 |
-| **Storage**     | 與 blob 資料儲存 | Blob 資料的 Subresource |
+| **儲存體**     | 與 blob 資料儲存 | Blob 資料的 Subresource |
 | **& 查詢編制索引** | 必須使用不同的服務，例如 Azure 搜尋服務 | Blob 儲存體內建的索引和查詢功能 |
 | **加密** | 使用相同的加密金鑰（用於 blob 資料）進行靜態加密 | 使用 Microsoft 管理的加密金鑰進行靜態加密 |
 | **定價** | 中繼資料的大小包含在 blob 的儲存成本中 | 每個索引標籤的固定成本 |
@@ -327,6 +327,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 當篩選的範圍設定為單一容器時， `@container` 只有在篩選條件運算式中的所有索引標籤都是 (索引鍵 = 值) 的相等檢查時，才能傳遞。
 - 在條件中使用範圍運算子時 `AND` ，您只能指定相同的索引標記索引鍵名稱 (`"Age" > '013' AND "Age" < '100'`) 。
 - 不支援版本控制和 blob 索引。 Blob 索引標記會保留給版本，但不會傳遞給 blob 索引引擎。
+- 沒有可判斷索引標記是否已編制索引的 API。
 - 不支援帳戶容錯移轉。 在容錯移轉之後，blob 索引可能無法正確更新。
 - 生命週期管理僅支援具有 blob 索引相符的相等檢查。
 - `Copy Blob` 不會將 blob 索引標記從來源 blob 複製到新的目的地 blob。 您可以在複製作業期間，指定要套用至目的地 blob 的標記。
