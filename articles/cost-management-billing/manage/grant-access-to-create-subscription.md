@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: 02919cf2e35fdd4d981f3fde53085c2174f11bd1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132562"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844705"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授與建立 Azure 企業版訂用帳戶的權限 (預覽)
 
@@ -23,7 +23,7 @@ ms.locfileid: "92132562"
 
 ## <a name="grant-access"></a>授與存取權
 
-若要[在註冊帳戶下建立訂用帳戶](programmatically-create-subscription.md)，使用者必須擁有該帳戶的 [Azure RBAC 擁有者角色](../../role-based-access-control/built-in-roles.md#owner)。 您可以遵循下列步驟，將註冊帳戶上的 Azure RBAC 擁有者角色授與使用者或使用者群組：
+若要[在註冊帳戶下建立訂用帳戶](programmatically-create-subscription-enterprise-agreement.md)，使用者必須擁有該帳戶的 [Azure RBAC 擁有者角色](../../role-based-access-control/built-in-roles.md#owner)。 您可以遵循下列步驟，將註冊帳戶上的 Azure RBAC 擁有者角色授與使用者或使用者群組：
 
 1. 針對您想要對其授與存取權的註冊帳戶，取得其物件識別碼
 
@@ -174,7 +174,7 @@ ms.locfileid: "92132562"
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    在使用者成為您註冊帳戶的「Azure RBAC 擁有者」之後，他們便能[以程式設計方式在該帳戶下建立訂用帳戶](programmatically-create-subscription.md)。 由委派的使用者所建立的訂用帳戶仍然會以原始「帳戶擁有者」作為「服務管理員」，但預設也會以委派的使用者作為「Azure RBAC 擁有者」。
+    在使用者成為您註冊帳戶的「Azure RBAC 擁有者」之後，他們便能[以程式設計方式在該帳戶下建立訂用帳戶](programmatically-create-subscription-enterprise-agreement.md)。 由委派的使用者所建立的訂用帳戶仍然會以原始「帳戶擁有者」作為「服務管理員」，但預設也會以委派的使用者作為「Azure RBAC 擁有者」。
 
     ---
 
@@ -193,7 +193,7 @@ ms.locfileid: "92132562"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 使用者或服務主體在獲得建立訂用帳戶的權限後，您便可使用該身分識別[以程式設計方式建立 Azure 企業版訂用帳戶](programmatically-create-subscription.md)。
+* 使用者或服務主體在獲得建立訂用帳戶的權限後，您便可使用該身分識別[以程式設計方式建立 Azure 企業版訂用帳戶](programmatically-create-subscription-enterprise-agreement.md)。
 * 如需有關使用 .NET 來建立訂用帳戶的範例，請參閱 [GitHub 上的範例程式碼](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core) \(英文\)。
 * 若要深入了解 Azure Resource Manager 及其 API，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 * 若要深入了解如何使用管理群組來管理大量訂用帳戶，請參閱[使用 Azure 管理群組來組織資源](../../governance/management-groups/overview.md)

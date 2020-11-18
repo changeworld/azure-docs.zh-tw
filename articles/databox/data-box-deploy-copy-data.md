@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 11/11/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334664"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616734"
 ---
 ::: zone target="docs"
 
@@ -74,7 +74,7 @@ ms.locfileid: "94334664"
 
     ![取得 SMB 共用的共用認證](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 如果密碼有特殊字元，請在前後加上雙引號。 然後選取 [確定]  。
+2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 然後選取 [確定]  。
     
     ![取得共用的使用者名稱和密碼](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
@@ -87,11 +87,11 @@ ms.locfileid: "94334664"
     - Azure 分頁 Blob - `\\10.126.76.138\utSAC1_202006051000_PageBlob`
     - Azure 檔案服務 - `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
-4. 出現提示時，請輸入共用的密碼。 下列範例說明如何透過前述命令連線至共用。
+4. 出現提示時，請輸入共用的密碼。 如果密碼有特殊字元，請在前後加上雙引號。 下列範例說明如何透過前述命令連線至共用。
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
-    Enter the password for 'testuser1' to connect to '10.126.76.138':
+    Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```
 
