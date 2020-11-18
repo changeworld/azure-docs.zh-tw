@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371880"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836813"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
 尋找部署 Azure Active Directory (Azure AD) 功能的端對端指引嗎？ Azure AD 部署計畫會逐步引導您完成商務價值、規劃考慮，以及成功部署常見 Azure AD 功能所需的操作程式。
@@ -40,13 +40,13 @@ ms.locfileid: "92371880"
 
 **參與程度可能包括：**
 
-- 用於執行專案計劃和結果的**R**esponsible 
+- 用於執行專案計劃和結果的 **R** esponsible 
 
-- 專案計劃和結果**的 pproval** 
+- 專案計劃和結果 **的 pproval** 
 
-- **C**ontributor 至專案計劃和結果 
+- **C** ontributor 至專案計劃和結果 
 
-- **Nformed 專案**計畫和結果
+- **Nformed 專案** 計畫和結果
 
 
 ## <a name="best-practices-for-a-pilot"></a>試驗的最佳作法
@@ -59,16 +59,16 @@ ms.locfileid: "92371880"
 
 ## <a name="deploy-authentication"></a>部署驗證
 
-| 功能 | 描述|
+| 功能 | 說明|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 Azure MFA 可使用管理員核准的驗證方法，以利保護對資料與應用程式的存取，同時達到對簡單登入程序的需求。 |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 使用系統管理員核准的驗證方法，Azure AD MFA 有助於保護對資料和應用程式的存取，同時滿足簡單登入程式的需求。 |
 | [條件式存取](../conditional-access/plan-conditional-access.md)| 使用條件式存取，您可以實作自動化的存取控制決定，以根據條件指出誰可以存取雲端應用程式。 |
 | [自助式密碼重設](../authentication/howto-sspr-deployment.md)| 自助式密碼重設可協助您的使用者在不需要系統管理員介入的情況下，重設其密碼。 |
 | [無密碼](../authentication/howto-authentication-passwordless-deployment.md) | 在您的組織中使用 Microsoft Authenticator 應用程式或 FIDO2 安全性金鑰來執行無密碼 authentication |
 
 ## <a name="deploy-application-and-device-management"></a>部署應用程式和裝置管理
 
-| 功能 | 描述|
+| 功能 | 說明|
 | -| - |
 | [單一登入](../manage-apps/plan-sso-deployment.md)| 單一登入可協助您的使用者存取在登入時只需要進行商務所需的應用程式和資源。 登入之後，他們就可以從 Microsoft Office 至 SalesForce 到 Box 到內部應用程式，而不需要再次輸入認證。 |
 | [存取面板](../manage-apps/access-panel-deployment-plan.md)| 為使用者提供可探索及存取其所有應用程式的簡單中樞。 讓他們能藉由自助式功能提升生產力，例如，要求存取應用程式和群組，或代表其他人管理資源的存取權。 |
@@ -77,7 +77,7 @@ ms.locfileid: "92371880"
 
 ## <a name="deploy-hybrid-scenarios"></a>部署混合式案例
 
-| 功能 | 描述|
+| 功能 | 說明|
 | -| -|
 | [以 ADFS 進行密碼雜湊同步處理](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 使用密碼雜湊同步處理時，系統會將使用者密碼的雜湊從內部部署 Active Directory 同步處理至 Azure AD，讓 Azure AD 驗證使用者，而不需要與內部部署進行互動 Active Directory |
 | [以 ADFS 通過驗證](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD 傳遞驗證可協助您的使用者使用相同的密碼登入內部部署和雲端式應用程式。 這項功能可為使用者提供更好的體驗，也就是一個比較少的密碼，並降低 IT 技術服務人員的成本，因為使用者比較不可能忘記如何登入。 當使用者使用 Azure AD 登入時，此功能會向您的內部部署 Active Directory 直接驗證使用者的密碼。 |
@@ -86,14 +86,14 @@ ms.locfileid: "92371880"
 
 ## <a name="deploy-user-provisioning"></a>部署使用者布建
 
-| 功能 | 描述|
+| 功能 | 說明|
 | -| -|
-| [使用者布建](../app-provisioning/plan-auto-user-provisioning.md)| Azure AD 可協助您自動化在雲端 (SaaS) 應用程式 (例如 Dropbox、Salesforce、ServiceNow 等等) 中建立、維護和移除使用者身分識別的作業。 |
+| [使用者佈建](../app-provisioning/plan-auto-user-provisioning.md)| Azure AD 可協助您自動化在雲端 (SaaS) 應用程式 (例如 Dropbox、Salesforce、ServiceNow 等等) 中建立、維護和移除使用者身分識別的作業。 |
 | [雲端 HR 使用者布建](../app-provisioning/plan-cloud-hr-provision.md)| 雲端 HR 使用者布建至 Active Directory 建立進行中身分識別治理的基礎，並增強依賴授權身分識別資料的商務程式品質。 使用這項功能搭配您的雲端 HR 產品（例如 Workday 或 Successfactors），您可以藉由設定規則來對應「員工」、「終止」、「) 」 (的 (流程（例如建立、啟用、停用) ），以順暢地管理員工和臨時員工的身分識別生命週期。 |
 
 ## <a name="deploy-governance-and-reporting"></a>部署治理和報告
 
-| 功能 | 描述|
+| 功能 | 說明|
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) 可協助您管理遍及 Azure AD、Azure 資源及其他 Microsoft Online Services 的特殊權限系統管理角色。 PIM 提供 Just-In-Time 存取、要求核准工作流程，以及完全整合的存取權檢閱等解決方案，讓您能夠即時識別、發現和防止特殊權限角色的惡意活動。 |
 | [報告和監視](../reports-monitoring/plan-monitoring-and-reporting.md)| Azure AD 報告和監視解決方案的設計取決於您的法律、安全性和操作需求，以及現有的環境和流程。 本文提供各種設計選項，並引導您進行適當的部署策略。 |

@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a8b013723707c4a3a087a90674227c3d41c5108
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395884"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836932"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中歐洲客戶的身分識別資料儲存體
 在訂閱 Microsoft 線上服務（例如 Microsoft 365 和 Azure）時，會根據組織提供的位址，在地理位置 Azure AD 儲存身分識別資料。 如需識別資料儲存位置的資訊，您可以使用 Microsoft 信任中心的 [ [資料的所在位置？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) ] 區段。
 
 針對在歐洲提供位址的客戶，Azure AD 在歐洲資料中心內保存大部分的身分識別資料。 本檔提供 Azure AD services 儲存在歐洲以外的任何資料的相關資訊。
 
-## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+## <a name="microsoft-azure-ad-multi-factor-authentication"></a>Microsoft Azure AD Multi-Factor Authentication
 
-針對雲端式 Azure Multi-Factor Authentication，會在最接近使用者的資料中心內完成驗證。 適用于 Azure Multi-Factor Authentication 的資料中心存在於北美洲、歐洲和亞太地區。
+針對雲端式 Azure AD Multi-Factor Authentication，在最接近使用者的資料中心內完成驗證。 Azure AD Multi-Factor Authentication 的資料中心存在於北美洲、歐洲和亞太地區。
 
 * 使用電話的多重要素驗證是來自美國資料中心，由全域提供者路由傳送。
 * 使用 SMS 的多重要素驗證是由全域提供者所路由傳送。
@@ -34,7 +34,7 @@ ms.locfileid: "91395884"
     * 裝置廠商專屬的服務，例如 Apple Push 通知，可能在歐洲以外。
 * 使用來自 EU 資料中心之 OATH 代碼的多重要素驗證要求，會在歐盟進行驗證。
 
-如需 Azure Multi-Factor Authentication Server (MFA Server) 和雲端式 Azure MFA 收集哪些使用者資訊的詳細資訊，請參閱 [azure Multi-Factor Authentication 使用者資料收集](../authentication/howto-mfa-reporting-datacollection.md)。
+如需 Azure Multi-Factor Authentication Server (MFA Server) 和雲端式 Azure AD MFA 收集哪些使用者資訊的詳細資訊，請參閱 [azure Multi-Factor Authentication 使用者資料收集](../authentication/howto-mfa-reporting-datacollection.md)。
 
 ## <a name="password-based-single-sign-on-for-enterprise-applications"></a>企業應用程式以密碼為基礎的單一 Sign-On
  

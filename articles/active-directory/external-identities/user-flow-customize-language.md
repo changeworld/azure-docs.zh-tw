@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576507"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837085"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory 中的語言自訂 (預覽)
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 中的語言自訂可讓您的使用者流程�
 3. 選取您要啟用翻譯的使用者流程。
 4. 選取 [語言]。
 5. 在使用者流程的 [語言] 頁面上，選取您想要自訂的語言。
-6. 展開 **屬性集合頁面** 。
+6. 展開 **屬性集合頁面**。
 7. 選取 [下載預設值] (如果您先前已編輯這個語言，請按一下 [下載覆寫])。
 
 上述步驟會向您提供 JSON 檔案，以供您用來開始編輯字串。
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 中的語言自訂可讓您的使用者流程�
 1. 選取 [使用者流程]，然後按一下您想要啟用翻譯的使用者流程。
 1. 選取 [語言]。
 1. 選取您想要轉譯成什麼語言。
-1. 選取 **屬性集合頁面** 。
+1. 選取 **屬性集合頁面**。
 1. 選取資料夾圖示，然後選取要上傳的 JSON 檔案。
 
 這些變更會自動儲存到您的使用者流程。
@@ -146,7 +146,7 @@ Chrome 和 Firefox 都會要求使用其設定的語言。 如果該語言受到
 
 ## <a name="supported-languages"></a>支援的語言
 
-Azure AD 支援下列語言。 Azure AD 提供使用者流程語言。 多重要素驗證 (MFA} 通知語言是由 [Azure MFA](../authentication/concept-mfa-howitworks.md) 提供。
+Azure AD 支援下列語言。 Azure AD 提供使用者流程語言。 [AZURE AD mfa](../authentication/concept-mfa-howitworks.md)會提供多因素驗證 (mfa) 通知語言。
 
 | Language              | 語言代碼 | 使用者流程         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370945"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836830"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般操作指南參考
 
@@ -31,7 +31,7 @@ ms.locfileid: "92370945"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您也必須設定這些工作來優化您的環境。 主要工作和其建議的擁有者包括：
 
-| Task | 擁有者 |
+| 工作 | 擁有者 |
 | :- | :- |
 | 提高身分識別安全分數的磁片磁碟機 | InfoSec 作業小組 |
 | 維護 Azure AD Connect 伺服器 | IAM 作業小組 |
@@ -43,7 +43,7 @@ ms.locfileid: "92370945"
 | 監視混合式記錄：傳遞驗證代理程式 | IAM 作業小組 |
 | 監視混合式記錄：密碼回寫服務 | IAM 作業小組 |
 | 監視混合式記錄：內部部署密碼保護閘道 | IAM 作業小組 |
-| 監視混合式記錄： Azure MFA NPS 擴充功能 (適用)  | IAM 作業小組 |
+| 監視混合式記錄： Azure AD MFA NPS 擴充功能 (如果適用)  | IAM 作業小組 |
 
 當您複習清單時，可能會發現您需要為缺少擁有者的工作指派擁有者，或針對擁有者未與上述建議一致的工作，調整其擁有權。
 
@@ -86,7 +86,7 @@ ms.locfileid: "92370945"
 
 ### <a name="on-premises-agents-logs"></a>內部部署代理程式記錄檔
 
-某些身分識別和存取管理服務需要內部部署代理程式，才能啟用混合式案例。 範例包括密碼重設、傳遞驗證 (PTA) 、Azure AD 應用程式 Proxy，以及 Azure MFA NPS 延伸模組。 這是作業小組使用 System Center Operations Manager 或 SIEM 等解決方案來封存和分析元件代理程式記錄，以將這些元件的健康情況進行基準和監視的關鍵。 您的 Infosec 作業小組或技術服務人員也必須瞭解如何針對錯誤模式進行疑難排解。
+某些身分識別和存取管理服務需要內部部署代理程式，才能啟用混合式案例。 範例包括密碼重設、傳遞驗證 (PTA) 、Azure AD 應用程式 Proxy，以及 Azure AD MFA NPS 擴充功能。 這是作業小組使用 System Center Operations Manager 或 SIEM 等解決方案來封存和分析元件代理程式記錄，以將這些元件的健康情況進行基準和監視的關鍵。 您的 Infosec 作業小組或技術服務人員也必須瞭解如何針對錯誤模式進行疑難排解。
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>內部部署代理程式記錄建議的讀取
 
@@ -94,7 +94,7 @@ ms.locfileid: "92370945"
 - [自助式密碼重設疑難排解 - Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [了解 Azure AD 應用程式 Proxy 連接器](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect：針對傳遞驗證進行疑難排解](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [針對 Azure MFA NPS 擴充功能的錯誤碼進行疑難排解](../authentication/howto-mfa-nps-extension-errors.md)
+- [針對 Azure AD MFA NPS 擴充功能的錯誤碼進行疑難排解](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>內部部署代理程式管理
 
@@ -156,7 +156,7 @@ Azure AD：會使用兩個「寄件者」位址 <o365mc@email2.microsoft.com> �
 
 將應用程式設定為直接向 Azure AD 進行驗證的組織，可受益於 [Azure AD 智慧鎖定](../authentication/concept-sspr-howitworks.md)。 如果您在 Windows Server 2012 R2 中使用 AD FS，請執行 AD FS 的 [外部網路鎖定保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果您使用 Windows Server 2016 或更新版本上的 AD FS，請執行 [外部網路智慧鎖定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 建議您至少啟用外部網路鎖定，以包含對內部部署 Active Directory 進行暴力密碼破解攻擊的風險。 但是，如果您已在 Windows 2016 或更高版本中 AD FS，您也應該啟用外部網路智慧鎖定，以協助降低 [密碼噴灑](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) 攻擊。
 
-如果 AD FS 只用于 Azure AD 同盟，則有一些端點可關閉，以將受攻擊面區域降至最低。 例如，如果 AD FS 只用于 Azure AD，您應該停用 WS-Trust 的端點，而不是啟用 **usernamemixed** 和 **windowstransport**的端點。
+如果 AD FS 只用于 Azure AD 同盟，則有一些端點可關閉，以將受攻擊面區域降至最低。 例如，如果 AD FS 只用于 Azure AD，您應該停用 WS-Trust 的端點，而不是啟用 **usernamemixed** 和 **windowstransport** 的端點。
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>使用內部部署身分識別元件存取機器
 

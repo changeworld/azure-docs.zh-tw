@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7ed1d4c49c46673f1a1c2b5cb08b2467490acae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 498b75a6541da97e57e23465ae6eb23a6c854727
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565112"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836949"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 中澳大利亞和紐西蘭客戶的身分識別資料儲存體
 
@@ -32,9 +32,9 @@ ms.locfileid: "89565112"
 
 所有其他 Azure AD 服務都會將客戶資料儲存在全球資料中心。 若要找出服務的資料中心，請參閱 [Azure Active Directory –您的資料位於何處？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure MFA) 的多重要素驗證 (
+## <a name="microsoft-azure-ad-multi-factor-authentication-mfa"></a>Microsoft Azure AD Multi-Factor Authentication (MFA) 
 
-MFA 會將身分識別客戶資料儲存在全球資料中心。 若要深入瞭解以雲端為基礎的 Azure MFA 和 Azure MFA 伺服器所收集和儲存的使用者資訊，請參閱 [Azure Multi-Factor Authentication 使用者資料收集](../authentication/concept-mfa-data-residency.md)。
+MFA 會將身分識別客戶資料儲存在全球資料中心。 若要深入瞭解雲端式 Azure AD MFA 和 Azure MFA 伺服器所收集和儲存的使用者資訊，請參閱 [Azure Multi-Factor Authentication 使用者資料收集](../authentication/concept-mfa-data-residency.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需前述任何特性和功能的詳細資訊，請參閱下列文章：

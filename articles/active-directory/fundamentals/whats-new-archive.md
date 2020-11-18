@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a703f6d32cb665bfada73ca833f51c94d83f8b97
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146155"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836592"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -189,7 +189,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 開發人員體驗
 
-這些 Api 是管理使用者驗證方法的主要工具。 現在您可以透過程式設計方式預先註冊及管理用於 MFA 和自助式密碼重設 (SSPR) 的驗證器。 這是 Azure MFA、SSPR 和 Microsoft Graph 空間中最常要求的功能之一。 我們在此 wave 中發行的新 Api，讓您能夠：
+這些 Api 是管理使用者驗證方法的主要工具。 現在您可以透過程式設計方式預先註冊及管理用於 MFA 和自助式密碼重設 (SSPR) 的驗證器。 這是 Azure AD MFA、SSPR 和 Microsoft Graph 空間中最常要求的功能之一。 我們在此 wave 中發行的新 Api，讓您能夠：
 
 - 讀取、新增、更新和移除使用者的驗證電話
 - 重設使用者的密碼
@@ -227,9 +227,9 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 存取控制
 
-**印表機系統管理員** ：具備此角色的使用者可以註冊印表機，並管理 Microsoft 通用列印解決方案中所有印表機設定的所有層面，包括通用列印連接器設定。 他們可以同意所有委派的列印權限要求。 印表機管理員也具有列印報告的權限。 
+**印表機系統管理員**：具備此角色的使用者可以註冊印表機，並管理 Microsoft 通用列印解決方案中所有印表機設定的所有層面，包括通用列印連接器設定。 他們可以同意所有委派的列印權限要求。 印表機管理員也具有列印報告的權限。 
 
-**印表機技術人員** ：具備此角色的使用者可以在 Microsoft 通用列印解決方案中登錄印表機及管理印表機狀態。 他們也可以讀取所有連接器資訊。 印表機技術人員無法進行的主要工作，是設定印表機和共用印表機的使用者權限。 [深入了解。](../roles/permissions-reference.md#printer-administrator)
+**印表機技術人員**：具備此角色的使用者可以在 Microsoft 通用列印解決方案中登錄印表機及管理印表機狀態。 他們也可以讀取所有連接器資訊。 印表機技術人員無法進行的主要工作，是設定印表機和共用印表機的使用者權限。 [深入了解。](../roles/permissions-reference.md#printer-administrator)
 
 ---
 
@@ -397,7 +397,7 @@ Azure Active Directory (Azure AD) 現在提供驗證動態群組規則的方法�
 **服務類別：** B2B  
 **產品功能：** B2B/B2C
  
-自 **2021 年3月31日起** ，Microsoft 將不再支援在 B2B 共同作業案例中建立非受控 Azure Active Directory (Azure AD) 帳戶和租使用者來兌換邀請。 為此，我們建議您選擇以電子郵件傳送單次 [密碼驗證](../external-identities/one-time-passcode.md)。
+自 **2021 年3月31日起**，Microsoft 將不再支援在 B2B 共同作業案例中建立非受控 Azure Active Directory (Azure AD) 帳戶和租使用者來兌換邀請。 為此，我們建議您選擇以電子郵件傳送單次 [密碼驗證](../external-identities/one-time-passcode.md)。
 
 ---
 
@@ -538,7 +538,7 @@ Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲�
 **服務類別：** 群組管理  
 **產品功能：** 共同作業
 
-為了提供更有彈性的方式，讓客戶建立最符合其需求的全目錄群組，我們已從 Azure 入口網站中的 [ **群組** 一般設定] 取代 [ **全目錄群組** ] 選項，  >  **General** 並提供 [動態群組檔](../enterprise-users/groups-dynamic-membership.md)的連結。 我們已改善檔以包含更多指示，讓系統管理員可以建立包含或排除來賓使用者的所有使用者群組。
+為了提供更有彈性的方式，讓客戶建立最符合其需求的全目錄群組，我們已從 Azure 入口網站中的 [**群組** 一般設定] 取代 [**全目錄群組**] 選項，  >  **General** 並提供 [動態群組檔](../enterprise-users/groups-dynamic-membership.md)的連結。 我們已改善檔以包含更多指示，讓系統管理員可以建立包含或排除來賓使用者的所有使用者群組。
 
 ---
 
@@ -787,9 +787,9 @@ Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲�
 
 我們建議所有開發人員使用下列指導方針測試其應用程式：
 
-- 將 [ **使用安全 Cookie** ] 設定的預設值設定為 **[是]** 。
+- 將 [ **使用安全 Cookie** ] 設定的預設值設定為 **[是]**。
 
-- 將 [ **SameSite** ] 屬性的預設值設定為 [ **無** ]。
+- 將 [ **SameSite** ] 屬性的預設值設定為 [ **無**]。
 
 - 新增 `SameSite` **安全** 的其他屬性。
 
@@ -1104,7 +1104,7 @@ Azure AD B2C 現在支援每月作用中使用者 (MAU) 計費。 MAU 計費以�
 
 **類型：** 已變更的功能 **服務類別：** 身分識別保護 **產品功能：** 身分識別安全性與保護
 
-在 Azure 入口網站，您現在可以從新的 [安全性] 功能表項目及 [搜尋] 列，存取所有可用的 Azure AD 安全性功能。 此外，新的 [安全性] 登陸頁面 (稱為 **安全性 - 使用者入門** ) 提供公開文件、安全性指引和部署指南的連結。
+在 Azure 入口網站，您現在可以從新的 [安全性] 功能表項目及 [搜尋] 列，存取所有可用的 Azure AD 安全性功能。 此外，新的 [安全性] 登陸頁面 (稱為 **安全性 - 使用者入門**) 提供公開文件、安全性指引和部署指南的連結。
 
 新的 [安全性] 功能表包含：
 
@@ -1159,7 +1159,7 @@ Azure AD B2C 現在支援每月作用中使用者 (MAU) 計費。 MAU 計費以�
 
 **類型：** 規劃變更 **服務類別：** 我的設定檔/帳戶 **產品功能：** 共同作業
 
-從 10 月開始，「我的設定檔」體驗變成「我的帳戶」。 由於這項變更，凡出現 **我的設定檔** 的地方都變成 **我的帳戶** 。 除了命名變更和一些設計改進，更新的體驗還與 Microsoft Office 帳戶頁面整合。 具體來說，您可以從 [概觀帳戶] 頁面存取 Office 安裝和訂用帳戶，還可以從 [隱私權] 頁面存取 Office 相關的連絡人喜好設定。
+從 10 月開始，「我的設定檔」體驗變成「我的帳戶」。 由於這項變更，凡出現 **我的設定檔** 的地方都變成 **我的帳戶**。 除了命名變更和一些設計改進，更新的體驗還與 Microsoft Office 帳戶頁面整合。 具體來說，您可以從 [概觀帳戶] 頁面存取 Office 安裝和訂用帳戶，還可以從 [隱私權] 頁面存取 Office 相關的連絡人喜好設定。
 
 如需有關「我的設定檔」 (預覽) 體驗的詳細資訊，請參閱[我的設定檔 (預覽) 入口網站概觀](../user-help/my-account-portal-overview.md)。
 
@@ -1271,7 +1271,7 @@ AzureADPreview 模組中加入新的 Cmdlet，以協助在 Azure AD 中定義和
 
 - 修正其他次要錯誤 (bug)。
 
-自 2019 年 7 月 1 日起，Microsoft 已停止為新的部署提供 MFA 伺服器。 需要多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 如需詳細資訊，請參閱[規劃雲端式 Azure Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md)。
+自 2019 年 7 月 1 日起，Microsoft 已停止為新的部署提供 MFA 伺服器。 需要多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。 如需詳細資訊，請參閱 [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md)。
 
 ---
 
@@ -1573,7 +1573,7 @@ Azure AD 客戶現在可以設定原則，以管理組織使用者和群組的 F
 
 **類型：** 新功能 **服務類別：** 自助式密碼重設 **產品功能：** 監視與報告
 
-新的「驗證方法使用情況深入解析」報告協助您了解 Azure Multi-Factor Authentication 和自助式密碼重設等功能在組織中如何註冊和使用，包括每項功能註冊的使用者數目、使用自助式密碼重設來重設密碼的頻率，以及使用何種方法來重設。
+新的驗證方法使用方式 & 深入解析報告，可協助您瞭解如何在您的組織中註冊和使用 Azure AD Multi-Factor Authentication 和自助式密碼重設等功能，包括每項功能的已註冊使用者數目、自助式密碼重設用來重設密碼的頻率，以及重設的方法。
 
 如需詳細資訊，請參閱[驗證方法使用情況深入解析 (預覽)](../authentication/howto-authentication-methods-usage-insights.md)。
 
@@ -1747,9 +1747,9 @@ Azure AD 的應用程式現在可以註冊並使用含有靜態查詢參數的�
 
 **類型：** 取代 **服務類別：** MFA **產品功能：** 身分識別安全性與保護
 
-自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 需要在組織中使用多重要素驗證的新客戶，現在必須使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟動 MFA 伺服器的客戶不會看到變化。 您仍然可以下載最新版本、取得未來的更新，以及產生啟用認證。
+自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 想要在組織中要求多重要素驗證的新客戶，現在必須使用雲端式 Azure AD Multi-Factor Authentication。 在 7 月 1 日前啟動 MFA 伺服器的客戶不會看到變化。 您仍然可以下載最新版本、取得未來的更新，以及產生啟用認證。
 
-如需詳細資訊，請參閱[開始使用 Azure Multi-Factor Authentication Server](../authentication/howto-mfaserver-deploy.md)。 如需雲端式 Azure Multi-Factor Authentication 的詳細資訊，請參閱[規劃雲端式 Azure Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md)。
+如需詳細資訊，請參閱[開始使用 Azure Multi-Factor Authentication Server](../authentication/howto-mfaserver-deploy.md)。 如需雲端式 Azure AD Multi-Factor Authentication 的詳細資訊，請參閱 [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md)。
 
 ---
 
@@ -1959,13 +1959,13 @@ Azure AD 權利管理 (現在公開預覽) 協助客戶委派存取套件的管�
 
 為了解決您對於 Azure AD 活動記錄視覺效果提出的意見反應，我們在 Log Analytics 中引進新的「深入解析」功能。 這項功能可協助您使用互動式範本 (稱為活頁簿)，以深入探索 Azure AD 資源。 這些預先建立的活頁簿可以提供應用程式或使用者的詳細資料，包括：
 
-- **登入** 。提供應用程式和使用者的詳細資料，包括登入位置、使用中的作業系統或瀏覽器用戶端和版本，以及成功或失敗登入次數。
+- **登入**。提供應用程式和使用者的詳細資料，包括登入位置、使用中的作業系統或瀏覽器用戶端和版本，以及成功或失敗登入次數。
 
-- **舊版驗證和條件式存取** 。 針對使用舊版驗證的應用程式和使用者，提供其詳細資料，包括條件式存取原則所觸發的 Microsoft Azure Multi-Factor Authentication 使用情況、使用條件式存取原則的應用程式等等。
+- **舊版驗證和條件式存取**。 針對使用舊版驗證的應用程式和使用者，提供其詳細資料，包括條件式存取原則所觸發的 Microsoft Azure Multi-Factor Authentication 使用情況、使用條件式存取原則的應用程式等等。
 
-- **登入失敗分析** 。 協助您判斷登入錯誤是起因於使用者動作、原則問題，還是基礎結構。
+- **登入失敗分析**。 協助您判斷登入錯誤是起因於使用者動作、原則問題，還是基礎結構。
 
-- **自訂報告** 。 您可以建立新的或編輯現有的活頁簿，以協助為組織自訂「深入解析」功能。
+- **自訂報告**。 您可以建立新的或編輯現有的活頁簿，以協助為組織自訂「深入解析」功能。
 
 如需詳細資訊，請參閱[如何使用 Azure 監視器活頁簿建立 Azure Active Directory 報告](../reports-monitoring/howto-use-azure-monitor-workbooks.md)。
 
@@ -1989,7 +1989,7 @@ Azure AD 權利管理 (現在公開預覽) 協助客戶委派存取套件的管�
 
 Azure AD 存取權檢閱有新的更新，可讓您：
 
-- 除了先前存在的每週、每月、每季和每年選項之外，還可將存取權檢閱的頻率變更為 **半年** 。
+- 除了先前存在的每週、每月、每季和每年選項之外，還可將存取權檢閱的頻率變更為 **半年**。
 
 - 在建立單一存取權檢閱時，選取多個 Azure AD 和 Azure 資源角色。 在此情況下，所有角色都使用相同的設定，而且所有檢閱者會同時接到通知。
 
@@ -2366,7 +2366,7 @@ Privileged Identity Management (PIM) 系統管理員現在可以針對特定資�
 >[!Important]
 >我們已收到訊息，且了解您對此修正並不滿意。 因此，我們已將這項變更還原到可讓您較易於在組織中實作修正的時間點。
 
-當 Active Directory Domain Services (AD DS) 物件從同步處理範圍排除，然後在接下來的同步週期內移至 Azure AD 的 [資源回收桶] 時，使用者的 DirSyncEnabled 旗標會錯誤地切換為 **False** ，我們已修正這項錯誤 (bug)。 由於此修正的結果，如果從同步處理範圍排除使用者，並在之後從 Azure AD 資源回收桶還原，使用者帳戶會如預期地保留與內部部署 AD 的同步，且無法從雲端管理，因為其授權來源 (SoA) 仍然是內部部署 AD。
+當 Active Directory Domain Services (AD DS) 物件從同步處理範圍排除，然後在接下來的同步週期內移至 Azure AD 的 [資源回收桶] 時，使用者的 DirSyncEnabled 旗標會錯誤地切換為 **False**，我們已修正這項錯誤 (bug)。 由於此修正的結果，如果從同步處理範圍排除使用者，並在之後從 Azure AD 資源回收桶還原，使用者帳戶會如預期地保留與內部部署 AD 的同步，且無法從雲端管理，因為其授權來源 (SoA) 仍然是內部部署 AD。
 
 在此修正之前，於 DirSyncEnabled 旗標切換為 False 時會發生問題。 這會給人錯誤的印象，認為這些帳戶已被轉換為僅限雲端物件，且該帳戶可在雲端中進行管理。 不過，帳戶仍然保留其 SoA 為內部部署，且所有已同步的屬性 (陰影屬性) 皆來自內部部署 AD。 這種情況會在 Azure AD 中造成多個問題，且其他雲端工作負載 (例如 Exchange Online) 預期將這些帳戶視為從 AD 進行同步處理，但現在行為卻類似僅雲端帳戶。
 
@@ -2376,7 +2376,7 @@ Privileged Identity Management (PIM) 系統管理員現在可以針對特定資�
 
 - **以分段方式完成大規模更新許多使用者的 ImmutableID**
 
-  例如，您需要執行冗長的 AD DS 內部樹系移轉。 解決方案：使用 Azure AD Connect 來 **設定來源錨點** ，然後在使用者遷移時，從 Azure AD 中將現有的 ImmutableID 值，複製到本機 AD DS 使用者在新樹系中的 ms-DS-Consistency-Guid 屬性。 如需詳細資訊，請參閱[使用 ms-DS-ConsistencyGuid 作為 sourceAnchor](../hybrid/plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。
+  例如，您需要執行冗長的 AD DS 內部樹系移轉。 解決方案：使用 Azure AD Connect 來 **設定來源錨點**，然後在使用者遷移時，從 Azure AD 中將現有的 ImmutableID 值，複製到本機 AD DS 使用者在新樹系中的 ms-DS-Consistency-Guid 屬性。 如需詳細資訊，請參閱[使用 ms-DS-ConsistencyGuid 作為 sourceAnchor](../hybrid/plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。
 
 - **一次完成大規模更新許多使用者的 ImmutableID**
 
@@ -2391,7 +2391,7 @@ Privileged Identity Management (PIM) 系統管理員現在可以針對特定資�
 我們目前透過 Azure 監視器發佈稽核和登入記錄資料流，因此您可以將記錄檔與 SIEM 工具或 Log Analytics完美整合。 根據您的意見反應，並準備此功能正式發行的宣佈，我們對結構描述進行下列變更。 這些結構描述變更及其相關文件更新將在 1 月的第一週進行。
 
 #### <a name="new-fields-in-the-audit-schema"></a>稽核結構描述中的新欄位
-我們正在新增新的 [操作類型] 欄位，以提供對資源執行的操作類型。 例如， **新增** 、 **更新** 或 **刪除** 。
+我們正在新增新的 [操作類型] 欄位，以提供對資源執行的操作類型。 例如，**新增**、**更新** 或 **刪除**。
 
 #### <a name="changed-fields-in-the-audit-schema"></a>稽核結構描述中變更的欄位
 稽核結構描述中的下列欄位會變更：
@@ -2399,7 +2399,7 @@ Privileged Identity Management (PIM) 系統管理員現在可以針對特定資�
 |欄位名稱|變更內容|舊值|新值|
 |----------|------------|----------|----------|
 |類別|這以前是 [服務名稱] 欄位。 現在是 [稽核類別] 欄位。 [服務名稱] 已重新命名為 [loggedByService] 欄位。|<ul><li>帳戶佈建</li><li>核心目錄</li><li>自助式密碼重設</li></ul>|<ul><li>使用者管理</li><li>群組管理</li><li>應用程式管理</li></ul>|
-|targetResources|包含最高層級的 **TargetResourceType** 。|&nbsp;|<ul><li>原則</li><li>App</li><li>User</li><li>群組</li></ul>|
+|targetResources|包含最高層級的 **TargetResourceType**。|&nbsp;|<ul><li>原則</li><li>App</li><li>User</li><li>群組</li></ul>|
 |loggedByService|提供產生稽核記錄之服務的名稱。|Null|<ul><li>帳戶佈建</li><li>核心目錄</li><li>自助式密碼重設</li></ul>|
 |結果|提供稽核記錄的結果。 在過去這是列舉的，但我們現在會顯示實際值。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>失敗</li></ul>|
 
@@ -3073,12 +3073,12 @@ Azure AD Connect 的最新版本包括：
 
 - **Mozilla Firefox**
 
-    1. 開啟 Firefox、在位址列輸入 *about:config* ，然後按 **Enter** 鍵。
-    2. 搜尋字詞 *TLS* ，然後選取 [security.tls.version.max] 項目。
+    1. 開啟 Firefox、在位址列輸入 *about:config*，然後按 **Enter** 鍵。
+    2. 搜尋字詞 *TLS*，然後選取 [security.tls.version.max] 項目。
     3. 將值設為 **3** 以強制瀏覽器使用最新版本 TLS 1.2，然後選取 [確定]。
 
         >[!NOTE]
-        >Firefox 60.0 版本支援 TLS 1.3，因此也可以將 security.tls.version.max 值設為 **4** 。
+        >Firefox 60.0 版本支援 TLS 1.3，因此也可以將 security.tls.version.max 值設為 **4**。
 
     4. 關閉所有瀏覽器視窗，並重新啟動 Mozilla Firefox。
 
@@ -3132,11 +3132,11 @@ Azure AD Connect 的最新版本包括：
 
 ---
 
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>關於部署 Azure Multi-Factor Authentication 的全新完整指導
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-ad-multi-factor-authentication"></a>部署 Azure AD Multi-Factor Authentication 的全新和完整指引
 
 **類型：** 新功能 **服務類別：** 其他 **產品功能：** 身分識別安全性與保護
 
-我們針對如何在組織中部署 Azure Multi-Factor Authentication (MFA) 推出了全新的逐步指導。
+我們已發行新的逐步指引，說明如何在您的組織中部署 Azure AD Multi-Factor Authentication (MFA) 。
 
 如需檢視 MFA 部署指南，請前往 GitHub 上的[識別部署指南](./active-directory-deployment-plans.md)存放庫。 如需提供有關部署指南的意見反應，請使用[部署方案意見反應單](https://aka.ms/deploymentplanfeedback)。 如果對於部署指南有任何疑問，請於 [IDGitDeploy](mailto:idgitdeploy@microsoft.com) 聯絡我們。
 
@@ -3172,7 +3172,7 @@ Azure AD Connect 的最新版本包括：
 
 **類型：** 規劃變更 **服務類別：** 驗證 (登入) **產品功能：** 平台
 
-Azure Active Directory (Azure AD) 等這類 SaaS 供應項目旨在設計為適合直接透過網際網路使用，而不需要 ExpressRoute 或任何其他私用 VPN 通道。 因為這個緣故，在 **2018 年 8 月 1 日** ，我們會對使用 Azure 公用對等互連和在 Microsoft 對等互連中使用 Azure 社群的 Azure AD 服務，停止支援 ExpressRoute。 受此變更影響的任何服務可能會注意到 Azure AD 流量逐漸從 ExpressRoute 移到網際網路。
+Azure Active Directory (Azure AD) 等這類 SaaS 供應項目旨在設計為適合直接透過網際網路使用，而不需要 ExpressRoute 或任何其他私用 VPN 通道。 因為這個緣故，在 **2018 年 8 月 1 日**，我們會對使用 Azure 公用對等互連和在 Microsoft 對等互連中使用 Azure 社群的 Azure AD 服務，停止支援 ExpressRoute。 受此變更影響的任何服務可能會注意到 Azure AD 流量逐漸從 ExpressRoute 移到網際網路。
 
 雖然即將變更支援，但我們也知道在有些狀況下，您仍需要對驗證流量使用一組特定線路。 因為這個緣故，Azure AD 將會繼續支援使用 ExpressRoute 的每個租用戶 IP 範圍限制，以及針對包含「其他 Office 365 線上服務」社群的 Microsoft 對等互連，支援其中已存在的服務。 如果服務會受到影響，但您需要 ExpressRoute，則必須執行下列作業：
 
@@ -3312,9 +3312,9 @@ Azure AD Premium P2 中現已正式提供群組和應用程式的存取權檢閱
 
 **類型：** 已變更的功能 **服務類別：** 驗證 (登入) **產品功能：** 使用者驗證
 
-在 2018 年 4 月 25 日當天或之後所建立的應用程式，將無法再使用 **query** response_mode 來要求 **id_token** 。  這會使 Azure AD 能與 OIDC 規格保持一致，協助減少您的應用程式受攻擊面。  在 2018/4/25 之前所建立的應用程式，可以使用 **query** response_mode 與 **id_token** 的 response_type。  從 Azure AD 要求 id_token 時傳回的錯誤是 **AADSTS70007：要求權杖時，' query ' 不是 ' response_mode ' 的支援值** 。
+在 2018 年 4 月 25 日當天或之後所建立的應用程式，將無法再使用 **query** response_mode 來要求 **id_token**。  這會使 Azure AD 能與 OIDC 規格保持一致，協助減少您的應用程式受攻擊面。  在 2018/4/25 之前所建立的應用程式，可以使用 **query** response_mode 與 **id_token** 的 response_type。  從 Azure AD 要求 id_token 時傳回的錯誤是 **AADSTS70007：要求權杖時，' query ' 不是 ' response_mode ' 的支援值**。
 
-在建立新應用程式物件時 (例如，應用程式 Proxy 使用方式)， **fragment** 與 **form_post** response_modes 會繼續生效，請務必在這些 response_modes 建立新應用程式前使用其中一個 response_modes。
+在建立新應用程式物件時 (例如，應用程式 Proxy 使用方式)，**fragment** 與 **form_post** response_modes 會繼續生效，請務必在這些 response_modes 建立新應用程式前使用其中一個 response_modes。
 
 ---
 
@@ -3684,7 +3684,7 @@ PowerShell GA 模組現在支援應用程式 Proxy Cmdlet！ 這需要您隨時�
 
 **類型：** 新功能 **服務類別：** 企業應用程式 **產品功能：** SSO
 
-您可以從企業應用程式 UI 設定 **EmployeeID** ，作為 SAML 登入應用程式中成員使用者和 B2B 來賓的使用者識別碼和使用者屬性。
+您可以從企業應用程式 UI 設定 **EmployeeID**，作為 SAML 登入應用程式中成員使用者和 B2B 來賓的使用者識別碼和使用者屬性。
 
 如需詳細資訊，請參閱[針對 Azure Active Directory 中的企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。
 
@@ -3899,7 +3899,7 @@ Azure 傳統入口網站中的 Azure AD 系統管理體驗自 2018 年 1 月 8 �
 
 PhoneFactor Web 入口網站自 2018 年 1 月 8 日起已淘汰。 此入口網站是用來進行 MFA 伺服器的系統管理，但這些功能已移至位於 portal.azure.com 的 Azure 入口網站。
 
-MFA 設定位於： **Azure Active Directory \> MFA 伺服器**
+MFA 設定位於：**Azure Active Directory \> MFA 伺服器**
 
 ---
 
@@ -4164,15 +4164,15 @@ Azure Active Directory 存取控制 (也稱為「存取控制」服務) 將於 2
 
 ---
 
-### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>適用於 Azure Multi-Factor Authentication 的網路原則伺服器擴充功能
+### <a name="network-policy-server-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication 的網路原則伺服器擴充功能
 
 **類型：** 新功能 **服務類別：** 多重要素驗證 **產品功能：** 使用者驗證
 
-適用於 Azure Multi-Factor Authentication 的「網路原則伺服器」擴充功能會藉由使用現有的伺服器，將雲端式 Multi-Factor Authentication 功能新增至您的驗證基礎結構。 有了「網路原則伺服器」擴充功能，您便可以在現有的驗證流程中新增通話、簡訊或電話應用程式驗證。 您無須安裝、設定及維護新的伺服器。
+Azure AD Multi-Factor Authentication 的網路原則伺服器擴充功能會使用現有的伺服器，將雲端式 Multi-Factor Authentication 功能新增至您的驗證基礎結構。 有了「網路原則伺服器」擴充功能，您便可以在現有的驗證流程中新增通話、簡訊或電話應用程式驗證。 您無須安裝、設定及維護新的伺服器。
 
-這個擴充功能是針對想要保護虛擬私人網路連線但又不想部署 Azure Multi-Factor Authentication Server 的組織所建立。 「網路原則伺服器」擴充功能會作為 RADIUS 與雲端式 Azure Multi-Factor Authentication 之間的配接器，可為同盟或同步的使用者提供第二驗證要素。
+這個擴充功能是針對想要保護虛擬私人網路連線但又不想部署 Azure Multi-Factor Authentication Server 的組織所建立。 網路原則伺服器擴充功能可做為 RADIUS 與雲端式 Azure AD Multi-Factor Authentication 之間的介面卡，以針對同盟或已同步處理的使用者提供第二個驗證因素。
 
-如需詳細資訊，請參閱[將現有的網路原則伺服器基礎結構與 Azure Multi-Factor Authentication 整合](../authentication/howto-mfa-nps-extension.md)。
+如需詳細資訊，請參閱 [整合現有的網路原則伺服器基礎結構與 Azure AD Multi-Factor Authentication](../authentication/howto-mfa-nps-extension.md)。
 
 ---
 

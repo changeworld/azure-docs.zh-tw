@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266777"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837102"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 裝置管理常見問題集
 
@@ -25,9 +25,9 @@ ms.locfileid: "89266777"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>問：我最近註冊了裝置。 為什麼我在 Azure 入口網站中看不到 [我的使用者資訊] 下的裝置？ 或為什麼就已加入混合式 Azure Active Directory (Azure AD) 的裝置而言，裝置擁有者被標示為 N/A？
 
 **答：** 加入混合式 Azure AD 的 Windows 10 裝置不會顯示在 [ **使用者裝置**] 底下。
-請使用 Azure 入口網站中的 [所有裝置]**** 檢視。 您也可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet。
+請使用 Azure 入口網站中的 [所有裝置] 檢視。 您也可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet。
 
-只有下列裝置會列在 [使用者裝置]**** 底下：
+只有下列裝置會列在 [使用者裝置] 底下：
 
 - 所有未加入混合式 Azure AD 的個人裝置。 
 - 所有非 Windows 10 或 Windows Server 2016 裝置。
@@ -51,13 +51,13 @@ ms.locfileid: "89266777"
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>問：我在 Azure 入口網站的 [使用者資訊] 底下看到裝置記錄。 並且看到該裝置上的狀態為已註冊。 我是否已正確設定為使用條件式存取？
 
-**答：****DeviceID**所顯示的裝置加入狀態必須符合 Azure AD 上的狀態，並符合條件式存取的任何評估準則。 如需詳細資訊，請參閱 [使用條件式存取要求受管理的裝置進行雲端應用程式存取](../conditional-access/require-managed-devices.md)。
+**答：****DeviceID** 所顯示的裝置加入狀態必須符合 Azure AD 上的狀態，並符合條件式存取的任何評估準則。 如需詳細資訊，請參閱 [使用條件式存取要求受管理的裝置進行雲端應用程式存取](../conditional-access/require-managed-devices.md)。
 
 ---
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>問：為什麼我的使用者在其 Windows 10 裝置上看到指出「您的組織已刪除裝置」或「您的組織已停用裝置」的錯誤訊息？
 
-**答：** 在 Windows 10 裝置加入或向 Azure AD 註冊時，系統會將 [主要重新整理權杖發行 (PRT) ](concept-primary-refresh-token.md) ，以啟用單一登入。 PRT 的有效性取決於裝置本身的有效性。 如果裝置在 Azure AD 中遭到刪除或停用，而不是從裝置本身起始動作，則使用者會看到此訊息。 您可以在下列其中一個案例中刪除或停用裝置 Azure AD： 
+**答：** 在 Windows 10 裝置加入或向 Azure AD 註冊時，系統會將 [主要重新整理權杖發行 (PRT)](concept-primary-refresh-token.md) ，以啟用單一登入。 PRT 的有效性取決於裝置本身的有效性。 如果裝置在 Azure AD 中遭到刪除或停用，而不是從裝置本身起始動作，則使用者會看到此訊息。 您可以在下列其中一個案例中刪除或停用裝置 Azure AD： 
 
 - 使用者會在我的應用程式入口網站中停用裝置。 
 - 系統管理員 (或使用者) 刪除或停用 Azure 入口網站中的裝置，或使用 PowerShell
@@ -111,7 +111,7 @@ ms.locfileid: "89266777"
 **的**
 
 - 就 Windows 10 和 Windows Server 2016 而言，如果重複嘗試將同一個裝置取消加入再重新加入，就可能導致產生重複的項目。 
-- 每個使用 [新增工作或學校帳戶]**** 的 Windows 使用者都會以相同的裝置名稱建立一個新裝置記錄。
+- 每個使用 [新增工作或學校帳戶] 的 Windows 使用者都會以相同的裝置名稱建立一個新裝置記錄。
 - 針對已加入內部部署 Active Directory 網域的舊版 Windows OS 版本，自動註冊會為每個登入裝置的網域使用者，以相同的裝置名稱建立一個新裝置記錄。 
 - 已加入 Azure AD 的機器如果經過抹除、重新安裝，然後再以相同名稱重新加入，就會顯示成另一個具有相同裝置名稱的記錄。
 
@@ -148,7 +148,7 @@ ms.locfileid: "89266777"
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>問：如何? 在裝置上本機退出已加入 Azure AD 的裝置？
 
-**答：** 針對純 Azure AD 聯結的裝置，請確定您有離線的本機系統管理員帳戶，或建立一個帳戶。 您無法使用任何 Azure AD 使用者認證來登入。 接下來，移至 [**設定**  >  **帳戶**  >  **存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]****。 遵循提示，然後在系統提示您時提供本機系統管理員認證。 重新啟動裝置以完成退出程序。
+**答：** 針對純 Azure AD 聯結的裝置，請確定您有離線的本機系統管理員帳戶，或建立一個帳戶。 您無法使用任何 Azure AD 使用者認證來登入。 接下來，移至 [**設定**  >  **帳戶**  >  **存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]。 遵循提示，然後在系統提示您時提供本機系統管理員認證。 重新啟動裝置以完成退出程序。
 
 ---
 
@@ -198,7 +198,7 @@ Windows 10 2004 update 支援 UPN 變更。 具有此更新之裝置上的使用
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>問：為什麼我的使用者不會在已加入 Azure AD 的裝置上取得 Azure Multi-Factor Authentication 提示？
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>問：為什麼我的使用者在 Azure AD 加入的裝置上不會收到 Azure AD 的 Multi-Factor Authentication 提示？
 
 **答：** 使用者可能使用 Multi-Factor Authentication，加入或註冊 Azure AD 的裝置。 如此一來，裝置本身就會變成該使用者的第二受信任要素。 每當同一個使用者登入裝置並存取應用程式時，Azure AD 都會將該裝置視為第二個要素。 它可讓該使用者順暢地存取應用程式，而不會出現額外的 Multi-Factor Authentication 提示。 
 
@@ -259,7 +259,7 @@ Windows 10 2004 update 支援 UPN 變更。 具有此更新之裝置上的使用
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>問：為什麼我在 Azure AD 裝置清單中看到 Windows 10 混合式 Azure AD 加入裝置的重複 Azure AD 註冊記錄？
 
-**答：** 當使用者在已加入網域的裝置上將其帳戶新增至應用程式時，系統可能會提示您新增 **帳戶至 Windows？** 如果他們在出現提示時輸入**是**，裝置就會向 Azure AD 註冊。 信任類型會標示為 [Azure AD 已註冊]。 在您於組織中啟用混合式 Azure AD Join 之後，裝置也會加入混合式 Azure AD。 如此一來，針對同一個裝置就會顯示兩個裝置狀態。 
+**答：** 當使用者在已加入網域的裝置上將其帳戶新增至應用程式時，系統可能會提示您新增 **帳戶至 Windows？** 如果他們在出現提示時輸入 **是**，裝置就會向 Azure AD 註冊。 信任類型會標示為 [Azure AD 已註冊]。 在您於組織中啟用混合式 Azure AD Join 之後，裝置也會加入混合式 Azure AD。 如此一來，針對同一個裝置就會顯示兩個裝置狀態。 
 
 混合式 Azure AD Join 的優先順序會高於 Azure AD 已註冊狀態。 因此，您的裝置會被視為混合式 Azure AD 聯結以進行任何驗證和條件式存取評估。 您可以從 Azure AD 入口網站中放心地刪除 Azure AD 已註冊裝置記錄。 了解如何[在 Windows 10 機器上避免或清除此雙重狀態](hybrid-azuread-join-plan.md#review-things-you-should-know)。 
 
@@ -290,8 +290,8 @@ Windows 10 2004 update 支援 UPN 變更。 具有此更新之裝置上的使用
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>問：如何? 在本機移除裝置的 Azure AD 註冊狀態？
 
 **的** 
-- 針對 Windows 10 Azure AD 已註冊的裝置，請移至 [**設定**  >  **帳戶**  >  **存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]****。 裝置註冊是 Windows 10 上的每個使用者設定檔。
-- 針對 iOS 和 Android，您可以使用 Microsoft Authenticator 應用程式**設定**  >  **裝置註冊**，然後選取 [**取消註冊裝置**]。
+- 針對 Windows 10 Azure AD 已註冊的裝置，請移至 [**設定**  >  **帳戶**  >  **存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]。 裝置註冊是 Windows 10 上的每個使用者設定檔。
+- 針對 iOS 和 Android，您可以使用 Microsoft Authenticator 應用程式 **設定**  >  **裝置註冊**，然後選取 [**取消註冊裝置**]。
 - 針對 macOS，您可以使用 Microsoft Intune 公司入口網站應用程式將裝置取消註冊管理，並移除任何註冊。 
 
 ---

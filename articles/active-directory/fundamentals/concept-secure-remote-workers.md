@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370197"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836677"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速回應安全身分識別
 
@@ -75,7 +75,7 @@ ms.locfileid: "92370197"
 
 | 建議的動作 | 詳細資料 |
 | --- | --- |
-| [啟用 Azure MFA 和 SSPR 的綜合註冊體驗，以簡化使用者註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md) | 可讓使用者在單一常見體驗中註冊 Azure Multi-Factor Authentication 和自助密碼重設。 |
+| [啟用 Azure AD MFA 和 SSPR 的綜合註冊體驗，以簡化使用者註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md) | 允許您的使用者在 Azure AD Multi-Factor Authentication 和自助式密碼重設的一個常見體驗中進行註冊。 |
 | [為您的組織設定 MFA 設定](../authentication/howto-mfa-getstarted.md) | 確保帳戶受到保護，不會受到多重要素驗證的危害 |
 | [啟用自助式密碼重設](../authentication/tutorial-enable-sspr.md) | 當使用者無法登入其裝置或應用程式時，這項功能可減少技術支援中心的來電和喪失生產力 |
 | 如果使用混合式身分識別，請[執行密碼回寫](../authentication/tutorial-enable-sspr-writeback.md) ()  | 可讓雲端中的密碼變更回寫至內部部署 Windows Server Active Directory 環境。 |
@@ -105,11 +105,11 @@ ms.locfileid: "92370197"
 
 | 建議的動作 | 詳細資料 |
 | --- | --- |
-| [啟用 Azure MFA 和 SSPR 的綜合註冊體驗，以簡化使用者註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md) | 可讓使用者在單一常見體驗中註冊 Azure Multi-Factor Authentication 和自助密碼重設。 |
+| [啟用 Azure AD MFA 和 SSPR 的綜合註冊體驗，以簡化使用者註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md) | 允許您的使用者在 Azure AD Multi-Factor Authentication 和自助式密碼重設的一個常見體驗中進行註冊。 |
 | [為您的組織設定 MFA 設定](../authentication/howto-mfa-getstarted.md) | 確保帳戶受到保護，不會受到多重要素驗證的危害 |
 | [啟用自助式密碼重設](../authentication/tutorial-enable-sspr.md) | 當使用者無法登入其裝置或應用程式時，這項功能可減少技術支援中心的來電和喪失生產力 |
 | 如果使用混合式身分識別，請[執行密碼回寫](../authentication/tutorial-enable-sspr-writeback.md) ()  | 可讓雲端中的密碼變更回寫至內部部署 Windows Server Active Directory 環境。 |
-| [啟用 Identity Protection 原則以強制執行 MFA 註冊](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | 管理 Azure Multi-Factor Authentication (MFA) 的推出。 |
+| [啟用 Identity Protection 原則以強制執行 MFA 註冊](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | 管理 Azure AD Multi-Factor Authentication (MFA) 的推出。 |
 | [啟用 Identity Protection 使用者和登入風險原則](../identity-protection/howto-identity-protection-configure-risk-policies.md) | 啟用 Identity Protection 使用者和登入原則。 建議的登入原則是以中度風險登入為目標，且需要 MFA。 針對使用者原則，其應鎖定需要密碼變更動作的高風險使用者。 |
 | 建立和啟用條件式存取原則 | [MFA 可讓系統管理員保護已獲指派系統管理許可權的帳戶。](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [封鎖舊版驗證通訊協定，因為與舊版驗證通訊協定相關聯的風險增加。](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [需要 Azure 管理的 MFA，藉由對任何存取 Azure 資源的使用者要求多重要素驗證，來保護您的特殊許可權資源。](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | 如果使用混合式身分識別[，請啟用密碼雜湊同步](../hybrid/how-to-connect-password-hash-synchronization.md)處理 ()  | 提供驗證的冗余和改進安全性 (包括智慧型鎖定、IP 鎖定，以及探索洩漏認證的能力。 )  |

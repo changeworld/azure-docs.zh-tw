@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cb1e021049b7c36c4c23f2e9a6a7512fba1110
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 71726724e7c018f34b1175f323d0c8e55b604931
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146124"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836473"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -457,7 +457,7 @@ Azure AD 權利管理中新增了新的「存取套件指派管理員」角色�
 **服務類別：** Privileged Identity Management  
 **產品功能：** Privileged Identity Management
  
-先前，上線至 Privileged Identity Management (PIM) 要求使用者同意，並在 PIM 的分頁中加入 Azure MFA 中包含註冊的上架流程。 在最近將 PIM 體驗整合到 Azure AD 角色和系統管理員] 分頁中，我們將會移除此體驗。 任何具有有效 P2 授權的租使用者都將自動上線至 PIM。
+先前，上線至 Privileged Identity Management (PIM) 必要的使用者同意，以及 PIM 內含在 Azure AD MFA 中註冊的 blade 分頁中的上架流程。 在最近將 PIM 體驗整合到 Azure AD 角色和系統管理員] 分頁中，我們將會移除此體驗。 任何具有有效 P2 授權的租使用者都將自動上線至 PIM。
 
 上架至 PIM 沒有任何對您租使用者的直接負面影響。 您可以預期下列變更：
 - 當您在 PIM 或 Azure AD 角色和系統管理員] 分頁中進行指派時，其他指派選項，例如 [作用中] 和 [符合資格的開始和結束時間]。 

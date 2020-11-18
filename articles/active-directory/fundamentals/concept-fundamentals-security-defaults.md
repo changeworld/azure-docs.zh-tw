@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705328"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836762"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
 管理安全性可能很難處理常見的身分識別相關攻擊，例如密碼噴灑、重新執行，以及網路釣魚變得越來越普及。 安全性預設值可供使用預先設定的設安全性定，輕鬆地保護組織免於遭受這些攻擊：
 
-- 要求所有使用者註冊 Azure Multi-Factor Authentication。
+- 要求所有使用者註冊 Azure AD Multi-Factor Authentication。
 - 要求系統管理員執行多重要素驗證。
 - 封鎖舊版驗證通訊協定。
 - 要求使用者在必要時執行多重要素驗證。
@@ -52,13 +52,13 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 
 ### <a name="unified-multi-factor-authentication-registration"></a>統一的 Multi-Factor Authentication 註冊
 
-您租用戶中所有使用者都必須以 Azure Multi-Factor Authentication 的形式註冊多重要素驗證 (MFA)。 使用者有 14 天的時間可使用 Microsoft Authenticator 應用程式來註冊 Azure Multi-Factor Authentication。 經過 14 天之後，使用者將無法登入，直到註冊完成為止。 使用者在啟用安全性預設值之後的第一次成功互動式登入後，為期 14 天的期間便會開始。
+您租使用者中的所有使用者都必須以 Azure AD Multi-Factor Authentication 形式註冊 (MFA) 的多重要素驗證。 使用者有14天的時間，可使用 Microsoft Authenticator 應用程式註冊 Azure AD Multi-Factor Authentication。 經過 14 天之後，使用者將無法登入，直到註冊完成為止。 使用者在啟用安全性預設值之後的第一次成功互動式登入後，為期 14 天的期間便會開始。
 
 ### <a name="protecting-administrators"></a>保護系統管理員
 
 具有特殊權限存取權的使用者已提高對環境的存取權。 這些帳戶具有強大權力，您應特別小心處理。 改善特殊權限帳戶保護的常見方法之一，就是登入時要求更強大的帳戶驗證形式。 在 Azure AD 中，藉由要求多重要素驗證即可取得比較強大的帳戶驗證。
 
-向 Azure Multi-Factor Authentication 註冊完成後，下列九個 Azure AD 系統管理員角色將需要在每次登入時執行額外的驗證：
+使用 Azure AD Multi-Factor Authentication 註冊完成後，每次登入時都需要下列九個 Azure AD 系統管理員角色來執行額外的驗證：
 
 - 全域管理員
 - SharePoint 管理員
@@ -120,7 +120,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 
 ### <a name="authentication-methods"></a>驗證方法
 
-這些免費的安全性預設值允許註冊和使用 Azure Multi-Factor Authentication，且**只使用利用通知的 Microsoft Authenticator 應用程式**。 條件式存取允許使用系統管理員選擇啟用的任何驗證方法。
+這些免費的安全性預設值允許註冊和使用 Azure AD Multi-Factor Authentication **只使用 Microsoft Authenticator 應用程式來使用通知**。 條件式存取允許使用系統管理員選擇啟用的任何驗證方法。
 
 | 方法 | 安全性預設值 | 條件式存取 |
 | --- | --- | --- |
@@ -128,14 +128,14 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 | 來自行動應用程式或硬體 Token 的驗證碼 | X** | X |
 | 電話簡訊 |   | X |
 | 電話通話 |   | X |
-| 應用程式密碼 |   | X*** |
+| 應用程式密碼 |   | X * * _ |
 
-- ** 使用者可使用來自 Microsoft Authenticator 應用程式的驗證碼，但只能使用通知選項進行註冊。
-- *** 只有在系統管理員啟用時，應用程式密碼才能用於傳統驗證案例的每一使用者 MFA。
+- _ * 使用者可使用 Microsoft Authenticator 應用程式的驗證碼，但只能使用通知選項進行註冊。
+- * * _ 只有在系統管理員啟用的情況下，應用程式密碼才可在具有舊版驗證案例的每一使用者 MFA 中使用。
 
 ### <a name="disabled-mfa-status"></a>已停用 MFA 狀態
 
-如果組織先前是使用以使用者為基礎的 Azure Multi-Factor Authentication，則在查看 [多重要素驗證] 頁面時，如果沒有看到 [已啟用] 或 [已強制] 狀態的使用者，請勿驚慌。 [已停用] 狀態適合的使用者，是使用安全性預設值或以條件式存取為基礎的 Azure Multi-Factor Authentication 使用者。
+如果您的組織是以每位使用者為基礎之 Azure AD Multi-Factor Authentication 的先前使用者，如果您查看 [多重要素驗證狀態] 頁面，就不會在 [*已啟用*] 或 [ **強制執行** ] 狀態中看到使用者。 針對使用安全性預設值或以 Azure AD Multi-Factor Authentication 為基礎的條件式存取的使用者，**停用** 的是適當的狀態。
 
 ### <a name="conditional-access"></a>條件式存取
 
@@ -149,7 +149,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 - [要求 Azure 管理時使用 MFA](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [封鎖舊式驗證](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [要求所有使用者使用 MFA](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [要求 Azure MFA 註冊](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - 要求 Azure AD Premium P2 的 Azure AD Identity Protection 部分。
+- [需要 AZURE AD MFA 註冊](../identity-protection/howto-identity-protection-configure-mfa-policy.md) -必須 Azure AD Identity Protection Azure AD Premium P2 的一部分。
 
 ## <a name="enabling-security-defaults"></a>啟用安全性預設值
 

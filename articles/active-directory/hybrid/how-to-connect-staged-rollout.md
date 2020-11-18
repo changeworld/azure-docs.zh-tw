@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646571"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836388"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
-分段推出可讓您選擇性地測試具有雲端驗證功能的使用者群組，例如 Azure Multi-Factor Authentication (MFA) 、條件式存取、洩漏認證的身分識別保護、身分識別控管等，然後再移至您的網域。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
+分段推出可讓您選擇性地測試具有雲端驗證功能的使用者群組，例如 Azure AD Multi-Factor Authentication (MFA) 、條件式存取、洩漏認證的身分識別保護、身分識別控管等，然後再移至您的網域。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
     
 -  您目前正在使用內部部署 Multi-Factor Authentication 伺服器。 
 -  您正在使用智慧卡進行驗證。 
@@ -45,7 +45,7 @@ ms.locfileid: "94646571"
 
 -   針對正在移轉至雲端驗證的使用者，您已為其設定了所需的所有適當租用戶商標和條件式存取原則。
 
--   如果您打算使用 Azure Multi-Factor Authentication，我們建議您 [針對自助式密碼重設 (SSPR) 和 Multi-Factor Authentication 使用合併的註冊](../authentication/concept-registration-mfa-sspr-combined.md) ，讓您的使用者可以註冊其驗證方法一次。 注意-當您在分段推出時使用 SSPR 來重設密碼或使用 MyProfile 頁面來變更密碼時，Azure AD Connect 需要同步處理新的密碼雜湊，在重設之後可能需要最多2分鐘的時間。
+-   如果您打算使用 Azure AD Multi-Factor Authentication，建議您 [針對自助式密碼重設 (SSPR) 和 Multi-Factor Authentication 使用合併的註冊](../authentication/concept-registration-mfa-sspr-combined.md) ，讓您的使用者一次註冊驗證方法。 注意-當您在分段推出時使用 SSPR 來重設密碼或使用 MyProfile 頁面來變更密碼時，Azure AD Connect 需要同步處理新的密碼雜湊，在重設之後可能需要最多2分鐘的時間。
 
 -   若要使用分段推出功能，則您必須是租用戶的全域管理員。
 

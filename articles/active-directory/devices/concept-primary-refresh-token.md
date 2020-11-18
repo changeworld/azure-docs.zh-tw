@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965908"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837258"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什麼是主要重新整理權杖？
 
@@ -57,7 +57,7 @@ PRT 是從 Azure AD 傳送的不透明 Blob，任何用戶端元件都不會知�
 
 在兩種情況下，Windows 10 裝置上的使用者驗證期間會發出 PRT：
 
-* **已加入 Azure AD** 或**已加入混合式 Azure AD**：當使用者以其組織認證登入時，PRT 會在執行 Windows 登入期間發出。 PRT 會以所有 Windows 10 支援的認證 (例如，密碼和 Windows Hello 企業版) 來發出。 在此案例中，Azure AD CloudAP 外掛程式是 PRT 的主要授權單位。
+* **已加入 Azure AD** 或 **已加入混合式 Azure AD**：當使用者以其組織認證登入時，PRT 會在執行 Windows 登入期間發出。 PRT 會以所有 Windows 10 支援的認證 (例如，密碼和 Windows Hello 企業版) 來發出。 在此案例中，Azure AD CloudAP 外掛程式是 PRT 的主要授權單位。
 * **已註冊 Azure AD 的裝置**：PRT 會在使用者將次要公司帳戶新增至其 Windows 10 裝置時發出。 使用者可以透過兩種不同的方式，將帳戶新增至 Windows 10 -  
    * 在登入應用程式 (例如 Outlook) 之後，透過 [在此裝置上的任何位置使用此帳戶] 提示，來新增帳戶
    * 從 [設定] > [帳戶] > [存取公司或學校帳戶] > [連線] 中新增帳戶
@@ -85,7 +85,7 @@ PRT 會以兩種不同的方法進行更新：
 * **Azure AD CloudAP 外掛程式 (每隔 4 小時)** ：在 Windows 登入期間，CloudAP 外掛程式會每隔 4 小時更新 PRT。 如果使用者在這段時間內沒有網際網路連線，則 CloudAP 外掛程式會在裝置連線到網際網路之後更新 PRT。
 * **Azure AD WAM 外掛程式 (在應用程式權杖要求期間)** ：WAM 外掛程式會藉由啟用應用程式的無訊息權杖要求，在 Windows 10 裝置上啟用 SSO。 WAM 外掛程式可以透過兩種不同的方式，在這些權杖要求期間更新 PRT：
    * 應用程式以無訊息方式向 WAM 要求存取權杖，但該應用程式沒有可用的重新整理權杖。 在此情況下，WAM 會使用 PRT 來要求應用程式的權杖，並在回應中取得新的 PRT。
-   * 應用程式向 WAM要求存取權杖，但 PRT 無效或 Azure AD 需要額外的授權 (例如，Azure Multi-Factor Authentication)。 在此情況下，WAM 會起始需要使用者進行重新驗證或提供額外驗證的互動式登入，而新的 PRT 會在成功驗證時發出。
+   * 應用程式要求存取權杖的 WAM，但 PRT 無效或 Azure AD 需要額外的授權 (例如 Azure AD Multi-Factor Authentication) 。 在此情況下，WAM 會起始需要使用者進行重新驗證或提供額外驗證的互動式登入，而新的 PRT 會在成功驗證時發出。
 
 在 ADFS 環境中，不需要對網域控制站進行直接連線，就能更新 PRT。 PRT 更新只需要使用 WS-Trust 通訊協定在 proxy 上啟用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 端點。
 
@@ -122,7 +122,7 @@ PRT 可以在特定案例中取得多重要素驗證 (MFA) 宣告。 使用 MFA 
 * **WAM 互動式登入期間的 MFA**：在透過 WAM 進行權杖要求的期間，如果使用者必須執行 MFA 來存取應用程式，則在此互動期間更新的 PRT 就會嵌入 MFA 宣告。
    * 在此情況下，MFA 宣告不會持續更新，因此 MFA 持續時間是以目錄上設定的存留期為依據。
    * 當先前存在的 PRT 和 RT 用來存取應用程式時，PRT 和 RT 將被視為第一個驗證證明。 新的 AT 將會需要第二個證明和已嵌入的 MFA 宣告。 這也會發出新的 PRT 和 RT。
-* **裝置註冊期間的 MFA**：在 Azure AD 中，如果系統管理員已將其裝置設定為[需要 MFA 才能註冊裝置](device-management-azure-portal.md#configure-device-settings)，則使用者必須執行 MFA 才能完成註冊。 在此過程中，向使用者發出的 PRT 會在註冊期間取得 MFA 宣告。 這項功能僅適用於執行加入作業的使用者，而不會套用至其他登入該裝置的使用者。
+* **裝置註冊期間的 MFA**：在 Azure AD 中，如果系統管理員已將其裝置設定為 [需要 MFA 才能註冊裝置](device-management-azure-portal.md#configure-device-settings)，則使用者必須執行 MFA 才能完成註冊。 在此過程中，向使用者發出的 PRT 會在註冊期間取得 MFA 宣告。 這項功能僅適用於執行加入作業的使用者，而不會套用至其他登入該裝置的使用者。
    * 類似於 WAM 互動式登入，MFA 宣告不會持續更新，因此 MFA 持續時間是以目錄上設定的存留期為依據。
 
 Windows 10 會針對每個認證維護一個 PRT 的資料分割清單。 因此，每個 Windows Hello 企業版、密碼或智慧卡都會有 PRT。 此資料分割可確保 MFA 宣告會根據所使用的認證加以隔離，而不會在權杖要求期間混在一起。

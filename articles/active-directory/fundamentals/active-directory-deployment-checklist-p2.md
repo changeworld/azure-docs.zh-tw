@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077960"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836915"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "93077960"
 
 此外，客戶可以檢查其[身分識別安全分數](identity-secure-score.md)，以了解他們符合 Microsoft 最佳做法的程度。 在實作這些建議前後檢查您的安全分數，以了解相較於您產業中的其他人和規模與您相同的其他組織，您的表現如何。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本指南中的許多建議都可以使用 Azure AD Free 或完全沒有授權的方式來執行。 若需要授權，我們會陳述至少需要哪一個授權才能完成工作。
 
@@ -41,7 +41,7 @@ ms.locfileid: "93077960"
 
 在這個階段，系統管理員會啟用基準安全性功能，以在我們匯入或建立一般使用者帳戶之前，在 Azure AD 中建立更安全且容易使用的基礎。 此基本階段可確保您一開始就處於更安全的狀態，而且只需要向一般使用者介紹新概念一次。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [指定超過一個全域管理員](../roles/security-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 | Azure AD Free |
 | [可能的話，請使用非全域系統管理角色](../roles/permissions-reference.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 | Azure AD Free |
@@ -57,13 +57,13 @@ ms.locfileid: "93077960"
 | [使用條件式存取原則部署 Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md) | 要求使用者在使用條件式存取原則存取機密應用程式時，執行雙步驟驗證。 | Azure AD Premium P1 |
 | [啟用 Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) | 能夠追蹤有風險的登入以及貴組織中使用者遭入侵的認證。 | Azure AD Premium P2 |
 | [使用風險偵測來觸發多重要素驗證和密碼變更](../authentication/tutorial-risk-based-sspr-mfa.md) | 啟用可觸發以下事件的自動化功能：例如多重要素驗證、密碼重設，以及根據風險封鎖登入。 | Azure AD Premium P2 |
-| [啟用自助密碼重設和 Azure AD 的合併註冊 Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | 可讓使用者在單一常見體驗中註冊 Azure Multi-Factor Authentication 和自助密碼重設。 | Azure AD Premium P1 |
+| [啟用自助密碼重設和 Azure AD 的合併註冊 Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | 允許您的使用者在 Azure AD Multi-Factor Authentication 和自助式密碼重設的一個常見體驗中進行註冊。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>第2階段：匯入使用者、啟用同步處理，以及管理裝置
 
 接著，我們會匯入使用者，以及啟用同步處理、規劃來賓存取及準備支援額外功能，藉此擴建增階段 1 所設置的基礎。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [安裝 Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md) | 準備讓使用者從現有的內部部署目錄同步至雲端。 | Azure AD Free |
 | [實作密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md) | 同步密碼雜湊，以允許複寫變更密碼、偵測和補救不正確的密碼，以及回報外洩的認證。 | Azure AD Free |
@@ -79,7 +79,7 @@ ms.locfileid: "93077960"
 
 當我們繼續以先前的階段為根基，我們會找出可供移轉以及與 Azure AD 整合的候選應用程式，並完成這些應用程式的設定。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | 識別您的應用程式 | 識別貴組織中使用的應用程式：內部部署應用程式、雲端中的 SaaS 應用程式，以及其他企業營運應用程式。 判斷這些應用程式是否可以且應該透過 Azure AD 管理。 | 不需要授權 |
 | [整合資源庫中支援的 SaaS 應用程式](../manage-apps/add-application-portal.md) | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的某些應用程式可能就在可從 Azure 入口網站直接存取的資源庫中。 | Azure AD Free |
@@ -89,7 +89,7 @@ ms.locfileid: "93077960"
 
 階段 4 可看見系統管理員強制執行系統管理的最低權限準則、完成其第一次存取權檢閱，以及讓一般使用者生命週期工作自動化。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [強制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 從一般日常使用者帳戶中移除系統管理角色。 在成功執行多重要素驗證檢查、提供業務理由，或是向指定的核准者要求核准之後，讓系統管理使用者有資格使用其角色。 | Azure AD Premium P2 |
 | [在 PIM 中完成 Azure AD 目錄角色的存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md) | 與您的安全性和領導小組合作，一起建立存取權檢閱原則，以根據貴組織原則來檢閱系統管理存取權。 | Azure AD Premium P2 |

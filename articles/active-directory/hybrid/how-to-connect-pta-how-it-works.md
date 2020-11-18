@@ -16,12 +16,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358322"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836354"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 傳遞驗證：技術深入探討
 本文概述 Azure Active Directory (Azure AD)傳遞驗證的運作方式。 如需深入的技術和安全性資訊，請參閱 [安全性深入探討](how-to-connect-pta-security-deep-dive.md) 文章。
@@ -34,16 +34,16 @@ ms.locfileid: "85358322"
 當使用者嘗試登入 Azure AD 所保護的應用程式，並且在租用戶上啟用傳遞驗證，則會執行下列步驟：
 
 1. 使用者嘗試存取應用程式，例如 [Outlook Web App](https://outlook.office365.com/owa/)。
-2. 如果使用者尚未登入，則會將使用者重新導向 Azure AD [使用者登入]**** 頁面。
-3. 使用者將其使用者名稱輸入 [Azure AD 登入] 頁面中，然後選取 [下一步]**** 按鈕。
-4. 使用者將其密碼輸入 [Azure AD 登入] 頁面中，然後選取 [登入]**** 按鈕。
+2. 如果使用者尚未登入，則會將使用者重新導向 Azure AD [使用者登入] 頁面。
+3. 使用者將其使用者名稱輸入 [Azure AD 登入] 頁面中，然後選取 [下一步] 按鈕。
+4. 使用者將其密碼輸入 [Azure AD 登入] 頁面中，然後選取 [登入] 按鈕。
 5. 接收登入要求時，Azure AD 會將使用者名稱和密碼 (使用驗證代理程式的公開金鑰加密) 置於佇列。
 6. 內部部署驗證代理程式會從佇列中擷取使用者名稱和加密的密碼。 請注意，代理程式不會經常輪詢佇列中的要求，而是會透過預先建立的持續連線來擷取要求。
 7. 代理程式會使用其私密金鑰將密碼解密。
 8. 代理程式會使用標準 Windows API 向 Active Directory 驗證使用者名稱和密碼，類似於 Active Directory 同盟服務 (AD FS) 所使用的機制。 使用者名稱可以是內部部署的預設使用者名稱 (通常是 `userPrincipalName`)，或可在 Azure AD Connect 中設定的另一個屬性 (又稱為 `Alternate ID`)。
 9. 內部部署 Active Directory 網域控制站 (DC) 會評估要求，並將適當的回應 (成功、失敗、密碼過期或鎖定使用者) 傳回給代理程式。
 10. 驗證代理程式再將此回應傳回給 Azure AD。
-11. Azure AD 會評估回應，並視情況回應使用者。 舉例而言，Azure AD 會立即將使用者登入，或要求 Azure Multi-Factor Authentication。
+11. Azure AD 會評估回應，並視情況回應使用者。 例如，Azure AD 可以立即將使用者登入，或要求 Azure AD Multi-Factor Authentication。
 12. 如果使用者登入成功，使用者即可存取應用程式。
 
 下圖說明所有元件和相關步驟：

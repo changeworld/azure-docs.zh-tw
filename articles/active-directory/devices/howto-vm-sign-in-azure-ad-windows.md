@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740183"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837119"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -39,7 +39,7 @@ ms.locfileid: "92740183"
 > [!NOTE]
 > 啟用這項功能之後，您在 Azure 中的 Windows Vm 將 Azure AD 聯結。 您無法將它加入其他網域（例如內部部署 AD 或 Azure AD DS）。 如果您需要這樣做，您必須卸載擴充功能，將 VM 與 Azure AD 租使用者中斷連線。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>支援的 Azure 區域和 Windows 散發套件
 
@@ -81,12 +81,12 @@ ms.locfileid: "92740183"
 
 若要在 Azure 中使用 Azure AD 登入來建立 Windows Server 2019 Datacenter VM： 
 
-1. 使用具有建立 Vm 存取權的帳戶登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [ **+ 建立資源** ]。
+1. 使用具有建立 Vm 存取權的帳戶登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [ **+ 建立資源**]。
 1. 在 [搜尋 Marketplace 搜尋列] 中輸入 **Windows Server** 。
    1. 按一下 [ **Windows server** ]，然後從 [選取軟體方案] 下拉式清單中選擇 [ **Windows server 2019 Datacenter** ]。
-   1. 按一下 [ **建立** ]。
-1. 在 [管理] 索引標籤上，啟用從 [關閉] 到 [ **開啟** ] Azure Active Directory 區段下的 [ **使用 AAD 認證登入] (預覽)** 的選項。
-1. 請確定 [身分識別] 區段下的 [ **系統指派的受控識別** ] 設定為 [ **開啟** ]。 當您啟用使用 Azure AD 認證登入之後，應該會自動發生此動作。
+   1. 按一下 [ **建立**]。
+1. 在 [管理] 索引標籤上，啟用從 [關閉] 到 [**開啟**] Azure Active Directory 區段下的 [**使用 AAD 認證登入] (預覽)** 的選項。
+1. 請確定 [身分識別] 區段下的 [ **系統指派的受控識別** ] 設定為 [ **開啟**]。 當您啟用使用 Azure AD 認證登入之後，應該會自動發生此動作。
 1. 請流覽建立虛擬機器的其餘體驗。 在此預覽期間，您將必須建立 VM 的系統管理員使用者名稱和密碼。
 
 ![使用 Azure AD 認證登入建立 VM](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
@@ -147,7 +147,7 @@ az vm extension set \
 現在您已建立 VM，您必須設定 Azure RBAC 原則，以決定誰可以登入 VM。 有兩個 Azure 角色用來授權 VM 登入：
 
 - **虛擬機器系統管理員登** 入：已指派此角色的使用者可以使用系統管理員許可權登入 Azure 虛擬機器。
-- **虛擬機器使用者登入** ：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。
+- **虛擬機器使用者登入**：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。
 
 > [!NOTE]
 > 若要允許使用者透過 RDP 登入 VM，您必須指派虛擬機器系統管理員登入或虛擬機器使用者登入角色。 具有為 VM 指派擁有者或參與者角色的 Azure 使用者不會自動擁有透過 RDP 登入 VM 的許可權。 這是為了在控制虛擬機器的一組人與可存取虛擬機器的人員集合之間提供經過審核的分隔。
@@ -162,11 +162,11 @@ az vm extension set \
 若要為 Azure AD 啟用的 Windows Server 2019 Datacenter Vm 設定角色指派：
 
 1. 流覽至特定的虛擬機器總覽頁面
-1. 從功能表選項中選取 [ **存取控制] (IAM)**
-1. 選取 [ **新增** ]、[ **新增角色指派** ] 以開啟 [新增角色指派] 窗格。
+1. 從功能表選項中選取 [**存取控制] (IAM)**
+1. 選取 [ **新增**]、[ **新增角色指派** ] 以開啟 [新增角色指派] 窗格。
 1. 在 [ **角色** ] 下拉式清單中，選取角色，例如 **虛擬機器系統管理員登** 入或 **虛擬機器使用者登** 入。
-1. 在 [ **選取** ] 欄位中，選取使用者、群組、服務主體或受控識別。 如果在清單中未看到安全性主體，您可以在 [選取]  方塊中輸入，以在目錄中搜尋顯示名稱、電子郵件地址和物件識別碼。
-1. 選取 [ **儲存** ] 以指派角色。
+1. 在 [ **選取** ] 欄位中，選取使用者、群組、服務主體或受控識別。 如果在清單中未看到安全性主體，您可以在 [選取] 方塊中輸入，以在目錄中搜尋顯示名稱、電子郵件地址和物件識別碼。
+1. 選取 [ **儲存**] 以指派角色。
 
 在幾分鐘之後，即會在所選範圍中指派安全性主體的角色。
 
@@ -203,7 +203,7 @@ az role assignment create \
 > 如果您使用「需要多重要素驗證」作為授與存取權以要求存取「Azure Windows VM 登入」應用程式，則您必須在用戶端提供多重要素驗證宣告，以在 Azure 中起始對目標 Windows VM 的 RDP 會話。 在 Windows 10 用戶端上達成此目標的唯一方法，是使用 Windows Hello 企業版 PIN 或生物識別驗證搭配 RDP 用戶端。 在 Windows 10 1809 版中，已將生物識別驗證的支援新增至 RDP 用戶端。 使用 Windows Hello 企業版驗證的遠端桌面僅適用于使用憑證信任模型的部署，且目前無法用於金鑰信任模型。
 
 > [!WARNING]
-> VM 登入不支援每位使用者啟用/強制執行的 Azure Multi-Factor Authentication。
+> VM 登入不支援對每位使用者啟用/強制執行的 Azure AD Multi-Factor Authentication。
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Azure AD 認證登入 Windows VM
 

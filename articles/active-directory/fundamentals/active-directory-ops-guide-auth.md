@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371047"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836983"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication 管理作業參考指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "92371047"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您也必須設定這些工作來優化您的環境。 主要工作和其建議的擁有者包括：
 
-| Task | 擁有者 |
+| 工作 | 擁有者 |
 | :- | :- |
 | 在 Azure AD 中管理單一登入 (SSO) 設定的生命週期 | IAM 作業小組 |
 | 設計 Azure AD 應用程式的條件式存取原則 | InfoSec 架構小組 |
@@ -95,7 +95,7 @@ ms.locfileid: "92371047"
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>內部部署中斷驗證恢復功能
 
-除了簡單的優點，以及啟用洩漏的認證偵測之外，Azure AD 的密碼雜湊同步處理 (PHS) 和 Azure MFA 允許使用者存取 SaaS 應用程式和 Microsoft 365，但因為網路攻擊例如 [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)所造成的內部部署中斷。 您也可以同時啟用 PHS，同時搭配同盟。 啟用 PHS 可在同盟服務無法使用時，允許進行驗證。
+除了簡單性的優點，以及啟用洩漏的認證偵測之外，Azure AD 的密碼雜湊同步處理 (PHS) 和 Azure AD MFA 可讓使用者存取 SaaS 應用程式，並在內部部署因網路攻擊（例如 [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)）而中斷時進行 Microsoft 365。 您也可以同時啟用 PHS，同時搭配同盟。 啟用 PHS 可在同盟服務無法使用時，允許進行驗證。
 
 如果您的內部部署組織缺少中斷復原策略，或有一個未與 Azure AD 整合，您應該部署 Azure AD PHS，並定義包含 PHS 的嚴重損壞修復計畫。 啟用 Azure AD PHS 可讓使用者在您的內部部署 Active Directory 無法使用時，對 Azure AD 進行驗證。
 
@@ -330,7 +330,7 @@ MFA 等強式認證無法使用舊版驗證通訊協定來保護應用程式，�
 
 - **外部使用者** -外部共同作業可能會在企業中使用小組、Power BI、Sharepoint Online 和 Azure 資訊保護等服務進行茁壯。 如果您有明確的限制，可控制使用者起始的外部共同作業，建議您使用 [Azure AD 權利管理](../governance/entitlement-management-overview.md) 或受控制的作業（例如透過服務台）來啟用外部使用者。 如果您不想要允許服務的有機外部共同作業，可以 [封鎖成員完全邀請外部使用者](../external-identities/delegate-invitations.md)。 或者，您也可以 [允許或封鎖](../external-identities/allow-deny-list.md) 外部使用者邀請中的特定網域。
 - **應用程式註冊** -啟用應用程式註冊時，終端使用者可以將應用程式本身上線，並授與其資料的存取權。 應用程式註冊的一般範例是啟用 Outlook 外掛程式的使用者，或 Alexa 和 Siri 等語音助理來代表他們讀取電子郵件和行事曆，或傳送電子郵件。 如果客戶決定關閉應用程式註冊，InfoSec 和 IAM 小組必須在 (應用程式註冊時，根據商務需求) 管理例外狀況，因為他們需要向系統管理員帳戶註冊應用程式，而且很可能需要設計程式來讓程式。
-- 系統**管理入口網站**-組織可以鎖定 Azure 入口網站中的 Azure AD 的分頁，讓非系統管理員無法存取 Azure 入口網站中的 Azure AD 管理，並讓人感到困惑。 移至 Azure AD management 入口網站中的使用者設定，以限制存取：
+- 系統 **管理入口網站**-組織可以鎖定 Azure 入口網站中的 Azure AD 的分頁，讓非系統管理員無法存取 Azure 入口網站中的 Azure AD 管理，並讓人感到困惑。 移至 Azure AD management 入口網站中的使用者設定，以限制存取：
 
 ![系統管理入口網站限制存取](./media/active-directory-ops-guide/active-directory-ops-img13.png)
 

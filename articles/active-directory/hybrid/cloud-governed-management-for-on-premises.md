@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5374dc2ef4c736535b218d8cd67521e83a24a40b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413440"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836456"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何為內部部署工作負載提供雲端控管管理
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 是一項全方位的身分識別即服務 (ID
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>雲端受控身分識別管理的 Azure AD 方法
 
-當組織轉換至雲端時，他們需要保證他們能夠掌控整個環境-更安全且更容易掌握活動、自動化支援和主動式見解。 「 **雲端管制管理** 」說明組織如何從雲端管理和管理其使用者、應用程式、群組和裝置。
+當組織轉換至雲端時，他們需要保證他們能夠掌控整個環境-更安全且更容易掌握活動、自動化支援和主動式見解。 「**雲端管制管理**」說明組織如何從雲端管理和管理其使用者、應用程式、群組和裝置。
 
 在這個現代化的世界中，組織必須能夠大規模地管理，因為 SaaS 應用程式的激增，以及共同作業和外部身分識別的增加角色。 雲端的新風險環境，表示組織必須更具回應性，這是危害雲端使用者的惡意執行者可能會影響雲端和內部部署應用程式。
 
@@ -89,7 +89,7 @@ Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../extern
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>適用于內部部署同盟應用程式的雲端控管管理
 
-對於已經使用內部部署身分識別提供者的組織而言，將應用程式移至 Azure AD 可提供更安全的存取，以及更容易進行同盟管理的管理體驗。 Azure AD 可以使用 Azure AD 條件式存取，設定細微的每個應用程式存取控制，包括 Azure Multi-Factor Authentication。 Azure AD 支援更多功能，包括應用程式特定的權杖簽署憑證和可設定的憑證到期日。 這些功能、工具和指引可讓組織淘汰其內部部署身分識別提供者。 其中一個範例是 microsoft 本身的 IT，將17987的應用程式從 Microsoft 的內部 Active Directory 同盟服務 (AD FS) 移至 Azure AD。
+對於已經使用內部部署身分識別提供者的組織而言，將應用程式移至 Azure AD 可提供更安全的存取，以及更容易進行同盟管理的管理體驗。 Azure AD 可以使用 Azure AD 條件式存取，設定細微的每個應用程式存取控制，包括 Azure AD Multi-Factor Authentication。 Azure AD 支援更多功能，包括應用程式特定的權杖簽署憑證和可設定的憑證到期日。 這些功能、工具和指引可讓組織淘汰其內部部署身分識別提供者。 其中一個範例是 microsoft 本身的 IT，將17987的應用程式從 Microsoft 的內部 Active Directory 同盟服務 (AD FS) 移至 Azure AD。
 
 ![Azure AD 演進](media/cloud-governed-management-for-on-premises/image5.png)
 
@@ -111,7 +111,7 @@ Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../extern
 
 ## <a name="future-directions"></a>未來方向
 
-在混合式環境中，Microsoft 的策略是為了讓 **雲端成為身分識別的控制平面** ，以及內部部署目錄和其他身分識別系統（例如 Active Directory 和其他內部部署應用程式），提供可供使用者存取的目標。 此策略將繼續確保這些應用程式中的許可權、身分識別和存取權，以及依賴這些應用程式的工作負載。 在此結束狀態下，組織將能夠完全從雲端推動終端使用者生產力。
+在混合式環境中，Microsoft 的策略是為了讓 **雲端成為身分識別的控制平面**，以及內部部署目錄和其他身分識別系統（例如 Active Directory 和其他內部部署應用程式），提供可供使用者存取的目標。 此策略將繼續確保這些應用程式中的許可權、身分識別和存取權，以及依賴這些應用程式的工作負載。 在此結束狀態下，組織將能夠完全從雲端推動終端使用者生產力。
 
 ![Azure AD 架構](media/cloud-governed-management-for-on-premises/image6.png)
 
