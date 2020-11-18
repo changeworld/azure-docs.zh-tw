@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686237"
+ms.locfileid: "94694876"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用深入解析來監視和設定您的 Azure Load Balancer
 
@@ -26,7 +26,7 @@ ms.locfileid: "94686237"
 >請注意這項功能目前為預覽狀態，而且功能相依性視圖和預先設定的儀表板可能會變更以改善這項體驗
 
 >[!IMPORTANT]
->需要 Standard Load Balancer，才能在預先設定的計量儀表板中查看 Load Balancer 命名空間的度量。 不過，您仍然可以看到來自 VM、虛擬機器擴展集和連線監視器命名空間的計量，但我們建議您 [升級為](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard) 任何生產工作負載的標準，以充分利用一組健全的 Load Balancer 計量。
+>需要 Standard Load Balancer，才能在預先設定的計量儀表板中查看 Load Balancer 命名空間的度量。 不過，您仍然可以看到來自 VM、虛擬機器擴展集和連線監視器命名空間的計量，但我們建議您 [升級為](./upgrade-basic-standard.md) 任何生產工作負載的標準，以充分利用一組健全的 Load Balancer 計量。
 
 ## <a name="functional-dependency-view"></a>功能相依性視圖
 
@@ -40,7 +40,7 @@ ms.locfileid: "94686237"
 
 ## <a name="metrics-dashboard"></a>計量儀表板
 
-您可以從 Load Balancer 的深入解析分頁，選取更詳細的度量來查看預先設定的 [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) ，其中包含與 Load Balancer 特定層面相關的度量視覺效果。 此儀表板會顯示 Load Balancer 狀態，以及頁面頂端相關檔的連結。
+您可以從 Load Balancer 的深入解析分頁，選取更詳細的度量來查看預先設定的 [Azure 監視器活頁簿](../azure-monitor/platform/workbooks-overview.md) ，其中包含與 Load Balancer 特定層面相關的度量視覺效果。 此儀表板會顯示 Load Balancer 狀態，以及頁面頂端相關檔的連結。
 
 一開始，您會看到 [總覽] 索引標籤。您可以流覽可用的索引標籤，其中每個索引標籤都包含與 Load Balancer 特定層面相關的視覺效果。 每個索引標籤底部的儀表板中都有提供各自的明確指引。
 
@@ -68,16 +68,16 @@ ms.locfileid: "94686237"
 ### <a name="flow-distribution"></a>流量散發
 [流程散發] 索引標籤可協助您將後端實例接收和產生的流程數目視覺化及管理。 它會顯示輸入和輸出流量的流程建立率和流程計數，以及每個 VM 和虛擬機器擴展集實例所接收的網路流量。 
 
-這些視圖可讓您回饋 Load Balancer 設定或流量模式是否會導致不平衡流量。 例如，如果您已設定會話親和性，而單一用戶端進行了不相稱的要求數目。 它也會讓您知道您是否已接近機器大小的 [每個 VM 流量限制](https://docs.microsoft.com/azure/virtual-network/virtual-machine-network-throughput#flow-limits-and-recommendations) 。
+這些視圖可讓您回饋 Load Balancer 設定或流量模式是否會導致不平衡流量。 例如，如果您已設定會話親和性，而單一用戶端進行了不相稱的要求數目。 它也會讓您知道您是否已接近機器大小的 [每個 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) 。
 
 ### <a name="connection-monitors"></a>連線監視
-[連線監視器] 索引標籤會顯示您已設定之所有連線 [監視器](https://docs.microsoft.com/azure/network-watcher/connection-monitor)  的全域地圖上的來回延遲。 這些視覺效果為具有嚴格延遲需求的服務提供有用的資訊。 若要符合您的需求，您可能需要新增額外的區域部署，或移至 [跨區域負載平衡](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) 模型
+[連線監視器] 索引標籤會顯示您已設定之所有連線 [監視器](../network-watcher/connection-monitor.md)  的全域地圖上的來回延遲。 這些視覺效果為具有嚴格延遲需求的服務提供有用的資訊。 若要符合您的需求，您可能需要新增額外的區域部署，或移至 [跨區域負載平衡](./cross-region-overview.md) 模型
 
 ### <a name="metric-definitions"></a>計量定義
-[度量定義] 索引標籤包含 [多維度計量文章](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)中顯示的所有資訊。
+[度量定義] 索引標籤包含 [多維度計量文章](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)中顯示的所有資訊。
 
 ## <a name="next-steps"></a>後續步驟
 * 如果有任何可改善的資訊，請參閱儀表板並使用以下連結提供意見反應
-* [請參閱計量檔，以確保您瞭解如何計算每個度量](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)
-* [為您的 Load Balancer 建立連線監視器](https://docs.microsoft.com/azure/network-watcher/connection-monitor)
-* [建立您自己](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)的活頁簿，您可以按一下詳細計量儀表板中的 [編輯] 按鈕來取得靈感
+* [請參閱計量檔，以確保您瞭解如何計算每個度量](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* [為您的 Load Balancer 建立連線監視器](../network-watcher/connection-monitor.md)
+* [建立您自己](../azure-monitor/platform/workbooks-overview.md)的活頁簿，您可以按一下詳細計量儀表板中的 [編輯] 按鈕來取得靈感

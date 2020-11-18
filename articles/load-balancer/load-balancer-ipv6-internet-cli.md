@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735921"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696858"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 建立採用 IPv6 的公用負載平衡器
 
@@ -48,17 +48,17 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
 
 若要部署負載平衡器，請建立並設定下列物件：
 
-* **前端 IP 組態** ：包含傳入網路流量的公用 IP 位址。
-* **後端位址集區** ：包含虛擬機器的網路介面 (NIC)，可從負載平衡器接收網路流量。
-* **負載平衡規則** ：包含將負載平衡器上的公用連接埠對應至後端位址集區中的連接埠的規則。
-* **輸入 NAT 規則** ：包含網路位址轉譯 (NAT) 規則，可將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器的連接埠。
-* **探查** ：包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀況探查。
+* **前端 IP 組態**：包含傳入網路流量的公用 IP 位址。
+* **後端位址集區**：包含虛擬機器的網路介面 (NIC)，可從負載平衡器接收網路流量。
+* **負載平衡規則**：包含將負載平衡器上的公用連接埠對應至後端位址集區中的連接埠的規則。
+* **輸入 NAT 規則**：包含網路位址轉譯 (NAT) 規則，可將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器的連接埠。
+* **探查**：包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀況探查。
 
 ## <a name="set-up-azure-cli"></a>設定 Azure CLI
 
 在此範例中，您會在 PowerShell 命令視窗中執行 Azure CLI 工具。 若要改善可讀性與重複使用，您可以使用 PowerShell 的指令碼處理功能而非 Azure PowerShell Cmdlet。
 
-1. [安裝和設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，方法是遵循所連結文章內的步驟並登入 Azure 帳戶。
+1. [安裝和設定 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)，方法是遵循所連結文章內的步驟並登入 Azure 帳戶。
 
 2. 設定 PowerShell 變數以搭配使用 Azure CLI 命令：
 
@@ -122,7 +122,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     > [!IMPORTANT]
     > 負載平衡器會使用公用 IP 的網域標籤作為其完整網域名稱 (FQDN)。 這是一項來自傳統部署的變更，該部署使用雲端服務名稱作為負載平衡器 FQDN。
     >
-    > 在此範例中，FQDN 是 *contoso09152016.southcentralus.cloudapp.azure.com* 。
+    > 在此範例中，FQDN 是 *contoso09152016.southcentralus.cloudapp.azure.com*。
 
 ## <a name="create-front-end-and-back-end-pools"></a>建立前端和後端集區
 
@@ -284,7 +284,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     ```
 
     > [!WARNING]
-    > 此範例使用純文字的 VM 使用者名稱和密碼。 當您以純文字使用這些認證時，請務必謹慎。 如需在 PowerShell 中更安全處理認證的方法，請參閱 [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet。
+    > 此範例使用純文字的 VM 使用者名稱和密碼。 當您以純文字使用這些認證時，請務必謹慎。 如需在 PowerShell 中更安全處理認證的方法，請參閱 [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) Cmdlet。
 
 2. 建立可用性設定組：
 
@@ -299,5 +299,3 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-

@@ -7,27 +7,31 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74754c973dbe11d954a1714e9a98d99de639acd4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651136"
+ms.locfileid: "94695175"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
+
+
 
 ## <a name="cloud-provisioning-agent-requirements"></a>雲端佈建代理程式需求
 需要下列各項才能使用 Azure AD Connect 雲端佈建：
     
 - 不是來賓使用者的 Azure AD 租使用者的混合式身分識別系統管理員帳戶。
 - 佈建代理程式的 Windows 2012 R2 或更新版本內部部署伺服器。  此伺服器應該是以 [Active Directory 系統管理層模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)為基礎的第0層伺服器。
-- 網域系統管理員或企業系統管理員認證，可建立 Azure AD Connect Cloud Sync gMSA (群組受管理的服務帳戶) 來執行代理程式服務。
 - 內部部署防火牆設定。
+
+>[!NOTE]
+>佈建代理程式目前只能安裝在英文版伺服器上。 在非英文版伺服器上安裝英文語言套件不是有效的因應措施，且會導致代理程式無法安裝。 
 
 本文件其餘部分會提供這些先決條件的逐步指示。
 
@@ -53,9 +57,7 @@ ms.locfileid: "94651136"
         | --- | --- |
         | **80** | 驗證 TLS/SSL 憑證時下載憑證撤銷清單 (CRL)。  |
         | **443** | 處理服務的所有輸出通訊。 |
-        |**8082**|如果您想要設定其管理 API，則需要安裝此參數。  此埠可在代理程式安裝完成後移除，如果您不打算使用 API。   |
         | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站中。 |
-   
      
    - 如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
    - 如果防火牆或 Proxy 允許指定安全尾碼，請將連線新增至 \*.msappproxy.net 和 \*.servicebus.windows.net。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
@@ -64,17 +66,6 @@ ms.locfileid: "94651136"
 
 >[!NOTE]
 > 不支援在 Windows Server Core 上安裝雲端佈建代理程式。
-
-## <a name="group-managed-service-accounts"></a>群組受管理的服務帳戶
-群組受管理的服務帳戶是受控網域帳戶，可提供自動密碼管理、簡化的服務主體名稱 (SPN) 管理、將管理委派給其他系統管理員的能力，以及將這項功能延伸到多部伺服器。  Azure AD Connect Cloud Sync 支援並使用 gMSA 來執行代理程式。  系統會在安裝期間提示您輸入系統管理認證，以便建立此帳戶。  帳戶會顯示為 (domain\provAgentgMSA $) 。  如需 gMSA 的詳細資訊，請參閱 [群組受管理的服務帳戶](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
-
-### <a name="prerequisites-for-gmsa"></a>GMSA 的必要條件：
-1.  GMSA 網域樹系中的 Active Directory 架構必須更新為 Windows Server 2012
-2.  網域控制站上的[POWERSHELL RSAT 模組](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
-3.  網域中至少有一個網域控制站必須執行 Windows Server 2012。
-4.  安裝代理程式的已加入網域伺服器必須是 Windows Server 2012 或更新版本。
-
-如需有關如何將現有的代理程式升級為使用 gMSA 帳戶的步驟，請參閱 [群組受管理的服務帳戶](how-to-install.md#group-managed-service-accounts)。
 
 
 ### <a name="additional-requirements"></a>其他需求
@@ -100,6 +91,24 @@ ms.locfileid: "94651136"
 
 1. 重新啟動伺服器。
 
+## <a name="known-limitations"></a>已知限制
+以下是已知的限制：
+
+### <a name="delta-synchronization"></a>差異同步處理
+
+- 差異同步的群組範圍篩選不支援1500以上的成員
+- 當您刪除用來作為群組範圍篩選準則一部分的群組時，不會刪除群組成員的使用者。 
+- 當您重新命名範圍中的 OU 或群組時，差異同步處理不會移除使用者
+
+### <a name="provisioning-logs"></a>佈建記錄
+- 布建記錄無法清楚區分建立和更新作業。  您可能會看到用於更新的建立作業，以及建立的更新作業。
+
+### <a name="cross-domain-references"></a>跨網域參考
+- 如果您的使用者在另一個網域中具有成員參考，這些使用者將不會同步處理為該使用者目前的網域同步處理。 
+-  (範例：您要同步處理之使用者的管理員位於網域 B，而使用者在網域 A 中。當您同步處理網域 A 和 B 時，它們將會同步處理，但是使用者管理員將不會執行) 
+
+### <a name="group-re-naming-or-ou-re-naming"></a>群組重新命名或 OU 重新命名
+- 如果您將 AD 中的群組或 OU 重新命名為指定設定的範圍，雲端布建作業將無法辨識 AD 中的名稱變更。 作業不會進入隔離狀態，且會維持狀況良好
 
 
 

@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Azure Application Insights 自動化 | Microsoft Do
 description: 在 PowerShell 中使用 Azure Resource Manager 範本自動建立及管理資源、警示及可用性測試。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dabb29abe4530307ef5204659297f4675376605
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760898"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694528"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 資源
 
@@ -431,7 +431,6 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
    
     每個 Web 測試都有一個關聯的警示規則，您必須同時複製這兩者。
    
-    您也可以包含計量的警示。 [計量名稱](powershell-alerts.md#metric-names)。
 5. 在每個資源中插入下面這行：
    
     `"apiVersion": "2015-05-01",`
@@ -470,7 +469,6 @@ Azure 應以嚴格的順序設定資源。 為確保一項設定完成後再開�
 其他自動化文件：
 
 * [建立 Application Insights 資源](./create-new-resource.md#creating-a-resource-automatically) - 快速方法 (不使用範本)
-* [設定警示](powershell-alerts.md)
 * [建立 Web 測試](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [將 Azure 診斷傳送至 Application Insights](powershell-azure-diagnostics.md)
 * [建立版本附註](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4dd8b82e40b46da52a1b1f396569fda1dfea2b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740695"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694621"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用 "full" Lucene 搜尋語法 (Azure 認知搜尋中的先進查詢) 
 
@@ -30,7 +30,7 @@ Lucene 剖析器支援複雜的查詢結構，例如欄位範圍查詢、模糊�
 
 下列範例會根據 [紐約市 OpenData](https://opendata.cityofnewyork.us/) 計劃所提供的資料集，利用由可用工作組成的 NYC 工作搜尋索引。 這項資料不應視為目前的或已完成。 索引位於 Microsoft 提供的沙箱服務上，這表示您不需要 Azure 訂用帳戶或 Azure 認知搜尋來嘗試這些查詢。
 
-您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 如需詳細資訊，請參閱[使用 REST 用戶端瀏覽](search-get-started-postman.md)。
+您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 如需詳細資訊，請參閱[使用 REST 用戶端瀏覽](search-get-started-rest.md)。
 
 ### <a name="set-the-request-header"></a>設定要求標頭
 
@@ -46,7 +46,7 @@ Lucene 剖析器支援複雜的查詢結構，例如欄位範圍查詢、模糊�
 
 要求是與包含 Azure 認知搜尋端點和搜尋字串的 URL 配對的 GET 命令。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 要求標頭 GET" border="false":::
 
 URL 組合具有下列元素：
 
@@ -58,7 +58,7 @@ URL 組合具有下列元素：
 
 ## <a name="send-your-first-query"></a>傳送第一個查詢
 
-在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]****。 結果會以詳細 JSON 文件的形式傳回。 會傳回整份檔，可讓您查看所有欄位和所有的值。
+在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]。 結果會以詳細 JSON 文件的形式傳回。 會傳回整份檔，可讓您查看所有欄位和所有的值。
 
 將此 URL 貼入 REST 用戶端做為驗證步驟，並查看檔結構。
 
@@ -84,7 +84,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 第一個範例不是 Lucene 專屬的範例，但我們會引導它介紹第一個基本查詢概念：欄位範圍。 此範例會將整個查詢和回應的範圍限定為一些特定欄位。 當您的工具是 Postman 或搜尋總管時，了解如何建構可讀取的 JSON 回應很重要。 
 
-為求簡潔，查詢僅以 *business_title* 欄位為目標，且指定僅傳回公司職稱。 **SearchFields**參數會將查詢執行限制為僅 business_title 欄位，並**選取**[指定要包含在回應中的欄位]。
+為求簡潔，查詢僅以 *business_title* 欄位為目標，且指定僅傳回公司職稱。 **SearchFields** 參數會將查詢執行限制為僅 business_title 欄位，並 **選取**[指定要包含在回應中的欄位]。
 
 ### <a name="search-expression"></a>搜尋運算式
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Postman 範例回應搜尋運算式" border="false":::
 
 您可以使用 **fieldName： searchExpression** 語法來定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 部分範例如下：
 
@@ -147,10 +147,10 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 如果您想要將兩個字串評估為單一實體，請務必將多個字串放在引號中，如此一來，在此案例中，您會在欄位中搜尋兩個不同的位置 `state` 。 此外，請確定運算子是大寫，如同您看到的 NOT 和 AND。
 
-**FieldName： searchExpression**中指定的欄位必須是可搜尋的欄位。 如需如何在欄位定義中使用索引屬性的詳細資訊，請參閱 [建立索引 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/create-index) 。
+**FieldName： searchExpression** 中指定的欄位必須是可搜尋的欄位。 如需如何在欄位定義中使用索引屬性的詳細資訊，請參閱 [建立索引 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/create-index) 。
 
 > [!NOTE]
-> 在上述範例中，我們不需要使用 `searchFields` 參數，因為查詢的每個部分都有明確指定的功能變數名稱。 但是， `searchFields` 如果您想要執行查詢，其中某些部分的範圍設定為特定欄位，而且其餘部分可以套用至數個欄位，您仍然可以使用參數。 例如，查詢 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 只會比對 `senior NOT junior` `business_title` 欄位，而它會比對 "external" 與 `posting_type` 欄位。 **FieldName： searchExpression**中提供的功能變數名稱一律優先于 `searchFields` 參數，這就是在此範例中，我們不需要包含 `business_title` 在參數中的原因 `searchFields` 。
+> 在上述範例中，我們不需要使用 `searchFields` 參數，因為查詢的每個部分都有明確指定的功能變數名稱。 但是， `searchFields` 如果您想要執行查詢，其中某些部分的範圍設定為特定欄位，而且其餘部分可以套用至數個欄位，您仍然可以使用參數。 例如，查詢 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 只會比對 `senior NOT junior` `business_title` 欄位，而它會比對 "external" 與 `posting_type` 欄位。 **FieldName： searchExpression** 中提供的功能變數名稱一律優先于 `searchFields` 參數，這就是在此範例中，我們不需要包含 `business_title` 在參數中的原因 `searchFields` 。
 
 ## <a name="example-3-fuzzy-search"></a>範例 3：模糊搜尋
 
@@ -199,7 +199,7 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="鄰近查詢" border="false":::
 
 移除 "senior analyst" 一詞之間的單字，然後再試一次。 請注意，相較於上一個查詢傳回 10 份文件，此查詢僅傳回 8 份文件。
 
@@ -217,7 +217,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="before 的詞彙提升" border="false":::
 
 在 "after" 查詢中再次執行此搜尋，但這次在兩個單字未同時存在的情況下，提升含有 *analyst* 一詞的結果，使其高於 *computer* 一詞。 
 
@@ -226,11 +226,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 上述查詢較易讀的版本為 `search=business_title:computer analyst^2`。 在可行的查詢中，`^2` 會編碼為 `%5E2`，因此難以檢視。
 
-  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="after 的詞彙提升" border="false":::
 
 詞彙提升與評分設定檔的不同之處在於，評分設定檔會提升特定欄位，而不是特定字詞。 下列範例可協助說明差異。
 
-請考慮使用評分設定檔，可提高特定欄位中的相符項目，例如 musicstoreindex 範例中的 **genre** 。 詞彙提升可用來進一步提升某些搜尋詞彙，使其高於其他詞彙。 比方說，"rock^2 electronic" 可提升包含搜尋詞彙的文件﹐使其在 [genre] **** 欄位中高於索引中的其他可搜尋欄位。 此外，包含搜尋詞彙 "rock" 的文件排名會比另一個搜尋詞彙 "electronic" 還高，此為詞彙提升值 (2) 的結果。
+請考慮使用評分設定檔，可提高特定欄位中的相符項目，例如 musicstoreindex 範例中的 **genre** 。 詞彙提升可用來進一步提升某些搜尋詞彙，使其高於其他詞彙。 比方說，"rock^2 electronic" 可提升包含搜尋詞彙的文件﹐使其在 [genre]  欄位中高於索引中的其他可搜尋欄位。 此外，包含搜尋詞彙 "rock" 的文件排名會比另一個搜尋詞彙 "electronic" 還高，此為詞彙提升值 (2) 的結果。
 
 在設定係數層級時，提升係數越高，該字詞相對於其他搜尋字詞的關聯性也越高。 根據預設，提升係數為 1。 雖然提升係數必須是正數，但是它可能會小於 1 (例如，0.2)。
 
@@ -253,7 +253,7 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="RegEx 查詢" border="false":::
 
 > [!Note]
 > RegEx 查詢不會進行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 只能對不完整的查詢詞彙執行小寫轉換。
@@ -275,7 +275,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="萬用字元查詢" border="false":::
 
 > [!Note]
 > 萬用字元查詢不會進行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 只能對不完整的查詢詞彙執行小寫轉換。

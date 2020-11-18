@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 512e5e0140038b27b7ffc9f2affb4a0e5b28b41b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655828"
+ms.locfileid: "94695243"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步驟1：部署記錄轉寄站
 
@@ -51,7 +51,7 @@ ms.locfileid: "94655828"
 1. 在 **1.2 的 Linux 機器上安裝 CEF 收集器**，複製下執行下列腳本下提供的連結， **以安裝並套用 CEF 收集器**，或從下面的文字 (套用工作區識別碼和主要金鑰來取代預留位置) ：
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
     ```
 
 1. 當腳本正在執行時，請檢查以確定您沒有收到任何錯誤或警告訊息。
@@ -82,7 +82,7 @@ ms.locfileid: "94655828"
     - 下載 Log Analytics (OMS) Linux 代理程式的安裝腳本。
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -97,7 +97,7 @@ ms.locfileid: "94655828"
     - 從 Log Analytics 代理程式 GitHub 存放庫下載設定。
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -148,7 +148,7 @@ ms.locfileid: "94655828"
     - 下載 Log Analytics (OMS) Linux 代理程式的安裝腳本。
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -163,7 +163,7 @@ ms.locfileid: "94655828"
     - 從 Log Analytics 代理程式 GitHub 存放庫下載設定。
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -208,8 +208,10 @@ ms.locfileid: "94655828"
         ```bash
         sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
+---
 
 ## <a name="next-steps"></a>後續步驟
+
 在本檔中，您已瞭解如何部署 Log Analytics 代理程式，以將 CEF 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241815"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695515"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer 健康情況探查
 
@@ -121,7 +121,7 @@ TCP 探查會利用定義的連接埠執行三向開放 TCP 交握，藉此初�
 ### <a name="http--https-probe"></a><a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS 探查
 
 >[!NOTE]
->HTTPS 探查僅適用於 [Standard Load Balancer](load-balancer-standard-overview.md)。
+>HTTPS 探查僅適用於 [Standard Load Balancer](./load-balancer-overview.md)。
 
 HTTP 和 HTTPS 探查建立在 TCP 探查的基礎上，並會發出含有指定路徑的 HTTP GET。 這兩個探查皆支援 HTTP GET 的相對路徑。 HTTPS 探查就是加入傳輸層安全性 (TLS，之前稱為 SSL) 包裝函式的 HTTP 探查。 當執行個體在逾時期限內以 HTTP 狀態 200 回應時，健康情況探查會標示為已啟動。  依預設，健康情況探查會每隔 15 秒嘗試檢查一次已設定的健康情況探查連接埠。 最小探查間隔為 5 秒。 所有間隔的總持續時間不能超過 120 秒。
 
@@ -169,7 +169,7 @@ HTTP 和 HTTPS 探查建立在 TCP 探查的基礎上，並會發出含有指定
 
 客體代理程式探查是虛擬機器內客體代理程式的檢查。 然後，只有在執行個體處於就緒狀態時，它才會接聽並以「HTTP 200 確定」回應。 (其他狀態為忙碌、正在回收或正在停止。)
 
-如需詳細資訊，請查看[設定適用於健全狀況探查的服務定義檔案 (csdef)](https://msdn.microsoft.com/library/azure/ee758710.aspx) 或[開始為雲端服務建立公用負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)。
+如需詳細資訊，請查看[設定適用於健全狀況探查的服務定義檔案 (csdef)](/previous-versions/azure/reference/ee758710(v=azure.100)) 或[開始為雲端服務建立公用負載平衡器](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)。
 
 如果客體代理程式無法以「HTTP 200 確定」回應，則負載平衡器會將執行個體標示為沒有回應。 然後，它會停止將流量傳送到該執行個體。 負載平衡器會繼續檢查執行個體。 
 
@@ -215,7 +215,7 @@ UDP 是不需連線的，因此 UDP 沒有流程狀態追蹤。 如果任何後�
 
 Load Balancer 會為其內部健康情況模型使用分散式探查服務。 探查服務駐留在 VM 所在的每個主機上，可以視需要透過程式設計方式來為每個客戶的組態產生健康情況探查。 健康情況探查流量會直接在產生健康情況探查的探查服務和客戶虛擬機器之間產生。 所有 Load Balancer 健康情況探查都源自作為其來源的 IP 位址 168.63.129.16。  您可以在非 RFC1918 空間的 VNet 內部使用 IP 位址空間。  使用全域保留且為 Microsoft 擁有的 IP 位址，會減少 IP 位址與您在 VNet 內所用的 IP 位址空間發生衝突的機會。  此 IP 位址在所有區域內都是相同的，不會改變，而且因為只有內部 Azure 平台元件會從此 IP 位址獲得封包，所以此位址並不會有安全性風險。 
 
-AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-network/security-overview.md)中識別此來源 IP 位址，且預設即會許可健康情況探查的流量。
+AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-network/network-security-groups-overview.md)中識別此來源 IP 位址，且預設即會許可健康情況探查的流量。
 
 除了 Load Balancer 健康情況探查之外， [下列作業也會使用此 IP 位址](../virtual-network/what-is-ip-address-168-63-129-16.md)：
 
@@ -233,15 +233,15 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 
 針對 UDP 負載平衡，您應該從後端端點產生自訂健康情況探查信號，並使用 TCP、HTTP 或 HTTPS 健康情況探查，並以對應的接聽程式為目標，以反映 UDP 應用程式的健康情況。
 
-使用 [HA 連接埠負載平衡規則](load-balancer-ha-ports-overview.md)搭配 [Standard Load Balancer](load-balancer-standard-overview.md) 時，所有連接埠都會進行負載平衡，而單一健康情況探查的回應則必須反映出整個執行個體的狀態。
+使用 [HA 連接埠負載平衡規則](load-balancer-ha-ports-overview.md)搭配 [Standard Load Balancer](./load-balancer-overview.md) 時，所有連接埠都會進行負載平衡，而單一健康情況探查的回應則必須反映出整個執行個體的狀態。
 
 請勿透過接受健康情況探查的執行個體，將健康情況探查轉化或通過 Proxy 處理至 VNet 中的另一個執行個體，因為此設定可能導致您的案例發生連鎖性失敗。  請設想一下以下狀況：有一組第三方設備部署在 Load Balancer 資源的後端集區中，藉以提供設備所需的規模和備援能力，且健康情況探查會設定為負責探查第三方設備通過 Proxy 處理或轉化至設備背後的其他虛擬機器時所使用的連接埠。  如果您探查的連接埠相同於您要用來將要求轉化或通過 Proxy 處理至設備背後其他虛擬機器的連接埠，任何來自設備背後單一虛擬機器的探查回應都會將設備本身標記為無作用。 這項設定可能會導致整個應用程式案例的階層式失敗，因為設備背後的單一後端端點。  觸發程序可能會是間歇性探查失敗，而會造成 Load Balancer 將原始目的地 (應用程式執行個體) 標示為關閉，接著會停用您整個應用程式案例。 請改為探查設備本身的健康情況。 挑選要以何種探查來判定健康情況訊號，對網路虛擬設備 (NVA) 案例而言是一大考量，請務必諮詢您的應用程式供應商，確定什麼健康情況訊號適合此類案例。
 
 如果您不允許防火牆原則中有此探查的[來源 IP](#probesource)，則健康情況探查將會失敗，因為它無法接觸您的執行個體。  接著，Load Balancer 會因為健康情況探查失敗而將您的執行個體標示為已關閉。  此種設定會造成負載已平衡的應用程式案例失敗。
 
-為了讓 Load Balancer 的健康情況探查將您的執行個體標示為已開啟，您 **必須** 在任何 Azure [網路安全性群組](../virtual-network/security-overview.md)和本機防火牆原則中允許此 IP 位址。  預設中，每個網路安全性群組皆含有[服務標籤](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer，以許可健康情況探查流量。
+為了讓 Load Balancer 的健康情況探查將您的執行個體標示為已開啟，您 **必須** 在任何 Azure [網路安全性群組](../virtual-network/network-security-groups-overview.md)和本機防火牆原則中允許此 IP 位址。  預設中，每個網路安全性群組皆含有[服務標籤](../virtual-network/network-security-groups-overview.md#service-tags) AzureLoadBalancer，以許可健康情況探查流量。
 
-如果您想要測試健康情況探查的失敗，或將個別的執行個體標示為已關閉，您可以使用[網路安全性群組](../virtual-network/security-overview.md)明確封鎖健康情況探查 (目的地連接埠或[來源 IP](#probesource))，並模擬探查失敗。
+如果您想要測試健康情況探查的失敗，或將個別的執行個體標示為已關閉，您可以使用[網路安全性群組](../virtual-network/network-security-groups-overview.md)明確封鎖健康情況探查 (目的地連接埠或[來源 IP](#probesource))，並模擬探查失敗。
 
 請勿使用 Microsoft 所擁有的 IP 位址範圍 (含 168.63.129.16 在內) 來設定您的 VNet。  這種設定會與健康情況探查的 IP 位址相衝突，而可能導致您的案例失敗。
 
@@ -251,7 +251,7 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 
 ## <a name="monitoring"></a>監視
 
-公用和內部 [Standard Load Balancer](load-balancer-standard-overview.md) 都會透過 Azure 監視器，將每個端點和後端端點的健康情況探查狀態公開為多維度計量。 這些計量可供其他 Azure 服務或合作夥伴應用程式使用。 
+公用和內部 [Standard Load Balancer](./load-balancer-overview.md) 都會透過 Azure 監視器，將每個端點和後端端點的健康情況探查狀態公開為多維度計量。 這些計量可供其他 Azure 服務或合作夥伴應用程式使用。 
 
 基本公用 Load Balancer 會透過 Azure 監視器記錄公開每個後端集區摘要的健康情況探查狀態。  內部基本負載平衡器無法使用 Azure 監視器記錄。  您可以使用 [Azure 監視器記錄](load-balancer-monitor-log.md) 來檢查公用負載平衡器探查健全狀況狀態和探查計數。 記錄可以與 Power BI 或 Azure Operation Insights 搭配使用，以提供負載平衡器健康狀態。
 
@@ -260,9 +260,9 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 - HTTPS 探查不支援使用用戶端憑證進行相互驗證。
 - 您應該假設在啟用 TCP 時間戳記時，健康情況探查將會失敗。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [Standard Load Balancer](load-balancer-standard-overview.md)
+- 深入瞭解 [Standard Load Balancer](./load-balancer-overview.md)
 - [開始使用 PowerShell 在資源管理員中建立公用負載平衡器](quickstart-load-balancer-standard-public-powershell.md)
-- [適用於健康情況探查的 REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [適用於健康情況探查的 REST API](/rest/api/load-balancer/loadbalancerprobes/)
 - 透過 [Load Balancer 的 Uservoice](https://aka.ms/lbuservoice) 要求新的健康情況探查功能

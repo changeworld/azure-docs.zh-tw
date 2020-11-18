@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448096"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696875"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer 的多個前端
 
 Azure Load Balancer 可讓您平衡在多個連接埠、多個 IP 位址或兩者上的服務負載。 您可以使用公用和內部負載平衡器定義來負載平衡一組 VM 間的流量。
 
-本文說明此功能的基本運用、重要概念和限制。 如果您只想要公開一個 IP 位址上的服務，可以找到[公用](load-balancer-get-started-internet-portal.md)或[內部](load-balancer-get-started-ilb-arm-portal.md)負載平衡器設定的簡易指示。 對單一前端組態而言，系統會累加新增多個前端。 您隨時可以使用本文中的概念擴充簡化的設定。
+本文說明此功能的基本運用、重要概念和限制。 如果您只想要公開一個 IP 位址上的服務，可以找到[公用](./quickstart-load-balancer-standard-public-portal.md)或[內部](./quickstart-load-balancer-standard-internal-portal.md)負載平衡器設定的簡易指示。 對單一前端組態而言，系統會累加新增多個前端。 您隨時可以使用本文中的概念擴充簡化的設定。
 
 定義 Azure Load Balancer 時，前端和後端集區設定會與規則連線。 規則所參考的健全狀況探查是用來判斷新的流程如何傳送至後端集區中的節點。 前端 (也稱為 VIP) 是由 IP 位址 (公用或內部)、傳輸通訊協定 (UDP 或 TCP)，以及負載平衡規則中連接埠號碼組成的 3 項元素所定義。 後端集區是參考 Load Balancer 後端集區之虛擬機器 IP 設定的集合 (NIC 資源的一部分)。
 

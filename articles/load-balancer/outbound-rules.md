@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 645be03df3c8ee2a1451b4bfea0327542c29aa38
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 98bc962c0c57716cee9339056b0793bfe4bcb0ea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683109"
+ms.locfileid: "94694723"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>輸出規則 Azure Load Balancer
 
@@ -60,7 +60,7 @@ ms.locfileid: "94683109"
 
 使用多個 IP 位址來規劃大規模案例。 使用輸出規則來減輕 [SNAT 耗盡](troubleshoot-outbound-connection.md#snatexhaust)的問題。 
 
-您也可以直接使用 [公用 IP 前置](https://aka.ms/lbpublicipprefix) 詞和輸出規則。 
+您也可以直接使用 [公用 IP 前置](./load-balancer-outbound-connections.md#outboundrules) 詞和輸出規則。 
 
 公用 IP 首碼可增加部署的規模。 前置詞可以新增到源自您 Azure 資源的流程允許清單中。 您可以設定負載平衡器內的前端 IP 設定，以參考公用 IP 位址首碼。  
 
@@ -74,7 +74,7 @@ ms.locfileid: "94683109"
 
 負載平衡器的預設行為是在達到輸出閒置超時時，以無訊息方式卸載流程。 `enableTCPReset`參數會啟用可預測的應用程式行為和控制項。 此參數會指定是否要在輸出閒置超時時間的超時時，傳送雙向 TCP 重設 (TCP RST) 。 
 
-如需詳細資訊（包括區域可用性），請參閱 [閒置 timeout 的 TCP 重設](https://aka.ms/lbtcpreset) 。
+如需詳細資訊（包括區域可用性），請參閱 [閒置 timeout 的 TCP 重設](./load-balancer-tcp-reset.md) 。
 
 ## <a name="securing-and-controlling-outbound-connectivity-explicitly"></a><a name="preventoutbound"></a>明確保護和控制輸出連線能力
 
@@ -91,9 +91,9 @@ ms.locfileid: "94683109"
 >[!IMPORTANT]
 > 如果您將此參數設定為 true，且沒有可定義輸出連線能力的輸出規則，則您的虛擬機器將不會有輸出連線能力。  您 VM 或應用程式的某些作業可能取決於可用輸出連線。 請確定您了解情節的相依性，並考慮這項變更的影響。
 
-有時候，VM 不需要建立輸出流程。 可能需要管理哪些目的地接收輸出流程，或哪些目的地會開始輸入流量。 使用 [網路安全性群組](../virtual-network/security-overview.md) 來管理 VM 抵達的目的地。 使用 Nsg 來管理哪些公用目的地啟動輸入流程。
+有時候，VM 不需要建立輸出流程。 可能需要管理哪些目的地接收輸出流程，或哪些目的地會開始輸入流量。 使用 [網路安全性群組](../virtual-network/network-security-groups-overview.md) 來管理 VM 抵達的目的地。 使用 Nsg 來管理哪些公用目的地啟動輸入流程。
 
-當您將 NSG 套用到經過負載平衡的虛擬機器時，請注意[服務標記](../virtual-network/security-overview.md#service-tags)和[預設安全性規則](../virtual-network/security-overview.md#default-security-rules)。 
+當您將 NSG 套用到經過負載平衡的虛擬機器時，請注意[服務標記](../virtual-network/network-security-groups-overview.md#service-tags)和[預設安全性規則](../virtual-network/network-security-groups-overview.md#default-security-rules)。 
 
 確定 VM 可以從 Azure Load Balancer 接收健康情況探查要求。
 
@@ -159,7 +159,7 @@ ms.locfileid: "94683109"
 如果您嘗試提供的 [SNAT](load-balancer-outbound-connections.md)埠數目超過公用 IP 位址的可用數量，則會拒絕設定作業。 例如，如果您為每個 VM 提供10000個埠，且後端集區中有七個 Vm 共用單一公用 IP，則會拒絕設定。 七乘以10000超過64000埠的限制。 將更多公用 IP 位址新增至輸出規則的前端以啟用此案例。 
 
 
-針對埠數目指定0，以還原為 [預設的埠配置](load-balancer-outbound-connections.md#preallocatedports) 。 第一個 50 VM 實例將會取得1024埠，51-100 VM 實例會取得512到最大實例。 如需預設 SNAT 埠配置的詳細資訊，請參閱 [snat 埠配置表](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)。
+針對埠數目指定0，以還原為 [預設的埠配置](load-balancer-outbound-connections.md#preallocatedports) 。 第一個 50 VM 實例將會取得1024埠，51-100 VM 實例會取得512到最大實例。 如需預設 SNAT 埠配置的詳細資訊，請參閱 [snat 埠配置表](./load-balancer-outbound-connections.md#preallocatedports)。
 
 
 ### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>案例3：僅啟用輸出
@@ -211,7 +211,7 @@ ms.locfileid: "94683109"
 輸出連線能力在透過實例層級的公用 Ip 或虛擬網路 NAT 明確宣告，或將後端集區成員與僅限輸出的負載平衡器設定產生關聯，而無法用於內部標準負載平衡器。 
 
 
-如需詳細資訊，請參閱 [僅限輸出的負載平衡器](https://docs.microsoft.com/azure/load-balancer/egress-only)設定。
+如需詳細資訊，請參閱 [僅限輸出的負載平衡器](./egress-only.md)設定。
 
 
 
@@ -253,4 +253,3 @@ ms.locfileid: "94683109"
 
 - 深入瞭解 [Azure Standard Load Balancer](load-balancer-overview.md)
 - 查看[Azure Load Balancer](load-balancer-faqs.md)的常見問題
-

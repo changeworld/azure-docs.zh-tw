@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629320"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695889"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "94629320"
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) 是 Microsoft 的多租使用者雲端式目錄和身分識別管理服務。 Azure AD 將核心目錄服務、應用程式存取管理及身分識別保護結合到單個解決方案。 Azure AD 聯結的 Windows 虛擬機器 (Vm) 可以使用您的 Azure AD 認證來存取 Azure 檔案共用。 如需詳細資訊，請參閱[什麼是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory (Azure AD) 是 Microsoft 的多租使用者雲端式目錄和身分識別管理服務。 Azure AD 將核心目錄服務、應用程式存取管理及身分識別保護結合到單個解決方案。 Azure AD 聯結的 Windows 虛擬機器 (Vm) 無法使用您的 Azure AD 認證來存取 Azure 檔案共用。 如需詳細資訊，請參閱[什麼是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory Domain Services (Azure AD DS)**
 

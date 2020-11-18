@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e559d574413b8eb0be2303798e0b16bfffad2cb
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207528"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695396"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer 常見問題
 
@@ -25,16 +25,16 @@ ms.locfileid: "86207528"
 如需有關升級 Load Balancer SKU 的自動化腳本和指引，請參閱 [從基本升級至標準版](upgrade-basic-standard.md) 文章。
 
  ## <a name="what-are-the-different-load-balancing-options-in-azure"></a>Azure 中的不同負載平衡選項有哪些？
-請參閱 [負載平衡器技術指南](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)  ，以取得可用的負載平衡服務和每個服務的建議用途。
+請參閱 [負載平衡器技術指南](/azure/architecture/guide/technology-choices/load-balancing-overview)  ，以取得可用的負載平衡服務和每個服務的建議用途。
 
 ## <a name="where-can-i-find-load-balancer-arm-templates"></a>我可以在哪裡找到 Load Balancer ARM 範本？
-請參閱常見部署的 ARM 範本 [Azure Load Balancer 快速入門範本清單](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates) 。
+請參閱常見部署的 ARM 範本 [Azure Load Balancer 快速入門範本清單](/azure/templates/microsoft.network/loadbalancers#quickstart-templates) 。
 
 ## <a name="how-are-inbound-nat-rules-different-from-load-balancing-rules"></a>輸入 NAT 規則與負載平衡規則有何不同？
 NAT 規則可用來指定要路由傳送流量的後端資源。 例如，設定特定負載平衡器埠，以將 RDP 流量傳送至特定的 VM。 負載平衡規則可用來指定要將流量路由傳送至其中的後端資源集區，以平衡每個實例之間的負載。 例如，負載平衡器規則可將負載平衡器埠80上的 TCP 封包路由傳送到 web 伺服器的集區。
 
 ## <a name="what-is-ip-1686312916"></a>什麼是 IP 168.63.129.16？
-標示為 Azure 基礎結構的主機虛擬 IP 位址，Load Balancer Azure 健康情況探查的來源。 設定後端實例時，它們必須允許來自此 IP 位址的流量成功回應健康情況探查。 此規則不會與您的 Load Balancer 前端存取進行互動。 如果您不是使用 Azure Load Balancer，可以覆寫此規則。 您可以在 [這裡](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)深入瞭解服務標記。
+標示為 Azure 基礎結構的主機虛擬 IP 位址，Load Balancer Azure 健康情況探查的來源。 設定後端實例時，它們必須允許來自此 IP 位址的流量成功回應健康情況探查。 此規則不會與您的 Load Balancer 前端存取進行互動。 如果您不是使用 Azure Load Balancer，可以覆寫此規則。 您可以在 [這裡](../virtual-network/service-tags-overview.md#available-service-tags)深入瞭解服務標記。
 
 ## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>我可以搭配基本 Load Balancer 使用全域 VNET 對等互連嗎？
 否。 基本 Load Balancer 不支援全域 VNET 對等互連。 您可以改用 Standard Load Balancer。 如需順暢的升級，請參閱 [從基本升級至標準版](upgrade-basic-standard.md) 文章。
@@ -50,7 +50,7 @@ NAT 規則可用來指定要路由傳送流量的後端資源。 例如，設定
 您不需要連線到與 VM 同區域的儲存體，即可透過上述案例獲得輸出連線。 如果不想此連線，請使用如前文所述的網路安全性群組 (NSG)。 如需其他區域的儲存體連線，則需要有輸出連線能力。 請注意，從同區域的 VM 連線到儲存體時，儲存體診斷記錄中來源 IP 位址會是內部提供者的位址，而不是 VM 的公用 IP 位址。 如果希望要將儲存體帳戶的存取，限制在同區域一或多個虛擬網路子網路中的 VM，請在設定儲存體帳戶防火牆時，使用[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，且不要使用公用 IP 位址。 設定好服務端點之後，您就會在儲存體診斷記錄中看到虛擬網路私人 IP 位址，而不是內部提供者的位址。
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>關於輸出連線能力的最佳做法為何？
-Standard Load Balancer 和標準公用 IP 引進輸出連線能力和不同行為。 這些與基本 SKU 不同。 如果您想要在使用標準 SKU 時輸出連線，您必須使用標準公用 IP 位址或標準公用 Load Balancer 明確定義該連線。 這包括在使用內部 Standard Load Balancer 時建立輸出連線。 建議您一律使用標準公用 Load Balancer 的輸出規則。 這表示當使用內部 Standard Load Balancer 時，如果想要使用輸出連線能力，您需要採取步驟來為後端集區中的 VM 建立輸出連線能力。 在輸出連線的內容中，單一獨立 VM （可用性設定組中的所有 VM），VMSS 中的所有實例會以群組的方式運作。 這表示，如果可用性設定組中的單一 VM 與標準 SKU 相關聯，則此時可用性設定組內的所有 VM 執行個體行為會遵循相同的規則，就如同與標準 SKU 相關聯一般，雖然個別執行個體並非直接與它相關聯。 當獨立 VM 有多張網路介面卡連接到負載平衡器時，也會出現這樣的行為。 如果單獨新增一張 NIC，就會出現相同的行為。 請仔細檢閱這整份文件了解整體概念，檢閱 [Standard Load Balancer](load-balancer-standard-overview.md) 了解 SKU 之間的差異，並檢閱[輸出規則](load-balancer-outbound-connections.md#outboundrules)。
+Standard Load Balancer 和標準公用 IP 引進輸出連線能力和不同行為。 這些與基本 SKU 不同。 如果您想要在使用標準 SKU 時輸出連線，您必須使用標準公用 IP 位址或標準公用 Load Balancer 明確定義該連線。 這包括在使用內部 Standard Load Balancer 時建立輸出連線。 建議您一律使用標準公用 Load Balancer 的輸出規則。 這表示當使用內部 Standard Load Balancer 時，如果想要使用輸出連線能力，您需要採取步驟來為後端集區中的 VM 建立輸出連線能力。 在輸出連線的內容中，單一獨立 VM （可用性設定組中的所有 VM），VMSS 中的所有實例會以群組的方式運作。 這表示，如果可用性設定組中的單一 VM 與標準 SKU 相關聯，則此時可用性設定組內的所有 VM 執行個體行為會遵循相同的規則，就如同與標準 SKU 相關聯一般，雖然個別執行個體並非直接與它相關聯。 當獨立 VM 有多張網路介面卡連接到負載平衡器時，也會出現這樣的行為。 如果單獨新增一張 NIC，就會出現相同的行為。 請仔細檢閱這整份文件了解整體概念，檢閱 [Standard Load Balancer](./load-balancer-overview.md) 了解 SKU 之間的差異，並檢閱[輸出規則](load-balancer-outbound-connections.md#outboundrules)。
 使用輸出規則可讓您細部控制輸出連線的所有層面。
  
 ## <a name="next-steps"></a>後續步驟

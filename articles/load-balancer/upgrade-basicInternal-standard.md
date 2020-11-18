@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: a6d2b69b0b498601497c4b33fb6bdfede87002df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59bf5eb22289238633b1f07c29a878bd0a9ae620
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500244"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696161"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連接
-[Azure Standard Load Balancer](load-balancer-overview.md) 透過區域冗余提供一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱 [比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
+[Azure Standard Load Balancer](load-balancer-overview.md) 透過區域冗余提供一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱 [比較表](./skus.md#skus)。
 
 本文介紹 PowerShell 腳本，該腳本會使用與基本 Load Balancer 相同的設定來建立 Standard Load Balancer，並將流量從基本 Load Balancer 遷移至 Standard Load Balancer。
 
@@ -23,14 +23,14 @@ ms.locfileid: "89500244"
 
 有 Azure PowerShell 腳本可用來執行下列動作：
 
-* 在您指定的位置中建立標準內部 SKU Load Balancer。 請注意，標準的內部 Load Balancer 不會提供任何 [輸出連接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) 。
+* 在您指定的位置中建立標準內部 SKU Load Balancer。 請注意，標準的內部 Load Balancer 不會提供任何 [輸出連接](./load-balancer-outbound-connections.md) 。
 * 將基本 SKU Load Balancer 的設定順暢地複製到新建立的 Standard Load Balancer。
 * 順暢地將私人 Ip 從基本 Load Balancer 移至新建立的 Standard Load Balancer。
 * 將 Vm 從基本 Load Balancer 的後端集區順暢地移至 Standard Load Balancer 的後端集區
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* 腳本僅支援內部 Load Balancer 升級，但不需要任何輸出連接。 如果您需要部分 Vm 的 [輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) 連線，請參閱此 [頁面](upgrade-InternalBasic-To-PublicStandard.md) 以取得相關指示。 
+* 腳本僅支援內部 Load Balancer 升級，但不需要任何輸出連接。 如果您需要部分 Vm 的 [輸出](./load-balancer-outbound-connections.md) 連線，請參閱此 [頁面](upgrade-InternalBasic-To-PublicStandard.md) 以取得相關指示。 
 * 基本 Load Balancer 必須與後端 Vm 和 Nic 位於相同的資源群組中。
 * 如果在不同區域中建立標準負載平衡器，您將無法將舊區域中現有的 Vm 與新建立的 Standard Load Balancer 建立關聯。 若要解決這項限制，請務必在新區域中建立新的 VM。
 * 如果您的 Load Balancer 沒有任何前端 IP 設定或後端集區，您可能會遇到執行腳本的錯誤。 請確定它們不是空的。
@@ -39,7 +39,7 @@ ms.locfileid: "89500244"
 
 1. 在左側功能表中選取 [ **所有服務** ]，選取 [ **所有資源**]，然後從 [資源] 清單中選取您的基本 Load Balancer。
 
-2. 在 [ **設定**] 底下，選取 [ **前端 ip**設定]，然後選取第一個前端 ip 設定。 
+2. 在 [ **設定**] 底下，選取 [ **前端 ip** 設定]，然後選取第一個前端 ip 設定。 
 
 3. 針對 [**指派**]，選取 [**靜態**]
 
@@ -96,7 +96,7 @@ ms.locfileid: "89500244"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>將設定從 v1 遷移至 v2 的 Azure PowerShell 腳本是否有任何限制？
 
-是。 請參閱 [警告/限制](#caveatslimitations)。
+可以。 請參閱 [警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將基本 Load Balancer 的流量切換至新建立的 Standard Load Balancer？
 

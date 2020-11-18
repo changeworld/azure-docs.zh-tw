@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/06/2020
 ms.author: victorh
-ms.openlocfilehash: 2f2cf9639acfa1330c8347ff654649004d7c382e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7196c7715ad5d2c02759040b780b96218e1655e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380894"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695940"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>在網路規則中使用 FQDN 篩選
 
@@ -25,7 +25,7 @@ ms.locfileid: "94380894"
 
 一旦定義您的組織所需的 DNS 伺服器 (Azure DNS 或您自己的自訂 DNS) ，Azure 防火牆會根據選取的 DNS 伺服器，將 FQDN 轉譯為 (es) 的 IP 位址。 這項轉譯會針對應用程式和網路規則處理進行。
 
-發生新的 DNS 解析時，系統會將新的 IP 位址新增至防火牆規則。 DNS 伺服器不再傳回的舊 IP 位址會在15分鐘內到期。 Azure 防火牆規則會每隔15秒更新一次，從網路規則中的 Fqdn DNS 解析。
+當發生新的 DNS 解析時，系統會將新的 IP 位址新增至防火牆規則。 DNS 伺服器不再傳回的舊 IP 位址會在15分鐘內到期。 Azure 防火牆規則會每隔15秒更新一次，從網路規則中的 Fqdn DNS 解析。
 
 ### <a name="differences-in-application-rules-vs-network-rules"></a>應用程式規則與網路規則的差異
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038206"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694988"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>僅輸出負載平衡器組態
 
@@ -65,20 +65,20 @@ ms.locfileid: "88038206"
 
 2. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]  ，或在搜尋方塊中搜尋 [虛擬網路]  。
 
-2. 在 [建立虛擬網路]  中，在 [基本]  索引標籤中輸入或選取這項資訊：
+2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
 
-    | **設定**          | **ReplTest1**                                                           |
+    | **設定**          | **值**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **專案詳細資料**  |                                                                 |
     | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
-    | 資源群組   | 選取 [建立新的]****。 </br> 輸入 **myResourceGroupLB**。 </br> 選取 [確定]  。 |
+    | 資源群組   | 選取 [建立新的]  。 </br> 輸入 **myResourceGroupLB**。 </br> 選取 [確定]。 |
     | **執行個體詳細資料** |                                                                 |
     | 名稱             | 輸入 **myVNet**                                    |
     | 區域           | 選取 **美國東部 2** |
 
 3. 選取 [IP 位址]  索引標籤，或選取頁面底部的 [下一步：  IP 位置] 按鈕。
 
-4. 在 [IP 位址]  索引標籤中，輸入這項資訊：
+4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
@@ -86,7 +86,7 @@ ms.locfileid: "88038206"
 
 5. 在 [子網路名稱] 下，選取 [預設] 字組。
 
-6. 在 [編輯子網路]  中，輸入這項資訊：
+6. 在 [編輯子網路] 中，輸入這項資訊：
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
@@ -95,7 +95,7 @@ ms.locfileid: "88038206"
 
 7. 選取 [儲存]。
 
-8. 選取 [安全性]**** 索引標籤。
+8. 選取 [安全性] 索引標籤。
 
 9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
 
@@ -134,7 +134,7 @@ ms.locfileid: "88038206"
     | 確認密碼 | 再次輸入密碼 |
     | **輸入連接埠規則** |  |
     | 公用輸入連接埠 | 選取 [**允許選取的埠**] |
-    | 選取輸入連接埠 | 選取 **RDP (3389) ** |
+    | 選取輸入連接埠 | 選取 **RDP (3389)** |
 
 3. 選取 [網路] 索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路]** 。
   
@@ -207,7 +207,7 @@ ms.locfileid: "88038206"
     | 區域         | 選取 [美國東部 2]。                                        |
     | 類型          | 選取 [公用]。                                        |
     | SKU           | 選取 [標準] |
-    | 公用 IP 位址 | 選取 [建立新的]****。 |
+    | 公用 IP 位址 | 選取 [建立新的]  。 |
     | 公用 IP 位址名稱 | 在文字方塊中輸入 **myFrontendIP** 。|
     | 可用性區域 | 選取 [區域備援] |
     | 新增公用 IPv6 位址 | 請選取 [否] 。 |
@@ -250,7 +250,7 @@ ms.locfileid: "88038206"
 
 ### <a name="test-connectivity-before-outbound-rule"></a>在輸出規則之前測試連線能力
 
-1. 在左側功能表中選取 [**所有服務**]，選取 [**所有資源**]，然後從 [資源] 清單中選取位於**MyResourceGroupLB**資源群組中的**myVM** 。
+1. 在左側功能表中選取 [**所有服務**]，選取 [**所有資源**]，然後從 [資源] 清單中選取位於 **MyResourceGroupLB** 資源群組中的 **myVM** 。
 
 2. 在 [概觀] 頁面上，選取 [連線]，然後選 [Bastion]。
 
@@ -260,7 +260,7 @@ ms.locfileid: "88038206"
 
 6. 開啟 Internet Explorer。
 
-7. **https://whatsmyip.org**在網址列中輸入。
+7. **https://whatsmyip.org** 在網址列中輸入。
 
 8. 連接應該會失敗。 根據預設，標準公用負載平衡器 [不允許未定義輸出規則的輸出流量](load-balancer-overview.md#securebydefault)。
  
@@ -281,11 +281,11 @@ ms.locfileid: "88038206"
     | 後端集區 | 選取 [ **myPublicBackendPool**]。| |
     | 連接埠配置 -> 連接埠配置 | 選取 **[使用預設的輸出埠數目**] |
 
-4. 選取 [新增]。
+4. 選取 [新增]  。
 
 ### <a name="test-connectivity-after-outbound-rule"></a>在輸出規則之後測試連線能力
 
-1. 在左側功能表中選取 [**所有服務**]，選取 [**所有資源**]，然後從 [資源] 清單中選取位於**MyResourceGroupLB**資源群組中的**myVM** 。
+1. 在左側功能表中選取 [**所有服務**]，選取 [**所有資源**]，然後從 [資源] 清單中選取位於 **MyResourceGroupLB** 資源群組中的 **myVM** 。
 
 2. 在 [概觀] 頁面上，選取 [連線]，然後選 [Bastion]。
 
@@ -295,11 +295,11 @@ ms.locfileid: "88038206"
 
 6. 開啟 Internet Explorer。
 
-7. **https://whatsmyip.org**在網址列中輸入。
+7. **https://whatsmyip.org** 在網址列中輸入。
 
 8. 連接應該會成功。
 
-9. 顯示的 IP 位址應該是 **myPublicLoadBalancer**的前端 ip 位址。
+9. 顯示的 IP 位址應該是 **myPublicLoadBalancer** 的前端 ip 位址。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -316,4 +316,4 @@ ms.locfileid: "88038206"
 - 瞭解 [Azure Load Balancer](load-balancer-overview.md)。
 - 瞭解 [Azure 中的輸出](load-balancer-outbound-connections.md)連線。
 - 負載平衡器 [常見問題](load-balancer-faqs.md)。
-- 瞭解[Azure](https://docs.microsoft.com/azure/bastion/bastion-overview)防禦
+- 瞭解[Azure](../bastion/bastion-overview.md)防禦

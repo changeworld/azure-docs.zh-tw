@@ -12,20 +12,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e08b69271ba9d115c26418bc5e421ee6c94b031d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708586"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695702"
 ---
 # <a name="delete-replications"></a>刪除複寫
 
 您可以藉由刪除磁片區複寫，在來源與目的地磁片區之間終止複寫連接。 您可以從來源或目的地磁片區執行刪除操作。 刪除作業只會移除複寫的授權;它不會移除來源或目的地磁片區。 
 
 ## <a name="steps"></a>步驟
+
+1. 刪除磁片區複寫之前，請確定複寫對等互連已中斷。    
+    請參閱 [顯示覆寫關聯性的健全狀況狀態](cross-region-replication-display-health-status.md) 和中斷複寫對 [等互連](cross-region-replication-manage-disaster-recovery.md#break-replication-peering-to-activate-the-destination-volume)。  
 
 1. 若要刪除磁片區複寫，請選取來源或目的地磁片 **區的複寫** 。  
 

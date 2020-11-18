@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410569"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696212"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 
@@ -38,7 +38,7 @@ Azure 可讓您在共用的實體基礎結構上執行 (Vm) 的應用程式和�
 
 ### <a name="azure-tenancy"></a>Azure 租用
 
-Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中唯一的[租用戶](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租用戶層級隔離是使用 Azure Active Directory 及其所提供的[角色型控制](../../role-based-access-control/overview.md)來達成。 每個 Azure 訂用帳戶都會與一個 Azure Active Directory (AD) 目錄相關聯。
+Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中唯一的[租用戶](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租使用者層級隔離是使用 Azure Active Directory 和它所提供的 [Azure 角色型存取控制](../../role-based-access-control/overview.md) 來達成。 每個 Azure 訂用帳戶都會與一個 Azure Active Directory (AD) 目錄相關聯。
 
 該目錄中的使用者、群組和應用程式可以管理 Azure 訂用帳戶中的資源。 您可以使用 Azure 入口網站、Azure 命令列工具或 Azure 管理 API 來指派這些存取權限。 Azure AD 租用戶邏輯上是使用安全性界限來隔離，如此一來就沒有任何客戶可以存取或危害共同的租用戶 (不論是惡意或意外)。 Azure AD 是在已隔離網路區段上隔離之「裸機」伺服器上執行的，其中主機層級的封包篩選和 Windows 防火牆會封鎖來路不明的連接和流量。
 
@@ -52,7 +52,7 @@ Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [A
 
 - 實際存取組成 Azure AD 服務的伺服器，以及直接存取 Azure AD 的後端系統，會受到限制。
 
-- Azure AD 使用者無法存取實體資產或位置，因此，不可能略過以下所述的邏輯 RBAC 原則檢查。
+- Azure AD 使用者沒有實體資產或位置的存取權，因此不可能會略過下列所述的邏輯 Azure RBAC 原則檢查。
 
 針對診斷與維護需求，必須使用採用 Just-In-Time 權限提高系統的作業模型。 Azure AD Privileged Identity Management (PIM) 引進合格系統管理員的概念。合格的系統 [管理員](../../active-directory/privileged-identity-management/pim-configure.md) 應該是現在需要特殊許可權存取權的使用者，而不是每天都有。 在使用者需要存取權之前，角色會處於非作用中狀態，然後使用者須完成啟用程序，才能在一段預定的時間內成為作用中的系統管理員。
 
@@ -80,7 +80,7 @@ Azure RBAC 有適用於所有資源類型的三個基本角色：
 
 Azure 中的其餘 Azure 角色允許管理特定的 Azure 資源。 例如，「虛擬機器參與者」角色可讓使用者建立和管理虛擬機器。 但不會授予他們存取虛擬機器所連接之 Azure 虛擬網路或子網路的存取權。
 
-[RBAC 內建角色](../../role-based-access-control/built-in-roles.md)會列出 Azure 中可用的角色。 它會指定每個內建角色授與使用者的作業和範圍。 如果您想要定義自己的角色，獲得更進一步控制，請參閱如何建立 [Azure RBAC 中的自訂角色](../../role-based-access-control/custom-roles.md)。
+[Azure 內建角色](../../role-based-access-control/built-in-roles.md) 會列出 azure 中可用的角色。 它會指定每個內建角色授與使用者的作業和範圍。 如果您想要定義自己的角色，獲得更進一步控制，請參閱如何建立 [Azure RBAC 中的自訂角色](../../role-based-access-control/custom-roles.md)。
 
 Azure Active Directory 的一些其他功能包括：
 

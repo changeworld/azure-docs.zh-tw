@@ -10,15 +10,15 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/23/2019
+ms.date: 11/16/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4891d01c59289afddb244879e042e45b7b7a1aa6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404896"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695719"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 開機錯誤
 
@@ -41,7 +41,7 @@ ms.locfileid: "91404896"
 
 如果 VM 無法找到 BitLocker 復原金鑰 (BEK) 檔案來將已加密的磁碟解密，就可能發生此問題。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要解決此問題，請停止並解除配置 VM，然後啟動 VM。 此作業會強制讓 VM 從 Azure Key Vault 擷取 BEK 檔案，然後放到加密的磁碟中。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "91404896"
 
     如果您看到兩個重複的磁碟區，時間戳記較新的磁碟區是復原 VM 目前使用的 BEK 檔案。
 
-    如果 [內容類型]**** 值是 [包裝的 BEK]****，請移至[金鑰加密金鑰 (KEK) 案例](#key-encryption-key-scenario)。
+    如果 [內容類型] 值是 [包裝的 BEK]，請移至[金鑰加密金鑰 (KEK) 案例](#key-encryption-key-scenario)。
 
     您已得到磁碟機的 BEK 檔案名稱，接下來您必須建立 secret-file-name.BEK 檔案，以將磁碟機解除鎖定。
 
@@ -172,11 +172,21 @@ ms.locfileid: "91404896"
             [string] 
             $adTenant
             )
-    # Load ADAL Assemblies. The following script assumes that the Azure PowerShell version you installed is 1.0.0. 
-    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    # Load ADAL Assemblies
+    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    If ((Test-Path -Path $adal) -and (Test-Path -Path $adalforms)) { 
+
     [System.Reflection.Assembly]::LoadFrom($adal)
     [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }
+     else
+     {
+    $adal="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms ="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Agit pgit ccounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    [System.Reflection.Assembly]::LoadFrom($adal)
+    [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }  
 
     # Set well-known client ID for AzurePowerShell
     $clientId = "1950a258-227b-4e31-a9cf-717495945fc2" 
@@ -205,7 +215,8 @@ ms.locfileid: "91404896"
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
     $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
-    $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($keyVaultSecret.SecretValue)
+    $wrappedBekSecretBase64 = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     $jsonObject = @"
     {
     "alg": "RSA-OAEP",
@@ -236,6 +247,10 @@ ms.locfileid: "91404896"
     #Convert base64 string to bytes and write to BEK file
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
+
+    #Delete the key from the memory
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+    clear-variable -name wrappedBekSecretBase64
     ```
 3. 設定參數。 此指令碼會處理 KEK 祕密以建立 BEK 金鑰，再將它儲存到復原 VM 上的本機資料夾。 如果您在執行腳本時收到錯誤，請參閱 [腳本疑難排解](#script-troubleshooting) 一節。
 
@@ -283,9 +298,7 @@ ms.locfileid: "91404896"
 
 **錯誤：無法載入檔案或元件**
 
-發生此錯誤的原因是 ADAL 元件的路徑錯誤。 如果僅針對目前的使用者安裝 AZ 模組，ADAL 元件將會位於 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` 。
-
-您也可以搜尋 `Az.Accounts` 資料夾來尋找正確的路徑。
+發生此錯誤的原因是 ADAL 元件的路徑錯誤。 您可以搜尋 `Az.Accounts` 資料夾來尋找正確的路徑。
 
 **錯誤：無法辨識 Get-AzKeyVaultSecret 或 Get-AzKeyVaultSecret 作為 Cmdlet 的名稱**
 

@@ -1,22 +1,22 @@
 ---
 title: 設定 Python 開發環境
 titleSuffix: Azure Machine Learning
-description: 瞭解如何為 Azure Machine Learning 設定 Python 開發環境。 使用 Conda 環境、建立設定檔，以及設定您自己的雲端式筆記本伺服器、Jupyter 筆記本、Azure Databricks、Ide、程式碼編輯器和資料科學虛擬機器。
+description: 在 Jupyter 筆記本、Visual Studio Code、Azure Databricks 及資料科學虛擬機器中設定 Azure Machine Learning Python 開發環境。
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 09/30/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422888"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695362"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>針對 Azure Machine Learning 設定 Python 開發環境
 
@@ -37,13 +37,13 @@ ms.locfileid: "93422888"
 
 * Visual Studio Code：如果您使用 Visual Studio Code，則 [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) 模組包含 Python 的廣泛語言支援，以及可讓您更方便且更有效率地使用 Azure Machine Learning 的功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure Machine Learning 工作區。 如果您沒有帳戶，可以透過 [Azure 入口網站](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure Resource Manager 範本](how-to-create-workspace-template.md)建立 Azure Machine Learning 工作區。
 
 ### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> 僅限本機和 DSVM：建立工作區設定檔
 
-工作區設定檔案是 JSON 檔案，可告知 SDK 如何與您的 Azure Machine Learning 工作區進行通訊。 檔案名稱為 *config.json* ，其格式如下：
+工作區設定檔案是 JSON 檔案，可告知 SDK 如何與您的 Azure Machine Learning 工作區進行通訊。 檔案名稱為 *config.json*，其格式如下：
 
 ```json
 {
@@ -61,13 +61,13 @@ ms.locfileid: "93422888"
 
 * Azure 入口網站
 
-    **下載檔案** ：在 [Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [ **總覽** ] 區段中選取 [ **下載 config.js** 。
+    **下載檔案**：在 [Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.js** 。
 
     ![Azure 入口網站](./media/how-to-configure-environment/configure.png)
 
 * Azure Machine Learning Python SDK
 
-    建立腳本以連接到您的 Azure Machine Learning 工作區，然後使用 [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法來產生您的檔案，並將它儲存為 *azureml/config.js* 。 請務必將 `subscription_id` 、和取代為 `resource_group` `workspace_name` 您自己的。
+    建立腳本以連接到您的 Azure Machine Learning 工作區，然後使用 [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法來產生您的檔案，並將它儲存為 *azureml/config.js*。 請務必將 `subscription_id` 、和取代為 `resource_group` `workspace_name` 您自己的。
 
     ```python
     from azureml.core import Workspace

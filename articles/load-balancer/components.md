@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685506"
+ms.locfileid: "94693761"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
@@ -128,7 +128,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 
 ## <a name="limitations"></a>限制
 
-- 了解 Load Balancer [限制](https://aka.ms/lblimits) 
+- 了解 Load Balancer [限制](../azure-resource-manager/management/azure-subscription-service-limits.md) 
 - 負載平衡器提供針對特定 TCP 或 UDP 通訊協定進行負載平衡和連接埠轉送的功能。 負載平衡規則和輸入 NAT 規則支援 TCP 和 UDP，但不支援其他 IP 通訊協定，包括 ICMP。
 - 從後端 VM 至內部負載平衡器前端的輸出流程將會失敗。
 - 負載平衡器規則無法跨越兩個虛擬網路。  前端和其後端執行個體必須位於相同的虛擬網路。  
@@ -138,12 +138,12 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 
 - 請參閱 [建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
 - 深入了解 [Azure Load Balancer](load-balancer-overview.md)。
-- 了解[公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
+- 了解[公用 IP 位址](../virtual-network/virtual-network-public-ip-address.md)
 - 了解[私戈 IP 位址](../virtual-network/private-ip-addresses.md)
 - 了解如何使用[標準 Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
 - 了解[標準 Load Balancer 診斷](load-balancer-standard-diagnostics.md)。
 - 深入了解[閒置時重設 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 連接埠負載平衡規則的標準 Load Balancer](load-balancer-ha-ports-overview.md)。
-- 深入了解[網路安全性群組](../virtual-network/security-overview.md)。
-- 深入了解[負載平衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。
-- 了解如何使用[連接埠轉送](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)。
+- 深入了解[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
+- 深入了解[負載平衡器限制](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)。
+- 了解如何使用[連接埠轉送](./tutorial-load-balancer-port-forwarding-portal.md)。

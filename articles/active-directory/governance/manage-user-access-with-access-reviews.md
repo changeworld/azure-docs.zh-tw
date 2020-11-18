@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 001adaff1fed901638276e548ac1d5fdb41bdc53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc12b4cb7e97a0808405baebc64ca83cdb742bf1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798302"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696943"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 存取權檢閱來管理使用者存取權
 
@@ -30,7 +30,7 @@ ms.locfileid: "87798302"
 > [!NOTE]
 > 如果您只想檢閱來賓使用者的存取權，而不要檢閱各類使用者的存取權，請參閱[透過存取權檢閱管理來賓使用者存取權](manage-guest-access-with-access-reviews.md)。 若您想要檢閱使用者的系統管理角色 (例如全域系統管理員) 成員資格，請參閱[在 Azure AD Privileged Identity Management 中開始存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure AD Premium P2
 
@@ -44,7 +44,7 @@ ms.locfileid: "87798302"
 
 2. 決定是否要讓每個使用者檢閱自己的存取權，或讓一個或多個使用者檢閱每個人的存取權。
 
-3. 以全域管理員或使用者系統管理員身分，移至 [身分 [識別管理] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+3. 下列其中一個角色：全域管理員、使用者系統管理員或 (預覽版) 要檢查之群組的 M365 或 AAD 安全性群組擁有者，請移至 [身分 [識別管理] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
 4. 建立存取權檢閱。 如需詳細資訊，請參閱 [建立群組或應用程式的存取權審核](create-access-review.md)。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655726"
+ms.locfileid: "94696994"
 ---
 # <a name="step-3-validate-connectivity"></a>步驟3：驗證連線能力
 
@@ -44,7 +44,7 @@ ms.locfileid: "94655726"
 1. 在記錄轉寄站上執行下列腳本 (套用工作區識別碼來取代預留位置) ，以檢查安全性解決方案、記錄轉寄站和 Azure Sentinel 之間的連線能力。 此腳本會檢查守護程式是否正在接聽正確的埠、是否已正確設定轉送，而且沒有任何專案會封鎖 daemon 與 Log Analytics 代理程式之間的通訊。 它也會傳送 mock 訊息 ' TestCommonEventFormat ' 來檢查端對端連線能力。 <br>
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
    - 您可能會收到一則訊息，引導您執行命令以更正 ***電腦* 欄位對應** 的問題。 如需詳細資訊，請參閱 [驗證腳本中的說明](#mapping-command) 。
@@ -245,6 +245,7 @@ ms.locfileid: "94655726"
 ---
 
 ## <a name="next-steps"></a>後續步驟
+
 在本檔中，您已瞭解如何將 CEF 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](./tutorial-detect-threats-built-in.md)。

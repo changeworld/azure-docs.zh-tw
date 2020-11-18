@@ -1,23 +1,22 @@
 ---
 title: 關於 Azure Machine Learning 環境
 titleSuffix: Azure Machine Learning
-description: 在本文中，您將瞭解機器學習環境的優點，以在各種計算目標上啟用可重現、可供審核且可攜的機器學習相依性定義。
+description: 深入瞭解機器學習環境，以針對各種計算目標啟用可重現、可供審核且 & 的便攜機器學習相依性定義。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322189"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695379"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什麼是 Azure Machine Learning 環境？
-
 
 Azure Machine Learning 環境是您機器學習訓練發生所在環境的封裝。 他們會指定您訓練和評分腳本周圍的 Python 套件、環境變數和軟體設定。 它們也會指定執行時間 (Python、Spark 或 Docker) 。 環境是您 Machine Learning 工作區中的受控和版本化實體，可在各種計算目標上啟用可重現、可供審核及可移植的機器學習工作流程。
 
@@ -35,7 +34,7 @@ Azure Machine Learning 環境是您機器學習訓練發生所在環境的封裝
 
 ## <a name="types-of-environments"></a>環境的類型
 
-環境可廣泛分為三種類別： *策劃* 、 *使用者管理* 和 *系統管理* 。
+環境可廣泛分為三種類別： *策劃*、 *使用者管理* 和 *系統管理*。
 
 策劃環境是由 Azure Machine Learning 提供，且預設會在您的工作區中提供。 其目的是要依原樣使用，其中包含 Python 套件和設定的集合，可協助您開始使用各種機器學習架構。 這些預先建立的環境也允許更快的部署時間。 如需完整清單，請參閱 [策劃環境文章](resource-curated-environments.md)。
 

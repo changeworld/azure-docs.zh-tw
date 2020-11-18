@@ -4,17 +4,17 @@ description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用 PodSecurit
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: a9f6ead7edea7a3a6240e116d3073ea01fa9f6bb
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900104"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695991"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service (AKS) 中使用 pod 安全性原則來保護叢集
 
 > [!WARNING]
-> **這份檔中所述的功能（pod 安全性原則 (preview) ）已設定為取代，並將在2021年2月1日之後不再提供使用** ，以利 [AKS 的 Azure 原則](use-pod-security-on-azure-policy.md)。 淘汰日期已從2020年10月15日的先前日期延長。
+> **這份檔中所述的功能（pod 安全性原則 (preview) ）已設定為取代，並將在2021的5月31日之後無法再使用** ，以利 [AKS 的 Azure 原則](use-pod-security-on-azure-policy.md)。 淘汰日期已從2020年10月15日的先前日期延長。
 >
 > 淘汰 Pod 安全性原則 (預覽) 之後，您必須在任何使用已淘汰功能的現有叢集上停用此功能，以執行未來的叢集升級並保留在 Azure 支援的範圍中。
 >
@@ -52,7 +52,7 @@ az extension update --name aks-preview
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-狀態需要幾分鐘的時間才會顯示「已註冊」  。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
+狀態需要幾分鐘的時間才會顯示「已註冊」。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
@@ -94,7 +94,7 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>預設 AKS 原則
 
-當您啟用 pod 安全性原則時，AKS 會建立一個名為「特殊 *許可權* 」的預設原則。 請勿編輯或移除預設原則。 相反地，請建立您自己的原則來定義您想要控制的設定。 讓我們先看看這些預設原則如何影響 pod 部署。
+當您啟用 pod 安全性原則時，AKS 會建立一個名為「特殊 *許可權*」的預設原則。 請勿編輯或移除預設原則。 相反地，請建立您自己的原則來定義您想要控制的設定。 讓我們先看看這些預設原則如何影響 pod 部署。
 
 若要查看可用的原則，請使用 [kubectl 取得 psp][kubectl-get] 命令，如下列範例所示
 
@@ -158,7 +158,7 @@ kubectl create rolebinding \
 若要反白顯示一般系統管理使用者在使用 `kubectl` 和先前步驟中建立的非系統管理員使用者之間的差異，請建立兩個命令列別名：
 
 * **Kubectl-admin** 別名適用于一般系統管理使用者，且範圍設定為 *psp aks* 命名空間。
-* **Kubectl-nonadminuser** 別名適用于在上一個步驟中建立的 *nonadmin 使用者* ，且範圍設定為 *psp aks* 命名空間。
+* **Kubectl-nonadminuser** 別名適用于在上一個步驟中建立的 *nonadmin 使用者*，且範圍設定為 *psp aks* 命名空間。
 
 建立這兩個別名，如下列命令所示：
 
@@ -315,7 +315,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>允許使用者帳戶使用自訂 pod 安全性原則
 
-在上一個步驟中，您已建立 pod 安全性原則來拒絕要求特殊許可權存取的 pod。 若要允許使用原則，您可以建立 *角色* 或 *ClusterRole* 。 然後，您可以使用 *RoleBinding* 或 *ClusterRoleBinding* 讓這些角色的其中一個產生關聯。
+在上一個步驟中，您已建立 pod 安全性原則來拒絕要求特殊許可權存取的 pod。 若要允許使用原則，您可以建立 *角色* 或 *ClusterRole*。 然後，您可以使用 *RoleBinding* 或 *ClusterRoleBinding* 讓這些角色的其中一個產生關聯。
 
 在此範例中，請建立一個 ClusterRole，讓您 *使用* 在上一個步驟中建立的 *psp-拒絕許可權* 原則。 建立名為的檔案 `psp-deny-privileged-clusterrole.yaml` ，並貼上下列 YAML 資訊清單：
 

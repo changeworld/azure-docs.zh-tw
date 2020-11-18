@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 1f81285e869bd2c65cce29766de0b2bd39a627f6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557727"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696110"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>Azure 車隊上的虛擬程式安全性
 
@@ -26,7 +26,7 @@ Azure 基礎程式建基於下列安全性目標的考慮：
 | 隔離 | 安全性原則不會要求 Vm 之間的資訊傳輸。 此條件約束需要 Virtual Machine Manager (VMM) 的功能，以及用來隔離記憶體、裝置、網路和受控資源（例如保存的資料）的硬體。 |
 | VMM 完整性 | 為了達到整體系統完整性，會建立並維護個別管理程式元件的完整性。 |
 | 平臺完整性 | 管理程式的完整性取決於它所依賴的硬體和軟體的完整性。 雖然基礎程式無法直接控制平臺的完整性，但 Azure 會依賴硬體和固件機制（例如 [Cerberus](project-cerberus.md) 晶片）來保護和偵測基礎平臺完整性。 如果平臺完整性遭到入侵，則無法執行 VMM 與來賓。 |
-| 限制存取 | 管理功能僅供透過安全連線連接的授權系統管理員使用。 以角色為基礎的存取控制 (RBAC) 機制來強制執行最低許可權原則。 |
+| 限制存取 | 管理功能僅供透過安全連線連接的授權系統管理員使用。 Azure 角色型存取控制會強制執行最低許可權原則， (Azure RBAC) 機制。 |
 | 稽核 | Azure 可讓 audit 功能捕捉和保護系統上發生什麼狀況的資料，以便日後可以進行檢查。 |
 
 Microsoft 的強化 Azure 虛擬程式和虛擬化子系統的方法可細分為下列三種類別。
@@ -68,7 +68,7 @@ Azure 虛擬程式會在下列各項之間強制執行多個安全性界限：
 ## <a name="next-steps"></a>後續步驟
 若要深入瞭解我們要如何驅動平臺完整性和安全性，請參閱：
 
-- [固件安全性](firmware.md)
+- [韌體安全性](firmware.md)
 - [安全開機](secure-boot.md)
 - [測量開機和主機證明](measured-boot-host-attestation.md)
 - [專案 Cerberus](project-cerberus.md)

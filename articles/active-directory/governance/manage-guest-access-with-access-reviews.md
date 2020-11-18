@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb9bc252c733f3445cbf8b27281c2f455d5f2f36
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783190"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696960"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 存取權檢閱來管理來賓存取權
 
@@ -33,7 +33,7 @@ ms.locfileid: "88783190"
 > [!NOTE]
 > 本文件著重於檢閱來賓使用者的存取權。 如果您想檢閱所有使用者的存取權 (不只來賓)，請參閱[使用存取權檢閱管理使用者存取權](manage-user-access-with-access-reviews.md)。 如果您想要在系統管理角色（例如全域管理員）中檢查使用者的成員資格，請參閱 [Azure AD Privileged Identity Management 中的開始存取權審核](../privileged-identity-management/pim-how-to-start-security-review.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - Azure AD Premium P2
 
@@ -41,7 +41,12 @@ ms.locfileid: "88783190"
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>建立和執行來賓的存取權檢閱
 
-首先，以全域系統管理員或使用者系統管理員身分，移至 [身分 [識別管理] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) ，以確定您的組織已準備好存取評論。
+首先，您必須獲指派下列其中一個角色：
+- 全域管理員
+- 使用者管理員
+-  (預覽版) 要審核之群組的 M365 或 AAD 安全性群組擁有者
+
+然後，移至 [身分 [識別管理] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) ，以確定您的組織已準備好存取評論。
 
 Azure AD 可檢閱來賓使用者的幾個案例。
 

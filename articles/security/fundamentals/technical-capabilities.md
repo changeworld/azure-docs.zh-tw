@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 90aafad2a17b9535bde29f811e630112ccbd02e3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409870"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696093"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全性技術功能
 本文提供 Azure 中的安全性服務簡介，可協助您保護雲端中的資料、資源和應用程式，並符合企業的安全性需求。
@@ -156,9 +156,9 @@ Azure AD Privileged Identity Management 可讓您：
 
 ![受保護的資源存取](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 您可以不授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許執行特定的動作。 例如，使用 RBAC 讓一位員工管理某個訂用帳戶中的虛擬機器，而讓另一位員工管理相同訂用帳戶中的 SQL 資料庫。
+Azure RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 您可以不授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許執行特定的動作。 例如，使用 Azure RBAC 讓一位員工管理訂用帳戶中的虛擬機器，而另一位員工則可以管理相同訂用帳戶中的 SQL 資料庫。
 
-![Azure 中受保護的資源存取 (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
+![使用 Azure RBAC 的安全資源存取](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
 ## <a name="data-security-and-encryption"></a>資料安全性與加密
 
@@ -390,7 +390,7 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 - **相依比率、回應時間和失敗率** - 找出外部服務是否會使您降低效能。
 
-- **例外狀況** ：分析彙總的統計資料，或挑選特定執行個體並深入了解堆疊追蹤和相關要求。 伺服器和瀏覽器例外狀況都會報告。
+- **例外狀況**：分析彙總的統計資料，或挑選特定執行個體並深入了解堆疊追蹤和相關要求。 伺服器和瀏覽器例外狀況都會報告。
 
 - **頁面檢視和載入效能** - 由使用者的瀏覽器報告。
 
@@ -398,13 +398,13 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 - **使用者和會話計數。**
 
-- 你的Windows 或 Linux 伺服器中的 **效能計數器** ，例如 CPU、記憶體和網路使用量。
+- 你的Windows 或 Linux 伺服器中的 **效能計數器**，例如 CPU、記憶體和網路使用量。
 
-- 來自 Docker 或 Azure 的 **主機診斷** 。
+- 來自 Docker 或 Azure 的 **主機診斷**。
 
 - 來自您應用程式的 **診斷追蹤記錄** - 讓您使追蹤事件與要求相互關聯。
 
-- 您在用戶端或伺服器程式碼中自行撰寫的 **自訂事件和計量** ，可追蹤商務事件，例如銷售專案或贏得的遊戲。
+- 您在用戶端或伺服器程式碼中自行撰寫的 **自訂事件和計量**，可追蹤商務事件，例如銷售專案或贏得的遊戲。
 
 應用程式的基礎結構通常由許多元件所組成 – 或許是虛擬機器、儲存體帳戶和虛擬網路，或者 web 應用程式、資料庫、資料庫伺服器和第三方服務。 您看不到這些元件作為個別的實體，而是看到它們作為單一實體相關且彼此相依的組件。 您會想要將其當成群組來部署、管理和監視。 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 可讓您將方案中的資源作為群組使用。
 
@@ -422,7 +422,7 @@ Resource Manager 會提供數個優點：
 
 - 您可以定義之間的相依性，使得以正確的順序部署資源。
 
-- 因為角色型存取控制 (RBAC) 會自然地整合至管理平台，您可以將存取控制套用至資源群組中的所有服務。
+- 您可以將存取控制套用至資源群組中的所有服務，因為 azure 角色型存取控制 (Azure RBAC) 原生整合到管理平臺。
 
 - 您可以將標籤套用至資源，以便以邏輯方式組織訂用帳戶中的所有資源。
 

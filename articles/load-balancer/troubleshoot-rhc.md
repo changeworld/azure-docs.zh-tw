@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855255"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696314"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>針對資源健康狀態、前端和後端可用性問題進行疑難排解 
 
@@ -52,7 +52,7 @@ ms.locfileid: "88855255"
   * 如果您發現此 NSG 問題，請移動現有的允許規則，或建立新的高優先順序規則以允許 AzureLoadBalancer 流量
 * 檢查您的作業系統。 確定您的 Vm 正在接聽探查埠並檢查其作業系統防火牆規則，以確保它們不會封鎖來自 IP 位址的探查流量168.63.129.16
   * 您可以藉由在 Linux 終端機中執行 netstat-a Windows 命令提示字元或 netstat-l 來檢查接聽埠
-* 請勿將防火牆 NVA VM 放在負載平衡器的後端集區中。請使用 [使用者定義的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) ，透過防火牆將流量路由傳送到後端實例
+* 請勿將防火牆 NVA VM 放在負載平衡器的後端集區中。請使用 [使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined) ，透過防火牆將流量路由傳送到後端實例
 * 確定您使用的是正確的通訊協定，如果使用 HTTP 探查接聽非 HTTP 應用程式的埠，探查將會失敗
 
 如果您已完成此檢查清單，但仍在尋找健康情況探查失敗，可能會有罕見的平臺問題影響到您的實例的探查服務。 在此情況下，Azure 會將您的回復，並將自動化警示傳送給我們的小組，以快速解決所有平臺問題。
@@ -61,5 +61,3 @@ ms.locfileid: "88855255"
 
 * [深入瞭解 Azure Load Balancer 健康情況探查](load-balancer-custom-probe-overview.md)
 * [深入瞭解 Azure Load Balancer 計量](load-balancer-standard-diagnostics.md)
-
-

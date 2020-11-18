@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684830"
+ms.locfileid: "94696348"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> 針對輸出連接失敗進行疑難排解
 
 本文旨在提供來自 Azure Load Balancer 的輸出連線可能會發生的常見問題解決方案。 客戶經歷的輸出連線能力的大部分問題，都是因為 SNAT 埠耗盡，以及導致捨棄封包的連接逾時。 本文提供減輕這些問題的步驟。
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>管理 SNAT (PAT) 連接埠耗盡
-適用于[PAT](load-balancer-outbound-connections.md)的[暫時埠](load-balancer-outbound-connections.md)是可耗盡資源，如[不含公用 ip 位址的獨立 vm](load-balancer-outbound-connections.md)和[沒有公用 ip 位址的負載平衡 vm](load-balancer-outbound-connections.md)所述。 您可以監視暫時埠的使用方式，並與目前的配置進行比較，以判斷或使用 [本](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) 指南確認 SNAT 耗盡的風險。
+適用于[PAT](load-balancer-outbound-connections.md)的[暫時埠](load-balancer-outbound-connections.md)是可耗盡資源，如[不含公用 ip 位址的獨立 vm](load-balancer-outbound-connections.md)和[沒有公用 ip 位址的負載平衡 vm](load-balancer-outbound-connections.md)所述。 您可以監視暫時埠的使用方式，並與目前的配置進行比較，以判斷或使用 [本](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) 指南確認 SNAT 耗盡的風險。
 
 如果您知道將會對相同的目的地 IP 位址和連接埠起始許多輸出 TCP 或 UDP 連線，並且觀察到失敗的輸出連線，或是支援人員告知您 SNAT 連接埠 ([PAT](load-balancer-outbound-connections.md) 使用的預先配置[暫時連接埠](load-balancer-outbound-connections.md#preallocatedports)) 將耗盡，您有數個可緩和這些問題的一般選項。 請檢閱這些選項並判斷哪一個可用且最適合您的案例。 可能會有一或多個選項有助於管理此案例。
 

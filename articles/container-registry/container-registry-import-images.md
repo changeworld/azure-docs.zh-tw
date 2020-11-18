@@ -3,12 +3,12 @@ title: 匯入容器映像
 description: 藉由使用 Azure API 將容器映像匯入到 Azure 容器登錄，不需要執行 Docker 命令。
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541572"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695600"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>將容器映像匯入到容器登錄
 
@@ -36,7 +36,7 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 > 如果您需要將相同的容器映像散佈到多個 Azure 區域，Azure Container Registry 也支援[異地複寫](container-registry-geo-replication.md)。 藉由異地複寫登錄 (Premium 服務層級) ，您可以使用單一登入的相同映射和標籤名稱來提供多個區域。
 >
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如果您還沒有 Azure 容器登錄，請建立登錄。 如需相關步驟，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。
 
@@ -95,7 +95,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>從相同訂用帳戶中的登錄匯入
 
-例如，將 `aci-helloworld:latest` 映像從來源登錄 mysourceregistry** 匯入到相同 Azure 訂用帳戶中的 myregistry**。
+例如，將 `aci-helloworld:latest` 映像從來源登錄 mysourceregistry 匯入到相同 Azure 訂用帳戶中的 myregistry。
 
 ```azurecli
 az acr import \
@@ -104,7 +104,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-下列範例 `aci-helloworld:latest` 會從來源登錄*mysourceregistry*匯入要*myregistry*的映射，其中已停用登錄的公用端點存取權。 提供來源登錄的資源識別碼與 `--registry`。 請注意， `--source` 參數只會指定來源存放庫和標記，而不會指定登錄登入伺服器名稱。
+下列範例 `aci-helloworld:latest` 會從來源登錄 *mysourceregistry* 匯入要 *myregistry* 的映射，其中已停用登錄的公用端點存取權。 提供來源登錄的資源識別碼與 `--registry`。 請注意， `--source` 參數只會指定來源存放庫和標記，而不會指定登錄登入伺服器名稱。
 
 ```azurecli
 az acr import \
@@ -124,7 +124,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>從不同的訂用帳戶匯入登錄
 
-在下列範例中，mysourceregistry** 位於與 myregistry** 相同 Active Directory 租用戶中的不同訂用帳戶。 提供來源登錄的資源識別碼與 `--registry`。 請注意， `--source` 參數只會指定來源存放庫和標記，而不會指定登錄登入伺服器名稱。
+在下列範例中，mysourceregistry 位於與 myregistry 相同 Active Directory 租用戶中的不同訂用帳戶。 提供來源登錄的資源識別碼與 `--registry`。 請注意， `--source` 參數只會指定來源存放庫和標記，而不會指定登錄登入伺服器名稱。
 
 ```azurecli
 az acr import \
@@ -144,7 +144,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>從不同 AD 租使用者中的 Azure container registry 匯入
@@ -157,7 +157,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>從非 Azure 私人容器登錄匯入

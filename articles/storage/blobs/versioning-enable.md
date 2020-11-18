@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 11/17/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a52b736efaabdca8b08427f293ebf0cda5f22e44
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230665"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695872"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>啟用和管理 Blob 版本設定
 
@@ -77,85 +77,15 @@ ms.locfileid: "89230665"
 
 此範例會建立區塊 blob，然後更新 blob 的中繼資料。 更新 blob 的中繼資料會觸發新版本的建立。 此範例會抓取初始版本和目前的版本，並顯示只有目前的版本包含中繼資料。
 
-```csharp
-public static async Task UpdateVersionedBlobMetadata(string containerName, string blobName)
-{
-    // Create a new service client from the connection string.
-    BlobServiceClient blobServiceClient = new BlobServiceClient(ConnectionString);
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_TriggerNewBlobVersion":::
 
-    // Create a new container client.
-    BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+## <a name="list-blob-versions"></a>列出 blob 版本
 
-    try
-    {
-        // Create the container.
-        await containerClient.CreateIfNotExistsAsync();
+若要使用 .NET v12 用戶端程式庫列出 blob 版本或快照集，請使用 [**版本**] 欄位指定 [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates)參數。
 
-        // Upload a block blob.
-        BlockBlobClient blockBlobClient = containerClient.GetBlockBlobClient(blobName);
+下列程式碼範例示範如何使用適用于 .NET 的 Azure 儲存體用戶端程式庫（ [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) 版或更新版本）來列出 blob 版本。 執行此範例之前，請確定您已啟用儲存體帳戶的版本設定。
 
-        string blobContents = string.Format("Block blob created at {0}.", DateTime.Now);
-        byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
-
-        string initalVersionId;
-        using (MemoryStream stream = new MemoryStream(byteArray))
-        {
-            Response<BlobContentInfo> uploadResponse = await blockBlobClient.UploadAsync(stream, null, default);
-
-            // Get the version ID for the current version.
-            initalVersionId = uploadResponse.Value.VersionId;
-        }
-
-        // Update the blob's metadata to trigger the creation of a new version.
-        Dictionary<string, string> metadata = new Dictionary<string, string>
-        {
-            { "key", "value" },
-            { "key1", "value1" }
-        };
-
-        Response<BlobInfo> metadataResponse = await blockBlobClient.SetMetadataAsync(metadata);
-
-        // Get the version ID for the new current version.
-        string newVersionId = metadataResponse.Value.VersionId;
-
-        // Request metadata on the previous version.
-        BlockBlobClient initalVersionBlob = blockBlobClient.WithVersion(initalVersionId);
-        Response<BlobProperties> propertiesResponse = await initalVersionBlob.GetPropertiesAsync();
-        PrintMetadata(propertiesResponse);
-
-        // Request metadata on the current version.
-        BlockBlobClient newVersionBlob = blockBlobClient.WithVersion(newVersionId);
-        Response<BlobProperties> newPropertiesResponse = await newVersionBlob.GetPropertiesAsync();
-        PrintMetadata(newPropertiesResponse);
-    }
-    catch (RequestFailedException e)
-    {
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-        throw;
-    }
-    finally
-    {
-        await containerClient.DeleteAsync();
-    }
-}
-
-static void PrintMetadata(Response<BlobProperties> propertiesResponse)
-{
-    if (propertiesResponse.Value.Metadata.Count > 0)
-    {
-        Console.WriteLine("Metadata values for version {0}:", propertiesResponse.Value.VersionId);
-        foreach (var item in propertiesResponse.Value.Metadata)
-        {
-            Console.WriteLine("Key:{0}  Value:{1}", item.Key, item.Value);
-        }
-    }
-    else
-    {
-        Console.WriteLine("Version {0} has no metadata.", propertiesResponse.Value.VersionId);
-    }
-}
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobVersions":::
 
 ## <a name="next-steps"></a>後續步驟
 

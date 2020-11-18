@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577510"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695096"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -45,7 +45,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>是否可將 vSphere Vm 從內部部署環境遷移至 Azure VMware 解決方案私人雲端？
 
-是。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
+可以。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>內部部署環境中是否需要特定版本的 vSphere？
 
@@ -74,7 +74,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware 解決方案 Vm 可以 Azure Load Balancer 內部使用嗎？
-不正確。 Azure Load Balancer 內部僅支援 Azure IaaS Vm。 Azure Load Balancer 不支援以 IP 為基礎的後端集區;僅 azure VMware 解決方案 Vm 不是 Azure 物件的 Azure Vm 或虛擬機器擴展集物件。
+否。 Azure Load Balancer 內部僅支援 Azure IaaS Vm。 Azure Load Balancer 不支援以 IP 為基礎的後端集區;僅 azure VMware 解決方案 Vm 不是 Azure 物件的 Azure Vm 或虛擬機器擴展集物件。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案？
 是，您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，則必須要有 ExpressRoute Global Reach，因為 ExpressRoute 閘道不會在其連線的線路之間提供可轉移的路由。
@@ -115,11 +115,11 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 #### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>重複專案設定的正確儲存體原則為何？
 
-使用 VM 範本的 *thin_provision* 儲存體原則。  預設值為 *thick_provision* 。
+使用 VM 範本的 *thin_provision* 儲存體原則。  預設值為 *thick_provision*。
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP 基礎結構記錄檔是共用的嗎？
 
-不正確。
+否。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主機、叢集和私人雲端
 
@@ -196,7 +196,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 
 #### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware 解決方案可以使用 Azure 虛擬 WAN 裝載的 ExpressRoute 閘道嗎？
-是。
+可以。
 
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>在內部部署與 Azure VMware 解決方案之間，透過 ExpressRoute 全球各地的 Azure 虛擬 WAN 來建立傳輸連線能力嗎？
 Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN ExpressRoute 閘道之間提供可轉移的路由。 使用 ExpressRoute Global 觸及可允許內部部署與 Azure VMware 解決方案之間的連線，但會透過 Microsoft 的全球網路（而不是虛擬 WAN 中樞）進行連線。
@@ -253,7 +253,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>如何? 要求增加 Azure VMware 解決方案的主機配額嗎？
 
-針對 CSP 管理的訂用帳戶，客戶必須向合作夥伴執行要求，且合作夥伴小組會與 Microsoft 合作，以增加訂用帳戶的配額。 
+針對 CSP 管理的訂用帳戶，客戶必須向合作夥伴執行要求，且合作夥伴小組會與 Microsoft 合作，以增加訂用帳戶的配額。 如需詳細資訊，請參閱 [如何啟用 Azure VMware 解決方案資源文章](enable-azure-vmware-solution.md) 以取得詳細資料。 
 
 若是 EA 訂閱，客戶必須遵循此程式。
 
@@ -263,7 +263,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
 
 
-1. 在您的 Azure 入口網站中的 [說明 **+ 支援** ] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：
+1. 在您的 Azure 入口網站中的 [說明 **+ 支援**] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：
    - **問題類型：** 技術需求
    - **訂** 用帳戶：選取您的訂用帳戶
    - **服務：** 所有服務都 > Azure VMware 解決方案
@@ -299,6 +299,10 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
 Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+
+#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+
+No. Currently Azure VMware Solution does not offer multi-tenancy.
 
 
 ## Customer communication

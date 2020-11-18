@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84221001"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695549"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>針對常見的 Azure Load Balancer 部署錯誤進行疑難排解
 
@@ -35,11 +35,11 @@ ms.locfileid: "84221001"
 |CannotUseInactiveHealthProbe| 您擁有的探查都是由針對虛擬機器擴展集健康情況所設定的規則使用。 確保正積極使用所設定的探查。 |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| 您不能有多個相同類型 (內部、公用) 的 Load Balancer。 您最多可有一個內部和一個公用 Load Balancer。 |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | 多重放置的群組虛擬機器擴展集或跨可用性區域的虛擬機器擴展集不支援 Basic Load Balancer。 請改為使用 Standard Load Balancer。 |
-|MarketplacePurchaseEligibilityFailed | 切換至正確的系統管理帳戶才能購買，因為訂用帳戶是 EA 訂用帳戶。 您可以在[這裡](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)取得詳細資訊。 |
+|MarketplacePurchaseEligibilityFailed | 切換至正確的系統管理帳戶才能購買，因為訂用帳戶是 EA 訂用帳戶。 您可以在[這裡](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)取得詳細資訊。 |
 |ResourceDeploymentFailure| 如果您的負載平衡器處於失敗狀態，請遵循下列步驟，使其從失敗狀態恢復：<ol><li>移至 https://resources.azure.com ，並以您的 Azure 入口網站認證登入。</li><li>選取 [讀取/寫入]。</li><li>在左側，展開 [訂用帳戶]，然後展開含有要更新之 Load Balancer 的訂用帳戶。</li><li>展開 [ResourceGroups]，然後展開含有所要更新 Load Balancer 的資源群組。</li><li>選取 [Microsoft.Network] > [LoadBalancers]，然後選取要更新的 Load Balancer (LoadBalancer_1)。</li><li>在 [LoadBalancer_1] 的顯示頁面上，選取 [取得] > [編輯]。</li><li>將 [ProvisioningState] 值從 [失敗] 更新為 [成功]。</li><li>選取 [PUT] 。</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 查看 Azure Load Balancer [SKU 比較表](./skus.md)
-* 了解 [Azure Load Balancer 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)
+* 了解 [Azure Load Balancer 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)
