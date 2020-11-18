@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325771"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833107"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸入系結
 
@@ -40,7 +40,7 @@ public static void Run(
 
 <!--Same example for input and output. -->
 
-下列範例所示範的是使用繫結之 function.json** 檔案，以及 [C# 指令碼 (.csx)](functions-reference-csharp.md) 程式碼中的 Blob 輸入和輸出繫結。 此函式會建立文字 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
+下列範例所示範的是使用繫結之 function.json 檔案，以及 [C# 指令碼 (.csx)](functions-reference-csharp.md) 程式碼中的 Blob 輸入和輸出繫結。 此函式會建立文字 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
 
 在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
 
@@ -138,7 +138,7 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-下列範例所示範的是使用繫結之 function.json** 檔案，以及 [Python 指令碼](functions-reference-python.md)程式碼中的 Blob 輸入和輸出繫結。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
+下列範例所示範的是使用繫結之 function.json 檔案，以及 [Python 指令碼](functions-reference-python.md)程式碼中的 Blob 輸入和輸出繫結。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
 
 在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
 
@@ -174,6 +174,15 @@ module.exports = function(context) {
 ```
 
 [設定](#configuration)章節會說明這些屬性。
+
+`dataType`屬性會決定要使用的系結。 以下是可用來支援不同系結策略的值：
+
+| 系結值 | 預設 | 描述 | 範例 |
+| --- | --- | --- | --- |
+| `undefined` | Y | 使用豐富的系結 | `def main(input: func.InputStream)` |
+| `string` | N | 使用泛型系結，並將輸入類型轉換為 `string` | `def main(input: str)` |
+| `binary` | N | 使用泛型系結，並將輸入 blob 轉換為 `bytes` Python 物件 | `def main(input: bytes)` |
+
 
 以下是 Python 程式碼：
 
@@ -309,6 +318,7 @@ Python 指令碼不支援屬性。
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。|
 |**path** |**BlobPath** | blob 的路徑。 |
 |**connection** |**[連接]**| 應用程式設定的名稱，其中包含要用於此系結的 [儲存體連接字串](../storage/common/storage-configure-connection-string.md) 。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，則函式執行時間會尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**dataType**| n/a | 如果是動態類型的語言，則會指定基礎資料類型。 可能的值為 `string`、`binary` 或 `stream`。 如需更多詳細資料，請參閱 [觸發程式和](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions)系結概念。 |
 |n/a | **存取** | 指出您是否將讀取或寫入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -325,7 +335,7 @@ Python 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用存取 blob 資料的 `context.bindings.<NAME>` 位置 `<NAME>` 符合 *function.json*中定義的值。
+使用存取 blob 資料的 `context.bindings.<NAME>` 位置 `<NAME>` 符合 *function.json* 中定義的值。
 
 # <a name="python"></a>[Python](#tab/python)
 

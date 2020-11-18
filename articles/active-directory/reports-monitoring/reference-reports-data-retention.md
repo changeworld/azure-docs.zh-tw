@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393450"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834705"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 儲存報表資料的時間長度為何？
 
@@ -65,7 +65,7 @@ ms.locfileid: "93393450"
 | :--                    | :--           | :--                 | :--                 |
 | 稽核記錄             | 7 天        | 30 天             | 30 天             |
 | 登入               | 7 天        | 30 天             | 30 天             |
-| Azure MFA 使用方式        | 30 天       | 30 天             | 30 天             |
+| Azure AD MFA 使用量        | 30 天       | 30 天             | 30 天             |
 
 使用 Azure 監視器將稽核和登入活動資料傳送至 Azure 儲存體帳戶，即可將它保留超過上述的預設保留期間。 如需詳細資訊，請參閱[將 Azure AD 記錄封存到 Azure 儲存體帳戶](quickstart-azure-monitor-route-logs-to-storage-account.md)。
 
@@ -80,6 +80,6 @@ ms.locfileid: "93393450"
 
 ### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>在取得 Azure AD 進階授權之後，我能否看見上個月的資料？
 
-**否** ，您不能。 Azure 最多可為免費版本的活動資料儲存七天。 這表示，當您從免費切換至 premium 版本時，您最多隻能看見7天的資料。
+**否**，您不能。 Azure 最多可為免費版本的活動資料儲存七天。 這表示，當您從免費切換至 premium 版本時，您最多隻能看見7天的資料。
 
 ---

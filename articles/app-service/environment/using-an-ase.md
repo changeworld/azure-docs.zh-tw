@@ -6,20 +6,20 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 1e6bace9652ff68bb4cc28d482016b7e7510154b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150196"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833549"
 ---
 # <a name="use-an-app-service-environment"></a>使用 App Service 環境
 
 App Service 環境 (ASE) 是 Azure App Service 部署到客戶 Azure 虛擬網路實例中子網的部署。 ASE 包含：
 
 - **前端**： HTTP 或 HTTPS 在 App Service 環境中終止的位置
-- 背景**工作角色**：裝載您應用程式的資源
+- 背景 **工作角色**：裝載您應用程式的資源
 - **資料庫**：保留定義環境的資訊
 - **儲存體**：用來裝載客戶發佈的應用程式
 
@@ -44,7 +44,7 @@ App Service 環境 (ASE) 是 Azure App Service 部署到客戶 Azure 虛擬網�
 
 1. 選取一個訂用帳戶。
 
-1. 輸入新資源群組的名稱，或選取 [使用現有]**** 並從下拉式清單中挑選一個。
+1. 輸入新資源群組的名稱，或選取 [使用現有] 並從下拉式清單中挑選一個。
 
 1. 選取您的作業系統。
 
@@ -134,12 +134,12 @@ SCM URL 是用來存取 Kudu 主控台，或是使用 Web Deploy 來發佈您的
 
 若要在 Azure DNS 私人區域中設定 DNS：
 
-1. 建立名為 ASE 名稱的 Azure DNS 私人區域 &lt; &gt; 。 appserviceenvironment.net
+1. 建立名為 &lt;ASE name&gt;.appserviceenvironment.net 的 Azure DNS 私人區域
 1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
 1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
 1. 在該區域中建立一個將 *.scm 指向 ILB IP 位址的 A 記錄
 
-ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂網域名稱，而不會進行任何驗證。 如果您想要建立名為 *contoso.net*的區域，您可以這樣做，並指向 ILB IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于* &lt; appname &gt; . scm &lt; 。asename &gt; . appserviceenvironment.net*。 
+ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂網域名稱，而不會進行任何驗證。 如果您想要建立名為 *contoso.net* 的區域，您可以這樣做，並指向 ILB IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于 *&lt; appname &gt; . scm &lt; 。asename &gt; . appserviceenvironment.net*。 
 
 名為的區域 *。 &lt;asename &gt; 。 appserviceenvironment.net* 是全域唯一的。 在 2019 年 5月之前，客戶可以指定 ILB ASE 的網域尾碼。 如果您想要使用 *contoso.com* 作為網域尾碼，您可以這麼做，其中包括 scm 網站。 該模型會有挑戰，包括管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程序也會造成干擾，並導致應用程式重新啟動。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和搭配 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響 2019 年 5 月之後所做的 ILB ASE。 預先存在的 ILB ASE 仍然必須管理 ASE 的預設憑證和其 DNS 組態。
 
@@ -149,7 +149,7 @@ ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅�
 
 - Web 部署
 - FTP
--  (CI) 的持續整合
+- 持續整合 (CI)
 - 在 Kudu 主控台中拖放
 - IDE，例如 Visual Studio、Eclipse 或 IntelliJ 構想
 
@@ -159,7 +159,7 @@ ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅�
 
 如果沒有其他變更，以網際網路為基礎的 CI 系統（例如 GitHub 和 Azure DevOps）將無法與 ILB ASE 搭配運作，因為發佈端點無法存取網際網路。 您可以在包含 ILB ASE 的虛擬網路中安裝自我裝載的發行代理程式，藉以啟用從 Azure DevOps 發佈至 ILB ASE。 或者，您也可以使用使用提取模型的 CI 系統，例如 Dropbox。
 
-ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 您可以在應用程式的發行設定檔和應用程式的入口網站窗格中看到它， (在**總覽**  >  **Essentials**和 [**屬性**]) 中。
+ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 您可以在應用程式的發行設定檔和應用程式的入口網站窗格中看到它， (在 **總覽**  >  **Essentials** 和 [**屬性**]) 中。
 
 ## <a name="storage"></a>儲存體
 
@@ -185,14 +185,14 @@ ASE 具有 1 TB 的儲存體，適用于 ASE 中的所有應用程式。 隔離�
 若要在您的 ASE 上啟用記錄：
 
 1. 在入口網站中，移至 [ **診斷設定**]。
-1. 選取 [ **新增診斷設定**]。
+1. 選取 [新增診斷設定]。
 1. 提供記錄整合的名稱。
 1. 選取並設定您想要的記錄目的地。
 1. 選取 [ **AppServiceEnvironmentPlatformLogs**]。
 
 ![ASE 診斷記錄設定][4]
 
-如果您與 Log Analytics 整合，您可以從 ASE 入口網站選取 **記錄** ，並針對 **AppServiceEnvironmentPlatformLogs**建立查詢，以查看記錄。 只有當您的 ASE 具有將觸發的事件時，才會發出記錄。 如果您的 ASE 沒有這類事件，就不會有任何記錄。 若要快速查看 Log Analytics 工作區中的記錄範例，請使用 ASE 中的其中一個 App Service 方案來執行調整作業。 然後，您可以針對 **AppServiceEnvironmentPlatformLogs** 執行查詢，以查看這些記錄。 
+如果您與 Log Analytics 整合，您可以從 ASE 入口網站選取 **記錄** ，並針對 **AppServiceEnvironmentPlatformLogs** 建立查詢，以查看記錄。 只有當您的 ASE 具有將觸發的事件時，才會發出記錄。 如果您的 ASE 沒有這類事件，就不會有任何記錄。 若要快速查看 Log Analytics 工作區中的記錄範例，請使用 ASE 中的其中一個 App Service 方案來執行調整作業。 然後，您可以針對 **AppServiceEnvironmentPlatformLogs** 執行查詢，以查看這些記錄。 
 
 **建立警示**
 
@@ -207,7 +207,7 @@ ASE 具有 1 TB 的儲存體，適用于 ASE 中的所有應用程式。 隔離�
 
 ## <a name="upgrade-preference"></a>升級喜好設定
 
-如果您有多個 Ase，您可能會想要在其他 Ase 之前升級。 在 ASE **HostingEnvironment Resource Manager** 物件中，您可以設定 **upgradePreference**的值。 您可以使用範本、ARMClient 或來設定 **upgradePreference** 設定 https://resources.azure.com 。 三個可能的值為：
+如果您有多個 Ase，您可能會想要在其他 Ase 之前升級。 在 ASE **HostingEnvironment Resource Manager** 物件中，您可以設定 **upgradePreference** 的值。 您可以使用範本、ARMClient 或來設定 **upgradePreference** 設定 https://resources.azure.com 。 三個可能的值為：
 
 - **無**： Azure 會在沒有特定批次的情況中升級您的 ASE。 此值為預設。
 - **早期**：您的 ASE 將在 App Service 升級的前半部升級。
@@ -218,7 +218,7 @@ ASE 具有 1 TB 的儲存體，適用于 ASE 中的所有應用程式。 隔離�
 1. 移至 resources.azure.com，並使用您的 Azure 帳戶登入。
 1. 將資源移至訂用帳戶訂用帳戶 \/ \[ 名稱 \] \/ resourceGroups \/ \[ 資源組名 \] \/ 提供者 \/ \/ hostingEnvironments \/ \[ ASE 名稱 \] 。
 1. 選取頂端的 [ **讀取/寫入** ]。
-1. 選取 [編輯]。
+1. 選取 [Edit] \(編輯\)。
 1. 將 **upgradePreference** 設定為您想要的三個值中的哪一個。
 1. 選取 [ **修補**]。
 
@@ -250,7 +250,7 @@ ASE 具有 1 TB 的儲存體，適用于 ASE 中的所有應用程式。 隔離�
 
     ![ASE 刪除][3]
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 ## <a name="ase-cli"></a>ASE CLI
 

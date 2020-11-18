@@ -14,19 +14,19 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fba46ee5632f7411c433e4bba29201c59c552f21
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009557"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835198"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>將存取權委派給 Privileged Identity Management
 
 若要將存取權委派給 Privileged Identity Management (PIM) ，全域系統管理員可以將其他使用者指派給特殊許可權角色管理員角色。 根據預設，安全性系統管理員和安全性讀取者具有 Privileged Identity Management 的唯讀存取權。 若要授與存取權給 Privileged Identity Management，第一位使用者可以將其他使用者指派給特殊 **許可權角色管理員** 角色。 需要特殊許可權角色管理員角色才能管理 Azure AD 角色。 管理 Azure 資源的設定不需要特殊許可權角色管理員許可權。
 
 > [!NOTE]
-> 管理 Privileged Identity Management 需要 Azure Multi-Factor Authentication。 因為 Microsoft 帳戶無法註冊 Azure Multi-Factor Authentication，使用 Microsoft 帳戶登入的使用者無法存取 Privileged Identity Management。
+> 管理 Privileged Identity Management 需要 Azure AD Multi-Factor Authentication。 因為 Microsoft 帳戶無法註冊 Azure AD Multi-Factor Authentication，所以使用 Microsoft 帳戶登入的使用者無法存取 Privileged Identity Management。
 
 請確保特殊權限角色管理員角色中永遠至少有兩位使用者，以防一位使用者遭到鎖定或他們的帳戶遭刪除。
 
@@ -52,7 +52,7 @@ ms.locfileid: "88009557"
 
     ![特殊權限角色管理員 - 選取成員](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 
-1. 選取成員，然後按一下 [選取]****。
+1. 選取成員，然後按一下 [選取]。
 
 1. 選取 **[確定]** ，讓成員符合特殊 **許可權角色管理員** 角色的資格。
 

@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 391d4d6cb925eec0ea7be19eb6fa6849aa38985e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369738"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835232"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -52,7 +52,7 @@ gt
 
     ![列出數個指派和啟用設定的角色設定詳細資料頁面](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
-1. 選取 [編輯]**** 以開啟 [角色設定] 頁面。
+1. 選取 [編輯] 以開啟 [角色設定] 頁面。
 
     ![使用更新指派和啟用設定的選項來編輯角色設定頁面](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
@@ -69,7 +69,7 @@ gt
 | **允許永久合格的指派** | 全域管理員和特殊許可權角色管理員可以指派永久合格的指派。 |
 | **合格指派的到期時間** | 全域管理員和特殊許可權角色管理員可以要求所有符合資格的指派都具有指定的開始和結束日期。 |
 
-此外，您可以從下列**有效**指派持續時間選項中選擇一個：
+此外，您可以從下列 **有效** 指派持續時間選項中選擇一個：
 
 | | |
 | --- | --- |
@@ -81,7 +81,7 @@ gt
 
 ## <a name="require-multi-factor-authentication"></a>需要多重要素驗證
 
-Privileged Identity Management 可針對兩個不同的案例選擇性地強制執行 Azure Multi-Factor Authentication。
+Privileged Identity Management 針對兩個不同的案例提供選擇性的 Azure AD Multi-Factor Authentication 強制執行。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>要求為有效指派進行 Multi-Factor Authentication
 
@@ -91,25 +91,25 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>啟用時需要 Multi-Factor Authentication
 
-您可以要求具有角色資格的使用者，以證明他們使用 Azure Multi-Factor Authentication，然後才可啟用。 多重要素驗證可確保使用者是他們聲稱有合理確定性的人。 在使用者帳戶可能受到危害的情況下，強制執行這個選項可保護重要資源。
+您可以要求符合角色資格的使用者，證明他們使用 Azure AD Multi-Factor Authentication 的使用者可以啟動。 多重要素驗證可確保使用者是他們聲稱有合理確定性的人。 在使用者帳戶可能受到危害的情況下，強制執行這個選項可保護重要資源。
 
-若要在啟用之前要求多重要素驗證，請核取 [**編輯角色設定**] 之 [指派] 索引標籤中的 [**需要 Multi-Factor Authentication**啟用] 方塊。
+若要在啟用之前要求多重要素驗證，請核取 [**編輯角色設定**] 之 [指派] 索引標籤中的 [**需要 Multi-Factor Authentication** 啟用] 方塊。
 
 如需詳細資訊，請參閱[多重要素驗證和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
 ## <a name="activation-maximum-duration"></a>啟用持續時間上限
 
-使用 [啟用持續時間上限]**** 滑桿，可設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可介於1到24小時之間。
+使用 [啟用持續時間上限] 滑桿，可設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可介於1到24小時之間。
 
 ## <a name="require-justification"></a>需要理由
 
-您可以要求使用者在啟用時輸入業務理由。 若要要求提供理由，請核取 [進行有效指派時需要提供理由]**** 方塊，或核取 [啟用時需要提供理由]**** 方塊。
+您可以要求使用者在啟用時輸入業務理由。 若要要求提供理由，請核取 [進行有效指派時需要提供理由] 方塊，或核取 [啟用時需要提供理由] 方塊。
 
 ## <a name="require-approval-to-activate"></a>需要核准才可啟用
 
 如果設定多個核准者，核准會在核准或拒絕時立即完成。 您不能至少需要兩位使用者的核准。 若要要求核准以啟用角色，請遵循下列步驟。
 
-1. 請核取 [需要核准才可啟用]**** 核取方塊。
+1. 請核取 [需要核准才可啟用] 核取方塊。
 
 1. 選取 [ **選取核准者**]。
 
@@ -141,17 +141,17 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
     ![Azure AD 角色-設定角色](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
-    在每個角色的設定頁面上，有許多您可以設定的設定。 這些設定只會影響身為**合格**指派 (而不是**永久**指派) 的使用者。
+    在每個角色的設定頁面上，有許多您可以設定的設定。 這些設定只會影響身為 **合格** 指派 (而不是 **永久** 指派) 的使用者。
 
 ## <a name="activations"></a>啟用
 
-使用 [啟用]**** 滑桿，設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可介於 1 到 72 小時。
+使用 [啟用] 滑桿，設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可介於 1 到 72 小時。
 
 ## <a name="notifications"></a>通知
 
-使用 [通知]**** 參數來指定啟動角色時，系統管理員是否會收到電子郵件通知。 此通知有助於偵測未經授權或非法的啟用。
+使用 [通知] 參數來指定啟動角色時，系統管理員是否會收到電子郵件通知。 此通知有助於偵測未經授權或非法的啟用。
 
-設定為 [已啟用]**** 時，就會傳送通知給：
+設定為 [已啟用] 時，就會傳送通知給：
 
 - 特殊權限角色管理員
 - 安全性系統管理員
@@ -165,10 +165,10 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-使用 [Multi-Factor Authentication]**** 的切換，指定是否要要求使用者在啟用其角色之前，先以 MFA 驗證其身分識別。 他們只需要在每個會話中確認其身分識別一次，而不是每次啟用角色時驗證。 啟用 MFA 時，需要記住兩個秘訣：
+使用 [Multi-Factor Authentication] 的切換，指定是否要要求使用者在啟用其角色之前，先以 MFA 驗證其身分識別。 他們只需要在每個會話中確認其身分識別一次，而不是每次啟用角色時驗證。 啟用 MFA 時，需要記住兩個秘訣：
 
-- 具有 Microsoft 帳戶的電子郵件地址的使用者，通常 (@outlook.com 但不一定) 無法註冊 Azure Multi-Factor Authentication。 如果您想要將角色指派給具有 Microsoft 帳戶的使用者，您應該將他們設為永久系統管理員，或停用該角色的多重要素驗證。
-- 您無法停用適用于 Azure AD 和 Microsoft 365 的高特殊許可權角色的 Azure Multi-Factor Authentication。 這項安全功能可協助保護下列角色：  
+- 具有 Microsoft 帳戶的電子郵件地址的使用者 (通常 @outlook.com （但不一定是) ）無法註冊 Azure AD Multi-Factor Authentication。 如果您想要將角色指派給具有 Microsoft 帳戶的使用者，您應該將他們設為永久系統管理員，或停用該角色的多重要素驗證。
+- 您無法為 Azure AD 和 Microsoft 365 的高特殊許可權角色停用 Azure AD Multi-Factor Authentication。 這項安全功能可協助保護下列角色：  
   
   - Azure 資訊保護管理員
   - 計費管理員
@@ -194,7 +194,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 如果您想要委派所需的核准來啟用角色，請遵循下列步驟。
 
-1. 將 [需要核准]**** 切換為 [啟用]****。 展開的窗格會有選取核准者的選項。
+1. 將 [需要核准] 切換為 [啟用]。 展開的窗格會有選取核准者的選項。
 
     ![螢幕擷取畫面，顯示已選取 [啟用] 的 [需要核准] 參數。](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 

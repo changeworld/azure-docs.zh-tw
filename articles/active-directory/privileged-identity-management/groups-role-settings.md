@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c3cd91fb2a878567dc4b09fbddfcf448ec95edd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368531"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835385"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 (preview) 的特殊許可權存取群組設定
 
@@ -34,7 +34,7 @@ ms.locfileid: "92368531"
 
 1. 開啟 **Azure AD Privileged Identity Management**。
 
-1. 選取 [特殊 **許可權存取] (預覽) **。
+1. 選取 [特殊 **許可權存取] (預覽)**。
 
 1. 選取您要管理的群組。
 
@@ -80,7 +80,7 @@ ms.locfileid: "92368531"
 | **允許永久合格的指派** | 資源管理員可以指派永久合格的指派。 |
 | **合格指派的到期時間** | 資源管理員可以要求所有合格指派有指定的開始和結束日期。 |
 
-此外，您可以從下列**有效**指派持續時間選項中選擇一個：
+此外，您可以從下列 **有效** 指派持續時間選項中選擇一個：
 
 | | |
 | --- | --- |
@@ -92,7 +92,7 @@ ms.locfileid: "92368531"
 
 ## <a name="require-multi-factor-authentication"></a>需要多重要素驗證
 
-Privileged Identity Management 可針對兩個不同的案例選擇性地強制執行 Azure Multi-Factor Authentication。
+Privileged Identity Management 針對兩個不同的案例提供選擇性的 Azure AD Multi-Factor Authentication 強制執行。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>要求為有效指派進行 Multi-Factor Authentication
 
@@ -102,7 +102,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>啟用時需要 Multi-Factor Authentication
 
-您可以要求具有角色資格的使用者，以證明他們使用 Azure Multi-Factor Authentication，然後才可啟用。 多重要素驗證可確保使用者是他們聲稱有合理確定性的人。 在使用者帳戶可能受到危害的情況下，強制執行這個選項可保護重要資源。
+您可以要求符合角色資格的使用者，證明他們使用 Azure AD Multi-Factor Authentication 的使用者可以啟動。 多重要素驗證可確保使用者是他們聲稱有合理確定性的人。 在使用者帳戶可能受到危害的情況下，強制執行這個選項可保護重要資源。
 
 若要在啟用之前要求多重要素驗證，請核取 [ **啟用時需要 Multi-Factor Authentication** ] 方塊。
 
@@ -110,17 +110,17 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 ## <a name="activation-maximum-duration"></a>啟用持續時間上限
 
-使用 [啟用持續時間上限]**** 滑桿，可設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可介於1到24小時之間。
+使用 [啟用持續時間上限] 滑桿，可設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可介於1到24小時之間。
 
 ## <a name="require-justification"></a>需要理由
 
-您可以要求使用者在啟用時輸入業務理由。 若要要求提供理由，請核取 [進行有效指派時需要提供理由]**** 方塊，或核取 [啟用時需要提供理由]**** 方塊。
+您可以要求使用者在啟用時輸入業務理由。 若要要求提供理由，請核取 [進行有效指派時需要提供理由] 方塊，或核取 [啟用時需要提供理由] 方塊。
 
 ## <a name="require-approval-to-activate"></a>需要核准才可啟用
 
 如果您想要在啟用角色前先經過核准，請遵循下列步驟。
 
-1. 請核取 [需要核准才可啟用]**** 核取方塊。
+1. 請核取 [需要核准才可啟用] 核取方塊。
 
 1. 選取 [ **選取核准者** ] 以開啟 [ **選取成員或群組** ] 頁面。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961885"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833804"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
@@ -121,13 +121,13 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 許多應用程式想要在其定期作業中進行輸出連線。 例如，當要求傳入時，節點應用程式會想連絡別處的 REST API，並取得一些資訊來處理要求。 您想要在進行 http 或 https 呼叫時使用保持連線代理程式。 您可以在進行這些輸出呼叫時，使用 agentkeepalive 模組作為您的保持連線代理程式。
 
-agentkeepalive 模組可確保通訊端會在您的 Azure webapp VM 上重複使用。 在每一個輸出要求上建立新通訊端會增加應用程式的負擔。 讓應用程式重複使用輸出要求的通訊端，可確保您的應用程式不會超過每個 VM 配置的 maxSockets。 對於 Azure App Service 的建議是將 agentKeepAlive maxSockets 值設為每個 VM 總計有 160 個通訊端 (4 個 node.exe 執行個體 \* 40 個 maxSockets/執行個體)。
+agentkeepalive 模組可確保通訊端會在您的 Azure webapp VM 上重複使用。 在每一個輸出要求上建立新通訊端會增加應用程式的負擔。 讓應用程式重複使用輸出要求的通訊端，可確保您的應用程式不會超過每個 VM 配置的 maxSockets。 Azure App Service 的建議是將 agentKeepAlive maxSockets 值設定為 \* 每個 VM) 128 通訊端 node.exe 32 maxSockets/實例的總計 (4 個實例。
 
 範例 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 設定：
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000

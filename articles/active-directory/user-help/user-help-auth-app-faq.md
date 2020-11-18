@@ -12,18 +12,18 @@ ms.topic: end-user-help
 ms.date: 10/20/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 017898249f1ad32a37b7ccd6bce17fe3d32843f3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480304"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833957"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常見問題 (有關 Microsoft Authenticator 應用程式的常見問題) 
 
 本文將回答有關 Microsoft Authenticator 應用程式的常見問題。 如果您沒有看到您問題的解答，請移至 [Microsoft 驗證器應用程式論壇](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。
 
-Microsoft Authenticator 應用程式取代了 Azure 驗證器應用程式，當您使用 Azure Multi-Factor Authentication 時，這是建議的應用程式。 Microsoft Authenticator 應用程式適用於 [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) 和 [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
+Microsoft Authenticator 的應用程式已取代 Azure 驗證器應用程式，當您使用 Azure AD Multi-Factor Authentication 時，建議使用此應用程式。 Microsoft Authenticator 應用程式適用於 [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) 和 [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -202,7 +202,7 @@ Microsoft Authenticator 應用程式取代了 Azure 驗證器應用程式，當�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若您在取得個人 Microsoft 帳戶的驗證碼時遇到問題，請參閱 [Microsoft 帳戶安全性資訊及驗證碼](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)一文中的**排解驗證碼問題**一節。
+- 若您在取得個人 Microsoft 帳戶的驗證碼時遇到問題，請參閱 [Microsoft 帳戶安全性資訊及驗證碼](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)一文中的 **排解驗證碼問題** 一節。
 
 - 如果您需要雙步驟驗證的詳細資訊，請參閱[對我的帳戶進行雙步驟驗證設定](multi-factor-authentication-end-user-first-time.md)
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee1561e85e769bf8a82ce96d5ce010eece92a0fa
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392611"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833090"
 ---
 # <a name="orchestrator-function-code-constraints"></a>協調器函式程式碼條件約束
 
@@ -18,7 +18,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的延伸模�
 
 ## <a name="orchestrator-code-constraints"></a>協調器程式碼條件約束
 
-協調器函式會使用 [事件來源](/azure/architecture/patterns/event-sourcing) 來確保可靠的執行，並維護本機變數狀態。 協調器程式碼的重新執行 [行為](durable-functions-orchestrations.md#reliability) 會建立可以在協調器函式中撰寫的程式碼類型條件約束。 例如，協調器函式必須具 *決定性* ：協調器函式會多次執行，而且每次都必須產生相同的結果。
+協調器函式會使用 [事件來源](/azure/architecture/patterns/event-sourcing) 來確保可靠的執行，並維護本機變數狀態。 協調器程式碼的重新執行 [行為](durable-functions-orchestrations.md#reliability) 會建立可以在協調器函式中撰寫的程式碼類型條件約束。 例如，協調器函式必須具 *決定性*：協調器函式會多次執行，而且每次都必須產生相同的結果。
 
 ### <a name="using-deterministic-apis"></a>使用決定性 Api
 
@@ -30,8 +30,8 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的延伸模�
 
 | API 類別 | 原因 | 因應措施 |
 | ------------ | ------ | ---------- |
-| 日期和時間  | 傳回目前日期或時間的 Api 不具決定性，因為每次重新執行時傳回的值不同。 | 使用 `CurrentUtcDateTime` .net 中的 api、 `currentUtcDateTime` JavaScript 中的 Api 或 `current_utc_datetime` Python 中的 api，這對於重新執行是安全的。 |
-| Guid 和 Uuid  | 傳回隨機 GUID 或 UUID 的 Api 不具決定性，因為每次重新執行時產生的值不同。 | `NewGuid`在 .net 或 `newGuid` JavaScript 中使用，以安全地產生隨機 guid。 |
+| 日期和時間  | 傳回目前日期或時間的 Api 不具決定性，因為每次重新執行時傳回的值不同。 | 使用 .NET 中的 [>currentutcdatetime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) 屬性、 `currentUtcDateTime` JavaScript 中的 api 或 `current_utc_datetime` Python 中的 api，這對於重新執行是安全的。 |
+| Guid 和 Uuid  | 傳回隨機 GUID 或 UUID 的 Api 不具決定性，因為每次重新執行時產生的值不同。 | 在[NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) .Net 或 `newGuid` JavaScript 中使用 NewGuid，以安全地產生隨機 guid。 |
 | 亂數字 | 傳回亂數字的 Api 不具決定性，因為每次重新執行時產生的值會不同。 | 使用活動函式，將亂數字傳回至協調流程。 活動函式的傳回值一律可以安全地重新執行。 |
 | 繫結 | 輸入和輸出系結通常會進行 i/o，而且不具決定性。 協調器函式不能直接使用，甚至是 [協調流程用戶端](durable-functions-bindings.md#orchestration-client) 和 [實體用戶端](durable-functions-bindings.md#entity-client) 系結。 | 在用戶端或活動函式內使用輸入和輸出系結。 |
 | 網路 | 網路呼叫涉及外部系統，且不具決定性。 | 使用活動函式進行網路呼叫。 如果您需要從協調器函式進行 HTTP 呼叫，也可以使用 [持久的 HTTP api](durable-functions-http-features.md#consuming-http-apis)。 |
@@ -57,7 +57,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的延伸模�
 > [!NOTE]
 > 本章節描述長期工作架構的內部實作詳細資料。 您可以使用長期函式，而不需要知道此資訊。 它只是用來協助您了解重新執行行為。
 
-可以在協調器函式中安全等候的工作，有時 *稱為「* 長期工作」。 長期工作架構會建立和管理這些工作。 範例包括 .NET 協調器函式中 **>callactivityasync** 、 **>waitforexternalevent** 和 **>createtimer** 所傳回的工作。
+可以在協調器函式中安全等候的工作，有時 *稱為「* 長期工作」。 長期工作架構會建立和管理這些工作。 範例包括 .NET 協調器函式中 **>callactivityasync**、 **>waitforexternalevent** 和 **>createtimer** 所傳回的工作。
 
 這些長期工作會由 .NET 中的物件清單在內部進行管理 `TaskCompletionSource` 。 在重新執行期間，會在執行 orchestrator 程式碼時建立這些工作。 因為發送器會列舉對應的記錄事件，所以已完成。
 

@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: cf9f484a3f9285d1be06443b39bd50ec73ccf632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: has-adal-ref, devx-track-azurecli
+ms.openlocfilehash: c41ec06b1f985296377d27dcbe72b5f41224809b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665288"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835402"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -129,7 +129,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - 若為系統指派的受控識別：停用然後重新啟用。 
  - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
 
-如需詳細資訊，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
+如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>將使用者指派的受控識別移至不同的資源群組/訂用帳戶
 

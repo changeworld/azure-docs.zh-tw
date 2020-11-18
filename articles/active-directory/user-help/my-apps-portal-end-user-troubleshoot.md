@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123943"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833974"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>針對我的應用程式入口網站的問題進行疑難排解
 
@@ -51,7 +51,7 @@ ms.locfileid: "93123943"
 
 - 確定密碼正確無誤且尚未過期。 如需詳細資訊，請參閱[重設您的工作密碼或學校密碼](active-directory-passwords-update-your-own-password.md)。
 
-- 確定您的驗證資訊是最新的且正確無誤。 如需詳細資訊，請參閱 [Azure Multi-Factor Authentication 對我有何意義？](./multi-factor-authentication-end-user-first-time.md)或[變更您的安全性資訊方法和資訊](./security-info-setup-auth-app.md)。
+- 確定您的驗證資訊是最新的且正確無誤。 如需詳細資訊，請參閱 [Azure AD Multi-Factor Authentication 對我有什麼意義？](./multi-factor-authentication-end-user-first-time.md) 或 [變更您的安全性資訊方法和資訊](./security-info-setup-auth-app.md)。
 
 - 將 [我的應用程式] 入口網站 URL 新增至 [網際網路屬性] > [安全性] > [信任的網站] 設定。
 
@@ -75,7 +75,7 @@ ms.locfileid: "93123943"
 
 - 確定密碼正確無誤且尚未過期。 如需詳細資訊，請參閱[重設您的工作密碼或學校密碼](active-directory-passwords-update-your-own-password.md)。
 
-- 確定您的驗證資訊是最新的且正確無誤。 如需詳細資訊，請參閱 [Azure Multi-Factor Authentication 對我有何意義？](./multi-factor-authentication-end-user-first-time.md)或[變更您的安全性資訊方法和資訊](./security-info-setup-auth-app.md)。
+- 確定您的驗證資訊是最新的且正確無誤。 如需詳細資訊，請參閱 [Azure AD Multi-Factor Authentication 對我有什麼意義？](./multi-factor-authentication-end-user-first-time.md) 或 [變更您的安全性資訊方法和資訊](./security-info-setup-auth-app.md)。
 
 - 清除瀏覽器的快取，然後嘗試再次登入。
 

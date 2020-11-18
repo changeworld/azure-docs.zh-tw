@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378630"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834450"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>開啟多重要素驗證，並註冊其他所有高度特殊權限的單一使用者非同盟管理帳戶
 
-當所有永久指派給一或多個 Azure AD 系統管理員角色的個別使用者登入時，需要 Azure Multi-Factor Authentication (MFA) ：全域系統管理員、特殊許可權角色管理員、Exchange 系統管理員和 SharePoint 系統管理員。 請使用指南啟用[管理員帳戶的 Multi-factor Authentication (MFA)](../authentication/howto-mfa-userstates.md)，並確定這些使用者全都已在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 註冊。 如需詳細資訊，請參閱指南中的步驟2和步驟3，以 [保護 Microsoft 365 中的資料和服務的存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)。 
+當所有永久指派給一或多個 Azure AD 系統管理員角色的個別使用者登入時，要求 Azure AD Multi-Factor Authentication (MFA) ：全域管理員、特殊許可權角色管理員、Exchange 系統管理員和 SharePoint 系統管理員。 請使用指南啟用[管理員帳戶的 Multi-factor Authentication (MFA)](../authentication/howto-mfa-userstates.md)，並確定這些使用者全都已在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 註冊。 如需詳細資訊，請參閱指南中的步驟2和步驟3，以 [保護 Microsoft 365 中的資料和服務的存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>第 2 階段：緩解常用的攻擊
 
@@ -135,7 +135,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 * 請確定您的帳戶是作為管理用途：
 
   * 附加工作電子郵件地址
-  * 已註冊 Azure Multi-Factor Authentication 或使用 MFA 內部部署
+  * 已註冊 Azure AD Multi-Factor Authentication 或在內部部署使用 MFA
 * 要求使用者提供他們需要系統管理存取權的業務理由。
 * 移除不需要的個人和服務的系統管理員存取權。
 
@@ -240,7 +240,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>繼續對所有使用者施行更嚴格的驗證
 
-高度曝露的使用者需要有新式的增強式驗證，例如 Azure MFA 或 Windows Hello。 高度曝露的使用者例子包括：
+需要高度公開的使用者具有新式、強式驗證，例如 Azure AD MFA 或 Windows Hello。 高度曝露的使用者例子包括：
 
 * 高層主管
 * 高階經理

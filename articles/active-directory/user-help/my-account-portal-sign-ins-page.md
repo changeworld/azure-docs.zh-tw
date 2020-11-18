@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798120"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834144"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>從 [我的登入] 頁面查看並搜尋最近的登入活動
 
@@ -30,7 +30,7 @@ ms.locfileid: "88798120"
 
 1. 登入您的公司或學校帳戶，然後前往 https://myaccount.microsoft.com/ 頁面。
 
-2. 從左側導覽窗格中選取 [我的登**入**]，或從 [我的登**入**] 區塊選取 [**複習最近的活動**] 連結。
+2. 從左側導覽窗格中選取 [我的登 **入**]，或從 [我的登 **入**] 區塊選取 [**複習最近的活動**] 連結。
 
     ![[我的帳戶] 頁面，顯示醒目提示的 [最近的活動] 連結](media/my-account-portal/my-account-portal-sign-ins.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "88798120"
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>如果您看到失敗的登入
 
-如果您發現登入失敗，可能表示您輸入的認證錯誤。 這也可能表示攻擊者嘗試猜出您的密碼。 若要回應此風險，您不需要變更您的密碼，但建議您註冊 Azure Multi-Factor Authentication (MFA) 。 使用多重要素驗證，即使駭客猜到您的密碼，也無法存取帳戶。
+如果您發現登入失敗，可能表示您輸入的認證錯誤。 這也可能表示攻擊者嘗試猜出您的密碼。 若要回應此風險，您不需要變更您的密碼，但建議您註冊 Azure AD Multi-Factor Authentication (MFA) 。 使用多重要素驗證，即使駭客猜到您的密碼，也無法存取帳戶。
 
 ![登入失敗磚](media/my-account-portal-sign-ins-page/unsuccessful.png)
 

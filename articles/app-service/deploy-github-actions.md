@@ -6,22 +6,22 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095555"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833498"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到 App Service
 
 開始使用 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 將您的工作流程自動化，並從 GitHub 部署到 [Azure App Service](overview.md) 。 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
+- GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
 - 正常運作的 Azure App Service 應用程式。 
     - .NET： [在 Azure 中建立 ASP.NET Core web 應用程式](quickstart-dotnetcore.md)
     - ASP.NET： [在 Azure 中建立 ASP.NET Framework web 應用程式](quickstart-dotnet-framework.md)
@@ -46,8 +46,8 @@ ms.locfileid: "93095555"
 您可以使用 App Service Deployment Center 快速開始 GitHub Actions。 這會根據您的應用程式堆疊自動產生工作流程檔案，並將其認可到正確目錄中的 GitHub 存放庫。
 
 1. 在 Azure 入口網站中流覽至您的 webapp
-1. 在左側，按一下 [ **部署中心** ]
-1. 在 [ **持續部署 (CI/CD)** ] 下，選取 [ **GitHub** ]
+1. 在左側，按一下 [**部署中心**]
+1. 在 [**持續部署 (CI/CD)**] 下，選取 [ **GitHub** ]
 1. 接下來，選取 **GitHub Actions**
 1. 使用下拉式清單來選取您的 GitHub 存放庫、分支和應用程式堆疊
     - 如果選取的分支受到保護，您仍然可以繼續新增工作流程檔案。 繼續進行之前，請務必先審查您的分支保護。
@@ -71,12 +71,12 @@ ms.locfileid: "93095555"
 
 1. 在 Azure 入口網站中，移至您的 app service。 
 
-1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔** ]。
+1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔**]。
 
 1. 儲存下載的檔案。 您將使用檔案的內容來建立 GitHub 秘密。
 
 > [!NOTE]
-> 從2020年10月起，Linux web 應用程式在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載發行設定檔之前** ，必須先將應用程式設定設為。 未來將會移除這項需求。
+> 從2020年10月起，Linux web 應用程式在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載發行設定檔之前**，必須先將應用程式設定設為。 未來將會移除這項需求。
 
 # <a name="service-principal"></a>[服務主體](#tab/userlevel)
 
@@ -110,7 +110,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="publish-profile"></a>[發行設定檔](#tab/applevel)
 
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
 若要使用 [應用層級的認證](#generate-deployment-credentials)，請將所下載發行設定檔的內容貼入秘密的 [值] 欄位中。 為秘密命名 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
 
@@ -124,7 +124,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="service-principal"></a>[服務主體](#tab/userlevel)
 
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
 若要使用 [使用者層級的認證](#generate-deployment-credentials)，請將 Azure CLI 命令中的整個 JSON 輸出貼到秘密的值欄位中。 將祕密命名為 `AZURE_CREDENTIALS`。
 

@@ -13,17 +13,17 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f27dd7daf310e425b09db7905ad2f7c37fcff81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056023"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834161"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用雙重要素驗證方法來登入您的公司或學校帳戶
 
 > [!NOTE]
-> 本文的目的逐步解說典型的登入體驗。 如需登入的說明或疑難排解問題，請參閱 [使用 Azure Multi-Factor Authentication 時碰到困難](multi-factor-authentication-end-user-troubleshoot.md)。
+> 本文的目的逐步解說典型的登入體驗。 如需登入或疑難排解問題的協助，請參閱 [Azure AD Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md)的問題。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>您的登入體驗將會如何？
 您的登入體驗會根據您選擇來做為第二個要素的項目而不同︰撥打電話、驗證應用程式或簡訊。 選擇最符合您的情況的一個選項：
@@ -83,7 +83,7 @@ ms.locfileid: "90056023"
    ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>後續步驟
-- 如果您碰到雙步驟驗證登入的問題，可從[使用 Azure Multi-Factor Authentication 時碰到困難](multi-factor-authentication-end-user-troubleshoot.md)獲得詳細資訊。
+- 如果您在使用雙步驟驗證登入時遇到問題，請取得 [Azure AD Multi-Factor Authentication 有問題的](multi-factor-authentication-end-user-troubleshoot.md)詳細資訊。
 
 - 了解如何[管理雙步驟驗證設定](multi-factor-authentication-end-user-manage-settings.md)。
 

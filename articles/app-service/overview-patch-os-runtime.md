@@ -3,13 +3,13 @@ title: 作業系統和執行時間修補步調
 description: 瞭解 Azure App Service 如何更新作業系統和執行時間、應用程式的執行時間和修補程式等級，以及您可以如何取得更新公告。
 ms.topic: article
 ms.date: 02/02/2018
-ms.custom: seodec18
-ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 31b2d39f5d0d125d2bf23ac72718d9b386b48923
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961511"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833481"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service 中的 OS 和執行階段修補
 

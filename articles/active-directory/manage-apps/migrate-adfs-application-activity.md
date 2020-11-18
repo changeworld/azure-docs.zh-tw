@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659192"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835504"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>使用 AD FS 應用程式活動報告 (預覽) 將應用程式遷移至 Azure AD
 
@@ -74,9 +74,9 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 下表列出在 AD FS 應用程式上執行的所有設定測試。
 
-|結果  |Pass/警告/失敗  |描述  |
+|結果  |Pass/警告/失敗  |說明  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> 偵測到至少有一個非可移轉規則的 AdditionalAuthentication。       | Pass/警告          | 信賴憑證者有規則，可提示 (MFA) 的多重要素驗證。 若要移至 Azure AD，請將這些規則轉譯成條件式存取原則。 如果您使用的是內部部署 MFA，建議您移至 Azure MFA。 [深入瞭解條件式存取](../authentication/concept-mfa-howitworks.md)。        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> 偵測到至少有一個非可移轉規則的 AdditionalAuthentication。       | Pass/警告          | 信賴憑證者有規則，可提示 (MFA) 的多重要素驗證。 若要移至 Azure AD，請將這些規則轉譯成條件式存取原則。 如果您使用的是內部部署 MFA，建議您移至 Azure AD MFA。 [深入瞭解條件式存取](../authentication/concept-mfa-howitworks.md)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> 信賴憑證者的 AdditionalWSFedEndpoint 設為 true。       | 通過/失敗          | AD FS 中的信賴憑證者允許多個 WS-Fed 判斷提示端點。Azure AD 目前僅支援一個。如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> 信賴憑證者已設定 AllowedAuthenticationClassReferences。       | 通過/失敗          | AD FS 中的這項設定可讓您指定是否將應用程式設定為只允許特定的驗證類型。 我們建議使用條件式存取來達成這項功能。 如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication)。  [深入瞭解條件式存取](../authentication/concept-mfa-howitworks.md)。          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | 通過/失敗          | AD FS 中的這項設定可讓您指定是否要將應用程式設定為忽略 SSO cookie，並 **一律提示進行驗證**。 在 Azure AD 中，您可以使用條件式存取原則來管理驗證會話，以達成類似的行為。 [深入瞭解如何使用條件式存取設定驗證會話管理](../conditional-access/howto-conditional-access-session-lifetime.md)。          |
@@ -110,7 +110,7 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 下表列出在 AD FS 應用程式上執行的所有宣告規則測試。
 
-|屬性  |描述  |
+|屬性  |說明  |
 |---------|---------|
 |UNSUPPORTED_CONDITION_PARAMETER      | Condition 語句會使用正則運算式來評估宣告是否符合特定模式。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換（例如 IfEmpty ( # A1、StartWith ( # A3），其中包含 ( # A5 等等。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
 |UNSUPPORTED_CONDITION_CLASS      | 條件陳述式具有多個必須在執行發行語句之前評估的條件。Azure AD 可能會使用宣告的轉換函式來支援這項功能，您可以在其中評估多個宣告值。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |

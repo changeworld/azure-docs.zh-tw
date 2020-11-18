@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e483c5cdb7e5acc0677b0d0cf2b41c390eef0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371557"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835317"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 自訂角色
 
@@ -37,12 +37,12 @@ ms.locfileid: "92371557"
 請依照下列步驟開啟 Azure AD 角色的設定。
 
 1. 使用指派給「特殊權限角色管理員」角色的使用者帳戶，在 Azure 入口網站中登入 [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
-1. 選取 [Azure AD 自訂角色 (預覽)]****。
+1. 選取 [Azure AD 自訂角色 (預覽)]。
 
     ![選取 Azure AD 自訂角色預覽以查看合格的角色指派](./media/azure-ad-custom-roles-configure/settings-list.png)
 
-1. 選取 [設定]**** 以開啟 [設定]**** 頁面。 選取您要設定其設定的角色。
-1. 選取 [編輯]**** 以開啟 [角色設定]**** 頁面。
+1. 選取 [設定] 以開啟 [設定] 頁面。 選取您要設定其設定的角色。
+1. 選取 [編輯] 以開啟 [角色設定] 頁面。
 
     ![顯示 [角色設定詳細資料] 頁面的螢幕擷取畫面，其中已選取 [編輯] 動作。](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
@@ -54,49 +54,49 @@ ms.locfileid: "92371557"
 
 當您進行角色的設定時，每個指派類型 (合格或有效) 都有兩個指派持續時間選項可供選擇。 將成員指派給 Privileged Identity Management 中的角色後，這些選項就會變成預設的最長持續時間。
 
-您可以從下列*合格*指派持續時間選項中選擇一個。
+您可以從下列 *合格* 指派持續時間選項中選擇一個。
 
 - **允許永久合格的指派**：系統管理員可以指派永久符合資格的成員資格。
 - **符合合格指派之後的期限**：系統管理員可以要求所有符合資格的指派都有指定的開始和結束日期。
 
-此外，您可以從下列*有效*指派持續時間選項中選擇一個：
+此外，您可以從下列 *有效* 指派持續時間選項中選擇一個：
 
 - **允許永久有效的指派**：系統管理員可以指派永久的有效成員資格。
-- **有效指派的到期**時間：系統管理員可以要求所有使用中的指派都有指定的開始和結束日期。
+- **有效指派的到期** 時間：系統管理員可以要求所有使用中的指派都有指定的開始和結束日期。
 
-### <a name="require-azure-multi-factor-authentication"></a>要求使用 Azure Multi-Factor Authentication
+### <a name="require-azure-ad-multi-factor-authentication"></a>需要 Azure AD Multi-Factor Authentication
 
-Privileged Identity Management 可針對兩個不同的案例選擇性地強制執行 Azure Multi-Factor Authentication。
+Privileged Identity Management 針對兩個不同的案例提供選擇性的 Azure AD Multi-Factor Authentication 強制執行。
 
 - **要求為有效指派進行多重要素驗證**
 
-  如果您只想在短期內 (例如一天) 將成員指派給某個角色，則要求指派的成員必須要求啟用，可能會太慢。 在此案例中，Privileged Identity Management 無法在使用者啟用其角色指派時強制執行多重要素驗證，因為從指派他們的那一刻起，他們就已具備有效的角色。 若要確保執行指派的系統管理員身分屬實，請選取 [要求為有效指派進行多重要素驗證]**** 方塊。
+  如果您只想在短期內 (例如一天) 將成員指派給某個角色，則要求指派的成員必須要求啟用，可能會太慢。 在此案例中，Privileged Identity Management 無法在使用者啟用其角色指派時強制執行多重要素驗證，因為從指派他們的那一刻起，他們就已具備有效的角色。 若要確保執行指派的系統管理員身分屬實，請選取 [要求為有效指派進行多重要素驗證] 方塊。
 
 - **啟用時需要 Multi-Factor Authentication**
 
-  您可以要求指派給角色的合格使用者必須先註冊多重要素驗證，然後才可啟用。 此程序確保要求啟用的使用者是表明具有合理確定性的人員。 在使用者帳戶可能受到危害的情況下，強制執行此選項可保護重要角色。 若要要求合格成員在啟用前必須先執行多重要素驗證，請選取 [啟用時需要多重要素驗證]**** 方塊。
+  您可以要求指派給角色的合格使用者，在 Azure AD Multi-Factor Authentication 中進行註冊，然後才可啟用。 此程序確保要求啟用的使用者是表明具有合理確定性的人員。 在使用者帳戶可能受到危害的情況下，強制執行此選項可保護重要角色。 若要在啟用之前要求合格成員執行 Azure AD Multi-Factor Authentication，請選取 [ **在啟用時需要 Multi-Factor Authentication** ] 方塊。
 
 如需詳細資訊，請參閱[多重要素驗證和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
 ### <a name="activation-maximum-duration"></a>啟用持續時間上限
 
-使用 [啟用持續時間上限]**** 滑桿，可設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可以是 1 到 24 小時。
+使用 [啟用持續時間上限] 滑桿，可設定角色在到期前維持作用中狀態的最長時間 (以小時為單位)。 此值可以是 1 到 24 小時。
 
 ### <a name="require-justification"></a>需要理由
 
-您可以要求成員在進行有效指派時或啟用時提供理由。 若要要求提供理由，請選取 [進行有效指派時需要提供理由]**** 核取方塊，或選取 [啟用時需要提供理由]**** 方塊。
+您可以要求成員在進行有效指派時或啟用時提供理由。 若要要求提供理由，請選取 [進行有效指派時需要提供理由] 核取方塊，或選取 [啟用時需要提供理由] 方塊。
 
 ### <a name="require-approval-to-activate"></a>需要核准才可啟用
 
 如果您想要在啟用角色前先經過核准，請遵循下列步驟。
 
-1. 請選取 [需要核准才可啟用]**** 核取方塊。
-1. 選取 [選取核准者]**** 以開啟 [選取成員或群組]**** 清單。
+1. 請選取 [需要核准才可啟用] 核取方塊。
+1. 選取 [選取核准者] 以開啟 [選取成員或群組] 清單。
 
     ![開啟 Azure AD 自訂角色以編輯設定](./media/azure-ad-custom-roles-configure/select-approvers.png)
 
-1. 選取至少一個成員或群組後，按一下 [選取]****。 您必須至少選取一個核准者。 沒有任何預設核准者。 您的選項將出現在所選取的核准者清單中。
-1. 在指定角色設定後，選取 [更新]**** 以儲存變更。
+1. 選取至少一個成員或群組後，按一下 [選取]。 您必須至少選取一個核准者。 沒有任何預設核准者。 您的選項將出現在所選取的核准者清單中。
+1. 在指定角色設定後，選取 [更新] 以儲存變更。
 
 ## <a name="next-steps"></a>後續步驟
 

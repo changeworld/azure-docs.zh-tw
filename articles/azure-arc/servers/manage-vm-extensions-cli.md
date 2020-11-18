@@ -4,18 +4,26 @@ description: 本文說明如何使用 Azure CLI，將虛擬機器擴充功能部
 ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 59c984f4adaec2261d1b08748aa5a91c8246418d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: bf0a3e0940efc7e79adbe9f763ffdf34ea690fac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359110"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833260"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>使用 Azure CLI 啟用 Azure VM 擴充功能
 
 本文說明如何使用 Azure CLI 將 Azure Arc 啟用的伺服器所支援的 Azure VM 擴充功能部署和卸載至 Linux 或 Windows 混合式電腦。
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
+
+## <a name="install-the-azure-cli-extension"></a>安裝 Azure CLI 擴充功能
+
+ConnectedMachine 命令不會隨附 Azure CLI 的一部分。 在使用 Azure CLI 管理已啟用 Arc 之伺服器所管理的混合式伺服器上的 VM 擴充功能之前，您必須載入 ConnectedMachine 延伸模組。 執行下列命令來取得它：
+
+```azurecli
+az extension add --name connectedmachine
+```
 
 ## <a name="enable-extension"></a>啟用延伸模組
 

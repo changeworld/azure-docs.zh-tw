@@ -5,13 +5,13 @@ keywords: azure app service，web 應用程式，應用程式設定，環境變�
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 86f9f227c0ea92b7b52a3037759426cc87f6d937
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152046"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833651"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>設定 Azure 入口網站中的 App Service 應用程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "92152046"
 
 ![應用程式設定](./media/configure-common/open-ui.png)
 
-針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定應用程式設定，就像是在 `<appSettings>` *Web.config* 或 *appsettings.js*中設定它們，但 App Service 中的值會覆寫 *Web.config* 或 *appsettings.js*中的值。 您可以保留開發設定 (例如， *Web.config* 或 *appsettings.js*中的本機 MySQL 密碼) ，但生產秘密 (例如，Azure MySQL 資料庫密碼) 在 App Service 中安全。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
+針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定應用程式設定，就像是在 `<appSettings>` *Web.config* 或 *appsettings.js* 中設定它們，但 App Service 中的值會覆寫 *Web.config* 或 *appsettings.js* 中的值。 您可以保留開發設定 (例如， *Web.config* 或 *appsettings.js* 中的本機 MySQL 密碼) ，但生產秘密 (例如，Azure MySQL 資料庫密碼) 在 App Service 中安全。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
 
 同樣地，其他語言堆疊會在執行時間取得應用程式設定作為環境變數。 如需語言堆疊的特定步驟，請參閱：
 
@@ -56,7 +56,7 @@ ms.locfileid: "92152046"
 
 若要編輯設定，請按一下右側的 [ **編輯** ] 按鈕。
 
-完成時，按一下 [ **更新**]。 別**忘了按一下**[設定] 頁面中的 [重新**存**回]。
+完成時，按一下 [ **更新**]。 別 **忘了按一下**[設定] 頁面中的 [重新 **存** 回]。
 
 > [!NOTE]
 > 在預設的 Linux 容器或自訂 Linux 容器中，應用程式設定名稱中的任何嵌套 JSON 索引鍵結構都必須 `ApplicationInsights:InstrumentationKey` 在 App Service 中設定，以作為索引 `ApplicationInsights__InstrumentationKey` 鍵名稱。 換句話說，您 `:` 應該將任何 `__` (雙底線) 取代。
@@ -64,7 +64,7 @@ ms.locfileid: "92152046"
 
 ### <a name="edit-in-bulk"></a>大量編輯
 
-若要大量新增或編輯應用程式設定，請按一下 [ **Advanced edit** ] \ （編輯 \）按鈕。 完成時，按一下 [ **更新**]。 別**忘了按一下**[設定] 頁面中的 [重新**存**回]。
+若要大量新增或編輯應用程式設定，請按一下 [ **Advanced edit** ] \ （編輯 \）按鈕。 完成時，按一下 [ **更新**]。 別 **忘了按一下**[設定] 頁面中的 [重新 **存** 回]。
 
 應用程式設定具有下列 JSON 格式：
 
@@ -116,7 +116,7 @@ ms.locfileid: "92152046"
 
 ![應用程式設定](./media/configure-common/open-ui.png)
 
-若為 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定連接字串，就像在Web.config中設定連接字串 `<connectionStrings>` ，但您在 App Service 中設定的值會覆寫*Web.config*中的連接字串。 *Web.config*您可以保留開發設定 (例如，資料庫檔案) *Web.config*和生產秘密 (例如，SQL Database 安全地) 認證。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
+若為 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定連接字串，就像在Web.config中設定連接字串 `<connectionStrings>` ，但您在 App Service 中設定的值會覆寫 *Web.config* 中的連接字串。 *Web.config* 您可以保留開發設定 (例如，資料庫檔案) *Web.config* 和生產秘密 (例如，SQL Database 安全地) 認證。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
 
 針對其他語言堆疊，最好改為使用 [應用程式設定](#configure-app-settings) ，因為連接字串需要變數索引鍵的特殊格式，才能存取這些值。 以下是一個例外狀況，不過，如果您在應用程式中設定其連接字串，則會將某些 Azure 資料庫類型與應用程式一起備份。 如需詳細資訊，請參閱已 [備份的內容](manage-backup.md#what-gets-backed-up)。 如果您不需要此自動備份，請使用應用程式設定。
 
@@ -153,11 +153,11 @@ ms.locfileid: "92152046"
 
 若要編輯設定，請按一下右側的 [ **編輯** ] 按鈕。
 
-完成時，按一下 [ **更新**]。 別**忘了按一下**[設定] 頁面中的 [重新**存**回]。
+完成時，按一下 [ **更新**]。 別 **忘了按一下**[設定] 頁面中的 [重新 **存** 回]。
 
 ### <a name="edit-in-bulk"></a>大量編輯
 
-若要大量加入或編輯連接字串，請按一下 [ **Advanced edit** ] 按鈕。 完成時，按一下 [ **更新**]。 別**忘了按一下**[設定] 頁面中的 [重新**存**回]。
+若要大量加入或編輯連接字串，請按一下 [ **Advanced edit** ] 按鈕。 完成時，按一下 [ **更新**]。 別 **忘了按一下**[設定] 頁面中的 [重新 **存** 回]。
 
 連接字串具有下列 JSON 格式：
 
@@ -207,7 +207,7 @@ ms.locfileid: "92152046"
     > [!NOTE]
     > 大部分的新式瀏覽器僅支援透過 TLS 的 HTTP/2 通訊協定，非加密的流量則會繼續使用 HTTP/1.1。 為確保用戶端瀏覽器會使用 HTTP/2 連接到您的應用程式，請保護您的自訂 DNS 名稱。 如需詳細資訊，請參閱 [Azure App Service 中的使用 TLS/SSL 系結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
     - **ARR 親和性**：在多重實例部署中，確定用戶端會在會話的存留期間路由傳送至相同的實例。 您可以針對無狀態應用程式將此選項設定為 [ **關閉** ]。
-- **調試**程式：為 [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或 [Node.js](configure-language-nodejs.md#debug-remotely) 應用程式啟用遠端偵錯程式。 此選項會在48小時後自動關閉。
+- **調試** 程式：為 [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或 [Node.js](configure-language-nodejs.md#debug-remotely) 應用程式啟用遠端偵錯程式。 此選項會在48小時後自動關閉。
 - **傳入用戶端憑證**：需要 [雙向驗證](app-service-web-configure-tls-mutual-auth.md)的用戶端憑證。
 
 ## <a name="configure-default-documents"></a>設定預設檔
@@ -224,7 +224,7 @@ ms.locfileid: "92152046"
 
 ## <a name="configure-path-mappings"></a>設定路徑對應
 
-在 [Azure 入口網站]中，搜尋並選取 [應用程式服務]，然後選取您的應用程式。 在應用程式的左側功能表中，**選取 [** 設定  >  **路徑**對應]。
+在 [Azure 入口網站]中，搜尋並選取 [應用程式服務]，然後選取您的應用程式。 在應用程式的左側功能表中，**選取 [** 設定  >  **路徑** 對應]。
 
 ![路徑對應](./media/configure-common/open-path.png)
 
@@ -236,7 +236,7 @@ ms.locfileid: "92152046"
 
 處理常式對應可讓您新增自訂腳本處理器以處理特定副檔名的要求。 若要加入自訂處理常式，請按一下 [ **新增處理常式**]。 設定處理常式，如下所示：
 
-- **延伸**模組。 您要處理的副檔名，例如* \* php*或*handler.fcgi*。
+- **延伸** 模組。 您要處理的副檔名，例如 *\* php* 或 *handler.fcgi*。
 - **腳本處理器**。 腳本處理器的絕對路徑。 符合副檔名之檔案的要求會由腳本處理器處理。 使用路徑 `D:\home\site\wwwroot` 以指出應用程式的根目錄。
 - **引數**。 腳本處理器的選擇性命令列引數。
 
@@ -249,7 +249,7 @@ ms.locfileid: "92152046"
 您可以 [為容器化應用程式新增自訂儲存體](configure-connect-to-azure-storage.md)。 容器化應用程式包含所有 Linux 應用程式，以及在 App Service 上執行的 Windows 和 Linux 自訂容器。 按一下 [ **新增] Azure 儲存體掛接** 並設定您的自訂存放裝置，如下所示：
 
 - **名稱**：顯示名稱。
-- 設定**選項**：**基本**或**Advanced**。
+- 設定 **選項**：**基本** 或 **Advanced**。
 - **儲存體帳戶**：具有您想要之容器的儲存體帳戶。
 - **儲存體類型**： **Azure blob** 或 **Azure 檔案儲存體**。
   > [!NOTE]
