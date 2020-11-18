@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740678"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697249"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立簡單的查詢
 
@@ -27,7 +27,7 @@ ms.locfileid: "91740678"
 
 下列範例會根據 [紐約市 OpenData](https://nycopendata.socrata.com/) 計劃所提供的資料集，利用由可用工作組成的 NYC 工作搜尋索引。 這項資料不應視為目前的或已完成。 索引位於 Microsoft 提供的沙箱服務上，這表示您不需要 Azure 訂用帳戶或 Azure 認知搜尋來嘗試這些查詢。
 
-您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 如需詳細資訊，請參閱 [快速入門：使用 Postman 探索 Azure 認知搜尋 REST API](search-get-started-postman.md)。
+您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 如需詳細資訊，請參閱 [快速入門：探索 Azure 認知搜尋 REST API](search-get-started-rest.md)。
 
 ### <a name="set-the-request-header"></a>設定要求標頭
 
@@ -43,7 +43,7 @@ ms.locfileid: "91740678"
 
 要求是與包含 Azure 認知搜尋端點和搜尋字串的 URL 配對的 GET 命令。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 要求標頭 GET" border="false":::
 
 URL 組合具有下列元素：
 
@@ -55,7 +55,7 @@ URL 組合具有下列元素：
 
 ## <a name="send-your-first-query"></a>傳送第一個查詢
 
-在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]****。 結果會以詳細 JSON 文件的形式傳回。 會傳回整份檔，可讓您查看所有欄位和所有的值。
+在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]。 結果會以詳細 JSON 文件的形式傳回。 會傳回整份檔，可讓您查看所有欄位和所有的值。
 
 將此 URL 貼入 REST 用戶端做為驗證步驟，並查看檔結構。
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 此查詢的回應會如下列螢幕擷取畫面所示。
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman 範例回應" border="false":::
 
 您可能已注意到在回應中的搜尋分數。 沒有排名時，分數一律為 1，這是因為搜尋不是全文檢索搜尋，或是未套用任何準則。 若是未套用任何準則的 Null 搜尋，資料列會以任意順序傳回。 當您包含實際準則時，您會發現搜尋分數逐漸具有其實質意義。
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>範例 3：篩選查詢
 
-[篩選語法](./search-query-odata-filter.md)是您可搭配**搜尋**使用或單獨使用的 OData 運算式。 獨立的篩選條件 (不含搜尋參數) 在篩選運算式能夠完全限定相關文件時，將有其效用。 沒有查詢字串，就沒有語彙或語言分析、沒有計分 (所有分數均為 1)，也沒有排名。 請注意，搜尋字串是空的。
+[篩選語法](./search-query-odata-filter.md)是您可搭配 **搜尋** 使用或單獨使用的 OData 運算式。 獨立的篩選條件 (不含搜尋參數) 在篩選運算式能夠完全限定相關文件時，將有其效用。 沒有查詢字串，就沒有語彙或語言分析、沒有計分 (所有分數均為 1)，也沒有排名。 請注意，搜尋字串是空的。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 搭配使用時，會先將篩選套用到整個索引，再對篩選結果執行搜尋。 由於篩選能夠減少搜尋查詢需要處理的資料集合，因此對於提升查詢效能方面是很實用的技術。
 
-  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="篩選查詢回應" border="false":::
 
 如果您想要使用 GET 在 Postman 中試用看看，您可以貼入此字串：
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="數值範圍的範圍篩選條件" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="文字範圍的範圍篩選條件" border="false":::
 
 您也可以使用 GET 在 Postman 中試用這些：
 
@@ -194,7 +194,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 
 > [!NOTE]
-> 透過值範圍進行面向化是常見的搜尋應用程式需求。 如需為 Facet 導覽結構建立篩選條件的詳細資訊和範例，請參閱[「如何實作多面向導覽」中的「根據範圍篩選」**](search-faceted-navigation.md#filter-based-on-a-range)。
+> 透過值範圍進行面向化是常見的搜尋應用程式需求。 如需為 Facet 導覽結構建立篩選條件的詳細資訊和範例，請參閱[「如何實作多面向導覽」中的「根據範圍篩選」](search-faceted-navigation.md#filter-based-on-a-range)。
 
 ## <a name="example-5-geo-search"></a>範例 5：異地搜尋
 
@@ -251,14 +251,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="搜尋模式：任何" border="false":::
 
 將 searchMode 變更為 `all` 時，會對準則強制執行累加效果，而傳回較小的結果集 (21 份文件)，由包含完整片語 "fire department"、但工作地點不是 Metrotech Center 的文件所組成。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Postman 要求標頭設定參數" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="搜尋模式：全部" border="false":::
 
 ## <a name="example-8-structuring-results"></a>範例 8︰建構結果
 
@@ -267,7 +267,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-接續先前的範例，您可以依職稱排序。 之所以可進行此排序，是因為 civil_service_title 在索引中是*可排序的*。
+接續先前的範例，您可以依職稱排序。 之所以可進行此排序，是因為 civil_service_title 在索引中是 *可排序的*。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title

@@ -44,6 +44,8 @@
       href: concepts-identity.md
     - name: 角色型存取控制
       href: concepts-role-based-access-control.md
+    - name: 監視和修復私人雲端
+      href: concepts-monitor-repair-private-cloud.md
     - name: 私人雲端升級
       href: concepts-upgrades.md
 - name: 操作指南

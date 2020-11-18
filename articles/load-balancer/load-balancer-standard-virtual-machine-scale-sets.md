@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: 41f1d6c18eab35bd1a41d4cfa98d0cbda69b35ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdca40d5113f06d185255be2e237cb52b47e9793
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650327"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697436"
 ---
 # <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>使用 Azure 虛擬機器擴展集 Azure Load Balancer
 
@@ -54,6 +54,6 @@ ms.locfileid: "88650327"
 
 您可以使用下列方法，以現有的 Azure 負載平衡器部署虛擬機器擴展集。
 
-* [使用 Azure 入口網站來設定具有現有 Azure Load Balancer 的虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [使用 Azure PowerShell 來設定具有現有 Azure Load Balancer 的虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [使用 Azure CLI 來設定具有現有 Azure Load Balancer 的虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+* [使用 Azure 入口網站來設定具有現有 Azure Load Balancer 的虛擬機器擴展集](./configure-vm-scale-set-portal.md)。
+* [使用 Azure PowerShell 來設定具有現有 Azure Load Balancer 的虛擬機器擴展集](./configure-vm-scale-set-powershell.md)。
+* [使用 Azure CLI 來設定具有現有 Azure Load Balancer 的虛擬機器擴展集](./configure-vm-scale-set-cli.md)。

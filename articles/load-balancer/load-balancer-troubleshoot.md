@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a1a8df6d503ec5f5bf9c1e739e5ecf6486a85776
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912441"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697415"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 
@@ -50,7 +50,7 @@ ms.locfileid: "92912441"
 
 **驗證和解決方式**
 
-若要解決此問題，請登入參與的 VM，檢查 VM 的健康狀態是否良好，而且可以從集區中的另一個 VM 回應 **PsPing** 或 **TCPing** 。 如果 VM 的健康狀態不良，或無法回應探查，您必須修正問題並且讓 VM 回復健康狀態，VM 才能再參與負載平衡。
+若要解決此問題，請登入參與的 VM，檢查 VM 的健康狀態是否良好，而且可以從集區中的另一個 VM 回應 **PsPing** 或 **TCPing**。 如果 VM 的健康狀態不良，或無法回應探查，您必須修正問題並且讓 VM 回復健康狀態，VM 才能再參與負載平衡。
 
 ### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>原因 2：負載平衡器後端集區 VM 未接聽探查連接埠
 如果 VM 健康狀態良好，但未回應探查，則其中一個原因可能是參與的 VM 上未開啟探查連接埠，或 VM 未接聽該連接埠。
@@ -60,7 +60,7 @@ ms.locfileid: "92912441"
 1. 登入後端 VM。 
 2. 開啟命令提示字元並執行下列命令以驗證有應用程式正在接聽探查連接埠︰   
             netstat -an
-3. 如果連接埠狀態未列為 **LISTENING** ，請設定適當的連接埠。 
+3. 如果連接埠狀態未列為 **LISTENING**，請設定適當的連接埠。 
 4. 或者，選取其他已列為 **LISTENING** 的連接埠，並據此更新負載平衡器組態。              
 
 ### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>原因 3：防火牆或網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
@@ -87,7 +87,7 @@ ms.locfileid: "92912441"
         - 如果後端集區 VM 上觀察不到任何傳入封包，則可能是網路安全性群組或 UDR 設定錯誤而封鎖流量。 
         - 如果後端集區 VM 上觀察不到任何傳出封包，則必須檢查 VM 是否有任何相關問題 (例如，應用程式封鎖探查連接埠)。 
     - 確認探查封包是否在到達負載平衡器之前被強制傳送到另一個目的地 (可能是透過 UDR 設定)。 這可能會導致流量永遠都無法到達後端 VM。 
-* 變更探查類型 (例如，將 HTTP 變更為 TCP)，並在網路安全性群組 ACL 和防火牆中設定對應的連接埠以驗證探查回應的組態是否有問題。 如需健康狀態探查組態的詳細資訊，請參閱[端點負載平衡健康狀態探查組態 (英文)](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/)。
+* 變更探查類型 (例如，將 HTTP 變更為 TCP)，並在網路安全性群組 ACL 和防火牆中設定對應的連接埠以驗證探查回應的組態是否有問題。 如需健康狀態探查組態的詳細資訊，請參閱[端點負載平衡健康狀態探查組態 (英文)](/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details)。
 
 ## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>徵兆：負載平衡器後方的 VM 未回應所設定資料連接埠上的流量
 
@@ -133,7 +133,7 @@ ms.locfileid: "92912441"
 
 如果在 VNet 內設定內部 Load Balancer，且其中一個參與的後端 VM 嘗試存取內部 Load Balancer 前端，則當流程對應至原始 VM 時，會發生失敗。 不支援此狀況。
 
-**解決方式** 有數種方式可為此案例排除障礙，包括使用 Proxy。 請評估使用應用程式閘道或其他第三方 Proxy (例如 nginx 或 haproxy)。 如需應用程式閘道的詳細資訊，請參閱[應用程式閘道的概觀](../application-gateway/application-gateway-introduction.md)
+**解決方式** 有數種方式可為此案例排除障礙，包括使用 Proxy。 請評估使用應用程式閘道或其他第三方 Proxy (例如 nginx 或 haproxy)。 如需應用程式閘道的詳細資訊，請參閱[應用程式閘道的概觀](../application-gateway/overview.md)
 
 **詳細資料** 內部 Load Balancer 不會將輸出起始連線轉譯為內部 負載平衡器的前端，因為這兩者都位於私人 IP 位址空間中。 公用 Load Balancer 提供從虛擬網路內的私人 IP 位址到公用 IP 位址的[輸出連線](load-balancer-outbound-connections.md)。 對於內部 Load Balancer，此方法可避免在無需轉譯的專屬內部 IP 位址空間中將 SNAT 連接埠耗盡。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92912441"
 
 此案例的徵兆是當流量回到其源自的相同後端時，發生間歇性連線逾時。 常見的因應措施包括在內部 Load Balancer 後方插入 Proxy 層，以及使用伺服器直接回傳 (DSR) 樣式規則。 如需詳細資訊，請參閱[多個 Azure Load Balancer 前端](load-balancer-multivip-overview.md)。
 
-您可以結合內部 Load Balancer 與任何第三方 Proxy，或將內部[應用程式閘道](../application-gateway/application-gateway-introduction.md)用於使用 HTTP/HTTPS 的 Proxy 案例。 儘管可以使用公用 Load Balancer 來緩解此問題，但產生的案例容易造成 [SNAT 耗盡](load-balancer-outbound-connections.md)。 除非謹慎管理，否則請避免使用此替代方法。
+您可以結合內部 Load Balancer 與任何第三方 Proxy，或將內部[應用程式閘道](../application-gateway/overview.md)用於使用 HTTP/HTTPS 的 Proxy 案例。 儘管可以使用公用 Load Balancer 來緩解此問題，但產生的案例容易造成 [SNAT 耗盡](load-balancer-outbound-connections.md)。 除非謹慎管理，否則請避免使用此替代方法。
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>徵兆：無法針對已在後端集區中部署 VM 擴展集的負載平衡器，變更其現有 LB 規則的後端連接埠。 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因：在健康情況探查針對 VM 擴展集參考的負載平衡器所使用的負載平衡規則中，無法修改後端連接埠。
@@ -172,4 +172,3 @@ ms.locfileid: "92912441"
 ## <a name="next-steps"></a>後續步驟
 
 如果上述步驟無法解決問題，請開啟 [支援票證](https://azure.microsoft.com/support/options/)。
-

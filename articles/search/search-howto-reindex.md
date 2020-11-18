@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924022"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697079"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中重建索引
 
 本文說明如何重建 Azure 認知搜尋索引、需要重建的情況，以及降低重建對持續查詢要求之影響的建議。
 
-「重建」** 是指卸除並重新建立與索引 (包括所有欄位型反向索引) 相關聯的實體資料結構。 在 Azure 認知搜尋中，您無法卸載並重新建立個別欄位。 若要重建索引，必須刪除所有的欄位儲存體，根據現有的或修訂過的索引結構描述來重新建立，然後填入推送至索引的資料，或從外部來源提取的資料。 
+「重建」是指卸除並重新建立與索引 (包括所有欄位型反向索引) 相關聯的實體資料結構。 在 Azure 認知搜尋中，您無法卸載並重新建立個別欄位。 若要重建索引，必須刪除所有的欄位儲存體，根據現有的或修訂過的索引結構描述來重新建立，然後填入推送至索引的資料，或從外部來源提取的資料。 
 
 當您反復查看索引設計時，通常會在開發期間重建索引，但您可能也需要重建生產層級的索引以容納結構變更，例如加入複雜類型或將欄位加入至建議工具。
 
@@ -40,19 +40,19 @@ ms.locfileid: "88924022"
 | 條件 | 描述 |
 |-----------|-------------|
 | 變更欄位定義 | 修改欄位名稱、資料類型或特定[索引屬性](/rest/api/searchservice/create-index) \(英文\) (可搜尋、可篩選、可排序、可面向化) 需要完整重建。 |
-| 將分析器指派給欄位 | [分析器](search-analyzers.md)定義在索引中，之後指派給欄位。 您可以隨時將新分析器定義新增至索引，但當欄位建立後，您只能*指派*分析器。 這適用於 **analyzer** 和 **indexAnalyzer** 屬性。 **searchAnalyzer** 屬性是例外狀況 (您可以將此屬性指派給現有欄位)。 |
+| 將分析器指派給欄位 | [分析器](search-analyzers.md)定義在索引中，之後指派給欄位。 您可以隨時將新分析器定義新增至索引，但當欄位建立後，您只能 *指派* 分析器。 這適用於 **analyzer** 和 **indexAnalyzer** 屬性。 **searchAnalyzer** 屬性是例外狀況 (您可以將此屬性指派給現有欄位)。 |
 | 更新或刪除索引中的分析器定義 | 您無法刪除或變更索引中的現有分析器組態 (分析器、權杖化工具、權杖篩選器或 char 篩選器)，除非您重建整個索引。 |
 | 將欄位新增至建議工具 | 如果已有欄位存在，且您想要將它新增至[建議工具](index-add-suggesters.md)建構中，您必須重建索引。 |
 | 刪除欄位 | 若要實體上移除欄位的所有追蹤，您必須重建索引。 當立即重建不可行時，您可以修改應用程式程式碼以停用對「已刪除」欄位的存取，或使用 [$select query 參數](search-query-odata-select.md) 來選擇要在結果集中表示哪些欄位。 實體上，在您下次套用省略問題欄位的結構描述重建之前，欄位定義和內容都會保留在索引中。 |
-| 切換階層 | 如果您需要更多容量，Azure 入口網站中並沒有就地升級。 必須建立新的服務，而且必須在新的服務上從頭建立索引。 若要協助自動化此程式，您可以使用此[Azure 認知搜尋 .net 範例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存放庫中的**索引備份-還原範例程式**代碼。 此應用程式會將您的索引備份至一系列的 JSON 檔案，然後在您指定的搜尋服務中重新建立索引。|
+| 切換階層 | 如果您需要更多容量，Azure 入口網站中並沒有就地升級。 必須建立新的服務，而且必須在新的服務上從頭建立索引。 若要協助自動化此程式，您可以使用此 [Azure 認知搜尋 .net 範例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存放庫中的 **索引備份-還原範例程式** 代碼。 此應用程式會將您的索引備份至一系列的 JSON 檔案，然後在您指定的搜尋服務中重新建立索引。|
 
 ## <a name="update-conditions"></a>更新條件
 
 您可以進行許多其他修改，而不會影響現有的實體結構。 具體來說，下列變更 *不* 需要重建索引。 針對這些變更，您可以使用變更來 [更新索引定義](/rest/api/searchservice/update-index) 。
 
 + 新增欄位
-+ 在現有欄位上設定 [retrievable]**** 屬性
-+ 在現有欄位上設定 [searchAnalyzer]****
++ 在現有欄位上設定 [retrievable] 屬性
++ 在現有欄位上設定 [searchAnalyzer]
 + 在索引中新增新的分析器定義
 + 新增、更新或刪除評分設定檔
 + 新增、更新或刪除 CORS 設定
@@ -91,7 +91,7 @@ ms.locfileid: "88924022"
 
 第一個文件載入之後，您就可以開始查詢索引。 如果您知道文件的別碼，[查閱文件 REST API](/rest/api/searchservice/lookup-document) \(英文\) 可傳回特定文件。 若要進行更廣泛的測試，您應該等到索引完全載入，然後使用查詢來確認您預期會看到的內容。
 
-您可以使用 [Search Explorer](search-explorer.md) 或 Web 測試控管（例如 [Postman](search-get-started-postman.md) ）來檢查是否有更新的內容。
+您可以使用 [Search Explorer](search-explorer.md) 或 Web 測試控管（例如 [Postman 或 Visual Studio Code](search-get-started-rest.md) ）來檢查是否有更新的內容。
 
 如果您已新增或重新命名欄位，請使用 [$select](search-query-odata-select.md) 傳回該欄位： `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

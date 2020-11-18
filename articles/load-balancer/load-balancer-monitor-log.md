@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f24ab2c646757f0241748336243b0d5f977d081c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935597"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698320"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公用基礎負載平衡器的 Azure 監視器記錄
 
 您可以在 Azure 中使用不同類型的記錄來管理 Basic Load Balancer，並對其進行疑難排解。 透過入口網站可以存取其中一些記錄。 記錄可以串流至事件中樞或 Log Analytics 工作區。 所有記錄都可以從 Azure blob 儲存體解壓縮，並以不同的工具（例如 Excel 和 Power BI）來查看。  您可以從下列清單進一步了解不同類型的記錄。
 
-* **活動記錄：** 您可以使用 [View 活動記錄來監視資源的動作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) ，以查看提交至您的 Azure 訂用帳戶 () 的所有活動及其狀態。 預設會啟用活動記錄，並可在 Azure 入口網站中查看。
+* **活動記錄：** 您可以使用 [View 活動記錄來監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) ，以查看提交至您的 Azure 訂用帳戶 () 的所有活動及其狀態。 預設會啟用活動記錄，並可在 Azure 入口網站中查看。
 * **警示事件記錄：** 您可以使用此記錄來檢視負載平衡器所引發的警示。 系統每五分鐘會收集一次負載平衡器的狀態。 只有在引發負載平衡器警示事件時，才會寫入此記錄檔。
 * **健康狀態探查記錄︰** 您可以使用此記錄來檢視健康狀態探查所偵測到的問題，例如後端集區中因為健康狀態探查失敗而未從負載平衡器接收要求的執行個體數目。 健康狀態探查狀態發生變更時會寫入此記錄。
 
@@ -35,21 +35,21 @@ ms.locfileid: "88935597"
 
 每個 Resource Manager 資源都會自動啟用活動記錄功能。 啟用事件和健康情況探查記錄，以開始收集可透過這些記錄取得的資料。 使用下列步驟以啟用記錄功能。
 
-登入 [Azure 入口網站](https://portal.azure.com)。 如果您還沒有負載平衡器，請先 [建立負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) 再繼續。
+登入 [Azure 入口網站](https://portal.azure.com)。 如果您還沒有負載平衡器，請先 [建立負載平衡器](./quickstart-load-balancer-standard-public-portal.md) 再繼續。
 
 1. 在入口網站中，按一下 [ **資源群組**]。
 2. 選取 **\<resource-group-name>** 負載平衡器所在的位置。
 3. 選取負載平衡器。
 4. 選取 [**活動記錄**  >  **診斷設定**]。
 5. 在 [ **診斷設定** ] 窗格中，選取 [ **診斷設定**] 下的 [ **+ 新增診斷設定**]。
-6. 在 [**診斷設定**建立] 窗格的 [**名稱**] 欄位中，輸入**myLBDiagnostics** 。
-7. **診斷設定**有三個選項。  您可以選擇其中一個、兩個或三個，並針對您的需求進行設定：
+6. 在 [**診斷設定** 建立] 窗格的 [**名稱**] 欄位中，輸入 **myLBDiagnostics** 。
+7. **診斷設定** 有三個選項。  您可以選擇其中一個、兩個或三個，並針對您的需求進行設定：
    * **封存至儲存體帳戶**
    * **串流至事件中樞**
    * **傳送至 Log Analytics**
 
     ### <a name="archive-to-a-storage-account"></a>封存至儲存體帳戶
-    您將需要已為此進程建立的儲存體帳戶。  若要建立儲存體帳戶，請參閱 [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
+    您將需要已為此進程建立的儲存體帳戶。  若要建立儲存體帳戶，請參閱 [建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)
 
     1. 選取 [封存 **至儲存體帳戶**] 旁的核取方塊。
     2. 選取 [ **設定** ] 以開啟 [ **選取儲存體帳戶** ] 窗格。
@@ -58,17 +58,17 @@ ms.locfileid: "88935597"
     5. 選取 [確定]。
 
     ### <a name="stream-to-an-event-hub"></a>串流至事件中樞
-    您將需要已經為此進程建立的事件中樞。  若要建立事件中樞，請參閱 [快速入門：使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+    您將需要已經為此進程建立的事件中樞。  若要建立事件中樞，請參閱 [快速入門：使用 Azure 入口網站建立事件中樞](../event-hubs/event-hubs-create.md)
 
     1. 選取 [**串流至事件中樞**] 旁的核取方塊
     2. 選取 [ **設定** ] 以開啟 [ **選取事件中樞** ] 窗格。
     3. 在下拉式清單方塊中選取您的事件中樞建立所在的 **訂** 用帳戶。
-    4. 在下拉式清單方塊中**選取 [事件中樞命名空間**]。
-    5. 在下拉式清單方塊中**選取 [事件中樞原則名稱**]。
+    4. 在下拉式清單方塊中 **選取 [事件中樞命名空間**]。
+    5. 在下拉式清單方塊中 **選取 [事件中樞原則名稱**]。
     6. 選取 [確定]。
 
     ### <a name="send-to-log-analytics"></a>傳送至 Log Analytics
-    您必須已經為此程式建立並設定 log analytics 工作區。  若要建立 Log Analytics 工作區，請參閱[在 Azure 入口網站中建立 Log analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+    您必須已經為此程式建立並設定 log analytics 工作區。  若要建立 Log Analytics 工作區，請參閱[在 Azure 入口網站中建立 Log analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
     1. 選取 [ **傳送至 Log Analytics**] 旁的核取方塊。
     2. 在下拉式清單方塊中選取您的 Log Analytics 工作區所在的 **訂** 用帳戶。
@@ -82,13 +82,13 @@ ms.locfileid: "88935597"
 9.  在 [**診斷設定**] 窗格中的 [計量 **] 區段底下**，選取下列核取方塊：
    * **AllMetrics**
 
-11. 確認一切看起來正確，然後按一下 [建立**診斷設定**] 窗格頂端的 [**儲存**]。
+11. 確認一切看起來正確，然後按一下 [建立 **診斷設定**] 窗格頂端的 [**儲存**]。
 
 ## <a name="activity-log"></a>活動記錄檔
 
-預設會產生活動記錄。 記錄會在 Azure 的 [事件記錄] 存放區中保留 90 天。 若要深入瞭解這些記錄，請閱讀 [View 活動記錄以監視資源的動作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) 文章。
+預設會產生活動記錄。 記錄會在 Azure 的 [事件記錄] 存放區中保留 90 天。 若要深入瞭解這些記錄，請閱讀 [View 活動記錄以監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) 文章。
 
-## <a name="archive-to-storage-account-logs"></a>封存至儲存體客戶紀錄
+## <a name="archive-to-storage-account-logs"></a>封存至儲存體帳戶記錄
 
 ### <a name="alert-event-log"></a>警示事件記錄檔
 
@@ -171,8 +171,8 @@ JSON 輸出在屬性欄位中顯示了探查健全狀況狀態的基本資訊。
 當診斷資訊串流至事件中樞時，它可以用於具有 Azure 監視器整合的協力廠商 SIEM 工具中的集中式記錄分析。 如需詳細資訊，請參閱 [將 Azure 監視資料串流至事件中樞](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>傳送至 Log Analytics
-Azure 中的資源可以將其診斷資訊直接傳送至 Log Analytics 工作區，其中可針對疑難排解和分析資訊來執行複雜的查詢。  如需詳細資訊，請參閱 Azure 監視器中的 [收集 Log Analytics 工作區中的 Azure 資源記錄](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
+Azure 中的資源可以將其診斷資訊直接傳送至 Log Analytics 工作區，其中可針對疑難排解和分析資訊來執行複雜的查詢。  如需詳細資訊，請參閱 Azure 監視器中的 [收集 Log Analytics 工作區中的 Azure 資源記錄](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [了解負載平衡器偵查](load-balancer-custom-probe-overview.md)

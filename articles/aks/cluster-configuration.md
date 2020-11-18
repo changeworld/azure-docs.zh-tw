@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072079"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698065"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -78,27 +78,28 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 如果您想要使用 AKS Ubuntu 16.04 映射建立節點集區，可以省略自訂標籤來進行 `--aks-custom-headers` 。
 
+## <a name="container-runtime-configuration"></a>容器執行時間設定
 
-## <a name="container-runtime-configuration-preview"></a>容器執行時間設定 (預覽) 
+容器執行時間是一種軟體，可執行容器和管理節點上的容器映射。 執行時間可協助您抽象化 sys 呼叫或作業系統 (OS) 特定功能，在 Linux 或 Windows 上執行容器。 使用 Kubernetes 1.19 版節點集區的 AKS 叢集，並將 `containerd` 其作為容器執行時間使用。 在節點集區中使用 Kubernetes 之前的 AKS 叢集使用 [Moby](https://mobyproject.org/) (上游 docker) 作為容器執行時間。
 
-容器執行時間是一種軟體，可執行容器和管理節點上的容器映射。 執行時間可協助您抽象化 sys 呼叫或作業系統 (OS) 特定功能，在 Linux 或 Windows 上執行容器。 現今的 AKS 會使用 [Moby](https://mobyproject.org/) (上游 docker) 作為其容器執行時間。 
-    
 ![Docker CRI 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/) 是一個 [OCI](https://opencontainers.org/) (開放式容器計畫) 符合規範的核心容器執行時間，可提供執行容器和管理節點上映射的最小必要功能集。 它是在2017年3月的雲端原生計算基礎 (CNCF) [捐贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) 。 目前，AKS 使用的 Moby 版本已在之上，並建置於之上 `containerd` ，如上所示。 
+[`Containerd`](https://containerd.io/) 是一個 [OCI](https://opencontainers.org/) (開放式容器計畫) 符合規範的核心容器執行時間，可提供執行容器和管理節點上映射的最小必要功能集。 它是在2017年3月的雲端原生計算基礎 (CNCF) [捐贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) 。 AKS 使用的目前 Moby 版本已充分利用，並建立在之上 `containerd` ，如上所示。
 
-使用以 containerd 為基礎的節點和節點集區（而不是與進行交談）， `dockershim` kubelet 會直接透過 `containerd` CRI (容器執行時間介面) 外掛程式，在流程中移除額外的躍點（相較于 Docker CRI 執行時）。 因此，您會看到較佳的 pod 啟動延遲，以及較少的資源 (CPU 和記憶體) 使用量。
+透過以架構為 `containerd` 基礎的節點和節點集區， `dockershim` kubelet 會直接透過 `containerd` CRI (容器執行時間介面) 外掛程式，在流程上移除額外的躍點，而不是與 Docker CRI 的執行方式進行交談。 因此，您會看到較佳的 pod 啟動延遲，以及較少的資源 (CPU 和記憶體) 使用量。
 
 藉由使用 `containerd` AKS 節點，pod 啟動延遲會改善，且容器執行時間會減少節點資源耗用量。 這項新架構會啟用這些改進 `containerd` ，而 kubelet 會直接透過 CRI 外掛程式進行討論，而在 Moby/docker 架構中，kubelet 會在 `dockershim` 到達與 docker 引擎之前，在流程中使用 `containerd` 額外的躍點。
 
 ![Docker CRI 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd` 適用于 AKS 中每個 GA 版本的 kubernetes，以及在 v 1.10 以上的每個上游 kubernetes 版本中，並支援所有 kubernetes 和 AKS 功能。
+`Containerd` 適用于 AKS 中 Kubernetes 的每個 GA 版本，以及1.19 上每個上游 Kubernetes 版本中的，並支援所有 Kubernetes 和 AKS 功能。
 
 > [!IMPORTANT]
-> `containerd`AKS 正式推出之後，就會成為新叢集上容器執行時間的預設和唯一選項。 您仍然可以在舊版支援的版本上使用 Moby nodepools 和叢集，直到這些版本支援為止。 
+> 在 Kubernetes v 1.19 上建立的節點集區或更高 `containerd` 的叢集，其容器執行時間的預設值為。 在支援的 Kubernetes 版本上，節點集區的叢集會在其容器執行時間小於1.19 接收 `Moby` ，但會在 `ContainerD` 節點集區 Kubernetes 版本更新為 v 1.19 或更高版本時更新為。 您仍然可以 `Moby` 在舊版支援的版本上使用節點集區和叢集，直到這些版本支援為止。
 > 
-> 建議您先在節點集區上測試您的工作負載， `containerd` 然後再使用此容器執行時間升級或建立新的叢集。
+> 強烈建議您在 `containerD` 使用1.19 或更高版本的叢集之前，先在 AKS 節點集區上測試您的工作負載。
+
+下一節將說明如何使用容器執行時間設定預覽版， `containerD` 在尚未使用 Kubernetes 1.19 版或更高版本的叢集上使用和測試 AKS，或在此功能正式推出之前建立。
 
 ### <a name="use-containerd-as-your-container-runtime-preview"></a>`containerd` (預覽版使用作為容器執行時間) 
 

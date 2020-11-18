@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 3e35dc35746f08f48150a738b927433065fc1c67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910265"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697657"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>將 Apache HBase 叢集移轉至新的版本
 
@@ -191,7 +191,7 @@ ms.locfileid: "92910265"
    hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
    ```
     
-1. 在新的 HDInsight 叢集上登入 Ambari。 變更 `fs.defaultFS` HDFS 設定，以指向原始叢集所使用的容器名稱。 此設定位於 [HDFS] > [設定] > [進階] > [進階核心網站]  之下。
+1. 在新的 HDInsight 叢集上登入 Ambari。 變更 `fs.defaultFS` HDFS 設定，以指向原始叢集所使用的容器名稱。 此設定位於 [HDFS] > [設定] > [進階] > [進階核心網站] 之下。
 
    ![在 [Ambari] 中，按一下 [服務 > HDFS >] > Advanced](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -223,15 +223,15 @@ ms.locfileid: "92910265"
    hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
    ```
    
-1. 如果您要將 HDInsight 3.6 升級為4.0，請遵循下列步驟，否則請跳至步驟10：
+1. 如果您要將 HDInsight 3.6 升級為4.0，請遵循下列步驟，否則請跳至步驟13：
 
-    1. 選取 [全部必要的 **服務**  >  **重新開機** ]，以重新開機 Ambari 中所有必要的服務。
+    1. 選取 [全部必要的 **服務**  >  **重新開機**]，以重新開機 Ambari 中所有必要的服務。
     1. 停止 HBase 服務。
     1. 透過 SSH 連線至 Zookeeper 節點，然後執行 [zkCli](https://github.com/go-zkcli/zkcli) 命令 `rmr /hbase-unsecure` 以從 Zookeeper 移除 HBase 根 znode。
     1. 重新開機 HBase。
 
 1. 如果您要升級至4.0 以外的其他任何 HDInsight 版本，請遵循下列步驟：
-    1. 儲存變更。
+    1. 儲存您的變更。
     1. 如 Ambari 所示，重新啟動所有必要的服務。
 
 1. 將您的應用程式指向新的叢集。
@@ -243,7 +243,7 @@ ms.locfileid: "92910265"
 
 1. 如果新的叢集令人滿意，請將原始叢集刪除。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 [Apache HBase](https://hbase.apache.org/) 和升級 HDInsight 叢集，請參閱下列文章：
 

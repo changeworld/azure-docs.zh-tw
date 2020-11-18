@@ -1,7 +1,7 @@
 ---
 title: 'Visual Studio Code (preview 中連接到計算實例) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Visual Studio Code 中連接到 Azure Machine Learning 計算實例
+description: 瞭解如何連線到 Visual Studio Code 中的 Azure Machine Learning 計算實例，以執行互動式 Jupyter Notebook 和遠端開發工作負載。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 09/03/2020
-ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708368"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697573"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>在 Visual Studio Code (preview 中連接到 Azure Machine Learning 計算實例) 
 
@@ -134,7 +134,7 @@ Host azmlci1
 |----|---------|
 |主機|針對計算實例使用您喜歡的任何速記 |
 |HostName|這是計算實例的 IP 位址 |
-|連接埠|這是上述 SSH 對話方塊中顯示的埠 |
+|Port|這是上述 SSH 對話方塊中顯示的埠 |
 |User|這必須是 `azureuser` |
 |IdentityFile|應指向您儲存私密金鑰的檔案 |
 

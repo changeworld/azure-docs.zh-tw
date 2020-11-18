@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: bf2282c5fda29cd266778a322efa4a0a33139c35
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: aed1aa03527481014a63c636181725b91b17a1e8
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372369"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697300"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用索引子為 Cosmos DB 資料編製索引 
 
@@ -62,27 +62,27 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 
 ### <a name="2---start-import-data-wizard"></a>2 - 啟動匯入資料精靈
 
-您可以從 [Azure 認知搜尋服務] 頁面的命令列 [啟動精靈](search-import-data-portal.md)，或者，如果您要連線到 COSMOS DB SQL API，您可以按一下 Cosmos DB 帳戶左側導覽窗格的 [ **設定** ] 區段中的 [ **新增] Azure 認知搜尋** 。
+您可以從 [Azure 認知搜尋服務] 頁面的命令列 [啟動精靈](search-import-data-portal.md)，或者，如果您要連線到 COSMOS DB SQL API，您可以按一下 Cosmos DB 帳戶左側導覽窗格的 [**設定**] 區段中的 [**新增] Azure 認知搜尋**。
 
    ![入口網站中的匯入資料命令](./media/search-import-data-portal/import-data-cmd2.png "啟動匯入資料精靈")
 
 ### <a name="3---set-the-data-source"></a>3 - 設定資料來源
 
-在 [ **資料來源** ] 頁面中，來源必須是 **Cosmos DB** ，並具有下列規格：
+在 [ **資料來源** ] 頁面中，來源必須是 **Cosmos DB**，並具有下列規格：
 
 + **Name** 是資料來源物件的名稱。 建立之後，您可以針對其他工作負載進行選擇。
 
 + **Cosmos DB 帳戶** 的格式應為下列其中一種：
     1. Cosmos DB 的主要或次要連接字串，格式如下： `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` 。
         + 針對3.2 版和3.6 版的 **MongoDB 集合** ，Azure 入口網站中的 Cosmos DB 帳戶使用下列格式： `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`
-        + 若為 **Gremlin 的圖形和 Cassandra 資料表** ，請註冊 [閘道索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview) 以取得預覽版的存取權，以及如何格式化認證的相關資訊。
+        + 若為 **Gremlin 的圖形和 Cassandra 資料表**，請註冊 [閘道索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview) 以取得預覽版的存取權，以及如何格式化認證的相關資訊。
     1.  具有下列格式的受控識別連接字串不包含帳戶金鑰： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)` 。 若要使用此連接字串格式，請遵循 [使用受控識別來設定 Cosmos DB 資料庫的索引子連接](search-howto-managed-identities-cosmos-db.md)的指示。
 
 + **資料庫** 是帳戶中的現有資料庫。 
 
 + **集合** 是檔的容器。 必須要有檔才能成功匯入。 
 
-+ 如果您想要所有檔， **查詢** 可以是空白的，否則您可以輸入可選取檔子集的查詢。 **查詢** 僅適用于 SQL API。
++ 如果您想要所有檔，**查詢** 可以是空白的，否則您可以輸入可選取檔子集的查詢。 **查詢** 僅適用于 SQL API。
 
    ![Cosmos DB 資料來源定義](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB 資料來源定義")
 
@@ -96,7 +96,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 
 在 [索引] 頁面上，您應該會看到欄位清單，其中有資料類型以及一系列用於設定索引屬性的核取方塊。 Wizard 可以根據中繼資料和取樣來源資料來產生欄位清單。 
 
-您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對每個應該傳回給用戶端應用 **程式的欄位** ，選擇 [可取得] 和 [可搜尋 **]，並** 受限於全文檢索搜尋處理。 您將會注意到，整數不是全文檢索或模糊可搜尋 (數位會逐字進行評估，而且在篩選) 中通常很有用。
+您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對每個應該傳回給用戶端應用 **程式的欄位**，選擇 [可取得] 和 [可搜尋 **]，並** 受限於全文檢索搜尋處理。 您將會注意到，整數不是全文檢索或模糊可搜尋 (數位會逐字進行評估，而且在篩選) 中通常很有用。
 
 如需詳細資訊，請參閱 [索引屬性](/rest/api/searchservice/create-index#bkmk_indexAttrib) 和 [語言分析器](/rest/api/searchservice/language-support) 的描述。 
 
@@ -137,7 +137,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-組合要求的輸入
 
-針對每個要求，您必須為 POST 標頭) 中的 Azure 認知搜尋 (提供服務名稱和管理金鑰，以及 blob 儲存體的儲存體帳戶名稱和金鑰。 您可以使用 [Postman](search-get-started-postman.md) 將 HTTP 要求傳送至 Azure 認知搜尋。
+針對每個要求，您必須為 POST 標頭) 中的 Azure 認知搜尋 (提供服務名稱和管理金鑰，以及 blob 儲存體的儲存體帳戶名稱和金鑰。 您可以使用 [Postman 或 Visual Studio Code](search-get-started-rest.md) ，將 HTTP 要求傳送至 Azure 認知搜尋。
 
 將下列四個值複製到 [記事本]，讓您可以將它們貼到要求中：
 
@@ -151,7 +151,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 
 2. 在左側流覽窗格中，按一下 [機 **碼** ]，然後複製主要或次要金鑰， (它們相等) 。
 
-3. 切換至 Cosmos 儲存體帳戶的入口網站頁面。 在左側流覽窗格的 [ **設定** ] 底下，按一下 [ **金鑰** ]。 此頁面提供 URI、兩組連接字串，以及兩組索引鍵。 將其中一個連接字串複製到 [記事本]。
+3. 切換至 Cosmos 儲存體帳戶的入口網站頁面。 在左側流覽窗格的 [ **設定**] 底下，按一下 [ **金鑰**]。 此頁面提供 URI、兩組連接字串，以及兩組索引鍵。 將其中一個連接字串複製到 [記事本]。
 
 ### <a name="2---create-a-data-source"></a>2-建立資料來源
 
@@ -185,8 +185,8 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 |---------|-------------|
 | **name** | 必要。 選擇任何名稱，以代表您的資料來源物件。 |
 |**type**| 必要。 必須是 `cosmosdb`。 |
-|**credentials** | 必要。 必須遵循 Cosmos DB 連接字串格式或受控識別連接字串格式。<br/><br/>針對 **SQL 集合** ，連接字串可以遵循下列其中一種格式： <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>具有下列格式的受控識別連接字串不包含帳戶金鑰： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` 。 若要使用此連接字串格式，請遵循 [使用受控識別來設定 Cosmos DB 資料庫的索引子連接](search-howto-managed-identities-cosmos-db.md)的指示。<br/><br/>針對3.2 版和3.6 版的 **MongoDB 集合** ，請使用下列其中一種連接字串格式： <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>具有下列格式的受控識別連接字串不包含帳戶金鑰： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` 。 若要使用此連接字串格式，請遵循 [使用受控識別來設定 Cosmos DB 資料庫的索引子連接](search-howto-managed-identities-cosmos-db.md)的指示。<br/><br/>若為 **Gremlin 的圖形和 Cassandra 資料表** ，請註冊 [閘道索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview) 以取得預覽版的存取權，以及如何格式化認證的相關資訊。<br/><br/>請避免在端點 URL 中使用連接埠號碼。 如果您包含埠號碼，Azure 認知搜尋將無法為您的 Azure Cosmos DB 資料庫編制索引。|
-| **container** | 包含下列元素： <br/>**名稱** ：必要。 指定要編製索引的資料庫集合識別碼。<br/>**查詢** ：選擇性。 您可以指定查詢將任意 JSON 文件壓平合併成 Azure 認知搜尋可以編製索引的一般結構描述。<br/>針對 MongoDB API、Gremlin API 與 Cassandra API，則不支援查詢。 |
+|**credentials** | 必要。 必須遵循 Cosmos DB 連接字串格式或受控識別連接字串格式。<br/><br/>針對 **SQL 集合**，連接字串可以遵循下列其中一種格式： <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>具有下列格式的受控識別連接字串不包含帳戶金鑰： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` 。 若要使用此連接字串格式，請遵循 [使用受控識別來設定 Cosmos DB 資料庫的索引子連接](search-howto-managed-identities-cosmos-db.md)的指示。<br/><br/>針對3.2 版和3.6 版的 **MongoDB 集合** ，請使用下列其中一種連接字串格式： <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>具有下列格式的受控識別連接字串不包含帳戶金鑰： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` 。 若要使用此連接字串格式，請遵循 [使用受控識別來設定 Cosmos DB 資料庫的索引子連接](search-howto-managed-identities-cosmos-db.md)的指示。<br/><br/>若為 **Gremlin 的圖形和 Cassandra 資料表**，請註冊 [閘道索引子預覽](https://aka.ms/azure-cognitive-search/indexer-preview) 以取得預覽版的存取權，以及如何格式化認證的相關資訊。<br/><br/>請避免在端點 URL 中使用連接埠號碼。 如果您包含埠號碼，Azure 認知搜尋將無法為您的 Azure Cosmos DB 資料庫編制索引。|
+| **container** | 包含下列元素： <br/>**名稱**：必要。 指定要編製索引的資料庫集合識別碼。<br/>**查詢**：選擇性。 您可以指定查詢將任意 JSON 文件壓平合併成 Azure 認知搜尋可以編製索引的一般結構描述。<br/>針對 MongoDB API、Gremlin API 與 Cassandra API，則不支援查詢。 |
 | **dataChangeDetectionPolicy** | 建議使用。 請參閱[索引變更的文件](#DataChangeDetectionPolicy)小節。|
 |**dataDeletionDetectionPolicy** | 選擇性。 請參閱[索引刪除的文件](#DataDeletionDetectionPolicy)小節。|
 
@@ -194,7 +194,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 您可以指定 SQL 查詢來壓平合併巢狀屬性或陣列、投影 JSON 屬性，以及篩選要編製索引的資料。 
 
 > [!WARNING]
-> **MONGODB API** 、 **Gremlin api** 和 **Cassandra API** 的自訂查詢不支援： `container.query` 參數必須設定為 null 或省略。 如果您需要使用自訂查詢，請在 [User Voice](https://feedback.azure.com/forums/263029-azure-search) 告訴我們。
+> **MONGODB API**、 **Gremlin api** 和 **Cassandra API** 的自訂查詢不支援： `container.query` 參數必須設定為 null 或省略。 如果您需要使用自訂查詢，請在 [User Voice](https://feedback.azure.com/forums/263029-azure-search) 告訴我們。
 
 範例文件︰
 
@@ -274,11 +274,11 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 | Bool |Edm.Boolean、Edm.String |
 | 看起來像是整數的數字 |Edm.Int32、Edm.Int64、Edm.String |
 | 看起來像是浮點的數字 |Edm.Double、Edm.String |
-| 字串 |Edm.String |
+| String |Edm.String |
 | 基本類型的陣列，例如 ["a", "b", "c"] |Collection(Edm.String) |
 | 看起來像是日期的字串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 物件，例如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
-| 其他 JSON 物件 |N/A |
+| 其他 JSON 物件 |不適用 |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4-設定和執行索引子
 

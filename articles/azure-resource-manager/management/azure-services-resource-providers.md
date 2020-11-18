@@ -2,13 +2,13 @@
 title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/17/2020
+ms.openlocfilehash: c447a08b4422929f042315370b5888f3db0626e4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949117"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697725"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
@@ -18,7 +18,7 @@ ms.locfileid: "91949117"
 
 | 資源提供者命名空間 | Azure 服務 |
 | --------------------------- | ------------- |
-| Microsoft.AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
+| Microsoft.AAD | [Azure Active Directory 網域服務](../../active-directory-domain-services/index.yml) |
 | Microsoft.Addons | core |
 | ADHybridHealthService<sup>1</sup> | [Azure Active Directory](../../active-directory/index.yml) |
 | Microsoft.Advisor | [Azure Advisor](../../advisor/index.yml) |
@@ -38,11 +38,11 @@ ms.locfileid: "91949117"
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft 帳單<sup>1</sup> | [成本管理和計費](/azure/billing/) |
-| Microsoft.BingMaps | [Bing 地圖服務](/BingMaps/#pivot=main&panel=BingMapsAPI) |
+| Microsoft.BingMaps | [Bing 地圖](/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.Blockchain | [Azure 區塊鏈服務](../../blockchain/workbench/index.yml) |
 | Microsoft.BlockchainTokens | [Azure 區塊鏈服務權杖](https://azure.microsoft.com/services/blockchain-tokens/) |
 | Microsoft.Blueprint | [Azure 藍圖](../../governance/blueprints/index.yml) |
-| Microsoft.BotService | [Azure Bot 服務](/azure/bot-service/) |
+| Microsoft.BotService | [Azure Bot Service](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) |
 | Microsoft.Capacity | core |
 | Microsoft.Cdn | [內容傳遞網路](../../cdn/index.yml) |
@@ -57,7 +57,7 @@ ms.locfileid: "91949117"
 | Microsoft Commerce<sup>1</sup> | core |
 | Microsoft.Compute | [虛擬機器](../../virtual-machines/index.yml)<br />[虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml) |
 | Microsoft. 耗用量<sup>1</sup> | [成本管理](/azure/cost-management/) |
-| Microsoft.ContainerInstance | [Container Instances](../../container-instances/index.yml) |
+| Microsoft.ContainerInstance | [容器執行個體](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | CostManagement<sup>1</sup> | [成本管理](/azure/cost-management/) |
@@ -69,7 +69,7 @@ ms.locfileid: "91949117"
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft.DataCatalog | [資料目錄](../../data-catalog/index.yml) |
 | Microsoft.DataFactory | [Data Factory](../../data-factory/index.yml) |
-| Microsoft.DataLakeAnalytics | [資料湖分析](../../data-lake-analytics/index.yml) |
+| Microsoft.DataLakeAnalytics | [Data Lake Analytics](../../data-lake-analytics/index.yml) |
 | Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\) |
 | Microsoft.DataMigration | [Azure 資料庫移轉服務](../../dms/index.yml) |
 | Microsoft.DataProtection | 資料保護 |
@@ -79,16 +79,16 @@ ms.locfileid: "91949117"
 | Microsoft.DBforPostgreSQL | [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/index.yml) |
 | Microsoft.DeploymentManager | [Azure Deployment Manager](../templates/deployment-manager-overview.md) |
 | Microsoft.DesktopVirtualization | [Windows 虛擬桌面](../../virtual-desktop/index.yml) |
-| Microsoft.Devices | [Azure IoT 中樞](../../iot-hub/index.yml)<br />[Azure IoT 中樞裝置佈建服務](../../iot-dps/index.yml) |
+| Microsoft.Devices | [Azure IoT 中心](../../iot-hub/index.yml)<br />[Azure IoT 中樞裝置佈建服務](../../iot-dps/index.yml) |
 | Microsoft.DevOps | [Azure DevOps](/azure/devops/) |
-| Microsoft.DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
+| Microsoft.DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) \(英文\) |
 | Microsoft.DevTestLab | [Azure 實驗室服務](../../lab-services/index.yml) |
 | Microsoft.DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
-| Microsoft.DomainRegistration | [App Service 方案](../../app-service/index.yml) |
+| Microsoft.DomainRegistration | [App Service](../../app-service/index.yml) |
 | Microsoft.DynamicsLcs | [生命週期服務](https://lcs.dynamics.com/Logon/Index ) |
 | Microsoft.EnterpriseKnowledgeGraph | 企業知識圖表 |
-| Microsoft.EventGrid | [事件方格](../../event-grid/index.yml) |
+| Microsoft.EventGrid | [Event Grid](../../event-grid/index.yml) |
 | Microsoft.EventHub | [事件中樞](../../event-hubs/index.yml) |
 | Microsoft. 功能<sup>1</sup> | [Azure Resource Manager](../index.yml) |
 | Microsoft.GuestConfiguration | [Azure 原則](../../governance/policy/index.yml) |
@@ -101,7 +101,7 @@ ms.locfileid: "91949117"
 | HybridNetwork  | [私人 Edge 區域](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure 匯入/匯出](../../storage/common/storage-import-export-service.md) |
 | microsoft.insights | [Azure 監視器](../../azure-monitor/index.yml) |
-| Microsoft.IoTCentral | [Azure IoT 中心](../../iot-central/index.yml) |
+| Microsoft.IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.Intune | [Azure 監視器](../../azure-monitor/index.yml) |
 | Microsoft.KeyVault | [金鑰保存庫](../../key-vault/index.yml) |
@@ -151,7 +151,6 @@ ms.locfileid: "91949117"
 | Microsoft.Scheduler | [排程器](../../scheduler/index.yml) |
 | Microsoft.Search | [Azue 認知搜尋](../../search/index.yml) |
 | Microsoft.Security | [資訊安全中心](../../security-center/index.yml) |
-| Microsoft.SecurityGraph | [資訊安全中心](../../security-center/index.yml) |
 | Microsoft.SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
 | SerialConsole<sup>1</sup> | [適用於 Windows 的 Azure 序列主控台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [服務匯流排](/azure/service-bus/) |
@@ -163,9 +162,9 @@ ms.locfileid: "91949117"
 | Microsoft.Solutions | [Azure 受控應用程式](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL 受控執行個體](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Azure 虛擬機器上的 SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
-| Microsoft.Storage | [Storage](../../storage/index.yml) |
+| Microsoft.Storage | [儲存體](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
-| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
+| Microsoft.StorageSync | [儲存體](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 串流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |
@@ -174,10 +173,10 @@ ms.locfileid: "91949117"
 | Microsoft.TimeSeriesInsights | [Azure 時間序列深入解析](../../time-series-insights/index.yml) |
 | Microsoft.Token | Token |
 | Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
-| microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| microsoft.visualstudio | [Azure DevOps](/azure/devops/) |
 | Microsoft.VMware | [Azure VMware 解決方案](../../azure-vmware/index.yml) |
 | Microsoft.VMwareCloudSimple | [由 CloudSimple 提供的 Azure VMware 解決方案](../../vmware-cloudsimple/index.md) |
-| Microsoft.VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft.VSOnline | [Azure DevOps](/azure/devops/) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft.WindowsDefenderATP | [Microsoft Defender 進階威脅防護](../../security-center/security-center-wdatp.md) |
 | Microsoft.WindowsESU | 延伸安全性更新 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542269"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697980"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常見問題集
 得到 Azure API 管理常見問題、模式和最佳作法的答案。
@@ -71,18 +71,7 @@ ms.locfileid: "91542269"
 * [服務部署](/powershell/module/wds)和[服務管理](/powershell/azure/servicemanagement/overview) PowerShell Cmdlet。
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何將使用者新增至 Administrators 群組？
-將使用者新增至 Administrators 群組的步驟如下：
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 移至包含您要更新之 API 管理執行個體的資源群組。
-3. 在 [API 管理] 中，將 **Api 管理服務參與者** 角色指派給使用者。
-
-新增的參與者現在即可使用 Azure PowerShell [Cmdlet](/powershell/azure/)。 以系統管理員身分登入的步驟如下︰
-
-1. 使用 `Connect-AzAccount` Cmdlet 進行登入。
-2. 使用 `Set-AzContext -SubscriptionID <subscriptionGUID>` 將內容設定為具有服務的訂用帳戶。
-3. 使用 `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` 取得單一登入 URL。
-4. 使用此 URL 來存取系統管理入口網站。
+系統管理員群組是不可變的系統群組。 Azure 訂用帳戶管理員是此群組的成員。 您無法將使用者新增至此群組。 如需詳細資訊，請參閱 [如何在 AZURE API 管理中建立和使用群組來管理開發人員帳戶](./api-management-howto-create-groups.md) 。
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>為什麼「我想要新增」的原則無法用於原則編輯器？
 如果您想要新增的原則在原則編輯器中呈暗灰色，請確定您是在該原則的正確範圍內。 每個原則陳述式都是為您在特定範圍和原則區段中使用所設計。 若要檢閱原則的原則區段和範圍，請參閱 [API 管理原則](./api-management-policies.md)中原則的「使用方式」一節。
@@ -103,10 +92,10 @@ ms.locfileid: "91542269"
 API 管理會在部署到多個地理位置時，使用[效能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)。 連入流量會傳送至最接近的 API 閘道。 如果一個區域離線，則連入流量會自動路由傳送至下一個最接近的閘道。 深入了解[流量管理員路由方法](../traffic-manager/traffic-manager-routing-methods.md)中的路由方法。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>可以使用 Azure Resource Manager 範本建立 API 管理服務執行個體嗎？
-是。 請參閱 [AZURE API 管理服務](https://aka.ms/apimtemplate) 快速入門範本。
+可以。 請參閱 [AZURE API 管理服務](https://aka.ms/apimtemplate) 快速入門範本。
 
 ### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>我可以對後端使用自我簽署的 TLS/SSL 憑證嗎？
-是。 這可以透過 PowerShell 或直接提交至 API 來完成。 這將會停用信任鏈結驗證，在從 API 管理對後端服務進行通訊時，還可讓您使用自我簽署或私人簽署的憑證。
+可以。 這可以透過 PowerShell 或直接提交至 API 來完成。 這將會停用信任鏈結驗證，在從 API 管理對後端服務進行通訊時，還可讓您使用自我簽署或私人簽署的憑證。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
 針對現有的後 [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) 端) PowerShell Cmdlet 使用 () 或 (，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
@@ -125,7 +114,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 如果您使用 Git 認證管理員，或如果您嘗試使用 Visual Studio 複製 Git 儲存機制，您可能會遇到 Windows 認證對話方塊的已知問題。 此對話方塊會將密碼長度限制為 127 個字元，並且截斷 Microsoft 所產生的密碼。 我們正在努力縮短密碼。 目前，請使用 Git Bash 來複製 Git 儲存機制。
 
 ### <a name="does-api-management-work-with-azure-expressroute"></a>API 管理是否能搭配 Azure ExpressRoute 運作？
-是。 API 管理能搭配 Azure ExpressRoute 運作。
+可以。 API 管理能搭配 Azure ExpressRoute 運作。
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>為什麼將「API 管理」部署到 Resource Manager 樣式的 VNET 中時，我們需要在這些 VNET 中有一個專用子網路？
 「API 管理」的專用子網路需求來自於一個事實，就是它是建置在「傳統」(PAAS V1 層) 部署模型的基礎上。 雖然我們可以部署到 Resource Manager VNET (V2 層) 中，但是會有後果。 Azure 中的「傳統」部署模型並未與 Resource Manager 模型緊密結合，因此，如果您在 V2 層中建立一項資源，V1 層並不會知道它，而問題就可能發生，例如「API 管理」嘗試使用已經配置給某個 NIC (建置在 V2 上) 的 IP。
@@ -135,7 +124,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 部署「API 管理」所需的子網路大小下限是 [/29](../virtual-network/virtual-networks-faq.md#configuration)，這是 Azure 支援的子網路大小下限。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>可以將 API 管理服務從某一個訂用帳戶移至另一個嗎？
-是。 若要了解作法，請參閱[將資源移至新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+可以。 若要了解作法，請參閱[將資源移至新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>匯入 API 有任何限制或已知的問題嗎？
 Open API(Swagger)、WSDL 及 WADL 格式的[已知問題和限制](api-management-api-import-restrictions.md)。

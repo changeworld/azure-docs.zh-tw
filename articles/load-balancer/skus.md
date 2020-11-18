@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 874ecfc8c1c50816916fb0b04975477a1cbe0a71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631438"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698082"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU
 
@@ -26,7 +26,7 @@ Azure Load Balancer 有兩個 SKU。
 
 負載平衡器支援標準和基本 SKU。 這些 SKU 的案例規模、功能、價格各不相同。 任何可在基本負載平衡器建立的案例，都可以使用標準負載平衡器來建立。
 
-若要比較並了解其中的差異，請參閱下表。 如需詳細資訊，請參閱 [Azure Standard Load Balancer 概觀](load-balancer-standard-overview.md)。
+若要比較並了解其中的差異，請參閱下表。 如需詳細資訊，請參閱 [Azure Standard Load Balancer 概觀](./load-balancer-overview.md)。
 
 >[!NOTE]
 > Microsoft 建議使用標準負載平衡器。
@@ -34,29 +34,29 @@ Azure Load Balancer 有兩個 SKU。
 
 | | Standard Load Balancer | 基本負載平衡器 |
 | --- | --- | --- |
-| **[後端集區大小](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | 支援最多 1000 個執行個體。 | 支援最多 300 個執行個體。 |
+| **[後端集區大小](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | 支援最多 1000 個執行個體。 | 支援最多 300 個執行個體。 |
 | **後端集區端點** | 單一虛擬網路中的任何虛擬機器或虛擬機器擴展集。 | 在單一可用性設定組或虛擬機器擴展集中的虛擬機器。 |
 | **[健康情況探查](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
-| **[健康情況探查關閉行為](./load-balancer-custom-probe-overview.md#probedown)** | 執行個體探查關閉__和__所有探查關閉時，TCP 連線保持作用中。 | 執行個體探查關閉時，TCP 連線保持作用中。 所有探查皆關閉時，所有 TCP 連線都會結束。 |
+| **[健康情況探查關閉行為](./load-balancer-custom-probe-overview.md#probedown)** | 執行個體探查關閉 __和__ 所有探查關閉時，TCP 連線保持作用中。 | 執行個體探查關閉時，TCP 連線保持作用中。 所有探查皆關閉時，所有 TCP 連線都會結束。 |
 | **可用性區域** | 輸入和輸出流量的區域備援和區域性前端。 | 無法使用 |
 | **診斷** | [Azure 監視器多維度計量](./load-balancer-standard-diagnostics.md) | [Azure 監視器記錄](./load-balancer-monitor-log.md) |
 | **HA 連接埠** | [適用於內部負載平衡器](./load-balancer-ha-ports-overview.md) | 無法使用 |
 | **預設保護** | 除非網路安全性群組允許，否則會對輸入流量關閉。 從虛擬網路到內部負載平衡器的內部流量仍受允許。 | 預設為開放狀態。 網路安全性群組 (選擇性)。 |
-| **輸出規則** | [宣告式輸出 NAT 設定](./load-balancer-outbound-rules-overview.md) | 無法使用 |
+| **輸出規則** | [宣告式輸出 NAT 設定](./load-balancer-outbound-connections.md#outboundrules) | 無法使用 |
 | **TCP 重設閒置** | [適用於任何規則](./load-balancer-tcp-reset.md) | 無法使用 |
 | **[多個前端](./load-balancer-multivip-overview.md)** | 輸入和[輸出](./load-balancer-outbound-connections.md) | 僅輸入 |
 | **管理作業** | 大部分的作業 < 30 秒 | 通常是 60-90+ 秒 |
 | **SLA** | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | 無法使用 | 
 
-如需詳細資訊，請參閱[負載平衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。 如需標準 Load Balancer 詳細資料，請參閱[概觀](load-balancer-standard-overview.md)、[定價](https://aka.ms/lbpricing)及 [SLA](https://aka.ms/lbsla)。
+如需詳細資訊，請參閱[負載平衡器限制](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)。 如需標準 Load Balancer 詳細資料，請參閱[概觀](./load-balancer-overview.md)、[定價](https://aka.ms/lbpricing)及 [SLA](https://aka.ms/lbsla)。
 
 ## <a name="limitations"></a>限制
 
 - SKU 不可變動。 您無法變更現有資源的 SKU。
 - 獨立虛擬機器資源、可用性設定組資源或虛擬機器擴展集資源都只能參考一個 SKU，絕不會同時參考兩者。
 - [移動作業](../azure-resource-manager/management/move-resource-group-and-subscription.md)：
-  - Standard Load Balancer 和標準公用 IP **都支援**資源群組移動作業 (位於相同的訂用帳戶內)。 
-  - Standard Load Balancer 與標準公用 IP 資源**不支援**[訂用帳戶群組移動作業](../azure-resource-manager/management/move-support-resources.md)。
+  - Standard Load Balancer 和標準公用 IP **都支援** 資源群組移動作業 (位於相同的訂用帳戶內)。 
+  - Standard Load Balancer 與標準公用 IP 資源 **不支援**[訂用帳戶群組移動作業](../azure-resource-manager/management/move-support-resources.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -65,4 +65,4 @@ Azure Load Balancer 有兩個 SKU。
 - 深入了解[健康情況探查](load-balancer-custom-probe-overview.md)。
 - 了解如何使用 [Load Balancer 來進行輸出連線](load-balancer-outbound-connections.md)。
 - 了解[具有 HA 連接埠負載平衡規則的標準 Load Balancer](load-balancer-ha-ports-overview.md)。
-- 深入了解[網路安全性群組](../virtual-network/security-overview.md)。
+- 深入了解[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
