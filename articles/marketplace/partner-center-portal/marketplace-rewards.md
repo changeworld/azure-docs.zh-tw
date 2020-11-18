@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4d307b2a16262645919423ef89c0d87636639bf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b99ec4158b1df5ab558026c05b9ec1024fb0722e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378707"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742567"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ Marketplace Rewards 在您的特定成長階段支援您，從認知活動開始
 
 此程式會建立正面的意見反應迴圈：每個成長階段的權益都可協助您進行下一個階段，以協助您透過 microsoft 的現場和 microsoft 的通路，利用商業市場作為平臺，將您的業務拓展到 Microsoft 客戶。
 
-您的權益會視供應項目是[上市、試用或交易](../determine-your-listing-type.md#choose-a-listing-option)而有所不同。
+您的權益會根據您的供應專案是否 [與我聯絡、免費試用或交易](../determine-your-listing-type.md)而有所差異。
 
 當供應項目上線時，我們會根據您符合的資格，請 Rewards 小組成員與您聯繫。
 

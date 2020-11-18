@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 027165f797977311fd77f3cd3e626b126c26e47b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 043d450a1b968174ad263579d39de06a296a98e4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494667"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741462"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 以路由表路由網路流量
 
@@ -36,11 +36,11 @@ ms.locfileid: "87494667"
 * 將虛擬機器 (VM) 部署到不同子網路
 * 透過 NVA 從一個子網路將流量路由傳送到另一個子網路
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-route-table"></a>建立路由表
 
@@ -53,7 +53,7 @@ az group create \
   --location eastus
 ```
 
-使用 [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) 建立路由表。 下列範例會建立名為 myRouteTablePublic** 的路由表。 
+使用 [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) 建立路由表。 下列範例會建立名為 myRouteTablePublic 的路由表。 
 
 ```azurecli-interactive
 # Create a route table
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet) 將 myRouteTablePublic** 路由表關聯至公用** 子網路。
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet) 將 myRouteTablePublic 路由表關聯至公用子網路。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 NVA 是會執行網路功能的虛擬機器，例如路由、防火牆或 WAN 最佳化。
 
-使用 [az vm create](/cli/azure/vm)，在 DMZ** 子網路中建立 NVA。 在建立虛擬機器時，Azure 依預設會建立公用 IP 位址，並將其指派給虛擬機器。 `--public-ip-address ""` 參數會指示 Azure 不要建立公用 IP 位址並將其指派給虛擬機器，因為並不需要從網際網路連線至虛擬機器。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。
+使用 [az vm create](/cli/azure/vm)，在 DMZ 子網路中建立 NVA。 在建立虛擬機器時，Azure 依預設會建立公用 IP 位址，並將其指派給虛擬機器。 `--public-ip-address ""` 參數會指示 Azure 不要建立公用 IP 位址並將其指派給虛擬機器，因為並不需要從網際網路連線至虛擬機器。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。
 
 ```azurecli-interactive
 az vm create \
@@ -160,9 +160,9 @@ az vm extension set \
 
 ## <a name="create-virtual-machines"></a>建立虛擬機器
 
-在虛擬網路中建立兩部虛擬機器，您就可以在後續步驟中驗證來自「公用」** 子網路的流量是否透過 NVA 路由傳送至「私人」** 子網路。 
+在虛擬網路中建立兩部虛擬機器，您就可以在後續步驟中驗證來自「公用」子網路的流量是否透過 NVA 路由傳送至「私人」子網路。 
 
-使用 [az vm create](/cli/azure/vm) 在「公用」** 子網路中建立虛擬機器。 `--no-wait` 參數可以讓 Azure 在背景中執行命令，因此您可以繼續執行下一個命令。 為了簡化本文，我們會使用密碼。 金鑰通常用於生產環境部署中。 如果您使用金鑰，您還必須設定 SSH 代理程式轉送。 如需詳細資訊，請參閱 SSH 用戶端的文件。 在下列命令中，將 `<replace-with-your-password>` 取代為您選擇的密碼。
+使用 [az vm create](/cli/azure/vm) 在「公用」子網路中建立虛擬機器。 `--no-wait` 參數可以讓 Azure 在背景中執行命令，因此您可以繼續執行下一個命令。 為了簡化本文，我們會使用密碼。 金鑰通常用於生產環境部署中。 如果您使用金鑰，您還必須設定 SSH 代理程式轉送。 如需詳細資訊，請參閱 SSH 用戶端的文件。 在下列命令中，將 `<replace-with-your-password>` 取代為您選擇的密碼。
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -178,7 +178,7 @@ az vm create \
   --no-wait
 ```
 
-在「私人」** 子網路中建立虛擬機器。
+在「私人」子網路中建立虛擬機器。
 
 ```azurecli-interactive
 az vm create \
@@ -210,7 +210,7 @@ az vm create \
 
 ## <a name="route-traffic-through-an-nva"></a>透過 NVA 路由傳送流量
 
-使用下列命令來對 myVmPrivate** 虛擬機器建立 SSH 工作階段。 *\<publicIpAddress>* 以您 VM 的公用 IP 位址取代。 在上述範例中，IP 位址是 *13.90.242.231*。
+使用下列命令來對 myVmPrivate 虛擬機器建立 SSH 工作階段。 *\<publicIpAddress>* 以您 VM 的公用 IP 位址取代。 在上述範例中，IP 位址是 *13.90.242.231*。
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -218,13 +218,13 @@ ssh azureuser@<publicIpAddress>
 
 出現密碼的提示時，請輸入您在[建立虛擬機器](#create-virtual-machines)中選取的密碼。
 
-使用下列命令安裝 myVmPrivate** 虛擬機器的追蹤路由：
+使用下列命令安裝 myVmPrivate 虛擬機器的追蹤路由：
 
 ```bash
 sudo apt-get install traceroute
 ```
 
-使用下列命令以測試從 myVmPrivate** 虛擬機器到 myVmPublic** 虛擬機器之網路流量的路由。
+使用下列命令以測試從 myVmPrivate 虛擬機器到 myVmPublic 虛擬機器之網路流量的路由。
 
 ```bash
 traceroute myVmPublic
@@ -237,21 +237,21 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
 
-您可以看到流量是直接從 myVmPrivate** 虛擬機器直接路由傳送到 myVmPublic** 虛擬機器。 Azure 的預設路由會直接路由傳送子網路之間的流量。 
+您可以看到流量是直接從 myVmPrivate 虛擬機器直接路由傳送到 myVmPublic 虛擬機器。 Azure 的預設路由會直接路由傳送子網路之間的流量。 
 
-使用下列命令以從 myVmPrivate** 虛擬機器透過 SSH 連線到 myVmPublic** 虛擬機器：
+使用下列命令以從 myVmPrivate 虛擬機器透過 SSH 連線到 myVmPublic 虛擬機器：
 
 ```bash
 ssh azureuser@myVmPublic
 ```
 
-使用下列命令安裝 myVmPublic** 虛擬機器的追蹤路由：
+使用下列命令安裝 myVmPublic 虛擬機器的追蹤路由：
 
 ```bash
 sudo apt-get install traceroute
 ```
 
-使用下列命令以測試從 myVmPublic** 虛擬機器到 myVmPrivate** 虛擬機器之網路流量的路由。
+使用下列命令以測試從 myVmPublic 虛擬機器到 myVmPrivate 虛擬機器之網路流量的路由。
 
 ```bash
 traceroute myVmPrivate
@@ -265,9 +265,9 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
 
-您可以看到第一個躍點是 10.0.2.4，也就是 NVA 的私人 IP 位址。 第二躍點是 10.0.1.4，也就是 myVmPrivate** 虛擬機器的私人 IP 位址。 新增至 myRouteTablePublic** 路由表且與「公用」** 子網路產生關聯的路由，會導致 Azure 透過 NVA 路由傳送流量，而不是直接路由傳送到「私人」** 子網路。
+您可以看到第一個躍點是 10.0.2.4，也就是 NVA 的私人 IP 位址。 第二躍點是 10.0.1.4，也就是 myVmPrivate 虛擬機器的私人 IP 位址。 新增至 myRouteTablePublic 路由表且與「公用」子網路產生關聯的路由，會導致 Azure 透過 NVA 路由傳送流量，而不是直接路由傳送到「私人」子網路。
 
-同時關閉與 myVmPublic** 和 myVmPrivate** 虛擬機器的 SSH 工作階段。
+同時關閉與 myVmPublic 和 myVmPrivate 虛擬機器的 SSH 工作階段。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -277,7 +277,7 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已建立路由表並將其與子網路產生關聯。 您已建立簡單的 NVA，它會將來自公用子網路的流量路由傳送至私人子網路。 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署各種預先設定的 NVA，這些設備會執行例如防火牆和 WAN 最佳化的網路功能。 若要深入了解路由，請參閱[路由概觀](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
 

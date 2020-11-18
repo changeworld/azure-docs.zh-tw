@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: f7f73efff266e012616ac68d956abd921afaac2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337418"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741819"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時活動和即時輸出
 
@@ -28,7 +28,7 @@ ms.locfileid: "94337418"
 Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 若要在媒體服務 v3 中設定即時串流事件，您必須瞭解本文中討論的概念。
 
 > [!TIP]
-> 針對從媒體服務 v2 Api 遷移的客戶， **實況活動** 實體會取代 v2 中的 **通道** ，而 **即時輸出** 會取代 **程式** 。
+> 針對從媒體服務 v2 Api 遷移的客戶， **實況活動** 實體會取代 v2 中的 **通道** ，而 **即時輸出** 會取代 **程式**。
 
 ## <a name="live-events"></a>實況活動
 
@@ -38,9 +38,9 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 [實況活動](/rest/api/media/liveevents)可以設定為傳遞 (內部部署即時編碼器會傳送多位元率串流) 或 *即時編碼* (內部部署即時編碼器會 *傳送* 單一位元速率串流) 。 使用 [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype)在建立期間設定類型：
 
-* **LiveEventEncodingType： None** ：內部部署即時編碼器會傳送多位元率串流。 內嵌資料流程會通過即時事件，而不會進行任何進一步的處理。 也稱為傳遞模式。
-* **LiveEventEncodingType** ：內部部署即時編碼器會將單一位元速率串流傳送至實況活動，而媒體服務會建立多位元率串流。 如果投稿摘要是720p 或更高的解析度， **Default720p** 預設會將一組6個解析/位元速率配對編碼。
-* **LiveEventEncodingType. Premium1080p** ：內部部署即時編碼器會將單一位元速率串流傳送至實況活動，而媒體服務會建立多位元率串流。 Default1080p 預設值會指定解析/位元速率配對的輸出集。
+* **LiveEventEncodingType： None**：內部部署即時編碼器會傳送多位元率串流。 內嵌資料流程會通過即時事件，而不會進行任何進一步的處理。 也稱為傳遞模式。
+* **LiveEventEncodingType**：內部部署即時編碼器會將單一位元速率串流傳送至實況活動，而媒體服務會建立多位元率串流。 如果投稿摘要是720p 或更高的解析度， **Default720p** 預設會將一組6個解析/位元速率配對編碼。
+* **LiveEventEncodingType. Premium1080p**：內部部署即時編碼器會將單一位元速率串流傳送至實況活動，而媒體服務會建立多位元率串流。 Default1080p 預設值會指定解析/位元速率配對的輸出集。
 
 ### <a name="pass-through"></a>傳遞
 
@@ -136,7 +136,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
     使用硬體廣播編碼器的大型媒體廣播商偏好虛名模式，而且不想要在啟動實況活動時重新設定其編碼器。 這些廣播想要預測的內嵌 URL，此 URL 不會隨著時間而改變。
 
     > [!NOTE]
-    > 在 Azure 入口網站中，虛名 URL 的名稱為「 *靜態主機名稱前置* 詞」。
+    > 在 Azure 入口網站中，虛名 URL 的名稱為「*靜態主機名稱前置* 詞」。
 
     若要在 API 中指定此模式， `useStaticHostName` 請 `true` 在建立時將設定為， (預設值為 `false`) 。 當 `useStaticHostname` 設為 true 時，會 `hostnamePrefix` 指定主機名稱的第一個部分指派給實況事件預覽和內嵌端點。 最終的主機名稱會是此前置詞的組合、媒體服務帳戶名稱，以及 Azure 媒體服務資料中心的簡短程式碼。
 
@@ -150,13 +150,13 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
     |---|---|---|
     |REST|[vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--虛名-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>即時內嵌 URL 命名規則
 
 * 下方的 *random* \(隨機\) 字串是 128 位元的十六進位數字 (由 32 個字元的 0-9 a-f 所組成)。
-* *您的存取權杖* ：您在使用虛名模式時所設定的有效 GUID 字串。 例如 `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`。
-* *資料流程名稱* ：指出特定連接的資料流程名稱。 資料流程名稱值通常是由您所使用的即時編碼器所加入。 您可以設定即時編碼器使用任何名稱來描述連接，例如： "video1_audio1"、"video2_audio1"、"stream"。
+* *您的存取權杖*：您在使用虛名模式時所設定的有效 GUID 字串。 例如 `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`。
+* *資料流程名稱*：指出特定連接的資料流程名稱。 資料流程名稱值通常是由您所使用的即時編碼器所加入。 您可以設定即時編碼器使用任何名稱來描述連接，例如： "video1_audio1"、"video2_audio1"、"stream"。
 
 #### <a name="non-vanity-url"></a>非虛名 URL
 

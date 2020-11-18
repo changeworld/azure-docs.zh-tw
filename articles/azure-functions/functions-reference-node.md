@@ -3,14 +3,14 @@ title: Azure Functions 的 JavaScript 開發人員參考
 description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628827"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743315"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -270,7 +270,7 @@ context.done([err],[propertyBag])
 
 通知執行階段您的程式碼已完成。 當您的函數使用宣告時 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) ，您不需要使用 `context.done()` 。 隱含地呼叫 `context.done` 回呼。 非同步函式可在 Node 8 或更新版本中使用，而這需要 2.x 版的 Functions 執行階段。
 
-如果您的函式不是非同步函式， **您必須呼叫** ， `context.done` 以通知執行時間您的函式已完成。 如果沒有，執行將會逾時。
+如果您的函式不是非同步函式， **您必須呼叫**， `context.done` 以通知執行時間您的函式已完成。 如果沒有，執行將會逾時。
 
 `context.done` 方法可讓您將使用者定義的錯誤傳回到執行階段，並傳回包含輸出繫結資料的 JSON 物件。 傳至 `context.done` 的屬性會覆寫 `context.bindings` 物件上設定的任何屬性。
 
@@ -326,9 +326,9 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 | 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
 | **_訊息_ (錯誤)**   | 在記錄檔中寫入錯誤層級事件。   |
-| **warn( _message_ )**    | 將警告層級事件寫入記錄檔。 |
-| **info( _message_ )**    | 寫入資訊層級或更低層級的記錄。    |
-| **verbose( _message_ )** | 寫入詳細資訊層級記錄。           |
+| **warn(_message_)**    | 將警告層級事件寫入記錄檔。 |
+| **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
+| **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
 
 下列範例會在警告追蹤層級寫入相同的記錄，而不是在資訊層級上：
 
@@ -358,7 +358,7 @@ context.log.warn("Something has happened. " + context.invocationId);
 }  
 ```
 
-**consoleLevel** 的值對應至 `context.log` 方法的名稱。 若要停用主控台的所有追蹤記錄，請將 **consoleLevel** 設為 _off_ 。 如需詳細資訊，請參閱 [ v1. x 參考上的host.js](functions-host-json-v1.md)。
+**consoleLevel** 的值對應至 `context.log` 方法的名稱。 若要停用主控台的所有追蹤記錄，請將 **consoleLevel** 設為 _off_。 如需詳細資訊，請參閱 [ v1. x 參考上的host.js](functions-host-json-v1.md)。
 
 ---
 
@@ -553,7 +553,7 @@ module.exports = function(context) {
 ### <a name="using-kudu"></a>使用 Kudu
 1. 移至 `https://<function_app_name>.scm.azurewebsites.net`。
 
-2. 按一下 **偵錯主控台**  >  **CMD** ]。
+2. 按一下 **偵錯主控台**  >  **CMD**]。
 
 3. 移至 `D:\home\site\wwwroot`，然後將 package.json 檔案拖曳至頁面上半部的 **wwwroot** 資料夾。  
     您也可以使用其他方法將檔案上傳至函數應用程式。 如需詳細資訊，請參閱[如何更新函式應用程式檔案](functions-reference.md#fileupdate)。 
@@ -563,21 +563,42 @@ module.exports = function(context) {
 
 ## <a name="environment-variables"></a>環境變數
 
-在 Functions 中，[應用程式設定](functions-app-settings.md) (例如服務連接字串) 在執行期間會公開為環境變數。 您可以使用來存取這些設定 `process.env` ，如下所示，在第二個和第三個呼叫中，我們會在這裡 `context.log()` 記錄 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 環境變數：
+將您自己的環境變數新增至函式應用程式（在本機和雲端環境中），例如 (連接字串、金鑰和端點) 或環境設定 (例如程式碼剖析變數) 。 `process.env`在您的函式程式碼中使用來存取這些設定。
+
+### <a name="in-local-development-environment"></a>在本機開發環境中
+
+在本機執行時，您的函式專案會包含[ `local.settings.json` 檔案，您](/functions-run-local.md?tabs=node#local-settings-file)可以在其中將環境變數儲存在 `Values` 物件中。 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>在 Azure 雲端環境中
+
+在 Azure 中執行時，函數應用程式可讓您設定使用 [應用程式設定](functions-app-settings.md)（例如服務連接字串），並在執行期間將這些設定公開為環境變數。 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>存取程式碼中的環境變數
+
+使用的環境變數來存取應用程式設定 `process.env` ，如下所示，在第二和第三個呼叫中，我們會在這裡 `context.log()` 記錄 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 環境變數：
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-在本機執行時，應用程式設定會讀取自 [local.settings.json](functions-run-local.md#local-settings-file) 專案檔。
 
 ## <a name="configure-function-entry-point"></a>設定函式進入點
 

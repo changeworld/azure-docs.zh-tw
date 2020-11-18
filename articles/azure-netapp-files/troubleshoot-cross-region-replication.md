@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708763"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745678"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>針對跨區域複寫進行疑難排解
 
@@ -27,7 +27,7 @@ ms.locfileid: "90708763"
 
 ## <a name="errors-creating-replication"></a>建立複寫時發生錯誤  
 
-|     錯誤訊息    |     解決方案    |
+|     錯誤訊息    |     解決方法    |
 |-|-|
 |     `Volume {0} cannot   be used as source because it is already in replication`    |     您無法使用已經在資料複寫關聯性中的來源磁片區來建立複寫。    |
 |     `Peered region   '{0}' is not accepted`    |     您正在嘗試建立未對等互連區域之間的複寫。    |
@@ -35,7 +35,7 @@ ms.locfileid: "90708763"
 
 ## <a name="errors-authorizing-volume"></a>授權磁片區時發生錯誤  
 
-|     錯誤訊息    |     解決方案    |
+|     錯誤訊息    |     解決方法    |
 |-|-|
 |     `Missing value   for 'AuthorizeSourceReplication'`    |     `RemoteResourceID`UI 或 API 要求中遺漏或無效， (修正錯誤訊息) 。    |
 |     `Missing value   for 'RemoteVolumeResourceId'`    |     `RemoteResourceID`UI 或 API 要求中遺失或無效。    |
@@ -46,20 +46,21 @@ ms.locfileid: "90708763"
 
 ## <a name="errors-deleting-replication"></a>刪除複寫時發生錯誤
 
-|     錯誤訊息    |     解決方案    |
+|     錯誤訊息    |     解決方法    |
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     請驗證複寫是否已中斷，或未初始化，或是閒置 (失敗的初始化) 。    |
 |     `Cannot delete   source replication`    |     不允許從來源端刪除複寫。 請確定您要從目的地端刪除複寫。    |
+| `Volume with replication cannot be deleted`  |  刪除磁片區之前先刪除複寫。 請參閱 [刪除](cross-region-replication-delete.md)複寫。 這種作業需要您先中斷對等互連，才能刪除磁片區的複寫。 
 
 ## <a name="errors-resyncing-volume"></a>正在重新同步磁片區錯誤
 
-|     錯誤訊息    |     解決方案    |
+|     錯誤訊息    |     解決方法    |
 |-|-|
 |     `Volume Replication is in invalid status: (Mirrored|Uninitialized) for operation: 'ResyncReplication'`     |     驗證磁片區複寫處於「已中斷」狀態。    |
 
 ## <a name="errors-deleting-snapshot"></a>刪除快照集時發生錯誤 
 
-|     錯誤訊息    |     解決方案    |
+|     錯誤訊息    |     解決方法    |
 |-|-|
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     如果您想要刪除此快照集，請驗證您是否已中斷磁片區的複寫。    |
 |     `Cannot delete   volume replication generated snapshot`    |     不允許刪除複寫基準快照集。    |

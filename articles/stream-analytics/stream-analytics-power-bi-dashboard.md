@@ -6,17 +6,17 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 8/6/2020
-ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/16/2020
+ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123460"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745355"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
 
-Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Microsoft Power BI](https://powerbi.com/)。 在本文中，您將了解如何使用 Power BI 作為 Azure 串流分析作業的輸出，以建立商業智慧工具。 您也將了解如何建立和使用即時儀表板。
+Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Microsoft Power BI](https://powerbi.com/)。 在本文中，您將了解如何使用 Power BI 作為 Azure 串流分析作業的輸出，以建立商業智慧工具。 您也會瞭解如何建立和使用即時儀表板，此儀表板會持續由串流分析作業進行更新。
 
 本文是延續串流分析[即時詐騙偵測](stream-analytics-real-time-fraud-detection.md)教學課程。 本文以該教學課程所建立的工作流程為基礎，並新增 Power BI 輸出，讓您視覺化串流分析作業所偵測到的詐騙電話。 
 
@@ -64,7 +64,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 系統會使用下列設定來建立資料集：
 
 * **defaultRetentionPolicy:BasicFIFO** - 資料為 FIFO，具有最多 200,000 個資料列。
-* **defaultMode: pushStreaming** ：資料集同時支援串流磚和傳統報表型視覺效果 (也稱為推送)。
+* **defaultMode：混合** 式-資料集支援串流磚 (也稱為推送) 和傳統報表型視覺效果。 針對推送內容，在此情況下，資料會從串流分析作業持續更新，而不需要從 Power BI 端排程重新整理。
 
 您目前無法建立具有其他旗標的資料集。
 

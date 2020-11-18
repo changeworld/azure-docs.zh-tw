@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 023cd13c40bdd6aae9febaf7d929f94fe26ef6d3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c00af3a128685dfbd2435b65fe4d00107ca22ba4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519634"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744352"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -29,7 +29,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 音訊分析器預設值為 [基本] 和 [標準] 的模式有兩種。 請參閱下表中的差異描述。
 
-若要使用媒體服務 v3 預設來分析您的內容，您可以建立 **轉換** 並提交使用下列其中一個預設值的 **作業** ： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 如需示範如何使用 **VideoAnalyzerPreset**的教學課程，請參閱 [使用 Azure 媒體服務分析](analyze-videos-tutorial-with-api.md)影片。
+若要使用媒體服務 v3 預設來分析您的內容，您可以建立 **轉換** 並提交使用下列其中一個預設值的 **作業** ： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 如需示範如何使用 **VideoAnalyzerPreset** 的教學課程，請參閱 [使用 Azure 媒體服務分析](analyze-videos-tutorial-with-api.md)影片。
 
 > [!NOTE]
 > 使用影片或音訊分析器預設值時，請使用 Azure 入口網站將帳戶設定為擁有10個 S3 媒體保留單元，不過這並非必要。 您可以使用 S1 或 S2 進行音訊預設。 如需詳細資訊，請參閱[調整媒體處理](media-reserved-units-cli-how-to.md)。
@@ -46,7 +46,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |---|---|---|
 |[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊標準|此預設會套用一組預先定義的 AI 型分析作業，包括語音轉譯。 此預設目前支援處理具有單一音訊播放軌 (包含單一語言的語音) 的內容。 您可以使用「語言標記-區域」的 BCP-47 格式，為輸入中的音訊承載指定語言。 支援的語言為英文 ( ' en-us ' 和 ' en-us ' ) 、西班牙文 ( ' es ' 和 ' es-MX ' ) 、法文 ( ' fr-fr ' ) 、義大利 ( ' it-IT ' ) 、日文 ( ' ja-jp ' ) 、葡萄牙文 ( ' pt-BR ' ) 、中文 ( ' zh-CN ' ) 、德文 ( 「de DE」 ) 、阿拉伯文 ( 「ar-例如」和「ar SY」 ) 、俄文 ( 「ru-RU」 ) 、印度文 ( 「hi」 ) 和韓文 ( 「ko-KR」 ) 。<br/><br/> 如果語言未指定或設為 null，自動語言偵測會選擇第一個偵測到的語言，並在檔案持續時間內繼續使用選取的語言。 自動語言偵測功能目前支援英文、簡體中文、法文、德文、義大利文、日文、西班牙文、俄文和葡萄牙文。 它不支援在偵測到第一個語言之後，于不同語言之間動態切換。 搭配語音清晰的錄音時，自動語言偵測功能的效果最好。 如果自動語言偵測找不到語言，轉譯會切換回英文。|
 |[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊基本|此模式會執行語音轉換文字轉譯和產生 VTT 副標題/字幕檔案。 此模式的輸出包含深入解析 JSON 檔案，其中只包含關鍵字、轉譯和計時資訊。 自動語言偵測和說話者 diarization 不會包含在此模式中。 支援的語言清單可從[這裡](https://go.microsoft.com/fwlink/?linkid=2109463)取得|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊和視訊|從音訊和視訊擷取見解 (豐富的中繼資料)，並輸出 JSON 格式檔案。 您可以指定在處理視訊檔案時，是否只想擷取音訊見解。 如需詳細資訊，請參閱[分析視訊](analyze-videos-tutorial-with-api.md)。|
+|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音訊和視訊|從音訊和視訊擷取見解 (豐富的中繼資料)，並輸出 JSON 格式檔案。 您可以指定在處理視訊檔案時，是否只想擷取音訊見解。 如需詳細資訊，請參閱[分析視訊](analyze-videos-tutorial-with-api.md)。|
 |[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|偵測影片中出現的臉部|描述在分析影片以偵測出所有臉部時要使用的設定。|
 
 ### <a name="audioanalyzerpreset-standard-mode"></a>AudioAnalyzerPreset 標準模式
@@ -55,7 +55,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 輸出會包含 JSON 檔案 (包含所有的深入資訊) 和音訊文字記錄的 VTT 檔案。 此預設接受的屬性會指定輸入檔案的語言 ([BCP47](https://tools.ietf.org/html/bcp47) 字串形式)。 音訊的深入資訊包括：
 
-* **音訊**轉譯：具有時間戳記的講字文字記錄。 支援多種語言。
+* **音訊** 轉譯：具有時間戳記的講字文字記錄。 支援多種語言。
 * **說話者索引編制**：說話者和對應的讀出單字的地圖。
 * **語音情感分析**：在音訊轉譯上執行的情感分析輸出。
 * **關鍵字**：從音訊轉譯中解壓縮的關鍵字。
@@ -66,7 +66,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 輸出包含音訊文字記錄的 JSON 檔案和 VTT 檔案。 此預設接受的屬性會指定輸入檔案的語言 ([BCP47](https://tools.ietf.org/html/bcp47) 字串形式)。 輸出包含：
 
-* **音訊**轉譯：具有時間戳記的講字文字記錄。 支援多種語言，但不包含自動語言偵測和說話者 diarization。
+* **音訊** 轉譯：具有時間戳記的講字文字記錄。 支援多種語言，但不包含自動語言偵測和說話者 diarization。
 * **關鍵字**：從音訊轉譯中解壓縮的關鍵字。
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
@@ -75,7 +75,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 * **臉部追蹤**：影片中顯示臉部的時間。 每個臉部都有臉部識別碼和對應的縮圖集合。
 * **視覺化文字**：透過光學字元辨識所偵測到的文字。 文字會加上時間戳記，並且除了音訊文字記錄) 之外，也會用來將關鍵字 (解壓縮。
-* 主要畫面**格：從**影片中解壓縮的主要畫面格集合。
+* 主要畫面 **格：從** 影片中解壓縮的主要畫面格集合。
 * **視覺內容仲裁**：影片中標示為成人或猥褻的部分。
 * **批註**：根據預先定義的物件模型來批註影片的結果
 
@@ -268,7 +268,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="statistics"></a>統計資料
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|

@@ -1,103 +1,156 @@
 ---
-title: 決定您的發佈選項 - Microsoft 商業市集
-description: 本文說明將供應項目發佈至 Microsoft AppSource 和 Azure Marketplace 的資格條件和需求。
+title: 清單選項簡介-Microsoft 商業 marketplace
+description: 本文說明發行至 Microsoft AppSource 和 Azure Marketplace 之供應專案的清單選項。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 09/04/2020
-ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/16/2020
+ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94492101"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741904"
 ---
-# <a name="determine-your-publishing-option"></a>決定您的發佈選項
+# <a name="introduction-to-listing-options"></a>清單選項簡介
 
-您為供應項目選擇的發佈選項，與資格需求和商業市集 GTM 權益直接相關。 更重要的是，發佈選項和供應項目類型的選取項目，會定義使用者與您的商業市集供應項目互動的方式。
+您可以使用商業 marketplace 中的可用 _清單選項_ ，以各種方式與潛在客戶互動。 發佈您的供應專案之後，您為供應專案選擇的清單選項 (s) 會顯示為線上商店 () 中供應專案清單頁面左上角的按鈕。 例如，下列螢幕擷取畫面顯示 Microsoft AppSource 線上商店的供應專案清單頁面，並顯示 [ **Contact Me** ] 和 [ **試用** 產品] 按鈕。
 
-若要設定您的供應專案，您必須瞭解下列主要的商業 marketplace 概念：發佈選項、供應專案類型和設定，以及可管理您的供應專案在商業 marketplace 線上商店中的顯示方式和位置的清單選項。
+:::image type="content" source="./media/listing-options.png" alt-text="說明供應專案的清單頁面。[Contact Me] 和 [試用產品] 按鈕會顯示。":::
 
-在本文中，您將了解：
+## <a name="available-listing-options-by-offer-type"></a>依供應專案類型列出的可用清單選項
 
-- 如何為您的解決方案判斷適當的線上商店。
-- 每個線上商店都有提供哪些發佈選項和清單選項。
-- 每個發佈選項都有提供哪些供應專案類型。
+當您建立供應專案類型時，您可以選擇一或多個清單選項。 這些選項會決定客戶在線上商店的供應專案清單頁面上看到的按鈕。 清單選項包括 _免費試用版、試用產品_、_連絡人_ _，並__立即取得_。
 
-## <a name="commercial-marketplace-publishing-options"></a>商業市集發佈選項
+下表顯示每個供應專案類型可使用的清單選項。
 
-下表顯示供應項目類型在 Microsoft AppSource 和 Azure Marketplace 中的發佈選項。
+| 供應項目類型 | 免費試用 | 試用產品 | 與我連絡 | 立即取得 (可交易)  |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Azure 應用程式 (受控應用程式)  |   | &#10004; |   | &#10004; |
+| Azure 應用程式 (解決方案範本)  |  |  |  |  |
+| 諮詢服務 |  |  | &#10004; |  |
+| Azure 容器 |  |  |  |  |
+| Dynamics 365 business central | &#10004; | &#10004; | &#10004; |  |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
+| 適用于作業的 Dynamics 365 | &#10004; | &#10004; | &#10004; |  |
+| IoT Edge 模組 |  |  |  |  |
+| 受控服務 |  |  |  |  |
+| Power BI 應用程式 |  |  |  |  |
+| Azure 虛擬機器 | &#10004; | &#10004; |  | &#10004; |
+| 軟體即服務 | &#10004; | &#10004; | &#10004; | &#10004; |
+||||||
 
-|   | **清單 (連絡人)**  | **清單 (試用版)**  | **免費** | **BYOL** | **交易**|
-| :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **虛擬機器** |  |  |  | Azure Marketplace |  Azure Marketplace |
-| **Azure 應用程式 (多個 VM)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
-| **容器映像** |  |  | Azure Marketplace | Azure Marketplace |   |
-| **IoT Edge 模組** |  |  | Azure Marketplace | Azure Marketplace |   |
-| **受控服務** |  |  |  | Azure Marketplace |   |
-| **諮詢服務** | 這兩個線上商店 |  |  |  |   |
-| **SaaS 應用程式** | 這兩個線上商店 | 這兩個線上商店 | 這兩個線上商店 |  | 兩個線上商店 * |
-| **Microsoft 365 應用程式** | AppSource | AppSource |  |  | AppSource**  |
-| **Dynamics 365 增益集** |  AppSource | AppSource |  |  |   |
-| **PowerApps** | AppSource |AppSource  |  |  |   |
+### <a name="free-trial"></a>免費試用
 
-&#42;Microsoft AppSource 中的 SaaS 應用程式交易供應項目目前只能使用信用卡。
+使用商用 marketplace 強化您解決方案的試用體驗的可搜尋性和自動布建。 這可讓潛在客戶使用您的軟體即服務 (SaaS) 、IaaS 或 Microsoft 應用程式內體驗，從30天到六個月免費，視供應專案類型而定。
 
-&#42;&#42;Microsoft 365 供應項目可免費安裝，並可透過 SaaS 供應項目作為授權服務來販售。 如需詳細資訊，請參閱 [透過 Microsoft 商業市場銷售 Microsoft 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+客戶使用供應專案清單頁面上的 [ _免費試用_ ] 按鈕來試用您的供應專案。 如果您在相同供應專案內的多個方案上提供免費試用，客戶可以切換到另一個方案的免費試用，但試用期不會重新開機。
 
-## <a name="choose-a-listing-option"></a>挑選清單選項
+針對虛擬機器供應專案，客戶會向 Azure 基礎結構收取在試用期間使用供應專案的費用。 在試用期到期後，除非客戶在試用期間結束前取消，否則會自動向客戶收取根據標準費率所嘗試的最後一個計畫。
 
-可用的清單選項提供差異化的客戶參與，同時讓您存取潛在客戶共用和 [商業 marketplace 的權益](./gtm-your-marketplace-benefits.md)。 請注意與發行選項對應的清單選項：
+### <a name="test-drive"></a>試用產品
 
-| **發行選項**    | **說明**  |
-| :------------------- | :-------------------|
-| **清單** | 簡單的應用程式或服務清單，可讓商業 marketplace 使用者要求您透過 **Contact Me** 清單選項與客戶聯繫。 |
-| **試用版** | 使用商業市集來增強曝光度，並且將佈建解決方案的試用體驗自動化，讓潛在使用者在購買之前，在一段有限的時間內免費使用您的 SaaS、IaaS 或 Microsoft 應用程式內體驗。 試用版發行選項的清單選項可以是 **免費試用版****或試用** 產品。 |
-| **BYOL** | 使用商業市集增強解決方案的能見度和自動佈建能力，並個別完成財務交易。 BYOL 供應項目類型適用於內部部署至雲端的移轉。 清單選項 **立即取得** 。
-| **交易** | 交易供應項目會透過商業市集銷售。 Microsoft 負責計費和收費。 清單選項 **立即取得** 。|
+客戶會使用供應專案清單頁面上的 [ _試用_ 產品] 按鈕，以在固定的時數記憶體取預先設定的環境。 若要深入瞭解試用產品，請參閱 [什麼是試用產品？](what-is-test-drive.md)
 
-> [!Note]
-> 當使用交易發佈選項時，請務必了解定價、計費、發票處理和付款考量，然後再選取供應項目類型與建立供應項目。 若要深入了解，請參閱[商業市集交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)一文。
+> [!TIP]
+> 試用產品不同于免費試用版。 您可以提供試用產品、免費試用或兩者。 它們都能為您的客戶提供解決方案一段固定時間。 但試用產品也包含實際操作的自我引導式導覽，說明您產品的主要功能，以及在實際執行案例中所示範的優點。
 
-## <a name="selecting-an-online-store"></a>選取線上商店
+### <a name="contact-me"></a>與我連絡
 
-每個線上商店都能針對商務和 IT 解決方案提供不同的客戶需求。 您的供應專案類型、交易功能和類別將會決定您供應專案的發佈位置。 類別和子類別會根據您發行的解決方案類型，對應至每個線上商店：
+簡單的應用程式或服務清單。 客戶可使用您供應專案清單頁面上的 [ _連絡人_ ] 按鈕，要求您與您的供應專案相關聯。
 
-**Microsoft AppSource** 為 Dynamics 365、Microsoft 365 和 Power Platform 供應商務解決方案，例如產業解決方案和諮詢服務。
+### <a name="get-it-now"></a>立即取得
 
-**Azure Marketplace** 提供專為 Azure 或 azure 提供的 IT 解決方案，以及可加速客戶使用 azure 的諮詢服務。
+此清單選項包含可交易提供 (訂用帳戶和以使用者為基礎的定價) 、攜帶您自己的授權供應專案，以及立即 (免費的) 取得。 可交易供應專案是透過商業市場銷售。 Microsoft 負責計費和收費。 客戶使用 [ _立即取得] 按鈕_ 來取得供應專案。
 
-選取最符合您解決方案類型的類別和子類別。 例如，web 應用程式防火牆是 IT 解決方案，應發佈至 Azure Marketplace 的 [安全性] 類別之下。 合約管理應用程式是商務解決方案，應發佈至 Sales 類別下的 AppSource。 選取不正確的類別或子類別目錄，可能會導致您的供應專案發佈至錯誤的線上商店。
+[立即取得] 清單選項可包含下列定價選項，視供應專案類型而定：
 
-### <a name="publishing-to-both-online-stores-saas-offers-only"></a>發佈至 (SaaS 提供的線上商店) 
+- 立即取得 (免費) 
+- 自備授權 (BYOL)
+- 訂用帳戶
+- 以使用量為基礎的定價
 
-SaaS 供應專案可以發佈至 Azure Marketplace 或 AppSource。 如果您的 SaaS 供應 *專案是 IT* 解決方案 (Azure Marketplace) 以及 (AppSource) 的商務解決方案，請選取適用于每個線上商店的類別及/或子類別。 發佈到兩個線上商店的供應專案，都應該有價值主張作為 IT 解決方案 *和* 商務解決方案。
+下表顯示哪些供應專案類型支援 [立即取得] 清單選項所附的其他定價選項。
 
-> [!IMPORTANT]
-> 具有 [計量計費](partner-center-portal/saas-metered-billing.md) 的 SaaS 供應專案可透過 Azure Marketplace 和 Azure 入口網站取得。 只有私人方案提供的 SaaS 供應專案可透過 Azure 入口網站取得。
+| 供應項目類型 | 立即取得 (免費)  | BYOL | 訂用帳戶 | 以使用量為基礎的定價 |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Azure 應用程式 (受控應用程式)  |   |   | &#10004; | &#10004; |
+| Azure 應用程式 (解決方案範本)  | &#10004; |   |   |   |
+| 諮詢服務 |   |   |   |   |
+| Azure 容器 | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Dynamics 365 business central | &#10004; |   |   |   |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; |   |   |   |
+| 適用于作業的 Dynamics 365 | &#10004; |   |   |   |
+| IoT Edge 模組 | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| 受控服務 |   | &#10004; |   |   |
+| Power BI 應用程式 | &#10004; |   |   |   |
+| Azure 虛擬機器 |   | &#10004; |   | &#10004;<sup>2</sup> |
+| 軟體即服務 | &#10004; |   | &#10004; | &#10004; |
+||||||
 
-| 計量付費 | 公用方案 | 私人方案 | 適用于： |
-|---|---|---|---|
-| 是             | 是         | 否           | Azure Marketplace 和 Azure 入口網站 |
-| 是             | 是         | 是          | Azure Marketplace 和 Azure 入口網站 * |
-| 是             | 否          | 是          | 僅 Azure 入口網站 |
-| 否              | 否          | 是          | 僅 Azure 入口網站 |
+**圖例**
 
-&#42; 供應專案的私用方案將只能透過 Azure 入口網站取得
+<sup>1</sup> [**方案總覽**] 索引標籤的 [**定價模型**] 資料行會顯示 [_免費_] 或 [ _BYOL_ ]，但無法選取。
 
-例如，使用計量付費帳單和私人方案的供應專案僅 (沒有公用方案) ，將由客戶在 Azure 入口網站中購買。 深入瞭解 [Microsoft 商業市集中的私人優惠](private-offers.md)。
+每小時<sup>2</sup>個定價，每月計費。
 
-### <a name="categories"></a>類別
+#### <a name="get-it-now-free"></a>立即取得 (免費) 
 
-類別和子類別會根據方案類型對應到每個線上商店。 選取最符合您解決方案的類別和子類別。 您可以選取：
+使用此清單選項可免費提供您的應用程式。 客戶使用 [ _立即取得_ ] 按鈕來取得您的免費供應專案。
 
-- 至少一個和最多兩個類別。 您可以選擇主要和次要類別。
-- 每個主要和/或次要類別最多可有兩個子類別。 如果您未選取任何子類別，則您的供應專案仍可在所選類別下找到。
+#### <a name="byol"></a>BYOL
 
-[!INCLUDE [categories and subcategories](./includes/categories.md)]
+使用商用 marketplace 增強探索、自動布建您的解決方案，以及完成與 marketplace 分開的財務交易。 「自備授權」 (BYOL) 清單選項適用于內部部署到雲端的遷移。 客戶可使用 [ _立即取得_ ] 按鈕，使用由您預先購買的授權購買您的供應專案。
+
+#### <a name="subscription"></a>訂用帳戶
+
+您可以針對這些供應專案類型收取固定費用：
+
+- Azure 應用程式 (受控應用程式) 提供每月訂閱支援。
+- SaaS 提供每月和年度訂閱的支援。
+
+#### <a name="usage-based-pricing"></a>以使用量為基礎的定價
+
+下列供應專案類型支援以使用量為基礎的定價：
+
+- Azure 應用程式 (受控應用程式) 供應專案支援計量付費。 如需詳細資訊，請參閱 [受控應用程式計量付費帳單](./partner-center-portal/azure-app-metered-billing.md)。
+- SaaS 供應專案支援計量付費，以及每位使用者 () 定價。 如需計量計費的詳細資訊，請參閱 [使用商用 marketplace 計量服務的 SaaS](./partner-center-portal/saas-metered-billing.md)計費。
+- Azure 虛擬機器提供每個核心的支援、每個核心大小，以及每一市場和核心大小的定價。 這些定價選項是每小時定價，每月計費。
+
+建立可交易供應專案時，請務必先瞭解定價、計費、發票和付款考慮，然後再選取供應專案類型和建立供應專案。 若要深入瞭解，請參閱 [商用 marketplace 線上商店](overview.md#commercial-marketplace-online-stores)。
+
+## <a name="listing-and-pricing-options-by-online-store"></a>線上商店的清單和定價選項
+
+根據各種準則，我們會判斷您的供應專案是否列在 Azure Marketplace、Microsoft AppSource 或兩個線上商店。 如需兩個線上商店之間差異的詳細資訊，請參閱 [商用 marketplace 線上商店](overview.md#commercial-marketplace-online-stores)。
+
+下表顯示適用于不同供應專案類型和增益集的選項，以及您的供應專案可列于哪些線上商店的選項。
+
+| 供應專案類型和增益集 | 與我連絡 | 免費試用 | 立即取得 (免費)  | BYOL | 立即取得 (交易)  |
+| ------------ | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Azure 虛擬機器 |   |   |   | Azure Marketplace | Azure Marketplace |
+| Azure 應用程式 |   |   | Azure Marketplace | Azure Marketplace | Azure Marketplace |
+| Azure 容器  |   |   | Azure Marketplace | Azure Marketplace |   |
+| IoT Edge 模組 |   |   | Azure Marketplace | Azure Marketplace |   |
+| 受控服務 |   |   |   | Azure Marketplace |   |
+| 諮詢服務 | 這兩個線上商店 |   |   |   |   |
+| SaaS  | 這兩個線上商店 | 這兩個線上商店 | 這兩個線上商店 |   | 這兩個線上商店 &#42; |
+| Microsoft 365 應用程式 | AppSource | AppSource |   |   | AppSource &#42;&#42; |
+| Dynamics 365 business central | AppSource | AppSource |   |   |   |
+| Dynamics 365 for Customer 參與 & PowerApps | AppSource | AppSource |   |   |   |
+| 適用于作業的 Dynamics 365 | AppSource | AppSource |   |   |   |
+| Power BI 應用程式 |   |   | AppSource |   |   |
+|||||||
+
+AppSource 中的 &#42; SaaS 可交易供應專案目前僅供信用卡之用。
+
+&#42;&#42; Microsoft 365 增益集可免費安裝，而且可以使用 SaaS 供應專案販賣。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md)。
+
+## <a name="marketplace-rewards"></a>Marketplace 獎勵
+
+您的 Marketplace Rewards 會根據您選擇的清單選項來區分。 若要深入瞭解，請參閱 [您的商業 marketplace 權益](gtm-your-marketplace-benefits.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 一旦您決定發佈選項，請參閱「 [依供應專案類型的發佈指南](./publisher-guide-by-offer-type.md)」。
+- 若要選擇要建立的供應專案類型，請參閱 [發佈指南（依供應專案類型](./publisher-guide-by-offer-type.md)）。

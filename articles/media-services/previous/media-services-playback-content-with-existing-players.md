@@ -3,7 +3,7 @@ title: 使用現有的撥放器來撥放內容 - Azure | Microsoft Docs
 description: 本文列出您可以用來播放內容的現有播放程式。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: d2036fa056932f9bbd2f14b4005fa54321b1a382
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/17/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6085f34c46ab39012500cd42cd8392e65776f773
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095708"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739798"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用現有播放器來播放您的內容
 
@@ -27,7 +27,8 @@ ms.locfileid: "93095708"
 
 Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、HTTP 即時資料流和 MPEG-Dash。 本主題會指引您可用來測試串流的現有播放程式。
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure 入口網站媒體服務內容播放程式
+## <a name="the-azure-portal-media-services-content-player"></a>Azure 入口網站媒體服務內容播放程式
+
 **Azure** 入口網站提供內容播放程式，可讓您用來測試影片。
 
 按一下想用的視訊 (請確定它 [已發行](media-services-portal-publish.md))，按一下入口網站底部的 [ **播放** ] 按鈕。
@@ -35,8 +36,6 @@ Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、
 適用一些考量事項：
 
 * **媒體服務內容播放程式** 會從預設串流端點播放。 如果您想要從非預設串流端點播放，請使用其他播放程式。 例如， [Azure 媒體播放器](https://aka.ms/azuremediaplayer)。
-
-![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure 媒體播放器
 
@@ -55,20 +54,21 @@ Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、
 
 ### <a name="dash-players"></a>DASH 播放程式
 
-"https://dashplayer.azurewebsites.net"
+[虛線播放線](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>其他
+
 若要測試 HLS URL，您也可以使用：
 
 * **Safari** 或
 * **3ivx HLS 播放器** 。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供意見反應
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-[AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
+[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
