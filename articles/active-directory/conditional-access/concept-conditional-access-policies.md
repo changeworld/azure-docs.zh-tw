@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 74e4ca34a69b121ce5b92ad52125dc317e3aea43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145369"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837663"
 ---
 # <a name="building-a-conditional-access-policy"></a>建立條件式存取原則
 
@@ -101,7 +101,7 @@ ms.locfileid: "92145369"
 
 Grant 控制項可以觸發一或多個控制項的強制執行。 
 
--  (Azure Multi-Factor Authentication) 需要多重要素驗證
+- 需要多重要素驗證 (Azure AD Multi-Factor Authentication) 
 - 要求裝置必須標示為符合規範 (Intune) 
 - 需要已加入混合式 Azure AD 的裝置
 - 需要已核准的用戶端應用程式
@@ -133,10 +133,10 @@ Grant 控制項可以觸發一或多個控制項的強制執行。
 
 條件式存取原則必須至少包含下列各項才能強制執行：
 
-- 原則的**名稱**。
+- 原則的 **名稱**。
 - **指派**
-   - 要套用原則的**使用者和/或群組**。
-   - 要套用原則的**雲端應用程式或動作**。
+   - 要套用原則的 **使用者和/或群組**。
+   - 要套用原則的 **雲端應用程式或動作**。
 - **存取控制**
    - **Grant** 或 **Block** 控制項
 
@@ -150,7 +150,7 @@ Grant 控制項可以觸發一或多個控制項的強制執行。
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 
-[規劃雲端式 Azure Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md) \(部分機器翻譯\)
+[規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md)
 
 [使用 Intune 管理裝置合規性](/intune/device-compliance-get-started)
 

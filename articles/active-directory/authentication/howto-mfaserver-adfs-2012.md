@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e8cb63cd06027754628dcf61aad0ac72b8233b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6fa06133c7793cd5f7d14ba587f9f50b523b0299
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967013"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838752"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>設定 Azure Multi-Factor Authentication Server 以搭配 Windows Server 中的 AD FS 運作
 
@@ -25,11 +25,11 @@ ms.locfileid: "91967013"
 在本文中，我們將討論如何搭配 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 使用 Azure Multi-Factor Authentication Server。 如需詳細資訊，請參閱 [搭配 AD FS 2.0 使用 Azure Multi-Factor Authentication Server 來保護雲端和內部部署資源](howto-mfaserver-adfs-2.md)。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
 > 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
 >
-> 如果您使用以雲端為基礎的 MFA，請參閱 [使用 Azure 保護雲端資源 Multi-Factor Authentication 和 AD FS](howto-mfa-adfs.md)。
+> 如果您使用以雲端為基礎的 MFA，請參閱 [使用 Azure AD Multi-Factor Authentication 保護雲端資源和 AD FS](howto-mfa-adfs.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
@@ -164,7 +164,7 @@ ms.locfileid: "91967013"
 
 1. 在 MFA Server 介面中，開啟 [AD FS] 區段並勾選 [啟用記錄] 核取方塊。
 2. 在每部 AD FS 伺服器上，使用 **regedit.exe** 來建立字串值登錄機碼 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Positive Networks\PhoneFactor\InstallPath`，其值為 `C:\Program Files\Multi-Factor Authentication Server\` (或您選擇的其他目錄)。  **請注意，尾端反斜線很重要。**
-3. 建立 `C:\Program Files\Multi-Factor Authentication Server\Logs` 目錄 (或**步驟 2** 中參考的其他目錄)。
+3. 建立 `C:\Program Files\Multi-Factor Authentication Server\Logs` 目錄 (或 **步驟 2** 中參考的其他目錄)。
 4. 將 Logs 目錄的修改存取權授予 AD FS 服務帳戶。
 5. 重新啟動 AD FS 服務。
 6. 確認 `MultiFactorAuthAdfsAdapter.log` 檔案已建立於 Logs 目錄中。

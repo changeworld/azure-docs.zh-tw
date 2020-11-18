@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication 常見問題-Azure Active Directory
-description: 與 Azure Multi-Factor Authentication 相關的常見問題與答案。
+title: Azure AD Multi-Factor Authentication 常見問題-Azure Active Directory
+description: 與 Azure AD Multi-Factor Authentication 有關的常見問題和解答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de86bc7d083fbf1890ed90c588b5bdb2e8479dfb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 909f4b71e07a20abf4af76fecaaf93bb08e4d6b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963970"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837901"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>與 Azure Multi-Factor Authentication 相關的常見問題
+# <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Azure AD 的常見問題 Multi-Factor Authentication
 
-此常見問題集回答關於 Azure Multi-Factor Authentication 和使用 Multi-Factor Authentication 服務的常見問題。 並將問題細分為一般服務問題、計費模式、使用者體驗和疑難排解。
+此常見問題會回答 Azure AD Multi-Factor Authentication 和使用 Multi-Factor Authentication 服務的相關常見問題。 並將問題細分為一般服務問題、計費模式、使用者體驗和疑難排解。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 想要從使用者要求多重要素驗證的新客戶，應該使用雲端式 Azure AD Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
 >
 > 以下與 Azure Multi-Factor Authentication Server 共用的資訊僅適用于已執行 MFA Server 的使用者。
 >
@@ -37,13 +37,13 @@ ms.locfileid: "91963970"
 
 ### <a name="how-does-azure-multi-factor-authentication-server-handle-user-data"></a>Azure Multi-Factor Authentication Server 如何處理使用者資料？
 
-使用 Multi-Factor Authentication Server，使用者資料只會儲存在內部部署伺服器上。 雲端中不會儲存任何持續性的使用者資料。 使用者執行雙步驟驗證時，Multi-Factor Authentication Server 會將資料傳送到 Azure Multi-Factor Authentication 雲端服務以供驗證。 Multi-Factor Authentication Server 與 Multi-Factor Authentication 雲端服務之間的通訊會透過傳出連接埠 443，使用安全通訊端層 (SSL) 或傳輸層安全性 (TLS) 通訊。
+使用 Multi-Factor Authentication Server，使用者資料只會儲存在內部部署伺服器上。 雲端中不會儲存任何持續性的使用者資料。 當使用者執行雙步驟驗證時，Multi-Factor Authentication Server 會將資料傳送至 Azure AD Multi-Factor Authentication 雲端服務進行驗證。 Multi-Factor Authentication Server 與 Multi-Factor Authentication 雲端服務之間的通訊會透過傳出連接埠 443，使用安全通訊端層 (SSL) 或傳輸層安全性 (TLS) 通訊。
 
 驗證要求傳送至雲端服務時，會收集資料以用於驗證和使用方式報告。 下列資料欄位包含在兩個步驟的驗證記錄中：
 
 * **唯一識別碼** (使用者名稱或內部部署 Multi-Factor Authentication Server 識別碼兩者之一)
-* 姓氏**和姓氏** (選擇性) 
-*  (選用) 的**電子郵件地址**
+* 姓氏 **和姓氏** (選擇性) 
+*  (選用) 的 **電子郵件地址**
 * **電話號碼** (進行語音通話或簡訊驗證時)
 * **裝置權杖** (執行行動應用程式驗證時)
 * **驗證模式**
@@ -56,7 +56,7 @@ ms.locfileid: "91963970"
 
 驗證結果 (成功或拒絕) 和拒絕原因會與驗證資料一起儲存。 可在驗證和使用方式報告中取得此資料。
 
-如需詳細資訊，請參閱 [Azure Multi-Factor Authentication 的資料存放區和客戶資料](concept-mfa-data-residency.md)。
+如需詳細資訊，請參閱 [Azure AD Multi-Factor Authentication 的資料存放區和客戶資料](concept-mfa-data-residency.md)。
 
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>何種 SMS 簡短程式碼可用來傳送 SMS 訊息給我的使用者？
 
@@ -78,19 +78,19 @@ ms.locfileid: "91963970"
 
 ## <a name="billing"></a>計費
 
-您可以參考 [Multi-Factor Authentication 定價頁面](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 或 [Azure Multi-Factor Authentication 版本和取用方案](concept-mfa-licensing.md)的檔，來回答大部分的帳單問題。
+您可以參考 [Multi-Factor Authentication 定價頁面](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 或 [Azure AD Multi-Factor Authentication 版本和取用方案](concept-mfa-licensing.md)的檔，來回答大部分的帳單問題。
 
 * [我的組織是否需要支付傳送電話和用於驗證的文字訊息？](#is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication)
 * [每個使用者的計費模型是否為所有啟用的使用者，或只對執行雙步驟驗證的使用者收取費用？](#does-the-per-user-billing-model-charge-me-for-all-enabled-users-or-just-the-ones-that-performed-two-step-verification)
 * [Multi-Factor Authentication 計費如何運作？](#how-does-multi-factor-authentication-billing-work)
-* [有免費版本的 Azure Multi-Factor Authentication 嗎？](#is-there-a-free-version-of-azure-multi-factor-authentication)
+* [是否有免費版本的 Azure AD Multi-Factor Authentication？](#is-there-a-free-version-of-azure-ad-multi-factor-authentication)
 * [我的組織是否可以隨時在每位使用者與每次驗證耗用量計費模型之間切換？](#can-my-organization-switch-between-per-user-and-per-authentication-consumption-billing-models-at-any-time)
 * [我的組織是否可以隨時在以使用量為基礎的計費和訂用帳戶之間切換 (以授權為基礎的模型) ？](#can-my-organization-switch-between-consumption-based-billing-and-subscriptions-a-license-based-model-at-any-time)
-* [我的組織是否必須使用和同步處理身分識別才能使用 Azure Multi-Factor Authentication？](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication)
+* [我的組織是否必須使用和同步處理身分識別，才能使用 Azure AD Multi-Factor Authentication？](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication)
 
 ### <a name="is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication"></a>若為了驗證而撥打電話或傳送簡訊，我的組織是否須為此付費？
 
-否，您不需支付個別通話的費用，或透過 Azure Multi-Factor Authentication 傳送給使用者的文字訊息。 如果您使用每個驗證 MFA 提供者，則會向您收取每個驗證的費用，但不會針對所使用的方法收費。
+否，您不需支付個別通話的費用，或透過 Azure AD Multi-Factor Authentication 傳送給使用者的文字訊息。 如果您使用每個驗證 MFA 提供者，則會向您收取每個驗證的費用，但不會針對所使用的方法收費。
 
 根據不同的個人電話服務，您的使用者可能需要為接聽的電話或收到的簡訊支付費用。
 
@@ -102,11 +102,11 @@ ms.locfileid: "91963970"
 
 當您建立每個使用者或每個授權的 MFA 提供者時，貴組織的 Azure 訂用帳戶會以使用方式每個月計費作為基礎。 此計費模式類似于 Azure 使用虛擬機器和 Web Apps 的計費方式。
 
-當您購買 Azure Multi-factor Authentication 的訂用帳戶時，貴組織僅支付每位使用者的年度授權費。 MFA 授權和 Microsoft 365、Azure AD Premium 或 Enterprise Mobility + Security 套件組合會以這種方式計費。
+當您購買 Azure AD Multi-Factor Authentication 的訂用帳戶時，您的組織只會支付每位使用者的年度授權費用。 MFA 授權和 Microsoft 365、Azure AD Premium 或 Enterprise Mobility + Security 套件組合會以這種方式計費。
 
-如需詳細資訊，請參閱[如何取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)。
+如需詳細資訊，請參閱 [如何取得 Azure AD Multi-Factor Authentication](concept-mfa-licensing.md)。
 
-### <a name="is-there-a-free-version-of-azure-multi-factor-authentication"></a>是否有免費版本的 Azure Multi-Factor Authentication？
+### <a name="is-there-a-free-version-of-azure-ad-multi-factor-authentication"></a>是否有免費版本的 Azure AD Multi-Factor Authentication？
 
 您可以在 Azure AD Free 層中啟用安全性預設值。 使用安全性預設值時，所有使用者都會使用 Microsoft Authenticator 應用程式啟用多重要素驗證。 沒有任何功能可將文字訊息或電話驗證與安全性預設值搭配使用，只是 Microsoft Authenticator 的應用程式。
 
@@ -124,11 +124,11 @@ ms.locfileid: "91963970"
 
 在某些情況下，是的。
 
-如果您的目錄有*根據使用者計費*的 Azure Multi-Factor Authentication 提供者，您可以新增 MFA 授權。 擁有授權的使用者不會根據每位使用者使用量計費。 沒有授權的使用者仍可透過 MFA 提供者啟用 MFA。 如果您購買授權，並將其指派給所有設定使用 Multi-Factor Authentication 的使用者，您就可以刪除 Azure Multi-Factor Authentication 提供者。 如果您之後會有多於授權的使用者，您隨時都可以建立其他根據使用者計費的 MFA 提供者。
+如果您的目錄有 *根據使用者計費* 的 Azure Multi-Factor Authentication 提供者，您可以新增 MFA 授權。 擁有授權的使用者不會根據每位使用者使用量計費。 沒有授權的使用者仍可透過 MFA 提供者啟用 MFA。 如果您購買授權，並將其指派給所有設定使用 Multi-Factor Authentication 的使用者，您就可以刪除 Azure Multi-Factor Authentication 提供者。 如果您之後會有多於授權的使用者，您隨時都可以建立其他根據使用者計費的 MFA 提供者。
 
 如果您的目錄具有 *每一驗證* 的 Azure Multi-Factor Authentication 提供者，只要 MFA 提供者連結至您的訂用帳戶，您就一律會支付每個驗證的費用。 您可以將 MFA 授權指派給使用者，但您仍需要為每次雙步驟驗證要求支付費用，無論發出此要求的人是否擁有指派的 MFA 授權。
 
-### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication"></a>我的組織是否必須使用和同步處理身分識別才能使用 Azure Multi-Factor Authentication？
+### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication"></a>我的組織是否必須使用和同步處理身分識別，才能使用 Azure AD Multi-Factor Authentication？
 
 如果貴組織使用根據使用量計費的模型，則 Azure Active Directory 為選擇性項目，並非必要。 如果您的 MFA 提供者未連結至 Azure AD 租使用者，您只能在內部部署環境部署 Azure Multi-Factor Authentication Server。
 
@@ -159,15 +159,15 @@ ms.locfileid: "91963970"
 
 ### <a name="what-should-i-do-if-one-of-my-users-cant-get-in-to-their-account"></a>如果我的使用者無法登入他們的帳戶，我該怎麼做？
 
-您可以讓使用者再次進行註冊程序，以重設使用者的帳戶。 深入了解 [在雲端使用 Azure Multi-Factor Authentication 管理使用者和裝置設定](howto-mfa-userdevicesettings.md)。
+您可以讓使用者再次進行註冊程序，以重設使用者的帳戶。 深入瞭解如何 [使用雲端中的 Azure AD Multi-Factor Authentication 來管理使用者和裝置設定](howto-mfa-userdevicesettings.md)。
 
 ### <a name="what-should-i-do-if-one-of-my-users-loses-a-phone-that-is-using-app-passwords"></a>如果我的其中一個使用者遺失手機，而該手機上正在使用應用程式密碼，我該怎麼做？
 
-請刪除該使用者的所有應用程式密碼，以防止未經授權的存取。 當使用者有替代裝置後，他們可以重新建立密碼。 深入了解 [在雲端使用 Azure Multi-Factor Authentication 管理使用者和裝置設定](howto-mfa-userdevicesettings.md)。
+請刪除該使用者的所有應用程式密碼，以防止未經授權的存取。 當使用者有替代裝置後，他們可以重新建立密碼。 深入瞭解如何 [使用雲端中的 Azure AD Multi-Factor Authentication 來管理使用者和裝置設定](howto-mfa-userdevicesettings.md)。
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>如果使用者無法登入非瀏覽器的應用程式該怎麼辦？
 
-如果貴組織仍然使用舊版的用戶端，但您已[允許使用應用程式密碼](howto-mfa-app-passwords.md)，則您的使用者無法使用他們的使用者名稱和密碼登入這些舊版用戶端。 相反地，他們需要[設定應用程式密碼](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 您的使用者必須先清除 (刪除) 登入資訊、重新啟動應用程式，然後使用他們的使用者名稱和*應用程式密碼* (不是他們慣用的密碼) 登入。
+如果貴組織仍然使用舊版的用戶端，但您已[允許使用應用程式密碼](howto-mfa-app-passwords.md)，則您的使用者無法使用他們的使用者名稱和密碼登入這些舊版用戶端。 相反地，他們需要[設定應用程式密碼](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 您的使用者必須先清除 (刪除) 登入資訊、重新啟動應用程式，然後使用他們的使用者名稱和 *應用程式密碼* (不是他們慣用的密碼) 登入。
 
 如果您的組織沒有舊版用戶端，您不應該允許使用者建立應用程式密碼。
 
@@ -190,8 +190,8 @@ ms.locfileid: "91963970"
 
 若為具有 Azure MFA Server v7.0 或更高版本的單向 SMS，您可以設定登錄機碼來設定逾時設定。 MFA 雲端服務傳送文字訊息之後，驗證碼 (或單次密碼) 就會傳回 MFA 伺服器。 依預設，MFA 伺服器會將程式碼儲存在記憶體中達 300 秒。 如果使用者在 300 秒內未輸入代碼，則他們的驗證會遭到拒絕。 若要變更預設逾時設定，請使用下列步驟：
 
-1. 前往 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
-2. 建立名為*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**登錄機碼，並設定您想要 Azure MFA 伺服器儲存單次密碼的時間（以秒為單位）。
+1. 移至 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
+2. 建立名為 *pfsvc_pendingSmsTimeoutSeconds* 的 **DWORD** 登錄機碼，並設定您想要 Azure MFA 伺服器儲存單次密碼的時間（以秒為單位）。
 
 >[!TIP]
 >
@@ -199,7 +199,7 @@ ms.locfileid: "91963970"
 
 如果使用者未在定義的逾時期限內回應簡訊，其驗證就會遭到拒絕。
 
-若為雲端中具有 Azure MFA 的單向 SMS (包括 AD FS 介面卡或網路原則伺服器延伸模組) ，則無法設定 timeout 設定。 Azure AD 會儲存驗證程式碼達 180 秒。
+對於在雲端中具有 Azure AD MFA 的單向 SMS (包括 AD FS 介面卡或網路原則伺服器延伸模組) ，您無法設定 timeout 設定。 Azure AD 會儲存驗證程式碼達 180 秒。
 
 ### <a name="can-i-use-hardware-tokens-with-azure-multi-factor-authentication-server"></a>我是否可以搭配 Azure Multi-Factor Authentication Server 使用硬體權杖？
 
@@ -246,7 +246,7 @@ Windows Server 2012 R2 中的安全性變更已改變 Azure Multi-Factor Authent
 1. 移至 [其 Azure 入口網站設定檔](https://account.activedirectory.windowsazure.com/profile/) ，並使用組織帳戶登入。
 2. 選取 [ **其他安全性驗證**]。
 3. 從 Microsoft Authenticator 應用程式中移除現有的帳戶。
-4. 按一下 [設定]，然後依照指示重新 **設定**Microsoft Authenticator。
+4. 按一下 [設定]，然後依照指示重新 **設定** Microsoft Authenticator。
 
 ### <a name="what-should-users-do-if-they-see-a-0x800434d4l-error-message-when-signing-in-to-a-non-browser-application"></a>如果使用者在登入非瀏覽器應用程式時看到 0x800434D4L 錯誤訊息，應該怎麼辦？
 

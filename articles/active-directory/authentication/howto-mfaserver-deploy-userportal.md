@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2982e50a66aeccccd333e2a40b7162a4c6e8579
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: abf6a76a47fdc146af91f912fe8dcb2f37064ae3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966979"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838666"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server 的使用者入口網站
 
@@ -29,9 +29,9 @@ ms.locfileid: "91966979"
 視您的環境而定，建議您在與 Azure Multi-factor Authentication Server 相同的伺服器，或在另一個網際網路對向的伺服器上部署使用者入口網站。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
-> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91966979"
 
 ## <a name="install-the-web-service-sdk"></a>安裝 Web 服務 SDK
 
-在任一案例中，如果 Azure Multi-Factor Authentication (MFA) Server 上尚**未**安裝 Azure Multi-Factor Authentication Web 服務 SDK，請完成後續步驟。
+在任一案例中，如果 Azure Multi-Factor Authentication (MFA) Server 上尚 **未** 安裝 Azure Multi-Factor Authentication Web 服務 SDK，請完成後續步驟。
 
 1. 開啟 Multi-Factor Authentication Server 主控台。
 2. 移至 [Web 服務 SDK] 並選取 [安裝 Web 服務 SDK]。
@@ -57,7 +57,7 @@ Web 服務 SDK 必須受到 TLS/SSL 憑證保護。 自我簽署憑證適用於�
 
 ## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>在與 Azure Multi-Factor Authentication Server 相同的伺服器上部署使用者入口網站
 
-若要在與 Azure Multi-Factor Authentication Server **相同的伺服器**上安裝使用者入口網站，您必須滿足以下必要條件：
+若要在與 Azure Multi-Factor Authentication Server **相同的伺服器** 上安裝使用者入口網站，您必須滿足以下必要條件：
 
 * IIS，包括 ASP.NET 及 IIS 6 metabase 相容性 (適用於 IIS 7 或更高版本)
 * 具有電腦和網域系統管理員權限的帳戶 (如果適用)。 帳戶需有建立 Active Directory 安全性群組的權限。
@@ -81,7 +81,7 @@ Web 服務 SDK 必須受到 TLS/SSL 憑證保護。 自我簽署憑證適用於�
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>在個別的伺服器上部署使用者入口網站
 
-如果 Azure Multi-Factor Authentication Server 執行所在的伺服器不是網際網路對向，您應該在**個別的網際網路對向伺服器**上安裝使用者入口網站。
+如果 Azure Multi-Factor Authentication Server 執行所在的伺服器不是網際網路對向，您應該在 **個別的網際網路對向伺服器** 上安裝使用者入口網站。
 
 如果您的組織使用 Microsoft Authenticator 應用程式作為其中一種驗證方法，並想要在自己的伺服器上部署使用者入口網站，請完成下列需求︰
 

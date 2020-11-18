@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e22e4cdbfaf90eb9bba30fc26dc3495f767216f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c8c67f72a7f0d77284dbb34104754793b36bb8d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968334"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838139"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>啟用 Azure Active Directory 中的合併安全性資訊註冊
 
-在有合併註冊之前，使用者要分開註冊 Azure Multi-Factor Authentication 和自助式密碼重設 (SSPR) 的驗證方法。 用於 Azure Multi-Factor Authentication 與 SSPR 的方法很類似，會讓人混淆，卻不得不註冊這兩個功能。 現在有了合併註冊，使用者只要註冊一次，就能同時得到 Azure Multi-Factor Authentication 和 SSPR 的益處。
+在合併註冊之前，使用者已將 Azure AD Multi-Factor Authentication 和自助式密碼重設的驗證方法，分別 (SSPR) 。 人們搞不清楚 Azure AD Multi-Factor Authentication 和 SSPR 中使用了類似的方法，但他們必須註冊這兩項功能。 現在，透過結合註冊，使用者可以註冊一次，並獲得 Azure AD Multi-Factor Authentication 和 SSPR 的優點。
 
 > [!NOTE]
 > 自2020年8月15日起，所有新的 Azure AD 租使用者都會自動啟用合併註冊。
@@ -40,7 +40,7 @@ ms.locfileid: "91968334"
    ![為使用者啟用合併安全性資訊體驗](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info.png)
 
 > [!NOTE]
-> 在您啟用合併註冊之後，透過新體驗註冊或確認電話號碼或行動裝置應用程式的使用者，可以將那些資料用於 Azure Multi-Factor Authentication 和 SSPR (如果那些方法已在 Azure Multi-Factor Authentication 和 SSPR 原則中啟用)。
+> 啟用合併註冊之後，透過新體驗註冊或確認電話號碼或行動裝置應用程式的使用者，可以在 Azure AD Multi-Factor Authentication 和 SSPR 原則中啟用這些方法時，使用它們來進行 Azure AD Multi-Factor Authentication 和 SSPR。
 >
 > 如果您之後停用此體驗，則在上移至先前 SSPR 註冊頁面的使用者 `https://aka.ms/ssprsetup` 必須先執行多重要素驗證，才能存取該頁面。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91968334"
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>合併註冊的條件式存取原則
 
-若要保護使用者註冊 Azure Multi-Factor Authentication 和自助式密碼重設的時間和方式，您可以在條件式存取原則中使用使用者動作。 如果組織想要讓使用者註冊 Azure Multi-Factor Authentication 並從中央位置 SSPR （例如 HR 上線期間的受信任網路位置），則可能會啟用這項功能。
+若要保護使用者註冊 Azure AD Multi-Factor Authentication 和自助式密碼重設的時間和方式，您可以在條件式存取原則中使用使用者動作。 如果組織想要讓使用者註冊 Azure AD Multi-Factor Authentication，並從中央位置 SSPR （例如 HR 上線期間受信任的網路位置），則可能會啟用這項功能。
 
 > [!NOTE]
 > 只有當使用者存取組合的註冊頁面時，才會套用此原則。 當使用者存取其他應用程式時，此原則不會強制執行 MFA 註冊。
@@ -65,9 +65,9 @@ ms.locfileid: "91968334"
 
 請完成下列步驟來建立原則，以套用至所有選取的使用者，這些使用者會嘗試使用合併的註冊體驗來註冊，並封鎖存取，除非它們是從標示為受信任網路的位置進行連線：
 
-1. 在 **Azure 入口網站**中，瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
+1. 在 **Azure 入口網站** 中，瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [+ 新增原則]。
-1. 輸入此原則的名稱，例如*信任網路上的合併安全性資訊資訊*。
+1. 輸入此原則的名稱，例如 *信任網路上的合併安全性資訊資訊*。
 1. 在 [指派] 底下選取 [使用者和群組]。 選擇您想要套用此原則的使用者和群組，然後選取 [完成]。
 
    > [!WARNING]
@@ -90,6 +90,6 @@ ms.locfileid: "91968334"
 
 如果您需要協助，請參閱針對 [合併的安全性資訊註冊進行疑難排解](howto-registration-mfa-sspr-combined-troubleshoot.md) ，或瞭解 [Azure AD 條件式存取中的位置條件為何？](../conditional-access/location-condition.md)
 
-當使用者啟用合併註冊之後，您就可以 [啟用自助式密碼重設](tutorial-enable-sspr.md) ，並 [啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+當使用者啟用合併註冊之後，您就可以 [啟用自助式密碼重設](tutorial-enable-sspr.md) ，並 [啟用 Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
 
 如有需要，請瞭解如何 [強制使用者重新註冊驗證方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。

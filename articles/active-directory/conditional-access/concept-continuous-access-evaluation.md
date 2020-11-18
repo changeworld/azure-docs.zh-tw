@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992807"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837612"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -125,8 +125,8 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 ## <a name="enable-or-disable-cae-preview"></a>啟用或停用 CAE (預覽版) 
 
-1. 以條件式存取系統管理員、安全性系統管理員或全域管理員身分登入**Azure 入口網站**
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **持續存取評估**。
+1. 以條件式存取系統管理員、安全性系統管理員或全域管理員身分登入 **Azure 入口網站**
+1. 流覽至 **Azure Active Directory**  >  **安全性**  >  **持續存取評估**。
 1. 選擇 [ **啟用預覽**]。
 
 從這個頁面，您可以選擇性地限制將受預覽的使用者和群組。
@@ -140,7 +140,7 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 針對 CAE，我們只能深入解析以 IP 為基礎的命名位置。 我們無法深入瞭解其他位置設定，例如 [MFA 信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或國家/地區的位置。 當使用者來自 MFA 信任 IP 或包含 MFA 受信任 IP 或國家/地區位置的受信任位置時，將不會在使用者移至不同的位置之後強制執行 CAE。 在這些情況下，我們將發出1小時的 CAE 權杖，而不需要立即 IP 強制執行檢查。
 
 > [!IMPORTANT]
-> 設定持續存取評估的位置時，請只使用以 [IP 為基礎的條件式存取位置條件](../conditional-access/location-condition.md#preview-features) ，並設定您的身分識別提供者和資源提供者可以看到的所有 IP 位址（ **包括 IPv4 和 IPv6**）。 請勿使用 Azure Multi-Factor Authentication 的 [服務設定] 頁面中提供的國家/地區位置條件或信任的 ip 功能。
+> 設定持續存取評估的位置時，請只使用以 [IP 為基礎的條件式存取位置條件](../conditional-access/location-condition.md#preview-features) ，並設定您的身分識別提供者和資源提供者可以看到的所有 IP 位址（ **包括 IPv4 和 IPv6**）。 請勿使用 Azure AD Multi-Factor Authentication 的 [服務設定] 頁面中提供的國家/地區位置或信任的 ip 功能。
 
 ### <a name="ip-address-configuration"></a>IP 位址組態
 
@@ -183,6 +183,6 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 登入頻率將會接受或不使用 CAE。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [宣佈持續存取評估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

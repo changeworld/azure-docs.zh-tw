@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d431b0094264d37f60d63636be388802b3552e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e0c91339bac11fdbbfd8e40c588927cd5d129079
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968560"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838190"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 驗證與 Azure Multi-Factor Authentication Server
 
@@ -27,9 +27,9 @@ ms.locfileid: "91968560"
 * 信任的 IP 取決於應用程式是否可以提供用於驗證的用戶端 IP。 目前僅支援終端機服務。  
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
-> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
@@ -40,7 +40,7 @@ ms.locfileid: "91968560"
 
 1. 在 Azure Multi-Factor Authentication Server 中，按一下 [Windows 驗證] 圖示。
    ![MFA Server 中的 Windows 驗證](./media/howto-mfaserver-windows/windowsauth.png)
-2. 核取 [啟用 Windows 驗證]**** 核取方塊。 預設不核取此方塊。
+2. 核取 [啟用 Windows 驗證] 核取方塊。 預設不核取此方塊。
 3. [應用程式] 索引標籤可讓系統管理員設定一或多個應用程式要經過 Windows 驗證。
 4. 選取伺服器或應用程式 – 指定是否啟用伺服器/應用程式。 按一下 [確定]。
 5. 按一下 [**新增 ...** ]

@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a685706b09610dc298854093bb242f0bdcf8cf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 267a543e771f33f0cfe1fac7abe225e3db2a8e3f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964089"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838735"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>針對高可用性設定 Azure Multi-Factor Authentication Server
 
 若要透過 Azure Server MFA 部署達到高可用性，您必須部署多部 MFA Server。 本節提供負載平衡設計的相關資訊，該設計可達到 Azure MFS Server 部署中的高可用性目標。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
-> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
@@ -70,9 +70,9 @@ MFA Server 是已安裝 Azure Multi-Factor Authentication 軟體的 Windows Serv
    ![Azure MFA Server - 應用程式伺服器 HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > 因為 RPC 使用動態連接埠，所以不建議在 RPC 可能使用的動態連接埠範圍內開啟防火牆。 如果您在 MFA 應用程式伺服器**之間**有防火牆，您應該針對從屬與主要伺服器之間的複寫流量設定要在靜態連接埠上通訊的 MFA Server，並在防火牆上開啟該連接埠。 您可以在 ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` 建立稱為 ```Pfsvc_ncan_ip_tcp_port``` 的 DWORD 登錄值，並將該值設定為可用的靜態連接埠，來強制使用靜態連接埠。 一律會由從屬 MFA Server 起始對主要的連線，只有主要才需要靜態連接埠，但由於您可以隨時將從屬項目升階為主要，因此您應該在所有 MFA Server 上設定靜態連接埠。
+   > 因為 RPC 使用動態連接埠，所以不建議在 RPC 可能使用的動態連接埠範圍內開啟防火牆。 如果您在 MFA 應用程式伺服器 **之間** 有防火牆，您應該針對從屬與主要伺服器之間的複寫流量設定要在靜態連接埠上通訊的 MFA Server，並在防火牆上開啟該連接埠。 您可以在 ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` 建立稱為 ```Pfsvc_ncan_ip_tcp_port``` 的 DWORD 登錄值，並將該值設定為可用的靜態連接埠，來強制使用靜態連接埠。 一律會由從屬 MFA Server 起始對主要的連線，只有主要才需要靜態連接埠，但由於您可以隨時將從屬項目升階為主要，因此您應該在所有 MFA Server 上設定靜態連接埠。
 
-2. 這兩部使用者入口網站/MFA 行動裝置應用程式伺服器 (MFA-UP-MAS1 和 MFA-UP-MAS2) 會在**具狀態**設定 (mfa.contoso.com) 中進行負載平衡。 如前所述，對 MFA 使用者入口網站和行動裝置應用程式服務進行負載平衡需要黏性工作階段。
+2. 這兩部使用者入口網站/MFA 行動裝置應用程式伺服器 (MFA-UP-MAS1 和 MFA-UP-MAS2) 會在 **具狀態** 設定 (mfa.contoso.com) 中進行負載平衡。 如前所述，對 MFA 使用者入口網站和行動裝置應用程式服務進行負載平衡需要黏性工作階段。
    ![Azure MFA Server - 使用者入口網站和行動裝置應用程式服務 HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
 3. ADFS 伺服器陣列已經過負載平衡，並透過周邊網路中的負載平衡 ADFS Proxy 發佈至網際網路。 每部 ADFS 伺服器使用 ADFS 代理程式，利用 TCP 連接埠 443 上的單一負載平衡 URL (mfaapp.contoso.com) 與 Azure MFA Server 通訊。
 

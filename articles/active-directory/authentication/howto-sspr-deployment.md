@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363720"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838072"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure Active Directory 自助式密碼重設部署
 
 > [!IMPORTANT]
 > 此部署計劃提供部署 Azure AD 自助式密碼重設 (SSPR) 的指導方針與最佳做法。
 >
-> **如果您是使用者，而且需要取回您的帳戶，請移至 [https://aka.ms/sspr](https://aka.ms/sspr) **。
+> **如果您是使用者，而且需要取回您的帳戶，請移至 [https://aka.ms/sspr](https://aka.ms/sspr)**。
 
 [自助式密碼重設 (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) \(英文\) 是 Azure Active Directory (AD) 功能，可讓使用者無需連絡 IT 人員以尋求協助，便能重設其密碼。 無論何時何處，使用者都可以快速將自己解除封鎖並繼續工作。 透過讓員工自行將自己解除封鎖，您的組織便能針對最常見的密碼相關問題減少無生產力的時間，以及高昂的支援成本。
 
@@ -115,7 +115,7 @@ Azure Active Directory 是依使用者授權，這表示每個使用者針對其
 
 Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗。 當您啟用此合併註冊體驗時，使用者只需要選取其註冊資訊一次便能啟用這兩個功能。
 
-合併註冊體驗並不需要組織同時啟用 SSPR 和 Azure Multi-Factor Authentication。 合併註冊能為組織提供更佳的使用者體驗。 如需詳細資訊，請參閱[合併的安全性資訊註冊](concept-registration-mfa-sspr-combined.md)
+結合的註冊體驗不需要組織啟用 SSPR 和 Azure AD Multi-Factor Authentication。 合併註冊能為組織提供更佳的使用者體驗。 如需詳細資訊，請參閱[合併的安全性資訊註冊](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>規劃部署專案
 
@@ -200,7 +200,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 ### <a name="password-writeback"></a>密碼回寫
 
-**密碼回寫**是透過 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 啟用，並會將雲端中的密碼重設即時回寫至現有內部部署目錄。 如需詳細資訊，請參閱[什麼是密碼回寫？](./concept-sspr-writeback.md) \(部分機器翻譯\)
+**密碼回寫** 是透過 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 啟用，並會將雲端中的密碼重設即時回寫至現有內部部署目錄。 如需詳細資訊，請參閱[什麼是密碼回寫？](./concept-sspr-writeback.md) \(部分機器翻譯\)
 
 建議使用下列設定：
 
@@ -321,7 +321,7 @@ Azure AD 可以透過稽核和報告來提供 SSPR 效能的額外資訊。
 
 ### <a name="authentication-methods--usage-and-insights"></a>驗證方法 - 使用量和見解
 
-[使用量和見解](./howto-authentication-methods-usage-insights.md) \(部分機器翻譯\) 可讓您了解 Azure MFA 和 SSPR 等功能的驗證方法在您組織中的運作情況。 此報告功能可讓您的組織了解要註冊的方法及其使用方式。
+[使用方式和見解](./howto-authentication-methods-usage-insights.md) 可讓您瞭解 Azure AD MFA 和 SSPR 等功能的驗證方法如何在您的組織中運作。 此報告功能可讓您的組織了解要註冊的方法及其使用方式。
 
 ### <a name="troubleshoot"></a>疑難排解
 

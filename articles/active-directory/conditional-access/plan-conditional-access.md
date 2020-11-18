@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366321"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837476"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -73,7 +73,7 @@ Microsoft 提供名為[安全性預設值](../fundamentals/concept-fundamentals-
 * [如何部署條件式存取？](https://youtu.be/c_izIRNJNuk)
 * [如何向終端使用者推出 CA 原則？](https://youtu.be/0_Fze7Zpyvc)
 * [使用裝置控制措施的條件式存取](https://youtu.be/NcONUf-jeS4)
-* [使用 Azure MFA 的條件式存取](https://youtu.be/Tbc-SU97G-w)
+* [使用 Azure AD MFA 的條件式存取](https://youtu.be/Tbc-SU97G-w)
 * [Enterprise Mobility + Security 中的條件式存取](https://youtu.be/A7IrxAH87wc)
 
 

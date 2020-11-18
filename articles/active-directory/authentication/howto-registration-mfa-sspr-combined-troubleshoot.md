@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae5995340640e9cda16634cf76b9953d7d663c2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966656"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838173"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>疑難排解結合的安全性資訊註冊
 
@@ -39,8 +39,8 @@ ms.locfileid: "91966656"
 | 使用者審核的安全性資訊 | 失敗 | 使用者無法檢查安全性資訊。 | 當使用者在 [安全性資訊審核] 頁面上選取 [ **外觀良好** ]，但後端發生錯誤時，就會發生此事件。|
 | 使用者刪除的安全性資訊 | 成功 | 使用者刪除的 *方法*。 | 當使用者刪除個別的方法時，就會發生此事件。 *方法* 可以是驗證器應用程式、電話、電子郵件、安全性問題、應用程式密碼、備用電話等等。|
 | 使用者刪除的安全性資訊 | 失敗 | 使用者無法刪除 *方法*。 | 當使用者嘗試刪除某個方法，但嘗試因某些原因而失敗時，就會發生此事件。 *方法* 可以是驗證器應用程式、電話、電子郵件、安全性問題、應用程式密碼、備用電話等等。|
-| 使用者變更了預設安全性資訊 | 成功 | 使用者變更了 *方法*的預設安全性資訊。 | 當使用者變更預設方法時，就會發生此事件。 *方法* 可以是驗證器代理程式更新、來自驗證器應用程式或權杖的程式碼、呼叫 + X XXXXXXXXXX、將程式碼寫入 + x XXXXXXXXX 等等。|
-| 使用者變更了預設安全性資訊 | 失敗 | 使用者無法變更 *方法*的預設安全性資訊。 | 當使用者嘗試變更預設方法，但嘗試因某些原因而失敗時，就會發生此事件。 *方法* 可以是驗證器代理程式更新、來自驗證器應用程式或權杖的程式碼、呼叫 + X XXXXXXXXXX、將程式碼寫入 + x XXXXXXXXX 等等。|
+| 使用者變更了預設安全性資訊 | 成功 | 使用者變更了 *方法* 的預設安全性資訊。 | 當使用者變更預設方法時，就會發生此事件。 *方法* 可以是驗證器代理程式更新、來自驗證器應用程式或權杖的程式碼、呼叫 + X XXXXXXXXXX、將程式碼寫入 + x XXXXXXXXX 等等。|
+| 使用者變更了預設安全性資訊 | 失敗 | 使用者無法變更 *方法* 的預設安全性資訊。 | 當使用者嘗試變更預設方法，但嘗試因某些原因而失敗時，就會發生此事件。 *方法* 可以是驗證器代理程式更新、來自驗證器應用程式或權杖的程式碼、呼叫 + X XXXXXXXXXX、將程式碼寫入 + x XXXXXXXXX 等等。|
 
 ## <a name="troubleshooting-interrupt-mode"></a>疑難排解中斷模式
 
@@ -68,7 +68,7 @@ ms.locfileid: "91966656"
 
 接下來的步驟可協助您復原使用者或使用者群組。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>先決條件
 
 1. 安裝適當的 Azure AD PowerShell 模組。 在 PowerShell 視窗中，執行下列命令來安裝模組：
 
@@ -150,11 +150,11 @@ ms.locfileid: "91966656"
 若要停用使用者的更新體驗，請完成下列步驟：
 
 1. 以使用者系統管理員身分登入 Azure 入口網站。
-2. 移至**Azure Active Directory**  >  **使用者設定**  >  **管理存取面板預覽功能的設定**。
+2. 移至 **Azure Active Directory**  >  **使用者設定**  >  **管理存取面板預覽功能的設定**。
 3. 在 [ **使用者可以使用預覽功能來註冊及管理安全性資訊**] 下，將選取器設定為 [ **無**]，然後選取 [ **儲存**]。
 
 系統不會再提示使用者使用更新的體驗進行註冊。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入瞭解自助式密碼重設和 Azure Multi-Factor Authentication 的合併註冊](concept-registration-mfa-sspr-combined.md)
+* [深入瞭解自助式密碼重設和 Azure AD 的合併註冊 Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

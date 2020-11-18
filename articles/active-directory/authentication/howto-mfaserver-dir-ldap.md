@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969d242e70ceb746e2ed1516a4afb48d1d9136a9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6658eb6f74474d4394310bd39e897c50fc742a95
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966758"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838428"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 驗證和 Azure Multi-Factor Authentication Server
 
@@ -25,9 +25,9 @@ ms.locfileid: "91966758"
 若要使用 Azure Multi-Factor Authentication 作為 LDAP Proxy，請在 LDAP 用戶端 (例如 VPN 應用裝置、應用程式) 和 LDAP 目錄伺服器之間插入 Azure Multi-Factor Authentication Server。 Azure Multi-Factor Authentication Server 必須設定為能夠與用戶端伺服器和 LDAP 目錄進行通訊。 在此組態中，Azure Multi-Factor Authentication Server 接受來自用戶端伺服器和應用程式的 LDAP 要求，然後轉送至目標 LDAP 目錄伺服器來驗證主要認證。 如果 LDAP 目錄認為主要認證有效，Azure Multi-Factor Authentication 會執行第二步身分識別驗證，然後將回應傳回給 LDAP 用戶端。 只有在 LDAP 伺服器驗證和第二步驗證皆成功時，整個驗證才會成功。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
-> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
@@ -38,7 +38,7 @@ ms.locfileid: "91966758"
 ### <a name="add-an-ldap-client"></a>新增 LDAP 用戶端
 
 1. 在 Azure Multi-Factor Authentication Server 中，選取左功能表中的 [LDAP 驗證] 圖示。
-2. 核取 [啟用 LDAP 驗證]**** 核取方塊。
+2. 核取 [啟用 LDAP 驗證] 核取方塊。
 
    ![MFA Server 中的 LDAP 驗證](./media/howto-mfaserver-dir-ldap/ldap2.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "91966758"
 4. 如果您打算使用從用戶端到 Azure Multi-Factor Authentication Server 的 LDAPS，TLS/SSL 憑證必須安裝在與 MFA Server 相同的伺服器上。 按一下 [SSL (TLS) 憑證] 方塊旁的 **[流覽** ]，然後選取要用於安全連線的憑證。
 5. 按一下 [新增] 。
 6. 在 [新增 LDAP 用戶端] 對話方塊中，輸入要向「伺服器」驗證的應用裝置、伺服器或應用程式的 IP 位址，以及應用程式名稱 (選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
-7. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]**** 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。 如需此功能的其他資訊，請參閱 MFA 伺服器說明檔。
+7. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對] 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。 如需此功能的其他資訊，請參閱 MFA 伺服器說明檔。
 
 重複上述步驟來新增其他 LDAP 用戶端。
 
@@ -57,24 +57,24 @@ ms.locfileid: "91966758"
 > [!NOTE]
 > 目錄整合不保證會使用 Active Directory Domain Services 以外的目錄。
 
-1. 若要設定 LDAP 目錄連線，請按一下 [目錄整合]**** 圖示。
-2. 在 [設定] 索引標籤上，選取 [使用特定 LDAP 設定]**** 選項按鈕。
+1. 若要設定 LDAP 目錄連線，請按一下 [目錄整合] 圖示。
+2. 在 [設定] 索引標籤上，選取 [使用特定 LDAP 設定] 選項按鈕。
 3. 選取 [**編輯**]
 4. 在 [編輯 LDAP 設定] 對話方塊的欄位中，填入連接到 AD 目錄所需的資訊。 欄位說明包含在 Azure Multi-Factor Authentication Server 說明檔中。
 
     ![目錄整合 LDAP 設定](./media/howto-mfaserver-dir-ldap/ldap.png)
 
-5. 按一下 [測試]**** 按鈕來測試 LDAP 連接。
-6. 如果 LDAP 連接測試成功，請按一下 [確定]**** 按鈕。
-7. 按一下 [ **篩選** ] 索引標籤。伺服器已預先設定為從 Active Directory 載入容器、安全性群組和使用者。 如果繫結至不同 LDAP 目錄，您可能需要編輯顯示的篩選。 如需篩選的詳細資訊，請按一下 [說明]**** 連結。
+5. 按一下 [測試] 按鈕來測試 LDAP 連接。
+6. 如果 LDAP 連接測試成功，請按一下 [確定] 按鈕。
+7. 按一下 [ **篩選** ] 索引標籤。伺服器已預先設定為從 Active Directory 載入容器、安全性群組和使用者。 如果繫結至不同 LDAP 目錄，您可能需要編輯顯示的篩選。 如需篩選的詳細資訊，請按一下 [說明] 連結。
 8. 按一下 [ **屬性** ] 索引標籤。伺服器已預先設定為對應 Active Directory 的屬性。
-9. 如果要繫結至不同 LDAP 目錄，或要變更預先設定的屬性對應，請按一下 [編輯...]****
-10. 在 [編輯屬性] 對話方塊中，修改您的目錄的 LDAP 屬性對應。 您可以輸入屬性名稱，或按一下每個欄位旁邊的 [...]**** 按鈕來選取。 如需屬性的詳細資訊，請按一下 [說明]**** 連結。
+9. 如果要繫結至不同 LDAP 目錄，或要變更預先設定的屬性對應，請按一下 [編輯...]
+10. 在 [編輯屬性] 對話方塊中，修改您的目錄的 LDAP 屬性對應。 您可以輸入屬性名稱，或按一下每個欄位旁邊的 [...] 按鈕來選取。 如需屬性的詳細資訊，請按一下 [說明] 連結。
 11. 按一下 [確定] 按鈕。
-12. 按一下 [公司設定]**** 圖示，然後選取 [使用者名稱解析]**** 索引標籤。
-13. 如果要從加入網域的伺服器連線到 Active Directory，請將 [使用 Windows 安全性識別碼 (SID) 來比對使用者名稱]**** 選項按鈕保持選取狀態。 否則，請選取 [使用 LDAP 唯一識別碼屬性來比對使用者名稱]**** 選項按鈕。
+12. 按一下 [公司設定] 圖示，然後選取 [使用者名稱解析] 索引標籤。
+13. 如果要從加入網域的伺服器連線到 Active Directory，請將 [使用 Windows 安全性識別碼 (SID) 來比對使用者名稱] 選項按鈕保持選取狀態。 否則，請選取 [使用 LDAP 唯一識別碼屬性來比對使用者名稱] 選項按鈕。
 
-已選取 [使用 LDAP 唯一識別碼屬性來比對使用者名稱]**** 選項按鈕時，Azure Multi-factor Authentication Server 會嘗試將每個使用者名稱解析為 LDAP 目錄中的唯一識別碼。 系統會在 [目錄整合-> 屬性] 索引標籤中定義的使用者名稱屬性上執行 LDAP 搜尋。當使用者進行驗證時，使用者名稱會解析為 LDAP 目錄中的唯一識別碼。 唯一識別碼可用來比對 Azure Multi-Factor Authentication 資料檔中的使用者。 這可進行不區分大小寫的比較，且允許完整或簡短的使用者名稱格式。
+已選取 [使用 LDAP 唯一識別碼屬性來比對使用者名稱] 選項按鈕時，Azure Multi-factor Authentication Server 會嘗試將每個使用者名稱解析為 LDAP 目錄中的唯一識別碼。 系統會在 [目錄整合-> 屬性] 索引標籤中定義的使用者名稱屬性上執行 LDAP 搜尋。當使用者進行驗證時，使用者名稱會解析為 LDAP 目錄中的唯一識別碼。 唯一識別碼可用來比對 Azure Multi-Factor Authentication 資料檔中的使用者。 這可進行不區分大小寫的比較，且允許完整或簡短的使用者名稱格式。
 
 在完成這些步驟後，MFA Server 會在設定的連接埠上接聽來自所設定用戶端的 LDAP 存取要求，並且會作為 Proxy 將這些要求交由 LDAP 目錄進行驗證。
 

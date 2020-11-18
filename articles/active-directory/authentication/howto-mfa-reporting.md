@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication 的登入事件詳細資料 - Azure Active Directory
-description: 了解如何檢視 Azure Multi-Factor Authentication 事件的登入活動和狀態訊息。
+title: Azure AD Multi-Factor Authentication 的登入事件詳細資料-Azure Active Directory
+description: 瞭解如何查看 Azure AD Multi-Factor Authentication 事件和狀態訊息的登入活動。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 676b8b6fbb56536ec3a49100f5de1419ac417bb6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6a103f1f518a838e0746d363ee613dd1625b0bd4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964140"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838973"
 ---
-# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>使用登入報告來檢閱 Azure Multi-Factor Authentication 事件
+# <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>使用登入報告來查看 Azure AD Multi-Factor Authentication 事件
 
-若要檢閱並了解 Azure Multi-Factor Authentication 事件，您可使用 Azure Active Directory (Azure AD) 登入報告。 當系統提示使用者進行多重要素驗證時，以及如果有任何條件式存取原則正在使用，則此報告可顯示事件的驗證詳細資料。 如需登入報告的詳細資訊，請參閱 [Azure AD 中的登入活動報告概觀](../reports-monitoring/concept-sign-ins.md)。
+若要查看並瞭解 Azure AD Multi-Factor Authentication 事件，您可以使用 Azure Active Directory (Azure AD) 登入報告。 當系統提示使用者進行多重要素驗證時，以及如果有任何條件式存取原則正在使用，則此報告可顯示事件的驗證詳細資料。 如需登入報告的詳細資訊，請參閱 [Azure AD 中的登入活動報告概觀](../reports-monitoring/concept-sign-ins.md)。
 
 本文說明如何在 Azure 入口網站中檢視 Azure AD 登入報告，然後進行 MSOnline V1 PowerShell 模組。
 
@@ -121,34 +121,34 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 | 通話結果 | 描述 | 廣泛的描述 |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | 已輸入 PIN | 使用者已輸入 PIN。  如果驗證成功，這表示使用者已輸入正確的 PIN。  如果驗證遭到拒絕，這表示使用者輸入不正確的 PIN，或使用者未設定為標準模式。 |
+| SUCCESS_WITH_PIN | 已輸入 PIN | 使用者已輸入 PIN。   如果驗證成功，這表示使用者已輸入正確的 PIN。   如果驗證遭到拒絕，這表示使用者輸入不正確的 PIN，或使用者未設定為標準模式。 |
 | SUCCESS_NO_PIN | 只輸入 # | 如果使用者設定為 PIN 模式且驗證遭到拒絕，這表示使用者未輸入其 PIN，只輸入 #。  如果使用者設定為標準模式且驗證成功，這表示使用者只輸入 #，而在標準模式下這是正確的動作。 |
-| SUCCESS_WITH_PIN_BUT_TIMEOUT | 輸入後未按 # | 使用者未傳送任何 DTMF 數字，因為並未輸入 #。  除非輸入 # 表示已完成輸入，否則不會傳送其他數字。 |
-|SUCCESS_NO_PIN_BUT_TIMEOUT | 無電話輸入 - 已逾時 | 已接聽電話，但沒有回應。  這通常表示電話已轉到語音信箱。 |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | 輸入後未按 # | 使用者未傳送任何 DTMF 數字，因為並未輸入 #。   除非輸入 # 表示已完成輸入，否則不會傳送其他數字。 |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | 無電話輸入 - 已逾時 | 已接聽電話，但沒有回應。   這通常表示電話已轉到語音信箱。 |
 | SUCCESS_PIN_EXPIRED | PIN 已到期且未變更 | 使用者的 PIN 已到期且使用者已收到變更提示，但 PIN 變更未順利完成。 |
 | SUCCESS_USED_CACHE | 已使用快取 | 無需進行 Multi-Factor Authentication 通話即驗證成功，因為先前針對所設定快取時間範圍內發生的相同使用者名稱驗證已成功。 |
-| SUCCESS_BYPASSED_AUTH | 許可的驗證 | 使用針對使用者起始的單次許可驗證已成功。  如需許可的詳細資料，請參閱＜許可的使用者歷程記錄報告＞。 |
+| SUCCESS_BYPASSED_AUTH | 許可的驗證 | 使用針對使用者起始的單次許可驗證已成功。  如需許可的詳細資訊，請參閱許可的使用者歷程記錄報告。 |
 | SUCCESS_USED_IP_BASED_CACHE | 使用了以 IP 為主的快取 | 無需進行 Multi-Factor Authentication 通話即驗證成功，因為先前針對所設定快取時間範圍內發生的相同使用者名稱、驗證類型、驗證名稱和 IP 驗證已成功。 |
 | SUCCESS_USED_APP_BASED_CACHE | 使用了以應用程式為基礎的快取 | 無需進行 Multi-Factor Authentication 通話即驗證成功，因為先前針對所設定快取時間範圍內的相同使用者名稱、驗證類型和驗證名稱驗證已成功。 |
-| SUCCESS_INVALID_INPUT | 電話輸入無效 | 電話傳來的回應無效。  回應可能來自傳真機或數據機，或使用者輸入的 PIN 可能包含 *。 |
-| SUCCESS_USER_BLOCKED | 使用者遭到封鎖 | 已封鎖使用者的電話號碼。  封鎖的號碼可由使用者在驗證通話期間加以起始，或由系統管理員使用 Azure 入口網站加以起始。 <br> 注意：  封鎖的號碼也是詐騙警示副產品。 |
+| SUCCESS_INVALID_INPUT | 電話輸入無效 | 電話傳來的回應無效。   回應可能來自傳真機或數據機，或使用者輸入的 PIN 可能包含 *。 |
+| SUCCESS_USER_BLOCKED | 使用者遭到封鎖 | 已封鎖使用者的電話號碼。   封鎖的號碼可由使用者在驗證通話期間加以起始，或由系統管理員使用 Azure 入口網站加以起始。 <br> 注意：  封鎖的號碼也是詐騙警示副產品。 |
 | SUCCESS_SMS_AUTHENTICATED | 已驗證簡訊 | 針對雙向簡訊，使用者已使用其一次性密碼 (OTP) 或 OTP + PIN 來正確回覆。 |
-| SUCCESS_SMS_SENT | 已傳送簡訊 | 針對簡訊，已成功傳送包含一次性密碼 (OTP) 的簡訊。  使用者將在應用程式中輸入 OTP 或 OTP + PIN，以完成驗證。 |
+| SUCCESS_SMS_SENT | 已傳送簡訊 | 針對簡訊，已成功傳送包含一次性密碼 (OTP) 的簡訊。   使用者將在應用程式中輸入 OTP 或 OTP + PIN，以完成驗證。 |
 | SUCCESS_PHONE_APP_AUTHENTICATED | 行動裝置應用程式已驗證 | 使用者已透過行動裝置應用程式驗證成功。 |
 | SUCCESS_OATH_CODE_PENDING | OATH 代碼擱置中 | 使用者已收到提供 OATH 代碼的提示但並未回應。 |
 | SUCCESS_OATH_CODE_VERIFIED | 已驗證 OATH 代碼 | 使用者已在收到提示時輸入有效的 OATH 代碼。 |
 | SUCCESS_FALLBACK_OATH_CODE_VERIFIED | 已驗證遞補 OATH 代碼 | 使用者以其主要 Multi-Factor Authentication 方法來驗證遭到拒絕，且隨後提供遞補用的有效 OATH 代碼。 |
 | SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | 已回答遞補安全性問題 | 使用者以其主要 Multi-Factor Authentication 方法來驗證遭到拒絕，且隨後正確回答遞補用的安全性問題。 |
-| FAILED_PHONE_BUSY | 驗證已在進行中 | Multi-Factor Authentication 已在為此使用者處理驗證。  這種情況通常是因為 RADIUS 用戶端在相同登入期間傳送多個驗證要求所造成。 |
-| CONFIG_ISSUE | 無法接通電話 | 已嘗試通話，但無法撥通或沒有接聽。  這包括忙線訊號、快速忙線訊號 (斷線)、三音調 (空號)、鈴響時逾時等。 |
-| FAILED_INVALID_PHONENUMBER | 電話號碼格式無效 | 電話號碼中有無效的格式。  電話號碼必須是數字且必須是 10 位數，如需國碼 (地區碼)，請加 1 (美國與加拿大)。 |
+| FAILED_PHONE_BUSY | 驗證已在進行中 | Multi-Factor Authentication 已在為此使用者處理驗證。   這種情況通常是因為 RADIUS 用戶端在相同登入期間傳送多個驗證要求所造成。 |
+| CONFIG_ISSUE | 無法接通電話 | 已嘗試通話，但無法撥通或沒有接聽。   這包括忙線訊號、快速忙線訊號 (斷線)、三音調 (空號)、鈴響時逾時等。 |
+| FAILED_INVALID_PHONENUMBER | 電話號碼格式無效 | 電話號碼中有無效的格式。   電話號碼必須是數字且必須是 10 位數，如需國碼 (地區碼)，請加 1 (美國與加拿大)。 |
 | FAILED_USER_HUNGUP_ON_US | 使用者已掛斷電話 | 使用者已接聽電話，但隨後未按下任何按鍵即掛斷。 |
-| FAILED_INVALID_EXTENSION | 分機號碼無效 | 分機號碼包含無效的字元。  允許的字元僅限數字、逗號、* 及 #。  前面還可以加上 @。 |
+| FAILED_INVALID_EXTENSION | 分機號碼無效 | 分機號碼包含無效的字元。   允許的字元僅限數字、逗號、* 及 #。   前面還可以加上 @。 |
 | FAILED_FRAUD_CODE_ENTERED | 已輸入詐騙代碼 | 在導致系統拒絕驗證並封鎖電話號碼的通話期間，使用者已選擇回報詐騙。| 
 | FAILED_SERVER_ERROR | 無法撥打電話 | Multi-Factor Authentication 服務無法撥打電話。 |
-| FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送簡訊。  驗證遭到拒絕。 |
-| FAILED_SMS_OTP_INCORRECT | 簡訊 OTP 不正確 | 使用者從收到的簡訊所輸入一次性密碼 (OTP) 不正確。  驗證遭到拒絕。 |
-| FAILED_SMS_OTP_PIN_INCORRECT | 簡訊 OTP + PIN 不正確 | 使用者輸入的一次性密碼 (OTP) 及/或使用者 PIN 不正確。  驗證遭到拒絕。 |
+| FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送簡訊。   驗證遭到拒絕。 |
+| FAILED_SMS_OTP_INCORRECT | 簡訊 OTP 不正確 | 使用者從收到的簡訊所輸入一次性密碼 (OTP) 不正確。   驗證遭到拒絕。 |
+| FAILED_SMS_OTP_PIN_INCORRECT | 簡訊 OTP + PIN 不正確 | 使用者輸入的一次性密碼 (OTP) 及/或使用者 PIN 不正確。   驗證遭到拒絕。 |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | 已超過簡訊 OTP 嘗試次數上限 | 使用者已超過一次性密碼 (OTP) 嘗試次數上限。 |
 | FAILED_PHONE_APP_DENIED | 拒絕行動裝置應用程式 | 使用者已按下 [拒絕] 按鈕，在行動裝置應用程式中拒絕驗證。 |
 | FAILED_PHONE_APP_INVALID_PIN | 行動裝置應用程式 PIN 無效 | 在行動裝置應用程式中進行驗證時，使用者輸入無效的 PIN。 |

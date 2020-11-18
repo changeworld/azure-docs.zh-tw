@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049089"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837533"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>條件式存取：保護安全性資訊註冊
 
-在條件式存取原則中，您現在可以透過使用者動作來對使用者註冊 Azure Multi-Factor Authentication 和自助式密碼重設的時間及方式進行保護。 此預覽功能適用於已啟用[合併註冊預覽](../authentication/concept-registration-mfa-sspr-combined.md)的組織。 當組織想要使用「信任的網路位置」等條件來限制註冊 Azure Multi-Factor Authentication 和自助式密碼重設 (SSPR) 的存取權時，即可啟用此功能。 如需可用條件的詳細資訊，請參閱[條件式存取：條件](concept-conditional-access-conditions.md)。
+使用條件式存取原則中的使用者動作，即可保護使用者註冊 Azure AD Multi-Factor Authentication 和自助式密碼重設的時間和方式。 此預覽功能適用於已啟用[合併註冊預覽](../authentication/concept-registration-mfa-sspr-combined.md)的組織。 如果組織想要使用受信任網路位置之類的條件來限制註冊 Azure AD Multi-Factor Authentication 和自助式密碼重設 (SSPR) ，則可能會啟用這項功能。 如需可用條件的詳細資訊，請參閱[條件式存取：條件](concept-conditional-access-conditions.md)。
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>建立原則來要求從信任位置註冊
 
 下列原則會套用到所有選取的使用者，其嘗試使用合併的註冊體驗進行註冊，如果他們不是從標示為信任網路的位置進行連線，則會封鎖他們的存取權。
 
-1. 在 **Azure 入口網站**中，瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
+1. 在 **Azure 入口網站** 中，瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 在 [名稱] 中，輸入此原則的名稱。 例如，**受信任網路上的合併安全性資訊註冊**。
 1. 在 [指派] 底下，選取 [使用者和群組]，然後選取您要對其套用此原則的使用者和群組。

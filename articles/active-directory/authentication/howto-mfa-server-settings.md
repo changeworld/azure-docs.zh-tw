@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70777c80cdee99f13050d7cd342f22d59da13d73
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3da7c3afa6b414e3d7df3bb58766d1ab7657dbc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964104"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838956"
 ---
 # <a name="configure-mfa-server-settings"></a>設定 MFA Server 設定
 
 本文可協助您管理 Azure 入口網站中的 Azure MFA 伺服器設定。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 想要從使用者要求多重要素驗證的新客戶，應該使用雲端式 Azure AD Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
 
 可用的 MFA Server 設定如下：
 
-| 特徵 | 描述 |
+| 功能 | 描述 |
 | ------- | ----------- |
 | 伺服器設定 | 下載 MFA 伺服器並產生啟用認證，以初始化您的環境 |
 | [一次性略過](#one-time-bypass) | 允許使用者在一段有限時間未執行多重要素驗證的情況下進行驗證。 |
@@ -51,7 +51,7 @@ ms.locfileid: "91964104"
 
 ## <a name="caching-rules"></a>快取規則
 
-您可以使用_快取_功能，來設定使用者已驗證之後，允許驗證嘗試的時段。 使用者在指定期間內的後續驗證嘗試會成功自動。
+您可以使用 _快取_ 功能，來設定使用者已驗證之後，允許驗證嘗試的時段。 使用者在指定期間內的後續驗證嘗試會成功自動。
 
 快取主要是在內部部署系統 (例如 VPN) 於第一個要求仍在進行中的同時，傳送多個驗證要求時使用。 此功能可讓後續要求在使用者成功完成進行中的第一次驗證後自動成功。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91964104"
 
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [MFA] > [快取規則]。
 1. 選取 [新增]。
-1. 從下拉式清單中選取 [快取類型]。 輸入**快取秒數**的最大數目。
+1. 從下拉式清單中選取 [快取類型]。 輸入 **快取秒數** 的最大數目。
 1. 如有必要，選取驗證類型並指定應用程式。
 1. 選取 [新增]。
 

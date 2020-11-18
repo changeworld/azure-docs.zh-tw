@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266573"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837578"
 ---
 # <a name="custom-controls-preview"></a>自訂控制項 (預覽)
 
@@ -35,7 +35,7 @@ ms.locfileid: "89266573"
 
 ![條件式存取中的自訂控制項介面](./media/controls/custom-controls-conditional-access.png)
 
-按一下 [新增自訂控制項]**** 隨即會開啟刀鋒視窗，裡面有文字方塊可供輸入控制項的 JSON 資料。  
+按一下 [新增自訂控制項] 隨即會開啟刀鋒視窗，裡面有文字方塊可供輸入控制項的 JSON 資料。  
 
 ![新增自訂控制項](./media/controls/new-custom-controls-conditional-access.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "89266573"
 
 1. 移至 [自訂控制項] 清單
 1. 按一下 [...]  
-1. 選取 [刪除]  。
+1. 選取 [刪除]。
 
 ## <a name="editing-custom-controls"></a>編輯自訂控制項
 
@@ -53,7 +53,7 @@ ms.locfileid: "89266573"
 
 ## <a name="known-limitations"></a>已知限制
 
-自訂控制項不能搭配需要 Azure Multi-Factor Authentication 的身分識別保護、Azure AD 自助式密碼重設 (SSPR) 、滿足多重要素驗證宣告需求、在 Intune 裝置註冊的過程中提升許可權身分識別管理員 (PIM) 中的角色，或將裝置加入 Azure AD 時使用。
+自訂控制項無法搭配 Identity Protection 的自動化使用，需要 Azure AD Multi-Factor Authentication、Azure AD 自助式密碼重設 (SSPR) 、滿足多重要素驗證宣告需求、在 Intune 裝置註冊的過程中提升許可權身分識別管理員 (PIM) 中的角色，或將裝置加入至 Azure AD。
 
 ## <a name="next-steps"></a>後續步驟
 

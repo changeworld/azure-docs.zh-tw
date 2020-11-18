@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ea9117d3cce2eec4c143e9fb3df76710a93a664
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: eca3b8f1cd8f27c193e8f8235887e21230f60611
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966962"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838615"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>開始使用 Azure Multi-Factor Authentication Server
 
@@ -27,9 +27,9 @@ ms.locfileid: "91966962"
 本頁面探討新伺服器安裝，以及透過內部部署 Active Directory 予以設定。 如果您已經安裝 MFA 伺服器，且想要升級，請參閱[升級至最新的 Azure Multi-factor Authentication Server](howto-mfaserver-deploy-upgrade.md)。 如果您想要尋找僅是安裝 Web 服務的資訊，請參閱[部署 Azure Multi-Factor Authentication Server 行動應用程式 Web 服務](howto-mfaserver-deploy-mobileapp.md)。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
-> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
@@ -55,7 +55,7 @@ ms.locfileid: "91966962"
 
 請確定您用於 Azure Multi-Factor Authentication Server 的伺服器符合下列需求：
 
-| Azure Multi-Factor Authentication Server 需求 | 描述 |
+| Azure Multi-Factor Authentication Server 需求 | 說明 |
 |:--- |:--- |
 | 硬體 |<li>200 MB 的硬碟空間</li><li>具有 x32 或 x64 功能的處理器</li><li>1 GB 或更高的 RAM</li> |
 | 軟體 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>僅限 [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) 的 Windows Server 2008/R2 () </li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本 (僅限 [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates)) </li><li>Microsoft .NET 4.0 Framework</li><li>如果安裝使用者入口網站或 Web 服務 SDK，則為 IIS 7.0 或更高版本</li> |
@@ -112,16 +112,16 @@ ms.locfileid: "91966962"
 請遵循下列步驟，以從 Azure 入口網站下載 Azure Multi-Factor Authentication Server：
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 新客戶如果想要從使用者要求多重要素驗證 (MFA) ，應該使用雲端式 Azure Multi-Factor Authentication。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 新客戶如果想要要求多重要素驗證 (MFA) 使用者的使用者應該使用雲端式 Azure AD Multi-Factor Authentication。
 >
-> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure AD Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。 只有當您是現有的 MFA Server 客戶時，下列步驟才適用。
 
 1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2. 搜尋並選取 [Azure Active Directory]  。 選取 [**安全性**  >  **MFA**]。
 3. 在 [ **管理員 MFA Server**] 底下，選取 [ **伺服器設定**]。
-4. 選取 [下載]**** 並遵循下載頁面上的指示，以儲存安裝程式。 
+4. 選取 [下載] 並遵循下載頁面上的指示，以儲存安裝程式。 
 
    ![從 Azure 入口網站下載 MFA Server](./media/howto-mfaserver-deploy/downloadportal.png)
 
@@ -132,13 +132,13 @@ ms.locfileid: "91966962"
 既然您已下載伺服器，現在可以進行安裝和設定。 請確定要安裝的伺服器符合規劃區段中所列的需求。
 
 1. 按兩下可執行檔。
-2. 在 [選取安裝資料夾] 畫面中，請確認資料夾正確，然後按一下 [下一步]****。
-3. 當安裝完成時，請按一下 [完成]****。 組態精靈就會啟動。
-4. 在組態精靈歡迎畫面上，核取 [略過使用驗證設定精靈]****，然後按 [下一步]****。 精靈關閉然後伺服器啟動。
+2. 在 [選取安裝資料夾] 畫面中，請確認資料夾正確，然後按一下 [下一步]。
+3. 當安裝完成時，請按一下 [完成]。 組態精靈就會啟動。
+4. 在組態精靈歡迎畫面上，核取 [略過使用驗證設定精靈]，然後按 [下一步]。 精靈關閉然後伺服器啟動。
 
    ![略過使用驗證設定 Wizard](./media/howto-mfaserver-deploy/skip2.png)
 
-5. 回到您下載伺服器的頁面，按一下 [產生啟用認證]**** 按鈕。 將此資訊複製到 Azure MFA Server 提供的方塊中，然後按一下 [ **啟用**]。
+5. 回到您下載伺服器的頁面，按一下 [產生啟用認證] 按鈕。 將此資訊複製到 Azure MFA Server 提供的方塊中，然後按一下 [ **啟用**]。
 
 > [!NOTE]
 > 只有全域管理員可以在 Azure 入口網站中產生啟用認證。
@@ -153,7 +153,7 @@ ms.locfileid: "91966962"
 
 ### <a name="configure-email-and-email-templates"></a>設定電子郵件和電子郵件範本
 
-按一下左邊的電子郵件圖示，即可設定用來傳送這些電子郵件的設定。 此頁面可讓您輸入郵件伺服器的 SMTP 資訊，並透過核取 [傳送電子郵件給使用者]**** 核取方塊來傳送電子郵件。
+按一下左邊的電子郵件圖示，即可設定用來傳送這些電子郵件的設定。 此頁面可讓您輸入郵件伺服器的 SMTP 資訊，並透過核取 [傳送電子郵件給使用者] 核取方塊來傳送電子郵件。
 
 ![MFA Server 電子郵件組態](./media/howto-mfaserver-deploy/email1.png)
 
@@ -170,17 +170,17 @@ ms.locfileid: "91966962"
 1. 在 Azure MFA Server 的左側選取 [ **使用者**]。
 2. 在底部選取 [ **從 Active Directory 匯入**]。
 3. 現在您可以搜尋個別使用者，或在 AD 中搜尋含使用者的 OU。 在此情況下，我們會指定使用者的 OU。
-4. 反白顯示右側的所有使用者，然後按一下 [匯入]****。 您應該會看到指出成功完成作業的快顯視窗。 關閉匯入視窗。
+4. 反白顯示右側的所有使用者，然後按一下 [匯入]。 您應該會看到指出成功完成作業的快顯視窗。 關閉匯入視窗。
 
    ![Active Directory 的 MFA Server 使用者匯入](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>自動與 Active Directory 同步處理
 
-1. 在 Azure MFA Server 的左側選取 [目錄整合]****。
-2. 瀏覽至 [同步處理]**** 索引標籤。
-3. 在底部選擇 [新增]****
-4. 在出現的 [新增同步處理項目]**** 方塊中選擇 [網域]、[OU] **或**安全性群組、[設定]、[預設方法]，以及此同步處理工作的 [預設語言]，然後按一下 [新增]****。
-5. 核取標示為 [啟用與 Active Directory 同步處理]**** 的方塊並選擇介於一分鐘與 24 小時之間的 [同步處理間隔]****。
+1. 在 Azure MFA Server 的左側選取 [目錄整合]。
+2. 瀏覽至 [同步處理] 索引標籤。
+3. 在底部選擇 [新增]
+4. 在出現的 [新增同步處理項目] 方塊中選擇 [網域]、[OU] **或** 安全性群組、[設定]、[預設方法]，以及此同步處理工作的 [預設語言]，然後按一下 [新增]。
+5. 核取標示為 [啟用與 Active Directory 同步處理] 的方塊並選擇介於一分鐘與 24 小時之間的 [同步處理間隔]。
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure Multi-Factor Authentication Server 如何處理使用者資料？
 

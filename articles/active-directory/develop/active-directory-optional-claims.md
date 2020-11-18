@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9090c778771436a4fcf60139f3ee59812051057a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 340f451080f43fab213a3afc69f2adfae83514d7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145611"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837323"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -76,7 +76,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **表 3：僅限 v2.0 的選擇性宣告**
 
-| JWT 宣告     | 名稱                            | 描述                                | 注意 |
+| JWT 宣告     | 名稱                            | 說明                                | 注意 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 位址                      | 用戶端的登入來源 IP 位址。   |       |
 | `onprem_sid`  | 內部部署安全性識別碼 |                                             |       |
@@ -89,7 +89,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 ### <a name="additional-properties-of-optional-claims"></a>選擇性宣告的額外屬性
 
-有些選擇性宣告可經由設定來變更傳回宣告的方式。 這些額外的屬性大多數用來協助移轉對資料有不同要求的內部部署應用程式 (例如 `include_externally_authenticated_upn_without_hash` 可協助無法處理 UPN 中井號 (`#`) 的用戶端)
+有些選擇性宣告可經由設定來變更傳回宣告的方式。 這些額外的屬性大多用來協助遷移具有不同資料期望的內部部署應用程式。 例如， `include_externally_authenticated_upn_without_hash` 協助用戶端無法處理 UPN 中 () 的雜湊標記 `#` 。
 
 **表 4：用來設定選擇性宣告的值**
 
@@ -115,7 +115,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 }
 ```
 
-這個 OptionalClaims 物件會導致傳回給用戶端的識別碼權杖包含 upn 宣告，還附上額外的主租用戶和資源租用戶資訊。 只有當使用者是租用戶中的來賓時 (使用不同的 IDP 進行驗證)，才會變更權杖中的 `upn` 宣告。
+這個 OptionalClaims 物件會讓傳回給用戶端的識別碼權杖包含 `upn` 具有額外 home 租使用者和資源租使用者資訊的宣告。 只有當使用者是租用戶中的來賓時 (使用不同的 IDP 進行驗證)，才會變更權杖中的 `upn` 宣告。
 
 ## <a name="configuring-optional-claims"></a>設定選擇性宣告
 
@@ -178,7 +178,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 ### <a name="optionalclaims-type"></a>OptionalClaims 類型
 
-宣告應用程式所要求的選擇性宣告。 應用程式可以針對它可從安全性權杖服務接收的三種權杖 (識別碼權杖、存取權杖、SAML 2 權杖)，設定要在這每一種權杖中傳回的選擇性宣告。 應用程式可以設定一組要在每個權杖類型中傳回的不同選擇性宣告。 「應用程式」實體的 OptionalClaims 屬性是一個 OptionalClaims 物件。
+宣告應用程式所要求的選擇性宣告。 應用程式可以設定要在三種權杖中傳回的選擇性宣告 (識別碼權杖、存取權杖、SAML 2 權杖) 可從安全性權杖服務接收。 應用程式可以設定一組要在每個權杖類型中傳回的不同選擇性宣告。 「應用程式」實體的 OptionalClaims 屬性是一個 OptionalClaims 物件。
 
 **表 5：OptionalClaims 類型屬性**
 
@@ -190,7 +190,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 ### <a name="optionalclaim-type"></a>OptionalClaim 類型
 
-包含與應用程式或服務主體關聯的選擇性宣告。 [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) 類型的 idToken、accessToken 及 saml2Token 屬性是 OptionalClaim 的集合。
+包含與應用程式或服務主體關聯的選擇性宣告。 [OptionalClaims](/graph/api/resources/optionalclaims) 類型的 idToken、accessToken 及 saml2Token 屬性是 OptionalClaim 的集合。
 如果特定宣告可支援，您也可以使用 AdditionalProperties 欄位來修改 OptionalClaim 的行為。
 
 **表 6：OptionalClaim 類型屬性**
@@ -204,7 +204,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 ## <a name="configuring-directory-extension-optional-claims"></a>設定目錄擴充的選擇性宣告
 
-除了標準的選擇性宣告集之外，您也可以設定權杖來包含擴充。 如需詳細資訊，請參閱 [Microsoft Graph extensionProperty 文件](/graph/api/resources/extensionproperty?view=graph-rest-1.0)。
+除了標準的選擇性宣告集之外，您也可以設定權杖來包含擴充。 如需詳細資訊，請參閱 [Microsoft Graph extensionProperty 文件](/graph/api/resources/extensionproperty)。
 
 選擇性宣告不支援結構描述和開啟式擴充，僅支援 AAD-Graph 樣式的目錄擴充。 此功能可用來附加應用程式可使用的額外使用者資訊 – 例如，使用者已設定的額外識別碼或重要設定選項。 如需範例，請參閱本頁底部。
 
@@ -231,24 +231,24 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **透過 UI 設定群組選擇性宣告：**
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶
-1. 從左側功能表中，選取 [Azure Active Directory]
-1. 在 [管理] 區段下，選取 [應用程式註冊]
-1. 從清單中，選取您要設定選擇性宣告的應用程式
-1. 在 [管理] 區段下，選取 [權杖設定]
-1. 選取 [新增群組宣告]
-1. 選取群組類型，以傳回 ( **安全性群組** 或 **目錄角色** 、 **所有群組** ，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式** 選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup** 、 **DirectoryRole** 和 **DistributionList** ，而不是 **指派給應用程式的群組** 。 
-1. 選擇性：選取特定的權杖類型屬性，以將群組宣告值修改為包含內部部署群組屬性，或將宣告類型變更為角色
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
+1. 從左側功能表中，選取 [Azure Active Directory]。
+1. 在 [管理] 區段下，選取 [應用程式註冊]。
+1. 從清單中，選取您要設定選擇性宣告的應用程式。
+1. 在 [管理] 區段下，選取 [權杖設定]。
+1. 選取 [ **新增群組** 宣告]。
+1. 選取群組類型，以傳回 (**安全性群組** 或 **目錄角色**、 **所有群組**，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式** 選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup**、 **DirectoryRole** 和 **DistributionList**，而不是 **指派給應用程式的群組**。 
+1. 選擇性：選取特定的權杖類型屬性，以修改群組宣告值以包含內部部署群組屬性，或將宣告類型變更為角色。
 1. 選取 [儲存]。
 
 **透過應用程式資訊清單設定群組選擇性宣告：**
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶
-1. 從左側功能表中，選取 [Azure Active Directory]
-1. 從清單中，選取您要設定選擇性宣告的應用程式
-1. 在 [管理] 區段下，選取 [資訊清單]
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
+1. 從左側功能表中，選取 [Azure Active Directory]。
+1. 從清單中，選取您要設定選擇性宣告的應用程式。
+1. 在 [ **管理** ] 區段下，選取 [ **資訊清單**]。
 1. 使用資訊清單編輯器新增下列項目：
 
    有效值為：
@@ -268,14 +268,14 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 設定群組名稱設定的選擇性宣告。
 
-   如果希望權杖中的群組在選擇性宣告區段中包含內部部署 AD 群組屬性，請指定應該套用選擇性宣告的權杖類型、所要求選擇性宣告的名稱，以及想要的任何額外屬性。  可以列出多個權杖類型：
+   如果您想要權杖中的群組將內部部署 AD 群組屬性包含在選擇性的宣告區段中，請指定應套用選用宣告的權杖類型、所要求的選擇性宣告名稱，以及所需的任何其他屬性。  可以列出多個權杖類型：
 
    - idToken，代表 OIDC 識別碼權杖
    - accessToken，代表 OAuth 存取權杖
    - Saml2Token，代表 SAML 權杖。
 
    > [!NOTE]
-   > Saml2Token 類型適用於 SAML1.1 和 SAML2.0 格式的權杖
+   > Saml2Token 類型適用于 SAML 1.1 和 SAML 2.0 格式權杖。
 
    針對每個相關的權杖類型，將群組宣告修改為使用資訊清單中的 OptionalClaims 區段。 OptionalClaims 結構描述如下所示：
 
@@ -297,10 +297,10 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
    在 additionalProperties 中，只需要 "sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name" 其中一個。  如果出現多個，則會使用第一個，其他都忽略。
 
-   某些應用程式在角色宣告中需要使用者的群組資訊。  若要將宣告類型從群組宣告變更為角色宣告，請將 "emit_as_roles" 新增至額外屬性。  角色宣告中會發出群組值。
+   某些應用程式在角色宣告中需要使用者的群組資訊。  若要將宣告類型從群組宣告變更為角色宣告，請將 "emit_as_roles" 新增至其他屬性。  角色宣告中會發出群組值。
 
    > [!NOTE]
-   > 如果使用 "emit_as_roles"，則任何已設定指派給使用者的應用程式角色，將不會出現在角色宣告中。
+   > 如果使用「emit_as_roles」，則任何已指派給使用者的應用程式角色都不會出現在角色宣告中。
 
 **範例：**
 
@@ -363,20 +363,19 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 - 您可以使用 [權杖設定] UI (請參閱下列範例)
 - 您可以使用 [資訊清單] (請參閱下列範例)。 請先閱讀介紹資訊清單的[了解 Azure AD 應用程式資訊清單](./reference-app-manifest.md)文件。
-- 您也可以撰寫應用程式，以使用 [Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2f1.0&view=graph-rest-1.0) 來更新您的應用程式。 Microsoft Graph API 參考指南中的 [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) 類型，可協助您設定選擇性宣告。
+- 您也可以撰寫應用程式，以使用 [Microsoft Graph API](/graph/use-the-api) 來更新您的應用程式。 Microsoft Graph API 參考指南中的 [OptionalClaims](/graph/api/resources/optionalclaims) 類型，可協助您設定選擇性宣告。
 
 **範例︰**
 
 在下列範例中，您將使用 [權杖設定] UI 和 [資訊清單]，將選擇性宣告新增至應用程式的存取權杖、識別碼權杖和 SAML 權杖。 不同的選擇性宣告會新增至應用程式可接收的每一種權杖：
 
 - 識別碼權杖現在將會在完整格式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) 中包含同盟使用者的 UPN。
-- 其他用戶端為這個應用程式要求的存取權杖，現在將包含 auth_time 宣告
+- 其他用戶端為這個應用程式要求的存取權杖，現在將包含 auth_time 宣告。
 - SAML 權杖現在將會包含 skypeId 目錄結構描述延伸模組 (在此範例中，此應用程式的應用程式識別碼是 ab603c56068041afb2f6832e2a17e237)。 SAML 權杖會將 Skype 識別碼公開為 `extension_skypeId`。
 
 **UI 設定：**
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 
 1. 從左側功能表中，選取 [Azure Active Directory]。
