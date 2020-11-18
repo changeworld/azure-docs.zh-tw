@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 69f492ad73e60f8478772dc8b5b22bc19a5fb0e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 55360f2f11196d1f6794edec011c008b813288c1
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94341049"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625207"
 ---
 開始使用適用於 Python 的自訂視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用建立影像分類模型的程式碼範例。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -24,7 +24,7 @@ ms.locfileid: "94341049"
 * 發佈目前的反覆項目
 * 測試預測端點
 
-[參考文件](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision) | [套件 (PyPI)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision&languages=python)
+[參考文件](/python/api/overview/azure/cognitiveservices/customvision?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision) | [套件 (PyPI)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/) | [範例](/samples/browse/?languages=python&products=azure&term=vision&terms=vision)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -60,17 +60,17 @@ pip install azure-cognitiveservices-vision-customvision
 > [!IMPORTANT]
 > 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的自訂視覺資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 您必須同時取得定型和預測金鑰。
 >
-> 您可以在資源的 **概觀** 索引標籤上找到預測資源識別碼值，該識別碼列為 **訂用帳戶識別碼** 。
+> 您可以在資源的 **概觀** 索引標籤上找到預測資源識別碼值，該識別碼列為 **訂用帳戶識別碼**。
 >
-> 切記，完成時從程式碼中移除金鑰，且切勿公開發佈金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+> 切記，完成時從程式碼中移除金鑰，且切勿公開發佈金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
 ## <a name="object-model"></a>物件模型
 
 |名稱|描述|
 |---|---|
-|[CustomVisionTrainingClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) | 此類別會處理模型的建立、定型和發佈。 |
-|[CustomVisionPredictionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python)| 此類別會處理您的模型查詢，以進行影像分類預測。|
-|[ImagePrediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-python)| 此類別會定義單一影像上的單一物件預測。 其中包含物件識別碼和名稱的屬性、物件的周框方塊位置，以及信賴分數。|
+|[CustomVisionTrainingClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) | 此類別會處理模型的建立、定型和發佈。 |
+|[CustomVisionPredictionClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python)| 此類別會處理您的模型查詢，以進行影像分類預測。|
+|[ImagePrediction](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-python)| 此類別會定義單一影像上的單一物件預測。 其中包含物件識別碼和名稱的屬性、物件的周框方塊位置，以及信賴分數。|
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -86,7 +86,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-使用您的端點和金鑰將訓練具現化並預測用戶端。 使用您的金鑰建立 **ApiKeyServiceClientCredentials** 物件，並與您的端點搭配使用，以建立 [CustomVisionTrainingClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) 和 [CustomVisionPredictionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python) 物件。
+使用您的端點和金鑰將訓練具現化並預測用戶端。 使用您的金鑰建立 **ApiKeyServiceClientCredentials** 物件，並與您的端點搭配使用，以建立 [CustomVisionTrainingClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) 和 [CustomVisionPredictionClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python) 物件。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_auth)]
 
@@ -94,7 +94,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 
 
-當您建立專案時，請參閱 [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) 方法來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。  
+當您建立專案時，請參閱 [create_project](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) 方法來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。  
 
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_create)]
 
@@ -125,7 +125,7 @@ pip install azure-cognitiveservices-vision-customvision
 > [!TIP]
 > 使用選取的標記進行訓練
 >
-> 您可以選擇只在已套用的標記子集上進行訓練。 您可以在尚未套用足夠的特定標記，但其他套用的標記已足夠時執行此操作。 在 **[train_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** 呼叫中，將選擇性參數 *selected_tags* 設定為您要使用的標記識別碼字串清單。 此模型將訓練為僅辨識該清單上的標記。
+> 您可以選擇只在已套用的標記子集上進行訓練。 您可以在尚未套用足夠的特定標記，但其他套用的標記已足夠時執行此操作。 在 **[train_project](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** 呼叫中，將選擇性參數 *selected_tags* 設定為您要使用的標記識別碼字串清單。 此模型將訓練為僅辨識該清單上的標記。
 
 ## <a name="publish-the-current-iteration"></a>發佈目前的反覆項目
 
@@ -142,7 +142,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ## <a name="run-the-application"></a>執行應用程式
 
-執行 *CustomVisionQuickstart.py* 。
+執行 *CustomVisionQuickstart.py*。
 
 ```powershell
 python CustomVisionQuickstart.py
@@ -174,4 +174,4 @@ Done!
 
 * 什麼是自訂視覺服務？
 * 此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py)
-* [SDK 參考文件](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)
+* [SDK 參考文件](/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: fbe44602d4f586e47eada1b6043817e9d26c6793
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d5d47f097fa216d69b8ed59fdb057378724c2228
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85805416"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625471"
 ---
 Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同，您可以透過此快速入門，完成初次使用此 SDK 進行的影像搜尋。 這個簡單的 Python 應用程式會傳送影像搜尋查詢、剖析 JSON 回應，以及顯示第一個傳回影像的 URL。
 
@@ -77,12 +77,12 @@ else:
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Bing 影像搜尋單頁應用程式教學課程](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) (英文)
+> [Bing 影像搜尋單頁應用程式教學課程](../../tutorial-bing-image-search-single-page-app.md) (英文)
 
 ## <a name="see-also"></a>另請參閱
 
-* [什麼是 Bing 影像搜尋？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [什麼是 Bing 影像搜尋？](../../overview.md)  
 * [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure 認知服務 SDK 的 Python 範例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
-* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure 認知服務文件](../../../index.yml)
+* [Bing 影像搜尋 API 參考](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

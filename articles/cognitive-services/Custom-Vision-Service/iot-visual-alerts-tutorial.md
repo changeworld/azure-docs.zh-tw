@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833ec0f706786ebb86a54fb3c5b13d9c6e5c6062
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604286"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616224"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教學課程：搭配 IoT 裝置使用自訂視覺來回報視覺狀態。
 
@@ -41,7 +41,7 @@ ms.locfileid: "90604286"
 * 您也需要在 Azure 上[建立 IoT 中樞資源](https://ms.portal.azure.com/#create/Microsoft.IotHub)。
 * [Visual Studio 2015 或更新版本](https://www.visualstudio.com/downloads/)
 * (選擇性) 執行 Windows 10 IoT 核心版 17763 版或更高版本的 IoT 裝置。 您也可以直接從您的電腦執行應用程式。
-   * 針對 Raspberry Pi 2 和 3，您可以直接從 IoT 儀表板應用程式設定 Windows 10。 針對如 DrangonBoard 的其他裝置，您將必須使用 [eMMC 方法](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)來對它進行刷新。 如果您需要設定新裝置的協助，請參閱 Windows IoT 文件中的[設定您的裝置](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)。
+   * 針對 Raspberry Pi 2 和 3，您可以直接從 IoT 儀表板應用程式設定 Windows 10。 針對如 DrangonBoard 的其他裝置，您將必須使用 [eMMC 方法](/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)來對它進行刷新。 如果您需要設定新裝置的協助，請參閱 Windows IoT 文件中的[設定您的裝置](/windows/iot-core/tutorials/quickstarter/devicesetup)。
 
 ## <a name="about-the-visual-alerts-app"></a>關於 Visual Alerts 應用程式
 
@@ -116,7 +116,7 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 
 在應用程式下載已定型的模型之後，它將會切換到 **Scoring** \(評分\) 狀態，並開始以連續迴圈的方式為來自相機的影像評分。
 
-針對每個所擷取到的影像，應用程式將會在畫面上顯示名次最高的標籤。 如果它無法辨識視覺狀態，便會顯示**沒有相符項目**。 應用程式也會將這些訊息傳送到 IoT 中樞，且如果偵測到某個類別，該訊息將會包含標籤、信賴分數，以及稱為 `detectedClassAlert` 的屬性；該屬性可由想要根據屬性進行快速訊息路由傳送的 IoT 中樞用戶端使用。
+針對每個所擷取到的影像，應用程式將會在畫面上顯示名次最高的標籤。 如果它無法辨識視覺狀態，便會顯示 **沒有相符項目**。 應用程式也會將這些訊息傳送到 IoT 中樞，且如果偵測到某個類別，該訊息將會包含標籤、信賴分數，以及稱為 `detectedClassAlert` 的屬性；該屬性可由想要根據屬性進行快速訊息路由傳送的 IoT 中樞用戶端使用。
 
 此外，範例會使用 [Sense HAT 程式庫](https://github.com/emmellsoft/RPi.SenseHat) \(英文\) 來偵測它是否正在具有 Sense HAT 單元的 Raspberry Pi 上執行；這能使它可以利用該單元作為輸出顯示，並在偵測到類別時將所有燈設定為紅色，以及在未偵測到任何類別時關閉所有燈。
 
@@ -141,6 +141,6 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 > [!div class="nextstepaction"]
 > [IoTVisualAlerts 範例 (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts) \(英文\)
 
-* 新增 IoT 中樞方法以將應用程式直接切換到**等候已定型的模型**狀態。 如此一來，您便可以使用不是由裝置本身所擷取的影像來對模型進行定型，然後透過命令將新模型推送到裝置。
-* 遵循[將即時感應器資料視覺化](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) \(部分機器翻譯\) 教學課程以建立 Power BI 儀表板，來將由範例所傳送的 IoT 中樞警示視覺化。
-* 遵循 [IoT 遠端監視](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) \(部分機器翻譯\) 教學課程以建立能在偵測到視覺狀態時回應 IoT 中樞警示的邏輯應用程式。
+* 新增 IoT 中樞方法以將應用程式直接切換到 **等候已定型的模型** 狀態。 如此一來，您便可以使用不是由裝置本身所擷取的影像來對模型進行定型，然後透過命令將新模型推送到裝置。
+* 遵循[將即時感應器資料視覺化](../../iot-hub/iot-hub-live-data-visualization-in-power-bi.md) \(部分機器翻譯\) 教學課程以建立 Power BI 儀表板，來將由範例所傳送的 IoT 中樞警示視覺化。
+* 遵循 [IoT 遠端監視](../../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) \(部分機器翻譯\) 教學課程以建立能在偵測到視覺狀態時回應 IoT 中樞警示的邏輯應用程式。

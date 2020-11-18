@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 影像辨識, 影像識別工具, 影像辨識應用程式, 自訂視覺
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605403"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616904"
 ---
 # <a name="what-is-custom-vision"></a>什麼是自訂視覺服務？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 自訂視覺是一項影像辨識服務，可讓您建置、部署和改善自己的影像識別工具。 影像識別工具可根據影像的視覺特性對影像套用標籤 (代表類別或物件)。 不同於[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服務，自訂視覺可讓您指定標籤，並定型自訂模型來偵測標籤。
+Azure 自訂視覺是一項影像辨識服務，可讓您建置、部署和改善自己的影像識別工具。 影像識別工具可根據影像的視覺特性對影像套用標籤 (代表類別或物件)。 不同於[電腦視覺](../computer-vision/overview.md)服務，自訂視覺可讓您指定標籤，並定型自訂模型來偵測標籤。
 
 ## <a name="what-it-does"></a>作用
 
@@ -31,7 +31,7 @@ Azure 自訂視覺是一項影像辨識服務，可讓您建置、部署和改�
 
 ### <a name="classification-and-object-detection"></a>分類和物件偵測
 
-自訂視覺功能可以細分成兩項功能。 **影像分類**會對影像套用一或多個標籤。 **物件偵測**也相類似，但它還會傳回影像中已套用的標籤所在位置的座標。
+自訂視覺功能可以細分成兩項功能。 **影像分類** 會對影像套用一或多個標籤。 **物件偵測** 也相類似，但它還會傳回影像中已套用的標籤所在位置的座標。
 
 ### <a name="optimization"></a>Optimization
 

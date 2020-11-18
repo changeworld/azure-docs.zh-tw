@@ -11,21 +11,21 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 76670c6a061ce3f257d9df8cfe61b1cc020194c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cef39b940f0d61fc60ea10156acfd781289157de
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100213"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591966"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教學課程：使用 Bing 影像搜尋 API 和 C# 來擷取影像詳細資料
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
-有多個[端點](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint)可透過 Bing 影像搜尋 API 來取得。 `/details` 端點會接受含有影像的 POST 要求，並可傳回有關該影像的各種不同詳細資料。 這個 C# 應用程式會使用此 API 傳送影像，並顯示由 Bing 傳回的詳細資料，也就是 JSON 物件，如下所示：
+有多個[端點](./image-search-endpoint.md)可透過 Bing 影像搜尋 API 來取得。 `/details` 端點會接受含有影像的 POST 要求，並可傳回有關該影像的各種不同詳細資料。 這個 C# 應用程式會使用此 API 傳送影像，並顯示由 Bing 傳回的詳細資料，也就是 JSON 物件，如下所示：
 
 ![[JSON 結果]](media/cognitive-services-bing-images-api/jsonResult.jpg)
 

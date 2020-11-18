@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87875433"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616037"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教學課程：以 Python 執行 TensorFlow 模型
 
-在您從自訂視覺服務[匯出 TensorFlow 模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)之後，本快速入門將示範如何在本機上使用此模型，來分類影像。
+在您從自訂視覺服務[匯出 TensorFlow 模型](./export-your-model.md)之後，本快速入門將示範如何在本機上使用此模型，來分類影像。
 
 > [!NOTE]
 > 本教學課程僅適用於從影像分類專案匯出的模型。

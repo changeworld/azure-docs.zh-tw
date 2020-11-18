@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 921230e217f014e05d6d7e9a2c5402814d3226f0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cf129e5059d7abc74a74983ce68f5a8ddc2bf18e
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099958"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593547"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>快速入門：使用 Bing 影像搜尋 REST API 和 C# 來搜尋影像
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
 > 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "93099958"
 
 此範例的原始程式碼可從 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) 取得，其中含有其他錯誤處理和註釋。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
 * [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。
 * 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
@@ -214,8 +214,8 @@ namespace BingSearchApisQuickstart
 
 ## <a name="see-also"></a>另請參閱
 
-* [什麼是 Bing 影像搜尋 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [什麼是 Bing 影像搜尋 API？](../overview.md)  
 * [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Bing 搜尋 API 的定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure 認知服務文件](../../index.yml)
+* [Bing 影像搜尋 API 參考](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

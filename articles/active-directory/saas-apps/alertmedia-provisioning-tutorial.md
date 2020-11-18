@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9a7c19e30c6c26d7bf7f11d6f03a0acaee160c9a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358961"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578598"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>教學課程：設定 AlertMedia 來自動佈建使用者
 
@@ -35,7 +35,7 @@ ms.locfileid: "94358961"
 > * 在 AlertMedia 中佈建群組和群組成員資格
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/alertmedia-tutorial)至 AlertMedia (建議使用)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -95,9 +95,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
     ![佈建索引標籤 [自動]](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段底下，以下列其中一種格式輸入您的 AlertMedia [租用戶 URL]。
-      * (沒有自訂網域) https://dashboard.alertmedia.com/api/scim/v3
+      * (沒有自訂網域) `https://dashboard.alertmedia.com/api/scim/v3`
 
-      * (自訂網域) https://subdomain.alertmedia.com/api/scim/v3
+      * (自訂網域) `https://subdomain.alertmedia.com/api/scim/v3`
 
       輸入先前在步驟 2 中擷取的 [秘密權杖]。 按一下 [測試連線]，以確定 Azure AD 可連線至 AlertMedia。 如果連線失敗，請確定您的 AlertMedia 帳戶具有管理員權限，然後再試一次。
 
@@ -117,31 +117,31 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |---|---|
    |userName|String|
    |作用中|Boolean|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:first_name|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:last_name|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:email|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:email2|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:email3|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:title|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone_post_dial|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone2|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone2_post_dial|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone3|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone3_post_dial|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:home_phone|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:home_phone_post_dial|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:office_phone|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:office_phone_post_dial|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:address|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:address2|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:city|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:state|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:country|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:zipcode|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:notes|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:customer_user_id|字串|
-   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:user_type|字串|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:first_name|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:last_name|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:email|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:email2|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:email3|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:title|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone_post_dial|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone2|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone2_post_dial|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone3|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:mobile_phone3_post_dial|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:home_phone|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:home_phone_post_dial|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:office_phone|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:office_phone_post_dial|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:address|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:address2|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:city|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:state|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:country|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:zipcode|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:notes|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:customer_user_id|String|
+   |urn:ietf:params:scim:schemas:extension:alertmedia:2.0:CustomAttribute:User:user_type|String|
 
 10. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 群組至 AlertMedia]。
 

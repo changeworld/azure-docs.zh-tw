@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 481c0d85420ab2cc57f5636ed1862a525ace553b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 4e9b5326f8ce28e94c829f9aed56d035c256be52
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604942"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625452"
 ---
 本指南提供指示和範例程式碼，可協助您開始使用適用於 Go 的自訂視覺用戶端程式庫來建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -39,13 +39,13 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>新增程式碼
 
-在您偏好的專案目錄中建立名為 sample.go** 的新檔案。
+在您偏好的專案目錄中建立名為 sample.go 的新檔案。
 
 ## <a name="create-the-custom-vision-project"></a>建立自訂視覺專案
 
 在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入訂用帳戶金鑰。 此外，請從自訂視覺網站的 [設定] 頁面取得您的 [端點 URL]。
 
-當您建立專案時，請參閱 [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。
+當您建立專案時，請參閱 [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。
 
 ```go
 import(
@@ -85,7 +85,7 @@ func main() {
 
 ## <a name="create-tags-in-the-project"></a>在專案中建立標記
 
-若要在專案中建立分類標記，請在 sample.go** 結尾新增以下程式碼：
+若要在專案中建立分類標記，請在 sample.go 結尾新增以下程式碼：
 
 ```go
 // Make two tags in the new project
@@ -166,7 +166,7 @@ trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name
 
 ## <a name="run-the-application"></a>執行應用程式
 
-執行 sample.go**。
+執行 sample.go。
 
 ```shell
 go run sample.go

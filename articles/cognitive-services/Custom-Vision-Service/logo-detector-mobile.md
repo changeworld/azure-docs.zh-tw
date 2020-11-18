@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d7d66e247c6a6240bd6fde08612b8eb770bd3b92
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b85b2d9b81e84ec6c6e09fef16c66a919aa30cd7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737554"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616751"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教學課程：辨識相機圖片中的 Azure 服務標誌
 
@@ -34,9 +34,9 @@ ms.locfileid: "92737554"
 ## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)
-- 適用於 Visual Studio 的 Xamarin 工作負載 (請參閱[安裝 Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- 適用於 Visual Studio 的 Xamarin 工作負載 (請參閱[安裝 Xamarin](/xamarin/cross-platform/get-started/installation/windows))
 - 適用於 Visual Studio 的 iOS 或 Android 模擬器
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (選擇性)
+- [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (選擇性)
 
 ## <a name="get-the-source-code"></a>取得原始程式碼
 
@@ -94,7 +94,7 @@ ms.locfileid: "92737554"
 
 本教學課程的自訂視覺部分已完成。 如果您想要執行應用程式，則必須再整合電腦視覺服務。 應用程式會使用電腦視覺文字辨識功能來補強標誌偵測程序。 Azure 標誌可從其外觀 *或* 旁邊列印的文字來辨識。 不同於自訂視覺模型，電腦視覺已經過預先訓練，會對影像或影片執行特定作業。
 
-訂閱電腦視覺服務，即可取得金鑰和端點 URL。 如需此步驟的說明，請參閱[如何取得訂用帳戶金鑰](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)。
+訂閱電腦視覺服務，即可取得金鑰和端點 URL。 如需此步驟的說明，請參閱[如何取得訂用帳戶金鑰](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows)。
 
 ![Azure 入口網站中已選取快速入門功能表的電腦視覺服務。 其中標示出金鑰的連結和 API 端點 URL](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "92737554"
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-應用程式必須透過 Azure 服務主體帳戶將服務部署至您的 Azure 訂用帳戶。 服務主體可讓您使用 Azure 角色型存取控制將特定權限委派給應用程式。 若要深入了解，請參閱[服務主體指南](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)。
+應用程式必須透過 Azure 服務主體帳戶將服務部署至您的 Azure 訂用帳戶。 服務主體可讓您使用 Azure 角色型存取控制將特定權限委派給應用程式。 若要深入了解，請參閱[服務主體指南](/azure-stack/operator/azure-stack-create-service-principals)。
 
 您可以使用 Azure Cloud Shell 或 Azure CLI 來建立服務主體，如下所示。 首先，請登入並選取您要使用的訂用帳戶。
 
