@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 979ed3d21986ad43d805446a520a59333a6798ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149333"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659636"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>將下游裝置連線到 Azure IoT Edge 閘道
 
@@ -35,9 +35,9 @@ ms.locfileid: "92149333"
 * 說明 TLS 程式庫在不同作業系統之間的運作方式，以及每個作業系統處理憑證的方式。
 * 以數種語言逐步解說 Azure IoT 範例，以協助您開始使用。
 
-在本文中，*閘道*和 *IoT Edge 閘道*這兩個詞是指設定為透明閘道的 IoT Edge 裝置。
+在本文中，*閘道* 和 *IoT Edge 閘道* 這兩個詞是指設定為透明閘道的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 在設定 IoT Edge 裝置時，擁有用來產生裝置 CA 憑證的根 CA 憑證檔案，作為下游裝置上可用 [的透明閘道](how-to-create-transparent-gateway.md) 。 下游裝置會使用此憑證來驗證閘道裝置的身分識別。 如果您使用了示範憑證，根 CA 憑證就稱為 **azure-iot-test-only.root.ca.cert.pem**。
 * 具有指向閘道裝置的已修改連接字串，如 [驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)所述。
@@ -63,7 +63,7 @@ ms.locfileid: "92149333"
 
 安全地將下游裝置連線到 IoT Edge 的挑戰，如同網際網路上發生的其他任何安全用戶端/伺服器通訊。 用戶端和伺服器會透過網際網路，使用[傳輸層安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) 安全地進行通訊。 TLS 是使用標準[公開金鑰基礎結構 (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) 建構 (稱為憑證) 建置的。 TLS 是相當相關的規格，可解決各種與保護兩個端點相關的主題。 本節摘要說明將裝置安全地連線到 IoT Edge 閘道的相關概念。
 
-當用戶端連線到伺服器時，伺服器會顯示一連串的憑證，稱為*伺服器憑證鏈結*。 憑證鏈結通常會包含根憑證授權單位 (CA) 憑證、一個或多個中繼 CA 憑證，以及最後的伺服器憑證本身。 用戶端會以密碼編譯方式驗證整個伺服器憑證鏈結，藉此建立與伺服器的信任。 此用戶端對伺服器憑證鏈的驗證稱為「 *伺服器鏈驗證*」。 用戶端會挑戰伺服器，在稱為「 *擁有權證明*」的進程中證明擁有與伺服器憑證相關聯的私密金鑰。 伺服器鏈驗證和擁有權證明的組合稱為 *伺服器驗證*。 若要驗證伺服器憑證鏈結，用戶端需要一份用來建立 (或核發) 伺服器憑證的根 CA 憑證。 一般而言，當連線到網站時，瀏覽器已預先設定常用的 CA 憑證，讓用戶端的程序順暢進行。
+當用戶端連線到伺服器時，伺服器會顯示一連串的憑證，稱為 *伺服器憑證鏈結*。 憑證鏈結通常會包含根憑證授權單位 (CA) 憑證、一個或多個中繼 CA 憑證，以及最後的伺服器憑證本身。 用戶端會以密碼編譯方式驗證整個伺服器憑證鏈結，藉此建立與伺服器的信任。 此用戶端對伺服器憑證鏈的驗證稱為「 *伺服器鏈驗證*」。 用戶端會挑戰伺服器，在稱為「 *擁有權證明*」的進程中證明擁有與伺服器憑證相關聯的私密金鑰。 伺服器鏈驗證和擁有權證明的組合稱為 *伺服器驗證*。 若要驗證伺服器憑證鏈結，用戶端需要一份用來建立 (或核發) 伺服器憑證的根 CA 憑證。 一般而言，當連線到網站時，瀏覽器已預先設定常用的 CA 憑證，讓用戶端的程序順暢進行。
 
 當裝置連線到 Azure IoT 中樞時，該裝置就是用戶端，而 IoT 中樞雲端服務則是伺服器。 IoT 中樞雲端服務是以稱為 **Baltimore CyberTrust Root** 的根 CA 憑證作為後盾，這是公開可用且最廣泛使用的憑證。 大多數裝置上已安裝 IoT 中樞 CA 憑證，因此許多 TLS 實作 (OpenSSL、Schannel、LibreSSL) 會自動在伺服器憑證驗證期間使用該憑證。 不過，成功連線至 IoT 中樞的裝置可能會在嘗試連線至 IoT Edge 閘道時發生問題。
 
@@ -108,14 +108,14 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 您也可以使用 **certlm.msc** 公用程式來安裝憑證：
 
-1. 在 [開始] 功能表中，搜尋並選取 [管理電腦憑證]****。 稱為 **certlm** 的公用程式隨即開啟。
-2. 流覽至 [**憑證-本機電腦**  >  **受信任的根憑證授權**單位]。
-3. 在 [憑證]**** 上按一下滑鼠右鍵，然後選取 [所有工作]**** > [匯入]****。 憑證匯入精靈應該會啟動。
+1. 在 [開始] 功能表中，搜尋並選取 [管理電腦憑證]。 稱為 **certlm** 的公用程式隨即開啟。
+2. 流覽至 [**憑證-本機電腦**  >  **受信任的根憑證授權** 單位]。
+3. 在 [憑證] 上按一下滑鼠右鍵，然後選取 [所有工作] > [匯入]。 憑證匯入精靈應該會啟動。
 4. 請依照所指示的步驟，匯入憑證檔案 `<path>/azure-iot-test-only.root.ca.cert.pem`。 完成時，您應該會看到「已成功匯入」訊息。
 
 您也可以使用 .NET API，以程式設計方式安裝憑證，如本文稍後的 .NET 範例中所示。
 
-應用程式通常會使用 Windows 提供的 TLS 堆疊 (稱為 [Schannel](/windows/desktop/com/schannel))，透過 TLS 安全地連線。 Schannel *要求*先安裝 Windows 憑證存放區中的任何憑證，然後再嘗試建立 TLS 連線。
+應用程式通常會使用 Windows 提供的 TLS 堆疊 (稱為 [Schannel](/windows/desktop/com/schannel))，透過 TLS 安全地連線。 Schannel *要求* 先安裝 Windows 憑證存放區中的任何憑證，然後再嘗試建立 TLS 連線。
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>使用具有 Azure IoT SDK 的憑證
 
@@ -127,13 +127,13 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 * 您複製並儲存在下游裝置上某個位置之根 CA 憑證的完整路徑。
 
-    例如： `<path>/azure-iot-test-only.root.ca.cert.pem` 。
+    例如 `<path>/azure-iot-test-only.root.ca.cert.pem`。
 
 ### <a name="nodejs"></a>NodeJS
 
 本節提供將 Azure IoT NodeJS 裝置用戶端連線到 IoT Edge 閘道的範例應用程式。 針對 NodeJS 應用程式，您必須在應用層級安裝根 CA 憑證，如下所示。 NodeJS 應用程式不會使用系統的憑證存放區。
 
-1. 從[適用於 Node.js 的 Azure IoT 裝置 SDK 範例存放庫](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)取得 **edge_downstream_device.js** 的範例。
+1. 從 [適用於 Node.js 的 Azure IoT 裝置 SDK 範例存放庫](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)取得 **edge_downstream_device.js** 的範例。
 2. 請檢閱 **readme.md** 檔案，以確定您擁有執行此範例的所有先決條件。
 3. 在 edge_downstream_device.js 檔案中，更新 **connectionString** 和 **edge_ca_cert_path** 變數。
 4. 如需如何在裝置上執行此範例的指示，請參閱 SDK 文件。
@@ -163,10 +163,11 @@ var options = {
 
 本節介紹將 Azure IoT C 裝置用戶端連線到 IoT Edge 閘道的範例應用程式。 C SDK 可以使用許多 TLS 程式庫運作，包括 OpenSSL、WolfSSL 和 Schannel。 如需詳細資訊，請參閱 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
-1. 從[適用於 C 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)取得 **iotedge_downstream_device_sample** 應用程式。
+1. 從 [適用於 C 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)取得 **iotedge_downstream_device_sample** 應用程式。
 2. 請檢閱 **readme.md** 檔案，以確定您擁有執行此範例的所有先決條件。
 3. 在 iotedge_downstream_device_sample.c 檔案中，更新 **connectionString** 和 **edge_ca_cert_path** 變數。
 4. 如需如何在裝置上執行此範例的指示，請參閱 SDK 文件。
+
 
 適用於 C 的 Azure IoT 裝置 SDK 可以選擇在設定用戶端時註冊 CA 憑證。 這項作業不會在任何位置安裝憑證，而是使用記憶體中憑證的字串格式。 建立連線時，會將已儲存的憑證提供給基礎 TLS 堆疊。
 
@@ -174,13 +175,16 @@ var options = {
 (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
 ```
 
+>[!NOTE]
+> 在設定用戶端時註冊 CA 憑證的方法，可能會在使用 [受管理](https://github.com/Azure/azure-iot-sdk-c#packages-and-libraries) 的封裝或程式庫時變更。 例如， [ARDUINO IDE](https://github.com/azure/azure-iot-arduino) 型程式庫將需要將 CA 憑證新增至全域憑證 [.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) 檔中定義的憑證陣列，而不是使用此作業 `IoTHubDeviceClient_LL_SetOption` 。  
+
 在 Windows 主機上，如果您使用的不是 OpenSSL 或另一個 TLS 程式庫，則 SDK 會預設使用 Schannel。 若要讓 Schannel 運作，則應該安裝 Windows 憑證存放區中的 IoT Edge 根 CA 憑證，而不是使用 `IoTHubDeviceClient_SetOption` 作業設定。
 
 ### <a name="java"></a>Java
 
 本節介紹將 Azure IoT Java 裝置用戶端連線到 IoT Edge 閘道的範例應用程式。
 
-1. 從[適用於 Java 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)取得 **Send-event** 的範例。
+1. 從 [適用於 Java 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)取得 **Send-event** 的範例。
 2. 請檢閱 **readme.md** 檔案，以確定您擁有執行此範例的所有先決條件。
 3. 如需如何在裝置上執行此範例的指示，請參閱 SDK 文件。
 
@@ -188,7 +192,7 @@ var options = {
 
 本節介紹將 Azure IoT Python 裝置用戶端連線到 IoT Edge 閘道的範例應用程式。
 
-1. 從[適用于 Python 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)取得**send_message_downstream**的範例。
+1. 從 [適用于 Python 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)取得 **send_message_downstream** 的範例。
 2. 設定 `IOTHUB_DEVICE_CONNECTION_STRING` `IOTEDGE_ROOT_CA_CERT_PATH` Python 腳本批註中指定的和環境變數。
 3. 如需有關如何在裝置上執行範例的其他指示，請參閱 SDK 檔。
 

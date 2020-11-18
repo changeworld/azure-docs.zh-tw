@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f3056c500453c2249d66a05079334851c851df33
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616615"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660112"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 
@@ -95,7 +95,7 @@ myenv = Environment.from_conda_specification(name = "myenv",
                                              file_path = "path-to-conda-specification-file")
 
 # From a pip requirements file
-myenv = Environment.from_pip_requirements(name = "myenv"
+myenv = Environment.from_pip_requirements(name = "myenv",
                                           file_path = "path-to-pip-requirements-file")                                          
 ```
 
@@ -110,7 +110,7 @@ Azure Machine Learning 類別的，可 [`DockerSection`](/python/api/azureml-cor
 myenv.docker.enabled = True
 ```
 
-根據預設，新建立的 Docker 映射會出現在與工作區相關聯的容器登錄中。  存放庫名稱的形式為 *azureml/azureml_ \<uuid\>* 。 名稱 ( *uuid* ) 部分的唯一識別碼，會對應至從環境設定計算的雜湊。 此對應可讓服務判斷指定環境的映射是否已存在，以供重複使用。
+根據預設，新建立的 Docker 映射會出現在與工作區相關聯的容器登錄中。  存放庫名稱的形式為 *azureml/azureml_ \<uuid\>*。 名稱 (*uuid*) 部分的唯一識別碼，會對應至從環境設定計算的雜湊。 此對應可讓服務判斷指定環境的映射是否已存在，以供重複使用。
 
 #### <a name="use-a-prebuilt-docker-image"></a>使用預建的 Docker 映射
 

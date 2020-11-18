@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 50b88b4af6ea8479097b88b51fe7acfbea355ab8
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392311"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660639"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的實用資源
 
@@ -92,4 +92,4 @@ Azure Sentinel 的 Audit 記錄會保留在 [Azure 活動記錄](../azure-monito
 
 
 ## <a name="next-steps"></a>後續步驟
-在本檔中，您會看到一份資源清單，當您使用 Azure Sentinel 時很有用。 您可以在 [Microsoft Azure 的安全性與合規性 blog](https://docs.microsoft.com/archive/blogs/azuresecurity/)中找到有關 Azure 安全性與合規性的其他資訊。
+在本檔中，您會看到一份資源清單，當您使用 Azure Sentinel 時很有用。 您可以在 [Microsoft Azure 的安全性與合規性 blog](/archive/blogs/azuresecurity/)中找到有關 Azure 安全性與合規性的其他資訊。

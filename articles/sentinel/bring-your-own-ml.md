@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342689"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660571"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>將您自己的 Machine Learning (ML) 帶入 Azure Sentinel
 
@@ -32,7 +32,7 @@ ML 偵測模型可以適應個別的環境，以及變更使用者行為，以�
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>什麼是自備 Machine Learning (BYO-ML) 平臺？
 
-針對具有 ML 資源且想要為其獨特商務需求建立自訂 ML 模型的組織，我們提供 **BYO ml 平臺**。 平臺會利用[Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/)環境，並 Jupyter 筆記本來產生 ML 環境。 它提供下列元件：
+針對具有 ML 資源且想要為其獨特商務需求建立自訂 ML 模型的組織，我們提供 **BYO ml 平臺**。 平臺會利用[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/)環境，並 Jupyter 筆記本來產生 ML 環境。 它提供下列元件：
 
 - BYO ML 封裝，其中包含可協助您存取資料的程式庫，並將結果推送回 Log Analytics (LA) ，因此您可以將結果與偵測、調查和搜尋整合。 
 
@@ -62,7 +62,7 @@ BYO ML 平臺和套件可大幅減少您建立自己的 ML 偵測所需的時間
 
 **整合您的 Databricks/Spark 環境：** 將您現有的 Databricks/Spark 環境整合至 Azure Sentinel，並使用 BYO ML 程式庫和範本來為其獨特的情況建立 ML 模型。
 
-匯**入您自己的 ML 模型：** 您可以匯入自己的 ML 模型，並使用 BYO ML 平臺和公用程式，將它們與 Azure Sentinel 整合。
+匯 **入您自己的 ML 模型：** 您可以匯入自己的 ML 模型，並使用 BYO ML 平臺和公用程式，將它們與 Azure Sentinel 整合。
 
 **共用 ML 演算法：** 共用適用于社區的 ML 演算法來採用和調整。
 
@@ -95,7 +95,7 @@ BYO ML 套件包含最佳做法，並可在 ML 前端進行安全性的研究。
 
 ### <a name="setup-the-databricksspark-environment"></a>設定 Databricks/Spark 環境
 
-如果您還沒有 Databricks 環境，您將需要設定它。 如需相關指示，請參閱 [Databricks 快速入門](https://docs.microsoft.com/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) 檔。
+如果您還沒有 Databricks 環境，您將需要設定它。 如需相關指示，請參閱 [Databricks 快速入門](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) 檔。
 
 ### <a name="auto-export-instruction"></a>自動匯出指令
 
@@ -103,7 +103,7 @@ BYO ML 套件包含最佳做法，並可在 ML 前端進行安全性的研究。
 
 在此範例中，您需要有 Azure blob 儲存體中檔案共用存取記錄的定型資料。 資料的格式記載于筆記本和程式庫中。
 
-您可以使用 [Azure 命令列介面 (CLI) ](https://docs.microsoft.com/cli/azure/monitor/log-analytics)，自動將您的資料從 Log Analytics 匯出。 
+您可以使用 [Azure 命令列介面 (CLI) ](/cli/azure/monitor/log-analytics)，自動將您的資料從 Log Analytics 匯出。 
 
 您必須將 Log Analytics 工作區、儲存體帳戶和 EventHub 資源中的「參與者」角色指派給「 **參與者** 」角色，才能執行命令。 
 
@@ -159,13 +159,13 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 若要查看您的評分結果以及相關記錄的詳細資料，請返回您的 Azure Sentinel 入口網站。 在 **記錄** > 自訂記錄檔中，您會在 **AnomalousResourceAccessResult_CL** 資料表 (或您自己的自訂資料表名稱) 中看到結果。 您可以使用這些結果來增強您的調查和搜尋體驗。
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="機器學習架構":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="異常資源存取記錄":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>使用 ML 結果建立自訂分析規則
 
 一旦您確認 ML 結果是在自訂記錄資料表中，且您對分數的精確度感到滿意，就可以根據結果建立偵測。 從 Azure Sentinel 入口網站移至 [ **分析** ]，並 [建立新的偵測規則](tutorial-detect-threats-custom.md)。 以下範例顯示用來建立偵測的查詢。
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="機器學習架構":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="建立 B Y O M L 偵測的自訂分析規則":::
 
 ### <a name="view-and-respond-to-incidents"></a>查看和回應事件
 當您根據 ML 結果設定分析規則之後，如果您在查詢中設定的閾值超過閾值，系統就會產生事件，並在 Azure Sentinel 的 [ **事件** ] 頁面上呈現。 

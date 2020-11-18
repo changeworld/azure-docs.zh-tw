@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 867f12b026a56b7cab8530ef30c4a2f2c325f6b1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/15/2020
+ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637780"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659976"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>將自我裝載 IR 設定為 Azure Data Factory 中 Azure-SSIS IR 的 proxy
 
@@ -43,24 +43,34 @@ ms.locfileid: "92637780"
 
 最後，您會在內部部署電腦或 Azure 虛擬機器上，下載並安裝最新版的自我裝載 IR 以及額外的驅動程式和執行時間， (VM) ，如下所示：
 - 下載並安裝最新版的自我裝載 [IR](https://www.microsoft.com/download/details.aspx?id=39717)。
-- 如果您在封裝中使用物件連結與嵌入資料庫 (OLEDB) /Open 資料庫連接 (ODBC) 連接器，請在安裝自我裝載 IR 的同一部電腦上下載並安裝相關的驅動程式（如果您尚未這樣做）。  
+- 如果您使用物件連結與嵌入資料庫 (OLEDB) 、開啟資料庫連接 (ODBC) ，或在您的封裝中 ADO.NET 連接器，請在安裝自我裝載 IR 的相同電腦上下載並安裝相關的驅動程式（如果您尚未這樣做）。  
 
   如果您使用舊版 OLEDB 驅動程式進行 SQL Server (SQL Server Native Client [SQLNCLI] ) ，請 [下載64位版本](https://www.microsoft.com/download/details.aspx?id=50402)。  
 
   如果您使用最新版本的 OLEDB 驅動程式進行 SQL Server (MSOLEDBSQL.H) ，請 [下載64位版本](https://www.microsoft.com/download/details.aspx?id=56730)。  
   
-  如果您使用 OLEDB/ODBC 驅動程式來執行其他資料庫系統（例如于 postgresql、MySQL、Oracle 等），您可以從其網站下載64位版本。
+  如果您對其他資料庫系統使用 OLEDB/ODBC/ADO.NET 驅動程式（例如于 postgresql、MySQL、Oracle 等），您可以從其網站下載64位版本。
 - 如果您尚未這麼做，請在安裝自我裝載 IR 的同一部電腦上， [下載並安裝64位版本的 Visual C++ (VC) runtime](https://www.microsoft.com/download/details.aspx?id=40784) 。
 
-## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>準備 Azure Blob 儲存體連結服務以進行預備
+### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>啟用內部部署預備工作的 Windows 驗證
 
-如果您尚未這麼做，請在您的 Azure-SSIS IR 設定所在的相同 data factory 中建立 Azure Blob 儲存體連結服務。 若要這樣做，請參閱 [建立 Azure data factory 連結的服務](./quickstart-create-data-factory-portal.md#create-a-linked-service)。 請務必執行下列動作：
-- 針對 [ **資料存放區** ]，選取 [ **Azure Blob 儲存體** ]。  
+如果您的自我裝載 IR 上的內部部署預備工作需要 Windows 驗證，請 [將 SSIS 套件設定為使用相同的 Windows 驗證](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
+
+您的內部部署預備工作將會使用自我裝載 IR 服務帳戶來叫用 (*NT SERVICE\DIAHostService* 預設為) ，而您的資料存放區將會使用 Windows 驗證帳戶存取。 這兩個帳戶都需要指派特定安全性原則。 在自我裝載的 IR 機器上，移至 [**本機安全性原則**  >  **本機原則**  >  **使用者權限指派**]，然後執行下列動作：
+
+1. 指派 *進程的調整記憶體配額* ，並將 *進程等級權杖原則取代* 為自我裝載 IR 服務帳戶。 當您使用預設服務帳戶安裝自我裝載 IR 時，應該會自動發生這種情況。 如果沒有，請手動指派這些原則。 如果您使用不同的服務帳戶，請將相同的原則指派給它。
+
+1. 將 [ *以服務方式登* 入] 原則指派給 Windows 驗證帳戶。
+
+## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>準備用於預備的 Azure Blob 儲存體連結服務
+
+如果您尚未這麼做，請在已設定 Azure-SSIS IR 的相同 data factory 中建立 Azure Blob 儲存體連結的服務。 若要這樣做，請參閱 [建立 Azure data factory 連結的服務](./quickstart-create-data-factory-portal.md#create-a-linked-service)。 請務必執行下列動作：
+- 針對 [ **資料存放區**]，選取 [ **Azure Blob 儲存體**]。  
 - 針對 **[透過整合運行** 時間連線]，請選取 [ **AutoResolveIntegrationRuntime** (不是您的 Azure-SSIS IR 或自我裝載的 IR) ，因為我們會使用預設 Azure IR 來提取您的 Azure Blob 儲存體的存取認證。
-- 針對 [ **驗證方法** ]，選取 [ **帳戶金鑰** ]、[ **SAS URI** ] 或 [ **服務主體** ]。  
+- 針對 [ **驗證方法**]，選取 [ **帳戶金鑰**]、[ **SAS URI**]、[ **服務主體**] 或 [ **受控識別**]。  
 
-    >[!TIP]
-    >如果您選取 **服務主體** 方法，請至少將 *儲存體 Blob 資料參與者* 角色授與服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。
+>[!TIP]
+>如果您選取 **服務主體** 方法，請至少將 *儲存體 Blob 資料參與者* 角色授與服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。 如果您選取 [ **受控識別** ] 方法，請將您的 ADF 受控識別授與適當的角色，以存取 Azure Blob 儲存體。 如需詳細資訊，請參閱 [使用 Azure Active Directory 驗證搭配 ADF 受控身分識別存取 Azure Blob 儲存體](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
 
 ![準備 Azure Blob 儲存體連結服務以進行預備](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -68,7 +78,7 @@ ms.locfileid: "92637780"
 
 準備好您的自我裝載 IR 和 Azure Blob 儲存體連結服務以進行預備，您現在可以使用自我裝載 IR 來設定新的或現有的 Azure-SSIS IR，以作為 data factory 入口網站或應用程式中的 proxy。 不過，在您這麼做之前，如果現有的 Azure-SSIS IR 已在執行中，請停止它，然後重新開機它。
 
-1. 在 [ **整合執行時間設定** ] 窗格中，選取 [ **下一步]** 略過 [ **一般設定** ] 和 [ **SQL 設定** ] 區段。 
+1. 在 [**整合執行時間設定**] 窗格中，選取 [**下一步]** 略過 [**一般設定**] 和 [ **SQL 設定**] 區段。 
 
 1. 在 [ **Advanced settings** ] 區段中，執行下列動作：
 
@@ -80,7 +90,7 @@ ms.locfileid: "92637780"
 
    1. 在 [ **暫存路徑** ] 方塊中，指定您所選 Azure blob 儲存體帳戶中的 blob 容器，或將其保留空白，以使用預設值來進行暫存。
 
-   1. 選取 [繼續]。
+   1. 選取 [繼續]  。
 
    ![使用自我裝載 IR 的 Advanced 設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -124,42 +134,34 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 * [下載 Visual Studio 的 SSIS 專案擴充功能](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [下載獨立安裝程式](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
-當您使用可存取內部部署資料的元件來設計包含資料流程工作的新封裝時，您可以在相關連接管理員的 [ **屬性** ] 窗格中，將此屬性設定為 [ *True* ]，以啟用此屬性。
+當您使用可存取內部部署資料的元件來設計包含資料流程工作的新封裝時，您可以在相關連接管理員的 [**屬性**] 窗格中，將此屬性設定為 [ *True* ]，以啟用此屬性。
 
 ![啟用 ConnectByProxy 屬性](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 您也可以在執行現有的封裝時啟用這個屬性，而不需要逐一手動變更。  有兩個選項：
-- **選項 A** ：開啟、重建和重新部署包含這些套件的專案，其中包含要在 Azure-SSIS IR 上執行的最新 SSDT。 然後，您可以針對相關的連接管理員將屬性設為 *True* ，以啟用屬性。 當您從 SSMS 執行封裝時，這些連線管理員會出現在 [ **執行封裝** ] 快顯視窗的 [ **連接管理員** ] 索引標籤上。
+- **選項 A**：開啟、重建和重新部署包含這些套件的專案，其中包含要在 Azure-SSIS IR 上執行的最新 SSDT。 然後，您可以針對相關的連接管理員將屬性設為 *True* ，以啟用屬性。 當您從 SSMS 執行封裝時，這些連線管理員會出現在 [**執行封裝**] 快顯視窗的 [**連接管理員**] 索引標籤上。
 
   ![啟用 ConnectByProxy property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  您也可以將屬性設為 *True* ，以便在 Data Factory 管線中執行封裝時，在 [ [執行 SSIS 封裝活動](./how-to-invoke-ssis-package-ssis-activity.md)] 的 [ **連接管理員** ] 索引標籤上出現的相關連線管理員上啟用屬性。
+  您也可以將屬性設為 *True* ，以便在 Data Factory 管線中執行封裝時，在 [[執行 SSIS 封裝活動](./how-to-invoke-ssis-package-ssis-activity.md)] 的 [**連接管理員**] 索引標籤上出現的相關連線管理員上啟用屬性。
   
   ![啟用 ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **選項 B：** 重新部署包含這些套件的專案，以在 SSIS IR 上執行。 然後，您可以藉由提供屬性路徑，並將 `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` 它設定為 *True* ，在您從 SSMS 執行封裝時，將它設為 True，以做為 [ **執行封裝** ] 快顯視窗之 [ **Advanced** ] 索引標籤上的屬性覆寫。
+- **選項 B：** 重新部署包含這些套件的專案，以在 SSIS IR 上執行。 然後，您可以藉由提供屬性路徑，並將 `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` 它設定為 *True* ，在您從 SSMS 執行封裝時，將它設為 True，以做為 [**執行封裝**] 快顯視窗之 [ **Advanced** ] 索引標籤上的屬性覆寫。
 
   ![啟用 ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  您也可以藉由提供屬性路徑來啟用屬性， `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` 並在 Data Factory 管線中執行封裝時，將它設定為 *True* 做為 [執行 SSIS 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)之 [ **屬性覆** 寫] 索引標籤上的屬性覆寫。
+  您也可以藉由提供屬性路徑來啟用屬性， `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` 並在 Data Factory 管線中執行封裝時，將它設定為 *True* 做為 [執行 SSIS 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)之 [**屬性覆** 寫] 索引標籤上的屬性覆寫。
   
   ![啟用 ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>對內部部署和雲端預備工作進行調試
 
-在自我裝載 IR 上，您可以在 *C:\ProgramData\SSISTelemetry* 資料夾中找到執行時間記錄，並在 *C:\ProgramData\SSISTelemetry\ExecutionLog* 資料夾中找到內部部署暫存工作的執行記錄。  您可以根據是否將套件儲存在 SSISDB 中，在 SSISDB 或指定的記錄路徑中尋找雲端預備工作的執行記錄。 您也可以在雲端預備工作的執行記錄中，尋找內部部署預備工作的唯一識別碼。 
+在自我裝載 IR 上，您可以在 *C:\ProgramData\SSISTelemetry* 資料夾中找到執行時間記錄，並在 *C:\ProgramData\SSISTelemetry\ExecutionLog* 資料夾中找到內部部署暫存工作的執行記錄。  您可以在 SSISDB 中尋找雲端預備工作的執行記錄、指定的記錄檔路徑，或根據您是否將套件儲存在 SSISDB 中、啟用 [Azure 監視器整合](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)等等，來 Azure 監視器。您也可以在雲端預備工作的執行記錄中，尋找內部部署預備工作的唯一識別碼。 
 
 ![第一個暫存工作的唯一識別碼](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>在內部部署預備工作中使用 Windows 驗證
-
-如果您的自我裝載 IR 上的內部部署預備工作需要 Windows 驗證，請 [將 SSIS 套件設定為使用相同的 Windows 驗證](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
-
-您的內部部署預備工作將會使用自我裝載 IR 服務帳戶來叫用 ( *NT SERVICE\DIAHostService* 預設為) ，而您的資料存放區將會使用 Windows 驗證帳戶存取。 這兩個帳戶都需要指派特定安全性原則。 在自我裝載的 IR 機器上，移至 [ **本機安全性原則**  >  **本機原則**  >  **使用者權限指派** ]，然後執行下列動作：
-
-1. 指派 *進程的調整記憶體配額* ，並將 *進程等級權杖原則取代* 為自我裝載 IR 服務帳戶。 當您使用預設服務帳戶安裝自我裝載 IR 時，應該會自動發生這種情況。 如果沒有，請手動指派這些原則。 如果您使用不同的服務帳戶，請將相同的原則指派給它。
-
-1. 將 [ *以服務方式登* 入] 原則指派給 Windows 驗證帳戶。
+如果您已提出客戶支援票證，您可以在自我裝載 IR 上安裝的 **Microsoft Integration Runtime Configuration Manager** 的 [**診斷**] 索引標籤上選取 [**傳送記錄** 檔] 按鈕，以傳送最新的作業/執行記錄以供我們調查。
 
 ## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>內部部署和雲端預備工作的計費
 
@@ -167,7 +169,25 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 在 Azure-SSIS IR 上執行的雲端預備工作不會個別計費，但您執行的 Azure-SSIS IR 會依 [Azure-SSIS IR 定價](https://azure.microsoft.com/pricing/details/data-factory/ssis/) 文章中的指定計費。
 
-## <a name="enabling-tls-12"></a>啟用 TLS 1.2
+## <a name="enable-custom3rd-party-components"></a>啟用自訂/協力廠商元件 
+
+若要讓您的自訂/協力廠商元件使用自我裝載 IR 來存取內部部署資料，以做為 Azure-SSIS IR 的 proxy，請遵循下列指示：
+
+1. 透過 [標準/快速自訂](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)設定，在 Azure-SSIS IR 上安裝以 SQL Server 2017 為目標的自訂/協力廠商元件。
+
+1. 在自我裝載 IR 上建立下列 DTSPath 登錄機碼（如果尚未存在）： `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 和 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 。
+ 
+1. 將自訂/協力廠商元件安裝在上述 DTSPath 的自我裝載 IR 上以 SQL Server 2017 為目標，並確定您的安裝程式：
+
+   1. 建立 `<DTSPath>` 、 `<DTSPath>/Connections` 、 `<DTSPath>/PipelineComponents` 和 `<DTSPath>/UpgradeMappings` 資料夾（如果尚未存在）。
+   
+   1. 針對資料夾中的延伸模組對應建立您自己的 XML 檔 `<DTSPath>/UpgradeMappings` 。
+   
+   1. 在全域組件快取 (GAC) 中，安裝自訂/協力廠商元件元件所參考的所有元件。
+
+以下是 [協力廠商元件的範例](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) ，其使用快速自訂設定和自我裝載 IR 作為 Azure-SSIS IR 的 proxy。
+
+## <a name="enforce-tls-12"></a>強制使用 TLS 1.2
 
 如果您需要使用強式加密/更安全的網路通訊協定 (TLS 1.2) 並在自我裝載 IR 上停用較舊的 SSL/TLS 版本，您可以下載並執行可在公開預覽容器的 *CustomSetupScript/UserScenarios/tls 1.2* 資料夾中找到的 *main .cmd* 腳本。  您可以使用 [Azure 儲存體總管](https://storageexplorer.com/)來輸入下列 SAS URI，以連接到我們的公開預覽容器：
 
@@ -175,8 +195,10 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="current-limitations"></a>目前的限制
 
-- 目前只支援具有 OLEDB/ODBC/一般檔案來源或 OLEDB 目的地的資料流程工作。
-- 目前僅支援使用 *帳戶金鑰* 、 *共用存取簽章 (SAS) URI* 或 *服務主體* 驗證設定的 Azure Blob 儲存體連結服務。
+- 目前只支援在 Azure-SSIS IR Standard Edition 上內建/預先安裝的資料流程元件（Hadoop/HDFS/DQS 元件除外），請參閱 [Azure-SSIS IR 上的所有內建/預先安裝元件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime)。
+- 目前僅支援以 managed 程式碼撰寫的自訂/協力廠商資料流程元件 ( .NET Framework) ，但目前不支援以機器碼撰寫的自訂/協力廠商資料流程元件 (c + +) 。
+- 目前不支援在內部部署和雲端暫存工作中變更變數值。
+- 在內部部署暫存工作中變更類型 object 的變數值，將不會反映在其他工作中。
 - 目前不支援 OLEDB 來源中的 *ParameterMapping* 。 因應措施是，請使用 *來引數的 Sql 命令* 做為 *AccessMode* ，並使用 *運算式* 在 sql 命令中插入您的變數/參數。 如需說明，請參閱 *ParameterMappingSample .dtsx* 套件，此套件可在我們的公開預覽容器的 *SelfHostedIRProxy/限制* 資料夾中找到。 您可以使用 Azure 儲存體總管，輸入上述的 SAS URI，以連接到我們的公開預覽容器。
 
 ## <a name="next-steps"></a>後續步驟

@@ -8,26 +8,18 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: matjazl
-ms.openlocfilehash: 7528f9d4e3b3043af1e4790c063eb6ddc6d9a828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d1c4cfcb15d97a2c54a04344f0bd098f65c1392
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87849007"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660367"
 ---
 # <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>使用 Azure CLI 取得 Azure API for FHIR 的存取權杖
 
 在本文中，您將瞭解如何使用 Azure CLI 取得 Azure API for FHIR 的存取權杖。 當您布建 [Azure API for FHIR](fhir-paas-portal-quickstart.md)時，您可以設定一組可以存取服務的使用者或服務主體。 如果您的使用者物件識別碼位於允許的物件識別碼清單中，您可以使用 Azure CLI 取得的權杖來存取服務。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="sign-in-with-azure-cli"></a>使用 Azure CLI 登入
-
-在取得權杖之前，您必須先使用您想要取得權杖的使用者登入：
-
-```azurecli-interactive
-az login
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="obtain-a-token"></a>取得權杖
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c8e454f523f081681d359dfd852c5f88d69a99d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579346"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661047"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽版) 查詢 Parquet 檔
 
@@ -35,7 +35,7 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-請確定您存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂 Azure 身分識別的保護，您將需要設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂 Azure 身分識別的保護，您必須設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 > [!IMPORTANT]
 > 請確定您使用的是某些 UTF-8 資料庫定序 (例如) ， `Latin1_General_100_CI_AS_SC_UTF8` 因為 PARQUET 檔中的字串值是使用 utf-8 編碼進行編碼。
@@ -83,7 +83,7 @@ from openrowset(
 
 ## <a name="prerequisites"></a>Prerequisites
 
-第一步是 **建立資料庫** ，其資料來源是參考 [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 儲存體帳戶。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+第一步是 **建立資料庫**，其資料來源是參考 [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 儲存體帳戶。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
 ## <a name="dataset"></a>資料集
 

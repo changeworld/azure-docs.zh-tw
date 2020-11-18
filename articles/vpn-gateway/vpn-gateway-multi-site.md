@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441573"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660690"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>將站對站連線新增至具有現有 VPN 閘道連線的 VNet (傳統)
 
@@ -71,8 +71,8 @@ ms.locfileid: "89441573"
 2. 設定新的閘道，並建立 VPN 通道。 如需指示，請參閱[指定 SKU 和 VPN 類型](vpn-gateway-howto-site-to-site-classic-portal.md#sku)。 請務必將路由類型指定為「動態」。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>如果您沒有站對站虛擬網路：
-1. 使用下列指示建立站對站虛擬網路：[建立具有站對站 VPN 連線的虛擬網路](vpn-gateway-site-to-site-create.md)。  
-2. 使用下列指示設定動態路由閘道： [設定 VPN 閘道](vpn-gateway-configure-vpn-gateway-mp.md)。 閘道類型務必選取 [動態路由] **** 。
+1. 使用下列指示建立站對站虛擬網路：[建立具有站對站 VPN 連線的虛擬網路](./vpn-gateway-howto-site-to-site-classic-portal.md)。  
+2. 使用下列指示設定動態路由閘道： [設定 VPN 閘道](./vpn-gateway-howto-site-to-site-classic-portal.md)。 閘道類型務必選取 [動態路由]  。
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. 匯出網路設定檔
 

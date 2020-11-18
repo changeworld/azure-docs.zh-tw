@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: bd87f15ff63edf1da447faf986cad2f9591610dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 201318a5a5680f248b831bb480888f106286fbe1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502959"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660027"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>從 Azure CLI 管理 IoT Central
 
@@ -22,24 +22,11 @@ ms.locfileid: "87502959"
 
 您可以使用[Azure CLI](/cli/azure/)來管理您的應用程式，而不需在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-如果您想要在本機電腦上執行 Azure CLI，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。 當您在本機執行 Azure CLI 時，請先使用 **az login 命令登** 入 Azure，然後再嘗試執行本文中的命令。
-
-> [!TIP]
-> 如果您需要在不同的 Azure 訂用帳戶中執行 CLI 命令，請參閱 [變更有效訂](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription)用帳戶。
-
-## <a name="install-the-extension"></a>安裝延伸模組
-
-本文中的命令是 **azure iot** CLI 擴充功能的一部分。 執行下列命令以安裝延伸模組：
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+ - 如果您需要在不同的 Azure 訂用帳戶中執行 CLI 命令，請參閱 [變更有效訂](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription)用帳戶。
 
 ## <a name="create-an-application"></a>建立應用程式
 
@@ -65,7 +52,7 @@ az iot central app create \
 | 參數         | 描述 |
 | ----------------- | ----------- |
 | resource-group    | 包含應用程式的資源群組。 此資源群組必須已經存在於您的訂用帳戶中。 |
-| location          | 根據預設，此命令會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**、**美國** **、英國和****日本**地區建立 IoT Central 應用程式。 |
+| location          | 根據預設，此命令會使用來自資源群組的位置。 目前，您可以在 **澳大利亞**、**亞太地區**、**歐洲**、**美國** **、英國和****日本** 地區建立 IoT Central 應用程式。 |
 | NAME              | 應用程式在 Azure 入口網站中的名稱。 |
 | 子域         | 應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 `https://mysubdomain.azureiotcentral.com`。 |
 | sku               | 目前，您可以使用 **ST1** 或 **ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |

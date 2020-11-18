@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: alzam
-ms.openlocfilehash: 09d39acc867124acfd5c3c38d5c26053218972e7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7c2c1930b8f801db7f70baa5b713a641606be644
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109097"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661166"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory authentication：為 P2S OpenVPN 通訊協定連線設定 VPN 用戶端
 
@@ -30,7 +30,7 @@ ms.locfileid: "92109097"
 
 1. 移至 [開始]，然後選取 [設定] > [隱私權] > 背景應用程式。
 2. 在 [背景應用程式] 底下，確定已開啟 **[讓應用程式在背景中執行** ]。
-3. 在 [選擇可在背景中執行的應用程式] 底下 **，將 [Azure VPN Client 的設定**開啟]。
+3. 在 [選擇可在背景中執行的應用程式] 底下 **，將 [Azure VPN Client 的設定** 開啟]。
 
   ![權限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -62,35 +62,35 @@ ms.locfileid: "92109097"
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>匯入用戶端設定檔
 
-1. 在頁面上，選取 [匯入]****。
+1. 在頁面上，選取 [匯入]。
 
     ![顯示選取 [新增] 按鈕的螢幕擷取畫面，並反白顯示視窗左下角的 [匯入] 動作。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]。
 
     ![顯示已選取設定檔 x m l 檔案的螢幕擷取畫面。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. 指定設定檔的名稱，然後選取 [儲存]****。
+3. 指定設定檔的名稱，然後選取 [儲存]。
 
     ![顯示已醒目提示 [連線名稱] 並選取 [儲存] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
-4. 選取 [連線]**** 以連線至 VPN。
+4. 選取 [連線] 以連線至 VPN。
 
     ![顯示已選取 [VPN] 和 [連線] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]。
 
     ![import](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
-1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]****。
+1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]。
 
     ![顯示已選取省略號和 [移除] 選項的螢幕擷取畫面。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
-2. 選取 [移除]**** 以刪除。
+2. 選取 [移除] 以刪除。
 
-    ![[刪除]](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>建立連接
 
@@ -102,7 +102,7 @@ ms.locfileid: "92109097"
 
     ![顯示反白顯示的 VPN 連接屬性和選取 [儲存] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
-3. 選取 [連線]**** 以連線至 VPN。
+3. 選取 [連線] 以連線至 VPN。
 
     ![顯示已選取 [連接] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
@@ -136,11 +136,11 @@ ms.locfileid: "92109097"
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 
-1. 若要診斷連線問題，您可以使用**診斷**工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]****。
+1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]。
 
     ![省略號和 [診斷選取] 的螢幕擷取畫面。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. 在 [連線屬性]**** 頁面上，選取 [執行診斷]****。
+2. 在 [連線屬性] 頁面上，選取 [執行診斷]。
 
     ![螢幕擷取畫面，顯示已選取 [執行診斷] 的 [連接屬性] 頁面。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
@@ -160,7 +160,7 @@ ms.locfileid: "92109097"
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何? 將 DNS 尾碼新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes>** 新增標記
 
 ```
 <azvpnprofile>
@@ -178,7 +178,7 @@ ms.locfileid: "92109097"
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何? 將自訂 DNS 伺服器新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** 新增標記
 
 ```
 <azvpnprofile>
@@ -194,12 +194,12 @@ ms.locfileid: "92109097"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 用戶端會使用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出下 `ipconfig /all` 。 若要確認使用中的 DNS 設定，請參閱 PowerShell 中的 [get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) 。
+> OpenVPN Azure AD 用戶端會使用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出下 `ipconfig /all` 。 若要確認使用中的 DNS 設定，請參閱 PowerShell 中的 [get-dnsclientnrptpolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?preserve-view=true&view=win10-ps) 。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** 新增標記
 
 ```
 <azvpnprofile>
@@ -217,7 +217,7 @@ ms.locfileid: "92109097"
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何? 區塊 (從 VPN 用戶端排除) 路由？
 
-您可以修改下載的設定檔 XML 檔案，並** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes>** 新增標記
 
 ```
 <azvpnprofile>

@@ -5,19 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb059fe5dc4e64df104e026983e51f799236f916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4a7764cf1ede1cfaf53b1097034c5894660376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660673"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>設定 Service Fabric Mesh CLI
 必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 以下是設定它的方式。
 
 有三種類型的 CLI 可供使用，其摘要說明請見下表。
 
-| CLI 模組 | 目標環境 |  描述 | 
+| CLI 模組 | 目標環境 |  說明 | 
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | 可讓您在 Azure Service Fabric Mesh 環境中部署應用程式和管理資源的主要 CLI。 
 | sfctl | 本機叢集 | 可讓您對本機叢集部署及測試 Service Fabric 資源的 Service Fabric CLI。  
@@ -25,22 +25,23 @@ ms.locfileid: "91842779"
 
 針對預覽版本，Azure Service Fabric Mesh CLI 是以 Azure CLI 擴充功能的形式撰寫。 您可以將其安裝在 Azure Cloud Shell 或 Azure CLI 的本機安裝上。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- 本文需要 Azure CLI 的版本2.0.67 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>安裝 Azure Service Fabric Mesh CLI
-1. 您必須安裝 Azure CLI 2.0.67 版版或更新版本。 執行 `az --version` 以尋找版本。 若要安裝或升級至最新版本的 CLI，請參閱[安裝 Azure CLI][azure-cli-install]。
 
-2. 使用下列命令安裝 Azure Service Fabric Mesh CLI 擴充功能模組。 
+如果您尚未這麼做，請使用下列命令來安裝 Azure Service Fabric 網狀 CLI 延伸模組模組： 
+ 
+```azurecli-interactive
+az extension add --name mesh
+```
 
-    ```azurecli-interactive
-    az extension add --name mesh
-    ```
+如果已安裝，請使用下列命令來更新您現有的 Azure Service Fabric 網狀 CLI 模組：
 
-3. 使用下列命令更新現有的 Azure Service Fabric Mesh CLI 模組。
-
-    ```azurecli-interactive
-    az extension update --name mesh
-    ```
+```azurecli-interactive
+az extension update --name mesh
+```
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>安裝 Service Fabric CLI (sfctl) 
 

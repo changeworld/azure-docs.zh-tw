@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: 瞭解如何搭配標準 SKU 使用公用負載平衡器，以 Azure Kubernetes Service (AKS) 公開您的服務。
 services: container-service
 ms.topic: article
-ms.date: 06/14/2020
+ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634866"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660350"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的公用 Standard Load Balancer) 
 
@@ -87,6 +87,9 @@ default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:320
 * 自訂配置給叢集每個節點的輸出埠數目
 * 設定閒置連接的 timeout 設定
 
+> [!IMPORTANT]
+> 只有一個輸出 IP 選項 (受控 ip、攜帶您自己的 IP 或 IP 首碼) 可在指定的時間使用。
+
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>調整受控輸出公用 Ip 的數目
 
 除了輸入之外，Azure Load Balancer 還提供來自虛擬網路的輸出連線。 輸出規則可以簡單地設定公用 Standard Load Balancer 的輸出網路位址轉譯。
@@ -120,10 +123,11 @@ az aks update \
 
 AKS 所建立的公用 IP 會被視為 AKS 受控資源。 這表示該公用 IP 的生命週期應由 AKS 管理，而且不需要直接在公用 IP 資源上執行任何使用者動作。 或者，您可以在建立叢集時，指派自己的自訂公用 IP 或公用 IP 首碼。 您也可以在現有叢集的負載平衡器屬性上更新您的自訂 Ip。
 
-> [!NOTE]
-> 自訂公用 IP 位址必須由使用者建立及擁有。 AKS 所建立的受控公用 IP 位址不能作為自備自訂 IP 來重複使用，因為它可能會導致管理衝突。
+使用您自己的公用 IP 或首碼的需求：
 
-執行這項操作之前，請確定您符合設定輸出 ip 或輸出 IP 前置詞所需的必要條件 [和條件約束](../virtual-network/public-ip-address-prefix.md#constraints) 。
+- 自訂公用 IP 位址必須由使用者建立及擁有。 AKS 所建立的受控公用 IP 位址不能作為自備自訂 IP 來重複使用，因為它可能會導致管理衝突。
+- 您必須確認 AKS 叢集身分識別 (服務主體或受控識別) 有權存取輸出 IP。 依據 [所需的公用 IP 許可權清單](kubernetes-service-principal.md#networking)。
+- 請確定您符合設定輸出 ip 或輸出 IP 前置詞所需的必要條件 [和條件約束](../virtual-network/public-ip-address-prefix.md#constraints) 。
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>使用您自己的輸出公用 IP 來更新叢集
 
@@ -221,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-此範例會為您的叢集中的每個節點提供4000配置的輸出埠，而7個 Ip 則會有 *每個節點4000個埠 * 100 node = 400k 的埠總數 < = 448k total 埠 = 7 個 ip * 每個 IP 的64k 埠* 。 這可讓您安全地擴充至100節點，並擁有預設的升級作業。 針對升級和其他作業所需的其他節點配置足夠的埠是很重要的。 AKS 預設為一個要升級的緩衝區節點，在此範例中，這需要在任何給定的時間點都有4000的可用埠。 如果使用 [maxSurge 值](upgrade-cluster.md#customize-node-surge-upgrade-preview)，請將每個節點的輸出埠乘以 maxSurge 值。
+此範例會為您的叢集中的每個節點提供4000配置的輸出埠，而7個 Ip 則會有 *每個節點4000個埠 * 100 node = 400k 的埠總數 < = 448k total 埠 = 7 個 ip * 每個 IP 的64k 埠*。 這可讓您安全地擴充至100節點，並擁有預設的升級作業。 針對升級和其他作業所需的其他節點配置足夠的埠是很重要的。 AKS 預設為一個要升級的緩衝區節點，在此範例中，這需要在任何給定的時間點都有4000的可用埠。 如果使用 [maxSurge 值](upgrade-cluster.md#customize-node-surge-upgrade-preview)，請將每個節點的輸出埠乘以 maxSurge 值。
 
 若要安全地前往100節點，您必須新增更多 Ip。
 
@@ -243,7 +247,7 @@ az aks create \
 ### <a name="configure-the-load-balancer-idle-timeout"></a>設定負載平衡器閒置時間
 
 當 SNAT 連接埠資源耗盡時，輸出流程會失敗，直到現有的流程釋出 SNAT 連接埠為止。 Load Balancer 在流程關閉時回收 SNAT 埠，且 AKS 設定的負載平衡器會使用30分鐘的閒置 timeout，從閒置流程回收 SNAT 埠。
-您也可以使用傳輸 (例如 **`TCP keepalives`** ) 或重新整理 **`application-layer keepalives`** 閒置流程，並視需要重設此閒置的超時時間。 您可以依照下列範例設定此超時時間： 
+您也可以使用傳輸 (例如 **`TCP keepalives`**) 或重新整理 **`application-layer keepalives`** 閒置流程，並視需要重設此閒置的超時時間。 您可以依照下列範例設定此超時時間： 
 
 
 ```azurecli-interactive
@@ -359,7 +363,7 @@ SNAT 耗盡的根本原因通常是一種反模式，說明如何建立、管理
 
 如果您現有的叢集使用的是基本 SKU 負載平衡器，而想要進行遷移以便使用具有標準 SKU 負載平衡器的叢集，需要留意一些重要的行為差異。
 
-舉例來說，常見的一種做法是進行藍色/綠色部署來遷移叢集，因為只能在叢集建立時定義叢集的 `load-balancer-sku` 類型。 不過， *基本 sku* 負載平衡器會使用 *基本 sku* ip 位址，因為它們需要 *標準 sku* ip 位址，因此不相容于 *標準 sku* 負載平衡器。 為了升級 Load Balancer SKU 而遷移叢集時，新 IP 位址需要具有相容的 IP 位址 SKU。
+舉例來說，常見的一種做法是進行藍色/綠色部署來遷移叢集，因為只能在叢集建立時定義叢集的 `load-balancer-sku` 類型。 不過，*基本 sku* 負載平衡器會使用 *基本 sku* ip 位址，因為它們需要 *標準 sku* ip 位址，因此不相容于 *標準 sku* 負載平衡器。 為了升級 Load Balancer SKU 而遷移叢集時，新 IP 位址需要具有相容的 IP 位址 SKU。
 
 如需如何遷移叢集的詳細考量，請參閱[我們的遷移考量文件](aks-migration.md)，查看遷移時需要注意的重要主題清單。 在 AKS 中使用標準 SKU 負載平衡器時，以下限制也是需要留意的重要行為差異。
 

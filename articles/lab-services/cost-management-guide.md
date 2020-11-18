@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797627"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659721"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure 實驗室服務的成本管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "88797627"
 
 ## <a name="analyze-the-previous-months-usage"></a>分析上個月的使用量
 
-成本分析是用來查看上個月的使用量，以協助您判斷實驗室的任何調整。 您可以在訂用帳戶 [成本分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)中找到過去成本的明細。 在 [Azure 入口網站] 中，您可以在 [搜尋] 方塊 **中輸入訂** 用帳戶，然後選取 [ **訂閱** ] 選項。 
+成本分析是用來查看上個月的使用量，以協助您判斷實驗室的任何調整。 您可以在訂用帳戶 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)中找到過去成本的明細。 在 [Azure 入口網站] 中，您可以在 [搜尋] 方塊 **中輸入訂** 用帳戶，然後選取 [ **訂閱** ] 選項。 
 
 > [!div class="mx-imgBorder"]
 > ![顯示 [搜尋] 方塊和 [訂閱] 選項的螢幕擷取畫面。](./media/cost-management-guide/subscription-search.png)
@@ -46,7 +46,7 @@ ms.locfileid: "88797627"
 > [!div class="mx-imgBorder"]
 > ![顯示圖表上訂用帳戶成本分析的螢幕擷取畫面。](./media/cost-management-guide/subscription-cost-analysis.png)
 
-此儀表板可進行深入的成本分析，包括依排程匯出至不同檔案類型的能力。 如需詳細資訊，請參閱 [成本管理 + 計費總覽](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)。
+此儀表板可進行深入的成本分析，包括依排程匯出至不同檔案類型的能力。 如需詳細資訊，請參閱 [成本管理 + 計費總覽](../cost-management-billing/cost-management-billing-overview.md)。
 
 您可以依資源類型進行篩選。 使用 `microsoft.labservices/labaccounts` 將只會顯示與實驗室服務相關聯的成本。
 
@@ -57,7 +57,7 @@ ms.locfileid: "88797627"
 > [!div class="mx-imgBorder"]
 > ![顯示訂用帳戶之範例成本分析的螢幕擷取畫面。](./media/cost-management-guide/cost-analysis.png)
 
-根據預設，有六個數據行： **資源**、 **資源類型**、 **位置**、 **資源組名**、 **標記**和 **成本**。 **資源**資料行包含實驗室帳戶、實驗室名稱和 VM 的相關資訊。 顯示實驗室帳戶、實驗室名稱和預設 (第二個數據列和第三個數據) 列的資料列是實驗室的成本。 使用的 Vm 會有成本，可供您看到顯示實驗室帳戶、實驗室名稱、預設值和 VM 名稱的資料列。 
+根據預設，有六個數據行： **資源**、 **資源類型**、 **位置**、 **資源組名**、 **標記** 和 **成本**。 **資源** 資料行包含實驗室帳戶、實驗室名稱和 VM 的相關資訊。 顯示實驗室帳戶、實驗室名稱和預設 (第二個數據列和第三個數據) 列的資料列是實驗室的成本。 使用的 Vm 會有成本，可供您看到顯示實驗室帳戶、實驗室名稱、預設值和 VM 名稱的資料列。 
 
 在此範例中，新增第一個和第二個數據列 (start with **aaalab/dockerlab**) 會提供您 "aaalab" 實驗室帳戶中實驗室 "dockerlab" 的總成本。
 
@@ -70,7 +70,7 @@ ms.locfileid: "88797627"
 
 有些大學使用實驗室帳戶和資源群組做為分隔類別的方式。 每個類別都有自己的實驗室帳戶和資源群組。 
 
-在 [成本分析] 窗格中，根據資源組名新增篩選，該類別具有適當的資源組名。 然後，只會顯示該類別的成本。 這可讓您在查看成本時，在類別之間進行更清楚的略圖。 您可以使用成本分析的 [排程匯出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) 功能，在個別的檔案中下載每個類別的成本。
+在 [成本分析] 窗格中，根據資源組名新增篩選，該類別具有適當的資源組名。 然後，只會顯示該類別的成本。 這可讓您在查看成本時，在類別之間進行更清楚的略圖。 您可以使用成本分析的 [排程匯出](../cost-management-billing/costs/tutorial-export-acm-data.md) 功能，在個別的檔案中下載每個類別的成本。
 
 ## <a name="manage-costs"></a>管理成本
 
@@ -90,7 +90,7 @@ ms.locfileid: "88797627"
 > [!NOTE]
 > 這項設定僅適用于 Windows 虛擬機器。
 
-開啟 [ **當虛擬機器閒置時中斷使用者連線]** 設定時，當 Windows 作業系統認為會話閒置 (包括範本虛擬機器) 時，使用者就會與實驗室中的任何電腦中斷連線。 [WINDOWS OS 的 idle 定義](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)會使用兩個準則： 
+開啟 [ **當虛擬機器閒置時中斷使用者連線]** 設定時，當 Windows 作業系統認為會話閒置 (包括範本虛擬機器) 時，使用者就會與實驗室中的任何電腦中斷連線。 [WINDOWS OS 的 idle 定義](/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)會使用兩個準則： 
 
 * 使用者缺席：沒有鍵盤或滑鼠輸入。
 * 缺少資源耗用量：所有處理器和所有磁片都處於閒置狀態的特定時間百分比。
@@ -106,7 +106,7 @@ ms.locfileid: "88797627"
 
 例如，如果您依照下列方式設定設定：
  
-* **當虛擬機器閒置時，中斷使用者**的連線：偵測到閒置狀態後的15分鐘。
+* **當虛擬機器閒置時，中斷使用者** 的連線：偵測到閒置狀態後的15分鐘。
 * **當使用者中斷連線時，關閉虛擬機器**：使用者中斷連線後的5分鐘。
  
 Windows 虛擬機器將會在使用者停止使用後的20分鐘內自動關機。 
@@ -122,7 +122,7 @@ Windows 虛擬機器將會在使用者停止使用後的20分鐘內自動關機�
 * 若為 Linux，SSH 連線已中斷連接。
  
 > [!NOTE]
-> 只支援 [特定的 linux 散發套件和版本](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) 。
+> 只支援 [特定的 linux 散發套件和版本](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions) 。
  
 您可以指定虛擬機器在自動關機之前，應等候使用者重新連線的時間長度。 
 

@@ -8,19 +8,19 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f348a8d8755402d6426f19eabc432f54e3fb8e42
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630544"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659653"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT Connector for FHIR (預覽) 對應範本
 本文將詳細說明如何使用對應範本來設定快速健康照護互通資源 (FHIR&#174;) * 的 Azure IoT Connector。
 
-適用于 FHIR 的 Azure IoT Connector 需要兩種類型的 JSON 型對應範本。 第一個類型（ **裝置對應** ）負責對應傳送至 `devicedata` Azure 事件中樞端點的裝置承載。 它會將類型、裝置識別碼、測量日期時間，以及測量值 (s 解壓縮) 。 第二種類型 **FHIR 對應** 會控制 FHIR 資源的對應。 它允許設定觀察期間的長度、用來儲存值的 FHIR 資料類型，以及術語代碼 (s) 。 
+適用于 FHIR 的 Azure IoT Connector 需要兩種類型的 JSON 型對應範本。 第一個類型（ **裝置對應**）負責對應傳送至 `devicedata` Azure 事件中樞端點的裝置承載。 它會將類型、裝置識別碼、測量日期時間，以及測量值 (s 解壓縮) 。 第二種類型 **FHIR 對應** 會控制 FHIR 資源的對應。 它允許設定觀察期間的長度、用來儲存值的 FHIR 資料類型，以及術語代碼 (s) 。 
 
-對應範本會根據其類型組成 JSON 檔。 這些 JSON 檔接著會透過 Azure 入口網站新增至您的 Azure IoT Connector for FHIR。 裝置對應檔是透過 [設定 **FHIR 對應** ] 頁面，在 [ **設定裝置對應** ] 頁面和 FHIR 對應檔中新增的。
+對應範本會根據其類型組成 JSON 檔。 這些 JSON 檔接著會透過 Azure 入口網站新增至您的 Azure IoT Connector for FHIR。 裝置對應檔是透過 [設定 **FHIR 對應**] 頁面，在 [**設定裝置對應**] 頁面和 FHIR 對應檔中新增的。
 
 > [!NOTE]
 > 對應範本會儲存在基礎 blob 儲存體中，並在每次計算執行時從 blob 載入。 更新之後，它們應該會立即生效。 
@@ -28,7 +28,7 @@ ms.locfileid: "94630544"
 ## <a name="device-mapping"></a>裝置對應
 裝置對應提供的對應功能可將裝置內容解壓縮為一般格式，以供進一步評估之用。 每個收到的訊息都會針對所有範本進行評估。 這種方法可將單一輸入訊息投射至多個輸出訊息，這些訊息稍後會對應到 FHIR 中的不同觀察。 結果是正規化的資料物件，代表範本所剖析的值或值。 正規化資料模型有幾個必要的屬性必須找到和解壓縮：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | - | - |
 |**型別**|要分類度量的名稱/型別。 這個值是用來系結至所需的 FHIR 對應範本。  多個範本可以輸出成相同的類型，讓您能夠將不同的標記法對應到多個裝置，以提供單一的一般輸出。|
 |**OccurenceTimeUtc**|測量發生的時間。|
@@ -60,19 +60,19 @@ ms.locfileid: "94630544"
 ```
 
 ### <a name="mapping-with-json-path"></a>使用 JSON 路徑對應
-目前支援的兩種裝置內容範本類型依賴 JSON 路徑，以符合所需的範本和解壓縮的值。 您可以在 [這裡](https://goessner.net/articles/JsonPath/)找到 JSON 路徑的詳細資訊。 這兩種範本類型都會使用 [json .net 執行](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) 來解析 json 路徑運算式。
+目前支援的三種裝置內容範本類型依賴 JSON 路徑，以符合所需的範本和解壓縮的值。 您可以在 [這裡](https://goessner.net/articles/JsonPath/)找到 JSON 路徑的詳細資訊。 這三種範本類型都使用 [json .net 實](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) 作為解析 json 路徑運算式。
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 JsonPathContentTemplate 可讓您使用 JSON 路徑來比對和解壓縮事件中樞訊息中的值。
 
-| 屬性 | 描述 |<div style="width:150px">範例</div>
+| 屬性 | 說明 |<div style="width:150px">範例</div>
 | --- | --- | --- 
 |**TypeName**|要與符合範本的度量產生關聯的型別。|`heartrate`
 |**TypeMatchExpression**|針對事件中樞裝載評估的 JSON 路徑運算式。 如果找到相符的 JToken，則會將範本視為相符。 所有後續的運算式都會針對此處所符合的已解壓縮 JToken 進行評估。|`$..[?(@heartRate)]`
 |**TimestampExpression**|JSON 路徑運算式，用來將量測 OccurenceTimeUtc 的時間戳記值解壓縮。|`$.endDate`
 |**DeviceIdExpression**|用來將裝置識別碼解壓縮的 JSON 路徑運算式。|`$.deviceId`
-|**PatientIdExpression**|*選擇性* ：要將患者識別碼解壓縮的 JSON 路徑運算式。|`$.patientId`
-|**EncounterIdExpression**|*選擇性* ：要將遇到識別碼解壓縮的 JSON 路徑運算式。|`$.encounterId`
+|**PatientIdExpression**|*選擇性*：要將患者識別碼解壓縮的 JSON 路徑運算式。|`$.patientId`
+|**EncounterIdExpression**|*選擇性*：要將遇到識別碼解壓縮的 JSON 路徑運算式。|`$.encounterId`
 |**值 []。ValueName**|要與後續運算式所解壓縮之值相關聯的名稱。 用來系結 FHIR 對應範本中的必要值/元件。 |`hr`
 |**值 []。ValueExpression**|要將必要值解壓縮的 JSON 路徑運算式。|`$.heartRate`
 |**值 []。必填**|將需要值存在於裝載中。  如果找不到，將不會產生量值，而且會擲回 InvalidOperationException。|`true`
@@ -251,10 +251,12 @@ JsonPathContentTemplate 可讓您使用 JSON 路徑來比對和解壓縮事件�
     }
 }
 ```
+
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
+
 IotJsonPathContentTemplate 與 JsonPathContentTemplate 類似，但不需要 DeviceIdExpression 和 TimestampExpression。
 
-使用此範本時的假設是使用 [Azure IoT 中樞裝置 sdk](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)來傳送要評估的訊息。 使用這些 Sdk 時，裝置身分識別 (假設 Azure Iot 中樞/Central 中的裝置識別碼已註冊為目的地 FHIR 伺服器上裝置資源的識別碼) 且已知訊息的時間戳記。 如果您使用 Azure IoT 中樞裝置 Sdk，但在訊息本文中使用自訂屬性作為裝置身分識別或測量時間戳記，您仍然可以使用 JsonPathContentTemplate。
+使用此範本時的假設是使用[Azure IoT 中樞裝置 sdk](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)傳送的訊息，或是[Azure IoT Central](../iot-central/core/overview-iot-central.md)的[ (舊版) 功能中匯出資料](../iot-central/core/howto-export-data-legacy.md)。 使用這些 Sdk 時，裝置身分識別 (假設 Azure Iot 中樞/Central 中的裝置識別碼已註冊為目的地 FHIR 伺服器上裝置資源的識別碼) 且已知訊息的時間戳記。 如果您使用 Azure IoT 中樞裝置 Sdk，但在訊息本文中使用自訂屬性作為裝置身分識別或測量時間戳記，您仍然可以使用 JsonPathContentTemplate。
 
 *注意：使用 IotJsonPathContentTemplate 時，TypeMatchExpression 應該將整個訊息解析為 JToken。請參閱下列範例。* 
 ##### <a name="examples"></a>範例
@@ -332,13 +334,108 @@ IotJsonPathContentTemplate 與 JsonPathContentTemplate 類似，但不需要 Dev
 }
 ```
 
+#### <a name="iotcentraljsonpathcontenttemplate"></a>IotCentralJsonPathContentTemplate
+
+IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampExpression，而且會在評估的訊息透過[Azure IoT Central](../iot-central/core/overview-iot-central.md)的 [[匯出資料](../iot-central/core/howto-export-data.md)] 功能傳送時使用。 使用這項功能時，裝置身分識別 (假設 Azure Iot Central 中的裝置識別碼已註冊為目的地 FHIR 伺服器上裝置資源的識別碼) 且已知訊息的時間戳記。 如果您使用 Azure IoT Central 的資料匯出功能，但在訊息本文中使用自訂屬性來取得裝置身分識別或測量時間戳記，您仍然可以使用 JsonPathContentTemplate。
+
+*注意：使用 IotCentralJsonPathContentTemplate 時，TypeMatchExpression 應該將整個訊息解析為 JToken。請參閱下列範例。* 
+##### <a name="examples"></a>範例
+---
+**心率**
+
+*Message*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "HeartRate": "88",
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*範本*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "heartrate",
+        "typeMatchExpression": "$..[?(@telemetry.HeartRate)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.HeartRate",
+                "valueName": "hr"
+            }
+        ]
+    }
+}
+```
+---
+**血壓**
+
+*Message*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "BloodPressure": {
+            "Diastolic": "87",
+            "Systolic": "123"
+        }
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*範本*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "bloodPressure",
+        "typeMatchExpression": "$..[?(@telemetry.BloodPressure.Diastolic && @telemetry.BloodPressure.Systolic)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Diastolic",
+                "valueName": "bp_diastolic"
+            },
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Systolic",
+                "valueName": "bp_systolic"
+            }
+        ]
+    }
+}
+```
+
 ## <a name="fhir-mapping"></a>FHIR 對應
 一旦將裝置內容解壓縮到正規化模型之後，資料就會根據裝置識別碼、量測類型和時間週期進行收集和分組。 傳送此群組的輸出以轉換成 FHIR 資源 ([觀察](https://www.hl7.org/fhir/observation.html) 目前) 。 在這裡，FHIR 對應範本會控制資料如何對應至 FHIR 觀察。 是否應該針對某個時間點或一小時內的某個時間點建立觀察？ 應該將哪些代碼新增至觀察？ 值應該以 [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) 或 [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity)表示嗎？ 這些資料類型都是 FHIR mapping configuration 控制項的選項。
 
 ### <a name="codevaluefhirtemplate"></a>CodeValueFhirTemplate
 CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。  它可讓您定義程式碼、有效期間，以及觀察值。 支援多個實數值型別： [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData)、 [CodeableConcept](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)和 [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity)。 以及這些可設定的值，系統會自動處理觀察資源的識別碼，並連結至適當的裝置和患者資源。
 
-| 屬性 | 描述 
+| 屬性 | 說明 
 | --- | ---
 |**TypeName**| 此範本應系結的度量類型。 至少應該有一個輸出此類型的裝置對應範本。
 |**PeriodInterval**|所建立的觀察所應代表的時間長度。 支援的值為 0 (實例) ，60 (一小時) 1440 (一天) 。
@@ -357,7 +454,7 @@ CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。 
 #### <a name="sampleddata"></a>SampledData
 表示 [SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR 資料類型。觀察測量值會寫入值資料流程，從某個時間點開始，並使用定義的期間來遞增。 如果沒有任何值，將會 `E` 寫入資料流程中。 如果句點是讓兩個以上的值在資料流程中佔用相同的位置，則會使用最新的值。 更新使用 SampledData 的觀察時，會套用相同的邏輯。
 
-| 屬性 | 描述 
+| 屬性 | 說明 
 | --- | ---
 |**DefaultPeriod**|要使用的預設期間（以毫秒為單位）。 
 |**單位**|要在 SampledData 原點上設定的單位。 
@@ -365,16 +462,16 @@ CodeValueFhirTemplate 目前是目前在 FHIR 對應中唯一支援的範本。 
 #### <a name="quantity"></a>數量
 表示 [Quantity](http://hl7.org/fhir/datatypes.html#Quantity) FHIR 資料類型。 如果群組中有一個以上的值，則只會使用第一個值。 當新值抵達時，對應到相同的觀察值，就會覆寫舊值。
 
-| 屬性 | 描述 
+| 屬性 | 說明 
 | --- | --- 
 |**單位**| 單位標記法。
-|「程式碼」| 單位的編碼形式。
+|**Code**| 單位的編碼形式。
 |**系統**| 定義編碼單元表單的系統。
 
 ### <a name="codeableconcept"></a>CodeableConcept
 表示 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) FHIR 資料類型。 不會使用實際值。
 
-| 屬性 | 描述 
+| 屬性 | 說明 
 | --- | --- 
 |**Text**|純文字標記法。 
 |**代碼**|要套用至所建立之觀察的一或多個 [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。

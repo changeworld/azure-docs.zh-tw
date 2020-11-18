@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 83ae4185d22a6578130ca96c06ac1e5d0c25b375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2c5afbaa9ee9d531c6995fdeeab7bf38bf1e2d55
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541361"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660962"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 建立具有站對站 VPN 連線的虛擬網路
 
@@ -117,7 +117,7 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 輸入下列值：
 
 * *--閘道-ip 位址* 是您內部部署 VPN 裝置的 ip 位址。
-* --local-address-prefixes  是內部部署位址空間。
+* --local-address-prefixes 是內部部署位址空間。
 
 使用 [az network local-gateway create](/cli/azure/network/local-gateway) 命令新增具有多個位址首碼的區域網路閘道：
 
@@ -141,8 +141,8 @@ az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocati
 
 輸入下列值：
 
-* 站對站設定的 *--閘道類型* 是 *Vpn* 。 閘道器類型永遠是您實作的組態的特定類型。 如需詳細資訊，請參閱[閘道類型](vpn-gateway-about-vpn-gateway-settings.md#gwtype)。
-* --vpn-type  可以是 RouteBased  (在某些文件中稱為動態閘道器)，或 PolicyBased  (在某些文件中稱為靜態閘道器)。 這是您所連線裝置之需求的特有設定。 如需 VPN 閘道類型的詳細資訊，請參閱[關於 VPN 閘道組態設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。
+* 站對站設定的 *--閘道類型* 是 *Vpn*。 閘道器類型永遠是您實作的組態的特定類型。 如需詳細資訊，請參閱[閘道類型](vpn-gateway-about-vpn-gateway-settings.md#gwtype)。
+* --vpn-type 可以是 RouteBased (在某些文件中稱為動態閘道器)，或 PolicyBased (在某些文件中稱為靜態閘道器)。 這是您所連線裝置之需求的特有設定。 如需 VPN 閘道類型的詳細資訊，請參閱[關於 VPN 閘道組態設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。
 * 選取您想要使用的閘道 SKU。 某些 SKU 有組態限制。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 使用 [az network vnet-gateway create](/cli/azure/network/vnet-gateway) 命令建立 VPN 閘道。 如果您使用 '--no-wait' 參數執行此命令，您不會看到任何意見反應或輸出。 此參數允許在背景中建立閘道。 大約需要 45 分鐘的時間來建立閘道。
@@ -194,12 +194,12 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 
 [!INCLUDE [local network gateway common tasks](../../includes/vpn-gateway-common-tasks-cli-include.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-* 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。
+* 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](../index.yml)。
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 * 如需強制通道的相關資訊，請參閱 [關於強制通道](vpn-gateway-forced-tunneling-rm.md)。
 * 如需高可用性主動-主動連線的相關資訊，請參閱[高可用性跨單位和 VNet 對 VNet 連線能力](vpn-gateway-highlyavailable.md)。
-* 如需 Azure CLI 網路命令的清單，請參閱 [Azure CLI](https://docs.microsoft.com/cli/azure/network)。
+* 如需 Azure CLI 網路命令的清單，請參閱 [Azure CLI](/cli/azure/network)。
 * 如需使用 Azure Resource Manager 範本來建立站對站 VPN 連線的相關資訊，請參閱 [建立站對站 Vpn 連接](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)。
 * 如需使用 Azure Resource Manager 範本建立 vnet 對 vnet VPN 連線的相關資訊，請參閱 [部署 HBase 異地](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)複寫。

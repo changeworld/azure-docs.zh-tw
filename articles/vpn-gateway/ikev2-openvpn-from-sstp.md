@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59aa6f5560917651d8f60c667145b0953bf72ef5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442173"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660860"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>從 SSTP 轉換至 OpenVPN 通訊協定或 IKEv2
 
@@ -24,7 +24,7 @@ ms.locfileid: "91442173"
 
 * **OpenVPN &reg; 通訊協定**，以 SSL/TLS 為基礎的 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出（SSL 會使用此埠）。 OpenVPN 可用於從 Android、iOS (11.0 版和更新版本) 、Windows、Linux 和 Mac 裝置， (OSX 10.13 版和更新版本) 。
 
-* ** (SSTP) 的安全通訊端通道通訊協定 **，這是專屬的 SSL 型 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出（SSL 會使用此埠）。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。 **SSTP 最多可支援128個並行連線，無論閘道 SKU**為何。
+* **(SSTP) 的安全通訊端通道通訊協定**，這是專屬的 SSL 型 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出（SSL 會使用此埠）。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。 **SSTP 最多可支援128個並行連線，無論閘道 SKU** 為何。
 
 * IKEv2 VPN，標準型 IPsec VPN 解決方案。 IKEv2 VPN 可用於從 Mac 裝置連線 (OSX 版本 10.11 和更新版本)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "91442173"
 
 **IKEv2 使用非標準的 UDP 埠，因此您必須確保這些埠不會在使用者的防火牆上遭到封鎖。使用中的埠是 UDP 500 和4500。**
 
-若要將 IKEv2 新增至現有的閘道，只要移至入口網站中虛擬網路閘道底下的 [點對站設定] 索引標籤，然後從下拉式方塊中選取 [ **IKEv2 和 SSTP (SSL) ** 。
+若要將 IKEv2 新增至現有的閘道，只要移至入口網站中虛擬網路閘道底下的 [點對站設定] 索引標籤，然後從下拉式方塊中選取 [ **IKEv2 和 SSTP (SSL)** 。
 
 ![顯示 [點對站設定] 頁面的螢幕擷取畫面，其中已選取 [通道類型] 下拉式清單，並已選取 [IKEv2 和 SSTP (SSL) ]。](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
@@ -54,13 +54,13 @@ ms.locfileid: "91442173"
 
 因為 SSTP 和 OpenVPN 都是以 TLS 為基礎的通訊協定，所以它們不能並存于相同的閘道。 如果您決定將 SSTP 移至 OpenVPN，則必須停用 SSTP 並在閘道上啟用 OpenVPN。 在用戶端上設定新設定檔之前，這種作業會導致現有的用戶端失去對 VPN 閘道的連線能力。
 
-如果您想要的話，可以搭配 IKEv2 來啟用 OpenVPN。 OpenVPN 是以 TLS 為基礎，而且會使用標準 TCP 443 埠。 若要切換到 OpenVPN，請移至入口網站中虛擬網路閘道底下的 [點對站設定] 索引標籤，然後從下拉式方塊中選取 [ **OpenVPN (ssl) ** 或 [ **IKEv2 和 OpenVPN (ssl) ** ]。
+如果您想要的話，可以搭配 IKEv2 來啟用 OpenVPN。 OpenVPN 是以 TLS 為基礎，而且會使用標準 TCP 443 埠。 若要切換到 OpenVPN，請移至入口網站中虛擬網路閘道底下的 [點對站設定] 索引標籤，然後從下拉式方塊中選取 [ **OpenVPN (ssl)** 或 [ **IKEv2 和 OpenVPN (ssl)** ]。
 
 ![點對站](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-設定閘道之後，除非您 [部署和設定 OpenVPN 用戶端](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)，否則現有的用戶端將無法連接。
+設定閘道之後，除非您 [部署和設定 OpenVPN 用戶端](./vpn-gateway-howto-openvpn-clients.md)，否則現有的用戶端將無法連接。
 
-如果您使用 Windows 10，也可以使用 [適用于 Windows 的 Azure VPN Client](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client)
+如果您使用 Windows 10，也可以使用 [適用于 Windows 的 Azure VPN Client](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client)
 
 
 ## <a name="frequently-asked-questions"></a>常見問題集

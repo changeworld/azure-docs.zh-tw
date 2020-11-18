@@ -3,12 +3,12 @@ title: 管理 Azure Service Fabric 叢集上的憑證
 description: 說明如何在 Service Fabric 叢集新增新的憑證、變換憑證及移除憑證。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869740"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660894"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>新增或移除 Azure 中 Service Fabric 叢集的憑證
 建議您熟悉 Service Fabric 使用 X.509 憑證的方式，以及熟悉[叢集安全性案例](service-fabric-cluster-security.md)。 您必須瞭解什麼是叢集憑證及其用途，方可繼續進行後續作業。
@@ -18,7 +18,7 @@ Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日�
 當您在叢集建立期間設定憑證安全性時，除了用戶端憑證之外，Service Fabric 還可讓您指定兩個叢集憑證：主要與次要。 請參閱[透過入口網站建立 Azure 叢集](service-fabric-cluster-creation-via-portal.md)或[透過 Azure Resource Manager 建立 Azure 叢集](service-fabric-cluster-creation-via-arm.md)，以詳細了解如何在建立這些叢集時進行叢集設定。 如果您在建立時僅指定一個叢集憑證，該憑證就會作為主要憑證。 在叢集建立完成後，您可新增憑證做為次要憑證。
 
 > [!NOTE]
-> 針對安全叢集，您一律必須至少部署一個有效 (未撤銷或過期) 的叢集憑證 (主要或次要)，否則叢集將停止運作。 在所有有效憑證到達到期日的 90 天前，系統會針對節點產生警告追蹤與警告健康狀態事件。 目前並無 Service Fabric 針對此文章送出的電子郵件或其他任何通知。 
+> 針對安全叢集，您一律必須至少部署一個有效 (未撤銷或過期) 的叢集憑證 (主要或次要)，否則叢集將停止運作。 在所有有效憑證達到到期前的90天內，系統會在節點上產生警告追蹤和警告健康情況事件。 這些是目前唯一 Service Fabric 傳送有關憑證到期的通知。
 > 
 > 
 
@@ -26,7 +26,7 @@ Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>使用入口網站來新增次要叢集憑證
-您無法透過 Azure 入口網站使用 Azure PowerShell 新增次要叢集憑證。 本文件稍後會簡要說明此程序。
+無法透過 Azure 入口網站新增次要叢集憑證;使用 Azure PowerShell。 本文件稍後會簡要說明此程序。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用入口網站來移除叢集憑證
 針對安全叢集，您一律必須至少有一個有效 (未撤銷或過期) 的憑證。 以最晚到期日部署的憑證一定在使用中，如果移除，叢集會停止運作；請確保只移除過期的憑證，或未使用且最快到期的憑證。
@@ -52,7 +52,7 @@ Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日�
 
 1. 開啟您用來部署叢集的 Resource Manager 範本。 (如果您已從上述存放庫下載該範例，則請使用 5-VM-1-NodeTypes-Secure_Step1.JSON 來部署一個安全的叢集，然後開啟該範本)。
 
-2. 將類型為 "string" 的**兩個新參數** "secCertificateThumbprint" 和 "secCertificateUrlValue" 新增到您範本的參數區段。 您可以複製下列程式碼片段並新增到範本中。 視您的範本來源而定，這些有可能已經定義好，如果是這樣，請移至下一個步驟。 
+2. 將類型為 "string" 的 **兩個新參數** "secCertificateThumbprint" 和 "secCertificateUrlValue" 新增到您範本的參數區段。 您可以複製下列程式碼片段並新增到範本中。 視您的範本來源而定，這些有可能已經定義好，如果是這樣，請移至下一個步驟。 
  
     ```json
        "secCertificateThumbprint": {
@@ -104,7 +104,7 @@ Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日�
          }
     ``` 
 
-4. 對**所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動至 "publisher":"Microsoft.Azure.ServiceFabric" (在 "virtualMachineProfile" 下)。
+4. 對 **所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動至 "publisher":"Microsoft.Azure.ServiceFabric" (在 "virtualMachineProfile" 下)。
 
     在 Service Fabric 發行者設定中，您應該會看到像這樣的畫面。
     
@@ -142,7 +142,7 @@ Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日�
     屬性現在應該看起來像這樣    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. 對**所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動到 "OSProfile" 底下的 "vaultCertificates":。 您應該會看到類似下面的畫面。
+5. 對 **所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動到 "OSProfile" 底下的 "vaultCertificates":。 您應該會看到類似下面的畫面。
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -208,7 +208,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-以下是已填入資料的相同 Powershell 範例。
+以下是相同 PowerShell 的填寫範例。
 
 ```powershell
 $ResourceGroup2 = "chackosecure5"
@@ -277,7 +277,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>將應用程式憑證新增至虛擬機器擴展集
 
-若要將您用於應用程式的憑證部署到叢集，請參閱[此範例 Powershell 指令碼](scripts/service-fabric-powershell-add-application-certificate.md)。
+若要將用於應用程式的憑證部署到您的叢集，請參閱 [這個範例 PowerShell 腳本](scripts/service-fabric-powershell-add-application-certificate.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需有關叢集管理的詳細資訊，請參閱下列文件︰

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 548393353d38082c175cde20eef1e93017cdd31a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: eef78ffefe8fe13e6f160e38a05405a80d6e46f8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639165"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660945"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虛擬桌面 RDP Shortpath (preview) 
 
@@ -53,7 +53,7 @@ RDP Shortpath 使用工作階段主機的憑證，在用戶端與會話主機之
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath 網路連線的圖表" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 若要支援 RDP Shortpath，Windows 虛擬桌面用戶端必須能夠直接看到工作階段主機。 您可以使用下列其中一種技術來取得直接的瞭解：
 
@@ -109,15 +109,15 @@ Set-GPPrefRegistryValue -Key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Ser
 若要允許 RDP Shortpath 的輸入網路流量，請使用群組原則管理 MMC 嵌入式管理單元中的 [具有 Advanced Security 的 Windows Defender 防火牆] 節點來建立防火牆規則。
 
 1. 開啟群組原則管理主控台，以 [使用 Advanced Security Windows Defender 防火牆](/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security)。
-2. 在流覽窗格中，選取 [ **輸入規則** ]。
-3. 選取 [ **動作** ]，然後選取 [ **新增規則** ]。
-4. 在 [新增輸入規則] 嚮導的 [ **規則類型** ] 頁面上，選取 [ **自訂** ]，然後選取 **[下一步]** 。
-5. 在 [ **程式** ] 頁面上，選取 [ **這個程式路徑** ]，然後輸入 "% SystemRoot% \system32\svchost.exe '，然後選取 **[下一步]** 。
-6. 在 [ **通訊協定和埠** ] 頁面上，選取 UDP 通訊協定類型。 在 [ **本機埠** ] 中選取 [特定埠]，然後輸入3390。
-7. 您可以在 [範圍] 頁面中，指定規則只套用到在此頁面上輸入之 IP 位址的連入或連出網路流量。 針對您的設計適當地設定，然後選取 **[下一步]** 。
-8. 在 [ **動作** ] 頁面上，選取 [ **允許** 連線]，然後選取 **[下一步]** 。
-9. 在 [ **設定檔** ] 頁面上，選取要套用此規則的網路位置類型，然後選取 **[下一步]** 。
-10. 在 [ **名稱** ] 頁面上，輸入規則的名稱和描述，然後選取 **[完成]** 。
+2. 在流覽窗格中，選取 [ **輸入規則**]。
+3. 選取 [ **動作**]，然後選取 [ **新增規則**]。
+4. 在 [新增輸入規則] 嚮導的 [ **規則類型** ] 頁面上，選取 [ **自訂**]，然後選取 **[下一步]**。
+5. 在 [ **程式** ] 頁面上，選取 [ **這個程式路徑**]，然後輸入 "% SystemRoot% \system32\svchost.exe '，然後選取 **[下一步]**。
+6. 在 [ **通訊協定和埠** ] 頁面上，選取 UDP 通訊協定類型。 在 [ **本機埠**] 中選取 [特定埠]，然後輸入3390。
+7. 您可以在 [範圍] 頁面中，指定規則只套用到在此頁面上輸入之 IP 位址的連入或連出網路流量。 針對您的設計適當地設定，然後選取 **[下一步]**。
+8. 在 [ **動作** ] 頁面上，選取 [ **允許** 連線]，然後選取 **[下一步]**。
+9. 在 [ **設定檔** ] 頁面上，選取要套用此規則的網路位置類型，然後選取 **[下一步]**。
+10. 在 [ **名稱** ] 頁面上，輸入規則的名稱和描述，然後選取 **[完成]**。
 
 您可以驗證新規則是否符合以下螢幕擷取畫面： :::image type="content" source="media/rdp-shortpath-firewall-general-tab.png" alt-text="RDP Shortpath 網路連線的防火牆設定 [一般]" lightbox="media/rdp-shortpath-firewall-general-tab.png":::索引標籤的螢幕擷取畫面
 
@@ -150,10 +150,11 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 遵循 [網路安全性群組檔](../virtual-machines/windows/nsg-quickstart-portal.md) 來建立輸入安全性規則，以允許具有下列參數的流量：
 
 * **來源**  - 用戶端所在的 **任何** 或 IP 範圍
-* **來源埠範圍** -* *\** _ _ **目的地**  -  **任何**
+* **來源埠範圍**-* *\** _ _ **目的地**  -  **任何**
+* **目的地埠範圍**  - **3390**
 * **通訊協定**  - **UDP**
 * **動作**  - **允許**
-* （選擇性）變更 **優先順序** 。 優先順序會影響規則的套用順序，數值越低的規則越早套用。
+* （選擇性）變更 **優先順序**。 優先順序會影響規則的套用順序，數值越低的規則越早套用。
 * **名稱** -- **RDP Shortpath**
 
 ### <a name="disabling-rdp-shortpath-for-a-specific-subnet"></a>停用特定子網的 RDP Shortpath
@@ -234,17 +235,22 @@ Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).Owni
 
 若要停用特定用戶端的 RDP Shortpath，您可以使用下列群組原則來停用 UDP 支援：
 
-1. 在用戶端上，執行 **gpedit.msc** 。
-2. 流覽至 [ **電腦設定 > 系統管理範本] > [Windows 元件] > 遠端桌面服務 > 遠端桌面連線用戶端** 。
-3. 將 [ **在用戶端上關閉 UDP]** 設定設為 [ **已啟用** ]
+1. 在用戶端上，執行 **gpedit.msc**。
+2. 流覽至 [ **電腦設定 > 系統管理範本] > [Windows 元件] > 遠端桌面服務 > 遠端桌面連線用戶端**。
+3. 將 [**在用戶端上關閉 UDP]** 設定設為 [**已啟用**]
 
 ### <a name="disabling-rdp-shortpath-on-the-session-host"></a>停用工作階段主機上的 RDP Shortpath
 
 若要停用特定工作階段主機的 RDP Shortpath，您可以使用下列群組原則來停用 UDP 支援：
 
-1. 在工作階段主機上執行 **gpedit.msc** 。
-2. 流覽至 [ **電腦設定 > 系統管理範本] > [Windows 元件] > 遠端桌面服務 > 遠端桌面連線主機 > 連接** 。
-3. 將 [ **選取 RDP 傳輸通訊協定]** 設定設為 [ **僅限 TCP** ]
+1. 在工作階段主機上執行 **gpedit.msc**。
+2. 流覽至 [ **電腦設定 > 系統管理範本] > [Windows 元件] > 遠端桌面服務 > 遠端桌面連線主機 > 連接**。
+3. 將 [**選取 RDP 傳輸通訊協定]** 設定設為 [**僅限 TCP** ]
+
+## <a name="feedback"></a>意見反應
+
+我們想要聽取您對於此公開預覽體驗的意見！
+* 針對問題、要求、批註和其他意見反應，請 [使用此意見反應表單](https://aka.ms/RDPShortpathFeedback)。
 
 ## <a name="next-steps"></a>後續步驟
 

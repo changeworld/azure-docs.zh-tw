@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定使用 GitOps (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, 容器
-ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371251"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659789"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集 (預覽版上使用 Gitops) 將部署設定) 
 
@@ -99,7 +99,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | 狀況 | [格式] | 描述 |
 | ------------- | ------------- | ------------- |
 | 公用 Git 存放庫 | HTTP [s]：//server/repo.git 或 git://server/repo.git   | 公用 Git 存放庫  |
-| 私人 Git 存放庫– SSH – Flux 建立的金鑰 | ssh：//[user@] server/存放庫。 git 或 [user@] 伺服器：存放庫 git | Flux 所產生的公開金鑰必須新增至您 Git 服務提供者中的使用者帳戶或存放庫。 在 [這裡](#apply-configuration-from-a-private-git-repository) |
+| 私人 Git 存放庫– SSH – Flux 建立的金鑰 | ssh：//[user@] server/存放庫。 git 或 [user@] 伺服器：存放庫 git | Flux 產生的公開金鑰必須加入至您 Git 服務提供者中的使用者帳戶。 如果將部署金鑰新增至存放庫而非使用者帳戶，請使用 `git@` 取代 `user@` 。 在 [這裡](#apply-configuration-from-a-private-git-repository) |
 
 Flux 支援這些案例，但尚未由 sourceControlConfiguration 支援。
 
@@ -220,18 +220,28 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 1. 在 Azure 入口網站中，瀏覽至連線的叢集資源。
 2. 在資源頁面中選取 [設定]，並查看此叢集的設定清單。
 3. 選取使用私人 Git 存放庫的設定。
-4. 在開啟的內容視窗中，複製視窗底部的**存放庫公開金鑰**。
+4. 在開啟的內容視窗中，複製視窗底部的 **存放庫公開金鑰**。
 
-**將公開金鑰當做部署金鑰新增至 Git 存放庫**
+如果您使用的是 GitHub，請使用下列2個選項的其中一個：
+
+**選項1：將公開金鑰加入您的使用者帳戶**
+
+1. 開啟 GitHub，按一下頁面右上角的設定檔圖示。
+2. 按一下 [**設定**]
+3. 按一下 **SSH 和 GPG 金鑰**
+4. 按一下 [**新增 SSH 金鑰**]
+5. 提供標題
+6. 貼上公開金鑰 (不包括周圍的所有引號)
+7. 按一下 [**新增 SSH 金鑰**]
+
+**選項2：將公開金鑰做為部署金鑰加入至 git 存放庫**
 
 1. 開啟 GitHub、流覽至您的存放庫、至 **設定**，然後 **部署金鑰**
-2. 按一下 [新增部署金鑰]
+2. 按一下 [**新增部署金鑰**]
 3. 提供標題
-4. 檢查**允許寫入權限**
+4. 檢查 **允許寫入權限**
 5. 貼上公開金鑰 (不包括周圍的所有引號)
-6. 按一下 [新增金鑰]
-
-如需如何管理這些金鑰的詳細資訊，請參閱 GitHub 檔。
+6. 按一下 [**新增金鑰**]
 
 **如果您使用 Azure DevOps 存放庫，請將金鑰新增至您的 SSH 金鑰**
 

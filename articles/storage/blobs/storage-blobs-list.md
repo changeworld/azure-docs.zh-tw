@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093288"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660758"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -51,11 +51,7 @@ ms.locfileid: "92093288"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理傳回的結果數目
 
-根據預設，清單作業一次最多會傳回5000個結果，但您可以指定要讓每個清單作業傳回的結果數目。 本文中顯示的範例會示範如何進行這項操作。
-
-如果清單作業傳回的 blob 超過5000個，或可用的 blob 數目超過您指定的數目，則 Azure 儲存體會傳回包含 blob 清單的 *接續 token* 。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
-
-在程式碼中檢查接續權杖的值，以判斷該值是否為 null。 當接續權杖為 null 時，結果集就會完成。 如果接續權杖不是 null，則會再次呼叫清單作業、傳遞接續權杖來擷取下一組結果，直到接續權杖是 null 為止。
+根據預設，清單作業一次最多會傳回5000個結果，但您可以指定要讓每個清單作業傳回的結果數目。 本文中顯示的範例會示範如何在頁面中傳回結果。
 
 ### <a name="filter-results-with-a-prefix"></a>使用前置詞篩選結果
 
@@ -63,11 +59,11 @@ ms.locfileid: "92093288"
 
 ### <a name="return-metadata"></a>傳回中繼資料
 
-您可以傳回包含結果的 blob 中繼資料。 
+您可以傳回包含結果的 blob 中繼資料。
 
-- 如果您使用的是 .NET v12 SDK，請指定[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)列舉的**中繼資料**值。
+- 如果您使用的是 .NET v12 SDK，請指定 [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)列舉的 **中繼資料** 值。
 
-- 如果您使用的是 .NET v11 SDK，請指定[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的**中繼資料**值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
+- 如果您使用的是 .NET v11 SDK，請指定 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的 **中繼資料** 值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>簡單列表與階層式清單
 
@@ -90,6 +86,10 @@ Azure 儲存體中的 Blob 是以簡單架構進行組織，而不是階層式�
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+如果清單作業傳回的 blob 超過5000個，或可用的 blob 數目超過您指定的數目，則 Azure 儲存體會傳回包含 blob 清單的 *接續 token* 。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
+
+在程式碼中檢查接續權杖的值，以判斷該值是否為 null。 當接續權杖為 null 時，結果集就會完成。 如果接續權杖不是 null，則會再次呼叫清單作業、傳遞接續權杖來擷取下一組結果，直到接續權杖是 null 為止。
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)

@@ -3,18 +3,18 @@ title: 在 Azure Lab Services 中連結共用映像庫或中斷其連結 | Micro
 description: 本文說明如何將共用映像庫連結至 Azure Lab Services 中的教室實驗室。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: 08d2a97138633a43e9acd69575c4b44e245d4faa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0870139d2320fa079f6705956e124f61479882
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056467"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660095"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure Lab Services 中連結共用映像庫或中斷其連結
 本文說明如何將共用映像庫連結至實驗室帳戶或中斷其連結。 
 
 > [!NOTE]
-> 當您將 Azure 實驗室服務中的 [實驗室範本映射儲存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 至共用映射庫時，影像會以特製化映射的形式上傳至資源庫。 [特製化映射](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) 會保留電腦特定的資訊和使用者設定檔。 您仍然可以直接將一般化映射上傳至 Azure 實驗室服務以外的資源庫。 
+> 當您將 Azure 實驗室服務中的 [實驗室範本映射儲存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 至共用映射庫時，影像會以特製化映射的形式上傳至資源庫。 [特製化映射](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) 會保留電腦特定的資訊和使用者設定檔。 您仍然可以直接將一般化映射上傳至 Azure 實驗室服務以外的資源庫。 
 >
 > 實驗室建立者可以根據 Azure 實驗室服務中的一般化和特製化映射來建立範本 VM。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "90056467"
 - 實驗室帳戶管理員會將共用映像庫連結至實驗室帳戶，並將映像上傳至實驗室內容外部的共用映像庫。 然後，實驗室建立者可以使用共用映像庫中的該映像來建立實驗室。 
 - 實驗室帳戶管理員會將共用映像庫連結至實驗室帳戶。 實驗室建立者 (講師) 會將其實驗室的自訂映像儲存到共用映像庫。 然後，其他實驗室建立者可以從共用映像庫中選取此映像，為其實驗室建立範本。 
 
-    當映像儲存到共用映像庫時，Azure Lab Services 會將儲存的映像複寫到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的其他可用區域。 其可確保映像適用於相同地理位置的其他區域中建立的實驗室。 將映像儲存到共用映像庫會產生額外成本，包括所有複寫映像的成本。 此成本與 Azure Lab Services 成本分開。 如需共用映像庫定價的詳細資訊，請參閱[共用映像庫 – 計費](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
+    當映像儲存到共用映像庫時，Azure Lab Services 會將儲存的映像複寫到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的其他可用區域。 其可確保映像適用於相同地理位置的其他區域中建立的實驗室。 將映像儲存到共用映像庫會產生額外成本，包括所有複寫映像的成本。 此成本與 Azure Lab Services 成本分開。 如需共用映像庫定價的詳細資訊，請參閱[共用映像庫 – 計費](../virtual-machines/windows/shared-image-galleries.md#billing)。
 
 > [!IMPORTANT]
 > 使用共用映射庫時，Azure 實驗室服務僅支援小於 128 GB 作業系統磁碟空間的映射。 在實驗室建立期間，虛擬機器映射清單中不會顯示具有超過 128 GB 磁碟空間或多個磁片的映射。
@@ -50,7 +50,7 @@ ms.locfileid: "90056467"
 4. 選取左側功能表上的 [共用映像庫]，然後選取工具列上的 [+ 建立]。  
 
     ![建立共用映像庫按鈕](./media/how-to-use-shared-image-gallery/new-shared-image-gallery-button.png)
-5. 在 [建立共用映像庫] 視窗中，輸入映像庫的**名稱**，然後按一下 [確定]。 
+5. 在 [建立共用映像庫] 視窗中，輸入映像庫的 **名稱**，然後按一下 [確定]。 
 
     ![建立共用映像庫視窗](./media/how-to-use-shared-image-gallery/create-shared-image-gallery-window.png)
 
@@ -89,4 +89,4 @@ ms.locfileid: "90056467"
 ## <a name="next-steps"></a>後續步驟
 若要了解如何將實驗室映像儲存到共用映像庫，或使用共用映像庫中的映像來建立 VM，請參閱[如何使用共用映像庫](how-to-use-shared-image-gallery.md)。
 
-如需一般共用映像庫的詳細資訊，請參閱[共用映像庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)。
+如需一般共用映像庫的詳細資訊，請參閱[共用映像庫](../virtual-machines/windows/shared-image-galleries.md)。

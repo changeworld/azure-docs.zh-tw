@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491472"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660214"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -58,9 +58,9 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 客戶可以使用商業市集供應項目的方式，取決於您建立供應項目的方式。
 
-- 對於您自動提供的解決方案，無論它們是付費、自備授權 (BYOL) 或免費，都會激勵客戶 *立即取得* 。
-- 支援試用產品 (示範) 的供應項目會要求客戶 *試用產品* 。 
-- 軟體即服務 (SaaS) 供應專案，可在商業市場外部提供試用版，例如 *免費試用版* 。
+- 對於您自動提供的解決方案，無論它們是付費、自備授權 (BYOL) 或免費，都會激勵客戶 *立即取得*。
+- 支援試用產品 (示範) 的供應項目會要求客戶 *試用產品*。 
+- 軟體即服務 (SaaS) 供應專案，可在商業市場外部提供試用版，例如 *免費試用版*。
 - 簡單清單可讓客戶要求「與我連絡」。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>如何為商業市集建立供應項目？
@@ -87,7 +87,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 身為發行者，您可以設定軟體解決方案的使用規定，客戶必須接受此使用規定，做為購買流程的一部分。 為了簡化及加速進行，我們提供了標準合約，您可以選擇將其納入您的條款及條件中。 這可讓客戶一次檢閱標準合約、取得法律和採購團隊的核准，然後專注於每個供應項目的增修條款。
 
-您可以建立適用於所有客戶的變更，也可以對特定客戶進行特有的變更。 您也可以完全自訂您的條款及條件，這可在文字方塊中輸入或裝載於將顯示為網址的網站上。
+您可以建立適用於所有客戶的變更，也可以對特定客戶進行特有的變更。 您也可以完全自訂您的條款及條件，您可以在合作夥伴中心中將這些條款及條件輸入到文字方塊中。
 
 若要深入了解，請參閱 [Microsoft 商業市集的標準合約](standard-contract.md)。
 
@@ -99,10 +99,10 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 有四個相關角色可管理合作夥伴中心的存取權。
 
-- *管理員* ：提供管理目錄中合作夥伴中心使用者的權限，以及建立和更新供應項目的權限。
-- *開發人員* ：允許使用者建立和更新供應項目。
-- *財務參與者* ：提供檢視支出報告的權限。
-- *擁有者* ：可以設定支出帳戶和稅賦設定檔。 根據預設，接受發行者合約的使用者會成為擁有者。
+- *管理員*：提供管理目錄中合作夥伴中心使用者的權限，以及建立和更新供應項目的權限。
+- *開發人員*：允許使用者建立和更新供應項目。
+- *財務參與者*：提供檢視支出報告的權限。
+- *擁有者*：可以設定支出帳戶和稅賦設定檔。 根據預設，接受發行者合約的使用者會成為擁有者。
 
 在基礎目錄中建立新的使用者帳戶或邀請來賓帳戶時，需要 Azure Active Directory (Azure AD) *全域管理員* 權限。 合作夥伴中心會將 Azure AD 套用至身分識別模型，而且組織的 Azure AD 執行個體通常是由其 IT 或安全小組管理及控制。
 
@@ -175,7 +175,7 @@ Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marke
 
 ### <a name="what-offer-types-are-transacted-through-microsoft"></a>哪些供應項目類型會透過 Microsoft 進行交易？
 
-對於某些交付模型， *立即取得* 供應項目可透過 Microsoft 處理。 目前受到下列交付模型的支援：
+對於某些交付模型，*立即取得* 供應項目可透過 Microsoft 處理。 目前受到下列交付模型的支援：
 - VM 映像
 - Azure 應用程式 (受控應用程式)
 - SaaS 應用程式
@@ -195,7 +195,7 @@ Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marke
 是，有多種方式可以提供免費試用版：
 
 - 偏好方法是在付費 SaaS 供應項目 (一個月) 和 VM 映像供應項目 (一或三個月) 的開頭新增免費期間。 客戶將會收到 $0.00 的費用，而且在試用期結束之後，訂用帳戶會自動變更為付費。 然後，合約期限會從該點開始。
-- 您可以建立 SaaS 供應項目清單，讓客戶前往您選擇的網址，以在商業市集外啟動試用版。 某些供應項目類型支援 *試用產品* ，可讓您為客戶提供示範。
+- 您可以建立 SaaS 供應項目清單，讓客戶前往您選擇的網址，以在商業市集外啟動試用版。 某些供應項目類型支援 *試用產品*，可讓您為客戶提供示範。
 
 ### <a name="who-pays-for-the-underlying-azure-consumption"></a>誰支付基礎 Azure 使用量？
 

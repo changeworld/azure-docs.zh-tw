@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88761710"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660724"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>透過事件計量更好的管理 SOC
 
@@ -33,13 +33,13 @@ ms.locfileid: "88761710"
 
 ## <a name="use-the-security-incidents-table"></a>使用安全性事件資料表
 
-**SecurityIncident**資料表內建于 Azure Sentinel。 您會在 [**記錄**檔] 下的**SecurityInsights**集合中找到其他資料表。 您可以像 Log Analytics 中的任何其他資料表一樣進行查詢。
+**SecurityIncident** 資料表內建于 Azure Sentinel。 您會在 [**記錄** 檔] 下的 **SecurityInsights** 集合中找到其他資料表。 您可以像 Log Analytics 中的任何其他資料表一樣進行查詢。
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incident-table.png" alt-text="安全性事件資料表":::
 
 每次建立或更新事件時，都會在資料表中新增一個新的記錄專案。 這可讓您追蹤對事件所做的變更，並允許更強大的 SOC 計量，但您必須在為此資料表建立查詢時留意這一點，因為您可能需要移除事件的重複專案， (相依于您正在執行) 的實際查詢。 
 
-例如，如果您想要傳回依事件編號排序的所有事件清單，但只想要傳回每個事件的最新記錄，您可以使用 KQL [摘要運算子](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 搭配 `arg_max()` [彙總函式](https://docs.microsoft.com/azure/data-explorer/kusto/query/arg-max-aggfunction)來執行此作業：
+例如，如果您想要傳回依事件編號排序的所有事件清單，但只想要傳回每個事件的最新記錄，您可以使用 KQL [摘要運算子](/azure/data-explorer/kusto/query/summarizeoperator) 搭配 `arg_max()` [彙總函式](/azure/data-explorer/kusto/query/arg-max-aggfunction)來執行此作業：
 
 
 ```Kusto
@@ -82,9 +82,9 @@ SecurityIncident
 
 您可以從 Azure Sentinel 導覽功能表中選擇活頁 **簿** ，然後選取 [ **範本** ] 索引標籤，以找到這個新的活頁簿範本。從資源庫選擇 **安全性作業效率** ，然後按一下其中一個 [ **已儲存** 的活頁簿] 和 [ **查看範本** ] 按鈕。
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全性事件資料表":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全性事件活頁簿圖庫":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="安全性事件資料表":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="安全性事件活頁簿完成":::
 
 您可以使用範本來建立您專屬的自訂活頁簿，以滿足您的特定需求。
 

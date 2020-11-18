@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 6daed4f5f1871d76da707edec00010cd27dfa8db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142323"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659908"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 IoT 中樞
 
@@ -20,23 +20,9 @@ ms.locfileid: "92142323"
 
 本文將說明如何使用 Azure CLI 建立 IoT 中樞。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-若要完成此操作說明，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="sign-in-and-set-your-azure-account"></a>登入並設定 Azure 帳戶
-
-如果您是在本機執行 Azure CLI，而不是使用 Cloud Shell，則必須登入您的 Azure 帳戶。
-
-在命令提示字元中，執行[登入命令](/cli/azure/get-started-with-azure-cli)：
-
-   ```azurecli
-   az login
-   ```
-
-依照指示使用程式碼進行驗證，並透過網頁瀏覽器登入 Azure 帳戶。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 

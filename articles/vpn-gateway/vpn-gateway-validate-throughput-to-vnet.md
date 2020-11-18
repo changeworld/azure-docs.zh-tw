@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398502"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660928"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何驗證傳輸到虛擬網路的 VPN 輸送量
 
@@ -119,7 +119,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 1. 完成上述步驟之後，請以反轉的角色執行相同的步驟，讓伺服器節點現在會是用戶端節點，反之亦然。
 
 > [!Note]
-> Iperf 不是唯一的工具。 [NTTTCP 是測試的替代方案](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)。
+> Iperf 不是唯一的工具。 [NTTTCP 是測試的替代方案](../virtual-network/virtual-network-bandwidth-testing.md)。
 
 ## <a name="test-vms-running-windows"></a>測試執行 Windows 的 Vm
 
@@ -225,7 +225,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 即使以上述步驟評估的整體輸送量 (iPERF/NTTTCP/等等。) 是很好的，您可能會在使用 Windows 檔案總管或透過 RDP 會話拖放時遇到緩慢的檔案卸載。 此問題一般是因為下列一個或多個因素造成︰
 
-* 如 Windows 檔案總管與 RDP 的檔案應用程式，並未在複製檔案時使用多執行緒。 為了提升效能，請使用如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) 等多執行緒的檔案複製應用程式，以 16 或 32 條執行緒複製檔案。 若要在 Richcopy 中變更檔案複製的執行緒號碼，請按一下 [**動作**  >  **複製選項**檔案  >  **複製**]。
+* 如 Windows 檔案總管與 RDP 的檔案應用程式，並未在複製檔案時使用多執行緒。 為了提升效能，請使用如 [Richcopy](/previous-versions/technet-magazine/dd547088(v=msdn.10)) 等多執行緒的檔案複製應用程式，以 16 或 32 條執行緒複製檔案。 若要在 Richcopy 中變更檔案複製的執行緒號碼，請按一下 [**動作**  >  **複製選項** 檔案  >  **複製**]。
 
    ![檔案複製變慢的問題](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
    > 並非所有應用程式都是相同的，而且並非所有的應用程式/程式都會利用所有線程。 如果您執行測試，您可能會看到部分執行緒是空的，而且不會提供精確的輸送量結果。
    > 若要檢查您的應用程式檔案傳輸效能，請連續或減少增加執行緒的數目來使用多執行緒，以找出應用程式或檔案傳輸的最佳輸送量。
 
-* VM 磁碟讀取/寫入速度不足。 如需詳細資訊，請參閱 [Azure 儲存體疑難排解](../storage/common/storage-e2e-troubleshooting.md)。
+* VM 磁碟讀取/寫入速度不足。 如需詳細資訊，請參閱 [Azure 儲存體疑難排解](/previous-versions/azure/storage/common/storage-e2e-troubleshooting)。
 
 ## <a name="on-premises-device-external-facing-interface"></a>內部部署裝置的外部對應介面
 
@@ -241,7 +241,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 * **路由型閘道**：路由式 vpn 的原則或流量選取器會設定為任何) 的 (或萬用字元。
 
-* 以**原則為基礎的閘道**：根據內部部署網路與 Azure VNet 之間的位址首碼組合，以原則為基礎的 vpn 會透過 IPsec 通道來加密和導向封包。 原則 (或流量選取器) 通常定義為 VPN 組態中的存取清單。
+* 以 **原則為基礎的閘道**：根據內部部署網路與 Azure VNet 之間的位址首碼組合，以原則為基礎的 vpn 會透過 IPsec 通道來加密和導向封包。 原則 (或流量選取器) 通常定義為 VPN 組態中的存取清單。
 
 * **UsePolicyBasedTrafficSelector** 連線：在連線上 $True ( "UsePolicyBasedTrafficSelectors" 將會設定 Azure VPN 閘道，以連線至內部部署以原則為基礎的 VPN 防火牆。 如果您啟用 PolicyBasedTrafficSelectors，您必須確定您的 VPN 裝置具有與內部部署網路的所有組合一起定義的相符流量選取器 (局域網路閘道) 首碼和 Azure 虛擬網路首碼之間，而不是任何對任意。
 

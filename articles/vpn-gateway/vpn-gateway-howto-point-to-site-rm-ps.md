@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145866"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660401"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： PowerShell
 
@@ -25,9 +25,9 @@ ms.locfileid: "93145866"
 
 [!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
+請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -69,7 +69,7 @@ $DNS = "10.2.1.4"
    New-AzResourceGroup -Name $RG -Location $Location
    ```
 
-1. 建立虛擬網路的子網設定，並將其命名為 *前端* 和 *GatewaySubnet* 。 這些前置詞必須是您宣告的 VNet 位址空間的一部分。
+1. 建立虛擬網路的子網設定，並將其命名為 *前端* 和 *GatewaySubnet*。 這些前置詞必須是您宣告的 VNet 位址空間的一部分。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -110,8 +110,8 @@ $DNS = "10.2.1.4"
 
 在此步驟中，您會設定和建立 VNet 的虛擬網路閘道。
 
-* -GatewayType 必須是 **Vpn** ，而且 -VpnType 必須是 **RouteBased** 。
-* 使用 -VpnClientProtocol 可指定您想要啟用的通道類型。 通道選項為 **OpenVPN、SSTP** 和 **IKEv2** 。 您可以選擇啟用其中一個或任何支援的組合。 如果您想要啟用多個類型，請指定以逗號分隔的名稱。 OpenVPN 和 SSTP 無法一起啟用。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
+* -GatewayType 必須是 **Vpn**，而且 -VpnType 必須是 **RouteBased**。
+* 使用 -VpnClientProtocol 可指定您想要啟用的通道類型。 通道選項為 **OpenVPN、SSTP** 和 **IKEv2**。 您可以選擇啟用其中一個或任何支援的組合。 如果您想要啟用多個類型，請指定以逗號分隔的名稱。 OpenVPN 和 SSTP 無法一起啟用。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
 * 虛擬網路閘道的「基本」 SKU 不支援 IKEv2、OpenVPN 或 RADIUS 驗證。 如果您打算讓 Mac 用戶端連線到您的虛擬網路，請勿使用「基本」SKU。
 * 視您選取的[閘道 sku](vpn-gateway-about-vpn-gateway-settings.md) 而定，VPN 閘道可能需要 45 分鐘的時間才能完成。 此範例使用 IKEv2。
 
@@ -228,8 +228,8 @@ $profile.VPNProfileSASUrl
 
 ### <a name="mac-vpn-client"></a>Mac VPN 用戶端
 
-從 [網路] 對話方塊，找出您要使用的用戶端設定檔，然後按一下 [連線]  。
-如需詳細指示，請參閱[安裝 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)。 如果您在連線時發生問題，請確認虛擬網路閘道不是使用「基本」SKU。 針對 Mac 用戶端不支援「基本」SKU。
+從 [網路] 對話方塊，找出您要使用的用戶端設定檔，然後按一下 [連線]。
+如需詳細指示，請參閱[安裝 - Mac (OS X)](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)。 如果您在連線時發生問題，請確認虛擬網路閘道不是使用「基本」SKU。 針對 Mac 用戶端不支援「基本」SKU。
 
   ![Mac 連線](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -237,7 +237,7 @@ $profile.VPNProfileSASUrl
 
 這些指示適用於 Windows 用戶端。
 
-1. 若要驗證您的 VPN 連線為作用中狀態，請開啟提升權限的命令提示字元，並執行 *ipconfig/all* 。
+1. 若要驗證您的 VPN 連線為作用中狀態，請開啟提升權限的命令提示字元，並執行 *ipconfig/all*。
 2. 檢視結果。 請注意，您收到的 IP 位址是您在設定中指定的點對站 VPN 用戶端位址集區內的其中一個位址。 結果類似於此範例：
 
    ```
@@ -324,7 +324,7 @@ $profile.VPNProfileSASUrl
 
 **撤銷：**
 
-1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱 [如何取出憑證的憑證指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
+1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱 [如何取出憑證的憑證指紋](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)。
 
 1. 將資訊複製到文字編輯器，並移除所有的空格，讓它是連續字串。 這個字串在下一個步驟中會宣告為變數。
 
@@ -383,8 +383,8 @@ $profile.VPNProfileSASUrl
 
 如需其他點對站資訊，請參閱 [VPN 閘道點對站常見問題](vpn-gateway-vpn-faq.md#P2S)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/linux/azure-vm-network-overview.md)。
+一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](../index.yml)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/network-overview.md)。
 
 如需 P2S 疑難排解詳細資訊，請參閱[疑難排解：Azure 點對站連線問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

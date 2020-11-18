@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 19ad45eec78d53261bf1781808339152c69a0136
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638830"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660775"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>將威脅情報匯入 Azure Sentinel
 
@@ -34,9 +34,9 @@ ms.locfileid: "94638830"
 - 使用不同的 TI 平臺 **資料連線器** ，將 [威脅情報匯入](./connect-threat-intelligence.md) Azure Sentinel。
 - 在 [ **記錄** ] 和 [Azure Sentinel 的新 **威脅情報** ] 區域中，查看及管理匯入的威脅情報。
 - 使用內建的 **分析** 規則範本，利用您匯入的威脅情報來產生安全性警示和事件。
-- 使用 **威脅情報活頁簿** ，在 Azure Sentinel 中將威脅情報的重要資訊視覺化。
+- 使用 **威脅情報活頁簿**，在 Azure Sentinel 中將威脅情報的重要資訊視覺化。
 
-威脅情報也會在其他 Azure Sentinel 體驗（例如 **搜尋** 和 **筆記本** ）內提供有用的內容，而且在本文未討論的情況下，這些經驗會在此絕佳的 blog 文章中解決，方法是在 [Sentinel 的 Jupyter 筆記本上 Ian Hellen](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)，其中涵蓋了在筆記本內使用 CTI 的方式。
+威脅情報也會在其他 Azure Sentinel 體驗（例如 **搜尋** 和 **筆記本**）內提供有用的內容，而且在本文未討論的情況下，這些經驗會在此絕佳的 blog 文章中解決，方法是在 [Sentinel 的 Jupyter 筆記本上 Ian Hellen](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)，其中涵蓋了在筆記本內使用 CTI 的方式。
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>適用于威脅情報的 Azure Sentinel 資料連線器
 
@@ -44,7 +44,7 @@ ms.locfileid: "94638830"
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>使用威脅情報平臺資料連線器將威脅指標新增至 Azure Sentinel
 
-許多組織都利用威脅情報平臺 (提示) 解決方案來匯總各種來源的威脅指標摘要、策展平臺內的資料，然後選擇要將哪些威脅指標套用至各種安全性解決方案，例如網路裝置、先進的威脅防護解決方案或 Siem （例如 Azure Sentinel）。 如果您的組織利用整合式的提示解決方案，例如 MISP、Anomali ThreatStream、ThreatConnect、EclecticIQ Platform、ThreatQ 威脅情報平臺或 Palo Alto Networks 的 MineMeld， **威脅情報平臺資料連線器** 可讓您使用提示，將威脅指標匯入 Azure Sentinel。 因為連接器可搭配 Microsoft Graph 的 [安全性 TIINDICATORS API](https://docs.microsoft.com/graph/api/resources/tiindicator) 來完成這項作業，所以任何自訂威脅情報平臺也可以使用連接器來利用 tiIndicators API，將指標傳送至 Azure Sentinel (以及 Defender ATP) 等其他 Microsoft 安全性解決方案。
+許多組織都利用威脅情報平臺 (提示) 解決方案來匯總各種來源的威脅指標摘要、策展平臺內的資料，然後選擇要將哪些威脅指標套用至各種安全性解決方案，例如網路裝置、先進的威脅防護解決方案或 Siem （例如 Azure Sentinel）。 如果您的組織利用整合式的提示解決方案，例如 MISP、Anomali ThreatStream、ThreatConnect、EclecticIQ Platform、ThreatQ 威脅情報平臺或 Palo Alto Networks 的 MineMeld， **威脅情報平臺資料連線器** 可讓您使用提示，將威脅指標匯入 Azure Sentinel。 因為連接器可搭配 Microsoft Graph 的 [安全性 TIINDICATORS API](/graph/api/resources/tiindicator) 來完成這項作業，所以任何自訂威脅情報平臺也可以使用連接器來利用 tiIndicators API，將指標傳送至 Azure Sentinel (以及 Defender ATP) 等其他 Microsoft 安全性解決方案。
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="威脅情報匯入路徑":::
 
@@ -74,9 +74,9 @@ ms.locfileid: "94638830"
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) ，然後流覽至 **Azure Active Directory** 服務。
 
-1. 從功能表選取 [ **應用程式註冊** ]，然後選取 [ **新增註冊** ]。
+1. 從功能表選取 [ **應用程式註冊** ]，然後選取 [ **新增註冊**]。
 
-1. 選擇應用程式註冊的名稱，選取 [ **單一租** 使用者] 選項按鈕，然後選取 [ **註冊** ]。
+1. 選擇應用程式註冊的名稱，選取 [ **單一租** 使用者] 選項按鈕，然後選取 [ **註冊**]。
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="註冊應用程式":::
 
@@ -92,7 +92,7 @@ ms.locfileid: "94638830"
 
 1. 在 [ **選取 API** ] 頁面上，選取 [ **Microsoft Graph** ]，從 Microsoft Graph 許可權清單中選擇。
 
-1. 當系統詢問 **您的應用程式需要何種許可權？** 選取 [ **應用程式許可權** ]。 這是應用程式使用應用程式識別碼和應用程式秘密進行驗證所使用的許可權類型)  (API 金鑰。
+1. 當系統詢問 **您的應用程式需要何種許可權？** 選取 [ **應用程式許可權**]。 這是應用程式使用應用程式識別碼和應用程式秘密進行驗證所使用的許可權類型)  (API 金鑰。
 
 1. 選取 [ **ThreatIndicators** ]，然後選取 [ **新增許可權** ]，將此許可權新增至您應用程式的許可權清單。
 
@@ -104,7 +104,7 @@ ms.locfileid: "94638830"
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="授與同意":::
 
-1. 同意授與您的應用程式之後，您應該會在 [ **狀態** ] 底下看到綠色核取記號。
+1. 同意授與您的應用程式之後，您應該會在 [ **狀態**] 底下看到綠色核取記號。
  
 現在您的應用程式已註冊且已授與許可權，您可以在清單中取得最後一件事，也就是您應用程式的用戶端密碼。
 
@@ -116,7 +116,7 @@ ms.locfileid: "94638830"
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="取得用戶端密碼":::
 
-1. 按一下 [ **新增** ] 按鈕，並 **務必複製用戶端密碼** ，因為如果您離開此頁面，就無法再次取出此秘密。 當您設定提示或自訂解決方案時，將會需要此值。
+1. 按一下 [ **新增** ] 按鈕，並 **務必複製用戶端密碼**，因為如果您離開此頁面，就無法再次取出此秘密。 當您設定提示或自訂解決方案時，將會需要此值。
 
 #### <a name="input-this-information-into-your-tip-solution-or-custom-application"></a>將此資訊輸入至您的秘訣解決方案或自訂應用程式
 
@@ -157,7 +157,7 @@ ms.locfileid: "94638830"
 
 #### <a name="obtain-the-taxii-server-api-root-and-collection-id"></a>取得 TAXII 伺服器 API 的根目錄和集合識別碼
 
-TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 Url。 您可以透過裝載 TAXII 伺服器的威脅情報提供者的檔頁面，來取得 API 根。 不過，有時候唯一通告的資訊是稱為探索端點的 URL。 如果是這種情況，就很容易使用探索端點來尋找 API 根。 如果您已經知道您想要使用的 TAXII 伺服器 API 根和集合識別碼，請隨意跳到下一節， **在 Azure Sentinel 中啟用威脅情報-TAXII 資料連線器** 。
+TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 Url。 您可以透過裝載 TAXII 伺服器的威脅情報提供者的檔頁面，來取得 API 根。 不過，有時候唯一通告的資訊是稱為探索端點的 URL。 如果是這種情況，就很容易使用探索端點來尋找 API 根。 如果您已經知道您想要使用的 TAXII 伺服器 API 根和集合識別碼，請隨意跳到下一節， **在 Azure Sentinel 中啟用威脅情報-TAXII 資料連線器**。
 
 讓我們來看看如何使用簡單的命令列公用程式（稱為「 [捲曲](https://en.wikipedia.org/wiki/CURL)」）（在 Windows 和大部分的 Linux 發行版本中提供），以探索 API 根目錄，並只從探索端點開始流覽 TAXII 伺服器的集合。 在此範例中，我們將使用 [Anomali Limo](https://www.anomali.com/community/limo) ThreatStream TAXII 2.0 伺服器的探索端點。
 
@@ -285,7 +285,7 @@ TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 U
 
 1. 從功能表選取 [ **資料連線器** ]，從 [連接器資源庫] 選取 [ **威脅情報-TAXII** ]，然後按一下 [ **開啟連接器頁面** ] 按鈕。
 
-1. 輸入此 TAXII 伺服器集合的 **名稱** 、[ **API 根目錄 URL** ]、[ **集合識別碼** ]、[必要 **時 (]** ) 和 [需要的 **密碼** (]) ，然後按一下 [ **新增** ] 按鈕。
+1. 輸入此 TAXII 伺服器集合的 **名稱** 、[ **API 根目錄 URL**]、[ **集合識別碼**]、[必要 **時 (]**) 和 [需要的 **密碼** (]) ，然後按一下 [ **新增** ] 按鈕。
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="設定 TAXII 伺服器":::
  
@@ -299,7 +299,7 @@ TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 U
 
 1. 使用威脅情報資料連線器，選擇您已匯入威脅指標的 **工作區** 。
 
-1. 從 [Azure Sentinel] 功能表的 [ **一般** ] 區段中選取 [ **記錄** ]。
+1. 從 [Azure Sentinel] 功能表的 [**一般**] 區段中選取 [**記錄**]。
 
 1. **ThreatIntelligenceIndicator** 資料表位於 **Azure Sentinel** 群組底下。
 
@@ -336,15 +336,15 @@ TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 U
 
 您已將威脅指示器送入 Azure Sentinel;您已瞭解如何查看和管理它們;現在就來看看它們可以為您做些什麼。 SIEM 解決方案（例如 Azure Sentinel）中威脅指標最重要的使用案例是 power analytics 規則。  這些以指標為基礎的規則會比較您的資料來源中的原始事件與您的威脅指標，以偵測您組織中的安全性威脅。 在 Azure Sentinel **分析** 中，您可以建立定期執行的分析規則，並產生安全性警示。 規則是由查詢所驅動，以及決定應執行規則的頻率、何種查詢結果應該產生安全性警示，以及產生警示時要觸發的任何自動化回應。
 
-雖然您可以隨時從頭開始建立新的分析規則，Azure Sentinel 提供一組由 Microsoft 安全性工程師所建立的內建規則範本，您可以依原樣使用或修改以符合您的需求。 您可以立即識別使用威脅指標的規則範本，因為它們的標題開頭為 " **TI map**..."。 所有這些規則範本的運作方式都相同，唯一的差別在於使用哪種類型的威脅指標 (網域、電子郵件、檔案雜湊、IP 位址或 URL) ，以及要比對的事件種類。 每個範本都會列出規則運作所需的必要資料來源，因此您可以一目了然地查看是否已在 Azure Sentinel 中匯入必要的事件。
+雖然您可以隨時從頭開始建立新的分析規則，Azure Sentinel 提供一組由 Microsoft 安全性工程師所建立的內建規則範本，您可以依原樣使用或修改以符合您的需求。 您可以立即識別使用威脅指標的規則範本，因為它們的標題開頭為 "**TI map**..."。 所有這些規則範本的運作方式都相同，唯一的差別在於使用哪種類型的威脅指標 (網域、電子郵件、檔案雜湊、IP 位址或 URL) ，以及要比對的事件種類。 每個範本都會列出規則運作所需的必要資料來源，因此您可以一目了然地查看是否已在 Azure Sentinel 中匯入必要的事件。
 
 讓我們看看其中一個規則範本，並逐步解說如何啟用和設定規則，以使用您已匯入 Azure Sentinel 的威脅指標來產生安全性警示。 在此範例中，我們將使用稱為 **TI MAP IP 實體** 的規則範本來 AzureActivity。 這項規則會比對所有的 IP 位址類型威脅指標與您的所有 Azure 活動事件。 找到相符專案時，將會產生 **警示** ，以及由安全性作業小組調查的對應 **事件** 。 只有當您已啟用其中一或兩個 **威脅情報** 資料連線器 (匯入威脅指標) 和 **azure 活動** 資料連線器 (以匯入您的 azure 訂用帳戶層級事件) 時，此分析規則才會順利運作。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) ，然後流覽至 **Azure Sentinel** 服務。
 
-1. 使用 **Azure 活動** 資料連線器，選擇您使用 **威脅情報** 資料連線器和 azure 活動資料匯入威脅指標的 **工作區** 。
+1. 使用 **Azure 活動** 資料連線器，選擇您使用 **威脅情報** 資料連線器和 azure 活動資料匯入威脅指標的 **工作區**。
 
-1. 從 [Azure Sentinel] 功能表的 [設定 **] 區段中選取 [** **分析** ]。
+1. 從 [Azure Sentinel] 功能表的 [設定 **] 區段中選取 [** **分析**]。
 
 1. 選取 [ **規則範本** ] 索引標籤，以查看可用分析規則範本的清單。
 
@@ -374,15 +374,15 @@ TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 U
 
 您可以保留預設設定，或變更這些設定以符合您的需求。 當您完成時，請選取 [ **下一步：自動回應 >]** 按鈕
 
-1. 當此分析規則產生安全性警示時，嚮導的這個步驟可讓您設定任何您想要觸發的自動化。 Azure Sentinel 中的自動化是使用工作 **手冊** （由 Azure Logic Apps 提供技術支援）來完成。 若要深入瞭解，請參閱本 [教學課程：在 Azure Sentinel 中設定自動威脅回應](./tutorial-respond-threats-playbook.md)。 在此範例中，我們只需要選取 [ **下一步：審核 >]** 按鈕即可繼續。
+1. 當此分析規則產生安全性警示時，嚮導的這個步驟可讓您設定任何您想要觸發的自動化。 Azure Sentinel 中的自動化是使用工作 **手冊**（由 Azure Logic Apps 提供技術支援）來完成。 若要深入瞭解，請參閱本 [教學課程：在 Azure Sentinel 中設定自動威脅回應](./tutorial-respond-threats-playbook.md)。 在此範例中，我們只需要選取 [ **下一步：審核 >]** 按鈕即可繼續。
 
 1. 最後一個步驟會驗證規則中的設定。 當您準備好啟用規則時，請選取 [ **建立** ] 按鈕，然後完成。
 
-現在您已啟用分析規則，您可以在 Azure Sentinel 的 [ **分析** ] 區段的 [作用中 **規則** ] 索引標籤中找到已啟用的規則。 您可以從該處編輯、啟用、停用、重複或刪除使用中的規則。 新規則會在啟用時立即執行，然後在其定義的排程上執行。
+現在您已啟用分析規則，您可以在 Azure Sentinel 的 [**分析**] 區段的 [作用中 **規則**] 索引標籤中找到已啟用的規則。 您可以從該處編輯、啟用、停用、重複或刪除使用中的規則。 新規則會在啟用時立即執行，然後在其定義的排程上執行。
 
-根據預設設定，每次規則依排程執行時，找到的任何結果都會產生安全性警示。 Azure Sentinel 中的安全性警示可在 Azure Sentinel 的 [ **記錄** ] 區段中，于 **Azure Sentinel** 群組底下的 [ **SecurityAlert** ] 資料表中查看。
+根據預設設定，每次規則依排程執行時，找到的任何結果都會產生安全性警示。 Azure Sentinel 中的安全性警示可在 Azure Sentinel 的 [**記錄**] 區段中，于 **Azure Sentinel** 群組底下的 [ **SecurityAlert** ] 資料表中查看。
 
-在 Azure Sentinel 中，從分析規則產生的警示也會產生安全性事件，可在 [Azure Sentinel] 功能表上的 [ **威脅管理** ] 下的 **事件** 中找到。 事件是您的安全性作業小組將分級和調查的內容，以判斷適當的回應動作。 您可以在本教學課程中找到詳細資訊 [：使用 Azure Sentinel 調查事件](./tutorial-investigate-cases.md)。
+在 Azure Sentinel 中，從分析規則產生的警示也會產生安全性事件，可在 [Azure Sentinel] 功能表上的 [**威脅管理**] 下的 **事件** 中找到。 事件是您的安全性作業小組將分級和調查的內容，以判斷適當的回應動作。 您可以在本教學課程中找到詳細資訊 [：使用 Azure Sentinel 調查事件](./tutorial-investigate-cases.md)。
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>活頁簿可提供您威脅情報的深入解析
 
@@ -393,7 +393,7 @@ TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 U
 
 1. 使用威脅情報資料連線器，選擇您已匯入威脅指標的 **工作區** 。
 
-1. 從 [Azure Sentinel] 功能表的 [ **威脅管理** ] 區段中，選取 [活頁 **簿** ]。
+1. 從 [Azure Sentinel] 功能表的 [**威脅管理**] 區段中，選取 [活頁 **簿**]。
 
 1. 流覽至標題為 [ **威脅情報** ] 的活頁簿，並確認您有 **ThreatIntelligenceIndicator** 資料表中的資料，如下所示。
 
@@ -413,7 +413,7 @@ TAXII 2.x 伺服器通告 API 根目錄，也就是裝載威脅情報集合的 U
     | summarize count() by ThreatType
     ```
 
-1. 在 [ **視覺效果** ] 下拉式清單中，選取 [ **橫條圖** ]。
+1. 在 [ **視覺效果** ] 下拉式清單中，選取 [ **橫條圖**]。
 
 1. 選取 [ **完成編輯** ] 按鈕。 您已為您的活頁簿建立新的圖表。
 

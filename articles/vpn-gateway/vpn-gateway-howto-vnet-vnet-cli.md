@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442157"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660061"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -134,7 +134,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```azurecli
    az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
    ```
-3. 為後端子網路建立其他位址空間。 請注意，在此步驟中，我們會指定稍早建立的位址空間，以及我們想要新增的額外位址空間。 這是因為 [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet) 命令會覆寫先前的設定。 使用此命令時，務必指定所有的位址前置詞。
+3. 為後端子網路建立其他位址空間。 請注意，在此步驟中，我們會指定稍早建立的位址空間，以及我們想要新增的額外位址空間。 這是因為 [az network vnet update](/cli/azure/network/vnet) 命令會覆寫先前的設定。 使用此命令時，務必指定所有的位址前置詞。
 
    ```azurecli
    az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
@@ -214,10 +214,10 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```
    "activeActive": false, 
    "bgpSettings": { 
-    "asn": 65515, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-   }, 
+    "asn": 65515, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+   }, 
    "enableBgp": false, 
    "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
    "gatewayDefaultSite": null, 
@@ -356,7 +356,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
    複製 "id:" 的輸出。 透過電子郵件或其他方法，將 VNet 閘道 (VNet5GW) 的識別碼和名稱傳送給訂用帳戶 1 的系統管理員。
 
-3. **[訂用帳戶 1]** 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet5。 您可以將自己的值使用於共用金鑰，不過，共用金鑰必須符合這兩個連線。 建立連線可能需要一段時間才能完成。確定您已連接到訂用帳戶 1。
+3. **[訂用帳戶 1]** 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet5。 您可以將自己的值使用於共用金鑰，不過，共用金鑰必須符合這兩個連線。 建立連線可能需要一段時間才能完成。 確定您已連接到訂用帳戶 1。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
@@ -378,5 +378,5 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器文件](https://docs.microsoft.com/azure/)。
+* 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器文件](../index.yml)。
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。

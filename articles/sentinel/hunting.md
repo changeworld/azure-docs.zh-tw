@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85552287"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660826"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>使用 Azure Sentinel 尋找威脅
 
@@ -66,7 +66,7 @@ ms.locfileid: "85552287"
 
 ## <a name="query-language"></a>查詢語言 
 
-Azure Sentinel 中的搜尋是以 Kusto 查詢語言為基礎。 如需查詢語言和支援之運算子的詳細資訊，請參閱 [查詢語言參考](/azure/azure-monitor/log-query/get-started-queries)。
+Azure Sentinel 中的搜尋是以 Kusto 查詢語言為基礎。 如需查詢語言和支援之運算子的詳細資訊，請參閱 [查詢語言參考](../azure-monitor/log-query/get-started-queries.md)。
 
 ## <a name="public-hunting-query-github-repository"></a>公開搜尋查詢 GitHub 儲存機制
 
@@ -138,7 +138,7 @@ Azure Sentinel 中的搜尋是以 Kusto 查詢語言為基礎。 如需查詢語
 
    ![自訂查詢](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本文中，您已瞭解如何使用 Azure Sentinel 來執行搜尋調查。 若要深入了解 Azure Sentinel，請參閱下列文章：
 
 

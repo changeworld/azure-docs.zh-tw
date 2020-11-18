@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 926de9f3fd357cd9d9ca067e4f7beff7d03eec95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55e22ebec5853d6b4f10b53be8e24f4dbebe4e1f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394175"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659772"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 MakeCert 來產生並匯出點對站連線的憑證
 
@@ -26,13 +26,13 @@ ms.locfileid: "89394175"
 
 下列步驟說明如何使用 MakeCert 來建立自我簽署憑證。 這些並非部署模型特定的步驟。 它們同樣適用於資源管理員和傳統部署模型。
 
-1. 下載並安裝 [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx)。
+1. 下載並安裝 [MakeCert](/windows/win32/seccrypto/makecert)。
 2. 安裝之後，您通常可以在此路徑下找到 makecert.exe 公用程式：「C:\Program Files (x86) \Windows Kits\10\bin」 \<arch> 。 雖然，它有可能已安裝到另一個位置。 以系統管理員身分開啟命令提示字元，然後瀏覽至 MakeCert 公用程式的位置。 您可以使用下列範例，並針對適當的位置進行調整：
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64
    ```
-3. 在您電腦上的 [個人] 憑證存放區中建立並安裝憑證。 下列範例會建立對應的 .cer** 檔案，您在設定 P2S 時會將此檔案上傳至 Azure。 將 'P2SRootCert' 和 'P2SRootCert.cer' 取代為您想使用的憑證名稱。 憑證位於您的 '[憑證 - 目前的使用者]\[個人]\[憑證]' 中。
+3. 在您電腦上的 [個人] 憑證存放區中建立並安裝憑證。 下列範例會建立對應的 .cer 檔案，您在設定 P2S 時會將此檔案上傳至 Azure。 將 'P2SRootCert' 和 'P2SRootCert.cer' 取代為您想使用的憑證名稱。 憑證位於您的 '[憑證 - 目前的使用者]\[個人]\[憑證]' 中。
 
    ```cmd
    makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
@@ -81,7 +81,7 @@ ms.locfileid: "89394175"
 
 繼續使用您的點對站設定。 
 
-* 如需 **Resource Manager** 部署模型的步驟，請參閱[使用原生 Azure 憑證驗證來設定 P2S](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
-* 如需**傳統**部署模型步驟，請參閱[設定 VNet 的點對站 VPN 連線 (傳統)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)。
+* 如需 **Resource Manager** 部署模型的步驟，請參閱 [使用原生 Azure 憑證驗證來設定 P2S](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
+* 如需 **傳統** 部署模型步驟，請參閱 [設定 VNet 的點對站 VPN 連線 (傳統)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)。
 
 如需有關為 P2S 疑難排解的資訊，請參閱[針對 Azure 點對站連線進行疑難排解](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

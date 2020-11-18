@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579380"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661013"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料 (預覽) 
 
@@ -25,7 +25,7 @@ Synapse 無伺服器 SQL 集區可讓您以近乎即時的方式，在已啟用 
 在本文中，您將瞭解如何使用無伺服器 SQL 集區來撰寫查詢，該查詢將會從已啟用 Synapse 連結的 Azure Cosmos DB 容器中查詢資料。 然後，您可以深入瞭解如何在 Azure Cosmos DB 容器上建立無伺服器的 SQL 集區，並在 [本](./tutorial-data-analyst.md) 教學課程中將它們連接到 Power BI 模型。 
 
 > [!IMPORTANT]
-> 本教學課程使用具有 [Azure Cosmos DB 妥善定義架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 所提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴沒有子句的結果集架構 `OPENROWSET` `WITH` ，從具有完整精確度架構的容器讀取資料，因為查詢體驗可能會變更，並配合妥善定義的架構。 請在 [Azure Synapse Analytics 意見反應論壇](https://feedback.azure.com/forums/307516-azure-synapse-analytics) 或連絡人 [synapse 連結產品團隊](mailto:cosmosdbsynapselink@microsoft.com) 張貼您的意見反應，以提供意見反應。
+> 本教學課程使用具有 [Azure Cosmos DB 妥善定義架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴函數的結果集架構 `OPENROWSET` ，而不使用 `WITH` 子句從容器中讀取具有完整精確度架構的資料，因為查詢體驗可能會對齊，並根據妥善定義的架構來變更。 在 [Azure Synapse Analytics 意見反應論壇](https://feedback.azure.com/forums/307516-azure-synapse-analytics) 中張貼您的意見反應，或洽詢 [Synapse link 產品小組](mailto:cosmosdbsynapselink@microsoft.com) 以提供意見反應。
 
 ## <a name="overview"></a>概觀
 

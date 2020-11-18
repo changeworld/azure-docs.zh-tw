@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5456c53ca891a7c88797f9661a6a3b9b9935e08
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84987076"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660902"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>整合 Azure VPN 閘道 RADIUS 驗證與 NPS 伺服器以進行多重要素驗證 
 
@@ -35,13 +35,13 @@ ms.locfileid: "84987076"
 ### <a name="step-1-create-a-virtual-network-gateway"></a>步驟 1：建立虛擬網路閘道
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在將裝載虛擬網路閘道的虛擬網路中，依序選取 [子網路]**** 和 [閘道子網路]**** 以建立一個子網路。 
+2. 在將裝載虛擬網路閘道的虛擬網路中，依序選取 [子網路] 和 [閘道子網路] 以建立一個子網路。 
 
     ![關於如何新增閘道子網路的影像](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. 藉由指定下列設定建立虛擬網路閘道：
 
-    - 閘道類型****︰選取 [VPN]****。
-    - **VPN 類型**：選取 [路由型]****。
+    - 閘道類型︰選取 [VPN]。
+    - **VPN 類型**：選取 [路由型]。
     - **SKU**：依序需求選取 SKU 類型。
     - **虛擬網路**：選取您在其中建立閘道子網路的虛擬網路。
 
@@ -61,11 +61,11 @@ ms.locfileid: "84987076"
       ![RADIUS 用戶端設定的相關影像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
-3.  在 [進階]**** 索引標籤上，將廠商名稱設定為 [RADIUS 標準]**** 並確定未選取 [其他選項]**** 和取方塊。
+3.  在 [進階] 索引標籤上，將廠商名稱設定為 [RADIUS 標準] 並確定未選取 [其他選項] 和取方塊。
 
     ![RADIUS 用戶端 Advanced 設定的相關影像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. 移至 [**原則**  >  **網路原則**]，再按兩下 [連線**到 Microsoft 路由及遠端存取服務器**原則]，選取 **[授與存取權**]，然後按一下 **[確定]**。
+4. 移至 [**原則**  >  **網路原則**]，再按兩下 [連線 **到 Microsoft 路由及遠端存取服務器** 原則]，選取 **[授與存取權**]，然後按一下 **[確定]**。
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>步驟 3：設定虛擬網路閘道
 
@@ -74,12 +74,12 @@ ms.locfileid: "84987076"
 3. 按一下 [立即設定] 的 [**點對站**  >  **設定**]，然後指定下列設定：
 
     - **位址集區**：輸入您在步驟 1 建立的閘道子網路。
-    - **驗證類型**：選取 [RADIUS 驗證]****。
+    - **驗證類型**：選取 [RADIUS 驗證]。
     - **伺服器 IP 位址**：輸入 NPS 伺服器的 IP 位址。
 
       ![關於點對站設定的影像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 - [將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](../active-directory/authentication/howto-mfa-nps-extension.md)

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: c9a77fc8d6e832165a78b9d83cc0a22b31b65362
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: fc4ed7b295ce8a109d2f7c5614440637b2ab855a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555976"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660792"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： Azure 入口網站
 
@@ -86,7 +86,7 @@ C:\Users\cherylmc\Documents\GitHub\azure-docs-pr\articles\vpn-gateway\media\vpn-
 
 用戶端位址集區是您指定的私人 IP 位址範圍。 透過點對站 VPN 連線的用戶端會動態收到這個範圍內的 IP 位址。 使用不會重疊的私人 IP 位址範圍搭配您從其連線的內部部署位置，或搭配您要連線至的 VNet。 如果您設定多個通訊協定，且 SSTP 是其中一個通訊協定，則設定的位址集區會平均地在設定的通訊協定之間進行分割。
 
-1. 一旦建立虛擬網路閘道，請瀏覽至虛擬網路閘道頁面的 [設定] 區段。 在 [設定] 中，選取 [ **點對站****設定** ]。 選取 [ **立即設定** ] 以開啟 [設定] 頁面。
+1. 一旦建立虛擬網路閘道，請瀏覽至虛擬網路閘道頁面的 [設定] 區段。 在 [設定] 中，選取 [**點對站****設定**]。 選取 [ **立即設定** ] 以開啟 [設定] 頁面。
 
    :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png" alt-text="點對站設定頁面" lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png":::
 1. 在 [ **點對站** 設定] 頁面上，您可以設定各種不同的設定。 如果您在此頁面上未看到通道類型或驗證類型，則您的閘道會使用基本 SKU。 基本 SKU 不支援 IKEv2 或 RADIUS 驗證。 如果您想要使用這些設定，您必須使用不同的閘道 SKU 來刪除並重新建立閘道。
@@ -107,7 +107,7 @@ C:\Users\cherylmc\Documents\GitHub\azure-docs-pr\articles\vpn-gateway\media\vpn-
 
 ## <a name="6-configure-authentication-type"></a><a name="authenticationtype"></a>6. 設定驗證類型
 
-針對 [ **驗證類型** ]，選取 [ **Azure 憑證** ]。
+針對 [ **驗證類型**]，選取 [ **Azure 憑證**]。
 
 :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/azure-certificate.png" alt-text="驗證類型":::
 
@@ -120,7 +120,7 @@ C:\Users\cherylmc\Documents\GitHub\azure-docs-pr\articles\vpn-gateway\media\vpn-
 1. 使用文字編輯器 (例如「記事本」) 開啟憑證。 複製憑證資料時，請確定您是以連續一行的形式複製文字，而不含歸位字元或換行字元。 您可能必須將文字編輯器中的檢視修改成 [顯示符號] 或 [顯示所有字元]，才能看到歸位字元和換行字元。 請只以連續一行的形式複製下列區段：
 
    :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png" alt-text="憑證資料" border="false":::
-1. 將憑證資料貼到 [公開憑證資料] 欄位中。 為憑證 **命名** ，然後選取 [ **儲存** ]。 您最多可新增 20 個受信任的根憑證。
+1. 將憑證資料貼到 [公開憑證資料] 欄位中。 為憑證 **命名**，然後選取 [**儲存**]。 您最多可新增 20 個受信任的根憑證。
 
    :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png" alt-text="貼上憑證資料" border="false":::
 1. 選取頁面頂端的 [ **儲存** ]，以儲存所有的設定。
@@ -149,9 +149,9 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>從 Mac VPN 用戶端連線
 
-從 [網路] 對話方塊中，找出您要使用的用戶端設定檔，指定 [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)中的設定，然後選取 [連線 **]** 。
+從 [網路] 對話方塊中，找出您要使用的用戶端設定檔，指定 [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)中的設定，然後選取 [連線 **]**。
 
-如需詳細指示，請參閱[安裝 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)。 如果您在連線時發生問題，請確認虛擬網路閘道不是使用「基本」SKU。 針對 Mac 用戶端不支援「基本」SKU。
+如需詳細指示，請參閱[安裝 - Mac (OS X)](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)。 如果您在連線時發生問題，請確認虛擬網路閘道不是使用「基本」SKU。 針對 Mac 用戶端不支援「基本」SKU。
 
 :::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="Mac VPN 用戶端連線" border="false":::
 
@@ -159,7 +159,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 這些指示適用於 Windows 用戶端。
 
-1. 若要驗證您的 VPN 連線為作用中狀態，請開啟提升權限的命令提示字元，並執行 *ipconfig/all* 。
+1. 若要驗證您的 VPN 連線為作用中狀態，請開啟提升權限的命令提示字元，並執行 *ipconfig/all*。
 2. 檢視結果。 請注意，您接收到的 IP 位址是您在組態中指定的點對站 VPN 用戶端位址集區中的其中一個位址。 結果類似於此範例：
 
    ```
@@ -209,7 +209,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 您可以藉由將指紋新增至撤銷清單來撤銷用戶端憑證。
 
-1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱 [如何取出憑證的憑證指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
+1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱 [如何取出憑證的憑證指紋](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)。
 1. 將資訊複製到文字編輯器，並移除所有的空格，讓它是連續字串。
 1. 瀏覽至虛擬網路閘道 [點對站組態] 頁面。 這個頁面與您用來[上傳受信任根憑證](#uploadfile)的頁面相同。
 1. 在 [撤銷憑證] 區段中，輸入憑證的易記名稱 (它不一定是憑證 CN)。
@@ -222,6 +222,6 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
-一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/linux/azure-vm-network-overview.md)。
+一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](../index.yml)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/network-overview.md)。
 
 如需有關為 P2S 疑難排解的資訊，請參閱[針對 Azure 點對站連線進行疑難排解](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。
