@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604527"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566345"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教學課程：使用 Logic Apps 和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知
 
@@ -21,13 +21,13 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 
 本文逐步解說使用 IoT 中樞與事件方格的範例組態。 結束時，您會將 Azure 邏輯應用程式設定為在每次裝置與 IoT 中樞連線或中斷連線時傳送通知電子郵件。 事件方格可用來取得重要裝置中斷連線的及時通知。 計量和診斷需要數分鐘 (也就是 20 分鐘以上 -- 雖然我們不想要提及數字) 才會在記錄/警示中顯示。 這對於重要的基礎結構可能無法接受。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>必要條件
 
-* 有效的 Azure 訂用帳戶。 如果您沒有訂用帳戶，則可以建立[免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure Logic Apps 支援的任何電子郵件提供者 (如 Office 365 Outlook 或 Outlook.com) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。
 
-* Azure Logic Apps 支援的任何電子郵件提供者 (如 Office 365 Outlook 或 Outlook.com) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -117,7 +117,7 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
    此事件會在裝置連線至 IoT 中樞時發佈。
 
 > [!NOTE]
-> 您可能會收到快顯通知，指出**請務必在您的要求中加入 Content-Type 標頭，並將其設為 application/json。** 您可以放心地忽略這項建議，並移至下一節。 
+> 您可能會收到快顯通知，指出 **請務必在您的要求中加入 Content-Type 標頭，並將其設為 application/json。** 您可以放心地忽略這項建議，並移至下一節。 
 
 ### <a name="create-an-action"></a>建立動作
 
@@ -131,7 +131,7 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 
    ![選取電子郵件提供者連接器](./media/publish-iot-hub-events-to-logic-apps/outlook-step.png)
 
-1. 選取 [傳送電子郵件 \(V2\)]**** 動作。 
+1. 選取 [傳送電子郵件 \(V2\)] 動作。 
 
 1. 選取 [登入] 並登入您的電子郵件帳戶。 選取 [是] 讓應用程式存取您的資訊。
 
@@ -178,12 +178,12 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 1. 使用下列值來建立事件訂用帳戶： 
 
    1. 在 [事件訂用帳戶詳細資料] 區段中：
-      1. 提供事件訂閱的**名稱**。 
+      1. 提供事件訂閱的 **名稱**。 
       2. 針對 [事件結構描述]，選取 [事件方格結構描述]。 
    2. 在 [主題詳細資料] 區段中：
       1. 確認 [主題類型] 已設為 [IoT 中樞]。 
       2. 確認 IoT 中樞的名稱已設為 [來源資源] 欄位的值。 
-      3. 為要替您建立的**系統主題**輸入名稱。 若要了解系統主題，請參閱[系統主題概觀](system-topics.md)。
+      3. 為要替您建立的 **系統主題** 輸入名稱。 若要了解系統主題，請參閱[系統主題概觀](system-topics.md)。
    3. 在 [事件類型] 區段中：
       1. 選取 [篩選至事件類型] 下拉式清單。
       1. 取消選取 [建立的裝置] 和 [刪除的裝置] 核取方塊，只保留選取 [連線的裝置] 和 [中斷連線的裝置] 核取方塊。
