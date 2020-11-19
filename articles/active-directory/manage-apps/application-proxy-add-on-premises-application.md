@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8b66a8ea3fcc6af62c872a6df6196b97ece2f55a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240914"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656440"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 一開始請先啟用與 Azure 資料中心的通訊，以準備適合 Azure AD 應用程式 Proxy 的環境。 如果路徑中有防火牆，請確定防火牆已開啟。 防火牆開啟才能讓連接器對「應用程式 Proxy」提出 HTTPS (TCP) 要求。
 
 > [!IMPORTANT]
-> 如果您要安裝適用於 Azure Government 雲端的連接器，請遵循[必要條件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)和[安裝步驟](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 您需要啟用一組不同 URL 的存取權，以及執行安裝的其他參數。
+> 如果您要安裝適用於 Azure Government 雲端的連接器，請遵循[必要條件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)和[安裝步驟](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。 您需要啟用一組不同 URL 的存取權，以及執行安裝的其他參數。
 
 ### <a name="open-ports"></a>開啟連接埠
 
@@ -202,7 +202,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
     | **後端應用程式逾時** | 只有當您的應用程式太慢而無法驗證和連線時，才將此值設定為 [長]  。 在預設情況下，後端應用程式的逾時長度為 85 秒。 設定為 Long 時，後端逾時會增加到 180 秒。 |
     | **使用僅限 HTTP Cookie** | 將此值設定為 [是]  ，讓應用程式 Proxy Cookie 在 HTTP 回應標頭中包含 HTTPOnly 旗標。 如果使用遠端桌面服務，請將此值設定為 [否]  。|
     | **使用安全的 Cookie**| 將此值設定為 [是]  ，以透過安全的通道 (例如加密的 HTTPS 要求) 傳輸 Cookie。
-    | **使用永續性 Cookie**| 將此值的設定保留為 [否]  。 請只對無法在程序之間共用 Cookie 的應用程式使用此設定。 如需 Cookie 設定的詳細資訊，請參閱 [Azure Active Directory 中用來存取內部部署應用程式的 Cookie 設定](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)。
+    | **使用永續性 Cookie**| 將此值的設定保留為 [否]  。 請只對無法在程序之間共用 Cookie 的應用程式使用此設定。 如需 Cookie 設定的詳細資訊，請參閱 [Azure Active Directory 中用來存取內部部署應用程式的 Cookie 設定](./application-proxy-configure-cookie-settings.md)。
     | **轉譯標頭中的 URL** | 除非您的應用程式需要驗證要求中的原始主機標頭，否則請將此值保留為 [是]  。 |
     | **轉譯應用程式主體中的 URL** | 除非您有其他內部部署應用程式的硬式編碼 HTML 連結，且未使用自訂網域，否則請將此值保留為 [否]  。 如需詳細資訊，請參閱[使用應用程式 Proxy 連結轉譯](application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果您打算使用 Microsoft Cloud App Security (MCAS) 監視此應用程式，請將此值設定為 [是]  。 如需詳細資訊，請參閱[使用 Microsoft Cloud App Security 與 Azure Active Directory 設定即時應用程式存取監視](application-proxy-integrate-with-microsoft-cloud-application-security.md)。 |
 

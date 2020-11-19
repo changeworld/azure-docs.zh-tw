@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266491"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651697"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>針對現有的同步 AD 樹系進行雲端佈建試驗 
 
@@ -121,18 +121,18 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 1. 以企業系統管理員權限登入您將使用的伺服器。  如果您使用[基本 AD 和 Azure 環境](tutorial-basic-ad-azure.md)教學課程，則會是 CP1。
 2. 使用[這裡](how-to-install.md#install-the-agent)所列的步驟，下載 Azure AD Connect 雲端佈建代理程式。
 3. 執行 Azure AD Connect 雲端佈建 (AADConnectProvisioningAgent.Installer)
-3. 在啟動顯示畫面上**接受**授權條款，然後按一下 [安裝]。</br>
-![此螢幕擷取畫面顯示 [Microsoft Azure AD Connect 佈建代理程式] 啟動顯示畫面。](media/how-to-install/install1.png)</br>
+3. 在啟動顯示畫面上 **接受** 授權條款，然後按一下 [安裝]。</br>
+![此螢幕擷取畫面顯示 [Microsoft Azure AD Connect 佈建代理程式] 啟動顯示畫面。](media/how-to-install/install-1.png)</br>
 
 4. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。
 5. 在 [連線 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 系統管理員帳戶登入。  此作業將會新增您的內部部署目錄。  按 [下一步] 。</br>
-![此螢幕擷取畫面顯示已輸入目錄值的 [連線 Active Directory] 畫面。](media/how-to-install/install3.png)</br>
+![此螢幕擷取畫面顯示已輸入目錄值的 [連線 Active Directory] 畫面。](media/how-to-install/install-3.png)</br>
 
 6. 在 [設定完成] 畫面上，按一下 [確認]。  此作業將會註冊並重新啟動代理程式。</br>
-![此螢幕擷取畫面顯示已選取 [確認] 按鈕的 [組態完成] 畫面。](media/how-to-install/install4.png)</br>
+![此螢幕擷取畫面顯示已選取 [確認] 按鈕的 [組態完成] 畫面。](media/how-to-install/install-4a.png)</br>
 
 7. 此作業完成後，您應該會看到「您已成功通過驗證」的通知。  您可以按一下 [結束]。</br>
-![歡迎使用畫面](media/how-to-install/install5.png)</br>
+![歡迎使用畫面](media/how-to-install/install-5.png)</br>
 8. 如果您仍看到初始啟動顯示畫面，請按一下 [關閉]。
 
 ## <a name="verify-agent-installation"></a>驗證代理程式安裝
@@ -143,20 +143,20 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 
 1. 登入 Azure 入口網站。
 2. 在左側選取 [Azure Active Directory]，按一下 [Azure AD Connect]，然後在中央選取 [管理佈建 (預覽)]。</br>
-![Azure 入口網站](media/how-to-install/install6.png)</br>
+![Azure 入口網站](media/how-to-install/install-6.png)</br>
 
 3.  在 [Azure AD 佈建 (預覽)] 畫面上，按一下 [檢閱所有代理程式]。
-![Azure AD 佈建](media/how-to-install/install7.png)</br>
+![Azure AD 佈建](media/how-to-install/install-7.png)</br>
  
-4. 在 [內部部署佈建代理程式] 畫面上，您會看到已安裝的代理程式。  確認相關代理程式位於該處，且已標示為 [停用]。  依預設會停用代理程式 ![佈建代理程式](media/how-to-install/verify1.png)</br>
+4. 在 [內部部署佈建代理程式] 畫面上，您會看到已安裝的代理程式。  確認相關代理程式位於該處，且已標示為 [停用]。  依預設會停用代理程式 ![佈建代理程式](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>在本機伺服器上
 若要確認代理程式正在執行中，請遵循下列步驟：
 
 1.  以系統管理員帳戶登入伺服器
 2.  瀏覽至 [服務] 或移至 [開始]/[執行]/[services.msc]，以開啟 [服務]。
-3.  在 [服務] 底下，確定 **Microsoft Azure AD Connect 代理程式更新程式**和 **Microsoft Azure AD Connect 佈建代理程式**皆位於該處，且狀態為 [執行中]。
-![服務](media/how-to-troubleshoot/troubleshoot1.png)
+3.  在 [服務] 底下，確定 **Microsoft Azure AD Connect 代理程式更新程式** 和 **Microsoft Azure AD Connect 佈建代理程式** 皆位於該處，且狀態為 [執行中]。
+![服務](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>設定 Azure AD Connect 雲端佈建
 使用下列步驟來設定佈建：
@@ -217,7 +217,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
  4. 登入 Azure AD，然後按 [下一步]。
  5. 在 [連線您的目錄] 畫面上，按 [下一步]。
  6. 在 [網域和 OU 篩選] 畫面上，選取 [同步所選取的網域及 OU]。
- 7. 展開您的網域，然後**取消選取** **CPUsers** OU。  按 [下一步] 。
+ 7. 展開您的網域，然後 **取消選取** **CPUsers** OU。  按 [下一步] 。
 ![範圍 (scope)](media/tutorial-existing-forest/scope1.png)</br>
  9. 在 [選用功能] 畫面上，按 [下一步]。
  10. 在 [已可設定] 畫面上，按一下 [設定]。

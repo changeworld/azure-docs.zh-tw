@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: c3d35940a445b73ecb9285355f36b141c3a151b8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 48fc9f7e021ba5158182344ddfdba3c8eafaf781
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475051"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659211"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安裝彈性堆疊
 
@@ -87,7 +87,7 @@ az vm create \
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-使用下列命令，建立與虛擬機器的 SSH 工作階段。 替換為您虛擬機器的正確公用 IP 位址。 在此範例中，IP 位址是 *40.68.254.142* 。
+使用下列命令，建立與虛擬機器的 SSH 工作階段。 替換為您虛擬機器的正確公用 IP 位址。 在此範例中，IP 位址是 *40.68.254.142*。
 
 ```bash
 ssh azureuser@40.68.254.142
@@ -211,7 +211,7 @@ sudo /usr/share/logstash/bin/logstash -f vm-syslog-logstash.conf
 編輯 `/etc/kibana/kibana.yml` 並變更 Kibana 接聽的 IP 位址，讓您可以從網頁瀏覽器加以存取。
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 使用下列命令啟動 Kibana：

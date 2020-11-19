@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069267"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655131"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
 
@@ -64,7 +64,7 @@ ms.locfileid: "89069267"
 8. 在 [位置]  中，選取您先前使用的相同位置。
 9. 在 [子網路]  底下的 [名稱]  中，鍵入 **AzureFirewallSubnet**。
 
-     防火牆會在此子網路中，且子網路名稱**必須**是 AzureFirewallSubnet。
+     防火牆會在此子網路中，且子網路名稱 **必須** 是 AzureFirewallSubnet。
      > [!NOTE]
      > AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
 
@@ -168,15 +168,15 @@ ms.locfileid: "89069267"
 1. 從 Azure 入口網站首頁，選取 [所有服務]。
 2. 在 [網路] 底下，選取 [路由表]。
 3. 選取 [新增]。
-4. 在 [名稱]**** 中，輸入 **RT-FWroute**。
+4. 在 [名稱] 中，輸入 **RT-FWroute**。
 5. 在 [訂用帳戶] 中，選取您的訂用帳戶。
-6. 在 [資源群組]**** 中，選取 [使用現有的]****，然後選取 [RG-DNAT-Test]****。
+6. 在 [資源群組] 中，選取 [使用現有的]，然後選取 [RG-DNAT-Test]。
 7. 在 [位置] 中，選取您先前使用的相同位置。
 8. 選取 [建立]。
 9. 選取 [重新整理]，然後選取 **RT-FWroute** 路由表。
 10. 選取 [子網路]，然後選取 [建立關聯]。
 11. 選取 [虛擬網路]，然後選取 **VN-Spoke**。
-12. 在 [子網路]**** 中，選取 [SN-Workload]****。
+12. 在 [子網路] 中，選取 [SN-Workload]。
 13. 選取 [確定]。
 14. 選取 [路由]，然後選取 [確定]。
 15. 在 [路由名稱] 中，鍵入 **FW-DG**。
@@ -192,14 +192,14 @@ ms.locfileid: "89069267"
 1. 開啟 **RG-DNAT-Test**，然後選取 **FW-DNAT-test** 防火牆。 
 2. 在 [FW-DNAT-test] 頁面的 [設定] 底下，選取 [規則]。 
 3. 選取 [新增 NAT 規則集合]。 
-4. 在 [名稱]**** 中，輸入 **RC-DNAT-01**。 
+4. 在 [名稱] 中，輸入 **RC-DNAT-01**。 
 5. 在 [優先順序] 中，鍵入 **200**。 
-6. 在 [規則]**** 底下的 [名稱]**** 中，輸入 **RL-01**。
+6. 在 [規則] 底下的 [名稱] 中，輸入 **RL-01**。
 7. 在 [通訊協定] 中，選取 [TCP]。
-8. 在 [來源位址]**** 中，輸入 *。 
-9. 在 [目的地位址]**** 中，輸入防火牆的公用 IP 位址。 
+8. 在 [來源位址] 中，輸入 *。 
+9. 在 [目的地位址] 中，輸入防火牆的公用 IP 位址。 
 10. 在 [目的地連接埠] 中，輸入 **3389**。 
-11. 在 [轉譯的位址]**** 中，輸入 Srv-Workload 虛擬機器的私人 IP 位址。 
+11. 在 [轉譯的位址] 中，輸入 Srv-Workload 虛擬機器的私人 IP 位址。 
 12. 在 [轉譯的連接埠] 中，輸入 **3389**。 
 13. 選取 [新增]。 
 
@@ -226,4 +226,4 @@ ms.locfileid: "89069267"
 接下來，您可以監視 Azure 防火牆記錄。
 
 > [!div class="nextstepaction"]
-> [教學課程：監視 Azure 防火牆記錄](./tutorial-diagnostics.md)
+> [教學課程：監視 Azure 防火牆記錄](./firewall-diagnostics.md)

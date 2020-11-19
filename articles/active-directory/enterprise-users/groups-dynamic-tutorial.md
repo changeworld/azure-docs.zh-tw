@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: tutorial
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba6ba2bccf45f7f18e26fb073a2b992167a5c9be
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372896"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647319"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教學課程：自動新增或移除群組成員
 
@@ -29,7 +29,7 @@ ms.locfileid: "92372896"
 > [!div class="checklist"]
 > * 從合作夥伴公司建立自動填入的來賓使用者群組
 > * 為來賓使用者群組指派存取合作夥伴專屬功能的授權
-> * 額外好處：藉由移除來賓使用者，以便您為成員指定僅限內部網站的使用者存取權 (舉例而言)，以保障**所有使用者**群組的安全性
+> * 額外好處：藉由移除來賓使用者，以便您為成員指定僅限內部網站的使用者存取權 (舉例而言)，以保障 **所有使用者** 群組的安全性
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "92372896"
 
 ## <a name="remove-guests-from-all-users-group"></a>從所有使用者群組中移除來賓
 
-您最終的管理計劃可能是要依公司將所有的來賓使用者指派給其本身的群組。 現在您也可以變更**所有使用者**群組，使其保留給組織中的成員使用者專用。 然後，您可以使用它來指派您的主要組織專屬的應用程式和授權。
+您最終的管理計劃可能是要依公司將所有的來賓使用者指派給其本身的群組。 現在您也可以變更 **所有使用者** 群組，使其保留給組織中的成員使用者專用。 然後，您可以使用它來指派您的主要組織專屬的應用程式和授權。
 
    ![將所有使用者群組變更為僅限成員](./media/groups-dynamic-tutorial/all-users-edit.png)
 

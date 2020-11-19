@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458178"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684401"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>教學課程：整合 Azure AD 單一登入與 Maverics Identity Orchestrator SAML Connector
 
@@ -158,7 +158,7 @@ secrets:
 
 **使用 Azure 入口網站**
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. [建立新金鑰保存庫](../../key-vault/secrets/quick-create-portal.md#create-a-vault)。
+1. [建立新金鑰保存庫](../../key-vault/general/quick-create-portal.md)。
 1. [將祕密新增至金鑰保存庫](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
 1. [向 Azure AD 註冊應用程式](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
 1. [授權應用程式使用祕密](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
@@ -201,25 +201,25 @@ secrets:
 
 ## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>在適用於 SAML 型 SSO 的 Azure AD 中設定您的應用程式
 
-1. 在您的 Azure AD 租用戶中，移至 **企業應用程式** ，搜尋 **Maverics Identity Orchestrator SAML Connector** 然後選取。
+1. 在您的 Azure AD 租用戶中，移至 **企業應用程式**，搜尋 **Maverics Identity Orchestrator SAML Connector** 然後選取。
 
-1. 在 Maverics Identity Orchestrator SAML Connector 的 **屬性** 窗格中，將 **是否需要指派使用者？** 設定為 **否** ，讓新遷移的使用者可以使用應用程式。
+1. 在 Maverics Identity Orchestrator SAML Connector 的 **屬性** 窗格中，將 **是否需要指派使用者？** 設定為 **否**，讓新遷移的使用者可以使用應用程式。
 
 1. 在 Maverics Identity Orchestrator SAML Connector 的 **概觀** 窗格中，選取 [設定單一登入]，然後選取 [SAML]。
 
-1. 在 Maverics Identity Orchestrator SAML Connector 的 **SAML 型登入** 窗格中，選取 [編輯] (鉛筆圖示) 按鈕編輯 **基本 SAML 組態** 。
+1. 在 Maverics Identity Orchestrator SAML Connector 的 **SAML 型登入** 窗格中，選取 [編輯] (鉛筆圖示) 按鈕編輯 **基本 SAML 組態**。
 
    ![「基本 SAML 組態」編輯按鈕的螢幕擷取畫面。](common/edit-urls.png)
 
-1. 以下列格式的 URL 輸入 **實體識別碼** ：`https://<SUBDOMAIN>.maverics.org`。 實體識別碼必須是租用戶中所有應用程式的唯一名稱。 儲存此處輸入的值，以納入 Maverics 組態。
+1. 以下列格式的 URL 輸入 **實體識別碼**：`https://<SUBDOMAIN>.maverics.org`。 實體識別碼必須是租用戶中所有應用程式的唯一名稱。 儲存此處輸入的值，以納入 Maverics 組態。
 
-1. 以下列格式輸入 **回復 URL** ︰`https://<AZURECOMPANY.COM>/<MY_APP>/`。 
+1. 以下列格式輸入 **回復 URL**︰`https://<AZURECOMPANY.COM>/<MY_APP>/`。 
 
-1. 以下列格式輸入 **登入 URL** ︰`https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>`。 
+1. 以下列格式輸入 **登入 URL**︰`https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>`。 
 
 1. 選取 [儲存]。
 
-1. 在 **SAML 簽署憑證** 區段中，選取 [複製] 按鈕以複製 **應用程式同盟中繼資料 URL** ，並將資料儲存在您的電腦上。
+1. 在 **SAML 簽署憑證** 區段中，選取 [複製] 按鈕以複製 **應用程式同盟中繼資料 URL**，並將資料儲存在您的電腦上。
 
     ![「SAML 簽署憑證」複製按鈕的螢幕擷取畫面。](common/copy-metadataurl.png)
 
@@ -290,8 +290,8 @@ Maverics Identity Orchestrator Azure AD Connector 支援 OpenID Connect 和 SAML
 ### <a name="configure-the-maverics-identity-orchestrator-saml-connector-yaml-file-for-user-migration"></a>設定 Maverics Identity Orchestrator SAML Connector YAML 檔案以移轉使用者
 
 若要啟用使用者移轉工作流程，請將此額外屬性新增至組態檔：
-1. 以下列格式輸入 **Azure Graph URL** ︰`graphURL: https://graph.microsoft.com`。
-1. 以下列格式輸入 **OAuth Token URL** ︰`oauthTokenURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>`。
+1. 以下列格式輸入 **Azure Graph URL**︰`graphURL: https://graph.microsoft.com`。
+1. 以下列格式輸入 **OAuth Token URL**︰`oauthTokenURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>`。
 1. 以下列格式輸入先前產生的用戶端密碼：`oauthClientSecret: <CLIENT SECRET>`。
 
 
@@ -388,7 +388,7 @@ connectors:
 
 若要設定移轉工作流程，請執行下列動作：
 
-1. 為工作流程命名 (例如 **SiteMinder to Azure AD Migration** )。
+1. 為工作流程命名 (例如 **SiteMinder to Azure AD Migration**)。
 1. 指定 `endpoint`，這是公開工作流程的 HTTP 路徑，會觸發該工作流程的 `actions` 以回應要求。 `endpoint` 通常會對應至代理的應用程式 (例如 `/my_app`)。 值必須同時包含前置和後置斜線。
 1. 將適當的 `actions` 新增至工作流程。
 
@@ -428,7 +428,7 @@ connectors:
 
 經過驗證之後，以結果形式建立的工作階段權杖會傳遞給 Maverics， 並使用 SiteMinder 連接器的 `emulate` 方法來模擬以 Cookie 為基礎的工作階段或以標頭為基礎的工作階段，然後使用應用程式所需的任何其他屬性來裝飾要求。
 
-1. 為工作流程命名 (例如 **SiteMinder Session Abstraction** )。
+1. 為工作流程命名 (例如 **SiteMinder Session Abstraction**)。
 1. 指定 `endpoint`，其通常會對應至代理的應用程式。 值必須同時包含前置和後置斜線 (例如 `/my_app/`)。
 1. 將適當的 `actions` 新增至工作流程。
 

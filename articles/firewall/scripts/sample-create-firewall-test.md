@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4158bc07373a2d0aa6fb6ceaf2dce62b50bb6bd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079058"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658359"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>建立 Azure 防火牆測試環境
 
@@ -72,12 +72,11 @@ Remove-AzResourceGroup -Name AzfwSampleScriptEastUS -Force
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | 建立 VM 組態。 此組態包括 VM 名稱、作業系統和系統管理認證等資訊。 建立 VM 時會使用此組態。 |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | 建立虛擬機器。 |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
-|[New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)| 建立新的 Azure 防火牆。|
-|[Get-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/get-azfirewall)|取得 Azure 防火牆物件。|
-|[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|建立新的 Azure 防火牆應用程式規則。|
-|[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|認可 Azure 防火牆物件變更。|
+|[New-AzFirewall](/powershell/module/az.network/new-azfirewall)| 建立新的 Azure 防火牆。|
+|[Get-AzFirewall](/powershell/module/az.network/get-azfirewall)|取得 Azure 防火牆物件。|
+|[New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule)|建立新的 Azure 防火牆應用程式規則。|
+|[Set-AzFirewall](/powershell/module/az.network/set-azfirewall)|認可 Azure 防火牆物件變更。|
 
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
-

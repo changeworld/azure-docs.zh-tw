@@ -6,16 +6,16 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423023"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579125"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教學課程：建立 Azure Functions 私人網站存取
 
-本教學課程說明如何使用 Azure Functions 來啟用[私人網站存取](./functions-networking-options.md#private-site-access)。 使用私人網站存取，您可以要求只從特定的虛擬網路觸發您的函式程式碼。
+本教學課程說明如何使用 Azure Functions 來啟用[私人網站存取](./functions-networking-options.md#private-endpoint-connections)。 使用私人網站存取，您可以要求只從特定的虛擬網路觸發您的函式程式碼。
 
 當函式應用程式的存取權必須限制為特定的虛擬網路時，私人網站存取會很有用。 例如，函式應用程式可能僅適用於特定組織的員工，或位於指定虛擬網路 (例如另一個 Azure Function、Azure 虛擬機器或 AKS 叢集) 內的服務。
 
@@ -53,7 +53,7 @@ ms.locfileid: "93423023"
 
 1. 選取 [建立資源] 按鈕。
 
-1. 在搜尋欄位中，輸入 **Windows Server** ，然後在搜尋結果中選取 [Windows Server]。
+1. 在搜尋欄位中，輸入 **Windows Server**，然後在搜尋結果中選取 [Windows Server]。
 
 1. 從 Windows Server 選項清單中選取 [Windows Server 2019 Datacenter]，然後按 [建立] 按鈕。
 
@@ -90,7 +90,7 @@ ms.locfileid: "93423023"
 1. 選取 [確定] 以建立虛擬網路。
 1. 回到 [網路] 索引標籤，確定已在 [公用 IP] 中選取 [無]。
 1. 選擇 [管理] 索引標籤，然後在 [診斷儲存體帳戶] 中，選擇 [建立新的] 來建立新的儲存體帳戶。
-1. 保留 _身分識別_ 、 _自動關閉_ ，以及 _備份_ 區段的預設值。
+1. 保留 _身分識別_、_自動關閉_，以及 _備份_ 區段的預設值。
 1. 選取 [檢閱 + 建立]。 驗證完成時，選取 [建立]。 VM 建立程序需要幾分鐘完成。
 
 ## <a name="configure-azure-bastion"></a>設定 Azure Bastion
@@ -98,7 +98,7 @@ ms.locfileid: "93423023"
 [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) 是完全受控的 Azure 服務，可直接從 Azure 入口網站提供虛擬機器安全的 RDP 和 SSH 存取權。 使用 Azure Bastion 服務，就不需要設定與 RDP 存取相關的網路設定。
 
 1. 在入口網站中，選擇資源群組檢視頂端的 [新增]。
-1. 在搜尋欄位中，輸入 **Bastion** 。
+1. 在搜尋欄位中，輸入 **Bastion**。
 1. 在搜尋結果中選取 [Bastion]。
 1. 選取 [建立] 開始建立新 Azure Bastion資源的流程。 您會在 [虛擬網路] 區段中發現錯誤訊息，因為還未建立 AzureBastionSubnet 子網路。 子網路會在後續步驟中建立。 使用影像下方表格中的設定：
 
@@ -116,7 +116,7 @@ ms.locfileid: "93423023"
     > 如需建立 Azure Bastion 資源的詳細逐步指南，請參閱[建立 Azure Bastion 主機](../bastion/bastion-create-host-portal.md)教學課程。
 
 1. 建立 Azure 可在其中佈建 Azure Bastion 主機的子網路。 選擇 [管理子網路設定] 會開啟新的窗格，您可以在其中定義新的子網路。  選擇 [+ 子網路] 以建立新的子網路。
-1. 子網路的名稱必須是 **AzureBastionSubnet** 且子網路前置詞至少必須是 **/27** 。  選取 [確定] 以建立子網路。
+1. 子網路的名稱必須是 **AzureBastionSubnet** 且子網路前置詞至少必須是 **/27**。  選取 [確定] 以建立子網路。
 
     >[!div class="mx-imgBorder"]
     >![建立 Azure Bastion 主機的子網路](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
@@ -159,7 +159,7 @@ ms.locfileid: "93423023"
 
 下一個步驟是設定[存取限制](../app-service/app-service-ip-restrictions.md)，確保只有虛擬網路上的資源可以叫用函式。
 
-在函式應用程式與指定的虛擬網路之間建立 Azure 虛擬網路[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，即可啟用[私人網站](functions-networking-options.md#private-site-access)存取。 存取限制是透過服務端點來執行。 服務端點會確保只有來自指定虛擬網路內的流量可以存取指定的資源。 在此情況下，指定的資源是 Azure 函式。
+在函式應用程式與指定的虛擬網路之間建立 Azure 虛擬網路[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，即可啟用[私人網站](functions-networking-options.md#private-endpoint-connections)存取。 存取限制是透過服務端點來執行。 服務端點會確保只有來自指定虛擬網路內的流量可以存取指定的資源。 在此情況下，指定的資源是 Azure 函式。
 
 1. 在函式應用程式內，選取 [設定] 區段標頭底下的 [網路] 連結。
 1. [網路] 頁面是設定 Azure Front Door、Azure CDN 和存取限制的起點。
@@ -172,7 +172,7 @@ ms.locfileid: "93423023"
 1. _存取限制_ 頁面現在會顯示有新的限制。 可能需要幾秒鐘的時間，[端點狀態] 才會從 [已停用] 變更為 [佈建中] 再變更為 [已啟用]。
 
     >[!IMPORTANT]
-    > 每個函式應用程式都有一個[進階工具 (Kudu) 網站](../app-service/app-service-ip-restrictions.md#scm-site)，可用來管理函式應用程式部署。 此網站可從 URL 存取，例如：`<FUNCTION_APP_NAME>.scm.azurewebsites.net`。 在 Kudu 網站上啟用存取限制可防止從本機開發人員的工作站部署專案程式碼，然後虛擬網路內需要有代理程式才能執行部署。
+    > 每個函式應用程式都有一個[進階工具 (Kudu) 網站](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site)，可用來管理函式應用程式部署。 此網站可從 URL 存取，例如：`<FUNCTION_APP_NAME>.scm.azurewebsites.net`。 在 Kudu 網站上啟用存取限制可防止從本機開發人員的工作站部署專案程式碼，然後虛擬網路內需要有代理程式才能執行部署。
 
 ## <a name="access-the-functions-app"></a>存取函式應用程式
 

@@ -6,16 +6,16 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 11/21/2019
-ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790792"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593921"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教學課程：設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 使用 [Azure 入口網站](https://portal.azure.com)，在這個新的資源群組內建立兩個受控執行個體。
 
 - 發行者受控執行個體的名稱應為 `sql-mi-publisher` (以及幾個隨機的字元)，虛擬網路的名稱應為 `vnet-sql-mi-publisher`。
-- 散發者受控執行個體的名稱應為 `sql-mi-distributor` (以及幾個隨機的字元)，且應 _位於與發行者受控執行個體相同的虛擬網路中_ 。
+- 散發者受控執行個體的名稱應為 `sql-mi-distributor` (以及幾個隨機的字元)，且應 _位於與發行者受控執行個體相同的虛擬網路中_。
 
    ![將發行者 VNet 用於散發者](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -159,7 +159,7 @@ Get-AzVirtualNetworkPeering `
 
 ### <a name="create-an-a-record"></a>建立 A 記錄
 
-1. 移至新的 **私人 DNS 區域** ，然後選取 [概觀]。
+1. 移至新的 **私人 DNS 區域**，然後選取 [概觀]。
 1. 選取 [+ 記錄集] 以建立新的 A 記錄。
 1. 提供 SQL Server VM 的名稱，以及私人內部 IP 位址。
 
@@ -169,7 +169,7 @@ Get-AzVirtualNetworkPeering `
 
 ### <a name="link-the-virtual-network"></a>連結虛擬網路
 
-1. 移至新的 **私人 DNS 區域** ，然後選取 [虛擬網路連結]。
+1. 移至新的 **私人 DNS 區域**，然後選取 [虛擬網路連結]。
 1. 選取 [+ 新增] 。
 1. 提供連結的名稱，例如 `Pub-link`。
 1. 從下拉式選單中選取您的訂閱，然後選取發行者受控執行個體的虛擬網路。

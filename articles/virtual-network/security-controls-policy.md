@@ -1,22 +1,22 @@
 ---
 title: 適用於 Azure 虛擬網路的 Azure 原則法規合規性控制
 description: 列出可供 Azure 虛擬網路使用的 Azure 原則法規合規性控制。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: dd7cf262adc3f0bcb2951aa649ea6bfb2d4f15c0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9000b14b4d1ac1929fc6098218977f7d0593cdf2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317061"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697830"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>適用於 Azure 虛擬網路的 Azure 原則法規合規性控制
 
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure 虛擬網路的**合規性網域**和**安全性控制**。 您可以針對**安全性控制**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure 虛擬網路的 **合規性網域** 和 **安全性控制**。 您可以針對 **安全性控制** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044950"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696433"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過 Standard Load Balancer 來平衡可用性區域內的 VM 負載
 
@@ -37,7 +37,7 @@ ms.locfileid: "92044950"
 
 如需關於搭配使用可用性區域和 Standard Load Balancer 的詳細資訊，請參閱 [Standard Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
 
-如果您想要，請使用 [Azure CLI](load-balancer-standard-public-zonal-cli.md) 完成本教學課程。
+如果您想要，請使用 [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) 完成本教學課程。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -88,10 +88,10 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
 
-1. 在畫面的左上方，選取 [建立資源]****。 在搜尋方塊中，輸入「網路安全性群組」****。 在 [網路安全性群組] 頁面中，選取 [建立]****。
+1. 在畫面的左上方，選取 [建立資源]。 在搜尋方塊中，輸入「網路安全性群組」。 在 [網路安全性群組] 頁面中，選取 [建立]。
 2. 在 [建立網路安全性群組] 頁面中，輸入下列值：
-   - [myNetworkSecurityGroup]**** 作為網路安全性群組的名稱。
-   - [myResourceGroupLBAZ]**** 作為現有資源群組的名稱。
+   - [myNetworkSecurityGroup] 作為網路安全性群組的名稱。
+   - [myResourceGroupLBAZ] 作為現有資源群組的名稱。
    
      ![建立網路安全性群組](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
@@ -99,60 +99,60 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
 
 在本節中，您會建立 NSG 規則，允許在 Azure 入口網站中使用 HTTP 與 Microsoft 遠端桌面通訊協定 (RDP) 進行輸入連線。
 
-1. 在 Azure 入口網站中，選取最左邊功能表中的 [所有資源]****。 然後搜尋並選取 [myNetworkSecurityGroup]****。 它位於 [myResourceGroupZLB]**** 資源群組中。
-2. 在 [設定]**** 下，選取 [輸入安全性規則]****。 然後選取 [新增]。
+1. 在 Azure 入口網站中，選取最左邊功能表中的 [所有資源]。 然後搜尋並選取 [myNetworkSecurityGroup]。 它位於 [myResourceGroupZLB] 資源群組中。
+2. 在 [設定] 下，選取 [輸入安全性規則]。 然後選取 [新增]。
 3. 針對名為 **myHTTPRule** 的輸入安全性規則輸入下列值，以允許使用連接埠 80 的輸入 HTTP 連線：
-    - [服務標記]**** 作為 [來源]****。
-    - [網際網路]**** 作為 [來源服務標記]****。
-    - [80]**** 作為 [目的地連接埠範圍]****。
-    - [vTCP]**** 作為 [通訊協定]****。
-    - [允許]**** 作為 [動作]****。
+    - [服務標記] 作為 [來源]。
+    - [網際網路] 作為 [來源服務標記]。
+    - [80] 作為 [目的地連接埠範圍]。
+    - [vTCP] 作為 [通訊協定]。
+    - [允許] 作為 [動作]。
     - [100] 作為 [優先順序]。
-    - [myHTTPRule]**** 作為 [名稱]****。
-    - [允許 HTTP]**** 作為 [描述]****。
+    - [myHTTPRule] 作為 [名稱]。
+    - [允許 HTTP] 作為 [描述]。
 4. 選取 [確定]。
  
    ![建立 NSG 規則](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
-5. 重複步驟 2 到 4，以建立名為 [myRDPRule]**** 的另一個規則。 此規則允許使用連接埠 3389 的輸入 RDP 連線，採用下列值：
-    - [服務標記]**** 作為 [來源]****。
-    - [網際網路]**** 作為 [來源服務標記]****。
-    - [3389]**** 作為 [目的地連接埠範圍]****。
-    - [TCP]**** 作為 [通訊協定]****。
-    - [允許]**** 作為 [動作]****。
+5. 重複步驟 2 到 4，以建立名為 [myRDPRule] 的另一個規則。 此規則允許使用連接埠 3389 的輸入 RDP 連線，採用下列值：
+    - [服務標記] 作為 [來源]。
+    - [網際網路] 作為 [來源服務標記]。
+    - [3389] 作為 [目的地連接埠範圍]。
+    - [TCP] 作為 [通訊協定]。
+    - [允許] 作為 [動作]。
     - [200] 作為 [優先順序]。
     - [myRDPRule] 作為 [名稱]。
-    - [允許 RDP]**** 作為 [描述]****。
+    - [允許 RDP] 作為 [描述]。
 
       ![建立 RDP 規則](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
 1. 在畫面的左上方，選取 [建立資源] >  **[計算]**  > [Windows Server 2016 Datacenter]。 依虛擬機器輸入這些值：
-    - [myVM1]**** 作為虛擬機器的名稱。        
-    - [azureuser]**** 作為系統管理員使用者名稱。    
-    - [myResourceGroupZLB]**** 作為 [資源群組]****。 選取 [使用現有的]****，然後選取 [myResourceGroupZLB]****。
+    - [myVM1] 作為虛擬機器的名稱。        
+    - [azureuser] 作為系統管理員使用者名稱。    
+    - [myResourceGroupZLB] 作為 [資源群組]。 選取 [使用現有的]，然後選取 [myResourceGroupZLB]。
 2. 選取 [確定]。
-3. 選取 [DS1_V2]**** 作為虛擬機器的大小。 選擇 [選取]  。
+3. 選取 [DS1_V2] 作為虛擬機器的大小。 選擇 [選取]  。
 4. 輸入 VM 設定的下列值：
-    - [區域 1]**** 作為您放置 VM 的可用性區域。
+    - [區域 1] 作為您放置 VM 的可用性區域。
     -  **myVNet**。 確保已選取它作為虛擬網路。
-    - [myVM1PIP]**** 作為您建立的標準公用 IP 位址。 選取 [建立新的]。 然後針對名稱類型，選取 [myVM1PIP]****。 針對 [區域]****，選取 **1**。 IP 位址 SKU 預設為 [標準]。
+    - [myVM1PIP] 作為您建立的標準公用 IP 位址。 選取 [建立新的]。 然後針對名稱類型，選取 [myVM1PIP]。 針對 [區域]，選取 **1**。 IP 位址 SKU 預設為 [標準]。
     - **myBackendSubnet**。 確保已選取它作為子網路。
-    - [myNetworkSecurityGroup]**** 作為現存網路安全性群組防火牆的名稱。
-5. 選取 [停用]**** 來停用開機診斷。
+    - [myNetworkSecurityGroup] 作為現存網路安全性群組防火牆的名稱。
+5. 選取 [停用] 來停用開機診斷。
 6. 選取 [確定]。 在摘要頁面上檢閱設定。 然後選取 [建立]。
-7. 重複步驟 1 到 6，在區域 1 中建立名為 **myVM2** 的第二個 VM。 [myVnet]**** 作為虛擬網路。 [myVM2PIP]**** 作為標準公用 IP 位址。 [myBackendSubnet]**** 作為子網路。 [myNetworkSecurityGroup]**** 作為網路安全性群組。
+7. 重複步驟 1 到 6，在區域 1 中建立名為 **myVM2** 的第二個 VM。 [myVnet] 作為虛擬網路。 [myVM2PIP] 作為標準公用 IP 位址。 [myBackendSubnet] 作為子網路。 [myNetworkSecurityGroup] 作為網路安全性群組。
 
     ![建立虛擬機器](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-machine.png) 
 
 ### <a name="install-iis-on-vms"></a>在 VM 上安裝 IIS
 
-1. 選取最左邊功能表中的 [所有資源]****。 然後從 [資源] 清單中，選取 [myVM1]****。 它位於 [myResourceGroupZLB]**** 資源群組中。
-2. 在 [概觀]**** 頁面上，選取 [連線]**** 以使用 RDP 移至 VM。
-3. 使用您建立 VM 時指定的使用者名稱和密碼來登入 VM。 若要指定您在建立 VM 時輸入的認證，您可能需要選取 [其他選擇]****。 然後選取 [使用其他帳戶]。 然後選取 [確定]****。 您可能會在登入過程中收到憑證警告。 選取 [是]**** 以繼續進行連線。
+1. 選取最左邊功能表中的 [所有資源]。 然後從 [資源] 清單中，選取 [myVM1]。 它位於 [myResourceGroupZLB] 資源群組中。
+2. 在 [概觀] 頁面上，選取 [連線] 以使用 RDP 移至 VM。
+3. 使用您建立 VM 時指定的使用者名稱和密碼來登入 VM。 若要指定您在建立 VM 時輸入的認證，您可能需要選取 [其他選擇]。 然後選取 [使用其他帳戶]。 然後選取 [確定]。 您可能會在登入過程中收到憑證警告。 選取 [是] 以繼續進行連線。
 4. 在伺服器桌面上，瀏覽至 [Windows 系統管理工具] > [Windows PowerShell]。
-6. 在 [PowerShell]**** 視窗中，執行下列命令來執行 IIS 伺服器。 這些命令也會移除預設 iisstart.htm 檔案，然後新增可顯示 VM 名稱的新 iisstart.htm 檔案：
+6. 在 [PowerShell] 視窗中，執行下列命令來執行 IIS 伺服器。 這些命令也會移除預設 iisstart.htm 檔案，然後新增可顯示 VM 名稱的新 iisstart.htm 檔案：
 
    ```azurepowershell-interactive
     # install IIS server role
@@ -163,7 +163,7 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
    ```
 7. 使用 myVM1 關閉 RDP 工作階段。
-8. 重複步驟 1 到 7，在 myVM2**** 上安裝 IIS。
+8. 重複步驟 1 到 7，在 myVM2 上安裝 IIS。
 
 ## <a name="create-load-balancer-resources"></a>建立負載平衡器資源
 
@@ -172,13 +172,13 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
 
 ### <a name="create-a-backend-address-pool"></a>建立後端位址集區
 
-若要將流量分散至 VM，後端位址集區包含已連線至負載平衡器的虛擬網路介面卡 IP 位址。 建立後端位址集區 myBackendPool**** 以納入 VM1**** 和 VM2****。
+若要將流量分散至 VM，後端位址集區包含已連線至負載平衡器的虛擬網路介面卡 IP 位址。 建立後端位址集區 myBackendPool 以納入 VM1 和 VM2。
 
-1. 選取最左邊功能表中的 [所有資源]****。 然後從 [資源] 清單中選取 [myLoadBalancer]****。
+1. 選取最左邊功能表中的 [所有資源]。 然後從 [資源] 清單中選取 [myLoadBalancer]。
 2. 在 [設定] 底下選取 [後端集區]。 然後選取 [新增]。
-3. 在 [新增後端集區]**** 頁面上，採取下列動作：
-    - 針對名稱，輸入 myBackEndPool****，作為您後端集區的名稱。
-    - 針對 [虛擬網路]****，在下拉式功能表中選取 [myVNet]****。 
+3. 在 [新增後端集區] 頁面上，採取下列動作：
+    - 針對名稱，輸入 myBackEndPool，作為您後端集區的名稱。
+    - 針對 [虛擬網路]，在下拉式功能表中選取 [myVNet]。 
     - 針對 [虛擬機器] 和 [IP 位址]，新增 myVM1 和 myVM2 以及其對應的公用 IP 位址。
 4. 選取 [新增]  。
 5. 請檢查以確定負載平衡器後端集區設定顯示 **myVM1** 和 **myVM2** 這兩個 VM。
@@ -189,14 +189,14 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
 
 使用健康狀態探查，所以負載平衡器可以監視應用程式的狀態。 健康狀態探查會根據 VM 對健康狀態檢查的回應，以動態方式從負載平衡器輪替中新增或移除 VM。 建立健康狀態探查 myHealthProbe 以監視 VM 的健康狀態。
 
-1. 選取最左邊功能表中的 [所有資源]****。 然後從 [資源] 清單中選取 [myLoadBalancer]****。
+1. 選取最左邊功能表中的 [所有資源]。 然後從 [資源] 清單中選取 [myLoadBalancer]。
 2. 在 [設定] 下，選取 [健康狀態探查]。 然後選取 [新增]。
 3. 使用下列值來建立健康狀態探查：
-    - [myHealthProbe]**** 作為健康狀態探查的名稱。
-    - [HTTP]**** 作為通訊協定類型。
-    - [80]**** 作為連接埠號碼。
-    - [15]**** 作為探查嘗試之間的 [間隔]**** 秒數。
-    - [2]**** 作為 [狀況不良閾值]****，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。
+    - [myHealthProbe] 作為健康狀態探查的名稱。
+    - [HTTP] 作為通訊協定類型。
+    - [80] 作為連接埠號碼。
+    - [15] 作為探查嘗試之間的 [間隔] 秒數。
+    - [2] 作為 [狀況不良閾值]，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。
 4. 選取 [確定]。
 
    ![新增健康情況探查](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
@@ -205,21 +205,21 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
 
 負載平衡器規則可定義如何將流量分散至 VM。 您可定義連入流量的前端 IP 組態及後端 IP 集區來接收流量，以及所需的來源和目的地連接埠。 建立 **myLoadBalancerRuleWeb** 負載平衡器規則，以便接聽前端 **FrontendLoadBalancer** 中的連接埠 80。 此規則會將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**，也可藉由使用連接埠 80。 
 
-1. 選取最左邊功能表中的 [所有資源]****。 然後從 [資源] 清單中選取 [myLoadBalancer]****。
+1. 選取最左邊功能表中的 [所有資源]。 然後從 [資源] 清單中選取 [myLoadBalancer]。
 2. 在 [設定] 下，選取 [負載平衡規則]。 然後選取 [新增]。
 3. 使用下列值來設定負載平衡規則：
-    - [myHTTPRule]**** 作為負載平衡規則的名稱。
-    - [TCP]**** 作為通訊協定類型。
-    - [80]**** 作為連接埠號碼。
-    - [80]**** 作為後端連接埠。
-    - [myBackendPool]**** 作為後端集區的名稱。
-    - [myHealthProbe]**** 作為健康狀態探查的名稱。
+    - [myHTTPRule] 作為負載平衡規則的名稱。
+    - [TCP] 作為通訊協定類型。
+    - [80] 作為連接埠號碼。
+    - [80] 作為後端連接埠。
+    - [myBackendPool] 作為後端集區的名稱。
+    - [myHealthProbe] 作為健康狀態探查的名稱。
 4. 選取 [確定]。
     
     ![新增負載平衡規則](./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png)
 
 ## <a name="test-the-load-balancer"></a>測試負載平衡器
-1. 在 [概觀] 畫面上尋找負載平衡器的公用 IP 位址。 選取 [所有資源]。 然後選取 [myPublicIP]****。 
+1. 在 [概觀] 畫面上尋找負載平衡器的公用 IP 位址。 選取 [所有資源]。 然後選取 [myPublicIP]。 
 
 2. 複製公用 IP 位址。 然後將它貼在瀏覽器的網址列中。 瀏覽器會顯示包含 Web 伺服器頁面名稱的預設頁面。
 

@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/16/2019
-ms.openlocfilehash: 4e102f0161a50fe6f65558fef77549b86c5c3eae
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f3a314f55d45a888dde08ddc275953e7f9bbf3b2
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742237"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594142"
 ---
 # <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>使用 Azure CLI 將資料庫新增至容錯移轉群組
 
@@ -54,7 +54,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| Command | 描述 |
+| Command | 說明 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | 資料庫命令。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | 容錯移轉群組命令。 |

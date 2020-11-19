@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461153"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660996"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 VPN 閘道
 
@@ -125,7 +125,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 金鑰參數值：
 * GatewayType：使用 **Vpn** 進行站對站和 VNet 對 VNet 連線
 * VpnType：使用 **RouteBased** 與較大範圍的 VPN 裝置和較多路由功能互動
-* GatewaySku： **VpnGw1** 是預設值；如果您需要更高的輸送量或更多連線，請將其變更為其他 VpnGw SKU。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+* GatewaySku：**VpnGw1** 是預設值；如果您需要更高的輸送量或更多連線，請將其變更為其他 VpnGw SKU。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 如果您使用 TryIt，則工作階段可能會逾時。沒關係。 閘道仍會建立。
 
@@ -133,7 +133,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 
 ## <a name="view-the-gateway-public-ip-address"></a>檢視閘道公用 IP 位址
 
-如果您知道公用 IP 位址的名稱，請使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 來顯示指派給該閘道的公用 IP 位址。
+如果您知道公用 IP 位址的名稱，請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 來顯示指派給該閘道的公用 IP 位址。
 
 如果您的工作階段逾時，請將本教學課程一開始的一般網路參數複製到新的工作階段，再繼續操作。
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-如需詳細資訊，請參閱[重設 VPN 閘道](vpn-gateway-resetgw-classic.md)。
+如需詳細資訊，請參閱[重設 VPN 閘道](./reset-gateway.md)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您要繼續進行[下一個教學課程](vpn-gateway-tutorial-vpnconnection-powershell.md)，您可以保留這些資源，因為它們是必要條件。
+如果您要繼續進行[下一個教學課程](./vpn-gateway-create-site-to-site-rm-powershell.md)，您可以保留這些資源，因為它們是必要條件。
 
 但如果閘道屬於原型、測試或概念證明部署的一部分，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VPN 閘道和所有相關資源。
 

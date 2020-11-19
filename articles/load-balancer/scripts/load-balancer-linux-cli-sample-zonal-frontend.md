@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 45da5cbef570b2a65959878aad47d0ef6eb3b8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0d43ae8f76e89ffe429ec1778922ee465ad7db4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501716"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696481"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI 指令碼範例：在特定可用性區域內為 VM 平衡流量負載
 
@@ -169,21 +169,21 @@ az group delete --name myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 建立 Azure 虛擬網路和子網路。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-create) | 建立具有靜態 IP 位址和相關聯 DNS 名稱的公用 IP 位址。 |
-| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az-network-lb-create) | 建立 Azure 負載平衡器。 |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az-network-lb-probe-create) | 建立負載平衡器探查。 負載平衡器探查是用來監視負載平衡器集合中的每部 VM。 如有任何 VM 變得無法存取，就不會將流量路由至該 VM。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | 建立負載平衡器規則。 在此範例中，會為連接埠 80 建立規則。 HTTP 流量到達負載平衡器時，它會路由傳送至 LB 集內其中一部 VM 的連接埠 80。 |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | 建立負載平衡器網路位址轉譯 (NAT) 規則。  NAT 規則會將負載平衡器的連接埠對應至 VM 上的連接埠。 在此範例中，會為傳送到負載平衡器集合中每部 VM 的 SSH 流量建立 NAT 規則。  |
-| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az-network-nsg-create) | 建立網路安全性群組 (NSG)，做為網際網路和虛擬機器之間的安全性界限。 |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 建立允許輸入流量的 NSG 規則。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
-| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | 建立虛擬網路卡，並將它連接至虛擬網路、子網路及 NSG。 |
+| [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | 建立 Azure 虛擬網路和子網路。 |
+| [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) | 建立具有靜態 IP 位址和相關聯 DNS 名稱的公用 IP 位址。 |
+| [az network lb create](/cli/azure/network/lb#az-network-lb-create) | 建立 Azure 負載平衡器。 |
+| [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) | 建立負載平衡器探查。 負載平衡器探查是用來監視負載平衡器集合中的每部 VM。 如有任何 VM 變得無法存取，就不會將流量路由至該 VM。 |
+| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | 建立負載平衡器規則。 在此範例中，會為連接埠 80 建立規則。 HTTP 流量到達負載平衡器時，它會路由傳送至 LB 集內其中一部 VM 的連接埠 80。 |
+| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | 建立負載平衡器網路位址轉譯 (NAT) 規則。  NAT 規則會將負載平衡器的連接埠對應至 VM 上的連接埠。 在此範例中，會為傳送到負載平衡器集合中每部 VM 的 SSH 流量建立 NAT 規則。  |
+| [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) | 建立網路安全性群組 (NSG)，做為網際網路和虛擬機器之間的安全性界限。 |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 建立允許輸入流量的 NSG 規則。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
+| [az network nic create](/cli/azure/network/nic#az-network-nic-create) | 建立虛擬網路卡，並將它連接至虛擬網路、子網路及 NSG。 |
 | [az vm create](/cli/azure/vm#az-vm-create) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure 網路文件](../cli-samples.md)中找到其他 Azure 網路 CLI 指令碼範例。

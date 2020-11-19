@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6fd26b4965b92f5f06a008d67e2d585fd1b41b7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840195"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652071"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教學課程：在 Azure Sentinel 中設定自動化威脅回應
 
@@ -39,7 +39,7 @@ ms.locfileid: "91840195"
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>什麼是 Azure Sentinel 中的安全性劇本？
 
-安全性劇本是可從 Azure Sentinel 執行以回應警示的程序集合。 安全性劇本可以協助自動化及協調您的回應，並可手動執行，或者在觸發特定警示時設定為自動執行。 Azure Sentinel 中的安全性劇本會以 [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) 為依據，這表示您會取得所有能力、自訂功能，以及 Logic Apps 的內建範本。 每個劇本都會針對您選擇的特定訂用帳戶來建立，但當您查看 [劇本] 頁面時，將會看到任何所選取訂用帳戶上的所有劇本。
+安全性劇本是可從 Azure Sentinel 執行以回應警示的程序集合。 安全性劇本可以協助自動化及協調您的回應，並可手動執行，或者在觸發特定警示時設定為自動執行。 Azure Sentinel 中的安全性劇本會以 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 為依據，這表示您會取得所有能力、自訂功能，以及 Logic Apps 的內建範本。 每個劇本都會針對您選擇的特定訂用帳戶來建立，但當您查看 [劇本] 頁面時，將會看到任何所選取訂用帳戶上的所有劇本。
 
 > [!NOTE]
 > 劇本會運用 Azure Logic Apps，因此會產生費用。 請造訪 [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) 價格分頁以取得詳細資料。
@@ -70,7 +70,7 @@ ms.locfileid: "91840195"
 
 4. 在 [建立邏輯應用程式] 頁面中，輸入所要求的資訊以建立新的邏輯應用程式，然後按一下 [建立]。 
 
-5. 在[**邏輯應用程式設計工具**](../logic-apps/logic-apps-overview.md)中，選取您想要使用的範本。 如果您選取需要認證的範本，就必須提供它們。 或者，可從頭開始建立新的空白劇本。 選取 [空白邏輯應用程式]。 
+5. 在 [**邏輯應用程式設計工具**](../logic-apps/logic-apps-overview.md)中，選取您想要使用的範本。 如果您選取需要認證的範本，就必須提供它們。 或者，可從頭開始建立新的空白劇本。 選取 [空白邏輯應用程式]。 
 
    ![顯示空白邏輯應用程式面板的螢幕擷取畫面。](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "91840195"
 
 7. 如果您要建立空白劇本，在 [搜尋所有連接器及觸發程序] 欄位中，輸入 *Azure Sentinel*，然後選取 [當對 Azure Sentinel 警示的回應已觸發時]。 <br>建立之後，新的劇本會出現在 [劇本] 清單中。 如果它沒有出現，按一下 [重新整理]。
 
-1. 使用**取得實體**函式可讓您從 [實體] 清單內部取得相關實體，例如帳戶、IP 位址和主機。 這可讓您在特定實體上執行動作。
+1. 使用 **取得實體** 函式可讓您從 [實體] 清單內部取得相關實體，例如帳戶、IP 位址和主機。 這可讓您在特定實體上執行動作。
 
 7. 現在您可以定義當觸發劇本時會發生什麼事。 您可以新增動作、邏輯條件、切換案例條件或迴圈。
 
@@ -92,7 +92,7 @@ ms.locfileid: "91840195"
 
 1. 在 [事件] 頁面中，選取一個事件，然後按一下 [檢視完整的詳細資料]。
 
-2. 在 [警示] 索引標籤中，按一下您想要執行劇本的警示、一路捲動到右邊並按一下 [檢視劇本]，然後從訂用帳戶的可用劇本清單中選取要**執行**的劇本。 
+2. 在 [警示] 索引標籤中，按一下您想要執行劇本的警示、一路捲動到右邊並按一下 [檢視劇本]，然後從訂用帳戶的可用劇本清單中選取要 **執行** 的劇本。 
 
 
 
@@ -118,5 +118,3 @@ ms.locfileid: "91840195"
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何在 Azure Sentinel 中執行劇本。 繼續了解使用 Azure Sentine [主動尋找威脅的方式](hunting.md)。
-
-

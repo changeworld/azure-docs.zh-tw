@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9c35c08889892e877ecfac20910607ddf85b2282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9b66d7b37397fe509cce5c66d30da0a3ae63465
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735482"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648254"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 為使用者授與 Azure 資源的存取權
 
@@ -40,7 +40,7 @@ ms.locfileid: "82735482"
 若要完成本教學課程，您將會需要：
 
 - 在 Azure Active Directory 中建立使用者的權限 (或使用現有的使用者)
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>角色指派
 

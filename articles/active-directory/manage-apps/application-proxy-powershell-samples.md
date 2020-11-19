@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efe71fd77e9e4edb7fc7df4c633ae8f81177097b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85554996"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657815"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>適用於Azure AD 應用程式 Proxy 的 Azure AD PowerShell 範例
 
-下表包含適用於 Azure AD 應用程式 Proxy 的 PowerShell 指令碼範例的連結。 這些範例需要 [AzureAD V2 PowerShell for Graph 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或 [AzureAD V2 PowerShell for Graph 模組預覽版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)，除非另有註明。
+下表包含適用於 Azure AD 應用程式 Proxy 的 PowerShell 指令碼範例的連結。 這些範例需要 [AzureAD V2 PowerShell for Graph 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或 [AzureAD V2 PowerShell for Graph 模組預覽版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)，除非另有註明。
 
 
-若要進一步了解這些範例中使用 Cmdlet，請參閱[應用程式 Proxy 應用程式管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)和[應用程式 Proxy 連接器管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)。
+若要進一步了解這些範例中使用 Cmdlet，請參閱[應用程式 Proxy 應用程式管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)和[應用程式 Proxy 連接器管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)。
 
 | 連結 | 描述 |
 |---|---|
@@ -32,7 +32,7 @@ ms.locfileid: "85554996"
 | [列出所有應用程式 Proxy 應用程式的基本資訊](scripts/powershell-get-all-app-proxy-apps-basic.md) | 列出目錄中所有應用程式 Proxy 應用程式的相關基本資訊 (AppId、DisplayName、ObjId)。 |
 | [列出所有應用程式 Proxy 應用程式的擴充資訊](scripts/powershell-get-all-app-proxy-apps-extended.md) | 列出目錄中所有應用程式 Proxy 應用程式的相關擴充資訊 (AppId、DisplayName、ExternalUrl、InternalUrl、ExternalAuthenticationType)。  |
 | [依連接器群組列出所有的應用程式 Proxy 應用程式](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | 列出目錄中所有應用程式 Proxy 應用程式的相關資訊，以及應用程式指派到的連接器群組。 |
-| [取得具有權杖存留期原則的所有應用程式 Proxy 應用程式](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | 列出目錄中具有權杖存留期原則的所有應用程式 Proxy 應用程式，以及該原則的詳細資料。 此範例需要 [AzureAD V2 PowerShell for Graph 模組預覽版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。 |
+| [取得具有權杖存留期原則的所有應用程式 Proxy 應用程式](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | 列出目錄中具有權杖存留期原則的所有應用程式 Proxy 應用程式，以及該原則的詳細資料。 此範例需要 [AzureAD V2 PowerShell for Graph 模組預覽版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。 |
 |**連接器群組**||
 | [取得目錄中所有的連接器群組和連接器](scripts/powershell-get-all-connectors.md) | 列出目錄中所有的連接器群組和連接器。 |
 | [將所有指派給連接器群組的應用程式移至另一個連接器群組](scripts/powershell-move-all-apps-to-connector-group.md) | 將目前指派給連接器群組的所有應用程式移至不同的連接器群組。 |

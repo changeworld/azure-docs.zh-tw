@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: f69b62f39b7e62eea26cc4d8511505056c6821bf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321263"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578683"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：透過 CLI 訓練和部署模型
 
@@ -128,7 +128,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-如需使用資源群組的詳細資訊，請參閱 [az group](//cli/azure/group?preserve-view=true&view=azure-cli-latest)。
+如需使用資源群組的詳細資訊，請參閱 [az group](/cli/azure/group?preserve-view=true&view=azure-cli-latest)。
 
 ## <a name="create-a-workspace"></a>建立工作區
 

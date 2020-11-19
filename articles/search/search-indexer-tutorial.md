@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399222"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697164"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
@@ -69,7 +69,7 @@ ms.locfileid: "91399222"
 
 1. 選取檔案，然後按一下 [開啟]。 指令碼應該會看起來如下列螢幕擷取畫面所示：
 
-   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="新增資料庫頁面" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="SQL 指令碼" border="false":::
 
 1. 按一下 [執行] 來執行查詢。 在 [結果] 窗格中，您應會看到查詢成功訊息 (3 個資料列)。
 
@@ -99,7 +99,7 @@ API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要�
 
 1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="新增資料庫頁面" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="取得 HTTP 端點和存取金鑰" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2 - 設定您的環境
 
@@ -201,7 +201,7 @@ public string HotelName { get; set; }
 
 按 F5 以建置及執行解決方案。 此程式會在偵錯模式中執行。 主控台視窗會報告每項作業的狀態。
 
-   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="新增資料庫頁面" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="主控台輸出" border="false":::
 
 您的程式碼會在 Visual Studio 本機執行，並連線到您在 Azure 上的搜尋服務，搜尋服務再連線到 Azure SQL Database 並擷取資料集。 由於要進行的作業很多，所以會有數個潛在的失敗點。 如果您收到錯誤，請先檢查下列條件：
 
@@ -213,11 +213,11 @@ public string HotelName { get; set; }
 
 ## <a name="5---search"></a>5 - 搜尋
 
-使用 Azure 入口網站來確認物件的建立，然後使用**搜尋總管**來查詢索引。
+使用 Azure 入口網站來確認物件的建立，然後使用 **搜尋總管** 來查詢索引。
 
 1. [登入 Azure 入口網站](https://portal.azure.com/)，然後在搜尋服務的 [概觀] 頁面中，依序開啟每個清單以確認物件已完成建立。 [索引]、[索引子] 和 [資料來源] 分別會有 "hotels"、"azure-sql-indexer" 和 "azure-sql"。
 
-   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="新增資料庫頁面" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="索引子和資料來源圖格" border="false":::
 
 1. 選取 [hotels] 索引。 在 [hotels] 頁面上，第一個索引標籤是 [搜尋總管]。 
 
@@ -225,7 +225,7 @@ public string HotelName { get; set; }
 
    您的索引中的三個項目會以 JSON 文件形式傳回。 搜尋總管會以 JSON 傳回文件，以便您檢視整個結構。
 
-   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="新增資料庫頁面" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="查詢索引" border="false":::
    
 1. 接下來，輸入搜尋字串：`search=river&$count=true`。 
 
