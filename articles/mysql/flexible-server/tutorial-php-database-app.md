@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537927"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844432"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP (Laravel) 和 MySQL 彈性伺服器 (預覽) 應用程式
 
@@ -134,7 +134,7 @@ php artisan serve
 
 在瀏覽器中，瀏覽至 `http://localhost:8000` 。 在頁面中新增幾項工作。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 成功連線至 MySQL":::
 
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
@@ -146,7 +146,7 @@ az mysql flexible-server create  --resource-group myResourceGroup --public-acces
 ```
 
 > [!IMPORTANT]
-> - 請記下 **伺服器名稱** 和 **連接字串** ，以便在下一個步驟中用來連線和執行 laravel 資料移轉。
+> - 請記下 **伺服器名稱** 和 **連接字串**，以便在下一個步驟中用來連線和執行 laravel 資料移轉。
 > - 針對 **IP-Address** 引數，提供您用戶端電腦的 IP。 建立伺服器時系統會加以鎖定，您必須允許存取您的用戶端電腦，才能在本機管理伺服器。
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>設定伺服器防火牆，允許 Web 應用程式連線到伺服器
@@ -221,7 +221,7 @@ MYSQL_SSL=true
 
 根據預設，MySQL 彈性伺服器會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用適用於 MySQL 的 Azure 資料庫彈性伺服器所提供的 [.pem 憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)。 下載 [此憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) 並放在範例應用程式存放庫本機複本的 **ssl** 資料夾中。
 
-開啟 _config/database.php_ ，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
+開啟 _config/database.php_，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
 
 ```php
 'mysql' => [
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 在頁面中新增幾項工作。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 順利連線至適用於 MySQL 的 Azure 資料庫":::
 
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
@@ -334,7 +334,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 
 ### <a name="configure-database-settings"></a>設定資料庫設定
 
-在 App Service 中，您可以使用  。
+在 App Service 中，您可以使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」。
 
 下列命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、`DB_PASSWORD` 應用程式設定。 取代預留位置 _&lt;app-name>_ 和 _&lt;mysql-server-name>_ 。
 
@@ -359,7 +359,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Laravel 在 App Service 中需要應用程式金鑰。 您可以使用應用程式設定加以設定。
 
-在本機終端機視窗中，使用 `php artisan` 產生新的應用程式金鑰，而不將它儲存為 _.env_ 。
+在本機終端機視窗中，使用 `php artisan` 產生新的應用程式金鑰，而不將它儲存為 _.env_。
 
 ```bash
 php artisan key:generate --show
@@ -375,7 +375,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>設定虛擬應用程式路徑
 
-[Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 App Service 的預設 PHP Docker 映像會使用 Apache，且不會讓您自訂 Laravel 的 `DocumentRoot`。 不過，您可以使用 `.htaccess` 將所有要求重寫為指向 /public  ，而不是指向根目錄。 在存放庫根路徑中，已針對此目的新增 `.htaccess`。 因此，您的 Laravel 應用程式已準備好進行部署。
+[Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 App Service 的預設 PHP Docker 映像會使用 Apache，且不會讓您自訂 Laravel 的 `DocumentRoot`。 不過，您可以使用 `.htaccess` 將所有要求重寫為指向 /public，而不是指向根目錄。 在存放庫根路徑中，已針對此目的新增 `.htaccess`。 因此，您的 Laravel 應用程式已準備好進行部署。
 
 如需詳細資訊，請參閱[變更站台根目錄](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root)。
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 瀏覽至 `http://<app-name>.azurewebsites.net` 並將幾項工作新增至清單。
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 中的 PHP Web App":::
 
 恭喜，您正在 Azure App Service 中執行資料驅動的 PHP 應用程式。
 
@@ -466,7 +466,7 @@ public function down()
 php artisan migrate
 ```
 
-根據  ) 會對應至 `tasks` 資料表。
+根據 [Laravel 命名慣例](https://laravel.com/docs/5.4/eloquent#defining-models)，依預設 `Task` 模型 (請看 app/Task.php) 會對應至 `tasks` 資料表。
 
 ### <a name="update-application-logic"></a>更新應用程式邏輯
 
@@ -534,7 +534,7 @@ php artisan serve
 
 若要查看工作狀態的變更，瀏覽至 `http://localhost:8000`，然後選取核取方塊。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="已將核取方塊新增至工作":::
 
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
@@ -556,7 +556,7 @@ git push azure master
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後測試新功能。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="發佈至 Azure 的模型和資料庫變更":::
 
 如果您新增任何工作，它們會保留在資料庫中。 對資料結構描述進行的更新，現有資料會原封不動。
 

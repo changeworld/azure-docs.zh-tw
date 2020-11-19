@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 0edcdbfec07c032f095cc03eb91be8cf0785b58a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088596"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844841"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>搭配 Azure Spring Cloud 使用斷路器儀表板
 
@@ -45,7 +45,7 @@ mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 遵循下列程序，[在 Azure CLI 上佈建服務執行個體](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)。
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>將您的應用程式部署至 Azure Spring Cloud
-這些應用程式不會使用**組態伺服器**，因此不需要為 Azure Spring Cloud 設定 **組態伺服器**。  建立並部署，如下所示：
+這些應用程式不會使用 **組態伺服器**，因此不需要為 Azure Spring Cloud 設定 **組態伺服器**。  建立並部署，如下所示：
 ```azurecli
 az spring-cloud app create -n user-service --is-public
 az spring-cloud app create -n recommendation-service

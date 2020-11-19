@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666937"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886068"
 ---
 # <a name="client-and-server-architecture"></a>用戶端和伺服器架構
 
@@ -29,7 +29,7 @@ ms.locfileid: "91666937"
 > - https://docs.microsoft.com/azure/aks/operator-best-practices-identity
 > - https://docs.microsoft.com/cloud-app-security/api-tokens?view=gestures-1.0-->
 
-每個 Azure 通訊服務應用程式都會有使用**服務**的**用戶端應用程式**，以促進人員對人員的連線能力。 此頁面說明各種案例中的常見架構元素。
+每個 Azure 通訊服務應用程式都會有使用 **服務** 的 **用戶端應用程式**，以促進人員對人員的連線能力。 此頁面說明各種案例中的常見架構元素。
 
 ## <a name="user-access-management"></a>使用者存取管理
 
@@ -37,19 +37,19 @@ Azure 通訊服務用戶端程式庫需要 `user access tokens` 安全地存取�
 
 :::image type="content" source="../media/scenarios/archdiagram-access.png" alt-text="顯示使用者存取權杖架構的圖表。":::
 
-如需其他資訊，請參閱 [最佳身分識別管理作法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
+如需其他資訊，請參閱 [最佳身分識別管理作法](../../security/fundamentals/identity-management-best-practices.md)
 
 ## <a name="browser-communication"></a>瀏覽器通訊
 
 Azure 通訊 JavaScript 用戶端程式庫可讓 web 應用程式使用豐富的文字、語音和影片互動。 應用程式會透過用戶端程式庫直接與 Azure 通訊服務互動，以存取資料平面並提供即時文字、語音和影片通訊。 您可以在下面找到範例架構流程：
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="顯示使用者存取權杖架構的圖表。":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="顯示瀏覽器的通訊服務瀏覽器架構圖表。":::
 
 ## <a name="native-app-communication"></a>原生應用程式通訊
 
 許多案例都是原生應用程式的最佳服務。 Azure 通訊服務支援瀏覽器對應用程式和應用程式對應用程式之間的通訊。  當您建立原生應用程式體驗時，擁有推播通知可讓使用者在應用程式未執行時接收呼叫。 Azure 通訊服務可讓您輕鬆地將推播通知整合至 Google Firebase、Apple Push Notification Service 和 Windows 推播通知。 您可以在下面找到範例架構流程：
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="顯示使用者存取權杖架構的圖表。":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="此圖顯示原生應用程式通訊的通訊服務架構。":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>透過公用切換電話語音網路的語音和 SMS (PSTN) 
 
@@ -58,7 +58,7 @@ Azure 通訊 JavaScript 用戶端程式庫可讓 web 應用程式使用豐富的
 > [!Note]
 > 在公開預覽期間，提供美國電話號碼給美國和加拿大境內帳單位址的客戶。 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="顯示使用者存取權杖架構的圖表。":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="顯示通訊服務 PSTN 架構的圖表。":::
 
 如需有關 PSTN 和 SMS 解決方案的詳細資訊，請參閱 [規劃 pstn 和 sms 解決方案](../concepts/telephony-sms/plan-solution.md)
 
@@ -66,13 +66,13 @@ Azure 通訊 JavaScript 用戶端程式庫可讓 web 應用程式使用豐富的
 
 Azure 通訊服務可透過文字和語音通道支援人類對系統的通訊，並提供可直接存取 Azure 通訊服務資料平面的服務。 例如，您可以讓 bot 接聽撥入電話或參與網路聊天。 Azure 通訊服務提供用戶端程式庫，可讓這些案例進行呼叫和聊天。 您可以在下面找到範例架構流程：
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="顯示使用者存取權杖架構的圖表。":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="顯示通訊服務 Bot 架構的圖表。":::
 
 ## <a name="networking"></a>網路功能
 
 您可能想要在使用者之間交換任意資料，例如，同步處理共用的混合現實或遊戲體驗。 用於文字、語音和影片通訊的即時資料平面，可直接透過兩種方式提供給您：
 
-- 呼叫**用戶端程式庫**-呼叫中的裝置可以存取 api，以便透過呼叫通道來傳送和接收資料。 這是將資料通訊新增至現有互動的最簡單方式。
+- 呼叫 **用戶端程式庫**-呼叫中的裝置可以存取 api，以便透過呼叫通道來傳送和接收資料。 這是將資料通訊新增至現有互動的最簡單方式。
 - **STUN/turn** -Azure 通訊服務會讓符合標準的 STUN 和服務可供您使用。 這可讓您在這些標準化基本專案之上建立高度自訂的傳輸層。 您可以撰寫自己符合標準的用戶端，或使用開放原始碼程式庫（例如 [WinRTC](https://github.com/microsoft/winrtc)）。
 
 ## <a name="next-steps"></a>後續步驟

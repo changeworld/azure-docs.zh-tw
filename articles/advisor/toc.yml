@@ -13,6 +13,10 @@
         - name: ARM 範本
           displayName: Resource Manager
           href: advisor-alerts-arm.md
+- name: 概念
+  items:
+    - name: 安全性基準
+      href: security-baseline.md
 - name: 教學課程
   items:
     - name: 開始使用 Advisor

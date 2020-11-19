@@ -1,23 +1,23 @@
 ---
 title: 適用於 Azure RBAC 的 Azure 原則法規合規性控制項
 description: 列出可供 Azure 角色型存取控制 (Azure RBAC) 使用的 Azure 原則法規合規性控制。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 5c2a863486e0e94184d290a887ea7b8acd5803f6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e4a7c712c5527e2bb07be2b53e679a0d4d442098
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312730"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699029"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>適用於 Azure RBAC 的 Azure 原則法規合規性控制項
 
 [Azure 原則](../governance/policy/index.yml)可以為您的 Azure 資源強制執行規則，讓基礎結構符合商業標準。
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建項目」)。 此頁面會列出 Azure 角色型存取控制 (Azure RBAC) 的**合規性網域**和**安全性控制**。 您可以針對**安全性控制**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建項目」)。 此頁面會列出 Azure 角色型存取控制 (Azure RBAC) 的 **合規性網域** 和 **安全性控制**。 您可以針對 **安全性控制** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579567"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886442"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
 
@@ -27,7 +27,7 @@ ms.locfileid: "94579567"
 * 當新資料可供重新訓練時
 * 當您要套用不同的資料準備或特徵工程方法時
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在本教學課程中，您需要：
 
@@ -153,7 +153,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datas-in-your-experiments"></a>在您的實驗中追蹤資料
+## <a name="track-data-in-your-experiments"></a>追蹤實驗中的資料
 
 Azure Machine Learning 在整個實驗中追蹤您的資料做為輸入和輸出資料集。  
 
@@ -211,7 +211,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
 
 註冊之後，您可以使用 Python 來查看向資料集註冊的模型清單，或移至 [studio](https://ml.azure.com/)。
 
-下列是來自 [ **資產** ] 下的 [ **資料集** ] 窗格。 選取資料集，然後選取 [ **模型** ] 索引標籤，以取得已向資料集註冊的模型清單。 
+下列是來自 [**資產**] 下的 [**資料集**] 窗格。 選取資料集，然後選取 [ **模型** ] 索引標籤，以取得已向資料集註冊的模型清單。 
 
 ![輸入資料集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

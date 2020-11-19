@@ -4,13 +4,13 @@ description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了�
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: 6619d7c9f7d2b0cd78f3941ce431e80342b6f563
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576433"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833906"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教學課程：更新 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 現在，開啟本機網頁瀏覽器並前往您服務的 IP 位址：
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="螢幕擷取畫面，顯示已使用本機網頁瀏覽器和本機主機所開啟已更新容器映像 Azure 投票應用程式的範例。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中所開啟已更新應用程式 Azure 投票應用程式的範例。":::
 
 ## <a name="next-steps"></a>後續步驟
 

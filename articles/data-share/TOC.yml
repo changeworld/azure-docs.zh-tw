@@ -25,6 +25,10 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: Azure Data Share 詞彙
       href: terminology.md
     - name: 角色和需求

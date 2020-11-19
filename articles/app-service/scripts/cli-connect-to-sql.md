@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 5bdb09acf9adeaf0165512b144de0348ad4df743
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 3a243c384709408bb2c4bb8d04045b8a2c6921e9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959661"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834739"
 ---
 # <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>使用 CLI 將 App Service 應用程式連線至 SQL Database
 

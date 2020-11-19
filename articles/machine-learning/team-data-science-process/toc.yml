@@ -64,10 +64,6 @@
       href: walkthroughs-sql-server.md
     - name: 使用 Azure Synapse Analytics 的 T-SQL 和 Python
       href: walkthroughs-sql-data-warehouse.md
-- name: 公用事業和工具
-  items:
-    - name: 資料瀏覽和模型化公用程式 (GitHub)
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
 - name: 訓練
   items:
     - name: 適用於資料科學家

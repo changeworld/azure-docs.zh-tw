@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure CLI，快速建立 Kubernetes 叢集、在
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 2c99244df7811b09abaf10d54d924a727201bbad
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a14659b64bbc86cfc50cbf8a377c0245fba25065
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076635"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886238"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
 
@@ -19,9 +19,9 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 本文章假設您對 Kubernetes 概念有基本瞭解。 如需詳細資訊，請參閱 [Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ### <a name="limitations"></a>限制
 
@@ -67,10 +67,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
-若要執行支援 Windows Server 容器之節點集區的 AKS 叢集，您的叢集必須採用使用 [Azure CNI][azure-cni-about] (advanced) 網路外掛程式的網路原則。 如需協助方案必要子網路範圍和網路考慮的詳細資訊，請參閱[設定 Azure CNI 網路][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令來建立名為 *myAKSCluster*的 aks 叢集。 此命令將會建立必要的網路資源（如果不存在的話）。
+若要執行支援 Windows Server 容器之節點集區的 AKS 叢集，您的叢集必須採用使用 [Azure CNI][azure-cni-about] (advanced) 網路外掛程式的網路原則。 如需協助方案必要子網路範圍和網路考慮的詳細資訊，請參閱[設定 Azure CNI 網路][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令來建立名為 *myAKSCluster* 的 aks 叢集。 此命令將會建立必要的網路資源（如果不存在的話）。
 
 * 叢集已設定兩個節點
-* *Windows-admin-password*和*windows-admin-username*參數會設定在叢集上建立之任何 windows server 容器的系統管理員認證，而且必須符合[windows server 密碼需求][windows-server-password]。
+* *Windows-admin-password* 和 *windows-admin-username* 參數會設定在叢集上建立之任何 windows server 容器的系統管理員認證，而且必須符合 [windows server 密碼需求][windows-server-password]。
 * 節點集區使用 `VirtualMachineScaleSets`
 
 > [!NOTE]
@@ -111,7 +111,7 @@ az aks nodepool add \
     --node-count 1
 ```
 
-上述命令會建立名為 *npwin* 的新節點集區，並將此新增至 *myAKSCluster*。 建立節點集區以執行 Windows Server 容器時，會*Standard_D2s_v3**節點 vm 大小*的預設值。 如果您選擇設定 *節點 vm 大小* 參數，請檢查 [受限制的 vm][restricted-vm-sizes]大小清單。 最小的建議大小是 *Standard_D2s_v3*。 上述命令也會使用執行時所建立的預設 vnet 中的預設子網 `az aks create` 。
+上述命令會建立名為 *npwin* 的新節點集區，並將此新增至 *myAKSCluster*。 建立節點集區以執行 Windows Server 容器時，會 *Standard_D2s_v3**節點 vm 大小* 的預設值。 如果您選擇設定 *節點 vm 大小* 參數，請檢查 [受限制的 vm][restricted-vm-sizes]大小清單。 最小的建議大小是 *Standard_D2s_v3*。 上述命令也會使用執行時所建立的預設 vnet 中的預設子網 `az aks create` 。
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
@@ -133,7 +133,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-下列範例輸出顯示叢集中的所有節點。 請確定所有節點的狀態為*就緒*：
+下列範例輸出顯示叢集中的所有節點。 請確定所有節點的狀態為 *就緒*：
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION

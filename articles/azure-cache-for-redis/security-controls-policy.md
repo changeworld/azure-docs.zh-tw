@@ -1,22 +1,22 @@
 ---
 title: 適用於 Azure Cache for Redis 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Cache for Redis 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7de7720048bc784601d66650b9723c3e536a7304
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 01d6567433bed465aee5e3ee63cc0031a7a66fdd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319636"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701668"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>適用於 Azure Cache for Redis 的 Azure 原則法規合規性控制項
 
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure Cache for Redis 的**合規性網域**和**安全性控制項**。 您可以針對**安全性控制**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure Cache for Redis 的 **合規性網域** 和 **安全性控制項**。 您可以針對 **安全性控制** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7446e9391b39d068cef4cda2fea7817a63b6f99a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: c20c78cb3c946c666b1640ccac6f86c9b52387ea
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323544"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843860"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教學課程：使用 Azure 儲存體在雲端中上傳影像資料
 
@@ -128,7 +128,7 @@ az storage container create --name thumbnails `
 
 使用 [az appservice plan create](/cli/azure/appservice/plan) 命令來建立 App Service 方案。
 
-下列範例會在**免費**定價層中建立名為 `myAppServicePlan` 的 App Service 方案。
+下列範例會在 **免費** 定價層中建立名為 `myAppServicePlan` 的 App Service 方案。
 
 ```bash
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
@@ -395,7 +395,7 @@ module.exports = router;
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>確定影像顯示在儲存體帳戶中
 
-登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]，然後選取您的儲存體帳戶名稱。 選取 [容器]，然後選取**映像**容器。
+登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]，然後選取您的儲存體帳戶名稱。 選取 [容器]，然後選取 **映像** 容器。
 
 確認影像顯示在容器中。
 
@@ -405,7 +405,7 @@ module.exports = router;
 
 若要測試縮圖檢視，您要將映像上傳至 **thumbnails** 容器，以檢查應用程式是否否讀取 **thumbnails** 容器。
 
-登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]，然後選取您的儲存體帳戶名稱。 選取 [容器]，然後選取**縮圖**容器。 選取 [上傳] 開啟 [上傳 Blob] 窗格。
+登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]，然後選取您的儲存體帳戶名稱。 選取 [容器]，然後選取 **縮圖** 容器。 選取 [上傳] 開啟 [上傳 Blob] 窗格。
 
 使用檔案選擇器選擇檔案，並選取 [上傳]。
 

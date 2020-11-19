@@ -114,8 +114,8 @@
           href: overview-authentication-authorization.md
         - name: 作業系統和執行階段修補
           href: overview-patch-os-runtime.md
-        - name: 內建安全性控制
-          href: app-service-security-controls.md
+        - name: 安全性基準
+          href: security-baseline.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

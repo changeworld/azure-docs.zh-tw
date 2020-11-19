@@ -3,13 +3,13 @@ title: 在 Azure 中調整 Service Fabric 叢集
 description: 在本教學課程中，您將了解如何在 Azure 中相應放大和縮小 Service Fabric 叢集，以及如何清除剩餘的資源。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716872"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842680"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -80,7 +80,7 @@ ms.locfileid: "88716872"
 
 ### <a name="update-the-template"></a>更新範本
 
-從最新部署的資源群組中[匯出範本和參數檔案](#export-the-template-for-the-resource-group)。  開啟 *parameters.json* 檔案。  如果您使用本教學課程中的[範例範本][template]來部署叢集，則叢集中會有三個叢集類型，以及三個可針對每個節點類型設定節點數目的參數：*nt0InstanceCount*、*nt1InstanceCount* 和 *nt2InstanceCount*。  *nt1InstanceCount* 參數，例如，設定第二個節點類型的執行個體計數，並在相關聯的虛擬機器擴展集中設定 VM 數目。
+從最新部署的資源群組中[匯出範本和參數檔案](#export-the-template-for-the-resource-group)。  開啟 *parameters.json* 檔案。  如果您使用本教學課程中的 [範例範本][template]來部署叢集，則叢集中會有三個叢集類型，以及三個可針對每個節點類型設定節點數目的參數：*nt0InstanceCount*、*nt1InstanceCount* 和 *nt2InstanceCount*。  *nt1InstanceCount* 參數，例如，設定第二個節點類型的執行個體計數，並在相關聯的虛擬機器擴展集中設定 VM 數目。
 
 因此，您可以藉由更新 *nt1InstanceCount* 的值，來變更第二個節點類型中的節點數目。  請記住，您無法將節點類型相應放大為 100 個以上的節點。  執行具狀態生產工作負載的非主要節點類型，應一律具有五個以上的節點。 執行無狀態生產工作負載的非主要節點類型，應一律具有兩個以上的節點。
 

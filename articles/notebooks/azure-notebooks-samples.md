@@ -3,12 +3,12 @@ title: 適用於 Azure Notebooks 預覽的範例 Jupyter Notebook
 description: 範例是您體驗在免費的 Azure Notebooks 雲端服務中執行 Jupyter Notebook 的絕佳途徑。
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8282a4047ede7d1344551a052ccf1b0143dae66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85833990"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845052"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>在 Azure Notebooks 預覽中探索及使用範例 Notebook
 
@@ -36,4 +36,4 @@ ms.locfileid: "85833990"
 - [操作說明：設定和管理專案](configure-manage-azure-notebooks-projects.md)
 - [操作說明：使用資料檔案](work-with-project-data-files.md)
 - [操作說明：存取資料資源](access-data-resources-jupyter-notebooks.md)
-- [操作說明：使用 Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [操作說明：使用 Azure Machine Learning](../machine-learning/samples-notebooks.md)

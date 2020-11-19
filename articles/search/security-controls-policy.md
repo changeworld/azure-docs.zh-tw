@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2a63243415959458815207c50b921b5092e461b1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4a31b4564a36a82c2b469c3e3737ab6ecac1a1f7
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319222"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700186"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項
 
@@ -20,7 +20,7 @@ ms.locfileid: "92319222"
 
 針對 Azure 認知搜尋，目前有一個可在原則指派中使用的內建定義 (如下所列)。 內建用於記錄和監視。 在[您建立的原則](../governance/policy/assign-policy-portal.md)中使用此內建定義，系統會掃描沒有[診斷記錄](search-monitor-logs.md)的搜尋服務，然後據以啟用。
 
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建項目」)。 此頁面會列出適用於 Azure 認知搜尋的**合規性網域**和**安全性控制項**。 您可以針對**安全性控制項**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建項目」)。 此頁面會列出適用於 Azure 認知搜尋的 **合規性網域** 和 **安全性控制項**。 您可以針對 **安全性控制項** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -4,12 +4,12 @@ description: 了解如何使用備份與復原服務，在 Azure VM 上執行檔
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf55b9d64d7d716aee9862b0e1e3e24966629286
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 236b2c2c7799ef6a0df1da2ddded0e689349e222
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746696"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842204"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>在 Azure 中將檔案還原到虛擬機器
 
@@ -51,13 +51,13 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 
     ![預設 NGINX 網頁](./media/tutorial-restore-files/nginx-working.png)
 
-3. 透過 SSH 連線到您的 VM。 以您在上一個命令中取得的公用 IP 位址取代 *publicIpAddress* ：
+3. 透過 SSH 連線到您的 VM。 以您在上一個命令中取得的公用 IP 位址取代 *publicIpAddress*：
 
     ```bash
     ssh publicIpAddress
     ```
 
-4. 從網頁伺服器刪除預設頁面 ( */var/www/html/index.nginx-debian.html* )，如下所示：
+4. 從網頁伺服器刪除預設頁面 ( */var/www/html/index.nginx-debian.html*)，如下所示：
 
     ```bash
     sudo rm /var/www/html/index.nginx-debian.html
@@ -91,7 +91,7 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 
 2. 若要取得將復原點連線或掛接到 VM 的指令碼，請使用 [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp)。 下列範例會取得 *myRecoveryServicesVault* 中受保護之 VM (名為 myVM) 的指令碼。
 
-    以您在上一個命令中取得的復原點名稱取代 *myRecoveryPointName* ：
+    以您在上一個命令中取得的復原點名稱取代 *myRecoveryPointName*：
 
     ```azurecli-interactive
     az backup restore files mount-rp \
@@ -108,7 +108,7 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
     File downloaded: myVM_we_1571974050985163527.sh. Use password c068a041ce12465
     ```
 
-3. 若要將指令碼傳送至您的 VM，請使用安全複製 (SCP)。 提供已下載指令碼的名稱，並以您 VM 的公用 IP 位址取代 *publicIpAddress* 。 確定您在 SCP 命令結尾包含尾端 `:`，如下所示：
+3. 若要將指令碼傳送至您的 VM，請使用安全複製 (SCP)。 提供已下載指令碼的名稱，並以您 VM 的公用 IP 位址取代 *publicIpAddress*。 確定您在 SCP 命令結尾包含尾端 `:`，如下所示：
 
     ```bash
     scp myVM_we_1571974050985163527.sh 52.174.241.110:
@@ -119,9 +119,9 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 將復原指令碼複製到您的 VM 之後，您現在可以連線到復原點並還原檔案。
 
 >[!NOTE]
-> 請查看[這裡](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script)，查看是否可以先在 VM 上執行指令碼，再繼續執行作業。
+> 請查看[這裡](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)，查看是否可以先在 VM 上執行指令碼，再繼續執行作業。
 
-1. 透過 SSH 連線到您的 VM。 以您 VM 的公用 IP 位址取代 *publicIpAddress* ，如下所示：
+1. 透過 SSH 連線到您的 VM。 以您 VM 的公用 IP 位址取代 *publicIpAddress*，如下所示：
 
     ```bash
     ssh publicIpAddress
@@ -141,7 +141,7 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 
     當指令碼執行時，系統會提示您輸入密碼以存取復原點。 輸入透過上一個 [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) 命令產生復原指令碼之輸出中所顯示的密碼。
 
-    指令碼的輸出會提供復原點的路徑。 下列範例輸出顯示復原點掛接在 */home/azureuser/myVM-20170919213536/Volume1* ：
+    指令碼的輸出會提供復原點的路徑。 下列範例輸出顯示復原點掛接在 */home/azureuser/myVM-20170919213536/Volume1*：
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -181,7 +181,7 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 
 7. 使用 [az backup restore files unmount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-unmount-rp) 從您的 VM 卸載復原點。 下列範例會從 *myRecoveryServicesVault* 中名為 *myVM* 的 VM 卸載復原點。
 
-    以您在先前命令中取得的復原點名稱取代 *myRecoveryPointName* ：
+    以您在先前命令中取得的復原點名稱取代 *myRecoveryPointName*：
 
     ```azurecli-interactive
     az backup restore files unmount-rp \

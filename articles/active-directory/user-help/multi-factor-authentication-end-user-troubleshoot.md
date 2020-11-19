@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 095ea62ee992fa12fc80f715f9e63725e9930595
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322597"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886204"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的公司或學校帳戶常見問題
 
@@ -30,7 +30,7 @@ ms.locfileid: "89322597"
 - 您的密碼
 - 行動裝置或電話
 
-雙因素驗證比單純密碼更安全，因為雙因素驗證需要您 _知道_ 的某些東西，以及您 _擁有_的東西。 沒有任何駭客都有您的實體電話。
+雙因素驗證比單純密碼更安全，因為雙因素驗證需要您 _知道_ 的某些東西，以及您 _擁有_ 的東西。 沒有任何駭客都有您的實體電話。
 
 >[!Important]
 >如果您是系統管理員，可以在 [Azure AD 文件](../index.yml)中找到更多關於如何設定和管理 Azure AD 環境的資訊。
@@ -74,6 +74,7 @@ ms.locfileid: "89322597"
 
 試試看 | 指引資訊
 --------- | ------------
+使用 Microsoft 驗證器應用程式或驗證碼 | 在登入期間，您會收到「您已達到驗證呼叫的限制」或「您已達到我們的文字驗證碼限制」錯誤訊息。 <br/><br/>Microsoft 可能會在短時間內限制相同使用者所執行的重複驗證嘗試。 此限制不適用於 Microsoft Authenticator 或驗證碼。 如果您已達到這些限制，您可以使用驗證器應用程式、驗證碼，或在幾分鐘內嘗試重新登入。
 重新啟動您的行動裝置 | 有時您的裝置只是需要重新整理。 當您重新開機裝置時，所有背景進程和服務都會結束。 重新開機也會關閉您裝置的核心元件。 當您重新開機裝置時，任何服務或元件都會重新整理。
 確認您的安全性資訊正確 | 請確定您的安全性驗證方法資訊正確，尤其是您的電話號碼。 如果您輸入錯誤的電話號碼，您所有的警示將會發送至不正確的號碼。 幸運的是，該使用者無法對警示執行任何動作，但是也無法協助您登入您的帳戶。 若要確保您的資訊正確無誤，請參閱[管理雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)一文中的指示。
 確認您的通知已開啟 | 請確定您的行動裝置已開啟通知。 確定允許下列通知模式： <br/><br/> &bull; 電話 <br/> &bull; 您的驗證應用程式 <br/> &bull; 您的文字訊息應用程式 <br/><br/> 確定這些模式會建立可在您的裝置上 _看到_ 的警示。
@@ -105,7 +106,7 @@ ms.locfileid: "89322597"
 
 - 遵循 [下載和安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章中的步驟，在您的行動裝置上安裝 Microsoft Authenticator 應用程式。
 
-- 依照[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中**在受信任的裝置上開啟雙因素驗證提示**一節的步驟，開啟受信任裝置的雙因素驗證。
+- 依照 [管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中 **在受信任的裝置上開啟雙因素驗證提示** 一節的步驟，開啟受信任裝置的雙因素驗證。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>我在旅行時登入行動裝置遇到問題
 

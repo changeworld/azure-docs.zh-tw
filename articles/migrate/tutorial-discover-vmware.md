@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 伺服器評量工具探索內部�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: f3e8f61c898b08cc0638597e77fd3260cb4593b2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8a09f4583bd5cdae977b927be9649897a2d24ee6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311292"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832648"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>教學課程：使用伺服器評量來探索 VMware VM
 
@@ -72,7 +72,7 @@ ms.locfileid: "92311292"
 
     ![在 [使用者設定] 中確認使用者可以註冊 Active Directory 應用程式](./media/tutorial-discover-vmware/register-apps.png)
 
-9. 或者，租用戶/全域管理員可為帳戶指派**應用程式開發人員**角色，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. 或者，租用戶/全域管理員可為帳戶指派 **應用程式開發人員** 角色，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-vmware"></a>準備 VMware
 
@@ -107,7 +107,7 @@ ms.locfileid: "92311292"
 
 設定新的 Azure Migrate 專案。
 
-1. 在 Azure 入口網站 > [所有服務]**** 中，搜尋 **Azure Migrate**。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
 2. 在 [服務] 下，選取 [Azure Migrate]。
 3. 在 [概觀] 中，選取 [建立專案]。
 5. 在 [建立專案] 中，選取您的 Azure 訂用帳戶和資源群組。 如果您還沒有資源群組，請加以建立。
@@ -118,7 +118,7 @@ ms.locfileid: "92311292"
 7. 選取 [建立]。
 8. 等候幾分鐘讓 Azure Migrate 專案完成部署。
 
-**Azure Migrate：伺服器評量**工具依預設會新增至新專案中。
+**Azure Migrate：伺服器評量** 工具依預設會新增至新專案中。
 
 ![顯示依預設新增伺服器評量工具的頁面](./media/tutorial-discover-vmware/added-tool.png)
 
@@ -147,14 +147,14 @@ ms.locfileid: "92311292"
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
 2. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMware vSphere Hypervisor]。
-3. 在 **1：產生 Azure Migrate 專案金鑰**中，為您要為探索之 VMware VM 設定的 Azure Migrate 設備命名。名稱應使用英數位元，且長度不超過 14 個字元。
+3. 在 **1：產生 Azure Migrate 專案金鑰** 中，為您要為探索之 VMware VM 設定的 Azure Migrate 設備命名。名稱應使用英數位元，且長度不超過 14 個字元。
 1. 按一下 [產生金鑰] ，開始建立必要的 Azure 資源。 在建立資源期間，請勿關閉探索的電腦頁面。
 1. 成功建立 Azure 資源之後，系統會產生 **Azure Migrate 專案金鑰**。
 1. 複製金鑰，您在設定期間需要此金鑰才能完成設備的註冊。
 
 ### <a name="download-the-ova-template"></a>下載 OVA 範本
 
-在 **2：下載 Azure Migrate 設備**中，選取 .OVA 檔案，然後按一下 [下載]。 
+在 **2：下載 Azure Migrate 設備** 中，選取 .OVA 檔案，然後按一下 [下載]。 
 
 
 ### <a name="verify-security"></a>確認安全性
@@ -174,7 +174,7 @@ ms.locfileid: "92311292"
     
         **演算法** | **下載** | **SHA256**
         --- | --- | ---
-        VMware (11.9 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | bd5c19eec93a62d52cc507a6b7b408d07f33f92b7d39b8a1e3dfec4ec62830d7
+        VMware (11.9 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
     - 對於 Azure Government：
     
@@ -193,10 +193,10 @@ ms.locfileid: "92311292"
 2. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
 3. 在 [名稱]  和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
 5. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。
-6. 在**儲存體**中，指定 VM 的儲存目的地。
+6. 在 **儲存體** 中，指定 VM 的儲存目的地。
 7. 在 [磁碟格式] 中，指定磁碟類型和大小。
 8. 在 [網路對應] 中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評量。
-9. 檢閱並確認設定，然後按一下 [完成]****。
+9. 檢閱並確認設定，然後按一下 [完成]。
 
 
 ### <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
@@ -216,7 +216,7 @@ ms.locfileid: "92311292"
 3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以選取應用程式捷徑，從設備桌面開啟應用程式。
-1. 接受**授權條款**，並閱讀第三方資訊。
+1. 接受 **授權條款**，並閱讀第三方資訊。
 1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
    - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
      - 按一下 [設定 Proxy] 以指定 Proxy 位址 (格式為 http://ProxyIPAddress 或 http://ProxyFQDN) ) 和接聽連接埠。
@@ -225,14 +225,14 @@ ms.locfileid: "92311292"
      - 如果您已新增 Proxy 詳細資料，或已停用 Proxy 和/或驗證，請按一下 [儲存] 以再次觸發連線檢查。
    - **時間同步**：設備上的時間應該與網際網路時間同步，探索才能正常運作。
    - **安裝更新**：設備會確保已安裝最新的更新。 檢查完成之後，您可以按一下 [檢視設備服務] 查看設備上執行之元件的狀態和版本。
-   - **安裝 VDDK**：設備會檢查是否已安裝 VMware vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置、如**安裝指示**中提供的內容所述。
+   - **安裝 VDDK**：設備會檢查是否已安裝 VMware vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置、如 **安裝指示** 中提供的內容所述。
 
      在遷移至 Azure 期間，Azure Migrate 伺服器移轉會使用 VDDK 來複寫機器。 
-1. 如有需要，可以在設備設定期間隨時**重新執行必要條件**，以檢查設備是否符合所有必要條件。
+1. 如有需要，可以在設備設定期間隨時 **重新執行必要條件**，以檢查設備是否符合所有必要條件。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至**伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
+1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至 **伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
 1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
 1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
    
@@ -247,13 +247,13 @@ ms.locfileid: "92311292"
 
 設備必須連線到 vCenter Server，才能探索 VM 的設定與效能資料。
 
-1. 在 [步驟 1：選取復原點]**提供 vCenter Server 認證**中，按一下 [新增認證] 以指定認證的自訂名稱，並新增 vCenter Server 帳戶的**使用者名稱**和**密碼**，設備將使用此 vCenter Server 帳戶探索 vCenter Server 執行個體上的 VM。
+1. 在 [步驟 1：選取復原點]**提供 vCenter Server 認證** 中，按一下 [新增認證] 以指定認證的自訂名稱，並新增 vCenter Server 帳戶的 **使用者名稱** 和 **密碼**，設備將使用此 vCenter Server 帳戶探索 vCenter Server 執行個體上的 VM。
     - 您應該已在上一個教學課程中設定具有必要權限的帳戶。
     - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
-1. 在**步驟 2：提供 vCenter Server 詳細資料**中，按一下 [新增探索來源]，從下拉式選單選取自訂的認證名稱，指定 vCenter Server 執行個體的 **IP 位址/FQDN**。 您可以將**連接埠**保留為預設 (443)，或指定 vCenter Server 接聽的自訂連接埠並按一下 [儲存]。
-1. 按一下 [儲存] 時，設備會嘗試使用提供的認證驗證與 vCenter Server 的連線，並根據 vCenter Server 的 IP 位址/FQDN，在資料表中顯示**驗證狀態** 。
-1. 您可以在啟動探索之前，隨時**重新驗證** vCenter Server 的連線功能是否正常。
-1. 在**步驟 3：提供 VM 認證以探索已安裝的應用程式，並執行無代理程式相依性對應**中，按一下 [新增認證]，並指定要提供認證的作業系統、認證的自訂名稱以及**使用者名稱**和**密碼**。 然後按一下 [儲存]。
+1. 在 **步驟 2：提供 vCenter Server 詳細資料** 中，按一下 [新增探索來源]，從下拉式選單選取自訂的認證名稱，指定 vCenter Server 執行個體的 **IP 位址/FQDN**。 您可以將 **連接埠** 保留為預設 (443)，或指定 vCenter Server 接聽的自訂連接埠並按一下 [儲存]。
+1. 按一下 [儲存] 時，設備會嘗試使用提供的認證驗證與 vCenter Server 的連線，並根據 vCenter Server 的 IP 位址/FQDN，在資料表中顯示 **驗證狀態** 。
+1. 您可以在啟動探索之前，隨時 **重新驗證** vCenter Server 的連線功能是否正常。
+1. 在 **步驟 3：提供 VM 認證以探索已安裝的應用程式，並執行無代理程式相依性對應** 中，按一下 [新增認證]，並指定要提供認證的作業系統、認證的自訂名稱以及 **使用者名稱** 和 **密碼**。 然後按一下 [儲存]。
 
     - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
     - 如果不想使用這些功能，可以按一下滑桿來略過步驟。 您之後可以隨時改變心意。

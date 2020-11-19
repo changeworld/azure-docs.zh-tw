@@ -4,15 +4,15 @@ description: 本文說明驗證用戶端將事件發佈至事件方格自訂主�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d38d4ffc868d442980cda576ea158704231f9efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c415b7e1bb6bd7a2116da82c7d8f1de205009d0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856325"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886255"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a> (Azure 事件方格) 驗證發佈用戶端
-本文提供驗證用戶端的相關資訊，這些用戶端會使用 **存取金鑰** 或共用存取簽章 ** (SAS) ** 權杖來將事件發佈至 Azure 事件方格主題或網域。 我們建議使用 SAS 權杖，但金鑰驗證提供簡單的程式設計，而且與許多現有的 webhook 發行者都相容。  
+本文提供驗證用戶端的相關資訊，這些用戶端會使用 **存取金鑰** 或共用存取簽章 **(SAS)** 權杖來將事件發佈至 Azure 事件方格主題或網域。 我們建議使用 SAS 權杖，但金鑰驗證提供簡單的程式設計，而且與許多現有的 webhook 發行者都相容。  
 
 ## <a name="authenticate-using-an-access-key"></a>使用存取金鑰進行驗證
 存取金鑰驗證是最簡單的驗證形式。 您可以將存取金鑰傳遞為 HTTP 標頭或 URL 查詢參數。 
@@ -82,7 +82,7 @@ def generate_sas_token(uri, key, expiry=3600):
 ```
 
 ### <a name="using-aeg-sas-token-header"></a>使用 aeg-event-type-sas-token 標頭
-以下是將 SAS 權杖作為標頭值傳遞的範例 `aeg-sas-toke` 。 
+以下是將 SAS 權杖作為標頭值傳遞的範例 `aeg-sas-token` 。 
 
 ```http
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d

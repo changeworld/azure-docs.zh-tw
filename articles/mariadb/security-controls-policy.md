@@ -1,22 +1,22 @@
 ---
 title: 適用於「適用於 MariaDB 的 Azure 資料庫」的 Azure 原則法規合規性控制措施
 description: 列出適用於「適用於 MariaDB 的 Azure 資料庫」的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3d6a7fe1f1e6ba6e553b6bb7a7f7b6d1168312d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 542c65e369edbb0e5523ddad06be03637657e6f5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532659"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700253"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>適用於「適用於 MariaDB 的 Azure 資料庫」的 Azure 原則法規合規性控制措施
 
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制** ，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於「適用於 MariaDB 的 Azure 資料庫」的 **合規性網域** 和 **安全性控制** 。 您可以針對 **安全性控制** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於「適用於 MariaDB 的 Azure 資料庫」的 **合規性網域** 和 **安全性控制**。 您可以針對 **安全性控制** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 
