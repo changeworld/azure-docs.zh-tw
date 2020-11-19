@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: a79fc0311e940b9b4eb3e14838ef22e09342a066
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357992"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920571"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
 
@@ -45,7 +45,7 @@ ws = Workspace.from_config()
 
 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py)在您的工作區中建立目標 (`ws`) （如果尚未存在）。
 
-**預估時間** ：建立 AmlCompute 目標大約需要5分鐘的時間。
+**預估時間**：建立 AmlCompute 目標大約需要5分鐘的時間。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -220,7 +220,7 @@ RunDetails(remote_run).show()
 remote_run.get_portal_url()
 ```
 
-您的工作區中提供相同的資訊。  若要深入瞭解這些結果，請參閱 [瞭解自動化機器學習結果](how-to-understand-automated-ml.md)。
+您的工作區中提供相同的資訊。  若要深入瞭解這些結果，請參閱 [評估自動化機器學習結果](how-to-understand-automated-ml.md)。
 
 ## <a name="example"></a>範例
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 63cc4448034b6a2ae2d74f4a2d9a0a62296678cf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886476"
+ms.locfileid: "94919619"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>適用於 MySQL 的 Azure 資料庫-單一伺服器中規劃的維護通知
 
@@ -78,7 +78,7 @@ ms.locfileid: "94886476"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如有關于使用適用於 MySQL 的 Azure 資料庫的任何問題或建議，請傳送電子郵件給適用於 MySQL 的 Azure 資料庫團隊 **AskAzureDBforMySQL@service.microsoft.com** 。
+- 如有關于使用適用於 MySQL 的 Azure 資料庫的任何問題或建議，請傳送電子郵件給適用於 MySQL 的 Azure 資料庫團隊，網址為： AskAzureDBforMySQL@service.microsoft.com
 - 請參閱[如何設定警示](howto-alert-on-metric.md)，取得根據計量來建立警示的指引。
 - [針對適用於 MySQL 的 Azure 資料庫的連接問題進行疑難排解-單一伺服器](howto-troubleshoot-common-connection-issues.md)
 - [處理暫時性錯誤並有效率地連接到適用於 MySQL 的 Azure 資料庫-單一伺服器](concepts-connectivity.md)

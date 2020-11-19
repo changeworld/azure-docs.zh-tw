@@ -4,12 +4,12 @@ description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 了解兩種�
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309380"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920503"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
@@ -17,8 +17,8 @@ Azure Batch 支援使用 [Azure Active Directory](../active-directory/fundamenta
 
 搭配 Azure Batch 使用 Azure AD 驗證時，您可以使用下列其中一種方式進行驗證：
 
-- 使用**整合式驗證**來驗證與應用程式互動的使用者。 使用整合式驗證的應用程式會蒐集使用者的認證，並使用這些認證來驗證對 Batch 資源的存取。
-- 使用**服務主體**來驗證自動執行的應用程式。 服務主體會定義應用程式的原則和權限，以便在執行階段存取資源時代表應用程式。
+- 使用 **整合式驗證** 來驗證與應用程式互動的使用者。 使用整合式驗證的應用程式會蒐集使用者的認證，並使用這些認證來驗證對 Batch 資源的存取。
+- 使用 **服務主體** 來驗證自動執行的應用程式。 服務主體會定義應用程式的原則和權限，以便在執行階段存取資源時代表應用程式。
 
 若要深入了解 Azure AD，請參閱 [Azure Active Directory 文件](../active-directory/index.yml)。
 
@@ -45,7 +45,7 @@ Azure Batch 支援使用 [Azure Active Directory](../active-directory/fundamenta
 
 ### <a name="batch-resource-endpoint"></a>Batch 資源端點
 
-使用 **Azure Batch 資源端點**來取得權杖，以驗證對 Batch 服務的要求：
+使用 **Azure Batch 資源端點** 來取得權杖，以驗證對 Batch 服務的要求：
 
 `https://batch.core.windows.net/`
 
@@ -55,7 +55,7 @@ Azure Batch 支援使用 [Azure Active Directory](../active-directory/fundamenta
 
 當您註冊應用程式時，會向 Azure AD 提供應用程式的相關資訊。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的應用程式識別碼 (也稱為「用戶端識別碼」)。 若要深入了解應用程式識別碼，請參閱[Azure Active Directory 中的應用程式物件和服務主體物件之間的關聯性討論](../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要註冊您的 Batch 應用程式，請依照[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](../active-directory/develop/quickstart-register-app.md)一節中的「**註冊應用程式**」一節中的步驟進行。 如果您將應用程式註冊為原生應用程式，就能為**重新導向 URI** 指定任何有效的 URI。 它不需要是實際的端點。
+若要註冊您的 Batch 應用程式，請依照 [快速入門：使用 Microsoft 身分識別平臺註冊應用程式](../active-directory/develop/quickstart-register-app.md)一節中的「**註冊應用程式**」一節中的步驟進行。 如果您將應用程式註冊為原生應用程式，就能為 **重新導向 URI** 指定任何有效的 URI。 它不需要是實際的端點。
 
 註冊應用程式之後，您將會看到應用程式識別碼：
 
@@ -67,7 +67,7 @@ Azure Batch 支援使用 [Azure Active Directory](../active-directory/fundamenta
 
 1. 在 Azure 入口網站中，選取您的 Active Directory。
 1. 選取 [屬性] 。
-1. 複製針對**目錄識別碼**提供的 GUID 值。 此值也稱為租用戶識別碼。
+1. 複製針對 **目錄識別碼** 提供的 GUID 值。 此值也稱為租用戶識別碼。
 
 ![Azure 入口網站中目錄識別碼的螢幕擷取畫面。](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -193,7 +193,7 @@ Azure Batch 支援使用 [Azure Active Directory](../active-directory/fundamenta
 
 1. 在 Azure 入口網站中，選取您的 Active Directory。
 1. 選取 [屬性] 。
-1. 複製針對**目錄識別碼**提供的 GUID 值。 此值也稱為租用戶識別碼。
+1. 複製針對 **目錄識別碼** 提供的 GUID 值。 此值也稱為租用戶識別碼。
 
 ![複製目錄識別碼](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -268,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 建構接受委派做為參數的 **BatchTokenCredentials** 物件。 使用這些認證來開啟 **BatchClient** 物件。 您可以針對 Batch 服務的後續作業使用該 **BatchClient** 物件：
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -336,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 建構接受委派做為參數的 **BatchTokenCredentials** 物件。 使用這些認證來開啟 **BatchClient** 物件。 然後針對 Batch 服務的後續作業使用該 **BatchClient** 物件：
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```

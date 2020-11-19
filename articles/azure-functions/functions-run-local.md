@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure Functions Core Tools
-description: 在 Azure Functions 上執行 Azure 函式之前，先了解如何從命令提示字元或終端機在本機電腦上撰寫 Azure 函式並進行測試。
+description: 在 Azure Functions 上執行之前，請先瞭解如何在本機電腦上從命令提示字元或終端機進行 Azure Functions 程式碼和測試。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3cf495ca0687e6fa37f619615fb1529659a462dc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422581"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920214"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -35,11 +35,11 @@ Azure Functions Core Tools 可讓您使用命令提示字元或終端機，在�
 
 + 3.x [**/2.X 版**](#v2)：支援 Azure Functions 執行時間的 3.x [或2.x 版](functions-versions.md)。 這些版本支援 [Windows](?tabs=windows#v2)、 [macOS](?tabs=macos#v2)和 [Linux](?tabs=linux#v2) ，並使用平臺特定的套件管理員或 npm 來進行安裝。
 
-+ 1.x **版** ：支援版本1.x 的 Azure Functions 執行時間。 這個版本的工具只有在 Windows 電腦上提供支援，並且從 [npm 套件](https://www.npmjs.com/package/azure-functions-core-tools)進行安裝。
++ 1.x **版**：支援版本1.x 的 Azure Functions 執行時間。 這個版本的工具只有在 Windows 電腦上提供支援，並且從 [npm 套件](https://www.npmjs.com/package/azure-functions-core-tools)進行安裝。
 
 您只能在指定的電腦上安裝一個版本的 Core Tools。 除非另有說明，否則本文中的範例適用于3.x 版。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure Functions Core Tools 目前相依于使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在 [本機安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能從 Azure Functions Core Tools [發佈至 Azure](#publish) 。 
 
@@ -179,7 +179,7 @@ python
 powershell
 </pre>
 
-使用向上/向下鍵來選擇語言，然後按 Enter。 如果您打算開發 JavaScript 或 TypeScript 函式，請選擇 [ **節點** ]，然後選取語言。 TypeScript 有 [一些額外的需求](functions-reference-node.md#typescript)。 
+使用向上/向下鍵來選擇語言，然後按 Enter。 如果您打算開發 JavaScript 或 TypeScript 函式，請選擇 [ **節點**]，然後選取語言。 TypeScript 有 [一些額外的需求](functions-reference-node.md#typescript)。 
 
 JavaScript 專案的輸出看起來會像下列範例：
 
@@ -228,7 +228,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-根據預設，在專案發佈至 Azure 時，這些設定將不會自動移轉。 請在[發佈時](#publish)使用 `--publish-local-settings` 參數，以確保這些設定會新增至 Azure 中的函式應用程式。 請注意， **ConnectionStrings** 中的值一律不會發佈。
+根據預設，在專案發佈至 Azure 時，這些設定將不會自動移轉。 請在[發佈時](#publish)使用 `--publish-local-settings` 參數，以確保這些設定會新增至 Azure 中的函式應用程式。 請注意，**ConnectionStrings** 中的值一律不會發佈。
 
 這些函數應用程式設定值在您的程式碼中也可以做為環境變數加以讀取。 如需詳細資訊，請參閱這些特定語言參考主題的「環境變數」章節：
 
@@ -247,13 +247,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 即使使用 Microsoft Azure 儲存體模擬器進行開發，您也可能想要使用實際的儲存體連接進行測試。 假設您已經[建立了儲存體帳戶](../storage/common/storage-account-create.md)，您可以透過下列其中一種方式取得有效的儲存體連接字串：
 
-- 從 [Azure 入口網站]中，搜尋並選取 [ **儲存體帳戶** ]。 
+- 從 [Azure 入口網站]中，搜尋並選取 [ **儲存體帳戶**]。 
   ![從 Azure 入口網站選取儲存體帳戶](./media/functions-run-local/select-storage-accounts.png)
   
-  選取您的儲存體帳戶，選取 [ **設定** ] 中的 [ **存取金鑰** ]，然後複製其中一個 **連接字串** 值。
+  選取您的儲存體帳戶，選取 [**設定**] 中的 [**存取金鑰**]，然後複製其中一個 **連接字串** 值。
   ![從 Azure 入口網站複製連接字串](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- 使用 [Azure 儲存體總管](https://storageexplorer.com/)以連接至您的 Azure 帳戶。 在 [ **Explorer** ] 中，展開您的訂用帳戶，展開 [ **儲存體帳戶** ]，選取您的儲存體帳戶，然後複製主要或次要連接字串。
+- 使用 [Azure 儲存體總管](https://storageexplorer.com/)以連接至您的 Azure 帳戶。 在 [ **Explorer**] 中，展開您的訂用帳戶，展開 [ **儲存體帳戶**]，選取您的儲存體帳戶，然後複製主要或次要連接字串。
 
   ![透過儲存體總管複製連接字串](./media/functions-run-local/storage-explorer.png)
 
@@ -312,9 +312,9 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 | 引數     | 描述                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** |  (2.x 版和更新版本。 ) 會產生與在1.x 版和入口網站中使用的) 範本相同的 c # ( 腳本。 |
-| **`--language`** , **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在2.x 版和更新版本中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
-| **`--name`** , **`-n`** | 函數名稱。 |
-| **`--template`** , **`-t`** | 使用 `func templates list` 命令，以針對每個支援的語言查看可用範本的完整清單。   |
+| **`--language`**, **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在2.x 版和更新版本中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
+| **`--name`**, **`-n`** | 函數名稱。 |
+| **`--template`**, **`-t`** | 使用 `func templates list` 命令，以針對每個支援的語言查看可用範本的完整清單。   |
 
 
 例如，若要在單一命令中建立 JavaScript HTTP 觸發程序，請執行：
@@ -385,10 +385,10 @@ npm start
 | **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供 [debug 埠和其他必要引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言工作者的偵錯工具。 1.x 版不支援。 |
 | **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1.x 版不支援。 |
 | **`--password`** | 密碼或包含 .pfx 檔案密碼的檔案。 僅能與 `--cert` 搭配使用。 1.x 版不支援。 |
-| **`--port`** , **`-p`** | 要接聽的本機連接埠。 預設值：7071。 |
+| **`--port`**, **`-p`** | 要接聽的本機連接埠。 預設值：7071。 |
 | **`--pause-on-error`** | 暫停以在結束處理程序之前取得其他輸入。 這僅適用於從整合式開發環境 (IDE) 啟動 Core Tools 時。|
-| **`--script-root`** , **`--prefix`** | 用來為要執行或部署的函式應用程式指定根目錄的路徑。 此選項可用於在子資料夾中產生專案檔的編譯專案。 例如，當您建置 C# 類別庫專案時，將會以類似於 `MyProject/bin/Debug/netstandard2.0` 的路徑在 *root* 子資料夾中產生 host.json、local.settings.json 和 function.json 等檔案。 在此情況下，請將前置詞設為 `--script-root MyProject/bin/Debug/netstandard2.0`。 這是函式應用程式在 Azure 中執行時的根目錄。 |
-| **`--timeout`** , **`-t`** | Functions 主機要啟動的逾時 (以秒為單位)。 預設值：20 秒。|
+| **`--script-root`**, **`--prefix`** | 用來為要執行或部署的函式應用程式指定根目錄的路徑。 此選項可用於在子資料夾中產生專案檔的編譯專案。 例如，當您建置 C# 類別庫專案時，將會以類似於 `MyProject/bin/Debug/netstandard2.0` 的路徑在 *root* 子資料夾中產生 host.json、local.settings.json 和 function.json 等檔案。 在此情況下，請將前置詞設為 `--script-root MyProject/bin/Debug/netstandard2.0`。 這是函式應用程式在 Azure 中執行時的根目錄。 |
+| **`--timeout`**, **`-t`** | Functions 主機要啟動的逾時 (以秒為單位)。 預設值：20 秒。|
 | **`--useHttps`** | 繫結至 `https://localhost:{port}` 而不是 `http://localhost:{port}` 。 根據預設，此選項會在您的電腦上建立受信任的憑證。|
 
 Functions 主機啟動時，它會輸出 HTTP 觸發函式的 URL：
@@ -488,10 +488,10 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
-| **`--content`** , **`-c`** | 內嵌內容。 |
-| **`--debug`** , **`-d`** | 在執行函式之前，請先將偵錯工具附加到主機處理序。|
-| **`--timeout`** , **`-t`** | 本機 Functions 主機就緒前的等候時間 (以秒為單位)。|
-| **`--file`** , **`-f`** | 要用來作為內容的檔案名稱。|
+| **`--content`**, **`-c`** | 內嵌內容。 |
+| **`--debug`**, **`-d`** | 在執行函式之前，請先將偵錯工具附加到主機處理序。|
+| **`--timeout`**, **`-t`** | 本機 Functions 主機就緒前的等候時間 (以秒為單位)。|
+| **`--file`**, **`-f`** | 要用來作為內容的檔案名稱。|
 | **`--no-interactive`** | 不會提示輸入。 適用於自動化情節。|
 
 例如，若要呼叫 HTTP 觸發的函式並傳遞內容的內文，請執行下列命令：
@@ -537,12 +537,12 @@ func azure functionapp publish <FunctionAppName>
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`** , **`-o`** |  僅發佈設定而略過內容。 預設值為提示。 |
+| **`--publish-settings-only`**, **`-o`** |  僅發佈設定而略過內容。 預設值為提示。 |
 |**`--list-ignored-files`** | 顯示在發佈期間忽略的檔案清單，以 .funcignore 檔案為準。 |
 | **`--list-included-files`** | 顯示要發佈的檔案清單，以 .funcignore 檔案為準。 |
 | **`--nozip`** | 關閉預設 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 發佈 Python 函式應用程式時，略過產生車輪資料夾。 |
-| **`--build`** , **`-b`** | 部署至 Linux 函式應用程式時執行組建動作。 接受： `remote` 和 `local` 。 |
+| **`--build`**, **`-b`** | 部署至 Linux 函式應用程式時執行組建動作。 接受： `remote` 和 `local` 。 |
 | **`--additional-packages`** | 建置原生相依性時將安裝的套件清單。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在設定情況下忽略發佈前驗證。 |
 | **`--csx`** | 發佈 C# 指令碼 (.csx) 專案。 |

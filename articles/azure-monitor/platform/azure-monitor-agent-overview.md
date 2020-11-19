@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132698"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919673"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
 Azure 監視器代理程式 (AMA) 會從虛擬機器的客體作業系統收集監視資料，並將其傳遞至 Azure 監視器。 本文概述 Azure 監視器代理程式，包括如何安裝，以及如何設定資料收集。
@@ -76,7 +76,7 @@ Azure 監視器代理程式不會產生任何費用，但您可能會產生資�
 
 Azure 監視器代理程式會將資料傳送至 Azure 監視器計量或支援 Azure 監視器記錄的 Log Analytics 工作區。
 
-| 資料來源 | Destinations | 描述 |
+| 資料來源 | 目的地 | 描述 |
 |:---|:---|:---|
 | 效能        | Azure 監視器計量<br>Log Analytics 工作區 | 測量作業系統和工作負載不同層面效能的數值。 |
 | Windows 事件記錄檔 | Log Analytics 工作區 | 傳送至 Windows 事件記錄系統的資訊。 |
@@ -134,7 +134,7 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
 ```
 ---
 

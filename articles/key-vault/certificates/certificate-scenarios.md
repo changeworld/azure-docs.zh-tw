@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286893"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920435"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>開始使用 Key Vault 憑證
 下列情節概述 Key Vault 憑證管理服務的數個主要用法 (包括在金鑰保存庫中建立第一個憑證所需的其他步驟)。
@@ -46,7 +46,7 @@ ms.locfileid: "93286893"
 **步驟 3** - Contoso 管理員與擁有憑證的 Contoso 員工 (Key Vault 使用者) (根據 CA 而定) 可以向管理員取得憑證或者直接向 CD 從帳戶取得憑證。  
 
 - [設定憑證簽發者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)資源，開始將認證作業新增至金鑰保存庫。 憑證簽發者是 Azure Key Vault (KV) 中以 CertificateIssuer 資源表示的實體。 它用來提供 KV 憑證來源相關資訊；簽發者名稱、提供者、認證和其他系統管理詳細資訊。
-  - 例如 MyDigiCertIssuer  
+  - 例如： MyDigiCertIssuer  
     -   提供者  
     -   認證 – CA 帳戶認證。 每個 CA 都有自己的特定資料。  
 
@@ -96,7 +96,7 @@ Key Vault 服務將要求傳送至 CA (輸出流量) 。 因此，它與已啟�
 
 -   如果沒有進一步作業，則 Key Vault 要做的第一件事是傳送到期通知。 
 
--   此外，使用者可以編輯原則，而此原則是在匯入時作用，但包含匯入時未指定任何資訊的預設值。 例如 無簽發者資訊  
+-   此外，使用者可以編輯原則，而此原則是在匯入時作用，但包含匯入時未指定任何資訊的預設值。 例如： 無簽發者資訊  
 
 ### <a name="formats-of-import-we-support"></a>我們支援的匯入格式
 Azure Key Vault 支援將憑證匯入金鑰保存庫的 pem 和 .pfx 憑證檔案。
@@ -113,7 +113,6 @@ AKV 支援2個 PEM 型格式。 您可以合併單一 PKCS # 8 編碼憑證或�
 
 -----開始憑證----------結束憑證-----
 
-我們目前不支援 PEM 格式的 EC 金鑰。
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>使用未與 Key Vault 合作的 CA 建立憑證  
  這種方法允許與 Key Vault 合作提供者以外的其他 CA 合作，這表示您的組織可以與它選擇的 CA 合作。  

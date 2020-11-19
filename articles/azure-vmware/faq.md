@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888414"
+ms.locfileid: "94920588"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -237,7 +237,7 @@ Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN Ex
 
 Microsoft 提供對 Azure VMware 解決方案的支援。 您可以提交 [支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 
 
-針對受 CSP 管理的訂用帳戶，解決方案提供者會提供第一層支援，與 CSP 針對其他 Azure 服務的方式相同。
+針對 CSP 管理的訂用帳戶，解決方案提供者提供的第一層支援，與 CSP 針對其他 Azure 服務的方式相同。
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>我需要哪些帳戶才能建立 Azure VMware 解決方案私人雲端？
 
@@ -247,9 +247,9 @@ Azure 訂閱需要 Azure 帳戶。
 
 Microsoft 和 Red Hat 共用整合式共置的支援小組，為在 Azure 平臺上執行的 Red Hat 生態系統提供統一的連絡人點。  如同與 Red Hat Enterprise Linux 搭配使用的其他 Azure 平臺服務，Azure VMware 解決方案屬於雲端存取和整合式支援範圍，且 Red Hat Enterprise Linux 支援在 azure 中的 Azure VMware 解決方案上執行。
 
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition 是否可用，若是如此，它會有多少費用？
+#### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise 是否可供使用，如果有的話，它需要多少費用？
 
-VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方案做為「預覽」函式/服務。 雖然適用于 Azure VMware 的 VMware HCX EE 解決方案處於預覽狀態，但它是免費的函式/服務，並且受限於預覽服務條款及條件。 一旦 VMware HCX EE 服務正式發行後，您將會收到 30 天的通知，指出帳單將會切換。 您可以關閉或退出服務。
+VMware HCX Enterprise 提供作為 *預覽* 功能/服務的 Azure vmware 解決方案。 雖然 VMware HCX Enterprise for Azure VMware 解決方案處於預覽狀態，但它是免費的函式/服務，並且受限於預覽服務條款及條件。 一旦 VMware HCX 企業服務正式推出後，您將會收到30天的通知，指出計費將會轉型。 您可以將其切換為關閉或退出服務。
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>如何? 要求增加 Azure VMware 解決方案的主機配額嗎？
 
@@ -260,8 +260,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 * [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md)與 Microsoft 一起使用。
 * Azure 訂用帳戶中的 Azure 帳戶。
 
-建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
-
+在您建立 Azure VMware 解決方案資源之前，請提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
 
 1. 在您的 Azure 入口網站中的 [說明 **+ 支援**] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：
    - **問題類型：** 技術需求

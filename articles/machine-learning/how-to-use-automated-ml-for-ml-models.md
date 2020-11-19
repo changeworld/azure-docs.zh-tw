@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: aa45bc9f70bf05074391dd14cc5fc774eb77c762
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536246"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919636"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 
@@ -117,7 +117,7 @@ ms.locfileid: "94536246"
 
 1. 在 [工作類型和設定] 表單上，選取工作類型：分類、迴歸，或預測。 如需詳細資訊，請參閱支援的工作 [類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) 。
 
-    1. 針對 **分類** ，您也可以啟用深度學習。
+    1. 針對 **分類**，您也可以啟用深度學習。
     
         如果啟用了深度學習，則僅限 _train_validation 分割_ 的驗證。 [深入瞭解驗證選項](how-to-configure-cross-validation-data-splits.md)。
 
@@ -126,9 +126,9 @@ ms.locfileid: "94536246"
     
         1. 啟用深度學習。
     
-        1. 選取 *時間資料行* ：此資料行包含要使用的時間資料。
+        1. 選取 *時間資料行*：此資料行包含要使用的時間資料。
 
-        1. 選取 *預測範圍* ：指出模型能夠預測到未來的時間單位數 (分鐘/小時/天/周/月/年) 。 模型需要針對未來預測的時間越長，其正確性越低。 [深入了解預測及預測範圍](how-to-auto-train-forecast.md)。
+        1. 選取 *預測範圍*：指出模型能夠預測到未來的時間單位數 (分鐘/小時/天/周/月/年) 。 模型需要針對未來預測的時間越長，其正確性越低。 [深入了解預測及預測範圍](how-to-auto-train-forecast.md)。
 
 1. (選擇性) 檢視其他組態設定：可用來更進一步控制訓練作業的其他設定。 否則會根據實驗選取範圍和資料來套用預設值。 
 
@@ -139,9 +139,9 @@ ms.locfileid: "94536246"
     封鎖的演算法| 選取要從訓練作業中排除的演算法。 <br><br> 允許演算法僅適用于 [SDK 實驗](how-to-configure-auto-train.md#supported-models)。 <br> 請參閱 [每種工作類型支援的模型](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py)。
     結束準則| 當符合其中任何一項準則時，訓練作業即會停止。 <br> 訓練作業時間 (小時)：允許訓練作業執行的時間長度。 <br> 計量分數閾值：所有管線的最低計量分數。 這可確保若擁有想要達到的已定義目標計量，則不會在訓練作業上花費超過必要程度的時間。
     驗證| 選取要在訓練作業中使用的交叉驗證選項。 <br> [深入了解交叉驗證](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>預測只支援 k 折交叉驗證。
-    並行| *並行反覆項目上限* ：要在訓練作業中測試的管線 (反覆項目) 數量上限。 作業不會執行超過指定數量的反覆項目。
+    並行| *並行反覆項目上限*：要在訓練作業中測試的管線 (反覆項目) 數量上限。 作業不會執行超過指定數量的反覆項目。 深入瞭解自動化 ML 如何在叢集 [上執行多個子](how-to-configure-auto-train.md#multiple-child-runs-on-clusters)執行。
 
-1.  (選擇性的) View 特徵化設定：如果您選擇在 [ **其他設定** ] 表單中啟用 **自動特徵化** ，則會套用預設的特徵化技術。 在 **View 特徵化設定** 中，您可以變更這些預設值，並據以進行自訂。 瞭解如何 [自訂 featurizations](#customize-featurization)。 
+1.  (選擇性的) View 特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用 **自動特徵化**，則會套用預設的特徵化技術。 在 **View 特徵化設定** 中，您可以變更這些預設值，並據以進行自訂。 瞭解如何 [自訂 featurizations](#customize-featurization)。 
 
     ![螢幕擷取畫面顯示 [選取工作類型] 對話方塊，其中已呼叫 [View 特徵化 settings]。](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
@@ -203,7 +203,7 @@ ms.locfileid: "94536246"
     ----|----
     名稱| 輸入部署的唯一名稱。
     描述| 輸入描述以更清楚地識別此部署的用途。
-    計算類型| 選取想要部署的端點類型： *Azure Kubernetes Service (AKS)* 或 *Azure 容器執行個體 (ACI)* 。
+    計算類型| 選取想要部署的端點類型：*Azure Kubernetes Service (AKS)* 或 *Azure 容器執行個體 (ACI)* 。
     計算名稱| 僅適用於 AKS：選取想要部署的目標 AKS 叢集名稱。
     啟用驗證 | 選取允許以權杖為基礎或以金鑰為基礎的驗證。
     使用自訂部署資產| 若想要上傳自己的評分指令碼和環境檔案，請啟用此功能。 [深入了解評分指令碼](how-to-deploy-and-where.md)。

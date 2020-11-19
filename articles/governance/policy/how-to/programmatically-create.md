@@ -3,12 +3,12 @@ title: 以程式設計方式建立原則
 description: 此文章會逐步引導您使用 Azure CLI、Azure PowerShell 及 REST API，以程式設計方式建立及管理 Azure 原則的原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491795"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920010"
 ---
 # <a name="programmatically-create-policies"></a>以程式設計方式建立原則
 
@@ -85,10 +85,10 @@ ms.locfileid: "94491795"
    New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
-   以您想要的資源群組名稱取代 _ContosoRG_ 。
+   以您想要的資源群組名稱取代 _ContosoRG_。
 
    `New-AzPolicyAssignment` 上的 **Scope** 參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數會使用 `Get-AzResourceGroup` 上 **ResourceId** 屬性傳回的完整資源路徑。 以下是每個容器的 **Scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。
-   `{rType}` 會取代為資源的 **資源類型** ，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
+   `{rType}` 會取代為資源的 **資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
 
    - 資源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 資源群組 - `/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -203,7 +203,7 @@ ms.locfileid: "94491795"
    ```
 
    此命令會建立名為 _對公用網路開放的稽核儲存體帳戶_ 的原則定義。
-   如需有關其他可供您使用之參數的詳細資訊，請參閱 [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create)。
+   如需有關其他可供您使用之參數的詳細資訊，請參閱 [az policy definition create](/cli/azure/policy/definition#az_policy_definition_create)。
 
    若在未指定位置參數的情況下呼叫，`az policy definition creation` 會預設儲存工作階段內容中所選訂用帳戶的原則定義。 若要將定義儲存至不同位置，請使用下列參數：
 
@@ -216,7 +216,7 @@ ms.locfileid: "94491795"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 上的 **scope** 參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數使用完整資源路徑。 以下是每個容器的 **scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。 `{rType}` 會取代為資源的 **資源類型** ，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
+   `az policy assignment create` 上的 **scope** 參數可與管理群組、訂用帳戶、資源群組或單一資源搭配使用。 此參數使用完整資源路徑。 以下是每個容器的 **scope** 模式。 請將 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分別取代為您的資源名稱、資源群組名稱、訂用帳戶 ID 及管理群組名稱。 `{rType}` 會取代為資源的 **資源類型**，例如，如果是 VM，則為 `Microsoft.Compute/virtualMachines`。
 
    - 資源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 資源群組 - `/subscriptions/{subID}/resourceGroups/{rgName}`

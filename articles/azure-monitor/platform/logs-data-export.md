@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841802"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920078"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -81,7 +81,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 1. 「基本」事件中樞 sku 支援較低的事件大小限制，而您的工作區中的某些記錄可能會超過此 [限制](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) 並卸載。 我們建議使用「標準」或「專用」事件中樞作為匯出目的地。
 2. 匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 以下是在設定 Log Analytics 資料匯出之前必須完成的必要條件。
 
 - 儲存體帳戶和事件中樞必須已建立，且必須與 Log Analytics 工作區位於相同的區域。 如果您需要將資料複寫至其他儲存體帳戶，您可以使用任何 [Azure 儲存體的冗余選項](../../storage/common/storage-redundancy.md)。  
@@ -117,7 +117,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ### <a name="create-or-update-data-export-rule"></a>建立或更新資料匯出規則
 資料匯出規則會定義要針對一組資料表匯出到單一目的地的資料。 您可以為每個目的地建立規則。
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用下列 CLI 命令來查看工作區中的資料表。 它有助於複製您想要的資料表，並包含在資料匯出規則中。
+
 ```azurecli
 az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
@@ -133,6 +137,8 @@ az monitor log-analytics workspace data-export create --resource-group resourceG
 ```azurecli
 az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 使用下列要求，利用 REST API 建立資料匯出規則。 要求應使用持有人權杖授權和內容類型 application/json。
 
@@ -193,26 +199,38 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
   }
 }
 ```
+---
 
 ## <a name="view-data-export-configuration"></a>查看資料匯出設定
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用下列命令，以使用 CLI 來查看資料匯出規則的設定。
 
 ```azurecli
 az monitor log-analytics workspace data-export show --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 您可以使用下列要求，利用 REST API 來查看資料匯出規則的設定。 要求應使用持有人權杖授權。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="disable-an-export-rule"></a>停用匯出規則
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 您可以停用匯出規則，讓您在不需要保留特定期間的資料（例如執行測試時）時停止匯出。 使用下列命令，以使用 CLI 來停用資料匯出規則。
 
 ```azurecli
 az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 使用下列要求，利用 REST API 停用資料匯出規則。 要求應使用持有人權杖授權。
 
@@ -234,32 +252,45 @@ Content-type: application/json
     }
 }
 ```
+---
 
 ## <a name="delete-an-export-rule"></a>刪除匯出規則
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用下列命令，以使用 CLI 來刪除資料匯出規則。
 
 ```azurecli
 az monitor log-analytics workspace data-export delete --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 使用下列要求，利用 REST API 刪除資料匯出規則。 要求應使用持有人權杖授權。
 
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>查看工作區中的所有資料匯出規則
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 使用下列命令，以使用 CLI 來查看工作區中的所有資料匯出規則。
 
 ```azurecli
 az monitor log-analytics workspace data-export list --resource-group resourceGroupName --workspace-name workspaceName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 您可以使用下列要求，使用 REST API 來查看工作區中的所有資料匯出規則。 要求應使用持有人權杖授權。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+---
 
 ## <a name="unsupported-tables"></a>不支援的資料表
 如果資料匯出規則包含不支援的資料表，設定將會成功，但不會針對該資料表匯出任何資料。 如果稍後支援資料表，則會在該時間匯出其資料。

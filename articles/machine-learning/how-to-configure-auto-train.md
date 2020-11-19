@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535328"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920367"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "94535328"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
@@ -69,7 +69,7 @@ automl_config = AutoMLConfig(task = "classification")
 - 資料必須是表格形式。
 - 要預測的值 (目標資料行) 必須位於資料中。
 
-**針對遠端實驗** ，必須可從遠端計算存取定型資料。 AutoML 在處理遠端計算時只會接受 [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)。 
+**針對遠端實驗**，必須可從遠端計算存取定型資料。 AutoML 在處理遠端計算時只會接受 [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)。 
 
 Azure Machine Learning 資料集會公開功能：
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**針對本機計算實驗** ，建議您 pandas 資料框架以加快處理時間。
+**針對本機計算實驗**，建議您 pandas 資料框架以加快處理時間。
 
   ```python
   import pandas as pd
@@ -103,7 +103,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|
 |**大於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用定型/驗證資料分割。 預設值是以10% 的初始訓練資料集做為驗證集。 接著，該驗證集會用於計算度量。
-|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列** ，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間** ，則會使用三個折迭。
+|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列**，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間**，則會使用三個折迭。
 
 目前，您需要提供自己的 **測試資料** 來進行模型評估。 如需將您自己的測試資料用於模型評估的程式碼範例，請參閱 [此 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的 **test** 區段。
 
@@ -130,26 +130,24 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 1. 使用加權的 AUC 作為主要計量的分類實驗，實驗逾時分鐘數設定為 30 分鐘，交叉驗證摺疊設為 2。
 
    ```python
-       automl_classifier=AutoMLConfig(
-       task='classification',
-       primary_metric='AUC_weighted',
-       experiment_timeout_minutes=30,
-       blocked_models=['XGBoostClassifier'],
-       training_data=train_data,
-       label_column_name=label,
-       n_cross_validations=2)
+       automl_classifier=AutoMLConfig(task='classification',
+                                      primary_metric='AUC_weighted',
+                                      experiment_timeout_minutes=30,
+                                      blocked_models=['XGBoostClassifier'],
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=2)
    ```
 1. 下列範例是設定為在60分鐘之後結束的回歸實驗，其中五個驗證交叉折迭。
 
    ```python
-      automl_regressor = AutoMLConfig(
-      task='regression',
-      experiment_timeout_minutes=60,
-      allowed_models=['KNN'],
-      primary_metric='r2_score',
-      training_data=train_data,
-      label_column_name=label,
-      n_cross_validations=5)
+      automl_regressor = AutoMLConfig(task='regression',
+                                      experiment_timeout_minutes=60,
+                                      allowed_models=['KNN'],
+                                      primary_metric='r2_score',
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=5)
    ```
 
 
@@ -224,7 +222,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 |特徵化設定 | 描述 |
 | ------------- | ------------- |
-|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-configure-auto-features.md#featurization)。 **預設設定** 。|
+|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-configure-auto-features.md#featurization)。 **預設設定**。|
 |`"featurization": 'off'`| 表示特徵化步驟不應自動完成。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指出應使用自訂的特徵化步驟。 [了解如何自訂特徵化](how-to-configure-auto-features.md#customize-featurization)。|
 
@@ -301,6 +299,18 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
+<a name="exit"></a> 
+
+### <a name="exit-criteria"></a>允出準則
+
+有幾個選項可供您在 AutoMLConfig 中定義，以結束您的實驗。
+
+|準則| description
+|----|----
+無 &nbsp; 準則 | 如果您未定義任何結束參數，實驗會繼續進行，直到您的主要計量沒有進一步的進度為止。
+經過 &nbsp; 一 &nbsp; 段 &nbsp; &nbsp; 時間之後| 在您的設定中使用， `experiment_timeout_minutes` 以定義您的實驗應該繼續執行的時間（以分鐘為單位）。 <br><br> 如果您的資料行大小超過10000000，則為避免實驗超時失敗，最少15分鐘或60分鐘。
+已 &nbsp; &nbsp; 達到分數 &nbsp; &nbsp;| `experiment_exit_score`在達到指定的主要度量分數之後，請使用完成實驗。
+
 ## <a name="run-experiment"></a>執行實驗
 
 針對自動化 ML，您可以建立 `Experiment` 物件，作為 `Workspace` 中用來執行實驗的具名物件。
@@ -327,17 +337,15 @@ run = experiment.submit(automl_config, show_output=True)
 >相依性會先安裝在新的機器上。  最多可能需要 10 分鐘才會顯示輸出。
 >將 `show_output` 設定為 `True`，會使輸出顯示在主控台上。
 
- <a name="exit"></a> 
+### <a name="multiple-child-runs-on-clusters"></a>在叢集上執行多個子節點
 
-### <a name="exit-criteria"></a>允出準則
+您可以在已經在執行另一個實驗的叢集上執行自動化 ML 實驗子執行。 不過，時間取決於叢集擁有的節點數目，以及這些節點是否可用來執行不同的實驗。
 
-您可以定義幾個選項來結束實驗。
+叢集中的每個節點都會作為個別的虛擬機器， (可完成單一定型回合的 VM) ;針對自動化 ML，這表示子執行。 如果所有節點都忙碌，則新的實驗會排入佇列。 但是，如果有可用的節點，新的實驗將會在可用的節點/Vm 中平行執行自動化的 ML 子系。
 
-|準則| description
-|----|----
-無 &nbsp; 準則 | 如果您未定義任何結束參數，實驗會繼續進行，直到您的主要計量沒有進一步的進度為止。
-經過 &nbsp; 一 &nbsp; 段 &nbsp; &nbsp; 時間之後| 在您的設定中使用， `experiment_timeout_minutes` 以定義您的實驗應該繼續執行的時間（以分鐘為單位）。 <br><br> 如果您的資料行大小超過10000000，則為避免實驗超時失敗，最少15分鐘或60分鐘。
-已 &nbsp; &nbsp; 達到分數 &nbsp; &nbsp;| `experiment_exit_score`在達到指定的主要度量分數之後，請使用完成實驗。
+為了協助管理子系執行，以及可以執行的時間，建議您為每個實驗建立專用的叢集，並將您的實驗數目與叢 `max_concurrent_iterations` 集中的節點數目相符。 如此一來，您就可以同時使用叢集的所有節點，以及您想要的並行子執行/反復專案數目。
+
+`max_concurrent_iterations`在您的 `AutoMLConfig` 物件中設定。 如果未設定，則每個實驗預設只允許一個並行的子執行/反復專案。  
 
 ## <a name="explore-models-and-metrics"></a>探索模型和計量
 

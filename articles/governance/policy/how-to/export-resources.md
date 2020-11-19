@@ -4,12 +4,12 @@ description: 瞭解如何將 Azure 原則資源匯出到 GitHub，例如原則�
 ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 923b063244f6f47def1c3e6a63d6e4d6b3b88083
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025709"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919560"
 ---
 # <a name="export-azure-policy-resources"></a>匯出 Azure 原則資源
 
@@ -29,10 +29,10 @@ ms.locfileid: "93025709"
 
 1. 在 [基本資料] 索引標籤上設定下列選項，然後選取 [原則] 索引標籤或 [下一步：原則] 按鈕 (位於頁面底部)。
 
-   - **存放庫篩選器** ：設定為 [我的存放庫] 來僅查看您擁有的存放庫，或設定為 [所有存放庫] 來查看您授與 GitHub 動作存取權的所有存放庫。
+   - **存放庫篩選器**：設定為 [我的存放庫] 來僅查看您擁有的存放庫，或設定為 [所有存放庫] 來查看您授與 GitHub 動作存取權的所有存放庫。
    - **存放庫：** 將設定為您想要匯出 Azure 原則資源的存放庫。
-   - **分支** ：設定存放庫中的分支。 使用預設以外的分支，是再進一步合併至原始程式碼之前，用來驗證更新的好方法。
-   - **目錄** ：將 Azure 原則資源匯出到其中的「根層級資料夾」。 此目錄下的子資料夾會根據匯出的資源來建立。
+   - **分支**：設定存放庫中的分支。 使用預設以外的分支，是再進一步合併至原始程式碼之前，用來驗證更新的好方法。
+   - **目錄**：將 Azure 原則資源匯出到其中的「根層級資料夾」。 此目錄下的子資料夾會根據匯出的資源來建立。
 
 1. 在 [原則] 索引標籤上，選取省略符號並挑選管理群組、訂用帳戶或資源群組的組合，以設定要搜尋的範圍。
    
@@ -63,9 +63,9 @@ Azure 原則資源會匯出到所選 GitHub 存放庫和「根層級資料夾」
 
 Azure 原則定義、計畫和指派可以使用 [Azure CLI](/cli/azure/install-azure-cli)匯出為 JSON。 每個命令都使用 **name** 參數來指定要取得 JSON 的物件。 **Name** 屬性通常是 _GUID_ ，而不是物件的 **displayName** 。
 
-- 定義- [az 原則定義顯示](/cli/azure/policy/definition#az-policy-definition-show)
-- 方案- [az 原則集-定義顯示](/cli/azure/policy/set-definition#az-policy-set-definition-show)
-- 指派- [az policy 指派 show](/cli/azure/policy/assignment#az-policy-assignment-show)
+- 定義- [az 原則定義顯示](/cli/azure/policy/definition#az_policy_definition_show)
+- 方案- [az 原則集-定義顯示](/cli/azure/policy/set-definition#az_policy_set_definition_show)
+- 指派- [az policy 指派 show](/cli/azure/policy/assignment#az_policy_assignment_show)
 
 以下是取得 **名稱** 為 _VirtualMachineStorage_ 之原則定義的 JSON 範例：
 

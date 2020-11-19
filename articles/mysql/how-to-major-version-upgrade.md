@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 78c35e42cefa8897d9f93c3a941b4c0e8b81e5f9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4dd4729589e429cb1b028b183fdfd144617d1d1b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686682"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920639"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server-using-the-azure-portal"></a>使用 Azure 入口網站適用於 MySQL 的 Azure 資料庫單一伺服器的主要版本升級
 
@@ -26,13 +26,16 @@ ms.locfileid: "94686682"
 > * 主要版本升級僅適用于從 MySQL 5.6 升級至 MySQL 5.7 的主要版本<br>
 > * 複本伺服器上目前不支援主要版本升級。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
 - [適用於 MySQL 的 Azure 資料庫單一伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57"></a>執行從 MySQL 5.6 升級至 MySQL 5.7 的主要版本
 
 遵循下列步驟來執行適用于 MySQL 5.6 伺服器的 Azure 資料庫的主要版本升級
+
+> [!IMPORTANT]
+> 建議您先在伺服器的還原複本上執行升級，而不是直接升級生產環境。 請參閱 [如何執行時間點還原](howto-restore-server-portal.md#point-in-time-restore)。
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您現有的適用於 MySQL 的 Azure 資料庫5.6 伺服器。
 

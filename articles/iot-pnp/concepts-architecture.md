@@ -9,20 +9,20 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87617e1cc6910b4c807aa90f413efe94b6e6953
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574311"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920299"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT 隨插即用架構
 
 IoT 隨插即用可讓解決方案建立器將智慧型裝置整合到解決方案中，而不需手動設定。 IoT 隨插即用的核心是一種裝置 _模型_ ，可描述裝置的功能是否已啟用 IoT 隨插即用的應用程式。 此模型會結構化為定義下列各項的一組介面：
 
-- 代表裝置或其他實體的唯讀或可寫入狀態的_屬性_。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
-- 屬於裝置所發出之資料的_遙測_，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。
-- 說明可在裝置上完成之函式或作業的_命令_。 例如，命令可以重新啟動閘道或使用遠端相機拍照。
+- 代表裝置或其他實體的唯讀或可寫入狀態的 _屬性_。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
+- 屬於裝置所發出之資料的 _遙測_，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。
+- 說明可在裝置上完成之函式或作業的 _命令_。 例如，命令可以重新啟動閘道或使用遠端相機拍照。
 
 每個模型和介面都有唯一的識別碼。
 
@@ -36,7 +36,7 @@ IoT 隨插即用可讓解決方案建立器將智慧型裝置整合到解決方�
 
 Web UI 可讓您管理模型和介面。
 
-模型存放庫會使用 RBAC，讓您限制對介面定義的存取。
+模型存放庫中有內建的角色型存取控制，可讓您限制對介面定義的存取。
 
 ## <a name="devices"></a>裝置
 
@@ -54,9 +54,9 @@ IoT Edge 閘道可做為連線無法直接連線到 IoT 中樞 IoT 隨插即用�
 
 ## <a name="iot-edge-modules"></a>IoT Edge 模組
 
-_IoT Edge 模組_可讓您在邊緣部署及管理商務邏輯。 Azure IoT Edge 模組是 IoT Edge 管理的最小計算單位，可以包含 Azure 服務 (例如 Azure 串流分析) 或您自己的解決方案特定程式碼。
+_IoT Edge 模組_ 可讓您在邊緣部署及管理商務邏輯。 Azure IoT Edge 模組是 IoT Edge 管理的最小計算單位，可以包含 Azure 服務 (例如 Azure 串流分析) 或您自己的解決方案特定程式碼。
 
-_IoT Edge 中樞_是組成 Azure IoT Edge 執行時間的其中一個模組。 它藉由公開與 IoT 中樞相同的通訊協定端點來作為 IoT 中樞的本機 Proxy。 此一致性表示用戶端 (不論是裝置或模組) 都可連線到 IoT Edge 執行階段，就像它們對 IoT 中樞所做的。
+_IoT Edge 中樞_ 是組成 Azure IoT Edge 執行時間的其中一個模組。 它藉由公開與 IoT 中樞相同的通訊協定端點來作為 IoT 中樞的本機 Proxy。 此一致性表示用戶端 (不論是裝置或模組) 都可連線到 IoT Edge 執行階段，就像它們對 IoT 中樞所做的。
 
 裝置 Sdk 可協助模組產生器：
 

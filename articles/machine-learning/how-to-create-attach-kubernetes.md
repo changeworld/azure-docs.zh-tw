@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: c8b3ab965c5a85bd6f25e5325fdca24026aec787
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 0f2b9476c9b8c0b5164bfbf29d65d260340effe4
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873823"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919755"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>建立並附加 Azure Kubernetes Service 叢集
 
@@ -43,6 +43,8 @@ Azure Machine Learning 可以將定型的機器學習模型部署到 Azure Kuber
 - 如果您 **附加** 已 [啟用授權 IP 範圍的 AKS 叢集來存取 API 伺服器](../aks/api-server-authorized-ip-ranges.md)，請啟用 AKS 叢集的 AML 控制平面 IP 範圍。 AML 控制平面會部署在配對的區域，並在 AKS 叢集上部署推斷 pod。 如果沒有 API 伺服器的存取權，則無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域](../best-practices-availability-paired-regions.md)的[ip 範圍](https://www.microsoft.com/download/confirmation.aspx?id=56519)。
 
     授權的 IP 範圍僅適用于 Standard Load Balancer。
+
+- **附加** AKS 叢集時，它必須與您的 Azure Machine Learning 工作區位於相同的 Azure 訂用帳戶中。
 
 - 如果您想要使用私人 AKS 叢集 (使用 Azure Private Link) ，您必須先建立叢集，然後 **將它附加** 至工作區。 如需詳細資訊，請參閱 [建立私人 Azure Kubernetes Service](../aks/private-clusters.md)叢集。
 

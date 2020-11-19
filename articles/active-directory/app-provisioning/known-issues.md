@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069750"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919672"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -86,6 +86,9 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 
 當群組在範圍內，而成員超出範圍時，就會布建群組。 不會布建超出範圍的使用者。 如果成員回到範圍中，服務將不會立即偵測變更。 重新開機布建將會解決此問題。 建議您定期重新開機服務，以確保所有使用者都已正確布建。  
 
+**未布建管理員**
+
+如果使用者和其管理員都在布建範圍內，則服務會布建使用者，然後更新管理員。 不過，如果使用者在第一天是在範圍內，而管理員超出範圍，我們將會在不使用經理參考的情況下布建使用者。 當管理員進入範圍內時，除非您重新開機布建，並再次讓服務重新評估所有使用者，否則管理員參考將不會更新。 
 
 ## <a name="next-steps"></a>後續步驟
 - [佈建運作方式](how-provisioning-works.md)
