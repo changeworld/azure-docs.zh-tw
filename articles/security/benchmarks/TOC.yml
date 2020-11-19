@@ -139,6 +139,8 @@
       href: ../../container-instances/security-baseline.md
     - name: 容器登錄安全性基準
       href: ../../container-registry/security-baseline.md
+    - name: 內容傳遞網路安全性基準
+      href: ../../cdn/security-baseline.md
     - name: Cosmos DB 安全性基準
       href: ../../cosmos-db/security-baseline.md
     - name: 成本管理安全性基準

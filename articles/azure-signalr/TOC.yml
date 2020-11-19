@@ -98,6 +98,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: 使用 Azure 原則來稽核合規性
           href: signalr-howto-azure-policy.md
+    - name: 疑難排解
+      items:
+        - name: 疑難排解指南
+          href: signalr-howto-troubleshoot-guide.md
+        - name: 疑難排解方法
+          href: signalr-howto-troubleshoot-method.md
 - name: 參考
   items:
     - name: Azure CLI

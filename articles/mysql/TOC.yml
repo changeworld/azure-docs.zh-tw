@@ -287,6 +287,10 @@
           items:
             - name: 停止啟動 MySQL 伺服器
               href: how-to-stop-start-server.md
+        - name: 主要版本升級
+          items:
+            - name: 主要版本升級
+              href: how-to-major-version-upgrade.md
         - name: 自動成長的儲存體
           items:
             - name: Azure 入口網站

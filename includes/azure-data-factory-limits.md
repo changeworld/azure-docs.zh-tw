@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92909062"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94680749"
 ---
 Azure Data Factory 是一種多租用戶服務，並具有以下的預設限制以確保客戶訂用帳戶不會受到彼此工作負載的影響。 若要提高訂用帳戶的上限，請連絡支援人員。
 
@@ -40,6 +40,7 @@ Azure Data Factory 是一種多租用戶服務，並具有以下的預設限制�
 | 管線活動執行逾時上限 | 7 天 | 7 天 |
 | 管線物件的每個物件位元組大小<sup>3</sup> | 200 KB | 200 KB |
 | 資料集和已連結服務的每個物件位元組大小<sup>3</sup> | 100 KB | 2,000 KB |
+| 每個活動執行的每個承載位元組數<sup>4</sup> | 896 KB | 896 KB |
 | 每次複製活動執行的資料整合單位<sup>1</sup> | 256 | 256 |
 | 寫入 API 呼叫 | 1,200/小時 | 1,200/小時<br/><br/> 這是由 Azure Resource Manager 所加諸的限制，而不是 Azure Data Factory。 |
 | 讀取 API 呼叫 | 12,500/小時 | 12,500/小時<br/><br/> 這是由 Azure Resource Manager 所加諸的限制，而不是 Azure Data Factory。 |
@@ -60,6 +61,8 @@ Azure Data Factory 是一種多租用戶服務，並具有以下的預設限制�
 | 區域群組 3 | 加拿大中部、亞太地區、法國中部、南韓中部、英國南部 |
 
 <sup>3</sup>管線、資料集和連結的服務物件代表您工作負載的邏輯群組。 這些物件的限制與您可使用 Azure Data Factory 移動和處理的資料量無關。 Data Factory 可視需要調整以處理數 PB 的資料。
+
+<sup>4</sup> 每個活動執行的承載包含活動設定、相關聯的資料集和已連結的服務設定 (如果有的話)，以及每個活動類型所產生的一小部分系統屬性。 此承載大小的限制與您可使用 Azure Data Factory 移動和處理的資料量無關。 如果您達到此限制，請參閱[徵兆和建議](../articles/data-factory/data-factory-troubleshoot-guide.md#payload-is-too-large)。
 
 ### <a name="version-1"></a>第 1 版
 

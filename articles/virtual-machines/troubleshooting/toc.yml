@@ -115,6 +115,8 @@
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows 停止錯誤 - 錯誤的系統組態資訊
           href: windows-stop-error-bad-system-config-info.md
+        - name: Windows 停止錯誤 - 硬體故障
+          href: windows-stop-error-hardware-malfunction.md
         - name: Windows 停止錯誤 - 狀態無記憶體
           href: troubleshoot-windows-stop-error.md
         - name: Windows 停止錯誤 - 系統流程已終止

@@ -330,7 +330,9 @@
         - name: 磁碟備份和災害復原
           href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 共用磁碟
-          href: disks-shared.md
+          href: ../disks-shared.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 磁碟效能層級
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 暫時性 OS 磁碟
           href: ../ephemeral-os-disks.md
     - name: 網路功能
@@ -886,8 +888,10 @@
               href: attach-disk-ps.md
             - name: Azure 入口網站
               href: attach-managed-disk-portal.md
-        - name: 變更磁碟階層
+        - name: 變更磁碟階層 - PowerShell/CLI
           href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 變更磁碟階層 - 入口網站
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 中斷連結磁碟
           href: detach-disk.md
         - name: 透過 ARM 範本部署磁碟

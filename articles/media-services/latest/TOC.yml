@@ -68,8 +68,8 @@
       items:
         - name: 編碼和串流遠端檔案 REST
           href: stream-files-tutorial-with-rest.md
-        - name: 客戶自控金鑰與媒體服務
-          href: tutorial-byok.md
+        - name: 客戶自控金鑰與 REST API
+          href: tutorial-byok-postman.md
     - name: CLI
       items:
         - name: 編碼和串流遠端檔案 CLI
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure 入口網站
       items:
+        - name: 客戶自控金鑰或 BYOK 教學課程
+          href: tutorial-byok-portal.md
         - name: 將 AMS 事件儲存在 Azure Log Analytics 中
           href: tutorial-events-log-analytics.md
 - name: 範例
@@ -102,6 +104,11 @@
         - name: 儲存體帳戶
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: 受控識別與媒體服務
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: 客戶管理的金鑰
+          href: concept-use-customer-managed-keys-byok.md
     - name: Assets
       items:
         - name: Assets
@@ -178,8 +185,6 @@
         - name: 動態加密和金鑰傳遞
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: 客戶管理的金鑰
-          href: concept-use-customer-managed-keys-byok.md
         - name: 多重 DRM 系統設計
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

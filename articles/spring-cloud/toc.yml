@@ -81,6 +81,8 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: 使用永續性儲存體
           href: spring-cloud-howto-persistent-storage.md
+        - name: 識別輸出公用 IP 位址
+          href: spring-cloud-howto-outbound-public-ip.md
     - name: 監視
       items:
         - name: 分散式追蹤和 App Insights
@@ -121,7 +123,7 @@
           href: spring-cloud-howto-self-diagnose-solve.md
         - name: 疑難排解指南
           href: spring-cloud-troubleshoot.md
-    - name: 遷移
+    - name: 移轉
       items:
         - name: Spring Cloud
           href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud'

@@ -65,6 +65,8 @@
       href: use-editor-create-project.md
     - name: 將小工具內嵌至您的應用程式
       href: video-indexer-embed-widgets.md
+    - name: 大規模使用影片索引子時的考量
+      href: considerations-when-use-at-scale.md
     - name: 災害復原
       href: video-indexer-disaster-recovery.md
     - name: 自訂內容模型

@@ -28,7 +28,7 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: 概念
   items:
-    - name: 連線監視器 (預覽)
+    - name: 連線監視
       href: connection-monitor-overview.md
     - name: 診斷虛擬機器網路流量篩選問題
       href: network-watcher-ip-flow-verify-overview.md
@@ -58,7 +58,7 @@
   items:
     - name: 設定網路監看員
       href: network-watcher-create.md
-    - name: 建立連線監視器 (預覽)
+    - name: 建立連線監視器
       items:
         - name: 使用 Azure 入口網站
           href: connection-monitor-create-using-portal.md
@@ -66,11 +66,11 @@
           href: connection-monitor-create-using-template.md
         - name: 使用 PowerShell
           href: connection-monitor-create-using-powershell.md
-    - name: 遷移至連線監視器 (預覽)
+    - name: 遷移至連線監視器
       items:
         - name: 從網路效能監控
           href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
-        - name: 從連線監視器
+        - name: 從連線監視器 (傳統)
           href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: 診斷 VM 網路問題
       items:

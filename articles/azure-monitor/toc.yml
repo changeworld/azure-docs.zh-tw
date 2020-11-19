@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: 監視效能
           href: insights/vminsights-performance.md
-        - name: 監視變更
-          href: insights/vminsights-change-analysis.md
+        - name: 監視客體健康情況 (預覽)
+          items:
+            - name: 概觀
+              href: insights/vminsights-health-overview.md
+            - name: 啟用
+              href: insights/vminsights-health-enable.md
+            - name: 警示
+              href: insights/vminsights-health-alerts.md
+            - name: 在入口網站中設定監視器
+              href: insights/vminsights-health-configure.md
+            - name: 大規模設定監視器
+              href: insights/vminsights-health-configure-dcr.md
+            - name: 疑難排解
+              href: insights/vminsights-health-troubleshoot.md
         - name: 使用日誌查詢分析資料
           href: insights/vminsights-log-search.md
+        - name: 監視效能
+          href: insights/vminsights-alerts.md
+        - name: 監視變更
+          href: insights/vminsights-change-analysis.md
         - name: 使用活頁簿將資料視覺化
           href: insights/vminsights-workbooks.md
-        - name: 建立警示規則
-          href: insights/vminsights-alerts.md
         - name: 停用監視
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
