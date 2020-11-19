@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a72b0d90a33b011468b5ac42d529befb7acae42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844892"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916741"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>連接至媒體服務 v3 API-Python
 
@@ -43,6 +43,8 @@ ms.locfileid: "94844892"
 
 * 此 `azure-mgmt-resource` 模組包含適用于 Active Directory 的 Azure 模組。
 * `azure-mgmt-media`包含媒體服務實體的模組。
+
+    請務必取得 [適用于 Python 的最新版本媒體服務 SDK](https://pypi.org/project/azure-mgmt-media/)。
 
 開啟命令列工具，並使用下列命令來安裝模組。
 

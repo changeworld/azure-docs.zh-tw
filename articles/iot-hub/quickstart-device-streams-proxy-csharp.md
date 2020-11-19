@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3e53937122b8721aff5db435ac447b686ea16643
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748688"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831917"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C# Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -43,11 +43,9 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 > [!NOTE]
 > 透過裝置串流傳送的 SSH 流量會經由 IoT 中樞的串流端點進行輸送，而不是直接在服務與裝置之間傳送。 如需詳細資訊，請參閱[使用 IoT 中樞裝置串流的優點](iot-hub-device-streams-overview.md#benefits)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
 
@@ -58,28 +56,21 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 
 * 您在此快速入門中執行的兩個範例應用程式是以 C# 撰寫的。 您的開發電腦上需要有 .NET Core SDK 2.1.0 或更新版本。
 
-  您可以[從 .NET 下載適用於多種平台的 .NET Core SDK](https://www.microsoft.com/net/download/all) \(英文\)。
+    您可以[從 .NET 下載適用於多種平台的 .NET Core SDK](https://www.microsoft.com/net/download/all) \(英文\)。
 
-* 使用下列命令，確認開發電腦上目前的 C# 版本：
+    使用下列命令，確認開發電腦上目前的 C# 版本：
 
     ```
     dotnet --version
     ```
 
-* 執行下列命令，將適用於 Azure CLI 的 Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 * [下載 Azure IoT C# 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)，然後將 ZIP 封存檔解壓縮。
 
 * 裝置 (Windows 或 Linux) 上用來驗證使用者的有效使用者帳戶和認證。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -92,17 +83,17 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 1. 若要建立裝置身分識別，請在 Cloud Shell 中執行下列命令：
 
    > [!NOTE]
-   > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
-   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice* 。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
+   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice*。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. 若要針對您剛註冊的裝置取得「裝置連接字串」  ，請在 Azure Cloud Shell 中執行下列命令：
+1. 若要針對您剛註冊的裝置取得「裝置連接字串」，請在 Azure Cloud Shell 中執行下列命令：
 
    > [!NOTE]
-   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
+   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
@@ -115,7 +106,7 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 1. 若要連線到您的 IoT 中樞並建立裝置串流，您也需要來自 IoT 中樞的 *服務連接字串* 來啟用服務端應用程式。 下列命令會擷取您 IoT 中樞的這個值：
 
    > [!NOTE]
-   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
+   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -195,7 +186,7 @@ ssh {username}@localhost -p 2222
 
 ![服務本機 Proxy 應用程式輸出](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-經由 IP_address:22  連線至 SSH 精靈的裝置本機 Proxy 應用程式上的主控台輸出：
+經由 IP_address:22 連線至 SSH 精靈的裝置本機 Proxy 應用程式上的主控台輸出：
 
 ![裝置本機 Proxy 應用程式輸出](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 

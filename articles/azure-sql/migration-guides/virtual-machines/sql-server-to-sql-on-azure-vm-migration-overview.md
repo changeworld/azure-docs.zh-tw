@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 64334b17060879a2e587b13b062c81e86df33831
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743417"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917831"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>遷移總覽： SQL Server Azure Vm 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -57,10 +57,12 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 - 現有產品的支援生命週期
 - 在遷移期間應用程式停機時間的視窗
 
+:::image type="content" source="media/sql-server-to-sql-on-azure-vm-individual-databases-guide/virtual-machine-migration-downtime.png" alt-text="虛擬機器遷移停機":::
+
 下表說明兩個遷移策略的差異：
 <br />
 
-| **移轉策略** | **描述** | **使用時機** |
+| **移轉策略** | **說明** | **使用時機** |
 | --- | --- | --- |
 | **增益 & shift** | 使用隨即轉移策略，將整個實體或虛擬 SQL Server 從其目前的位置移至 Azure VM 上的 SQL Server 實例，而不需要變更作業系統或 SQL Server 版本。 若要完成隨即轉移，請參閱 [Azure Migrate](../../../migrate/migrate-services-overview.md)。 <br /><br /> 來源伺服器會維持線上和服務要求，而來源和目的地伺服器則會同步處理資料，讓您幾乎順暢地進行遷移。 | 用於單一到大規模的遷移，甚至適用于資料中心結束之類的案例。 <br /><br /> 不需要變更使用者 SQL 資料庫或應用程式的程式碼，可讓整體遷移速度更快。 <br /><br />不需要額外的步驟就能遷移商務智慧服務，例如  [SSIS](/sql/integration-services/sql-server-integration-services)、 [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)和 [SSAS](/analysis-services/analysis-services-overview)。 |
 |**移轉** | 當您想要升級目標 SQL Server 和/或作業系統版本時，請使用遷移策略。 <br /> <br /> 從 Azure Marketplace 或符合來源 SQL Server 版本的備妥 SQL Server 映射中選取 Azure VM。 | 當需求或想要使用較新版本 SQL Server 中可用的功能，或需要升級不再支援的舊版 SQL Server 和/或作業系統版本時，請使用。  <br /> <br /> 可能需要一些應用程式或使用者資料庫變更，以支援 SQL Server 升級。 <br /><br />在遷移的範圍內，如果有遷移 [商業智慧](#business-intelligence) 服務，可能會有其他考慮。 |
@@ -71,11 +73,11 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 下表詳細說明隨即 **轉移** 策略的可用方法，以將您的 SQL Server 資料庫移轉至 Azure vm 上的 SQL Server：
 <br />
 
-|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** |  **備註** |
+|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** |  **注意事項** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  現有 SQL Server 要依原樣移至 Azure VM 上的 SQL Server 實例。 可以調整最多35000個 Vm 的遷移工作負載。 <br /><br /> 來源伺服器 (的) 在同步處理伺服器資料期間維持連線並提供服務要求，將停機時間降到最低。 <br /><br /> **自動化 & 腳本**： [Azure Site Recovery 腳本](../../../migrate/how-to-migrate-at-scale.md) ，以及 [適用于 Azure 的調整遷移和規劃範例](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>移轉  
+## <a name="migrate"></a>遷移  
 
 由於容易設定，建議的遷移方法是在本機進行原生 SQL Server [備份](/sql/t-sql/statements/backup-transact-sql) ，然後將檔案複製到 Azure。 此方法支援較大的資料庫 ( # B0 1 TB) 適用于從2008開始的所有 SQL Server 版本，以及較大的資料庫備份 ( # B1 1 TB) 。 但是，如果資料庫是從 SQL Server 2014 開始、小於 1 TB，且對 Azure 有良好的連線能力，則 [SQL Server 備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 是較佳的方法。 
 
@@ -84,7 +86,7 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 下表詳細說明將 SQL Server 資料庫移轉至 Azure Vm 上 SQL Server 的所有可用方法：
 <br />
 
-|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** | **備註** |
+|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** | **注意事項** |
 | --- | --- | --- | --- | --- |
 | **[備份至檔案](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  這是一種簡單且經過妥善測試的技術，可在電腦之間移動資料庫。 使用壓縮來將傳輸的備份大小降至最低。 <br /><br /> **Automation & 腳本**： [transact-sql (T-sql)](/sql/t-sql/statements/backup-transact-sql) 並 [AzCopy 至 Blob 儲存體](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 為 12.8 TB，否則為 1 TB | 使用 Azure 儲存體將備份檔案移至 VM 的替代方式。 使用壓縮來將傳輸的備份大小降至最低。 <br /><br /> **Automation & 腳本**：  [t-sql 或維護計畫](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |

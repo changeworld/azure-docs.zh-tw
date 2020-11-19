@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: ad31eb04f53197c4c3ccdd173cd57564c65d5a35
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: de310846ad0449a0dac7eccd60d82d4c68ef519b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747465"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832196"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入門：透過 IoT 中樞裝置串流與使用 C 的裝置應用程式進行通訊 (預覽)
 
@@ -36,11 +36,9 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 程式碼會示範裝置串流的起始程序，以及如何用它來傳送和接收資料。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 您必須符合下列必要條件：
 
@@ -48,13 +46,9 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 * 安裝最新版的 [Git](https://git-scm.com/download/)。
 
-* 執行下列命令，將適用於 Azure CLI 的 Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
 
@@ -89,7 +83,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
     cd cmake
     ```
 
-1. 從 cmake  目錄執行下列命令，以建置您開發用戶端平台特有的 SDK 版本。
+1. 從 cmake 目錄執行下列命令，以建置您開發用戶端平台特有的 SDK 版本。
 
    * 在 Linux 中：
 
@@ -98,7 +92,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
       make -j
       ```
 
-   * 在 Windows 中，開啟 [Visual Studio 的開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)。 執行您的 Visual Studio 版本適用的命令。 本快速入門使用 Visual Studio 2019。 這些命令會在 cmake  目錄中建立模擬裝置的 Visual Studio 解決方案。
+   * 在 Windows 中，開啟 [Visual Studio 的開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)。 執行您的 Visual Studio 版本適用的命令。 本快速入門使用 Visual Studio 2019。 這些命令會在 cmake 目錄中建立模擬裝置的 Visual Studio 解決方案。
 
       ```cmd
       rem For VS2015
@@ -125,17 +119,17 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 1. 若要建立裝置身分識別，請在 Cloud Shell 中執行下列命令：
 
    > [!NOTE]
-   > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
-   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice* 。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
+   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice*。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. 若要針對您剛註冊的裝置取得「裝置連接字串」  ，請在 Azure Cloud Shell 中執行下列命令：
+1. 若要針對您剛註冊的裝置取得「裝置連接字串」，請在 Azure Cloud Shell 中執行下列命令：
 
    > [!NOTE]
-   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
+   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table

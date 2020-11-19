@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b3256591c0aa2536fd42bcdbb2ef339fc1d5c48
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356802"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917166"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>如何在 c # .NET 應用程式中使用 Azure.Search.Documents
 
@@ -54,7 +54,7 @@ Azure.Search.Documents (第11版) 目標版本[ `2020-06-30` 的 Azure 認知搜
 
 + 您自己的 Azure 認知搜尋服務。 為了使用 SDK，您需要為服務命名，還需要一或多個 API 金鑰。 [在入口網站中建立服務](search-create-service-portal.md) （如果沒有的話）。
 
-+ 使用 **工具** NuGet 封裝管理員管理 Visual Studio 中 [Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents)  >  **NuGet Package Manager**  >  **解決方案的 nuget 套件** ，以下載Azure.Search.Documents 套件。 搜尋套件名稱 `Azure.Search.Documents` 。
++ 使用 **工具** NuGet 封裝管理員管理 Visual Studio 中 [Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents)  >  **NuGet Package Manager**  >  **解決方案的 nuget 套件**，以下載Azure.Search.Documents 套件。 搜尋套件名稱 `Azure.Search.Documents` 。
 
 適用于 .NET 的 Azure SDK 符合 [.NET Standard 2.0](/dotnet/standard/net-standard#net-implementation-support)，這表示 .NET Framework 4.6.1 和 .net Core 2.0 作為最低需求。
 
@@ -230,6 +230,22 @@ private static void WriteDocuments(SearchResults<Hotel> searchResults)
     Console.WriteLine();
 }
 ```
+
+替代方法是直接將欄位新增至索引。 下列範例只顯示幾個欄位。
+
+   ```csharp
+    SearchIndex index = new SearchIndex(indexName)
+    {
+        Fields =
+            {
+                new SimpleField("hotelId", SearchFieldDataType.String) { IsKey = true, IsFilterable = true, IsSortable = true },
+                new SearchableField("hotelName") { IsFilterable = true, IsSortable = true },
+                new SearchableField("hotelCategory") { IsFilterable = true, IsSortable = true },
+                new SimpleField("baseRate", SearchFieldDataType.Int32) { IsFilterable = true, IsSortable = true },
+                new SimpleField("lastRenovationDate", SearchFieldDataType.DateTimeOffset) { IsFilterable = true, IsSortable = true }
+            }
+    };
+   ```
 
 ### <a name="field-definitions"></a>欄位定義
 

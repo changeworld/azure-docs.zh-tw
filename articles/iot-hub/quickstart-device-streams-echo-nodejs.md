@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ef362b34fe99212ee6648830ac442e507515719f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747528"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832002"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入門：透過 IoT 中樞裝置串流與使用 Node.js 的裝置應用程式進行通訊 (預覽)
 
@@ -30,13 +30,17 @@ ms.locfileid: "92747528"
 
 * [Node.js 10+](https://nodejs.org)。
 
+    您可以使用下列命令，以確認開發電腦上目前的 Node.js 版本：
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
 
-您可以使用下列命令，以確認開發電腦上目前的 Node.js 版本：
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```cmd/sh
-node --version
-```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -47,18 +51,6 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 > * 美國中部 EUAP
 > * 北歐
 > * 東南亞
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
-
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的命令新增至 Azure CLI。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -74,17 +66,17 @@ az extension add --name azure-iot
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
-   **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyDevice** ：這是您要註冊之裝置的名稱。 建議您使用 **MyDevice** ，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+   **MyDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-2. 您也需要 *服務連接字串* ，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
+2. 您也需要 *服務連接字串*，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
 
-    **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -131,7 +123,7 @@ az extension add --name azure-iot
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   變更 ServiceConnectionString 預留位置以符合您的服務連接字串，如果您提供不同的名稱，則變更 **MyDevice**  以符合您的裝置識別碼。
+   變更 ServiceConnectionString 預留位置以符合您的服務連接字串，如果您提供不同的名稱，則變更 **MyDevice** 以符合您的裝置識別碼。
 
 * 在解壓縮的專案資料夾中瀏覽至 `Quickstarts/device-streams-service`，並使用節點執行範例。
 

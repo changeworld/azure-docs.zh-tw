@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 35c120b6d7715ac6fefe0e8712040108568ee8de
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747431"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831985"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -46,11 +46,9 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 > [!NOTE]
 > 透過裝置串流傳送的 SSH 流量會經由 IoT 中樞的串流端點進行輸送，而不是直接在服務與裝置之間傳送。 如需詳細資訊，請參閱[使用 IoT 中樞裝置串流的優點](iot-hub-device-streams-overview.md#benefits)。 此外，圖中也說明在與裝置本機 Proxy 相同的裝置 (或機器) 上執行的 SSH 精靈。 在本快速入門中，提供 SSH 精靈的 IP 位址也可讓裝置本機 Proxy 與精靈在不同的機器上執行。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
 
@@ -62,11 +60,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 * 安裝 [Visual Studio 2019](https://www.visualstudio.com/vs/) 並啟用[使用 C++ 的桌面開發](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作負載。
 * 安裝最新版的 [Git](https://git-scm.com/download/)。
 
-* 執行下列命令，將適用於 Azure CLI 的 Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -76,7 +70,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 1. 下載 [CMake 建置系統](https://cmake.org/download/)。
 
-    在開始安裝 CMake「之前」   ，請務必將 Visual Studio 必要條件 (Visual Studio 和「使用 C++ 的桌面開發」工作負載) 安裝在您的機器上。 符合先決條件並驗證過下載項目之後，您可以安裝 CMake 建置系統。
+    在開始安裝 CMake「之前」，請務必將 Visual Studio 必要條件 (Visual Studio 和「使用 C++ 的桌面開發」工作負載) 安裝在您的機器上。 符合先決條件並驗證過下載項目之後，您可以安裝 CMake 建置系統。
 
 1. 開啟命令提示字元或 Git Bash 殼層。 執行下列命令以複製 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存放庫：
 
@@ -95,7 +89,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
     cd cmake
     ```
 
-1. 從 cmake  目錄執行下列命令，以建置您開發用戶端平台特有的 SDK 版本。
+1. 從 cmake 目錄執行下列命令，以建置您開發用戶端平台特有的 SDK 版本。
 
    * 在 Linux 中：
 
@@ -104,7 +98,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
       make -j
       ```
 
-   * 在 Windows 中，請在 Visual Studio 2015 或 2017 的開發人員命令提示字元中執行下列命令。 cmake  目錄中會產生模擬裝置的 Visual Studio 解決方案。
+   * 在 Windows 中，請在 Visual Studio 2015 或 2017 的開發人員命令提示字元中執行下列命令。 cmake 目錄中會產生模擬裝置的 Visual Studio 解決方案。
 
       ```cmd
       rem For VS2015
@@ -131,17 +125,17 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 1. 若要建立裝置身分識別，請在 Cloud Shell 中執行下列命令：
 
    > [!NOTE]
-   > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
-   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice* 。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
+   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice*。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. 若要針對您剛註冊的裝置取得「裝置連接字串」  ，請在 Azure Cloud Shell 中執行下列命令：
+1. 若要針對您剛註冊的裝置取得「裝置連接字串」，請在 Azure Cloud Shell 中執行下列命令：
 
    > [!NOTE]
-   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
+   > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
@@ -157,7 +151,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 ### <a name="run-the-device-local-proxy-application"></a>執行裝置本機 Proxy 應用程式
 
-1. 編輯資料夾 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 中的來源檔案 **iothub_client_c2d_streaming_proxy_sample.c** ，並提供您的裝置連接字串、目標裝置的 IP/主機名稱，以及 SSH 連接埠 22：
+1. 編輯資料夾 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 中的來源檔案 **iothub_client_c2d_streaming_proxy_sample.c**，並提供您的裝置連接字串、目標裝置的 IP/主機名稱，以及 SSH 連接埠 22：
 
    ```C
    /* Paste in your device connection string  */

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 503d3d5ed9b099e01a88ee40ef80e88105beb340
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491812"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917727"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -36,31 +36,53 @@ ms.locfileid: "94491812"
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |
 | 每個帳戶的附件大小上限 (附件功能即將淘汰)  | 2 GB |
-| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格 |
+| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能符合「[高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格 |
 
 > [!NOTE]
 > 若要了解管理工作負載 (所含分割區索引鍵需要更高儲存體或輸送量限制) 的最佳做法，請參閱[建立綜合分割區索引鍵](synthetic-partition-keys.md)。
 
-Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/秒。 當容器成長時，支援的最小輸送量也取決於下列因素：
+### <a name="minimum-throughput-limits"></a>最小輸送量限制
 
-* 您曾在容器上佈建的最大輸送量。 例如，如果您的輸送量已增加到 50000 RU/秒，則最低的可能布建輸送量會是 500 RU/秒。
-* 容器中的目前儲存體 (以 GB 為單位)。 例如，如果您的容器具有 100 GB 的儲存體，則可能布建的最小輸送量會是 1000 RU/秒。 **注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能會符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格。
-* 共用輸送量資料庫上最小輸送量也取決於先前在共用輸送量資料庫中建立的容器總數 (以每個容器 100 RU/秒為單位)。 例如，如果您已在共用輸送量資料庫中建立五個容器，則輸送量至少必須為 500 RU/秒。
+Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/秒。 當容器成長時，Cosmos DB 需要最小輸送量，以確保資料庫或容器擁有足夠的資源來進行作業。
 
 您可從 Azure 入口網站或 SDK 擷取容器或資料庫的目前和最小輸送量。 如需詳細資訊，請參閱[在容器和資料庫中佈建輸送量](set-throughput.md)。 
 
-> [!NOTE]
-> 在某些情況下，您能夠將輸送量降低到低於10%。 使用 API 來取得每個容器的 RU 數下限。
+實際的最小 RU/秒可能會依您的帳戶設定而有所不同。 您可以使用 [Azure 監視器計量](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 來查看布建輸送量的歷程記錄 (RU/秒) 和資源上的儲存體。 
+
+#### <a name="minimum-throughput-on-container"></a>容器的最小輸送量 
+
+若要預估具有手動輸送量之容器所需的最小輸送量，請找出最大值：
+
+* 400 RU/秒 
+* 目前的儲存體（GB） * 10 RU/秒
+* 在容器/100 上布建的 RU/秒上限
+
+範例：假設您的容器布建了 400 RU/秒和 0 GB 的儲存體。 您會將輸送量增加到 50000 RU/秒，並匯入 20 GB 的資料。 最小 RU/秒現在 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/秒。 經過一段時間後，儲存體會成長至 200 GB。 最小 RU/秒現在 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/秒。 
+
+**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能會符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格。
+
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>共用輸送量資料庫的最小輸送量 
+若要以手動輸送量估計共用輸送量資料庫所需的最小輸送量，請尋找最大值：
+
+* 400 RU/秒 
+* 目前的儲存體（GB） * 10 RU/秒
+* 在資料庫/100 上布建的 RU/秒上限
+* 400 + MAX (容器計數-25，0) * 100 RU/秒
+
+範例：假設您的資料庫布建了 400 RU/秒、15 GB 的儲存體，以及10個容器。 最小 RU/秒為 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/秒。 如果資料庫中有30個容器，則最小 RU/秒會是 `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 RU/秒。 
+
+**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能會符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格。
 
 總而言之，以下是佈建的 RU 下限。 
 
 | 資源 | 預設限制 |
 | --- | --- |
-| 每個容器的 RU 數下限 ([專用輸送量佈建模式](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| 每個資料庫的 RU 數下限 ([共用輸送量佈建模式](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| 共用輸送量資料庫內每個容器的 RU 數下限 | 100 |
+| 每個容器的 ru 下限 ([專用輸送量布建模式](databases-containers-items.md#azure-cosmos-containers))  | 400 |
+| 每個資料庫的最小 ru ([共用輸送量布建模式](databases-containers-items.md#azure-cosmos-containers))  | 前25個容器的 400 RU/秒。 每個容器的額外 100 RU/秒。 |
 
-Cosmos DB 可透過 SDK 或入口網站，支援彈性調整每個容器或資料庫的輸送量 (RU)。 每個容器可在最小值與最大值之間，於 10 到 100 倍的調整範圍內，以同步方式立即進行調整。 如果要求的輸送量值超出範圍，則會以非同步方式執行調整。 視容器中所要求的輸送量和資料儲存體大小而定，非同步調整可能需要數分鐘到數小時的時間才能完成。  
+Cosmos DB 支援透過 Sdk 或入口網站，以程式設計方式調整每個容器或資料庫的輸送量 (RU/秒) 。    
+
+根據目前已布建的 RU/秒和資源設定，每個資源都可在最小 RU/秒之間進行同步和立即調整，以100倍最小 RU/秒。 如果要求的輸送量值超出範圍，則會以非同步方式執行調整。 視容器中所要求的輸送量和資料儲存體大小而定，非同步調整可能需要數分鐘到數小時的時間才能完成。  
 
 ### <a name="serverless"></a>無伺服器
 
@@ -172,9 +194,9 @@ Azure Cosmos DB 會維護每個帳戶的系統中繼資料。 此中繼資料可
 
 | 資源 | 預設限制 |
 | --- | --- |
-|每分鐘的集合建立速率上限| 5|
-|每分鐘資料庫建立速率上限|   5|
-|每分鐘布建的輸送量更新速率上限| 5|
+|每分鐘的集合建立速率上限|    5|
+|每分鐘資料庫建立速率上限|    5|
+|每分鐘布建的輸送量更新速率上限|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自動調整佈建輸送量的限制
 

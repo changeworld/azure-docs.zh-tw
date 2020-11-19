@@ -12,17 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 41f3505388e72fba15277067a94cf4e473008f20
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790418"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917642"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>將 SQL Server 資料庫移轉至 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本文中，您將瞭解將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 的主要方法。 如需遷移至 Azure SQL 受控執行個體的詳細資訊，請參閱 [將 SQL Server 實例遷移至 AZURE sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
+在本文中，您將瞭解將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 的主要方法。 如需遷移至 Azure SQL 受控執行個體的詳細資訊，請參閱 [將 SQL Server 實例遷移至 AZURE sql 受控執行個體](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。 如需選擇遷移選項和工具以遷移至 Azure SQL 的指引，請參閱 [遷移至 AZURE sql](../migration-guides/index.yml)
+
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>移轉至單一資料庫或集區資料庫
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734390"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917540"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何規劃商用 marketplace 的 SaaS 供應專案
 
@@ -79,7 +79,7 @@ _現在就 (免費的)_、_免費試用_，以及 _透過 Microsoft_ 清單選�
   您提供的 webhook 應該啟動並執行24/7。 這是您將透過商業 marketplace 購買客戶 SaaS 訂閱相關更新的通知。
 
   > [!NOTE]
-  > 在 Azure 入口網站中，我們會要求您建立單一租使用者 [Azure Active Directory (Azure AD) 應用程式](../active-directory/develop/howto-create-service-principal-portal.md) ，讓一個 Azure App 識別碼用來驗證這兩個服務之間的連線。 若要尋找 [租使用者識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，請移至您的 Azure Active Directory 並選取 [ **屬性**]，然後尋找所列出的目錄識別碼號碼。 例如 `50c464d3-4930-494c-963c-1e951d15360e`。
+  > 在 Azure 入口網站中，我們會要求您建立單一租使用者 [Azure Active Directory (Azure AD) 應用程式](../active-directory/develop/howto-create-service-principal-portal.md) ，讓一個 Azure App 識別碼用來驗證這兩個服務之間的連線。 若要尋找 [租使用者識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，請移至您的 Azure Active Directory 並選取 [ **屬性**]，然後尋找所列出的目錄識別碼號碼。 例如： `50c464d3-4930-494c-963c-1e951d15360e` 。
 
 - **Azure Active Directory 租使用者識別碼**： (也稱為目錄識別碼) 。 在 Azure 入口網站中，我們會要求您 [註冊 Azure Active Directory (AD) 應用程式](../active-directory/develop/howto-create-service-principal-portal.md) ，以便將其新增至 API 的存取控制清單 (ACL) ，以確保您有權呼叫它。 若要尋找 Azure Active Directory (AD) 應用程式的租使用者識別碼，請移至 Azure Active Directory 中的 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 分頁。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找列出的 **(租使用者) 識別碼** (例如) 的目錄 `50c464d3-4930-494c-963c-1e951d15360e` 。
 
@@ -104,7 +104,26 @@ _現在就 (免費的)_、_免費試用_，以及 _透過 Microsoft_ 清單選�
 
 ## <a name="selecting-an-online-store"></a>選取線上商店
 
-當您發佈 SaaS 供應專案時，它將會列在 Microsoft AppSource、Azure Marketplace 或兩者中。 每個線上商店都有獨特的客戶需求。 AppSource 適用于商務解決方案，Azure Marketplace 適用于 IT 解決方案。 您的供應專案類型、交易功能和類別將會決定您供應專案的發佈位置。 類別和子類別會根據方案類型對應到每個線上商店。 如需有關列出線上商店所支援之選項的詳細資訊，請參閱 [線上商店的清單和定價選項](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。 如需類別和子類別的詳細資訊，請參閱 [商業市集中的類別和子](categories.md)類別。
+當您發佈 SaaS 供應專案時，它將會列在 Microsoft AppSource、Azure Marketplace 或兩者中。 每個線上商店都有獨特的客戶需求。 AppSource 適用于商務解決方案，Azure Marketplace 適用于 IT 解決方案。 您的供應專案類型、交易功能和類別將會決定您供應專案的發佈位置。 類別和子類別會根據方案類型對應到每個線上商店。 
+
+如果您的 SaaS 供應 *專案是 IT* 解決方案 (Azure Marketplace) 以及 (AppSource) 的商務解決方案，請選取適用于每個線上商店的類別和子類別。 發佈到兩個線上商店的供應專案，都應該有價值主張作為 IT 解決方案 *和* 商務解決方案。
+
+> [!IMPORTANT]
+> 具有 [計量計費](partner-center-portal/saas-metered-billing.md) 的 SaaS 供應專案可透過 Azure Marketplace 和 Azure 入口網站取得。 只有私人方案提供的 SaaS 供應專案可透過 Azure 入口網站取得。
+
+| 計量付費 | 公用方案 | 私人方案 | 適用于： |
+|---|---|---|---|
+| 是             | 是         | 否           | Azure Marketplace 和 Azure 入口網站 |
+| 是             | 是         | 是          | Azure Marketplace 和 Azure 入口網站 * |
+| 是             | 否          | 是          | 僅 Azure 入口網站 |
+| 否              | 否          | 是          | 僅 Azure 入口網站 |
+|||||
+
+&#42; 供應專案的私用方案將只能透過 Azure 入口網站取得
+
+例如，使用計量付費帳單和私人方案的供應專案僅 (沒有公用方案) ，將由客戶在 Azure 入口網站中購買。 深入瞭解 [Microsoft 商業市集中的私人優惠](private-offers.md)。
+
+如需有關列出線上商店所支援之選項的詳細資訊，請參閱 [線上商店的清單和定價選項](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。 如需類別和子類別的詳細資訊，請參閱 [商業市集中的類別和子](categories.md)類別。
 
 ## <a name="legal-contracts"></a>法律合約
 

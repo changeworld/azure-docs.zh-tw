@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445331"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917268"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -54,7 +54,7 @@ ms.locfileid: "94445331"
 
 另一方面，建議您在欄位選擇是選擇性時產生更好的結果。 請記住，建議是搜尋檔的 proxy，所以您會想要最能代表單一結果的欄位。 可區別多個相符專案的名稱、標題或其他唯一欄位的效果最佳。 如果欄位包含重複的值，則建議會由相同的結果組成，而且使用者不會知道要按一下哪一個。
 
-為了滿足搜尋的型別體驗，請新增自動完成所需的所有欄位，但接著使用 **$select** 、 **$top** 、 **$filter** 和 **searchFields** 來控制建議的結果。
+為了滿足搜尋的型別體驗，請新增自動完成所需的所有欄位，但接著使用 **$select**、 **$top**、 **$filter** 和 **searchFields** 來控制建議的結果。
 
 ### <a name="choose-analyzers"></a>選擇分析器
 
@@ -120,26 +120,26 @@ ms.locfileid: "94445331"
 在 c # 中，定義 [SearchSuggester 物件](/dotnet/api/azure.search.documents.indexes.models.searchsuggester)。 `Suggesters` 是 SearchIndex 物件上的集合，但它只能採用一個專案。 
 
 ```csharp
-private static void CreateIndex(string indexName, SearchIndexClient indexClient)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
-    FieldBuilder fieldBuilder = new FieldBuilder();
-    var searchFields = fieldBuilder.Build(typeof(Hotel));
+    var definition = new SearchIndex()
+    {
+        FieldBuilder builder = new FieldBuilder();
+        Fields = builder.Build(typeof(Hotel);
+        Suggesters = new List<Suggester>() {new Suggester()
+            {
+                Name = "sg",
+                SourceFields = new string[] { "HotelName", "Category" }
+            }}
+    }
 
-    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
-
-    var definition = new SearchIndex(indexName, searchFields);
-
-    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
-
-    definition.Suggesters.Add(suggester);
-
-    indexClient.CreateOrUpdateIndex(definition);
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
 ## <a name="property-reference"></a>屬性參考
 
-|屬性      |說明      |
+|屬性      |描述      |
 |--------------|-----------------|
 |`name`        | 在建議工具定義中指定，但也會在自動完成或建議要求中呼叫。 |
 |`sourceFields`| 在建議工具定義中指定。 它是索引中一或多個欄位的清單，這些欄位是建議的內容來源。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 中的命名詞彙分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |

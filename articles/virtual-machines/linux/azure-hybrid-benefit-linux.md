@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516436"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916469"
 ---
-# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>公開預覽： Azure Hybrid Benefit –適用于 Linux 虛擬機器
+# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit –適用于 Linux 虛擬機器的方式
 
 ## <a name="overview"></a>概觀
 
 Azure Hybrid Benefit 可讓您使用自己既有的 Red Hat 或 SUSE software 訂用帳戶，更輕鬆地將您的內部部署 Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server (的 SLES) 虛擬機器 (Vm) 至 Azure。 有了這項權益，您只需支付 VM 的基礎結構成本，因為您的 RHEL 或 SLES 訂用帳戶涵蓋了軟體費用。 此權益適用于所有 RHEL 和 SLES Marketplace 隨用隨付 (PAYG) 映射。
 
 > [!IMPORTANT]
-> Linux Vm 的 Azure Hybrid Benefit 目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 適用于 Linux Vm 的 Azure Hybrid Benefit 現已開放公開使用
+
 
 ## <a name="benefit-description"></a>權益描述
 
@@ -44,12 +44,6 @@ Azure Hybrid Benefit 適用于所有 RHEL 和 SLES Marketplace PAYG 映射。 RH
 如果您已經使用 Linux Vm 的權益，保留實例、專用主機和 SQL 混合式權益不符合 Azure Hybrid Benefit 資格。
 
 ## <a name="how-to-get-started"></a>如何開始使用
-
-Azure Hybrid Benefit 目前處於 Linux Vm 的預覽階段。 當您取得預覽版的存取權之後，您就可以使用 Azure CLI 來啟用權益。
-
-### <a name="public-preview"></a>公開預覽
-
-適用于 Linux) 的 Azure Hybrid Benefit (現已進入公開預覽階段。 您可以使用下列步驟來啟用 Red Hat 和 SUSE 分佈的權益。 
 
 ### <a name="red-hat-customers"></a>Red Hat 客戶
 

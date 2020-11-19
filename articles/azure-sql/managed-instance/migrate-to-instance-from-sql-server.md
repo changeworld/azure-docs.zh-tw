@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788545"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917795"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server 實例遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-在本文中，您將瞭解將 SQL Server 2005 或更新版本實例遷移至 [AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)的方法。 如需遷移至單一資料庫或彈性集區的相關資訊，請參閱 [遷移至 SQL Database](../database/migrate-to-database-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
+在本文中，您將瞭解將 SQL Server 2005 或更新版本實例遷移至 [AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)的方法。 如需遷移至單一資料庫或彈性集區的相關資訊，請參閱 [遷移總覽： SQL Server 至 SQL Database](../migration-guides/database/sql-server-to-sql-database-overview.md)。 如需有關從其他平臺遷移的遷移資訊，以及工具和選項的指引，請參閱 [遷移至 AZURE SQL](../migration-guides/index.yml)。
 
 > [!NOTE]
 > 如果您想要快速啟動並試用 Azure SQL 受控執行個體，您可能會想要移至 [快速入門手冊](quickstart-content-reference-guide.md) ，而不是此頁面。

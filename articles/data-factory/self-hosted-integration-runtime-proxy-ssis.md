@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/15/2020
-ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 11/19/2020
+ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659976"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916775"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>將自我裝載 IR 設定為 Azure Data Factory 中 Azure-SSIS IR 的 proxy
 
@@ -175,8 +175,10 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 1. 透過 [標準/快速自訂](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)設定，在 Azure-SSIS IR 上安裝以 SQL Server 2017 為目標的自訂/協力廠商元件。
 
-1. 在自我裝載 IR 上建立下列 DTSPath 登錄機碼（如果尚未存在）： `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 和 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 。
- 
+1. 在自我裝載 IR 上建立下列 DTSPath 登錄機碼（如果尚未存在）：
+   1. 請將 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 設為 `C:\Program Files\Microsoft SQL Server\140\DTS\`
+   1. 請將 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 設為 `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
+   
 1. 將自訂/協力廠商元件安裝在上述 DTSPath 的自我裝載 IR 上以 SQL Server 2017 為目標，並確定您的安裝程式：
 
    1. 建立 `<DTSPath>` 、 `<DTSPath>/Connections` 、 `<DTSPath>/PipelineComponents` 和 `<DTSPath>/UpgradeMappings` 資料夾（如果尚未存在）。
@@ -185,7 +187,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
    
    1. 在全域組件快取 (GAC) 中，安裝自訂/協力廠商元件元件所參考的所有元件。
 
-以下是 [協力廠商元件的範例](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) ，其使用快速自訂設定和自我裝載 IR 作為 Azure-SSIS IR 的 proxy。
+以下是我們的合作夥伴、 [Theobald Software](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) 和 [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir)的範例，他們已調整其元件以使用快速自訂安裝和自我裝載 IR 作為 Azure-SSIS IR 的 proxy。
 
 ## <a name="enforce-tls-12"></a>強制使用 TLS 1.2
 

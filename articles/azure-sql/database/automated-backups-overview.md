@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/30/2020
-ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/18/2020
+ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131355"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917897"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -36,9 +36,9 @@ SQL Database 和 SQL 受控執行個體使用 SQL Server 技術來每週建立 [
 
 ### <a name="backup-storage-redundancy"></a>備份儲存體冗余
 
-根據預設，SQL Database 和 SQL 受控執行個體會將資料儲存在異地多餘的 (GRS) [儲存體 blob](../../storage/common/storage-redundancy.md) ，以複寫到 [配對的區域](../../best-practices-availability-paired-regions.md)。 這有助於防止中斷影響主要區域中的備份儲存體，並可讓您在發生嚴重損壞時，將伺服器還原到不同的區域。 
+根據預設，SQL Database 和 SQL 受控執行個體會將資料儲存在複寫到[配對區域](../../best-practices-availability-paired-regions.md)的異地多餘[儲存體 blob](../../storage/common/storage-redundancy.md)中。 這有助於防止中斷影響主要區域中的備份儲存體，並可讓您在發生嚴重損壞時，將伺服器還原到不同的區域。 
 
-設定備份儲存體冗余的選項，可讓您彈性地在 SQL 受控執行個體或 SQL Database 的本機冗余、區域冗余或異地冗余儲存體 blob 之間進行選擇。 為了確保您的資料在部署受控實例或 SQL database 的相同區域內，您可以變更預設的異地冗余備份儲存體冗余，並設定本機冗余的 (LRS) 或區域冗余的 (ZRS) 儲存體 blob 進行備份。 儲存體冗余機制會儲存資料的多個複本，使其受到未規劃和未規劃事件的保護，包括暫時性硬體故障、網路或電力中斷或大規模的災難。 設定的備份儲存體冗余會套用至用於長期還原的短期備份保留設定 (PITR) 和長期備份的長期保留備份 (LTR) 。 
+設定備份儲存體冗余的選項，可讓您彈性地在 SQL 受控執行個體或 SQL Database 的本機冗余、區域冗余或異地冗余儲存體 blob 之間進行選擇。 若要確保您的資料在部署受控實例或 SQL database 的相同區域內保持不變，您可以變更預設的異地冗余備份儲存體複本，並為備份設定本機冗余或區域多餘的儲存體 blob。 儲存體冗余機制會儲存資料的多個複本，使其受到未規劃和未規劃事件的保護，包括暫時性硬體故障、網路或電力中斷或大規模的災難。 設定的備份儲存體冗余會套用至用於長期還原的短期備份保留設定 (PITR) 和長期備份的長期保留備份 (LTR) 。 
 
 若為 SQL Database 備份儲存體的複本可以在建立資料庫時設定，也可以針對現有的資料庫進行更新;對現有資料庫所做的變更僅適用于未來的備份。 更新現有資料庫的備份儲存體複本之後，最多可能需要48小時才會套用變更。 請注意，在資料庫更新為使用本機或區域多餘的儲存體時，就會立即停用異地還原。 
 
@@ -179,9 +179,9 @@ SQL Database 和 SQL 受控執行個體會將您的可計費備份儲存體總�
 ### <a name="backup-storage-redundancy"></a>備份儲存體冗余
 
 備份儲存體冗余會以下列方式影響備份成本：
-- LRS price = x
-- ZRS price = 1.25 x
-- RA-GRS 價格 = 2x
+- 本機-多餘的價格 = x
+- 區域-多餘的價格 = 1.25 x
+- 異地多餘價格 = 2x
 
 如需有關備份儲存體定價的詳細資訊，請造訪 [Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/single/) 和 [Azure SQL 受控執行個體定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
@@ -190,9 +190,9 @@ SQL Database 和 SQL 受控執行個體會將您的可計費備份儲存體總�
 
 ### <a name="monitor-costs"></a>監視成本
 
-若要瞭解備份儲存體成本，請移至 Azure 入口網站中的 [ **成本管理 + 計費** ]，選取 [ **成本管理** ]，然後選取 [ **成本分析** ]。 選取所需的訂用帳戶作為 **範圍** ，然後篩選您感興趣的時間週期和服務。
+若要瞭解備份儲存體成本，請移至 Azure 入口網站中的 [ **成本管理 + 計費** ]，選取 [ **成本管理**]，然後選取 [ **成本分析**]。 選取所需的訂用帳戶作為 **範圍**，然後篩選您感興趣的時間週期和服務。
 
-新增 **服務名稱** 的篩選，然後選取下拉式清單中的 **[sql database** ]。 使用 [ **計量子類別** ] 篩選器來選擇您服務的帳單計數器。 針對單一資料庫或彈性資料庫集區，請選取 **單一/彈性集區 PITR 備份儲存體** 。 針對受控實例，請選取 **MI PITR 備份儲存體** 。 **儲存體** 和 **計算** 子類別也可能會對您感興趣，但它們並不會與備份儲存體成本相關聯。
+新增 **服務名稱** 的篩選，然後選取下拉式清單中的 **[sql database** ]。 使用 [ **計量子類別** ] 篩選器來選擇您服務的帳單計數器。 針對單一資料庫或彈性資料庫集區，請選取 **單一/彈性集區 PITR 備份儲存體**。 針對受控實例，請選取 **MI PITR 備份儲存體**。 **儲存體** 和 **計算** 子類別也可能會對您感興趣，但它們並不會與備份儲存體成本相關聯。
 
 ![備份儲存體成本分析](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -373,7 +373,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 > [!NOTE]
 > 只有在建立受控實例進程期間，才能指定適用于 SQL 受控執行個體的可設定儲存體冗余。 布建資源之後，您就無法變更備份儲存體的冗余選項。 針對 SQL Database，這項功能的公開預覽目前在巴西南部正式推出，且已在東南亞 Azure 區域正式推出。 
 
-只有在建立實例時，才可以設定受控實例的備份儲存體冗余。 針對 SQL Database 可以在建立資料庫時設定，也可以針對現有的資料庫進行更新。 預設值是異地冗余儲存體 (GRS) 。 如需在本機冗余 (LRS) 、區域冗余 (ZRS) 和異地冗余 (RA-GRS) 備份儲存體之間的定價差異，請造訪 [受控實例定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+只有在建立實例時，才可以設定受控實例的備份儲存體冗余。 針對 SQL Database 可以在建立資料庫時設定，也可以針對現有的資料庫進行更新。 預設值是地理位置多餘的儲存體。 若要瞭解本機冗余、區域冗余和異地重複備份儲存體之間的定價差異，請造訪 [受控實例定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>使用 Azure 入口網站設定備份儲存體冗余
 
@@ -384,7 +384,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 #### <a name="sql-managed-instance"></a>[SQL 受控執行個體](#tab/managed-instance)
 
-在 Azure 入口網站中，當您建立 SQL 受控執行個體時，可從 [ **基本** ] 索引標籤上的 [ **設定受控執行個體** ] 選項中，變更備份儲存體冗余的選項位於 [ **計算 + 儲存體** ] 分頁。
+在 Azure 入口網站中，當您建立 SQL 受控執行個體時，可從 [**基本**] 索引標籤上的 [**設定受控執行個體**] 選項中，變更備份儲存體冗余的選項位於 [**計算 + 儲存體**] 分頁。
 ![開啟計算 + 儲存體設定-分頁](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
 
 在 [ **計算 + 儲存體** ] 分頁上尋找選取備份儲存體冗余的選項。

@@ -3,12 +3,12 @@ title: Microsoft Azure 復原服務 (MARS) 代理程式-常見問題
 description: 解決使用 Azure 備份備份檔案和資料夾的相關常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9fb9e3993d6f56833e43a4d451c0865b7fd732d3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172503"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917353"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務 (MARS) 代理程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "92172503"
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>哪裡可以下載保存庫認證檔案？
 
-在 Azure 入口網站中，流覽至您保存庫的 **屬性** 。 在 [ **備份認證**] 下，選取 **已使用最新復原服務代理程式**的核取方塊。 選取 [下載]。
+在 Azure 入口網站中，流覽至您保存庫的 **屬性** 。 在 [ **備份認證**] 下，選取 **已使用最新復原服務代理程式** 的核取方塊。 選取 [下載]。
 
 ![下載認證](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
@@ -72,6 +72,10 @@ ms.locfileid: "92172503"
 
 是的，MARS 代理程式的安裝和使用 MARS 主控台的備份設定，需要使用者是受保護伺服器上的本機系統管理員。
 
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>將保存庫訂用帳戶轉移至不同 Azure AD 目錄的 MARS 代理程式備份有何影響？
+
+Azure AD 目錄的變更將不會影響 MARS 代理程式備份。 
+
 ## <a name="manage-backups"></a>管理備份
 
 ### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>如果重新命名設定為備份的 Windows 電腦，會發生什麼事？
@@ -112,7 +116,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 1. 依預設，暫存檔案夾位於 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. 請確定您的暫存檔案夾位置路徑符合下列登錄機碼專案的值：
 
-    | 登錄路徑 | 登錄機碼 | 值 |
+    | 登錄路徑 | 登錄金鑰 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*「新的快取資料夾位置」* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*「新的快取資料夾位置」* |
@@ -127,7 +131,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 4. 將整個 `\Scratch` 資料夾複製到具有足夠空間的其他磁片磁碟機。 確定已複製但未移動內容。
 5. 以新移動的暫存檔案夾路徑更新下列登錄專案。
 
-    | 登錄路徑 | 登錄機碼 | 值 |
+    | 登錄路徑 | 登錄金鑰 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的暫存檔案夾位置* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的暫存檔案夾位置* |
@@ -173,7 +177,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 
 Azure 備份代理程式需要您在註冊期間提供的複雜密碼 () 在還原期間解密備份的資料。 請參閱下列案例，以瞭解處理遺失複雜密碼的選項：
 
-| 原始電腦 <br> * 取得備份的 (來源電腦) * | 複雜密碼 | 可用的選項 |
+| 原始電腦 <br> *取得備份的 (來源電腦)* | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
 | 可用 |未能拿下 |如果您的原始機器 (取得備份的位置) 可供使用，而且仍在相同的復原服務保存庫中註冊，則您可以依照下列 [步驟](./backup-azure-manage-mars.md#re-generate-passphrase)重新產生複雜密碼。  |
 | 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
@@ -181,11 +185,11 @@ Azure 備份代理程式需要您在註冊期間提供的複雜密碼 () 在還�
 請考慮下列情況：
 
 * 如果您在相同的原始電腦上卸載代理程式並重新註冊，請使用
-  * *相同*的複雜密碼，您可以還原已備份的資料。
-  * *不同*的複雜密碼，則無法還原已備份的資料。
+  * *相同* 的複雜密碼，您可以還原已備份的資料。
+  * *不同* 的複雜密碼，則無法還原已備份的資料。
 * 如果您在 *不同的電腦* 上安裝代理程式，
-  * 原始電腦)  (使用相同的複雜*密碼*，因此您可以還原已備份的資料。
-  * *不同*的複雜密碼，您無法還原已備份的資料。
+  * 原始電腦)  (使用相同的複雜 *密碼*，因此您可以還原已備份的資料。
+  * *不同* 的複雜密碼，您無法還原已備份的資料。
 * 如果您的原始電腦已損毀 (使您無法透過 MARS 主控台) 重新產生複雜密碼，但您可以還原或存取 MARS 代理程式所使用的原始暫存資料夾，則您可能會在忘記密碼) 時還原 (。 如需更多協助，請聯絡客戶支援。
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果我遺失原來的電腦 (的) 執行備份如何? 復原？

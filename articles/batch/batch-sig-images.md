@@ -4,12 +4,12 @@ description: 自訂映射集區是設定計算節點以執行 Batch 工作負載
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f0ba6270e6b6b4fcd258d8f5b3668931706f95b5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888346"
+ms.locfileid: "94917778"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射庫來建立自訂映射集區
 
@@ -73,6 +73,7 @@ ms.locfileid: "94888346"
 - 不要在 VM 上安裝 Azure 延伸模組，例如「自訂指令碼」延伸模組。 如果映像包含預先安裝的延伸模組，則 Azure 在部署 Batch 集區時可能會遇到問題。
 - 使用連結的資料磁碟時，您必須在 VM 內掛接並格式化磁碟，才能使用這些磁碟。
 - 確定您提供的基本 OS 映像使用預設的暫存磁碟機。 Batch 節點代理程式目前需要有預設的暫存磁碟機。
+- 確定 OS 磁片未加密。
 - 一旦 VM 開始執行之後，請透過 RDP (適用於 Windows) 或 SSH (適用於 Linux) 向它連線。 安裝任何必要的軟體或複製所需的資料。  
 
 ### <a name="create-a-vm-snapshot"></a>建立 VM 快照集

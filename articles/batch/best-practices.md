@@ -1,18 +1,18 @@
 ---
 title: 最佳作法
-description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
-ms.date: 08/12/2020
+description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
+ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913223"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916860"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
-本文將根據 Batch 的實際使用體驗，討論有效使用 Azure Batch 服務的最佳做法集合。 閱讀本文可讓您在開發和使用 Batch 時避開設計錯誤、潛在效能問題和反向模式。
+本文將討論最佳做法的集合，以及有效使用 Azure Batch 服務的實用秘訣（以 Batch 的真實生活體驗為基礎）。 這些秘訣可協助您提升效能，並避免 Azure Batch 解決方案中的設計陷阱。
 
 ## <a name="pools"></a>集區
 
@@ -20,7 +20,7 @@ ms.locfileid: "92913223"
 
 ### <a name="pool-configuration-and-naming"></a>集區設定和命名
 
-- **集區配置模式** 建立 Batch 帳戶時，您可以選擇兩個集區配置模式： **Batch 服務** 或 **使用者訂用帳戶** 。 在大部分情況下，您應該使用預設 Batch 服務模式，以在幕後將集區配置在 Batch 管理的訂用帳戶中。 在其他使用者訂用帳戶模式中，在建立集區時，會直接在您的訂用帳戶中建立 Batch VM 和其他資源。 使用者訂用帳戶主要是用來啟用重要但較小的案例子集。 若要深入了解使用者訂用帳戶模式，請參閱[使用者訂用帳戶模式的其他設定](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+- **集區配置模式** 建立 Batch 帳戶時，您可以選擇兩個集區配置模式：**Batch 服務** 或 **使用者訂用帳戶**。 在大部分情況下，您應該使用預設 Batch 服務模式，以在幕後將集區配置在 Batch 管理的訂用帳戶中。 在其他使用者訂用帳戶模式中，在建立集區時，會直接在您的訂用帳戶中建立 Batch VM 和其他資源。 使用者訂用帳戶主要是用來啟用重要但較小的案例子集。 若要深入了解使用者訂用帳戶模式，請參閱[使用者訂用帳戶模式的其他設定](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
 - **判斷作業與集區的對應時，請考慮作業和工作執行時間。**
     如果您的作業主要是由短期執行的作業所組成，而且預期的總工作計數很少，所以作業的整體預期執行時間不會太長，那麼請不要為每個工作配置新的集區。 節點的配置時間將會降低作業的執行時間。
@@ -41,7 +41,7 @@ ms.locfileid: "92913223"
 集區存留期可能會因為配置的方法和套用至集區設定的選項而有所不同。 集區在任何時間點都可以有不固定的存留期和不同數目的計算節點。 您必須負責明確地或透過服務所提供的功能 (自動調整或 autopool)，來管理集區中的計算節點。
 
 - **讓集區保持在最新狀態。**
-    您應該每隔幾個月將集區大小調整為零，以確保您取得 [最新的節點代理程式更新和錯誤修正](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 如果未重新建立集區或將其大小調整為 0 個計算節點，您的集區將不會收到節點代理程式更新。 在您重新建立集區或調整其大小之前，建議您下載所有節點代理程式記錄來進行偵錯，如[節點](#nodes)一節中所述。
+    將您的集區大小調整為每隔幾個月零，以確保您取得 [最新的節點代理程式更新和錯誤修正](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 如果未重新建立集區或將其大小調整為 0 個計算節點，您的集區將不會收到節點代理程式更新。 在您重新建立集區或調整其大小之前，建議您下載所有節點代理程式記錄來進行偵錯，如[節點](#nodes)一節中所述。
 
 - **集區重新建立** 同樣地，我們不建議您每日刪除並重新建立您的集區。 相反地，請建立新的集區，並更新現有作業來指向新的集區。 當所有工作都已移至新集區之後，再刪除舊的集區。
 
@@ -175,7 +175,7 @@ Azure Batch 帳戶無法直接從一個區域移至另一個區域。 不過，�
 
 ## <a name="connectivity"></a>連線能力
 
-考慮您 Batch 解決方案中的連線能力時，請參閱下列指導方針。
+請參閱下列與 Batch 解決方案連線相關的指導方針。
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>網路安全性群組 (NSG) 和使用者定義路由 (UDR)
 
@@ -198,6 +198,10 @@ Azure Batch 帳戶無法直接從一個區域移至另一個區域。 不過，�
 
 一般而言，Batch 集區中的虛擬機器是透過可在集區存留期內變更的公用 IP 位址來存取。 這可能會讓您難以與資料庫或其他外部服務互動，以限制對特定 IP 位址的存取。 若要確保集區中的公用 IP 位址不會意外變更，您可以使用一組您所控制的靜態公用 IP 位址來建立集區。 如需詳細資訊，請參閱 [使用指定的公用 IP 位址建立 Azure Batch 集](create-pool-public-ip.md)區。
 
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>使用雲端服務設定來測試連線能力
+
+因為無法透過 Azure 負載平衡器來使用 ICMP 通訊協定，所以您無法搭配雲端服務使用一般的「ping」/ICMP 通訊協定。 如需詳細資訊，請參閱 [Azure 雲端服務的連線能力和網路](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)功能。
+
 ## <a name="batch-node-underlying-dependencies"></a>Batch 節點基礎相依性
 
 設計 Batch 解決方案時，請考慮下列相依性和限制。
@@ -206,12 +210,12 @@ Azure Batch 帳戶無法直接從一個區域移至另一個區域。 不過，�
 
 Azure Batch 會在 VM 上建立和管理一組使用者和群組，而您不應修改這些項目。 如下所示：
 
-#### <a name="windows"></a>Windows
+Windows：
 
 - 名為 **PoolNonAdmin** 的使用者
 - 名為 **WATaskCommon** 的使用者群組
 
-#### <a name="linux"></a>Linux
+Linux：
 
 - 名為 **_azbatch** 的使用者
 
@@ -220,3 +224,9 @@ Azure Batch 會在 VM 上建立和管理一組使用者和群組，而您不應�
 Batch 會在保留時間到期後，主動嘗試清除工作執行所在的工作目錄。 [您必須清除](#manage-task-lifetime)在此目錄外寫入的任何檔案，以避免填滿磁碟空間。
 
 如果您是從 startTask 工作目錄執行 Windows 上的服務，則工作目錄的自動清除功能會遭到封鎖，因為資料夾仍在使用中。 這會導致效能降低。 若要修正此問題，請將該服務的目錄變更為不是由 Batch 管理的個別目錄。
+
+## <a name="next-steps"></a>後續步驟
+
+- [使用 Azure 入口網站建立 Azure Batch 帳戶](batch-account-create-portal.md)。
+- 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
+- 瞭解 [預設 Azure Batch 配額、限制和條件約束，以及如何要求增加配額](batch-quota-limit.md)。

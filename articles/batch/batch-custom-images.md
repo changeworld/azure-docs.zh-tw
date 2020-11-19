@@ -2,17 +2,17 @@
 title: 使用受控映射來建立自訂映射集區
 description: 從受控映射建立 Batch 自訂映射集區，以布建具有您應用程式之軟體和資料的計算節點。
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851289"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916571"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用受控映射來建立自訂映射集區
 
-若要為 Batch 集區的虛擬機器建立自訂映射集區 (Vm) ，您可以使用受控映射來建立 [共用映射庫映射](batch-sig-images.md)。 也支援只使用受控映像，但僅適用於截至 2019-08-01 (含) 為止的 API 版本。 
+若要為 Batch 集區的虛擬機器建立自訂映射集區 (Vm) ，您可以使用受控映射來建立 [共用映射庫映射](batch-sig-images.md)。 也支援只使用受控映像，但僅適用於截至 2019-08-01 (含) 為止的 API 版本。
 
 > [!IMPORTANT]
 > 在大部分情況下，您應該使用共用映像庫來建立自訂映像。 共用映像庫可讓您更快速佈建集區、調整更多 VM，以及更可靠地佈建 VM。 若要深入了解，請參閱[使用共用映像庫來建立自訂集區](batch-sig-images.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "85851289"
 
 - **受控映像資源**。 若要使用自訂映像來建立虛擬機器集區，您必須在與 Batch 帳戶相同的 Azure 訂用帳戶和區域中，擁有或建立受控映像資源。 您應該從 VM 之 OS 磁碟 (以及視需要從其連結之資料磁碟) 的快照集建立該映像。
   - 針對您建立的每個集區使用唯一的自訂映像。
-  - 若要使用 Batch API 以映像建立集區，請指定映像的**資源識別碼**，其形式為 `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`。
+  - 若要使用 Batch API 以映像建立集區，請指定映像的 **資源識別碼**，其形式為 `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`。
   - 受控映像資源應該在集區存留期內都存在，以供集區調升規模，並可在刪除集區之後移除。
 
 - **Azure Active Directory (Azure AD) 驗證**。 Batch 用戶端 API 必須使用 Azure AD 驗證。 Azure Batch 對於 Azure AD 的支援記載於[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)中。
@@ -49,6 +49,7 @@ ms.locfileid: "85851289"
 - 不要在 VM 上安裝 Azure 延伸模組，例如「自訂指令碼」延伸模組。 如果映像包含預先安裝的延伸模組，則 Azure 在部署 Batch 集區時可能會遇到問題。
 - 使用連結的資料磁碟時，您必須在 VM 內掛接並格式化磁碟，才能使用這些磁碟。
 - 確定您提供的基本 OS 映像使用預設的暫存磁碟機。 Batch 節點代理程式目前需要有預設的暫存磁碟機。
+- 確定 OS 磁片未加密。
 - 一旦 VM 開始執行之後，請透過 RDP (適用於 Windows) 或 SSH (適用於 Linux) 向它連線。 安裝任何必要的軟體或複製所需的資料。  
 
 ### <a name="create-a-vm-snapshot"></a>建立 VM 快照集

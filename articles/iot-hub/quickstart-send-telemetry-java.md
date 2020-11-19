@@ -16,12 +16,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 ms.date: 05/26/2020
-ms.openlocfilehash: 663c79ffb5f5ca9cca8e1df77fc2ccd73d9e4bac
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 76326d0b68a3ff71bf95c09147d003e769e103db
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748596"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844637"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>快速入門：將遙測傳送至 Azure IoT 中樞，並使用 Java 應用程式加以讀取
 
@@ -35,33 +35,25 @@ ms.locfileid: "92748596"
 
 * Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](/java/azure/jdk/?view=azure-java-stable)中，選取 [長期支援]  下的 [Java 8]  。
 
+    您可以使用下列命令，以確認開發電腦上目前的 Java 版本：
+
+    ```cmd/sh
+    java -version
+    ```
+
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
+
+    您可以使用下列命令，以確認開發電腦上目前的 Maven 版本：
+
+    ```cmd/sh
+    mvn --version
+    ```
 
 * [範例 Java 專案](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip)。
 
 * 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-您可以使用下列命令，以確認開發電腦上目前的 Java 版本：
-
-```cmd/sh
-java -version
-```
-
-您可以使用下列命令，以確認開發電腦上目前的 Maven 版本：
-
-```cmd/sh
-mvn --version
-```
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
-
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -75,9 +67,9 @@ az extension add --name azure-iot
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
-   **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyJavaDevice** ：這是您要註冊之裝置的名稱。 建議您使用 **MyJavaDevice** ，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+   **MyJavaDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyJavaDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
@@ -85,7 +77,7 @@ az extension add --name azure-iot
 
 2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」  ：
 
-    **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -97,9 +89,9 @@ az extension add --name azure-iot
 
     您稍後將會在快速入門中使用此值。
 
-3. 您還需要 IoT 中樞的「事件中樞相容端點」  、「事件中樞相容路徑」  和「服務主要金鑰」  ，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
+3. 您還需要 IoT 中樞的「事件中樞相容端點」、「事件中樞相容路徑」和「服務主要金鑰」，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
 
-     **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
+     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -119,7 +111,7 @@ az extension add --name azure-iot
 
 2. 在您選擇的文字編輯器中開啟 **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** 檔案。
 
-    使用您稍早所記錄的裝置連接字串來取代 `connString` 變數的值。 然後將變更儲存到 **SimulatedDevice.java** 。
+    使用您稍早所記錄的裝置連接字串來取代 `connString` 變數的值。 然後將變更儲存到 **SimulatedDevice.java**。
 
 3. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫，並建置模擬裝置應用程式：
 

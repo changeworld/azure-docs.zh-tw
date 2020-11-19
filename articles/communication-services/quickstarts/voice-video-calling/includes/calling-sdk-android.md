@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c015561e66d77e6df352e601bf1a67da5996d4d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886502"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915197"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
@@ -136,7 +136,7 @@ startCallOptions.setVideoOptions(videoOptions);
 Call call = callAgent.call(context, participants, startCallOptions);
 ```
 
-### <a name="join-a-group-call"></a>加入群組呼叫
+### <a name="join-a-group-call"></a>加入群組通話
 若要啟動新的群組呼叫或加入進行中的群組呼叫，您必須呼叫 ' join ' 方法，並傳遞具有屬性的物件 `groupId` 。 值必須是 GUID。
 ```java
 Context appContext = this.getApplicationContext();
@@ -151,9 +151,9 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>概觀
 行動推播通知是您在行動裝置上看到的快顯通知。 為了進行呼叫，我們將著重于 VoIP (語音 over 網際網路通訊協定) 推播通知。 我們會註冊推播通知、處理推播通知，然後取消註冊推播通知。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
-使用雲端通訊 (FCM 設定的 Firebase 帳戶，會在已連線到 Azure 通知中樞實例的 Firebase 雲端通訊服務) 啟用。 如需詳細資訊，請參閱 [通訊服務通知](https://docs.microsoft.com/azure/communication-services/concepts/notifications) 。
+使用雲端通訊 (FCM 設定的 Firebase 帳戶，會在已連線到 Azure 通知中樞實例的 Firebase 雲端通訊服務) 啟用。 如需詳細資訊，請參閱 [通訊服務通知](../../../concepts/notifications.md) 。
 此外，本教學課程假設您使用 Android Studio 3.6 版或更高版本來建立您的應用程式。
 
 Android 應用程式需要一組許可權，才能接收來自 Firebase 雲端通訊的通知訊息。 在您的檔案中 `AndroidManifest.xml` ，將下列許可權集加入 *<資訊清單 ... >* 或在 *</application>* 標記下方

@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377117"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917234"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 
 
@@ -161,6 +161,8 @@ ms.locfileid: "93377117"
 | snapshotConfiguration | n/a | 請參閱 [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration)。 |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
+
+如需這些設定的詳細資訊，請參閱 [Application Insights 中的取樣](../azure-monitor/app/sampling.md)。 
 
 |屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
@@ -409,7 +411,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 |lockAcquisitionTimeout|00:01:00|執行階段將嘗試取得鎖定的時間量上限。| 
 |lockAcquisitionPollingInterval|n/a|鎖定取得嘗試之間的間隔。| 
 
-## <a name="version"></a>version
+## <a name="version"></a>版本
 
 此值指出 host.js的架構版本。 `"version": "2.0"`目標為 v2 執行時間（或更新版本）的函式應用程式需要版本字串。 V2 和 v3 之間的架構變更沒有 host.js。
 

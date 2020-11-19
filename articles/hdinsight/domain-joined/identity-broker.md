@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337671"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917761"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight 識別碼代理程式 (HIB) 
 
@@ -137,6 +137,25 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 ``` 
 
 若要使用 Beeline 和 Livy，您也可以遵循 [此處](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) 提供的範例程式碼，將用戶端設定為使用 OAuth 並連接到叢集。
+
+## <a name="faq"></a>常見問題集
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>HDInsight 在 AAD 中所建立的應用程式是什麼？
+針對每個叢集，會在 AAD 中註冊協力廠商應用程式，並以叢集 uri 作為 identifierUri (例如 https://clustername.azurehdinsight.net ) 。
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>為什麼使用者在使用啟用 HIB 的叢集之前會提示您同意？
+在 AAD 中，所有協力廠商應用程式都需要同意，才能驗證使用者或存取資料。
+
+### <a name="can-the-consent-be-approved-programatically"></a>同意會以程式設計方式核准嗎？
+Microsoft Graph api 可讓您將同意自動化，請參閱 [api 檔](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以將同意自動化的順序如下：
+
+* 註冊應用程式，並將應用程式的擁有權限授與應用程式，以存取 Microsoft Graph
+* 建立叢集之後，請根據識別碼 uri 查詢叢集應用程式
+* 註冊應用程式的同意
+
+刪除叢集時，HDInsight 會刪除應用程式，且不需要清除任何同意。
+
+ 
+
 
 ## <a name="next-steps"></a>後續步驟
 

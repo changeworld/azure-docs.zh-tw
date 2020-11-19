@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 86b5c1dc396a755d898f0c3c332ab59933236afe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d98f3c61191d5d5b333072682abe740761901f0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747444"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831883"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入門：使用 Node.js Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -30,13 +30,15 @@ ms.locfileid: "92747444"
 
 * [Node.js 10+](https://nodejs.org)。
 
+    您可以使用下列命令，確認開發電腦上目前的 Node.js 版本：
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
 
-您可以使用下列命令，確認開發電腦上目前的 Node.js 版本：
-
-```cmd/sh
-node --version
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -47,8 +49,6 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 > * 美國中部 EUAP
 > * 北歐
 > * 東南亞
-  
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
 
@@ -76,13 +76,13 @@ az extension add --name azure-iot
 
    > [!NOTE]
    > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
-   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice* 。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice*。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. 若要讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息，您也需要 *服務連接字串* 。 下列命令會為您的 IoT 中樞擷取字串：
+1. 若要讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息，您也需要 *服務連接字串*。 下列命令會為您的 IoT 中樞擷取字串：
 
    > [!NOTE]
    > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。

@@ -5,25 +5,25 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 84336051fc3d653fbe73f650f2fc2badb2ec58da
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148929"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917523"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>適用于 Azure 事件方格資源的網路安全性
 本文說明如何搭配 Azure 事件方格使用下列安全性功能： 
 
 - 輸出的服務標記
-- 輸入 (預覽) 的 IP 防火牆規則
+- 輸入的 IP 防火牆規則
 - 輸入的私人端點
 
 
 ## <a name="service-tags"></a>服務標籤
 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標籤的詳細資訊，請參閱 [服務標記總覽](../virtual-network/service-tags-overview.md)。
 
-您可以使用服務標籤來定義[網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如， **AzureEventGrid**) 在規則的適當*來源*   或 *目的地*   欄位中，您可以允許或拒絕對應服務的流量。
+您可以使用服務標記來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如， **AzureEventGrid**) 在規則的適當 *來源* 或 *目的地* 欄位中，您可以允許或拒絕對應服務的流量。
 
 | 服務標籤 | 目的 | 可以使用輸入還是輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
 | --- | -------- |:---:|:---:|:---:|
@@ -45,7 +45,7 @@ Azure Event Grid 支援以 IP 為基礎的存取控制，以發佈至主題和�
 針對您的事件方格資源使用私用端點，可讓您：
 
 - 透過 Microsoft 骨幹網路的 VNet 安全地存取您的主題或網域，而不是公用網際網路。
-- 使用 VPN 或 Expressroute 搭配私人對等互連，安全地從連線到 VNet 的內部部署網路進行連線。
+- 使用 VPN 或具有私人對等互連的 Express 路由，安全地從連線到 VNet 的內部部署網路進行連線。
 
 當您為 VNet 中的主題或網域建立私人端點時，會傳送同意要求以供核准給資源擁有者。 如果要求建立私人端點的使用者也是資源的擁有者，則會自動核准此同意要求。 否則，連接會處於 **擱置** 狀態，直到核准為止。 VNet 中的應用程式可以使用相同的連接字串和其使用的授權機制，順暢地透過私人端點連接到事件方格服務。 資源擁有者可以透過 Azure 入口網站中資源的 [ **私人端點** ] 索引標籤，來管理同意要求和私人端點。
 
@@ -88,7 +88,7 @@ Azure Event Grid 支援以 IP 為基礎的存取控制，以發佈至主題和�
 | Pending            | 否                             |
 | 已中斷連接       | 否                             |
 
-若要讓發佈成功，應 **核准**私人端點連接狀態。 如果連線遭到拒絕，則無法使用 Azure 入口網站核准。 唯一的可能性是刪除連接，並改為建立新的連線。
+若要讓發佈成功，應 **核准** 私人端點連接狀態。 如果連線遭到拒絕，則無法使用 Azure 入口網站核准。 唯一的可能性是刪除連接，並改為建立新的連線。
 
 ## <a name="pricing-and-quotas"></a>定價和配額
 **私人端點** 適用于事件方格的基本層和進階層。 事件方格最多可為每個主題或網域建立64私人端點連接。 
