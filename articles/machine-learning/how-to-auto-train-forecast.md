@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358111"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887394"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 
@@ -31,7 +31,7 @@ ms.locfileid: "93358111"
 
 如需低程式碼體驗，請參閱[教學課程：使用自動化機器學習來預測需求](tutorial-automated-ml-forecast.md)，以取得在 [Azure Machine Learning 工作室](https://ml.azure.com/)中使用自動化機器學習的時間序列預測範例。
 
-不同于傳統的時間序列方法，在自動化 ML 中，過去的時間序列值會「轉換」為回歸輸入變數與其他預測指標的額外維度。 這個方法會在定型期間結合多個內容變數及其相互關聯性。 由於有多個因素可能會影響預測，因此此方法非常吻合真實世界的預測案例。 例如，當預測銷售時，歷程記錄趨勢、匯率和價格的相互作用全都會共同推動銷售結果。 
+不同于傳統的時間序列方法，在自動化 ML 中，過去的時間序列值會「轉換」為回歸輸入變數與其他預測指標的額外維度。 這個方法會在定型期間結合多個內容變數及其相互關聯性。 由於有多個因素可能會影響預測，因此此方法非常吻合真實世界的預測案例。 例如，在預測銷售額時，歷程記錄趨勢、匯率和價格的互動，全都共同推動銷售結果。 
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -46,7 +46,7 @@ ms.locfileid: "93358111"
 在 AutoML 中，預測回歸工作類型與回歸工作類型之間最重要的差異，在於您資料中的一項功能，代表有效的時間序列。 一般時間序列具有妥善定義且一致的頻率，且在連續時間範圍內的每個取樣點都有一個值。 
 
 請考慮 `sample.csv` 檔案的下列快照集。
-此資料集是具有兩個不同商店 A 和 B 之公司的每日銷售資料。 
+此資料集是具有兩個不同商店、A 和 B 之公司的每日銷售資料。 
 
 此外，還有一些功能
 
@@ -131,14 +131,14 @@ automl_config = AutoMLConfig(task='forecasting',
 模型| 描述 | 優點
 ----|----|---
 Prophet (預覽)|Prophet 最適合用於具有強烈季節性影響，且包含數個季節歷程記錄資料的時間序列。 若要利用此模型，請使用將它安裝在本機 `pip install fbprophet` 。 | 精確且快速，能夠應付時間序列中的極端值、遺失資料及重大變更。
-自動 ARIMA (預覽)|自動回歸整合式移動平均 (ARIMA) 在資料為固定的情況下執行效果最佳。 這表示其統計屬性 (如平均值和變異數) 在整個集合上是常數。 例如，若投擲一枚硬幣，則不論您是今天、明天還是明年投擲，出現正面的機率都是 50%。| 由於過去值是用來預測未來值，因此非常適用於單一變量序列。
+自動 ARIMA (預覽)|自動回歸整合式移動平均 (ARIMA) 在資料為固定的情況下執行效果最佳。 這表示其統計屬性 (如平均值和變異數) 在整個集合上是常數。 比方說，如果您翻轉了一個硬幣，那麼您遇到的機率就是50%，無論您今天、明天或下一年。| 由於過去值是用來預測未來值，因此非常適用於單一變量序列。
 ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的是要處理最嚴苛的預測工作，並擷取資料中的非線性本機和全球趨勢，以及時間序列之間的關聯性。|能夠運用資料中的複雜趨勢，並配合最大的資料集立即調整。
 
 ### <a name="configuration-settings"></a>組態設定
 
 類似於迴歸問題，您可定義標準定型參數，例如工作類型、反覆項目數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 
 
-下表摘要說明這些額外的參數。 如需語法設計模式的 [參考檔](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) ，請參閱。
+下表摘要說明這些額外的參數。 請參閱語法設計模式的 [ForecastingParameter 類別參考檔](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 。
 
 | 參數名稱&nbsp; | 描述 | 必要 |
 |-------|-------|-------|
@@ -149,11 +149,11 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 |`target_lags`|要根據資料頻率延隔目標值的資料列數目。 延隔會以清單或單一整數來表示。 當獨立變數與相依變數之間的關聯性預設不相符或相互關聯時，應該使用延隔。 ||
 |`feature_lags`| 當 `target_lags` 設定且設定為時，自動化 ML 會自動決定延隔的功能 `feature_lags` `auto` 。 啟用功能延遲可能有助於改善精確度。 功能延遲預設為停用。 ||
 |`target_rolling_window_size`|要用來產生預測值的 *n* 個歷程記錄週期，小於或等於定型集大小。 如果省略，則 *n* 就是完整的定型集大小。 若在將模型定型時只想考慮特定數量的歷程記錄，則請指定此參數。 深入瞭解 [目標滾動視窗匯總](#target-rolling-window-aggregation)。||
-|`short_series_handling`| 啟用簡短的時間序列處理，以避免因為資料不足而在定型期間發生失敗。 預設會將 [短序列處理] 設定為 [True]。|
+|`short_series_handling_config`| 啟用簡短的時間序列處理，以避免因為資料不足而在定型期間發生失敗。 簡短數列處理預設為設定為 `auto` 。 深入瞭解 [簡短的系列處理](#short-series-handling)。|
 
 
 下列程式碼： 
-* 利用 `ForecastingParameters` 類別來定義實驗訓練的預測參數
+* 利用 [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 類別來定義實驗訓練的預測參數
 * 將設定 `time_column_name` 為 `day_datetime` 資料集中的欄位。 
 * 定義的 `time_series_id_column_names` 參數 `"store"` 。 這可確保針對資料建立了 **兩個不同的時間序列群組** ;一個用於 store A 和 B。
 * 將設定 `forecast_horizon` 為50，以便預測整個測試集。 
@@ -164,13 +164,12 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 這些 `forecasting_parameters` 會接著傳遞至您 `AutoMLConfig` 的標準物件，以及工作 `forecasting` 類型、主要度量、結束準則和定型資料。 
@@ -190,7 +189,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>特徵化步驟
@@ -226,12 +225,16 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -260,7 +263,7 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > 當您針對以 SDK 建立的實驗啟用 DNN 時，會停用 [最佳模型說明](how-to-machine-learning-interpretability-automl.md) 。
@@ -279,6 +282,35 @@ automl_config = AutoMLConfig(task='forecasting',
 ![目標滾動視窗](./media/how-to-auto-train-forecast/target-roll.svg)
 
 請檢視運用[目標移動時段彙總特徵](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)的 Python 程式碼範例。
+
+### <a name="short-series-handling"></a>短序列處理
+
+如果沒有足夠的資料點可進行模型開發的定型和驗證階段，自動化 ML 會將時間序列視為一 **段很短** 的時間。 每個實驗的資料點數目各不相同，而且取決於 max_horizon、交叉驗證分割的數目和模型回顧的長度，也就是建立時間序列功能所需的最大歷程記錄。 如需確切的計算，請參閱 [short_series_handling_config 參考檔](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
+
+自動化 ML 預設會使用物件中的參數來提供簡短的系列處理 `short_series_handling_config` `ForecastingParameters` 。 
+
+若要啟用短序列處理， `freq` 也必須定義參數。 若要變更預設行為， `short_series_handling_config = auto` 請更新 `short_series_handling_config` 物件中的參數 `ForecastingParameter` 。  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+下表摘要說明的可用設定 `short_series_handling_config` 。
+ 
+|設定|說明
+|---|---
+|`auto`| 以下是簡短系列處理的預設行為 <li> *如果所有數列都是簡短* 的，請填補資料。 <br> <li> *如果並非所有數列都是簡短* 的，請卸載簡短的數列。 
+|`pad`| 如果 `short_series_handling_config = pad` 為，則自動化 ML 會將虛擬值新增至每個找到的短序列。 下列列出資料行類型，以及它們的填補方式： <li>具有 Nan 的物件資料行 <li> 具有0的數值資料行 <li> 具有 False 的布林值/邏輯資料行 <li> 目標資料行是以零和標準差1的隨機值填補。 
+|`drop`| 如果 `short_series_handling_config = drop` 為，則自動化 ML 會捨棄短數列，而不會用於定型或預測。 這些數列的預測將會傳回 NaN。
+|`None`| 未填補或卸載任何數列
+
+>[!WARNING]
+>填補可能會影響產生之模型的精確度，因為我們只會介紹人工資料，而不會發生失敗。 <br> <br> 如果有許多系列很短，您可能也會在可解釋性結果中看到一些影響
 
 ## <a name="run-the-experiment"></a>執行實驗 
 

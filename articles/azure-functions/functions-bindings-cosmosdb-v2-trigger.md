@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 838d6244127bc1b3609ab5e925e54dbab7fe3a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e845efa2c1df47c80fcc10e7fb758f05af9fbecc
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212697"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887411"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更新版本的 Azure Cosmos DB 觸發程式
 
@@ -57,7 +57,7 @@ namespace CosmosDBSamplesV2
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 當加入或修改 Cosmos DB 記錄時，函數會寫入記錄訊息。
+下列範例示範 function.json 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 當加入或修改 Cosmos DB 記錄時，函數會寫入記錄訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範的是使用繫結之 function.json** 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的 Cosmos DB 觸發程序繫結。 當加入或修改 Cosmos DB 記錄時，函數會寫入記錄訊息。
+下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的 Cosmos DB 觸發程序繫結。 當加入或修改 Cosmos DB 記錄時，函數會寫入記錄訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -122,7 +122,7 @@ namespace CosmosDBSamplesV2
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [Python 指令碼函式](functions-reference-python.md)。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
+下列範例示範 function.json 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [Python 指令碼函式](functions-reference-python.md)。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -184,9 +184,8 @@ namespace CosmosDBSamplesV2
 
 ```csharp
     [FunctionName("DocumentUpdates")]
-    public static void Run(
-        [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
-    IReadOnlyList<Document> documents,
+    public static void Run([CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+        IReadOnlyList<Document> documents,
         ILogger log)
     {
         ...
@@ -242,9 +241,9 @@ Python 指令碼不支援屬性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
-觸發程序需要第二個集合，用來在分割區上儲存「租用」__。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
+觸發程序需要第二個集合，用來在分割區上儲存「租用」。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
 
 >[!IMPORTANT]
 > 如果針對同一個集合設定多個函式使用 Cosmos DB 觸發程序，則每個函式都應該使用專用的租用集合，或為每個函式指定不同的 `LeaseCollectionPrefix`。 否則，將只會觸發其中一個函式。 如需前置詞的相關資訊，請參閱[組態區段](#configuration)。

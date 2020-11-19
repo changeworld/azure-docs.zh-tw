@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 66c9a3afb91aaff448d6eadc86175d8515be766c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422292"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889077"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -54,7 +54,7 @@ ms.locfileid: "93422292"
 
 Private Link （預設為停用）需要廣泛的網路知識，才能在建立叢集之前，正確地設定使用者定義的路由 (UDR) 和防火牆規則。 使用這項設定是選擇性的，但只有在 [ `resourceProviderConnection` 網路] 屬性設定為 [ *輸出* ] （如上一節所述）的情況下才可使用。
 
-當 `privateLink` 設定為 [ *啟用* ] 時，系統就會建立 (SLB) 的內部 [標準負載平衡](../load-balancer/load-balancer-overview.md) 器，並為每個 SLB 布建 Azure Private Link 服務。 Private Link 服務可讓您從私人端點存取 HDInsight 叢集。
+當 `privateLink` 設定為 [ *啟用*] 時，系統就會建立 (SLB) 的內部 [標準負載平衡](../load-balancer/load-balancer-overview.md) 器，並為每個 SLB 布建 Azure Private Link 服務。 Private Link 服務可讓您從私人端點存取 HDInsight 叢集。
 
 標準負載平衡器不會自動提供 [公用輸出 NAT](../load-balancer/load-balancer-outbound-connections.md) ，例如基本負載平衡器。 您必須提供自己的 NAT 解決方案，例如 [虛擬網路 NAT](../virtual-network/nat-overview.md) 或 [防火牆](./hdinsight-restrict-outbound-traffic.md)，以提供輸出相依性。 您的 HDInsight 叢集仍然需要存取其輸出相依性。 如果不允許這些輸出相依性，叢集建立可能會失敗。
 
@@ -86,7 +86,8 @@ Private Link （預設為停用）需要廣泛的網路知識，才能在建立�
 
 :::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="私用連結架構的圖表":::
 
-## <a name="arm-template-properties"></a>ARM 範本屬性
+## <a name="how-to-create-clusters"></a>如何建立叢集？
+### <a name="use-arm-template-properties"></a>使用 ARM 範本屬性
 
 下列 JSON 程式碼片段包含您需要在 ARM 範本中設定以建立私人 HDInsight 叢集的兩個網路屬性。
 
@@ -98,6 +99,13 @@ networkProperties: {
 ```
 
 如需包含許多 HDInsight 企業安全性功能（包括 Private Link）的完整範本，請參閱 [HDInsight 企業安全性範本](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)。
+
+### <a name="use-azure-powershell"></a>使用 Azure Powershell
+
+若要使用 powershell，請參閱 [這裡](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的範例。
+
+### <a name="use-azure-cli"></a>使用 Azure CLI
+若要使用 Azure CLI，請參閱 [這裡](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)的範例。
 
 ## <a name="next-steps"></a>後續步驟
 

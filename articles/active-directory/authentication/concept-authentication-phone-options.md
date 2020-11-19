@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 11/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39555c5b396e8a8fd3449331cd2fd68b96ad2087
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4510dac833d0576273472b6f925d546b55257614
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839993"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886799"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
@@ -57,7 +57,7 @@ Microsoft 不保證一致的 SMS 或以語音為基礎的 Azure AD Multi-Factor 
 如果 Azure AD 的電話驗證有問題，請檢閱下列疑難排解步驟：
 
 * 「在登入期間，您已達到對驗證呼叫的限制」或「您已達到文字驗證碼的限制」錯誤訊息
-   * 請使用 Micrsoft 驗證器應用程式或驗證碼來完成驗證，或稍後再試一次。
+   * Microsoft 可能會在短時間內限制相同使用者所執行的重複驗證嘗試。 此限制不適用於 Microsoft Authenticator 或驗證碼。 如果您已達到這些限制，您可以使用驗證器應用程式、驗證碼，或在幾分鐘內嘗試重新登入。
 * 在單一裝置上封鎖了呼叫者識別碼。
    * 檢閱裝置上設定的任何已封鎖號碼。
 * 錯誤的電話號碼或不正確的國家/區域碼，或個人電話號碼與公司電話號碼混淆不清。

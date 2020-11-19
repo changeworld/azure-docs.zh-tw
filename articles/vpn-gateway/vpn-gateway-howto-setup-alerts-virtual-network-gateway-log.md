@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/18/2020
 ms.author: alzam
-ms.openlocfilehash: e2451796cb99f57501ed74aba1dc7a3077b51881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441607"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889094"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>從 VPN 閘道設定資源記錄事件的警示
 
@@ -20,58 +20,58 @@ ms.locfileid: "89441607"
 
 Azure 提供下列資源記錄：
 
-|***名稱*** | ***說明*** |
+|***名稱** _ | _*_說明_*_ |
 |---        | ---               |
 |GatewayDiagnosticLog | 包含閘道設定事件、主要變更和維護事件的資源記錄 |
 |TunnelDiagnosticLog | 包含通道狀態變更事件。 通道連線/中斷線上活動具有狀態變更的摘要原因（如果適用） |
 |RouteDiagnosticLog | 記錄閘道上發生之靜態路由和 BGP 事件的變更 |
 |IKEDiagnosticLog | 記錄閘道上的 IKE 控制訊息和事件 |
-|P2SDiagnosticLog | 記錄閘道上的點對站控制訊息和事件。 僅提供 IKEv2 連接的連接來源資訊 |
+|P2SDiagnosticLog | 記錄閘道上的點對站控制訊息和事件。 僅提供 IKEv2 和 OpenVPN 連線的連接來源資訊 |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>在 Azure 入口網站中設定警示
 
 下列範例步驟會建立包含站對站 VPN 通道之中斷線上活動的警示：
 
 
-1. 在 Azure 入口網站中，搜尋 [**所有服務**] 下的**log analytics** ，然後選取 [ **log analytics 工作區**]。
+1. 在 Azure 入口網站中，搜尋 [**所有服務**] 下的 [_ *Log analytics**]，然後選取 [ **log analytics 工作區**]。
 
    ![前往 Log Analytics 工作區的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "建立")
 
 2. 選取 [ **Log Analytics** ] 頁面上的 [**建立**]。
 
-   ![具有 [建立] 按鈕的 Log Analytics 頁面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Select")
+   ![具有 [建立] 按鈕的 Log Analytics 頁面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "選取")
 
 3. 選取 [ **建立新** 的] 並填入詳細資料。
 
-   ![建立 Log Analytics 工作區的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Select")
+   ![建立 Log Analytics 工作區的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "選取")
 
 4. 在 [**監視**  >  **診斷設定**] 分頁上尋找您的 VPN 閘道。
 
-   ![在診斷設定中尋找 VPN 閘道的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Select")
+   ![在診斷設定中尋找 VPN 閘道的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "選取")
 
 5. 若要開啟診斷，請按兩下閘道，然後選取 [ **開啟診斷**]。
 
-   ![開啟診斷的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Select")
+   ![開啟診斷的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "選取")
 
 6. 填入詳細資料，並確認已選取 [ **傳送至 Log Analytics** ] 和 [ **TunnelDiagnosticLog** ]。 選擇您在步驟3中建立的 Log Analytics 工作區。
 
-   ![選取的核取方塊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Select")
+   ![選取的核取方塊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "選取")
 
    > [!NOTE]
    > 一開始可能需要幾小時的時間才會顯示資料。
 
 7. 移至虛擬網路閘道資源的總覽，然後從 [**監視**] 索引標籤中選取 [**警示**]。然後建立新的警示規則，或編輯現有的警示規則。
 
-   ![建立新警示規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
+   ![建立新警示規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
 
-   ![點對站](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
+   ![點對站](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
 8. 選取 Log Analytics 工作區和資源。
 
-   ![工作區和資源的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Select")
+   ![工作區和資源的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "選取")
 
 9. 選取 [ **自訂記錄搜尋** ] 作為 [ **新增條件**] 下的 [信號] 邏輯。
 
-   ![自訂記錄搜尋的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Select")
+   ![自訂記錄搜尋的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "選取")
 
 10. 在 [ **搜尋查詢** ] 文字方塊中輸入下列查詢。 視需要取代 <> 和 TimeGenerated 中的值。
 
@@ -88,15 +88,15 @@ Azure 提供下列資源記錄：
 
     將 [臨界值] 設定為0，然後選取 [ **完成**]。
 
-    ![輸入查詢並選取臨界值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Select")
+    ![輸入查詢並選取臨界值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "選取")
 
-11. 在 [**建立規則**] 頁面上，選取 [**動作群組**] 區段底下的 [**建立新**的]。 填入詳細資料，然後選取 **[確定]**。
+11. 在 [**建立規則**] 頁面上，選取 [**動作群組**] 區段底下的 [**建立新** 的]。 填入詳細資料，然後選取 **[確定]**。
 
-    ![新動作群組的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Select")
+    ![新動作群組的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "選取")
 
 12. 在 [ **建立規則** ] 頁面上，填入 **自訂動作** 的詳細資料，並確定 [ **動作組名** ] 區段中出現正確的名稱。 選取 [ **建立警示規則** ] 以建立規則。
 
-    ![建立規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Select")
+    ![建立規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "選取")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>使用 PowerShell 設定警示
 

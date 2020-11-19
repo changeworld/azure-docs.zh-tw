@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9a5bd6dff05fe39d62e5bf5f897bc61936686bb7
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426746"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887224"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能所需的 Azure 角色型存取控制許可權
 
@@ -90,6 +90,7 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您只將特定動作指派給組
 | 動作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | 取得拓撲                                                   |
+| Microsoft. Network/networkWatchers/拓朴/read                     | 同上                                                  |
 
 ## <a name="reachability-report"></a>連線性報告
 
@@ -102,7 +103,7 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您只將特定動作指派給組
 
 網路監看員功能也需要下列動作：
 
-| 動作 (s)                                                            | 描述                                                    |
+| 動作 (s)                                                            | 說明                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Authorization/\*/Read                                     | 用來提取 Azure 角色指派和原則定義          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用來列舉訂用帳戶中的所有資源群組    |

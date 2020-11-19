@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744842"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889009"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的執行個體自動修復
 
@@ -36,9 +36,9 @@ ms.locfileid: "92744842"
 
 針對標示為「狀況不良」的實例，自動修復會由擴展集觸發。 在啟用自動修復原則之前，請確定已正確設定應用程式端點，以避免在設定端點時，發生非預期的實例修復。
 
-**啟用單一放置群組**
+**擴展集中的實例數目上限**
 
-這項功能目前僅適用于部署為單一放置群組的擴展集。 您的擴展集必須將屬性 *singlePlacementGroup* 設為 *true* ，才能使用自動實例修復功能。 深入瞭解 [放置群組](./virtual-machine-scale-sets-placement-groups.md#placement-groups)。
+這項功能目前僅適用于最多200實例的擴展集。 擴展集可以部署為單一放置群組或多個放置群組，但如果擴展集已啟用自動實例修復，則實例計數不能超過200。
 
 **API 版本**
 
@@ -66,9 +66,9 @@ Service fabric 擴展集目前不支援此功能。
 
 ### <a name="suspension-of-repairs"></a>修復暫停 
 
-虛擬機器擴展集可讓您視需要暫時暫停自動實例修復。 在虛擬機器擴展集的實例中，[屬性 *orchestrationServices* ] 下的 [自動修復] *serviceState* 會顯示自動修復的目前狀態。 當擴展集加入宣告自動修復時，[參數 *serviceState* ] 的值會設定為 [ *執行中]。* 當擴展集的自動修復暫止時，參數 *serviceState* 會設定為 [已 *暫停* ]。 如果 *automaticRepairsPolicy* 定義在擴展集上，但未啟用自動修復功能，則參數 *serviceState* 會設定為 [ *未* 執行]。
+虛擬機器擴展集可讓您視需要暫時暫停自動實例修復。 在虛擬機器擴展集的實例中，[屬性 *orchestrationServices* ] 下的 [自動修復] *serviceState* 會顯示自動修復的目前狀態。 當擴展集加入宣告自動修復時，[參數 *serviceState* ] 的值會設定為 [*執行中]。* 當擴展集的自動修復暫止時，參數 *serviceState* 會設定為 [已 *暫停*]。 如果 *automaticRepairsPolicy* 定義在擴展集上，但未啟用自動修復功能，則參數 *serviceState* 會設定為 [ *未* 執行]。
 
-如果新建立的實例取代擴展集中的狀況不良，即使在重複執行修復作業之後，仍會繼續保持狀況不良，然後以安全性措施的方式，將 *serviceState* 更新為自動修復以 *暫停* 。 您可以藉由將 [自動修復] 的 [ *serviceState* ] 值 *設定為 [* 執行中]，再次繼續自動修復。 如需詳細指示，請見關於如何針對擴展集的 [自動修復原則來查看和更新服務狀態](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) 。 
+如果新建立的實例取代擴展集中的狀況不良，即使在重複執行修復作業之後，仍會繼續保持狀況不良，然後以安全性措施的方式，將 *serviceState* 更新為自動修復以 *暫停*。 您可以藉由將 [自動修復] 的 [ *serviceState* ] 值 *設定為 [* 執行中]，再次繼續自動修復。 如需詳細指示，請見關於如何針對擴展集的 [自動修復原則來查看和更新服務狀態](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) 。 
 
 自動實例修復程式的運作方式如下：
 
@@ -96,7 +96,7 @@ Service fabric 擴展集目前不支援此功能。
  
 下列步驟會在建立新的擴展集時啟用自動修復原則。
  
-1. 移至 **虛擬機器擴展集** 。
+1. 移至 **虛擬機器擴展集**。
 1. 選取 [ **+ 新增** ] 以建立新的擴展集。
 1. 移至 [ **健康** 情況] 索引標籤。 
 1. 找出 **健全狀況** 區段。
@@ -169,12 +169,12 @@ az vmss create \
 您可以透過 Azure 入口網站修改現有擴展集的自動修復原則。 
  
 1. 移至現有的虛擬機器擴展集。
-1. 在左側功能表的 [ **設定** ] 底下，選取 [ **健全狀況和修復** ]。
+1. 在左側功能表的 [ **設定** ] 底下，選取 [ **健全狀況和修復**]。
 1. 啟用 [ **監視應用程式健全狀況** ] 選項。
 1. 找出 [ **自動修復原則** ] 區段。
 1. 開啟 **[** **自動修復** ] 選項。
 1. 在 **寬限期 (min)** 中，指定寬限期（以分鐘為單位），允許的值介於30到90分鐘。 
-1. 完成之後，請選取 [儲存]  。 
+1. 完成之後，請選取 [儲存]。 
 
 ### <a name="rest-api"></a>REST API
 
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-針對虛擬機器擴展集使用具有 API 2019-12-01 版或更高版本的 [ [取得實例視圖](/rest/api/compute/virtualmachinescalesets/getinstanceview)]，以在屬性 *orchestrationServices* 下查看自動修復的 *serviceState* 。 
+針對虛擬機器擴展集使用具有 API 2019-12-01 版或更高版本的 [[取得實例視圖](/rest/api/compute/virtualmachinescalesets/getinstanceview)]，以在屬性 *orchestrationServices* 下查看自動修復的 *serviceState* 。 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'

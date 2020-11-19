@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874707"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888414"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -218,7 +218,7 @@ Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN Ex
 
 #### <a name="what-privileges-and-permissions-will-i-have-on-the-nsx-t-manager"></a>我對於 NSX-T 管理員會有哪些使用權限和存取權限？
 
-您會擁有 NSX-T 的完整管理員權限，而且可以管理角色型存取控制，和您在內部部署的資料中心一樣。 如需詳細資訊，請參閱[存取和身分識別概念](concepts-identity.md)。
+您將在 NSX-T 上擁有完整的系統管理員許可權，並可管理 vSphere 角色型存取控制，就像在內部部署的 NSX-T 資料中心一樣。 如需詳細資訊，請參閱[存取和身分識別概念](concepts-identity.md)。
 
 > [!NOTE]
 > 建立 T0 路由器，並將其設定為私人雲端部署的一部份。 對該邏輯路由器或 NSX-T 邊緣節點 VM 所做的任何修改，可能會影響到私人雲端的連線能力。

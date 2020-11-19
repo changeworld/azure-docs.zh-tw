@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968356"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886748"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>監視和查看內部部署 Azure AD 密碼保護環境的記錄
 
@@ -70,11 +70,15 @@ DC 代理程式的系統管理記錄是有關軟體如何運作之資訊的主�
 |失敗 (由於客戶密碼原則)| 10016、30002| 10017、30003|
 |失敗 (由於 Microsoft 密碼原則)| 10016、30004| 10017、30005|
 |失敗 (由於 Microsoft 和客戶密碼原則的組合)| 10016、30026| 10017、30027|
+|由於使用者名稱) 導致 (失敗| 10016、30021| 10017、30022|
 |僅限稽核通過 (將不會通過客戶密碼原則)| 10024、30008| 10025、30007|
 |僅限稽核通過 (將不會通過 Microsoft 密碼原則)| 10024、30010| 10025、30009|
 |僅限稽核通過 (將不會通過 Microsoft 和客戶密碼原則的組合)| 10024、30028| 10025、30029|
+|因為使用者名稱) ，所以僅限審核傳遞 (失敗| 10016、30024| 10017、30023|
 
 上表中參考「原則組合」的案例是指下列情況：發現使用者的密碼至少包含一個同時來自 Microsoft 禁用密碼清單和客戶禁用密碼清單的權杖。
+
+上表中參考「使用者名稱」的案例，是指使用者的密碼必須包含使用者的帳戶名稱和/或其中一個使用者易記名稱的情況。 這兩種情況都會導致當原則設定為強制執行時，使用者的密碼遭到拒絕，或在原則處於 Audit 模式時傳遞。
 
 一起記錄一對事件時，這兩個事件會因為具有同一個 CorrelationId 而明確地產生關聯。
 
@@ -234,9 +238,9 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 ## <a name="dc-agent-performance-monitoring"></a>DC 代理程式效能監視
 
-DC 代理程式服務軟體會安裝名為 **Azure AD 密碼保護**的效能計數器物件。 以下是目前可用的效能計數器：
+DC 代理程式服務軟體會安裝名為 **Azure AD 密碼保護** 的效能計數器物件。 以下是目前可用的效能計數器：
 
-|效能計數器名稱 | 描述|
+|效能計數器名稱 | 說明|
 | --- | --- |
 |已處理的密碼 |此計數器會顯示自上次重新啟動後已處理 (已接受或拒絕) 的密碼總數。|
 |已接受的密碼 |此計數器會顯示自上次重新啟動後已接受的密碼總數。|

@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 5396845e13e94b4d957f42618baaf19c408f559d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fdd8c752e8cf610ef3c32e1af91b3ad6454c0813
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843769"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887173"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的私人優惠
 
@@ -42,6 +42,8 @@ ms.locfileid: "94843769"
 私用計畫是供應專案的元件，只由目標客戶看到及可購買。 私人方案可以重複使用已為公用方案發佈的基底映射及/或供應專案中繼資料。 此選項可讓發行者建立公用供應項目的多種私人變體，而不需要發行相同基底映像和供應項目中繼資料的多種版本。 針對虛擬機器和 Azure 應用程式供應專案，當私人方案與公用方案共用基礎映射時，對供應專案基底映射所做的任何變更，都會使用該基底映射傳播到所有公用和私人方案。
 
 針對 *只包含私人方案的新* 供應專案，發行者可以建立其供應專案做為任何其他供應專案，然後將方案標示為私用。 只有私人方案的供應專案將無法透過 Microsoft 商業 marketplace 或未與供應專案相關聯的客戶 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/) 來探索或存取。
+
+私人方案適用于 Azure Global 和 Azure Government。
 
 >[!NOTE]
 >公用 Azure Marketplace 或 AppSource 中不會顯示僅包含私人方案的供應專案。

@@ -8,22 +8,20 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: e9476b7278cbe64bf90911c3b85a09922a1afbf1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d73ad3235e5ff2c9dbf0cca546308469ef6b5ac0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843939"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887013"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討
 
 > [!IMPORTANT]
 > 目前，大約90% 的 IaaS Vm 使用 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已被取代，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement) 此淘汰，以及 [它對您的影響](./classic-vm-deprecation.md#how-does-this-affect-me)。
 
-讓我們深入探討如何從 Azure 傳統部署模型移轉至 Azure Resource Manager 部署模型。 我們會就資源和功能層級來探討資源，以協助您了解 Azure 平台如何在這兩種部署模型之間移轉資源。 如需詳細資訊，請參閱服務公告文章：
+讓我們深入探討如何從 Azure 傳統部署模型移轉至 Azure Resource Manager 部署模型。 我們會就資源和功能層級來探討資源，以協助您了解 Azure 平台如何在這兩種部署模型之間移轉資源。 如需詳細資訊，請閱讀服務公告文章： [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](migration-classic-resource-manager-overview.md)。
 
-* 針對 Linux： [平臺支援將 IaaS 資源從傳統遷移至 Azure Resource Manager](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 針對 Windows：  [平臺支援將 IaaS 資源從傳統遷移至 Azure Resource Manager](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>將 IaaS 資源從傳統部署模型移轉至 Azure Resource Manager
 首先，務必了解基礎結構即服務 (IaaS) 資源上資料平面與管理平面作業之間的差異。
@@ -33,7 +31,7 @@ ms.locfileid: "94843939"
 
 傳統部署模型與 Resource Manager 堆疊之間的資料平面相同。 差異在於移轉過程中，Microsoft 會將資源的表示法從傳統部署模型轉譯為 Resource Manager 堆疊中的表示法。 因此，您必須使用新的工具、API 和 SDK 來管理 Resource Manager 堆疊中資源。
 
-![顯示管理/控制平面與資料平面之間差異的圖表](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![顯示管理/控制平面與資料平面之間差異的圖表](./media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +50,7 @@ ms.locfileid: "94843939"
 
 移轉工作流程如下：
 
-![顯示移轉工作流程的圖表](windows/media/migration-classic-resource-manager/migration-workflow.png)
+![顯示移轉工作流程的圖表](./media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > 下列各節描述的作業都是等冪的。 如果您有不支援的功能或組態錯誤以外的任何問題，請重新嘗試準備、中止或認可作業。 Azure 會再次嘗試此動作。
@@ -98,13 +96,13 @@ ms.locfileid: "94843939"
 
 以下兩個螢幕擷取畫面顯示成功準備作業之後的結果。 第一個螢幕擷取畫面顯示包含原始雲端服務的資源群組。 第二個螢幕擷取畫面顯示新的 "-Migrated" 資源群組，其中包含對等的 Azure Resource Manager 資源。
 
-![顯示原始雲端服務的螢幕擷取畫面](windows/media/migration-classic-resource-manager/portal-classic.png)
+![顯示原始雲端服務的螢幕擷取畫面](./media/migration-classic-resource-manager/portal-classic.png)
 
-![顯示準備作業中 Azure Resource Manager 資源的螢幕擷取畫面](windows/media/migration-classic-resource-manager/portal-arm.png)
+![顯示準備作業中 Azure Resource Manager 資源的螢幕擷取畫面](./media/migration-classic-resource-manager/portal-arm.png)
 
 以下是準備階段完成之後，資源的幕後外觀。 請注意，資料平面中的資源相同。 它會以管理平面 (傳統部署模型) 和控制平面 (Resource Manager) 表示。
 
-![準備階段的圖表](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![準備階段的圖表](./media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > 在這個移轉階段中，不在傳統部署模型的虛擬網路中的 VM 會停止並解除配置。
@@ -124,7 +122,7 @@ ms.locfileid: "94843939"
 ### <a name="abort"></a>中止
 如果您要將變更還原至傳統部署模型並停止移轉，這是選擇性步驟。 此作業會刪除您資源的 Resource Manager 中繼資料 (在準備步驟中建立的)。 
 
-![中止步驟的圖表](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![中止步驟的圖表](media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +137,13 @@ ms.locfileid: "94843939"
 >
 >
 
-![認可步驟的圖表](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![認可步驟的圖表](media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>移轉流程圖
 
 以下流程圖顯示如何繼續進行移轉：
 
-![Screenshot that shows the migration steps](windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>從傳統部署模型轉譯成 Resource Manager 資源
 下表提供資源的傳統部署模型和 Resource Manager 表示法。 目前不支援其他功能和資源。
@@ -183,24 +181,12 @@ ms.locfileid: "94843939"
 
 ## <a name="next-steps"></a>後續步驟
 
-若為 Linux：
-
-* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱最常見的移轉錯誤](./linux/migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/linux/toc.json)
-* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-若為 Windows：
-
-* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](migration-classic-resource-manager-overview.md)
+* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](migration-classic-resource-manager-plan.md)
+* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-ps.md)
+* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-cli.md)
 * [從傳統 VPN 閘道到 Resource Manager 的移轉](../vpn-gateway/vpn-gateway-classic-resource-manager-migration.md)
 * [將 ExpressRoute 線路和相關聯的虛擬網路從傳統部署模型遷移至 Resource Manager 部署模型](../expressroute/expressroute-migration-classic-resource-manager.md)
-* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱最常見的移轉錯誤](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](migration-classic-resource-manager-community-tools.md)
+* [檢閱最常見的移轉錯誤](migration-classic-resource-manager-errors.md)
+* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](migration-classic-resource-manager-faq.md)

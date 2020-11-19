@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e1dbf5e20aa206189397cab26e9b867f4942e1d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332496"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886833"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 電腦上安裝 Log Analytics 代理程式
 本文將詳細說明如何使用下列方法，在 Linux 電腦上安裝 Log Analytics 代理程式：
@@ -30,13 +30,17 @@ ms.locfileid: "92332496"
 
 >[!NOTE]
 >OpenSSL 1.1.0 只支援用於 x86_x64 平台 (64 位元)，1.x 之前的 OpenSSL 則不支援用於任何平台。
->
+
+>[!NOTE]
+>不支援在容器中執行 Log Analytics Linux 代理程式。 如果您需要監視容器，請利用適用于 Docker 主機的 [容器監視解決方案](../insights/containers.md) 或適用于 Kubernetes [的容器的 Azure 監視器](../insights/container-insights-overview.md) 。
+
 從 2018 年 8 月之後所發行的版本開始，我們會對支援模型進行下列變更：  
 
 * 只支援伺服器版本，不支援用戶端版本。  
 * 請將焦點放在任何 [Azure Linux 背書散發版本](../../virtual-machines/linux/endorsed-distros.md)的支援上。 請注意，從新的散發版本/版本受到 Azure Linux 背書到開始支援 Log Analytics Linux 代理程式，時間上可能會有一些延遲。
 * 列出的每個主要版本都支援所有次要版本。
-* 不支援製造商結束支援日期已過的版本。  
+* 不支援製造商結束支援日期已過的版本。
+* 僅支援 VM 映射;不支援容器（甚至是衍生自官方發行版本發行者映射的容器）。
 * 不支援新版 AMI。  
 * 只支援預設執行 SSL 1.x 的版本。
 
@@ -53,7 +57,7 @@ ms.locfileid: "92332496"
  - Ubuntu、Debian： `apt-get install -y python2`
  - SUSE：`zypper install -y python2`
 
-Python2 可執行檔必須以 *python*為別名。 以下是您可以用來設定此別名的其中一種方法：
+Python2 可執行檔必須以 *python* 為別名。 以下是您可以用來設定此別名的其中一種方法：
 
 1. 執行下列命令以移除任何現有的別名。
  
@@ -83,7 +87,7 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 
 下表強調代理程式將安裝的 [支援 Linux 散發版本](#supported-operating-systems) 所需的套件。
 
-|必要的套件 |Description |最小版本 |
+|必要的套件 |描述 |最小版本 |
 |-----------------|------------|----------------|
 |Glibc |    GNU C 程式庫 | 2.5-12 
 |Openssl    | OpenSSL 程式庫 | 1.0.x 或 1.1.x |
@@ -102,7 +106,7 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 
 適用于 Linux 的 Log Analytics 代理程式是由多個套件所組成。 發行檔案包含下列套件，可透過使用參數執行 shell 組合來取得 `--extract` ：
 
-**套件** | **版本** | **說明**
+**套件** | **版本** | **描述**
 ----------- | ----------- | --------------
 omsagent | 1.13.9 | 適用于 Linux 的 Log Analytics 代理程式
 omsconfig | 1.1.1 | Log Analytics 代理程式的設定代理程式
@@ -126,7 +130,7 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
 
 下列步驟會在 Azure 中設定 Log Analytics 的代理程式設定，並使用適用于 Linux 電腦的包裝函式腳本（可直接或透過 proxy 伺服器進行通訊，以下載裝載在 GitHub 上的代理程式並安裝代理程式）來 Azure Government 雲端。  
 
-如果您的 Linux 電腦需要透過 proxy 伺服器與 Log Analytics 通訊，您可以在命令列上指定此設定，包括 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Protocol*屬性會接受 `http` 或 `https` ，而*proxyhost*屬性會接受 PROXY 伺服器的完整功能變數名稱或 IP 位址。 
+如果您的 Linux 電腦需要透過 proxy 伺服器與 Log Analytics 通訊，您可以在命令列上指定此設定，包括 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Protocol* 屬性會接受 `http` 或 `https` ，而 *proxyhost* 屬性會接受 PROXY 伺服器的完整功能變數名稱或 IP 位址。 
 
 例如：`https://proxy01.contoso.com:30443`
 
@@ -180,7 +184,7 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
     sudo sh ./omsagent-*.universal.x64.sh --install -w <workspace id> -s <shared key>
     ```
 
-3. 若要設定 Linux 代理程式以透過 Log Analytics 閘道安裝和連線到 Log Analytics 工作區，請執行下列命令以提供 proxy、工作區識別碼和工作區金鑰參數。 您可以在命令列上指定此設定，方法是包含 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Proxyhost*屬性會接受 Log Analytics 閘道伺服器的完整功能變數名稱或 IP 位址。  
+3. 若要設定 Linux 代理程式以透過 Log Analytics 閘道安裝和連線到 Log Analytics 工作區，請執行下列命令以提供 proxy、工作區識別碼和工作區金鑰參數。 您可以在命令列上指定此設定，方法是包含 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Proxyhost* 屬性會接受 Log Analytics 閘道伺服器的完整功能變數名稱或 IP 位址。  
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -215,7 +219,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 每個版本都支援從 1.0.0-47 版開始的舊版升級。 使用參數執行安裝， `--upgrade` 將代理程式的所有元件升級為最新版本。
 
 ## <a name="cache-information"></a>快取資訊
-適用于 Linux 的 Log Analytics 代理程式的資料會在本機電腦上快取（ *% STATE_DIR_WS/out_oms_common*. 緩衝區 *），然後再傳送至 Azure 監視器。 自訂記錄檔資料會以 *% STATE_DIR_WS/out_oms_blob*緩衝 * 緩衝。 某些 [方案和資料類型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)的路徑可能不同。
+適用于 Linux 的 Log Analytics 代理程式的資料會在本機電腦上快取（ *% STATE_DIR_WS/out_oms_common*. 緩衝區 *），然後再傳送至 Azure 監視器。 自訂記錄檔資料會以 *% STATE_DIR_WS/out_oms_blob* 緩衝 * 緩衝。 某些 [方案和資料類型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)的路徑可能不同。
 
 代理程式每隔20秒會嘗試上傳一次。 如果失敗，則會以指數方式增加時間長度，直到第二次嘗試前30秒，第三個120秒之前的60秒 .。。在重試之間，最多可達16分鐘，直到再次成功連接為止。 代理程式會在捨棄並移至下一個資料區塊之前，重試最多6次的資料。 這會繼續進行，直到代理程式可以成功上傳為止。 這表示，資料可能會在捨棄前大約30分鐘內經過緩衝處理。
 

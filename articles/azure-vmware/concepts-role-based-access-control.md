@@ -1,16 +1,16 @@
 ---
-title: 概念- (RBAC) 的角色型存取控制
-description: 瞭解 Azure VMware 解決方案的角色型存取控制的主要功能
+title: '概念-vSphere 以角色為基礎的存取控制 (vSphere RBAC) '
+description: 瞭解 vSphere Azure VMware 解決方案的角色型存取控制的主要功能
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535481"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888397"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>以角色為基礎的存取控制 (適用于 Azure VMware 解決方案的 RBAC) 
+# <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere 以角色為基礎的存取控制 (vSphere Azure VMware 解決方案的 RBAC) 
 
 在 Azure VMware 解決方案中，vCenter 有內建的本機使用者，稱為 cloudadmin，並指派給內建的 CloudAdmin 角色。 本機 cloudadmin 使用者用於設定 AD 中的使用者。 一般而言，CloudAdmin 角色會在您的私人雲端中建立和管理工作負載。 在 Azure VMware 解決方案中，CloudAdmin 角色具有與其他 VMware 雲端解決方案不同的 vCenter 許可權。     
 
@@ -30,15 +30,15 @@ ms.locfileid: "94535481"
 
 您可以在 Azure VMware 解決方案私人雲端 vCenter 上，查看授與 Azure VMware Solution CloudAdmin 角色的許可權。
 
-1. 登入 SDDC vSphere 用戶端，並移至 **功能表**  >  **管理** 。
-1. 在 [ **存取控制** ] 底下，選取 [ **角色** ]。
-1. 從角色清單中選取 [ **CloudAdmin** ]，然後選取 [ **許可權** ]。 
+1. 登入 SDDC vSphere 用戶端，並移至 **功能表**  >  **管理**。
+1. 在 [ **存取控制**] 底下，選取 [ **角色**]。
+1. 從角色清單中選取 [ **CloudAdmin** ]，然後選取 [ **許可權**]。 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="如何在 vSphere 用戶端中查看 CloudAdmin 角色許可權":::
 
 Azure VMware 解決方案中的 CloudAdmin 角色在 vCenter 上具有下列許可權。 如需每個許可權的詳細說明，請參閱 [VMware 產品檔](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) 。
 
-| Privilege | 描述 |
+| Privilege | 說明 |
 | --------- | ----------- |
 | **警示** | 確認警示<br />建立鬧鐘<br />停用警示動作<br />修改警示<br />移除警示<br />設定警示狀態 |
 | **權限** | 修改權限 |

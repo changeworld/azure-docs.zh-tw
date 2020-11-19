@@ -4,19 +4,19 @@ description: Azure Front Door 安全性基準提供的程式指引和資源，�
 author: msmbaldwin
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2b5995478d1c9e65916f76c70c8af374ce82ca54
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94631550"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888312"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>適用于 Azure Front Door 的 Azure 安全性基準
 
-此安全性基準會將 [Azure 安全性基準測試版本 2.0](../security/benchmarks/overview.md) 的指引套用至 Azure Front Door。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure Front Door 的相關指引來分組。 已排除不適用 Azure Front Door 的 **控制項** 。
+此安全性基準會將 [Azure 安全性基準測試版本 2.0](../security/benchmarks/overview.md) 的指引套用至 Azure Front Door。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure Front Door 的相關指引來分組。 已排除不適用 Azure Front Door 的 **控制項**。
 
 若要查看 Azure Front Door 如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure Front Door 安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
@@ -24,31 +24,15 @@ ms.locfileid: "94631550"
 
 *如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)。*
 
-### <a name="ns-2-connect-private-networks-together"></a>NS-2：將私人網路連接在一起
-
-**指導** 方針：不適用;Azure Front Door 並非設計用來部署或保護私人網路的安全，此控制項的目的是要說明網路連線能力，而不適用。
-
-**Azure 資訊安全中心監視** ：不適用
-
-**責任** ：未設定。 請在工作專案中提供值。
-
-### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3：建立 Azure 服務的私人網路存取權
-
-**指導** 方針：不適用，Azure Front Door 不是針對私人網路存取的虛擬網路部署到或受到保護。
-
-**Azure 資訊安全中心監視** ：不適用
-
-**責任** ：未設定。 請在工作專案中提供值。
-
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4：保護應用程式和服務免于外部網路攻擊
 
 **指導** 方針：使用 Azure PowerShell 建立地區篩選原則，並將原則與您現有的 Azure Front Door 前端主機產生關聯。 此地區篩選原則將會封鎖來自外部網路的要求，例如美國以外的其他國家或地區的要求。
 
 - [教學課程-如何針對您的 Front Door 設定地區篩選 WAF 原則](front-door-tutorial-geo-filtering.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6：簡化網路安全性規則
 
@@ -58,9 +42,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [瞭解和使用服務標記](../virtual-network/service-tags-overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="identity-management"></a>身分識別管理
 
@@ -72,9 +56,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [教學課程-如何針對您的 Azure Front Door 設定地區篩選 WAF 原則](front-door-tutorial-geo-filtering.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="privileged-access"></a>特殊許可權存取
 
@@ -92,9 +76,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [Azure 訂用帳戶管理員](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特殊許可權的存取工作站
 
@@ -106,9 +90,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [部署特殊許可權存取工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循足夠的系統管理 (最低許可權準則)  
 
@@ -124,9 +108,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="data-protection"></a>資料保護
 
@@ -134,23 +118,25 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密傳輸中的機密資訊
 
-**指導** 方針：使用加密來保護外部和公用網路上的流量，因為這對資料保護而言是不可或缺的。 此外：
+**指導** 方針：若要補充存取控制，傳輸中的資料應該受到保護以防止「頻外」攻擊 (例如，使用加密的流量捕捉) ，以確保攻擊者無法輕易地讀取或修改資料。
 
-- 使用存取控制，
+Front Door 支援 TLS 版本1.0、1.1 和1.2。 尚不支援 TLS 1.3。 在2019年9月之後建立的所有 Front Door 設定檔都會使用 TLS 1.2 作為預設的最小值。
 
-- 保護傳輸中的資料免于「頻外」攻擊 (例如使用加密的流量捕捉) ，以確保攻擊者無法輕易地讀取或修改資料。
-- 請確認任何連接到您 Azure 資源的 HTTP 流量的用戶端，都可以協商 TLS 1.2 或更新版本。
-- 使用適用于 Linux) 的 SSH (或適用于 Windows) 的 RDP/TLS (進行遠端系統管理，而非未加密的通訊協定
+雖然這對私人網路的流量是選擇性的，但對於外部和公用網路上的流量而言是不可或缺的。 針對 HTTP 流量，請確定任何連線至 Azure 資源的用戶端都可以協調 TLS 1.2 或更新版本。 若要進行遠端系統管理，請使用適用于 Linux) 的 SSH (或適用于 Windows) 的 RDP/TLS (，而不是未加密的通訊協定。 已淘汰的 SSL、TLS 和 SSH 版本和通訊協定，以及弱式密碼都應停用。
 
-- 停用已過時的 SSL/TLS/SSH 版本、通訊協定和弱式密碼
-
-根據預設，Azure 會針對 Azure 資料中心之間的資料流量，提供傳輸加密中的資料。 
+根據預設，Azure 會為 Azure 資料中心之間傳輸中的資料提供加密功能。
 
 - [教學課程-如何在 Front Door 自訂網域上設定 HTTPS](front-door-custom-domain-https.md)
 
-**Azure 資訊安全中心監視** ：是
+- [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
-**責任** ：共用
+- [TLS 安全性的資訊](/security/engineering/solving-tls1-problem) 
+
+- [Azure 資料傳輸中的雙重加密](../security/fundamentals/double-encryption.md#data-in-transit)
+
+**Azure 資訊安全中心監視**：是
+
+**責任**：共用
 
 ## <a name="asset-management"></a>資產管理
 
@@ -170,9 +156,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [Azure 管理群組總覽](../governance/management-groups/overview.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>上午-2：確保安全性小組可以存取資產清查和中繼資料
 
@@ -184,9 +170,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [資源命名與標記決策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="am-3-use-only-approved-azure-services"></a>上午-3：僅使用已核准的 Azure 服務
 
@@ -200,19 +186,19 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>上午-4：確保資產生命週期管理的安全性
 
-**指導** 方針：不適用;Azure Front Door 不能用來確保生命週期管理程式中資產的安全性。 客戶必須負責維護資產的屬性和網路設定，這些資產會被視為高衝擊。 
+**指導** 方針：客戶必須負責維護 Azure Front Door 資產的屬性和網路設定，這些資產會視為高影響。
 
 建議客戶建立程式來捕獲屬性和網路設定變更、測量變更影響，以及建立補救工作（適用的話）。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="logging-and-threat-detection"></a>記錄和威脅偵測
 
@@ -226,9 +212,9 @@ Azure Front Door 會記錄它為客戶存取所處理的所有網路流量。 �
 
 - [教學課程-如何在 Azure Front Door 中設定監視計量和記錄](front-door-diagnostics.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：啟用 Azure 資源的記錄
 
@@ -242,9 +228,9 @@ Azure Front Door 會記錄它為客戶存取所處理的所有網路流量。 �
 
 - [瞭解 Azure 資訊安全中心資料收集](../security-center/security-center-enable-data-collection.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="incident-response"></a>事件回應
 
@@ -258,9 +244,9 @@ Azure Front Door 會記錄它為客戶存取所處理的所有網路流量。 �
 
 - [事件回應參考指南](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="ir-2-preparation--setup-incident-notification"></a>IR-2：準備–安裝事件通知
 
@@ -268,9 +254,9 @@ Azure Front Door 會記錄它為客戶存取所處理的所有網路流量。 �
 
 - [如何設定 Azure 資訊安全中心安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3：偵測和分析–根據高品質警示建立事件
 
@@ -286,9 +272,9 @@ Azure 資訊安全中心在許多 Azure 資產之間提供高品質的警示。 
 
 - [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="ir-4-detection-and-analysis--investigate-an-incident"></a>IR-4：偵測和分析–調查事件
 
@@ -316,9 +302,9 @@ Azure Sentinel 在幾乎任何記錄來源和案例管理入口網站中提供�
 
 - [使用 Azure Sentinel 調查事件](../sentinel/tutorial-investigate-cases.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5：偵測和分析-設定事件優先順序
 
@@ -332,9 +318,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6：內含專案、根除和復原–將事件處理自動化
 
@@ -346,9 +332,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [在 Azure Sentinel 中設定自動化威脅回應](../sentinel/tutorial-respond-threats-playbook.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="posture-and-vulnerability-management"></a>狀況和弱點管理
 
@@ -362,9 +348,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [安全性建議 - 參考指南](../security-center/recommendations-reference.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="pv-7-rapidly-and-automatically-remediate-software-vulnerabilities"></a>PV-7：快速且自動補救軟體弱點
 
@@ -372,9 +358,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 使用一般風險評分方案的優先順序 (例如，常見的弱點評分系統) ，或您正在使用的協力廠商掃描工具所提供的預設風險評等。 並針對您的環境進行量身打造，並使用應用程式帶來高安全性風險的內容，以及哪些應用程式需要高執行時間。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：進行定期攻擊模擬
 
@@ -387,9 +373,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="governance-and-strategy"></a>控管與策略
 
@@ -425,9 +411,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 安全性基準測試-資料保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定義企業分割策略 
 
@@ -443,9 +429,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [利用企業分割策略來調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性狀態管理原則
 
@@ -453,9 +439,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 安全性基準測試-狀態與弱點管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：讓組織角色、職責和責任保持一致
 
@@ -467,9 +453,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 安全性最佳作法 3-處理：指派雲端安全性決策的責任](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="gs-5-define-network-security-strategy"></a>GS-5：定義網路安全性策略
 
@@ -497,9 +483,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 網路安全性概觀](../security/fundamentals/network-overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定義身分識別和特殊許可權存取策略
 
@@ -527,9 +513,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 身分識別管理安全性概觀](../security/fundamentals/identity-management-overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定義記錄和威脅回應策略
 
@@ -561,9 +547,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 採用架構、記錄和報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1803a0070321ff4d895203f027f839601bb726ee
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487903"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887139"
 ---
-# <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中規劃的維護通知
+# <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器中計劃性維護通知
 
 瞭解如何在您的適用於 PostgreSQL 的 Azure 資料庫上準備預定的維修事件。
 
@@ -21,7 +21,7 @@ ms.locfileid: "92487903"
 
 適用於 PostgreSQL 的 Azure 資料庫服務會執行基礎硬體、OS 和資料庫引擎的自動修補。 修補套裝程式括新的服務功能、安全性和軟體更新。 針對 PostgreSQL 引擎，次要版本升級會自動進行，並包含在修補週期中。 不需要任何使用者動作或組態設定即可進行修補。 修補程式經過廣泛測試，並使用安全的部署實務來推出。
 
-規劃的維護是將這些服務更新部署到指定的 Azure 區域中的伺服器時的維護時段。 在規劃的維護期間，會建立通知事件，以在服務更新部署于裝載其伺服器的 Azure 區域時通知客戶。 兩個預定維護之間的最短持續時間為30天。 您會提前收到下一個維護時段72小時的通知。
+規劃的維護是將這些服務更新部署到指定的 Azure 區域中的伺服器時的維護時段。 在計劃性維護期間，系統會建立通知事件，以在裝載其伺服器的 Azure 區域中部署服務更新時，通知客戶。 兩個預定維護之間的最短持續時間為30天。 您會在下一次維護視窗前 72 小時收到通知。
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>預定進行的維護-持續時間和客戶影響
 
@@ -48,20 +48,20 @@ ms.locfileid: "92487903"
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [ **服務健康狀態**]。
 2. 選取 **規劃的維護** 索引標籤
-3. 選取 **訂**用帳戶、* * 區域，以及您想要檢查預定維護通知的 **服務** 。 
+3. 選取 **訂** 用帳戶、* * 區域，以及您想要檢查預定維護通知的 **服務** 。 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>若要接收預定的維修通知
 
-1. 在[入口網站](https://portal.azure.com)中，選取 [服務健康情況]****。
-2. 在 [警示]**** 區段中，選取 [健康情況警示]****。
+1. 在[入口網站](https://portal.azure.com)中，選取 [服務健康情況]。
+2. 在 [警示] 區段中，選取 [健康情況警示]。
 3. 選取 [ **+ 新增服務健康情況警示** ]，然後填入欄位。
 4. 填寫必要的欄位。 
-5. 選擇 [**事件種類**]，選取 [**預定維修**] 或 [全**選**]
+5. 選擇 [**事件種類**]，選取 [**預定維修**] 或 [全 **選**]
 6. 在 [ **動作群組** ] 中，定義您想要如何接收警示 (取得電子郵件、觸發邏輯應用程式等 )   
 7. 確認 [建立時啟用規則] 設為 [是]。
 8. 選取 [ **建立警示規則** ] 以完成您的警示
 
-如需有關如何建立 **服務健康狀態警示**的詳細步驟，請參閱 [建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md)。
+如需有關如何建立 **服務健康狀態警示** 的詳細步驟，請參閱 [建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md)。
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>我可以取消或延後預定的維護嗎？
 
@@ -78,7 +78,7 @@ ms.locfileid: "92487903"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如有關于使用適用於 PostgreSQL 的 Azure 資料庫的任何問題或建議，請傳送電子郵件給適用於 PostgreSQL 的 Azure 資料庫團隊 *AskAzureDBforMySQL@service.microsoft.com* 。
+- 如有關于使用適用於 PostgreSQL 的 Azure 資料庫的任何問題或建議，請傳送電子郵件給適用於 PostgreSQL 的 Azure 資料庫團隊 *AskAzureDBforPostgreSQL@service.microsoft.com* 。
 - 請參閱[如何設定警示](howto-alert-on-metric.md)，取得根據計量來建立警示的指引。
 - [針對適用於 PostgreSQL 的 Azure 資料庫的連接問題進行疑難排解-單一伺服器](howto-troubleshoot-common-connection-issues.md)
 - [處理暫時性錯誤並有效率地連接到適用於 PostgreSQL 的 Azure 資料庫-單一伺服器](concepts-connectivity.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78330390"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888499"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -77,14 +77,24 @@ ms.locfileid: "78330390"
 1. 在編輯器中開啟 *index.html*，將下列文字貼到檔案中，然後儲存檔案：
 
     ```
-    <h1>Hello World!</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Hello World!</h1>
+      </body>
+    </html>
     ```
 
 1. 建立預設錯誤檔案，然後將其命名為 *404.html*。
 1. 在編輯器中開啟 *404.html*，然後將下列文字貼到檔案中，並加以儲存：
 
     ```
-    <h1>404</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>404</h1>
+      </body>
+    </html>
     ```
 
 1. 在 [總管]  面板中的 [mywebsite]  資料夾底下按一下滑鼠右鍵，然後選取 [部署至靜態網站]  以部署您的網站。 系統將提示您登入 Azure 以擷取訂用帳戶清單。

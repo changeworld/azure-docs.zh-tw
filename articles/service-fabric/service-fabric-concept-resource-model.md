@@ -4,12 +4,12 @@ description: 本文概述如何使用 Azure Resource Manager 來管理 Azure Ser
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 886b7d6b40bebf6234064b0627017db1d8cfe31f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681681"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888822"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 應用程式資源模型
 
@@ -91,7 +91,8 @@ ms.locfileid: "94681681"
 >
 >
 
-| 參數              | 描述                                 | 範例                                                      | 註解                                                     |
+
+| 參數              | 說明                                 | 範例                                                      | 註解                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 您正在部署的叢集名稱 | sf-cluster123                                                |                                                              |
 | 應用程式            | 應用程式的名稱                 | 投票                                                       |
@@ -137,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ```
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>使用 Resource Manager 升級 Service Fabric 應用程式
+
+
+> [!IMPORTANT]
+> 透過 ARM JSON 定義部署的任何服務都必須從對應 ApplicationManifest.xml 檔案的 DefaultServices 區段中移除。
+
 
 基於下列其中一個原因，您可能會將已部署的應用程式升級為 Service Fabric 叢集：
 

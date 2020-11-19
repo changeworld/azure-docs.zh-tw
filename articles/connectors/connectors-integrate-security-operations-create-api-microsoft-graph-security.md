@@ -3,18 +3,18 @@ title: 整合及管理安全性作業 & Microsoft Graph 安全性
 description: 使用 Microsoft Graph 安全性 & 來改善應用程式的威脅防護、偵測和回應 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873313"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888533"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>使用 Microsoft Graph 安全性和 Azure Logic Apps 整合安全性作業，改善威脅防護功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "94873313"
 
 您的邏輯應用程式工作流程可使用從 Microsoft Graph 安全性連接器取得回應的動作，並讓該輸出提供給工作流程中的其他動作使用。 您也可以讓您工作流程中的其他動作使用來自 Microsoft Graph 安全性連接器動作的輸出。 例如，如果您透過 Microsoft Graph 安全性連接器取得高嚴重性警示，您可以使用 Outlook 連接器將那些警示以電子郵件訊息傳送。 
 
-若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](/graph/security-concept-overview)。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Power Automate 或 PowerApps，請參閱 [什麼是 Power Automate？](https://flow.microsoft.com/) 或 [什麼是 powerapps？](https://powerapps.microsoft.com/)
+若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](/graph/security-concept-overview)。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Power Automate 或 PowerApps，請參閱 [什麼是 Power Automate？](https://flow.microsoft.com/) 或 [Power Apps 是什麼？](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>先決條件
 

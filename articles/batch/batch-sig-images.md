@@ -2,14 +2,14 @@
 title: 使用共用映射庫來建立自訂映射集區
 description: 自訂映射集區是設定計算節點以執行 Batch 工作負載的有效方式。
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0ba6270e6b6b4fcd258d8f5b3668931706f95b5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745517"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888346"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射庫來建立自訂映射集區
 
@@ -38,9 +38,9 @@ ms.locfileid: "92745517"
 > [!NOTE]
 > 您需要使用 Azure AD 進行驗證。 如果您使用共用金鑰驗證，則會收到驗證錯誤。  
 
-- **Azure Batch 帳戶** 。 若要建立 Batch 帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
+- **Azure Batch 帳戶**。 若要建立 Batch 帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
 
-- **共用映像庫的映像** 。 若要建立共用映像，您必須擁有或建立受控映像資源。 您應該從 VM 之 OS 磁碟 (以及視需要從其連結之資料磁碟) 的快照集建立該映像。
+- **共用映像庫的映像**。 若要建立共用映像，您必須擁有或建立受控映像資源。 您應該從 VM 之 OS 磁碟 (以及視需要從其連結之資料磁碟) 的快照集建立該映像。
 
 > [!NOTE]
 > 如果共用映射與 Batch 帳戶不在相同的訂用帳戶中，您必須為該訂用帳戶 [註冊 Microsoft.Batch 資源提供者](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) 。 這兩個訂用帳戶必須位於相同的 Azure AD 租使用者中。
@@ -218,7 +218,7 @@ client.pool.add(new_pool)
 
 如果您打算使用共用映像來建立具有數百部、數千部或更多 VM 的集區，請使用下列指導方針。
 
-- **共用映像庫複本數目。**  針對具有最多 600 個執行個體的每個集區，建議您至少保留一個複本。 例如，如果您要建立包含 3000 部 VM 的集區，您應該至少保留 5 個映像複本。 為獲得更好的效能，我們一律建議您保留高於最低需求的複本數目。
+- **共用映像庫複本數目。**  針對具有最多300實例的每個集區，建議您保留至少一個複本。 例如，如果您要建立具有 3000 Vm 的集區，您應該保留至少10個映射複本。 為獲得更好的效能，我們一律建議您保留高於最低需求的複本數目。
 
 - **調整大小逾時。** 如果您的集區包含固定數目的節點 (如果不進行自動調整)，請根據集區大小來增加集區的 `resizeTimeout` 屬性。 針對每 1000 部 VM，調整大小的建議逾時時間至少為 15 分鐘。 例如，針對具有 2000 部 VM 的集區，調整大小的建議逾時時間應至少為 30 分鐘。
 

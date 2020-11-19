@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 06885e3f6a1ceeebc7c0bb1053e36e9e95a0043e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591643"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888771"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -51,6 +51,8 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
     |-  |-  |-  |-  |-  |
     | UNIX  | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
     | NTFS  | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
+* 使用 NFS 裝載 NTFS 安全性樣式磁片區的 UNIX 使用者，將會被驗證為 `root` 適用于 UNIX 的 Windows 使用者 `root` 和 `pcuser` 所有其他使用者。 使用 NFS 時，請確定這些使用者帳戶都存在於您的 Active Directory 中。 
+
 
 ## <a name="create-a-dual-protocol-volume"></a>建立雙重通訊協定磁碟區
 
@@ -58,7 +60,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
     ![導覽至磁碟區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  在 [建立磁片區] 視窗中，按一下 [ **建立** ]，然後在 [基本] 索引標籤底下提供下欄欄位的資訊：   
+2.  在 [建立磁片區] 視窗中，按一下 [ **建立**]，然後在 [基本] 索引標籤底下提供下欄欄位的資訊：   
     * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
@@ -135,7 +137,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
     ![憑證匯出精靈](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. 移至 [雙重通訊協定] 磁片區的 NetApp 帳戶、按一下 [ **Active Directory 連接** ]，然後使用 [ **加入 Active Directory** ] 視窗上傳根 CA 憑證：  
+4. 移至 [雙重通訊協定] 磁片區的 NetApp 帳戶、按一下 [ **Active Directory 連接**]，然後使用 [ **加入 Active Directory** ] 視窗上傳根 CA 憑證：  
 
     ![伺服器根 CA 憑證](../media/azure-netapp-files/server-root-ca-certificate.png)
 

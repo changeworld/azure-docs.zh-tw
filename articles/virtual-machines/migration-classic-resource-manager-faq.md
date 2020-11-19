@@ -1,6 +1,6 @@
 ---
 title: 傳統至 Azure Resource Manager 移轉的常見問題
-description: 傳統至 Azure Resource Manager 移轉的常見問題
+description: 從傳統遷移至 Azure Resource Manager 的常見問題。
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 33dfd298224962617891f3ab1d540462b2b88954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5734e028f7a735a48e49f4e6c582682bcd7cbd97
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844603"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888380"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>傳統至 Azure Resource Manager 移轉的常見問題
 
@@ -42,11 +42,13 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>為什麼我會收到 "NewClassicVMCreationNotAllowedForSubscription" 的錯誤？
 
-在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](./windows/quick-create-powershell.md)。 如果您無法使用 ARM 來使用 Azure Vm，請聯絡支援人員以將您的訂用帳戶新增至允許清單。
+在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 我們強烈建議使用 Azure Resource Manager。 如果您無法使用 Azure Resource Manager 的 Azure Vm，請聯絡支援人員以將您的訂用帳戶新增至允許清單。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此移轉計劃是否會影響任何在 Azure 虛擬機器上執行的現有服務或應用程式？ 
 
-在 2023 年 3 月 1 日前，IaaS VM (傳統) 不受影響。 IaaS VM (傳統) 是正式發行的完整支援服務。 您可以繼續使用這些資源以擴展您在 Microsoft Azure 上的使用量。 在 2023 年 3 月 1 日，這些 VM 將完全淘汰，任何作用中或已配置的 VM 將停止並解除配置。 其他傳統資源不受影響，例如雲端服務 (傳統)、儲存體帳戶 (傳統) 等。   
+在 2023 年 3 月 1 日前，IaaS VM (傳統) 不受影響。 IaaS VM (傳統) 是正式發行的完整支援服務。 您可以繼續使用這些資源以擴展您在 Microsoft Azure 上的使用量。 在 2023 年 3 月 1 日，這些 VM 將完全淘汰，任何作用中或已配置的 VM 將停止並解除配置。
+
+其他傳統資源不受影響，例如雲端服務 (傳統)、儲存體帳戶 (傳統) 等。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我最近沒有移轉的打算，我的 VM 會出現什麼狀況？ 
 
@@ -124,20 +126,20 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 若為 Linux：
 
-* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱最常見的移轉錯誤](./linux/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](./linux/migration-classic-resource-manager-overview.md)
+* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](migration-classic-resource-manager-deep-dive.md)
+* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](migration-classic-resource-manager-plan.md)
+* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-ps.md)
+* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-cli.md)
+* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](migration-classic-resource-manager-community-tools.md)
+* [檢閱最常見的移轉錯誤](migration-classic-resource-manager-errors.md)
 
 若為 Windows：
 
-* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱最常見的移轉錯誤](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](migration-classic-resource-manager-overview.md)
+* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](migration-classic-resource-manager-deep-dive.md)
+* [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](migration-classic-resource-manager-plan.md)
+* [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-ps.md)
+* [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-cli.md)
+* [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](migration-classic-resource-manager-community-tools.md)
+* [檢閱最常見的移轉錯誤](migration-classic-resource-manager-errors.md)

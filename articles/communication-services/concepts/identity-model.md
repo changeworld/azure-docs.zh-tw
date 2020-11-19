@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651238"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888703"
 ---
 # <a name="identity-model"></a>身分識別模型
 
@@ -83,6 +83,6 @@ Azure 通訊服務不會複寫 Azure 身分識別管理系統的功能。 它不
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需存取權杖管理的簡介，請參閱 [建立和管理存取權杖](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)。
-* 如需驗證的簡介，請參閱 [向 Azure 通訊服務驗證](https://docs.microsoft.com/azure/communication-services/concepts/authentication)。
-* 如需資料落地和隱私權的簡介，請參閱 [區域可用性和資料存放區](https://docs.microsoft.com/azure/communication-services/concepts/privacy)。
+* 如需存取權杖管理的簡介，請參閱 [建立和管理存取權杖](../quickstarts/access-tokens.md)。
+* 如需驗證的簡介，請參閱 [向 Azure 通訊服務驗證](./authentication.md)。
+* 如需資料落地和隱私權的簡介，請參閱 [區域可用性和資料存放區](./privacy.md)。
