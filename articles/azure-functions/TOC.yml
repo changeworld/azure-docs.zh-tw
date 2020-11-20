@@ -4,6 +4,8 @@
   items:
     - name: 了解 Azure Functions
       href: functions-overview.md
+    - name: 開始使用
+      href: functions-get-started.md
     - name: 長期函式
       href: durable/durable-functions-overview.md
     - name: 無伺服器比較
@@ -588,8 +590,6 @@
       href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 定價
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 配額資訊

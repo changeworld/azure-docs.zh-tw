@@ -69,17 +69,17 @@
     - name: 遷移至連線監視器
       items:
         - name: 從網路效能監控
-          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
         - name: 從連線監視器 (傳統)
-          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: 診斷 VM 網路問題
       items:
         - name: 安裝 VM 擴充功能
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
         - name: 診斷路由問題
           items:
             - name: Azure PowerShell
@@ -184,7 +184,7 @@
     - name: 判斷位置和 Azure 區域間的相對延遲
       href: view-relative-latencies.md
     - name: 監視網路效能
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
     - name: 移動資源
       items:
         - name: 移動網路監看員資源
@@ -214,7 +214,7 @@
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: 服務更新

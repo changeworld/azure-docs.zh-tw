@@ -116,8 +116,6 @@
           href: sample-scripts-azure-cli.md
         - name: Java 連線集區
           href: sample-scripts-java-connection-pooling.md
-        - name: Azure 原則內建
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 伺服器
@@ -156,6 +154,9 @@
               href: concepts-azure-ad-authentication.md
             - name: 基礎結構雙重加密
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure 原則的安全性控制
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: 安全性基準
               href: security-baseline.md
         - name: 預定的維修
@@ -573,6 +574,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 預存程序管理
       href: reference-stored-procedures.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 部署範本

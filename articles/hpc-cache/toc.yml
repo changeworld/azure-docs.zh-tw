@@ -8,6 +8,10 @@
   items:
     - name: 規劃彙總的命名空間
       href: hpc-cache-namespace.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: Prerequisites

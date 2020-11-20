@@ -90,6 +90,10 @@
           href: migrate-appliance.md
         - name: 複寫設備需求
           href: migrate-replication-appliance.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: Azure Migrate 設備架構
       href: migrate-appliance-architecture.md
     - name: Hyper-V 移轉架構

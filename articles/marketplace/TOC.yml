@@ -15,7 +15,7 @@
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
 - name: 概念
   items:
-    - name: 發佈選項與考量
+    - name: 清單選項
       href: determine-your-listing-type.md
     - name: 在商業市集中交易
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
@@ -349,15 +349,14 @@
       items:
         - name: SaaS 履行 API 概觀
           href: partner-center-portal/pc-saas-fulfillment-apis.md
-          items:
-            - name: 註冊 SaaS 應用程式
-              href: partner-center-portal/pc-saas-registration.md
-            - name: SaaS 履行 API v2
-              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: SaaS 履行 API v1 (已淘汰)
-              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: SaaS 履行 API - 常見問題集
-              href: partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: 註冊 SaaS 應用程式
+          href: partner-center-portal/pc-saas-registration.md
+        - name: SaaS 履行 API v2
+          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+        - name: SaaS 履行 API v1 (已淘汰)
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+        - name: SaaS 履行 API - 常見問題集
+          href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: 資源
   items:
     - name: 商業市集常見問題集

@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: 可自訂的安全性警示
       href: concept-customizable-security-alerts.md
-    - name: 安全性建議
-      href: concept-recommendations.md
+    - name: 安全性
+      items:
+        - name: 安全性建議
+          href: concept-recommendations.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 基準
       href: concept-baseline.md
     - name: 事件彙總
