@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363924"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951756"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>使用 Azure Pipelines 部署自訂原則
 
@@ -29,24 +29,24 @@ ms.locfileid: "92363924"
 1. 設定 Azure 管線
 
 > [!IMPORTANT]
-> 使用 Azure 管線管理 Azure AD B2C 自訂原則目前使用 Microsoft Graph API 端點上提供的 **預覽** 作業 `/beta` 。 不支援在生產應用程式中使用這些 API。 如需詳細資訊，請參閱 [Microsoft Graph REST API Beta 端點參考](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)。
+> 使用 Azure 管線管理 Azure AD B2C 自訂原則目前使用 Microsoft Graph API 端點上提供的 **預覽** 作業 `/beta` 。 不支援在生產應用程式中使用這些 API。 如需詳細資訊，請參閱 [Microsoft Graph REST API Beta 端點參考](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有 [B2C IEF 原則系統管理員](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) 角色之目錄中的使用者認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
-* 已在您的租使用者中註冊使用 Microsoft Graph API 許可權原則的[管理應用程式](microsoft-graph-get-started.md) *。 TrustFramework*
+* 已在您的租使用者中註冊使用 Microsoft Graph API 許可權原則的 [管理應用程式](microsoft-graph-get-started.md) *。 TrustFramework*
 * [Azure 管線](https://azure.microsoft.com/services/devops/pipelines/)和[Azure DevOps Services 專案][devops-create-project]的存取權
 
 ## <a name="client-credentials-grant-flow"></a>用戶端認證授與流程
 
-此處所述的案例會使用 OAuth 2.0 [用戶端認證授與流程](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md)，在 Azure Pipelines 和 Azure AD B2C 之間使用服務對服務呼叫。 此授與流程可允許 Azure Pipelines (機密) 用戶端的 web 服務使用自己的認證，而不是在 Microsoft Graph API （在此案例中) ）呼叫另一個 web (服務時，模擬使用者進行驗證。 Azure Pipelines 以非互動方式取得權杖，然後對 Microsoft Graph API 提出要求。
+此處所述的案例會使用 OAuth 2.0 [用戶端認證授與流程](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)，在 Azure Pipelines 和 Azure AD B2C 之間使用服務對服務呼叫。 此授與流程可允許 Azure Pipelines (機密) 用戶端的 web 服務使用自己的認證，而不是在 Microsoft Graph API （在此案例中) ）呼叫另一個 web (服務時，模擬使用者進行驗證。 Azure Pipelines 以非互動方式取得權杖，然後對 Microsoft Graph API 提出要求。
 
 ## <a name="register-an-application-for-management-tasks"></a>註冊管理工作的應用程式
 
 如 [必要條件](#prerequisites)中所述，您需要應用程式註冊，您的 PowerShell 腳本（由 Azure Pipelines 執行）可以用來存取您租使用者中的資源。
 
-如果您已經有用於自動化工作的應用程式註冊，請確定其已被授與應用**Microsoft Graph**程式註冊之  >  **Policy**  >  **API 許可權**內的 Microsoft Graph 原則**TrustFramework**許可權。
+如果您已經有用於自動化工作的應用程式註冊，請確定其已被授與應用 **Microsoft Graph** 程式註冊之  >  **Policy**  >  **API 許可權** 內的 Microsoft Graph 原則 **TrustFramework** 許可權。
 
 如需註冊管理應用程式的指示，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "92363924"
 1. 登入您的 Azure DevOps Services 組織。
 1. [建立新的專案][devops-create-project] ，或選取現有的專案。
 1. 在您的專案中，流覽至 **存放庫** ，然後 **選取 [檔案** ] 頁面。 選取現有的存放庫，或在此練習中建立一個。
-1. 建立名為 *B2CAssets*的資料夾。 將必要的預留位置檔案命名為 *README.md* ，並 **認可** 檔案。 您可以稍後視需要移除此檔案。
+1. 建立名為 *B2CAssets* 的資料夾。 將必要的預留位置檔案命名為 *README.md* ，並 **認可** 檔案。 您可以稍後視需要移除此檔案。
 1. 將 Azure AD B2C 原則檔新增至 *B2CAssets* 資料夾。 這包括 *TrustFrameworkBase.xml*、 *TrustFrameWorkExtensions.xml*、 *SignUpOrSignin.xml*、 *ProfileEdit.xml*、 *PasswordReset.xml*，以及您已建立的任何其他原則。 記錄每個 Azure AD B2C 原則檔案的檔案名，以便在稍後的步驟中使用 (它們作為 PowerShell 腳本引數) 。
 1. 在存放庫的根目錄中建立名為 *Scripts* 的資料夾，並將預留位置檔案命名為 *DeployToB2c.ps1*。 請勿在此時認可檔案，您將在稍後的步驟中執行此動作。
 1. 將下列 PowerShell 腳本貼入 *DeployToB2c.ps1*，然後 **認可** 檔案。 此腳本會從 Azure AD 取得權杖，並呼叫 Microsoft Graph API，以將 *B2CAssets* 資料夾內的原則上傳至您的 Azure AD B2C 租使用者。
@@ -117,7 +117,7 @@ ms.locfileid: "92363924"
 1. 在您的專案中，選取 [**管線**  >  **釋放**  >  **新的管線**]。
 1. 在 [ **選取範本**] 下，選取 [ **空白作業**]。
 1. 輸入 **階段名稱**（例如 *DeployCustomPolicies*），然後關閉窗格。
-1. 選取 [ **新增**成品]，然後在 [ **來源類型**] 下選取 [ **Azure 儲存**機制]。
+1. 選取 [ **新增** 成品]，然後在 [ **來源類型**] 下選取 [ **Azure 儲存** 機制]。
     1. 選擇包含您以 PowerShell 腳本填入的 *腳本* 資料夾的來源存放庫。
     1. 選擇 **預設分支**。 如果您在上一節中建立了新的存放庫，則預設分支為 *master*。
     1. 保留預設分支的 **預設版本** 設定為 [ *最新*]。
@@ -131,9 +131,9 @@ ms.locfileid: "92363924"
 1. 選取 [ **變數** ] 索引標籤。
 1. 在 **管線變數** 底下新增下列變數，並依照指定的方式設定其值：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     | ---- | ----- |
-    | `clientId` | **應用程式 (用戶端) ** 您稍早註冊之應用程式的識別碼。 |
+    | `clientId` | **應用程式 (用戶端)** 您稍早註冊之應用程式的識別碼。 |
     | `clientSecret` | 您稍早建立的 **用戶端密碼** 的值。 <br /> 將變數類型變更為 **秘密** (選取鎖定圖示) 。 |
     | `tenantId` | `your-b2c-tenant.onmicrosoft.com`，其中 *您的 b2c 租使用者* 是 Azure AD B2C 租使用者的名稱。 |
 
@@ -148,13 +148,13 @@ ms.locfileid: "92363924"
 1. 搜尋並選取 [ **PowerShell**]。 請勿選取「Azure PowerShell」、「目的電腦上的 PowerShell」或另一個 PowerShell 專案。
 1. 選取新增的 **PowerShell 腳本** 工作。
 1. 針對 PowerShell 腳本工作輸入下列值：
-    * 工作**版本**： 2. *
+    * 工作 **版本**： 2. *
     * **顯示名稱**：此工作應該上傳的原則名稱。 例如， *B2C_1A_TrustFrameworkBase*。
     * **類型**：檔案路徑
-    * **腳本路徑**：選取省略號 ( **_..._*_) 中，流覽至 [_Scripts] 資料夾，然後選取 *DeployToB2C.ps1* 的檔案。
+    * **腳本路徑**：選取省略號 ( **_..._* _) 中，流覽至 [_Scripts] 資料夾，然後選取 *DeployToB2C.ps1* 的檔案。
     * **引數:**
 
-        輸入 **引數**的下列值。 取代 `{alias-name}` 為您在上一節中指定的別名。
+        輸入 **引數** 的下列值。 取代 `{alias-name}` 為您在上一節中指定的別名。
 
         ```PowerShell
         # Before
@@ -211,10 +211,10 @@ Identity Experience Framework 會強制執行此順序，因為檔案結構是�
 
 深入了解：
 
-* [使用用戶端認證的服務對服務呼叫](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
-* [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)
+* [使用用戶端認證的服務對服務呼叫](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [Azure DevOps Services](/azure/devops/user-guide/?view=azure-devops)
 
 <!-- LINKS - External -->
-[devops]: https://docs.microsoft.com/azure/devops/?view=azure-devops
-[devops-create-project]:  https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops
-[devops-pipelines]: https://docs.microsoft.com/azure/devops/pipelines
+[devops]: /azure/devops/?view=azure-devops
+[devops-create-project]:  /azure/devops/organizations/projects/create-project?view=azure-devops
+[devops-pipelines]: /azure/devops/pipelines

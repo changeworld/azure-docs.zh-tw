@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132069"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951650"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義識別碼權杖提示技術設定檔
 
@@ -76,7 +76,7 @@ Id_token_hint 必須是有效的 JWT 權杖。 下表列出必要的宣告。 �
 
 ## <a name="output-claims"></a>輸出宣告
 
-**OutputClaims**元素包含要從 JWT 權杖中解壓縮的宣告清單。 您可能需要將原則中定義的宣告名稱對應至 JWT 權杖中定義的名稱。 只要您設定屬性，您也可以包含 JWT 權杖未傳回的宣告 `DefaultValue` 。
+**OutputClaims** 元素包含要從 JWT 權杖中解壓縮的宣告清單。 您可能需要將原則中定義的宣告名稱對應至 JWT 權杖中定義的名稱。 只要您設定屬性，您也可以包含 JWT 權杖未傳回的宣告 `DefaultValue` 。
 
 ## <a name="metadata"></a>中繼資料
 
@@ -128,16 +128,16 @@ $newClientSecret
 權杖簽發者所使用的相同金鑰必須建立在您的 Azure AD B2C 原則金鑰中。  
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 在 [概觀] 頁面的 [原則] 下，選取 [識別體驗架構]。
 1. 選取 **原則金鑰** 
 1. 選取 [ **手動**]。
-1. 針對 [名稱]**** 使用 `IdTokenHintKey`。  
+1. 針對 [名稱] 使用 `IdTokenHintKey`。  
    可能會自動加入前置詞 `B2C_1A_`。
 1. 在 [ **密碼** ] 方塊中，輸入您稍早產生的登入金鑰。
-1. 針對 [金鑰使用方法]**** 使用 [加密]****。
-1. 選取 [建立]****。
+1. 針對 [金鑰使用方法] 使用 [加密]。
+1. 選取 [建立]。
 1. 確認您已建立金鑰 `B2C_1A_IdTokenHintKey`。
 
 
@@ -189,7 +189,7 @@ $newClientSecret
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>步驟 1： 準備自我簽署憑證
 
-如果您還沒有憑證，您可以使用自我簽署的憑證來進行本操作指南。 在 Windows 上，您可以使用 PowerShell 的 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) (英文) Cmdlet 來產生憑證。
+如果您還沒有憑證，您可以使用自我簽署的憑證來進行本操作指南。 在 Windows 上，您可以使用 PowerShell 的 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) (英文) Cmdlet 來產生憑證。
 
 執行此 PowerShell 命令以產生自我簽署憑證。 針對您的應用程式與 Azure AD B2C 租用戶名稱，適當地修改 `-Subject` 引數。 您也可以調整 `-NotAfter` 日期，為憑證指定不同的到期日。
 

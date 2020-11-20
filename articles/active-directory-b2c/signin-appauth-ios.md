@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384935"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953299"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C︰使用 iOS 應用程式登入
 
 Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID Connect。 使用開放式標準通訊協定讓開發人員在選取程式庫來與我們的服務整合時，有更多的選擇。 我們提供本逐步解說和其他類似的逐步解說，協助開發人員撰寫應用程式來連線至 Microsoft 身分識別平台。 大部分實作 [RFC6749 OAuth2 規格](https://tools.ietf.org/html/rfc6749)的程式庫都能連線至 Microsoft 身分識別平台。
 
 > [!WARNING]
-> Microsoft 並不提供第三方程式庫的修正程式，也尚未審查這些程式庫。 此範例使用已藉由 Azure AD B2C 在基本案例中進行過相容性測試的第三方程式庫，稱為 AppAuth。 問題和功能要求應導向到程式庫的開放原始碼專案。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)。
+> Microsoft 並不提供第三方程式庫的修正程式，也尚未審查這些程式庫。 此範例使用已藉由 Azure AD B2C 在基本案例中進行過相容性測試的第三方程式庫，稱為 AppAuth。 問題和功能要求應導向到程式庫的開放原始碼專案。 如需詳細資訊，請參閱[這篇文章](../active-directory/develop/reference-v2-libraries.md)。
 >
 >
 
@@ -45,8 +45,8 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 ## <a name="create-your-user-flows"></a>建立使用者流程
 在 Azure AD B2C 中，每個使用者體驗皆是由某個[使用者流程](user-flow-overview.md)所定義。 此應用程式包含一個身分識別體驗：合併登入和註冊。 建立使用者流程時，請務必：
 
-* 在 [註冊屬性]**** 下方，選取 [顯示名稱]**** 屬性。  您也可以選取其他屬性。
-* 在 [應用程式宣告]**** 下方，選取 [顯示名稱]**** 和 [使用者的物件識別碼]**** 宣告。 您也可以選取其他宣告。
+* 在 [註冊屬性] 下方，選取 [顯示名稱] 屬性。  您也可以選取其他屬性。
+* 在 [應用程式宣告] 下方，選取 [顯示名稱] 和 [使用者的物件識別碼] 宣告。 您也可以選取其他宣告。
 * 建立每個使用者流程之後，請複製其 [名稱]。 當您儲存使用者流程時，使用者流程名稱前面會加上 `b2c_1_`。  您稍後需要用到此使用者流程名稱。
 
 建立您的使用者流程後，就可以開始建置您的應用程式。
@@ -62,7 +62,7 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 > AppAuth 支援 iOS 7 及更新版本。  不過，若要在 Google 上支援社交登入，需要有 SFSafariViewController，而這需要 iOS 9 或更新版本。
 >
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 您可以指定授權端點和權杖端點 URI，以設定與 Azure AD B2C 通訊。  若要產生這些 URI，您需要下列資訊︰
 * 租用戶識別碼 (例如，contoso.onmicrosoft.com)

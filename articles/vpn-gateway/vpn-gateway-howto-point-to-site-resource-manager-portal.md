@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: fc4ed7b295ce8a109d2f7c5614440637b2ab855a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0b2fa06bc04bdb584367312b1e89939ed386b4f2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660792"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952842"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： Azure 入口網站
 
@@ -21,13 +21,11 @@ ms.locfileid: "94660792"
 
 :::image type="content" source="./media\vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-diagram.png" alt-text="從電腦連線到 Azure VNet 點對站連接圖":::
 
-C:\Users\cherylmc\Documents\GitHub\azure-docs-pr\articles\vpn-gateway\media\vpn-gateway-howto-point-to-site-resource-manager-portal
-
 如需點對站 VPN 的詳細資訊，請參閱 [關於點對站 vpn](point-to-site-about.md)。 若要使用 Azure PowerShell 建立此設定，請參閱 [使用 Azure PowerShell 設定點對站 VPN](vpn-gateway-howto-point-to-site-rm-ps.md)。
 
 [!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 

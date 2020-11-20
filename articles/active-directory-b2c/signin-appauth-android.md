@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79219d7a7b59818d54acc6a2b0b4c8093ead3a6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acbd2918bd311cec1c27018763ad10771d779d85
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385224"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953316"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 應用程式登入
 
 Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID Connect。 這些標準可讓您利用想要使用的任何程式庫，與 Azure Active Directory B2C 整合。 為了協助您使用其他程式庫，您可以使用這個逐步解說，它示範如何設定第三方程式庫以連線至 Microsoft 身分識別平台。 大部分實作 [RFC6749 OAuth2 規格](https://tools.ietf.org/html/rfc6749)的程式庫都能連線到 Microsoft 身分識別平台。
 
 > [!WARNING]
-> Microsoft 並不提供第三方程式庫的修正程式，也尚未審查這些程式庫。 此範例使用已藉由 Azure AD B2C 在基本案例中進行過相容性測試的第三方程式庫，稱為 AppAuth。 問題和功能要求應導向到程式庫的開放原始碼專案。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)。
+> Microsoft 並不提供第三方程式庫的修正程式，也尚未審查這些程式庫。 此範例使用已藉由 Azure AD B2C 在基本案例中進行過相容性測試的第三方程式庫，稱為 AppAuth。 問題和功能要求應導向到程式庫的開放原始碼專案。 如需詳細資訊，請參閱[這篇文章](../active-directory/develop/reference-v2-libraries.md)。
 >
 >
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 096d771cbf6e02a67903da7d5ce495890cc6828d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840486"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953571"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>使用 Azure AD B2C 中的自訂原則設定電話註冊和登入
 
@@ -82,13 +82,13 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 ## <a name="deleting-a-user-account"></a>刪除使用者帳戶
 
-在某些情況下，您可能需要從 Azure AD B2C 目錄刪除使用者和相關聯的資料。 如需有關如何透過 Azure 入口網站刪除使用者帳戶的詳細資訊，請參閱 [這些指示](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)。 
+在某些情況下，您可能需要從 Azure AD B2C 目錄刪除使用者和相關聯的資料。 如需有關如何透過 Azure 入口網站刪除使用者帳戶的詳細資訊，請參閱 [這些指示](/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)。 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 設定 OTP 之前，您需要有下列資源。
 

@@ -11,18 +11,18 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7b76c81a78bfd3eb57a54f1d23ba1b154b09b3e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660146"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952534"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中搭配使用 Azure AD 身分識別與您的機器學習 Web 服務
 
 在此操作說明中，您將瞭解如何在 Azure Kubernetes Service 中將 Azure Active Directory (Azure AD) 身分識別指派給已部署的機器學習模型。 [Azure AD Pod 身分識別](https://github.com/Azure/aad-pod-identity)專案可讓應用程式使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)和 Kubernetes 基本專案，安全地使用 Azure AD 來存取雲端資源。 這可讓您的 web 服務安全地存取您的 Azure 資源，而不需要內嵌認證或直接在腳本中管理權杖 `score.py` 。 本文說明在 Azure Kubernetes Service 叢集中建立和安裝 Azure 身分識別的步驟，並將身分識別指派給已部署的 web 服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Machine Learning 服務的 Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組、[適用于 PYTHON 的 Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組。
 
@@ -32,13 +32,13 @@ ms.locfileid: "94660146"
 
 ## <a name="create-and-install-an-azure-identity"></a>建立並安裝 Azure 身分識別
 
-1. 若要判斷您的 AKS 叢集是否已啟用 RBAC，請使用下列命令：
+1. 若要判斷您的 AKS 叢集是否已啟用 Kubernetes RBAC，請使用下列命令：
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    `true`如果啟用 RBAC，此命令會傳回的值。 此值會決定要在下一個步驟中使用的命令。
+    `true`如果啟用 KUBERNETES RBAC，此命令會傳回的值。 此值會決定要在下一個步驟中使用的命令。
 
 1. 在 AKS 叢集中安裝 [Azure AD Pod 身分識別](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) 。
 

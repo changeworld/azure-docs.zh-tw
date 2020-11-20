@@ -3,16 +3,17 @@ title: 在 Azure 虛擬機器上設定 IBM Db2 HADR (Vm) |Microsoft Docs
 description: 在 (Vm) 的 Azure 虛擬機器上，建立 IBM Db2 LUW 的高可用性。
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146444"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951310"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>使用 Pacemaker SUSE Linux Enterprise Server 的 Azure Vm 上的 IBM Db2 LUW 高可用性
 
@@ -131,7 +132,7 @@ IBM Db2 LUW 的資源代理套裝程式含于 SAP 應用程式的 SUSE Linux Ent
 
 ## <a name="create-the-pacemaker-cluster"></a>建立 Pacemaker 叢集
     
-若要為此 IBM Db2 伺服器建立基本的 Pacemaker 叢集，請參閱 [在 Azure 中 SUSE Linux Enterprise Server 上設定 Pacemaker][sles-pacemaker]。 
+若要為此 IBM Db2 伺服器建立基本的 Pacemaker 叢集，請參閱 [在 Azure 中 SUSE Linux Enterprise Server 上設定 Pacemaker][sles-pacemaker]。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>安裝 IBM Db2 LUW 和 SAP 環境
 
@@ -399,7 +400,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 1. 建立前端 IP 集區：
 
-   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **前端 IP 集**區]，然後選取 [ **新增**]。
+   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **前端 IP 集** 區]，然後選取 [ **新增**]。
 
    b. 輸入新前端 IP 集區的名稱 (例如，[ **Db2 連接**) 。
 
@@ -411,7 +412,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 1. 建立後端集區：
 
-   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **後端**集區]，然後選取 [ **新增**]。
+   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **後端** 集區]，然後選取 [ **新增**]。
 
    b. 輸入新後端集區的名稱 (例如， **Db2 後** 端) 。
 
@@ -421,7 +422,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    e. 選取 IBM Db2 叢集的虛擬機器。
 
-   f. 選取 [確定]  。
+   f. 選取 [確定]。
 
 1. 建立健康情況探查：
 
@@ -445,7 +446,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    e. 將 [閒置逾時] 增加為 30 分鐘。
 
-   f. 務必**啟用浮動 IP**。
+   f. 務必 **啟用浮動 IP**。
 
    g. 選取 [確定]。
 
@@ -572,8 +573,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **crm 資源遷移 \<res_name> \<host> ：** 建立位置條件約束，並可能造成接管問題
-- **crm 資源清除 \<res_name> **：清除位置條件約束
-- **crm 資源清除 \<res_name> **：清除資源的所有錯誤
+- **crm 資源清除 \<res_name>**：清除位置條件約束
+- **crm 資源清除 \<res_name>**：清除資源的所有錯誤
 
 ### <a name="test-the-fencing-agent"></a>測試隔離代理程式
 
@@ -600,7 +601,7 @@ azibmdb01:~ # kill -9 2374
 您可以藉由停止 *azibmdb01* 節點上的 Pacemaker 服務，來測試手動接管：
 <pre><code>service pacemaker stop</code></pre>
 
-*azibmdb02*上的狀態
+*azibmdb02* 上的狀態
 <pre><code>
 2 nodes configured
 5 resources configured
@@ -619,7 +620,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Stopped: [ azibmdb01 ]
 </code></pre>
 
-在容錯移轉之後，您可以在 *azibmdb01*上再次啟動該服務。
+在容錯移轉之後，您可以在 *azibmdb01* 上再次啟動該服務。
 <pre><code>service pacemaker start</code></pre>
 
 

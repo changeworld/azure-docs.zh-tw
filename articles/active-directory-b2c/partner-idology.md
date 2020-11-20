@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07a8f785cf2b9a64f3acb9f44c4fca5023c4fcf3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259317"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953741"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 IDology 的教學課程 
 
 在此範例教學課程中，我們會提供有關如何將 Azure AD B2C 與 [IDology](https://www.idology.com/solutions/)整合的指引。 IDology 是具有多個解決方案的身分識別驗證和校對提供者。 在此範例中，我們將涵蓋 IDology 的 ExpectID 解決方案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
@@ -67,13 +67,13 @@ IDology 整合包含下列元件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) 部署至 Azure 服務。 您可以依照下列 [指示](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
+將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
 
 您將需要已部署之服務的 URL，以使用必要的設定來設定 Azure AD。
 
 ### <a name="part-2---configure-the-api"></a>第2部分-設定 API 
 
-您可以 [在 Azure 的 App Service 中設定](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)應用程式設定。 使用這個方法，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須提供下列設定給 Rest API：
+您可以 [在 Azure 的 App Service 中設定](../app-service/configure-common.md#configure-app-settings)應用程式設定。 使用這個方法，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須提供下列設定給 Rest API：
 
 | 應用程式設定 | 來源 | 注意 |
 | :-------- | :------------| :-----------|
@@ -137,7 +137,7 @@ IDology 整合包含下列元件：
 
 6. 經歷登入流程。
 
-7. 當您輸入 **continue**之後，會出現 IDology 謎。
+7. 當您輸入 **continue** 之後，會出現 IDology 謎。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -145,5 +145,4 @@ IDology 整合包含下列元件：
 
 - [Azure AD B2C 中的自訂原則](custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](custom-policy-get-started.md?tabs=applications) 
-
+- [Azure AD B2C 中的自訂原則入門](custom-policy-get-started.md?tabs=applications)

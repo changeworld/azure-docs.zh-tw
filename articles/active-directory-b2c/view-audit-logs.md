@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383932"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952721"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>存取 Azure AD B2C 稽核記錄
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 會發出包含 B2C 資源、簽發的
 Audit 記錄檔事件只會保留 **七天**。 如果您需要更長的保留期，請使用以下所示的其中一個方法來規劃下載與儲存您的記錄。
 
 > [!NOTE]
-> 您無法在**Azure Active Directory**的 [使用者] 區段下，或在 Azure 入口網站中**Azure AD B2C**頁面的 [**使用者**] 區段，看到個別 Azure AD B2C 應用程式的使用者登入。 登入事件會顯示使用者活動，但無法相互關聯回使用者登入的 B2C 應用程式。 您必須使用的審核記錄，如本文中的進一步說明。
+> 您無法在 **Azure Active Directory** 的 [使用者] 區段下，或在 Azure 入口網站中 **Azure AD B2C** 頁面的 [**使用者**] 區段，看到個別 Azure AD B2C 應用程式的使用者登入。 登入事件會顯示使用者活動，但無法相互關聯回使用者登入的 B2C 應用程式。 您必須使用的審核記錄，如本文中的進一步說明。
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>稽核記錄 B2C 類別中可取得活動的概觀
 
@@ -37,11 +37,11 @@ Audit 記錄檔事件只會保留 **七天**。 如果您需要更長的保留�
 |授權 |有關授權使用者存取 B2C 資源的活動 (例如，系統管理員存取 b2c 原則清單) 。         |
 |目錄 |當系統管理員使用 Azure 入口網站登入時，與目錄屬性相關的活動。 |
 |應用程式 | 在 B2C 應用程式上建立、讀取、更新和刪除 (CRUD) 作業。 |
-|機碼 |在 B2C 金鑰容器中儲存的金鑰上的 CRUD 作業。 |
+|Key |在 B2C 金鑰容器中儲存的金鑰上的 CRUD 作業。 |
 |資源 |B2C 資源上的 CRUD 作業。 例如，原則和身分識別提供者。
 |驗證 |驗證使用者認證和權杖發行。|
 
-如需使用者物件 CRUD 活動，請參閱**核心目錄**類別。
+如需使用者物件 CRUD 活動，請參閱 **核心目錄** 類別。
 
 ## <a name="example-activity"></a>範例活動
 
@@ -53,7 +53,7 @@ Azure 入口網站的這個範例影像會顯示當使用者以外部識別提�
 
 |區段|欄位|描述|
 |-------|-----|-----------|
-| 活動 | 名稱 | 發生的活動。 例如， *發出 id_token 至應用程式，以*結束實際的使用者登入。 |
+| 活動 | 名稱 | 發生的活動。 例如， *發出 id_token 至應用程式，以* 結束實際的使用者登入。 |
 | 啟動者 (執行者) | ObjectId | 使用者用來登入之 B2C 應用程式的 **物件識別碼** 。 此識別碼在 Azure 入口網站中看不到，但可透過 Microsoft Graph API 存取。 |
 | 啟動者 (執行者) | Spn | 使用者用來登入之 B2C 應用程式的 **應用程式識別碼** 。 |
 | 目標 | ObjectId | 登入之使用者的 **物件識別碼** 。 |
@@ -84,7 +84,7 @@ Azure 入口網站可讓您存取 Azure AD B2C 租使用者中的 audit 記錄�
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>使用 Azure AD 報告 API 取得審核記錄
 
-稽核記錄的發行管線與 Azure Active Directory 的其他活動相同，因此可以透過 [Azure Active Directory 報告 API](https://docs.microsoft.com/graph/api/directoryaudit-list) \(機器翻譯\) 來存取。 如需詳細資訊，請參閱 [開始使用 Azure Active Directory 報告 API](../active-directory/reports-monitoring/concept-reporting-api.md)。
+稽核記錄的發行管線與 Azure Active Directory 的其他活動相同，因此可以透過 [Azure Active Directory 報告 API](/graph/api/directoryaudit-list) \(機器翻譯\) 來存取。 如需詳細資訊，請參閱 [開始使用 Azure Active Directory 報告 API](../active-directory/reports-monitoring/concept-reporting-api.md)。
 
 ### <a name="enable-reporting-api-access"></a>啟用報告 API 存取
 

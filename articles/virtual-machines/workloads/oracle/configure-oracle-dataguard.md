@@ -3,16 +3,17 @@ title: 在 Azure Linux 虛擬機器上實作 Oracle Data Guard | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Data Guard。
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: b56fc172aa9fa4e88f03f488bdd1ac567708fe91
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: cc7579b48307325e25d8914ea4c722a9641883f3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996710"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952143"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
@@ -692,7 +693,7 @@ SQL>
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [教學課程：建立高可用性的虛擬機器](../../linux/create-cli-complete.md)
 

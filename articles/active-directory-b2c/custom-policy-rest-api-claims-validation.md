@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089514"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951922"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>逐步解說：將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中，以驗證使用者輸入
 
@@ -65,7 +65,7 @@ ms.locfileid: "92089514"
 }
 ```
 
-REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) \(部分機器翻譯\) 範例。 您可以在 [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) \(英文\) 中存取完整的 Azure 函式程式碼。
+REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Functions](../azure-functions/functions-reference.md) \(部分機器翻譯\) 範例。 您可以在 [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) \(英文\) 中存取完整的 Azure 函式程式碼。
 
 ## <a name="define-claims"></a>定義宣告
 
@@ -237,7 +237,7 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 1. 選取您上傳的註冊或登入原則，按一下 [立即執行] 按鈕。
 1. 您應該可以使用電子郵件地址註冊。
 1. 按一下 [ **立即註冊** ] 連結。
-1. 在 **您的忠誠度識別碼**中輸入1234，然後按一下 [ **繼續**]。 此時，您應該會收到驗證錯誤訊息。
+1. 在 **您的忠誠度識別碼** 中輸入1234，然後按一下 [ **繼續**]。 此時，您應該會收到驗證錯誤訊息。
 1. 變更為另一個值，然後按一下 [ **繼續**]。
 1. 傳送回您的應用程式的權杖包含 `promoCode` 宣告。
 

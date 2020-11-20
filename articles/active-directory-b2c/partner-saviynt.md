@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259131"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953554"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Saviynt 的教學課程
 
@@ -30,13 +30,13 @@ ms.locfileid: "91259131"
 
 - 資料層級安全性，以判斷使用者是否可以對特定使用者執行特定作業。 例如，UK 地區的服務台系統管理員只能管理 UK 使用者。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
 - Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 
-- [Azure AD B2C 的租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)使用者。 租使用者已連結至您的 Azure 訂用帳戶。
+- [Azure AD B2C 的租](./tutorial-create-tenant.md)使用者。 租使用者已連結至您的 Azure 訂用帳戶。
 
 - Saviynt[訂](https://saviynt.com/contact-us/)用帳戶
 
@@ -48,7 +48,7 @@ Saviynt 整合包含下列元件：
 
 - [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) –身分識別管理平臺，可為使用者生命週期管理和 Azure AD B2C 使用者的存取治理提供更細緻的委派系統管理。  
 
-- [MICROSOFT GRAPH api](https://docs.microsoft.com/graph/use-the-api) –此 Api 提供 Saviynt 的介面，以管理 Azure AD B2C 中的 Azure AD B2C 使用者和其存取權。
+- [MICROSOFT GRAPH api](/graph/use-the-api) –此 Api 提供 Saviynt 的介面，以管理 Azure AD B2C 中的 Azure AD B2C 使用者和其存取權。
 
 下列架構圖顯示執行。
 
@@ -69,7 +69,7 @@ Saviynt 整合包含下列元件：
 
 1. 若要建立 Saviynt 帳戶，請聯絡 [Saviynt](https://saviynt.com/contact-us/)
 
-2. 建立委派的系統管理原則，並將使用者指派為具有各種角色的 [委派系統管理員](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-concept-delegation) 。
+2. 建立委派的系統管理原則，並將使用者指派為具有各種角色的 [委派系統管理員](../active-directory/users-groups-roles/roles-concept-delegation.md) 。
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>使用 Saviynt 設定 Azure AD B2C
 
@@ -77,11 +77,11 @@ Saviynt 整合包含下列元件：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/#home)。
 
-2. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+2. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
 3. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD B2C**]。
 
-4. 選取**應用程式註冊**  >  **新的註冊**。
+4. 選取 **應用程式註冊**  >  **新的註冊**。
 
 5. 輸入應用程式的名稱。 例如，Saviynt，然後選取 [ **建立**]。
 
@@ -95,7 +95,7 @@ Saviynt 整合包含下列元件：
 
 10. 選取 [ **新增許可權**]。 檢查新增的許可權。
 
-11. 選取 **[授與系統管理員同意來儲存預設目錄**]  >  ** **。
+11. 選取 **[授與系統管理員同意來儲存預設目錄**]  >  ****。
 
 12. 移至 [ **憑證和密碼** ]，然後選取 [ **+ 新增用戶端密碼**]。 輸入用戶端密碼描述、選取到期選項，然後選取 [ **新增**]。
 
@@ -113,7 +113,7 @@ Saviynt 整合包含下列元件：
 下列步驟說明如何在 Azure AD B2C 中啟用 Saviynt 以執行使用者刪除作業。
 
 >[!NOTE]
->[將服務主體的存取權授與系統管理員角色之前，請先評估風險。](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+>[將服務主體的存取權授與系統管理員角色之前，請先評估風險。](../active-directory/develop/app-objects-and-service-principals.md)
 
 1. 在 Windows 工作站/伺服器上安裝最新版的 MSOnline PowerShell 模組。
 
@@ -133,8 +133,8 @@ Add-MsolRoleMember -RoleName "Company Administrator" -RoleMemberType ServicePrin
 
 如需詳細資訊，請參閱下列文章：
 
-- [Azure AD B2C 中的自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自訂原則](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)
 
-- [建立 web API 應用程式](https://docs.microsoft.com/azure/active-directory-b2c/add-web-api-application)
+- [建立 web API 應用程式](./add-web-api-application.md)

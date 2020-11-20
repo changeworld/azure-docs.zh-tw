@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340c9629af89bfacb85b37503743fc5770070ae3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388879"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951837"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面
 
@@ -34,9 +34,9 @@ ms.locfileid: "85388879"
 
 若要設定 UI 自訂，請將 **ContentDefinition** 及其子項目從基底檔案複製到延伸模組檔案。
 
-1. 開啟原則的基底檔案。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>。 此基底檔案是自訂原則入門套件中所含的其中一個原則檔案，您應該在必要條件中取得該檔案，以 [開始使用自訂](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)原則。
+1. 開啟原則的基底檔案。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>。 此基底檔案是自訂原則入門套件中所含的其中一個原則檔案，您應該在必要條件中取得該檔案，以 [開始使用自訂](./custom-policy-get-started.md)原則。
 1. 搜尋 **ContentDefinitions** 元素的完整內容並且複製。
-1. 開啟擴充檔案。 例如 TrustFrameworkExtensions.xml**。 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請加以新增。
+1. 開啟擴充檔案。 例如 TrustFrameworkExtensions.xml。 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請加以新增。
 1. 貼上您複製的 **ContentDefinitions** 元素的整個內容，做為 **BuildingBlocks** 元素的子系。
 1. 在您複製的 XML 中，搜尋包含 `Id="api.signuporsignin"` 的 **ContentDefinition** 元素。
 1. 將 **LoadUri** 的值變更為您上傳至儲存體的 HTML 檔案 URL。 例如： `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
@@ -116,7 +116,7 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 ### <a name="dynamic-page-content-uri"></a>動態頁面內容 URI
 
-您可以根據所使用的參數，從不同的位置提取內容。 在啟用 CORS 的端點中，設定用來裝載內容的資料夾結構。 例如，您可以將內容組織成下列結構。 每一語言的根 *資料夾/資料夾/您的 html*檔案。 例如，您的自訂頁面 URI 可能看起來像這樣：
+您可以根據所使用的參數，從不同的位置提取內容。 在啟用 CORS 的端點中，設定用來裝載內容的資料夾結構。 例如，您可以將內容組織成下列結構。 每一語言的根 *資料夾/資料夾/您的 html* 檔案。 例如，您的自訂頁面 URI 可能看起來像這樣：
 
 ```xml
 <ContentDefinition Id="api.signuporsignin">

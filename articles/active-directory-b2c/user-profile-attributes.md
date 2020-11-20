@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83738552"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952695"
 ---
 # <a name="user-profile-attributes"></a>使用者設定檔屬性
 
@@ -26,7 +26,7 @@ ms.locfileid: "83738552"
 
 您也可以與外部系統整合。 例如，您可以使用 Azure AD B2C 進行驗證，但委派給外部客戶關係管理 (CRM) 或客戶忠誠度資料庫，作為客戶資料的可信賴來源。 如需詳細資訊，請參閱[遠端設定檔](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile)解決方案。
 
-下表列出 Azure AD B2C 目錄使用者設定檔所支援的[使用者資源類型](https://docs.microsoft.com/graph/api/resources/user)屬性， 並提供每個屬性的下列資訊：
+下表列出 Azure AD B2C 目錄使用者設定檔所支援的[使用者資源類型](/graph/api/resources/user)屬性， 並提供每個屬性的下列資訊：
 
 - Azure AD B2C 使用的屬性名稱 (如果與 Microsoft Graph 名稱不同，會在括弧中提供 Microsoft Graph 名稱)
 - 屬性資料類型
@@ -94,7 +94,7 @@ ms.locfileid: "83738552"
 - 識別提供者擁有必須儲存的唯一使用者識別碼，例如 **uniqueUserGUID**。
 - 自訂使用者旅程圖需要保有使用者的狀態，例如 **migrationStatus**。
 
-Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 擴充屬性會[擴充目錄中的使用者物件結構描述](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)。 擴充屬性只能在應用程式物件上註冊，即使其可能包含使用者的資料也一樣。 擴充屬性會附加至名為 b2c-extensions-app 的應用程式。 請勿修改此應用程式，因為 Azure AD B2C 會使用此應用程式來儲存使用者資料。 您可以在 Azure Active Directory 應用程式註冊下找到此應用程式。
+Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 擴充屬性會[擴充目錄中的使用者物件結構描述](/graph/extensibility-overview#schema-extensions)。 擴充屬性只能在應用程式物件上註冊，即使其可能包含使用者的資料也一樣。 擴充屬性會附加至名為 b2c-extensions-app 的應用程式。 請勿修改此應用程式，因為 Azure AD B2C 會使用此應用程式來儲存使用者資料。 您可以在 Azure Active Directory 應用程式註冊下找到此應用程式。
 
 > [!NOTE]
 > - 任何的使用者帳戶中最多可以寫入 100 個擴充屬性。
@@ -113,6 +113,6 @@ Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 擴充屬
 
 ## <a name="next-steps"></a>後續步驟
 深入了解關於擴充屬性：
-- [結構描述延伸模組](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)
+- [結構描述延伸模組](/graph/extensibility-overview#schema-extensions)
 - [定義使用者流程的自訂屬性](user-flow-custom-attributes.md)
 - [定義自訂原則的自訂屬性](custom-policy-custom-attributes.md)

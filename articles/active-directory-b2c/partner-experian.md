@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29116d880a51444eb45a351e2118a07d13873043
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259368"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953843"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Experian 的教學課程
 
@@ -36,13 +36,13 @@ ms.locfileid: "91259368"
 - 國家/地區
 - 電話號碼
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
 - Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 
-- 連結至 Azure 訂用帳戶的[Azure AD B2C 租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)使用者。
+- 連結至 Azure 訂用帳戶的[Azure AD B2C 租](./tutorial-create-tenant.md)使用者。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -77,14 +77,14 @@ Experian 整合包含下列元件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) 部署至 Azure 服務。 您可以依照下列 [指示](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
+將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
 
 >[!NOTE]
 >您將需要已部署之服務的 URL，以使用必要的設定來設定 Azure AD。
 
 ### <a name="part-2---deploy-the-client-certificate"></a>第2部分-部署用戶端憑證
 
-Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑證。 遵循本 [檔](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)中所述的指示，必須將憑證上傳到 Azure App 服務。 範例原則會在此程式中使用這些按鍵步驟：
+Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑證。 遵循本 [檔](../app-service/environment/certificates.md#private-client-certificate)中所述的指示，必須將憑證上傳到 Azure App 服務。 範例原則會在此程式中使用這些按鍵步驟：
 
 - 上傳憑證
 
@@ -92,7 +92,7 @@ Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑
 
 ### <a name="part-3---configure-the-api"></a>第3部分-設定 API
 
-您可以在 [Azure 中的 App service 中設定](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)應用程式設定。 使用這個方法，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須提供下列設定給 Rest API：
+您可以在 [Azure 中的 App service 中設定](../app-service/configure-common.md#configure-app-settings)應用程式設定。 使用這個方法，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須提供下列設定給 Rest API：
 
 | 應用程式設定 | 來源 | 注意 |
 | :-------- | :------------| :-----------|
@@ -110,7 +110,7 @@ Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑
 
 ### <a name="part-4---create-api-policy-keys"></a>第4部分-建立 API 原則金鑰
 
-請參閱這 [份檔](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) ，並建立兩個原則金鑰（一個用於 api 使用者名稱），一個用於您針對 HTTP 基本驗證定義的 api 密碼。
+請參閱這 [份檔](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) ，並建立兩個原則金鑰（一個用於 api 使用者名稱），一個用於您針對 HTTP 基本驗證定義的 api 密碼。
 
 >[!NOTE]
 >您稍後將需要用來設定原則的金鑰。
@@ -133,7 +133,7 @@ Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>第6部分-設定 Azure AD B2C 原則
 
-如需如何設定 Azure AD B2C 租使用者和設定原則的指示，請參閱這 [份檔](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) 。
+如需如何設定 Azure AD B2C 租使用者和設定原則的指示，請參閱這 [份檔](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) 。
 
 >[!NOTE]
 >此範例原則是以 [本機帳戶入門套件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)為基礎。
@@ -167,6 +167,6 @@ Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑
 
 如需詳細資訊，請參閱下列文章：
 
-- [Azure AD B2C 中的自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自訂原則](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)

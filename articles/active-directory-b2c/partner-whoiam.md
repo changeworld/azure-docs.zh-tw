@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293144"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953537"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 WhoIAM 的教學課程
 
@@ -24,13 +24,13 @@ ms.locfileid: "89293144"
 
 BRIMS 是在您的環境中部署的一組應用程式和服務。 它會提供使用者群的語音、SMS 和電子郵件驗證。 BRIMS 可與您現有的身分識別和存取管理解決方案搭配運作，且與平臺無關。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
 - Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 
-- 連結至 Azure 訂用帳戶的[Azure AD B2C 租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)使用者。
+- 連結至 Azure 訂用帳戶的[Azure AD B2C 租](./tutorial-create-tenant.md)使用者。
 
 - WhoIAM [試用帳戶](https://www.whoiam.ai/contact-us/)。
 
@@ -72,7 +72,7 @@ WhoIAM 整合包含下列元件：
 
     - [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：用來儲存和取出設定。
 
-    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) (選擇性) ：用來登入 API 和系統管理員入口網站。
+    - [Application Insights](../azure-monitor/app/app-insights-overview.md) (選擇性) ：用來登入 API 和系統管理員入口網站。
 
 3. 在您的 Azure 環境中部署 BRIMS API 和 BRIMS administration 入口網站。
 
@@ -102,6 +102,6 @@ WhoIAM 整合包含下列元件：
 
 如需詳細資訊，請參閱下列文章：
 
-- [Azure AD B2C 中的自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自訂原則](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300440"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954064"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 診斷工具針對 8000 系列裝置問題進行疑難排解
 
@@ -332,7 +332,7 @@ hcs_startup                                   Stopped hcs_startup
 * 入口網站中未啟用 DATA 2 - 5。
 * DNS 伺服器組態無效，裝置可以透過 DNS 伺服器來連線。
 * NTP 伺服器連線能力也正常。
-* 連接埠 80 和 443 已開啟。 但已封鎖連接埠 9354。 根據[系統網路需求](storsimple-system-requirements.md)，您必須開啟此連接埠，服務匯流排通訊才能進行。
+* 連接埠 80 和 443 已開啟。 但已封鎖連接埠 9354。 根據[系統網路需求](./storsimple-8000-system-requirements.md)，您必須開啟此連接埠，服務匯流排通訊才能進行。
 * TLS/SSL 憑證有效。
 * 裝置可以連線至儲存體帳戶︰_myss8000storageacct_。
 * 更新伺服器的連線能力有效。
@@ -388,7 +388,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
     如果診斷工具所報告的讀寫延遲很高︰
 
-    1. 設定 blob 服務的儲存體分析，然後分析輸出，以了解 Azure 儲存體帳戶的延遲。 如需詳細指示，請參閱[啟用和設定儲存體分析](../storage/common/storage-enable-and-view-metrics.md)。 如果這些延遲也很高，而且與您從 StorSimple 診斷工具收到的數字齊鼓相當，則您需要向 Azure 儲存體登記服務要求。
+    1. 設定 blob 服務的儲存體分析，然後分析輸出，以了解 Azure 儲存體帳戶的延遲。 如需詳細指示，請參閱[啟用和設定儲存體分析](../storage/blobs/monitor-blob-storage.md)。 如果這些延遲也很高，而且與您從 StorSimple 診斷工具收到的數字齊鼓相當，則您需要向 Azure 儲存體登記服務要求。
 
     2. 如果儲存體帳戶延遲較低，請連絡網路系統管理員來調查網路中的延遲問題。
 
@@ -440,6 +440,6 @@ Controller0>
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解 [Invoke-HcsDiagnostics Cmdlet 的語法](https://technet.microsoft.com/library/mt795371.aspx)。
+* 了解 [Invoke-HcsDiagnostics Cmdlet 的語法](/previous-versions/windows/powershell-scripting/mt795371(v=wps.630))。
 
-* 深入了解如何在 StorSimple 裝置上[針對部署問題進行疑難排解](storsimple-troubleshoot-deployment.md)。
+* 深入了解如何在 StorSimple 裝置上[針對部署問題進行疑難排解](./storsimple-8000-troubleshoot-deployment.md)。

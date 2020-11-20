@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/19/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566566"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952126"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 應用程式防火牆 (WAF) 原則總覽
 
@@ -53,7 +53,7 @@ Web 應用程式防火牆原則包含所有的 WAF 設定和設定。 這包括�
 
 Adatum.com/payments URI 是您需要小心的地方。 因此，請在該 URI 上套用另一個原則，並讓所有規則保持啟用狀態，並同時移除所有排除專案。
 
-在此範例中，您有適用于兩個網站的全域原則。 您有一個適用于某個網站的每個網站原則，接著適用于一個特定路徑型規則的每個 URI 原則。 在此範例中，請參閱此處的 (插入連結（如果有的話）) 如何為對應的 PowerShell 建立每個網站和每個 URI 的原則。
+在此範例中，您有適用于兩個網站的全域原則。 您有一個適用于某個網站的每個網站原則，接著適用于一個特定路徑型規則的每個 URI 原則。 請參閱此範例中針對對應的 PowerShell [使用 Azure PowerShell 來設定每個網站的 WAF 原則](per-site-policies.md) 。
 
 ## <a name="existing-waf-configurations"></a>現有的 WAF 設定
 

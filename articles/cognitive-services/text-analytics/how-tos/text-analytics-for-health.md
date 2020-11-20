@@ -8,38 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: e7f017c1f3dc189af2b0fc053912decca3459478
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363862"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952755"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>How to：使用文字分析的健全狀況 (預覽) 
-
-> [!NOTE]
-> 健全狀況容器的文字分析最近已更新。 如需最新變更的詳細資訊，請參閱 [新功能](../whats-new.md) 。 請記得提取最新的容器，以使用所列出的更新。
 
 > [!IMPORTANT] 
 > 健康情況的文字分析是以「原樣」和「有所有錯誤」提供的預覽功能。 因此， **文字分析的健全狀況 (預覽) 不應該在任何生產環境中執行或部署。** 健康情況的文字分析不適合或無法作為醫療裝置、臨床支援、診斷工具或其他技術使用，以供診斷、硬化、緩和、治療或預防疾病或其他條件使用，而且 Microsoft 不會授與任何授權或權利以使用這項功能做為這項用途。 這項功能並非設計或部署來取代專業醫療建議或醫療保健專業人員的醫療保健意見、診斷、治療或臨床判斷，也不應該使用這些功能。 客戶須負責任何使用文字分析的健康情況。 Microsoft 不保證文字分析的健康情況或任何與此功能連線所提供的資料，對任何醫療用途都已足夠，或符合任何人的健康或醫療需求。 
 
 
-健康情況的文字分析是一種容器化服務，可從非結構化文字（例如醫生的附注、放電摘要、臨床檔和電子健康情況記錄）中，將相關的醫療資訊解壓縮並標記出來。  
+健康情況的文字分析是文字分析 API 服務的一項功能，可從非結構化文字（例如醫生的附注、放電摘要、臨床檔和電子健康情況記錄）中，將相關的醫療資訊解壓縮並標示出來。  有兩種方式可以使用此服務： 
+
+* 以 web 為基礎的 API (非同步)  
+* Docker 容器 (同步)    
 
 ## <a name="features"></a>特性
 
-健全狀況容器的文字分析目前會在您自己的開發環境中，針對符合您特定安全性和資料治理需求的英文語言文字，執行名稱為實體辨識 (NER) 、關聯性、實體否定和實體連結。
+健康情況的文字分析會執行名為實體辨識的 (NER) 、關聯性解壓縮、實體否定和英文文字上的實體連結，以發掘非結構化臨床和生物醫學文字的見解。
 
-#### <a name="named-entity-recognition"></a>[具名實體辨識](#tab/ner)
+### <a name="named-entity-recognition"></a>[具名實體辨識](#tab/ner)
 
 命名實體辨識會偵測非結構化文字中所提及的單字和片語，這些文字可以與一或多個語義類型相關聯，例如診斷、藥物名稱、徵兆/正負號或年齡。
 
 > [!div class="mx-imgBorder"]
 > ![健全狀況 NER](../media/ta-for-health/health-named-entity-recognition.png)
 
-#### <a name="relation-extraction"></a>[關聯性解壓縮](#tab/relation-extraction)
+### <a name="relation-extraction"></a>[關聯性解壓縮](#tab/relation-extraction)
 
 關聯性解壓縮會識別文字中所述概念之間有意義的連接。 例如，藉由建立條件名稱與時間的關聯，即可找到「條件」關聯。 
 
@@ -47,7 +48,7 @@ ms.locfileid: "94363862"
 > ![健全狀況 RE](../media/ta-for-health/health-relation-extraction.png)
 
 
-#### <a name="entity-linking"></a>[實體連結](#tab/entity-linking)
+### <a name="entity-linking"></a>[實體連結](#tab/entity-linking)
 
 實體連結會厘清不同的實體，方法是將文字中提及的命名實體與概念的預先定義資料庫中所找到的概念產生關聯。 例如，統一的醫療語言系統 (UMLS) 。
 
@@ -56,7 +57,7 @@ ms.locfileid: "94363862"
 
 文字分析 for health 支援連結至整合醫療語言系統 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metathesaurus 知識來源中找到的健康情況和生物醫學詞彙。
 
-#### <a name="negation-detection"></a>[否定偵測](#tab/negation-detection) 
+### <a name="negation-detection"></a>[否定偵測](#tab/negation-detection) 
 
 醫療內容的意義會受到負的修飾詞高度影響，如果 misdiagnosed，可能會有重大的含意。 Health 的文字分析支援對文字中提及的不同實體進行否定偵測。 
 
@@ -67,173 +68,189 @@ ms.locfileid: "94363862"
 
 如需完整的支援實體清單，請參閱文字分析所傳回的 [實體類別](../named-entity-types.md?tabs=health) 以取得健全狀況。
 
-## <a name="supported-languages"></a>支援的語言
+### <a name="supported-languages-and-regions"></a>支援的語言和區域
 
-健康情況的文字分析僅支援英文語言檔。
+健康情況的文字分析僅支援英文語言檔。 
 
-## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
+健康情況託管 web API 的文字分析目前僅適用于下欄區域：美國西部2、美國東部2、美國中部、北歐和西歐。
 
-填寫並提交 [認知服務容器要求表單](https://aka.ms/csgate) ，以要求存取容器。 您目前不會針對健康情況使用量的文字分析付費。 
+## <a name="request-access-to-the-public-preview"></a>要求存取公開預覽
 
-[!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
+填寫並提交 [認知服務要求表單](https://aka.ms/csgate) ，以要求存取文字分析的健康情況公開預覽。 您將不需支付文字分析的健康情況。 
 
-[!INCLUDE [Authenticate to the container registry](../../../../includes/cognitive-services-containers-access-registry.md)]
+該表格需要有關您本身、您的公司，以及您將會使用該容器之使用者情節的資訊。 在您提交表單之後，Azure 認知服務小組將會進行審查，並以電子郵件傳送您的決策。
 
-## <a name="install-the-container"></a>安裝容器
+> [!IMPORTANT]
+> * 在表單上，您必須使用與 Azure 訂用帳戶識別碼相關聯的電子郵件地址。
+> * 您所使用的 Azure 資源必須使用已核准的 Azure 訂用帳戶識別碼來建立。 
+> * 檢查電子郵件 (收件匣和垃圾資料夾) ，以取得 Microsoft 應用程式狀態的更新。
 
-您可以透過多種方式來安裝和執行容器。 
+## <a name="using-the-docker-container"></a>使用 Docker 容器 
 
-- 使用 [Azure 入口網站](text-analytics-how-to-install-containers.md?tabs=healthcare) 建立文字分析資源，並使用 Docker 來取得您的容器。
-- 使用下列 PowerShell 和 [Azure CLI](/cli/azure/?view=azure-cli-latest) 腳本，將資源部署容器設定自動化。
+若要在您自己的環境中執行健康情況容器的文字分析，請依照下列 [指示下載並安裝容器](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)。
 
-### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用於容器的 Web App 安裝容器
+## <a name="using-the-client-library"></a>使用用戶端程式庫
 
-Azure [用於容器的 Web App](https://azure.microsoft.com/services/app-service/containers/) 是專門用來在雲端中執行容器的 azure 資源。 它帶來現成的功能，例如自動調整、支援 docker 容器和 docker 撰寫、HTTPS 支援，以及其他更多功能。
-
-> [!NOTE]
-> 使用 Azure Web 應用程式時，您將會自動取得的網域格式為 `<appservice_name>.azurewebsites.net`
-
-使用 Azure CLI 來執行此 PowerShell 腳本，以使用您的訂用帳戶和透過 HTTPS 的容器映射來建立用於容器的 Web App。 請先等候腳本完成 (大約25-30 分鐘) ，然後再提交第一個要求。
-
-```bash
-$subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
-$resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
-                                           #    and AppSerivce to be attached to.
-$resources_location = ""                   # This is the location you wish the AppServicePlan to be deployed to.
-                                           #    You can use the "az account list-locations -o table" command to
-                                           #    get the list of available locations and location code names.
-$appservice_plan_name = ""                 # This is the AppServicePlan name you wish to have.
-$appservice_name = ""                      # This is the AppService resource name you wish to have.
-$TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
-$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
-
-az login
-az account set -s $subscription_name
-az appservice plan create -n $appservice_plan_name -g $resource_group_name --is-linux -l $resources_location --sku P3V2
-az webapp create -g $resource_group_name -p $appservice_plan_name -n $appservice_name -i $DOCKER_IMAGE_NAME -s $DOCKER_REGISTRY_SERVER_USERNAME -w $DOCKER_REGISTRY_SERVER_PASSWORD
-az webapp config appsettings set -g $resource_group_name -n $appservice_name --settings Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
-
-# Once deployment complete, the resource should be available at: https://<appservice_name>.azurewebsites.net
-```
-
-### <a name="install-the-container-using-azure-container-instance"></a>使用 Azure 容器實例安裝容器
-
-您也可以使用 Azure 容器實例 (ACI) 讓部署更容易。 ACI 是一項資源，可讓您在受控、無伺服器的 Azure 環境中，視需要執行 Docker 容器。 
-
-請參閱 [如何使用 Azure 容器實例](text-analytics-how-to-use-container-instances.md) ，以取得使用 AZURE 入口網站部署 ACI 資源的步驟。 您也可以使用下列 PowerShell 腳本搭配 Azure CLI，這會使用容器映射在您的訂用帳戶上建立 ACI。  請先等候腳本完成 (大約25-30 分鐘) ，然後再提交第一個要求。  由於每個 ACI 資源的 Cpu 數目上限限制，如果您想要提交5個以上的大型檔，請不要選取此選項， (大約5000個字元) 每個要求。
-如需可用性資訊，請參閱 [ACI 區域支援](../../../container-instances/container-instances-region-availability.md) 文章。 
-
-> [!NOTE] 
-> Azure 容器實例不包含內建網域的 HTTPS 支援。 如果您需要 HTTPS，您將需要手動設定它，包括建立憑證和註冊網域。 您可以使用下面的 NGINX 找到相關指示。
-
-```bash
-$subscription_name = ""                    # The name of the subscription you want you resource to be created on.
-$resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
-                                           # and AppService to be attached to.
-$resources_location = ""                   # This is the location you wish the web app to be deployed to.
-                                           # You can use the "az account list-locations -o table" command to
-                                           # Get the list of available locations and location code names.
-$azure_container_instance_name = ""        # This is the AzureContainerInstance name you wish to have.
-$TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
-$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DNS_LABEL = ""                            # This is the DNS label name you wish your ACI will have
-$DOCKER_REGISTRY_LOGIN_SERVER = "containerpreview.azurecr.io"
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
-
-az login
-az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
-
-# Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
-```
-
-### <a name="secure-aci-connectivity"></a>安全 ACI 連線能力
-
-依預設，使用 ACI 搭配容器 API 時，不會提供任何安全性。 這是因為容器通常會作為 pod 的一部分來執行，而該 pod 是由網路橋接外部保護。 不過，您可以修改具有 front 元件的容器，讓容器端點保持私用。 下列範例會使用 [NGINX](https://www.nginx.com) 做為輸入閘道，以支援 HTTPS/SSL 和用戶端憑證驗證。
-
-> [!NOTE]
-> NGINX 是開放原始碼、高效能的 HTTP 伺服器和 proxy。 NGINX 容器可以用來終止單一容器的 TLS 連線。 也可以更複雜的 NGINX 輸入型 TLS 終止解決方案。
-
-#### <a name="set-up-nginx-as-an-ingress-gateway"></a>將 NGINX 設定為輸入閘道
-
-NGINX 會在執行時間使用 [設定檔](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) 來啟用功能。 若要啟用另一個服務的 TLS 終止，您必須指定 SSL 憑證來終止 TLS 連線，並  `proxy_pass` 指定服務的位址。 以下提供範例。
+文字分析用戶端程式庫的最新發行前版本可讓您使用用戶端物件，呼叫文字分析的健全狀況。 請參閱參考檔，並參閱 GitHub 上的範例：
+* [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+* [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+* [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
 
 
-> [!NOTE]
-> `ssl_certificate` 需要在 NGINX 容器的本機檔案系統內指定路徑。 指定的位址 `proxy_pass` 必須可從 NGINX 容器的網路中取得。
 
-NGINX 容器會將中裝載的所有檔案載入 `_.conf_` `/etc/nginx/conf.d/` 至 HTTP 設定路徑。
+## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求 
 
-```nginx
-server {
-  listen              80;
-  return 301 https://$host$request_uri;
-}
-server {
-  listen              443 ssl;
-  # replace with .crt and .key paths
-  ssl_certificate     /cert/Local.crt;
-  ssl_certificate_key /cert/Local.key;
+### <a name="preparation"></a>準備
 
-  location / {
-    proxy_pass http://cognitive-service:5000;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Real-IP  $remote_addr;
-  }
+當您提供較少量的文字來處理時，健康情況的文字分析會產生較高品質的結果。 這與某些其他文字分析功能相反，例如關鍵字組解壓縮，在較大的文字區塊上執行效能較佳。 若要取得這些作業的最佳結果，請考慮據以重建輸入。
+
+您必須具有此格式的 JSON 文件：識別碼、文字和語言。 
+
+每份文件的大小必須低於 5,120 個字元。 如需集合中允許的檔數目上限，請參閱概念底下的 [資料限制](../concepts/data-limits.md?tabs=version-3) 文章。 集合會在要求本文中提交。
+
+### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>為託管的非同步 web API 的 API 要求結構
+
+針對容器和託管的 web API，您必須建立 POST 要求。 您可以 [使用 Postman](text-analytics-how-to-call-api.md)、捲曲命令或文字分析中的 **api 測試主控台**[來取得健全狀況託管 API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)，以在您想要的區域中快速建立 POST 要求並傳送至裝載的 web API。 
+
+以下是附加至健康情況 API 要求的 POST 主體文字分析的 JSON 檔案範例：
+
+```json
+example.json
+
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Subject was administered 100mg remdesivir intravenously over a period of 120 min"
+    }
+  ]
 }
 ```
 
-#### <a name="example-docker-compose-file"></a>Docker 撰寫檔案範例
+### <a name="hosted-asynchronous-web-api-response"></a>託管的非同步 web API 回應 
 
-下列範例顯示如何建立 [docker 撰寫](https://docs.docker.com/compose/reference/overview) 檔案，以部署適用于健康情況容器的 NGINX 和文字分析：
+因為此 POST 要求會用來提交非同步作業的作業，所以回應物件中不會有任何文字。  不過，您需要回應標頭中的作業位置索引鍵值，才能提出 GET 要求以檢查作業的狀態和輸出。  以下是 POST 要求的回應標頭中，作業位置金鑰的值範例：
 
-```yaml
-version: "3.7"
-services:
-  cognitive-service:
-    image: {IMAGE_ID}
-    ports:
-      - 5000:5000
-    environment:
-      - eula=accept
-      - billing={ENDPOINT_URI}
-      - apikey={API_KEY}
-      - Logging:Disk:Format=json
-    volumes:
-        # replace with path to logs folder
-      - <path-to-logs-folder>:/output
-  nginx:
-    image: nginx
-    ports:
-      - 443:443
-    volumes:
-        # replace with paths for certs and conf folders
-      - <path-to-certs-folder>:/cert
-      - <path-to-conf-folder>:/etc/nginx/conf.d/
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+
+若要檢查作業狀態，請在 POST 回應的作業位置金鑰標頭值中，對 URL 提出 GET 要求。  下列狀態會用來反映工作的狀態： `NotStarted` 、 `running` 、 `succeeded` 、 `failed` 、、 `rejected` `cancelling` 和 `cancelled` 。  
+
+您可以取消具有或狀態的作業， `NotStarted` `running` 並使用與 GET 要求相同的 URL 的 DELETE HTTP 呼叫。  如需有關刪除呼叫的詳細資訊，請 [參閱文字分析中的健康情況託管 API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)。
+
+以下是 GET 要求的回應範例。  請注意，輸出可供抓取，直到 `expirationDateTime` 從) 建立作業開始 (24 小時之後，才會在該時間內清除輸出。
+
+```json
+{
+    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
+    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
+    "createdDateTime": "2020-11-18T01:44:55Z",
+    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "status": "succeeded",
+    "errors": [],
+    "results": {
+        "documents": [
+            {
+                "id": "1",
+                "entities": [
+                    {
+                        "offset": 25,
+                        "length": 5,
+                        "text": "100mg",
+                        "category": "Dosage",
+                        "confidenceScore": 1.0,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 31,
+                        "length": 10,
+                        "text": "remdesivir",
+                        "category": "MedicationName",
+                        "confidenceScore": 1.0,
+                        "isNegated": false,
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C4726677"
+                            },
+                            {
+                                "dataSource": "MSH",
+                                "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "NCI",
+                                "id": "C152185"
+                            },
+                            {
+                                "dataSource": "NCI_FDA",
+                                "id": "3QKI37EEHE"
+                            }
+                        ]
+                    },
+                    {
+                        "offset": 42,
+                        "length": 13,
+                        "text": "intravenously",
+                        "category": "MedicationRoute",
+                        "confidenceScore": 1.0,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 56,
+                        "length": 4,
+                        "text": "over",
+                        "category": "Time",
+                        "confidenceScore": 0.87,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 73,
+                        "length": 7,
+                        "text": "120 min",
+                        "category": "Time",
+                        "confidenceScore": 0.99,
+                        "isNegated": false
+                    }
+                ],
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/0",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/2",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "TimeOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/3",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "TimeOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/4",
+                        "target": "#/results/documents/0/entities/1"
+                    }
+                ],
+                "warnings": []
+            }
+        ],
+        "errors": [],
+        "modelVersion": "2020-09-03"
+    }
+}
 ```
 
-若要起始此 Docker 撰寫檔案，請從位於檔案根目錄層級的主控台中執行下列命令：
 
-```bash
-docker-compose up
-```
+### <a name="structure-the-api-request-for-the-container"></a>為容器的 API 要求結構
 
-如需詳細資訊，請參閱有關 [NGINX SSL 終止](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)的 NGINX 檔。
-
-
-## <a name="example-api-request"></a>API 要求範例
-容器會提供以 REST 為基礎的查詢預測端點 API。  我們也提供容器中的視覺效果工具，可透過將 **示範** 附加至容器端點來存取，例如：
-
-```bash
-http://<serverURL>:5000/demo
-```
-
-使用下面的範例捲曲要求，將查詢提交至您已部署的容器， `serverURL` 並將變數取代為適當的值。
+您可以 [使用下列 Postman](text-analytics-how-to-call-api.md) 或以下的範例捲曲要求，將查詢提交至您所部署的容器， `serverURL` 並將變數取代為適當的值。  請注意，容器的 URL 中的 API 版本與託管的 API 不同。
 
 ```bash
 curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
@@ -261,9 +278,9 @@ example.json
 }
 ```
 
-## <a name="api-response-body"></a>API 回應主體
+### <a name="container-response-body"></a>容器回應主體
 
-以下 JSON 是健康情況 API 回應主體的文字分析範例：
+下列 JSON 是來自容器化同步呼叫的健康情況 API 回應主體文字分析範例：
 
 ```json
 {
@@ -273,81 +290,65 @@ example.json
             "entities": [
                 {
                     "id": "0",
-                    "offset": 17,
-                    "length": 11,
-                    "text": "itchy sores",
-                    "category": "SymptomOrSign",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "entities": [
-                {
-                    "id": "0",
-                    "offset": 11,
-                    "length": 4,
-                    "text": "50mg",
+                    "offset": 25,
+                    "length": 5,
+                    "text": "100mg",
                     "category": "Dosage",
                     "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
                     "id": "1",
-                    "offset": 16,
-                    "length": 8,
-                    "text": "benadryl",
+                    "offset": 31,
+                    "length": 10,
+                    "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
                             "dataSource": "UMLS",
-                            "id": "C0700899"
-                        },
-                        {
-                            "dataSource": "CHV",
-                            "id": "0000044903"
-                        },
-                        {
-                            "dataSource": "MMSL",
-                            "id": "899"
+                            "id": "C4726677"
                         },
                         {
                             "dataSource": "MSH",
-                            "id": "D004155"
+                            "id": "C000606551"
                         },
                         {
                             "dataSource": "NCI",
-                            "id": "C300"
+                            "id": "C152185"
                         },
                         {
-                            "dataSource": "NCI_DTP",
-                            "id": "NSC0033299"
-                        },
-                        {
-                            "dataSource": "PDQ",
-                            "id": "CDR0000039163"
-                        },
-                        {
-                            "dataSource": "PSY",
-                            "id": "05760"
-                        },
-                        {
-                            "dataSource": "RXNORM",
-                            "id": "203457"
+                            "dataSource": "NCI_FDA",
+                            "id": "3QKI37EEHE"
                         }
                     ]
                 },
                 {
                     "id": "2",
-                    "offset": 32,
-                    "length": 11,
-                    "text": "twice daily",
-                    "category": "Frequency",
+                    "offset": 42,
+                    "length": 13,
+                    "text": "intravenously",
+                    "category": "MedicationRoute",
                     "confidenceScore": 1.0,
+                    "isNegated": false
+                },
+                {
+                    "id": "3",
+                    "offset": 56,
+                    "length": 4,
+                    "text": "over",
+                    "category": "Time",
+                    "confidenceScore": 0.87,
+                    "isNegated": false
+                },
+                {
+                    "id": "4",
+                    "offset": 73,
+                    "length": 7,
+                    "text": "120 min",
+                    "category": "Time",
+                    "confidenceScore": 0.99,
                     "isNegated": false
                 }
             ],
@@ -355,26 +356,38 @@ example.json
                 {
                     "relationType": "DosageOfMedication",
                     "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
+                    "source": "#/documents/0/entities/0",
+                    "target": "#/documents/0/entities/1"
                 },
                 {
-                    "relationType": "FrequencyOfMedication",
+                    "relationType": "RouteOfMedication",
                     "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
+                    "source": "#/documents/0/entities/2",
+                    "target": "#/documents/0/entities/1"
+                },
+                {
+                    "relationType": "TimeOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/0/entities/3",
+                    "target": "#/documents/0/entities/1"
+                },
+                {
+                    "relationType": "TimeOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/0/entities/4",
+                    "target": "#/documents/0/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-07-24"
+    "modelVersion": "2020-09-03"
 }
 ```
 
 ### <a name="negation-detection-output"></a>否定偵測輸出
 
-使用負偵測時，在某些情況下，單一的負詞彙可能會一次處理數個詞彙。 在 JSON 輸出中，已辨識實體的否定會以旗標的布林值表示 `isNegated` ：
+使用負偵測時，在某些情況下，單一的負詞彙可能會一次處理數個詞彙。 在 JSON 輸出中，已辨識實體的否定會以旗標的布林值表示 `isNegated` ，例如：
 
 ```json
 {

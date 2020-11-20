@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 54f3f0e1b57525a3bd425575ff03a9f3c91b0044
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926609"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951208"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虛擬機器支援案例上的 SAP 工作負載
 在 Azure 中設計 SAP NetWeaver、Business one `Hybris` 或 S/4HANA 系統架構，為各種不同的架構和工具提供許多不同的機會，讓您可以使用這些不同的架構和工具來取得可擴充、有效率且高可用性的部署。 但相依于所使用的作業系統或 DBMS，有一些限制。 此外，並非所有支援內部部署的案例都是在 Azure 中以相同的方式支援。 本檔將引導您使用 Azure Vm，以提供支援的非高可用性設定和高可用性設定和架構。 對於 [Hana 大型實例](./hana-overview-architecture.md)所支援的案例，請參閱 [適用于 hana 大型實例的支援案例](./hana-supported-scenario.md)。 
@@ -278,7 +279,7 @@ SAP Hana 的向外延展案例支援 [SAP Hana 硬體目錄](https://www.sap.com
 
 
 ## <a name="non-supported-scenario"></a>不支援的案例
-Azure 架構上的 SAP 工作負載不支援案例清單。 「 **不支援** 」表示 SAP 和 Microsoft 將無法支援這些設定，且需要延遲至最終相關的協力廠商，以提供軟體來建立這類架構。 其中兩個類別為：
+Azure 架構上的 SAP 工作負載不支援案例清單。 「**不支援**」表示 SAP 和 Microsoft 將無法支援這些設定，且需要延遲至最終相關的協力廠商，以提供軟體來建立這類架構。 其中兩個類別為：
 
 - 存放裝置軟設備： Azure marketplace 中提供了一些儲存體軟體設備。 有些廠商會提供自己的檔，說明如何在 Azure 上使用與 SAP 軟體相關的存放裝置軟設備。 這些存放裝置軟設備的廠商必須提供支援此類存放裝置軟設備的設定或部署。 這項事實也會在 [SAP 支援附注中指出 #2015553](https://launchpad.support.sap.com/#/notes/2015553)
 - 高可用性架構： Azure 上的 SAP 工作負載只有 Pacemaker 和 Windows Server 容錯移轉叢集支援高可用性架構。 如先前所述，將會說明 SIOS 的解決方案， `Datakeeper` 並記載于 Microsoft。 不過，必須 `Datakeeper` 透過 sios 來支援 sios 的元件，因為廠商提供這些元件。 SAP 也列出各種 SAP 附注中的其他經認證的高可用性架構。 其中有些是由 Azure 的協力廠商廠商認證。 不過，支援使用這些產品的設定必須由產品廠商提供。 不同的廠商在 SAP 支援流程中有不同的整合。 在決定在 Azure 上部署的 SAP 設定中使用該產品之前，您應該先瞭解哪些支援流程最適合特定廠商。

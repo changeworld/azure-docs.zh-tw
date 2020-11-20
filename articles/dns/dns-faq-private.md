@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308430"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952381"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 私人 DNS 常見問題集
 
@@ -34,7 +34,7 @@ ms.locfileid: "91308430"
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>相同的私人區域是否可以用於數個虛擬網路以進行解析？
 
-是。 您可以將私人 DNS 區域連結至上千個虛擬網路。 如需詳細資訊，請參閱 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+是。 您可以將私人 DNS 區域連結至上千個虛擬網路。 如需詳細資訊，請參閱 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>屬於不同訂用帳戶的虛擬網路可以連結到私人區域嗎？
 
@@ -75,11 +75,11 @@ Azure DHCP 服務在註冊私人 DNS 區域時，會忽略任何 DNS 尾碼。 �
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>已連結虛擬網路內之虛擬機器上的 DNS 尾碼，是否會變更成私人區域的尾碼？
 
 否。 您已連結虛擬網路中虛擬機器上的 DNS 尾碼會保持為由 Azure 所提供的預設尾碼 ("*.internal.cloudapp.net")。 您可以手動將虛擬機器上的 DNS 尾碼變更為私人區域的尾碼。
-如需如何變更此後綴的指引，請參閱 [使用動態 DNS 在您自己的 DNS 伺服器中註冊主機名稱](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
+如需如何變更此後綴的指引，請參閱 [使用動態 DNS 在您自己的 DNS 伺服器中註冊主機名稱](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS 私人區域的使用量限制為何？
 
-如需 Azure DNS 私人區域的使用量限制詳細資訊，請參閱 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) 。
+如需 Azure DNS 私人區域的使用量限制詳細資訊，請參閱 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits) 。
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>為什麼不會在新的入口網站體驗中顯示現有的私人 DNS 區域？
 

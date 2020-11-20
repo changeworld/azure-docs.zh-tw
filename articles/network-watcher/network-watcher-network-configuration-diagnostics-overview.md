@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2020
 ms.author: damendo
-ms.openlocfilehash: 4d308b8a1a589308e2481c8bb9e0dc9ec64be25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad60b0be8a9a5341c71d760f98c0db84a72763c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994518"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951514"
 ---
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Azure 網路監看員中的網路設定診斷簡介
 
 網路設定診斷工具可協助客戶瞭解哪些流量會在您的 Azure 虛擬網路中被允許或拒絕，以及詳細的偵錯工具資訊。 它可協助您瞭解 NSG 規則是否已正確設定。 
 
 ## <a name="pre-requisites"></a>必要條件
-若要使用網路設定診斷，必須在您的訂用帳戶中啟用網路監看員。 請參閱建立要啟用 [的 Azure 網路](https://docs.microsoft.com/azure/network-watcher/network-watcher-create) 監看員實例。
+若要使用網路設定診斷，必須在您的訂用帳戶中啟用網路監看員。 請參閱建立要啟用 [的 Azure 網路](./network-watcher-create.md) 監看員實例。
 
 ## <a name="background"></a>背景
 
@@ -39,7 +39,6 @@ ms.locfileid: "90994518"
 ## <a name="next-steps"></a>後續步驟
 
 透過其他介面使用網路設定診斷
- - [REST API](https://docs.microsoft.com/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)
- - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
- - [Azure CLI](https://docs.microsoft.com/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_run_configuration_diagnostic)
-
+ - [REST API](/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)
+ - [PowerShell](/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
+ - [Azure CLI](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_run_configuration_diagnostic)

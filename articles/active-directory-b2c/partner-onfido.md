@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259215"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953676"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Onfido 的教學課程
 
@@ -24,13 +24,13 @@ ms.locfileid: "91259215"
 
 在此範例中，我們會在註冊或登入流程中連接 Onfido 的服務，以進行身分識別驗證。 使用者可以存取的產品和服務的明智決策是根據 Onfido 的結果進行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
 - Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 
-- 連結至 Azure 訂用帳戶的[Azure AD B2C 租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)使用者。
+- 連結至 Azure 訂用帳戶的[Azure AD B2C 租](./tutorial-create-tenant.md)使用者。
 
 - Onfido [試用帳戶](https://onfido.com/signup/)。
 
@@ -74,7 +74,7 @@ Onfido 整合包含下列元件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-- 將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) 部署至 Azure 服務。 您可以依照下列 [指示](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
+- 將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
 - 設定 CORS，將允許的 **來源** 新增為 HTTPs：//{your_tenant_name} >b2clogin.com .com
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Onfido 整合包含下列元件：
 
 #### <a name="adding-sensitive-configuration-settings"></a>新增敏感性設定
 
-您可以在 [Azure 中的 App service](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)中設定應用程式設定。 App service 可讓您安全地設定設定，而不需要將它們簽入存放庫。 Rest API 需要下列設定：
+您可以在 [Azure 中的 App service](../app-service/configure-common.md#configure-app-settings)中設定應用程式設定。 App service 可讓您安全地設定設定，而不需要將它們簽入存放庫。 Rest API 需要下列設定：
 
 | 應用程式設定名稱 | 來源 | 注意 |
 |:-------------------------|:-------|:-------|
@@ -92,13 +92,13 @@ Onfido 整合包含下列元件：
 
 #### <a name="configure-your-storage-location"></a>設定您的儲存位置
 
-1. [在您的儲存體帳戶中設定 blob 儲存體容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
+1. [在您的儲存體帳戶中設定 blob 儲存體容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 
 2. 將 ui 檔案從 [ui 資料夾](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) 儲存至 blob 容器。
 
 3. 依照下列指示，允許 CORS 存取您所建立的儲存體容器：
 
-   a. 移至 [允許的**設定**  > **來源**]，輸入 `https://{your_tenant_name}.b2clogin.com` 。 將您的租使用者名稱取代為您 Azure AD B2C 租使用者的名稱。 例如， https://fabrikam.b2clogin.com 。 輸入您的租使用者名稱時，全部使用小寫字母。
+   a. 移至 [允許的 **設定**  > **來源**]，輸入 `https://{your_tenant_name}.b2clogin.com` 。 將您的租使用者名稱取代為您 Azure AD B2C 租使用者的名稱。 例如， https://fabrikam.b2clogin.com 。 輸入您的租使用者名稱時，全部使用小寫字母。
 
    b. 針對 **允許的方法**，請選取 `GET` 和 `PUT` 。
 
@@ -106,11 +106,11 @@ Onfido 整合包含下列元件：
 
 #### <a name="update-ui-files"></a>更新 UI 檔案
 
-1. 在 UI 檔案中，移至資料夾[ **ocean_blue**](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI/ocean_blue)
+1. 在 UI 檔案中，移至資料夾 [ **ocean_blue**](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI/ocean_blue)
 
 2. 開啟每個 html 檔案。
 
-3. 尋找並取代 {您的 ui-blob-容器-url}，以及 UI **ocean_blue**、 **dist**和 **資產** 資料夾所在位置的 url
+3. 尋找並取代 {您的 ui-blob-容器-url}，以及 UI **ocean_blue**、 **dist** 和 **資產** 資料夾所在位置的 url
 
 4. 尋找並以中繼 API app service 的 URL 取代 {您的中繼 api-url}。
 
@@ -118,7 +118,7 @@ Onfido 整合包含下列元件：
 
 1. 將 ui 檔案從 UI 資料夾儲存至 blob 容器。
 
-2. 使用 [Azure 儲存體總管](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) 來管理您的檔案和存取權限。
+2. 使用 [Azure 儲存體總管](../virtual-machines/disks-use-storage-explorer-managed-disks.md) 來管理您的檔案和存取權限。
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>第3部分-設定 Azure AD B2C
 
@@ -135,14 +135,14 @@ Onfido 整合包含下列元件：
 | {your_tenant_extensions_appid}                         | 租使用者儲存體應用程式的應用程式識別碼                                      | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_tenant_extensions_app_objectid}                  | 租使用者儲存體應用程式的物件識別碼                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | App insights 實例的檢測金鑰 *| 01234567-89ab-cdef-0123-456789abcdef|
-|{your_ui_file_base_url}| UI **ocean_blue**、 **dist**和 **資產** 資料夾所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
+|{your_ui_file_base_url}| UI **ocean_blue**、 **dist** 和 **資產** 資料夾所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
 | {your_app_service_URL}                                 | 您已設定之 app service 的 URL                                             | `https://yourapp.azurewebsites.net`          |
 
 * App insights 可以位於不同的租使用者中。 此為選用步驟。 如果不需要，請移除對應的 TechnicalProfiles 和 >orchestrationsteps。
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>第4部分-設定 Azure AD B2C 原則
 
-如需如何設定 Azure AD B2C 租使用者和設定原則的指示，請參閱這 [份檔](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) 。
+如需如何設定 Azure AD B2C 租使用者和設定原則的指示，請參閱這 [份檔](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) 。
 
 >[!NOTE]
 > 建議的最佳作法是在 [屬性集合] 頁面中，將同意通知新增至客戶。 通知使用者資訊將傳送至協力廠商服務進行身分識別驗證。
@@ -169,6 +169,6 @@ Onfido 整合包含下列元件：
 
 如需詳細資訊，請參閱下列文章：
 
-- [Azure AD B2C 中的自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自訂原則](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)

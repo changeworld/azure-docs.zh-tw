@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b7bb33dfbf29b7e448887ce992d03009133b2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87482833"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953483"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保護 Azure API 管理 API
 
@@ -35,7 +35,7 @@ ms.locfileid: "87482833"
 
 當您在 Azure API 管理中使用 Azure AD B2C 保護 API 時，您需要數個適用於在 APIM 中建立之[輸入原則](../api-management/api-management-howto-policies.md)的值。 首先，記錄您先前在 Azure AD B2C 租用戶中建立之應用程式的應用程式識別碼。 如果您使用的是您在先決條件中所建立的應用程式，請使用 *webapp1* 的應用程式識別碼。
 
-若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -50,7 +50,7 @@ ms.locfileid: "87482833"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
 1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 在 [ **管理**] 底下，選取 [ **應用程式] (舊版) **。
+1. 在 [ **管理**] 底下，選取 [ **應用程式] (舊版)**。
 1. 針對 *webapp1* 或您先前建立的另一個應用程式，記錄 [應用程式識別碼] 欄的值。
 
 * * *
@@ -146,7 +146,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 Azure API 管理服務執行個體。
 1. 選取 **訂用帳戶** 。
 1. 選取 [產品:無限制] 的省略符號，然後選取 [顯示/隱藏金鑰]。
-1. 記錄產品的**主要金鑰**。 您會在 Postman 的 HTTP 要求中，使用此金鑰作為 `Ocp-Apim-Subscription-Key` 標頭。
+1. 記錄產品的 **主要金鑰**。 您會在 Postman 的 HTTP 要求中，使用此金鑰作為 `Ocp-Apim-Subscription-Key` 標頭。
 
 ![已在 Azure 入口網站中選取 [顯示/隱藏金鑰] 的 [訂用帳戶金鑰] 頁面](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
@@ -165,7 +165,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
     | `Authorization` | 您先前記錄的已編碼權杖值，前面加上 `Bearer ` (在 "Bearer" 後面加上空格) |
     | `Ocp-Apim-Subscription-Key` | 您稍早記錄的 APIM 訂用帳戶金鑰 |
 
-    您的 **GET** 要求 URL 和**標頭**應如下所示：
+    您的 **GET** 要求 URL 和 **標頭** 應如下所示：
 
     ![顯示 GET 要求 URL 和標頭的 Postman UI](media/secure-apim-with-b2c-token/postman-01-headers.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396768"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951633"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用網路監看員疑難排解來監視 VPN 閘道
 
@@ -51,7 +51,7 @@ Runbook 會使用資源疑難排解 API 檢查連線狀態，利用指令碼檢�
 
 ### <a name="create-the-runbook"></a>建立 runbook
 
-設定範例的第一個步驟是建立 runbook。 這個範例會使用「執行身分」帳戶。 若要深入了解執行身分帳戶，請造訪[使用 Azure 執行身分帳戶驗證 Runbook](../automation/automation-create-runas-account.md)
+設定範例的第一個步驟是建立 runbook。 這個範例會使用「執行身分」帳戶。 若要深入了解執行身分帳戶，請造訪[使用 Azure 執行身分帳戶驗證 Runbook](../automation/manage-runas-account.md)
 
 ### <a name="step-1"></a>步驟 1
 
@@ -61,13 +61,13 @@ Runbook 會使用資源疑難排解 API 檢查連線狀態，利用指令碼檢�
 
 ### <a name="step-2"></a>步驟 2
 
-按一下 [新增 runbook]**** 來啟動 runbook 的建立程序。
+按一下 [新增 runbook] 來啟動 runbook 的建立程序。
 
 ![runbook 刀鋒視窗][2]
 
 ### <a name="step-3"></a>步驟 3
 
-在 [快速建立]**** 下，按一下 [建立新的 runbook]**** 來建立 runbook。
+在 [快速建立] 下，按一下 [建立新的 runbook] 來建立 runbook。
 
 ![新增 runbook 刀鋒視窗][3]
 
@@ -81,7 +81,7 @@ Runbook 會使用資源疑難排解 API 檢查連線狀態，利用指令碼檢�
 
 runbook 會在此步驟中建立，下列程式碼範例會提供範例所需的所有程式碼。 包含在程式碼中的專案必須 \<value\> 以您的訂用帳戶中的值取代。
 
-按一下 [儲存]**** 使用下列程式碼
+按一下 [儲存] 使用下列程式碼
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -145,32 +145,32 @@ else
 
 ### <a name="step-6"></a>步驟 6
 
-儲存 runbook 後，排程必須連結到它以自動啟動 runbook。 若要啟動處理程序，請按一下 [排程]****。
+儲存 runbook 後，排程必須連結到它以自動啟動 runbook。 若要啟動處理程序，請按一下 [排程]。
 
 ![步驟 6][6]
 
 ## <a name="link-a-schedule-to-the-runbook"></a>將排程連結至 runbook
 
-您必須建立新的排程。 按一下 [將排程連結至您的 runbook]****。
+您必須建立新的排程。 按一下 [將排程連結至您的 runbook]。
 
 ![步驟 7][7]
 
 ### <a name="step-1"></a>步驟 1
 
-在 [排程]**** 刀鋒視窗中，按一下 [建立新的排程]****
+在 [排程] 刀鋒視窗中，按一下 [建立新的排程]
 
 ![步驟 8][8]
 
 ### <a name="step-2"></a>步驟 2
 
-在 [新增排程]**** 刀鋒視窗中填寫排程資訊。 下列清單中，是可以設定的值︰
+在 [新增排程] 刀鋒視窗中填寫排程資訊。 下列清單中，是可以設定的值︰
 
 - **名稱** - 排程的易記名稱。
 - **說明** - 排程的說明。
 - **啟動** - 這個值是組成排程所觸發之時間的日期、時間和時區的組合。
-- **循環** - 這個值會決定排程重複。  有效值為 [一次]**** 或 [重複]****。
+- **循環** - 這個值會決定排程重複。  有效值為 [一次] 或 [重複]。
 - **重複頻率** - 小時、天、週或月的排程循環間隔。
-- **設定到期日** - 值會決定排程是否應過期。 可以設定為 [是]**** 或 [否]****。 如果選擇 [是]，則會提供有效的日期和時間。
+- **設定到期日** - 值會決定排程是否應過期。 可以設定為 [是] 或 [否]。 如果選擇 [是]，則會提供有效的日期和時間。
 
 > [!NOTE]
 > 如果您需要一個 runbook 的執行頻率超過一小時，必須在不同的時間間隔建立多個排程 (也就是在每小時後 15、 30、45 分鐘)

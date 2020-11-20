@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 18979ba8cbc4e68bf79275059c6c1c976578c407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089531"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953367"
 ---
 # <a name="secure-your-restful-services"></a>保護您的 RESTful 服務 
 
@@ -111,7 +111,7 @@ ms.locfileid: "92089531"
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>準備自我簽署憑證 (選擇性)
 
-針對非生產環境，若您還沒有憑證，可以使用自我簽署憑證。 在 Windows 上，您可以使用 PowerShell 的 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) (英文) Cmdlet 來產生憑證。
+針對非生產環境，若您還沒有憑證，可以使用自我簽署憑證。 在 Windows 上，您可以使用 PowerShell 的 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) (英文) Cmdlet 來產生憑證。
 
 1. 執行此 PowerShell 命令來產生自我簽署憑證。 針對您的應用程式與 Azure AD B2C 租用戶名稱，適當地修改 `-Subject` 引數。 您也可以調整 `-NotAfter` 日期，為憑證指定不同的到期日。
     ```powershell
@@ -230,9 +230,9 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>取得存取權杖 
 
-您可以透過下列其中一種方式取得存取權杖：[從同盟識別提供者](idp-pass-through-custom.md)取得、透過呼叫傳回存取權杖的 REST API 取得、使用 [ROPC 流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) 取得，或使用[用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)取得。  
+您可以透過下列其中一種方式取得存取權杖：[從同盟識別提供者](idp-pass-through-custom.md)取得、透過呼叫傳回存取權杖的 REST API 取得、使用 [ROPC 流程](../active-directory/develop/v2-oauth-ropc.md) 取得，或使用[用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)取得。  
 
-下列範例會使用 REST API 技術設定檔，使用以 HTTP 基本驗證傳遞的用戶端認證，向 Azure AD 權杖端點提出要求。 若要在 Azure AD 中進行此設定，請參閱 [Microsoft 身分識別平台與 OAuth 2.0 用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) (機器翻譯)。 您可能必須修改此設定，才能聯繫您的識別提供者。 
+下列範例會使用 REST API 技術設定檔，使用以 HTTP 基本驗證傳遞的用戶端認證，向 Azure AD 權杖端點提出要求。 若要在 Azure AD 中進行此設定，請參閱 [Microsoft 身分識別平台與 OAuth 2.0 用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) (機器翻譯)。 您可能必須修改此設定，才能聯繫您的識別提供者。 
 
 針對 ServiceUrl，請以您的 Azure AD 租用戶名稱取代 your-tenant-name。 如需所有可用的選項，請參閱 [RESTful 技術設定檔](restful-technical-profile.md)參考。
 
@@ -367,4 +367,4 @@ Authorization: Bearer <token>
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 IEF 參考中的 [RESTful 技術設定檔](restful-technical-profile.md)元素。 
+- 深入了解 IEF 參考中的 [RESTful 技術設定檔](restful-technical-profile.md)元素。

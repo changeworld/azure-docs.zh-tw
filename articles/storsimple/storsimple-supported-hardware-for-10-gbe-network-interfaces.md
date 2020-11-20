@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68965023"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954081"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>10 GbE 網路介面在 StorSimple 裝置上支援的硬體
 
@@ -37,7 +37,7 @@ Microsoft 已經測試下列小型尺寸隨插即用 (SFP) 收發器、纜線以
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>纜線
-| S. 不可以。 | 請確定 | 模型 |
+| S. 否。 | 請確定 | 模型 |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -45,7 +45,7 @@ Microsoft 已經測試下列小型尺寸隨插即用 (SFP) 收發器、纜線以
 | 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>交換器
-| S. 不可以。 | 請確定 | 模型 |
+| S. 否。 | 請確定 | 模型 |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -73,7 +73,7 @@ Mellanox 已經測試下列小型尺寸隨插即用 (SFP) 收發器、纜線以�
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox 所支援的纜線及模組
 下表列出 Mellanox 所支援的纜線及模組。 這些項目尚未經過 Microsoft 測試，但可能適用您的 StorSimple 裝置。
 
-| S. 不可以。 | 速度 | 模型 | 描述 | 請確定 |
+| S. 否。 | 速度 | 模型 | 描述 | 請確定 |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |被動銅纜線 SFP + 10 Gb/s 1m |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |被動銅纜線 SFP + 10 Gb/s 2m |Arista |
@@ -114,7 +114,7 @@ Mellanox 已經測試下列小型尺寸隨插即用 (SFP) 收發器、纜線以�
 ### <a name="switches-supported-by-mellanox"></a>Mellanox 所支援的切換器
 下表列出 Mellanox 所支援的切換器。 這些項目尚未經過 Microsoft 測試，但可能適用您的 StorSimple 裝置。
 
-| S. 不可以。 | 速度 | 模型 | 描述 | 請確定 |
+| S. 否。 | 速度 | 模型 | 描述 | 請確定 |
 | --- | --- | --- | --- | --- |
 | 1. |10GbE |516733-B21 |HP ProCurve 6120XG 10GbE 乙太網路刀鋒視窗切換器 |HP |
 | 2. |10GbE |538113-B21 |HP 10GbE 傳遞模組 (PTM) |HP |
@@ -125,5 +125,4 @@ Mellanox 已經測試下列小型尺寸隨插即用 (SFP) 收發器、纜線以�
 | 7. |1GbE |6120G |HP ProCurve 6120G/XG 1GbE 交換器刀鋒視窗 |HP |
 
 ## <a name="next-steps"></a>後續步驟
-[深入了解 StorSimple 硬體元件與狀態](storsimple-monitor-hardware-status.md)。
-
+[深入了解 StorSimple 硬體元件與狀態](./storsimple-8000-monitor-hardware-status.md)。

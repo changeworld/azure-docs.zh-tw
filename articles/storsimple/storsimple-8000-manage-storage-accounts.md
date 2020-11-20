@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978708"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951720"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 裝置管理員服務來管理儲存體帳戶認證
 
 ## <a name="overview"></a>概觀
 
-StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯示所有可在 StorSimple 裝置管理員服務中建立的全域服務參數。 這些參數可以套用到與該服務連線的所有裝置，還包括：
+StorSimple 裝置管理員服務的刀鋒視窗中，[設定] 區段會顯示所有可在 StorSimple 裝置管理員服務中建立的全域服務參數。 這些參數可以套用到與該服務連線的所有裝置，還包括：
 
 * 儲存體帳戶認證
 * 頻寬範本 
@@ -37,7 +37,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 儲存體帳戶包含的認證可供 StorSimple 裝置用來存取雲端服務提供者的儲存體帳戶。 對於 Microsoft Azure 儲存體帳戶，像是帳戶名稱與主要存取金鑰就屬於這些認證。 
 
-在 [儲存體帳戶認證]**** 刀鋒視窗上，為訂用帳戶計費而建立的所有儲存體帳戶都會以表格顯示，其中包含下列資訊：
+在 [儲存體帳戶認證] 刀鋒視窗上，為訂用帳戶計費而建立的所有儲存體帳戶都會以表格顯示，其中包含下列資訊：
 
 * **名稱** – 建立時指派給帳戶的唯一名稱。
 * **啟用 SSL** –是否啟用 TLS，以及裝置對雲端通訊是否透過安全通道。
@@ -55,7 +55,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 有三種儲存體帳戶類型能與 StorSimple 裝置搭配使用。
 
 * **自動產生的儲存體帳戶** – 正如其名，這類型的儲存體帳戶是在初次建立服務時自動產生。 若要深入了解如何建立此儲存體帳戶，請參閱[部署您的內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)中的[步驟 1：建立新的服務](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service)。 
-* **服務訂用帳戶中的儲存體帳戶** – 這些帳戶是 Azure 儲存體帳戶，與和服務相同的訂用帳戶相關聯。 若要深入了解如何建立這些儲存體帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。 
+* **服務訂用帳戶中的儲存體帳戶** – 這些帳戶是 Azure 儲存體帳戶，與和服務相同的訂用帳戶相關聯。 若要深入了解如何建立這些儲存體帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。 
 * **服務訂用帳戶以外的儲存體帳戶** – 這些是與您的服務沒有相關聯，且可能在服務建立之前即存在的 Azure 儲存體帳戶。
 
 ## <a name="add-a-storage-account"></a>新增儲存體帳戶
@@ -75,22 +75,22 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 #### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>若要新增 StorSimple 裝置管理員服務訂用帳戶外的 Azure 儲存體帳戶認證
 
-1. 請瀏覽至您的 StorSimple 裝置管理員服務，選取它並按兩下。 這會開啟 [概觀]**** 刀鋒視窗。
-2. 在 [設定]**** 區段內選取 [儲存體帳戶認證]****。 這樣會列出與 StorSimple 裝置管理員服務相關聯的任何現有儲存體帳戶認證。
+1. 請瀏覽至您的 StorSimple 裝置管理員服務，選取它並按兩下。 這會開啟 [概觀] 刀鋒視窗。
+2. 在 [設定] 區段內選取 [儲存體帳戶認證]。 這樣會列出與 StorSimple 裝置管理員服務相關聯的任何現有儲存體帳戶認證。
 3. 按一下 [新增] 。
-4. 在 [新增儲存體帳戶認證]**** 刀鋒視窗中，執行下列步驟︰
+4. 在 [新增儲存體帳戶認證] 刀鋒視窗中，執行下列步驟︰
    
-    1. 在 [訂用帳戶]**** 中，選取 [其他]****。
+    1. 在 [訂用帳戶] 中，選取 [其他]。
    
     2. 提供 Azure 儲存體帳戶認證的名稱。
    
-    3. 在 [儲存體帳戶存取金鑰]**** 文字方塊中，提供 Azure 儲存體帳戶認證的主要「存取金鑰」。 若要取得此金鑰，請移至 Azure 儲存體服務，選取您的儲存體帳戶認證，然後按一下 [管理帳戶金鑰]****。 現在，您可以複製主要存取金鑰。
+    3. 在 [儲存體帳戶存取金鑰]文字方塊中，提供 Azure 儲存體帳戶認證的主要「存取金鑰」。 若要取得此金鑰，請移至 Azure 儲存體服務，選取您的儲存體帳戶認證，然後按一下 [管理帳戶金鑰]。 現在，您可以複製主要存取金鑰。
    
-    4. 若要啟用 TLS，請按一下 [ **啟用** ] 按鈕，為您的 StorSimple 裝置管理員服務與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才按一下 [停用]**** 按鈕。
+    4. 若要啟用 TLS，請按一下 [ **啟用** ] 按鈕，為您的 StorSimple 裝置管理員服務與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才按一下 [停用] 按鈕。
    
     5. 按一下 [新增] 。 成功建立儲存體帳戶認證之後會通知您。
 
-5. 新建立的儲存體帳戶認證會顯示在 [StorSimple 設定裝置管理員服務] 刀鋒視窗的 [儲存體帳戶認證]**** 下方。
+5. 新建立的儲存體帳戶認證會顯示在 [StorSimple 設定裝置管理員服務] 刀鋒視窗的 [儲存體帳戶認證] 下方。
    
 
 
@@ -100,17 +100,17 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 #### <a name="to-edit-a-storage-account"></a>若要編輯儲存體帳戶
 
-1. 移至您的 StorSimple 裝置管理員服務。 在 [設定]**** 區段中，按一下 [儲存體帳戶認證]****。
+1. 移至您的 StorSimple 裝置管理員服務。 在 [設定] 區段中，按一下 [儲存體帳戶認證]。
 
     ![儲存體帳號憑證2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
-2. 在 [儲存體帳戶認證]**** 刀鋒視窗中，從儲存體帳戶認證清單中，選取並按一下您要編輯的項目。 
+2. 在 [儲存體帳戶認證] 刀鋒視窗中，從儲存體帳戶認證清單中，選取並按一下您要編輯的項目。 
 
-3. 您可以修改 [啟用 SSL]**** 選項。 您也可以按一下 [更多]****，然後選取 [同步存取金鑰]**** 以替換您的儲存體帳戶存取金鑰。 如需如何執行金鑰替換的詳細資訊，請參閱[儲存體帳戶的金鑰替換](#key-rotation-of-storage-accounts)。 修改設定之後，按一下 [儲存]****。 
+3. 您可以修改 [啟用 SSL] 選項。 您也可以按一下 [更多]，然後選取 [同步存取金鑰] 以替換您的儲存體帳戶存取金鑰。 如需如何執行金鑰替換的詳細資訊，請參閱[儲存體帳戶的金鑰替換](#key-rotation-of-storage-accounts)。 修改設定之後，按一下 [儲存]。 
 
     ![儲存編輯好的儲存體帳戶認證](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
 
-4. 當提示確認時，請按一下 [是]****。 
+4. 當提示確認時，請按一下 [是]。 
 
     ![確認修改](./media/storsimple-8000-manage-storage-accounts/editstorageacct4.png)
 
@@ -123,9 +123,9 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 #### <a name="to-delete-a-storage-account"></a>若要刪除儲存體帳戶
 
-1. 移至您的 StorSimple 裝置管理員服務。 在 [設定]**** 區段中，按一下 [儲存體帳戶認證]****。
+1. 移至您的 StorSimple 裝置管理員服務。 在 [設定] 區段中，按一下 [儲存體帳戶認證]。
 
-2. 在儲存體帳戶的表格式清單中，將滑鼠停留在您想要刪除的帳戶上方。 以滑鼠右鍵按一下以叫用操作功能表，然後按一下 [刪除]****。
+2. 在儲存體帳戶的表格式清單中，將滑鼠停留在您想要刪除的帳戶上方。 以滑鼠右鍵按一下以叫用操作功能表，然後按一下 [刪除]。
 
     ![刪除儲存體帳戶認證](./media/storsimple-8000-manage-storage-accounts/deletestorageacct1.png)
 
@@ -137,7 +137,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 基於安全性理由，通常是在資料中心內才需要替換金鑰。 每個 Microsoft Azure 訂用帳戶可以有一或多個相關聯的儲存體帳戶。 訂用帳戶與每個儲存體帳戶的存取金鑰可以控制這些帳戶的存取權。 
 
-當您建立儲存體帳戶時，Azure 會產生兩個 512 位元的儲存體存取金鑰，可在存取儲存體帳戶時用於驗證。 有這兩個儲存體存取金鑰，您不需要中斷儲存體服務或對該服務的存取，就能重新產生金鑰。 目前使用中的金鑰是「主要」** 金鑰，而備份金鑰則稱為「次要」** 金鑰。 當 Microsoft Azure StorSimple 裝置存取您的雲端儲存體服務提供者時必須提供這些兩個機碼之一。
+當您建立儲存體帳戶時，Azure 會產生兩個 512 位元的儲存體存取金鑰，可在存取儲存體帳戶時用於驗證。 有這兩個儲存體存取金鑰，您不需要中斷儲存體服務或對該服務的存取，就能重新產生金鑰。 目前使用中的金鑰是「主要」金鑰，而備份金鑰則稱為「次要」金鑰。 當 Microsoft Azure StorSimple 裝置存取您的雲端儲存體服務提供者時必須提供這些兩個機碼之一。
 
 ## <a name="what-is-key-rotation"></a>什麼是替換金鑰？
 
@@ -152,31 +152,30 @@ Microsoft Azure 系統管理員可以直接存取儲存體帳戶 (透過 Microso
 若要向 StorSimple 裝置管理員服務通知此變更，您需要存取 StorSimple 裝置管理員服務，存取儲存體帳戶，然後同步處理主要金鑰或次要金鑰 (根據何者已變更而定)。 服務接著會取得最新的金鑰，將金鑰加密，然後將加密的金鑰傳送給裝置。
 
 #### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service"></a>若要同步服務之相同訂用帳戶中的儲存體帳戶金鑰 
-1. 移至您的 StorSimple 裝置管理員服務。 在 [設定]**** 區段中，按一下 [儲存體帳戶認證]****。
+1. 移至您的 StorSimple 裝置管理員服務。 在 [設定] 區段中，按一下 [儲存體帳戶認證]。
 2. 從儲存體帳戶的表格式清單中，按一下您要修改的項目。 
 
     ![同步處理金鑰](./media/storsimple-8000-manage-storage-accounts/syncaccesskey1.png)
 
-3. 按一下 [更多]****，然後選取 [同步存取金鑰]**** 以進行替換。   
+3. 按一下 [更多]，然後選取 [同步存取金鑰] 以進行替換。   
 
     ![同步處理金鑰2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
-4. 在 StorSimple 裝置管理員服務中，您需要更新先前在 Microsoft Azure 儲存體服務中變更的金鑰。 如果主要存取金鑰有所變更 (已重新產生)，請選取 [主要]**** 金鑰。 如果次要金鑰有所變更，請選取 [次要]**** 金鑰。 按一下 [同步處理金鑰]****。
+4. 在 StorSimple 裝置管理員服務中，您需要更新先前在 Microsoft Azure 儲存體服務中變更的金鑰。 如果主要存取金鑰有所變更 (已重新產生)，請選取 [主要] 金鑰。 如果次要金鑰有所變更，請選取 [次要] 金鑰。 按一下 [同步處理金鑰]。
       
       ![同步處理金鑰3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 在成功同步金鑰之後，系統將會通知您。
 
 #### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>若要同步處理服務訂用帳戶外的儲存體帳戶金鑰
-1. 在 [服務]**** 頁面上，按一下 [設定]**** 索引標籤。
-2. 按一下 [新增/編輯儲存體帳戶]****。
+1. 在 [服務] 頁面上，按一下 [設定] 索引標籤。
+2. 按一下 [新增/編輯儲存體帳戶]。
 3. 在對話方塊中，執行下列動作：
    
    1. 選取您要更新其存取金鑰的儲存體帳戶。
-   2. 您必須更新 StorSimple 裝置管理員服務中的儲存體存取金鑰。 在此情況下，您可以看到儲存體存取金鑰。 在 [儲存體帳戶存取金鑰]**** 方塊中輸入新的金鑰。 
+   2. 您必須更新 StorSimple 裝置管理員服務中的儲存體存取金鑰。 在此情況下，您可以看到儲存體存取金鑰。 在 [儲存體帳戶存取金鑰] 方塊中輸入新的金鑰。 
    3. 儲存您的變更。 現在應已更新您的儲存體帳戶存取金鑰。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 [StorSimple 安全性](storsimple-8000-security.md)。
 * 深入了解[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856189"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952313"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比較與 Azure HDInsight 叢集搭配使用的儲存體選項
 
@@ -36,6 +36,8 @@ ms.locfileid: "91856189"
 |Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | N/A | 全部 | 全部 |
 |Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 全部 | 全部 |
 |Azure Data Lake Storage Gen1| N/A | 階層式 (檔案系統)  | N/A | N/A | N/A | 僅限3。6 | HBase 以外的所有 |
+|Azure 儲存體| 區塊 Blob| Object | 區塊 Blob | Premium | N/A| 3.6+ | 只有具有加速寫入的 HBase|
+|Azure Data Lake Storage Gen2| 區塊 Blob| 階層式 (檔案系統)  | 區塊 Blob | Premium | N/A| 3.6+ | 只有具有加速寫入的 HBase|
 
 * * 針對 HDInsight 叢集，只有次要儲存體帳戶可以是 BlobStorage 類型，而分頁 Blob 不是支援的儲存體選項。
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170219"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953877"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Arkose Labs 的教學課程
 
@@ -35,7 +35,7 @@ ms.locfileid: "86170219"
 
 ![Arkose Labs 架構圖表](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-| 步驟  | 說明 |
+| 步驟  | 描述 |
 |---|---|
 |1     | 使用者使用先前建立的帳戶登入。 當使用者選取 [提交] 時，就會出現 Arkose Labs 強制挑戰。 當使用者完成挑戰之後，狀態就會傳送至 Arkose Labs 以產生權杖。        |
 |2     |  Arkose Labs 會將權杖傳回 Azure AD B2C。       |
@@ -66,7 +66,7 @@ ms.locfileid: "86170219"
 
 4. 選取 [新增] ****。
 
-5. 在 [ **資源群組**] 底下，選取 [ **建立新**的]，輸入新資源群組的名稱，然後選取 **[確定]**。
+5. 在 [ **資源群組**] 底下，選取 [ **建立新** 的]，輸入新資源群組的名稱，然後選取 **[確定]**。
 
 6. 輸入儲存體帳戶的名稱。 您選擇的名稱在 Azure 中必須是唯一的、必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。
 
@@ -90,7 +90,7 @@ ms.locfileid: "86170219"
 
 2. 針對 [  **允許的來源**]，輸入  `https://your-tenant-name.b2clogin.com` 。 將您的租使用者名稱取代為您 Azure AD B2C 租使用者的名稱。 例如， `https://fabrikam.b2clogin.com`。 輸入您的租使用者名稱時，全部使用小寫字母。
 
-3. 針對 **允許的方法**，請選取 **GET**、 **PUT**和 **OPTIONS**。
+3. 針對  **允許的方法**，請選取  **GET**、 **PUT** 和  **OPTIONS**。
 
 4. 針對 [允許的標頭]，輸入星號 (*)。
 
@@ -100,13 +100,13 @@ ms.locfileid: "86170219"
 
    ![Arkose Labs 註冊和登入](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 
 ### <a name="part-2--set-up-a-back-end-server"></a>第2部分-設定後端伺服器
 
 下載 Git Bash，並遵循下列步驟：
 
-1. 請依照指示來建立 [web 應用程式](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)，直到訊息「恭喜！您已將第一個 PHP 應用程式部署至 App Service」顯示。
+1. 請依照指示來建立 [web 應用程式](../app-service/quickstart-php.md)，直到訊息「恭喜！您已將第一個 PHP 應用程式部署至 App Service」顯示。
 
 2. 開啟您的本機資料夾，然後將該 **php** 檔案重新命名為 **verify-token php**。
 
@@ -138,7 +138,7 @@ ms.locfileid: "86170219"
 
 5. 將 index.html 檔案上傳至上面建立的 blob 儲存體。
 
-6. 移至**儲存體**  >  **容器**  >  **上傳**。
+6. 移至 **儲存體**  >  **容器**  >  **上傳**。
 
 #### <a name="set-up-azure-ad-b2c"></a>設定 Azure AD B2C
 
@@ -149,7 +149,7 @@ ms.locfileid: "86170219"
 
 2. 在您的 [使用者流程](user-flow-javascript-overview.md)中啟用 JavaScript。
 
-3. 在相同的 [使用者流程] 頁面上，啟用自訂頁面 url：移至**使用者流程**  >  **頁面配置**  >  **使用自訂頁面內容**  =  **[是**  >  **插入自訂頁面 URL**]。
+3. 在相同的 [使用者流程] 頁面上，啟用自訂頁面 url：移至 **使用者流程**  >  **頁面配置**  >  **使用自訂頁面內容**  =  **[是**  >  **插入自訂頁面 URL**]。
 此自訂頁面 URL 是從 blob 儲存體內 index.html 檔案的位置取得  
 
    ![顯示 Arkose Labs 儲存體 url 的螢幕擷取畫面](media/partner-arkose-labs/arkose-storage-url.png)
@@ -176,7 +176,7 @@ ms.locfileid: "86170219"
 
 7. 當您選取 [ **繼續**] 之後，就會出現 Arkose Labs 謎。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列文章：
 

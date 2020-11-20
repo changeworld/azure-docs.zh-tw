@@ -11,12 +11,12 @@ ms.date: 10/15/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c0ab4d367d2ca9fd59c26ce8d36b5f80dcb832c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 39d23313f9d00ef48f64327dd10356a91b9d13b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840622"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951888"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中啟用多重要素驗證 | Microsoft Docs
 
@@ -41,6 +41,3 @@ Azure Active Directory B2C (Azure AD B2C) 直接與 [Azure AD Multi-Factor Authe
 您可以使用 [執行使用者流程] 來驗證體驗。 請確認下列狀況：
 
 在進行多重要素驗證步驟之前，已在租用戶中建立客戶帳戶。 在步驟執行過程中，系統會要求客戶提供電話號碼進行驗證。 若驗證成功，會將電話號碼附加至帳戶以供之後使用。 即使客戶取消或卸除，下次登入時系統可能會要求客戶再度驗證電話號碼 (已啟用多重要素驗證)。
-
-
-

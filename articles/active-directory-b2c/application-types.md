@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215396"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952041"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可以在 Active Directory B2C 中使用的應用程式類型
  
@@ -24,8 +24,8 @@ Azure Active Directory B2C (Azure AD B2C) 支援各種新式應用程式架構�
 
 每個使用 Azure AD B2C 的應用程式都必須使用 [Azure 入口網站](https://portal.azure.com/)，在 [Azure AD B2C 租用戶](tutorial-create-tenant.md)中註冊。 應用程式註冊程序會收集和指派值，例如：
 
-* 可唯一識別應用程式的**應用程式識別碼**。
-* 可用來將回應導回應用程式的**回覆 URL**。
+* 可唯一識別應用程式的 **應用程式識別碼**。
+* 可用來將回應導回應用程式的 **回覆 URL**。
 
 每個傳送至 Azure AD B2C 的要求都會 (內建原則來指定 **使用者流程**) 或控制 Azure AD B2C 行為的 **自訂原則** 。 這兩種原則類型都可讓您建立可高度自訂的使用者體驗組合。
 
@@ -76,24 +76,24 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 除了讓登入更簡單，Web 伺服器應用程式可能也需要存取後端 Web 服務。 在此情況下，Web 應用程式可執行稍有不同的 [OpenID Connect 流程](openid-connect.md)，並使用授權碼和重新整理權杖來取得權杖。 以下 [Web API](#web-apis)一節描述此案例。
 
 ## <a name="single-page-applications"></a>單頁應用程式
-許多新式 web 應用程式都是以用戶端單頁應用程式的形式建立 ( 「Spa」 ) 。 開發人員使用 JavaScript 或 SPA 架構（例如角度、Vue 和回應）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，而且其驗證特性與傳統伺服器端 web 應用程式不同。
+許多新式 Web 應用程式都是以用戶端單頁應用程式 ("SPA") 的形式建立。 開發人員可以使用 JavaScript 或 SPA 架構 (例如 Angular、Vue 和 React) 來撰寫這些應用程式。 這些應用程式會在網頁瀏覽器上執行，且具有與傳統伺服器端 Web 應用程式不同的驗證特性。
 
-Azure AD B2C 提供 **兩個** 選項，可讓單一頁面應用程式登入使用者，並取得權杖來存取後端服務或 web api：
+Azure AD B2C 提供 **兩個** 選項，讓單頁應用程式可以登入使用者，並取得權杖以存取後端服務或 Web API：
 
-### <a name="authorization-code-flow-with-pkce"></a>使用 PKCE) 的授權碼流程 (
-- [OAuth 2.0 授權碼流程 (與 PKCE) ](./authorization-code-flow.md)。 授權碼流程可讓應用程式交換 **識別碼** 權杖的授權碼，以代表呼叫受保護 api 所需的已驗證使用者和 **存取** 權杖。 此外，它會傳回重新 **整理權杖，** 以代表使用者提供資源的長期存取權，而不需要與這些使用者互動。 
+### <a name="authorization-code-flow-with-pkce"></a>授權碼流程 (使用 PKCE)
+- [OAuth 2.0 授權碼流程 (使用 PKCE)](./authorization-code-flow.md)。 授權碼流程可讓應用程式針對代表已驗證使用者的 **識別碼** 權杖，以及呼叫受保護 API 所需的 **存取** 權杖，交換授權碼。 此外，其會傳回 **重新整理** 權杖，以代表使用者提供長期的資源存取權，而不需要與使用者互動。 
 
-這是 **建議** 的方法。 擁有有限存留期的重新整理權杖，可協助您的應用程式適應 [新式瀏覽器 cookie 的隱私許可權制](../active-directory/develop/reference-third-party-cookies-spas.md)，例如 Safari ITP。
+這是 **建議** 的方法。 具備有限存留期的重新整理權杖可協助您的應用程式適應[新式瀏覽器 Cookie 隱私權限制](../active-directory/develop/reference-third-party-cookies-spas.md)，例如 Safari ITP。
 
-若要利用此流程，您的應用程式可以使用支援的驗證程式庫，例如 [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)2.x。
+若要利用此流程，您的應用程式可以使用支援此流程的驗證程式庫，例如 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)。
 
 <!-- ![Single-page applications-auth](./media/tutorial-single-page-app/spa-app-auth.svg) -->
-![單一頁面應用程式-驗證](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
+![Single-page applications-auth](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
 
 ### <a name="implicit-grant-flow"></a>隱含授與流程
-- [OAuth 2.0 隱含流程](implicit-flow-single-page-application.md)。 某些架構（例如 [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)1.x）只支援隱含授與流程。 隱含授與流程可讓應用程式取得 **識別碼** 和 **存取** 權杖。 不同于授權碼流程，隱含授與流程不會傳回重新整理 **權杖**。 
+- [OAuth 2.0 隱含流程](implicit-flow-single-page-application.md)。 有些架構 (例如 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)) 只支援隱含授與流程。 隱含授與流程可讓應用程式取得 **識別碼** 及 **存取** 權杖。 不同於授權碼流程，隱含授與流程不會傳回 **重新整理權杖**。 
 
-此驗證流程不包含使用跨平臺 JavaScript 架構的應用程式案例，例如 Electron 和回應原生。 這些案例需要進一步的功能，才能與原生平臺互動。
+此驗證流程不包含使用跨平台 JavaScript 架構 (例如 Electron 和 React-Native) 的應用程式案例。 這些案例需要進一步的功能來與原生平台互動。
 
 ## <a name="web-apis"></a>Web API
 
@@ -141,7 +141,7 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 雖然 Azure AD B2C authentication 服務目前不直接支援 OAuth 2.0 用戶端認證授與流程，但是您可以在 Azure AD B2C 租使用者中，使用 Azure AD 和應用程式的 Microsoft 身分識別平臺/token 端點來設定用戶端認證流程。 Azure AD B2C 租用戶會與 Azure AD 企業租用戶共用某些功能。
 
-若要設定用戶端認證流程，請參閱 [Azure Active Directory v2.0 和 OAuth 2.0 用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)。 成功驗證後會收到已格式化的權杖，如此就可供 Azure AD 使用，如 [Azure AD 權杖參考](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)中所述。
+若要設定用戶端認證流程，請參閱 [Azure Active Directory v2.0 和 OAuth 2.0 用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 成功驗證後會收到已格式化的權杖，如此就可供 Azure AD 使用，如 [Azure AD 權杖參考](../active-directory/develop/id-tokens.md)中所述。
 
 如需註冊管理應用程式的指示，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
@@ -155,7 +155,7 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 請勿以下列方式編輯 Azure AD B2C 應用程式：
 
-- 在其他應用程式管理入口網站上，例如 [應用程式註冊入口網站](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。
+- 在其他應用程式管理員入口網站上，例如[應用程式註冊入口網站](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。
 - 使用圖形 API 或 PowerShell。
 
 如果您在 Azure 入口網站外部編輯 Azure AD B2C 應用程式，它會變成錯誤的應用程式並且無法再搭配 Azure AD B2C 使用。 刪除應用程式並重新加以建立。

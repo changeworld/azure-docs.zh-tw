@@ -11,23 +11,23 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214918"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952075"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新應用程式註冊體驗
 
 Azure Active Directory B2C (Azure AD B2C) 的新 **[應用程式註冊](https://aka.ms/b2cappregistrations)** 體驗現已正式推出。 如果您更熟悉用來註冊應用程式的 **應用程式** 體驗 Azure AD B2C，在此稱為「舊版體驗」，本指南將協助您開始使用新的體驗。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 先前，您必須使用舊版體驗，與應用程式的其餘部分分開管理 Azure AD B2C 取用者面向應用程式。 這表示不同的應用程式在 Azure 中的不同位置之間的建立體驗。
 
 新體驗會顯示所有 Azure AD B2C 應用程式註冊，並在單一位置 Azure AD 應用程式註冊，並提供一致的方式來管理它們。 從建立客戶面向的應用程式，到以 Microsoft Graph 的資源管理許可權來管理應用程式，您只需要學習一種方法來進行工作。
 
-您可以從 Azure 入口網站的**Azure AD B2C**或**Azure Active Directory**服務流覽至 Azure AD B2C 租使用者中的**應用程式註冊**，以達到新的體驗。
+您可以從 Azure 入口網站的 **Azure AD B2C** 或 **Azure Active Directory** 服務流覽至 Azure AD B2C 租使用者中的 **應用程式註冊**，以達到新的體驗。
 
 Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一般 [應用程式註冊經驗](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) 為基礎，但專為 Azure AD B2C 租使用者量身打造。
 
@@ -39,7 +39,7 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 
 ## <a name="key-new-features"></a>重要的新功能
 
--   **整合應用程式清單**會顯示您所有的應用程式，這些應用程式會使用 Azure AD B2C 進行驗證，並在一個方便的位置 Azure AD 此外，您可以利用已可用於 Azure AD 應用程式的功能，包括 **建立** 日期、 **憑證 & 秘密** 狀態、搜尋列等等。
+-   **整合應用程式清單** 會顯示您所有的應用程式，這些應用程式會使用 Azure AD B2C 進行驗證，並在一個方便的位置 Azure AD 此外，您可以利用已可用於 Azure AD 應用程式的功能，包括 **建立** 日期、 **憑證 & 秘密** 狀態、搜尋列等等。
 
 -   **結合的應用程式註冊** 可讓您快速註冊應用程式，無論它是客戶面向的應用程式，還是可存取 Microsoft Graph 的應用程式。
 
@@ -59,7 +59,7 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 
 若要瞭解不同的帳戶類型，請選取 [ **協助我** 在建立體驗中選擇]。
 
-在舊版體驗中，應用程式一律會建立為面向客戶的應用程式。 針對這些應用程式，帳戶類型會設定為 **任何身分識別提供者或組織目錄中的帳戶， (用於驗證具有使用者流程) 的使用者 **。
+在舊版體驗中，應用程式一律會建立為面向客戶的應用程式。 針對這些應用程式，帳戶類型會設定為 **任何身分識別提供者或組織目錄中的帳戶， (用於驗證具有使用者流程) 的使用者**。
 > [!NOTE]
 > 需要此選項才能執行 Azure AD B2C 使用者流程，以驗證此應用程式的使用者。 瞭解 [如何註冊應用程式以用於使用者流程。](tutorial-register-applications.md)
 
@@ -86,26 +86,26 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
-**IOS/macOS**和**Android**平臺是一種公開用戶端。 它們提供簡單的方式，讓您使用對應的重新導向 Uri 來設定 iOS/macOS 或 Android 應用程式，以搭配 MSAL 使用。 深入瞭解 [應用程式設定選項](../active-directory/develop/msal-client-applications.md)。
+**IOS/macOS** 和 **Android** 平臺是一種公開用戶端。 它們提供簡單的方式，讓您使用對應的重新導向 Uri 來設定 iOS/macOS 或 Android 應用程式，以搭配 MSAL 使用。 深入瞭解 [應用程式設定選項](../active-directory/develop/msal-client-applications.md)。
 
 
 ## <a name="application-certificates--secrets"></a>應用程式憑證 & 秘密
 
-在新的體驗中，您可以使用**憑證 & 秘密**分頁來管理憑證和密碼，而不是使用**金鑰**。 憑證 & 秘密可讓應用程式在 web 可定址位置接收權杖時，向驗證服務識別其本身， (使用 HTTPS 配置) 。 針對 Azure AD 進行驗證時，建議使用憑證，而不是用戶端認證案例的用戶端密碼。 憑證不能用來對 Azure AD B2C 進行驗證。
+在新的體驗中，您可以使用 **憑證 & 秘密** 分頁來管理憑證和密碼，而不是使用 **金鑰**。 憑證 & 秘密可讓應用程式在 web 可定址位置接收權杖時，向驗證服務識別其本身， (使用 HTTPS 配置) 。 針對 Azure AD 進行驗證時，建議使用憑證，而不是用戶端認證案例的用戶端密碼。 憑證不能用來對 Azure AD B2C 進行驗證。
 
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C 租使用者中不適用的功能
 下列 Azure AD 應用程式註冊功能不適用於 Azure AD B2C 租使用者或可供使用：
 - **角色和系統管理員** -目前不適用於 Azure AD B2C。
 - **商標** -UI/UX 自訂是在 **公司商標** 體驗中設定，或做為使用者流程的一部分。 瞭解如何 [在 Azure Active Directory B2C 中自訂使用者介面](customize-ui-overview.md)。
-- **發行者網域驗證** -您的應用程式已在 *onmicrosoft.com*上註冊，這不是經過驗證的網域。 此外，「發行者」網域主要是用來授與使用者同意，這不適用於使用者驗證 Azure AD B2C 應用程式。 [深入瞭解發行者網域](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain)。
+- **發行者網域驗證** -您的應用程式已在 *onmicrosoft.com* 上註冊，這不是經過驗證的網域。 此外，「發行者」網域主要是用來授與使用者同意，這不適用於使用者驗證 Azure AD B2C 應用程式。 [深入瞭解發行者網域](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **權杖** 設定-權杖會設定為使用者流程的一部分，而不是應用程式的一部分。
 - Azure AD B2C 的租使用者目前無法使用 **快速入門** 體驗。
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>限制
 新的體驗具有下列限制：
-- 目前，Azure AD B2C 不會區分是否能夠針對隱含流程發出存取或識別碼權杖;如果在**驗證**分頁中選取了 [**識別碼權杖**] 選項，則這兩種類型的 token 都適用于隱含授與流程。
+- 目前，Azure AD B2C 不會區分是否能夠針對隱含流程發出存取或識別碼權杖;如果在 **驗證** 分頁中選取了 [**識別碼權杖**] 選項，則這兩種類型的 token 都適用于隱含授與流程。
 <!-- - Azure AD B2C doesn't currently support the single-page application "SPA" app type.  -->
 - 在 UI 中不支援變更支援帳戶的值。 除非您要在 Azure AD 單一租使用者和多租使用者之間切換，否則您必須使用應用程式資訊清單。
 

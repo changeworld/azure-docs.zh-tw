@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847271"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954047"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 版本資訊
 
@@ -47,7 +47,7 @@ Update 4 包含以下重要的改良功能和錯誤修正。
 
     Update 4 中實作新的功能，可在 DR 之前於裝置正在使用時，追蹤經常存取的資料來建立熱度圖 (最常用的資料區塊有較高熱度，而較少用的區塊有較低熱度)。 在 DR 之後，StorSimple 會使用熱度圖自動還原和解除凍結雲端中的資料。 
 
-    所有還原現在都是以熱度圖為基礎的還原。 如需有關如何查詢和取消以熱度圖為基礎的還原和解除凍結作業的詳細資訊，請移至 [Windows PowerShell for StorSimple Cmdlet 參考文件](https://technet.microsoft.com/library/dn688168.aspx)。
+    所有還原現在都是以熱度圖為基礎的還原。 如需有關如何查詢和取消以熱度圖為基礎的還原和解除凍結作業的詳細資訊，請移至 [Windows PowerShell for StorSimple Cmdlet 參考文件](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)。
 
 * **StorSimple 診斷工具** – Update 4 中推出 StorSimple 診斷工具，對於系統、網路、效能和硬體元件健康狀態的相關問題，可讓您輕鬆診斷和疑難排解。 此工具是透過 Windows PowerShell for StorSimple 執行。 如需詳細資訊，請移至[使用 StorSimple 診斷工具進行疑難排解](storsimple-8000-diagnostics.md)。
 
@@ -59,7 +59,7 @@ Update 4 包含以下重要的改良功能和錯誤修正。
 
 * **磁碟失敗的警示** - 此版本中增加新的警示，可向使用者警告磁碟即將失敗。 如果您遇到此警示，請連絡 Microsoft 支援服務以運送替換磁碟。 如需詳細資訊，請移至 [StorSimple 裝置上的硬體警示](storsimple-8000-manage-alerts.md#hardware-alerts)。
 
-* **控制器更換變更** - 此版本中增加 Cmdlet，可讓使用者查詢控制器更換程序的狀態。 如需詳細資訊，請移至[用於查詢控制器更換狀態的 Cmdlet](https://technet.microsoft.com/library/dn688168.aspx)。
+* **控制器更換變更** - 此版本中增加 Cmdlet，可讓使用者查詢控制器更換程序的狀態。 如需詳細資訊，請移至[用於查詢控制器更換狀態的 Cmdlet](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)。
 
 
 ## <a name="issues-fixed-in-update-4"></a>Update 4 中修正的問題
@@ -82,7 +82,7 @@ Update 4 中沒有新的已知問題。 如需 Update 4 中舊版遺留的問題
 
 ## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Update 4 中的序列連結 SCSI (SAS) 控制器和韌體更新
 
-此版本包含 SAS 控制器和 LSI 驅動程式與韌體的更新。 如需有關如何安裝這些更新的詳細資訊，請參閱[在 StorSimple 裝置上安裝 Update 4](storsimple-install-update-4.md) 。
+此版本包含 SAS 控制器和 LSI 驅動程式與韌體的更新。 如需有關如何安裝這些更新的詳細資訊，請參閱[在 StorSimple 裝置上安裝 Update 4](./storsimple-8000-install-update-4.md) 。
 
 ## <a name="virtual-device-updates-in-update-4"></a>Update 4 中的虛擬裝置更新
 
@@ -90,5 +90,4 @@ Update 4 中沒有新的已知問題。 如需 Update 4 中舊版遺留的問題
 
 ## <a name="next-step"></a>後續步驟
 
-了解如何[在 StorSimple 裝置上安裝 Update 4](storsimple-install-update-4.md)。
-
+了解如何[在 StorSimple 裝置上安裝 Update 4](./storsimple-8000-install-update-4.md)。

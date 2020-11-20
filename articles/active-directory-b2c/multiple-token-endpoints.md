@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385734"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953928"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>將以 OWIN 為基礎的 web API 遷移至 b2clogin.com
 
-本文說明一種技術，可讓您在 web Api 中啟用多個權杖簽發者的支援，以執行 [.net (OWIN) 的開放式 Web 介面 ](http://owin.org/)。 當您要將 Azure Active Directory B2C (Azure AD B2C) Api 和其應用程式從 *login.microsoftonline.com* 遷移至 *b2clogin.com*時，支援多個權杖端點會很有用。
+本文說明一種技術，可讓您在 web Api 中啟用多個權杖簽發者的支援，以執行 [.net (OWIN) 的開放式 Web 介面 ](http://owin.org/)。 當您要將 Azure Active Directory B2C (Azure AD B2C) Api 和其應用程式從 *login.microsoftonline.com* 遷移至 *b2clogin.com* 時，支援多個權杖端點會很有用。
 
 藉由在 API 中新增支援 b2clogin.com 和 login.microsoftonline.com 所發出的權杖，您可以在從 API 中移除 login.microsoftonline.com 發行權杖的支援之前，以分段的方式遷移您的 web 應用程式。
 
@@ -29,7 +29,7 @@ ms.locfileid: "85385734"
 > [!NOTE]
 > 本文適用于目前已部署的 Api 和應用程式， `login.microsoftonline.com` 且想要遷移至建議端點的 Azure AD B2C 客戶 `b2clogin.com` 。 如果您要設定新的應用程式，請依照指示使用 [b2clogin.com](b2clogin.md) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列 Azure AD B2C 資源，才能繼續進行本文中的步驟：
 
@@ -42,8 +42,8 @@ ms.locfileid: "85385734"
 首先，選取其中一個現有的使用者流程：
 
 1. 流覽至您在[Azure 入口網站](https://portal.azure.com)中的 Azure AD B2C 租使用者
-1. 在 [ **原則**] 底下，選取 [ **使用者流程] (原則) **
-1. 選取現有的原則，例如*B2C_1_signupsignin1*，然後選取 [**執行使用者流程**]
+1. 在 [ **原則**] 底下，選取 [ **使用者流程] (原則)**
+1. 選取現有的原則，例如 *B2C_1_signupsignin1*，然後選取 [**執行使用者流程**]
 1. 在接近頁面頂端的 [ **執行使用者流程** ] 標題下，選取超連結以流覽至該使用者流程的 OpenID Connect 探索端點。
 
     ![Azure 入口網站上 [立即執行] 頁面中已知的 URI 超連結](media/multi-token-endpoints/portal-01-policy-link.png)
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 在本節中，您會更新程式碼，以指定兩個權杖簽發者端點都有效。
 
 1. 在 Visual Studio 中開啟 **B2C-WebAPI-DotNet .sln** 方案
-1. 在 **TaskService** 專案中，開啟您編輯器中的 *TaskService \\ App_Start \\ * * Startup.Auth.cs** * 檔案
+1. 在 **TaskService** 專案中，于編輯器中開啟 * TaskService \\ App_Start \\ **Startup.Auth.cs** _ 檔案
 1. 將下列指示詞新增 `using` 至檔案頂端：
 
     `using System.Collections.Generic;`
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     };
     ```
 
-`TokenValidationParameters` 是由 MSAL.NET 所提供，並且是由 *Startup.Auth.cs*中程式碼下一節中的 OWIN 中介軟體所使用。 指定了多個有效的簽發者之後，OWIN 應用程式管線就會知道這兩個權杖端點都是有效的簽發者。
+`TokenValidationParameters` 是由 MSAL.NET 所提供，並且是由 _Startup .cs * 中下一節程式碼的 OWIN 中介軟體所使用。 指定了多個有效的簽發者之後，OWIN 應用程式管線就會知道這兩個權杖端點都是有效的簽發者。
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -123,7 +123,7 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 您的 web API 現在支援兩個 Uri，您現在需要更新 web 應用程式，以便從 b2clogin.com 端點抓取權杖。
 
-例如，您可以藉由修改 `ida:AadInstance` **TaskWebApp**專案的*TaskWebApp \\ * * Web.config** * 檔案中的值，將範例 web 應用程式設定為使用新的端點。
+例如，您可以將範例 web 應用程式設定為使用新的端點，方法是修改 `ida:AadInstance` _ TaskWebApp * * 專案的 *TaskWebApp \\ **Web.config** _* 檔案中的值。
 
 變更 `ida:AadInstance` TaskWebApp *Web.config* 中的值，使其參考， `{your-b2c-tenant-name}.b2clogin.com` 而不是 `login.microsoftonline.com` 。
 
@@ -154,6 +154,6 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
