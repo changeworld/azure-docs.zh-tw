@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716668"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992704"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>使用液體範本將 JSON 和 XML 轉換為 Azure Logic Apps 中的地圖
 
@@ -28,7 +28,7 @@ ms.locfileid: "88716668"
 * 將液體轉換動作新增至您的邏輯應用程式。
 * 選取範本做為您想要使用的對應。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "88716668"
    | 屬性 | 值 | 說明 |
    |----------|-------|-------------|
    | **名稱** | `JsonToJsonTemplate` | 對應的名稱，在此範例中是 "JsonToJsonTemplate" |
-   | **對應類型** | **liquid** | 對應的類型。 對於 JSON 到 JSON 的轉換，請選取 [Liquid]****。 |
+   | **對應類型** | **liquid** | 對應的類型。 對於 JSON 到 JSON 的轉換，請選取 [Liquid]。 |
    | **地圖** | `SimpleJsonToJsonTemplate.liquid` | 用於轉換的現有 Liquid 範本或對應檔案，在此範例中是 "SimpleJsonToJsonTemplate.liquid"。 若要尋找此檔案，您可以使用檔案選擇器。 如需地圖大小的限制，請參閱 [限制和](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)設定。 |
    |||
 
@@ -112,7 +112,7 @@ ms.locfileid: "88716668"
    如果 maps 清單是空的，您的邏輯應用程式很可能不會連結到您的整合帳戶。 
    若要將邏輯應用程式連結至具有 Liquid 範本或對應的企業整合帳戶，請遵循下列步驟：
 
-   1. 在企業邏輯應用程式功能表上，選取 [工作流程設定]****。
+   1. 在企業邏輯應用程式功能表上，選取 [工作流程設定]。
 
    1. 從 [ **選取整合帳戶** ] 清單中，選取您的整合帳戶，然後選取 [ **儲存**]。
 
@@ -152,7 +152,7 @@ ms.locfileid: "88716668"
 
   * 如果您的範本使用 [液體濾波器](https://shopify.github.io/liquid/basics/introduction/#filters)，請確定您遵循 [DotLiquid 和 c # 命名慣例](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)，其使用 *句子大小寫*。 針對所有液體轉換，請確定您範本中的篩選器名稱也使用句子大小寫。 否則，篩選準則將無法運作。
 
-    例如，當您使用 `replace` 篩選準則時， `Replace` 請使用，而不是 `replace` 。 如果您在 [線上 DotLiquid](http://dotliquidmarkup.org/try-online)試用範例，則適用相同的規則。 如需詳細資訊，請參閱 [Shopify 液體篩選](https://shopify.dev/docs/themes/liquid/reference/filters) 和 [DotLiquid 液濾波器](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters)。 Shopify 規格包含每個篩選準則的範例，因此為了進行比較，您可以在 DotLiquid 嘗試這些範例 [-請在線上試用](https://dotliquidmarkup.org/try-online)。
+    例如，當您使用 `replace` 篩選準則時， `Replace` 請使用，而不是 `replace` 。 如果您在 [線上 DotLiquid](http://dotliquidmarkup.org/try-online)試用範例，則適用相同的規則。 如需詳細資訊，請參閱 [Shopify 液體篩選](https://shopify.dev/docs/themes/liquid/reference/filters) 和 [DotLiquid 液濾波器](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters)。 Shopify 規格包含每個篩選準則的範例，因此為了進行比較，您可以在 DotLiquid 嘗試這些範例 [-請在線上試用](http://dotliquidmarkup.org/try-online)。
 
   * Shopify 延伸模組篩選器中的 `json` 篩選器目前 [不會在 DotLiquid 中執行](https://github.com/dotliquid/dotliquid/issues/384)。 一般而言，您可以使用此篩選來準備要進行 JSON 字串剖析的文字輸出，但您必須改為使用 `Replace` 篩選。
 
@@ -240,11 +240,11 @@ ms.locfileid: "88716668"
 
 ![XML 轉換為文字的範例輸出](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [Shopify 的液體語言和範例](https://shopify.github.io/liquid/basics/introduction/)
 * [DotLiquid](http://dotliquidmarkup.org/)
-* [DotLiquid-線上試用](https://dotliquidmarkup.org/try-online)
+* [DotLiquid-線上試用](http://dotliquidmarkup.org/try-online)
 * [DotLiquid GitHub](https://github.com/dotliquid/dotliquid)
 * [DotLiquid GitHub 問題](https://github.com/dotliquid/dotliquid/issues/)
 * 深入瞭解 [地圖](../logic-apps/logic-apps-enterprise-integration-maps.md)
