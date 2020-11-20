@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685472"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980852"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -237,6 +237,7 @@ ms.locfileid: "94685472"
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | 授與呼叫者租用戶範圍的使用者存取管理員存取 |
 > | [Microsoft 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | 建立或更新任何藍圖指派 |
 > | [Microsoft 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | 刪除任何藍圖指派 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/galleries/share/action | 共用資源庫至不同的範圍 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -260,7 +261,8 @@ ms.locfileid: "94685472"
         "Microsoft.Authorization/*/Write",
         "Microsoft.Authorization/elevateAccess/Action",
         "Microsoft.Blueprint/blueprintAssignments/write",
-        "Microsoft.Blueprint/blueprintAssignments/delete"
+        "Microsoft.Blueprint/blueprintAssignments/delete",
+        "Microsoft.Compute/galleries/share/action"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -6551,6 +6553,7 @@ Azure Sentinel 參與者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | 讀取私用活頁簿 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
@@ -6583,6 +6586,7 @@ Azure Sentinel 參與者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6620,6 +6624,7 @@ Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 讀取活頁簿 |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | 讀取私用活頁簿 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
@@ -6656,6 +6661,7 @@ Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6699,13 +6705,15 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 讀取活頁簿 |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | 讀取私用活頁簿 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
-> | 無 |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/*/delete |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Incidents/*/delete |  |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -6741,13 +6749,17 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Support/*"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.SecurityInsights/cases/*/Delete",
+        "Microsoft.SecurityInsights/incidents/*/Delete"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -7004,7 +7016,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | 無 |  |
 > | **DataActions** |  |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保存庫中的金鑰，或讀取索引鍵的屬性和公開內容。 若為非對稱金鑰，這項作業會公開公開金鑰，並包含執行公開金鑰演算法的能力，例如加密和驗證簽章。 私用金鑰和對稱金鑰永遠不會公開。 |
-> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 金鑰包裝對稱金鑰。 請注意，如果 Key Vault 的金鑰是非對稱的，則可以使用讀取存取來執行此作業。 |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 金鑰包裝對稱金鑰。 請注意，如果 Key Vault 的金鑰是非對稱的，則可透過具有讀取存取權的主體來執行此作業。 |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 金鑰解除包裝對稱金鑰。 |
 > | **NotDataActions** |  |
 > | 無 |  |
@@ -7051,10 +7063,10 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | 建立金鑰的備份檔案。 檔案可以用來還原相同訂用帳戶 Key Vault 中的金鑰。 可能適用限制。 |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | 使用金鑰加密純文字。 請注意，如果金鑰為非對稱金鑰，則可透過具有讀取存取權的主體來執行此作業。 |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | 使用金鑰來解密加密文字。 |
-> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 金鑰包裝對稱金鑰。 請注意，如果 Key Vault 的金鑰是非對稱的，則可以使用讀取存取來執行此作業。 |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 金鑰包裝對稱金鑰。 請注意，如果 Key Vault 的金鑰是非對稱的，則可透過具有讀取存取權的主體來執行此作業。 |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 金鑰解除包裝對稱金鑰。 |
-> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | 使用金鑰簽署雜湊。 |
-> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | 確認雜湊。 請注意，如果金鑰為非對稱金鑰，則可透過具有讀取存取權的主體來執行此作業。 |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | 使用索引鍵 (雜湊) 來簽署訊息摘要。 |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | 使用金鑰來驗證訊息摘要 (雜湊) 的簽章。 請注意，如果金鑰為非對稱金鑰，則可透過具有讀取存取權的主體來執行此作業。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -7760,7 +7772,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | 讀取/寫入/刪除記錄分析儲存體深入解析設定。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | 取得來賓 VM 健康情況監視的相關資訊。  |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | 取得來賓 VM 健康情況監視的相關資訊。 |
 > | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |

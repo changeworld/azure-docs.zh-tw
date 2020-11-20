@@ -30,7 +30,7 @@ ms.locfileid: "94363250"
 ## <a name="prerequisites"></a>必要條件
 
 1. 依照[使用者入門](getting-started.md)中的步驟，設定您的 Azure Databricks 和認知服務環境。 本教學課程說明如何安裝 MMLSpark，以及如何在 Databricks 中建立 Spark 叢集。
-1. 在 Azure Databricks 中建立新的筆記本之後，請複製下面的 **共用程式碼** ，並貼到您筆記本中的新儲存格。
+1. 在 Azure Databricks 中建立新的筆記本之後，請複製下面的 **共用程式碼**，並貼到您筆記本中的新儲存格。
 1. 選擇下方的服務範例，並將其貼到您筆記本中的第二個新儲存格。
 1. 以您自己的金鑰取代任何服務訂用帳戶金鑰的預留位置。
 1. 選擇儲存格右上角的 [執行] 按鈕 (三角形圖示)，然後選取 [執行儲存格]。
@@ -85,9 +85,9 @@ display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sent
 
 | text                                      | 情感                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| 今天我很高興，天氣真晴朗！(I am so happy today, its sunny!)           | 正面                                              |
-| 我因為此尖峰時間的交通感到沮喪 (I am frustrated by this rush hour traffic) | 負面                                              |
-| Spark 上的認知服務不佳 (The cognitive services on spark aint bad)  | 正面                                              |
+| 今天我很高興，天氣真晴朗！(I am so happy today, its sunny!)           | positive                                              |
+| 我因為此尖峰時間的交通感到沮喪 (I am frustrated by this rush hour traffic) | negative                                              |
+| Spark 上的認知服務不佳 (The cognitive services on spark aint bad)  | positive                                              |
 
 ## <a name="computer-vision-sample"></a>電腦視覺範例
 

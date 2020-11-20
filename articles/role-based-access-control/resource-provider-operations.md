@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649138"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980910"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -40,7 +40,7 @@ ms.locfileid: "94649138"
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **儲存體** |
+| **Storage** |
 | [Microsoft.ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft.DataBox](#microsoftdatabox) |
 | [Microsoft.ImportExport](#microsoftimportexport) |
@@ -591,7 +591,7 @@ Azure 服務： [虛擬機器](../virtual-machines/index.yml)、 [虛擬機器�
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/read | 取得使用虛擬機器擴展集建立的網路介面其中一個或所有 IP 設定屬性。 IP 設定代表私人 IP |
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/publicIPAddresses/read | 取得使用虛擬機器擴展集建立的公用 IP 位址屬性。 虛擬機器擴展集最多可以在每個 ipconfiguration (私人 IP) 建立一個公用 IP |
 > | Microsoft. Compute/virtualMachineScaleSets/Vmsize/read | 列出在虛擬機器擴展集中建立或更新虛擬機器的可用大小 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.Compute/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
 
@@ -843,6 +843,7 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/read | 取得 Azure 防火牆 NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/write | CreatesOrUpdates Azure 防火牆 NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/delete | 刪除 Azure 防火牆 NetworkRuleCollection |
+> | Microsoft. Network/azureWebCategories/read | 取得 Azure WebCategories |
 > | Microsoft.Network/bastionHosts/read | 取得堡壘主機 |
 > | Microsoft.Network/bastionHosts/write | 建立或更新堡壘主機 |
 > | Microsoft.Network/bastionHosts/delete | 刪除堡壘主機 |
@@ -1242,6 +1243,8 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft. Network/virtualHubs/bgpConnections/read | 取得虛擬中樞的中樞 Bgp 連接子資源 |
 > | Microsoft. Network/virtualHubs/bgpConnections/write | 建立或更新虛擬中樞的中樞 Bgp 連接子資源 |
 > | Microsoft. Network/virtualHubs/bgpConnections/delete | 刪除虛擬中樞的中樞 Bgp 連接子資源 |
+> | Microsoft. Network/virtualHubs/bgpConnections/advertisedRoutes/action | 取得 virtualrouter 通告的路由 |
+> | Microsoft. Network/virtualHubs/bgpConnections/learnedRoutes/action | 取得 virtualrouter 學習的路由 |
 > | Microsoft. Network/virtualHubs/hubRouteTables/read | 取得虛擬中樞的路由表子資源 |
 > | Microsoft. Network/virtualHubs/hubRouteTables/write | 建立或更新虛擬中樞的路由表子資源 |
 > | Microsoft. Network/virtualHubs/hubRouteTables/delete | 刪除虛擬中樞的路由表子資源 |
@@ -1329,6 +1332,9 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | microsoft. network/vpngateways/startpacketcapture/action | 使用根據資源啟動 Vpn 閘道封包捕獲 |
 > | microsoft. network/vpngateways/stoppacketcapture/action | 使用 sasURL 停止 Vpn 閘道封包捕獲 |
 > | microsoft.network/vpngateways/listvpnconnectionshealth/action | 取得 VpnGateway 上所有或部分連線的連線健康情況 |
+> | microsoft. network/vpnGateways/natRules/read | 取得 NAT 規則資源 |
+> | microsoft. network/vpnGateways/natRules/write | 放置 NAT 規則資源 |
+> | microsoft. network/vpnGateways/natRules/delete | 刪除 NAT 規則資源 |
 > | microsoft.network/vpnGateways/vpnConnections/read | 取得 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/write | 放置 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/delete | 刪除 VpnConnection。 |
@@ -1423,7 +1429,7 @@ Azure 服務： [Azure 資料箱](../databox/index.yml)
 > | 資料箱/位置/availableSkus/讀取 | 列出或取得可用的 Sku |
 > | Microsoft.DataBox/locations/operationResults/read | 列出或取得作業結果 |
 > | 資料箱/operations/read | 列出或取得作業 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.DataBox/register/action | 註冊提供者 Microsoft.Databox |
 > | 資料箱/取消註冊/動作 | Un-Register 提供者資料箱 |
 > | Microsoft.DataBox/jobs/cancel/action | 取消進行中的訂單。 |
@@ -1611,7 +1617,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/tables/read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/tables/write |  |
 > | Microsoft.Storage/usages/read | 傳回指定訂用帳戶資源的限制和目前的使用量計數 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
@@ -1934,6 +1940,9 @@ Azure 服務： [Azure 地圖服務](../azure-maps/index.yml)
 > | Microsoft.Maps/accounts/delete | 刪除地圖服務帳戶。 |
 > | Microsoft.Maps/accounts/listKeys/action | 列出 Maps 帳戶金鑰。 |
 > | Microsoft.Maps/accounts/regenerateKey/action | 產生新的 Maps 帳戶主要或次要金鑰。 |
+> | Microsoft. Maps/accounts/建立者/寫入 | 建立或更新建立者。 |
+> | Microsoft. Maps/accounts/建立者/讀取 | 取得建立者。 |
+> | Microsoft. Maps/accounts/建立者/刪除 | 刪除建立者。 |
 > | Microsoft.Maps/accounts/eventGridFilters/delete | 刪除事件方格篩選。 |
 > | Microsoft.Maps/accounts/eventGridFilters/read | 取得事件格線篩選 |
 > | Microsoft.Maps/accounts/eventGridFilters/write | 建立或更新事件方格篩選。 |
@@ -1941,7 +1950,7 @@ Azure 服務： [Azure 地圖服務](../azure-maps/index.yml)
 > | Microsoft. Maps/accounts/privateAtlases/read | 取得私人的塔。 |
 > | Microsoft. Maps/accounts/privateAtlases/delete | 刪除私人的塔。 |
 > | Microsoft. Maps/operations/read | 讀取提供者作業 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft. Maps/accounts/services/data/read | 允許讀取資料上傳服務和私用的資料。 |
 > | Microsoft. Maps/accounts/services/data/delete | 允許刪除資料上傳服務和私用的資料 |
 > | Microsoft. Maps/accounts/services/data/write | 允許寫入或更新資料上傳服務和私用的資料。 |
@@ -2103,6 +2112,7 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/locations/checknameavailability/action | 檢查名稱是否可用於新的 SignalR 服務 |
 > | Microsoft.SignalRService/locations/operationresults/signalr/read | 查詢以位置為基礎的非同步作業結果 |
 > | Microsoft.signalrservice/位置/operationStatuses/operationId/read | 查詢以位置為基礎之非同步作業的狀態 |
+> | Microsoft.signalrservice/位置/operationStatuses/signalr/read | 查詢以位置為基礎之非同步作業的狀態 |
 > | Microsoft.SignalRService/locations/usages/read | 取得 Azure SignalR Service 的配額使用量 |
 > | Microsoft.SignalRService/operationresults/read | 查詢提供者層級非同步作業的結果 |
 > | Microsoft.signalrservice/operations/read | 列出 Azure SignalR 服務的作業。 |
@@ -2123,7 +2133,7 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/write | 核准或拒絕私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR Private Link 資源 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.signalrservice/SignalR/auth/accessKey/action | 產生暫時 AccessKey 來簽署 ClientTokens。 |
 > | Microsoft.signalrservice/SignalR/auth/clientToken/action | 產生用來啟動用戶端連接的 ClientToken。 |
 > | Microsoft.signalrservice/SignalR/clientConnection/send/action | 將訊息直接傳送至用戶端連接。 |
@@ -2610,6 +2620,7 @@ Azure 服務： [App Service](../app-service/index.yml)、 [Azure Functions](../
 > | Microsoft Web/staticSites/getuser/Action | 取得使用者的靜態網站資訊 |
 > | Microsoft Web/staticSites/listsecrets/action | 列出靜態網站的秘密 |
 > | Microsoft Web/staticSites/resetapikey/Action | 重設靜態網站的 api 金鑰 |
+> | Microsoft Web/staticSites/zipdeploy/action | 從壓縮的內容部署靜態網站 |
 > | Microsoft Web/staticSites/authproviders/listusers/Action | 列出靜態網站的使用者 |
 > | Microsoft Web/staticSites/authproviders/users/Delete | 刪除靜態網站的使用者 |
 > | Microsoft Web/staticSites/authproviders/users/Write | 更新靜態網站的使用者 |
@@ -2617,6 +2628,7 @@ Azure 服務： [App Service](../app-service/index.yml)、 [Azure Functions](../
 > | Microsoft Web/staticSites/build/Delete | 刪除靜態網站的組建 |
 > | Microsoft Web/staticSites/build/listfunctionappsettings/Action | 列出靜態網站組建的函式應用程式設定 |
 > | Microsoft Web/staticSites/build/listappsettings/Action | 列出靜態網站組建的應用程式設定 |
+> | Microsoft Web/staticSites/build/zipdeploy/action | 從壓縮的內容部署靜態網站組建 |
 > | Microsoft Web/staticSites/build/config/Write | 建立或更新靜態網站組建的應用程式設定 |
 > | Microsoft Web/staticSites/config/Write | 建立或更新靜態網站的應用程式設定 |
 > | Microsoft Web/staticSites/customdomains/Write | 建立靜態網站的自訂網域 |
@@ -2790,7 +2802,7 @@ Azure 服務： [Azure Kubernetes Service (AKS) ](../aks/index.yml)
 > | Microsoft.ContainerService/openShiftManagedClusters/write | 建立新的或更新現有的 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/openShiftManagedClusters/delete | 刪除 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/operations/read | 列出 Microsoft.ContainerService 資源提供者的可用作業 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除/DeletesCollection initializerconfigurations 資源 |
@@ -3931,6 +3943,8 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft .Sql/位置/serverAdministratorOperationResults/讀取 | 伺服器 Azure Active Directory 系統管理員操作結果 |
 > | Microsoft .Sql/位置/serverKeyAzureAsyncOperation/讀取 | 取得透明資料加密伺服器金鑰的進行中作業 |
 > | Microsoft .Sql/位置/serverKeyOperationResults/讀取 | 取得透明資料加密伺服器金鑰的進行中作業 |
+> | Microsoft .Sql/位置/serverTrustGroupAzureAsyncOperation/讀取 | 取得伺服器信任群組非同步作業的狀態 |
+> | Microsoft .Sql/位置/serverTrustGroupOperationResults/讀取 | 取得伺服器信任群組操作的結果 |
 > | Microsoft .Sql/位置/serverTrustGroups/write | 使用指定的參數建立伺服器信任群組 |
 > | Microsoft .Sql/位置/serverTrustGroups/刪除 | 刪除現有的 SQL Server Trust 群組 |
 > | Microsoft .Sql/位置/serverTrustGroups/讀取 | 傳回現有的 SQL Server 信任群組 |
@@ -3946,12 +3960,12 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft.Sql/locations/virtualNetworkRulesAzureAsyncOperation/read | 傳回指定虛擬網路規則 Aure 非同步作業的詳細資料  |
 > | Microsoft.Sql/locations/virtualNetworkRulesOperationResults/read | 傳回指定虛擬網路規則作業的詳細資料  |
 > | Microsoft.Sql/managedInstances/tdeCertificates/action | 建立/更新 TDE 憑證 |
-> | Microsoft .Sql/managedInstances/joinServerTrustGroup/action | 判斷是否允許使用者加入伺服器信任群組 |
+> | Microsoft .Sql/managedInstances/容錯移轉/動作 | 客戶起始的受控實例容錯移轉。 |
+> | Microsoft .Sql/managedInstances/joinServerTrustGroup/action | 判斷是否允許使用者將受管理的伺服器加入伺服器信任群組 |
 > | Microsoft .Sql/managedInstances/export/action | 匯出系統資料庫和 SMK 金鑰 |
 > | Microsoft.Sql/managedInstances/read | 傳回受控執行個體的清單，或取得指定受控執行個體的屬性。 |
 > | Microsoft.Sql/managedInstances/write | 使用指定參數建立受控執行個體，或更新指定受控執行個體的屬性或標記。 |
 > | Microsoft.Sql/managedInstances/delete | 刪除現有的受控執行個體。 |
-> | Microsoft .Sql/managedInstances/容錯移轉/動作 | 客戶起始的受控實例容錯移轉。 |
 > | Microsoft.Sql/managedInstances/administrators/read | 取得受控執行個體系統管理員的清單。 |
 > | Microsoft.Sql/managedInstances/administrators/write | 使用指定參數，建立或更新受控執行個體的系統管理員。 |
 > | Microsoft.Sql/managedInstances/administrators/delete | 刪除受控執行個體的現有系統管理員。 |
@@ -4100,11 +4114,11 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/rules/delete | 刪除指定資料庫的資料遮罩原則規則 |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/read | 傳回所選查詢識別碼的資料倉儲散發查詢資訊 |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/dataWarehouseQuerySteps/read | 傳回所選步驟識別碼之資料倉儲查詢的分散式查詢步驟資訊 |
-> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | 抓取 Azure Synapse Analytics 專用 SQL 集區的使用者活動，其中包含執行中和已擱置的查詢 |
+> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | 擷取 SQL 資料倉儲執行個體的使用者活動，其中包含執行中和暫止的查詢 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | 擷取指定資料庫上所設定之擴充 Blob 稽核原則的詳細資料 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/write | 變更指定資料庫的擴充 Blob 稽核原則 |
-> | Microsoft.Sql/servers/databases/extensions/read | 取得資料庫的擴充功能集合。 |
-> | Microsoft.Sql/servers/databases/extensions/write | 變更指定資料庫的擴充功能 |
+> | Microsoft.Sql/servers/databases/extensions/write | 執行資料庫擴充作業。 |
+> | Microsoft.Sql/servers/databases/extensions/read | 取得資料庫擴充功能作業。 |
 > | Microsoft .Sql/servers/資料庫/extensions/importExtensionOperationResults/read | 取得進行中的匯入作業 |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/read | 擷取指定資料庫的異地備份原則 |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/write | 建立或更新資料庫異地備份原則 |
@@ -4522,7 +4536,7 @@ Azure 服務： [事件中樞](../event-hubs/index.yml)
 > | Microsoft.EventHub/operations/read | 取得作業 |
 > | Microsoft.EventHub/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.EventHub/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft EventHub/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft EventHub/命名空間/訊息/接收/動作 | 接收訊息 |
 > | Microsoft EventHub/命名空間/架構/讀取 | 取出架構 |
@@ -4705,7 +4719,7 @@ Azure 服務： [Azure 區塊鏈服務](../blockchain/workbench/index.yml)
 > | 區塊鏈/位置/checkNameAvailability/動作 | 檢查資源名稱是否有效且不在使用中。 |
 > | 區塊鏈/位置/blockchainMemberOperationResults/讀取 | 取得區塊鏈成員的作業結果。 |
 > | 區塊鏈/operations/read | 列出 Microsoft 區塊鏈資源提供者中的所有作業。 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
 
 ## <a name="ai--machine-learning"></a>AI + 機器學習
@@ -4787,7 +4801,7 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | CognitiveServices/位置/deleteVirtualNetworkOrSubnets/動作 | 正在刪除 VirtualNetworks 或子網的 Microsoft 通知。 |
 > | CognitiveServices/位置/operationresults/讀取 | 讀取非同步作業的狀態。 |
 > | Microsoft.CognitiveServices/Operations/read | 列出所有可用的作業 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/整個/偵測/動作 | 這項作業會使用整個數列產生模型，且每個點都會使用相同的模型來偵測。<br>使用這個方法時，會使用特定點前後的點來判斷它是否為異常。<br>整個偵測可為使用者提供時間序列的整體狀態。 |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/last/偵測/action | 這項作業會使用最新的點來產生模型。 使用這個方法時，只有歷程記錄點會用來判斷目標點是否為異常。 偵測到的最新點會符合即時監視商務計量的案例。 |
 > | CognitiveServices/accounts/自動建議/search/action | 這種作業會針對給定的查詢或部分查詢提供建議。 |
@@ -5140,6 +5154,7 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | CognitiveServices/accounts/>microsoft.azure.cognitiveservices.language.textanalytics/entities/action | API 會在指定的檔中，傳回已知實體和一般命名實體 (\" 人員 \" 、 \" 位置 \" 、 \" 組織 \" 等) 的清單。 |
 > | CognitiveServices/accounts/>microsoft.azure.cognitiveservices.language.textanalytics/keyphrases/action | API 會傳回輸入文字中代表說話重點的字串清單。 |
 > | CognitiveServices/accounts/>microsoft.azure.cognitiveservices.language.textanalytics/情感/action | 此 API 會傳回 0 到 1 之間的數值分數。<br>接近 1 的分數表示正面的情感，而接近 0 的分數則表示負面的情感。<br>分數0.5 表示缺少情感 (例如<br>) 的模擬陳述。 |
+> | CognitiveServices/accounts/>microsoft.azure.cognitiveservices.language.textanalytics/分析/動作 | 提交文字檔集合進行分析。 指定要執行的一或多個唯一工作。 |
 > | CognitiveServices/accounts/TextTranslation/偵測/動作 | 識別一段文字的語言。 |
 > | CognitiveServices/accounts/TextTranslation/breaksentence/action | 識別句子界限在一段文字裡的位置。 |
 > | CognitiveServices/accounts/TextTranslation/翻譯/動作 | 翻譯文字。 |
@@ -5496,29 +5511,29 @@ Azure 服務： [通知中樞](../notification-hubs/index.yml)
 > | Microsoft.NotificationHubs/CheckNamespaceAvailability/action | 檢查在 NotificationHub 服務內，給定的命名空間資源名稱是否可供使用。 |
 > | Microsoft.NotificationHubs/Namespaces/write | 建立命名空間資源，並更新其屬性。 命名空間的標記和容量是可以更新的屬性。 |
 > | Microsoft.NotificationHubs/Namespaces/read | 取得命名空間資源描述的清單 |
-> | Microsoft.NotificationHubs/Namespaces/Delete | 刪除命名空間資源 |
+> | NotificationHubs/命名空間/刪除 | 刪除命名空間資源 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/action | 取得命名空間授權規則描述的清單。 |
 > | Microsoft.NotificationHubs/Namespaces/CheckNotificationHubAvailability/action | 檢查在命名空間內，給定的 NotificationHub 名稱是否可供使用。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/write | 建立命名空間層級的授權規則，並更新其屬性。 您可以更新授權規則的存取權限、主要金鑰和次要金鑰。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/read | 取得命名空間授權規則描述的清單。 |
-> | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | 刪除命名空間授權規則。 您無法刪除預設的命名空間授權規則。  |
+> | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | 刪除命名空間授權規則。 您無法刪除預設的命名空間授權規則。 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/listkeys/action | 取得命名空間的連接字串 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/regenerateKeys/action | 命名空間授權規則會重新產生主要/次要金鑰，指定需要重新產生的金鑰 |
-> | NotificationHubs/命名空間/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
-> | NotificationHubs/命名空間/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
-> | NotificationHubs/命名空間/logDefinitions/read | 取得命名空間記錄資源描述的清單 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/write | 建立通知中樞，並更新其屬性。 其屬性主要包括 PNS 認證。 授權規則與 TTL |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/read | 取得通知中樞資源描述的清單 |
-> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | 刪除通知中樞資源 |
+> | NotificationHubs/命名空間/NotificationHubs/delete | 刪除通知中樞資源 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/action | 取得通知中樞授權規則的清單 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/pnsCredentials/action | 取得所有通知中樞的 PNS 認證。 這包括 WNS、MPNS、APNS、GCM 和百度認證 |
-> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | 傳送測試推播通知。 |
+> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | 將測試推播通知傳送至10個相符的裝置。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/write | 建立通知中樞授權規則，並更新其屬性。 您可以更新授權規則的存取權限、主要金鑰和次要金鑰。 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/read | 取得通知中樞授權規則的清單 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/delete | 刪除通知中樞的授權規則 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/listkeys/action | 取得通知中樞的連接字串 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/regenerateKeys/action | 通知中樞授權規則會重新產生主要/次要金鑰，指定需要重新產生的金鑰 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/metricDefinitions/read | 取得命名空間計量資源描述的清單 |
+> | NotificationHubs/命名空間/提供者/Microsoft. Insights/diagnosticSettings/read | 取得命名空間診斷設定 |
+> | NotificationHubs/命名空間/提供者/Microsoft. Insights/diagnosticSettings/write | 建立或更新命名空間診斷設定 |
+> | NotificationHubs/命名空間/提供者/Microsoft. Insights/logDefinitions/read | 取得命名空間的可用記錄 |
 > | Microsoft.NotificationHubs/operationResults/read | 傳回通知中樞提供者的作業結果 |
 > | Microsoft.NotificationHubs/operations/read | 傳回通知中樞提供者支援的作業清單 |
 
@@ -5566,11 +5581,29 @@ Azure 服務： [Azure 空間錨點](../spatial-anchors/index.yml)
 > | 動作 | 描述 |
 > | --- | --- |
 > | MixedReality/註冊/動作 | 註冊混合現實資源提供者的訂用帳戶。 |
+> | MixedReality/取消註冊/動作 | 取消註冊混合現實資源提供者的訂用帳戶。 |
+> | MixedReality/位置/checknameavailability/讀取 | 檢查名稱可用性 |
+> | MixedReality/ObjectUnderstandingAccounts/delete | 刪除物件理解帳戶 |
+> | MixedReality/ObjectUnderstandingAccounts/listkeys/action | 列出物件瞭解帳戶的索引鍵 |
+> | MixedReality/ObjectUnderstandingAccounts/read | 讀取物件瞭解帳戶的屬性 |
+> | MixedReality/ObjectUnderstandingAccounts/regeneratekeys/action | 重新產生物件瞭解帳戶的金鑰 |
+> | MixedReality/ObjectUnderstandingAccounts/write | 更新物件瞭解帳戶的屬性 |
+> | MixedReality/operations/read | 列出 Microsoft Mixed Reality 的可用作業 |
+> | MixedReality/RemoteRenderingAccounts/delete | 刪除遠端轉譯帳戶 |
+> | MixedReality/RemoteRenderingAccounts/listkeys/action | 列出遠端呈現帳戶的金鑰 |
+> | MixedReality/RemoteRenderingAccounts/read | 讀取遠端轉譯帳戶的屬性 |
+> | MixedReality/RemoteRenderingAccounts/regeneratekeys/action | 重新產生遠端轉譯帳戶的金鑰 |
+> | MixedReality/RemoteRenderingAccounts/write | 更新遠端轉譯帳戶的屬性 |
+> | MixedReality/RemoteRenderingAccounts/keys/read | 讀取遠端呈現帳戶的金鑰 |
 > | MixedReality/remoteRenderingAccounts/providers/Microsoft. Insights/metricDefinitions/read | 取得 MixedReality/remoteRenderingAccounts 的可用計量 |
+> | MixedReality/SpatialAnchorsAccounts/listkeys/action | 列出空間錨點帳戶的索引鍵 |
+> | MixedReality/SpatialAnchorsAccounts/read | 讀取空間錨點帳戶的屬性 |
+> | MixedReality/SpatialAnchorsAccounts/regeneratekeys/action | 重新產生空間錨點帳戶的金鑰 |
+> | MixedReality/SpatialAnchorsAccounts/keys/read | 讀取空間錨點帳戶的金鑰 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/read | 取得 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/write | 建立或更新 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/metricDefinitions/read | 取得 MixedReality/spatialAnchorsAccounts 的可用計量 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/動作 | 建立模型內嵌作業 |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/讀取 | 取得模型內嵌作業狀態 |
 > | MixedReality/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
@@ -5846,7 +5879,7 @@ Azure 服務：核心
 > | AppConfiguration/configurationStores/providers/Microsoft. Insights/metricDefinitions/read | 取得 Microsoft 應用程式設定的所有度量定義。 |
 > | AppConfiguration/位置/operationsStatus/讀取 | 取得作業的狀態。 |
 > | AppConfiguration/operations/read | 列出 Microsoft 應用程式設定所支援的所有作業。 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | AppConfiguration/configurationStores/keyValues/read | 從設定存放區讀取機碼值。 |
 > | AppConfiguration/configurationStores/keyValues/write | 建立或更新設定存放區中的索引鍵/值。 |
 > | AppConfiguration/configurationStores/keyValues/delete | 從設定存放區刪除現有的索引鍵/值。 |
@@ -5931,6 +5964,11 @@ Azure 服務： [Azure Stack Edge](../databox-online/azure-stack-edge-overview.m
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | 列出或取得角色 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | 建立或更新角色 |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | 刪除角色 |
+> | Microsoft.databoxedge/dataBoxEdgeDevices/roles/附加元件/read | 列出或取得 ArmApiRes_addons |
+> | Microsoft.databoxedge/dataBoxEdgeDevices/roles/附加元件/read | 列出或取得 ArmApiRes_addons |
+> | Microsoft.databoxedge/dataBoxEdgeDevices/roles/附加元件/write | 建立或更新 ArmApiRes_addons |
+> | Microsoft.databoxedge/dataBoxEdgeDevices/roles/附加元件/delete | 刪除 ArmApiRes_addons |
+> | Microsoft.databoxedge/dataBoxEdgeDevices/roles/附加元件/operationResults/read | 列出或取得作業結果 |
 > | Microsoft.databoxedge/dataBoxEdgeDevices/roles/monitoringConfig/write | 建立或更新監視設定 |
 > | Microsoft.databoxedge/dataBoxEdgeDevices/roles/monitoringConfig/delete | 刪除監視設定 |
 > | Microsoft.databoxedge/dataBoxEdgeDevices/roles/monitoringConfig/read | 列出或取得監視設定 |
@@ -6353,7 +6391,7 @@ Azure 服務： [服務匯流排](../service-bus-messaging/index.yml)
 > | Microsoft.ServiceBus/operations/read | 取得作業 |
 > | Microsoft.ServiceBus/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.ServiceBus/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft. 執行空間/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft. 執行空間/命名空間/訊息/接收/動作 | 接收訊息 |
 
@@ -6543,65 +6581,65 @@ Azure 服務： [Key Vault](../key-vault/index.yml)
 > | KeyVault/managedHSMs/delete | 刪除受控 HSM |
 > | Microsoft.KeyVault/operations/read | 列出可以對 Microsoft.KeyVault 資源提供者執行的作業 |
 > | Microsoft.KeyVault/vaults/read | 檢視 Key Vault 的屬性 |
-> | Microsoft.KeyVault/vaults/write | 建立新的 Key Vault，或更新現有 Key Vault 的屬性 |
-> | Microsoft.KeyVault/vaults/delete | 刪除 Key Vault |
+> | Microsoft.KeyVault/vaults/write | 建立新的金鑰保存庫，或更新現有金鑰保存庫的屬性。 某些屬性可能需要更多許可權。 |
+> | Microsoft.KeyVault/vaults/delete | 刪除金鑰保存庫 |
 > | Microsoft.KeyVault/vaults/deploy/action | 在部署 Azure 資源時啟用 Key Vault 中祕密的存取權 |
-> | Microsoft.KeyVault/vaults/accessPolicies/write | 藉由合併或取代來更新現有存取原則，或在保存庫中新增存取原則。 |
+> | Microsoft.KeyVault/vaults/accessPolicies/write | 藉由合併或取代來更新現有的存取原則，或將新的存取原則新增至金鑰保存庫。 |
 > | KeyVault/保存庫/eventGridFilters/read | 通知 KeyVault，正在查看 Key Vault 的 EventGrid 訂用帳戶 |
 > | KeyVault/保存庫/eventGridFilters/寫入 | 通知 Microsoft KeyVault 正在建立 Key Vault 的新 EventGrid 訂用帳戶 |
 > | KeyVault/保存庫/eventGridFilters/刪除 | 通知 KeyVault，正在刪除 Key Vault 的 EventGrid 訂用帳戶 |
 > | KeyVault/保存庫/金鑰/讀取 | 列出指定之保存庫中的金鑰，或讀取指定之金鑰的目前版本。 |
-> | KeyVault/保存庫/金鑰/寫入 | 建立新的金鑰，或更新現有的金鑰。 |
+> | KeyVault/保存庫/金鑰/寫入 | 建立新金鑰的第一個版本（如果不存在）。 如果已存在，則會傳回現有的金鑰，而不會進行任何修改。 此 API 不會建立後續版本，而且不會更新現有的金鑰。 |
 > | KeyVault/保存庫/金鑰/版本/讀取 | 列出指定之金鑰的版本，或讀取指定的金鑰版本。 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看秘密的屬性，而非其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 建立新的秘密，或更新現有秘密的值。 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | KeyVault/保存庫/certificatecas/刪除 | 刪除憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/read | 讀取憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/寫入 | 寫入憑證簽發者 |
 > | KeyVault/保存庫/certificatecontacts/寫入 | 管理憑證連絡人 |
-> | KeyVault/保存庫/憑證/刪除 | 刪除憑證。 |
+> | KeyVault/保存庫/憑證/刪除 | 刪除憑證。 所有版本都會刪除。 |
 > | KeyVault/保存庫/憑證/讀取 | 列出指定之金鑰保存庫中的憑證，或取得憑證的相關資訊。 |
 > | KeyVault/保存庫/憑證/備份/動作 | 建立憑證的備份檔案。 檔案可以用來還原同一個訂用帳戶 Key Vault 中的憑證。 可能適用限制。 |
 > | KeyVault/保存庫/憑證/清除/動作 | 清除憑證，使其無法復原。 |
 > | KeyVault/保存庫/憑證/更新/動作 | 更新與指定憑證相關聯的指定屬性。 |
-> | KeyVault/保存庫/憑證/建立/動作 | 建立新的憑證。 |
-> | KeyVault/保存庫/憑證/匯入/動作 | 將包含私密金鑰的現有有效憑證匯入 Azure Key Vault。 要匯入的憑證可以是 PFX 或 PEM 格式。 |
+> | KeyVault/保存庫/憑證/建立/動作 | 建立新的憑證。 如果憑證不存在，就會建立第一個版本。 否則會建立新的版本。 |
+> | KeyVault/保存庫/憑證/匯入/動作 | 匯入現有包含私密金鑰的有效憑證。<br>要匯入的憑證可以是 PFX 或 PEM 格式。<br>如果憑證不存在於 Key Vault 中，則會使用指定的內容來建立第一個版本。<br>否則，會以指定的內容建立新版本。 |
 > | KeyVault/保存庫/憑證/復原/動作 | 復原已刪除的憑證。 作業會執行刪除作業的反轉。 作業適用于啟用虛刪除的保存庫，而且必須在保留間隔期間發出。 |
-> | KeyVault/保存庫/憑證/還原/動作 | 將備份的憑證及其所有版本還原至保存庫。 |
+> | KeyVault/保存庫/憑證/還原/動作 | 從 Key Vault 所產生的備份檔案還原憑證及其所有版本。 |
 > | KeyVault/保存庫/金鑰/讀取 | 列出指定保存庫中的金鑰，或讀取索引鍵的屬性和公開內容。<br>若為非對稱金鑰，這項作業會公開公開金鑰，並包含執行公開金鑰演算法的能力，例如加密和驗證簽章。<br>私用金鑰和對稱金鑰永遠不會公開。 |
 > | KeyVault/保存庫/金鑰/更新/動作 | 更新與指定索引鍵相關聯的指定屬性。 |
-> | KeyVault/保存庫/金鑰/建立/動作 | 建立新的金鑰。 |
-> | KeyVault/保存庫/金鑰/匯入/動作 | 匯出外部建立的金鑰、加以儲存，然後將金鑰參數和屬性傳回至用戶端。 |
+> | KeyVault/保存庫/金鑰/建立/動作 | 建立新的金鑰。 如果機碼不存在，就會建立第一個版本。 否則，會以指定的值建立新的版本。 |
+> | KeyVault/保存庫/金鑰/匯入/動作 | 匯入外部建立的金鑰。 如果機碼不存在，則會使用匯入的材質建立第一個版本。 否則，就會使用匯入的資料來建立新的版本。 |
 > | KeyVault/保存庫/金鑰/復原/動作 | 復原已刪除的金鑰。 作業會執行刪除作業的反轉。 作業適用于啟用虛刪除的保存庫，而且必須在保留間隔期間發出。 |
-> | KeyVault/保存庫/金鑰/還原/動作 | 將備份的金鑰及其所有版本還原至保存庫。 |
-> | KeyVault/保存庫/金鑰/刪除 | 刪除金鑰。 |
+> | KeyVault/保存庫/金鑰/還原/動作 | 從 Key Vault 所產生的備份檔案還原金鑰及其所有版本。 |
+> | KeyVault/保存庫/金鑰/刪除 | 刪除索引鍵。 所有版本都會刪除。 |
 > | KeyVault/保存庫/金鑰/備份/動作 | 建立金鑰的備份檔案。 檔案可以用來還原相同訂用帳戶 Key Vault 中的金鑰。 可能適用限制。 |
 > | KeyVault/保存庫/金鑰/清除/動作 | 清除金鑰，使其無法復原。 |
 > | KeyVault/保存庫/金鑰/加密/動作 | 使用金鑰加密純文字。 請注意，如果金鑰為非對稱金鑰，則可透過具有讀取存取權的主體來執行此作業。 |
 > | KeyVault/保存庫/金鑰/解密/動作 | 使用金鑰來解密加密文字。 |
-> | KeyVault/保存庫/金鑰/包裝/動作 | 使用 Key Vault 金鑰包裝對稱金鑰。 請注意，如果 Key Vault 的金鑰是非對稱的，則可以使用讀取存取來執行此作業。 |
+> | KeyVault/保存庫/金鑰/包裝/動作 | 使用 Key Vault 金鑰包裝對稱金鑰。 請注意，如果 Key Vault 的金鑰是非對稱的，則可透過具有讀取存取權的主體來執行此作業。 |
 > | KeyVault/保存庫/金鑰/解除包裝/動作 | 使用 Key Vault 金鑰解除包裝對稱金鑰。 |
-> | KeyVault/保存庫/金鑰/符號/動作 | 使用金鑰簽署雜湊。 |
-> | KeyVault/保存庫/金鑰/驗證/動作 | 確認雜湊。 請注意，如果金鑰為非對稱金鑰，則可透過具有讀取存取權的主體來執行此作業。 |
-> | KeyVault/保存庫/秘密/刪除 | 刪除秘密。 |
+> | KeyVault/保存庫/金鑰/符號/動作 | 使用索引鍵 (雜湊) 來簽署訊息摘要。 |
+> | KeyVault/保存庫/金鑰/驗證/動作 | 使用金鑰來驗證訊息摘要 (雜湊) 的簽章。 請注意，如果金鑰為非對稱金鑰，則可透過具有讀取存取權的主體來執行此作業。 |
+> | KeyVault/保存庫/秘密/刪除 | 刪除秘密。 所有版本都會刪除。 |
 > | KeyVault/保存庫/秘密/備份/動作 | 建立秘密的備份檔案。 檔案可以用來還原同一個訂用帳戶 Key Vault 中的密碼。 可能適用限制。 |
 > | KeyVault/保存庫/秘密/清除/動作 | 清除秘密，使其無法復原。 |
 > | KeyVault/保存庫/秘密/更新/動作 | 更新與指定的密碼相關聯的指定屬性。 |
 > | KeyVault/保存庫/秘密/復原/動作 | 復原已刪除的秘密。 作業會執行刪除作業的反轉。 作業適用于啟用虛刪除的保存庫，而且必須在保留間隔期間發出。 |
-> | KeyVault/保存庫/秘密/還原/動作 | 將備份的密碼及其所有版本還原至保存庫。 |
+> | KeyVault/保存庫/秘密/還原/動作 | 從 Key Vault 所產生的備份檔案還原秘密及其所有版本。 |
 > | KeyVault/保存庫/秘密/readMetadata/動作 | 列出或查看秘密的屬性，而不是其值。 |
 > | KeyVault/保存庫/秘密/>client.getsecret/動作 | 取得秘密的值。 |
-> | KeyVault/保存庫/秘密/>client.setsecret/動作 | 建立新的秘密。 |
+> | KeyVault/保存庫/秘密/>client.setsecret/動作 | 設定秘密的值。 如果密碼不存在，就會建立第一個版本。 否則，會以指定的值建立新的版本。 |
 > | KeyVault/保存庫/storageaccounts/read | 讀取受控儲存體帳戶和 SAS 的定義。 |
 > | KeyVault/保存庫/storageaccounts/set/action | 建立或更新受控儲存體帳戶的定義。 |
 > | KeyVault/保存庫/storageaccounts/刪除 | 刪除受控儲存體帳戶的定義。 |
-> | KeyVault/保存庫/storageaccounts/備份/動作 | 建立受控儲存體帳戶的定義及其 SAS (共用存取簽章) 的備份。 |
+> | KeyVault/保存庫/storageaccounts/備份/動作 | 建立受控儲存體帳戶定義的備份檔案，以及 (共用存取簽章) 的 SAS。 |
 > | KeyVault/保存庫/storageaccounts/清除/動作 | 清除已虛刪除的受控儲存體帳戶或 SAS (共用存取簽章) 的定義。 |
 > | KeyVault/保存庫/storageaccounts/regeneratekey/action | 重新產生受控儲存體帳戶的存取金鑰。 |
 > | KeyVault/保存庫/storageaccounts/復原/動作 | 復原已虛刪除的受控儲存體帳戶或 SAS (共用存取簽章) 的定義。 |
-> | KeyVault/保存庫/storageaccounts/還原/動作 | 將受控儲存體帳戶及其 SAS 的定義還原)  (共用存取簽章。 |
-> | KeyVault/保存庫/storageaccounts/sas/設定/動作 | 建立或更新受管理儲存體帳戶) 定義的 SAS (共用存取簽章。 |
+> | KeyVault/保存庫/storageaccounts/還原/動作 | 從 Key Vault 產生的備份檔案中，還原受控儲存體帳戶及其 SAS (共用存取簽章) 的定義。 |
+> | KeyVault/保存庫/storageaccounts/sas/設定/動作 | 為受管理的儲存體帳戶) 定義建立或更新 SAS (共用存取簽章。 |
 > | KeyVault/保存庫/storageaccounts/sas/刪除 | 刪除受控儲存體帳戶) 定義的 SAS (共用存取簽章。 |
 
 ### <a name="microsoftsecurity"></a>Microsoft.Security
@@ -6618,6 +6656,9 @@ Azure 服務： [安全性中心](../security-center/index.yml)
 > | Microsoft.Security/advancedThreatProtectionSettings/read | 取得資源的進階威脅防護設定 |
 > | Microsoft.Security/advancedThreatProtectionSettings/write | 更新資源的進階威脅防護設定 |
 > | Microsoft.Security/alerts/read | 取得所有可用的安全性警訊 |
+> | Microsoft. Security/alertsSuppressionRules/read | 取得所有可用的安全性警示隱藏規則 |
+> | Microsoft. Security/alertsSuppressionRules/write | 建立新的安全性警示隱藏規則，或更新現有的規則 |
+> | Microsoft. Security/alertsSuppressionRules/delete | 刪除安全性警示隱藏規則 |
 > | Microsoft.Security/applicationWhitelistings/read | 取得應用程式 allowlistings |
 > | Microsoft.Security/applicationWhitelistings/write | 建立新的應用程式 allowlisting 或更新現有的應用程式 |
 > | Microsoft. Security/assessmentMetadata/read | 取得訂用帳戶的可用安全性評定中繼資料 |
@@ -6651,6 +6692,8 @@ Azure 服務： [安全性中心](../security-center/index.yml)
 > | Microsoft.Security/locations/alerts/read | 取得所有可用的安全性警訊 |
 > | Microsoft.Security/locations/alerts/dismiss/action | 關閉安全性警示 |
 > | Microsoft.Security/locations/alerts/activate/action | 啟動安全性警訊 |
+> | Microsoft. 安全性/位置/警示/解決/動作 | 解決安全性警示 |
+> | Microsoft. 安全性/位置/警示/模擬/動作 | 模擬安全性警示 |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/read | 取得 Just-in-Time 網路存取原則 |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/write | 建立新的 Just-in-Time 網路存取原則，或更新現有的 Just-in-Time 網路存取原則 |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/delete | 刪除 Just-in-Time 網路存取原則 |
@@ -6665,6 +6708,10 @@ Azure 服務： [安全性中心](../security-center/index.yml)
 > | Microsoft.Security/pricings/read | 取得該範圍的定價設定 |
 > | Microsoft.Security/pricings/write | 更新該範圍的定價設定 |
 > | Microsoft.Security/pricings/delete | 刪除該範圍的定價設定 |
+> | Microsoft. Security/secureScoreControlDefinitions/read | 取得安全分數控制項定義 |
+> | Microsoft. Security/secureScoreControls/read | 為您的訂用帳戶取得計算的安全分數控制項 |
+> | Microsoft. Security/secureScores/read | 為您的訂用帳戶取得計算的安全分數 |
+> | Microsoft. Security/secureScores/secureScoreControls/read | 針對您的安全分數計算取得計算的安全分數控制項 |
 > | Microsoft.Security/securityContacts/read | 取得安全性連絡人 |
 > | Microsoft.Security/securityContacts/write | 更新安全性連絡人 |
 > | Microsoft.Security/securityContacts/delete | 刪除安全性連絡人 |
@@ -6676,6 +6723,12 @@ Azure 服務： [安全性中心](../security-center/index.yml)
 > | Microsoft.Security/securityStatusesSummaries/read | 取得該範圍的安全性狀態摘要 |
 > | Microsoft.Security/settings/read | 取得範圍的設定 |
 > | Microsoft.Security/settings/write | 更新範圍的設定 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/action | 將規則清單新增至基準。 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/read | 傳回資料庫的基準 (已新增至基準) 的所有規則，或取得指定規則識別碼的規則基準結果。 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/write | 變更規則基準結果。 |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/delete | 從基準移除規則結果。 |
+> | Microsoft. 安全性/sqlVulnerabilityAssessments/掃描/讀取 | 傳回弱點評定掃描記錄的清單，或取得指定掃描識別碼的掃描記錄。 |
+> | Microsoft. 安全性/sqlVulnerabilityAssessments/掃描/scanResults/讀取 | 傳回弱點評定規則結果的清單，或取得指定之規則識別碼的規則結果。 |
 > | Microsoft.Security/tasks/read | 取得所有可用的安全性建議 |
 > | Microsoft.Security/webApplicationFirewalls/read | 取得 Web 應用程式防火牆 |
 > | Microsoft.Security/webApplicationFirewalls/write | 建立新的 Web 應用程式防火牆，或更新現有的 Web 應用程式防火牆 |
@@ -6732,7 +6785,8 @@ Azure 服務： [Azure Sentinel](../sentinel/index.yml)
 > | SecurityInsights/dataConnectors/write | 更新資料連線器 |
 > | SecurityInsights/dataConnectors/delete | 刪除資料連線器 |
 > | SecurityInsights/實體/讀取 | 取得 sentinel 實體圖形 |
-> | SecurityInsights/實體/時程表/動作 | 取得特定範圍的實體時間軸 |
+> | SecurityInsights/entities/gettimeline/action | 取得特定範圍的實體時間軸 |
+> | SecurityInsights/entities/getInsights/action | 取得特定範圍的實體見解 |
 > | SecurityInsights/實體/關係/讀取 | 取得實體與相關資源之間的關聯性 |
 > | SecurityInsights/實體/關係/寫入 | 更新實體與相關資源之間的關聯性 |
 > | SecurityInsights/實體/關係/刪除 | 刪除實體與相關資源之間的關聯性 |
@@ -6976,7 +7030,7 @@ Azure 服務： [Azure DevOps](/azure/devops/)
 > | Microsoft.VisualStudio/Project/Delete | 刪除專案 |
 > | Microsoft.VisualStudio/Project/Read | 讀取專案 |
 
-## <a name="migrate"></a>移轉
+## <a name="migrate"></a>遷移
 
 ### <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -7927,7 +7981,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft Insights/活頁簿/撰寫 | 建立或更新活頁簿 |
 > | Microsoft Insights/活頁簿/刪除 | 刪除活頁簿 |
 > | Microsoft Insights/活頁簿/讀取 | 讀取活頁簿 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft Insights/DataCollectionRules/資料/寫入 | 將資料傳送至資料收集規則 |
 > | Microsoft.Insights/Metrics/Write | 寫入計量 |
 
@@ -8665,7 +8719,7 @@ Azure 服務： [批次](../batch/index.yml)
 > | Microsoft.Batch/locations/accountOperationResults/read | 取得長時間執行 Batch 帳戶作業的結果 |
 > | Microsoft.Batch/locations/quotas/read | 取得指定訂用帳戶在指定 Azure 區域內的 Batch 配額 |
 > | Microsoft.Batch/operations/read | 列出可對 Microsoft.Batch 資源提供者進行的作業 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.Batch/batchAccounts/jobs/read | 列出 Batch 帳戶的作業或取得作業的屬性 |
 > | Microsoft.Batch/batchAccounts/jobs/write | 在 Batch 帳戶上建立新的作業，或更新現有的作業 |
 > | Microsoft.Batch/batchAccounts/jobs/delete | 從 Batch 帳戶刪除作業 |
@@ -8699,6 +8753,7 @@ Azure 服務： [成本管理 + 計費](../cost-management-billing/index.yml)
 > | Microsoft. 帳單/billingAccounts/billingSubscriptions/read |  |
 > | Microsoft. 計費/billingAccounts/billingSubscriptions/移動/動作 |  |
 > | Microsoft. 計費/billingAccounts/billingSubscriptions/validateMoveEligibility/action |  |
+> | Microsoft. 計費/billingAccounts/billingSubscriptions/downloadDocuments/action | 使用清單中的下載連結來下載發票 |
 > | Microsoft. 帳單/billingAccounts/customers/read |  |
 > | Microsoft. 帳單/billingAccounts/customers/billingPermissions/read |  |
 > | Microsoft.Billing/billingAccounts/departments/read |  |
@@ -8712,7 +8767,6 @@ Azure 服務： [成本管理 + 計費](../cost-management-billing/index.yml)
 > | Microsoft 帳單/billingAccounts/products/move/action |  |
 > | Microsoft. 帳單/billingAccounts/products/validateMoveEligibility/action |  |
 > | Microsoft.Billing/departments/read |  |
-> | Microsoft. 帳單/發票/下載/動作 | 使用清單中的下載連結來下載發票 |
 > | Microsoft. 帳單/發票/下載/動作 | 使用清單中的下載連結來下載發票 |
 > | Microsoft. 計費/作業/讀取 |  |
 
@@ -8934,7 +8988,7 @@ Azure 服務： [Azure Arc 啟用 Kubernetes](../azure-arc/kubernetes/overview.m
 > | Kubernetes/connectedClusters/Delete | 刪除 connectedClusters |
 > | Kubernetes/connectedClusters/listClusterUserCredentials/action | 列出 clusterUser 認證 |
 > | Kubernetes/RegisteredSubscriptions/read | 讀取已註冊的訂閱 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除 initializerconfigurations |
@@ -9305,7 +9359,7 @@ Azure 服務： [Azure 原則](../governance/policy/index.yml)
 > | Microsoft.PolicyInsights/remediations/delete | 刪除原則補救。 |
 > | Microsoft.PolicyInsights/remediations/cancel/action | 取消進行中的 Microsoft 原則補救。 |
 > | Microsoft.PolicyInsights/remediations/listDeployments/read | 列出原則補救所需的部署。 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | Microsoft.PolicyInsights/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
 > | Microsoft.PolicyInsights/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
 
@@ -9338,69 +9392,76 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | 動作 | 描述 |
 > | --- | --- |
 > | Microsoft.RecoveryServices/register/action | 為指定的資源提供者註冊訂用帳戶 |
-> | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
-> | Microsoft.RecoveryServices/Locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
-> | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 驗證功能 |
+> | az.recoveryservices/位置/backupPreValidateProtection/動作 |  |
+> | az.recoveryservices/位置/backupStatus/動作 | 檢查復原服務保存庫的備份狀態 |
+> | az.recoveryservices/位置/backupValidateFeatures/動作 | 驗證功能 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服務所使用的內部作業 |
 > | Microsoft.RecoveryServices/locations/checkNameAvailability/action | 檢查資源名稱可用性是 API，以檢查是否有可用的資源名稱 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
-> | Az.recoveryservices/位置/backupProtectedItem/寫入 | 建立備用的受保護項目 |
-> | Az.recoveryservices/位置/backupProtectedItems/讀取 | 傳回所有受保護項目的清單。 |
+> | az.recoveryservices/位置/backupProtectedItem/寫入 | 建立備用的受保護項目 |
+> | az.recoveryservices/位置/backupProtectedItems/讀取 | 傳回所有受保護項目的清單。 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 取得給定作業的作業狀態 |
 > | Microsoft.RecoveryServices/operations/read | 作業會傳回資源提供者的作業清單 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 匯出作業 |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | 傳回復原服務保存庫的安全性 PIN 碼資訊。 |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 驗證受保護項目上的作業 |
+> | az.recoveryservices/保存庫/backupCrossRegionRestore/動作 | 受保護專案的跨區域還原復原點。 |
+> | az.recoveryservices/保存庫/backupCrrJob/動作 | 在復原服務保存庫的次要區域中取得跨區域還原作業詳細資料。 |
+> | az.recoveryservices/保存庫/backupCrrJobs/動作 | 列出復原服務保存庫次要區域中的跨區域還原作業。 |
+> | az.recoveryservices/保存庫/backupJobsExport/動作 | 匯出作業 |
+> | az.recoveryservices/保存庫/backupSecurityPIN/動作 | 傳回復原服務保存庫的安全性 PIN 碼資訊。 |
+> | az.recoveryservices/保存庫/backupValidateOperation/動作 | 驗證受保護項目上的作業 |
 > | Microsoft.RecoveryServices/Vaults/write | 「建立保存庫」作業會建立 'vault' 類型的 Azure 資源 |
 > | Microsoft.RecoveryServices/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
 > | Microsoft.RecoveryServices/Vaults/delete | 「刪除保存庫」作業會刪除 'vault' 類型的指定 Azure 資源 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/read | 傳回復原服務保存庫的組態。 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/write | 更新復原服務保存庫的組態。 |
-> | Az.recoveryservices/保存庫/backupEncryptionConfigs/read | 取得備份資源加密設定。 |
-> | Az.recoveryservices/保存庫/backupEncryptionConfigs/寫入 | 更新備份資源加密設定 |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 重新整理容器清單 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | 刪除備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 傳回作業的狀態 |
-> | Az.recoveryservices/保存庫/backupFabrics/operationsStatus/read | 傳回作業的狀態 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | 刪除已註冊的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | 執行容器內工作負載的查詢 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 建立已註冊的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
-> | Az.recoveryservices/保存庫/backupFabrics/protectionContainers/operationsStatus/read | 取得保護容器上所執行之作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 對受保護的項目執行備份。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 刪除受保護的項目 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 為受保護的項目佈建即時項目復原 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 還原受保護項目的復原點。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 為受保護的項目撤銷即時項目復原 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | 取消作業 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | 傳回所有作業物件 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 傳回作業的作業結果。 |
-> | Az.recoveryservices/保存庫/>backupjobs/operationsStatus/read | 傳回工作作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 傳回復原服務保存庫的備份作業結果。 |
-> | Microsoft.RecoveryServices/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 刪除保護原則 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 傳回所有保護原則 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 建立保護原則 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 取得原則作業的結果。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 取得原則作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | 傳回所有可保護項目的清單。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | 傳回復原服務保存庫的儲存體組態。 |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | 更新復原服務保存庫的儲存體組態。 |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
+> | az.recoveryservices/保存庫/backupAadProperties/read | 取得用於跨區域還原的第三個區域中進行驗證的 AAD 屬性。 |
+> | az.recoveryservices/保存庫/backupconfig/read | 傳回復原服務保存庫的組態。 |
+> | az.recoveryservices/保存庫/backupconfig/寫入 | 更新復原服務保存庫的組態。 |
+> | az.recoveryservices/保存庫/backupCrrOperationResults/read | 傳回復原服務保存庫的 CRR 操作結果。 |
+> | az.recoveryservices/保存庫/backupCrrOperationsStatus/read | 傳回復原服務保存庫的 CRR 操作狀態。 |
+> | az.recoveryservices/保存庫/backupEncryptionConfigs/read | 取得備份資源加密設定。 |
+> | az.recoveryservices/保存庫/backupEncryptionConfigs/寫入 | 更新備份資源加密設定 |
+> | az.recoveryservices/保存庫/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
+> | az.recoveryservices/保存庫/backupFabrics/refreshContainers/action | 重新整理容器清單 |
+> | az.recoveryservices/保存庫/backupFabrics/backupProtectionIntent/delete | 刪除備份保護用途 |
+> | az.recoveryservices/保存庫/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
+> | az.recoveryservices/保存庫/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
+> | az.recoveryservices/保存庫/backupFabrics/operationResults/read | 傳回作業的狀態 |
+> | az.recoveryservices/保存庫/backupFabrics/operationsStatus/read | 傳回作業的狀態 |
+> | az.recoveryservices/保存庫/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/delete | 刪除已註冊的容器 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/inquire/action | 執行容器內工作負載的查詢 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/write | 建立已註冊的容器 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/operationsStatus/read | 取得保護容器上所執行之作業的狀態。 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/protectedItems/備份/動作 | 對受保護的項目執行備份。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/delete | 刪除受保護的項目 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | 取得跨區域還原的 AccessToken。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 為受保護的項目佈建即時項目復原 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 還原受保護項目的復原點。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 為受保護的項目撤銷即時項目復原 |
+> | az.recoveryservices/保存庫/>backupjobs/取消/動作 | 取消作業 |
+> | az.recoveryservices/保存庫/>backupjobs/read | 傳回所有作業物件 |
+> | az.recoveryservices/保存庫/>backupjobs/operationResults/read | 傳回作業的作業結果。 |
+> | az.recoveryservices/保存庫/>backupjobs/operationsStatus/read | 傳回工作作業的狀態。 |
+> | az.recoveryservices/保存庫/backupOperationResults/read | 傳回復原服務保存庫的備份作業結果。 |
+> | az.recoveryservices/保存庫/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
+> | az.recoveryservices/保存庫/backupPolicies/刪除 | 刪除保護原則 |
+> | az.recoveryservices/保存庫/backupPolicies/read | 傳回所有保護原則 |
+> | az.recoveryservices/保存庫/backupPolicies/寫入 | 建立保護原則 |
+> | az.recoveryservices/保存庫/backupPolicies/operationResults/read | 取得原則作業的結果。 |
+> | az.recoveryservices/保存庫/backupPolicies/作業/讀取 | 取得原則作業的狀態。 |
+> | az.recoveryservices/保存庫/backupProtectableItems/read | 傳回所有可保護項目的清單。 |
+> | az.recoveryservices/保存庫/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
+> | az.recoveryservices/保存庫/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
+> | az.recoveryservices/保存庫/backupProtectionIntents/read | 列出所有的備份保護用途 |
+> | az.recoveryservices/保存庫/backupstorageconfig/read | 傳回復原服務保存庫的儲存體組態。 |
+> | az.recoveryservices/保存庫/backupstorageconfig/寫入 | 更新復原服務保存庫的儲存體組態。 |
+> | az.recoveryservices/保存庫/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
 > | Microsoft.RecoveryServices/Vaults/certificates/write | 「更新資源憑證」作業會更新資源/保存庫的認證憑證。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
@@ -9409,14 +9470,14 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | 解決警示。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | 取得復原服務保存庫通知組態。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | 設定復原服務保存庫的電子郵件通知。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/刪除 | 等候幾分鐘的時間，然後再次嘗試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/read | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/驗證/動作 | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/寫入 | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/operationsStatus/read | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnections/刪除 | 刪除私人端點要求。 此呼叫是由備份管理員進行。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnections/寫入 | 核准或拒絕私人端點要求。 此呼叫是由備份管理員進行。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnections/operationsStatus/read | 傳回私人端點連接的作業狀態。 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/刪除 | 等候幾分鐘的時間，然後再次嘗試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/read | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/驗證/動作 | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/寫入 | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/operationsStatus/read | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnections/刪除 | 刪除私人端點要求。 此呼叫是由備份管理員進行。 |
+> | az.recoveryservices/保存庫/privateEndpointConnections/寫入 | 核准或拒絕私人端點要求。 此呼叫是由備份管理員進行。 |
+> | az.recoveryservices/保存庫/privateEndpointConnections/operationsStatus/read | 傳回私人端點連接的作業狀態。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | 「註冊服務容器」作業可用來向復原服務註冊容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/delete | 「取消註冊容器」作業可用來取消註冊容器。 |
@@ -9532,7 +9593,7 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | Az.recoveryservices/保存庫/replicationVaultSettings/read | 讀取任何  |
 > | Az.recoveryservices/保存庫/replicationVaultSettings/寫入 | 建立或更新任何  |
 > | Microsoft.RecoveryServices/vaults/replicationvCenters/read | 讀取任何 vCenter |
-> | Microsoft.RecoveryServices/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | az.recoveryservices/保存庫/使用量/讀取 | 傳回復原服務保存庫的使用量詳細資料。 |
 > | Microsoft.RecoveryServices/vaults/usages/read | 讀取任何保存庫使用量 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
 
@@ -9715,7 +9776,7 @@ Azure 服務： [Azure 數位 Twins](../digital-twins/index.yml)
 > | DigitalTwins/位置/checkNameAvailability/動作 | 檢查數位 Twins 資源提供者中的資源名稱可用性 |
 > | DigitalTwins/位置/operationsResults/讀取 | 讀取任何作業結果 |
 > | DigitalTwins/operations/read | 讀取所有作業 |
-> | **DataAction** | **描述** |
+> | **DataAction** | **說明** |
 > | DigitalTwins/query/action | 查詢任何數位 Twins 圖形 |
 > | DigitalTwins/DigitalTwins/read | 讀取任何數位對應項 |
 > | DigitalTwins/DigitalTwins/write | 建立或更新任何數位對應項 |

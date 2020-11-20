@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b20dab7719e4c55c5868032db3178bb7baaddda0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7aa84336a3d71349c127ad15a90af98ffe2133fe
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748480"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980230"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
@@ -44,6 +44,10 @@ IoT 隨插即用裝置認證方案所包含的工具，可檢查裝置是否符�
 - 發佈[Azure IoT 公用模型存放庫](https://devicemodels.azureiotsolutions.com/)中的模型和所有必要的介面
 - 在 dps 布建承載的 [dps 註冊](concepts-developer-guide-device-csharp.md#dps-payload) 期間傳送模型識別碼。
 - 宣告 [MQTT 連接](concepts-developer-guide-device-csharp.md#model-id-announcement)期間的模型識別碼。
+- 所有裝置型號都必須與 [Azure IoT Central](https://aka.ms/pnp-iotc-getstarted)相容。
+
+> [!NOTE]
+> 目前，Azure IoT Central 並未完全支援 **陣列** 和 **地理空間** DTDL 資料類型。
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>使用 Azure IoT 擴充功能 CLI 進行測試
 
@@ -182,7 +186,7 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 若要認證裝置，您必須先建立新專案。
 
-流覽至 [認證入口網站](https://aka.ms/acdp)。 在 [ **專案** ] 頁面上，選取 [ *+ 建立新專案* ]。 然後，輸入專案的名稱、裝置名稱，然後選取裝置類別。
+流覽至 [認證入口網站](https://aka.ms/acdp)。 在 [ **專案** ] 頁面上，選取 [ *+ 建立新專案*]。 然後，輸入專案的名稱、裝置名稱，然後選取裝置類別。
 
 您在認證程式期間提供的產品資訊分為四類：
 

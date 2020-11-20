@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317074"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980351"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路 (預覽) 
 
@@ -72,6 +72,11 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 ![核准受控私人端點](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
 只有處於已核准狀態的受控私人端點可以將流量傳送到指定的私人連結資源。
+
+## <a name="interactive-authoring"></a>互動式撰寫
+互動式撰寫功能用於測試連線、流覽資料夾清單和資料表清單、取得架構和預覽資料等功能。 您可以在建立或編輯位於 ADF 管理的虛擬網路中的 Azure Integration Runtime 時啟用互動式撰寫。 後端服務會預先配置計算以進行互動式撰寫功能。 否則，每次執行任何互動式作業時都會配置計算，而這需要更多時間。 互動式撰寫 (TTL) 的存留時間是60分鐘，這表示它會在最後一次互動式撰寫作業的60分鐘之後自動停用。
+
+![互動式撰寫](./media/managed-vnet/interactive-authoring.png)
 
 ## <a name="limitations-and-known-issues"></a>限制與已知問題
 ### <a name="supported-data-sources"></a>支援的資料來源

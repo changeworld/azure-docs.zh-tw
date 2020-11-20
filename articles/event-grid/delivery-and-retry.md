@@ -3,18 +3,21 @@ title: Azure Event Grid 傳遞與重試
 description: 說明 Azure Event Grid 如何傳遞事件，以及如何處理未傳遞的訊息。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042965"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981097"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid 訊息傳遞與重試
 
 本文章說明未確認傳遞時，Azure Event Grid 如何處理事件。
 
-Event Grid 提供持久的傳遞。 它針對每個訂用帳戶傳遞每則訊息至少一次。 事件會立即傳送到每個訂用帳戶的已註冊端點。 如果端點未確認接收事件，事件方格會重新嘗試傳遞事件。
+Event Grid 提供持久的傳遞。 它會針對每個訂用帳戶 **至少傳遞一次** 訊息。 事件會立即傳送到每個訂用帳戶的已註冊端點。 如果端點未確認接收事件，事件方格會重新嘗試傳遞事件。
+
+> [!NOTE]
+> 事件方格不保證事件傳遞的順序，所以訂閱者可能會依序接收它們。 
 
 ## <a name="batched-event-delivery"></a>批次事件傳遞
 

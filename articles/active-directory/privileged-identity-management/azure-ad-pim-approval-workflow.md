@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4778ce5efcd6145447c194eaab34bc230bcbe34c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d74a243ab10d0fffca960dc5149999560a7b54cd
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371540"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980581"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>核准或拒絕 Privileged Identity Management 中 Azure AD 角色的要求
 
@@ -38,9 +38,9 @@ ms.locfileid: "92371540"
 
 遵循本文中的步驟，以核准或拒絕 Azure AD 角色的要求。
 
-# <a name="new-version"></a>[新版本](#tab/new)
+## <a name="new-version"></a>[新版本](#tab/new)
 
-## <a name="view-pending-requests"></a>檢視擱置的要求
+### <a name="view-pending-requests"></a>檢視擱置的要求
 
 作為委派核准者，當 Azure AD 的角色要求等待您核准時，您會收到電子郵件通知。 您可以在 Privileged Identity Management 中查看這些擱置的要求。
 
@@ -52,9 +52,9 @@ ms.locfileid: "92371540"
 
     ![核准要求-顯示 Azure AD 角色審核要求的頁面](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
-    在 [要求啟用角色]**** 區段中，您會看見正等待您核准的要求清單。
+    在 [要求啟用角色] 區段中，您會看見正等待您核准的要求清單。
 
-## <a name="approve-requests"></a>核准要求
+### <a name="approve-requests"></a>核准要求
 
 1. 尋找並選取您想要核准的要求。 [核准] 或 [拒絕] 頁面隨即出現。
 
@@ -66,7 +66,7 @@ ms.locfileid: "92371540"
 
     ![核准顯示要求已通過核准的通知](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
-## <a name="deny-requests"></a>拒絕要求
+### <a name="deny-requests"></a>拒絕要求
 
 1. 尋找並選取您要拒絕的要求。 [核准] 或 [拒絕] 頁面隨即出現。
 
@@ -76,7 +76,7 @@ ms.locfileid: "92371540"
 
 1. 選取 [ **拒絕**]。 表示您拒絕的通知隨即顯示。
 
-## <a name="workflow-notifications"></a>工作流程通知
+### <a name="workflow-notifications"></a>工作流程通知
 
 以下是一些工作流程通知相關資訊：
 
@@ -88,9 +88,9 @@ ms.locfileid: "92371540"
 >[!NOTE]
 >全域管理員或特殊許可權角色管理員，認為已核准的使用者不應處於作用中狀態，可以移除 Privileged Identity Management 中的作用中角色指派。 雖然系統管理員不會收到擱置中要求的通知，但它們是核准者，但他們可以在 Privileged Identity Management 中查看擱置的要求，藉以查看和取消所有使用者的擱置中要求。
 
-# <a name="previous-version"></a>[先前版本](#tab/previous)
+## <a name="previous-version"></a>[先前版本](#tab/previous)
 
-## <a name="view-pending-requests"></a>檢視擱置的要求
+### <a name="view-pending-requests"></a>檢視擱置的要求
 
 作為委派核准者，當 Azure AD 的角色要求等待您核准時，您會收到電子郵件通知。 您可以在 Privileged Identity Management 中查看這些擱置的要求。
 
@@ -98,21 +98,21 @@ ms.locfileid: "92371540"
 
 1. 開啟 **Azure AD Privileged Identity Management**。
 
-1. 按一下 [Azure AD 角色]****。
+1. 按一下 [Azure AD 角色]。
 
-1. 按一下 [核准要求]****。
+1. 按一下 [核准要求]。
 
     ![Azure AD 角色-核准要求](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
     您將看到一份等待您核准的要求清單。
 
-## <a name="approve-requests"></a>核准要求
+### <a name="approve-requests"></a>核准要求
 
-1. 選取您要核准的要求，然後按一下 [核准]****，以開啟 [核准選取要求] 窗格。
+1. 選取您要核准的要求，然後按一下 [核准]，以開啟 [核准選取要求] 窗格。
 
     ![已反白顯示核准選項的核准要求清單](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-1. 在 [核准原因]**** 方塊中輸入原因。
+1. 在 [核准原因] 方塊中輸入原因。
 
     ![核准選取的要求窗格（核准原因）](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
@@ -122,13 +122,13 @@ ms.locfileid: "92371540"
 
     ![按一下 [核准] 按鈕之後核准選取的要求窗格](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
-## <a name="deny-requests"></a>拒絕要求
+### <a name="deny-requests"></a>拒絕要求
 
-1. 選取您要拒絕的要求，然後按一下 [拒絕]****，以開啟 [拒絕選取要求] 窗格。
+1. 選取您要拒絕的要求，然後按一下 [拒絕]，以開啟 [拒絕選取要求] 窗格。
 
     ![已反白顯示拒絕選項的核准要求清單](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
-1. 在 [拒絕原因]**** 方塊中輸入原因。
+1. 在 [拒絕原因] 方塊中輸入原因。
 
     ![拒絕所選要求窗格的拒絕原因](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 

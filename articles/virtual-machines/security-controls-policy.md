@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 虛擬機器的 Azure 原則法規合規性控制
 description: 列出可供 Azure 虛擬機器使用的 Azure 原則法規合規性控制。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/17/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e0e82dbb861b0ea04791e0fa0cb072e8532f7fcf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3805a19726ed9e08200f1611724d81d771db111c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693301"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314543"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-machines"></a>適用於 Azure 虛擬機器的 Azure 原則法規合規性控制 
 

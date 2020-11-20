@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306934"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981182"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用維護控制和 Azure PowerShell 來控制更新
 
@@ -34,12 +34,12 @@ Install-Module -Name Az.Maintenance
 
 如果您是在本機進行安裝，請務必以系統管理員身分開啟 PowerShell 提示字元。
 
-系統可能也會要求您確認是否要從未 *受信任*的存放庫進行安裝。 輸入 `Y` 或選取 **[是]，以** 安裝模組。
+系統可能也會要求您確認是否要從未 *受信任* 的存放庫進行安裝。 輸入 `Y` 或選取 **[是]，以** 安裝模組。
 
 
 ## <a name="create-a-maintenance-configuration"></a>建立維護設定
 
-建立資源群組作為您設定的容器。 在此範例中，會在*eastus*中建立名為*myMaintenanceRG*的資源群組。 如果您已經有想要使用的資源群組，您可以略過此部分，並將資源組名取代為其餘範例中所擁有的資源組名。
+建立資源群組作為您設定的容器。 在此範例中，會在 *eastus* 中建立名為 *myMaintenanceRG* 的資源群組。 如果您已經有想要使用的資源群組，您可以略過此部分，並將資源組名取代為其餘範例中所擁有的資源組名。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -67,13 +67,7 @@ $config = New-AzMaintenanceConfiguration `
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>在預覽中使用排程的時間範圍 (建立維護設定) 
-
-
-> [!IMPORTANT]
-> 排程的視窗功能目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>使用已排程的時間範圍建立維護設定
 
 使用 New-AzMaintenanceConfiguration 可在 Azure 將更新套用至您的資源時，使用已排程的時間範圍來建立維護設定。 此範例會建立一個名為 Myconfig.xml 的維護設定，並在每個月的第四個星期一排程時段為5小時。 一旦建立排程的視窗，您就不再需要手動套用更新。
 
@@ -91,8 +85,13 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > 維護 **期間** 必須是 *2 小時* 或更長的時間。 在35天內，維護 **週期** 至少必須設定為一次。
 
-維護 **週期** 可以表示為每日、每週或每月排程。 每日排程範例為 recurEvery： Day、recurEvery：3Days。 每週排程範例為 recurEvery：3Weeks、recurEvery： Week 星期六、星期日。 每月排程範例如下 recurEvery： Month day23、day24、recurEvery： Month Last 星期日、recurEvery： Month 第四個月。
-
+維護 **週期** 可以表示為：
+ | 值 | 範例 |
+      |-------|-------------|
+      | 日常 | recurEvery： Day **或** RecurEvery：3Days | 
+      | weekly | recurEvery： 3Weeks **或** RecurEvery：周星期六、星期日 | 
+      | 每月 | recurEvery： Month day23、day24 **或** RecurEvery： Month Last 星期日 **或** recurEvery： Monday month | 
+      
 
 ## <a name="assign-the-configuration"></a>指派設定
 

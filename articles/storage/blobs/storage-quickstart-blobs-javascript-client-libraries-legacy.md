@@ -353,7 +353,7 @@ deleteButton.addEventListener("click", deleteFiles);
 
 ### <a name="run-and-test-the-web-application"></a>執行並測試 Web 應用程式
 
-此時，您可以啟動頁面及進行實驗，以了解 Blob 儲存體的運作方式。 如果發生任何錯誤 (例如您嘗試在建立容器之前列出檔案)， **狀態** 窗格將會顯示收到的錯誤訊息。 您也可以在 JavaScript 程式碼中設定中斷點，以檢查儲存體 API 所傳回的值。
+此時，您可以啟動頁面及進行實驗，以了解 Blob 儲存體的運作方式。 如果發生任何錯誤 (例如您嘗試在建立容器之前列出檔案)，**狀態** 窗格將會顯示收到的錯誤訊息。 您也可以在 JavaScript 程式碼中設定中斷點，以檢查儲存體 API 所傳回的值。
 
 ## <a name="clean-up-resources"></a>清除資源
 

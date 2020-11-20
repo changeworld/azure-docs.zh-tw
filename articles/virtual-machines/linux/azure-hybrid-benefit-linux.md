@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916469"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980876"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit –適用于 Linux 虛擬機器的方式
 
@@ -146,6 +146,35 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 *問：我已向 Red Hat Cloud Access 註冊，但仍無法在 RHEL Vm 上啟用權益。我該怎麼辦？*
 
 答：您的 Red Hat Cloud Access 訂用帳戶註冊可能需要一些時間才能從 Red Hat 傳播至 Azure。 如果您在一個工作天之後仍看到錯誤，請洽詢 Microsoft 支援服務。
+
+*問：我已使用 RHEL BYOS 「黃金映射」部署 VM。我可以將這些映射的帳單從 BYOS 轉換成 PAYG 嗎？*
+
+答：不可以。 Azure Hybrid Benefit 僅支援隨用隨付映射的轉換。
+
+*問：我已使用 RHEL BYOS 「黃金映射」部署 VM。我可以將這些映射的帳單從 BYOS 轉換成 PAYG 嗎？*
+
+答：不可以。 Azure Hybrid Benefit 僅支援隨用隨付映射的轉換。
+
+*問：我已經從內部內部部署 (via ASR 上傳自己的 RHEL 映射，或) 到 Azure。我可以將這些映射的帳單從 BYOS 轉換成 PAYG 嗎？*
+
+答：不可以。 Azure Hybrid Benefit 功能目前僅適用于 RHEL 和 SLES Marketplace 映射。 
+
+*問：我可以在從 Marketplace RHEL 和 SLES SAP 映射部署的 Vm 上使用 Azure Hybrid Benefit 嗎？*
+
+答：可以。 您可以使用 RHEL Vm 的「RHEL_BYOS」授權類型和「SLES_BYOS」來轉換從 Marketplace RHEL 和 SLES SAP 映射部署的 Vm。
+
+*問：我可以在 Azure Hybrid Benefit 的虛擬機器擴展集上使用 (VMSS) 適用于 RHEL 和 SLES 嗎？*
+
+答：否，您無法。 VMSS 目前不在 RHEL 和 SLES 的 Azure Hybrid Benefit 範圍內。
+
+*問：我可以在適用于 RHEL 和 SLES (RIs) 的保留實例上使用 Azure Hybrid Benefit 嗎？*
+
+答：否，您無法。 RIs 目前不在目前的 RHEL 和 SLES Azure Hybrid Benefit 範圍內。
+
+*問：是否可以在針對 RHEL 映射部署 SQL Server 的虛擬機器上使用 Azure Hybrid Benefit？*
+
+答：否，您無法。 沒有任何支援的方案。
+ 
 
 ## <a name="common-issues"></a>常見問題
 本節包含可能遇到的常見問題清單，以及緩和措施的步驟。

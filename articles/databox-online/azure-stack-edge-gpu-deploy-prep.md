@@ -107,7 +107,7 @@ ms.locfileid: "92426984"
 
 1. 使用您的 Microsoft Azure 認證經由以下 URL 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-2. 在左窗格中，選取 [+ 建立資源]。 搜尋並選取 **Azure Stack Edge/資料箱閘道** 。 選取 [建立]。 
+2. 在左窗格中，選取 [+ 建立資源]。 搜尋並選取 **Azure Stack Edge/資料箱閘道**。 選取 [建立]。 
 
 3. 挑選要用於 Azure Stack Edge Pro 裝置的訂用帳戶。 選取您要寄送此實體裝置的國家/地區。 選取 [顯示裝置]。
 

@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 6533cbde10dfc924bd982357def859229eb1714a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963159"
+ms.locfileid: "94981114"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -277,7 +277,7 @@ AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
 
 例如，假設 *大樓* 包含 *樓層* ，而 *地面* 包含 *房間*。 若要搜尋熱大樓內的房間，有一種方式是遵循這些步驟。
 
-1. 根據關聯性尋找建築物中的樓層 `contains`
+1. 根據關聯性找出大樓中的樓層 `contains` 。
 
     ```sql
     SELECT Floor

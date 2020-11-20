@@ -446,7 +446,7 @@ Bing 地圖服務中的形狀類型包括線條、多邊形、圓形和曲線。
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
-至於路徑位置，Azure 地圖服務會要求座標採用 `longitude latitude` 格式，而 Bing 地圖服務則使用 `latitude,longitude` 格式。 另請注意，在 Azure 地圖服務中，經度和緯度會用 **空格而不是逗號來分隔** 。 Azure 地圖服務目前不支援編碼的路徑。 較大的資料集可以透過 GeoJSON 檔案的形式上傳至 Azure 地圖服務的資料儲存體 API 中，如[這裡](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)所述。
+至於路徑位置，Azure 地圖服務會要求座標採用 `longitude latitude` 格式，而 Bing 地圖服務則使用 `latitude,longitude` 格式。 另請注意，在 Azure 地圖服務中，經度和緯度會用 **空格而不是逗號來分隔**。 Azure 地圖服務目前不支援編碼的路徑。 較大的資料集可以透過 GeoJSON 檔案的形式上傳至 Azure 地圖服務的資料儲存體 API 中，如[這裡](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)所述。
 
 Azure 地圖服務中的路徑樣式會以 `optionNameValue` 格式來新增，如有多個樣式，則以縱線字元 (`|`) 來分隔，例如 `optionName1Value1|optionName2Value2`。 請注意，選項名稱和值不會分隔。 在 Azure 地圖服務中，下列樣式選項名稱可用來設定路徑樣式：
 
@@ -528,7 +528,7 @@ Azure 地圖服務提供用來計算等時線的 API，這個多邊形中涵蓋�
 您可以使用下列 API，在 Bing 地圖服務中搜尋景點資料：
 
 -   **本機搜尋：** 依名稱或依實體類型 (類別) 搜尋鄰近景點 (星形搜尋)。 Azure 地圖服務 [POI 搜尋](/rest/api/maps/search/getsearchpoi)和 [POI 類別搜尋](/rest/api/maps/search/getsearchpoicategory) API 最類似此 API。
--   **位置辨識** ：搜尋位於某位置一定距離內的景點。 Azure 地圖服務的[鄰近搜尋](/rest/api/maps/search/getsearchnearby) API 與此 API 非常類似。
+-   **位置辨識**：搜尋位於某位置一定距離內的景點。 Azure 地圖服務的[鄰近搜尋](/rest/api/maps/search/getsearchnearby) API 與此 API 非常類似。
 -   **地點分析：** 搜尋從特定座標的指定駕駛時間或距離上限內的景點。 藉由先計算等時線，然後將其傳遞至 [幾何內搜尋](/rest/api/maps/search/postsearchinsidegeometry) API，即可達成此 Azure 地圖服務。
 
 Azure 地圖服務會提供數個景點搜尋 API：

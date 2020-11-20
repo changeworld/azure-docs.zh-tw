@@ -31,7 +31,7 @@ ms.locfileid: "86208767"
     ![準備寄送 3](media/data-box-export-prepare-to-ship/prepare-to-ship3.png)
 
 
-3. **準備寄送**開始後，您會看到進度通知與進度列。
+3. **準備寄送** 開始後，您會看到進度通知與進度列。
 
     ![準備寄送 4](media/data-box-export-prepare-to-ship/prepare-to-ship4.png)
 

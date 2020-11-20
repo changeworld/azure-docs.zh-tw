@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330983"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980995"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求
 
@@ -153,9 +153,9 @@ ms.locfileid: "94330983"
 
 1. 若要檢查輸入呼叫是否有符合指定架構的要求本文，請遵循下列步驟：
 
-   1. 在要求觸發程式的標題列中，選取省略號按鈕 ( **...** ) 。
+   1. 在要求觸發程式的標題列中，選取省略號按鈕 (**...**) 。
 
-   1. 在觸發程式的設定中，開啟 **架構驗證** ，然後選取 [ **完成** ]。
+   1. 在觸發程式的設定中，開啟 **架構驗證**，然後選取 [ **完成**]。
 
       如果撥入電話的要求本文不符合您的架構，則觸發程式會傳回 `HTTP 400 Bad Request` 錯誤。
 
@@ -190,9 +190,9 @@ ms.locfileid: "94330983"
    > [!NOTE]
    > 如果您想要在 **#** 呼叫要求觸發程式時，在 URI 中包含雜湊或 # 符號 () ，請改用此編碼版本： `%25%23`
 
-1. 若要觸發邏輯應用程式，請將 HTTP POST 傳送至產生的 URL。
+1. 若要測試您的邏輯應用程式，請將 HTTP 要求傳送至產生的 URL。
 
-   例如，您可以使用 [Postman](https://www.getpostman.com/) 之類的工具來傳送 HTTP POST。 如需此觸發程序的基礎 JSON 定義及如何呼叫此觸發程序的詳細資訊，請參閱這些主題：[要求觸發程序類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure Logic Apps 中使用 HTTP 端點來呼叫、觸發或巢狀工作流程](../logic-apps/logic-apps-http-endpoint.md)。
+   例如，您可以使用 [Postman](https://www.getpostman.com/) 之類的工具來傳送 HTTP 要求。 如需此觸發程序的基礎 JSON 定義及如何呼叫此觸發程序的詳細資訊，請參閱這些主題：[要求觸發程序類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure Logic Apps 中使用 HTTP 端點來呼叫、觸發或巢狀工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
 如需對邏輯應用程式進行輸入呼叫的安全性、授權和加密的詳細資訊（例如 [傳輸層安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) 、使用 Azure API 管理來公開邏輯應用 [程式，或 ](../active-directory/develop/index.yml)限制發出輸入呼叫的 IP 位址，請參閱 [對要求型觸發程式進行輸入呼叫的安全存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
@@ -233,7 +233,7 @@ ms.locfileid: "94330983"
 
    若要在步驟之間新增動作，請將指標移至這些步驟之間的箭頭上。 選擇出現的加號 ( **+** )，然後選取 [新增動作]。
 
-1. 在 [ **選擇動作** ] 下的 [搜尋] 方塊中，輸入 `response` 做為篩選準則，然後選取 **回應** 動作。
+1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `response` 做為篩選準則，然後選取 **回應** 動作。
 
    ![選取回應動作](./media/connectors-native-reqres/select-response-action.png)
 

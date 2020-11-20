@@ -35,7 +35,7 @@ ms.locfileid: "92048231"
     
 > [!TIP]
 > * 可能需要 10 到 30 分鐘，您的 Metrics Advisor 資源才會部署完成。 一旦成功部署，請按一下 [移至資源]。
-> * 如果要使用 REST API 與服務互動，您需要所建立資源的金鑰和端點。 您可以在所建立資源的**金鑰和端點**索引標籤中找到相關資訊。
+> * 如果要使用 REST API 與服務互動，您需要所建立資源的金鑰和端點。 您可以在所建立資源的 **金鑰和端點** 索引標籤中找到相關資訊。
 
 本文件使用 SQL Database 作為建立第一個監視器的範例。
 
@@ -52,7 +52,7 @@ Metrics Advisor 會針對不同的資料來源 (例如 SQL Database、Azure 資�
 
 本快速入門會使用 SQL Database 作為範例。 您也可以依照相同的步驟內嵌自己的資料。
 
-若要開始，請使用您的 Active Directory 帳戶登入 Metrics Advisor 工作區。 從登陸頁面中，選取您剛建立的**目錄**、**訂用帳戶**和**工作區**，然後按一下 [開始使用]。 載入工作負載的主頁面後，從左側功能表中選取 [新增資料摘要]。
+若要開始，請使用您的 Active Directory 帳戶登入 Metrics Advisor 工作區。 從登陸頁面中，選取您剛建立的 **目錄**、**訂用帳戶** 和 **工作區**，然後按一下 [開始使用]。 載入工作負載的主頁面後，從左側功能表中選取 [新增資料摘要]。
 
 ### <a name="data-schema-requirements-and-configuration"></a>資料結構描述需求和組態
 
@@ -70,7 +70,7 @@ Metrics Advisor 會針對不同的資料來源 (例如 SQL Database、Azure 資�
 * **內嵌資料起算時間 (UTC)** ：要內嵌之第一個時間戳記的開始時間。 
 
 
-接下來，使用您資料來源的認證指定**連接字串**，以及自訂**查詢**。 查詢是用來指定要內嵌的資料，並轉換成所需的結構描述。
+接下來，使用您資料來源的認證指定 **連接字串**，以及自訂 **查詢**。 查詢是用來指定要內嵌的資料，並轉換成所需的結構描述。
 
 [!INCLUDE [query requirements](../includes/query-requirements.md)]
 
@@ -97,12 +97,12 @@ Metrics Advisor 會針對不同的資料來源 (例如 SQL Database、Azure 資�
 |**忽略**     | 略過選取的資料行。        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="連線設定" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="結構描述組態" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>自動積存設定
 
 > [!IMPORTANT]
-> 如果要啟用**根本原因分析**和其他診斷功能，則必須設定「自動積存設定」。 啟用之後，就無法變更自動積存設定。
+> 如果要啟用 **根本原因分析** 和其他診斷功能，則必須設定「自動積存設定」。 啟用之後，就無法變更自動積存設定。
 
 Metrics Advisor 可以在內嵌期間，自動在每個維度上執行彙總 (SUM/MAX/MIN...)，然後建置將用於根本原因分析和其他診斷功能的階層。 如需詳細資訊，請參閱[自動積存設定](../how-tos/onboard-your-data.md#automatic-roll-up-settings)。
 
@@ -112,12 +112,12 @@ Metrics Advisor 可以在內嵌期間，自動在每個維度上執行彙總 (SU
 
 新增資料摘要之後，Metrics Advisor 會嘗試從指定的開始日期內嵌計量資料。 資料可能需要一些時間才能完全內嵌，您可以按一下資料摘要頁面頂端的 [內嵌進度] 檢視內嵌狀態。 如果資料已內嵌，Metrics Advisor 會套用偵測，並繼續監視新資料的來源。
 
-套用偵測時，請按一下資料摘要中所列的其中一個計量，以尋找**計量詳細資料頁面**，並： 
+套用偵測時，請按一下資料摘要中所列的其中一個計量，以尋找 **計量詳細資料頁面**，並： 
 - 檢視此計量下所有時間序列配量的視覺效果
 - 更新偵測組態以符合預期的結果
 - 為偵測到的異常設定通知
 
-:::image type="content" source="../media/metric-details.png" alt-text="連線設定" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="計量詳細資料" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>檢視診斷見解
 
@@ -125,13 +125,13 @@ Metrics Advisor 可以在內嵌期間，自動在每個維度上執行彙總 (SU
 
 若要檢視診斷深入解析，請按一下時間序列視覺效果上的紅色點，這代表偵測到的異常。 隨即會出現一個視窗，其中包含事件分析頁面的連結。 
 
-:::image type="content" source="../media/incident-link.png" alt-text="連線設定" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="事件連結" lightbox="../media/incident-link.png":::
 
-按一下連結後，您將會切換到事件分析頁面，系統會使用一些診斷深入解析來分析對應的異常。 頁面頂端會顯示事件的相關統計資料，例如**嚴重性**、**相關的異常**，以及受影響的**開始時間**和**結束時間**。 
+按一下連結後，您將會切換到事件分析頁面，系統會使用一些診斷深入解析來分析對應的異常。 頁面頂端會顯示事件的相關統計資料，例如 **嚴重性**、**相關的異常**，以及受影響的 **開始時間** 和 **結束時間**。 
 
 接下來，您會看到事件的上階異常，以及自動化的根本原因建議。 這項自動化的根本原因建議是藉由分析所有相關異常的事件樹狀結構所產生，包括對父系異常的偏差、散佈和比重。 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="連線設定" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="事件診斷" lightbox="../media/incident-diagnostic.png":::
 
 根據這些功能，您已經可以直接看到發生的狀況以及事件帶來的影響，還有最可能的根本原因。 因此您可以採取立即動作儘快解決事件。 
 
@@ -143,11 +143,11 @@ Metrics Advisor 可以在內嵌期間，自動在每個維度上執行彙總 (SU
 
 ### <a name="create-a-web-hook"></a>建立 Webhook
 
-Webhook 是一種進入點，可讓您以程式設計方式從 Metrics Advisor 服務得知異常狀況；當異常狀況觸發警示時，會呼叫使用者提供的 API。如需有關如何建立勾點的詳細資訊，請參閱**建立勾點**一節，位於：[操作說明：使用勾點來設定警示並取得通知](../how-tos/alerts.md#create-a-hook)。 
+Webhook 是一種進入點，可讓您以程式設計方式從 Metrics Advisor 服務得知異常狀況；當異常狀況觸發警示時，會呼叫使用者提供的 API。如需有關如何建立勾點的詳細資訊，請參閱 **建立勾點** 一節，位於：[操作說明：使用勾點來設定警示並取得通知](../how-tos/alerts.md#create-a-hook)。 
 
 ### <a name="configure-alert-settings"></a>設定警示設定
 
-建立勾點之後，警示設定會決定應該如何傳送警示通知，以及應該傳送哪個警示通知。 您可以為每個計量設定多個警示設定。 有兩個重要的設定分別為**警示納入範圍** (指定要包含的異常)，以及**篩選異常選項** (以定義要包含在警示中的異常)。 請參閱**新增或編輯警示設定**一節，位於[操作說明：使用掛勾來設定警示並取得通知](../how-tos/alerts.md#add-or-edit-alert-settings)以取得詳細資料。
+建立勾點之後，警示設定會決定應該如何傳送警示通知，以及應該傳送哪個警示通知。 您可以為每個計量設定多個警示設定。 有兩個重要的設定分別為 **警示納入範圍** (指定要包含的異常)，以及 **篩選異常選項** (以定義要包含在警示中的異常)。 請參閱 **新增或編輯警示設定** 一節，位於 [操作說明：使用掛勾來設定警示並取得通知](../how-tos/alerts.md#add-or-edit-alert-settings)以取得詳細資料。
 
 
 ## <a name="next-steps"></a>後續步驟

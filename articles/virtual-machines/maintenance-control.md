@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4b9dec0fe684e002fadbac2db375c354db2b6d01
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978606"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981165"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>使用維護控制來管理平臺更新 
 
@@ -23,12 +23,13 @@ ms.locfileid: "91978606"
 使用維護控制，您可以：
 - 批次更新為一個更新套件。
 - 等候最多35天的時間套用更新。 
-- 使用 [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)自動進行維護視窗的平臺更新。
+- 藉由設定維護排程或使用 [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)，將平臺更新自動化。
 - 維護設定可以跨訂用帳戶和資源群組運作。 
 
 ## <a name="limitations"></a>限制
 
 - Vm 必須位於 [專用主機](./dedicated-hosts.md)上，或使用 [隔離的 VM 大小](isolation.md)來建立。
+- 如果已宣告維護排程，則至少必須是2小時。
 - 在35天后，將會自動套用更新。
 - 使用者必須擁有 **資源參與者** 存取權。
 

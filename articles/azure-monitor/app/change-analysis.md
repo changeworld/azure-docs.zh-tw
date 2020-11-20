@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168268"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979958"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析 (preview) 
 
@@ -91,13 +91,13 @@ IP 設定規則、TLS 設定和延伸模組版本等設定尚未在 Azure Resour
 
 ### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>診斷和解決問題工具中的應用程式變更分析
 
-應用程式變更分析是 Web 應用程式中的獨立偵測器，可診斷並解決問題工具。 它也會在 **應用程式** 當機和 **Web 應用程式關閉偵測器**時進行匯總。 當您輸入診斷和解決問題工具時，將會自動註冊 **ChangeAnalysis** 資源提供者。 遵循這些指示來啟用 web 應用程式的來賓變更追蹤。
+應用程式變更分析是 Web 應用程式中的獨立偵測器，可診斷並解決問題工具。 它也會在 **應用程式** 當機和 **Web 應用程式關閉偵測器** 時進行匯總。 當您輸入診斷和解決問題工具時，將會自動註冊 **ChangeAnalysis** 資源提供者。 遵循這些指示來啟用 web 應用程式的來賓變更追蹤。
 
 1. 選取 [ **可用性] 和 [效能**]。
 
     ![[可用性和效能] 疑難排解選項的螢幕擷取畫面](./media/change-analysis/availability-and-performance.png)
 
-2. 選取 [ **應用程式變更**]。 **應用程式**損毀中也提供此功能。
+2. 選取 [ **應用程式變更**]。 **應用程式** 損毀中也提供此功能。
 
    ![[應用程式當機] 按鈕的螢幕擷取畫面](./media/change-analysis/application-changes.png)
 
@@ -183,6 +183,7 @@ foreach ($webapp in $webapp_list)
     ```
 
 - **無法註冊 ChangeAnalysis 資源提供者**。 這則訊息表示 UI 傳送要求以註冊資源提供者時，會立即失敗，而且與許可權問題無關。 可能是暫時性的網際網路連線問題。 請嘗試重新整理頁面，並檢查您的網際網路連線。 如果錯誤持續發生，請聯絡 changeanalysishelp@microsoft.com
+- 無法使用 message Azure lighthouse 訂用帳戶 **查詢 ChangeAnalysis 資源提供者** *，只可在訂用帳戶的主要租使用者中使用這些變更*。 現在對不在 home 租使用者中的使用者，透過 Azure Lighthouse 訂用帳戶註冊變更分析資源提供者是一項限制。 我們預計在不久的將來會解決這項限制。 如果這是您封鎖的問題，有一個因應措施，包括建立服務主體並明確指派角色以允許存取。  changeanalysishelp@microsoft.com若要深入瞭解，請聯絡。
 
 - **這所花費的時間超出預期**。 這則訊息表示註冊所花費的時間超過2分鐘。 這是不尋常的，但不一定表示發生錯誤。 您可以前往 [ **訂閱] |** 要檢查 **Microsoft ChangeAnalysis** 資源提供者註冊狀態的資源提供者。 您可以嘗試使用 UI 來取消註冊、重新註冊或重新整理，以查看是否有説明。 如果問題持續發生，請洽詢 changeanalysishelp@microsoft.com 支援人員。
     ![針對 RP 註冊花費太長時間進行疑難排解](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
