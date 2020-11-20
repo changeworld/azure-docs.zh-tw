@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d736c09fc1c9490f79dfc526895970e01b8b45cc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556018"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963176"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在 Government 入口網站中部署您的內部部署 StorSimple 裝置
 
@@ -42,7 +42,7 @@ ms.locfileid: "85556018"
 ## <a name="deployment-steps"></a>部署步驟
 請執行這些必要步驟來設定 StorSimple 裝置，並將它連線到 StorSimple 裝置管理員服務。 除了這些必要步驟外，部署期間也會有一些您可能需要完成的選擇性步驟和程序。 逐步部署指出您應該執行各選擇性步驟的時機。
 
-| 步驟 | 說明 |
+| 步驟 | 描述 |
 | --- | --- |
 | **先決條件** |這些是針對將要進行的部署而需要完成的準備工作。 |
 | [部署設定檢查清單](#deployment-configuration-checklist) |使用此檢查清單來收集並記錄部署之前和部署期間的資訊。 |
@@ -153,7 +153,7 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 
 > [!IMPORTANT]
 > * 為獲得 StorSimple 解決方案的高可用性，建議您先在主機伺服器 (選用) 上設定 MPIO，再設定 iSCSI。 主機伺服器上的 MPIO 設定會確保伺服器可以容許連結、網路，或介面失敗。
-> * 如需在 Windows Server 主機上安裝和設定 MPIO 和 iSCSI 的指示，請移至 [為 StorSimple 裝置設定 MPIO](storsimple-configure-mpio-windows-server.md)。 其中也會包括掛接、初始化和格式化 StorSimple 磁碟區的步驟。
+> * 如需在 Windows Server 主機上安裝和設定 MPIO 和 iSCSI 的指示，請移至 [為 StorSimple 裝置設定 MPIO](./storsimple-8000-configure-mpio-windows-server.md)。 其中也會包括掛接、初始化和格式化 StorSimple 磁碟區的步驟。
 > * 如需在 Linux 主機上安裝和設定 MPIO 和 iSCSI 的指示，請移至 [為 StorSimple Linux 主機設定 MPIO](storsimple-configure-mpio-on-linux.md)
 
 如果您決定不設定 MPIO，請執行下列步驟在 Windows Server 主機上掛接、初始化及格式化您的 StorSimple 磁碟區。
@@ -161,7 +161,7 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>步驟 8：進行備份
-備份可提供磁碟區的時間點保護，並改善復原能力，同時讓還原時間降至最低。 您可以在 StorSimple 裝置上進行兩種備份類型：本機快照與雲端快照。 這兩種備份類型都可以採用 [排程]**** 或 [手動]**** 方式。
+備份可提供磁碟區的時間點保護，並改善復原能力，同時讓還原時間降至最低。 您可以在 StorSimple 裝置上進行兩種備份類型：本機快照與雲端快照。 這兩種備份類型都可以採用 [排程] 或 [手動] 方式。
 
 請在 Government 入口網站中執行下列步驟，以建立排程備份。
 
@@ -172,9 +172,9 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 ## <a name="configure-a-new-storage-account-for-the-service"></a>針對服務設定新的儲存體帳戶
 這是選擇性步驟，只有當您並未啟用服務自動建立儲存體帳戶時才需要執行。 必須要有 Microsoft Azure 儲存體帳戶，才能建立 StorSimple 磁碟區容器。
 
-如果您需要在不同區域建立 Azure 儲存體帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md) 以取得逐步指示。
+如果您需要在不同區域建立 Azure 儲存體帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/common/storage-account-create.md) 以取得逐步指示。
 
-請在 Government 入口網站上的 [StorSimple 裝置管理員服務]**** 頁面執行下列步驟。
+請在 Government 入口網站上的 [StorSimple 裝置管理員服務] 頁面執行下列步驟。
 
 [!INCLUDE [storsimple-configure-new-storage-account-u1](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
@@ -196,7 +196,6 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 設定 [虛擬裝置](storsimple-8000-cloud-appliance-u2.md)。
 * 使用 [storsimple 裝置管理員服務](storsimple-8000-manager-service-administration.md) 來管理您的 StorSimple 裝置。
-

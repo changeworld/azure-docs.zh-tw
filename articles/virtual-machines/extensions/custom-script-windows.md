@@ -5,17 +5,18 @@ services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973813"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960966"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows 的自訂指令碼延伸模組
 
@@ -67,7 +68,7 @@ ms.locfileid: "91973813"
 * 自訂指令碼擴充功能未原生支援 Proxy 伺服器，但是您可以在指令碼中使用支援 Proxy 伺服器的檔案傳輸工具，例如 *Curl*
 * 請留意指令碼或命令所依賴的非預設目錄位置是否具備處理此情形的邏輯。
 * 自訂指令碼擴充功能將會以 LocalSystem 帳戶執行
-* 如果您打算使用 *storageAccountName* 和 *storageAccountKey* 屬性，則這些屬性必須在 *protectedSettings*中共置。
+* 如果您打算使用 *storageAccountName* 和 *storageAccountKey* 屬性，則這些屬性必須在 *protectedSettings* 中共置。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -112,7 +113,7 @@ ms.locfileid: "91973813"
 ```
 
 > [!NOTE]
-> managedIdentity 屬性**不得**與 storageAccountName 或 storageAccountKey 屬性一起使用
+> managedIdentity 屬性 **不得** 與 storageAccountName 或 storageAccountKey 屬性一起使用
 
 > [!NOTE]
 > 一次只能在 VM 上安裝一個版本的擴充功能，若為相同的 VM 指定相同 Resource Manager 範本中的自訂指令碼兩次，作業將會失敗。
@@ -159,7 +160,7 @@ ms.locfileid: "91973813"
 
 ####  <a name="property-managedidentity"></a>屬性：managedIdentity
 > [!NOTE]
-> **必須**在受保護的設定中，才能指定此屬性。
+> **必須** 在受保護的設定中，才能指定此屬性。
 
 CustomScript (1.10 版之後) 支援使用[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來從「fileUris」設定中提供的 URL 下載檔案。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
 
@@ -197,7 +198,7 @@ CustomScript (1.10 版之後) 支援使用[受控識別](../../active-directory/
 > ```
 
 > [!NOTE]
-> managedIdentity 屬性**不得**與 storageAccountName 或 storageAccountKey 屬性一起使用
+> managedIdentity 屬性 **不得** 與 storageAccountName 或 storageAccountKey 屬性一起使用
 
 ## <a name="template-deployment"></a>範本部署
 

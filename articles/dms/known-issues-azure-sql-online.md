@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 748c3f8e38b98b2cbdcfecdf7d755827230fdb3d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291906"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962462"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>線上遷移至 Azure SQL Database 的已知問題/遷移限制
 
@@ -48,13 +48,13 @@ ms.locfileid: "91291906"
      select name,temporal_type,temporal_type_desc,* from sys.tables where temporal_type <>0
      ```
 
-2. 從 [進行移轉設定]**** 刀鋒視窗 (您在其中指定要移轉的資料表) 中，排除這些資料表。
+2. 從 [進行移轉設定] 刀鋒視窗 (您在其中指定要移轉的資料表) 中，排除這些資料表。
 
 3. 重新執行移轉活動。
 
 **資源**
 
-如需詳細資訊，請參閱[時態表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)一文。
+如需詳細資訊，請參閱[時態表](/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)一文。
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>移轉資料表包含具有 hierarchyid 資料類型的一或多個資料行
 
@@ -74,7 +74,7 @@ ms.locfileid: "91291906"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ```
 
-2. 從 [進行移轉設定]**** 刀鋒視窗 (您在其中指定要移轉的資料表) 中，排除這些資料表。
+2. 從 [進行移轉設定] 刀鋒視窗 (您在其中指定要移轉的資料表) 中，排除這些資料表。
 
 3. 重新執行移轉活動。
 
@@ -90,7 +90,7 @@ ms.locfileid: "91291906"
      select * from sys.triggers where is_disabled =0
      ```
 
-2. 使用 [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文中提供的步驟，停用來源資料庫中的觸發程序。
+2. 使用 [DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文中提供的步驟，停用來源資料庫中的觸發程序。
 
 3. 重新執行移轉活動。
 
@@ -134,7 +134,7 @@ Azure 資料庫移轉服務不會遷移來源時間戳記值;相反地，Azure �
 
      ![移轉活動畫面](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
-2. 選取 [查看錯誤詳細資料]****，以檢視特定錯誤訊息，協助您針對移轉錯誤進行疑難排解。
+2. 選取 [查看錯誤詳細資料]，以檢視特定錯誤訊息，協助您針對移轉錯誤進行疑難排解。
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>SQLDB online 遷移不支援 Geography 資料類型
 

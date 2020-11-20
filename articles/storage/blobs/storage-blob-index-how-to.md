@@ -3,18 +3,18 @@ title: 使用 blob 索引標記來管理和尋找 Azure Blob 儲存體上的資�
 description: 請參閱如何使用 blob 索引標記來分類、管理和查詢 blob 物件的範例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371965"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961782"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
 
@@ -23,7 +23,7 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 > [!NOTE]
 > Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部** 和 **法國南部** 區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [使用 Blob 索引標記管理和尋找 Azure blob 資料 (預覽) ](storage-manage-find-blobs.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -56,7 +56,7 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>使用索引標記上傳新的 Blob
 
-使用索引標籤上傳新的 blob 可由 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者執行。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+這項工作可由 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 者或透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 自訂 azure 角色授與 [Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 作業許可權的安全性主體來執行。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>取得、設定和更新 Blob 索引標記
 
-[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者可以執行取得 blob 索引標記。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者或已透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 自訂 azure 角色授與[Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage)作業許可權的安全性主體，都可以執行 blob 索引標記。
 
-[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者可以執行設定和更新 blob 索引標記。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者或已透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 自訂 azure 角色授與[Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage)作業許可權的安全性主體，都可以執行設定和更新 blob 索引標記。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -132,7 +132,7 @@ static async Task BlobIndexTagsOnCreate()
 
 6. 選取 [儲存] 按鈕，以確認您 Blob 的任何更新
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何取得、設定、更新和刪除 blob 上的索引標籤。":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>使用 blob 索引標記篩選和尋找資料
 
-[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者可以執行依 blob 索引標記搜尋和篩選。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+這項工作可由 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 者或透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 自訂 azure 角色授與 [Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 作業許可權的安全性主體來執行。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -209,7 +209,7 @@ static async Task BlobIndexTagsExample()
 
 5. 選取 [Blob 索引標記篩選] 按鈕，以新增其他標記篩選 (最多 10 個)
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何使用索引標籤來篩選和尋找已標記的 blob":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -303,11 +303,11 @@ static async Task FindBlobsByTagsExample()
 
 4. 選取 [ **篩選** 設定] 以新增選擇性篩選準則，以符合前置詞比對和 blob 索引相符
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何新增索引標籤以進行生命週期管理。":::
 
 5. 選取 [ **審核] + [新增** ] 以查看規則設定
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="顯示具有 blob 索引標記篩選範例之生命週期管理規則 Azure 入口網站的螢幕擷取畫面":::
 
 6. 選取 [新增] 以將新規則套用至生命週期管理原則
 

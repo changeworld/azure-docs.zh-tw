@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d121430452e0ed445af19f9b1ac89cfdfccdcdae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 05bcb0aebd44dee60fa3f323e1f109e4c0761ec8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167316"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961952"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>適用於 SUSE Linux Enterprise Server 之 Azure VM 上 NFS 的高可用性
 
@@ -51,7 +52,7 @@ ms.locfileid: "92167316"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 本文說明如何部署虛擬機器、設定虛擬機器、安裝叢集架構，以及安裝可用來儲存高可用性 SAP 系統之共用資料的高可用性 NFS 伺服器。
-本指南說明如何設定供兩個 SAP 系統 (NW1 和 NW2) 使用的高可用性 NFS 伺服器。 範例中資源 (例如虛擬機器、虛擬網路) 的名稱是假設您已使用資源前置詞為 **prod**的 [SAP 檔案伺服器範本][template-file-server]。
+本指南說明如何設定供兩個 SAP 系統 (NW1 和 NW2) 使用的高可用性 NFS 伺服器。 範例中資源 (例如虛擬機器、虛擬網路) 的名稱是假設您已使用資源前置詞為 **prod** 的 [SAP 檔案伺服器範本][template-file-server]。
 
 請先閱讀下列 SAP Note 和文件
 
@@ -120,7 +121,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    4. 管理員使用者名稱和管理員密碼  
       建立可用來登入電腦的新使用者。
    5. 子網路識別碼  
-      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是/subscriptions/** &lt; 訂 &gt; **用帳戶識別碼/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
+      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是/subscriptions/**&lt; 訂 &gt;** 用帳戶識別碼/ResourceGroups/**&lt; 資源組名 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虛擬網路名稱 &gt;**/subnets/**&lt; 子網名稱 &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
@@ -158,7 +159,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. NW1 的連接埠為 61000
             1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
             1. 輸入新健康狀態探查的名稱 (例如 **nw1-hp**)
-            1. 選取 [TCP] 作為通訊協定、連接埠 610**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
+            1. 選取 [TCP] 作為通訊協定、連接埠 610 **00**，保留 [間隔] 5 和 [狀況不良閾值] 2
             1. 按一下 [確定]
          1. NW2 的連接埠為 61001
             * 重複上述步驟來為 NW2 建立健康狀態探查
@@ -192,7 +193,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. NW1 的連接埠為 61000
             1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
             1. 輸入新健康狀態探查的名稱 (例如 **nw1-hp**)
-            1. 選取 [TCP] 作為通訊協定、連接埠 610**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
+            1. 選取 [TCP] 作為通訊協定、連接埠 610 **00**，保留 [間隔] 5 和 [狀況不良閾值] 2
             1. 按一下 [確定]
          1. NW2 的連接埠為 61001
             * 重複上述步驟來為 NW2 建立健康狀態探查
@@ -201,7 +202,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             1. 開啟負載平衡器、選取負載平衡規則，然後按一下 [新增]
             1. 輸入新負載平衡器規則的名稱 (例如 **nw1-lb-2049**)
             1. 選取您稍早建立的前端 IP 位址、後端集區及健康狀態探查 (例如 **nw1-frontend**)
-            1. 保留通訊協定 [TCP]****，輸入連接埠 **2049**
+            1. 保留通訊協定 [TCP]，輸入連接埠 **2049**
             1. 將閒置逾時增加為 30 分鐘
             1. **務必啟用浮動 IP**
             1. Click OK

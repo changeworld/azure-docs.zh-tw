@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 69fe84d6546e3fcb9e905a6b77ad3d9af3ed4d51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da4ebfa6a9ce64b03e6e1d29956f740f6cb3c1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077949"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960583"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>使用 PowerShell，利用安全性群組檢視分析虛擬機器的安全性
 
@@ -27,7 +27,7 @@ ms.locfileid: "87077949"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> 安全性群組 View API 已不再維護，即將淘汰。 請使用可提供相同功能的 [有效安全性規則功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) 。 
+> 安全性群組 View API 已不再維護，即將淘汰。 請使用可提供相同功能的 [有效安全性規則功能](./network-watcher-security-group-view-overview.md) 。 
 
 安全性群組檢視會傳回套用至虛擬機器之已設定且有效的網路安全性規則。 這項功能可用來稽核及診斷 VM 所設定的網路安全性群組和規則，以確保會正確允許或拒絕流量。 在本文中，我們會說明如何使用 PowerShell 來擷取虛擬機器所設定且有效的安全性規則
 
@@ -40,7 +40,7 @@ ms.locfileid: "87077949"
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 本文涵蓋的案例會擷取指定虛擬機器之已設定且有效的安全性規則。
 
@@ -70,7 +70,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="viewing-the-results"></a>檢視結果
 
-下列範例是所傳回結果的縮短回應。 結果顯示虛擬機器上所有有效且套用的安全性規則，並細分為 **NetworkInterfaceSecurityRules**、**DefaultSecurityRules**和 **EffectiveSecurityRules** 群組。
+下列範例是所傳回結果的縮短回應。 結果顯示虛擬機器上所有有效且套用的安全性規則，並細分為 **NetworkInterfaceSecurityRules**、**DefaultSecurityRules** 和 **EffectiveSecurityRules** 群組。
 
 ```
 NetworkInterfaces : [
@@ -129,8 +129,6 @@ NetworkInterfaces : [
                     ]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請瀏覽[使用網路監看員稽核網路安全性群組 (NSG)](network-watcher-nsg-auditing-powershell.md) 以了解如何自動驗證網路安全性群組。
-
-

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 156da7504a1a5e2a704e52a783fcd3e437a59867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2efd3e9c9ca97ea3d94b03bd5e440cd24d5da5da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986262"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960575"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API，利用安全性群組檢視分析虛擬機器的安全性
 
@@ -27,7 +27,7 @@ ms.locfileid: "90986262"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> 安全性群組 View API 已不再維護，即將淘汰。 請使用可提供相同功能的 [有效安全性規則功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) 。 
+> 安全性群組 View API 已不再維護，即將淘汰。 請使用可提供相同功能的 [有效安全性規則功能](./network-watcher-security-group-view-overview.md) 。 
 
 安全性群組檢視會傳回套用至虛擬機器之已設定且有效的網路安全性規則。 這項功能可用來稽核及診斷 VM 所設定的網路安全性群組和規則，以確保會正確允許或拒絕流量。 在本文中，我們會說明如何使用 REST API 來擷取有效且已套用至虛擬機器的安全性規則
 
@@ -64,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-所需的資訊是回應中 `Microsoft.Compute/virtualMachines`類型下方的**識別碼**，如下列範例所示︰
+所需的資訊是回應中 `Microsoft.Compute/virtualMachines`類型下方的 **識別碼**，如下列範例所示︰
 
 ```json
 ...,
@@ -115,7 +115,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="view-the-response"></a>檢視回應
 
-下列範例是前述命令中所傳回的回應。 結果顯示虛擬機器上所有有效且套用的安全性規則，並細分為 **NetworkInterfaceSecurityRules**、**DefaultSecurityRules**和 **EffectiveSecurityRules** 群組。
+下列範例是前述命令中所傳回的回應。 結果顯示虛擬機器上所有有效且套用的安全性規則，並細分為 **NetworkInterfaceSecurityRules**、**DefaultSecurityRules** 和 **EffectiveSecurityRules** 群組。
 
 ```json
 
@@ -186,5 +186,3 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ## <a name="next-steps"></a>後續步驟
 
 請瀏覽[使用網路監看員稽核網路安全性群組 (NSG)](network-watcher-security-group-view-powershell.md) 以了解如何自動驗證網路安全性群組。
-
-

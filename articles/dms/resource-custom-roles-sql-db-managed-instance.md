@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: e950e34a1965e309d226c42bf4b3128cbe3bf3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291498"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961476"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server 至 Azure SQL 受控執行個體線上遷移的自訂角色
 
@@ -32,7 +32,7 @@ Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互�
 > [!NOTE]
 > 當新的 SQL 受控執行個體程式碼部署至 Azure 時，最終可能會移除最後一個自訂角色需求。
 
-**應用程式識別碼的自訂角色**。 需要有此角色，才能在 *資源* 或 *資源群組* 層級遷移 Azure 資料庫移轉服務 (如需有關應用程式識別碼的詳細資訊，請參閱 [使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)) 。
+**應用程式識別碼的自訂角色**。 需要有此角色，才能在 *資源* 或 *資源群組* 層級遷移 Azure 資料庫移轉服務 (如需有關應用程式識別碼的詳細資訊，請參閱 [使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)) 。
 
 ```json
 {
@@ -63,7 +63,7 @@ Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互�
 }
 ```
 
-**應用程式識別碼-訂用帳戶的自訂角色**。 *訂*用帳戶層級的 Azure 資料庫移轉服務遷移需要此角色。
+**應用程式識別碼-訂用帳戶的自訂角色**。 *訂* 用帳戶層級的 Azure 資料庫移轉服務遷移需要此角色。
 
 ```json
 {
@@ -81,9 +81,9 @@ Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互�
 }
 ```
 
-上述 json 必須儲存在三個文字檔中，您可以使用 AzureRM、AZ PowerShell Cmdlet 或 Azure CLI 來建立使用 **get-azurermroledefinition (AzureRM) ** 或 **>get-azroledefinition (AZ) **的角色。
+上述 json 必須儲存在三個文字檔中，您可以使用 AzureRM、AZ PowerShell Cmdlet 或 Azure CLI 來建立使用 **get-azurermroledefinition (AzureRM)** 或 **>get-azroledefinition (AZ)** 的角色。
 
-如需詳細資訊，請參閱 [Azure 自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)文章。
+如需詳細資訊，請參閱 [Azure 自訂角色](../role-based-access-control/custom-roles.md)文章。
 
 建立這些自訂角色之後，您必須將角色指派新增至使用者和應用程式識別碼， (s) 到適當的資源或資源群組：
 

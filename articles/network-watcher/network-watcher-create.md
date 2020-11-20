@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272156"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961986"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>建立 Azure 網路監看員執行個體
 
@@ -49,13 +49,13 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在入口網站中建立網路監看員
 
-流覽至**所有服務**  >  **網路**  >  **網路**監看員。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
+流覽至 **所有服務**  >  **網路**  >  **網路** 監看員。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
 
 ![建立網路監看員](./media/network-watcher-create/figure1.png)
 
-當您使用入口網站啟用網路監看員時，網路監看員執行個體的名稱將會自動設定為 NetworkWatcher_region_name**，其中 region_name** 對應至啟用該執行個體的 Azure 區域。 例如，在美國中西部區域啟用的網路監看員，名稱會是 NetworkWatcher_westcentralus**。
+當您使用入口網站啟用網路監看員時，網路監看員執行個體的名稱將會自動設定為 NetworkWatcher_region_name，其中 region_name 對應至啟用該執行個體的 Azure 區域。 例如，在美國中西部區域啟用的網路監看員，名稱會是 NetworkWatcher_westcentralus。
 
-網路監看員執行個體會自動在名為 NetworkWatcherRG** 的資源群組中建立。 如果該資源群組尚未存在，系統就會加以建立。
+網路監看員執行個體會自動在名為 NetworkWatcherRG 的資源群組中建立。 如果該資源群組尚未存在，系統就會加以建立。
 
 如果您想要自訂網路監看員實例的名稱，以及它所放置的資源群組，您可以使用 PowerShell、Azure CLI、REST API 或 ARMClient 方法，如下一節所述。 在每個選項中，都必須先有資源群組，才能在其中建立網路監看員。  
 
@@ -107,7 +107,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在入口網站中刪除網路監看員
 
-流覽至**所有服務**  >  **網路**  >  **網路**監看員。
+流覽至 **所有服務**  >  **網路**  >  **網路** 監看員。
 
 如果您還沒有的話，請選取 [總覽] 索引標籤。 使用下拉式清單來選取您要在其中停用網路監看員的訂用帳戶。
 按一下箭號，展開您所選訂用帳戶的區域清單。 針對任何指定的，使用右邊的3個點來存取內容功能表。
@@ -129,7 +129,7 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 您已擁有網路監看員執行個體，接下來您可以了解可用的功能︰
 
-* [拓撲](network-watcher-topology-overview.md)
+* [拓撲](./view-network-topology.md)
 * [封包擷取](network-watcher-packet-capture-overview.md)
 * [IP 流程驗證](network-watcher-ip-flow-verify-overview.md)
 * [下一個躍點](network-watcher-next-hop-overview.md)

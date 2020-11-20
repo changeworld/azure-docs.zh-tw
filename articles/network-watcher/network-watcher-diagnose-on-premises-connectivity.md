@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9014f24918013872ce102d094f62fd5703594ddc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738748"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961850"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>透過 VPN 閘道診斷內部部署連線
 
@@ -29,13 +29,13 @@ Azure VPN 閘道可讓您建立混合式解決方案，以解決內部部署網�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 您想要使用 FortiGate 作為內部部署 VPN 閘道，在 Azure 和內部部署環境之間設定站對站連線。 為了實現此案例，您需要進行下列設定︰
 
 1. 虛擬網路閘道 - Azure 上的 VPN 閘道
 1. 本機網路閘道 - [內部部署 (FortiGate) VPN 閘道](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)在 Azure 雲端的表示
-1. 站對站連線 (路由式) - [VPN 閘道與內部部署路由器之間的連線](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. 站對站連線 (路由式) - [VPN 閘道與內部部署路由器之間的連線](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
 1. [設定 FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 若要找到用於設定站對站組態的詳細逐步解說指南，請瀏覽︰[使用 Azure 入口網站建立具有網站間連線的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。

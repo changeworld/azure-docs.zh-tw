@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d06ad2f740394a4959f3665c5d6311e71841241
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79126599"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960830"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 診斷 (預覽) 總覽
 
@@ -39,7 +39,7 @@ ms.locfileid: "79126599"
 
 ## <a name="cluster-insights"></a>叢集見解
 
-下列診斷檢查可在 **Cluster Insights**中取得。
+下列診斷檢查可在 **Cluster Insights** 中取得。
 
 ### <a name="cluster-node-issues"></a>叢集節點問題
 
@@ -82,5 +82,7 @@ CRUD 作業會檢查任何可能會在您的叢集中造成問題的 CRUD 作業
 ## <a name="next-steps"></a>後續步驟
 
 收集記錄檔，以協助您使用 [AKS Periscope](https://aka.ms/aksperiscope)進一步針對叢集問題進行疑難排解。
+
+閱讀 AKS day-2 操作指南的分級 [實務一節](https://docs.microsoft.com/azure/architecture/operator-guides/aks/aks-triage-practices) 。
 
 在標題中新增 "[診斷]"，以在 [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) 張貼您的問題或意見反應。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6393624cb4520ccd28dff41dd97746873bc13f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330293"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962479"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>線上遷移至 Azure SQL 受控執行個體的已知問題/遷移限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "91330293"
 
     Azure 資料庫移轉服務會使用備份和還原方法，將您的內部部署資料庫移轉至 SQL 受控執行個體。 Azure 資料庫移轉服務僅支援使用總和檢查碼建立的備份。
 
-    [在備份或還原期間啟用或停用備份總和檢查碼 (SQL Server) ](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [在備份或還原期間啟用或停用備份總和檢查碼 (SQL Server) ](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
     > [!NOTE]
     > 如果您使用壓縮進行資料庫備份，除非明確停用，否則總和檢查碼會是預設行為。

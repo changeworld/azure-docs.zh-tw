@@ -6,12 +6,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.subservice: workloads
+ms.openlocfilehash: 215a17ced6be4cc8792ac1a06115450bfbccac99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61485346"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963261"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>開始在 Azure 上使用 TmaxSoft OpenFrame
 
@@ -35,7 +36,7 @@ ms.locfileid: "61485346"
 - **前端** 元件（包括 JAVA Enterprise 使用者解決方案） (JEUS ) 、已通過 JAVA enterprise Edition 6. OFGW 認證的 web 應用程式伺服器，以及提供3270接聽程式的 OpenFrame 閘道元件。
 - **應用程式** 環境。 OpenFrame Base 是管理整個系統的中介軟體。 OpenFrame Server Type C (.OSC) 取代大型主機的中介軟體和 IBM CICS。
 - **關係資料庫**，例如 Tibero (顯示) 、Oracle Database、MICROSOFT SQL SERVER、IBM Db2 或 MySQL。 OpenFrame 應用程式會使用開放式資料庫連接 (ODBC) 通訊協定與資料庫進行通訊。
-- 透過 TACF 的**安全性**，此服務模組可控制使用者對系統和資源的存取。 
+- 透過 TACF 的 **安全性**，此服務模組可控制使用者對系統和資源的存取。 
 - **OFManager** 是一種解決方案，可在 web 環境中提供 OpenFrame 的操作和管理功能。
 
 ![OpenFrame 架構](media/openframe-02.png)

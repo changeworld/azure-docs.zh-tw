@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c9feb1131f6d2d0eb75ac71e27dc46c226c52c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707390"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961051"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署您的內部部署 StorSimple 裝置 (Update 3 和更新版本)
 
@@ -34,7 +34,7 @@ ms.locfileid: "84707390"
 ## <a name="deployment-steps"></a>部署步驟
 請執行這些必要步驟來設定 StorSimple 裝置，並將它連線到 StorSimple 裝置管理員服務。 除了這些必要步驟外，部署期間也會有一些您可能需要的選擇性步驟和程序。 逐步部署指出您應該執行各選擇性步驟的時機。
 
-| 步驟 | 說明 |
+| 步驟 | 描述 |
 | --- | --- |
 | **先決條件** |這些是針對將要進行的部署所必須完成的準備工作。 |
 | [部署設定檢查清單](#deployment-configuration-checklist) |使用此檢查清單，將部署之前和部署期間的資訊加以收集並記錄。 |
@@ -153,7 +153,7 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>步驟 8：進行備份
-備份可提供磁碟區的時間點保護，並改善復原能力，同時讓還原時間降至最低。 您可以在 StorSimple 裝置上進行兩種備份類型：本機快照與雲端快照。 這兩種備份類型都可以採用 [排程]**** 或 [手動]**** 方式。
+備份可提供磁碟區的時間點保護，並改善復原能力，同時讓還原時間降至最低。 您可以在 StorSimple 裝置上進行兩種備份類型：本機快照與雲端快照。 這兩種備份類型都可以採用 [排程] 或 [手動] 方式。
 
 請在 Azure 入口網站中執行下列步驟，來建立排程備份。
 
@@ -166,9 +166,9 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 ## <a name="configure-a-new-storage-account-for-the-service"></a>針對服務設定新的儲存體帳戶
 這是選擇性步驟，只有當您並未啟用服務自動建立儲存體帳戶時才需要執行。 必須要有 Microsoft Azure 儲存體帳戶，才能建立 StorSimple 磁碟區容器。
 
-如果您需要在不同區域建立 Azure 儲存體帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md) 以取得逐步指示。
+如果您需要在不同區域建立 Azure 儲存體帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/common/storage-account-create.md) 以取得逐步指示。
 
-請在 Azure 入口網站上的 [StorSimple 裝置管理員服務]**** 頁面，執行下列步驟。
+請在 Azure 入口網站上的 [StorSimple 裝置管理員服務] 頁面，執行下列步驟。
 
 [!INCLUDE [storsimple-8000-configure-new-storage-account-u2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
@@ -204,7 +204,6 @@ StorSimple 裝置管理員服務可以管理多個 StorSimple 裝置。 執行�
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [設定 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 * [使用 StorSimple 裝置管理員服務來管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
-

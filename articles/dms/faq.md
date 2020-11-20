@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: b8f570c2cd5f3939bab0df0c4fefe1becc3c81da
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893436"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962904"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -32,7 +32,7 @@ Azure 資料庫移轉服務是一個完全受控的服務，其設計目的是�
 * 持續投資無衝突的移轉。
 
 **問。Azure 資料庫移轉服務目前支援何種來源/目標配對？**
-服務目前支援各種來源/目標配對或遷移案例。 如需每個可用移轉案例狀態的完整清單，請參閱 [Azure 資料庫移轉服務支援的移轉案例狀態](https://docs.microsoft.com/azure/dms/resource-scenario-status)一文。
+服務目前支援各種來源/目標配對或遷移案例。 如需每個可用移轉案例狀態的完整清單，請參閱 [Azure 資料庫移轉服務支援的移轉案例狀態](./resource-scenario-status.md)一文。
 
 其他遷移案例仍處於預覽狀態，需要透過 DMS 預覽網站提交提名。 如需預覽版案例的完整清單，以及註冊參與這些供應專案的其中一項，請參閱 [DMS 預覽網站](https://aka.ms/dms-preview/)。
 
@@ -58,11 +58,11 @@ Azure Migrate 有助於將內部部署虛擬機器遷移至 Azure IaaS。 此服
 
 Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是通用的，包含以下需求：
 
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。
-* 確定您的虛擬網路網路安全性群組規則不會封鎖下列通訊埠443、53、5671-5672、9350-9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 為您的內部部署來源伺服器提供站對站連線能力。
+* 確定您的虛擬網路網路安全性群組規則不會封鎖下列通訊埠443、53、5671-5672、9350-9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
 
-如需使用 Azure 資料庫移轉服務來競爭特定遷移案例所需的所有必要條件清單，請參閱 docs.microsoft.com 上 Azure 資料庫移轉服務 [檔](https://docs.microsoft.com/azure/dms/dms-overview) 中的相關教學課程。
+如需使用 Azure 資料庫移轉服務來競爭特定遷移案例所需的所有必要條件清單，請參閱 docs.microsoft.com 上 Azure 資料庫移轉服務 [檔](./dms-overview.md) 中的相關教學課程。
 
 **問。如何? 尋找 Azure 資料庫移轉服務的 IP 位址，讓我可以針對用來存取源資料庫以進行遷移的防火牆規則建立允許清單嗎？**
 您可能必須新增防火牆規則，以允許 Azure 資料庫移轉服務存取您的源資料庫以進行遷移。 服務的 IP 位址是動態的，但如果您使用 ExpressRoute，則會由公司網路私下指派此位址。 若要識別適當的 IP 位址，最簡單的方式就是查看與您布建的 Azure 資料庫移轉服務資源相同的資源群組，以找出相關聯的網路介面。 網路介面資源的名稱通常會以 NIC 前置詞作為開頭，後面接著獨特字元和數字序列，例如 NIC-jj6tnztnmarpsskr82rbndyp。 藉由選取此網路介面資源，您即可在 Azure 入口網站的 [資源概觀] 頁面上，看到必須包含在允許清單中的 IP 位址。
@@ -86,9 +86,9 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 ```
 
 **問。如何? 設定 Microsoft Azure 虛擬網路？**
-雖然有多個 Microsoft 教學課程可逐步引導您完成設定虛擬網路的程式，但官方檔會出現在 [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
+雖然有多個 Microsoft 教學課程可逐步引導您完成設定虛擬網路的程式，但官方檔會出現在 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)一文中。
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 **問。使用 Azure 資料庫移轉服務來執行資料庫移轉所需步驟的摘要為何？**
 在典型的簡單資料庫移轉期間，您必須：
@@ -96,7 +96,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 1. 建立目標資料庫。
 2.  (的) 來評定您的源資料庫。
     * 針對同質遷移，使用 [DMA](https://www.microsoft.com/download/details.aspx?id=53595)來評估您現有的資料庫 () 。
-    * 針對從競爭來源)  (的異類遷移，請評估您現有的資料庫 (以 [SSMA](https://aka.ms/get-ssma)) 。 您也可以使用 SSMA 來轉換資料庫物件，並將架構遷移至目標平臺。
+    * 針對從競爭來源)  (的異類遷移，請評估您現有的資料庫 (以 [SSMA](/sql/ssma/sql-server-migration-assistant)) 。 您也可以使用 SSMA 來轉換資料庫物件，並將架構遷移至目標平臺。
 3. 建立 Azure 資料庫移轉服務的執行個體。
 4. 建立指定源資料庫 (s) 、目標資料庫 (s) 以及要遷移之資料表的遷移專案。
 5. 開始完整載入。

@@ -11,19 +11,19 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441694"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961221"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
 在本文中，您將瞭解如何管理 (授權) 到 Azure Machine Learning 工作區的存取權。 [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 用來管理對 azure 資源的存取，例如建立新資源或使用現有資源的能力。 您 Azure Active Directory (Azure AD) 中的使用者會被指派特定角色，以授與資源的存取權。 Azure 提供內建角色和建立自訂角色的能力。
 
 > [!TIP]
-> 雖然本文著重于 Azure Machine Learning，但 Azure ML 依賴的個別服務提供自己的 RBAC 設定。 例如，使用本文中的資訊，您可以設定誰可以提交評分要求至部署為 Azure Kubernetes Service 上 web 服務的模型。 但 Azure Kubernetes Service 提供自己的一組 Azure RBAC 角色。 針對 Azure Machine Learning 可能有用的服務特定 RBAC 資訊，請參閱下列連結：
+> 雖然本文著重于 Azure Machine Learning，但 Azure ML 依賴的個別服務提供自己的 RBAC 設定。 例如，使用本文中的資訊，您可以設定誰可以提交評分要求至部署為 Azure Kubernetes Service 上 web 服務的模型。 但 Azure Kubernetes Service 提供自己的一組 Azure 角色。 針對 Azure Machine Learning 可能有用的服務特定 RBAC 資訊，請參閱下列連結：
 >
 > * [控制對 Azure Kubernetes 叢集資源的存取](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)
@@ -247,7 +247,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ### <a name="data-scientist-restricted"></a>資料科學家受限
 
-在允許的動作中，不含萬用字元的更受限制角色定義。 它可以執行工作區內的所有作業， **除了** ：
+在允許的動作中，不含萬用字元的更受限制角色定義。 它可以執行工作區內的所有作業， **除了**：
 
 * 建立計算
 * 將模型部署到生產 AKS 叢集
@@ -395,7 +395,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ### <a name="workspace-admin"></a>工作區管理員
 
-可讓您執行工作區範圍內的所有作業， **除了** ：
+可讓您執行工作區範圍內的所有作業， **除了**：
 
 * 新增新的工作區
 * 指派訂用帳戶或工作區層級配額

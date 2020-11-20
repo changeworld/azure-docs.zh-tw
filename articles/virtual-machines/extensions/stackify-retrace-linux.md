@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
-ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f9ac4f7c88e72cb6ddadc2450947697b0e3c6ef
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088847"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961969"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理程式擴充功能
 
@@ -191,7 +192,7 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 40 | 安裝錯誤 | activationKey 為必要項目 |
 | 51 | 安裝錯誤 | 不支援 OS distro |
 | 60 | 安裝錯誤 | environment 為必要項目 |
-| 70 | 安裝錯誤 | Unknown |
+| 70 | 安裝錯誤 | 未知 |
 | 80 | 啟用錯誤 | 服務安裝失敗 |
 | 90 | 啟用錯誤 | 服務啟動失敗 |
 | 100 | 停用錯誤 | 服務停止失敗 |

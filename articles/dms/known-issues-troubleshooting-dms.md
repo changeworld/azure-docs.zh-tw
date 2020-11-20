@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297353"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962275"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>針對常見的 Azure 資料庫移轉服務問題和錯誤進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "91297353"
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
+> Microsoft 支援多元和包容性的環境。 本文包含 _slave_ 單字的參考。 Microsoft [無偏差通訊的樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這個單字辨識為排他性的單字。 本文中會使用這個單字來保持一致性，因為這個單字是目前出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新以保持一致。
 >
 
 ## <a name="migration-activity-in-queued-state"></a>處於佇列狀態的遷移活動
@@ -54,7 +54,7 @@ ms.locfileid: "91297353"
 
 | 原因         | 解決方案 |
 | ------------- | ------------- |
-| 當執行遷移的使用者缺少 ReplicationAdmin 角色及/或複寫用戶端、複寫複本和 SUPER (MySQL 5.6.6) 之前的許可權時，可能會發生此錯誤。<br><br><br><br><br><br><br><br><br><br><br><br><br> | 請確定已在適用於 MySQL 的 Azure 資料庫實例上正確設定使用者帳戶的 [必要許可權](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) 。 例如，您可以遵循下列步驟來建立名為 ' migrateuser 作業 ' 的使用者，並具備必要許可權：<br>1. 建立 ' secret ' 所識別的使用者 migrateuser@ '% '; <br>2. 將 db_name. * 的擁有權限授與 ' secret ' 所識別的 ' migrateuser 作業 ' @ '% ';重複此步驟以授與更多資料庫的存取權 <br>3. 將複寫從屬授與 *。* ' migrateuser 作業 ' @ '% ' （由 ' secret ' 識別）;<br>4. 授與複寫用戶端的 *。* ' migrateuser 作業 ' @ '% ' （由 ' secret ' 識別）;<br>5. 排清許可權; |
+| 當執行遷移的使用者缺少 ReplicationAdmin 角色及/或複寫用戶端、複寫複本和 SUPER (MySQL 5.6.6) 之前的許可權時，可能會發生此錯誤。<br><br><br><br><br><br><br><br><br><br><br><br><br> | 請確定已在適用於 MySQL 的 Azure 資料庫實例上正確設定使用者帳戶的 [必要許可權](./tutorial-mysql-azure-mysql-online.md#prerequisites) 。 例如，您可以遵循下列步驟來建立名為 ' migrateuser 作業 ' 的使用者，並具備必要許可權：<br>1. 建立 ' secret ' 所識別的使用者 migrateuser@ '% '; <br>2. 將 db_name. * 的擁有權限授與 ' secret ' 所識別的 ' migrateuser 作業 ' @ '% ';重複此步驟以授與更多資料庫的存取權 <br>3. 將複寫從屬授與 *。* ' migrateuser 作業 ' @ '% ' （由 ' secret ' 識別）;<br>4. 授與複寫用戶端的 *。* ' migrateuser 作業 ' @ '% ' （由 ' secret ' 識別）;<br>5. 排清許可權; |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>嘗試停止 Azure 資料庫移轉服務時發生錯誤
 
@@ -84,7 +84,7 @@ ms.locfileid: "91297353"
 
 | 原因         | 解決方案    |
 | ------------- | ------------- |
-| 此錯誤表示用於從 SQL Server 到 SQL 的線上遷移的應用程式主體受控執行個體沒有訂用帳戶的「參與」許可權。 目前有受控執行個體的特定 API 呼叫需要訂用帳戶的許可權，才能進行還原作業。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 使用 `Get-AzureADServicePrincipal` `-ObjectId` 錯誤訊息中提供的 PowerShell Cmdlet，以列出所使用之應用程式識別碼的顯示名稱。<br><br> 驗證此應用程式的許可權，並確定它具有訂用帳戶層級的「 [參與者」角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) 。 <br><br> Azure 資料庫移轉服務工程小組正在努力限制訂用帳戶上目前「參與」角色所需的存取權。 如果您的商務需求不允許使用「參與」角色，請聯絡 Azure 支援以取得其他協助。 |
+| 此錯誤表示用於從 SQL Server 到 SQL 的線上遷移的應用程式主體受控執行個體沒有訂用帳戶的「參與」許可權。 目前有受控執行個體的特定 API 呼叫需要訂用帳戶的許可權，才能進行還原作業。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 使用 `Get-AzureADServicePrincipal` `-ObjectId` 錯誤訊息中提供的 PowerShell Cmdlet，以列出所使用之應用程式識別碼的顯示名稱。<br><br> 驗證此應用程式的許可權，並確定它具有訂用帳戶層級的「 [參與者」角色](../role-based-access-control/built-in-roles.md#contributor) 。 <br><br> Azure 資料庫移轉服務工程小組正在努力限制訂用帳戶上目前「參與」角色所需的存取權。 如果您的商務需求不允許使用「參與」角色，請聯絡 Azure 支援以取得其他協助。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>刪除與 Azure 資料庫移轉服務相關聯的 NIC 時發生錯誤
 
@@ -94,7 +94,7 @@ ms.locfileid: "91297353"
 
 | 原因         | 解決方案    |
 | ------------- | ------------- |
-| 發生此問題的原因是 Azure 資料庫移轉服務實例可能仍存在並耗用 NIC。 <br><br><br><br><br><br><br><br> | 若要刪除此 NIC，請刪除自動刪除服務所使用之 NIC 的 DMS 服務實例。<br><br> **重要**事項：請確定所刪除的 Azure 資料庫移轉服務實例沒有任何執行中的活動。<br><br> 刪除所有與 Azure 資料庫移轉服務實例相關聯的專案和活動之後，您就可以刪除該服務實例。 服務實例所使用的 NIC 會在服務刪除過程中自動清除。 |
+| 發生此問題的原因是 Azure 資料庫移轉服務實例可能仍存在並耗用 NIC。 <br><br><br><br><br><br><br><br> | 若要刪除此 NIC，請刪除自動刪除服務所使用之 NIC 的 DMS 服務實例。<br><br> **重要** 事項：請確定所刪除的 Azure 資料庫移轉服務實例沒有任何執行中的活動。<br><br> 刪除所有與 Azure 資料庫移轉服務實例相關聯的專案和活動之後，您就可以刪除該服務實例。 服務實例所使用的 NIC 會在服務刪除過程中自動清除。 |
 
 ## <a name="connection-error-when-using-expressroute"></a>使用 ExpressRoute 時的連線錯誤
 
@@ -102,7 +102,7 @@ ms.locfileid: "91297353"
 
 | 原因         | 解決方案    |
 | ------------- | ------------- |
-| 使用 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)時，Azure 資料庫移轉服務 [需要](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) 在與服務相關聯的虛擬網路子網上布建三個服務端點：<br> --服務匯流排端點<br> --儲存體端點<br> --目標資料庫端點 (例如 SQL 端點、Cosmos DB 端點) <br><br><br><br><br> | 針對來源與 Azure 資料庫移轉服務之間的 ExpressRoute 連線能力[啟用](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)必要的服務端點。 <br><br><br><br><br><br><br><br> |
+| 使用 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)時，Azure 資料庫移轉服務 [需要](./tutorial-sql-server-azure-sql-online.md) 在與服務相關聯的虛擬網路子網上布建三個服務端點：<br> --服務匯流排端點<br> --儲存體端點<br> --目標資料庫端點 (例如 SQL 端點、Cosmos DB 端點) <br><br><br><br><br> | 針對來源與 Azure 資料庫移轉服務之間的 ExpressRoute 連線能力[啟用](./tutorial-sql-server-azure-sql-online.md)必要的服務端點。 <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>將 MySQL 資料庫遷移至適用于 MySQL 的 Azure DB 時，鎖定等候逾時錯誤
 
@@ -126,13 +126,13 @@ ms.locfileid: "91297353"
 
 ## <a name="additional-known-issues"></a>其他已知問題
 
-* [線上遷移至 Azure SQL Database 的已知問題/遷移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [線上遷移至適用於 MySQL 的 Azure 資料庫的已知問題/遷移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [線上遷移至適用於 PostgreSQL 的 Azure 資料庫的已知問題/遷移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [線上遷移至 Azure SQL Database 的已知問題/遷移限制](./known-issues-azure-sql-online.md)
+* [線上遷移至適用於 MySQL 的 Azure 資料庫的已知問題/遷移限制](./known-issues-azure-mysql-online.md)
+* [線上遷移至適用於 PostgreSQL 的 Azure 資料庫的已知問題/遷移限制](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 查看 [Azure 資料庫移轉服務 PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)的文章。
-* 請參閱文章， [以瞭解如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中設定伺服器參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters)。
-* 請參閱文章， [以瞭解使用 Azure 資料庫移轉服務的必要條件](https://docs.microsoft.com/azure/dms/pre-reqs)。
-* 請參閱 [有關使用 Azure 資料庫移轉服務的常見問題](https://docs.microsoft.com/azure/dms/faq)。
+* 查看 [Azure 資料庫移轉服務 PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)的文章。
+* 請參閱文章， [以瞭解如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中設定伺服器參數](../mysql/howto-server-parameters.md)。
+* 請參閱文章， [以瞭解使用 Azure 資料庫移轉服務的必要條件](./pre-reqs.md)。
+* 請參閱 [有關使用 Azure 資料庫移轉服務的常見問題](./faq.md)。

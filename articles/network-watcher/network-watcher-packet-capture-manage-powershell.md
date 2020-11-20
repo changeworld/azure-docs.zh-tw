@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9a7af7575fcdd19d83e5a4f38ef03ef8948b8c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737915"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963449"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>使用 PowerShell 以 Azure 網路監看員管理封包擷取
 
@@ -48,7 +48,7 @@ ms.locfileid: "84737915"
 * 已啟用封包擷取擴充功能的虛擬機器。
 
 > [!IMPORTANT]
-> 封包擷取需要虛擬機器擴充功能 `AzureNetworkWatcherExtension`。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/windows/extensions-nwa.md)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/linux/extensions-nwa.md)。
+> 封包擷取需要虛擬機器擴充功能 `AzureNetworkWatcherExtension`。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-windows.md)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-linux.md)。
 
 ## <a name="install-vm-extension"></a>安裝 VM 擴充功能
 
@@ -274,24 +274,10 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
 造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)，以找出您的 VM 是否允許特定流量
 
 <!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

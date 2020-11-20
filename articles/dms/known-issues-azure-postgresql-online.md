@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 14722f46f06351504583da7231179d206f7a3c26
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: db2f6e95153610e0a1b79cf5d30cea3c917333d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893725"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962564"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>從于 postgresql 到 Azure DB for 于 postgresql 的線上遷移的已知問題/遷移限制
 
@@ -29,7 +29,7 @@ ms.locfileid: "91893725"
 
 - 來源於 postgresql 伺服器必須執行9.4、9.5、9.6、10或11版。 如需詳細資訊，請參閱[支援的 PostgreSQL 資料庫版本](../postgresql/concepts-supported-versions.md)一文。
 - 只支援遷移至相同或更高的版本。 例如，支援將于 postgresql 9.5 遷移至適用於 PostgreSQL 的 Azure 資料庫9.6 或10，但不支援從于 postgresql 11 遷移至於 postgresql 9.6。
-- 若要在**來源 PostgreSQL postgresql.conf** 檔案中啟用邏輯複寫，請設定下列參數：
+- 若要在 **來源 PostgreSQL postgresql.conf** 檔案中啟用邏輯複寫，請設定下列參數：
   - **wal_level** = logical
   - **max_replication_slots** = [最多可遷移的資料庫數目];如果您想要遷移四個資料庫，請將值設定為至少4。
   - **max_wal_senders** = [要並行執行之資料庫的最大數目]；建議的值為 10
@@ -96,24 +96,24 @@ ms.locfileid: "91893725"
 - **錯誤**：在資料庫 '{database}' 中，資料表 '{table}' 中資料行 '{}' 的預設值在來源和目標伺服器上不一樣。 來源上為 '{value on source}'，而目標上為 '{value on target}'。
 
   **限制**：如果來源與目標資料庫之間的資料行架構上的預設值不同，就會發生此錯誤。
-  因應**措施：確定**目標上的架構與來源上的架構相符。 如需有關遷移架構的詳細資訊，請參閱 [Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  因應 **措施：確定** 目標上的架構與來源上的架構相符。 如需有關遷移架構的詳細資訊，請參閱 [Azure 于 postgresql 線上遷移檔](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)。
 
 - **錯誤**：目標資料庫 '{database}' 有 '{number of tables}' 個資料表，而來源資料庫 '{database}' 有 '{number of tables}' 個資料表。 來源和目標資料庫上的資料表數目應相符。
 
   **限制**：如果來源與目標資料庫之間的資料表數目不同，就會發生此錯誤。
 
-  因應**措施：確定**目標上的架構與來源上的架構相符。 如需有關遷移架構的詳細資訊，請參閱 [Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  因應 **措施：確定** 目標上的架構與來源上的架構相符。 如需有關遷移架構的詳細資訊，請參閱 [Azure 于 postgresql 線上遷移檔](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)。
 
 - **錯誤：** 源資料庫 {database} 是空的。
 
   **限制**：當源資料庫是空的時，就會發生此錯誤。 最可能的原因是您已選取錯誤的資料庫作為來源。
 
-  因應**措施：請**仔細檢查您選取要遷移的源資料庫，然後再試一次。
+  因應 **措施：請** 仔細檢查您選取要遷移的源資料庫，然後再試一次。
 
 - **錯誤：** 目標資料庫 {database} 是空的。 請遷移結構描述。
 
   **限制**：當目標資料庫上沒有任何架構時，就會發生此錯誤。 請確定目標上的架構符合來源上的架構。
-  因應**措施：確定**目標上的架構與來源上的架構相符。 如需有關遷移架構的詳細資訊，請參閱 [Azure 于 postgresql 線上遷移檔](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  因應 **措施：確定** 目標上的架構與來源上的架構相符。 如需有關遷移架構的詳細資訊，請參閱 [Azure 于 postgresql 線上遷移檔](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
 

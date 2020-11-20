@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 3c3dac8c8798b9c56b746a2e4e232f43ef967ebe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 24d1992db5f1826045fdb47397e44dc2e2fbdaf9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960298"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962156"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -108,7 +109,7 @@ Linux 自訂指令碼擴充功能有兩個：
 ```
 
 >[!NOTE]
-> managedIdentity 屬性**不得**與 storageAccountName 或 storageAccountKey 屬性一起使用
+> managedIdentity 屬性 **不得** 與 storageAccountName 或 storageAccountKey 屬性一起使用
 
 ### <a name="property-values"></a>屬性值
 
@@ -131,8 +132,8 @@ Linux 自訂指令碼擴充功能有兩個：
 * `apiVersion`：您可以使用下列命令 [資源總管](https://resources.azure.com/) 或從 Azure CLI 找到最新的 apiVersion `az provider list -o json`
 * `skipDos2Unix`：(選擇性，布林值) 略過指令碼型檔案 URL 或指令碼的 dos2unix 轉換。
 * `timestamp` (選擇性，32 位元整數) 只有在透過變更此欄位的值來觸發指令碼的重新執行時，才需使用此欄位。  任何整數值都是可接受的；只要與先前的值不同即可。
-* `commandToExecute`：(若未設定指令碼則為**必要**，字串) 要執行的進入點指令碼。 如果您的命令包含機密資料 (例如密碼)，請改用此欄位。
-* `script`：(若未設定 commandToExecute 則為**必要**，字串) /bin/sh 所執行的 base64 編碼 (並選擇性地使用 gzip) 指令碼。
+* `commandToExecute`：(若未設定指令碼則為 **必要**，字串) 要執行的進入點指令碼。 如果您的命令包含機密資料 (例如密碼)，請改用此欄位。
+* `script`：(若未設定 commandToExecute 則為 **必要**，字串) /bin/sh 所執行的 base64 編碼 (並選擇性地使用 gzip) 指令碼。
 * `fileUris`：(選擇性，字串陣列) 要下載之檔案的 URL。
 * `storageAccountName`：(選用，字串) 儲存體帳戶的名稱。 如果您指定儲存體證明資料，則所有 `fileUris` 都必須是 Azure Blob 的 URL。
 * `storageAccountKey`：(選用，字串) 儲存體帳戶的存取金鑰
@@ -152,7 +153,7 @@ Linux 自訂指令碼擴充功能有兩個：
 
 #### <a name="property-skipdos2unix"></a>屬性：skipDos2Unix
 
-預設值為 false，表示**會**執行 dos2unix 轉換。
+預設值為 false，表示 **會** 執行 dos2unix 轉換。
 
 舊版的 CustomScript (Microsoft.OSTCExtensions.CustomScriptForLinux) 會藉由將 `\r\n` 轉譯為 `\n`，自動將 DOS 檔案轉換為 UNIX 檔案。 這項轉譯仍存在，並預設為開啟。 這項轉換會根據下列任何準則，套用至所有從 fileUris 下載的檔案或指令碼設定。
 
@@ -173,7 +174,7 @@ dos2unix 轉換可藉由將 skipDos2Unix 設定為 true 來略過。
 
 CustomScript 支援執行使用者定義的指令碼。 這是要將 commandToExecute 和 fileUris 結合成單一設定的指令碼設定。 您無須設定要從 Azure 儲存體或 GitHub gist 下載的檔案，而只需要將指令碼編碼為設定即可。 指令碼可用來取代 commandToExecute 和 fileUris。
 
-指令碼**必須**採用 base64 編碼。  指令碼可以**選擇性地**使用 gzip。 指令碼設定可在公用或受保護的設定中使用。 指令碼參數的資料大小上限為 256 KB。 如果指令碼超過此大小，則不會執行。
+指令碼 **必須** 採用 base64 編碼。  指令碼可以 **選擇性地** 使用 gzip。 指令碼設定可在公用或受保護的設定中使用。 指令碼參數的資料大小上限為 256 KB。 如果指令碼超過此大小，則不會執行。
 
 例如，假設下列指令碼儲存至檔案 /script.sh/。
 
@@ -206,13 +207,13 @@ CustomScript 會使用下列演算法來執行指令碼。
 
  1. 宣告指令碼值的長度不超過 256 KB。
  1. base64 將指令碼的值解碼
- 1. _嘗試_對 base64 解碼的值使用 gunzip
+ 1. _嘗試_ 對 base64 解碼的值使用 gunzip
  1. 將解碼 (並選擇性地解壓縮) 的值寫入至磁碟 (/var/lib/waagent/custom-script/#/script.sh)
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 執行指令碼。
 
 ####  <a name="property-managedidentity"></a>屬性：managedIdentity
 > [!NOTE]
-> **必須**在受保護的設定中，才能指定此屬性。
+> **必須** 在受保護的設定中，才能指定此屬性。
 
 CustomScript () 2.1 版之前的版本可支援 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md) ，以從 "fileUris" 設定中提供的 url 下載檔案 (s) 。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
 
@@ -250,7 +251,7 @@ CustomScript () 2.1 版之前的版本可支援 [受控識別](../../active-dire
 > ```
 
 > [!NOTE]
-> managedIdentity 屬性**不得**與 storageAccountName 或 storageAccountKey 屬性一起使用
+> managedIdentity 屬性 **不得** 與 storageAccountName 或 storageAccountKey 屬性一起使用
 
 ## <a name="template-deployment"></a>範本部署
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行自訂指令碼擴充功能。 在 [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux) 可以找到包含自訂指令碼擴充功能的範例範本。

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1c45b99138a05ef78976b90f65f57304e676ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291982"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962768"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 將 SQL Server 遷移至 SQL 受控執行個體 & Azure 資料庫移轉服務
 
@@ -35,37 +35,37 @@ ms.locfileid: "91291982"
 
 本文包含如何執行線上與離線遷移的詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您需要：
 
 * [SQL Server 2016 或](https://www.microsoft.com/sql-server/sql-server-downloads) 更新版本 (任何版本) 。
-* **AdventureWorks2016**資料庫的本機複本，可在[這裡](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)下載。
-* 啟用 SQL Server Express 安裝預設已停用的 TCP/IP 通訊協定。 依照[啟用或停用伺服器網路通訊協定](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文的說明，啟用 TCP/IP 通訊協定。
-* 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
+* **AdventureWorks2016** 資料庫的本機複本，可在 [這裡](/sql/samples/adventureworks-install-configure?view=sql-server-2017)下載。
+* 啟用 SQL Server Express 安裝預設已停用的 TCP/IP 通訊協定。 依照[啟用或停用伺服器網路通訊協定](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文的說明，啟用 TCP/IP 通訊協定。
+* 設定[用於 Database Engine 存取的 Windows 防火牆](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
-* SQL 受控執行個體。 您可以遵循 [建立 >script.asql 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文中的詳細資料來建立 SQL 受控執行個體。
+* SQL 受控執行個體。 您可以遵循 [建立 >script.asql 受控執行個體](../azure-sql/managed-instance/instance-create-quickstart.md)一文中的詳細資料來建立 SQL 受控執行個體。
 * 下載並安裝 [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) 3.3 版或更新版本。
-* 使用 Azure Resource Manager 部署模型建立的 Microsoft Azure 虛擬網路，其會使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)，為 Azure 資料庫移轉服務提供對內部部署來源伺服器的站對站連線能力。
-* 使用 Data Migration Assistant 完成內部部署資料庫和架構遷移的評估，如 [執行 SQL Server 遷移評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文所述。
-* 若要下載並安裝 `Az.DataMigration` 模組 (版本0.7.2 版或更新版本，請使用 [Install 模組 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)從 PowerShell 資源庫) 。
-* 若要確保用來連接到來源 SQL Server 實例的認證具有 [CONTROL Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 許可權。
+* 使用 Azure Resource Manager 部署模型建立的 Microsoft Azure 虛擬網路，其會使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)，為 Azure 資料庫移轉服務提供對內部部署來源伺服器的站對站連線能力。
+* 使用 Data Migration Assistant 完成內部部署資料庫和架構遷移的評估，如 [執行 SQL Server 遷移評估](/sql/dma/dma-assesssqlonprem)一文所述。
+* 若要下載並安裝 `Az.DataMigration` 模組 (版本0.7.2 版或更新版本，請使用 [Install 模組 PowerShell Cmdlet](/powershell/module/powershellget/Install-Module?view=powershell-5.1)從 PowerShell 資源庫) 。
+* 若要確保用來連接到來源 SQL Server 實例的認證具有 [CONTROL Server](/sql/t-sql/statements/grant-server-permissions-transact-sql) 許可權。
 * 若要確保用來連接到目標 SQL 受控執行個體的認證具有目標 SQL 受控執行個體資料庫的 CONTROL DATABASE 許可權。
 
     > [!IMPORTANT]
-    > 針對線上遷移，您必須已經設定 Azure Active Directory 認證。 如需詳細資訊，請參閱 [使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)的文章。
+    > 針對線上遷移，您必須已經設定 Azure Active Directory 認證。 如需詳細資訊，請參閱 [使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)的文章。
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>登入您的 Microsoft Azure 訂用帳戶
 
-使用 PowerShell 登入您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [使用 Azure PowerShell 登入](https://docs.microsoft.com/powershell/azure/authenticate-azureps)文章。
+使用 PowerShell 登入您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps)文章。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-使用命令建立資源群組 [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 。
+使用命令建立資源群組 [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) 。
 
-下列範例會在*美國東部*區域建立名為*myResourceGroup*的資源群組。
+下列範例會在 *美國東部* 區域建立名為 *myResourceGroup* 的資源群組。
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -76,13 +76,13 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 您可以使用 `New-AzDataMigrationService` Cmdlet，來建立新的 Azure 資料庫移轉服務執行個體。
 此 Cmdlet 預期有下列必要參數：
 
-* *Azure 資源組名*。 您可以使用 [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令來建立 Azure 資源群組（如先前所示），並將其名稱提供為參數。
+* *Azure 資源組名*。 您可以使用 [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) 命令來建立 Azure 資源群組（如先前所示），並將其名稱提供為參數。
 * *服務名稱*。 字串，對應至 Azure 資料庫移轉服務所需的唯一服務名稱。
 * *位置*。 指定服務的位置。 指定 Azure 資料中心位置，例如美國西部或東南亞。
 * *Sku*。 此參數會對應至 DMS SKU 名稱。 目前支援的 Sku 名稱為 *Basic_1vCore*、 *Basic_2vCores* *GeneralPurpose_4vCores*。
-* 虛擬子網路識別碼**。 您可以使用 Cmdlet [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) 來建立子網。
+* 虛擬子網路識別碼。 您可以使用 Cmdlet [`New-AzVirtualNetworkSubnetConfig`](//powershell/module/az.network/new-azvirtualnetworksubnetconfig) 來建立子網。
 
-下列範例會使用名為*MyVNET*的虛擬網路和名為 *>mysubnet*的子網，在位於*美國東部*區域的資源群組 *>mydms*中建立名為 *>mydmsresourcegroup*的服務。
+下列範例會使用名為 *MyVNET* 的虛擬網路和名為 *>mysubnet* 的子網，在位於 *美國東部* 區域的資源群組 *>mydms* 中建立名為 *>mydmsresourcegroup* 的服務。
 
 > [!IMPORTANT]
 > 下列程式碼片段適用于離線遷移，而不需要以 Premium SKU 為基礎的 Azure 資料庫移轉服務實例。 在線上遷移中，-Sku 參數的值必須包含 Premium SKU。
@@ -141,7 +141,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>建立專案物件
 
-最後，您*可以使用來建立名為* *MyDMSProject*的 Azure 資料庫移轉服務專案 `New-AzDataMigrationProject` ，並加入先前建立的來源與目標連接，以及要遷移的資料庫清單。
+最後，您 *可以使用來建立名為* *MyDMSProject* 的 Azure 資料庫移轉服務專案 `New-AzDataMigrationProject` ，並加入先前建立的來源與目標連接，以及要遷移的資料庫清單。
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -161,9 +161,9 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>建立來源和目標的認證參數
 
-建立連線安全性認證做為 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
+建立連線安全性認證做為 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) 物件。
 
-下列範例會示範如何建立來源和目標連接的 *PSCredential* 物件，並將密碼變數 *$sourcePassword* 和 *$targetPassword*提供給字串變數。
+下列範例會示範如何建立來源和目標連接的 *PSCredential* 物件，並將密碼變數 *$sourcePassword* 和 *$targetPassword* 提供給字串變數。
 
 ```powershell
 $secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 > [!NOTE]
-> Azure 資料庫移轉服務不支援使用帳戶層級 SAS 權杖。 您必須使用儲存體帳戶容器的 SAS URI。 [了解如何取得 Blob 容器的 SAS URI](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。
+> Azure 資料庫移轉服務不支援使用帳戶層級 SAS 權杖。 您必須使用儲存體帳戶容器的 SAS URI。 [了解如何取得 Blob 容器的 SAS URI](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)。
 
 ### <a name="additional-configuration-requirements"></a>其他設定需求
 
@@ -290,9 +290,9 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 * *TaskName*。 要建立的工作名稱。 
 * *SourceConnection*。 代表來源 SQL Server 連接的 AzDmsConnInfo 物件。
 * *TargetConnection*。 代表目標 Azure SQL 受控執行個體連接的 AzDmsConnInfo 物件。
-* SourceCred**。 連線至來源伺服器所用的 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
-* TargetCred**。 連線至目標伺服器所用的 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
-* SelectedDatabase**。 代表來源和目標資料庫對應的 AzDataMigrationSelectedDB 物件。
+* SourceCred。 連線至來源伺服器所用的 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) 物件。
+* TargetCred。 連線至目標伺服器所用的 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) 物件。
+* SelectedDatabase。 代表來源和目標資料庫對應的 AzDataMigrationSelectedDB 物件。
 * *BackupFileShare*。 此為 FileShare 物件，代表 Azure 資料庫移轉服務可移入來源資料庫備份的本機網路共用。
 * *BackupBlobSasUri*。 此為 SAS URI，可讓 Azure 資料庫移轉服務存取此服務會將備份檔案上傳到的儲存體帳戶容器。 了解如何取得 Blob 容器的 SAS URI。
 * *SelectedLogins*。 已選取要移轉的登入清單。
@@ -314,7 +314,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 
 #### <a name="create-and-start-an-offline-migration-task"></a>建立和啟動離線遷移工作
 
-下列範例會建立並啟動名為 **myDMSTask**的離線遷移工作：
+下列範例會建立並啟動名為 **myDMSTask** 的離線遷移工作：
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
@@ -335,7 +335,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
 
 #### <a name="create-and-start-an-online-migration-task"></a>建立並啟動線上遷移工作
 
-下列範例會建立並啟動名為 **myDMSTask**的線上遷移工作：
+下列範例會建立並啟動名為 **myDMSTask** 的線上遷移工作：
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
@@ -422,4 +422,4 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 ## <a name="next-steps"></a>後續步驟
 
-在「 [什麼是 Azure 資料庫移轉服務](https://docs.microsoft.com/azure/dms/dms-overview)」一文中，深入瞭解 Azure 資料庫移轉服務。
+在「 [什麼是 Azure 資料庫移轉服務](./dms-overview.md)」一文中，深入瞭解 Azure 資料庫移轉服務。

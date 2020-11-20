@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962882"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961170"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 裝置管理員服務來修改 StorSimple 裝置組態
 
 ## <a name="overview"></a>概觀
 
-Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段包含所有裝置參數，可讓您重新設定 StorSimple 裝置管理員服務所管理的 StorSimple 裝置。 本教學課程說明如何使用 [設定]**** 刀鋒視窗來執行下列裝置層級的工作：
+Azure 入口網站之 [設定] 刀鋒視窗中的 [裝置設定] 區段包含所有裝置參數，可讓您重新設定 StorSimple 裝置管理員服務所管理的 StorSimple 裝置。 本教學課程說明如何使用 [設定] 刀鋒視窗來執行下列裝置層級的工作：
 
 * 修改裝置的易記名稱
 * 修改裝置的時間設定
@@ -35,7 +35,7 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 ## <a name="modify-device-friendly-name"></a>修改裝置的易記名稱
 
-您可以使用 Azure 入口網站來變更裝置名稱，並對它指派您所選擇的唯一易記名稱。 使用裝置上的 [一般設定]**** 刀鋒視窗，可修改裝置的易記名稱。 易記名稱可以包含任何字元，且長度上限為 64 個字元。
+您可以使用 Azure 入口網站來變更裝置名稱，並對它指派您所選擇的唯一易記名稱。 使用裝置上的 [一般設定] 刀鋒視窗，可修改裝置的易記名稱。 易記名稱可以包含任何字元，且長度上限為 64 個字元。
 
 > [!NOTE] 
 > 裝置設定完成之前，您只能在 Azure 入口網站中修改裝置名稱。 一旦完成最基本的裝置設定，您就無法變更裝置名稱。
@@ -51,7 +51,7 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 ## <a name="modify-device-description"></a>修改裝置描述
 
-使用裝置上的 [一般設定]**** 刀鋒視窗，可修改裝置的描述。
+使用裝置上的 [一般設定] 刀鋒視窗，可修改裝置的描述。
 
 ![[一般設定] 中的裝置描述](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
 
@@ -59,13 +59,13 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 ## <a name="modify-time-settings"></a>修改時間設定
 
-您的裝置必須同步時間才能驗證雲端儲存空間服務提供者。 使用裝置上的 [一般設定]**** 刀鋒視窗，可修改裝置的時間設定。
+您的裝置必須同步時間才能驗證雲端儲存空間服務提供者。 使用裝置上的 [一般設定] 刀鋒視窗，可修改裝置的時間設定。
 
 ![一般設定2中的裝置描述](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  從下拉式清單中選取時區。 您最多可以指定兩個網路時間通訊協定 (NTP) 伺服器：
 
- - **主要 NTP 伺服器** - 當您使用適用於 StorSimple 的 Windows PowerShell 來設定您的裝置時，需要指定此組態。 您可以將預設的 Windows Server **time.windows.com** 指定為 NTP 伺服器。 您可以透過 Azure 入口網站來檢視主要 NTP 伺服器組態，但是必須使用 Windows PowerShell 介面來進行變更。 使用 `Set-HcsNTPClientServerAddress` Cmdlet 可修改裝置的主要 NTP 伺服器。 如需詳細資訊，請移至 [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) Cmdlet 的語法。
+ - **主要 NTP 伺服器** - 當您使用適用於 StorSimple 的 Windows PowerShell 來設定您的裝置時，需要指定此組態。 您可以將預設的 Windows Server **time.windows.com** 指定為 NTP 伺服器。 您可以透過 Azure 入口網站來檢視主要 NTP 伺服器組態，但是必須使用 Windows PowerShell 介面來進行變更。 使用 `Set-HcsNTPClientServerAddress` Cmdlet 可修改裝置的主要 NTP 伺服器。 如需詳細資訊，請移至 [Set-HcsNTPClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) Cmdlet 的語法。
 
 - **次要 NTP 伺服器** - 此組態為選擇性。 您可以使用入口網站來設定次要 NTP 伺服器。
 
@@ -79,25 +79,25 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 ## <a name="modify-dns-settings"></a>修改 DNS 設定
 
-當您的裝置嘗試與雲端儲存空間服務提供者通訊時，系統會使用 DNS 伺服器。 使用裝置上的 [網路設定]**** 刀鋒視窗可檢視和修改設定的 DNS 設定。 
+當您的裝置嘗試與雲端儲存空間服務提供者通訊時，系統會使用 DNS 伺服器。 使用裝置上的 [網路設定] 刀鋒視窗可檢視和修改設定的 DNS 設定。 
 
 ![[網路設定] 中的 DNS 設定](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
 如需高可用性，您必須在初始裝置部署期間設定主要和次要 DNS 伺服器。
 
-**主要 DNS 伺服器** - 在初始設定期間，您使用適用於 StorSimple 的 Windows PowerShell 先指定主要 DNS 伺服器。 但是您只能透過 Windows PowerShell 介面重新設定主要 DNS 伺服器。 使用 `Set-HcsDNSClientServerAddress` Cmdlet 可修改裝置的主要 DNS 伺服器。 如需詳細資訊，請移至 [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) Cmdlet 的語法。
+**主要 DNS 伺服器** - 在初始設定期間，您使用適用於 StorSimple 的 Windows PowerShell 先指定主要 DNS 伺服器。 但是您只能透過 Windows PowerShell 介面重新設定主要 DNS 伺服器。 使用 `Set-HcsDNSClientServerAddress` Cmdlet 可修改裝置的主要 DNS 伺服器。 如需詳細資訊，請移至 [Set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) Cmdlet 的語法。
 
-**次要 DNS 伺服器** - 若要修改次要 DNS 伺服器，請在裝置的 Windows PowerShell 介面中使用 `Set-HcsDNSClientServerAddress` Cmdlet，或使用 Azure 入口網站中 StorSimple 裝置的 [網路設定]**** 刀鋒視窗。
+**次要 DNS 伺服器** - 若要修改次要 DNS 伺服器，請在裝置的 Windows PowerShell 介面中使用 `Set-HcsDNSClientServerAddress` Cmdlet，或使用 Azure 入口網站中 StorSimple 裝置的 [網路設定] 刀鋒視窗。
 
 若要在 Azure 入口網站中修改次要 DNS 伺服器，請執行下列步驟。
 
 1. 移至您的 StorSimple 裝置管理員服務。 從裝置清單中，選取並按一下您的裝置。
 
-2. 在 [設定]**** 刀鋒視窗中，移至 [裝置設定] > [網路]****。 這會開啟 [網路設定]**** 刀鋒視窗。 按一下 [DNS 設定]**** 圖格。 修改次要 DNS 伺服器 IP 位址。
+2. 在 [設定] 刀鋒視窗中，移至 [裝置設定] > [網路]。 這會開啟 [網路設定] 刀鋒視窗。 按一下 [DNS 設定] 圖格。 修改次要 DNS 伺服器 IP 位址。
 
     ![修改次要 DNS 伺服器 IP 位址](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. 從命令列按一下 [儲存]****，提示您確認時，請按一下 [確定]****。
+4. 從命令列按一下 [儲存]，提示您確認時，請按一下 [確定]。
 
     ![儲存並確認變更](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
@@ -107,7 +107,7 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 您的裝置具有六個裝置網路介面，其中四個是 1 GbE，而其中兩個是 10 Gbe。 這些介面都會標示為 DATA 0 至 DATA 5。 DATA 0、DATA 1、DATA 4 和 DATA 5 是 1 GbE，而 DATA 2 和 DATA 3 是 10 GbE 網路介面。
 
-使用 [網路設定]**** 刀鋒視窗可設定每個要使用的介面。
+使用 [網路設定] 刀鋒視窗可設定每個要使用的介面。
 
 ![透過 [網路設定] 設定網路介面](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
@@ -169,4 +169,3 @@ DATA 0 依預設已啟用雲端功能。 設定 DATA 0 時，您也需要設定�
 
 * 了解如何 [為 StorSimple 裝置設定 MPIO](storsimple-8000-configure-mpio-windows-server.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
-

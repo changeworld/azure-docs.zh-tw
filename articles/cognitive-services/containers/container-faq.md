@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900054"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960745"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 認知服務容器的常見問題 (常見問題) 
 
@@ -50,7 +50,7 @@ ms.locfileid: "90900054"
 
 **答：** 並非每個人都熟悉「主權雲端」一詞，因此讓我們從定義開始：
 
-> 「主權雲端」包含 [Azure Government](../../azure-government/documentation-government-welcome.md)、 [Azure 德國](../../germany/germany-welcome.md)和 [Azure 中國的世紀](https://docs.microsoft.com/azure/china/overview-operations) 雲端。
+> 「主權雲端」包含 [Azure Government](../../azure-government/documentation-government-welcome.md)、 [Azure 德國](../../germany/germany-welcome.md)和 [Azure 中國的世紀](/azure/china/overview-operations) 雲端。
 
 可惜的是，主權雲端並 *不* 支援認知服務容器。 這些容器可以在這些雲端中執行，但它們將會從公用雲端提取，且需要將使用量資料傳送至公用端點。
 
@@ -110,7 +110,7 @@ ms.locfileid: "90900054"
 
 客戶可免費探索 [Azure 知識中心](https://azure.microsoft.com/resources/knowledge-center/) ，以回答問題和支援問題。
 
-### <a name="stack-overflow"></a>堆疊溢位
+### <a name="stack-overflow"></a>Stack Overflow
 
 > [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) 是適用于專業人員和愛好者程式設計師的問題和解答網站。
 

@@ -11,20 +11,20 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3c8e18a3a216240a624b3b14f5e2e397d6c06012
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538592"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961323"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>連接至 Azure 上的儲存體服務
 
-在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 上的儲存體服務** 。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](how-to-connect-data-ui.md) 來建立和註冊資料存放區。
+在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 上的儲存體服務**。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](how-to-connect-data-ui.md) 來建立和註冊資料存放區。
 
 如果您想要使用 Azure Machine Learning VS Code 擴充功能來建立和管理資料存放區;如需深入瞭解，請造訪 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#datastores) 。
 
-您可以從[這些 Azure 儲存體解決方案](#matrix)建立資料存放區。 **針對不支援的儲存體解決方案** ，以及在 ML 實驗期間儲存資料輸出成本，請 [將您的資料移](#move) 至支援的 Azure 儲存體解決方案。  
+您可以從[這些 Azure 儲存體解決方案](#matrix)建立資料存放區。 **針對不支援的儲存體解決方案**，以及在 ML 實驗期間儲存資料輸出成本，請 [將您的資料移](#move) 至支援的 Azure 儲存體解決方案。  
 
 若要了解如何將資料存放區納入 Azure Machine Learning 的整體資料存取工作流程中，請參閱[安全地存取資料](concept-data.md#data-workflow)一文。
 
@@ -113,9 +113,9 @@ ms.locfileid: "94538592"
 ### <a name="permissions"></a>權限
 
 針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 
-* 針對資料 **讀取權限** ，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 
+* 針對資料 **讀取權限**，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 
 
-* 若要進行資料 **寫入存取** ，也需要 [寫入] 和 [新增] 許可權。
+* 若要進行資料 **寫入存取**，也需要 [寫入] 和 [新增] 許可權。
 
 <a name="python"></a>
 
@@ -123,7 +123,7 @@ ms.locfileid: "94538592"
 
 當您將 Azure 儲存體解決方案註冊為資料存放區時，將會自動建立該資料存放區，並將其註冊至特定工作區。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以取得虛擬網路案例的指引，以及尋找所需驗證認證的位置。 
 
-本節中的範例將說明如何透過 Python SDK 針對下列儲存體類型建立和註冊資料存放區。 這些範例中提供的參數，是建立和註冊資料存放區時 **所需的參數** 。
+本節中的範例將說明如何透過 Python SDK 針對下列儲存體類型建立和註冊資料存放區。 這些範例中提供的參數，是建立和註冊資料存放區時 **所需的參數**。
 
 * [Azure Blob 容器](#azure-blob-container)
 * [Azure 檔案共用](#azure-file-share)
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 針對 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 資料存放區，請使用 [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 透過[服務主體權限](../active-directory/develop/howto-create-service-principal-portal.md)註冊連線至 Azure DataLake Gen 2 儲存體的認證資料存放區。  
 
-若要使用您的服務主體，您必須 [註冊您的應用程式](../active-directory/develop/app-objects-and-service-principals.md) ，並透過角色型存取控制來授與服務主體資料存取， (Azure RBAC) 或 (ACL) 的存取控制清單。 深入了解 [ADLS Gen 2 的存取控制設定](../storage/blobs/data-lake-storage-access-control-model.md)。 
+若要使用您的服務主體，您必須 [註冊您的應用程式](../active-directory/develop/app-objects-and-service-principals.md) ，並透過 azure 角色型存取控制來授與服務主體資料存取， (azure RBAC) 或 (ACL) 的存取控制清單。 深入了解 [ADLS Gen 2 的存取控制設定](../storage/blobs/data-lake-storage-access-control-model.md)。 
 
 下列程式碼會建立 `adlsgen2_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用提供的服務主體認證，存取 `account_name` 儲存體帳戶中的檔案系統 `test`。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以取得虛擬網路案例的指引，以及尋找所需驗證認證的位置。 
 

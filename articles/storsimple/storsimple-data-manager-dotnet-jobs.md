@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183641"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961119"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 起始資料轉換
 
@@ -26,14 +26,14 @@ ms.locfileid: "88183641"
  
   本文詳細說明如何建立範例 .NET 主控台應用程式來起始資料轉換作業，然後追蹤直到完成為止。 若要深入了解如何透過自動化起始資料轉換，請前往[使用 Azure 自動化 Runbook 來觸發資料轉換作業](storsimple-data-manager-job-using-automation.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您有︰
 *   執行以下軟體的電腦：
 
     - Visual Studio 2012、2013、2015 或 2017。
 
-    - Azure Powershell。 [下載 Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+    - Azure Powershell。 [下載 Azure Powershell](/powershell/azure/)。
 *   資源群組內 StorSimple 資料管理員中正確設定的作業定義。
 *   所有必要的 dll。 從 [GitHub 儲存機制](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下載這些 dll。
 *   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) 來自 GitHub 存放庫的腳本。
@@ -62,24 +62,24 @@ ms.locfileid: "88183641"
 3. 使用 Visual Studio 2012、2013 或 2015 建立 C# .NET 主控台應用程式。
 
     1. 啟動 **Visual Studio 2012/2013/2015**。
-    1. 選取 [檔案] > [新增] > [專案]****。
+    1. 選取 [檔案] > [新增] > [專案]。
 
         ![建立專案 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. 選取 [已安裝] > [範本] > [Visual C#] > [主控台應用程式]****。
-    3. 輸入 **DataTransformationApp** 做為 [名稱]****。
-    4. 選取 **C:\DataTransformation** 做為 [位置]****。
+    2. 選取 [已安裝] > [範本] > [Visual C#] > [主控台應用程式]。
+    3. 輸入 **DataTransformationApp** 做為 [名稱]。
+    4. 選取 **C:\DataTransformation** 做為 [位置]。
     6. 按一下 [確定]  以建立專案。
 
         ![建立專案 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4. 現在，在您建立的專案中，將 [dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 資料夾中出現的所有 dll 新增為 [參考]****。 若要新增 dll 檔，請執行下列作業：
+4. 現在，在您建立的專案中，將 [dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 資料夾中出現的所有 dll 新增為 [參考]。 若要新增 dll 檔，請執行下列作業：
 
-   1. 在 Visual Studio 中，移至 [檢視] > [方案總管]****。
-   2. 按一下資料轉換應用程式專案左邊的箭號。 按一下 [參考]****，然後按一下滑鼠右鍵以 [新增參考]****。
+   1. 在 Visual Studio 中，移至 [檢視] > [方案總管]。
+   2. 按一下資料轉換應用程式專案左邊的箭號。 按一下 [參考]，然後按一下滑鼠右鍵以 [新增參考]。
     
        ![新增 dll 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. 瀏覽至套件資料夾的位置，選取所有 dll，按一下 [新增]****，然後按一下 [確定]****。
+   3. 瀏覽至套件資料夾的位置，選取所有 dll，按一下 [新增]，然後按一下 [確定]。
 
        ![新增 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "88183641"
     };
     ```
 
-8. 初始化之後，在作業定義上新增下列程式碼來觸發資料轉換作業。 插入適當的**作業定義名稱**。
+8. 初始化之後，在作業定義上新增下列程式碼來觸發資料轉換作業。 插入適當的 **作業定義名稱**。
 
     ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.

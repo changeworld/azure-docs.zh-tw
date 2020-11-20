@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 05/20/2020
-ms.openlocfilehash: 2316e0314c9d8f36aee123d4a516f382f58e83e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b331f8e0af452937028c63fba123cb92f57a6b0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291651"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962411"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>從 Oracle 線上移轉到適用於 PostgreSQL 的 Azure 資料庫單一伺服器的已知問題/移轉限制
 
@@ -34,11 +34,11 @@ Azure 資料庫移轉服務不支援連線到多租用戶容器資料庫 (CDB)�
 
 ## <a name="postgresql-versions-supported-as-a-target-database"></a>支援作為目標資料庫的 PostgreSQL 版本
 
-Azure 資料庫移轉服務支援移轉至適用於 PostgreSQL 的 Azure 資料庫單一伺服器版本 9.5、9.6、10 和 11。 如需適用於 PostgreSQL 的 Azure 資料庫單一伺服器中版本支援的最新資訊，請參閱[支援的 PostgreSQL 資料庫版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)。
+Azure 資料庫移轉服務支援移轉至適用於 PostgreSQL 的 Azure 資料庫單一伺服器版本 9.5、9.6、10 和 11。 如需適用於 PostgreSQL 的 Azure 資料庫單一伺服器中版本支援的最新資訊，請參閱[支援的 PostgreSQL 資料庫版本](../postgresql/concepts-supported-versions.md)。
 
 ## <a name="datatype-limitations"></a>資料類型限制
 
-下列資料類型**不會**進行遷移：
+下列資料類型 **不會** 進行遷移：
 
 - BFILE
 - ROWID

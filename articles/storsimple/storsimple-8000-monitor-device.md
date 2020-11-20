@@ -6,22 +6,22 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977403"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962428"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 裝置管理員服務監視 StorSimple 裝置
 
 ## <a name="overview"></a>概觀
 您可以使用 StorSimple 裝置管理員服務來監視您 StorSimple 解決方案中的特定裝置。 您可以根據 I/O 效能、容量使用率、網路輸送量，以及裝置效能計量建立自訂圖表，並且將這些圖表釘選到儀表板。 如需詳細資訊，請移至[自訂入口網站儀表板](../azure-portal/azure-portal-dashboards.md)。
 
-若要檢視特定裝置的監視資訊，請在 Azure 入口網站中，選取 [StorSimple 裝置管理員服務]。 從裝置清單中選取您的裝置，然後移至 [監視]****。 然後您會看見所選裝置的 [容量]****、[使用量]**** 和 [效能]**** 圖表。
+若要檢視特定裝置的監視資訊，請在 Azure 入口網站中，選取 [StorSimple 裝置管理員服務]。 從裝置清單中選取您的裝置，然後移至 [監視]。 然後您會看見所選裝置的 [容量]、[使用量] 和 [效能] 圖表。
 
 ## <a name="capacity"></a>Capacity
-**容量**追蹤裝置上佈建的空間與剩餘的空間。 然後剩餘的容量會顯示為固定在本機或階層式。
+**容量** 追蹤裝置上佈建的空間與剩餘的空間。 然後剩餘的容量會顯示為固定在本機或階層式。
 
 佈建的容量和剩餘的容量會進一步細分為階層式磁碟區和固定在本機的磁碟區。 針對每個磁碟區，會顯示裝置上佈建的容量和剩餘的容量。
 
@@ -29,8 +29,8 @@ ms.locfileid: "91977403"
 
 
 
-## <a name="usage"></a>使用量
-**使用量**追蹤由磁碟區、磁碟區容器，或裝置所使用之資料儲存體空間數量的相關計量。 您可以根據您的主要儲存體、雲端儲存體，或裝置儲存空間的容量使用率來建立報告。 容量使用率可以在特定磁碟區、特定磁碟區容器，或所有磁碟區容器上測量。
+## <a name="usage"></a>使用方式
+**使用量** 追蹤由磁碟區、磁碟區容器，或裝置所使用之資料儲存體空間數量的相關計量。 您可以根據您的主要儲存體、雲端儲存體，或裝置儲存空間的容量使用率來建立報告。 容量使用率可以在特定磁碟區、特定磁碟區容器，或所有磁碟區容器上測量。
 預設會報告過去 24 小時的使用量。 您可以從下列項目選取來編輯圖表，以變更報告使用量的持續時間：
 * 過去 24 小時
 * 過去 7 天
@@ -105,7 +105,7 @@ Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 ![建立雲端快照集之後的本機儲存體使用率](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>效能
-**效能**追蹤主機伺服器上 iSCSI 啟動器介面與裝置之間或裝置與雲端之間，與讀取和寫入作業數目相關的計量。 這項效能可以針對特定磁碟區、特定磁碟區容器，或所有磁碟區容器來測量。 效能也包括裝置上的 CPU 使用率和不同網路介面的網路輸送量。
+**效能** 追蹤主機伺服器上 iSCSI 啟動器介面與裝置之間或裝置與雲端之間，與讀取和寫入作業數目相關的計量。 這項效能可以針對特定磁碟區、特定磁碟區容器，或所有磁碟區容器來測量。 效能也包括裝置上的 CPU 使用率和不同網路介面的網路輸送量。
 
 ### <a name="io-performance-for-initiator-to-device"></a>啟動器到裝置的 I/O 效能
 下表顯示生產環境裝置之所有磁碟區中的裝置啟動器 I/O。 繪製的計量是每秒讀取和寫入的位元組。 您也可以將讀取、寫入和未完成的 IO，或將讀取延遲和寫入延遲，繪製成圖表。
@@ -132,13 +132,12 @@ Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 
 
 ## <a name="cpu-utilization-for-device"></a>裝置的 CPU 使用率
-**CPU 使用率**追蹤裝置上與使用的 CPU 相關的計量。 下列圖表顯示生產環境中裝置的 CPU 使用率統計資料。
+**CPU 使用率** 追蹤裝置上與使用的 CPU 相關的計量。 下列圖表顯示生產環境中裝置的 CPU 使用率統計資料。
 
 ![裝置的 CPU 使用率](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
 
 
 
 ## <a name="next-steps"></a>後續步驟
-* 了解如何[使用 StorSimple 裝置管理員服務裝置儀表板](storsimple-device-dashboard.md)。
-* 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
-
+* 了解如何[使用 StorSimple 裝置管理員服務裝置儀表板](./storsimple-8000-device-dashboard.md)。
+* 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](./storsimple-8000-manager-service-administration.md)。
