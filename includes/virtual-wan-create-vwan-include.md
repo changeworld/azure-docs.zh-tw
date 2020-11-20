@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 62d466e81309765540bcbd52714733b97d241ebc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5915830e4521399ad322dd4a6f3926428d811455
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93353964"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94942671"
 ---
-透過瀏覽器瀏覽至 Azure 入口網站，並使用您的 Azure 帳戶登入。
+透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
-1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]。 在搜尋方塊中鍵入 **虛擬 WAN** 並選取 [輸入]。
+1. 在入口網站中，選取 [+ 建立資源]。 在搜尋方塊中鍵入 **虛擬 WAN** 並選取 [輸入]。
 1. 從結果中選取 [虛擬 WAN]。 在 [虛擬 WAN] 頁面中，選取 [建立]，以開啟 [建立 WAN] 頁面。
 1. 在 [建立 WAN] 頁面的 [基本] 索引標籤中，填寫下列欄位：
 
