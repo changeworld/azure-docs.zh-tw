@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5db19a6549e7e4675213973554ff18bf46dda1e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915400"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957107"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>使用 Azure 地圖服務天氣服務要求即時和預測的氣象資料
 
@@ -27,6 +27,12 @@ Azure 地圖服務 [氣象服務](https://docs.microsoft.com/rest/api/maps/weath
 * 使用 [取得每日預測 API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview)來要求每日預測。
 * 使用 [取得每小時的預測 API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview)來要求每小時預測。
 * 使用「 [取得分鐘預測 API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)」來要求以分鐘為單位的預測。
+
+這段影片提供使用 REST 呼叫範例 Azure 地圖服務中的氣象服務總覽。
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="適用于開發人員的 Azure 地圖服務天氣服務-Microsoft Channel 9 影片"></iframe>
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -236,7 +242,7 @@ Azure 地圖服務 [氣象服務](https://docs.microsoft.com/rest/api/maps/weath
 >[!NOTE]
 >此範例會在撰寫本文時，捕獲嚴重的氣象警示。 要求的地點可能不再有任何嚴重的氣象警示。 若要在執行此範例時取出實際的嚴重警示資料，您必須在不同的座標位置取得資料。
 
-1. 開啟 Postman 應用程式，按一下 [ **新增** ]，然後選取 [ **要求** ]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存** ]。
+1. 開啟 Postman 應用程式，按一下 [ **新增**]，然後選取 [ **要求**]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存**]。
 
 2. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
@@ -288,7 +294,7 @@ Azure 地圖服務 [氣象服務](https://docs.microsoft.com/rest/api/maps/weath
 
 在此範例中，您將使用「 [取得每日預測 API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) 」來取得位於西雅圖華盛頓州之座標的五天氣象預測。
 
-1. 開啟 Postman 應用程式，按一下 [ **新增** ]，然後選取 [ **要求** ]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存** ]。
+1. 開啟 Postman 應用程式，按一下 [ **新增**]，然後選取 [ **要求**]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存**]。
 
 2. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
@@ -536,7 +542,7 @@ Azure 地圖服務 [氣象服務](https://docs.microsoft.com/rest/api/maps/weath
 
 在此範例中，您將使用「 [取得每小時的預測 API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) 」，在位於華盛頓州西雅圖的座標上，取得接下來12小時的每小時氣象預報。
 
-1. 開啟 Postman 應用程式，按一下 [ **新增** ]，然後選取 [ **要求** ]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存** ]。
+1. 開啟 Postman 應用程式，按一下 [ **新增**]，然後選取 [ **要求**]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存**]。
 
 2. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
@@ -643,7 +649,7 @@ Azure 地圖服務 [氣象服務](https://docs.microsoft.com/rest/api/maps/weath
 
 在此範例中，您將使用「 [取得分鐘預測」 API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) ，在位於華盛頓州西雅圖的座標處取得每分鐘的氣象預測。 天氣預測會在接下來的120分鐘內提供。 我們的查詢要求以15分鐘的間隔提供預測，但您可以將參數調整為1或5分鐘。
 
-1. 開啟 Postman 應用程式，按一下 [ **新增** ]，然後選取 [ **要求** ]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存** ]。
+1. 開啟 Postman 應用程式，按一下 [ **新增**]，然後選取 [ **要求**]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存**]。
 
 2. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
@@ -742,7 +748,7 @@ Azure 地圖服務 [氣象服務](https://docs.microsoft.com/rest/api/maps/weath
     }
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [Azure 地圖服務氣象服務概念](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts)

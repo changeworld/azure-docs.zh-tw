@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320481"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959130"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中)  (Acl 的存取控制清單
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 
 ## <a name="about-acls"></a>關於 Acl
 
-您可以將 [安全性主體](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) 與檔案和目錄的存取層級產生關聯。 這些關聯會在 * (ACL) 的存取控制清單 *中捕捉。 您儲存體帳戶中的每個檔案和目錄都具有存取控制清單。 當安全性主體嘗試在檔案或目錄上執行作業時，ACL 檢查會判斷該安全性主體 (使用者、群組、服務主體或受控識別) 是否有正確的許可權等級可以執行此作業。
+您可以將 [安全性主體](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) 與檔案和目錄的存取層級產生關聯。 這些關聯會在 *(ACL) 的存取控制清單* 中捕捉。 您儲存體帳戶中的每個檔案和目錄都具有存取控制清單。 當安全性主體嘗試在檔案或目錄上執行作業時，ACL 檢查會判斷該安全性主體 (使用者、群組、服務主體或受控識別) 是否有正確的許可權等級可以執行此作業。
 
 > [!NOTE]
 > Acl 只適用于相同租使用者中的安全性主體，而且不會套用至使用共用金鑰或共用存取簽章 (SAS) 權杖驗證的使用者。 這是因為沒有與呼叫端相關聯的身分識別，因此無法執行安全性主體許可權型授權。  
@@ -64,8 +64,8 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 
 |            |    檔案     |   目錄 |
 |------------|-------------|----------|
-| **讀取 (R)** | 可以讀取檔案的內容 | 需要 [讀取]**** 和 [執行]**** 才能列出目錄內容 |
-| **寫入 (W)** | 可寫入或附加至檔案 | 需要 [寫入]**** 和 [執行]**** 才能在目錄中建立子項目 |
+| **讀取 (R)** | 可以讀取檔案的內容 | 需要 [讀取] 和 [執行] 才能列出目錄內容 |
+| **寫入 (W)** | 可寫入或附加至檔案 | 需要 [寫入] 和 [執行] 才能在目錄中建立子項目 |
 | **執行 (X)** | 不表示 Data Lake Storage Gen2 內容中的任何項目 | 需要周遊目錄的子項目 |
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 
 ### <a name="short-forms-for-permissions"></a>權限的簡短形式
 
-**RWX** 用來表示 [讀取 + 寫入 + 執行]****。 有更壓縮的數字形式存在，其中 [讀取 = 4]****、[寫入 = 2]**** 和 [執行 = 1]****，其總和代表各種權限。 以下有一些範例。
+**RWX** 用來表示 [讀取 + 寫入 + 執行]。 有更壓縮的數字形式存在，其中 [讀取 = 4]、[寫入 = 2] 和 [執行 = 1]，其總和代表各種權限。 以下有一些範例。
 
 | 數值形式 | 簡短形式 |      代表的意義     |
 |--------------|------------|------------------------|
@@ -90,9 +90,9 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 
 下表顯示啟用安全性主體以執行 [作業] **資料行中所列之** 作業所需的 ACL 專案。 
 
-下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`\`) 、一個名為**俄勒岡**的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt**] 的 [中**名]** 目錄中的文字檔。 
+下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`\`) 、一個名為 **俄勒岡** 的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt**] 的 [中 **名]** 目錄中的文字檔。 
 
-> [!IMPORANT] 下表假設您 **只** 使用 acl，而不使用任何 Azure RBAC 角色指派。 若要查看結合 Azure RBAC 與 Acl 的類似表格，請參閱 [許可權表：結合 AZURE rbac 和 acl](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
+> [!IMPORANT] 下表假設您 **只** 使用 acl，而不使用任何 Azure 角色指派。 若要查看結合 Azure RBAC 與 Acl 的類似表格，請參閱 [許可權表：結合 AZURE rbac 和 acl](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
 
 |    作業             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 - 命名受控識別
 - 所有其他使用者
 
-使用者和群組的身分識別皆為 Azure Active Directory (Azure AD) 身分識別。 因此除非另有說明，否則 Data Lake Storage Gen2 的內容中， *使用者*可以參考 Azure AD 使用者、服務主體、受控識別或安全性群組。
+使用者和群組的身分識別皆為 Azure Active Directory (Azure AD) 身分識別。 因此除非另有說明，否則 Data Lake Storage Gen2 的內容中， *使用者* 可以參考 Azure AD 使用者、服務主體、受控識別或安全性群組。
 
 ### <a name="the-owning-user"></a>擁有使用者
 
@@ -129,11 +129,11 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 * 只要擁有使用者也是目標群組的成員，請變更所擁有檔案的擁有群組。
 
 > [!NOTE]
-> 擁有使用者「無法」** 變更檔案或目錄的擁有使用者。 只有超級使用者可以變更檔案或目錄的擁有使用者。
+> 擁有使用者「無法」變更檔案或目錄的擁有使用者。 只有超級使用者可以變更檔案或目錄的擁有使用者。
 
 ### <a name="the-owning-group"></a>擁有群組
 
-在 POSIX Acl 中，每個使用者都與一個 *主要群組*相關聯。 例如，使用者 "Alice" 可能屬於「財務」群組。 Alice 也可能屬於多個群組，但一律將一個群組指定為其主要群組。 在 POSIX 中，當 Alice 會建立檔案時，該檔案的擁有群組會設定為她的主要群組，在此案例中為 "finance"。 除此之外，擁有群組的作用類似於指派給其他使用者/群組的權限。
+在 POSIX Acl 中，每個使用者都與一個 *主要群組* 相關聯。 例如，使用者 "Alice" 可能屬於「財務」群組。 Alice 也可能屬於多個群組，但一律將一個群組指定為其主要群組。 在 POSIX 中，當 Alice 會建立檔案時，該檔案的擁有群組會設定為她的主要群組，在此案例中為 "finance"。 除此之外，擁有群組的作用類似於指派給其他使用者/群組的權限。
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>指派新檔案或目錄的擁有群組
 
@@ -199,7 +199,7 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 針對新的 Data Lake Storage Gen2 容器，根目錄的存取 ACL ( "/" ) 的遮罩預設為 **750** （適用于目錄）和 **640** （檔案）。 下表顯示這些許可權等級的符號標記法。
 
-|單位|目錄|檔案|
+|實體|目錄|檔案儲存體|
 |--|--|--|
 |擁有使用者|`rwx`|`r-w`|
 |擁有群組|`r-x`|`r--`|
@@ -224,7 +224,7 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 ### <a name="umask"></a>umask
 
-在建立檔案或目錄時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父目錄上的一個 9 位元值，其中包含一個用於**擁有使用者**、**擁有群組**及**其他**的 RWX 值。
+在建立檔案或目錄時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父目錄上的一個 9 位元值，其中包含一個用於 **擁有使用者**、**擁有群組** 及 **其他** 的 RWX 值。
 
 Azure Data Lake Storage Gen2 的 umask 是一個設定為 007 的常數值。 此值會轉譯成：
 
@@ -258,7 +258,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-不正確。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+否。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果已關閉 HNS，則 Azure Azure RBAC 授權規則仍然適用。
 
@@ -270,7 +270,7 @@ def set_default_acls_for_new_child(parent, child):
 
 若要瞭解系統如何一起評估 Azure RBAC 和 Acl，以進行儲存體帳戶資源的授權決策，請參閱 [如何評估許可權](data-lake-storage-access-control-model.md#how-permissions-are-evaluated)。
 
-### <a name="what-are-the-limits-for-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC 角色指派和 ACL 專案有哪些限制？
+### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Azure 角色指派和 ACL 專案有哪些限制？
 
 下表提供使用 Azure RBAC 來管理「粗略」許可權 (套用至儲存體帳戶或容器之許可權的摘要查看，) 和使用 Acl 來管理套用至檔案和目錄) 之「更細緻」許可權 (的許可權。 使用安全性群組進行 ACL 指派。 使用群組時，您較不可能會超過每個訂用帳戶的角色指派數目上限，以及每個檔案或目錄的 ACl 專案數目上限。 
 
@@ -288,7 +288,7 @@ Azure 角色指派會進行繼承。 指派會從訂用帳戶、資源群組和�
 
 - 呼叫端具有「超級使用者」許可權，
 
-或者
+或
 
 - 父目錄必須具有 [寫入 + 執行] 權限。
 - 要刪除的目錄及其中的每個目錄，都需要 [讀取 + 寫入 + 執行] 權限。
@@ -328,7 +328,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 ### <a name="can-i-set-the-acl-of-a-container"></a>是否可以設定容器的 ACL？
 
-不正確。 容器沒有 ACL。 不過，您可以設定容器根目錄的 ACL。 每個容器都有一個根目錄，且共用與容器相同的名稱。 例如，如果容器名為，則 `my-container` 根目錄的名稱為 `myContainer/` 。 
+否。 容器沒有 ACL。 不過，您可以設定容器根目錄的 ACL。 每個容器都有一個根目錄，且共用與容器相同的名稱。 例如，如果容器名為，則 `my-container` 根目錄的名稱為 `myContainer/` 。 
 
 Azure 儲存體 REST API 包含名為 [ [設定容器 ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)] 的作業，但該作業不能用來設定容器的 ACL 或容器的根目錄。 相反地，該作業會用來指出是否可以 [公開存取](anonymous-read-access-configure.md)容器中的 blob。 
 

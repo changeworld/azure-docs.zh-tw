@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 469f6a1021fde661c4eae7951b86c9bb500c7050
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361325"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958569"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
 
@@ -32,7 +33,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在開始本文所述的工作之前，請檢閱此文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -50,7 +51,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 Azure 雲端平台不提供設定虛擬 IP 位址的選項，例如浮動 IP 位址。 您需要一個替代解決方案來設定虛擬 IP，以便連線到雲端的叢集資源。 
 
-Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」**。 使用內部負載平衡器，用戶端可透過叢集虛擬 IP 位址連線叢集。 
+Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」。 使用內部負載平衡器，用戶端可透過叢集虛擬 IP 位址連線叢集。 
 
 在包含叢集節點的資源群組中部署內部負載平衡器。 接著，使用內部負載平衡器的探查連接埠來設定所有必要的連接埠轉送規則。 用戶端可以透過虛擬主機名稱來進行連線。 DNS 伺服器會解析叢集 IP 位址。 內部負載平衡器則會處理對作用中叢集節點的連接埠轉送。
 
@@ -123,7 +124,7 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 
 * 至少有兩個叢集節點用於向外延展檔案共用。
 * 每個節點至少必須有兩個本機磁碟。
-* 基於效能考量，您必須使用「鏡像復原」**：
+* 基於效能考量，您必須使用「鏡像復原」：
     * 雙向鏡像適用於包含兩個叢集節點的向外延展檔案共用。
     * 三向鏡像適用於包含三個 (或多個) 叢集節點的向外延展檔案共用。
 * 建議搭配三向鏡像使用包含三個 (或多個) 叢集節點的向外延展檔案共用。

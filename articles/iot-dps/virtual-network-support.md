@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998586"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959776"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT 中樞裝置布建服務 (DPS) 虛擬網路支援
 
@@ -38,12 +38,12 @@ ms.locfileid: "91998586"
 
 限制連線的常見方法包括 [DPS IP 篩選規則](./iot-dps-ip-filtering.md) 和虛擬網路 (VNET) 搭配 [私人端點](../private-link/private-endpoint-overview.md)。 本文的目標是要說明使用私人端點之 DPS 的 VNET 方法。 
 
-在內部部署網路中操作的裝置可以使用 [虛擬私人網路 (VPN) ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 私用對等互連來連線到 Azure 中的 VNET，並透過私人端點存取 DPS 資源。 
+在內部部署網路中操作的裝置可以使用 [虛擬私人網路 (VPN) ](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 私用對等互連來連線到 Azure 中的 VNET，並透過私人端點存取 DPS 資源。 
 
 私人端點是在客戶擁有的 VNET 內配置的私人 IP 位址，可供存取 Azure 資源。 藉由為 DPS 資源擁有私用端點，您將能夠允許在 VNET 內操作的裝置要求您的 DPS 資源布建，而不允許公用端點的流量。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 請確定符合下列先決條件，再繼續進行：
 
@@ -51,7 +51,7 @@ ms.locfileid: "91998586"
 
 * 您已使用將建立私人端點的子網布建 Azure VNET。 如需詳細資訊，請參閱 [使用 Azure CLI 建立虛擬網路](../virtual-network/quick-create-cli.md)。
 
-* 針對在內部部署網路內運作的裝置，請將 [虛擬私人網路 (VPN) ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 私人對等互連設定至您的 Azure VNET。
+* 針對在內部部署網路內運作的裝置，請將 [虛擬私人網路 (VPN) ](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 私人對等互連設定至您的 Azure VNET。
 
 ## <a name="private-endpoint-limitations"></a>私人端點限制
 
@@ -81,7 +81,7 @@ ms.locfileid: "91998586"
     | :---- | :-----|
     | **訂用帳戶** | 選擇想要包含私人端點的 Azure 訂用帳戶。  |
     | **資源群組** | 選擇或建立包含私人端點的資源群組 |
-    | **名稱**       | 輸入私人端點的名稱 |
+    | **Name**       | 輸入私人端點的名稱 |
     | **區域**     | 選擇的區域必須與包含 VNET 的區域相同，但它不一定要與 DPS 資源相同。 |
 
     按一下 **[下一步：資源]** 以設定私人端點將指向的資源。
@@ -123,13 +123,13 @@ ms.locfileid: "91998586"
     > [!CAUTION]
     > 請注意，資源識別碼包含訂用帳戶識別碼。 
 
-2. 擁有資源識別碼之後，請依照 [_建立私人端點資源_] 頁面上的在步驟 3[設定私人端點](#set-up-a-private-endpoint)中的步驟執行。 按一下 [ **依資源識別碼或別名連線至 Azure 資源]** ，然後在下表中輸入資訊。 
+2. 擁有資源識別碼之後，請依照 [_建立私人端點資源_] 頁面上的在步驟 3 [設定私人端點](#set-up-a-private-endpoint)中的步驟執行。 按一下 [ **依資源識別碼或別名連線至 Azure 資源]** ，然後在下表中輸入資訊。 
 
     | 欄位 | 值 |
     | :---- | :-----|
     | **資源識別碼或別名** | 輸入 DPS 資源的資源識別碼。 |
     | **目標子資源** | 輸入 **iotDps** |
-    | **要求訊息** | 輸入 DPS 資源擁有者的要求訊息。<br>例如， <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
+    | **要求訊息** | 輸入 DPS 資源擁有者的要求訊息。<br>例如，套用至物件的 <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     按一下 **[下一步：設定]** 以設定私人端點的 VNET。
 
@@ -154,5 +154,5 @@ ms.locfileid: "91998586"
 
 您可以使用下列連結來深入瞭解 DPS 安全性功能：
 
-* [安全性](concepts-security.md)
+* [安全性](./concepts-service.md#attestation-mechanism)
 * [TLS 1.2 支援](tls-support.md)

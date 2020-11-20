@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 81cbbe06db2426cda8fde4a8fa0bca2cd8f097bb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 597bb4392bbe22b0d980e512b136c0d2c92641ad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144142"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958824"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 的 SAP HANA 高可用性
 
@@ -108,7 +109,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
     * **SAP 系統大小**：輸入新系統要提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
     * **系統可用性**：選取 **HA**。
     * **管理員使用者名稱、管理員密碼或 SSH 金鑰**：將建立可用來登入電腦的新使用者。
-    * **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。 如果您想要建立新的虛擬網路，請保留空白
+    * **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name>**。 如果您想要建立新的虛擬網路，請保留空白
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -162,7 +163,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如，**hana-frontend**、**hana-backend** 和 **hana-hp**)。
       1. 選取 [HA 連接埠]。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
 
 
@@ -194,35 +195,35 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
    1. 針對 SAP HANA 1.0，建立負載平衡規則：
 
       1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**15)。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3 **03** 15)。
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**15。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3 **03** 15。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
-      1. 對連接埠 3**03**17 重複執行這些步驟。
+      1. 對連接埠 3 **03** 17 重複執行這些步驟。
 
    1. 若為 SAP Hana 2.0，請針對系統資料庫建立負載平衡規則：
 
       1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**13)。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3 **03** 13)。
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**13。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3 **03** 13。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
-      1. 針對連接埠 3**03**14 重複這些步驟。
+      1. 針對連接埠 3 **03** 14 重複這些步驟。
 
    1. 若為 SAP Hana 2.0，請先針對租用戶資料庫建立負載平衡規則：
 
       1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**40)。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3 **03** 40)。
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**40。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3 **03** 40。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
-      1. 針對連接埠 3**03**41 和 3**03**42 重複這些步驟。
+      1. 針對連接埠 3 **03** 41 和 3 **03** 42 重複這些步驟。
 
 如需 SAP Hana 所需連接埠的詳細資訊，請參閱 [SAP Hana 租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[連線到租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章，或 [SAP Note 2388694][2388694]。
 
@@ -561,7 +562,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
 
 ## <a name="create-sap-hana-cluster-resources"></a>建立 SAP HANA 叢集資源
 
-在**所有節點**上安裝 SAP HANA 資源代理程式。 請務必啟用包含套件的存放庫。 如果您使用 RHEL 8.x 啟用 HA 的映射，則不需要啟用其他存放庫。  
+在 **所有節點** 上安裝 SAP HANA 資源代理程式。 請務必啟用包含套件的存放庫。 如果您使用 RHEL 8.x 啟用 HA 的映射，則不需要啟用其他存放庫。  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -582,9 +583,9 @@ clone clone-max=2 clone-node-max=1 interleave=true
 接下來，建立 HANA 資源。
 
 > [!NOTE]
-> 本文包含詞彙 *從屬*的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含詞彙 *從屬* 的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
-如果在 **RHEL**7.x 上建立叢集，請使用下列命令：  
+如果在 **RHEL** 7.x 上建立叢集，請使用下列命令：  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 #
@@ -605,7 +606,7 @@ sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana
 sudo pcs property set maintenance-mode=false
 </code></pre>
 
-如果在 **RHEL**8.x 上建立叢集，請使用下列命令：  
+如果在 **RHEL** 8.x 上建立叢集，請使用下列命令：  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 #
@@ -723,7 +724,7 @@ Resource Group: g_ip_HN1_03
 ### <a name="test-the-azure-fencing-agent"></a>測試 Azure 隔離代理程式
 
 > [!NOTE]
-> 本文包含詞彙 *從屬*的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。  
+> 本文包含詞彙 *從屬* 的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。  
 
 開始測試之前的資源狀態：
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977233"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957277"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>適用于 SAP 應用程式之最佳網路延遲的 Azure 鄰近放置群組
 以 SAP NetWeaver 或 SAP S/4HANA 架構為基礎的 SAP 應用程式，對 SAP 應用層與 SAP 資料庫層之間的網路延遲很敏感。 此敏感度是大部分在應用層中執行之商務邏輯的結果。 由於 SAP 應用層會執行商務邏輯，因此會以極高的頻率（每秒數以千計或數萬千）向資料庫層發出查詢。 在大部分的情況下，這些查詢的本質很簡單。 它們通常可以在資料庫層上以500微秒或更短的時間執行。

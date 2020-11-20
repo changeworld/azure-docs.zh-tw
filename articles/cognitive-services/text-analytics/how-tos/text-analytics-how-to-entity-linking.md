@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518221"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957090"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用命名實體辨識
 
-文字分析 API 可讓您採用非結構化的文字，並傳回一份清楚的實體清單，其中包含網路上詳細資訊的連結。 API 支援 (NER) 與實體連結的命名實體辨識。
+文字分析 API 可讓您採用非結構化的文字，並傳回一份清楚的實體清單，其中包含網路上詳細資訊的連結。 API 支援多個實體類別的命名實體辨識 (NER) ，以及實體連結。
 
-### <a name="entity-linking"></a>實體連結
+## <a name="entity-linking"></a>實體連結
 
 實體連結是識別和區分在文字中找到之實體身分識別的能力 (例如，判斷是否出現 "Mars" 一字是指地球，或 war) 的羅馬上帝。 此程式需要以適當的語言存在知識庫，以連結文字中可辨識的實體。 實體連結會使用 [維琪百科](https://www.wikipedia.org/) 作為此知識庫。
 
-
-### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
+## <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
 命名實體辨識 (NER) 能夠識別文字中的不同實體，並將它們分類成預先定義的類別或類型，例如： person、location、event、product 和組織。  
 
-## <a name="named-entity-recognition-versions-and-features"></a>命名實體辨識版本和功能
+## <a name="personally-identifiable-information-pii"></a>個人識別資訊 (PII)
+
+PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相關聯之文字中的敏感實體，例如電話號碼、電子郵件地址、郵寄地址、passport 號碼。  
+
+## <a name="named-entity-recognition-features-and-versions"></a>命名實體辨識功能和版本
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| 功能                                                         | NER v3。0 | NER 3.1-preview. 2 |
+| 功能                                                         | NER v3。0 | NER 3.1-preview. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | 單一和批次要求的方法                          | X      | X        |
 | 跨多個類別展開實體辨識           | X      | X        |
 | 用於傳送實體連結和 NER 要求的不同端點。 | X      | X        |
 | 辨識個人 (`PII`) 和健全狀況 (`PHI`) 資訊實體        |        | X        |
+| 修訂 `PII`        |        | X        |
 
 請參閱 [語言支援](../language-support.md) 以取得資訊。
 
-## <a name="entity-types"></a>實體類型
-
 命名實體辨識 v3 提供跨多個類型的擴充偵測。 目前，NER v3.0 可以辨識 [一般實體類別](../named-entity-types.md)中的實體。
 
-命名實體辨識 3.1-preview。2包括 v3.0 的偵測功能，以及使用端點偵測個人資訊 () 的功能 `PII` `v3.1-preview.2/entities/recognition/pii` 。 您可以使用選擇性 `domain=phi` 參數來偵測 () 的機密健康情況資訊 `PHI` 。 如需詳細資訊，請參閱下面的「 [實體類別](../named-entity-types.md) 」一文和「 [要求端點](#request-endpoints) 」一節。
+命名實體辨識 3.1-preview。3包括 v3.0 的偵測功能，以及： 
+* 使用端點來偵測個人資訊 (`PII`) 的能力 `v3.1-preview.3/entities/recognition/pii` 。 
+* 用 `domain=phi` 來偵測機密健康情況資訊 () 的選擇性參數 `PHI` 。
+* 使用端點的[非同步作業](text-analytics-how-to-call-api.md) `/analyze` 。
 
+如需詳細資訊，請參閱下面的「 [實體類別](../named-entity-types.md) 」一文和「 [要求端點](#request-endpoints) 」一節。 
 
 ## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求
 
@@ -68,41 +74,41 @@ ms.locfileid: "94518221"
 
 ### <a name="request-endpoints"></a>要求端點
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview。2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[版本 3.1-preview 3](#tab/version-3-preview)
 
-命名實體辨識 `v3.1-preview.2` 針對 NER、PII 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
+命名實體辨識 `v3.1-preview.3` 針對 NER、PII 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式。
 
-實體連結
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**實體連結**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[命名實體辨識版本 3.1-預覽參考 `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[命名實體辨識版本 3.1-預覽參考 `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-NER
-* 一般實體- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**具名實體辨識**
+* 一般實體- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[命名實體辨識版本 3.1-預覽參考 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[命名實體辨識版本 3.1-預覽參考 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-個人識別資訊 (PII)
-* 個人 (`PII`) 資訊- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**個人識別資訊 (PII)**
+* 個人 (`PII`) 資訊- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 您也可以使用選擇性 `domain=phi` 參數來偵測 `PHI` 文字中) 資訊 (健康情況。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-請注意， `redactedText` 包含已修改輸入文字的回應 JSON 中的屬性，其中會針對實體的每個字元，將所偵測到的 PII 實體取代為 *。
+從開始 `v3.1-preview.3` ，JSON 回應會包含 `redactedText` 屬性，其中包含已修改的輸入文字，其中會 `*` 為實體中的每個字元取代所偵測到的 PII 實體。
 
-[命名實體辨識版本 3.1-預覽參考 `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[命名實體辨識版本 3.1-預覽參考 `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 命名實體辨識 v3 針對 NER 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
 
-實體連結
+**實體連結**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [的命名實體辨識版本3.0 參考 `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-NER
+**具名實體辨識**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [的命名實體辨識版本3.0 參考 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ NER
 
 ### <a name="example-ner-request"></a>範例 NER 要求 
 
-以下是您可能傳送給 API 的內容範例。 這兩個 API 版本的要求格式是相同的。
+下列 JSON 是您可能傳送給 API 的內容範例。 這兩個 API 版本的要求格式是相同的。
 
 ```json
 {
@@ -138,7 +144,7 @@ NER
 
 所有 POST 要求都會傳回 JSON 格式的回應，其中包含識別碼和偵測到的實體屬性。
 
-輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱 [如何處理文字位移](../concepts/text-offsets.md) 。
+輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱 [如何處理文字位移](../concepts/text-offsets.md)。
 
 ### <a name="example-responses"></a>範例回應
 
@@ -292,7 +298,7 @@ PII 回應的範例：
 ---
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解在認知服務中使用文字分析的實體連結概念和工作流程。 摘要說明：
 

@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797741"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957685"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中於 SUSE Linux Enterprise Server 上設定 Pacemaker
 
@@ -54,7 +55,7 @@ Azure 隔離代理程式不需要部署額外的虛擬機器 () 。
 
 1. 部署新的 SLES 12 SP1 或更新版本的虛擬機器，並透過 SSH 連線到這些機器。 這些機器不需要是大型機器。 諸如 Standard_E2s_v3 或 Standard_D2s_v3 的虛擬機器大小就已足夠。 請務必使用 OS 磁碟的進階儲存體。
 
-在所有 **iSCSI 目標虛擬機器**上執行下列命令。
+在所有 **iSCSI 目標虛擬機器** 上執行下列命令。
 
 1. 更新 SLES
 
@@ -84,7 +85,7 @@ Azure 隔離代理程式不需要部署額外的虛擬機器 () 。
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>在 iSCSI 目標伺服器上建立 iSCSI 裝置
 
-在所有 **iSCSI 目標虛擬機器**上執行下列命令，為 SAP 系統所用的叢集建立 iSCSI 磁碟。 在下列範例中，會建立多個叢集的 SBD 裝置。 它會顯示如何對多個叢集使用一部 iSCSI 目標伺服器。 SBD 裝置會置於 OS 磁碟上。 確定您有足夠的空間。
+在所有 **iSCSI 目標虛擬機器** 上執行下列命令，為 SAP 系統所用的叢集建立 iSCSI 磁碟。 在下列範例中，會建立多個叢集的 SBD 裝置。 它會顯示如何對多個叢集使用一部 iSCSI 目標伺服器。 SBD 裝置會置於 OS 磁碟上。 確定您有足夠的空間。
 
 **`nfs`** 用來識別 NFS 叢集、**ascsnw1** 用來識別 **NW1** 的 ASCS 叢集、**dbnw1** 用來識別 **NW1** 的資料庫叢集、**nfs-0** 和 **nfs-1** 是 NFS 叢集節點的主機名稱、**nw1-xscs-0** 和 **nw1-xscs-1** 是 **NW1** ASCS 叢集節點的主機名稱，而 **nw1-db-0** 和 **nw1-db-1** 是資料庫叢集節點的主機名稱。 使用您的叢集節點主機名稱和 SAP 系統 SID 取代它們。
 
@@ -442,7 +443,7 @@ o- / ...........................................................................
    >您可以藉由執行 SUSEConnect---清單延伸來檢查擴充功能。  
    >使用 Azure 隔離代理程式達成更快速的容錯移轉時間：
    > - 在 SLES 12 SP4 或 SLES 12 SP5 上安裝版本 **4.6.2** 或更高版本的套件 python-azure-管理-計算  
-   > - 在 SLES 15 安裝版本 **4.6.2** 或更高版本的套件 python**3**-azure-管理-計算 
+   > - 在 SLES 15 安裝版本 **4.6.2** 或更高版本的套件 python **3**-azure-管理-計算 
 
 1. **[A]** 設定主機名稱解析
 
@@ -583,7 +584,7 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
    登入 URL 並未使用，而且可以是任何有效的 URL
 1. 選取 [憑證和祕密]，然後按一下 [新增用戶端秘密]
 1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [新增]
-1. 記下值。 此值會用來做為服務主體的**密碼**
+1. 記下值。 此值會用來做為服務主體的 **密碼**
 1. 選取 [概觀]。 記下應用程式識別碼。 此識別碼會用來做為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 為柵欄代理程式建立自訂角色

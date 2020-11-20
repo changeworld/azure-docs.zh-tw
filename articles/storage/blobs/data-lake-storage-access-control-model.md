@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3ddcbe57112251a428e11d6c164cdb1224553f98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578643"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959198"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制模型
 
@@ -47,22 +47,22 @@ Azure RBAC 會使用角色指派將許可權集套用至 [安全性主體](https
 
 ## <a name="access-control-lists-acls"></a>存取控制清單 (ACL)
 
-Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl* 是一種許可權結構，其中包含一系列的 *ACL 專案* 。 每個 ACL 專案都會將安全性主體與存取層級產生關聯。  若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 中)  (acl 的存取控制清單](data-lake-storage-access-control.md)。
+Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl* 是一種許可權結構，其中包含一系列的 *ACL 專案*。 每個 ACL 專案都會將安全性主體與存取層級產生關聯。  若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 中)  (acl 的存取控制清單](data-lake-storage-access-control.md)。
 
 ## <a name="how-permissions-are-evaluated"></a>如何評估許可權
 
 在以安全性主體為基礎的授權期間，許可權會以下列順序評估。
 
-：一個： &nbsp; &nbsp; Azure RBAC 角色指派會先進行評估，並優先于任何 ACL 指派。
+：一個： &nbsp; &nbsp; 先評估 Azure 角色指派，並優先于任何 ACL 指派。
 
-：2： &nbsp; &nbsp; 如果作業是根據 Azure RBAC 角色指派完整授權，則不會完全評估 acl。
+：2： &nbsp; &nbsp; 如果作業是根據 Azure 角色指派完整授權，則不會完全評估 acl。
 
 ：三：如果作業未 &nbsp; &nbsp; 經過完整授權，則會評估 acl。
 
 > [!div class="mx-imgBorder"]
 > ![data lake storage 許可權流程](./media/control-access-permissions-data-lake-storage/data-lake-storage-permissions-flow.png)
 
-由於系統會評估存取權限的方式，因此您 **無法** 使用 ACL 來 **限制** 角色指派已授與的存取權。 這是因為系統會先評估 Azure RBAC 角色指派，如果指派授與足夠的存取權限，則會忽略 Acl。 
+由於系統會評估存取權限的方式，因此您 **無法** 使用 ACL 來 **限制** 角色指派已授與的存取權。 這是因為系統會先評估 Azure 角色指派，如果指派授與足夠的存取權限，則會忽略 Acl。 
 
 下圖顯示三個常見作業的許可權流程：列出目錄內容、讀取檔案，以及寫入檔案。
 
@@ -71,38 +71,38 @@ Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl* 
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>許可權資料表：結合 Azure RBAC 和 ACL
 
-下表說明如何結合 Azure RBAC 角色和 ACL 專案，讓安全性主體可以執行 [作業] **資料行中所列的** 作業。 下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`/`) 、一個名為 **俄勒岡** 的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt** ] 的 [中 **名]** 目錄中的文字檔。 這些資料行中顯示的是授與許可權所需 ACL 專案的 [簡短形式](data-lake-storage-access-control.md#short-forms-for-permissions) 表示。 **N/A** ( _不適用_ 的) 會出現在資料行中，如果沒有執行此作業所需的 ACL 專案。
+下表說明如何結合 Azure 角色和 ACL 專案，讓安全性主體可以執行 [作業] **資料行中所列的** 作業。 下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`/`) 、一個名為 **俄勒岡** 的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt**] 的 [中 **名]** 目錄中的文字檔。 這些資料行中顯示的是授與許可權所需 ACL 專案的 [簡短形式](data-lake-storage-access-control.md#short-forms-for-permissions) 表示。 **N/A** (_不適用_ 的) 會出現在資料行中，如果沒有執行此作業所需的 ACL 專案。
 
 |    作業             | 指派的 RBAC 角色               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Read Data.txt            |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |  
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | N/A      | N/A      | N/A       | N/A    |
-|                          |   無                           | `--X`    | `--X`    | `--X`     | `R--`  |
+|                          |   None                           | `--X`    | `--X`    | `--X`     | `R--`  |
 | Append to Data.txt       |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | `--X`    | `--X`    | `--X`     | `-W-`  |
-|                          |   無                           | `--X`    | `--X`    | `--X`     | `RW-`  |
+|                          |   None                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Delete Data.txt          |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | `--X`    | `--X`    | `-WX`     | N/A    |
-|                          |   無                           | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   None                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Create Data.txt          |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | `--X`    | `--X`    | `-WX`     | N/A    |
-|                          |   無                           | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   None                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | List /                   |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | N/A      | N/A      | N/A       | N/A    |
-|                          |   無                           | `R-X`    | N/A      | N/A       | N/A    |
+|                          |   None                           | `R-X`    | N/A      | N/A       | N/A    |
 | List /Oregon/            |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | N/A      | N/A      | N/A       | N/A    |
-|                          |   無                           | `--X`    | `R-X`    | N/A       | N/A    |
+|                          |   None                           | `--X`    | `R-X`    | N/A       | N/A    |
 | List /Oregon/Portland/   |   儲存體 Blob 資料擁有者        | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料參與者  | N/A      | N/A      | N/A       | N/A    |
 |                          |   儲存體 Blob 資料讀者       | N/A      | N/A      | N/A       | N/A    |
-|                          |   無                           | `--X`    | `--X`    | `R-X`     | N/A    |
+|                          |   None                           | `--X`    | `--X`    | `R-X`     | N/A    |
 
 
 > [!NOTE] 
@@ -112,7 +112,7 @@ Acl 可讓您將「更精細」的存取層級套用至目錄和檔案。 *Acl* 
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)]
 
-## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC 角色指派和 ACL 專案的限制
+## <a name="limits-on-azure-role-assignments-and-acl-entries"></a>Azure 角色指派和 ACL 專案的限制
 
 使用群組時，您較不可能會超過每個訂用帳戶的角色指派數目上限，以及每個檔案或目錄的 ACL 專案數目上限。 下表描述了這些限制。
 

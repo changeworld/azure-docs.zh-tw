@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
-ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1118dfcec67a49365f1f6e5e522e98b97694d052
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66420599"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960184"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>StorSimple Virtual Array 更新1.2 版本資訊
 
@@ -46,7 +46,7 @@ ms.locfileid: "66420599"
 
 下表提供本版已修正問題的摘要。
 
-| 不可以。 | 功能 | 問題 |
+| 否。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |刪除| 在舊版的軟體中，即使在刪除檔案時，裝置的使用沒有變更也會發生問題。 此版本已修正此問題。 處理已刪除的檔案時，將程式碼路徑分層變得更有彈性。|
 | 2 |例外狀況處理| 在舊版的軟體中，系統重新開機後發生問題，可能會導致備份失敗、還原、從雲端讀取，以及自動空間回收。 此版本包含在啟動路徑中處理例外狀況的方式變更。|
@@ -59,7 +59,7 @@ Update 1.2 中沒有發行的新問題。 所有發行記錄的問題都會從�
 
 下載 KB4502035，並透過 [本機 WEB UI 套用更新](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui)。
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 
 要尋找舊版本資訊嗎？ 請移至：
 * [StorSimple Virtual Array 更新1.1 版本資訊](storsimple-virtual-array-update-11-release-notes.md)
@@ -69,4 +69,4 @@ Update 1.2 中沒有發行的新問題。 所有發行記錄的問題都會從�
 * [StorSimple Virtual Array Update 0.4 版本資訊](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Virtual Array Update 0.3 版本資訊](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array Update 0.1 和 0.2 版本資訊](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 正式運作版版本資訊](storsimple-ova-pp-release-notes.md)
+* [StorSimple Virtual Array 正式運作版版本資訊](./storsimple-virtual-array-update-06-release-notes.md)

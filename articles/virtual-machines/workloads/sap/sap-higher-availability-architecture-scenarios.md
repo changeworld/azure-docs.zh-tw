@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5d7904b950fa79f9ccbf98ec08f09aa6688f8a99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535598"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957889"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>使用 Azure 基礎結構 VM 重新啟動達到 SAP 系統的「更高可用性」
 
@@ -216,7 +217,7 @@ ms.locfileid: "92535598"
 如果您決定不在 Linux 上使用如 Windows Server 容錯移轉叢集 (WSFC) 或 Pacemaker 等功能 (目前僅支援 SUSE Linux Enterprise Server [SLES] 12 和更新版本)，則會使用 Azure VM 重新啟動。 它會針對規劃與未規劃的 Azure 實體伺服器基礎結構停機時間，以及整體基礎 Azure 平台，來保護 SAP 系統。
 
 > [!NOTE]
-> Azure VM 重新啟動主要是保護 VM，而「不」  是應用程式。 雖然 VM 重新啟動並未提供 SAP 應用程式的高可用性，而是提供特定層級的基礎結構可用性。 它也會間接達到 SAP 系統的「更高可用性」。 此外，在計劃性或非計劃性主機中斷之後重新啟動 VM 所需的時間也沒有任何 SLA，這會使此種方法的高可用性不適合於 SAP 系統的重要元件。 重要元件的範例包含 ASCS/SCS 執行個體或資料庫管理系統 (DBMS)。
+> Azure VM 重新啟動主要是保護 VM，而「不」是應用程式。 雖然 VM 重新啟動並未提供 SAP 應用程式的高可用性，而是提供特定層級的基礎結構可用性。 它也會間接達到 SAP 系統的「更高可用性」。 此外，在計劃性或非計劃性主機中斷之後重新啟動 VM 所需的時間也沒有任何 SLA，這會使此種方法的高可用性不適合於 SAP 系統的重要元件。 重要元件的範例包含 ASCS/SCS 執行個體或資料庫管理系統 (DBMS)。
 >
 >
 
@@ -250,13 +251,13 @@ Azure 受控磁碟會自動放在其所連接虛擬機器的容錯網域。 如�
 
     即使您使用受控磁碟，這些磁碟會儲存在 Azure 儲存體帳戶中，而且在儲存體發生中斷時可能無法使用。
 
-* SAP ASCS/SCS 執行個體的「更高可用性」 
+* SAP ASCS/SCS 執行個體的「更高可用性」
 
-    在此案例中，利用 Azure VM 重新啟動來保護已安裝 SAP ASCS/SCS 執行個體的 VM。 如果 Azure 伺服器發生規劃或未規劃的停機，則會在另一個可用的伺服器上重新啟動 VM。 如前所述，在此 ASCS/SCS 執行個體案例中，Azure VM 重新啟動主要是保護 VM，而「不是」  應用程式。 透過 VM 重新啟動，您可間接達到 SAP ASCS/SCS 執行個體的「更高可用性」。 
+    在此案例中，利用 Azure VM 重新啟動來保護已安裝 SAP ASCS/SCS 執行個體的 VM。 如果 Azure 伺服器發生規劃或未規劃的停機，則會在另一個可用的伺服器上重新啟動 VM。 如前所述，在此 ASCS/SCS 執行個體案例中，Azure VM 重新啟動主要是保護 VM，而「不是」應用程式。 透過 VM 重新啟動，您可間接達到 SAP ASCS/SCS 執行個體的「更高可用性」。 
 
     為了確保在 VM 重新啟動後會自動啟動 ASCS/SCS 執行個體，請在 ASCS/SCS 執行個體啟動設定檔中設定 Autostart 參數，如[對 SAP 執行個體使用 Autostart][planning-guide-11.5] 一節所述。 此設定表示 ASCS/SCS 執行個體可當作單一 VM 中執行的單一失敗點 (SPOF)，將會決定整個 SAP 環境是否可用。
 
-* DBMS 伺服器的「更高可用性」 
+* DBMS 伺服器的「更高可用性」
 
     如同先前的 SAP ASCS/SCS 執行個體使用案例，您可利用 Azure VM 重新啟動來保護已安裝 DBMS 軟體的 VM，並透過 VM 重新啟動達到 DBMS 軟體的「更高可用性」。
   
@@ -280,6 +281,6 @@ SAP 提供一項設定，讓您在 VM 內的 OS 啟動後立即啟動 SAP 執行
   * [Start or Stop SAP along with your Unix Server Start/Stop (隨著 Unix 伺服器啟動/停止一起啟動或停止 SAP)](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
   * [啟動和停止 SAP NetWeaver 管理代理程式](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需完整 SAP NetWeaver 應用程式感知高可用性的資訊，請參閱 [Azure IaaS 上的 SAP 應用程式高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]。

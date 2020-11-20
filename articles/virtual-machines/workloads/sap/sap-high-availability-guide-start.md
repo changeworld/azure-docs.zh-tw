@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1cfcc14a-6795-4cfd-a740-aa09d6d2b817
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57b3614136d364aea624305ea792a33db1a1957e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b329cce5b20d69377fc5ec14a1fafd8d222b2c8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361801"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958552"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器高可用性
 
@@ -196,7 +197,7 @@ ms.locfileid: "91361801"
     > 強烈建議您針對 SAP 安裝使用 Azure Resource Manager 部署模型。 它提供傳統部署模型所沒有的許多好處。 深入了解 Azure [部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   
     >
 * 在下列項目的 SAP 高可用性：
-  * ![Windows 標誌。][Logo_Windows]  **Windows**，使用 **Windows Server 容錯移轉叢集 (WSFC) **
+  * ![Windows 標誌。][Logo_Windows]  **Windows**，使用 **Windows Server 容錯移轉叢集 (WSFC)**
   * ![Linux 標誌。][Logo_Linux] **Linux**，使用 **linux 叢集架構**
 
 在這些文章中，您會了解如何協助保護單一失敗點 (SPOF) 元件，例如 SAP 中央服務 (ASCS/SCS) 和資料庫管理系統 (DBMS)。 您也會了解 Azure 中的備援元件，例如 SAP 應用程式伺服器。

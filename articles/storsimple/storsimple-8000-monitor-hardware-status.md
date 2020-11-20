@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b750659bf22e856ee8ad7368e3fea64dd7245df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999491"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960354"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple 裝置管理員服務監視硬體元件和狀態
 
 ## <a name="overview"></a>概觀
-本文描述內部部署 StorSimple 8000 系列裝置中的各種實體和邏輯元件。 也會說明如何使用 StorSimple 裝置管理員服務中的 [狀態與硬體健康狀態]**** 刀鋒視窗監視裝置元件狀態。
+本文描述內部部署 StorSimple 8000 系列裝置中的各種實體和邏輯元件。 也會說明如何使用 StorSimple 裝置管理員服務中的 [狀態與硬體健康狀態] 刀鋒視窗監視裝置元件狀態。
 
-[狀態與硬體健康狀態]**** 刀鋒視窗會顯示所有 StorSimple 裝置元件的硬體狀態。
+[狀態與硬體健康狀態] 刀鋒視窗會顯示所有 StorSimple 裝置元件的硬體狀態。
 
 在 8100 的元件清單下，有三個區段描述：
 
@@ -47,39 +47,39 @@ ms.locfileid: "86999491"
 ## <a name="monitor-the-hardware-status"></a>監視硬體狀態
 執行下列步驟來檢視裝置元件的硬體狀態：
 
-1. 瀏覽至 **裝置**，選取特定的 StorSimple 裝置。 移至 [監視] > [硬體健康狀態]****。
+1. 瀏覽至 **裝置**，選取特定的 StorSimple 裝置。 移至 [監視] > [硬體健康狀態]。
 
     ![顯示裝置管理員服務的 [設定] 分頁的螢幕擷取畫面。 在 [監視] 下，已選取 [硬體健康狀態]。](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
-2. 找出 [硬體元件]**** 區段並選擇可用的元件。 只要按一下元件標籤，即可展開清單並檢視各種裝置元件的狀態。 請參閱[主要機箱的詳細元件清單](#component-list-for-primary-enclosure-of-storsimple-device)和 [EBOD 機箱的詳細元件清單](#component-list-for-ebod-enclosure-of-storsimple-device)。
+2. 找出 [硬體元件] 區段並選擇可用的元件。 只要按一下元件標籤，即可展開清單並檢視各種裝置元件的狀態。 請參閱[主要機箱的詳細元件清單](#component-list-for-primary-enclosure-of-storsimple-device)和 [EBOD 機箱的詳細元件清單](#component-list-for-ebod-enclosure-of-storsimple-device)。
 
     ![顯示在 [硬體元件] 區段中選取一個元件的螢幕擷取畫面。 連續的分頁會顯示該元件部分的名稱和狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. 您可以使用下列色彩編碼配置來解譯元件狀態：
    
-   * **綠色核取符號** – 代表**正常**狀態的狀況良好元件。
-   * **黃色** – 代表在**警告**狀態中的降級元件。
-   * **紅色驚嘆號** – 代表有**失敗**狀態的失敗元件。
+   * **綠色核取符號** – 代表 **正常** 狀態的狀況良好元件。
+   * **黃色** – 代表在 **警告** 狀態中的降級元件。
+   * **紅色驚嘆號** – 代表有 **失敗** 狀態的失敗元件。
    * **白底黑字** – 表示不存在的元件。
    
-   下列螢幕擷取畫面顯示有元件處於 [正常]****、[警告]**** 和 [失敗]**** 狀態的裝置。
+   下列螢幕擷取畫面顯示有元件處於 [正常]、[警告] 和 [失敗] 狀態的裝置。
        
    ![螢幕擷取畫面，顯示 [硬體元件] 區段中的三個元件：一個處於 [正常] 狀態、一個處於失敗狀態，另一個處於警告狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
-   展開 [共用的元件清單]****，我們可以看到 NVRAM 與叢集已降級。
+   展開 [共用的元件清單]，我們可以看到 NVRAM 與叢集已降級。
 
    ![螢幕擷取畫面，顯示已選取的共用元件專案。 在連續的 blade 中，N V R A M 和叢集處於警告狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
-   展開 [控制器 1 元件]**** 清單，我們可以看到叢集節點失敗。  
+   展開 [控制器 1 元件] 清單，我們可以看到叢集節點失敗。  
 
    ![螢幕擷取畫面，顯示已選取控制器1元件專案。 在連續的 blade 中，叢集節點處於失敗狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. 如果您遇到狀態不是「狀況良好」 **** 的元件，請連絡 Microsoft 支援服務。 如果您的裝置上啟用警示，您會收到電子郵件警示。 如果您必須更換失敗的硬體元件，請參閱 [StorSimple 硬體元件更換](storsimple-hardware-component-replacement.md)。
+4. 如果您遇到狀態不是「狀況良好」  的元件，請連絡 Microsoft 支援服務。 如果您的裝置上啟用警示，您會收到電子郵件警示。 如果您必須更換失敗的硬體元件，請參閱 [StorSimple 硬體元件更換](./storsimple-8000-hardware-component-replacement.md)。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple 裝置之主要機箱的元件清單
 下表摘要列出您內部部署 StorSimple 裝置之主要機箱 (在 8100 和 8600 中皆為贈品) 中包含的實體和邏輯元件。
 
-| 元件 | 模組 | 類型 | Location | 現場可更換單位 (FRU)？ | 說明 |
+| 元件 | 模組 | 類型 | Location | 現場可更換單位 (FRU)？ | 描述 |
 | --- | --- | --- | --- | --- | --- |
 | 插槽 [0-11] 中的磁碟機 |磁碟機 |實體 |共用 |是 |主要機箱中的每個 SSD 或 HDD 磁碟機都表示為一行。 |
 | 周圍溫度感應器 |機箱 |實體 |共用 |否 |測量底座內溫度。 |
@@ -120,7 +120,7 @@ ms.locfileid: "86999491"
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>StorSimple 裝置之 EBOD 機箱的元件清單
 下表摘要列出您內部部署 StorSimple 裝置之 EBOD 機箱 (只在 8600 機型中為贈品) 中包含的實體和邏輯元件。
 
-| 元件 | 模組 | 類型 | Location | FRU？ | 說明 |
+| 元件 | 模組 | 類型 | Location | FRU？ | 描述 |
 | --- | --- | --- | --- | --- | --- |
 | 插槽 [0-11] 中的磁碟機 |磁碟機 |實體 |共用 |是 |EBOD 機箱前方的每個 HDD 磁碟機都表示為一行。 |
 | 周圍溫度感應器 |機箱 |實體 |共用 |否 |測量底座內溫度。 |
@@ -143,9 +143,8 @@ ms.locfileid: "86999491"
 | 機箱電子裝置診斷 |I/O |實體 |控制器 |否 |指出控制器所提供的診斷子系統狀態。 |
 | 裝置控制器的連接 |I/O |實體 |控制器 |否 |指出 EBOD I/O 模組和裝置控制器之間的連接狀態。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 若要使用 StorSimple 裝置管理員服務管理裝置，請參閱[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 * 如果您需要疑難排解降級或失敗狀態的裝置元件，請參閱 [StorSimple 監視指示器](storsimple-monitoring-indicators.md)。
-* 若要更換故障的硬體元件，請參閱 [StorSimple 硬體元件更換](storsimple-hardware-component-replacement.md)。
+* 若要更換故障的硬體元件，請參閱 [StorSimple 硬體元件更換](./storsimple-8000-hardware-component-replacement.md)。
 * 如果持續發生裝置問題，請 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
-

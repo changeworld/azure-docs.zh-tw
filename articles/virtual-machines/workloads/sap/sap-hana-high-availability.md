@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9efdbb32683c9a244226012bd2d4bfcab6046678
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2783d9dc7151190857d870b5493465884b82ffcc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151162"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957260"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 
@@ -110,9 +111,9 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
     - **DB 類型**：選取 **HANA**。
     - **SAP 系統大小**：輸入新系統要提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
     - **系統可用性**：選取 **HA**。
-    - 系統**管理員使用者名稱和系統管理員密碼**：建立新的使用者，可用來登入電腦。
-    - **新的或現有的子網路**︰決定應該建立新的虛擬網路和子網路，還是使用現有的子網路。 如果您已經有連線到內部部署網路的虛擬網路，請選取 [現有]****。
-    - **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。
+    - 系統 **管理員使用者名稱和系統管理員密碼**：建立新的使用者，可用來登入電腦。
+    - **新的或現有的子網路**︰決定應該建立新的虛擬網路和子網路，還是使用現有的子網路。 如果您已經有連線到內部部署網路的虛擬網路，請選取 [現有]。
+    - **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name>**。
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -173,7 +174,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如，**hana-frontend**、**hana-backend** 和 **hana-hp**)。
       1. 選取 [HA 連接埠]。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
 
 1. 或者，如果您的情節要求使用基本負載平衡器，請遵循下列設定步驟：
@@ -204,35 +205,35 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    1. 針對 SAP HANA 1.0，建立負載平衡規則：
    
       1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**15)。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3 **03** 15)。
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**15。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3 **03** 15。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
-      1. 對連接埠 3**03**17 重複執行這些步驟。
+      1. 對連接埠 3 **03** 17 重複執行這些步驟。
    
    1. 若為 SAP Hana 2.0，請針對系統資料庫建立負載平衡規則：
    
       1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**13)。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3 **03** 13)。
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**13。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3 **03** 13。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
-      1. 針對連接埠 3**03**14 重複這些步驟。
+      1. 針對連接埠 3 **03** 14 重複這些步驟。
    
    1. 若為 SAP Hana 2.0，請先針對租用戶資料庫建立負載平衡規則：
    
       1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**40)。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3 **03** 40)。
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**40。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3 **03** 40。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
-      1. 針對連接埠 3**03**41 和 3**03**42 重複這些步驟。
+      1. 針對連接埠 3 **03** 41 和 3 **03** 42 重複這些步驟。
 
    如需 SAP Hana 所需連接埠的詳細資訊，請參閱 [SAP Hana 租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[連線到租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章，或 [SAP Note 2388694][2388694]。
 

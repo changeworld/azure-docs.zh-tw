@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a35d6449d88620c2ac977ae45584c59f665378bf
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738697"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960490"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>使用 Azure 網路監看員 Azure CLI 來針對虛擬網路閘道和連線進行疑難排解
 
@@ -91,8 +91,8 @@ az network watcher troubleshooting start --resource-group resourceGroupName --re
 
 動作文字會提供有關如何解決問題的一般指引。 如果問題有可行動作，則會提供附有其他指引的連結。 如果沒有其他指引，回應中會提供 URL 以供您開啟支援案例。  如需回應屬性和所含內容的詳細資訊，請瀏覽[網路監看員疑難排解概觀](network-watcher-troubleshoot-overview.md)
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 您可以在下列連結找到儲存體總管的詳細資訊： [儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 另一項可用工具為儲存體總管。 您可以在下列連結找到儲存體總管的詳細資訊： [儲存體總管](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果設定已變更而停止了 VPN 連線，請參閱[管理網路安全性群組](../virtual-network/manage-network-security-group.md)以追蹤可能有問題的網路安全性群組和安全性規則。

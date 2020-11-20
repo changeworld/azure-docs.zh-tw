@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b409254abbde1c1f6156052c49a07e6cc09a4dfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360347"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958773"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性架構和案例
 
@@ -276,9 +277,9 @@ Azure 中的 SAP 高可用性與內部部署實體或虛擬環境中的 SAP 高�
 
 當兩 (含) 個以上 VM 是同一可用性設定組的一部分時，基礎 Azure 平台會為可用性設定組中的每部虛擬機器指派一個更新網域和一個容錯網域。
 
-* **更新網域**保證多個 VM 不會在 Azure 基礎結構進行計劃性維護期間同時重新開機。 一次只有一個 VM 重新開機。
+* **更新網域** 保證多個 VM 不會在 Azure 基礎結構進行計劃性維護期間同時重新開機。 一次只有一個 VM 重新開機。
 
-* **容錯網域**保證會將 VM 部署在硬體元件上，而這些硬體元件不會共用一般電源和網路交換器。 當伺服器、網路交換器或電源發生未規劃停機時，只有一個 VM 會受到影響。
+* **容錯網域** 保證會將 VM 部署在硬體元件上，而這些硬體元件不會共用一般電源和網路交換器。 當伺服器、網路交換器或電源發生未規劃停機時，只有一個 VM 會受到影響。
 
 如需詳細資訊，請參閱[管理 Azure 中 Windows 虛擬機器的可用性][azure-virtual-machines-manage-availability]。
 
@@ -304,9 +305,9 @@ Azure 正在不同的 [Azure 區域](https://azure.microsoft.com/global-infrastr
 
 兩種類型的 Azure 平台事件會影響虛擬機器的可用性：
 
-* **規劃的維護**事件是由 Microsoft 對基礎 Azure 平台執行的定期更新。 更新會改善您的虛擬機器在其上執行之平台基礎結構的整體可靠性、效能和安全性。
+* **規劃的維護** 事件是由 Microsoft 對基礎 Azure 平台執行的定期更新。 更新會改善您的虛擬機器在其上執行之平台基礎結構的整體可靠性、效能和安全性。
 
-* **未規劃的維護**事件會在虛擬機器中的硬體或實體基礎結構產生某些方面的錯誤時發生。 這可能包含本機網路錯誤、本機磁碟錯誤，或其他機架層級的錯誤。 Azure 平台會在偵測到此類錯誤時，自動從裝載虛擬機器且狀況不良的實體伺服器，將虛擬機器移轉至狀況良好的實體伺服器。 這類事件非常稀少，但可能會導致虛擬機器重新啟動。
+* **未規劃的維護** 事件會在虛擬機器中的硬體或實體基礎結構產生某些方面的錯誤時發生。 這可能包含本機網路錯誤、本機磁碟錯誤，或其他機架層級的錯誤。 Azure 平台會在偵測到此類錯誤時，自動從裝載虛擬機器且狀況不良的實體伺服器，將虛擬機器移轉至狀況良好的實體伺服器。 這類事件非常稀少，但可能會導致虛擬機器重新啟動。
 
 如需詳細資訊，請參閱[管理 Azure 中 Windows 虛擬機器的可用性][azure-virtual-machines-manage-availability]。
 
@@ -387,11 +388,11 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 您可以使用 WSFC 解決方案來保護 SAP ASCS/SCS 執行個體。 解決方案有兩種變化：
 
-* **使用叢集化的共用磁碟進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱[使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理][sap-high-availability-guide-wsfc-shared-disk]。   
+* **使用叢集化的共用磁碟進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱 [使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理][sap-high-availability-guide-wsfc-shared-disk]。   
 
-* **使用檔案共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱[使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理][sap-high-availability-guide-wsfc-file-share]。
+* **使用檔案共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱 [使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理][sap-high-availability-guide-wsfc-file-share]。
 
-* **使用 ANF SMB 共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱[使用 ANF SMB 共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./high-availability-guide-windows-netapp-files-smb.md)。
+* **使用 ANF SMB 共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱 [使用 ANF SMB 共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./high-availability-guide-windows-netapp-files-smb.md)。
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 執行個體的高可用性架構
 
@@ -416,7 +417,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 > ![Linux 標誌。][Logo_Linux] Linux
 > 
-> SAP ASCS/ERS 的 Linux Pacemaker 叢集支援多重 SID 群集 (在相同叢集上限制只能有**五**個 SAP SID)。
+> SAP ASCS/ERS 的 Linux Pacemaker 叢集支援多重 SID 群集 (在相同叢集上限制只能有 **五** 個 SAP SID)。
 > 如需 Linux 上多重 SID 高可用性架構的詳細資訊，請參閱：
 
 * [適用於具備多個 SID SAP 應用程式 SLES 上 Azure VM 中 SAP NW HA 的指南](./high-availability-guide-suse-multi-sid.md)

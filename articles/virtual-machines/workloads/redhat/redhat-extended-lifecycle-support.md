@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux 擴充生命週期支援
 description: 深入瞭解新增 Red Hat Enterprise 擴充生命週期支援新增至
 author: mathapli
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 71ff00dbf32ef32ead85be60cdbe53f23c8e35c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684350"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957566"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) 延伸生命週期支援
 本文提供 Red Hat Enterprise 映射的延伸生命週期支援相關資訊：
@@ -29,7 +30,7 @@ ms.locfileid: "94684350"
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>使用 Red Hat Enterprise Linux 延長生命週期支援 (ELS) 附加元件的額外費用為何？
 
-|VM 大小|額外的費用時間範圍|額外的金額 (美元) | 備註|
+|VM 大小|額外的費用時間範圍|額外的金額 (美元) | 注意|
 |---|---|---|---|
 | 小型虛擬來賓 ( # B0 = 4 個核心)  | 每小時額外收費 | Tbc | |
 |  | 每月額外費用 | Tbc | 針對保留實例 |

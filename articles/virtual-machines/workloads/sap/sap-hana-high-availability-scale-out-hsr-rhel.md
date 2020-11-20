@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 36c101acc9e272ca0860649aad1a5e18fb5000a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152110"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957328"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 SAP Hana 相應放大系統的高可用性 
 
@@ -122,7 +123,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 針對本檔中顯示的設定，部署七部虛擬機器： 
    - 三部虛擬機器作為 HANA 複寫網站1的 HANA DB 節點： **hana-s1-db1**、 **hana-s1-db2** 和 **hana-s1-db3**  
    - 三部虛擬機器作為 HANA 複寫網站2的 HANA DB 節點： **hana-s2-db1**、 **hana-s2-db2** 和 **HANA-s2-db3**  
-   - 作為 *多數 maker*的小型虛擬機器： **hana-s-mm**
+   - 作為 *多數 maker* 的小型虛擬機器： **hana-s-mm**
 
    部署為 SAP DB HANA 節點的 Vm 應受 SAP for HANA 認證，如同在 [SAP Hana 硬體目錄](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中發佈一樣。 部署 HANA DB 節點時，請確定已選取 [ [加速網路](../../../virtual-network/create-vm-accelerated-networking-cli.md) ]。  
   
@@ -131,14 +132,14 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
    部署和的本機受控 `/hana/data` 磁片 `/hana/log` 。 的最小建議儲存體設定 `/hana/data` ， `/hana/log` 在 [SAP Hana Azure vm 儲存體](./hana-vm-operations-storage.md)設定中有相關說明。
 
    為虛擬網路子網中的每個 VM 部署主要網路介面 `client` 。  
-   當 VM 透過 Azure 入口網站部署時，會自動產生網路介面名稱。 為了簡單起見，我們將參考自動產生的主要網路介面，這些介面會附加至 `client` Azure 虛擬網路子網，以作為 **hana-s1-db1-client**、hana-s1- **db2-client**、 **hana-s1-db3-client**等等。  
+   當 VM 透過 Azure 入口網站部署時，會自動產生網路介面名稱。 為了簡單起見，我們將參考自動產生的主要網路介面，這些介面會附加至 `client` Azure 虛擬網路子網，以作為 **hana-s1-db1-client**、hana-s1- **db2-client**、 **hana-s1-db3-client** 等等。  
 
 
    > [!IMPORTANT]
    > 請確定您選取的作業系統已通過 SAP 認證，可 SAP Hana 您所使用的特定 VM 類型。 如需這些類型的 SAP Hana 認證的 VM 類型和作業系統版本清單，請移至 [SAP Hana 認證的 IaaS 平臺](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 網站。 按一下所列 VM 類型的詳細資料，取得該類型的 SAP Hana 支援 OS 版本的完整清單。  
   
 
-2. 建立六個網路介面，一個適用于虛擬網路子網中的每個 HANA DB 虛擬機器， `inter` (在此範例中為**hana-s1-db1-**) **db3**、hana- **s1**--- **hana-s2-db3-inter** ------------------------ **--**--------- **--**-  
+2. 建立六個網路介面，一個適用于虛擬網路子網中的每個 HANA DB 虛擬機器， `inter` (在此範例中為 **hana-s1-db1-**) **db3**、hana- **s1**--- **hana-s2-db3-inter** ------------------------ **--**--------- **--**-  
 
 3. 建立六個網路介面，其中一個用於虛擬網路子網中的每個 HANA DB 虛擬機器， `hsr` (在此範例中為 **db1-hsr**、 **hana-s1-db2-hsr**、 **hana-s1-db3-hsr**、 **hana-s2-db1-hsr**、 **hana-s2-db2-** hsr 和 **hana-s2-db3-hsr**) 。  
 
@@ -152,7 +153,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
     d. 選取 [ **網路**]，然後連接網路介面。 在 [ **附加網路介面** ] 下拉式清單中，選取已建立 `inter` 和子網的網路介面 `hsr` 。  
     
-    e. 選取 [儲存]。 
+    e. 選取 [儲存]  。 
  
     f. 針對其餘的虛擬機器重複步驟 b 至 e (在我們的範例中為  **hana-s1-db2**、 **hana-s1-db3**、 **hana-s2-db1**、 **hana-s2-db2** 和 **hana-s2-db3**) 。
  
@@ -216,7 +217,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如，**hana-frontend**、**hana-backend** 和 **hana-hp**)。
       1. 選取 [HA 連接埠]。
       1. 將 [閒置逾時] 增加為 30 分鐘。
-      1. 務必**啟用浮動 IP**。
+      1. 務必 **啟用浮動 IP**。
       1. 選取 [確定]。
 
    > [!IMPORTANT]
@@ -352,7 +353,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
 
-10. **[AH]** 確認對應的 `/hana/shared/` 檔案系統已裝載在所有具有 NFS 通訊協定版本 **NFSV4**的 HANA DB vm 上。  
+10. **[AH]** 確認對應的 `/hana/shared/` 檔案系統已裝載在所有具有 NFS 通訊協定版本 **NFSV4** 的 HANA DB vm 上。  
 
     ```
     sudo nfsstat -m
@@ -368,7 +369,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 ### <a name="prepare-the-data-and-log-local-file-systems"></a>準備資料並記錄本機檔案系統
 在呈現的設定中，檔 `/hana/data` 系統 `/hana/log` 會部署在受控磁片上，並在本機連接到每個 HANA DB VM。 您將需要執行這些步驟，以在每個 HANA DB 虛擬機器上建立本機資料和記錄磁片區。 
 
-使用邏輯磁片區管理員設定磁片配置  ** (LVM) **。 下列範例假設每個 HANA 虛擬機器都有三個連接的資料磁片，可用來建立兩個磁片區。
+使用邏輯磁片區管理員設定磁片配置  **(LVM)**。 下列範例假設每個 HANA 虛擬機器都有三個連接的資料磁片，可用來建立兩個磁片區。
 
 1. **[AH]** 列出所有可用的磁片：
     ```
@@ -447,14 +448,14 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     chmod 775 /hana/shared
     ```
 
-3. **[1]** 確認您可以透過 SSH 登入此網站 **hana-s1-db2** 和 **hana-S1-Db3**中的 HANA DB vm，而不會提示您輸入密碼。  
+3. **[1]** 確認您可以透過 SSH 登入此網站 **hana-s1-db2** 和 **hana-S1-Db3** 中的 HANA DB vm，而不會提示您輸入密碼。  
    如果不是這種情況，請 [使用以金鑰為基礎的驗證](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)所述的方式來交換 ssh 金鑰。  
     ```
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
-4. **[2]** 確認您可以透過 SSH 登入此網站 **hana-s2-db2** 和 **hana-S2-Db3**中的 HANA DB vm，而不會提示您輸入密碼。  
+4. **[2]** 確認您可以透過 SSH 登入此網站 **hana-s2-db2** 和 **hana-S2-Db3** 中的 HANA DB vm，而不會提示您輸入密碼。  
    如果不是這種情況，請 [使用以金鑰為基礎的驗證](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)所述的方式來交換 ssh 金鑰。  
     ```
     ssh root@hana-s2-db2
@@ -494,9 +495,9 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
      * 如需 **安裝的其他元件**：輸入 **2、3**
      * 針對安裝路徑：按下 Enter (預設為/hana/shared) 
      * 針對 **本機主機名稱**：按 enter 接受預設值
-     * **您是否要將主機新增至系統？**：輸入**n**
+     * **您是否要將主機新增至系統？**：輸入 **n**
      * 針對 **SAP Hana 系統識別碼**：輸入 **HN1**
-     * **實例號碼**[00]：輸入**03**
+     * **實例號碼**[00]：輸入 **03**
      * 針對 **本機主機背景工作角色群組** [default]：按下 enter 以接受預設值
      * 針對 **[選取系統使用量/輸入索引 [4]**：輸入 **4** (自訂) 
      * 針對 **資料磁片區的位置** [/hana/data/HN1]：按下 enter 以接受預設值
@@ -509,11 +510,11 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
      * 針對 **系統管理員主目錄** [/usr/sap/HN1/home]：按下 enter 以接受預設值
      * **系統管理員登入 Shell** [/bin/sh]：按下 enter 以接受預設值
      * **系統管理員使用者識別碼**[1001]：按下 enter 以接受預設值
-     * 針對 [ **使用者群組的輸入識別碼] (sapsys) ** [79]：按下 enter 以接受預設值
+     * 針對 [ **使用者群組的輸入識別碼] (sapsys)** [79]：按下 enter 以接受預設值
      * **系統資料庫使用者 (系統) 密碼**：輸入系統的密碼
      * 若要 **確認系統資料庫使用者 (系統) 密碼**：輸入系統的密碼
      * **電腦重新開機後重新開機系統？** [n]：輸入 **n** 
-     * 如果 **您想要繼續 (y/n) **：驗證摘要，如果一切看起來正確，請輸入 **y**
+     * 如果 **您想要繼續 (y/n)**：驗證摘要，如果一切看起來正確，請輸入 **y**
 
 2. **[2]** 重複上述步驟，在網站2上的第一個節點上安裝 SAP Hana。   
 
@@ -591,7 +592,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
      * 若要 **確認 SAP 主機代理程式使用者 (sapadm) 密碼**：輸入密碼
      * 針對 **主機 hana-s1-db2 的憑證主機名稱** [hana-s1-db2]：按 enter 接受預設值
      * 針對 **主機 hana-s1-db3** [hana-s1-db3] 的憑證主機名稱：按 enter 接受預設值
-     * 如果 **您想要繼續 (y/n) **：驗證摘要，如果一切看起來正確，請輸入 **y**
+     * 如果 **您想要繼續 (y/n)**：驗證摘要，如果一切看起來正確，請輸入 **y**
 
 9. **[2]** 重複上述步驟，在網站2上安裝次要 SAP Hana 節點。   
 
@@ -599,7 +600,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 1. **[1]** 在網站1上設定系統複寫：
 
-   將資料庫備份為 **hn1**adm：
+   將資料庫備份為 **hn1** adm：
 
     ```
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
@@ -936,7 +937,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    3. 接下來，建立 HANA 實例資源。  
       > [!NOTE]
-      > 本文包含詞彙 *從屬*的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。  
+      > 本文包含詞彙 *從屬* 的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。  
  
       如果 **建立 RHEL 7.x** 叢集，請使用下列命令：    
       ```
@@ -1068,9 +1069,9 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 2. 當節點無法存取 NFS 共用 () 時，請確認叢集設定是否發生失敗案例 `/hana/shared` 。  
 
-   SAP Hana 資源代理程式相依于二進位檔，並儲存在上， `/hana/shared` 以在容錯移轉期間執行作業。 檔案系統 `/hana/shared` 會透過 NFS 裝載在呈現的設定中。 可以執行的測試是以 `/hana/shared` *唯讀*方式重新掛接檔案系統。 這種方法會驗證叢集將會容錯移轉，如果在使用中 `/hana/shared` 的系統複寫網站上遺失對的存取。  
+   SAP Hana 資源代理程式相依于二進位檔，並儲存在上， `/hana/shared` 以在容錯移轉期間執行作業。 檔案系統 `/hana/shared` 會透過 NFS 裝載在呈現的設定中。 可以執行的測試是以 `/hana/shared` *唯讀* 方式重新掛接檔案系統。 這種方法會驗證叢集將會容錯移轉，如果在使用中 `/hana/shared` 的系統複寫網站上遺失對的存取。  
 
-   **預期的結果**：當您重新掛接 `/hana/shared` 為 *唯讀*時，在檔案系統上執行讀取/寫入作業的監視作業將會失敗，因為它無法寫入檔案系統，而且將會觸發 HANA 資源容錯移轉。 當您的 HANA 節點失去 NFS 共用的存取權時，預期會有相同的結果。  
+   **預期的結果**：當您重新掛接 `/hana/shared` 為 *唯讀* 時，在檔案系統上執行讀取/寫入作業的監視作業將會失敗，因為它無法寫入檔案系統，而且將會觸發 HANA 資源容錯移轉。 當您的 HANA 節點失去 NFS 共用的存取權時，預期會有相同的結果。  
      
    您可以藉由執行或來檢查叢集資源的 `crm_mon` 狀態 `pcs status` 。 開始測試之前的資源狀態：
       ```

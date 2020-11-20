@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986230"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960320"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure 網路監看員中的資源疑難排解簡介
 
@@ -105,7 +105,7 @@ ms.locfileid: "90986230"
 > [!NOTE]
 > 在某些情況下，只有部分的記錄會寫入至儲存體。
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱 [使用 .net 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 您可以在下列連結找到儲存體總管的詳細資訊： [儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱 [使用 .net 開始使用 Azure Blob 儲存體](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 另一項可用工具為儲存體總管。 您可以在下列連結找到儲存體總管的詳細資訊： [儲存體總管](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

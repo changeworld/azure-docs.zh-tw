@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: Azure、SQL Server、SAP、AlwaysOn
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef00f33040d30795ae5374b74d0d7a6e9b6e2156
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977301"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957668"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署
 
@@ -360,7 +361,7 @@ ms.locfileid: "91977301"
 ### <a name="formatting-the-disks"></a>將磁碟格式化
 針對 SQL Server，包含 SQL Server 資料和記錄檔之磁片的 NTFS 區塊大小應該是 64 KB。 不需要將 D:\ 磁碟機格式化。 此磁碟機已預先格式化。
 
-若要確定還原或建立資料庫不會藉由清空檔案的內容來初始化資料檔，您應該確定 SQL Server 服務執行所在的使用者內容具有特定的權限。 通常，Windows 系統管理員群組中的使用者會擁有這些權限。 在非 Windows 系統管理員使用者的使用者內容中執行 SQL Server 服務時，您需要為該使用者指派**執行磁碟區維護工作**的使用者權限。  詳細資料請參閱這篇 Microsoft 知識庫文章︰<https://support.microsoft.com/kb/2574695>
+若要確定還原或建立資料庫不會藉由清空檔案的內容來初始化資料檔，您應該確定 SQL Server 服務執行所在的使用者內容具有特定的權限。 通常，Windows 系統管理員群組中的使用者會擁有這些權限。 在非 Windows 系統管理員使用者的使用者內容中執行 SQL Server 服務時，您需要為該使用者指派 **執行磁碟區維護工作** 的使用者權限。  詳細資料請參閱這篇 Microsoft 知識庫文章︰<https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>資料庫壓縮的影響
 在 I/O 頻寬可能變成限制因素的組態中，減少 IOPS 的每個量值可能都有助於延展您可以在類似 Azure 的 IaaS 案例中執行的工作負載。 因此，如果尚未這麼做，SAP 和 Microsoft 建議您套用 SQL Server 頁面壓縮，然後再將現有的 SAP 資料庫上傳至 Azure。

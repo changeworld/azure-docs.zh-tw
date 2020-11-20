@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88853118"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958943"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Sap NetWeaver 在 Windows 上的 Azure Vm 上的高可用性，適用于 SAP 應用程式的 Azure NetApp Files (SMB) 
 
@@ -146,7 +147,7 @@ Azure NetApp Files 提供此參考架構中 SAP Central services 的共用：
 1. 在第一個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至：「**產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > High-Availability System > ASCS/SCS 實例 > 第一個叢集節點。  
 
 2. 選取 [檔案 **共用** 叢集] 作為 SWPM 中的叢集共用設定。  
-3. 當系統提示您輸入 **SAP 系統叢集參數**時，請輸入您已建立為檔案 **共用主機名稱**之 Azure NetApp Files SMB 共用的主機名稱。  在此範例中，SMB 共用主機名稱為 **anfsmb-9562**。 
+3. 當系統提示您輸入 **SAP 系統叢集參數** 時，請輸入您已建立為檔案 **共用主機名稱** 之 Azure NetApp Files SMB 共用的主機名稱。  在此範例中，SMB 共用主機名稱為 **anfsmb-9562**。 
 
    > [!IMPORTANT]
    > 如果必要條件檢查程式導致 SWPM 顯示不符合持續可用性功能條件，則可以依照 [當您嘗試存取 Windows 中不再存在的共用資料夾時，依照延遲錯誤訊息](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l)中的指示來解決此問題。  
@@ -158,7 +159,7 @@ Azure NetApp Files 提供此參考架構中 SAP Central services 的共用：
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>在第二個 ASCS/SCS 叢集節點上安裝 ASCS/SCS 實例
 
-1. 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至**產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > High-Availability System > ASCS/SCS 實例 > 其他叢集節點。  
+1. 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至 **產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > High-Availability System > ASCS/SCS 實例 > 其他叢集節點。  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>安裝 DBMS 執行個體和 SAP 應用程式伺服器
 

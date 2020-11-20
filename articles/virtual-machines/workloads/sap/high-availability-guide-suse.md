@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 63adf2b1ca7ae795e35e8245440093fe0f6e6c49
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 508fff16f96d0dfddb77b219bb545fb8580b4048
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486169"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958892"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性
 
@@ -156,7 +157,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    9. 管理員使用者名稱和管理員密碼  
       建立可用來登入電腦的新使用者。
    10. 子網路識別碼  
-   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是/subscriptions/** &lt; 訂 &gt; **用帳戶識別碼/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
+   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是/subscriptions/**&lt; 訂 &gt;** 用帳戶識別碼/ResourceGroups/**&lt; 資源組名 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虛擬網路名稱 &gt;**/subnets/**&lt; 子網名稱 &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
@@ -193,13 +194,13 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
       1. 選取 (A)SCS 叢集的虛擬機器及其 IP 位址。
       1. 按一下 [新增]
    1. 建立健康狀態探查
-      1. 針對 ASCS 是連接埠 620**00**
+      1. 針對 ASCS 是連接埠 620 **00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康情況探查的名稱 (例如 **nw1-ascs-hp**)
-         1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
+         1. 選取 [TCP] 作為通訊協定、連接埠 620 **00**，保留 [間隔] 5 和 [狀況不良閾值] 2
          1. Click OK
-      1. 針對 ASCS ERS 是連接埠 621**02**
-         * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621**02** 和 **nw1-aers-hp**)
+      1. 針對 ASCS ERS 是連接埠 621 **02**
+         * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621 **02** 和 **nw1-aers-hp**)
    1. 負載平衡規則
       1. ASCS 的負載平衡規則
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
@@ -227,15 +228,15 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
       1. 選取 (A)SCS 叢集的虛擬機器
       1. Click OK
    1. 建立健康狀態探查
-      1. 針對 ASCS 是連接埠 620**00**
+      1. 針對 ASCS 是連接埠 620 **00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康情況探查的名稱 (例如 **nw1-ascs-hp**)
-         1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
+         1. 選取 [TCP] 作為通訊協定、連接埠 620 **00**，保留 [間隔] 5 和 [狀況不良閾值] 2
          1. Click OK
-      1. 針對 ASCS ERS 是連接埠 621**02**
-         * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621**02** 和 **nw1-aers-hp**)
+      1. 針對 ASCS ERS 是連接埠 621 **02**
+         * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621 **02** 和 **nw1-aers-hp**)
    1. 負載平衡規則
-      1. 針對 ASCS 是 32**00** TCP
+      1. 針對 ASCS 是 32 **00** TCP
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
          1. 輸入新負載平衡器規則的名稱 (例如 **nw1-lb-3200**)
          1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **nw1-ascs-frontend**)
@@ -244,9 +245,9 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. **務必啟用浮動 IP**
          1. Click OK
       1. ASCS 的其他連接埠
-         * 重複上述步驟來為 ASCS 設定連接埠 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP
+         * 重複上述步驟來為 ASCS 設定連接埠 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 和 TCP
       1. ASCS ERS 的其他連接埠
-         * 重複上述步驟來為 ASCS ERS 設定連接埠 33**02**、5**02**13、5**02**14、5**02**16 和 TCP
+         * 重複上述步驟來為 ASCS ERS 設定連接埠 33 **02**、5 **02** 13、5 **02** 14、5 **02** 16 和 TCP
 
 > [!IMPORTANT]
 > 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。  
@@ -450,7 +451,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   如果安裝作業無法在 /usr/sap/**NW1**/ASCS**00** 中建立子資料夾，請嘗試設定 ASCS**00** 資料夾的擁有者和群組，然後重試。
+   如果安裝作業無法在 /usr/sap/**NW1**/ASCS **00** 中建立子資料夾，請嘗試設定 ASCS **00** 資料夾的擁有者和群組，然後重試。
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -507,7 +508,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    > [!NOTE]
    > 請使用 SWPM SP 20 PL 05 或更高版本。 較低版本無法正確設定權限，因而會讓安裝失敗。
 
-   如果安裝作業無法在 /usr/sap/**NW1**/ERS**02** 中建立子資料夾，請嘗試設定 ERS**02** 資料夾的擁有者和群組，然後重試。
+   如果安裝作業無法在 /usr/sap/**NW1**/ERS **02** 中建立子資料夾，請嘗試設定 ERS **02** 資料夾的擁有者和群組，然後重試。
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>

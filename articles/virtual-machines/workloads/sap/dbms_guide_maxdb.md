@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7195e3c9f2d38c16bd9cad59a2489157c7c1340f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654628"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958960"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 與內容伺服器部署
 
@@ -421,7 +422,7 @@ SAP 內容伺服器是個別的伺服器架構元件，可以不同格式儲存�
 ### <a name="sap-content-server-version-support-for-azure-vms"></a>適用於 Azure VM 的 SAP 內容伺服器版本支援
 SAP 目前支援：
 
-* **SAP 內容伺服器**版本 **6.50 (和更新版本)**
+* **SAP 內容伺服器** 版本 **6.50 (和更新版本)**
 * **SAP MaxDB 版本 7.9**
 * **Microsoft IIS (網際網路資訊伺服器) 版本 8.0 (和更新版本)**
 

@@ -8,12 +8,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 9189be5f2f513cd27fe8783d6a1825aac016522c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.subservice: workloads
+ms.openlocfilehash: ad3dbd8cdc6fff7eca8c24bb6e5258022d52cb9b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677741"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959453"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安裝 TmaxSoft OpenFrame
 
@@ -96,7 +97,7 @@ WinSCP：您可以使用的熱門 SFTP 用戶端和 FTP 用戶端<br/>
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 規劃花幾天的時間來組合所有必要的軟體，並完成所有的手動流程。
 
@@ -118,15 +119,15 @@ WinSCP：您可以使用的熱門 SFTP 用戶端和 FTP 用戶端<br/>
 
 1. 移至 Azure 入口網站 <https://portal.azure.com> ，並登入您的帳戶。
 
-2. 按一下 [虛擬機器]  。
+2. 按一下 [虛擬機器] 。
 
     ![Azure 入口網站中的資源清單](media/vm-01.png)
 
-3. 按一下 [新增]  。
+3. 按一下 [新增] 。
 
     ![Azure 入口網站中的 [新增] 選項](media/vm-02.png)
 
-4. 按一下 [ **作業系統** ] 右邊的 [ **更多** ]。
+4. 按一下 [ **作業系統**] 右邊的 [ **更多**]。
 
      ![Azure 入口網站中的更多選項](media/vm-03.png)
 
@@ -134,12 +135,12 @@ WinSCP：您可以使用的熱門 SFTP 用戶端和 FTP 用戶端<br/>
 
      ![Azure 入口網站中的作業系統選項](media/vm-04.png)
 
-6. 在 [ **基本** 設定] 中，輸入 [ **名稱** ]、[ **使用者名稱** ]、[ **驗證類型** ]、[ **訂** 用帳戶 (隨用隨付] 是 [付款) 的 AWS 樣式，以及 **資源群組** (使用現有的，或建立 TmaxSoft 群組) 。
+6. 在 [ **基本** 設定] 中，輸入 [ **名稱**]、[ **使用者名稱**]、[ **驗證類型**]、[ **訂** 用帳戶 (隨用隨付] 是 [付款) 的 AWS 樣式，以及 **資源群組** (使用現有的，或建立 TmaxSoft 群組) 。
 
-7. 完成 (包括 **驗證類型** 的公開/私密金鑰組) 時，請按一下 [ **提交** ]。
+7. 完成 (包括 **驗證類型** 的公開/私密金鑰組) 時，請按一下 [ **提交**]。
 
 > [!NOTE]
-> 如果使用 SSH 公開金鑰做為 **驗證類型** ，請參閱下一節中的步驟來產生公開/私密金鑰組，然後繼續執行此處的步驟。
+> 如果使用 SSH 公開金鑰做為 **驗證類型**，請參閱下一節中的步驟來產生公開/私密金鑰組，然後繼續執行此處的步驟。
 
 ### <a name="generate-a-publicprivate-key-pair"></a>產生公開/私密金鑰組
 
@@ -166,7 +167,7 @@ WinSCP：您可以使用的熱門 SFTP 用戶端和 FTP 用戶端<br/>
 
     ![顯示 [PuTTY 金鑰產生器] 對話方塊的螢幕擷取畫面，並反白顯示 [產生] 按鈕。](media/puttygen-02.png)
 
-4.  產生之後，請儲存公開金鑰和私密金鑰。 在 [ **建立虛擬機器 \> 基本概念** ] 窗格的 [ **SSH 公開金鑰** ] 區段中，貼上公開金鑰的內容 (上一節) 的步驟6和步驟7所示。
+4.  產生之後，請儲存公開金鑰和私密金鑰。 在 [**建立虛擬機器 \> 基本概念**] 窗格的 [ **SSH 公開金鑰**] 區段中，貼上公開金鑰的內容 (上一節) 的步驟6和步驟7所示。
 
     ![PuTTY 金鑰產生器對話方塊](media/puttygen-03.png)
 
@@ -183,23 +184,23 @@ WinSCP：您可以使用的熱門 SFTP 用戶端和 FTP 用戶端<br/>
 
 4. 提交您的選取專案。 Azure 會開始部署 VM。 此程序通常需要幾分鐘的時間。
 
-5. 部署 VM 時，會顯示其儀表板，並顯示在設定期間選取的所有設定。 記下 **公用 IP 位址** 。
+5. 部署 VM 時，會顯示其儀表板，並顯示在設定期間選取的所有設定。 記下 **公用 IP 位址**。
 
     ![Azure 儀表板上的 tmax](media/create-vm-03.png)
 
 6. 開啟 PuTTY。
 
-7. 在 [ **主機名稱** ] 中，輸入您的使用者名稱和您複製的公用 IP 位址。 例如，使用者 **名稱 \@ publicip** 。
+7. 在 [ **主機名稱**] 中，輸入您的使用者名稱和您複製的公用 IP 位址。 例如，使用者 **名稱 \@ publicip**。
 
     ![顯示 [PuTTY 設定] 對話方塊的螢幕擷取畫面，並反白顯示 [主機名稱] (或 [IP 位址) ] 欄位。](media/putty-01.png)
 
-8. 在 [ **類別** ] 方塊中，按一下 [ **連接 \> SSH \> 驗證** ]。提供 **私密金鑰** 檔案的路徑。
+8. 在 [ **類別** ] 方塊中，按一下 [ **連接 \> SSH \> 驗證**]。提供 **私密金鑰** 檔案的路徑。
 
     ![PuTTY 設定對話方塊](media/putty-02.png)
 
 9. 按一下 [ **開啟** ] 以啟動 [PuTTY] 視窗。 如果成功，您會連線到在 Azure 上執行的新 CentOS VM。
 
-10. 若要以根使用者的身份登入，請輸入 **sudo bash** 。
+10. 若要以根使用者的身份登入，請輸入 **sudo bash**。
 
     ![命令視窗中的根使用者登入](media/putty-03.png)
 
@@ -1359,7 +1360,7 @@ JEUS (JAVA Enterprise 使用者解決方案) 提供 OpenFrame web 應用程式�
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *選擇項* 。 建立可輕鬆關閉和開機 JEUS 元件的別名：
+11. *選擇項*。 建立可輕鬆關閉和開機 JEUS 元件的別名：
 
      ```     
      # JEUS alias
@@ -1389,11 +1390,11 @@ JEUS (JAVA Enterprise 使用者解決方案) 提供 OpenFrame web 應用程式�
      > [!NOTE]
      > 如果您遇到任何埠安全性問題，請開啟埠9736或停用防火牆 (`systemctl stop firewall`) 。
 
-14. 若要變更 server1 的主機名稱，請按一下 [ **鎖定] & [編輯** ]，然後按一下 [ **server1** ]。 在 [伺服器] 視窗中，變更主機名稱，如下所示：
+14. 若要變更 server1 的主機名稱，請按一下 [ **鎖定] & [編輯**]，然後按一下 [ **server1**]。 在 [伺服器] 視窗中，變更主機名稱，如下所示：
 
-    1.  將 **Nodename** 變更為 **ofdemo** 。
+    1.  將 **Nodename** 變更為 **ofdemo**。
     2.  按一下視窗右邊的 **[確定** ]。
-    3.  按一下視窗左下角的 [套用 **變更** ]，並在 [描述] 中輸入 *主機名稱變更* 。
+    3.  按一下視窗左下角的 [套用 **變更** ]，並在 [描述] 中輸入 *主機名稱變更*。
 
     ![JEUS WebAdmin 畫面](media/jeus-02.png)
 

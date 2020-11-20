@@ -3,16 +3,17 @@ title: 適用于 SAP 解決方案的 Azure 監視器總覽和架構 |Microsoft D
 description: 本文提供適用于 SAP 解決方案的 Azure 監視器常見問題的解答
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: d9730324b2557c8f0bb203f7badbd00e0e7e704e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994258"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957430"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>適用于 SAP 解決方案的 Azure 監視器 (預覽) 
 
@@ -78,7 +79,7 @@ Azure 監視器 SAP 解決方案會收集系統中繼資料，為我們的 Azure
 - Azure 入口網站–客戶的起點。 客戶可以在 Azure 入口網站中流覽至 marketplace，並探索 SAP 解決方案的 Azure 監視器
 - 適用于 SAP 解決方案資源的 Azure 監視器-供客戶查看監視遙測的登陸位置
 - 受控資源群組–會自動部署為 SAP 解決方案資源部署的 Azure 監視器一部分。 在受控資源群組內部署的資源有助於收集遙測。 部署的重要資源和其用途如下：
-   - Azure 虛擬機器：也稱為 *收集器 VM*。 這是 Standard_B2ms VM。 此 VM 的主要用途是裝載 *監視*承載。 監視承載指的是從來源系統收集遙測資料，並將收集到的資料傳輸至監視架構的邏輯。 在上圖中，監視承載包含透過 SQL 埠連接到 SAP Hana 資料庫的邏輯。
+   - Azure 虛擬機器：也稱為 *收集器 VM*。 這是 Standard_B2ms VM。 此 VM 的主要用途是裝載 *監視* 承載。 監視承載指的是從來源系統收集遙測資料，並將收集到的資料傳輸至監視架構的邏輯。 在上圖中，監視承載包含透過 SQL 埠連接到 SAP Hana 資料庫的邏輯。
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md)：已部署此資源以安全地保存 SAP Hana 資料庫認證，以及儲存 [提供者](./azure-monitor-providers.md)的相關資訊。
    - Log Analytics 工作區：遙測資料所在的目的地。
       - 視覺效果是以使用 [Azure 活頁簿](../../../azure-monitor/platform/workbooks-overview.md)的 Log Analytics 中的遙測為基礎。 客戶可以自訂視覺效果。 客戶也可以將活頁簿中的活頁簿或特定視覺效果釘選到 Azure 儀表板，以取得自動重新整理功能，其資料細微性最短為30分鐘。
@@ -97,12 +98,12 @@ Azure 監視器 SAP 解決方案會收集系統中繼資料，為我們的 Azure
  - **多重實例** -客戶可以針對特定元件類型的多個實例建立監視器 (例如，HANA DB、HA 叢集、Microsoft SQL server) 在 VNET 內的多個 sap sid 中，並具有適用于 SAP 解決方案 Azure 監視器的單一資源。
  - **多個提供者** -上述架構圖顯示 SAP Hana 提供者作為範例。 同樣地，客戶可以為對應的元件設定其他提供者 (例如 HANA DB、HA 叢集、Microsoft SQL server) ，以從這些元件收集資料。
  - **開放原始** 碼-適用于 SAP 解決方案的 Azure 監視器原始程式碼可在 [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions)中取得。 客戶可以參考提供者程式碼，並深入瞭解產品、投稿或分享意見反應。
- - 可延伸的**查詢架構**-收集遙測資料的 SQL 查詢是以[JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)撰寫的。 您可以輕鬆地新增其他 SQL 查詢來收集更多遙測資料。 客戶可以透過本檔結尾的連結，或聯繫其帳戶小組，要求將特定遙測資料新增至 Azure 監視器的 SAP 解決方案。
+ - 可延伸的 **查詢架構**-收集遙測資料的 SQL 查詢是以 [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)撰寫的。 您可以輕鬆地新增其他 SQL 查詢來收集更多遙測資料。 客戶可以透過本檔結尾的連結，或聯繫其帳戶小組，要求將特定遙測資料新增至 Azure 監視器的 SAP 解決方案。
 
 ## <a name="pricing"></a>定價
 適用于 SAP 解決方案的 Azure 監視器是免費的產品 (不提供授權費用) 。 客戶須負責支付受控資源群組中基礎元件的成本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解提供者，並建立您的第一個 SAP 解決方案資源 Azure 監視器。
  - 深入瞭解 [提供者](./azure-monitor-providers.md)

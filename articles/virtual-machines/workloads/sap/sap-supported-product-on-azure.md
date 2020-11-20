@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065081"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957804"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支援哪些 SAP 軟體
 本文說明如何找出 Azure 部署支援的 SAP 軟體，以及所需的作業系統版本或 DBMS 版本。
@@ -95,7 +96,7 @@ Azure 上支援的作業系統、Oracle DBMS 版本和 Oracle 功能，會特別
 > 以字母 ' ' 開頭的單位是 [HANA 大型實例](./hana-overview-architecture.md) 單位。 
 
 > [!NOTE]
-> SAP 沒有特定的認證相依于 SAP Hana 的主要版本。 相反地，在[hana 認證 IaaS 平臺](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中的資料行憑證**案例**中，資料行對**hana 主要或次要版本的認證沒有任何陳述**。 您必須假設所有列出的單位都可用於 HANA 1.0 和 HANA 2.0，只要 HANA 1.0 版本支援特定單位的認證作業系統版本即可。 
+> SAP 沒有特定的認證相依于 SAP Hana 的主要版本。 相反地，在 [hana 認證 IaaS 平臺](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中的資料行憑證 **案例** 中，資料行對 **hana 主要或次要版本的認證沒有任何陳述**。 您必須假設所有列出的單位都可用於 HANA 1.0 和 HANA 2.0，只要 HANA 1.0 版本支援特定單位的認證作業系統版本即可。 
 
 針對 SAP Hana 的使用方式，可能會有不同的最低 OS 版本適用于一般 NetWeaver 案例。 您必須針對每個單位個別檢查支援的作業系統，因為這些系統可能會有所不同。 若要這樣做，請按一下每個單位。 將會顯示更多詳細資料。 列出的其中一個詳細資料，是此特定單位支援的不同作業系統。
 
