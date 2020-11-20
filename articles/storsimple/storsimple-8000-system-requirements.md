@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80297715"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966185"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列軟體、高可用性和網路需求
 
@@ -122,7 +122,7 @@ ms.locfileid: "80297715"
 
 路由度量與介面和閘道器 (將資料路由到指定的網路) 相關聯。 路由度量用於路由通訊協定，如果它知道到相同目的地有多個路徑存在，則會計算到指定目的地的最佳路徑。 路由計量的值越低，建議採用的指數越高。
 
-在 StorSimple 內容中，如果多個網路介面和閘道器設定為通道流量，路由度量會派上用場，判斷使用介面的相對順序。 使用者無法變更路由度量。 不過您可以使用 `Get-HcsRoutingTable` Cmdlet 列印您的 StorSimple 裝置上的路由資料表 (和度量)。 如需 Get-HcsRoutingTable Cmdlet 的詳細資訊，請參閱 [針對 StorSimple 部署進行疑難排解](storsimple-troubleshoot-deployment.md)。
+在 StorSimple 內容中，如果多個網路介面和閘道器設定為通道流量，路由度量會派上用場，判斷使用介面的相對順序。 使用者無法變更路由度量。 不過您可以使用 `Get-HcsRoutingTable` Cmdlet 列印您的 StorSimple 裝置上的路由資料表 (和度量)。 如需 Get-HcsRoutingTable Cmdlet 的詳細資訊，請參閱 [針對 StorSimple 部署進行疑難排解](./storsimple-8000-troubleshoot-deployment.md)。
 
 以下說明 Update 2 和更新版本中所使用的路由度量演算法。
 
@@ -141,15 +141,15 @@ ms.locfileid: "80297715"
 
 * 雲端流量透過網路介面路由的順序為：
   
-    Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5**
+    Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5
   
     這也可以由下列範例來說明。
   
     請考慮具有兩個已啟用雲端網路介面 (Data 0 和 Data 5) 的 StorSimple 裝置。 Data 1 到 Data 4 已停用雲端，但是具有已設定的閘道器。 針對此裝置路由流量的順序為：
   
-    Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)**
+    Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)
   
-    以括號括住的數字表示個別的路由度量。**
+    以括號括住的數字表示個別的路由度量。
   
     如果 Data 0 失敗，雲端流量將會透過 Data 5 路由。 假設已在其他所有網路上設定閘道器，如果 Data 0 和 Data 5 失敗，則雲端流量會通過 Data 1。
 * 如果已啟用雲端網路介面失敗，則會重試 3 次 (有 30 秒的延遲) 以連線到介面。 如果所有重試失敗，會將流量路由至路由資料表決定的下一個可用已啟用雲端介面。 如果所有已啟用雲端網路介面失敗，則裝置將容錯移轉至另一個控制器 (在此案例中無需重新開機)。
@@ -223,7 +223,7 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 * 如果 SSD 或 HDD 失敗或需要替代品，請確定您只移除了需要替代品的 SSD 或 HDD。
 * 請勿於任何時間從系統移除一個以上的 SSD 或 HDD。
   特定類型 (HDD、SSD) 的 2 個以上的磁碟失敗或在短時間範圍內的連續失敗可能會導致系統故障和潛在資料遺失。 如果發生這種情況，請 [連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md) 尋求協助。
-* 在更換期間，請在 [硬體健康狀態]**** 刀鋒視窗中的 [共用元件]**** 監視 SSD 和 HDD 中的磁碟機。 綠色核取狀態表示磁碟狀況良好或確定，而紅色驚嘆號點則表示失敗的 SSD 或 HDD。
+* 在更換期間，請在 [硬體健康狀態] 刀鋒視窗中的 [共用元件] 監視 SSD 和 HDD 中的磁碟機。 綠色核取狀態表示磁碟狀況良好或確定，而紅色驚嘆號點則表示失敗的 SSD 或 HDD。
 * 建議您設定所有需要保護之磁碟區的雲端快照集，以防系統失敗。
 
 #### <a name="ebod-enclosure"></a>EBOD 機箱
@@ -233,7 +233,7 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 * 請隨時確定這兩個 EBOD 機箱控制器模組，兩條 SAS 纜線，以及所有硬碟都已安裝。
 * 如果 EBOD 機箱控制器模組故障，請立即要求替代品。
 * 如果一個 EBOD 機箱控制器模組失敗，請先確定另一個控制器模組處於主動狀態，才取代失敗的模組。 若要確認控制器為作用中，請移至 [識別您裝置上的作用中控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。
-* 在更換 EBOD 控制器模組期間，藉由存取**監視**  >  **硬體健全狀況**，持續監視 StorSimple 裝置管理員服務中元件的狀態。
+* 在更換 EBOD 控制器模組期間，藉由存取 **監視**  >  **硬體健全狀況**，持續監視 StorSimple 裝置管理員服務中元件的狀態。
 * 如果 SAS 纜線失敗或需要替代品 (Microsoft 支援應涉入這類決定)，請確定您只移除了需要替代品的 SAS 纜線。
 * 請勿於任何時間同時從系統移除兩條 SAS 纜線。
 
@@ -250,4 +250,4 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 * [了解如何部署 StorSimple 解決方案](storsimple-8000-deployment-walkthrough-u2.md)。
 
 <!--Reference links-->
-[1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731844(v=ws.10)

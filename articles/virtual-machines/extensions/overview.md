@@ -4,16 +4,17 @@ description: 深入瞭解 Azure VM 擴充功能
 services: virtual-machines
 author: amjads1
 ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: 73738f339bea3e8e075530e5de564c1c0854d283
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552045"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965879"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虛擬機器擴充功能和功能
 擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化。 Azure 平臺裝載了許多延伸模組，涵蓋了 VM 設定、監視、安全性和公用程式應用程式。 發行者會採用應用程式、將它包裝成擴充功能，並簡化安裝。 您只需要提供必要的參數。 

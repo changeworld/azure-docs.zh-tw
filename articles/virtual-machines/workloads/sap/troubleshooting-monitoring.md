@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d168ff36e63cc07dc1b334ae7817bfed45b4fcd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8d6fc6acb33af0c36978aa79dc90aeac3cf596
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042275"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966746"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>如何監視 Azure 上的 SAP HANA (大型執行個體)
 
@@ -39,7 +40,7 @@ Azure 上的 SAP HANA (大型執行個體) 與任何其他 IaaS 部署並無不�
 
 **磁碟空間：** 磁碟空間耗用量通常會隨著時間增加。 最常見的原因包括：資料量增加、執行交易記錄備份、儲存追蹤檔案，以及執行儲存體快照集。 因此，監視磁碟空間使用量並管理與「HANA 大型執行個體」單位關聯的磁碟空間相當重要。
 
-如果是**類型 II SKU** 的 HANA 大型執行個體，伺服器會隨附預先載入的系統診斷工具。 您可以利用這些診斷工具執行系統健康情況檢查。 執行下列命令可在 /var/log/health_check 產生健康情況檢查記錄檔。
+如果是 **類型 II SKU** 的 HANA 大型執行個體，伺服器會隨附預先載入的系統診斷工具。 您可以利用這些診斷工具執行系統健康情況檢查。 執行下列命令可在 /var/log/health_check 產生健康情況檢查記錄檔。
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```

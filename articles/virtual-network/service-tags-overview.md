@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 60d3607a543cac5b8ce71819eb60394d8b8827bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d99ed9304612d5c1d3cbdc56a76cee751f2a4d3f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331106"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966729"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
 
 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。
 
-您可以使用服務標記來定義 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由在規則的適當 *來源* 或 *目的地* 欄位中指定服務標籤名稱（例如 **ApiManagement** ），您可以允許或拒絕對應服務的流量。
+您可以使用服務標記來定義 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由在規則的適當 *來源* 或 *目的地* 欄位中指定服務標籤名稱（例如 **ApiManagement**），您可以允許或拒絕對應服務的流量。
 
 您可以使用服務標籤進行網路隔離，以及在存取具有公用端點的 Azure 服務時，防止一般網際網路存取您的 Azure 資源。 建立輸入/輸出網路安全性群組規則，可拒絕進出於 **網際網路** 的流量，並允許 **AzureCloud** 或特定 Azure 服務的其他 [可用服務標籤](#available-service-tags)的輸入/輸出流量。
 
@@ -56,7 +56,7 @@ ms.locfileid: "94331106"
 | **AzureBackup** |Azure 備份。<br/><br/>*注意：* 此標籤相依於 **Storage** 和 **AzureActiveDirectory** 標籤。 | 輸出 | 否 | 是 |
 | **AzureBotService** | Azure Bot Service。 | 輸出 | 否 | 否 |
 | **AzureCloud** | 所有的[資料中心公用 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |
-| **AzureCognitiveSearch** | Azue 認知搜尋。 <br/><br/>此標籤或其涵蓋的 IP 位址可用來授與索引子對資料來源的安全存取。 如需詳細資訊，請參閱 [索引子連接檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) 。 <br/><br/> *注意* ：搜尋服務的 IP 未包含在此服務標籤的 IP 範圍清單中，且 **還必須新增至** 資料來源的 IP 防火牆。 | 輸入 | 否 | 否 |
+| **AzureCognitiveSearch** | Azue 認知搜尋。 <br/><br/>此標籤或其涵蓋的 IP 位址可用來授與索引子對資料來源的安全存取。 如需詳細資訊，請參閱 [索引子連接檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) 。 <br/><br/> *注意*：搜尋服務的 IP 未包含在此服務標籤的 IP 範圍清單中，且 **還必須新增至** 資料來源的 IP 防火牆。 | 輸入 | 否 | 否 |
 | **AzureConnectors** | 用於探查/後端連線的 Azure Logic Apps 連接器。 | 輸入 | 是 | 是 |
 | **AzureContainerRegistry** | Azure Container Registry。 | 輸出 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 輸出 | 是 | 是 |
@@ -64,10 +64,11 @@ ms.locfileid: "94331106"
 | **AzureDataExplorerManagement** | Azure 資料總管管理。 | 輸入 | 否 | 否 |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 輸出 | 否 | 是 |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 輸出 | 否 | 否 |
+| **AzureDevOps** | Azure Dev Ops。<br/><br/>*注意：此標記目前無法透過 Azure 入口網站設定*| 輸入 | 否 | 是 |
 | **AzureDigitalTwins** | Azure 數位 Twins。<br/><br/>*注意：* 此標籤或此標記所涵蓋的 IP 位址，可用來限制對為事件路由設定之端點的存取權。 *此標記目前無法透過 Azure 入口網站設定* | 輸入 | 否 | 是 |
 | **AzureEventGrid** | Azure 事件格線。 | 兩者 | 否 | 否 |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 兩者 | 否 | 否 |
-| **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory** 、 **AzureFrontDoor.Frontend** 和 **AzureFrontDoor.FirstParty** 標籤。 | 輸出 | 否 | 否 |
+| **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory**、**AzureFrontDoor.Frontend** 和 **AzureFrontDoor.FirstParty** 標籤。 | 輸出 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中樞。 | 輸出 | 否 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory** 標籤。 | 輸出 | 是 | 是 |
 | **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯成作為 Azure 健康情況探查來源的[主機虛擬 IP 位址](security-overview.md#azure-platform-considerations) (168.63.129.16)。 這只包括探查流量，而不是對您後端資源的實際流量。 如果您未使用 Azure Load Balancer，則可以覆寫此規則。 | 兩者 | 否 | 否 |
@@ -79,7 +80,7 @@ ms.locfileid: "94331106"
 | **AzurePlatformLKM** | Windows 授權或金鑰管理服務。<br/><br/>您可以使用此標籤來停用授權的預設值。 使用此標籤時請多加留意。 建議您閱讀 [Azure 平台的考量](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。  此外也建議您在使用此標籤前先執行測試。 | 輸出 | 否 | 否 |
 | **AzureResourceManager** | Azure Resource Manager。 | 輸出 | 否 | 否 |
 | **AzureSignalR** | Azure SignalR。 | 輸出 | 否 | 否 |
-| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory** 、 **AzureKeyVault** 、 **EventHub** 、 **GuestAndHybridManagement** 和 **Storage** 標籤。 | 輸出 | 否 | 否 |
+| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory**、**AzureKeyVault**、**EventHub**、**GuestAndHybridManagement** 和 **Storage** 標籤。 | 輸出 | 否 | 否 |
 | **AzureTrafficManager** | Azure 流量管理員探查 IP 位址。<br/><br/>如需流量管理員探查 IP 位址的詳細資訊，請參閱 [Azure 流量管理員常見問題集](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 輸入 | 否 | 是 |  
 | **BatchNodeManagement** | Azure Batch 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **CognitiveServicesManagement** | Azure 認知服務流量的位址範圍。 | 兩者 | 否 | 否 |
@@ -148,7 +149,7 @@ ms.locfileid: "94331106"
 >這項資訊的子集已發佈在 XML 檔案中，適用於 [Azure 公用](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure 中國](https://www.microsoft.com/download/details.aspx?id=42064)和 [Azure 德國](https://www.microsoft.com/download/details.aspx?id=54770)。 這些 XML 下載將於 2020 年 6 月 30 日淘汰，且在該日期後即無法使用。 您應依照先前幾節的說明進行遷移，以使用探索 API 或 JSON 檔案下載。
 
 ### <a name="tips"></a>提示 
-- 您可以記下 JSON 檔案中增長的 *changeNumber* 值，藉以偵測某個發行集的更新。 每個子區段 (例如 **Storage.WestUS** ) 都會其本身的 *changeNumber* ，會隨著變更而遞增。 當任何子區段變更時，檔案的 *changeNumber* 的最上層就會遞增。
+- 您可以記下 JSON 檔案中增長的 *changeNumber* 值，藉以偵測某個發行集的更新。 每個子區段 (例如 **Storage.WestUS**) 都會其本身的 *changeNumber*，會隨著變更而遞增。 當任何子區段變更時，檔案的 *changeNumber* 的最上層就會遞增。
 - 如需如何剖析服務標籤資訊的範例 (例如，取得美國西部的儲存體所有的位址範圍)，請參閱[服務標籤探索 API PowerShell](https://aka.ms/discoveryapi_powershell) 文件。
 
 ## <a name="next-steps"></a>後續步驟

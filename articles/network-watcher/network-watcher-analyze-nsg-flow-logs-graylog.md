@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984061"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965539"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>使用網路監看員和 Graylog 在 Azure 中管理和分析網路安全性群組流量記錄
 
@@ -40,7 +40,7 @@ ms.locfileid: "90984061"
 
 ### <a name="enable-network-security-group-flow-logging"></a>啟用網路安全性群組流量記錄
 
-在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性群組流量記錄的指示，請參閱下列文章︰ [網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
+在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性群組流量記錄的指示，請參閱下列文章︰[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="setting-up-graylog"></a>設定 Graylog
 
@@ -53,7 +53,7 @@ ms.locfileid: "90984061"
 
 根據平台和喜好設定，Graylog 可以進行多種方式的安裝。 如需完整的可行安裝方法清單，請參閱 Graylog 的官方[文件](https://docs.graylog.org/en/2.2/pages/installation.html)。 Graylog 伺服器應用程式會在 Linux 發行版本上執行，並具有下列必要條件：
 
--  Java SE 8 或更新版本 – [Azul Azure JDK 文件](https://aka.ms/azure-jdks)
+-  Java SE 8 或更新版本 – [Azul Azure JDK 文件](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  ElasticSearch 2.x (2.1.0 或更新版本) - [Elasticsearch 安裝文件](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 或更新版本 – [MongoDB 安裝文件](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -177,18 +177,18 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 1. 使用您為 Graylog 伺服器 Web 介面所設定的 URL 來瀏覽至該介面。 您可以將瀏覽器導向至 `http://<graylog-server-ip>:9000/` 來存取該介面
 
-2. 若要瀏覽至設定頁面，請選取頂端導覽列右邊的 [系統]**** 下拉式功能表，然後按一下 [輸入]****。
+2. 若要瀏覽至設定頁面，請選取頂端導覽列右邊的 [系統] 下拉式功能表，然後按一下 [輸入]。
    或者，您也可以瀏覽至 `http://<graylog-server-ip>:9000/system/inputs`
 
    ![開始使用](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 若要啟動新的輸入，請在 [選取輸入]**** 下拉式清單中選取 [GELF UDP]**，然後填寫表單。 GELF 代表 Graylog Extended Log Format。 GELF 格式是由 Graylog 所開發的。 若要深入了解其優點，請參閱 Graylog [文件](https://docs.graylog.org/en/2.2/pages/gelf.html)。
+3. 若要啟動新的輸入，請在 [選取輸入] 下拉式清單中選取 [GELF UDP]，然後填寫表單。 GELF 代表 Graylog Extended Log Format。 GELF 格式是由 Graylog 所開發的。 若要深入了解其優點，請參閱 Graylog [文件](https://docs.graylog.org/en/2.2/pages/gelf.html)。
 
-   請務必將輸入繫結至 Graylog 伺服器設定所在的 IP。 IP 位址應符合 Logstash 設定檔 UDP 輸出的 [主機]**** 欄位。 預設連接埠應為 12201**。 請確保連接埠符合 Logstash 設定檔所指定之 UDP 輸出中的 [連接埠]**** 欄位。
+   請務必將輸入繫結至 Graylog 伺服器設定所在的 IP。 IP 位址應符合 Logstash 設定檔 UDP 輸出的 [主機] 欄位。 預設連接埠應為 12201。 請確保連接埠符合 Logstash 設定檔所指定之 UDP 輸出中的 [連接埠] 欄位。
 
    ![螢幕擷取畫面顯示 Graylog 輸入，以及啟動和尋找輸入的選項。](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-   在啟動輸入後，您應該就會看到它出現在 [本機輸入]**** 區段底下，如下圖所示：
+   在啟動輸入後，您應該就會看到它出現在 [本機輸入] 區段底下，如下圖所示：
 
    ![顯示 [本機輸入] 區段的螢幕擷取畫面，其中包含您所啟動的輸入。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
@@ -198,7 +198,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="search-through-graylog-messages"></a>搜尋 Graylog 訊息
 
-在給予 Graylog 伺服器一些時間來收集訊息之後，您就可以搜尋所有訊息。 若要檢查傳送給 Graylog 伺服器的訊息，請從 [輸入]**** 設定頁面中按一下您所建立之 GELF UDP 輸入的 [顯示所收到的訊息]**** 按鈕。 系統會將您導向至類似下圖的畫面： 
+在給予 Graylog 伺服器一些時間來收集訊息之後，您就可以搜尋所有訊息。 若要檢查傳送給 Graylog 伺服器的訊息，請從 [輸入] 設定頁面中按一下您所建立之 GELF UDP 輸入的 [顯示所收到的訊息] 按鈕。 系統會將您導向至類似下圖的畫面： 
 
 ![螢幕擷取畫面顯示顯示搜尋結果、長條圖和訊息的 Graylog 伺服器。](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
@@ -214,25 +214,25 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="create-a-dashboard"></a>建立儀表板
 
-1. 在頂端導覽列中選取 [儀表板]**** 或瀏覽至 `http://<graylog-server-ip>:9000/dashboards/`
+1. 在頂端導覽列中選取 [儀表板] 或瀏覽至 `http://<graylog-server-ip>:9000/dashboards/`
 
-2. 從該處按一下綠色的 [建立儀表板]**** 按鈕，然後在簡短的表單中填寫儀表板的標題和說明。 按 [儲存]**** 按鈕以建立新的儀表板。 您會看到類似下圖的儀表板：
+2. 從該處按一下綠色的 [建立儀表板] 按鈕，然後在簡短的表單中填寫儀表板的標題和說明。 按 [儲存] 按鈕以建立新的儀表板。 您會看到類似下圖的儀表板：
 
     ![螢幕擷取畫面顯示 Graylog 伺服器儀表板，以及建立和編輯儀表板的選項。](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>新增小工具
 
-您可以按一下儀表板的標題來查看儀表板，由於我們還沒有新增任何小工具，所以儀表板內現在空無一物。 有一個簡單又實用的類型小工具可新增至儀表板，那就是**快速值**圖表，此圖表會顯示所選欄位值的清單和其分佈情形。
+您可以按一下儀表板的標題來查看儀表板，由於我們還沒有新增任何小工具，所以儀表板內現在空無一物。 有一個簡單又實用的類型小工具可新增至儀表板，那就是 **快速值** 圖表，此圖表會顯示所選欄位值的清單和其分佈情形。
 
-1. 藉由在頂端導覽列中選取 [搜尋]****，以瀏覽回到會接收流量記錄之 UDP 輸入的搜尋結果。
+1. 藉由在頂端導覽列中選取 [搜尋]，以瀏覽回到會接收流量記錄之 UDP 輸入的搜尋結果。
 
-2. 在畫面左邊的 [搜尋結果]**** 面板底下尋找 [欄位]**** 索引標籤，它會列出每個內送流量 Tuple 訊息的各個欄位。
+2. 在畫面左邊的 [搜尋結果] 面板底下尋找 [欄位] 索引標籤，它會列出每個內送流量 Tuple 訊息的各個欄位。
 
-3. 選取要據以視覺化的任何所需參數 (在此範例中，已選取 IP 來源)。 若要顯示可用小工具的清單，請按一下欄位左邊的藍色下拉箭頭，然後選取 [快速值]**** 來產生小工具。 您應該會看到類似下圖的輸出：
+3. 選取要據以視覺化的任何所需參數 (在此範例中，已選取 IP 來源)。 若要顯示可用小工具的清單，請按一下欄位左邊的藍色下拉箭頭，然後選取 [快速值] 來產生小工具。 您應該會看到類似下圖的輸出：
 
    ![來源 IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4. 在該處，您可以選取小工具右上方的 [新增至儀表板]**** 按鈕，然後選取要新增的對應儀表板。
+4. 在該處，您可以選取小工具右上方的 [新增至儀表板] 按鈕，然後選取要新增的對應儀表板。
 
 5. 瀏覽回到儀表板，以查看您剛才新增的小工具。
 
@@ -246,4 +246,4 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何利用 Power BI 將網路安全性群組流量記錄視覺化，請瀏覽 [利用 Power BI 將網路安全性群組流量記錄視覺化](network-watcher-visualize-nsg-flow-logs-power-bi.md)。
+若要了解如何利用 Power BI 將網路安全性群組流量記錄視覺化，請瀏覽[利用 Power BI 將網路安全性群組流量記錄視覺化](network-watcher-visualize-nsg-flow-logs-power-bi.md)。

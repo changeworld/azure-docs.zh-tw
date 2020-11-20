@@ -7,18 +7,19 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa059ec8159779969c7ef7a5f4c97f3e985993a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082183"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964808"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA on Azure (大型執行個體) 架構
 
@@ -48,7 +49,7 @@ SAP HANA on Azure (大型執行個體) 的整體架構會提供一個經 SAP TDI
 
 「Azure 大型執行個體」戳記本身結合了下列元件：
 
-- 運算 **：以**不同的 Intel 以上處理器世代為基礎的伺服器，可提供必要的運算能力並 SAP Hana 認證。
+- 運算 **：以** 不同的 Intel 以上處理器世代為基礎的伺服器，可提供必要的運算能力並 SAP Hana 認證。
 - **網路**：將運算、存放裝置和 LAN 元件互連的整合高速網路網狀架構。
 - **儲存體**：透過整合網路網狀架構存取的儲存體基礎結構。 根據已部署的特定 SAP HANA on Azure (大型執行個體) 組態提供的特定儲存體容量。 若要使用更多儲存體容量，則需每月額外付費。
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977590"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963822"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第 2 代 VM 的支援
 
@@ -101,7 +101,8 @@ Azure 目前不支援內部部署 Hyper-V 針對第 2 代 VM 所支援的部分�
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | 備份/還原                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共用映像庫              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure 磁碟加密             | :heavy_check_mark: | :x:                |
+| [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [伺服器端加密](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>建立第 2 代 VM
 
@@ -185,7 +186,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 * **如何增加 OS 磁碟大小？**  
 
-  大於 2 TiB 的 OS 磁片是第2代 Vm 的新版本。 根據預設，第2代 Vm 的 OS 磁片小於 2 TiB。 您可以將磁片大小增加到最多4個 TiB 的建議。 使用 Azure CLI 或 Azure 入口網站來增加 OS 磁碟大小。 如需如何以程式設計方式擴充磁片的詳細資訊，請參閱調整[Windows](./windows/expand-os-disk.md)或[Linux](./linux/resize-os-disk-gpt-partition.md)**磁片的大小**。
+  大於 2 TiB 的 OS 磁片是第2代 Vm 的新版本。 根據預設，第2代 Vm 的 OS 磁片小於 2 TiB。 您可以將磁片大小增加到最多4個 TiB 的建議。 使用 Azure CLI 或 Azure 入口網站來增加 OS 磁碟大小。 如需如何以程式設計方式擴充磁片的詳細資訊，請參閱調整 [Windows](./windows/expand-os-disk.md)或 [Linux](./linux/resize-os-disk-gpt-partition.md)**磁片的大小**。
 
   若要從 Azure 入口網站增加 OS 磁碟大小：
 
@@ -193,7 +194,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   1. 若要關閉和解除配置 VM，請選取 [停止] 按鈕。
   1. 在 [磁碟] 區段中，選取您要增加的 OS 磁碟。
   1. 在 [磁碟] 區段中，選取 [設定]，然後將 [大小] 更新為您想要的值。
-  1. 回到 VM 屬性頁面，然後**啟動** VM。
+  1. 回到 VM 屬性頁面，然後 **啟動** VM。
   
   您可能會看到大於 2 TiB 的 OS 磁片出現警告。 此警告不適用於第 2 代 VM。 但是，不支援大於 4 TiB 的 OS 磁片大小。
 

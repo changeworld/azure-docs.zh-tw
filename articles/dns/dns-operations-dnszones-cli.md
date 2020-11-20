@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff1abd48282a4ec9278d7182fea286178b5bd3ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495908"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965777"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 區域
 
@@ -41,13 +41,13 @@ ms.locfileid: "87495908"
 
 在開始設定之前，請確認您具備下列項目。
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 安裝最新版的 Azure CLI，該 CLI 適用於 Windows、Linux 或 MAC。 您可以在 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)中取得詳細資訊。
+* 安裝最新版的 Azure CLI，該 CLI 適用於 Windows、Linux 或 MAC。 您可以在 [安裝 Azure CLI](/cli/azure/install-az-cli2)中取得詳細資訊。
 
 ### <a name="sign-in-to-your-azure-account"></a>登入您的 Azure 帳戶
 
-開啟主控台視窗，並驗證您的認證。 如需詳細資訊，請參閱 [從 Azure CLI 登入 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+開啟主控台視窗，並驗證您的認證。 如需詳細資訊，請參閱 [從 Azure CLI 登入 Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ```
 az login
@@ -97,7 +97,7 @@ az network dns zone create --help
 
 使用 `az network dns zone create` 命令建立 DNS 區域。 如需協助，請參閱 `az network dns zone create -h`。
 
-下列範例會在名為*MyResourceGroup*的資源群組中建立名為*contoso.com*的 DNS 區域：
+下列範例會在名為 *MyResourceGroup* 的資源群組中建立名為 *contoso.com* 的 DNS 區域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
@@ -115,7 +115,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com -
 
 若要擷取 DNS 區域，請使用 `az network dns zone show`。 如需協助，請參閱 `az network dns zone show --help`。
 
-下列範例會從資源群組 MyResourceGroup** 傳回 DNS 區域 contoso.com** 及其相關聯的資料。 
+下列範例會從資源群組 MyResourceGroup 傳回 DNS 區域 contoso.com 及其相關聯的資料。 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
@@ -185,15 +185,14 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 
 此命令會提示您確認。 選擇性的 `--yes` 參數會隱藏這個提示。
 
-下列範例示範如何從資源群組 MyResourceGroup** 刪除區域 contoso.com**。
+下列範例示範如何從資源群組 MyResourceGroup 刪除區域 contoso.com。
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-了解如何在 DNS 區域中[管理記錄集和記錄](dns-getstarted-create-recordset-cli.md)。
+了解如何在 DNS 區域中[管理記錄集和記錄](./dns-getstarted-cli.md)。
 
 了解如何[將您的網域委派給 Azure DNS](dns-domain-delegation.md)。
-

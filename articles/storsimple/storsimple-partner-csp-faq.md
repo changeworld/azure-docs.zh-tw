@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400038"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964927"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>適用於雲端解決方案提供者的 StorSimple 方案︰常見問題集
 
@@ -59,7 +59,7 @@ StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple 
 有多種解決方案︰
 
 - 合作夥伴可以轉售 StorSimple Virtual Array。 
-- 合作夥伴可以提供依據 StorSimple 及其他 Azure 服務或協力廠商軟體而打造的解決方案。 如需詳細資訊，請檢閱一些可能[依據 StorSimple 的解決方案](https://aka.ms/storsimple-build-solutions)。
+- 合作夥伴可以提供依據 StorSimple 及其他 Azure 服務或協力廠商軟體而打造的解決方案。 如需詳細資訊，請檢閱一些可能[依據 StorSimple 的解決方案](./storsimple-disaster-recovery-using-azure-site-recovery.md)。
 - 他們在提供受控服務時，也能發現新的商業模型。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP 合作夥伴可以獲得什麼獎勵？ 我有資格獲得任何 CSP 方案的獎勵嗎？

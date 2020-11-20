@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359777"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966542"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -56,13 +56,6 @@ ms.locfileid: "94359777"
 
    ![ServiceNow 管理員角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. 請檢查確定 ServiceNow 中 **已停用** 下列設定：
-
-   1. 選取 [系統安全性] > [高安全性設定] > [要求傳入的 SCHEMA 要求進行基本驗證]。
-   2. 選取 [系統屬性] > [Web 服務] > [要求傳入的 SOAP 要求進行基本授權]。
-     
-   > [!IMPORTANT]
-   > 如果 *已啟用* 這些設定，佈建引擎將無法與 ServiceNow 通訊。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 ServiceNow
 
@@ -95,7 +88,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
-4. 將 [佈建模式]  設定為 [自動]  。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 

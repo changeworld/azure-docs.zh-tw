@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874673"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963635"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -707,10 +707,11 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | **動作** | **說明** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
+| microsoft. directory/bitlockerKeys/key/read | 讀取 bitlocker 金鑰組象和屬性 (包括 Azure Active Directory 中的修復金鑰) 。 |
 | microsoft.directory/devices/delete | 刪除 Azure Active Directory 中的 devices。 |
 | microsoft.directory/devices/disable | 停用 Azure Active Directory 中的 devices。 |
 | microsoft.directory/devices/enable | 啟用 Azure Active Directory 中的裝置。 |
+| microsoft 目錄/裝置/Extensionattribute/更新 | 更新 Azure Active Directory 中 Extensionattribute 屬性的所有值。 |
 | microsoft.directory/signInReports/allProperties/read | 讀取 Azure Active Directory 中的 signInReports 所包含的所有屬性 (包括特殊權限的屬性)。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Microsoft 365 服務健康狀態。 |
@@ -731,6 +732,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.directory/applications/allProperties/allTasks | 建立和刪除應用程式，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
 | microsoft.directory/appRoleAssignments/allProperties/allTasks | 建立和刪除 appRoleAssignments，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
 | microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
+| microsoft. directory/bitlockerKeys/key/read | 讀取 bitlocker 金鑰組象和屬性 (包括 Azure Active Directory 中的修復金鑰) 。 |
 | microsoft.directory/contacts/allProperties/allTasks | 建立和刪除合約，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
 | microsoft.directory/contracts/allProperties/allTasks | 建立和刪除合約，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
 | microsoft.directory/devices/allProperties/allTasks | 建立和刪除裝置，以及在 Azure Active Directory 中讀取和更新所有屬性。 |
@@ -1087,6 +1089,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.directory/applications/basic/read    | 讀取 Azure Active Directory 中 Applications 的基本屬性。 |
 | microsoft.directory/applications/owners/read    | 讀取 Azure Active Directory 中的 applications.owners 屬性。 |
 | microsoft.directory/applications/policies/read    | 讀取 Azure Active Directory 中的 applications.policies 屬性。 |
+| microsoft. directory/bitlockerKeys/key/read | 讀取 bitlocker 金鑰組象和屬性 (包括 Azure Active Directory 中的修復金鑰) 。 |
 | microsoft.directory/contacts/basic/read    | 讀取 Azure Active Directory 中 contacts 的基本屬性。 |
 | microsoft.directory/contacts/memberOf/read    | 讀取 Azure Active Directory 中的 contacts.memberOf 屬性。 |
 | microsoft.directory/contracts/basic/read    | 讀取 Azure Active Directory 中 contracts 的基本屬性。 |
@@ -1267,13 +1270,16 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
+| microsoft. directory/bitlockerKeys/key/read | 讀取 bitlocker 金鑰組象和屬性 (包括 Azure Active Directory 中的修復金鑰) 。 |
 | microsoft.directory/contacts/basic/update | 更新 Azure Active Directory 中 contacts 的基本屬性。 |
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中建立 contacts。 |
 | microsoft.directory/contacts/delete | 刪除 Azure Active Directory 中的 contacts。 |
 | microsoft.directory/devices/basic/update | 更新 Azure Active Directory 中 devices 的基本屬性。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
 | microsoft.directory/devices/create | 在 Azure Active Directory 中建立 devices。 |
 | microsoft.directory/devices/delete | 刪除 Azure Active Directory 中的 devices。 |
+| microsoft.directory/devices/disable | 停用 Azure Active Directory 中的 devices。 |
+| microsoft.directory/devices/enable | 啟用 Azure Active Directory 中的裝置。 |
+| microsoft 目錄/裝置/Extensionattribute/更新 | 更新 Azure Active Directory 中 Extensionattribute 屬性的所有值。 |
 | microsoft.directory/devices/registeredOwners/update | 更新 Azure Active Directory 中的 devices.registeredOwners 屬性。 |
 | microsoft.directory/devices/registeredUsers/update | 更新 Azure Active Directory 中的 devices.registeredUsers 屬性。 |
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 屬性。 |
@@ -1654,9 +1660,9 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立及管理目錄層級服務的 Azure 支援票證。 |
+| microsoft. directory/bitlockerKeys/key/read | 讀取 bitlocker 金鑰組象和屬性 (包括 Azure Active Directory 中的修復金鑰) 。 |
 | microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 屬性。 |
 | microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
 | microsoft. directory/Microsoft.aad.identityprotection/allProperties/read | 讀取 microsoft.aad.identityProtection 中的所有資源。 |
 | microsoft directory/Microsoft.aad.identityprotection/allProperties/update | 更新 microsoft.aad.identityProtection 中的所有資源。 |
 | microsoft.directory/policies/basic/update | 更新 Azure Active Directory 中 policies 的基本屬性。 |
@@ -1706,7 +1712,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | **動作** | **說明** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
+| microsoft. directory/bitlockerKeys/key/read | 讀取 bitlocker 金鑰組象和屬性 (包括 Azure Active Directory 中的修復金鑰) 。 |
 | microsoft.directory/policies/conditionalAccess/basic/read | 讀取 Azure Active Directory 中的 policies.conditionalAccess 屬性。 |
 | microsoft.directory/signInReports/allProperties/read | 讀取 Azure Active Directory 中的 signInReports 所包含的所有屬性 (包括特殊權限的屬性)。 |
 | microsoft.aad.identityProtection/allEntities/read | 讀取 microsoft.aad.identityProtection 中的所有資源。 |

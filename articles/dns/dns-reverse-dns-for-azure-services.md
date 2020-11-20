@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711233"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965624"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>設定 Azure 託管服務的反向 DNS
 
@@ -44,8 +44,8 @@ Azure 中的服務會使用由 Azure 指派並由 Microsoft 所擁有的 IP 位�
 例如：假設 PublicIpAddress 資源的 DNS 名稱為 contosoapp1.northus.cloudapp.azure.com，且 IP 位址為 23.96.52.53。 則可將 PublicIpAddress 的 ReverseFqdn 指定為：
 * PublicIpAddress 的 DNS 名稱為 contosoapp1.northus.cloudapp.azure.com。
 * 相同訂用帳戶中不同 PublicIpAddress 的 DNS 名稱，例如 contosoapp2.westus.cloudapp.azure.com。
-* 虛名 DNS 名稱，例如 app1.contoso.com，只要這個名稱是「第一次」** 設定為 contosoapp1.northus.cloudapp.azure.com 的 CNAME，或相同訂用帳戶中不同 PublicIpAddress 的 CNAME。
-* 虛名 DNS 名稱，例如 app1.contoso.com，只要這個名稱是「第一次」** 設定為 IP 位址 23.96.52.53 的 A 記錄，或相同訂用帳戶中不同 PublicIpAddress 之 IP 位址的 A 記錄。
+* 虛名 DNS 名稱，例如 app1.contoso.com，只要這個名稱是「第一次」設定為 contosoapp1.northus.cloudapp.azure.com 的 CNAME，或相同訂用帳戶中不同 PublicIpAddress 的 CNAME。
+* 虛名 DNS 名稱，例如 app1.contoso.com，只要這個名稱是「第一次」設定為 IP 位址 23.96.52.53 的 A 記錄，或相同訂用帳戶中不同 PublicIpAddress 之 IP 位址的 A 記錄。
 
 相同的條件約束適用於雲端服務的反向 DNS。
 
@@ -247,11 +247,10 @@ FQDN 是以正向順序指定，且必須以點結束 (例如，"app1.contoso.co
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>我可以從我的 Azure 計算服務將電子郵件傳送至外部網域嗎？
 
-從 Azure 部署直接傳送電子郵件的技術功能，須視訂用帳戶的類型而定。 不論訂用帳戶的類型為何，Microsoft 均建議您使用信任的郵件轉送服務來傳送外寄郵件。 如需詳細資訊，請參閱 [Enhanced Azure Security for sending Emails – November 2017 Update (增強 Azure 傳送電子郵件的安全性 – 2017 年 11 月更新)](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/)。
+從 Azure 部署直接傳送電子郵件的技術功能，須視訂用帳戶的類型而定。 不論訂用帳戶的類型為何，Microsoft 均建議您使用信任的郵件轉送服務來傳送外寄郵件。 如需詳細資訊，請參閱 [Enhanced Azure Security for sending Emails – November 2017 Update (增強 Azure 傳送電子郵件的安全性 – 2017 年 11 月更新)](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需反向 DNS 的詳細資訊，請參閱維基百科的 [reverse DNS lookup](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) (反向 DNS 對應)。
 <br>
 了解如何[在 Azure DNS 中為您 ISP 指派的 IP 範圍託管反向對應區域](dns-reverse-dns-for-azure-services.md)。
-

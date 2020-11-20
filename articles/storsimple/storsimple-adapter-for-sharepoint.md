@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053271"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966287"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安裝和設定 StorSimple Adapter for SharePoint
 ## <a name="overview"></a>概觀
@@ -53,7 +53,7 @@ RBS 的 Microsoft Azure StorSimple 實作提供下列優點：
 將 BLOB 內容移至檔案系統可以節省更多成本並提供其他優點。 例如，使用 RBS 就不需要購買昂貴的第 1 層儲存體，也而因為它會縮小內容資料庫，RBS 可減少 SharePoint 伺服器陣列中所需的資料庫數目。 不過，其他因素也會影響儲存需求，例如資料庫大小限制和非 RBS 內容數量。 如需有關使用 RBS 的優點與成本的詳細資訊，請參閱[規劃 RBS (SharePoint Foundation 2010)][4] 和[決定在 SharePoint 2013 中使用 RBS][5]。
 
 ### <a name="capacity-and-performance-limits"></a>容量和效能限制
-在考慮於 SharePoint 解決方案中使用 RBS 之前，您應該注意 SharePoint Server 2010 和 SharePoint Server 2013 已測試的效能和容量限制，以及這些限制與可接受的效能有何關係。 如需詳細資訊，請參閱 [SharePoint 2013 的軟體界限及限制](https://technet.microsoft.com/library/cc262787.aspx)。
+在考慮於 SharePoint 解決方案中使用 RBS 之前，您應該注意 SharePoint Server 2010 和 SharePoint Server 2013 已測試的效能和容量限制，以及這些限制與可接受的效能有何關係。 如需詳細資訊，請參閱 [SharePoint 2013 的軟體界限及限制](/SharePoint/install/software-boundaries-and-limits-0)。
 
 設定 RBS 之前，請檢閱下列事項：
 
@@ -137,9 +137,9 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
   
   1. 關閉 Internet Explorer 的所有執行個體。
   2. 啟動伺服器管理員。
-  3. 在左窗格中，按一下 [本機伺服器]****。
-  4. 在右窗格上，按一下 [IE 增強式安全性設定]**** 旁邊的 [開啟]****。
-  5. 按一下 [Administrators]**** 下的 [關閉]****。
+  3. 在左窗格中，按一下 [本機伺服器]。
+  4. 在右窗格上，按一下 [IE 增強式安全性設定] 旁邊的 [開啟]。
+  5. 按一下 [Administrators] 下的 [關閉]。
   6. 按一下 [確定]。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>遠端 BLOB 儲存 (RBS) 必要條件
@@ -221,12 +221,12 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>將 Blob 移回內容資料庫
 1. 下載每個已外部化的物件。
-2. 開啟 [SharePoint 管理中心]**** 頁面，並瀏覽至 [系統設定]****。
-3. 在 [Azure StorSimple]**** 下，按一下 [設定 StorSimple 介面卡]****。
-4. 在 [設定 StorSimple 介面卡]**** 頁面上，按一下您要從外部 BLOB 儲存體中移除之每個內容資料庫下方的 [停用]**** 按鈕。 
+2. 開啟 [SharePoint 管理中心] 頁面，並瀏覽至 [系統設定]。
+3. 在 [Azure StorSimple] 下，按一下 [設定 StorSimple 介面卡]。
+4. 在 [設定 StorSimple 介面卡] 頁面上，按一下您要從外部 BLOB 儲存體中移除之每個內容資料庫下方的 [停用] 按鈕。 
 5. 從 SharePoint 中刪除物件，然後重新上傳。
 
-或者，您可以使用 `RBS Migrate()` SharePoint 隨附的 Microsoft PowerShell Cmdlet。 如需詳細資訊，請參閱 [將內容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
+或者，您可以使用 `RBS Migrate()` SharePoint 隨附的 Microsoft PowerShell Cmdlet。 如需詳細資訊，請參閱 [將內容移入或移出 RBS](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))。
 
 將 Blob 移回內容資料庫之後，請移至下一個步驟： [解除安裝配接器](#uninstall-the-adapter)。
 
@@ -238,28 +238,28 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 2. 按兩下 StorSimple Adapter for SharePoint。 安裝精靈隨即啟動。
    
     ![安裝精靈](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 按一下 [下一步]。 下列頁面隨即出現。
+3. 按 [下一步] 。 下列頁面隨即出現。
    
     ![安裝精靈移除頁面](./media/storsimple-adapter-for-sharepoint/sasp3.png)
-4. 按一下 [移除]**** 選取移除程序。 下列頁面隨即出現。
+4. 按一下 [移除] 選取移除程序。 下列頁面隨即出現。
    
     ![安裝精靈確認頁面](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. 按一下 [移除]**** 確認移除。 下列進度頁面隨即出現。
+5. 按一下 [移除] 確認移除。 下列進度頁面隨即出現。
    
     ![安裝精靈進度頁面](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. 移除完成後，會出現完成頁面。 按一下 [完成]**** 關閉 [安裝精靈]。
+6. 移除完成後，會出現完成頁面。 按一下 [完成] 關閉 [安裝精靈]。
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>使用控制台來解除安裝配接器
-1. 開啟 [控制台]，然後按一下 [程式和功能]****。
-2. 選取 [StorSimple Adapter for SharePoint]****，然後按一下 [解除安裝]****。
+1. 開啟 [控制台]，然後按一下 [程式和功能]。
+2. 選取 [StorSimple Adapter for SharePoint]，然後按一下 [解除安裝]。
 
 ## <a name="next-steps"></a>後續步驟
 [深入了解 StorSimple](storsimple-overview.md)。
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
-[2]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
-[4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
-[5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/library/ff943565.aspx
+[2]: /SharePoint/administration/rbs-planning
+[3]: /previous-versions/office/sharepoint-server-2010/ff628583(v=office.14)
+[4]: /previous-versions/office/sharepoint-foundation-2010/ff628569(v=office.14)
+[5]: /SharePoint/administration/rbs-planning
+[8]: /SharePoint/administration/maintain-rbs

@@ -3,16 +3,17 @@ title: 設定 HPC 的訊息傳遞介面-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解如何在 Azure 上設定適用于 HPC 的 MPI。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 28853dd5066be2c40c72dca505c0a68d429f6ca0
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 08d952738a085aa6ed814668ece898f7460b4f33
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993529"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963737"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>設定 HPC 的訊息傳遞介面
 
@@ -232,7 +233,7 @@ chmod 644 /home/$USER/.ssh/config
 
 上述語法假設共用的主目錄，否則 ssh 目錄必須複製到每個節點。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [已啟用的「已啟用](../../sizes-hpc.md#rdma-capable-instances)」 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) vm
 - 請檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)，了解如何以最佳方式設定工作負載以獲得效能和可擴縮性。

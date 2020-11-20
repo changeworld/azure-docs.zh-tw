@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006011"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964995"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
 
@@ -48,7 +48,7 @@ StorSimple 使用 [儲存體分層](#automatic-storage-tiering) 管理各種儲�
 | 資料行動性 |您可以從其他站台存取上傳至 Microsoft Azure 雲端服務的資料，以供復原和移轉使用。 此外，您可以使用 StorSimple，在 Microsoft Azure 中執行的虛擬機器 (VM) 上設定 StorSimple 雲端設備。 VM 然後可以使用虛擬裝置來存取儲存的資料，以供測試或復原使用。 |
 | 業務持續性 |允許 StorSimple 5000-7000 系列的使用者將他們的資料移轉到 StorSimple 8000 系列裝置。 |
 | Azure 政府機構入口網站中的可用性 |StorSimple 可以在 Azure Government 入口網站中使用。 如需詳細資訊，請參閱 [在政府機構入口網站中部署您的內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-gov-u2.md)。 |
-| 資料保護與可用性 |StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也支援區域備援儲存體 (ZRS)。 如需 ZRS 的詳細資訊，請參閱 [本文件的 Azure 儲存體備援選項](https://azure.microsoft.com/documentation/articles/storage-redundancy/) 。 |
+| 資料保護與可用性 |StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也支援區域備援儲存體 (ZRS)。 如需 ZRS 的詳細資訊，請參閱 [本文件的 Azure 儲存體備援選項](../storage/common/storage-redundancy.md) 。 |
 | 重要應用程式的支援 |StorSimple 可讓您找出適當的磁碟區作為本機固定的磁碟區，進而確保重要應用程式所需的資料不會分層到雲端。 本機固定磁碟區不受限於雲端延遲或連線問題。 如需有關本機固定磁碟區的詳細資訊，請參閱[使用 StorSimple 裝置管理員服務來管理磁碟區](storsimple-8000-manage-volumes-u2.md)。 |
 | 低延遲和高效能 |您可以利用 Azure 進階儲存體的高效能和低延遲功能來建立雲端設備。 如需 StorSimple 進階雲端設備的詳細資訊，請參閱[部署和管理 Azure 中的 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。 |
 
@@ -186,7 +186,7 @@ StorSimple 會隨著使用模式變更而調整並重新排列資料和儲存體
 
 StorSimple 會跨所有快照集和主要資料 (主機寫入的資料) 將客戶資料進行重複資料刪除。 儘管重複資料刪除適合用來提升儲存效率，但它會使「存在雲端中的資料」這個問題變得複雜。 階層式的主要資料和快照集資料會彼此重疊。 雲端中的資料單一區塊可用來作為階層式的主要資料，且還會由數個快照集所參考。 每個雲端快照集都會確保所有時間點資料的副本都會鎖定於雲端，直到將該快照集刪除為止。
 
-僅當沒有參考到該資料時，才會將資料從雲端刪除。 例如，如果我們採用 StorSimple 裝置中所有資料的雲端快照集，然後刪除一些主要資料，會看到_主要資料_立即降低。 包括階層式資料和備份的_雲端資料_則會維持不變。 這是因為仍有快照集會參考雲端資料。 在將雲端快照集刪除之後 (和其他參考相同資料的快照集)，雲端耗用量就會降低。 我們在移除雲端資料之前，會檢查已無快照集仍參考該資料。 此程序稱為_記憶體回收_，並且會在裝置上以背景服務執行。 並不會立即移除雲端資料，因為記憶體回收服務在刪除之前，會檢查對該資料的其他參考。 記憶體回收的速度會依快照集的總數和資料的總數而定。 一般而言，會在一週以內將雲端資料清除。
+僅當沒有參考到該資料時，才會將資料從雲端刪除。 例如，如果我們採用 StorSimple 裝置中所有資料的雲端快照集，然後刪除一些主要資料，會看到 _主要資料_ 立即降低。 包括階層式資料和備份的 _雲端資料_ 則會維持不變。 這是因為仍有快照集會參考雲端資料。 在將雲端快照集刪除之後 (和其他參考相同資料的快照集)，雲端耗用量就會降低。 我們在移除雲端資料之前，會檢查已無快照集仍參考該資料。 此程序稱為 _記憶體回收_，並且會在裝置上以背景服務執行。 並不會立即移除雲端資料，因為記憶體回收服務在刪除之前，會檢查對該資料的其他參考。 記憶體回收的速度會依快照集的總數和資料的總數而定。 一般而言，會在一週以內將雲端資料清除。
 
 
 ### <a name="thin-provisioning"></a>精簡佈建
@@ -208,7 +208,7 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作負載摘要
 下表顯示所支援 StorSimple 工作負載的摘要。
 
-| 案例 | 工作負載 | 支援 | 限制 | 版本 |
+| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 共同作業 |檔案共用 |是 | |所有版本 |
 | 共同作業 |分散式檔案共用 |是 | |所有版本 |
@@ -217,10 +217,10 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
-| Backup |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
-| Backup |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| 備份 |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| 備份 |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
 
-是&#42; - 應套用解決方案指導方針和限制。**
+是&#42; - 應套用解決方案指導方針和限制。
 
 StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorSimple，這些工作負載將導致產生不支援的組態。
 
@@ -235,7 +235,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 
 以下是 StorSimple 支援的基礎結構元件清單。
 
-| 案例 | 工作負載 | 支援 | 限制 | 版本 |
+| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 一般 |ExpressRoute |是 | |所有版本 |
 | 一般 |DataCore FC |是* |使用 DataCore SANsymphony 時支援 |所有版本 |
@@ -243,7 +243,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 一般 |編製索引 |是* |階層式磁碟區，僅支援中繼資料索引 (無資料)。<br>針對固定在本機的磁碟區，支援完整索引。 |所有版本 |
 | 一般 |防毒 |是* |針對階層式磁碟區，只支援在開啟和關閉時進行掃描。<br> 針對固定在本機的磁碟區，支援完整掃描。 |所有版本 |
 
-是&#42; - 應套用解決方案指導方針和限制。**
+是&#42; - 應套用解決方案指導方針和限制。
 
 以下是與 StorSimple 搭配使用來建立解決方案的其他軟體清單。
 
@@ -258,7 +258,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 在部署 Microsoft Azure StorSimple 解決方案，我們建議您檢閱下列詞彙和定義。
 
 ### <a name="key-terms-and-definitions"></a>重要詞彙和定義
-| 術語 (首字母縮寫或縮寫) | 說明 |
+| 術語 (首字母縮寫或縮寫) | 描述 |
 | --- | --- |
 | 存取控制記錄 (ACR) |與 Microsoft Azure StorSimple 裝置上的磁碟區相關聯的記錄，決定哪些主機可連接到其中。 此決定根據連接到 StorSimple 裝置之主機 (包含在 ACR 中) 的 iSCSI 合格名稱 (IQN)。 |
 | AES 256 |256 位元進階加密標準 (AES) 演算法，用於加密移入和移出雲端的資料。 |
@@ -313,6 +313,5 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 磁碟區陰影複製服務 (VSS) |一種 Windows Server 作業系統服務，可藉由與 VSS 感知應用程式通訊，來協調建立增量快照，以促進應用程式一致性。 VSS 確保取得快照時應用程式會暫時停用。 |
 | Windows PowerShell for StorSimple |用來操作和管理 StorSimple 裝置的 Windows PowerShell 型命令列介面。 這個介面具備 Windows PowerShell 的一些基本功能，同時又具有額外的專用 Cmdlet，相互搭配來管理 StorSimple 裝置。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解 [StorSimple 安全性](storsimple-8000-security.md)。
-

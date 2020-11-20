@@ -3,16 +3,17 @@ title: Azure 環境中的 Oracle 災害復原案例概觀 | Microsoft Docs
 description: Azure 環境中 Oracle Database 12c 資料庫的災害復原案例
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b8da0b5c55b291af42d9a30db23d6f55f7c0bf2d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480355"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965301"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境中 Oracle Database 12c 資料庫的災害復原
 
@@ -37,7 +38,7 @@ ms.locfileid: "92480355"
 - 兩個具有 Data Guard 的 Oracle 資料庫 (主要和待命)
 - 兩個具有 Golden Gate 或 Data Guard 的 Oracle 資料庫 (僅限主要站台)
 - 兩個應用程式服務，一個在主要站台上，一個在 DR 站台上
-- 一個可用性設定組**，用於主要站台上的資料庫和應用程式服務
+- 一個可用性設定組，用於主要站台上的資料庫和應用程式服務
 - 每個站台上有一個 Jumpbox，其只能存取私人網路，並只允許系統管理員登入
 - Jumpbox、應用程式服務、資料庫和 VPN 閘道位於不同的子網路
 - 對應用程式和資料庫子網路強制執行 NSG

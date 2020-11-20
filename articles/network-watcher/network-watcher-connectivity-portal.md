@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
-ms.openlocfilehash: a16e99df57da66d2633947f8aecdf1d2cef9ab15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 115adb7a71d820a75261837f4c14b1b84adb98da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737405"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965522"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 入口網站利用 Azure 網路監看員進行連線疑難排解
 
@@ -37,25 +37,25 @@ ms.locfileid: "84737405"
 * 要用來進行連線疑難排解的虛擬機器。
 
 > [!IMPORTANT]
-> 若要進行連線移難排解，您從中進行移難排解的虛擬機器需要安裝 `AzureNetworkWatcherExtension` 虛擬機器擴充功能。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 目的地端點上不需要擴充功能。
+> 若要進行連線移難排解，您從中進行移難排解的虛擬機器需要安裝 `AzureNetworkWatcherExtension` 虛擬機器擴充功能。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)。 目的地端點上不需要擴充功能。
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>檢查與虛擬機器的連線
 
 這個範例會檢查透過連接埠 80 的目的地虛擬機器連線。
 
-瀏覽至您的網路監看員，然後按一下 [連線疑難排解]****。 選取要作為連線能力檢查起點的虛擬機器。 在 [目的地]**** 區段中選擇 [選取虛擬機器]****，然後選擇要測試的正確虛擬機器和連接埠。
+瀏覽至您的網路監看員，然後按一下 [連線疑難排解]。 選取要作為連線能力檢查起點的虛擬機器。 在 [目的地] 區段中選擇 [選取虛擬機器]，然後選擇要測試的正確虛擬機器和連接埠。
 
-按一下 [檢查]**** 之後，系統就會檢查指定連接埠上虛擬機器之間的連線能力。 在範例中，目的地 VM 無法連線，因此會顯示躍點清單。
+按一下 [檢查] 之後，系統就會檢查指定連接埠上虛擬機器之間的連線能力。 在範例中，目的地 VM 無法連線，因此會顯示躍點清單。
 
 ![查看虛擬機器的連線能力結果][1]
 
 ## <a name="check-remote-endpoint-connectivity"></a>檢查遠端端點的連線能力
 
-若要檢查遠端端點的連線能力和延遲，請在 [目的地]**** 區段中選擇 [手動指定]**** 選項按鈕，輸入 URL 和連接埠，然後按一下 [檢查]****。  這會用於網站與儲存體端點之類的遠端端點。
+若要檢查遠端端點的連線能力和延遲，請在 [目的地] 區段中選擇 [手動指定] 選項按鈕，輸入 URL 和連接埠，然後按一下 [檢查]。  這會用於網站與儲存體端點之類的遠端端點。
 
 ![查看網站的連線能力結果][2]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 

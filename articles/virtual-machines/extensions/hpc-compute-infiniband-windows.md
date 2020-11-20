@@ -7,17 +7,18 @@ author: vermagit
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096165"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966015"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>適用于 Windows 的可駕駛驅動程式擴充功能
 
@@ -137,7 +138,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>將擴充功能新增至虛擬機器擴展集
 
-下列範例會在名為 *>myvmss* 的資源群組中部署的現有虛擬機器擴展集（名為 *myResourceGroup*的資源群組）中，將最新版本 1.2 InfiniBandDriverWindows 擴充功能安裝在所有支援 RDMA 的 vm 上：
+下列範例會在名為 *>myvmss* 的資源群組中部署的現有虛擬機器擴展集（名為 *myResourceGroup* 的資源群組）中，將最新版本 1.2 InfiniBandDriverWindows 擴充功能安裝在所有支援 RDMA 的 vm 上：
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"

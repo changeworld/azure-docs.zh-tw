@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92509ff96af0ed2a7d77799edca8447ff6839ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019652"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965590"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 建立 DNS 區域和記錄集
 
@@ -43,10 +43,10 @@ ms.locfileid: "89019652"
 
 若要使用 Azure DNS .NET SDK，您需要安裝 **Azure DNS 管理程式庫** NuGet 封裝以及其他必要的 Azure 封裝。
 
-1. 在 **Visual Studio**中，開啟專案或新專案。
+1. 在 **Visual Studio** 中，開啟專案或新專案。
 2. 移至 **工具** **>** **nuget 封裝管理員** **>** **管理解決方案的 nuget 套件**.。。
-3. 按一下 [瀏覽]****，啟用 [包括發行前版本]**** 核取方塊，然後在搜尋方塊中輸入 **Microsoft.Azure.Management.Dns**。
-4. 選取封裝，然後按一下 [安裝] **** 將它加入至您的 Visual Studio 專案。
+3. 按一下 [瀏覽]，啟用 [包括發行前版本] 核取方塊，然後在搜尋方塊中輸入 **Microsoft.Azure.Management.Dns**。
+4. 選取封裝，然後按一下 [安裝]  將它加入至您的 Visual Studio 專案。
 5. 重複上述程序以便一併安裝下列封裝︰**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 
 ## <a name="add-namespace-declarations"></a>新增命名空間宣告
@@ -79,7 +79,7 @@ dnsClient.SubscriptionId = subscriptionId;
 > [!NOTE]
 > DnsManagementClient 支援三種作業模式︰同步 ('CreateOrUpdate')、非同步 ('CreateOrUpdateAsync')，或非同步並可存取 HTTP 回應 ('CreateOrUpdateWithHttpMessagesAsync')。  您可以根據應用程式的需要選擇上述任何模式。
 
-Azure DNS 支援開放式同步存取，稱為 [Etag](dns-getstarted-create-dnszone.md)。 在此範例中，為 'If-None-Match' 標頭指定 "*" 會告訴 Azure DNS 建立 DNS 區域 (如果還沒有任何區域存在)。  如果指定的資源群組中已存在具有指定名稱的區域，呼叫就會失敗。
+Azure DNS 支援開放式同步存取，稱為 [Etag](./dns-getstarted-powershell.md)。 在此範例中，為 'If-None-Match' 標頭指定 "*" 會告訴 Azure DNS 建立 DNS 區域 (如果還沒有任何區域存在)。  如果指定的資源群組中已存在具有指定名稱的區域，呼叫就會失敗。
 
 ```cs
 // Create zone parameters

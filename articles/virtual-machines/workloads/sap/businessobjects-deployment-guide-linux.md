@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427457"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965352"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上適用於 linux 的 SAP BusinessObjects BI 平台部署指南
 
@@ -36,7 +37,7 @@ ms.locfileid: "94427457"
 - 適用於 MySQL 的 Azure 資料庫 (版本： 8.0.15) 
 - MySQL C API 連接器-libmysqlclient (版本： 6.1.11) 
 
-| 檔案系統        | 說明                                                                                                               | 大小 (GB)             | 擁有者  | 群組  | 儲存體                    |
+| 檔案系統        | 描述                                                                                                               | 大小 (GB)             | 擁有者  | 群組  | 儲存體                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | 如有必要，可安裝 SAP BOBI 實例、預設 Tomcat Web 應用程式和資料庫驅動程式的檔案系統 ()  | SAP 調整大小指導方針 | bl1adm | sapsys | 受控 Premium 磁片-SSD |
 | /usr/sap/frsinput  | 掛接目錄適用于所有將用來作為輸入檔案存放庫目錄的 BOBI 主機上的共用檔案  | 商務需求         | bl1adm | sapsys | Azure NetApp Files         |
@@ -113,7 +114,7 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
 本節中的步驟會使用下列首碼：
 
-**[A]** ：此步驟適用于所有主機
+**[A]**：此步驟適用于所有主機
 
 ### <a name="format-and-mount-sap-file-system"></a>格式化和掛接 SAP 檔案系統
 
@@ -196,7 +197,7 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
    **確認 NFS 網域設定**
 
-   請確定網域已設定為預設的 Azure NetApp Files 網域，也就是  **defaultv4iddomain.com** ，而且對應設定為無 **人** 。
+   請確定網域已設定為預設的 Azure NetApp Files 網域，也就是  **defaultv4iddomain.com** ，而且對應設定為無 **人**。
 
    ```bash
    sudo cat /etc/idmapd.conf
@@ -210,9 +211,9 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
    > [!Important]
    >
-   > 請務必將 VM 上/etc/idmapd.conf 中的 NFS 網域設定為符合 Azure NetApp Files 上的預設網域設定： **defaultv4iddomain.com** 。 如果 NFS 用戶端上的網域設定不符 (亦即 VM) 和 NFS 伺服器（亦即 Azure NetApp configuration），則裝載在 Vm 上的 Azure NetApp 磁片區上的檔案許可權將會顯示為未使用。
+   > 請務必將 VM 上/etc/idmapd.conf 中的 NFS 網域設定為符合 Azure NetApp Files 上的預設網域設定： **defaultv4iddomain.com**。 如果 NFS 用戶端上的網域設定不符 (亦即 VM) 和 NFS 伺服器（亦即 Azure NetApp configuration），則裝載在 Vm 上的 Azure NetApp 磁片區上的檔案許可權將會顯示為未使用。
 
-   驗證 `nfs4_disable_idmapping`。 其應設為 **Y** 。若要建立 `nfs4_disable_idmapping` 所在的目錄結構，請執行掛接命令。 您將無法手動在 /sys/modules 下建立目錄，因為其存取已保留給核心/驅動程式。
+   驗證 `nfs4_disable_idmapping`。 其應設為 **Y**。若要建立 `nfs4_disable_idmapping` 所在的目錄結構，請執行掛接命令。 您將無法手動在 /sys/modules 下建立目錄，因為其存取已保留給核心/驅動程式。
 
    ```bash
    # Check nfs4_disable_idmapping
@@ -286,7 +287,7 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
 5. 根據預設， **備份保留期限** 為7天，但您可以 [選擇性地將](../../../mysql/howto-restore-server-portal.md#set-backup-configuration) 它設定為35天。
 
-6. 適用於 MySQL 的 Azure 資料庫的備份預設會在本機重複使用，因此，如果您想要在地理位置分散的儲存體中進行伺服器備份，請從 **備份冗余選項** 中選取 [ **地理位置多餘** ]。
+6. 適用於 MySQL 的 Azure 資料庫的備份預設會在本機重複使用，因此，如果您想要在地理位置分散的儲存體中進行伺服器備份，請從 **備份冗余選項** 中選取 [**地理位置多餘**]。
 
 > [!NOTE]
 > 不支援在建立伺服器之後變更 [備份冗余選項](../../../mysql/concepts-backup.md#backup-redundancy-options) 。
@@ -296,9 +297,9 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 依預設，建立的伺服器會受到防火牆保護，而無法公開存取。 若要提供存取權給 SAP BI 平臺應用程式伺服器執行所在的虛擬網路，請遵循下列步驟：  
 
 1. 移至 Azure 入口網站中的 [伺服器資源]，然後從伺服器資源的左側功能表中選取 [ **連接安全性** ]。
-2. 選取 **[是]** 以 **允許存取 Azure 服務** 。
-3. 在 [VNET 規則] 底下，選取 [ **新增現有的虛擬網路** ]。 選取 SAP BI Platform application server 的虛擬網路和子網。 此外，您還需要提供跳躍方塊或其他伺服器的存取權，讓您可以將 [MySQL 工作臺](../../../mysql/connect-workbench.md) 連線至適用於 MySQL 的 Azure 資料庫。 MySQL 工作臺將用來建立 CMS 和 Audit 資料庫
-4. 新增虛擬網路之後，請選取 [ **儲存** ]。
+2. 選取 **[是]** 以 **允許存取 Azure 服務**。
+3. 在 [VNET 規則] 底下，選取 [ **新增現有的虛擬網路**]。 選取 SAP BI Platform application server 的虛擬網路和子網。 此外，您還需要提供跳躍方塊或其他伺服器的存取權，讓您可以將 [MySQL 工作臺](../../../mysql/connect-workbench.md) 連線至適用於 MySQL 的 Azure 資料庫。 MySQL 工作臺將用來建立 CMS 和 Audit 資料庫
+4. 新增虛擬網路之後，請選取 [ **儲存**]。
 
 ### <a name="create-cms-and-audit-database"></a>建立 CMS 和 audit 資料庫
 
@@ -395,15 +396,15 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
 本節中的步驟會使用下列首碼：
 
-**[A]** ：此步驟適用于所有主機。
+**[A]**：此步驟適用于所有主機。
 
 1. **[A]** 根據 LINUX (SLES 或 RHEL) 的類別，您必須設定核心參數，並安裝必要的程式庫。 請參閱 [Unix 商務智慧平臺安裝指南中的](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)**系統需求** 一節。
 
 2. **[A]** 確定已正確設定電腦上的時區。 請參閱安裝指南中的 [其他 Unix 和 Linux 需求一節](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) 。
 
-3. **[A]** 建立使用者帳戶 ( **bl1** adm) ，以及可在其下執行軟體背景進程的群組 (sapsys) 。 使用此帳戶來執行安裝並執行軟體。 帳戶不需要根許可權。
+3. **[A]** 建立使用者帳戶 (**bl1** adm) ，以及可在其下執行軟體背景進程的群組 (sapsys) 。 使用此帳戶來執行安裝並執行軟體。 帳戶不需要根許可權。
 
-4. **[A]** 設定使用者帳戶 ( **bl1** adm) 環境使用支援的 utf-8 地區設定，並確保您的主控台軟體支援 utf-8 字元集。 為確保您的作業系統使用正確的地區設定，請在 ( **bl1** adm) 使用者環境中，將 LC_ALL 和 LANG 環境變數設定為您慣用的地區設定。
+4. **[A]** 設定使用者帳戶 (**bl1** adm) 環境使用支援的 utf-8 地區設定，並確保您的主控台軟體支援 utf-8 字元集。 為確保您的作業系統使用正確的地區設定，請在 (**bl1** adm) 使用者環境中，將 LC_ALL 和 LANG 環境變數設定為您慣用的地區設定。
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +414,7 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** 設定 ( **bl1** adm) 的使用者帳戶。
+5. **[A]** 設定 (**bl1** adm) 的使用者帳戶。
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -465,17 +466,17 @@ LC_ALL=en_US.utf8
 
 - 在 [ **選取安裝類型** ] 畫面上，選取 [第一部伺服器上的 **完全** 安裝 (azusbosl1) ，針對其他伺服器 (Azusbosl2) 選取 [ **自訂/展開** ]，以擴充現有的 BOBI 設定。
 
-- 在 [ **選取預設或現有的資料庫** ] 畫面上，選取 [ **設定現有的資料庫** ]，這會提示您選取 CMS 和 Audit Database。 選取 [ **MySQL** ] 作為 [CMS 資料庫類型] 和 [Audit] 資料庫類型。
+- 在 [ **選取預設或現有的資料庫** ] 畫面上，選取 [ **設定現有的資料庫**]，這會提示您選取 CMS 和 Audit Database。 選取 [ **MySQL** ] 作為 [CMS 資料庫類型] 和 [Audit] 資料庫類型。
 
   如果您不想在安裝期間設定審核，也可以選取 [沒有任何審核資料庫]。
 
 - 根據您的 SAP BOBI 架構，在 [ **選取 JAVA Web 應用程式伺服器] 畫面** 上選取適當的選項。 在此範例中，我們選取了選項1，這會在相同的 SAP BOBI 平臺上安裝 tomcat 伺服器。
 
-- 在 [ **設定 Cms 儲存機制資料庫-MySQL** ] 中輸入 CMS 資料庫資訊。 適用于 Linux 安裝的 CMS 資料庫資訊輸入範例。 預設通訊埠3306上使用適用於 MySQL 的 Azure 資料庫
+- 在 [ **設定 Cms 儲存機制資料庫-MySQL**] 中輸入 CMS 資料庫資訊。 適用于 Linux 安裝的 CMS 資料庫資訊輸入範例。 預設通訊埠3306上使用適用於 MySQL 的 Azure 資料庫
   
   ![Linux 上的 SAP BOBI 部署-CMS 資料庫](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-cms.png)
 
--  (選擇性) 在 [ **設定 Audit 儲存機制資料庫-MySQL** ] 中輸入 Audit database 資訊。 適用于 Linux 安裝的 Audit 資料庫資訊的輸入範例。
+-  (選擇性) 在 [ **設定 Audit 儲存機制資料庫-MySQL**] 中輸入 Audit database 資訊。 適用于 Linux 安裝的 Audit 資料庫資訊的輸入範例。
 
   ![Linux 上的 SAP BOBI 部署-Audit Database](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-audit.png)
 
@@ -557,7 +558,7 @@ Tomcat 支援將兩部以上的應用程式伺服器叢集化，以進行會話�
 
 #### <a name="backup--restore-for-file-repository-server"></a>檔案存放庫伺服器的備份 & 還原
 
-針對 **Azure NetApp Files** ，您可以建立隨選快照集，並使用快照集原則來排程自動快照集。 快照集複本提供 ANF 磁片區的時間點複本。 如需詳細資訊，請參閱 [使用 Azure NetApp Files 管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)集。
+針對 **Azure NetApp Files**，您可以建立隨選快照集，並使用快照集原則來排程自動快照集。 快照集複本提供 ANF 磁片區的時間點複本。 如需詳細資訊，請參閱 [使用 Azure NetApp Files 管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)集。
 
 **Azure 檔案儲存體** 備份已與原生 [Azure 備份](../../../backup/backup-overview.md) 服務整合，此服務可集中備份和還原功能以及 vm 備份，並簡化作業工作。 如需詳細資訊，請參閱 [Azure 檔案共用備份](../../../backup/azure-file-share-backup-overview.md) 和 [常見問題-備份 Azure 檔案儲存體](../../../backup/backup-azure-files-faq.md)。
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427372"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966049"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>適用於 Windows 的虛擬機器擴充功能和功能
 
@@ -42,7 +43,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Windows 的自訂指令碼擴充功能允許在 VM 上執行任何 PowerShell 指令碼。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Windows VM 自訂指令碼擴充功能](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要處理虛擬機器上的擴充功能，您必須安裝 Azure Windows 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -148,7 +149,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 ![安裝反惡意程式碼延伸模組](./media/features-windows/installantimalwareextension.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 範本
+### <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 
 VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 當您使用範本部署擴充功能時，可以建立完全設定的 Azure 部署。 例如，下列 JSON 取自 Resource Manager 範本會部署一組負載平衡的 Vm 和 Azure SQL Database，然後在每個 VM 上安裝 .NET Core 應用程式。 VM 擴充功能會處理軟體安裝。
 
@@ -286,7 +287,7 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>代理程式更新
 
-Windows 客體代理程式僅包含 *擴充功能處理程式碼* ， *Windows 佈建程式碼* 須另行取得。 您可以解除安裝 Windows 客體代理程式。 您無法停用 Windows 客體代理程式的自動更新。
+Windows 客體代理程式僅包含 *擴充功能處理程式碼*，*Windows 佈建程式碼* 須另行取得。 您可以解除安裝 Windows 客體代理程式。 您無法停用 Windows 客體代理程式的自動更新。
 
 「擴充功能處理程式碼」會負責與 Azure 網狀架構通訊，並處理虛擬機器擴充功能作業，例如安裝、報告狀態、更新個別的擴充功能和加以移除。 更新項目包含「擴充功能處理程式碼」的安全性修正程式、Bug 修正程式和增強功能。
 
@@ -322,7 +323,7 @@ Windows 客體代理程式僅包含 *擴充功能處理程式碼* ， *Windows �
  $vm.Extensions
 ```
 
-下列範例輸出顯示 *autoUpgradeMinorVersion* 已設定為 *true* ：
+下列範例輸出顯示 *autoUpgradeMinorVersion* 已設定為 *true*：
 
 ```powershell
 ForceUpdateTag              :
@@ -336,7 +337,7 @@ AutoUpgradeMinorVersion     : True
 
 若要查看擴充功能的更新是何時執行的，請在 *C:\WindowsAzure\Logs\WaAppAgent.log* 上檢閱 VM 的代理程式記錄
 
-在下列範例中，VM 已安裝 *Microsoft.Compute.CustomScriptExtension 1.8* 。 *1.9* 版有可用的 Hotfix：
+在下列範例中，VM 已安裝 *Microsoft.Compute.CustomScriptExtension 1.8*。 *1.9* 版有可用的 Hotfix：
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -371,7 +372,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>檢視擴充功能狀態
 
-針對 VM 執行 VM 擴充功能之後，請使用 [new-azvm](/powershell/module/az.compute/get-azvm) 來傳回擴充功能狀態。 *Substatuses[0]* 顯示擴充功能佈建成功，這表示擴充功能已成功部署至 VM，但在 VM 內部執行失敗，而顯示 *Substatuses[1]* 。
+針對 VM 執行 VM 擴充功能之後，請使用 [new-azvm](/powershell/module/az.compute/get-azvm) 來傳回擴充功能狀態。 *Substatuses[0]* 顯示擴充功能佈建成功，這表示擴充功能已成功部署至 VM，但在 VM 內部執行失敗，而顯示 *Substatuses[1]*。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -416,12 +417,12 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 您也可以在 Azure 入口網站中移除擴充功能，如下所示：
 
 1. 選取 VM。
-2. 選擇 **擴充功能** 。
+2. 選擇 **擴充功能**。
 3. 選取所需的擴充功能。
-4. 選擇 **解除安裝** 。
+4. 選擇 **解除安裝**。
 
 ## <a name="common-vm-extensions-reference"></a>常見的 VM 擴充功能參考
-| 擴充功能名稱 | 說明 | 更多資訊 |
+| 擴充功能名稱 | 描述 | 詳細資訊 |
 | --- | --- | --- |
 | Windows 的自訂指令碼延伸模組 |對「Azure 虛擬機器」執行指令碼 |[Windows 的自訂指令碼延伸模組](custom-script-windows.md) |
 | Windows 的 DSC 延伸模組 |PowerShell DSC (預期狀態設定) 擴充功能 |[適用於 Windows 的 DSC 擴充功能](dsc-overview.md) |

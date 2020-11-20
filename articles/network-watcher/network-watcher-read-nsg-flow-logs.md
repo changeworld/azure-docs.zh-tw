@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9b9e91cda93a986fdaaf0f53d8987544e783a2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272530"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966457"
 ---
 # <a name="read-nsg-flow-logs"></a>讀取 NSG 流量記錄
 
 了解如何使用 PowerShell 讀取 NSG 流量記錄項目。
 
-NSG 流量記錄會以[區塊 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的形式儲存在儲存體帳戶中。 區塊 Blob 是由較小的區塊組成。 每個記錄都是於每小時產生的個別區塊 Blob。 每小時都會產生新的記錄，而每幾分鐘就會以最新的資料更新記錄。 您可以透過本文了解讀取部分流量記錄的方式。
+NSG 流量記錄會以[區塊 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的形式儲存在儲存體帳戶中。 區塊 Blob 是由較小的區塊組成。 每個記錄都是於每小時產生的個別區塊 Blob。 每小時都會產生新的記錄，而每幾分鐘就會以最新的資料更新記錄。 您可以透過本文了解讀取部分流量記錄的方式。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -37,7 +37,7 @@ NSG 流量記錄會以[區塊 Blob](https://docs.microsoft.com/rest/api/storages
 
 ## <a name="retrieve-the-block-list"></a>擷取區塊清單
 
-以下的 PowerShell 會設定查詢 NSG 流程記錄檔 Blob 所需的變數，並會列出 [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) \(英文\) 區塊 Blob 內的區塊。 更新指令碼以包含適用於您環境的有效值。
+以下的 PowerShell 會設定查詢 NSG 流程記錄檔 Blob 所需的變數，並會列出 [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) \(英文\) 區塊 Blob 內的區塊。 更新指令碼以包含適用於您環境的有效值。
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -189,6 +189,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 造訪[使用彈性堆疊](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md)，以及[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md)，以深入了解檢視 NSG 流量記錄的方式。 在這裡可以找到直接取用 blob 併發出至各種 log analytics 取用者的開放原始碼 Azure Function 方法： [Azure 網路監看員 NSG 流量記錄連接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
-您可以使用 [Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) 來取得流量流程的見解。 流量分析會使用 [Log analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) 讓您的流量可供查詢。
+您可以使用 [Azure 流量分析](./traffic-analytics.md) 來取得流量流程的見解。 流量分析會使用 [Log analytics](../azure-monitor/log-query/log-analytics-tutorial.md) 讓您的流量可供查詢。
 
 若要深入了解儲存體 Blob，請造訪：[Azure Functions Blob 儲存體繫結](../azure-functions/functions-bindings-storage-blob.md)

@@ -3,16 +3,17 @@ title: HB 系列 VM 總覽-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中 HB 系列 VM 大小的預覽支援。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d11ec99d10d74956c43c24145abbd291d9e2d2a9
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1e37f13bc6e819079c63c583a1eeda12af5e213c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996249"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965454"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虛擬機器總覽
 
@@ -39,7 +40,7 @@ VM 本身並不知道 pNUMA 0 未提供給它。 VM 瞭解 pNUMA 1-15 為 Vnuma 
 | 核心                            | 60 (SMT 已停用)                 |
 | CPU                              | AMD EPYC 7551                    |
 | CPU 頻率 (非 AVX)           | ~ 2.55 GHz (單一 + 所有核心)    |
-| 記憶體                           | 4 GB/核心 (240 GB 總計)          |
+| Memory                           | 4 GB/核心 (240 GB 總計)          |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 |
 | 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC |
@@ -55,7 +56,7 @@ VM 本身並不知道 pNUMA 0 未提供給它。 VM 瞭解 pNUMA 1-15 為 Vnuma 
 | SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 +  |
 | 協調器支援        | CycleCloud，Batch  |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [AMD EPYC 架構](https://bit.ly/2Epv3kC) 和 [多晶片架構](https://bit.ly/2GpQIMb)。 如需詳細資訊，請參閱 [適用于 AMD EPYC 處理器的 HPC 微調指南](https://bit.ly/2T3AWZ9)。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。

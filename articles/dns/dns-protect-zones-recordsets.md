@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 52cb1f144608202739dc46f2053950b38d810631
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8163fcb3b349e298bc89f06523e3e784bdc4ed49
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330150"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965660"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保護 DNS 區域和記錄
 
@@ -34,7 +34,7 @@ DNS 區域參與者角色是用來管理私人 DNS 資源的內建角色。 此�
 
 指派 Azure RBAC 許可權最簡單的方式是透過 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)。  
 
-開啟資源群組的 [ **存取控制] (IAM) ** ，然後選取 [ **新增**]，再選取 [ **DNS 區域參與者** ] 角色。 選取所需的使用者或群組以授與許可權。
+開啟資源群組的 [ **存取控制] (IAM)** ，然後選取 [ **新增**]，再選取 [ **DNS 區域參與者** ] 角色。 選取所需的使用者或群組以授與許可權。
 
 ![透過 Azure 入口網站的資源群組層級 Azure RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -67,7 +67,7 @@ Azure RBAC 規則可以套用至訂用帳戶、資源群組或個別資源。 �
 
 例如，資源群組 *myResourceGroup* 包含區域 *contoso.com* 和子領域 *customers.contoso.com*。 系統會為每個客戶帳戶建立 CNAME 記錄。 用來管理 CNAME 記錄的系統管理員帳戶，會獲指派在 *customers.contoso.com* 區域中建立記錄的許可權。 帳戶只能管理 *customers.contoso.com* 。
 
-您可以透過 Azure 入口網站授與區域層級的 Azure RBAC 許可權。  開啟區域的 [ **存取控制] (IAM) ** ，選取 [ **新增**]，然後選取 [ **DNS 區域參與者** ] 角色，然後選取必要的使用者或群組以授與許可權。
+您可以透過 Azure 入口網站授與區域層級的 Azure RBAC 許可權。  開啟區域的 [ **存取控制] (IAM)** ，選取 [ **新增**]，然後選取 [ **DNS 區域參與者** ] 角色，然後選取必要的使用者或群組以授與許可權。
 
 ![經由 Azure 入口網站的 DNS 區域層級 Azure RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 
@@ -100,7 +100,7 @@ az role assignment create \
 
 許可權會套用於記錄集層級。  使用者會獲得所需專案的控制權，而且無法進行任何其他變更。
 
-您可以使用 [記錄集] 頁面中的 [ **存取控制] (IAM) ** 按鈕，透過 Azure 入口網站設定記錄集層級的 Azure RBAC 許可權：
+您可以使用 [記錄集] 頁面中的 [ **存取控制] (IAM)** 按鈕，透過 Azure 入口網站設定記錄集層級的 Azure RBAC 許可權：
 
 ![透過 Azure 入口網站記錄集層級的 Azure RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
 
@@ -198,11 +198,11 @@ Azure Resource Manager 支援另一種類型的安全性控制，也就是鎖定
 
 若要避免進行變更，請將 ReadOnly 鎖定套用至區域。 此鎖定可防止建立新的記錄集，以及修改或刪除現有的記錄集。
 
-可以透過 Azure 入口網站來建立區域層級資源鎖定。  從 [DNS 區域] 頁面選取 [鎖定]****，然後選取 [+新增]****：
+可以透過 Azure 入口網站來建立區域層級資源鎖定。  從 [DNS 區域] 頁面選取 [鎖定]，然後選取 [+新增]：
 
 ![透過 Azure 入口網站的區域層級資源鎖定](./media/dns-protect-zones-recordsets/locks1.png)
 
-您也可以透過 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)建立區域層級資源鎖定：
+您也可以透過 [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest)建立區域層級資源鎖定：
 
 ```azurepowershell
 # Lock a DNS zone
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-對等的命令也可以[透過 Azure CLI 使用](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create)：
+對等的命令也可以[透過 Azure CLI 使用](/cli/azure/lock?view=azure-cli-latest#az-lock-create)：
 
 ```azurecli
 # Lock a DNS zone

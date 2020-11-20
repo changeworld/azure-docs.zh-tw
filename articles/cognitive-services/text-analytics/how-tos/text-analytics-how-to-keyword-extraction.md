@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 68da6a134f2410ca81ae16b8e00c40d0a9c8f22c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363628"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965012"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>範例：如何使用文字分析來將關鍵字組解壓縮
 
@@ -26,7 +26,8 @@ ms.locfileid: "94363628"
 如需詳細資訊，請參閱[支援的語言](../language-support.md)。
 
 > [!TIP]
-> 文字分析也會提供可用來擷取關鍵片語的 Linux 型 Docker 容器映像，好讓您可以在接近資料的位置[安裝和執行文字分析容器](text-analytics-how-to-install-containers.md)。
+> * 文字分析也會提供可用來擷取關鍵片語的 Linux 型 Docker 容器映像，好讓您可以在接近資料的位置[安裝和執行文字分析容器](text-analytics-how-to-install-containers.md)。
+> * 您也可以使用端點， [以非同步方式](text-analytics-how-to-call-api.md) 使用這項功能 `/analyze` 。
 
 ## <a name="preparation"></a>準備
 
@@ -159,7 +160,7 @@ ms.locfileid: "94363628"
 ```
 如同前面所述，分析器會尋找並捨棄非必要的字組，並保留看似句子主體或物件的單一字詞或片語。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解使用認知服務中的文字分析來進行關鍵字組解壓縮的概念和工作流程。 摘要說明：
 

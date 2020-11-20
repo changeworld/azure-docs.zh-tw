@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 119436cbe03e619b0d09df30ab2c5dc34126b0ce
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 20d44fd3150f9da31e9c242017e597d4f46e4d5d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629388"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963924"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>從邏輯應用程式觸發 Machine Learning 管線的執行
 
@@ -49,7 +49,7 @@ ms.locfileid: "94629388"
     > [!div class="mx-imgBorder"]
     > ![空白範本](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. 在設計工具中，搜尋 **blob** 。 選取 [ **新增或修改 Blob 時] (屬性只)** 觸發程式，並將此觸發程式新增至邏輯應用程式。
+1. 在設計工具中，搜尋 **blob**。 選取 [ **新增或修改 Blob 時] (屬性只)** 觸發程式，並將此觸發程式新增至邏輯應用程式。
     > [!div class="mx-imgBorder"]
     > ![新增觸發程序](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "94629388"
     > [!NOTE]
     > 此觸發程式會監視選取的容器，但不會監視子資料夾。
 
-1. 新增在偵測到新的或已修改的 blob 時，將會執行的 HTTP 動作。 選取 [ **+ 新增步驟** ]，然後搜尋並選取 [HTTP] 動作。
+1. 新增在偵測到新的或已修改的 blob 時，將會執行的 HTTP 動作。 選取 [ **+ 新增步驟**]，然後搜尋並選取 [HTTP] 動作。
 
   > [!div class="mx-imgBorder"]
   > ![搜尋 HTTP 動作](media/how-to-trigger-published-pipeline/search-http.png)
@@ -96,7 +96,7 @@ ms.locfileid: "94629388"
 1. 選取 [ **儲存** ]，您的排程現在已就緒。
 
 > [!IMPORTANT]
-> 如果您使用以角色為基礎的存取控制 (RBAC) 來管理管線的存取權，請 [設定管線案例的許可權 (定型或計分) ](how-to-assign-roles.md#common-scenarios)。
+> 如果您使用 Azure 角色型存取控制 (Azure RBAC) 來管理管線的存取權，請 [設定管線案例的許可權 (定型或計分) ](how-to-assign-roles.md#common-scenarios)。
 
 ## <a name="next-steps"></a>後續步驟
 

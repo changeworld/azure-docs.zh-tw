@@ -3,16 +3,17 @@ title: 在 Azure 虛擬機器上部署 Oracle 應用程式的架構 |Microsoft D
 description: 用來部署 Oracle 應用程式的應用程式架構（包括電子商務套件、JD Edwards EnterpriseOne 和 PeopleSoft），適用于 Azure 或 Oracle 雲端基礎結構中的資料庫 Microsoft Azure 虛擬機器 (OCI) 。
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6261e2b49eda2aead75d080ca3f6c2304bc49d81
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996601"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965913"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 應用程式的架構
 
@@ -113,7 +114,7 @@ Oracle 的 JD Edwards EnterpriseOne 是一套全方位企業資源規劃軟體�
 
 這一層的元件如下所示：
     
- - 布建**伺服器**-此伺服器是用來進行應用程式不同元件的端對端部署。 它會透過埠22，與其他層中的實例（包括資料庫層中的實例）通訊。 它會裝載 JD Edwards EnterpriseOne 的伺服器管理員主控台。
+ - 布建 **伺服器**-此伺服器是用來進行應用程式不同元件的端對端部署。 它會透過埠22，與其他層中的實例（包括資料庫層中的實例）通訊。 它會裝載 JD Edwards EnterpriseOne 的伺服器管理員主控台。
  - **部署伺服器** -安裝 JD Edwards EnterpriseOne 時，主要需要此伺服器。 在安裝過程中，此伺服器會作為必要檔案和安裝套件的中央存放庫。 此軟體會發佈或部署到此伺服器上的其他伺服器和用戶端。
  - **開發用戶端** -此伺服器包含可在網頁瀏覽器和原生應用程式中執行的元件。
 
@@ -123,11 +124,11 @@ Oracle 的 JD Edwards EnterpriseOne 是一套全方位企業資源規劃軟體�
 
 以下是此層中的元件：
     
-- **應用程式介面服務 (ais) ** -ais 伺服器提供 JD Edwards EnterpriseOne mobile enterprise APPLICATIONS 和 JD Edwards EnterpriseOne 之間的通訊介面。
-- **JAVA 應用程式伺服器 (ja) ** -ja 會接收來自負載平衡器的要求，並將其傳遞到仲介層以執行複雜的工作。 JA 能夠執行簡單的商務邏輯。
-- **BI Publisher Server (BIP) ** -此伺服器會根據 JD Edwards EnterpriseOne 應用程式所收集的資料提供報告。 您可以根據不同的範本來設計和控制報表轉譯資料的方式。
-- **商務服務伺服器 (bss) ** -BSS 可與其他 Oracle 應用程式進行資訊交換和互通性。
-- **即時事件伺服器 (RTE) ** -rte 伺服器可讓您設定 JDE EnterpriseOne 系統中發生交易時的外部系統通知。 它會使用訂閱者模型，並允許協力廠商系統訂閱事件。 若要將要求負載平衡至兩部 RTE 伺服器，請確定伺服器位於叢集中。
+- **應用程式介面服務 (ais)** -ais 伺服器提供 JD Edwards EnterpriseOne mobile enterprise APPLICATIONS 和 JD Edwards EnterpriseOne 之間的通訊介面。
+- **JAVA 應用程式伺服器 (ja)** -ja 會接收來自負載平衡器的要求，並將其傳遞到仲介層以執行複雜的工作。 JA 能夠執行簡單的商務邏輯。
+- **BI Publisher Server (BIP)** -此伺服器會根據 JD Edwards EnterpriseOne 應用程式所收集的資料提供報告。 您可以根據不同的範本來設計和控制報表轉譯資料的方式。
+- **商務服務伺服器 (bss)** -BSS 可與其他 Oracle 應用程式進行資訊交換和互通性。
+- **即時事件伺服器 (RTE)** -rte 伺服器可讓您設定 JDE EnterpriseOne 系統中發生交易時的外部系統通知。 它會使用訂閱者模型，並允許協力廠商系統訂閱事件。 若要將要求負載平衡至兩部 RTE 伺服器，請確定伺服器位於叢集中。
 - **應用程式開發架構 (adf) Server** -adf 伺服器是用來執行以 Oracle ADF 開發的 JD Edwards EnterpriseOne 應用程式。 這會部署在具有 ADF 執行時間的 Oracle WebLogic 伺服器上。
 
 ### <a name="middle-tier"></a>中介層
@@ -183,7 +184,7 @@ PeopleTools 用戶端是用來執行管理活動，例如開發、遷移和升�
 
 [!INCLUDE [virtual-machines-oracle-applications-identity](../../../../includes/virtual-machines-oracle-applications-identity.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用 [Terraform 腳本](https://github.com/microsoft/azure-oracle) ，在 Azure 中設定 Oracle 應用程式，並使用 OCI 建立跨雲端的連線能力。
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP、Azure、Oracle、Data Guard
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963528"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965250"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>適用于 SAP 工作負載的 Azure 虛擬機器 Oracle DBMS 部署
 
@@ -389,12 +390,12 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 | 元件 | 磁碟 | Caching | 儲存體集區 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium  |
-| \oracle\<SID>\origlogaB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
-| \oracle\<SID>\mirrlogAB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
-| \oracle\<SID>\mirrlogBA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\origlogaA | Premium 或 Ultra 磁片 | None | 可用於 Premium  |
+| \oracle\<SID>\origlogaB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
+| \oracle\<SID>\mirrlogAB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
+| \oracle\<SID>\mirrlogBA | Premium 或 Ultra 磁片 | None | 可用於 Premium |
 | \oracle\<SID>\sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 適用于 premium 的建議  |
-| \oracle\SID\sapdata(n+1)* | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\SID\sapdata(n+1)* | Premium 或 Ultra 磁片 | None | 可用於 Premium |
 | \oracle\<SID>\oraarch* | Premium 或 Ultra 磁片 | None | 不需要 |
 | Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | 不需要 |
 
@@ -482,12 +483,12 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium  |
-| /oracle/\<SID>/origlogaB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
-| /oracle/\<SID>/mirrlogAB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
-| /oracle/\<SID>/mirrlogBA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| /oracle/\<SID>/origlogaA | Premium 或 Ultra 磁片 | None | 可用於 Premium  |
+| /oracle/\<SID>/origlogaB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
+| /oracle/\<SID>/mirrlogAB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
+| /oracle/\<SID>/mirrlogBA | Premium 或 Ultra 磁片 | None | 可用於 Premium |
 | /oracle/\<SID>/sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 適用于 Premium 的建議  |
-| /oracle/\<SID>/sapdata(n+1)* | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| /oracle/\<SID>/sapdata(n+1)* | Premium 或 Ultra 磁片 | None | 可用於 Premium |
 | /oracle/\<SID>/oraarch* | Premium 或 Ultra 磁片 | None | 不需要 |
 | Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | 不需要 |
 

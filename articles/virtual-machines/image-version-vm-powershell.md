@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225643"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964859"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>預覽：從 VM 建立映射
 
@@ -23,8 +23,8 @@ ms.locfileid: "88225643"
 您可以使用 Azure PowerShell 從特製化 [和一般化](./windows/shared-image-galleries.md#generalized-and-specialized-images) vm 捕捉映射。 
 
 映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
-- **映射定義**會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
-- **映射版本**是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
+- **映射定義** 會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
+- **映射版本** 是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -44,7 +44,7 @@ ms.locfileid: "88225643"
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-一旦找到正確的資源庫和映射定義之後，請建立變數以供稍後使用。 此範例會取得*myResourceGroup*資源群組中名為 *>mygalleryrg*的資源庫。
+一旦找到正確的資源庫和映射定義之後，請建立變數以供稍後使用。 此範例會取得 *myResourceGroup* 資源群組中名為 *>mygalleryrg* 的資源庫。
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `
@@ -103,9 +103,9 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」** 和「美國中南部」** 資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。
+在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」和「美國中南部」資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。
 
-若要從 VM 建立映像版本，請使用 `$vm.Id.ToString()` 作為 `-Source`。
+若要從 VM 建立映像版本，請使用 `$vm.Id.ToString()` 作為 `-SourceImageId`。
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -119,7 +119,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $gallery.ResourceGroupName `
    -Location $gallery.Location `
    -TargetRegion $targetRegions  `
-   -Source $sourceVm.Id.ToString() `
+   -SourceImageId $sourceVm.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01' `  
    -asJob 
 ```

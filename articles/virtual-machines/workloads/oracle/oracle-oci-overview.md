@@ -3,16 +3,17 @@ title: 整合 Microsoft Azure 與 Oracle Cloud Infrastructure | Microsoft Docs
 description: 了解用於整合 Microsoft Azure 上所執行 Oracle 應用程式與 Oracle Cloud Infrastructure (OCI) 中資料庫的解決方案。
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c8d0f32821bbb3957d7787b7c3bfd733a880325b
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e8e9bf23c236f805135d7d46b969c564975448ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233911"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965403"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>用於整合 Microsoft Azure 與 Oracle Cloud Infrastructure 的 Oracle 應用程式解決方案
 

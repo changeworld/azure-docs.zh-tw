@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711182"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965573"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑難排解指南
 
 本文提供 Azure DNS 常見問題的疑難排解資訊。
 
-如果這些步驟未能解決問題，您也可以在[社群支援的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)搜尋或張貼您的問題。 或者，您可以開啟 Azure 支援要求。
+如果這些步驟未能解決問題，您也可以在[社群支援的 Microsoft 問與答頁面](/answers/topics/azure-virtual-network.html)搜尋或張貼您的問題。 或者，您可以開啟 Azure 支援要求。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>我無法建立 DNS 區域
@@ -34,14 +34,14 @@ ms.locfileid: "84711182"
 ### <a name="recommended-articles"></a>建議的文章
 
 * [DNS 區域和記錄](dns-zones-records.md)
-* [建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)
+* [建立 DNS 區域](./dns-getstarted-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>我無法建立 DNS 記錄
 
 若要解決常見的問題，請嘗試下列步驟：
 
 1.  檢閱 Azure DNS 稽核記錄以判斷失敗原因。
-2.  記錄集是否已經存在？  Azure DNS 是使用記錄*集*管理記錄，記錄集是名稱與類型相同之記錄的集合。 如果已經有名稱與類型相同的記錄存在，此時若要新增其他此類型記錄，您應該編輯現有的記錄集。
+2.  記錄集是否已經存在？  Azure DNS 是使用記錄 *集* 管理記錄，記錄集是名稱與類型相同之記錄的集合。 如果已經有名稱與類型相同的記錄存在，此時若要新增其他此類型記錄，您應該編輯現有的記錄集。
 3.  您是否正嘗試在 DNS 區域頂點 (區域的 [根]) 建立記錄？ 如果是，DNS 慣例是使用 ‘@’ 字元做為記錄名稱。 另請注意，DNS 標準不允許在區域頂點使用 CNAME 記錄。
 4.  您有 CNAME 衝突嗎？  DNS 標準不允許 CNAME 記錄的名稱和任何其他類型記錄的名稱相同。 如果您有現有的 CNAME，建立不同類型但名稱相同的記錄將會失敗。  同樣地，如果名稱和不同類型的現有記錄相同，建立 CNAME 將會失敗。 請透過移除其他記錄或選擇不同的記錄名稱來排除衝突。
 5.  您已達到 DNS 區域中允許的記錄集數目限制嗎？ Azure 入口網站中，區域的 [內容] 底下會顯示目前的記錄集數目和記錄集數目上限。 如果您已經達到此限制，請刪除部分記錄集或連絡 Azure 支援中心以提高您在此區域的記錄集上限，然後再試一次。 
@@ -50,7 +50,7 @@ ms.locfileid: "84711182"
 ### <a name="recommended-articles"></a>建議的文章
 
 * [DNS 區域和記錄](dns-zones-records.md)
-* [建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)
+* [建立 DNS 區域](./dns-getstarted-portal.md)
 
 
 
@@ -63,7 +63,7 @@ DNS 名稱解析是多步驟程序，可能會因為許多原因而失敗。 下
     - 如果您從本機電腦執行 DNS 查詢，您可能會看到沒有反映名稱伺服器目前狀態的快取結果。  而且，公司網路通常是使用會防止 DNS 查詢被導向到特定名稱伺服器的 DNS Proxy 伺服器。  為避免發生這些問題，請使用網路型名稱解析服務，例如 [digwebinterface](https://digwebinterface.com)。
     - 請務必為您的 DNS 區域指定正確的名稱伺服器，如 Azure 入口網站中所顯示的。
     - 檢查 DNS 名稱是否正確 (您將必須指定包括區域名稱在內的完整名稱) 和記錄類型是否正確
-3.  確認 DNS 網域名稱已經正確[委派給 Azure DNS 名稱伺服器](dns-domain-delegation.md)。 有[許多第三方網站可提供 DNS 委派驗證](https://www.bing.com/search?q=dns+check+tool)。 這是一個*區域*委派測試，所以您應該只輸入 DNS 區域名稱，而不是完整的記錄名稱。
+3.  確認 DNS 網域名稱已經正確[委派給 Azure DNS 名稱伺服器](dns-domain-delegation.md)。 有[許多第三方網站可提供 DNS 委派驗證](https://www.bing.com/search?q=dns+check+tool)。 這是一個 *區域* 委派測試，所以您應該只輸入 DNS 區域名稱，而不是完整的記錄名稱。
 4.  完成上述步驟之後，現在應該可以正確解析您的 DNS 記錄。 若要確認，您可以再使用一次 [digwebinterface](https://digwebinterface.com)，這一次使用預設名稱伺服器設定。
 
 
@@ -85,13 +85,12 @@ Azure DNS 是以記錄集的方式管理 DNS 記錄—記錄集是名稱與類�
 ### <a name="recommended-articles"></a>建議的文章
 
 * [DNS 區域和記錄](dns-zones-records.md)
-* [使用 Azure 入口網站建立 DNS 記錄集和記錄](dns-getstarted-create-recordset-portal.md)
+* [使用 Azure 入口網站建立 DNS 記錄集和記錄](./dns-getstarted-portal.md)
 * [SRV 記錄類型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record) \(英文\)
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解 [DNS 區域和記錄](dns-zones-records.md)
-* 若要開始使用 Azure DNS，請學習如何[建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)和[建立 DNS 記錄](dns-getstarted-create-recordset-portal.md)。
+* 若要開始使用 Azure DNS，請學習如何[建立 DNS 區域](./dns-getstarted-portal.md)和[建立 DNS 記錄](./dns-getstarted-portal.md)。
 * 若要移轉現有的 DNS 區域，請學習如何[匯入和匯出 DNS 區域檔案](dns-import-export.md)。
-

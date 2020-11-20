@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 4e2bcb683c9d4c5248315549bf6d6ee26b2a51ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873891"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965029"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性和治理
 
@@ -28,7 +28,7 @@ ms.locfileid: "94873891"
 
 ## <a name="authentication--authorization"></a>驗證 & 授權
 
-Azure Machine Learning 資源的大部分驗證都使用 Azure Active Directory (Azure AD) 進行驗證，以及以角色為基礎的存取控制 (適用于授權的 Azure RBAC) 。 例外狀況如下：
+Azure Machine Learning 資源的大部分驗證都使用 Azure Active Directory (Azure AD) 進行驗證，而 Azure 角色型存取控制 (Azure RBAC) 可供授權之用。 例外狀況如下：
 
 * __Ssh__：您可以對某些計算資源啟用 ssh 存取，例如 Azure Machine Learning 計算實例。 SSH 存取會使用以金鑰為基礎的驗證。 如需建立 SSH 金鑰的詳細資訊，請參閱 [建立和管理 ssh 金鑰](../virtual-machines/linux/create-ssh-keys-detailed.md)。 如需啟用 SSH 存取的詳細資訊，請參閱 [建立和管理 Azure Machine Learning 計算實例](how-to-create-manage-compute-instance.md)。
 * __部署為 web 服務的模型__： web 服務部署可以使用 __金鑰__ 或 __權杖__ 型存取控制。 索引鍵是靜態字串。 使用 Azure AD 帳戶取出權杖。 如需詳細資訊，請參閱 [設定部署為 web 服務的模型驗證](how-to-authenticate-web-service.md)。
@@ -49,7 +49,7 @@ Azure Machine Learning 依賴的特定服務（例如 Azure 資料儲存體服�
 
 ### <a name="azure-rbac"></a>Azure RBAC
 
-您可以建立多個工作區，而且每個工作區都可由多人共用。 您可以藉由將 Azure AD 帳戶指派給 Azure RBAC 角色，來控制使用者可存取的工作區功能或作業。 以下是內建角色：
+您可以建立多個工作區，而且每個工作區都可由多人共用。 您可以藉由將 Azure AD 帳戶指派給 Azure 角色，來控制使用者可存取的工作區功能或作業。 以下是內建角色：
 
 * 擁有者
 * 參與者
@@ -131,7 +131,7 @@ Azure Machine Learning 使用各種計算資源和資料存放區。 若要深�
 
 根據角色以及受監視的內容而定，有數個監視案例 Azure Machine Learning。
 
-| 角色 | 要使用的監視 | 說明 |
+| 角色 | 要使用的監視 | 描述 |
 | ---- | ----- | ----- |
 | Admin、DevOps、MLOps | [Azure 監視器計量](#azure-monitor)、 [活動記錄](#activity-log)、 [弱點掃描](#vulnerability-scanning) | 服務層級資訊 |
 | 資料科學家，MLOps | [監視執行](#monitor-runs) | 定型執行期間所記錄的資訊 |

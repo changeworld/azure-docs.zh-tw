@@ -3,16 +3,17 @@ title: HC 系列 VM 總覽-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中 HC 系列 VM 大小的預覽支援。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 97e0ae9ea4914cda5d92f5180199a740c02ecdf4
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994369"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965437"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
 
@@ -39,7 +40,7 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 | 核心                            | 44 (HT 已停用)                  |
 | CPU                              | Intel 的頂級白金8168         |
 | CPU 頻率 (非 AVX)           | 3.7 GHz (單一核心) ，2.7-3.4 GHz (所有核心)  |
-| 記憶體                           | 8 GB/核心 (352 總計)             |
+| Memory                           | 8 GB/核心 (352 總計)             |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
 | 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC    |
@@ -55,7 +56,7 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 | SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 +  |
 | 協調器支援        | CycleCloud，Batch  |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 Intel 以上的 [SP 架構](https://bit.ly/2RCYkiE)。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。

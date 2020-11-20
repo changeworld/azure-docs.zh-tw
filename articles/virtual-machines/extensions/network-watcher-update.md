@@ -8,16 +8,17 @@ manager: balar
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c427a206e0422e66cb526a29a462d8b6bdf6818e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900182"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965930"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>將網路監看員延伸模組更新為最新版本
 
@@ -82,7 +83,8 @@ Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+
 ```
 
 如果無法運作。 使用下列步驟，再次移除並安裝擴充功能。 這會自動新增最新版本。
@@ -143,4 +145,4 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 ## <a name="support"></a>支援
 
-如果您在本文的任何時間點需要更多協助，請參閱 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md)的網路監看員延伸模組檔。 您也可以洽詢 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或者，提出 Azure 支援事件。 移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [ **取得支援** ]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文的任何時間點需要更多協助，請參閱 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md)的網路監看員延伸模組檔。 您也可以洽詢 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或者，提出 Azure 支援事件。 移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [ **取得支援**]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

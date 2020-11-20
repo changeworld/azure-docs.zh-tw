@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342275"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965182"
 ---
 # <a name="working-with-security-policies"></a>使用安全性原則
 
@@ -44,11 +44,11 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 若要在資訊安全中心檢視安全性原則：
 
-1. 在 [資訊安全中心]**** 儀表板上，選取 [安全性解決方案]****。
+1. 在 [資訊安全中心] 儀表板上，選取 [安全性解決方案]。
 
     :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="[原則管理] 頁面":::
 
-   在 [原則管理]**** 畫面中，您可以看到管理群組、訂用帳戶和工作區數目，以及您的管理群組結構。
+   在 [原則管理] 畫面中，您可以看到管理群組、訂用帳戶和工作區數目，以及您的管理群組結構。
 
 1. 選取要檢視其原則的訂用帳戶或管理群組。
 
@@ -68,7 +68,7 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
     1. 若要查看和編輯預設原則，請選取 [ **view 有效原則** ]，然後依照下列說明進行。 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="[原則管理] 頁面":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="有效的原則畫面":::
 
        此 [ **安全性原則** ] 畫面會反映在您選取的訂用帳戶或管理群組上指派的原則所採取的動作。
        
@@ -86,10 +86,10 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 您可以透過 Azure 原則入口網站、透過 REST API 或使用 Windows PowerShell 編輯安全性原則。
 
-「安全性中心」會使用 Role-Based 存取控制 (RBAC) ，以提供可指派給 Azure 使用者、群組和服務的內建角色。 當使用者開啟資訊安全中心時，他們只會看到與其可以存取的資源相關的資訊。 這表示系統會將 *擁有*者、 *參與者*或 *讀取* 者的角色指派給資源的訂用帳戶。 另外還有兩個特定的安全性中心角色：
+「安全性中心」會使用 Azure 角色型存取控制 (Azure RBAC) ，其提供可指派給 Azure 使用者、群組和服務的內建角色。 當使用者開啟資訊安全中心時，他們只會看到與其可以存取的資源相關的資訊。 這表示系統會將 *擁有* 者、 *參與者* 或 *讀取* 者的角色指派給資源的訂用帳戶。 另外還有兩個特定的安全性中心角色：
 
 - **安全性讀取者**：有權查看安全性中心專案，例如建議、警示、原則和健康情況。 無法進行變更。
-- **安全性系統管理員**：擁有與 *安全性讀取*者相同的 view 許可權。 也可以更新安全性原則並解除警示。
+- **安全性系統管理員**：擁有與 *安全性讀取* 者相同的 view 許可權。 也可以更新安全性原則並解除警示。
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>停用安全性原則並停用建議

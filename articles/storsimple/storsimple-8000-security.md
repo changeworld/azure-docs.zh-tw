@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75891506"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966202"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和資料保護
 
@@ -269,7 +269,7 @@ StorSimple 會使用下列加密演算法，來保護儲存在 StorSimple 解決
 
 **答：** 您可以從 StorSimple 裝置管理員服務下載新的憑證，然後將它安裝在遠端存取用戶端的憑證存放區。 如需相關指示，請移至：
 
-* [Import-Certificate cmdlet](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Import-Certificate cmdlet](/powershell/module/pkiclient/import-certificate)
 
 **問：** 如果 StorSimple 裝置管理員服務遭到入侵，我的資料是否仍受保護？
 
@@ -288,4 +288,3 @@ StorSimple 會使用下列加密演算法，來保護儲存在 StorSimple 解決
 ## <a name="next-steps"></a>後續步驟
 
 [部署您的 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)。
-

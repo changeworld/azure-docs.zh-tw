@@ -9,22 +9,23 @@ manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5593257fa17944eebce6346a1eb9e88e7af2c06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852603"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965947"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在已啟用 Python 3 的 Linux Azure 虛擬機器系統中使用 VM 擴充功能的問題
 
 > [!NOTE]
-> 除非您的工作負載需要**python** 2.x 支援，否則 Microsoft 鼓勵使用者在其系統中採用**python** 3.x。 這項需求的範例可能包括舊版管理腳本或延伸模組，例如 **Azure 磁碟加密** 和 **Azure 監視器**。
+> 除非您的工作負載需要 **python** 2.x 支援，否則 Microsoft 鼓勵使用者在其系統中採用 **python** 3.x。 這項需求的範例可能包括舊版管理腳本或延伸模組，例如 **Azure 磁碟加密** 和 **Azure 監視器**。
 >
 > 在生產環境中安裝 **python** 2.x 之前，請考慮 Python 2.x 長期支援的問題，特別是他們接收安全性更新的能力。 隨著產品（包括部分延伸模組）的更新，請使用 **python 3.8** 支援進行更新，您應該不再使用 python 2.x。
 
@@ -41,7 +42,7 @@ ms.locfileid: "88852603"
 
 就地升級（例如從 **Ubuntu 18.04 LTS** 升級為 **ubuntu 20.04 LTS**）應該保留 `/usr/bin/python` 符號，且不受影響。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
 在先前的摘要所述的已知受影響案例中部署擴充功能之前，請先考慮這些一般建議：
 
@@ -90,6 +91,6 @@ ms.locfileid: "88852603"
        },
      ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需其他資訊，請參閱 [18.04 LTS 之後的其他基底系統變更（預設為 Python 3）](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default) 。

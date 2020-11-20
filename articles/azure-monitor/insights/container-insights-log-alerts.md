@@ -3,12 +3,12 @@ title: 從容器的 Azure 監視器記錄警示 |Microsoft Docs
 description: 本文說明如何從容器 Azure 監視器建立自訂記錄警示，以取得記憶體和 CPU 使用率。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995260"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966246"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器建立記錄警示
 
@@ -17,7 +17,7 @@ ms.locfileid: "91995260"
 - 當叢集節點上的 CPU 或記憶體使用量超過閾值時
 - 如果控制器內任何容器的 CPU 或記憶體使用量超過閾值（相較于對應資源上設定的限制）
 - *NotReady* 狀態節點計數
-- *失敗*、*暫*止、*未知*、執行或*成功**的 pod*階段計數
+- *失敗*、*暫* 止、*未知*、執行或 *成功**的 pod* 階段計數
 - 叢集節點上的可用磁碟空間超過閾值時
 
 若要警示高 CPU 或記憶體使用率，或叢集節點上的可用磁碟空間不足，請使用提供的查詢來建立計量警示或計量測量警示。 雖然計量警示的延遲低於記錄警示，但記錄警示可提供先進的查詢和更複雜的查詢。 記錄警示查詢會使用 *now* 運算子來比較 datetime 與目前的結果，並返回一小時。 容器的 (Azure 監視器會以國際標準時間 (UTC) 格式來儲存所有日期。 ) 
@@ -207,14 +207,14 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-下列查詢會根據所有階段（*失敗*、*暫*止、*不明*、執行中或成功 *）來*傳回*Succeeded*pod 階段計數。  
+下列查詢會根據所有階段（*失敗*、*暫* 止、*不明*、執行中或成功 *）來* 傳回 *Succeeded* pod 階段計數。  
 
 ```kusto
-let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let clusterName = '<your-cluster-name>';
-    KubePodInventory
+let endDateTime = now(); 
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubePodInventory
     | where TimeGenerated < endDateTime
     | where TimeGenerated >= startDateTime
     | where ClusterName == clusterName
@@ -224,13 +224,13 @@ let endDateTime = now();
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),
                     SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
                     FailedCount = sumif(1, PodStatus =~ 'Failed')
-                 by ClusterName, bin(TimeGenerated, trendBinSize)
+                by ClusterName, bin(TimeGenerated, trendBinSize)
     ) on ClusterName, TimeGenerated
     | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
     | project TimeGenerated,
@@ -287,7 +287,7 @@ InsightsMetrics
 4. 在左側窗格中，選取 [ **記錄** ] 以開啟 [Azure 監視器記錄] 頁面。 您可以使用此頁面來撰寫和執行 Azure 記錄查詢。
 5. 在 [ **記錄** 檔] 頁面上，將稍早提供的其中一個 [查詢](#resource-utilization-log-search-queries) 貼到 **搜尋查詢** 欄位中，然後選取 [ **執行** ] 以驗證結果。 如果您未執行此步驟，則不能選取 [ **+ 新增警示** ] 選項。
 6. 選取 [ **+ 新增警示** ] 以建立記錄警示。
-7. 在 [**條件**] 區段中，選取 [**每當自訂記錄 \<logic undefined> 搜尋是**預先定義的自訂記錄條件時]。 系統會自動選取 **自訂記錄搜尋** 信號類型，因為我們會直接從 Azure 監視器記錄] 頁面建立警示規則。  
+7. 在 [**條件**] 區段中，選取 [**每當自訂記錄 \<logic undefined> 搜尋是** 預先定義的自訂記錄條件時]。 系統會自動選取 **自訂記錄搜尋** 信號類型，因為我們會直接從 Azure 監視器記錄] 頁面建立警示規則。  
 8. 將稍早提供的其中一個 [查詢](#resource-utilization-log-search-queries) 貼到 **搜尋查詢** 欄位中。
 9. 設定警示，如下所示：
 
@@ -303,7 +303,7 @@ InsightsMetrics
 13. 選取現有的 **動作群組** 或建立新的群組。 此步驟可確保在每次觸發警示時都會採取相同的動作。 根據 IT 或 DevOps 作業小組管理事件的方式進行設定。
 14. 選取 [ **建立警示規則** ] 以完成警示規則。 此警示規則會立即開始執行。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 查看 [記錄查詢範例](container-insights-log-search.md#search-logs-to-analyze-data) 以查看預先定義的查詢和範例，以評估或自訂警示、視覺化或分析您的叢集。
 

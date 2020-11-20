@@ -3,16 +3,17 @@ title: 適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量 | Micr
 description: 適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993283"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965284"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -176,7 +177,7 @@ VM 類型不同，可連接的資料磁碟數目限制也各不相同。 另一�
 ### <a name="managed-or-nonmanaged-disks"></a>受控或非受控磁碟
 Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲存體帳戶和進階儲存體帳戶之間的限制有所不同。 如需功能和限制的相關資訊，請參閱[Azure 儲存體的可擴縮性和效能目標](../../../storage/common/scalability-targets-standard-account.md) (機器翻譯)。
 
-請記住標準儲存體對每個儲存體帳戶都有 IOPS 限制。 請參閱 [Azure 儲存體的可擴縮性和效能目標](../../../storage/common/scalability-targets-standard-account.md) (機器翻譯) 一文中包含**總要求率**的資料列。 每個 Azure 訂閱也有儲存體帳戶數目的初始限制。 將較大 SAP 環境的 VHD 平均分散到不同儲存體帳戶，可避免達到這些儲存體帳戶的限制。 討論包含上千個 VHD 的數百部虛擬機器，是很乏味的工作。
+請記住標準儲存體對每個儲存體帳戶都有 IOPS 限制。 請參閱 [Azure 儲存體的可擴縮性和效能目標](../../../storage/common/scalability-targets-standard-account.md) (機器翻譯) 一文中包含 **總要求率** 的資料列。 每個 Azure 訂閱也有儲存體帳戶數目的初始限制。 將較大 SAP 環境的 VHD 平均分散到不同儲存體帳戶，可避免達到這些儲存體帳戶的限制。 討論包含上千個 VHD 的數百部虛擬機器，是很乏味的工作。
 
 不建議將適用于 DBMS 部署的標準儲存體與 SAP 工作負載搭配使用。 因此，對標準儲存體的參考和建議僅限於這篇簡短的 [文章](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
 

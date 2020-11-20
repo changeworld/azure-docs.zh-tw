@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 1c27d02bb5b02c71d45408e6bbe320d86cc50729
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 6a13d0a0ac0b37b5faf59e19cd13e5c3c2ee94dc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354677"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965556"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教學課程：使用 DMS 在線上狀態下將 MongoDB 移轉至 Azure Cosmos DB 的 MongoDB 版 API
 
@@ -36,7 +36,7 @@ ms.locfileid: "94354677"
 > * 確認 Azure Cosmos DB 中的資料。 
 > * 在您準備就緒後完成移轉。 
 
-在本教學課程中，您會使用 Azure 資料庫移轉服務，以最短的停機時間將資料集從裝載在 Azure 虛擬機器中的 MongoDB 移轉至 Azure Cosmos DB 的 Mongo 版 API。 如果您尚未設定 MongoDB 來源，請參閱[在 Azure 中的 Windows VM 上安裝及設定 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
+在本教學課程中，您會使用 Azure 資料庫移轉服務，以最短的停機時間將資料集從裝載在 Azure 虛擬機器中的 MongoDB 移轉至 Azure Cosmos DB 的 Mongo 版 API。 如果您尚未設定 MongoDB 來源，請參閱[在 Azure 中的 Windows VM 上安裝及設定 MongoDB](../virtual-machines/windows/install-mongodb.md) 一文。
 
 > [!NOTE]
 > 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。
@@ -54,10 +54,10 @@ ms.locfileid: "94354677"
 
 * [完成移轉前](../cosmos-db/mongodb-pre-migration.md)步驟，例如估計輸送量、選擇分割索引鍵和索引編製原則。
 * [建立 Azure Cosmos DB 的 Mongo 版 API 帳戶](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 為您的內部部署來源伺服器提供站對站連線能力。
 
     > [!NOTE]
-    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將佈建服務的子網路：
+    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](../virtual-network/virtual-network-service-endpoints-overview.md)新增至將佈建服務的子網路：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -65,7 +65,7 @@ ms.locfileid: "94354677"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確定您的虛擬網路網路安全性群組 (NSG) 規則不會封鎖下列通訊連接埠：53、443、445、9354 及 10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
+* 確定您的虛擬網路網路安全性群組 (NSG) 規則不會封鎖下列通訊連接埠：53、443、445、9354 及 10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 MongoDB 伺服器 (依預設會使用 TCP 連接埠 27017)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
 
@@ -101,7 +101,7 @@ ms.locfileid: "94354677"
 
    虛擬網路會為 Azure 資料庫移轉服務提供來源 MongoDB 執行個體和目標 Azure Cosmos DB 帳戶的存取權。
 
-   如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+   如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](../virtual-network/quick-create-portal.md)一文。
 
 6. 從「進階」定價層選取 SKU。
 
@@ -142,9 +142,9 @@ ms.locfileid: "94354677"
    > Azure 資料庫移轉服務不支援以 Azure Cosmos DB 作為來源。
 
     有三種模式可連線至來源：
-   * **標準模式** ，可接受完整網域名稱或 IP 位址、連接埠號碼和連線認證。
-   * **連接字串模式** ，可接受 [連接字串 URI 格式](https://docs.mongodb.com/manual/reference/connection-string/)一文中說明的 MongoDB 連接字串。
-   * **來自 Azure 儲存體的資料** ，可接受 Blob 容器 SAS URL。 如果 Blob 容器含有 MongoDB [bsondump 工具](https://docs.mongodb.com/manual/reference/program/bsondump/)所產生的 BSON 傾印，請選取 [Blob 包含 BSON 傾印]，如果容器包含 JSON 檔案，則將其取消選取。
+   * **標準模式**，可接受完整網域名稱或 IP 位址、連接埠號碼和連線認證。
+   * **連接字串模式**，可接受 [連接字串 URI 格式](https://docs.mongodb.com/manual/reference/connection-string/)一文中說明的 MongoDB 連接字串。
+   * **來自 Azure 儲存體的資料**，可接受 Blob 容器 SAS URL。 如果 Blob 容器含有 MongoDB [bsondump 工具](https://docs.mongodb.com/manual/reference/program/bsondump/)所產生的 BSON 傾印，請選取 [Blob 包含 BSON 傾印]，如果容器包含 JSON 檔案，則將其取消選取。
 
      如果您選取此選項，請確定儲存體帳戶連接字串以下列格式顯示：
 
@@ -190,7 +190,7 @@ ms.locfileid: "94354677"
 
    如果字串 **Create** 出現在資料庫名稱旁邊，則代表 Azure 資料庫移轉服務未找到目標資料庫，且服務會為您建立該資料庫。
 
-   在這個移轉階段，如果您想要在資料庫上共用輸送量，請指定輸送量 RU。 在 Cosmos DB 中，您可以在資料庫層級或以個別進行的方式，為每個集合佈建輸送量。 輸送量會以[要求單位](https://docs.microsoft.com/azure/cosmos-db/request-units) (RU) 來測量。 深入了解 [Azure Cosmos DB 定價](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+   在這個移轉階段，如果您想要在資料庫上共用輸送量，請指定輸送量 RU。 在 Cosmos DB 中，您可以在資料庫層級或以個別進行的方式，為每個集合佈建輸送量。 輸送量會以[要求單位](../cosmos-db/request-units.md) (RU) 來測量。 深入了解 [Azure Cosmos DB 定價](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
    ![對應到目標資料庫](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "94354677"
     > [!NOTE]
     > 如有必要，可使用多個 Azure 資料庫移轉服務執行個體來平行執行資料庫移轉及集合，以加快執行速度。
 
-   您也可以指定分區索引鍵以便利用 [Azure Cosmos DB 中的資料分割](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview)，從而獲得最佳延展性。 請務必檢閱[選取分區/資料分割索引鍵的最佳做法](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)。 如果您沒有分割區索引鍵，您一律可以使用 **_id** 作為分區索引鍵，以達到更理想的輸送量。
+   您也可以指定分區索引鍵以便利用 [Azure Cosmos DB 中的資料分割](../cosmos-db/partitioning-overview.md)，從而獲得最佳延展性。 請務必檢閱[選取分區/資料分割索引鍵的最佳做法](../cosmos-db/partitioning-overview.md#choose-partitionkey)。 如果您沒有分割區索引鍵，您一律可以使用 **_id** 作為分區索引鍵，以達到更理想的輸送量。
 
    ![選取集合資料表](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 

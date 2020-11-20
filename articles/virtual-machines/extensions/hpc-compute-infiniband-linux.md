@@ -7,17 +7,18 @@ author: vermagit
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a5aa8983e6cbb0745e05ce275edeadeccb60736
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829045"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966032"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>適用于 Linux 的可駕駛驅動程式擴充功能
 
@@ -27,7 +28,7 @@ ms.locfileid: "87829045"
 
 此外，也可以使用擴充功能來安裝適用于 [Windows vm](hpc-compute-infiniband-windows.md)的無系統驅動程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -137,7 +138,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>將擴充功能新增至虛擬機器擴展集
 
-下列範例會在名為 *>myvmss* 的資源群組中部署的現有虛擬機器擴展集（名為 *myResourceGroup*的資源群組）中，將最新版本 1.1 InfiniBandDriverLinux 擴充功能安裝在所有支援 RDMA 的 vm 上：
+下列範例會在名為 *>myvmss* 的資源群組中部署的現有虛擬機器擴展集（名為 *myResourceGroup* 的資源群組）中，將最新版本 1.1 InfiniBandDriverLinux 擴充功能安裝在所有支援 RDMA 的 vm 上：
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"

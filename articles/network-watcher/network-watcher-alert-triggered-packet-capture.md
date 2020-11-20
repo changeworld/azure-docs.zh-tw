@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975066"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965661"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視
 
@@ -35,11 +35,11 @@ ms.locfileid: "90975066"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 最新版的 [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * 網路監看員的現有執行個體。 如果您還沒有，請[建立網路監看員執行個體](network-watcher-create.md)。
-* 在含有 [Windows 擴充功能](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虛擬機器擴充功能](../virtual-machines/linux/extensions-nwa.md)的網路監看員所在區域中的現有虛擬機器。
+* 在含有 [Windows 擴充功能](../virtual-machines/extensions/network-watcher-windows.md)或 [Linux 虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-linux.md)的網路監看員所在區域中的現有虛擬機器。
 
 ## <a name="scenario"></a>狀況
 
@@ -68,11 +68,11 @@ ms.locfileid: "90975066"
 
 第一個步驟是建立 Azure 函式來處理警示，以及建立封包擷取。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]**** > [計算]**** > [函數應用程式]****。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源] > [計算] > [函數應用程式]。
 
     ![建立函式應用程式][1-1]
 
-2. 在 [函數應用程式]**** 刀鋒視窗上，輸入下列值，然後選取 [確定]**** 以建立應用程式︰
+2. 在 [函數應用程式] 刀鋒視窗上，輸入下列值，然後選取 [確定] 以建立應用程式︰
 
     |**設定** | **值** | **詳細資料** |
     |---|---|---|
@@ -83,9 +83,9 @@ ms.locfileid: "90975066"
     |**位置**|美國中部| 要在其中建立函數應用程式的區域。|
     |**儲存體帳戶**|{自動產生}| Azure Functions 針對一般用途的儲存所需的儲存體帳戶。|
 
-3. 在 [PacketCaptureExample 函數應用程式]**** 刀鋒視窗上，選取 [函式]**** > [自訂函式]**** >[+]****。
+3. 在 [PacketCaptureExample 函數應用程式] 刀鋒視窗上，選取 [函式] > [自訂函式] >[+]。
 
-4. 選取 [HttpTrigger-Powershell]****，然後輸入其餘資訊。 最後，若要建立函式，請選取 [建立]****。
+4. 選取 [HttpTrigger-Powershell]，然後輸入其餘資訊。 最後，若要建立函式，請選取 [建立]。
 
     |**設定** | **值** | **詳細資料** |
     |---|---|---|
@@ -136,11 +136,11 @@ ms.locfileid: "90975066"
 
     * Az.Resources
 
-1. 以滑鼠右鍵按一下 [ **Az. Network** ] 子資料夾，然後選取 **[上傳**檔案]。 
+1. 以滑鼠右鍵按一下 [ **Az. Network** ] 子資料夾，然後選取 **[上傳** 檔案]。 
 
-6. 前往 Azure 模組。 在 [本機 **Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]。 
+6. 前往 Azure 模組。 在 [本機 **Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]  。 
 
-7. 針對 **Az. Accounts** 和 **az. 資源**重複這些步驟。
+7. 針對 **Az. Accounts** 和 **az. 資源** 重複這些步驟。
 
     ![上傳檔案][functions6]
 
@@ -207,11 +207,11 @@ $Encryptedpassword
    > [!NOTE]
    > 建立應用程式時所使用的密碼，應該與稍早在儲存金鑰檔案時所建立的密碼相同。
 
-1. 在 Azure 入口網站中，選取 [訂用帳戶]****。 選取要使用的訂用帳戶，然後選取 [存取控制 (IAM)]****。
+1. 在 Azure 入口網站中，選取 [訂用帳戶]。 選取要使用的訂用帳戶，然後選取 [存取控制 (IAM)]。
 
     ![函式 IAM][functions9]
 
-1. 選擇要使用的帳戶，然後選取 [屬性]****。 複製應用程式識別碼。
+1. 選擇要使用的帳戶，然後選取 [屬性]。 複製應用程式識別碼。
 
     ![函數應用程式識別碼][functions10]
 
@@ -225,7 +225,7 @@ $Encryptedpassword
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-AzureCredPassword 環境變數的值是執行下列 PowerShell 範例所取得的值。 這個範例與前面的＜加密的認證＞**** 一節所顯示的範例相同。 所需的值是 `$Encryptedpassword` 變數的輸出。  這是使用 PowerShell 指令碼所加密的服務主體密碼。
+AzureCredPassword 環境變數的值是執行下列 PowerShell 範例所取得的值。 這個範例與前面的＜加密的認證＞一節所顯示的範例相同。 所需的值是 `$Encryptedpassword` 變數的輸出。  這是使用 PowerShell 指令碼所加密的服務主體密碼。
 
 ```powershell
 #Variables
@@ -250,7 +250,7 @@ $Encryptedpassword
 
     ![進行應用程式設定][functions11]
 
-1. 將環境變數及其值新增至應用程式設定，然後選取 [儲存]****。
+1. 將環境變數及其值新增至應用程式設定，然後選取 [儲存]。
 
     ![應用程式設定][functions12]
 
@@ -340,11 +340,11 @@ $Encryptedpassword
 
 ### <a name="create-the-alert-rule"></a>建立警示規則
 
-前往現有的虛擬機器，然後新增警示規則。 如需設定警示相關的詳細文件，請參閱[在 Azure 服務的 Azure 監視器中建立警示 - Azure 入口網站](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在 [警示規則]**** 刀鋒視窗中輸入下列值，然後選取 [確定]****。
+前往現有的虛擬機器，然後新增警示規則。 如需設定警示相關的詳細文件，請參閱[在 Azure 服務的 Azure 監視器中建立警示 - Azure 入口網站](../azure-monitor/platform/alerts-classic-portal.md)。 在 [警示規則] 刀鋒視窗中輸入下列值，然後選取 [確定]。
 
   |**設定** | **值** | **詳細資料** |
   |---|---|---|
-  |**名稱**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
+  |**Name**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
   |**說明**|傳送的 TCP 區段超出閾值|警示規則的描述。|
   |**計量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
   |**Condition**|大於| 評估計量所用的條件。|
@@ -353,21 +353,21 @@ $Encryptedpassword
   |**Webhook**|[函數應用程式中的 Webhook URL]| 先前步驟中所建立函數應用程式中的 Webhook URL。|
 
 > [!NOTE]
-> TCP 區段計量預設不會啟用。 若要深入了解如何啟用其他計量，請造訪[啟用監視和診斷](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)。
+> TCP 區段計量預設不會啟用。 若要深入了解如何啟用其他計量，請造訪[啟用監視和診斷](../azure-monitor/overview.md)。
 
 ## <a name="review-the-results"></a>檢閱結果
 
-觸發警示的準則之後，會建立封包擷取。 前往網路監看員，然後選取 [封包擷取]****。 在這個頁面上，您可以選取封包擷取檔案連結以下載封包擷取。
+觸發警示的準則之後，會建立封包擷取。 前往網路監看員，然後選取 [封包擷取]。 在這個頁面上，您可以選取封包擷取檔案連結以下載封包擷取。
 
 ![檢視封包擷取][functions14]
 
 如果擷取檔案儲存在本機，則可登入虛擬機器進行擷取。
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一個可用的工具是[儲存體總管](https://storageexplorer.com/)。
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 另一個可用的工具是[儲存體總管](https://storageexplorer.com/)。
 
 下載您的擷取後，您可以使用可讀取 **.cap** 檔案的任何工具來檢視它。 以下是其中兩個工具的連結︰
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)
 - [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>後續步驟

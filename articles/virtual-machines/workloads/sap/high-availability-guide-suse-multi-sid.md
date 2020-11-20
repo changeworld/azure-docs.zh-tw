@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 1ba6a19b271943c7ecbe2254ef2544a5f576ad3d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167418"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965233"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 SUSE Linux Enterprise Server
 
@@ -96,7 +97,7 @@ ms.locfileid: "92167418"
 ![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
-> 在 Azure Vm 中，支援以 SUSE Linux 作為客體作業系統的 SAP ASCS/ERS 多重 SID 叢集，在相同的叢集上受限於 **五個** sap sid。 每個新的 SID 都會增加複雜度。 **不支援**在相同的叢集上混用 SAP 排入佇列複寫伺服器1和排入佇列複寫伺服器2。 多重 SID 叢集描述在一個 Pacemaker 叢集中安裝具有不同 Sid 的多個 SAP ASCS/ERS 實例。 目前只支援 ASCS/ERS 的多重 SID 叢集。  
+> 在 Azure Vm 中，支援以 SUSE Linux 作為客體作業系統的 SAP ASCS/ERS 多重 SID 叢集，在相同的叢集上受限於 **五個** sap sid。 每個新的 SID 都會增加複雜度。 **不支援** 在相同的叢集上混用 SAP 排入佇列複寫伺服器1和排入佇列複寫伺服器2。 多重 SID 叢集描述在一個 Pacemaker 叢集中安裝具有不同 Sid 的多個 SAP ASCS/ERS 實例。 目前只支援 ASCS/ERS 的多重 SID 叢集。  
 
 > [!TIP]
 > SAP ASCS/ERS 的多重 SID 叢集是複雜性較高的解決方案。 更複雜的方式是執行。 在執行維護活動時，也需要較高的系統管理工作， (例如 OS 修補) 。 開始實際執行之前，請花一些時間仔細規劃部署以及所有相關的元件，例如 Vm、NFS 掛接、Vip、負載平衡器設定等等。  
@@ -112,7 +113,7 @@ NFS 伺服器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
   * NW2 的 IP 位址：10.3.1.16
   * NW3 的 IP 位址：10.3.1.13
 * 探查埠
-  * 埠 620<strong> &lt; nr &gt; </strong>，因此適用于 NW1、NW2 和 NW3 探查埠 620**00**、620**10**和 620**20**
+  * 埠 620 <strong> &lt; nr &gt;</strong>，因此適用于 NW1、NW2 和 NW3 探查埠 620 **00**、620 **10** 和 620 **20**
 * 負載平衡規則- 
 * 為每個實例建立一個實例，也就是 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
   * 若使用 Standard Load Balancer，請選取 [HA 連接埠]
@@ -132,7 +133,7 @@ NFS 伺服器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
   * NW2 10.3.1.17 的 IP 位址
   * NW3 10.3.1.19 的 IP 位址
 * 探查連接埠
-  * 埠 621<strong> &lt; nr &gt; </strong>，因此適用于 NW1、NW2 和 N # 探查埠 621**02**、621**12**和 621**22**
+  * 埠 621 <strong> &lt; nr &gt;</strong>，因此適用于 NW1、NW2 和 N # 探查埠 621 **02**、621 **12** 和 621 **22**
 * 負載平衡規則-為每個實例建立一個規則，也就是 NW1/ERS、NW2/ERS 和 NW3/ERS。
   * 若使用 Standard Load Balancer，請選取 [HA 連接埠]
   * 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
@@ -174,11 +175,11 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
 
 ## <a name="deploy-additional-sap-systems-in-the-cluster"></a>在叢集中部署其他 SAP 系統
 
-在此範例中，我們假設已在叢集中部署系統 **NW1** 。 我們將示範如何在叢集 SAP systems **NW2** 和 **NW3**中進行部署。 
+在此範例中，我們假設已在叢集中部署系統 **NW1** 。 我們將示範如何在叢集 SAP systems **NW2** 和 **NW3** 中進行部署。 
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
-### <a name="prerequisites"></a>必要條件 
+### <a name="prerequisites"></a>Prerequisites 
 
 > [!IMPORTANT]
 > 依照指示，在叢集中部署其他 SAP 系統之前，請遵循指示，在叢集中部署第一個 SAP 系統，因為只有在第一次部署系統時才需要執行這些步驟。  
@@ -290,7 +291,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
 
 2. **[1]** 安裝 SAP NetWeaver ASCS  
 
-   使用對應至 ASCS 負載平衡器前端設定 IP 位址的虛擬主機名稱，將 SAP NetWeaver ASCS 安裝為 root。 例如，在系統 **NW2**中，虛擬主機名稱為 <b>msnw2ascs</b>、 <b>10.3.1.16</b> 和您用於探查負載平衡器的實例號碼，例如 <b>10</b>。 針對系統 **NW3**，虛擬主機名稱為 <b>msnw3ascs</b>、 <b>10.3.1.13</b> 和您用於探查負載平衡器的實例號碼，例如 <b>20</b>。
+   使用對應至 ASCS 負載平衡器前端設定 IP 位址的虛擬主機名稱，將 SAP NetWeaver ASCS 安裝為 root。 例如，在系統 **NW2** 中，虛擬主機名稱為 <b>msnw2ascs</b>、 <b>10.3.1.16</b> 和您用於探查負載平衡器的實例號碼，例如 <b>10</b>。 針對系統 **NW3**，虛擬主機名稱為 <b>msnw3ascs</b>、 <b>10.3.1.13</b> 和您用於探查負載平衡器的實例號碼，例如 <b>20</b>。
 
    您可以使用 sapinst 參數 SAPINST_REMOTE_ACCESS_USER 來允許非 root 使用者連線到 sapinst。 您可以使用參數 SAPINST_USE_HOSTNAME，使用虛擬主機名稱來安裝 SAP。  
 
@@ -298,7 +299,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   如果安裝無法在/usr/sap/**SID**/ASCS**實例 #** 中建立子資料夾，請嘗試將 [擁有者] 設為 [ **sid**adm]，並將 [群組] 設定為 ASCS**實例 #** 的 sapsys，然後重試。
+   如果安裝無法在/usr/sap/**SID**/ASCS **實例 #** 中建立子資料夾，請嘗試將 [擁有者] 設為 [ **sid** adm]，並將 [群組] 設定為 ASCS **實例 #** 的 sapsys，然後重試。
 
 3. **[1]** 針對您要部署到叢集的額外 SAP 系統，建立 ERS 實例的虛擬 IP 和健康情況探查叢集資源。 此處顯示的範例適用于使用高可用性 NFS 伺服器的 **NW2** 和 **NW3** ERS。 
 
@@ -340,7 +341,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
 
 4. **[2]** 安裝 SAP NetWeaver ERS
 
-   使用對應至 ERS 負載平衡器前端設定 IP 位址的虛擬主機名稱，將 SAP NetWeaver ERS 安裝為另一個節點上的根節點。 例如，在系統 **NW2**中，虛擬主機名稱為 <b>msnw2ers</b>、 <b>10.3.1.17</b> 和您用於探查負載平衡器的實例號碼，例如 <b>12</b>。 若為系統 **NW3**，則為虛擬主機名稱 <b>msnw3ers</b>、 <b>10.3.1.19</b> ，以及用於探查負載平衡器的實例號碼，例如 <b>22</b>。 
+   使用對應至 ERS 負載平衡器前端設定 IP 位址的虛擬主機名稱，將 SAP NetWeaver ERS 安裝為另一個節點上的根節點。 例如，在系統 **NW2** 中，虛擬主機名稱為 <b>msnw2ers</b>、 <b>10.3.1.17</b> 和您用於探查負載平衡器的實例號碼，例如 <b>12</b>。 若為系統 **NW3**，則為虛擬主機名稱 <b>msnw3ers</b>、 <b>10.3.1.19</b> ，以及用於探查負載平衡器的實例號碼，例如 <b>22</b>。 
 
    您可以使用 sapinst 參數 SAPINST_REMOTE_ACCESS_USER 來允許非 root 使用者連線到 sapinst。 您可以使用參數 SAPINST_USE_HOSTNAME，使用虛擬主機名稱來安裝 SAP。  
 
@@ -351,7 +352,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
    > [!NOTE]
    > 請使用 SWPM SP 20 PL 05 或更高版本。 較低版本無法正確設定權限，因而會讓安裝失敗。
 
-   如果安裝無法在/usr/sap/**NW2**/ERS**實例 #** 中建立子資料夾，請嘗試將 [擁有者] 設定為 [ **sid**adm]，並將群組設定為 [ERS**實例 #** ] 資料夾的 sapsys，然後再試一次。
+   如果安裝無法在/usr/sap/**NW2**/ERS **實例 #** 中建立子資料夾，請嘗試將 [擁有者] 設定為 [ **sid** adm]，並將群組設定為 [ERS **實例 #** ] 資料夾的 sapsys，然後再試一次。
 
    如果您需要將新部署的 SAP 系統的 ERS 群組遷移至不同的叢集節點，請記得移除 ERS 群組的位置限制式。 您可以藉由執行下列命令來移除條件約束 (針對 SAP systems **NW2** 和 **NW3**) 提供範例。  
 
@@ -772,7 +773,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   以 **nw2**adm 的形式執行下列命令，以遷移 nw2 ASCS 實例。
+   以 **nw2** adm 的形式執行下列命令，以遷移 nw2 ASCS 實例。
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""

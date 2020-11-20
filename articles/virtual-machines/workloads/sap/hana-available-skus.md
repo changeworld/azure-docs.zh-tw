@@ -8,18 +8,19 @@ manager: juergent
 editor: ''
 keywords: S224、S448、S672、Optane、SAP、HANA、Sku、S896、、、、
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08872b95c4cff3c261a545f117cc4e6bf24e15a5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411468"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964757"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>適用于 HANA 大型實例的可用 Sku
 
@@ -104,9 +105,9 @@ Azure 區域中的數個 Azure 區域中有數個 Azure 區域中的數個設定
 
 完整的 HANA 大型執行個體戳記並非僅配置給單一客戶使用。 這項事實也適用於透過 Azure 中所部署的網路網狀架構連線的計算與儲存資源的機架。 「HANA 大型執行個體」基礎結構和 Azure 一樣，會在下列三個層面部署彼此隔離的不同客戶&quot;租用戶&quot;：
 
-- **網路** ：透過「HANA 大型實例」戳記內的虛擬網路隔離。
-- **儲存體** ：透過已指派存放磁片區並隔離租使用者之間存放磁片區的儲存體虛擬機器來隔離。
-- **計算** ：專用的伺服器單位指派給單一租使用者。 不對伺服器單位進行硬體分割或軟體分割。 不在租用戶之間共用單一伺服器或主機單位。 
+- **網路**：透過「HANA 大型實例」戳記內的虛擬網路隔離。
+- **儲存體**：透過已指派存放磁片區並隔離租使用者之間存放磁片區的儲存體虛擬機器來隔離。
+- **計算**：專用的伺服器單位指派給單一租使用者。 不對伺服器單位進行硬體分割或軟體分割。 不在租用戶之間共用單一伺服器或主機單位。 
 
 不同租用戶之間的 HANA 大型執行個體單位部署不會讓彼此看到。 部署在不同租用戶的 HANA 大型執行個體單位無法在 HANA 大型執行個體戳記層級上直接與其他單位進行通訊。 只有同一個租用戶內的 HANA 大型執行個體單位可以在 HANA 大型執行個體戳記層級上與其他單位進行通訊。
 

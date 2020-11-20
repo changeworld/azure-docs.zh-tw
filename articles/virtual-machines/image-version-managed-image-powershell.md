@@ -9,20 +9,20 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225531"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964876"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>從受控映射遷移至共用映射庫映射
 
 如果您想要將現有的受控映射遷移至共用映射庫，您可以直接從受控映射建立共用映射庫映射。 當您測試新映射之後，就可以刪除來源受控映射。 您也可以使用 [Azure CLI](image-version-managed-image-cli.md)，從受控映射遷移至共用映射庫。
 
 映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
-- **映射定義**會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
-- **映射版本**是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
+- **映射定義** 會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
+- **映射版本** 是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -39,7 +39,7 @@ ms.locfileid: "88225531"
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-找到正確的圖庫之後，請建立變數以供稍後使用。 此範例會取得*myResourceGroup*資源群組中名為 *>mygalleryrg*的資源庫。
+找到正確的圖庫之後，請建立變數以供稍後使用。 此範例會取得 *myResourceGroup* 資源群組中名為 *>mygalleryrg* 的資源庫。
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `
@@ -88,7 +88,7 @@ $managedImage = Get-AzImage `
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」** 和「美國中南部」** 資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。 
+在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」和「美國中南部」資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。 
 
 
 ```azurepowershell-interactive
@@ -102,7 +102,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $imageDefinition.ResourceGroupName `
    -Location $imageDefinition.Location `
    -TargetRegion $targetRegions  `
-   -Source $managedImage.Id.ToString() `
+   -SourceImageId $managedImage.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-31' `
    -asJob 
 ```

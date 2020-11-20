@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e976199730ec74f9e76b9f4199e90e192916474
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88042746"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966712"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS 私人區域的自動註冊功能為何
 
@@ -29,7 +29,7 @@ Azure DNS 私人區域自動註冊功能，可讓您在虛擬網路中部署的�
 
 * 自動註冊僅適用于虛擬機器。 針對其他所有資源（例如內部負載平衡器等），您可以在連結至虛擬網路的私人 DNS 區域中手動建立 DNS 記錄。
 * 只會針對主要虛擬機器 NIC 自動建立 DNS 記錄。 如果您的虛擬機器有一個以上的 NIC，您可以手動建立其他網路介面的 DNS 記錄。
-* 只有在主要虛擬機器 NIC 使用 DHCP 時，才會自動建立 DNS 記錄。 如果已設定靜態 IP 位址 (例如，若要 [在 Azure) 中使用多個 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config) ，自動註冊不會建立該虛擬機器的記錄。
+* 只有在主要虛擬機器 NIC 使用 DHCP 時，才會自動建立 DNS 記錄。 如果已設定靜態 IP 位址 (例如，若要 [在 Azure) 中使用多個 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config) ，自動註冊不會建立該虛擬機器的記錄。
 * 不支援自動註冊的 IPv6 (AAAA 記錄) 。
 
 ## <a name="next-steps"></a>後續步驟

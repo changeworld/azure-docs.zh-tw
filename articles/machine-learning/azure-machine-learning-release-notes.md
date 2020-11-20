@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542128"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965828"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -210,7 +210,7 @@ ms.locfileid: "94542128"
     + 已更新 AzureML MLflow 檔和筆記本範例 
     + 使用 AzureML 後端 MLflow 專案的新支援
     + MLflow 模型登錄支援
-    + 新增 AzureML-MLflow 作業的 RBAC 支援 
+    + 已新增 AzureML-MLflow 作業的 Azure RBAC 支援 
     
   + **azureml-pipeline-core**
     + 改良 PipelineOutputFileDataset.parse_ * 方法的檔。
@@ -443,7 +443,7 @@ ms.locfileid: "94542128"
   + **azureml-pipeline-steps**
     + Azureml-管線-步驟的更新。
     +  已新增 ParallelRunConfig 的支援， `load_yaml()` 可讓使用者定義以 rest 設定或個別檔案內嵌的環境
-  + **azureml-定型-automl-client** 。
+  + **azureml-定型-automl-client**。
     + 已移除在 AutoMLConfig 中指定的功能 `enable_cache`
   + **azureml-train-automl-runtime**
     + 新增了具有 BERT 的多重 noded、多重 gpu 分散式特徵化的有限可用性。
@@ -1195,7 +1195,7 @@ ms.locfileid: "94542128"
     + 新增對 pandas 的支援。 數列和 pandas。 用於偵測資料行資料類型的類別。 先前只支援 numpy. ndarray
       + 已新增相關的程式碼變更，以正確地處理類別 dtype。
     + 已改善預測函數介面： y_pred 參數設為選擇性。 -Docstrings 已改善。
-  + **azureml-contrib-資料集**
+  + **azureml-contrib-dataset**
     + 修正無法裝載標記資料集的 bug。
   + **azureml-core**
     + 修正的錯誤 `Environment.from_existing_conda_environment(name, conda_environment_name)` 。 使用者可以建立環境的實例，該實例是本機環境的精確複本
@@ -1976,7 +1976,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + **azureml-pipeline-steps**
     + DatabricksStep 中的輸入和輸出現在支援 DBFS 資料存放區。
     + 針對輸入/輸出的 Azure Batch 步驟更新檔。
-    + 在」已 azurebatchstep 中， *delete_batch_job_after_finish* 預設值變更為 *true* 。
+    + 在」已 azurebatchstep 中， *delete_batch_job_after_finish* 預設值變更為 *true*。
   + **azureml-telemetry**
     +  將 azureml-contrib-opendatasets 移至 azureml-opendatasets。
     + 允許將開放式資料集類別註冊到 Azure Machine Learning 工作區，並順暢地利用 AML 資料集功能。

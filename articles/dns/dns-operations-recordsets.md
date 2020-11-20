@@ -12,18 +12,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
-ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701727"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965709"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄和記錄集
 
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](dns-operations-recordsets-portal.md)
-> * [Azure 傳統 CLI](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure 傳統 CLI](./dns-operations-recordsets-cli.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -162,7 +162,7 @@ New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -Res
 
 若要擷取現有的記錄集，使用 `Get-AzDnsRecordSet`。 此 cmdlet 會傳回 Azure DNS 中代表記錄集的本機物件。
 
-如同 `New-AzDnsRecordSet`，提供的記錄集名稱必須是*相對*名稱，表示它不能包含區域名稱。 您也必須指定記錄類型，以及包含記錄集的區域。
+如同 `New-AzDnsRecordSet`，提供的記錄集名稱必須是 *相對* 名稱，表示它不能包含區域名稱。 您也必須指定記錄類型，以及包含記錄集的區域。
 
 下列範例示範如何擷取記錄集。 在此範例中，使用 `-ZoneName` 和 `-ResourceGroupName` 參數來指定區域。
 
@@ -230,7 +230,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 
 使用 ，用指定的記錄集`Set-AzDnsRecordSet` *取代* Azure DNS 中現有的記錄集 (與其中所包含的所有記錄)。 [Etag 檢查 ](dns-zones-records.md#etags) 是用來確保並行變更不會遭到覆寫。 您可以使用選擇性的 `-Overwrite` 參數來停用這些檢查。
 
-作業的此序列也可以「經由管道輸送」**，亦即使用管道傳遞記錄集物件，而不是以參數進行傳遞。
+作業的此序列也可以「經由管道輸送」，亦即使用管道傳遞記錄集物件，而不是以參數進行傳遞。
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
@@ -282,7 +282,7 @@ Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyRes
     * 新增或移除記錄
     * 變更現有記錄的參數
     * 變更記錄集中繼資料和存留時間 (TTL)
-3. 使用 `Set-AzDnsRecordSet` Cmdlet 來認可您所做的變更。 這會以指定的記錄集*取代* Azure DNS 中現有的記錄集。
+3. 使用 `Set-AzDnsRecordSet` Cmdlet 來認可您所做的變更。 這會以指定的記錄集 *取代* Azure DNS 中現有的記錄集。
 
 使用 `Set-AzDnsRecordSet` 時，會使用 [Etag 檢查](dns-zones-records.md#etags) 來確保不會覆寫並行變更。 您可以使用選擇性的 `-Overwrite` 參數來停用這些檢查。
 
@@ -390,7 +390,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 如需 `-Confirm` 和 `$ConfirmPreference` 的詳細資訊，請參閱[有關喜好設定變數](/powershell/module/microsoft.powershell.core/about/about_preference_variables)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解[ Azure DNS 中的區域和記錄](dns-zones-records.md)。
 <br>

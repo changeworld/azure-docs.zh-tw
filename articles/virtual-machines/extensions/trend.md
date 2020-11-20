@@ -4,16 +4,17 @@ description: 本文說明如何在 Azure 中，在以傳統部署模型建立的
 author: axayjo
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6d80287d05517933f066d5e49fa31e78a48943
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288511"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966373"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安裝和設定 Trend Micro Deep Security as a Service
 
@@ -32,19 +33,19 @@ ms.locfileid: "87288511"
 
 當您使用來自 **Marketplace** 的映像建立虛擬機器時，[Azure 入口網站](https://portal.azure.com)可讓您安裝 Trend Micro 安全性擴充功能。 如果您打算建立單一虛擬機器，使用此入口網站可輕易地新增 Trend Micro 的防護。
 
-使用來自 **Marketplace** 的項目會開啟能協助您設定虛擬機器的精靈。 您會使用精靈中的第三個面板 [設定]**** 刀鋒視窗，來安裝 Trend Micro 安全性擴充功能。  如需一般指示，請參閱[在 Azure 入口網站中建立執行 Windows 的虛擬機器](../windows/quick-create-portal.md)。
+使用來自 **Marketplace** 的項目會開啟能協助您設定虛擬機器的精靈。 您會使用精靈中的第三個面板 [設定] 刀鋒視窗，來安裝 Trend Micro 安全性擴充功能。  如需一般指示，請參閱[在 Azure 入口網站中建立執行 Windows 的虛擬機器](../windows/quick-create-portal.md)。
 
-當您進入精靈的**設定**刀鋒視窗時，請執行下列步驟：
+當您進入精靈的 **設定** 刀鋒視窗時，請執行下列步驟：
 
-1. 按一下 [擴充功能]****，然後在下一個窗格中按一下 [新增擴充功能]****。
+1. 按一下 [擴充功能]，然後在下一個窗格中按一下 [新增擴充功能]。
 
    ![開始新增擴充功能][1]
 
-2. 在 [新增資源]**** 窗格中選取 [Deep Security 代理程式]****。 在 [Deep Security 代理程式] 窗格中，按一下 [建立]****。
+2. 在 [新增資源] 窗格中選取 [Deep Security 代理程式]。 在 [Deep Security 代理程式] 窗格中，按一下 [建立]。
 
    ![識別 Deep Security Agent][2]
 
-3. 輸入擴充功能的**租用戶識別碼**和**租用戶啟用密碼**。 您可以選擇性地輸入**安全性原則識別碼**。 然後按一下 [確定]**** 來新增用戶端。
+3. 輸入擴充功能的 **租用戶識別碼** 和 **租用戶啟用密碼**。 您可以選擇性地輸入 **安全性原則識別碼**。 然後按一下 [確定] 來新增用戶端。
 
    ![提供擴充功能詳細資料][3]
 

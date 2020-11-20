@@ -7,13 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094053"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965046"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>瞭解 Azure 春季雲端的計量
 
@@ -32,7 +31,7 @@ Azure 計量瀏覽器是 Microsoft Azure 入口網站的元件，可讓您繪製
 
  ![應用程式計量管理](media/metrics/metrics-2.png)
 
-每個應用程式的 [應用程式概觀]**** 頁面都會呈現計量圖表，可讓您執行應用程式狀態快速檢查。  
+每個應用程式的 [應用程式概觀] 頁面都會呈現計量圖表，可讓您執行應用程式狀態快速檢查。  
 
  ![應用程式計量總覽](media/metrics/metrics-3.png)
 
@@ -82,7 +81,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 ![度量分割](media/metrics/metrics-8.png)
 
 >[!TIP]
-> 您可以在 [計量] 頁面上建立您自己的圖表，並將其釘選到 **儀表板**。 從命名圖表開始。  接下來，選取右上角的 [釘選至儀表板]****。 您現在可以在入口網站 [儀表板]**** 檢查應用程式。
+> 您可以在 [計量] 頁面上建立您自己的圖表，並將其釘選到 **儀表板**。 從命名圖表開始。  接下來，選取右上角的 [釘選至儀表板]。 您現在可以在入口網站 [儀表板] 檢查應用程式。
 
 ## <a name="user-metrics-options"></a>使用者度量選項
 
@@ -90,13 +89,13 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 ### <a name="error"></a>錯誤
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat。錯誤 | tomcat。錯誤 | 計數 | 已處理的要求中發生的錯誤數目 |
 
 ### <a name="performance"></a>效能
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| 系統。使用量 | 系統。使用量 | 百分比 | 整個系統的最近 CPU 使用率。 此值是 [0.0，1.0] 間隔中的雙精度浮點數。 值為0.0 時，表示所有 Cpu 在觀察到的最近一段時間都處於閒置狀態，而1.0 的值表示所有 Cpu 在觀察到最近一段期間內，會主動執行100% 的時間。|
 >| 處理常式。 cpu。使用量 | 應用程式 CPU 使用率百分比 | 百分比 | JAVA 虛擬機器進程的最近 CPU 使用率。 此值是 [0.0，1.0] 間隔中的雙精度浮點數。 值為0.0 時，表示在觀察到最近一段期間內，沒有任何 Cpu 正在執行來自 JVM 進程的執行緒，而1.0 的值表示所有 Cpu 都在觀察到最近一段時間內，在 JVM 的 JVM 100% 內主動執行執行緒。 JVM 中的執行緒包括應用程式執行緒和 JVM 內部執行緒。|
@@ -110,11 +109,10 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| jvm. pause. total. count | jvm. gc. pause (total-count)  | 計數 | 此 JMV 開始之後的 GC 總數總計，包括年輕和舊 GC。 |
 >| jvm. gc. pause. total. time | jvm. gc. pause (total time)  | 毫秒 | 此 JMV 開始後所耗用的 GC 時間總計，包括年輕和舊的 GC。 |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="performance-net"></a>效能 ( .NET) 
 
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|------|-----------------------------|------|---------|
 >| CPU 使用量       | cpu-使用量      | 毫秒 | 進程使用 CPU 的時間量。 |
 >| 工作集     | 工作集    | MB    | 進程使用的工作集量。 |
@@ -136,22 +134,20 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| 作用中計時器計數               | 主動-計時器-計數               | 計數 | 目前作用中的計時器數目。 作用中的計時器是在未來某個時間點已註冊要進行滴答的活動計時器，但尚未取消。 |
 
 如需詳細資訊，請參閱 [dotnet 計數器](/dotnet/core/diagnostics/dotnet-counters)。
-::: zone-end
 
 ### <a name="request"></a>要求
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat. global. 已傳送 | tomcat. global. 已傳送 | 位元組 | 已傳送的資料 Tomcat web 伺服器數量 |
 >| tomcat. global. received | tomcat. global. received | 位元組 | 已接收的資料 Tomcat web 伺服器數量 |
 >| tomcat. total. count | tomcat. 要求 (總數)  | 計數 | Tomcat web 伺服器處理的要求總數 |
 >| tomcat. 要求數上限 | tomcat. 要求數上限 | 毫秒 | Tomcat web 伺服器處理要求的最長時間 |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="request-net"></a>要求 ( .NET) 
 
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|------|-----------------------------|------|---------|
 >| 每秒要求 | 每秒要求數 | 計數 | 要求速率。 |
 >| 要求總數 | 要求總數 | 計數 | 要求數總計。 |
@@ -159,11 +155,10 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| 失敗的要求 | 失敗-要求 | 計數 | 失敗的要求數目。 |
 
 如需詳細資訊，請參閱 [dotnet 計數器](/dotnet/core/diagnostics/dotnet-counters)。
-::: zone-end
 
 ### <a name="session"></a>工作階段
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat。作用中。最大值 | tomcat。作用中。最大值 | 計數 | 同時處於作用中狀態的會話數上限 |
 >| tomcat。最大值 | tomcat。最大值 | 毫秒 | 過期的會話處於作用中的最長時間 (秒)  |

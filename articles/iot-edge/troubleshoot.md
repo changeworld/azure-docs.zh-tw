@@ -4,16 +4,16 @@ description: 使用本文來瞭解 Azure IoT Edge 的標準診斷技能，例如
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046565"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964502"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>針對您的 IoT Edge 裝置進行疑難排解
 
@@ -42,9 +42,11 @@ iotedge check
 
 疑難排解工具會執行許多簽入下列三種類別的檢查：
 
-* 設定*檢查*會檢查可能使 IoT Edge 裝置無法連線到雲端的詳細資料，包括*yaml*和容器引擎的問題。
+* 設定 *檢查* 會檢查可能使 IoT Edge 裝置無法連線到雲端的詳細資料，包括 *yaml* 和容器引擎的問題。
 * *連接檢查* 會確認 IoT Edge 執行時間可以存取主機裝置上的埠，而且所有 IoT Edge 元件都可以連線到 IoT 中樞。 如果 IoT Edge 裝置位於 proxy 後方，這組檢查會傳回錯誤。
 * *生產環境就緒檢查* 會尋找建議的生產最佳作法，例如裝置憑證授權單位單位的狀態 (CA) 憑證和模組記錄檔設定。
+
+IoT Edge 檢查工具會使用容器來執行其診斷。 您 `mcr.microsoft.com/azureiotedge-diagnostics:latest` 可以透過 [Microsoft container Registry](https://github.com/microsoft/containerregistry)取得容器映射。 如果您需要在裝置上執行檢查，而不需要直接存取網際網路，您的裝置將需要存取容器映射。
 
 如需此工具所執行之每個診斷檢查的相關資訊，包括發生錯誤或警告時該怎麼辦，請參閱 [IoT Edge 疑難排解檢查](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
@@ -66,6 +68,8 @@ sudo iotedge support-bundle --since 6h
 iotedge support-bundle --since 6h
 ```
 
+您也可以使用裝置的 [直接方法](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) 呼叫，將支援套件組合命令的輸出上傳至 Azure Blob 儲存體。
+
 > [!WARNING]
 > 命令的輸出 `support-bundle` 可包含主機、裝置和模組名稱，以及您的模組所記錄的資訊等等。如果共用公用論壇中的輸出，請留意這一點。
 
@@ -74,6 +78,23 @@ iotedge support-bundle --since 6h
 如果您執行的是舊版 IoT Edge，升級可能會解決您的問題。 此 `iotedge check` 工具會檢查 IoT Edge 安全性守護程式是否為最新版本，但不會檢查 IoT Edge 中樞和代理程式模組的版本。 若要檢查您裝置上的執行時間模組版本，請使用命令 `iotedge logs edgeAgent` 和 `iotedge logs edgeHub` 。 模組啟動時，會在記錄中宣告版本號碼。
 
 如需有關如何更新裝置的指示，請參閱 [更新 IoT Edge 安全性守護程式和運行](how-to-update-iot-edge.md)時間。
+
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>確認裝置上的 IoT Edge 安裝
+
+您可以藉由 [監視 edgeAgent 模組](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)對應項，確認裝置上的 IoT Edge 安裝。
+
+若要取得最新的 edgeAgent 模組對應項，請從 [Azure Cloud Shell](https://shell.azure.com/)執行下列命令：
+
+   ```azurecli-interactive
+   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   ```
+
+此命令會輸出所有 edgeAgent [報告屬性](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)。 以下是一些實用的監視裝置狀態：
+
+* 執行時間狀態
+* 執行時間開始時間
+* 執行時間上次結束時間
+* 執行時間重新開機計數
 
 ## <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>檢查 IoT Edge 安全性管理員與其記錄的狀態
 
@@ -192,6 +213,8 @@ iotedge support-bundle --since 6h
 ```cmd
 iotedge logs <container name>
 ```
+
+您也可以對裝置上的模組使用 [直接方法](how-to-retrieve-iot-edge-logs.md#upload-module-logs) 呼叫，將該模組的記錄上傳至 Azure Blob 儲存體。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>查看通過 IoT Edge 中樞的訊息
 

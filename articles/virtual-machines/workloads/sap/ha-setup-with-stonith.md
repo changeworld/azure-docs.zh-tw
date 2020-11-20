@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34a7665770308b45732711f5d8328eb1d0a785f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363115"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965063"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中進行高可用性設定
 本文件提供使用 STONITH 裝置在 SUSE 作業系統上進行高可用性設定的詳細逐步指示。
@@ -71,11 +72,11 @@ ms.locfileid: "91363115"
 iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
 ```
 
-Microsoft 服務管理小組會提供此字串。 修改這**兩個**節點上的檔案，但是每個節點的節點編號不同。
+Microsoft 服務管理小組會提供此字串。 修改這 **兩個** 節點上的檔案，但是每個節點的節點編號不同。
 
 ![螢幕擷取畫面顯示具有節點 InitiatorName 值的 initiatorname 檔案。](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 修改 */etc/iscsi/iscsid.conf*：設定 *node.session.timeo.replacement_timeout=5* 與 *node.startup = automatic*。 修改這**兩個**節點上的檔案。
+1.2 修改 */etc/iscsi/iscsid.conf*：設定 *node.session.timeo.replacement_timeout=5* 與 *node.startup = automatic*。 修改這 **兩個** 節點上的檔案。
 
 1.3 執行探索命令，它會顯示四個工作階段。 請在這兩個節點上執行。
 
@@ -109,14 +110,14 @@ rescan-scsi-bus.sh
 
 ## <a name="2---initialize-the-sbd-device"></a>2. 將 SBD 裝置初始化
 
-2.1 在這**兩個**節點上初始化 SBD 裝置
+2.1 在這 **兩個** 節點上初始化 SBD 裝置
 
 ```
 sbd -d <SBD Device Name> create
 ```
 ![螢幕擷取畫面顯示具有 s b d create 命令結果的主控台視窗。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
-2.2 檢查寫入至裝置的項目。 請在這**兩個**節點上執行
+2.2 檢查寫入至裝置的項目。 請在這 **兩個** 節點上執行
 
 ```
 sbd -d <SBD Device Name> dump
@@ -125,7 +126,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3. 設定叢集
 本節說明設定 SUSE HA 叢集的步驟。
 ### <a name="31-package-installation"></a>3.1 套件安裝
-3.1.1   請確定已安裝 ha_sles 和 SAPHanaSR-doc 模式。 如果未安裝，請安裝它們。 在這**兩個**節點上安裝。
+3.1.1   請確定已安裝 ha_sles 和 SAPHanaSR-doc 模式。 如果未安裝，請安裝它們。 在這 **兩個** 節點上安裝。
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
  ![螢幕擷取畫面顯示具有 Saphanasr-scaleout-doc 命令結果的主控台視窗。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 設定叢集
-3.2.1   您可以使用 *ha-cluster-init* 命令或使用 yast2 精靈來設定叢集。 在此案例中，使用 yast2 精靈。 您**只能在主要節點上**執行這個步驟。
+3.2.1   您可以使用 *ha-cluster-init* 命令或使用 yast2 精靈來設定叢集。 在此案例中，使用 yast2 精靈。 您 **只能在主要節點上** 執行這個步驟。
 
 遵循 yast2> 高可用性 > 叢集 ![ 螢幕擷取畫面顯示已選取高可用性和叢集的 YaST 控制中心。 ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
  ![螢幕擷取畫面顯示具有安裝和取消選項的對話方塊。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-因為已經安裝 halk2 套件，請按一下 [取消]****。
+因為已經安裝 halk2 套件，請按一下 [取消]。
 
 ![螢幕擷取畫面顯示有關取消選項的訊息。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -156,7 +157,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![螢幕擷取畫面顯示已產生金鑰的訊息。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-按一下 [檔案] &gt; [新增] &gt; [專案] 
+按一下 [檔案] &gt; [新增] &gt; [專案]
 
 驗證會使用 IP 位址和 Csync2 中的預先共用金鑰執行。 金鑰檔案是使用 csync2 -k /etc/csync2/key_hagroup 產生。 檔案 key_hagroup 應在建立之後手動複製到叢集的所有成員。 **務必將檔案從 node1 複製到 node2**。
 
@@ -166,60 +167,60 @@ zypper in SAPHanaSR SAPHanaSR-doc
  ![ 螢幕擷取畫面顯示 [叢集服務] 視窗。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在預設選項中，[Booting] \(開機\) 處於關閉狀態，請將它變更為 [on] \(開啟\)，以在開機時啟動 Pacemaker。 您可以根據自己的設定需求來選擇。
-按一下 [下一步]****，叢集設定就完成了。
+按一下 [下一步]，叢集設定就完成了。
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. 設定 Softdog 看門狗
 本節說明監視程式 (softdog) 的設定。
 
-4.1 在這**兩個**節點上將下行加入至 /etc/init.d/boot.local**。
+4.1 在這 **兩個** 節點上將下行加入至 /etc/init.d/boot.local。
 ```
 modprobe softdog
 ```
 ![螢幕擷取畫面會顯示已新增 softdog 行的開機檔案。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
-4.2 更新這**兩個**節點上的檔案 */etc/sysconfig/sbd*，如下所示：
+4.2 更新這 **兩個** 節點上的檔案 */etc/sysconfig/sbd*，如下所示：
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
 ![螢幕擷取畫面顯示已新增 S B D_DEVICE 值的 b d 檔案。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
-4.3 執行下列命令以在這**兩個**節點上載入核心模組
+4.3 執行下列命令以在這 **兩個** 節點上載入核心模組
 ```
 modprobe softdog
 ```
 ![螢幕擷取畫面會顯示具有命令/etc/modprobe.d/sunrpc-local.conf softdog 的部分主控台視窗。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4.4 檢查並確定 softdog 正在這**兩個**節點上執行，如下所示：
+4.4 檢查並確定 softdog 正在這 **兩個** 節點上執行，如下所示：
 ```
 lsmod | grep dog
 ```
 ![螢幕擷取畫面會顯示主控台視窗的一部分，其中包含執行 l s mod 命令的結果。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
-4.5 在這**兩個**節點上啟動 SBD 裝置
+4.5 在這 **兩個** 節點上啟動 SBD 裝置
 ```
 /usr/share/sbd/sbd.sh start
 ```
 ![螢幕擷取畫面會顯示具有 start 命令的主控台視窗部分。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
-4.6 在這**兩個**節點上測試 SBD 精靈。 在這**兩個**節點上設定它之後，您會看到兩個項目
+4.6 在這 **兩個** 節點上測試 SBD 精靈。 在這 **兩個** 節點上設定它之後，您會看到兩個項目
 ```
 sbd -d <SBD Device Name> list
 ```
 ![螢幕擷取畫面顯示顯示兩個專案的主控台視窗的一部分。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.7 將測試訊息傳送至其中**一個**節點
+4.7 將測試訊息傳送至其中 **一個** 節點
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![螢幕擷取畫面顯示顯示兩個專案的主控台視窗的一部分。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.8 在**第二個**節點 (node2) 上，您可以檢查訊息狀態
+4.8 在 **第二個** 節點 (node2) 上，您可以檢查訊息狀態
 ```
 sbd  -d <SBD Device Name> list
 ```
 ![螢幕擷取畫面會顯示主控台視窗的一部分，其中有一個顯示另一個成員之測試值的成員。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 若要採用 sbd 設定，請更新檔案 */etc/sysconfig/sbd*，如下所示。 更新這**兩個**節點上的檔案
+4.9 若要採用 sbd 設定，請更新檔案 */etc/sysconfig/sbd*，如下所示。 更新這 **兩個** 節點上的檔案
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -227,13 +228,13 @@ SBD_PACEMAKER="yes"
 SBD_STARTMODE="clean" 
 SBD_OPTS=""
 ```
-4.10    在**主要節點** (node1) 上，啟動 Pacemaker 服務
+4.10    在 **主要節點** (node1) 上，啟動 Pacemaker 服務
 ```
 systemctl start pacemaker
 ```
 ![螢幕擷取畫面顯示在啟動 pacemaker 之後顯示狀態的主控台視窗。](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-如果 Pacemaker 服務*失敗*，請參閱「案例 5：Pacemaker 服務失敗」**
+如果 Pacemaker 服務 *失敗*，請參閱「案例 5：Pacemaker 服務失敗」
 
 ## <a name="5---joining-the-cluster"></a>5. 加入叢集
 本節說明如何將節點加入叢集。
@@ -243,19 +244,19 @@ systemctl start pacemaker
 ```
 ha-cluster-join
 ```
-如果您在加入叢集期間收到*錯誤*，請參閱「案例 6：節點 2 無法加入叢集」**。
+如果您在加入叢集期間收到 *錯誤*，請參閱「案例 6：節點 2 無法加入叢集」。
 
 ## <a name="6---validating-the-cluster"></a>6. 驗證叢集
 
 ### <a name="61-start-the-cluster-service"></a>6.1 啟動叢集服務
-檢查並選擇性地在第一次在這**兩者**節點上啟動叢集。
+檢查並選擇性地在第一次在這 **兩者** 節點上啟動叢集。
 ```
 systemctl status pacemaker
 systemctl start pacemaker
 ```
 ![螢幕擷取畫面顯示狀態為 pacemaker 的主控台視窗。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6.2 監視狀態
-執行命令 *crm_mon* 以確保這**兩個**節點已連線。 您可以在叢集的**任一節點**上執行它
+執行命令 *crm_mon* 以確保這 **兩個** 節點已連線。 您可以在叢集的 **任一節點** 上執行它
 ```
 crm_mon
 ```
@@ -264,7 +265,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. 設定叢集屬性和資源 
 本節說明設定叢集資源的步驟。
-在此範例中，設定下列資源，其他部分可以 (視需要) 參考 SUSE HA 指南來設定。 只需要在**其中一個節點**執行此設定。 請在主要節點上執行。
+在此範例中，設定下列資源，其他部分可以 (視需要) 參考 SUSE HA 指南來設定。 只需要在 **其中一個節點** 執行此設定。 請在主要節點上執行。
 
 - 叢集啟動程序
 - STONITH 裝置
@@ -448,7 +449,7 @@ Yast2 應該能夠立即開啟圖形化視圖，如下所示。
 
 ![螢幕擷取畫面顯示 [正在執行安裝狀態] 頁面。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-安裝完成時，按 [下一步]****
+安裝完成時，按 [下一步]
 
 ![螢幕擷取畫面：顯示安裝報表。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 099ead37b8d6b46b767ef59ff24a7e7ff9dc9e3c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84736725"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966440"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>使用入口網站以 Azure 網路監看員管理封包擷取
 
@@ -40,16 +40,16 @@ ms.locfileid: "84736725"
 
 ## <a name="start-a-packet-capture"></a>啟動封包擷取
 
-1. 在瀏覽器中瀏覽至 [Azure 入口網站](https://portal.azure.com)，並選取 [所有服務]****，然後選取 [網路]**** 區段中的 [網路監看員]****。
-2. 選取 [網路診斷工具]**** 下方的 [封包擷取]****。 任何現有的封包擷取都會列出，無論其狀態為何。
-3. 選取 [新增]**** 以建立封包擷取。 您可以選取下列屬性的值：
+1. 在瀏覽器中瀏覽至 [Azure 入口網站](https://portal.azure.com)，並選取 [所有服務]，然後選取 [網路] 區段中的 [網路監看員]。
+2. 選取 [網路診斷工具] 下方的 [封包擷取]。 任何現有的封包擷取都會列出，無論其狀態為何。
+3. 選取 [新增] 以建立封包擷取。 您可以選取下列屬性的值：
    - **訂用帳戶**：您要為其建立封包擷取的虛擬機器所在的訂用帳戶。
    - **資源群組**：虛擬機器的資源群組。
    - **目標虛擬機器**：您要為其建立封包擷取的虛擬機器。
    - **封包擷取名稱**：封包擷取的名稱。
-   - **儲存體帳戶或檔案**：選取 [儲存體帳戶]**** 和 (或) [檔案]****。 如果您選取 [檔案]****，擷取將會寫入至虛擬機器內的路徑。
-   - **本機檔案路徑**：虛擬機器上將儲存封包擷取的本機路徑 (只有在選取 [檔案]** 時才有效)。 路徑必須是有效路徑。 如果您使用 Linux 虛擬機器，路徑必須以 */var/captures* 開頭。
-   - **儲存體帳戶**：選取現有的儲存體帳戶 (如果您選取 [儲存體帳戶]**)。 只有已選取 [儲存體]**** 時才可使用此選項。
+   - **儲存體帳戶或檔案**：選取 [儲存體帳戶] 和 (或) [檔案]。 如果您選取 [檔案]，擷取將會寫入至虛擬機器內的路徑。
+   - **本機檔案路徑**：虛擬機器上將儲存封包擷取的本機路徑 (只有在選取 [檔案] 時才有效)。 路徑必須是有效路徑。 如果您使用 Linux 虛擬機器，路徑必須以 */var/captures* 開頭。
+   - **儲存體帳戶**：選取現有的儲存體帳戶 (如果您選取 [儲存體帳戶])。 只有已選取 [儲存體] 時才可使用此選項。
    
      > [!NOTE]
      > 儲存封包擷取目前不支援進階儲存體帳戶。
@@ -57,7 +57,7 @@ ms.locfileid: "84736725"
    - **每個封包的最大位元組**：從每個封包中擷取的位元組數。 如果保留為空白，則會擷取所有位元組。
    - **每個工作階段的最大位元組**：擷取的位元組總數。 一旦達到此值，封包擷取就會停止。
    - **時間限制 (秒)**：擷取封包停止之前的時間限制。 預設值為 18,000 秒。
-   - 篩選 (選擇性)。 選取 [+ 新增篩選]****
+   - 篩選 (選擇性)。 選取 [+ 新增篩選]
      - **通訊協定**：用來篩選封包擷取的通訊協定。 可用的值為 TCP、UDP 和 Any。
      - **本機 IP 位址**：將封包擷取篩選為本機 IP 位址符合此值的封包。
      - **本機連接埠**：將封包擷取篩選為本機連接埠符合此值的封包。
@@ -67,18 +67,18 @@ ms.locfileid: "84736725"
      > [!NOTE]
      > 連接埠和 IP 位址的值可以是單一值、值的範圍，或特定範圍 (如 80-1024) 的連接埠。 您可以視需要定義不限數量的篩選。
 
-4. 選取 [確定]  。
+4. 選取 [確定]。
 
 對封包擷取設定的時間限制到期之後，封包擷取即會停止，且可供檢閱。 您也可以手動停止封包擷取工作階段。
 
 > [!NOTE]
 > 入口網站會自動：
 >  * 在您選取的虛擬機器所在的相同區域中建立網路監看員 (如果該區域還沒有網路監看員)。
->  * 將 *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) 或 [Windows](../virtual-machines/windows/extensions-nwa.md) 虛擬機器擴充功能新增至虛擬機器 (如果尚未安裝)。
+>  * 將 *AzureNetworkWatcherExtension* [Linux](../virtual-machines/extensions/network-watcher-linux.md) 或 [Windows](../virtual-machines/extensions/network-watcher-windows.md) 虛擬機器擴充功能新增至虛擬機器 (如果尚未安裝)。
 
 ## <a name="delete-a-packet-capture"></a>刪除封包擷取
 
-1. 在封包擷取檢視中，選取位於封包擷取右側的 [...]****，或以滑鼠右鍵按一下現有的封包擷取，然後選取 [刪除]****。
+1. 在封包擷取檢視中，選取位於封包擷取右側的 [...]，或以滑鼠右鍵按一下現有的封包擷取，然後選取 [刪除]。
 2. 系統會要求您確認您要刪除封包擷取。 選取 [是]。
 
 > [!NOTE]
@@ -86,7 +86,7 @@ ms.locfileid: "84736725"
 
 ## <a name="stop-a-packet-capture"></a>停止封包擷取
 
-在封包擷取檢視中，選取位於封包擷取右側的 [...]****，或以滑鼠右鍵按一下現有的封包擷取，然後選取 [停止]****。
+在封包擷取檢視中，選取位於封包擷取右側的 [...]，或以滑鼠右鍵按一下現有的封包擷取，然後選取 [停止]。
 
 ## <a name="download-a-packet-capture"></a>下載封包擷取
 
@@ -98,9 +98,9 @@ ms.locfileid: "84736725"
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-如果您在建立擷取時選取了 [檔案]****，您可以從您在虛擬機器上設定的路徑檢視或下載檔案。
+如果您在建立擷取時選取了 [檔案]，您可以從您在虛擬機器上設定的路徑檢視或下載檔案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要了解如何透過虛擬機器警示將封包擷取自動化，請檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)。
 - 若要判斷是否允許進出於虛擬機器的特定流量，請參閱[診斷虛擬機器網路流量篩選問題](diagnose-vm-network-traffic-filtering-problem.md)。
