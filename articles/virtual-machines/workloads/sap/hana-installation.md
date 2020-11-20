@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91529825"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967766"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安裝和設定 SAP HANA (大型執行個體)
 
@@ -50,9 +51,9 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 
 需要此步驟才能修補作業系統，這是客戶的責任。 若為 SUSE，請尋找文件上有關 [SMT 安裝](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)的這個頁面，以了解如何安裝和設定 SMT。
 
-**第三個步驟**是檢查特定 OS 版本/版本的新修補程式和修正程式。 請確認「HANA 大型執行個體」的修補程式等級是否為最新狀態。 在某些情況下，可能不會包含最新的修補程式。 在接管 HANA 大型執行個體單位之後，必須檢查是否需要套用修補程式。
+**第三個步驟** 是檢查特定 OS 版本/版本的新修補程式和修正程式。 請確認「HANA 大型執行個體」的修補程式等級是否為最新狀態。 在某些情況下，可能不會包含最新的修補程式。 在接管 HANA 大型執行個體單位之後，必須檢查是否需要套用修補程式。
 
-**第四個步驟**是查看相關的 SAP 附注，以在特定 OS 版本/版本上安裝和設定 SAP Hana。 因為依據個別的安裝情況，建議事項會有所變更或是對「SAP 附註」或組態所做的變更會有所不同，所以 Microsoft 無法總是完美地設定「HANA 大型執行個體」單位。 
+**第四個步驟** 是查看相關的 SAP 附注，以在特定 OS 版本/版本上安裝和設定 SAP Hana。 因為依據個別的安裝情況，建議事項會有所變更或是對「SAP 附註」或組態所做的變更會有所不同，所以 Microsoft 無法總是完美地設定「HANA 大型執行個體」單位。 
 
 因此，身為客戶的您必須閱讀與 SAP HANA 有關的 SAP 附註，以確定實際的 Linux 版本。 亦請檢查作業系統版次/版本的組態，並套用尚未完成的組態設定 (若有的話)。
 
@@ -72,11 +73,11 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 - sunrpc.tcp_slot_table_entries = 128 參數必須在 /etc/modprobe.d/sunrpc-local.conf 中設定。 如果檔案不存在，您必須先新增下列專案來建立檔案： 
     - options sunrpc tcp_max_slot_table_entries=128
 
-**第五個步驟**是檢查 HANA 大型實例單位的系統時間。 系統會使用系統時區來部署執行個體。 此時區代表 HANA 大型執行個體戳記所在的 Azure 區域位置。 您可以變更您所擁有執行個體的系統時間或時區。 
+**第五個步驟** 是檢查 HANA 大型實例單位的系統時間。 系統會使用系統時區來部署執行個體。 此時區代表 HANA 大型執行個體戳記所在的 Azure 區域位置。 您可以變更您所擁有執行個體的系統時間或時區。 
 
 如果您為租用戶訂購更多執行個體，則必須為新交付的執行個體調整其時區。 在移交執行個體之後，Microsoft 即無法洞察您為執行個體設定的系統時區。 因此，為新部署的執行個體設定的時區可能不會與您變更後的時區相同。 身為客戶，您必須負責視需要調整所移交執行個體的時區。 
 
-**第六個步驟**是檢查 etc/hosts。 在移交刀鋒伺服器時，會針對不同的用途為它們指派不同的 IP 位址。 檢查 etc/hosts 檔案。 將單位新增到現有的租用戶時，請勿期望系統會使用先前交付之系統的 IP 位址來正確維護新部署之系統的 etc/hosts。 身為客戶，您必須負責確定新部署的執行個體可以互動並解析您租用戶中先前所部署單位的名稱。 
+**第六個步驟** 是檢查 etc/hosts。 在移交刀鋒伺服器時，會針對不同的用途為它們指派不同的 IP 位址。 檢查 etc/hosts 檔案。 將單位新增到現有的租用戶時，請勿期望系統會使用先前交付之系統的 IP 位址來正確維護新部署之系統的 etc/hosts。 身為客戶，您必須負責確定新部署的執行個體可以互動並解析您租用戶中先前所部署單位的名稱。 
 
 
 ## <a name="operating-system"></a>作業系統
@@ -150,9 +151,9 @@ Azure (大型實例) 上 SAP Hana 的儲存體配置是 `service management` 透
 | HANA 共用 | /hana/shared/SID | 儲存體 IP：/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | 儲存體 IP：/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
-SID** 是 HANA 執行個體的系統識別碼。 
+SID 是 HANA 執行個體的系統識別碼。 
 
-Tenant** 是部署租用戶時的內部作業列舉。
+Tenant 是部署租用戶時的內部作業列舉。
 
 HANA usr/sap 會共用相同的磁碟區。 掛接點的專門用語包含 HANA 執行個體的系統識別碼及掛接編號。 在相應增加部署中，只有一個掛接，例如 mnt00001。 另一方面，在向外延展部署中，您會看到許多掛接，因為有背景工作角色和主要節點。 
 

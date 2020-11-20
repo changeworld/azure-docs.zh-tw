@@ -3,6 +3,7 @@ title: Azure 上的 IBM 工作負載 |Microsoft Docs
 description: 使用大型主機模擬器和 Microsoft 合作夥伴提供的其他服務，使用 Microsoft Azure 重新裝載您的 IBM z/OS 工作負載。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499967"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968344"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上的 IBM 工作負載
 

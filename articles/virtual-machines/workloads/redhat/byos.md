@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux 自備訂用帳戶的 Azure 映射 |Microsoft Do
 description: 瞭解 Azure 上的 Red Hat Enterprise Linux 自備訂用帳戶映射。
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372790"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968667"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Azure 中的自備訂用帳戶黃金映射
 
@@ -45,7 +46,7 @@ Red Hat Enterprise Linux (RHEL) 映射可透過隨用隨付或自備訂用帳戶
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 入口網站的 Red Hat 黃金映射
 
-1. 當您的 Azure 訂用帳戶收到 Red Hat 黃金影像的存取權之後，您就可以在 [Azure 入口網站](https://portal.azure.com)中找到它們。 移至 [ **建立資源] 的** [  >  **查看全部** ]。
+1. 當您的 Azure 訂用帳戶收到 Red Hat 黃金影像的存取權之後，您就可以在 [Azure 入口網站](https://portal.azure.com)中找到它們。 移至 [**建立資源] 的**[  >  **查看全部**]。
 
 1. 在頁面頂端，您會看到您有私用供應專案。
 

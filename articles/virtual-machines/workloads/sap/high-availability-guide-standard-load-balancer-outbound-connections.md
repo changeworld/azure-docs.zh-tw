@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d4d21ac0fc0f218b9168adfad3e1b2ec42092b42
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544744"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968531"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>適用於 SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公用端點連線能力
 
@@ -142,19 +143,19 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 ### <a name="deployment-steps"></a>部署步驟
 
 1. 部署步驟假設您已經針對您的 VM 定義虛擬網路和子網路。  
-2. 在 VM 和 Standard Load Balancer 部署所在的相同虛擬網路中，建立子網路 **AzureFirewallSubnet** 。  
+2. 在 VM 和 Standard Load Balancer 部署所在的相同虛擬網路中，建立子網路 **AzureFirewallSubnet**。  
    1. 在 Azure 入口網站中，瀏覽到該虛擬網路：按一下 [所有資源]，搜尋該虛擬網路，按一下該虛擬網路，選取子網路。  
    1. 按一下 [加入子網路]。 輸入 **AzureFirewallSubnet** 作為名稱。 輸入適當的 [位址範圍]。 儲存。  
 3. 建立 Azure 防火牆。  
    1. 在 Azure 入口網站中，選取 [所有資源]，依序按一下 [新增]，[防火牆]，[建立]。 選取資源群組 (請選取和虛擬網路所在相同的資源群組)。  
-   1. 為 Azure 防火牆資源輸入名稱。 例如 **MyAzureFirewall** 。  
+   1. 為 Azure 防火牆資源輸入名稱。 例如 **MyAzureFirewall**。  
    1. 選取 [區域]，然後至少選取兩個 [可用性區域]，同時符合您 VM 部署所在的可用性區域。  
    1. 選取您的 [虛擬網路]，其為 SAP VM 和 Azure Standard Load Balancer 部署所在的位置。  
-   1. 公用 IP 位址：按一下 [建立] 並輸入名稱。 例如 **MyFirewallPublicIP** 。  
+   1. 公用 IP 位址：按一下 [建立] 並輸入名稱。 例如 **MyFirewallPublicIP**。  
 4. 建立 Azure 防火牆規則來允許對指定公用端點的連出連線能力。 下面的範例示範如何允許對 Azure 管理 API 公用端點的存取。  
    1. 依序選取 [規則] 和 [網路規則集合]，然後按一下 [新增網路規則集合]。  
-   1. 名稱： **MyOutboundRule** ，輸入 [優先順序]，選取 [允許] 作為 [動作]。  
-   1. 服務：名稱 **ToAzureAPI** 。  通訊協定：選取 [任何]。 來源位址：輸入 VM 和 Standard Load Balancer 部署所在之子網路的範圍，例如： **11.97.0.0/24** 。 目的地連接埠：輸入 <b>*</b>。  
+   1. 名稱：**MyOutboundRule**，輸入 [優先順序]，選取 [允許] 作為 [動作]。  
+   1. 服務：名稱 **ToAzureAPI**。  通訊協定：選取 [任何]。 來源位址：輸入 VM 和 Standard Load Balancer 部署所在之子網路的範圍，例如：**11.97.0.0/24**。 目的地連接埠：輸入 <b>*</b>。  
    1. 儲存
    1. 在您仍位於 Azure 防火牆的情況下，選取 [概觀]。 記下 Azure 防火牆的私人 IP 位址。  
 5. 針對 Azure 防火牆建立路由  
@@ -166,7 +167,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
 6. 從您 VM 的子網路到 **MyAzureFirewall** 的私人 IP 建立使用者定義路由。
    1. 在您仍位於路由表的情況下，按一下 [路由]。 選取 [新增]。 
-   1. 路由名稱：ToMyAzureFirewall，位址首碼： **0.0.0.0/0** 。 下一個躍點類型：選取 [虛擬設備]。 下一個躍點位址：輸入您所設定之防火牆的私人 IP 位址： **11.97.1.4** 。  
+   1. 路由名稱：ToMyAzureFirewall，位址首碼：**0.0.0.0/0**。 下一個躍點類型：選取 [虛擬設備]。 下一個躍點位址：輸入您所設定之防火牆的私人 IP 位址：**11.97.1.4**。  
    1. 儲存
 
 ## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>使用 Proxy 來針對 Azure 管理 API 進行 Pacemaker 呼叫
@@ -185,7 +186,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
 ### <a name="pacemaker-configuration-with-proxy"></a>使用 Proxy 的 Pacemaker 設定 
 
-業界有許多不同的 Proxy 選項可供使用。 Proxy 部署的逐步指示並未涵蓋在此文件的範圍內。 在下面的範例中，我們假設您的 Proxy 能回應 **MyProxyService** ，而且正在接聽 **MyProxyPort** 連接埠。  
+業界有許多不同的 Proxy 選項可供使用。 Proxy 部署的逐步指示並未涵蓋在此文件的範圍內。 在下面的範例中，我們假設您的 Proxy 能回應 **MyProxyService**，而且正在接聽 **MyProxyPort** 連接埠。  
 若要讓 Pacemaker 與 Azure 管理 API 通訊，請在所有叢集節點上執行下列步驟：  
 
 1. 編輯 Pacemaker 設定檔 /etc/sysconfig/pacemaker，然後新增下列行 (所有叢集節點)：

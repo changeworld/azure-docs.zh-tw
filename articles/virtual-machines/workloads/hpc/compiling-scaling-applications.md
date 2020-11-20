@@ -3,16 +3,17 @@ title: 調整 HPC 應用程式-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解如何在 Azure Vm 上調整 HPC 應用程式。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2c20fcf2624c1f620b68b46e56e0602f15041348
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 7e05d64420cd920242a887b206fd38cd4a655509
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993835"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967001"
 ---
 # <a name="scaling-hpc-applications"></a>調整 HPC 應用程式
 
@@ -79,6 +80,6 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 * 有些應用程式對於記憶體頻寬有極大的效用，可能會因為每個 CCX 使用的核心數目減少而受益。 針對這些應用程式，每個 CCX 使用3或2個核心可能會減少記憶體頻寬爭用，並產生更高的真實世界效能或更一致的擴充性。 尤其是 MPI Allreduce 可從中獲益。
 * 針對大幅較大的擴展執行，建議使用 UD 或混合式 RC + UD 傳輸。 許多 MPI 程式庫/執行時間程式庫會在內部 (，例如 UCX 或 MVAPICH2) 。 檢查大規模執行的傳輸設定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure 上的 [HPC](/azure/architecture/topics/high-performance-computing/) 。

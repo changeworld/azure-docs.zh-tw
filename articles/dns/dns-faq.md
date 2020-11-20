@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328754"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968242"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常見問題集
 
@@ -44,7 +44,7 @@ Azure 保證有效的 DNS 要求 100% 的時間都至少會從一部 Azure DNS �
 
 DNS 區域用來裝載特定網域的 DNS 記錄。 例如，contoso.com 網域可能包含數筆 DNS 記錄。 記錄可能包括電子郵件伺服器的 mail.contoso.com 和網站的 www \. contoso.com。 這些記錄會裝載在 contoso.com DNS 區域中。
 
-網域名稱「只是一個名稱」**。 DNS 區域則是包含網域名稱 DNS 記錄的資料資源。 您可以使用 Azure DNS 來裝載 DNS 區域，並在 Azure 中管理網域的 DNS 記錄。 它也提供 DNS 名稱伺服器以回應來自網際網路的 DNS 查詢。
+網域名稱「只是一個名稱」。 DNS 區域則是包含網域名稱 DNS 記錄的資料資源。 您可以使用 Azure DNS 來裝載 DNS 區域，並在 Azure 中管理網域的 DNS 記錄。 它也提供 DNS 名稱伺服器以回應來自網際網路的 DNS 查詢。
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>我是否必須先購買 DNS 網域名稱才能使用 Azure DNS？ 
 
@@ -58,7 +58,7 @@ DNS 區域用來裝載特定網域的 DNS 記錄。 例如，contoso.com 網域�
 
 ### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>使用流量管理員針對網域名稱頂點使用別名記錄時，是否有任何限制？
 
-是。 您必須使用靜態公用 IP 位址來搭配 Azure 流量管理員。 使用靜態 IP 位址設定**外部端點**目標。 
+是。 您必須使用靜態公用 IP 位址來搭配 Azure 流量管理員。 使用靜態 IP 位址設定 **外部端點** 目標。 
 
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS 是否支援 DNS 型流量路由或端點容錯移轉？
 
@@ -80,7 +80,7 @@ Azure DNS 僅支援裝載靜態 DNS 網域，其中所指定 DNS 記錄的每個
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支援區域傳輸 (AXFR/IXFR)？
 
-否。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
+否。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
 
 系統會在 Azure DNS 待辦項目中追蹤區域傳輸功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c) \(英文\)。
 
@@ -149,7 +149,7 @@ Azure DNS 區域中的下列記錄類型支援別名記錄集：
 
 若要設定共同裝載，請修改網域的 NS 記錄，以指向這兩個提供者的名稱伺服器。 名稱伺服器 (NS) 記錄可控制哪些提供者會收到網域的 DNS 查詢。 您可以在 Azure DNS 中、在另一個提供者中，以及在父區域中修改這些 NS 記錄。 父區域通常會透過網域名稱註冊機構來設定。 如需有關 DNS 委派的詳細資訊，請參閱 [DNS 網域委派](dns-domain-delegation.md)。
 
-此外，請確保網域的 DNS 記錄在這兩個 DNS 提供者之間保持同步。 Azure DNS 目前不支援 DNS 區域傳輸。 您必須使用 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/rest/api/dns/) \(英文\)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，來同步處理 DNS 記錄。
+此外，請確保網域的 DNS 記錄在這兩個 DNS 提供者之間保持同步。 Azure DNS 目前不支援 DNS 區域傳輸。 您必須使用 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](/rest/api/dns/) \(英文\)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，來同步處理 DNS 記錄。
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>我是否必須將我的網域委派給全部四個 Azure DNS 名稱伺服器？
 

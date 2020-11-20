@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b99e744fb949f707467286c3d79de0f4e76a49c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835505"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967664"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (大型執行個體) 網路架構
 
@@ -135,7 +136,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎�
 
 * 如果您在兩個不同的 Azure 區域中部署了 HANA 大型實例單位以進行嚴重損壞修復，則會在過去套用相同的暫時性路由限制。 換句話說，一個區域中 HANA 大型實例單位的 IP 位址 (例如，美國西部) 不會路由至部署在另一個區域中的 HANA 大型實例單位 (例如，美國東部) 。 這項限制與跨區域使用 Azure 網路對等互連或交叉連接 ExpressRoute 線路（將 HANA 大型實例單位連線至虛擬網路）無關。 如需以圖形檢視，請參閱「在多個區域中使用 HANA 大型執行個體單位」一節中的圖表。 這項限制是部署的架構所隨附的，禁止立即使用 HANA 系統複寫作為嚴重損壞修復功能。 針對最近的變更，請查閱「在多個區域中使用 HANA 大型實例單位」一節。 
 
-* Azure 上的 SAP Hana (大型實例) 單位有指派的 IP 位址，來自您在要求 HANA 大型實例部署時所提交的伺服器 IP 集區位址範圍。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 您可以透過將 Azure 虛擬網路連線到 HANA 大型實例的 Azure 訂用帳戶和線路來存取此 IP 位址。 從該伺服器 IP 集區位址範圍指派的 IP 位址會直接指派給硬體單位。 它*不會*再經過 NAT 處理，因為這是此解決方案的第一次部署才會有的情況。 
+* Azure 上的 SAP Hana (大型實例) 單位有指派的 IP 位址，來自您在要求 HANA 大型實例部署時所提交的伺服器 IP 集區位址範圍。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 您可以透過將 Azure 虛擬網路連線到 HANA 大型實例的 Azure 訂用帳戶和線路來存取此 IP 位址。 從該伺服器 IP 集區位址範圍指派的 IP 位址會直接指派給硬體單位。 它 *不會* 再經過 NAT 處理，因為這是此解決方案的第一次部署才會有的情況。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>直接路由至 HANA 大型實例
 
@@ -167,7 +168,7 @@ Microsoft 引進了一種稱為 [ExpressRoute Global 觸及](../../../expressrou
 在提供全球接觸的 Azure 區域中，您可以要求為 ExpressRoute 線路啟用全球觸達功能，以將內部部署網路連線至 Azure 虛擬網路，以連接到您的 HANA 大型實例單位。 ExpressRoute 線路的內部部署端有一些成本含意。 如需價格，請查看 [全球接觸附加](https://azure.microsoft.com/pricing/details/expressroute/)元件的價格。 將 HANA 大型實例單位 (的) 連接至 Azure 的線路，沒有額外的成本。 
 
 > [!IMPORTANT]  
-> 如果使用全球存取範圍來啟用您的 HANA 大型實例單位與內部部署資產之間的直接存取，則 **不會透過 Azure 虛擬網路路由**網路資料和控制流程，而是直接在 Microsoft enterprise exchange 路由器之間路由傳送。 因此，任何 NSG 或 ASG 規則，或您在 Azure 虛擬網路中部署的任何類型的防火牆、NVA 或 proxy 都不會被觸及。 **如果您使用 ExpressRoute 全球存取範圍來啟用從內部部署到 HANA 大型實例單位限制的直接存取，以及存取 HANA 大型實例單位的許可權，就必須在內部部署端的防火牆中定義** 
+> 如果使用全球存取範圍來啟用您的 HANA 大型實例單位與內部部署資產之間的直接存取，則 **不會透過 Azure 虛擬網路路由** 網路資料和控制流程，而是直接在 Microsoft enterprise exchange 路由器之間路由傳送。 因此，任何 NSG 或 ASG 規則，或您在 Azure 虛擬網路中部署的任何類型的防火牆、NVA 或 proxy 都不會被觸及。 **如果您使用 ExpressRoute 全球存取範圍來啟用從內部部署到 HANA 大型實例單位限制的直接存取，以及存取 HANA 大型實例單位的許可權，就必須在內部部署端的防火牆中定義** 
 
 ##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>連接不同 Azure 區域中的 HANA 大型實例
 同樣地，隨著 ExpressRoute Global 觸及可以用來將內部部署連線到 HANA 大型實例單位，它可以用來連接兩個在兩個不同區域中為您部署的「HANA 大型實例」租使用者。 隔離是您的 HANA 大型實例租使用者用來在兩個區域中連接到 Azure 的 ExpressRoute 線路。 連接兩個不同區域中所部署的「HANA 大型實例」租使用者並不會產生額外費用。 
@@ -179,7 +180,7 @@ Microsoft 引進了一種稱為 [ExpressRoute Global 觸及](../../../expressrou
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA 大型執行個體的網際網路連線
-HANA 大型執行個體*無法*直接連線至網際網路。 此限制可能會使您的一些能力受到限制，例如，直接向 OS 廠商註冊 OS 映像的能力。 您可能需要使用本機 SUSE Linux Enterprise Server Subscription Management Tool 伺服器或 Red Hat Enterprise Linux Subscription Manager。
+HANA 大型執行個體 *無法* 直接連線至網際網路。 此限制可能會使您的一些能力受到限制，例如，直接向 OS 廠商註冊 OS 映像的能力。 您可能需要使用本機 SUSE Linux Enterprise Server Subscription Management Tool 伺服器或 Red Hat Enterprise Linux Subscription Manager。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM 與 HANA 大型執行個體之間的資料加密
 HANA 大型執行個體與 VM 之間的資料傳輸並未加密。 不過，您可以純粹針對 HANA DBMS 端與 JDBC/ODBC 型應用程式之間的交換，啟用流量加密。 如需詳細資訊，請參閱 [SAP 提供的這份文件](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)。

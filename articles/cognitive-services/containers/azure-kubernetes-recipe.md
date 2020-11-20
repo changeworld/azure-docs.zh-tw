@@ -10,29 +10,29 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a6e7ee125cac66b48e666a766c39813aa38fb1a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244484"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968497"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>將文字分析語言偵測容器部署到 Azure Kubernetes Service
 
 了解如何部署語言偵測容器。 此程序示範如何建立本機的 Docker 容器、將容器推送至私人容器登錄、在 Kubernetes 叢集中執行容器，並在網頁瀏覽器中進行測試。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此程序需要必須安裝並在本機執行的多個工具。 請勿使用 Azure Cloud Shell。
 
 * 使用 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
 * [Git](https://git-scm.com/downloads) 適用於您的作業系統，因此您可以複製此程序中使用的[範例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)，並驗證 Docker CLI 可在主控台視窗中運作。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 具有正確定價層的 Azure 資源。 並非所有的定價層都會使用這個容器︰
-  * 只有 F0 或標準定價層的**文字分析**資源。
-  * 有 S0 定價層的**認知服務**資源。
+  * 只有 F0 或標準定價層的 **文字分析** 資源。
+  * 有 S0 定價層的 **認知服務** 資源。
 
 ## <a name="running-the-sample"></a>執行範例
 
@@ -129,7 +129,7 @@ ms.locfileid: "88244484"
 
     若要追蹤容器登錄庫的版本，請將標記加入版本格式，例如 `v1`。
 
-1. 將映像推送至容器登錄。 這可能需要幾分鐘的時間。
+1. 將映像推送至容器登錄。 這可能需要數分鐘。
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
@@ -152,7 +152,7 @@ ms.locfileid: "88244484"
 
 ## <a name="get-language-detection-docker-image"></a>取得語言偵測 Docker 映像
 
-1. 將最新版 Docker 映像提取到本機電腦。 這可能需要幾分鐘的時間。 如果沒有這個容器的較新版本，請將該值從 `1.1.006770001-amd64-preview` 變更為較新版本。
+1. 將最新版 Docker 映像提取到本機電腦。 這可能需要數分鐘。 如果沒有這個容器的較新版本，請將該值從 `1.1.006770001-amd64-preview` 變更為較新版本。
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -164,7 +164,7 @@ ms.locfileid: "88244484"
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. 將映像推送至容器登錄。 這可能需要幾分鐘的時間。
+1. 將映像推送至容器登錄。 這可能需要數分鐘。
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -325,7 +325,7 @@ ms.locfileid: "88244484"
     |行 91<br> `apiKey` 屬性|您的文字分析資源索引鍵|
     |行 92<br> `billing` 屬性|文字分析資源的計費端點。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    因為 **apiKey** 和**計費端點**會設定為 Kubernetes 協調流程定義的一部分，因此網站容器不需要知道這些，也不需要傳遞這些成為要求的一部分。 網站容器是指其協調器名稱為 `language` 的語言偵測容器。
+    因為 **apiKey** 和 **計費端點** 會設定為 Kubernetes 協調流程定義的一部分，因此網站容器不需要知道這些，也不需要傳遞這些成為要求的一部分。 網站容器是指其協調器名稱為 `language` 的語言偵測容器。
 
 1. 從您建立和儲存 `language.yml` 的資料夾中，載入此範例的協調流程定義檔。
 

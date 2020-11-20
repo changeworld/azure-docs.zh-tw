@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a7ec2f4f8fdf631a6bc5096296275291ec41751
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924201"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967120"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定與您的 DPS 通訊
 
@@ -29,13 +29,13 @@ DPS 不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v 3.1.1
 所有與 DPS 的裝置通訊都必須使用 TLS/SSL 來保護。 因此，DPS 不支援透過埠1883的非安全連線。
 
  > [!NOTE] 
- > DPS 目前不支援透過 MQTT 通訊協定使用 TPM [證明機制](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) 的裝置。
+ > DPS 目前不支援透過 MQTT 通訊協定使用 TPM [證明機制](./concepts-service.md#attestation-mechanism) 的裝置。
 
 ## <a name="connecting-to-dps"></a>正在連線至 DPS
 
 裝置可以使用 MQTT 通訊協定，透過下列任何選項來連接到 DPS。
 
-* [Azure IoT 提供 sdk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)中的程式庫。
+* [Azure IoT 提供 sdk](../iot-hub/iot-hub-devguide-sdks.md#microsoft-azure-provisioning-sdks)中的程式庫。
 * 直接使用 MQTT 通訊協定。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 通訊協定 (作為裝置)
@@ -44,7 +44,7 @@ DPS 不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v 3.1.1
 
 * 針對 **ClientId** 欄位，請使用 **registrationId**。
 
-* 在 [使用者 **名稱** ] 欄位中，使用 `{idScope}/registrations/{registration_id}/api-version=2019-03-31` ，其中 `{idScope}` 是 DPS 的 [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) 。
+* 在 [使用者 **名稱** ] 欄位中，使用 `{idScope}/registrations/{registration_id}/api-version=2019-03-31` ，其中 `{idScope}` 是 DPS 的 [idScope](./concepts-service.md#id-scope) 。
 
 * 在 [Password] 欄位中，使用 SAS 權杖。 SAS 權杖的格式與 HTTPS 和 AMQP 通訊協定的格式相同：
 
@@ -59,7 +59,7 @@ DPS 不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v 3.1.1
 
  * DPS 不支援將 **>cleansession** 旗標的功能設定為 **0**。
 
- * 當裝置應用程式訂閱具有 **QoS 2**的主題時，DPS 會在 **>suback** 封包中授與最大 QoS 層級1。 之後，DPS 會使用 QoS 1 將訊息傳遞給裝置。
+ * 當裝置應用程式訂閱具有 **QoS 2** 的主題時，DPS 會在 **>suback** 封包中授與最大 QoS 層級1。 之後，DPS 會使用 QoS 1 將訊息傳遞給裝置。
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL 組態
 
@@ -68,10 +68,10 @@ DPS 不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v 3.1.1
 
 ## <a name="registering-a-device"></a>註冊裝置
 
-若要透過 DPS 註冊裝置，裝置應該使用 `$dps/registrations/res/#` 作為 **主題篩選器**來進行訂閱。 「主題篩選」中的多層級萬用字元 `#` 僅供用來允許裝置接收主題名稱中的額外屬性。 DPS 不允許使用 `#` 或 `?` 萬用字元來篩選子主題。 由於 DPS 不是一般用途的 pub-sub 訊息代理程式，因此它只支援已記載的主題名稱和主題篩選。
+若要透過 DPS 註冊裝置，裝置應該使用 `$dps/registrations/res/#` 作為 **主題篩選器** 來進行訂閱。 「主題篩選」中的多層級萬用字元 `#` 僅供用來允許裝置接收主題名稱中的額外屬性。 DPS 不允許使用 `#` 或 `?` 萬用字元來篩選子主題。 由於 DPS 不是一般用途的 pub-sub 訊息代理程式，因此它只支援已記載的主題名稱和主題篩選。
 
-裝置應該使用 `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` 做為 **主題名稱**，將註冊訊息發佈到 DPS。 承載應包含 JSON 格式的 [裝置註冊](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) 物件。
-在成功的情況下，裝置會收到主題名稱的回應， `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` 其中 x 是重試的值（以秒為單位）。 回應的承載會包含 JSON 格式的 [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) 物件。
+裝置應該使用 `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` 做為 **主題名稱**，將註冊訊息發佈到 DPS。 承載應包含 JSON 格式的 [裝置註冊](/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) 物件。
+在成功的情況下，裝置會收到主題名稱的回應， `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` 其中 x 是重試的值（以秒為單位）。 回應的承載會包含 JSON 格式的 [RegistrationOperationStatus](/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) 物件。
 
 ## <a name="polling-for-registration-operation-status"></a>輪詢註冊作業狀態
 

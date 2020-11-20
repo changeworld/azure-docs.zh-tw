@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a8a8157721f34abf7761a85febc7bcea3abb88
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082149"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967834"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>將虛擬網路連線至 HANA 大型執行個體
 
@@ -149,7 +150,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 - 主旨「修改我的網路-加入全球接觸範圍」
 - 詳細資料：「將全域範圍延伸至 HANA 大型實例至 HANA 大型實例租使用者」或「在內部部署環境中新增內部部署到 HANA 大型實例租使用者的全域範圍。
 - HANA 大型實例至 HANA 大型實例租使用者案例的其他詳細資料：您必須定義兩個要連線的租使用者所在的 **Azure 區域** **，而** 您需要提交 **/29 個 IP 位址範圍**
-- 內部部署至 HANA 大型實例租使用者案例的其他詳細資料：您必須定義您想要直接連線到 HANA 大型實例租使用者的 **Azure 區域** 。 此外，您必須提供在內部部署與 Azure 之間建立 ExpressRoute 線路時所收到的 **驗證 GUID** 和 **線路對等識別碼** 。 此外，您還需要為您的 **ASN**命名。 最後一個交付項是 ExpressRoute Global 觸及的 **/29 個 IP 位址範圍** 。
+- 內部部署至 HANA 大型實例租使用者案例的其他詳細資料：您必須定義您想要直接連線到 HANA 大型實例租使用者的 **Azure 區域** 。 此外，您必須提供在內部部署與 Azure 之間建立 ExpressRoute 線路時所收到的 **驗證 GUID** 和 **線路對等識別碼** 。 此外，您還需要為您的 **ASN** 命名。 最後一個交付項是 ExpressRoute Global 觸及的 **/29 個 IP 位址範圍** 。
 
 > [!NOTE]
 > 如果您想要處理這兩個案例，您需要提供兩個不同的/29 IP 位址範圍，而這些範圍不會與目前為止使用的任何其他 IP 位址範圍重迭。 
@@ -157,6 +158,6 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [HLI 的其他網路需求](hana-additional-network-requirements.md)

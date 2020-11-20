@@ -3,16 +3,17 @@ title: Azure 中可用的 Red Hat Enterprise Linux 映射
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b03d559b8952a61896fa79a568fb8200b3618fed
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372671"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968633"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux Azure 中提供的 (RHEL) 映射
 Azure 提供各種不同使用案例的 RHEL 映射。
@@ -26,7 +27,7 @@ Azure 提供各種不同使用案例的 RHEL 映射。
 > [!NOTE]
 > 不會再產生原始影像，而是要改用 LVM 分割的影像。 LVM 提供許多優於舊版原始 (非 LVM) 資料分割配置的優點，包括大幅提高彈性的分割區大小選項。
 
-供應項目| SKU | 資料分割 | 佈建 | 備註
+供應項目| SKU | 資料分割 | 佈建 | 注意
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
 |             | 6.8      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)

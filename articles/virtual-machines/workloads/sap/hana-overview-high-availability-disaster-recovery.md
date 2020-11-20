@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e2e2a048e44dcad626208b059e258d55ba7057
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77616938"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967594"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上 SAP Hana (大型執行個體) 的高可用性和災害復原 
 
@@ -33,7 +34,7 @@ ms.locfileid: "77616938"
 Microsoft 可透過 HANA 大型執行個體支援某些 SAP HANA 高可用性功能。 這些功能包括：
 
 - **儲存體複寫：** 儲存體系統將所有資料複寫到另一個 Azure 區域中另一個 HANA 大型執行個體戳記的能力。 SAP HANA 獨立運作，不依賴此方法。 此功能是提供給 HANA 大型執行個體使用的預設災害復原機制。
-- **HANA 系統**複寫：將 [SAP Hana 中的所有資料](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) 複寫到個別的 SAP Hana 系統。 復原時間目標是透過定期的資料複寫而最小化。 SAP HANA 支援非同步、記憶體內同步及同步模式。 同步模式僅用於相同資料中心內或距離 100 公里內的 SAP HANA 系統。 以 HANA 大型執行個體戳記目前的設計而言，HANA 系統複寫只可用於單一區域內的高可用性。 HANA 系統複寫需要第三方反向 Proxy 或路由元件，以便在另一個 Azure 區域中進行災害復原設定。 
+- **HANA 系統** 複寫：將 [SAP Hana 中的所有資料](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) 複寫到個別的 SAP Hana 系統。 復原時間目標是透過定期的資料複寫而最小化。 SAP HANA 支援非同步、記憶體內同步及同步模式。 同步模式僅用於相同資料中心內或距離 100 公里內的 SAP HANA 系統。 以 HANA 大型執行個體戳記目前的設計而言，HANA 系統複寫只可用於單一區域內的高可用性。 HANA 系統複寫需要第三方反向 Proxy 或路由元件，以便在另一個 Azure 區域中進行災害復原設定。 
 - **主機自動容錯移轉**︰SAP HANA 的本機錯誤復原解決方案，可作為 HANA 系統複寫的替代選項。 如果主要節點變得無法使用，您可以相應放大模式設定一或多個待命 SAP HANA 節點，而 SAP HANA 會自動容錯移轉到待命節點。
 
 SAP HANA on Azure (大型執行個體) 會在四個地緣政治區域 (美國、澳洲、歐洲和日本) 中的兩個 Azure 區域提供。 地緣政治區域內裝載 HANA 大型執行個體戳記的兩個區域，會與個別的專用網路線路連線。 這會用來複寫儲存體快照集，以提供災害復原方法。 複寫不會在預設中建立，但會為訂購災害復原功能的客戶設定。 執行儲存體複寫需要使用 HANA 大型執行個體的儲存體快照集。 您無法選擇 Azure 區域作為 DR 區域，因為該區域位於不同的地緣政治地區。 
@@ -81,7 +82,7 @@ SAP HANA on Azure (大型執行個體) 會在四個地緣政治區域 (美國、
 
 除了上述使用 HANA 大型執行個體之災害復原設定的需求，您必須：
 
-- 訂購與生產 SKU 大小相同的 SAP HANA on Azure (大型執行個體) SKU，並部署在災害復原區域中。 在目前的客戶部署中，這些執行個體會用來執行非生產 HANA 執行個體。 這些設定稱為*多用途 DR 設定*。   
+- 訂購與生產 SKU 大小相同的 SAP HANA on Azure (大型執行個體) SKU，並部署在災害復原區域中。 在目前的客戶部署中，這些執行個體會用來執行非生產 HANA 執行個體。 這些設定稱為 *多用途 DR 設定*。   
 - 針對您在災害復原網站中想要復原的每個 SAP HANA on Azure (大型執行個體) SKU，在 DR 網站上為其訂購其他儲存體。 購買額外的儲存體，可讓您配置存放磁碟區。 您可以配置磁碟區，這些磁碟區是從生產 Azure 區域將儲存體複寫到災害復原 Azure 區域時的目標。
 - 如果您在主要節點上設定 HSR，而且設定 DR 網站的儲存體式複寫，則必須在 DR 網站購買額外的儲存體，以便將主要和次要節點資料會複寫至 DR 網站。
 

@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83660573"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967817"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>災害復原容錯移轉程序
 
@@ -42,7 +43,7 @@ ms.locfileid: "83660573"
 您也可以在不影響實際複寫關係的情況下，測試災害復原容錯移轉。 若要執行測試容錯移轉，請依照 [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)中「Perform a test DR failover - azure_hana_test_dr_failover」的步驟進行。 
 
 >[!IMPORTANT]
->請勿透過**測試容錯移轉**的流程，在您於災害復原網站建立的執行個體上執行任何實際交易。 azure_hana_test_dr_failover 命令會建立一組與主要站台沒有任何關聯的磁碟區。 如此一來，「不」可能同步回主要站台。 
+>請勿透過 **測試容錯移轉** 的流程，在您於災害復原網站建立的執行個體上執行任何實際交易。 azure_hana_test_dr_failover 命令會建立一組與主要站台沒有任何關聯的磁碟區。 如此一來，「不」可能同步回主要站台。 
 
 如果您想要測試多個 SAP HANA 執行個體，請多次執行此指令碼。 執行要求時，輸入您想要測試容錯移轉的執行個體 SAP HANA SID。 
 

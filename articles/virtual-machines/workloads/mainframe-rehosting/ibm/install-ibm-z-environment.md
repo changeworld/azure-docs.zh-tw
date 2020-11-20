@@ -3,6 +3,7 @@ title: 在 Azure 上安裝 IBM zD&T 開發/測試環境 |Microsoft Docs
 description: 將 IBM Z 開發和測試環境 (zD&T) 部署在 Azure 虛擬機器上 (VM) 基礎結構即服務 (IaaS) 。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499914"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968327"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>在 Azure 上安裝 IBM zD&T 開發/測試環境
 
@@ -50,9 +51,9 @@ Azure 和 Azure Stack 支援下列版本：
 
 - [授權伺服器](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 這是存取環境的必要項。 您建立的方式取決於您從 IBM 授權軟體的方式：
 
-     - 以**硬體為基礎的授權伺服器**需要 USB 硬體裝置，其中包含存取軟體所有部分所需的有理數權杖。 您必須從 IBM 取得此。
+     - 以 **硬體為基礎的授權伺服器** 需要 USB 硬體裝置，其中包含存取軟體所有部分所需的有理數權杖。 您必須從 IBM 取得此。
 
-     - 以**軟體為基礎的授權伺服器**需要您設定集中式伺服器來管理授權金鑰。 這是慣用的方法，需要您設定從管理伺服器中的 IBM 接收的金鑰。
+     - 以 **軟體為基礎的授權伺服器** 需要您設定集中式伺服器來管理授權金鑰。 這是慣用的方法，需要您設定從管理伺服器中的 IBM 接收的金鑰。
 
 ## <a name="create-the-base-image-and-connect"></a>建立基底映射並連接
 
@@ -60,9 +61,9 @@ Azure 和 Azure Stack 支援下列版本：
 
 2. 建立 VM 之後，開啟輸入埠22（適用于 SSH）、21（FTP）和9443（適用于 web 伺服器）。
 
-3. 透過 [**連接]** 按鈕，取得 VM**總覽**分頁上所顯示的 SSH 認證。 選取 [ **ssh** ] 索引標籤，並將 ssh 登入命令複製到剪貼簿。
+3. 透過 [**連接]** 按鈕，取得 VM **總覽** 分頁上所顯示的 SSH 認證。 選取 [ **ssh** ] 索引標籤，並將 ssh 登入命令複製到剪貼簿。
 
-4. 從您的本機電腦登入 [Bash shell](../../../../cloud-shell/quickstart.md) ，並貼上命令。 它會採用**ssh \<user id\> \@ \<IP Address\> **形式。 當系統提示您輸入認證時，請輸入他們以建立與主目錄的連線。
+4. 從您的本機電腦登入 [Bash shell](../../../../cloud-shell/quickstart.md) ，並貼上命令。 它會採用 **ssh \<user id\> \@ \<IP Address\>** 形式。 當系統提示您輸入認證時，請輸入他們以建立與主目錄的連線。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>將安裝檔案複製到伺服器
 
@@ -136,6 +137,6 @@ Web 服務器的安裝檔案是 **ZDT \_ Install \_ EE \_ v 12.0.0.1. tgz**。 �
 
 3. 將 URL 貼到網頁瀏覽器中，以開啟 zD&T 安裝的管理元件。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [設定應用程式開發人員在 IBM zD&T v1 中控制散發 (ADCD) ](./demo.md)

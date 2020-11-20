@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183270"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968735"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>比較 StorSimple、Azure 檔案同步及 Data Box Edge 資料傳輸選項 
 
@@ -20,9 +20,9 @@ ms.locfileid: "88183270"
  
 本檔概述將內部部署資料傳輸至 Azure 的選項，並比較： Data Box Edge 與 Azure 檔案同步與 StorSimple 8000 系列的比較。
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)**：Data Box Edge 是內部部署網路設備，可將資料移入和移出 Azure，並具有能在上傳期間預先處理資料的 AI 功能 Edge 計算能力。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。
-- **[Azure 檔案同步](/azure/storage/files/storage-sync-files-deployment-guide)**：您可使用 Azure 檔案同步將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 Azure 檔案同步正式推出的消息已於 2018 前半年宣布。
-- **[StorSimple](/azure/storsimple/storsimple-overview)**：StorSimple 是混合式裝置，可透過與 Azure 儲存體緊密整合，協助企業合併其儲存體基礎結構，以在單一解決方案上取得主要儲存體、資料保護、封存，以及災害復原功能。 如需 StorSimple 的產品生命週期，請造訪[這裡](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。
+- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)**：Data Box Edge 是內部部署網路設備，可將資料移入和移出 Azure，並具有能在上傳期間預先處理資料的 AI 功能 Edge 計算能力。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。
+- **[Azure 檔案同步](../storage/files/storage-sync-files-deployment-guide.md)**：您可使用 Azure 檔案同步將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 Azure 檔案同步正式推出的消息已於 2018 前半年宣布。
+- **[StorSimple](./storsimple-overview.md)**：StorSimple 是混合式裝置，可透過與 Azure 儲存體緊密整合，協助企業合併其儲存體基礎結構，以在單一解決方案上取得主要儲存體、資料保護、封存，以及災害復原功能。 如需 StorSimple 的產品生命週期，請造訪[這裡](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。
 
 ## <a name="comparison-summary"></a>比較摘要
 
@@ -39,5 +39,5 @@ ms.locfileid: "88183270"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解 [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) 和 [Azure 資料箱閘道](/azure/databox-online/data-box-gateway-overview)
-- 了解 [Azure 檔案同步](/azure/storage/files/storage-sync-files-deployment-guide)
+- 了解 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) 和 [Azure 資料箱閘道](../databox-online/data-box-gateway-overview.md)
+- 了解 [Azure 檔案同步](../storage/files/storage-sync-files-deployment-guide.md)

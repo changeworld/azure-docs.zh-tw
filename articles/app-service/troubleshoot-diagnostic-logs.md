@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7b27aae712843ece27fd61927c4bfecff00399fa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4670da5f5e89a4e020e26d1d704f172b8ab0864
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747017"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968310"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
 ## <a name="overview"></a>概觀
@@ -25,7 +25,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 |類型|平台|Location|描述|
 |-|-|-|-|
-| 應用程式記錄檔 | Windows、Linux | App Service 檔案系統及/或 Azure 儲存體 blob | 記錄您的應用程式程式碼所產生的訊息。 這些訊息可由您所選擇的 web 架構，或使用您的語言標準記錄模式，直接從您的應用程式程式碼產生。 每則訊息都會被指派下列其中一個類別： **Critical** 、 **Error** 、 **Warning** 、 **Info** 、 **Debug** 和 **Trace** 。 您可以在啟用應用程式記錄時，藉由設定嚴重性層級，來選取您想要記錄的詳細資訊。|
+| 應用程式記錄檔 | Windows、Linux | App Service 檔案系統及/或 Azure 儲存體 blob | 記錄您的應用程式程式碼所產生的訊息。 這些訊息可由您所選擇的 web 架構，或使用您的語言標準記錄模式，直接從您的應用程式程式碼產生。 每則訊息都會被指派下列其中一個類別： **Critical**、 **Error**、 **Warning**、 **Info**、 **Debug** 和 **Trace**。 您可以在啟用應用程式記錄時，藉由設定嚴重性層級，來選取您想要記錄的詳細資訊。|
 | Web 服務器記錄| Windows | App Service 檔案系統或 Azure 儲存體 blob| [W3C 擴充記錄檔格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 要求資料。 每個記錄訊息都包含 HTTP 方法、資源 URI、用戶端 IP、用戶端埠、使用者代理程式、回應碼等資料。 |
 | 詳細的錯誤訊息| Windows | App Service 檔案系統 | 已傳送至用戶端瀏覽器之 *.htm* 錯誤頁面的複本。 基於安全性理由，不應該將詳細的錯誤頁面傳送到生產環境中的用戶端，但 App Service 可以在每次發生 HTTP 代碼400或更高的應用程式錯誤時儲存錯誤頁面。 此頁面可能包含有助於判斷伺服器傳回錯誤碼之原因的資訊。 |
 | 失敗的要求追蹤 | Windows | App Service 檔案系統 | 失敗要求的詳細追蹤資訊，包括用於處理要求的 IIS 元件追蹤，以及每個元件所花費的時間。 如果您想要改善網站效能或隔離特定的 HTTP 錯誤，這會相當有用。 每個失敗的要求都會產生一個資料夾，其中包含 XML 記錄檔，以及用來查看記錄檔的 XSL 樣式表單。 |
@@ -44,21 +44,21 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 若要為 [Azure 入口網站](https://portal.azure.com)中的 Windows 應用程式啟用應用程式記錄，請流覽至您的應用程式，然後選取 **App Service 記錄** 檔。
 
-針對 [ **應用程式記錄] (檔案系統)** 或 **應用程式記錄 (Blob)** 或兩者上選取 [ **開啟** ]。 
+針對 [**應用程式記錄] (檔案系統)** 或 **應用程式記錄 (Blob)** 或兩者上選取 [**開啟**]。 
 
-**Filesystem** 選項適用于暫時的偵錯工具，並會在12小時內自行關閉。 **Blob** 選項適用于長期記錄，並需要 blob 儲存體容器來寫入記錄。  **Blob** 選項也會在記錄訊息中包含其他資訊，例如記錄訊息的原始 VM 實例識別碼 (`InstanceId`) 、執行緒識別碼 (`Tid`) ，以及更細微的時間戳記 ( [`EventTickCount`](/dotnet/api/system.datetime.ticks)) 。
+**Filesystem** 選項適用于暫時的偵錯工具，並會在12小時內自行關閉。 **Blob** 選項適用于長期記錄，並需要 blob 儲存體容器來寫入記錄。  **Blob** 選項也會在記錄訊息中包含其他資訊，例如記錄訊息的原始 VM 實例識別碼 (`InstanceId`) 、執行緒識別碼 (`Tid`) ，以及更細微的時間戳記 ([`EventTickCount`](/dotnet/api/system.datetime.ticks)) 。
 
 > [!NOTE]
 > 目前只能將 .NET 應用程式記錄寫入至 Blob 儲存體。 JAVA、PHP、Node.js、Python 應用程式記錄檔只能儲存在 App Service 檔案系統 (不需要修改程式碼，即可將記錄寫入外部儲存體) 。
 >
 > 此外，如果您 [重新產生儲存體帳戶的存取金鑰](../storage/common/storage-account-create.md)，您必須重設各自的記錄設定，以使用更新的存取金鑰。 若要這樣做：
 >
-> 1. 在 [設定]  索引標籤上，將個別的記錄功能設定為 [關閉]  。 儲存您的設定。
+> 1. 在 [設定] 索引標籤上，將個別的記錄功能設定為 [關閉]。 儲存您的設定。
 > 2. 重新啟用記錄至儲存體帳戶 Blob。 儲存您的設定。
 >
 >
 
-選取 **層級** ，或要記錄的詳細資料層級。 下表顯示每個層級中包含的記錄類別：
+選取 **層級**，或要記錄的詳細資料層級。 下表顯示每個層級中包含的記錄類別：
 
 | 層級 | 包含的類別 |
 |-|-|
@@ -74,7 +74,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 若要為 [Azure 入口網站](https://portal.azure.com)中的 Linux 應用程式或自訂容器應用程式啟用應用程式記錄，請流覽至您的應用程式，然後選取 **App Service 記錄** 檔。
 
-在 [ **應用程式記錄** ] 中，選取 [ **檔案系統** ]。
+在 [ **應用程式記錄**] 中，選取 [ **檔案系統**]。
 
 在 [ **配額 (MB])** 中，指定應用程式記錄檔的磁片配額。 在 [ **保留期間] ([天數])** 中，設定應保留記錄的天數。
 
@@ -84,14 +84,14 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 若要在 [Azure 入口網站](https://portal.azure.com)中啟用 Windows 應用程式的 web 伺服器記錄，請流覽至您的應用程式，然後選取 **App Service 記錄** 檔。
 
-針對 [ **Web 服務器記錄** ]，選取 [ **儲存體** ] 以將記錄儲存在 blob 儲存體上，或選取 [ **檔案系統** ] 以將記錄儲存在 App Service 檔案系統上。 
+針對 [ **Web 服務器記錄**]，選取 [ **儲存體** ] 以將記錄儲存在 blob 儲存體上，或選取 [ **檔案系統** ] 以將記錄儲存在 App Service 檔案系統上。 
 
 在 [ **保留期間] ([天數])** 中，設定應保留記錄的天數。
 
 > [!NOTE]
 > 如果您 [重新產生儲存體帳戶的存取金鑰](../storage/common/storage-account-create.md)，您必須重設個別的記錄組態，才能使用更新的金鑰。 若要這樣做：
 >
-> 1. 在 [設定]  索引標籤上，將個別的記錄功能設定為 [關閉]  。 儲存您的設定。
+> 1. 在 [設定] 索引標籤上，將個別的記錄功能設定為 [關閉]。 儲存您的設定。
 > 2. 重新啟用記錄至儲存體帳戶 Blob。 儲存您的設定。
 >
 >
@@ -102,7 +102,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 若要為 [Azure 入口網站](https://portal.azure.com)中的 Windows 應用程式儲存錯誤頁面或失敗要求的追蹤，請流覽至您的應用程式，然後選取 **App Service 記錄** 檔。
 
-在 [ **詳細錯誤記錄** ] 或 [ **失敗要求追蹤** ] 底下，選取 [ **開啟** ]，然後選取 [ **儲存** ]。
+在 [ **詳細錯誤記錄** ] 或 [ **失敗要求追蹤**] 底下，選取 [ **開啟**]，然後選取 [ **儲存**]。
 
 這兩種記錄類型都會儲存在 App Service 檔案系統中。 最多50個錯誤 (會保留) 的檔案/資料夾。 當 HTML 檔案數目超過50時，會自動刪除最舊的26個錯誤。
 
@@ -128,7 +128,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 ### <a name="in-azure-portal"></a>Azure 入口網站
 
-若要串流 [Azure 入口網站](https://portal.azure.com)中的記錄，請流覽至您的應用程式，然後選取 [ **記錄資料流程** ]。 
+若要串流 [Azure 入口網站](https://portal.azure.com)中的記錄，請流覽至您的應用程式，然後選取 [ **記錄資料流程**]。 
 
 ### <a name="in-cloud-shell"></a>在 Cloud Shell
 
@@ -170,7 +170,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 |-|-|-|
 | **應用程式記錄** |*/LogFiles/Application/* | 包含一或多個文字檔。 記錄檔訊息的格式取決於您所使用的記錄提供者。 |
 | **失敗的要求追蹤** | */LogFiles/W3SVC # # # # # # # # #/* | 包含 XML 檔案和 XSL 檔案。 您可以在瀏覽器中查看格式化的 XML 檔案。 |
-| **詳細的錯誤記錄檔** | */LogFiles/DetailedErrors/* | 包含 HTM 錯誤檔。 您可以在瀏覽器中查看 HTM 檔案。<br/>另一個查看失敗要求追蹤的方法是在入口網站中流覽至您的應用程式頁面。 從左側功能表中，選取 [ **診斷並解決問題** ]，然後搜尋 **失敗的要求追蹤記錄** ，然後按一下圖示來流覽並查看您想要的追蹤。 |
+| **詳細的錯誤記錄檔** | */LogFiles/DetailedErrors/* | 包含 HTM 錯誤檔。 您可以在瀏覽器中查看 HTM 檔案。<br/>另一個查看失敗要求追蹤的方法是在入口網站中流覽至您的應用程式頁面。 從左側功能表中，選取 [ **診斷並解決問題**]，然後搜尋 **失敗的要求追蹤記錄**，然後按一下圖示來流覽並查看您想要的追蹤。 |
 | **Web 服務器記錄檔** | */LogFiles/HTTP/RawLogs/* | 包含使用 [W3C 擴充記錄檔格式](/windows/desktop/Http/w3c-logging)格式化的文字檔。 您可以使用文字編輯器或 [記錄](https://go.microsoft.com/fwlink/?LinkId=246619)剖析器之類的公用程式來讀取這類資訊。<br/>App Service 不支援 `s-computername` 、 `s-ip` 或 `cs-version` 欄位。 |
 | **部署記錄檔** | */LogFiles/Git/* 和 */deployments/* | 包含內部部署程式所產生的記錄，以及適用于 Git 部署的記錄。 |
 
@@ -187,14 +187,14 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 | 記錄類型 | Windows | Windows 容器 | Linux | Linux 容器 | 描述 |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | TBA | TBA | 是 | 是 | 標準輸出和標準錯誤 |
-| AppServiceHTTPLogs | 是 | TBA | 是 | 是 | Web 伺服器記錄 |
+| AppServiceConsoleLogs | JAVA SE & Tomcat | 是 | 是 | 是 | 標準輸出和標準錯誤 |
+| AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 伺服器記錄 |
 | AppServiceEnvironmentPlatformLogs | 是 | N/A | 是 | 是 | App Service 環境：調整、設定變更和狀態記錄|
-| AppServiceAuditLogs | 是 | TBA | 是 | 是 | 透過 FTP 和 Kudu 的登入活動 |
-| AppServiceFileAuditLogs | 是 | TBA | TBA | TBA | 對網站內容進行的檔案變更;僅適用于進階層和更新版本 |
-| AppServiceAppLogs | ASP .NET | TBA | JAVA SE & Tomcat | JAVA SE & Tomcat | 應用程式記錄 |
-| AppServiceIPSecAuditLogs  | 是 | TBA | 是 | 是 | IP 規則的要求 |
-| AppServicePlatformLogs  | TBA | TBA | 是 | 是 | 容器作業記錄 |
+| AppServiceAuditLogs | 是 | 是 | 是 | 是 | 透過 FTP 和 Kudu 的登入活動 |
+| AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 對網站內容進行的檔案變更;僅適用于進階層和更新版本 |
+| AppServiceAppLogs | ASP .NET | ASP .NET | JAVA SE & Tomcat 經過驗證映射 | JAVA SE & Tomcat 經過驗證映射 | 應用程式記錄 |
+| AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | IP 規則的要求 |
+| AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器作業記錄 |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 後續步驟
 * [使用 Azure 監視器來查詢記錄](../azure-monitor/log-query/log-query-overview.md)

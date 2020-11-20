@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082166"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967868"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>將 Azure VM 連接到 HANA 大型執行個體
 
@@ -54,28 +55,28 @@ ms.locfileid: "87082166"
 
 在上述兩個圖形中， **虛擬網路位址空間** 涵蓋 **Azure VM 的子網 IP 位址範圍** 和虛擬網路閘道的 IP 位址範圍。
 
-您可以將**虛擬網路位址空間**限制為每個子網路使用的特定範圍。 您也可以將虛擬網路的**虛擬網路位址空間**定義成多個特定範圍，如下所示：
+您可以將 **虛擬網路位址空間** 限制為每個子網路使用的特定範圍。 您也可以將虛擬網路的 **虛擬網路位址空間** 定義成多個特定範圍，如下所示：
 
 ![含有兩個空間的虛擬網路位址空間](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-在此案例中，**虛擬網路位址空間**定義了兩個空間。 這些空間與為 Azure VM 和虛擬網路閘道的子網路 IP 位址範圍定義的 IP 位址範圍相同。 
+在此案例中，**虛擬網路位址空間** 定義了兩個空間。 這些空間與為 Azure VM 和虛擬網路閘道的子網路 IP 位址範圍定義的 IP 位址範圍相同。 
 
-您可以將您喜歡的任何命名標準用於這些租用戶子網路 (VM 子網路)。 不過，**每個虛擬網路都必須要有、且只有一個閘道子網路**連線至 SAP HANA on Azure (大型執行個體) ExpressRoute 線路。 **此閘道子網必須命名為 "GatewaySubnet"** ，以確保已正確放置 ExpressRoute 閘道。
+您可以將您喜歡的任何命名標準用於這些租用戶子網路 (VM 子網路)。 不過，**每個虛擬網路都必須要有、且只有一個閘道子網路** 連線至 SAP HANA on Azure (大型執行個體) ExpressRoute 線路。 **此閘道子網必須命名為 "GatewaySubnet"** ，以確保已正確放置 ExpressRoute 閘道。
 
 > [!WARNING] 
 > 閘道子網一律命名為 "GatewaySubnet" 是很重要的。
 
-您可以使用多個 VM 子網路和非連續的位址範圍。 這些網路範圍必須涵蓋於虛擬網路的**虛擬網路位址空間**內。 它們可以是彙總的形式。 它們也可以位於 VM 子網路和閘道子網路的精確範圍清單中。
+您可以使用多個 VM 子網路和非連續的位址範圍。 這些網路範圍必須涵蓋於虛擬網路的 **虛擬網路位址空間** 內。 它們可以是彙總的形式。 它們也可以位於 VM 子網路和閘道子網路的精確範圍清單中。
 
 以下將總結連線到 HANA 大型執行個體的 Azure 虛擬網路的重要事實：
 
 - 當您執行「HANA 大型實例」的初始部署時，您必須將 **虛擬網路位址空間** 提交給 Microsoft。 
-- **虛擬網路位址空間**可以是一個涵蓋 Azure VM 和虛擬網路閘道子網路 IP 位址範圍的較大範圍。
+- **虛擬網路位址空間** 可以是一個涵蓋 Azure VM 和虛擬網路閘道子網路 IP 位址範圍的較大範圍。
 - 或者，您可以提交多個範圍，其中涵蓋「VM 子網路 IP 位址範圍」和「虛擬網路閘道 IP 位址範圍」的不同 IP 位址範圍。
-- 已定義的**虛擬網路位址空間**會用來傳播 BGP 路由。
+- 已定義的 **虛擬網路位址空間** 會用來傳播 BGP 路由。
 - 閘道子網的名稱必須是： **"GatewaySubnet"**。
 - 在 HANA 大型執行個體端會使用位址空間作為篩選條件，以允許或拒絕從 Azure 到 HANA 大型執行個體單位的流量。 Azure 虛擬網路的 BGP 路由資訊，與為了在 HANA 大型執行個體端上進行篩選而設定的 IP 位址範圍應相符。 否則，可能會發生連線問題。
-- 稍後將在**將虛擬網路連線到 HANA 大型執行個體 ExpressRoute** 一節中討論閘道子網路的一些相關詳細資料。
+- 稍後將在 **將虛擬網路連線到 HANA 大型執行個體 ExpressRoute** 一節中討論閘道子網路的一些相關詳細資料。
 
 
 
@@ -127,7 +128,7 @@ ms.locfileid: "87082166"
 建議您將位址空間與您使用的實際子網位址空間保持緊密一致。 您後續可隨時視需要新增新的位址空間值，這不會導致虛擬網路停止運作。
  
 > [!IMPORTANT] 
-> ER-P2P、伺服器 IP 集區和 Azure 虛擬網路位址空間中的每個 IP 位址範圍皆**不可**彼此重疊，或是與您的網路中使用的任何其他範圍重疊。 它們必須是離散的。 如先前兩張圖片所示，它們也不可以是任何其他範圍的子網路。 如果兩個範圍之間發生重疊，Azure 虛擬網路可能無法連線到 ExpressRoute 線路。
+> ER-P2P、伺服器 IP 集區和 Azure 虛擬網路位址空間中的每個 IP 位址範圍皆 **不可** 彼此重疊，或是與您的網路中使用的任何其他範圍重疊。 它們必須是離散的。 如先前兩張圖片所示，它們也不可以是任何其他範圍的子網路。 如果兩個範圍之間發生重疊，Azure 虛擬網路可能無法連線到 ExpressRoute 線路。
 
 ## <a name="next-steps-after-address-ranges-have-been-defined"></a>定義位址範圍之後的後續步驟
 定義 IP 位址範圍之後，需要執行下列動作：
@@ -146,6 +147,6 @@ ms.locfileid: "87082166"
 
 您也可以在 [SAP HANA on Azure (大型執行個體) 安裝](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/)文件中找到連線 HANA 大型執行個體的順序。 該文件的範例部署會示範下列許多步驟。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱[將虛擬網路連線到 HANA 大型執行個體 ExpressRoute](hana-connect-vnet-express-route.md)。

@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369455"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966882"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
 文字分析 API 會持續更新。 為了隨時掌握最新的開發，本文提供新版本和功能的相關資訊。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+* 具有文字分析 API 3.1-preview. 3 的 [新端點](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) ，適用于新的非同步 [分析 API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze)，可支援 NER、PII 和關鍵字組解壓縮作業的批次處理。
+* 具有文字分析 API 3.1-preview. 3 的 [新端點](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) ，適用于健康託管 API 的新異步 [文字分析](how-tos/text-analytics-for-health.md) ，並支援批次處理。
+* 上述兩項新功能僅適用于下欄區域： `West US 2` 、 `East US 2` 、 `Central US` `North Europe` 和 `West Europe` 區域。
+* 自葡萄牙文 (巴西) `pt-BR` 現在支援 [情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md) v3，從模型版本開始 `2020-04-01` 。 它新增了對葡萄牙文的現有 `pt-PT` 支援。
+* 更新的用戶端程式庫，包括非同步分析和文字分析的健全狀況作業。 您可以在 GitHub 上找到範例：
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [深入瞭解文字分析 API 3.1-Preview。3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -147,7 +164,7 @@ JSON 回應中的下列屬性名稱已變更，適用于：
 
 ### <a name="text-analytics-api-v31-public-preview"></a>文字分析 API 3.1 版公開預覽
    * 新的情感分析功能- [意見挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * 針對受保護的健康情況資訊，新的 [個人 (`PII`) 網域篩選](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) (`PHI`) 。
+   * `PII`針對受保護的健康情況資訊，新的個人 () 網域篩選 (`PHI`) 。
 
 > [!div class="nextstepaction"]
 > [深入瞭解文字分析 API 3.1 版 Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ JSON 回應中的下列屬性名稱已變更，適用于：
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [深入瞭解文字分析 API v3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>命名實體辨識 v3 公開預覽
@@ -185,9 +202,6 @@ JSON 回應中的下列屬性名稱已變更，適用于：
     * 電話號碼僅 (US) 
     * URL
     * IP 位址
-
-> [!div class="nextstepaction"]
-> [深入瞭解命名實體辨識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>2019 年 10 月
 

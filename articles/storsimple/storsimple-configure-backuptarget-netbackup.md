@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f71cf82b675222836a73eec12d68bd8f62a5538
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710918"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967273"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>使用 StorSimple 做為 NetBackup 的備份目標
 
@@ -79,7 +79,7 @@ StorSimple 提供下列優點︰
 
 雖然 StorSimple 展示兩個主要的部署案例 (主要備份目標和次要備份目標)，但基本上只是一般的區塊存放裝置。 StorSimple 會進行所有的壓縮及重複資料刪除。 它會在雲端、應用程式及檔案系統之間順暢地傳送和擷取資料。
 
-如需 StorSimple 的詳細資訊，請參閱 [StorSimple 8000 系列︰混合式雲端儲存體解決方案](storsimple-overview.md)。 此外，您可以檢閱 [StorSimple 8000 系列技術規格](storsimple-technical-specifications-and-compliance.md)。
+如需 StorSimple 的詳細資訊，請參閱 [StorSimple 8000 系列︰混合式雲端儲存體解決方案](storsimple-overview.md)。 此外，您可以檢閱 [StorSimple 8000 系列技術規格](./storsimple-8000-technical-specifications-and-compliance.md)。
 
 > [!IMPORTANT]
 > 只有 StorSimple 8000 Update 3 或更新版本才支援使用 StorSimple 裝置做為備份目標。
@@ -170,7 +170,7 @@ StorSimple 提供下列優點︰
 
 ### <a name="deploy-storsimple"></a>部署 StorSimple
 
-如需 StorSimple 部署的逐步指引，請參閱[部署內部部署 StorSimple 裝置](storsimple-deployment-walkthrough-u2.md)。
+如需 StorSimple 部署的逐步指引，請參閱[部署內部部署 StorSimple 裝置](./storsimple-8000-deployment-walkthrough-u2.md)。
 
 ### <a name="deploy-netbackup"></a>部署 NetBackup
 
@@ -185,9 +185,9 @@ StorSimple 提供下列優點︰
 | StorSimple 部署工作  | 其他註解 |
 |---|---|
 | 部署您的內部部署 StorSimple 裝置。 | 支援的版本：Update 3 及更新版本。 |
-| 開啟備份目標。 | 使用下列命令來開啟或關閉備份目標模式，以及取得狀態。 如需詳細資訊，請參閱[從遠端連接至 StorSimple 裝置](storsimple-remote-connect.md)。</br> 若要開啟備份模式︰`Set-HCSBackupApplianceMode -enable`。 </br> 若要關閉備份模式︰`Set-HCSBackupApplianceMode -disable`。 </br> 若要取得備份模式設定的目前狀態：`Get-HCSBackupApplianceMode`。 |
+| 開啟備份目標。 | 使用下列命令來開啟或關閉備份目標模式，以及取得狀態。 如需詳細資訊，請參閱[從遠端連接至 StorSimple 裝置](./storsimple-8000-remote-connect.md)。</br> 若要開啟備份模式︰`Set-HCSBackupApplianceMode -enable`。 </br> 若要關閉備份模式︰`Set-HCSBackupApplianceMode -disable`。 </br> 若要取得備份模式設定的目前狀態：`Get-HCSBackupApplianceMode`。 |
 | 為儲存備份資料的磁碟區建立一般的磁碟區容器。 磁碟區容器中的所有資料都已刪除重複資料。 | StorSimple 磁碟區容器定義重複資料刪除網域。  |
-| 建立 StorSimple 磁碟區。 | 建立大小盡可能接近預期使用量的磁碟區，因為磁碟區大小會影響雲端快照集的持續時間。 如需有關如何調整磁碟區大小的資訊，請參閱[保留原則](#retention-policies)。</br> </br> 使用 StorSimple 分層磁碟區，並選取 [使用此磁碟區存放不常存取的封存資料]**** 核取方塊。 </br> 不支援只使用固定在本機的磁碟區。 |
+| 建立 StorSimple 磁碟區。 | 建立大小盡可能接近預期使用量的磁碟區，因為磁碟區大小會影響雲端快照集的持續時間。 如需有關如何調整磁碟區大小的資訊，請參閱[保留原則](#retention-policies)。</br> </br> 使用 StorSimple 分層磁碟區，並選取 [使用此磁碟區存放不常存取的封存資料] 核取方塊。 </br> 不支援只使用固定在本機的磁碟區。 |
 | 為所有備份目標磁碟區建立唯一的 StorSimple 備份原則。 | StorSimple 備份原則定義磁碟區一致性群組。 |
 | 在快照集到期時停用排程。 | 後處理作業會觸發快照集。 |
 
@@ -212,16 +212,16 @@ StorSimple 提供下列優點︰
 - 停用 StorSimple 磁碟區的 Windows Server 磁碟重組。
 - 停用 StorSimple 磁碟區的 Windows Server 索引。
 - 在來源主機 (不是針對 StorSimple 磁碟區) 執行防毒軟體掃描。
-- 在工作管理員中關閉預設 [Windows Server 維護](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 利用下列其中一種方式來執行此作業：
+- 在工作管理員中關閉預設 [Windows Server 維護](/windows/win32/w8cookbook/automatic-maintenance)。 利用下列其中一種方式來執行此作業：
   - 在 Windows 工作排程器中關閉維護設定程式。
-  - 從 Windows Sysinternals 下載 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下載 PsExec 之後，請以系統管理員身分執行 Windows PowerShell 並輸入：
+  - 從 Windows Sysinternals 下載 [PsExec](/sysinternals/downloads/psexec)。 下載 PsExec 之後，請以系統管理員身分執行 Windows PowerShell 並輸入：
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple 最佳作法
 
--   確定 StorSimple 裝置已更新為 [Update 3 或更新版本](storsimple-install-update-3.md)。
+-   確定 StorSimple 裝置已更新為 [Update 3 或更新版本](./index.yml)。
 -   隔離 iSCSI 和雲端流量。 針對 StorSimple 和備份伺服器之間的流量使用專用的 iSCSI 連線。
 -   確定 StorSimple 裝置是專用的備份目標。 不支援混合的工作負載，因為它們會影響 RTO 和 RPO。
 
@@ -265,11 +265,11 @@ StorSimple 提供下列優點︰
 
 ### <a name="to-set-up-netbackup-storage"></a>若要設定 NetBackup 儲存體
 
-1.  在 NetBackup 管理主控台中，選取 [**媒體] 和 [裝置管理**  >  **裝置**  >  **磁片**集區]。 在 [磁碟集區設定精靈] 中，選取 [AdvancedDisk]**** 儲存體伺服器類型，然後選取 [下一步]****。
+1.  在 NetBackup 管理主控台中，選取 [**媒體] 和 [裝置管理**  >  **裝置**  >  **磁片** 集區]。 在 [磁碟集區設定精靈] 中，選取 [AdvancedDisk] 儲存體伺服器類型，然後選取 [下一步]。
 
     ![NetBackup 管理主控台，磁碟集區設定精靈](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
-2.  選取您的伺服器，然後選取 [下一步]****。
+2.  選取您的伺服器，然後選取 [下一步]。
 
     ![NetBackup 管理主控台，選取伺服器](./media/storsimple-configure-backup-target-using-netbackup/nbimage2.png)
 
@@ -277,9 +277,9 @@ StorSimple 提供下列優點︰
 
     ![NetBackup 管理主控台，選取 StorSimple 磁碟區磁碟](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  輸入備份目標的名稱，然後選取 [下一**Next**  >  **步**] 以完成 wizard。
+4.  輸入備份目標的名稱，然後選取 [下一 **Next**  >  **步**] 以完成 wizard。
 
-5.  檢閱設定，然後選取 [完成]****。
+5.  檢閱設定，然後選取 [完成]。
 
 6.  在每項磁碟區指派作業結束時，變更存放裝置設定，以符合 [StorSimple 和 NetBackup 的最佳作法](#best-practices-for-storsimple-and-netbackup)中建議的設定。
 
@@ -312,23 +312,23 @@ StorSimple 提供下列優點︰
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>若要將 StorSimple 磁碟區指派給 NetBackup 備份作業
 
-1. 在 NetBackup 管理主控台中，選取 [NetBackup 管理]****，以滑鼠右鍵按一下 [原則]****，然後選取 [新增原則]****。
+1. 在 NetBackup 管理主控台中，選取 [NetBackup 管理]，以滑鼠右鍵按一下 [原則]，然後選取 [新增原則]。
 
    ![NetBackup 管理主控台，建立新的原則](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. 在 [新增原則]**** 對話方塊中，輸入原則的名稱，然後選取 [使用原則設定精靈]**** 核取方塊。 選取 [確定]  。
+2. 在 [新增原則] 對話方塊中，輸入原則的名稱，然後選取 [使用原則設定精靈] 核取方塊。 選取 [確定]。
 
    ![NetBackup 管理主控台，新增原則對話方塊](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3. 在 [備份原則設定精靈] 中，選擇您想要的備份類型，然後選取 [下一步]****。
+3. 在 [備份原則設定精靈] 中，選擇您想要的備份類型，然後選取 [下一步]。
 
    ![NetBackup 管理主控台，選取備份類型](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4. 若要設定原則類型，請選取 [標準]****，然後選取 [下一步]****。
+4. 若要設定原則類型，請選取 [標準]，然後選取 [下一步]。
 
    ![NetBackup 管理主控台，選取原則類型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. 選取您的主機，選取 [偵測用戶端作業系統]**** 核准方塊，然後選取 [新增]****。 選取 [下一步]  。
+5. 選取您的主機，選取 [偵測用戶端作業系統] 核准方塊，然後選取 [新增]。 選取 [下一步]。
 
    ![NetBackup 管理主控台，列出新原則中的用戶端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -340,31 +340,31 @@ StorSimple 提供下列優點︰
 
    ![NetBackup 管理主控台，新原則的備份頻率和循環](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. 選取**下**一個 [下  >  **一步**  >  **]**。  您可以在建立原則後修改排程。
+8. 選取 **下** 一個 [下  >  **一步**  >  **]**。  您可以在建立原則後修改排程。
 
-9. 選擇展開您剛建立的原則，然後選取 [排程]****。
+9. 選擇展開您剛建立的原則，然後選取 [排程]。
 
    ![NetBackup 管理主控台，新原則的排程](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10. 以滑鼠右鍵按一下 [Differential-Inc]****，選取 [複製到新的]****，然後選取 [確定]****。
+10. 以滑鼠右鍵按一下 [Differential-Inc]，選取 [複製到新的]，然後選取 [確定]。
 
     ![NetBackup 管理主控台，將排程複製到新原則](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11. 以滑鼠右鍵按一下新建立的排程，然後選取 [變更]****。
+11. 以滑鼠右鍵按一下新建立的排程，然後選取 [變更]。
 
-12. 在 [屬性]**** 索引標籤上，選取 [覆寫原則儲存體選取項目]**** 核取方塊，然後選取要儲存星期一增量備份的磁碟區。
+12. 在 [屬性] 索引標籤上，選取 [覆寫原則儲存體選取項目] 核取方塊，然後選取要儲存星期一增量備份的磁碟區。
 
     ![NetBackup 管理主控台，變更排程](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13. 在 [開始時間範圍]**** 索引標籤中選取備份的時間範圍。
+13. 在 [開始時間範圍] 索引標籤中選取備份的時間範圍。
 
     ![NetBackup 管理主控台，變更開始時間範圍](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14. 選取 [確定]  。
+14. 選取 [確定]。
 
 15. 針對每個增量備份重複步驟 10-14。 針對您建立的每個備份，選取適當的磁碟區和排程。
 
-16. 在 [Differential-inc]**** 排程上按一下滑鼠右鍵，然後將它刪除。
+16. 在 [Differential-inc] 排程上按一下滑鼠右鍵，然後將它刪除。
 
 17. 修改您的完整排程，以符合您的備份需求。
 
@@ -434,19 +434,19 @@ NetBackup 提供各式各樣的儲存體和媒體管理選項，所以我們建�
 
    ![NetBackup 管理主控台，新增儲存體生命週期原則](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2. 輸入快照集的名稱，然後選取 [新增]****。
+2. 輸入快照集的名稱，然後選取 [新增]。
 
-3. 在 [新增作業]**** 對話方塊的 [屬性]**** 索引標籤上，針對 [作業]**** 選取[備份]****。 選取您想要的 [目的地儲存體]****、[保留類型]**** 和 [保留期限]**** 值。 選取 [確定]  。
+3. 在 [新增作業] 對話方塊的 [屬性] 索引標籤上，針對 [作業] 選取[備份]。 選取您想要的 [目的地儲存體]、[保留類型] 和 [保留期限] 值。 選取 [確定]。
 
    ![NetBackup 管理主控台，新增作業對話方塊](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
    這會定義第一個備份作業和儲存機制。
 
-4. 選擇反白顯示先前的作業，然後選取 [新增]****。 在 [變更儲存體作業]**** 對話方塊方塊中，選取您想要的 [目的地儲存體]****、[保留類型]**** 和 [保留期限]**** 值。
+4. 選擇反白顯示先前的作業，然後選取 [新增]。 在 [變更儲存體作業] 對話方塊方塊中，選取您想要的 [目的地儲存體]、[保留類型] 和 [保留期限] 值。
 
    ![NetBackup 管理主控台，變更儲存體作業對話方塊](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5. 選擇反白顯示先前的作業，然後選取 [新增]****。 在 [新增儲存體生命週期原則]**** 對話方塊中，新增一整年的每月備份。
+5. 選擇反白顯示先前的作業，然後選取 [新增]。 在 [新增儲存體生命週期原則] 對話方塊中，新增一整年的每月備份。
 
    ![NetBackup 管理主控台，新增儲存體生命週期原則對話方塊](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
@@ -454,17 +454,17 @@ NetBackup 提供各式各樣的儲存體和媒體管理選項，所以我們建�
 
    ![NetBackup 管理主控台，在 [新增儲存體生命週期原則] 對話方塊中新增原則](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7. 當您完成定義 SLP 保留原則時，請遵循[將 StorSimple 磁碟區指派給 NetBackup 備份作業](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中詳述的步驟，以在 [原則]**** 之下定義備份原則。
+7. 當您完成定義 SLP 保留原則時，請遵循[將 StorSimple 磁碟區指派給 NetBackup 備份作業](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中詳述的步驟，以在 [原則] 之下定義備份原則。
 
-8. 在 [排程]**** 之下的 [變更排程]**** 對話方塊中，以滑鼠右鍵按一下 [完整]****，然後選取 [變更]****。
+8. 在 [排程] 之下的 [變更排程] 對話方塊中，以滑鼠右鍵按一下 [完整]，然後選取 [變更]。
 
    ![NetBackup 管理主控台，變更排程對話方塊](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9. 選取 [覆寫原則儲存體選取項目]**** 核取方塊，然後選取您在步驟 1-6 中建立的 SLP 保留原則。
+9. 選取 [覆寫原則儲存體選取項目] 核取方塊，然後選取您在步驟 1-6 中建立的 SLP 保留原則。
 
    ![NetBackup 管理主控台，複寫原則儲存體選取項目](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10. 許取 [確定]****，然後重複執行增量備份排程。
+10. 許取 [確定]，然後重複執行增量備份排程。
 
     ![NetBackup 管理主控台，增量備份的 [變更排程] 對話方塊](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -498,7 +498,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ![備份生命週期圖表](./media/storsimple-configure-backup-target-using-netbackup/backuplifecycle.png)
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 
 -   執行指令碼的伺服器必須能夠存取 Azure 雲端資源。
 -   使用者帳戶必須擁有必要的權限。
@@ -531,7 +531,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 | 狀況 | 影響 | 如何復原 | 注意 |
 |---|---|---|---|
-| StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 索引和目錄重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
+| StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](./storsimple-8000-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 索引和目錄重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
 | NetBackup 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並執行資料庫還原。 | 您必須在災害復原站台重建或還原 NetBackup 伺服器。 將資料庫還原到最新的點。 如果還原的 NetBackup 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |
 | 站台故障造成備份伺服器和 StorSimple 都遺失 | 備份和還原作業會中斷。 | 先還原 StorSimple，然後再還原 NetBackup。 | 先還原 StorSimple，然後再還原 NetBackup。 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 |
 
@@ -539,12 +539,12 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 本文中參考下列文件︰
 
-- [StorSimple 多重路徑 I/O 設定](storsimple-configure-mpio-windows-server.md)
-- [儲存體案例︰精簡佈建 (英文)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [使用 GPT 磁碟機 (英文)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [設定共用資料夾的陰影複製](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple 多重路徑 I/O 設定](./storsimple-8000-configure-mpio-windows-server.md)
+- [儲存體案例︰精簡佈建 (英文)](/windows-hardware/drivers/storage/thin-provisioning)
+- [使用 GPT 磁碟機 (英文)](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [設定共用資料夾的陰影複製](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解如何[從備份集還原](storsimple-restore-from-backup-set-u2.md)。
-- 深入了解如何執行[裝置容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。
+- 深入了解如何[從備份集還原](./storsimple-8000-restore-from-backup-set-u2.md)。
+- 深入了解如何執行[裝置容錯移轉和災害復原](./storsimple-8000-device-failover-disaster-recovery.md)。

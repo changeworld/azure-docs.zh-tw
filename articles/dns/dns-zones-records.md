@@ -9,12 +9,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
-ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846837"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968191"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 區域和記錄的概觀
 
@@ -92,8 +92,8 @@ CNAME 記錄集不能與其他具有相同名稱的記錄集共存。 例如，�
 
 各種服務都會使用 [SRV 記錄](https://en.wikipedia.org/wiki/SRV_record)來指定伺服器位置。 在 Azure DNS 中指定 SRV 記錄時︰
 
-* 必須在記錄集名稱中包括 [服務]** 和 [通訊協定]**，並在其前方加上底線。  例如，'\_sip.\_tcp.name'。  在區域頂點的記錄，則不需要在記錄名稱中指定 '\@'，只要使用服務與通訊協定即可，例如 '\_sip.\_tcp'。
-* 系統已將 [優先順序]**、[權數]**、[連接埠]** 和 [目標]**，指定為記錄集內每筆記錄的參數。
+* 必須在記錄集名稱中包括 [服務] 和 [通訊協定]，並在其前方加上底線。  例如，'\_sip.\_tcp.name'。  在區域頂點的記錄，則不需要在記錄名稱中指定 '\@'，只要使用服務與通訊協定即可，例如 '\_sip.\_tcp'。
+* 系統已將 [優先順序]、[權數]、[連接埠] 和 [目標]，指定為記錄集內每筆記錄的參數。
 
 ### <a name="txt-records"></a>TXT 記錄
 
@@ -103,7 +103,7 @@ DNS 標準允許單一 TXT 記錄包含多個字串，每個長度最多可達 2
 
 在呼叫 Azure DNS REST API 時，您必須分別指定每個 TXT 字串。  當使用 Azure 入口網站、PowerShell 或 CLI 介面時，您應該為每筆記錄指定單一字串，如有需要，字串將自動分段成 254 個字元的區段。
 
-DNS 記錄中的多個字串，不應與 TXT 記錄集中的多個 TXT 記錄相混淆。  TXT 記錄集可以包含多個記錄，「每一個」** 記錄可以包含多個字串。  Azure DNS 支援每個 TXT 記錄集中的 字串總長度上限為 1024 個字元 (所有記錄的總和)。
+DNS 記錄中的多個字串，不應與 TXT 記錄集中的多個 TXT 記錄相混淆。  TXT 記錄集可以包含多個記錄，「每一個」記錄可以包含多個字串。  Azure DNS 支援每個 TXT 記錄集中的 字串總長度上限為 1024 個字元 (所有記錄的總和)。
 
 ## <a name="tags-and-metadata"></a>標記和中繼資料
 
@@ -141,7 +141,7 @@ Azure DNS 使用 Etag 以安全地處理相同資源的並行變更。 Etag 與 
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* 若要開始使用 Azure DNS，請學習如何[建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)和[建立 DNS 記錄](dns-getstarted-create-recordset-portal.md)。
+* 若要開始使用 Azure DNS，請學習如何[建立 DNS 區域](./dns-getstarted-portal.md)和[建立 DNS 記錄](./dns-getstarted-portal.md)。
 * 若要移轉現有的 DNS 區域，請學習如何[匯入和匯出 DNS 區域檔案](dns-import-export.md)。

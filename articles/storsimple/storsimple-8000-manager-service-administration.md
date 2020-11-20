@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508039"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967970"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple 裝置管理員服務管理 StorSimple 裝置
 
@@ -65,7 +65,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 | 關於存取控制記錄</br>建立存取控制記錄</br>編輯存取控制記錄</br>刪除存取控制記錄 |[管理存取控制記錄](storsimple-8000-manage-acrs.md) |
 | 檢視作業詳細資料</br>取消工作 |[管理工作](storsimple-8000-manage-jobs-u2.md) |
 | 接收警示通知</br>管理警示</br>檢閱警示 |[檢視和管理 StorSimple 警示](storsimple-8000-manage-alerts.md) |
-| 建立監視圖表 |[監視您的 StorSimple 裝置](storsimple-monitor-device.md) |
+| 建立監視圖表 |[監視您的 StorSimple 裝置](./storsimple-8000-monitor-device.md) |
 | 新增磁碟區容器</br>修改磁碟區容器</br>刪除磁碟區容器 |[管理磁碟區容器](storsimple-8000-manage-volume-containers.md) |
 | 新增磁碟區</br>修改磁碟區</br>使磁碟區離線</br>刪除磁碟區</br>監視磁碟區 |[管理磁碟區](storsimple-8000-manage-volumes-u2.md) |
 | 修改裝置設定</br>修改時間設定</br>修改 DNS.md 設定</br>設定網路介面 |[修改 StorSimple 裝置的裝置組態](storsimple-8000-modify-device-config.md) |
@@ -73,14 +73,14 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 | 修改裝置系統管理員密碼</br>修改 StorSimple Snapshot Manager 密碼 |[變更 StorSimple 密碼](storsimple-8000-change-passwords.md) |
 | 設定遠端管理 |[遠端連接至 StorSimple 裝置](storsimple-8000-remote-connect.md) |
 | 設定警示設定 |[檢視和管理 StorSimple 警示](storsimple-8000-manage-alerts.md) |
-| 為 StorSimple 裝置設定 CHAP |[為 StorSimple 裝置設定 CHAP](storsimple-configure-chap.md) |
+| 為 StorSimple 裝置設定 CHAP |[為 StorSimple 裝置設定 CHAP](./storsimple-8000-configure-chap.md) |
 | 新增備份原則</br>新增或修改排程</br>刪除備份原則</br>進行手動備份</br>建立具有多個磁碟區和排程的自訂備份原則 |[管理備份原則](storsimple-8000-manage-backup-policies-u2.md) |
 | 停止裝置控制器</br>重新啟動裝置控制器</br>關閉裝置控制器</br>將裝置重設為原廠預設值</br>(上述項目僅適用於內部部署裝置) |[管理 StorSimple 裝置控制器](storsimple-8000-manage-device-controller.md) |
 | 了解 StorSimple 硬體元件</br>監視硬體狀態</br>(上述項目僅適用於內部部署裝置) |[監視硬體元件](storsimple-8000-monitor-hardware-status.md) |
 | 建立支援封裝 |[建立及管理支援封裝](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
 | 安裝軟體更新 |[更新裝置](storsimple-update-device.md) |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您遇到與 StorSimple 裝置的日常作業或其中任何硬體元件的任何問題，請參閱：
 
@@ -88,4 +88,3 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 * [使用 StorSimple 監視 LED 指示燈](storsimple-monitoring-indicators.md)
 
 如果您不能解決問題，且您必須建立服務要求，請參閱： [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
-

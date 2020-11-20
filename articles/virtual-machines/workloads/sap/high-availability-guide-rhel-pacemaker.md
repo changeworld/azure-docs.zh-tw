@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598302"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968548"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 
@@ -122,7 +123,7 @@ ms.locfileid: "91598302"
    </code></pre>
 
    > [!IMPORTANT]
-   > 如果您需要更新 Azure 柵欄代理程式，而且如果使用自訂角色，請務必更新自訂角色，以包含**關閉**動作。 如需詳細資訊，請參閱[為柵欄代理程式建立自訂角色](#1-create-a-custom-role-for-the-fence-agent)。  
+   > 如果您需要更新 Azure 柵欄代理程式，而且如果使用自訂角色，請務必更新自訂角色，以包含 **關閉** 動作。 如需詳細資訊，請參閱[為柵欄代理程式建立自訂角色](#1-create-a-custom-role-for-the-fence-agent)。  
 
 1. **[A]** 設定主機名稱解析
 
@@ -169,13 +170,13 @@ ms.locfileid: "91598302"
 
    執行下列命令以驗證節點，並建立叢集。 將權杖設為 30000，以允許記憶體保留維護。 如需詳細資訊，請參閱[這篇 Linux 文章][virtual-machines-linux-maintenance]。  
    
-   如果在 **RHEL**7.x 上建立叢集，請使用下列命令：  
+   如果在 **RHEL** 7.x 上建立叢集，請使用下列命令：  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
    </code></pre>
 
-   如果在 **RHEL**8.x 上建立叢集，請使用下列命令：  
+   如果在 **RHEL** 8.x 上建立叢集，請使用下列命令：  
    <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
    sudo pcs cluster start --all
@@ -234,7 +235,7 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
    登入 URL 並未使用，而且可以是任何有效的 URL
 1. 選取 [憑證和祕密]，然後按一下 [新增用戶端秘密]
 1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [新增]
-1. 將節點設為值。 此值會用來做為服務主體的**密碼**
+1. 將節點設為值。 此值會用來做為服務主體的 **密碼**
 1. 選取 [概觀]。 記下應用程式識別碼。 此識別碼會用來做為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 為柵欄代理程式建立自訂角色

@@ -3,16 +3,17 @@ title: Azure 上 Oracle 資料庫的參考架構 |Microsoft Docs
 description: 參考在 Microsoft Azure 虛擬機器上執行 Oracle Database Enterprise Edition 資料庫的架構。
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480423"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968718"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
 
@@ -108,7 +109,7 @@ Oracle Data Guard 的同步處理為 Oracle 資料庫提供零資料遺失保護
 
 GoldenGate 可讓您在整個企業的多個異類平臺之間，交換和操作交易層級的資料。 它會在交易完整性和您現有基礎結構上的額外負荷之間移動已認可的交易。 其模組化架構可讓您在各種不同的拓撲中，靈活地將選取的資料記錄、交易變更和 DDL (資料定義語言) 的變更解壓縮和複寫。
 
-Oracle GoldenGate 可讓您藉由提供雙向複寫來設定資料庫的高可用性。 這可讓您設定 **多主機** 或 **主動-主動**設定。 下圖是針對 Azure 上的 Oracle GoldenGate 主動-主動設定建議的架構。 在下列架構中，已使用具有[受限核心個 vcpu](../../../virtual-machines/constrained-vcpu.md)的超執行緒[記憶體優化虛擬機器](../../sizes-memory.md)來設定 Oracle 資料庫，以節省授權成本並將效能最大化。 多個 premium 或 ultra 磁片 (受控磁片) 用於效能和可用性。
+Oracle GoldenGate 可讓您藉由提供雙向複寫來設定資料庫的高可用性。 這可讓您設定 **多主機** 或 **主動-主動** 設定。 下圖是針對 Azure 上的 Oracle GoldenGate 主動-主動設定建議的架構。 在下列架構中，已使用具有[受限核心個 vcpu](../../../virtual-machines/constrained-vcpu.md)的超執行緒[記憶體優化虛擬機器](../../sizes-memory.md)來設定 Oracle 資料庫，以節省授權成本並將效能最大化。 多個 premium 或 ultra 磁片 (受控磁片) 用於效能和可用性。
 
 ![Oracle Database 搭配使用可用性區域與 Data Guard Broker-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -155,7 +156,7 @@ Oracle 分區化主要是由下列元件所組成。 您可以在 [Oracle 分區
 
 * 系統管理的分區化-使用資料分割自動分配跨分區
 * 使用者定義分區化-可讓您指定將資料對應至分區，這在有法規或資料當地語系化需求時可正常運作) 
-* 複合分區化-適用于不同_shardspaces_之系統管理和使用者定義分區化的組合
+* 複合分區化-適用于不同 _shardspaces_ 之系統管理和使用者定義分區化的組合
 * 資料表子分區-類似于一般分割資料表。
 
 請參閱 Oracle 檔中不同 [分區化方法](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-methods.html) 的詳細資訊。

@@ -9,22 +9,23 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP、Azure、ANF、HANA、Azure NetApp Files、snapshot
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02755c164e72e3149497ee8e3c1fdc19141fd54f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973626"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967477"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Azure NetApp Files for SAP HANA 上的 NFS v4.1 磁碟區
 
-Azure NetApp Files 提供可用於 **/hana/shared**、 **/hana/data**和 **/hana/log** 磁片區的原生 NFS 共用。 針對 **/hana/data** 和 **/hana/log** 磁片區使用以 ANF 為基礎的 nfs 共用需要使用 4.1 NFS 通訊協定。 在 ANF 上以共用為基礎時，不支援使用 **/hana/data** 和 **/hana/log** 磁片區的 NFS 通訊協定 v3。 
+Azure NetApp Files 提供可用於 **/hana/shared**、 **/hana/data** 和 **/hana/log** 磁片區的原生 NFS 共用。 針對 **/hana/data** 和 **/hana/log** 磁片區使用以 ANF 為基礎的 nfs 共用需要使用 4.1 NFS 通訊協定。 在 ANF 上以共用為基礎時，不支援使用 **/hana/data** 和 **/hana/log** 磁片區的 NFS 通訊協定 v3。 
 
 
 > [!IMPORTANT]
@@ -91,7 +92,7 @@ LIF 和單一 Linux 會話的最大輸送量介於1.2 到 1.4 GB/秒之間。
 > [!IMPORTANT]
 > 與您在單一 NFS 磁碟區上部署的容量不同，取用者在虛擬機器中所用的輸送量峰值預期會出現在 1.2-1.4 GB/秒的頻寬範圍內。 這必須搭配 ANF 供應項目的基礎結構和 NFS 周圍相關的 Linux 工作階段限制。 [適用於Azure NetApp Files 的效能基準測試](../../../azure-netapp-files/performance-benchmarks-linux.md)一文所述的效能和輸送量數目是針對一個具有多個用戶端 VM 的共用 NFS 磁碟區進行，因此有多個工作階段。 這種情況與我們在 SAP 中測量的案例不同。 我們會從單一 VM 中對 NFS 磁碟區測量輸送量。 裝載于 ANF 上。
 
-為了符合資料和記錄的 SAP 最小輸送量需求，以及根據 **/hana/shared**的指導方針，建議的大小如下所示：
+為了符合資料和記錄的 SAP 最小輸送量需求，以及根據 **/hana/shared** 的指導方針，建議的大小如下所示：
 
 | 磁碟區 | 大小<br /> 進階儲存層 | 大小<br /> Ultra 儲存層 | 支援的 NFS 通訊協定 |
 | --- | --- | --- |
@@ -130,7 +131,7 @@ LIF 和單一 Linux 會話的最大輸送量介於1.2 到 1.4 GB/秒之間。
 這同樣適用于您用來寫入完整 HANA 資料庫備份的磁片區。  
  
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 除了串流備份和 Azure 備份服務 SAP Hana 資料庫（如 [Azure 虛擬機器上的 SAP Hana 的備份指南](./sap-hana-backup-guide.md)中所述），Azure NetApp Files 也開啟了執行以儲存體為基礎的快照備份的可能性。 
 
 SAP Hana 支援：

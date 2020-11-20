@@ -7,18 +7,19 @@ author: bentrin
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085209"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967681"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>Azure 大型實例遷移至 Azure 虛擬機器的 SAP Hana
 本文說明可能的 Azure 大型實例部署案例，並提供最短的轉換停機時間的規劃和遷移方法
@@ -195,7 +196,7 @@ HSR 遷移會導致新的 HANA DB 主機，因此會產生應用層的新 DB 主
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱以下文章：
 - [在 Azure 上 SAP Hana 基礎結構設定和作業](./hana-vm-operations.md)。
 - [Azure 上的 SAP 工作負載：規劃和部署檢查清單](./sap-deployment-checklist.md)。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 12e5a6db7257678b3d4d14d7583a1a30da0d3a87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371064"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967137"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
@@ -30,7 +30,7 @@ ms.locfileid: "92371064"
 
 Azure 資訊安全中心有兩個專屬的安全性控制措施可確保您符合組織的身分識別和安全性需求： 
 
- - **管理存取權和許可權** -我們鼓勵您採用 [最低許可權存取模型](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ，並確保您只授與使用者執行其作業所需的存取權。 此控制項也包含執行 [角色型存取控制 (RBAC) ](../role-based-access-control/overview.md) 來控制資源存取權的建議。
+ - **管理存取權和許可權** -我們鼓勵您採用 [最低許可權存取模型](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ，並確保您只授與使用者執行其作業所需的存取權。 此控制項也包含執行 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 來控制資源存取權的建議。
  
  - **啟用 mfa** -啟用 [mfa](https://www.microsoft.com/security/business/identity/mfa) 後，您的帳戶會更安全，使用者仍可使用單一登入驗證幾乎任何應用程式。
 
@@ -59,7 +59,7 @@ Azure 資訊安全中心有兩個專屬的安全性控制措施可確保您符�
 需要有 [Azure Active Directory (AD) 租用戶權限](../active-directory/roles/permissions-reference.md)才能啟用 MFA。
 
 - 如果您有進階版的 AD，請使用[條件式存取](../active-directory/conditional-access/concept-conditional-access-policy-common.md)來啟用 MFA。
-- 如果您使用的是 AD free edition，請啟用[Azure Active Directory 檔](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中所述的**安全性預設值**。
+- 如果您使用的是 AD free edition，請啟用 [Azure Active Directory 檔](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中所述的 **安全性預設值**。
 
 ## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>找出不具多重要素驗證的帳戶 (MFA) 已啟用
 

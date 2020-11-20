@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f33ef81282dd8e60eba64cc77cbd95ab8dbc557
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507942"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967562"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型執行個體的支援案例
 本文說明 () 的 HANA 大型實例支援的案例和架構詳細資料。
@@ -31,10 +32,10 @@ ms.locfileid: "86507942"
 讓我們來瞭解本文中所使用的詞彙和定義：
 
 - **SID**： HANA 系統的系統識別碼
-- ！ **： Hana**大型實例
+- ！ **： Hana** 大型實例
 - **DR**：嚴重損壞修復
 - **一般 dr**：僅針對 DR 用途而具有專用資源的系統設定
-- 多**用途 DR**：設定為使用非生產環境的 dr 網站系統，以及針對 DR 事件設定的生產實例 
+- 多 **用途 DR**：設定為使用非生產環境的 dr 網站系統，以及針對 DR 事件設定的生產實例 
 - **單一 SID**：已安裝一個實例的系統
 - **多重 SID**：已設定多個實例的系統;也稱為 MCOS 環境
 - **HSR**： SAP Hana 系統複寫
@@ -235,7 +236,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成商務需求。
 - 針對 MCOS：磁片區大小分佈是根據記憶體中的資料庫大小而定。 若要瞭解多 SID 環境中支援的記憶體資料庫大小，請參閱 [總覽和架構](./hana-overview-architecture.md)。
 - 在 DR 網站上：系統會將磁片區和掛接點設定 (標示為「HANA 安裝的必要」 ) 適用于 DR 的生產 HANA 實例安裝。 
 - 在 DR 網站上， (標示為「儲存體複寫」的資料、記錄備份和共用磁片區 ) 會從生產網站透過快照集複寫。 這些磁片區只會在容錯移轉期間裝載。 如需詳細資訊，請參閱嚴重損壞 [修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。
-- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
+- *SKU 類型 I 類別* 的開機磁碟區已複寫到 DR 節點。
 
 
 ## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>具有 DR (多用途) 使用儲存體複寫的單一節點
@@ -285,7 +286,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成商務需求。
 - 在 DR 網站上：系統會將磁片區和掛接點設定 (標示為「HANA 安裝的必要」 ) 適用于 DR 的生產 HANA 實例安裝。 
 - 在 DR 網站上， (標示為「儲存體複寫」的資料、記錄備份和共用磁片區 ) 會從生產網站透過快照集複寫。 這些磁片區只會在容錯移轉期間裝載。 如需詳細資訊，請參閱嚴重損壞 [修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。 
 - 在 DR 網站上： QA (標示為「QA 實例安裝」的資料、記錄備份、記錄檔和共用磁片區 ) 已針對 QA 實例安裝進行設定。
-- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
+- *SKU 類型 I 類別* 的開機磁碟區已複寫到 DR 節點。
 
 ## <a name="hsr-with-stonith-for-high-availability"></a>具有高可用性 STONITH 的 HSR
  
@@ -393,7 +394,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成商務需求。
 - 在 DR 網站上：系統會將磁片區和掛接點設定 (標示為「HANA 安裝的必要」 ) 適用于 DR 的生產 HANA 實例安裝。 
 - 在 DR 網站上， (標示為「儲存體複寫」的資料、記錄備份和共用磁片區 ) 會從生產網站透過快照集複寫。 這些磁片區只會在容錯移轉期間裝載。 如需詳細資訊，請參閱嚴重損壞 [修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。 
 - 在 DR 網站上： QA (標示為「QA 實例安裝」的資料、記錄備份、記錄檔和共用磁片區 ) 已針對 QA 實例安裝進行設定。
-- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
+- *SKU 類型 I 類別* 的開機磁碟區已複寫到 DR 節點。
 
 
 ## <a name="host-auto-failover-11"></a>主機自動容錯移轉 (1+1)
@@ -556,7 +557,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成商務需求。
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
 -  在 DR 網站上：系統會將磁片區和掛接點設定 (標示為「HANA 安裝的必要」 ) 適用于 DR 的生產 HANA 實例安裝。 
 - 在 DR 網站上， (標示為「儲存體複寫」的資料、記錄備份和共用磁片區 ) 會從生產網站透過快照集複寫。 這些磁片區只會在容錯移轉期間裝載。 如需詳細資訊，請參閱嚴重損壞 [修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。 
-- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
+- *SKU 類型 I 類別* 的開機磁碟區已複寫到 DR 節點。
 
 
 ## <a name="single-node-with-dr-using-hsr"></a>使用 HSR 進行 DR 的單一節點
@@ -792,6 +793,6 @@ HANA 大型實例支援各種不同的架構，可協助您達成商務需求。
 - 「[全球接觸](../../../expressroute/expressroute-global-reach.md)」可用來將 ExpressRoute 線路連結在一起，以在您的區域網路之間建立私人網路。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 適用于 HANA 大型實例的[基礎結構和連線能力](./hana-overview-infrastructure-connectivity.md)
 - 適用于 HANA 大型實例的[高可用性和嚴重損壞修復](./hana-overview-high-availability-disaster-recovery.md)

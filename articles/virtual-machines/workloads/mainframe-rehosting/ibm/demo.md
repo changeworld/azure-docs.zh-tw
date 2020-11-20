@@ -3,6 +3,7 @@ title: 設定應用程式開發人員在 IBM zD&T v1 中控制散發 (ADCD) |Mic
 description: 在 Azure 虛擬機器上執行 IBM Z 開發和測試環境 (zD&T) 的環境)  (Vm。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87052408"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968395"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>設定應用程式開發人員在 IBM zD&T v1 中控制散發 (ADCD) 
 
@@ -37,9 +38,9 @@ ms.locfileid: "87052408"
 
 - [授權伺服器](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 這是執行 IBM zD&T 的必要項。 您建立的方式取決於您從 IBM 授權軟體的方式：
 
-  - 以**硬體為基礎的授權伺服器**需要 USB 硬體裝置，其中包含存取軟體所有部分所需的有理數權杖。 您必須從 IBM 取得此。
+  - 以 **硬體為基礎的授權伺服器** 需要 USB 硬體裝置，其中包含存取軟體所有部分所需的有理數權杖。 您必須從 IBM 取得此。
 
-  - 以**軟體為基礎的授權伺服器**需要您設定集中式伺服器來管理授權金鑰。 這是慣用的方法，需要您設定從管理伺服器中的 IBM 接收的金鑰。
+  - 以 **軟體為基礎的授權伺服器** 需要您設定集中式伺服器來管理授權金鑰。 這是慣用的方法，需要您設定從管理伺服器中的 IBM 接收的金鑰。
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>從 Passport 優點下載安裝套件
 
@@ -58,7 +59,7 @@ ms.locfileid: "87052408"
 
 5. （選擇性）按一下 [字母順序] 清單，依名稱顯示和查看產品。
 
-6. 在 [**作業系統] 欄位**中選取 [**所有作業系統**]，然後在 [**語言] 欄位**中選取 [**所有語言**]。 然後，按一下 [ **移至**]。
+6. 在 [**作業系統] 欄位** 中選取 [**所有作業系統**]，然後在 [**語言] 欄位** 中選取 [**所有語言**]。 然後，按一下 [ **移至**]。
 
 7. 按一下 [ **選取個別** 檔案]，展開清單並顯示要下載的個別媒體。
 
@@ -83,7 +84,7 @@ ms.locfileid: "87052408"
 6. 起始上傳至您所建立的 Azure VM 目錄，這會成為 zD&T 的映射儲存體。
 
     > [!NOTE]
-    > 請確定上傳至**home/MyUserID/ZDT/adcd/nov2017**目錄中包含**ADCDTOOLS.XML** 。 稍後您將會用到此資訊。
+    > 請確定上傳至 **home/MyUserID/ZDT/adcd/nov2017** 目錄中包含 **ADCDTOOLS.XML** 。 稍後您將會用到此資訊。
 
 7. 等候檔案上傳，這可能需要一些時間，視您連線到 Azure 而定。
 
@@ -169,7 +170,7 @@ ms.locfileid: "87052408"
 
 7. 在下一個畫面上，提供 VM (的認證，而不是 ztadmin 認證) 。
 
-8. 在 [屬性] 窗格中，輸入 ** (CPs) 的中央處理器 **數目、 **系統記憶體 (GB **的數量) ，以及執行中映射的 **部署目錄** 。 因為這是一個示範，請將它保持在最小。
+8. 在 [屬性] 窗格中，輸入 **(CPs) 的中央處理器** 數目、 **系統記憶體 (GB** 的數量) ，以及執行中映射的 **部署目錄** 。 因為這是一個示範，請將它保持在最小。
 
 9. 確定已選取此方塊，在 **部署後自動將 IPL 命令發出至 z/OS**。
 
@@ -177,7 +178,7 @@ ms.locfileid: "87052408"
 
 10. 選取 [ **完成**]。
 
-11. 選取 [將**映射部署至目標環境**] 頁面中的 [**部署映射**]。
+11. 選取 [將 **映射部署至目標環境**] 頁面中的 [**部署映射**]。
 
 您的映射現在已可部署，並已準備好由3270終端機模擬器掛接。
 

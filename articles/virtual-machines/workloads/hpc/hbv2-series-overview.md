@@ -3,20 +3,20 @@ title: HBv2 系列 VM 總覽-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中的 HBv2 系列 VM 大小。
 services: virtual-machines
 author: vermagit
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 48366f205ed8eb2d179bdc39c8da3d673f066a69
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: be66f29881250843f70ba85b8ef7c80ae8b31aa6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332614"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966933"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 系列虛擬機器總覽 
 
@@ -41,7 +41,7 @@ VM 本身並不知道 pNUMA 0 和16是保留的。 它會將看到的 Vnuma 解�
 | 核心                            | 120 (SMT 已停用)                | 
 | CPU                              | AMD EPYC 7742                    | 
 | CPU 頻率 (非 AVX)           | ~ 3.1 GHz (單一 + 所有核心)     | 
-| 記憶體                           | 4 GB/核心 (480 GB 總計)          | 
+| Memory                           | 4 GB/核心 (480 GB 總計)          | 
 | 本機磁碟                       | 960 GB NVMe (區塊) 、480 GB SSD (分頁檔)  | 
 | Infiniband                       | 200 Gb/s EDR Mellanox ConnectX-6 | 
 | 網路                          | 50 Gb/s Ethernet (40 Gb/s 可) Azure 第二代 SmartNIC 使用 | 

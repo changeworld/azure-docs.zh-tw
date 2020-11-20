@@ -3,12 +3,12 @@ title: 概念-將 Azure VMware 解決方案部署整合到中樞和輪輻架構�
 description: 瞭解如何將 Azure VMware 解決方案部署整合到 Azure 上的中樞和輪輻架構。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577714"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967443"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案
 
@@ -38,7 +38,7 @@ ms.locfileid: "94577714"
 
 - **內部部署網站：** 客戶的內部部署資料中心 (s) 透過 ExpressRoute 連線連線到 Azure。
 
-- **Azure VMware 解決方案私用雲端：** 由一或多個 vSphere 叢集所組成的 Azure VMware Solution SDDC，每個叢集最多16個節點。
+- **Azure VMware 解決方案私用雲端：** 由一或多個 vSphere 叢集組成的 Azure VMware Solution SDDC，每個叢集最多16部主機。
 
 - **ExpressRoute 閘道：** 啟用 Azure VMware 解決方案私人雲端、中樞虛擬網路上的共用服務，以及在輪輻虛擬網路上執行的工作負載之間的通訊。
 

@@ -4,16 +4,17 @@ description: 了解如何在以傳統部署模型所建立新的或現有的 Azu
 author: roiyz
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292421"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967936"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -42,7 +43,7 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-如果 **write-host** 命令顯示 **True**，則會安裝 VM 代理程式。 如果顯示 [False]****，請參閱 Azure 部落格文章 [VM 代理程式與擴充功能 - 第 2 部分][Agent]中的指示和下載連結。
+如果 **write-host** 命令顯示 **True**，則會安裝 VM 代理程式。 如果顯示 [False]，請參閱 Azure 部落格文章 [VM 代理程式與擴充功能 - 第 2 部分][Agent]中的指示和下載連結。
 
 如果已安裝 VM 代理程式，請執行下列命令來安裝 Symantec Endpoint Protection 代理程式。
 
@@ -56,8 +57,8 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 若要確認 Symantec 安全性延伸模組已安裝且是最新的：
 
 1. 登入虛擬機器。 如需相關指示，請參閱 [如何登入執行 Windows Server 的虛擬機器][Logon]。
-2. 在 Windows Server 2008 R2 中，按一下 [開始] > [Symantec Endpoint Protection]****。 在 Windows Server 2012 或 Windows Server 2012 R2 的 [開始] 畫面中，輸入 **Symantec**，然後按一下 [Symantec Endpoint Protection]****。
-3. 在 [狀態 - Symantec Endpoint Protection]**** 視窗的 [狀態]**** 索引標籤中，套用更新或視需要重新啟動。
+2. 在 Windows Server 2008 R2 中，按一下 [開始] > [Symantec Endpoint Protection]。 在 Windows Server 2012 或 Windows Server 2012 R2 的 [開始] 畫面中，輸入 **Symantec**，然後按一下 [Symantec Endpoint Protection]。
+3. 在 [狀態 - Symantec Endpoint Protection] 視窗的 [狀態] 索引標籤中，套用更新或視需要重新啟動。
 
 ## <a name="additional-resources"></a>其他資源
 [如何登入執行 Windows Server 的虛擬機器][Logon]

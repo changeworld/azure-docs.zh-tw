@@ -3,16 +3,17 @@ title: HB 系列 VM 大小效能
 description: 瞭解 Azure 中 HB 系列 VM 大小的效能測試結果。
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2267dc23e2f886d87342fc22c3b12a03e8df6a86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 10d1bfea4527eb7ab9a341de8f12a32cb59597eb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994854"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966967"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB 系列虛擬機器大小
 
@@ -45,7 +46,7 @@ HB 系列的大小已執行數項效能測試。 以下是此效能測試的一�
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hb.png" alt-text="Azure HB 上的 MPI 延遲。":::
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="Azure HB 上的 MPI 頻寬。":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
@@ -56,7 +57,7 @@ HB 系列的大小已執行數項效能測試。 以下是此效能測試的一�
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解最新的公告，以及一些高效能運算 (HPC) 範例和結果，請參閱 [Azure 計算 Tech 社區 blog](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)。
 - 如需執行 HPC 工作負載的更高層級架構視圖，請參閱 [Azure 上的高效能運算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。

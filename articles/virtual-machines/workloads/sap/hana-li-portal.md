@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927187"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967749"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>透過 Azure 入口網站控制 Azure HANA Large Instances
 本檔涵蓋了 [Hana 大型實例](./hana-overview-architecture.md) 在 [Azure 入口網站](https://portal.azure.com) 中的呈現方式，以及可透過 Azure 入口網站與為您部署的 hana 大型實例單位進行的活動。 Azure 入口網站中的 HANA 大型實例可見度是透過適用于 HANA 大型實例的 Azure 資源提供者所提供，其目前處於公開預覽狀態
@@ -60,7 +61,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 ![篩選 Azure 入口網站中的資源群組](./media/hana-li-portal/portal-filtering-subscription.png)
 
-篩選正確的訂用帳戶之後，您仍然可能會有一長的資源群組清單。 尋找一個具有 **-Txxx** 的修正後，其中 "xxx" 是三位數，例如 **-T050** 。 
+篩選正確的訂用帳戶之後，您仍然可能會有一長的資源群組清單。 尋找一個具有 **-Txxx** 的修正後，其中 "xxx" 是三位數，例如 **-T050**。 
 
 當您找到資源群組時，請列出它的詳細資料。 您收到的清單看起來可能像這樣：
 
@@ -94,7 +95,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 標頭右側資料行中的額外欄位會告知 HANA 大型實例單位的電源狀態。
 
 > [!NOTE]
-> 電源狀態原因硬體單元是否開啟電源或關閉電源。 它不會提供正在啟動並執行之作業系統的相關資訊。 當您重新開機 HANA 大型實例單位時，您將會遇到一小段時間，其中的單位狀態會變更為 [ **開始** ] 狀態，並進入 [ **已啟動** ] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動** ]，就會立即登入單位。
+> 電源狀態原因硬體單元是否開啟電源或關閉電源。 它不會提供正在啟動並執行之作業系統的相關資訊。 當您重新開機 HANA 大型實例單位時，您將會遇到一小段時間，其中的單位狀態會變更為 [ **開始** ] 狀態，並進入 [ **已啟動**] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動**]，就會立即登入單位。
 > 
 
 如果您按 [查看更多]，則會顯示其他資訊。 另外還有一項資訊，是在中顯示「HANA 大型實例」戳記的修訂。 請參閱「 [Azure (大型實例上的 SAP Hana ](./hana-overview-architecture.md) 」一文，以瞭解不同的 HANA 大型實例戳記版本) 
@@ -131,7 +132,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 當您按下 [重新開機] 按鈕時，系統會詢問您是否真的想要重新開機單位。 當您按下 [是] 按鈕進行確認時，該單位將會重新開機。
 
 > [!NOTE]
-> 在重新開機過程中，您將會遇到一小段時間，讓單元的狀態變更 **為「開始」** 進入 [ **已啟動** ] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動** ]，就會立即登入單位。
+> 在重新開機過程中，您將會遇到一小段時間，讓單元的狀態變更 **為「開始」** 進入 [ **已啟動**] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動**]，就會立即登入單位。
 
 > [!IMPORTANT]
 > 視您的 HANA 大型實例單位中的記憶體數量而定，重新開機和重新開機硬體和作業系統最多可能需要一小時的時間。

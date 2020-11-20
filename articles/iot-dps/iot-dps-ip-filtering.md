@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511937"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967205"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 連線篩選器
 
@@ -22,7 +22,7 @@ ms.locfileid: "86511937"
 
 有兩個特定使用案例適合封鎖來自特定 IP 位址的 DPS 端點連線︰
 
-* 您的 DPS 只應接收來自指定 IP 位址範圍的流量，並拒絕其他所有流量。 例如，您使用 DPS 搭配 [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) 來建立 DPS 與您裝置之間的私人連線。
+* 您的 DPS 只應接收來自指定 IP 位址範圍的流量，並拒絕其他所有流量。 例如，您使用 DPS 搭配 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 來建立 DPS 與您裝置之間的私人連線。
 
 * 您需要拒絕 DPS 系統管理員認為可疑的 IP 位址所傳來的流量。
 
@@ -34,7 +34,7 @@ IP 篩選器規則會套用在 DPS 執行個體層級。 因此，IP 篩選器�
 
 ## <a name="default-setting"></a>預設設定
 
-根據預設，DPS 入口網站中的 **IP 篩選器**方格是空的。 這個預設設定表示您的 DPS 會接受來自任何 IP 位址的連線。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。
+根據預設，DPS 入口網站中的 **IP 篩選器** 方格是空的。 這個預設設定表示您的 DPS 會接受來自任何 IP 位址的連線。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。
 
 ![IoT DPS 預設 IP 篩選器設定](./media/iot-dps-ip-filtering/ip-filter-default.png)
 
@@ -48,11 +48,11 @@ IP 篩選器規則會套用在 DPS 執行個體層級。 因此，IP 篩選器�
 
 ![選取 [新增 IP 篩選器規則] 之後](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* 提供 IP 篩選器規則的**名稱**。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 所能接受的字元只有 ASCII 7 位元英數字元以及 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
+* 提供 IP 篩選器規則的 **名稱**。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 所能接受的字元只有 ASCII 7 位元英數字元以及 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
 * 提供單一 IPv4 位址或以 CIDR 標記法表示的 IP 位址區塊。 例如，在 CIDR 表示法中，192.168.100.0/22 表示從 192.168.100.0 到 192.168.103.255 的 1024 個 IPv4 位址。
 
-* 選取 [允許] 或 [封鎖] 作為 IP 篩選器規則的**動作**。
+* 選取 [允許] 或 [封鎖] 作為 IP 篩選器規則的 **動作**。
 
 填寫欄位之後，請選取 [儲存] 以儲存規則。 您會看到通知您正在進行更新的警示。
 
@@ -74,7 +74,7 @@ IP 篩選器規則會套用在 DPS 執行個體層級。 因此，IP 篩選器�
 
 ## <a name="update-ip-filter-rules-in-code"></a>更新程式碼中的 IP 篩選器規則
 
-您可以使用 Azure 資源提供者的 REST 端點，擷取和修改 DPS IP 篩選條件。 請參閱 [createorupdate 方法](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate)中的 `properties.ipFilterRules`。
+您可以使用 Azure 資源提供者的 REST 端點，擷取和修改 DPS IP 篩選條件。 請參閱 [createorupdate 方法](/rest/api/iot-dps/iotdpsresource/createorupdate)中的 `properties.ipFilterRules`。
 
 Azure CLI 或 Azure PowerShell 目前不支援更新 DPS IP 篩選器規則，但可透過 Azure Resource Manager 範本來完成。 如需使用 Resource Manager 範本的指引，請參閱 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)。 接下來的範本範例會示範如何建立、編輯和刪除 DPS IP 篩選器規則。
 

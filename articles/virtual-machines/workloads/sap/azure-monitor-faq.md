@@ -3,16 +3,17 @@ title: 常見問題-SAP 解決方案的 Azure 監視器 |Microsoft Docs
 description: 在本文中，您將瞭解有關 SAP 解決方案 Azure 監視器 (常見問題) 常見問題的解答。
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f872264d5f7bdf4abded516412fe55c417a92e1e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 204b809966fbf63a48f6d1ce1d80f87f706c9a56
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566107"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968565"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP 解決方案的 Azure 監視器常見問題 (preview) 
 ## <a name="frequently-asked-questions"></a>常見問題集
@@ -64,7 +65,7 @@ SQL Server 2012 SP4 或更新版本。
 您目前可以監視 HANA 資料庫、基礎結構、高可用性叢集，以及 Microsoft SQL server 的公開預覽。  
 
  - **這種服務會取代 SAP Solution manager 嗎？**  
-不正確。 客戶仍然可以使用 SAP Solution manager 進行商務程式監視。  
+否。 客戶仍然可以使用 SAP Solution manager 進行商務程式監視。  
 
  - **這項服務的價值是傳統解決方案，例如 SAP Hana 環境/Studio 嗎？**  
 適用于 SAP 解決方案的 Azure 監視器不是 HANA 資料庫專屬的。 SAP 解決方案的 Azure 監視器也支援 AnyDB。  

@@ -1,17 +1,17 @@
 ---
 title: 如何啟用您的 Azure VMware 解決方案資源
-description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多節點。
+description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888431"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967358"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
-瞭解如何提交支援要求，以啟用您的 [Azure VMware 解決方案](introduction.md) 資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多節點。
+瞭解如何提交支援要求，以啟用您的 [Azure VMware 解決方案](introduction.md) 資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
 
 ## <a name="eligibility-criteria"></a>適用性準則
 
@@ -22,7 +22,7 @@ Azure 訂閱需要 Azure 帳戶。 Azure 訂用帳戶必須符合下列其中一
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>啟用適用于 EA 客戶的 Azure VMware 解決方案
-建立 Azure VMware 解決方案資源之前，您必須提交支援票證，以配置您的節點。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
+在您建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的主機。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的主機。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多主機，您將會經歷相同的程序。
 
 
 1. 在您的 Azure 入口網站中的 [說明 **+ 支援**] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：
@@ -38,20 +38,20 @@ Azure 訂閱需要 Azure 帳戶。 Azure 訂用帳戶必須符合下列其中一
 
    - POC 或生產 
    - 區域名稱
-   - 節點數目
+   - 主機數目
    - 任何其他詳細資料
 
    >[!NOTE]
-   >Azure VMware 解決方案建議至少有三個節點來啟動您的私用雲端和冗余 N + 1 個節點。 
+   >Azure VMware 解決方案建議至少有三部主機，以啟動您的私用雲端和多餘的 N + 1 部主機。 
 
 1. 選取 [ **審核 + 建立** ] 以提交要求。
 
    支援代表需要五個工作天的時間，才能確認您的要求。
 
    >[!IMPORTANT] 
-   >如果您已經有現有的 Azure VMware 解決方案，而且您正在要求其他節點，請注意，我們需要五個工作天來配置節點。 
+   >如果您已經有現有的 Azure VMware 解決方案，而且您正在要求其他主機，請注意，我們需要五個工作天來配置主機。 
 
-1. 在您可以布建節點之前，請確定您已在 Azure 入口網站中註冊 **MICROSOFT AVS** 資源提供者。  
+1. 在您可以布建主機之前，請確定您已在 Azure 入口網站中註冊 **MICROSOFT AVS** 資源提供者。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -99,21 +99,21 @@ Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) �
 
    - POC 或生產 
    - 區域名稱
-   - 節點數目
+   - 主機數目
    - 任何其他詳細資料
    - 要裝載多個客戶嗎？
 
    >[!NOTE]
-   >Azure VMware 解決方案建議至少有三個節點來啟動您的私用雲端和冗余 N + 1 個節點。 
+   >Azure VMware 解決方案建議至少有三部主機，以啟動您的私用雲端和多餘的 N + 1 部主機。 
 
 1. 選取 [ **審核 + 建立** ] 以提交要求。
 
    支援代表需要五個工作天的時間，才能確認您的要求。
 
    >[!IMPORTANT] 
-   >如果您已經有現有的 Azure VMware 解決方案，而且您正在要求其他節點，請注意，我們需要五個工作天來配置節點。 
+   >如果您已經有現有的 Azure VMware 解決方案，而且您正在要求其他主機，請注意，我們需要五個工作天來配置主機。 
 
-1. 一旦新增至 Azure 方案，並啟用配額，客戶或合作夥伴系統管理員便可透過 Azure 入口網站部署 Azure VMware 解決方案私人雲端。 在您可以布建節點之前，請確定您已在 Azure 入口網站中註冊 **MICROSOFT AVS** 資源提供者。  
+1. 一旦新增至 Azure 方案，並啟用配額，客戶或合作夥伴系統管理員便可透過 Azure 入口網站部署 Azure VMware 解決方案私人雲端。 在您可以布建主機之前，請確定您已在 Azure 入口網站中註冊 **MICROSOFT AVS** 資源提供者。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>

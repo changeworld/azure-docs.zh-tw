@@ -7,25 +7,26 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a1fc1c3b332d033e453db11ce4451cd626c4217
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617153"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967800"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>使用 SAP HANA 資料分層與擴充節點
 
 對於不同 SAP NetWeaver 版本的 SAP BW 和 SAP BW/4HANA，SAP 可支援資料分層模型。 如需關於資料分層模型的詳細資訊，請參閱 SAP 文件：[具有 SAP HANA 擴充節點之 HANA 上的 SAP BW/4HANA 和 SAP BW](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)。
 透過 HANA 大型執行個體，您可以使用 SAP HANA 擴充節點的 option-1 組態，其相關說明請見常見問題集和 SAP 部落格文件。 option-2 設定可以搭配下列 HANA 大型執行個體 SKU 來進行設定：S72m、S192、S192m、S384 和 S384m。 
 
-當您檢視文件時，您可能不會立即看出其優勢。 但只要看看 SAP 大小調整指導方針，您就可以使用 option-1 和 option-2 SAP HANA 擴充節點看出其優勢。 範例如下：
+當您檢視文件時，您可能不會立即看出其優勢。 但只要看看 SAP 大小調整指導方針，您就可以使用 option-1 和 option-2 SAP HANA 擴充節點看出其優勢。 以下為範例：
 
 - SAP HANA 大小調整指導方針通常需要兩倍的資料磁碟區數量來作為記憶體。 當您使用熱資料來執行 SAP HANA 執行個體時，最多只會有 50% 的記憶體用於資料。 理論上，剩餘的記憶體會保留下來供 SAP HANA 執行其工作。
 - 這表示，在具有 2 TB 記憶體且執行 SAP BW 資料庫的 HANA 大型執行個體 S192 單位中，只有 1 TB 會作為資料磁碟區。

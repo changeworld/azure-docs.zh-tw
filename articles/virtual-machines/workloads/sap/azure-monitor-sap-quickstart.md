@@ -5,14 +5,15 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739893"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968582"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>使用 Azure 入口網站部署適用于 SAP 解決方案的 Azure 監視器
 
@@ -24,13 +25,13 @@ ms.locfileid: "92739893"
 
 ## <a name="create-monitoring-resource"></a>建立監視資源
 
-1. 從 **Azure Marketplace** 選取 **適用于 SAP 解決方案的 Azure 監視器** 。
+1. 從 **Azure Marketplace** 選取 **適用于 SAP 解決方案的 Azure 監視器**。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="影像會顯示從 Azure Marketplace 選取 SAP 解決方案供應專案的 Azure 監視器。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
 2. 在 [ **基本** ] 索引標籤中，提供必要的值。 如果適用，您可以使用現有的 Log Analytics 工作區。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="影像會顯示從 Azure Marketplace 選取 SAP 解決方案供應專案的 Azure 監視器。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="顯示 Azure 入口網站設定選項。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
 
 3. 選取虛擬網路時，請確定您要監視的系統可從該 VNET 內連線。 
 
@@ -43,7 +44,7 @@ ms.locfileid: "92739893"
 
 1. 選取 [ **提供者** ] 索引標籤，以新增您想要設定的提供者。 您可以一次新增多個提供者，或在部署監視資源之後將它們加入。 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="影像會顯示從 Azure Marketplace 選取 SAP 解決方案供應專案的 Azure 監視器。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="顯示 [提供者] 索引標籤，為您的 SAP 解決方案 Azure 監視器新增其他提供者。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
 2. 選取 [ **新增提供者** ]，然後從下拉式清單中選擇 [ **SAP Hana** ]。 
 
@@ -54,13 +55,13 @@ ms.locfileid: "92739893"
 
 4. 輸入您想要使用的資料庫租使用者名稱。 不過，您可以選擇任何租使用者，但我們建議使用 **SYSTEMDB** ，因為它可讓更廣泛的監視區域陣列。 
 
-5. 輸入與 HANA 資料庫相關聯的 SQL 埠號碼。 埠號碼的格式應為 **[3]**  +  **[實例 #]**  +  **[13]** 。 例如，30013。 
+5. 輸入與 HANA 資料庫相關聯的 SQL 埠號碼。 埠號碼的格式應為 **[3]**  +  **[實例 #]**  +  **[13]**。 例如，30013。 
 
 6. 輸入您想要使用的資料庫使用者名稱。 確定資料庫使用者已指派 **監視** 和 **目錄讀取** 角色。 
 
-7. 完成時，選取 [ **新增提供者** ]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
+7. 完成時，選取 [ **新增提供者**]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="影像會顯示從 Azure Marketplace 選取 SAP 解決方案供應專案的 Azure 監視器。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="新增提供者資訊時的設定選項影像。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>高可用性叢集 (Pacemaker) 提供者
 
@@ -73,9 +74,9 @@ ms.locfileid: "92739893"
  
 3. 輸入系統識別碼 (SID) 、主機名稱和叢集名稱。
 
-4. 完成時，選取 [ **新增提供者** ]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
+4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="影像會顯示從 Azure Marketplace 選取 SAP 解決方案供應專案的 Azure 監視器。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="映射會顯示與 HA 叢集 Pacemaker 提供者相關的選項。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server 提供者
@@ -111,9 +112,9 @@ ms.locfileid: "92739893"
 
 3. 使用與您 Microsoft SQL Server 相關聯的資訊來填寫欄位。 
 
-4. 完成時，選取 [ **新增提供者** ]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
+4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
 
-     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="影像會顯示從 Azure Marketplace 選取 SAP 解決方案供應專案的 Azure 監視器。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="影像會顯示新增 Microsoft SQL Server 提供者的相關資訊。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

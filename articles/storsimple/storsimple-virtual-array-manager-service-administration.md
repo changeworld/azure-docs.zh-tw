@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515432"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967086"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array
 ![安裝程序流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ ms.locfileid: "85515432"
 * 透過 StorSimple 裝置管理員服務管理 StorSimple Virtual Array
 
 > [!NOTE]
-> 若要檢視 StorSimple 8000 系列裝置可用的管理選項，請移至 [使用 StorSimple Manager 服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+> 若要檢視 StorSimple 8000 系列裝置可用的管理選項，請移至 [使用 StorSimple Manager 服務管理 StorSimple 裝置](./storsimple-8000-manager-service-administration.md)。
 > 
 > 
 
@@ -76,6 +76,5 @@ StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連�
 > 
 > 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需 Web UI 及如何使用的詳細資訊，請移至 [使用 StorSimple Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-

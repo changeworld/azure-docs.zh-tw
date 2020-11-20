@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87021370"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968837"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>部署和管理 Azure 中的 StorSimple 雲端設備 (Update 3 和更新版本)
 
@@ -46,8 +46,8 @@ StorSimple 雲端設備可以在兩種模型中使用，標準 8010 (前身為 1
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 核心、7 GB 記憶體)| Standard_DS3 (4 核心、14 GB 記憶體)|
-| **區域可用性** |所有 Azure 區域 |支援進階儲存體和 DS3 Azure VM 的 Azure 區域<br></br>使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」**** 和「儲存體 > 磁碟儲存體」****。 |
-| **儲存體類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
+| **區域可用性** |所有 Azure 區域 |支援進階儲存體和 DS3 Azure VM 的 Azure 區域<br></br>使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」和「儲存體 > 磁碟儲存體」。 |
+| **儲存體類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-account-create.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
 | **工作負載指引** |從備份的檔案的項目層級擷取 |雲端開發和測試案例 <br></br>低延遲和更高的效能工作負載<br></br>災害復原的次要裝置 |
 
 <sup>1</sup> *前身為 1100*。
@@ -96,7 +96,7 @@ StorSimple 雲端設備是純軟體的 StorSimple 版本，在 Microsoft Azure �
 建立雲端設備之前，對 StorSimple 裝置管理員服務進行下列更新：
 
 * 針對要作為雲端設備之主機伺服器的 VM，新增[存取控制記錄](storsimple-8000-manage-acrs.md)。
-* 使用與雲端設備位於相同區域的[儲存體帳戶](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。 若儲存體帳戶位於不同區域，可能導致效能不佳。 您可以搭配雲端設備使用標準或進階儲存體帳戶。 深入了解如何建立[標準儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* 使用與雲端設備位於相同區域的[儲存體帳戶](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。 若儲存體帳戶位於不同區域，可能導致效能不佳。 您可以搭配雲端設備使用標準或進階儲存體帳戶。 深入了解如何建立[標準儲存體帳戶](../storage/common/storage-account-create.md)。
 * 針對建立雲端設備使用與用於資料之儲存體帳戶不同的儲存體帳戶。 使用相同的儲存體帳戶可能導致效能不佳。
 
 開始之前，請確定您擁有下列資訊：
@@ -191,11 +191,11 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
 若要將雲端應用裝置連線至相同虛擬網路中的主機伺服器，您需要雲端應用裝置的內部或私人 IP 位址。 執行下列步驟來取得雲端應用裝置的私人 IP 位址
 
-1. 移至您雲端應用裝置的基礎虛擬機器。 虛擬機器與您的雲端應用裝置具有相同的名稱。 移至 [所有資源]****，提供雲端應用裝置的名稱和訂用帳戶，然後選取作為虛擬機器的類型。 在所呈現的虛擬機器清單中，選取及按一下對應至雲端應用裝置的虛擬機器。
+1. 移至您雲端應用裝置的基礎虛擬機器。 虛擬機器與您的雲端應用裝置具有相同的名稱。 移至 [所有資源]，提供雲端應用裝置的名稱和訂用帳戶，然後選取作為虛擬機器的類型。 在所呈現的虛擬機器清單中，選取及按一下對應至雲端應用裝置的虛擬機器。
 
      ![選取您雲端應用裝置的虛擬機器](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. 移至 [設定 > 網路]****。 在右窗格中，您會看到雲端應用裝置的私人 IP 位址。 請記下此名稱。
+2. 移至 [設定 > 網路]。 在右窗格中，您會看到雲端應用裝置的私人 IP 位址。 請記下此名稱。
 
     ![取得您雲端應用裝置的私人 IP 位址](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
@@ -231,12 +231,12 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
 如需逐步程序，請移至 [停用及刪除 StorSimple 裝置](storsimple-8000-deactivate-and-delete-device.md)。
 
-只要雲端設備在 StorSimple 裝置管理員服務刀鋒視窗上顯示為已停用，您就能從 [裝置]**** 刀鋒視窗的裝置清單中，將該雲端設備刪除。
+只要雲端設備在 StorSimple 裝置管理員服務刀鋒視窗上顯示為已停用，您就能從 [裝置] 刀鋒視窗的裝置清單中，將該雲端設備刪除。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>將雲端設備啟動、停止和重新啟動
 不同於 StorSimple 實體裝置，在 StorSimple 雲端設備上並沒有開啟電源或關閉電源按鈕可供使用。 但是，有時您可能需要將雲端設備停止並重新啟動。
 
-若要將雲端設備啟動、停止和重新啟動，最簡單的方式是透過虛擬機器服務刀鋒視窗。 執行虛擬機器服務。 從 VM 清單中，找出對應至您雲端設備 (相同名稱) 的 VM，然後按一下 VM 名稱。 當您檢視虛擬機器刀鋒視窗時，雲端設備狀態為 [執行中]****，因為它在建立之後，依預設會加以啟動。 您隨時都能啟動、停止及重新啟動虛擬機器。
+若要將雲端設備啟動、停止和重新啟動，最簡單的方式是透過虛擬機器服務刀鋒視窗。 執行虛擬機器服務。 從 VM 清單中，找出對應至您雲端設備 (相同名稱) 的 VM，然後按一下 VM 名稱。 當您檢視虛擬機器刀鋒視窗時，雲端設備狀態為 [執行中]，因為它在建立之後，依預設會加以啟動。 您隨時都能啟動、停止及重新啟動虛擬機器。
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 
@@ -267,7 +267,7 @@ DR 的必要條件如下︰
 ## <a name="troubleshoot-internet-connectivity-errors"></a>針對網際網路連線錯誤進行疑難排解
 在雲端設備建立期間，如果無法連線到網際網路，建立步驟就會失敗。 若要針對網際網路連線失敗進行疑難排解，請在 Azure 入口網站中執行下列步驟︰
 
-1. [在 Azure 入口網站中建立 Windows 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 此虛擬機器應該與雲端設備使用相同的儲存體帳戶、VNet 和子網路。 如果 Azure 中已經有使用相同儲存體帳戶、VNet 和子網路的現有 Windows Server 主機，您也可以使用它來針對網際網路連線進行疑難排解。
+1. [在 Azure 入口網站中建立 Windows 虛擬機器](../virtual-machines/windows/quick-create-portal.md)。 此虛擬機器應該與雲端設備使用相同的儲存體帳戶、VNet 和子網路。 如果 Azure 中已經有使用相同儲存體帳戶、VNet 和子網路的現有 Windows Server 主機，您也可以使用它來針對網際網路連線進行疑難排解。
 2. 遠端登入在先前步驟中建立的虛擬機器。
 3. 在虛擬機器內開啟命令視窗 (Win + R，然後輸入 `cmd`)。
 4. 在命令提示字元執行下列命令。
@@ -276,6 +276,6 @@ DR 的必要條件如下︰
 5. 如果 `nslookup` 失敗，網際網路連線失敗就會導致雲端設備無法註冊 StorSimple 裝置管理員服務。
 6. 對虛擬網路進行必要的變更，確保雲端設備能夠存取 Azure 網站，例如 _windows.net_。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何[使用 StorSimple 裝置管理員服務來管理雲端設備](storsimple-8000-manager-service-administration.md)。
 * 了解如何 [從備份組還原 StorSimple 磁碟區](storsimple-8000-restore-from-backup-set-u2.md)。

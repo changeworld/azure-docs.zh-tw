@@ -3,12 +3,12 @@ title: 概念-私用雲端和叢集
 description: 深入瞭解 Azure VMware 解決方案軟體定義的資料中心和 vSphere 叢集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874010"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967375"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解決方案私用雲端和叢集概念
 
@@ -38,7 +38,7 @@ Azure 訂用帳戶、Azure VMware 解決方案私人雲端、vSAN 叢集和主�
 
 ## <a name="hosts"></a>主機
 
-Azure VMware 解決方案私用雲端叢集使用超交集的裸機基礎結構節點。 下表顯示主機的 RAM、CPU 和磁片容量。 
+Azure VMware 解決方案私用雲端叢集使用超融合式的裸機基礎結構主機。 下表顯示主機的 RAM、CPU 和磁片容量。 
 
 | 主機類型              |             CPU             |   RAM (GB)   |  vSAN NVMe 快取層 (TB、原始)   |  vSAN SSD 容量層 (TB、原始)   |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |

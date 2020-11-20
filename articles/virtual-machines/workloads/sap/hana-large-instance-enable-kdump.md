@@ -7,18 +7,19 @@ author: prtyag
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b6afcfe7684102b451860d9916d849842489cace
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379259"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967698"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Azure 上的 SAP HANA 大型執行個體 (的 Kdump) 
 
@@ -28,7 +29,7 @@ ms.locfileid: "93379259"
 
 ## <a name="enable-kdump-service"></a>啟用 Kdump 服務
 
-本檔說明如何在 Azure HANA 大型實例上啟用 Kdump 服務 ( **類型 I 和 TYPE II** 的詳細資料) 
+本檔說明如何在 Azure HANA 大型實例上啟用 Kdump 服務 (**類型 I 和 TYPE II** 的詳細資料) 
 
 ## <a name="supported-skus"></a>支援的 SKU
 
@@ -61,7 +62,7 @@ ms.locfileid: "93379259"
 |   類型 II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
 |   類型 II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Kdump 服務使用 `/var/crash` 目錄來寫入傾印，請確定對應到此目錄的磁碟分割有足夠的空間可容納傾印。
 

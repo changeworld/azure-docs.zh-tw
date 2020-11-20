@@ -3,17 +3,18 @@ title: Azure Linux VM 代理程式總覽
 description: 了解如何安裝和設定 Linux 代理程式 (waagent)，來管理虛擬機器與 Azure 網狀架構控制器之間的互動。
 author: axayjo
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19b9259b55332d9f31fdefd166f0509e5443628d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a4a391e52f80ec171d48718a18764f0f88f34133
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965806"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968446"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解與使用 Azure Linux 代理程式
 
@@ -258,7 +259,7 @@ Default: ext4
 Type: String  
 Default: /mnt/resource 
 ```
-這指定資源磁碟的掛接路徑。 資源磁碟是*暫存*磁碟，可能會在 VM 取消佈建時清空。
+這指定資源磁碟的掛接路徑。 資源磁碟是 *暫存* 磁碟，可能會在 VM 取消佈建時清空。
 
 **ResourceDisk.MountOptions**  
 ```txt

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 2ce9ab371c0ed1e81cf1dfb53fca7e359e1aeb35
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927663"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967494"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA 在 Azure 上的基礎結構設定和作業
 此文件提供設定 Azure 基礎結構和已部署在 Azure 原生虛擬機器 (VM) 上之 SAP Hana 系統的作業指導方針。 此文件也包含 M128s VM SKU 的 SAP HANA 相應放大設定資訊。 這份文件並非用以取代標準 SAP 文件，包含下列內容：
@@ -139,7 +140,7 @@ ms.locfileid: "92927663"
 
 SAP HANA 相應放大的 VM 節點基本設定看起來像這樣：
 
-- 針對 **/hana/shared** ，您可以使用透過 Azure NetApp Files 提供的原生 NFS 服務。 
+- 針對 **/hana/shared**，您可以使用透過 Azure NetApp Files 提供的原生 NFS 服務。 
 - 所有其他的磁碟區都不會在不同節點間共用，而且也不是以 NFS 為基礎。 使用非共用 **/hana/data** 與 **hana/log** 之擴增 HANA 安裝的安裝設定與步驟，稍後都會在此文件中進一步提供。 如需可使用的 HANA 認證儲存體，請參閱 [SAP HANA Azure 虛擬機器儲存體設定](./hana-vm-operations-storage.md)一文。
 
 

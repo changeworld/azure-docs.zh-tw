@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617066"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967715"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>從 HANA 端進行監視和疑難排解
 
@@ -75,7 +76,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 以下 Linux 命令應該不會傳回任何項目：**rpm -qa | grep ulimit**。 如果顯示安裝的是 _ulimit_，請立即將它解除安裝。
 
-## <a name="memory"></a>記憶體
+## <a name="memory"></a>Memory
 
 您可能會注意到 SAP HANA 資料庫所配置的記憶體數量高於預期。 下列警示表示有記憶體使用量過高的問題：
 
@@ -107,7 +108,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ## <a name="storage"></a>儲存體
 
-從使用者的觀點來看，應用程式 (或整個) 的系統會執行緩慢、沒有回應，或者即使 i/o 效能有問題，也可能會停止回應。 在 SAP HANA Studio 的 [Volumes] \(磁碟區)**** 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。
+從使用者的觀點來看，應用程式 (或整個) 的系統會執行緩慢、沒有回應，或者即使 i/o 效能有問題，也可能會停止回應。 在 SAP HANA Studio 的 [Volumes] \(磁碟區) 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。
 
 ![在 SAP HANA Studio 的 [Volumes] \(磁碟區) 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -129,13 +130,13 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 選取儲存在本機的 SQL Statements.zip 檔案，將會匯入含有對應的 SQL 陳述式的資料夾。 此時，可以使用這些 SQL 陳述式來執行許多不同的診斷檢查。
 
-例如，若要測試「SAP HANA 系統複寫」頻寬需求，請在 [Replication: Bandwidth] \(複寫：頻寬)**** 底下的 [Bandwidth] \(頻寬)**** 陳述式上按一下滑鼠右鍵，然後在 SQL Console (SQL 主控台) 中選取 [Open] \(開啟)****。
+例如，若要測試「SAP HANA 系統複寫」頻寬需求，請在 [Replication: Bandwidth] \(複寫：頻寬) 底下的 [Bandwidth] \(頻寬) 陳述式上按一下滑鼠右鍵，然後在 SQL Console (SQL 主控台) 中選取 [Open] \(開啟)。
 
 將會開啟完整的 SQL 陳述式，讓您變更輸入參數 (modification 區段)，然後加以執行。
 
 ![將會開啟完整的 SQL 陳述式，讓您變更輸入參數 (modification 區段)，然後加以執行](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一個範例是在 [Replication: Overview] \(複寫：概觀)**** 底下的陳述式上按一下滑鼠右鍵。 從內容功能表中選取 [ **執行** ]：
+另一個範例是在 [Replication: Overview] \(複寫：概觀) 底下的陳述式上按一下滑鼠右鍵。 從內容功能表中選取 [ **執行** ]：
 
 ![另一個範例是在 [Replication: Overview] \(複寫：概觀) 底下的陳述式上按一下滑鼠右鍵。 從操作功能表中，選取 [Execute] \(執行)](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -143,7 +144,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ![這會產生可協助進行疑難排解的資訊](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-針對 HANA\_Configuration\_Minichecks 進行相同的操作，然後檢查 [C]__ (重大) 資料行中是否有任何 _X_ 標記。
+針對 HANA\_Configuration\_Minichecks 進行相同的操作，然後檢查 [C] (重大) 資料行中是否有任何 _X_ 標記。
 
 範例輸出：
 

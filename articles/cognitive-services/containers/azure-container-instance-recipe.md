@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ddaed181d017e3167694a9d7edf53c7c09fd5e9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80876652"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968514"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>在 Azure 容器執行個體上部署及執行容器
 
-在下列步驟中，您可以使用 Azure [容器實例](https://docs.microsoft.com/azure/container-instances/)，輕鬆地調整雲端中的 Azure 認知服務應用程式。 容器化可協助您專注于建立應用程式，而不是管理基礎結構。 如需使用容器的詳細資訊，請參閱 [功能和優點](../cognitive-services-container-support.md#features-and-benefits)。
+在下列步驟中，您可以使用 Azure [容器實例](../../container-instances/index.yml)，輕鬆地調整雲端中的 Azure 認知服務應用程式。 容器化可協助您專注于建立應用程式，而不是管理基礎結構。 如需使用容器的詳細資訊，請參閱 [功能和優點](../cognitive-services-container-support.md#features-and-benefits)。
 
 ## <a name="prerequisites"></a>Prerequisites
 

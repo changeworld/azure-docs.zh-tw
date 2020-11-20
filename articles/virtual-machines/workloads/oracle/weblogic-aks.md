@@ -2,17 +2,18 @@
 title: 什麼是在 Azure Kubernetes Service 上執行 Oracle WebLogic Server 的解決方案
 description: 瞭解如何在 Azure Kubernetes Service 上執行 Oracle WebLogic Server。
 author: rezar
-ms.service: container-service
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186668"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968684"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上執行 Oracle WebLogic Server 的解決方案有哪些？
 
@@ -34,15 +35,15 @@ WebLogic 伺服器叢集已完全啟用，可透過 WebLogic Kubernetes 運算�
 
 本指南目前假設您是在 Docker 映射外部部署網域，並使用來自 Oracle 的標準 Docker 映射。 我們會新增指導方針，以在 Docker 映射中使用您的網域來啟用自訂映射。 未來可以透過 Azure 虛擬機器解決方案上的 Marketplace 供應專案鏡像 Oracle WebLogic Server，更容易使用和 Azure 服務整合。
 
-_這些解決方案都是攜帶您自己的授權_ 。 他們假設您已經使用 Oracle 取得適當的授權，並已獲得適當授權，可在 Azure 中執行供應專案。
+_這些解決方案都是攜帶您自己的授權_。 他們假設您已經使用 Oracle 取得適當的授權，並已獲得適當授權，可在 Azure 中執行供應專案。
 
-_如果您想要與開發這些解決方案的工程團隊密切合作來處理您的遷移案例，請填寫 [這份簡短問卷](https://aka.ms/wls-on-azure-survey) ，並納入您的連絡人資訊_ 。 計畫經理、架構設計人員和工程師會馬上接觸您，並開始密切合作。 在遷移案例中共同作業的機會是免費的，而解決方案則是主動初始開發。
+_如果您想要與開發這些解決方案的工程團隊密切合作來處理您的遷移案例，請填寫 [這份簡短問卷](https://aka.ms/wls-on-azure-survey) ，並納入您的連絡人資訊_。 計畫經理、架構設計人員和工程師會馬上接觸您，並開始密切合作。 在遷移案例中共同作業的機會是免費的，而解決方案則是主動初始開發。
 
 ## <a name="deployment-architectures"></a>部署架構
 
 在 Azure Kubernetes Service 上執行 Oracle WebLogic Server 的解決方案，可讓您以相對簡單的方式啟用各式各樣的生產環境就緒部署架構。
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="您可以使用範例腳本在 AKS 上部署 WebLogic 伺服器":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="AKS 上已啟用複雜的 WebLogic 伺服器部署":::
 
 除了解決方案提供的客戶之外，還能提供更大的彈性來進一步自訂部署。 可能是在部署應用程式的最上層，客戶會將進一步的 Azure 資源與其部署整合。 建議客戶在問卷中提供意見反應，以進一步改善解決方案。
 

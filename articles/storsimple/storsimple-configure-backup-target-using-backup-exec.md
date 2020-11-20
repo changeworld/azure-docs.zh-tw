@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a1e22282864d0425173504735d6beb42b76ad7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710374"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967256"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>使用 StorSimple 做為 Backup Exec 的備份目標
 
@@ -79,7 +79,7 @@ StorSimple 提供下列優點︰
 
 雖然 StorSimple 展示兩個主要的部署案例 (主要備份目標和次要備份目標)，但基本上只是一般的區塊存放裝置。 StorSimple 會進行所有的壓縮及重複資料刪除。 它會在雲端、應用程式及檔案系統之間順暢地傳送和擷取資料。
 
-如需 StorSimple 的詳細資訊，請參閱 [StorSimple 8000 系列︰混合式雲端儲存體解決方案](storsimple-overview.md)。 此外，您可以檢閱 [StorSimple 8000 系列技術規格](storsimple-technical-specifications-and-compliance.md)。
+如需 StorSimple 的詳細資訊，請參閱 [StorSimple 8000 系列︰混合式雲端儲存體解決方案](storsimple-overview.md)。 此外，您可以檢閱 [StorSimple 8000 系列技術規格](./storsimple-8000-technical-specifications-and-compliance.md)。
 
 > [!IMPORTANT]
 > 只有 StorSimple 8000 Update 3 或更新版本才支援使用 StorSimple 裝置做為備份目標。
@@ -170,7 +170,7 @@ StorSimple 提供下列優點︰
 
 ### <a name="deploy-storsimple"></a>部署 StorSimple
 
-如需 StorSimple 部署的逐步指引，請參閱[部署內部部署 StorSimple 裝置](storsimple-deployment-walkthrough-u2.md)。
+如需 StorSimple 部署的逐步指引，請參閱[部署內部部署 StorSimple 裝置](./storsimple-8000-deployment-walkthrough-u2.md)。
 
 ### <a name="deploy-backup-exec"></a>部署 Backup Exec
 
@@ -185,9 +185,9 @@ StorSimple 提供下列優點︰
 | StorSimple 部署工作  | 其他註解 |
 |---|---|
 | 部署您的內部部署 StorSimple 裝置。 | 支援的版本：Update 3 及更新版本。 |
-| 開啟備份目標。 | 使用下列命令來開啟或關閉備份目標模式，以及取得狀態。 如需詳細資訊，請參閱[從遠端連接至 StorSimple 裝置](storsimple-remote-connect.md)。</br> 若要開啟備份模式︰`Set-HCSBackupApplianceMode -enable`。 </br> 若要關閉備份模式︰`Set-HCSBackupApplianceMode -disable`。 </br> 若要取得備份模式設定的目前狀態：`Get-HCSBackupApplianceMode`。 |
+| 開啟備份目標。 | 使用下列命令來開啟或關閉備份目標模式，以及取得狀態。 如需詳細資訊，請參閱[從遠端連接至 StorSimple 裝置](./storsimple-8000-remote-connect.md)。</br> 若要開啟備份模式︰`Set-HCSBackupApplianceMode -enable`。 </br> 若要關閉備份模式︰`Set-HCSBackupApplianceMode -disable`。 </br> 若要取得備份模式設定的目前狀態：`Get-HCSBackupApplianceMode`。 |
 | 為儲存備份資料的磁碟區建立一般的磁碟區容器。 磁碟區容器中的所有資料都已刪除重複資料。 | StorSimple 磁碟區容器定義重複資料刪除網域。  |
-| 建立 StorSimple 磁碟區。 | 建立大小盡可能接近預期使用量的磁碟區，因為磁碟區大小會影響雲端快照集的持續時間。 如需有關如何調整磁碟區大小的資訊，請參閱[保留原則](#retention-policies)。</br> </br> 使用 StorSimple 分層磁碟區，並選取 [使用此磁碟區存放不常存取的封存資料]**** 核取方塊。 </br> 不支援只使用固定在本機的磁碟區。 |
+| 建立 StorSimple 磁碟區。 | 建立大小盡可能接近預期使用量的磁碟區，因為磁碟區大小會影響雲端快照集的持續時間。 如需有關如何調整磁碟區大小的資訊，請參閱[保留原則](#retention-policies)。</br> </br> 使用 StorSimple 分層磁碟區，並選取 [使用此磁碟區存放不常存取的封存資料] 核取方塊。 </br> 不支援只使用固定在本機的磁碟區。 |
 | 為所有備份目標磁碟區建立唯一的 StorSimple 備份原則。 | StorSimple 備份原則定義磁碟區一致性群組。 |
 | 在快照集到期時停用排程。 | 後處理作業會觸發快照集。 |
 
@@ -211,29 +211,29 @@ StorSimple 提供下列優點︰
 - 停用 StorSimple 磁碟區的 Windows Server 磁碟重組。
 - 停用 StorSimple 磁碟區的 Windows Server 索引。
 - 在來源主機 (不是針對 StorSimple 磁碟區) 執行防毒軟體掃描。
-- 在工作管理員中關閉預設 [Windows Server 維護](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 利用下列其中一種方式來執行此作業：
+- 在工作管理員中關閉預設 [Windows Server 維護](/windows/win32/w8cookbook/automatic-maintenance)。 利用下列其中一種方式來執行此作業：
   - 在 Windows 工作排程器中關閉維護設定程式。
-  - 從 Windows Sysinternals 下載 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下載 PsExec 之後，請以系統管理員身分執行 Azure PowerShell：
+  - 從 Windows Sysinternals 下載 [PsExec](/sysinternals/downloads/psexec)。 下載 PsExec 之後，請以系統管理員身分執行 Azure PowerShell：
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple 最佳作法
 
-  -   確定 StorSimple 裝置已更新為 [Update 3 或更新版本](storsimple-install-update-3.md)。
+  -   確定 StorSimple 裝置已更新為 [Update 3 或更新版本](./index.yml)。
   -   隔離 iSCSI 和雲端流量。 針對 StorSimple 和備份伺服器之間的流量使用專用的 iSCSI 連線。
   -   確定 StorSimple 裝置是專用的備份目標。 不支援混合的工作負載，因為它們會影響 RTO 和 RPO。
 
 ### <a name="backup-exec-best-practices"></a>Backup Exec 最佳作法
 
 -   Backup Exec 必須安裝在伺服器的本機磁碟機，而不是在 StorSimple 磁碟區。
--   將 Backup Exec 儲存體的**並行寫入作業**設定為允許的最大值。
-    -   將 Backup Exec 儲存體的**區塊和緩衝區大小**設定為 512 KB。
-    -   開啟 Backup Exec 儲存體的**緩衝讀取和寫入**。
+-   將 Backup Exec 儲存體的 **並行寫入作業** 設定為允許的最大值。
+    -   將 Backup Exec 儲存體的 **區塊和緩衝區大小** 設定為 512 KB。
+    -   開啟 Backup Exec 儲存體的 **緩衝讀取和寫入**。
 -   StorSimple 支援 Backup Exec 完整和增量備份。 建議您不要使用綜合和差異備份。
 -   備份資料檔案最好只包含特定作業的資料。 例如，不允許在不同作業之間附加媒體。
 -   停用作業驗證。 如有必要，應該將驗證安排在最新的備份作業之後進行。 請務必了解這項作業會影響您的備份時間範圍。
--   選取 [**儲存體**  >  **磁片**  >  **詳細資料**]  >  **屬性**。 關閉 [預先配置磁碟空間]****。
+-   選取 [**儲存體**  >  **磁片**  >  **詳細資料**]  >  **屬性**。 關閉 [預先配置磁碟空間]。
 
 如需實作這些需求的最新 Backup Exec 設定和最佳作法，請參閱 [Veritas 網站](https://www.veritas.com)。
 
@@ -267,27 +267,27 @@ StorSimple 提供下列優點︰
 
 ### <a name="to-set-up-backup-exec-storage"></a>若要設定 Backup Exec 儲存體
 
-1.  在 Backup Exec 管理主控台中，選取 [**存儲**設備  >  **設定儲存體**  >  **磁片型儲存**  >  **]**。
+1.  在 Backup Exec 管理主控台中，選取 [**存儲** 設備  >  **設定儲存體**  >  **磁片型儲存**  >  **]**。
 
     ![Backup Exec 管理主控台，設定儲存體頁面](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-2.  選取 [磁碟儲存體]****，然後選取 [下一步]****。
+2.  選取 [磁碟儲存體]，然後選取 [下一步]。
 
     ![Backup Exec 管理主控台，選取儲存體頁面](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  輸入一個代表性名稱，例如，「星期六完整」**** 和描述。 選取 [下一步]  。
+3.  輸入一個代表性名稱，例如，「星期六完整」和描述。 選取 [下一步]。
 
     ![Backup Exec 管理主控台，名稱和描述頁面](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
-4.  選取您要建立磁碟存放裝置的磁碟，然後選取 [下一步]****。
+4.  選取您要建立磁碟存放裝置的磁碟，然後選取 [下一步]。
 
     ![Backup Exec 管理主控台，儲存體磁碟選取頁面](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-5.  將寫入作業數目增加為 **16**，然後選取 [下一步]****。
+5.  將寫入作業數目增加為 **16**，然後選取 [下一步]。
 
     ![Backup Exec 管理主控台，並行寫入作業設定頁面](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
-6.  檢閱設定，然後選取 [完成]****。
+6.  檢閱設定，然後選取 [完成]。
 
     ![Backup Exec 管理主控台，儲存體組態摘要頁面](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
 
@@ -327,29 +327,29 @@ StorSimple 提供下列優點︰
 
     ![Backup Exec 管理主控台，選取主機、備份及備份到磁碟](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-2.  在 [備份定義屬性]**** 對話方塊的 [備份]**** 之下，選取 [編輯]****。
+2.  在 [備份定義屬性] 對話方塊的 [備份] 之下，選取 [編輯]。
 
     ![Backup Exec 管理主控台，備份定義屬性對話方塊](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
 3.  設定您的完整和增量備份，讓這些備份符合 RPO 和 RTO 需求並遵循 Veritas 的最佳作法。
 
-4.  在 [備份選項]**** 對話方塊中，選取 [儲存體]****。
+4.  在 [備份選項] 對話方塊中，選取 [儲存體]。
 
     ![Backup Exec 管理主控台，備份選項、儲存體對話方塊](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
 
 5.  將對應的 StorSimple 磁碟區指派到您的備份排程。
 
     > [!NOTE]
-    > [Compression (壓縮)]**** 和 [Encryption type (加密類型)]**** 設定為 [None (無)]****。
+    > [Compression (壓縮)] 和 [Encryption type (加密類型)] 設定為 [None (無)]。
 
-6.  在 [確認]**** 之下，選取 [不要驗證這個作業的資料]**** 核取方塊。 使用此選項可能會影響 StorSimple 分層。
+6.  在 [確認] 之下，選取 [不要驗證這個作業的資料] 核取方塊。 使用此選項可能會影響 StorSimple 分層。
 
     > [!NOTE]
     > 磁碟重組、索引和背景驗證會對 StorSimple 分層造成負面影響。
 
     ![Backup Exec 管理主控台，備份選項、驗證設定](./media/storsimple-configure-backup-target-using-backup-exec/image17.png)
 
-7.  設定完其餘的備份選項以符合需求之後，選取 [確定]**** 即可完成。
+7.  設定完其餘的備份選項以符合需求之後，選取 [確定] 即可完成。
 
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>設定 StorSimple 做為次要備份目標
 
@@ -403,23 +403,23 @@ StorSimple 提供下列優點︰
 
     ![Backup Exec 管理主控台，新增階段](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
-3.  在 [複製選項]**** 對話方塊中，選取您要用於 [來源]**** 和 [排程]**** 的值。
+3.  在 [複製選項] 對話方塊中，選取您要用於 [來源] 和 [排程] 的值。
 
     ![Backup Exec 管理主控台，備份定義屬性和複製選項](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
 
-4.  在 [儲存體]**** 下拉式清單中，選取您想要封存作業以儲存資料的 StorSimple 磁碟區。
+4.  在 [儲存體] 下拉式清單中，選取您想要封存作業以儲存資料的 StorSimple 磁碟區。
 
     ![顯示您需要選取 [儲存體] 清單的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-5.  選取 [確認]****，然後選取 [不要驗證這個作業的資料]**** 核取方塊。
+5.  選取 [確認]，然後選取 [不要驗證這個作業的資料] 核取方塊。
 
     ![顯示您選取 [不要確認此作業的資料] 選項的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  選取 [確定]  。
+6.  選取 [確定]。
 
     ![顯示備份定義屬性的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
-7.  在 [Backup (備份)]**** 欄中，新增新的階段。 針對來源，使用 [增量]****。 針對目標，選擇其中封存增量備份作業的 StorSimple 磁碟區。 重複步驟 1 至 6。
+7.  在 [Backup (備份)] 欄中，新增新的階段。 針對來源，使用 [增量]。 針對目標，選擇其中封存增量備份作業的 StorSimple 磁碟區。 重複步驟 1 至 6。
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple 雲端快照集
 
@@ -439,7 +439,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ![備份生命週期圖表](./media/storsimple-configure-backup-target-using-backup-exec/backuplifecycle.png)
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 
 -   執行指令碼的伺服器必須能夠存取 Azure 雲端資源。
 -   使用者帳戶必須擁有必要的權限。
@@ -474,7 +474,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 | 狀況 | 影響 | 如何復原 | 注意 |
 |---|---|---|---|
-| StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 編製索引及編製目錄的重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
+| StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](./storsimple-8000-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 編製索引及編製目錄的重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
 | Backup Exec 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並依[如何執行手動備份和還原 Backup Exec (BEDB) 資料庫 (英文)](http://www.veritas.com/docs/000041083) 中所述執行資料庫還原。 | 您必須在災害復原站台重建或還原 Backup Exec 伺服器。 將資料庫還原到最新的點。 如果還原的 Backup Exec 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |
 | 站台故障造成備份伺服器和 StorSimple 都遺失 | 備份和還原作業會中斷。 | 先還原 StorSimple，然後再還原 Backup Exec。 | 先還原 StorSimple，然後再還原 Backup Exec。 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 |
 
@@ -482,12 +482,12 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 本文中參考下列文件︰
 
-- [StorSimple 多重路徑 I/O 設定](storsimple-configure-mpio-windows-server.md)
-- [儲存體案例︰精簡佈建 (英文)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [使用 GPT 磁碟機 (英文)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [設定共用資料夾的陰影複製](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple 多重路徑 I/O 設定](./storsimple-8000-configure-mpio-windows-server.md)
+- [儲存體案例︰精簡佈建 (英文)](/windows-hardware/drivers/storage/thin-provisioning)
+- [使用 GPT 磁碟機 (英文)](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [設定共用資料夾的陰影複製](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解如何[從備份集還原](storsimple-restore-from-backup-set-u2.md)。
-- 深入了解如何執行[裝置容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。
+- 深入了解如何[從備份集還原](./storsimple-8000-restore-from-backup-set-u2.md)。
+- 深入了解如何執行[裝置容錯移轉和災害復原](./storsimple-8000-device-failover-disaster-recovery.md)。

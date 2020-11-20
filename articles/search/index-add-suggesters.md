@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 9122d6716aa94a7e0164c9c7774c7c8d85be814a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917268"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968004"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -40,9 +40,11 @@ ms.locfileid: "94917268"
 
 若要建立建議工具，請在 [索引定義](/rest/api/searchservice/create-index)中加入一個。 建議工具會取得啟用自動提示體驗的名稱和欄位集合。 並 [設定每個屬性](#property-reference)。 建立建議工具的最佳時機是當您同時定義將使用它的欄位時。
 
-+ 僅使用字串欄位
++ 僅使用字串欄位。
 
-+ 使用預設標準 Lucene 分析器 (`"analyzer": null`) 或 [語言分析器](index-add-language-analyzers.md) (例如， `"analyzer": "en.Microsoft"` 欄位上的) 
++ 如果字串欄位屬於複雜類型 (例如，位址) 內的 City 欄位，請在欄位中包含父系： `"Address/City"` (REST 和 c # 和 Python) ，或 `["Address"]["City"]` (JavaScript) 。
+
++ 使用預設標準 Lucene 分析器 (`"analyzer": null`) 或 [語言分析器](index-add-language-analyzers.md) (例如， `"analyzer": "en.Microsoft"` 在欄位上) 。
 
 如果您嘗試使用預先存在的欄位來建立建議工具，API 將不會允許它。 在索引編制期間會產生前置詞，而在兩個或更多字元組合中的部分詞彙則會與整個詞彙一起標記。 由於現有的欄位已經標記化，如果您想要將索引新增至建議工具，就必須重建索引。 如需詳細資訊，請參閱 [如何重建 Azure 認知搜尋索引](search-howto-reindex.md)。
 

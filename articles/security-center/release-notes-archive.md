@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 26192c742ab2e010c18c02226252dbb480b72cee
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357839"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967154"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -188,7 +188,7 @@ Azure 資訊安全中心的法規合規性儀表板現在包含 **動態相容�
 - **加拿大聯邦 PBMM**
 - **Azure CIS 1.1.0 (新)** (這是更完整的 Azure CIS 1.1.0 標記法)
 
-此外，我們最近新增了 **Azure 安全性基準測試** ，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 當儀表板可供使用時，將會支援其他標準。  
+此外，我們最近新增了 **Azure 安全性基準測試**，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 當儀表板可供使用時，將會支援其他標準。  
  
 深入了解[如何在您的法規合規性儀表板中自訂一組標準](update-regulatory-compliance-packages.md)。
 
@@ -316,7 +316,7 @@ Azure 資訊安全中心的安全分數功能增強版本現已提供預覽。 �
 
 ## <a name="november-2019"></a>2019 年 11 月
 
-11月更新包括：
+11 月的更新包括：
  - [北美洲區域中 Azure Key Vault 的威脅防護 (預覽) ](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
  - [Azure 儲存體的威脅防護包括惡意程式碼信譽檢測](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
  - [Logic Apps 的工作流程自動化 (預覽)](#workflow-automation-with-logic-apps-preview)
@@ -392,7 +392,7 @@ Kubernetes 很快就成為在雲端中部署及管理軟體的新標準。 少�
 此公開預覽版本中的新功能包括：
 
 - **探索與可見度** - 在資訊安全中心註冊的訂用帳戶內持續探索受控 AKS 執行個體。
-- **安全分數建議** - 可操作的項目，以協助客戶在客戶安全分數中符合 AKS 中的安全性最佳做法，例如「應使用角色型存取控制來限制 Kubernetes 服務叢集的存取權」。
+- **安全分數建議** -可操作的專案，以協助客戶遵守 AKS 的安全性最佳作法，並提高其安全分數。 建議事項包括「應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取」等專案。
 - **威脅偵測** - 主機和以叢集為基礎的分析，例如「偵測到特殊權限的容器」。
 
 
