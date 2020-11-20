@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8f2498dbb3a555db262c591c9badacbe0e4e2548
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 62bc309bf20186654cb32fb84fb1a07667405ab0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874656"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950800"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -526,7 +526,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
-**指導** 方針： Azure Machine Learning 支援使用 Azure Active Directory (Azure AD) 來授權 Machine Learning 資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (RBAC) 將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
+**指導** 方針： Azure Machine Learning 支援使用 Azure Active Directory (Azure AD) 來授權 Machine Learning 資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
 
 - [管理對 Azure Machine Learning 工作區的存取](how-to-assign-roles.md)
 - [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 9a5bd6dff05fe39d62e5bf5f897bc61936686bb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 548db64bd93dd561f9c69e9f594d01f4c0825db9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887224"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948335"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能所需的 Azure 角色型存取控制許可權
 
@@ -103,12 +103,12 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您只將特定動作指派給組
 
 網路監看員功能也需要下列動作：
 
-| 動作 (s)                                                            | 說明                                                    |
+| 動作 (s)                                                            | 描述                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Authorization/\*/Read                                     | 用來提取 Azure 角色指派和原則定義          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用來列舉訂用帳戶中的所有資源群組    |
 | Microsoft.Storage/storageAccounts/Read                              | 用來取得指定之儲存體帳戶的屬性   |
-| Microsoft. Storage/storageAccounts/listServiceSas/Action， </br> Microsoft. Storage/storageAccounts/listAccountSas/Action， <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用來提取共用存取簽章 (SAS) [安全地存取儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) 並寫入儲存體帳戶 |
+| Microsoft. Storage/storageAccounts/listServiceSas/Action， </br> Microsoft. Storage/storageAccounts/listAccountSas/Action， <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用來提取共用存取簽章 (SAS) [安全地存取儲存體帳戶](../storage/common/storage-sas-overview.md) 並寫入儲存體帳戶 |
 | Microsoft. Compute/virtualMachines/Read， </br> Microsoft.Compute/virtualMachines/Write| 用來登入 VM、進行封包捕獲，並將其上傳至儲存體帳戶|
 | Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| 用來檢查網路監看員延伸模組是否存在，並視需要進行安裝 |
 | Microsoft. Compute/virtualMachineScaleSets/Read， </br> Microsoft.Compute/virtualMachineScaleSets/Write| 用來存取虛擬機器擴展集、進行封包捕獲，並將它們上傳至儲存體帳戶|

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 532f045233f26a9a2933a19ae7a0a893195ad33f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384100"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949032"
 ---
 # <a name="create-a-connection-monitor-using-powershell"></a>使用 PowerShell 建立連線監視
 
@@ -29,7 +29,7 @@ ms.locfileid: "94384100"
 
 連接監視包含下列實體：
 
-* 連線 **監視器資源** –區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
+* 連線 **監視器資源**–區域特定的 Azure 資源。 下列所有實體都是連線監視器資源的屬性。
 * **端點** –參與連線能力檢查的來源或目的地。 端點的範例包括 Azure Vm、內部部署代理程式、Url 和 Ip。
 * **測試** 設定–適用于測試的通訊協定特定設定。 根據您選擇的通訊協定，您可以定義埠、閾值、測試頻率及其他參數。
 * **測試群組** –包含來源端點、目的地端點和測試設定的群組。 連接監視器可以包含一個以上的測試群組。
@@ -89,7 +89,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * 測試群組
     * 命名：命名您的測試群組。
     * testConfigurations-根據連接到目的地端點的來源端點來測試設定
-    * 來源-選擇上方所建立的端點。 以 azure 為基礎的來源端點需要安裝 Azure 網路監看員延伸模組，且 nonAzure 型來源端點需要 haveAzure 已安裝的 Log Analytics 代理程式。 若要為您的來源安裝代理程式，請參閱 [安裝監視代理](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)程式。
+    * 來源-選擇上方所建立的端點。 以 azure 為基礎的來源端點需要安裝 Azure 網路監看員延伸模組，且 nonAzure 型來源端點需要 haveAzure 已安裝的 Log Analytics 代理程式。 若要為您的來源安裝代理程式，請參閱 [安裝監視代理](./connection-monitor-overview.md#install-monitoring-agents)程式。
     * 目的地-選擇上方所建立的端點。 您可以藉由將其指定為目的地，來監視 Azure Vm 或任何端點 (公用 IP、URL 或 FQDN) 的連線能力。 在單一測試群組中，您可以新增 Azure Vm、Office 365 Url、Dynamics 365 Url 和自訂端點。
     * 停用-使用此欄位可針對測試群組指定的所有來源和目的地停用監視。
 
@@ -115,5 +115,5 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解 [如何分析監視資料和設定警示](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)
-* 瞭解 [如何診斷網路中的問題](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)
+* 瞭解 [如何分析監視資料和設定警示](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)
+* 瞭解 [如何診斷網路中的問題](./connection-monitor-overview.md#diagnose-issues-in-your-network)

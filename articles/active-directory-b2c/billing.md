@@ -11,16 +11,16 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255328"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949780"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的計費模型
 
-Azure Active Directory B2C (Azure AD B2C) 定價是根據每月作用中使用者 (MAU) ，也就是在日曆月份中具有驗證活動的唯一使用者計數。 此計費模型適用于 Azure AD B2C 租使用者，以及 [Azure AD 來賓使用者共同作業 (B2B) ](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing)。 MAU 計費可提供免費層和彈性且可預測的定價，協助您降低成本。 在本文中，您將瞭解 MAU 計費、將 Azure AD B2C 租使用者連結至訂用帳戶，以及變更您的定價層。
+Azure Active Directory B2C (Azure AD B2C) 定價是根據每月作用中使用者 (MAU) ，也就是在日曆月份中具有驗證活動的唯一使用者計數。 此計費模型適用于 Azure AD B2C 租使用者，以及 [Azure AD 來賓使用者共同作業 (B2B) ](../active-directory/external-identities/external-identities-pricing.md)。 MAU 計費可提供免費層和彈性且可預測的定價，協助您降低成本。 在本文中，您將瞭解 MAU 計費、將 Azure AD B2C 租使用者連結至訂用帳戶，以及變更您的定價層。
 
 > [!IMPORTANT]
 > 本文不包含定價詳細資料。 如需使用方式計費和定價的最新資訊，請參閱 [Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) 定價是根據每月作用中使用�
 
 ## <a name="about-the-monthly-active-users-mau-billing-model"></a>關於每月活躍的使用者 (MAU) 計費模型
 
-MAU 帳單將于 **2019 年11月1日**Azure AD B2C 租使用者生效。 您在該日期或之後建立並連結至訂用帳戶的任何 Azure AD B2C 租使用者，都是以每個 MAU 為基礎來計費。 如果您有未連結至訂用帳戶的 Azure AD B2C 租使用者，您現在必須這樣做。 如果您有在2019年11月1日之前連結至訂用帳戶的現有 Azure AD B2C 租使用者，建議您升級為每月作用中使用者 (MAU) 計費模型，或隨時掌握每一驗證計費模型。
+MAU 帳單將于 **2019 年11月1日** Azure AD B2C 租使用者生效。 您在該日期或之後建立並連結至訂用帳戶的任何 Azure AD B2C 租使用者，都是以每個 MAU 為基礎來計費。 如果您有未連結至訂用帳戶的 Azure AD B2C 租使用者，您現在必須這樣做。 如果您有在2019年11月1日之前連結至訂用帳戶的現有 Azure AD B2C 租使用者，建議您升級為每月作用中使用者 (MAU) 計費模型，或隨時掌握每一驗證計費模型。
   
 您的 Azure AD B2C 租使用者也必須根據您想要使用的功能，連結至適當的 Azure 定價層。 Premium 功能需要 Azure AD B2C [Premium P1 或 P2 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。 當您使用新功能時，可能需要升級定價層。 例如，條件式存取，您必須為您的租使用者選取 Azure AD B2C Premium P2 定價層。
 
@@ -61,12 +61,12 @@ Azure Active Directory B2C (Azure AD B2C) 的使用費用會向 Azure 訂用帳�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選取包含您想要使用之 Azure 訂用帳戶的目錄， (*不* 是包含 Azure AD B2C 租使用者) 的目錄。
 3. 選取 [ **建立資源**]， `Active Directory B2C` 在 [ **搜尋 Marketplace** ] 欄位中輸入，然後選取 [ **Azure Active Directory B2C**]。
-4. 選取 [建立]****。
-5. 選取 [ **將現有的 Azure AD B2C 租使用者連結至我的 Azure 訂**用帳戶]。
+4. 選取 [建立]。
+5. 選取 [將現有的 Azure AD B2C 租用戶連結至我的 Azure 訂用帳戶]。
 6. 從下拉式清單中選取 **Azure AD B2C 的租** 使用者。 只會顯示您是全域管理員且尚未連結至訂用帳戶的租使用者。 **Azure AD B2C 資源名稱**] 欄位會填入您所選取 Azure AD B2C 租使用者的功能變數名稱。
 7. 選取您是系統管理員的有效 Azure **訂** 用帳戶。
-8. 在 [ **資源群組**] 底下，選取 [ **建立新**的]，然後指定 **資源群組的位置**。 此處的資源群組設定不會影響您的 Azure AD B2C 租使用者位置、效能或計費狀態。
-9. 選取 [建立]****。
+8. 在 [ **資源群組**] 底下，選取 [ **建立新** 的]，然後指定 **資源群組的位置**。 此處的資源群組設定不會影響您的 Azure AD B2C 租使用者位置、效能或計費狀態。
+9. 選取 [建立]。
 
     ![Azure 入口網站中的 Azure AD B2C 資源建立頁面](./media/billing/portal-01-create-b2c-resource-page.png)
 
@@ -94,7 +94,7 @@ Azure Active Directory B2C (Azure AD B2C) 的使用費用會向 Azure 訂用帳�
 
 ## <a name="switch-to-mau-billing-pre-november-2019-azure-ad-b2c-tenants"></a>切換至 MAU 帳單 (2019 年11月前 Azure AD B2C 租使用者) 
 
-如果您在 **2019 年11月 1**日前將 Azure AD B2C 租使用者連結至訂用帳戶，則會使用先前的每一驗證計費模型。 建議您升級為每月作用中的使用者 (MAU) 計費模型。 您 Azure AD B2C 資源中會設定計費選項。
+如果您在 **2019 年11月 1** 日前將 Azure AD B2C 租使用者連結至訂用帳戶，則會使用先前的每一驗證計費模型。 建議您升級為每月作用中的使用者 (MAU) 計費模型。 您 Azure AD B2C 資源中會設定計費選項。
 
 切換至每月作用中的使用者 (MAU) 帳單無法 **復原**。 將 Azure AD B2C 資源轉換為 MAU 型計費模型之後，您就無法將該資源還原為每個驗證的計費模型。
 
@@ -112,7 +112,7 @@ Azure Active Directory B2C (Azure AD B2C) 的使用費用會向 Azure 訂用帳�
 
     ![Azure AD B2C 在 Azure 入口網站中醒目提示的資源連結](./media/billing/portal-mau-02-b2c-resource-link.png)
 
-5. 在 Azure AD B2C 資源的 [ **總覽** ] 頁面的 [可 **計費單位**] 下，選取 [ **每次驗證 (變更為 MAU) ** 連結。<br/>
+5. 在 Azure AD B2C 資源的 [ **總覽** ] 頁面的 [可 **計費單位**] 下，選取 [ **每次驗證 (變更為 MAU)** 連結。<br/>
 
     ![變更為 Azure 入口網站中醒目提示的 MAU 連結](./media/billing/portal-mau-03-change-to-mau-link.png)
 

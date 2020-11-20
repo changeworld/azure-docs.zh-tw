@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426543"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948471"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
 
@@ -52,13 +52,13 @@ ms.locfileid: "92426543"
         
 檢查指派給訂用帳戶使用者的角色：
 
-1. 使用 **登入 Disconnect-azaccount 登**入 Azure。 
+1. 使用 **登入 Disconnect-azaccount 登** 入 Azure。 
 
-2. 使用 **select->select-azsubscription**來選取所需的訂用帳戶。 
+2. 使用 **select->select-azsubscription** 來選取所需的訂用帳戶。 
 
 3. 若要列出指派給指定使用者的所有角色，請使用  **>new-azroleassignment-SignInName [使用者電子郵件]-IncludeClassicAdministrators**。 
 
-如果看不到任何輸出，請聯絡個別訂用帳戶管理員，取得執行命令的權限。 如需詳細資訊，請參閱 [使用 Azure PowerShell 新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
+如果看不到任何輸出，請聯絡個別訂用帳戶管理員，取得執行命令的權限。 如需詳細資訊，請參閱 [使用 Azure PowerShell 新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-powershell.md)。
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>在哪些 Azure 區域中可使用流量分析？
@@ -126,7 +126,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-use-an-existing-workspace"></a>我可以使用現有的工作區嗎？
 
-是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱 [Azure 監視器記錄升級至新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
+是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱 [Azure 監視器記錄升級至新的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可以讓我的 Azure 儲存體帳戶位於某個訂用帳戶，而讓我的 Log Analytics 工作區位於不同的訂用帳戶中？
 
@@ -176,7 +176,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>我可以使用 PowerShell 或 Azure Resource Manager 範本或用戶端來設定流量分析嗎？
 
-您可以使用 Windows PowerShell 6.2.1 以上版本設定流量分析。 若要使用 Set Cmdlet 為特定 NSG 設定流程記錄和流量分析，請參閱 [AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要取得特定 NSG 的流量記錄和流量分析狀態，請參閱 [AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+您可以使用 Windows PowerShell 6.2.1 以上版本設定流量分析。 若要使用 Set Cmdlet 為特定 NSG 設定流程記錄和流量分析，請參閱 [AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要取得特定 NSG 的流量記錄和流量分析狀態，請參閱 [AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前您無法使用 Azure Resource Manager 範本來設定流量分析。
 
@@ -250,7 +250,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析處理資料的頻率為何？
 
-請參閱流量分析架構與資料匯總檔中的[資料匯總區段](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
+請參閱流量分析架構與資料匯總檔中的[資料匯總區段](./traffic-analytics-schema.md#data-aggregation)
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何決定 IP 為惡意？ 
 
@@ -262,7 +262,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 您可以在流量分析中使用 Log Analytics 的 shortlink。 
 - 使用 [此處記載的架構](traffic-analytics-schema.md) 來撰寫您的查詢 
 - 按一下 [新增警示規則] 以建立警示
-- 請參閱 [記錄警示檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) 以建立警示
+- 請參閱 [記錄警示檔](../azure-monitor/platform/alerts-log.md) 以建立警示
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何? 檢查哪些 Vm 會接收大部分的內部部署流量？
 
@@ -345,13 +345,13 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
         
 ### <a name="keyboard-navigation-on-the-map"></a>地圖上的鍵盤瀏覽
     
-- 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至地圖檢視中的其中一個醒目提示節點 (**Azure 資料中心**或**國家/區域**)。
+- 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至地圖檢視中的其中一個醒目提示節點 (**Azure 資料中心** 或 **國家/區域**)。
 - 若要移至地圖上其他醒目提示節點，請使用 `Tab` 或 `Right arrow` 鍵順向移動。 若要反向移動，請使用 `Shift+Tab` 或 `Left arrow` 鍵。
 - 若要選取地圖中的任何醒目提示節點，請使用 `Enter` 或 `Down arrow` 鍵。
-- 一選取任何這類節點後，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上已關閉的按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
-- 若您在焦點於 [資訊工具方塊]**** 時按 `Tab`，焦點就會移至與所選節點位於相同大陸的端點。 使用 `Right arrow` 和 `Left arrow` 鍵可在這些端點之間移動。
+- 一選取任何這類節點後，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上已關閉的按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
+- 若您在焦點於 [資訊工具方塊] 時按 `Tab`，焦點就會移至與所選節點位於相同大陸的端點。 使用 `Right arrow` 和 `Left arrow` 鍵可在這些端點之間移動。
 - 若要移動至其他流量端點或大陸叢集，請使用 `Tab` 進行順向移動，使用 `Shift+Tab` 進行反向移動。
-- 一旦焦點位於 [大陸叢集]**** 時，請使用 `Enter` 或 `Down` 方向鍵來醒目提示大陸叢集內的端點。 若要在端點和大陸叢集資訊方塊上的關閉按鈕之間移動，請分別使用 `Right arrow` 或 `Left arrow` 鍵來進行順向和反向移動。 在任何端點上，您都可以使用 `Shift+L` 來切換到從選取節點到端點的連接線。 您可以再按一次 `Shift+L`，即可移至所選的端點。
+- 一旦焦點位於 [大陸叢集] 時，請使用 `Enter` 或 `Down` 方向鍵來醒目提示大陸叢集內的端點。 若要在端點和大陸叢集資訊方塊上的關閉按鈕之間移動，請分別使用 `Right arrow` 或 `Left arrow` 鍵來進行順向和反向移動。 在任何端點上，您都可以使用 `Shift+L` 來切換到從選取節點到端點的連接線。 您可以再按一次 `Shift+L`，即可移至所選的端點。
         
 ### <a name="keyboard-navigation-at-any-stage"></a>各階段的鍵盤瀏覽
     
@@ -377,8 +377,8 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
     
 - 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至拓撲檢視中的其中一個醒目提示節點 (**VNet**)。
 - 若要移至拓撲檢視上其他醒目提示節點，請使用 `Shift+Right arrow` 鍵順向移動。 
-- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上的 [更多詳細資料]**** 按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
-- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]****。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。
+- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上的 [更多詳細資料] 按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
+- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>如何在子網路拓撲檢視中使用鍵盤來瀏覽？
@@ -399,5 +399,5 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
     
 - 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至拓撲檢視中的其中一個醒目提示節點 (**子網路**)。
 - 若要移至拓撲檢視上其他醒目提示節點，請使用 `Shift+Right arrow` 鍵順向移動。 
-- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上的 [更多詳細資料]**** 按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
-- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]****。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。    
+- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上的 [更多詳細資料] 按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
+- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。

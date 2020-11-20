@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: 68a7dd1b9a7af9f2667785c8b822b2771510d00e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562752"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949950"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 監視器監視 Azure AD B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "94562752"
 您可以將記錄事件路由至：
 
 * Azure [儲存體帳戶](../storage/blobs/storage-blobs-introduction.md)。
-* [Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md) (分析資料、建立儀表板，以及) 特定事件的警示。
+* [Log Analytics 工作區](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (分析資料、建立儀表板，以及) 特定事件的警示。
 * Azure [事件中樞](../event-hubs/event-hubs-about.md) (，並與您的 Splunk 和 Sumo 邏輯實例) 整合。
 
 ![Azure 監視器](./media/azure-monitor/azure-monitor-flow.png)
@@ -34,7 +34,7 @@ ms.locfileid: "94562752"
 
 ## <a name="deployment-overview"></a>部署概觀
 
-Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租使用者內的 Azure Active Directory 中啟用 *診斷設定* ，請使用 [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) 來 [委派資源](../lighthouse/concepts/azure-delegated-resource-management.md)，讓 Azure AD B2C ( **服務提供者** ) 管理 **客戶** Azure AD 資源 (。 完成本文中的步驟之後，您就可以存取 *azure ad-b2c-監視* 資源群組，其中包含您 **Azure AD B2C** 入口網站中的 [Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。 您也可以從 Azure AD B2C 將記錄傳送至 Log Analytics 工作區。
+Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租使用者內的 Azure Active Directory 中啟用 *診斷設定* ，請使用 [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) 來 [委派資源](../lighthouse/concepts/azure-delegated-resource-management.md)，讓 Azure AD B2C (**服務提供者**) 管理 **客戶** Azure AD 資源 (。 完成本文中的步驟之後，您就可以存取 *azure ad-b2c-監視* 資源群組，其中包含您 **Azure AD B2C** 入口網站中的 [Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。 您也可以從 Azure AD B2C 將記錄傳送至 Log Analytics 工作區。
 
 在此部署期間，您會授權 Azure AD B2C 目錄中的使用者或群組，以在包含您 Azure 訂用帳戶的租使用者中設定 Log Analytics 工作區實例。 若要建立授權，請將 [Azure Resource Manager](../azure-resource-manager/index.yml) 範本部署到包含訂用帳戶的 Azure AD 租使用者。
 
@@ -62,7 +62,7 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
 
 ## <a name="3-delegate-resource-management"></a>3. 委派資源管理
 
-在此步驟中，您會選擇您的 Azure AD B2C 租使用者作為 **服務提供者** 。 您也會定義您需要的授權，以將適當的 Azure 內建角色指派給 Azure AD 租使用者中的群組。
+在此步驟中，您會選擇您的 Azure AD B2C 租使用者作為 **服務提供者**。 您也會定義您需要的授權，以將適當的 Azure 內建角色指派給 Azure AD 租使用者中的群組。
 
 ### <a name="31-get-your-azure-ad-b2c-tenant-id"></a>3.1 取得您 Azure AD B2C 的租使用者識別碼
 
@@ -70,8 +70,8 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取入口網站工具列中的 [ **目錄 + 訂** 用帳戶] 圖示，然後選取包含您 **Azure AD B2C** 租使用者的目錄。
-1. 選取 **Azure Active Directory** ，然後選取 **[總覽** ]。
-1. 記錄 **租使用者識別碼** 。
+1. 選取 **Azure Active Directory**，然後選取 **[總覽**]。
+1. 記錄 **租使用者識別碼**。
 
 ### <a name="32-select-a-security-group"></a>3.2 選取安全性群組
 
@@ -80,14 +80,14 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
 為了讓管理更容易，我們建議您針對每個角色使用 Azure AD 使用者 *群組* ，讓您可以新增或移除群組中的個別使用者，而不是直接將許可權指派給該使用者。 在此逐步解說中，我們將新增安全性群組。
 
 > [!IMPORTANT]
-> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性** ]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性**]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-1. 在 **Azure AD B2C** 目錄中仍選取 **Azure Active Directory** ，請選取 [ **群組** ]，然後選取群組。 如果您沒有現有的群組，請建立 **安全** 組，然後新增成員。 如需詳細資訊，請遵循 [使用 Azure Active Directory 建立基本群組和新增成員](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 
-1. 選取 **[總覽** ]，並記錄群組的 **物件識別碼** 。
+1. 在 **Azure AD B2C** 目錄中仍選取 **Azure Active Directory** ，請選取 [**群組**]，然後選取群組。 如果您沒有現有的群組，請建立 **安全** 組，然後新增成員。 如需詳細資訊，請遵循 [使用 Azure Active Directory 建立基本群組和新增成員](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 
+1. 選取 **[總覽**]，並記錄群組的 **物件識別碼**。
 
 ### <a name="33-create-an-azure-resource-manager-template"></a>3.3 建立 Azure Resource Manager 範本
 
-接下來，您將建立 Azure Resource Manager 範本，將 Azure AD B2C 存取權授與您稍早建立的 Azure AD 資源群組 (例如， *Azure-AD-B2C-監視器* ) 。 使用 [ **部署至 Azure** ] 按鈕，從 GitHub 範例部署範本，此按鈕會開啟 Azure 入口網站，並可讓您直接在入口網站中設定和部署範本。 針對這些步驟，請確定您已登入 Azure AD 租使用者， (不是 Azure AD B2C 租使用者) 。
+接下來，您將建立 Azure Resource Manager 範本，將 Azure AD B2C 存取權授與您稍早建立的 Azure AD 資源群組 (例如， *Azure-AD-B2C-監視器*) 。 使用 [ **部署至 Azure** ] 按鈕，從 GitHub 範例部署範本，此按鈕會開啟 Azure 入口網站，並可讓您直接在入口網站中設定和部署範本。 針對這些步驟，請確定您已登入 Azure AD 租使用者， (不是 Azure AD B2C 租使用者) 。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取入口網站工具列中的 [ **目錄 + 訂** 用帳戶] 圖示，然後選取包含您 **Azure AD** 租使用者的目錄。
@@ -101,11 +101,11 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
    |---------|------------|
    | 訂用帳戶 |  選取包含 azure 訂用帳戶的目錄，其中建立了 *azure ad-b2c-監視* 資源群組。 |
    | 區域| 選取將在其中部署資源的區域。  | 
-   | Msp 供應專案名稱| 說明此定義的名稱。 例如， *Azure AD B2C 監視* ]。  |
-   | Msp 供應專案描述| 您供應專案的簡短描述。 例如，會 *啟用 Azure AD B2C 中的 Azure 監視器* 。|
+   | Msp 供應專案名稱| 說明此定義的名稱。 例如， *Azure AD B2C 監視*]。  |
+   | Msp 供應專案描述| 您供應專案的簡短描述。 例如，會 *啟用 Azure AD B2C 中的 Azure 監視器*。|
    | 受租使用者識別碼管理| 您 Azure AD B2C 租使用者的 **租使用者識別碼** (也稱為目錄識別碼) 。 |
-   |授權|指定包含 Azure AD `principalId` 、和 Azure 之物件的 JSON 陣列 `principalIdDisplayName` `roleDefinitionId` 。 `principalId`是 B2C 群組或使用者的 **物件識別碼** ，可存取此 Azure 訂用帳戶中的資源。 在這個逐步解說中，請指定您稍早記錄的群組物件識別碼。 針對 `roleDefinitionId` ，請使用「 *參與者」角色* 的 [內建角色](../role-based-access-control/built-in-roles.md)值 `b24988ac-6180-42a0-ab88-20f7382dd24c` 。|
-   | Rg 名稱 | 您稍早在 Azure AD 租使用者中建立的資源組名。 例如， *azure-ad-b2c-監視器* 。 |
+   |授權|指定包含 Azure AD `principalId` 、和 Azure 之物件的 JSON 陣列 `principalIdDisplayName` `roleDefinitionId` 。 `principalId`是 B2C 群組或使用者的 **物件識別碼**，可存取此 Azure 訂用帳戶中的資源。 在這個逐步解說中，請指定您稍早記錄的群組物件識別碼。 針對 `roleDefinitionId` ，請使用「*參與者」角色* 的 [內建角色](../role-based-access-control/built-in-roles.md)值 `b24988ac-6180-42a0-ab88-20f7382dd24c` 。|
+   | Rg 名稱 | 您稍早在 Azure AD 租使用者中建立的資源組名。 例如， *azure-ad-b2c-監視器*。 |
 
    下列範例示範具有一個安全性群組的授權陣列。
 
@@ -161,9 +161,9 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
     ![Azure 入口網站中的 [診斷設定] 窗格](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
 1. 如果您的設定還沒有名稱，請為您的設定命名。
-1. 核取每個目的地的核取方塊，以傳送記錄。 選取 [ **設定** ] 以指定其設定， **如下表所述** 。
-1. 選取 [ **傳送至 Log Analytics** ]，然後選取您稍早建立 **的工作區名稱** (`AzureAdB2C`) 。
-1. 選取 [ **AuditLogs** ] 和 [ **SignInLogs** ]。
+1. 核取每個目的地的核取方塊，以傳送記錄。 選取 [ **設定** ] 以指定其設定， **如下表所述**。
+1. 選取 [ **傳送至 Log Analytics**]，然後選取您稍早建立 **的工作區名稱** (`AzureAdB2C`) 。
+1. 選取 [ **AuditLogs** ] 和 [ **SignInLogs**]。
 1. 選取 [儲存]。
 
 > [!NOTE]
@@ -193,7 +193,7 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
     ```
 
 1. 選取 [執行]。 查詢結果會顯示在畫面底部。
-1. 若要儲存您的查詢以供稍後使用，請選取 [ **儲存** ]。
+1. 若要儲存您的查詢以供稍後使用，請選取 [ **儲存**]。
 
    ![Log Analytics 記錄編輯器](./media/azure-monitor/query-policy-usage.png)
 
@@ -228,18 +228,18 @@ AuditLogs
 
 請遵循下列指示，使用 JSON 資源庫範本建立新的活頁簿。 此活頁簿會為 Azure AD B2C 租 **使用者提供使用者深入** 解析和 **驗證** 儀表板。
 
-1. 從 **Log Analytics 工作區** 中，選取 [活頁 **簿** ]。
+1. 從 **Log Analytics 工作區** 中，選取 [活頁 **簿**]。
 1. 從工具列中選取 [ **+ 新增** ] 選項，以建立新的活頁簿。
-1. 在 [ **新增活頁簿** ] 頁面上 **Advanced Editor** ，使用 **</>** 工具列上的選項選取進階編輯器。
+1. 在 [**新增活頁簿**] 頁面上 **Advanced Editor** ，使用 **</>** 工具列上的選項選取進階編輯器。
 
      ![資源庫範本](./media/azure-monitor/wrkb-adv-editor.png)
 
-1. 選取資源 **庫範本** 。
+1. 選取資源 **庫範本**。
 1. 以 [Azure AD B2C 基本活頁簿](https://raw.githubusercontent.com/azure-ad-b2c/siem/master/workbooks/dashboard.json)中的內容取代資源 **庫範本** 中的 JSON：
 1. 使用 [套用 **] 按鈕來** 套用範本。
 1. 從工具列中選取 [ **完成編輯** ] 按鈕，以完成活頁簿的編輯。
 1. 最後，使用工具列中的 [ **儲存** ] 按鈕來儲存活頁簿。
-1. 提供 **標題** ，例如 *Azure AD B2C 儀表板* 。
+1. 提供 **標題**，例如 *Azure AD B2C 儀表板*。
 1. 選取 [儲存]。
 
     ![儲存活頁簿](./media/azure-monitor/wrkb-title.png)
@@ -261,7 +261,7 @@ AuditLogs
 您可以使用下列指示來建立新的 Azure 警示，當 **總要求數總計** 有25% 時，就會傳送 [電子郵件通知](../azure-monitor/platform/action-groups.md#configure-notifications)至先前的期間。 警示會每隔5分鐘執行一次，並在 [過去24小時] 視窗中尋找卸載。 您可以使用 Kusto 查詢語言來建立警示。
 
 
-1. 從 **Log Analytics 工作區** 中，選取 [ **記錄** ]。 
+1. 從 **Log Analytics 工作區** 中，選取 [ **記錄**]。 
 1. 使用下列查詢來建立新的 **Kusto 查詢** 。
 
     ```kusto
@@ -279,16 +279,16 @@ AuditLogs
     | where PercentageChange <= threshold   //Trigger's alert rule if matched.
     ```
 
-1. 選取 [ **執行** ] 以測試查詢。 如果過去24小時內的要求總數中有25% 以上的結果，您應該會看到結果。
+1. 選取 [ **執行**] 以測試查詢。 如果過去24小時內的要求總數中有25% 以上的結果，您應該會看到結果。
 1. 若要根據上述查詢來建立警示規則，請使用工具列提供的 [ **+ 新增警示規則** ] 選項。
-1. 在 [ **建立警示規則** ] 頁面上，選取 [ **條件名稱** ] 
+1. 在 [**建立警示規則**] 頁面上，選取 [**條件名稱**] 
 1. 在 [設定 **信號邏輯** ] 頁面上，設定下列值，然後使用 [ **完成** ] 按鈕儲存變更。
-    * 警示邏輯：設定 **大於** **0****的結果數目** 。
+    * 警示邏輯：設定 **大於** **0****的結果數目**。
     * 評估依據：選取 **1440** （以分鐘為單位） (（以分鐘為單位）) 和 **5** （以分鐘為單位） ()  
 
     ![建立警示規則條件](./media/azure-monitor/alert-create-rule-condition.png)
 
-警示建立之後，請移至 **Log Analytics 工作區** ，然後選取 [ **警示** ]。 此頁面會顯示在 [ **時間範圍** ] 選項設定的 [持續時間] 選項中觸發的所有警示。  
+警示建立之後，請移至 **Log Analytics 工作區** ，然後選取 [ **警示**]。 此頁面會顯示在 [ **時間範圍** ] 選項設定的 [持續時間] 選項中觸發的所有警示。  
 
 ### <a name="configure-action-groups"></a>設定動作群組
 

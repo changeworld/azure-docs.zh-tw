@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be69e7fc0c836257b92aa8573826fe1e8a36d770
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87022458"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948437"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的查詢範例 (2019 年8月架構更新) 
 
-使用 [分析記錄架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) 包含下列新欄位： **SrcPublicIPs_s**、 **DestPublicIPs_s** **NSGRule_s**。 新欄位提供來源和目的地 Ip 的相關資訊，並可簡化查詢。
+使用 [分析記錄架構](./traffic-analytics-schema.md) 包含下列新欄位： **SrcPublicIPs_s**、 **DestPublicIPs_s** **NSGRule_s**。 新欄位提供來源和目的地 Ip 的相關資訊，並可簡化查詢。
 
 在接下來的幾個月中，將會淘汰下列舊版欄位： **VMIP_s**、 **Subscription_g**、 **Region_s**、 **NSGRules_s**、 **Subnet_s**、 **VM_s**、 **NIC_s**、 **PublicIPs_s**、 **FlowCount_d**。
 
@@ -120,7 +120,7 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 根據條件而定，我們知道將會填入四個欄位中的哪一個。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要取得常見問題的解答，請參閱使用 [分析常見問題](traffic-analytics-faq.md)。
 - 若要查看功能的詳細資訊，請參閱使用 [分析檔](traffic-analytics.md)。

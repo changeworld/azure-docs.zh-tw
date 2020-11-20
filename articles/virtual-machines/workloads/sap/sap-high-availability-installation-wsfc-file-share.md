@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7df3934862efa9798735d0c163f7fb1bac98423
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760884"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951038"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Azure 之 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用上安裝 SAP NetWeaver 高可用性
 
@@ -199,7 +200,7 @@ ms.locfileid: "87760884"
 
 本文說明如何在 Azure 上透過 Windows 容錯移轉叢集 (WSFC) 和向外延展檔案共用作為叢集 SAP ASCS/SCS 執行個體的選項，以安裝並設定高可用的 SAP 系統。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始安裝之前，請檢閱下列文章：
 
@@ -290,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱
 
-建立 SAP ASCS/SCS 叢集網路名稱 (例如，**pr1-ascs [10.0.6.7]**)，如[建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
+建立 SAP ASCS/SCS 叢集網路名稱 (例如，**pr1-ascs [10.0.6.7]**)，如 [建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>在叢集中安裝 ASCS/SCS 和 ERS 實例
@@ -299,7 +300,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一個叢集節點上安裝 SAP ASCS/SCS 實例。 若要安裝執行個體，在 SAP SWPM 安裝工具中，移至：
 
-**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或**JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  的**第一個叢集節點**。
+**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或 **JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  的 **第一個叢集節點**。
 
 ### <a name="add-a-probe-port"></a>新增探查連接埠
 
@@ -309,12 +310,12 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 若要安裝執行個體，在 SAP SWPM 安裝工具中，移至：
 
-**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或**JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  **其他叢集節點**。
+**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或 **JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  **其他叢集節點**。
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 執行個體設定檔
 
-更新 SAP ASCS/SCS 實例設定檔 \<SID> _ASCS/scs \<Nr> _中的參數 \<Host> 。
+更新 SAP ASCS/SCS 實例設定檔 \<SID> _ASCS/scs \<Nr>_ 中的參數 \<Host> 。
 
 
 | 參數名稱 | 參數值 |

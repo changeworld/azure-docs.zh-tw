@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d652f1eae62270fa8968d64a2bd15a1261dca673
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699367"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949185"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 入口網站在連線監視器中建立監視
 
@@ -102,7 +102,7 @@ ms.locfileid: "94699367"
 
 * **停用測試群組**：您可以選取此核取方塊，以針對測試群組指定的所有來源和目的地停用監視。 預設會清除此選取專案。
 * **名稱**：命名您的測試群組。
-* **來源**：如果已安裝代理程式，您可以將 Azure vm 和內部部署機器指定為來源。 若要瞭解如何為您的來源安裝代理程式，請參閱 [安裝監視代理](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)程式。
+* **來源**：如果已安裝代理程式，您可以將 Azure vm 和內部部署機器指定為來源。 若要瞭解如何為您的來源安裝代理程式，請參閱 [安裝監視代理](./connection-monitor-overview.md#install-monitoring-agents)程式。
    * 若要選擇 Azure 代理程式，請選取 [ **azure 端點** ] 索引標籤。在這裡，您只會看到系結至您在建立連線監視器時所指定之區域的 Vm。 根據預設，Vm 會分組為其所屬的訂用帳戶。 這些群組會折迭。 
    
        您可以從 **訂** 用帳戶層級向下切入至階層中的其他層級：
@@ -117,7 +117,7 @@ ms.locfileid: "94699367"
 
    * 若要選擇內部部署代理程式，請選取 [ **非 Azure 端點** ] 索引標籤。依預設，代理程式依區域分組為工作區。 這些工作區都已設定網路效能監控。 
    
-       如果您需要將網路效能監控新增至您的工作區，請從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)取得。 如需有關如何新增網路效能監控的詳細資訊，請參閱 [Azure 監視器中的監視解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solutions)。 
+       如果您需要將網路效能監控新增至您的工作區，請從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)取得。 如需有關如何新增網路效能監控的詳細資訊，請參閱 [Azure 監視器中的監視解決方案](../azure-monitor/insights/solutions.md)。 
    
        在 [ **建立連線監視器**] 下的 [ **基本** ] 索引標籤上，會選取預設區域。 如果您變更區域，您可以從新區域中的工作區選擇代理程式。 您可以選取一或多個代理程式或子網。 在 **子網** 視圖中，您可以選取特定 ip 進行監視。 如果您新增多個子網，將會建立名為 **OnPremises_Network_1** 的自訂內部部署網路。 您也可以將 [ **群組依據** ] 選取器變更為 [依代理程式分組]。
 
@@ -140,7 +140,7 @@ ms.locfileid: "94699367"
     
     * 若要選擇非 Azure 代理程式作為目的地，請選取 [ **非 azure 端點** ] 索引標籤。依預設，代理程式依區域分組為工作區。 所有這些工作區都已設定網路效能監控。 
     
-      如果您需要將網路效能監控新增至您的工作區，請從 Azure Marketplace 取得。 如需有關如何新增網路效能監控的詳細資訊，請參閱 [Azure 監視器中的監視解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solutions)。 
+      如果您需要將網路效能監控新增至您的工作區，請從 Azure Marketplace 取得。 如需有關如何新增網路效能監控的詳細資訊，請參閱 [Azure 監視器中的監視解決方案](../azure-monitor/insights/solutions.md)。 
 
       在 [ **建立連線監視器**] 下的 [ **基本**] 索引標籤上   ，會選取預設區域。 如果您變更區域，您可以從新區域中的工作區選擇代理程式。 您可以選取一或多個代理程式或子網。 在 **子網** 視圖中，您可以選取特定 ip 進行監視。 如果您新增多個子網，將會建立名為 **OnPremises_Network_1** 的自訂內部部署網路。  
 
@@ -182,7 +182,7 @@ ms.locfileid: "94699367"
 
 - **條件名稱**：在度量上建立警示 `Test Result(preview)` 。 當連線監視測試的結果失敗時，將會引發警示規則。 
 
-- **動作組名**：您可以直接輸入電子郵件，也可以透過動作群組建立警示。 如果您直接輸入電子郵件，則會建立名稱為 **NPM Email ActionGroup** 的動作群組。 電子郵件識別碼會新增至該動作群組。 如果您選擇使用動作群組，則必須選取先前建立的動作群組。 若要瞭解如何建立動作群組，請參閱 [Azure 入口網站中的建立動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 警示建立之後，您就可以 [管理您的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal)。 
+- **動作組名**：您可以直接輸入電子郵件，也可以透過動作群組建立警示。 如果您直接輸入電子郵件，則會建立名稱為 **NPM Email ActionGroup** 的動作群組。 電子郵件識別碼會新增至該動作群組。 如果您選擇使用動作群組，則必須選取先前建立的動作群組。 若要瞭解如何建立動作群組，請參閱 [Azure 入口網站中的建立動作群組](../azure-monitor/platform/action-groups.md)。 警示建立之後，您就可以 [管理您的警示](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal)。 
 
 - **警示規則名稱**：連接監視的名稱。
 
@@ -201,5 +201,5 @@ ms.locfileid: "94699367"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解 [如何分析監視資料和設定警示](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)。
-* 瞭解 [如何診斷網路中的問題](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)。
+* 瞭解 [如何分析監視資料和設定警示](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)。
+* 瞭解 [如何診斷網路中的問題](./connection-monitor-overview.md#diagnose-issues-in-your-network)。

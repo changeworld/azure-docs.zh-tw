@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6f2608dafb77aeba98f188ec04f78649656ef969
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b74de2bdf1f6239f1006c820579a336946939421
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089650"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949576"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>使用 Mailjet 進行自訂電子郵件驗證
 
 使用 Azure Active Directory B2C (Azure AD B2C) 中的自訂電子郵件，將自訂電子郵件傳送給註冊以使用您應用程式的使用者。 您可以使用 [DisplayControls](display-controls.md) (目前處於預覽狀態) 和協力廠商電子郵件提供者 Mailjet，使用您自己的電子郵件範本和 *寄件者：* 位址和主旨，以及支援當地語系化和自訂單次密碼 (OTP) 設定。
 
-自訂電子郵件驗證需要使用協力廠商電子郵件提供者，例如 [Mailjet](https://Mailjet.com)、 [SendGrid](custom-email.md)或 [SparkPost](https://sparkpost.com)、自訂 REST API 或任何 HTTP 型電子郵件提供者 (包括您自己的) 。 本文說明如何設定使用 Mailjet 的解決方案。
+自訂電子郵件驗證需要使用協力廠商電子郵件提供者，例如 [Mailjet](https://Mailjet.com)、 [SendGrid](./custom-email-sendgrid.md)或 [SparkPost](https://sparkpost.com)、自訂 REST API 或任何 HTTP 型電子郵件提供者 (包括您自己的) 。 本文說明如何設定使用 Mailjet 的解決方案。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -60,7 +60,7 @@ ms.locfileid: "92089650"
 建立 Mailjet 帳戶並將 Mailjet API 金鑰儲存在 Azure AD B2C 原則金鑰中時，請建立 Mailjet [動態交易式範本](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
 
 1. 在 Mailjet 網站上，開啟 [ [交易式範本](https://app.mailjet.com/templates/transactional) ] 頁面，然後選取 [ **建立新範本**]。
-1. 選取 [ **使用 HTML 撰寫程式**代碼]，然後 **從頭**選取 [程式碼]。
+1. 選取 [ **使用 HTML 撰寫程式** 代碼]，然後 **從頭** 選取 [程式碼]。
 1. 輸入唯一的範本名稱 `Verification email` ，例如，然後選取 [ **建立**]。
 1. 在 HTML 編輯器中，貼上下列 HTML 範本，或使用您自己的範本。 `{{var:otp:""}}`和 `{{var:email:""}}` 參數將會以單次密碼值和使用者電子郵件地址動態取代。
 
@@ -159,7 +159,7 @@ ms.locfileid: "92089650"
     ```
 
 1. 展開左上方的 [ **編輯主體** ]
-    1. 針對 [主旨 **]，輸入主體的**預設值。 當 API 未包含 subject 參數時，Mailjet 會使用此值。
+    1. 針對 [主旨 **]，輸入主體的** 預設值。 當 API 未包含 subject 參數時，Mailjet 會使用此值。
     1. 針對 [ **名稱**]，輸入您的公司名稱。
     1. 針對 **位址**，請選取您的電子郵件地址
     1. 選取 [儲存]。

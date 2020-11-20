@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cdd7f4957b22eb4c87d60e3d57b0cec675659963
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7ba0604c0fb1a51c5276f2a28fb0e39b878b7639
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131797"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949559"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將應用程式的使用者介面當地語系化
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 [36 種語言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。 
+Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 [36 種語言](./user-flow-language-customization.md#supported-languages)的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。 
 
 本文說明如何在使用者旅程圖的適用原則中，支援多個地區設定或語言。 當地語系化需要三個步驟：設定支援語言的明確清單、提供特定語言的字串與集合，以及編輯頁面的[內容定義](contentdefinitions.md)。 
 
@@ -265,4 +265,3 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_s
 
 - 深入了解 IEF 參考中的[當地語系化](localization.md)元素。
 - 請參閱 Azure AD B2C 中提供的[當地語系化字串識別碼](localization-string-ids.md)清單。
-

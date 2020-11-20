@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: fd01e7e6853d69889d0ffba3d8775a0fd92f7cd2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842527"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949372"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -206,8 +206,8 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
     <td class="tg-lboi"; width=55%>- API 應用程式應只可經由 HTTPS 存取<br>- 函式應用程式應只可經由 HTTPS 存取<br>- 應該只允許對 Azure Cache for Redis 的安全連線<br>- 應啟用儲存體帳戶的安全傳輸<br>- Web 應用程式應只可經由 HTTPS 存取<br>- 于 postgresql 伺服器應啟用私人端點<br>- 應為于 postgresql 資料庫伺服器啟用 [強制執行 SSL 連線]<br>- 應為 MySQL 資料庫伺服器啟用 [強制執行 SSL 連線]<br>- TLS 應更新為您 API 應用程式的最新版本<br>- TLS 應更新為您函數應用程式的最新版本<br>- TLS 應更新為您 web 應用程式的最新版本<br>- 您的 API 應用程式中應需要 FTPS<br>- 函數應用程式中應需要 FTPS<br>- 您的 web 應用程式中應該需要 FTPS</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">管理存取權與權限 (最高分數 4)</p></strong>安全性計畫的核心部分，是要確保您的使用者擁有執行其作業所需的存取權，但不能超過：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最低權限存取模型</a>。<br>使用<a href="/azure/role-based-access-control/overview">角色型存取控制 (RBAC)</a> 建立角色指派，藉此控制對資源的存取。 角色指派是由三個元素組成：<br>- <strong>安全性主體</strong>：使用者要求存取的物件<br>- <strong>角色定義</strong>：其許可權<br>- <strong>範圍</strong>：套用權限的一組資源</td>
-    <td class="tg-lboi"; width=55%>- 應從您的訂用帳戶中移除已淘汰的帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的已淘汰帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的外部帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備寫入權限的外部帳戶 (預覽)<br>- 應指派一個以上的擁有者給您的訂用帳戶<br>- Kubernetes Service 上應使用角色型存取控制 (RBAC) (預覽)<br>- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證<br>- 應使用服務主體來保護您的訂用帳戶，而不是管理憑證<br>- (預覽的容器應強制執行最低許可權 Linux 功能) <br>- 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽) <br>- 應避免 (預覽版的容器具有許可權擴大) <br>- 以根使用者的形式執行容器應避免 (預覽) <br>- 共用機密主機命名空間的容器應避免 (預覽) <br>- Pod HostPath 磁片區掛接的使用應限制為已知清單 (預覽) <br>- 應避免 (預覽的特殊許可權容器) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- Web apps 應要求所有連入要求的 SSL 憑證<br>- 您的 API 應用程式應使用受控識別<br>- 您的函數應用程式應使用受控識別<br>- 您的 web 應用程式應使用受控識別</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">管理存取權與權限 (最高分數 4)</p></strong>安全性計畫的核心部分，是要確保您的使用者擁有執行其作業所需的存取權，但不能超過：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最低權限存取模型</a>。<br>使用 <a href="/azure/role-based-access-control/overview">azure 角色型存取控制 (AZURE RBAC) </a>來建立角色指派，以控制資源的存取權。 角色指派是由三個元素組成：<br>- <strong>安全性主體</strong>：使用者要求存取的物件<br>- <strong>角色定義</strong>：其許可權<br>- <strong>範圍</strong>：套用權限的一組資源</td>
+    <td class="tg-lboi"; width=55%>- 應從您的訂用帳戶中移除已淘汰的帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的已淘汰帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的外部帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備寫入權限的外部帳戶 (預覽)<br>- 應指派一個以上的擁有者給您的訂用帳戶<br>- Azure 角色型存取控制 (Azure RBAC) 應該用於 Kubernetes Services (Preview) <br>- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證<br>- 應使用服務主體來保護您的訂用帳戶，而不是管理憑證<br>- (預覽的容器應強制執行最低許可權 Linux 功能) <br>- 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽) <br>- 應避免 (預覽版的容器具有許可權擴大) <br>- 以根使用者的形式執行容器應避免 (預覽) <br>- 共用機密主機命名空間的容器應避免 (預覽) <br>- Pod HostPath 磁片區掛接的使用應限制為已知清單 (預覽) <br>- 應避免 (預覽的特殊許可權容器) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- Web apps 應要求所有連入要求的 SSL 憑證<br>- 您的 API 應用程式應使用受控識別<br>- 您的函數應用程式應使用受控識別<br>- 您的 web 應用程式應使用受控識別</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">補救安全性設定 (最高分數 4)</p></strong>設定錯誤的 IT 資產被攻擊的風險較高。 在期限壓力下部署資產時，常會忘記基本的強化動作。 安全性設定錯誤可能發生在基礎結構的任何層級：從作業系統、網路設備到雲端資源。<br>Azure 資訊安全中心會持續比較您的資源設定與業界標準、法規和效能評定的需求。 當您設定好組織重視的相關「合規性套件」(標準和基準) 後，任何差距都會引發安全性建議，包含 CCEID 和潛在安全性影響的說明。<br>常用的套件是 <a href="/azure/security/benchmarks/introduction">Azure 安全性基準測試</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基礎基準測試版本1.1.0</a>。</td>

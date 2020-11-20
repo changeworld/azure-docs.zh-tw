@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647608"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949406"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -35,13 +35,13 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供建立、讀取、更�
 
 ## <a name="user-management-microsoft-graph-operations"></a>使用者管理 Microsoft Graph 作業
 
-[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/user)中提供下列使用者管理作業：
+[MICROSOFT GRAPH API](/graph/api/resources/user)中提供下列使用者管理作業：
 
-- [取得使用者清單](https://docs.microsoft.com/graph/api/user-list)
-- [建立使用者](https://docs.microsoft.com/graph/api/user-post-users)
-- [取得使用者](https://docs.microsoft.com/graph/api/user-get)
-- [更新使用者](https://docs.microsoft.com/graph/api/user-update)
-- [刪除使用者](https://docs.microsoft.com/graph/api/user-delete)
+- [取得使用者清單](/graph/api/user-list)
+- [建立使用者](/graph/api/user-post-users)
+- [取得使用者](/graph/api/user-get)
+- [更新使用者](/graph/api/user-update)
+- [刪除使用者](/graph/api/user-delete)
 
 ## <a name="user-properties"></a>使用者屬性
 
@@ -60,7 +60,7 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供建立、讀取、更�
 
 在 Microsoft Graph API 中，本機和同盟身分識別都會儲存在使用者 `identities` 屬性中，其類型為 [objectIdentity][graph-objectIdentity]。 `identities`集合代表一組用來登入使用者帳戶的身分識別。 此集合可讓使用者使用其任何相關聯的身分識別來登入使用者帳戶。
 
-| 屬性   | 類型 |說明|
+| 屬性   | 類型 |描述|
 |:---------------|:--------|:----------|
 |signInType|字串| 指定目錄中的使用者登入類型。 針對本機帳戶：  `emailAddress` 、 `emailAddress1` 、 `emailAddress2` 、 `emailAddress3` 、  `userName` 或您喜歡的任何其他類型。 社交帳戶必須設定為  `federated` 。|
 |簽發者|字串|指定身分識別的簽發者。 若為本機帳戶 (**signInType** 未) signInType `federated` ，則此屬性為本機 B2C 租使用者預設功能變數名稱，例如 `contoso.onmicrosoft.com` 。 針對 **signInType**) 的社交身分識別 ( `federated` ，此值是簽發者的名稱，例如 `facebook.com`|
@@ -125,7 +125,7 @@ Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>程式碼範例：如何以程式設計方式管理使用者帳戶
 
-這個程式碼範例是一個 .NET Core 主控台應用程式，它會使用 [MICROSOFT GRAPH SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) 來與 Microsoft Graph API 互動。 其程式碼示範如何呼叫 API，以程式設計方式管理 Azure AD B2C 租使用者中的使用者。
+這個程式碼範例是一個 .NET Core 主控台應用程式，它會使用 [MICROSOFT GRAPH SDK](/graph/sdks/sdks-overview) 來與 Microsoft Graph API 互動。 其程式碼示範如何呼叫 API，以程式設計方式管理 Azure AD B2C 租使用者中的使用者。
 您可以 [下載範例](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) 封存 ( * .zip) 、流覽 GitHub 上 [的存放庫](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) ，或複製存放庫：
 
 ```cmd
@@ -152,7 +152,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 ### <a name="code-discussion"></a>程式碼討論
 
-範例程式碼會使用 [MICROSOFT GRAPH SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)，其設計目的是要簡化可存取 Microsoft Graph 的高品質、有效率且可復原的應用程式。
+範例程式碼會使用 [MICROSOFT GRAPH SDK](/graph/sdks/sdks-overview)，其設計目的是要簡化可存取 Microsoft Graph 的高品質、有效率且可復原的應用程式。
 
 Microsoft Graph API 的任何要求都需要存取權杖以進行驗證。 解決方案會使用 [Microsoft](https://www.nuget.org/packages/Microsoft.Graph.Auth/) 驗證程式庫 (MSAL) 提供的驗證案例型包裝函式，以搭配 Microsoft Graph SDK 使用。
 
@@ -203,7 +203,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[使用 Microsoft Graph Sdk 進行 API 呼叫的](https://docs.microsoft.com/graph/sdks/create-requests) 資訊包括如何從 Microsoft Graph 讀取和寫入資訊、使用 `$select` 控制傳回的屬性、提供自訂查詢參數，以及使用 `$filter` 和 `$orderBy` 查詢參數。
+[使用 Microsoft Graph Sdk 進行 API 呼叫的](/graph/sdks/create-requests) 資訊包括如何從 Microsoft Graph 讀取和寫入資訊、使用 `$select` 控制傳回的屬性、提供自訂查詢參數，以及使用 `$filter` 和 `$orderBy` 查詢參數。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -211,5 +211,5 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 
 <!-- LINK -->
 
-[graph-objectIdentity]: https://docs.microsoft.com/graph/api/resources/objectidentity
+[graph-objectIdentity]: /graph/api/resources/objectidentity
 [graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

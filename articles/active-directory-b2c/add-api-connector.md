@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 47885e64b40db07ca3b4a7380389967a36abbd9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504106"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949831"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>將 API 連接器新增至註冊使用者流程 (預覽版) 
 
@@ -28,7 +28,7 @@ ms.locfileid: "92504106"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 [ **Azure 服務**] 下，選取 [ **Azure AD B2C**]。
-4. 選取 [ **api 連接器 (預覽]) **，然後選取 [ **新增 api 連接器**]。
+4. 選取 [ **api 連接器 (預覽])**，然後選取 [ **新增 api 連接器**]。
 
    ![新增 API 連接器](./media/add-api-connector/api-connector-new.png)
 
@@ -36,13 +36,13 @@ ms.locfileid: "92504106"
 6. 提供 API 呼叫的 **端點 URL** 。
 7. 提供 API 的驗證資訊。
 
-   - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的「虛擬」使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
+   - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的「虛擬」使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint <b>？ code = 0123456789</b>) 。
 
    ![設定新的 API 連接器](./media/add-api-connector/api-connector-config.png)
 8. 選取 [儲存]。
 
 ## <a name="the-request-sent-to-your-api"></a>傳送給 API 的要求
-API 連接器具體化為 **HTTP POST** 要求，會將使用者屬性 ( ' 宣告 ' ) 作為 JSON 主體中的機碼值組。 屬性的序列化方式類似于 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) 使用者屬性。 
+API 連接器具體化為 **HTTP POST** 要求，會將使用者屬性 ( ' 宣告 ' ) 作為 JSON 主體中的機碼值組。 屬性的序列化方式類似于 [Microsoft Graph](/graph/api/resources/user#properties) 使用者屬性。 
 
 **範例要求**
 ```http
@@ -73,17 +73,17 @@ Content-type: application/json
 }
 ```
 
-只有**Azure AD B2C**使用者屬性體驗中列出的使用者屬性和自訂屬性才  >  **User attributes**可在要求中傳送。
+只有 **Azure AD B2C** 使用者屬性體驗中列出的使用者屬性和自訂屬性才  >  **User attributes** 可在要求中傳送。
 
 自訂屬性存在於目錄中 **extension_ \<extensions-app-id> _CustomAttribute**  格式。 您的 API 預期會以相同的序列化格式接收宣告。 如需自訂屬性的詳細資訊，請參閱 [在 Azure Active Directory B2C 中定義自訂屬性](user-flow-custom-attributes.md)。
 
-此外，預設會在所有要求中傳送 ** ( ' ui_locales ' ) 宣告的 UI 地區 ** 設定。 它會提供使用者的地區設定 (s) 如其裝置上所設定，可供 API 用來傳回國際化回應。
+此外，預設會在所有要求中傳送 **( ' ui_locales ' ) 宣告的 UI 地區** 設定。 它會提供使用者的地區設定 (s) 如其裝置上所設定，可供 API 用來傳回國際化回應。
 
 > [!IMPORTANT]
 > 如果宣告在呼叫 API 端點時沒有值，則不會將宣告傳送至 API。 您的 API 應設計成明確檢查並處理要求中不會有宣告的情況。
 
 > [!TIP] 
-> 身分識別 ( 「身分識別」 [**) **](https://docs.microsoft.com/graph/api/resources/objectidentity)和**電子郵件地址 ( 「電子郵件」 ) **宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 
+> 身分識別 ( 「身分識別」 [**)**](/graph/api/resources/objectidentity)和 **電子郵件地址 ( 「電子郵件」 )** 宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在使用者流程中啟用 API 連接器
 
@@ -103,7 +103,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 
-在使用者向身分識別 (提供者（例如 Google、Facebook、& Azure AD) ）進行驗證之後，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟位於 **_屬性集合頁面_*_ 上方，這是向使用者顯示的表單，以收集使用者屬性。 如果使用者正在使用本機帳戶註冊，就不會叫用這個步驟。
+在使用者向身分識別 (提供者（例如 Google、Facebook、& Azure AD) ）進行驗證之後，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟位於 **_屬性集合頁面_* _ 上方，這是向使用者顯示的表單，以收集使用者屬性。 如果使用者正在使用本機帳戶註冊，就不會叫用這個步驟。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>範例要求會在此步驟傳送至 API
 ```http
@@ -242,7 +242,7 @@ Content-type: application/json
 | version                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | 動作                                             | String            | 是      | 值必須為 `Continue`。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | 否       | 傳回的值會覆寫從使用者收集的值。 如果選取為 _ * 應用程式宣告 * *，也可以在權杖中傳回。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 宣告不需要包含 `_<extensions-app-id>_` 。 傳回的值會覆寫從使用者收集的值。 如果選取做為 **應用程式**宣告，也可以在權杖中傳回。  |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 宣告不需要包含 `_<extensions-app-id>_` 。 傳回的值會覆寫從使用者收集的值。 如果選取做為 **應用程式** 宣告，也可以在權杖中傳回。  |
 
 ### <a name="example-of-a-blocking-response"></a>封鎖回應的範例
 

@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531384"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950716"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消佈建先前自動佈建的裝置 
 
@@ -25,7 +25,7 @@ ms.locfileid: "90531384"
    - 若要了解如何取消註冊裝置，請參閱[如何從 Azure IoT 中樞裝置佈建服務中取消註冊裝置](how-to-revoke-device-access-portal.md)。
    - 若要了解如何以程式設計方式使用其中一種佈建服務 SDK 來取消註冊裝置，請參閱[使用服務 SDK 管理裝置註冊](how-to-manage-enrollments-sdks.md)。
 
-2. 從您的 IoT 中樞取消登錄裝置，以避免未來產生通訊和資料轉送。 同樣地，您可以針對已佈建裝置的 IoT 中樞，暫時停用或永久刪除其身分識別登錄中的裝置項目。 請參閱[停用裝置](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices)以深入了解停用作業。 請在 [Azure 入口網站](https://portal.azure.com)中參閱 IoT 中樞資源的「裝置管理/IoT 裝置」。
+2. 從您的 IoT 中樞取消登錄裝置，以避免未來產生通訊和資料轉送。 同樣地，您可以針對已佈建裝置的 IoT 中樞，暫時停用或永久刪除其身分識別登錄中的裝置項目。 請參閱[停用裝置](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices)以深入了解停用作業。 請在 [Azure 入口網站](https://portal.azure.com)中參閱 IoT 中樞資源的「裝置管理/IoT 裝置」。
 
 取消佈建裝置的確切步驟取決於其證明機制，以及其適用的註冊項目與您的佈建服務。 下列各節將根據註冊和證明類型提供程序概觀。
 
@@ -47,9 +47,9 @@ ms.locfileid: "90531384"
 
 若要檢視已透過註冊群組佈建的裝置清單，您可以檢視註冊群組的詳細資料。 如此便能輕鬆了解每個裝置佈建到哪個 IoT 中樞。 若要檢視裝置清單： 
 
-1. 登入 Azure 入口網站，然後在左側功能表上按一下 [所有資源]****。
+1. 登入 Azure 入口網站，然後在左側功能表上按一下 [所有資源]。
 2. 按一下資源清單中的佈建服務。
-3. 在佈建服務中，按一下 [管理註冊]****，然後選取 [註冊群組]**** 索引標籤。
+3. 在佈建服務中，按一下 [管理註冊]，然後選取 [註冊群組] 索引標籤。
 4. 按一下註冊群組將之開啟。
 
    ![在入口網站中檢視註冊群組項目](./media/how-to-unprovision-devices/view-enrollment-group.png)
@@ -63,4 +63,4 @@ ms.locfileid: "90531384"
 
 - 若要從註冊群組取消佈建單一裝置：
   1. 為其分葉 (裝置) 憑證建立已停用的個別註冊。 如此會撤銷該裝置的佈建服務存取權限，但是仍允許鏈結之中具有註冊群組簽署憑證的其他裝置進行存取。 請勿刪除裝置已停用的個別註冊。 否則會使得裝置透過註冊群組重新註冊。 
-  2. 使用該註冊群組的已佈建裝置清單來尋找佈建裝置的 IoT 中樞，再從該中樞的身分識別登錄停用或刪除裝置。 
+  2. 使用該註冊群組的已佈建裝置清單來尋找佈建裝置的 IoT 中樞，再從該中樞的身分識別登錄停用或刪除裝置。

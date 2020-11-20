@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: damendo
-ms.openlocfilehash: a603f55bd5bff7b2ed68623e9c712faaf8ac766f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 54b87da73d4427234e65e406d183525d55c6c00d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876908"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948539"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>快速入門：使用 Azure 原則部署及管理 NSG 流量記錄 
 
@@ -25,8 +25,8 @@ ms.locfileid: "91876908"
 Azure 原則有助於強制執行組織標準及大規模評估合規性。 Azure 原則的常見使用案例包括針對資源一致性、法規合規性、安全性、成本和管理來進行治理。 在本文中，我們將使用兩個可用於 NSG 流量記錄的內建原則來管理您的流程記錄設定。 第一個原則會將任何未啟用流量記錄的 Nsg 標示為旗標。 第二個原則會自動部署 Nsg 的流程記錄，而不會啟用流量記錄。 
 
 如果您是第一次建立 Azure 原則，您可以閱讀： 
-- [Azure 原則總覽](https://docs.microsoft.com/azure/governance/policy/overview) 
-- [建立原則的教學](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal#create-a-policy-assignment)課程。
+- [Azure 原則總覽](../governance/policy/overview.md) 
+- [建立原則的教學](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)課程。
 
 
 ## <a name="locate-the-policies"></a>找出原則
@@ -134,5 +134,5 @@ Azure 原則有助於強制執行組織標準及大規模評估合規性。 Azur
 
 ## <a name="next-steps"></a>後續步驟 
 
--   您可以使用 ARM 範本來部署流程記錄和流量分析，以深入瞭解此 [教學](https://docs.microsoft.com/azure/network-watcher/quickstart-configure-network-security-group-flow-logs-from-arm-template) 課程。
--   深入瞭解[網路](https://docs.microsoft.com/azure/network-watcher/)監看員
+-   您可以使用 ARM 範本來部署流程記錄和流量分析，以深入瞭解此 [教學](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md) 課程。
+-   深入瞭解[網路](./index.yml)監看員

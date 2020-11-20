@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514542"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950749"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安裝和操作您的 StorSimple 裝置
 ![警告圖示](./media/storsimple-safety/IC740879.png)
@@ -114,7 +114,7 @@ ms.locfileid: "85514542"
 
 減少傷害、電擊或死亡的可能性：
 
-* 請勿從 PCM 移除封蓋。 沒有內部觸電的危險。 若要傳回 PCM 並取得替代項目，請 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)。
+* 請勿從 PCM 移除封蓋。 沒有內部觸電的危險。 若要傳回 PCM 並取得替代項目，請 [連絡 Microsoft 支援服務](./storsimple-8000-contact-microsoft-support.md)。
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
@@ -152,7 +152,7 @@ ms.locfileid: "85514542"
 
 在您檢閱這些安全性注意事項之後，接下來的步驟是為裝置解除封裝、安裝機架和纜線。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 針對 8100 裝置，請至 [安裝您的 StorSimple 8100 裝置](storsimple-8100-hardware-installation.md)。
 * 針對 8600 裝置，請至 [安裝您的 StorSimple 8600 裝置](storsimple-8600-hardware-installation.md)。

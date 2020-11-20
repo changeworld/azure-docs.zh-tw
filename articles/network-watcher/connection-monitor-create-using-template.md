@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c80f2aaf26c0f0e89014c997151599c8bddbe903
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699095"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948811"
 ---
 # <a name="create-a-connection-monitor-using-the-armclient"></a>使用 ARMClient 建立連線監視
 
@@ -368,7 +368,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 * 測試群組
     * 命名：命名您的測試群組。
     * testConfigurations-根據連接到目的地端點的來源端點來測試設定
-    * 來源-選擇上方所建立的端點。 以 azure 為基礎的來源端點需要安裝 Azure 網路監看員延伸模組，且 nonAzure 型來源端點需要 haveAzure 已安裝的 Log Analytics 代理程式。 若要為您的來源安裝代理程式，請參閱 [安裝監視代理](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)程式。
+    * 來源-選擇上方所建立的端點。 以 azure 為基礎的來源端點需要安裝 Azure 網路監看員延伸模組，且 nonAzure 型來源端點需要 haveAzure 已安裝的 Log Analytics 代理程式。 若要為您的來源安裝代理程式，請參閱 [安裝監視代理](./connection-monitor-overview.md#install-monitoring-agents)程式。
     * 目的地-選擇上方所建立的端點。 您可以藉由將其指定為目的地，來監視 Azure Vm 或任何端點 (公用 IP、URL 或 FQDN) 的連線能力。 在單一測試群組中，您可以新增 Azure Vm、Office 365 Url、Dynamics 365 Url 和自訂端點。
     * 停用-使用此欄位可針對測試群組指定的所有來源和目的地停用監視。
 
@@ -400,5 +400,5 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解 [如何分析監視資料和設定警示](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)
-* 瞭解 [如何診斷網路中的問題](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)
+* 瞭解 [如何分析監視資料和設定警示](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)
+* 瞭解 [如何診斷網路中的問題](./connection-monitor-overview.md#diagnose-issues-in-your-network)

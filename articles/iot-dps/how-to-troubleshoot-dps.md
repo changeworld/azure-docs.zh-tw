@@ -8,16 +8,16 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646467"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950681"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置布建服務進行疑難排解
 
-IoT 裝置的連線能力問題可能很難進行疑難排解，因為有許多可能的失敗點，例如證明失敗、註冊失敗等等。本文提供有關如何透過 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)偵測和疑難排解裝置連線問題的指引。
+IoT 裝置的連線能力問題可能很難進行疑難排解，因為有許多可能的失敗點，例如證明失敗、註冊失敗等等。本文提供有關如何透過 [Azure 監視器](../azure-monitor/overview.md)偵測和疑難排解裝置連線問題的指引。
 
 ## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>使用 Azure 監視器來查看計量和設定警示
 
@@ -81,5 +81,5 @@ IoT 裝置的連線能力問題可能很難進行疑難排解，因為有許多�
 | 401 | 無法驗證授權權杖;例如，它已過期或不適用於要求的 URI。 此錯誤碼也會傳回給裝置，作為 TPM 證明流程的一部分。 | 401 未經授權|
 | 404 | 裝置布建服務實例或資源 (例如註冊) 不存在。 |404 找不到 |
 | 412 | 要求中的 ETag 不符合現有資源的 ETag （依 >RFC7232）。 | 412先決條件失敗 |
-| 429 | 服務正在節流作業。 如需特定服務限制，請參閱 [IoT 中樞裝置布建服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)。 | 429太多要求 |
+| 429 | 服務正在節流作業。 如需特定服務限制，請參閱 [IoT 中樞裝置布建服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)。 | 429太多要求 |
 | 500 | 發生內部錯誤。 | 500 內部伺服器錯誤|

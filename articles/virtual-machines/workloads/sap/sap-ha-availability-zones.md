@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ad9820cc3227c788582a9c2a452abe1886a4a2d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978232"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950307"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性區域的 SAP 工作負載設定
 [Azure 可用性區域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性區域可改善 Azure 上的 SAP 工作負載整體的可用性。 已功能已在部分 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)推出。 未來將可在更多區域提供此功能。
@@ -124,7 +125,7 @@ SAP 應用層會部署在單一 Azure [可用性設定組](../../manage-availabi
 
 
 ## <a name="activepassive-deployment"></a>主動/被動部署
-如果一個區域內的網路延遲與跨區域網路流量的延遲之間出現不可接受的差異，您可以部署從 SAP 應用程式層的觀點來看具有主動/被動特性的架構。 您可以定義*作用中*區域，在此區域中部署完整應用程式層，並且嘗試執行作用中 DBMS 和 SAP 中央服務執行個體。 使用此類設定時，您必須依據作業是否在作用中 DBMS 執行個體所在的區域中執行，確定商務程序和批次作業不會有太大的執行時間差異。
+如果一個區域內的網路延遲與跨區域網路流量的延遲之間出現不可接受的差異，您可以部署從 SAP 應用程式層的觀點來看具有主動/被動特性的架構。 您可以定義 *作用中* 區域，在此區域中部署完整應用程式層，並且嘗試執行作用中 DBMS 和 SAP 中央服務執行個體。 使用此類設定時，您必須依據作業是否在作用中 DBMS 執行個體所在的區域中執行，確定商務程序和批次作業不會有太大的執行時間差異。
 
 此架構的基本配置如下所示：
 

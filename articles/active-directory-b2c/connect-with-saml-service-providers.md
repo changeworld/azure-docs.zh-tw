@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647659"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949644"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -73,7 +73,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 ### <a name="11-prepare-a-self-signed-certificate"></a>1.1 準備自我簽署憑證
 
-如果您還沒有憑證，可以在本教學課程中使用自我簽署憑證。 在 Windows 上，您可以使用 PowerShell 的 [SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) Cmdlet 來產生憑證。
+如果您還沒有憑證，可以在本教學課程中使用自我簽署憑證。 在 Windows 上，您可以使用 PowerShell 的 [SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Cmdlet 來產生憑證。
 
 1. 執行此 PowerShell 命令來產生自我簽署憑證。 針對您的應用程式和 Azure AD B2C 租用戶名稱，適當地修改 `-Subject` 引數。 您也可以調整 `-NotAfter` 日期，為憑證指定不同的到期日。
 
@@ -340,7 +340,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 通常會需要下列部分或全部的項目：
 
 * **中繼資料**：`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **簽發者**： SAML 要求 `issuer` 值必須符合 `identifierUris` 應用程式註冊資訊清單的元素中所設定的其中一個 uri。 如果專案 `issuer` 中沒有 SAML 要求名稱 `identifierUris` ，請 [將它新增至應用程式註冊資訊清單](#identifieruris)。 例如 `https://contoso.onmicrosoft.com/app-name`。 
+* **簽發者**： SAML 要求 `issuer` 值必須符合 `identifierUris` 應用程式註冊資訊清單的元素中所設定的其中一個 uri。 如果專案 `issuer` 中沒有 SAML 要求名稱 `identifierUris` ，請 [將它新增至應用程式註冊資訊清單](#identifieruris)。 例如： `https://contoso.onmicrosoft.com/app-name` 。 
 * **登入 Url/saml 端點/Saml url**：檢查 XML 元素 Azure AD B2C SAML 原則中繼資料檔案中的值 `<SingleSignOnService>`
 * **憑證**：這是 B2C_1A_SamlIdpCert，但沒有私密金鑰。 若要取得憑證的公開金鑰：
 
@@ -443,7 +443,7 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic
 
 SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 它包含使用者的相關資訊、權杖所適用的服務提供者、簽章和有效時間。 下表列出 Azure AD B2C 所簽發的 SAML 權杖中，您可以預期的宣告和屬性。
 
-|項目  |屬性  |備註  |
+|項目  |屬性  |注意  |
 |---------|---------|---------|
 |`<Response>`| `ID` | 自動產生之回應的唯一識別碼。 | 
 |`<Response>`| `InResponseTo` | 此訊息所回應的 SAML 要求識別碼。 | 

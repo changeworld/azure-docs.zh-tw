@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b204aa508370c62aaf33688aeb7ec63d3f8f1b0e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855222"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950613"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性
 
@@ -32,7 +33,7 @@ ms.locfileid: "88855222"
 
 如果您有 SAP 部署，可以使用內部負載平衡器，建立 SAP Central Services (ASCS/SCS) 執行個體的 Windows 叢集組態。
 
-本文將著重於如何將單一 ASCS/SCS 安裝移至 SAP 多 SID 組態，方法是使用**檔案共用**，將其他 SAP ASCS/SCS 叢集執行個體安裝至現有 Windows Server 容錯移轉叢集 (WSFC) 叢集。 完成此程序之後，您將已設定 SAP 多重 SID 叢集。
+本文將著重於如何將單一 ASCS/SCS 安裝移至 SAP 多 SID 組態，方法是使用 **檔案共用**，將其他 SAP ASCS/SCS 叢集執行個體安裝至現有 Windows Server 容錯移轉叢集 (WSFC) 叢集。 完成此程序之後，您將已設定 SAP 多重 SID 叢集。
 
 > [!NOTE]
 >
@@ -49,7 +50,7 @@ ms.locfileid: "88855222"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您已經使用**檔案共用**來設定要用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如下圖所示。
+您已經使用 **檔案共用** 來設定要用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如下圖所示。
 
 ![圖 1：在兩個叢集中部署 SAP ASCS/SCS 執行個體和 SOFS 部署][sap-ha-guide-figure-8007]
 
@@ -71,13 +72,13 @@ _**圖1：** 在兩個叢集中部署 SAP ASCS/SCS 實例和 SOFS_
 
 _**圖2：** 兩個叢集中的 SAP 多重 SID 設定_
 
-其他** \<SID2> SAP**系統的安裝與安裝一個 \<SID> 系統相同。 ASCS/SCS 叢集以及檔案共用 SOFS 叢集上需要另兩個準備步驟。
+其他 **\<SID2> SAP** 系統的安裝與安裝一個 \<SID> 系統相同。 ASCS/SCS 叢集以及檔案共用 SOFS 叢集上需要另兩個準備步驟。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>準備 SAP 多重 SID 案例的基礎結構
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>準備網域控制站上的基礎結構
 
-建立網域群組** \<Domain> \ SAP_ \<SID2> _GlobalAdmin**，例如 with \<SID2> = PR2。 網域組名是 \<Domain> \ SAP_PR2_GlobalAdmin。
+建立網域群組 **\<Domain> \ SAP_ \<SID2> _GlobalAdmin**，例如 with \<SID2> = PR2。 網域組名是 \<Domain> \ SAP_PR2_GlobalAdmin。
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>準備 ASCS/SCS 叢集上的基礎結構
 
@@ -98,7 +99,7 @@ _**圖2：** 兩個叢集中的 SAP 多重 SID 設定_
 _**圖 3：** 多重 SID SOFS 與 SAP 全域主機名稱相同_
 
 > [!IMPORTANT]
->針對第二**個 \<SID2> SAP**系統，會使用相同的 Volume1 和相同的 **\<SAPGlobalHost>** 網路名稱。
+>針對第二 **個 \<SID2> SAP** 系統，會使用相同的 Volume1 和相同的 **\<SAPGlobalHost>** 網路名稱。
 >由於您已將 **SAPMNT** 設定為各種 SAP 系統的共用名稱，因此若要重複使用 **\<SAPGlobalHost>** 網路名稱，您必須使用相同的 **Volume1**。
 >
 >全域主機的檔案路徑 \<SID2> 是 C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.
@@ -226,7 +227,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 若要在 Volume2 上使用 *\<SAPGlobalHost2>* 第二個 SAP 的主機名稱建立 SAPMNT 檔案共用 \<SID2> ，請在容錯移轉叢集管理員中啟動 [ **新增檔案共用** ]。
 
-在 **saoglobal2** SOFS 叢集群組上按一下滑鼠右鍵，然後選取 [新增檔案共用]****。
+在 **saoglobal2** SOFS 叢集群組上按一下滑鼠右鍵，然後選取 [新增檔案共用]。
 
 ![圖 6：啟動 [新增檔案共用] 精靈][sap-ha-guide-figure-8017]
 
@@ -258,8 +259,8 @@ _**圖10：** 停用所有設定_
 
 <br>
 
-請針對下列項目將 [ 完全控制]** 權限指派給檔案和 sapmnt 共用：
-* 網域使用者群組**SAP_ \<SID> _GlobalAdmin**
+請針對下列項目將 [ 完全控制] 權限指派給檔案和 sapmnt 共用：
+* 網域使用者群組 **SAP_ \<SID> _GlobalAdmin**
 * ASCS/SCS 叢集節點 **ascs-1$** 和 **ascs-2$** 的電腦物件
 
 ![圖 11：將完全控制權限指派給使用者群組和電腦帳戶][sap-ha-guide-figure-8022]
@@ -270,7 +271,7 @@ _**圖 11：** 將「完全控制」指派給使用者群組和電腦帳戶_
 
 ![圖 12：選取 [建立]][sap-ha-guide-figure-8023]
 
-_**圖12：** 選取 [建立]_
+_**圖 12：** 選取 [建立]_
 
 <br>
 
@@ -289,7 +290,7 @@ _**圖 13：** 已建立繫結至 sapglobal2 主機和 Volume2 的第二個 sapm
 ### <a name="install-dbms-and-sap-application-servers"></a>安裝 DBMS 和 SAP 應用程式伺服器
 安裝的 DBMS 和 SAP 應用程式伺服器，如先前所述。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [在沒有共用磁碟的容錯移轉叢集上安裝 ASCS/SCS 執行個體][sap-official-ha-file-share-document]：HA 檔案共用的官方 SAP 指導方針
 

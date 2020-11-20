@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089565"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949474"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>逐步解說：將 REST API 宣告交換新增至 Azure Active Directory B2C 中的自訂原則
 
@@ -53,7 +53,7 @@ Azure Active Directory B2C (Azure AD B2C) 可讓身分識別開發人員於使�
 }
 ```
 
-REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) \(部分機器翻譯\) 範例。 您可以在 [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) \(英文\) 中存取完整的 Azure 函式程式碼。
+REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Functions](../azure-functions/functions-reference.md) \(部分機器翻譯\) 範例。 您可以在 [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) \(英文\) 中存取完整的 Azure 函式程式碼。
 
 ## <a name="define-claims"></a>定義宣告
 

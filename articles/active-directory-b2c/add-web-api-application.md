@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5473730484240f2c813c9ae279e1516ed93a45c5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0eeff0c8c338b09fbe375587db2b955a143138c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214952"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949814"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶
 
  在您的租使用者中註冊 web API 資源，讓他們可以接受並回應出示存取權杖的用戶端應用程式要求。 本文說明如何在 Azure Active Directory B2C (Azure AD B2C) 中註冊 web API。
 
-若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -48,8 +48,8 @@ ms.locfileid: "92214952"
 4. 選取 [應用程式 (舊版)]，然後選取 [新增]。
 5. 輸入應用程式的名稱。 例如，*webapi1*。
 6. 針對 [包含 Web 應用程式/Web API] 和 [允許隱含流程]，選取 [是]。
-7. 針對**回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 在生產應用程式中，您可以將回復 URL 設定為值，例如 `https://localhost:44332` 。 基於測試目的，請將 [回復 URL] 設定為 `https://jwt.ms` 。
-8. 針對**應用程式識別碼 URI**，請輸入您的 Web API 所使用的識別碼。 系統會為您產生包含網域的完整識別碼 URI。 例如： `https://contosotenant.onmicrosoft.com/api` 。
+7. 針對 **回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 在生產應用程式中，您可以將回復 URL 設定為值，例如 `https://localhost:44332` 。 基於測試目的，請將 [回復 URL] 設定為 `https://jwt.ms` 。
+8. 針對 **應用程式識別碼 URI**，請輸入您的 Web API 所使用的識別碼。 系統會為您產生包含網域的完整識別碼 URI。 例如： `https://contosotenant.onmicrosoft.com/api` 。
 9. 按一下 [建立]。
 10. 在 [屬性] 頁面上，記錄您會在設定 Web 應用程式時使用的應用程式識別碼。
 

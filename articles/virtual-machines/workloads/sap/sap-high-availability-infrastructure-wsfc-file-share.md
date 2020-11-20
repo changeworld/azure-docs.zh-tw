@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855375"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951191"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>使用 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用，為 SAP 高可用性準備 Azure 基礎結構
 
@@ -259,9 +260,9 @@ ms.locfileid: "88855375"
 * 使用 Windows Server 2016 時，建議您設定 [Azure 雲端見證][deploy-cloud-witness]。
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手動部署向外延展檔案伺服器叢集 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手動部署向外延展檔案伺服器叢集 
 
-您可藉由執行下列程式碼，以手動方式部署 Microsoft 向外延展檔案伺服器叢集，如 [Azure 中的儲存空間直接存取][ms-blog-s2d-in-azure]部落格所述：  
+您可藉由執行下列程式碼，以手動方式部署 Microsoft 向外延展檔案伺服器叢集，如 [Azure 中的儲存空間直接存取][ms-blog-s2d-in-azure]部落格所述：  
 
 
 ```powershell
@@ -315,10 +316,10 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 _**圖 1**：使用受控磁片 Scale-Out 檔案伺服器 Resource Manager 範本的 UI 畫面_
 
 在此範本中，執行下列作業︰
-1. 在 [VM 計數]**** 方塊中，輸入最小計數 **2**。
-2. 在 [VM 磁碟計數]**** 方塊中，輸入最小磁碟計數 **3** (2 個磁碟 + 1 個備用磁碟 = 3 個磁碟)。
-3. 在 [Sofs 名稱]**** 方塊中，輸入 SAP 全域主機網路名稱 **sapglobalhost**。
-4. 在 [共用名稱]**** 方塊中，輸入檔案共用名稱 **sapmnt**。
+1. 在 [VM 計數] 方塊中，輸入最小計數 **2**。
+2. 在 [VM 磁碟計數] 方塊中，輸入最小磁碟計數 **3** (2 個磁碟 + 1 個備用磁碟 = 3 個磁碟)。
+3. 在 [Sofs 名稱] 方塊中，輸入 SAP 全域主機網路名稱 **sapglobalhost**。
+4. 在 [共用名稱] 方塊中，輸入檔案共用名稱 **sapmnt**。
 
 ### <a name="use-unmanaged-disks"></a>使用非受控磁碟
 
@@ -328,7 +329,7 @@ _**圖 1**：使用受控磁片 Scale-Out 檔案伺服器 Resource Manager 範�
 
 _**圖 2**：不含受控磁片的 Scale-Out 檔案伺服器 Azure Resource Manager 範本的 UI 畫面_
 
-在 [儲存體帳戶類型]**** 方塊中，選取 [進階儲存體]****。 所有其他設定與受控磁碟的設定相同。
+在 [儲存體帳戶類型] 方塊中，選取 [進階儲存體]。 所有其他設定與受控磁碟的設定相同。
 
 ## <a name="adjust-cluster-timeout-settings"></a>調整叢集 timeout 設定
 
@@ -340,6 +341,6 @@ _**圖 2**：不含受控磁片的 Scale-Out 檔案伺服器 Azure Resource Mana
 
 這些設定已與客戶進行測試，並提供很好的折衷方案。 它們具有足夠的彈性，但它們也會在實際錯誤狀況或 VM 失敗中提供快速的容錯移轉。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [在 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用上安裝 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-file-share]
