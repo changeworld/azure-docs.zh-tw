@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 44c1e55d60fb35ba510d99535c50c7919b29253e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 1299cbf1b837315a1a95c8a2ec2e4ed0706d959c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918665"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816564"
 ---
 開始使用適用於 .NET 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -46,11 +46,11 @@ ms.locfileid: "92918665"
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.Vision.Face`。 選取版本 `2.6.0-preview.1`，然後 **安裝** 。 
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.Vision.Face`。 選取版本 `2.6.0-preview.1`，然後 **安裝**。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `face-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *program.cs* 。 
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `face-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*program.cs*。 
 
 ```console
 dotnet new console -n face-quickstart
@@ -152,7 +152,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 > [!TIP]
-> 您也可以偵測本機影像中的臉部。 請參閱 [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) 方法，例如 **DetectWithStreamAsync** 。
+> 您也可以偵測本機影像中的臉部。 請參閱 [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) 方法，例如 **DetectWithStreamAsync**。
 
 ### <a name="display-detected-face-data"></a>顯示偵測到的臉部資料
 
@@ -184,11 +184,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 ## <a name="identify-a-face"></a>識別臉部
 
-識別作業會取用個人 (或多人) 的影像，並尋找影像中每個臉部的身分識別 (臉部辨識搜尋)。 其會比較所偵測到的每個臉部與 **PersonGroup** ，該資料庫具有已知臉部特徵的不同 **Person** 物件。 若要執行識別作業，您必須先建立並訓練 **PersonGroup**
+識別作業會取用個人 (或多人) 的影像，並尋找影像中每個臉部的身分識別 (臉部辨識搜尋)。 其會比較所偵測到的每個臉部與 **PersonGroup**，該資料庫具有已知臉部特徵的不同 **Person** 物件。 若要執行識別作業，您必須先建立並訓練 **PersonGroup**
 
 ### <a name="create-a-person-group"></a>建立人員群組
 
-下列程式碼會建立有六個不同 **Person** 物件的 **PersonGroup** 。 其會將每個 **Person** 與一組影像範例產生關聯，然後進行訓練以透過其臉部特徵辨識每個人。 **Person** 和 **PersonGroup** 物件會用在驗證、識別和群組作業中。
+下列程式碼會建立有六個不同 **Person** 物件的 **PersonGroup**。 其會將每個 **Person** 與一組影像範例產生關聯，然後進行訓練以透過其臉部特徵辨識每個人。 **Person** 和 **PersonGroup** 物件會用在驗證、識別和群組作業中。
 
 在類別根目錄上宣告字串變數，以代表您將建立的 **PersonGroup** 識別碼。
 
@@ -205,13 +205,16 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 > [!TIP]
-> 您也可以從本機影像建立 **PersonGroup** 。 請參閱 [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) 方法，例如 **AddFaceFromStreamAsync** 。
+> 您也可以從本機影像建立 **PersonGroup**。 請參閱 [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) 方法，例如 **AddFaceFromStreamAsync**。
 
 ### <a name="train-the-persongroup"></a>訓練 PersonGroup
 
-當您從影像中擷取臉部資料，並將其分類至不同 **Person** 物件後，您必須訓練 **PersonGroup** ，以識別與其每一個 **Person** 物件相關聯的視覺特徵。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
+當您從影像中擷取臉部資料，並將其分類至不同 **Person** 物件後，您必須訓練 **PersonGroup**，以識別與其每一個 **Person** 物件相關聯的視覺特徵。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_train)]
+
+> [!TIP]
+> 臉部 API 會在一組本質為靜態的預建模型上執行 (模型的效能不會在服務執行時衰退或改善)。 如果 Microsoft 更新模型的後端，而未遷移到全新的模型版本，則模型產生的結果可能會變更。 若要利用較新版本的模型，您可以使用相同的註冊映像來重新訓練 **PersonGroup**，進而將較新的模型指定為參數。
 
 此 **Person** 群組及其相關聯的 **Person** 物件現在已準備好用於驗證、識別或群組作業。
 
@@ -248,7 +251,7 @@ dotnet run
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-如果您在本快速入門中建立了 **PersonGroup** ，但想要將其刪除，請在程式中執行下列程式碼：
+如果您在本快速入門中建立了 **PersonGroup**，但想要將其刪除，請在程式中執行下列程式碼：
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_delete)]
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d425853b04a1d6f3b1f818e63154eadd1c7b3a2d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 86803e1d7ef77467fd870221c0bc2c1c006ae479
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680840"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816668"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
@@ -145,6 +145,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
 
+針對驗證訓練用戶端的新方法重複上述步驟。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth_training)]
 
 ## <a name="get-assets-for-testing"></a>取得用於測試的資產 
 

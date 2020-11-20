@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 65f7af56e7f0042b8d4c312d17641a537f5fd908
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918666"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816596"
 ---
 開始使用適用於 Go 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -126,7 +126,7 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_detect)]
 
 > [!TIP]
-> 您也可以偵測本機影像中的臉部。 請參閱 [用戶端](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client) 方法，例如 **DetectWithStream** 。
+> 您也可以偵測本機影像中的臉部。 請參閱 [用戶端](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client) 方法，例如 **DetectWithStream**。
 
 ### <a name="display-detected-face-data"></a>顯示偵測到的臉部資料
 
@@ -169,7 +169,7 @@ touch sample-app.go
 
 ### <a name="create-persongroup"></a>建立 PersonGroup
 
-下載影像之後，將下列程式碼新增至 **main** 方法的底部。 此程式碼會驗證 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** 物件，然後將其用來定義新的 **PersonGroup** 。
+下載影像之後，將下列程式碼新增至 **main** 方法的底部。 此程式碼會驗證 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** 物件，然後將其用來定義新的 **PersonGroup**。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_setup)]
 
@@ -186,17 +186,20 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pgp_assign)]
 
 > [!TIP]
-> 您也可以從 URL 所參考的遠端影像，建立 **PersonGroup** 。 請參閱 [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) 方法，例如 **AddFaceFromURL** 。
+> 您也可以從 URL 所參考的遠端影像，建立 **PersonGroup**。 請參閱 [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) 方法，例如 **AddFaceFromURL**。
 
 ### <a name="train-persongroup"></a>訓練 PersonGroup
 
-指派臉部之後，您會訓練 **PersonGroup** ，使其能夠識別與其每個 **Person** 物件相關聯的視覺功能。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
+指派臉部之後，您會訓練 **PersonGroup**，使其能夠識別與其每個 **Person** 物件相關聯的視覺功能。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
 
+> [!TIP]
+> 臉部 API 會在一組本質為靜態的預建模型上執行 (模型的效能不會在服務執行時衰退或改善)。 如果 Microsoft 更新模型的後端，而未遷移到全新的模型版本，則模型產生的結果可能會變更。 若要利用較新版本的模型，您可以使用相同的註冊映像來重新訓練 **PersonGroup**，進而將較新的模型指定為參數。
+
 ## <a name="identify-a-face"></a>識別臉部
 
-識別作業會取用個人 (或多人) 的影像，並尋找影像中每個臉部的身分識別 (臉部辨識搜尋)。 其會比較所偵測到的每個臉部與 **PersonGroup** ，該資料庫具有已知臉部特徵的不同 **Person** 物件。
+識別作業會取用個人 (或多人) 的影像，並尋找影像中每個臉部的身分識別 (臉部辨識搜尋)。 其會比較所偵測到的每個臉部與 **PersonGroup**，該資料庫具有已知臉部特徵的不同 **Person** 物件。
 
 > [!IMPORTANT]
 > 若要執行這個範例，您必須先執行[建立並訓練人員群組](#create-and-train-a-person-group)中的程式碼。
@@ -265,7 +268,7 @@ go run sample-app.go
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-如果您在本快速入門中建立了 **PersonGroup** ，但想要將其刪除，請呼叫 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** 方法。
+如果您在本快速入門中建立了 **PersonGroup**，但想要將其刪除，請呼叫 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** 方法。
 
 ## <a name="next-steps"></a>後續步驟
 

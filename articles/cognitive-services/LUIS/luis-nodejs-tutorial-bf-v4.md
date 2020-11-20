@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fb158b713bea588e9de94e13ac194ec0a4d0020a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4d399dc9298c51906d62dabbc36650bf21f94af8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058143"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542825"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教學課程：使用以 Node.js 中 Language Understanding 啟用的 Web 應用程式 Bot
 
@@ -97,7 +97,7 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
     [![下載基本 Bot 的 Web 應用程式 Bot 原始程式碼](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. 當快顯對話方塊詢問**在下載的 ZIP 檔案中包含應用程式設定嗎？** ，選取 [是]。 這會提供 LUIS 設定。
+1. 當快顯對話方塊詢問 **在下載的 ZIP 檔案中包含應用程式設定嗎？** ，選取 [是]。 這會提供 LUIS 設定。
 
 1. 如果原始程式碼已壓縮為 zip 檔，將會有提供程式碼下載連結的訊息。 選取連結。
 
@@ -377,16 +377,16 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
 1. 啟動 Bot Framework Emulator，然後選取 [開啟 Bot]。
 1. 在 [開啟 Bot] 快顯對話方塊中，輸入 Bot 的 URL，例如 `http://localhost:3978/api/messages`。 `/api/messages` 路由是 Bot 的網址。
-1. 輸入在您下載的 Bot 程式碼根目錄中 **.env** 檔案中所找到的 **Microsoft 應用程式識別碼**和 **Microsoft 應用程式密碼**。
+1. 輸入在您下載的 Bot 程式碼根目錄中 **.env** 檔案中所找到的 **Microsoft 應用程式識別碼** 和 **Microsoft 應用程式密碼**。
 
-1. 在 Bot Framework Emulator 中，輸入 `Book a flight from Seattle to Berlin tomorrow` 並取得基本 Bot 的相同回應，如同您在**在網路聊天中測試**中所收到的。
+1. 在 Bot Framework Emulator 中，輸入 `Book a flight from Seattle to Berlin tomorrow` 並取得基本 Bot 的相同回應，如同您在 **在網路聊天中測試** 中所收到的。
 
-    [![模擬器中的基本 Bot 回應](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![螢幕擷取畫面顯示 Bot Framework Emulator。](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. 選取 [是]。 Bot 會回應其動作摘要。
 1. 從 Bot Framework Emulator 的記錄中，選取包含 `<- trace LuisV3 Trace` 的資料行。 這會顯示針對意圖和語句實體 LUIS 的 JSON 回應。
 
-    [![模擬器中的基本 Bot 回應](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![螢幕擷取畫面顯示 Bot Framework Emulator，且右側面板包含 json 程式碼。](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 

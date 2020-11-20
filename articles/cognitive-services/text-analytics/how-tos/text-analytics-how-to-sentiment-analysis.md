@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/16/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 87e6ad488438ae28467f6e904fbb57f7ca5448ff
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366752"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518170"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -76,11 +76,11 @@ v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級
 
 ## <a name="structure-the-request"></a>建立要求結構
 
-建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台** ，以快速建構及傳送要求。 
+建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台**，以快速建構及傳送要求。 
 
-#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
 
-[情感分析 v3.1 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+[情感分析 v3.1 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
 
 #### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
@@ -95,13 +95,13 @@ v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級
 > [!NOTE]
 > 您可以在 Azure 入口網站上找到適用於文字分析資源的金鑰和端點。 您可以在 [資源管理] 下的資源 [快速啟動] 頁面中找到。 
 
-#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
 
 若要取得意見挖掘結果，您必須包含 `opinionMining=true` 參數。 例如：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
 
 根據預設，此參數設定為 `false`。 
 
@@ -142,7 +142,7 @@ v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級
 
 輸出會立即傳回。 您可以將結果串流至接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案。 然後，將輸出匯入應用程式，以便用來排序、搜尋和操作資料。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱[如何處理位移](../concepts/text-offsets.md)。
 
-#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-v31-example-response"></a>情感分析 v3.1 的回應範例
 

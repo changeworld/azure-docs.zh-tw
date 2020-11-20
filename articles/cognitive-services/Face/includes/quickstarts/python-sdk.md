@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: cf7b82ec1da660ac68c6031434c0e0748ee67b3d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7141ebe4e7894c975ba2ee6fb39d5bfd4483ed41
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94523665"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816798"
 ---
 開始使用適用於 Python 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -164,6 +164,9 @@ pip install --upgrade azure-cognitiveservices-vision-face
 指派臉部之後，您必須訓練 **PersonGroup**，使其能夠識別與其每個 **Person** 物件相關聯的視覺功能。 下列程式碼會呼叫非同步 **訓練** 方法並輪詢結果，以將狀態列印到主控台。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
+
+> [!TIP]
+> 臉部 API 會在一組本質為靜態的預建模型上執行 (模型的效能不會在服務執行時衰退或改善)。 如果 Microsoft 更新模型的後端，而未遷移到全新的模型版本，則模型產生的結果可能會變更。 若要利用較新版本的模型，您可以使用相同的註冊映像來重新訓練 **PersonGroup**，進而將較新的模型指定為參數。
 
 ## <a name="identify-a-face"></a>識別臉部
 

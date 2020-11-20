@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: 電腦視覺, 電腦視覺應用程式, 電腦視覺服務
-ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90907064"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629745"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
@@ -27,19 +27,19 @@ ms.locfileid: "90907064"
 
 Azure 的電腦視覺服務可讓您存取進階演算法，以根據您感興趣的視覺功能來處理影像並傳回資訊。 例如，電腦視覺可以判斷影像是否包含成人內容、尋找特定品牌或物件，或尋找人臉。
 
-您可以透過用戶端程式庫 SDK 或直接呼叫 REST API 來建立電腦視覺應用程式。 本頁會廣泛說明電腦視覺的功用。
+您可以透過[用戶端程式庫 SDK](./quickstarts-sdk/client-library.md) 或直接呼叫 [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 來建立電腦視覺應用程式。 本頁會廣泛說明電腦視覺的功用。
+
+## <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
+
+電腦視覺包含[光學字元辨識 (OCR)](concept-recognizing-text.md) 功能。 您可以使用新的閱讀 API，從影像和文件中擷取列印和手寫文字。 其使用最新的模型，並可與各種表面和背景上的文字搭配使用。 這些包含收據、海報、名片、信件和白板。 這兩個 OCR API 都支援擷取以[數種語言](./language-support.md)列印的文字。 請遵循[快速入門](./quickstarts-sdk/client-library.md)以開始使用。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>用於管理數位資產的電腦視覺
 
 電腦視覺可以支援許多數位資產管理 (DAM) 案例。 DAM 是組織、儲存和抓取多媒體資產，以及管理數位權利和權限的商務程序。 例如，公司可以根據可見的標誌、臉部、物件或色彩等項目來分組和識別影像。 或者，您可以自動[產生影像的標題](./Tutorials/storage-lab-tutorial.md)並附加關鍵字，讓這些影像可供搜尋。 如需可使用認知服務、Azure 認知搜尋和智慧型報告的全能 DAM 解決方案，請參閱 GitHub 上的[知識採礦解決方案加速器指南](https://github.com/Azure-Samples/azure-search-knowledge-mining)。 如需其他 DAM 範例，請參閱[電腦視覺解決方案範本](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates)存放庫。
 
-## <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
-
-電腦視覺包含[光學字元辨識 (OCR)](concept-recognizing-text.md) 功能。 您可以使用新的閱讀 API，從影像和文件中擷取列印和手寫文字。 其使用最新的模型，並可與各種表面和背景上的文字搭配使用。 這些包含收據、海報、名片、信件和白板。 這兩個 OCR API 都支援擷取以[數種語言](./language-support.md)列印的文字。 請遵循[快速入門](#next-steps)以開始使用。
-
 ## <a name="analyze-images-for-insight"></a>深入分析影像
 
-您可以分析影像，以提供與其視覺特徵和特性有關的深入解析。 下表中的所有功能是由[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 所提供。 請遵循[快速入門](#next-steps)以開始使用。
+您可以分析影像，以提供與其視覺特徵和特性有關的深入解析。 下表中的所有功能是由[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 所提供。 請遵循[快速入門](./quickstarts-sdk/client-library.md)以開始使用。
 
 
 ### <a name="tag-visual-features"></a>標記視覺特徵
@@ -113,8 +113,6 @@ Azure 的電腦視覺服務可讓您存取進階演算法，以根據您感興�
 
 ## <a name="next-steps"></a>後續步驟
 
-藉由遵循快速入門指南來開始使用電腦視覺：
+遵循慣用開發語言的快速入門指南來開始使用電腦視覺：
 
-- [快速入門：電腦視覺 .NET 用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [快速入門：電腦視覺 Python 用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [快速入門：電腦視覺 Java 用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [快速入門：電腦視覺用戶端程式庫](./quickstarts-sdk/client-library.md)
