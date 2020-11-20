@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 36e61c8d1e0e41fd981f5483eff1f30814b22b92
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905107"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992364"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速回應
 
 在主動存取期間，Azure DDoS 保護標準客戶可以存取 DDoS 快速回應 (DRR) 小組，以協助在攻擊期間進行攻擊調查，以及進行攻擊後的分析。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 在您可以完成本教學課程中的步驟之前，您必須先建立 [Azure DDoS 標準保護計劃](manage-ddos-protection.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "92905107"
 ## <a name="engage-drr-during-an-active-attack"></a>在主動攻擊期間參與 DRR
 
 1. 從 Azure 入口網站建立新的支援要求時，選擇 [ **問題類型** ] 為 [技術]。
-2. 選擇 **服務** 作為 **DDOS 保護** 。
+2. 選擇 **服務** 作為 **DDOS 保護**。
 3. 選擇 [資源] 下拉式功能表中的資源。 _您必須選取與受 DDoS 保護標準保護的虛擬網路連結的 DDoS 方案，以與 DRR 互動。_
 
     ![選擇資源](./media/ddos-rapid-response/choose-resource.png)
@@ -51,7 +51,7 @@ ms.locfileid: "92905107"
 
 DRR 遵循 Azure Rapid Response 支援模型。 如需快速回應的詳細資訊，請參閱 [支援範圍和回應](https://azure.microsoft.com/en-us/support/plans/response/) 性。
 
-若要深入瞭解，請閱讀「 [DDoS 保護標準」檔](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
+若要深入瞭解，請閱讀「 [DDoS 保護標準」檔](./ddos-protection-overview.md)。
 
 ## <a name="next-steps"></a>下一步
 

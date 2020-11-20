@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095538"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989610"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>快速入門：使用 Azure CLI 建立及設定 Azure DDoS 保護 Standard
 
@@ -26,7 +26,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
 
 在本快速入門中，您將建立 DDoS 保護計劃，並將它連結至虛擬網路。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 已在本機安裝 Azure CLI 或 Azure Cloud Shell
@@ -39,7 +39,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
 
 在 Azure 中，您可以將相關資源配置到資源群組。 您可以使用現有的資源群組，或建立一個新的群組。
 
-若要建立資源群組，請使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)。 在此範例中，我們會將資源群組命名為 _MyResourceGroup_ ，並使用 _美國東部_ 位置：
+若要建立資源群組，請使用 [az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create)。 在此範例中，我們會將資源群組命名為 _MyResourceGroup_ ，並使用 _美國東部_ 位置：
 
 ```azurecli-interactive
 az group create \
@@ -59,7 +59,7 @@ az network ddos-protection create \
 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>針對新的虛擬網路啟用 DDoS 保護
 
-您可以在建立虛擬網路時啟用 DDoS 保護。 在此範例中，我們會將虛擬網路命名為 _MyVnet_ ： 
+您可以在建立虛擬網路時啟用 DDoS 保護。 在此範例中，我們會將虛擬網路命名為 _MyVnet_： 
 
 ```azurecli-interactive
 az network vnet create \
@@ -73,7 +73,7 @@ az network vnet create \
 
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>針對現有的虛擬網路啟用 DDoS 保護
 
-[建立 DDoS 保護計劃](#create-a-ddos-protection-plan)時，您可以將一或多個虛擬網路與方案產生關聯。 若要新增一個以上的虛擬網路，只需列出名稱或識別碼，以空格分隔。 在此範例中，我們將新增 _MyVnet_ ：
+[建立 DDoS 保護計劃](#create-a-ddos-protection-plan)時，您可以將一或多個虛擬網路與方案產生關聯。 若要新增一個以上的虛擬網路，只需列出名稱或識別碼，以空格分隔。 在此範例中，我們將新增 _MyVnet_：
 
 ```azurecli-interactive
 az group create \
@@ -111,7 +111,7 @@ az network ddos-protection show \
 
 您可以保留資源以供下一個教學課程之用。 如果不再需要，請刪除 _MyResourceGroup_ 資源群組。 當您刪除資源群組時，也會刪除 DDoS 保護計劃及其所有相關資源。 
 
-若要刪除資源群組，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)：
+若要刪除資源群組，請使用 [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete)：
 
 ```azurecli-interactive
 az group delete \
@@ -129,7 +129,7 @@ az network vnet update \
 
 如果您想要刪除 DDoS 保護計劃，您必須先中斷所有虛擬網路與其的關聯。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要瞭解如何為您的 DDoS 保護計劃查看及設定遙測，請繼續進行教學課程。
 

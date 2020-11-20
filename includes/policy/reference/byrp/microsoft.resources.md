@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f9916500aeca20ef66a0765255cb1862f6a8e6ad
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 32ee2ce40533a885e59cbfd834cc295fb56f8a3e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744763"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988695"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,7 +19,9 @@ ms.locfileid: "94744763"
 |[應為您的訂用帳戶提供安全性連絡人電話號碼](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4d66858-c922-44e3-9566-5cdb7a7be744) |輸入要在 Azure 資訊安全中心偵測到資源洩露時，用來接收通知的電話號碼 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_phone_number.json) |
 |[活動記錄至少應保留一年](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |若保留期未設為 365 天或永久 (保留期設為 0)，此原則就會稽核活動記錄。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 |[將標籤新增至資源群組](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |當建立或更新了任何遺失指定標籤的資源群組時，便新增此標籤和值。 您可以藉由觸發補救工作來補救現有的資源群組。 如果標籤以不同的值存在，則不會遭到變更。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
+|[將標記新增至訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96d9a89c-0d67-41fc-899d-2b9599f76a24) |透過補救工作，將指定的標記和值加入至訂用帳戶。 如果標籤以不同的值存在，則不會遭到變更。 [https://aka.ms/azurepolicyremediation](https://aka.ms/azurepolicyremediation)如需原則補救的詳細資訊，請參閱。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Subscription_Modify.json) |
 |[新增或置換資源群組上的標籤](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd157c373-a6c4-483d-aaad-570756956268) |當建立或更新了任何資源群組時，便新增或取代此標籤和值。 您可以藉由觸發補救工作來補救現有的資源群組。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_ResourceGroup_Modify.json) |
+|[在訂閱上新增或取代標記](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F61a4d60b-7326-440e-8051-9f94394d4dd1) |透過補救工作，在訂用帳戶上新增或取代指定的標記和值。 您可以藉由觸發補救工作來補救現有的資源群組。 [https://aka.ms/azurepolicyremediation](https://aka.ms/azurepolicyremediation)如需原則補救的詳細資訊，請參閱。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Subscription_Modify.json) |
 |[允許資源群組的位置](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe765b5de-1225-4ba3-bd56-1ac6695af988) |此原則可讓您限制貴組織可在其中建立資源群組的位置。 它可用來強制執行地理合規性需求。 |deny |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/ResourceGroupAllowedLocations_Deny.json) |
 |[特定系統管理作業應有活動記錄警示](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |此原則會稽核未設定活動記錄警示的特定系統管理作業。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |[特定原則作業應有活動記錄警示](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc5447c04-a4d7-4ba8-a263-c9ee321a6858) |此原則會稽核未設定活動記錄警示的特定原則作業。 |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_PolicyOperations_Audit.json) |

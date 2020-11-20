@@ -1,15 +1,15 @@
 ---
 title: Azure Lighthouse 的內建原則定義
 description: 列出適用於 Azure Lighthouse 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 183e0ceba97c2613768954f16ce35f62272011c8
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: bd996715c738408b90d29de82a86c54d444f1fa6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739596"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992469"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>適用於 Azure Lighthouse 的 Azure 原則內建定義
 

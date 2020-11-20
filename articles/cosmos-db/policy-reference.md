@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Cosmos DB 的內建原則定義
 description: 列出適用於 Azure Cosmos DB 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 877a46d8a42b1ca1a1e41178347889d8ef513007
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 60f3c9072aad237657b0b39892cf75b918d99234
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744491"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992554"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>適用於 Azure Cosmos DB 的 Azure 原則內建定義
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

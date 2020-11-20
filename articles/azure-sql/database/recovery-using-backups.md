@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629184"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989440"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ ms.locfileid: "94629184"
 沒有內建方法可還原整部伺服器。 如需如何完成這項工作的範例，請參閱 [Azure SQL Database：完整伺服器](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)復原。
 
 > [!IMPORTANT]
-> 若要使用自動備份進行復原，您必須是 SQL Server 參與者角色或 SQL 受控執行個體參與者角色的成員 (視訂用帳戶中的復原目的地) 而定，或者您必須是訂用帳戶擁有者。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。 您可以使用 Azure 入口網站、PowerShell 或 REST API 來復原。 您無法使用 Transact-sql。
+> 若要使用自動備份進行復原，您必須是 SQL Server 參與者角色或 SQL 受控執行個體參與者角色的成員 (視訂用帳戶中的復原目的地) 而定，或者您必須是訂用帳戶擁有者。 如需詳細資訊，請參閱 [AZURE RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。 您可以使用 Azure 入口網站、PowerShell 或 REST API 來復原。 您無法使用 Transact-sql。
 
 ## <a name="point-in-time-restore"></a>時間點還原
 
@@ -113,13 +113,13 @@ ms.locfileid: "94629184"
 
 #### <a name="sql-database"></a>SQL Database
 
-若要使用 Azure 入口網站將已刪除的資料庫復原到刪除時間，請開啟 [伺服器總覽] 頁面，然後選取 [ **已刪除的資料庫** ]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
+若要使用 Azure 入口網站將已刪除的資料庫復原到刪除時間，請開啟 [伺服器總覽] 頁面，然後選取 [ **已刪除的資料庫**]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
 
   ![還原已刪除資料庫的螢幕擷取畫面](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL 受控執行個體
 
-若要使用 Azure 入口網站來復原受管理的資料庫，請開啟 [受管理的實例] 總覽頁面，然後選取 [ **已刪除的資料庫** ]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
+若要使用 Azure 入口網站來復原受管理的資料庫，請開啟 [受管理的實例] 總覽頁面，然後選取 [ **已刪除的資料庫**]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
 
   ![還原已刪除的 Azure SQL 受控執行個體資料庫的螢幕擷取畫面](./media/recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -157,10 +157,10 @@ ms.locfileid: "94629184"
 
 若要從您選擇的區域和伺服器中的 Azure 入口網站異地還原單一資料庫，請遵循下列步驟：
 
-1. 從 **儀表板** 選取 [ **新增**  >  **建立 SQL Database** ]。 在 [ **基本** ] 索引標籤上，輸入必要的資訊。
+1. 從 **儀表板** 選取 [**新增**  >  **建立 SQL Database**]。 在 [ **基本** ] 索引標籤上，輸入必要的資訊。
 2. 選取 [其他設定]。
-3. 若要 **使用現有的資料** ，請選取 [ **備份** ]。
-4. 針對 [ **備份** ]，請從可用的異地還原備份清單中選取備份。
+3. 若要 **使用現有的資料**，請選取 [ **備份**]。
+4. 針對 [ **備份**]，請從可用的異地還原備份清單中選取備份。
 
     ![建立 SQL Database 選項的螢幕擷取畫面](./media/recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
@@ -168,11 +168,11 @@ ms.locfileid: "94629184"
 
 #### <a name="sql-managed-instance"></a>SQL 受控執行個體
 
-若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 請遵循這些步驟：
+若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 依照下列步驟執行：
 
-1. 選取 [ **新增資料庫** ]。
+1. 選取 [ **新增資料庫**]。
 2. 輸入所需的資料庫名稱。
-3. 在 [ **使用現有資料** ] 下，選取 [ **備份** ]。
+3. 在 [ **使用現有資料**] 下，選取 [ **備份**]。
 4. 從可用的異地還原備份清單中選取備份。
 
     ![新資料庫選項的螢幕擷取畫面](./media/recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
@@ -238,7 +238,7 @@ ms.locfileid: "94629184"
 
 若要使用 REST API 來還原資料庫：
 
-| API | 描述 |
+| API | 說明 |
 | --- | --- |
 | [REST (createMode=Recovery)](/rest/api/sql/databases) |還原資料庫。 |
 | [取得建立或更新資料庫狀態](/rest/api/sql/operations) |在還原作業期間傳回狀態。 |
@@ -257,7 +257,7 @@ ms.locfileid: "94629184"
 
 自動備份可在發生使用者和應用程式錯誤、意外刪除資料庫和長時間中斷時保護您的資料庫。 所有服務層級和計算大小都可以取得此內建功能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [SQL Database 自動備份](automated-backups-overview.md)

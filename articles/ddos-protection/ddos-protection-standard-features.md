@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905128"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992381"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS 保護標準功能
 
@@ -38,7 +38,7 @@ DDoS 保護會封鎖攻擊流量並將剩餘流量轉送至其預定目的地。
 
 ## <a name="adaptive-real-time-tuning"></a>適應性即時微調
 
-Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶產生影響。 例如，如果合法連入流量的正常流量小於涵蓋整個基礎結構範圍的 DDoS 保護原則 *觸發率* ，而且服務是針對該流量所佈建，則可能不會注意到對於該客戶資源的 DDoS 攻擊。 更普遍的說法是，最新攻擊 (例如多向量 DDoS) 的複雜本質，以及租用戶的應用程式專屬行為，會呼叫針對每位客戶自訂的保護原則。 服務會使用兩種見解來完成這項自訂：
+Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶產生影響。 例如，如果合法連入流量的正常流量小於涵蓋整個基礎結構範圍的 DDoS 保護原則 *觸發率*，而且服務是針對該流量所佈建，則可能不會注意到對於該客戶資源的 DDoS 攻擊。 更普遍的說法是，最新攻擊 (例如多向量 DDoS) 的複雜本質，以及租用戶的應用程式專屬行為，會呼叫針對每位客戶自訂的保護原則。 服務會使用兩種見解來完成這項自訂：
 
 - 自動學習每位客戶 (每個 IP) 的第 3 層與第 4 層流量模式。
 
@@ -48,11 +48,11 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護遙測、監視及警示
 
-標準 DDoS 保護在遭受 DDoS 攻擊持續期間，透過 [Azure 監視器](/azure/azure-monitor/overview)公開豐富的遙測。 可設定 DDoS 保護所用的任何 Azure 監視器度計量的警示。 您可以整合記錄與 Splunk (Azure 事件中樞) 、Azure 監視器記錄和 Azure 儲存體，以透過 Azure 監視器診斷介面進行先進的分析。
+標準 DDoS 保護在遭受 DDoS 攻擊持續期間，透過 [Azure 監視器](../azure-monitor/overview.md)公開豐富的遙測。 可設定 DDoS 保護所用的任何 Azure 監視器度計量的警示。 您可以整合記錄與 Splunk (Azure 事件中樞) 、Azure 監視器記錄和 Azure 儲存體，以透過 Azure 監視器診斷介面進行先進的分析。
 
 ### <a name="ddos-mitigation-policies"></a>DDoS 防護原則
 
-在 [Azure 入口網站中，選取 [ **監視**  >  **度量** ]。 在 [計量]  窗格中，選取資源群組、選取 [公用 IP 位址]  的資源類型，並選取您的 Azure 公用 IP 位址。 DDoS 計量會顯示在 [可用計量]  窗格中。
+在 [Azure 入口網站中，選取 [**監視**  >  **度量**]。 在 [計量] 窗格中，選取資源群組、選取 [公用 IP 位址] 的資源類型，並選取您的 Azure 公用 IP 位址。 DDoS 計量會顯示在 [可用計量] 窗格中。
 
 「標準 DDoS 保護」會在啟用 DDoS 的虛擬網路中，對受保護資源的每個公用 IP 套用三個自動調整的風險降低原則 (TCP SYN、TCP、UDP)。 可選取 **要觸發 DDoS 防護的輸入封包** 計量，藉此檢視原則閾值。
 
@@ -62,7 +62,7 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 ### <a name="metric-for-an-ip-address-under-ddos-attack"></a>遭受 DDoS 攻擊的 IP 位址計量
 
-如果公用 IP 位址遭受攻擊，則當 DDoS 保護在降低攻擊流量的風險時，[是否正遭受 DDoS 攻擊]  的計量值會變更為 1。
+如果公用 IP 位址遭受攻擊，則當 DDoS 保護在降低攻擊流量的風險時，[是否正遭受 DDoS 攻擊] 的計量值會變更為 1。
 
 ![「是否正遭受 DDoS 攻擊」計量與圖表](./media/ddos-best-practices/image-8.png)
 
@@ -72,7 +72,7 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>資源攻擊的 Web 應用程式防火牆
 
-針對應用程式層上的資源攻擊，應該設定 Web 應用程式防火牆 (WAF) 來協助維護 Web 應用程式的安全。 WAF 會檢查傳入的 Web 流量，以封鎖 SQL 插入式攻擊、跨網站指令碼攻擊、DDoS 攻擊，以及其他第 7 層攻擊。 Azure 提供 [WAF 作為一項應用程式閘道功能](/azure/application-gateway/application-gateway-web-application-firewall-overview)，用來進行 Web 應用程式的集中式保護，免於遭遇常見的攻擊和弱點。 透過 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)，您可以取得由 Azure 夥伴所提供且可能更適合您需求的其他 WAF 供應項目。
+針對應用程式層上的資源攻擊，應該設定 Web 應用程式防火牆 (WAF) 來協助維護 Web 應用程式的安全。 WAF 會檢查傳入的 Web 流量，以封鎖 SQL 插入式攻擊、跨網站指令碼攻擊、DDoS 攻擊，以及其他第 7 層攻擊。 Azure 提供 [WAF 作為一項應用程式閘道功能](../web-application-firewall/ag/ag-overview.md)，用來進行 Web 應用程式的集中式保護，免於遭遇常見的攻擊和弱點。 透過 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)，您可以取得由 Azure 夥伴所提供且可能更適合您需求的其他 WAF 供應項目。
 
 即使是 Web 應用程式防火牆，也很容易受到體積型與狀態耗盡攻擊。 強烈建議您在 WAF 虛擬網路上啟用標準 DDoS 保護，協助防禦體積型與通訊協定攻擊。 如需詳細資訊，請參閱 [DDoS 保護參考架構](ddos-protection-reference-architectures.md)一節。
 

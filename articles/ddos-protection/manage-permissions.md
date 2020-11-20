@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905229"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989406"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>管理 DDoS 保護計劃：許可權和限制
 
 DDoS 保護方案可跨區域和訂用帳戶運作。 相同的方案可以從不同區域中的其他訂用帳戶連結至您的租使用者。 計劃所關聯的訂用帳戶會為該計劃帶來每月的週期性帳單，也會在受保護的公用 IP 位址數目超過 100 時衍生超額費用。 如需有關 DDoS 定價的詳細資訊，請參閱[價格詳細資料](https://azure.microsoft.com/pricing/details/ddos-protection/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 在您可以完成本教學課程中的步驟之前，您必須先建立 [Azure DDoS 標準保護計劃](manage-ddos-protection.md)。
 
@@ -37,7 +37,7 @@ DDoS 保護方案可跨區域和訂用帳戶運作。 相同的方案可以從�
 | Microsoft.Network/ddosProtectionPlans/delete      | 刪除 DDoS 保護計劃            |
 | Microsoft.Network/ddosProtectionPlans/join/action | 加入 DDoS 保護計劃              |
 
-若要啟用虛擬網路的 DDoS 保護，您的帳戶也必須指派[虛擬網路的適當動作](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions)。
+若要啟用虛擬網路的 DDoS 保護，您的帳戶也必須指派[虛擬網路的適當動作](../virtual-network/manage-virtual-network.md#permissions)。
 
 ## <a name="azure-policy"></a>Azure 原則
 
@@ -51,4 +51,4 @@ DDoS 保護方案可跨區域和訂用帳戶運作。 相同的方案可以從�
 若要瞭解如何為您的 DDoS 保護計劃查看及設定遙測，請繼續進行教學課程。
 
 > [!div class="nextstepaction"]
-> [查看及設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)
+> [檢視和設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)

@@ -3,17 +3,17 @@ title: Azure IoT Central 中的遙測、屬性和命令承載 |Microsoft Docs
 description: Azure IoT Central 裝置範本可讓您指定裝置的遙測、屬性和命令必須執行。 瞭解裝置可與 IoT Central 交換的資料格式。
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/12/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427864"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989542"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遙測、屬性和命令承載
 
@@ -29,12 +29,12 @@ Azure IoT Central 中的裝置範本是定義下列各項的藍圖：
 
 本文不會說明每個可能的遙測、屬性和命令裝載類型，但這些範例會說明所有金鑰類型。
 
-每個範例都會顯示裝置功能模型中的程式碼片段 (DCM) ，其中定義型別和範例 JSON 承載，以說明裝置應該如何與 IoT Central 應用程式互動。
+每個範例都會顯示裝置模型中的程式碼片段，以定義型別和範例 JSON 承載，以說明裝置應該如何與 IoT Central 應用程式互動。
 
 > [!NOTE]
-> IoT Central 接受任何有效的 JSON，但如果符合 DCM 中的定義，則只能用於視覺效果。 您可以匯出不符合定義的資料，請參閱 [將 IoT 資料匯出至 Azure 中的目的地](howto-export-data.md)。
+> IoT Central 接受任何有效的 JSON，但如果符合裝置模型中的定義，則只能用於視覺效果。 您可以匯出不符合定義的資料，請參閱 [將 IoT 資料匯出至 Azure 中的目的地](howto-export-data.md)。
 
-定義 DCM 的 JSON 檔案會使用數位對應項 [定義語言 (DTDL) V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)。 此規格包含屬性格式的定義 `@id` 。
+定義裝置型號的 JSON 檔案會使用數位對應項 [定義語言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 如需顯示使用中部分承載的範例裝置程式碼，請參閱 [建立用戶端應用程式並將其連接到您的 Azure IoT Central 應用程式 ( # A0) ](tutorial-connect-device-nodejs.md) ，以及 [建立用戶端應用程式並將其連接至 Azure IoT Central 應用程式 (Python) ](tutorial-connect-device-python.md) 教學課程。
 
@@ -56,11 +56,10 @@ IoT Central 可讓您查看裝置傳送至應用程式的原始資料。 此視�
 
 本節顯示裝置串流至 IoT Central 應用程式的基本遙測類型範例。
 
-DCM 中的下列程式碼片段會顯示 `boolean` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `boolean` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "BooleanTelemetry"
@@ -76,11 +75,10 @@ DCM 中的下列程式碼片段會顯示 `boolean` 遙測類型的定義：
 { "BooleanTelemetry": true }
 ```
 
-DCM 中的下列程式碼片段會顯示 `string` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `string` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "StringTelemetry"
@@ -96,11 +94,10 @@ DCM 中的下列程式碼片段會顯示 `string` 遙測類型的定義：
 { "StringTelemetry": "A string value - could be a URL" }
 ```
 
-DCM 中的下列程式碼片段會顯示 `integer` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `integer` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "IntegerTelemetry"
@@ -117,11 +114,10 @@ DCM 中的下列程式碼片段會顯示 `integer` 遙測類型的定義：
 { "IntegerTelemetry": 23 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `double` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `double` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DoubleTelemetry"
@@ -137,11 +133,10 @@ DCM 中的下列程式碼片段會顯示 `double` 遙測類型的定義：
 { "DoubleTelemetry": 56.78 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `dateTime` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `dateTime` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DateTimeTelemetry"
@@ -151,17 +146,16 @@ DCM 中的下列程式碼片段會顯示 `dateTime` 遙測類型的定義：
 }
 ```
 
-裝置用戶端應將遙測以 JSON 格式傳送，如下列範例所示- `DateTime` 類型必須符合 ISO 8061 規範：
+裝置用戶端應將遙測以 JSON 格式傳送，如下列範例所示- `DateTime` 類型必須為 ISO 8061 格式：
 
 ```json
 { "DateTimeTelemetry": "2020-08-30T19:16:13.853Z" }
 ```
 
-DCM 中的下列程式碼片段會顯示 `duration` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `duration` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DurationTelemetry"
@@ -171,7 +165,7 @@ DCM 中的下列程式碼片段會顯示 `duration` 遙測類型的定義：
 }
 ```
 
-裝置用戶端應將遙測以 JSON 形式傳送，如下列範例所示-持續時間必須符合 ISO 8601 持續時間規範：
+裝置用戶端應將遙測以 JSON 形式傳送，如下列範例所示-持續時間必須為 ISO 8601 格式：
 
 ```json
 { "DurationTelemetry": "PT10H24M6.169083011336625S" }
@@ -181,11 +175,10 @@ DCM 中的下列程式碼片段會顯示 `duration` 遙測類型的定義：
 
 本節顯示裝置串流至 IoT Central 應用程式的複雜遙測類型範例。
 
-DCM 中的下列程式碼片段會顯示 `geopoint` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `geopoint` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "GeopointTelemetry"
@@ -207,18 +200,16 @@ DCM 中的下列程式碼片段會顯示 `geopoint` 遙測類型的定義：
 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `Enum` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `Enum` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "EnumTelemetry"
   },
   "name": "EnumTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -226,8 +217,6 @@ DCM 中的下列程式碼片段會顯示 `Enum` 遙測類型的定義：
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -235,8 +224,6 @@ DCM 中的下列程式碼片段會顯示 `Enum` 遙測類型的定義：
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -244,8 +231,6 @@ DCM 中的下列程式碼片段會顯示 `Enum` 遙測類型的定義：
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -263,26 +248,22 @@ DCM 中的下列程式碼片段會顯示 `Enum` 遙測類型的定義：
 { "EnumTelemetry": 1 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此物件有三個具有類型 `dateTime` 、 `integer` 和的欄位 `Enum` ：
+來自裝置型號的下列程式碼片段會顯示 `Object` 遙測類型的定義。 此物件有三個具有類型 `dateTime` 、 `integer` 和的欄位 `Enum` ：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "ObjectTelemetry"
   },
   "name": "ObjectTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property1"
         },
@@ -290,8 +271,6 @@ DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此�
         "schema": "dateTime"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property2"
         },
@@ -299,14 +278,11 @@ DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property3"
         },
         "name": "Property3",
         "schema": {
-          "@id": "<element id>",
           "@type": "Enum",
           "displayName": {
             "en": "Enum"
@@ -314,8 +290,6 @@ DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此�
           "valueSchema": "integer",
           "enumValues": [
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item1"
               },
@@ -323,8 +297,6 @@ DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此�
               "name": "Item1"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item2"
               },
@@ -332,8 +304,6 @@ DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此�
               "name": "Item2"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item3"
               },
@@ -360,11 +330,10 @@ DCM 中的下列程式碼片段會顯示 `Object` 遙測型別的定義。 此�
 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `vector` 遙測類型的定義：
+下列來自裝置型號的程式碼片段會顯示 `vector` 遙測類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "VectorTelemetry"
@@ -390,14 +359,13 @@ DCM 中的下列程式碼片段會顯示 `vector` 遙測類型的定義：
 
 本節將說明裝置傳送至 IoT Central 應用程式的遙測事件和狀態範例。
 
-DCM 中的下列程式碼片段會顯示 `integer` 事件種類的定義：
+下列來自裝置模型的程式碼片段會顯示 `integer` 事件種類的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/Event"
+    "Event"
   ],
   "displayName": {
     "en": "IntegerEvent"
@@ -413,27 +381,23 @@ DCM 中的下列程式碼片段會顯示 `integer` 事件種類的定義：
 { "IntegerEvent": 74 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `integer` 狀態類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `integer` 狀態類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/State"
+    "State"
   ],
   "displayName": {
     "en": "IntegerState"
   },
   "name": "IntegerState",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level1"
         },
@@ -441,8 +405,6 @@ DCM 中的下列程式碼片段會顯示 `integer` 狀態類型的定義：
         "name": "Level1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level2"
         },
@@ -450,8 +412,6 @@ DCM 中的下列程式碼片段會顯示 `integer` 狀態類型的定義：
         "name": "Level2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level3"
         },
@@ -478,17 +438,17 @@ DCM 中的下列程式碼片段會顯示 `integer` 狀態類型的定義：
 
 本節將說明裝置傳送至 IoT Central 應用程式的基本屬性類型範例。
 
-DCM 中的下列程式碼片段會顯示 `boolean` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `boolean` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "BooleanProperty"
   },
   "name": "BooleanProperty",
-  "schema": "boolean"
+  "schema": "boolean",
+  "writable": false
 }
 ```
 
@@ -498,17 +458,17 @@ DCM 中的下列程式碼片段會顯示 `boolean` 屬性類型的定義：
 { "BooleanProperty": false }
 ```
 
-DCM 中的下列程式碼片段會顯示 `boolean` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `boolean` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "LongProperty"
   },
   "name": "LongProperty",
-  "schema": "long"
+  "schema": "long",
+  "writable": false
 }
 ```
 
@@ -518,17 +478,17 @@ DCM 中的下列程式碼片段會顯示 `boolean` 屬性類型的定義：
 { "LongProperty": 439 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `date` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `date` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DateProperty"
   },
   "name": "DateProperty",
-  "schema": "date"
+  "schema": "date",
+  "writable": false
 }
 ```
 
@@ -538,17 +498,17 @@ DCM 中的下列程式碼片段會顯示 `date` 屬性類型的定義：
 { "DateProperty": "2020-05-17" }
 ```
 
-DCM 中的下列程式碼片段會顯示 `duration` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `duration` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DurationProperty"
   },
   "name": "DurationProperty",
-  "schema": "duration"
+  "schema": "duration",
+  "writable": false
 }
 ```
 
@@ -558,17 +518,17 @@ DCM 中的下列程式碼片段會顯示 `duration` 屬性類型的定義：
 { "DurationProperty": "PT10H24M6.169083011336625S" }
 ```
 
-DCM 中的下列程式碼片段會顯示 `float` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `float` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "FloatProperty"
   },
   "name": "FloatProperty",
-  "schema": "float"
+  "schema": "float",
+  "writable": false
 }
 ```
 
@@ -578,17 +538,17 @@ DCM 中的下列程式碼片段會顯示 `float` 屬性類型的定義：
 { "FloatProperty": 1.9 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `string` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `string` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringProperty"
   },
   "name": "StringProperty",
-  "schema": "string"
+  "schema": "string",
+  "writable": false
 }
 ```
 
@@ -602,17 +562,17 @@ DCM 中的下列程式碼片段會顯示 `string` 屬性類型的定義：
 
 本節將說明裝置傳送至 IoT Central 應用程式的複雜屬性類型範例。
 
-DCM 中的下列程式碼片段會顯示 `geopoint` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `geopoint` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "GeopointProperty"
   },
   "name": "GeopointProperty",
-  "schema": "geopoint"
+  "schema": "geopoint",
+  "writable": false
 }
 ```
 
@@ -628,18 +588,17 @@ DCM 中的下列程式碼片段會顯示 `geopoint` 屬性類型的定義：
 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `Enum` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `Enum` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumProperty"
   },
   "name": "EnumProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -647,8 +606,6 @@ DCM 中的下列程式碼片段會顯示 `Enum` 屬性類型的定義：
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -656,8 +613,6 @@ DCM 中的下列程式碼片段會顯示 `Enum` 屬性類型的定義：
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -665,8 +620,6 @@ DCM 中的下列程式碼片段會顯示 `Enum` 屬性類型的定義：
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -684,26 +637,23 @@ DCM 中的下列程式碼片段會顯示 `Enum` 屬性類型的定義：
 { "EnumProperty": 1 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `Object` 屬性類型的定義。 此物件具有兩個類型為的欄位 `string` ，以及 `integer` ：
+下列來自裝置模型的程式碼片段會顯示 `Object` 屬性類型的定義。 此物件具有兩個類型為的欄位 `string` ，以及 `integer` ：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -711,8 +661,6 @@ DCM 中的下列程式碼片段會顯示 `Object` 屬性類型的定義。 此�
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -735,17 +683,17 @@ DCM 中的下列程式碼片段會顯示 `Object` 屬性類型的定義。 此�
 }
 ```
 
-DCM 中的下列程式碼片段會顯示 `vector` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示 `vector` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "VectorProperty"
   },
   "name": "VectorProperty",
-  "schema": "vector"
+  "schema": "vector",
+  "writable": false
 }
 ```
 
@@ -780,11 +728,10 @@ IoT Central 預期會有裝置的回應可寫入屬性更新。 回應訊息應�
 
 `ad` 這是選項字串描述。
 
-DCM 中的下列程式碼片段會顯示可寫入 `string` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示可寫入 `string` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringPropertyWritable"
@@ -816,11 +763,10 @@ DCM 中的下列程式碼片段會顯示可寫入 `string` 屬性類型的定義
 }
 ```
 
-DCM 中的下列程式碼片段會顯示可寫入 `Enum` 屬性類型的定義：
+下列來自裝置模型的程式碼片段會顯示可寫入 `Enum` 屬性類型的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumPropertyWritable"
@@ -828,7 +774,6 @@ DCM 中的下列程式碼片段會顯示可寫入 `Enum` 屬性類型的定義�
   "name": "EnumPropertyWritable",
   "writable": true,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -836,8 +781,6 @@ DCM 中的下列程式碼片段會顯示可寫入 `Enum` 屬性類型的定義�
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -845,8 +788,6 @@ DCM 中的下列程式碼片段會顯示可寫入 `Enum` 屬性類型的定義�
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -854,8 +795,6 @@ DCM 中的下列程式碼片段會顯示可寫入 `Enum` 屬性類型的定義�
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -890,36 +829,30 @@ DCM 中的下列程式碼片段會顯示可寫入 `Enum` 屬性類型的定義�
 
 ## <a name="commands"></a>命令
 
-### <a name="synchronous-command-types"></a>同步命令類型
+> [!NOTE]
+> 在 IoT Central web UI 中，您可以在命令的 offline 選項中選取 [ **佇列** ]。 如果您從裝置範本匯出模型或介面，則不會包含這種設定。
 
-DCM 中的下列程式碼片段會顯示同步命令的定義，其中沒有任何參數，且不預期裝置會傳回任何內容：
+來自裝置型號的下列程式碼片段會顯示命令的定義，此命令的定義沒有任何參數，且不會預期裝置會傳回任何內容：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "displayName": {
-    "en": "SynchronousCommandBasic"
+    "en": "CommandBasic"
   },
-  "name": "SynchronousCommandBasic"
+  "name": "CommandBasic"
 }
 ```
 
 裝置會在要求中收到空的承載，並應在回應中傳回空白承載，並以 `200` HTTP 回應碼表示成功。
 
-DCM 中的下列程式碼片段會顯示具有整數參數且預期裝置傳回整數值之同步命令的定義：
+來自裝置模型的下列程式碼片段會顯示具有整數參數且預期裝置傳回整數值之命令的定義：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -927,8 +860,7 @@ DCM 中的下列程式碼片段會顯示具有整數參數且預期裝置傳回�
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -936,39 +868,32 @@ DCM 中的下列程式碼片段會顯示具有整數參數且預期裝置傳回�
     "schema": "integer"
   },
   "displayName": {
-    "en": "SynchronousCommandSimple"
+    "en": "CommandSimple"
   },
-  "name": "SynchronousCommandSimple"
+  "name": "CommandSimple"
 }
 ```
 
 裝置收到的整數值為要求承載。 裝置應該傳回整數值作為回應承載，並以 `200` HTTP 回應碼表示成功。
 
-DCM 中的下列程式碼片段會顯示具有物件參數且預期裝置會傳回物件之同步命令的定義。 在此範例中，這兩個物件都有整數和字串欄位：
+來自裝置模型的下列程式碼片段會顯示具有物件參數且預期裝置會傳回物件的命令定義。 在此範例中，這兩個物件都有整數和字串欄位：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
     "name": "RequestParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -976,8 +901,6 @@ DCM 中的下列程式碼片段會顯示具有物件參數且預期裝置會傳�
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -988,22 +911,18 @@ DCM 中的下列程式碼片段會顯示具有物件參數且預期裝置會傳�
     }
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
     "name": "ResponseParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -1011,8 +930,6 @@ DCM 中的下列程式碼片段會顯示具有物件參數且預期裝置會傳�
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -1023,9 +940,9 @@ DCM 中的下列程式碼片段會顯示具有物件參數且預期裝置會傳�
     }
   },
   "displayName": {
-    "en": "SynchronousCommandComplex"
+    "en": "CommandComplex"
   },
-  "name": "SynchronousCommandComplex"
+  "name": "CommandComplex"
 }
 ```
 
@@ -1041,19 +958,15 @@ DCM 中的下列程式碼片段會顯示具有物件參數且預期裝置會傳�
 { "Field1": 87, "Field2": "Another string value" }
 ```
 
-### <a name="asynchronous-command-types"></a>非同步命令類型
+### <a name="long-running-commands"></a>長時間執行的命令
 
-DCM 中的下列程式碼片段會顯示非同步命令的定義。 此命令具有整數參數，並預期裝置會傳回整數值：
+下列來自裝置型號的程式碼片段會顯示命令的定義。 此命令具有整數參數，並預期裝置會傳回整數值：
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "asynchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -1061,8 +974,7 @@ DCM 中的下列程式碼片段會顯示非同步命令的定義。 此命令具
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -1070,24 +982,24 @@ DCM 中的下列程式碼片段會顯示非同步命令的定義。 此命令具
     "schema": "integer"
   },
   "displayName": {
-    "en": "AsynchronousCommandSimple"
+    "en": "LongRunningCommandSimple"
   },
-  "name": "AsynchronousCommandSimple"
+  "name": "LongRunningCommandSimple"
 }
 ```
 
-裝置收到的整數值為要求承載。 裝置應該會傳回具有 HTTP 回應碼的空白回應承載 `202` ，以指出裝置已接受非同步處理的要求。
+裝置收到的整數值為要求承載。 如果裝置需要時間來處理此命令，它應該會傳回空的回應承載，其中包含 `202` HTTP 回應碼，以指出裝置已接受處理要求。
 
 當裝置完成要求的處理之後，就應該將屬性傳送至如下列範例所示的 IoT Central。 屬性名稱必須與命令名稱相同：
 
 ```json
 {
-  "AsynchronousCommandSimple": {
+  "LongRunningCommandSimple": {
     "value": 87
   }
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 作為裝置開發人員，您現在已瞭解裝置範本，建議的後續步驟是閱讀 [連線至 Azure IoT Central](./concepts-get-connected.md) ，以深入瞭解如何使用 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線。

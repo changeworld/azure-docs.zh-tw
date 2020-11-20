@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905106"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992228"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 回應策略的元件
 
@@ -44,9 +44,9 @@ Microsoft 身為重要的基礎結構提供者，會最先收到威脅的警告�
 
 - 我的服務是否會在跨多個區域進行容錯移轉時處於主動/主動狀態？
 
-您必須瞭解應用程式的正常行為，並準備好讓應用程式在 DDoS 攻擊期間未如預期般運作，是很重要的。 為您的商務關鍵應用程式設定監視，以模擬用戶端行為，並在偵測到相關的異常時通知您。 若要深入瞭解您應用程式的健康情況，請參閱 [監視和診斷最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) 。
+您必須瞭解應用程式的正常行為，並準備好讓應用程式在 DDoS 攻擊期間未如預期般運作，是很重要的。 為您的商務關鍵應用程式設定監視，以模擬用戶端行為，並在偵測到相關的異常時通知您。 若要深入瞭解您應用程式的健康情況，請參閱 [監視和診斷最佳做法](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) 。
 
-[Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多個平台上的 Web 開發人員所適用的可延伸應用程式效能管理 (APM) 服務。 使用 Application Insights 監視您的即時 Web 應用程式。 它會自動偵測效能異常。 它包含分析工具，可協助您診斷問題，並瞭解使用者如何運用您的應用程式。 它是設計來協助您持續改善效能和可用性。
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 是多個平台上的 Web 開發人員所適用的可延伸應用程式效能管理 (APM) 服務。 使用 Application Insights 監視您的即時 Web 應用程式。 它會自動偵測效能異常。 它包含分析工具，可協助您診斷問題，並瞭解使用者如何運用您的應用程式。 它是設計來協助您持續改善效能和可用性。
 
 ## <a name="customer-ddos-response-team"></a>客戶 DDoS 回應小組
 

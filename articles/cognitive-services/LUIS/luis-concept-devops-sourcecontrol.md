@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309501"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990562"
 ---
 # <a name="devops-practices-for-luis"></a>適用於 LUIS 的 DevOps 實務
 
@@ -58,7 +58,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](https://docs.mi
 
 ### <a name="build-the-luis-app-from-source"></a>從來源組建 LUIS 應用程式
 
-針對 LUIS 應用程式，若要 *從來源建立* ，表示要透過匯 [入 `.lu` 來源來建立新的 LUIS 應用程式版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) ，以 [定型版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) 並[加以發行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)。 您可以在 LUIS 入口網站或命令列中執行此動作：
+針對 LUIS 應用程式，若要 *從來源建立* ，表示要透過匯 [入 `.lu` 來源來建立新的 LUIS 應用程式版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) ，以 [定型版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) 並 [加以發行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)。 您可以在 LUIS 入口網站或命令列中執行此動作：
 
 - 使用 LUIS 入口網站從原始檔控制匯入應用程式的 [ `.lu` 版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) ，以及 [定型](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) 和 [發佈](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) 應用程式。
 
@@ -74,7 +74,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](https://docs.mi
 
 - [批次測試](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) 檔案 (語句和預期的結果，) 用於效能測試
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>未簽入認證和金鑰
+### <a name="credentials-and-keys-are-not-checked-in"></a>未簽入認證和金鑰
 
 請勿在您簽入存放庫的檔案中包含訂用帳戶金鑰或類似的機密值，但未經授權的人員可能會看到這些檔案。 您應該防止簽入的金鑰和其他值包括：
 
@@ -124,7 +124,7 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 
 1. 簽入您的更新，並邀請對等評論您的更新。 如果您使用的是 GitHub，則會引發 [提取要求](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)。
 
-1. 核准變更時，請將更新合併到主要分支中。 至此，您將使用 master 中更新的來建立*主要*LUIS 應用程式的新[版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions) `.lu` 。 如需設定版本名稱的考慮，請參閱 [版本控制](#versioning) 。
+1. 核准變更時，請將更新合併到主要分支中。 至此，您將使用 master 中更新的來建立 *主要* LUIS 應用程式的新 [版本](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions) `.lu` 。 如需設定版本名稱的考慮，請參閱 [版本控制](#versioning) 。
 
 1. 刪除功能分支時，最好先刪除您為功能分支工作所建立的 dev branch LUIS 應用程式。
 
@@ -211,7 +211,7 @@ Master 分支的 LUIS 應用程式應該套用版本設定配置。 當您將 LU
 
 當您的 PR 中的變更合併到 master 時，也就是應該套用版本控制時，讓 master 的所有更新都能獨立進行版本設定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [LUIS DevOps 的測試](luis-concept-devops-testing.md)
 * 瞭解如何 [使用 GitHub 執行 LUIS 的 DevOps](luis-how-to-devops-with-github.md)

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eefb658c689128c1d91858ac906c09e71d05cda6
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 5c80e5e611c275c2a2262963aa0759075fca836b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888941"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989389"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>檢視和設定 DDoS 保護遙測
 
-Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和視覺效果。 保護其虛擬網路避免遭受 DDoS 攻擊的客戶可以詳細了解攻擊流量，並透過攻擊風險降低報告和風險降低流程記錄來緩解攻擊。 豐富的遙測會透過 Azure 監視器公開，包括在 DDoS 攻擊期間的詳細計量。 警示可以針對 DDoS 保護所公開的任何 Azure 監視器計量進行設定。 您可以透過 Azure 儲存體診斷介面，進一步整合 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection)、Splunk (Azure 事件中樞) 、OMS Log Analytics 和 Azure 監視器的記錄，以進行 advanced analysis。
+Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和視覺效果。 保護其虛擬網路避免遭受 DDoS 攻擊的客戶可以詳細了解攻擊流量，並透過攻擊風險降低報告和風險降低流程記錄來緩解攻擊。 豐富的遙測會透過 Azure 監視器公開，包括在 DDoS 攻擊期間的詳細計量。 警示可以針對 DDoS 保護所公開的任何 Azure 監視器計量進行設定。 您可以透過 Azure 儲存體診斷介面，進一步整合 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure 事件中樞) 、OMS Log Analytics 和 Azure 監視器的記錄，以進行 advanced analysis。
 
 在本教學課程中，您將了解如何：
 
@@ -49,7 +49,7 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
     |名稱                     | 輸入 _MyDdosAlert_。                                                                                |
     |訂用帳戶             | 選取包含您想要接收警示之公用 IP 位址的訂用帳戶。        |
     |資源群組           | 選取包含您想要接收警示之公用 IP 位址的資源群組。      |
-    |資源                 | 選取包含您想要接收警示之公用 IP 位址的公用 IP 位址。 DDoS 會監視指派給虛擬網路內資源的公用 IP 位址。 如果您在虛擬網路中沒有任何具有公用 IP 位址的資源，就必須先建立一個具有公用 IP 位址的資源。 針對 [Azure 服務的虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services#services-that-can-be-deployed-into-a-virtual-network)中所列出透過 Resource Manager (非傳統) 部署的所有資源，您可以監視資源的公用 IP 位址，但「Azure App Service 環境」和「Azure VPN 閘道」除外。 若要繼續進行本教學課程，您可以快速建立一個 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器。                   |
+    |資源                 | 選取包含您想要接收警示之公用 IP 位址的公用 IP 位址。 DDoS 會監視指派給虛擬網路內資源的公用 IP 位址。 如果您在虛擬網路中沒有任何具有公用 IP 位址的資源，就必須先建立一個具有公用 IP 位址的資源。 針對 [Azure 服務的虛擬網路](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中所列出透過 Resource Manager (非傳統) 部署的所有資源，您可以監視資源的公用 IP 位址，但「Azure App Service 環境」和「Azure VPN 閘道」除外。 若要繼續進行本教學課程，您可以快速建立一個 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器。                   |
     |計量                   | 選取 [遭受 **DDoS 攻擊**]。                                                                |
     |臨界值                | 1 - **1** 表示您正遭受攻擊。 **0** 表示您並未遭受攻擊。                         |
     |期間                   | 選取您選擇的任何值。                                                                   |
@@ -95,7 +95,7 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 
 ## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>查看 Azure 資訊安全中心中的 DDoS 保護警示
 
-Azure 資訊安全中心提供 [安全性警示](/azure/security-center/security-center-managing-and-responding-alerts)的清單，以及協助調查和修復問題的資訊。 利用這項功能，您可以取得警示的統一觀點，包括 DDoS 攻擊相關的警示，以及近乎及時緩和攻擊所採取的動作。
+Azure 資訊安全中心提供 [安全性警示](../security-center/security-center-managing-and-responding-alerts.md)的清單，以及協助調查和修復問題的資訊。 利用這項功能，您可以取得警示的統一觀點，包括 DDoS 攻擊相關的警示，以及近乎及時緩和攻擊所採取的動作。
 有兩個特定警示可供您看到任何 DDoS 攻擊偵測和風險降低：
 
 - 偵測 **到公用 IP 的 DDoS 攻擊**：當 ddos 保護服務偵測到其中一個公用 IP 位址是 DDoS 攻擊的目標時，就會產生此警示。

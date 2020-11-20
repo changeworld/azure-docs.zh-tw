@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3ffa781e046a89b2e363d6edc9b9bf99116aac07
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646367"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991973"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -188,7 +188,7 @@ Azure 資源庫映像 - Microsoft 發行 | 支援 | 只要 VM 在支援的作業
 Azure 資源庫映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 自訂映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 使用 Site Recovery 移轉 VM | 支援 | 如果使用 Site Recovery 將 VMware VM 或實體機器遷移到 Azure，您需要將機器上執行的舊版行動服務解除安裝，然後重新啟動機器，再複寫到另一個 Azure 區域。
-Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則，不會複寫到目的地區域中的容錯移轉 VM。
+Azure RBAC 原則 | 不受支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則，不會複寫到目的地區域中的容錯移轉 VM。
 延伸模組 | 不支援 | 延伸模組不會複寫至目標區域中的容錯移轉 VM。 在容錯移轉之後必須手動安裝延伸模組。
 鄰近放置群組 | 支援 | 位於鄰近位置群組內的虛擬機器可以使用 Site Recovery 來保護。
 
@@ -213,7 +213,7 @@ Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBA
 --- | --- | ---
 OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/managed-disks-overview.md) VM 磁碟。
 暫存磁碟 | 不支援 | 暫存磁碟一律排除在複寫之外。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](../virtual-machines/managed-disks-overview.md)。
-資料磁碟的大小上限 | 8192 GB (若為受控磁碟)<br></br>4095 GB (若為非受控磁碟)|
+資料磁碟的大小上限 | 適用于受控磁片的 32 TB<br></br>適用于非受控磁片的 4 TB|
 資料磁碟的大小下限 | 非受控磁碟沒有限制。 2 GB (若為受控磁碟) |
 資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/sizes.md) VM 大小。
 資料磁碟的變更率 | Premium 儲存體的每個磁片最多 20 MBps。 標準儲存體的每個磁碟最多 2 MBps。 | 如果磁碟的平均資料變更率持續高於最大值，複寫將趕不上進度。<br/><br/>  不過，如果是偶而超過最大值，則複寫可以趕上進度，但您可能會看到稍有延遲的復原點。
@@ -246,7 +246,7 @@ ZRS | 不支援 |
 一般用途 V2 儲存體帳戶 (經常性存取層和非經常性存取層) | 支援 | 與一般用途 V1 儲存體帳戶相比，交易成本大幅增加
 第2代 (UEFI 開機) | 支援
 NVMe 磁碟 | 不支援
-Azure 共用磁碟 | 不支援
+Azure 共用磁碟 | 不受支援
 安全傳輸選項 | 支援
 已啟用寫入加速器的磁片 | 不支援
 
@@ -275,7 +275,7 @@ Azure 共用磁碟 | 不支援
 **設定** | **支援** | **詳細資料**
 --- | --- | ---
 NIC | 針對特定 Azure VM 大小支援的數目上限 | 在容錯移轉期間建立 VM 時，系統會建立 NIC。<br/><br/> 容錯移轉 VM 的 NIC 數目取決於啟用複寫時來源 VM 具有的 NIC 數量。 如果您在啟用複寫後新增或移除 NIC，不會影響容錯移轉後複寫 VM 上的 NIC 數目。 <br/><br/> 在容錯移轉之後，Nic 的順序不保證會與原始順序相同。 <br/><br/> 您可以根據組織的命名慣例，重新命名目的地區域中的 Nic。 使用 PowerShell 可支援重新命名 NIC。
-網際網路負載平衡器 | 不支援 | 您可以在主要區域中設定公用/網際網路負載平衡器。 不過，DR 區域中的 Azure Site Recovery 不支援公用/網際網路負載平衡器。
+網際網路負載平衡器 | 不受支援 | 您可以在主要區域中設定公用/網際網路負載平衡器。 不過，DR 區域中的 Azure Site Recovery 不支援公用/網際網路負載平衡器。
 內部負載平衡器 | 支援 | 使用復原方案中的 Azure 自動化指令碼，使預先設定的負載平衡器產生關聯。
 公用 IP 位址 | 支援 | 將現有公用 IP 位址與 NIC 產生關聯。 或者，建立公用 IP 位址，然後使用復原方案中的 Azure 自動化指令碼讓它與 NIC 產生關聯。
 NIC 上的 NSG | 支援 | 使用復原方案中的 Azure 自動化指令碼，使 NSG 與 NIC 產生關聯。

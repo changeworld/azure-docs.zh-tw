@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 3371b9cc0848e387c0150ca9aa7e7a971cecba1a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905132"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992432"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS 保護參考架構
 
-DDoS Protection Standard 是 [針對在虛擬網路中部署的服務](/azure/virtual-network/virtual-network-for-azure-services)所設計。 對於其他服務，將適用預設的基本 DDoS 保護服務。 以下的參考架構依案例排列，並與架構模式組合在一起。
+DDoS Protection Standard 是 [針對在虛擬網路中部署的服務](../virtual-network/virtual-network-for-azure-services.md)所設計。 對於其他服務，將適用預設的基本 DDoS 保護服務。 以下的參考架構依案例排列，並與架構模式組合在一起。
 
 ## <a name="virtual-machine-windowslinux-workloads"></a>虛擬機器 (Windows/Linux) 工作負載
 
@@ -54,7 +54,7 @@ DDoS Protection Standard 是 [針對在虛擬網路中部署的服務](/azure/vi
 
 Azure 流量管理員會將連入要求路由到其中一個區域中的應用程式閘道。 正常作業期間，它會將要求路由到主要區域的應用程式閘道。 如果該區域變得無法使用，流量管理員就會容錯移轉到待命區域中的應用程式閘道。
 
-所有來自網際網路且預定送往 Web 應用程式的流量都會透過流量管理員，路由到[應用程式閘道的公用 IP 位址](/azure/application-gateway/application-gateway-web-app-overview)。 在此案例中，應用程式服務 (Web 應用程式) 本身不會直接面向外部，且會受到應用程式閘道保護。 
+所有來自網際網路且預定送往 Web 應用程式的流量都會透過流量管理員，路由到[應用程式閘道的公用 IP 位址](../application-gateway/application-gateway-web-app-overview.md)。 在此案例中，應用程式服務 (Web 應用程式) 本身不會直接面向外部，且會受到應用程式閘道保護。 
 
 建議您設定應用程式閘道 WAF SKU (防止模式) 來提供保護，以避免受到第 7 層 (HTTP/HTTPS/WebSocket) 攻擊。 此外，請將 Web 應用程式設定為[只接受來自應用程式閘道 IP 位址的流量](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) (英文)。
 
@@ -64,7 +64,7 @@ Azure 流量管理員會將連入要求路由到其中一個區域中的應用�
 
 ### <a name="hdinsight-on-azure"></a>Azure 上的 HDInsight
 
-此參考架構示範如何針對 [Azure HDInsight 叢集](/azure/hdinsight/)設定標準 DDoS 保護。 請確定 HDInsight 叢集會連結到虛擬網路，且該虛擬網路上的 DDoS 保護已啟用。
+此參考架構示範如何針對 [Azure HDInsight 叢集](../hdinsight/index.yml)設定標準 DDoS 保護。 請確定 HDInsight 叢集會連結到虛擬網路，且該虛擬網路上的 DDoS 保護已啟用。
 
 ![含虛擬網路設定的 [HDInsight] 和 [進階設定] 窗格](./media/ddos-best-practices/image-12.png)
 
@@ -72,7 +72,7 @@ Azure 流量管理員會將連入要求路由到其中一個區域中的應用�
 
 在此架構中，來自網際網路且預定送往 HDInsight 叢集的流量，會路由到與 HDInsight 閘道負載平衡器相關聯的公用 IP。 閘道負載平衡器接著會將流量直接傳送到前端節點或背景工作節點。 由於已在 HDInsight 虛擬網路上啟用標準 DDoS 保護，因此虛擬網路中的所有公用 IP 都會受到第 3 層和第 4 層 DDoS 保護。 此參考架構可以與多層式 (N-Tier)/多區域參考架構結合。
 
-如需此參考架構的詳細資訊，請參閱[使用 Azure 虛擬網路延伸 Azure HDInsight](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。
+如需此參考架構的詳細資訊，請參閱[使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。
 
 
 > [!NOTE]

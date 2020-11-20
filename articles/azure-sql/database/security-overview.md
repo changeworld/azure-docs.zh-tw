@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780354"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989185"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database 與 SQL 受控執行個體安全性功能的總覽
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,22 +41,22 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 [虛擬網路規則](vnet-service-endpoint-rule-overview.md) 可讓 Azure SQL Database 只接受從虛擬網路內所選子網傳送的通訊。
 
 > [!NOTE]
-> 使用防火牆規則來控制存取 *權並不適* 用於 **SQL 受控執行個體** 。 如需有關所需網路設定的詳細資訊，請參閱 [連接到受控實例](../managed-instance/connect-application-instance.md)
+> 使用防火牆規則來控制存取 *權並不適* 用於 **SQL 受控執行個體**。 如需有關所需網路設定的詳細資訊，請參閱 [連接到受控實例](../managed-instance/connect-application-instance.md)
 
 ## <a name="access-management"></a>存取管理
 
 > [!IMPORTANT]
-> 在 Azure 內管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需本文的詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../../role-based-access-control/overview.md)。
+> 在 Azure 內管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需本文的詳細資訊，請參閱 [Azure 入口網站中的 Azure 角色型存取控制](../../role-based-access-control/overview.md)。
 
 ### <a name="authentication"></a>驗證
 
 驗證是證明使用者宣告身分的程序。 Azure SQL Database 和 SQL 受控執行個體支援兩種類型的驗證：
 
-- **SQL 驗證** ：
+- **SQL 驗證**：
 
     SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database 或 Azure SQL 受控執行個體時的使用者驗證。 建立伺服器時，必須指定具有使用者名稱和密碼的 **伺服器管理員** 登入。 **伺服器管理員** 可以使用這些認證，以資料庫擁有者身分向該伺服器或實例上的任何資料庫進行驗證。 在那之後，伺服器管理員可以建立其他 SQL 登入和使用者，可讓使用者使用使用者名稱和密碼進行連線。
 
-- **Azure Active Directory authentication** ：
+- **Azure Active Directory authentication**：
 
     Azure Active Directory authentication 是使用 Azure Active Directory (Azure AD) 中的身分識別連線到 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的機制。 Azure AD authentication 可讓系統管理員集中管理資料庫使用者的身分識別和許可權，以及在一個集中位置的其他 Azure 服務。 這包括密碼儲存體的最小化，並啟用集中式密碼輪替原則。
 
@@ -65,7 +65,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
     其他可用的 Azure AD 驗證選項為[適用於 SQL Server Management Studio 的 Active Directory 通用驗證](authentication-mfa-ssms-overview.md)連線，包括 [Multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) 和[條件式存取](conditional-access-configure.md)。
 
 > [!IMPORTANT]
-> 在 Azure 內管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需有關此文章的詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../../role-based-access-control/overview.md)。 使用防火牆規則來控制存取 *權並不適* 用於 **SQL 受控執行個體** 。 如需有關所需網路設定的詳細資訊，請參閱下列文章， [以瞭解如何連線到受控實例](../managed-instance/connect-application-instance.md) 。
+> 在 Azure 內管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需本文的詳細資訊，請參閱 [Azure 入口網站中的 Azure 角色型存取控制](../../role-based-access-control/overview.md)。 使用防火牆規則來控制存取 *權並不適* 用於 **SQL 受控執行個體**。 如需有關所需網路設定的詳細資訊，請參閱下列文章， [以瞭解如何連線到受控實例](../managed-instance/connect-application-instance.md) 。
 
 ## <a name="authorization"></a>授權
 
@@ -124,7 +124,7 @@ SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 會針對所有
 
 ![此圖顯示 Always Encrypted 功能的基本概念。 只有包含金鑰的應用程式才會存取具有鎖定的 SQL 資料庫。](./media/security-overview/azure-database-ae.png)
 
- 的資料)。 這包括資料庫管理員或其他特殊權限的使用者，該使用者經授權存取資料庫以執行管理工作，但沒有存取已加密資料行中特定資料的商務需求。 資料一律會加密，這表示加密的資料會解密，僅供可存取加密金鑰的用戶端應用程式進行處理。 加密金鑰永遠不會公開給 SQL Database 或 SQL 受控執行個體，而且可以儲存在 [Windows 憑證存放區](always-encrypted-certificate-store-configure.md) 或 [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)中。
+[一律加密](/sql/relational-databases/security/encryption/always-encrypted-database-engine)功能的設計訴求是要保護特定資料庫資料行中儲存的敏感性資料以防存取 (例如，信用卡號碼、身分證號碼，或「必須知道」的資料)。 這包括資料庫管理員或其他特殊權限的使用者，該使用者經授權存取資料庫以執行管理工作，但沒有存取已加密資料行中特定資料的商務需求。 資料一律會加密，這表示加密的資料會解密，僅供可存取加密金鑰的用戶端應用程式進行處理。 加密金鑰永遠不會公開給 SQL Database 或 SQL 受控執行個體，而且可以儲存在 [Windows 憑證存放區](always-encrypted-certificate-store-configure.md) 或 [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)中。
 
 ### <a name="dynamic-data-masking"></a>動態資料遮罩
 
@@ -152,7 +152,7 @@ SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 會針對所有
 
 除了上述可協助您的應用程式符合各種安全性需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 如需詳細資訊，請參閱 [Microsoft Azure 信任中心](https://www.microsoft.com/trust-center/compliance/compliance-overview) ，您可以在此找到最新的 SQL Database 合規性認證清單。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需使用登入、使用者帳戶、資料庫角色，以及 SQL Database 和 SQL 受控執行個體中之許可權的討論，請參閱管理登入 [和使用者帳戶](logins-create-manage.md)。
 - 如需資料庫審核的討論，請參閱「 [審核](../../azure-sql/database/auditing-overview.md)」。

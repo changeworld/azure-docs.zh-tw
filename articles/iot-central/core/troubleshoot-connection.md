@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: f4f35aed10465fb06460f2818a876444bf989e01
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843956"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990885"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>針對裝置中的資料未顯示在 Azure IoT Central 的原因進行疑難排解
 
@@ -130,12 +130,12 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| 裝置布建狀態 | 說明 | 可能的緩和措施 |
+| 裝置布建狀態 | Description | 可能的緩和措施 |
 | - | - | - |
-| 已佈建 | 沒有立即可辨識的問題。 | 不適用 |
+| 已佈建 | 沒有立即可辨識的問題。 | N/A |
 | 已登錄 | 裝置尚未連線到 IoT Central。 | 檢查您的裝置記錄是否有連線問題。 |
 | 封鎖 | 裝置遭到封鎖而無法連接到 IoT Central。 | 裝置遭到封鎖而無法連接到 IoT Central 應用程式。 請在 IoT Central 中解除封鎖裝置，然後重試。 若要深入瞭解，請參閱 [封鎖裝置](concepts-get-connected.md#device-status-values)。 |
-| 未經 批准 | 裝置未通過核准。 | 裝置未獲核准，無法連接至 IoT Central 應用程式。 請在 IoT Central 中核准裝置，然後重試。 若要深入瞭解，請參閱 [核准裝置](concepts-get-connected.md#connect-without-registering-devices) |
+| 未經 批准 | 裝置未通過核准。 | 裝置未獲核准，無法連接至 IoT Central 應用程式。 請在 IoT Central 中核准裝置，然後重試。 若要深入瞭解，請參閱 [核准裝置](concepts-get-connected.md#device-registration) |
 | 無 | 裝置未與裝置範本建立關聯。 | 將裝置與裝置範本建立關聯，讓 IoT Central 知道如何剖析資料。 |
 
 深入瞭解 [裝置狀態碼](concepts-get-connected.md#device-status-values)。
@@ -210,7 +210,7 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 如果您選擇建立可正確建立資料模型的新範本，請從舊範本將裝置遷移至新的範本。 若要深入瞭解，請參閱 [在您的 Azure IoT Central 應用程式中管理裝置](howto-manage-devices.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您需要更多協助，您可以聯繫 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家。 或者，您也可以提出 [Azure 支援的票證](https://portal.azure.com/#create/Microsoft.Support)。
 

@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 11/19/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952126"
+ms.locfileid: "94990120"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 應用程式防火牆 (WAF) 原則總覽
 
@@ -43,7 +43,7 @@ Web 應用程式防火牆原則包含所有的 WAF 設定和設定。 這包括�
 
 如同每個網站的 WAF 原則，更明確的原則會覆寫較不特定的原則。 這表示 URL 路徑對應上的每個 URI 原則都會覆寫其上方的任何每個網站或全域 WAF 原則。
 
-## <a name="example"></a>範例
+### <a name="example"></a>範例
 
 假設您有三個網站： contoso.com、fabrikam.com 和 adatum.com 全都在相同的應用程式閘道後方。 您想要將 WAF 套用到這三個網站，但您需要使用 adatum.com 提高安全性，因為這是客戶造訪、流覽和購買產品的地方。
 
@@ -60,6 +60,6 @@ Adatum.com/payments URI 是您需要小心的地方。 因此，請在該 URI �
 所有新的 Web 應用程式防火牆的 WAF 設定 (自訂規則、受控規則集設定、排除專案等等。 ) 存在於 WAF 原則中。 如果您有現有的 WAF，這些設定可能仍存在於您的 WAF 設定中。 如需移至新 WAF 原則的詳細資訊，請 [將 WAF 設定遷移至 WAF 原則](./migrate-policy.md)。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [使用 Azure PowerShell 建立每個網站和每個 URI 的原則](per-site-policies.md)。

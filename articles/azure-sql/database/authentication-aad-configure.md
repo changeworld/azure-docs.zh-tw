@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: a9ef15bf595d84613b5f41a73e5526cb0fe79d5b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841405"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990103"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
@@ -105,7 +105,7 @@ Azure (中裝載 SQL Database 或 Azure Synapse) 的每一部 [伺服器](logica
 
 7. 在 [Azure AD 管理] 頁面上，搜尋使用者，選取要成為系統管理員的使用者或群組，然後選取 [ **選取**]。
 
-   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 請參閱 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations) 中支援的系統管理員清單。  (RBAC) 的角色型存取控制僅適用于 Azure 入口網站，且不會傳播至 SQL Database、SQL 受控執行個體或 Azure Synapse。
+   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 請參閱 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations) 中支援的系統管理員清單。 Azure 角色型存取控制 (Azure RBAC) 只適用于 Azure 入口網站，不會傳播至 SQL Database、SQL 受控執行個體或 Azure Synapse。
 
     ![新增 Azure Active Directory 管理員](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
@@ -190,7 +190,7 @@ else {
 
 下表列出用來布建和管理 SQL 受控執行個體 Azure AD 系統管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 說明 |
+| Cmdlet 名稱 | Description |
 | --- | --- |
 | [設定-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為目前訂用帳戶中的 SQL 受控執行個體布建 Azure AD 系統管理員。  (必須來自目前的訂用帳戶) |
 | [移除-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |移除目前訂用帳戶中 SQL 受控執行個體的 Azure AD 系統管理員。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以藉由呼叫下列 CLI 命令，為 SQL 受控執行個體布建 Azure AD 管理員：
 
-| Command | 說明 |
+| 命令 | 說明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 布建 SQL 受控執行個體 (的 Azure Active Directory 系統管理員必須來自目前的訂用帳戶) 。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控執行個體的 Azure Active Directory 系統管理員。 |
@@ -253,7 +253,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
     ![設定 Active Directory 管理員的 SQL server](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. 在 [ **新增系統管理員** ] 頁面中，搜尋使用者，選取要成為系統管理員的使用者或群組，然後選取 [ **選取**]。 [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。  (在 [SQL Database 或 Azure Synapse 使用 Azure Active Directory 驗證進行驗證](authentication-aad-overview.md)的 **Azure AD 功能與限制**] 區段中，查看支援的系統管理員清單。 ) 的角色型存取控制 (RBAC) 僅適用于入口網站，不會傳播至 SQL Server。
+5. 在 [ **新增系統管理員** ] 頁面中，搜尋使用者，選取要成為系統管理員的使用者或群組，然後選取 [ **選取**]。 [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。  (在 [SQL Database 或 Azure Synapse 使用 Azure Active Directory 驗證](authentication-aad-overview.md)驗證的 **Azure AD 功能與限制**] 區段中，查看支援的系統管理員清單。 ) azure RBAC (僅適用于入口網站，不會傳播至) 。
 
     ![選取 Azure Active Directory 管理員](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
@@ -279,7 +279,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用來布建和管理 SQL Database 和 Azure Synapse Azure AD 管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 說明 |
+| Cmdlet 名稱 | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 | [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。|
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| Command | 說明 |
+| 命令 | 說明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。 |
@@ -532,7 +532,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 下列 blog 中可找到疑難排解 Azure AD 驗證問題的指引： <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入 [、使用者、資料庫角色和使用者帳戶](logins-create-manage.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](/sql/relational-databases/security/authentication-access/principals-database-engine)。

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212193"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991225"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 繫結
 
@@ -41,6 +41,7 @@ ms.locfileid: "88212193"
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
@@ -49,7 +50,7 @@ public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
 message = new SendGridMessage();
 message.AddTo(emailObject.To);
@@ -71,15 +72,16 @@ public class OutgoingEmail
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
 [FunctionName("SendEmail")]
-public static async void Run(
+public static async Task Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
  [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
 {
- var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+ var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
  var message = new SendGridMessage();
  message.AddTo(emailObject.To);
@@ -189,7 +191,7 @@ public class Message
 ```javascript
 module.exports = function (context, input) {
     var message = {
-         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: { email: "sender@contoso.com" },
         subject: "Azure news",
         content: [{
@@ -204,7 +206,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示使用 SendGrid 系結傳送電子郵件的 HTTP 觸發函式。 您可以在系結設定中提供預設值。 例如，[ *發件* 人電子郵件地址] 會在 *function.js*中設定。 
+下列範例顯示使用 SendGrid 系結傳送電子郵件的 HTTP 觸發函式。 您可以在系結設定中提供預設值。 例如，[ *發件* 人電子郵件地址] 會在 *function.js* 中設定。 
 
 ```json
 {
@@ -355,16 +357,16 @@ Python 指令碼不支援屬性。
 
 下表列出  *function.json* 檔案和屬性/注釋可用的系結設定屬性 `SendGrid` 。
 
-| 屬性*上的function.js* | 屬性/注釋屬性 | 說明 | 選用 |
+| 屬性 *上的function.js* | 屬性/注釋屬性 | 說明 | 選用 |
 |--------------------------|-------------------------------|-------------|----------|
-| type |n/a| 必須設為 `sendGrid`。| 否 |
+| 類型 |n/a| 必須設為 `sendGrid`。| No |
 | direction |n/a| 必須設為 `out`。| 否 |
-| NAME |n/a| 函數程式碼中用於要求或要求主體的變數名稱。 當只有一個傳回值時，此值為 `$return`。 | 否 |
+| NAME |n/a| 函數程式碼中用於要求或要求主體的變數名稱。 當只有一個傳回值時，此值為 `$return`。 | No |
 | apiKey | ApiKey | 包含您 API 金鑰的應用程式設定名稱。 如果未設定，預設的應用程式設定名稱會是 *AzureWebJobsSendGridApiKey*。| 否 |
-| to| 收件者 | 收件者的電子郵件地址。 | 是 |
-| 從| 來自 | 寄件者的電子郵件地址。 |  是 |
+| to| 收件者 | 收件者的電子郵件地址。 | Yes |
+| 從| 寄件者 | 寄件者的電子郵件地址。 |  Yes |
 | subject| 主體 | 電子郵件的主旨。 | 是 |
-| text| Text | 電子郵件內容。 | 是 |
+| text| Text | 電子郵件內容。 | Yes |
 
 選擇性屬性可能會在系結中定義預設值，並以程式設計的方式加入或覆寫。
 
@@ -395,7 +397,7 @@ Python 指令碼不支援屬性。
 |從|n/a|所有函式的寄件者電子郵件地址。| 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [深入了解 Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)

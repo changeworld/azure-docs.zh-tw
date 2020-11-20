@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Spring Cloud 的內建原則定義
 description: 列出適用於 Azure Spring Cloud 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: ad41f2597092b95eaabd93fa2d577732daafaf73
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 284114cc3f3339ca0178f9cf3a101a401161ba6d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94736109"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990633"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>適用於 Azure Spring Cloud 的 Azure 原則內建定義
 

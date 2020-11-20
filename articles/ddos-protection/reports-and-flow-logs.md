@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 28e977ed68a3f288f9f86a0c2be02af4cbb26ba4
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 96e22beb9f9b088e698f0db12104f526af2b936b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886556"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989448"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>設定 DDoS 攻擊風險降低報告和流量記錄 
 
-Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和視覺效果。 保護其虛擬網路避免遭受 DDoS 攻擊的客戶可以詳細了解攻擊流量，並透過攻擊風險降低報告和風險降低流程記錄來緩解攻擊。 豐富的遙測會透過 Azure 監視器公開，包括在 DDoS 攻擊期間的詳細計量。 警示可以針對 DDoS 保護所公開的任何 Azure 監視器計量進行設定。 您可以透過 Azure 儲存體診斷介面，進一步整合 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection)、Splunk (Azure 事件中樞) 、OMS Log Analytics 和 Azure 監視器的記錄，以進行 advanced analysis。
+Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和視覺效果。 保護其虛擬網路避免遭受 DDoS 攻擊的客戶可以詳細了解攻擊流量，並透過攻擊風險降低報告和風險降低流程記錄來緩解攻擊。 豐富的遙測會透過 Azure 監視器公開，包括在 DDoS 攻擊期間的詳細計量。 警示可以針對 DDoS 保護所公開的任何 Azure 監視器計量進行設定。 您可以透過 Azure 儲存體診斷介面，進一步整合 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure 事件中樞) 、OMS Log Analytics 和 Azure 監視器的記錄，以進行 advanced analysis。
 
 在本教學課程中，您將了解如何：
 
@@ -44,9 +44,9 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 5. 針對 [資源類型] 選取 [公用 IP 位址]，然後選取您想要為其記錄計量的特定公用 IP 位址。
 6. 選取 [開啟診斷以收集 DDoSMitigationReports 記錄]，然後視需要選取下列眾多選項：
 
-    - **封存至儲存體帳戶**：可將資料寫入至「Azure 儲存體」帳戶。 若要深入瞭解這個選項，請參閱封存 [資源記錄](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)檔。
-    - **串流至事件中樞**：可讓記錄接收者使用「Azure 事件中樞」來挑選記錄。 事件中樞可允許與 Splunk 或其他 SIEM 系統進行整合。 若要深入瞭解這個選項，請參閱 [將資源記錄串流至事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **傳送至 Log Analytics**：將記錄寫入 Azure 監視器服務。 若要深入瞭解這個選項，請參閱 [收集記錄以用於 Azure 監視器記錄](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)檔。
+    - **封存至儲存體帳戶**：可將資料寫入至「Azure 儲存體」帳戶。 若要深入瞭解這個選項，請參閱封存 [資源記錄](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)檔。
+    - **串流至事件中樞**：可讓記錄接收者使用「Azure 事件中樞」來挑選記錄。 事件中樞可允許與 Splunk 或其他 SIEM 系統進行整合。 若要深入瞭解這個選項，請參閱 [將資源記錄串流至事件中樞](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
+    - **傳送至 Log Analytics**：將記錄寫入 Azure 監視器服務。 若要深入瞭解這個選項，請參閱 [收集記錄以用於 Azure 監視器記錄](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)檔。
 
 增量及攻擊風險降低後續報告包括下列欄位
 - 攻擊媒介
@@ -66,15 +66,15 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 5. 針對 [資源類型] 選取 [公用 IP 位址]，然後選取您想要為其記錄計量的特定公用 IP 位址。
 6. 選取 [開啟診斷以收集 DDoSMitigationFlowLogs 記錄]，然後視需要選取下列眾多選項：
 
-    - **封存至儲存體帳戶**：可將資料寫入至「Azure 儲存體」帳戶。 若要深入瞭解這個選項，請參閱封存 [資源記錄](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)檔。
-    - **串流至事件中樞**：可讓記錄接收者使用「Azure 事件中樞」來挑選記錄。 事件中樞可允許與 Splunk 或其他 SIEM 系統進行整合。 若要深入瞭解這個選項，請參閱 [將資源記錄串流至事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **傳送至 Log Analytics**：將記錄寫入 Azure 監視器服務。 若要深入瞭解這個選項，請參閱 [收集記錄以用於 Azure 監視器記錄](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)檔。
+    - **封存至儲存體帳戶**：可將資料寫入至「Azure 儲存體」帳戶。 若要深入瞭解這個選項，請參閱封存 [資源記錄](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)檔。
+    - **串流至事件中樞**：可讓記錄接收者使用「Azure 事件中樞」來挑選記錄。 事件中樞可允許與 Splunk 或其他 SIEM 系統進行整合。 若要深入瞭解這個選項，請參閱 [將資源記錄串流至事件中樞](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
+    - **傳送至 Log Analytics**：將記錄寫入 Azure 監視器服務。 若要深入瞭解這個選項，請參閱 [收集記錄以用於 Azure 監視器記錄](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)檔。
 
 此 [範本](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) 會建立 Azure 原則定義來啟用診斷記錄。
 
 ### <a name="azure-sentinel-data-connector"></a>Azure Sentinel 資料連線器
 
-您可以連接到 Azure Sentinel、查看和分析活頁簿中的資料、建立自訂警示，並將其併入調查程式。 若要連接到 Azure Sentinel，請參閱 [連接到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection)。 
+您可以連接到 Azure Sentinel、查看和分析活頁簿中的資料、建立自訂警示，並將其併入調查程式。 若要連接到 Azure Sentinel，請參閱 [連接到 Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)。 
 
 ![Azure Sentinel DDoS 連接器](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 
@@ -121,4 +121,3 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 
 > [!div class="nextstepaction"]
 > [透過模擬測試](test-through-simulations.md)
-

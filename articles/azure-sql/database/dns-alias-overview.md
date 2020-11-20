@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790486"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989117"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database 的 DNS 別名
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -60,8 +60,8 @@ Azure SQL Database 的 DNS 別名功能適用於下列案例：
 - *伺服器是必要的：* 無法建立 DNS 別名，除非該名稱參照正好一部伺服器，且該伺服器必須已存在。 更新後的別名必須一律參照正好一部現有的伺服器。
   - 當您卸載伺服器時，Azure 系統也會卸載所有參考該伺服器的 DNS 別名。
 - *未繫結至任何區域：* DNS 別名未繫結至任何區域。 您可以更新任何 DNS 別名，以參考位於任何地理區域的伺服器。
-  - 不過，將別名更新為參照另一部伺服器時，這兩部伺服器都必須存在於相同的 Azure 訂用帳戶  中。
--  權限或更高階的權限。 如需詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../../role-based-access-control/overview.md)。
+  - 不過，將別名更新為參照另一部伺服器時，這兩部伺服器都必須存在於相同的 Azure 訂用帳戶中。
+- *權限：* 若要管理 DNS 別名，使用者必須擁有「伺服器參與者」權限或更高階的權限。 如需詳細資訊，請參閱 [Azure 入口網站中的開始使用 Azure 角色型存取控制](../../role-based-access-control/overview.md)。
 
 ## <a name="manage-your-dns-aliases"></a>管理 DNS 別名
 
@@ -115,6 +115,6 @@ PowerShell Cmdlet 可用於呼叫 REST API。
 - [Azure REST API 參考](/rest/api/azure/)
 - [伺服器 Dns 別名 API](/rest/api/sql/serverdnsaliases)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [適用於 Azure SQL Database 之 DNS 別名的 PowerShell](dns-alias-powershell-create.md)

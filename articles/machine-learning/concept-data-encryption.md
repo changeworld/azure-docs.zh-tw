@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540003"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992041"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning 的資料加密
 
@@ -130,6 +130,12 @@ Azure Machine Learning 將中繼資料儲存在 Azure Cosmos DB 實例中。 這
 
 Azure Databricks 可以在 Azure Machine Learning 管線中使用。 根據預設，Azure Databricks 使用的 Databricks 檔案系統 (DBFS) 會使用 Microsoft 受控金鑰進行加密。 若要設定 Azure Databricks 使用客戶管理的金鑰，請參閱[在預設 (根) DBFS 上設定客戶管理的金鑰](/azure/databricks/security/customer-managed-keys-dbfs)。
 
+### <a name="microsoft-generated-data"></a>Microsoft 產生的資料
+
+使用「自動化機器學習」這類服務時，Microsoft 可能會產生暫時性、預先處理的資料來定型多個模型。 此資料會儲存在您工作區的資料存放區中，讓您能夠適當地強制執行存取控制和加密。
+
+您可能也會想要將[從已部署的端點記錄的診斷資訊](how-to-enable-app-insights.md)，加密至您的 Azure Application Insights 執行個體。
+
 ## <a name="encryption-in-transit"></a>傳輸中加密
 
 Azure Machine Learning 使用 TLS 來保護各種 Azure Machine Learning 微服務之間的內部通訊。 所有的 Azure 儲存體存取也會透過安全通道進行。
@@ -158,7 +164,7 @@ SSH 密碼和計算目標 (例如 Azure HDInsight 和 VM) 的金鑰會儲存在�
 
 每個工作區都有相關聯的系統指派受控識別，其名稱與工作區相同。 此受控識別可存取金鑰保存庫中的所有金鑰、祕密和憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [連接到 Azure 儲存體](how-to-access-data.md)
 * [從資料存放區取得資料](how-to-create-register-datasets.md)
