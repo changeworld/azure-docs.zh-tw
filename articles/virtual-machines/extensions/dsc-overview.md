@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079569"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955849"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure 預期狀態設定延伸模組處理常式簡介
 
@@ -37,7 +38,7 @@ Azure Desired State Configuration (DSC) 延伸模組的主要使用案例是將 
 
 本文提供兩種案例的相關資訊：使用 DSC 延伸模組來進行「自動化」上線，以及藉由使用 Azure SDK 來使用 DSC 延伸模組作為工具，以將設定指派給 VM。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **本機電腦**：若要與 Azure VM 延伸模組互動，您必須使用 Azure 入口網站或 Azure PowerShell SDK。
 - **客體代理程式**：DSC 設定所設定的 Azure VM 必須是支援 Windows Management Framework (WMF) 4.0 或更新版本的 OS。 如需所支援 OS 版本的完整清單，請參閱 [DSC 延伸模組版本歷程記錄](../../automation/automation-dsc-extension-history.md) \(英文\)。
@@ -103,7 +104,7 @@ Azure DSC 延伸模組包含預設設定指令碼，可在將 VM 上線至 Azure
 
 **Get-AzVMDscExtensionStatus** Cmdlet 會擷取 DSC 延伸模組處理常式所制定之 DSC 設定的狀態。 此動作可在單一 VM 上執行，也可在一組 VM 上執行。
 
-**Remove-AzVMDscExtension** Cmdlet 會從特定虛擬機器中移除延伸模組處理常式。 此 Cmdlet「不會」** 移除設定、將 WMF 解除安裝，或變更已在 VM 上套用的設定。 它只會移除延伸模組處理常式。
+**Remove-AzVMDscExtension** Cmdlet 會從特定虛擬機器中移除延伸模組處理常式。 此 Cmdlet「不會」移除設定、將 WMF 解除安裝，或變更已在 VM 上套用的設定。 它只會移除延伸模組處理常式。
 
 Resource Manager DSC 延伸模組 Cmdlet 相關的重要資訊：
 
@@ -114,7 +115,7 @@ Resource Manager DSC 延伸模組 Cmdlet 相關的重要資訊：
 
 ### <a name="get-started-with-cmdlets"></a>開始使用 Cmdlet
 
-Azure DSC 延伸模組可以使用 DSC 設定文件，在部署期間直接設定 Azure VM。 此步驟不會向「自動化」註冊節點。 該節點「不會」** 受到集中管理。
+Azure DSC 延伸模組可以使用 DSC 設定文件，在部署期間直接設定 Azure VM。 此步驟不會向「自動化」註冊節點。 該節點「不會」受到集中管理。
 
 下列範例說明一個簡單的設定範例。 在本機將設定儲存為 iisInstall.ps1。
 
@@ -177,27 +178,27 @@ az vm extension set \
 在入口網站中設定 DSC：
 
 1. 前往 VM。
-2. 在 [設定]**** 底下，選取 [延伸模組]****。
-3. 在建立的新頁面中，選取 [新增]****，然後選取 [PowerShell 預期狀態設定]****。
-4. 在延伸模組資訊頁面底端，按一下 [建立]****。
+2. 在 [設定] 底下，選取 [延伸模組]。
+3. 在建立的新頁面中，選取 [新增]，然後選取 [PowerShell 預期狀態設定]。
+4. 在延伸模組資訊頁面底端，按一下 [建立]。
 
 入口網站會收集以下輸入資訊：
 
-- **設定模組或指令碼**：此為必要欄位 (此表單尚未針對[預設設定指令碼](#default-configuration-script)進行更新)。 設定模組和指令碼需要一個包含設定指令碼的 .ps1 檔案，或一個 .ps1 設定指令碼位於根目錄的 .zip 檔案。 如果您使用 .zip 檔案，所有相依資源都必須包含在該 .zip 檔案的模組資料夾中。 您可以使用 Azure PowerShell SDK 所包含的 **Publish-AzureVMDscConfiguration -OutputArchivePath** Cmdlet 來建立 .zip 檔案。 此 .zip 檔案會上傳到您的使用者 Blob 儲存體並受到 SAS 權杖保護。
+- **設定模組或指令碼**：此為必要欄位 (此表單尚未針對 [預設設定指令碼](#default-configuration-script)進行更新)。 設定模組和指令碼需要一個包含設定指令碼的 .ps1 檔案，或一個 .ps1 設定指令碼位於根目錄的 .zip 檔案。 如果您使用 .zip 檔案，所有相依資源都必須包含在該 .zip 檔案的模組資料夾中。 您可以使用 Azure PowerShell SDK 所包含的 **Publish-AzureVMDscConfiguration -OutputArchivePath** Cmdlet 來建立 .zip 檔案。 此 .zip 檔案會上傳到您的使用者 Blob 儲存體並受到 SAS 權杖保護。
 
-- 設定**的模組限定名稱**：您可以在 ps1 檔案中包含多個設定函式。 請輸入設定 .ps1 指令碼的名稱，後面跟著 \\ 和設定函式的名稱。 例如，如果 .ps1 指令碼的名稱為 configuration.ps1，而設定為 **IisInstall**，則請輸入 **configuration.ps1\IisInstall**。
+- 設定 **的模組限定名稱**：您可以在 ps1 檔案中包含多個設定函式。 請輸入設定 .ps1 指令碼的名稱，後面跟著 \\ 和設定函式的名稱。 例如，如果 .ps1 指令碼的名稱為 configuration.ps1，而設定為 **IisInstall**，則請輸入 **configuration.ps1\IisInstall**。
 
 - **設定引數**︰如果設定函式接受引數，請以 **argumentName1=value1,argumentName2=value2** 格式在這裡輸入引數。 此格式與 PowerShell Cmdlet 或 Resource Manager 範本中接受設定引數時所採用的格式不同。
 
-- 設定**資料 .psd1**檔案：如果您的設定需要中的設定資料檔 `.psd1` ，請使用此欄位來選取資料檔案，並將它上傳至您的使用者 blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
+- 設定 **資料 .psd1** 檔案：如果您的設定需要中的設定資料檔 `.psd1` ，請使用此欄位來選取資料檔案，並將它上傳至您的使用者 blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
 
-- **WMF 版本**指定應該安裝在您虛擬機器上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 latest 會安裝最新版的 WMF。 此屬性目前只有下列可能值：4.0、5.0、5.1 及 latest。 這些可能的值可能會更新。 預設值為 **latest**。
+- **WMF 版本** 指定應該安裝在您虛擬機器上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 latest 會安裝最新版的 WMF。 此屬性目前只有下列可能值：4.0、5.0、5.1 及 latest。 這些可能的值可能會更新。 預設值為 **latest**。
 
 - **資料收集**：決定延伸模組是否會收集遙測資料。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/) \(英文\)。
 
 - **版本**：指定要安裝的 DSC 延伸模組版本。 如需版本的相關資訊，請參閱 [DSC 延伸模組版本歷程記錄](/powershell/scripting/dsc/getting-started/azuredscexthistory) (英文)。
 
-- **自動升級次要版本**：此欄位會對應至 Cmdlet 中的 **AutoUpdate** 參數，並允許延伸模組在安裝時自動更新為最新版本。 [是]**** 會指示延伸模組在處理延伸模組常式時，要使用最新版本，[否]**** 將強制安裝指定的 [版本]****。 未選取 [是]**** 亦未選取 [否]****，等同選取 [否]****。
+- **自動升級次要版本**：此欄位會對應至 Cmdlet 中的 **AutoUpdate** 參數，並允許延伸模組在安裝時自動更新為最新版本。 [是] 會指示延伸模組在處理延伸模組常式時，要使用最新版本，[否] 將強制安裝指定的 [版本]。 未選取 [是] 亦未選取 [否]，等同選取 [否]。
 
 ## <a name="logs"></a>記錄
 

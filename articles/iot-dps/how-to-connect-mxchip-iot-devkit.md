@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6b6649d03da319171b24baa24983972bf270679
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528648"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954540"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中樞裝置佈建服務的自動佈建向 IoT 中樞註冊 MXChip IoT DevKit
 
@@ -30,22 +30,22 @@ ms.locfileid: "90528648"
 
 若要完成本教學課程中的步驟，請先執行下列工作：
 
-* 遵循將 [IoT DEVKIT AZ3166 連線 Azure IoT 中樞到雲端中](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)的「準備開發環境」一節中的「準備開發環境」一節，以設定您的 DevKit Wi-Fi 並準備您的開發環境。
+* 遵循將 [IoT DEVKIT AZ3166 連線 Azure IoT 中樞到雲端中](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment)的「準備開發環境」一節中的「準備開發環境」一節，以設定您的 DevKit Wi-Fi 並準備您的開發環境。
 * 利用[更新 DevKit 韌體](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)教學課程，升級至最新的韌體 (1.3.0 或更新版本)。
-* 遵循 [使用 Azure 入口網站設定 Iot 中樞裝置](/azure/iot-dps/quick-setup-auto-provision)布建服務中的步驟，建立 iot 中樞，並將其連結至裝置布建服務實例。
+* 遵循 [使用 Azure 入口網站設定 Iot 中樞裝置](./quick-setup-auto-provision.md)布建服務中的步驟，建立 iot 中樞，並將其連結至裝置布建服務實例。
 
 ## <a name="open-sample-project"></a>開啟範例專案
 
-1. 確定 IoT DevKit **未**連線至您的電腦。 先啟動 VS Code，然後將 DevKit 連線至您的電腦。
+1. 確定 IoT DevKit **未** 連線至您的電腦。 先啟動 VS Code，然後將 DevKit 連線至您的電腦。
 
 1. 按一下 `F1` 以開啟命令選擇區，輸入並選取 [Azure IoT Device Workbench：**開啟範例...]** 。然後選取 [IoT DevKit] 作為面板。
 
-1. 在 [IoT Workbench 範例] 頁面上，尋找 [使用 DPS 進行裝置註冊]****，然後按一下 [開啟範例]****。 然後選取預設路徑來下載範例程式碼。
+1. 在 [IoT Workbench 範例] 頁面上，尋找 [使用 DPS 進行裝置註冊]，然後按一下 [開啟範例]。 然後選取預設路徑來下載範例程式碼。
     ![開啟範例](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>將唯一裝置祕密儲存在裝置安全性儲存體上
 
-可以根據裝置的[證明機制](concepts-service.md#attestation-mechanism)，在裝置上設定自動佈建。 MXChip IoT DevKit 會使用來自 [Trusted Computing Group](https://trustedcomputinggroup.org) 的[裝置身分識別組成引擎 (Device Identity Composition Engine)](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf)。 儲存在 DevKit 上 STSAFE 安全晶片 ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/) \(英文\)) 中的**唯一裝置祕密** (UDS) 會用來產生裝置的唯一 [X.509 憑證](concepts-x509-attestation.md)。 此憑證稍後會用於裝置佈建服務中的註冊程序，以及在執行階段的註冊期間使用。
+可以根據裝置的[證明機制](concepts-service.md#attestation-mechanism)，在裝置上設定自動佈建。 MXChip IoT DevKit 會使用來自 [Trusted Computing Group](https://trustedcomputinggroup.org) 的[裝置身分識別組成引擎 (Device Identity Composition Engine)](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf)。 儲存在 DevKit 上 STSAFE 安全晶片 ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/) \(英文\)) 中的 **唯一裝置祕密** (UDS) 會用來產生裝置的唯一 [X.509 憑證](concepts-x509-attestation.md)。 此憑證稍後會用於裝置佈建服務中的註冊程序，以及在執行階段的註冊期間使用。
 
 典型的 UDS 是一個 64 個字元的字串，如以下範例所示：
 
@@ -60,7 +60,7 @@ ms.locfileid: "90528648"
 
 1. 在 DevKit 上，按住 **按鈕 a**，然後按下再放開 [ **重設** ] 按鈕，然後放開 **按鈕 a**。您的 DevKit 會進入設定模式。
 
-1. 按一下 `F1` 以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...] > Config 唯一的裝置字串 (ud) **。
+1. 按一下 `F1` 以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...] > Config 唯一的裝置字串 (ud)**。
   ![設定 UDS](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. 請記下所產生的 UDS 字串。 您將需要它來產生 X.509 憑證。 然後按 `Enter`。
@@ -74,7 +74,7 @@ ms.locfileid: "90528648"
 
 ## <a name="update-the-global-device-endpoint-and-id-scope"></a>更新全域裝置端點和識別碼範圍
 
-在裝置程式碼中，您需要指定[裝置佈建端點](/azure/iot-dps/concepts-service#device-provisioning-endpoint)和識別碼範圍，以確保租用戶隔離。
+在裝置程式碼中，您需要指定[裝置佈建端點](./concepts-service.md#device-provisioning-endpoint)和識別碼範圍，以確保租用戶隔離。
 
 1. 在 [Azure 入口網站中，選取您裝置布建服務的 [ **總覽** ] 窗格，並記下 **全域裝置端點** 和 **識別碼範圍** 值。
   ![裝置佈建服務全域端點和識別碼範圍](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
@@ -90,9 +90,9 @@ ms.locfileid: "90528648"
 
 ## <a name="generate-x509-certificate"></a>產生 X.509 憑證
 
-此範例所使用的[證明機制](/azure/iot-dps/concepts-device#attestation-mechanism)是 X.509 憑證。 您需要使用公用程式來產生它。
+此範例所使用的[證明機制](./concepts-service.md#attestation-mechanism)是 X.509 憑證。 您需要使用公用程式來產生它。
 
-1. 在 VS Code 中，按一下 `F1`，輸入並選取 [開啟新的終端機]**** 以開啟終端機視窗。
+1. 在 VS Code 中，按一下 `F1`，輸入並選取 [開啟新的終端機] 以開啟終端機視窗。
 
 1. 在 `tool` 資料夾中執行 `dps_cert_gen.exe`。
 
@@ -104,15 +104,15 @@ ms.locfileid: "90528648"
 
 ## <a name="create-a-device-enrollment-entry"></a>建立裝置註冊項目
 
-1. 在 Azure 入口網站中，開啟您的裝置佈建服務、瀏覽至 [管理註冊] 區段，然後按一下 [新增個別註冊]****。
+1. 在 Azure 入口網站中，開啟您的裝置佈建服務、瀏覽至 [管理註冊] 區段，然後按一下 [新增個別註冊]。
   ![新增個別註冊](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
-1. 按一下 [主要憑證 .pem 或 .cer 檔案]**** 旁的檔案圖示，以上傳已產生的 `.pem` 檔案。
+1. 按一下 [主要憑證 .pem 或 .cer 檔案] 旁的檔案圖示，以上傳已產生的 `.pem` 檔案。
   ![上傳 .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>確認 DevKit 已向 Azure IoT 中樞註冊
 
-按下 DevKit 上的 [Reset] \(重設\)**** 按鈕。 您應該會在 DevKit 畫面上看到 [DPS 已連線！]**** 。 當裝置重新啟動之後，會發生下列動作：
+按下 DevKit 上的 [Reset] \(重設\) 按鈕。 您應該會在 DevKit 畫面上看到 [DPS 已連線！] 。 當裝置重新啟動之後，會發生下列動作：
 
 1. 裝置會向裝置佈建服務傳送註冊要求。
 1. 裝置佈建服務會回傳註冊挑戰供您的裝置回應。
@@ -141,4 +141,3 @@ ms.locfileid: "90528648"
 > * 確認裝置已註冊。
 
 深入了解如何[建立及佈建模擬裝置](./quick-create-simulated-device.md)。
-

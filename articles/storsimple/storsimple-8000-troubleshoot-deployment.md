@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187059"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956886"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple 裝置部署問題的疑難排解
 ## <a name="overview"></a>概觀
@@ -46,12 +46,12 @@ ms.locfileid: "86187059"
 ## <a name="first-time-setup-wizard-process"></a>第一次執行安裝精靈程序
 下列步驟概述安裝精靈程序。 如需詳細的安裝資訊，請參閱 [部署內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)。
 
-1. 執行 [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) Cmdlet 來啟動安裝精靈，此精靈將引導您完成其餘步驟。 
+1. 執行 [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) Cmdlet 來啟動安裝精靈，此精靈將引導您完成其餘步驟。 
 2. 設定網路：安裝精靈可讓您針對 StorSimple 裝置上的 DATA 0 網路介面進行網路設定。 這些設定包括：
-   * 虛擬 IP (VIP)、子網路遮罩及閘道 - [Set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) Cmdlet 會在背景中執行。 它會針對 StorSimple 裝置上的 DATA 0 網路介面設定 IP 位址、子網路遮罩及閘道。
-   * 主要 DNS 伺服器 - [Set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 DNS 設定。
-   * NTP 伺服器 - [Set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 NTP 伺服器設定。
-   * 選用的 Web Proxy - [Set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 Web Proxy 設定並加以啟用。
+   * 虛擬 IP (VIP)、子網路遮罩及閘道 - [Set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) Cmdlet 會在背景中執行。 它會針對 StorSimple 裝置上的 DATA 0 網路介面設定 IP 位址、子網路遮罩及閘道。
+   * 主要 DNS 伺服器 - [Set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 DNS 設定。
+   * NTP 伺服器 - [Set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 NTP 伺服器設定。
+   * 選用的 Web Proxy - [Set-HcsWebProxy](/previous-versions/windows/powershell-scripting/dn688154(v=wps.630)) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 Web Proxy 設定並加以啟用。
 3. 設定密碼：下一個步驟是設定裝置系統管理員密碼。
    裝置系統管理員密碼可用來登入您的裝置。 預設裝置密碼是 **Password1**。
         
@@ -139,7 +139,7 @@ ms.locfileid: "86187059"
 | 9 |警告：無法啟動裝置。 您的設定裝置系統管理員和 StorSimple Snapshot Manager 密碼尚未變更。 |如果註冊失敗，裝置系統管理員和 StorSimple Snapshot Manager 密碼就不會變更。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>適用於疑難排解 StorSimple 部署的工具
-StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 其中包括：
+StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 它們包括：
 
 * 支援封裝和裝置記錄。
 * 專為疑難排解而設計的 Cmdlet。
@@ -154,10 +154,10 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 4. 解密的支援封裝記錄格式為 etw/etvx 格式。 您可以執行下列步驟，在 Windows 事件檢視器中檢視這些檔案：
    
    1. 在您的 Windows 用戶端執行 **eventvwr** 命令。 這將會啟動事件檢視器。
-   2. 在 [動作]**** 窗格中，按一下 [開啟已儲存的記錄]****，並指向 etvx/etw 格式 (支援封裝) 的記錄檔。 您現在可以檢視該檔案。 開啟檔案之後，您可以按一下滑鼠右鍵並將該檔案儲存為文字。
+   2. 在 [動作] 窗格中，按一下 [開啟已儲存的記錄]，並指向 etvx/etw 格式 (支援封裝) 的記錄檔。 您現在可以檢視該檔案。 開啟檔案之後，您可以按一下滑鼠右鍵並將該檔案儲存為文字。
       
       > [!IMPORTANT]
-      > 您也可以使用 **Get-WinEvent** Cmdlet，在 Windows PowerShell 中開啟這些檔案。 如需詳細資訊，請參閱 Windows PowerShell Cmdlet 參考文件中的 [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) 。
+      > 您也可以使用 **Get-WinEvent** Cmdlet，在 Windows PowerShell 中開啟這些檔案。 如需詳細資訊，請參閱 Windows PowerShell Cmdlet 參考文件中的 [Get-WinEvent](/powershell/module/microsoft.powershell.diagnostics/get-winevent) 。
      
 5. 在事件檢視器中開啟記錄時，尋找下列包含裝置設定相關問題的記錄：
    
@@ -178,18 +178,18 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 * `Get-HcsRoutingTable`：此 Cmdlet 可顯示本機 IP 的路由表。
 
 ## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Get-NetAdapter Cmdlet 的疑難排解
-當您在第一次裝置部署期間設定網路介面時，無法在 StorSimple 裝置管理員服務 UI 中取得硬體狀態，因為裝置尚未向該服務註冊。 此外，[硬體健康狀態]**** 刀鋒視窗不一定能夠正確反映裝置狀態，尤其是發生了會影響服務同步處理的問題。 在這些情況下，您可以使用 `Get-NetAdapter` Cmdlet，來判斷網路介面的健康情況和狀態。
+當您在第一次裝置部署期間設定網路介面時，無法在 StorSimple 裝置管理員服務 UI 中取得硬體狀態，因為裝置尚未向該服務註冊。 此外，[硬體健康狀態] 刀鋒視窗不一定能夠正確反映裝置狀態，尤其是發生了會影響服務同步處理的問題。 在這些情況下，您可以使用 `Get-NetAdapter` Cmdlet，來判斷網路介面的健康情況和狀態。
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>查看裝置上所有網路介面卡的清單
 1. 啟動 Windows PowerShell for StorSimple，然後鍵入 `Get-NetAdapter`。 
 2. 使用 `Get-NetAdapter` Cmdlet 的輸出和下列指南來了解網路介面的狀態。
    
-   * 如果此介面狀況良好且已啟用，**ifIndex** 狀態會顯示為**向上**。
-   * 如果介面狀況良好，但尚未實際連線 (透過網路纜線)，**ifIndex** 會顯示為**已停用**。
+   * 如果此介面狀況良好且已啟用，**ifIndex** 狀態會顯示為 **向上**。
+   * 如果介面狀況良好，但尚未實際連線 (透過網路纜線)，**ifIndex** 會顯示為 **已停用**。
    * 如果此介面狀況良好但未啟用，**ifIndex** 狀態會顯示為 **NotPresent**。
    * 如果介面不存在，它就不會出現在這份清單中。 StorSimple Manager 裝置管理員服務 UI 仍會顯示此介面處於失敗狀態。
 
-如需有關如何使用此 Cmdlet 的詳細資訊，請移至 Windows PowerShell Cmdlet 參考中的 [get-netadapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) 。
+如需有關如何使用此 Cmdlet 的詳細資訊，請移至 Windows PowerShell Cmdlet 參考中的 [get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) 。
 
 下列各節示範來自 `Get-NetAdapter` Cmdlet 的輸出範例。
 
@@ -284,7 +284,7 @@ HCSNODE0      outlook.com     132.245.92.194
    * ErrorCode.CiSDeviceDecommissioned - 這表示裝置已停用。
    * ErrorCode.DeviceNotReady - 這表示裝置處於維護模式。
    * ErrorCode.DeviceNotReady - 這表示裝置處於離線狀態。
-3. 確認 StorSimple 裝置管理員服務正在執行中 (使用 [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) Cmdlet)。 如果服務不在執行中，您可能會看到下列錯誤：
+3. 確認 StorSimple 裝置管理員服務正在執行中 (使用 [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) Cmdlet)。 如果服務不在執行中，您可能會看到下列錯誤：
    
    * ErrorCode.CiSApplianceAgentNotOnline
    * ErrorCode.CisPowershellScriptHcsError - 這表示在執行 Get-ClusterResource 時發生例外狀況。
@@ -308,7 +308,7 @@ HCSNODE0      outlook.com     132.245.92.194
 
 記錄檔 CiSCommandletLog0Curr.errlog 和 CiSAgentsvc0Curr.errlog 將提供更多資訊，例如，例外狀況詳細資料。
 
-如需如何使用 Cmdlet 的詳細資訊，請參閱 Windows PowerShell 參考說明文件中的 [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) 。
+如需如何使用 Cmdlet 的詳細資訊，請參閱 Windows PowerShell 參考說明文件中的 [Test-HcsmConnection](/previous-versions/windows/powershell-scripting/dn715782(v=wps.630)) 。
 
 > [!IMPORTANT]
 > 您可以針對主動和被動控制器執行這個 Cmdlet。
@@ -349,7 +349,7 @@ Controller1>
 
 **範例輸出 – 離線裝置** 
 
-這個範例是來自 Azure 入口網站中狀態為 [離線] **** 的裝置。
+這個範例是來自 Azure 入口網站中狀態為 [離線]  的裝置。
 
 ```output
 Checking device registrationstate: Success
@@ -548,10 +548,10 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 8. 查看記錄。 請移至 [可用來疑難排解的支援封裝和裝置記錄](#support-packages-and-device-logs-available-for-troubleshooting)。
 9. 如果上述步驟並未解決問題，請 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以尋求協助。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [了解如何使用診斷工具對 StorSimple 裝置進行疑難排解](storsimple-8000-diagnostics.md)。
 
 <!--Link references-->
 
-[1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
-[2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379547(v=ws.10)
+[2]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd392266(v=ws.10)

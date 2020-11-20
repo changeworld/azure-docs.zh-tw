@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b02c669439c54f34afb4212949b20f6793784103
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e690f6abc9c597cc1facb7b3e59604bb711cf274
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359420"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955662"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修訂3戳記的類型 II Sku 的 OS 備份和還原
 
@@ -73,7 +74,7 @@ Microsoft 小組布建完成後 `Service Management` ，預設會設定伺服器
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>如何安裝 ReaR 工具並變更設定？ 
 
-Relax-and-Recover (ReaR) 封裝已**預先安裝**在 HANA 大型執行個體的**類型 II SKU** 中，您不需要採取任何動作。 您可以直接開始使用 ReaR 進行作業系統備份。
+Relax-and-Recover (ReaR) 封裝已 **預先安裝** 在 HANA 大型執行個體的 **類型 II SKU** 中，您不需要採取任何動作。 您可以直接開始使用 ReaR 進行作業系統備份。
 不過，如果您需要自己安裝封裝，可以按照列出的步驟安裝及設定 ReaR 工具。
 
 若要安裝 **ReaR** 備份封裝，請使用下列命令︰

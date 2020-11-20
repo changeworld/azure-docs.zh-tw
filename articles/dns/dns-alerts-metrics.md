@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 85b681cbeb1b06784529e321c9e907ab2bdecb73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489603"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954642"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 計量與警示
 Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構來提供名稱解析。 本文說明 Azure DNS 服務的計量與警示。
@@ -38,7 +38,7 @@ Azure DNS 為客戶提供度量，讓他們能夠監視服務中裝載之 DNS �
 
 ### <a name="query-volume"></a>查詢磁碟區
 
-** Azure DNS 中的「查詢磁碟區」計量會顯示 Azure DNS 收到 DNS 區域的 DNS 查詢 (查詢流量) 磁碟區。 度量單位是計數，彙總則是一段時間收到的所有查詢的總計。 
+Azure DNS 中的「查詢磁碟區」計量會顯示 Azure DNS 收到 DNS 區域的 DNS 查詢 (查詢流量) 磁碟區。 度量單位是計數，彙總則是一段時間收到的所有查詢的總計。 
 
 若要檢視此計量，請從 Azure 入口網站中的 [監視器] 索引標籤選取 [計量] (預覽) 瀏覽器體驗。 從 [資源] 下拉式清單中選取您的 DNS 區域，選取 [查詢磁碟區] 計量，然後選取 [加總為彙總]。 其範例如下列螢幕擷取畫面所示。  如需計量瀏覽器體驗和圖表的詳細資訊，請參閱 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-charts.md)。
 
@@ -47,7 +47,7 @@ Azure DNS 為客戶提供度量，讓他們能夠監視服務中裝載之 DNS �
 *圖：Azure DNS 查詢磁碟區計量*
 
 ### <a name="record-set-count"></a>記錄集計數
-**「記錄集計數」計量顯示 Azure DNS 中 DNS 區域的記錄集數目。 您的區域中定義的所有記錄集都會計算在內。 度量單位是計數，彙總則是所有記錄集的最大值。 若要查看此計量，請從 Azure 入口網站的 [**監視**] 索引標籤中選取 [**計量 (預覽]) ** explorer 體驗。 從 [資源]**** 下拉式清單中選取您的 DNS 區域，選取 [記錄集計數]**** 計量，然後選取 [最大值]**** 作為 [彙總]****。 如需計量瀏覽器體驗和圖表的詳細資訊，請參閱 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-charts.md)。 
+「記錄集計數」計量顯示 Azure DNS 中 DNS 區域的記錄集數目。 您的區域中定義的所有記錄集都會計算在內。 度量單位是計數，彙總則是所有記錄集的最大值。 若要查看此計量，請從 Azure 入口網站的 [**監視**] 索引標籤中選取 [**計量 (預覽])** explorer 體驗。 從 [資源] 下拉式清單中選取您的 DNS 區域，選取 [記錄集計數] 計量，然後選取 [最大值] 作為 [彙總]。 如需計量瀏覽器體驗和圖表的詳細資訊，請參閱 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-charts.md)。 
 
 ![記錄集計數](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -55,14 +55,14 @@ Azure DNS 為客戶提供度量，讓他們能夠監視服務中裝載之 DNS �
 
 
 ### <a name="record-set-capacity-utilization"></a>記錄集容量使用率
-** Azure DNS 中的「記錄集容量使用率」顯示 DNS 區域的記錄集容量使用率百分比。 Azure DNS 中的每個 DNS 區域有一個記錄集限制，定義區域允許的記錄集最大數目 (請參閱 [DNS 限制](dns-zones-records.md#limits))。 因此，此計量會顯示接近記錄集限制的程度。 例如，如果您的 DNS 區域設定了 500 個記錄集，而區域的預設記錄集限制為 5000，RecordSetCapacityUtilization 計量將顯示 10% 的值 (以 500 除以 5000 所得)。 度量單位是「百分比」****，「彙總」**** 類型是「最大值」****。 若要檢視此計量，請從 Azure 入口網站中的 [監視器] 索引標籤選取 [計量] (預覽) 瀏覽器體驗。 從 [資源] 下拉式清單中選取您的 DNS 區域，選取 [記錄集容量使用率] 計量，然後選取 [最大值] 作為 [彙總]。 其範例如下列螢幕擷取畫面所示。 如需計量瀏覽器體驗和圖表的詳細資訊，請參閱 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-charts.md)。 
+Azure DNS 中的「記錄集容量使用率」顯示 DNS 區域的記錄集容量使用率百分比。 Azure DNS 中的每個 DNS 區域有一個記錄集限制，定義區域允許的記錄集最大數目 (請參閱 [DNS 限制](dns-zones-records.md#limits))。 因此，此計量會顯示接近記錄集限制的程度。 例如，如果您的 DNS 區域設定了 500 個記錄集，而區域的預設記錄集限制為 5000，RecordSetCapacityUtilization 計量將顯示 10% 的值 (以 500 除以 5000 所得)。 度量單位是「百分比」，「彙總」類型是「最大值」。 若要檢視此計量，請從 Azure 入口網站中的 [監視器] 索引標籤選取 [計量] (預覽) 瀏覽器體驗。 從 [資源] 下拉式清單中選取您的 DNS 區域，選取 [記錄集容量使用率] 計量，然後選取 [最大值] 作為 [彙總]。 其範例如下列螢幕擷取畫面所示。 如需計量瀏覽器體驗和圖表的詳細資訊，請參閱 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-charts.md)。 
 
 ![Whows 範例以瞭解如何查看計量的螢幕擷取畫面。](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *圖：Azure DNS 記錄集容量使用率計量*
 
 ## <a name="alerts-in-azure-dns"></a>Azure DNS 中的警示
-Azure 監視器提供針對可用的計量值發出警示的功能。 DNS 計量可用於新的警示設定體驗。 如 [Azure 監視器警示文件](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)所述，您可以選取 DNS 區域作為資源、選擇計量訊號類型，並設定警示邏輯和其他參數，例如「期間」**** 和「頻率」****。 您可進一步定義符合警示條件時的[動作群組](../azure-monitor/platform/action-groups.md)，以透過選擇的動作傳遞警示。 如需如何設定 Azure 監視器計量警示的詳細資訊，請參閱[使用 Azure 監視器建立、檢視及管理警示](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 
+Azure 監視器提供針對可用的計量值發出警示的功能。 DNS 計量可用於新的警示設定體驗。 如 [Azure 監視器警示文件](../azure-monitor/platform/alerts-metric.md)所述，您可以選取 DNS 區域作為資源、選擇計量訊號類型，並設定警示邏輯和其他參數，例如「期間」和「頻率」。 您可進一步定義符合警示條件時的[動作群組](../azure-monitor/platform/action-groups.md)，以透過選擇的動作傳遞警示。 如需如何設定 Azure 監視器計量警示的詳細資訊，請參閱[使用 Azure 監視器建立、檢視及管理警示](../azure-monitor/platform/alerts-metric.md)。 
 
 ## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [Azure DNS](dns-overview.md)。

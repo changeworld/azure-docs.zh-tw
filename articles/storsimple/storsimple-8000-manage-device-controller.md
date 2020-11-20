@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513942"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956988"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 裝置控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "85513942"
 
 本教學課程包含使用下列內容管理裝置控制器的逐步指示：
 
-* StorSimple 裝置管理員服務中，裝置的 [控制器]**** 刀鋒視窗。
+* StorSimple 裝置管理員服務中，裝置的 [控制器] 刀鋒視窗。
 * Windows PowerShell for StorSimple
 
 我們建議您透過 StorSimple 裝置管理員服務管理裝置控制器。 如果動作只能使用 Windows PowerShell for StorSimple 執行，本教學課程會記錄下來。
@@ -54,24 +54,24 @@ ms.locfileid: "85513942"
 若要從 Azure 入口網站管理您的裝置控制器，請執行下列步驟。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>若要在 Azure 入口網站中重新啟動或關閉控制器
-1. 請在 StorSimple 裝置管理員服務中，按一下 [裝置]****。 從裝置清單中選取您的裝置。 
+1. 請在 StorSimple 裝置管理員服務中，按一下 [裝置]。 從裝置清單中選取您的裝置。 
 
     ![選擇裝置](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. 移至 [設定] > [控制器]****。
+2. 移至 [設定] > [控制器]。
    
     ![確認 StorSimple 裝置控制器的狀況良好](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. 在 [控制器]**** 刀鋒視窗中，確認裝置上的兩個控制器狀態為 [狀況良好]****。 選取控制器，以滑鼠右鍵按一下，然後選取 [重新啟動]**** 或 [關閉]****。
+3. 在 [控制器] 刀鋒視窗中，確認裝置上的兩個控制器狀態為 [狀況良好]。 選取控制器，以滑鼠右鍵按一下，然後選取 [重新啟動] 或 [關閉]。
 
     ![選擇重新啟動或關閉 StorSimple 裝置控制器](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. 隨即會建立作業，以重新啟動或關閉控制器，若有適用的警告，也會於此顯示。 若要監視重新啟動或關閉的情況，請移至 [服務] > [活動記錄]****，然後根據服務專用的參數進行篩選。 如果控制器已關閉，您必須按下電源開關將控制器開啟。
+4. 隨即會建立作業，以重新啟動或關閉控制器，若有適用的警告，也會於此顯示。 若要監視重新啟動或關閉的情況，請移至 [服務] > [活動記錄]，然後根據服務專用的參數進行篩選。 如果控制器已關閉，您必須按下電源開關將控制器開啟。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>重新啟動或關閉 Windows PowerShell for StorSimple 中的控制器
 執行下列步驟，以從適用於 StorSimple 的 Windows PowerShell 關閉或重新啟動 StorSimple 裝置上的單一控制器。
 
 1. 透過序列主控台或 telnet 工作階段，從遠端電腦存取裝置。 遵循[使用 PuTTY 連接到裝置序列主控台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步驟，連接到控制器 0 或控制器 1。
-2. 在序列主控台功能表中，選擇選項 1 ([以完整存取權限登入]****)。
+2. 在序列主控台功能表中，選擇選項 1 ([以完整存取權限登入])。
 3. 在橫幅訊息中，記下您已連接的控制器 (控制器 0 或控制器 1) 以及它是主動或被動 (待命) 控制器。
    
    * 若要關閉單一控制器，請在提示中輸入：
@@ -91,7 +91,7 @@ ms.locfileid: "85513942"
 本節說明如何從遠端電腦關閉執行中或失敗的 StorSimple 裝置。 裝置會在關閉兩個裝置控制器之後關閉。 當裝置正在實際移動，或被帶離服務時，則已經完成裝置關閉。
 
 > [!IMPORTANT]
-> 關閉裝置之前，請檢查裝置元件的健全狀態。 瀏覽至您的裝置，然後按一下 [設定] > [硬體健康狀態]****。 在 [狀態與硬體健康狀態]**** 刀鋒視窗中，確認所有元件的 LED 狀態皆為綠色。 只有狀況良好的裝置才會有綠色的狀態。 如果您的裝置正在關閉以更換故障的元件，您會看到個別元件的失敗 (紅色) 或降級 (黃色) 狀態。
+> 關閉裝置之前，請檢查裝置元件的健全狀態。 瀏覽至您的裝置，然後按一下 [設定] > [硬體健康狀態]。 在 [狀態與硬體健康狀態] 刀鋒視窗中，確認所有元件的 LED 狀態皆為綠色。 只有狀況良好的裝置才會有綠色的狀態。 如果您的裝置正在關閉以更換故障的元件，您會看到個別元件的失敗 (紅色) 或降級 (黃色) 狀態。
 
 
 #### <a name="to-shut-down-a-storsimple-device"></a>關閉 StorSimple 裝置
@@ -111,13 +111,13 @@ ms.locfileid: "85513942"
 執行下列步驟來將 Microsoft Azure StorSimple 裝置重設為出廠預設設定：
 
 ### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>將裝置重設為 Windows PowerShell for StorSimple 中的預設設定
-1. 透過裝置的序列主控台存取裝置。 檢查橫幅訊息以確保您已連接到**主動**控制器。
-2. 在序列主控台功能表中，選擇選項 1 ([以完整存取權限登入]****)。
+1. 透過裝置的序列主控台存取裝置。 檢查橫幅訊息以確保您已連接到 **主動** 控制器。
+2. 在序列主控台功能表中，選擇選項 1 ([以完整存取權限登入])。
 3. 在提示中，輸入下列命令來重設整個叢集，移除所有資料、中繼資料和控制器設定︰
    
     `Reset-HcsFactoryDefault`
    
-    若要改為重設單一控制站，請使用 [Reset-HcsFactoryDefault`-scope` Cmdlet 搭配 ](https://technet.microsoft.com/library/dn688132.aspx) 參數。)
+    若要改為重設單一控制站，請使用 [Reset-HcsFactoryDefault`-scope` Cmdlet 搭配 ](/previous-versions/windows/powershell-scripting/dn688132(v=wps.630)) 參數。)
    
     系統會重新啟動多次。 重設成功完成時，系統將會通知您。 根據系統模型，8100 裝置可能需要 45-60 分鐘來完成此程序，而 8600 需要 60-90 分鐘。
    
@@ -148,7 +148,7 @@ ms.locfileid: "85513942"
 
 **問：**  您如何判斷控制器已重新啟動或關閉？
 
-**答：** 您可以在 [控制器] 刀鋒視窗上檢查控制器狀態。 控制器狀態會指出控制器是否正在重新啟動或關閉。 此外，如果控制器已重新啟動或關閉，[警示]**** 刀鋒視窗會包含資訊警示。 控制器重新啟動和關閉作業也會記錄在活動記錄中。 如需有關活動記錄的詳細資訊，請移至[檢視活動記錄](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
+**答：** 您可以在 [控制器] 刀鋒視窗上檢查控制器狀態。 控制器狀態會指出控制器是否正在重新啟動或關閉。 此外，如果控制器已重新啟動或關閉，[警示] 刀鋒視窗會包含資訊警示。 控制器重新啟動和關閉作業也會記錄在活動記錄中。 如需有關活動記錄的詳細資訊，請移至[檢視活動記錄](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
 
 **問：** 控制器容錯移轉會不會對 I/O 造成任何影響？
 
@@ -158,7 +158,6 @@ ms.locfileid: "85513942"
 
 **答：** 若要將控制器傳回給服務，您必須依照 [更換 StorSimple 裝置上的控制器模組](storsimple-8000-controller-replacement.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 如果發生任何無法使用本教學課程中所列之程序解決的 StorSimple 裝置控制器相關問題，請 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)。
 * 若要深入了解使用 StorSimple 裝置管理員服務的方式，請移至[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
-

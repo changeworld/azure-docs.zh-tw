@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710536"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954506"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在區域頂點裝載負載平衡的 Azure Web 應用程式
 
@@ -55,7 +55,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 1. 在 Azure 入口網站] 頁面的左上角，選取 [ **建立資源**]。
 2. 在搜尋列中輸入 **Web 應用程式**，然後按 Enter 鍵。
 3. 選取 [ **Web 應用程式**]。
-4. 選取 [建立]****。
+4. 選取 [建立]。
 5. 接受預設值，並使用下表來設定這兩個 Web 應用程式：
 
    |名稱<br>(在 .azurewebsites.net 內必須是唯一的)|資源群組 |執行階段堆疊|區域|App Service 方案/位置
@@ -69,7 +69,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 
 1. 開啟您的資源群組，並在此範例) 中選取第一個 (**app-01** 的 web 應用程式。
 2. 在左側資料行中，選取 [ **屬性**]。
-3. 記下 [URL]**** 下方的位址，並在 [輸出 IP 位址]**** 下方，記下清單中的第一個 IP 位址。 稍後當您設定流量管理員端點時，您將會使用此資訊。
+3. 記下 [URL] 下方的位址，並在 [輸出 IP 位址] 下方，記下清單中的第一個 IP 位址。 稍後當您設定流量管理員端點時，您將會使用此資訊。
 4. 針對 **App-02** 重複執行。
 
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔
@@ -84,7 +84,7 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 
 1. 開啟您的資源群組，然後選取您的流量管理員設定檔。
 2. 在左側資料行中，選取 [ **端點**]。
-3. 選取 [新增]。
+3. 選取 [新增]  。
 4. 使用下表來設定端點：
 
    |類型  |名稱  |目標  |Location  |自訂標題設定|
@@ -119,9 +119,9 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 4. 在 [ **自訂網域**] 下，輸入您的自訂功能變數名稱。 例如 contoso.com。
 5. 選取 [驗證]。
 
-   您的網域應該通過驗證，並在 **主機名稱可用性** 和 **網域擁有權**旁顯示綠色核取記號。
+   您的網域應該通過驗證，並在 **主機名稱可用性** 和 **網域擁有權** 旁顯示綠色核取記號。
 5. 選取 [新增自訂網域]  。
-6. 若要在 [指派至網站的主機名稱]**** 下方查看新的主機名稱，請重新整理瀏覽器。 頁面上的重新整理不一定會立即顯示變更。
+6. 若要在 [指派至網站的主機名稱] 下方查看新的主機名稱，請重新整理瀏覽器。 頁面上的重新整理不一定會立即顯示變更。
 7. 針對第二個 Web 應用程式重複執行此程序。
 
 ## <a name="add-the-alias-record-set"></a>新增別名記錄集
@@ -152,12 +152,12 @@ DNS 通訊協定可防止在區域頂點指派 A 或 AAAA 記錄以外的任何�
 9. 關閉網頁瀏覽器，並等待數分鐘。
 10. 啟動網頁瀏覽器，然後瀏覽至您的網域。 您應該會再次看見預設的 Web 應用程式頁面。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解別名記錄，請參閱下列文章：
 
 - [教學課程：設定別名記錄以參照 Azure 公用 IP 位址](tutorial-alias-pip.md)
 - [教學課程：使用流量管理員來設定別名記錄以支援頂點網域名稱](tutorial-alias-tm.md)
-- [DNS 常見問題](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [DNS 常見問題](./dns-faq.md#alias-records)
 
 若要瞭解如何遷移使用中的 DNS 名稱，請參閱將 [ACTIVE dns 名稱遷移至 Azure App Service](../app-service/manage-custom-dns-migrate-domain.md)。

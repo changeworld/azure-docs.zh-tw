@@ -15,19 +15,19 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a5ba4b27ae19999237edb75c50db36ef57a10f1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459958"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956682"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的 Update 1.2 版本資訊
 
 ## <a name="overview"></a>概觀
 下列版本資訊說明 StorSimple 8000 系列 Update 1.2 的新功能，並識別未決的重要問題。 當中也包含此版本中隨附之 StorSimple 軟體、驅動程式與磁碟韌體更新的清單。 
 
-Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 或 Update 0.3 軟體的 StorSimple 裝置。 如果您的裝置是執行 Update 1 或 Update 1.1，就無法使用 Update 1.2。 如果您的裝置是執行 Release (GA)，請 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 協助您安裝此更新。
+Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 或 Update 0.3 軟體的 StorSimple 裝置。 如果您的裝置是執行 Update 1 或 Update 1.1，就無法使用 Update 1.2。 如果您的裝置是執行 Release (GA)，請 [連絡 Microsoft 支援服務](./storsimple-8000-contact-microsoft-support.md) 協助您安裝此更新。
 
 下表列出 Updates 1、1.1 和 1.2 的對應裝置軟體版本。
 
@@ -37,11 +37,11 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 | Update 1.1 |6.3.9600.17521 |
 | Update 1.0 |6.3.9600.17491 |
 
-在 StorSimple 方案中部署更新之前，請檢閱版本資訊中所包含的資訊。 如需詳細資訊，請參閱如何 [在 StorSimple 裝置上安裝 Update 1.2](storsimple-install-update-1.md)。 
+在 StorSimple 方案中部署更新之前，請檢閱版本資訊中所包含的資訊。 如需詳細資訊，請參閱如何 [在 StorSimple 裝置上安裝 Update 1.2](./storsimple-8000-install-update-5.md)。 
 
 > [!IMPORTANT]
 > * 安裝此更新大約需要 5-10 小時 (包括 Windows Update)。 
-> * Update 1.2 具有軟體、LSI 驅動程式和磁碟韌體更新。 若要安裝，請遵循 [在 StorSimple 裝置上安裝 Update 1.2](storsimple-install-update-1.md)中的指示。
+> * Update 1.2 具有軟體、LSI 驅動程式和磁碟韌體更新。 若要安裝，請遵循 [在 StorSimple 裝置上安裝 Update 1.2](./storsimple-8000-install-update-5.md)中的指示。
 > * 如果是新版本，您可能不會立即看到更新，因為我們會分階段推出更新。 請在數天內再次掃描更新，因為很快就會提供更新。
 > 
 > 
@@ -55,11 +55,11 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
   * **8000 系列應用裝置的改進功能供應項目**：例如透過 StorSimple Manager 服務對多個應用裝置進行有效率的集中式管理、更高等級的硬體和更新的韌體、虛擬應用裝置、資料行動力，以及未來藍圖中的功能。
     
     如需如何將 StorSimple 5000-7000 [系列移轉至](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) 8000 系列裝置的詳細資訊，請參閱《移轉指南》 。 
-* **Azure Government 入口網站的可用性** – Azure Government 入口網站現已提供 StorSimple。 請參閱如何 [在 Azure Government 入口網站中部署 StorSimple 裝置](storsimple-deployment-walkthrough-gov.md)。
+* **Azure Government 入口網站的可用性** – Azure Government 入口網站現已提供 StorSimple。 請參閱如何 [在 Azure Government 入口網站中部署 StorSimple 裝置](./index.yml)。
 * **其他雲端服務提供者的支援** – 支援的其他雲端服務提供者包括 Amazon S3、含 RRS 的 Amazon S3、HP 以及 OpenStack (beta)。
-* **最新儲存 API 的更新** – StorSimple 已經透過這個版本，更新為最新的 Azure 儲存體服務 API。 執行 Update 1 前軟體版本 (發行、0.1、0.2 和 0.3 版本) 的 StorSimple 8000 系列裝置，是使用 2009 年 7 月 17 日之前的 Azure 儲存體服務 API 版本。 如更新的 [移除儲存體服務版本相關公告](https://docs.microsoft.com/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)中所述，這些 API 將於 2016 年 8 月 1 日被取代。 請務必在 2016 年 8 月 1 日之前，套用 StorSimple 8000 Series Update 1。 如果您無法執行這項操作，StorSimple 裝置將會停止正常運作。
+* **最新儲存 API 的更新** – StorSimple 已經透過這個版本，更新為最新的 Azure 儲存體服務 API。 執行 Update 1 前軟體版本 (發行、0.1、0.2 和 0.3 版本) 的 StorSimple 8000 系列裝置，是使用 2009 年 7 月 17 日之前的 Azure 儲存體服務 API 版本。 如更新的 [移除儲存體服務版本相關公告](/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)中所述，這些 API 將於 2016 年 8 月 1 日被取代。 請務必在 2016 年 8 月 1 日之前，套用 StorSimple 8000 Series Update 1。 如果您無法執行這項操作，StorSimple 裝置將會停止正常運作。
 * **區域備援儲存體 (ZRS) 的支援** – 升級至最新版的儲存體 API 之後，StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也將支援區域備援儲存體 (ZRS)。 請參閱這篇有關 ZRS 詳細資料的 [Azure 儲存體冗余選項的文章](../storage/common/storage-redundancy.md) 。
-* **增強的初始部署和更新經驗** – 在此版本中，已增強安裝和更新程序。 安裝精靈安裝已獲得改善，如果網路組態和防火牆設定不正確，可提供意見給使用者。 已提供其他診斷 Cmdlet 來協助您為裝置的網路連線進行疑難排解。 如需有關用於疑難排解的新診斷 Cmdlet 的詳細資訊，請參閱 [疑難排解部署文件](storsimple-troubleshoot-deployment.md) 。
+* **增強的初始部署和更新經驗** – 在此版本中，已增強安裝和更新程序。 安裝精靈安裝已獲得改善，如果網路組態和防火牆設定不正確，可提供意見給使用者。 已提供其他診斷 Cmdlet 來協助您為裝置的網路連線進行疑難排解。 如需有關用於疑難排解的新診斷 Cmdlet 的詳細資訊，請參閱 [疑難排解部署文件](./storsimple-8000-troubleshoot-deployment.md) 。
 
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修正的問題
 下表提供 Update 1.2、1.1 及 1 中已修正問題的摘要。    
@@ -67,7 +67,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 | 否。 | 功能 | 問題 | 在 Update 中修正的問題 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell for StorSimple |當使用者從遠端使用 Windows PowerShell for StorSimple 存取 StorSimple 裝置，然後再啟動安裝精靈時，只要輸入 Data 0 IP，就會當機。 這個 Bug 現在已在 Update 1 中修正。 |Update 1 |是 |是 |
-| 2 |原廠重設 |在某些情況下，當您要恢復出廠預設值時，StorSimple 裝置會卡住，並顯示此訊息：「正在重設為原廠預設值 (階段 8)」 ****。 如果正在進行 Cmdlet 時，按 CTRL+C，就會發生這種情況。 這個 Bug 現在已修正。 |Update 1 |是 |否 |
+| 2 |原廠重設 |在某些情況下，當您要恢復出廠預設值時，StorSimple 裝置會卡住，並顯示此訊息：「正在重設為原廠預設值 (階段 8)」 。 如果正在進行 Cmdlet 時，按 CTRL+C，就會發生這種情況。 這個 Bug 現在已修正。 |Update 1 |是 |否 |
 | 3 |原廠重設 |雙控制器恢復出廠預設值失敗之後，允許您繼續進行裝置註冊。 這會產生不支援的系統組態。 在 Update 1 中，會顯示錯誤訊息，而且在恢復出廠預設值失敗的裝置上，會阻止進行註冊。 |Update 1 |是 |否 |
 | 4 |原廠重設 |在某些情況下，會引發誤判的不相符警示。 在執行 Update 1 的裝置上，將不會再產生不正確的不相符警示。 |Update 1 |是 |否 |
 | 5 |原廠重設 |如果恢復出廠預設值在完成前遭到中斷，裝置會進入復原模式，且不允許您存取 Windows PowerShell for StorSimple。 這個 Bug 現在已修正。 |Update 1 |是 |否 |
@@ -89,7 +89,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 | 3 |儲存體帳戶 |不支援使用儲存體服務刪除儲存體帳戶的案例。 這會導致無法擷取使用者資料的情況。 |是 |是 | |
 | 4 |裝置容錯移轉 |不支援從相同來源裝置將某個磁碟區容器多次容錯移轉至不同的目標裝置。 當裝置容錯移轉是從單一失效裝置容錯移轉到多個裝置時，會讓第一個容錯移轉裝置上的磁碟區容器失去資料擁有權。 進行這類容錯移轉之後，當您在 Azure 傳統入口網站中檢視這些磁碟區容器時，會發現它們的外觀或行為有所不同。 | |是 |否 |
 | 5 |安裝 |在 StorSimple Adapter for SharePoint 安裝其間，您必須提供裝置 IP，才能順利完成安裝。 | |是 |否 |
-| 6 |Web Proxy |如果您的 Web Proxy 組態設定將 HTTPS 做為指定的通訊協定，您的裝置對服務通訊將會受到影響並使裝置離線。 同時會在程序中產生支援封裝，耗用裝置上的大量資源。 |請確定 Web Proxy URL 指定的通訊協定為 HTTP。 如需詳細資訊，請參閱 [設定裝置的 Web Proxy](storsimple-configure-web-proxy.md)。 |是 |否 |
+| 6 |Web Proxy |如果您的 Web Proxy 組態設定將 HTTPS 做為指定的通訊協定，您的裝置對服務通訊將會受到影響並使裝置離線。 同時會在程序中產生支援封裝，耗用裝置上的大量資源。 |請確定 Web Proxy URL 指定的通訊協定為 HTTP。 如需詳細資訊，請參閱 [設定裝置的 Web Proxy](./storsimple-8000-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web Proxy |如果您在註冊的裝置上設定並啟用 Web Proxy，將需要重新啟動裝置上的主動控制器。 | |是 |否 |
 | 8 |雲端高延遲與高 I/O 工作負載 |當 StorSimple 裝置同時出現雲端延遲情況嚴重 (大約數秒) 和 I/O 工作負載高的情況時，裝置磁碟區會進入降級的狀態，而且 I/O 可能會失敗，發生「裝置未就緒」錯誤。 |您必須以手動方式將裝置控制器重新開機，或或執行裝置容錯移轉，才能從這種情況下復原。 |是 |否 |
 | 9 |Azure PowerShell |當您使用 StorSimple Cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 選取第一個物件，讓您可以建立新的 **VolumeContainer** 物件時，此 Cmdlet 會傳回所有物件。 |將此 Cmdlet 以括號括住，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
@@ -112,5 +112,4 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 這項更新無法套用至虛擬裝置。 將需要建立新的虛擬裝置。 
 
 ## <a name="next-steps"></a>後續步驟
-* [在您的裝置上安裝 Update 1.2](storsimple-install-update-1.md)。
-
+* [在您的裝置上安裝 Update 1.2](./storsimple-8000-install-update-5.md)。

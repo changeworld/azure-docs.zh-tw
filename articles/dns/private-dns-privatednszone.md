@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eaa320e79f1d595303c6d9fe1399df12cb6c52b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646790"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954404"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>什麼是私用 Azure DNS 區域
 
@@ -25,7 +25,7 @@ Azure Private DNS 提供一個可靠、安全的 DNS 服務，讓您不必新增
 
 ## <a name="limits"></a>限制
 
-若要瞭解您可以在訂用帳戶中建立的私人 DNS 區域數量，以及私人 DNS 區域中支援的記錄集數目，請參閱 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+若要瞭解您可以在訂用帳戶中建立的私人 DNS 區域數量，以及私人 DNS 區域中支援的記錄集數目，請參閱 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="restrictions"></a>限制
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646756"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954336"
 ---
 # <a name="what-is-a-virtual-network-link"></a>什麼是虛擬網路連結？
 
@@ -23,7 +23,7 @@ ms.locfileid: "75646756"
 
 ## <a name="registration-virtual-network"></a>註冊虛擬網路
 
-當您建立私人 DNS 區域和虛擬網路之間 [的連結](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) 時，您可以選擇開啟虛擬機器的 DNS 記錄 [自動註冊](./private-dns-autoregistration.md) 。 如果您選擇此選項，則虛擬網路會成為私人 DNS 區域的註冊虛擬網路。 系統會自動為您部署在網路中的虛擬機器建立 DNS 記錄。 系統會為您已在虛擬網路中部署的虛擬機器建立 DNS 記錄。 從虛擬網路的觀點來看，私人 DNS 區域會成為該虛擬網路的註冊區域。
+當您建立私人 DNS 區域和虛擬網路之間 [的連結](./private-dns-getstarted-portal.md#link-the-virtual-network) 時，您可以選擇開啟虛擬機器的 DNS 記錄 [自動註冊](./private-dns-autoregistration.md) 。 如果您選擇此選項，則虛擬網路會成為私人 DNS 區域的註冊虛擬網路。 系統會自動為您部署在網路中的虛擬機器建立 DNS 記錄。 系統會為您已在虛擬網路中部署的虛擬機器建立 DNS 記錄。 從虛擬網路的觀點來看，私人 DNS 區域會成為該虛擬網路的註冊區域。
 一個私人 DNS 區域可以有多個註冊虛擬網路，但每個虛擬網路只能有一個相關聯的註冊區域。
 
 ## <a name="resolution-virtual-network"></a>解析虛擬網路
@@ -33,7 +33,7 @@ ms.locfileid: "75646756"
 
 ## <a name="limits"></a>限制
 
-若要瞭解多少註冊和解析網路，您可以連結至私人 DNS 區域，請參閱 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+若要瞭解多少註冊和解析網路，您可以連結至私人 DNS 區域，請參閱 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="other-considerations"></a>其他考量
 
@@ -49,7 +49,7 @@ ms.locfileid: "75646756"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何使用[Azure 入口網站](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)將虛擬網路連結至私人 DNS 區域
+* 瞭解如何使用[Azure 入口網站](./private-dns-getstarted-portal.md#link-the-virtual-network)將虛擬網路連結至私人 DNS 區域
 
 * 了解如何使用 [Azure PowerShell](./private-dns-getstarted-powershell.md) 或 [Azure CLI](./private-dns-getstarted-cli.md)，在 Azure DNS 中建立私人區域。
 

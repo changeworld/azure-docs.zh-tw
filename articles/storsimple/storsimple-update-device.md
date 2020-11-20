@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dec354767875d91c6062cdfbb0009e857dbe2636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056546"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956835"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新您的 StorSimple 8000 系列裝置
 > [!NOTE]
-> StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](storsimple-8000-move-azure-portal-faq.md)。
+> StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](./index.yml)。
 
 ## <a name="overview"></a>概觀
 StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀態。 根據更新類型而定，您可以透過 Azure 傳統入口網站或透過 Windows PowerShell 介面，將更新套用到裝置。 本教學課程說明更新類型，以及如何安裝每一種更新類型。
@@ -79,7 +79,7 @@ StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀
 如果您需要套用維護模式更新，將會透過 Azure 傳統入口網站收到警示，指出您有必須安裝的更新。 這個警示將包含使用 Windows PowerShell for StorSimple 安裝更新的相關指示。 更新裝置之後，請使用相同的程序來將裝置變更為一般模式。 如需逐步指示，請參閱 [步驟 4：結束維護模式](#step4)。
 
 > [!IMPORTANT]
-> * 進入維護模式之前，請檢查 Azure 傳統入口網站中 [維護]**** 頁面上的**硬體狀態**，以確認兩個裝置控制器的健康情況良好。 如果控制站的健康情況不好，請連絡 Microsoft 支援服務以進行後續步驟。 如需詳細資訊，請參閱＜連絡 Microsoft 支援服務＞。 
+> * 進入維護模式之前，請檢查 Azure 傳統入口網站中 [維護]頁面上的 **硬體狀態**，以確認兩個裝置控制器的健康情況良好。 如果控制站的健康情況不好，請連絡 Microsoft 支援服務以進行後續步驟。 如需詳細資訊，請參閱＜連絡 Microsoft 支援服務＞。 
 > * 當您處於維護模式時，需要先在某一個控制站上套用更新，然後在另一個控制站上套用更新。
 > 
 > 
@@ -120,6 +120,5 @@ StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀
 如果將裝置重設為原廠設定，則所有更新都會遺失。 在註冊並設定原廠重設裝置之後，您必須透過 Azure 傳統入口網站和 (或) Windows PowerShell for StorSimple 手動安裝更新。 如需恢復出廠預設值的詳細資訊，請參閱 [將裝置重設為原廠預設設定](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解如何 [使用 Windows PowerShell for StorSimple 管理 StorSimple 裝置](storsimple-windows-powershell-administration.md)。
-* 深入了解 [使用 StorSimple Manager 服務來管理您的 StorSimple 裝置](storsimple-manager-service-administration.md)。
-
+* 深入了解如何 [使用 Windows PowerShell for StorSimple 管理 StorSimple 裝置](./storsimple-8000-windows-powershell-administration.md)。
+* 深入了解 [使用 StorSimple Manager 服務來管理您的 StorSimple 裝置](./storsimple-8000-manager-service-administration.md)。

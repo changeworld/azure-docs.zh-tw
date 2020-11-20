@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: d613da4d9abdfe22fc20f1b74da41e4a65cbff33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: be455de2a1f8aebc7327af4741e0652a4be76665
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151567"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956427"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
 
@@ -144,7 +145,7 @@ IBM Db2 LUW 的資源代理套裝程式含在 Red Hat Enterprise Linux Server HA
 
 ## <a name="create-the-pacemaker-cluster"></a>建立 Pacemaker 叢集
     
-若要為此 IBM Db2 伺服器建立基本的 Pacemaker 叢集，請參閱 [在 Azure 中 Red Hat Enterprise Linux 上設定 Pacemaker][rhel-pcs-azr]。 
+若要為此 IBM Db2 伺服器建立基本的 Pacemaker 叢集，請參閱 [在 Azure 中 Red Hat Enterprise Linux 上設定 Pacemaker][rhel-pcs-azr]。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>安裝 IBM Db2 LUW 和 SAP 環境
 
@@ -409,7 +410,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
 1. 建立前端 IP 集區：
 
-   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **前端 IP 集**區]，然後選取 [ **新增**]。
+   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **前端 IP 集** 區]，然後選取 [ **新增**]。
 
    b. 輸入新前端 IP 集區的名稱 (例如，[ **Db2 連接**) 。
 
@@ -421,7 +422,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
 1. 建立後端集區：
 
-   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **後端**集區]，然後選取 [ **新增**]。
+   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer]，選取 [ **後端** 集區]，然後選取 [ **新增**]。
 
    b. 輸入新後端集區的名稱 (例如， **Db2 後** 端) 。
 
@@ -431,7 +432,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
    e. 選取 IBM Db2 叢集的虛擬機器。
 
-   f. 選取 [確定]  。
+   f. 選取 [確定]。
 
 1. 建立健康情況探查：
 
@@ -455,7 +456,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
    e. 將 [閒置逾時] 增加為 30 分鐘。
 
-   f. 務必**啟用浮動 IP**。
+   f. 務必 **啟用浮動 IP**。
 
    g. 選取 [確定]。
 
@@ -616,8 +617,8 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
 - **電腦資源移動 \<res_name> <host> ：** 建立位置條件約束，並可能造成接管問題
-- **電腦資源清除 \<res_name> **：清除位置條件約束
-- **電腦資源清除 \<res_name> **：清除資源的所有錯誤
+- **電腦資源清除 \<res_name>**：清除位置條件約束
+- **電腦資源清除 \<res_name>**：清除資源的所有錯誤
 
 ### <a name="test-a-manual-takeover"></a>測試手動接管
 
@@ -646,7 +647,7 @@ Daemon Status:
   pacemaker: active/disabled
   pcsd: active/enabled</code></pre>
 
-在容錯移轉之後，您可以在 *az-idb01*上再次啟動該服務。
+在容錯移轉之後，您可以在 *az-idb01* 上再次啟動該服務。
 <pre><code>systemctl start  pacemaker</code></pre>
 
 

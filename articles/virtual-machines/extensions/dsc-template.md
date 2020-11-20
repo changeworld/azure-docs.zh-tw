@@ -8,21 +8,22 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38fcd069fa6a3e8582dcd96b2bd0b4074986de7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511155"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955798"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>採用 Azure Resource Manager 範本的預期狀態設定延伸模組
 
-本文說明適用於[預期狀態設定 (DSC) 延伸模組處理常式](dsc-overview.md)的 Azure Resource Manager 範本。 許多範例都會使用以 PSCredential) 形式提供的 **>registrationurl** (，並以[PSCredential](/dotnet/api/system.management.automation.pscredential)的形式提供**RegistrationKey** (以供 Azure 自動化上線。 如需有關如何取得那些值的詳細資訊，請參閱 [將機器上架以供 Azure Automation State Configuration 管理 - 保護註冊安全](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration)。
+本文說明適用於[預期狀態設定 (DSC) 延伸模組處理常式](dsc-overview.md)的 Azure Resource Manager 範本。 許多範例都會使用以 PSCredential) 形式提供的 **>registrationurl** (，並以 [PSCredential](/dotnet/api/system.management.automation.pscredential)的形式提供 **RegistrationKey** (以供 Azure 自動化上線。 如需有關如何取得那些值的詳細資訊，請參閱 [將機器上架以供 Azure Automation State Configuration 管理 - 保護註冊安全](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration)。
 
 > [!NOTE]
 > 您可能會遇到略為不同的結構描述範例。 結構描述變更出現在 2016 年 10 月的版本中。 如需詳細資料，請參閱[從先前的格式更新](#update-from-a-previous-format)。
@@ -179,7 +180,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 | 屬性名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| settings.wmfVersion |字串 |指定應該安裝在您 VM 上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 **latest** 會安裝最新版的 WMF。 此屬性目前只有下列可能值： **4.0**、**5.0**、**5.1**, 與**latest**。 這些可能的值可能會更新。 預設值為 **latest**。 |
+| settings.wmfVersion |字串 |指定應該安裝在您 VM 上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 **latest** 會安裝最新版的 WMF。 此屬性目前只有下列可能值： **4.0**、**5.0**、**5.1**, 與 **latest**。 這些可能的值可能會更新。 預設值為 **latest**。 |
 | settings.configuration.url |字串 |指定要從中下載 DSC 設定 .zip 檔案的 URL 位置。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationUrlSasToken** 屬性設定為您 SAS 權杖的值。 如果已定義 **settings.configuration.script** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定「位置設定管理員」(LCM) 中繼資料，而應該提供引數。 |
 | settings.configuration.script |字串 |指定指令碼的檔案名稱，其中包含 DSC 組態的定義。 此指令碼必須位於從 **settings.configuration.url** 屬性所指定 URL 下載之 zip 檔案的根資料夾中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.script**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
 | settings.configuration.function |字串 |指定 DSC 組態的名稱。 所命名的設定必須包含在 **settings.onfiguration.script** 所定義的指令碼中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
@@ -199,7 +200,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 | 屬性名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必要屬性。 指定節點向「Azure 自動化」服務註冊時，用來作為 PowerShell 認證物件密碼的金鑰。 針對「自動化」帳戶使用 **listkeys** 方法，即可自動探索此值。  查看[範例](#example-using-referenced-azure-automation-registration-values)。 |
-| settings.configurationArguments.RegistrationUrl |字串 |必要屬性。 指定節點嘗試進行註冊之「自動化」端點的 URL。 針對「自動化」帳戶使用**reference** 方法，即可自動探索此值。 |
+| settings.configurationArguments.RegistrationUrl |字串 |必要屬性。 指定節點嘗試進行註冊之「自動化」端點的 URL。 針對「自動化」帳戶使用 **reference** 方法，即可自動探索此值。 |
 | settings.configurationArguments.NodeConfigurationName |字串 |必要屬性。 指定「自動化」帳戶中要指派給節點的 節點設定。 |
 | settings.configurationArguments.ConfigurationMode |字串 |指定 LCM 的模式。 有效的選項包括 **ApplyOnly** **ApplyandMonitor**, 及 **ApplyandAutoCorrect**。  預設值為 **ApplyandMonitor**。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 嘗試檢查「自動化」帳戶是否有更新的頻率。  預設值為 **30**。  最小值為 **15**。 |
@@ -215,7 +216,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 公用屬性在設定文字檔中不會加密。
 列在 **protectedSettings** 底下的屬性會以憑證加密，而不會在 VM 上的設定檔案中以純文字顯示。
 
-如果設定需要認證，您可以將認證包含在 **protectedSettings**中：
+如果設定需要認證，您可以將認證包含在 **protectedSettings** 中：
 
 ```json
 "protectedSettings": {
@@ -391,9 +392,9 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 「無效的 configurationArguments 類型 {0}」
 
-**問題**：*ConfigurationArguments* 屬性無法解析為**雜湊表**物件。
+**問題**：*ConfigurationArguments* 屬性無法解析為 **雜湊表** 物件。
 
-**解決方案**：將 *ConfigurationArguments* 屬性設定為**雜湊表**。
+**解決方案**：將 *ConfigurationArguments* 屬性設定為 **雜湊表**。
 請依照上述範例中提供的格式。 請留意引號、逗號及大括號。
 
 ### <a name="duplicate-configurationarguments"></a>重複的 ConfigurationArguments

@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 7e42fb43fee4d3f8097b7ac530056d948e3f98c8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 044a8c119c8a881983a7e2bab08c0a670bc3bf0f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486186"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956291"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>針對 SAP 應用程式使用 Azure NetApp Files 在 SUSE Linux Enterprise Server 上的 Azure VM 達到 SAP NetWeaver 高可用性
 
@@ -261,13 +262,13 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
       1. 選取 (A)SCS 叢集的虛擬機器及其 IP 位址。
       1. 按一下 [新增]
    1. 建立健康狀態探查
-      1. 針對 ASCS 是連接埠 620**00**
+      1. 針對 ASCS 是連接埠 620 **00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康狀態探查的名稱 (例如 **health.QAS.ASCS**)
-         1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
+         1. 選取 [TCP] 作為通訊協定、連接埠 620 **00**，保留 [間隔] 5 和 [狀況不良閾值] 2
          1. Click OK
-      1. ASCS ERS 為連接埠 621**01**
-            * 在 "c" 下方重複上述步驟來為 ERS 建立健康狀態探查 (例如 621**01** 和 **health.QAS.ERS**)
+      1. ASCS ERS 為連接埠 621 **01**
+            * 在 "c" 下方重複上述步驟來為 ERS 建立健康狀態探查 (例如 621 **01** 和 **health.QAS.ERS**)
    1. 負載平衡規則
       1. 建立 ASCS 的後端集區
          1. 開啟負載平衡器、選取負載平衡規則，然後按一下 [新增]
@@ -295,15 +296,15 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
       1. 選取 (A)SCS 叢集的虛擬機器
       1. Click OK
    1. 建立健康狀態探查
-      1. 針對 ASCS 是連接埠 620**00**
+      1. 針對 ASCS 是連接埠 620 **00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康狀態探查的名稱 (例如 **health.QAS.ASCS**)
-         1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
+         1. 選取 [TCP] 作為通訊協定、連接埠 620 **00**，保留 [間隔] 5 和 [狀況不良閾值] 2
          1. Click OK
-      1. ASCS ERS 為連接埠 621**01**
-            * 在 "c" 下方重複上述步驟來為 ERS 建立健康狀態探查 (例如 621**01** 和 **health.QAS.ERS**)
+      1. ASCS ERS 為連接埠 621 **01**
+            * 在 "c" 下方重複上述步驟來為 ERS 建立健康狀態探查 (例如 621 **01** 和 **health.QAS.ERS**)
    1. 負載平衡規則
-      1. 針對 ASCS 是 32**00** TCP
+      1. 針對 ASCS 是 32 **00** TCP
          1. 開啟負載平衡器、選取負載平衡規則，然後按一下 [新增]
          1. 輸入新負載平衡器規則的名稱 (例如 **lb.QAS.ASCS.3200**)
          1. 選取先前為 ASCS 建立的前端 IP 位址、後端集區及先前建立的健康狀態探查 (例如 **frontend.QAS.ASCS**)
@@ -312,9 +313,9 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
          1. **務必啟用浮動 IP**
          1. Click OK
       1. ASCS 的其他連接埠
-         * 在 "d" 下方針對 ASCS 的連接埠 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP 重複上述步驟
+         * 在 "d" 下方針對 ASCS 的連接埠 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 和 TCP 重複上述步驟
       1. ASCS ERS 的其他連接埠
-         * 在 "d" 的下方針對 ASCS ERS 的連接埠 32**01**、33**01**、5**01**13、5**01**14、5**01**16 和 TCP 重複上述步驟
+         * 在 "d" 的下方針對 ASCS ERS 的連接埠 32 **01**、33 **01**、5 **01** 13、5 **01** 14、5 **01** 16 和 TCP 重複上述步驟
 
       
       > [!IMPORTANT]
@@ -560,7 +561,7 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   如果安裝無法在 /usr/sap/**QAS**/ASCS**00** 中建立子資料夾，請嘗試設定 ASCS**00** 資料夾的擁有者和群組，並進行重試。 
+   如果安裝無法在 /usr/sap/**QAS**/ASCS **00** 中建立子資料夾，請嘗試設定 ASCS **00** 資料夾的擁有者和群組，並進行重試。 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
@@ -625,7 +626,7 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
    > [!NOTE]
    > 請使用 SWPM SP 20 PL 05 或更高版本。 較低版本無法正確設定權限，因而會讓安裝失敗。
 
-   如果安裝無法在 /usr/sap/**QAS**/ERS**01** 中建立子資料夾，請嘗試設定 ERS**01** 資料夾的擁有者和群組，並進行重試。
+   如果安裝無法在 /usr/sap/**QAS**/ERS **01** 中建立子資料夾，請嘗試設定 ERS **01** 資料夾的擁有者和群組，並進行重試。
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>

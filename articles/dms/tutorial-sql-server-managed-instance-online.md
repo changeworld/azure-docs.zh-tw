@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 744f71f0d9d20d6a815d26f89696898ebdbaab3d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3674c6a0579eb901cc490d08bb8a4893296884c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392590"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954897"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 將 SQL Server 線上移轉至 Azure SQL 受控執行個體
 
@@ -35,7 +35,7 @@ ms.locfileid: "93392590"
 
 > [!IMPORTANT]
 > 若要使用 Azure 資料庫移轉服務從 SQL Server 線上移轉至 SQL 受控執行個體，您必須在可供此服務用來移轉資料庫的 SMB 網路共用中，提供完整的資料庫備份及後續的記錄備份。 在移轉時，Azure 資料庫移轉服務不會起始任何備份，而是會使用現有備份 (您可能已在災害復原方案中備妥)。
-> 請務必[使用 WITH CHECKSUM 選項來製作備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true)。 此外，請務必不要將多個備份 (也就是完整和交易記錄) 附加到單一備份媒體中；請在不同的備份檔案中製作每個備份。 最後，您可以使用壓縮的備份，以減少遷移大型備份時可能發生的潛在問題。
+> 請務必[使用 WITH CHECKSUM 選項來製作備份](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?preserve-view=true&view=sql-server-2017)。 此外，請務必不要將多個備份 (也就是完整和交易記錄) 附加到單一備份媒體中；請在不同的備份檔案中製作每個備份。 最後，您可以使用壓縮的備份，以減少遷移大型備份時可能發生的潛在問題。
 
 > [!NOTE]
 > 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。
@@ -54,10 +54,10 @@ ms.locfileid: "93392590"
 
 若要完成本教學課程，您需要：
 
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。 [了解使用 Azure 資料庫移轉服務進行 SQL 受控執行個體移轉的網路拓撲](https://aka.ms/dmsnetworkformi)。 如需建立虛擬網路的詳細資訊，請參閱[虛擬網路文件](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，裡面會提供逐步操作詳細資料。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 為您的內部部署來源伺服器提供站對站連線能力。 [了解使用 Azure 資料庫移轉服務進行 SQL 受控執行個體移轉的網路拓撲](./resource-network-topologies.md)。 如需建立虛擬網路的詳細資訊，請參閱[虛擬網路文件](../virtual-network/index.yml)，特別是快速入門文章，裡面會提供逐步操作詳細資料。
 
     > [!NOTE]
-    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將佈建服務的子網路：
+    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](../virtual-network/virtual-network-service-endpoints-overview.md)新增至將佈建服務的子網路：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -65,32 +65,32 @@ ms.locfileid: "93392590"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
     >
-    >如果您沒有內部部署網路與 Azure 之間的站對站連線，或是您的站對站連線頻寬有限，請考慮在混合模式 (預覽) 中使用 Azure 資料庫移轉服務。 混合模式會搭配使用內部部署移轉背景工作角色與雲端中執行的 Azure 資料庫移轉服務執行個體。 若要在混合模式中建立 Azure 資料庫移轉服務的執行個體，請參閱[使用 Azure 入口網站在混合模式中建立 Azure 資料庫移轉服務執行個體](https://aka.ms/dms-hybrid-create)一文。
+    >如果您沒有內部部署網路與 Azure 之間的站對站連線，或是您的站對站連線頻寬有限，請考慮在混合模式 (預覽) 中使用 Azure 資料庫移轉服務。 混合模式會搭配使用內部部署移轉背景工作角色與雲端中執行的 Azure 資料庫移轉服務執行個體。 若要在混合模式中建立 Azure 資料庫移轉服務的執行個體，請參閱[使用 Azure 入口網站在混合模式中建立 Azure 資料庫移轉服務執行個體](./quickstart-create-data-migration-service-portal.md)一文。
 
     > [!IMPORTANT]
     > 關於移轉過程中使用的儲存體帳戶，您必須執行下列其中一個動作：
     > * 選擇允許所有網路存取儲存體帳戶。
-    > * 開啟 MI 子網路上的 [子網路委派](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation)，並更新儲存體帳戶防火牆規則以允許此子網路。
+    > * 開啟 MI 子網路上的 [子網路委派](../virtual-network/manage-subnet-delegation.md)，並更新儲存體帳戶防火牆規則以允許此子網路。
 
-* 確定您虛擬網路的網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸出通訊連接埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
-* 設定[用於來源資料庫引擎存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
+* 確定您虛擬網路的網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸出通訊連接埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)。
+* 設定[用於來源資料庫引擎存取的 Windows 防火牆](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server (依預設會使用 TCP 連接埠 1433)。 如果您的預設執行個體正在其他連接埠上接聽，請將其新增至防火牆。
 * 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，您可以啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
 * 如果您是在來源資料庫前面使用防火牆設備，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取用於移轉的來源資料庫，以及透過 SMB 連接埠 445 存取檔案。
-* 依照[在 Azure 入口網站中建立 Azure SQL 受控執行個體](https://aka.ms/sqldbmi)一文中的詳細資料，建立 SQL 受控執行個體。
+* 依照[在 Azure 入口網站中建立 Azure SQL 受控執行個體](../azure-sql/managed-instance/instance-create-quickstart.md)一文中的詳細資料，建立 SQL 受控執行個體。
 * 確定用來連線來源 SQL Server 和目標 SQL 受控執行個體的登入是 sysadmin 伺服器角色的成員。
 * 提供 SMB 網路共用，其中包含您所有資料庫的完整資料庫備份檔案及後續交易記錄備份檔案，而 Azure 資料庫移轉服務會使用這些檔案來進行資料庫移轉。
 * 確認執行來源 SQL Server 執行個體的服務帳戶在您所建立的網路共用上具有寫入權限，而且來源伺服器的電腦帳戶對相同的共用具備讀取/寫入存取權。
 * 記下在您先前建立的網路共用上具有完整控制權限的 Windows 使用者 (和密碼)。 Azure 資料庫移轉服務會模擬該使用者認證，以便將備份檔案上傳至 Azure 儲存體容器以進行還原作業。
-* 建立 Azure Active Directory 應用程式識別碼，以產生應用程式識別碼金鑰，讓 Azure 資料庫移轉服務可用它來連線至目標 Azure Database 受控執行個體和 Azure 儲存體容器。 如需詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
+* 建立 Azure Active Directory 應用程式識別碼，以產生應用程式識別碼金鑰，讓 Azure 資料庫移轉服務可用它來連線至目標 Azure Database 受控執行個體和 Azure 儲存體容器。 如需詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)一文。
 
   > [!NOTE]
-  > Azure 資料庫移轉服務需要訂用帳戶的「參與者」權限，以取得指定的應用程式識別碼。 或者，您可以建立自訂角色，以授與 Azure 資料庫移轉服務所需的特定權限。 如需使用自訂角色的逐步指引，請參閱[自訂 SQL Server 角色以進行 SQL 受控執行個體的線上移轉](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)一文。
+  > Azure 資料庫移轉服務需要訂用帳戶的「參與者」權限，以取得指定的應用程式識別碼。 或者，您可以建立自訂角色，以授與 Azure 資料庫移轉服務所需的特定權限。 如需使用自訂角色的逐步指引，請參閱[自訂 SQL Server 角色以進行 SQL 受控執行個體的線上移轉](./resource-custom-roles-sql-db-managed-instance.md)一文。
 
-* 建立或記下 Azure 儲存體帳戶的 **標準效能層** ，這可讓 DMS 服務將資料庫備份檔案上傳至該處，並用於遷移資料庫。  請務必在建立 Azure 資料庫移轉服務執行個體的相同區域中建立 Azure 儲存體帳戶。
+* 建立或記下 Azure 儲存體帳戶的 **標準效能層**，這可讓 DMS 服務將資料庫備份檔案上傳至該處，並用於遷移資料庫。  請務必在建立 Azure 資料庫移轉服務執行個體的相同區域中建立 Azure 儲存體帳戶。
 
   > [!NOTE]
-  > 使用線上移轉將受到[透明資料加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)的資料庫移轉至受控執行個體時，必須先移轉內部部署或 Azure VM SQL Server 執行個體的對應憑證，才能還原資料庫。 如需詳細步驟，請參閱[將 TDE 憑證移轉至受控執行個體](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)。
+  > 使用線上移轉將受到[透明資料加密](../azure-sql/database/transparent-data-encryption-tde-overview.md)的資料庫移轉至受控執行個體時，必須先移轉內部部署或 Azure VM SQL Server 執行個體的對應憑證，才能還原資料庫。 如需詳細步驟，請參閱[將 TDE 憑證移轉至受控執行個體](../azure-sql/database/transparent-data-encryption-tde-overview.md)。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
@@ -124,9 +124,9 @@ ms.locfileid: "93392590"
 
     虛擬網路會為 Azure 資料庫移轉服務提供來源 SQL Server 和目標 SQL 受控執行個體的存取權。
 
-    如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+    如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](../virtual-network/quick-create-portal.md)一文。
 
-    如需其他詳細資訊，請參閱[了解使用 Azure 資料庫移轉服務進行 SQL 受控執行個體移轉的網路拓撲](https://aka.ms/dmsnetworkformi)一文。
+    如需其他詳細資訊，請參閱[了解使用 Azure 資料庫移轉服務進行 SQL 受控執行個體移轉的網路拓撲](./resource-network-topologies.md)一文。
 
 6. 從「進階」定價層選取 SKU。
 
@@ -177,7 +177,7 @@ ms.locfileid: "93392590"
    ![選取來源資料庫](media/tutorial-sql-server-to-managed-instance-online/dms-source-database1.png)
 
     > [!IMPORTANT]
-    > 如果您使用 SQL Server Integration Services (SSIS)，DMS 目前不支援將 SSIS 專案/套件 (SSISDB) 的目錄資料庫從 SQL Server 移轉至 SQL 受控執行個體。 不過，您可以在 Azure Data Factory (ADF) 中佈建 SSIS，並將 SSIS 專案/套件重新部署到 SQL 受控執行個體所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
+    > 如果您使用 SQL Server Integration Services (SSIS)，DMS 目前不支援將 SSIS 專案/套件 (SSISDB) 的目錄資料庫從 SQL Server 移轉至 SQL 受控執行個體。 不過，您可以在 Azure Data Factory (ADF) 中佈建 SSIS，並將 SSIS 專案/套件重新部署到 SQL 受控執行個體所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](./how-to-migrate-ssis-packages.md) 一文。
 
 5. 選取 [儲存]。
 
@@ -185,11 +185,11 @@ ms.locfileid: "93392590"
 
 1. 在 [移轉目標詳細資料] 畫面上，指定 [應用程式識別碼] 和 [金鑰]，DMS 執行個體可以使用這些資料來連線到 SQL 受控執行個體的目標執行個體及 Azure 儲存體帳戶。
 
-    如需詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
+    如需詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)一文。
 
 2. 選取 [訂用帳戶] (其中包含 SQL 受控執行個體的目標執行個體)，然後選取目標執行個體。
 
-    如果您尚未佈建 SQL 受控執行個體，請選取[連結](https://aka.ms/SQLDBMI)來協助您佈建執行個體。 當 SQL 受控執行個體準備就緒時，返回此特定專案來執行移轉。
+    如果您尚未佈建 SQL 受控執行個體，請選取[連結](../azure-sql/managed-instance/instance-create-quickstart.md)來協助您佈建執行個體。 當 SQL 受控執行個體準備就緒時，返回此特定專案來執行移轉。
 
 3. 提供 [SQL 使用者] 和 [密碼]，以連線到 SQL 受控執行個體。
 
@@ -220,7 +220,7 @@ ms.locfileid: "93392590"
     ![設定移轉設定](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
     > [!NOTE]
-    > 如果 Azure 資料庫移轉服務顯示「系統錯誤 53」或「系統錯誤 57」錯誤，其原因可能是 Azure 資料庫移轉服務無法存取 Azure 檔案共用。 如果發生上述其中一個錯誤，請使用[這裡](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的指示，授與虛擬網路對儲存體帳戶的存取權。
+    > 如果 Azure 資料庫移轉服務顯示「系統錯誤 53」或「系統錯誤 57」錯誤，其原因可能是 Azure 資料庫移轉服務無法存取 Azure 檔案共用。 如果發生上述其中一個錯誤，請使用[這裡](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)的指示，授與虛擬網路對儲存體帳戶的存取權。
 
     > [!IMPORTANT]
     > 如果已啟用回送檢查功能，而且來源 SQL Server 和檔案共用位於相同的電腦上，則來源將無法使用 FQDN 存取檔案共用。 若要修正此問題，請使用[此處](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)的指示來停用回送檢查功能。
@@ -272,6 +272,6 @@ ms.locfileid: "93392590"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需如何使用 T-SQL 還原命令將資料庫移轉至 SQL 受控執行個體的教學課程，請參閱[使用還原命令將備份還原到 SQL 受控執行個體](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
+* 如需如何使用 T-SQL 還原命令將資料庫移轉至 SQL 受控執行個體的教學課程，請參閱[使用還原命令將備份還原到 SQL 受控執行個體](../azure-sql/managed-instance/restore-sample-database-quickstart.md)。
 * 如需 SQL 受控執行個體的詳細資訊，請參閱[什麼是 SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
 * 如需將應用程式連線至 SQL 受控執行個體的相關資訊，請參閱[應用程式連線](../azure-sql/managed-instance/connect-application-instance.md)。

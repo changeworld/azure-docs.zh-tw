@@ -8,17 +8,18 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d1a5cf67a10a83a227f240fc31d25abfe9c7dd0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505575"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955934"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>適用于 Linux 的 DSC 擴充功能 (Microsoft.ostcextensions.customscriptforlinux. DSCForLinux) 
 
@@ -35,7 +36,7 @@ DSCForLinux 延伸模組是由 Microsoft 所發佈並受到支援。 此擴充�
 -  (安裝 ExtensionAction) ，將自訂 DSC 模組安裝至 Linux VM。
 - 從 Linux VM 移除自訂 DSC 模組 (移除 ExtensionAction) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 

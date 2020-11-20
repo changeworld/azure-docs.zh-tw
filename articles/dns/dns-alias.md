@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b2576669357aae7e5fe423515933c2ce4a23a7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82926225"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954472"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 別名記錄概觀
 
@@ -73,10 +73,10 @@ DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果�
 > [!NOTE]
 > 目前不支援從 Akamai 將區域頂點指向 Azure CDN 的 CDN 端點。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解別名記錄，請參閱下列文章：
 
 - [教學課程：設定別名記錄以參照 Azure 公用 IP 位址](tutorial-alias-pip.md)
 - [教學課程：使用流量管理員來設定別名記錄以支援頂點網域名稱](tutorial-alias-tm.md)
-- [DNS 常見問題](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [DNS 常見問題](./dns-faq.md#alias-records)

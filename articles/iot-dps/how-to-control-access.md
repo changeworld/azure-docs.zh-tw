@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3a374dae89ddf22d33bc44cafd9db3b4b6a9e6fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336815"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954319"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
 
-本文說明用來保護 IoT 裝置佈建服務的選項。 佈建服務使用權限**，授與每個端點的存取權。 權限可根據功能限制服務執行個體的存取權。
+本文說明用來保護 IoT 裝置佈建服務的選項。 佈建服務使用權限，授與每個端點的存取權。 權限可根據功能限制服務執行個體的存取權。
 
 本文章說明：
 
@@ -192,4 +192,4 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
 [lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/
+[lnk-resource-provider-apis]: /rest/api/iot-dps/

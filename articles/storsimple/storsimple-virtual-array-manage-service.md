@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744129"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956104"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>部署 StorSimple Virtual Array 的 StorSimple 裝置管理員服務
 
@@ -36,7 +36,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 * 取得服務註冊金鑰。
 * 重新產生服務註冊金鑰
 
-本教學課程說明如何執行上述每一項工作。 本文所含資訊僅適用於 StorSimple Virtual Array。 如需 StorSimple 8000 系列的詳細資訊，請移至 [部署 StorSimple Manager 服務](storsimple-manage-service.md)。
+本教學課程說明如何執行上述每一項工作。 本文所含資訊僅適用於 StorSimple Virtual Array。 如需 StorSimple 8000 系列的詳細資訊，請移至 [部署 StorSimple Manager 服務](./storsimple-8000-manage-service.md)。
 
 ## <a name="create-a-service"></a>建立服務
 
@@ -77,7 +77,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
    
     ![刪除服務](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. 當系統提示您確認時，按一下確認通知中的 [是]****。 
+3. 當系統提示您確認時，按一下確認通知中的 [是]。 
    
     ![確認刪除服務](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
 4. 刪除服務可能需要數分鐘的時間。 成功刪除服務之後會通知您。
@@ -89,15 +89,15 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
  ![更新的服務清單](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>取得服務註冊金鑰。
-在您成功建立服務之後，您必須在 StorSimple 裝置註冊服務。 若要註冊您的第一個 StorSimple 裝置，您必須使用服務註冊金鑰。 若要使用現有的 StorSimple 服務註冊其他裝置，您需要註冊金鑰和服務資料加密金鑰 (在註冊期間於第一個裝置上產生)。 如需服務資料加密金鑰的詳細資訊，請參閱 [StorSimple 安全性](storsimple-security.md)。 您可以存取服務的 [金鑰]**** 刀鋒視窗來取得註冊金鑰。
+在您成功建立服務之後，您必須在 StorSimple 裝置註冊服務。 若要註冊您的第一個 StorSimple 裝置，您必須使用服務註冊金鑰。 若要使用現有的 StorSimple 服務註冊其他裝置，您需要註冊金鑰和服務資料加密金鑰 (在註冊期間於第一個裝置上產生)。 如需服務資料加密金鑰的詳細資訊，請參閱 [StorSimple 安全性](./storsimple-8000-security.md)。 您可以存取服務的 [金鑰] 刀鋒視窗來取得註冊金鑰。
 
 執行下列步驟以取得服務註冊金鑰。
 
 #### <a name="to-get-the-service-registration-key"></a>若要取得服務註冊金鑰
-1. 在 [StorSimple 裝置管理員]**** 中，移至 [管理]**&gt;[金鑰]** ****。
+1. 在 [StorSimple 裝置管理員]中，移至 [管理]**&gt;[金鑰]** 。
    
    ![[金鑰] 刀鋒視窗](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. [金鑰]**** 刀鋒視窗中會顯示服務註冊金鑰。 使用複製圖示來複製註冊金鑰。 
+2. [金鑰] 刀鋒視窗中會顯示服務註冊金鑰。 使用複製圖示來複製註冊金鑰。 
 
 將服務註冊金鑰保存在安全的位置。 您需要這個金鑰，以及服務資料加密金鑰，才能對額外裝置註冊此服務。 取得服務註冊金鑰之後，您必須透過 Windows PowerShell for StorSimple 介面設定裝置。
 
@@ -107,13 +107,13 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 執行下列步驟以重新產生服務註冊金鑰。
 
 #### <a name="to-regenerate-the-service-registration-key"></a>重新產生服務註冊金鑰
-1. 在 [StorSimple 裝置管理員]**** 中，移至 [管理]**&gt;[金鑰]** ****。
+1. 在 [StorSimple 裝置管理員]中，移至 [管理]**&gt;[金鑰]** 。
    
    ![按鍵再次分頁](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. 在 [金鑰]**** 刀鋒視窗中，按一下 [重新產生]****。
+2. 在 [金鑰] 刀鋒視窗中，按一下 [重新產生]。
    
    ![按一下重新產生](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. 在 [重新產生服務註冊金鑰]**** 刀鋒視窗中，檢閱重新產生金鑰時所需的動作。 向此服務註冊的所有後續裝置會使用新的註冊金鑰。 按一下 [重新產生]**** 以確認。 註冊完成之後會通知您。
+3. 在 [重新產生服務註冊金鑰] 刀鋒視窗中，檢閱重新產生金鑰時所需的動作。 向此服務註冊的所有後續裝置會使用新的註冊金鑰。 按一下 [重新產生] 以確認。 註冊完成之後會通知您。
    
    ![確認重新產生金鑰](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 新的服務註冊金鑰隨即顯示。
@@ -125,4 +125,3 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 ## <a name="next-steps"></a>後續步驟
 * 瞭解如何 [開始](storsimple-virtual-array-deploy1-portal-prep.md) 使用 StorSimple Virtual Array。
 * 深入了解 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-

@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/21/2020
-ms.openlocfilehash: 8a34b0ae819f7bbb29a0004a89ea5417b52c127e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 29a154e33d8025f53b929bf0bb7602b2d0a64b13
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392668"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955016"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教學課程：使用 DMS 在線上從 SQL Server 遷移至 Azure SQL Database 中的單一資料庫或集區資料庫
 
-您可以使用 Azure 資料庫移轉服務，將資料庫從 SQL Server 執行個體移轉至 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)，且停機時間最短。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2016 (或更新版本) 內部部署執行個體的 **Adventureworks2012** 資料庫遷移到 Azure SQL Database 中的單一資料庫或集區資料庫。
+您可以使用 Azure 資料庫移轉服務，將資料庫從 SQL Server 執行個體移轉至 [Azure SQL Database](/azure/sql-database/)，且停機時間最短。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2016 (或更新版本) 內部部署執行個體的 **Adventureworks2012** 資料庫遷移到 Azure SQL Database 中的單一資料庫或集區資料庫。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -49,34 +49,34 @@ ms.locfileid: "93392668"
 若要完成本教學課程，您需要：
 
 - 下載並安裝 [SQL Server 2012 或更新版本](https://www.microsoft.com/sql-server/sql-server-downloads)。
-- 啟用 TCP/IP 通訊協定，在 SQL Server Express 安裝期間預設會停用，方法是遵循[啟用或停用伺服器網路通訊協定](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的指示。
-- 依照[使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started)一文中的詳細資料，在 Azure SQL Database 中建立單一 (或集區) 資料庫。
+- 啟用 TCP/IP 通訊協定，在 SQL Server Express 安裝期間預設會停用，方法是遵循[啟用或停用伺服器網路通訊協定](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的指示。
+- 依照[使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](../azure-sql/database/single-database-create-quickstart.md)一文中的詳細資料，在 Azure SQL Database 中建立單一 (或集區) 資料庫。
 
     > [!NOTE]
-    > 如果您使用 SQL Server Integration Services (SSIS)，而且想要將 SSIS 專案/套件 (SSISDB) 的目錄資料庫從 SQL Server 遷移到 Azure SQL Database，當您在 Azure Data Factory (ADF) 中佈建 SSIS 時，系統會自動代替您建立及管理目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
+    > 如果您使用 SQL Server Integration Services (SSIS)，而且想要將 SSIS 專案/套件 (SSISDB) 的目錄資料庫從 SQL Server 遷移到 Azure SQL Database，當您在 Azure Data Factory (ADF) 中佈建 SSIS 時，系統會自動代替您建立及管理目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](./how-to-migrate-ssis-packages.md) 一文。
 
 - 下載並安裝 [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更新版本。
-- 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。 如需建立虛擬網路的詳細資訊，請參閱[虛擬網路文件](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，裡面會提供逐步操作詳細資料。
+- 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 為您的內部部署來源伺服器提供站對站連線能力。 如需建立虛擬網路的詳細資訊，請參閱[虛擬網路文件](../virtual-network/index.yml)，特別是快速入門文章，裡面會提供逐步操作詳細資料。
 
     > [!NOTE]
-    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將佈建服務的子網路：
+    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](../virtual-network/virtual-network-service-endpoints-overview.md)新增至將佈建服務的子網路：
     > - 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > - 儲存體端點
     > - 服務匯流排端點
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-- 確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需 Azure 虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
-- 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
+- 確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需 Azure 虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)。
+- 設定[用於 Database Engine 存取的 Windows 防火牆](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server，其預設會通過 TCP 連接埠 1433。 如果您的預設執行個體正在其他連接埠上接聽，請將該連接埠新增至防火牆。
 - 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，您可以啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
 - 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
-- 為 Azure SQL Database 建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網路範圍。
-- 確定用來連線至來源 SQL Server 執行個體的認證具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 權限。
+- 為 Azure SQL Database 建立伺服器層級的[防火牆規則](../azure-sql/database/firewall-configure.md)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網路範圍。
+- 確定用來連線至來源 SQL Server 執行個體的認證具有 [CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) 權限。
 - 確定用來連線至目標 Azure SQL 資料庫執行個體的認證，在目標 Azure SQL 資料庫執行個體上具有 CONTROL DATABASE 權限。
 - 來源 SQL Server 版本必須是 SQL Server 2005 或更新版本。 若要確認您的 SQL Server 執行個體正在執行的版本，請參閱[如何判斷 SQL Server 及其元件的版本、版次及更新層級](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)一文。
-- 資料庫必須處於大量記錄或完整復原模式。 若要確認您為 SQL Server 執行個體設定的復原模式，請參閱[檢視或變更資料庫的復原模式 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017) 一文。
-- 確實製作資料庫的完整資料庫備份。 若要建立完整資料庫備份，請參閱[如何： 建立完整資料庫備份 (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)) 一文。
+- 資料庫必須處於大量記錄或完整復原模式。 若要確認您為 SQL Server 執行個體設定的復原模式，請參閱[檢視或變更資料庫的復原模式 (SQL Server)](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017) 一文。
+- 確實製作資料庫的完整資料庫備份。 若要建立完整資料庫備份，請參閱[如何： 建立完整資料庫備份 (Transact-SQL)](/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)) 一文。
 - 若有任何資料表沒有主索引鍵，請在資料庫和特定資料表上啟用異動資料擷取 (CDC)。
     > [!NOTE]
     > 您可以使用下列指令碼來尋找任何沒有主索引鍵的資料表。
@@ -89,7 +89,7 @@ ms.locfileid: "93392668"
     OBJECTPROPERTY(OBJECT_ID, 'TableHasPrimaryKey') = 0;
     ```
 
-    若結果顯示有一或多個資料表的 'is_tracked_by_cdc' 為 '0'，請使用[啟用和停用異動資料擷取 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017) 一文說明的程序，為資料庫和特定資料表啟用異動擷取。
+    若結果顯示有一或多個資料表的 'is_tracked_by_cdc' 為 '0'，請使用[啟用和停用異動資料擷取 (SQL Server)](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017) 一文說明的程序，為資料庫和特定資料表啟用異動擷取。
 
 - 設定來源 SQL Server 的散發者角色。
 
@@ -103,7 +103,7 @@ ms.locfileid: "93392668"
     SELECT @installed as installed;
     ```
 
-    若結果傳回建議安裝複寫元件的錯誤訊息，請使用[安裝 SQL Server 複寫](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-replication?view=sql-server-2017)一文中的程序安裝 SQL Server 複寫元件。
+    若結果傳回建議安裝複寫元件的錯誤訊息，請使用[安裝 SQL Server 複寫](/sql/database-engine/install-windows/install-sql-server-replication?view=sql-server-2017)一文中的程序安裝 SQL Server 複寫元件。
 
     若複寫已安裝，請檢查是否已在來源 SQL Server 上使用下方的 T-SQL 命令設定散發角色。
 
@@ -111,7 +111,7 @@ ms.locfileid: "93392668"
     EXEC sp_get_distributor;
     ```
 
-    如果未設定散發 (在上述命令輸出中，散發伺服器顯示為 NULL)，請使用[設定散發](https://docs.microsoft.com/sql/relational-databases/replication/configure-publishing-and-distribution?view=sql-server-2017)一文中提供的指導方針來設定散發。
+    如果未設定散發 (在上述命令輸出中，散發伺服器顯示為 NULL)，請使用[設定散發](/sql/relational-databases/replication/configure-publishing-and-distribution?view=sql-server-2017)一文中提供的指導方針來設定散發。
 
 - 在目標 Azure SQL Database 上停用資料庫觸發程序。
     >[!NOTE]
@@ -123,11 +123,11 @@ ms.locfileid: "93392668"
     DISABLE TRIGGER (Transact-SQL)
     ```
 
-    如需詳細資訊，請參閱 [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文。 
+    如需詳細資訊，請參閱 [DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文。 
 
 ## <a name="assess-your-on-premises-database"></a>評估您的內部部署資料庫
 
-將資料 SQL Server 執行個體移轉至 Azure SQL Database 之前，您必須評估 SQL Server 資料庫是否有任何可能會阻礙移轉的問題。 使用資料移轉小幫手 v3.3 或更新版本，依照[執行 SQL Server 移轉評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所描述的步驟，完成內部部署資料庫評估。
+將資料 SQL Server 執行個體移轉至 Azure SQL Database 之前，您必須評估 SQL Server 資料庫是否有任何可能會阻礙移轉的問題。 使用資料移轉小幫手 v3.3 或更新版本，依照[執行 SQL Server 移轉評估](/sql/dma/dma-assesssqlonprem)一文中所描述的步驟，完成內部部署資料庫評估。
 
 若要評估內部部署資料庫，請執行下列步驟：
 
@@ -146,7 +146,7 @@ ms.locfileid: "93392668"
 5. 在 [新增資源] 對話方塊中，依序選取 [AdventureWorks2012]、[新增]，然後選取 [開始評估]。
 
     > [!NOTE]
-    > 如果您使用 SSIS，DMA 目前不支援來源 SSISDB 的評估。 不過會評估/驗證 SSIS 專案/套件，因為它們會重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
+    > 如果您使用 SSIS，DMA 目前不支援來源 SSISDB 的評估。 不過會評估/驗證 SSIS 專案/套件，因為它們會重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](./how-to-migrate-ssis-packages.md) 一文。
 
     評估完成時，結果會如下圖所示：
 
@@ -164,10 +164,10 @@ ms.locfileid: "93392668"
 當您滿意評估結果，且認為選取的資料庫也適合遷移至 Azure SQL Database 中的單一資料庫或集區資料庫之後，請使用 DMA 將結構描述遷移至 Azure SQL Database。
 
 > [!NOTE]
-> 在 DMA 中建立移轉專案之前，請務必先確認您已依照必要條件中的說明在 Azure 中佈建 SQL 資料庫。 基於本教學課程的目的，Azure SQL Database 的名稱會假設為 **AdventureWorksAzure** ，但您可以命名為不同的名稱。
+> 在 DMA 中建立移轉專案之前，請務必先確認您已依照必要條件中的說明在 Azure 中佈建 SQL 資料庫。 基於本教學課程的目的，Azure SQL Database 的名稱會假設為 **AdventureWorksAzure**，但您可以命名為不同的名稱。
 
 > [!IMPORTANT]
-> 如果您使用 SSIS，DMA 目前不支援來源 SSISDB 的移轉，但您可以將 SSIS 專案/套件重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
+> 如果您使用 SSIS，DMA 目前不支援來源 SSISDB 的移轉，但您可以將 SSIS 專案/套件重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](./how-to-migrate-ssis-packages.md) 一文。
 
 若要將 **AdventureWorks2012** 結構描述移轉到 Azure SQL Database 中的單一資料庫或集區資料庫，請執行下列步驟：
 
@@ -234,7 +234,7 @@ ms.locfileid: "93392668"
 
     虛擬網路會為 Azure 資料庫移轉服務提供來源 SQL Server 和目標 Azure SQL Database 執行個體的存取權。
 
-    如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+    如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](../virtual-network/quick-create-portal.md)一文。
 
 6. 選取定價層。
 
@@ -287,7 +287,7 @@ ms.locfileid: "93392668"
    ![來源詳細資料](media/tutorial-sql-server-to-azure-sql-online/dms-source-details3.png)
 
     > [!IMPORTANT]
-    > 如果您使用 SSIS，DMS 目前不支援來源 SSISDB 的移轉，但您可以將 SSIS 專案/套件重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
+    > 如果您使用 SSIS，DMS 目前不支援來源 SSISDB 的移轉，但您可以將 SSIS 專案/套件重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](./how-to-migrate-ssis-packages.md) 一文。
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
@@ -344,5 +344,5 @@ ms.locfileid: "93392668"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需執行線上移轉至 Azure SQL Database 時的已知問題和限制，請參閱 [Azure SQL Database 線上移轉的已知問題和因應措施](known-issues-azure-sql-online.md)一文。
-- 如需 Azure 資料庫移轉服務的相關資訊，請參閱[什麼是 Azure 資料庫移轉服務？](https://docs.microsoft.com/azure/dms/dms-overview)一文。
-- 如需 Azure SQL Database 的相關資訊，請參閱[什麼是 Azure SQL Database 服務？](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)。
+- 如需 Azure 資料庫移轉服務的相關資訊，請參閱[什麼是 Azure 資料庫移轉服務？](./dms-overview.md)一文。
+- 如需 Azure SQL Database 的相關資訊，請參閱[什麼是 Azure SQL Database 服務？](../azure-sql/database/sql-database-paas-overview.md)。

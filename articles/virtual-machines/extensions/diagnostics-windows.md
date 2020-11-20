@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837018"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955968"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
 
@@ -40,7 +41,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_na
 ```
 
 
-*$diagnosticsconfig_path* 是包含診斷組態之 XML 檔案的路徑，如下面的[範例](#sample-diagnostics-configuration)所述。  
+*$diagnosticsconfig_path* 是包含診斷組態之 XML 檔案的路徑，如下面的 [範例](#sample-diagnostics-configuration)所述。  
 
 如果診斷組態檔以儲存體帳戶名稱指定 **StorageAccount** 元素，則 *Set-AzVMDiagnosticsExtension* 指令碼會自動設定診斷擴充功能，以將診斷資料傳送至該儲存體帳戶。 若要讓此做法能夠運作，儲存體帳戶必須與 VM 位於相同的訂用帳戶中。
 
@@ -95,7 +96,7 @@ Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 您需要更新組態以包含下列各項：
 
-* 需要以 VM 的資源識別碼更新 [計量] ** 元素的 **resourceID** 屬性。
+* 需要以 VM 的資源識別碼更新 [計量]  元素的 **resourceID** 屬性。
   
   * 可以使用下列模式來建構資源識別碼："/subscriptions/{*具有 VM 之訂用帳戶的訂用帳戶 ID*}/resourceGroups/{*VM 的資源群組名稱*}/providers/Microsoft.Compute/virtualMachines/{*VM 名稱*}"。
   * 例如，如果 VM 執行所在訂用帳戶的訂用帳戶 ID 為 **11111111-1111-1111-1111-111111111111**、資源群組的資源群組名稱為 **MyResourceGroup** 和 VM 名稱為 **MyWindowsVM**，則 *resourceID* 的值會是：

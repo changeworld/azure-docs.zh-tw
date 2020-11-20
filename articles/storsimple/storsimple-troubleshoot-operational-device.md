@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cd1d981737db1e7c852931ecc2449e0afc03530
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056484"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956784"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>可運作的 StorSimple 裝置疑難排解
 > [!NOTE]
-> StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](storsimple-8000-move-azure-portal-faq.md)。
+> StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](./index.yml)。
 
 ## <a name="overview"></a>概觀
 本文提供實用的疑難排解指導方針，可用來解決在部署 StorSimple 裝置且可運作之後您可能遇到的問題。 文中將描述常見問題、可能原因和建議的步驟，可協助您解決在執行 Microsoft Azure StorSimple 時可能遇到的問題。 此資訊適用於 StorSimple 內部部署實體裝置和 StorSimple 虛擬裝置。
@@ -47,9 +47,9 @@ ms.locfileid: "90056484"
 
 | 否。 | 錯誤訊息或情況 | 可能的原因 | 建議的動作 |
 |:--- |:--- |:--- |:--- |
-| 1 |錯誤 350032：此裝置已經停用。 |如果您在已停用的裝置上執行安裝精靈，就會看到這個錯誤。 |[連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 以進行後續步驟。 已停用的裝置無法處於執行狀態。 您可能需要進行原廠重設，裝置才能再次啟用。 |
+| 1 |錯誤 350032：此裝置已經停用。 |如果您在已停用的裝置上執行安裝精靈，就會看到這個錯誤。 |[連絡 Microsoft 支援服務](./storsimple-8000-contact-microsoft-support.md) 以進行後續步驟。 已停用的裝置無法處於執行狀態。 您可能需要進行原廠重設，裝置才能再次啟用。 |
 | 2 |Invoke-HcsSetupWizard：ERROR_INVALID_FUNCTION (發生例外狀況於 HRESULT：0x80070001) |DNS 伺服器更新失敗。 DNS 設定是全域設定，並會在所有已啟用的網路介面上加以套用。 |啟用介面並重新套用 DNS 設定。 因為這些設定是全域的，所以這樣做可能會中斷其他已啟用介面的網路。 |
-| 3 |裝置會在 StorSimple Manager 服務入口網站中顯示為線上，但是當您嘗試完成最小安裝並儲存設定時，操作失敗。 |在初始安裝期間，並未設定 Web Proxy，即使已有實際的 Proxy 伺服器存在也一樣。 |使用 [Test-HcsmConnection cmdlet][2] 找出錯誤。 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 。 |
+| 3 |裝置會在 StorSimple Manager 服務入口網站中顯示為線上，但是當您嘗試完成最小安裝並儲存設定時，操作失敗。 |在初始安裝期間，並未設定 Web Proxy，即使已有實際的 Proxy 伺服器存在也一樣。 |使用 [Test-HcsmConnection cmdlet][2] 找出錯誤。 [連絡 Microsoft 支援服務](./storsimple-8000-contact-microsoft-support.md) 。 |
 | 4 |Invoke-HcsSetupWizard：值未落在預期的範圍內。 |這個錯誤是因為不正確的子網路遮罩而引發。 可能的原因包括： <ul><li> 子網路遮罩遺失或空白。</li><li>Ipv6 首碼格式不正確。</li><li>介面具備雲端功能，但閘道遺失或不正確。</li></ul>請注意，如果透過安裝精靈設定，DATA 0 自動具備雲端功能。 |若要判斷問題所在，請使用子網路 0.0.0.0 或 256.256.256.256，然後查看輸出。 視需要針對子網路遮罩、閘道器及 Ipv6 首碼輸入正確的值。 |
 
 ## <a name="error-codes"></a>錯誤碼
@@ -64,7 +64,7 @@ ms.locfileid: "90056484"
 | 390143 |發生錯誤碼為 390143 的錯誤。 (未知的錯誤。) |如果問題持續發生，請連絡 Microsoft 支援服務以進行後續步驟。 |
 
 ## <a name="next-steps"></a>後續步驟
-如果您無法解決問題，請 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) ，尋求協助。 
+如果您無法解決問題，請 [連絡 Microsoft 支援服務](./storsimple-8000-contact-microsoft-support.md) ，尋求協助。 
 
-[1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: /previous-versions/windows/powershell-scripting/dn688135(v=wps.630)
+[2]: /previous-versions/windows/powershell-scripting/dn715782(v=wps.630)

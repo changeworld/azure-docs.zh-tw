@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 06c355b913d5b786455cae20d1a57eb8c63c3ee1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842931"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954557"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何使用 Azure 入口網站管理裝置註冊
 
@@ -40,7 +40,7 @@ ms.locfileid: "94842931"
      
         [![使用入口網站新增註冊群組](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
         
-        | 欄位 | 說明 |
+        | 欄位 | 描述 |
         | :--- | :--- |
         | **群組名稱** | 裝置群組的必要名稱。 |
         | **證明類型** | 根據您的裝置將使用的證明方法，按一下證明類型的 [ **憑證** ] 或 [ **對稱金鑰** ]。 |
@@ -64,7 +64,7 @@ ms.locfileid: "94842931"
      
         [![入口網站中的個別註冊](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
     
-        | 欄位 | 說明 |
+        | 欄位 | 描述 |
         | :--- | :--- |
         | **機制** | 根據您裝置將使用的證明方法，選取要使用之證明機制的 **x.509**、 **TPM** 或 **對稱金鑰** 。 |
         | 證明設定 | 如需有關建立及使用具有對稱金鑰或 x.509 憑證之個別註冊的逐步指示，請參閱其中一個布建 [對稱裝置](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment) 或布建 [x.509 憑證裝置](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry) 快速入門。<br><br>如需有關使用 TPM 證明建立和使用個別註冊的逐步指示，請參閱其中一個布建 [模擬的 tpm 裝置](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry) 範例。|
@@ -91,5 +91,3 @@ ms.locfileid: "94842931"
 1. 動作完成後，您會看到您的專案已從裝置註冊清單中移除。 
  
     ![在入口網站中移除註冊](./media/how-to-manage-enrollments/remove-enrollment.png)
-
-

@@ -5,16 +5,17 @@ services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421068"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956019"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -70,8 +71,8 @@ Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版�
 
 ### <a name="prerequisites"></a>必要條件
 
-* **Azure Linux Agent 2.2.0 版或更新版本** 。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](./update-linux-agent.md)更新。
-* **Azure CLI** 。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
+* **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](./update-linux-agent.md)更新。
+* **Azure CLI**。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
 * Wget 命令，如果您沒有：執行 `sudo apt-get install wget`。
 * 現有的 Azure 訂用帳戶和現有的一般用途儲存體帳戶，用來儲存資料。  一般目的儲存體帳戶支援需要的資料表儲存體。  Blob 儲存體帳戶將無法運作。
 * Python 2
@@ -198,7 +199,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>自舊版擴充功能移轉
 
-擴充功能的最新版本是 **3.0** 。 **任何舊版 (2.x) 皆已被取代，並會 2018 年 7 月 31 日停止發行** 。
+擴充功能的最新版本是 **3.0**。 **任何舊版 (2.x) 皆已被取代，並會 2018 年 7 月 31 日停止發行**。
 
 > [!IMPORTANT]
 > 此擴充功能為擴充功能組態帶來突破性的改變。 這一項改變可提升擴充功能安全性，也因此不會再維持與 2.x 的回溯相容性。 此外，此擴充功能的擴充功能發行者與 2.x 版的發行者不同。
@@ -604,7 +605,7 @@ TransfersPerSecond | 每秒的讀取或寫入作業數
 
 可透過設定 `"condition": "IsAggregate=True"` 取得的所有檔案系統彙總值。 可透過設定 `"condition": 'Name="/mnt"'` 取得的特定已掛接檔案系統 (例如 "/mnt") 的值。 
 
-**注意** ：如果使用 Azure 入口網站而非 JSON，則正確的條件欄位形式為 Name='/mnt'
+**注意**：如果使用 Azure 入口網站而非 JSON，則正確的條件欄位形式為 Name='/mnt'
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁碟類別的內建計量
 
