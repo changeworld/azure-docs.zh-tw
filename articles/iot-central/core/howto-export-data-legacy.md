@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126732"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987349"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地
 
@@ -22,7 +22,7 @@ ms.locfileid: "92126732"
 > - 如需新的預覽資料匯出功能的相關資訊，請參閱 [使用資料匯出將 IoT 資料匯出至雲端目的地](./howto-export-data.md)。
 > - 若要瞭解預覽資料匯出與舊版資料匯出功能之間的差異，請參閱 [比較表](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)。
 
-本文說明如何使用 Azure IoT Central 中的資料匯出功能。 這項功能可讓您將資料持續匯出至 **Azure 事件中樞**、 **Azure 服務匯流排**或 **Azure Blob 儲存體** 實例。 資料匯出會使用 JSON 格式，而且可以包含遙測、裝置資訊和裝置範本資訊。 使用匯出的資料：
+本文說明如何使用 Azure IoT Central 中的資料匯出功能。 這項功能可讓您將資料持續匯出至 **Azure 事件中樞**、 **Azure 服務匯流排** 或 **Azure Blob 儲存體** 實例。 資料匯出會使用 JSON 格式，而且可以包含遙測、裝置資訊和裝置範本資訊。 使用匯出的資料：
 
 - 暖路徑見解和分析。 此選項包括在 Azure 串流分析中觸發自訂規則、在 Azure Logic Apps 中觸發自訂工作流程，或透過 Azure Functions 將其傳遞至轉換。
 - 冷路徑分析，例如在 Microsoft Power BI 的 Azure Machine Learning 或長期趨勢分析中定型模型。
@@ -46,7 +46,7 @@ ms.locfileid: "92126732"
 
 2. 選擇訂用帳戶。 您可以將資料匯出至與您的 IoT Central 應用程式不同的訂用帳戶中的其他訂用帳戶。 在此情況下，您會使用連接字串進行連接。
 
-3. 在「事件中樞」命名空間中建立一個事件中樞。 移至您的命名空間，然後選取頂端的 [+ 事件中樞]**** 以建立事件中樞執行個體。
+3. 在「事件中樞」命名空間中建立一個事件中樞。 移至您的命名空間，然後選取頂端的 [+ 事件中樞] 以建立事件中樞執行個體。
 
 ### <a name="create-service-bus-namespace"></a>建立服務匯流排命名空間
 
@@ -72,7 +72,7 @@ ms.locfileid: "92126732"
     |標準|Blob 儲存體|
     |Premium|區塊 Blob 儲存體|
 
-2. 在您的儲存體帳戶中建立容器。 移至您的儲存體帳戶。 在 [Blob 服務]**** 下，選取 [瀏覽 Blob]****。 選取頂端的 [+ 容器]**** 以建立新的容器。
+2. 在您的儲存體帳戶中建立容器。 移至您的儲存體帳戶。 在 [Blob 服務] 下，選取 [瀏覽 Blob]。 選取頂端的 [+ 容器] 以建立新的容器。
 
 ## <a name="set-up-data-export"></a>設定資料匯出
 
@@ -85,7 +85,7 @@ ms.locfileid: "92126732"
     > [!Tip]
     > 如果您在左窗格中看不到 [ **資料匯出** ]，則表示您沒有在應用程式中設定資料匯出的許可權。 請連絡系統管理員來設定資料匯出。
 
-3. 選取 [+ 新增]**** 按鈕。 選擇其中一個 **Azure Blob 儲存體**、 **Azure 事件中樞**、 **Azure 服務匯流排佇列**或 **Azure 服務匯流排主題** 做為您匯出的目的地。 每個應用程式的匯出數目上限是五個。
+3. 選取 [+ 新增] 按鈕。 選擇其中一個 **Azure Blob 儲存體**、 **Azure 事件中樞**、 **Azure 服務匯流排佇列** 或 **Azure 服務匯流排主題** 做為您匯出的目的地。 每個應用程式的匯出數目上限是五個。
 
 4. 輸入匯出的名稱。 在下拉式清單方塊中，選取您的 **命名空間**，或 **輸入連接字串**。
 
@@ -96,14 +96,14 @@ ms.locfileid: "92126732"
 
 5. 從下拉式清單方塊中選擇事件中樞、佇列、主題或容器。
 
-6. (選擇性) 如果您選擇 [輸入連接字串]****，就會顯示一個可供您貼上連接字串的新方塊。 取得下列項目的連接字串：
+6. (選擇性) 如果您選擇 [輸入連接字串]，就會顯示一個可供您貼上連接字串的新方塊。 取得下列項目的連接字串：
 
     - 事件中樞或服務匯流排，請移至 Azure 入口網站中的命名空間：
         - 若要使用整個命名空間的連接字串：
             1. 在 [**設定**] 底下，選取 [**共用存取原則**]
             2. 建立新的金鑰，或選擇具有 **傳送** 許可權的現有金鑰。
             3. 複製主要連接字串或次要連接字串
-        - 若要使用特定事件中樞實例或服務匯流排佇列或主題的連接字串，請移至 **> 事件中樞** 或實體 **> 佇列** 或 **實體 > 主題**的實體。 選擇特定的實例，並遵循上述相同步驟來取得連接字串。
+        - 若要使用特定事件中樞實例或服務匯流排佇列或主題的連接字串，請移至 **> 事件中樞** 或實體 **> 佇列** 或 **實體 > 主題** 的實體。 選擇特定的實例，並遵循上述相同步驟來取得連接字串。
     - 在 [儲存體帳戶] 中，移至 Azure 入口網站中的儲存體帳戶：
         - 僅支援整個儲存體帳戶的連接字串。 不支援範圍為單一容器的連接字串。
           1. 在 [**設定**] 底下，選取 [**存取金鑰**]
@@ -113,7 +113,7 @@ ms.locfileid: "92126732"
 
 7. 在 [ **要匯出的資料**] 底下，將 [類型] 設定為 [ **開啟**]，選擇要匯出的資料類型。
 
-8. 若要開啟資料匯出，請確定已**開啟****啟用**的切換。 選取 [儲存]。
+8. 若要開啟資料匯出，請確定已 **開啟****啟用** 的切換。 選取 [儲存]。
 
 9. 幾分鐘後，您的資料就會出現在您選擇的目的地。
 
@@ -140,7 +140,7 @@ ms.locfileid: "92126732"
 > [!NOTE]
 > 針對 Blob 儲存體，請確定您的裝置正在傳送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` (或 `utf-16`) `utf-32` 的訊息。 如需範例，請參閱 [IoT 中樞檔](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) 。
 
-傳送遙測的裝置會以裝置識別碼來表示 (請參閱下列各節) 。 若要取得裝置的名稱，請匯出裝置資料，並使用符合裝置訊息**deviceId**的 **>connectiondeviceid**來相互關聯每個訊息。
+傳送遙測的裝置會以裝置識別碼來表示 (請參閱下列各節) 。 若要取得裝置的名稱，請匯出裝置資料，並使用符合裝置訊息 **deviceId** 的 **>connectiondeviceid** 來相互關聯每個訊息。
 
 下列範例顯示從事件中樞或服務匯流排佇列或主題接收的訊息：
 
@@ -382,7 +382,6 @@ ms.locfileid: "92126732"
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -506,7 +505,6 @@ ms.locfileid: "92126732"
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],

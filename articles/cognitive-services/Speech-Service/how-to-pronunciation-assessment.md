@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133575"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984916"
 ---
 # <a name="pronunciation-assessment"></a>發音評定
 
@@ -154,19 +154,19 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 下表列出發音評定的設定參數。
 
-| 參數 | 描述 | 必要/選用 |
+| 參數 | Description | 必要？ |
 |-----------|-------------|---------------------|
 | ReferenceText | 用來評估發音的文字。 | 必要 |
-| GradingSystem | 評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設設定是 `FivePoint`。 | 選擇性 |
-| 細微度 | 評估細微性。 接受的值為，顯示全文檢索文字和 `Phoneme` 音素層級的分數，其中顯示全文檢索和單字層級的分數，其中 `Word` 只會 `FullText` 顯示全文檢索層級的分數。 預設設定是 `Phoneme`。 | 選擇性 |
-| EnableMiscue | 啟用 miscue 計算。 啟用此功能之後，會將發音的單字與參考文字進行比較，並根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設設定是 `False`。 | 選擇性 |
+| GradingSystem | 評分校正的點系統。 `FivePoint`系統會提供0-5 浮點分數，並 `HundredMark` 提供0-100 浮點分數。 預設：`FivePoint`。 | 選擇性 |
+| 細微度 | 評估細微性。 接受的值為，顯示全文檢索文字和 `Phoneme` 音素層級的分數，其中顯示全文檢索和單字層級的分數，其中 `Word` 只會 `FullText` 顯示全文檢索層級的分數。 預設：`Phoneme`。 | 選擇性 |
+| EnableMiscue | 啟用 miscue 計算。 啟用此功能之後，會將發音的單字與參考文字進行比較，並根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設：`False`。 | 選擇性 |
 | ScenarioId | 表示自訂點系統的 GUID。 | 選擇性 |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>發音評定結果參數
 
 下表列出發音評量的結果參數。
 
-| 參數 | 描述 |
+| 參數 | Description |
 |-----------|-------------|
 | `AccuracyScore` | 語音的發音精確度。 精確度表示音素與原生喇叭的發音相符程度。 文字和全文檢索層級精確度分數是從音素層級精確度分數匯總而來。 |
 | `FluencyScore` | 指定語音的流暢度。 流暢度指出語音符合原生說話者在單字之間使用無訊息中斷的程度。 |
@@ -174,7 +174,7 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 | `PronunciationScore` | 表示指定語音之發音品質的整體分數。 這是從 `AccuracyScore` `FluencyScore` 和加權匯總而來 `CompletenessScore` 。 |
 | `ErrorType` | 此值會指出文字是否省略、插入或不太明顯，相較于 `ReferenceText` 。 可能的值為 `None` (表示這個字組沒有錯誤) `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 <!-- TODO: update the sample links after release -->
 

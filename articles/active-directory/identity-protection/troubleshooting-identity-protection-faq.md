@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288360"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987332"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>常見問題身分識別保護 Azure Active Directory 的常見問題
 
 ## <a name="dismiss-user-risk-known-issues"></a>關閉使用者風險的已知問題
 
-關閉傳統 Identity Protection 中的 **使用者風險** 將 Identity protection 中使用者風險歷程記錄的執行者設定為 **Azure AD** 。
+關閉傳統 Identity Protection 中的 **使用者風險** 將 Identity protection 中使用者風險歷程記錄的執行者設定為 **Azure AD**。
 
 關閉 Identity Protection 中的 **使用者風險** 將 identity protection 中使用者風險歷程記錄的執行者設定為 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
@@ -80,7 +80,7 @@ IP 地理位置對應對整個產業而言是項挑戰。 如果您認為登入�
 
 **確認安全** (登入時) – 告知 Azure AD Identity Protection：登入是由身分擁有者執行的，不會表示遭到盜用。
 
-- 收到此意見反應時，我們會將登入 (非使用者) 風險狀態改為 [確認安全]，並將風險層級改為 **-** 。
+- 收到此意見反應時，我們會將登入 (非使用者) 風險狀態改為 [確認安全]，並將風險層級改為 **-**。
 
 - 此外，我們會將資訊提供給我們的機器學習系統，以供未來改進風險評定之用。
 
@@ -95,6 +95,4 @@ IP 地理位置對應對整個產業而言是項挑戰。 如果您認為登入�
 
 高彙總風險分數是根據登入的其他特徵而定，或根據為該登入引發了多個偵測的這項事實而定。 相反地，即使與該登入相關聯的偵測為「高」風險，登入的「登入風險 (彙總)」也有可能為「中」。 
 
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>為什麼連結到具風險登入的偵測與登入風險層級的風險層級不同 (即時) ？ 
 
-我們最近已改進了如何計算即時登入風險。 在風險偵測層級與登入風險層級之間觀察到的差異是這些變更的結果。 請注意，即時登入風險是在強制執行原則時使用的值。 

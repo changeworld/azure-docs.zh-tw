@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125337"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985751"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,8 +64,8 @@ ms.locfileid: "93125337"
 
 除了災害復原之外，主動式異地複寫還可用於下列案例︰
 
-- **資料庫移轉** ：您可以使用主動式異地複寫，將資料庫從一部伺服器遷移至另一部伺服器，並將停機時間最短。
-- **應用程式升級** ：您可以在應用程式升級期間建立額外的次要資料庫做為容錯回復複本。
+- **資料庫移轉**：您可以使用主動式異地複寫，將資料庫從一部伺服器遷移至另一部伺服器，並將停機時間最短。
+- **應用程式升級**：您可以在應用程式升級期間建立額外的次要資料庫做為容錯回復複本。
 
 若要達到真正的業務持續性，新增資料中心之間的資料庫備援只是解決方案的一部分。 在災難性失敗後要端對端復原應用程式 (服務) 需要復原構成服務的所有元件和任何相依的服務。 這些元件的範例包括用戶端軟體 (例如自訂 JavaScript 的瀏覽器)、web 前端、儲存體和 DNS。 所有元件都必須對相同的失敗具有恢復功能，並且在應用程式的復原時間目標 (RTO) 內可供使用。 因此，您需要識別所有相依服務並了解其提供的保證與功能。 然後，您必須採取適當步驟以確保服務功能在它所依賴的服務容錯移轉期間都正常。 如需設計損毀修復解決方案的詳細資訊，請參閱 [使用主動式異地複寫設計災難復原的雲端解決方案](designing-cloud-solutions-for-disaster-recovery.md)。
 
@@ -244,14 +244,14 @@ ms.locfileid: "93125337"
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以程式設計方式管理主動式異地複寫
 
-如前所述，作用中異地複寫可使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](/rest/api/sql/) 和 [Azure PowerShell Cmdlet](/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需有關如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
+如前所述，作用中異地複寫可使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](/rest/api/sql/) 和 [Azure PowerShell Cmdlet](/powershell/azure/)。 這些 Api 需要使用資源群組，並支援 Azure 角色型存取控制 (Azure RBAC) 。 如需有關如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-sql：管理單一和集區資料庫的容錯移轉
 
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此，它們也不會套用至 SQL 受控執行個體的實例，因為它們只支援容錯移轉群組。
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
@@ -282,7 +282,7 @@ ms.locfileid: "93125337"
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理單一和集區資料庫的容錯移轉
 
-| API | 描述 |
+| API | 說明 |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](/rest/api/sql/databases/createorupdate) |建立、更新或還原主要或次要資料庫。 |
 | [取得建立或更新資料庫狀態](/rest/api/sql/databases/createorupdate) |在建立作業期間傳回狀態。 |
@@ -293,7 +293,7 @@ ms.locfileid: "93125337"
 | [刪除複寫連結](/rest/api/sql/replicationlinks/delete) | 刪除資料庫複寫連結。 無法在容錯移轉期間進行。 |
 |  | |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需範例指令碼，請參閱：
   - [使用作用中異地複寫設定單一資料庫並進行容錯移轉](scripts/setup-geodr-and-failover-database-powershell.md)

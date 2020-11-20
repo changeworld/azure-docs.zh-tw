@@ -1,19 +1,19 @@
 ---
 title: 支援的 Azure Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Azure Resource Manager 資源類型清單。
-ms.date: 10/28/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: e604fe7c5e3a7f40e31f43db64bcd59ae0545ac0
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927561"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988335"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
-Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) 的 **資源類型** 。 每個 **資源類型** 都是 Resource Graph 中 **資料表** 的一部分。
+Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) 的 **資源類型**。 每個 **資源類型** 都是 Resource Graph 中 **資料表** 的一部分。
 
 ## <a name="advisorresources"></a>advisorresources
 
@@ -68,6 +68,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
+- microsoft.alertsmanagement/resourcehealthalertrules
 - microsoft.alertsmanagement/smartdetectoralertrules
 - microsoft.analysisservices/servers
 - microsoft.apimanagement/service
@@ -88,6 +89,10 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
 - azureactivedirectory/guestusages
+- azurearcdata/datacontrollers
+- azurearcdata/postgresinstances
+- azurearcdata/sqlmanagedinstances
+- azurearcdata/sqlserverinstances
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -103,6 +108,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.baremetal/consoleconnections
 - microsoft.baremetal/crayservers
 - microsoft.baremetal/monitoringservers
+- baremetalinfrastructure/baremetalinstances
 - microsoft.batch/batchaccounts
 - microsoft.batchai/clusters
 - microsoft.batchai/fileservers
@@ -131,6 +137,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.cloudes/accounts
 - microsoft.cloudsearch/indexes
 - cloudtest/帳戶
+- cloudtest/hostedpools
 - cloudtest/影像
 - cloudtest/集區
 - codespaces/方案
@@ -177,6 +184,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft contoso/叢集
 - microsoft.contoso/employees
+- microsoft contoso/塔
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
 - d365customerinsights/實例
@@ -205,6 +213,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.dbforpostgresql/servers
 - microsoft.dbforpostgresql/serversv2
 - microsoft.dbforpostgresql/singleservers
+- delegatednetwork/控制器
 - delegatednetwork/delegatedsubnets
 - delegatednetwork/orchestratorinstances
 - microsoft.deploymentmanager/artifactsources
@@ -302,6 +311,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.machinelearning/workspaces
 - microsoft.machinelearningcompute/operationalizationclusters
 - microsoft.machinelearningservices/workspaces
+- machinelearningservices/workspace/batchendpoints
 - machinelearningservices/workspace/inferenceendpoints
 - machinelearningservices/workspace/inferenceendpoints/部署
 - machinelearningservices/workspace/onlineendpoints
@@ -316,6 +326,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
 - microsoft.maps/accounts
+- microsoft. maps/accounts/建立者
 - microsoft.maps/accounts/privateatlases
 - microsoft.marketplaceapps/classicdevservices
 - microsoft.media/mediaservices
@@ -389,6 +400,8 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.network/serviceendpointpolicies
 - microsoft.network/trafficmanagerprofiles
 - microsoft.network/virtualhubs
+- microsoft. network/virtualhubs/bgpconnections
+- microsoft. network/virtualhubs/ipconfiguration
 - microsoft.network/virtualnetworkgateways
 - microsoft.network/virtualnetworks
 - microsoft.network/virtualnetworktaps
@@ -424,6 +437,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/capacities
 - microsoft.projectbabylon/accounts
+- 範疇/帳戶
 - microsoft.quantum/workspaces
 - microsoft.recoveryservices/vaults
 - microsoft.redhatopenshift/openshiftclusters

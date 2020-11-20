@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b048581b29fa4244c42261810f382b229a627dd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126168"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985957"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT 中心架構
 
@@ -54,7 +54,7 @@ IoT Central 啟用 IoT Edge 裝置的下列功能：
   - 每個模組傳送的遙測。
   - 每個模組所報告的屬性。
   - 每個模組所回應的命令。
-  - IoT Edge 閘道裝置功能模型與下游裝置功能模型之間的關聯性。
+  - IoT Edge 閘道裝置與下游裝置之間的關聯性。
   - 未儲存在 IoT Edge 裝置上的雲端屬性。
   - 屬於 IoT Central 應用程式一部分的自訂、儀表板和表單。
 
@@ -123,7 +123,7 @@ Azure IoT 中心會使用時間序列來儲存您的裝置所傳送的量值資�
 
 分析服務負責產生應用程式顯示的自訂報告資料。 操作者可以[自訂分析](howto-create-analytics.md) (適用於應用程式中顯示的分析)。 分析服務是以 [Azure 時間序列深入解析](https://azure.microsoft.com/services/time-series-insights/)為基礎，可處理您的裝置所傳送的量值資料。
 
-## <a name="rules-and-actions"></a>規則與動作
+## <a name="rules-and-actions"></a>執行和動作
 
 [規則和動作](tutorial-create-telemetry-rules.md)會密切搭配運作，讓應用程式內的工作自動化。 建置者可以根據裝置遙測定義規則，例如超過所定義閾值的溫度。 Azure IoT 中心會使用資料流處理器來判斷何時符合規則條件。 符合規則條件時，就會觸發建置者所定義的動作。 例如，動作可以傳送一封電子郵件來通知工程師，裝置的溫度過高。
 
@@ -133,12 +133,12 @@ Azure IoT 中心會使用時間序列來儲存您的裝置所傳送的量值資�
 
 ![範本架構](media/concepts-architecture/template-architecture.png)
 
-在 IoT Central 應用程式裝置範本中包含：
+在 IoT Central [裝置範本](concepts-device-templates.md) 中包含：
 
-- **裝置功能模型** 會指定裝置的功能，例如它所傳送的遙測資料、定義裝置狀態的屬性，以及裝置所回應的命令。 裝置功能會組織成一或多個介面。
+- **裝置模型**，用來指定裝置的功能，例如它所傳送的遙測資料、定義裝置狀態的屬性，以及裝置所回應的命令。 裝置功能會組織成一或多個介面。
 - **雲端屬性** 會為裝置指定 IoT Central 存放區的屬性。 這些屬性只會儲存在 IoT Central 中，而且永遠不會傳送到裝置。
 - **Views** 會指定產生器所建立的儀表板和表單，讓操作員能夠監視和管理裝置。
-- **自訂** 可讓 builder 覆寫裝置功能模型中的某些定義，使其更符合 IoT Central 應用程式的相關性。
+- **自訂** 可讓 builder 覆寫裝置模型中的某些定義，使其更符合 IoT Central 應用程式的關聯。
 
 根據每個裝置範本，應用程式可以有一或多個模擬與真實裝置。
 
@@ -152,7 +152,7 @@ Azure IoT 中心會使用時間序列來儲存您的裝置所傳送的量值資�
 
 ## <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
 
-[系統管理員可以](howto-manage-users-roles.md)使用其中一個預先定義的角色，或藉由建立自訂角色，來定義 Azure IoT Central 應用程式的存取規則。 角色會決定使用者可存取的應用程式區域，以及他們可以執行的動作。
+每個 IoT Central 應用程式都有自己的內建 RBAC 系統。 [系統管理員可以](howto-manage-users-roles.md)使用其中一個預先定義的角色，或藉由建立自訂角色，來定義 Azure IoT Central 應用程式的存取規則。 角色會決定使用者可存取的應用程式區域，以及他們可以執行的動作。
 
 ## <a name="security"></a>安全性
 

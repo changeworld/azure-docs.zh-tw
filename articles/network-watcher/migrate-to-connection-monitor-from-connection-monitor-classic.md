@@ -1,5 +1,5 @@
 ---
-title: 從連線監視器遷移至連線監視器
+title: '從連線監視器遷移至連線監視器 (預覽版) '
 titleSuffix: Azure Network Watcher
 description: 瞭解如何從連線監視器遷移至連線監視器。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 0ae1a1f36b9f81145b49245d8e6ace37ab36f834
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974779"
+ms.locfileid: "94985785"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>從連線監視器遷移至連線監視器 (傳統) 
+# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>從連線監視器遷移至連線監視器 (預覽版)  (傳統) 
 
-您可以只需按幾下，就能將現有的連線監視器遷移至新的已改善連線監視器，而不需要停機。 若要深入瞭解這些優點，請參閱 [連接監視器](./connection-monitor-overview.md)。
+您可以將現有的連線監視器遷移至全新、改良的連線監視器 (預覽) 只需按幾下，就能完成零停機。 若要深入瞭解這些優點，請參閱 [連接監視器](./connection-monitor-overview.md)。
+
+> [!IMPORTANT]
+> 連接監視器目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="key-points-to-note"></a>要注意的重點
 
@@ -34,7 +38,7 @@ ms.locfileid: "94974779"
    * **警示**：自動遷移至新的計量。
    * **儀表板和** 整合：需要手動編輯計量集。 
     
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您是使用自訂工作區，請確定您的訂用帳戶和 Log Analytics 工作區的區域中已啟用網路監看員。 
 
@@ -61,7 +65,7 @@ ms.locfileid: "94974779"
 * 已遷移的連線監視器不會再顯示為較舊的連線監視器解決方案。 它們現在僅適用于連線監視器。
 * 任何外部整合（例如 Power BI 和 Grafana 中的儀表板，以及與安全性資訊和事件管理)  (的整合，都必須以手動方式遷移）。 這是遷移安裝程式所需執行的唯一手動步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解連接監視器，請參閱：
 * [從網路效能監控遷移至連線監視器](/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)

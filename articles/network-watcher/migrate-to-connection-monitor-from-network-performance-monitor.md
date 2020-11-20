@@ -1,5 +1,5 @@
 ---
-title: 從網路效能監控遷移至連線監視器
+title: '從網路效能監控遷移至連線監視器 (預覽) '
 titleSuffix: Azure Network Watcher
 description: 瞭解如何從網路效能監控遷移至連線監視器。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 949f717c56892f8a1d0826e8e6f1f2164a4a142c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 38ea682b4f3894f373d16908b942b4fa578741c4
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974782"
+ms.locfileid: "94985802"
 ---
-# <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>從網路效能監控遷移至連線監視器
+# <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>從網路效能監控遷移至連線監視器 (預覽) 
 
 您可以從網路效能監控 (NPM) 將測試遷移至新的、已改善的連線監視器，只要按一下就能獲得改進，而不需要停機。 若要深入瞭解這些優點，請參閱 [連接監視器](./connection-monitor-overview.md)。
+
+> [!IMPORTANT]
+> 連接監視器目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 >[!NOTE]
 > 只有來自服務連線監視器的測試可以遷移至連線監視器。
@@ -38,7 +42,7 @@ ms.locfileid: "94974782"
    * **Log Analytics 中的資料**：在遷移之前，資料會保留在工作區中，而該工作區中的 NPM 是在 NetworkMonitoring 資料表中設定。 遷移之後，資料會移至 NetworkMonitoring 資料表，並在相同的工作區中 ConnectionMonitor_CL 資料表。 在 NPM 中停用測試之後，資料只會儲存在 ConnectionMonitor_CL 資料表中。
    * 以 **記錄為基礎的警示、儀表板和** 整合：您必須根據新的 ConnectionMonitor_CL 資料表，手動編輯查詢。 若要在計量中重新建立警示，請參閱 [使用連線監視器進行網路連線監視](./connection-monitor-overview.md#metrics-in-azure-monitor)。
     
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 確定您的訂用帳戶中已啟用網路監看員，以及 Log Analytics 工作區的區域。
 * 已安裝 Log Analytics 代理程式的 Azure 虛擬機器必須使用網路監看員擴充功能來啟用。
@@ -70,7 +74,7 @@ ms.locfileid: "94974782"
 * 將任何外部整合遷移至 ConnectionMonitor_CL 資料表。 外部整合的範例包括 Power BI 和 Grafana 的儀表板，以及與安全性資訊和事件管理 (SIEM) 系統的整合。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解連接監視器，請參閱：
 * [從連線監視器遷移至連線監視器](/azure/network-watcher/migrate-to-connection-monitor-from-connection-monitor-classic)

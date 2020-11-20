@@ -1,5 +1,5 @@
 ---
-title: 建立連線監視器-PowerShell
+title: 建立連線監視器 (預覽) -PowerShell
 titleSuffix: Azure Network Watcher
 description: 瞭解如何使用 PowerShell 建立連線監視器。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949032"
+ms.locfileid: "94984238"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>使用 PowerShell 建立連線監視
+# <a name="create-a-connection-monitor-preview-using-powershell"></a>使用 PowerShell 建立連線監視器 (預覽版) 
 
 瞭解如何使用 PowerShell 來建立連線監視器，以監視資源之間的通訊。
+
+> [!IMPORTANT]
+> 連接監視器目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>開始之前 
 
@@ -80,7 +84,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * 端點
     * 名稱-每個端點的唯一名稱
-    * resourceId –針對 Azure 端點，資源識別碼指的是虛擬機器的 Azure Resource Manager 資源識別碼。針對非 Azure 端點，資源識別碼是指連結至非 Azure 代理程式之 Log Analytics 工作區的 Azure resource manager 資源識別碼。
+    * resourceId –針對 Azure 端點，資源識別碼指的是虛擬機器的 Azure Resource Manager 資源識別碼。針對非 Azure 端點，資源識別碼是指連結至非 Azure 代理程式之 Log Analytics 工作區的 Azure Resource Manager 資源識別碼。
     * 位址-只有在未指定任何資源識別碼或資源識別碼為 Log Analytics 工作區時適用。 如果與 Log Analytics 資源識別碼搭配使用，這會參考可用於監視的代理程式 FQDN。 如果在沒有資源識別碼的情況下使用，則可以是任何公用端點的 URL 或 IP。
     * 篩選-針對非 Azure 端點，請使用篩選器從 Log Analytics 工作區選取將用於監視連線監視資源的代理程式。 如果未設定篩選準則，屬於 Log Analytics 工作區的所有代理程式都可以用於監視
         * 類型–將類型設定為 [代理程式位址]
@@ -100,6 +104,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS-指定是否要在 HTTP 上使用 HTTPS
         * 埠-指定您選擇的目的地埠。
         * disableTraceRoute-這適用于其通訊協定為 TCP 或 ICMP 的測試群組。 它會從探索拓撲和逐躍點的 RTT 停止來源。
+        * 方法-這適用于其通訊協定為 HTTP 的測試設定。 選取 HTTP 要求方法--GET 或 POST
+        * 路徑-指定要附加至 URL 的路徑參數
+        * validStatusCodes-選擇適用的狀態碼。 如果回應碼與這份清單不符，您將會收到診斷訊息
+        * requestHeaders-指定將會傳遞至目的地的自訂要求標頭字串
     * successThreshold-您可以設定下列網路參數的閾值：
         * checksFailedPercent-設定當來源使用您指定的準則來檢查目的地的連接時，可能會失敗的檢查百分比。 針對 TCP 或 ICMP 通訊協定，失敗的檢查百分比可等同于為封包遺失的百分比。 若為 HTTP 通訊協定，此欄位代表未收到回應的 HTTP 要求百分比。
         * roundTripTimeMs：設定以毫秒為單位的 RTT （以毫秒為單位），以供來源透過測試設定連接到目的地所需的時間。
@@ -113,7 +121,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * 每個連線監視的來源和目的地上限：100
 * 每個連線監視的測試設定上限：20
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [如何分析監視資料和設定警示](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)
 * 瞭解 [如何診斷網路中的問題](./connection-monitor-overview.md#diagnose-issues-in-your-network)

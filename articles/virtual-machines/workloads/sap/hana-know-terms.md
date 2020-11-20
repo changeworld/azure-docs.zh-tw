@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b65190c0fd2fcac132f762116a63357a08e6bf02
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7777888bd27325e9094032458922969494a9a64e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967732"
+ms.locfileid: "94984952"
 ---
 # <a name="know-the-terms"></a>認識詞彙
 
@@ -45,6 +45,7 @@ ms.locfileid: "94967732"
 - **修訂**：適用于 HANA 大型實例戳記的兩個不同戳記修訂。 這些與 Azure 虛擬機器主機的架構和鄰近性不同
     - "修訂 3" (Rev 3) ：是從2016年中部署的原始設計
     - 「修訂4」 (Rev 4) ：這是一項新的設計，可提供更接近 Azure 虛擬機器主機的內容，以及 Azure Vm 與 HANA 大型實例單位之間較低的網路延遲 
+    - 「修訂4.2」 (Rev 4.2) ：在現有的修訂 4 Dc 上，資源會更名至 BareMetal 基礎結構。  客戶可以從 Azure 入口網站的 BareMetal 實例存取其資源。 
 
 您可以透過其他多項資源了解如何在雲端中部署 SAP 工作負載。 如果您想要在 Azure 中執行 SAP HANA 的部署，您必須熟悉並了解 Azure IaaS 的主體及 Azure IaaS 上的 SAP 工作負載部署。 在繼續作業之前，請參閱[在 Azure 虛擬機器上使用 SAP 解決方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)以取得詳細資訊。 
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ec193eab02d937e9d93b8632fa171fec8227d6c2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503431"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987485"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 受控執行個體長期備份保留 (PowerShell) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "92503431"
 > [!NOTE]
 > 受控執行個體參與者角色沒有刪除 LTR 備份的許可權。
 
-可以在 *訂* 用帳戶或 *資源群組* 範圍中授與 RBAC 許可權。 不過，若要存取屬於已卸載實例的 LTR 備份，必須在該實例的 *訂* 用帳戶範圍內授與許可權。
+可以在 *訂* 用帳戶或 *資源群組* 範圍中授與 Azure RBAC 許可權。 不過，若要存取屬於已卸載實例的 LTR 備份，必須在該實例的 *訂* 用帳戶範圍內授與許可權。
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
@@ -145,7 +145,7 @@ Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBacku
 > [!NOTE]
 > 從這裡開始，您可以使用 SQL Server Management Studio 連線到已還原的資料庫來執行所需的工作，例如從還原的資料庫擷取一堆資料來複製到現有的資料庫，或刪除現有的資料庫，並將還原的資料庫重新命名為現有的資料庫名稱。 請參閱[還原時間點](../database/recovery-using-backups.md#point-in-time-restore)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入了解服務產生的自動備份，請參閱[自動備份](../database/automated-backups-overview.md)
 - 若要深入了解長期備份保留，請參閱[長期備份保留](../database/long-term-retention-overview.md)

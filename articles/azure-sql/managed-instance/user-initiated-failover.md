@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 7bcdabdb4e49d198b9acb7a1c57312b31a5b4fff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842221"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985513"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 受控執行個體上使用者起始的手動容錯移轉
 
@@ -37,9 +37,9 @@ ms.locfileid: "94842221"
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 受控執行個體上起始手動容錯移轉
 
-### <a name="rbac-permissions-required"></a>需要 RBAC 許可權
+### <a name="azure-rbac-permissions-required"></a>需要 Azure RBAC 許可權
 
-起始容錯移轉的使用者必須具有下列其中一個 RBAC 角色：
+起始容錯移轉的使用者必須具有下列其中一個 Azure 角色：
 
 - 訂用帳戶擁有者角色，或
 - 受控執行個體參與者角色，或
@@ -144,7 +144,7 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 > - 對於 BC 實例，必須有複本的仲裁，才能接受容錯移轉要求。
 > - 對於 BC 實例，無法指定要在哪個可讀取次要複本上起始容錯移轉。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [AZURE SQL 受控執行個體受控實例高可用性](../database/high-availability-sla.md)的高可用性。
 - 如需總覽，請參閱 [什麼是 AZURE SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。

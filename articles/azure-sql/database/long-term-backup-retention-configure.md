@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: 42f6badabd27ceaa302f635a7a33b0161b870dc5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782853"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984425"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL Database 長期備份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,15 +31,15 @@ ms.locfileid: "92782853"
 
 您可以將 Azure SQL Database 設定為[保留自動備份](long-term-retention-overview.md)的期間比您服務層級的保留期限還要長。
 
-1. 在 [Azure 入口網站中，選取您的 SQL Server 實例，然後按一下 [ **管理備份** ]。 在 [設定原則]  索引標籤上，針對您要設定或修改長期備份保留原則的資料庫選取其核取方塊。 如果未選取資料庫旁的核取方塊，則原則的變更不會套用到該資料庫。  
+1. 在 [Azure 入口網站中，選取您的 SQL Server 實例，然後按一下 [ **管理備份**]。 在 [設定原則] 索引標籤上，針對您要設定或修改長期備份保留原則的資料庫選取其核取方塊。 如果未選取資料庫旁的核取方塊，則原則的變更不會套用到該資料庫。  
 
    ![管理備份連結](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
-2. 在 [設定原則]  窗格中，選取您想要保留每週、每月或每年備份並指定各項的保留期限。
+2. 在 [設定原則] 窗格中，選取您想要保留每週、每月或每年備份並指定各項的保留期限。
 
    ![設定原則](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. 完成時，按一下 [套用]  。
+3. 完成時，按一下 [套用]。
 
 > [!IMPORTANT]
 > 當您啟用長期備份保留原則時，最多可能需要7天的時間，第一次備份才會變成可見並可供還原。 如需 LTR 備份 cadance 的詳細資訊，請參閱 [長期備份保留](long-term-retention-overview.md)。
@@ -48,11 +48,11 @@ ms.locfileid: "92782853"
 
 使用 LTR 原則來查看針對特定資料庫所保留的備份，並從這些備份還原。
 
-1. 在 [Azure 入口網站中，選取您的伺服器，然後按一下 [ **管理備份** ]。 在 [可用備份]  索引標籤上，選取您要查看可用備份的資料庫。
+1. 在 [Azure 入口網站中，選取您的伺服器，然後按一下 [ **管理備份**]。 在 [可用備份] 索引標籤上，選取您要查看可用備份的資料庫。
 
    ![選取資料庫](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
-1. 在 [可用備份]  窗格中，檢閱可用的備份。
+1. 在 [可用備份] 窗格中，檢閱可用的備份。
 
    ![檢視備份](./media/long-term-backup-retention-configure/ltr-available-backups.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92782853"
 
    ![還原作業進度](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 
-1. 完成還原作業之後，開啟 [SQL Database]  頁面，以檢視剛還原的資料庫。
+1. 完成還原作業之後，開啟 [SQL Database] 頁面，以檢視剛還原的資料庫。
 
 > [!NOTE]
 > 從這裡開始，您可以使用 SQL Server Management Studio 連接到已還原的資料庫來執行所需的工作，例如[從還原的資料庫擷取一堆資料來複製到現有的資料庫，或刪除現有的資料庫，並將還原的資料庫重新命名為現有的資料庫名稱](recovery-using-backups.md#point-in-time-restore)。
@@ -82,7 +82,7 @@ ms.locfileid: "92782853"
 
 ### <a name="azure-roles-to-manage-long-term-retention"></a>管理長期保留的 Azure 角色
 
-針對 **AzSqlDatabaseLongTermRetentionBackup** 和 **Restore->set-azsqldatabase** ，您必須具備下列其中一個角色：
+針對 **AzSqlDatabaseLongTermRetentionBackup** 和 **Restore->set-azsqldatabase**，您必須具備下列其中一個角色：
 
 - 訂用帳戶擁有者角色或
 - SQL Server 參與者角色或
@@ -90,7 +90,7 @@ ms.locfileid: "92782853"
 
    LongTermRetentionBackups/read Microsoft .sql/位置/longTermRetentionServers/longTermRetentionBackups/read Microsoft .sql/位置/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
 
-針對 **AzSqlDatabaseLongTermRetentionBackup** ，您必須具備下列其中一個角色：
+針對 **AzSqlDatabaseLongTermRetentionBackup**，您必須具備下列其中一個角色：
 
 - 訂用帳戶擁有者角色或
 - 具有下列許可權的自訂角色：
@@ -100,7 +100,7 @@ ms.locfileid: "92782853"
 > [!NOTE]
 > SQL Server 參與者角色沒有刪除 LTR 備份的許可權。
 
-可以在 *訂* 用帳戶或 *資源群組* 範圍中授與 RBAC 許可權。 不過，若要存取屬於已卸載伺服器的 LTR 備份，必須在該伺服器的 *訂閱* 範圍中授與許可權。
+可以在 *訂* 用帳戶或 *資源群組* 範圍中授與 Azure RBAC 許可權。 不過，若要存取屬於已卸載伺服器的 LTR 備份，必須在該伺服器的 *訂閱* 範圍中授與許可權。
 
 - Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
@@ -204,7 +204,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ## <a name="limitations"></a>限制
 - 從 LTR 備份還原時，會停用 [讀取規模] 屬性。 若要啟用、讀取還原的資料庫，請在資料庫建立後加以更新。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入了解服務產生的自動備份，請參閱[自動備份](automated-backups-overview.md)
 - 若要深入了解長期備份保留，請參閱[長期備份保留](long-term-retention-overview.md)

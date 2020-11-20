@@ -1,5 +1,5 @@
 ---
-title: 建立連線監視器-Azure 入口網站
+title: 建立連線監視器 (預覽) -Azure 入口網站
 titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 入口網站在連線監視器中建立監視。
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: d652f1eae62270fa8968d64a2bd15a1261dca673
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f1ba23d53d79587c9d75c1d840c1d3857725d8dd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949185"
+ms.locfileid: "94984374"
 ---
-# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 入口網站在連線監視器中建立監視
+# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>使用 Azure 入口網站在連線監視器中建立監視器 (預覽) 
 
 瞭解如何使用連線監視器來監視資源之間的通訊。 本文說明如何使用 Azure 入口網站來建立監視。 連接監視器支援混合式和 Azure 雲端部署。
+
+> [!IMPORTANT]
+> 連接監視器目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>開始之前 
 
@@ -199,7 +203,7 @@ ms.locfileid: "94949185"
 * 每個連線監視的來源和目的地上限：100
 * 每個連線監視的測試設定上限： 2 via Azure 入口網站
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [如何分析監視資料和設定警示](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)。
 * 瞭解 [如何診斷網路中的問題](./connection-monitor-overview.md#diagnose-issues-in-your-network)。

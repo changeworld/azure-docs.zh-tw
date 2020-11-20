@@ -12,15 +12,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/23/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2732f9fc4b1b9251391180874a055e8ffd8d9e7a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964757"
+ms.locfileid: "94985071"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>適用于 HANA 大型實例的可用 Sku
 
@@ -35,10 +35,13 @@ Azure 區域中的數個 Azure 區域中有數個 Azure 區域中的數個設定
 
 - 美國西部 2
 - 美國東部
-- 美國東部 2
-- 美國中南部
+
+BareMetal 基礎結構 (經認證可供 SAP Hana 工作負載) 以修訂版4.2 戳記為基礎的服務。 Azure 區域中的數個設定有提供此功能：
 - 西歐
 - 北歐
+- 美國東部 2
+- 美國中南部
+
 
 
 

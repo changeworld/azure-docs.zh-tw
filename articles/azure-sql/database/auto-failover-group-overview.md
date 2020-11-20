@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 11/16/2020
-ms.openlocfilehash: e91a3cc0a96add1f53d220e04fb98d63cc7c33f4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841081"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988539"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -142,15 +142,15 @@ ms.locfileid: "94841081"
 
 ### <a name="create-failover-group"></a>建立容錯移轉群組
 
-若要建立容錯移轉群組，您需要主要和次要伺服器的 RBAC 寫入存取權，以及容錯移轉群組中的所有資料庫。 針對 SQL 受控執行個體，您需要主要和次要 SQL 受控執行個體的 RBAC 寫入存取權，但個別資料庫的許可權並不相關，因為無法在容錯移轉群組中新增或移除個別 SQL 受控執行個體資料庫。
+若要建立容錯移轉群組，您需要主要和次要伺服器的 Azure RBAC 寫入存取權，以及容錯移轉群組中的所有資料庫。 針對 SQL 受控執行個體，您需要主要和次要 SQL 受控執行個體的 Azure RBAC 寫入存取權，但個別資料庫的許可權並不相關，因為無法在容錯移轉群組中新增或移除個別 SQL 受控執行個體資料庫。
 
 ### <a name="update-a-failover-group"></a>更新容錯移轉群組
 
-若要更新容錯移轉群組，您需要具有容錯移轉群組的 RBAC 寫入權限，以及目前主伺服器或受控實例上的所有資料庫。  
+若要更新容錯移轉群組，您需要容錯移轉群組的 Azure RBAC 寫入存取權，以及目前主伺服器或受控實例上的所有資料庫。  
 
 ### <a name="fail-over-a-failover-group"></a>容錯移轉群組的容錯移轉
 
-若要容錯移轉群組，您需要對新的主伺服器或受控實例上的容錯移轉群組進行 RBAC 寫入存取。
+若要容錯移轉群組，您需要對新的主伺服器或受控實例上的容錯移轉群組進行 Azure RBAC 寫入存取。
 
 ## <a name="best-practices-for-sql-database"></a>SQL Database 的最佳作法
 
@@ -409,7 +409,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以程式設計方式管理容錯移轉群組
 
-如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](/rest/api/sql/) 和 [Azure PowerShell Cmdlet](/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需有關如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
+如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](/rest/api/sql/) 和 [Azure PowerShell Cmdlet](/powershell/azure/)。 這些 Api 需要使用資源群組，並支援 Azure 角色型存取控制 (Azure RBAC) 。 如需有關如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL Database 容錯移轉
 
@@ -426,7 +426,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 說明 |
+| 命令 | 說明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -464,7 +464,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 說明 |
+| 命令 | 說明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -485,7 +485,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需詳細的教學課程，請參閱
   - [將 SQL Database 新增至容錯移轉群組](failover-group-add-single-database-tutorial.md)

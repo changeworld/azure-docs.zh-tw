@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283423"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987060"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署乙太坊證明聯盟解決方案範本
 
@@ -33,7 +33,7 @@ ms.locfileid: "91283423"
 [Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈服務 Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈服務。
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型，或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用 [Microsoft 問與答頁面](/answers/topics/azure-blockchain-workbench.html)來取得支援。
 
-## <a name="solution-architecture"></a>方案架構
+## <a name="solution-architecture"></a>解決方案架構
 
 使用乙太坊解決方案範本，您可以部署單一或多個區域的單一或多個區域的乙太坊證明聯盟網路。
 
@@ -48,7 +48,7 @@ ms.locfileid: "91283423"
 * 彙總記錄和效能統計資料的 Azure 監視器
 * 允許透過私人 VNet 進行 VPN 連線的 VNet 閘道 (選擇性)
 
-根據預設，RPC 和對等互連端點可透過公用 IP 來存取，以簡化跨訂用帳戶和雲端的連線。 針對應用層級存取控制，您可以使用同位 [的授權合約](https://wiki.parity.io/Permissioning)。 支援在 Vpn 後方部署的網路，以利用 VNet 閘道來進行跨訂用帳戶連線能力。 由於 VPN 和 VNet 部署更為複雜，因此您可能會想要在建立解決方案的原型時，從公用 IP 模型著手。
+根據預設，RPC 和對等互連端點可透過公用 IP 來存取，以簡化跨訂用帳戶和雲端的連線。 針對應用層級存取控制，您可以使用同位的授權合約。 支援在 Vpn 後方部署的網路，以利用 VNet 閘道來進行跨訂用帳戶連線能力。 由於 VPN 和 VNet 部署更為複雜，因此您可能會想要在建立解決方案的原型時，從公用 IP 模型著手。
 
 Docker 容器用於可靠性和模組化。 Azure Container Registry 用來在每個部署中裝載和提供已建立版本的映射。 容器映像包含：
 
@@ -71,10 +71,10 @@ Docker 容器用於可靠性和模組化。 Azure Container Registry 用來在�
 
 1. 三個成員分別使用 MetaMask 產生了以太坊帳戶
 1. *成員 A* 部署乙太坊 PoA，提供其乙太坊公用位址
-1. *成員 A* 將聯盟 URL 提供給*成員 B* 和*成員 C*
-1. *成員 B* 和*成員 C* 提供其以太坊公用位址和*成員 A* 的聯盟 URL，部署了以太坊 PoA
-1. *成員 A* 將*成員 B* 票選為管理員
-1. *成員 A* 和*成員 B* 都將*成員 C* 票選為管理員
+1. *成員 A* 將聯盟 URL 提供給 *成員 B* 和 *成員 C*
+1. *成員 B* 和 *成員 C* 提供其以太坊公用位址和 *成員 A* 的聯盟 URL，部署了以太坊 PoA
+1. *成員 A* 將 *成員 B* 票選為管理員
+1. *成員 A* 和 *成員 B* 都將 *成員 C* 票選為管理員
 
 下一節會示範如何設定網路中第一個成員的使用量。
 
@@ -82,15 +82,15 @@ Docker 容器用於可靠性和模組化。 Azure Container Registry 用來在�
 
 在 [ [Azure 入口網站](https://portal.azure.com)中，選取左上角的 [ **建立資源** ]。
 
-選取**區塊鏈**  >  **乙太坊證明聯盟 (預覽) **。
+選取 **區塊鏈**  >  **乙太坊證明聯盟 (預覽)**。
 
-### <a name="basics"></a>基本概念
+### <a name="basics"></a>基本
 
 在 [ **基本**] 下，為任何部署指定標準參數的值。
 
-![基本概念](./media/ethereum-poa-deployment/basic-blade.png)
+![基本](./media/ethereum-poa-deployment/basic-blade.png)
 
-參數 | 描述 | 範例值
+參數 | Description | 範例值
 ----------|-------------|--------------
 建立新的網路或加入現有的網路 | 您可以建立新的聯盟網路，或加入既有的聯盟網路。 加入現有的網路需要額外的參數。 | 新建
 電子郵件地址 | 當您的部署完成時，您會收到電子郵件通知，其中包含您部署的相關資訊。 | 有效的電子郵件地址
@@ -101,7 +101,7 @@ VM 使用者名稱 | 每個所部署 VM 的管理員使用者名稱 | 1-64 個�
 資源群組| 要對其部署聯盟網路的資源群組。 | myResourceGroup
 Location | 資源群組的 Azure 區域。 | 美國西部 2
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="deployment-regions"></a>部署區域
 
@@ -109,13 +109,13 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 ![部署區域](./media/ethereum-poa-deployment/deployment-regions.png)
 
-參數 | 描述 | 範例值
+參數 | Description | 範例值
 ----------|-------------|--------------
 區域數目|要部署聯盟網路的區域數目| 2
 第一個區域 | 要部署聯盟網路的第一個區域 | 美國西部 2
 第二個區域 | 部署聯盟網路的第二個區域。 當區域數量為二或更大時，就會顯示其他區域。 | 美國東部 2
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="network-size-and-performance"></a>網路大小和效能
 
@@ -123,7 +123,7 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 ![網路大小和效能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-參數 | 描述 | 範例值
+參數 | Description | 範例值
 ----------|-------------|--------------
 負載平衡的驗證器節點數目 | 要布建為網路一部分的驗證器節點數目。 | 2
 驗證器節點儲存體效能 | 每個已部署之驗證程式節點的受控磁片類型。 如需定價的詳細資訊，請參閱 [儲存體定價](https://azure.microsoft.com/pricing/details/managed-disks/) | 標準 SSD
@@ -131,13 +131,13 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 虛擬機器和儲存層會影響網路效能。  使用下表有助於選擇成本效率：
 
-虛擬機器 SKU|儲存層|價格|Throughput|Latency
+虛擬機器 SKU|儲存層|價格|輸送量|Latency
 ---|---|---|---|---
 F1|標準 SSD|low|low|high
 D2_v3|標準 SSD|中|中|中
 F16s|進階 SSD|high|high|low
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="ethereum-settings"></a>以太坊設定
 
@@ -145,7 +145,7 @@ F16s|進階 SSD|high|high|low
 
 ![以太坊設定](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-參數 | 描述 | 範例值
+參數 | Description | 範例值
 ----------|-------------|--------------
 聯盟成員識別碼 | 與參與聯盟網路的每個成員相關聯的識別碼。 它是用來設定 IP 位址空間，以避免發生衝突。 針對私人網路，成員識別碼在相同網路中的不同組織間應該是唯一的。  即使相同組織會部署到多個區域，仍然需要唯一成員識別碼。 請記下此參數的值，因為您需要與其他聯結成員共用，以確保不會發生衝突。 有效範圍是0到255。 | 0
 網路識別碼 | 為要部署的聯盟以太坊網路指定網路識別碼。 每個以太坊網路都有自己的網路識別碼，1 是公用網路的識別碼。 有效範圍是5到999999999 | 10101010
@@ -156,7 +156,7 @@ F16s|進階 SSD|high|high|low
 區塊重新封印期 (秒) | 當網路上沒有任何交易時，將建立空白區塊的頻率。 頻率越高，越快有定局，但會增加儲存成本。 | 15
 交易許可權合約 | 交易授權合約的位元組程式碼。 將智慧型合約部署和執行限制為允許的乙太坊帳戶清單。 |
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="monitoring"></a>監視
 
@@ -164,7 +164,7 @@ F16s|進階 SSD|high|high|low
 
 ![Azure 監視器](./media/ethereum-poa-deployment/azure-monitor.png)
 
-參數 | 描述 | 範例值
+參數 | Description | 範例值
 ----------|-------------|--------------
 監視 | 啟用監視的選項 | 啟用
 連接至現有的 Azure 監視器記錄 | 建立新的 Azure 監視器記錄實例或加入現有實例的選項 | 新建
@@ -172,9 +172,9 @@ Location | 部署新實例的區域 | 美國東部
 現有的 log analytics 工作區識別碼 (連接到現有的 Azure 監視器記錄 = 加入現有的) |現有 Azure 監視器記錄實例的工作區識別碼||NA
 現有的 log analytics 主要金鑰 (連接到現有的 Azure 監視器記錄檔 = 加入現有的) |用來連接到現有 Azure 監視器記錄實例的主要金鑰||NA
 
-選取 [確定]  。
+選取 [確定]。
 
-### <a name="summary"></a>總結
+### <a name="summary"></a>摘要
 
 按一下摘要以檢查指定的輸入，並執行基本的預先部署驗證。 在部署之前，您可以下載範本和參數。
 
@@ -220,10 +220,10 @@ Location | 部署新實例的區域 | 美國東部
 
 部署成員應使用相同的乙太坊證明聯盟解決方案範本，在部署其網路存在時，請使用下列指導方針：
 
-* 選取 [加入現有的]****
+* 選取 [加入現有的]
 * 選擇與網路上其餘成員相同數目的驗證程式節點，以確保合理表示
 * 使用相同的系統管理員乙太坊位址
-* 在*乙太坊設定*中使用提供的*聯盟資料 Url*
+* 在 *乙太坊設定* 中使用提供的 *聯盟資料 Url*
 * 如果網路的其餘部分位於 VPN 後方，請在 [advanced] 區段下選取 [ **私人 VNet** ]。
 
 ### <a name="connecting-vnet-gateways"></a>連接 VNet 閘道
@@ -331,7 +331,7 @@ ParityLog_CL
 
     ![SSH 啟用允許](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. 選取 [儲存]****。 變更可能需要幾分鐘的時間才會生效。
+1. 選取 [儲存]。 變更可能需要幾分鐘的時間才會生效。
 
 您可以使用您提供的系統管理員使用者名稱和密碼/SSH 金鑰，透過 SSH 從遠端連線至驗證器節點的虛擬機器。 範本部署輸出中會列出用來存取第一個驗證程式節點的 SSH 命令。 例如：
 
@@ -341,7 +341,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 若要取得其他交易節點，請將埠號碼遞增1。
 
-如果您已部署至一個以上的區域，請將命令變更為該區域中負載平衡器的 DNS 名稱或 IP 位址。 若要尋找其他區域的 DNS 名稱或 IP 位址，請尋找具有命名慣例** \* \* \* \* \* -lbpip-reg \# **的資源，並查看其 DNS 名稱和 IP 位址屬性。
+如果您已部署至一個以上的區域，請將命令變更為該區域中負載平衡器的 DNS 名稱或 IP 位址。 若要尋找其他區域的 DNS 名稱或 IP 位址，請尋找具有命名慣例 **\* \* \* \* \* -lbpip-reg \#** 的資源，並查看其 DNS 名稱和 IP 位址屬性。
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Azure 流量管理員負載平衡
 
@@ -505,9 +505,9 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 
 ![控管 DApp](./media/ethereum-poa-deployment/governance-dapp.png)
 
-* 非集中式**治理：** 網路授權單位中的變更是透過選取的系統管理員，透過連鎖投票來管理。
+* 非集中式 **治理：** 網路授權單位中的變更是透過選取的系統管理員，透過連鎖投票來管理。
 * **驗證程式委派：** 授權單位可以管理其在每個 PoA 部署中設定的驗證器節點。
-* 可**審核的變更歷程記錄：** 每項變更都會記錄在區塊鏈上，提供透明度和可審核性。
+* 可 **審核的變更歷程記錄：** 每項變更都會記錄在區塊鏈上，提供透明度和可審核性。
 
 ### <a name="getting-started-with-governance"></a>控管入門
 
@@ -535,7 +535,7 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 
 ### <a name="validators"></a>驗證程式
 
-選取 [ **驗證** 程式] 索引標籤會顯示實例目前已部署的同位節點，以及其目前狀態 (節點類型) 。 每個聯盟成員在此清單中都有一組不同的驗證程式，因為此視圖代表目前已部署的聯盟成員。 如果實例是新部署的，而且您尚未新增驗證程式，您可以選擇 **新增驗證**程式。 新增驗證程式會自動選擇一組地區平衡的同位節點，並將它們指派給您的驗證器集合。 如果您部署的節點數目超過允許的容量，其餘的節點會成為網路上的交易節點。
+選取 [ **驗證** 程式] 索引標籤會顯示實例目前已部署的同位節點，以及其目前狀態 (節點類型) 。 每個聯盟成員在此清單中都有一組不同的驗證程式，因為此視圖代表目前已部署的聯盟成員。 如果實例是新部署的，而且您尚未新增驗證程式，您可以選擇 **新增驗證** 程式。 新增驗證程式會自動選擇一組地區平衡的同位節點，並將它們指派給您的驗證器集合。 如果您部署的節點數目超過允許的容量，其餘的節點會成為網路上的交易節點。
 
 指派每個驗證器的位址時，會自動透過 Azure 中的[身分識別存放區](#identity-store)指派。  如果節點停止運作，它會會讓出其身分識別，讓您的部署中的另一個節點能採用它的位置。 此程式可確保您的共識參與具有高可用性。
 
@@ -582,7 +582,7 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 在 Truffle 專案的 **合約** 子目錄中建立智慧型合約。
 
 1. 在 `postBox.sol` Truffle 專案的 [ **合約** ] 子目錄中，建立名為的檔案。
-1. 將下列的密度程式碼新增至**postBox。**
+1. 將下列的密度程式碼新增至 **postBox。**
 
     ```javascript
     pragma solidity ^0.5.0;
@@ -685,7 +685,7 @@ Truffle 使用遷移腳本將智慧型合約部署至區塊鏈網路。 您需�
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (WASM) 支援
 
-在新部署的 PoA 網路上已為您啟用 WebAssembly 支援。 它可讓您以任何能夠 transpile 為 Web 組件的語言 (Rust、C、C++) 進行智慧合約開發。 如需詳細資訊，請參閱： [WebAssembly](https://wiki.parity.io/WebAssembly-Home)的同位檢查和來自同位技術的[教學](https://github.com/paritytech/pwasm-tutorial)課程
+在新部署的 PoA 網路上已為您啟用 WebAssembly 支援。 它可讓您以任何能夠 transpile 為 Web 組件的語言 (Rust、C、C++) 進行智慧合約開發。 如需詳細資訊，請參閱來自同位 [技術的教學](https://github.com/paritytech/pwasm-tutorial)課程。
 
 ## <a name="faq"></a>常見問題集
 
