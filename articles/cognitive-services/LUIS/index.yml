@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) 文件
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) 服務可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
-  ms.openlocfilehash: 3bae2e6e0a79dbc0106dc71a9510aa4dc318650c
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92364179"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95019376"
 landingContent:
 - title: 關於 Language Understanding (LUIS)
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
     - text: 新意圖搭配範例語句
       url: luis-how-to-add-intents.md
     - text: 新增實體
-      url: luis-how-to-add-example-utterances.md
+      url: ./luis-how-to-add-entities.md
     - text: 新增片語清單功能
       url: luis-how-to-add-features.md
 - title: 版本、定型、測試和發佈
@@ -78,7 +78,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 版本控制
-      url: luis-concept-version.md
+      url: ./luis-concept-app-iteration.md
     - text: 互動式測試
       url: luis-concept-test.md
     - text: 批次測試
@@ -110,15 +110,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 REST 搭配 C#
-      url: luis-get-started-cs-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: 使用 REST 搭配 Go
-      url: luis-get-started-go-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: 使用 REST 搭配 Java
-      url: luis-get-started-java-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: 使用 REST 搭配 Node.js
-      url: luis-get-started-node-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: 使用 REST 搭配 Python
-      url: luis-get-started-python-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
 - title: 參考
   linkLists:
   - linkListType: reference

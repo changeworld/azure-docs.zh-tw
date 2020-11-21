@@ -259,7 +259,7 @@
         - name: LUIS 服務
           items:
             - name: LUIS 開發人員資源
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
+              href: ../luis/developer-reference-resource.md
     - name: 資源
       items:
         - name: 語言支援
@@ -275,7 +275,7 @@
     - name: 參考
       items:
         - name: 說話者辨識 REST API
-          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+          href: /rest/api/speakerrecognition/
 - name: 自訂關鍵字
   items:
     - name: 自訂關鍵字概觀
@@ -493,7 +493,7 @@
         - name: Speech Studio 概觀
           href: 'https://speech.microsoft.com'
         - name: 使用 Speech Studio 建立自訂命令應用程式
-          href: quickstart-custom-speech-commands-create-new.md
+          href: ./quickstart-custom-commands-application.md
 - name: 部署
   items:
     - name: 啟用記錄

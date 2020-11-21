@@ -21,6 +21,10 @@
       href: work-remotely-support.md
     - name: Bastion 和 VNet 對等互連
       href: vnet-peering.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 建立主機

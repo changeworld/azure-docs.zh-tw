@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文件
   description: QnA Maker 是一項雲端式 API 服務，可對您的資料建立交談式的問答層。 QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。 QnA Maker 服務會將使用者的自然語言問題與知識庫中各個 QnA 可能包含的最佳解答比對，以回答這些問題。
-  ms.openlocfilehash: d82dcd03ce64c76a84811b5789ee5460ba089641
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: 487e783aa0c3ac5ad294c34f8522ee54fbfd6aea
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92372067"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95021332"
 landingContent:
 - title: 關於 QnA Maker
   linkLists:
@@ -111,7 +111,7 @@ landingContent:
     - text: 編寫 API
       url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
     - text: 產生解答 API
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime
+      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime
     - text: .Net SDK 參考文件
       url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
     - text: Azure PowerShell

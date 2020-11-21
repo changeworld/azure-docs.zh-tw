@@ -19,7 +19,7 @@
 - name: 概念
   items:
     - name: 什麼是密碼雜湊同步處理？
-      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 了解 Azure AD 結構描述、屬性和運算式
       href: concept-attributes.md
     - name: 在 Azure Active Directory 中撰寫屬性對應的運算式
@@ -63,10 +63,10 @@
 - name: 參考
   items:
     - name: Azure AD Connect 雲端佈建代理程式版本歷程
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect 雲端佈建常見問題集
       href: reference-cloud-provisioning-faq.md
     - name: 已同步處理的屬性
-      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: 基本 Active Directory 和 Azure AD 環境
       href: tutorial-basic-ad-azure.md

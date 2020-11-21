@@ -23,7 +23,7 @@
     - name: 操作指南
       items:
         - name: 註冊翻譯工具
-          href: translator-text-how-to-signup.md
+          href: ./translator-how-to-signup.md
         - name: 移轉至 V3 文字 API
           href: migrate-to-v3.md
         - name: 新增不雅內容篩選
