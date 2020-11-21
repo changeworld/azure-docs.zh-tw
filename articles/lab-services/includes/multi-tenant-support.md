@@ -3,15 +3,15 @@ author: Julia
 ms.author: juliako
 ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: a07e4c8ae222aa2a1f6ce43fd1dabe193f8cf6e8
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: d2eff2720d4a8d7b18bb52c827c86bc883ff1dfb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148268"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097073"
 ---
-如果您是屬於多個 Azure AD 租使用者的系統管理員或實驗室擁有者，您可以從 Azure 實驗室服務入口網站的租使用者之間流覽 (右上角) 。 
+如果您有兩個或多個 Azure AD 租使用者中的系統管理員或實驗室擁有者角色，您可以選取右上方的控制項，在 Azure 實驗室服務入口網站中的租使用者之間切換，如下列螢幕擷取畫面所示： 
 
-![挑選租使用者](../media/multi-tenant-support/picker.png)
+![在 Azure 實驗室服務入口網站中的租使用者之間切換的控制項螢幕擷取畫面。](../media/multi-tenant-support/picker.png)
 
-挑選租使用者之後，請在您的 Azure Active Directory 中選取實驗室帳戶， (在左上角 Azure AD) 租使用者。
+選擇 Azure AD 租使用者之後，請選取左上方的控制項，移至您的實驗室帳戶。
