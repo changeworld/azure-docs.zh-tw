@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73836772"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024971"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>綜合語音技術的負責任部署指導方針
 以下是使用綜合語音技術的 Microsoft 一般設計指導方針。 這些是由 Microsoft 與配音員、取用者以及具有語音失常的個人所開發，以引導綜合語音的負責任開發。
@@ -39,7 +39,7 @@ ms.locfileid: "73836772"
 使用配音員（例如語音執行者）來建立綜合語音時，適用下列指導方針。
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>從配音員取得有意義的同意
-配音員期望能夠控制其聲音音調 (使用方式和位置) 並在使用時補償。 因此系統擁有者應該從配音員取得明確的書面許可，並且在使用案例、使用持續時間、補償等上具有明確的合約規格。 某些配音員不知道這項技術的潛在惡意用途，應該由系統擁有者對技術的功能進行教育。 如需有關配音員和同意的詳細資訊，請閱讀我們 [對配音員的洩漏](https://aka.ms/disclosure-voice-talent)。
+配音員期望能夠控制其聲音音調 (使用方式和位置) 並在使用時補償。 因此系統擁有者應該從配音員取得明確的書面許可，並且在使用案例、使用持續時間、補償等上具有明確的合約規格。 某些配音員不知道這項技術的潛在惡意用途，應該由系統擁有者對技術的功能進行教育。 如需有關配音員和同意的詳細資訊，請閱讀我們 [對配音員的洩漏](/legal/cognitive-services/speech-service/disclosure-voice-talent)。
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>具有語音失常的考慮
@@ -57,13 +57,13 @@ ms.locfileid: "73836772"
 
 ## <a name="reference-docs"></a>參考文件
 
-* [配音員的洩漏](https://aka.ms/disclosure-voice-talent)
+* [配音員的洩漏](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [管制總覽](concepts-gating-overview.md)
 * [如何公開](concepts-disclosure-guidelines.md)
 * [洩漏設計模式](concepts-disclosure-patterns.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* [配音員的洩漏](https://aka.ms/disclosure-voice-talent)
+* [配音員的洩漏](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [如何公開](concepts-disclosure-guidelines.md)
 * [洩漏設計模式](concepts-disclosure-patterns.md)

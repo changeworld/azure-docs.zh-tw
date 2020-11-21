@@ -4,13 +4,13 @@ description: Azure Container Registry 中的實務和工作流程，可從 Docke
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347517"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024733"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>使用 Azure Container Registry 管理公用內容
 
@@ -26,6 +26,8 @@ ms.locfileid: "93347517"
 ## <a name="authenticate-with-docker-hub"></a>使用 Docker Hub 進行驗證
 
 第一個步驟是，如果您目前從 Docker Hub 提取公用映射作為組建或部署工作流程的一部分，建議您 [使用 Docker Hub 帳戶進行驗證](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) ，而不是發出匿名提取要求。
+
+當您經常進行匿名提取要求時，可能會看到類似于 `ERROR: toomanyrequests: Too Many Requests.` 或 Docker Hub 驗證的 Docker 錯誤 `You have reached your pull rate limit.` ，以防止這些錯誤。
 
 > [!NOTE]
 > 自2020年11月2日起， [下載速率限制](https://docs.docker.com/docker-hub/download-rate-limit) 適用于從 Docker 免費方案帳戶 Docker Hub 的匿名和已驗證要求，且分別由 IP 位址和 Docker 識別碼強制執行。 
@@ -46,21 +48,21 @@ Docker Hub 在向 Docker Hub 進行驗證時，支援 [個人存取權杖](https
 
 **App Service**
 
-* **映射來源** ： Docker Hub
-* **儲存機制存取** ：私用
+* **映射來源**： Docker Hub
+* **儲存機制存取**：私用
 * **登** 入： \<Docker Hub username>
-* **密碼** ：\<Docker Hub token>
+* **密碼**：\<Docker Hub token>
 
 如需詳細資訊，請參閱 [App Service Docker Hub 已驗證的提取](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html)。
 
 **Azure 容器執行個體**
 
-* **映射來源** ： Docker Hub 或其他登錄
-* **映射類型** ：私用
-* **映射登錄登入伺服器** ： docker.io
-* **映射登錄使用者名稱** ： \<Docker Hub username>
-* **映射登錄密碼** ： \<Docker Hub token>
-* **映射** ： docker.io/ \<repo name\> ：\<tag>
+* **映射來源**： Docker Hub 或其他登錄
+* **映射類型**：私用
+* **映射登錄登入伺服器**： docker.io
+* **映射登錄使用者名稱**： \<Docker Hub username>
+* **映射登錄密碼**： \<Docker Hub token>
+* **映射**： docker.io/ \<repo name\> ：\<tag>
 
 ## <a name="import-images-to-an-azure-container-registry"></a>將映射匯入到 Azure container registry
  
@@ -94,7 +96,7 @@ az acr import \
 > [!NOTE]
 > 單一預先設定的工作可以自動重建參考相依基礎映射的每個應用程式映射。 
  
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
  
 * 深入瞭解在 Azure 中建立、執行、推送和修補容器映射的 [ACR 工作](container-registry-tasks-overview.md) 。
 * 瞭解如何使用 Azure Container Registry 工作的自動化控制工作流程來取用 [和維護公開內容](tasks-consume-public-content.md) ，以將基礎映射更新至您的環境。 

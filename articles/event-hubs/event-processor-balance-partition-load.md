@@ -3,12 +3,12 @@ title: 平衡多個實例之間的資料分割負載-Azure 事件中樞 |Microso
 description: 說明如何使用事件處理器和 Azure 事件中樞 SDK，平衡多個應用程式實例之間的分割負載。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 03aeebb376c74e62a1bd935ac1fec4f178b63f4f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af307058d0eda6b96c0811bccc245c09e2bdd27d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685132"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025039"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>在應用程式的多個實例之間平衡資料分割負載
 若要調整您的事件處理應用程式，您可以執行應用程式的多個實例，並讓它本身之間的負載平衡。 在較舊的版本中， [EventProcessorHost](event-hubs-event-processor-host.md) 允許您在接收時平衡程式的多個實例和檢查點事件之間的負載。 在較新的版本中 (5.0 之前的版本) 、 **EventProcessorClient** ( .Net 和 JAVA) ，或 **EventHubConsumerClient** (Python 和 JavaScript) 可讓您進行相同的作業。 使用事件可讓開發模型變得更簡單。 您可以藉由註冊事件處理常式來訂閱您感興趣的事件。 如果您使用的是舊版用戶端程式庫，請參閱下列遷移指南： [.net](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)、 [JAVA](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md)、 [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md)和 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md)。
@@ -76,7 +76,7 @@ ms.locfileid: "94685132"
 
 > [!NOTE]
 > 如果您在支援不同于 Azure 上的儲存體 Blob SDK 版本的環境中使用 Azure Blob 儲存體作為檢查點存放區，您必須使用程式碼將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您是 [在 Azure Stack Hub 2002 版上執行事件中樞](/azure-stack/user/event-hubs-overview)，則儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
-> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)。 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) 或  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
@@ -85,7 +85,7 @@ ms.locfileid: "94685132"
 
 根據預設，針對指定的資料分割，會依序呼叫處理事件的函式。 後續事件和此函式的呼叫會從幕後的相同分割區佇列中開啟，因為事件抽取會繼續在其他執行緒的背景中執行。 您可以同時處理來自不同分割區的事件，也可以同步處理跨分割區存取的任何共用狀態。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 請參閱下列快速入門：
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)

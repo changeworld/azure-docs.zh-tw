@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 18ffc5aa9c56451099afc4ddbe8b6ac5bd588974
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948760"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026466"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用開放原始碼工具將 Azure 網路監看員 NSG 流量記錄視覺化
 
@@ -207,7 +207,7 @@ sudo /etc/init.d/logstash start
 
 在 Kibana 的 [管理] 索引標籤下，瀏覽至 [儲存的物件] 並匯入這三個檔案。 然後您可以從 [儀表板] 索引標籤開啟並載入範例儀表板。
 
-您也可以針對自己感興趣的計量，量身製作自己的視覺效果和儀表板。 從 Kibana 的[正式文件](https://www.elastic.co/guide/en/kibana/current/visualize.html)深入了解如何建立 Kibana 視覺效果。
+您也可以針對自己感興趣的計量，量身製作自己的視覺效果和儀表板。 從 Kibana 的[正式文件](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)深入了解如何建立 Kibana 視覺效果。
 
 ### <a name="visualize-nsg-flow-logs"></a>將 NSG 流量記錄視覺化
 
@@ -243,7 +243,7 @@ sudo /etc/init.d/logstash start
 
 結合網路安全性群組流量記錄與彈性堆疊，我們提供功能強大且可自訂的方式來將網路流量視覺化。 這些儀表板可讓您快速取得和分享您的網路流量深入解析，以及進一步篩選和調查任何潛在的異常狀況。 您可以使用 Kibana 量身製作這些儀表板並建立特定視覺效果，以符合任何安全性、稽核和合規性需求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何利用 Power BI 將 NSG 流量記錄視覺化，請瀏覽[利用 Power BI 將 NSG 流量記錄視覺](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

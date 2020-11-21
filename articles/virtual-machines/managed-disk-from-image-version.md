@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 40d3ff736194c4634b949af52ee7b09db20dd06d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576354"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026126"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>從映射版本建立受控磁片
 
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-將 `source` 變數設定為映射版本的識別碼，然後使用 [az disk create](//cli/azure/disk#az_disk_create) 來建立受控磁片。 
+將 `source` 變數設定為映射版本的識別碼，然後使用 [az disk create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) 來建立受控磁片。 
 
 在此範例中，我們會匯出映射版本的 OS 磁片，以在 *EastUS* 區域中建立名為 *myManagedOSDisk* 的受控磁片（位於名為 *myResourceGroup* 的資源群組中）。 
 
@@ -115,7 +115,7 @@ New-AzDisk -Disk $diskConfig `
    -DiskName myManagedDataDisk
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 您也可以使用 [Azure CLI](image-version-managed-image-cli.md) 或 [PowerShell](image-version-managed-image-powershell.md)，從受控磁片建立映射版本。
 

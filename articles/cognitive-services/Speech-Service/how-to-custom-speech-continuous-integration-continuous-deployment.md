@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555816"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025662"
 ---
 # <a name="cicd-for-custom-speech"></a>自訂語音的 CI/CD
 
 當您將更新套用至定型和測試資料時，請執行自動化訓練、測試和發行管理，以持續改進自訂語音模型。 透過有效的 CI/CD 工作流程的執行，您可以確保最佳的自訂語音模型端點一律可供使用。
 
-[持續整合](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) 是在共用存放庫中經常認可更新，並對其執行自動化組建的工程實務。 自訂語音的 CI 工作流程會從其資料來源將新模型定型，並在新模型上執行自動化測試，以確保其執行效能優於先前的模型。
+[持續整合](/azure/devops/learn/what-is-continuous-integration) (CI) 是在共用存放庫中經常認可更新，並對其執行自動化組建的工程實務。 自訂語音的 CI 工作流程會從其資料來源將新模型定型，並在新模型上執行自動化測試，以確保其執行效能優於先前的模型。
 
-[持續傳遞](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) 會從 CI 程式取得模型，並為每個改良的自訂語音模型建立端點。 CD 可讓端點輕鬆地整合到解決方案中。
+[持續傳遞](/azure/devops/learn/what-is-continuous-delivery) (CD) 會從 CI 程式取得模型，並為每個改良的自訂語音模型建立端點。 CD 可讓端點輕鬆地整合到解決方案中。
 
 您可以使用自訂的 CI/CD 解決方案，但針對強大的預先建立解決方案，請使用 [語音 DevOps 範本存放庫](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)，它會使用 GitHub Actions 來執行 CI/CD 工作流程。
 
@@ -73,7 +73,7 @@ CI/CD 工作流程的主要目的是要使用定型資料來建立新的模型�
 
 使用下列工具來進行自訂語音的 CI/CD 自動化工作流程：
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 建立 azure 服務主體驗證、查詢 azure 訂用帳戶，以及將測試結果儲存在 azure Blob 中。
+- [Azure CLI](/cli/azure/?view=azure-cli-latest) 建立 azure 服務主體驗證、查詢 azure 訂用帳戶，以及將測試結果儲存在 azure Blob 中。
 - [Azure 語音 CLI](spx-overview.md) 可從命令列或自動化工作流程與語音服務互動。
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>使用 GitHub Actions DevOps 自訂語音的解決方案
@@ -88,7 +88,7 @@ CI/CD 工作流程的主要目的是要使用定型資料來建立新的模型�
 - 執行自動化的精確度測試，以 (WER) 建立模型的 [文字](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) 錯誤率。 將測試結果儲存在 Azure Blob 中。
 - 執行 CD 工作流程，以在 WER 改善時建立端點。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 DevOps with Speech：
 

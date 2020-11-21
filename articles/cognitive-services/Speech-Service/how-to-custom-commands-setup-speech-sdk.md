@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360118"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026022"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用語音 SDK 與用戶端應用程式整合
 
@@ -35,7 +35,7 @@ ms.locfileid: "91360118"
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南是根據 Visual Studio 2019。
 > * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](overview.md#try-the-speech-service-for-free)，或在[Azure 入口網站](https://portal.azure.com)上建立一個
-> * [啟用您的裝置以進行開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [啟用您的裝置以進行開發](/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>步驟1：發佈自訂命令應用程式
 
@@ -43,7 +43,7 @@ ms.locfileid: "91360118"
 1. 移至 [**設定**]，選取 [ **LUIS 資源**]
 1. 如果未指派 **預測資源** ，請選取查詢預測金鑰，或建立一個新的
 
-    在發行應用程式之前，一律需要查詢預測金鑰。 如需 LUIS 資源的詳細資訊，請參閱 [建立 LUIS 資源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+    在發行應用程式之前，一律需要查詢預測金鑰。 如需 LUIS 資源的詳細資訊，請參閱 [建立 LUIS 資源](../luis/luis-how-to-azure-subscription.md)
 
 1. 返回若要編輯命令，請選取 [**發行**]
 
@@ -65,7 +65,7 @@ ms.locfileid: "91360118"
 
 藉由新增 XAML 程式碼來建立應用程式的使用者介面。
 
-1. 在 **方案總管**中，開啟 `MainPage.xaml`
+1. 在 **方案總管** 中，開啟 `MainPage.xaml`
 
 1. 在設計工具的 XAML 檢視中，以下列程式碼片段取代整個內容：
 
@@ -129,7 +129,7 @@ ms.locfileid: "91360118"
 
 新增程式碼後端來源，如下所示：
 
-1. 在 **方案總管**中，開啟程式碼後端原始程式檔 `MainPage.xaml.cs` (分組 `MainPage.xaml`) 
+1. 在 **方案總管** 中，開啟程式碼後端原始程式檔 `MainPage.xaml.cs` (分組 `MainPage.xaml`) 
 
 1. 以下列程式碼取代檔案的內容： 
 
@@ -412,7 +412,7 @@ ms.locfileid: "91360118"
 
    ![範例 UWP 虛擬助理應用程式 (C#) - 快速入門](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 選取 [啟用麥克風]****。 如果出現存取權限要求，請選取 **[是]**。
+1. 選取 [啟用麥克風]。 如果出現存取權限要求，請選取 **[是]**。
 
    ![麥克風存取權限要求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 

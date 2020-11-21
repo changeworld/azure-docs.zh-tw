@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136819"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026432"
 ---
 # <a name="distribute-and-modify-tables"></a>散發和修改資料表
 
@@ -140,7 +140,7 @@ SELECT create_distributed_table('B', 'other_int_col');
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-將不相關的資料表分割成自己的共置群組，將可改善 [分區重新平衡](howto-hyperscale-scaling.md#rebalance-shards) 效能，因為相同群組中的分區必須一起移動。
+將不相關的資料表分割成自己的共置群組，將可改善 [分區重新平衡](howto-hyperscale-scale-rebalance.md) 效能，因為相同群組中的分區必須一起移動。
 
 當資料表確實相關時 (例如，當資料表聯結) 時，明確地共置這些資料表可能有意義。 適當共置的提升比任何重新平衡額外負荷更重要。
 

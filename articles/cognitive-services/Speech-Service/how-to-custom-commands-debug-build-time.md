@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023120"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025696"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>撰寫自訂命令應用程式時的偵錯工具錯誤
 
@@ -24,7 +24,7 @@ ms.locfileid: "86023120"
 ## <a name="errors-when-creating-an-application"></a>建立應用程式時發生錯誤
 建立自訂命令應用程式時，自訂命令也會在 [LUIS](https://www.luis.ai/) 中建立應用程式。 
 
-[LUIS 會限制每個撰寫資源的500個應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits)。 如果您使用的撰寫資源已經有500應用程式，建立 LUIS 應用程式可能會失敗。 
+[LUIS 會限制每個撰寫資源的500個應用程式](../luis/luis-limits.md)。 如果您使用的撰寫資源已經有500應用程式，建立 LUIS 應用程式可能會失敗。 
 
 請確定選取的 LUIS 撰寫資源具有少於500的應用程式。 如果沒有，您可以建立新的 LUIS 撰寫資源、切換至另一個資源，或嘗試清除您的 LUIS 應用程式。  
 
@@ -53,15 +53,15 @@ LUIS 具有內建 Yes/No 意圖。 使用只有 "yes" 的範例句子，"no" 將
 
 | 關鍵字 | 變化 | 
 | ------- | --------- | 
-| 是 | 確定，確定 |
-| 否 | 不對，Not | 
+| Yes | 確定，確定 |
+| No | 不對，Not | 
 
 ### <a name="common-sample-sentences"></a>常見的範例句子
 自訂命令不允許在不同的命令之間共用常見的範例句子。 如果某個命令中的某些範例句子已經在另一個命令中定義，則應用程式的定型可能會失敗。 
 
 請確定您沒有在不同命令之間共用的常見範例句子。 
 
-若要在不同的命令之間平衡範例句子的最佳作法，請參閱 [LUIS 最佳作法](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+若要在不同的命令之間平衡範例句子的最佳作法，請參閱 [LUIS 最佳作法](../luis/luis-concept-best-practices.md)。
 
 ### <a name="empty-sample-sentences"></a>空白範例句子
 每個命令都必須至少有一個範例句子。
@@ -82,7 +82,7 @@ LUIS 訓練旨在以較少的範例快速學習。 請勿加入太多範例句�
 | 預訂班機 | 預訂 {車輛} |
 | 預訂計程車 | 預訂 {車輛} |
 
-如需 LUIS 訓練的最佳作法，請參閱 [LUIS 最佳做法](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+如需 LUIS 訓練的最佳作法，請參閱 [LUIS 最佳做法](../luis/luis-concept-best-practices.md)。
 
 ## <a name="cant-update-luis-key"></a>無法更新 LUIS 金鑰
 ### <a name="reassign-to-e0-authoring-resource"></a>重新指派給 E0 撰寫資源
@@ -95,7 +95,7 @@ LUIS 不支援將 LUIS 應用程式重新指派給 E0 撰寫資源。
 ### <a name="save-button-is-disabled"></a>[儲存] 按鈕已停用
 如果您從未將 LUIS 預測資源指派給您的應用程式，則當您嘗試變更撰寫資源而不新增預測資源時，會停用 [儲存] 按鈕。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [請參閱 GitHub 上的範例](https://aka.ms/speech/cc-samples)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40736764cf9cec6f652e0147eb25d83f15c5bee2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358537"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024937"
 ---
 # <a name="what-is-custom-commands"></a>什麼是自訂命令？
 
@@ -28,7 +28,7 @@ ms.locfileid: "91358537"
 > [!TIP]
 > 在的登陸頁面上，查看我們的範例示範 [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) 。
 
-如果您想要建立複雜的對話式應用程式，建議您使用 [虛擬助理解決方案](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)來嘗試 Bot Framework。 您可以使用 Direct Line 語音，將語音新增至任何 bot framework bot。
+如果您想要建立複雜的對話式應用程式，建議您使用 [虛擬助理解決方案](/azure/bot-service/bot-builder-enterprise-template-overview)來嘗試 Bot Framework。 您可以使用 Direct Line 語音，將語音新增至任何 bot framework bot。
 
 自訂命令的良好候選項目具有固定的詞彙，且具有妥善定義的變數集。 例如，家用自動化工作（例如控制控溫器）是理想的選擇。
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95ce90dbbf47ffe527fe6f25704d9cd28b834ea9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84871358"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026690"
 ---
 # <a name="peering-service-faq"></a>對等互連服務常見問題
 
@@ -36,7 +36,7 @@ A. 是的，客戶可以這樣做。 選取符合您商務和操作需求的每�
 
 **問。什麼是 Microsoft Edge PoP？**
 
-A. 它是 Microsoft 與其他網路互連的實體位置。 在 Microsoft Edge 的 PoP 位置中，會託管 Azure Front Door 和 Azure CDN 等服務。 如需詳細資訊，請參閱 [Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-features)。
+A. 它是 Microsoft 與其他網路互連的實體位置。 在 Microsoft Edge 的 PoP 位置中，會託管 Azure Front Door 和 Azure CDN 等服務。 如需詳細資訊，請參閱 [Azure CDN](../cdn/cdn-features.md)。
 
 ## <a name="peering-service-unique-characteristics"></a>對等互連服務：唯一的特性
 
@@ -48,7 +48,7 @@ A. 已向 Microsoft 對等互連服務註冊的合作夥伴，與 Microsoft 合�
 
 A. Azure ExpressRoute 是一或多個客戶位置的私人專用連線。 當對等互連服務提供優化的公用連線能力，且不支援任何私用連線時，它也會為本機網際網路突破提供優化的連線能力。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入瞭解對等互連服務，請參閱對 [等互連服務的總覽](about.md)。
 - 若要尋找服務提供者，請參閱對 [等互連服務夥伴和位置](location-partners.md)。

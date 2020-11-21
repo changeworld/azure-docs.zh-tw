@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565733"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025869"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>將自訂命令應用程式匯出為遠端技能
 
@@ -23,9 +23,9 @@ ms.locfileid: "94565733"
 
 ## <a name="prerequisites"></a>必要條件
 > [!div class="checklist"]
-> * [瞭解 Bot Framework 技能](https://aka.ms/speech/cc-skill-overview)
+> * [瞭解 Bot Framework 技能](/azure/bot-service/skills-conceptual)
 > * [瞭解技能資訊清單](https://aka.ms/speech/cc-skill-manifest)
-> * [如何從 Bot Framework Bot 叫用技能](https://aka.ms/speech/cc-skill-consumer)
+> * [如何從 Bot Framework Bot 叫用技能](/azure/bot-service/skills-about-skill-consumers)
 > * 現有的自訂命令應用程式。 如果您沒有任何自訂命令應用程式，請嘗試使用- [快速入門：使用自訂命令建立語音助理](quickstart-custom-commands-application.md)
 
 ## <a name="custom-commands-as-remote-skills"></a>作為遠端技能的自訂命令
@@ -35,7 +35,7 @@ ms.locfileid: "94565733"
 ## <a name="configure-an-application-to-be-exposed-as-a-remote-skill"></a>設定要公開為遠端技能的應用程式
 
 ### <a name="application-level-settings"></a>應用層級設定
-1. 在左面板中，選取 [ **設定**  >  **遠端技巧** ]。
+1. 在左面板中，選取 [**設定**  >  **遠端技巧**]。
 1. 將 **遠端技能啟用** 切換為開啟。
 
 ### <a name="authentication-to-skills"></a>技術驗證
@@ -51,7 +51,7 @@ ms.locfileid: "94565733"
 
 您可以選擇要透過遠端技能匯出哪些命令。
 
-1. 若要透過技能公開命令，請選取 [ **啟用命令以取得技能** ] 下的 [ **啟用新命令** ]。
+1. 若要透過技能公開命令，請選取 [**啟用命令以取得技能**] 下的 [**啟用新命令**]。
 1. 從下拉式清單中，選取您要新增的命令。
 1. 選取 [儲存]。
 
@@ -60,11 +60,11 @@ ms.locfileid: "94565733"
 
 身為作者，您可能會想要控制要使用哪一個 **範例句子** 來產生技能的觸發語句。
 1. 根據預設，命令中的所有 **觸發範例** 都會包含在資訊清單檔中。
-1. 如果您想要明確消除任何一個範例，請從 [技能] 區段的 [ **啟用的命令** ] 區段中，選取 [ **編輯** ] 圖示。
+1. 如果您想要明確消除任何一個範例，請從 [技能] 區段的 [**啟用的命令**] 區段中，選取 [**編輯**] 圖示。
     > [!div class="mx-imgBorder"]
     > ![編輯技能的已啟用命令](media/custom-commands/skill-edit-enabled-command.png)
 
-1. 接下來，在您要省略的範例句子上，以 **滑鼠右鍵按一下** [  >  **停用範例句子** ]。
+1. 接下來，在您要省略的範例句子上，以 **滑鼠右鍵按一下**[  >  **停用範例句子**]。
     > [!div class="mx-imgBorder"]
     > ![停用範例](media/custom-commands/skill-disable-example-sentences.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "94565733"
 > 如果您在發行應用程式時遇到任何問題，並將錯誤導向至觸發語句的技能，請重新檢查 **已啟用命令** 的設定以瞭解技能。 每個公開的命令都必須至少有一個有效的觸發語句。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [從用戶端更新命令](./how-to-custom-commands-update-command-from-client.md)

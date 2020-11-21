@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487769"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024988"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>什麼是會議中的交談轉譯 (Preview) ？
 
@@ -54,7 +54,7 @@ ms.locfileid: "92487769"
 
 ## <a name="expected-inputs"></a>預期的輸入
 
-- **多頻道音訊串流** –如需規格和設計詳細資料，請參閱 [MICROSOFT 語音裝置 SDK 麥克風](https://aka.ms/cts/microphone)。 若要深入瞭解或購買開發工具組，請參閱 [取得 Microsoft 語音裝置 SDK](https://aka.ms/cts/getsdk)。
+- **多頻道音訊串流** –如需規格和設計詳細資料，請參閱 [MICROSOFT 語音裝置 SDK 麥克風](./speech-devices-sdk-microphone.md)。 若要深入瞭解或購買開發工具組，請參閱 [取得 Microsoft 語音裝置 SDK](./get-speech-devices-sdk.md)。
 - **User voice 範例** –對話轉譯在交談之前需要使用者設定檔。 您必須從每位使用者收集音訊錄製，然後將記錄傳送到簽章 [產生服務](https://aka.ms/cts/signaturegenservice) ，以驗證音訊並產生使用者設定檔。
 
 > [!NOTE]
@@ -81,7 +81,7 @@ ms.locfileid: "92487769"
 
 目前，對話轉譯支援下欄區域中的 [所有語音轉換文字語言](language-support.md#speech-to-text) ：  `centralus` 、 `eastasia` 、 `eastus` 、 `westeurope` 。 如果您需要其他地區設定支援，請洽詢 [交談轉譯功能](mailto:CTSFeatureCrew@microsoft.com)小組。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [即時轉譯對話](how-to-use-conversation-transcription.md)

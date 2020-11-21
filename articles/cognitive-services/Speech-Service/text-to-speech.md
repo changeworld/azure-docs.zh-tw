@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文字轉換語音
-ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357449"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024512"
 ---
 # <a name="what-is-text-to-speech"></a>什麼是文字轉換語音？
 
@@ -31,7 +31,7 @@ ms.locfileid: "91357449"
 
 ## <a name="core-features"></a>核心功能
 
-* 語音合成-使用 [語音 SDK](quickstarts/text-to-speech-audio-file.md) 或 [REST API](rest-text-to-speech.md) ，以使用標準、類神經或自訂語音將文字轉換為語音。
+* 語音合成-使用 [語音 SDK](./get-started-text-to-speech.md) 或 [REST API](rest-text-to-speech.md) ，以使用標準、類神經或自訂語音將文字轉換為語音。
 
 * 大量音訊的非同步合成-使用 [長音訊 API](long-audio-api.md) ，以非同步方式將文字轉換語音檔案合成超過10分鐘， (例如音訊書籍或演講) 。 不同于使用語音 SDK 或語音轉換文字 REST API 所執行的合成，回應不會即時傳回。 預期會以非同步方式傳送要求、輪詢回應，以及從服務提供合成音訊時進行下載。 僅支援自訂神經語音。
 
@@ -75,7 +75,7 @@ ms.locfileid: "91357449"
 - [語音 SDK](speech-sdk.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [取得免費的語音服務訂用帳戶](overview.md#try-the-speech-service-for-free)
 - [取得語音 SDK](speech-sdk.md)

@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3eb30662cae5f117942db6322b27491670abb1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 621a41f743b751a8c24bf6f6ad8497fb5c79775c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324836"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026005"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>預測之前或預測期間變更語句資料
 LUIS 提供可在預測之前或預測期間操作語句的方法。 這些包括 [修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預建 [datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
@@ -98,7 +98,7 @@ LUIS 中使用的 Bing 拼寫檢查 API 不支援拼寫檢查變更時要忽略�
 
 #### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 預測 c # 程式碼會判斷參數的正確值
 
-下列 c # 程式碼會使用 [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) 類別的 [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) 方法，根據系統時間判斷正確的位移值：
+下列 c # 程式碼會使用 [TimeZoneInfo](/dotnet/api/system.timezoneinfo) 類別的 [FindSystemTimeZoneById](/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) 方法，根據系統時間判斷正確的位移值：
 
 ```csharp
 // Get CST zone id
@@ -114,7 +114,7 @@ DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [使用此教學課程來校正拼字錯誤](luis-tutorial-bing-spellcheck.md)

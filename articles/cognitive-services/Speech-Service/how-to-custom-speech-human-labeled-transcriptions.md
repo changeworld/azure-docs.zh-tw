@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1d62d36d5cc48edc198e5d7bfc49f7f31b89a2c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74806057"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025611"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何建立人為標記的轉譯
 
@@ -29,7 +29,7 @@ ms.locfileid: "74806057"
 
 以下是一些範例：
 
-| 要避免的字元 | Substitution | 注意 |
+| 要避免的字元 | Substitution | 備註 |
 | ------------------- | ------------ | ----- |
 | "Hello world" | "Hello world" | 開頭和結尾的引號都已取代為適當的 ASCII 字元。 |
 | John 日 | John 日 | 單引號已取代為適當的 ASCII 字元。 |
@@ -84,7 +84,7 @@ ms.locfileid: "74806057"
 
 以下是一些範例：
 
-| 要避免的字元 | Substitution   | 注意 |
+| 要避免的字元 | Substitution   | 備註 |
 | ------------------- | -------------- | ----- |
 | 你好 | 你好 | 開頭和結尾引號都已取代為適當的字元。 |
 | 需要什么帮助? | 需要什么帮助？| 問號已取代為適當的字元。 |
@@ -164,7 +164,7 @@ ms.locfileid: "74806057"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [準備及測試您的資料](how-to-custom-speech-test-data.md)
+- [準備及測試您的資料](./how-to-custom-speech-test-and-train.md)
 - [檢查您的資料](how-to-custom-speech-inspect-data.md)
 - [評估您的資料](how-to-custom-speech-evaluate-data.md)
 - [定型模型](how-to-custom-speech-train-model.md)

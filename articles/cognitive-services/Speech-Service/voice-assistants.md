@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa885b1dcff59ec1b89d9a0bcf4ac5578cb5e8ea
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360934"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024903"
 ---
 # <a name="what-is-a-voice-assistant"></a>什麼是語音助理？
 
@@ -32,7 +32,7 @@ ms.locfileid: "91360934"
 |具有穩固技能整合和完整部署控制的開放式對話 | 具有 [Direct Line 語音](direct-line-speech.md) 通道的 Azure bot Service bot | <ul><li>「我需要前往西雅圖」</li><li>「我可以訂購哪種比薩？」</li></ul>
 |使用簡化撰寫和裝載的語音命令或簡單的工作導向對話 | [自訂命令](custom-commands.md) | <ul><li>「開啟額外負荷燈」</li><li>「讓5度更暖」</li><li>其他[可用](https://speech.microsoft.com/customcommands)的範例</li></ul>
 
-如果您還不確定想要處理的小幫手，建議您 [Direct Line 語音](direct-line-speech.md) 作為最佳的預設選項。 它提供了一組豐富的工具與撰寫輔助工具的整合，例如 [虛擬助理解決方案和企業範本](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) ，以及用來建立一般模式並使用現有知識來源的 [QnA Maker 服務](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) 。
+如果您還不確定想要處理的小幫手，建議您 [Direct Line 語音](direct-line-speech.md) 作為最佳的預設選項。 它提供了一組豐富的工具與撰寫輔助工具的整合，例如 [虛擬助理解決方案和企業範本](/azure/bot-service/bot-builder-enterprise-template-overview) ，以及用來建立一般模式並使用現有知識來源的 [QnA Maker 服務](../qnamaker/overview/overview.md) 。
 
 [自訂命令](custom-commands.md) 可讓您輕鬆地建立針對語音優先互動體驗優化的豐富語音命令應用程式。 它提供統一的撰寫體驗、自動化的裝載模型，以及較低的複雜度，協助您專注于為語音命令的案例建立最佳解決方案。
 
@@ -47,11 +47,11 @@ ms.locfileid: "91360934"
 
 無論您選擇 [Direct Line 語音](direct-line-speech.md) 或 [自訂命令](custom-commands.md) 來建立您的助理互動，您都可以使用一組豐富的自訂功能，自訂您的小幫手與品牌、產品和特質。
 
-| 類別 | 特性 |
+| 類別 | 功能 |
 |----------|----------|
-|[自訂關鍵字](speech-devices-sdk-create-kws.md) | 使用者可以使用自訂關鍵字（例如 "嗨 Contoso"）開始與助理進行交談。 應用程式會在語音 SDK 中使用自訂關鍵字引擎來進行這項設定， [您](speech-devices-sdk-create-kws.md)可以在此使用自訂關鍵字來設定。 語音助理可以使用服務端關鍵字驗證來改善關鍵字啟用 (與裝置) 的精確度。
+|[自訂關鍵字](./custom-keyword-basics.md) | 使用者可以使用自訂關鍵字（例如 "嗨 Contoso"）開始與助理進行交談。 應用程式會在語音 SDK 中使用自訂關鍵字引擎來進行這項設定， [您](./custom-keyword-basics.md)可以在此使用自訂關鍵字來設定。 語音助理可以使用服務端關鍵字驗證來改善關鍵字啟用 (與裝置) 的精確度。
 |[語音轉換文字](speech-to-text.md) | 語音助理使用語音服務的 [語音轉換文字](speech-to-text.md) ，將即時音訊轉換成可辨識的文字。 在您的助理執行和用戶端應用程式中，都可以使用此文字轉譯。
-|[將文字轉換成語音](text-to-speech.md) | 來自您助理的文字回應會使用語音服務的 [文字轉換語音](text-to-speech.md) 合成。 然後，您的用戶端應用程式可以使用此合成作為音訊串流。 Microsoft 提供的功能可讓您建立自己的自訂高品質類神經 TTS 語音，以對您的品牌提供語音。 若要深入瞭解，請 [洽詢我們](mailto:mstts@microsoft.com)。
+|[文字轉換語音](text-to-speech.md) | 來自您助理的文字回應會使用語音服務的 [文字轉換語音](text-to-speech.md) 合成。 然後，您的用戶端應用程式可以使用此合成作為音訊串流。 Microsoft 提供的功能可讓您建立自己的自訂高品質類神經 TTS 語音，以對您的品牌提供語音。 若要深入瞭解，請 [洽詢我們](mailto:mstts@microsoft.com)。
 
 ## <a name="getting-started-with-voice-assistants"></a>開始使用語音助理
 

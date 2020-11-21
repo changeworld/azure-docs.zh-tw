@@ -12,19 +12,19 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f7536034eeac8548304f6a7f861910a99cd72a27
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447644"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024665"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>為您的閘道階層案例 (預覽版設定 API proxy 模組) 
 
 API proxy 模組可讓 IoT Edge 裝置透過閘道傳送 HTTP 要求，而不是直接連接到雲端服務。 本文將逐步解說設定選項，讓您可以自訂模組以支援您的閘道階層需求。
 
 >[!NOTE]
->這項功能需要 IoT Edge 版本1.2 （處於公開預覽狀態）正在執行 Linux 容器。
+>這項功能需要目前處於公開預覽狀態，且執行 Linux 容器的 IoT Edge 1.2 版本。
 
 在某些網路架構中，閘道後方的 IoT Edge 裝置無法直接存取雲端。 任何嘗試連接到雲端服務的模組都會失敗。 API proxy 模組可透過將模組連線重新路由傳送至閘道階層的各層，來支援此設定中的下游 IoT Edge 裝置。 它提供安全的方式，讓用戶端透過 HTTPS 與多個服務進行通訊，而不需要進行通道處理，而是在每一層終止連接。 API proxy 模組可作為閘道階層中 IoT Edge 裝置之間的 proxy 模組，直到到達最上層的 IoT Edge 裝置為止。 屆時，在最上層執行的服務 IoT Edge 裝置處理這些要求，且 API proxy 模組會透過單一端口，將來自本機服務的所有 HTTP 流量 proxy 到雲端。
 
@@ -121,10 +121,10 @@ API proxy 模組的常見使用案例是讓較低層的 IoT Edge 裝置提取容
 * API proxy 模組
   * 設定下列環境變數：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | ---- | ----- |
-    | `DOCKER_REQUEST_ROUTE_ADDRESS` | 登錄模組名稱和開啟的埠。 例如 `registry:5000`。 |
-    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如 `8000`。 |
+    | `DOCKER_REQUEST_ROUTE_ADDRESS` | 登錄模組名稱和開啟的埠。 例如： `registry:5000` 。 |
+    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如： `8000` 。 |
 
   * 設定下列 createOptions：
 
@@ -147,9 +147,9 @@ API proxy 模組的常見使用案例是讓較低層的 IoT Edge 裝置提取容
 * API proxy 模組
   * 設定下列環境變數：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | ---- | ----- |
-    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如 `8000`。 |
+    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如： `8000` 。 |
 
   * 設定下列 createOptions：
 
@@ -179,10 +179,10 @@ API proxy 模組的另一個使用案例是讓較低層的 IoT Edge 裝置上傳
 * API proxy 模組
   * 設定下列環境變數：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | ---- | ----- |
-    | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob 儲存體模組名稱和開啟的埠。 例如 `azureblobstorageoniotedge:1102`。 |
-    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如 `8000`。 |
+    | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob 儲存體模組名稱和開啟的埠。 例如： `azureblobstorageoniotedge:1102` 。 |
+    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如： `8000` 。 |
 
   * 設定下列 createOptions：
 
@@ -205,9 +205,9 @@ API proxy 模組的另一個使用案例是讓較低層的 IoT Edge 裝置上傳
 * API proxy 模組
   * 設定下列環境變數：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | ---- | ----- |
-    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如 `8000`。 |
+    | `NGINX_DEFAULT_PORT` | Nginx proxy 針對來自下游裝置的要求所接聽的埠。 例如： `8000` 。 |
 
   * 設定下列 createOptions：
 
@@ -263,12 +263,12 @@ API proxy 模組的另一個使用案例是讓較低層的 IoT Edge 裝置上傳
 
 若要動態更新 proxy 設定，請使用下列步驟：
 
-1. 撰寫您的設定檔。 您可以使用此預設範本作為參考： [nginx_default_config. 會議](hhttps://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
+1. 撰寫您的設定檔。 您可以使用此預設範本作為參考： [nginx_default_config. 會議](https://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
 1. 複製設定檔的文字，並將其轉換為 base64。
 1. 貼上編碼的設定檔，做為 `proxy_config` 模組對應項中所需屬性的值。
 
    ![貼上編碼的設定檔做為 proxy_config 屬性的值](./media/how-to-configure-api-proxy-module/change-config.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 使用 API proxy 模組將 [下游 IoT Edge 裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-iot-edge-device.md)。

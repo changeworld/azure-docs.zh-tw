@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410771"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024784"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>語音服務：檔的新功能
 
@@ -38,17 +38,17 @@ ms.locfileid: "94410771"
 
 * [關於語音 SDK 音訊輸入串流 API](how-to-use-audio-input-streams.md) -每秒更新的允許樣本數。
 * [適用于語音轉換文字的自動語言偵測](how-to-automatic-language-detection.md) -檔的新增目標 C 指示。
-* [選擇語音辨識模式](how-to-choose-recognition-mode.md) -將 JavaScript 指示新增至檔。
+* [選擇語音辨識模式](./get-started-speech-to-text.md) -將 JavaScript 指示新增至檔。
 * [設定 RHEL/CentOS 7 For SPEECH SDK](how-to-configure-rhel-centos-7.md) -改善的安裝指示。
-* [語音轉換文字](how-to-phrase-lists.md) 新增的 JavaScript 指示至檔的片語清單。
-* [快速入門： Python 中適用于長格式音訊的非同步合成 (預覽版) ](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) -已更新為可支援公用神經語音，以及相關聯的參數。
-* [快速入門：辨識來自音訊](quickstarts/speech-to-text-from-file.md) 檔案的語音-已新增 JavaScript 指示至檔。
-* [快速入門：辨識來自麥克風的語音](quickstarts/speech-to-text-from-microphone.md ) -新增的 Go 和 JavaScript 指示至檔。
+* [語音轉換文字](./get-started-speech-to-text.md) 新增的 JavaScript 指示至檔的片語清單。
+* [快速入門： Python 中適用于長格式音訊的非同步合成 (預覽版) ](./long-audio-api.md) -已更新為可支援公用神經語音，以及相關聯的參數。
+* [快速入門：辨識來自音訊](./get-started-speech-to-text.md) 檔案的語音-已新增 JavaScript 指示至檔。
+* [快速入門：辨識來自麥克風的語音](./get-started-speech-to-text.md) -新增的 Go 和 JavaScript 指示至檔。
 * [快速入門：辨識儲存在 blob 儲存體中的語音](quickstarts/from-blob.md) -將 JavaScript 指示新增至檔。
 * [快速入門：使用 Language Understanding (LUIS 來辨識語音、意圖和實體) ](quickstarts/intent-recognition.md)
 * [快速入門：設定開發環境](quickstarts/setup-platform.md) -將 JavaScript 指示新增至檔。
-* [快速入門：將語音合成至音訊](quickstarts/text-to-speech-audio-file.md) 檔-將 JavaScript 指示新增至檔。
-* [快速入門：將語音合成至](quickstarts/text-to-speech.md) 已新增至講師的 JavaScript 指示至檔。
+* [快速入門：將語音合成至音訊](./get-started-text-to-speech.md) 檔-將 JavaScript 指示新增至檔。
+* [快速入門：將語音合成至](./get-started-text-to-speech.md) 已新增至講師的 JavaScript 指示至檔。
 * [什麼是關鍵字？](custom-keyword-overview.md) -已更新開始使用內容和連結。
 * [針對語音轉換文字新增的](how-to-specify-source-language.md) JavaScript 和目標 C 指示，指定原始程式碼語言。
 
@@ -58,7 +58,7 @@ ms.locfileid: "94410771"
 
 此資料表每月更新一次，而且只會反映在5月開啟的問題。  
 
-|識別碼|User|描述|已開啟|狀態|類型|
+|識別碼|User|Description|已開啟|State|類型|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|因為缺少 bot 的端點，所以已丟棄活動|2020-05-31|封閉式|問題|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|發佈 bot 的步驟錯誤|2020-05-31|開啟|問題|

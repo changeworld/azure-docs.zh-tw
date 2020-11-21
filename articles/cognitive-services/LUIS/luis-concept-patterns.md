@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 44a7a89740be3d6d502c5d22c79b46582034d88a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cda71c6e825ff27ba9b03e1306ccb287663e8613
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535948"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025954"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可改善預測精確度
 模式設計用來改善數個語句非常類似時的精確度。  模式可讓您取得更精確的意圖，而不需提供更多的語句。
@@ -43,12 +43,12 @@ ms.locfileid: "91535948"
 
 ## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>模式不會改善機器學習實體偵測
 
-模式主要是用來協助預測意圖和角色。 _模式。任何_實體都會用來將自由格式的實體解壓縮。 當模式使用實體時，模式不會協助偵測機器學習實體。
+模式主要是用來協助預測意圖和角色。 _模式。任何_ 實體都會用來將自由格式的實體解壓縮。 當模式使用實體時，模式不會協助偵測機器學習實體。
 
 如果將多個語句摺疊成單一模式，則不要期望看到改善的實體預測。 若要引發簡單的實體，您需要新增語句或使用清單實體，否則您的模式不會引發。
 
 ## <a name="patterns-use-entity-roles"></a>模式可使用實體角色
-如果模式中有兩個以上的實體與內容相關，則模式會使用實體[角色](luis-concept-roles.md)來擷取關於實體的內容資訊。
+如果模式中有兩個以上的實體與內容相關，則模式會使用實體[角色](./luis-concept-entity-types.md)來擷取關於實體的內容資訊。
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>使用和不使用模式的預測分數
 假設具有足夠的範例語句，LUIS 就能夠在不使用模式的情況下提高預測信賴度。 模式可提高信賴分數，而不需要提供許多語句。
@@ -70,7 +70,7 @@ ms.locfileid: "91535948"
 
 從 [模式語法參考](reference-pattern-syntax.md)學習模式語法。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解模式：
 

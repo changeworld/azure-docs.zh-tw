@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 30a07957a75bfe82d8ce350675f0d29b2f03e069
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6834f9cc8202f49f53c20f3941945bba4a4b2efd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966134"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026741"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用網路監看員和開放原始碼工具執行網路入侵偵測
 
@@ -246,7 +246,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 在 Kibana 的 [管理] 索引標籤下，瀏覽至 [儲存的物件] 並匯入這三個檔案。 然後您可以從 [儀表板] 索引標籤開啟並載入範例儀表板。
 
-您也可以針對自己感興趣的計量，量身製作自己的視覺效果和儀表板。 從 Kibana 的[正式文件](https://www.elastic.co/guide/en/kibana/current/visualize.html)深入了解如何建立 Kibana 視覺效果。
+您也可以針對自己感興趣的計量，量身製作自己的視覺效果和儀表板。 從 Kibana 的[正式文件](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)深入了解如何建立 Kibana 視覺效果。
 
 ![建立儀表板][2]
 
@@ -280,7 +280,7 @@ tail -f /var/log/suricata/fast.log
 
 藉由結合網路監看員所提供的封包擷取和開放原始碼 IDS 工具 (例如 Suricata)，您可以執行各式各樣威脅的網路入侵偵測。 這些儀表板可讓您快速發現您網路內的趨勢和異常，並且深入瞭解來探索警示資料的根本原因，例如惡意的使用者代理程式或連接埠弱點。 利用這個擷取的資料，您可以做出關於如何回應和保護網路免於任何有害入侵嘗試，以及建立規則來避免未來入侵您網路的明智決策。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何根據警示觸發封包擷取，請造訪[使用封包擷取搭配 Azure Functions 進行主動式網路監視](network-watcher-alert-triggered-packet-capture.md)
 

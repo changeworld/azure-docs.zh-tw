@@ -9,18 +9,18 @@ ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
 ms.custom: device-developer
-ms.openlocfilehash: fb6029a91714ed0229876bbaf6bb0790565be29c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fc8ea41e804344735cfa2400d5d763622d8811c8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427840"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026245"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>建置用來將其他 IoT 雲端連線至 IoT Central 的 IoT Central 裝置橋接器
 
 *此主題適用於系統管理員。*
 
-IoT Central 裝置橋接器是一項開放原始碼解決方案，可將您的 Sigfox、粒子、物聯網和其他雲端連線至 IoT Central 應用程式。 無論您使用的資產追蹤裝置是連線到 Sigfox 的低功率廣域網路，或是在裝置雲端上使用空氣品質監視裝置，或使用 TTN 上的上料濕度監視裝置，您都可以使用 IoT Central 裝置橋接器直接利用 IoT Central 的功能。 裝置橋接器可藉由將您的裝置傳送到其他雲端的資料轉送至 IoT Central 應用程式，來連線其他 IoT 雲端與 IoT Central。 在您的 IoT Central 應用程式中，您可以建置規則並對該資料執行分析、在 Microsoft Flow 和 Azure 邏輯應用程式中建立工作流程、匯出該資料，以及其他工作。 從 GitHub 取得[IoT Central 裝置橋接器](https://aka.ms/iotcentralgithubdevicebridge)
+IoT Central 裝置橋接器是一項開放原始碼解決方案，可將您的 Sigfox、粒子、物聯網和其他雲端連線至 IoT Central 應用程式。 無論您使用的資產追蹤裝置是連線到 Sigfox 的低功率廣域網路，或是在裝置雲端上使用空氣品質監視裝置，或使用 TTN 上的上料濕度監視裝置，您都可以使用 IoT Central 裝置橋接器直接利用 IoT Central 的功能。 裝置橋接器可藉由將您的裝置傳送到其他雲端的資料轉送至 IoT Central 應用程式，來連線其他 IoT 雲端與 IoT Central。 在您的 IoT Central 應用程式中，您可以建立規則，並對該資料執行分析、在 Power Automate 和 Azure 邏輯應用程式中建立工作流程、匯出該資料，以及執行更多工作。 從 GitHub 取得[IoT Central 裝置橋接器](https://aka.ms/iotcentralgithubdevicebridge)
 
 ## <a name="what-is-it-and-how-does-it-work"></a>這是什麼？如何運作？
 IoT Central 裝置橋接器是 GitHub 中的開放原始碼解決方案。 您可以使用 [部署至 Azure] 按鈕，將包含數個 Azure 資源的自訂 Azure Resource Manager 範本部署到您的 Azure 訂用帳戶。 這些資源包括：
@@ -42,7 +42,7 @@ IoT Central 裝置橋接器是 GitHub 中的開放原始碼解決方案。 您�
 ## <a name="pricing"></a>定價
 Azure 資源會裝載在您的 Azure 訂用帳戶中。 您可以從 [README 檔案](https://aka.ms/iotcentralgithubdevicebridge)深入了解定價。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 您現在已了解如何建置 IoT Central 裝置橋接器，以下是建議的後續步驟：
 
 > [!div class="nextstepaction"]

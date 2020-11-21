@@ -10,30 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: f06fda777cbebd8034ac4fd9254a4bd172d011a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ddbca7a216421aad7240890a697f861d14fd1f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661498"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026347"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文字轉換語音常見問題集
 
-如果您在此常見問題集中找不到問題的解答，請參閱[其他支援選項](support.md)。
+如果您在此常見問題集中找不到問題的解答，請參閱[其他支援選項](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
 
 ## <a name="general"></a>一般
 
 **問：標準語音模型與自訂語音模型之間有何差異？**
 
-**答**：標準語音模型 (亦稱為_語音字型_) 已使用 Microsoft 所擁有的資料加以定型，並已部署在雲端中。 您可以使用自訂語音模型調整平均模型，並轉變說話者的聲音音色和表達方式，或根據使用者準備的定型資料，為全新的模型定型。 現在有越來越多的客戶希望他們的聊天機器人有獨一無二的品牌化聲音。 自訂語音建置平台是該選項最適合的選擇。
+**答**：標準語音模型 (亦稱為 _語音字型_) 已使用 Microsoft 所擁有的資料加以定型，並已部署在雲端中。 您可以使用自訂語音模型調整平均模型，並轉變說話者的聲音音色和表達方式，或根據使用者準備的定型資料，為全新的模型定型。 現在有越來越多的客戶希望他們的聊天機器人有獨一無二的品牌化聲音。 自訂語音建置平台是該選項最適合的選擇。
 
 **問：如果我想要使用標準語音模型，該從何處著手？**
 
-**答**：透過 HTTP 要求可提供超過 45 種語言的 80 餘種標準語音模型。 首先，取得訂用帳戶 [金鑰](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要對預先部署的語音模型進行 REST 呼叫，請參閱 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
+**答**：透過 HTTP 要求可提供超過 45 種語言的 80 餘種標準語音模型。 首先，取得訂用帳戶 [金鑰](./overview.md#try-the-speech-service-for-free)。 若要對預先部署的語音模型進行 REST 呼叫，請參閱 [REST API](./overview.md#reference-docs)。
 
 **問：如果我想要使用自訂語音模型，API 是否與標準語音所用的相同？**
 
-**答**：建立並部署自訂語音模型時，您會取得一個適用於您模型的唯一端點。 若要語音在您的應用程式中說話，您必須在您的 HTTP 要求中指定端點。 在 REST API 中可以使用相同的功能，因為文字轉換語音服務也適用於自訂端點。 了解如何[建立及使用您的自訂端點](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint)。
+**答**：建立並部署自訂語音模型時，您會取得一個適用於您模型的唯一端點。 若要語音在您的應用程式中說話，您必須在您的 HTTP 要求中指定端點。 在 REST API 中可以使用相同的功能，因為文字轉換語音服務也適用於自訂端點。 了解如何[建立及使用您的自訂端點](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)。
 
 **問：我需要準備定型資料來建立自己的自訂語音模型嗎？**
 
@@ -41,7 +41,7 @@ ms.locfileid: "88661498"
 
 建立自訂語音模型需要有語音資料集合。 此集合包含一組語音錄製的音訊檔案，以及各音訊檔案文字記錄的文字檔。 數位語音的結果與定型資料的品質息息相關。 若要產生良好的文字轉換語音，請務必在備有高品質站立式麥克風的安靜房間內完成錄音。 一致的音量、讀出速率、讀出音調，甚至一致的語音表達方式是建立絕佳數位語音不可或缺的一部分。 強烈建議在錄音室錄製語音。
 
-目前我們不提供線上錄音支援，也沒有任何錄音室建議。 如需格式需求，請參閱 [如何準備錄製和文字記錄](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)。
+目前我們不提供線上錄音支援，也沒有任何錄音室建議。 如需格式需求，請參閱 [如何準備錄製和文字記錄](./how-to-custom-voice-create-voice.md)。
 
 **問：我應該使用哪些腳本錄製語音資料以進行自訂語音定型？**
 

@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: dpalled
-ms.openlocfilehash: 2cf86ed4fd4305a37d27bf7a88e8493821ef085c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3460cd8a88733ede041f6c0635ba40797675ed03
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629092"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025322"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>在 Azure 時間序列深入解析 Gen2 中加入 long 資料類型的支援
 
 新增 long 資料類型的支援會影響我們只在 Azure 時間序列深入解析 Gen2 環境中儲存和索引數值資料的方式。 如果您有 Gen1 環境，您可以忽略這些變更。
 
-自2020年6月29日到6月30日起，視您的地區而定，您的資料將會以 **Long** 和 **Double**來編制索引。  如果您有任何關於此變更的問題或疑慮，請透過 Azure 入口網站提交支援票證，並提及此通訊。
+自2020年6月29日到6月30日起，視您的地區而定，您的資料將會以 **Long** 和 **Double** 來編制索引。  如果您有任何關於此變更的問題或疑慮，請透過 Azure 入口網站提交支援票證，並提及此通訊。
 
 如果您在下列任何情況下受到影響，請進行建議的變更：
 
@@ -42,11 +42,11 @@ ms.locfileid: "91629092"
 - 您可以事先對所有數值標記進行建議的變更。
 - 您可以暫時將事件子集路由至儲存體，以進一步瞭解並探索您的架構。
 
-若要儲存事件，請開啟 Azure 事件中樞的 [事件捕獲](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) ，或從 IoT 中樞 [路由傳送](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) 至 Azure Blob 儲存體。
+若要儲存事件，請開啟 Azure 事件中樞的 [事件捕獲](../event-hubs/event-hubs-capture-overview.md) ，或從 IoT 中樞 [路由傳送](../iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint) 至 Azure Blob 儲存體。
 
-您也可以透過 [事件中樞瀏覽器](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)或使用 [事件處理器主機](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)來觀察資料。
+您也可以透過 [事件中樞瀏覽器](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)或使用 [事件處理器主機](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md#receive-events)來觀察資料。
 
-如果您使用 IoT 中樞，請移至 [從內建端點讀取裝置到雲端訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) ，以瞭解如何存取內建端點。
+如果您使用 IoT 中樞，請移至 [從內建端點讀取裝置到雲端訊息](../iot-hub/iot-hub-devguide-messages-read-builtin.md) ，以瞭解如何存取內建端點。
 
 > [!NOTE]
 > 如果您未進行建議的變更，您可能會遇到中斷情形。 例如，透過查詢 Api 或時間序列深入解析 explorer 存取的受影響的時間序列深入解析變數將會傳回 **null** (也就是，在 explorer) 中不顯示任何資料。
@@ -64,9 +64,9 @@ ms.locfileid: "91629092"
 - **propertyValue_double**
 - **propertyValue_long**
 
-您要寫入 **propertyValue_long**的整數資料。 先前內嵌 (和未來的內嵌) 不會複製 **propertyValue_double** 中的數值資料。
+您要寫入 **propertyValue_long** 的整數資料。 先前內嵌 (和未來的內嵌) 不會複製 **propertyValue_double** 中的數值資料。
 
-如果您想要在這兩個數據行中查詢 **propertyValue** 屬性的資料，您必須在您的 TSX 中使用 ** ( # B1 ** 純量函數的聯合。 函數接受相同 **資料類型** 的引數，並傳回引數清單中的第一個非 null 值。 如需詳細資訊，請參閱 [Azure 時間序列深入解析 Gen2 資料存取概念](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)。
+如果您想要在這兩個數據行中查詢 **propertyValue** 屬性的資料，您必須在您的 TSX 中使用 **( # B1** 純量函數的聯合。 函數接受相同 **資料類型** 的引數，並傳回引數清單中的第一個非 null 值。 如需詳細資訊，請參閱 [Azure 時間序列深入解析 Gen2 資料存取概念](/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)。
 
 #### <a name="variable-definition-in-tsx---numeric"></a>TSX 中的變數定義-數值
 
@@ -78,7 +78,7 @@ ms.locfileid: "91629092"
 
 [![螢幕擷取畫面顯示 [加入新的變數] 對話方塊，其中包含自訂值 [數值] 的 [PropertyValue] 變數。](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3 ** 作為自訂 [時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3** 作為自訂 [時間序列運算式](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>使用 TSX 查詢 Api 的內嵌變數定義-數值
 
@@ -126,7 +126,7 @@ ms.locfileid: "91629092"
 }
 ```
 
-您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3 ** 作為自訂 [時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3** 作為自訂 [時間序列運算式](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 > [!NOTE]
 > 建議您在所有可能使用的地方更新這些變數。 這些位置包括時間序列模型、已儲存的查詢，以及 Power BI 連接器查詢。
@@ -145,9 +145,9 @@ ms.locfileid: "91629092"
 
 [![螢幕擷取畫面顯示 [加入新的變數] 對話方塊，其中包含自訂值 [類別] 的 [PropertyValue] 變數。](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3 ** 作為自訂 [時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3** 作為自訂 [時間序列運算式](/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
-類別變數仍然需要值為整數類型。 **聯合 ( # B1**中所有引數的**資料**類型在自訂[時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)中都必須是**Long**類型。
+類別變數仍然需要值為整數類型。 **聯合 ( # B1** 中所有引數的 **資料** 類型在自訂 [時間序列運算式](/rest/api/time-series-insights/reference-time-series-expression-syntax)中都必須是 **Long** 類型。
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>使用 TSX 查詢 Api 的內嵌變數定義-類別
 
@@ -227,19 +227,19 @@ ms.locfileid: "91629092"
 }
 ```
 
-類別變數仍然需要值為整數類型。 **聯合 ( # B1**中所有引數的**資料**類型在自訂[時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)中都必須是**Long**類型。
+類別變數仍然需要值為整數類型。 **聯合 ( # B1** 中所有引數的 **資料** 類型在自訂 [時間序列運算式](/rest/api/time-series-insights/reference-time-series-expression-syntax)中都必須是 **Long** 類型。
 
 > [!NOTE]
 > 建議您在所有可能使用的地方更新這些變數。 這些位置包括時間序列模型、已儲存的查詢，以及 Power BI 連接器查詢。
 
 ### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>案例4：使用 JavaScript SDK 來建立自訂前端應用程式
 
-如果您受到案例1到3的影響，並建立自訂的應用程式，您需要更新您的查詢以使用 **聯合 ( # B1 ** 函式，如先前範例中所示。
+如果您受到案例1到3的影響，並建立自訂的應用程式，您需要更新您的查詢以使用 **聯合 ( # B1** 函式，如先前範例中所示。
 
 ### <a name="case-5-nearing-warm-store-1000-property-limit"></a>案例5：接近暖存放區1000屬性限制
 
 如果您是具有大量屬性的暖存放區使用者，且認為這項變更會將您的環境推送至1000暖存放區屬性名稱限制，請透過 Azure 入口網站提交支援票證，並提及此通訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 查看 [支援的資料類型](concepts-supported-data-types.md)的完整清單。

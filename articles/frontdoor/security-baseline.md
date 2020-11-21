@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6d6a392d25aa96ab9b4dbb7763b37c1021db71aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888312"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026279"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>適用于 Azure Front Door 的 Azure 安全性基準
 
@@ -202,7 +202,7 @@ Front Door 支援 TLS 版本1.0、1.1 和1.2。 尚不支援 TLS 1.3。 在2019�
 
 ## <a name="logging-and-threat-detection"></a>記錄和威脅偵測
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。*
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：啟用 Azure 網路活動的記錄功能
 
@@ -338,7 +338,7 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 ## <a name="posture-and-vulnerability-management"></a>狀況和弱點管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：狀態和弱點管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：狀態和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3：建立計算資源的安全設定
 
@@ -409,7 +409,7 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 安全性基礎-Azure 資料安全性、加密和儲存體](../security/fundamentals/encryption-overview.md)
 
-- [Azure 安全性基準測試-資料保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure 安全性基準測試-資料保護](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -437,7 +437,7 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 **指導** 方針：持續測量並減輕個別資產及其託管環境的風險。 設定高價值資產的優先順序以及高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性基準測試-狀態與弱點管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure 安全性基準測試-狀態與弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -479,7 +479,7 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 - [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全性基準測試-網路安全性](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure 安全性基準測試-網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure 網路安全性概觀](../security/fundamentals/network-overview.md)
 
@@ -505,9 +505,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性基準測試-身分識別管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure 安全性基準測試-身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure 安全性基準測試-特殊許可權存取](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure 安全性基準測試-特殊許可權存取](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -539,9 +539,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 您可以在參考的連結取得詳細資訊。
 
-- [Azure 安全性基準測試-記錄和威脅偵測](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure 安全性基準測試-記錄和威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure 安全性基準測試-事件回應](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全性基準測試-事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -551,7 +551,7 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 **責任**：客戶
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 請參閱 [Azure 安全性基準測試 V2 總覽](/azure/security/benchmarks/overview)
 - 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)

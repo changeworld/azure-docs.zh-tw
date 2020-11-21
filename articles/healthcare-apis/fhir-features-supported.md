@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 71097f13fffbbe5cb57a69c98fb0ab272e16af5c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368276"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026296"
 ---
 # <a name="features"></a>功能
 
@@ -100,8 +100,8 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Partial        | Partial   | Partial        |   支援 `_sort=_lastUpdated`       |
 | `_count`                | 是       | 是       | 是       | `_count` 的限制為100個字元。 如果設定為大於100，則只會傳回100，並會在組合中傳回警告。 |
-| `_include`              | 否        | 是       | 否        |         |
-| `_revinclude`           | 否        | 是       | 否        | 包含的專案限制為100。 |
+| `_include`              | 是       | 是       | 是       |包含的專案限制為100。 在 PaaS 和 OSS 上包含 Cosmos DB 不包括：反覆運算支援。|
+| `_revinclude`           | 是       | 是       | 是       | 包含的專案限制為100。 在 PaaS 和 OSS 上包含 Cosmos DB 不包括：反覆運算支援。|
 | `_summary`              | Partial   | Partial   | Partial   | 支援 `_summary=count` |
 | `_total`                | Partial   | Partial   | Partial   | _total = 非且 _total = 精確      |
 | `_elements`             | 是       | 是       | 是       |         |
@@ -133,7 +133,28 @@ FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 目前，針對指定角色所允許的動作會在 API 上 *全域* 套用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="service-limits"></a>服務限制
+
+* [**要求單位 (ru)**](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) -您最多可以在入口網站中為 Azure API for FHIR 設定 10000 ru。 您至少需要 400 ru 或 10 ru/GB （以較大者為准）。 如果您需要超過 10000 ru，您可以放入支援票證，以增加這項功能。 可用的最大值為1000000。
+
+* **並行連接** 和 **實例** -dafault，您在叢集的兩個實例上有五個並行連線 (總共) 個並行要求。 如果您認為您需要更多的並行要求，請開啟支援票證，並提供您需求的詳細資料。
+
+* 套件組合 **大小**-每個套件組合僅限500個專案。
+
+* **資料大小** -資料/檔必須稍微小於 2 MB。
+
+## <a name="performance-expectations"></a>效能期望
+
+系統的效能取決於 ru 數目、並行連接，以及您正在執行的作業類型 (Put、Post 等 ) 。 以下是您可以根據設定的 ru 來預期的一些一般範圍。 一般而言，效能會隨著 ru 的增加而呈線性調整：
+
+| ru 數目 | 資源/秒 |
+|----------|---------------|
+| 400      | 5-10          |
+| 1,000    | 100-150       |
+| 10,000   | 225-400       |
+| 100,000  | 2500-4000   |
+
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解 Azure API for FHIR 中支援的 FHIR 功能。 接下來，部署 Azure API for FHIR。
  

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541776"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025988"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖與實體從表達文字擷取資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。
@@ -28,12 +28,12 @@ LUIS 會從已發佈 [端點](luis-glossary.md#endpoint)的使用者語句中解
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
-當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定]**** 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-limits.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
+當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定] 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-limits.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
 
-**HTTPS 回應**包含 LUIS 可以根據目前已發佈之預備或生產環境端點模型來判斷的所有意圖和實體資訊。 端點 URL 是在 [LUIS](luis-reference-regions.md) 網站、[管理]**** 區段、[金鑰和端點]**** 頁面上找到的。
+**HTTPS 回應** 包含 LUIS 可以根據目前已發佈之預備或生產環境端點模型來判斷的所有意圖和實體資訊。 端點 URL 是在 [LUIS](luis-reference-regions.md) 網站、[管理] 區段、[金鑰和端點] 頁面上找到的。
 
 ## <a name="data-from-intents"></a>來自意圖的資料
-主要資料是最高分的**意圖名稱**。 端點回應為：
+主要資料是最高分的 **意圖名稱**。 端點回應為：
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
@@ -132,7 +132,7 @@ LUIS 會從已發佈 [端點](luis-glossary.md#endpoint)的使用者語句中解
 
 意圖會依最高分到最低分排序。
 
-|資料物件|資料類型|資料位置|值|Score|
+|資料物件|資料類型|資料位置|值|分數|
 |--|--|--|--|:--|
 |Intent|字串|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|字串|intents[1].intent|"None"|0.0168218873|
@@ -193,7 +193,7 @@ LUIS 會從已發佈 [端點](luis-glossary.md#endpoint)的使用者語句中解
 
 * * *
 
-|網域|資料物件|資料類型|資料位置|值|
+|Domain|資料物件|資料類型|資料位置|值|
 |--|--|--|--|--|
 |公用程式|Intent|字串|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |通訊|Intent|字串|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -217,7 +217,7 @@ LUIS 會從已發佈 [端點](luis-glossary.md#endpoint)的使用者語句中解
 
 ## <a name="list-entity-data"></a>清單實體資料
 
-[清單實體](reference-entity-list.md) 代表一組固定且封閉的相關單字及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
+[清單實體](reference-entity-list.md) 代表一組固定且封閉的相關單字及其同義字。 LUIS 並不會探索清單實體的額外值。 使用 **建議** 功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
 
 ## <a name="regular-expression-entity-data"></a>規則運算式實體資料
 
@@ -232,9 +232,9 @@ LUIS 會從已發佈 [端點](luis-glossary.md#endpoint)的使用者語句中解
 
 ### <a name="names-of-people"></a>人名
 
-人名可依據語言和文化特性而有些微的格式。 使用預先建立的**[personName](luis-reference-prebuilt-person.md)** 實體或具有 first 和 last 名稱[角色](luis-concept-roles.md)的**[簡單實體](luis-concept-entity-types.md#simple-entity)**。
+人名可依據語言和文化特性而有些微的格式。 使用預先建立的 **[personName](luis-reference-prebuilt-person.md)** 實體或具有 first 和 last 名稱角色的 **[簡單實體](luis-concept-entity-types.md)** 。
 
-如果您使用簡單的實體，請務必提供在語句的不同部分中使用名字和姓氏的範例（以不同長度的語句為限），並在所有意圖（包括 None 意圖）之間語句。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
+如果您使用簡單的實體，請務必提供在語句的不同部分中使用名字和姓氏的範例（以不同長度的語句為限），並在所有意圖（包括 None 意圖）之間語句。 請定期[檢閱](./luis-how-to-review-endpoint-utterances.md)端點語句，以標記任何未正確預測的名稱。
 
 ### <a name="names-of-places"></a>地名
 
@@ -242,17 +242,17 @@ LUIS 會從已發佈 [端點](luis-glossary.md#endpoint)的使用者語句中解
 
 ### <a name="new-and-emerging-names"></a>全新和新興的名稱
 
-有些應用程式需要能夠尋找全新和新興的名稱，例如產品或公司。 這些類型的名稱是最困難的資料解壓縮類型。 從簡單的 **[實體](luis-concept-entity-types.md#simple-entity)** 開始，然後新增 [片語清單](luis-concept-feature.md)。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
+有些應用程式需要能夠尋找全新和新興的名稱，例如產品或公司。 這些類型的名稱是最困難的資料解壓縮類型。 從簡單的 **[實體](luis-concept-entity-types.md#simple-entity)** 開始，然後新增 [片語清單](luis-concept-feature.md)。 請定期[檢閱](./luis-how-to-review-endpoint-utterances.md)端點語句，以標記任何未正確預測的名稱。
 
 ## <a name="patternany-entity-data"></a>Pattern.any 實體資料
 
 [模式。任何](reference-entity-pattern-any.md) 是僅用於模式範本語句的可變長度預留位置，用來標記實體開始及結束的位置。 您必須在模式中找到使用的實體，才能套用模式。
 
 ## <a name="sentiment-analysis"></a>情感分析
-如果在 [發行](luis-how-to-publish-app.md#sentiment-analysis)時設定情感分析，LUIS json 回應會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。
+如果在 [發行](luis-how-to-publish-app.md#sentiment-analysis)時設定情感分析，LUIS json 回應會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](../text-analytics/index.yml)文件。
 
 ## <a name="key-phrase-extraction-entity-data"></a>關鍵片語擷取實體資料
-[關鍵字組解壓縮實體](luis-reference-prebuilt-keyphrase.md)會傳回語句中的關鍵字組（由[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)提供）。
+[關鍵字組解壓縮實體](luis-reference-prebuilt-keyphrase.md)會傳回語句中的關鍵字組（由[文字分析](../text-analytics/index.yml)提供）。
 
 ## <a name="data-matching-multiple-entities"></a>與多個實體相符的資料
 
@@ -264,6 +264,6 @@ LUIS 會傳回在語句中探索到的所有實體。 因此，您的聊天機�
 
 針對查詢 `when is the best time to go to red rock?` ，而且應用程式 `red` 在一個以上的清單中有該單字，LUIS 會辨識所有實體，並傳回實體陣列作為 JSON 端點回應的一部分。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱[新增實體](luis-how-to-add-entities.md)，以深入了解如何將實體新增至 LUIS 應用程式。

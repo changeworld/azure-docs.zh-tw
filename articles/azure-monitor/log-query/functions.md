@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511933"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024359"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用函式
 
@@ -56,10 +56,10 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="next-steps"></a>後續步驟
 如需了解撰寫 Azure 監視器記錄查詢，請參閱其他課程：
 
-- [字串作業](string-operations.md)
-- [日期和時間作業](datetime-operations.md)
-- [彙總函式](aggregations.md)
-- [進階彙總](advanced-aggregations.md)
-- [JSON 與資料結構](json-data-structures.md)
-- [聯結](joins.md)
-- [圖表](charts.md)
+- [字串作業](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [日期和時間作業](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [彙總函式](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [進階彙總](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON 與資料結構](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [聯結](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [圖表](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

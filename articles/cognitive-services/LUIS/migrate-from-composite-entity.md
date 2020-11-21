@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5c3ac14af6eb863daa9eadd32727f4fb53d2185f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46e9ece70d9f980065c719ee1205eb46591b45c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322852"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025237"
 ---
 # <a name="upgrade-composite-entity-to-machine-learning-entity"></a>將複合實體升級至機器學習服務實體
 
@@ -29,12 +29,12 @@ ms.locfileid: "91322852"
     * 如果子實體是在複合中使用 _，而_ 另一個實體 (標示為範例語句) ，則會以實體的形式新增至版本，並以列方式新增至新的機器學習實體。
     * 如果子實體使用角色，每個角色都會轉換成相同名稱的列。
     * 如果子實體是 (正則運算式、清單實體或預建實體) 的非機器學習實體，則會以相同的名稱建立新的列，而新的列會使用非機器學習實體的功能，並新增所需的功能。
-* 名稱會保留，但在相同的列/同級層級必須是唯一的。 請參閱 [唯一的命名限制](luis-boundaries.md#name-uniqueness)。
+* 名稱會保留，但在相同的列/同級層級必須是唯一的。 請參閱 [唯一的命名限制](./luis-limits.md#name-uniqueness)。
 * 範例語句中的標籤會切換至新的機器學習實體與子實體。
 
 使用下圖來瞭解您的模型變更方式：
 
-|舊物件|新增物件|注意|
+|舊物件|新增物件|備註|
 |--|--|--|
 |複合實體|具有結構的機器學習實體|這兩個物件都是父物件。|
 |複合的子實體是 **簡單實體**|列|這兩個物件都是子物件。|
@@ -72,6 +72,6 @@ ms.locfileid: "91322852"
 
 1. 在 [實體清單] 頁面上，新的實體會標示為 [類型名稱] 旁邊的 [ **新增** ]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [建立者和共同作業者](luis-how-to-collaborate.md)

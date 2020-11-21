@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997764"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024750"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows 上的語音助理
 
@@ -37,7 +37,7 @@ ms.locfileid: "82997764"
 
 ### <a name="registration"></a>註冊
 
-當語音啟動的應用程式第一次執行時，它會透過 ConversationalAgent Api 來註冊其應用程式識別碼和關鍵字資訊。 AAR 會向系統上的硬體或軟體關鍵字偵查器註冊全域對應中的所有設定，讓它們偵測應用程式的關鍵字。 應用程式也會 [向背景服務註冊](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)。
+當語音啟動的應用程式第一次執行時，它會透過 ConversationalAgent Api 來註冊其應用程式識別碼和關鍵字資訊。 AAR 會向系統上的硬體或軟體關鍵字偵查器註冊全域對應中的所有設定，讓它們偵測應用程式的關鍵字。 應用程式也會 [向背景服務註冊](/windows/uwp/launch-resume/register-a-background-task)。
 
 請注意，這表示應用程式無法透過語音啟用，直到它執行一次且已允許註冊完成為止。
 
@@ -53,8 +53,8 @@ ms.locfileid: "82997764"
 
 觸發應用程式啟動的關鍵字偵查器，藉由簡化關鍵字模型來達成低耗電量。 這可讓關鍵字偵查器「永遠開啟」，而不會有高度的電源影響，但這也表示關鍵字偵查器很可能會有較高的「false 接受」值，即使沒有說出關鍵字也是一樣。 這就是語音啟用系統在背景中啟動應用程式的原因：為了讓應用程式有機會在中斷使用者目前的會話之前，先確認是否已說出關鍵字。 AAR 會在出現關鍵字之前幾秒鐘後儲存音訊，並讓應用程式可以存取。 應用程式可以使用此應用程式，在相同的音訊上執行更可靠的關鍵字偵查器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-- 請**參閱設計指導方針：** 我們的[設計指導方針](windows-voice-assistants-best-practices.md)會配置在 Windows 10 上提供語音啟用的最佳體驗所需的重要工作。
+- 請 **參閱設計指導方針：** 我們的 [設計指導方針](windows-voice-assistants-best-practices.md)會配置在 Windows 10 上提供語音啟用的最佳體驗所需的重要工作。
 - **造訪消費者入門頁面：** 從 [這裡](how-to-windows-voice-assistants-get-started.md) 開始，以瞭解在 Windows 上開始執行語音助理的步驟，從設定開發環境的簡介指南。
 - **試用範例應用程式**：若要體驗這些功能第一手，請造訪 [UWP 語音助理範例](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) 頁面，並遵循步驟以取得範例用戶端執行。

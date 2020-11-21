@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: a4670da5f5e89a4e020e26d1d704f172b8ab0864
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968310"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025271"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
 ## <a name="overview"></a>概觀
@@ -62,7 +62,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 | 層級 | 包含的類別 |
 |-|-|
-|**停用** | None |
+|**Disabled** | None |
 |**錯誤** | 錯誤、嚴重 |
 |**警告** | 警告、錯誤、嚴重|
 |**資訊** | 資訊、警告、錯誤、嚴重|
@@ -185,16 +185,18 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表顯示支援的記錄類型和描述： 
 
-| 記錄類型 | Windows | Windows 容器 | Linux | Linux 容器 | 描述 |
+| 記錄類型 | Windows | Windows 容器 | Linux | Linux 容器 | Description |
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | JAVA SE & Tomcat | 是 | 是 | 是 | 標準輸出和標準錯誤 |
 | AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 伺服器記錄 |
 | AppServiceEnvironmentPlatformLogs | 是 | N/A | 是 | 是 | App Service 環境：調整、設定變更和狀態記錄|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 透過 FTP 和 Kudu 的登入活動 |
 | AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 對網站內容進行的檔案變更;僅適用于進階層和更新版本 |
-| AppServiceAppLogs | ASP .NET | ASP .NET | JAVA SE & Tomcat 經過驗證映射 | JAVA SE & Tomcat 經過驗證映射 | 應用程式記錄 |
+| AppServiceAppLogs | ASP .NET | ASP .NET | JAVA SE & Tomcat 經過驗證映射 <sup>1</sup> | JAVA SE & Tomcat 經過驗證映射 <sup>1</sup> | 應用程式記錄 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | IP 規則的要求 |
 | AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器作業記錄 |
+
+<sup>1</sup> 針對 JAVA SE 應用程式，請將 "$WEBSITE _AZMON_PREVIEW_ENABLED" 新增至應用程式設定，並將它設定為1或 true。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 後續步驟
 * [使用 Azure 監視器來查詢記錄](../azure-monitor/log-query/log-query-overview.md)

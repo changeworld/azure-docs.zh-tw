@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319096"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025628"
 ---
 # <a name="inspect-custom-speech-data"></a>檢查自訂語音資料
 
 > [!NOTE]
-> 此頁面會假設您已閱讀 [自訂語音的準備測試資料](how-to-custom-speech-test-data.md) ，並已上傳資料集以進行檢查。
+> 此頁面會假設您已閱讀 [自訂語音的準備測試資料](./how-to-custom-speech-test-and-train.md) ，並已上傳資料集以進行檢查。
 
 自訂語音提供的工具，可讓您藉由比較音訊資料與對應的辨識結果，以視覺化方式檢查模型的辨識品質。 您可以從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)播放上傳的音訊，並判斷提供的辨識結果是否正確。 這項工具可協助您檢查 Microsoft 的基準語音轉換文字模型的品質、檢查定型的自訂模型，或比較兩個模型的轉譯。
 
@@ -33,9 +33,9 @@ ms.locfileid: "91319096"
 1. 登入 [自訂語音入口網站](https://speech.microsoft.com/customspeech)。
 2. 流覽至 **語音轉換文字 > 自訂語音 > [專案名稱] > 測試**。
 3. 按一下 [ **加入測試**]。
-4. 選取 [ **檢查品質 (僅限音訊的資料) **。 提供測試的名稱、描述，然後選取您的音訊資料集。
+4. 選取 [ **檢查品質 (僅限音訊的資料)**。 提供測試的名稱、描述，然後選取您的音訊資料集。
 5. 選取最多兩個您想要測試的模型。
-6. 按一下 [建立]。
+6. 按一下頁面底部的 [新增]  。
 
 成功建立測試之後，您可以看到模型如何轉譯您所指定的音訊資料集，或將兩個模型的結果與並排比較。
 
@@ -66,11 +66,11 @@ ms.locfileid: "91319096"
 
 接下來，使用下列步驟來匯入資料。
 
-1. 按一下 [匯**入資料**]
+1. 按一下 [匯 **入資料**]
 1. 建立新的資料集 () ，並為其提供描述
 1. 選取資料集。 支援多個選項，而且您只能選取音訊資料，以及音訊 + 人類標記的資料。
 1. 針對僅限音訊的資料，您可以選擇性地使用預設模型，在匯入編輯器之後自動產生機器轉譯
-1. 按一下 [匯**入**]
+1. 按一下 [匯 **入**]
 
 成功匯入資料之後，您可以按一下資料集並開始編輯。
 
@@ -95,7 +95,7 @@ ms.locfileid: "91319096"
 
 匯出至資料的檔案將會用來做為全新的資料集，而且不會影響任何現有的資料/訓練/測試實體。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [評估您的資料](how-to-custom-speech-evaluate-data.md)
 - [定型模型](how-to-custom-speech-train-model.md)
@@ -104,4 +104,4 @@ ms.locfileid: "91319096"
 
 ## <a name="additional-resources"></a>其他資源
 
-- [準備自訂語音的測試資料](how-to-custom-speech-test-data.md)
+- [準備自訂語音的測試資料](./how-to-custom-speech-test-and-train.md)

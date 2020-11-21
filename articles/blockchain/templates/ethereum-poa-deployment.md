@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e680bc601b7f230314c1063523a003e95a849c0a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987060"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024393"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署乙太坊證明聯盟解決方案範本
 
@@ -48,7 +48,9 @@ ms.locfileid: "94987060"
 * 彙總記錄和效能統計資料的 Azure 監視器
 * 允許透過私人 VNet 進行 VPN 連線的 VNet 閘道 (選擇性)
 
-根據預設，RPC 和對等互連端點可透過公用 IP 來存取，以簡化跨訂用帳戶和雲端的連線。 針對應用層級存取控制，您可以使用同位的授權合約。 支援在 Vpn 後方部署的網路，以利用 VNet 閘道來進行跨訂用帳戶連線能力。 由於 VPN 和 VNet 部署更為複雜，因此您可能會想要在建立解決方案的原型時，從公用 IP 模型著手。
+根據預設，RPC 和對等互連端點可透過公用 IP 存取，以啟用跨的簡化連線能力
+
+訂用帳戶和雲端。 針對應用層級存取控制，您可以使用同位 [的授權合約](https://openethereum.github.io/Permissioning.html)。 支援在 Vpn 後方部署的網路，以利用 VNet 閘道來進行跨訂用帳戶連線能力。 由於 VPN 和 VNet 部署更為複雜，因此您可能會想要在建立解決方案的原型時，從公用 IP 模型著手。
 
 Docker 容器用於可靠性和模組化。 Azure Container Registry 用來在每個部署中裝載和提供已建立版本的映射。 容器映像包含：
 
@@ -685,7 +687,7 @@ Truffle 使用遷移腳本將智慧型合約部署至區塊鏈網路。 您需�
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (WASM) 支援
 
-在新部署的 PoA 網路上已為您啟用 WebAssembly 支援。 它可讓您以任何能夠 transpile 為 Web 組件的語言 (Rust、C、C++) 進行智慧合約開發。 如需詳細資訊，請參閱來自同位 [技術的教學](https://github.com/paritytech/pwasm-tutorial)課程。
+在新部署的 PoA 網路上已為您啟用 WebAssembly 支援。 它可讓您以任何能夠 transpile 為 Web 組件的語言 (Rust、C、C++) 進行智慧合約開發。 如需詳細資訊，請參閱： [WebAssembly](https://openethereum.github.io/WebAssembly-Home.html)的同位檢查和來自同位技術的[教學](https://github.com/paritytech/pwasm-tutorial)課程
 
 ## <a name="faq"></a>常見問題集
 

@@ -8,22 +8,22 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637127"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024460"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>從受限制的網路連接到工作區資源
 
 假設您是 IT 系統管理員，負責管理您組織的受限網路。 您想要在 Azure Synapse Analytics Studio 和此受限網路內的工作站之間啟用網路連線。 本文將說明如何做到。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂** 用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立 [免費的 azure 帳戶](https://azure.microsoft.com/free/) 。
-* **Azure Synapse Analytics 工作區** ：您可以從 Azure Synapse Analytics 建立一個。 您需要步驟4中的工作區名稱。
-* **受限制的網路** ： IT 系統管理員會為組織維護受限的網路，並且擁有設定網路原則的許可權。 您需要在步驟3中的虛擬網路名稱和子網。
+* **Azure Synapse Analytics 工作區**：您可以從 Azure Synapse Analytics 建立一個。 您需要步驟4中的工作區名稱。
+* **受限制的網路**： IT 系統管理員會為組織維護受限的網路，並且擁有設定網路原則的許可權。 您需要在步驟3中的虛擬網路名稱和子網。
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>步驟1：將網路輸出安全性規則新增至受限的網路
@@ -38,13 +38,13 @@ ms.locfileid: "94637127"
 
 ![Azure Resource Manager 服務標記詳細資料的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
-當您建立其他三個規則時，請將 **目的地服務標記** 的值取代為清單中的 **AzureFrontDoor 前端** 、 **AzureActiveDirectory** 或 **AzureMonitor** 。
+當您建立其他三個規則時，請將 **目的地服務標記** 的值取代為清單中的 **AzureFrontDoor 前端**、 **AzureActiveDirectory** 或 **AzureMonitor** 。
 
-如需詳細資訊，請參閱 [服務標記總覽](/azure/virtual-network/service-tags-overview.md)。
+如需詳細資訊，請參閱 [服務標記總覽](/azure/virtual-network/service-tags-overview)。
 
 ## <a name="step-2-create-private-link-hubs"></a>步驟2：建立私人連結中樞
 
-接下來，從 Azure 入口網站建立私用連結中樞。 若要在入口網站中尋找此資訊，請搜尋 *Azure Synapse Analytics (private link 中樞)* ，然後填入所需的資訊加以建立。 
+接下來，從 Azure 入口網站建立私用連結中樞。 若要在入口網站中尋找此資訊，請搜尋 *Azure Synapse Analytics (private link 中樞)*，然後填入所需的資訊加以建立。 
 
 > [!Note]
 > 確定 **區域** 值與 Azure Synapse Analytics 工作區的值相同。
@@ -53,7 +53,7 @@ ms.locfileid: "94637127"
 
 ## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>步驟3：建立閘道的私人端點
 
-若要存取 Azure Synapse Analytics Studio 閘道，您必須從 Azure 入口網站建立私人端點。 若要在入口網站中尋找此項，請搜尋 *Private Link* 。 在 [ **Private Link 中心** ] 中，選取 [ **建立私人端點** ]，然後填入所需的資訊加以建立。 
+若要存取 Azure Synapse Analytics Studio 閘道，您必須從 Azure 入口網站建立私人端點。 若要在入口網站中尋找此項，請搜尋 *Private Link*。 在 [ **Private Link 中心**] 中，選取 [ **建立私人端點**]，然後填入所需的資訊加以建立。 
 
 > [!Note]
 > 確定 **區域** 值與 Azure Synapse Analytics 工作區的值相同。
@@ -64,10 +64,10 @@ ms.locfileid: "94637127"
 
 ![[建立私人端點，資源] 索引標籤的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
 
-**在 [設定** ] 索引標籤上： 
-* 針對 [ **虛擬網路** ]，選取受限制的虛擬網路名稱。
-* 針對 [ **子網** ]，選取受限制虛擬網路的子網。 
-* 針對 [ **與私人 DNS 區域整合** ]，選取 **[是]** 。
+**在 [設定**] 索引標籤上： 
+* 針對 [ **虛擬網路**]，選取受限制的虛擬網路名稱。
+* 針對 [ **子網**]，選取受限制虛擬網路的子網。 
+* 針對 [ **與私人 DNS 區域整合**]，選取 **[是]**。
 
 ![建立私人端點 [設定] 索引標籤的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
 
@@ -84,9 +84,9 @@ ms.locfileid: "94637127"
 
 在 [ **資源** ] 索引標籤上：
 
-* 針對 [ **資源類型** ]，選取 [ **Synapse]/[工作區** ]。
-* 針對 [ **資源** ]，選取您先前建立的工作區名稱。
-* 針對 [ **目標子資源** ]，選取端點類型：
+* 針對 [ **資源類型**]，選取 [ **Synapse]/[工作區**]。
+* 針對 [ **資源**]，選取您先前建立的工作區名稱。
+* 針對 [ **目標子資源**]，選取端點類型：
   * **Sql 適用** 于 sql 集區中的 SQL 查詢執行。
   * **SqlOnDemand** 適用于 SQL 內建查詢執行。
   * **開發** 用來存取 Azure Synapse Analytics Studio 工作區中的其他專案。 您必須建立至少一個此類型的私用連結端點。
@@ -99,9 +99,9 @@ ms.locfileid: "94637127"
 若要在 Azure Synapse Analytics Studio 工作區中使用儲存體 explorer 來存取連結的儲存體，您必須建立一個私人端點。 這與步驟3的步驟類似。 
 
 在 [ **資源** ] 索引標籤上：
-* 針對 [ **資源類型** ]，選取 [ **Synapse]/[storageAccounts** ]。
-* 針對 [ **資源** ]，選取您先前建立的儲存體帳戶名稱。
-* 針對 [ **目標子資源** ]，選取端點類型：
+* 針對 [ **資源類型**]，選取 [ **Synapse]/[storageAccounts**]。
+* 針對 [ **資源**]，選取您先前建立的儲存體帳戶名稱。
+* 針對 [ **目標子資源**]，選取端點類型：
   * **blob** 適用于 Azure Blob 儲存體。
   * **dfs** 適用于 Azure Data Lake Storage Gen2。
 
@@ -119,7 +119,7 @@ ms.locfileid: "94637127"
 
 現在已設定。 您可以存取 Azure Synapse Analytics Studio 工作區資源。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 [受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)。
 

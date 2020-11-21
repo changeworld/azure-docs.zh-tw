@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168591"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024410"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -25,7 +25,7 @@ ms.locfileid: "92168591"
 * 最新版本的 Application Insights Sdk 適用于 ASP.NET、ASP.NET Core、JAVA (代理程式和 SDK) 和 Python 都有固定速率取樣。
 * 內嵌取樣適用于 Application Insights 服務端點。 只有在沒有其他取樣生效時才適用。 如果 SDK 會將您的遙測資料取樣，則會停用內嵌取樣。
 * 針對 web 應用程式，如果您記錄自訂事件，而且需要確保一組事件一起保留或捨棄，則事件必須具有相同的 `OperationId` 值。
-* 如果您要撰寫分析查詢，請 [考慮到取樣](../log-query/aggregations.md)。 特別是，您應該使用 `summarize sum(itemCount)`，而非只計算記錄。
+* 如果您要撰寫分析查詢，請 [考慮到取樣](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)。 特別是，您應該使用 `summarize sum(itemCount)`，而非只計算記錄。
 * 某些遙測類型（包括效能計量和自訂計量）一律會保留，而不論是否已啟用取樣。
 
 下表摘要說明每個 SDK 和應用程式類型可用的取樣類型：
@@ -34,7 +34,7 @@ ms.locfileid: "92168591"
 |-|-|-|-|
 | ASP.NET | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-aspnet-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-applications) | 只有在沒有其他取樣生效時 |
 | ASP.NET Core | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 只有在沒有其他取樣生效時 |
-| Azure Functions | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-azure-functions) | 否 | 只有在沒有其他取樣生效時 |
+| Azure Functions | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-azure-functions) | No | 只有在沒有其他取樣生效時 |
 | Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 只有在沒有其他取樣生效時 |
 | Node.JS | 否 | [是](./nodejs.md#sampling) | 只有在沒有其他取樣生效時
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 只有在沒有其他取樣生效時 |
@@ -47,11 +47,11 @@ ms.locfileid: "92168591"
 
 有三種不同的取樣方法：
 
-* 調適型**取樣**會自動調整從 ASP.NET/ASP.NET Core 應用程式中的 SDK 傳送的遙測資料量，以及 Azure Functions。 當您使用 ASP.NET 或 ASP.NET Core SDK 時，這是預設的取樣。 調適型取樣目前僅適用于 ASP.NET 伺服器端遙測及 Azure Functions。
+* 調適型 **取樣** 會自動調整從 ASP.NET/ASP.NET Core 應用程式中的 SDK 傳送的遙測資料量，以及 Azure Functions。 當您使用 ASP.NET 或 ASP.NET Core SDK 時，這是預設的取樣。 調適型取樣目前僅適用于 ASP.NET 伺服器端遙測及 Azure Functions。
 
 * **固定速率取樣** 可減少從您的 ASP.NET 或 ASP.NET Core、JAVA 伺服器和使用者的瀏覽器傳送的遙測資料量。 而比例則由您設定。 用戶端和伺服器會同步處理它們的取樣，讓您可以在 [搜尋] 終於相關的頁面檢視和要求之間瀏覽。
 
-* 內嵌**取樣**會在 Application Insights 服務端點進行。 它會根據您設定的取樣比例，捨棄來自您應用程式的一些遙測。 這不會減少從應用程式傳送的遙測流量，但可協助您讓流量不要超過每月配額。 內嵌取樣的主要優點是您可以設定取樣率，而不需要重新部署應用程式。 內嵌取樣適用于所有伺服器和用戶端，但在作業中任何其他類型的取樣時都不適用。
+* 內嵌 **取樣** 會在 Application Insights 服務端點進行。 它會根據您設定的取樣比例，捨棄來自您應用程式的一些遙測。 這不會減少從應用程式傳送的遙測流量，但可協助您讓流量不要超過每月配額。 內嵌取樣的主要優點是您可以設定取樣率，而不需要重新部署應用程式。 內嵌取樣適用于所有伺服器和用戶端，但在作業中任何其他類型的取樣時都不適用。
 
 > [!IMPORTANT]
 > 如果自調適型或固定速率取樣方法正在運作中，則會停用內嵌取樣。
@@ -78,7 +78,7 @@ ms.locfileid: "92168591"
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    彈性演算法在每部**伺服器主機上**所要收集的[邏輯運算](./correlation.md#data-model-for-telemetry-correlation)目標速率。 如果 Web 應用程式在許多主機上執行，請減少此值，以保持在您的 Application Insights 入口網站的流量目標速率內。
+    彈性演算法在每部 **伺服器主機上** 所要收集的 [邏輯運算](./correlation.md#data-model-for-telemetry-correlation)目標速率。 如果 Web 應用程式在許多主機上執行，請減少此值，以保持在您的 Application Insights 入口網站的流量目標速率內。
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   
@@ -224,7 +224,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-aspnet-applications"></a>設定 ASP.NET 應用程式的固定速率取樣
 
-1. **停**用調適型取樣：在中 [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) ，移除或批註 `AdaptiveSamplingTelemetryProcessor` 節點。
+1. **停** 用調適型取樣：在中 [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) ，移除或批註 `AdaptiveSamplingTelemetryProcessor` 節點。
 
     ```xml
     <TelemetryProcessors>
@@ -271,7 +271,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-aspnet-core-applications"></a>設定 ASP.NET Core 應用程式的固定速率取樣
 
-1. **停**用調適型取樣：您可以 `ConfigureServices` 使用下列方法，在方法中進行變更： `ApplicationInsightsServiceOptions`
+1. **停** 用調適型取樣：您可以 `ConfigureServices` 使用下列方法，在方法中進行變更： `ApplicationInsightsServiceOptions`
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -335,7 +335,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 1. 下載並設定您的 web 應用程式，並使用最新的 [Application Insights JAVA SDK](./java-get-started.md)。
 
-2. 將下列程式碼片段新增至檔案，以**啟用固定速率取樣模組** `ApplicationInsights.xml` ：
+2. 將下列程式碼片段新增至檔案，以 **啟用固定速率取樣模組** `ApplicationInsights.xml` ：
 
     ```XML
     <TelemetryProcessors>
@@ -586,7 +586,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 在2.5.0 之前的 ASP.NET SDK Beta2，以及 ASP.NET Core SDK 的 v 2.2.0-Beta3 之前，取樣決策是根據定義 "user" (的應用程式使用者識別碼的雜湊，也就是最常見的 web 應用程式) 。 針對未定義使用者 (例如 web 服務的應用程式類型) 取樣決策是根據要求的作業識別碼。 ASP.NET 和 ASP.NET Core Sdk 的最新版本會使用運算識別碼進行取樣決策。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [篩選](./api-filtering-sampling.md) 可以對您的 SDK 所傳送的內容，提供更嚴格的控制。
 * 閱讀開發人員網路文章， [利用 Application Insights 將遙測優化](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)。

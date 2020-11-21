@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536098"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025903"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 應用程式中的意圖
 
@@ -27,12 +27,12 @@ ms.locfileid: "91536098"
  BookFlight     |   「幫我預訂下週到里約的班機」 <br/> 「24 日讓我飛到里約」 <br/> 「我需要一張下週日到里約熱內盧的機票」    |
  問候     |   「嗨」 <br/>"Hello" <br/>「早安」  |
  CheckWeather | 「波士頓的天氣如何？」 <br/> 「顯示本週的預測」 |
- 無         | 「給我餅乾食譜」<br>「湖人隊贏了嗎？」 |
+ None         | 「給我餅乾食譜」<br>「湖人隊贏了嗎？」 |
 
 所有應用程式都有預先定義的意圖「[無](#none-intent)」，也就是回溯意圖。
 
 ## <a name="prebuilt-domains-provide-intents"></a>預先建置的定義域會提供意圖
-除了您定義的意圖之外，您還可以從其中一個 [預建網域](luis-how-to-use-prebuilt-domains.md)使用預先建立的意圖。
+除了您定義的意圖之外，您還可以從其中一個 [預建網域](./howto-add-prebuilt-models.md)使用預先建立的意圖。
 
 ## <a name="return-all-intents-scores"></a>傳回所有意圖的分數
 您會指派語句給單一意圖。 當 LUIS 在端點上收到語句時，根據預設，它會傳回該語句的最高意圖。
@@ -49,7 +49,7 @@ ms.locfileid: "91536098"
 
 <a name="how-do-intents-relate-to-entities"></a>
 
- 當使用者的「意圖」__ 會觸發用戶端應用程式中的動作 (例如對 checkweather() 函式的呼叫) 時，請建立意圖。 然後，建立實體以代表執行此動作所需的參數。
+ 當使用者的「意圖」會觸發用戶端應用程式中的動作 (例如對 checkweather() 函式的呼叫) 時，請建立意圖。 然後，建立實體以代表執行此動作所需的參數。
 
 |Intent   | 實體 | 範例語句   |
 |------------------|------------------------------|------------------------------|
@@ -59,18 +59,18 @@ ms.locfileid: "91536098"
 
 ## <a name="prebuilt-domain-intents"></a>預先建置的定義域意圖
 
-[預先](luis-how-to-use-prebuilt-domains.md) 建立的網域可提供意圖給語句。
+[預先](./howto-add-prebuilt-models.md) 建立的網域可提供意圖給語句。
 
 ## <a name="none-intent"></a>None 意圖
 
-系統會建立 **None** 但刻意保留空白。 **None**意圖是必要的意圖，無法刪除或重新命名。 請以您定義域外的語句填入它。
+系統會建立 **None** 但刻意保留空白。 **None** 意圖是必要的意圖，無法刪除或重新命名。 請以您定義域外的語句填入它。
 
-**None**意圖是回溯意圖，每個應用程式都很重要，而且應該有10% 的總語句。 它可用來教導 LUIS 在應用程式定義域 (主題區域) 中不重要的語句。 如果您沒有為 **None** 意圖新增任何語句，LUIS 就會強制讓定義域外的某個語句變成其中一個定義域意圖。 這會教導 LUIS 錯誤的語句意圖而扭曲預測分數。
+**None** 意圖是回溯意圖，每個應用程式都很重要，而且應該有10% 的總語句。 它可用來教導 LUIS 在應用程式定義域 (主題區域) 中不重要的語句。 如果您沒有為 **None** 意圖新增任何語句，LUIS 就會強制讓定義域外的某個語句變成其中一個定義域意圖。 這會教導 LUIS 錯誤的語句意圖而扭曲預測分數。
 
 將語句預測為「無」意圖時，用戶端應用程式可以詢問更多問題，或提供功能表將使用者導向至有效的選項。
 
 ## <a name="negative-intentions"></a>負面意圖
-如果您想要判斷負面或正面意圖，例如「我**想要**一輛車」和「我**不**想要一輛車」，您可以建立兩個意圖 (一個正面，一個負面)，然後為每個意圖新增適當的語句。 或者，您也可以建立單一意圖，並標示兩個不同的正面和負面字詞作為實體。
+如果您想要判斷負面或正面意圖，例如「我 **想要** 一輛車」和「我 **不** 想要一輛車」，您可以建立兩個意圖 (一個正面，一個負面)，然後為每個意圖新增適當的語句。 或者，您也可以建立單一意圖，並標示兩個不同的正面和負面字詞作為實體。
 
 ## <a name="intents-and-patterns"></a>意圖和模式
 
@@ -98,7 +98,7 @@ ms.locfileid: "91536098"
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>針對含有大量意圖的應用程式要求協助
 如果減少意圖數目或將意圖分割成多個應用程式對您並不適用，請與支援人員連絡。 如果您的 Azure 訂用帳戶包含支援服務，請與 [Azure 技術支援人員](https://azure.microsoft.com/support/options/)連絡。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入了解[實體](luis-concept-entity-types.md)，這些是與意圖相關的重要單字
 * 了解如何在 LUIS 應用程式中[新增及管理意圖](luis-how-to-add-intents.md)。

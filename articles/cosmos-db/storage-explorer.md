@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9260f2892bdcc6a694e1e54e29cb06bae90298eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074466"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025390"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 儲存體總管管理 Azure Cosmos DB 資源
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,9 +22,9 @@ ms.locfileid: "93074466"
 使用相同的工具，在同一個位置管理不同的 Azure 實體。 您可以管理 Azure Cosmos DB 實體、運算元據、更新預存程式和觸發程式，以及其他 Azure 實體（例如儲存體 blob 和佇列）。 Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設定的 Cosmos 帳戶。
 
 > [!NOTE]
-> Azure Cosmos DB 與儲存體總管的整合已被取代。 在此版本中，將不會移除任何現有的功能至少一年。 您應改為使用 [Azure 入口網站](https://portal.azure.com/)、 [azure 入口網站的桌面應用程式](https://portal.azure.com/App/Download) 或獨立的 [azure Cosmos explorer](data-explorer.md) 。 替代選項包含儲存體總管目前不支援的許多新功能。
+> Azure Cosmos DB 與儲存體總管的整合已過時。 在至少一年內，我們不會從此版本移除任何現有的功能。 您應該改為使用 [Azure 入口網站](https://portal.azure.com/)、[Azure 入口網站傳統型應用程式](https://portal.azure.com/App/Download)或獨立的 [Azure Cosmos 總管](data-explorer.md)。 替代選項包含儲存體總管目前不支援的許多新功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 具有 SQL API 的 Cosmos 帳戶，或適用于 MongoDB 的 Azure Cosmos DB API。 如果您沒有帳戶，可以在 Azure 入口網站中建立一個帳戶。 如需詳細資訊，請參閱 [Azure Cosmos DB：使用 .Net 建立 SQL API web 應用程式和 Azure 入口網站](create-sql-api-dotnet.md) 。
 
@@ -38,21 +38,21 @@ ms.locfileid: "93074466"
 
    :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
-1. 選取 [新增 Azure 帳戶]  ，然後選取 [登入]  。
+1. 選取 [新增 Azure 帳戶]，然後選取 [登入]。
 
-   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="[連接到 Azure 儲存體] 視窗的螢幕擷取畫面，其中顯示已選取 [新增 Azure 帳戶] 選項按鈕，以及 [Azure 環境] 下拉式功能表。":::
 
-1. 在 [ **Azure 登入** ] 對話方塊中，選取 [登 **入** ]，然後輸入您的 Azure 認證。
+1. 在 [ **Azure 登入** ] 對話方塊中，選取 [登 **入**]，然後輸入您的 Azure 認證。
 
-    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="[登入] 視窗的螢幕擷取畫面，其中顯示您的 Azure 訂用帳號憑證的輸入位置。":::
 
-1. 從清單中選取您的訂用帳戶，然後選取 [套用]  。
+1. 從清單中選取您的訂用帳戶，然後選取 [套用]。
 
-    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="[帳戶管理] 窗格的螢幕擷取畫面，其中顯示訂用帳戶清單和 [套用] 按鈕。":::
 
     [Explorer] 窗格會更新並顯示所選訂用帳戶中的帳戶。
 
-    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="[Explorer] 窗格的螢幕擷取畫面，已更新以顯示所選訂用帳戶中的帳戶。":::
 
     您的 **Cosmos DB 帳戶** 已連線到您的 Azure 訂用帳戶。
 
@@ -60,17 +60,20 @@ ms.locfileid: "93074466"
 
 您可以使用連接字串連接到 Azure Cosmos DB。 此方法僅支援 SQL 和資料表 Api。 遵循下列步驟以連接字串：
 
-1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶** ]，然後選取 **[連接到 Cosmos DB]** 。
+1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶**]，然後選取 **[連接到 Cosmos DB]**。
 
-    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="在您按一下滑鼠右鍵之後，顯示下拉式功能表的螢幕擷取畫面，其中已醒目提示 [連線至 Azure Cosmos D B]。":::
 
 2. 在 [ **連接到 Cosmos DB** ] 視窗中：
    1. 從下拉式功能表中選取 API。
    1. 在 [ **連接字串** ] 方塊中貼上您的連接字串。 如需如何取出主要連接字串的詳細說明，請參閱 [取得連接字串](manage-with-powershell.md#list-keys)。
-   1. 輸入 **帳戶標籤** ，然後選取 **[下一步]** 以查看摘要。
+   1. 輸入 **帳戶標籤**，然後選取 **[下一步]** 以查看摘要。
    1. 選取 **[連線] 以** 連接 Azure Cosmos DB 帳戶。
 
-      :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+      :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="[連線至 Cosmos] D B 視窗的螢幕擷取畫面，其中顯示 [API] 下拉式功能表、[連接字串] 方塊和 [帳戶標籤] 方塊。":::
+
+> [!NOTE]
+> 如果 Azure 儲存體總管顯示 Azure Cosmos DB 連接字串的格式無效，請確定連接字串的結尾有分號 (`;`) 。 有效 Azure Cosmos DB 連接字串的範例如下： `AccountEndpoint=https://accountname.documents.azure.com:443;AccountKey=accountkey==;`
 
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>使用本機模擬器連接到 Azure Cosmos DB
 
@@ -78,16 +81,16 @@ ms.locfileid: "93074466"
 
 1. 安裝 Cosmos DB 模擬器，然後開啟它。 如需如何安裝模擬器的詳細說明，請參閱 [Cosmos DB 模擬器](./local-emulator.md)。
 
-1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶** ]，然後選取 **[連接到 Cosmos DB 模擬器]** 。
+1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶**]，然後選取 **[連接到 Cosmos DB 模擬器]**。
 
-    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="顯示在您按一下滑鼠右鍵之後顯示功能表的螢幕擷取畫面，其中已醒目提示 [連線至 Azure Cosmos D B 模擬器]。":::
 
 1. 在 [ **連接到 Cosmos DB** ] 視窗中：
    1. 在 [ **連接字串** ] 方塊中貼上您的連接字串。 如需有關如何取得主要連接字串的詳細資訊，請參閱 [取得連接字串](manage-with-powershell.md#list-keys)。
-   1. 輸入 **帳戶標籤** ，然後選取 **[下一步]** 以查看摘要。
+   1. 輸入 **帳戶標籤**，然後選取 **[下一步]** 以查看摘要。
    1. 選取 **[連線] 以** 連接 Azure Cosmos DB 帳戶。
 
-      :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+      :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="[連接到 Cosmos D B] 視窗的螢幕擷取畫面，其中顯示 [連接字串] 方塊和 [帳戶標籤] 方塊。":::
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB 資源管理
 
@@ -107,67 +110,67 @@ ms.locfileid: "93074466"
 
 * 在 Azure Cosmos DB 帳戶或資料庫上按一下滑鼠右鍵，然後選取 [ **在入口網站中開啟** ]，以在 Azure 入口網站的瀏覽器中管理資源。
 
-  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="顯示在您按一下滑鼠右鍵之後顯示功能表的螢幕擷取畫面，其中已醒目提示 [在入口網站中開啟]。":::
 
 * 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶、資料庫或集合，然後選取 [ **新增至快速存取** ]，將其新增至 [快速存取] 功能表。
 
 * 選取 [ **從這裡搜尋** ]，在選取的路徑下啟用關鍵字搜尋。
 
-    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="顯示已醒目提示搜尋方塊的螢幕擷取畫面。":::
 
 ### <a name="database-and-collection-management"></a>資料庫與集合管理
 
 #### <a name="create-a-database"></a>建立資料庫
 
-1. 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，然後選取 [ **建立資料庫** ]。
+1. 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，然後選取 [ **建立資料庫**]。
 
-   :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="顯示在您按一下滑鼠右鍵之後顯示功能表的螢幕擷取畫面，其中顯示 [建立資料庫]。":::
 
 1. 輸入資料庫名稱，然後按 **enter** 鍵以完成。
 
 #### <a name="delete-a-database"></a>刪除資料庫
 
-1. 以滑鼠右鍵按一下資料庫，然後選取 [ **刪除資料庫** ]。 
+1. 以滑鼠右鍵按一下資料庫，然後選取 [ **刪除資料庫**]。 
 
-   :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="顯示在您按一下滑鼠右鍵之後顯示功能表的螢幕擷取畫面，其中反白顯示 [刪除資料庫]。":::
 
 1. 在快顯視窗中選取 **[是** ]。 資料庫節點隨即會刪除，而 Azure Cosmos DB 帳戶會自動重新整理。
 
-   :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="已反白顯示 [是] 按鈕之確認視窗的螢幕擷取畫面。":::
 
 #### <a name="create-a-collection"></a>建立集合
 
-1. 以滑鼠右鍵按一下您的資料庫，然後選取 [ **建立集合** ]。
+1. 以滑鼠右鍵按一下您的資料庫，然後選取 [ **建立集合**]。
 
-   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="顯示在您按一下滑鼠右鍵之後顯示功能表的螢幕擷取畫面，其中已反白顯示 [建立集合]。":::
 
 1. 在 [建立集合] 視窗中，輸入所要求的資訊，例如 **集合識別碼** 和 **儲存容量** 等等。 選取 [確定] 來完成。
 
-   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="[建立集合] 視窗的螢幕擷取畫面，其中顯示 [I D] 方塊和 [儲存容量] 按鈕。":::
 
 1. 選取 [ **無限制** ]，讓您可以指定分割區索引鍵，然後選取 **[確定** ] 以完成。
 
    > [!NOTE]
    > 如果您在建立集合時使用資料分割索引鍵，則在建立完成後，就無法變更集合上的資料分割索引鍵值。
 
-    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="[建立集合] 視窗的螢幕擷取畫面，其中顯示針對儲存容量選取的無限制，並醒目提示 [分割區索引鍵] 方塊。":::
 
 #### <a name="delete-a-collection"></a>刪除集合
 
-- 以滑鼠右鍵按一下集合，選取 [ **刪除集合** ]，然後在快顯視窗中選取 **[是** ]。
+- 以滑鼠右鍵按一下集合，選取 [ **刪除集合**]，然後在快顯視窗中選取 **[是** ]。
 
     集合節點隨即刪除，且資料庫會自動重新整理。
 
-    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="顯示功能表的螢幕擷取畫面，顯示在您按一下滑鼠右鍵之後所顯示的功能表，並醒目提示 [刪除集合]。":::
 
 ### <a name="document-management"></a>文件管理
 
 #### <a name="create-and-modify-documents"></a>建立及修改文件
 
-- 在左窗格中開啟 [ **檔** ]，選取 [ **新增檔** ]，在右窗格中編輯內容，然後選取 [ **儲存** ]。
-- 您也可以更新現有的檔，然後選取 [ **儲存** ]。 若要捨棄變更，請選取 [ **捨棄** ]。
+- 在左窗格中開啟 [ **檔** ]，選取 [ **新增檔**]，在右窗格中編輯內容，然後選取 [ **儲存**]。
+- 您也可以更新現有的檔，然後選取 [ **儲存**]。 若要捨棄變更，請選取 [ **捨棄**]。
 
-  :::image type="content" source="./media/storage-explorer/document.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="顯示左窗格中醒目提示檔的螢幕擷取畫面。在右窗格中，會反白顯示 [新增檔]、[儲存並捨棄]。":::
 
 #### <a name="delete-a-document"></a>刪除文件
 
@@ -175,18 +178,18 @@ ms.locfileid: "93074466"
 
 #### <a name="query-for-documents"></a>查詢文件
 
-* 若要編輯檔篩選器，請輸入 [SQL 查詢](./sql-query-getting-started.md)， **然後選取** [套用]。
+* 若要編輯檔篩選器，請輸入 [SQL 查詢](./sql-query-getting-started.md)， **然後選取**[套用]。
 
-  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="右窗格的螢幕擷取畫面，其中顯示 [篩選] 和 [套用] 按鈕、識別碼號碼，以及已醒目提示的查詢方塊。":::
 
 ### <a name="graph-management"></a>圖表管理
 
 #### <a name="create-and-modify-a-vertex"></a>建立和修改頂點
 
-* 若要建立新的頂點，請從左窗格開啟 **圖表** ，選取 [ **新增頂點** ]，編輯內容，然後選取 **[確定]** 。
+* 若要建立新的頂點，請從左窗格開啟 **圖表** ，選取 [ **新增頂點**]，編輯內容，然後選取 **[確定]**。
 * 若要修改現有頂點，請在右窗格中選取 [畫筆] 圖示。
 
-   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="顯示在左窗格中選取之圖表的螢幕擷取畫面，並顯示在右窗格中反白顯示的新頂點和畫筆圖示。":::
 
 #### <a name="delete-a-graph"></a>建立圖表
 
@@ -194,23 +197,23 @@ ms.locfileid: "93074466"
 
 #### <a name="filter-for-graph"></a>篩選圖表
 
-* 若要編輯圖形篩選，請輸入 [gremlin 查詢](gremlin-support.md)，然後選取 [套用 **篩選** ]。
+* 若要編輯圖形篩選，請輸入 [gremlin 查詢](gremlin-support.md)，然後選取 [套用 **篩選**]。
 
-   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="顯示在左窗格中選取之圖表的螢幕擷取畫面，並顯示在右窗格中反白顯示的 [套用篩選] 和 [查詢] 方塊。":::
 
 ### <a name="table-management"></a>資料表管理
 
 #### <a name="create-and-modify-a-table"></a>建立和修改資料表
 
 * 若要建立新的資料表：
-   1. 在左窗格中，開啟 [ **實體** ]，然後選取 [ **新增** ]。
+   1. 在左窗格中，開啟 [ **實體**]，然後選取 [ **新增**]。
    1. 在 [ **新增實體** ] 對話方塊中，編輯內容。
    1. 選取 [ **加入屬性** ] 按鈕以加入屬性。
-   1. 選取 [插入]  。
+   1. 選取 [插入]。
 
-      :::image type="content" source="./media/storage-explorer/table.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+      :::image type="content" source="./media/storage-explorer/table.png" alt-text="螢幕擷取畫面，顯示在左窗格中反白顯示的實體，並在右窗格中顯示 [新增]、[編輯]、[加入] 屬性和 [插入]。":::
 
-* 若要修改資料表，請選取 [ **編輯** ]，修改內容，然後選取 [ **更新** ]。
+* 若要修改資料表，請選取 [ **編輯**]，修改內容，然後選取 [ **更新**]。
 
    
 
@@ -219,32 +222,32 @@ ms.locfileid: "93074466"
 * 若要匯入，請選取 [匯 **入** ] 按鈕，然後選擇現有的資料表。
 * 若要匯出，請選取 [ **匯出** ] 按鈕，然後選擇目的地。
 
-   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="顯示在右窗格中反白顯示 [匯入] 和 [匯出] 按鈕的螢幕擷取畫面。":::
 
 #### <a name="delete-entities"></a>刪除實體
 
 * 選取實體，然後選取 [ **刪除** ] 按鈕。
 
-  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="顯示在右窗格中反白顯示 [刪除] 按鈕的螢幕擷取畫面，以及反白顯示 [是] 的確認快顯視窗。":::
 
 #### <a name="query-a-table"></a>查詢資料表
 
 - 選取 [ **查詢** ] 按鈕、輸入查詢準則，然後選取 [ **執行查詢** ] 按鈕。 若要關閉 [查詢] 窗格，請選取 [ **關閉查詢** ] 按鈕。
 
-  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="右窗格的螢幕擷取畫面，其中顯示已醒目提示 [執行查詢] 按鈕和 [關閉查詢] 按鈕。":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理預存程序、觸發程序和 UDF
 
 * 若要建立預存程式：
-  1. 在左側樹狀目錄中，以滑鼠右鍵按一下 [ **預存程式** ]，然後選取 [ **建立預存** 程式]。
+  1. 在左側樹狀目錄中，以滑鼠右鍵按一下 [ **預存程式**]，然後選取 [ **建立預存** 程式]。
   
-     :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+     :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="左窗格的螢幕擷取畫面，顯示在您按一下滑鼠右鍵之後顯示的功能表，並醒目提示 [建立預存程式]。":::
   
-  1. 在左側輸入名稱，在右窗格中輸入預存程式腳本，然後選取 [ **建立** ]。
+  1. 在左側輸入名稱，在右窗格中輸入預存程式腳本，然後選取 [ **建立**]。
   
 * 若要編輯現有的預存程式，請按兩下程式並進行更新，然後選取 [ **更新** ] 以儲存。 您也可以選取 [ **捨棄** ] 來取消變更。
 
-* **觸發** 程式和 **UDF** 的作業類似于 **預存程式** 。
+* **觸發** 程式和 **UDF** 的作業類似于 **預存程式**。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -270,12 +273,12 @@ ms.locfileid: "93074466"
      - macOS 和 Linux：應該包含在您的作業系統中。
 
 1. 執行 OpenSSL：
-    * Windows：移至安裝目錄，然後按一下 [ **/bin/** ]，然後按兩下 [ **openssl.exe** ]。
+    * Windows：移至安裝目錄，然後按一下 [ **/bin/**]，然後按兩下 [ **openssl.exe**]。
     * Mac 和 Linux：從終端機執行 **openssl** 。
 1. 執行 `s_client -showcerts -connect microsoft.com:443`。
 1. 尋找自我簽署憑證。 如果您不確定哪些是自我簽署的，請尋找主體 ( "s：" ) 和簽發者 ( "i：" ) 相同的任何位置。
 1. 如果您找到任何自我簽署的憑證，請複製並貼上所有內容，包括 **-----[開始憑證]-----** **-----[結束** 憑證]-----新增至新的憑證。每一個的 CER 檔案。
-1. 開啟儲存體總管，然後移至 [ **編輯**  >  **SSL 憑證** 匯  >  **入憑證** ]。 使用檔案選擇器來尋找、選取，然後開啟。您建立的 CER 檔案。
+1. 開啟儲存體總管，然後移至 [**編輯**  >  **SSL 憑證** 匯  >  **入憑證**]。 使用檔案選擇器來尋找、選取，然後開啟。您建立的 CER 檔案。
 
 如果您找不到任何自我簽署的憑證，您可以傳送意見反應以取得更多協助。
 
@@ -298,7 +301,7 @@ ms.locfileid: "93074466"
   * .extaccounts
 * 按 F12 鍵以開啟開發人員主控台。 當您登入時，請觀賞主控台中的任何錯誤訊息。
 
-   :::image type="content" source="./media/storage-explorer/console.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+   :::image type="content" source="./media/storage-explorer/console.png" alt-text="[開發人員工具] 主控台的螢幕擷取畫面，其中顯示已醒目提示的主控台。":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>看不到驗證頁面
 
@@ -323,7 +326,7 @@ ms.locfileid: "93074466"
   * Linux 是 ~/.config/StorageExplorer
   
   > [!NOTE]
-  > 如果您刪除這些檔案， **則必須重新輸入所有認證** 。
+  > 如果您刪除這些檔案， **則必須重新輸入所有認證**。
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS proxy 問題
 
@@ -331,21 +334,21 @@ ms.locfileid: "93074466"
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>「本機與已連結」節點下的「開發」節點問題
 
-在左側樹狀結構中，選取 [本機] 和 [ **附加** ] 節點下的 [ **開發** ] 節點之後，就不會有回應。 這是預期中的行為。
+在左側樹狀結構中，選取 [本機] 和 [**附加**] 節點下的 [**開發**] 節點之後，就不會有回應。 這是預期中的行為。
 
-:::image type="content" source="./media/storage-explorer/development.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+:::image type="content" source="./media/storage-explorer/development.png" alt-text="顯示所選開發節點的螢幕擷取畫面。":::
 
 ### <a name="attach-an-azure-cosmos-db-account-in-the-local-and-attached-node-error"></a>在 **本機和附加** 節點錯誤中附加 Azure Cosmos DB 帳戶
 
 如果您在 **本機和附加** 的節點中附加 Azure Cosmos DB 帳戶之後看到下列錯誤，請確定您使用的是正確的連接字串。
 
-:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="[無法取出子資源錯誤] 快顯視窗的螢幕擷取畫面，指出 getaddrinfo ENOTFOUND。":::
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>展開 Azure Cosmos DB 節點錯誤
 
 當您嘗試展開左側樹狀結構中的節點時，可能會看到下列錯誤。
 
-:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="[無法取出子資源錯誤] 快顯視窗的螢幕擷取畫面，指出無法連線到這個 Cosmos D B 帳戶。":::
 
 請嘗試下列建議：
 

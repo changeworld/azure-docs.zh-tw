@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566243"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025886"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -49,10 +49,10 @@ ms.locfileid: "94566243"
    | 標題 | 金鑰：應用程式，值：採用 applicationId 的前 8 個數字 | 要包含在要求標頭中的標頭參數。|
 
     > [!NOTE]
-    > - 使用 [Azure Function](https://docs.microsoft.com/azure/azure-functions/) 建立的範例 Web 端點，會與儲存電視和風扇裝置狀態的資料庫連結
+    > - 使用 [Azure Function](../../azure-functions/index.yml) 建立的範例 Web 端點，會與儲存電視和風扇裝置狀態的資料庫連結
     > - 只有範例端點才需要建議的標頭
     > - 為確保標頭的值在我們的範例端點中是唯一的，請採用您 applicationId 的前 8 個數字
-    > - 在真實世界中，Web 端點可以是管理裝置的 [IOT 中樞](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)端點
+    > - 在真實世界中，Web 端點可以是管理裝置的 [IOT 中樞](../../iot-hub/about-iot-hub.md)端點
 
 1. 按一下 [檔案] 。
 

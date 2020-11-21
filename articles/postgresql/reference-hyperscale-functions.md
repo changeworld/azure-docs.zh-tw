@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250326"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026228"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>超大規模 (Citus) SQL API 中的函式
 
@@ -40,7 +40,7 @@ ms.locfileid: "91250326"
 
 **共置 \_ 與：** (選擇性) 在另一個資料表的共置群組中包含目前的資料表。 依預設，當資料表由相同類型的資料行散發時，具有相同的分區計數，且具有相同的複寫因數。 的可能值 `colocate_with` 為 `default` 、 `none` 啟動新的共置群組，或另一個要與該資料表共置的資料表名稱。   (參閱 [資料表共置](concepts-hyperscale-colocation.md)。 ) 
 
-請記住，的預設值 `colocate_with` 會隱含共置。 當資料表相關或將加入時，[共置](concepts-hyperscale-colocation.md)可能是很棒的事。  不過，當兩個數據表不相關，但發生在其散發資料行中使用相同的資料類型時，不小心共置它們可能會在 [分區重新平衡](howto-hyperscale-scaling.md#rebalance-shards)期間降低效能。  資料表分區會在串聯中不必要地移動 \" 。\"
+請記住，的預設值 `colocate_with` 會隱含共置。 當資料表相關或將加入時，[共置](concepts-hyperscale-colocation.md)可能是很棒的事。  不過，當兩個數據表不相關，但發生在其散發資料行中使用相同的資料類型時，不小心共置它們可能會在 [分區重新平衡](howto-hyperscale-scale-rebalance.md)期間降低效能。  資料表分區會在串聯中不必要地移動 \" 。\"
 
 如果新的分散式資料表與其他資料表無關，最好指定 `colocate_with => 'none'` 。
 
@@ -253,7 +253,7 @@ SELECT get_shard_id_for_distribution_column('my_table', 4);
 
 **資料表 \_ 名稱：** 分散式資料表。
 
-資料**行 \_ var \_ text：** `partkey` 資料表中的值 `pg_dist_partition` 。
+資料 **行 \_ var \_ text：** `partkey` 資料表中的值 `pg_dist_partition` 。
 
 #### <a name="return-value"></a>傳回值
 
@@ -363,7 +363,7 @@ N/A
 
 #### <a name="return-value"></a>傳回值
 
-無
+None
 
 ## <a name="server-group-management-and-repair"></a>伺服器群組管理與修復
 
@@ -470,9 +470,9 @@ SELECT master_move_shard_placement(12345, 'from_host', 5432, 'to_host', 5432);
 > -   `force_logical`：即使資料表沒有複本身分識別，也請使用邏輯複寫。 在複寫期間，資料表的任何並行更新/刪除語句將會失敗。
 > -   `block_writes`：針對缺少 primary key 或 replica identity 的資料表使用 COPY (封鎖寫入) 。
 
-** \_ 僅清空：** (選擇性) 若為 true，請將 `shouldhaveshards` 在 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)中設定為 false 的背景工作節點移出分區，不移動其他分區。
+**\_ 僅清空：** (選擇性) 若為 true，請將 `shouldhaveshards` 在 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)中設定為 false 的背景工作節點移出分區，不移動其他分區。
 
-重新**平衡 \_ 策略：** (選擇性) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中的策略名稱。
+重新 **平衡 \_ 策略：** (選擇性) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中的策略名稱。
 如果省略這個引數，則函數會選擇預設策略，如表格中所示。
 
 #### <a name="return-value"></a>傳回值
@@ -509,7 +509,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 -   **資料表 \_ 名稱**：其分區將移動的資料表
 -   **shardid**：有問題的分區
 -   **分區 \_ 大小**：以位元組為單位的大小
--   未**通過：來源**節點的主機名稱
+-   未 **通過：來源** 節點的主機名稱
 -   **sourceport**：來源節點的埠
 -   **targetname**：目的地節點的主機名稱
 -   **targetport**：目的地節點的埠
@@ -530,7 +530,7 @@ N/A
 -   **資料表 \_ 名稱**：其分區正在移動的資料表
 -   **shardid**：有問題的分區
 -   **分區 \_ 大小**：以位元組為單位的大小
--   未**通過：來源**節點的主機名稱
+-   未 **通過：來源** 節點的主機名稱
 -   **sourceport**：來源節點的埠
 -   **targetname**：目的地節點的主機名稱
 -   **targetport**：目的地節點的埠
@@ -632,7 +632,7 @@ Master \_ 清空 \_ 節點 ( # A1 函式會將分區從指定的節點移至 `sh
 > -   `force_logical`：即使資料表沒有複本身分識別，也請使用邏輯複寫。 在複寫期間，資料表的任何並行更新/刪除語句將會失敗。
 > -   `block_writes`：針對缺少 primary key 或 replica identity 的資料表使用 COPY (封鎖寫入) 。
 
-重新**平衡 \_ 策略：** (選擇性) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中的策略名稱。
+重新 **平衡 \_ 策略：** (選擇性) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中的策略名稱。
 如果省略這個引數，則函數會選擇預設策略，如表格中所示。
 
 #### <a name="return-value"></a>傳回值
@@ -735,7 +735,7 @@ SELECT isolate_tenant_to_new_shard('lineitem', 135);
 └─────────────────────────────┘
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 本文中的許多函數都會修改系統 [中繼資料表](reference-hyperscale-metadata.md)
 * [伺服器參數](reference-hyperscale-parameters.md) 自訂某些函數的行為

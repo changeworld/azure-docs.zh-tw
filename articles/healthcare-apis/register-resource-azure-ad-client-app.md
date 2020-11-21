@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8d70a7b44893ba9c9a0cc2d1d01c65e8e1584e0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393382"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024477"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>在 Azure Active Directory 中註冊資源應用程式
 
@@ -37,75 +37,9 @@ az ad sp create --id 4f6778d8-5aef-43dc-a1ff-b073724b9495
 
 ## <a name="fhir-server-for-azure"></a>適用于 Azure 的 FHIR 伺服器
 
-如果您使用適用于 Azure 的開放原始碼 FHIR 伺服器，請遵循下列步驟來註冊資源應用程式。
+如果您使用適用于 Azure 的開放原始碼 FHIR 伺服器，請遵循 [GitHub](https://github.com/microsoft/fhir-server/blob/master/docs/Register-Resource-Application.md) 存放庫中的步驟來註冊資源應用程式。 
 
-### <a name="app-registrations-in-azure-portal"></a>Azure 入口網站中的應用程式註冊
-
-1. 在 [Azure 入口網站](https://portal.azure.com)的左方瀏覽窗格中，按一下 [Azure Active Directory]。
-
-2. 在 [ **Azure Active Directory** ] 分頁中，按一下 [ **應用程式註冊** ：
-
-    ![Azure 入口網站。 新的應用程式註冊。](media/how-to-aad/portal-aad-new-app-registration.png)
-
-3. 按一下 [ **新增註冊** ]。
-
-### <a name="add-a-new-application-registration"></a>新增應用程式註冊
-
-填入新應用程式的詳細資料。 顯示名稱沒有特定的需求，但將其設定為 FHIR 伺服器的 URI 可讓您輕鬆找到：
-
-![新增應用程式註冊](media/how-to-aad/portal-aad-register-new-app-registration-NAME.png)
-
-### <a name="set-identifier-uri-and-define-scopes"></a>設定識別碼 URI 和定義範圍
-
-資源應用程式的識別碼 URI (應用程式識別碼 URI) ，用戶端可以在要求存取資源時使用此 uri。 此值會填入 `aud` 存取權杖的宣告。 建議您將此 URI 設定為 FHIR 伺服器的 URI。 針對智慧型 FHIR 應用程式，假設 *物件* 是 FHIR 伺服器的 URI。
-
-1. 按一下 [ **公開 API** ]
-
-2. 按一下 [ *應用程式識別碼 URI* ] 旁的 [ **設定** ]。
-
-3. 輸入識別碼 URI，然後按一下 [ **儲存** ]。 良好的識別碼 URI 會是您 FHIR 伺服器的 URI。
-
-4. 按一下 [ **新增範圍** ]，然後新增您想要為 API 定義的任何範圍。 您必須新增至少一個範圍，才能在未來將許可權授與您的資源應用程式。 如果您沒有想要新增的特定範圍，您可以新增 user_impersonation 作為範圍。
-
-![物件和範圍](media/how-to-aad/portal-aad-register-new-app-registration-AUD-SCOPE.png)
-
-### <a name="define-application-roles"></a>定義應用程式角色
-
-適用于 Azure 的 Azure API for FHIR 和 OSS FHIR 伺服器使用 [Azure Active Directory 應用程式角色](/azure/architecture/multitenant-identity/app-roles) 進行角色型存取控制。 若要定義哪些角色應可供您的 FHIR 伺服器 API 使用，請開啟資源應用程式的 [資訊清單](/azure/active-directory/active-directory-application-manifest/)：
-
-1. 按一下 [ **資訊清單** ]：
-
-    ![應用程式角色](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
-
-2. 在 `appRoles` 屬性中，新增您想要讓使用者或應用程式擁有的角色：
-
-    ```json
-    "appRoles": [
-      {
-        "allowedMemberTypes": [
-          "User",
-          "Application"
-        ],
-        "description": "FHIR Server Administrators",
-        "displayName": "admin",
-        "id": "1b4f816e-5eaf-48b9-8613-7923830595ad",
-        "isEnabled": true,
-        "value": "admin"
-      },
-      {
-        "allowedMemberTypes": [
-          "User"
-        ],
-        "description": "Users who can read",
-        "displayName": "reader",
-        "id": "c20e145e-5459-4a6c-a074-b942bbd4cfe1",
-        "isEnabled": true,
-        "value": "reader"
-      }
-    ],
-    ```
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何在 Azure Active Directory 中註冊資源應用程式。 接下來，註冊您的機密用戶端應用程式。
  

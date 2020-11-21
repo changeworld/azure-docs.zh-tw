@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 6cb338e8b7baa45e1c84f59a5730a9a500e71a79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae3d7b329c55ce0be101cee73e1fc7674a2d75aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486770"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026534"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>開始使用即時對話轉譯
 
@@ -25,7 +25,7 @@ ms.locfileid: "92486770"
 ## <a name="limitations"></a>限制
 
 * 僅適用于下列訂用帳戶區域： `centralus` 、 `eastasia` 、 `eastus` 、 `westeurope`
-* 需要具有播放參考資料流的7個 mic 迴圈多重麥克風陣列。 麥克風陣列應符合 [我們的規格](https://aka.ms/sdsdk-microphone)。
+* 需要具有播放參考資料流的7個 mic 迴圈多重麥克風陣列。 麥克風陣列應符合 [我們的規格](./speech-devices-sdk-microphone.md)。
 * [語音裝置 SDK](speech-devices-sdk.md)提供適合的裝置，以及示範對話轉譯的範例應用程式。
 
 ## <a name="prerequisites"></a>必要條件
@@ -40,7 +40,7 @@ ms.locfileid: "92486770"
 [!INCLUDE [C# Basics include](includes/how-to/conversation-transcription/real-time-csharp.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [非同步對話](how-to-async-conversation-transcription.md) 

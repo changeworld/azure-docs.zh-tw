@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997752"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026483"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>開始使用 Windows 上的語音助理
 
@@ -25,17 +25,17 @@ ms.locfileid: "82997752"
 
 若要開始開發適用于 Windows 的語音助理，您必須確定您有適當的開發環境。
 
-- **Visual Studio：**  您將需要安裝 [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/)、社區版或更高版本
-- **Windows 版本**：一台電腦，具有 Windows 的 Windows 測試人員快速環形組建和 Windows SDK 的 Windows 測試人員版本。此範例程式碼會使用 Windows SDK 19018，確認 Windows 測試人員發行組建 19025.vb_release_analog .191112-1600。指定版本以上的任何組建或 SDK 都必須相容。
-- **UWP 開發工具**： Visual Studio 的通用 Windows 平臺開發工作負載。請參閱 UWP 的 [ [設定](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) ] 頁面，讓您的電腦準備好開發 UWP 應用程式。
+- **Visual Studio：** 您將需要安裝 [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/)、社區版或更高版本
+- **Windows 版本**：一台電腦，具有 Windows 的 Windows 測試人員快速環形組建和 Windows SDK 的 Windows 測試人員版本。 此範例程式碼會使用 Windows SDK 19018，確認 Windows 測試人員發行組建 19025.vb_release_analog .191112-1600。 指定版本以上的任何組建或 SDK 都必須相容。
+- **UWP 開發工具**： Visual Studio 的通用 Windows 平臺開發工作負載。 請參閱 UWP 的 [ [設定](/windows/uwp/get-started/get-set-up) ] 頁面，讓您的電腦準備好開發 UWP 應用程式。
 - **工作的麥克風和音訊輸出**
 
 ## <a name="obtain-resources-from-microsoft"></a>取得 Microsoft 的資源
 
 Windows 上完全自訂的語音代理程式所需的某些資源，將需要來自 Microsoft 的資源。 [UWP 語音助理範例](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)提供這些資源的範例版本，供初始開發和測試之用，因此不需要這一節就能進行初始開發。
 
-- **關鍵字模型：**  語音啟用需要 Microsoft 的關鍵字模型（以 bin 檔案的形式）。 UWP 語音助理範例中提供的 bin 檔案，是以關鍵字 "Contoso" 來定型。
-- **有限存取功能權杖：** 由於 ConversationalAgent Api 會提供麥克風音訊的存取權，因此在受限的存取功能限制下會受到保護。若要使用有限的存取功能，您必須從 Microsoft 取得連線到應用程式套件身分識別的有限存取功能權杖。
+- **關鍵字模型：** 語音啟用需要 Microsoft 的關鍵字模型（以 bin 檔案的形式）。 UWP 語音助理範例中提供的 bin 檔案，是以關鍵字 "Contoso" 來定型。
+- **有限存取功能權杖：** 由於 ConversationalAgent Api 會提供麥克風音訊的存取權，因此在受限的存取功能限制下會受到保護。 若要使用有限的存取功能，您必須從 Microsoft 取得連線到應用程式套件身分識別的有限存取功能權杖。
 
 ## <a name="establish-a-dialog-service"></a>建立對話服務
 
@@ -48,8 +48,8 @@ Windows 上完全自訂的語音代理程式所需的某些資源，將需要來
 
 這些是使用 Direct Line 語音建立基本對話服務的需求。
 
-- **語音服務訂** 用帳戶：適用于語音轉換文字和文字轉換語音轉換的認知語音服務訂用帳戶。 [在這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)免費試用語音服務。
-- **Bot Framework Bot：**  使用 Bot Framework 4.2 版或更新版本所建立的 bot，其已訂閱 [Direct Line 語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) 來啟用語音輸入和輸出。 [本指南](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk) 包含逐步指示，可讓您建立「echo bot」並訂閱 Direct Line 語音。 您也可以在 [這裡](https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/) 取得如何建立自訂 bot 的步驟，然後依照 [此處](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk) 的相同步驟來訂閱 Direct Line 語音，但使用新的 bot，而不是「echo bot」。
+- **語音服務訂** 用帳戶：適用于語音轉換文字和文字轉換語音轉換的認知語音服務訂用帳戶。 [在這裡](./overview.md#try-the-speech-service-for-free)免費試用語音服務。
+- **Bot Framework Bot：**  使用 Bot Framework 4.2 版或更新版本所建立的 bot，其已訂閱 [Direct Line 語音](./direct-line-speech.md) 來啟用語音輸入和輸出。 [本指南](./tutorial-voice-enable-your-bot-speech-sdk.md) 包含逐步指示，可讓您建立「echo bot」並訂閱 Direct Line 語音。 您也可以在 [這裡](https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/) 取得如何建立自訂 bot 的步驟，然後依照 [此處](./tutorial-voice-enable-your-bot-speech-sdk.md) 的相同步驟來訂閱 Direct Line 語音，但使用新的 bot，而不是「echo bot」。
 
 ## <a name="try-out-the-sample-app"></a>試用範例應用程式
 
@@ -59,7 +59,7 @@ Windows 上完全自訂的語音代理程式所需的某些資源，將需要來
 
 一旦您收到來自 Microsoft 的有限存取功能權杖和 bin 檔案，您就可以在 Windows 上自己的語音助理開始。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [閱讀語音助理實行指南](windows-voice-assistants-implementation-guide.md)

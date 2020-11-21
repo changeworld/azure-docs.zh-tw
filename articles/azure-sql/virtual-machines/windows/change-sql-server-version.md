@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a0ecc36d78ffde002dac971a749889104ff10073
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b9223ffc564620804b36f6f0e71602b3888a9f42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556449"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025373"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上的 SQL Server 版本就地變更
 
@@ -27,7 +27,7 @@ ms.locfileid: "94556449"
 
 本文說明如何在 Microsoft Azure 中 (VM) 變更 Windows 虛擬機器上的 Microsoft SQL Server 版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要執行 SQL Server 的就地升級，請遵循下列條件：
 
@@ -62,12 +62,12 @@ ms.locfileid: "94556449"
 
 1. 在開始進行程式之前，請先備份資料庫，包括 tempdb) 和使用者資料庫以外的系統 (。 您也可以使用 Azure 備份服務來建立應用程式一致的 VM 層級備份。
 1. 從 SQL Server 安裝媒體開始 Setup.exe。
-1. 安裝精靈會啟動 SQL Server 的安裝中心。 若要升級現有的 SQL Server 實例，請選取流覽窗格上的 [ **安裝** ]，然後選取 [ **從舊版的 SQL Server 升級** ]。
+1. 安裝精靈會啟動 SQL Server 的安裝中心。 若要升級現有的 SQL Server 實例，請選取流覽窗格上的 [ **安裝** ]，然後選取 [ **從舊版的 SQL Server 升級**]。
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="升級 SQL Server 版本的選取專案":::
 
-1. 在 [ **產品金鑰** ] 頁面上，選取一個選項來指出您要升級為免費的 SQL Server 版本，還是您擁有產品之實際執行版本的 PID 金鑰。 如需詳細資訊，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](/sql/sql-server/editions-and-components-of-sql-server-version-155) ，以及 [ (SQL Server 2016) 支援的版本與版本升級 ](/sql/database-engine/install-windows/supported-version-and-edition-upgrades)。
-1. 選取 **[下一步]** ，直到到達 [ **準備升級** ] 頁面，然後選取 [ **升級** ]。 當變更生效時，安裝程式視窗可能會停止回應數分鐘。 **完整** 的頁面會確認您的升級已完成。 如需升級的逐步程式，請參閱 [完整的](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure)程式。
+1. 在 [ **產品金鑰** ] 頁面上，選取一個選項來指出您要升級為免費的 SQL Server 版本，還是您擁有產品之實際執行版本的 PID 金鑰。 如需詳細資訊，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](/sql/sql-server/editions-and-components-of-sql-server-version-15) ，以及 [ (SQL Server 2016) 支援的版本與版本升級 ](/sql/database-engine/install-windows/supported-version-and-edition-upgrades)。
+1. 選取 **[下一步]** ，直到到達 [ **準備升級** ] 頁面，然後選取 [ **升級**]。 當變更生效時，安裝程式視窗可能會停止回應數分鐘。 **完整** 的頁面會確認您的升級已完成。 如需升級的逐步程式，請參閱 [完整的](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure)程式。
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="完成頁面":::
 

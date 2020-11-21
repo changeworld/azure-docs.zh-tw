@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3baedd49843c7721b6dba464054d5535b4c4f1cd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 87fa97dafe9de4a23f5eaadfd4083cd1ca517cde
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785335"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026585"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>關於語音 SDK 音訊輸入資料流 API
 
@@ -77,4 +77,4 @@ ms.locfileid: "92785335"
 ## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-- [了解如何以 C# 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) (英文)
+- [了解如何以 C# 辨識語音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) (英文)

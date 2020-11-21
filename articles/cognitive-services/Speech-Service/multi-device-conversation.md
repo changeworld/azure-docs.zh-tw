@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921413"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025169"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>什麼是多重裝置對話 (預覽) ？
 
@@ -72,7 +72,7 @@ ms.locfileid: "87921413"
 
 ## <a name="overview-of-conversation-host-and-participant"></a>交談、主持人和參與者的總覽
 
-**對話**是一個使用者為其他參與的使用者啟動的會話。 所有用戶端都會使用五個字母的對話程式 **代碼**來連線到交談。
+**對話** 是一個使用者為其他參與的使用者啟動的會話。 所有用戶端都會使用五個字母的對話程式 **代碼** 來連線到交談。
 
 每個交談都會建立中繼資料，包括：
 -    交談開始和結束的時間戳記
@@ -81,7 +81,7 @@ ms.locfileid: "87921413"
 
 交談中有兩種使用者類型：  **主機** 和 **參與者**。
 
-**主機**是開始交談的使用者，以及做為該交談之系統管理員的使用者。
+**主機** 是開始交談的使用者，以及做為該交談之系統管理員的使用者。
 - 每個交談只能有一部主機
 - 在交談期間，主機必須連接到交談。 如果主機離開交談，則會結束所有其他參與者的交談。
 - 主機有幾個額外的控制項可管理對話： 
@@ -91,7 +91,7 @@ ms.locfileid: "87921413"
     - 取消所有參與者的靜音
     - 取消個別參與者的靜音
 
-**參與者**是加入對話的使用者。
+**參與者** 是加入對話的使用者。
 - 參與者隨時都可以離開並重新加入相同的交談，而不需要結束其他參與者的交談。
 - 參與者無法鎖定交談或將其他專案靜音/取消靜音
 
@@ -105,7 +105,7 @@ ms.locfileid: "87921413"
 語言有兩種： **語音轉換文字** 和 **純文字**：
 - 如果使用者選擇 **語音轉換文字** 語言作為其主要語言，則他們將能夠在交談中同時使用語音和文字輸入。
 
-- 如果使用者選擇純 **文本** 語言，則只有在交談中才能使用文字輸入和傳送立即訊息。 純文字語言是文字翻譯支援的語言，而不是語音轉換文字。 您可以在 [ [語言支援](supported-languages.md) ] 頁面上看到可用的語言。
+- 如果使用者選擇純 **文本** 語言，則只有在交談中才能使用文字輸入和傳送立即訊息。 純文字語言是文字翻譯支援的語言，而不是語音轉換文字。 您可以在 [ [語言支援](./language-support.md) ] 頁面上看到可用的語言。
 
 除了其主要語言之外，每個參與者也可以指定其他語言來翻譯交談。
 
@@ -119,11 +119,11 @@ ms.locfileid: "87921413"
 | 轉譯對話 | ✔️ | ✔️ |
 
 > [!NOTE]
-> 如需可用的語音轉換文字和文字翻譯語言清單，請參閱 [支援的語言](supported-languages.md)。
+> 如需可用的語音轉換文字和文字翻譯語言清單，請參閱 [支援的語言](./language-support.md)。
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [即時轉譯對話](quickstarts/multi-device-conversation.md)

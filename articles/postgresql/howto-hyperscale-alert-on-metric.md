@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909908"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026449"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus 的計量警示) 
 
@@ -33,21 +33,21 @@ ms.locfileid: "92909908"
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>從 Azure 入口網站建立計量的警示規則
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您想要監視的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。
 
-2. 在資訊看板的 [監視]  區段底下，選取 [警示規則]  ，如下所示：
+2. 在資訊看板的 [監視] 區段底下，選取 [警示規則]，如下所示：
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/2-alert-rules.png" alt-text="選取警示規則":::
 
 3. 選取 [ **新增警示規則** ] (+ 圖示) 。
 
-4. [建立規則]  頁面隨即開啟，如下所示。 填寫必要資訊：
+4. [建立規則] 頁面隨即開啟，如下所示。 填寫必要資訊：
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="選取警示規則":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="[新增計量警示] 表單":::
 
-5. 在 [ **條件** ] 區段中，選取 [ **新增** ]。
+5. 在 [ **條件** ] 區段中，選取 [ **新增**]。
 
 6. 從要提醒的訊號清單中選擇一個計量。 在此範例中，選取 "Storage percent"。
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="選取警示規則":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="螢幕擷取畫面顯示 [設定信號邏輯] 頁面，您可以在其中查看多個信號。":::
 
 7. 設定警示邏輯：
 
@@ -56,29 +56,29 @@ ms.locfileid: "92909908"
     * 在警示觸發之前，必須滿足計量規則的 **匯總細微性** 量（ (例如）。 「過去30分鐘內」 ) 
     * **評估的頻率** (例如 「1分鐘」 ) 
    
-   完成時選取 [完成]  。
+   完成時選取 [完成]。
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="選取警示規則":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="螢幕擷取畫面顯示窗格，您可以在其中設定警示邏輯。":::
 
-8. 在 [動作群組]  區段中，選取 [建立]  建立新的群組，以接收警示通知。
+8. 在 [動作群組] 區段中，選取 [建立] 建立新的群組，以接收警示通知。
 
 9. 使用名稱、簡短名稱、訂用帳戶和資源群組填寫 [新增動作群組] 表單。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="選取警示規則":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="螢幕擷取畫面顯示 [新增動作群組] 表單，您可以在其中輸入描述的值。":::
 
-10. 設定 [電子郵件/簡訊/推播/語音]  動作類型。
+10. 設定 [電子郵件/簡訊/推播/語音] 動作類型。
     
     選擇 [電子郵件 Azure Resource Manager 角色]，將通知傳送給訂用帳戶擁有者、參與者和讀者。
    
-    完成時選取 [確定]  。
+    完成時選取 [確定]。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="選取警示規則":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="螢幕擷取畫面顯示 [電子郵件/S]/[推播/語音] 窗格。":::
 
 11. 指定 [警示規則名稱]、[描述] 與 [嚴重性]。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="選取警示規則"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="螢幕擷取畫面：顯示 [警示詳細資料] 窗格。"::: 
 
-12. 選取 [建立警示規則]  以建立警示。
+12. 選取 [建立警示規則] 以建立警示。
 
     在幾分鐘之內，警示會開始作用，且先前所述觸發。
 
@@ -88,7 +88,7 @@ ms.locfileid: "92909908"
 
 * 檢視圖表，其中顯示與此警示相關的計量臨界值及前一天的實際值。
 * **編輯** 或 **刪除** 警示規則。
-* 如果您想要暫時停止或恢復接收通知，可以將警示 **停用** 或 **啟用** 。
+* 如果您想要暫時停止或恢復接收通知，可以將警示 **停用** 或 **啟用**。
 
 ## <a name="suggested-alerts"></a>建議的警示
 
@@ -101,8 +101,8 @@ ms.locfileid: "92909908"
 當磁片接近其空間限制時，請嘗試這些技術來取得更多可用空間：
 
 * 檢查資料保留原則。 如果可行，將較舊的資料移至冷儲存體。
-* 考慮 [將節點新增](howto-hyperscale-scaling.md#add-worker-nodes) 至伺服器群組，並重新平衡分區。 重新平衡會將資料分散到更多電腦上。
-* 請考慮增加背景工作節點 [的容量](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) 。 每個背景工作最多可有 2 TiB 的儲存體。 不過，在調整節點大小時，應該先嘗試加入節點，因為新增節點的完成速度更快。
+* 考慮 [將節點新增](howto-hyperscale-scale-grow.md#add-worker-nodes) 至伺服器群組，並重新平衡分區。 重新平衡會將資料分散到更多電腦上。
+* 請考慮增加背景工作節點 [的容量](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) 。 每個背景工作最多可有 2 TiB 的儲存體。 不過，在調整節點大小時，應該先嘗試加入節點，因為新增節點的完成速度更快。
 
 ### <a name="cpu-usage"></a>CPU 使用量
 

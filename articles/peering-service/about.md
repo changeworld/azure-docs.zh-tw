@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400174"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026724"
 ---
 # <a name="azure-peering-service-overview"></a>Azure 對等互連服務總覽
 
@@ -45,7 +45,7 @@ Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲
 對等互連服務不是私人連線產品，例如 Azure ExpressRoute 或 VPN 產品。
 
 > [!NOTE]
-> 如需 ExpressRoute 的詳細資訊，請參閱 [expressroute 檔](https://docs.microsoft.com/azure/expressroute/)。
+> 如需 ExpressRoute 的詳細資訊，請參閱 [expressroute 檔](../expressroute/index.yml)。
 >
 
 ## <a name="background"></a>背景
@@ -57,7 +57,7 @@ Microsoft 與合作夥伴服務提供者可確保以對等互連服務連線所�
 ![Microsoft 網路和公用連線能力](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> 如需 Microsoft 全球網路的詳細資訊，請參閱 [microsoft 全球網路](https://docs.microsoft.com/azure/networking/microsoft-global-network)。
+> 如需 Microsoft 全球網路的詳細資訊，請參閱 [microsoft 全球網路](../networking/microsoft-global-network.md)。
 >
 
 ## <a name="why-use-peering-service"></a>為何要使用對等互連服務？
@@ -126,7 +126,7 @@ Microsoft 保證即使偵測到惡意活動，也能透過慣用路徑路由傳�
 
 在 Azure 入口網站中報告 BGP 路由異常（如果有的話）。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入瞭解對等互連服務連接，請參閱對 [等互連服務](connection.md)連線。
 - 若要深入了解對等互連服務連線遙測，請參閱[對等互連服務連線遙測](connection-telemetry.md)。

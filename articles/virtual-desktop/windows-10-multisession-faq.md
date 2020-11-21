@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91c7c19fddab2a4372f183c90532b24e774277d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008044"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025005"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
 
@@ -80,8 +80,8 @@ Azure 資源庫有數個版本，包括 Windows 10 企業版多會話、1809版�
 預設會設定大部分的虛擬化環境，以防止使用者將其他應用程式安裝至其設定檔。 如果您想要在使用者登出 Windows 虛擬桌面時，確保應用程式不會消失，您必須為環境中的所有使用者設定檔布建該應用程式。 如需有關布建應用程式的詳細資訊，請參閱下列資源：
 
 - [在 Windows 虛擬桌面中發佈內建應用程式](publish-apps.md)
-- [DISM 應用程式套件服務命令列選項](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [新增-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [DISM 應用程式套件服務命令列選項](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [新增-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>如何? 確定使用者不會從 Microsoft Store 下載及安裝應用程式？
 
@@ -90,8 +90,8 @@ Azure 資源庫有數個版本，包括 Windows 10 企業版多會話、1809版�
 若要停用 Store 應用程式：
 
 1. 建立新的群組原則。
-2. 選取 [**電腦**設定  >  **系統管理範本**  >  **Windows 元件**]。
-3. 選取 [市集] ****。
+2. 選取 [**電腦** 設定  >  **系統管理範本**  >  **Windows 元件**]。
+3. 選取 [市集] 。
 4. 選取 [ **存放區應用程式**]。
 5. 選取 [ **已停用**]，然後選取 **[確定]**。
 6. 選取 [套用]。

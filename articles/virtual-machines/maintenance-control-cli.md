@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/20/2020
+ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528171"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026160"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用維護控制和 Azure CLI 來控制更新
 
-維護控制可讓您決定何時要將更新套用至隔離的 Vm 和 Azure 專用主機。 本主題涵蓋維護控制的 Azure CLI 選項。 如需使用維護控制、其限制和其他管理選項之優點的詳細資訊，請參閱 [使用維護控制管理平臺更新](maintenance-control.md)。
+維護控制可讓您決定何時要將平臺更新套用至隔離 Vm 和 Azure 專用主機的主機基礎結構。 本主題涵蓋維護控制的 Azure CLI 選項。 如需使用維護控制、其限制和其他管理選項之優點的詳細資訊，請參閱 [使用維護控制管理平臺更新](maintenance-control.md)。
 
 ## <a name="create-a-maintenance-configuration"></a>建立維護設定
 
@@ -28,14 +28,14 @@ az group create \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
-   --name myConfig \
-   --maintenanceScope host\
+   --resource-name myConfig \
+   --maintenance-scope host\
    --location eastus
 ```
 
 從輸出中複製設定識別碼以供稍後使用。
 
-使用 `--maintenanceScope host` 可確保維護設定用來控制主機的更新。
+使用 `--maintenance-scope host` 可確保使用維護設定來控制主機基礎結構的更新。
 
 如果您嘗試使用相同的名稱建立設定，但在不同的位置，您將會收到錯誤。 設定名稱在您的資源群組中必須是唯一的。
 
@@ -44,6 +44,30 @@ az maintenance configuration create \
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>使用已排程的時間範圍建立維護設定
+您也可以在 Azure 會將更新套用至您的資源時，宣告已排程的時間範圍。 此範例會建立一個名為 Myconfig.xml 的維護設定，並在每個月的第四個星期一排程時段為5小時。 一旦建立排程的視窗，您就不再需要手動套用更新。
+
+```azurecli-interactive
+az maintenance configuration create \
+   -g myMaintenanceRG \
+   --resource-name myConfig \
+   --maintenance-scope host \
+   --location eastus \
+   --maintenance-window-duration "05:00" \
+   --maintenance-window-recur-every "Month Fourth Monday" \
+   --maintenance-window-start-date-time "2020-12-30 08:00" \
+   --maintenance-window-time-zone "Pacific Standard Time"
+```
+
+> [!IMPORTANT]
+> 維護 **期間** 必須是 *2 小時* 或更長的時間。 在35天內，維護 **週期** 至少必須設定為一次。
+
+維護週期可以每日、每週或每月表示。 部份範例如下：
+- **每日** 維護-每日-重複時間-每日： "Day" **或** "3Days"
+- **每週** 維護-每次重複-每隔： "3Weeks" **或** "Week 星期六，星期日"
+- **每月** 維護-每個月-重複-每個： "Month day23，day24" **或** "month Last 星期日" **或** "month 第四個星期一"
+
 
 ## <a name="assign-the-configuration"></a>指派設定
 
@@ -251,8 +275,8 @@ az maintenance applyupdate get \
 az maintenance configuration delete \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
    -g myResourceGroup \
-   --name myConfig
+   --resource-name myConfig
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要深入瞭解，請參閱 [維護和更新](maintenance-and-updates.md)。

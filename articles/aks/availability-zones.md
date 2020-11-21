@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43b57d0b58c9268482ca27fd51040c7152ecdc25
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043032"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026046"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
@@ -31,11 +31,14 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 * 澳大利亞東部
 * 加拿大中部
 * 美國中部
+* 美國東部 
 * 美國東部 2
-* 美國東部
 * 法國中部
+* 德國中西部
 * 日本東部
 * 北歐
+* 南非北部
+* 美國中南部
 * 東南亞
 * 英國南部
 * 西歐
@@ -107,7 +110,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
 ```
 
-下列範例輸出顯示了跨指定區域和可用性區域散發的三個節點，例如第一個可用性區域的 *eastus2-1* ，以及第二個可用性區域的 *eastus2-2* ：
+下列範例輸出顯示了跨指定區域和可用性區域散發的三個節點，例如第一個可用性區域的 *eastus2-1*，以及第二個可用性區域的 *eastus2-2*：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000

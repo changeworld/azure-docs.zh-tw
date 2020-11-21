@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056681"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025073"
 ---
 # <a name="get-started-with-custom-voice"></a>開始使用自訂語音
 
@@ -42,7 +42,7 @@ ms.locfileid: "88056681"
 類神經語音自訂功能目前處於公開預覽狀態，僅限選取的客戶。 填寫此 [應用程式表單](https://go.microsoft.com/fwlink/?linkid=2108737) 以開始使用。
 
 > [!NOTE]
-> 做為 Microsoft 對設計負責任 AI 的承諾，我們的目的是要保護個人和社會的權利，並促進透明的人類電腦互動。 基於這個理由，自訂神經語音尚未提供給所有客戶。 只有在您的應用程式經過審核之後，且您已致力於配合我們的道德原則時，您才能獲得技術的存取權。 深入瞭解我們的 [應用程式管制流程](https://aka.ms/custom-neural-gating-overview)。
+> 做為 Microsoft 對設計負責任 AI 的承諾，我們的目的是要保護個人和社會的權利，並促進透明的人類電腦互動。 基於這個理由，自訂神經語音尚未提供給所有客戶。 只有在您的應用程式經過審核之後，且您已致力於配合我們的道德原則時，您才能獲得技術的存取權。 深入瞭解我們的 [應用程式管制流程](./concepts-gating-overview.md)。
 
 ## <a name="set-up-your-azure-account"></a>設定您的 Azure 帳戶
 
@@ -62,12 +62,12 @@ ms.locfileid: "88056681"
 
 資料、模型、測試和端點等內容會組織成自訂語音入口網站中的 **專案** 。 每個專案都是國家/地區和您想要建立的語音性別所特有。 例如，您可以為撥接中心的聊天機器人建立女性語音的專案，該專案在美國 (en-us) 使用英文。
 
-若要建立您的第一個專案，請選取 [ **文字轉換語音]/[自訂語音** ] 索引標籤，然後按一下 [ **新增專案**]。 遵循 wizard 提供的指示來建立您的專案。 建立專案之後，您會看到四個索引標籤： **資料**、 **定型**、 **測試**和 **部署**。 使用 [後續步驟](#next-steps) 中提供的連結來瞭解如何使用每個索引標籤。
+若要建立您的第一個專案，請選取 [ **文字轉換語音]/[自訂語音** ] 索引標籤，然後按一下 [ **新增專案**]。 遵循 wizard 提供的指示來建立您的專案。 建立專案之後，您會看到四個索引標籤： **資料**、 **定型**、 **測試** 和 **部署**。 使用 [後續步驟](#next-steps) 中提供的連結來瞭解如何使用每個索引標籤。
 
 > [!IMPORTANT]
 > [自訂語音的入口網站](https://aka.ms/custom-voice)最近已更新！ 如果您已在 CRIS.ai 入口網站或 Api 中建立先前的資料、模型、測試和已發佈的端點，您需要在新的入口網站中建立新的專案，以連接這些舊的實體。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [準備自訂語音資料](how-to-custom-voice-prepare-data.md)
 - [建立自訂語音](how-to-custom-voice-create-voice.md)

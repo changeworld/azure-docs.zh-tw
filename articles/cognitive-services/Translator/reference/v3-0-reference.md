@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121012"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024495"
 ---
 # <a name="translator-v30"></a>Translator v3。0
 
@@ -41,7 +41,7 @@ Microsoft Translator 的要求大部分是由最接近要求來源的資料中�
 
 若要強制特定 Azure 地理位置處理要求，請將 API 要求中的全域端點變更為所需的區域端點：
 
-|描述|Azure 地理位置|基底 URL|
+|Description|Azure 地理位置|基底 URL|
 |:--|:--|:--|
 |Azure|全域 (非區域) |   api.cognitive.microsofttranslator.com|
 |Azure|美國|   api-nam.cognitive.microsofttranslator.com|
@@ -56,8 +56,8 @@ Microsoft Translator 的要求大部分是由最接近要求來源的資料中�
 
 |標題|描述|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|如果您要傳遞祕密金鑰，請使用認知服務訂用帳戶**。<br/>值是您訂用帳戶翻譯的 Azure 秘密金鑰。|
-|授權|如果您要傳遞驗證權杖，請使用認知服務訂用帳戶**。<br/>此值是持有人權杖：`Bearer <token>`。|
+|Ocp-Apim-Subscription-Key|如果您要傳遞祕密金鑰，請使用認知服務訂用帳戶。<br/>值是您訂用帳戶翻譯的 Azure 秘密金鑰。|
+|授權|如果您要傳遞驗證權杖，請使用認知服務訂用帳戶。<br/>此值是持有人權杖：`Bearer <token>`。|
 |Ocp-Apim-Subscription-Region|*使用認知服務的多服務和區域翻譯工具資源。*<br/>此值為多服務或區域翻譯工具資源的區域。 使用全域翻譯工具資源時，此值是選擇性的。|
 
 ###  <a name="secret-key"></a>祕密金鑰
@@ -124,7 +124,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 | 資源類型     | 驗證服務 URL                                |
 |-----------------|-----------------------------------------------------------|
-| 全域          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| 全球          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 | 區域或多服務 | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 以下要求範例示範如何取得具有祕密金鑰的權杖：
@@ -147,7 +147,7 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>虛擬網路支援
 
-Translator 服務現在可在 Azure 公用雲端的所有區域中，透過虛擬網路 (VNET) 功能使用。 若要啟用虛擬網路，請參閱設定 [Azure 認知服務虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
+Translator 服務現在可在 Azure 公用雲端的所有區域中，透過虛擬網路 (VNET) 功能使用。 若要啟用虛擬網路，請參閱設定 [Azure 認知服務虛擬網路](../../cognitive-services-virtual-networks.md?tabs=portal)。 
 
 開啟這項功能之後，您必須使用自訂端點來呼叫翻譯工具。 您無法使用全域 translator endpoint ( "api.cognitive.microsofttranslator.com" ) 而且無法使用存取權杖進行驗證。
 
@@ -230,13 +230,13 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 503000| 服務暫時無法使用。 請再試一次。 如果錯誤持續存在，請回報錯誤並提供錯誤的日期/時間、來自回應標頭 X-RequestId 的要求識別碼，以及來自要求標頭 X-ClientTraceId 的用戶端識別碼。|
 
 ## <a name="metrics"></a>計量 
-計量可讓您在 Azure 入口網站的 [計量] 區段下查看翻譯工具的使用方式和可用性資訊，如下列螢幕擷取畫面所示。 如需詳細資訊，請參閱 [資料和平臺計量](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
+計量可讓您在 Azure 入口網站的 [計量] 區段下查看翻譯工具的使用方式和可用性資訊，如下列螢幕擷取畫面所示。 如需詳細資訊，請參閱 [資料和平臺計量](../../../azure-monitor/platform/data-platform-metrics.md)。
 
 ![Translator 計量](../media/translatormetrics.png)
 
 下表列出可用的計量，並說明如何使用它們來監視轉譯 API 呼叫。
 
-| 計量 | 描述 |
+| 計量 | Description |
 |:----|:-----|
 | TotalCalls| API 呼叫總數。|
 | TotalTokenCalls| 使用驗證權杖透過權杖服務的 API 呼叫總數。|
