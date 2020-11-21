@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: d8c88883b839ff47ef57a17378f43918e9ecf7e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e2165b81c7cd634fe79ec4438a550ad365f5a30
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536115"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019172"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 應用程式的企業策略
 檢閱您企業應用程式的這些設計策略。
@@ -29,7 +29,7 @@ LUIS 具有每月配額以及每秒配額（以 Azure 資源的定價層為基�
 * 建立 [多個金鑰](#assign-multiple-luis-keys-to-same-app) ，並將其指派給應用程式。 
 
 ### <a name="use-multiple-apps-with-same-app-definition"></a>使用多個具有相同應用程式定義的應用程式
-請匯出原始 LUIS 應用程式，然後將應用程式匯入回個別的應用程式。 每個應用程式都有自己的應用程式識別碼。 當您發佈時，請不要在所有應用程式都使用相同的金鑰，而是為每個應用程式建立個別的金鑰。 請平衡所有應用程式之間的負載，讓任何單一應用程式都不致於不堪負荷。 新增 [Application Insights](luis-tutorial-bot-csharp-appinsights.md) 以監視使用情況。 
+請匯出原始 LUIS 應用程式，然後將應用程式匯入回個別的應用程式。 每個應用程式都有自己的應用程式識別碼。 當您發佈時，請不要在所有應用程式都使用相同的金鑰，而是為每個應用程式建立個別的金鑰。 請平衡所有應用程式之間的負載，讓任何單一應用程式都不致於不堪負荷。 新增 [Application Insights](./luis-csharp-tutorial-bf-v4.md) 以監視使用情況。 
 
 為了在所有應用程式之間都獲得相同的最高分意圖，請確定第一個與第二個意圖之間的意圖預測有足夠的差距，讓 LUIS 不致產生混淆，而能針對語句中的微小變化在應用程式之間提供不同結果。 
 
@@ -48,10 +48,10 @@ LUIS 具有每月配額以及每秒配額（以 Azure 資源的定價層為基�
 請排定定期 (例如每隔兩週) 的[端點語句檢閱](luis-how-to-review-endpoint-utterances.md)來進行主動式學習，然後再重新定型並重新發佈。 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>當您所需的意圖超過 500 個時
-假設您要開發的 office assistant 有超過500個意圖。 如果有 200 個意圖與安排會議有關、200 個與提醒有關、200 個與取得同事相關資訊有關，以及 200 個用於傳送電子郵件，則請將這些意圖分組，讓每個群組都在單一應用程式中，然後建立一個包含每個意圖的最上層應用程式。 使用 [分派模型](#dispatch-tool-and-model) 來建立最上層應用程式。 然後變更您的 bot 以使用串聯式呼叫，如 [分派模型的教學](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)課程中所示。 
+假設您要開發的 office assistant 有超過500個意圖。 如果有 200 個意圖與安排會議有關、200 個與提醒有關、200 個與取得同事相關資訊有關，以及 200 個用於傳送電子郵件，則請將這些意圖分組，讓每個群組都在單一應用程式中，然後建立一個包含每個意圖的最上層應用程式。 使用 [分派模型](#dispatch-tool-and-model) 來建立最上層應用程式。 然後變更您的 bot 以使用串聯式呼叫，如 [分派模型的教學](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)課程中所示。 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>當您需要將數個 LUIS 與 QnA Maker 應用程式結合時
-如果您有數個需要回應 bot 的 LUIS 和 QnA maker 應用程式，請使用 [分派模型](#dispatch-tool-and-model) 來建立最上層應用程式。  然後變更您的 bot 以使用串聯式呼叫，如 [分派模型的教學](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)課程中所示。 
+如果您有數個需要回應 bot 的 LUIS 和 QnA maker 應用程式，請使用 [分派模型](#dispatch-tool-and-model) 來建立最上層應用程式。  然後變更您的 bot 以使用串聯式呼叫，如 [分派模型的教學](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)課程中所示。 
 
 ## <a name="dispatch-tool-and-model"></a>分派工具和模型
 請使用 [Dispatch][dispatch-tool] 命令列工具 (可在 [BotBuilder-tools](https://github.com/Microsoft/botbuilder-tools) 中找到) 將多個 LUIS 和/或 QnA Maker 應用程式結合成一個父 LUIS 應用程式。 此方法可讓您擁有一個包含個別應用程式中所有主體和不同子主體定義域的父定義域。 
@@ -62,21 +62,21 @@ LUIS 具有每月配額以及每秒配額（以 Azure 資源的定價層為基�
 
 聊天機器人會接收語句，然後將其傳送至父 LUIS 應用程式進行預測。 來自父應用程式的最高預測意圖會決定接下來要呼叫的 LUIS 子應用程式。 聊天機器人會將語句傳送至子應用程式，以進行更明確的預測。
 
-請從 Bot Builder v4 [發送器應用程式教學課程](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)了解如何建立此呼叫階層。  
+請從 Bot Builder v4 [發送器應用程式教學課程](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)了解如何建立此呼叫階層。  
 
 ### <a name="intent-limits-in-dispatch-model"></a>分派模型中的意圖限制
 分派應用程式最多可有 500 個分派來源，相當於 500 個意圖。 
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>其他資訊
 
 * [Bot framework SDK](https://github.com/Microsoft/botframework)
-* [分派模型教學課程](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
+* [分派模型教學課程](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)
 * [分派 CLI](https://github.com/Microsoft/botbuilder-tools)
 * 分派模型 bot 範例- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)、 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 了解如何[測試批次](luis-how-to-batch-test.md)
 
-[dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
+[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch?branch=master
 [dispatch-tool]: https://aka.ms/dispatch-tool

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89efc1d4f34b250d211f9fd7492588bd2896eb6e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667874"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016848"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的資料模型
 
@@ -24,13 +24,13 @@ ms.locfileid: "91667874"
 > [!TIP]
 >
 > * 深入瞭解 [時間序列模型](concepts-model-overview.md)。
-> * 深入瞭解如何流覽 [Azure 時間序列深入解析 Gen2 explorer](./time-series-insights-update-explorer.md)。
+> * 深入瞭解如何流覽 [Azure 時間序列深入解析 Gen2 explorer](./concepts-ux-panels.md)。
 
 ## <a name="instances"></a>執行個體
 
-Azure 時間序列深入解析 explorer 支援瀏覽器內的實例 **建立**、 **讀取**、 **更新**和 **刪除** 作業。
+Azure 時間序列深入解析 explorer 支援瀏覽器內的實例 **建立**、 **讀取**、 **更新** 和 **刪除** 作業。
 
-若要開始，請從 Azure 時間序列深入解析 explorer**分析**視圖中選取**模型**視圖。
+若要開始，請從 Azure 時間序列深入解析 explorer **分析** 視圖中選取 **模型** 視圖。
 
 ### <a name="create-a-single-instance"></a>建立單一執行個體
 
@@ -38,18 +38,18 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的實例 **建立**�
 
     [![先選取實例來建立單一實例。](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png#lightbox)
 
-1. 選取 [+ 新增] 。
+1. 選取 [+ 新增]  。
 
     [![選取 [+ 新增] 按鈕來新增實例。](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png#lightbox)
 
-1. 輸入執行個體詳細資料，選取類型和階層關聯，然後選取 [建立]****。
+1. 輸入執行個體詳細資料，選取類型和階層關聯，然後選取 [建立]。
 
 ### <a name="bulk-upload-one-or-more-instances"></a>大量上傳一或多個執行個體
 
 > [!TIP]
 > 您可以將實例以 JSON 格式儲存到您的桌面。然後，您可以透過下列步驟來上傳下載的 JSON 檔案。
 
-1. 選取 [上傳 JSON]****。
+1. 選取 [上傳 JSON]。
 1. 選取包含執行個體承載的檔案。
 
     [![透過 JSON 大量上傳實例。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
@@ -59,7 +59,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的實例 **建立**�
 ### <a name="edit-a-single-instance"></a>編輯單一執行個體
 
 1. 選取實例，然後選取 [ **編輯** ] 或 [ **鉛筆] 圖示**。
-1. 進行必要的變更，然後選取 [儲存]****。
+1. 進行必要的變更，然後選取 [儲存]。
 
     [![編輯單一實例。](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
 
@@ -76,9 +76,9 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的實例 **建立**�
 
 ## <a name="hierarchies"></a>階層
 
-Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**、 **讀取**、 **更新**和 **刪除** 作業。
+Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**、 **讀取**、 **更新** 和 **刪除** 作業。
 
-若要開始，請從 Azure 時間序列深入解析 explorer**分析**視圖中選取**模型**視圖。
+若要開始，請從 Azure 時間序列深入解析 explorer **分析** 視圖中選取 **模型** 視圖。
 
 ### <a name="create-a-single-hierarchy"></a>建立單一階層
 
@@ -86,7 +86,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**�
 
     [![透過窗格建立階層。](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png#lightbox)
 
-1. 選取 [+ 新增] 。
+1. 選取 [+ 新增]  。
 
     [![階層 + 加入按鈕。](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png#lightbox)
 
@@ -103,7 +103,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**�
 > [!TIP]
 > 您可以用 JSON 將階層儲存到您的桌面。然後，您可以透過下列步驟來上傳下載的 JSON 檔案。
 
-1. 選取 [上傳 JSON]****。
+1. 選取 [上傳 JSON]。
 1. 選取包含階層承載的檔案。
 1. 選取 [上傳] 。
 
@@ -112,7 +112,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**�
 ### <a name="edit-a-single-hierarchy"></a>編輯單一階層
 
 1. 選取階層，然後選取 [ **編輯** ] 或 [ **鉛筆] 圖示**。
-1. 進行必要的變更，然後選取 [儲存]****。
+1. 進行必要的變更，然後選取 [儲存]。
 
     [![編輯單一階層的選項。](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png#lightbox)
 
@@ -124,11 +124,11 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**�
 
 1. 選取 [ **刪除**] 以確認刪除。
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
-Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**、 **讀取**、 **更新**和 **刪除** 作業。
+Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**、 **讀取**、 **更新** 和 **刪除** 作業。
 
-若要開始，請從 Azure 時間序列深入解析 explorer**分析**視圖中選取**模型**視圖。
+若要開始，請從 Azure 時間序列深入解析 explorer **分析** 視圖中選取 **模型** 視圖。
 
 ### <a name="create-a-single-type"></a>建立單一類型
 
@@ -146,7 +146,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**�
 > [!TIP]
 > 您可以將類型以 JSON 格式儲存到您的桌面。然後，您可以透過下列步驟來上傳下載的 JSON 檔案。
 
-1. 選取 [上傳 JSON]****。
+1. 選取 [上傳 JSON]。
 1. 選取包含類型承載的檔案。
 1. 選取 [上傳] 。
 
@@ -155,7 +155,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**�
 ### <a name="edit-a-single-type"></a>編輯單一類型
 
 1. 選取類型，然後選取 [ **編輯** ] 或 [ **鉛筆] 圖示**。
-1. 進行必要的變更，然後選取 [儲存]****。
+1. 進行必要的變更，然後選取 [儲存]。
 
     [![編輯窗格中的類型。](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png#lightbox)
 
@@ -167,10 +167,10 @@ Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**�
 
 1. 選取 [ **刪除**] 以確認刪除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需時間序列模型的詳細資訊，請參閱 [資料模型](./concepts-model-overview.md)化。
 
-* 若要深入瞭解 Gen2，請閱讀 [Azure 時間序列深入解析 Gen2 explorer 中的視覺化資料](./time-series-insights-update-explorer.md)。
+* 若要深入瞭解 Gen2，請閱讀 [Azure 時間序列深入解析 Gen2 explorer 中的視覺化資料](./concepts-ux-panels.md)。
 
 * 若要瞭解支援的 JSON 圖形，請閱讀 [支援的 json 圖形](./time-series-insights-send-events.md#supported-json-shapes)。

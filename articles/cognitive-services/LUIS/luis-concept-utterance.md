@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316387"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019070"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解適合您 LUIS 應用程式的語句
 
-**語句**是應用程式需要解譯的使用者輸入。 若要將 LUIS 定型以從中擷取意圖和實體，務必要針對每個意圖擷取各種不同的範例語句。 主動學習或繼續訓練新語句的程式，對於 LUIS 所提供的機器學習智慧而言是不可或缺的。
+**語句** 是應用程式需要解譯的使用者輸入。 若要將 LUIS 定型以從中擷取意圖和實體，務必要針對每個意圖擷取各種不同的範例語句。 主動學習或繼續訓練新語句的程式，對於 LUIS 所提供的機器學習智慧而言是不可或缺的。
 
 收集您認為使用者會輸入的語句。 包括意義相同但結構不同的語句：
 
@@ -29,7 +29,7 @@ ms.locfileid: "91316387"
 
 ## <a name="how-to-choose-varied-utterances"></a>如何選擇各種語句
 
-當您剛開始為 LUIS 模型[新增範例語句](luis-how-to-add-example-utterances.md)時，請將以下幾個原則謹記在心。
+當您剛開始為 LUIS 模型[新增範例語句](./luis-how-to-add-entities.md)時，請將以下幾個原則謹記在心。
 
 ### <a name="utterances-arent-always-well-formed"></a>語句不見得格式正確
 
@@ -111,7 +111,7 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略單字和標點符號
 
-如果您想要忽略模式中的特定單字或標點符號，請使用具有方括弧_忽略_語法的[模式](luis-concept-patterns.md#pattern-syntax) `[]` 。
+如果您想要忽略模式中的特定單字或標點符號，請使用具有方括弧 _忽略_ 語法的 [模式](luis-concept-patterns.md#pattern-syntax) `[]` 。
 
 <a name="training-utterances"></a>
 
@@ -146,6 +146,5 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 如果您想要讓事件實體尋找所有事件資料，請標記第一個語句中的 `fair` 一字，但不要標記第二個語句中的該字。
 
 
-## <a name="next-steps"></a>後續步驟
-如需將 LUIS 應用程式定型以了解使用者語句的詳細資訊，請參閱[新增範例語句](luis-how-to-add-example-utterances.md)。
-
+## <a name="next-steps"></a>下一步
+如需將 LUIS 應用程式定型以了解使用者語句的詳細資訊，請參閱[新增範例語句](./luis-how-to-add-entities.md)。

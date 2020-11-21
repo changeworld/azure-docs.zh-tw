@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 914ca77b18d0469c3ea926848be4c60aab04c9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5e1cc5cdda921e63315c2904d560b7ad3939776
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539099"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018849"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何新增模式以改善預測精確度
-LUIS 應用程式接收到端點語句之後，請使用 [模式](luis-concept-patterns.md) 來改善以文字順序和單字選擇顯示模式之語句的預測精確度。 模式使用特定的 [語法](luis-concept-patterns.md#pattern-syntax) 來指出 [實體](luis-concept-entity-types.md)、實體 [角色](luis-concept-roles.md)和選擇性文字的位置。
+LUIS 應用程式接收到端點語句之後，請使用 [模式](luis-concept-patterns.md) 來改善以文字順序和單字選擇顯示模式之語句的預測精確度。 模式使用特定的 [語法](luis-concept-patterns.md#pattern-syntax) 來指出 [實體](luis-concept-entity-types.md)、實體 [角色](./luis-concept-entity-types.md)和選擇性文字的位置。
 
 > [!CAUTION]
 > 模式只包含機器學習實體父系，而非子實體。
@@ -26,7 +26,7 @@ LUIS 應用程式接收到端點語句之後，請使用 [模式](luis-concept-p
 
 1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在 **我的應用程式** ] 頁面上選取應用程式的名稱，以開啟您的應用程式。
-1. 在 [**改善應用程式效能**] 下，選取左面板中的**模式**。
+1. 在 [**改善應用程式效能**] 下，選取左面板中的 **模式**。
 
 1. 選取模式的正確意圖。
 
@@ -35,7 +35,7 @@ LUIS 應用程式接收到端點語句之後，請使用 [模式](luis-concept-p
     > [!div class="mx-imgBorder"]
     > ![模式的實體螢幕擷取畫面](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    如果您的實體包含 [角色](luis-concept-roles.md)，請在機構名稱之後以單一冒號表示角色， `:` 例如 `{Location:Origin}` 。 實體的角色清單會顯示在清單中。 選取角色，然後選取 Enter。
+    如果您的實體包含 [角色](./luis-concept-entity-types.md)，請在機構名稱之後以單一冒號表示角色， `:` 例如 `{Location:Origin}` 。 實體的角色清單會顯示在清單中。 選取角色，然後選取 Enter。
 
     > [!div class="mx-imgBorder"]
     > ![實體與角色的螢幕擷取畫面](./media/luis-how-to-model-intent-pattern/patterns-4.png)
@@ -53,7 +53,7 @@ LUIS 應用程式接收到端點語句之後，請使用 [模式](luis-concept-p
 1. 在 **我的應用程式** ] 頁面上選取應用程式的名稱，以開啟您的應用程式。
 1. 從 [ **組建** ] 區段中，選取左面板中的 [ **實體** ]，然後選取 [ **+ 建立**]。
 
-1. 在 [**選擇實體類型**] 對話方塊中，于 [**名稱**] 方塊中輸入機構名稱，然後選取 [**模式]。任何****型**別，然後選取 [**建立**]。
+1. 在 [**選擇實體類型**] 對話方塊中，于 [**名稱**] 方塊中輸入機構名稱，然後選取 [**模式]。任何****型** 別，然後選取 [**建立**]。
 
     當您建立使用此實體 [的模式語句](luis-how-to-model-intent-pattern.md) 之後，就會使用結合的機器學習和文字比對演算法來解壓縮該實體。
 
@@ -109,7 +109,7 @@ LUIS 應用程式接收到端點語句之後，請使用 [模式](luis-concept-p
 * 移除實體或意圖篩選條件
 * 在意圖或實體頁面上從現有的語句新增模式
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解如何使用模式 [建立模式](luis-tutorial-pattern.md) 。任何和角色都有教學課程。
 * 了解如何[訓練](luis-how-to-train.md)您的應用程式。

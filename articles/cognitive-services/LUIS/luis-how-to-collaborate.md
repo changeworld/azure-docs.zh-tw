@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540895"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018900"
 ---
 # <a name="add-contributors-to-your-app"></a>將參與者新增至您的應用程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "91540895"
 如果您的 LUIS 撰寫體驗系結至 LUIS 入口網站中 [ **管理-> Azure 資源** ] 頁面上的撰寫資源，則您已遷移。
 
 1. 在 Azure 入口網站中，尋找 Language Understanding (LUIS) 編寫資源。 它具有類型 `LUIS.Authoring` 。
-1. 在此資源的 **存取控制 (IAM) ** ] 頁面上，選取 [ **+ 新增** ]，然後選取 [ **新增角色指派**]。
+1. 在此資源的 **存取控制 (IAM)** ] 頁面上，選取 [ **+ 新增** ]，然後選取 [ **新增角色指派**]。
 
     ![在 Azure 入口網站中，新增撰寫資源的角色指派。](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
 
@@ -49,9 +49,9 @@ ms.locfileid: "91540895"
 
 一個應用程式只有單一建立者 (擁有者)，但可以有許多共同作業者。 若要允許共同作業者編輯您的 LUIS 應用程式，您必須將他們用來存取 LUIS 入口網站的電子郵件新增至共同作業者清單。 新增之後，應用程式就會顯示在其 LUIS 入口網站中。
 
-1. 從右上方功能表中選取 [管理]****，然後選取左側功能表中的 [共同作業者]****。
+1. 從右上方功能表中選取 [管理]，然後選取左側功能表中的 [共同作業者]。
 
-1. 從工具列中選取 [新增共同作業者]****。
+1. 從工具列中選取 [新增共同作業者]。
 
 1. 輸入共同作業者用來登入 LUIS 入口網站的電子郵件地址。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91540895"
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory 資源
 
-如果您在組織中使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD)，Language Understanding (LUIS) 需要具備使用者在想要使用 LUIS 時所存取資訊的權限。 LUIS 需要的資源非常少。
+如果您在組織中使用 [Azure Active Directory](../../active-directory/index.yml) (Azure AD)，Language Understanding (LUIS) 需要具備使用者在想要使用 LUIS 時所存取資訊的權限。 LUIS 需要的資源非常少。
 
 當您嘗試使用具有管理員同意或不需要管理員同意的帳戶註冊時，您會看到詳細的描述，例如系統管理員同意：
 
@@ -87,12 +87,12 @@ LUIS 使用標準 Azure Active Directory (Azure AD) 同意流程。
 
 如果租用戶系統管理員只希望特定使用者使用 LUIS，則有一些可能的解決方式：
 * 提供「管理員同意」(同意 Azure AD 的所有使用者)，然後將 [企業應用程式屬性] 之下的 [需要使用者指派] 設定為 [是]，最後只將想要的使用者指派/新增至應用程式。 使用此方法，系統管理員仍提供應用程式的「管理員同意」，不過，能夠控制可以存取該應用程式的使用者。
-* 第二個解決方案是 [在 Microsoft Graph 中使用 Azure AD 身分識別和存取管理 API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) ，以提供每個特定使用者的同意。
+* 第二個解決方案是 [在 Microsoft Graph 中使用 Azure AD 身分識別和存取管理 API](/graph/azuread-identity-access-management-concept-overview) ，以提供每個特定使用者的同意。
 
 深入了解 Azure Active Directory 使用者和同意：
 * 將[您的應用程式限制](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)為一組使用者
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [如何使用版本](luis-how-to-manage-versions.md) 來控制您的應用程式生命週期。
 * 瞭解包括在該資源上 [撰寫資源](luis-how-to-azure-subscription.md#authoring-key) 和 [參與者](luis-how-to-azure-subscription.md#contributions-from-other-authors) 的概念。

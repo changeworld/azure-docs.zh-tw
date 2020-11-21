@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458926"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教學課程：Azure Active Directory 與 Kontiki 整合
 
@@ -64,7 +64,7 @@ Kontiki 支援下列功能︰
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **Kontiki** 。 在搜尋結果中，選取 [Kontiki]  ，然後選取 [新增]  。
+1. 在搜尋方塊中，輸入 **Kontiki**。 在搜尋結果中，選取 [Kontiki]  ，然後選取 [新增]  。
 
     ![結果清單中的 Kontiki](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ Kontiki 支援下列功能︰
     ![Kontiki 網域與 URL 單一登入資訊](common/sp-signonurl.png)
 
     > [!NOTE]
-    > 請連絡 [Kontiki 用戶端支援小組](https://customersupport.kontiki.com/enterprise/contactsupport.html)以取得要使用的正確值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+    > 請連絡 [Kontiki 用戶端支援小組](https://kollective.com/support/)以取得要使用的正確值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 窗格的 [SAML 簽署憑證] 區段中，選取 [同盟中繼資料 XML] 旁邊的 [下載]。 根據您的需求選取下載選項。 將憑證儲存在您的電腦上。
 
@@ -120,7 +120,7 @@ Kontiki 支援下列功能︰
 
 ### <a name="configure-kontiki-single-sign-on"></a>設定 Kontiki 單一登入
 
-若要在 Kontiki 端設定單一登入，請將您從 Azure 入口網站下載的同盟中繼資料 XML 檔案和所複製的相關 URL 傳送給 [Kontiki 支援小組](https://customersupport.kontiki.com/enterprise/contactsupport.html)。 Kontiki 支援小組會使用您傳送給他們的資訊，確保兩端的 SAML 單一登入連線已正確設定。
+若要在 Kontiki 端設定單一登入，請將您從 Azure 入口網站下載的同盟中繼資料 XML 檔案和所複製的相關 URL 傳送給 [Kontiki 支援小組](https://kollective.com/support/)。 Kontiki 支援小組會使用您傳送給他們的資訊，確保兩端的 SAML 單一登入連線已正確設定。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -136,9 +136,9 @@ Kontiki 支援下列功能︰
 
 1. 在 [使用者]  窗格中，完成下列步驟：
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension>** 。 例如， **brittasimon\@contoso.com** 。
+    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension>** 。 例如，**brittasimon\@contoso.com**。
 
     1. 選取 [顯示密碼]  核取方塊。 記下 [密碼]  方塊中顯示的值。
 

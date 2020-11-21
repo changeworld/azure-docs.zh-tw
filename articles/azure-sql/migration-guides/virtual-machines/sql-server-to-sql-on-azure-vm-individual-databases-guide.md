@@ -10,17 +10,17 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c7a62bb3ed07ffbd8cfef520e5d504c810d11e5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496686"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019444"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>遷移指南：在 Azure Vm 上 SQL Server 至 SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
-此遷移指南將引導您 **探索** 、 **評估** 和 **遷移** 您的使用者資料庫，從 SQL Server 到 Azure 虛擬機器上的 SQL Server 實例， () vm 使用備份和還原和記錄傳送，利用 [資料庫 Migration Assistant (DMA)](/sql/dma/dma-overview) 進行評量。 
+此遷移指南將引導您 **探索**、 **評估** 和 **遷移** 您的使用者資料庫，從 SQL Server 到 Azure 虛擬機器上的 SQL Server 實例， () vm 使用備份和還原和記錄傳送，利用 [資料庫 Migration Assistant (DMA)](/sql/dma/dma-overview) 進行評量。 
 
 您可以遷移在內部部署或上執行的 SQL Server：
 
@@ -33,14 +33,14 @@ ms.locfileid: "94496686"
 
 :::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="遷移程式流程":::
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 遷移至 Azure Vm 上的 SQL Server 需要下列各項： 
 
 - [資料庫 Migration Assistant (DMA) ](https://www.microsoft.com/download/details.aspx?id=53595)。
 - [Azure Migrate 專案](/azure/migrate/create-manage-projects)。
 - [AZURE VM 上](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal)已備妥的目標 SQL Server，與來源 SQL Server 相同或更高的版本。
-- [Azure 與內部部署之間](/architecture/reference-architectures/hybrid-networking)的連線能力。
+- [Azure 與內部部署之間](/azure/architecture/reference-architectures/hybrid-networking)的連線能力。
 - [選擇適當的遷移策略](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
 ## <a name="pre-migration"></a>移轉前
@@ -59,7 +59,7 @@ Azure Migrate 會評估內部部署電腦的遷移適用性、執行以效能為
 
 ### <a name="assess"></a>評定
 
-探索所有資料來源之後，請使用 [Data Migration Assistant (DMA) ](/dma/dma-overview) 來評估內部部署 SQL Server 實例 () 遷移至 Azure VM 上的 SQL Server 實例，以瞭解來源與目標實例之間的差距。 
+探索所有資料來源之後，請使用 [Data Migration Assistant (DMA) ](/sql/dma/dma-overview) 來評估內部部署 SQL Server 實例 () 遷移至 Azure VM 上的 SQL Server 實例，以瞭解來源與目標實例之間的差距。 
 
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Data Migration Assistant (DMA) 藉由偵測可能影響新版本 SQL Server 中�
 1. 暫停/停止任何使用資料庫的應用程式以供遷移。 
 1. 使用 [單一使用者模式](/sql/relational-databases/databases/set-a-database-to-single-user-mode)，確保使用者資料庫 (的) 處於非使用中狀態。 
 1. 執行完整資料庫備份至內部部署位置。
-1. 使用遠端桌面、 [Azure 資料總管](/data-explorer/data-explorer-overview)或 [AZCopy 命令列公用程式](../../../storage/common/storage-use-azcopy-v10.md) ，將您的內部部署備份檔案 (s) 複製到您的 VM， ( # A0 2 TB 備份建議) 。
+1. 使用遠端桌面、 [Azure 資料總管](/azure/data-explorer/data-explorer-overview)或 [AZCopy 命令列公用程式](../../../storage/common/storage-use-azcopy-v10.md) ，將您的內部部署備份檔案 (s) 複製到您的 VM， ( # A0 2 TB 備份建議) 。
 1. 將完整資料庫備份 (s) 還原至 Azure VM 上的 SQL Server。
 
 ### <a name="log-shipping--minimize-downtime"></a>記錄傳送 (將停機時間降到最低) 
@@ -133,7 +133,7 @@ Data Migration Assistant (DMA) 藉由偵測可能影響新版本 SQL Server 中�
 1. 根據您的需求，設定對 Azure VM 上的目標 SQL Server 的連線能力。 請參閱 [連線到 Azure 上的 SQL Server 虛擬機器 (Resource Manager)](../../virtual-machines/windows/ways-to-connect-to-sql.md)。
 1. 請確定要遷移的內部部署使用者資料庫 () 是完整或大量記錄復原模式。
 1. 執行完整資料庫備份至內部部署位置，並修改任何現有的完整資料庫備份作業，以使用 [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) 關鍵字來保留記錄鏈。
-1. 使用遠端桌面、 [Azure 資料總管](/data-explorer/data-explorer-overview)或 [AZCopy 命令列公用程式](../../../storage/common/storage-use-azcopy-v10.md) ，將您的內部部署備份檔案 (s) 複製到您的 VM， ( # B0 1 TB 備份建議) 。
+1. 使用遠端桌面、 [Azure 資料總管](/azure/data-explorer/data-explorer-overview)或 [AZCopy 命令列公用程式](../../../storage/common/storage-use-azcopy-v10.md) ，將您的內部部署備份檔案 (s) 複製到您的 VM， ( # B0 1 TB 備份建議) 。
 1. 在 Azure VM 上的 SQL Server 上還原完整資料庫備份 (s) 。
 1. 在內部部署資料庫與 Azure VM 上的目標 SQL Server 之間設定 [記錄傳送](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) 。 請務必不要重新初始化資料庫 (s) ，因為先前的步驟已完成這項作業。
 1. **切換** 至目標伺服器。 
@@ -205,7 +205,7 @@ Data Migration Assistant (DMA) 藉由偵測可能影響新版本 SQL Server 中�
 - [調整 AZURE SQL 虛擬機器中的效能](../../virtual-machines/windows/performance-guidelines-best-practices.md)。
 - [Azure 成本優化中心](https://azure.microsoft.com/overview/cost-optimization/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要檢查適用于 SQL Server 的服務可用性，請參閱 [Azure 全球基礎結構中心](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
 

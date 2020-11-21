@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: 意圖辨識
-ms.openlocfilehash: 0d718459e0fd0ea410232d3a165b560aa8c59cd1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174630"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018696"
 ---
 # <a name="what-is-intent-recognition"></a>什麼是意圖辨識？
 
@@ -29,7 +29,7 @@ ms.locfileid: "92174630"
 
 * LUIS 會與語音服務整合以從語音辨識意圖。 您不需要語音服務訂用帳戶，只要有 LUIS 即可。
 * 語音意圖辨識已與 SDK 整合。 您可以搭配語音服務使用 LUIS 金鑰。
-* 透過語音 SDK 的意圖辨識是 [在 LUIS 支援的區域子集上提供](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#intent-recognition)。
+* 透過語音 SDK 的意圖辨識是 [在 LUIS 支援的區域子集上提供](./regions.md#intent-recognition)。
 
 ## <a name="get-started"></a>開始使用
 
@@ -39,8 +39,8 @@ ms.locfileid: "92174630"
 
 意圖辨識的範例程式碼：
 
-* [快速入門：使用預先建置的家庭自動化應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)
-* [使用適用於 C# 的語音 SDK 從語音辨識意圖](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)
+* [快速入門：使用預先建置的家庭自動化應用程式](../luis/luis-get-started-create-app.md)
+* [使用適用於 C# 的語音 SDK 從語音辨識意圖](./how-to-recognize-intents-from-speech-csharp.md)
 * [使用 C 中 Unity 的意圖辨識和其他語音服務#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/speechrecognizer)
 * [使用適用于 Python 的語音 SDK 來辨識意圖](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 * [在 Windows 上使用適用于 c + + 的語音 SDK 的意圖辨識和其他語音服務](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console)
@@ -49,9 +49,9 @@ ms.locfileid: "92174630"
 
 ## <a name="reference-docs"></a>參考文件
 
-* [語音 SDK](speech-sdk-reference.md)
+* [語音 SDK](./speech-sdk.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 完成意圖辨識 [快速入門](quickstarts/intent-recognition.md)
 * [免費取得語音服務的訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)

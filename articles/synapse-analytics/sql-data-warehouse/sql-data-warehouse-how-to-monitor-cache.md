@@ -7,34 +7,34 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 041751b5b23dbb3153f1ae638303579a860c0e5b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026797"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020158"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>如何監視 Gen2 快取
+# <a name="how-to-monitor-the-adaptive-cache"></a>如何監視適應性快取
 
-本文說明如何藉由判斷工作負載是否有充分利用 Gen2 快取，來監視緩慢的查詢效能並加以疑難排解。
+本文說明如何藉由判斷工作負載是否以最佳方式利用專用 SQL 集區的彈性快取，來監視和疑難排解緩慢的查詢效能。
 
-在針對 Gen2 資料倉儲所設計的 NVMe 型 SSD 上，Gen2 儲存體架構會自動在位於其中的快取內將最常查詢的資料行存放區區段分層。 當查詢擷取位於快取中的區段時，將可獲得更好的效能。
+專用的 SQL 集區儲存體架構會自動將快取中最常查詢的資料行存放區區段分層到位於 NVMe 型 Ssd 的快取中。 當您的查詢取得位於快取中的區段時，您將會有更高的效能。
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>使用 Azure 入口網站進行疑難排解
 
-您可以使用 Azure 監視器來檢視 Gen2 快取計量，以針對查詢效能進行疑難排解。 先移至 Azure 入口網站，然後按一下 [ **監視** ]、[ **計量** ] 和 [ **選取範圍** ]：
+您可以使用 Azure 監視器來查看快取計量，以針對查詢效能進行疑難排解。 先移至 Azure 入口網站，然後按一下 [ **監視**]、[ **計量** ] 和 [ **選取範圍**]：
 
 ![螢幕擷取畫面顯示從 Azure 入口網站中的計量選取選取的範圍。](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-您可以使用 [搜尋] 和 [下拉式清單] 來找出您的資料倉儲。 然後選取 [套用]。
+您可以使用 [搜尋] 和 [下拉式清單] 來找出您專用的 SQL 集區。 然後選取 [套用]。
 
 ![螢幕擷取畫面顯示 [選取範圍] 窗格，您可以在其中選取資料倉儲。](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-用於疑難排解 Gen2 快取的關鍵計量是 [快取命中百分比]  和 [已用快取百分比]  。 選取 [快取 **命中百分比** ]，然後使用 [ **新增度量** ] 按鈕來新增快取 **使用百分比** 。 
+用於疑難排解快取的關鍵計量是快取 **命中百分比** 和快取 **使用百分比**。 選取 [快取 **命中百分比** ]，然後使用 [ **新增度量** ] 按鈕來新增快取 **使用百分比**。 
 
 ![快取計量](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 
@@ -58,5 +58,5 @@ ms.locfileid: "93026797"
 > [!IMPORTANT]
 > 如果快取命中百分比或快取使用百分比未在重新執行工作負載後更新，表示您的工作集可能已位於記憶體中。 只會快取叢集的資料行存放區資料表。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需一般查詢效能微調的詳細資訊，請參閱[監視查詢的執行](sql-data-warehouse-manage-monitor.md#monitor-query-execution)。

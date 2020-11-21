@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324700"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018798"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
 LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個限制區域是用來控制 LUIS 網站的 [鍵盤組合](#keyboard-controls) 。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -32,16 +32,16 @@ LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可�
 | [列出實體](./luis-concept-entity-types.md) | 父系：50 個項目，子系：20,000 個項目。 正式名稱為*預設字元上限。同義值沒有長度限制。 |
 | [機器學習實體 + 角色](./luis-concept-entity-types.md)：<br> 複合<br>簡單<br>實體角色|100父實體或330實體的限制，以較小者為准。 角色會計算為此限制用途的實體。 範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 個簡單 + 2 個角色 = 4 個330實體。<br>子實體最多可以嵌套到5個層級。|
 |模型即功能| 可做為特定模型之功能的最大模型數目，以做為10個模型。 用來作為特定模型之功能的片語清單最大數目是10個片語清單。|
-| [預覽-動態清單實體](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2個每個查詢預測端點要求的清單 ~ 1k|
+| [預覽-動態清單實體](./luis-migration-api-v3.md)|2個每個查詢預測端點要求的清單 ~ 1k|
 | [模式](luis-concept-patterns.md)|每個應用程式 500 個模式。<br>模式的長度上限為 400 個字元。<br>每個模式 3 個 pattern.any 實體<br>模式中最多有 2 個巢狀選擇性文字|
 | [Pattern.any](./luis-concept-entity-types.md)|每個應用程式 100 個，每個模式 3 個 pattern.any 實體 |
 | [片語清單][phrase-list]|500片語清單。 10個全域片語清單，因為模型是功能限制。 不可交換的片語清單最多5000個片語。 可交換的片語清單最多50000個片語。 500000片語每個應用程式的總片語數上限。|
-| [預先建置的實體](./luis-prebuilt-entities.md) | 沒有限制|
+| [預先建置的實體](./howto-add-prebuilt-models.md) | 沒有限制|
 | [規則運算式實體](./luis-concept-entity-types.md)|20 個實體<br>每個規則運算式實體模式 具有 500 個字元的上限|
-| [角色](luis-concept-roles.md)|每個應用程式 300 個角色。 每個實體 10 個角色|
+| [角色](./luis-concept-entity-types.md)|每個應用程式 300 個角色。 每個實體 10 個角色|
 | [語句][utterances] | 500 個字元<br><br>如果您的文字長度超過此字元限制，則必須在輸入至 LUIS 之前將語句區隔，而且您會收到每個區段的個別意圖回應。 您可以使用明顯的中斷，例如語音中的標點符號和長時間的暫停。|
 | [語句範例][utterances] | 每個應用程式 15000-每個意圖的語句數目沒有限制<br><br>如果您需要使用更多範例來訓練應用程式，請使用 [分派](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) 模型方法。 您可以使用一或多個意圖將個別的 LUIS 應用程式（稱為子應用程式） (稱為子應用程式) ，然後將來自每個子 LUIS 應用程式語句範例的分派應用程式定型，以將預測要求導向至正確的子應用程式。 |
-| [版本](luis-concept-version.md)| 每個應用程式100個版本 |
+| [版本](./luis-concept-app-iteration.md)| 每個應用程式100個版本 |
 | [版本名稱][luis-how-to-manage-versions] | 128 個字元 |
 
 *預設字元上限為 50 個字元。
@@ -56,7 +56,7 @@ LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可�
 |--|--|
 |意圖、實體|所有意圖和機構名稱在應用程式版本中都必須是唯一的。|
 |ML 實體元件|所有機器學習實體元件 (子實體) 在相同層級的元件的實體內必須是唯一的。|
-|特性 | 所有命名的功能（例如片語清單）在應用程式版本中都必須是唯一的。|
+|功能 | 所有命名的功能（例如片語清單）在應用程式版本中都必須是唯一的。|
 |實體角色|實體或實體元件上的所有角色都必須是唯一的，因為它們位於相同的實體層級 (父系、子系、孫節點等 ) 。|
 
 ## <a name="object-naming"></a>物件命名
@@ -108,7 +108,7 @@ _kind_ `LUIS` 篩選 Azure 入口網站中的資源時，請使用類型。在�
 
 ## <a name="keyboard-controls"></a>鍵盤控制項
 
-|鍵盤輸入 | 描述 |
+|鍵盤輸入 | Description |
 |--|--|
 |Ctrl+E|在語句清單上的權杖和實體之間切換|
 
@@ -116,12 +116,12 @@ _kind_ `LUIS` 篩選 Azure 入口網站中的資源時，請使用類型。在�
 
 您登入存取的時間為 **60 分鐘**。 在此時段之後，您將會收到這個錯誤。 您需要再次登入。
 
-[luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing
-[intents]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent
-[phrase-list]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature
-[utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-utterance
-[luis-how-to-manage-versions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions
+[luis-get-started-create-app]: ./luis-get-started-create-app.md
+[batch-testing]: ./luis-concept-test.md#batch-testing
+[intents]: ./luis-concept-intent.md
+[phrase-list]: ./luis-concept-feature.md
+[utterances]: ./luis-concept-utterance.md
+[luis-how-to-manage-versions]: ./luis-how-to-manage-versions.md
 [pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
 <!-- TBD: fix this link -->
 [speech-to-intent-pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/

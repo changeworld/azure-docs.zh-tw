@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f7c6c3f9c3f468c7b55baf2b0cc45c094d693de5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555765"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018645"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>撰寫和發佈區域及相關聯的金鑰
 
@@ -27,7 +27,7 @@ ms.locfileid: "94555765"
 |[au.luis.ai][au.luis.ai] |澳洲| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] |歐洲|`westeurope`|
 
-撰寫區域具有 [配對的容錯移轉區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+撰寫區域具有 [配對的容錯移轉區域](../../best-practices-availability-paired-regions.md)。
 
 <a name="regions-and-azure-resources"></a>
 
@@ -54,7 +54,7 @@ ms.locfileid: "94555765"
  全球區域 | 撰寫 API 區域和編寫網站| 發行與查詢區域<br>`API region name`   |  端點 URL 格式   |
 |-----|------|------|------|
 | [歐洲](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 法國中部<br>`francecentral`     | `https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
-| [歐洲](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 歐洲北部<br>`northeurope`     | `https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| [歐洲](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 北歐<br>`northeurope`     | `https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | [歐洲](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 西歐<br>`westeurope`    |  `https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | [歐洲](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 英國南部<br>`uksouth`    |  `https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
@@ -102,9 +102,9 @@ ms.locfileid: "94555765"
 
 每個區域都有可容錯移轉的次要區域。 歐洲內的歐洲容錯移轉會在澳大利亞內進行容錯移轉。
 
-撰寫區域具有 [配對的容錯移轉區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+撰寫區域具有 [配對的容錯移轉區域](../../best-practices-availability-paired-regions.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [預先建置的實體參考](./luis-reference-prebuilt-entities.md)

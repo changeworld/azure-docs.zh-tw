@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328874"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018370"
 ---
 # <a name="configure-device-redirections"></a>設定裝置重新導向
 
@@ -19,11 +19,11 @@ ms.locfileid: "92328874"
 
 ## <a name="supported-device-redirections"></a>支援的裝置重新導向
 
-每個用戶端都支援不同的裝置重新導向。 請查看 [用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) ，以取得每個用戶端支援之裝置重新導向的完整清單。
+每個用戶端都支援不同的裝置重新導向。 請查看 [用戶端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) ，以取得每個用戶端支援之裝置重新導向的完整清單。
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>自訂主機集區的 RDP 屬性
 
-若要深入瞭解如何使用 PowerShell 或 Azure 入口網站來自訂主機集區的 RDP 內容，請參閱 [RDP 屬性](customize-rdp-properties.md)。 如需支援的 RDP 屬性完整清單，請參閱 [支援的 rdp 檔案設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)。
+若要深入瞭解如何使用 PowerShell 或 Azure 入口網站來自訂主機集區的 RDP 內容，請參閱 [RDP 屬性](customize-rdp-properties.md)。 如需支援的 RDP 屬性完整清單，請參閱 [支援的 rdp 檔案設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)。
 
 ## <a name="setup-device-redirections"></a>設定裝置重新導向
 
@@ -78,8 +78,8 @@ ms.locfileid: "92328874"
 
 其次，在使用者的本機裝置上設定下列群組原則：
 
-- 流覽至**Computer Configuration**  >  **Policies** >  **Administrative Templates**  >  **Windows Components**  >  **遠端桌面服務**  >  **遠端桌面連線用戶端**  >  **RemoteFX USB 裝置**重新導向的系統管理範本 Windows 元件的電腦設定原則。
-- 選取 [ **允許從這部電腦對其他支援的 REMOTEFX USB 裝置進行 RDP**重新導向]。
+- 流覽至 **Computer Configuration**  >  **Policies** >  **Administrative Templates**  >  **Windows Components**  >  **遠端桌面服務**  >  **遠端桌面連線用戶端**  >  **RemoteFX USB 裝置** 重新導向的系統管理範本 Windows 元件的電腦設定原則。
+- 選取 [ **允許從這部電腦對其他支援的 REMOTEFX USB 裝置進行 RDP** 重新導向]。
 - 選取 [ **已啟用** ] 選項，然後選取 [RemoteFX USB 重新導向存取權限] 方塊中的 [系統 **管理員和使用者** ]。
 - 選取 [確定]。
 

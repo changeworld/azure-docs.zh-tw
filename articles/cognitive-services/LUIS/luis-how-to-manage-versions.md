@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b93e9fd4047ee3731ef6fe4652bb92ce5145987d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540858"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018815"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本進行編輯和測試而不影響預備或生產應用程式
 
-版本可讓您建置及發佈不同的模型。 理想的做法是先將目前作用中的模型複製到不同的應用程式[版本](luis-concept-version.md)，再對模型進行變更。
+版本可讓您建置及發佈不同的模型。 理想的做法是先將目前作用中的模型複製到不同的應用程式[版本](./luis-concept-app-iteration.md)，再對模型進行變更。
 
 使用中版本是您正在 LUIS portal **Build** 區段中編輯的版本，其中包含意圖、實體、功能和模式。 使用撰寫 Api 時，您不需要設定使用中版本，因為版本特定的 REST API 呼叫會在路由中包含此版本。
 
@@ -28,9 +28,9 @@ ms.locfileid: "91540858"
 
 ## <a name="clone-a-version"></a>複製版本
 
-1. 選取您要複製的版本，然後從工具列中選取 [複製]****。
+1. 選取您要複製的版本，然後從工具列中選取 [複製]。
 
-2. 在 [複製版本]**** 對話方塊中，輸入新版本的名稱，例如 "0.2"。
+2. 在 [複製版本] 對話方塊中，輸入新版本的名稱，例如 "0.2"。
 
    ![[複製版本] 對話方塊](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "91540858"
 
 1. 從工具列中選取 [匯 **入** ]，然後選取格式。
 
-2. 在 [匯入新版本]**** 快顯視窗中，輸入新的版本名稱 (10 個字元)。 如果檔案中的版本已經存在於應用程式中，您只需要設定版本識別碼。
+2. 在 [匯入新版本] 快顯視窗中，輸入新的版本名稱 (10 個字元)。 如果檔案中的版本已經存在於應用程式中，您只需要設定版本識別碼。
 
     ![管理區段, 版本頁面, 匯入新版本](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
@@ -63,7 +63,6 @@ ms.locfileid: "91540858"
 
 ## <a name="other-actions"></a>其他動作
 
-* 若要**刪除**版本，請從清單中選取版本，然後從工具列中選取 [刪除]****。 選取 [確定]  。
-* 若要**重新命名**版本，請從清單中選取版本，然後從工具列中選取 [重新命名]****。 輸入新的名稱，然後選取 [完成]****。
-* 若要**匯出**版本，請從清單中選取版本，然後從工具列中選取 [匯出應用程式]****。 選擇要匯出以進行備份或儲存在原始檔控制中的 JSON 或 LU，選擇 [ **匯出容器** ] 以 [在 LUIS 容器中使用此應用程式](luis-container-howto.md)。
-
+* 若要 **刪除** 版本，請從清單中選取版本，然後從工具列中選取 [刪除]。 選取 [確定]  。
+* 若要 **重新命名** 版本，請從清單中選取版本，然後從工具列中選取 [重新命名]。 輸入新的名稱，然後選取 [完成]。
+* 若要 **匯出** 版本，請從清單中選取版本，然後從工具列中選取 [匯出應用程式]。 選擇要匯出以進行備份或儲存在原始檔控制中的 JSON 或 LU，選擇 [ **匯出容器** ] 以 [在 LUIS 容器中使用此應用程式](luis-container-howto.md)。

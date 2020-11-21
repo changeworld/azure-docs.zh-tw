@@ -6,21 +6,21 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930691"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018302"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定 (RDP) 屬性
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 
-自訂主機集區的遠端桌面通訊協定 (RDP) 屬性（例如多重監視器體驗和音訊重新導向），可讓您根據使用者的需求為您的使用者提供最佳體驗。 您可以使用 Azure 入口網站或在**AzWvdHostPool**指令程式中使用 *-CustomRdpProperty*參數，在 Windows 虛擬桌面中自訂 RDP 屬性。
+自訂主機集區的遠端桌面通訊協定 (RDP) 屬性（例如多重監視器體驗和音訊重新導向），可讓您根據使用者的需求為您的使用者提供最佳體驗。 您可以使用 Azure 入口網站或在 **AzWvdHostPool** 指令程式中使用 *-CustomRdpProperty* 參數，在 Windows 虛擬桌面中自訂 RDP 屬性。
 
-如需支援的屬性及其預設值的完整清單，請參閱 [支援的 RDP 檔設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) 。
+如需支援的屬性及其預設值的完整清單，請參閱 [支援的 RDP 檔設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) 。
 
 ## <a name="default-rdp-file-properties"></a>預設 RDP 檔案屬性
 
@@ -122,7 +122,7 @@ Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您已針對指定的主機集區自訂 RDP 屬性，您就可以登入 Windows 虛擬桌面用戶端，在使用者會話中進行測試。 接下來的操作指南將告訴您如何使用您選擇的用戶端連接到會話：
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java、jakartaee、javaee、microprofile、開放式-自由、websphere-自由、aro、openshift、red hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414423"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018387"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>使用 Azure Red Hat OpenShift 4 叢集上的 Open 可自由/WebSphere，部署 JAVA 應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "94414423"
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 請完成下列必要條件，才能成功地逐步解說本指南。
 
@@ -36,9 +36,9 @@ ms.locfileid: "94414423"
 1. 在您的本機系統上複製此範例的程式碼。 範例是在 [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro)上。
 1. 遵循 [建立 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-create-cluster)叢集中的指示。
 
-   雖然「取得 Red Hat pull 秘密」步驟標示為選擇性，但 **這是本文的必要專案** 。  提取密碼可讓您的 Azure Red Hat OpenShift 叢集找出開放式的「自由」操作員。
+   雖然「取得 Red Hat pull 秘密」步驟標示為選擇性，但 **這是本文的必要專案**。  提取密碼可讓您的 Azure Red Hat OpenShift 叢集找出開放式的「自由」操作員。
 
-   如果您打算在叢集上執行需要大量記憶體的應用程式，請使用參數為背景工作節點指定適當的虛擬機器大小 `--worker-vm-size` 。 例如， `Standard_E4s_v3` 是在叢集上安裝 Elasticsearch 操作員的最小虛擬機器大小。 如需詳細資訊，請參閱：
+   如果您打算在叢集上執行需要大量記憶體的應用程式，請使用參數為背景工作節點指定適當的虛擬機器大小 `--worker-vm-size` 。 例如， `Standard_E4s_v3` 是在叢集上安裝 Elasticsearch 操作員的最小虛擬機器大小。 如需詳細資訊，請參閱
 
    * [Azure CLI 建立叢集](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
    * [記憶體優化的支援虛擬機器大小](/azure/openshift/support-policies-v4#memory-optimized)
@@ -64,8 +64,8 @@ ms.locfileid: "94414423"
 ### <a name="create-an-openshift-namespace-for-the-java-app"></a>建立 JAVA 應用程式的 OpenShift 命名空間
 
 1. 使用認證，從瀏覽器登入 OpenShift web 主控台 `kubeadmin` 。
-2. 流覽至系統 **管理**  >  **命名空間**  >  **建立命名空間** 。
-3. 填寫 `open-liberty-demo` [ **名稱** ] 並選取 [ **建立** ]，如下所示。
+2. 流覽至系統 **管理**  >  **命名空間**  >  **建立命名空間**。
+3. 填寫 `open-liberty-demo` [ **名稱** ] 並選取 [ **建立**]，如下所示。
 
    ![建立命名空間](./media/howto-deploy-java-liberty-app/create-namespace.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "94414423"
 1. 使用認證，從瀏覽器登入 OpenShift web 主控台 `kubeadmin` 。
 1. 在 web 主控台的右上方，展開已登入使用者的內容功能表，然後選取 [ **複製登** 入] 命令。
 1. 如有必要，請使用相同的使用者登入新的索引標籤視窗。
-1. 選取 [ **顯示標記** ]。
+1. 選取 [ **顯示標記**]。
 1. 將下列以 **此權杖登** 入的值複製到剪貼簿，然後在 shell 中執行，如下所示。
 1. 執行下列命令，以將 `admin` 角色授與命名空間中的 **aad 使用者** `open-liberty-demo` 。
 
@@ -95,10 +95,10 @@ ms.locfileid: "94414423"
 建立並聯機到叢集之後，請安裝 Open 「自由」操作員。  Open 自由運算子的主要起始頁面是在 [GitHub](https://github.com/OpenLiberty/open-liberty-operator)上。
 
 1. 使用認證，從瀏覽器登入 OpenShift web 主控台 `kubeadmin` 。
-2. 流覽至 [ **運算子** ]  >  **OperatorHub** ，並搜尋 Open 的 **自由運算子** 。
+2. 流覽至 [**運算子**]  >  **OperatorHub** ，並搜尋 Open 的 **自由運算子**。
 3. 從搜尋結果中選取 [ **開放式自由操作操作員** ]。
 4. 選取 [安裝]。
-5. 在快顯 **建立操作員訂** 用帳戶中，檢查叢集 **上的所有命名空間 (預設)** 的 **安裝模式** 、 **Beta 版** 的 **更新通道** ，以及 **自動****核准策略** ：
+5. 在快顯 **建立操作員訂** 用帳戶中，檢查叢集 **上的所有命名空間 (預設)** 的 **安裝模式**、 **Beta 版** 的 **更新通道**，以及 **自動****核准策略**：
 
    ![建立開放式自由運算子的操作員訂用帳戶](./media/howto-deploy-java-liberty-app/install-operator.png)
 6. 選取 [ **訂閱** ] 並等候一或兩分鐘，直到顯示 [開啟的自由操作] 運算子為止。
@@ -126,7 +126,7 @@ ms.locfileid: "94414423"
    [INFO] Source compilation was successful.
    ```
 
-1. [http://localhost:9080/](http://localhost:9080/)在您的瀏覽器中開啟，以流覽應用程式首頁。 應用程式看起來會如下圖所示：
+1. `http://localhost:9080/`在您的瀏覽器中開啟，以流覽應用程式首頁。 應用程式看起來會如下圖所示：
 
    ![JAVAEE 咖啡廳 Web UI](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. 按 **ctrl-c** 停止應用程式，並開啟 [自由伺服器]。
@@ -164,7 +164,7 @@ ms.locfileid: "94414423"
 
 1. `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0`在主控台中執行。
 2. 等候「自由伺服器」啟動，並成功部署應用程式。
-3. [http://localhost:9080/](http://localhost:9080/)在您的瀏覽器中開啟，以流覽應用程式首頁。
+3. `http://localhost:9080/`在您的瀏覽器中開啟，以流覽應用程式首頁。
 4. 按 **ctrl + C** 以停止應用程式和自由伺服器。
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>將映射推送至容器映射登錄
@@ -183,7 +183,7 @@ ms.locfileid: "94414423"
 1. 使用 OpenShift CLI 登入，方法是使用下列步驟。  針對討論，此程式稱為 `oc login` 。
    1. 在 web 主控台的右上方，展開已登入使用者的內容功能表，然後選取 [ **複製登** 入] 命令。
    1. 如有必要，請使用相同的使用者登入新的索引標籤視窗。
-   1. 選取 [ **顯示標記** ]。
+   1. 選取 [ **顯示標記**]。
    1. 將下列以 **此權杖登** 入的值複製到剪貼簿，然後在 shell 中執行，如下所示。
 
        ```bash
@@ -233,18 +233,18 @@ docker push ${Container_Registry_URL}/open-liberty-demo/javaee-cafe-simple:1.0.0
 因為我們使用開放式的自由運算子來管理自由應用程式，所以我們需要建立其 *自訂資源定義* 的實例，其類型為 "OpenLibertyApplication"。 操作員接著將負責管理部署所需的 OpenShift 資源。
 
 1. 使用 Azure AD 使用者的認證，從瀏覽器登入 OpenShift web 主控台。
-1. 展開 [ **首頁** ]，然後選取 [ **專案**  >  **開放-自由-示範** ]。
+1. 展開 [**首頁**]，然後選取 [**專案**  >  **開放-自由-示範**]。
 1. 流覽至 **Operators**  >  **已安裝** 操作員的操作員。
-1. 在頁面的中間，選取 [ **開放式自由運算子** ]。
-1. 在頁面的中間，選取 [ **開放式自由應用程式** ]。  使用者介面中的專案導覽會反映所使用之技術的實際內含專案階層。
+1. 在頁面的中間，選取 [ **開放式自由運算子**]。
+1. 在頁面的中間，選取 [ **開放式自由應用程式**]。  使用者介面中的專案導覽會反映所使用之技術的實際內含專案階層。
    <!-- Diagram source https://github.com/Azure-Samples/open-liberty-on-aro/blob/master/diagrams/aro-java-containment.vsdx -->
    ![ARO JAVA 內含專案](./media/howto-deploy-java-liberty-app/aro-java-containment.png)
 1. 選取 [ **建立 OpenLibertyApplication**
 1. 將產生的 yaml 取代為您所在的位置 `<path-to-repo>/2-simple/openlibertyapplication.yaml` 。
 1. 選取 [建立]。 您將會回到 OpenLibertyApplications 清單。
-1. 選取 [ **javaee]-[咖啡館-簡單** ]。
-1. 在頁面的中間，選取 [ **資源** ]。
-1. 在資料表中，選取 **javaee** 的連結，其中包含 **路由** 的 **種類** 。
+1. 選取 [ **javaee]-[咖啡館-簡單**]。
+1. 在頁面的中間，選取 [ **資源**]。
+1. 在資料表中，選取 **javaee** 的連結，其中包含 **路由** 的 **種類**。
 1. 在開啟的頁面上，選取下列 **位置** 的連結。
 
 您會在瀏覽器中看到開啟的應用程式首頁。
@@ -253,11 +253,11 @@ docker push ${Container_Registry_URL}/open-liberty-demo/javaee-cafe-simple:1.0.0
 
 當您完成應用程式時，請遵循下列步驟，從 Open Shift 中刪除應用程式。
 
-1. 在左側流覽窗格中，展開 [ **運算子** ] 的專案。
-1. 選取 [ **已安裝的操作員** ]。
-1. 選取 [ **開放式自由運算子** ]。
-1. 在頁面的中間，選取 [ **開放式自由應用程式** ]。
-1. 選取垂直省略號 (三個垂直點) 然後選取 [ **刪除 OpenLiberty 應用程式** ]。
+1. 在左側流覽窗格中，展開 [ **運算子**] 的專案。
+1. 選取 [ **已安裝的操作員**]。
+1. 選取 [ **開放式自由運算子**]。
+1. 在頁面的中間，選取 [ **開放式自由應用程式**]。
+1. 選取垂直省略號 (三個垂直點) 然後選取 [ **刪除 OpenLiberty 應用程式**]。
 
 ### <a name="deploy-the-application-from-cli"></a>從 CLI 部署應用程式
 
@@ -316,7 +316,7 @@ oc delete -f openlibertyapplication.yaml
 
 遵循[教學課程：刪除 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-delete-cluster)叢集中的步驟來刪除 ARO 叢集
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本指南中，您已瞭解如何：
 > [!div class="checklist"]

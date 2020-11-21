@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcfff005eaaac034f5fed13b6d4d18e20d2afae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078124"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018968"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>靜態資料的 Language Understanding 服務加密
 
@@ -32,7 +32,7 @@ ms.locfileid: "89078124"
 
 您也可以選擇使用自己的金鑰來管理您的訂用帳戶。 客戶管理的金鑰 (CMK) ，也稱為自備金鑰 (BYOK) ，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。
 
-您必須使用 Azure Key Vault 來儲存客戶自控金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+您必須使用 Azure Key Vault 來儲存客戶自控金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Language Understanding 客戶管理的金鑰
 
@@ -44,7 +44,7 @@ ms.locfileid: "89078124"
 
 使用 E0 層搭配現有/先前建立的應用程式時，有一些限制：
 
-* 將會封鎖遷移至 E0 資源。 使用者只能將其應用程式遷移至 F0 資源。 將現有資源遷移至 F0 之後，您可以在 E0 層中建立新的資源。 請 [在這裡](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)深入瞭解遷移。  
+* 將會封鎖遷移至 E0 資源。 使用者只能將其應用程式遷移至 F0 資源。 將現有資源遷移至 F0 之後，您可以在 E0 層中建立新的資源。 請 [在這裡](./luis-migration-authoring.md)深入瞭解遷移。  
 * 將應用程式移入或移出 E0 資源將會遭到封鎖。 這項限制的解決方式是匯出現有的應用程式，並將它匯入為 E0 資源。
 * 不支援 Bing 拼寫檢查功能。
 * 如果您的應用程式是 E0，則會停用記錄終端使用者流量。
@@ -59,19 +59,19 @@ ms.locfileid: "89078124"
 
 - [使用 Azure 入口網站的認知服務加密 Key Vault 設定客戶管理的金鑰](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-啟用客戶管理的金鑰也會啟用系統指派的受控識別，這是 Azure AD 的功能。 一旦啟用系統指派的受控識別，此資源就會向 Azure Active Directory 註冊。 註冊之後，受控識別將會獲得在客戶管理的金鑰設定期間選取的 Key Vault 存取權。 您可以深入瞭解 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+啟用客戶管理的金鑰也會啟用系統指派的受控識別，這是 Azure AD 的功能。 一旦啟用系統指派的受控識別，此資源就會向 Azure Active Directory 註冊。 註冊之後，受控識別將會獲得在客戶管理的金鑰設定期間選取的 Key Vault 存取權。 您可以深入瞭解 [受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 > [!IMPORTANT]
 > 如果您停用系統指派的受控識別，將會移除對金鑰保存庫的存取權，而且將無法再存取使用客戶金鑰加密的任何資料。 相依于此資料的任何功能將會停止運作。
 
 > [!IMPORTANT]
-> 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動在幕後指派受控識別。 如果您之後將訂用帳戶、資源群組或資源從某個 Azure AD 目錄移至另一個目錄，與該資源相關聯的受控識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在[Azure 資源受控識別的常見問題和已知問題](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂**用帳戶。  
+> 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動在幕後指派受控識別。 如果您之後將訂用帳戶、資源群組或資源從某個 Azure AD 目錄移至另一個目錄，與該資源相關聯的受控識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在 [Azure 資源受控識別的常見問題和已知問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂** 用帳戶。  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>在 Azure Key Vault 中儲存客戶管理的金鑰
 
 若要啟用客戶管理的金鑰，您必須使用 Azure Key Vault 來儲存您的金鑰。 您必須同時啟用虛 **刪除** 和不 **清除** 金鑰保存庫的屬性。
 
-認知服務加密只支援大小為2048的 RSA 金鑰。 如需有關金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)的**Key Vault 金鑰**。
+認知服務加密只支援大小為2048的 RSA 金鑰。 如需有關金鑰的詳細資訊，請參閱 [關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/general/about-keys-secrets-certificates.md)的 **Key Vault 金鑰**。
 
 ### <a name="rotate-customer-managed-keys"></a>輪替客戶管理的金鑰
 
@@ -81,9 +81,9 @@ ms.locfileid: "89078124"
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>撤銷客戶管理金鑰的存取權
 
-若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷存取權實際上會封鎖對認知服務資源中所有資料的存取，因為認知服務無法存取加密金鑰。
+若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤銷存取權實際上會封鎖對認知服務資源中所有資料的存取，因為認知服務無法存取加密金鑰。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [LUIS Service Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)
-* [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [深入瞭解 Azure Key Vault](../../key-vault/general/overview.md)

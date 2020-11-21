@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568650"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020107"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure 時間序列深入解析 Gen1 Explorer
 
@@ -45,8 +45,8 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 在您可以使用 Azure 時間序列深入解析 Explorer 之前，您必須：
 
 - 建立 Azure 時間序列深入解析環境。 如需詳細資訊，請參閱 [如何開始使用 Azure 時間序列深入解析](./time-series-insights-get-started.md)。
-- 在環境中提供您帳戶的[存取權](time-series-insights-data-access.md)。
-- 在其中新增 [IoT 中樞](time-series-insights-how-to-add-an-event-source-iothub.md) 或 [事件中樞](time-series-insights-how-to-add-an-event-source-eventhub.md) 的事件來源。
+- 在環境中提供您帳戶的[存取權](./concepts-access-policies.md)。
+- 在其中新增 [IoT 中樞](./how-to-ingest-data-iot-hub.md) 或 [事件中樞](./how-to-ingest-data-event-hub.md) 的事件來源。
 
 ## <a name="explore-and-query-data"></a>探索及查詢資料
 
@@ -72,9 +72,9 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 
         [![詞彙選取、篩選和查詢面板](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
 
-      - 述**詞：使用**述詞來快速篩選您的事件，方法是使用下表所列的一組運算元。 如果您選取或按一下來進行搜尋，述詞會根據該搜尋自動進行更新。 支援的運算元類型包括：
+      - 述 **詞：使用** 述詞來快速篩選您的事件，方法是使用下表所列的一組運算元。 如果您選取或按一下來進行搜尋，述詞會根據該搜尋自動進行更新。 支援的運算元類型包括：
 
-         |作業  |支援的類型  |注意  |
+         |作業  |支援的類型  |備註  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**、 **DateTime**、 **TimeSpan**       |         |
          |**=**, **!=**, **<>**     | **String**、 **Bool**、 **Double**、 **DateTime**、 **TimeSpan**、 **Null**        |         |
@@ -87,7 +87,7 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 
 1. 您可以使用 [ **間隔大小** ] 滑杆工具來放大和縮小相同 timespan 的間隔。 滑杆可讓您更精確地控制多個時間配量之間的移動，將配量顯示為小到毫秒的平滑趨勢，讓您能夠顯示及分析資料的細微、高解析度的剪下。 滑杆的預設起始點會設定為您的選取專案中最理想的資料檢視，以平衡解析度、查詢速度和資料細微性。
 
-1. **時間筆刷**工具可讓您輕鬆地從一個時間範圍流覽至另一個 timespan。
+1. **時間筆刷** 工具可讓您輕鬆地從一個時間範圍流覽至另一個 timespan。
 
 1. 選取 [ **儲存** ] 圖示以儲存目前的查詢，並與其他環境使用者共用。 當您選取 [ **開啟** ] 圖示時，可以在您可以存取的環境中，檢查所有已儲存的查詢和其他使用者的任何共用查詢。
 
@@ -120,13 +120,13 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 1. 探索事件之後，請選取 [ **統計** 資料] 索引標籤，以公開模式和資料行統計資料。
 
     - **模式**：這項功能會主動呈現所選資料區域中最統計的重大模式。 您不需要查看數以千計的事件，就能瞭解哪些模式需要最多時間和能源。 有了 Azure 時間序列深入解析，您可以直接跳到這些統計的重大模式，以繼續進行分析。 這項功能對於事後調查歷史資料也很有幫助。
-    - 資料**行統計**資料：資料行統計資料會提供圖表及資料表，將所選資料數列之每個資料行的資料細分為選取的 timespan。
+    - 資料 **行統計** 資料：資料行統計資料會提供圖表及資料表，將所選資料數列之每個資料行的資料細分為選取的 timespan。
 
       [![統計資料行圖表和選項](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
 現在您已瞭解 Azure 時間序列深入解析 explorer web 應用程式中可用的主要功能、設定設定和顯示選項。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何 [診斷和解決](time-series-insights-diagnose-and-solve-problems.md) Azure 時間序列深入解析環境中的問題。
 

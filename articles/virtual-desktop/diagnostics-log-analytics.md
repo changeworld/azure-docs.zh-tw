@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006800"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018285"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用 Log Analytics 進行診斷功能
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 
 Windows 虛擬桌面使用 [Azure 監視器](../azure-monitor/overview.md) 來監視和警示，就像許多其他 Azure 服務一樣。 系統管理員能藉此透過單一介面來辨識問題。 此服務會建立使用者和系統管理動作的活動記錄。 每個活動記錄都屬於下列類別：
 
@@ -46,7 +46,7 @@ Azure 監視器可讓您分析 Windows 虛擬桌面資料，並在相同的工�
 在您可以使用 Log Analytics 之前，您必須先建立工作區。 若要這樣做，請遵循下列其中一篇文章中的指示：
 
 - 如果您偏好使用 Azure 入口網站，請參閱 [Azure 入口網站中的建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
-- 如果您偏好使用 PowerShell，請參閱 [使用 Powershell 建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace-posh.md)。
+- 如果您偏好使用 PowerShell，請參閱 [使用 Powershell 建立 Log Analytics 工作區](../azure-monitor/platform/powershell-workspace-configuration.md)。
 
 建立工作區之後，請依照 [將 Windows 電腦連線到 Azure 監視器](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) 中的指示取得下列資訊：
 
@@ -80,10 +80,10 @@ Azure 監視器可讓您分析 Windows 虛擬桌面資料，並在相同的工�
 
 5. 輸入設定設定的名稱，然後選取 [ **傳送至 Log Analytics**]。 您使用的名稱不應包含空格，而且應該符合 [Azure 命名慣例](../azure-resource-manager/management/resource-name-rules.md)。 在記錄中，您可以選取您要新增至 Log Analytics 的所有選項，例如檢查點、錯誤、管理等等。
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]。
 
 >[!NOTE]
->Log Analytics 可讓您選擇將資料串流至 [事件中樞](../event-hubs/event-hubs-about.md) ，或將它保存在儲存體帳戶中。 若要深入瞭解這項功能，請參閱將 [azure 監視資料串流至事件中樞](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ，並 [將 azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)。
+>Log Analytics 可讓您選擇將資料串流至 [事件中樞](../event-hubs/event-hubs-about.md) ，或將它保存在儲存體帳戶中。 若要深入瞭解這項功能，請參閱將 [azure 監視資料串流至事件中樞](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ，並 [將 azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
 
 ## <a name="how-to-access-log-analytics"></a>如何存取 Log Analytics
 
@@ -114,7 +114,7 @@ Azure 監視器可讓您分析 Windows 虛擬桌面資料，並在相同的工�
 5. 您已經準備好查詢診斷。 所有診斷資料表都有一個 "WVD" 前置詞。
 
 >[!NOTE]
->如需有關 Azure 監視器記錄檔中所儲存之資料表的詳細資訊，請參閱 [Azure 監視器資料參考](https://docs.microsoft.com/azure/azure-monitor/reference/)。 與 Windows 虛擬桌面相關的所有資料表都會標示為「WVD」。
+>如需有關 Azure 監視器記錄檔中所儲存之資料表的詳細資訊，請參閱 [Azure 監視器資料參考](/azure/azure-monitor/reference/)。 與 Windows 虛擬桌面相關的所有資料表都會標示為「WVD」。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>傳送診斷事件的步調
 
@@ -134,9 +134,9 @@ Log Analytics 只會報告這些連接活動的中繼狀態：
 1. 選取 [ **Windows 虛擬桌面** ] 以查看可用的查詢。
 1. 選取 [ **執行** ] 以執行選取的查詢。
 
-深入瞭解 [Azure 監視器 Log Analytics 中儲存查詢](../azure-monitor/log-query/saved-queries.md)的範例查詢介面。
+深入瞭解 [Azure 監視器 Log Analytics 中儲存查詢](../azure-monitor/log-query/example-queries.md)的範例查詢介面。
 
-下列查詢清單可讓您查看單一使用者的連接資訊或問題。 您可以在 [Log Analytics 查詢編輯器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中執行這些查詢。 針對每個查詢，將取代為 `userupn` 您要查閱之使用者的 UPN。
+下列查詢清單可讓您查看單一使用者的連接資訊或問題。 您可以在 [Log Analytics 查詢編輯器](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)中執行這些查詢。 針對每個查詢，將取代為 `userupn` 您要查閱之使用者的 UPN。
 
 
 若要尋找單一使用者的所有連接：
@@ -197,6 +197,6 @@ WVDErrors
 >- WVDErrors 資料表顯示當使用者訂閱應用程式或桌上型電腦清單時，所發生的管理錯誤、主機註冊問題和其他問題。
 >- WVDErrors 可協助您找出可由管理工作解決的問題。 針對這些類型的問題，ServiceError 上的值一律會顯示為 "false"。 如果 ServiceError = "true"，您將需要將問題呈報給 Microsoft。 請確定您提供了您呈報的錯誤 CorrelationID。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要檢查診斷功能可為您識別的常見錯誤案例，請參閱 [識別及診斷問題](diagnostics-role-service.md#common-error-scenarios)。

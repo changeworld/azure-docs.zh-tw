@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 120852c3e66594b1cf5cd28bb52ce06634211060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d2a1702ea131e9b1b4bf5e586f4290db3aff7ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541082"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018764"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用 Bing 拼字檢查更正拼錯的字組
 
@@ -28,7 +28,7 @@ ms.locfileid: "91541082"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在左上角選取 [建立資源]****。
+2. 在左上角選取 [建立資源]。
 
 3. 在搜尋方塊中，輸入 `Bing Spell Check API V7`。
 
@@ -36,17 +36,17 @@ ms.locfileid: "91541082"
 
 4. 選取此服務。
 
-5. 資訊面板會顯示在右邊，包含法律聲明等資訊。 選取 [建立]**** 開始訂用帳戶建立程序。
+5. 資訊面板會顯示在右邊，包含法律聲明等資訊。 選取 [建立] 開始訂用帳戶建立程序。
 
 6. 在下一個面板中，輸入您的服務設定。 等候服務建立程序完成。
 
     ![輸入服務設定](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. 選取左側導覽列上 [我的最愛]**** 標題底下的 [所有資源]****。
+7. 選取左側導覽列上 [我的最愛] 標題底下的 [所有資源]。
 
-8. 選取新服務。 其類型為 [認知服務]**** 且位置為 [全域]****。
+8. 選取新服務。 其類型為 [認知服務] 且位置為 [全域]。
 
-9. 在主面板中，選取 [金鑰]**** 以查看新的金鑰。
+9. 在主面板中，選取 [金鑰] 以查看新的金鑰。
 
     ![擷取金鑰](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
@@ -97,4 +97,4 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 [發佈](luis-how-to-publish-app.md) 頁面具有 **啟用 Bing 拼字檢查工具** 核取方塊。 這方便於建立金鑰並理解如何變更端點 URL。 您仍然必須使用正確的端點參數，以便更正每個語句的拼字。
 
 > [!div class="nextstepaction"]
-> [深入了解範例語句](luis-how-to-add-example-utterances.md)
+> [深入了解範例語句](./luis-how-to-add-entities.md)

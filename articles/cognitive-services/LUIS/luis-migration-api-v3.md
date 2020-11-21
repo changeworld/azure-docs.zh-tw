@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541334"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018781"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的預測端點變更
 
@@ -56,11 +56,11 @@ V3 在移至 GA 時做了下列變更：
 如果您不知道您的用戶端應用程式或整合 (Bot Framework，而且 Bing 拼寫檢查 V7) 會受到影響，且您很熟悉 LUIS 應用程式撰寫和預測端點的遷移，請開始使用 V3 預測端點。 V2 預測端點仍然可供使用，而且是不錯的回溯策略。
 
 
-## <a name="not-supported"></a>不支援
+## <a name="not-supported"></a>不受支援
 
 ### <a name="bing-spell-check"></a>Bing 拼字檢查
 
-V3 預測端點不支援此 API-請繼續使用 V2 API 預測端點進行拼寫更正。 如果您在使用 V3 API 時需要拼寫更正，請讓用戶端應用程式呼叫 [Bing 拼寫檢查](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API，並在將文字傳送至 LUIS API 之前，將文字變更為正確的拼寫。
+V3 預測端點不支援此 API-請繼續使用 V2 API 預測端點進行拼寫更正。 如果您在使用 V3 API 時需要拼寫更正，請讓用戶端應用程式呼叫 [Bing 拼寫檢查](../bing-spell-check/overview.md) API，並在將文字傳送至 LUIS API 之前，將文字變更為正確的拼寫。
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework 和 Azure Bot Service 用戶端應用程式
 
@@ -109,7 +109,7 @@ V2 預測 API 在 V3 preview （2020年6月8日）後至少有9個月不會被�
 |`externalEntities`|array|僅限第 3 版|不需要。|[外部實體](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) 可讓您的 LUIS 應用程式在執行時間識別和標記實體的能力，而這些實體可作為現有實體的功能使用。 |
 |`options.datetimeReference`|字串|僅限第 3 版|沒有預設值|用來判斷 [datetimeV2 位移](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 DatetimeReference 的格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
 |`options.preferExternalEntities`|boolean|僅限第 3 版|false|指定是否使用 [與現有實體) 相同名稱的使用者外部實體 (](schema-change-prediction-runtime.md#override-existing-model-predictions) ，或使用模型中的現有實體來進行預測。 |
-|`query`|字串|僅限第 3 版|必要。|**在 V2**中，要預測的語句是在 `q` 參數中。 <br><br>**在 V3**中，此功能會在參數中傳遞 `query` 。|
+|`query`|字串|僅限第 3 版|必要。|**在 V2** 中，要預測的語句是在 `q` 參數中。 <br><br>**在 V3** 中，此功能會在參數中傳遞 `query` 。|
 
 ## <a name="response-changes"></a>回應變更
 
@@ -227,7 +227,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-在 V3 中，實體 _角色_會參考實體，如果是針對角色的預測：
+在 V3 中，實體 _角色_ 會參考實體，如果是針對角色的預測：
 
 ```JSON
 "entities":{
@@ -272,6 +272,6 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 V2 API 在 V3 預覽後至少有9個月不會被取代。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 使用 V3 API 檔將現有的 REST 呼叫更新至 LUIS [端點](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) api。

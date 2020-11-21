@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 650c239423db23bcd4329ab38080b82809fa4f09
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cff5c68803d0930bbf3310a385ffa0132bcbb3b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842170"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95017021"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -50,7 +50,7 @@ ms.locfileid: "94842170"
 自動時鐘調整 | 不支援。<br/><br/> 在備份 VM 時，Azure 備份不會自動調整日光節約時間變更。<br/><br/>  請視需要手動修改原則。
 [混合式備份的安全性功能](./backup-azure-security-feature.md) |不支援停用安全性功能。
 備份其電腦時間已變更的 VM | 不支援。<br/><br/> 如果在啟用該 VM 的備份之後，電腦時間變更為未來的日期時間，但即使還原時間變更，也不保證會成功備份。
-[虛擬機器擴展集中](../virtual-machine-scale-sets/overview.md)的 Azure vm | [協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes)設定為3的 vm 支援備份和還原。 <br><br>不支援可用性設定組。
+[虛擬機器擴展集中](../virtual-machine-scale-sets/overview.md)的 Azure vm |不支援可用性設定組。
 
 ## <a name="operating-system-support-windows"></a>作業系統支援 (Windows)
 
@@ -140,7 +140,7 @@ DPM/MABS 磁碟上的復原點 | 64 個 (檔案伺服器) 及 448 個 (應用程
 VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<br/><br/> [深入了解。](../virtual-machines/sizes.md)
 備份[可用性設定組](../virtual-machines/availability.md#availability-sets)中的 VM | 支援。<br/><br/> 您無法使用快速建立 VM 的選項來還原可用性設定組中 VM。 在還原 VM 時，您必須還原磁碟並將其用來部署 VM，或還原磁碟並將其用來取代現有的磁碟。
 備份使用 [Hybrid Use Benefit (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) (機器翻譯) 部署的 VM | 支援。
-備份在[擴展集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支援。 容錯網域的[協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md)應該設定為2。 不支援可用性設定組。
+備份在[擴展集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支援。 不支援可用性設定組。
 備份從[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)部署的 vm<br/><br/> (由 Microsoft 或第三方發佈) |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。 我們不會還原作為 Vm 的 Azure Marketplace Vm，因為這些 Vm 需要購買資訊。 它們只會還原為磁片。
 備份從自訂映像 (第三方) 部署的 VM |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。
 備份已移轉至 Azure 的 VM| 支援。<br/><br/> 若要備份 VM，必須在已移轉的機器上安裝 VM 代理程式。

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: a16267b0bc5d9b550c73dc4e1dafee8304ec0237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541815"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019308"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a> (LUIS) 應用程式建立語言理解的最佳作法
 使用應用程式撰寫流程來建立您的 LUIS 應用程式：
@@ -87,13 +87,13 @@ ms.locfileid: "91541815"
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>使用版本反復建立您的應用程式
 
-每個撰寫循環都應該在新[版本](luis-concept-version.md) (從現有版本複製) 之內。
+每個撰寫循環都應該在新[版本](./luis-concept-app-iteration.md) (從現有版本複製) 之內。
 
 ## <a name="do-build-for-model-decomposition"></a>進行模型分解的組建
 
 模型分解的一般流程如下：
 
-* 根據用戶端應用程式的使用者意圖建立**意圖**
+* 根據用戶端應用程式的使用者意圖建立 **意圖**
 * 根據真實世界使用者輸入新增15-30 範例語句
 * 在範例語句中標示最上層資料概念
 * 將資料概念分成子實體
@@ -137,7 +137,7 @@ V3 撰寫 API 允許模型分解。
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>請務必利用主動式學習的建議功能
 
-請定期使用[主動式學習](luis-how-to-review-endpoint-utterances.md)的**檢閱端點語句**，而不要將更多範例語句新增至意圖。 由於應用程式會不斷接收端點語句，因此這份清單會不斷成長並變更。
+請定期使用 [主動式學習](luis-how-to-review-endpoint-utterances.md)的 **檢閱端點語句**，而不要將更多範例語句新增至意圖。 由於應用程式會不斷接收端點語句，因此這份清單會不斷成長並變更。
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>請務必監視您應用程式的效能
 
@@ -193,6 +193,6 @@ LUIS 會預期意圖的語句中有所變化。 語句可以在改變的同時�
 
 請新增 10 或 15 個語句之後，再進行定型和發佈。 這將可讓您了解對預測準確性的影響。 新增單一語句對分數可能不會有明顯的影響。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 了解如何在 LUIS 應用程式中[規劃您的應用程式](luis-how-plan-your-app.md)。

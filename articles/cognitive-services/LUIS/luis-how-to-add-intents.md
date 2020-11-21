@@ -9,18 +9,18 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
-ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540926"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018934"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>新增意圖以判斷語句的使用者用意
 
 將[意圖](luis-concept-intent.md)新增至 LUIS 應用程式，以識別具有相同用意的問題或命令群組。
 
-在 LUIS 入口網站中，您可以從頂端導覽列的 [ **組建** ] 區段，然後從左面板的 **意圖**來管理意圖。
+在 LUIS 入口網站中，您可以從頂端導覽列的 [ **組建** ] 區段，然後從左面板的 **意圖** 來管理意圖。
 
 ## <a name="add-an-intent-to-your-app"></a>在您的應用程式中新增意圖
 
@@ -56,7 +56,7 @@ ms.locfileid: "91540926"
     > [!div class="mx-imgBorder"]
     > ![若要尋找語句預測錯誤並加以修正，請使用篩選選項。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-1. 若要在 [意圖詳細資料] 頁面上顯示分數值，請從 [**視圖**選項] 功能表中選取 [**顯示詳細資料意圖分數**]。
+1. 若要在 [意圖詳細資料] 頁面上顯示分數值，請從 [**視圖** 選項] 功能表中選取 [**顯示詳細資料意圖分數**]。
 
     當套用篩選和視圖，而且有範例語句有錯誤時，範例語句清單會顯示語句和問題。
 
@@ -79,6 +79,6 @@ ms.locfileid: "91540926"
 
 在您新增、編輯或移除意圖之後，[訓練](luis-how-to-train.md)並[發佈](luis-how-to-publish-app.md)您的應用程式，變更才會套用到端點查詢。 不要在每次單一變更後定型。 在變更群組之後定型。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-深入了解如何新增具有實體的[範例語句](luis-how-to-add-example-utterances.md)。
+深入了解如何新增具有實體的[範例語句](./luis-how-to-add-entities.md)。

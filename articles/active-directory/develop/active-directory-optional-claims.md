@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 340f451080f43fab213a3afc69f2adfae83514d7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1a08aa4261e8d2546d16bb60394829c83604b4cd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837323"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019954"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -138,6 +138,9 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 選取要新增的選擇性宣告。
 1. 選取 [新增]。
 
+> [!NOTE]
+> 目前在 Azure AD B2C 租使用者中註冊的應用程式無法使用 UI 選項 **權杖** 設定分頁。 針對在 B2C 租使用者中註冊的應用程式，可以藉由修改應用程式資訊清單來設定選擇性宣告。 如需詳細資訊，請參閱 [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input) 
+
 **透過應用程式資訊清單設定選擇性宣告：**
 
 [![示範如何使用應用程式資訊清單設定選擇性宣告](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
@@ -175,6 +178,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
     ```
 
 2. 完成後，選取 [儲存]。 現在，應用程式的權杖已包含指定的選擇性宣告。
+
 
 ### <a name="optionalclaims-type"></a>OptionalClaims 類型
 

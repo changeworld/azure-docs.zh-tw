@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
-ms.openlocfilehash: fcc803e87b2efd3e94b90eb17258ab3bb156359f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541422"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018883"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中建立新的 LUIS 應用程式
 有好幾種方法可建立 LUIS 應用程式。 您可以在 LUIS 入口網站中建立 LUIS 應用程式，或透過 LUIS 撰寫 [API](developer-reference-resource.md)。
@@ -24,7 +24,7 @@ ms.locfileid: "91541422"
 您可以透過數種方式在入口網站中建立新的應用程式：
 
 * 從空的應用程式著手，並建立意圖、語句和實體。
-* 從空的應用程式著手，並新增[預建網域](luis-how-to-use-prebuilt-domains.md)。
+* 從空的應用程式著手，並新增[預建網域](./howto-add-prebuilt-models.md)。
 * 從 `.lu` `.json` 已經包含意圖、語句和實體的或檔案匯入 LUIS 應用程式。
 
 ## <a name="using-the-authoring-apis"></a>使用撰寫 API
@@ -43,7 +43,7 @@ ms.locfileid: "91541422"
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中建立新的應用程式
 
-1. 在 **我的應用程式** ] 頁面上選取您的 **訂**用帳戶，然後  **撰寫資源** 然後 **+ 建立**。 
+1. 在 **我的應用程式** ] 頁面上選取您的 **訂** 用帳戶，然後  **撰寫資源** 然後 **+ 建立**。 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS 應用程式清單](./media/create-app-in-portal.png)
@@ -57,7 +57,7 @@ ms.locfileid: "91541422"
     > [!NOTE]
     > 建立應用程式之後便無法變更文化特性 (Culture)。
 
-    建立應用程式之後，LUIS 入口網站會顯示**Intents** `None` 已為您建立之意圖的意圖清單。 您現在有空白應用程式。
+    建立應用程式之後，LUIS 入口網站會顯示 **Intents** `None` 已為您建立之意圖的意圖清單。 您現在有空白應用程式。
 
     > [!div class="mx-imgBorder"]
     > ![未建立意圖的意圖清單（不含範例語句）。](media/pizza-tutorial-new-app-empty-intent-list.png)
@@ -73,6 +73,6 @@ ms.locfileid: "91541422"
 * 以離線分析的形式匯出端點記錄檔 `.csv`
 * 刪除應用程式
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如果您的應用程式設計包含意圖偵測，請 [建立新的意圖](luis-how-to-add-intents.md)，並新增範例語句。 如果您的應用程式設計只是資料解壓縮，請將範例語句新增至 [無] 意圖，然後 [建立實體](luis-how-to-add-example-utterances.md)，並使用這些實體來標示範例語句。
+如果您的應用程式設計包含意圖偵測，請 [建立新的意圖](luis-how-to-add-intents.md)，並新增範例語句。 如果您的應用程式設計只是資料解壓縮，請將範例語句新增至 [無] 意圖，然後 [建立實體](./luis-how-to-add-entities.md)，並使用這些實體來標示範例語句。
