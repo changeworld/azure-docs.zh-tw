@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598112"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016780"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>規劃 Azure 時間序列深入解析 Gen2 環境
 
@@ -45,7 +45,7 @@ Azure 時間序列深入解析採用隨用隨付的商務模型。 如需有關�
 對於暖存放區的查詢是免費的，而冷存放區上的查詢則會產生成本。 請務必瞭解您的查詢模式，並據以規劃您的暖存放區設定。 建議您將最新資料的互動式分析放在您的暖存放區和模式分析和長期趨勢中。
 
 > [!NOTE]
-> 若要閱讀更多有關如何查詢暖資料的資訊，請參閱 [API 參考](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)。
+> 若要閱讀更多有關如何查詢暖資料的資訊，請參閱 [API 參考](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)。
 
 若要開始使用，您需要三個額外項目：
 
@@ -64,9 +64,9 @@ Azure 時間序列深入解析採用隨用隨付的商務模型。 如需有關�
 > [!IMPORTANT]
 > 時間序列識別碼 *稍後無法變更*。 在最終選取前及第一次使用前，請確認每個識別碼。
 
-您最多可以選取三個金鑰，以唯一區分您的資源。 如需詳細資訊，請參閱 [選擇時間序列識別碼](./time-series-insights-update-how-to-id.md) 和內嵌 [規則](concepts-json-flattening-escaping-rules.md)的最佳作法。
+您最多可以選取三個金鑰，以唯一區分您的資源。 如需詳細資訊，請參閱 [選擇時間序列識別碼](./how-to-select-tsid.md) 和內嵌 [規則](concepts-json-flattening-escaping-rules.md)的最佳作法。
 
-**時間戳記**屬性也很重要。 您可以在新增事件來源時指定此屬性。 每個事件來源都有選擇性的時間戳記屬性，可用來依時間追蹤事件來源。 時間戳記值會區分大小寫，而且格式必須設定為每個事件來源的個別規格。
+**時間戳記** 屬性也很重要。 您可以在新增事件來源時指定此屬性。 每個事件來源都有選擇性的時間戳記屬性，可用來依時間追蹤事件來源。 時間戳記值會區分大小寫，而且格式必須設定為每個事件來源的個別規格。
 
 如果保留空白，則會使用事件加入 IoT 中樞或事件中樞的時間，作為事件時間戳記。 一般情況下，使用者應該選擇自訂時間戳記屬性，並使用感應器或標記產生讀取的時間，而不是中樞排入佇列的時間。 如需詳細資訊，以及閱讀時區位移讀取 [事件來源時間戳記](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp)的相關資訊。
 
@@ -74,7 +74,7 @@ Azure 時間序列深入解析採用隨用隨付的商務模型。 如需有關�
 
 您現在可以設定 Azure 時間序列深入解析環境的時間序列模型。 使用新模型很容易就能尋找及分析 IoT 資料。 它能用來鑑藏、維護及擴充時間序列資料，並協助準備取用者可用的資料集。 該模型使用時間序列識別碼，它對應到的執行個體與唯一資源相關聯，且該資源有變數 (稱為類型) 和階層。 若要深入瞭解，請參閱「 [時間序列模型](./concepts-model-overview.md) 」總覽。
 
-模型是動態的，所以隨時可以建置。 若要快速開始使用，請先建立並上傳，然後再將資料推送至 Azure 時間序列深入解析。 若要建立模型，請參閱 [使用時間序列模型](/azure/time-series-insights/concepts-model-overview)。
+模型是動態的，所以隨時可以建置。 若要快速開始使用，請先建立並上傳，然後再將資料推送至 Azure 時間序列深入解析。 若要建立模型，請參閱 [使用時間序列模型](./concepts-model-overview.md)。
 
 對許多客戶而言，時間序列模型對應至現有的資產模型或 ERP 系統。 如果您沒有現有的模型，我們[提供](https://github.com/Microsoft/tsiclient)的預先建置使用者體驗可快速啟動並執行。 若要了解模型能如何協助您，請檢視[範例示範環境](https://insights.timeseries.azure.com/preview/demo)。
 
@@ -91,7 +91,7 @@ Azure 時間序列深入解析採用隨用隨付的商務模型。 如需有關�
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 請參閱 [Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務恢復設定選項。
 * 請參閱 [Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務恢復設定選項。

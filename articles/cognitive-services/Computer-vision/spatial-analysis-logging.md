@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496111"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014572"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遙測和疑難排解
 
@@ -51,7 +51,7 @@ Telegraf 是可搭配空間分析使用的開放原始碼映射，可在 Microso
 輸出：
 1. Azure 監視器
 
-提供的空間分析 telegraf 模組會將空間分析容器發出的所有遙測資料發佈至 Azure 監視器。 如需有關將 Azure 監視器新增至訂用帳戶的詳細資訊，請參閱 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 。
+提供的空間分析 telegraf 模組會將空間分析容器發出的所有遙測資料發佈至 Azure 監視器。 如需有關將 Azure 監視器新增至訂用帳戶的詳細資訊，請參閱 [Azure 監視器](../../azure-monitor/overview.md) 。
 
 設定 Azure 監視器之後，您將需要建立可讓模組傳送遙測的認證。 您可以使用 Azure 入口網站來建立新的服務主體，或使用下面的 Azure CLI 命令建立一個。
 
@@ -103,7 +103,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ### <a name="system-health-events"></a>系統健康情況事件
 
-| 活動名稱 | 說明|
+| 活動名稱 | Description|
 |------|---------|
 |archon_exit    |當 *使用者將空間* 分析模組狀態從「執行」變更為「 *已停止*」時傳送。  |
 |archon_error   |當容器內的任何進程損毀時傳送。 這是嚴重錯誤。  |
@@ -117,7 +117,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 |archon_graphHeartbeat  |每分鐘傳送的每個技能圖表的信號。 |
 |archon_apiKeyAuthFail |當電腦視覺資源金鑰因為下列原因而無法驗證容器超過24小時時傳送，原因如下：配額不足、無效、離線。 |
 |VideoIngesterHeartbeat     |每小時傳送一次，表示影片會從影片來源進行串流處理，並顯示該小時的錯誤數目。 針對每個圖表報告。 |
-|VideoIngesterState | *已停止*或*啟動*影片串流的報告。 針對每個圖表報告。 |
+|VideoIngesterState | *已停止* 或 *啟動* 影片串流的報告。 針對每個圖表報告。 |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>針對 IoT Edge 裝置進行疑難排解
 
@@ -199,7 +199,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 **設定上傳至 Azure Blob 儲存體**
 
 1. 建立您自己的 Azure Blob 儲存體帳戶（如果您尚未這樣做）。
-2. 從 Azure 入口網站取得儲存體帳戶的 **連接字串** 。 它會位於 **存取金鑰**中。
+2. 從 Azure 入口網站取得儲存體帳戶的 **連接字串** 。 它會位於 **存取金鑰** 中。
 3. 空間分析記錄會自動上傳至名為 *rtcvlogs* 的 Blob 儲存體容器，並使用下列檔案名格式： `{CONTAINER_NAME}/{START_TIME}-{END_TIME}-{QUERY_TIME}.log` 。
 
 ```json
@@ -216,7 +216,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 
 1. 移至您的 IoT 中樞入口網站頁面，選取 [ **Edge 裝置**]，然後選取您的裝置和診斷模組。 
-2. 移至模組的 [詳細資料] 頁面，然後按一下 [*_直接方法_*_] 索引標籤。
+2. 移至模組的 [詳細資料] 頁面，然後按一下 [*_直接方法_* _] 索引標籤。
 3. 輸入 `getRTCVLogs` 方法名稱，以及裝載中的 json 格式字串。 您可以輸入 `{}` ，這是空的承載。 
 4. 設定連接和方法超時，然後按一下 _ * [叫用方法]。
 5. 選取您的目標容器，並使用 **記錄語法** 一節中所述的參數建立承載 json 字串。 按一下 [叫用 **方法** ] 以執行要求。
@@ -224,7 +224,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 >[!NOTE]
 > 使用空的承載叫 `getRTCVLogs` 用方法，將會傳回在裝置上部署的所有容器的清單。 方法名稱會區分大小寫。 如果指定了不正確的方法名稱，您將會收到501錯誤。
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure 監視器遙測報告":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="叫用 getRTCVLogs 方法 ":::
 ![getRTCVLogs 直接方法頁面](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -245,7 +245,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 | 關鍵字 | 描述|
 |--|--|
-|DoPost| 是 *true* 或 *false*。 指出是否已上傳記錄。 當您選擇不上傳記錄時，api 會以**同步**方式傳回信息 *。 當您選擇上傳記錄時，如果要求有效，api 會傳回200，並以 _*_非同步方式_*_ 開始上傳記錄。|
+|DoPost| 是 *true* 或 *false*。 指出是否已上傳記錄。 當您選擇不上傳記錄時，api 會以 **同步** 方式傳回信息 *。 當您選擇上傳記錄時，如果要求有效，api 會傳回200，並以 _*_非同步方式_*_ 開始上傳記錄。|
 |TimeFilter| 套用至記錄的時間篩選準則。|
 |ValueFilters| 套用至記錄檔的關鍵字篩選。 |
 |TimeStamp| 方法執行開始時間。 |
@@ -316,8 +316,8 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>存取 Kubernetes API 端點。 
 
-1. 在裝置的本機 UI 中，移至 [_*裝置*] 頁面。 
-2. 在 **裝置端點**下，複製 Kubernetes API 服務端點。 此端點的字串為下列格式：`https://compute..[device-IP-address]`。
+1. 在裝置的本機 UI 中，移至 [_ *裝置*] 頁面。 
+2. 在 **裝置端點** 下，複製 Kubernetes API 服務端點。 此端點的字串為下列格式：`https://compute..[device-IP-address]`。
 3. 儲存端點字串。 您稍後會在設定以存取 Kubernetes 叢集時使用此設定 `kubectl` 。
 
 ### <a name="connect-to-powershell-interface"></a>連接到 PowerShell 介面
@@ -326,12 +326,12 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 > [!TIP]
 > * 開始之前，請確定您的 Windows 用戶端正在執行 Windows PowerShell 5.0 或更新版本。
-> * PowerShell 也 [可在 Linux 上使用](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux)。
+> * PowerShell 也 [可在 Linux 上使用](/powershell/scripting/install/installing-powershell-core-on-linux)。
 
 1. 以系統管理員身分執行 Windows PowerShell 會話。 
     1. 確定您的用戶端上正在執行 Windows 遠端管理服務。 在命令提示字元中，輸入 `winrm quickconfig`。
 
-2. 指派裝置 IP 位址的變數。 例如，`$ip = "<device-ip-address>"`。
+2. 指派裝置 IP 位址的變數。 例如： `$ip = "<device-ip-address>"` 。
 
 3. 使用下列命令將裝置的 IP 位址新增至用戶端的受信任主機清單。 
 
@@ -357,13 +357,13 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
     New-HcsKubernetesNamespace -Namespace
     ```
 
-2. 建立使用者並取得設定檔。 此命令會輸出 Kubernetes 叢集的設定資訊。 複製此資訊，並將其儲存在名為 *config*的檔案中。請勿將檔案儲存為副檔名。
+2. 建立使用者並取得設定檔。 此命令會輸出 Kubernetes 叢集的設定資訊。 複製此資訊，並將其儲存在名為 *config* 的檔案中。請勿將檔案儲存為副檔名。
     
     ```powershell
     New-HcsKubernetesUser -UserName
     ```
 
-3. 將*配置*檔新增至本機電腦上的使用者設定檔中的*kube 資料夾。*   
+3. 將 *配置* 檔新增至本機電腦上的使用者設定檔中的 *kube 資料夾。*   
 
 4. 將命名空間與您建立的使用者產生關聯。
 
@@ -395,13 +395,13 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|Command  |說明  |
+|命令  |說明  |
 |---------|---------|
-|`Get-HcsKubernetesUserConfig -AseUser`     | 產生 Kubernetes 設定檔。 使用命令時，請將資訊複製到名為 *config*的檔案中。請勿使用副檔名儲存檔案。        |
+|`Get-HcsKubernetesUserConfig -AseUser`     | 產生 Kubernetes 設定檔。 使用命令時，請將資訊複製到名為 *config* 的檔案中。請勿使用副檔名儲存檔案。        |
 | `Get-HcsApplianceInfo` | 傳回您裝置的相關資訊。 |
 | `Enable-HcsSupportAccess` | 產生存取認證以啟動支援會話。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [設定空間分析作業](./spatial-analysis-operations.md)

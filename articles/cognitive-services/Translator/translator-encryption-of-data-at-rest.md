@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7b9f86cebc3c2479105d2a52aa92a265f8a1b3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079195"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016508"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>待用資料的 Translator 加密
 
@@ -26,7 +26,7 @@ Translator 會自動將您上傳的資料加密，以建立自訂翻譯模型（
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
-根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 如果您使用的定價層支援客戶管理的金鑰，您可以在[Azure 入口網站](https://portal.azure.com)的 [**加密**] 區段中看到資源的加密設定，如下圖所示。
+根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 如果您使用的定價層支援客戶管理的金鑰，您可以在 [Azure 入口網站](https://portal.azure.com)的 [**加密**] 區段中看到資源的加密設定，如下圖所示。
 
 ![查看加密設定](../media/cognitive-services-encryption/encryptionblade.png)
 
@@ -47,7 +47,7 @@ Translator 會自動將您上傳的資料加密，以建立自訂翻譯模型（
 
 ### <a name="enable-customer-managed-keys"></a>啟用客戶管理的金鑰
 
-您必須使用 Azure Key Vault 來儲存客戶自控金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+您必須使用 Azure Key Vault 來儲存客戶自控金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 新的認知服務資源一律會使用 Microsoft 管理的金鑰進行加密。 建立資源時，無法啟用客戶管理的金鑰。 客戶管理的金鑰會儲存在 Azure Key Vault 中，而金鑰保存庫必須布建存取原則，以將金鑰許可權授與與認知服務資源相關聯的受控識別。 一旦建立資源之後，就可以使用受控識別。
 
@@ -55,28 +55,28 @@ Translator 會自動將您上傳的資料加密，以建立自訂翻譯模型（
 
 - [使用 Azure 入口網站的認知服務加密 Key Vault 設定客戶管理的金鑰](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-啟用客戶管理的金鑰也會啟用系統指派的受控識別，這是 Azure AD 的功能。 一旦啟用系統指派的受控識別，此資源就會向 Azure Active Directory 註冊。 註冊之後，受控識別將會獲得在客戶管理的金鑰設定期間選取的 Key Vault 存取權。 您可以深入瞭解 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+啟用客戶管理的金鑰也會啟用系統指派的受控識別，這是 Azure AD 的功能。 一旦啟用系統指派的受控識別，此資源就會向 Azure Active Directory 註冊。 註冊之後，受控識別將會獲得在客戶管理的金鑰設定期間選取的 Key Vault 存取權。 您可以深入瞭解 [受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 > [!IMPORTANT]
 > 如果您停用系統指派的受控識別，將會移除對金鑰保存庫的存取權，而且將無法再存取使用客戶金鑰加密的任何資料。 相依于此資料的任何功能將會停止運作。 任何您已部署的模型也將會解除部署。 所有上傳的資料都會從自訂翻譯刪除。 如果已重新啟用受控識別，我們將不會自動為您重新部署模型。
 
 > [!IMPORTANT]
-> 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動在幕後指派受控識別。 如果您之後將訂用帳戶、資源群組或資源從某個 Azure AD 目錄移至另一個目錄，與該資源相關聯的受控識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在[Azure 資源受控識別的常見問題和已知問題](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂**用帳戶。  
+> 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動在幕後指派受控識別。 如果您之後將訂用帳戶、資源群組或資源從某個 Azure AD 目錄移至另一個目錄，與該資源相關聯的受控識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在 [Azure 資源受控識別的常見問題和已知問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂** 用帳戶。  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>在 Azure Key Vault 中儲存客戶管理的金鑰
 
 若要啟用客戶管理的金鑰，您必須使用 Azure Key Vault 來儲存您的金鑰。 您必須同時啟用虛 **刪除** 和不 **清除** 金鑰保存庫的屬性。
 
-認知服務加密只支援大小為2048的 RSA 金鑰。 如需有關金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)的**Key Vault 金鑰**。
+認知服務加密只支援大小為2048的 RSA 金鑰。 如需有關金鑰的詳細資訊，請參閱 [關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/general/about-keys-secrets-certificates.md)的 **Key Vault 金鑰**。
 
 > [!NOTE]
 > 如果刪除整個金鑰保存庫，將不會再顯示您的資料，而且您的所有模型都將解除部署。 所有上傳的資料都會從自訂翻譯刪除。 
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>撤銷客戶管理金鑰的存取權
 
-若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷存取權實際上會封鎖對認知服務資源中所有資料的存取，而您的模型將會解除部署，因為認知服務無法存取加密金鑰。 也會從自訂翻譯中刪除所有上傳的資料。
+若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤銷存取權實際上會封鎖對認知服務資源中所有資料的存取，而您的模型將會解除部署，因為認知服務無法存取加密金鑰。 也會從自訂翻譯中刪除所有上傳的資料。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [深入瞭解 Azure Key Vault](../../key-vault/general/overview.md)

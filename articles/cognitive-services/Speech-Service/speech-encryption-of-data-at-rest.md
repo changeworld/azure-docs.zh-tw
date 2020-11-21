@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: b9b76b2eb5e9536561f73a92b6911a2f82122a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078090"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015251"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>靜態資料的語音服務加密
 
@@ -33,11 +33,11 @@ ms.locfileid: "89078090"
 
 根據預設，您的資料會儲存在 Microsoft 的儲存體中，且您的訂用帳戶會使用 Microsoft 管理的加密金鑰。 您也可以選擇準備自己的儲存體帳戶。 存放區的存取權是由受控識別來管理，而語音服務無法直接存取您自己的資料，例如語音追蹤資料、自訂定型資料和自訂模型。
 
-如需受控識別的詳細資訊，請參閱 [什麼是受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+如需受控識別的詳細資訊，請參閱 [什麼是受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>自備儲存體 (BYOS) 進行自訂和記錄
 
-若要要求存取以攜帶您自己的儲存體，請填寫並提交 [語音服務-自備儲存體 (BYOS) 要求表單](https://aka.ms/cogsvc-cmk)。 核准之後，您必須建立自己的儲存體帳戶，以儲存自訂和記錄所需的資料。 新增儲存體帳戶時，語音服務資源將會啟用系統指派的受控識別。 啟用系統指派的受控識別之後，會向 Azure Active Directory (AAD) 註冊此資源。 註冊之後，受控識別將獲得儲存體帳戶的存取權。 您可以在這裡深入瞭解受控識別。 如需受控識別的詳細資訊，請參閱 [什麼是受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+若要要求存取以攜帶您自己的儲存體，請填寫並提交 [語音服務-自備儲存體 (BYOS) 要求表單](https://aka.ms/cogsvc-cmk)。 核准之後，您必須建立自己的儲存體帳戶，以儲存自訂和記錄所需的資料。 新增儲存體帳戶時，語音服務資源將會啟用系統指派的受控識別。 啟用系統指派的受控識別之後，會向 Azure Active Directory (AAD) 註冊此資源。 註冊之後，受控識別將獲得儲存體帳戶的存取權。 您可以在這裡深入瞭解受控識別。 如需受控識別的詳細資訊，請參閱 [什麼是受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 > [!IMPORTANT]
 > 如果您停用系統指派的受控識別，將會移除儲存體帳戶的存取權。 這會導致需要存取儲存體帳戶的語音服務部分停止運作。  
@@ -47,7 +47,7 @@ ms.locfileid: "89078090"
 > [!IMPORTANT]
 > Microsoft 不 **會** 使用客戶資料來改善其語音模型。 此外，如果停用端點記錄且未使用任何自訂，則不會儲存任何客戶資料。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [語音服務-自備儲存體 (BYOS) 要求形式](https://aka.ms/cogsvc-cmk)
-* [什麼是受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+* [什麼是受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。

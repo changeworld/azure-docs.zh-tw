@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 35ed275419cc4319e7edfed608340853c986a927
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515620"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014232"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄檔總覽
 Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](../monitor-reference.md)收集及組織記錄和效能資料。 來自不同來源的資料，例如來自 Azure 服務的 [平臺記錄](platform-logs-overview.md) 、 [虛擬機器代理](agents-overview.md)程式的記錄和效能資料，以及 [應用程式](../app/app-insights-overview.md) 的使用方式和效能資料，都可以合併到單一工作區中，因此可以使用能夠快速分析數百萬筆記錄的精密查詢語言來分析它們。 您可以執行簡單的查詢，只抓取一組特定的記錄，或執行精密的資料分析，以識別監視資料中的重要模式。 使用 Log Analytics 以互動方式使用記錄查詢及其結果、在警示規則中使用這些查詢，以主動通知 br，或在活頁簿或儀表板中將其結果視覺化。
@@ -75,8 +75,8 @@ Application Insights 中的記錄資料也會儲存在 Azure 監視器記錄中�
 ## <a name="log-analytics"></a>Log Analytics
 使用 Log Analytics （這是 Azure 入口網站中的工具）來編輯和執行記錄查詢，並以互動方式分析其結果。 然後，您可以使用您所建立的查詢來支援 Azure 監視器中的其他功能，例如記錄查詢警示和活頁簿。 從 [Azure 監視器] 功能表中的 [ **記錄** ] 選項，或從 Azure 入口網站的大部分其他服務存取 Log Analytics。
 
-- 如需 Log Analytics 的說明，請參閱 [Azure 監視器中的 Log Analytics 總覽](/log-query/log-analytics-overview.md) 。 
-- 請參閱 [Log analytics 教學](/log-query/log-analytics-tutorial.md) 課程，以逐步解說使用 log analytics 功能來建立簡單的記錄查詢並分析其結果。
+- 如需 Log Analytics 的說明，請參閱 [Azure 監視器中的 Log Analytics 總覽](/azure/azure-monitor/log-query/log-analytics-overview) 。 
+- 請參閱 [Log analytics 教學](/azure/azure-monitor/log-query/log-analytics-tutorial) 課程，以逐步解說使用 log analytics 功能來建立簡單的記錄查詢並分析其結果。
 
 
 
@@ -84,7 +84,7 @@ Application Insights 中的記錄資料也會儲存在 Azure 監視器記錄中�
 Azure 監視器記錄以 Azure 資料總管為基礎。 Log Analytics 工作區大致上等同于 Azure 資料總管中的資料庫，資料表的結構相同，而且兩者都使用相同的 Kusto 查詢語言 (KQL) 。 使用 Log Analytics 來處理 Azure 入口網站中 Azure 監視器查詢的經驗，與使用 Azure 資料總管 Web UI 的體驗類似。 您甚至可以 [在 Azure 資料總管查詢中包含 Log Analytics 工作區的資料](/azure/data-explorer/query-monitor-data)。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [記錄查詢](../log-query/log-query-overview.md) ，以從 log Analytics 工作區取出和分析資料。
 - 了解 [Azure 監視器中的計量](data-platform-metrics.md)。

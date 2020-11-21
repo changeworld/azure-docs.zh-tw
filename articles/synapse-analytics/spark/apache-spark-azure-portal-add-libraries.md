@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313531"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016253"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
@@ -81,7 +81,7 @@ alabaster==0.7.10
    
  2. 在 [ **Synapse resources** ] 區段下，選取 [ **Apache Spark** 集區] 索引標籤，並從清單中選取 Spark 集區。
    
- 3. 從 Spark 集區的 [ **設定** ] 區段中選取 [ **套件** ]。 
+ 3. 從 Spark 集區的 [**設定**] 區段中選取 [**套件**]。 
 
  4. 使用檔案選取器上傳環境設定檔。
 
@@ -92,9 +92,9 @@ alabaster==0.7.10
 若要確認是否已安裝正確的正確程式庫版本，請執行下列程式碼
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>更新 Python 套件
 您可以隨時在會話之間新增或修改封裝。 上傳新的封裝設定檔時，這將會覆寫現有的套件和版本。  
@@ -106,7 +106,7 @@ for i in pip.get_installed_distributions(local_only=True):
 
 3. 流覽至 [ **套件** ] 區段，然後上傳新的環境設定檔
    
-4. 儲存變更之後，您將需要結束使用中的會話，並讓集區重新開機。 （選擇性）您可以選取核取方塊來強制進行 **新的設定** ，以強制結束使用中的會話。
+4. 儲存變更之後，您將需要結束使用中的會話，並讓集區重新開機。 （選擇性）您可以選取核取方塊來強制進行 **新的設定**，以強制結束使用中的會話。
 
     ![新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "新增 Python 程式庫")
    
@@ -131,5 +131,5 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 >[!IMPORTANT]
 >可以在會話之間新增或修改自訂套件。 不過，您必須等候集區和會話重新開機，以查看更新的套件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 查看預設程式庫： [Apache Spark 版本支援](apache-spark-version-support.md)

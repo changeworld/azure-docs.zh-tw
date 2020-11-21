@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e84342bff0d2bbc3b034afc1b3c5e8a7dc4a9eb1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737824"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015522"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
@@ -29,10 +29,10 @@ ms.locfileid: "94737824"
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-11 |  [4586793]  |  最新的累積更新 | 6.25 | 2020年11月10日 |
+|  Rel 20-11 OOB |  [4594442]  |  最新的累積更新 | 6.25 | 2020年11月17日 |
+|  Rel 20-11 OOB |  [4594441]  |  最新的累積更新 | 5.49 | 2020年11月19日 |
 |  Rel 20-11 |  [4580325]  |  Flash 更新 | 3.91、4.84、5.49、6.25 | 2020年10月13日 |
 |  Rel 20-11 |  [4586768]  |  IE 累積更新 | 2.104、3.91、4.84 | 2020年11月10日 |
-|  Rel 20-11 |  [4586830]  |  最新的累積更新 | 5.49 | 2020年11月10日 |
 |  Rel 20-11 |  [4578952]  |  .NET Framework 3.5 安全性和品質匯總套件 | 2.104 | 2020年11月10日 |
 |  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 2.104 | 2020年11月10日 |
 |  Rel 20-11 |  [4578953]  |  .NET Framework 3.5 安全性和品質匯總套件 | 4.84 | 2020年11月10日 |
@@ -52,10 +52,10 @@ ms.locfileid: "94737824"
 |  Rel 20-11 |  [4494175]  |  微碼 | 5.49 | 2020年9月1日 |
 |  Rel 20-11 |  [4494174]  |  微碼 | 6.25 | 2020年9月3日 |
 
-[4586793]: https://support.microsoft.com/kb/4586793
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
 [4580325]: https://support.microsoft.com/kb/4580325
 [4586768]: https://support.microsoft.com/kb/4586768
-[4586830]: https://support.microsoft.com/kb/4586830
 [4578952]: https://support.microsoft.com/kb/4578952
 [4578955]: https://support.microsoft.com/kb/4578955
 [4578953]: https://support.microsoft.com/kb/4578953

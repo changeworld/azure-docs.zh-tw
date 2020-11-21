@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 2c46bb2233fe38380dd5ba19804791c7c9f3da91
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2f33369c013e2ff56b7fb745ddb0fc959793f12a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517337"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016151"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>將 IPv6 新增至 Azure 虛擬網路中的 IPv4 應用程式-Azure CLI
 
@@ -93,13 +93,13 @@ az network lb rule create \
 az network vnet update \
 --name myVnet  \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/16"  "ace:cab:deca::/48"
+--address-prefixes  "10.0.0.0/16"  "2001:db8:deca::/48"
 
 az network vnet subnet update \
 --vnet-name myVnet \
 --name mySubnet \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/24"  "ace:cab:deca:deed::/64"  
+--address-prefixes  "10.0.0.0/24"  "2001:db8:deca:deed::/64"  
 ```
 
 ## <a name="add-ipv6-configuration-to-nics"></a>將 IPv6 設定新增至 Nic
@@ -141,8 +141,8 @@ az network nic ip-config create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路
 
 您可以在 Azure 入口網站中看到 IPv6 雙重堆疊虛擬網路，如下所示：
-1. 在入口網站的搜尋列中，輸入 *myVnet* 。
-2. 當 **myVnet** 出現在搜尋結果中時，請加以選取。 這會啟動名為 *myVNet* 的雙重堆疊虛擬網路的 [ **總覽** ] 頁面。 雙重堆疊虛擬網路會顯示在名為 *>mysubnet* 的雙重堆疊子網中，具有 IPv4 和 IPv6 設定的三個 nic。
+1. 在入口網站的搜尋列中，輸入 *myVnet*。
+2. 當 **myVnet** 出現在搜尋結果中時，請加以選取。 這會啟動名為 *myVNet* 的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示在名為 *>mysubnet* 的雙重堆疊子網中，具有 IPv4 和 IPv6 設定的三個 nic。
 
   ![Azure 中的 IPv6 雙重堆疊虛擬網路](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 

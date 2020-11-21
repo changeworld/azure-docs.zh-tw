@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e54e8e9de1df4c8a1c870285d36e4580daaa698a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c38c57a8480ef2addde494b94d70bd2eb679373
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667821"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016763"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>布建和管理 Azure 時間序列深入解析 Gen2
 
@@ -31,8 +31,8 @@ ms.locfileid: "91667821"
 
 > [!TIP]
 >
-> * 瞭解 [如何規劃您的環境](./time-series-insights-update-plan.md)。
-> * 瞭解如何 [新增事件中樞來源](./time-series-insights-how-to-add-an-event-source-eventhub.md) ，或如何 [新增 IoT 中樞來源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
+> * 瞭解 [如何規劃您的環境](./how-to-plan-your-environment.md)。
+> * 瞭解如何 [新增事件中樞來源](./how-to-ingest-data-event-hub.md) ，或如何 [新增 IoT 中樞來源](./how-to-ingest-data-iot-hub.md)。
 
 您將了解如何：
 
@@ -47,9 +47,9 @@ ms.locfileid: "91667821"
 
 若要建立 Azure 時間序列深入解析 Gen 2 環境：
 
-1. 在[Azure 入口網站](https://portal.azure.com/)的 [*物聯網*] 底下建立 Azure 時間序列深入解析資源。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [*物聯網*] 底下建立 Azure 時間序列深入解析資源。
 
-1. 選取**Gen2 (L1) **作為階層 **。** 提供環境名稱，並選擇要使用的訂用帳戶群組和資源群組。 然後選取支援的位置來裝載環境。
+1. 選取 **Gen2 (L1)** 作為階層 **。** 提供環境名稱，並選擇要使用的訂用帳戶群組和資源群組。 然後選取支援的位置來裝載環境。
 
    [![建立 Azure 時間序列深入解析執行個體。](media/v2-update-manage/create-and-manage-configuration.png)](media/v2-update-manage/create-and-manage-configuration.png#lightbox)
 
@@ -59,16 +59,16 @@ ms.locfileid: "91667821"
     >
     > * 時間序列識別碼 *區分大小寫* 且 *不可變*。 (設定之後就無法變更。)
     > * 時間序列識別碼最多可以有 *三個* 索引鍵。 您可以把它想成是資料庫中的主鍵，這可唯一代表會將資料傳送到您環境的每個裝置感應器。 它可以是一個屬性，也可以是最多三個屬性的組合。
-    > * 深入瞭解 [如何選擇時間序列識別碼](time-series-insights-update-how-to-id.md)
+    > * 深入瞭解 [如何選擇時間序列識別碼](./how-to-select-tsid.md)
 
-1. 選取儲存體帳戶名稱、帳戶類型並指定 [複寫選項，](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal) 以建立 Azure 儲存體帳戶。 這樣做會自動建立 Azure 儲存體帳戶。 預設會建立 [一般用途 v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) 帳戶。 帳戶會建立在與您先前選取的 Azure 時間序列深入解析 Gen2 環境相同的區域中。
+1. 選取儲存體帳戶名稱、帳戶類型並指定 [複寫選項，](../storage/common/redundancy-migration.md?tabs=portal) 以建立 Azure 儲存體帳戶。 這樣做會自動建立 Azure 儲存體帳戶。 預設會建立 [一般用途 v2](../storage/common/storage-account-overview.md) 帳戶。 帳戶會建立在與您先前選取的 Azure 時間序列深入解析 Gen2 環境相同的區域中。
 或者，您也可以在建立新的 Azure 時間序列 Gen2 環境時，透過 [ARM 範本](./time-series-insights-manage-resources-using-azure-resource-manager-template.md) 將您自己的儲存體 (BYOS) 。
 
-1. ** (選擇性) ** 如果您想要更快速且無限制地查詢您環境中的最新資料，請為您的環境啟用暖存放區。 您也可以在建立 Azure 時間序列深入解析 Gen2 環境之後，透過左方流覽窗格中的 [ **儲存體** 設定] 選項來建立或刪除暖存放區。
+1. **(選擇性)** 如果您想要更快速且無限制地查詢您環境中的最新資料，請為您的環境啟用暖存放區。 您也可以在建立 Azure 時間序列深入解析 Gen2 環境之後，透過左方流覽窗格中的 [ **儲存體** 設定] 選項來建立或刪除暖存放區。
 
-1. ** (選擇性) ** 您現在可以新增事件來源。 您也可以等候實例布建完成。
+1. **(選擇性)** 您現在可以新增事件來源。 您也可以等候實例布建完成。
 
-   * Azure 時間序列深入解析支援以事件來源選項 [Azure IoT 中樞](./time-series-insights-how-to-add-an-event-source-iothub.md) 和 [Azure 事件中樞](./time-series-insights-how-to-add-an-event-source-eventhub.md) 。 雖然您可以在建立環境時新增單一事件來源，但稍後可以新增另一個事件來源。
+   * Azure 時間序列深入解析支援以事件來源選項 [Azure IoT 中樞](./how-to-ingest-data-iot-hub.md) 和 [Azure 事件中樞](./how-to-ingest-data-event-hub.md) 。 雖然您可以在建立環境時新增單一事件來源，但稍後可以新增另一個事件來源。
 
      當您新增事件來源時，您可以選取現有的取用者群組，或建立新的取用者群組。 請注意，事件來源要求您的環境必須有唯一的取用者群組，才能將資料讀入其中。
 
@@ -92,19 +92,19 @@ ms.locfileid: "91667821"
   * 容量已移除，因為它不適用於 Gen2 環境。
   * 新增 **時間序列識別碼** 屬性。 它會決定分割您的資料的方式。
   * 已移除參考資料集。
-  * 顯示的 URL 會將您導向 [Azure 時間序列深入解析 Explorer](./time-series-insights-update-explorer.md)。
+  * 顯示的 URL 會將您導向 [Azure 時間序列深入解析 Explorer](./concepts-ux-panels.md)。
   * 已列出您的 Azure 儲存體帳戶名稱。
 
 * Azure 入口網站的 **設定** 分頁已移除，因為縮放單位不適用於 Azure 時間序列深入解析 Gen2 環境。 不過，您可以使用 **存放裝置** 設定來設定新引進的暖存放區。
 
-* Azure 時間序列深入解析 Gen2 中已移除 Azure 入口網站的 **參考資料** 分頁，因為參考資料概念已由 [時間序列模型 (TSM) ](/azure/time-series-insights/concepts-model-overview)所取代。
+* Azure 時間序列深入解析 Gen2 中已移除 Azure 入口網站的 **參考資料** 分頁，因為參考資料概念已由 [時間序列模型 (TSM)](./concepts-model-overview.md)所取代。
 
 [![Azure 入口網站中的 Azure 時間序列深入解析 Gen2 環境](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 藉由閱讀 [您的環境](./time-series-insights-update-plan.md)，深入瞭解 Azure 時間序列深入解析正式推出的環境和 Gen2 環境。
+* 藉由閱讀 [您的環境](./how-to-plan-your-environment.md)，深入瞭解 Azure 時間序列深入解析正式推出的環境和 Gen2 環境。
 
-* 瞭解如何 [新增事件中樞來源](./time-series-insights-how-to-add-an-event-source-eventhub.md)。
+* 瞭解如何 [新增事件中樞來源](./how-to-ingest-data-event-hub.md)。
 
-* 設定 [IoT 中樞來源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
+* 設定 [IoT 中樞來源](./how-to-ingest-data-iot-hub.md)。

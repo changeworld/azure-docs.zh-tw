@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73eb1225ffc5fd01f9a27ca99ad2b059d45a36cf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387977"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015285"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>裝置： Roobo 智慧型音訊開發工具組
 
@@ -71,6 +71,6 @@ ms.locfileid: "87387977"
 
 Roobo 提供一種工具，可捕獲所有音訊至快閃記憶體。 它可以協助您針對音訊問題進行疑難排解。 針對每個開發套件設定提供了工具版本。 在  [Roobo 網站](http://ddk.roobo.com/)上，選取您的裝置，然後選取頁面底部的 [ **Roobo 工具** ] 連結。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-* [執行 Android 範例應用程式](speech-devices-sdk-android-quickstart.md)
+* [執行 Android 範例應用程式](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)

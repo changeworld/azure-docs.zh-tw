@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442050"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013033"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -28,7 +28,7 @@ ms.locfileid: "94442050"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 若要從 CLI 使用範本，您需要 [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
@@ -38,6 +38,10 @@ ms.locfileid: "94442050"
     * __虛擬網路背後工作區的 Azure Container Registry__
 
     如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+
+## <a name="limitations"></a>限制
+
+* 建立新的工作區時，您可以允許工作區自動建立所需的 Azure 服務，或提供現有的服務。 提供現有的服務時，這些服務必須與工作區位於相同的 Azure 訂用帳戶中。
 
 ## <a name="workspace-resource-manager-template"></a>工作區 Resource Manager 範本
 
@@ -59,7 +63,7 @@ ms.locfileid: "94442050"
 
     範本將會針對大部分的資源使用您選取的位置。 例外狀況是 Application Insights 服務，該服務在其他服務可用的所有位置都無法使用。 如果您選取的位置無法使用，服務會建立在美國中南部位置。
 
-* **WorkspaceName** ，這是 Azure Machine Learning 工作區的易記名稱。
+* **WorkspaceName**，這是 Azure Machine Learning 工作區的易記名稱。
 
     > [!NOTE]
     > 工作區名稱不區分大小寫。
@@ -219,7 +223,7 @@ New-AzResourceGroupDeployment `
 
 若要允許使用客戶管理的金鑰，請在部署範本時設定下列參數：
 
-* **encryption_status** 為 [ **已啟用** ]。
+* **encryption_status** 為 [ **已啟用**]。
 * **cmk_keyvault** 為 `cmk_keyvault` 先前步驟中取得的值。
 * **resource_cmk_uri** 為 `resource_cmk_uri` 先前步驟中取得的值。
 
@@ -254,7 +258,7 @@ New-AzResourceGroupDeployment `
 
 使用客戶管理的金鑰時，Azure Machine Learning 建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-data-encryption.md#encryption-at-rest)。
 
-您可以為資料提供的其他設定是將 **confidential_data** 參數設定為 **true** 。 這樣做會執行下列動作：
+您可以為資料提供的其他設定是將 **confidential_data** 參數設定為 **true**。 這樣做會執行下列動作：
 
 * 開始加密 Azure Machine Learning 計算叢集的本機暫存磁片，提供您未在訂用帳戶中建立任何先前的叢集。 如果您先前已在訂用帳戶中建立叢集，請開啟支援票證，以針對您的計算叢集啟用暫存磁片的加密。
 * 清除執行之間的本機暫存磁片。
@@ -550,7 +554,7 @@ New-AzResourceGroupDeployment `
    * 工作區名稱：要用於將建立之Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
    * 位置：選取將建立資源的位置。
 1. 選取 [檢閱 + 建立]。
-1. 在 [ __審核 + 建立__ ] 畫面中，同意列出的條款及條件，然後選取 [ __建立__ ]。
+1. 在 [ __審核 + 建立__ ] 畫面中，同意列出的條款及條件，然後選取 [ __建立__]。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -611,7 +615,7 @@ New-AzResourceGroupDeployment `
         },
         ```
 
-    * 從工作區的 `dependsOn` 區段 **移除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 此外， **變更** 工作區中 `properties` 區段的 `keyVault` 項目，以參考 `keyVaultId` 參數：
+    * 從工作區的 `dependsOn` 區段 **移除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 此外，**變更** 工作區中 `properties` 區段的 `keyVault` 項目，以參考 `keyVaultId` 參數：
 
         ```json
         {

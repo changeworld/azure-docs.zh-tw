@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a4848f5e8b542d80b382abe39f4882a26e0f534c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874248"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015675"
 ---
 # <a name="troubleshooting-certificate-errors"></a>針對憑證錯誤進行疑難排解
 
@@ -58,9 +58,8 @@ ms.locfileid: "94874248"
 | CertificateImportFailure | {0}未在節點上匯入具有指紋的憑證 {1} 。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
 | CertificateApplyFailure | 具有指紋的憑證 {0} 未套用於節點 {1} 。 如果問題持續發生，請連絡 Microsoft 支援服務。|
 | NodeNotReachable | 無法驗證的憑證 {0} 。 檢查系統硬體和軟體健康情況。|
-| 取得錯誤碼 | 無法存取此憑證的私密金鑰。 請確定您使用的是支援的憑證。 僅支援 Microsoft RSA/Schannel 密碼編譯提供者。 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [憑證需求](azure-stack-edge-j-series-certificate-requirements.md)

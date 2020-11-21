@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 1a7204fea1a77dbca57ffc7d512f81e46c4d3b5f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873383"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012942"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
 
@@ -23,10 +23,14 @@ ms.locfileid: "94873383"
 
 當您的需求變更或自動化的需求增加時，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * 如果使用 Python SDK，請 [安裝 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+
+## <a name="limitations"></a>限制
+
+* 建立新的工作區時，您可以允許工作區自動建立所需的 Azure 服務，或提供現有的服務。 提供現有的服務時，這些服務必須與工作區位於相同的 Azure 訂用帳戶中。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
@@ -151,7 +155,7 @@ ms.locfileid: "94873383"
  
 ---
 
-### <a name="networking"></a>網路功能  
+### <a name="networking"></a>網路  
 
 > [!IMPORTANT]  
 > 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-network-security-overview.md)。
@@ -386,6 +390,6 @@ Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行�
 * 使用 Azure 入口網站來 [建立工作區和計算實例](tutorial-1st-experiment-sdk-setup.md)
 * 使用 Python SDK [在您自己的環境中建立工作區](tutorial-1st-experiment-sdk-setup-local.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 擁有工作區之後，請瞭解如何 [定型和部署模型](tutorial-train-models-with-aml.md)。

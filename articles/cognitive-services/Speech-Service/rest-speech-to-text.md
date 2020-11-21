@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988556"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015353"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -30,7 +30,7 @@ ms.locfileid: "94988556"
 如果您的應用程式需要傳送較長的音訊，請考慮使用 [語音 SDK](speech-sdk.md) 或以檔案為基礎的 REST API，例如 [批次](batch-transcription.md)轉譯。
 
 > [!TIP]
-> 請參閱政府雲端的 Azure 政府 [檔](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 端點。
+> 請參閱政府雲端的 Azure 政府 [檔](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -307,5 +307,5 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 ## <a name="next-steps"></a>下一步
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-- [自訂原音模型](how-to-customize-acoustic-models.md)
-- [自訂語言模型](how-to-customize-language-model.md)
+- [自訂原音模型](./how-to-custom-speech-train-model.md)
+- [自訂語言模型](./how-to-custom-speech-train-model.md)

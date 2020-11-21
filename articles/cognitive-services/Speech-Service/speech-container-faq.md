@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6c899b4f0dd7a3b91521c6d78b531d1c804ac105
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653533"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015302"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>語音服務容器的常見問題 (常見問題) 
 
@@ -292,7 +292,7 @@ WebSocket
 
 | 端點                                                | 功能測試                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | 合成文字 (文字轉換語音)                                   |     | 是      |
+| `/speech/synthesize/cognitiveservices/v1`               | 合成文字 (文字轉換語音)                                   |     | Yes      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | 認知服務內部內部部署聽寫 v1 websocket 端點        | 是 | 否       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | 認知服務內部內部部署互動式 v1 websocket 端點  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | 認知服務內部內部部署對話 v1 websocket 端點 |     |          |
@@ -324,7 +324,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>我應該使用哪種模式的不同音訊檔案？</b>
 </summary>
 
-**答：** 以下是 [使用 Python 的快速入門](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python)。 您可以在檔網站上找到其他連結的語言。
+**答：** 以下是 [使用 Python 的快速入門](./get-started-speech-to-text.md?pivots=programming-language-python)。 您可以在檔網站上找到其他連結的語言。
 
 只是為了表達互動式、對話和聽寫;這是指定服務將處理語音要求之特定方式的先進方式。 可惜的是，對於內部內部部署的容器，我們必須指定完整的 URI (，因為它包含本機電腦) ，因此此資訊是從抽象的洩漏。 我們正與 SDK 小組合作，讓未來更能使用。
 
@@ -367,7 +367,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 檔說要公開不同的埠，我這麼做，但 LUIS 容器仍在接聽埠5000？
 
-**答：** 請試試看 `-p <outside_unique_port>:5000` 。 例如 `-p 5001:5000`。
+**答：** 請試試看 `-p <outside_unique_port>:5000` 。 例如： `-p 5001:5000` 。
 
 
 <br>
@@ -571,7 +571,7 @@ Python [範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 在 c # 中，若要啟用聽寫，請叫用 `SpeechConfig.EnableDictation()` 函數。
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint` Api
-| Language | API 詳細資料 |
+| 語言 | API 詳細資料 |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -592,7 +592,7 @@ Python [範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 
 ### <a name="fromhost-apis"></a>`FromHost` Api
 
-| Language | API 詳細資料 |
+| 語言 | API 詳細資料 |
 |--|:-|
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -620,7 +620,7 @@ speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
 <br>
 </details>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [認知服務容器](speech-container-howto.md)

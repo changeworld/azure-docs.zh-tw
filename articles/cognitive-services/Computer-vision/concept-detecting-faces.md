@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 089c59c041110209e55cc3fb10b1c5adf54bd13e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6d85498b0e76997a1f0f989f4ea0f30acc0e8443
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538269"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013720"
 ---
 # <a name="face-detection-with-computer-vision"></a>使用電腦視覺的物件偵測
 
 電腦視覺會偵測影像中的人臉，並針對偵測到的臉部產生年齡、性別和矩形。 
 
 > [!NOTE]
-> Azure [臉部](/azure/cognitive-services/face/)服務也提供此功能。 如需更詳細的臉部分析，請參閱此替代方案，包括臉部辨識和姿勢偵測。 
+> Azure [臉部](../face/index.yml)服務也提供此功能。 如需更詳細的臉部分析，請參閱此替代方案，包括臉部辨識和姿勢偵測。 
 
 ## <a name="face-detection-examples"></a>臉部偵測範例
 

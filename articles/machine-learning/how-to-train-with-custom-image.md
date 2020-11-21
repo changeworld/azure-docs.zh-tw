@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b4a1e601a5a0dbf5e56fc1d930e14150f27fee3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398227"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012901"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>設定定型作業
 
-在本教學課程中，請使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/train/fastai/pets-resnet34/train.py)上的定型腳本 *train.py* 。 在實務上，您可以採用任何自訂定型腳本，並以 Azure Machine Learning 的方式執行它。
+在本教學課程中，請使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py)上的定型腳本 *train.py* 。 在實務上，您可以採用任何自訂定型腳本，並以 Azure Machine Learning 的方式執行它。
 
 建立 `ScriptRunConfig` 資源以設定您的作業，以在所需的 [計算目標](how-to-set-up-training-targets.md)上執行。
 
@@ -165,7 +165,7 @@ run.wait_for_completion(show_output=True)
 > [!WARNING]
 > Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)區存取您的資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 在本文中，您已使用自訂 Docker 映射來定型模型。 若要深入瞭解 Azure Machine Learning，請參閱下列文章：
 * 訓練期間[追蹤執行計量](how-to-track-experiments.md)。
 * 使用自訂 Docker 映射[部署模型](how-to-deploy-custom-docker-image.md)。

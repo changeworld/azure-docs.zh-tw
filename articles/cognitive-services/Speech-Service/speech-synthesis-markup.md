@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: e76612c6c1b83ddb7e88377824902fe6290e7aaf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873772"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015234"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -383,7 +383,7 @@ speechConfig!.setPropertyTo(
 | `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
 | `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位），此值應設為小於5000毫秒。 有效值的範例包括 `2s` 和 `500ms` | 選擇性 |
 
-| 強度                      | 說明 |
+| 強度                      | Description |
 |-------------------------------|-------------|
 | 無，或如果未提供任何值 | 0毫秒        |
 | x-弱式                        | 250 毫秒      |
@@ -587,7 +587,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 如需有關自訂字典檔案的詳細資訊，請參閱 [ (另外) 1.0 版的發音詞典規格](https://www.w3.org/TR/pronunciation-lexicon/)。
 
-接下來，發行您的自訂字典檔案。 雖然我們不會限制儲存此檔案的位置，但我們建議使用 [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+接下來，發行您的自訂字典檔案。 雖然我們不會限制儲存此檔案的位置，但我們建議使用 [Azure Blob 儲存體](../../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 發佈自訂字典之後，您就可以從 SSML 參考它。
 
@@ -657,12 +657,12 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 | 屬性 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如： `<prosody pitch="600Hz">some text</prosody>` 。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如：`<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>預設</li></ul></li></ul> | 選擇性 |
+| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如： `<prosody pitch="600Hz">some text</prosody>` 。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如：`<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul> | 選擇性 |
 | `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
 | `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
-| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>預設</li></ul></li></ul> | 選擇性 |
+| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
 | `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 持續時間僅支援標準語音。| 選擇性 |
-| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>預設</li></ul></li></ul> | 選擇性 |
+| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選擇性 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -854,6 +854,6 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 </speak>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [語言支援：語音、地區設定、語言](language-support.md)

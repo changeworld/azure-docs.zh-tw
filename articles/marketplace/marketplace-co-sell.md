@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/17/2020
-ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.date: 11/20/2020
+ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738521"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016323"
 ---
 # <a name="co-sell-partner-engagement"></a>共同銷售合作夥伴參與
 
@@ -39,7 +39,7 @@ ms.locfileid: "94738521"
 
 下表列出讓 marketplace 供應專案共同銷售準備就緒或共同銷售受到激勵的步驟和需求。 並非所有的商業 marketplace 供應專案類型都可在合作夥伴中心中進行共同銷售。 您可以參考 [合作夥伴中心中的共同銷售選項](./partner-center-portal/commercial-marketplace-co-sell.md) ，取得最新資訊。
 
-|步驟    |供應項目類型    |需求    |共同銷售狀態    |
+|步驟    |供應項目類型    |規格需求    |共同銷售狀態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li>在合作夥伴中心中建立帳戶，並將您的供應專案發佈至商用 marketplace。</li>|全部|<ul><li>供應專案符合商業 marketplace 發佈需求。</li><li>您在合作夥伴中心中有完整的商務設定檔。</li></ul>| 市場 |
 |<ol start=2><li>提交所需的共同銷售教材。</li>|合作夥伴中心中 *具有*[共同銷售選項](./partner-center-portal/commercial-marketplace-co-sell.md)的 IP 供應專案|[在合作夥伴中心上傳所需的材質](#how-to-submit-co-sell-materials-in-partner-center)|共同銷售準備就緒|
@@ -85,6 +85,13 @@ ms.locfileid: "94738521"
         :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="此圖顯示要求共同銷售評論的 CED 下拉式清單。":::
 
     CED 會與您聯繫，以完成此程式。
+
+## <a name="see-your-offers-co-sell-status"></a>查看您供應專案的共同銷售狀態
+
+如 [合作夥伴中心中有共同銷售選項](./partner-center-portal/commercial-marketplace-co-sell.md)的供應專案，您可以在 [供應專案] 總覽頁面上看到供應專案的目前共同銷售狀態：
+
+ :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="此影像顯示供應專案目前的共同銷售狀態。":::
+
 
 ## <a name="next-steps"></a>後續步驟
 

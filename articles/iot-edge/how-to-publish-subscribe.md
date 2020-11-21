@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629643"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015658"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>發佈和訂閱 Azure IoT Edge
 
@@ -29,14 +29,14 @@ ms.locfileid: "94629643"
 - 具有有效訂用帳戶的 Azure 帳戶
 - [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) `azure-iot` 已安裝 CLI 擴充功能。 如需詳細資訊，請參閱 [適用于 azure Azure CLI 的 Azure IoT 擴充功能安裝步驟](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot)。
 - SKU 的 **IoT 中樞** ，也就是 F1、S1、S2 或 S3。
-- 具有 **1.2 版或更新版本的 IoT Edge 裝置** 。 由於 IoT Edge MQTT broker 目前處於公開預覽狀態，因此請在 edgeHub 容器上將下列環境變數設為 true，以啟用 MQTT 訊息代理程式：
+- 具有 **1.2 版或更新版本的 IoT Edge 裝置**。 由於 IoT Edge MQTT broker 目前處於公開預覽狀態，因此請在 edgeHub 容器上將下列環境變數設為 true，以啟用 MQTT 訊息代理程式：
 
-   | 名稱 | 值 |
+   | Name | 值 |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- Mosquitto 安裝在 IoT Edge 裝置上的 **用戶端** 。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的熱門 Mosquitto 用戶端。 您可以改為使用其他 MQTT 用戶端。 若要在 Ubuntu 裝置上安裝 Mosquitto 用戶端，請執行下列命令：
+- Mosquitto 安裝在 IoT Edge 裝置上的 **用戶端**。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的熱門 Mosquitto 用戶端。 您可以改為使用其他 MQTT 用戶端。 若要在 Ubuntu 裝置上安裝 Mosquitto 用戶端，請執行下列命令：
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -209,7 +209,7 @@ IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下
 
 ## <a name="publish-and-subscribe-on-user-defined-topics"></a>發佈和訂閱使用者自訂主題
 
-在本文中，您將會使用一個名為 **sub_client** 的用戶端，該用戶端會訂閱主題和另一個名為 **pub_client** 的用戶端，以發佈至主題。 我們將使用 [對稱金鑰驗證](how-to-authenticate-downstream-device.md#symmetric-key-authentication) ，但您可以使用 [x.509 自我簽署驗證](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) 或 [x.509 自我簽署驗證](./how-to-authenticate-downstream-device.md#x509-self-signed-authentication)來完成相同的操作。
+在本文中，您將會使用一個名為 **sub_client** 的用戶端，該用戶端會訂閱主題和另一個名為 **pub_client** 的用戶端，以發佈至主題。 我們將使用 [對稱金鑰驗證](how-to-authenticate-downstream-device.md#symmetric-key-authentication) ，但您可以使用 [x.509 自我簽署驗證](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) 或 [x.509 CA 簽署的驗證](./how-to-authenticate-downstream-device.md#x509-ca-signed-authentication)來完成相同的操作。
 
 ### <a name="create-publisher-and-subscriber-clients"></a>建立發行者和訂閱者用戶端
 
@@ -439,6 +439,6 @@ MQTT 橋接器可以設定為將 IoT Edge hub MQTT 訊息代理程式連接到�
 IoT Edge hub MQTT bridge 上的其他注意事項：
 - 使用 MQTT 訊息代理程式時，會自動使用 MQTT 通訊協定做為上游通訊協定，而 IoT Edge 用於嵌套設定，例如使用 `parent_hostname` 指定的。 若要深入瞭解上游通訊協定，請參閱 [雲端通訊](iot-edge-runtime.md#cloud-communication)。 若要深入瞭解嵌套設定，請參閱 [將下游 IoT Edge 裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [瞭解 IoT Edge 中樞](iot-edge-runtime.md#iot-edge-hub)

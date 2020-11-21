@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566597"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016542"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0：轉譯
 
@@ -55,7 +55,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>描述</th>
   <tr>
     <td>從</td>
-    <td><em>選擇性參數</em>。<br/>指定輸入文字的語言。 使用 <code>translation</code> 範圍查閱<a href="./v3-0-languages.md">支援語言</a>，以尋找可用於翻譯的來源語言。 若未指定 <code>from</code> 參數，則會套用自動語言偵測來判斷來源語言。 <br/><br/><code>from</code>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動態字典</a>功能時，您必須使用參數，而不是自動偵測。</td>
+    <td><em>選擇性參數</em>。<br/>指定輸入文字的語言。 使用 <code>translation</code> 範圍查閱<a href="./v3-0-languages.md">支援語言</a>，以尋找可用於翻譯的來源語言。 若未指定 <code>from</code> 參數，則會套用自動語言偵測來判斷來源語言。 <br/><br/><code>from</code>使用<a href="/azure/cognitive-services/translator/dynamic-dictionary">動態字典</a>功能時，您必須使用參數，而不是自動偵測。</td>
   </tr>  
   <tr>
     <td>textType</td>
@@ -63,7 +63,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>選擇性參數</em>。<br/>字串，指定翻譯的分類 (定義域)。 此參數用來從使用 <a href="../customization.md">Custom Translator</a> 所建置的自訂系統取得翻譯。 將自訂翻譯 <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">專案詳細資料</a> 中的分類識別碼新增至這個參數，以使用您已部署的自訂系統。 預設值為：<code>general</code>。</td>
+    <td><em>選擇性參數</em>。<br/>字串，指定翻譯的分類 (定義域)。 此參數用來從使用 <a href="../customization.md">Custom Translator</a> 所建置的自訂系統取得翻譯。 將自訂翻譯 <a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">專案詳細資料</a> 中的分類識別碼新增至這個參數，以使用您已部署的自訂系統。 預設值為：<code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -107,7 +107,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>描述</th>
   <tr>
     <td>驗證標頭</td>
-    <td>必要的要求標頭。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
+    <td>必要的要求標頭。<br/>請參閱<a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -199,7 +199,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">狀態碼</th>
-  <th>描述</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -234,7 +234,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)的 [參考] 頁面上找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](./v3-0-reference.md#errors)的 [參考] 頁面上找到常見的錯誤碼。 
 
 ## <a name="examples"></a>範例
 
@@ -367,7 +367,7 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
   <th>動作</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>此為預設行為。 粗話會從來源傳遞到目標。<br/><br/>
+    <td>這是預設行為。 粗話會從來源傳遞到目標。<br/><br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
     <strong>範例翻譯 (英文)</strong>：He is a jackass.
     </td>

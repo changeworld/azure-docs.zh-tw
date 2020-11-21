@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232520"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015336"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>語音裝置 SDK 麥克風陣列建議
 
@@ -31,7 +31,7 @@ ms.locfileid: "86232520"
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \# 麥克風 | 7 | 4 | 4 | 2 |
-| 幾何形狀 | 6個外部、1中心、半徑 = 42.5 mm、平均間距 | 3外部、1中心、半徑 = 42.5 mm、平均間距 | 長度 = 120 mm，間距 = 40 mm | 間距 = 40 mm |
+| 幾何 | 6個外部、1中心、半徑 = 42.5 mm、平均間距 | 3外部、1中心、半徑 = 42.5 mm、平均間距 | 長度 = 120 mm，間距 = 40 mm | 間距 = 40 mm |
 
 麥克風頻道應根據上述陣列所描述的編號進行排序，從0增加。 Microsoft 音訊堆疊需要額外的音訊播放串流，才能執行回應取消。
 
@@ -68,7 +68,7 @@ ms.locfileid: "86232520"
 | THD%\*             | ≤1%、200-8000 Hz、94 dBSPL、5順序             |
 | 頻率回應 | ± 6 dB、200-8000 Hz 浮動遮罩\*\*              |
 
-\*\*_需要低扭曲喇叭來測量 THD (例如 Neumann KH120) _
+\*\*_需要低扭曲喇叭來測量 THD (例如 Neumann KH120)_
 
 \*\*_高品質的通訊 (VoIP) 應用程式可能需要「更寬」頻率範圍_
 
@@ -97,7 +97,7 @@ ms.locfileid: "86232520"
 | 取樣時鐘      | 裝置音訊必須有低漂移的無抖動和下降 |
 | 記錄功能   | 裝置必須能夠同時錄製個別的通道原始串流 |
 | USB                 | 所有 USB 音訊輸入裝置都必須根據[USB 音訊裝置 Rev3 規格](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)來設定描述項 |
-| 麥克風幾何 | 驅動程式必須正確地執行 [麥克風陣列幾何描述](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) 項 |
+| 麥克風幾何 | 驅動程式必須正確地執行 [麥克風陣列幾何描述](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) 項 |
 | 可搜尋性     | 裝置不能有任何 & 或無法控制硬體、固件或協力廠商軟體為基礎的非線性音訊處理演算法 |
 | Capture 格式      | 捕捉格式必須使用 16 kHz 的最小取樣率和建議的24位深度 |
 
@@ -109,7 +109,7 @@ ms.locfileid: "86232520"
 
 任何音訊 Mcu 中都應該支援高速 USB 音訊類別2.0，以提供最多七個通道的必要頻寬（以較高的取樣率和位深度為單位）。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [深入瞭解語音裝置 SDK](speech-devices-sdk.md)

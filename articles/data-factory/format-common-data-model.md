@@ -1,18 +1,18 @@
 ---
 title: Common Data Model 格式
 description: 使用 Common Data Model 中繼資料系統轉換資料
-author: djpmsft
+author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: daperlov
-ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/20/2020
+ms.author: makromer
+ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636403"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015166"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory 中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,24 +35,28 @@ Common Data Model 是以 [內嵌資料集](data-flow-source.md#inline-datasets) 
 
 下表列出 CDM 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是 `cdm` | 是 | `cdm` | format |
-| 元資料格式 | 資料所在的實體參考。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [開啟 model.js]。 | 是 | `'manifest'` 或 `'model'` | manifestType |
-| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | String | fileSystem |
-| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | String | folderPath |
-| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | String | entityPath |
+| 元資料格式 | 資料所在的實體參考。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [開啟 model.js]。 | Yes | `'manifest'` 或 `'model'` | manifestType |
+| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | 字串 | fileSystem |
+| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | 字串 | folderPath |
+| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | 字串 | entityPath |
 | 資訊清單檔：資訊清單名稱 | 資訊清單檔的名稱。 預設值為 ' default '  | 否 | String | manifestName |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore | 
 | 架構連結服務 | 主體所在的連結服務 | 是，如果使用資訊清單 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 實體參考容器 | 容器主體位於 | 是，如果在 ADLS Gen2 中使用資訊清單和主體 | String | adlsgen2_fileSystem |
-| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果使用 GitHub 中的資訊清單和主體 | String | github_repository |
-| 實體參考分支 | GitHub 存放庫分支 | 是，如果使用 GitHub 中的資訊清單和主體 | String |  github_branch |
-| 主體資料夾 | 主體的根位置 | 是，如果使用資訊清單 | String | corpusPath |
-| 主體實體 | 實體參考的路徑 | 是 | String | 實體 |
+| 實體參考容器 | 容器主體位於 | 是，如果在 ADLS Gen2 中使用資訊清單和主體 | 字串 | adlsgen2_fileSystem |
+| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果使用 GitHub 中的資訊清單和主體 | 字串 | github_repository |
+| 實體參考分支 | GitHub 存放庫分支 | 是，如果使用 GitHub 中的資訊清單和主體 | 字串 |  github_branch |
+| 主體資料夾 | 主體的根位置 | 是，如果使用資訊清單 | 字串 | corpusPath |
+| 主體實體 | 實體參考的路徑 | 是 | 字串 | 實體 |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
-如果您想要在來源轉換中使用的實體定義位於與您的資料檔案夾相同的目錄中，您可以取消選取 [使用主體的實體]，並只輸入您想要做為實體參考之實體的實體。
+在來源和接收轉換中選取 [實體參考] 時，您可以從下列三個選項中選取實體參考的位置：
+
+* Local 使用已由 ADF 使用的資訊清單檔中定義的實體
+* 自訂將會要求您指向與資訊清單檔案相同的實體資訊清單檔案。
+* 標準會使用中所維護之 CDM 實體的標準程式庫中的實體參考 ```Github``` 。
 
 ### <a name="sink-settings"></a>接收設定
 
@@ -71,7 +75,7 @@ Common Data Model 是以 [內嵌資料集](data-flow-source.md#inline-datasets) 
 
 #### <a name="import-schema"></a>匯入架構
 
-CDM 只能做為內嵌資料集使用，而且預設不會有相關聯的架構。 若要取得資料行中繼資料，請按一下 [ **預測** ] 索引標籤的 [匯 **入架構** ] 按鈕這可讓您參考主體所指定的資料行名稱和資料類型。 若要匯入架構， [資料流程](concepts-data-flow-debug-mode.md) 的偵測會話必須是作用中，而且您必須要有現有的 CDM 實體定義檔才能指向。
+CDM 只能做為內嵌資料集使用，而且預設不會有相關聯的架構。 若要取得資料行中繼資料，請按一下 [**預測**] 索引標籤的 [匯 **入架構**] 按鈕這可讓您參考主體所指定的資料行名稱和資料類型。 若要匯入架構， [資料流程](concepts-data-flow-debug-mode.md) 的偵測會話必須是作用中，而且您必須要有現有的 CDM 實體定義檔才能指向。
 
 將資料流程資料行對應到接收轉換中的實體屬性時，請按一下 [對應] 索引標籤，然後選取 [匯入架構]。 ADF 會讀取您在接收選項中指向的實體參考，讓您能夠對應到目標 CDM 架構。
 
@@ -114,23 +118,23 @@ source(output(
 
 下表列出 CDM 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是 `cdm` | 是 | `cdm` | format |
-| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | String | fileSystem |
-| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | String | folderPath |
-| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | String | entityPath |
+| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | 字串 | fileSystem |
+| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | 字串 | folderPath |
+| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | 字串 | entityPath |
 | 資訊清單檔：資訊清單名稱 | 資訊清單檔的名稱。 預設值為 ' default ' | 否 | String | manifestName |
 | 架構連結服務 | 主體所在的連結服務 | 是 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 實體參考容器 | 容器主體位於 | 是，如果 ADLS Gen2 中的主體 | String | adlsgen2_fileSystem |
-| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果是 GitHub 中的主體 | String | github_repository |
-| 實體參考分支 | GitHub 存放庫分支 | 是，如果是 GitHub 中的主體 | String |  github_branch |
-| 主體資料夾 | 主體的根位置 | 是 | String | corpusPath |
-| 主體實體 | 實體參考的路徑 | 是 | String | 實體 |
-| 分割路徑 | 將寫入分割區的位置 | 否 | String | partitionPath |
+| 實體參考容器 | 容器主體位於 | 是，如果 ADLS Gen2 中的主體 | 字串 | adlsgen2_fileSystem |
+| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果是 GitHub 中的主體 | 字串 | github_repository |
+| 實體參考分支 | GitHub 存放庫分支 | 是，如果是 GitHub 中的主體 | 字串 |  github_branch |
+| 主體資料夾 | 主體的根位置 | 是 | 字串 | corpusPath |
+| 主體實體 | 實體參考的路徑 | 是 | 字串 | 實體 |
+| 分割路徑 | 將寫入分割區的位置 | 否 | 字串 | partitionPath |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | 格式類型 | 選擇指定 parquet 格式 | 否 | `parquet` 如果已指定 | subformat |
-| 資料行分隔符號 | 如果寫入 DelimitedText，如何分隔資料行 | 是，如果寫入 DelimitedText | String | columnDelimiter |
+| 資料行分隔符號 | 如果寫入 DelimitedText，如何分隔資料行 | 是，如果寫入 DelimitedText | 字串 | columnDelimiter |
 | 第一個資料列做為標頭 | 如果使用 DelimitedText，是否要將資料行名稱加入為標頭 | 否 | `true` 或 `false` | columnNamesAsHeader |
 
 ### <a name="cdm-sink-data-flow-script-example"></a>CDM 接收資料流程腳本範例
@@ -157,6 +161,6 @@ CDMSource sink(allowSchemaDrift: true,
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在對應的資料流程中建立 [來源轉換](data-flow-source.md) 。

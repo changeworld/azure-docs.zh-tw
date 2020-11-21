@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 語音翻譯
-ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630065"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015200"
 ---
 # <a name="what-is-speech-translation"></a>什麼是語音翻譯？
 
@@ -48,13 +48,13 @@ Microsoft 現在使用 NMT 來翻譯為最受歡迎的語言。 所有[可用於
 
 ## <a name="migration-guides"></a>移轉指南
 
-如果您的應用程式、工具或產品使用 [翻譯工具語音 API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)，我們已建立可協助您遷移至語音服務的指南。
+如果您的應用程式、工具或產品使用 [翻譯工具語音 API](./how-to-migrate-from-translator-speech-api.md)，我們已建立可協助您遷移至語音服務的指南。
 
 * [從翻譯工具語音 API 遷移至語音服務](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>參考文件
 
-* [語音 SDK](speech-sdk-reference.md)
+* [語音 SDK](./speech-sdk.md)
 * [語音裝置 SDK](speech-devices-sdk.md)
 * [REST API：語音轉文字](rest-speech-to-text.md)
 * [REST API：文字轉語音](rest-text-to-speech.md)

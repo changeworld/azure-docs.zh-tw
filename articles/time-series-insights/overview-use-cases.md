@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f13a20232fab61dc082c1b12b7ddaa11807554
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666954"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016185"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure 時間序列深入解析 Gen2 使用案例
 
@@ -52,13 +52,13 @@ Azure 時間序列深入解析 Gen2 很直覺且容易使用。 您不需撰寫�
 
 有三種主要方式可與 Azure 時間序列深入解析 Gen2 中儲存的資料互動：
 
-* 開始使用的第一個和最簡單的方式是使用 Azure 時間序列深入解析 Gen2 Explorer。 您可以使用它在同一個地方，快速地以視覺化方式檢視您所有的 IoT 資料。 它提供熱度圖之類的工具，可協助您找出資料中的異常。 它還提供了透視圖。 使用它可在單一儀表板中，從一或多個 Azure 時間序列深入解析 Gen2 環境比較最多四個視圖。 儀表板可讓您檢視所有位置的時間序列資料。 深入瞭解 [Azure 時間序列深入解析 Gen2 Explorer](./time-series-insights-update-explorer.md)。 若要規劃您的環境，請閱讀 [Azure 時間序列深入解析 Gen2 規劃](./time-series-insights-update-plan.md)。
+* 開始使用的第一個和最簡單的方式是使用 Azure 時間序列深入解析 Gen2 Explorer。 您可以使用它在同一個地方，快速地以視覺化方式檢視您所有的 IoT 資料。 它提供熱度圖之類的工具，可協助您找出資料中的異常。 它還提供了透視圖。 使用它可在單一儀表板中，從一或多個 Azure 時間序列深入解析 Gen2 環境比較最多四個視圖。 儀表板可讓您檢視所有位置的時間序列資料。 深入瞭解 [Azure 時間序列深入解析 Gen2 Explorer](./concepts-ux-panels.md)。 若要規劃您的環境，請閱讀 [Azure 時間序列深入解析 Gen2 規劃](./how-to-plan-your-environment.md)。
 
 * 第二個開始的方法是使用 JavaScript SDK，在您的 web 應用程式中快速內嵌功能強大的圖表和圖形。 只需幾行程式碼，您就可以撰寫功能強大的查詢。 您可以使用它們來填入折線圖、圓形圖、橫條圖、熱度圖、資料方格等等。 透過使用 SDK，所有這些元素都是立即可用。 SDK 也會將 Azure 時間序列深入解析 Gen2 查詢 Api 抽象化。 您可以使用它們來撰寫類似 SQL 的述詞，以查詢要在儀表板上顯示的資料。 針對混合式展示層解決方案，Azure 時間序列深入解析 Gen2 提供參數化的 Url。 他們使用 Azure 時間序列深入解析 Gen2 Explorer 提供順暢的連接點，以便深入探討資料。
 
   * 請參閱 [JS 用戶端程式庫](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 和 [範例用戶端](https://github.com/Microsoft/tsiclient) 檔，以深入瞭解 JavaScript SDK。
 
-  * 查看 [Azure 時間序列深入解析 Gen2 Explorer 中的資料視覺化，以](time-series-insights-update-explorer.md)深入瞭解共用 url 和新的 UI。
+  * 查看 [Azure 時間序列深入解析 Gen2 Explorer 中的資料視覺化，以](./concepts-ux-panels.md)深入瞭解共用 url 和新的 UI。
 
 * 第三個開始的方法是使用強大的 Api 來查詢 Azure 時間序列深入解析 Gen2 中儲存的資料。 Azure 時間序列深入解析 Gen2 具有時態性運算子 `from` ，例如、 `to` 、 `first` 和 `last` 。 它具有匯總和轉換，例如 `average` 、 `sum` 、 `min` 、 `max` 、 `time-weighted average` 、等等 `time-weighted sum` 。它也允許篩選、算術和布林運算子、純量函數等等。所有這些運算子都可讓下游應用程式快速找出您資料中的有趣趨勢與模式。 您可以使用它們來填入自主視覺效果，以找出異常狀況。
 
@@ -98,8 +98,8 @@ Azure 時間序列深入解析 Gen2 能以兩種簡單且符合成本效益的�
 
 * 其次，您可以將機器學習和預測模型的輸出送入 Azure 時間序列深入解析 Gen2，以視覺化並儲存其結果。 此程序可協助組織最佳化並調整其模型。 Azure 時間序列深入解析 Gen2 可讓您輕鬆地將相同平面上的串流遙測資料視覺化，如同定型的模型輸出。 如此一來，它可以協助資料科學小組找出異常狀況並識別模式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 深入瞭解 [Azure 時間序列深入解析 Gen2 Explorer](./time-series-insights-update-explorer.md)。
-* 閱讀 [Azure 時間序列深入解析 Gen2 的最佳作法](./time-series-insights-update-plan.md) ，以規劃您的環境。
+* 深入瞭解 [Azure 時間序列深入解析 Gen2 Explorer](./concepts-ux-panels.md)。
+* 閱讀 [Azure 時間序列深入解析 Gen2 的最佳作法](./how-to-plan-your-environment.md) ，以規劃您的環境。
 * 閱讀 [範例用戶端](https://github.com/Microsoft/tsiclient) 檔。

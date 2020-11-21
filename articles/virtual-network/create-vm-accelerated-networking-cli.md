@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31d833d1a6e9c7715ca13582c09f5f72564d683a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896118"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016134"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路功能的 Linux 虛擬機器
 
@@ -51,7 +51,7 @@ ms.locfileid: "92896118"
 * **具有反向移植核心的 Debian "Stretch"**
 * **具有 Red Hat 相容核心的 Oracle Linux 7.4 和更新版本 (RHCK)**
 * **UEK 第5版的 Oracle Linux 7.5 和更新版本**
-* **FreeBSD 10.4、11.1 & 12。0**
+* **FreeBSD 10.4、11.1 & 12.0 或更新版本**
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
@@ -87,7 +87,7 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ## <a name="cli-creation"></a>建立 CLI
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-請安裝最新的 [Azure CLI](/cli/azure/install-azure-cli)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup* 、 *myNic* 和 *myVm* 。
+請安裝最新的 [Azure CLI](/cli/azure/install-azure-cli)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup*、*myNic* 和 *myVm*。
 
 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 *centralus* 位置建立名為 *myResourceGroup* 的資源群組：
 
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>建立 VM 並連結 NIC
 當您建立 VM 時，請指定您使用 `--nics` 所建立的 NIC。 選取列於 [Linux 加速網路](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)中的大小和發行版本。 
 
-使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會使用 UbuntuLTS 映像建立名為 *myVM* 的 VM，以及支援加速網路的大小 ( *Standard_DS4_v2* )：
+使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會使用 UbuntuLTS 映像建立名為 *myVM* 的 VM，以及支援加速網路的大小 (*Standard_DS4_v2*)：
 
 ```azurecli
 az vm create \
@@ -175,7 +175,7 @@ az vm create \
 
 如需所有 VM 大小和特性的清單，請參閱 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-建立 VM 後，系統將傳回與下列範例輸出類似的輸出。 請記下 **publicIpAddress** 。 在後續步驟中，將會使用此位址來存取 VM。
+建立 VM 後，系統將傳回與下列範例輸出類似的輸出。 請記下 **publicIpAddress**。 在後續步驟中，將會使用此位址來存取 VM。
 
 ```output
 {
@@ -192,7 +192,7 @@ az vm create \
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>確認加速網路已確實啟用
 
-使用下列命令來對 VM 建立 SSH 工作階段。 使用指派至您建立之虛擬機器的公用 IP 位址來取代 `<your-public-ip-address>`，如果您在建立 VM 時，為 `--admin-username` 使用不同的值，則請取代 *azureuser* 。
+使用下列命令來對 VM 建立 SSH 工作階段。 使用指派至您建立之虛擬機器的公用 IP 位址來取代 `<your-public-ip-address>`，如果您在建立 VM 時，為 `--admin-username` 使用不同的值，則請取代 *azureuser*。
 
 ```bash
 ssh azureuser@<your-public-ip-address>
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 從 Bash 殼層中，輸入 `uname -r`，並確認核心版本是下列其中一個版本或更高版本：
 
-* **Ubuntu 16.04** : 4.11.0-1013
-* **SLES SP3** : 4.4.92-6.18
-* **RHEL** : 7.4.2017120423
-* **CentOS** : 7.4.20171206
+* **Ubuntu 16.04**: 4.11.0-1013
+* **SLES SP3**: 4.4.92-6.18
+* **RHEL**: 7.4.2017120423
+* **CentOS**: 7.4.20171206
 
 
 確認 Mellanox VF 裝置已使用 `lspci` 命令向 VM 公開。 傳回的輸出大致如下列所示：

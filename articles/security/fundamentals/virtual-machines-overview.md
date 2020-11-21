@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409785"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014759"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虛擬機器安全性概觀
 本文概要說明可搭配虛擬機器使用的核心 Azure 安全性功能。
@@ -57,7 +57,7 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 如需更強大的保護，請考慮使用 [Windows Defender 進階威脅防護](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。 透過使用 Windows Defender ATP，您將能取得：
 
-* [攻擊面縮減](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [受攻擊面縮小](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [新一代的保護](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [端點保護和回應](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [自動化調查和補救](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
@@ -108,16 +108,16 @@ Azure 備份是可調式解決方案，可以不需成本地協助保護您的�
 
 網站復原：
 
-* **簡化 BCDR 策略** ：Site Recovery 可讓您從單一位置輕鬆處理多個商務工作負載和應用程式的複寫、容錯移轉及復原。 Site Recovery 會協調複寫和容錯移轉，但不會攔截應用程式資料或擁有任何相關資訊。
-* **提供彈性的複寫** ：使用 Site Recovery，您就可以複寫 Hyper-V 虛擬機器、VMware 虛擬機器和 Windows/Linux 實體伺服器上執行的工作負載。
-* **支援容錯移轉和復原** ：Site Recovery 可提供測試用容錯移轉，既能支援災害復原演練，又不會影響生產環境。 您也可以執行計劃性容錯移轉，因為是預期中的中斷，所以不會遺失任何資料；或是執行非計劃性容錯移轉，以在發生非未預期的災害時將資料損失減到最少 (取決於複寫頻率)。 在容錯移轉之後，您可以容錯回復到主要站台。 Site Recovery 提供了包含指令碼和 Azure 自動化作業手冊的復原計畫，以供您自訂多層式應用程式的容錯移轉和復原。
-* **消除次要資料中心** ：您可以複寫至次要內部部署站台或 Azure。 使用 Azure 做為災害復原目的地，可排除次要站台的維護成本和複雜度。 複寫的資料會儲存在 Azure 儲存體。
-* **與現有 BCDR 技術整合** ：Site Recovery 能夠與其他應用程式的 BCDR 功能搭配使用。 例如，您可以使用 Site Recovery 來協助保護公司工作負載的 SQL Server 後端。 這包括原生支援 SQL Server Always On 以管理可用性群組的容錯移轉。
+* **簡化 BCDR 策略**：Site Recovery 可讓您從單一位置輕鬆處理多個商務工作負載和應用程式的複寫、容錯移轉及復原。 Site Recovery 會協調複寫和容錯移轉，但不會攔截應用程式資料或擁有任何相關資訊。
+* **提供彈性的複寫**：使用 Site Recovery，您就可以複寫 Hyper-V 虛擬機器、VMware 虛擬機器和 Windows/Linux 實體伺服器上執行的工作負載。
+* **支援容錯移轉和復原**：Site Recovery 可提供測試用容錯移轉，既能支援災害復原演練，又不會影響生產環境。 您也可以執行計劃性容錯移轉，因為是預期中的中斷，所以不會遺失任何資料；或是執行非計劃性容錯移轉，以在發生非未預期的災害時將資料損失減到最少 (取決於複寫頻率)。 在容錯移轉之後，您可以容錯回復到主要站台。 Site Recovery 提供了包含指令碼和 Azure 自動化作業手冊的復原計畫，以供您自訂多層式應用程式的容錯移轉和復原。
+* **消除次要資料中心**：您可以複寫至次要內部部署站台或 Azure。 使用 Azure 做為災害復原目的地，可排除次要站台的維護成本和複雜度。 複寫的資料會儲存在 Azure 儲存體。
+* **與現有 BCDR 技術整合**：Site Recovery 能夠與其他應用程式的 BCDR 功能搭配使用。 例如，您可以使用 Site Recovery 來協助保護公司工作負載的 SQL Server 後端。 這包括原生支援 SQL Server Always On 以管理可用性群組的容錯移轉。
 
 深入了解：
 
 * [什麼是 Azure Site Recovery？](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery 如何運作？](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Azure Site Recovery 如何運作？](/azure/site-recovery/azure-to-azure-architecture)
 * [Azure Site Recovery 保護哪些工作負載？](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>虛擬網路
@@ -169,6 +169,6 @@ TEE 能確保沒有任何方法可以從外部檢視資料或內部作業，就�
 * [Azure 機密運算簡介](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/) \(英文\)  
 * [Azure 機密運算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解 Vm 和作業系統的 [安全性最佳作法](iaas.md) 。

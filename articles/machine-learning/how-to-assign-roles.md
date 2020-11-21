@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961221"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012970"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -27,7 +27,7 @@ ms.locfileid: "94961221"
 >
 > * [控制對 Azure Kubernetes 叢集資源的存取](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)
-> * [使用 Azure RBAC 來存取 blob 資料](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [使用 Azure RBAC 來存取 blob 資料](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
 > 套用某些角色可能會限制其他使用者的 Azure Machine Learning studio 中的 UI 功能。 例如，如果使用者的角色沒有建立計算實例的能力，則在 studio 中將無法使用建立計算實例的選項。 這是預期的行為，並可防止使用者嘗試會傳回拒絕存取錯誤的作業。
@@ -467,7 +467,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 - 有時可能需要1小時的時間，新的角色指派才會對整個堆疊的快取許可權生效。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [企業安全性概觀](concept-enterprise-security.md)
 - [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)

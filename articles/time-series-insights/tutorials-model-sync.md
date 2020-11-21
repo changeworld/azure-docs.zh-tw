@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
-ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342374"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014725"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins 與 Azure 時間序列深入解析 Gen2 之間的模型同步處理
 
-本文說明用來將 Azure 數位 Twins 中的資產模型轉譯 (ADT) 至 Azure 時間序列深入解析 (TSI) 中資產模型的最佳作法和工具。  本文是兩部分教學課程系列的第二部分，說明 Azure 數位 Twins 與 Azure 時間序列深入解析的整合。 Azure 數位 Twins 與時間序列深入解析的整合，可讓您封存和追蹤數位 Twins 的遙測和計算屬性歷程記錄。 這一系列的教學課程的目標是開發人員在使用 Azure 數位 Twins 來整合時間序列深入解析。 第1部分說明  [如何建立資料管線，以將實際的時間序列資料從 Azure 數位 Twins 帶到時間序列深入](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) 解析，而這是教學課程系列的第二個部分說明 Azure 數位 Twins 與時間序列深入解析之間的資產模型同步處理。 本教學課程說明選擇和建立時間序列識別碼的命名慣例 (TS 識別碼) 的最佳作法，並在時間序列模型中手動建立階層)  (的。
+本文說明用來將 Azure 數位 Twins 中的資產模型轉譯 (ADT) 至 Azure 時間序列深入解析 (TSI) 中資產模型的最佳作法和工具。  本文是兩部分教學課程系列的第二部分，說明 Azure 數位 Twins 與 Azure 時間序列深入解析的整合。 Azure 數位 Twins 與時間序列深入解析的整合，可讓您封存和追蹤數位 Twins 的遙測和計算屬性歷程記錄。 這一系列的教學課程的目標是開發人員在使用 Azure 數位 Twins 來整合時間序列深入解析。 第1部分說明  [如何建立資料管線，以將實際的時間序列資料從 Azure 數位 Twins 帶到時間序列深入](../digital-twins/how-to-integrate-time-series-insights.md) 解析，而這是教學課程系列的第二個部分說明 Azure 數位 Twins 與時間序列深入解析之間的資產模型同步處理。 本教學課程說明選擇和建立時間序列識別碼的命名慣例 (TS 識別碼) 的最佳作法，並在時間序列模型中手動建立階層)  (的。
 
 ## <a name="choosing-a-time-series-id"></a>選擇時間序列識別碼
 
@@ -29,7 +29,7 @@ ms.locfileid: "91342374"
 
 ## <a name="contextualizing-time-series"></a>CoNtextualizing 時間序列
 
-在時間序列深入解析中，對脈絡化資料 (大多是空間) 在時間序列深入解析中都是透過資產階層來達成，而且也可透過時間序列深入解析瀏覽器中的樹狀檢視，用來輕鬆地流覽資料。 時間序列類型和階層是使用時間序列模型來定義， (在時間序列深入解析中的 TSM) 。 TSM 中的類型有助於定義變數，而階層層級和實例域值是用來在時間序列深入解析瀏覽器中建立樹狀檢視。 如需有關 TSM 的詳細資訊，請參閱 [線上時間序列深入解析檔](https://docs.microsoft.com/azure/time-series-insights/concepts-model-overview)。
+在時間序列深入解析中，對脈絡化資料 (大多是空間) 在時間序列深入解析中都是透過資產階層來達成，而且也可透過時間序列深入解析瀏覽器中的樹狀檢視，用來輕鬆地流覽資料。 時間序列類型和階層是使用時間序列模型來定義， (在時間序列深入解析中的 TSM) 。 TSM 中的類型有助於定義變數，而階層層級和實例域值是用來在時間序列深入解析瀏覽器中建立樹狀檢視。 如需有關 TSM 的詳細資訊，請參閱 [線上時間序列深入解析檔](./concepts-model-overview.md)。
 
 在 Azure 數位 Twins 中，資產之間的連接會使用對應項關聯性來表示。 對應項關聯性只是連線資產的圖形。 不過，在時間序列深入解析中，資產之間的關聯性本質上是階層式的。 也就是，資產會共用父子類型的 od 關聯性，並使用樹狀結構來表示。 若要將 Azure 數位 Twins 中的關聯性資訊轉譯為時間序列深入解析階層，我們需要選擇 Azure 數位 Twins 的相關階層式關聯性。 Azure 數位 Twins 使用稱為數位對應項定義語言 (DTDL) 的開放式標準模型語言。 在 DTDL 模型中，會使用稱為 JSON-LD 的 JSON 變數來描述。 如需規格的完整詳細資訊，請參閱 [DTDL 檔](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 。
 
@@ -82,7 +82,7 @@ ms.locfileid: "91342374"
 
 > [!Note]
 >
-> 此程式碼片段範例假設讀者熟悉本教學課程的 [第01部分](https://docs.microsoft.com/azure/digital-twins/tutorial-end-to-end#set-up-the-sample-function-app) ，並在 "ProcessHubToDTEvents" 函式內進行這段程式碼變更。
+> 此程式碼片段範例假設讀者熟悉本教學課程的 [第01部分](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) ，並在 "ProcessHubToDTEvents" 函式內進行這段程式碼變更。
 
 ```csharp
 if (propertyPath.Equals("/Flow"))
@@ -114,7 +114,7 @@ relationship for " + twinId);
 
 ## <a name="updating-instance-fields-using-apis"></a>使用 Api 更新實例欄位
 
-本教學課程的這一節說明如何使用時間序列深入解析模型 Api，以程式設計方式接聽 Azure 數位 Twins 中的模型變更，例如建立、刪除 Twins 或變更 Twins 和更新實例欄位和階層之間的關聯性。 此更新時間序列深入解析模型的方法通常會透過 Azure 函式來達成。 在 Azure 數位 Twins 中，事件通知（例如對應項新增或刪除）可以路由傳送下游服務，例如事件中樞，接著可以將這些服務送到 Azure 函式。 如需事件路由和篩選的進一步詳細資料，請參閱 [這裡](https://docs.microsoft.com/azure/digital-twins/how-to-manage-routes-portal)。  本節其餘部分將說明如何使用 Azure 函式中的時間序列深入解析模型 Api 來更新時間序列深入解析模型，以回應對應項新增 (一種模型變更) 在 Azure 數位 Twins 中。
+本教學課程的這一節說明如何使用時間序列深入解析模型 Api，以程式設計方式接聽 Azure 數位 Twins 中的模型變更，例如建立、刪除 Twins 或變更 Twins 和更新實例欄位和階層之間的關聯性。 此更新時間序列深入解析模型的方法通常會透過 Azure 函式來達成。 在 Azure 數位 Twins 中，事件通知（例如對應項新增或刪除）可以路由傳送下游服務，例如事件中樞，接著可以將這些服務送到 Azure 函式。 如需事件路由和篩選的進一步詳細資料，請參閱 [這裡](../digital-twins/how-to-manage-routes-portal.md)。  本節其餘部分將說明如何使用 Azure 函式中的時間序列深入解析模型 Api 來更新時間序列深入解析模型，以回應對應項新增 (一種模型變更) 在 Azure 數位 Twins 中。
 
 ### <a name="receiving-and-identifying-twin-addition-event-notification"></a>接收和識別對應項新增事件通知
 
@@ -225,6 +225,6 @@ private async Task<TimeSeriesInstance> AddHierarchyToInstanceAsync(TimeSeriesIns
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-本教學課程系列的第三個教學課程說明如何使用時間序列深入解析 Api，從 Azure 數位 Twins 查詢歷程記錄資料。 這是進行中的工作，而且區段會在準備就緒時進行更新。 在此同時，建議讀者參考 [時間序列深入解析資料查詢 API 檔](https://docs.microsoft.com/azure/time-series-insights/concepts-query-overview)。
+本教學課程系列的第三個教學課程說明如何使用時間序列深入解析 Api，從 Azure 數位 Twins 查詢歷程記錄資料。 這是進行中的工作，而且區段會在準備就緒時進行更新。 在此同時，建議讀者參考 [時間序列深入解析資料查詢 API 檔](./concepts-query-overview.md)。

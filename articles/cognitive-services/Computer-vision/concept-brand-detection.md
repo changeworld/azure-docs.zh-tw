@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 87cb0f93201b5111e4d5e954ee62451405436fa0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 46cead6f7b9362dc9b48fda15c0d04b13c2f989c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538722"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013655"
 ---
 # <a name="detect-popular-brands-in-images"></a>偵測影像中的熱門品牌
 
@@ -23,7 +23,7 @@ ms.locfileid: "94538722"
 
 電腦視覺服務可偵測特定影像中是否有品牌標誌；如果有，會傳回品牌名稱、信賴分數，以及標誌週框的座標。
 
-內建的標誌資料庫涵蓋消費性電子產品、服飾等等的熱門品牌。 如果您發現電腦視覺服務偵測不到您尋找的品牌，您可以使用[自訂視覺](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)服務建立並定型您自己的標誌偵測器來獲得更好的服務。
+內建的標誌資料庫涵蓋消費性電子產品、服飾等等的熱門品牌。 如果您發現電腦視覺服務偵測不到您尋找的品牌，您可以使用[自訂視覺](../custom-vision-service/index.yml)服務建立並定型您自己的標誌偵測器來獲得更好的服務。
 
 ## <a name="brand-detection-example"></a>品牌偵測範例
 

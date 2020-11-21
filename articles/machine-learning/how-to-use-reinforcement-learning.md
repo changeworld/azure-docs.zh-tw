@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312316"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012915"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -52,22 +52,22 @@ ms.locfileid: "93312316"
     - 安裝 [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
     - 安裝 [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py)：`pip install --upgrade azureml-contrib-reinforcementlearning`
     - 建立[工作區組態檔](how-to-configure-environment.md#workspace)。
-    - 執行虛擬網路[安裝筆記本](https://aka.ms/azure-rl-env-setup)，以開啟用於分散式增強式學習的網路連接埠。
+    - 執行虛擬網路以開啟分散式增強式學習所使用的網路埠。
 
 
 ## <a name="how-to-train-a-pong-playing-agent"></a>如何訓練 Pong 遊戲代理程式
 
-增強式學習 (RL) 是機器學習的一種方法，可讓機器學習透過實際進行來學習。 其他機器學習服務技術會被動地取得輸入資料並尋找其中的模式，而 RL 會使用 **訓練代理程式** ，主動做出決策並從結果中學習。
+增強式學習 (RL) 是機器學習的一種方法，可讓機器學習透過實際進行來學習。 其他機器學習服務技術會被動地取得輸入資料並尋找其中的模式，而 RL 會使用 **訓練代理程式**，主動做出決策並從結果中學習。
 
 您的訓練代理程式會學習了解如何在 **模擬的環境** 中玩 Pong。 訓練代理程式會在遊戲的每個畫格上做出決定，以將球拍向上、向下或保持在原處。 其會查看遊戲的狀態 (螢幕的 RGB 影像) 來做出決定。
 
-RL 會使用 **報酬** ，告訴代理程式其決策是否成功。 在此環境中，代理程式會在得分時取得正面獎勵，並在未得分時獲得負面獎勵。 經過多次反覆動作之後，訓練代理程式會根據其目前狀態來學習選擇動作，針對預期未來會得到的獎勵總和進行最佳化。
+RL 會使用 **報酬**，告訴代理程式其決策是否成功。 在此環境中，代理程式會在得分時取得正面獎勵，並在未得分時獲得負面獎勵。 經過多次反覆動作之後，訓練代理程式會根據其目前狀態來學習選擇動作，針對預期未來會得到的獎勵總和進行最佳化。
 
 通常會使用 **深度類神經網路** (DNN) 模型，在 RL 中執行這項最佳化。 一開始，學習代理程式的執行效能不佳，但每個遊戲都會產生額外的範例，以進一步改善模型。
 
 當代理程式在訓練期間中達成平均 18 分的奬勵分數時，即結束訓練。 這表示代理程式在最多 21 個回合中，以至少平均 18 點的分數擊敗對手。
 
-逐一查看模擬和重新訓練 DNN 的流程會耗用大量運算資源，而且需要大量資料。 若要改善 RL 作業的效能，其中一種方法是 **平行處理工作** ，讓多個訓練代理程式可以採取行動並同時學習。 不過，管理分散式 RL 環境是一項複雜的工作。
+逐一查看模擬和重新訓練 DNN 的流程會耗用大量運算資源，而且需要大量資料。 若要改善 RL 作業的效能，其中一種方法是 **平行處理工作**，讓多個訓練代理程式可以採取行動並同時學習。 不過，管理分散式 RL 環境是一項複雜的工作。
 
 Azure Machine Learning 提供架構來管理這些複雜性，以擴增您的 RL 工作負載。
 

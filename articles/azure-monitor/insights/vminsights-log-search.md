@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325180"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015583"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何從適用於 VM 的 Azure 監視器查詢記錄
 
@@ -49,9 +49,9 @@ ms.locfileid: "87325180"
 
 | 屬性 | 說明 |
 |:--|:--|
-|Direction |連線的方向，值為 *inbound* 或 *outbound* |
+|方向 |連線的方向，值為 *inbound* 或 *outbound* |
 |電腦 |電腦 FQDN |
-|處理序 |處理序或處理序群組的身分識別，會起始/接受連線 |
+|Process |處理序或處理序群組的身分識別，會起始/接受連線 |
 |SourceIp |來源的 IP 位址 |
 |DestinationIp |目的地的 IP 位址 |
 |DestinationPort |目的地的連接埠號碼 |
@@ -112,7 +112,7 @@ ms.locfileid: "87325180"
 |:--|:--|
 |MaliciousIP |RemoteIp 位址 |
 |IndicatorThreadType |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
-|說明 |觀察到的威脅的說明。 |
+|Description |觀察到的威脅的說明。 |
 |TLPLevel |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
 |信賴度 |值為 *0 – 100*。 |
 |Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
@@ -130,7 +130,7 @@ VMBoundPort 中的每一筆記錄都是由下欄欄位所識別：
 
 | 屬性 | 說明 |
 |:--|:--|
-|處理序 | 處理常式 (或與埠相關聯) 進程群組的身分識別。|
+|Process | 處理常式 (或與埠相關聯) 進程群組的身分識別。|
 |Ip | 埠 IP 位址 (可以是萬用字元 IP、 *0.0.0.0*)  |
 |連接埠 |埠號碼 |
 |通訊協定 | 通訊協定。  例如， *tcp* 或 *udp* (目前只有 *tcp*) 支援。|
@@ -226,14 +226,14 @@ VMBoundPort 中的每一筆記錄都是由下欄欄位所識別：
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
 |電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為 *m-{GUID}*，其中 *guid* 與 AgentId 的 guid 相同。 | 
-|處理序 | 服務對應進程的唯一識別碼。 它是 *p-{GUID}* 的形式。 
+|Process | 服務對應進程的唯一識別碼。 它是 *p-{GUID}* 的形式。 
 |ExecutableName | 處理序可執行檔的名稱 | 
 |DisplayName | 進程顯示名稱 |
-|角色 | 進程角色： *web*伺服器、 *>appserver*、 *databaseServer*、 *ldapServer*、 *smbServer* |
+|角色 | 進程角色： *web* 伺服器、 *>appserver*、 *databaseServer*、 *ldapServer*、 *smbServer* |
 |群組 | 進程組名。 相同群組中的程式在邏輯上是相關的，例如，相同產品或系統元件的一部分。 |
 |StartTime | 處理序集區的開始時間 |
 |FirstPid | 處理序集區中的第一個 PID |
-|說明 | 處理序的描述 |
+|Description | 處理序的描述 |
 |CompanyName | 公司的名稱 |
 |InternalName | 內部名稱 |
 |ProductName | 產品的名稱 |
@@ -431,7 +431,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="performance-records"></a>效能記錄
-*InsightsMetrics*類型的記錄具有來自虛擬機器之客體作業系統的效能資料。 這些記錄具有下表中的屬性：
+*InsightsMetrics* 類型的記錄具有來自虛擬機器之客體作業系統的效能資料。 這些記錄具有下表中的屬性：
 
 
 | 屬性 | 說明 |
@@ -442,7 +442,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 |電腦 | 電腦 FQDN | 
 |來源 | *vm.azm.ms* |
 |命名空間 | 效能計數器的類別 | 
-|名稱 | 效能計數器的名稱 |
+|Name | 效能計數器的名稱 |
 |Val | 收集的值 | 
 |標籤 | 記錄的相關詳細資料。 請參閱下表，以瞭解搭配不同記錄類型使用的標記。  |
 |AgentId | 每部電腦的代理程式的唯一識別碼 |
@@ -451,7 +451,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 下表列出目前收集至 *InsightsMetrics* 資料表的效能計數器：
 
-| 命名空間 | 名稱 | 說明 | Unit | 標籤 |
+| 命名空間 | Name | 說明 | 單位 | 標籤 |
 |:---|:---|:---|:---|:---|
 | 電腦    | 活動訊號             | 電腦的信號                        | | |
 | Memory      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-記憶體大小總計|
@@ -471,9 +471,9 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | LogicalDisk | 每秒位元組        | 每秒邏輯磁片位元組數             | 每秒位元組 | mountId-裝置的掛接識別碼 |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 如果您不熟悉如何在 Azure 監視器中撰寫記錄查詢，請參閱如何在 Azure 入口網站中 [使用 Log Analytics](../log-query/get-started-portal.md) 來寫入記錄查詢。
 
-* 瞭解如何 [撰寫搜尋查詢](../log-query/search-queries.md)。
+* 瞭解如何 [撰寫搜尋查詢](/azure/azure-monitor/log-query/get-started-queries)。
 

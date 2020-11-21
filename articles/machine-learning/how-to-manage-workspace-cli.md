@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 7de78a52482b2f07cb4e5e036509e0f9e402a3f4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: aa85822b433e2d8128df9ae3664411ea3fcddec4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576269"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012929"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -24,18 +24,22 @@ ms.locfileid: "94576269"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 若要從您的 **本機環境** 使用本文件中的 CLI 命令，您需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
     如果您使用 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，CLI 可透過瀏覽器存取，並在雲端運作。
+
+## <a name="limitations"></a>限制
+
+* 建立新的工作區時，您可以允許工作區自動建立所需的 Azure 服務，或提供現有的服務。 提供現有的服務時，這些服務必須與工作區位於相同的 Azure 訂用帳戶中。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>將 CLI 連接至您的 Azure 訂用帳戶
 
 > [!IMPORTANT]
 > 如果您是使用 Azure Cloud Shell，則可以跳過本節。 Cloud Shell 會使用您登入 Azure 訂閱的帳戶，自動驗證您的身分。
 
-有數種方式可讓您從 CLI 向您的 Azure 訂閱進行驗證。 最簡單的方式是使用瀏覽器，以互動方式進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，並使用下列命令：
+您可藉由數種方式透過 CLI 向您的 Azure 訂用帳戶進行驗證。 最簡單的方式是使用瀏覽器，以互動方式進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，並使用下列命令：
 
 ```azurecli-interactive
 az login
@@ -189,7 +193,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!IMPORTANT]
 > 您不需要指定所有現有的資源。 您可指定一或多個資源。 例如，您可指定現有的儲存體帳戶，且工作區將會建立其他資源。
 
-+ **Azure 儲存體帳戶** ：`az storage account show --name <storage-account-name> --query "id"`
++ **Azure 儲存體帳戶**：`az storage account show --name <storage-account-name> --query "id"`
 
     此命令的回應類似下列文字，這是儲存體帳戶的識別碼：
 
@@ -198,7 +202,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     > [!IMPORTANT]
     > 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 使用工作區的 _預設_ 儲存體帳戶並不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
 
-+ **Azure Application Insights** ：
++ **Azure Application Insights**：
 
     1. 安裝 Application Insights 延伸模組：
 
@@ -216,13 +220,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault** ：`az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**：`az keyvault show --name <key-vault-name> --query "ID"`
 
     此命令的回應類似下列文字，這是金鑰保存庫的識別碼：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry** ：`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**：`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     此命令的回應類似下列文字，這是容器登錄的識別碼：
 

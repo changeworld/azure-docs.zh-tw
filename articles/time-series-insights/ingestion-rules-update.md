@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667804"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016712"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>新環境的 JSON 簡維和轉義規則即將變更
 
@@ -44,17 +44,17 @@ ms.locfileid: "91667804"
 
 任何新的部署都必須符合新的內嵌規則。 例如，如果您的 TS 識別碼為 `telemetry_tagId` ，您需要更新任何 Azure Resource Manager 範本或自動化部署腳本，以設定 `telemetry.tagId` 為環境 TS 識別碼。 您也需要針對嵌套 JSON 中的事件來源時間戳記進行這項變更。
 
-### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>如果您的承載包含嵌套 JSON 或特殊字元，而且您會自動撰寫 [時間序列模型](.\time-series-insights-update-tsm.md) 變數運算式
+### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>如果您的承載包含嵌套 JSON 或特殊字元，而且您會自動撰寫 [時間序列模型](./concepts-model-overview.md) 變數運算式
 
-更新執行 [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) 的用戶端程式代碼，以符合新的內嵌規則。 例如，您應該將先前的 [時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) 更新 `"value": {"tsx": "$event.series_value.Double"}` 為下列其中一個選項：
+更新執行 [TypesBatchPut](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) 的用戶端程式代碼，以符合新的內嵌規則。 例如，您應該將先前的 [時間序列運算式](/rest/api/time-series-insights/reference-time-series-expression-syntax) 更新 `"value": {"tsx": "$event.series_value.Double"}` 為下列其中一個選項：
 
 * `"value": {"tsx": "$event.series.value.Double"}`
 * `"value": {"tsx": "$event['series']['value'].Double"}`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 瞭解 [Azure 時間序列深入解析 Gen2 儲存體和](./time-series-insights-update-storage-ingress.md)輸入。
+* 瞭解 [Azure 時間序列深入解析 Gen2 儲存體和](./concepts-ingestion-overview.md)輸入。
 
 * 瞭解如何使用 [時間序列查詢 api](./concepts-query-overview.md)來查詢您的資料。
 
-* 深入瞭解新的 [時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+* 深入瞭解新的 [時間序列運算式語法](/rest/api/time-series-insights/reference-time-series-expression-syntax)。

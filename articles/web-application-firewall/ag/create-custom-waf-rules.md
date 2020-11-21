@@ -6,20 +6,22 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77368297"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015692"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在應用程式閘道上建立及使用 Web 應用程式防火牆 v2 自訂規則
 
 Azure 應用程式閘道上的 Web 應用程式防火牆 (WAF) v2 提供 web 應用程式的保護。 這項保護是由開放式 Web 應用程式安全性專案所提供 (OWASP) 核心規則集 (CRS) 。 在某些情況下，您可能需要建立自己的自訂規則，以符合您的特定需求。 如需 WAF 自訂規則的詳細資訊，請參閱 [自訂 web 應用程式防火牆規則總覽](custom-waf-rules-overview.md)。
 
 本文將說明一些您可以建立並搭配 v2 WAF 使用的自訂規則範例。 若要瞭解如何使用 Azure PowerShell 以自訂規則部署 WAF，請參閱 [使用 Azure PowerShell 設定 Web 應用程式防火牆自訂規則](configure-waf-custom-rules.md)。
+
+本文所顯示的 JSON 程式碼片段衍生自 [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) 資源。
 
 >[!NOTE]
 > 如果您的應用程式閘道並未使用 WAF 層，右窗格中會出現將應用程式閘道升級至 WAF 層的選項。
@@ -301,7 +303,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-5"></a>範例 5
 
-在此範例中，您想要封鎖要求是否位於 IP 位址範圍 *192.168.5.0/24*之外，或使用者代理字串不是 *chrome* (表示使用者未使用 chrome 瀏覽器) 。 因為此邏輯使用 **或**，所以這兩個條件位於不同的規則中，如下列範例所示。 *myrule1* 和 *myrule2* 兩者都必須符合以封鎖流量。
+在此範例中，您想要封鎖要求是否位於 IP 位址範圍 *192.168.5.0/24* 之外，或使用者代理字串不是 *chrome* (表示使用者未使用 chrome 瀏覽器) 。 因為此邏輯使用 **或**，所以這兩個條件位於不同的規則中，如下列範例所示。 *myrule1* 和 *myrule2* 兩者都必須符合以封鎖流量。
 
 邏輯： **不** (p **和** q) = **不** 是 p **或 not** q。
 
@@ -388,7 +390,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-6"></a>範例 6
 
-您想要封鎖自訂 SQLI。 因為此處使用的邏輯是 **或**，而且所有值都在 *RequestUri*中，所以所有 *MatchValues* 都可以是以逗號分隔的清單。
+您想要封鎖自訂 SQLI。 因為此處使用的邏輯是 **或**，而且所有值都在 *RequestUri* 中，所以所有 *MatchValues* 都可以是以逗號分隔的清單。
 
 邏輯： p **或** q **或** r
 
@@ -543,7 +545,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 建立自訂規則之後，您可以瞭解如何查看 WAF 記錄。 如需詳細資訊，請參閱[應用程式閘道診斷](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。
 

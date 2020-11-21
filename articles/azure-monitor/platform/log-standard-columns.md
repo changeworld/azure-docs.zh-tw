@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104235"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014215"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure 監視器記錄中的標準資料行
 Azure 監視器記錄檔中的資料會 [儲存為 Log Analytics 工作區或 Application Insights 應用程式中的一組記錄](./data-platform-logs.md)，每個資料類型都有一組唯一的資料行。 許多資料類型會有多個類型之間常見的標準資料行。 本文描述這些資料行，並提供如何在查詢中使用它們的範例。
@@ -22,7 +22,7 @@ Application Insights 中的工作區應用程式會將其資料儲存在 Log Ana
 > 某些標準資料行不會顯示在 Log Analytics 的架構視圖或 intellisense 中，除非您明確指定輸出中的資料行，否則這些資料行不會顯示在查詢結果中。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
-**TimeGenerated** (Log Analytics 工作區) 和**時間戳記** (Application Insights 應用程式) 資料行包含資料來源建立記錄的日期和時間。 如需詳細資訊，請參閱 [Azure 監視器中的記錄資料內嵌時間](data-ingestion-time.md) 。
+**TimeGenerated** (Log Analytics 工作區) 和 **時間戳記** (Application Insights 應用程式) 資料行包含資料來源建立記錄的日期和時間。 如需詳細資訊，請參閱 [Azure 監視器中的記錄資料內嵌時間](data-ingestion-time.md) 。
 
 **TimeGenerated** 和 **timestamp** 提供通用資料行，以用於篩選或依時間摘要。 當您在 Azure 入口網站中選取視圖或儀表板的時間範圍時，它會使用 TimeGenerated 或 timestamp 來篩選結果。 
 
@@ -48,7 +48,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-** \_ TimeReceived**資料行包含 Azure 雲端中的 Azure 監視器內嵌點收到記錄的日期和時間。 這有助於識別資料來源與雲端之間的延遲問題。 其中一個範例是網路問題，導致從代理程式傳送資料時發生延遲。 如需詳細資訊，請參閱 [Azure 監視器中的記錄資料內嵌時間](data-ingestion-time.md) 。
+**\_ TimeReceived** 資料行包含 Azure 雲端中的 Azure 監視器內嵌點收到記錄的日期和時間。 這有助於識別資料來源與雲端之間的延遲問題。 其中一個範例是網路問題，導致從代理程式傳送資料時發生延遲。 如需詳細資訊，請參閱 [Azure 監視器中的記錄資料內嵌時間](data-ingestion-time.md) 。
 
 下列查詢會針對代理程式中的事件記錄，提供平均延遲（以小時為單位）。 這包括從代理程式到雲端的時間，以及記錄查詢可用記錄的總時間。
 
@@ -62,7 +62,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>類型和 itemType
- (Log Analytics 工作區) 和**itemType** (Application Insights 應用程式) 資料行的**類型**，會保留從中抓取記錄的資料表名稱，也可以視為記錄類型。 此資料行適用于結合多個資料表（例如使用運算子的記錄）的查詢， `search` 以區分不同類型的記錄。 **$table** 可用來取代某些位置中的**類型**。
+ (Log Analytics 工作區) 和 **itemType** (Application Insights 應用程式) 資料行的 **類型**，會保留從中抓取記錄的資料表名稱，也可以視為記錄類型。 此資料行適用于結合多個資料表（例如使用運算子的記錄）的查詢， `search` 以區分不同類型的記錄。 **$table** 可用來取代某些位置中的 **類型**。
 
 ### <a name="examples"></a>範例
 下列查詢會依據類型傳回過去一小時所收集的記錄計數。
@@ -74,11 +74,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-** \_ ItemId**資料行保存記錄的唯一識別碼。
+**\_ ItemId** 資料行保存記錄的唯一識別碼。
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-** \_ ResourceId**資料行保存與記錄相關聯之資源的唯一識別碼。 如此一來，您就可以使用標準資料行，將查詢的範圍限定于特定資源的記錄，或在多個資料表之間聯結相關資料。
+**\_ ResourceId** 資料行保存與記錄相關聯之資源的唯一識別碼。 如此一來，您就可以使用標準資料行，將查詢的範圍限定于特定資源的記錄，或在多個資料表之間聯結相關資料。
 
 就 Azure 資源而言，**_ResourceId** 的值為 [Azure 資源識別碼 URL](../../azure-resource-manager/templates/template-functions-resource.md)。 此資料行目前僅限於 Azure 資源，但會延伸至 Azure 外部的資源，例如內部部署電腦。
 
@@ -124,7 +124,7 @@ union withsource = tt *
 請謹慎使用這些 `union withsource = tt *` 查詢，因為執行跨資料類型掃描的費用相當高昂。
 
 ## <a name="_isbillable"></a>\_IsBillable
-** \_ IsBillable**資料行會指定內嵌資料是否計費。 ** \_ IsBillable**等於的資料 `false` 會免費收集，且不會向您的 Azure 帳戶計費。
+**\_ IsBillable** 資料行會指定內嵌資料是否計費。 **\_ IsBillable** 等於的資料 `false` 會免費收集，且不會向您的 Azure 帳戶計費。
 
 ### <a name="examples"></a>範例
 若要取得傳送計費資料類型的電腦清單，請使用下列查詢：
@@ -151,7 +151,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-** \_ BilledSize**資料行會指定** \_ IsBillable**為 true 時，將向您的 Azure 帳戶收取的資料大小（以位元組為單位）。
+**\_ BilledSize** 資料行會指定 **\_ IsBillable** 為 true 時，將向您的 Azure 帳戶收取的資料大小（以位元組為單位）。
 
 
 ### <a name="examples"></a>範例
@@ -207,8 +207,8 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入了解 [Azure 監視器記錄資料的儲存方式](../log-query/log-query-overview.md)。
 - 參與[撰寫記錄查詢](../log-query/get-started-queries.md)的課程。
-- 參與[在記錄查詢中聯結資料表](../log-query/joins.md)的課程。
+- 參與[在記錄查詢中聯結資料表](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)的課程。

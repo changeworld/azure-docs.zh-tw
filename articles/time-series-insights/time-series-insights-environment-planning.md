@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569443"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016202"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>規劃您的 Azure 時間序列深入解析 Gen1 環境
 
@@ -69,7 +69,7 @@ Azure 時間序列深入解析有兩種模式：
 
 1. 在 [**時間序列深入解析環境**] 窗格的 [設定] 底下，選取 [**儲存體****設定**]。
 
-1. 在 [ **資料保留時間 (天) ** ] 方塊中，輸入介於1到400之間的值。
+1. 在 [ **資料保留時間 (天)** ] 方塊中，輸入介於1到400之間的值。
 
    [![設定保留期](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
@@ -92,7 +92,7 @@ Azure 時間序列深入解析有兩種模式：
 
 例如，如果您有單一 S1 SKU，則會以每分鐘720個事件的速率來輸入資料，而資料速率尖峰會以1440個事件或更少的速率進入小於一小時，您的環境就沒有明顯的延遲。 但是，如果您每分鐘超過1440個事件的時間超過一小時，您可能會遇到在環境中視覺化且可供查詢的資料延遲。
 
-您可能不會事先知道預期要推送多少資料。 在此情況下，您可以在 Azure 入口網站訂用帳戶中找到 [Azure IoT 中樞](../iot-hub/iot-hub-metrics.md) 和 [Azure 事件中樞](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) 的資料遙測。 遙測可協助您判斷如何布建您的環境。 使用個別事件來源 Azure 入口網站中的 [計量] 窗格來查看其遙測 **資料** 。 如果您瞭解您的事件來源計量，您可以更有效地規劃和布建您的 Azure 時間序列深入解析環境。
+您可能不會事先知道預期要推送多少資料。 在此情況下，您可以在 Azure 入口網站訂用帳戶中找到 [Azure IoT 中樞](../iot-hub/monitor-iot-hub.md) 和 [Azure 事件中樞](/archive/blogs/cloud_solution_architect/using-the-azure-rest-apis-to-retrieve-event-hub-metrics) 的資料遙測。 遙測可協助您判斷如何布建您的環境。 使用個別事件來源 Azure 入口網站中的 [計量] 窗格來查看其遙測 **資料** 。 如果您瞭解您的事件來源計量，您可以更有效地規劃和布建您的 Azure 時間序列深入解析環境。
 
 ### <a name="calculate-ingress-requirements"></a>計算輸入需求
 
@@ -115,7 +115,7 @@ Azure 時間序列深入解析有兩種模式：
 
 ## <a name="ensure-that-you-have-reference-data"></a>確定您有參考資料
 
-*參考資料集*是專案的集合，可從您的事件來源擴充事件。 Azure 時間序列深入解析輸入引擎會將事件來源中的每個事件，與參考資料集中的對應資料列聯結。 接著可使用增強的事件來進行查詢。 聯結是以參考資料集中定義的 **主鍵** 資料行為基礎。
+*參考資料集* 是專案的集合，可從您的事件來源擴充事件。 Azure 時間序列深入解析輸入引擎會將事件來源中的每個事件，與參考資料集中的對應資料列聯結。 接著可使用增強的事件來進行查詢。 聯結是以參考資料集中定義的 **主鍵** 資料行為基礎。
 
 > [!NOTE]
 > 參考資料未聯結追溯。 在設定並上傳參考資料集之後，只會比對目前與未來的輸入資料並加入參考資料集。 如果您打算將大量歷程記錄資料傳送給 Azure 時間序列深入解析，且不會在 Azure 時間序列深入解析中第一次上傳或建立參考資料，您可能必須重做您的工作 (提示：不是有趣的) 。  
@@ -124,10 +124,10 @@ Azure 時間序列深入解析有兩種模式：
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [在 Azure 入口網站中建立新的 Azure 時間序列深入解析環境](time-series-insights-get-started.md)開始。
 
-- 瞭解如何 [將事件中樞事件來源新增](time-series-insights-how-to-add-an-event-source-eventhub.md) 至 Azure 時間序列深入解析。
+- 瞭解如何 [將事件中樞事件來源新增](./how-to-ingest-data-event-hub.md) 至 Azure 時間序列深入解析。
 
-- 瞭解如何 [設定 IoT 中樞事件來源](time-series-insights-how-to-add-an-event-source-iothub.md)。
+- 瞭解如何 [設定 IoT 中樞事件來源](./how-to-ingest-data-iot-hub.md)。

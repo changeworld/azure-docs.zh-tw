@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c59b5646e011afa6b8487e8145a1cb07e6e2a8ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207480"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015574"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>從 Splunk 到 Azure 監視器記錄查詢
 
@@ -26,14 +26,14 @@ ms.locfileid: "86207480"
  | 部署單位  | 叢集 |  叢集 |  Azure 監視器可允許任意跨叢集的查詢。 Splunk 則無法。 |
  | 資料快取 |  貯體  |  快取與保留原則 |  控制資料的期間和快取層級。 此設定會直接影響查詢效能和部署成本。 |
  | 資料的邏輯分割區  |  索引  |  [資料庫]  |  可允許資料的邏輯分隔。 兩種實作皆允許分割區的集合聯集和聯結。 |
- | 結構化的事件中繼資料 | N/A | 資料表 |  Splunk 沒有事件中繼資料的搜尋語言概念。 Azure 監視器記錄有資料表的概念，且資料表具有資料行。 每個事件執行個體會對應至一個資料列。 |
+ | 結構化的事件中繼資料 | N/A | table |  Splunk 沒有事件中繼資料的搜尋語言概念。 Azure 監視器記錄有資料表的概念，且資料表具有資料行。 每個事件執行個體會對應至一個資料列。 |
  | 資料記錄 | event | 列 |  僅限詞彙變更。 |
- | 資料記錄屬性 | field |  直條圖 |  在 Azure 監視器中，這已預先定義為資料表結構的一部分。 在 Splunk 中，每個事件都有自己的欄位集。 |
- | 型別 | datatype |  datatype |  Azure 監視器資料類型在資料行上設定時更明確。 兩者都能夠以動態方式使用資料類型，且擁有大致相當的資料類型集，包括 JSON 支援。 |
+ | 資料記錄屬性 | field |  column |  在 Azure 監視器中，這已預先定義為資料表結構的一部分。 在 Splunk 中，每個事件都有自己的欄位集。 |
+ | 類型 | datatype |  datatype |  Azure 監視器資料類型在資料行上設定時更明確。 兩者都能夠以動態方式使用資料類型，且擁有大致相當的資料類型集，包括 JSON 支援。 |
  | 查詢和搜尋  | 搜尋 | 查詢 |  Azure 監視器與 Splunk 兩者的概念基本上相同。 |
  | 事件擷取時間 | 系統時間 | ingestion_time() |  在 Splunk 中，每個事件都會取得事件編製索引時間的系統時間戳記。 在 Azure 監視器中，您可以定義稱為 ingestion_time 的原則，其會公開可透過 ingestion_time() 函式參考的系統資料行。 |
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 下表指出 Azure 監視器中與 Splunk 函式相等的函式。
 
@@ -58,7 +58,7 @@ ms.locfileid: "86207480"
 (1) 在 Splunk 中，會使用 `eval` 運算子叫用函式。 在 Azure 監視器中，它會用做 `extend` 或 `project` 的一部分。<br>(2) 在 Splunk 中，會使用 `eval` 運算子叫用函式。 在 Azure 監視器中，它可以搭配 `where` 運算子使用。
 
 
-## <a name="operators"></a>操作員
+## <a name="operators"></a>運算子
 
 下列章節會提供使用 Splunk 與 Azure 監視器之間不同運算子的範例。
 
@@ -74,7 +74,7 @@ ms.locfileid: "86207480"
 | **Azure 監視器** | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 
 
-### <a name="filter"></a>Filter
+### <a name="filter"></a>篩選
 Azure 監視器記錄查詢會從篩選所在的表格式結果集開始。 Splunk 的篩選則是在目前索引上的預設作業。 您也可以使用 Splunk 中的 `where` 運算子，但我們不建議這樣做。
 
 | | 運算子 | 範例 |
@@ -123,7 +123,7 @@ Splunk 似乎沒有類似 `project-away` 的運算子。 您可以使用 UI 篩�
 | **Azure 監視器** | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>彙總
-請參閱 [Azure 監視器記錄查詢中的彙總](aggregations.md)，以了解不同的彙總函式。
+請參閱 [Azure 監視器記錄查詢中的彙總](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)，以了解不同的彙總函式。
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
@@ -171,6 +171,6 @@ Splunk 中的聯結具有重大限制。 子查詢的限制為 10000 筆結果 (
 | **Splunk** | **資料** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
 | **Azure 監視器** | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 進行[在 Azure 監視器中撰寫記錄查詢](get-started-queries.md)課程。

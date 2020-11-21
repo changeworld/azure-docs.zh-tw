@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167754"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015408"
 ---
 # <a name="long-audio-api-preview"></a>長音訊 API (預覽) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "88167754"
 * 在無即時批次模式中會合成語音時，不需要部署語音端點。
 
 > [!NOTE]
-> 長音訊 API 現在支援 [公用神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) 和 [自訂神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)。
+> 長音訊 API 現在支援 [公用神經語音](./language-support.md#neural-voices) 和 [自訂神經語音](./how-to-custom-voice.md#custom-neural-voices)。
 
 ## <a name="workflow"></a>工作流程
 
@@ -44,8 +44,8 @@ ms.locfileid: "88167754"
 * 純文字 ( .txt) 或 SSML 文字 ( .txt) 
 * [使用 (BOM 的位元組順序標記](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)，編碼為 utf-8) 
 * 是單一檔案，不是 zip
-* 包含400個字元，適用于純文字或400個可 [計費字元](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) （適用于 SSML 文字）及少於10000個段落
-  * 若為純文字，則會按下**Enter/Return** -View[純文字輸入範例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)來分隔每個段落
+* 包含400個字元，適用于純文字或400個可 [計費字元](./text-to-speech.md#pricing-note) （適用于 SSML 文字）及少於10000個段落
+  * 若為純文字，則會按下 **Enter/Return** -View [純文字輸入範例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)來分隔每個段落
   * 針對 SSML 文字，會將每個 SSML 片段視為段落。 SSML 片段應以不同的段落分隔-View [SSML 文字輸入範例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 > [!NOTE]
 > 針對中文 (大陸) 、中文 (香港特別行政區) 、中文 (臺灣) 、日文和韓文，一個單字將會計算為兩個字元。 
@@ -95,8 +95,8 @@ if args.voices:
 
 使用命令執行腳本 `python voice_synthesis_client.py --voices -key <your_key> -region <region>` ，並取代下列值：
 
-* 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
-* 將取代 `<region>` 為您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在[Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
+* 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
+* 將取代 `<region>` 為您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
 
 您會看到如下所示的輸出：
 
@@ -114,7 +114,7 @@ Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xx
 以純文字或 SSML 文字準備輸入文字檔，然後將下列程式碼新增至 `voice_synthesis_client.py` ：
 
 > [!NOTE]
-> ' concatenateResult ' 是選擇性參數。 如果未設定此參數，則會產生每個段落的音訊輸出。 您也可以藉由設定參數，將音訊串連成1個輸出。 根據預設，音訊輸出會設定為 riff-16khz-16bit-mono-pcm。 如需支援的音訊輸出的詳細資訊，請參閱 [音訊輸出格式](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)。
+> ' concatenateResult ' 是選擇性參數。 如果未設定此參數，則會產生每個段落的音訊輸出。 您也可以藉由設定參數，將音訊串連成1個輸出。 根據預設，音訊輸出會設定為 riff-16khz-16bit-mono-pcm。 如需支援的音訊輸出的詳細資訊，請參閱 [音訊輸出格式](#audio-output-formats)。
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -177,8 +177,8 @@ if args.submit:
 
 使用命令執行腳本 `python voice_synthesis_client.py --submit -key <your_key> -region <region> -file <input> -locale <locale> -voiceId <voice_guid>` ，並取代下列值：
 
-* 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
-* 將取代 `<region>` 為您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在[Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
+* 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
+* 將取代 `<region>` 為您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中資源的 [**總覽**] 索引標籤中找到這項資訊。
 * 取代為 `<input>` 您已備妥文字轉換語音之文字檔的路徑。
 * 取代 `<locale>` 為所需的輸出地區設定。 如需詳細資訊，請參閱 [語言支援](language-support.md#neural-voices)。
 * 取代 `<voice_guid>` 為所需的輸出聲音。 使用您先前呼叫端點所傳回的其中一個語音 `/voicesynthesis/voices` 。
@@ -278,7 +278,7 @@ ID : xxx , Name : xxx : Succeeded
 |        | 404 | 找不到語音合成定義中宣告的模型： {modelID}。 | 請確定 {modelID} 正確無誤。 |
 |        | 429 | 超過主動式語音合成限制。 請等候某些要求完成。 | 您可以針對每個 Azure 帳戶執行伺服器，並將最多120個要求排入佇列。 請等候並避免提交新的要求，直到某些要求完成為止。 |
 | 全部       | 429 | 要求太多。 | 用戶端最多可針對每個 Azure 帳戶提交每秒5個要求至伺服器。 請減少每秒的要求數量。 |
-| 刪除    | 400 | 語音合成工作仍在使用中。 | 您只能刪除已 **完成** 或 **失敗**的要求。 |
+| 刪除    | 400 | 語音合成工作仍在使用中。 | 您只能刪除已 **完成** 或 **失敗** 的要求。 |
 | GetByID   | 404 | 找不到指定的實體。 | 請確定合成識別碼正確。 |
 
 ## <a name="regions-and-endpoints"></a>區域與端點

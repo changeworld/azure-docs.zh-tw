@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595525"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016746"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>選擇時間序列識別碼的最佳做法
 
@@ -29,14 +29,14 @@ ms.locfileid: "91595525"
 > 時間序列識別碼為：
 >
 > * 區分 *大小寫* 的屬性：字母和字元轉換用於搜尋、比較、更新和資料分割。
-> * *不可變*的屬性：建立之後就無法變更。
+> * *不可變* 的屬性：建立之後就無法變更。
 
 > [!TIP]
-> 如果您的事件來源是 IoT 中樞，則您的時間序列識別碼可能會是 ***iothub-連接-裝置識別碼***。
+> 如果您的事件來源是 IoT 中樞，則您的時間序列識別碼可能是 ***iothub-連線-裝置識別碼** _。
 
 下列主要的最佳作法包括：
 
-* 挑選具有許多相異值的分割區索引鍵 (例如數百個或數千個) 。 在許多情況下，這可能是您 JSON 中的裝置識別碼、感應器識別碼或標記識別項。
+_ 挑選具有許多相異值的分割區索引鍵 (例如數百個或數千個) 。 在許多情況下，這可能是您 JSON 中的裝置識別碼、感應器識別碼或標記識別項。
 * 在您[時間序列模型](./concepts-model-overview.md).的分葉節點層級，時間序列識別碼應該是唯一的。
 * 時間序列識別碼的屬性名稱字串的字元限制為128。 對於時間序列識別碼的屬性值，字元限制為1024。
 * 如果時間序列識別碼缺少唯一的屬性值，則會將它視為 null 值，並遵循唯一性條件約束的相同規則。
@@ -53,15 +53,15 @@ ms.locfileid: "91595525"
 ### <a name="example-1-time-series-id-with-a-unique-key"></a>範例1：具有唯一索引鍵的時間序列識別碼
 
 * 您有舊版的資產機群。 每個都有唯一的索引鍵。
-* 一個車隊是由屬性 **deviceId**唯一識別。 對於其他車隊，唯一的屬性是 **objectId**。 這兩個車隊都不包含其他車隊的唯一財產。 在此範例中，您會選取兩個索引鍵（ **deviceId** 和 **objectId**）作為唯一索引鍵。
+* 一個車隊是由屬性 **deviceId** 唯一識別。 對於其他車隊，唯一的屬性是 **objectId**。 這兩個車隊都不包含其他車隊的唯一財產。 在此範例中，您會選取兩個索引鍵（ **deviceId** 和 **objectId**）作為唯一索引鍵。
 * 我們接受 null 值，且事件承載中缺少屬性的情況會計算為 null 值。 這也是適當的方式，可將資料傳送至兩個事件來源，其中每個事件來源的資料都有唯一的時間序列識別碼。
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>範例2：具有複合索引鍵的時間序列識別碼
 
 * 您需要讓同一資產群內的多個特性都必須是唯一的。
-* 您是智慧型建築的製造商，並在每個房間內部署感應器。 在每個房間中，您通常會有相同的 **>sensorid**值。 範例包括 **sensor1**、 **sensor2**和 **sensor3**。
-* 您的大樓在屬性 **>flrrm**中的各個網站都有重迭的樓層和房間號碼。 這些數位具有值，例如 **1a**、 **2b**和 **3a**。
-* 您有一個包含值（例如**Redmond**、**巴塞羅納**和**東京**）的屬性 [**位置**]。 若要建立唯一性，您必須將下列三個屬性指定為時間序列識別碼索引鍵： **>sensorid**、 **>flrrm**和 **location**。
+* 您是智慧型建築的製造商，並在每個房間內部署感應器。 在每個房間中，您通常會有相同的 **>sensorid** 值。 範例包括 **sensor1**、 **sensor2** 和 **sensor3**。
+* 您的大樓在屬性 **>flrrm** 中的各個網站都有重迭的樓層和房間號碼。 這些數位具有值，例如 **1a**、 **2b** 和 **3a**。
+* 您有一個包含值（例如 **Redmond**、**巴塞羅納** 和 **東京**）的屬性 [**位置**]。 若要建立唯一性，您必須將下列三個屬性指定為時間序列識別碼索引鍵： **>sensorid**、 **>flrrm** 和 **location**。
 
 範例原始事件：
 
@@ -82,8 +82,8 @@ ms.locfileid: "91595525"
   > 在 Azure 入口網站中，請勿在一個文字方塊中輸入以逗號分隔的屬性名稱，否則會將其視為包含逗號的單一屬性名稱。
   > 在自己的文字方塊中輸入每個屬性名稱。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 
-* 規劃您的 [Azure 時間序列深入解析 Gen2 環境](./time-series-insights-update-plan.md)。
+* 規劃您的 [Azure 時間序列深入解析 Gen2 環境](./how-to-plan-your-environment.md)。

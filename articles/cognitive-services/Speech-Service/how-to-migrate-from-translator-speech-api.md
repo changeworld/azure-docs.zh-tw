@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb03721baa80e77a5fd387600a272e6b1cfc7d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362056"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013646"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>從翻譯工具語音 API 遷移至語音服務
 
@@ -37,7 +37,7 @@ ms.locfileid: "91362056"
 | 在單一要求中翻譯多個語言 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 可用的 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 請參閱 [語音服務檔](index.yml) 以取得可用的 sdk。                                                                                                                                                    |
 | WebSocket 連線                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 語言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 語音服務支援 [翻譯工具語言參考](../translator-speech/languages-reference.md) 文章中所述的相同語言範圍。 |
+| 語言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 語音服務支援 [翻譯工具語言參考]() 文章中所述的相同語言範圍。 |
 | 粗話篩選和標記                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | .WAV/PCM 作為輸入                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 其他檔案類型作為輸入                         | :heavy_minus_sign:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -59,12 +59,12 @@ ms.locfileid: "91362056"
 
 * 不同于翻譯工具語音 API，語音服務可以在單一要求中完成翻譯成多種語言。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [免費試用語音服務](overview.md#try-the-speech-service-for-free)
-* [快速入門：使用語音 SDK 在 UWP 應用程式中辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [快速入門：使用語音 SDK 在 UWP 應用程式中辨識語音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>另請參閱
 
 * [什麼是語音服務](overview.md)
-* [語音服務和語音 SDK 檔](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [語音服務和語音 SDK 檔](./speech-devices-sdk-quickstart.md?pivots=platform-android)

@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 說話者辨識，語音測量
-ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844555"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015319"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>什麼是說話者辨識 (預覽) ？
 
@@ -70,10 +70,10 @@ ms.locfileid: "94844555"
 | 支援哪種音訊格式？ | Mono 16 位，16kHz PCM 編碼的 WAV |
 | **接受** 和 **拒絕** 回應不正確，您要如何調整臨界值？ | 由於最佳閾值會隨著案例而有所不同，因此 API 會根據預設閾值0.5 來決定是否「接受」或「拒絕」。 建議 Advanced users 覆寫預設的決策，並根據您自己的案例微調結果。 |
 | 您可以多次註冊一個說話者嗎？ | 是，針對文字相依驗證，您可以註冊最多50次的喇叭。 針對文字獨立驗證或說話者辨識，您最多可以註冊300秒的音訊。 |
-| 哪些資料會儲存在 Azure 中？ | 註冊音訊會儲存在服務中，直到 [刪除](speaker-recognition-basics.md#deleting-voice-profile-enrollments)語音設定檔為止。 不會保留或儲存辨識音訊範例。 |
+| 哪些資料會儲存在 Azure 中？ | 註冊音訊會儲存在服務中，直到 [刪除](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments)語音設定檔為止。 不會保留或儲存辨識音訊範例。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
-> * 完成說話者辨識 [基本文章](speaker-recognition-basics.md) ，以瞭解您可以在應用程式中使用的常見設計模式。
+> * 完成說話者辨識 [基本文章](./get-started-speaker-recognition.md) ，以瞭解您可以在應用程式中使用的常見設計模式。
 > * 請參閱 [影片教學](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) 課程，以瞭解與文字無關的說話者驗證。

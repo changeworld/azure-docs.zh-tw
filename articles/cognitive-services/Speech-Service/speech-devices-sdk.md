@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0309329b37436022dc88f8951853c4bb09a2c080
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355069"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015268"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什麼是語音裝置 SDK？
 
@@ -29,9 +29,9 @@ ms.locfileid: "91355069"
 
 語音裝置 SDK 會取用[語音 SDK](speech-sdk.md)， 使用我們的先進音訊處理演算法搭配裝置的麥克風陣列，將音訊傳送至 [語音服務](overview.md)。 它透過雜訊抑制、回應取消、波束成形和 dereverberation，提供精確的現場 [語音辨識](speech-to-text.md) 。
 
-您也可以使用語音裝置 SDK 來建立具有您專屬 [自訂關鍵字](speech-devices-sdk-create-kws.md)的環境裝置。 自訂關鍵字提供的提示會啟動使用者互動，而這對您的品牌而言是唯一的。
+您也可以使用語音裝置 SDK 來建立具有您專屬 [自訂關鍵字](./custom-keyword-basics.md)的環境裝置。 自訂關鍵字提供的提示會啟動使用者互動，而這對您的品牌而言是唯一的。
 
-語音裝置 SDK 可提供各種語音功能的案例，例如 [語音助理](https://aka.ms/bots/speech/va)、磁片磁碟機排序系統、 [對話](conversation-transcription-service.md)轉譯，以及智慧型喇叭。 您可以利用文字來回應使用者、以預設或[自訂語音](how-to-customize-voice-font.md)回答他們、提供搜尋結果、[翻譯](speech-translation.md)成其他語言等等。 我們期待看到您所打造的不凡成果！
+語音裝置 SDK 可提供各種語音功能的案例，例如 [語音助理](./voice-assistants.md)、磁片磁碟機排序系統、 [對話](./conversation-transcription.md)轉譯，以及智慧型喇叭。 您可以利用文字來回應使用者、以預設或[自訂語音](./how-to-custom-voice-create-voice.md)回答他們、提供搜尋結果、[翻譯](speech-translation.md)成其他語言等等。 我們期待看到您所打造的不凡成果！
 
 ## <a name="get-the-speech-devices-sdk"></a>取得語音裝置 SDK
 
@@ -55,7 +55,7 @@ ms.locfileid: "91355069"
 
 提供其他二進位檔，以支援即將推出的裝置、 [Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)、 [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)、 [GGEC 喇叭](https://aka.ms/sdsdk-download-speaker)、 [linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)和 [linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [選擇您的語音裝置](get-speech-devices-sdk.md)

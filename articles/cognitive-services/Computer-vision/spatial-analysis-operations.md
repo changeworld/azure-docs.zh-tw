@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628208"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014538"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析作業
 
@@ -23,7 +23,7 @@ ms.locfileid: "91628208"
 
 空間分析容器會執行下列作業：
 
-| 作業識別碼| 描述|
+| 作業識別碼| Description|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -32,18 +32,18 @@ ms.locfileid: "91628208"
 
 您也可以在版本中使用上述所有作業 `.debug` ，這可讓您在處理影片框架時將其視覺化。 您必須 `xhost +` 在主機電腦上執行，才能啟用影片框架和事件的視覺效果。
 
-| 作業識別碼| 描述|
+| 作業識別碼| Description|
 |---------|---------|
 | cognitiveservices spatialanalysis-personcount. debug | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices spatialanalysis-personcrossingline. debug | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
 | cognitiveservices spatialanalysis-personcrossingpolygon. debug | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br> 當人員跨越區域時發出 _personLineEvent_ 事件，並提供方向性資訊。 |
 | cognitiveservices spatialanalysis-persondistance. debug | 追蹤使用者何時違反距離規則。 <br> 使用每個距離違規的位置定期發出 _personDistanceEvent_ 。 |
 
-您也可以使用 [即時影片分析](https://aka.ms/lva-spatial-analysis) 作為影片 AI 模組來執行空間分析。 
+您也可以使用 [即時影片分析](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) 作為影片 AI 模組來執行空間分析。 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| 作業識別碼| 描述|
+| 作業識別碼| Description|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount. livevideoanalytics | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline. livevideoanalytics | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -57,7 +57,7 @@ ms.locfileid: "91628208"
 
 這些是每個空間分析作業所需的參數。
 
-| 作業參數| 描述|
+| 作業參數| Description|
 |---------|---------|
 | 作業識別碼 | 上表中的運算識別碼。|
 | 已啟用 | 布林值： true 或 false|
@@ -88,7 +88,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| Description|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -121,7 +121,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| Description|
 |---------|---------|---------|
 | `lines` | list| 行的清單。|
 | `name` | 字串| 這一行的易記名稱。|
@@ -152,7 +152,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| Description|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -184,7 +184,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| Description|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -206,7 +206,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| Description|
 |---------|---------|---------|
 | `gpu_index` | 字串| 將執行此作業的 GPU 索引。|
 | `do_calibration` | 字串 | 表示已開啟校正。 `do_calibration` cognitiveservices 必須是 true， **spatialanalysis-persondistance** 才能正常運作。|
@@ -304,7 +304,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 事件功能變數名稱 | 類型| 描述|
+| 事件功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -316,7 +316,7 @@ ms.locfileid: "91628208"
 | `zone` | 字串 | 多邊形的「名稱」欄位，代表超過的區域|
 | `trigger` | 字串| 觸發程式類型為「事件」或「間隔」，視 SPACEANALYTICS_CONFIG 中的值而定。 `trigger`|
 
-| 偵測功能變數名稱 | 類型| 描述|
+| 偵測功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -325,7 +325,7 @@ ms.locfileid: "91628208"
 | `points` | collection| 當區欄位型別是矩形時，左上角和右下角的點 |
 | `confidence` | FLOAT| 演算法信賴度|
 
-| SourceInfo 功能變數名稱 | 類型| 描述|
+| SourceInfo 功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -338,7 +338,7 @@ ms.locfileid: "91628208"
 | `focalLength` | FLOAT | 攝影機的焦距長度（以圖元為單位）。 這是從自動校正推斷而來。 |
 | `tiltUpAngle` | FLOAT | 攝影機從垂直傾斜角度。 這是從自動校正推斷而來。|
 
-| SourceInfo 功能變數名稱 | 類型| 描述|
+| SourceInfo 功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -399,7 +399,7 @@ ms.locfileid: "91628208"
     "schemaVersion": "1.0"
 }
 ```
-| 事件功能變數名稱 | 類型| 描述|
+| 事件功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -409,7 +409,7 @@ ms.locfileid: "91628208"
 | `status` | 字串| 直線交點的方向，也就是 ' CrossLeft ' 或 ' CrossRight '|
 | `zone` | 字串 | 超過的行的 [名稱] 欄位|
 
-| 偵測功能變數名稱 | 類型| 描述|
+| 偵測功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -418,7 +418,7 @@ ms.locfileid: "91628208"
 | `points` | collection| 當區欄位型別是矩形時，左上角和右下角的點 |
 | `confidence` | FLOAT| 演算法信賴度|
 
-| SourceInfo 功能變數名稱 | 類型| 描述|
+| SourceInfo 功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -484,7 +484,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 事件功能變數名稱 | 類型| 描述|
+| 事件功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -494,7 +494,7 @@ ms.locfileid: "91628208"
 | `status` | 字串| 多邊形交叉的方向，也就是「Enter」或「Exit」|
 | `zone` | 字串 | 多邊形的「名稱」欄位，代表超過的區域|
 
-| 偵測功能變數名稱 | 類型| 描述|
+| 偵測功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -595,7 +595,7 @@ ms.locfileid: "91628208"
 }
 ```
 
-| 事件功能變數名稱 | 類型| 描述|
+| 事件功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -610,7 +610,7 @@ ms.locfileid: "91628208"
 | `zone` | 字串 | 多邊形的「名稱」欄位，代表在人員之間 distancing 監視的區域|
 | `trigger` | 字串| 觸發程式類型為「事件」或「間隔」，視 SPACEANALYTICS_CONFIG 中的值而定。 `trigger`|
 
-| 偵測功能變數名稱 | 類型| 描述|
+| 偵測功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -620,7 +620,7 @@ ms.locfileid: "91628208"
 | `confidence` | FLOAT| 演算法信賴度|
 | `centerGroundPoint` | 2個 float 值| `x`， `y` 具有人員在地面的推斷位置座標（以英尺為單位）的值。 `x` 與相機之間的距離，與投影在地面的鏡頭影像平面垂直距離。 `y` 與相機之間的距離，與以英尺為地面投影的影像平面平行。|
 
-| SourceInfo 功能變數名稱 | 類型| 描述|
+| SourceInfo 功能變數名稱 | 類型| Description|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -638,8 +638,8 @@ ms.locfileid: "91628208"
 
 您可能會想要將空間分析偵測或事件整合到您的應用程式中。 以下是一些要考慮的方法： 
 
-* 針對您所選擇的程式設計語言使用 Azure 事件中樞 SDK，以連接到 Azure IoT 中樞端點並接收事件。 如需詳細資訊，請參閱 [從內建端點讀取裝置到雲端訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) 。 
-* 在您的 Azure IoT 中樞上設定 **訊息路由** ，以將事件傳送至其他端點，或將事件儲存到您的資料儲存體。 如需詳細資訊，請參閱 [IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) 。 
+* 針對您所選擇的程式設計語言使用 Azure 事件中樞 SDK，以連接到 Azure IoT 中樞端點並接收事件。 如需詳細資訊，請參閱 [從內建端點讀取裝置到雲端訊息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。 
+* 在您的 Azure IoT 中樞上設定 **訊息路由** ，以將事件傳送至其他端點，或將事件儲存到您的資料儲存體。 如需詳細資訊，請參閱 [IoT 中樞訊息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md) 。 
 * 設定 Azure 串流分析作業，以在事件抵達時即時處理這些事件，並建立視覺效果。 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>大規模部署空間分析作業 (多個相機) 
@@ -725,11 +725,11 @@ ms.locfileid: "91628208"
       }
   }
   ```
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| Description|
 |---------|---------|---------|
 | `batch_size` | int | 指出將在作業中使用的相機數目。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [記錄和疑難排解](spatial-analysis-logging.md)

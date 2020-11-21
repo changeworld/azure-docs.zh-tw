@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d399507499a320116ff1c732a1ffc0ad84b5731
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110354"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015437"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>語音助理的常見問題
 
-如果您在此檔中找不到問題的解答，請參閱 [其他支援選項](support.md)。
+如果您在此檔中找不到問題的解答，請參閱 [其他支援選項](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
 
 ## <a name="general"></a>一般
 
@@ -29,15 +29,15 @@ ms.locfileid: "74110354"
 
 **問：我是否應該使用自訂命令 (Preview) 或 Direct Line 語音？有何差異？**
 
-**答：** [自訂命令 (Preview) ](custom-commands.md) 是一組較低複雜性的工具，可讓您輕鬆地建立及裝載非常適合工作完成案例的小幫手。 [Direct Line Speech](direct-line-speech.md) 提供更豐富、更精密的功能，可啟用健全的對話式案例。 如需詳細資訊，請參閱 [助理解決方案的比較](voice-assistants.md#choosing-an-assistant-solution) 。
+**答：** [自訂命令 (Preview)](custom-commands.md) 是一組較低複雜性的工具，可讓您輕鬆地建立及裝載非常適合工作完成案例的小幫手。 [Direct Line Speech](direct-line-speech.md) 提供更豐富、更精密的功能，可啟用健全的對話式案例。 如需詳細資訊，請參閱 [助理解決方案的比較](voice-assistants.md#choosing-an-assistant-solution) 。
 
 **問：如何開始使用？**
 
 **答：** 開始建立自訂命令 (預覽) 應用程式或基本 Bot Framework Bot 的最佳方式。
 
-- [ (預覽版) 應用程式建立自訂命令](quickstart-custom-speech-commands-create-new.md)
-- [建立基本 Bot Framework Bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [將 bot 連線至 Direct Line 語音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [ (預覽版) 應用程式建立自訂命令](./quickstart-custom-commands-application.md)
+- [建立基本 Bot Framework Bot](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [將 bot 連線至 Direct Line 語音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>偵錯
 
@@ -53,7 +53,7 @@ Direct Line Speech 的最新版本可簡化從裝置聯繫 bot 的程式。 在 
 
 **問：當連接時，我收到401錯誤，沒有任何作用。我知道我的語音訂用帳戶金鑰有效。這是怎麼回事？**
 
-**答：** 在 Azure 入口網站管理您的訂用帳戶時，請確定您使用的是**語音**資源 (Microsoft. CognitiveServicesSpeechServices、"Speech" ) 而_非_**認知服務**資源 (CognitiveServicesAllInOne "所有認知服務" ) 。 此外，請查看語音 [助理的語音服務區域支援](regions.md#voice-assistants)。
+**答：** 在 Azure 入口網站管理您的訂用帳戶時，請確定您使用的是 **語音** 資源 (Microsoft. CognitiveServicesSpeechServices、"Speech" ) 而 _非_**認知服務** 資源 (CognitiveServicesAllInOne "所有認知服務" ) 。 此外，請查看語音 [助理的語音服務區域支援](regions.md#voice-assistants)。
 
 ![正確的 direct line speech 訂用帳戶](media/voice-assistants/faq-supported-subscription.png "相容語音訂用帳戶的範例")
 
@@ -62,7 +62,7 @@ Direct Line Speech 的最新版本可簡化從裝置聯繫 bot 的程式。 在 
 **答：** 此錯誤表示您的助理與語音助理服務之間發生通訊問題。
 
 - 針對自訂命令 (Preview) ，請確定您的自訂命令 (預覽) 應用程式已發佈
-- 針對 Direct Line 語音，請確定您已將 [bot 連線到 Direct Line 語音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)、將 [串流通訊協定支援新增](https://aka.ms/botframework/addstreamingprotocolsupport) 至您的 bot (並) 相關的 Web 通訊端支援，然後檢查您的 bot 是否回應來自通道的連入要求。
+- 針對 Direct Line 語音，請確定您已將 [bot 連線到 Direct Line 語音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)、將 [串流通訊協定支援新增](/azure/bot-service/directline-speech-bot) 至您的 bot (並) 相關的 Web 通訊端支援，然後檢查您的 bot 是否回應來自通道的連入要求。
 
 **問：此程式碼仍無法運作，且（或）在使用時遇到不同的錯誤 `DialogServiceConnector` 。我該怎麼做？**
 

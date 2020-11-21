@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843633"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014827"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面中建立租使用者和主機集區 (傳統) 
 
@@ -49,7 +49,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因：** 同意未授與 Azure Active directory 實例中的 Windows 虛擬桌面。
 
-**修正：** [遵循本指南](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) 來授與同意。
+**修正：** [遵循本指南](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) 來授與同意。
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>錯誤：使用者未經授權，無法查詢管理服務
 
@@ -140,9 +140,9 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 請遵循下列指示，針對 Azure Resource Manager 範本和 PowerShell DSC 的不成功部署進行疑難排解。
 
-1. 使用 [Azure Resource Manager 的 View 部署作業](../../azure-resource-manager/resource-manager-deployment-operations.md)，檢查部署中的錯誤。
-2. 如果部署中沒有任何錯誤，請使用 View 活動記錄檔審核活動記錄中的錯誤， [以對資源進行審核動作](../../azure-resource-manager/resource-group-audit.md)。
-3. 一旦識別出錯誤，請使用錯誤訊息和資源來 [對常見的 Azure 部署錯誤進行疑難排解，Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md) 來解決問題。
+1. 使用 [Azure Resource Manager 的 View 部署作業](../../azure-resource-manager/templates/deployment-history.md)，檢查部署中的錯誤。
+2. 如果部署中沒有任何錯誤，請使用 View 活動記錄檔審核活動記錄中的錯誤， [以對資源進行審核動作](../../azure-resource-manager/management/view-activity-logs.md)。
+3. 一旦識別出錯誤，請使用錯誤訊息和資源來 [對常見的 Azure 部署錯誤進行疑難排解，Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md) 來解決問題。
 4. 刪除在先前部署期間建立的任何資源，然後再次嘗試部署範本。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>錯誤：您的部署失敗 ... \<hostname> /joindomain
