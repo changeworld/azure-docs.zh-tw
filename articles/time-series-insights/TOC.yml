@@ -82,9 +82,9 @@
     - name: 授與資料存取
       href: concepts-access-policies.md
     - name: 連線至事件中樞
-      href: time-series-insights-how-to-add-an-event-source-eventhub.md
+      href: ./how-to-ingest-data-event-hub.md
     - name: 連線至 IoT 中樞
-      href: time-series-insights-how-to-add-an-event-source-iothub.md
+      href: ./how-to-ingest-data-iot-hub.md
     - name: 使用範本管理資源
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure 時間序列深入解析 Gen2
@@ -138,45 +138,45 @@
     - name: 時間序列深入解析
       items:
         - name: REST API 概觀
-          href: 'https://docs.microsoft.com/rest/api/time-series-insights/'
+          href: /rest/api/time-series-insights/
         - name: 資料存取 Gen2
           items:
             - name: 概觀
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview'
+              href: /rest/api/time-series-insights/reference-data-access-overview
             - name: 環境 API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis'
+              href: /rest/api/time-series-insights/reference-environments-apis
             - name: 模型 API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis'
+              href: /rest/api/time-series-insights/reference-model-apis
             - name: 查詢 API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis'
+              href: /rest/api/time-series-insights/reference-query-apis
             - name: 時間序列運算式 (TSX)
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax'
+              href: /rest/api/time-series-insights/reference-time-series-expression-syntax
             - name: API 限制
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits'
+              href: /rest/api/time-series-insights/reference-api-limits
         - name: 資料存取 Gen1
           items:
             - name: 概觀
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1'
+              href: /rest/api/time-series-insights/gen1
             - name: 查詢
               items:
                 - name: 查詢
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query'
+                  href: /rest/api/time-series-insights/gen1-query
                 - name: API
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api'
+                  href: /rest/api/time-series-insights/gen1-query-api
                 - name: 語法
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax'
+                  href: /rest/api/time-series-insights/gen1-query-syntax
             - name: 參考資料 API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api'
+              href: /rest/api/time-series-insights/gen1-reference-data-api
     - name: 用戶端 SDK
       items:
         - name: JavaScript 用戶端 SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest'
+      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: 資源
   items:
     - name: 支援和協助選項
-      href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+      href: ../iot-fundamentals/iot-support-help.md
     - name: 客戶資料要求
       href: time-series-insights-customer-data-requests.md
     - name: 開發人員資源
@@ -188,7 +188,7 @@
         - name: 託管用戶端範例
           href: 'https://tsiclientsample.azurewebsites.net/'
         - name: Azure IoT 程式碼範例
-          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+          href: /samples/browse/?term=iot
     - name: 價格與可用性
       items:
         - name: 定價
@@ -202,7 +202,7 @@
         - name: Azure 支援選項
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT 支援和協助選項
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+          href: ../iot-fundamentals/iot-support-help.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
         - name: MSDN 論壇

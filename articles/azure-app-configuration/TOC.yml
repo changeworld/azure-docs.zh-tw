@@ -100,6 +100,8 @@
           href: concept-enable-rbac.md
         - name: 指派 Azure 受控識別
           href: overview-managed-identity.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 高可用性
       items:
         - name: 復原和災害復原
