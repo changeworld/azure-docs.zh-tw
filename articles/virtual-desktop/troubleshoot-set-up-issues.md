@@ -6,17 +6,17 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 126a8e48a8db1c41299a7cb7a34f172342110667
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084408"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023117"
 ---
 # <a name="host-pool-creation"></a>主機集區建立
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
 
 本文涵蓋 Windows 虛擬桌面租使用者和相關工作階段主機集區基礎結構的初始設定期間的問題。
 
@@ -26,7 +26,7 @@ ms.locfileid: "90084408"
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>取得 Windows 10 企業版多會話映射
 
-若要使用 Windows 10 企業版多會話映射，請移至 [Azure Marketplace]，選取 [**開始**  >  **Microsoft Windows 10** ] >，然後[Windows 10 企業版多會話1809版](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)。
+若要使用 Windows 10 企業版多會話映射，請移至 [Azure Marketplace]，選取 [**開始**  >  **Microsoft Windows 10** ] >，然後 [Windows 10 企業版多會話1809版](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)。
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>使用 Azure 入口網站建立主機集區的問題
 
@@ -57,9 +57,9 @@ ms.locfileid: "90084408"
 
 請遵循下列指示，針對 Azure Resource Manager 範本和 PowerShell DSC 的不成功部署進行疑難排解。
 
-1. 使用 [Azure Resource Manager 的 View 部署作業](../azure-resource-manager/resource-manager-deployment-operations.md)，檢查部署中的錯誤。
-2. 如果部署中沒有任何錯誤，請使用 View 活動記錄檔審核活動記錄中的錯誤， [以對資源進行審核動作](../azure-resource-manager/resource-group-audit.md)。
-3. 一旦識別出錯誤，請使用錯誤訊息和資源來 [對常見的 Azure 部署錯誤進行疑難排解，Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) 來解決問題。
+1. 使用 [Azure Resource Manager 的 View 部署作業](../azure-resource-manager/templates/deployment-history.md)，檢查部署中的錯誤。
+2. 如果部署中沒有任何錯誤，請使用 View 活動記錄檔審核活動記錄中的錯誤， [以對資源進行審核動作](../azure-resource-manager/management/view-activity-logs.md)。
+3. 一旦識別出錯誤，請使用錯誤訊息和資源來 [對常見的 Azure 部署錯誤進行疑難排解，Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md) 來解決問題。
 4. 刪除在先前部署期間建立的任何資源，然後再次嘗試部署範本。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>錯誤：您的部署失敗 ... \<hostname> /joindomain
@@ -83,7 +83,7 @@ ms.locfileid: "90084408"
 
 **原因2：** 功能變數名稱無法解析。
 
-**修正2：** 請參閱錯誤：[工作階段主機 VM](troubleshoot-vm-configuration.md)設定中的[功能變數名稱無法解析](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)。
+**修正2：** 請參閱錯誤：[工作階段主機 VM](troubleshoot-vm-configuration.md)設定中的 [功能變數名稱無法解析](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)。
 
 **原因3：** 您的虛擬網路 (VNET) DNS 設定會設定為 **預設值**。
 

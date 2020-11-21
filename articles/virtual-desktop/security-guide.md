@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842629"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023151"
 ---
 # <a name="security-best-practices"></a>安全性最佳做法
 
@@ -29,16 +29,16 @@ Windows 虛擬桌面是受管理的虛擬桌面服務，其中包含許多安全
 
 | 安全性需求 | 客戶負責這項作業嗎？ |
 |---------------|:-------------------------:|
-|身分識別|是|
-| (行動裝置和電腦) 的使用者裝置|是|
-|應用程式安全性|是|
-|工作階段主機 OS|是|
-|部署設定|是|
-|網路控制措施|是|
-|虛擬化控制平面|否|
-|實體主機|否|
-|實體網路|否|
-|實體資料中心|否|
+|身分識別|Yes|
+| (行動裝置和電腦) 的使用者裝置|Yes|
+|應用程式安全性|Yes|
+|工作階段主機 OS|Yes|
+|部署設定|Yes|
+|網路控制措施|Yes|
+|虛擬化控制平面|No|
+|實體主機|No|
+|實體網路|No|
+|實體資料中心|No|
 
 客戶不負責的安全性需求由 Microsoft 處理。
 
@@ -62,7 +62,7 @@ Windows 虛擬桌面是 Azure 下的一項服務。 若要將 Windows 虛擬桌�
 
 ### <a name="improve-your-secure-score"></a>改善您的安全分數
 
-安全分數提供建議和最佳做法建議，以改善整體安全性。 這些建議的優先順序是為了協助您挑選最重要的建議，而快速修正選項可協助您快速解決潛在的弱點。 這些建議也會隨著時間而更新，讓您保持最新狀態，以維護環境的安全性。 若要深入瞭解，請參閱 [Azure 資訊安全中心中的增強您的安全分數](../security-center/security-center-secure-score.md)。
+安全分數提供建議和最佳做法建議，以改善整體安全性。 這些建議的優先順序是為了協助您挑選最重要的建議，而快速修正選項可協助您快速解決潛在的弱點。 這些建議也會隨著時間而更新，讓您保持最新狀態，以維護環境的安全性。 若要深入瞭解，請參閱 [Azure 資訊安全中心中的增強您的安全分數](../security-center/secure-score-security-controls.md)。
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Windows 虛擬桌面安全性最佳作法
 
@@ -74,13 +74,13 @@ Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗
 
 ### <a name="enable-conditional-access"></a>啟用條件式存取
 
-啟用 [條件式存取](../active-directory/conditional-access/best-practices.md) 可讓您在將 Windows 虛擬桌面環境的存取權授與使用者之前，先管理風險。 當您決定要授與存取權的使用者時，建議您也考慮使用者是誰、登入方式，以及他們使用的裝置。
+啟用 [條件式存取](../active-directory/conditional-access/overview.md) 可讓您在將 Windows 虛擬桌面環境的存取權授與使用者之前，先管理風險。 當您決定要授與存取權的使用者時，建議您也考慮使用者是誰、登入方式，以及他們使用的裝置。
 
 ### <a name="collect-audit-logs"></a>收集稽核記錄
 
 啟用「audit 記錄檔收集」可讓您查看與 Windows 虛擬桌面相關的使用者和系統管理活動。 以下是一些重要的審核記錄範例：
 
--   [Azure 活動記錄](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure 活動記錄](../azure-monitor/platform/activity-log.md)
 -   [Azure Active Directory 活動記錄](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [工作階段主機](../azure-monitor/platform/agent-windows.md)
@@ -93,7 +93,7 @@ Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗
 
 ### <a name="monitor-usage-with-azure-monitor"></a>使用 Azure 監視器監視使用方式
 
-使用 [Azure 監視器](https://azure.microsoft.com/services/monitor/)監視您的 Windows 虛擬桌面服務使用狀況和可用性。 請考慮建立 Windows 虛擬桌面服務的 [服務健康狀態警示](../service-health/alerts-activity-log-service-notifications.md) ，以便在有服務影響事件時收到通知。
+使用 [Azure 監視器](https://azure.microsoft.com/services/monitor/)監視您的 Windows 虛擬桌面服務使用狀況和可用性。 請考慮建立 Windows 虛擬桌面服務的 [服務健康狀態警示](../service-health/alerts-activity-log-service-notifications-portal.md) ，以便在有服務影響事件時收到通知。
 
 ## <a name="session-host-security-best-practices"></a>工作階段主機安全性最佳作法
 
@@ -151,6 +151,6 @@ Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗
 
 - 防止不想要的軟體在工作階段主機上執行。 您可以啟用應用程式保險箱以提供工作階段主機上的額外安全性，以確保只有您允許的應用程式可在主機上執行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要瞭解如何啟用多重要素驗證，請參閱 [設定多重要素驗證](set-up-mfa.md)。

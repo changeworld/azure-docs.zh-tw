@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691406"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023066"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虛擬桌面 (傳統) 診斷工具
 
@@ -32,7 +32,7 @@ ms.locfileid: "88691406"
 - 將訊息傳送給特定工作階段主機上的作用中使用者。
 - 將使用者登出工作階段主機。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須先建立 Azure Active Directory 應用程式註冊和 Log Analytics 工作區，才能部署此工具的 Azure Resource Manager 範本。 您或系統管理員需要這些許可權才能執行此作業：
 
@@ -97,7 +97,7 @@ ms.locfileid: "88691406"
     - 針對 [ **ResourceGroupName**]，輸入資源群組的名稱。
     - 針對 [ **LogAnalyticsWorkspaceName**]，輸入 Log Analytics 工作區的唯一名稱。
     - 針對 [ **位置**]，輸入您要使用的 Azure 區域。
-    - 輸入 **Azure 訂**用帳戶識別碼，您可以在 [訂 **用帳戶**] 下的 Azure 入口網站中找到此識別碼。
+    - 輸入 **Azure 訂** 用帳戶識別碼，您可以在 [訂 **用帳戶**] 下的 Azure 入口網站中找到此識別碼。
 
 4. 輸入具有委派系統管理員存取權的使用者認證。
 5. 使用相同的使用者認證登入 Azure 入口網站。
@@ -121,7 +121,7 @@ ms.locfileid: "88691406"
     -   處理器資訊 (\*) \\ 處理器時間
     -   每個會話的使用者輸入延遲 (\*) \\ 最大輸入延遲
 
-[在 Azure 監視器中深入瞭解 Windows 與 Linux 效能資料來源](/azure/azure-monitor/platform/data-sources-performance-counters)的效能計數器。
+[在 Azure 監視器中深入瞭解 Windows 與 Linux 效能資料來源](../../azure-monitor/platform/data-sources-performance-counters.md)的效能計數器。
 
 >[!NOTE]
 >您所設定的任何其他計數器都不會顯示在診斷工具本身。 若要讓它顯示在診斷工具中，您必須設定工具的設定檔。 在 GitHub 中，如何使用 advanced administration 來進行這項操作的指示，將于稍後的日期提供。
@@ -145,7 +145,7 @@ ms.locfileid: "88691406"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，移至 **Log Analytics 工作區** 以檢查已設定的 Windows 效能計數器。
 2. 在 [ **設定**] 底下，選取 [ **Advanced Settings**]。
-3. 之後，請移至**資料**  >  **Windows 效能計數器**。
+3. 之後，請移至 **資料**  >  **Windows 效能計數器**。
 4. 請確定已預先設定下列計數器：
 
    - LogicalDisk (\*) \\ % 可用空間：顯示磁片上總可用空間的可用空間量（以百分比表示）。
@@ -162,7 +162,7 @@ ms.locfileid: "88691406"
 2. 移至您的 Log Analytics 工作區。
 3. 在左面板的 [工作區資料來源] 底下，選取 [ **虛擬機器**]。
 4. 選取您要連接的 VM 名稱。
-5. 選取 [連接]。
+5. 選取 [連接]  。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
 
@@ -191,7 +191,7 @@ ms.locfileid: "88691406"
 4.  在左面板的 [管理] 區段下，選取 [ **驗證**]。
 5.  在 [重新 **導向 uri** ] 文字方塊中輸入所需的重新導向 uri，然後選取功能表左上角的 [ **儲存** ]。
 6. 在 [類型] 下方的下拉式功能表中選取 [ **Web** ]。
-7. 從應用程式總覽頁面輸入 URL，並將 **/security/signin-callback** 新增至其結尾。 例如： `https://<yourappname>.azurewebsites.net/security/signin-callback` 。
+7. 從應用程式總覽頁面輸入 URL，並將 **/security/signin-callback** 新增至其結尾。 例如：`https://<yourappname>.azurewebsites.net/security/signin-callback`。
 
    > [!div class="mx-imgBorder"]
    > ![重新導向 URI 頁面](../media/redirect-uri-page.png)
@@ -204,7 +204,7 @@ ms.locfileid: "88691406"
 
 在您將診斷工具提供給使用者之前，請確定他們有下列許可權：
 
-- 使用者需要 log analytics 的讀取存取權。 如需詳細資訊，請參閱 [Azure 監視器的角色、許可權和安全性](/azure/azure-monitor/platform/roles-permissions-security)入門。
+- 使用者需要 log analytics 的讀取存取權。 如需詳細資訊，請參閱 [Azure 監視器的角色、許可權和安全性](../../azure-monitor/platform/roles-permissions-security.md)入門。
 -  使用者也需要 Windows 虛擬桌面租使用者的讀取權限 (RDS 讀者角色) 。 如需詳細資訊，請參閱 [Windows 虛擬桌面中的委派存取權](delegated-access-virtual-desktop-2019.md)。
 
 您也必須為使用者提供下列資訊：
@@ -264,7 +264,7 @@ ms.locfileid: "88691406"
 
     - 閾值：高於2000毫秒會標示為狀況不良。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何使用 [Log Analytics 監視使用診斷](diagnostics-log-analytics-2019.md)的活動記錄。
 - 請參閱常見的錯誤案例，以及如何在 [找出及診斷問題](diagnostics-role-service-2019.md)時加以修正。

@@ -6,21 +6,21 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 260125b5e7aa4537c6e204d93263b65be042793a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5110e97e52939ea2115bb839768cc7ab96802961
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540739"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020703"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>自訂 Windows 虛擬桌面 (傳統) 主機集區的遠端桌面通訊協定屬性
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-rdp-properties.md)。
 
-自訂主機集區的遠端桌面通訊協定 (RDP) 屬性（例如多重監視器體驗和音訊重新導向），可讓您根據使用者的需求為您的使用者提供最佳體驗。 您可以使用**RdsHostPool** Cmdlet 中的 **-CustomRdpProperty**參數，在 Windows 虛擬桌面中自訂 RDP 屬性。
+自訂主機集區的遠端桌面通訊協定 (RDP) 屬性（例如多重監視器體驗和音訊重新導向），可讓您根據使用者的需求為您的使用者提供最佳體驗。 您可以使用 **RdsHostPool** Cmdlet 中的 **-CustomRdpProperty** 參數，在 Windows 虛擬桌面中自訂 RDP 屬性。
 
-如需支援的屬性及其預設值的完整清單，請參閱 [支援的 RDP 檔設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) 。
+如需支援的屬性及其預設值的完整清單，請參閱 [支援的 RDP 檔設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) 。
 
 首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
 
@@ -74,7 +74,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 > [!div class="mx-imgBorder"]
 > ![PowerShell Cmdlet Get-RDSRemoteApp 的螢幕擷取畫面，其中已反白顯示名稱和 FriendlyName。](../media/resetcustomrdpproperty.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您已針對指定的主機集區自訂 RDP 屬性，您就可以登入 Windows 虛擬桌面用戶端，在使用者會話中進行測試。 接下來的兩個操作說明將會說明如何使用您所選擇的用戶端，連線至工作階段：
 

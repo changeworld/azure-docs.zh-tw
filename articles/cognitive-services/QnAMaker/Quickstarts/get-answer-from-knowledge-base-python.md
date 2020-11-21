@@ -7,25 +7,25 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 9bad04b060eafcdfea52668237d2d4e0547ce0a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29e6f3634ab723cbcba948d6f8c35ac66732c2f9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777567"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023645"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>快速入門：使用 Python 從知識庫取得問題的解答
 
 本快速入門會逐步引導您以程式設計方式從已發佈的 QnA Maker 知識庫取得答案。 知識庫包含[資料來源](../Concepts/knowledge-base.md)中的問題和答案，例如常見問題集。 [問題](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)會傳送至 QnA Maker 服務。 [回應](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含位居預測首位的答案。
 
-[參考文件](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
+[參考文件](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 
 ## <a name="prerequisites"></a>必要條件
 
 * [Python 3.6 或更新版本](https://www.python.org/downloads/)
-* [Visual Studio Code](https://code.visualstudio.com/) \(英文\)
-* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰，請在 QnA Maker 資源的 Azure 儀表板中選取 [資源管理]**** 下方的 [金鑰]****。
-* [發佈]**** 頁面設定。 如果您沒有已發佈的知識庫，請建立空白的知識庫，在 [設定]**** 頁面上匯入知識庫，然後發佈。 您可以下載並使用[這個基本知識庫](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。
+* [Visual Studio Code](https://code.visualstudio.com/)
+* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰，請在 QnA Maker 資源的 Azure 儀表板中選取 [資源管理] 下方的 [金鑰]。
+* [發佈] 頁面設定。 如果您沒有已發佈的知識庫，請建立空白的知識庫，在 [設定] 頁面上匯入知識庫，然後發佈。 您可以下載並使用[這個基本知識庫](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。
 
     發佈頁面設定包括 POST 路由值、主機值以及 EndpointKey 值。
 
@@ -43,11 +43,11 @@ ms.locfileid: "91777567"
 
 <!--TBD - reword this following paragraph -->
 
-主機和路由出現於 [發佈]**** 頁面上的方式有所不同。 這是因為 Python 程式庫不允許主機中的任何路由。 以主機的一部分形式出現於 [發佈]**** 頁面上的路由已移至路由。
+主機和路由出現於 [發佈] 頁面上的方式有所不同。 這是因為 Python 程式庫不允許主機中的任何路由。 以主機的一部分形式出現於 [發佈] 頁面上的路由已移至路由。
 
 ## <a name="add-the-required-constants"></a>新增必要的常數
 
-新增必要常數以存取 QnA Maker。 在您發佈知識庫之後，這些值都位於 [發佈]**** 頁面上。
+新增必要常數以存取 QnA Maker。 在您發佈知識庫之後，這些值都位於 [發佈] 頁面上。
 
 :::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="constants":::
 

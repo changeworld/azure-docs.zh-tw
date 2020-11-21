@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c5e3474d3992108ef61d34e745bc63c1f7a713
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85308032"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020941"
 ---
 # <a name="add-language-generation-templates-for-speech-responses"></a>新增語音回應的語言產生範本
 
@@ -34,7 +34,7 @@ ms.locfileid: "85308032"
 
 ## <a name="language-generation-templates-overview"></a>語言產生範本總覽
 
-自訂命令範本是根據 BotFramework 的 [LG 範本](https://aka.ms/speech/cc-lg-format)。 由於自訂命令會在必要時建立新的 LG 範本 (也就是說，針對參數或動作中的語音回應) 您不需要指定 LG 範本的名稱。 因此，請不要將您的範本定義為：
+自訂命令範本是根據 BotFramework 的 [LG 範本](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)。 由於自訂命令會在必要時建立新的 LG 範本 (也就是說，針對參數或動作中的語音回應) 您不需要指定 LG 範本的名稱。 因此，請不要將您的範本定義為：
 
  ```
     # CompletionAction
@@ -51,7 +51,7 @@ ms.locfileid: "85308032"
 
 這種變更會對傳送至用戶端的語音回應帶來變化。 因此，在相同的語句中，對應的語音回應會從提供的選項中隨機挑選。
 
-利用 LG 範本也可讓您使用適應性運算式來定義命令的複雜語音回應。 如需詳細資料，您可以參考 [LG 範本格式](https://aka.ms/speech/cc-lg-format) 。 自訂命令預設支援所有功能，但有下列差異：
+利用 LG 範本也可讓您使用適應性運算式來定義命令的複雜語音回應。 如需詳細資料，您可以參考 [LG 範本格式](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) 。 自訂命令預設支援所有功能，但有下列差異：
 
 * 在 LG 範本中，實體會以 $ {entityName} 表示。 在自訂命令中，我們不會使用實體，但參數可以用來做為具有其中一個標記法 $ {parameterName} 或 {parameterName} 的變數
 * 自訂命令中不支援範本撰寫和展開。 這是因為您永遠不會 `.lg` 直接編輯檔案，只會回應自動建立的範本。
@@ -64,17 +64,17 @@ ms.locfileid: "85308032"
 
 | 設定            | 建議的值       | 
 | ------------------ | --------------------- | 
-| 名稱               | `SubjectContext`         | 
+| Name               | `SubjectContext`         | 
 | 為全域          | unchecked             | 
 | 必要           | unchecked               | 
 | 類型               | String                |
 | 預設值      | `all` |
-| 設定      | 接受來自內部目錄的預先定義輸入值 | 
+| 組態      | 接受來自內部目錄的預先定義輸入值 | 
 | 預先定義的輸入值 | `room`, `bathroom`, `all`|
 
 ### <a name="modify-completion-rule"></a>修改完成規則
 
-編輯現有完成規則**ConfirmationResponse**的 [**動作**] 區段。 在 [ **編輯動作** ] 快顯視窗中，切換至 [ **範本編輯器** ]，並將文字取代為下列範例。
+編輯現有完成規則 **ConfirmationResponse** 的 [**動作**] 區段。 在 [ **編輯動作** ] 快顯視窗中，切換至 [ **範本編輯器** ]，並將文字取代為下列範例。
 
 ```
 - IF: @{SubjectContext == "all" && SubjectDevice == "lights"}
@@ -86,7 +86,7 @@ ms.locfileid: "85308032"
     - Done, turning {OnOff} the {SubjectDevice}
 ```
 
-依照下列方式**定型**和**測試**您的應用程式。 請注意，回應的變化是因為使用了多個範本值的替代專案，而且也使用了引數運算式。
+依照下列方式 **定型** 和 **測試** 您的應用程式。 請注意，回應的變化是因為使用了多個範本值的替代專案，而且也使用了引數運算式。
 
 * 輸入：開啟電視
 * 輸出：確定，開啟電視
@@ -104,18 +104,18 @@ ms.locfileid: "85308032"
 1. 在您的自訂命令應用程式中，從左窗格中選取 [ **設定** ]。
 1. 從中間窗格中選取 [ **自訂語音** ]。
 1. 從資料表中選取所需的自訂或公用語音。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 > [!div class="mx-imgBorder"]
 > ![具有參數的範例句子](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - 針對 **公用語音**， **類神經類型** 只適用于特定區域。 若要檢查可用性，請參閱 [依區域/端點的標準和類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。
+> - 針對 **公用語音**， **類神經類型** 只適用于特定區域。 若要檢查可用性，請參閱 [依區域/端點的標準和類神經語音](./regions.md#standard-and-neural-voices)。
 > - 針對 **自訂語音**，您可以從 [自訂語音專案] 頁面建立它們。 請參閱 [自訂語音的開始](./how-to-custom-voice.md)。
 
 現在應用程式將會以選取的語音回應，而不是預設的語音。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [使用語音 SDK 整合您的自訂命令](./how-to-custom-commands-setup-speech-sdk.md)。

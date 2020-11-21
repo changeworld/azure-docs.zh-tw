@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12029d7a77eb7cbbb10cb5330eb18d6316520a2d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566631"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021315"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0：偵測
 
@@ -49,7 +49,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th>描述</th>
   <tr>
     <td>驗證標頭</td>
-    <td>必要的要求標頭。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
+    <td>必要的要求標頭。<br/>請參閱<a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -138,7 +138,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">狀態碼</th>
-  <th>描述</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -169,7 +169,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)的 [參考] 頁面上找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](./v3-0-reference.md#errors)的 [參考] 頁面上找到常見的錯誤碼。 
 
 ## <a name="examples"></a>範例
 

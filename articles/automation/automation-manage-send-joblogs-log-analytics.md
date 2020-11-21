@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397420"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024138"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>將 Azure 自動化作業資料轉送至 Azure 監視器記錄
 
@@ -41,7 +41,7 @@ Azure 自動化可以將 Runebook 作業狀態和作業資料流傳送到您的 
     Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
     ```
 
-2. 複製 **ResourceID**的值。
+2. 複製 **ResourceID** 的值。
 
 3. 使用下列命令來尋找 Log Analytics 工作區的資源識別碼：
 
@@ -50,14 +50,14 @@ Azure 自動化可以將 Runebook 作業狀態和作業資料流傳送到您的 
     Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
     ```
 
-4. 複製 **ResourceID**的值。
+4. 複製 **ResourceID** 的值。
 
 若要傳回特定資源群組的結果，請包含 `-ResourceGroupName` 參數。 如需詳細資訊，請參閱 [get-azresource](/powershell/module/az.resources/get-azresource)。
 
 如果您在上述命令的輸出中有一個以上的自動化帳戶或工作區，您可以執行下列動作，以尋找屬於自動化帳戶完整資源識別碼的名稱和其他相關屬性：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在 **Azure 入口網站**中，從 [自動化帳戶] 頁面選取您的自動化帳戶。
+1. 在 **Azure 入口網站** 中，從 [自動化帳戶] 頁面選取您的自動化帳戶。
 1. 在所選自動化帳戶頁面的 [帳戶設定] 下，選取 [內容]。
 1. 在 [屬性] 頁面上，記下如下所示的詳細資料。
 
@@ -177,9 +177,9 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>篩選作業狀態輸出轉換為 JSON 物件
 
-最近我們已變更如何將 Automation 記錄資料寫入 `AzureDiagnostics` Log Analytics 服務中的資料表，而不再將 JSON 屬性細分為個別的欄位。 如果您將 runbook 設定為將輸出資料流程中的物件格式化為個別的資料行，則必須重新設定您的查詢，以將該欄位剖析為 JSON 物件，才能存取這些屬性。 這是使用 [parsejson](../azure-monitor/log-query/json-data-structures.md#parsejson) 存取已知路徑中的特定 JSON 元素來完成。
+最近我們已變更如何將 Automation 記錄資料寫入 `AzureDiagnostics` Log Analytics 服務中的資料表，而不再將 JSON 屬性細分為個別的欄位。 如果您將 runbook 設定為將輸出資料流程中的物件格式化為個別的資料行，則必須重新設定您的查詢，以將該欄位剖析為 JSON 物件，才能存取這些屬性。 這是使用 [parsejson](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) 存取已知路徑中的特定 JSON 元素來完成。
 
-例如，runbook 會以 JSON 格式將輸出資料流程中的 *ResultDescription* 屬性格式化為多個欄位。 若要搜尋處於 [**狀態**] 欄位中所指定之失敗狀態的作業狀態，請使用此範例查詢來搜尋狀態為 [**失敗**] 的*ResultDescription* ：
+例如，runbook 會以 JSON 格式將輸出資料流程中的 *ResultDescription* 屬性格式化為多個欄位。 若要搜尋處於 [**狀態**] 欄位中所指定之失敗狀態的作業狀態，請使用此範例查詢來搜尋狀態為 [**失敗**] 的 *ResultDescription* ：
 
 ```kusto
 AzureDiagnostics

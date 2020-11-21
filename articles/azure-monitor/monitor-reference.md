@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461799"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021434"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -126,7 +126,6 @@ ms.locfileid: "92461799"
 |受控應用程式  | 否 | 否 | 否 |  |
 |地圖  | 否 | 否 | 否 |  |
 |媒體服務 | 是 | 是 | 否 |  |
-|Microsoft Flow | 否 | 否 | 否 |  |
 |Microsoft 受管理的電腦 | 否 | 否 | 否 |  |
 |Microsoft PowerApps | 否 | 否 | 否 |  |
 |Microsoft 社交參與 | 否 | 否 | 否 |  |
@@ -137,6 +136,7 @@ ms.locfileid: "92461799"
 |通知中樞 | 是 | 否 | 否 |  |
 |Open Datasets | 否 | 否 | 否 |  |
 |原則 | 否 | 否 | 否 |  |
+|Power Automate | 否 | 否 | 否 |  |
 |Power BI Embedded | 是 | 是 | 否 |  |
 |私人連結 | 否 | 否 | 否 |  |
 |Project Spool Communication Platform | 否 | 否 | 否 |  |

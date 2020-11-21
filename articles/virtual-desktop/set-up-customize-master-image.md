@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433699"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023389"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>準備和自訂主要 VHD 映像
 
@@ -114,7 +114,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 1. 在 Active Directory 伺服器上，開啟 **群組原則管理主控台**。
 2. 展開您的網域，並群組原則物件。
 3. 以滑鼠右鍵按一下您為群組原則設定建立的 **群組原則物件** ，然後選取 [ **編輯**]。
-4. 在**群組原則管理編輯器**中，流覽至 [Windows 元件] 系統管理範本的 [**電腦**設定  >  **原則**]  >  **Administrative Templates**  >  **Windows Components**  >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **裝置和資源**重新導向]。
+4. 在 **群組原則管理編輯器** 中，流覽至 [Windows 元件] 系統管理範本的 [**電腦** 設定  >  **原則**]  >  **Administrative Templates**  >  **Windows Components**  >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **裝置和資源** 重新導向]。
 5. 啟用 [ **允許** 時區重新導向] 設定。
 
 您也可以在主要映射上執行此命令，以重新導向時區：
@@ -125,7 +125,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>停用儲存空間感知器
 
-若為使用 Windows 10 企業版或 Windows 10 企業版多會話的 Windows 虛擬桌面工作階段主機，建議您停用儲存空間感知器。 您可以在 [ **存放裝置**] 下的 [設定] 功能表中停用儲存空間感知器，如下列螢幕擷取畫面所示：
+對於使用 Windows 10 企業版或 Windows 10 企業版多工作階段的 Windows 虛擬桌面工作階段主機，建議停用儲存空間感知器。 您可以在 [ **存放裝置**] 下的 [設定] 功能表中停用儲存空間感知器，如下列螢幕擷取畫面所示：
 
 > [!div class="mx-imgBorder"]
 > ![[設定] 下 [儲存體] 功能表的螢幕擷取畫面。 「儲存感知」選項已關閉。](media/storagesense.png)
@@ -189,7 +189,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 1. 如果您還沒有，請將 VM 映射 (VHD) 轉換為固定。 如果您未將映射轉換成固定的，則無法成功建立映射。
 
-2. 將 VHD 上傳至儲存體帳戶中的 blob 容器。 您可以使用 [儲存體總管工具](https://azure.microsoft.com/features/storage-explorer/)快速上傳。 若要深入瞭解儲存體總管工具，請參閱 [這篇文章](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
+2. 將 VHD 上傳至儲存體帳戶中的 blob 容器。 您可以使用 [儲存體總管工具](https://azure.microsoft.com/features/storage-explorer/)快速上傳。 若要深入瞭解儲存體總管工具，請參閱 [這篇文章](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)。
 
     > [!div class="mx-imgBorder"]
     > ![Microsoft Azure 儲存體總管工具搜尋視窗的螢幕擷取畫面。 選取 [上傳 .vhd 或 vhdx 檔案作為分頁 blob (建議的) ] 核取方塊。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
@@ -204,7 +204,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
     > [!div class="mx-imgBorder"]
     > ![[已成功建立的映射] 通知的螢幕擷取畫面。](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已有映射，您可以建立或更新主機集區。 若要深入瞭解如何建立和更新主機集區，請參閱下列文章：
 

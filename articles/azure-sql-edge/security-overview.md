@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394946"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021009"
 ---
 # <a name="securing-azure-sql-edge"></a>保護 Azure SQL Edge
 
@@ -34,14 +34,14 @@ Azure SQL Edge 的平臺包含實體 docker 主機、主機上的作業系統，
 - 指定和限制使用於 Azure SQL Edge 的主機埠
 - 確定會將適當的存取控制套用至裝載 Azure SQL Edge 資料的所有資料磁片區。 
 
-如需 Azure SQL Edge 網路通訊協定和 TDS 端點的詳細資訊，請參閱 [網路通訊協定和 Tds 端點](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))。
+如需 Azure SQL Edge 網路通訊協定和 TDS 端點的詳細資訊，請參閱 [網路通訊協定和 Tds 端點](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))。
 
 ## <a name="authentication-and-authorization"></a>驗證與授權 
 
 ### <a name="authentication"></a>驗證  
 驗證是證明使用者宣告身分的程序。 Azure SQL Edge 目前僅支援此 `SQL Authentication` 機制。
 
-- *SQL 驗證* ：
+- *SQL 驗證*：
 
     SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Edge 時的使用者驗證。 Sql Edge 部署期間必須指定 SQL **sa** 登入密碼。 在那之後，伺服器管理員可以建立其他 SQL 登入和使用者，可讓使用者使用使用者名稱和密碼進行連線。
 
@@ -107,7 +107,7 @@ Azure SQL Edge 安全性最佳作法包括撰寫安全的用戶端應用程式�
 Azure SQL Edge 提供與 SQL Server 相同的審核機制。 如需詳細資訊，請參閱 [SQL Server Audit (資料庫引擎) ](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [具有安全性功能的消費者入門](/sql/linux/sql-server-linux-security-get-started)
 - [以非根使用者的身份執行 Azure SQL Edge](configure.md#run-azure-sql-edge-as-non-root-user)

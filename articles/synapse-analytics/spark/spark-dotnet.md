@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fbf4eab55ec2cf8e4f0e27969ca4a22eb1f27ad
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 753c7ff48960711cbedbf6b5d8644a26502dd413
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578608"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023732"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics
 
@@ -74,9 +74,11 @@ ms.locfileid: "94578608"
 
 ### <a name="install-nuget-packages-in-notebooks"></a>在筆記本中安裝 NuGet 套件
 
-您可以使用 `#r` nuget 套件名稱之前的符號，將您選擇的 NuGet 套件安裝到您的筆記本中。 下圖顯示範例：
+您可以在 `#r nuget` nuget 套件名稱之前使用魔術命令，將您選擇的 NuGet 套件安裝到您的筆記本中。 下圖顯示範例：
 
 ![顯示如何使用 #r 安裝 Spark .NET 筆記本 NuGet 套件的螢幕擷取畫面](./media/apache-spark-development-using-notebooks/synapse-spark-dotnet-notebook-nuget.png)
+
+若要深入瞭解如何在筆記本中使用 NuGet 套件，請參閱 [.Net 互動式檔](https://github.com/dotnet/interactive/blob/main/docs/nuget-overview.md)集。
 
 ### <a name="net-for-apache-spark-c-kernel-features"></a>適用於 Apache Spark 的 .NET C# 核心功能
 

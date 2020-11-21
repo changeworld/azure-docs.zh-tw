@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357636"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021876"
 ---
 # <a name="what-is-direct-line-speech"></a>什麼是 Direct Line Speech？
 
@@ -37,9 +37,9 @@ Direct Line Speech 為語音助理提供最高層級的自訂和複雜的功能�
 
 | 快速入門 | 平台 | API 參考資料 |
 |------------|----------|---------------|
-| C #、UWP | Windows | [瀏覽](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [瀏覽](https://aka.ms/csspeech/javaref) |
-| Java | Android | [瀏覽](https://aka.ms/csspeech/javaref) |
+| C #、UWP | Windows | [瀏覽](/dotnet/api/microsoft.cognitiveservices.speech) |
+| Java | Windows、macOS、Linux | [瀏覽](/java/api/com.microsoft.cognitiveservices.speech) |
+| Java | Android | [瀏覽](/java/api/com.microsoft.cognitiveservices.speech) |
 
 ## <a name="sample-code"></a>範例程式碼
 
@@ -50,21 +50,21 @@ Direct Line Speech 為語音助理提供最高層級的自訂和複雜的功能�
 
 ## <a name="customization"></a>自訂
 
-使用「語音服務」建立的語音助理可以使用適用于 [語音轉換文字](speech-to-text.md)、 [文字轉換語音](text-to-speech.md)和 [自訂關鍵字選取](speech-devices-sdk-create-kws.md)的完整自訂選項範圍。
+使用「語音服務」建立的語音助理可以使用適用于 [語音轉換文字](speech-to-text.md)、 [文字轉換語音](text-to-speech.md)和 [自訂關鍵字選取](./custom-keyword-basics.md)的完整自訂選項範圍。
 
 > [!NOTE]
-> 自訂選項會因語言/地區設定而異 (請參閱 [支援的語言](supported-languages.md)) 。
+> 自訂選項會因語言/地區設定而異 (請參閱 [支援的語言](./language-support.md)) 。
 
-語音助理 Direct Line 語音和其相關聯的功能是 [虛擬助理解決方案和企業範本](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)的絕佳補充。 雖然 Direct Line 語音可以與任何相容的 bot 搭配使用，但這些資源為高品質的對話式體驗提供可重複使用的基準，以及快速入門的一般支援技能和模型。
+語音助理 Direct Line 語音和其相關聯的功能是 [虛擬助理解決方案和企業範本](/azure/bot-service/bot-builder-enterprise-template-overview)的絕佳補充。 雖然 Direct Line 語音可以與任何相容的 bot 搭配使用，但這些資源為高品質的對話式體驗提供可重複使用的基準，以及快速入門的一般支援技能和模型。
 
 ## <a name="reference-docs"></a>參考文件
 
-* [語音 SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [語音 SDK](./speech-sdk.md)
+* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [免費取得語音服務的訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)
 * [取得語音 SDK](speech-sdk.md)
-* [建立及部署基本 Bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [建立及部署基本 Bot](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [取得虛擬助理解決方案和企業範本](https://github.com/Microsoft/AI)

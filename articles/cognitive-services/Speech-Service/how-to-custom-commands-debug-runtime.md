@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023018"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021791"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>執行自訂命令應用程式時的偵錯工具錯誤
 
@@ -58,9 +58,9 @@ ms.locfileid: "86023018"
 
 - 如果您要在入口網站中測試應用程式，它會直接顯示取消描述並播放錯誤 earcon。 
 
-- 如果您是使用 [Windows 語音助理用戶端](./how-to-custom-commands-developer-flow-test.md)來執行應用程式，則會 earcon 錯誤。 您可以在**活動記錄**下找到**事件： CancelledDialog** 。
+- 如果您是使用 [Windows 語音助理用戶端](./how-to-custom-commands-developer-flow-test.md)來執行應用程式，則會 earcon 錯誤。 您可以在 **活動記錄** 下找到 **事件： CancelledDialog** 。
 
-- 如果您遵循用戶端應用程式範例 [用戶端應用程式 (與語音 SDK) ](./how-to-custom-commands-setup-speech-sdk.md)，則會 earcon 錯誤。 您可以在**狀態**下找到**事件： CancelledDialog** 。
+- 如果您遵循用戶端應用程式範例 [用戶端應用程式 (與語音 SDK) ](./how-to-custom-commands-setup-speech-sdk.md)，則會 earcon 錯誤。 您可以在 **狀態** 下找到 **事件： CancelledDialog** 。
 
 - 如果您要建立自己的用戶端應用程式，您一律可以設計所需的邏輯來處理 CancelledDialog 事件。
 
@@ -86,13 +86,13 @@ Language Understanding (LUIS) 具有資源使用量的限制。 通常會造成�
 
     將預測資源新增至您的自訂命令應用程式： 
     1. 移至 [ **設定**]、[LUIS 資源]
-    1. 從**預測資源**選擇預測資源，或按一下 [**建立新資源**] 
+    1. 從 **預測資源** 選擇預測資源，或按一下 [**建立新資源**] 
 
 - 您的 LUIS 預測資源超過限制
 
     如果您使用 F0 預測資源，其限制為每月10千個月，5個查詢/秒。
 
-如需 LUIS 資源限制的詳細資訊，請參閱 [Language Understanding 資源使用量和限制](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits)
+如需 LUIS 資源限制的詳細資訊，請參閱 [Language Understanding 資源使用量和限制](../luis/luis-limits.md#resource-usage-and-limits)
 
 ### <a name="connection-to-the-recognizer-failed"></a>與辨識器的連接失敗
 這通常表示暫時性連接無法 Language Understanding (LUIS) 辨識器。 再試一次，就應該解決問題。
@@ -123,7 +123,7 @@ LUIS 辨識器在嘗試辨識您的輸入時傳回錯誤。
 
     當兩個命令共用類似意圖和範例句子時，LUIS 辨識精確度可能會受到影響。 您可以嘗試讓命令功能和範例句子盡可能相異。
 
-    如需改善辨識精確度的最佳作法，請參閱 [LUIS 最佳作法](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+    如需改善辨識精確度的最佳作法，請參閱 [LUIS 最佳作法](../luis/luis-concept-best-practices.md)。
 
 - 對話方塊已取消
     
@@ -135,7 +135,7 @@ LUIS 辨識器在嘗試辨識您的輸入時傳回錯誤。
 ### <a name="object-reference-not-set-to-an-instance-of-an-object"></a>物件參考未設定為物件的實例
 您在 **傳送活動中定義給用戶端** 動作的 JSON 承載中有空白參數。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [請參閱 GitHub 上的範例](https://aka.ms/speech/cc-samples)

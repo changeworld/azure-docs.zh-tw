@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530131"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023270"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>診斷和解決 Azure 時間序列深入解析 Gen1 環境中的問題
 
@@ -37,7 +37,7 @@ ms.locfileid: "91530131"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因：事件來源資料不是 JSON 格式
 
-Azure 時間序列深入解析現在只支援 JSON 資料。 如需 JSON 範例，請參閱[支援的 JSON 樣貌](./how-to-shape-query-json.md)。
+Azure 時間序列深入解析現在只支援 JSON 資料。 如需 JSON 範例，請參閱[支援的 JSON 樣貌](./concepts-json-flattening-escaping-rules.md)。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B：事件來源索引鍵遺漏必要的許可權
 
@@ -51,7 +51,7 @@ Azure 時間序列深入解析現在只支援 JSON 資料。 如需 JSON 範例�
 
 ### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-azure-time-series-insights"></a>原因 C：提供的取用者群組不是獨佔的 Azure 時間序列深入解析
 
-當您註冊 IoT 中樞或事件中樞時，請務必設定您想要用來讀取資料的取用者群組。 此取用者群組「不可是共用的」**。 如果取用者群組是共用的，基礎 IoT 中樞或事件中樞會自動且隨機地將其中一個讀者中斷連線。 提供唯一的取用者群組，讓 Azure 時間序列深入解析從中讀取。
+當您註冊 IoT 中樞或事件中樞時，請務必設定您想要用來讀取資料的取用者群組。 此取用者群組「不可是共用的」。 如果取用者群組是共用的，基礎 IoT 中樞或事件中樞會自動且隨機地將其中一個讀者中斷連線。 提供唯一的取用者群組，讓 Azure 時間序列深入解析從中讀取。
 
 ### <a name="cause-d-the-environment-has-just-been-provisioned"></a>原因 D：環境剛布建
 
@@ -85,7 +85,7 @@ Azure 時間序列深入解析現在只支援 JSON 資料。 如需 JSON 範例�
 
 容量為 3 的 S1 SKU 環境每分鐘只能輸入 2,100 個事件 (每天 1 百萬個事件 = 每三單位每分鐘 700 個事件 = 每分鐘 2,100 個事件)。
 
-若要深入瞭解簡維邏輯的運作方式，請參閱 [支援的 JSON 圖形](./how-to-shape-query-json.md)。
+若要深入瞭解簡維邏輯的運作方式，請參閱 [支援的 JSON 圖形](./concepts-json-flattening-escaping-rules.md)。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>過度節流的建議解決方法
 
@@ -127,15 +127,15 @@ Azure 時間序列深入解析現在只支援 JSON 資料。 如需 JSON 範例�
 
 若要確保您的時間戳記屬性名稱已被捕捉並正常運作，最簡單的方式就是使用 Azure 時間序列深入解析 explorer。 在 Azure 時間序列深入解析 explorer 中，使用圖表，選取在您輸入時間戳記屬性名稱之後的一段時間。 以滑鼠右鍵按一下選取專案，然後選取 [ **探索事件**]。
 
-第一個資料行標頭應該是您的時間戳記屬性名稱。 在 [ **時間戳記**] 旁邊，會顯示 ** ($ts) ** 。
+第一個資料行標頭應該是您的時間戳記屬性名稱。 在 [ **時間戳記**] 旁邊，會顯示 **($ts)** 。
 
 將不會顯示下列值：
 
-* * (abc) *：表示 Azure 時間序列深入解析正在將資料值讀取為字串。
-* 行事*曆圖示*：指出 Azure 時間序列深入解析正在將資料值讀取為日期時間值。
+* *(abc)*：表示 Azure 時間序列深入解析正在將資料值讀取為字串。
+* 行事 *曆圖示*：指出 Azure 時間序列深入解析正在將資料值讀取為日期時間值。
 * *#*：指出 Azure 時間序列深入解析正在將資料值讀取為整數。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [如何緩和 Azure 時間序列深入解析中的延遲](time-series-insights-environment-mitigate-latency.md)。
 

@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: 32d5c280e80b2f21b30bb34a182070da51e21026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa7b80b021e00d25dea4f96432ae922c15474058
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008486"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023049"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>設定圖形處理單元 (GPU) 加速 Windows 虛擬桌面 (傳統) 
 
@@ -23,24 +23,24 @@ Windows 虛擬桌面支援採用 GPU 加速的轉譯和編碼功能，可藉此�
 
 ## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>選取 GPU 最佳化的 Azure 虛擬機器大小
 
-Azure 提供數個 [GPU 最佳化的虛擬機器大小](/azure/virtual-machines/windows/sizes-gpu)。 主機集區的正確選擇取決於數個因素，包括您的特定應用程式工作負載、所需的使用者體驗品質和成本。 一般而言，較大且能力較強的 GPU 可在指定的使用者密度上提供更好的使用者體驗。
+Azure 提供數個 [GPU 最佳化的虛擬機器大小](../../virtual-machines/sizes-gpu.md)。 主機集區的正確選擇取決於數個因素，包括您的特定應用程式工作負載、所需的使用者體驗品質和成本。 一般而言，較大且能力較強的 GPU 可在指定的使用者密度上提供更好的使用者體驗。
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>建立主機集區、佈建您的虛擬機器，以及設定應用程式群組
 
-使用您選取的 VM 大小建立新的主機集區。 如需相關指示，請參閱 [教學課程：使用 Azure Marketplace 建立主機集](/azure/virtual-desktop/create-host-pools-azure-marketplace)區。
+使用您選取的 VM 大小建立新的主機集區。 如需相關指示，請參閱 [教學課程：使用 Azure Marketplace 建立主機集](../create-host-pools-azure-marketplace.md)區。
 
 Windows 虛擬桌面支援在下列作業系統中使用 GPU 加速的轉譯和編碼功能：
 
 * Windows 10 1511 版或更新版本
 * Windows Server 2016 或更新版本
 
-您也必須設定應用程式群組，或使用您建立新主機集區時，自動建立的預設桌面應用程式群組 (名為「桌面應用程式群組」)。 如需指示，請參閱[教學課程：管理 Windows 虛擬桌面的應用程式群組](/azure/virtual-desktop/manage-app-groups)。
+您也必須設定應用程式群組，或使用您建立新主機集區時，自動建立的預設桌面應用程式群組 (名為「桌面應用程式群組」)。 如需指示，請參閱[教學課程：管理 Windows 虛擬桌面的應用程式群組](../manage-app-groups.md)。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在您的虛擬機器中安裝支援的圖形驅動程式
 
-若要在 Windows 虛擬桌面中使用 Azure N 系列 VM 的 GPU 功能，您必須安裝適當的圖形驅動程式。 請遵循[支援的作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)中的指示，透過手動或使用 Azure VM 擴充功能的方式，從適當圖形廠商安裝驅動程式。
+若要在 Windows 虛擬桌面中使用 Azure N 系列 VM 的 GPU 功能，您必須安裝適當的圖形驅動程式。 請遵循[支援的作業系統和驅動程式](../../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的指示，透過手動或使用 Azure VM 擴充功能的方式，從適當圖形廠商安裝驅動程式。
 
-Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，對於具有 NVIDIA Gpu 的 Azure Vm，Windows 虛擬桌面只支援 [NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) 。
+Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，對於具有 NVIDIA Gpu 的 Azure Vm，Windows 虛擬桌面只支援 [NVIDIA GRID 驅動程式](../../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers) 。
 
 安裝驅動程式之後，必須重新啟動 VM。 使用上述指示中的驗證步驟，確認已成功安裝圖形驅動程式。
 
@@ -75,7 +75,7 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，對於�
 
 若要驗證應用程式是否使用 GPU 進行轉譯，請嘗試下列任一方式：
 
-* 針對具有 NVIDIA GPU 的 Azure VM，請依照[驗證驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的方式，使用 `nvidia-smi` 公用程式在執行應用程式時檢查 GPU 使用率。
+* 針對具有 NVIDIA GPU 的 Azure VM，請依照[驗證驅動程式安裝](../../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation)中所述的方式，使用 `nvidia-smi` 公用程式在執行應用程式時檢查 GPU 使用率。
 * 在支援的作業系統版本上，您可以使用工作管理員來檢查 GPU 使用率。 在 [效能] 索引標籤中選取 GPU，即可查看應用程式是否正在利用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>驗證 GPU 加速的畫面編碼
@@ -91,5 +91,5 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，對於�
 
 這些指示應該可讓您能夠在一個工作階段主機 (一個 VM) 上啟動並執行 GPU 加速。 在較大的主機集區上啟用 GPU 加速有一些額外考量：
 
-* 請考慮使用 [VM 擴充功能](/azure/virtual-machines/extensions/overview)來簡化多部 VM 的驅動程式安裝和更新。 針對具有 NVIDIA GPU 的 VM，應使用 [NVIDIA GPU 驅動程式擴充功能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)，而具有 AMD GPU 的 VM 應使用 AMD GPU 驅動程式擴充功能。
-* 請考慮使用 Active Directory 群組原則來簡化多個 VM 上的群組原則設定。 如需在 Active Directory 網域中部署群組原則的詳細資訊，請參閱[使用群組原則物件](https://go.microsoft.com/fwlink/p/?LinkId=620889)。
+* 請考慮使用 [VM 擴充功能](../../virtual-machines/extensions/overview.md)來簡化多部 VM 的驅動程式安裝和更新。 針對具有 NVIDIA GPU 的 VM，應使用 [NVIDIA GPU 驅動程式擴充功能](../../virtual-machines/extensions/hpccompute-gpu-windows.md)，而具有 AMD GPU 的 VM 應使用 AMD GPU 驅動程式擴充功能。
+* 請考慮使用 Active Directory 群組原則來簡化多個 VM 上的群組原則設定。 如需在 Active Directory 網域中部署群組原則的詳細資訊，請參閱[使用群組原則物件](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731212(v=ws.11))。

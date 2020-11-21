@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6631415c32358cf445fab534b9524c88b6432e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460878"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020873"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>將 Azure 時間序列深入解析 Gen 2 連線至 Power BI  
 
@@ -27,7 +27,7 @@ Azure 時間序列深入解析現在與 [Power BI](https://powerbi.microsoft.com
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
    [![Azure 時間序列深入解析中的匯出選項](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
@@ -59,10 +59,10 @@ Azure 時間序列深入解析現在與 [Power BI](https://powerbi.microsoft.com
 
 如需 Power BI 中的先進查詢和編輯功能，請使用 Power BI 的進階編輯器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [如何將時間序列深入解析連接至 Power BI](./how-to-connect-power-bi.md)。
 
 * 下載 [Power BI desktop](https://powerbi.microsoft.com/desktop/) 並開始連接您的資料。
 
-* 深入瞭解 [Power BI](https://docs.microsoft.com/power-bi/)。
+* 深入瞭解 [Power BI](/power-bi/)。

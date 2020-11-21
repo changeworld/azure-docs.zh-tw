@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9abd1f305e47eca743dc9274e0ec1f0a950dd6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588593"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021264"
 ---
 # <a name="translator-30-languages"></a>Translator 3.0：語言
 
@@ -248,7 +248,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">狀態碼</th>
-  <th>描述</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -275,7 +275,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)的 [參考] 頁面上找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](./v3-0-reference.md#errors)的 [參考] 頁面上找到常見的錯誤碼。 
 
 ## <a name="examples"></a>範例
 

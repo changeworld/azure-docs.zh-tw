@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425119"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021978"
 ---
 # <a name="disclosure-design-patterns"></a>公開設計模式
 現在&#39;您已為您的綜合語音體驗決定適當 [的洩漏層級](concepts-disclosure-guidelines.md#disclosure-assessment) ，&#39;s 是探索潛在設計模式的好時機。
@@ -241,17 +241,17 @@ Anthropomorphism 可以不同的方式呈現，從代理程式實際的視覺標
 
 ## <a name="additional-resources"></a>其他資源
 - [Microsoft Bot 指導方針](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana 設計指導方針](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP 語音設計指導方針](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows Mixed Reality 語音命令指導方針](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana 設計指導方針](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP 語音設計指導方針](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows Mixed Reality 語音命令指導方針](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>參考文件
 
-* [配音員的洩漏](https://aka.ms/disclosure-voice-talent)
+* [配音員的洩漏](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [綜合語音技術的負責任部署指導方針](concepts-guidelines-responsible-deployment-synthetic.md)
 * [管制總覽](concepts-gating-overview.md)
 * [如何公開](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* [配音員的洩漏](https://aka.ms/disclosure-voice-talent)
+* [配音員的洩漏](/legal/cognitive-services/speech-service/disclosure-voice-talent)

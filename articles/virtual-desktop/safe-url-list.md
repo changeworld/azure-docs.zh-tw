@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875099"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023168"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
@@ -34,7 +34,7 @@ ms.locfileid: "91875099"
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
 | 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
-| 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/security-overview.md#azure-platform-considerations) | N/A |
+| 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
 
 >[!IMPORTANT]
 >Windows 虛擬桌面現在支援 FQDN 標記。 如需詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -56,7 +56,7 @@ ms.locfileid: "91875099"
 |mrsglobalstugviffx.core.usgovcloudapi.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 入口網站支援|AzureCloud|
 | 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
-| 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/security-overview.md#azure-platform-considerations) | N/A |
+| 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
 
 下表列出您的 Azure 虛擬機器可存取的選用 URL：
 
@@ -78,7 +78,7 @@ ms.locfileid: "91875099"
 >對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
 >
 >1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [**事件檢視器]**，然後移至 [ **Windows 記錄**  >  **應用程式**  >  **WVD-代理**程式]，然後尋找事件識別碼3701。
+>2. 開啟 [**事件檢視器]**，然後移至 [ **Windows 記錄**  >  **應用程式**  >  **WVD-代理** 程式]，然後尋找事件識別碼3701。
 >3. 將您在事件識別碼3701下找到的 Url 解除封鎖。 事件識別碼3701下的 Url 是區域特定的。 您必須針對想要在其中部署虛擬機器的每個區域，使用相關的 Url 重複解除封鎖程式。
 
 ## <a name="remote-desktop-clients"></a>遠端桌面用戶端
@@ -89,11 +89,11 @@ ms.locfileid: "91875099"
 |---|---|---|---|---|
 |*.wvd.microsoft.com|443|服務流量|全部|*. wvd.microsoft.us|
 |*.servicebus.windows.net|443|疑難排解資料|全部|*.servicebus.usgovcloudapi.net|
-|go.microsoft.com|443|Microsoft FWLinks|全部|無|
-|aka.ms|443|Microsoft URL 縮短器|全部|無|
-|docs.microsoft.com|443|文件|全部|無|
-|privacy.microsoft.com|443|隱私權聲明|全部|無|
-|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|無|
+|go.microsoft.com|443|Microsoft FWLinks|全部|None|
+|aka.ms|443|Microsoft URL 縮短器|全部|None|
+|docs.microsoft.com|443|文件|全部|None|
+|privacy.microsoft.com|443|隱私權聲明|全部|None|
+|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|None|
 
 >[!IMPORTANT]
 >開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。

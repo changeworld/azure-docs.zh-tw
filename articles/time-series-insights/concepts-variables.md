@@ -6,18 +6,18 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: dc03a74bfad5b1417eb9cc20b5f211718cc08646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1c394bb1a568d59e0821b61e7acfcf8f25290f7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653701"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020754"
 ---
 # <a name="time-series-model-variables"></a>時間序列模型變數
 
 本文描述指定事件之公式和計算規則的時間序列模型變數。
 
-每個變數可以是下列三種類型之一： *數值*、 *類別*和 *匯總*。
+每個變數可以是下列三種類型之一： *數值*、 *類別* 和 *匯總*。
 
 * **數值** 類型可搭配連續數值使用。
 * **類別** 目錄類型會使用一組已定義的離散值。
@@ -29,12 +29,12 @@ ms.locfileid: "91653701"
 
 ## <a name="numeric-variables"></a>數值變數
 
-| 變數屬性 | 描述 |
+| 變數屬性 | Description |
 | --- | ---|
 | 變數篩選條件 | 篩選準則是選擇性的條件式子句，用來限制要考慮用於計算的資料列數目。 |
 | 變數值 | 用於計算的遙測值來自裝置或感應器，或使用時間序列運算式進行轉換。 數數值型別變數的類型必須是 *Double*。|
 | 變數插補 | 插補會指定如何使用現有的資料來重建信號。 *步驟* 和 *線性* 插補選項可供數值變數使用。 |
-| 變數彙總 | 透過 [數值變數類型支援的彙總函式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)執行計算。 |
+| 變數彙總 | 透過 [數值變數類型支援的彙總函式](/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)執行計算。 |
 
 變數符合下列 JSON 範例：
 
@@ -59,7 +59,7 @@ ms.locfileid: "91653701"
 
 ## <a name="categorical-variables"></a>類別變數
 
-| 變數屬性 | 描述 |
+| 變數屬性 | Description |
 | --- | ---|
 | 變數篩選條件 | 篩選準則是選擇性的條件式子句，用來限制要考慮用於計算的資料列數目。 |
 | 變數值 | 用於計算的遙測值來自裝置或感應器。 類別種類變數必須是 *Long* 或 *String*。 |
@@ -99,10 +99,10 @@ ms.locfileid: "91653701"
 
 ## <a name="aggregate-variables"></a>匯總變數
 
-| 變數屬性 | 描述 |
+| 變數屬性 | Description |
 | --- | ---|
 | 變數篩選條件 | 篩選準則是選擇性的條件式子句，用來限制要考慮用於計算的資料列數目。 |
-| 變數彙總 | 透過 [匯總變數種類支援的彙總函式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)執行計算。 |
+| 變數彙總 | 透過 [匯總變數種類支援的彙總函式](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)執行計算。 |
 
 變數符合下列 JSON 範例：
 
@@ -118,7 +118,7 @@ ms.locfileid: "91653701"
 
 變數會儲存在時間序列模型的類型定義中，而且可以透過 Api 以內嵌方式提供，以覆寫或補充預存的定義。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [時間序列模型](./concepts-model-overview.md)。
 

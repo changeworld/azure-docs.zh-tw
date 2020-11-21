@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630146"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021961"
 ---
 # <a name="speech-service-for-telephony-data"></a>語音服務的電話語音資料
 
@@ -60,7 +60,7 @@ ms.locfileid: "91630146"
 
 ### <a name="translation"></a>翻譯
 
-有些公司正在實驗提供來自外部語言支援電話的翻譯文字記錄，讓傳遞管理員可以瞭解其客戶的全球體驗。 我們可提供卓越的[翻譯](/azure/cognitive-services/speech-service/speech-translation)功能。 針對大量的地區設定，我們可以將音訊轉換為音訊或音訊轉換成文字。
+有些公司正在實驗提供來自外部語言支援電話的翻譯文字記錄，讓傳遞管理員可以瞭解其客戶的全球體驗。 我們可提供卓越的[翻譯](./speech-translation.md)功能。 針對大量的地區設定，我們可以將音訊轉換為音訊或音訊轉換成文字。
 
 ### <a name="text-to-speech"></a>文字轉換語音
 
@@ -94,7 +94,7 @@ ms.locfileid: "91630146"
 
 - 語音服務可用來轉譯語音轉換文字。 需要語音服務的標準訂用帳戶 (S0) ，才能使用批次轉譯 API。 免費訂用帳戶 (F0) 將無法運作。
 - [Azure 儲存體](https://azure.microsoft.com/services/storage/)用來儲存電話語音資料，以及批次轉譯 API 所傳回的文字記錄。 此儲存體帳戶應該使用通知，特別是在有新檔案新增的時候。 這些通知用來觸發轉譯程序。
-- [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 用來建立每次錄音的共用存取簽章 (SAS) URI，並觸發 HTTP POST 要求以開始轉譯。 此外，Azure Functions 用來建立使用批次轉譯 API 擷取和刪除轉譯的要求。
+- [Azure Functions](../../azure-functions/index.yml) 用來建立每次錄音的共用存取簽章 (SAS) URI，並觸發 HTTP POST 要求以開始轉譯。 此外，Azure Functions 用來建立使用批次轉譯 API 擷取和刪除轉譯的要求。
 
 我們在內部使用上述技術來支援批次模式的 Microsoft 客戶通話。
 :::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="用來在批次模式中支援 Microsoft 客戶通話的技術。":::
@@ -111,7 +111,7 @@ ms.locfileid: "91630146"
 
 ## <a name="a-word-on-ivrs"></a>IVR 上的字組
 
-您可以使用 [語音 SDK](speech-sdk.md) 或 [REST API](rest-apis.md)，輕鬆地將語音服務整合到任何解決方案中。 不過，話務中心轉譯可能需要額外的技術。 通常，IVR 系統與 Azure 之間需要連線。 雖然我們不提供這類元件，但以下是 IVR 連接所需的描述。
+您可以使用 [語音 SDK](speech-sdk.md) 或 [REST API](./overview.md#reference-docs)，輕鬆地將語音服務整合到任何解決方案中。 不過，話務中心轉譯可能需要額外的技術。 通常，IVR 系統與 Azure 之間需要連線。 雖然我們不提供這類元件，但以下是 IVR 連接所需的描述。
 
 數個 IVR 或電話語音服務產品 (例如 Genesys 或 AudioCodes) 提供整合功能，可供您用來啟用對 Azure 服務的輸入和輸出音訊傳遞。 基本上，自訂 Azure 服務可能會提供特定的介面來定義通話會話 (例如呼叫開始或呼叫端) ，以及公開 WebSocket API 來接收與語音服務搭配使用的輸入串流音訊。 輸出回應 (例如交談轉譯或與 Bot Framework 的連線) 可與 Microsoft 的文字轉換語音服務合成並傳回給 IVR 進行播放。
 
@@ -121,12 +121,12 @@ ms.locfileid: "91630146"
 
  語音服務可與內建模型搭配使用。 不過，您可能會想要進一步自訂及調整產品或環境的體驗。 從原音模型調整到專屬於自身品牌的獨特聲音音調，都是自訂選項的範圍。 建立自訂模型之後，您可以在即時或批次模式中，搭配任何語音服務功能使用它。
 
-| 語音服務 | 模型 | 描述 |
+| 語音服務 | 模型 | Description |
 | -------------- | ----- | ----------- |
-| 語音轉文字 | [原音模型](how-to-customize-acoustic-models.md) | 針對用於特定環境 (例如汽車或工廠) 的應用程式、工具或裝置建立自訂原音模型，而這每一個的錄音條件都較特殊。 例如，帶有口音的語音、特定背景雜音或使用特定麥克風來錄音。 |
-|                | [語言模型](how-to-customize-language-model.md) | 建立自訂語言模型來提升特定產業的詞彙和文法轉譯，例如醫療術語或 IT 專業術語。 |
-|                | [發音模型](how-to-customize-pronunciation.md) | 使用自訂發音模型，您可以定義文字或詞彙的拼音形式和顯示。 它可用於處理自訂的字詞，如產品名稱或縮略字。 開始使用所需的只是一個發音檔，這是一個簡單的檔案 `.txt` 。 |
-| 文字轉換語音 | [聲音音調](how-to-customize-voice-font.md) | 自訂聲音音調可讓您為自己的品牌建立可辨識的獨特聲音。 只需少量資料即可開始建立。 提供的資料愈多，您的聲音音調聽起來就愈自然且愈像真人。 |
+| 語音轉文字 | [原音模型](./how-to-custom-speech-train-model.md) | 針對用於特定環境 (例如汽車或工廠) 的應用程式、工具或裝置建立自訂原音模型，而這每一個的錄音條件都較特殊。 例如，帶有口音的語音、特定背景雜音或使用特定麥克風來錄音。 |
+|                | [語言模型](./how-to-custom-speech-train-model.md) | 建立自訂語言模型來提升特定產業的詞彙和文法轉譯，例如醫療術語或 IT 專業術語。 |
+|                | [發音模型](./how-to-custom-speech-train-model.md) | 使用自訂發音模型，您可以定義文字或詞彙的拼音形式和顯示。 它可用於處理自訂的字詞，如產品名稱或縮略字。 開始使用所需的只是一個發音檔，這是一個簡單的檔案 `.txt` 。 |
+| 文字轉換語音 | [聲音音調](./how-to-custom-voice-create-voice.md) | 自訂聲音音調可讓您為自己的品牌建立可辨識的獨特聲音。 只需少量資料即可開始建立。 提供的資料愈多，您的聲音音調聽起來就愈自然且愈像真人。 |
 
 ## <a name="sample-code"></a>範例程式碼
 
@@ -138,7 +138,7 @@ ms.locfileid: "91630146"
 
 ## <a name="reference-docs"></a>參考文件
 
-- [語音 SDK](speech-sdk-reference.md)
+- [語音 SDK](./speech-sdk.md)
 - [語音裝置 SDK](speech-devices-sdk.md)
 - [REST API：語音轉文字](rest-speech-to-text.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)

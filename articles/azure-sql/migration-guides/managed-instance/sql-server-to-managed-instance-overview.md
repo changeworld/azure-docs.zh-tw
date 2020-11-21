@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 211ad590ab01d0be26d799064e1227accc619585
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496707"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023713"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>遷移總覽： SQL Server 至 SQL 受控執行個體
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "94496707"
 您可以在部署期間選擇計算和儲存體資源，然後在使用 [Azure 入口網站](../../database/scale-resources.md) 之後變更它們，而不會導致您的應用程式停機。 
 
 > [!IMPORTANT]
-> [受控實例虛擬網路需求](/../../managed-instance/connectivity-architecture-overview.md#network-requirements)中的任何差異都可能會讓您無法建立新的實例，或使用現有的實例。 深入瞭解如何 [建立新](/../../managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   的網路和設定 [現有](/../../managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)的   網路。 
+> [受控實例虛擬網路需求](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements)中的任何差異都可能會讓您無法建立新的實例，或使用現有的實例。 深入瞭解如何 [建立新](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   的網路和設定 [現有](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)的   網路。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代方案
 
@@ -168,7 +168,7 @@ SQL Server 高可用性功能 Always On 容錯移轉叢集實例和 Always On �
 
 #### <a name="logins-and-groups"></a>登入和群組
 
-來源 SQL Server 的 SQL 登入可以使用資料庫移轉服務，在離線模式中 (DMS) 移至 Azure SQL 受控執行個體。  使用 [ **遷移嚮導]** 中的 [ **[選取](../../../dms/tutorial-sql-server-to-managed-instance.md#select-logins)** 登入] 分頁，將登入遷移至目標 SQL 受控執行個體。 
+來源 SQL Server 的 SQL 登入可以使用資料庫移轉服務，在離線模式中 (DMS) 移至 Azure SQL 受控執行個體。  使用 [**遷移嚮導]** 中的 [**[選取](../../../dms/tutorial-sql-server-to-managed-instance.md#select-logins)** 登入] 分頁，將登入遷移至目標 SQL 受控執行個體。 
 
 根據預設，Azure 資料庫移轉服務僅支援遷移 SQL 登入。 不過，您可以藉由下列方式啟用遷移 Windows 登入的功能：
 
@@ -183,7 +183,7 @@ SQL Server 高可用性功能 Always On 容錯移轉叢集實例和 Always On �
 
 #### <a name="encryption"></a>加密
 
-使用原生還原選項將受  [透明資料加密](../../database/transparent-data-encryption-tde-overview.md)保護的資料庫移轉   到受控實例時，請先將 [對應的憑證](../../managed-instance/tde-certificate-migrate.md)從來源 SQL Server 遷移至目標 SQL 受控執行個體， *再* 進行資料庫還原。 
+使用原生還原選項將受  [透明資料加密](../../database/transparent-data-encryption-tde-overview.md)保護的資料庫移轉   到受控實例時，請先將 [對應的憑證](../../managed-instance/tde-certificate-migrate.md)從來源 SQL Server 遷移至目標 SQL 受控執行個體，*再* 進行資料庫還原。 
 
 #### <a name="system-databases"></a>系統資料庫
 
@@ -214,7 +214,7 @@ SQL Server 高可用性功能 Always On 容錯移轉叢集實例和 Always On �
 這些資源是在資料 SQL Ninja 計畫中開發，由 Azure 資料群組工程小組贊助。 資料 SQL Ninja 計畫其核心宗旨是要為複雜的現代化步驟除去障礙並加速其過程，並將資料平台移轉機會與 Microsoft 的 Azure 資料平台相比較。 如果您認為組織想參與資料 SQL Ninja 計畫，請連絡帳戶小組並要求其提交提名。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要開始將您的 SQL Server 遷移至 Azure SQL 受控執行個體，請參閱 [SQL Server 至 SQL 受控執行個體遷移指南](sql-server-to-managed-instance-guide.md)。
 

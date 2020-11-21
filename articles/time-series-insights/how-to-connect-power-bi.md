@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 680b3c5a9548fa06d0139bd441b5583c27427a77
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653769"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020771"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>從 Power BI 中的 Azure 時間序列深入解析將資料視覺化
 
@@ -32,11 +32,11 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 ## <a name="prerequisites"></a>必要條件
 
 * 下載並安裝最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* 擁有或建立 [Azure 時間序列深入解析 Gen2 環境](time-series-insights-update-how-to-manage.md)
+* 擁有或建立 [Azure 時間序列深入解析 Gen2 環境](./how-to-provision-manage.md)
 
 > [!IMPORTANT]
 >
-> * 目前只有在使用 **暖存放區**設定的 Azure 時間序列深入解析 Gen2 環境中支援連接器。
+> * 目前只有在使用 **暖存放區** 設定的 Azure 時間序列深入解析 Gen2 環境中支援連接器。
 > * 如果您有從另一個 Azure AD 租使用者對 Azure 時間序列深入解析 Gen2 環境的來賓存取權，您將無法存取連接器。 瞭解 [環境存取原則](./concepts-access-policies.md)。
 
 ## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>將資料從 Azure 時間序列深入解析連線到 Power BI
@@ -61,7 +61,7 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 
    1. 指定要查看的相對時間範圍。 如果您對現有的觀點感到滿意，請將其保留為 **現有的時間範圍**。
 
-   1. 在 **匯總** 和 **原始事件**之間進行選擇。
+   1. 在 **匯總** 和 **原始事件** 之間進行選擇。
 
        > [!NOTE]
        > 您稍後可以在 Power BI 中匯總資料，但在匯總之後，您就無法還原成原始資料。
@@ -71,24 +71,24 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 
        [![連線](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. 如果您尚未設定具有 **暖存放區**的 Azure 時間序列深入解析環境，您將會收到警告。
+   1. 如果您尚未設定具有 **暖存放區** 的 Azure 時間序列深入解析環境，您將會收到警告。
 
        [![暖存放區警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > 您可以在 Azure 入口網站中設定適用于 **暖存放區** 的現有實例。
 
-1. 選取 [ **將查詢複製到剪貼**簿]。
+1. 選取 [ **將查詢複製到剪貼** 簿]。
 1. 現在啟動 Power BI Desktop。
 1. 在 [ **首頁** ] 索引標籤的 [Power BI Desktop] 中，選取左上角的 [ **取得資料** ]，然後選取 [ **其他**]。
 
     [![首頁下拉式清單](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. 搜尋 **Azure 時間序列深入解析**，選取 **Azure 時間序列深入解析 (Beta) **，然後 **連接**。
+1. 搜尋 **Azure 時間序列深入解析**，選取 **Azure 時間序列深入解析 (Beta)**，然後 **連接**。
 
     [![將 Power BI 連接到 Azure 時間序列深入解析](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
-    或者，流覽至 [ **Azure** ] 索引標籤，選取 **Azure 時間序列深入解析 (Beta) **，然後 **連接**。
+    或者，流覽至 [ **Azure** ] 索引標籤，選取 **Azure 時間序列深入解析 (Beta)**，然後 **連接**。
 
 1. [訊息] 對話方塊會顯示要求許可權以連線至協力廠商資源。 選取 [ **繼續**]。
 
@@ -130,7 +130,7 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 
 ## <a name="advanced-editing"></a>Advanced 編輯
 
-如果您已經在 Power BI 中載入資料集，但想要修改查詢 (例如) 的日期/時間或環境識別碼參數，您可以透過 Power BI 的進階編輯器功能來完成這項作業。 若要深入瞭解，請參閱 [Power BI 檔](https://docs.microsoft.com/power-bi/desktop-query-overview) 。
+如果您已經在 Power BI 中載入資料集，但想要修改查詢 (例如) 的日期/時間或環境識別碼參數，您可以透過 Power BI 的進階編輯器功能來完成這項作業。 若要深入瞭解，請參閱 [Power BI 檔](/power-bi/desktop-query-overview) 。
 
 概述：
 
@@ -140,12 +140,12 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
     [![在進階編輯器中編輯查詢](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
 
 1. 視需要修改 JSON 承載。
-1. 選取 [**完成**]，然後關閉 [ **Power Query 編輯器] 視窗**內 **&** 套用]。
+1. 選取 [**完成**]，然後關閉 [ **Power Query 編輯器] 視窗** 內 **&** 套用]。
 
 介面現在會反映您所套用的所需變更。  
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 Azure 時間序列深入解析 [Power BI 連接器的概念](https://docs.microsoft.com/power-bi/desktop-query-overview) 。
+* 請參閱 Azure 時間序列深入解析 [Power BI 連接器的概念](/power-bi/desktop-query-overview) 。
 
-* 深入瞭解 [Power BI desktop](https://docs.microsoft.com/power-bi/desktop-query-overview)。
+* 深入瞭解 [Power BI desktop](/power-bi/desktop-query-overview)。

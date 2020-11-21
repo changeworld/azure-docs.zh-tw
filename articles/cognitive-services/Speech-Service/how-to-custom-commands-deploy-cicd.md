@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839243"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021825"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>使用 Azure DevOps 進行持續部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "91839243"
 > [!div class = "checklist"]
 > * 適用于開發 (開發) 的自訂命令應用程式
 > * 適用于生產環境 (生產) 的自訂命令應用程式
-> * 註冊 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
+> * 註冊 [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
 
 ## <a name="exportimportpublish"></a>匯出/匯入/發佈
 
@@ -99,7 +99,7 @@ ms.locfileid: "91839243"
 
 ## <a name="deploy-from-source-code"></a>從原始程式碼部署
 
-如果您想要將應用程式的定義保留在存放庫中，我們會提供從原始程式碼進行部署的腳本。 由於腳本是在 bash 中，如果您使用的是 Windows，則必須安裝 [Linux 子系統](https://docs.microsoft.com/windows/wsl/install-win10)。
+如果您想要將應用程式的定義保留在存放庫中，我們會提供從原始程式碼進行部署的腳本。 由於腳本是在 bash 中，如果您使用的是 Windows，則必須安裝 [Linux 子系統](/windows/wsl/install-win10)。
 
 腳本會裝載于 [認知服務語音助理-自訂命令](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands)。 將 bash 目錄中的腳本複製到您的儲存機制。 請確定您維持相同的路徑。
 
@@ -168,7 +168,7 @@ ms.locfileid: "91839243"
 1. 按一下 [執行]，然後按一下執行中的 [作業]。
     您應該會看到執行中的工作清單，其中包含：「匯入應用程式」 & 「定型和發佈應用程式」
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [請參閱 GitHub 上的範例](https://aka.ms/speech/cc-samples)

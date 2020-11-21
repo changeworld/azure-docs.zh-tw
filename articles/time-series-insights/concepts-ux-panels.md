@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653786"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020975"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 時間序列深入解析總管
 
@@ -25,11 +25,11 @@ ms.locfileid: "91653786"
 
 若要開始使用 Azure 時間序列深入解析 Explorer，您必須：
 
-* 布建 Azure 時間序列深入解析 Gen2 環境。 若要深入瞭解如何布建實例，請閱讀 [Azure 時間序列深入解析 Gen2](./time-series-insights-update-create-environment.md) 教學課程。
-* 提供您為帳戶建立之 Azure 時間序列深入解析 Gen2 環境的[資料存取權](./time-series-insights-data-access.md)。 您可以將存取權提供給其他人和您自己。
+* 布建 Azure 時間序列深入解析 Gen2 環境。 若要深入瞭解如何布建實例，請閱讀 [Azure 時間序列深入解析 Gen2](./tutorials-set-up-tsi-environment.md) 教學課程。
+* 提供您為帳戶建立之 Azure 時間序列深入解析 Gen2 環境的[資料存取權](./concepts-access-policies.md)。 您可以將存取權提供給其他人和您自己。
 * 將事件來源新增至 Azure 時間序列深入解析 Gen2 環境，以將資料推送至環境：
-  * 瞭解 [如何連接到事件中樞](./time-series-insights-how-to-add-an-event-source-eventhub.md)
-  * 瞭解 [如何連線到 IoT 中樞](./time-series-insights-how-to-add-an-event-source-iothub.md)
+  * 瞭解 [如何連接到事件中樞](./how-to-ingest-data-event-hub.md)
+  * 瞭解 [如何連線到 IoT 中樞](./how-to-ingest-data-iot-hub.md)
 
 ## <a name="explore-the-azure-time-series-insights-explorer"></a>探索 Azure 時間序列深入解析 Explorer
 
@@ -71,7 +71,7 @@ Azure 時間序列深入解析 Gen2 支援您的時間序列模型上 (CRUD) 作
 [![模型搜尋面板](media/v2-update-explorer/model-search-panel.png)](media/v2-update-explorer/model-search-panel.png#lightbox)
 
 * **時間序列模型類型**：您可以使用時間序列模型類型來定義用來執行計算的變數或公式。 它們會與指定的時間序列模型實例相關聯。 一個類型可以有一或多個變數。
-* **時間序列模型**階層：階層是您的資料的系統化組織。 階層會描述您的時間序列模型中不同實例之間的關聯性。
+* **時間序列模型** 階層：階層是您的資料的系統化組織。 階層會描述您的時間序列模型中不同實例之間的關聯性。
 * **時間序列模型實例**：實例是時間序列本身。 在大部分的情況下，它們是 **DeviceID** 或 **AssetID**，也就是環境中資產的唯一識別碼。
 
 若要深入瞭解時間序列模型，請參閱時間 [序列模型](./concepts-model-overview.md)。
@@ -121,7 +121,7 @@ Azure 時間序列深入解析 Gen2 支援您的時間序列模型上 (CRUD) 作
 
 1. **標記元素**：目前選取的資料元素及其相關的詳細資料。
 
-您可以藉由在目前圖形上的資料點 **按一下滑鼠左鍵** ，然後將選取的區域拖曳至您選擇的端點，進一步向下切入到特定的資料配量。 以**滑鼠右鍵按一下**藍色選取的區域，然後選取 [**顯示比例**]，如下所示。 您也可以在選取的時間範圍內查看和下載遙測事件。
+您可以藉由在目前圖形上的資料點 **按一下滑鼠左鍵** ，然後將選取的區域拖曳至您選擇的端點，進一步向下切入到特定的資料配量。 以 **滑鼠右鍵按一下** 藍色選取的區域，然後選取 [**顯示比例**]，如下所示。 您也可以在選取的時間範圍內查看和下載遙測事件。
 
   [![Gen2 圖縮放](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
@@ -137,7 +137,7 @@ Azure 時間序列深入解析 Gen2 支援您的時間序列模型上 (CRUD) 作
 
   [![其他動作選項](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-深入瞭解[Power BI 連接器](concepts-power-bi.md)中的 [**連接到 Power BI]** 選項。
+深入瞭解 [Power BI 連接器](concepts-power-bi.md)中的 [**連接到 Power BI]** 選項。
 
 ## <a name="6-time-editor-panel"></a>6. 時間編輯器面板
 
@@ -156,11 +156,11 @@ Azure 時間序列深入解析 Gen2 支援您的時間序列模型上 (CRUD) 作
 
 1. **增加和減少日期範圍按鈕**：選取您想要的間隔按鈕，以增加或減少您的時間範圍。
 
-1. **時間範圍**折迭控制項：此 web 控制項可讓您隱藏內部日期範圍滑杆工具以外的所有控制項。
+1. **時間範圍** 折迭控制項：此 web 控制項可讓您隱藏內部日期範圍滑杆工具以外的所有控制項。
 
 1. **外部日期範圍滑杆控制項**：使用端點控制項來選取外部日期範圍，這將可供您的內部日期範圍控制項使用。
 
-1. **時間範圍滑杆控制項**：用來在預設的時間範圍選取專案之間快速切換，例如過去 **30 分鐘**、 **過去12小時**或 **自訂範圍**。 變更此值時，也會變更間隔大小滑桿工具中所討論的可用間隔範圍。
+1. **時間範圍滑杆控制項**：用來在預設的時間範圍選取專案之間快速切換，例如過去 **30 分鐘**、 **過去12小時** 或 **自訂範圍**。 變更此值時，也會變更間隔大小滑桿工具中所討論的可用間隔範圍。
 
    [![從選取專案面板到](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
@@ -214,14 +214,14 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
 **Where**：使用 where 子句，利用下表所列的運算元集合來快速篩選您的事件。 如果透過選取運算元進行搜尋，述詞會依據該搜尋自動更新。 支援的運算元類型包括下列各項：
 
-| 作業    | 支援的類型    | 注意 |
+| 作業    | 支援的類型    | 備註 |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | 所有的運算元都應該是相同的類型或是 NULL 常數。 |
 | `HAS` | 字串 | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
 
-若要深入瞭解支援的查詢作業和資料類型，請參閱 [ (TSX) 的時間序列運算式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+若要深入瞭解支援的查詢作業和資料類型，請參閱 [ (TSX) 的時間序列運算式 ](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 ### <a name="examples-of-where-clauses"></a>Where 子句的範例
 
@@ -237,7 +237,7 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
   [![取消已查詢和已篩選的選項](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解如何將 [資料擷取](./concepts-ingestion-overview.md) 至您的環境。
 
@@ -245,4 +245,4 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
 * 請參閱 Azure 時間序列深入解析 Gen2 中的 [資料模型](./concepts-model-overview.md) 化。
 
-* 瞭解如何針對您的環境進行 [診斷和疑難排解](./time-series-insights-update-how-to-troubleshoot.md) 。
+* 瞭解如何針對您的環境進行 [診斷和疑難排解](./how-to-diagnose-troubleshoot.md) 。

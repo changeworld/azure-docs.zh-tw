@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630656"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021757"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
 
@@ -24,7 +24,7 @@ ms.locfileid: "91630656"
 > [!TIP]
 >
 > * 請移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples) 環境，以取得即時時間序列模型範例。
-> * 瞭解如何使用 Azure 時間序列深入解析 Explorer [來使用時間序列模型](/azure/time-series-insights/how-to-edit-your-model) 。
+> * 瞭解如何使用 Azure 時間序列深入解析 Explorer [來使用時間序列模型](./how-to-edit-your-model.md) 。
 
 ## <a name="summary"></a>摘要
 
@@ -51,7 +51,7 @@ ms.locfileid: "91630656"
 
 [![時間序列模型智慧型 oven 圖表範例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* 時間序列模型在查詢和導覽中扮演重要角色，因為它可讓您跨時間範圍以及在感應器和裝置類型之間繪製比較，藉此就資料。  (**) **
+* 時間序列模型在查詢和導覽中扮演重要角色，因為它可讓您跨時間範圍以及在感應器和裝置類型之間繪製比較，藉此就資料。  (**)**
 * 資料會進一步內容相關，因為保存在時間序列模型中的資料會將時間序列查詢計算保留為變數，並在查詢時重複使用它們。
 * 時間序列模型會組織及匯總資料，以改善視覺效果和管理功能。  (**B**) 
 
@@ -63,9 +63,9 @@ ms.locfileid: "91630656"
 * 定義父子式關聯性，以啟用導覽、搜尋和參考。
 * 定義與實例相關聯的屬性（定義為 *實例欄位*），並使用它們來建立階層。
 
-### <a name="components"></a>元件
+### <a name="components"></a>單元
 
-時間序列模型有三個核心元件：
+時間序列模型有三個主要元件：
 
 * [時間序列模型實例](#time-series-model-instances)
 * [時間序列模型階層](#time-series-model-hierarchies)
@@ -75,13 +75,13 @@ ms.locfileid: "91630656"
 
 [![時間序列模型總覽圖表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-您可以透過 [Azure 時間序列深入解析 Explorer](/azure/time-series-insights/concepts-model-overview)來建立及管理時間序列模型。 時間序列模型設定可以透過 [模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)來管理。
+您可以透過 [Azure 時間序列深入解析 Explorer]()來建立及管理時間序列模型。 時間序列模型設定可以透過 [模型設定 API](/rest/api/time-series-insights/reference-model-apis)來管理。
 
 ## <a name="time-series-model-instances"></a>時間序列模型執行個體
 
 時間序列模型 *實例* 是時間序列本身的虛擬標記法。
 
-在大多數情況下，會以 **deviceId** 或 **assetId**來唯一識別實例，這些實例會儲存為時間序列識別碼。
+在大多數情況下，會以 **deviceId** 或 **assetId** 來唯一識別實例，這些實例會儲存為時間序列識別碼。
 
 實例具有與其相關聯的描述性資訊，稱為 *實例屬性*，例如時間序列識別碼、類型、名稱、描述、階層和實例欄位。 執行個體屬性至少會包含階層資訊。
 
@@ -95,13 +95,13 @@ ms.locfileid: "91630656"
 
 ### <a name="instance-properties"></a>實例屬性
 
-實例是由 **timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds**和 **instanceFields**所定義。 每個實例只能對應到一個 *類型*，以及一個或 *多個*階層。
+實例是由 **timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds** 和 **instanceFields** 所定義。 每個實例只能對應到一個 *類型*，以及一個或 *多個* 階層。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的唯一識別碼。 在大部分情況下，實例是由 deviceId 或 assetId 之類的屬性來唯一識別。 在某些情況下，可以使用更明確的複合識別碼，最多可結合3個屬性。 |
 | typeId | 與實例相關聯的時間序列模型類型之區分大小寫的唯一字串識別碼。 依預設，所有探索到的新實例都會與預設型別建立關聯。
-| NAME | **Name**屬性是選擇性的，且區分大小寫。 如果 **名稱** 無法使用，則預設為 **timeSeriesId**。 如果有提供名稱， **timeSeriesId**仍可供[使用。](time-series-insights-update-explorer.md#4-time-series-well) |
+| NAME | **Name** 屬性是選擇性的，且區分大小寫。 如果 **名稱** 無法使用，則預設為 **timeSeriesId**。 如果有提供名稱， **timeSeriesId** 仍可供 [使用。](./concepts-ux-panels.md#4-time-series-well) |
 | description | 實例的文字描述。 |
 | hierarchyIds | 定義實例所屬的階層。 |
 | instanceFields | 實例的屬性，以及定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
@@ -129,7 +129,7 @@ ms.locfileid: "91630656"
 ```
 
 > [!TIP]
-> 如需 API 建立、讀取、更新和刪除 (CRUD) 支援，請參閱 [資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) 文章和 [實例 API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)。
+> 如需 API 建立、讀取、更新和刪除 (CRUD) 支援，請參閱 [資料查詢](./concepts-query-overview.md#time-series-model-query-tsm-q-apis) 文章和 [實例 API REST 檔](/rest/api/time-series-insights/reference-model-apis#instances-api)。
 
 ## <a name="time-series-model-hierarchies"></a>時間序列模型階層
 
@@ -143,7 +143,7 @@ ms.locfileid: "91630656"
 
 ### <a name="hierarchy-definition"></a>階層定義
 
-階層是由階層 **識別碼**、 **名稱**和 **來源**所定義。
+階層是由階層 **識別碼**、 **名稱** 和 **來源** 所定義。
 
 | 屬性 | 描述 |
 | ---| ---|
@@ -186,7 +186,7 @@ ms.locfileid: "91630656"
 * `ManufactureDate` 定義具有父系和子系的階層 `year` `month` 。 每一個都 `ManufactureDate` 可以有多個 `years` ，也可以有多個 `months` 。
 
 > [!TIP]
-> 如需階層 API 建立、讀取、更新和刪除 (CRUD) 支援，請參閱 [資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis) 文章和階層 [API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)。
+> 如需階層 API 建立、讀取、更新和刪除 (CRUD) 支援，請參閱 [資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis) 文章和階層 [API REST 檔](/rest/api/time-series-insights/reference-model-apis#hierarchies-api)。
 
 ### <a name="hierarchy-example"></a>階層範例
 
@@ -216,26 +216,26 @@ ms.locfileid: "91630656"
 | ID4 | "大樓" = "1000"，"floor" = "10"  |
 | ID5 | 未設定任何「建築物」、「樓層」或「房間」。 |
 
-時間序列**ID1**和**ID4**在[Azure 時間序列深入解析 Explorer](time-series-insights-update-explorer.md)中會顯示為階層**H1**的一部分，因為它們具有完整定義和正確排序的*建築物*、*樓層*和*房間*參數。
+時間序列 **ID1** 和 **ID4** 在 [Azure 時間序列深入解析 Explorer](./concepts-ux-panels.md)中會顯示為階層 **H1** 的一部分，因為它們具有完整定義和正確排序的 *建築物*、*樓層* 和 *房間* 參數。
 
 其他則分類于 *無上層實例* 底下，因為它們不符合指定的資料階層。
 
 ## <a name="time-series-model-types"></a>時間序列模型類型
 
-時間序列模型「類型」** 協助您定義執行計算的變數或公式。 類型會與特定的實例相關聯。
+時間序列模型「類型」協助您定義執行計算的變數或公式。 所有類型都會與特定集區相關聯。
 
-一個類型可以有一或多個變數。 例如，時間序列模型實例可能是 *溫度感應器*類型，其中包含變數 *平均溫度*、 *最小溫度*和 *最大溫度*。
+一個類型可以有一或多個變數。 例如，時間序列模型實例可能是 *溫度感應器* 類型，其中包含變數 *平均溫度*、 *最小溫度* 和 *最大溫度*。
 
 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)會視覺化數個與個別實例相關聯的時間序列模型類型。
 
 [![時間序列模型類型範例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 如需 API 建立、讀取、更新和刪除 (CRUD) 支援的類型，請參閱 [資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis) 文章和 [類型 api REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api)。
+> 如需 API 建立、讀取、更新和刪除 (CRUD) 支援的類型，請參閱 [資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis) 文章和 [類型 api REST 檔](/rest/api/time-series-insights/reference-model-apis#types-api)。
 
 ### <a name="type-properties"></a>類型屬性
 
-時間序列模型類型是依 **識別碼**、 **名稱**、 **描述**和 **變數**來定義。
+時間序列模型類型是依 **識別碼**、 **名稱**、 **描述** 和 **變數** 來定義。
 
 | 屬性 | 描述 |
 | ---| ---|
@@ -286,9 +286,9 @@ ms.locfileid: "91630656"
 
 時間序列模型類型可以有許多變數，以指定事件的公式和計算規則。 深入瞭解 [如何定義時間序列模型變數](./concepts-variables.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 如需有關如何透過 Api 編輯模型的詳細資訊，請參閱 [時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) 參考檔。
+* 如需有關如何透過 Api 編輯模型的詳細資訊，請參閱 [時間序列模型](/rest/api/time-series-insights/reference-model-apis) 參考檔。
 
 * 探索您可以使用[時間序列模型變數](./concepts-variables.md)建立的公式和計算
 

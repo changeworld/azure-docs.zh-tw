@@ -3,12 +3,12 @@ title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43f28073c996167c82e241476020bdc341486b26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042855"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024291"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
@@ -58,7 +58,7 @@ az account show
 ```
 
 > [!NOTE]
-> 當您使用此處所述的程序讓訂用帳戶 (或訂用帳戶內的一或多個資源群組) 上線時， **Microsoft.ManagedServices** 資源提供者就會針對該訂用帳戶進行註冊。
+> 當您使用此處所述的程序讓訂用帳戶 (或訂用帳戶內的一或多個資源群組) 上線時，**Microsoft.ManagedServices** 資源提供者就會針對該訂用帳戶進行註冊。
 
 ## <a name="define-roles-and-permissions"></a>定義角色與權限
 
@@ -67,7 +67,7 @@ az account show
 為了讓管理更容易，建議您針對每個角色使用 Azure AD 的使用者群組。 這可讓您彈性地將個別使用者新增或移除至具有存取權的群組，如此您就不需要重複上執行緒序來進行使用者變更。 您可以將角色指派給服務主體，這對自動化案例可能很有用。
 
 > [!IMPORTANT]
-> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性** ]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性**]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 定義您的授權時，請務必遵循最低許可權原則，讓使用者只具備完成其工作所需的許可權。 如需有關支援的角色的指導方針和資訊，請參閱 [Azure Lighthouse 案例中的租使用者、使用者和角色](../concepts/tenants-users-roles.md)。
 
@@ -114,21 +114,21 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
 
-若要讓客戶上線，您必須為供應項目建立包含下列資訊的 [Azure Resource Manager](../../azure-resource-manager/index.yml) 範本。 在 Azure 入口網站的 [ [服務提供者] 頁面](view-manage-service-providers.md)中，客戶可以看到 **>mspoffername** 和 **mspOfferDescription** 值。
+若要讓客戶上線，您必須為供應項目建立包含下列資訊的 [Azure Resource Manager](../../azure-resource-manager/index.yml) 範本。 在 Azure 入口網站的 [[服務提供者] 頁面](view-manage-service-providers.md)中，客戶可以看到 **>mspoffername** 和 **mspOfferDescription** 值。
 
 |欄位  |定義  |
 |---------|---------|
 |**mspOfferName**     |說明此定義的名稱。 此值會向客戶顯示為供應專案的標題，且必須是唯一的值。        |
 |**mspOfferDescription**     |供應項目的簡短描述 (例如「Contoso VM 管理供應項目」)。      |
 |**managedByTenantId**     |您的租用戶識別碼。          |
-|**authorizations**     |來自租用戶使用者/群組/SPN 的 **principalId** 值，每個都包含 **principalIdDisplayName** ，以協助客戶了解授權的目的，且對應至內建 **roleDefinitionId** 值以指定存取層級。      |
+|**authorizations**     |來自租用戶使用者/群組/SPN 的 **principalId** 值，每個都包含 **principalIdDisplayName**，以協助客戶了解授權的目的，且對應至內建 **roleDefinitionId** 值以指定存取層級。      |
 
 上線程序必須使用提供在[範例存放庫](https://github.com/Azure/Azure-Lighthouse-samples/)中的 Azure Resource Manager 範本，以及經過修改以符合設定並定義授權的對應參數檔案。
 
 > [!IMPORTANT]
 > 此處所述的程式需要針對每個要上線的訂用帳戶進行個別的部署，即使您將訂用帳戶上架到相同的客戶租使用者。 如果要在相同客戶租用戶內的不同訂用帳戶中讓多個資源群組上線，您也需要個別部署。 不過，將單一訂用帳戶中的多個資源群組上線，是可在一次部署中完成的。
 >
-> 將多個供應項目套用至相同的訂用帳戶 (或訂用帳戶內的資源群組) 時，也需要個別部署。 所套用的每個供應專案必須使用不同的 **mspOfferName** 。
+> 將多個供應項目套用至相同的訂用帳戶 (或訂用帳戶內的資源群組) 時，也需要個別部署。 所套用的每個供應專案必須使用不同的 **mspOfferName**。
 
 您選擇的範本將取決於是要讓整個訂用帳戶、一個資源群組，還是訂用帳戶內的多個資源群組上線。 如果您偏好使用範本讓已購買受控服務供應項目 (您發佈至 Azure Marketplace) 的客戶上線，我們也提供可用於此情況的範本。
 
@@ -195,7 +195,7 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId** 。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中建立的使用者將能夠將這些內建角色指派給客戶租使用者中的 [受控](../../active-directory/managed-identities-azure-resources/overview.md) 識別，以便 [部署可補救的原則](deploy-policy-remediation.md)。  使用者也可以建立支援事件。  通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
+上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中建立的使用者將能夠將這些內建角色指派給客戶租使用者中的 [受控](../../active-directory/managed-identities-azure-resources/overview.md) 識別，以便 [部署可補救的原則](deploy-policy-remediation.md)。  使用者也可以建立支援事件。  通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure Resource Manager 範本
 
@@ -211,8 +211,8 @@ az role definition list --name "<roleName>" | grep name
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 在我們的 [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)存放庫中，選取您要使用的範本旁所顯示的 [ **部署至 Azure** ] 按鈕。 範本會在 Azure 入口網站中開啟。
-1. 輸入 **Msp 供應專案名稱** 、 **Msp 供應專案描述** 、受 **租使用者識別碼管理** 的值，以及 **授權** 。 如果您想要的話，也可以選取 [ **編輯參數** ] `mspOfferName` ， `mspOfferDescription` `managedbyTenantId` 直接在參數檔案中輸入、、和 `authorizations` 的值。 請務必更新這些值，而不是使用範本中的預設值。
-1. 選取 [ **審核並建立** ]，然後選取 [ **建立** ]。
+1. 輸入 **Msp 供應專案名稱**、 **Msp 供應專案描述**、受 **租使用者識別碼管理** 的值，以及 **授權**。 如果您想要的話，也可以選取 [ **編輯參數** ] `mspOfferName` ， `mspOfferDescription` `managedbyTenantId` 直接在參數檔案中輸入、、和 `authorizations` 的值。 請務必更新這些值，而不是使用範本中的預設值。
+1. 選取 [ **審核並建立**]，然後選取 [ **建立**]。
 
 幾分鐘後，您應該會看到部署已完成的通知。
 
@@ -286,6 +286,11 @@ az deployment sub create --name <deploymentName> \
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
 Get-AzContext
+
+# Confirm successful onboarding for Azure Lighthouse
+
+Get-AzManagedServicesDefinition
+Get-AzManagedServicesAssignment
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

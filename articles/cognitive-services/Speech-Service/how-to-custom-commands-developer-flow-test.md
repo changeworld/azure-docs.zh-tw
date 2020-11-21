@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec8e40c0908855cd06d647bdd9121106e3553c11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918905"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021808"
 ---
 # <a name="test-your-custom-commands-application"></a>測試您的自訂命令應用程式
 
@@ -49,11 +49,10 @@ Windows 語音助理用戶端是 c # 中 (WPF) 應用程式的 Windows Presentat
 - [How to：設定 web 端點](./how-to-custom-commands-setup-web-endpoints.md)
 
 針對其他程式設計語言和平臺：
-- [語音 SDK 程式設計語言、平臺、案例容量](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)
+- [語音 SDK 程式設計語言、平臺、案例容量](./speech-sdk.md)
 - [語音助理範例程式碼](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [請參閱 GitHub 上的範例](https://aka.ms/speech/cc-samples)
-

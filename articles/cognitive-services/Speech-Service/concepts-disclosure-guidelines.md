@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: bae801ac64950b0b0e9fe45585a3411477ebf12b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2276e66fa47b1c125a8c30f3c73a7c948f65a35d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150856"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021927"
 ---
 # <a name="disclosure-design-guidelines"></a>公開設計指引
 瞭解如何透過清楚瞭解語音體驗的綜合本質，來建立及維護與客戶的信任。
@@ -76,10 +76,10 @@ ms.locfileid: "92150856"
 
 ## <a name="reference-docs"></a>參考文件
 
-* [配音員的洩漏](https://aka.ms/disclosure-voice-talent)
+* [配音員的洩漏](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [綜合語音技術的負責任部署指導方針](concepts-guidelines-responsible-deployment-synthetic.md)
 * [管制總覽](concepts-gating-overview.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [公開設計模式](concepts-disclosure-patterns.md)

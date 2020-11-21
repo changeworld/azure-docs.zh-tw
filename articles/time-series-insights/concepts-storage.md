@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b512a80fcfc26efbe5c008884509aebfd86ed3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460823"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020839"
 ---
 # <a name="data-storage"></a>資料儲存體
 
@@ -27,7 +27,7 @@ ms.locfileid: "91460823"
 
 * 冷資料存放區：
   * 在您為環境選擇的訂用帳戶和區域中，建立新的 Azure 儲存體資源。
-  * 附加既有的 Azure 儲存體帳戶。 此選項僅適用于從 Azure Resource Manager [範本](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)進行部署，且不會顯示在 Azure 入口網站中。
+  * 附加既有的 Azure 儲存體帳戶。 此選項僅適用于從 Azure Resource Manager [範本](/azure/templates/microsoft.timeseriesinsights/allversions)進行部署，且不會顯示在 Azure 入口網站中。
 * 暖資料存放區：
   * 暖存放區是選擇性的，可以在布建期間或之後啟用或停用。 如果您決定稍後啟用暖存放區，而且您的冷存放區中已經有資料， [請參閱下面](concepts-storage.md#warm-store-behavior) 的小節以瞭解預期的行為。 暖存放區資料保留時間可以設定為7到31天，也可以視需要調整。
 
@@ -40,14 +40,14 @@ ms.locfileid: "91460823"
 
 ## <a name="data-availability"></a>資料可用性
 
-Azure 時間序列深入解析 Gen2 資料分割和索引資料，以獲得最佳查詢效能。 如果在索引之後啟用) 和冷存放區，就可以從暖 (中查詢資料。 正在內嵌的資料量和每個分割區的輸送量速率可能會影響可用性。 請參閱事件來源 [輸送量限制](./concepts-streaming-ingress-throughput-limits.md) 和 [最佳作法](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) ，以獲得最佳效能。 您也可以設定延遲 [警示](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) ，以在您的環境遇到處理資料的問題時收到通知。
+Azure 時間序列深入解析 Gen2 資料分割和索引資料，以獲得最佳查詢效能。 如果在索引之後啟用) 和冷存放區，就可以從暖 (中查詢資料。 正在內嵌的資料量和每個分割區的輸送量速率可能會影響可用性。 請參閱事件來源 [輸送量限制](./concepts-streaming-ingress-throughput-limits.md) 和 [最佳作法](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) ，以獲得最佳效能。 您也可以設定延遲 [警示](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) ，以在您的環境遇到處理資料的問題時收到通知。
 
 > [!IMPORTANT]
 > 在資料變成可用之前，您可能會遇到最多60秒的時間。 如果您遭遇超過 60 秒的嚴重延遲，請透過 Azure 入口網站提交支援票證。
 
 ## <a name="warm-store"></a>暖存放區
 
-您可以透過 [時間序列查詢 api](./time-series-insights-update-tsq.md)、 [Azure 時間序列深入解析 TSI Explorer](./time-series-insights-update-explorer.md)或 [Power BI 連接器](./how-to-connect-power-bi.md)，取得暖存放區中的資料。 暖存放區查詢是免費的，而且沒有配額，但有 [30 個](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) 並行要求的限制。
+您可以透過 [時間序列查詢 api](./concepts-query-overview.md)、 [Azure 時間序列深入解析 TSI Explorer](./concepts-ux-panels.md)或 [Power BI 連接器](./how-to-connect-power-bi.md)，取得暖存放區中的資料。 暖存放區查詢是免費的，而且沒有配額，但有 [30 個](/rest/api/time-series-insights/reference-api-limits#query-apis---limits) 並行要求的限制。
 
 ### <a name="warm-store-behavior"></a>暖存放區行為
 
@@ -77,9 +77,9 @@ Azure 時間序列深入解析 Gen2 會在您的 Azure 儲存體帳戶中最多�
 
 #### <a name="accessing-cold-store-data"></a>存取冷存放區資料
 
-除了從 [Azure 時間序列深入解析 Explorer](./time-series-insights-update-explorer.md) 和 [時間序列查詢 api](./time-series-insights-update-tsq.md)存取您的資料之外，您也可能想要直接從儲存在冷存放區中的 Parquet 檔案存取您的資料。 例如，您可以讀取、轉換和清除 Jupyter 筆記本中的資料，然後將其用來定型相同 Spark 工作流程中的 Azure Machine Learning 模型。
+除了從 [Azure 時間序列深入解析 Explorer](./concepts-ux-panels.md) 和 [時間序列查詢 api](./concepts-query-overview.md)存取您的資料之外，您也可能想要直接從儲存在冷存放區中的 Parquet 檔案存取您的資料。 例如，您可以讀取、轉換和清除 Jupyter 筆記本中的資料，然後將其用來定型相同 Spark 工作流程中的 Azure Machine Learning 模型。
 
-若要直接從您的 Azure 儲存體帳戶存取資料，您需要用來儲存 Azure 時間序列深入解析 Gen2 資料之帳戶的讀取存取權。 接著，您可以根據 Parquet 檔案的建立時間來讀取選取的資料，而此檔案位於底下 [Parquet 檔案格式](#parquet-file-format-and-folder-structure)一節所述的 `PT=Time` 資料夾中。  如需對儲存體帳戶啟用讀取存取權的詳細資訊，請參閱[管理對儲存體帳戶資源的存取](../storage/blobs/storage-manage-access-to-resources.md)。
+若要直接從您的 Azure 儲存體帳戶存取資料，您需要用來儲存 Azure 時間序列深入解析 Gen2 資料之帳戶的讀取存取權。 接著，您可以根據 Parquet 檔案的建立時間來讀取選取的資料，而此檔案位於底下 [Parquet 檔案格式](#parquet-file-format-and-folder-structure)一節所述的 `PT=Time` 資料夾中。  如需對儲存體帳戶啟用讀取存取權的詳細資訊，請參閱[管理對儲存體帳戶資源的存取](../storage/blobs/anonymous-read-access-configure.md)。
 
 #### <a name="data-deletion"></a>刪除資料
 
@@ -116,13 +116,13 @@ Azure 時間序列深入解析 Gen2 會儲存資料的複本，如下所示：
 Azure 時間序列深入解析 Gen2 事件會對應到 Parquet 檔案內容，如下所示：
 
 * 每個事件都會對應至單一資料列。
-* 每個資料列都包含具有事件時間戳記的**時間戳記**資料行。 時間戳記屬性絕不會是 Null。 如果未在事件來源中指定時間戳記屬性，它會預設為加入 **佇列的時間** 。 儲存的時間戳記一律採用 UTC 格式。
+* 每個資料列都包含具有事件時間戳記的 **時間戳記** 資料行。 時間戳記屬性絕不會是 Null。 如果未在事件來源中指定時間戳記屬性，它會預設為加入 **佇列的時間** 。 儲存的時間戳記一律採用 UTC 格式。
 * 每個資料列都包含 (TSID) 資料行 (s 的時間序列識別碼，) 如建立 Azure 時間序列深入解析 Gen2 環境時所定義。 TSID 屬性名稱包含 `_string` 尾碼。
 * 所有其他以遙測資料傳送的屬性都會對應到以 (布林值結尾的資料行名稱 `_bool`) 、 `_datetime` (時間戳記) 、 `_long` (long) 、 `_double` (double) 、 `_string` (string) 或 `dynamic` (dynamic) ，視屬性類型而定。  如需詳細資訊，請參閱 [支援的資料類型](./concepts-supported-data-types.md)。
 * 這個對應結構描述會套用至檔案格式的第一個版本 (稱之為 **V=1**)，並儲存在相同名稱的基底資料夾中。 隨著這項功能的演進，此對應結構描述可能會有所變更，且參考名稱會遞增。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 [資料模型](./time-series-insights-update-tsm.md)化。
+* 深入瞭解 [資料模型](./concepts-model-overview.md)化。
 
-* 規劃您的 [Azure 時間序列深入解析 Gen2 環境](./time-series-insights-update-plan.md)。
+* 規劃您的 [Azure 時間序列深入解析 Gen2 環境](./how-to-plan-your-environment.md)。

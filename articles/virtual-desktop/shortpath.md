@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701774"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023134"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虛擬桌面 RDP Shortpath (preview) 
 
@@ -36,7 +36,7 @@ RDP Shortpath 正在擴充 RDP 多重傳輸功能。 它不會取代反向連接
 
 UDP 埠3390僅用於透過反向連接傳輸進行驗證的傳入 Shortpath 流量。 RDP Shortpath 接聽程式會忽略接聽程式的所有連接嘗試，除非它們符合反向連接會話。
 
-RDP Shortpath 使用工作階段主機的憑證，在用戶端與會話主機之間使用 TLS 連接。 根據預設，用於 RDP 加密的憑證是在部署期間由作業系統自行產生的。 如有需要，客戶可以部署企業憑證授權單位單位所發行的集中受控憑證。 如需有關憑證設定的詳細資訊，請參閱 [Windows Server 檔](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md)。
+RDP Shortpath 使用工作階段主機的憑證，在用戶端與會話主機之間使用 TLS 連接。 根據預設，用於 RDP 加密的憑證是在部署期間由作業系統自行產生的。 如有需要，客戶可以部署企業憑證授權單位單位所發行的集中受控憑證。 如需有關憑證設定的詳細資訊，請參閱 [Windows Server 檔](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)。
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortpath 連接順序
 
@@ -53,7 +53,7 @@ RDP Shortpath 使用工作階段主機的憑證，在用戶端與會話主機之
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath 網路連線的圖表" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 若要支援 RDP Shortpath，Windows 虛擬桌面用戶端必須能夠直接看到工作階段主機。 您可以使用下列其中一種技術來取得直接的瞭解：
 
@@ -187,7 +187,7 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 * **0** -使用者連接未使用 RDP Shortpath
 * **1** -使用者連接正在使用 RDP Shortpath
   
-下列查詢清單可讓您查看連接資訊。 您可以在 [Log Analytics 查詢編輯器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中執行此查詢。 針對每個查詢，將取代為 `userupn` 您要查閱之使用者的 UPN。
+下列查詢清單可讓您查看連接資訊。 您可以在 [Log Analytics 查詢編輯器](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)中執行此查詢。 針對每個查詢，將取代為 `userupn` 您要查閱之使用者的 UPN。
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;
@@ -252,7 +252,7 @@ Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).Owni
 我們想要聽取您對於此公開預覽體驗的意見！
 * 針對問題、要求、批註和其他意見反應，請 [使用此意見反應表單](https://aka.ms/RDPShortpathFeedback)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要深入瞭解 Windows 虛擬桌面網路連線能力，請參閱 [瞭解 Windows 虛擬桌面網路連線能力](network-connectivity.md)。
 * 若要開始使用適用于 Windows 虛擬桌面的服務品質 (QoS) ，請參閱 [為 Windows 虛擬桌面 (qos) 執行服務品質](rdp-quality-of-service-qos.md)。

@@ -6,12 +6,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327199"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021366"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS 中的人工智慧) 
 
@@ -38,7 +38,7 @@ LUIS 使用人工智慧 (AI) 根據您所定義的架構，為您的資料提供
 * LUIS 中可設定的 NLP 層面：
     * [Token 化](luis-language-support.md#tokenization)
     * 透過字元符號、標點符號和 word forms [API 設定](luis-reference-application-settings.md)Morphology
-* 由其他 [認知服務](../Welcome.md) 提供的查詢語句前置或後置處理，例如：
+* 由其他 [認知服務](../what-are-cognitive-services.md) 提供的查詢語句前置或後置處理，例如：
     * [翻譯](../translator/translator-info-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>自然語言理解 (NLU)
@@ -55,6 +55,6 @@ LUIS 對更廣泛的 _NLP_ 層面（例如語義相似性）幾乎沒有任何�
 * 買
 * 買
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 LUIS 應用程式的[開發生命週期](luis-concept-app-iteration.md)

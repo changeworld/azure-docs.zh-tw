@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578530"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023372"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -350,7 +350,7 @@ SSH2 是 Windows 虛擬桌面的增值服務提供者，可讓您的 IT 小組�
 appCURE 會從執行中的應用程式捕捉應用程式詳細資料，以確保能夠瞭解可能影響您終端使用者應用程式的所有點。 appCURE 接著會更新並將其傳遞至新的 Windows 虛擬桌面。 藉由在您目前的環境中捕捉所有應用程式整合點，appCURE 可提供最佳的速度來將 IT 資源優化，並更快且更快速地規劃遷移，讓組織能夠更快進入生產環境。
 
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38)。
-- [移至 [合作夥伴] 頁面](/azure/virtual-desktop/partners#ssh2)。
+- [移至 [合作夥伴] 頁面](#ssh2)。
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -406,7 +406,7 @@ Workspot control 藉由簡化雲端桌面基礎結構的布建程式，擴充了
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)。
 - [前往合作夥伴網站](https://www.workspot.com/wvd)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [深入瞭解 Windows 虛擬桌面](overview.md)。
 - [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。

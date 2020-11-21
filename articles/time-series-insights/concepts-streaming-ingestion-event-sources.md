@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6bc238389ac470e6127a582eb174ec7bc438e36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e83cca79a4dc99533ab17cca7e96e1ac802d598
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650863"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020788"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 時間序列深入解析 Gen2 事件來源
 
@@ -27,7 +27,7 @@ ms.locfileid: "91650863"
 
 ## <a name="create-or-edit-event-sources"></a>建立或編輯事件來源
 
-您的事件來源資源 (s) 可以與 Azure 時間序列深入解析 Gen2 環境或不同的訂用帳戶存留在相同的 Azure 訂用帳戶中。您可以使用 [Azure 入口網站](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、 [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、 [ARM 範本](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 來建立、編輯或移除您環境的事件來源。
+您的事件來源資源 (s) 可以與 Azure 時間序列深入解析 Gen2 環境或不同的訂用帳戶存留在相同的 Azure 訂用帳戶中。您可以使用 [Azure 入口網站](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)、 [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、 [ARM 範本](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 來建立、編輯或移除您環境的事件來源。
 
 當您連線到事件來源時，您的 Azure 時間序列深入解析 Gen2 環境會從最舊的事件開始，讀取目前儲存在 Iot 或事件中樞中的所有事件。
 
@@ -45,7 +45,7 @@ ms.locfileid: "91650863"
 
 - 請勿超過您環境的 [輸送量速率限制](./concepts-streaming-ingress-throughput-limits.md) 或每個分割區的限制。
 
-- 如果您的環境在處理資料時遇到問題，請設定延遲 [警示](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) 。
+- 如果您的環境在處理資料時遇到問題，請設定延遲 [警示](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) 。
 
 - 僅針對近乎即時和最近的資料使用串流擷取，不支援串流歷程記錄資料。
 
@@ -64,7 +64,7 @@ Azure 時間序列深入解析的 Gen2 目前不支援使用串流管線來匯�
 
 ## <a name="event-source-timestamp"></a>事件來源時間戳記
 
-設定事件來源時，系統會要求您提供時間戳記識別碼屬性。 時間戳記屬性是用來追蹤一段時間的事件，這是用來做為 $event 的時間。 $ts 在 [查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) 中，以及用於 Azure 時間序列深入解析 Explorer 中的繪圖數列。 如果在建立時未提供任何屬性，或事件中缺少時間戳記屬性，則會使用事件的 IoT 中樞或事件中樞排入佇列的時間作為預設值。 時間戳記屬性值會以 UTC 格式儲存。
+設定事件來源時，系統會要求您提供時間戳記識別碼屬性。 時間戳記屬性是用來追蹤一段時間的事件，這是用來做為 $event 的時間。 $ts 在 [查詢 api](/rest/api/time-series-insights/dataaccessgen2/query/execute) 中，以及用於 Azure 時間序列深入解析 Explorer 中的繪圖數列。 如果在建立時未提供任何屬性，或事件中缺少時間戳記屬性，則會使用事件的 IoT 中樞或事件中樞排入佇列的時間作為預設值。 時間戳記屬性值會以 UTC 格式儲存。
 
 一般情況下，使用者會選擇自訂時間戳記屬性，並使用感應器或標記產生讀取的時間，而不是使用預設的中樞排入佇列時間。 當裝置有間歇性的連線遺失，且延遲的訊息批次轉送到 Azure 時間序列深入解析 Gen2 時，這是特別必要的。
 
@@ -80,7 +80,7 @@ Azure 時間序列深入解析的 Gen2 目前不支援使用串流管線來匯�
 ± HH： MM</br>
 ± HH： MMZ</br>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 

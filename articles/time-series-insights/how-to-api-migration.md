@@ -10,23 +10,23 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078233"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020720"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>遷移至新的 Azure 時間序列深入解析 Gen2 API 版本
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 如果您在) 2020 年7月16日之前，建立了 Azure 時間序列深入解析 Gen2 環境 (，請更新 TSI 環境，以使用新正式推出的 Api 版本，方法是遵循本文中所述的步驟。 這項變更不會影響任何使用 Gen1 版 Azure 時間序列深入解析的使用者。
 
 > [!IMPORTANT]
-> 本文中所述的更新只會升級 TSI 環境所使用的 API 版本。 這項變更與針對 Gen2 環境引進的新 JSON 簡維 [和轉義規則](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) 無關。
+> 本文中所述的更新只會升級 TSI 環境所使用的 API 版本。 這項變更與針對 Gen2 環境引進的新 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) 無關。
 
-新的 API 版本是 `2020-07-31` ，並使用更新的 [時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+新的 API 版本是 `2020-07-31` ，並使用更新的 [時間序列運算式語法](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 使用者必須遷移其環境的 [時間序列模型變數](./concepts-variables.md)、儲存的查詢、Power BI 查詢，以及對 API 端點進行呼叫的任何自訂工具。 如果您有任何關於遷移程式的問題或疑慮，請透過 Azure 入口網站提交支援票證，並提及這份檔。
 
@@ -84,28 +84,28 @@ ms.locfileid: "92078233"
 
 - 時間序列模型 API (機器翻譯)
   - 模型設定 Api
-    - [獲取](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
-    - [更新](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
+    - [獲取](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [更新](/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - 執行個體 API
-    - [所有批次作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
-    - [清單](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
-    - [搜尋](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [建議](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [所有批次作業](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+    - [清單](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
+    - [搜尋](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
+    - [建議](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - 階層 Api
-    - [所有批次作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-    - [清單](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
+    - [所有批次作業](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+    - [清單](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
   - 類型 Api
-    - [刪除，取得作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-    - [清單](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
+    - [刪除，取得作業](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    - [清單](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-針對下列 REST 端點，您必須將 API 版本更新為 `2020-07-31` URI 中的，並確定所有出現的屬性都 `tsx` 使用更新的 [時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+針對下列 REST 端點，您必須將 API 版本更新為 `2020-07-31` URI 中的，並確定所有出現的屬性都 `tsx` 使用更新的 [時間序列運算式語法](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 - 類型 Api
-  - [Put 作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
+  - [Put 作業](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
 - 查詢 API
-  - [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
-  - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
-  - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  - [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
+  - [GetSeries](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
+  - [GetAggregateSeries](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
 ### <a name="examples"></a>範例
 
@@ -358,7 +358,7 @@ ms.locfileid: "92078233"
 
 #### <a name="invalidinput"></a>InvalidInput
 
-如果您看到下列錯誤，則會使用新的 API 版本 (`2020-07-31`) 但尚未更新 TSX 語法。 請參閱上述的 [時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) 和遷移範例。 重新 `tsx` 提交 API 要求之前，請確定已正確更新所有屬性。
+如果您看到下列錯誤，則會使用新的 API 版本 (`2020-07-31`) 但尚未更新 TSX 語法。 請參閱上述的 [時間序列運算式語法](/rest/api/time-series-insights/reference-time-series-expression-syntax) 和遷移範例。 重新 `tsx` 提交 API 要求之前，請確定已正確更新所有屬性。
 
 ```JSON
 {

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397754"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024322"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>語音轉換文字常見問題集
 
-如果您在此常見問題集中找不到問題的解答，請參閱[其他支援選項](support.md)。
+如果您在此常見問題集中找不到問題的解答，請參閱[其他支援選項](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
 
 ## <a name="general"></a>一般
 
@@ -29,7 +29,7 @@ ms.locfileid: "91397754"
 
 **問：如果我想要使用基準模型，該從何處著手？**
 
-**答**：首先，取得[訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)。 如果您想要對預先部署的基準模型進行 REST 呼叫，請參閱 [REST API](rest-apis.md)。 如果您想要使用 WebSocket，請[下載 SDK](speech-sdk.md)。
+**答**：首先，取得 [訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)。 如果您想要對預先部署的基準模型進行 REST 呼叫，請參閱 [REST API](./overview.md#reference-docs)。 如果您想要使用 WebSocket，請[下載 SDK](speech-sdk.md)。
 
 **問：我是否一定要建置自訂語音模型？**
 
@@ -39,7 +39,7 @@ ms.locfileid: "91397754"
 
 **問：如何知道我的資料集或模型處理何時完成？**
 
-**答**：目前，您只需要知道模型或資料表中資料集的狀態。 處理完成時，狀態將會是**成功**。
+**答**：目前，您只需要知道模型或資料表中資料集的狀態。 處理完成時，狀態將會是 **成功**。
 
 **問：我可以建立多個模型嗎？**
 
@@ -71,7 +71,7 @@ ms.locfileid: "91397754"
 
 **問：我的要求會被記錄嗎？**
 
-**答**：根據預設，不會將要求記錄 (音訊，也不會) 轉譯。 如果有需要，您可以在[建立自訂端點](how-to-custom-speech-deploy-model.md)以啟用追蹤時，*從這個端點選項中選取 [記錄內容*]。 然後，會在 Azure 中將要求記錄在安全的儲存體中。
+**答**：根據預設，不會將要求記錄 (音訊，也不會) 轉譯。 如果有需要，您可以在 [建立自訂端點](how-to-custom-speech-deploy-model.md)以啟用追蹤時，*從這個端點選項中選取 [記錄內容*]。 然後，會在 Azure 中將要求記錄在安全的儲存體中。
 
 **問：我的要求會被節流嗎？**
 
