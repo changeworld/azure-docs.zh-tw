@@ -1,5 +1,5 @@
 ---
-title: 建立 Azure NetApp Files 的複寫對等互連 |Microsoft Docs
+title: 建立適用于 Azure NetApp Files 的磁片區複寫 |Microsoft Docs
 description: 說明如何建立 Azure NetApp Files 的磁片區複寫對等互連，以設定跨區域複寫。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708587"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249932"
 ---
-# <a name="create-replication-peering-for-azure-netapp-files"></a>建立 Azure NetApp Files 的複寫對等互連
+# <a name="create-volume-replication-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的磁片區複寫
 
 > [!IMPORTANT]
 > 跨區域複寫功能目前處於公開預覽狀態。 您必須透過 [Azure NetApp Files 跨區域複寫等候清單提交頁面](https://aka.ms/anfcrrpreviewsignup)提交等候清單要求，以存取此功能。 使用跨區域複寫功能之前，請先從 Azure NetApp Files 團隊等候官方確認電子郵件。
@@ -113,5 +113,6 @@ Azure NetApp Files 複寫目前不支援多個訂用帳戶;所有的複寫都必
 * [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
+* [刪除磁片區複製或磁片區](cross-region-replication-delete.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)
 

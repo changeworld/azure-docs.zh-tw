@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216261"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241602"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>瞭解如何針對執行時間變更所造成的非 SQL 執行時間失敗進行疑難排解
 
@@ -33,7 +33,7 @@ Azure Data Lake U-SQL 執行階段 (包括編譯器、最佳化工具和作業�
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 選取 [ **查看所有作業**]。 帳戶中的所有作用中和最近完成的工作清單隨即出現。
-3. 選擇性，按一下 [篩選]**** 可協助您依照 [時間範圍]****、[作業名稱]**** 和 [作者]**** 值尋找作業。
+3. 選擇性，按一下 [篩選] 可協助您依照 [時間範圍]、[作業名稱] 和 [作者] 值尋找作業。
 4. 您可以看到已完成的作業中所使用的執行時間。
 
 ![顯示過去作業的執行階段版本](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
@@ -49,9 +49,23 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 有兩個可能的執行階段版本問題可能會發生：
 
-1. 腳本或某些使用者程式碼正在將行為從某個版本變更為下一個版本。 這類的重大變更通常會在發行的版本資訊發行時預先進行通訊。 如果您遇到這類重大變更，請聯絡 Microsoft 支援服務報告這項中斷行為 (，以防尚未) 記載該行為，並將您的作業提交至舊版的執行階段版本。
+1. 腳本或某些使用者程式碼正在將行為從某個版本變更為下一個版本。 這類的重大變更通常會在發行的版本資訊發行時預先進行通訊。 如果您遇到這類重大變更，請聯絡 Microsoft 支援服務來回報此中斷行為 (如果尚未) 記載該行為，請將您的作業提交至舊版的執行階段版本。
 
 2. 當您已將非預設執行時間釘選到您的帳戶，且該執行時間已在一段時間後移除時，您就會明確或隱含地使用非預設執行時間。 如果您遇到遺失的執行時間，請升級您的腳本，以使用目前的預設執行時間來執行。 如果您需要更多時間，請聯絡 Microsoft 支援服務
+
+## <a name="known-issues"></a>已知問題
+
+* 在檔案版本12.0.3 或 .USQL 腳本中的之後參考 Newtonsoft.Js，將會導致下列編譯失敗：
+
+    *「很抱歉;在 Data Lake Analytics 帳戶中執行的作業可能會執行得更慢或無法完成。發生未預期的問題，導致我們無法將這項功能自動還原到您的 Azure Data Lake Analytics 帳戶。已聯絡 Azure Data Lake 工程師進行調查」。*  
+
+    呼叫堆疊將包含的位置：  
+    `System.IndexOutOfRangeException: Index was outside the bounds of the array.`  
+    `at Roslyn.Compilers.MetadataReader.PEFile.CustomAttributeTableReader.get_Item(UInt32 rowId)`  
+    `...`
+
+    **解決方案**：請在 file v 12.0.2 或更低版本上使用 Newtonsoft.Js。
+
 
 ## <a name="see-also"></a>另請參閱
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368928"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238083"
 ---
 # <a name="customize-your-text-translations"></a>自訂文字翻譯
 
@@ -38,28 +38,6 @@ ms.locfileid: "94368928"
 假設有適當的訓練資料類型和數量，透過使用自訂翻譯工具預期翻譯品質取得介於 5 到 10 之間或甚至更多的 BLEU 點數並不罕見。
 
 如需根據可用資料之各種自訂層級的詳細資料，請參閱[自訂翻譯工具使用者指南](./custom-translator/overview.md)。
-
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
-
-> [!NOTE]
-> 舊版 Microsoft Translator Hub 將于2019年5月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
-
-## <a name="custom-translator-versus-hub"></a>自訂翻譯工具與中樞
-
-| 功能 | 集線器 | 自訂翻譯工具 |
-| ------- | :-: | :---------------: |
-|自訂功能狀態    | 正式運作    | 正式運作 |
-| 文字 API 版本    | 僅限第 2 版    | 僅限第 3 版 |
-| SMT 自訂    | 是    | 否 |
-| NMT 自訂    | 否    | 是 |
-| 新的統一語音服務自訂    | 否    | 是 |
-| [不追蹤](https://www.aka.ms/notrace) | 是    | 是 |
-
-## <a name="collaborative-translations-framework"></a>共同作業翻譯架構
-
-> [!NOTE]
-> 從2018年2月1日開始，AddTranslation ( # A1 和 AddTranslationArray ( # A3 不再適用于 Translator 2.0 版。 這些方法將會失敗，不會寫入任何內容。 Translator v3.0 不支援這些方法。
 
 ## <a name="next-steps"></a>後續步驟
 

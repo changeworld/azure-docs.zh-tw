@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265464"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247229"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>使用 Azure Active Directory 設定應用程式的群組宣告
 
@@ -74,9 +74,9 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>使用 SSO 設定將群組宣告新增至 SAML 應用程式的權杖
 
-若要設定資源庫或非資源庫 SAML 應用程式的群組宣告，請開啟 [ **企業應用程式**]，按一下清單中的應用程式，選取 [ **單一登入**設定]，然後選取 [ **使用者屬性 & 宣告**]。
+若要設定資源庫或非資源庫 SAML 應用程式的群組宣告，請開啟 [ **企業應用程式**]，按一下清單中的應用程式，選取 [ **單一登入** 設定]，然後選取 [ **使用者屬性 & 宣告**]。
 
-按一下 [**新增群組**宣告]  
+按一下 [**新增群組** 宣告]  
 
 ![顯示已選取 [新增群組宣告] 的 [使用者屬性 & 宣告] 頁面的螢幕擷取畫面。](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
@@ -144,8 +144,9 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 |----------|-------------|
 | **All** | 發出安全性群組、通訊群組清單和角色 |
 | **"SecurityGroup"** | 在群組宣告中發出使用者所屬的安全性群組 |
-| **「DirectoryRole** | 如果使用者被指派目錄角色，則會以 ' wids ' 宣告的形式發出， (不會發出群組宣告)  |
-| **「ApplicationGroup** | 只發出明確指派給應用程式且使用者為其成員的群組 |
+| **"DirectoryRole"** | 如果使用者被指派目錄角色，則會以 ' wids ' 宣告的形式發出， (不會發出群組宣告)  |
+| **ApplicationGroup** | 只發出明確指派給應用程式且使用者為其成員的群組 |
+| **以上** | 不會傳回任何群組。 (不 sensetive 的情況下，也不會有任何作用，而且可以直接在應用程式資訊清單中設定。 )  |
 
    例如：
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278289"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95245869"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files 磁片區的跨區域複寫
 
@@ -71,7 +71,7 @@ Azure NetApp Files 磁片區複寫目前提供下列固定區域配對：
 
 假設下列情況：
 
-* *來源*磁片區來自 Azure NetApp Files *Premium*服務層級。 它的磁片區配額大小為 1000 GiB，而磁片區的磁片區大小為 500 GiB，在每個月的第一天開始。 此磁片區位於 *美國中南部* 區域中。
+* *來源* 磁片區來自 Azure NetApp Files *Premium* 服務層級。 它的磁片區配額大小為 1000 GiB，而磁片區的磁片區大小為 500 GiB，在每個月的第一天開始。 此磁片區位於 *美國中南部* 區域中。
 * 您的 *目的地* 磁片區來自 Azure NetApp Files *標準* 服務層級。 它位於 *美國東部 2* 區域。
 * 您已設定上述兩個磁片區之間以 *小時* 為基礎的跨區域複寫。 因此，每個 GiB 的複寫價格為 $0.12。
 * 為了簡單起見，假設來源磁片區的每小時都有固定的 0.5-GiB 資料變更，但所耗用的總磁片區大小並未增加 (保持在 500 GiB) 。 
@@ -111,10 +111,11 @@ Azure NetApp Files 磁片區複寫目前提供下列固定區域配對：
 
 ## <a name="next-steps"></a>後續步驟
 * [使用跨區域複寫的需求和考慮](cross-region-replication-requirements-considerations.md)
-* [建立複寫對等互連](cross-region-replication-create-peering.md)
+* [建立磁片區複寫](cross-region-replication-create-peering.md)
 * [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
+* [刪除磁片區複製或磁片區](cross-region-replication-delete.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)
 
 

@@ -3,12 +3,12 @@ title: 最佳作法
 description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916860"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254658"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -38,7 +38,7 @@ ms.locfileid: "94916860"
 
 ### <a name="pool-lifetime-and-billing"></a>集區存留期和計費
 
-集區存留期可能會因為配置的方法和套用至集區設定的選項而有所不同。 集區在任何時間點都可以有不固定的存留期和不同數目的計算節點。 您必須負責明確地或透過服務所提供的功能 (自動調整或 autopool)，來管理集區中的計算節點。
+集區存留期可能會因為配置的方法和套用至集區設定的選項而有所不同。 集區在任何時間點都可以有不固定的存留期和不同數目的計算節點。 您必須負責明確地管理集區中的計算節點，或透過服務所提供的功能 ([自動](nodes-and-pools.md#automatic-scaling-policy) 調整或 [autopool](nodes-and-pools.md#autopools)) 。
 
 - **讓集區保持在最新狀態。**
     將您的集區大小調整為每隔幾個月零，以確保您取得 [最新的節點代理程式更新和錯誤修正](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 如果未重新建立集區或將其大小調整為 0 個計算節點，您的集區將不會收到節點代理程式更新。 在您重新建立集區或調整其大小之前，建議您下載所有節點代理程式記錄來進行偵錯，如[節點](#nodes)一節中所述。
@@ -93,7 +93,7 @@ Batch 作業在從系統中刪除之前，會有無限的存留期。 其狀態�
 
 ### <a name="save-task-data"></a>儲存工作資料
 
-就本質來說，計算節點的存在時間相當短暫。 Batch 中有許多功能 (例如 autopool 和自動調整) 可讓節點輕鬆地消失。 節點離開集區時 (由於調整大小或集區刪除)，也會一併刪除這些節點上的所有檔案。 因此，工作應該在完成之前，將其輸出移出其執行所在的節點，然後移至長期存放區。 同樣地，如果工作失敗，則應該將診斷失敗所需的記錄移到長期存放區。
+就本質來說，計算節點的存在時間相當短暫。 Batch 中有許多功能，例如 [autopool](nodes-and-pools.md#autopools) 和 [自動](nodes-and-pools.md#automatic-scaling-policy) 調整，可讓節點輕鬆消失。 當節點因為調整大小或集區刪除而離開集區 () 也會一併刪除這些節點上的所有檔案。 因此，工作應該在完成之前，將其輸出移出其執行所在的節點，然後移至長期存放區。 同樣地，如果工作失敗，則應該將診斷失敗所需的記錄移到長期存放區。
 
 Batch 已整合支援，可讓 Azure 儲存體透過 [OutputFiles](batch-task-output-files.md) 和各種共用檔案系統上傳資料，或是，您也可以在工作中自行執行上傳作業。
 

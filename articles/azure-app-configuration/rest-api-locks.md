@@ -6,32 +6,30 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4949db646c54d75f60d29d3c631d0f4ee8d7c26e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e63b48f2119c48cd43717acee7b13b1701e0032
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424089"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241262"
 ---
 # <a name="locks"></a>鎖定
 
-api 版本：1。0
-
-此 API 會提供索引鍵/值資源的鎖定/解除鎖定語義。 它支援下列作業：
+此 API (1.0 版) 提供索引鍵/值資源的鎖定和解除鎖定語義。 它支援下列作業：
 
 - 鎖定位置
 - 移除鎖定
 
-如果存在，則 `label` 必須是明確的標籤值， ( **不** 是萬用字元) 。 針對所有作業，它是選擇性參數。 如果省略，則表示沒有標籤。
+如果存在，則 `label` 必須是明確的標籤值， (不是萬用字元) 。 針對所有作業，這是選擇性參數。 如果省略，則表示沒有標籤。
 
 ## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="lock-key-value"></a>鎖定 Key-Value
+## <a name="lock-key-value"></a>鎖定索引鍵/值
 
-- **必要：** ``{key}`` 、 ``{api-version}``  
-- *選用：*``label``
+- 必要： ``{key}`` 、 ``{api-version}``  
+- 選用：``label``
 
 ```http
 PUT /locks/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -63,10 +61,10 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8"
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="unlock-key-value"></a>解除鎖定 Key-Value
+## <a name="unlock-key-value"></a>解除鎖定索引鍵/值
 
-- **必要：** ``{key}`` 、 ``{api-version}``  
-- *選用：*``label``
+- 必要： ``{key}`` 、 ``{api-version}``  
+- 選用：``label``
 
 ```http
 DELETE /locks/{key}?label={label}?api-version={api-version} HTTP/1.1
@@ -98,9 +96,9 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8"
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="conditional-lockunlock"></a>條件式鎖定/解除鎖定
+## <a name="conditional-lock-and-unlock"></a>條件式鎖定和解除鎖定
 
-若要防止競爭條件，請使用 `If-Match` 或 `If-None-Match` 要求標頭。 `etag`引數是索引鍵標記法的一部分。 如果 `If-Match` `If-None-Match` 省略或，則作業將會無條件進行。
+若要防止競爭條件，請使用 `If-Match` 或 `If-None-Match` 要求標頭。 `etag`引數是索引鍵標記法的一部分。 如果 `If-Match` `If-None-Match` 省略或，則會無條件操作。
 
 只有當目前的索引鍵/值表示符合指定的時，下列要求才會套用作業 `etag` ：
 

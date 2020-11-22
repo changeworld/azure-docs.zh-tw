@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66ad9f84985c7f35d410c6b1c3508efd33526c83
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0b2d18165bf2c5a4f70f1cbc555db79020ce988f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147717"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95250612"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>建立容器或 blob 的服務 SAS
 
@@ -32,7 +32,7 @@ ms.locfileid: "93147717"
 
 服務 SAS 會以帳戶存取金鑰簽署。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 類別來建立用來簽署 SAS 的認證。 接著，建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 物件，並呼叫 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForContainer":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -114,13 +114,13 @@ function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyNa
 
 下列程式碼範例會在 blob 上建立 SAS。 如果提供現有預存存取原則的名稱，該原則將與 SAS 相關聯。 如果未提供任何預存存取原則，則程式碼會在 blob 上建立特定 SAS。
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 服務 SAS 會以帳戶存取金鑰簽署。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 類別來建立用來簽署 SAS 的認證。 接著，建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 物件，並呼叫 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForBlob":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 若要建立 blob 的服務 SAS，請呼叫 [cloudblob.. >cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) 方法。
 
@@ -204,11 +204,19 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 
 ---
 
+## <a name="create-a-service-sas-for-a-directory"></a>建立目錄的服務 SAS
+
+在啟用階層命名空間的儲存體帳戶中，您可以建立目錄的服務 SAS。 若要建立服務 SAS，請確定您已安裝12.5.0 或更新版本的 [DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) 套件。
+
+下列範例示範如何使用適用于 .NET 的 v12 用戶端程式庫來建立目錄的服務 SAS：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForDirectory":::
+
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 [!INCLUDE [storage-blob-javascript-resources-include](../../../includes/storage-blob-javascript-resources-include.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 (SAS) 的共用存取簽章來授與 Azure 儲存體資源的有限存取權 ](../common/storage-sas-overview.md)
 - [建立服務 SAS](/rest/api/storageservices/create-service-sas)

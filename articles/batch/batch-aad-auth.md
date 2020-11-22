@@ -4,12 +4,12 @@ description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 了解兩種�
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920503"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252635"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
@@ -144,7 +144,7 @@ Azure Batch 支援使用 [Azure Active Directory](../active-directory/fundamenta
 - Microsoft.Batch/batchAccounts/read (適用於任何讀取作業)
 - Microsoft.Batch/batchAccounts/listKeys/action (適用於任何作業)
 
-自訂角色適用於由 Azure AD 驗證的使用者，不適用於 Batch 帳戶認證 (共用金鑰)。 請注意，Batch 帳戶認證會將完整權限授與 Batch 帳戶。 另請注意，使用 autopool 的作業需要集區層級權限。
+自訂角色適用於由 Azure AD 驗證的使用者，不適用於 Batch 帳戶認證 (共用金鑰)。 請注意，Batch 帳戶認證會將完整權限授與 Batch 帳戶。 另請注意，使用 [autopool](nodes-and-pools.md#autopools) 的作業需要集區層級許可權。
 
 > [!NOTE]
 > 某些角色指派必須在 [動作] 欄位中指定，而其他角色則必須在 [DataAction] 欄位中指定。 如需詳細資訊，請參閱 [Azure 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftbatch)。

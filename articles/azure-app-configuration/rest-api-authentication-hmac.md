@@ -1,38 +1,38 @@
 ---
 title: Azure 應用程式組態 REST API-HMAC 驗證
-description: 使用 HMAC 向 Azure 應用程式組態驗證使用 REST API
+description: 使用 HMAC 向 Azure 應用程式組態驗證，方法是使用 REST API
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 236670cb59a98ee097baaeb35174489d66e6e786
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423943"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253349"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 驗證-REST API 參考
 
-您可以使用 **HMAC-SHA256** 驗證配置來驗證 HTTP 要求。 這些要求必須透過 TLS 傳輸。
+您可以使用 HMAC-SHA256 驗證配置來驗證 HTTP 要求。  (HMAC 指的是以雜湊為基礎的消息驗證碼。 ) 這些要求必須透過 TLS 傳輸。
 
 ## <a name="prerequisites"></a>必要條件
 
 - **憑據** - \<Access Key ID\>
 - **Secret** -base64 解碼的存取金鑰值。 ``base64_decode(<Access Key Value>)``
 
-認證 (也稱為「識別碼」 ) 和秘密 (也稱為「值」 ) 必須從 Azure 應用程式組態實例取得，這可以使用 [Azure 入口網站](https://portal.azure.com) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)來完成。
+認證的值 (也稱為 `id`) 和秘密 (也稱為 `value`) 必須從 Azure 應用程式組態的實例取得。 您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)來完成這項作業。
 
 為每個要求提供驗證所需的所有 HTTP 標頭。 所需的最小值為：
 
 |  要求標頭 | 描述  |
 | --------------- | ------------ |
-| **主控件** | 網際網路主機和埠號碼。 請參閱[3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2)一節 |
-| **日期** | 發出要求的日期和時間。 目前的 GMT 不能超過15分鐘。 此值為 HTTP 日期，如本節中所述 [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1)
-| **x-ms-date** | 與 ```Date``` 上述相同。 當代理程式無法直接存取 ```Date``` 要求標頭或 proxy 修改它時，可以使用它來取代。 如果 ```x-ms-date``` ```Date``` 同時提供了和，則 ```x-ms-date``` 會優先使用。 |
+| **主控件** | 網際網路主機和埠號碼。 如需詳細資訊，請參閱  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2)一節。 |
+| **日期** | 發出要求的日期和時間。 目前的國際標準時間不能超過15分鐘的時間， (格林尼治平均時間) 。 此值為 HTTP 日期，如 [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1)一節中所述。
+| **x-ms-date** | 與 ```Date``` 上述相同。 您可以使用它，而不是在代理程式無法直接存取 ```Date``` 要求標頭時使用，或由 proxy 修改它。 如果 ```x-ms-date``` ```Date``` 同時提供了和，則 ```x-ms-date``` 會優先使用。 |
 | **x-ms-內容-sha256** | base64 編碼的要求本文的 SHA256 雜湊。 即使沒有主體，也必須提供。 ```base64_encode(SHA256(body))```|
-| **授權** | **HMAC-SHA256** 配置所需的驗證資訊。 格式和詳細資料如下所述。 |
+| **授權** | HMAC-SHA256 配置所需的驗證資訊。 本文稍後會說明格式和詳細資料。 |
 
 **範例︰**
 
@@ -43,26 +43,26 @@ x-ms-content-sha256: {SHA256 hash of the request body}
 Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;host;x-ms-content-sha256&Signature={Signature}
 ```
 
-## <a name="authorization-header"></a>授權標頭
+## <a name="authorization-header"></a>驗證標頭
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 
 ``Authorization``： **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  引數 | 描述  |
+|  引數 | 說明  |
 | ------ | ------ |
-| **HMAC-SHA256** | _需要 (_ 授權配置)  |
+| **HMAC-SHA256** | 授權配置。 _需要 ()_ |
 | **認證** | 用來計算簽章的存取金鑰識別碼。 _需要 ()_ |
 | **SignedHeaders** | 加入至簽章的 HTTP 要求標頭。 _需要 ()_ |
-| **簽名** | 以 base64 編碼的 **字串對符號** HMACSHA256。 _需要 ()_|
+| **簽名** | 以 base64 編碼的字串對符號 HMACSHA256。 _需要 ()_|
 
 ### <a name="credential"></a>認證
 
-用來計算簽 **章的存取金鑰識別碼。**
+用來計算簽章的存取金鑰識別碼。
 
 ### <a name="signed-headers"></a>帶正負號的標頭
 
-簽署要求所需的分號分隔 HTTP 要求標頭名稱。 要求也必須正確提供這些 HTTP 標頭。 **請勿使用空格** 。
+簽署要求所需的 HTTP 要求標頭名稱（以分號分隔）。 要求也必須正確提供這些 HTTP 標頭。 請勿使用空白字元。
 
 ### <a name="required-http-request-headers"></a>必要的 HTTP 要求標頭
 
@@ -76,7 +76,7 @@ x-ms-日; 主機; x-ms-內容-sha256; ```Content-Type``` ;```Accept```
 
 ### <a name="signature"></a>簽章
 
-使用所識別的存取金鑰，以 Base64 編碼的 **字串對符號** HMACSHA256 雜湊 `Credential` 。
+以 Base64 編碼的字串對符號 HMACSHA256 雜湊。 它會使用所識別的存取金鑰 `Credential` 。
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
 ### <a name="string-to-sign"></a>字串對符號
@@ -87,11 +87,11 @@ _字串至符號 =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  引數 | 描述  |
+|  引數 | 說明  |
 | ------ | ------ |
-| **HTTP_METHOD** | 大寫與要求搭配使用的 HTTP 方法名稱。 請參閱 [第9節](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) |
-|**path_and_query** | 要求絕對 URI 路徑和查詢字串的串連。 請參閱 [第3.3 節](https://tools.ietf.org/html/rfc3986#section-3.3)。
-| **signed_headers_values** | **SignedHeaders** 中所列之所有 HTTP 要求標頭的分號分隔值。 格式如下 **SignedHeaders** 語義。 |
+| **HTTP_METHOD** | 與要求搭配使用的大寫 HTTP 方法名稱。 如需詳細資訊，請參閱 [第9節](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 |
+|**path_and_query** | 要求絕對 URI 路徑和查詢字串的串連。 如需詳細資訊，請參閱 [第3.3 節](https://tools.ietf.org/html/rfc3986#section-3.3)。
+| **signed_headers_values** | 中所列之所有 HTTP 要求標頭的分號分隔值 `SignedHeaders` 。 格式如下： `SignedHeaders` 語義。 |
 
 **範例︰**
 
@@ -111,15 +111,17 @@ WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
 **原因：** 未提供具有 HMAC-SHA256 配置的授權要求標頭。
-**解決方案：** 提供有效的 ```Authorization``` HTTP 要求標頭
+
+**解決方案：** 請提供有效的 ```Authorization``` HTTP 要求標頭。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="The access token has expired", Bearer
 ```
 
-**原因：** ```Date``` 或 ```x-ms-date``` 要求標頭超過目前 GMT 時間的15分鐘。
-**解決方案：** 提供正確的日期和時間
+**原因：** ```Date``` 或 ```x-ms-date``` 要求標頭超過了15分鐘的時間，從目前的國際標準時間 (格林尼治平均時間) 。
+
+**解決方案：** 提供正確的日期和時間。
 
 
 ```http
@@ -127,22 +129,23 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid access token date", Bearer
 ```
 
-**原因：** 遺漏或無效 ```Date``` 或 ```x-ms-date``` 要求標頭
+**原因：** 遺漏或無效 ```Date``` 或 ```x-ms-date``` 要求標頭。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="[Credential][SignedHeaders][Signature] is required", Bearer
 ```
 
-**原因：** 遺漏要求標頭中的必要參數 ```Authorization```
+**原因：** 要求標頭中缺少必要的參數 ```Authorization``` 。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid Credential", Bearer
 ```
 
-**原因：**```Host```找不到提供的 []/[存取金鑰識別碼]。
-**解決方案：** 請檢查 ```Credential``` ```Authorization``` 要求標頭的參數，並確定其為有效的存取金鑰識別碼。 請確定 ```Host``` 標頭指向已註冊的帳戶。
+**原因：** 找不到提供的 [ ```Host``` ]/[存取金鑰識別碼]。
+
+**解決方案：** 檢查 ```Credential``` ```Authorization``` 要求標頭的參數。 請確定它是有效的存取金鑰識別碼，並確定 ```Host``` 標頭指向已註冊的帳戶。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -150,15 +153,17 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid S
 ```
 
 **原因：**```Signature```提供的不符合伺服器預期的。
-**解決方案：** 請確定 ```String-To-Sign``` 正確無誤。 ```Secret```使用) 之前，請確定 (base64 已解碼正確且正確地使用。 請參閱 **範例** 一節。
+
+**解決方案：** 請確定 ```String-To-Sign``` 正確無誤。 ```Secret```使用) 之前，請確定 (base64 已解碼正確且正確地使用。
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Signed request header 'xxx' is not provided", Bearer
 ```
 
-**原因：** 標頭中的參數遺漏要求標頭 ```SignedHeaders``` ```Authorization``` 。
-**解決方案：** 提供具有正確值的必要標頭。
+**原因：** 標頭中的參數遺漏要求標頭 ```SignedHeaders```  ```Authorization``` 。
+
+**解決方案：** 提供必要的標頭，並提供正確的值。
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -166,13 +171,14 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 ```
 
 **原因：** 中缺少參數 ```SignedHeaders``` 。
-**解決方案：** 檢查 **已簽署的標頭** 最低需求。
+
+**解決方案：** 檢查已簽署的標頭最低需求。
 
 ## <a name="code-snippets"></a>程式碼片段
 
 ### <a name="javascript"></a>JavaScript
 
-*必要條件* ： [加密-JS](https://code.google.com/archive/p/crypto-js/)
+*必要條件*： [加密-JS](https://code.google.com/archive/p/crypto-js/)
 
 ```js
 function signRequest(host, 
@@ -362,7 +368,7 @@ import (
     "time"
 )
 
-//SignRequest Setup the auth header for accessing Azure AppConfiguration service
+//SignRequest Setup the auth header for accessing Azure App Configuration service
 func SignRequest(id string, secret string, req *http.Request) error {
     method := req.Method
     host := req.URL.Host
@@ -537,14 +543,14 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 ### <a name="bash"></a>Bash
 
-*必要條件* ：
+*必要條件*：
 
 | 必要條件 | 命令 | 測試的版本 |
 | ------------ | ------- | --------------- |
 | [Bash](https://www.gnu.org/software/bash/) | Bash | 3.5.27, 4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | tr | 8.28 |
 | [curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
-| [OpenSSL](https://www.openssl.org/) | openssl | 1.1.0 g、1.1.1 a |
+| [Openssl](https://www.openssl.org/) | openssl | 1.1.0 g、1.1.1 a |
 | [util-linux](https://github.com/karelzak/util-linux/) | hexdump | 2.14.1, 2.31.1 |
 
 ```bash

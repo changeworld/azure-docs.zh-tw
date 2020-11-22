@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa7292d423d8b716ffd75a1a20431fb5a79bbf96
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650086"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237335"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>雲端布建疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "94650086"
 
 ## <a name="common-troubleshooting-areas"></a>常見的疑難排解區域
 
-|名稱|說明|
+|Name|說明|
 |-----|-----|
 |[代理程式問題](#agent-problems)|確認代理程式已正確安裝，而且與 Azure Active Directory (Azure AD) 進行通訊。|
 |[物件同步處理問題](#object-synchronization-problems)|使用布建記錄來針對物件同步處理問題進行疑難排解。|
@@ -124,40 +124,17 @@ ms.locfileid: "94650086"
 
 ### <a name="log-files"></a>記錄檔
 
-根據預設，代理程式會發出最少的錯誤訊息和堆疊追蹤資訊。 您可以在 *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect* 布建 Agent\Trace 資料夾中找到這些追蹤記錄。
+根據預設，代理程式會發出最少的錯誤訊息和堆疊追蹤資訊。 您可以在 **C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect** 布建 Agent\Trace 資料夾中找到這些追蹤記錄。
 
 若要收集與代理程式相關問題疑難排解的其他詳細資料，請遵循下列步驟。
 
-1. 停止服務 **Microsoft Azure AD 連接布建代理程式**。
-1. 建立原始設定檔的複本： *C:\Program Files\Microsoft Azure AD Connect* 布建 Agent\AADConnectProvisioningAgent.exe.config。
-1. 將現有區段取代為 `<system.diagnostics>` 下列內容，所有追蹤訊息都會移至 *ProvAgentTrace* 檔案。
+1.  安裝 AADCloudSyncTools PowerShell 模組[，如下所述。](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)
+2. 使用 `Export-AADCloudSyncToolsLogs` PowerShell Cmdlet 來捕捉資訊。  您可以使用下列參數來微調資料收集。
+      - SkipVerboseTrace 只會在未捕獲詳細資訊記錄的情況下匯出目前的記錄檔 (預設值 = false) 
+      - TracingDurationMins 指定不同的捕獲期間 (預設值 = 3 分鐘) 
+      - OutputPath 指定不同的輸出路徑 (預設 = 使用者的檔) 
 
-   ```xml
-     <system.diagnostics>
-         <sources>
-         <source name="AAD Connect Provisioning Agent">
-             <listeners>
-             <add name="console"/>
-             <add name="etw"/>
-             <add name="textWriterListener"/>
-             </listeners>
-         </source>
-         </sources>
-         <sharedListeners>
-         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-         </add>
-         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-         </sharedListeners>
-     </system.diagnostics>
-    
-   ```
-1. 啟動服務 **Microsoft Azure AD 連接布建代理程式**。
-1. 使用下列命令來結尾檔案和 debug 問題。 
-    ```
-    Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
-    ```
+
 ## <a name="object-synchronization-problems"></a>物件同步處理問題
 
 下一節包含針對物件同步處理進行疑難排解的資訊。
@@ -203,6 +180,22 @@ ms.locfileid: "94650086"
   使用下列要求：
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+
+## <a name="repairing-the-the-cloud-sync-service-account"></a>修復雲端同步服務帳戶
+如果您需要修復雲端同步服務帳戶，您可以使用 `Repair-AADCloudSyncToolsAccount` 。  
+
+
+   1.  使用 [此處](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) 所述的安裝步驟開始，然後繼續進行其餘的步驟。
+   2.  從具有系統管理許可權的 Windows PowerShell 會話中，輸入或複製並貼上下列內容： 
+    ```
+    Connect-AADCloudSyncTools
+    ```  
+   3. 輸入您的 Azure AD 全域管理員認證
+   4. 輸入或複製並貼上下列內容： 
+    ```
+    Repair-AADCloudSyncToolsAccount
+    ```  
+   5. 一旦完成此作業，就應該會指出帳戶已順利修復。
 
 ## <a name="next-steps"></a>後續步驟 
 

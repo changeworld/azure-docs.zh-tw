@@ -2,13 +2,13 @@
 title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/20/2020
+ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668696"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95242656"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>使用 ARM 範本的租使用者部署
 
@@ -36,11 +36,19 @@ ms.locfileid: "92668696"
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
+若要建立訂閱，請使用：
+
+* [別名](/azure/templates/microsoft.subscription/aliases)
+
 若要管理成本，請使用：
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [指示](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
+
+若要設定入口網站，請使用：
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
 ## <a name="schema"></a>結構描述
 
@@ -123,12 +131,12 @@ New-AzTenantDeployment `
 
 ## <a name="deployment-scopes"></a>部署範圍
 
-部署至管理群組時，您可以將資源部署至：
+部署至租使用者時，您可以將資源部署至：
 
 * 租使用者
 * 租使用者中的管理群組
 * subscriptions
-* 透過兩個嵌套部署 (的資源群組) 
+* 資源群組
 * [擴充功能資源](scope-extension-resources.md) 可以套用至資源
 
 部署範本的使用者必須擁有指定範圍的存取權。
@@ -155,81 +163,33 @@ New-AzTenantDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
+### <a name="scope-to-resource-group"></a>將範圍設為資源群組
+
+您也可以將租使用者中的資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
+
+若要以租使用者內的資源群組為目標，請使用嵌套部署。 請設定 `subscriptionId` 和 `resourceGroup` 屬性。 請勿設定嵌套部署的位置，因為它是部署在資源群組的位置。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
+
 ## <a name="deployment-location-and-name"></a>部署位置和名稱
 
 針對租用戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
 
-您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy** 。
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 
 ## <a name="create-management-group"></a>建立管理群組
 
-[下列範本](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg)會建立管理群組。
+下列範本會建立管理群組。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>指派角色
 
-[下列範本](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment)會在租用戶範圍指派角色。
+下列範本會在租用戶範圍指派角色。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>後續步驟
 

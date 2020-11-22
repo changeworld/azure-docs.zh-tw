@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663471"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238389"
 ---
 # <a name="create-an-app-service-environment"></a>建立 App Service 環境
 
@@ -48,7 +48,7 @@ ASEv3 只會在選取區域中提供。 將會新增更多區域，因為預覽�
 
 ## <a name="creating-an-ase-in-the-portal"></a>在入口網站中建立 ASE
 
-1. 若要建立 ASEv3，請在 marketplace 中搜尋 **App Service 環境 v3**。  
+1. 若要建立 ASEv3，請在 marketplace 中搜尋 **App Service 環境 (preview)**。  
 2. 基本概念：選取訂用帳戶、選取或建立資源群組，然後輸入您的 ASE 名稱。  ASE 名稱也會用於 ASE 的網域尾碼。  如果您的 ASE 名稱是 *contoso* ，則網域尾碼將會是 *contoso.appserviceenvironment.net*。  此名稱將會自動設定在您的 Azure DNS 私人區域中，並將 ASE 部署到其中。 
 
     ![App Service 環境建立基本] 索引標籤](./media/creation/creation-basics.png)

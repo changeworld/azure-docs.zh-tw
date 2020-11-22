@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708584"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249847"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>顯示複寫關聯性的健全狀態 
 
@@ -37,14 +37,14 @@ ms.locfileid: "90708584"
             這是建立對等互連關聯性時的初始和預設狀態。 在初始化成功完成之前，狀態會保持未初始化。
         * *鏡像*：   
             目的地磁片區已初始化，並已準備好接收鏡像更新。
-        * 已*中斷*：   
+        * 已 *中斷*：   
             這是中斷對等互連關聯性之後的狀態。 目的地磁片區是 `‘RW’` ，而且快照集存在。
     * **關聯性狀態** –顯示下列其中一個值： 
         * *閒置*：  
             沒有進行中的傳輸作業，而且未來的傳輸未停用。
         * *傳送*：  
             傳送作業正在進行中，且未來的傳輸未停用。
-    * 複寫**排程**：顯示初始化 (基準複製) 完成時，將執行累加式鏡像更新的頻率。
+    * 複寫 **排程**：顯示初始化 (基準複製) 完成時，將執行累加式鏡像更新的頻率。
 
     * **總進度** -顯示傳送給目前傳送作業的總數據量（以位元組為單位）。 此數量是傳輸的實際位數，可能與來源和目的地磁片區報告的邏輯空間不同。  
 
@@ -58,5 +58,6 @@ ms.locfileid: "90708584"
 * [跨區域複寫](cross-region-replication-introduction.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
+* [刪除磁片區複製或磁片區](cross-region-replication-delete.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)
 

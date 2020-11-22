@@ -6,23 +6,22 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424069"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246379"
 ---
 # <a name="key-value-revisions"></a>索引鍵/值修訂
 
-api 版本：1。0
+索引 *鍵-值修訂* 會定義索引鍵/值資源的歷程表示。 在免費層商店的7天后修訂到期日，或標準層商店的30天后到期。 修訂支援此作業 `List` 。
 
-索引 **鍵-值修訂** 會定義索引鍵/值資源的歷程表示。 在免費層商店的7天后修訂到期日，或標準層商店的30天后到期。 修訂支援下列作業：
+針對所有作業， ``key`` 都是選擇性參數。 如果省略，則表示任何金鑰。
 
-- 清單
+針對所有作業， ``label`` 都是選擇性參數。 如果省略，則表示任何標籤。
 
-針對所有作業， ``key`` 都是選擇性參數。 如果省略，則表示 **任何** 金鑰。
-針對所有作業， ``label`` 都是選擇性參數。 如果省略，則表示 **任何** 標籤。
+本文適用于 API 版本1.0。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>分頁
 
-如果傳回的專案數超過回應限制，則會將結果編頁。 遵循選用的 ``Link`` 回應標頭，並使用 ``rel="next"`` 進行導覽。  或者，此內容會以屬性的形式提供下一個連結 ``@nextLink`` 。
+如果傳回的專案數超過回應限制，則會將結果編頁。 遵循選用的 ``Link`` 回應標頭，並使用 ``rel="next"`` 進行導覽。 或者，內容會以屬性的形式提供下一個連結 ``@nextLink`` 。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>列出修訂的子集
 
-使用 `Range` 要求標頭。 回應會包含 `Content-Range` 標頭。 如果伺服器無法滿足要求的範圍，它會以 HTTP `416` (RangeNotSatisfiable 回應) 
+使用 `Range` 要求標頭。 回應包含 `Content-Range` 標題。 如果伺服器無法滿足要求的範圍，它會以 HTTP `416` (`RangeNotSatisfiable`) 回應。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -114,7 +113,7 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="supported-filters"></a>支援的篩選器
 
-|索引鍵篩選|作用|
+|索引鍵篩選|效果|
 |--|--|
 |省略 `key` 或使用 `key=*`|符合 **任何** 索引鍵|
 |`key=abc`|符合名為 **abc** 的索引鍵|
@@ -123,7 +122,7 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 |`key=*abc*`|符合包含 **abc** 的索引鍵名稱|
 |`key=abc,xyz`|符合索引鍵名稱 **abc** 或 **xyz** (限制為5個 CSV) |
 
-|標籤篩選|作用|
+|標籤篩選|效果|
 |--|--|
 |省略 `label` 或使用 `label=`|符合不含標籤的專案|
 |`label=*`|符合 **任何** 標籤|
@@ -135,9 +134,11 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>保留字元
 
+保留的字元包括：
+
 `*`, `\`, `,`
 
-如果保留字元是值的一部分，則必須使用來將它換成 `\{Reserved Character}` 。 非保留字元也可以進行轉義。
+如果保留字元是值的一部分，則必須使用來將它加上轉義 `\{Reserved Character}` 。 非保留字元也可以進行轉義。
 
 ### <a name="filter-validation"></a>篩選驗證
 
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>範例
 
-- 全部
+- 全部：
 
     ```http
     GET /revisions
     ```
 
-- 索引鍵名稱以 **abc** 開頭的專案
+- 索引鍵名稱以 **abc** 開頭的專案：
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- 索引鍵名稱為 **abc** 或 **xyz** 且標籤包含 **生產** 的專案
+- 索引鍵名稱為 **abc** 或 **xyz** 的專案，且標籤包含 **生產**：
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -186,9 +187,9 @@ Content-Type: application/problem+json; charset=utf-8
 GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Time-Based 存取
+## <a name="time-based-access"></a>以時間為基礎的存取
 
-取得過去一次結果的標記法。 請參閱[2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1)章節
+取得過去一次結果的標記法。 如需詳細資訊，請參閱 [Time-Based 存取資源狀態的 HTTP 架構--Memento](https://tools.ietf.org/html/rfc7089#section-2.1)，第2.1.1 節。
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1

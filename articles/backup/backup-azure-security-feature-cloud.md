@@ -3,12 +3,12 @@ title: Azure 備份的虛刪除
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271540"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254018"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
 
@@ -37,7 +37,7 @@ ms.locfileid: "91271540"
 
 1. 在 Azure 入口網站中，移至您的保存庫，然後移至 [**設定**  ->  **屬性**]。
 2. 在 [屬性] 窗格中，選取 [**安全性設定**  ->  **更新**]。  
-3. 在 [安全性設定] 窗格的 [虛 **刪除**] 下，選取 [ **停**用]。
+3. 在 [安全性設定] 窗格的 [虛 **刪除**] 下，選取 [ **停** 用]。
 
 ![停用虛刪除](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
 
@@ -69,7 +69,7 @@ SoftDeleteFeatureState : Disabled
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-請遵循下列步驟：
+依照下列步驟執行：
 
 1. 依照步驟來停用虛 [刪除](#enabling-and-disabling-soft-delete)。
 
@@ -87,11 +87,11 @@ SoftDeleteFeatureState : Disabled
 
 5. 選擇 [ **刪除備份資料** ] 以永久刪除備份資料。
 
-   ![選擇 [刪除備份資料]](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![選擇 [刪除備份資料]](./media/backup-azure-manage-vms/delete-backup-button.png)
 
 6. 輸入備份專案的名稱，以確認您想要刪除復原點。
 
-   ![輸入備份專案的名稱](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![輸入備份專案的名稱](./media/backup-azure-manage-vms/delete-backup-data.png)
 
 7. 若要刪除專案的備份資料，請選取 [ **刪除**]。 通知訊息可讓您知道備份資料已刪除。
 

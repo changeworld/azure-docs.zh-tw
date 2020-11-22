@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745678"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95239545"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>針對跨區域複寫進行疑難排解
 
@@ -50,6 +50,12 @@ ms.locfileid: "94745678"
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     請驗證複寫是否已中斷，或未初始化，或是閒置 (失敗的初始化) 。    |
 |     `Cannot delete   source replication`    |     不允許從來源端刪除複寫。 請確定您要從目的地端刪除複寫。    |
+
+## <a name="errors-deleting-volume"></a>刪除磁片區時發生錯誤
+
+|     錯誤訊息    |     解決方法    |
+|-|-|
+| `Volume is a member of an active volume replication relationship`  |  刪除磁片區之前先刪除複寫。 請參閱 [刪除](cross-region-replication-delete.md)複寫。 這種作業需要您先中斷對等互連，才能刪除磁片區的複寫。 |
 | `Volume with replication cannot be deleted`  |  刪除磁片區之前先刪除複寫。 請參閱 [刪除](cross-region-replication-delete.md)複寫。 這種作業需要您先中斷對等互連，才能刪除磁片區的複寫。 
 
 ## <a name="errors-resyncing-volume"></a>正在重新同步磁片區錯誤
@@ -69,7 +75,7 @@ ms.locfileid: "94745678"
 
 * [跨區域複寫](cross-region-replication-introduction.md)
 * [使用跨區域複寫的需求和考慮](cross-region-replication-requirements-considerations.md)
-* [建立複寫對等互連](cross-region-replication-create-peering.md)
+* [建立磁片區複寫](cross-region-replication-create-peering.md)
 * [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463938"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95251088"
 ---
 # <a name="how-to-investigate-risk"></a>作法：調查風險
 
-Identity Protection 會提供組織三種報告，用於調查其環境中的身分識別風險。 分別為**風險性使用者**、**風險性登入**及**風險偵測**報告。 事件調查是深入了解並找出任何安全性策略弱點的關鍵。
+Identity Protection 會提供組織三種報告，用於調查其環境中的身分識別風險。 分別為 **風險性使用者**、**風險性登入** 及 **風險偵測** 報告。 事件調查是深入了解並找出任何安全性策略弱點的關鍵。
 
 這三種報告皆能以 .CSV 格式下載事件，以供在 Azure 入口網站外部進一步分析。 風險性使用者和風險性登入報告允許下載最近的 2500 個項目，而風險偵測報告則允許下載最近的 5000 筆記錄。
 
@@ -90,6 +90,10 @@ Identity Protection 會提供組織三種報告，用於調查其環境中的身
 - 從 Microsoft Cloud App Security (MCAS) 取得更多詳細資料的連結。
 
 然後，管理員可以選擇返回使用者的風險或登入報告，根據搜集到的資訊採取動作。
+
+> [!NOTE] 
+> 我們的系統可能會偵測到造成風險使用者風險分數的風險事件為誤報，或已透過原則強制補救使用者風險，例如完成 MFA 提示或安全密碼變更。 因此，我們的系統將會關閉風險狀態，並會顯示「AI 確認的登入安全」的風險詳細資料，而且不會再對使用者的風險造成影響。 
+
 
 ## <a name="next-steps"></a>後續步驟
 
