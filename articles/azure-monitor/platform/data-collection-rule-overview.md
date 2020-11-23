@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107958"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315527"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的資料收集規則) 
 資料收集規則 (DCR) 定義進入 Azure 監視器的資料，並指定應該傳送或儲存資料的位置。 本文概述資料收集規則，包括其內容和結構，以及您可以如何建立和使用它們。
@@ -26,11 +26,11 @@ ms.locfileid: "92107958"
 ## <a name="components-of-a-data-collection-rule"></a>資料集合規則的元件
 資料收集規則包含下列元件。
 
-| 元件 | 描述 |
+| 元件 | 說明 |
 |:---|:---|
 | 資料來源 | 監視資料的唯一來源，其本身的格式和公開其資料的方法。 資料來源的範例包括 Windows 事件記錄檔、效能計數器和 syslog。 每個資料來源都符合如下所述的特定資料來源類型。 |
 | 串流 | 唯一的控制碼，描述將轉換並架構化為一種類型的一組資料來源。 每個資料來源都需要一個或多個資料流程，而一個資料流程可能會由多個資料來源使用。 資料流程中的所有資料來源都會共用一個通用的架構。 例如，當您想要將特定資料來源傳送到相同 Log Analytics 工作區中的多個資料表時，請使用多個資料流程。 |
-| Destinations | 應傳送資料的目的地集合。 範例包括 Log Analytics 工作區、Azure 監視器計量和 Azure 事件中樞。 | 
+| 目的地 | 應傳送資料的目的地集合。 範例包括 Log Analytics 工作區、Azure 監視器計量和 Azure 事件中樞。 | 
 | 資料流程 | 應將哪些資料流程傳送至哪些目的地的定義。 | 
 
 下圖顯示資料集合規則及其關聯性的元件
@@ -40,7 +40,7 @@ ms.locfileid: "92107958"
 ### <a name="data-source-types"></a>資料來源類型
 每個資料來源都有一種資料來源類型。 每個類型都會定義一組唯一的屬性，這些屬性必須針對每個資料來源指定。 下表顯示目前可用的資料來源類型。
 
-| 資料來源類型 | 描述 | 
+| 資料來源類型 | 說明 | 
 |:---|:---|
 | 擴充功能 | 以 VM 延伸模組為基礎的資料來源 |
 | performanceCounters | 適用于 Windows 和 Linux 的效能計數器 |
@@ -49,19 +49,7 @@ ms.locfileid: "92107958"
 
 
 ## <a name="limits"></a>限制
-下表列出目前適用于每個資料收集規則的限制。
-
-| 限制 | 值 |
-|:---|:---|
-| 資料來源數目上限 | 10 |
-| 效能計數器中的計數器規範數目上限 | 100 |
-| Syslog 中的設備名稱數目上限 | 20 |
-| 事件記錄檔中的 XPath 查詢數目上限 | 100 |
-| 資料流程數目上限 | 10 |
-| 資料流程數目上限 | 10 |
-| 擴充功能的最大數目 | 10 |
-| 延伸模組設定的大小上限 | 32 Kb |
-| Log Analytics 工作區的數目上限 | 10 |
+如需適用于每個資料收集規則的限制，請參閱 [Azure 監視器服務限制](../service-limits.md#data-collection-rules)。
 
 
 ## <a name="create-a-dcr"></a>建立 DCR
@@ -82,7 +70,7 @@ ms.locfileid: "92107958"
 - syslog
   - 從 cron 設備收集 Debug、Critical 和緊急事件。
   - 從 syslog 設備收集警示、重大和緊急事件。
-- Destinations
+- 目的地
   - 將所有資料傳送至名為 centralWorkspace 的 Log Analytics 工作區。
 
 ```json

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919673"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315578"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
 Azure 監視器代理程式 (AMA) 會從虛擬機器的客體作業系統收集監視資料，並將其傳遞至 Azure 監視器。 本文概述 Azure 監視器代理程式，包括如何安裝，以及如何設定資料收集。
@@ -54,7 +54,7 @@ Azure 監視器代理程式的公開預覽期間，適用下列限制：
 
 - Azure 監視器代理程式不支援解決方案和見解，例如適用於 VM 的 Azure 監視器和 Azure 資訊安全中心。 目前唯一支援的案例是使用您所設定的資料收集規則來收集資料。 
 - 資料收集規則必須建立在與做為目的地的任何 Log Analytics 工作區相同的區域中。
-- 目前僅支援 Azure 虛擬機器。 目前不支援內部部署虛擬機器、虛擬機器擴展集、伺服器的 Arc、Azure Kubernetes Service 和其他計算資源類型。
+- 目前支援 Azure 虛擬機器和已啟用 Azure Arc 的伺服器。目前不支援虛擬機器擴展集、Azure Kubernetes Service 和其他計算資源類型。
 - 虛擬機器必須具有下列 HTTPS 端點的存取權：
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -76,7 +76,7 @@ Azure 監視器代理程式不會產生任何費用，但您可能會產生資�
 
 Azure 監視器代理程式會將資料傳送至 Azure 監視器計量或支援 Azure 監視器記錄的 Log Analytics 工作區。
 
-| 資料來源 | 目的地 | 描述 |
+| 資料來源 | 目的地 | 說明 |
 |:---|:---|:---|
 | 效能        | Azure 監視器計量<br>Log Analytics 工作區 | 測量作業系統和工作負載不同層面效能的數值。 |
 | Windows 事件記錄檔 | Log Analytics 工作區 | 傳送至 Windows 事件記錄系統的資訊。 |
@@ -94,50 +94,8 @@ Azure 監視器代理程式不需要任何金鑰，而是需要 [系統指派的
 ## <a name="networking"></a>網路功能
 Azure 監視器代理程式支援 Azure 服務標籤 (需要 AzureMonitor 和 AzureResourceManager 標記，) 但尚未使用 Azure 監視器 Private Link 範圍或直接 proxy。
 
-## <a name="install-the-azure-monitor-agent"></a>安裝 Azure 監視器代理程式
-Azure 監視器代理程式會實作為 [AZURE VM 擴充](../../virtual-machines/extensions/overview.md) 功能，並包含下表中的詳細資料。 
-
-| 屬性 | Windows | Linux |
-|:---|:---|:---|
-| Publisher | Microsoft Azure 監視器  | Microsoft Azure 監視器 |
-| 類型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 1.5 |
-
-使用任何方法安裝 Azure 監視器代理程式，以使用 PowerShell 或 CLI 安裝虛擬機器代理程式，包括下列各項。 或者，您可以使用入口網站來安裝代理程式，並在 Azure 訂用帳戶中的虛擬機器上設定資料收集，方法是使用「 [設定 Azure 監視器代理程式的資料收集 (預覽版) ](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)中所述的程式。
-
-### <a name="windows"></a>Windows
-
-# <a name="cli"></a>[CLI](#tab/CLI1)
-
-```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
-
-```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
-
-
-### <a name="linux"></a>Linux
-
-# <a name="cli"></a>[CLI](#tab/CLI2)
-
-```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
-
-```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
-```
----
 
 ## <a name="next-steps"></a>後續步驟
 
+- 在 Windows 和 Linux 虛擬機器上[安裝 Azure 監視器代理程式](azure-monitor-agent-install.md)。
 - [建立資料集合規則](data-collection-rule-azure-monitor-agent.md) ，以從代理程式收集資料，並將資料傳送至 Azure 監視器。

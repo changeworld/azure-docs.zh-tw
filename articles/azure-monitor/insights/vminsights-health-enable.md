@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686689"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318128"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>啟用適用於 VM 的 Azure 監視器來賓健全狀況 (preview) 
 適用於 VM 的 Azure 監視器來賓健康狀態可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何在您的訂用帳戶中啟用這項功能，以及如何啟用每部虛擬機器的來賓監視。
@@ -24,12 +24,18 @@ ms.locfileid: "94686689"
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 或更新版本
 - 虛擬機器必須位於下列其中一個區域：
+  - 澳大利亞東部
   - 澳大利亞東南部
+  - 印度中部
   - 美國中部
   - 美國東部
   - 美國東部 2
   - 美國東部 2 EUAP
-  - 北歐
+  - 德國中西部
+  - 日本東部
+  - 美國中北部
+  - 歐洲北部
+  - 美國中南部
   - 東南亞
   - 英國南部
   - 西歐
@@ -40,7 +46,7 @@ ms.locfileid: "94686689"
   - 美國東部 2 EUAP
   - 西歐區域
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 虛擬機器必須上線至適用於 VM 的 Azure 監視器。
 - 執行上線步驟的使用者必須擁有虛擬機器和資料收集規則所在訂用帳戶的最小參與者層級存取權。

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/20/2020
-ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 11/21/2020
+ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312420"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95323241"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -34,8 +34,8 @@ ms.locfileid: "92312420"
 
 | | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (WAD)  | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|
-| **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
-| **代理程式需求**  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **支援的環境** | Azure<br>其他雲端 (Azure Arc) <br>內部部署 (Azure Arc)   | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
+| **代理程式需求**  | None | None | None | 需要 Log Analytics 代理程式 |
 | **收集的資料** | 事件記錄<br>效能 | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<br>檔案型記錄<br>IIS 記錄<br>見解和解決方案<br>其他服務 | 程序相依性<br>網路連接計量 |
 | **傳送至的資料** | Azure 監視器記錄<br>Azure 監視器計量 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄<br>透過 Log Analytics 代理程式 ()  |
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
@@ -44,8 +44,8 @@ ms.locfileid: "92312420"
 
 | | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (LAD)  | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|:---|
-| **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
-| **代理程式需求**  | 無 | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **支援的環境** | Azure<br>其他雲端 (Azure Arc) <br>內部部署 (Arc 弧線)  | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
+| **代理程式需求**  | None | None | None | None | 需要 Log Analytics 代理程式 |
 | **收集的資料** | syslog<br>效能 | syslog<br>效能 | 效能 | syslog<br>效能| 程序相依性<br>網路連接計量 |
 | **傳送至的資料** | Azure 監視器記錄<br>Azure 監視器計量 | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄<br>透過 Log Analytics 代理程式 ()  |
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
@@ -56,7 +56,7 @@ ms.locfileid: "92312420"
 
 如果您需要執行下列動作，請使用 Azure 監視器代理程式：
 
-- 從 Azure、其他雲端或內部部署中的任何虛擬機器收集來賓記錄和計量。  (Azure 僅限預覽。 ) 
+- 從 Azure、其他雲端或內部部署中的任何虛擬機器收集來賓記錄和計量。  (Azure 外部虛擬機器所需的 Azure Arc。 )  
 - 將資料傳送至 Azure 監視器記錄和 Azure 監視器計量，以 Azure 監視器進行分析。 
 - 將資料傳送至 Azure 儲存體以便封存。
 - 使用 [Azure 事件中樞](diagnostics-extension-stream-event-hubs.md)將資料傳送至協力廠商工具。
@@ -196,7 +196,7 @@ Azure 診斷擴充功能的限制包括：
 |                    | 6.9     | 2.6.32-696  |
 | CentOSPlus         | 6.10    | 2.6.32-754.3。5<br>2.6.32-696.30。1 |
 |                    | 6.9     | 2.6.32-696.30。1<br>2.6.32-696.18。7 |
-| Ubuntu Server      | 18.04   | 5.3.0-1020<br>5.0 (包含 Azure 調整的核心) <br>4.18* <br> 4.15* |
+| Ubuntu Server      | 18.04   | 5.3.0-1020<br>5.0 (包含 Azure 調整的核心) <br>4.18 *<br> 4.15* |
 |                    | 16.04.3 | 4.15. * |
 |                    | 16.04   | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 | SUSE Linux 12 Enterprise Server | 12 SP4 | 4.12. * (包含 Azure 調整的核心)  |

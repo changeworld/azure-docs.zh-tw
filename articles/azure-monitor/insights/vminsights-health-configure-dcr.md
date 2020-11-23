@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: fd131798352aaccaea66c242e92d550c98d7c86f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686796"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318094"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>使用資料收集規則在適用於 VM 的 Azure 監視器來賓健康情況中設定監視 (預覽) 
 [適用於 VM 的 Azure 監視器來賓健康狀態](vminsights-health-overview.md) 可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何使用資料收集規則，在多部虛擬機器之間修改預設監視。
@@ -20,7 +20,7 @@ ms.locfileid: "94686796"
 ## <a name="monitors"></a>監視器
 虛擬機器的健全狀況狀態取決於每個監視的 [健全狀況匯總](vminsights-health-overview.md#health-rollup-policy) 套件。 適用於 VM 的 Azure 監視器來賓健康情況下有兩種監視類型，如下表所示。
 
-| 監視器 | 描述 |
+| 監視 | 說明 |
 |:---|:---|
 | 單位監視 | 測量資源或應用程式的某些層面。 這可能是檢查效能計數器以判斷資源的效能或可用性。 |
 | 彙總監視器 | 將多個監視器分組，以提供單一匯總的健全狀況狀態。 匯總監視可包含一或多個單位監視和其他匯總監視。 |
@@ -30,12 +30,12 @@ ms.locfileid: "94686796"
 ## <a name="monitor-properties"></a>監視屬性
 下表說明可在每個監視器上設定的屬性。
 
-| 屬性 | 監視器 | 描述 |
+| 屬性 | 監視器 | 說明 |
 |:---|:---|:---|
 | 啟用 | Aggregate<br>單位 | 若為 true，則會計算狀態監視器，並貢獻虛擬機器的健全狀況。 它可能會觸發警示警示已啟用。 |
 | 警示 | Aggregate<br>單位 | 若為 true，當監視移至狀況不良狀態時，就會觸發警示。 若為 false，監視器的狀態仍會導致可能觸發警示的虛擬機器健全狀況。 |
 | 警告 | 單位 | 警告狀態的準則。 如果沒有，則監視器將永遠不會進入警告狀態。 |
-| Critical | 單位 | 重大狀態的準則。 如果沒有，則監視器將永遠不會進入重大狀態。 |
+| 重大 | 單位 | 重大狀態的準則。 如果沒有，則監視器將永遠不會進入重大狀態。 |
 | 評估頻率 | 單位 | 評估健全狀況狀態的頻率。 |
 | 回顧 | 單位 | 回顧視窗的大小（以秒為單位）。 如需詳細說明，請參閱 [monitorConfiguration 元素](#monitorconfiguration-element) 。 |
 | 評估類型 | 單位 | 定義要從範例集合中使用的值。 如需詳細說明，請參閱 [monitorConfiguration 元素](#monitorconfiguration-element) 。 |
@@ -47,17 +47,17 @@ ms.locfileid: "94686796"
 下表列出每個監視的預設設定。 此預設設定無法直接變更，但您可以定義 [覆寫](#overrides) ，以修改某些虛擬機器的監視設定。
 
 
-| 監視器 | 啟用 | 警示 | 警告 | Critical | 評估頻率 | 回顧 | 評估類型 | 最小取樣 | 樣本數上限 |
+| 監視 | 啟用 | 警示 | 警告 | 重大 | 評估頻率 | 回顧 | 評估類型 | 最小取樣 | 樣本數上限 |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| CPU 使用率  | 是 | 否 | 無 | \> 90%    | 60 秒 | 240秒 | 最小值 | 2 | 3 |
-| 可用的記憶體 | 是 | 否 | 無 | \< 100 MB | 60 秒 | 240秒 | 最大值 | 2 | 3 |
-| 檔案系統      | 是 | 否 | 無 | \< 100 MB | 60 秒 | 120秒 | 最大值 | 1 | 1 |
+| CPU 使用率  | True | False | None | \> 90%    | 60 秒 | 240秒 | 最小值 | 2 | 3 |
+| 可用的記憶體 | True | False | None | \< 100 MB | 60 秒 | 240秒 | 最大值 | 2 | 3 |
+| 檔案系統      | True | False | None | \< 100 MB | 60 秒 | 120秒 | 最大值 | 1 | 1 |
 
 
 ## <a name="overrides"></a>覆寫
 覆 *寫* 會變更監視的一或多個屬性。 例如，覆寫可以停用預設啟用的監視、定義監視的警告準則，或修改監視的重大閾值。 
 
-覆寫是在 [資料集合規則中定義 (DCR) ](../platform/data-collection-rule-overview.md)。 您可以使用不同的覆寫集合來建立多個 Dcr，並將它們套用至多個虛擬機器。 您可以依照 [設定 Azure 監視器代理程式 (preview) 的資料收集 ](../platform/data-collection-rule-azure-monitor-agent.md#dcr-associations)中所述，建立關聯，以將 DCR 套用至虛擬機器。
+覆寫是在 [資料集合規則中定義 (DCR) ](../platform/data-collection-rule-overview.md)。 您可以使用不同的覆寫集合來建立多個 Dcr，並將它們套用至多個虛擬機器。 您可以依照 [設定 Azure 監視器代理程式 (preview) 的資料收集 ](../platform/data-collection-rule-azure-monitor-agent.md#data-collection-rule-associations)中所述，建立關聯，以將 DCR 套用至虛擬機器。
 
 
 ## <a name="multiple-overrides"></a>多重覆寫
@@ -175,7 +175,7 @@ ms.locfileid: "94686796"
 
 下表列出目前可用的監視名稱。
 
-| 類型名稱 | 名稱 | 描述 |
+| 類型名稱 | Name | 描述 |
 |:---|:---|:---|
 | root | root | 代表虛擬機器健康情況的最上層監視。 | |
 | cpu 使用率 | cpu 使用率 | CPU 使用率監視器。 | |
@@ -198,7 +198,7 @@ ms.locfileid: "94686796"
 }
 ```
 
-| 項目 | 強制性 | 描述 | 
+| 項目 | 強制性 | 說明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 如果設定為 true，監視將會在切換至重大或警告狀態時產生警示，並在返回狀況良好狀態時解決警示。 如果為 false 或省略，則不會產生警示。  |
 
@@ -224,7 +224,7 @@ ms.locfileid: "94686796"
 }
 ```
 
-| 項目 | 強制性 | 描述 | 
+| 項目 | 強制性 | 說明 | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | 否 | 定義健全狀況狀態評估的頻率。 每個監視器都會在代理程式啟動時進行評估，並在之後依此參數定義的定期間隔進行評估。 |
 | `lookbackSecs`   | 否 | 回顧視窗的大小（以秒為單位）。 |
@@ -246,7 +246,7 @@ ms.locfileid: "94686796"
 },
 ```
 
-| 屬性 | 強制性 | 描述 | 
+| 屬性 | 強制性 | 說明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否啟用條件。 如果設定為 **false**，即使可以設定臨界值和運算子屬性，還是會停用條件。 |
 | `threshold` | 否 | 定義要比較評估值的臨界值。 |
@@ -264,7 +264,7 @@ ms.locfileid: "94686796"
 },
 ```
 
-| 屬性 | 強制性 | 描述 | 
+| 屬性 | 強制性 | 說明 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否啟用條件。 如果設定為 **false**，即使可以設定臨界值和運算子屬性，還是會停用條件。 |
 | `threshold` | 否 | 定義要比較評估值的臨界值。 |
