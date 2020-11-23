@@ -42,7 +42,7 @@
       href: concepts-storage.md
     - name: 私人雲端的存取和身分識別
       href: concepts-identity.md
-    - name: 角色型存取控制
+    - name: vSphere 角色型存取控制
       href: concepts-role-based-access-control.md
     - name: 監視和修復私人雲端
       href: concepts-monitor-repair-private-cloud.md

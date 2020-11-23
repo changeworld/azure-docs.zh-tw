@@ -72,7 +72,7 @@
           href: diagnostics-log-analytics-2019.md
     - name: 發佈內建應用程式
       href: publish-apps-2019.md
-    - name: 設定 Azure Multi-Factor Authentication
+    - name: 設定 Azure AD Multi-Factor Authentication
       href: ../set-up-mfa.md
 - name: 概念
   items:

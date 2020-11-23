@@ -89,6 +89,8 @@
               href: samples/resource-manager-web-app.md
             - name: Azure Functions
               href: samples/resource-manager-function-app.md
+        - name: 資料收集規則
+          href: samples/resource-manager-data-collection-rules.md
         - name: 診斷設定
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics 工作區
@@ -164,6 +166,7 @@
         - name: 部署 Azure 監視器
           href: deploy.md
         - name: 大規模部署
+          displayName: 'Azure Policy, Policy'
           href: deploy-scale.md
     - name: 管理和設定
       items:
@@ -351,6 +354,9 @@
             - name: 概觀
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
+            - name: 安裝
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-install.md
             - name: 資料集合
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md

@@ -733,8 +733,10 @@
           items:
             - name: 從 Data Lake Storage Gen1 遷移
               href: data-lake-storage-migrate-gen1-to-gen2.md
-            - name: 遷移內部部署 HDFS 存放區
+            - name: 離線遷移 HDFS 存放區
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
+            - name: 線上遷移 HDFS 存放區
+              href: migrate-gen2-wandisco-live-data-platform.md
         - name: 管理
           items:
             - name: .NET

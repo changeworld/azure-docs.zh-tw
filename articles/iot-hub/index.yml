@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 11145abb06fb84f533ee6d556cafe1e943579131
-  ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+  ms.openlocfilehash: 665692e1d902dfed8cdab535d0639f356f4e709c
+  ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92890219"
+  ms.lasthandoff: 11/19/2020
+  ms.locfileid: "94885915"
 landingContent:
 - title: 開始使用
   linkLists:
@@ -78,6 +78,20 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: 執行和檢視路由結果
       url: tutorial-routing-view-message-routing-results.md
+- title: Azure Stack Hub 上的 IoT 中樞 (預覽)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 操作員概觀
+      url: /azure-stack/operator/iot-hub-rp-overview
+    - text: 使用者概觀
+      url: /azure-stack/user/iot-hub-overview
+  - linkListType: how-to-guide
+    links:
+    - text: 安裝的先決條件
+      url: /azure-stack/operator/iot-hub-rp-prerequisites
+    - text: 如何在 Azure Stack Hub 上安裝 IoT 中樞
+      url: /azure-stack/operator/iot-hub-rp-install
 - title: 使用 IoT 中樞工具
   linkLists:
   - linkListType: how-to-guide

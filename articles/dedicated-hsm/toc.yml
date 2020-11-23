@@ -10,6 +10,10 @@
       href: tutorial-deploy-hsm-cli.md
     - name: 使用 PowerShell 將 HSM 部署至現有的虛擬網路
       href: tutorial-deploy-hsm-powershell.md
+- name: 快速入門
+  items:
+    - name: 使用 Azure PowerShell 建立 Azure 專用 HSM
+      href: quickstart-create-hsm-powershell.md
 - name: 概念
   items:
     - name: 高可用性

@@ -79,7 +79,7 @@
     - name: Azure 監視器
       items:
         - name: Azure 監視器代理程式
-          href: ../../azure-monitor/platform/azure-monitor-agent-overview.md?#install-the-azure-monitor-agent
+          href: ../../azure-monitor/platform/azure-monitor-agent-install.md
         - name: 診斷擴充功能
           items:
             - name: Linux

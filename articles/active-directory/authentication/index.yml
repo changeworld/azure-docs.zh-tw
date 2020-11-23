@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 17775be39e534d0825596973452dabc13054ee8d
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: d484600da9be9d84b6af7ad31754ea86bf6b6873
+  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91968220"
+  ms.lasthandoff: 11/18/2020
+  ms.locfileid: "94838046"
 landingContent:
 - title: 關於驗證
   linkLists:
@@ -51,21 +51,21 @@ landingContent:
       url: howto-sspr-deployment.md
     - text: 從 Windows 登入畫面啟用密碼重設
       url: howto-sspr-windows.md
-- title: 啟用 Azure Multi-Factor Authentication
+- title: 啟用 Azure AD Multi-Factor Authentication
   linkLists:
   - linkListType: concept
     links:
-    - text: Azure Multi-Factor Authentication 的作用
+    - text: Azure AD Multi-Factor Authentication 的作用
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: 啟用 Azure Multi-Factor Authentication
+    - text: 啟用 Azure AD Multi-Factor Authentication
       url: tutorial-enable-azure-mfa.md
-    - text: 啟用風險型 Azure Multi-Factor Authentication
+    - text: 啟用風險型 Azure AD Multi-Factor Authentication
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Azure Multi-Factor Authentication 的部署指南
+    - text: Azure AD Multi-Factor Authentication 的部署指南
       url: howto-mfa-getstarted.md
     - text: 使用 NPS 擴充功能來整合內部部署應用程式
       url: howto-mfa-nps-extension.md

@@ -61,10 +61,14 @@
       href: security-baselines-overview.md
     - name: API 管理安全性基準
       href: ../../api-management/security-baseline.md
+    - name: App Service 安全性基準
+      href: ../../app-service/security-baseline.md
     - name: 應用程式閘道安全性基準
       href: ../../application-gateway/security-baseline.md
     - name: 自動化安全性基準
       href: ../../automation/security-baseline.md
+    - name: Azure Advisor 安全性基準
+      href: ../../advisor/security-baseline.md
     - name: Azure 備份安全性基準
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis 安全性基準
@@ -77,6 +81,8 @@
       href: /azure/data-explorer/security-baseline
     - name: Azure Data Factory 安全性基準
       href: ../../data-factory/security-baseline.md
+    - name: Azure Data Share 安全性基準
+      href: ../../data-share/security-baseline.md
     - name: 適用於 MySQL 的 Azure 資料庫安全性基準
       href: ../../mysql/security-baseline.md
     - name: 適用於 MariaDB 的 Azure 資料庫安全性基準
@@ -87,6 +93,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks 安全性基準
       href: /azure/databricks/scenarios/security-baseline
+    - name: 適用於 Azure Defender 的 IoT 安全性基準
+      href: ../../defender-for-iot/security-baseline.md
     - name: Azure DNS 安全性基準
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs 安全性基準
@@ -97,16 +105,24 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions 安全性基準
       href: ../../azure-functions/security-baseline.md
+    - name: Azure HPC Cache 安全性基準
+      href: ../../hpc-cache/security-baseline.md
+    - name: Azure 資訊保護安全性基準
+      href: /azure/information-protection/security-baseline
     - name: Azure IoT 中樞安全性基準
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service 安全性基準
       href: ../../aks/security-baseline.md
+    - name: Azure Lighthouse 安全性基準
+      href: ../../lighthouse/security-baseline.md
     - name: Azure Load Balancer 安全性基準
       href: ../../load-balancer/security-baseline.md
     - name: 適用於安全性基準的 Azure 監視器
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning 安全性基準
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Migrate Learning 安全性基準
+      href: ../../migrate/security-baseline.md
     - name: Azure 原則安全性基準
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Private Link 安全性基準

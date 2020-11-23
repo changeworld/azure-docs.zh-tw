@@ -10,7 +10,7 @@
       href: require-tou.md
 - name: 教學課程
   items:
-    - name: 要求使用 Azure Multi-Factor Authentication
+    - name: 需要 Azure AD Multi-Factor Authentication
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false

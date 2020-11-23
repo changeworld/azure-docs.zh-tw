@@ -9,7 +9,7 @@
   items:
     - name: 啟用自助式密碼重設
       href: tutorial-enable-sspr.md
-    - name: 啟用 Azure Multi-Factor Authentication
+    - name: 啟用 Azure AD Multi-Factor Authentication
       href: tutorial-enable-azure-mfa.md
     - name: 啟用將密碼回寫至內部部署
       href: tutorial-enable-sspr-writeback.md
@@ -22,7 +22,7 @@
   items:
     - name: 驗證方法
       items:
-        - name: 總覽
+        - name: 概觀
           href: concept-authentication-methods.md
         - name: Microsoft Authenticator 應用程式
           href: concept-authentication-authenticator-app.md
@@ -80,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: 適用於 Windows 用戶端的 SSPR
           href: howto-sspr-windows.md
-    - name: Azure Multi-Factor Authentication
+    - name: Azure AD 多重要素驗證
       items:
         - name: 部署指南
           href: howto-mfa-getstarted.md
@@ -108,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: NPS 擴充功能的進階組態
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure VPN 與 Azure MFA
+            - name: Azure VPN 與 Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: 遠端桌面閘道器
               href: howto-mfa-nps-extension-rdg.md
@@ -255,7 +255,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
