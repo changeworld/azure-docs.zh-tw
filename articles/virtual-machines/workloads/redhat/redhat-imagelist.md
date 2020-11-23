@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: b03d559b8952a61896fa79a568fb8200b3618fed
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ea0e8c148a847ecc23bab5e87a1dc60a626cf0c1
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968633"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411609"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux Azure 中提供的 (RHEL) 映射
 Azure 提供各種不同使用案例的 RHEL 映射。
@@ -27,7 +27,7 @@ Azure 提供各種不同使用案例的 RHEL 映射。
 > [!NOTE]
 > 不會再產生原始影像，而是要改用 LVM 分割的影像。 LVM 提供許多優於舊版原始 (非 LVM) 資料分割配置的優點，包括大幅提高彈性的分割區大小選項。
 
-供應項目| SKU | 資料分割 | 佈建 | 注意
+供應項目| SKU | 資料分割 | 佈建 | 備註
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
 |             | 6.8      | RAW    | Linux 代理程式 | 自12月1日起提供延長生命週期支援。 [詳細資訊請參閱這裡。](redhat-extended-lifecycle-support.md)
@@ -55,12 +55,14 @@ RHEL          | 6.7      | RAW    | Linux 代理程式 | 自12月1日起提供�
 |             | 8-lvm-gen2| LVM    | Linux 代理程式 | Hyper-v 第2代-RHEL 8.x 系列映射。 附加至一般存放庫。
 |             | 8        | LVM    | Linux 代理程式 | RHEL 8.0 映射。
 |             | 8-gen2   | LVM    | Linux 代理程式 | Hyper-v 第2代-RHEL 8.0 映射。
-|             | 8.1      | LVM    | Linux 代理程式 | RHEL 8.2 映射。 目前已附加至一般存放庫。
-|             | 81gen2   | LVM    | Linux 代理程式 | Hyper-v 第2代-RHEL 8.1 映射。 目前已附加至一般存放庫。
-|             | 8.1-ci   | LVM    | Linux 代理程式 | 使用雲端初始作為布建代理程式的 RHEL 8.1 映射。 目前已附加至一般存放庫。
-|             | 81-ci-gen2| LVM    | Linux 代理程式 | Hyper-v 第2代-使用雲端初始作為布建代理程式的 RHEL 8.1 映射。 目前已附加至一般存放庫。
-|             | 8.2      | LVM    | Linux 代理程式 | RHEL 8.2 映射。 目前已附加至一般存放庫。
-|             | 82gen2   | LVM    | Linux 代理程式 | Hyper-v 第2代-RHEL 8.1 映射。 目前已附加至一般存放庫。
+|             | 8.1      | LVM    | Linux 代理程式 | 預設會附加至 EUS 存放庫。
+|             | 81gen2   | LVM    | Linux 代理程式 | Hyper-v 第2代-連接到2020年11月的 EUS 存放庫。
+|             | 8.1-ci   | LVM    | Linux 代理程式 | 從2020年11月附加至 EUS 存放庫。
+|             | 81-ci-gen2| LVM    | Linux 代理程式 | Hyper-v 第2代-連接到2020年11月的 EUS 存放庫。
+|             | 8.2      | LVM    | Linux 代理程式 | 從2020年11月附加至 EUS 存放庫。
+|             | 82gen2   | LVM    | Linux 代理程式 | Hyper-v 第2代-連接到2020年11月的 EUS 存放庫。
+|             | 8.3   | LVM    | Linux 代理程式 |  連結至一般存放庫 (EUS 無法用於 RHEL 8.3) 
+|             | 83-gen2   | LVM    | Linux 代理程式 |Hyper-v 第2代-連接到一般存放庫 (EUS 無法用於 RHEL 8.3) 
 RHEL-SAP      | 7.4      | LVM    | Linux 代理程式 | 適用于 SAP Hana 及商務應用程式的 RHEL 7.4。 附加至 E4S 存放庫，將會針對 SAP 和 RHEL 以及基礎計算費用收取 premium。
 |             | 74sap-gen2| LVM    | Linux 代理程式 | 適用于 SAP Hana 及商務應用程式的 RHEL 7.4。 第2代映射。 附加至 E4S 存放庫，將會針對 SAP 和 RHEL 以及基礎計算費用收取 premium。
 |             | 7.5       | LVM    | Linux 代理程式 | 適用于 SAP Hana 及商務應用程式的 RHEL 7.5。 附加至 E4S 存放庫，將會針對 SAP 和 RHEL 以及基礎計算費用收取 premium。
@@ -76,6 +78,11 @@ RHEL-SAP-APPS | 6.8       | RAW    | Linux 代理程式 | 適用于 SAP Business
 |             | 7.4       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 7.4。
 |             | 7.6       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 7.6。
 |             | 7.7       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 7.7。
+|             | 77-gen2       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 7.7。 第2代映射
+|             | 8.1       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 8.1。
+|             | 81-gen2      | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 8.1。 第2代映射。
+|             | 8.2       | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 8.2。
+|             | 82-gen2      | LVM    | Linux 代理程式 | 適用于 SAP Business Applications 的 RHEL 8.2。 第2代映射。
 RHEL-HA       | 7.4       | LVM    | Linux 代理程式 | 具有 HA 附加元件的 RHEL 7.4。 將在基礎計算費用最上層針對 HA 和 RHEL 收取 premium。 已過期，並改用 RHEL-SAP-HA 映射。
 |             | 7.5       | LVM    | Linux 代理程式 | 具有 HA 附加元件的 RHEL 7.5。 將在基礎計算費用最上層針對 HA 和 RHEL 收取 premium。 已過期，並改用 RHEL-SAP-HA 映射。
 |             | 7.6       | LVM    | Linux 代理程式 | 具有 HA 附加元件的 RHEL 7.6。 將在基礎計算費用最上層針對 HA 和 RHEL 收取 premium。 已過期，並改用 RHEL-SAP-HA 映射。
@@ -86,6 +93,10 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux 代理程式 | 適用于 SAP 的 R
 |             | 76sapha-gen2 | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 7.6 （含 HA 和更新服務）。 第2代映射。 附加至 E4S 存放庫。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
 |             | 7.7          | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 7.7 （含 HA 和更新服務）。 附加至 E4S 存放庫。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
 |             | 77sapha-gen2 | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 7.7 （含 HA 和更新服務）。 第2代映射。 附加至 E4S 存放庫。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
+|             | 8.1          | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 8.1 （含 HA 和更新服務）。 附加至 E4S 存放庫。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
+|             | 81sapha-gen2          | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 8.1 （含 HA 和更新服務）。 第2代映射已附加至 E4S 存放庫。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
+|             | 8.2          | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 8.2 （含 HA 和更新服務）。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
+|             | 82sapha-gen2          | LVM    | Linux 代理程式 | 適用于 SAP 的 RHEL 8.2 （含 HA 和更新服務）。 第2代映射已附加至 E4S 存放庫。 會在基礎計算費用之上針對 SAP 和 HA 存放庫及 RHEL 收取 premium。
 rhel-byos     |rhel-lvm74| LVM    | Linux 代理程式 | RHEL 7.4 BYOS 映射（未連結到任何更新來源）不會收取 RHEL premium。
 |             |rhel-lvm75| LVM    | Linux 代理程式 | RHEL 7.5 BYOS 映射（未連結到任何更新來源）不會收取 RHEL premium。
 |             |rhel-lvm76| LVM    | Linux 代理程式 | RHEL 7.6 BYOS 映射（未連結到任何更新來源）不會收取 RHEL premium。

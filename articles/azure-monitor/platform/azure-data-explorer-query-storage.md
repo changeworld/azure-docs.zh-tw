@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: b3ab711f6d324c6d49eda0dccd88a3f2ac939eb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461578"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411558"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 資料總管 (preview 從 Azure 監視器查詢匯出的資料) 
 將資料從 Azure 監視器匯出至 Azure 儲存體帳戶可提供低成本的保留，以及將記錄重新配置到不同區域的能力。 使用 Azure 資料總管來查詢從 Log Analytics 工作區匯出的資料。 一旦設定之後，從您的工作區傳送到 Azure 儲存體帳戶的支援資料表將可作為 Azure 資料總管的資料來源。
@@ -43,7 +43,7 @@ ms.locfileid: "92461578"
 
 若要建立參考，您需要匯出資料表的架構。 使用 Log Analytics 中的 [getschema](/azure/data-explorer/kusto/query/getschemaoperator) 運算子來取得此資訊，其中包含資料表的資料行及其資料類型。
 
-:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Azure 資料總管匯出的資料查詢流程。":::
+:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Log Analytics 資料表架構。":::
 
 您現在可以使用輸出來建立 Kusto 查詢，以建立外部資料表。
 遵循在 [Azure 儲存體或 Azure Data Lake 中建立和變更外部資料表](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake)的指引，以 JSON 格式建立外部資料表，然後從您的 Azure 資料總管資料庫執行查詢。
@@ -56,12 +56,12 @@ ms.locfileid: "92461578"
 ```powershell
 PARAM(
     $resourcegroupname, #The name of the Azure resource group
-    $TableName, # The log lanlyics table you wish to convert to external table
+    $TableName, # The Log Analytics table you wish to convert to external table
     $MapName, # The name of the map
     $subscriptionId, #The ID of the subscription
-    $WorkspaceId, # The log lanlyics WorkspaceId
-    $WorkspaceName, # The log lanlyics workspace name
-    $BlobURL, # The Blob URL where to save
+    $WorkspaceId, # The Log Analytics WorkspaceId
+    $WorkspaceName, # The Log Analytics workspace name
+    $BlobURL, # The Blob URL where the data is saved
     $ContainerAccessKey, # The blob container Access Key (Option to add a SAS url)
     $ExternalTableName = $null # The External Table name, null to use the same name
 )
@@ -116,12 +116,13 @@ Write-Host -ForegroundColor Green $createMapping
 
 下圖顯示輸出的範例和範例。
 
-:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="Azure 資料總管匯出的資料查詢流程。":::
+:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="ExternalTable 建立命令輸出。":::
 
 [![範例輸出](media/azure-data-explorer-query-storage/external-table-create-command-output.png)](media/azure-data-explorer-query-storage/external-table-create-command-output.png#lightbox)
 
 >[!TIP]
->複製、貼上，然後在 Azure 資料總管用戶端工具中執行腳本的輸出，以建立資料表和對應。
+>* 複製、貼上，然後在 Azure 資料總管用戶端工具中執行腳本的輸出，以建立資料表和對應。
+>* 如果您想要使用容器內的所有資料，您可以修改腳本，並將 URL 變更為 ' https://your.blob.core.windows.net/containername ;SecKey'
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>從 Azure 資料總管查詢匯出的資料 
 

@@ -3,12 +3,12 @@ title: 常見問題集 - 備份 Azure VM 上的 SAP Hana 資料庫
 description: 在本文中，您可以針對使用 Azure 備份服務來備份 SAP Hana 資料庫時的常見問題，找到相關解答。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 24eb4abaaabe166ceb3e6bdb99f9446d398d03a1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686101"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95400202"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>常見問題 - 備份 Azure VM 上的 SAP Hana 資料庫
 
@@ -52,6 +52,10 @@ ms.locfileid: "94686101"
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>將 SAP Hana 從 SDC 遷移至 MDC 之後，備份是否可正常運作？
 
 請參閱疑難排解指南的[這一節](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)。
+
+### <a name="what-should-be-done-while-upgrading-within-the-same-version"></a>在相同版本中進行升級時，應該怎麼做？
+
+請參閱疑難排解指南中的 [這一節](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) 。
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>是否可以針對虛擬 IP (負載平衡器) 設定 Azure Hana 備份，而非針對虛擬機器進行設定？
 

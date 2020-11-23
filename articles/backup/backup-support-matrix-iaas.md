@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cff5c68803d0930bbf3310a385ffa0132bcbb3b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2c38af9a2e1c4c71bb2d5661758f663efe13a946
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017021"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95414074"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -160,7 +160,7 @@ Azure VM 資料磁碟 | 支援最多32個磁片的 Azure Vm 備份。<br><br> �
 儲存體類型 | 標準 HDD、標準 SSD、進階 SSD。
 受控磁碟 | 支援。
 加密磁碟 | 支援。<br/><br/> 可備份已啟用 Azure 磁碟加密的 Azure VM (無論是否具有 Azure AD 應用程式)。<br/><br/> 已加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整部 VM。<br/><br/> 您可以對已受到 Azure 備份保護的 VM 啟用加密。
-已啟用寫入加速器的磁碟 | 不支援。<br/><br/> Azure 備份會在備份期間自動排除寫入加速器 (WA) 啟用的磁片。 因為它們不會備份，所以您無法從 VM 的復原點還原這些磁片。 <br><br> **重要注意事項**：具有 WA 磁碟的虛擬機器需要網際網路連線才能成功備份 (即使這些磁碟已從備份中排除也一樣。)
+已啟用寫入加速器的磁碟 | 從2020年11月23日起，韓國中部 (KRC) 及南非北部 (SAN) 區域支援。<br/><br/> Azure 備份會備份具有寫入 Accelarted (WA 之磁片的虛擬機器) 在備份期間啟用。  
 備份和還原已刪除重複資料的 VM/磁碟 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這篇[文章](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure 備份不會跨復原服務保存庫中的 Vm 刪除 <br/> <br/>  -如果在還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫無法理解格式。 不過，您可以成功執行完整的 VM 還原。
 將磁碟新增至受保護的 VM | 支援。
 在受保護的 VM 上調整磁碟大小 | 支援。

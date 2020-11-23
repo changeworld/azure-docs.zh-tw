@@ -3,12 +3,12 @@ title: 針對 SAP Hana 資料庫備份錯誤進行疑難排解
 description: 說明使用 Azure 備份來備份 SAP Hana 資料庫時，如何針對可能發生的常見錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377679"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411320"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>針對 Azure 上的 SAP Hana 資料庫備份進行疑難排解
 
@@ -153,7 +153,7 @@ ms.locfileid: "89377679"
 - 請確認目前 [Azure 備份支援](sap-hana-backup-support-matrix.md#scenario-support)新的 OS 版本、SDC 或 MDC 版本
 - [停止使用保留資料](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)來保護資料庫
 - 執行升級或更新
-- 重新執行預先註冊指令碼。 通常，升級程序會移除必要角色。 執行預先註冊指令碼有助於驗證所有必要角色
+- 重新執行預先註冊指令碼。 通常，升級程式可能會移除 [必要的角色](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)。 執行預先註冊腳本將有助於確認所有必要的角色。
 - 恢復資料庫的保護功能
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>在不變更 SID 的情況下進行 SDC 至 MDC 的升級
@@ -174,7 +174,7 @@ ms.locfileid: "89377679"
 若要在從 SDC 升級至 MDC 時，造成 SID 變更，可以依照下列方式處理：
 
 - 確定目前 [Azure 備份](sap-hana-backup-support-matrix.md#scenario-support)支援新的 MDC 版本
-- **停止使用保留資料來保護**舊 SDC 資料庫
+- **停止使用保留資料來保護** 舊 SDC 資料庫
 - 執行升級。 完成之後，Hana 系統現在就是具有系統 DB 和租用戶 DB 的 MDC
 - 重新執行[預先註冊指令碼](https://aka.ms/scriptforpermsonhana)，並提供正確的詳細資料 (新的 SID 和 MDC)。 由於 SID 的變更，您可能會遇到無法成功執行指令碼的問題。 如果您遇到問題，請連絡 Azure 備份支援。
 - 在 Azure 入口網站中，對同一部機器註冊擴充 ([備份] -> [檢視詳細資料] -> 選取相關的 Azure VM -> 重新註冊)
