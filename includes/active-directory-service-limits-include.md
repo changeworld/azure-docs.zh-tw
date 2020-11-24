@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 5ac49491d8cb8fc81fe01d6f3d0d85456b190ed9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 42dfa499e0a44d0b468d3a234e9dc88904c361b0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329577"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555092"
 ---
 以下是 Azure Active Directory (Azure AD) 服務的使用條件約束和其他服務限制。
 
@@ -30,4 +30,4 @@ ms.locfileid: "94329577"
 | 存取面板 |無論指派的授權有多少，每位使用者在存取面板中可以看到的應用程式數目沒有限制。  |
 | 報表 | 在任何報告中，最多可以檢視或下載 1000 個資料列。 任何其他資料會遭到截斷。 |
 | 管理單位 | Azure AD 資源可以是有不超過 30 個管理單位的成員。 |
-| Azure AD 角色和權限 | <ul><li>可以在 Azure AD 組織中建立最多 30 個 [Azure AD 自訂角色](https://docs.microsoft.com/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure/active-directory/users-groups-roles/context/ugr-context)。</li><li>無法將群組新增為[群組擁有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)。</li><li>使用者讀取其他使用者租用戶資訊的能力，只能由 Azure AD 全組織的交換器進行限制，以停用所有租用戶資訊的所有非系統管理員使用者存取權 (不建議)。 如需詳細資訊，請參閱[限制成員使用者的預設權限](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)。</li><li>最多可能需要 15 分鐘的時間或者先登出/登入，系統管理員角色成員資格新增和撤銷才會生效。</li></ul> |
+| Azure AD 角色和權限 | <ul><li>可以在 Azure AD 組織中建立最多 30 個 [Azure AD 自訂角色](/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context)。</li><li>無法將群組新增為[群組擁有者](../articles/active-directory/fundamentals/users-default-permissions.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context#object-ownership)。</li><li>使用者讀取其他使用者租用戶資訊的能力，只能由 Azure AD 全組織的交換器進行限制，以停用所有租用戶資訊的所有非系統管理員使用者存取權 (不建議)。 如需詳細資訊，請參閱[限制成員使用者的預設權限](../articles/active-directory/fundamentals/users-default-permissions.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context#restrict-member-users-default-permissions)。</li><li>最多可能需要 15 分鐘的時間或者先登出/登入，系統管理員角色成員資格新增和撤銷才會生效。</li></ul> |

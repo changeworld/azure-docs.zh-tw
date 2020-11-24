@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684426"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558959"
 ---
 Azure 共用磁片是 Azure 受控磁片的新功能，可讓您將受控磁片連結到多部虛擬機器， (Vm) 同時進行。 Attaching a managed disk to multiple VMs allows you to either deploy new or migrate existing clustered applications to Azure.
 
@@ -41,7 +41,7 @@ Azure 共用磁片是 Azure 受控磁片的新功能，可讓您將受控磁片�
 
 ### <a name="windows"></a>Windows
 
-Windows Server 2008 和更新版本支援 Azure 共用磁片。 大部分以 Windows 為基礎的叢集都是在 WSFC 上建立的，它會處理叢集節點通訊的所有核心基礎結構，讓您的應用程式能夠利用平行存取模式。 WSFC 會根據您的 Windows Server 版本，啟用 CSV 和非 CSV 的選項。 如需詳細資訊，請參閱[建立容錯移轉叢集](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)。
+Windows Server 2008 和更新版本支援 Azure 共用磁片。 大部分以 Windows 為基礎的叢集都是在 WSFC 上建立的，它會處理叢集節點通訊的所有核心基礎結構，讓您的應用程式能夠利用平行存取模式。 WSFC 會根據您的 Windows Server 版本，啟用 CSV 和非 CSV 的選項。 如需詳細資訊，請參閱[建立容錯移轉叢集](/windows-server/failover-clustering/create-failover-cluster)。
 
 WSFC 上執行的一些熱門應用程式包括：
 

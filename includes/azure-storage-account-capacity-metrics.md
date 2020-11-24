@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 2a8f27c0df2224aed5c69c8c38f463a97e3cf294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e2d798a3dcf7354e68d07785c2762ba03f39f8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711187"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558678"
 ---
-下表顯示 [帳戶層級的度量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)。
+下表顯示 [帳戶層級的度量](../articles/azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |

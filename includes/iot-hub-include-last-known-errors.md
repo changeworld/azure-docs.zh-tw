@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d8583a1fee96d0a6eb3300882b2b115f057cbeec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 54f4835a904b897370cf9f075ae3c005b1114992
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136316"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556424"
 ---
-REST API 中的 [[取得端點健康](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)情況] 會提供端點的健康情況狀態，以及最後一個已知的錯誤，以識別端點狀況不良的原因。 下表列出最常見的錯誤。
+REST API 中的 [[取得端點健康](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)情況] 會提供端點的健康情況狀態，以及最後一個已知的錯誤，以識別端點狀況不良的原因。 下表列出最常見的錯誤。
 
 |上次已知錯誤|描述/發生時|可能的緩和措施|
 |-----|-----|-----|
-|暫時性|發生暫時性錯誤，IoT 中樞將會重試此操作。|觀察 [路由資源記錄](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes)。|
-|InternalError|將訊息傳遞至端點時發生錯誤。|這是內部例外狀況，但也會觀察 [路由資源記錄](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes)。|
+|暫時性|發生暫時性錯誤，IoT 中樞將會重試此操作。|觀察 [路由資源記錄](../articles/iot-hub/monitor-iot-hub-reference.md#routes)。|
+|InternalError|將訊息傳遞至端點時發生錯誤。|這是內部例外狀況，但也會觀察 [路由資源記錄](../articles/iot-hub/monitor-iot-hub-reference.md#routes)。|
 |未經授權|IoT 中樞沒有將訊息傳送至指定端點的授權。|驗證端點的連接字串是最新的。 如果已變更，請考慮 IoT 中樞上的更新。 如果端點使用受控識別，請確認 IoT 中樞主體具有目標的必要許可權。|
 |調整執行速度|IoT 中樞正在將訊息寫入端點時受到節流。|檢查受影響端點的節流限制。 修改端點的設定，以便在需要時擴大。|
 |逾時|作業逾時。|重試作業。|

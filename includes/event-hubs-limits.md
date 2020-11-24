@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 320fa542f2b786f0a256c22f2d2eb299c476dcae
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94362745"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562120"
 ---
 下表提供 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)的特定配額與限制。 如需事件中樞價格的相關資訊，請參閱[事件中樞價格](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -42,12 +42,12 @@ ms.locfileid: "94362745"
 | 每一個事件中樞取用者群組數目 | &nbsp; |1 |20 |
 | 每個命名空間的 AMQP 連線數目 | 後續對更多連線的要求將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 |100 |5,000|
 | 事件資料的最大保留期間 | &nbsp; |1 日 |1-7 天 |
-| 最大輸送量單位 |超過此限制會導致您的資料受到節流，並產生[伺服器忙碌例外狀況](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 若要為標準層要求大量的輸送量單位，請提出[支援要求](/azure/azure-portal/supportability/how-to-create-azure-support-request)。 [更多輸送量單位](../articles/event-hubs/event-hubs-auto-inflate.md)依承諾購買方式，以 20 個為一組來取得。 |20 | 20 | 
+| 最大輸送量單位 |超過此限制會導致您的資料受到節流，並產生[伺服器忙碌例外狀況](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 若要為標準層要求大量的輸送量單位，請提出[支援要求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 [更多輸送量單位](../articles/event-hubs/event-hubs-auto-inflate.md)依承諾購買方式，以 20 個為一組來取得。 |20 | 20 | 
 
 ## <a name="dedicated-tier-vs-standard-tier"></a>專用層和標準層
 事件中樞專用供應項目以每月固定價格計費，最低為 4 小時的使用量。 專用層提供標準方案的所有功能，但可對工作負載需求高的客戶提供企業規模容量和限制。 
 
-請參閱此[文件](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)，以了解如何使用 Azure 入口網站建立專用的事件中樞叢集。
+請參閱此[文件](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md)，以了解如何使用 Azure 入口網站建立專用的事件中樞叢集。
 
 | 功能 | 標準 | 專用 |
 | --- |:---|:---|
@@ -83,8 +83,3 @@ ms.locfileid: "94362745"
 | 結構描述登錄 (命名空間) 的大小 (MB) | 25 |  1024 |
 | 結構描述登錄或命名空間中的結構描述群組數目 | 1 - 排除預設群組 | 1000 |
 | 跨所有結構描述群組的架構版本數目 | 25 | 10000 |
-
-
-
-
-

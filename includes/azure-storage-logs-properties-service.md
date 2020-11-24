@@ -4,19 +4,19 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 6d90b4b68f1f9f4a0fcd20c1d371a32759449fab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b18687c0a6f3e48d94431e88be8ae8137c9dcdb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711186"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555018"
 ---
 | 屬性 | 描述 |
 |:--- |:---|
 |**accountName** | 儲存體帳戶的名稱。 例如： `mystorageaccount` 。  |
 |**requestUrl** | 要求的 URL。 |
-|**userAgentHeader** | **使用者代理程式標頭**值，以引號括住。 例如： `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)` 。|
-|**referrerHeader** | **查閱者**標頭值。 例如： `http://contoso.com/about.html` 。|
+|**userAgentHeader** | **使用者代理程式標頭** 值，以引號括住。 例如： `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)` 。|
+|**referrerHeader** | **查閱者** 標頭值。 例如： `http://contoso.com/about.html` 。|
 |**clientRequestId** | 要求的 **x-ms-client-request-id** 標頭值。 例如： `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6` 。 |
 |**etag** | 所傳回物件的 ETag 識別碼 (以引號括住)。 例如： `0x8D101F7E4B662C4` 。  |
 |**serverLatencyMs** | 執行要求作業的總時間 (以毫秒表示)。 此值不包括網路延遲 (讀取連入要求和傳送回應給要求者的時間)。 例如： `22` 。 |
@@ -33,8 +33,8 @@ ms.locfileid: "91711186"
 |**contentLengthHeader** | 傳送至儲存體服務的要求內容長度標頭值。 如果要求成功，則此值等於 requestBodySize。 如果要求不成功，則此值可能不等於 requestBodySize，或可能是空值。 |
 |**tlsVersion** | 要求連線中使用的 TLS 版本。 例如： `TLS 1.2` 。 |
 |**smbTreeConnectID** | 伺服器訊息區 (SMB) **treeConnectId** 會在樹狀結構連線時間建立。 例如： `0x3` |
-|**smbPersistentHandleID** | 網路重新連線後持續存在的 SMB2 CREATE 要求，其中的持續控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Persistent**。 例如： `0x6003f` |
-|**smbVolatileHandleID** | 在網路重新連線時回收的 SMB2 CREATE 要求，其中的變動性控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Volatile**。 例如： `0xFFFFFFFF00000065` |
+|**smbPersistentHandleID** | 網路重新連線後持續存在的 SMB2 CREATE 要求，其中的持續控點識別碼。  在 [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Persistent**。 例如： `0x6003f` |
+|**smbVolatileHandleID** | 在網路重新連線時回收的 SMB2 CREATE 要求，其中的變動性控點識別碼。  在 [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Volatile**。 例如： `0xFFFFFFFF00000065` |
 |**smbMessageID** | 連線相對 **MessageId**。 例如： `0x3b165` |
 |**smbCreditsConsumed** | 要求所使用的輸入或輸出 (單位為 64k)。 例如： `0x3` |
 |**smbCommandDetail** | 此特定要求的詳細資訊，而不是一般的要求類型。 例如： `0x2000 bytes at offset 0xf2000` |

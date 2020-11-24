@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e368b1590f263618969423d57cdf0531fc2bb54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069d7af9cee0bee673c8f0b32659ce362fe4dd70
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173818"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562069"
 ---
 ### <a name="to-modify-the-local-network-gateway-gatewayipaddress"></a>修改區域網路閘道 'gatewayIpAddress'
 
-如果您想要連線的 VPN 裝置已變更其公用 IP 位址，您需要修改區域網路閘道，以反映該變更。 您可變更閘道 IP 位址，而不需移除現有的 VPN 閘道連線 (如果有的話)。 若要修改閘道 IP 位址，使用 [az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway) 命令以您自己的值取代 'Site2' 和 'TestRG1'。
+如果您想要連線的 VPN 裝置已變更其公用 IP 位址，您需要修改區域網路閘道，以反映該變更。 您可變更閘道 IP 位址，而不需移除現有的 VPN 閘道連線 (如果有的話)。 若要修改閘道 IP 位址，使用 [az network local-gateway update](/cli/azure/network/local-gateway) 命令以您自己的值取代 'Site2' 和 'TestRG1'。
 
 ```azurecli
 az network local-gateway update --gateway-ip-address 23.99.222.170 --name Site2 --resource-group TestRG1

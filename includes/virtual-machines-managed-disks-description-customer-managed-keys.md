@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c301ed2b612c2f3a7aca40ed5ed733800323adcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf79fe8766d36fe59595be43250341d49b5460c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230958"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559520"
 ---
 您可以選擇使用自己的金鑰來管理每個受控磁碟層級的加密。 使用客戶管理的金鑰對受控磁碟進行伺服器端加密，提供與 Azure Key Vault 的整合體驗。 您可以將[您的 RSA 金鑰](../articles/key-vault/keys/hsm-protected-keys.md)匯入 Key Vault，或在 Azure Key Vault 中產生新的 RSA 金鑰。 
 
@@ -44,4 +44,4 @@ Ultra 磁片：當您停用或刪除金鑰時，任何使用該金鑰的 ultra �
 1. 受控磁碟使用受控識別，將要求傳送至 Azure Key Vault。
 1. 對於讀取或寫入資料，受控磁碟會將要求傳送至 Azure Key Vault，以加密 (包裝) 和解密 (解除包裝) 資料加密金鑰，以便執行資料的加密和解密。 
 
-若要撤銷客戶管理的金鑰的存取權，請參閱 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷存取權會有效封鎖對儲存體帳戶中所有資料的存取，因為 Azure 儲存體無法存取加密金鑰。
+若要撤銷客戶管理的金鑰的存取權，請參閱 [Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤銷存取權會有效封鎖對儲存體帳戶中所有資料的存取，因為 Azure 儲存體無法存取加密金鑰。

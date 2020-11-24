@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061589"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560753"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>建立自我簽署根憑證
 
-您可以使用 New-SelfSignedCertificate Cmdlet 來建立自我簽署的根憑證。 如需其他的參數資訊，請參閱 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
+您可以使用 New-SelfSignedCertificate Cmdlet 來建立自我簽署的根憑證。 如需其他的參數資訊，請參閱 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)。
 
 1. 從執行 Windows 10 或 Windows Server 2016 的電腦，以提高的權限開啟 Windows PowerShell 主控台。 這些範例無法在 Azure Cloud Shell 的「試試看」中運作。 您必須在本機執行這些範例。
-1. 使用下列範例建立自我簽署的根憑證。 下列範例會建立名為 'P2SRootCert' 的自我簽署的根憑證，其自動安裝在 'Certificates-Current User\Personal\Certificates' 中。 您可以開啟  來檢視憑證。
+1. 使用下列範例建立自我簽署的根憑證。 下列範例會建立名為 'P2SRootCert' 的自我簽署的根憑證，其自動安裝在 'Certificates-Current User\Personal\Certificates' 中。 您可以開啟 *certmgr.msc* 或 [管理使用者憑證] 來檢視憑證。
 
    使用 Cmdlet 登入 `Connect-AzAccount` 。 然後，執行下列範例，並進行任何必要的修改。
 
@@ -39,7 +39,7 @@ ms.locfileid: "93061589"
 
 下列步驟將逐步引導您完成從自我簽署的根憑證產生用戶端憑證。 您可以從相同根憑證產生多個用戶端憑證。 當您使用下列步驟產生用戶端憑證時，用戶端憑證會自動安裝在您用來產生憑證的電腦上。 如果您想要在另一部用戶端電腦上安裝用戶端憑證，您可以匯出憑證。
 
-此範例會使用 New-SelfSignedCertificate Cmdlet 來產生有效期為一年的用戶端憑證。 如需其他的參數資訊 (例如針對用戶端憑證設定不同的到期值)，請參閱 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
+此範例會使用 New-SelfSignedCertificate Cmdlet 來產生有效期為一年的用戶端憑證。 如需其他的參數資訊 (例如針對用戶端憑證設定不同的到期值)，請參閱 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)。
 
 ### <a name="example-1---powershell-console-session-still-open"></a>範例 1-PowerShell 主控台會話仍開啟
 

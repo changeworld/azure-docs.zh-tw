@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73034541"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557245"
 ---
 在設計系統時，我們應了解該系統的潛在威脅並加入適當的防禦機制，以妥善設計系統與其架構。 在一開始設計產品時就先考量安全性是很重要的，因為了解攻擊者可能如何破壞系統，有助於從一開始就備妥適當的安全防護功能。
 
@@ -72,7 +72,7 @@ Microsoft 產品在採用威脅模型方面的經驗悠久，並已公開發表�
 
 * 外部實體 (與系統互動但不在應用程式控制之下的任何項目，例如使用者和附屬摘要)
 
-架構圖中的所有項目皆受限於各種威脅；針對這些威脅，本文將使用 STRIDE 助憶鍵。 請閱讀 [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) (威脅模型化作業重點 STRIDE)，以深入了解 STRIDE 元素。
+架構圖中的所有項目皆受限於各種威脅；針對這些威脅，本文將使用 STRIDE 助憶鍵。 請閱讀 [Threat Modeling Again, STRIDE](/archive/blogs/larryosterman/threat-modeling-again-stride) (威脅模型化作業重點 STRIDE)，以深入了解 STRIDE 元素。
 
 應用程式圖表的不同項目受限於特定 STRIDE 威脅而定︰
 
@@ -106,7 +106,7 @@ Microsoft 產品在採用威脅模型方面的經驗悠久，並已公開發表�
 
 ### <a name="the-device-zone"></a>裝置區域
 
-裝置環境是指裝置周圍即時的實體空間，其中可進行裝置的實體存取及/或「區域網路」對等式數位存取。 「區域網路 」則假設為不同的隔離網路，但可能橋接至公用網際網路，並包含任何短程無線電技術以讓裝置進行對等式通訊。 它*不*包括任何網路虛擬化技術 (其會建立這類區域網路的假象)，也不包含公用電信營運商的網路 (其中任兩個裝置需要具備對等式通訊關聯，才能跨公用網路空間進行通訊)。
+裝置環境是指裝置周圍即時的實體空間，其中可進行裝置的實體存取及/或「區域網路」對等式數位存取。 「區域網路 」則假設為不同的隔離網路，但可能橋接至公用網際網路，並包含任何短程無線電技術以讓裝置進行對等式通訊。 它 *不* 包括任何網路虛擬化技術 (其會建立這類區域網路的假象)，也不包含公用電信營運商的網路 (其中任兩個裝置需要具備對等式通訊關聯，才能跨公用網路空間進行通訊)。
 
 ### <a name="the-field-gateway-zone"></a>現場閘道區域
 
@@ -163,7 +163,7 @@ Microsoft 是使用先前概述的架構來為 Azure IoT 進行威脅模型化�
 * 通訊 (也稱為資料流程)
 * 儲存體 (也稱為資料存放區)
 
-#### <a name="processes"></a>處理程序
+#### <a name="processes"></a>處理序
 
 在 Azure IoT 架構所概述的每個類別中，此範例嘗試跨資料/資訊存在的三個階段來降低不同威脅的風險：處理序、通訊以及儲存體。 以下是「處理序」分類中最常見之威脅的概觀，並概要說明如何以最妥善的方式降低這些威脅的風險︰
 
@@ -214,7 +214,7 @@ Microsoft 是使用先前概述的架構來為 Azure IoT 進行威脅模型化�
 
 **竄改**：可將裝置重新設定成以控制系統不知的狀態運作 (在已知的校正參數範圍外)，藉此提供可能被誤解的資料。
 
-詐騙 **/篡改/否認**性：如果未受保護 (當取用者遠端控制) 的情況下，攻擊者可以匿名操作裝置的狀態。 遙控器就是很好的一例，既可以遙控電視機，也是很熱門的惡作劇工具。
+詐騙 **/篡改/否認** 性：如果未受保護 (當取用者遠端控制) 的情況下，攻擊者可以匿名操作裝置的狀態。 遙控器就是很好的一例，既可以遙控電視機，也是很熱門的惡作劇工具。
 
 #### <a name="communication"></a>通訊
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e9af5aa57da9db8c54ef3119fffbf8a5809aefd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507628"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560005"
 ---
 本文會說明如何將 IaaS 資源從傳統部署模型遷移至 Resource Manager 部署模型，並詳述如何使用虛擬網路站對站閘道，從並存於訂用帳戶中的兩個部署模型連線到資源。 您可以閱讀更多有關 [Azure Resource Manager 功能和優點](../articles/azure-resource-manager/management/overview.md)的資訊。 
 
@@ -40,7 +40,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 
 | 服務 | 組態 |
 | --- | --- |
-| Azure AD 網域服務 | [包含 Azure AD 網域服務的虛擬網路](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+| Azure AD 網域服務 | [包含 Azure AD 網域服務的虛擬網路](../articles/active-directory-domain-services/migrate-from-classic-vnet.md) |
 
 ## <a name="supported-scopes-of-migration"></a>支援的移轉範圍
 有 4 種不同方式可完成計算、網路和儲存體資源移轉：
@@ -129,7 +129,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 | 計算 | 包含 Web 角色/背景工作角色的雲端服務 | 目前不支援。 |
 | 計算 | 包含一個以上可用性設定組或多個可用性設定組的雲端服務。 |目前不支援。 請先將虛擬機器移至相同可用性設定組，然後再移轉。 |
 | 計算 | 具 Azure 資訊安全中心擴充功能的 VM | 「Azure 資訊安全中心」會自動在「虛擬機器」上安裝擴充功能，以監視其安全性並引發警示。 如果已在訂用帳戶上啟用「Azure 資訊安全中心」原則，通常就會自動安裝這些擴充功能。 若要移轉虛擬機器，請停用訂用帳戶上的資訊安全中心原則，這將會從虛擬機器移除資訊安全中心監視擴充功能。 |
-| 計算 | 具備份或快照集擴充功能的 VM | 這些擴充功能都安裝在使用 Azure 備份功能設定的虛擬機器上。 雖然不支援這些 VM 的移轉，但是可依照[這裡](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指引，保留在移轉之前所執行的備份。  |
+| 計算 | 具備份或快照集擴充功能的 VM | 這些擴充功能都安裝在使用 Azure 備份功能設定的虛擬機器上。 雖然不支援這些 VM 的移轉，但是可依照[這裡](../articles/virtual-machines/migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指引，保留在移轉之前所執行的備份。  |
 | 計算 | 具有 Azure Site Recovery 擴充功能的 VM | 這些延伸模組會安裝在以 Azure Site Recovery 服務設定的虛擬機器上。 雖然與 Site Recovery 搭配使用的儲存體遷移將可運作，但目前的複寫將會受到影響。 您必須在儲存體遷移後停用並啟用 VM 複寫。 |
 | 網路 |包含虛擬機器和 Web 角色/背景工作角色的虛擬網路 |目前不支援。 請先將 Web/背景工作角色移至他們自己的虛擬網路，然後再移轉。 在移轉傳統虛擬網路之後，移轉的 Azure Resource Manager 虛擬網路可以和傳統虛擬網路對等互連，達到類似之前的組態。|
 | 網路 | 傳統 ExpressRoute 線路 |目前不支援。 在開始 IaaS 移轉之前，需要將這些線路移轉至 Azure Resource Manager。 若要深入了解，請參閱[將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。|

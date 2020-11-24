@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c158145de6ce729d8a7060152b19fb14b63d58
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67133074"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554554"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>準備驗證 Azure Resource Manager 要求
 您必須使用 [Azure Resource Manager][lnk-authenticate-arm]搭配 Azure Active Directory (AD) 來驗證所有針對資源執行的作業。 最簡單的設定方式是使用 PowerShell 或 Azure CLI。
@@ -68,5 +68,5 @@ ms.locfileid: "67133074"
 * ApplicationId
 * 密碼
 
-[lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
+[lnk-authenticate-arm]: /rest/api/
 [lnk-powershell-install]: /powershell/azure/install-az-ps

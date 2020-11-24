@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 48a7912b1a6375111b6f9af1496cbbd41966202c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331750"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562122"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>哪些區域可用？
 
@@ -89,7 +89,7 @@ Azure Bastion 目前在 VM 內支援 en-us-qwerty 鍵盤配置。  鍵盤配置�
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>我該如何處理部署失敗？
 
-檢閱任何錯誤訊息，並視需要[在 Azure 入口網站提出支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 部署失敗的原因可能是 [Azure 訂用帳戶限制、配額和條件約束](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)。 具體而言，客戶可能會遇到每個訂用帳戶允許的公用 IP 位址數目限制，進而導致 Azure Bastion 部署失敗。
+檢閱任何錯誤訊息，並視需要[在 Azure 入口網站提出支援要求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 部署失敗的原因可能是 [Azure 訂用帳戶限制、配額和條件約束](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)。 具體而言，客戶可能會遇到每個訂用帳戶允許的公用 IP 位址數目限制，進而導致 Azure Bastion 部署失敗。
 
 ### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>如何在我的災害復原方案中納入 Azure Bastion？
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 8c908b7f72e5581122427a7d711ae9cf61d2d90f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef9efe389894af7c792e980922ca422e9d05929b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665583"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560823"
 ---
 下表說明 Azure 一般用途 v1、v2、Blob 儲存體及區塊 Blob 儲存體帳戶的預設限制。 「輸入」限制是指傳送至某個儲存體帳戶的所有資料。 「輸出」限制是指從儲存體帳戶收到的所有資料。
 
@@ -41,5 +41,4 @@ ms.locfileid: "91665583"
 > [!NOTE]
 > Microsoft 建議，您應在大部分情況下使用一般用途 v2 儲存體帳戶。 您不需停機，也不必複製資料，即可輕鬆地將一般用途 v1 或 Azure Blob 儲存體帳戶升級至一般用途 v2 帳戶。 如需詳細資訊，請參閱[升級至一般用途 v2 儲存體帳戶](../articles/storage/common/storage-account-upgrade.md)。
 
-所有儲存體帳戶都會在平面網路拓撲上執行，不論其建立時間為何。 如需 Azure 儲存體平面網路架構及延展性的詳細資訊，請參閱 [Microsoft Azure 儲存體：具有高度一致性的高可用性雲端儲存體服務](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets) \(英文\)。 
-
+所有儲存體帳戶都會在平面網路拓撲上執行，不論其建立時間為何。 如需 Azure 儲存體平面網路架構及延展性的詳細資訊，請參閱 [Microsoft Azure 儲存體：具有高度一致性的高可用性雲端儲存體服務](/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets) \(英文\)。

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 8a3efc9ba8fc8ffd8c0eca4340e1948c388c0a13
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c1d1efce656bea02385cb20ac11ab90ca5664e60
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494971"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559842"
 ---
 若要在開啟的 [Azure Cloud Shell](https://shell.azure.com) 視窗中開始使用 Azure Digital Twins，您要做的第一件事就是登入，並針對此工作階段來設定訂用帳戶的殼層內容。 在您的 Cloud Shell 中執行下列命令：
 
@@ -27,7 +27,7 @@ az account set --subscription "<your-Azure-subscription-ID>"
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-接下來，您會將 [**Azure CLI 的 Microsoft Azure IoT 擴充功能**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)新增至您的 Cloud Shell，以啟用可與 Azure Digital Twins 和其他 IoT 服務互動的命令。 
+接下來，您會將 [**Azure CLI 的 Microsoft Azure IoT 擴充功能**](/cli/azure/ext/azure-iot/iot?preserve-view=true&view=azure-cli-latest)新增至您的 Cloud Shell，以啟用可與 Azure Digital Twins 和其他 IoT 服務互動的命令。 
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](digital-twins-cloud-shell-extensions.md)]
 

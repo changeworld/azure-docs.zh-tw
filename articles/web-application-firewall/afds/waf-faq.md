@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563642"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545664"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service 上 Azure Web 應用程式防火牆的常見問題
 
@@ -35,7 +35,7 @@ Front Door 提供 TLS 卸載。 WAF 與 Front Door 原生整合，並可在要�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF 是否支援 IPv6？
 
-是。 您可以設定 IPv4 和 IPv6 的 IP 限制。
+可以。 您可以設定 IPv4 和 IPv6 的 IP 限制。
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>受控規則集的最新狀態為何？
 
@@ -57,6 +57,17 @@ Front Door 提供 TLS 卸載。 WAF 與 Front Door 原生整合，並可在要�
 
 在 Azure 中套用 WAF 原則時，有兩個選項。 WAF 與 Azure Front Door 是全域散發的邊緣安全性解決方案。 使用應用程式閘道的 WAF 是一個區域專用的解決方案。 建議您根據整體效能和安全性需求來選擇解決方案。 如需詳細資訊，請參閱 [使用 Azure 的應用程式傳遞套件進行負載平衡](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)。
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>在 Front Door 上啟用 WAF 的建議方法為何？
+
+當您在現有的應用程式上啟用 WAF 時，通常會有錯誤的正面偵測，其中 WAF 規則會偵測到合法的流量為威脅。 為了將對您的使用者造成影響的風險降至最低，我們建議您執行下列流程：
+
+* 在 [**偵測** 模式](./waf-front-door-create-portal.md#change-mode) 中啟用 WAF，以確保當您完成此程式時，WAF 不會封鎖要求。
+  > [!IMPORTANT]
+  > 此程式描述當您的優先順序是要將應用程式使用者的干擾降至最低時，如何在新的或現有的解決方案上啟用 WAF。 如果您遭受攻擊或遭受威脅，您可以改為立即在 **預防** 模式中部署 WAF，並使用微調程式來監視和微調一段時間的 WAF。 這可能會導致某些合法的流量遭到封鎖，這也是為什麼我們只建議您在威脅的情況下執行此操作。
+* 遵循我們 [的指導方針來調整 WAF](./waf-front-door-tuning.md)。 此程式需要您啟用診斷記錄、定期審核記錄，以及新增規則排除專案和其他緩和措施。
+* 重複此整個程式，定期檢查記錄，直到您滿意未封鎖合法的流量為止。 整個過程可能需要數周的時間。 在理想的情況下，您應該會在每次調整變更之後看到較少的誤報偵測。
+* 最後，在 **預防模式** 中啟用 WAF。
+* 即使在生產環境中執行 WAF，您還是應該持續監視記錄，以找出任何其他的誤報偵測。 定期檢查記錄檔也可協助您識別任何已封鎖的實際攻擊嘗試。
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>您是否支援所有整合平臺中的相同 WAF 功能？
 

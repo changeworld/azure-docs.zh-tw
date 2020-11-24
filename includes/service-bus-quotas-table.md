@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764d75872eb1bad0647235cd70f9984ebd7789bd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779781"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554556"
 ---
 下表列出 Azure 服務匯流排訊息的特定配額資訊。 如需有關服務匯流排價格及其他配額的詳細資訊，請參閱[服務匯流排價格](https://azure.microsoft.com/pricing/details/service-bus/)。
 
@@ -21,11 +21,11 @@ ms.locfileid: "91779781"
 | --- | --- | --- | --- |
 | 每個 Azure 訂用帳戶的基本或標準命名空間數目上限 |命名空間 |Azure 入口網站會拒絕後續對於更多基本或標準命名空間的要求。 |100|
 | 每個 Azure 訂用帳戶的進階命名空間數目上限 |命名空間 |入口網站會拒絕後續對於更多進階命名空間的要求。 |100 |
-| 佇列或主題大小 |實體 |在建立佇列或主題時定義。 <br/><br/> 後續內送訊息會遭到拒絕，而且呼叫端程式碼會收到例外狀況。 |1、2、3、4 GB 或 5 GB。<br /><br />在進階 SKU，以及啟用[分割](/azure/service-bus-messaging/service-bus-partitioning)的標準 SKU 中，佇列或主題大小上限為 80 GB。 |
+| 佇列或主題大小 |實體 |在建立佇列或主題時定義。 <br/><br/> 後續內送訊息會遭到拒絕，而且呼叫端程式碼會收到例外狀況。 |1、2、3、4 GB 或 5 GB。<br /><br />在進階 SKU，以及啟用[分割](../articles/service-bus-messaging/service-bus-partitioning.md)的標準 SKU 中，佇列或主題大小上限為 80 GB。 |
 | 命名空間上的並行連線數目 |命名空間 |後續對更多連線的要求將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 REST 作業不會計入並行 TCP 連線內。 |網路傳訊：1000 則。<br /><br />AMQP：5000 則。 |
 | 佇列、主題或訂用帳戶實體上的並行接收要求數目 |實體 |後續接收要求會遭到拒絕，而且呼叫端程式碼會收到例外狀況。 這個配額套用至一個主題的所有訂用帳戶的並行接收作業數目合計。 |5,000 |
 | 每個命名空間的主題或佇列數目 |命名空間 |後續在命名空間上建立新主題或佇列的要求都會遭到拒絕。 因此，如果透過 [Azure 入口網站][Azure portal]設定，則會產生錯誤訊息。 如果從管理 API 進行呼叫，則呼叫端程式碼會收到例外狀況。 |針對基本或標準層為 10000 個。 命名空間中主題和佇列的總數必須小於或等於 10,000。 <br/><br/>在進階層中，則是每個傳訊單位 (MU) 1000 個。 上限為 4000 個。 |
-| 每個命名空間的[分割主題或佇列](/azure/service-bus-messaging/service-bus-partitioning)數目 |命名空間 |後續要求在命名空間上建立新分割主題或佇列會遭到拒絕。 因此，如果透過 [Azure 入口網站][Azure portal]設定，則會產生錯誤訊息。 如果從管理 API 進行呼叫，則呼叫端程式碼會收到 **QuotaExceededException** 例外狀況。 |基本和標準層：100 個。<br/><br/>[進階](../articles/service-bus-messaging/service-bus-premium-messaging.md)層不支援分割的實體。<br/><br />每個分割佇列或主題的配額計數為每個命名空間 1000 個實體。 |
+| 每個命名空間的[分割主題或佇列](../articles/service-bus-messaging/service-bus-partitioning.md)數目 |命名空間 |後續要求在命名空間上建立新分割主題或佇列會遭到拒絕。 因此，如果透過 [Azure 入口網站][Azure portal]設定，則會產生錯誤訊息。 如果從管理 API 進行呼叫，則呼叫端程式碼會收到 **QuotaExceededException** 例外狀況。 |基本和標準層：100 個。<br/><br/>[進階](../articles/service-bus-messaging/service-bus-premium-messaging.md)層不支援分割的實體。<br/><br />每個分割佇列或主題的配額計數為每個命名空間 1000 個實體。 |
 | 任何傳訊實體路徑的大小上限︰佇列或主題 |實體 |- |260 個字元。 |
 | 任何傳訊實體名稱的大小上限︰命名空間、訂用帳戶或訂用帳戶規則 |實體 |- |50 個字元。 |
 | [訊息 ID](/dotnet/api/microsoft.azure.servicebus.message.messageid) 的大小上限 | 單位 |- | 128 |

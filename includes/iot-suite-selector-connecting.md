@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4b93685160250a5abe7c050db89978ae8ceb1a9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174415"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558964"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,9 +21,9 @@ ms.locfileid: "67174415"
 > * [Raspberry Pi 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (一般)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Raspberry Pi 上的 Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
 
-在此教學課程中，您會實作一個 **Chiller** 裝置，此裝置會將下列遙測資料傳送給遠端監視[解決方案加速器](../articles/iot-accelerators/about-iot-accelerators.md)：
+在此教學課程中，您會實作一個 **Chiller** 裝置，此裝置會將下列遙測資料傳送給遠端監視 [解決方案加速器](../articles/iot-accelerators/about-iot-accelerators.md)：
 
 * 溫度
 * 壓力
@@ -34,8 +34,8 @@ ms.locfileid: "67174415"
 範例裝置也會：
 
 * 將中繼資料傳送至解決方案來描述其功能。
-* 回應從解決方案中的**裝置**頁面觸發的動作。
-* 回應從解決方案中的**裝置**頁面傳送的設定變更。
+* 回應從解決方案中的 **裝置** 頁面觸發的動作。
+* 回應從解決方案中的 **裝置** 頁面傳送的設定變更。
 
 若要完成此教學課程，您需要一個有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "67174415"
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>部署遠端監視解決方案加速器
 
-您在本教學課程中建立的 **Chiller** 裝置會將資料傳送給[遠端監視](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)解決方案加速器的執行個體。 如果您尚未在您的 Azure 帳戶中佈建遠端監視解決方案加速器，請參閱[部署遠端監視解決方案加速器](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
+您在本教學課程中建立的 **Chiller** 裝置會將資料傳送給 [遠端監視](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)解決方案加速器的執行個體。 如果您尚未在您的 Azure 帳戶中佈建遠端監視解決方案加速器，請參閱[部署遠端監視解決方案加速器](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
 
 當遠端監視解決方案的部署程序完成之後，請按一下 [啟動]，以在瀏覽器中開啟解決方案儀表板。
 
@@ -54,7 +54,7 @@ ms.locfileid: "67174415"
 ### <a name="add-your-device-to-the-remote-monitoring-solution"></a>將您的裝置新增到遠端監視解決方案
 
 > [!NOTE]
-> 如果您已經在解決方案中新增裝置，則可以略過此步驟。 不過，下一個步驟需要您裝置的連接字串。 您可以從 [Azure 入口網站](https://portal.azure.com)或使用 [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI 工具來擷取裝置的連線字串。
+> 如果您已經在解決方案中新增裝置，則可以略過此步驟。 不過，下一個步驟需要您裝置的連接字串。 您可以從 [Azure 入口網站](https://portal.azure.com)或使用 [az iot](/cli/azure/iot?view=azure-cli-latest) CLI 工具來擷取裝置的連線字串。
 
 對於連線到解決方案加速器的裝置，該裝置必須使用有效的認證向 IoT 中樞識別自己。 當您將裝置新增至解決方案時，會有機會儲存包含這些認證的裝置連接字串。 稍後在本教學課程中，您會將裝置連接字串包含在您的用戶端應用程式中。
 
@@ -68,7 +68,7 @@ ms.locfileid: "67174415"
 
     ![選擇裝置選項](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. 選擇 [套用]。 然後記下**裝置識別碼**、**主要金鑰**和**連接字串主要金鑰**值：
+1. 選擇 [套用]。 然後記下 **裝置識別碼**、**主要金鑰** 和 **連接字串主要金鑰** 值：
 
     ![擷取認證](media/iot-suite-selector-connecting/credentials.png)
 

@@ -4,17 +4,15 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 86262c5816788bad04159aca7874b1f9f9f4dffa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664f845adfca331bd3c5a715a4b932179f8f4ecb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174046"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554760"
 ---
 > [!TIP]
 > 
 > **請查看 Azure 儲存體程式碼範例儲存機制**
 > 
-> 如需可供您下載和執行的簡易端對端 Azure 儲存體程式碼範例，請查看我們的 [Azure 儲存體範例](https://docs.microsoft.com/azure/storage/storage-samples-dotnet)清單。
-
-
+> 如需可供您下載和執行的簡易端對端 Azure 儲存體程式碼範例，請查看我們的 [Azure 儲存體範例](../articles/storage/common/storage-samples-dotnet.md)清單。

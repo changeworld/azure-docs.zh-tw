@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 489ee630deb56aef6c004067f29779053fbcd3e7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755368"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553874"
 ---
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -63,7 +63,7 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 您也可以使用 [Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)來建立金鑰保存庫。
 
-1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]  。
+1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]。
 2. 選取訂用帳戶、資源群組、資源群組位置、Key Vault 名稱、物件識別碼、法律條款和協議，然後按一下 [購買]。 
 
 
@@ -117,9 +117,9 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 選取金鑰保存庫，移至 [存取原則]，然後 **按一下以顯示進階存取原則** 。
+1. 選取金鑰保存庫，移至 [存取原則]，然後 **按一下以顯示進階存取原則**。
 2. 選取標示為 **為磁碟區加密啟用對 Azure 磁碟加密的存取** 的方塊。
-3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]  及/或 [為範本部署啟用對 Azure Resource Manager 的存取]  。 
+3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取] 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]。 
 4. 按一下 **[儲存]** 。
 
     ![Azure 金鑰保存庫進階存取原則](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
@@ -131,7 +131,7 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 
 您可以使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) 命令、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) Cmdlet，或 [Azure 入口網站](https://portal.azure.com/)來產生新的 KEK。 您必須產生 RSA 金鑰類型；Azure 磁碟加密尚未支援使用橢圓曲線金鑰。
 
-您可以改為從內部部署金鑰管理 HSM 匯入 KEK。 如需詳細資訊，請參閱 [Key Vault 文件](/azure/key-vault/key-vault-hsm-protected-keys)。
+您可以改為從內部部署金鑰管理 HSM 匯入 KEK。 如需詳細資訊，請參閱 [Key Vault 文件](../articles/key-vault/keys/hsm-protected-keys.md)。
 
 您的金鑰保存庫 KEK URL 必須已設定版本。 Azure 會強制執行設定版本的這項限制。 針對有效的密碼和 KEK URL，請參閱下列範例︰
 

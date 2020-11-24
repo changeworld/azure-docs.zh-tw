@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085228"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554158"
 ---
 要診斷 Microsoft Azure 雲端服務的問題，必須在問題發生時收集服務在虛擬機器上的記錄檔。 您可以視需要使用 AzureLogCollector 延伸模組，從一或多個雲端服務虛擬機器 (從 Web 角色和背景工作角色) 執行一次性的記錄收集作業，並將收集到的檔案傳輸到 Azure 儲存體帳戶，完全不必遠端登入任何虛擬機器。
 
@@ -20,8 +20,8 @@ ms.locfileid: "74085228"
 
 根據要收集的檔案類型，會有兩種收集模式。
 
-* **Azure 來賓代理程式只會記錄 (GA) **。 此收集模式包含所有與 Azure 客體代理程式和其他 Azure 元件相關的記錄。
-* **所有記錄 (完整) **。 此收集模式會收集 GA 模式中的所有檔案，外加：
+* **Azure 來賓代理程式只會記錄 (GA)**。 此收集模式包含所有與 Azure 客體代理程式和其他 Azure 元件相關的記錄。
+* **所有記錄 (完整)**。 此收集模式會收集 GA 模式中的所有檔案，外加：
   
   * 系統和應用程式事件記錄
   * HTTP 錯誤記錄
@@ -36,7 +36,7 @@ ms.locfileid: "74085228"
 * **SearchPattern**：要收集之檔案的名稱模式。 預設值為 “\*”
 * **遞迴**：如果要收集的檔案以遞迴方式位於指定位置底下。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
@@ -44,11 +44,11 @@ ms.locfileid: "74085228"
 * Azure PowerShell。 如需安裝指示，請參閱 [安裝 Azure PowerShell](/powershell/azure/install-az-ps)]。
 
 ## <a name="add-the-extension"></a>新增延伸模組
-您可以使用 [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) Cmdlet 或[服務管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx)，來新增 AzureLogCollector 延伸模組。
+您可以使用 [Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100)) Cmdlet 或[服務管理 REST API](/previous-versions/azure/ee460799(v=azure.100))，來新增 AzureLogCollector 延伸模組。
 
-對於雲端服務，可以使用現有的 Azure Powershell Cmdlet **Set-AzureServiceExtension**來啟用雲端服務角色執行個體上的延伸模組。 每次透過此 Cmdlet 啟用此延伸模組時，都會在所選角色的選定角色執行個體上觸發記錄檔收集。
+對於雲端服務，可以使用現有的 Azure Powershell Cmdlet **Set-AzureServiceExtension** 來啟用雲端服務角色執行個體上的延伸模組。 每次透過此 Cmdlet 啟用此延伸模組時，都會在所選角色的選定角色執行個體上觸發記錄檔收集。
 
-對於虛擬機器，可以使用現有的 Azure Powershell Cmdlet **Set-AzureVMExtension**來啟用虛擬機器上的延伸模組。 每次透過這些 Cmdlet 啟用此延伸模組時，都會在每個執行個體上觸發記錄檔收集。
+對於虛擬機器，可以使用現有的 Azure Powershell Cmdlet **Set-AzureVMExtension** 來啟用虛擬機器上的延伸模組。 每次透過這些 Cmdlet 啟用此延伸模組時，都會在每個執行個體上觸發記錄檔收集。
 
 就內部而言，此延伸模組會使用以 JSON 為基礎的 PublicConfiguration 和 PrivateConfiguration。 以下是公用和私人組態的範例 JSON 配置。
 
@@ -86,7 +86,7 @@ ms.locfileid: "74085228"
 ```
 
 > [!NOTE]
-> 此延伸模組不需要**privateConfiguration**。 您可以只提供 **–PrivateConfiguration** 引數的空結構。
+> 此延伸模組不需要 **privateConfiguration**。 您可以只提供 **–PrivateConfiguration** 引數的空結構。
 > 
 > 
 
@@ -528,4 +528,3 @@ else
 
 ## <a name="next-steps"></a>後續步驟
 現在，您可以從一個簡單的位置檢查或複製您的記錄。
-

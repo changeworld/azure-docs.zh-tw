@@ -5,12 +5,12 @@ ms.subservice: cloud-provisioning
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
-ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d95e40623f17a39145778a2fc067dccc68fd872
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79504365"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557427"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>啟用單一登入的步驟
 雲端布建可搭配單一登入使用。  目前沒有在安裝代理程式時啟用 SSO 的選項，不過您可以使用下列步驟來啟用 SSO 並使用它。 
@@ -23,7 +23,7 @@ ms.locfileid: "79504365"
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>步驟2：匯入無縫 SSO PowerShell 模組
 
-1. 下載並安裝 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+1. 下載並安裝 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
 2. 瀏覽至 `%programfiles%\Microsoft Azure Active Directory Connect` 資料夾。
 3. 使用此命令匯入無縫 SSO PowerShell 模組：`Import-Module .\AzureADSSO.psd1`。
 

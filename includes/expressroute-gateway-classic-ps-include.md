@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c05eb88df27ba9e71c0f61bad75457d893a7ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173713"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561081"
 ---
 > [!NOTE]
 > 這些範例不會套用到 S2S/ExpressRoute 並存組態。
@@ -25,7 +25,7 @@ ms.locfileid: "67173713"
 
 ### <a name="download-the-network-configuration-file"></a>下載網路組態檔案
 
-1. 使用[網路組態檔](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)一文中的步驟，下載網路組態檔。 使用文字編輯器開啟檔案。
+1. 使用[網路組態檔](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)一文中的步驟，下載網路組態檔。 使用文字編輯器開啟檔案。
 2. 將區域網路站台新增至檔案中。 您可以使用任何有效的位址前置詞。 您可以為 VPN 閘道新增任何有效的 IP 位址。 本區段中的位址值並非用於 ExpressRoute 作業，但對檔案驗證而言是必要的值。 在範例中，"branch1" 是站台的名稱。 您可以使用不同的名稱，但務必使用與檔案中 [Gateway] 區段中相同的值。
 
    ```

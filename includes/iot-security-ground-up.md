@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050297"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556632"
 ---
 物聯網 (IoT) 使得全球企業面臨獨特的安全性、隱私權及相容性挑戰。 不同於傳統網路技術 (這類問題是以軟體及其實作方式為中心)，IoT 在意的是當網路與實體世界交會時會發生什麼事。 保護 IoT 解決方案要求確保安全佈建裝置，保護這些裝置與雲端之間的連接，以及在處理和儲存期間保護雲端中資料保護的安全。 但是，會針對這類功能運作的是資源受限的裝置、根據地理位置分佈的部署，以及解決方案中的大量裝置。
 
@@ -37,13 +37,13 @@ ms.locfileid: "86050297"
 
 ## <a name="microsoft-azure---secure-iot-infrastructure-for-your-business"></a>Microsoft Azure - 適用於貴公司的安全 IoT 基礎結構
 
-Microsoft Azure 提供完整的雲端解決方案，其中結合了持續成長的整合式雲端服務 (分析、機器學習服務、儲存體、安全性、網路功能及 Web) 集合，透過業界領先的承諾來為您的資料提供保護與隱私權。 Microsoft 的[模擬缺口](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) 策略會透過由軟體安全性專家組成的專屬「紅隊」**，來模擬攻擊、測試要偵測的 Azure 能力、防範新興威脅，以及從缺口中復原。 Microsoft 的[全域事件回應](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)小組夜以繼日地工作，能夠減緩攻擊與惡意活動所產生的影響。 此小組會遵循事件管理、通訊及復原所建立的程序，並與內部和外部夥伴合作來使用可探索且可預測的介面。
+Microsoft Azure 提供完整的雲端解決方案，其中結合了持續成長的整合式雲端服務 (分析、機器學習服務、儲存體、安全性、網路功能及 Web) 集合，透過業界領先的承諾來為您的資料提供保護與隱私權。 Microsoft 的[模擬缺口](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) 策略會透過由軟體安全性專家組成的專屬「紅隊」，來模擬攻擊、測試要偵測的 Azure 能力、防範新興威脅，以及從缺口中復原。 Microsoft 的[全域事件回應](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)小組夜以繼日地工作，能夠減緩攻擊與惡意活動所產生的影響。 此小組會遵循事件管理、通訊及復原所建立的程序，並與內部和外部夥伴合作來使用可探索且可預測的介面。
 
-Microsoft 的系統能提供持續的入侵偵測與防護、阻斷服務攻擊防護、一般滲透測試，以及可協助識別及緩解威脅的法務工具。 [Multi-Factor Authentication](../articles/active-directory/authentication/multi-factor-authentication.md) 可為存取網路的使用者提供額外的安全性層級。 此外，針對應用程式和主機提供者，Microsoft 會提供存取控制、監視、反惡意程式碼、弱點掃描、修補程式及組態管理。
+Microsoft 的系統能提供持續的入侵偵測與防護、阻斷服務攻擊防護、一般滲透測試，以及可協助識別及緩解威脅的法務工具。 [Multi-Factor Authentication](../articles/active-directory/authentication/concept-mfa-howitworks.md) 可為存取網路的使用者提供額外的安全性層級。 此外，針對應用程式和主機提供者，Microsoft 會提供存取控制、監視、反惡意程式碼、弱點掃描、修補程式及組態管理。
 
 此解決方案加速器會充分利用內建於 Azure 平台的安全性和隱私權，以及針對所有 Microsoft 軟體進行的安全開發，和作業所提供的 SDL 和 OSA 程序。 這些程序提供基礎結構保護、網路保護，以及身分識別與管理功能，以做為任何解決方案安全性的基礎。
 
-[IoT 解決方案加速器](../articles/iot-fundamentals/iot-introduction.md)內的 [Azure IoT 中樞](../articles/iot-hub/about-iot-hub.md)提供完全受控服務，使用每一裝置的安全性認證和存取控制，在 IoT 裝置與 Azure 服務之間啟用可靠且安全的雙向通訊，例如 [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) 和 [Azure 串流分析](../articles/stream-analytics/stream-analytics-introduction.md)。
+[IoT 解決方案加速器](../articles/iot-fundamentals/iot-introduction.md)內的 [Azure IoT 中樞](../articles/iot-hub/about-iot-hub.md)提供完全受控服務，使用每一裝置的安全性認證和存取控制，在 IoT 裝置與 Azure 服務之間啟用可靠且安全的雙向通訊，例如 [Azure Machine Learning](../articles/machine-learning/classic/index.yml) 和 [Azure 串流分析](../articles/stream-analytics/stream-analytics-introduction.md)。
 
 為了以最佳方式傳達內建於 Azure IoT 解決方案加速器的安全性和隱私權功能，本文將套件細分成三個主要的安全性領域。
 
@@ -89,7 +89,7 @@ Microsoft 的系統能提供持續的入侵偵測與防護、阻斷服務攻擊�
 
 一旦資料位於雲端之後，它就能進行處理並儲存於任何使用者定義的工作流程中。 存取資料的每個部分是根據所用的儲存體服務，透過 Azure Active Directory 來控制。
 
-IoT 基礎結構所使用的所有金鑰都會儲存於雲端的安全儲存體中，並具備變換能力，以因應金鑰需要重新佈建的情況。 資料可以儲存在 [Azure Cosmos DB](../articles/cosmos-db/introduction.md) 或 [SQL Database](../articles/sql-database/sql-database-faq.md)中，以啟用所需的安全性層級的定義。 此外，Azure 提供一種方式來監視和稽核資料的所有存取，以提醒您有任何入侵或未經授權的存取。
+IoT 基礎結構所使用的所有金鑰都會儲存於雲端的安全儲存體中，並具備變換能力，以因應金鑰需要重新佈建的情況。 資料可以儲存在 [Azure Cosmos DB](../articles/cosmos-db/introduction.md) 或 [SQL Database](../articles/azure-sql/database/sql-database-paas-overview.md)中，以啟用所需的安全性層級的定義。 此外，Azure 提供一種方式來監視和稽核資料的所有存取，以提醒您有任何入侵或未經授權的存取。
 
 ## <a name="conclusion"></a>結論
 

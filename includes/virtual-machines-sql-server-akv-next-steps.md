@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6195b949cc71043dfa7a12bdece7a311dbde5e21
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84014686"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559280"
 ---
 ## <a name="next-steps"></a>後續步驟
 
@@ -25,7 +25,7 @@ ms.locfileid: "84014686"
 
 ### <a name="prerequisites-for-examples"></a>範例的必要條件
 
-每個範例都是以兩個必要條件為基礎：金鑰保存庫中稱為 **CONTOSO_KEY** 的非對稱金鑰，以及稱為 **Azure_EKM_cred**的 AKV 整合功能所建立的認證。 下列 Transact-SQL 命令會設定這些必要條件，以用於執行範例。
+每個範例都是以兩個必要條件為基礎：金鑰保存庫中稱為 **CONTOSO_KEY** 的非對稱金鑰，以及稱為 **Azure_EKM_cred** 的 AKV 整合功能所建立的認證。 下列 Transact-SQL 命令會設定這些必要條件，以用於執行範例。
 
 ``` sql
 USE master;
@@ -144,6 +144,6 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 ## <a name="additional-resources"></a>其他資源
 
-如需有關如何使用這些加密功能的詳細資訊，請參閱 [以 SQL Server 加密功能使用 EKM](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
+如需有關如何使用這些加密功能的詳細資訊，請參閱 [以 SQL Server 加密功能使用 EKM](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server#UsesOfEKM)。
 
 請注意，本文中的步驟假設您已在 Azure 虛擬機器上執行 SQL Server。 如果沒有，請參閱[在 Azure 中佈建 SQL Server 虛擬機器](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md)。 如需在 Azure VM 中執行 SQL Server 的其他指引，請參閱[Azure 虛擬機器上的 SQL Server 概觀](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。

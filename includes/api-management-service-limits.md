@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 5c36a541c9380596884252efcba4a9c0ca2be33f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92082165"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555972"
 ---
 | 資源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -44,4 +44,4 @@ ms.locfileid: "92082165"
 <sup>7</sup>使用層不支援 CA 憑證。<br/>
 <sup>8</sup>此限制僅適用於使用層。 其他層級的這些類別沒有任何限制。<br/>
 <sup>9</sup>僅適用於使用層。 包含最多 2048 個位元組長的查詢字串。<br/>
-<sup>10</sup>只有開發人員和進階層支援自我裝載閘道。 此限制適用於[自我裝載閘道資源](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)數目。 若要提高此限制，請連絡[支援](https://azure.microsoft.com/support/options/)。 請注意，在進階層中，與自我裝載閘道資源相關聯的節點 (或複本) 數目沒有限制，而在開發人員層的單一節點上具有上限。
+<sup>10</sup>只有開發人員和進階層支援自我裝載閘道。 此限制適用於[自我裝載閘道資源](/rest/api/apimanagement/2019-12-01/gateway)數目。 若要提高此限制，請連絡[支援](https://azure.microsoft.com/support/options/)。 請注意，在進階層中，與自我裝載閘道資源相關聯的節點 (或複本) 數目沒有限制，而在開發人員層的單一節點上具有上限。

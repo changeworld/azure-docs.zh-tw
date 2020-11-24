@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1327ac49920af353d6adbbe592ab4189417e60e8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79461209"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557808"
 ---
 ## <a name="use-cli-shell"></a>使用 CLI Shell
 
-建議使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 執行 CLI 命令。 **Cloud Shell** 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 Cloud Shell 中已預先安裝和設定共用 Azure 工具，以便您搭配自己的帳戶使用。 它可讓您彈性地選擇最適合您工作方式的殼層體驗。 Linux 使用者可以選擇 Bash 體驗，而 Windows 使用者可以選擇 PowerShell。
+建議使用 [Azure Cloud Shell](../articles/cloud-shell/overview.md?view=azure-cli-latest) 執行 CLI 命令。 **Cloud Shell** 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 Cloud Shell 中已預先安裝和設定共用 Azure 工具，以便您搭配自己的帳戶使用。 它可讓您彈性地選擇最適合您工作方式的殼層體驗。 Linux 使用者可以選擇 Bash 體驗，而 Windows 使用者可以選擇 PowerShell。
 
-您也可以在本機安裝 CLI。 如需您平台的相關指示，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+您也可以在本機安裝 CLI。 如需您平台的相關指示，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="sign-in"></a>登入
 

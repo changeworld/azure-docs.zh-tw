@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6e0612a017650f0c6e4c9f63d9a5fd097b0b92c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89303970"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562358"
 ---
 ## <a name="update-resources"></a>更新資源
 
@@ -36,7 +36,7 @@ ms.locfileid: "89303970"
 
 如果您計畫新增複本區域，請勿刪除來源受控映射。 將映射版本複寫到其他區域時需要來源受控映射。 
 
-若要更新資源庫的描述，請使用 [AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)。
+若要更新資源庫的描述，請使用 [AzGallery](/powershell/module/az.compute/update-azgallery)。
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-此範例示範如何使用 [更新 AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) 來更新映射定義的生命循環結束日期。
+此範例示範如何使用 [更新 AzGalleryImageDefinition](/powershell/module/az.compute/update-azgalleryimagedefinition) 來更新映射定義的生命循環結束日期。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此範例示範如何使用 [new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 來排除此映射版本，使其無法當做 *最新* 的映射使用。
+此範例示範如何使用 [new-azgalleryimageversion](/powershell/module/az.compute/update-azgalleryimageversion) 來排除此映射版本，使其無法當做 *最新* 的映射使用。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -65,7 +65,7 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
-此範例示範如何使用 [更新 new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 來包含此映射版本，以納入 *最新* 的映射。
+此範例示範如何使用 [更新 new-azgalleryimageversion](/powershell/module/az.compute/update-azgalleryimageversion) 來包含此映射版本，以納入 *最新* 的映射。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -103,4 +103,3 @@ Remove-AzGallery `
 
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-

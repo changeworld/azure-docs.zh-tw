@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: c4dcc0d578df5dbd693f4f2a05f3e531bb509838
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fe37b0c9dbc16520a0dcb0993236db2797da6b68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755771"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556308"
 ---
 ## <a name="update-resources"></a>更新資源
 
@@ -36,7 +36,7 @@ ms.locfileid: "92755771"
 
 如果您計畫新增複本區域，請勿刪除來源受控映射。 將映射版本複寫到其他區域時需要來源受控映射。 
 
-使用 ([az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update)更新資源庫的描述。 
+使用 ([az sig update](/cli/azure/sig?view=azure-cli-latest#az-sig-update)更新資源庫的描述。 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-使用 [az sig 映射定義更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)來更新映射定義的描述。
+使用 [az sig 映射定義更新](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)來更新映射定義的描述。
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-使用 [az sig image-version update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)更新映射版本，以新增要複寫的區域。 此變更需要一些時間，因為映射會複寫到新的區域。
+使用 [az sig image-version update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)更新映射版本，以新增要複寫的區域。 此變更需要一些時間，因為映射會複寫到新的區域。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,7 +67,7 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
-此範例示範如何使用 [az sig 映射版本更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 來排除此映射版本，使其無法當做 *最新* 的映射使用。
+此範例示範如何使用 [az sig 映射版本更新](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 來排除此映射版本，使其無法當做 *最新* 的映射使用。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -78,7 +78,7 @@ az sig image-version update \
    --set publishingProfile.excludeFromLatest=true
 ```
 
-此範例示範如何使用 [az sig 映射版本更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 來納入將此映射版本視為 *最新* 映射。
+此範例示範如何使用 [az sig 映射版本更新](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 來納入將此映射版本視為 *最新* 映射。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -93,7 +93,7 @@ az sig image-version update \
 
 您必須先刪除映射版本，以反轉順序刪除資源。 在刪除所有映像版本之後，就可以刪除映像定義。 在刪除所有映像定義之後，就可以刪除映像庫。 
 
-使用 [az sig 映射-版本刪除](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete)來刪除映射版本。
+使用 [az sig 映射-版本刪除](/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete)來刪除映射版本。
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -103,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-使用 [az sig 映射定義刪除](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete)來刪除映射定義。
+使用 [az sig 映射定義刪除](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete)來刪除映射定義。
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -113,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-使用 [az sig delete](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete)刪除映射庫。
+使用 [az sig delete](/cli/azure/sig?view=azure-cli-latest#az-sig-delete)刪除映射庫。
 
 ```azurecli-interactive
 az sig delete \

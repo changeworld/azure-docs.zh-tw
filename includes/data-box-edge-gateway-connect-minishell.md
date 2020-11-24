@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e603442bdecf9a627172e24390b06cef573f475
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174441"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556855"
 ---
 視用戶端的作業系統而定，從遠端連線到裝置的程式會有所不同。
 
@@ -58,11 +58,11 @@ ms.locfileid: "67174441"
 
 在您要用來連接的 Linux 用戶端上：
 
-- 從 GitHub[安裝最新的 Linux PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) ，以取得 SSH 遠端功能。 
+- 從 GitHub[安裝最新的 Linux PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) ，以取得 SSH 遠端功能。 
 - [只 `gss-ntlmssp` 從 NTLM 模組安裝套件](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 針對 Ubuntu 用戶端，請使用下列命令：
     - `sudo apt-get install gss-ntlmssp`
 
-如需詳細資訊，請移至透過 [SSH 的 PowerShell 遠端](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)功能。
+如需詳細資訊，請移至透過 [SSH 的 PowerShell 遠端](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)功能。
 
 請遵循下列步驟從遠端連線到 NFS 用戶端。
 

@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
-ms.openlocfilehash: 1b650fa5a0e9ba2f7019e6e67690d9d1fd65e72a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 051cd8646718c17c288b06a535d35e1eed5e9259
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894887"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562211"
 ---
 資訊安全中心可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
@@ -20,15 +20,15 @@ ms.locfileid: "90894887"
     >[!IMPORTANT]
     > 如果您選擇不在主機上安裝此代理程式，則只會收到部分的威脅防護權益和安全性警示。 您仍會收到與網路分析以及與惡意伺服器通訊有關的警示。
 
-    如需 AKS 主機層級警示的清單，請參閱[警示的參考資料表](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)。
+    如需 AKS 主機層級警示的清單，請參閱[警示的參考資料表](../articles/security-center/alerts-reference.md#alerts-containerhost)。
 
 
-* **AKS 叢集層級 (由 Azure Defender 針對 Kubernetes 提供的)** - 在叢集層級，威脅防護是以分析 Kubernetes 的稽核記錄為基礎。 若要啟用此**無代理程式**監視，請啟用 Azure Defender。 為了在此層級產生警示，資訊安全中心會使用 AKS 所擷取的記錄來監視受 AKS 管理的服務。 此層級的事件範例包括公開 Kubernetes 儀表板、建立高特殊權限的角色，以及建立敏感性裝載。
+* **AKS 叢集層級 (由 Azure Defender 針對 Kubernetes 提供的)** - 在叢集層級，威脅防護是以分析 Kubernetes 的稽核記錄為基礎。 若要啟用此 **無代理程式** 監視，請啟用 Azure Defender。 為了在此層級產生警示，資訊安全中心會使用 AKS 所擷取的記錄來監視受 AKS 管理的服務。 此層級的事件範例包括公開 Kubernetes 儀表板、建立高特殊權限的角色，以及建立敏感性裝載。
 
     >[!NOTE]
     > 資訊安全中心會針對在訂用帳戶設定上啟用 Kubernetes 選項後所發生的 Azure Kubernetes Service 動作和部署產生安全性警示。 
 
-    如需 AKS 叢集層級警示的清單，請參閱[警示的參考資料表](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)。
+    如需 AKS 叢集層級警示的清單，請參閱[警示的參考資料表](../articles/security-center/alerts-reference.md#alerts-akscluster)。
 
 此外，我們的全球安全性研究小組會持續監視威脅的態勢。 他們會在發現容器特有的警示和弱點時加以新增。
 

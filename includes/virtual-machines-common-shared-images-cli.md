@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 58f38f5fe5544f01636d5fd2b2393025e5cb01ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9556b20ba0ceac2d4c1ad92897e6f9d46293387f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755892"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554270"
 ---
 ## <a name="create-an-image-gallery"></a>建立映像資源庫 
 
@@ -21,7 +21,7 @@ ms.locfileid: "92755892"
 
 資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 資源庫名稱不能包含連字號。   資源庫名稱在您的訂用帳戶內必須是唯一的。 
 
-使用 [az sig create](/cli/azure/sig#az-sig-create) 建立映像資源庫。 下列範例會在「美國東部」建立名為 myGalleryRG 的資源群組，以及名為 myGallery 的資源庫。
+使用 [az sig create](/cli/azure/sig#az-sig-create) 建立映像資源庫。 下列範例會在「美國東部」  建立名為 myGalleryRG  的資源群組，以及名為 myGallery  的資源庫。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -50,4 +50,4 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)。
+如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](../articles/role-based-access-control/role-assignments-cli.md)。

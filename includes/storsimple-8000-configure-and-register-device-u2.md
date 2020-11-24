@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 56514f5dcf4bfe205ef46ee64dcf4dcf638d4f62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee92e145acd981bb8c84b43986b90306b994c262
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174184"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554263"
 ---
 #### <a name="to-configure-and-register-the-device"></a>設定和註冊裝置
 
@@ -19,7 +19,7 @@ ms.locfileid: "67174184"
 
 3. 系統將提示您選擇想要為裝置設定的語言。 指定語言，然後按 **enter**。
 
-4. 在顯示的序列主控台功能表中，選擇選項 1 [以完整存取權登入]****。
+4. 在顯示的序列主控台功能表中，選擇選項 1 [以完整存取權登入]。
      完成步驟 5-12，為裝置設定最小的必要網路設定。 **這些設定步驟必須在裝置的主動控制器上執行。**  序列主控台功能表會在橫幅訊息中指出控制站狀態。 如果您未連接到主動控制器，請中斷連線，然後連接到主動控制器。
 
 5. 在命令提示字元中，輸入您的密碼。 預設裝置密碼是 **Password1**。
@@ -98,7 +98,7 @@ ms.locfileid: "67174184"
 
     ```
 
-12. 註冊裝置之後，隨即會出現服務資料加密金鑰。 複製這個金鑰，並將它儲存在安全的位置。 **這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。** 如需這個金鑰的詳細資訊，請參閱 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 。
+12. 註冊裝置之後，隨即會出現服務資料加密金鑰。 複製這個金鑰，並將它儲存在安全的位置。 **這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。** 如需這個金鑰的詳細資訊，請參閱 [StorSimple 安全性](../articles/storsimple/storsimple-8000-security.md) 。
     
     ![StorSimple 註冊裝置 7](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup1.png)
     
@@ -109,12 +109,11 @@ ms.locfileid: "67174184"
 14. 返回 Azure 入口網站，並完成下列步驟：
     
     1. 移至您的 StorSimple 裝置管理員服務。
-    2. 按一下 [裝置]****。
-    3. 在表格式的裝置清單中，查閱狀態可確認裝置已成功連線到服務。 裝置狀態應該是 [準備好進行設定]****。
+    2. 按一下 [裝置]。
+    3. 在表格式的裝置清單中，查閱狀態可確認裝置已成功連線到服務。 裝置狀態應該是 [準備好進行設定]。
        
         ![StorSimple 裝置頁面](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup2.png)
        
-        您可能需要等待數分鐘，讓裝置狀態變更為 [就緒可進行設定]****。
+        您可能需要等待數分鐘，讓裝置狀態變更為 [就緒可進行設定]。
        
         如果裝置未出現在此清單中，您就必須確定防火牆網路已依照 [StorSimple 裝置網路需求](../articles/storsimple/storsimple-8000-system-requirements.md)中的說明加以設定。 請確認連接埠 9354 已開啟可供輸出通訊使用，因為 StorSimple 裝置管理員服務對裝置的服務匯流排也是使用此連接埠進行通訊。
-

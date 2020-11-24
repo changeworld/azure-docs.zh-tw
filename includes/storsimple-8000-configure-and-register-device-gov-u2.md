@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174035"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560951"
 ---
 ### <a name="to-configure-and-register-the-device"></a>設定和註冊裝置
 1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 如需相關指示，請參閱 [使用 PuTTY 來連接至裝置序列主控台](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 。 **請務必確實依照此程序，否則將無法存取主控台。**
@@ -17,7 +17,7 @@ ms.locfileid: "67174035"
 3. 系統將提示您選擇想要為裝置設定的語言。 指定語言，然後按 **enter**。
    
     ![StorSimple 設定和註冊裝置 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. 在顯示的序列主控台功能表中，選擇選項 1 [以完整存取權登入]****。
+4. 在顯示的序列主控台功能表中，選擇選項 1 [以完整存取權登入]。
    
     ![StorSimple 註冊裝置 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
 5. 執行下列步驟，為裝置設定最小的必要網路設定。
@@ -43,7 +43,7 @@ ms.locfileid: "67174035"
    4. 選擇性設定 Web Proxy 伺服器。
       
       > [!IMPORTANT]
-      > 雖然 Web Proxy 設定是選用的，但請注意，如果您使用 Web Proxy，就只能在此處設定它。 如需詳細資訊，請參閱 [設定裝置的 Web Proxy](../articles/storsimple/storsimple-configure-web-proxy.md)。
+      > 雖然 Web Proxy 設定是選用的，但請注意，如果您使用 Web Proxy，就只能在此處設定它。 如需詳細資訊，請參閱 [設定裝置的 Web Proxy](../articles/storsimple/storsimple-8000-configure-web-proxy.md)。
      
 6. 按 Ctrl + C 來結束安裝精靈。
 8. 執行下列 Cmdlet，將裝置指向 Microsoft Azure Government 入口網站 (因為預設指向公用 Azure 傳統入口網站)。 這樣會重新啟動兩個控制器。 建議您使用兩個 PuTTY 工作階段以同時連線至兩個控制器，這樣您就可以看見每個控制器是何時重新啟動。
@@ -79,11 +79,10 @@ ms.locfileid: "67174035"
 15. 返回 Azure Government 入口網站，並完成下列步驟：
     
     1. 移至您的 StorSimple 裝置管理員服務。
-    2. 按一下 [裝置]****。 從裝置清單中找出您正在部署的裝置。 藉由查閱狀態來確認裝置已成功連線到服務。 裝置狀態應該是 [線上] ****。
+    2. 按一下 [裝置]。 從裝置清單中找出您正在部署的裝置。 藉由查閱狀態來確認裝置已成功連線到服務。 裝置狀態應該是 [線上] 。
             
-        如果裝置狀態為 [離線]****，請等候數分鐘讓裝置上線。
+        如果裝置狀態為 [離線]，請等候數分鐘讓裝置上線。
        
         如果數分鐘之後裝置仍然離線，請確定您的防火牆網路已依照 [StorSimple 裝置網路需求](../articles/storsimple/storsimple-8000-system-requirements.md)中的說明加以設定。
        
         請確認連接埠 9354 已開啟可供輸出通訊使用，因為 StorSimple 裝置管理員服務對裝置的服務匯流排也是使用此連接埠進行通訊。
-

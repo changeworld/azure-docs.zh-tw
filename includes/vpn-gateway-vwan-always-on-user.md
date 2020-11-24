@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79500194"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555717"
 ---
 1. 在 Windows 10 用戶端上安裝用戶端憑證，如這個 [點對站 VPN 用戶端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) 文章所示。 憑證必須在目前的使用者存放區中。
 
-1. 遵循 [設定 Windows 10 用戶端 ALWAYS ON VPN 連接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的指示，透過 PowerShell、Configuration Manager 或 Intune 設定 Always On VPN 用戶端。
+1. 遵循 [設定 Windows 10 用戶端 ALWAYS ON VPN 連接](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的指示，透過 PowerShell、Configuration Manager 或 Intune 設定 Always On VPN 用戶端。
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>使用者通道的設定範例
 
@@ -75,7 +75,7 @@ ms.locfileid: "79500194"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 複製下列文字，並將它儲存為與*usercert.ps1*相同資料夾中的*VPNProfile.xml* 。 編輯下列文字以符合您的環境：
+1. 複製下列文字，並將它儲存為與 *usercert.ps1* 相同資料夾中的 *VPNProfile.xml* 。 編輯下列文字以符合您的環境：
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`

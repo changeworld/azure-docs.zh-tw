@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413136"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553416"
 ---
 目前，ultra 磁片有額外的限制，如下所示：
 
@@ -45,7 +45,7 @@ Ultra 磁片目前唯一可用的基礎結構冗余選項是可用性區域。 �
 |美國東部 2     |三個可用性區域         |
 |法國中部    |兩個可用性區域        |
 |日本東部    |三個可用性區域        |
-|歐洲北部    |三個可用性區域        |
+|北歐    |三個可用性區域        |
 |英國南部    |三個可用性區域        |
 |西歐    | 三個可用性區域|
 |美國西部 2    |三個可用性區域|
@@ -67,7 +67,7 @@ Ultra 磁片目前唯一可用的基礎結構冗余選項是可用性區域。 �
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - 並非每個 VM 大小都可在具有 ultra 磁片的每個支援區域中使用。
 - 只能作為資料磁片使用。 
-- 預設支援4k 實體磁區大小。 512E 磁區大小是以正式推出的供應專案的形式提供，但您必須 [註冊](https://aka.ms/ultradisk512e)。 大部分的應用程式都相容于4k 磁區大小，但有些應用程式需要512個位元組磁區的大小。 其中一個範例是 Oracle Database，這需要版本12.2 或更新版本，才能支援4k 原生磁片。 針對較舊版本的 Oracle DB，需要512個位元組的磁區大小。
+- 預設支援4k 實體磁區大小。 512E 磁區大小可作為正式推出的供應專案， (不需要註冊) 但目前僅供使用 CLI 或 powershell 使用。 大部分的應用程式都相容于4k 磁區大小，但有些應用程式需要512個位元組磁區的大小。 其中一個範例是 Oracle Database，這需要版本12.2 或更新版本，才能支援4k 原生磁片。 針對較舊版本的 Oracle DB，需要512個位元組的磁區大小。
 - 只能建立為空磁片。
 - 目前不支援磁片快照集、VM 映射、可用性設定組、Azure 專用主機或 Azure 磁片加密。
 - 目前不支援與 Azure 備份或 Azure Site Recovery 整合。

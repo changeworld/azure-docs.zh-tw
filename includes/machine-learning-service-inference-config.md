@@ -4,22 +4,22 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
-ms.openlocfilehash: f500df6a592769928470d22468ff2fdff18293a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f7798e684a0a144cfe5285a0dd926a3b440934a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88748897"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555046"
 ---
-`inferenceconfig.json` 文件中的項目會對應至 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 類別的參數。 下表描述 JSON 文件中的實體之間的對應以及方法的參數：
+`inferenceconfig.json` 文件中的項目會對應至 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 類別的參數。 下表描述 JSON 文件中的實體之間的對應以及方法的參數：
 
 | JSON 實體 | 方法參數 | 描述 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | 本機檔案的路徑，其中包含要為映像執行的程式碼。 |
 | `sourceDirectory` | `source_directory` | 選擇性。 資料夾的路徑，其中包含要建立映像的所有檔案，讓您可以在此資料夾或子資料夾中輕鬆存取任何檔案。 您可以從本機電腦上傳整個資料夾，作為 Web 服務的相依性。 注意：entry_script、conda_file 和 extra_docker_file_steps 路徑是 source_directory 路徑的相對路徑。 |
-| `environment` | `environment` | 選擇性。  Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。|
+| `environment` | `environment` | 選擇性。  Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。|
 
-您可以在推斷設定檔中包含 Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的完整規格。 如果工作區中不存在此環境，則 Azure Machine Learning 會加以建立。 否則，Azure Machine Learning 將視需要更新環境。 下列 JSON 是一個範例：
+您可以在推斷設定檔中包含 Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的完整規格。 如果工作區中不存在此環境，則 Azure Machine Learning 會加以建立。 否則，Azure Machine Learning 將視需要更新環境。 下列 JSON 是一個範例：
 
 ```json
 {
@@ -65,7 +65,7 @@ ms.locfileid: "88748897"
 }
 ```
 
-您也可以在不同的 CLI 參數中使用現有的 Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)，並從推斷設定檔中移除「環境」金鑰。 針對環境名稱使用 -e，並針對環境版本使用 --ev。 如果您未指定--ev，則會使用最新版本。 以下是推斷設定檔的範例：
+您也可以在不同的 CLI 參數中使用現有的 Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)，並從推斷設定檔中移除「環境」金鑰。 針對環境名稱使用 -e，並針對環境版本使用 --ev。 如果您未指定--ev，則會使用最新版本。 以下是推斷設定檔的範例：
 
 ```json
 {
@@ -76,7 +76,7 @@ ms.locfileid: "88748897"
 
 下列命令示範如何使用先前的推斷設定檔 (名為 myInferenceConfig.json) 來部署模型。 
 
-其也會使用現有 Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (名為 AzureML-Minimal) 的最新版本。
+其也會使用現有 Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (名為 AzureML-Minimal) 的最新版本。
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json
