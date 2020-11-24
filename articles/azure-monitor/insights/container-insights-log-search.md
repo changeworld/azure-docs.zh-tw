@@ -3,12 +3,12 @@ title: 如何查詢容器 Azure 監視器的記錄 |Microsoft Docs
 description: 適用于容器的 Azure 監視器會收集計量和記錄資料，而本文將說明記錄並包含範例查詢。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a540ae828b14f231b3b327b714876550cc744a7e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 08c42fab84cb5180497f8da4f077b9bd82283ad4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994024"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95747674"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何查詢容器 Azure 監視器的記錄
 
@@ -16,7 +16,7 @@ ms.locfileid: "91994024"
 
 ## <a name="container-records"></a>容器資料列
 
-在下表中，會提供容器 Azure 監視器所收集之記錄的詳細資料。 
+在下表中，會提供容器 Azure 監視器所收集之記錄的詳細資料。 如需資料行描述的清單，請參閱 [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) 和 [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) 資料表的參考。
 
 | 資料 | 資料來源 | 資料類型 | 欄位 |
 |------|-------------|-----------|--------|
@@ -37,7 +37,7 @@ ms.locfileid: "91994024"
 
 Azure 監視器記錄可協助您尋找趨勢、診斷瓶頸、預測或關聯資料，以協助您判斷目前的叢集設定是否能以最佳方式執行。 已為您提供可立即開始使用，或自訂以您想要的方式傳回資訊的預先定義記錄搜尋。
 
-您可以從 [**分析**] 下拉式清單中的 [預覽] 窗格中，選取 [ **view Kubernetes event logs** ] 或 [ **view container logs** ] 選項，以執行工作區中資料的互動式分析。 [記錄搜尋]**** 頁面會出現在您所在 Azure 入口網站頁面的右邊。
+您可以從 [**分析**] 下拉式清單中的 [預覽] 窗格中，選取 [ **view Kubernetes event logs** ] 或 [ **view container logs** ] 選項，以執行工作區中資料的互動式分析。 [記錄搜尋] 頁面會出現在您所在 Azure 入口網站頁面的右邊。
 
 ![在 Log Analytics 中分析資料](./media/container-insights-analyze/container-health-log-search-example.png)
 
@@ -108,6 +108,6 @@ KubeMonAgentEvents | where Level != "Info"
 
 ![從代理程式記錄資訊事件的查詢結果](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 容器的 Azure 監視器不包含一組預先定義的警示。 請參閱 [容器的 Azure 監視器建立效能警示](./container-insights-log-alerts.md) ，以瞭解如何建立高 CPU 和記憶體使用量的建議警示，以支援您的 DevOps 或操作程式和程式。

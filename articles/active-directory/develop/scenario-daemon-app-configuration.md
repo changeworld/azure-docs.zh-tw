@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6864502a9d338a786e1e77dbf9888a7818bb94e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444158"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748643"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 web Api 的 Daemon 應用程式-程式碼設定
 
@@ -34,11 +34,11 @@ ms.locfileid: "94444158"
 
 ## <a name="configure-the-authority"></a>設定授權單位
 
-背景程式應用程式會使用應用程式許可權，而不是委派的許可權。 因此，其支援的帳戶類型不能是任何組織目錄或任何個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) 的帳戶。 沒有租使用者系統管理員可將同意授與 Microsoft 個人帳戶的 daemon 應用程式。 您必須選擇 *組織內的帳戶* 或 *任何組織內的帳戶* 。
+背景程式應用程式會使用應用程式許可權，而不是委派的許可權。 因此，其支援的帳戶類型不能是任何組織目錄或任何個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) 的帳戶。 沒有租使用者系統管理員可將同意授與 Microsoft 個人帳戶的 daemon 應用程式。 您必須選擇 *組織內的帳戶* 或 *任何組織內的帳戶*。
 
-因此，應用程式設定中指定的授權單位應租使用者 (指定租使用者識別碼或與您組織) 相關聯的功能變數名稱。
+應用程式設定中指定的授權單位應租使用者 (指定租使用者識別碼或與您組織) 相關聯的功能變數名稱。
 
-如果您是 ISV，而且想要提供多租使用者工具，您可以使用 `organizations` 。 但請記住，您也必須向客戶說明如何授與系統管理員同意。 如需詳細資訊，請參閱 [要求整個租使用者的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，MSAL 中目前有限制： `organizations` 只有當用戶端認證是應用程式密碼 (不是憑證) 時才允許。
+即使您想要提供多租使用者的工具，您應該使用租使用者識別碼或功能變數名稱，而 **不** 是使用 `common` `organizations` 此流程，因為服務無法可靠地推斷應使用的租使用者。
 
 ## <a name="configure-and-instantiate-the-application"></a>設定並具現化應用程式
 
@@ -166,7 +166,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-`Authority`是雲端實例和租使用者識別碼的串連，例如 `https://login.microsoftonline.com/contoso.onmicrosoft.com` 或 `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` 。 在 [ [設定檔](#configuration-file)] 區段所示的 *appsettings.js* 檔案中，這些 `Instance` 分別以和值表示 `Tenant` 。
+`Authority`是雲端實例和租使用者識別碼的串連，例如 `https://login.microsoftonline.com/contoso.onmicrosoft.com` 或 `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` 。 在 [[設定檔](#configuration-file)] 區段所示的 *appsettings.js* 檔案中，這些 `Instance` 分別以和值表示 `Tenant` 。
 
 在先前的程式碼片段取自的程式碼範例中， `Authority` 是  [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) 類別上的屬性，並定義如下：
 

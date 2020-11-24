@@ -7,24 +7,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/04/2020
-ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/30/2020
+ms.openlocfilehash: 83c575aa40b80d9a8e39263e89a5e7860c8f8774
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484336"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741656"
 ---
-# <a name="publishing-guide-for-container-offers"></a>容器供應專案發佈指南
+# <a name="publishing-guide-for-azure-container-offers"></a>Azure container 優惠的發佈指南
 
-容器供應專案可協助您將容器映射發佈至 Azure Marketplace。 您可以使用本指南來了解這項供應項目的需求。 
+Azure 容器供應專案可協助您將容器映射發佈至 Azure Marketplace。 您可以使用本指南來瞭解此供應專案類型的需求。
 
-容器供應專案是透過 Azure Marketplace 部署和計費的交易供應專案。 使用者看到的清單選項是「立即取得」。
+Azure 容器供應專案是透過 Azure Marketplace 部署和計費的交易供應專案。 使用者看到的清單選項是「立即取得」。
 
-當您的解決方案是設定為以 Kubernetes 為基礎的 Azure Container service 實例的 Docker 容器映射時，請使用 *容器* 供應專案類型。 
+當您的解決方案是設定為以 Kubernetes 為基礎之 Azure 容器實例的 Docker 容器映射時，請使用 Azure 容器供應專案類型。
 
 > [!NOTE]
-> 以 Kubernetes 為基礎的 Azure container service 實例的範例有 Azure Kubernetes Service 或 Azure 容器實例，這是以 Kubernetes 為基礎之容器執行時間的 Azure 客戶選擇。  
+> Azure 容器實例是一個執行時間 docker 實例，可提供在 Azure 中執行容器最快速且最簡單的方式，而不需要管理任何虛擬機器，也不需要採用更高層級的服務。 容器實例可以直接部署至 Azure，或透過 Azure Kubernetes Services 或 Azure Kubernetes Service 引擎進行協調。  
 
 Microsoft 目前支援免費和自備授權 (BYOL) 授權模型。
 
@@ -39,9 +39,6 @@ Microsoft 目前支援免費和自備授權 (BYOL) 授權模型。
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell) (若您尚不了解)。
+- 若要準備容器供應專案的技術資產，請參閱 [建立 Azure 容器技術資產](create-azure-container-technical-assets.md)。
 
-若要註冊並開始使用合作夥伴中心：
-
-- [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
-- 如需詳細資訊，請參閱 [建立 Azure 容器供應](./partner-center-portal/create-azure-container-offer.md) 專案。
+- 若要建立 Azure 容器供應專案，請參閱 [Azure Marketplace 中的建立 azure 容器供應](create-azure-container-offer.md) 專案，以取得詳細資訊。

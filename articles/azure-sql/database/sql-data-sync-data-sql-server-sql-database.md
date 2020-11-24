@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540615"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736471"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -46,7 +46,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 - **同步結構描述** 說明要同步的資料。
 - **同步處理方向** 可以是雙向或只有單向。 也就是說，同步處理方向可以是「中樞到成員」或是「成員到中樞」，或兩者皆可。
 - **同步處理間隔** 說明了進行同步處理的頻率。
-- **衝突解決原則** 是群組層級原則，可以是 *中樞獲勝* 或 *成員獲勝* 。
+- **衝突解決原則** 是群組層級原則，可以是 *中樞獲勝* 或 *成員獲勝*。
 
 ## <a name="when-to-use"></a>使用時機
 
@@ -58,7 +58,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 在下列案例中，資料同步不是慣用的解決方案：
 
-| 案例 | 某些建議的解決方案 |
+| 狀況 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](automated-backups-overview.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](read-scale-out.md) |
@@ -72,7 +72,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 - **追蹤資料變更：** 資料同步使用 insert、update 和 delete 觸發程序追蹤變更。 變更會記錄在使用者資料庫中的資料表。 請注意，BULK INSERT 預設不會引發觸發程式。 如果未指定 FIRE_TRIGGERS，則不會執行任何 insert 觸發程式。 新增 FIRE_TRIGGERS 選項，資料同步就能追蹤那些插入。 
 - **同步處理資料：** 資料同步是在中樞和輪輻模型中設計的。 中樞會個別同步處理每個成員。 從中樞進行的變更會下載到成員，然後將來自該成員的變更上傳至中樞。
-- **解決衝突：** 資料同步提供兩個衝突解決選項： *中樞獲勝* 或 *成員獲勝* 。
+- **解決衝突：** 資料同步提供兩個衝突解決選項：*中樞獲勝* 或 *成員獲勝*。
   - 如果您選取 [中樞獲勝]，中樞的變更永遠會覆寫成員的變更。
   - 如果您選取 [成員獲勝]，成員的變更永遠會覆寫中樞的變更。 如果有多個成員，最終的值則取決於哪一個成員先同步。
 
@@ -81,7 +81,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 | | 資料同步 | 異動複寫 |
 |---|---|---|
 | **優點** | - 主動-主動支援<br/>- 在內部部署與 Azure SQL Database 之間雙向進行 | - 更低的延遲性<br/>- 交易一致性<br/>- 移轉後重複使用現有的拓撲 <br/>-Azure SQL 受控執行個體支援 |
-| **缺點** | -同步之間的5分鐘最小頻率<br/>- 無交易一致性<br/>- 更高的效能影響 | -無法從 Azure SQL Database 發行 <br/>- 高維護成本 |
+| **缺點** | - 無交易一致性<br/>- 更高的效能影響 | -無法從 Azure SQL Database 發行 <br/>- 高維護成本 |
 
 ## <a name="get-started"></a>開始使用 
 
@@ -166,7 +166,6 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 | 一個同步群組中的資料表                                          | 500                    | 建立多個同步群組 |
 | 一個同步群組中一個資料表中的資料行                              | 1000                   |                             |
 | 一個資料表上的資料列大小                                        | 24 Mb                  |                             |
-| 自上一次同步開始之後 (的最小同步頻率間隔)      | 5 分鐘              |                             |
 
 > [!NOTE]
 > 如果只有一個同步群組，則在單一同步群組中最多可有 30 個端點。 如果有多個同步群組，則所有同步群組之間的端點總數不能超過 30 個。 如果資料庫屬於多個同步群組，系統會將它計算為多個端點，而不是一個。
@@ -175,8 +174,8 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 建立同步處理群組時，資料同步服務需要連接到中樞資料庫。 當您建立同步處理群組時，Azure SQL server 的設定中必須有下列 `Firewalls and virtual networks` 設定：
 
- * *拒絕公用網路存取* 必須設為 *Off* 。
- * [ *允許 Azure 服務和資源存取此伺服器* ] 必須設定為 *[是]* ，或者您必須為 [資料同步服務使用的 ip 位址](network-access-controls-overview.md#data-sync)建立 ip 規則。
+ * *拒絕公用網路存取* 必須設為 *Off*。
+ * [*允許 Azure 服務和資源存取此伺服器*] 必須設定為 *[是]*，或者您必須為 [資料同步服務使用的 ip 位址](network-access-controls-overview.md#data-sync)建立 ip 規則。
 
 一旦建立並布建同步群組之後，您就可以停用這些設定。 同步代理程式會直接連線到中樞資料庫，您可以使用伺服器的 [防火牆 IP 規則](firewall-configure.md) 或 [私人端點](private-endpoint-overview.md) ，以允許代理程式存取中樞伺服器。
 
@@ -240,7 +239,7 @@ SQL 資料同步會在以下所有區域內上市。
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>我可以使用資料同步 (BYOD) 功能，來同步從 Dynamics 365 匯出的資料嗎？
 
-Dynamics 365 攜帶您自己的資料庫功能可讓系統管理員將資料實體從應用程式匯出至自己的 Microsoft Azure SQL database。 如果資料是使用 **增量推送** 匯出的，資料同步可以用來將此資料同步處理到其他資料庫， (不支援完整推播) 而且 **目標資料庫中的 [啟用觸發** 程式] 設定為 **[是]** 。
+Dynamics 365 攜帶您自己的資料庫功能可讓系統管理員將資料實體從應用程式匯出至自己的 Microsoft Azure SQL database。 如果資料是使用 **增量推送** 匯出的，資料同步可以用來將此資料同步處理到其他資料庫， (不支援完整推播) 而且 **目標資料庫中的 [啟用觸發** 程式] 設定為 **[是]**。
 
 ## <a name="next-steps"></a>後續步驟
 

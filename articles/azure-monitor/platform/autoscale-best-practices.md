@@ -4,21 +4,21 @@ description: 在 Azure 中自動調整 Web 應用程式、虛擬機器擴展集�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdb3588833dd9bcf989e020cd1dd861c6e28f37
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327050"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95745311"
 ---
 # <a name="best-practices-for-autoscale"></a>自動調整規模的最佳做法
 Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](../../api-management/api-management-key-concepts.md)。
 
 ## <a name="autoscale-concepts"></a>自動調整的概念
 
-* 資源可以只有「一項」 ** 自動調整設定。
+* 資源可以只有「一項」  自動調整設定。
 * 自動調整設定可有一或多個設定檔，而且每個設定檔都能有一或多項自動調整規則。
-* 自動調整設定會水平調整執行個體，其中「相應放大」** 為增加執行個體數量，而「相應縮小」** 則是減少執行個體數量。
+* 自動調整設定會水平調整執行個體，其中「相應放大」為增加執行個體數量，而「相應縮小」則是減少執行個體數量。
   自動調整設定可設定執行個體數的最大值、最小值及預設值。
 * 自動調整作業一律會讀取相關聯的度量作為調整依據，據此檢查其是否超過設定的臨界值，以執行相應放大或相應縮小。 您可以在 [Azure 監視器自動調整的常見度量](autoscale-common-metrics.md)中，檢視自動調整據以調整的度量清單。
 * 所有臨界值都是在執行個體層級計算。 例如，「當執行個體計數為 2 時，若平均 CPU > 80% ，即相應放大 1 個執行個體」表示當所有執行個體的平均 CPU 大於 80% 時即相應放大。
@@ -41,7 +41,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 如果您只使用組合的其中一個部分，則自動調整只會以單一方向 (scale out 或在) 中執行動作，直到達到設定檔中所定義的最大或最小實例計數為止。 這不是最佳作法，理想的狀態是讓資源在高使用量時擴展以確保可用性。 同樣地，您在低使用量時需要資源縮減，因此可實現成本節約。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>為您的診斷度量選擇適當的統計資料
-針對診斷度量，您可以選擇 [平均值]**、[最小值]**、[最大值]** 和 [總計]** 作為據以調整的度量。 最常用的統計資料是 [平均值] **。
+針對診斷度量，您可以選擇 [平均值]、[最小值]、[最大值] 和 [總計] 作為據以調整的度量。 最常用的統計資料是 [平均值] 。
 
 ### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>請小心選擇所有度量類型的臨界值
 建議您根據實際情況，小心選擇不同的相應放大與相應縮小臨界值。
@@ -73,6 +73,9 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 3. 假設 CPU% 在經過一段時間後降至 60。
 4. 自動調整的相應縮小規會先評估相應縮小之後的最終狀態。 例如 60x3 (目前的執行個體計數) = 180/2 (相應減少時的最終執行個體數) = 90。 因為自動調整必須再於相應減少之後隨即相應放大，所以其不會相應縮小， 而會略過相應減少。
 5. 下一次自動調整檢查，CPU 會繼續歸類為 50。 再次進行評估：50 x 3 個執行個體 = 150/2 個執行個體 = 75 (低於相應放大臨界值 80)，所以會依設定相應放大到 2 個執行個體。
+
+> [!NOTE]
+> 如果自動調整引擎偵測到 flapping 可能由於調整為目標實例數目而發生，它也會嘗試調整為目前計數和目標計數之間不同數目的實例。 如果 flapping 不在此範圍內，自動調整會以新目標繼續進行調整規模作業。
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>調整特殊度量之臨界值時的注意事項
  對於特殊度量 (例如儲存體或服務匯流排佇列長度度量)，臨界值目前執行個體數所能使用的平均訊息數。 請謹慎選擇此度量的臨界值。
@@ -115,8 +118,8 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 有些情況可能需要您在設定檔中設定多項規則。 當設定了多個規則時，自動調整引擎會使用下列自動調整規則。
 
-在相應放大時，如果符合任何規則，自動 *調整*就會執行。
-對於「相應縮小」**，自動調整會要求必須符合所有規則。
+在相應放大時，如果符合任何規則，自動 *調整* 就會執行。
+對於「相應縮小」，自動調整會要求必須符合所有規則。
 
 現在我們以您有下列四項自動調整規則加以示範說明︰
 
@@ -130,7 +133,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 * 如果 CPU 為76%，而記憶體為50%，則會向外擴充。
 * 如果 CPU 為50%，而記憶體為76%，則會向外擴充。
 
-反之，當 CPU 為 25%，記憶體為 51% 時，自動調整「不會」**** 相應縮小。 若要相應縮小，CPU 必須達到 29%，而記憶體必須達到 49%。
+反之，當 CPU 為 25%，記憶體為 51% 時，自動調整「不會」相應縮小。 若要相應縮小，CPU 必須達到 29%，而記憶體必須達到 49%。
 
 ### <a name="always-select-a-safe-default-instance-count"></a>請一律選取安全的預設執行個體計數
 預設實例計數很重要，因為當計量無法使用時，自動調整規模會將您的服務調整為該計數。 因此，請選取對您工作負載而言最安全的預設執行個體計數。
@@ -143,6 +146,8 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 * 自動調整規模服務無法採取調整規模動作。
 * 自動調整服務無法使用度量決定規模。
 * 度量恢復使用 (復原)，可用以決定規模。
+* 自動調整會偵測 flapping 並中止調整嘗試。 在此情況下，您將會看到的記錄類型 `Flapping` 。 如果您看到這種情況，請考慮您的閾值是否太窄。
+* 自動調整會偵測 flapping，但仍能成功調整規模。 在此情況下，您將會看到的記錄類型 `FlappingOccurred` 。 如果您看到這種情況，自動調整引擎會嘗試調整 (例如，從4個實例到2個) ，但判定這會造成 flapping。 相反地，自動調整引擎會調整為不同數目的實例 (例如，使用3個實例，而不是2個) ，而不會再造成 flapping，因此它已調整為此實例數目。
 
 您也可以使用活動記錄警示來監視自動調整引擎的健康狀態。 以下範例為[建立活動記錄警示以監視訂用帳戶的所有自動調整引擎作業](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)，或[建立活動記錄警示以監視訂用帳戶中所有失敗的相應縮小/相應放大自動調整作業](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
 

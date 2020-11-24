@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530109"
+ms.locfileid: "95750517"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>針對適用於 VM 的 Azure 監視器來設定 Log Analytics 工作區
 適用於 VM 的 Azure 監視器會從 Azure 監視器中的一或多個 Log Analytics 工作區收集其資料。 在將代理程式上架之前，您必須先建立並設定工作區。 本文說明工作區的需求，並針對適用於 VM 的 Azure 監視器進行設定。
@@ -80,7 +80,7 @@ ms.locfileid: "95530109"
 ### <a name="azure-portal"></a>Azure 入口網站
 有三個選項可供您使用 Azure 入口網站設定現有的工作區。 各項說明如下。
 
-若要設定單一工作區，請選取 **其他上線選項** ，然後 **設定工作區**。 選取訂用帳戶和工作區，然後按一下 [ **設定**]。
+若要設定單一工作區，請移至 [ **Azure 監視器**] 功能表中的 [**虛擬機器**] 選項、選取 **其他上線選項**，然後 **設定工作區**。 選取訂用帳戶和工作區，然後按一下 [ **設定**]。
 
 [![設定工作區](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

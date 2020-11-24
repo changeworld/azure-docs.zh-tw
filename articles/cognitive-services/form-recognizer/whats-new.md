@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95506540"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736594"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -38,13 +38,13 @@ ms.locfileid: "95506540"
   > [深入瞭解版面配置解壓縮](concept-layout.md)
 
 - **支援的新語言：日文** -現在支援下列新語言：適用于 `AnalyzeLayout` 和 `AnalyzeCustomForm` ：日文 (`ja`) 。 [語言支援](language-support.md)
-- **文字行樣式指示 (手寫/列印)  (僅限拉丁語言)** 表單辨識器現在 `appearance` 會輸出物件，以分類每個文字行是否為手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
+- **文字行樣式指示 (手寫/其他)  (僅限拉丁語言)** 表單辨識器現在 `appearance` 會輸出物件，以分類每個文字行是否為手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 - **品質改進** -解壓縮改進，包括單一數位的解壓縮改進。
 - **表單辨識器範例標籤工具中新的** 「立即試用」功能-使用表單辨識器範例標籤工具來嘗試預建的發票、收據和名片模型，以及配置 API 的功能。 瞭解如何將資料解壓縮，而不需要撰寫任何程式碼。
 
   > [試用表單辨識器範例工具](https://fott-preview.azurewebsites.net/)
 
-  ![FOTT 範例](./media/fott-preview.jpg)
+  ![FOTT 範例](./media/ui-preview.jpg)
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -85,7 +85,7 @@ ms.locfileid: "95506540"
 * **貨幣支援** -全域貨幣符號的偵測和解壓縮。
 * **Azure Gov** -表單辨識器現在也可在 azure Gov 中使用。
 * **增強的安全性功能**： 
-   * **攜帶您自己的金鑰** 表單辨識器會在保存到雲端時自動加密您的資料，以保護它，並協助您符合組織的安全性和合規性承諾。 根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 您現在也可以使用自己的加密金鑰來管理您的訂用帳戶。 [客戶管理的金鑰 (CMK) ，也稱為自備金鑰 (BYOK) ](./form-recognizer-encryption-of-data-at-rest.md)，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。  
+   * **攜帶您自己的金鑰** 表單辨識器會在保存到雲端時自動加密您的資料，以保護它，並協助您符合組織的安全性和合規性承諾。 根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 您現在也可以使用自己的加密金鑰來管理您的訂用帳戶。 [客戶管理的金鑰（也稱為「攜帶您自己的金鑰」 (BYOK) ](./form-recognizer-encryption-of-data-at-rest.md)）提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。  
    * **私人端點** –可讓您在虛擬網路上 (VNet) ，以透過 [Private Link 安全地存取資料。](../../private-link/private-link-overview.md)
 
 

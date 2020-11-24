@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c2e691d673b385d597957cf5a4ce3c3f18ba466
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511431"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741724"
 ---
 # <a name="form-recognizer-layout-service"></a>表單辨識器版面佈建服務
 
@@ -72,7 +72,7 @@ JSON 輸出有兩個部分：
 
 ## <a name="example-output"></a>範例輸出
 
-### <a name="text"></a>Text
+### <a name="text"></a>文字
 
 版面配置會將檔中的文字解壓縮 (PDF、TIFF) 和影像 (jpg、png、bmp) 具有不同的文字角度、色彩、角度、檔的相片、傳真、印刷、手寫 (僅限英文) 和混合模式。 文字會以線條、文字、周框方塊、信賴分數和樣式 (手寫或其他) 的資訊進行解壓縮。 所有文字資訊都包含在 `"readResults"` JSON 輸出的區段中。 
 
@@ -86,11 +86,10 @@ JSON 輸出有兩個部分：
 
 版面配置也會從檔中解壓縮選取專案標記。 已解壓縮的選取標記包括周框方塊、信賴度和狀態 (選取/未選取的) 。 在 JSON 輸出的區段中，會解壓縮選取標記資訊 `"readResults"` 。 
 
-<<< 新增選取標記範例>>>
-
 ## <a name="next-steps"></a>後續步驟
 
 - 使用[表單辨識器範例 UI](https://fott-preview.azurewebsites.net/)來嘗試您自己的版面配置解壓縮
+- 完成 [表單辨識器用戶端程式庫快速入門](quickstarts/client-library.md) ，開始以您選擇的語言來解壓縮版面配置。
 - 或者，遵循「 [解壓縮版面配置資料](./QuickStarts/python-layout.md) 」快速入門，使用 Python 和 REST API 來執行版面配置資料解壓縮。
 
 ## <a name="see-also"></a>請參閱

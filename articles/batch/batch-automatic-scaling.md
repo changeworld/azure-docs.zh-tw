@@ -2,14 +2,14 @@
 title: 自動調整 Azure Batch 集區中的計算節點
 description: 在雲端集區上啟用自動調整，以動態調整集區中的計算節點數目。
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849787"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737287"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>建立自動公式以調整 Batch 集區中的計算節點
 
@@ -79,7 +79,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="variables"></a>變數
 
-您可以在自動調整公式中同時使用**服務定義**和**使用者定義**的變數。
+您可以在自動調整公式中同時使用 **服務定義** 和 **使用者定義** 的變數。
 
 服務定義的變數內建在 Batch 服務中。 有些服務定義的變數是讀寫，有些是唯讀。
 
@@ -134,6 +134,9 @@ $NodeDeallocationOption = taskcompletion;
 
 > [!TIP]
 > 這些唯讀服務定義變數是提供各種方法來存取每個相關聯資料的 *物件* 。 如需詳細資訊，請參閱本文稍後的[取得範例資料](#obtain-sample-data)。
+
+> [!NOTE]
+> 在 `$RunningTasks` 根據某個時間點執行的工作數目進行調整時，以及 `$ActiveTasks` 根據已排入執行佇列的工作數目進行調整時使用。
 
 ## <a name="types"></a>類型
 
@@ -226,7 +229,7 @@ $NodeDeallocationOption = taskcompletion;
 
 <table>
   <tr>
-    <th>計量</th>
+    <th>Metric</th>
     <th>描述</th>
   </tr>
   <tr>
@@ -326,7 +329,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 因為範例可用性可能會有延遲，所以您應該一律指定具有早于一分鐘的反向查看開始時間的時間範圍。 樣本需要花大約一分鐘的時間才能傳播到整個系統，所以通常無法使用 `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` 範圍中的樣本。 同樣地，您可以使用 `GetSample()` 的百分比參數來強制特定樣本百分比需求。
 
 > [!IMPORTANT]
-> 我們強烈建議您***避免「只」* `GetSample(1)`依賴自動調整公式中的** 。 這是因為 `GetSample(1)` 基本上會向 Batch 服務表示：「不論您多久以前擷取最後一個樣本，請將它提供給我」。 因為它只是單一樣本，而且可能是較舊的樣本，所以可能無法代表最近工作或資源狀態的全貌。 如果您使用 `GetSample(1)`，請確定它是較大的陳述式，而且不是您的公式所依賴的唯一資料點。
+> 我們強烈建議您 ***避免「只」* `GetSample(1)`依賴自動調整公式中的** 。 這是因為 `GetSample(1)` 基本上會向 Batch 服務表示：「不論您多久以前擷取最後一個樣本，請將它提供給我」。 因為它只是單一樣本，而且可能是較舊的樣本，所以可能無法代表最近工作或資源狀態的全貌。 如果您使用 `GetSample(1)`，請確定它是較大的陳述式，而且不是您的公式所依賴的唯一資料點。
 
 ## <a name="write-an-autoscale-formula"></a>撰寫自動調整公式
 
@@ -381,7 +384,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> 如果您選擇，可以在公式字串中包含批註和分行符號。
+> 如果您選擇，可以在公式字串中包含批註和分行符號。 也請注意，遺失分號可能會導致評估錯誤。
 
 ## <a name="automatic-scaling-interval"></a>自動調整間隔
 
@@ -423,7 +426,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> 當您建立已啟用自動調整的集區時，請勿在對 **>batchclient.pooloperations.createpool**的呼叫中指定 _>createpool_參數或 _>targetdedicatednodes_參數。 請改為在集區上指定 **AutoScaleEnabled** 和 **AutoScaleFormula** 屬性。 這些屬性的值會判斷每個節點類型的目標數目。
+> 當您建立已啟用自動調整的集區時，請勿在對 **>batchclient.pooloperations.createpool** 的呼叫中指定 _>createpool_ 參數或 _>targetdedicatednodes_ 參數。 請改為在集區上指定 **AutoScaleEnabled** 和 **AutoScaleFormula** 屬性。 這些屬性的值會判斷每個節點類型的目標數目。
 >
 > 若要手動調整已啟用自動調整集區的大小 (例如，使用 [BatchClient. >batchclient.pooloperations.createpool. ResizePoolAsync](/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync)) ，您必須先停用集區上的自動調整，然後調整其大小。
 
@@ -486,7 +489,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
   - 如果您省略自動調整公式或間隔，則 Batch 服務將繼續使用該設定的目前值。
 
 > [!NOTE]
-> 如果您在 .NET 中建立集區時，針對 **>batchclient.pooloperations.createpool**方法的 *>createpool*或 *>targetdedicatednodes*參數指定值，或在其他語言中為可比較的參數指定值，則在評估自動調整公式時，會忽略這些值。
+> 如果您在 .NET 中建立集區時，針對 **>batchclient.pooloperations.createpool** 方法的 *>createpool* 或 *>targetdedicatednodes* 參數指定值，或在其他語言中為可比較的參數指定值，則在評估自動調整公式時，會忽略這些值。
 
 這個 c # 範例會使用 [Batch .net](/dotnet/api/microsoft.azure.batch) 程式庫，在現有的集區上啟用自動調整。
 
@@ -625,7 +628,7 @@ AutoScaleRun.Results:
 
 在 REST API 中，[取得集區的相關資訊](/rest/api/batchservice/get-information-about-a-pool)要求會傳回集區的相關資訊，其中包含 [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) 屬性中最近執行的自動調整資訊。
 
-下列 c # 範例會使用 Batch .NET 程式庫來列印集區 _myPool_上上次自動調整執行的相關資訊。
+下列 c # 範例會使用 Batch .NET 程式庫來列印集區 _myPool_ 上上次自動調整執行的相關資訊。
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");

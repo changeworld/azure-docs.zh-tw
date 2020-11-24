@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533271"
+ms.locfileid: "95736524"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -276,7 +276,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> 使用暫時性作業系統時，您可以將 VM 和實例映射部署到 VM 快取的大小。 在 AKS 案例中，預設節點 OS 磁片設定會使用100GiB，這表示您需要的 VM 大小必須大於 100 GiB 的快取。 預設 Standard_DS2_v2 的快取大小為 86 GiB，但不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，夠大。 您也可以使用來減少 OS 磁片的預設大小 `--node-osdisk-size` 。 AKS 影像的大小下限為30GiB。 
+> 使用暫時性作業系統時，您可以將 VM 和實例映射部署到 VM 快取的大小。 在 AKS 案例中，預設節點 OS 磁片設定會使用128GB，這表示您需要的 VM 大小必須大於128GB 的快取。 預設 Standard_DS2_v2 的快取大小為86GB，但不夠大。 Standard_DS3_v2 的快取大小為172GB，它夠大。 您也可以使用來減少 OS 磁片的預設大小 `--node-osdisk-size` 。 AKS 影像的大小下限為30GB。 
 
 如果您想要使用網路連接的 OS 磁片來建立節點集區，您可以指定來建立節點集區 `--node-osdisk-type Managed` 。
 

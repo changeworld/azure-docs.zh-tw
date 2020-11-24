@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8755a600a1e6afaae4ebe7451e16f6632073587f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534512"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746586"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>快速入門：使用電腦視覺 2.0 REST API OCR 作業和 C# 來擷取文字
 
 > [!IMPORTANT]
-> 如果您要擷取英文、荷蘭文、法文、德文、義大利文、葡萄牙文、西班牙文或簡體中文 (預覽) 的文字，建議您使用較新的[讀取作業](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 目前已有 [ 快速入門](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可供使用。 
+> 如果您要擷取英文、荷蘭文、法文、德文、義大利文、葡萄牙文、西班牙文或簡體中文 (預覽) 的文字，建議您使用較新的[讀取作業](../concept-recognizing-text.md)。 目前已有 [ 快速入門](./csharp-hand-text.md)可供使用。 
 
 在本快速入門中，您會使用電腦視覺 REST API [OCR 作業](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)功能來擷取影像中的印刷文字。 使用此作業，您可以偵測影像中的印刷文字，然後將辨識出的字元擷取到電腦可使用的字元資料流中。
 
@@ -32,7 +32,7 @@ ms.locfileid: "94534512"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 ## <a name="create-and-run-the-sample-application"></a>建立並執行範例應用程式
 

@@ -71,6 +71,16 @@
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
         - name: 認知服務容器文件
           href: ../containers/index.yml
+- name: 案例深入探討
+  items:
+    - name: 臉部註冊
+      items:
+        - name: 概觀
+          href: enrollment-overview.md
+        - name: 操作指南
+          items:
+            - name: 透過 React 建立註冊應用程式
+              href: build-enrollment-app.md
 - name: 參考
   items:
     - name: 人臉識別 API

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/23/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 79d9c0e4a1e820ca30e8434e87fd0e40622291d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a0ec50f9f2666542d1f7ff7106b745461bb8731b
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542774"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746212"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入門：使用電腦視覺 REST API 和 JavaScript 擷取印刷和手寫文字
 
@@ -389,6 +389,6 @@ Image to read:
 探索使用「電腦視覺」在影像中執行光學字元辨識 (OCR)、建立智慧型裁剪縮圖以及偵測、分類、標記和描述視覺特徵的 JavaScript 應用程式。 
 
 > [!div class="nextstepaction"]
-> [電腦視覺 API JavaScript 教學課程](../Tutorials/javascript-tutorial.md)
+> [電腦視覺 API JavaScript 教學課程](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)
 
 * 若要快速地試驗電腦視覺 API，請嘗試 [Open API 測試主控台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console)。

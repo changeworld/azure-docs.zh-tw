@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629898"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751108"
 ---
 # <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
@@ -34,11 +34,13 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 - **執行個體 URL** (必要) – 客戶開始試用產品的網址。 這通常是您的應用程式與範例資料安裝所在的 Dynamics 365 執行個體的 URL (例如，`https://testdrive.crm.dynamics.com`)。
 
--  (所需的 **實例 Web api url** ) –請登入您的 Microsoft 365 帳戶，然後流覽至 [ **設定**  >  **自訂**  >  **開發人員資源**  >  **實例 Web API (服務根目錄 url)** ]，來取得 Dynamics 365 實例的 web api url (，複製此處找到的 URL) 例如 `https://testdrive.crm.dynamics.com/api/data/v9.0` 。
+-  (所需的 **實例 Web api url**) –請登入您的 Microsoft 365 帳戶，然後流覽至 [**設定**  >  **自訂**  >  **開發人員資源**  >  **實例 Web API (服務根目錄 url)**]，來取得 Dynamics 365 實例的 web api url (，複製此處找到的 URL) 例如 `https://testdrive.crm.dynamics.com/api/data/v9.0` 。
 
 - **角色名稱** (必要) -提供您在自訂 Dynamics 365 試用產品中定義的安全性角色名稱，這將在其試用產品期間指派給使用者 (例如 test-drive-role)。
 
-如需有關如何設定您的 Dynamics 365 環境以進行試用產品和授與 AppSource 許可權，以在您的租使用者中布建和取消布建試用產品的相關資訊，請遵循下列 [指示](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)。
+如需有關如何設定您的 Dynamics 365 環境以進行試用產品和授與 AppSource 許可權，以在您的租使用者中布建和取消布建試用產品的相關資訊，請遵循下列 [指示](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)。
+
+如需列出及設定託管試用產品的逐步指示，請流覽 [ [託管試用](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) 產品的詳細設定] 頁面。
 
 ## <a name="logic-app-test-drive"></a>邏輯應用程式試用產品
 
@@ -54,7 +56,7 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 - **Azure 邏輯應用程式名稱** (必要) – 輸入將試用產品指派給使用者的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
--  (需要取消布建 **邏輯應用程式名稱** ) –請輸入在客戶完成後取消布建試用產品的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
+-  (需要取消布建 **邏輯應用程式名稱**) –請輸入在客戶完成後取消布建試用產品的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
 ## <a name="power-bi-test-drive"></a>Power BI 試用產品
 
@@ -72,13 +74,13 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 - **Azure AD 租用戶識別碼** (針對 Dynamic 365 為必要) – 輸入您的 Azure Active Directory (AD) 名稱。 若要尋找此名稱，請登入 [Azure 入口網站](https://portal.azure.com/)，位於右上角的租用戶名稱會列在您的帳戶名稱底下。
 
-- **Azure AD 應用程式識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [ **應用程式註冊** ]，然後尋找列出的 **應用程式識別碼** 號碼 (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
+- **Azure AD 應用程式識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [ **應用程式註冊**]，然後尋找列出的 **應用程式識別碼** 號碼 (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
-- **Azure AD 應用程式用戶端密碼** (必要) –請輸入 Azure AD 應用程式 [用戶端密碼](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 選取左側功能表中的 [ **Azure Active Directory** ] 索引標籤，選取 [ **應用程式註冊** ]，然後選取您的試用產品應用程式。 接著，選取 [ **憑證和秘密** ]、選取 [ **新增用戶端密碼** ]、輸入描述、選取 [ **永不****過期** ]，然後選擇 [ **新增** ]。 請務必記下此值。 複製值之前，請不要離開頁面。
+- **Azure AD 應用程式用戶端密碼** (必要) –請輸入 Azure AD 應用程式 [用戶端密碼](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 選取左側功能表中的 [ **Azure Active Directory** ] 索引標籤，選取 [ **應用程式註冊**]，然後選取您的試用產品應用程式。 接著，選取 [**憑證和秘密**]、選取 [**新增用戶端密碼**]、輸入描述、選取 [**永不****過期**]，然後選擇 [**新增**]。 請務必記下此值。 複製值之前，請不要離開頁面。
 
 ## <a name="test-drive-listings"></a>試用產品清單
 
-在合作夥伴中心的 [ **試用** 產品] 索引標籤下找到的 [ **試用產品清單** ] 選項，會顯示您的試用產品 (和市場) 的語言，目前只有英文 (美國) 是唯一可用的位置。 此外，此頁面會顯示特定語言清單的狀態，以及新增清單的日期/時間。 您將需要為每個語言/市場定義試用產品詳細資料 (描述、使用者手冊、影片等 ) 。
+在合作夥伴中心的 [**試用** 產品] 索引標籤下找到的 [**試用產品清單**] 選項，會顯示您的試用產品 (和市場) 的語言，目前只有英文 (美國) 是唯一可用的位置。 此外，此頁面會顯示特定語言清單的狀態，以及新增清單的日期/時間。 您將需要為每個語言/市場定義試用產品詳細資料 (描述、使用者手冊、影片等 ) 。
 
 - **描述** (必要的) ：描述您的試用產品、要示範的專案、要進行實驗的目標、要探索的功能，以及任何可協助使用者判斷是否取得您的供應專案的相關資訊。 最多可以在此欄位中輸入 3,000 個字元的文字。
 
@@ -92,6 +94,8 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
   - **縮圖** (533 x 324 圖元) –影像必須為 PNG 格式。
 
 如果您目前正在合作夥伴中心中建立您的試用產品，請選取 [ **儲存草稿** ]，然後再繼續。
+
+如需列出及設定託管試用產品的逐步指示，請流覽 [ [託管試用](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) 產品的詳細設定] 頁面。
 
 ## <a name="additional-resources"></a>其他資源
 
