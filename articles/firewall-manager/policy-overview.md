@@ -5,20 +5,31 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075458"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509737"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure 防火牆管理員原則概觀
 
 防火牆原則是一種 Azure 資源，其中包含 NAT、網路和應用程式規則集合，以及威脅情報設定。 這是全域資源，可使用於安全虛擬中樞及中樞虛擬網路中的多個 Azure 防火牆執行個體。 原則可跨地區和訂用帳戶運作。
 
 ![Azure 防火牆管理員原則](media/policy-overview/policy-overview.png)
+
+## <a name="availability"></a>可用性
+
+防火牆原則是高可用性且自動複寫的資源。 如果發生罕見的區域性災難，防火牆原則作業會容錯移轉至 Azure 配對區域。 復原後作業會將同步和非同步作業容錯移轉至 Azure 主要區域。 
+
+配對區域提供數個優點，包括：
+- 實體隔離至少相隔 300 英哩
+- 更快速地從災害中復原
+- 符合地理位置規定的資料落地需求
+
+如需配對區域的詳細資訊，請參閱[商務持續性和災害復原 (BCDR)：Azure 配對的區域](../best-practices-availability-paired-regions.md)。
 
 ## <a name="policy-creation-and-association"></a>建立和關聯原則
 

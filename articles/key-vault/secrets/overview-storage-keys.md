@@ -10,14 +10,16 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8473d3a19a86027b5b01af59d24833dc40cd1fe9
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441829"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95242350"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
+> [!IMPORTANT]
+> 建議使用 Azure 儲存體與 Azure Active Directory (Azure AD) 整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用於 [Azure Blob 和佇列](../../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 權杖型存取 (如同 Azure Key Vault)。 Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。 僅在無法使用 Azure AD 驗證時，才使用下列解決方案。
 
 Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金鑰是由系統自動產生，並作為密碼使用，比單純的密碼編譯金鑰具有更多功能。 Key Vault 會在儲存體帳戶中定期重新產生儲存體帳戶金鑰，並提供共用存取簽章權杖，以便委派存取您儲存體帳戶中的資源。
 
@@ -29,12 +31,6 @@ Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金�
 - 只能允許 Key Vault 管理您的儲存體帳戶金鑰。 請勿自行管理金鑰，並避免干擾 Key Vault 程序。
 - 只有單一 Key Vault 物件方能管理儲存體帳戶金鑰。 不允許從多個物件進行金鑰管理。
 - 只能使用 Key Vault 重新產生金鑰。 不要手動重新產生儲存體帳戶金鑰。
-
-建議使用 Azure 儲存體與 Azure Active Directory (Azure AD) 整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用於 [Azure Blob 和佇列](../../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 權杖型存取 (如同 Azure Key Vault)。
-
-Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。
-
-Azure AD 會使用同時也受 Key Vault 支援的 Azure 角色型存取控制 (Azure RBAC) 來管理授權。
 
 ## <a name="service-principal-application-id"></a>服務主體的應用程式識別碼
 
@@ -68,18 +64,18 @@ az login
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>對儲存體帳戶提供 Key Vault 存取權
 
-使用 Azure CLI [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest) 命令，授與 Key Vault 存取您的儲存體帳戶。 將下列參數值提供給命令：
+使用 Azure CLI [az role assignment create](/cli/azure/role/assignment) 命令，授與 Key Vault 存取您的儲存體帳戶。 將下列參數值提供給命令：
 
 - `--role`:傳遞「儲存體帳戶金鑰操作員服務角色」Azure 角色。 此角色會將存取範圍限制為您的儲存體帳戶。 若是傳統帳戶類型，請傳遞「傳統儲存體帳戶金鑰操作員服務角色」。
 - `--assignee`:傳遞 "https://vault.azure.net" 值，這是 Azure 公用雲端中 Key Vault 的 URL。 (針對 Azure Goverment 雲端，請改用 '--asingee-object-id'，請參閱[服務主體應用程式識別碼](#service-principal-application-id)。)
-- `--scope`:傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) 命令；若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) 命令。
+- `--scope`:傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?#az-account-list) 命令；若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az-storage-account-list) 命令。
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>將使用者帳戶使用權限授與受控儲存體帳戶
 
-使用 Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) Cmdlet 來更新 Key Vault 存取原則，並將儲存體帳戶權限授與您的使用者帳戶。
+使用 Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) Cmdlet 來更新 Key Vault 存取原則，並將儲存體帳戶權限授與您的使用者帳戶。
 
 ```azurecli-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -90,11 +86,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 請注意，適用於儲存體帳戶的使用權限並不會在該儲存體於 Azure 入口網站中的 [存取原則] 頁面上提供。
 ### <a name="create-a-key-vault-managed-storage-account"></a>建立 Key Vault 受控儲存體帳戶
 
- 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) 命令來建立 Key Vault 受控儲存體帳戶。 設定 90 天的重新產生期間。 需要輪替時，KeyVault 會重新產生非作用中的金鑰，然後將新建立的金鑰設定為作用中。 只有其中一個金鑰會用來在任何時間簽發 SAS 權杖，這就是使用中的金鑰。 將下列參數值提供給命令：
+ 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?#az-keyvault-storage-add) 命令來建立 Key Vault 受控儲存體帳戶。 設定 90 天的重新產生期間。 需要輪替時，KeyVault 會重新產生非作用中的金鑰，然後將新建立的金鑰設定為作用中。 只有其中一個金鑰會用來在任何時間簽發 SAS 權杖，這就是使用中的金鑰。 將下列參數值提供給命令：
 
-- `--vault-name`:傳遞金鑰保存庫的名稱。 若要尋找金鑰保存庫的名稱，請使用 Azure CLI [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) 命令。
-- `-n`:傳遞儲存體帳戶的名稱。 若要尋找儲存體帳戶的名稱，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) 命令。
-- `--resource-id`:傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) 命令；若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) 命令。
+- `--vault-name`:傳遞金鑰保存庫的名稱。 若要尋找金鑰保存庫的名稱，請使用 Azure CLI [az keyvault list](/cli/azure/keyvault?#az-keyvault-list) 命令。
+- `-n`:傳遞儲存體帳戶的名稱。 若要尋找儲存體帳戶的名稱，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az-storage-account-list) 命令。
+- `--resource-id`:傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?#az-account-list) 命令；若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az-storage-account-list) 命令。
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -113,7 +109,7 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ### <a name="create-a-shared-access-signature-token"></a>建立共用存取簽章權杖
 
-使用 Azure CLI [az storage account generate-sas](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) 命令來建立共用存取簽章定義。 這項作業必須有 `storage` 和 `setsas` 權限。
+使用 Azure CLI [az storage account generate-sas](/cli/azure/storage/account?#az-storage-account-generate-sas) 命令來建立共用存取簽章定義。 這項作業必須有 `storage` 和 `setsas` 權限。
 
 
 ```azurecli-interactive
@@ -129,7 +125,7 @@ az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-
 
 ### <a name="generate-a-shared-access-signature-definition"></a>產生共用存取簽章定義
 
-使用 Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) 命令，將上一個步驟的輸出傳遞至 `--template-uri` 參數，以建立共用存取簽章定義。  您可以將選擇的名稱提供給 `-n` 參數。
+使用 Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) 命令，將上一個步驟的輸出傳遞至 `--template-uri` 參數，以建立共用存取簽章定義。  您可以將選擇的名稱提供給 `-n` 參數。
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
@@ -149,4 +145,4 @@ az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.az
 
 - 深入了解[金鑰、祕密與憑證](/rest/api/keyvault/)。
 - 請參閱 [Azure Key Vault 小組部落格](/archive/blogs/kv/)的文章。
-- 請參閱 [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest) 參考文件。
+- 請參閱 [az keyvault storage](/cli/azure/keyvault/storage) 參考文件。
