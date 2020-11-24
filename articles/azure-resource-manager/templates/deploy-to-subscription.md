@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: c87f6fa590e1f769816fb0ee3cba3aad1997de15
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/24/2020
+ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519858"
+ms.locfileid: "95807698"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 範本的訂用帳戶部署
 
@@ -126,6 +126,14 @@ New-AzSubscriptionDeployment `
 * [使用部署按鈕從 GitHub 存放庫部署範本](deploy-to-azure-button.md)
 * [從 Cloud Shell 部署 ARM 範本](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>部署位置和名稱
+
+針對訂用帳戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。 [管理群組](deploy-to-management-group.md) 和 [租](deploy-to-tenant.md) 使用者部署也需要一個位置。 針對 [資源群組](deploy-to-resource-group.md) 部署，資源群組的位置會用來儲存部署資料。
+
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
+
+對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 例如，如果您在 **centralus** 中建立名為 **deployment1** 的訂用帳戶部署，稍後就無法再以名稱 **deployment1** 建立另一個部署，而是 **westus** 的位置。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
+
 ## <a name="deployment-scopes"></a>部署範圍
 
 部署至訂用帳戶時，您可以將資源部署至：
@@ -173,14 +181,6 @@ New-AzSubscriptionDeployment `
 或者，您可以將範圍設定為 `/` 某些資源類型，例如管理群組。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
-
-## <a name="deployment-location-and-name"></a>部署位置和名稱
-
-針對訂用帳戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
-
-您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
-
-對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 
 ## <a name="resource-groups"></a>資源群組
 

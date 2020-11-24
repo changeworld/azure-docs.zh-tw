@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2370f76bacb8645f1b343da4f056c8bcf06a26dd
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014215"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95796730"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure 監視器記錄中的標準資料行
 Azure 監視器記錄檔中的資料會 [儲存為 Log Analytics 工作區或 Application Insights 應用程式中的一組記錄](./data-platform-logs.md)，每個資料類型都有一組唯一的資料行。 許多資料類型會有多個類型之間常見的標準資料行。 本文描述這些資料行，並提供如何在查詢中使用它們的範例。
@@ -80,7 +80,7 @@ search *
 ## <a name="_resourceid"></a>\_ResourceId
 **\_ ResourceId** 資料行保存與記錄相關聯之資源的唯一識別碼。 如此一來，您就可以使用標準資料行，將查詢的範圍限定于特定資源的記錄，或在多個資料表之間聯結相關資料。
 
-就 Azure 資源而言，**_ResourceId** 的值為 [Azure 資源識別碼 URL](../../azure-resource-manager/templates/template-functions-resource.md)。 此資料行目前僅限於 Azure 資源，但會延伸至 Azure 外部的資源，例如內部部署電腦。
+就 Azure 資源而言，**_ResourceId** 的值為 [Azure 資源識別碼 URL](../../azure-resource-manager/templates/template-functions-resource.md)。 此資料行受限於 Azure 資源，包括 [Azure Arc](../../azure-arc/overview.md) 資源，或在內嵌期間指出資源識別碼的自訂記錄。
 
 > [!NOTE]
 > 某些資料類型的欄位已包含 Azure 資源識別碼，或是至少屬於其一部份的訂用帳戶識別碼等。 雖然這些欄位會保留回溯相容性，但還是建議您使用 _ResourceId 執行交叉相互關聯，這樣將會更一致。
@@ -111,17 +111,47 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-下列查詢會剖析 **_ResourceId** ，並匯總每個 Azure 訂用帳戶的計費資料磁片區。
+下列查詢會剖析 **_ResourceId** ，並匯總每個 Azure 資源群組的計費資料磁片區。
 
 ```Kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by resourceGroup | sort by Bytes nulls last 
 ```
 
 請謹慎使用這些 `union withsource = tt *` 查詢，因為執行跨資料類型掃描的費用相當高昂。
+
+使用 \_ SubscriptionId 資料行比透過剖析 ResourceId 資料行來將它解壓縮是更有效率的方式 \_ 。
+
+## <a name="_substriptionid"></a>\_SubstriptionId
+**\_ SubscriptionId** 資料行保存與記錄相關聯之資源的訂用帳戶識別碼。 如此一來，您就可以使用標準資料行，將查詢的範圍限定于特定訂用帳戶的記錄，或比較不同的訂閱。
+
+針對 Azure 資源， **__SubscriptionId** 的值是 [AZURE 資源識別碼 URL](../../azure-resource-manager/templates/template-functions-resource.md)的訂用帳戶部分。 此資料行受限於 Azure 資源，包括 [Azure Arc](../../azure-arc/overview.md) 資源，或在內嵌期間指出資源識別碼的自訂記錄。
+
+> [!NOTE]
+> 某些資料類型已有包含 Azure 訂用帳戶識別碼的欄位。 雖然這些欄位是為了回溯相容性而保留，但建議使用 \_ SubscriptionId 資料行來執行交叉相互關聯，因為這樣會更一致。
+### <a name="examples"></a>範例
+下列查詢會檢查特定訂用帳戶之電腦的效能資料。 
+
+```Kusto
+Perf 
+| where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
+| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
+```
+
+下列查詢會剖析 **_ResourceId** ，並匯總每個 Azure 訂用帳戶的計費資料磁片區。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _SubscriptionId | sort by Bytes nulls last 
+```
+
+請謹慎使用這些 `union withsource = tt *` 查詢，因為執行跨資料類型掃描的費用相當高昂。
+
 
 ## <a name="_isbillable"></a>\_IsBillable
 **\_ IsBillable** 資料行會指定內嵌資料是否計費。 **\_ IsBillable** 等於的資料 `false` 會免費收集，且不會向您的 Azure 帳戶計費。
@@ -168,8 +198,7 @@ union withsource = tt *
 ```Kusto
 union withsource=table * 
 | where _IsBillable == true 
-| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId | sort by Bytes nulls last 
 ```
 
 若要查看每個資源群組內嵌的可計費事件大小，請使用下列查詢：
@@ -178,7 +207,7 @@ union withsource=table *
 union withsource=table * 
 | where _IsBillable == true 
 | parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
 
 ```
 
@@ -207,7 +236,7 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Azure 監視器記錄資料的儲存方式](../log-query/log-query-overview.md)。
 - 參與[撰寫記錄查詢](../log-query/get-started-queries.md)的課程。

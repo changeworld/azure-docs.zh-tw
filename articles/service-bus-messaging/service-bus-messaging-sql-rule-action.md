@@ -1,20 +1,19 @@
 ---
-title: Azure 服務匯流排中的 SQLRuleAction 語法參考
-description: 本文提供 SQLRuleAction 語法的參考。 這些動作是以以 SQL 語言為基礎的語法撰寫，以針對代理訊息執行。
+title: Azure 服務匯流排訂用帳戶規則 SQL 動作語法 |Microsoft Docs
+description: 本文提供 SQL 規則動作語法的參考。 這些動作是以以 SQL 語言為基礎的語法撰寫，以針對訊息執行。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: a156a9d8f18a7763f03c63b56681fa25ce6de289
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341585"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808854"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服務匯流排的 SQLRuleAction 語法參考
+# <a name="subscription-rule-sql-action-syntax"></a>訂用帳戶規則 SQL 動作語法
 
-*SqlRuleAction* 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 類別的執行個體，代表對 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)執行的以 SQL 語言為基礎之語法所撰寫的動作集。   
+當訂用帳戶規則的篩選選取訊息之後，會使用 *SQL 動作* 來操作訊息中繼資料。 它是仰賴在 SQL-92 標準子集上的文字運算式。 動作運算式會搭配 `sqlExpression` Azure Resource Manager 範本中服務匯流排的 ' action ' 屬性元素 `Rule` 或 Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 引數，以及數個允許管理訂用帳戶規則的 SDK 函數使用。
   
-本文章列出 SQL 規則動作文法的詳細資料。  
   
 ```  
 <statements> ::=
@@ -211,5 +210,9 @@ ms.locfileid: "85341585"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [SQLRuleAction 類別](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter 類別](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction 類別 ( .NET Framework) ](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction 類別 ( .NET Standard) ](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [ (JAVA) 的 SqlRuleAction 類別 ](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript) ](/javascript/api/@azure/service-bus/sqlruleaction)
+- [az 進行的主題訂用帳戶規則](/cli/azure/servicebus/topic/subscription/rule)
+- [新 AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

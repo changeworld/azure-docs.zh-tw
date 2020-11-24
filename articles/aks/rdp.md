@@ -5,12 +5,12 @@ description: 瞭解如何使用 Azure Kubernetes Service (AKS) 叢集 Windows Se
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c774e2287d0540c73cdd2234843d6766e7f2fb91
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82208035"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95792259"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 連線至 Azure Kubernetes Service (AKS) 叢集 Windows Server 節點進行維護或疑難排解
 
@@ -20,15 +20,15 @@ ms.locfileid: "82208035"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文假設您已有包含 Windows Server 節點的現有 AKS 叢集。 如果您需要 AKS 叢集，請參閱 [使用 Azure CLI 建立具有 Windows 容器之 AKS][aks-windows-cli]叢集的文章。 您需要 windows 系統管理員使用者名稱和密碼，才能進行要疑難排解的 Windows Server 節點。 您也需要 RDP 用戶端（例如 [Microsoft 遠端桌面][rdp-mac]）。
+本文假設您已有包含 Windows Server 節點的現有 AKS 叢集。 如果您需要 AKS 叢集，請參閱 [使用 Azure CLI 建立具有 Windows 容器之 AKS][aks-windows-cli]叢集的文章。 您需要 windows 系統管理員使用者名稱和密碼，才能進行要疑難排解的 Windows Server 節點。 如果您不知道它們，可以依照 [重設遠端桌面服務或其在 WINDOWS VM 中的系統管理員密碼 ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp)進行重設。 您也需要 RDP 用戶端（例如 [Microsoft 遠端桌面][rdp-mac]）。
 
-您也需要安裝並設定 Azure CLI 2.0.61 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 2.0.61 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>將虛擬機器部署至與叢集相同的子網
 
 AKS 叢集的 Windows Server 節點沒有可從外部存取的 IP 位址。 若要進行 RDP 連線，您可以將具有可公開存取之 IP 位址的虛擬機器部署至與 Windows Server 節點相同的子網。
 
-下列範例會在*myResourceGroup*資源群組中建立名為*myVM*的虛擬機器。
+下列範例會在 *myResourceGroup* 資源群組中建立名為 *myVM* 的虛擬機器。
 
 首先，取得 Windows Server 節點集區所使用的子網。 若要取得子網識別碼，您需要子網的名稱。 若要取得子網的名稱，您需要 vnet 的名稱。 藉由查詢叢集的網路清單來取得 vnet 名稱。 若要查詢叢集，您需要其名稱。 您可以在 Azure Cloud Shell 中執行下列各項，以取得上述各項：
 
@@ -147,7 +147,7 @@ NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
 az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您需要額外的疑難排解資料，可以 [查看 Kubernetes 主要節點記錄][view-master-logs] 或 [Azure 監視器][azure-monitor-containers]。
 

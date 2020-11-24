@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486867"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810055"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器登錄中的異地複寫
 
@@ -18,9 +18,9 @@ ms.locfileid: "92486867"
 
 異地複寫登錄提供下列優點：
 
-* 可跨多個區域使用單一登錄/映像/標記名稱
-* 從區域部署進行網路關閉登錄存取
-* 沒有其他輸出費用，因為映像是取自與容器主機相同區域中的本機複寫登錄
+* 單一登入、映射和標記名稱可以跨多個區域使用
+* 使用網路關閉登錄存取，改善區域部署的效能和可靠性
+* 從與容器主機相同或鄰近區域中的本機、複寫的登錄中提取映射圖層，以減少資料傳輸成本
 * 跨多個區域單一管理登錄
 
 > [!NOTE]
@@ -56,8 +56,9 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 使用 Azure Container Registry 的異地複寫功能來實現這些優點：
 
 * 在所有區域管理單一登錄：`contoso.azurecr.io`
-* 管理單一映像部署設定，因為所有區域都使用相同的映像 URL：`contoso.azurecr.io/public/products/web:1.2`
-* 推送至單一登錄，同時 ACR 會管理異地複寫。 您可以設定區域 [Webhook](container-registry-webhook.md) 通知自己有特定複本中的事件。
+* 管理映射部署的單一設定，因為所有區域都使用相同的映射 URL： `contoso.azurecr.io/public/products/web:1.2`
+* 推送至單一登錄，同時 ACR 會管理異地複寫。 ACR 只會複寫唯一層，減少跨區域的資料傳輸。 
+* 設定區域 [webhook](container-registry-webhook.md) 以通知您特定複本中的事件。
 
 ## <a name="configure-geo-replication"></a>設定異地複寫
 
@@ -131,7 +132,7 @@ az acr replication delete --name eastus --registry myregistry
 
 若要使用異地複寫登錄來疑難排解作業，您可能會想要暫時停用流量管理員路由傳送至一或多個複寫。 從 Azure CLI 版本2.8 開始，您可以在 `--region-endpoint-enabled` 建立或更新複寫的區域時，設定 (preview) 的選項。 當您將複寫的 `--region-endpoint-enabled` 選項設定為時 `false` ，流量管理員就不會再將 docker 推送或提取要求路由傳送至該區域。 依預設，會啟用 [路由至所有複寫]，而所有複寫的資料同步處理會在路由已啟用或停用時進行。
 
-若要停用對現有複寫的路由，請先執行 [az acr replication list][az-acr-replication-list] 來列出登錄中的複寫。 然後，執行 [az acr replication update][az-acr-replication-update] ，並 `--region-endpoint-enabled false` 針對特定複寫進行設定。 例如，若要在*myregistry*中設定*westus*複寫的設定：
+若要停用對現有複寫的路由，請先執行 [az acr replication list][az-acr-replication-list] 來列出登錄中的複寫。 然後，執行 [az acr replication update][az-acr-replication-update] ，並 `--region-endpoint-enabled false` 針對特定複寫進行設定。 例如，若要在 *myregistry* 中設定 *westus* 複寫的設定：
 
 ```azurecli
 # Show names of existing replications

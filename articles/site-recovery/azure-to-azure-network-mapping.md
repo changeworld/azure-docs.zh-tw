@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069487"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811636"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>為 VNet 設定網路對應和 IP 位址
 
@@ -26,11 +26,11 @@ ms.locfileid: "90069487"
 
 對應網路，如下所示：
 
-1. 在 **Site Recovery 基礎架構**中，按一下 [+網路對應]****。
+1. 在 **Site Recovery 基礎架構** 中，按一下 [+網路對應]。
 
     ![ 建立網路對應](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-3. 在 [新增網路對應]**** 中，選取來源和目標位置。 在我們的範例中，來源 VM 在東亞地區中執行，且會複寫至東南亞地區。
+3. 在 [新增網路對應] 中，選取來源和目標位置。 在我們的範例中，來源 VM 在東亞地區中執行，且會複寫至東南亞地區。
 
     ![選取來源和目標](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. 現在以相反的方向建立網路對應。 在我們的範例中，來源現在將是東南亞，目標將是東亞。
@@ -85,11 +85,11 @@ ms.locfileid: "90069487"
 **目標網路** | **詳細資料**
 --- | ---
 目標網路是容錯移轉 VNet | -目標 IP 位址將會是具有相同 IP 位址的靜態 IP 位址。 <br/><br/>  -如果已指派相同的 IP 位址，則 IP 位址會是下一個可在子網範圍結尾使用的位址。 例如：如果來源 IP 位址為 10.0.0.19 且容錯移轉網路使用範圍 10.0.0.0/24，則指派給目標 VM 的下一個 IP 位址為 10.0.0.254。
-目標網路不是容錯移轉 VNet | -目標 IP 位址將會是具有相同 IP 位址的靜態 IP 位址。<br/><br/>  -如果已指派相同的 IP 位址，則 IP 位址會是下一個可在子網範圍結尾使用的位址。<br/><br/> 例如：如果來源靜態 IP 位址為 10.0.0.19 且容錯移轉位於不是容錯移轉網路的網路上 (範圍為 10.0.0.0/24)，則目標靜態 IP 位址將為 10.0.0.0.19 (如果可用)，否則將是 10.0.0.254。
+目標網路不是容錯移轉 VNet | -目標 IP 位址將會是具有相同 IP 位址的靜態 IP 位址。<br/><br/>  -如果已指派相同的 IP 位址，則 IP 位址會是下一個可在子網範圍結尾使用的位址。<br/><br/> 例如：如果來源靜態 IP 位址是10.0.0.19，而且容錯移轉是在不是容錯移轉網路的網路上，其範圍為 10.0.0.0/24，則會10.0.0.19 目標靜態 IP 位址（如果有的話），否則將會10.0.0.254。
 
 - 容錯移轉 VNet 是您在設定災害復原時選取的目標網路。
 - 我們建議您一律使用非實際執行網路進行測試容錯移轉。
-- 您可以在 VM 的**計算與網路**設定中修改目標 IP 位址。
+- 您可以在 VM 的 **計算與網路** 設定中修改目標 IP 位址。
 
 
 ## <a name="next-steps"></a>後續步驟

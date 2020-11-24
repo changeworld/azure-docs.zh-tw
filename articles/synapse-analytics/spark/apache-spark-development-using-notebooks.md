@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dcf34d896deafad77d16619f3883ddd103fc55d4
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311137"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95790756"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (預覽版) 筆記本
 
@@ -30,11 +30,29 @@ Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含�
 
 本文說明如何在 Azure Synapse Studio 中使用筆記本。
 
+## <a name="preview-of-the-new-notebook-experience"></a>新筆記本體驗的預覽
+Synapse 團隊將新的筆記本元件帶入 Synapse Studio 中，為 Microsoft 客戶提供一致的筆記本體驗，並最大化探索能力、生產力、共用和共同作業。 新的筆記本體驗已備妥可供預覽。 檢查筆記本工具列中的 [ **預覽功能** ] 按鈕以開啟。 下表會捕捉現有筆記本 (的功能比較，因此稱為「傳統筆記本」 ) 新的預覽版本。  
+
+|功能|傳統筆記本|預覽筆記本|
+|--|--|--|
+|% 執行| 不受支援 | &#9745;|
+|% 歷程記錄| 不受支援 |&#9745;
+|% 載入| 不受支援 |&#9745;|
+|%% html| 不受支援 |&#9745;|
+|拖放以移動儲存格| 不受支援 |&#9745;|
+|持續顯示 ( # A1 輸出|&#9745;| 無法使用 |
+|全部取消| &#9745;| 無法使用|
+|執行上述所有資料格|&#9745;| 無法使用 |
+|執行下方的所有資料格|&#9745;| 無法使用 |
+|使用工具列按鈕格式化文字儲存格|&#9745;| 無法使用 |
+|復原資料格作業| &#9745;| 無法使用 |
+
+
 ## <a name="create-a-notebook"></a>建立 Notebook
 
 建立筆記本的方法有兩種。 您可以從 **物件總管** 建立新的筆記本，也可以將現有的筆記本匯入到 Azure Synapse 工作區。 Azure Synapse Studio 筆記本可以辨識標準 Jupyter Notebook IPYNB 檔案。
 
-![建立匯入筆記本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![建立匯入筆記本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
 ## <a name="develop-notebooks"></a>開發筆記本
 
@@ -43,6 +61,8 @@ Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含�
 ### <a name="add-a-cell"></a>新增儲存格
 
 有多種方式可將新的儲存格新增至您的筆記本。
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
 
 1. 展開左上方的 [+ 儲存格] 按鈕，然後選取 [加入程式碼儲存格] 或 [加入文字儲存格]。
 
@@ -53,6 +73,19 @@ Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含�
     ![add-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
 3. 使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 [A]，將儲存格插入目前的儲存格上方。 按下 [B]，將儲存格插入目前的儲存格下方。
+
+
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+1. 展開左上方 **+ 資料格** 按鈕，然後選取 [程式 **代碼資料格** ] 或 [Markdown 資料 **格**]。
+    ![新增-azure-包含儲存格的儲存格按鈕](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
+2. 選取資料格開頭的加號，然後選取 [程式 **代碼資料格** ] 或 [ **Markdown 資料格**]。
+
+    ![新增-azure-每個資料格-空格](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
+
+3. 使用 [命令模式下的 Aznb 快速鍵](#shortcut-keys-under-command-mode)。 按下 [A]，將儲存格插入目前的儲存格上方。 按下 [B]，將儲存格插入目前的儲存格下方。
+
+---
 
 ### <a name="set-a-primary-language"></a>設定主要語言
 
@@ -123,16 +156,34 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>使用工具列按鈕格式化文字儲存格
 
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
+
 您可以使用 [文字儲存格] 工具列中的 [格式] 按鈕來執行常見的 Markdown 動作。 其中包含粗體文字、斜體文字、插入程式碼片段、插入未排序的清單、插入已排序的清單，以及從 URL 插入影像。
 
   ![Synapse 文字資料格工具列](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+預覽筆記本體驗尚未提供格式按鈕工具列。 
+
+---
+
 ### <a name="undo-cell-operations"></a>復原儲存格作業
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
+
 選取 [ **復原** ] 按鈕，或按 **Ctrl + Z** 以撤銷最新的資料格運算。 現在您可以復原最近的 20 個歷史儲存格動作。 
 
    ![Synapse 復原儲存格](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+預覽筆記本體驗尚未提供復原資料格作業。 
+
+---
 
 ### <a name="move-a-cell"></a>移動儲存格
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
 
 選取省略符號 (...)，即可存取最右側的其他儲存格動作功能表。 然後選取 [向上移動儲存格] 或 [向下移動儲存格] 以移動目前的儲存格。 
 
@@ -140,7 +191,16 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查
 
    ![move-a-cell](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+按一下儲存格的左側，然後將它拖曳至所需的位置。 
+    ![Synapse 移動儲存格](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
+
+---
+
 ### <a name="delete-a-cell"></a>刪除儲存格
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
 
 若要刪除儲存格，請選取省略符號 (...)，以存取最右側的其他儲存格動作功能表，然後選取 [刪除儲存格]。 
 
@@ -148,16 +208,48 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查
   
    ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+若要刪除儲存格，請選取資料格右邊的 [刪除] 按鈕。 
+
+您也可以使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按 **Shift + D** 可刪除目前的儲存格。 
+
+   ![azure-筆記本-刪除-儲存格](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
+
+---
+
 ### <a name="collapse-a-cell-input"></a>摺疊儲存格輸入
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
+
 選取目前儲存格底部的箭號按鈕來折迭它。 若要展開，請在資料格折迭時選取箭號按鈕。
 
    ![collapse-cell-input](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+選取資料格工具列上的 [ **其他命令** 省略號] ( ... ) ，然後 **輸入** 以折迭目前儲存格的輸入。 若要展開，請選取 [在資料格折迭時 **隱藏的輸入** ]。
+
+   ![azure-筆記本-折迭-資料格-輸入](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
+
+---
+
 ### <a name="collapse-a-cell-output"></a>摺疊儲存格輸出
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
 
 選取目前資料格輸出左上角的 [折迭 **輸出** ] 按鈕，以折迭它。 若要展開它，請選取 [在資料格輸出折迭時 **顯示儲存格輸出** ]。
 
    ![collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+選取 [資料格] 工具列上的 [ **其他命令** 省略號] ( ... ) ，然後選取 [ **輸出** ] 以折迭目前儲存格的輸出。 若要展開它，請在隱藏儲存格輸出時選取相同的按鈕。
+
+   ![azure-筆記本-折迭-資料格輸出](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
+
+
+---
 
 ## <a name="run-notebooks"></a>執行筆記本
 
@@ -167,22 +259,21 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查
 
 有數種方式可以在儲存格中執行程式碼。
 
-1. 將游標停留在您想要執行的儲存格上，然後選取 [執行儲存格] 按鈕，或按下 **Ctrl+Enter** 。
+1. 將游標停留在您想要執行的儲存格上，然後選取 [執行儲存格] 按鈕，或按下 **Ctrl+Enter**。
 
    ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+  
+2. 使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 **Shift+Enter** 以執行目前的儲存格，然後選取下方的儲存格。 按下 **Alt+Enter** 以執行目前的儲存格，並在下方插入新的儲存格。
 
-
-2. 若要存取最右側的其他儲存格動作功能表，請選取省略符號 ( **...** )。然後，選取 [執行儲存格]。
-
-   ![run-cell-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
-   
-3. 使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 **Shift+Enter** 以執行目前的儲存格，然後選取下方的儲存格。 按下 **Alt+Enter** 以執行目前的儲存格，並在下方插入新的儲存格。
-
+---
 
 ### <a name="run-all-cells"></a>執行所有儲存格
 選取 [ **全部執行** ] 按鈕，以依序執行目前筆記本中的所有儲存格。
 
    ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
 
 ### <a name="run-all-cells-above-or-below"></a>執行上方或下方所有儲存格
 
@@ -194,6 +285,27 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查
 ### <a name="cancel-all-running-cells"></a>取消所有執行中的儲存格
 選取 [ **全部取消** ] 按鈕，取消執行中的儲存格或等候佇列中的資料格。 
    ![全部取消-儲存格](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+[取消所有執行中的儲存格] 尚未提供預覽筆記本體驗。 
+
+---
+
+
+
+### <a name="reference-notebook"></a>參考筆記本
+
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
+
+不支援。
+
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+您可以使用 ```%run <notebook path>``` 魔術命令參考目前筆記本內容中的另一個筆記本。 參考筆記本中定義的所有變數都可以在目前的筆記本中使用。 ```%run``` 魔術命令支援嵌套呼叫，但不支援遞迴呼叫。 如果語句深度大於五，您將會收到例外狀況。 ```%run``` 命令目前僅支援將筆記本路徑傳遞為參數。 
+
+---
+
 
 ### <a name="cell-status-indicator"></a>儲存格狀態指標
 
@@ -213,11 +325,25 @@ Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼資料格
 
 您可以在 [設定工作階段] 中指定要提供給目前 Spark 工作階段的執行程式逾時時間、數目和大小。 重新啟動 Spark 工作階段，設定變更才會生效。 所有快取的筆記本變數都會清除。
 
-[![會話管理](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+[![會話管理](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
-Spark 會話推薦現在可在 [Spark 會話設定] 面板上取得。 您可以直接從 [會話設定] 面板中選取 Spark 集區，並查看有多少節點正在使用，以及有多少剩餘的執行程式可供使用。 此資訊可協助您設定適當的會話大小，而不是來回修改它。
+#### <a name="spark-session-config-magic-command"></a>Spark 會話設定魔術命令
+您也可以透過魔術命令 **%% configure** 來指定 spark 會話設定。 Spark 會話需要重新開機才能使設定生效。 建議您在筆記本開頭執行 **%% 的設定** 。 以下是範例， https://github.com/cloudera/livy#request-body 如需有效參數的完整清單，請參閱。 
 
-![會話-建議](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
+```
+%%configure -f
+{
+    to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":["myjar1.jar","myjar.jar"],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
 
 
 ## <a name="bring-data-to-a-notebook"></a>將資料帶入筆記本
@@ -234,9 +360,6 @@ container_name = "Your container name"
 relative_path = "Your path"
 adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
-spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
-spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
-
 df1 = spark.read.option('header', 'true') \
                 .option('delimiter', ',') \
                 .csv(adls_path + '/Testfile.csv')
@@ -248,21 +371,26 @@ df1 = spark.read.option('header', 'true') \
 ```python
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import *
 
-blob_account_name = "Your blob account name"
-blob_container_name = "Your blob container name"
-blob_relative_path = "Your blob relative path"
-blob_sas_token = "Your blob sas token"
+# Azure storage access info
+blob_account_name = 'Your account name' # replace with your blob name
+blob_container_name = 'Your container name' # replace with your container name
+blob_relative_path = 'Your path' # replace with your relative folder path
+linked_service_name = 'Your linked service name' # replace with your linked service name
 
-wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+blob_sas_token = mssparkutils.credentials.getConnectionStringOrCreds(linked_service_name)
+
+# Allow SPARK to access from Blob remotely
+
+wasb_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+
 spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name), blob_sas_token)
+print('Remote blob path: ' + wasb_path)
 
 df = spark.read.option("header", "true") \
             .option("delimiter","|") \
             .schema(schema) \
             .csv(wasbs_path)
-
 ```
 
 ### <a name="read-data-from-the-primary-storage-account"></a>讀取主要儲存體帳戶中的資料
@@ -294,7 +422,7 @@ df = spark.read.option("header", "true") \
 
 ### <a name="render-html-or-interactive-libraries"></a>轉譯 HTML 或互動式程式庫
 
-您可以使用 **displayHTML ( # B1** 來呈現 HTML 程式碼，包括 JAVASCRIPT、CSS、D3 或互動式程式庫（例如 **bokeh** ）。
+您可以使用 **displayHTML ( # B1** 來呈現 HTML 程式碼，包括 JAVASCRIPT、CSS、D3 或互動式程式庫（例如 **bokeh**）。
 
 下圖是使用 **bokeh** 在地圖上繪製圖像的範例。
 
@@ -352,10 +480,21 @@ displayHTML(html)
 ## <a name="magic-commands"></a>Magic 命令
 您可以在 Azure Synapse Studio 筆記本中使用熟悉的 Jupyter 魔術命令。 請檢查下列清單，做為目前可用的魔術命令。 [請在 GitHub 上告訴我們您的使用案例](https://github.com/MicrosoftDocs/azure-docs/issues/new)，讓我們可以繼續建立更多魔術命令以符合您的需求。
 
-可用的行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
 
-可用的儲存格 magic：[%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
+可用的行 magic：[%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
+可用的儲存格 magic： [%% 時間](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、 [%% timeit.exe](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、 [%% capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、 [%% writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、 [%% sql](#use-multiple-languages)、 [%% pyspark](#use-multiple-languages)、 [%% spark](#use-multiple-languages)、 [%% csharp](#use-multiple-languages)、[%% 設定](#spark-session-config-magic-command)
+
+
+
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+可用的行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% timeit.exe](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)， [% history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)， [% run](#reference-notebook)， [% load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+
+可用的儲存格 magic： [%% 時間](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、 [%% timeit.exe](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、 [%% capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、 [%% writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、 [%% sql](#use-multiple-languages)、 [%% pyspark](#use-multiple-languages)、 [%% spark](#use-multiple-languages)、 [%% csharp](#use-multiple-languages)、 [%% html](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html)、 [%% 設定](#spark-session-config-magic-command)
+
+--- 
 
 ## <a name="integrate-a-notebook"></a>整合筆記本
 
@@ -367,15 +506,26 @@ displayHTML(html)
 
 ### <a name="designate-a-parameters-cell"></a>指定參數儲存格
 
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
+
 若要將筆記本參數化，請選取省略號 ( ... ) 以存取最右側的 [其他資料格動作] 功能表。 然後選取 [ **切換參數資料格** ]，將資料格指定為 [參數] 儲存格。
 
 ![切換參數](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+若要將筆記本參數化，請選取省略號 ( ... ) 以存取資料格工具列上的 **其他命令** 。 然後選取 [ **切換參數資料格** ]，將資料格指定為 [參數] 儲存格。
+
+![azure-筆記本-切換-參數](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
+
+---
+
 Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行時間傳入之參數的預設值。 執行引擎會使用輸入參數，在參數資料格下方新增資料格，以便覆寫預設值。 如果未指定參數儲存格，插入的儲存格將會插入到筆記本的頂端。
+
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>從管線指派參數值
 
-建立具有參數的筆記本之後，您可以使用 Azure Synapse 筆記本活動從管線執行它。 將活動新增至管線畫布之後，您將能夠在 [ **設定** ] 索引標籤的 [ **基底參數** ] 區段下設定參數值。 
+建立具有參數的筆記本之後，您可以使用 Azure Synapse 筆記本活動從管線執行它。 將活動新增至管線畫布之後，您將能夠在 [**設定**] 索引標籤的 [**基底參數**] 區段下設定參數值。 
 
 ![指派參數](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
@@ -397,6 +547,8 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 
 ### <a name="shortcut-keys-under-command-mode"></a>命令模式下的快速鍵
 
+# <a name="classical-notebook"></a>[傳統筆記本](#tab/classical)
+
 使用下列按鍵快捷鍵，您可以更輕鬆地在 Azure Synapse 筆記本中瀏覽和執行程式碼。
 
 | 動作 |Synapse Studio 筆記本捷徑  |
@@ -414,7 +566,26 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 |刪除選取的儲存格| D,D |
 |切換至編輯模式| Enter |
 
+# <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
+
+| 動作 |Synapse Studio 筆記本捷徑  |
+|--|--|
+|執行目前的儲存格並在下方選取 | Shift+Enter |
+|執行目前的儲存格並在下方插入 | Alt+Enter |
+|執行目前的儲存格| Ctrl+Enter |
+|選取上方儲存格| 上移 |
+|選取下方儲存格| 向下 |
+|選取上一個儲存格| K |
+|選取下一個資料格| J |
+|在上方插入儲存格| A |
+|在下方插入儲存格| B |
+|刪除選取的儲存格| Shift + D |
+|切換至編輯模式| Enter |
+
+---
+
 ### <a name="shortcut-keys-under-edit-mode"></a>編輯模式下的快速鍵
+
 
 在編輯模式中，使用下列按鍵快捷鍵，您可以更輕鬆地在 Azure Synapse 筆記本中瀏覽和執行程式碼。
 
@@ -432,9 +603,11 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 |往左移一個單字|Ctrl + 向左鍵|
 |往右移一個單字|Ctrl + 向右鍵|
 |全選|Ctrl + A|
-|縮排| Ctrl + ]|
+|縮排| Ctrl +]|
 |Dedent|Ctrl + [|
 |切換到命令類型| Esc |
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 - [查看 Synapse 範例筆記本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)

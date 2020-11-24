@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 1b76413bb78baa211fee3aebe37075188ec8c69e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f9a828b78dc5ba6bdbc77e22daa75be4182015f0
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531945"
+ms.locfileid: "95805702"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>搭配使用儲存體總管與 Azure 檔案儲存體
 
@@ -31,7 +31,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 - [下載並安裝儲存體總管](https://www.storageexplorer.com/)
 
-- [連接至 Azure 儲存體帳戶或服務](//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [連接至 Azure 儲存體帳戶或服務](/azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>建立檔案共用
 
@@ -47,7 +47,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
     ![建立檔案共用](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. [檔案共用] 資料夾底下會出現文字方塊。 輸入檔案共用的名稱。 請參閱 [共用命名規則](//azure/storage/storage-dotnet-how-to-use-blobs) 區段，以取得命名檔案共用的規則和限制的清單。
+1. [檔案共用] 資料夾底下會出現文字方塊。 輸入檔案共用的名稱。 請參閱 [共用命名規則](/azure/storage/storage-dotnet-how-to-use-blobs) 區段，以取得命名檔案共用的規則和限制的清單。
 
     ![命名共用](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -77,7 +77,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 ## <a name="delete-a-file-share"></a>刪除檔案共用
 
-檔案共用可以輕鬆地建立並視需要刪除。 (若要查看如何刪除個別的檔案，請參閱[管理檔案共用中的檔案](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
+檔案共用可以輕鬆地建立並視需要刪除。 (若要查看如何刪除個別的檔案，請參閱[管理檔案共用中的檔案](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
 
 下列步驟說明如何在儲存體總管中刪除檔案共用：
 
@@ -97,7 +97,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 ## <a name="copy-a-file-share"></a>複製檔案共用
 
-儲存體總管可讓您將檔案共用複製到剪貼簿，然後將該檔案共用貼到另一個儲存體帳戶。 (若要查看如何複製個別的檔案，請參閱[管理檔案共用中的檔案](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
+儲存體總管可讓您將檔案共用複製到剪貼簿，然後將該檔案共用貼到另一個儲存體帳戶。 (若要查看如何複製個別的檔案，請參閱[管理檔案共用中的檔案](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
 
 下列步驟說明如何將檔案共用從某個儲存體帳戶複製到另一個儲存體帳戶。
 
@@ -117,7 +117,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 ## <a name="get-the-sas-for-a-file-share"></a>取得檔案共用的 SAS
 
-[ (SAS) 的共用存取](//azure/storage/storage-dotnet-shared-access-signature-part-1)簽章可提供您儲存體帳戶中資源的委派存取權。 這表示您可以在無需分享您帳戶存取金鑰的情況下，將您儲存體帳戶中的物件有限權限授與用戶端，該用戶端便可在指定的時間期間內及使用指定的權限集來進行存取。
+[ (SAS) 的共用存取](/azure/storage/storage-dotnet-shared-access-signature-part-1)簽章可提供您儲存體帳戶中資源的委派存取權。 這表示您可以在無需分享您帳戶存取金鑰的情況下，將您儲存體帳戶中的物件有限權限授與用戶端，該用戶端便可在指定的時間期間內及使用指定的權限集來進行存取。
 
 下列步驟說明如何建立檔案共用的 SAS：
 

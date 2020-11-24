@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 8447eae4ea7234a7f47219cc81441650121b84ae
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d6c45a5c8062c3b6441309361037f8755a552074
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676174"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95791891"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST Proxy 與 Azure HDInsight 中的 Apache Kafka 叢集互動
 
@@ -49,7 +49,7 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 
 1. 向 Azure AD 註冊應用程式。 您撰寫來與 Kafka REST Proxy 互動的用戶端應用程式，將使用此應用程式的識別碼和密碼向 Azure 進行驗證。
 
-1. 建立 Azure AD 安全性群組。 將您向 Azure AD 註冊的應用程式新增到安全性群組，以作為該群組的 **成員** 。 此安全性群組將用來控制哪些應用程式能與 REST Proxy 互動。 如需建立 Azure AD 群組的詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+1. 建立 Azure AD 安全性群組。 將您向 Azure AD 註冊的應用程式新增到安全性群組，以作為該群組的 **成員**。 此安全性群組將用來控制哪些應用程式能與 REST Proxy 互動。 如需建立 Azure AD 群組的詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
     確認群組屬於 **安全性** 類型。
     ![安全性群組](./media/rest-proxy/rest-proxy-group.png)
@@ -97,7 +97,7 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 1. 從 Azure AD 擷取 OAuth 權杖。
 1. 示範如何對 Kafka REST Proxy 提出要求。
 
-如需有關在 Python 中取得 OAuth 權杖的詳細資訊，請參閱 [Python AuthenticationContext class 類別](/python/api/adal/adal.authentication_context.authenticationcontext)。 當未透過 Kafka REST Proxy 建立或刪除的 `topics` 反映在該處時，您可能會看到延遲。 此延遲是因為快取重新整理所造成。
+如需在 Python 中取得 OAuth 權杖的詳細資訊，請參閱 [Python AuthenticationCoNtext 類別](/python/api/adal/adal.authentication_context.authenticationcontext)。 當未透過 Kafka REST Proxy 建立或刪除的 `topics` 反映在該處時，您可能會看到延遲。 此延遲是因為快取重新整理所造成。 已增強生產者 API 的 [ **值** ] 欄位。 現在，它接受 JSON 物件和任何序列化的表單。
 
 ```python
 #Required python packages
@@ -110,16 +110,6 @@ import requests
 import string
 import sys
 import time
-
-def get_custom_value_json_object():
-
-    custom_value_json_object = {
-        "static_value": "welcome to HDI Kafka REST proxy",
-        "random_value": get_random_string(),
-    }
-
-    return custom_value_json_object
-
 
 def get_random_string():
     letters = string.ascii_letters
@@ -215,22 +205,68 @@ payload_json = {
     "records": [
         {
             "key": "key1",
-            "value": "**********"
-        },
-        {
-            "value": "5"
+            "value": "**********"         # A string                              
         },
         {
             "partition": 0,
-            "value": json.dumps(get_custom_value_json_object())  # need to be a serialized string. For example, "{\"static_value\": \"welcome to HDI Kafka REST proxy\", \"random_value\": \"pAPrgPk\"}"
+            "value": 5                    # An integer
         },
         {
-            "value": json.dumps(get_custom_value_json_object())  # need to be a serialized string. For example, "{\"static_value\": \"welcome to HDI Kafka REST proxy\", \"random_value\": \"pAPrgPk\"}"
+            "value": 3.14                 # A floating number
+        },
+        {
+            "value": {                    # A JSON object
+                "id": 1,
+                "name": "HDInsight Kafka REST proxy"
+            }
+        },
+        {
+            "value": [                    # A list of JSON objects
+                {
+                    "id": 1,
+                    "name": "HDInsight Kafka REST proxy 1"
+                },
+                {
+                    "id": 2,
+                    "name": "HDInsight Kafka REST proxy 2"
+                },
+                {
+                    "id": 3,
+                    "name": "HDInsight Kafka REST proxy 3"
+                }
+            ]
+        },
+        {
+            "value": {                  # A nested JSON object
+                "group id": 1,
+                "HDI Kafka REST": {
+                    "id": 1,
+                    "name": "HDInsight Kafka REST proxy 1"
+                },
+                "HDI Kafka REST server info": {
+                    "id": 1,
+                    "name": "HDInsight Kafka REST proxy 1",
+                    "servers": [
+                        {
+                            "server id": 1,
+                            "server name": "HDInsight Kafka REST proxy server 1"
+                        },
+                        {
+                            "server id": 2,
+                            "server name": "HDInsight Kafka REST proxy server 2"
+                        },
+                        {
+                            "server id": 3,
+                            "server name": "HDInsight Kafka REST proxy server 3"
+                        }
+                    ]
+                }
+            }
         }
     ]
 }
 
-print("Producing 4 messages in a request: \n", payload_json)
+print("Payloads in a Producer request: \n", payload_json)
 producer_url = api_format.format(api_version=api_version, rest_api=producer_api_format.format(topic_name=new_topic))
 response = requests.post(producer_url, headers=headers, json=payload_json, timeout=request_timeout, verify=verify_https)
 print(response.content)
@@ -259,6 +295,23 @@ while True:
     else:
         print("Error " + str(response.status_code))
         break
+        
+# List partitions
+get_partitions_url = api_format.format(api_version=api_version, rest_api=partitions_api_format.format(topic_name=new_topic))
+print("Fetching partitions from  " + get_partitions_url)
+
+response = requests.get(get_partitions_url, headers={'Authorization': 'Bearer ' + accessToken}, timeout=request_timeout, verify=verify_https)
+partition_list = response.json()
+print("Partition list: \n" + json.dumps(partition_list, indent=2))
+
+# List a partition
+get_partition_url = api_format.format(api_version=api_version, rest_api=partition_api_format.format(topic_name=new_topic, partition_id=partition_id))
+print("Fetching metadata of a partition from  " + get_partition_url)
+
+response = requests.get(get_partition_url, headers={'Authorization': 'Bearer ' + accessToken}, timeout=request_timeout, verify=verify_https)
+partition = response.json()
+print("Partition metadata: \n" + json.dumps(partition, indent=2))
+
 ```
 
 在下面的另一個範例中，您會看到如何使用 curl 命令從 Azure 中取得適用於 REST Proxy 的權杖。 **請注意，在取得權杖時，我們需要指定 `scope=https://hib.azurehdinsight.net/.default`。**

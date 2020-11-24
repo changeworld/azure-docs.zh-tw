@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 5b511eeb99b70fd64a5366b7b54900166f06b4d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e3130242e29b8d3886b585d56d33d0a9a2379ee3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369313"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95800283"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -93,7 +93,8 @@ SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、 [SP5](http
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.1](https://support.microsoft.com/help/4573888/)、 [8.2](https://support.microsoft.com/help/4573888/)  <br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)<br/><br/>8.1<br/>在所有 UEK 核心和 RedHat 核心上執行 <= 3.10.0-1062. * [9.35](https://support.microsoft.com/help/4573888/)支援可支援 RedHat 核心的其餘部分，可在[9.36](https://support.microsoft.com/help/4578241/)中取得
 
 > [!Note]
-> 針對每個 Windows 版本，Azure Site Recovery 僅支援 [長期維護通道 (LTSC) ](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 組建。  目前不支援[半年通道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
+>- 針對每個 Windows 版本，Azure Site Recovery 僅支援 [長期維護通道 (LTSC) ](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 組建。  目前不支援[半年通道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
+>- 請確定 Linux 版本的 Azure Site Recovery 不支援自訂的 OS 映射。 只支援屬於散發次要版本發行/更新一部分的股票核心。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu 核心版本
 
@@ -333,7 +334,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>取得最新的元件
 
-**名稱** | **說明** | **詳細資料**
+**名稱** | **描述** | **詳細資料**
 --- | --- | ---
 組態伺服器 | 已安裝在內部部署環境。<br/> 協調內部部署 VMware 伺服器或實體機器與 Azure 之間的通訊。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 設定伺服器。<br/> - [瞭解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) 如何升級至最新版本。<br/> - [瞭解](vmware-azure-deploy-configuration-server.md) 設定伺服器的設定。
 處理序伺服器 | 預設會安裝在組態伺服器上。<br/> 接收復寫資料、以快取、壓縮和加密進行優化，然後將其傳送至 Azure。<br/> 當您的部署成長時，您可以新增額外的進程伺服器來處理更大量的複寫流量。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 進程伺服器。<br/> - [瞭解](vmware-azure-manage-process-server.md#upgrade-a-process-server) 如何升級至最新版本。<br/> - [瞭解如何](vmware-physical-large-deployment.md#set-up-a-process-server) 設定相應放大進程伺服器。

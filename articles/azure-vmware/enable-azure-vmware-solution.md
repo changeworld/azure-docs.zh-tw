@@ -3,12 +3,12 @@ title: 如何啟用您的 Azure VMware 解決方案資源
 description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 68f8fe38c67ec5ddad7cf662a7996330ee2a1e73
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967358"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95794721"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
 瞭解如何提交支援要求，以啟用您的 [Azure VMware 解決方案](introduction.md) 資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
@@ -64,7 +64,7 @@ Azure 訂閱需要 Azure 帳戶。 Azure 訂用帳戶必須符合下列其中一
 Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) 為其客戶啟用 Azure VMware 解決方案。 
 
    >[!IMPORTANT] 
-   >Azure VMware 解決方案服務未提供多租使用者環境，因此尚未支援主控夥伴。 
+   >Azure VMware 解決方案服務不提供必要的多租使用者。 不支援裝載需要它的合作夥伴。 
 
 1. 在 **合作夥伴中心** 中，選取 [ **CSP** ] 以存取 [ **客戶** ] 區域。
 
@@ -113,13 +113,16 @@ Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) �
    >[!IMPORTANT] 
    >如果您已經有現有的 Azure VMware 解決方案，而且您正在要求其他主機，請注意，我們需要五個工作天來配置主機。 
 
-1. 一旦新增至 Azure 方案，並啟用配額，客戶或合作夥伴系統管理員便可透過 Azure 入口網站部署 Azure VMware 解決方案私人雲端。 在您可以布建主機之前，請確定您已在 Azure 入口網站中註冊 **MICROSOFT AVS** 資源提供者。  
+1. 如果訂用帳戶是由服務提供者所管理，則其管理小組必須 **在合作夥伴中心時，代表** (AOBO) 程式存取 Azure 入口網站。 其中一個 Azure 入口網站啟動 [Cloud Shell](../cloud-shell/overview.md) 實例，並註冊 **Microsoft AVS** 資源提供者，然後繼續部署 Azure VMware 解決方案私人雲端。  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
    如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
+
+1. 如果訂用帳戶是由客戶直接管理，則在訂用帳戶中擁有足夠許可權的使用者必須完成 **MICROSOFT AVS** 資源提供者的註冊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以取得更多詳細資料，以及註冊資源提供者的方法。 
+
 
 ## <a name="next-steps"></a>後續步驟
 

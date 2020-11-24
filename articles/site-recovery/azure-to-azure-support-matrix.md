@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3ffa781e046a89b2e363d6edc9b9bf99116aac07
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991973"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808869"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -113,6 +113,9 @@ SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支援將複寫機器從 SP3 
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.1](https://support.microsoft.com/help/4573888/)  <br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)<br/><br/>8.1<br/>在所有 UEK 核心和 RedHat 核心上執行 <= 3.10.0-1062. * [9.35](https://support.microsoft.com/help/4573888/)支援可支援 RedHat 核心的其餘部分，可在[9.36](https://support.microsoft.com/help/4578241/)中取得
 
+> [!NOTE]
+> 請確定 Linux 版本的 Azure Site Recovery 不支援自訂的 OS 映射。 只支援屬於散發次要版本發行/更新一部分的股票核心。
+
 * * 注意：若要在發行後的15天內支援最新的 Linux 核心，Azure Site Recovery 在最新的行動代理程式版本之上推出熱修正修補程式。 這項修正會在兩個主要版本版本之間推出。 若要更新為最新版本的行動代理程式 (包括熱修正修補程式) 請遵循 [本文中所述的步驟](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)。 此修補程式目前已針對 Azure 中使用的行動代理程式推出，適用于 azure DR 案例。
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 Ubuntu 核心版本
@@ -172,7 +175,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | [9.34](https://support.microsoft.co
 * 磁碟區管理員：LVM2
 
 > [!NOTE]
-> 不支援多重路徑軟體。 
+> 不支援多重路徑軟體。
 
 
 ## <a name="replicated-machines---compute-settings"></a>複寫的機器 - 計算設定

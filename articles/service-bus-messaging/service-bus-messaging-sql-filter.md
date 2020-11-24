@@ -1,22 +1,23 @@
 ---
-title: Azure 服務匯流排 SQLFilter 語法參考 | Microsoft Docs
-description: 本文提供 >sqlfilter 文法的詳細資料。 SqlFilter 支援 SQL-92 標準的子集。
+title: Azure 服務匯流排訂用帳戶規則 SQL 篩選語法 |Microsoft Docs
+description: 本文提供 SQL 篩選文法的詳細資料。 SQL 篩選器支援 SQL-92 標準的子集。
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 11/24/2020
+ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888465"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805624"
 ---
-# <a name="sqlfilter-syntax"></a>SQLFilter 語法
+# <a name="subscription-rule-sql-filter-syntax"></a>訂用帳戶規則 SQL 篩選語法
 
-*>sqlfilter* 物件是 [>sqlfilter 類別](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的實例，代表以 SQL 語言為基礎的篩選運算式，會針對進行評估 [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 。 SqlFilter 支援 SQL-92 標準的子集。  
+*SQL 篩選* 是服務匯流排主題訂用帳戶的其中一個可用篩選器類型。 它是仰賴在 SQL-92 標準子集上的文字運算式。 篩選條件運算式可搭配 `sqlExpression` Azure Resource Manager 範本中服務匯流排的 ' >sqlfilter ' 屬性元素 `Rule` ，或 Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 引數，以及數個允許管理訂用帳戶規則的 SDK 函數。
+
+服務匯流排 Premium 也透過 JMS 2.0 API 支援 [JMS SQL 訊息選取器語法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) 。
+
   
- 本主題列出 SqlFilter 文法的詳細資料。  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -324,4 +325,7 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 
 - [SQLFilter 類別 (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter 類別 (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction 類別](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [ (JAVA) 的 >sqlfilter 類別 ](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript) ](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az 進行的主題訂用帳戶規則](/cli/azure/servicebus/topic/subscription/rule)
+- [新 AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

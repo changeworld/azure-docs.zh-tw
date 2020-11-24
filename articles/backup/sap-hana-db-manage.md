@@ -3,12 +3,12 @@ title: 在 Azure VM 上管理備份的 SAP HANA 資料庫
 description: 在本文中，可了解在 Azure 虛擬機器上執行的 SAP HANA 資料庫的一般管理和監視工作。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377449"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811959"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
@@ -63,7 +63,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 1. 在保存庫功能表中，選取 [ **備份專案**]。
 2. 在 [ **備份專案**] 中，選取正在執行 SAP Hana 資料庫的 VM，然後選取 [ **立即備份**]。
-3. 在 [ **立即備份**] 中，選擇您想要執行的備份類型。 然後選取 [確定]。 系統會根據與此備份專案相關聯的原則來保留此備份。
+3. 在 [ **立即備份**] 中，選擇您想要執行的備份類型。 然後選取 [確定]  。 系統會根據與此備份專案相關聯的原則來保留此備份。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
 
 依預設，隨選備份的保留期為45天。
@@ -76,7 +76,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ![上次備份執行](./media/sap-hana-db-manage/last-backups.png)
 
-您也可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面**監視這些備份**。
+您也可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面 **監視這些備份**。
 
 這些隨選備份也會顯示在還原點的清單中，以供還原。
 
@@ -84,22 +84,41 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 #### <a name="restore"></a>還原
 
-從 HANA 原生用戶端 (使用 **Backint**) 觸發的還原，可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面**監視**。
+從 HANA 原生用戶端 (使用 **Backint**) 觸發的還原，可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面 **監視**。
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在啟用 Azure 備份的資料庫上執行 SAP Hana native client 備份
+### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>在啟用 Azure 備份的資料庫上執行 SAP Hana native client 備份至本機磁片
 
 如果您想要進行使用 Azure 備份備份的資料庫的本機備份 (使用 HANA Studio / Cockpit)，請執行下列動作：
 
 1. 等待資料庫的完整或記錄備份完成。 檢查 SAP HANA Studio/駕駛環境中的狀態。
-2. 停用記錄備份，並將備份類別目錄設定為相關資料庫的檔案系統。
-3. 若要這麼做，請按兩下 **systemdb** >  > **選取資料庫** > **篩選 (記錄)** 。
-4. 將 **enable_auto_log_backup** 設定為 [否]。
-5. 將 **log_backup_using_backint** 設定為 [False]。
-6. 對於資料庫進行隨選完整備份。
-7. 等待完整備份和目錄備份完成。
-8. 將先前的設定還原回 Azure：
-   * 將 **enable_auto_log_backup** 設定為 [是]。
-   * 將 **log_backup_using_backint** 設定為 [True]。
+2. 針對相關資料庫
+    1. 取消設定 backint 參數。 若要這麼做，請按兩下 **systemdb** >  > **選取資料庫** > **篩選 (記錄)** 。
+        * enable_auto_log_backup：否
+        * log_backup_using_backint： False
+        * catalog_backup_using_backint： False
+3. 取得資料庫的隨選完整備份
+4. 然後反向執行步驟。 針對上面所述的相同資料庫，
+    1. 重新啟用 backint 參數
+        1. catalog_backup_using_backint： True
+        1. log_backup_using_backint： True
+        1. enable_auto_log_backup：是
+
+### <a name="manage-or-clean-up-the-hana-catalog-for-a-database-with-azure-backup-enabled"></a>針對已啟用 Azure 備份的資料庫管理或清除 HANA 類別目錄
+
+如果您想要編輯或清除備份類別目錄，請執行下列動作：
+
+1. 等待資料庫的完整或記錄備份完成。 檢查 SAP HANA Studio/駕駛環境中的狀態。
+2. 針對相關資料庫
+    1. 取消設定 backint 參數。 若要這麼做，請按兩下 **systemdb** >  > **選取資料庫** > **篩選 (記錄)** 。
+        * enable_auto_log_backup：否
+        * log_backup_using_backint： False
+        * catalog_backup_using_backint： False
+3. 編輯目錄並移除較舊的專案
+4. 然後反向執行步驟。 針對上面所述的相同資料庫，
+    1. 重新啟用 backint 參數
+        1. catalog_backup_using_backint： True
+        1. log_backup_using_backint： True
+        1. enable_auto_log_backup：是
 
 ### <a name="change-policy"></a>變更原則
 
@@ -126,7 +145,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
   ![儲存變更](./media/sap-hana-db-manage/save-changes.png)
 
-* 修改原則會影響所有相關聯的備份項目，並觸發對應的**設定保護**作業。
+* 修改原則會影響所有相關聯的備份項目，並觸發對應的 **設定保護** 作業。
 
 >[!NOTE]
 > 除了新的復原點以外，保留期限內的任何變更也會回溯套用。
@@ -152,11 +171,11 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
    ![選擇備份頻率](./media/sap-hana-db-manage/choose-frequency.png)
 
-修改原則會影響所有相關聯的備份項目，並觸發對應的**設定保護**作業。
+修改原則會影響所有相關聯的備份項目，並觸發對應的 **設定保護** 作業。
 
 ### <a name="inconsistent-policy"></a>不一致的原則
 
-有時候，修改原則操作可能會導致某些備份項目的**不一致**原則版本。 在觸發修改原則作業之後，針對備份項目的對應**設定保護**作業失敗時，就會發生這種情況。 這會在備份項目檢視中顯示如下：
+有時候，修改原則操作可能會導致某些備份項目的 **不一致** 原則版本。 在觸發修改原則作業之後，針對備份項目的對應 **設定保護** 作業失敗時，就會發生這種情況。 這會在備份項目檢視中顯示如下：
 
 ![不一致的原則](./media/sap-hana-db-manage/inconsistent-policy.png)
 
@@ -217,6 +236,10 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 ### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>在沒有 SID 變更的情況下從 SDC 升級至 MDC
 
 瞭解如何 [在從 SDC 升級至 MDC 之後](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，繼續備份 SID 未變更的 SAP Hana 資料庫。
+
+### <a name="upgrading-to-a-new-version-in-either-sdc-or-mdc"></a>升級至 SDC 或 MDC 中的新版本
+
+瞭解如何繼續備份 [正在升級其版本](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm)的 SAP Hana 資料庫。
 
 ### <a name="unregister-an-sap-hana-instance"></a>取消註冊 SAP HANA 執行個體
 

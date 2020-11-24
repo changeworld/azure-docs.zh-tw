@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533271"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95795078"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
 
@@ -46,10 +46,10 @@ Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。
 請遵循下列步驟，為 Azure Blob 儲存體帳戶新增連結服務：
 
 1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 從左側面板中選取 [ **管理** ]，然後選取 [ **外部連接** ] 底下的 [ **連結服務** ]。
-3. 在右側的 [ **新增連結服務** ] 面板中搜尋 **Azure Blob 儲存體** 。
+2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
+3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Blob 儲存體**。
 4. 選取 [繼續]  。
-5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰** 。
+5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰**。
 6. 選取 [ **測試連接** ] 以驗證設定是否正確。
 7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
 
@@ -69,9 +69,9 @@ from pyspark.sql import SparkSession
 blob_account_name = 'Your account name' # replace with your blob name
 blob_container_name = 'Your container name' # replace with your container name
 blob_relative_path = 'Your path' # replace with your relative folder path
-linkedServiceName = 'Your linked service name' # replace with your linked service name
+linked_service_name = 'Your linked service name' # replace with your linked service name
 
-blob_sas_token = mssparkutils.credentials.getConnectionStringOrCreds(linkedServiceName)
+blob_sas_token = mssparkutils.credentials.getConnectionStringOrCreds(linked_service_name)
 
 # Allow SPARK to access from Blob remotely
 
@@ -86,6 +86,16 @@ print('Remote blob path: ' + wasb_path)
 :::zone pivot = "programming-language-scala"
 
 ```scala
+val blob_account_name = "" // replace with your blob name
+val blob_container_name = "" //replace with your container name
+val blob_relative_path = "/" //replace with your relative folder path
+val linked_service_name = "" //replace with your linked service name
+
+
+val blob_sas_token = mssparkutils.credentials.getConnectionStringOrCreds(linked_service_name)
+
+val wasbs_path = f"wasbs://$blob_container_name@$blob_account_name.blob.core.windows.net/$blob_relative_path"
+spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.windows.net",blob_sas_token)
 
 ```
 
@@ -103,8 +113,8 @@ print('Remote blob path: ' + wasb_path)
 
 您可以將 Azure Key Vault 新增為連結服務，以在 Synapse 中管理您的認證。 遵循下列步驟將 Azure Key Vault 新增為 Synapse 連結服務：
 1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 從左側面板中選取 [ **管理** ]，然後選取 [ **外部連接** ] 底下的 [ **連結服務** ]。
-3. 在右側的 [ **新增連結服務** ] 面板中搜尋 **Azure Key Vault** 。
+2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
+3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Key Vault** 。
 4. 選取要存取的 Azure Key Vault 帳戶，並設定連結的服務名稱。
 5. 選取 [ **測試連接** ] 以驗證設定是否正確。
 6. 選取 [先 **建立** ]，然後按一下 [ **全部發行** ] 以儲存您的變更。 
@@ -114,10 +124,10 @@ Synapse 筆記本使用 Azure active directory (Azure AD) 傳遞來存取 Azure 
 請遵循下列步驟，將密碼存取權授與您的工作區身分識別：
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) 以及您想要存取的 Azure Key Vault。 
 2. 從左面板中選取 **存取原則** 。
-3. 選取 [ **新增存取原則** ]： 
+3. 選取 [ **新增存取原則**]： 
     - 選擇 [ **金鑰]、[秘密]、[& 憑證管理** ] 作為設定範本。
     - 選取 **您的 Azure AD 帳戶** 和 **您的工作區身分識別** (與選取主體中的工作區名稱) 相同，或確定已獲指派。 
-4. 選取 [ **選取** 並 **新增** ]。
+4. 選取 [ **選取** 並 **新增**]。
 5. 選取 [ **儲存** ] 按鈕以認可變更。  
 
 ## <a name="file-system-utilities"></a>檔案系統公用程式
@@ -186,7 +196,6 @@ mssparkutils.fs.ls('Your directory path')
 ```scala
 mssparkutils.fs.ls("Your directory path")
 ```
-
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
@@ -275,7 +284,6 @@ mssparkutils.fs.cp('source file or directory', 'destination file or directory', 
 ```scala
 mssparkutils.fs.cp("source file or directory", "destination file or directory", true) // Set the third parameter as True to copy all files and directories recursively
 ```
-
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
@@ -446,7 +454,7 @@ mssparkutils.credentials.help()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Credentials.Help()
 ```
 
 ::: zone-end
@@ -496,7 +504,7 @@ mssparkutils.credentials.getToken("audience Key")
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Credentials.GetToken("audience Key")
 ```
 
 ::: zone-end
@@ -524,7 +532,7 @@ mssparkutils.credentials.isValidToken("your token")
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Credentials.IsValidToken("your token")
 ```
 
 ::: zone-end
@@ -552,7 +560,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Credentials.GetConnectionStringOrCreds("linked service name")
 ```
 
 ::: zone-end
@@ -580,7 +588,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Credentials.GetSecret("azure key vault name","secret name","linked service name")
 ```
 
 ::: zone-end
@@ -608,7 +616,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Credentials.GetSecret("azure key vault name","secret name")
 ```
 
 ::: zone-end
@@ -683,6 +691,7 @@ mssparkutils.env.help()
 :::zone pivot = "programming-language-scala"
 
 ```scala
+mssparkutils.env.help()
 ```
 
 ::: zone-end
@@ -690,7 +699,7 @@ mssparkutils.env.help()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.Help()
 ```
 
 ::: zone-end
@@ -727,7 +736,7 @@ mssparkutils.env.getUserName()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.GetUserName()
 ```
 
 ::: zone-end
@@ -754,7 +763,7 @@ mssparkutils.env.getUserId()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.GetUserId()
 ```
 
 ::: zone-end
@@ -781,7 +790,7 @@ mssparkutils.env.getJobId()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.GetJobId()
 ```
 
 ::: zone-end
@@ -808,7 +817,7 @@ mssparkutils.env.getWorkspaceName()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.GetWorkspaceName()
 ```
 
 ::: zone-end
@@ -835,7 +844,7 @@ mssparkutils.env.getPoolName()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.GetPoolName()
 ```
 
 ::: zone-end
@@ -862,7 +871,7 @@ mssparkutils.env.getClusterId()
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-
+Env.GetClusterId()
 ```
 
 ::: zone-end

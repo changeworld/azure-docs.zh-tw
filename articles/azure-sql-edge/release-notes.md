@@ -9,17 +9,32 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/22/2020
-ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.date: 11/24/2020
+ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395031"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808616"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 版本資訊 
 
 本文說明新功能，以及 Azure SQL Edge 每個新組建的變更內容。
+
+## <a name="azure-sql-edge---101"></a>Azure SQL Edge-1.0。1
+
+### <a name="sql-engine-build-number---15020001553"></a>SQL 引擎組建編號-15.0.2000.1553
+
+### <a name="whats-new"></a>新功能
+
+- 允許計算資料行中定義的 Datebucket 運算式
+
+### <a name="fixes"></a>修正
+
+- 保留原則修正，用來卸載已啟用保留原則且具有無限超時時間的資料表
+- 支援串流和保留原則功能的 DacFx 部署 
+- DacFx 部署修正，以從 SAS URL 中的嵌套資料夾啟用部署 
+- 預測修正以支援錯誤訊息中的長資料行名稱
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM) 
 

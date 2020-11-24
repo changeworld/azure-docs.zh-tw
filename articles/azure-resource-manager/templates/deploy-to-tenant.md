@@ -2,13 +2,13 @@
 title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.date: 11/24/2020
+ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242656"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807641"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>使用 ARM 範本的租使用者部署
 
@@ -129,6 +129,14 @@ New-AzTenantDeployment `
 * [使用部署按鈕從 GitHub 存放庫部署範本](deploy-to-azure-button.md)
 * [從 Cloud Shell 部署 ARM 範本](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>部署位置和名稱
+
+針對租用戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。 [訂](deploy-to-subscription.md) 用帳戶和 [管理群組](deploy-to-management-group.md) 部署也需要一個位置。 針對 [資源群組](deploy-to-resource-group.md) 部署，資源群組的位置會用來儲存部署資料。
+
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
+
+對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 例如，如果您在 **centralus** 中建立名為 **deployment1** 的租使用者部署，稍後就無法使用名稱 **deployment1** 建立另一個部署，而是 **westus** 的位置。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
+
 ## <a name="deployment-scopes"></a>部署範圍
 
 部署至租使用者時，您可以將資源部署至：
@@ -153,7 +161,7 @@ New-AzTenantDeployment `
 
 若要鎖定租使用者內的管理群組，請新增嵌套部署並指定 `scope` 屬性。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,18,22":::
 
 ### <a name="scope-to-subscription"></a>訂用帳戶的範圍
 
@@ -161,7 +169,7 @@ New-AzTenantDeployment `
 
 若要以租使用者內的訂用帳戶為目標，請使用嵌套部署和 `subscriptionId` 屬性。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="9,10,18":::
 
 ### <a name="scope-to-resource-group"></a>將範圍設為資源群組
 
@@ -170,14 +178,6 @@ New-AzTenantDeployment `
 若要以租使用者內的資源群組為目標，請使用嵌套部署。 請設定 `subscriptionId` 和 `resourceGroup` 屬性。 請勿設定嵌套部署的位置，因為它是部署在資源群組的位置。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
-
-## <a name="deployment-location-and-name"></a>部署位置和名稱
-
-針對租用戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
-
-您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
-
-對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 
 ## <a name="create-management-group"></a>建立管理群組
 
