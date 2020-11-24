@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061832"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528222"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>跨區域 (資源群組) 移動資源
 
@@ -27,7 +27,7 @@ ms.locfileid: "90061832"
 - 您需要訂用帳戶的 *擁有* 者存取權，而您想要移動的資源位於該訂用帳戶。
     - 當您第一次在 Azure 訂用帳戶中新增特定來源和目的地對應的資源時，資源移動器會建立 [系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (先前稱為「受控服務識別」 (MSI) # A3 （由訂用帳戶信任）。
     - 若要建立身分識別，並為其指派必要的角色 (來源訂用帳戶中的參與者或使用者存取管理員)，您用來新增資源的帳戶需要訂用帳戶「擁有者」權限。 [深入了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 訂用帳戶需要足夠的配額，才能在目的地區域中建立來源資源。 如果不是，請要求額外的限制。 [深入了解](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- 訂用帳戶需要足夠的配額，才能在目的地區域中建立來源資源。 如果不是，請要求額外的限制。 [深入了解](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 確認與您要移動 VM 的目標區域相關聯的定價和費用。 請使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)協助確認。
 - 確認資源移動器支援您要移動的資源：
     - Azure VM 和相關聯的磁碟
@@ -64,14 +64,14 @@ ms.locfileid: "90061832"
 
     ![將資源移至不同區域的選取範圍](./media/move-region-within-resource-group/select-move-region.png)
     
-4. 在 [ **來源 + 目的地**] 中，選取您要移動資源的目的地區域。 然後選取 [下一步]。
+4. 在 [ **來源 + 目的地**] 中，選取您要移動資源的目的地區域。 然後選取 [下一步]  。
 
 
     ![選取目的地區域的 [來源] 和 [目的地] 頁面](./media/move-region-within-resource-group/source-target.png)
 
 
-7. 在 [ **要移動**的資源 **] 中選取 [下一步]**。  
-8. 在 [ **選取資源**] 中，選取您要移動的資源。 您只能新增支援移動的資源。 然後選取 [完成]****。
+7. 在 [ **要移動** 的資源 **] 中選取 [下一步]**。  
+8. 在 [ **選取資源**] 中，選取您要移動的資源。 您只能新增支援移動的資源。 然後選取 [完成]。
 9. 在 [ **移動資源**] 中選取 **[下一步]**。 
 10. 在 [ **檢查 + 新增**] 中，檢查來源和目標詳細資料。
 11. 確認您瞭解所要移動資源的相關中繼資料會儲存在針對此用途所建立的資源群組中，而且您可以讓資源移動器建立系統管理的身分識別來存取訂用帳戶資源。
@@ -96,13 +96,13 @@ ms.locfileid: "90061832"
     ![用來驗證相依性的按鈕](./media/move-region-within-resource-group/validate-dependencies.png)
 
 2. 如果找到相依性，請選取 [新增相依性 **]**。 
-3. 在**新增相依性**中，選取相依資源 > **新增相依性**。 在通知中監視進度。
+3. 在 **新增相依性** 中，選取相依資源 > **新增相依性**。 在通知中監視進度。
 
     ![加入相依性的按鈕](./media/move-region-within-resource-group/add-dependencies.png)
 
 3. 視需要新增其他相依性，並依需要驗證相依性。 選取 **[** 重新整理] 以確保資源顯示最新狀態。
 
-4. 在**跨區域**頁面上，確認資源現在處於「準備擱置」狀態，且沒有任何問題。
+4. 在 **跨區域** 頁面上，確認資源現在處於「準備擱置」狀態，且沒有任何問題。
 
     ![顯示所有資源準備擱置狀態的頁面](./media/move-region-within-resource-group/prepare-pending.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "90061832"
 
 請如下所述加以準備：
 
-1. 在**跨區域**中，選取來源資源群組 > **準備**。
+1. 在 **跨區域** 中，選取來源資源群組 > **準備**。
 2. 在 [ **準備資源**] 中，選取 [ **準備**]。
 1. 
     ![用來準備來源資源群組的按鈕](./media/move-region-within-resource-group/prepare-source-resource-group.png)
@@ -130,7 +130,7 @@ ms.locfileid: "90061832"
 
 開始移動，如下所示：
 
-1. 在**跨區域**中，選取資源群組 > **起始移動**
+1. 在 **跨區域** 中，選取資源群組 > **起始移動**
 2. ln **移動資源**，請選取 [ **起始移動**]。 資源群組會移至「正在起始移動」狀態。
 3. 起始移動後，系統會根據產生的 ARM 範本來建立目標資源群組。 來源資源群組會移至「認可移動擱置」狀態。
 
@@ -138,7 +138,7 @@ ms.locfileid: "90061832"
 
 若要認可並完成移動程序：
 
-1. 在 **跨區域**中，選取資源群組 > **認可移動**
+1. 在 **跨區域** 中，選取資源群組 > **認可移動**
 2. ln **移動資源**，請選取 [ **認可**]。
 
 > [!NOTE]
@@ -164,7 +164,7 @@ ms.locfileid: "90061832"
 
 現在已移動來源資源群組，您可以準備移動其他資源。
 
-1. 在**跨區域**中，選取要準備的資源。 
+1. 在 **跨區域** 中，選取要準備的資源。 
 
     ![選取準備其他資源的頁面](./media/move-region-availability-zone/prepare-other.png)
 
@@ -182,7 +182,7 @@ ms.locfileid: "90061832"
 
 準備好資源後，您就可以開始移動。
 
-1. 在**跨區域**中，選取狀態為「起始移動擱置」的資源。 然後選取 [ **起始移動**]。
+1. 在 **跨區域** 中，選取狀態為「起始移動擱置」的資源。 然後選取 [ **起始移動**]。
 2. 在 [ **移動資源**] 中，選取 [ **起始移動**]。
 
     ![針對 [起始移動] 按鈕選取](./media/move-region-within-resource-group/initiate-move.png)
@@ -210,7 +210,7 @@ ms.locfileid: "90061832"
 
 您可以捨棄移動，如下所示：
 
-1. 在 [ **跨區域**] 中，選取 [狀態 *認可移動擱置*中的資源]，然後選取 [ **捨棄移動**]。
+1. 在 [ **跨區域**] 中，選取 [狀態 *認可移動擱置* 中的資源]，然後選取 [ **捨棄移動**]。
 2. 在 [ **捨棄移動**] 中，選取 [ **捨棄**]。
 3. 在通知列中追蹤移動進度。
 4. 當通知顯示移動成功時， **請選取 [** 重新整理]。 
@@ -223,7 +223,7 @@ ms.locfileid: "90061832"
 如果要完成移動程序，請認可移動。 
 
 
-1. 在 [ **跨區域**] 中，選取 [狀態 *認可移動擱置*中的資源]，然後選取 [ **認可移動**]。
+1. 在 [ **跨區域**] 中，選取 [狀態 *認可移動擱置* 中的資源]，然後選取 [ **認可移動**]。
 2. 在 [ **認可資源**] 中，選取 [ **認可**]。
 
     ![用來認可資源以完成移動的頁面](./media/move-region-within-resource-group/commit-resources.png)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2987cd1ff8c678f7079e13e8b9bc657817c066f1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737490"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531367"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>管理私人端點連線
 Azure Private Link 適用于 Private Link 服務取用者可要求服務提供者連接以取用服務的核准呼叫流程模型。 接著，服務提供者可以決定是否允許取用者連接。 Azure Private Link 可讓服務提供者管理其資源上的私人端點連線。 本文提供如何管理私人端點連接的相關指示。
@@ -20,8 +20,8 @@ Azure Private Link 適用于 Private Link 服務取用者可要求服務提供�
 ![管理私人端點](media/manage-private-endpoint/manage-private-endpoint.png)
 
 Private Link 服務取用者可以選擇兩種連線核准方法：
-- **自動**：如果服務取用者具有服務提供者資源的 RBAC 許可權，取用者可以選擇自動核准方法。 在此情況下，當要求到達服務提供者資源時，服務提供者不需要採取任何動作，而且會自動核准連接。 
-- **手動**：相反地，如果服務取用者沒有服務提供者資源的 RBAC 許可權，取用者可以選擇手動核准方法。 在此情況下，連接要求會在服務資源上顯示為 **擱置**中。 服務提供者必須手動核准要求，才能建立連接。 在手動案例中，服務取用者也可以指定具有要求的訊息，以提供更多內容給服務提供者。 服務提供者有下列選項可供選擇所有私人端點連接： **已核准**、 **拒絕**、 **移除**。
+- **自動**：如果服務取用者具有服務提供者資源的 Azure RBAC 許可權，取用者可以選擇自動核准方法。 在此情況下，當要求到達服務提供者資源時，服務提供者不需要採取任何動作，而且會自動核准連接。 
+- **手動**：相反地，如果服務取用者沒有服務提供者資源的 Azure RBAC 許可權，取用者可以選擇手動核准方法。 在此情況下，連接要求會在服務資源上顯示為 **擱置** 中。 服務提供者必須手動核准要求，才能建立連接。 在手動案例中，服務取用者也可以指定具有要求的訊息，以提供更多內容給服務提供者。 服務提供者有下列選項可供選擇所有私人端點連接： **已核准**、 **拒絕**、 **移除**。
 
 下表顯示私人端點的各種服務提供者動作和產生的連接狀態。  服務提供者也可以在稍後變更私人端點連線的線上狀態，而不需取用消費者介入。 動作將會更新取用者端端點的狀態。 
 

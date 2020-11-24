@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 71097f13fffbbe5cb57a69c98fb0ab272e16af5c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026296"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520079"
 ---
-# <a name="features"></a>功能
+# <a name="features"></a>特性
 
 Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的實作為。 本檔列出 FHIR 伺服器的主要功能。
 
@@ -59,7 +59,7 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | Date/DateTime         | 是       | 是       | 是       |         |
 | String                | 是       | 是       | 是       |         |
 | Token                 | 是       | 是       | 是       |         |
-| 參考             | 是       | 是       | 是       |         |
+| 參考資料             | 是       | 是       | 是       |         |
 | 複合             | 是       | 是       | 是       |         |
 | 數量              | 是       | 是       | 是       |         |
 | URI                   | 是       | 是       | 是       |         |
@@ -129,7 +129,7 @@ Cosmos DB 是全域散發的多模型 (SQL API、MongoDB API 等 ) 資料庫。 
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 進行存取控制。 具體而言，如果設定參數設定為，則會強制執行 Role-Based 訪問)  (控制， `FhirServer:Security:Enabled` `true` 而除了 `/metadata` FHIR 伺服器的) 以外的所有 (要求都必須 `Authorization` 將要求標頭設定為 `Bearer <TOKEN>` 。 權杖必須包含一或多個定義于宣告中的角色 `roles` 。 如果權杖中包含允許指定之資源上指定動作的角色，則會允許要求。
+FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 進行存取控制。 具體而言，如果設定參數設定為，則會強制執行以角色為基礎的存取控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 而且除了 `/metadata` FHIR 伺服器) 以外 (的所有要求都必須 `Authorization` 將要求標頭設定為 `Bearer <TOKEN>` 。 權杖必須包含一或多個定義于宣告中的角色 `roles` 。 如果權杖中包含允許指定之資源上指定動作的角色，則會允許要求。
 
 目前，針對指定角色所允許的動作會在 API 上 *全域* 套用。
 
@@ -154,7 +154,7 @@ FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 | 10,000   | 225-400       |
 | 100,000  | 2500-4000   |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Azure API for FHIR 中支援的 FHIR 功能。 接下來，部署 Azure API for FHIR。
  

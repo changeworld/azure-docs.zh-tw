@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837612"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520657"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -26,7 +26,9 @@ ms.locfileid: "94837612"
 
 及時回應原則違規或安全性問題，其實需要權杖簽發者（例如 Azure AD）和信賴憑證者（例如 Exchange Online）之間的「交談」。 這種雙向對話提供兩項重要的功能。 信賴憑證者可以注意到專案變更時（例如來自新位置的用戶端），以及告知權杖簽發者。 此外，它也會提供一個方法，告訴信賴憑證者因為帳戶入侵、停用或其他考慮，而停止對指定使用者的權杖。 這項交談的機制是連續存取評估 (CAE) 。 其目標是要以接近即時的方式回應，但在某些情況下，可能會因為事件傳播時間而觀察到最多15分鐘的延遲時間。
 
-連續存取評估的初始實行著重于 Exchange、小組和 SharePoint Online。 
+連續存取評估的初始實行著重于 Exchange、小組和 SharePoint Online。
+
+若要準備您的應用程式以使用 CAE，請參閱 [如何在您的應用程式中使用持續存取評估啟用的 api](/develop/app-resilience-continuous-access-evaluation.md)。
 
 ### <a name="key-benefits"></a>主要權益
 

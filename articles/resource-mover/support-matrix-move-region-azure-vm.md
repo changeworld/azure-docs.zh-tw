@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341853"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524244"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
@@ -106,8 +106,8 @@ SUSE Linux Enterprise Server 15 和 15 SP1 |  支援所有股票 SUSE 15 和15�
 Microsoft)  (發佈的 Azure 資源庫影像 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 協力廠商)  (發佈的 Azure 資源庫影像  | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 協力廠商)  (發佈的自訂映射| 支援 | 只要 VM 在支援的作業系統上執行即支援。
-使用 Site Recovery 的 Vm | 不支援 | 使用後端上的 Site Recovery，跨區域為 Vm 移動資源。 如果您已經在使用 Site Recovery，請停用複寫，然後開始準備程式。
-Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則不會複製到目的地區域中的 VM。
+使用 Site Recovery 的 Vm | 不受支援 | 使用後端上的 Site Recovery，跨區域為 Vm 移動資源。 如果您已經在使用 Site Recovery，請停用複寫，然後開始準備程式。
+Azure RBAC 原則 | 不受支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則不會複製到目的地區域中的 VM。
 延伸模組 | 不支援 | 延伸模組不會複製到目的地區域中的 VM。 在移動完成之後，手動安裝這些專案。
 
 
@@ -121,19 +121,19 @@ Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBA
 
 **元件** | **支援** | **詳細資料**
 --- | --- | ---
-OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/managed-disks-overview.md) VM 磁碟。
-暫存磁碟 | 不支援 | 暫存磁片一律會從準備程式中排除。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](../virtual-machines/windows/managed-disks-overview.md#temporary-disk)。
+OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/managed-disks-overview.md) VM 磁碟。
+暫存磁碟 | 不支援 | 暫存磁片一律會從準備程式中排除。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](../virtual-machines/managed-disks-overview.md#temporary-disk)。
 資料磁碟的大小上限 | 8192 GB (若為受控磁碟)
 資料磁碟的大小下限 |  2 GB (若為受控磁碟) |
-資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/windows/sizes.md) VM 大小。
+資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/sizes.md) VM 大小。
 資料磁碟的變更率 | 進階儲存體的每個磁碟最多 10 MBps。 標準儲存體的每個磁碟最多 2 MBps。 | 如果磁片上的平均資料變更率持續高於最大值，則準備將無法趕上。<br/><br/>  但是，如果最大值是偶發性的，則準備可以趕上，但您可能會看到稍微延遲的復原點。
 資料磁片 (標準儲存體帳戶)  | 不支援。 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
-資料磁片 (Premium 儲存體帳戶)  | 不支援 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
+資料磁片 (Premium 儲存體帳戶)  | 不受支援 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
 受控磁片 (標準)  | 支援  |
 受控磁片 (Premium)  | 支援 |
 標準 SSD | 支援 |
 第2代 (UEFI 開機) | 支援
-開機診斷儲存體帳戶 | 不支援 | 將 VM 移至目的地區域之後，將它重新啟用。
+開機診斷儲存體帳戶 | 不受支援 | 將 VM 移至目的地區域之後，將它重新啟用。
 
 ### <a name="limits-and-data-change-rates"></a>限制與資料變更率
 

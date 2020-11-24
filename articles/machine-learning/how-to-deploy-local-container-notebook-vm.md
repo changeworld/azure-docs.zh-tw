@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444600"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527304"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>將模型部署到 Azure Machine Learning 計算實例
 
@@ -28,9 +28,9 @@ ms.locfileid: "94444600"
 - 您正在測試處於開發狀態的模型。
 
 > [!TIP]
-> 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是 _本機部署_ 。 在此情況下，「本機」電腦是計算實例。 如需部署的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+> 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是 _本機部署_。 在此情況下，「本機」電腦是計算實例。 如需部署的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 執行計算實例的 Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -40,11 +40,11 @@ ms.locfileid: "94444600"
 
 1. 從 [Azure Machine Learning studio](https://ml.azure.com)中，選取您 Azure Machine Learning 的計算實例。
 
-1. 開啟 `samples-*` 子目錄，然後開啟 `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` 。 開啟後，執行筆記本。
+1. 開啟 `samples-*` 子目錄，然後開啟 `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` 。 開啟後，執行筆記本。
 
     ![筆記本上執行中本機服務的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. 筆記本會顯示服務執行所在的 URL 和埠。 例如 `https://localhost:6789`。 您也可以執行包含的資料格 `print('Local service port: {}'.format(local_service.port))` 來顯示埠。
+1. 筆記本會顯示服務執行所在的 URL 和埠。 例如： `https://localhost:6789` 。 您也可以執行包含的資料格 `print('Local service port: {}'.format(local_service.port))` 來顯示埠。
 
     ![執行中本機服務埠的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 

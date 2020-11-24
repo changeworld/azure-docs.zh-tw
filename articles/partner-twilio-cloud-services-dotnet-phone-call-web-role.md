@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0a19c0e2f5b29b35ebf43a3f250959c9b636d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268480"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521116"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 上的 Web 角色中使用 Twilio 撥打電話
 本指南將說明如何從 Azure 代管的網頁上使用 Twilio 撥打電話。 產生的應用程式會提示使用者利用指定的號碼和訊息撥打電話，如下列螢幕擷取畫面所示。
@@ -30,7 +30,7 @@ ms.locfileid: "91268480"
 您必須執行下列動作才能使用本主題中的程式碼：
 
 1. 從 [Twilio 主控台][twilio_console]取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請在這裡註冊 [https://www.twilio.com/try-twilio][try_twilio] 。 您可以評估價格 [https://www.twilio.com/pricing][twilio_pricing] 。 如需 Twilio 所提供之 API 的詳細資訊，請參閱 [https://www.twilio.com/voice/api][twilio_api] 。
-2. 將「Twilio .NET 程式庫」** 新增至您的 Web 角色。 **若要將 Twilio 程式庫新增至您的 web 角色專案**，請參閱本主題稍後的。
+2. 將「Twilio .NET 程式庫」新增至您的 Web 角色。 **若要將 Twilio 程式庫新增至您的 web 角色專案**，請參閱本主題稍後的。
 
 您應知悉如何[在 Azure 上建立基本 Web 角色][azure_webroles_get_started]。
 
@@ -40,9 +40,9 @@ ms.locfileid: "91268480"
 1. 在 Visual Studio 中開啟方案。
 2. 以滑鼠右鍵按一下 **[參考]**。
 3. 按一下 [ **管理 NuGet 套件**]。
-4. 按一下 [線上] ****。
-5. 在搜尋線上方塊中，輸入 twilio**。
-6. 在 Twilio 套件上按一下 [安裝] **** 。
+4. 按一下 [線上] 。
+5. 在搜尋線上方塊中，輸入 twilio。
+6. 在 Twilio 套件上按一下 [安裝]  。
 
 下列程式碼將說明如何建立 Web 表單，以擷取撥打電話所需的使用者資料。 在此範例中，會建立名為 **TwilioCloud** 的 ASP.NET Web 角色。
 
@@ -186,5 +186,5 @@ namespace WebRole1
 [twilio_say]: https://www.twilio.com/docs/api/twiml/say
 
 
-[azure_runtime_ref_dotnet]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-[azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started
+[azure_runtime_ref_dotnet]: /previous-versions/azure/reference/ee741722(v=azure.100)
+[azure_webroles_get_started]: ./cloud-services/cloud-services-dotnet-get-started.md

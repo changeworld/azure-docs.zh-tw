@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1b76413bb78baa211fee3aebe37075188ec8c69e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167877"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531945"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>搭配使用儲存體總管與 Azure 檔案儲存體
 
@@ -31,7 +31,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 - [下載並安裝儲存體總管](https://www.storageexplorer.com/)
 
-- [連接至 Azure 儲存體帳戶或服務](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [連接至 Azure 儲存體帳戶或服務](//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>建立檔案共用
 
@@ -43,15 +43,15 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 在左窗格中，展開您要在其中建立檔案共用的儲存體帳戶
 
-1. 以滑鼠右鍵按一下 [檔案共用]****，然後從內容功能表中 - 選取 [建立檔案共用]****。
+1. 以滑鼠右鍵按一下 [檔案共用]，然後從內容功能表中 - 選取 [建立檔案共用]。
 
     ![建立檔案共用](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. [檔案共用]**** 資料夾底下會出現文字方塊。 輸入檔案共用的名稱。 請參閱 [共用命名規則](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs) 區段，以取得命名檔案共用的規則和限制的清單。
+1. [檔案共用] 資料夾底下會出現文字方塊。 輸入檔案共用的名稱。 請參閱 [共用命名規則](//azure/storage/storage-dotnet-how-to-use-blobs) 區段，以取得命名檔案共用的規則和限制的清單。
 
     ![命名共用](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-1. 完成建立檔案共用時按下 **Enter**鍵，或按下 **Esc** 鍵取消。 一旦成功建立檔案共用，它就會顯示在所選的儲存體帳戶的 [檔案共用]**** 資料夾底下。
+1. 完成建立檔案共用時按下 **Enter** 鍵，或按下 **Esc** 鍵取消。 一旦成功建立檔案共用，它就會顯示在所選的儲存體帳戶的 [檔案共用] 資料夾底下。
 
     ![新增共用](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -65,9 +65,9 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 在左窗格中，展開儲存體帳戶，其中包含您要檢視的檔案共用。
 
-1. 展開儲存體帳戶的 [檔案共用]****。
+1. 展開儲存體帳戶的 [檔案共用]。
 
-1. 以滑鼠右鍵按一下您想要檢視的檔案共用，從內容功能表中，選取 [開啟]****。 您也可以按兩下想要檢視的檔案共用。
+1. 以滑鼠右鍵按一下您想要檢視的檔案共用，從內容功能表中，選取 [開啟]。 您也可以按兩下想要檢視的檔案共用。
 
     ![開啟共用](media/vs-azure-tools-storage-explorer-files/image4.png)
 
@@ -77,7 +77,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 ## <a name="delete-a-file-share"></a>刪除檔案共用
 
-檔案共用可以輕鬆地建立並視需要刪除。 (若要查看如何刪除個別的檔案，請參閱[管理檔案共用中的檔案](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
+檔案共用可以輕鬆地建立並視需要刪除。 (若要查看如何刪除個別的檔案，請參閱[管理檔案共用中的檔案](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
 
 下列步驟說明如何在儲存體總管中刪除檔案共用：
 
@@ -85,19 +85,19 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 在左窗格中，展開儲存體帳戶，其中包含您要檢視的檔案共用。
 
-1. 展開儲存體帳戶的 [檔案共用]****。
+1. 展開儲存體帳戶的 [檔案共用]。
 
-1. 以滑鼠右鍵按一下您想要刪除的檔案共用，從內容功能表中，選取 [刪除]****。 您也可以按 [刪除]**** 以刪除目前選取的檔案共用。
+1. 以滑鼠右鍵按一下您想要刪除的檔案共用，從內容功能表中，選取 [刪除]。 您也可以按 [刪除] 以刪除目前選取的檔案共用。
 
     ![刪除](media/vs-azure-tools-storage-explorer-files/image6.png)
 
-1. 選取確認對話方塊上的 [是] **** 。
+1. 選取確認對話方塊上的 [是]  。
     
     ![確認對話方塊](media/vs-azure-tools-storage-explorer-files/image7.png)
 
 ## <a name="copy-a-file-share"></a>複製檔案共用
 
-儲存體總管可讓您將檔案共用複製到剪貼簿，然後將該檔案共用貼到另一個儲存體帳戶。 (若要查看如何複製個別的檔案，請參閱[管理檔案共用中的檔案](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
+儲存體總管可讓您將檔案共用複製到剪貼簿，然後將該檔案共用貼到另一個儲存體帳戶。 (若要查看如何複製個別的檔案，請參閱[管理檔案共用中的檔案](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)。)
 
 下列步驟說明如何將檔案共用從某個儲存體帳戶複製到另一個儲存體帳戶。
 
@@ -105,19 +105,19 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 在左窗格中，展開儲存體帳戶，其中包含您要複製的檔案共用。
 
-1. 展開儲存體帳戶的 [檔案共用]****。
+1. 展開儲存體帳戶的 [檔案共用]。
 
-1. 以滑鼠右鍵按一下您想要複製的檔案共用，從內容功能表中，選取 [複製檔案共用]****。
+1. 以滑鼠右鍵按一下您想要複製的檔案共用，從內容功能表中，選取 [複製檔案共用]。
 
     ![複製檔案共用](media/vs-azure-tools-storage-explorer-files/image8.png)
 
-1. 以滑鼠右鍵按一下想要貼上至檔案共用的「目標」儲存體帳戶，從內容功能表中，選取 [貼上檔案共用]****。
+1. 以滑鼠右鍵按一下想要貼上至檔案共用的「目標」儲存體帳戶，從內容功能表中，選取 [貼上檔案共用]。
 
     ![貼上檔案共用](media/vs-azure-tools-storage-explorer-files/image9.png)
 
 ## <a name="get-the-sas-for-a-file-share"></a>取得檔案共用的 SAS
 
-[ (SAS) 的共用存取](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1)簽章可提供您儲存體帳戶中資源的委派存取權。 這表示您可以在無需分享您帳戶存取金鑰的情況下，將您儲存體帳戶中的物件有限權限授與用戶端，該用戶端便可在指定的時間期間內及使用指定的權限集來進行存取。
+[ (SAS) 的共用存取](//azure/storage/storage-dotnet-shared-access-signature-part-1)簽章可提供您儲存體帳戶中資源的委派存取權。 這表示您可以在無需分享您帳戶存取金鑰的情況下，將您儲存體帳戶中的物件有限權限授與用戶端，該用戶端便可在指定的時間期間內及使用指定的權限集來進行存取。
 
 下列步驟說明如何建立檔案共用的 SAS：
 
@@ -125,23 +125,23 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 在左窗格中，展開儲存體帳戶，其中包含您要取得 SAS 的檔案共用。
 
-1. 展開儲存體帳戶的 [檔案共用]****。
+1. 展開儲存體帳戶的 [檔案共用]。
 
-1. 以滑鼠右鍵按一下想要的檔案共用，從內容功能表中，選取 [取得共用存取簽章]****。
+1. 以滑鼠右鍵按一下想要的檔案共用，從內容功能表中，選取 [取得共用存取簽章]。
 
     ![取得共用存取簽章](media/vs-azure-tools-storage-explorer-files/image10.png)
 
-1. 在 [共用存取簽章] **** 對話方塊中，指定您要用於資源的原則、開始和到期日期、時區和存取層級。
+1. 在 [共用存取簽章]  對話方塊中，指定您要用於資源的原則、開始和到期日期、時區和存取層級。
 
     ![SAS 對話方塊](media/vs-azure-tools-storage-explorer-files/image11.png)
 
-1. 當您完成指定 SAS 選項時，選取 [建立] ****。
+1. 當您完成指定 SAS 選項時，選取 [建立] 。
 
-1. 第二個 [共用存取簽章]**** 對話方塊會顯示，列出您可以用來存取儲存體資源的檔案共用及 URL 和 QueryStrings。 選取您想要複製到剪貼簿的 URL 旁邊的 [複製] **** 。
+1. 第二個 [共用存取簽章] 對話方塊會顯示，列出您可以用來存取儲存體資源的檔案共用及 URL 和 QueryStrings。 選取您想要複製到剪貼簿的 URL 旁邊的 [複製]  。
     
     ![第二個 SAS 對話方塊](media/vs-azure-tools-storage-explorer-files/image12.png)
 
-1. 完成時，選取 [關閉] ****。
+1. 完成時，選取 [關閉] 。
 
 ## <a name="manage-access-policies-for-a-file-share"></a>管理檔案共用的存取原則
 
@@ -151,23 +151,23 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 在左窗格中，展開儲存體帳戶，其中包含您要管理其存取原則的檔案共用。
 
-1. 展開儲存體帳戶的 [檔案共用]****。
+1. 展開儲存體帳戶的 [檔案共用]。
 
-1. 選取想要的檔案共用，從內容功能表中，選取 [管理存取原則]****。
+1. 選取想要的檔案共用，從內容功能表中，選取 [管理存取原則]。
 
     ![管理存取原則內容功能表](media/vs-azure-tools-storage-explorer-files/image13.png)
 
-1. [存取原則]**** 對話方塊會列出已針對所選的檔案共用建立的任何存取原則。
+1. [存取原則] 對話方塊會列出已針對所選的檔案共用建立的任何存取原則。
     
     ![存取原則](media/vs-azure-tools-storage-explorer-files/image14.png)
 
 1. 根據存取原則管理工作遵循下列步驟︰
     
-    - **新增新的存取原則** -選取 [新增]****。 一旦產生，[存取原則] **** 對話方塊將會顯示新加入的存取原則 (具有預設設定)。
+    - **新增新的存取原則** -選取 [新增]。 一旦產生，[存取原則]  對話方塊將會顯示新加入的存取原則 (具有預設設定)。
 
     - **編輯存取原則** -進行任何所需的編輯，然後選取 [ **儲存**]。
 
-    - **移除存取原則** -選取您想要移除的存取原則旁邊的 [移除]****。
+    - **移除存取原則** -選取您想要移除的存取原則旁邊的 [移除]。
 
 1. 使用您稍早建立的存取原則建立新的 SAS URL︰
     
@@ -185,7 +185,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1.  在左窗格中，展開儲存體帳戶，其中包含您要管理的檔案共用。
 
-1.  展開儲存體帳戶的 [檔案共用]****。
+1.  展開儲存體帳戶的 [檔案共用]。
 
 1.  按兩下想要檢視的檔案共用。
 
@@ -203,7 +203,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
         ![上傳檔案](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. 在 [上傳檔案]**** 對話方塊中，選擇 [檔案]**** 文字方塊右側的省略符號 (**…**) 按鈕，以選取您想要上傳的檔案。
+        b. 在 [上傳檔案] 對話方塊中，選擇 [檔案] 文字方塊右側的省略符號 (**…**) 按鈕，以選取您想要上傳的檔案。
 
         ![新增檔案](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -211,11 +211,11 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
     - **將資料夾上傳至檔案共用**
         
-        a. 在主窗格工具列上，選取 [上傳]****，然後從下拉式功能表選取 [上傳資料夾]****。
+        a. 在主窗格工具列上，選取 [上傳]，然後從下拉式功能表選取 [上傳資料夾]。
 
         ![上傳資料夾功能表](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. 在 [上傳資料夾]**** 對話方塊中，選擇 [資料夾]**** 文字方塊右側的省略符號 (**…**) 按鈕，以選取您想要上傳其內容的資料夾。
+        b. 在 [上傳資料夾] 對話方塊中，選擇 [資料夾] 文字方塊右側的省略符號 (**…**) 按鈕，以選取您想要上傳其內容的資料夾。
 
         c. 選擇性地指定選取的資料夾的內容將會上傳至其中的目標資料夾。 如果目標資料夾不存在，系統就會加以建立。
 
@@ -225,9 +225,9 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
         
         a. 選取您想要下載的檔案。
         
-        b. 在主窗格工具列上選取 [下載] ****。
+        b. 在主窗格工具列上選取 [下載] 。
         
-        c. 在 [指定儲存下載的檔案的位置]**** 對話方塊中，指定要下載檔案的位置，和您想要給予它的名稱。
+        c. 在 [指定儲存下載的檔案的位置] 對話方塊中，指定要下載檔案的位置，和您想要給予它的名稱。
 
         d. 選取 [儲存]。
 
@@ -235,7 +235,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
         
         a.  選取您想要開啟的檔案。
         
-        b.  在主窗格工具列上選取 [開啟] ****。
+        b.  在主窗格工具列上選取 [開啟] 。
         
         c.  檔案會被下載，並使用與檔案的基礎檔案類型相關聯的應用程式開啟。
 
@@ -243,19 +243,19 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
         a. 選取您想要複製的檔案。
 
-        b. 在主窗格工具列上選取 [複製] ****。
+        b. 在主窗格工具列上選取 [複製] 。
 
         c. 在左窗格中，瀏覽至另一個檔案共用，然後在主窗格中按兩下加以檢視。
 
-        d. 在主窗格工具列上選取 [貼上]**** 以建立檔案的複本。
+        d. 在主窗格工具列上選取 [貼上] 以建立檔案的複本。
 
     - **刪除檔案**
 
         a. 選取您想要刪除的檔案。
 
-        b. 在主窗格工具列上選取 [刪除] ****。
+        b. 在主窗格工具列上選取 [刪除] 。
 
-        c. 選取確認對話方塊上的 [是] **** 。
+        c. 選取確認對話方塊上的 [是]  。
 
 ## <a name="next-steps"></a>後續步驟
 

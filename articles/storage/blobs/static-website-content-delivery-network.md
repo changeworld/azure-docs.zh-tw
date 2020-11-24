@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465213"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527321"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>將靜態網站與 Azure CDN 整合
 
@@ -34,11 +34,11 @@ ms.locfileid: "84465213"
 
 1. 指定 CDN 端點的定價層。 若要深入瞭解定價，請參閱 [內容傳遞網路定價](https://azure.microsoft.com/pricing/details/cdn/)。 如需每個層級可用功能的詳細資訊，請參閱 [比較 AZURE CDN 產品功能](../../cdn/cdn-features.md)。
 
-1. 在 [CDN 端點名稱]**** 欄位中，指定 CDN 端點的名稱。 CDN 端點在整個 Azure 中必須是唯一的，並提供端點 URL 的第一個部分。 表單會驗證端點名稱是唯一的。
+1. 在 [CDN 端點名稱] 欄位中，指定 CDN 端點的名稱。 CDN 端點在整個 Azure 中必須是唯一的，並提供端點 URL 的第一個部分。 表單會驗證端點名稱是唯一的。
 
 1. 在 [ **原始主機名稱** ] 欄位中指定您的靜態網站端點。 
 
-   若要尋找靜態網站端點，請瀏覽至儲存體帳戶的 [靜態網站]**** 設定。  複製主要端點，並將其貼到 CDN 設定中。
+   若要尋找靜態網站端點，請瀏覽至儲存體帳戶的 [靜態網站] 設定。  複製主要端點，並將其貼到 CDN 設定中。
 
    > [!IMPORTANT]
    > 請務必移除通訊協定識別碼 (*例如*，HTTPS) 和 URL 中的尾端斜線。 例如，如果靜態網站端點為，則 `https://mystorageaccount.z5.web.core.windows.net/` 您會 `mystorageaccount.z5.web.core.windows.net` 在 [ **來源主機名稱** ] 欄位中指定。
@@ -55,7 +55,7 @@ ms.locfileid: "84465213"
 
 1. 布建 CDN 端點後，流覽至 CDN 端點會顯示您先前上傳至靜態網站 index.html 檔案的內容。
 
-1. 若要檢閱 CDN 端點的原始設定，請瀏覽至 CDN 端點 [設定]**** 區段底下的 [原始來源]****。 您會看到 [原始來源類型]**** 欄位設定為 [自訂原始來源]** 且 [原始主機名稱]**** 欄位會顯示靜態網站端點。
+1. 若要檢閱 CDN 端點的原始設定，請瀏覽至 CDN 端點 [設定] 區段底下的 [原始來源]。 您會看到 [原始來源類型] 欄位設定為 [自訂原始來源] 且 [原始主機名稱] 欄位會顯示靜態網站端點。
 
     ![螢幕擷取畫面：顯示 CDN 端點的原始來源設定](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
@@ -63,12 +63,12 @@ ms.locfileid: "84465213"
 
 如果不想繼續在 Azure CDN 中快取物件，您可以採取下列其中一個步驟：
 
-* 將容器設為私人而非公用。 如需詳細資訊，請參閱 [管理對容器與 Blob 的匿名讀取權限](storage-manage-access-to-resources.md)。
+* 將容器設為私人而非公用。 如需詳細資訊，請參閱 [管理對容器與 Blob 的匿名讀取權限](./anonymous-read-access-configure.md)。
 * 使用 Azure 入口網站來停用或刪除 CDN 端點。
 * 修改託管服務，使其不再回應物件的要求。
 
 已在 Azure CDN 中快取的物件會保持快取狀態，直到物件的有效存留期已滿或端點已[清除](../../cdn/cdn-purge-endpoint.md)為止。 有效存留期已滿時，Azure CDN 會判斷 CDN 端點是否仍然有效，以及物件是否仍可匿名存取。 如果不是的話，將不再快取物件。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
  (選擇性) 將自訂網域新增至 Azure CDN 端點。 請參閱 [教學課程：將自訂網域新增至 AZURE CDN 端點](../../cdn/cdn-map-content-to-custom-domain.md)。

@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
-ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096e4e3ecbcedaec674e074a2baccbb336e03c94
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847001"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524193"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>設定 FHIR 的本機 RBAC 
 
@@ -23,7 +23,7 @@ ms.locfileid: "87847001"
 
 ## <a name="add-service-principal"></a>新增服務主體
 
-本機 RBAC 可讓您搭配 FHIR 伺服器使用外部 Azure Active Directory 租使用者。 若要允許 RBAC 系統檢查此租使用者中的群組成員資格，Azure API for FHIR 在租使用者中必須有服務主體。 此服務主體會自動建立于系結至已部署 Azure API for FHIR 之訂用帳戶的租使用者中，但如果您的租使用者未系結任何訂用帳戶，則租使用者系統管理員將需要使用下列其中一個命令來建立此服務主體：
+本機 RBAC 可讓您搭配 FHIR 伺服器使用外部 Azure Active Directory 租使用者。 若要允許本機 RBAC 系統檢查此租使用者中的群組成員資格，Azure API for FHIR 在租使用者中必須有服務主體。 此服務主體會自動建立于系結至已部署 Azure API for FHIR 之訂用帳戶的租使用者中，但如果您的租使用者未系結任何訂用帳戶，則租使用者系統管理員將需要使用下列其中一個命令來建立此服務主體：
 
 使用 `Az` PowerShell 模組：
 

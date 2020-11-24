@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2f46440a4214e298bc6d2f3b9c2b5680437ead7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143929"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522697"
 ---
 # <a name="azure-resource-logs"></a>Azure 資源記錄
 Azure 資源記錄是 [平臺記錄](platform-logs-overview.md) ，可讓您深入瞭解在 Azure 資源中執行的作業。 資源記錄的內容會依 Azure 服務和資源類型而有所不同。 預設不會收集資源記錄。 您必須為每個 Azure 資源建立診斷設定，以將其資源記錄傳送至 Log Analytics 工作區，以搭配 [Azure 監視器記錄](data-platform-logs.md)、Azure 事件中樞在 Azure 外部轉送，或用於封存的 Azure 儲存體。
@@ -54,7 +54,7 @@ AzureDiagnostics 資料表看起來會像這樣：
 | ... |
 
 ### <a name="resource-specific"></a>特定資源
-在此模式中，會為在 [診斷] 設定中選取的每個類別建立所選工作區中的個別資料表。 這是建議的方法，因為它可讓您更輕鬆地在記錄查詢中使用資料、提供更好的架構和其結構的探索、改善內嵌延遲和查詢時間的效能，以及在特定資料表上授與 RBAC 許可權的能力。 所有 Azure 服務最終都會遷移至 Resource-Specific 模式。 
+在此模式中，會為在 [診斷] 設定中選取的每個類別建立所選工作區中的個別資料表。 建議使用此方法，因為它可讓您更輕鬆地在記錄查詢中使用資料、提供更好的架構和其結構探索、改善內嵌延遲和查詢時間的效能，以及在特定資料表上授與 Azure RBAC 許可權的能力。 所有 Azure 服務最終都會遷移至 Resource-Specific 模式。 
 
 上述範例會產生三個數據表：
  
@@ -98,7 +98,7 @@ AzureDiagnostics 資料表看起來會像這樣：
 繼續觀看 [Azure 更新](https://azure.microsoft.com/updates/) 的 blog，以取得支援 Resource-Specific 模式之 Azure 服務的相關公告。
 
 ### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics 中的資料行限制
-Azure 監視器記錄中的任何資料表都有500屬性限制。 一旦達到此限制，就會在內嵌階段卸載任何包含前500以外之任何屬性之資料的資料列。 *AzureDiagnostics*資料表特別容易受到這項限制，因為它包含所有寫入至該資料表之 Azure 服務的屬性。
+Azure 監視器記錄中的任何資料表都有500屬性限制。 一旦達到此限制，就會在內嵌階段卸載任何包含前500以外之任何屬性之資料的資料列。 *AzureDiagnostics* 資料表特別容易受到這項限制，因為它包含所有寫入至該資料表之 Azure 服務的屬性。
 
 如果您要從多個服務收集資源記錄， _AzureDiagnostics_ 可能會超過此限制，而且資料將會遺失。 在所有 Azure 服務都支援資源特定模式之前，您應該設定資源以寫入至多個工作區，以降低達到500資料行限制的可能性。
 

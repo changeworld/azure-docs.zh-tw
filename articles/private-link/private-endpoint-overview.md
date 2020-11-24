@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508024"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522340"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -22,13 +22,13 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  私人端點指定了下列屬性： 
 
 
-|屬性  |說明 |
+|屬性  |描述 |
 |---------|---------|
 |名稱    |    資源群組內的唯一名稱。      |
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網路。 如需子網路需求，請參閱此文章的＜限制＞一節。         |
 |Private Link 資源    |   從可用類型的清單中使用資源識別碼或別名來連線的私人連結資源。 系統將會為傳送至此資源的所有流量產生唯一的網路識別碼。       |
 |目標子資源   |      要連線的子資源。 每個私人連結資源類型都有不同的選項，可根據喜好設定來選取。    |
-|連線核准方法    |  自動或手動。 根據角色型存取控制 (RBAC) 權限，可以自動核准您的私人端點。 如果您嘗試連線到不具 RBAC 的私人連結資源，請使用手動方法，讓資源的擁有者核准連線。        |
+|連線核准方法    |  自動或手動。 根據 Azure 角色型存取控制 (Azure RBAC) 許可權，您的私人端點可以自動核准。 如果您嘗試在沒有 Aure RBAC 的情況下連線到私人連結資源，請使用手動方法來允許資源的擁有者核准連接。        |
 |要求訊息     |  您可以指定要以手動方式核准要求連線的訊息。 此訊息可用來識別特定的要求。        |
 |連線狀態   |   唯讀屬性，可指定私人端點是否作用中。 只有處於核准狀態的私人端點可用來傳送流量。 其他可用的狀態： <br>-**已核准**：已自動或手動核准連線並可供使用。</br><br>-**暫止**：已手動建立連線，且正在等待私人連結資源擁有者核准。</br><br>-**已拒絕**：私人連結資源擁有者已拒絕連線。</br><br>-**已中斷連線**：私人連結資源擁有者已移除連線。 私人端點將提供資訊，應將其刪除以進行清除。 </br>|
 
@@ -45,9 +45,9 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  
 - 您可以使用相同的私人連結資源來建立多個私人端點。 針對使用一般 DNS 伺服器設定的單一網路，建議的作法是針對指定的私人連結資源使用單一私人端點，以避免 DNS 解析中出現重複的項目或衝突。 
  
-- 可以在相同虛擬網路內的相同或不同的子網路上建立多個私人端點。 您可以在訂用帳戶中建立的私人端點數目有所限制。 如需詳細資訊，請參閱  [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits) \(部分機器翻譯\)。
+- 可以在相同虛擬網路內的相同或不同的子網路上建立多個私人端點。 您可以在訂用帳戶中建立的私人端點數目有所限制。 如需詳細資訊，請參閱  [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) \(部分機器翻譯\)。
 
-- 私人連結資源的訂用帳戶也必須向 Micosoft （網路資源提供者）註冊。 如需詳細資訊，請參閱 [Azure 資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+- 私人連結資源的訂用帳戶也必須向 Micosoft （網路資源提供者）註冊。 如需詳細資訊，請參閱 [Azure 資源提供者](../azure-resource-manager/management/resource-providers-and-types.md)。
 
  
 ## <a name="private-link-resource"></a>Private Link 資源 
@@ -95,8 +95,8 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>使用核准工作流程存取私人連結資源 
 您可以使用下列連線核准方法來連線到私人連結資源：
-- **自動**核准，當您擁有或擁有特定私人連結資源的權限時。 所需的許可權是以下列格式的 private link 資源類型為基礎： Microsoft。 \<Provider>/<resource_type>/privateEndpointConnectionApproval/action
-- **手動**要求，當您沒有必要的權限，而且想要要求存取權時。 已起始核准工作流程。 私人端點和後續的私人端點連線將會以「擱置」狀態來建立。 私人連結資源的擁有者會負責核准連線。 獲得核准後，私人端點便能正常傳送流量，如下列核准工作流程圖所示。  
+- **自動** 核准，當您擁有或擁有特定私人連結資源的權限時。 所需的許可權是以下列格式的 private link 資源類型為基礎： Microsoft。 \<Provider>/<resource_type>/privateEndpointConnectionApproval/action
+- **手動** 要求，當您沒有必要的權限，而且想要要求存取權時。 已起始核准工作流程。 私人端點和後續的私人端點連線將會以「擱置」狀態來建立。 私人連結資源的擁有者會負責核准連線。 獲得核准後，私人端點便能正常傳送流量，如下列核准工作流程圖所示。  
 
 ![工作流程核准](media/private-endpoint-overview/private-link-paas-workflow.png)
  
@@ -136,7 +136,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 - [使用入口網站建立 SQL Database 的私人端點](create-private-endpoint-portal.md)
 - [使用 PowerShell 建立 SQL Database 的私人端點](create-private-endpoint-powershell.md)
 - [使用 CLI 建立 SQL Database 的私人端點](create-private-endpoint-cli.md)
-- [使用入口網站建立儲存體帳戶的私人端點](create-private-endpoint-storage-portal.md)
+- [使用入口網站建立儲存體帳戶的私人端點](./tutorial-private-endpoint-storage-portal.md)
 - [使用入口網站建立 Azure Cosmos 帳戶的私人端點](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 建立您自己的 Private Link 服務](create-private-link-service-powershell.md)
 - [使用入口網站為適用於 PostgreSQL 的 Azure 資料庫單一伺服器建立您自己的 Private Link](../postgresql/howto-configure-privatelink-portal.md)

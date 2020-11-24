@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604473"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533050"
 ---
 # <a name="modify-target-settings"></a>修改目標設定
 
@@ -41,8 +41,8 @@ ms.locfileid: "90604473"
 **VM SKU** | [VM 類型](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (可用於目標 vm) 的目的地區域中。<br/><br/> 選取的目標 VM 不應小於來源 VM。
 **網路資源** | 虛擬網路 (Vnet) /network 安全性群組/網路介面的選項：<br/><br/> -在目的地區域中建立具有相同名稱的新資源。<br/><br/> -在目的地區域中建立具有不同名稱的新資源。<br/><br/> -使用目的地區域中的現有網路資源。<br/><br/> 如果您建立新的目標資源，但您所修改的設定除外，則會將相同的設定指派為來源資源。
 **公用 IP 位址名稱** | 指定名稱。
-**公用 IP 位址 SKU** | 指定 [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。
-**公用 IP 位址區域** | 指定標準公用 IP 位址的 [區域](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) 。<br/><br/> 如果您想要讓它成為區域冗余，請輸入「 **區域多餘**」。
+**公用 IP 位址 SKU** | 指定 [SKU](../virtual-network/public-ip-addresses.md#sku)。
+**公用 IP 位址區域** | 指定標準公用 IP 位址的 [區域](../virtual-network/public-ip-addresses.md#standard) 。<br/><br/> 如果您想要讓它成為區域冗余，請輸入「 **區域多餘**」。
 **負載平衡器名稱** | 指定名稱。
 **負載平衡器 SKU** | 基本或標準。 我們建議使用 Standard。
 **負載平衡器區域** | 指定負載平衡器的區域。 <br/><br/> 如果您想要讓它成為區域冗余，請輸入「 **區域多餘**」。
@@ -62,7 +62,7 @@ ms.locfileid: "90604473"
 若要修改設定： 
 
 1. 在 [ **跨區域** ] 頁面 > **目標設定** 資料行] 中，按一下資源專案的連結。
-2. 在 [ **設定] 設定**中，您可以在目的地區域中建立新的 VM。
+2. 在 [ **設定] 設定** 中，您可以在目的地區域中建立新的 VM。
 3. 將新的可用性區域、可用性設定組或 SKU 指派給目標 VM。 **可用性區域** 和 **SKU**。
 
 只會針對您正在編輯的資源進行變更。 您必須個別更新任何相依的資源。
@@ -83,7 +83,7 @@ ms.locfileid: "90604473"
 
 **設定** | **SQL database** | **彈性集區**
 --- | --- | ---
-**名稱** | 在目的地區域中建立具有相同名稱的新資料庫。<br/><br/> 使用不同的名稱在目的地區域中建立新的資料庫。<br/><br/> 使用目的地區域中的現有資料庫。 | 在目的地區域中建立具有相同名稱的新彈性集區。<br/><br/> 使用不同的名稱在目的地區域中建立新的彈性集區。<br/><br/> 使用目的地區域中的現有彈性集區。
+**Name** | 在目的地區域中建立具有相同名稱的新資料庫。<br/><br/> 使用不同的名稱在目的地區域中建立新的資料庫。<br/><br/> 使用目的地區域中的現有資料庫。 | 在目的地區域中建立具有相同名稱的新彈性集區。<br/><br/> 使用不同的名稱在目的地區域中建立新的彈性集區。<br/><br/> 使用目的地區域中的現有彈性集區。
 **區域備援** | 若要從支援區域冗余的區域移至沒有的區域，請在 [區域] 設定中輸入 **Disable** 。<br/><br/> 若要從不支援區域冗余的區域移至該區域，請在 [區域] 設定中輸入 [ **啟用** ]。 | 若要從支援區域冗余的區域移至沒有的區域，請在 [區域] 設定中輸入 **Disable** 。<br/><br/> 若要從不支援區域冗余的區域移至該區域，請在 [區域] 設定中輸入 [ **啟用** ]。
 
 ### <a name="edit-sql-target-settings"></a>編輯 SQL 目標設定

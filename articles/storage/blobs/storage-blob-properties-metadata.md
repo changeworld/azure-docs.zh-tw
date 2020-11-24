@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399120"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521524"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 屬性和中繼資料
 
@@ -126,7 +126,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-中繼資料名稱/值組是有效的 HTTP 標頭，且應遵守管理 HTTP 標頭的所有限制。 中繼資料名稱必須是有效的 HTTP 標頭名稱和有效的 c # 識別碼，且只能包含 ASCII 字元，且應該視為不區分大小寫。 [Base64 編碼](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) 或 [URL 編碼的](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) 中繼資料值，包含非 ASCII 字元。
+中繼資料名稱/值組是有效的 HTTP 標頭，且應遵守管理 HTTP 標頭的所有限制。 中繼資料名稱必須是有效的 HTTP 標頭名稱和有效的 c # 識別碼，且只能包含 ASCII 字元，且應該視為不區分大小寫。 [Base64 編碼](/dotnet/api/system.convert.tobase64string) 或 [URL 編碼的](/dotnet/api/system.web.httputility.urlencode) 中繼資料值，包含非 ASCII 字元。
 
 您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會維護建立時所使用的大小寫，但在設定或讀取時不區分大小寫。 如果有兩個或多個使用相同名稱的中繼資料標頭提交給資源，Azure Blob 儲存體會傳回 HTTP 錯誤碼 400 (錯誤的要求) 。
 
@@ -168,7 +168,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要取得中繼資料，請在 blob 或容器上呼叫 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法來填入 [中繼資料](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然後讀取這些值，如下列範例所示。 **GetProperties**方法會在單一呼叫中取出 blob 屬性和中繼資料。 這不同于需要個別呼叫來 [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties) 和 [取得 blob 中繼資料](/rest/api/storageservices/get-blob-metadata)的 REST api。
+若要取得中繼資料，請在 blob 或容器上呼叫 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法來填入 [中繼資料](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然後讀取這些值，如下列範例所示。 **GetProperties** 方法會在單一呼叫中取出 blob 屬性和中繼資料。 這不同于需要個別呼叫來 [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties) 和 [取得 blob 中繼資料](/rest/api/storageservices/get-blob-metadata)的 REST api。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

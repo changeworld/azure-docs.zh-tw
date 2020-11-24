@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/23/2020
+ms.openlocfilehash: c87f6fa590e1f769816fb0ee3cba3aad1997de15
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668877"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519858"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 範本的訂用帳戶部署
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-針對 PowerShell 部署命令，請使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment** 。 下列範例會部署範本來建立資源群組：
+針對 PowerShell 部署命令，請使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment**。 下列範例會部署範本來建立資源群組：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -131,20 +131,28 @@ New-AzSubscriptionDeployment `
 部署至訂用帳戶時，您可以將資源部署至：
 
 * 來自作業的目標訂用帳戶
-* 訂用帳戶內的資源群組
+* 租使用者中的任何訂用帳戶
+* 訂用帳戶或其他訂用帳戶內的資源群組
+* 訂用帳戶的租使用者
 * [擴充功能資源](scope-extension-resources.md) 可以套用至資源
 
-您無法部署到不同于目標訂用帳戶的訂用帳戶。 部署範本的使用者必須擁有指定範圍的存取權。
+部署範本的使用者必須擁有指定範圍的存取權。
 
 本節說明如何指定不同的範圍。 您可以將這些不同的範圍結合在單一範本中。
 
-### <a name="scope-to-subscription"></a>訂用帳戶的範圍
+### <a name="scope-to-target-subscription"></a>目標訂用帳戶的範圍
 
 若要將資源部署到目標訂用帳戶，請將這些資源新增至範本的資源區段。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
 
 如需部署至訂用帳戶的範例，請參閱 [建立資源群組](#create-resource-groups) 和 [指派原則定義](#assign-policy-definition)。
+
+### <a name="scope-to-other-subscription"></a>其他訂用帳戶的範圍
+
+若要將資源部署至與作業中的訂用帳戶不同的訂用帳戶，請新增嵌套部署。 將 `subscriptionId` 屬性設定為您想要部署的訂用帳戶識別碼。 設定 `location` 嵌套部署的屬性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-sub.json" highlight="9,10,14":::
 
 ### <a name="scope-to-resource-group"></a>將範圍設為資源群組
 
@@ -154,11 +162,23 @@ New-AzSubscriptionDeployment `
 
 如需部署至資源群組的範例，請參閱 [建立資源群組和資源](#create-resource-group-and-resources)。
 
+### <a name="scope-to-tenant"></a>租使用者範圍
+
+您可以將設定為，以在租使用者中建立資源 `scope` `/` 。 部署範本的使用者必須具有必要的 [存取權，才能在租使用者上進行部署](deploy-to-tenant.md#required-access)。
+
+您可以使用和設定的嵌套 `scope` 部署 `location` 。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
+
+或者，您可以將範圍設定為 `/` 某些資源類型，例如管理群組。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
+
 ## <a name="deployment-location-and-name"></a>部署位置和名稱
 
 針對訂用帳戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
 
-您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy** 。
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 

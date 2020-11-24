@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 31d833d1a6e9c7715ca13582c09f5f72564d683a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016134"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533356"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路功能的 Linux 虛擬機器
 
@@ -48,7 +48,7 @@ ms.locfileid: "95016134"
 * **RHEL 7.4 或更新版本**
 * **CentOS 7.4 或更新版本**
 * **CoreOS Linux**
-* **具有反向移植核心的 Debian "Stretch"**
+* **Debian "Stretch" 與反向移植 kernel、Debian "Buster" 或更新版本**
 * **具有 Red Hat 相容核心的 Oracle Linux 7.4 和更新版本 (RHCK)**
 * **UEK 第5版的 Oracle Linux 7.5 和更新版本**
 * **FreeBSD 10.4、11.1 & 12.0 或更新版本**

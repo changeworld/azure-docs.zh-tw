@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828773"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520997"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 儲存體總管版本資訊
 
@@ -86,7 +86,7 @@ ms.locfileid: "87828773"
 * Azure Stack 不支援受控磁片功能。
 * 如果磁片上傳或貼上失敗，並在失敗前建立新的磁片，儲存體總管將不會為您刪除該磁片。
 * 根據您取消磁片上傳或貼上的時間，可能會讓新磁片處於損毀的狀態。 如果發生這種情況，您可能需要刪除新的磁片，或手動呼叫磁片 Api 來取代磁片的內容，使其不再損毀。
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
@@ -108,7 +108,7 @@ ms.locfileid: "87828773"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) 。
+* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) 。
 
 ## <a name="previous-releases"></a>舊版
 
@@ -176,7 +176,7 @@ ms.locfileid: "87828773"
   * 建立磁片的快照集
 
 上傳、下載及跨區域複製磁片是由 AzCopy v10 提供技術支援。
-* 您現在可以透過 Linux 上的貼齊存放區來安裝儲存體總管。 當您透過「貼齊存放區」安裝時，系統會為您安裝所有相依性，包括 .NET Core！ 我們目前已確認儲存體總管在 Ubuntu 和 CentOS 上正常執行。 如果您在安裝其他 Linux 散發版本上的貼齊存放區時遇到問題，請 [在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要深入瞭解如何從貼上存放區進行安裝，請參閱《 [快速入門手冊》](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)。 #68
+* 您現在可以透過 Linux 上的貼齊存放區來安裝儲存體總管。 當您透過「貼齊存放區」安裝時，系統會為您安裝所有相依性，包括 .NET Core！ 我們目前已確認儲存體總管在 Ubuntu 和 CentOS 上正常執行。 如果您在安裝其他 Linux 散發版本上的貼齊存放區時遇到問題，請 [在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要深入瞭解如何從貼上存放區進行安裝，請參閱《 [快速入門手冊》](./vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux)。 #68
 * 有兩個主要的變更是使用 Azure Active Directory (Azure AD) ，目的是要讓功能更適用于 ADLS Gen2 使用者：
   * 您現在可以選取您所附加資源所在的租使用者。 這表示您不再需要擁有資源訂用帳戶的 RBAC 存取權。
   * 如果您要附加 ADLS Gen2 Blob 容器，您現在可以附加至容器中的特定路徑。
@@ -202,7 +202,7 @@ ms.locfileid: "87828773"
 * 根據您取消磁片上傳或貼上的時間，可能會讓新磁片處於損毀的狀態。 如果發生這種情況，您可能需要刪除新的磁片，或手動呼叫磁片 Api 來取代磁片的內容，使其不再損毀。
 * 根據您取消磁片上傳或貼上的時間，可能會讓新磁片處於損毀的狀態。 如果發生這種情況，您可能需要刪除新的磁片，或手動呼叫磁片 Api 來取代磁片的內容，使其不再損毀。
 * 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所致。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
@@ -224,7 +224,7 @@ ms.locfileid: "87828773"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) 。
+* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) 。
 
 
 ## <a name="version-1100"></a>版本1.10。0
@@ -250,7 +250,7 @@ ms.locfileid: "87828773"
     * 建立磁片的快照集
 
     上傳、下載及跨區域複製磁片是由 AzCopy v10 提供技術支援。
-* 您現在可以透過 Linux 上的貼齊存放區來安裝儲存體總管。 當您透過「貼齊存放區」安裝時，系統會為您安裝所有相依性，包括 .NET Core！ 我們目前已確認儲存體總管在 Ubuntu 和 CentOS 上正常執行。 如果您在安裝其他 Linux 散發版本上的貼齊存放區時遇到問題，請 [在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要深入瞭解如何從貼上存放區進行安裝，請參閱《 [快速入門手冊》](https://aka.ms/storageexplorer/snapinformation)。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* 您現在可以透過 Linux 上的貼齊存放區來安裝儲存體總管。 當您透過「貼齊存放區」安裝時，系統會為您安裝所有相依性，包括 .NET Core！ 我們目前已確認儲存體總管在 Ubuntu 和 CentOS 上正常執行。 如果您在安裝其他 Linux 散發版本上的貼齊存放區時遇到問題，請 [在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要深入瞭解如何從貼上存放區進行安裝，請參閱《 [快速入門手冊》](./vs-azure-tools-storage-manage-with-storage-explorer.md)。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
 * 有兩個主要的變更是使用 Azure Active Directory (Azure AD) ，目的是要讓功能更適用于 ADLS Gen2 使用者： * 您現在選取要附加的資源所在的租使用者。 這表示您不再需要擁有資源訂用帳戶的 RBAC 存取權。
         * 如果您要附加 ADLS Gen2 Blob 容器，您現在可以附加至容器中的特定路徑。
 * 管理 ADLS Gen2 檔案和資料夾的 Acl 時，儲存體總管現在會在 ACL 中顯示實體的易記名稱。 [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
@@ -276,7 +276,7 @@ ms.locfileid: "87828773"
 * 如果磁片上傳或貼上失敗，並在失敗前建立新的磁片，儲存體總管將不會為您刪除該磁片。
 * 根據您取消磁片上傳或貼上的時間，可能會讓新磁片處於損毀的狀態。 如果發生這種情況，您可能需要刪除新的磁片，或手動呼叫磁片 Api 來取代磁片的內容，使其不再損毀。
 * 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所致。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，並已建立自訂 AAD 設定，則可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
@@ -298,7 +298,7 @@ ms.locfileid: "87828773"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) 。
+* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) 。
 
 ## <a name="version-190"></a>版本1.9。0
 7/1/2019
@@ -334,7 +334,7 @@ ms.locfileid: "87828773"
 ### <a name="known-issues"></a>已知問題
 
 * 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所致。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 嘗試在 proxy 後方存取 ADLS Gen2 Blob 可能會失敗。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
@@ -356,7 +356,7 @@ ms.locfileid: "87828773"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) 。
+* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) 。
 
 ## <a name="version-181"></a>版本1.8。1
 5/13/2019
@@ -391,7 +391,7 @@ ms.locfileid: "87828773"
 ### <a name="known-issues"></a>已知問題
 
 * 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所致。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 嘗試在 proxy 後方存取 ADLS Gen2 Blob 可能會失敗。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
@@ -413,7 +413,7 @@ ms.locfileid: "87828773"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) 。
+* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) 。
 
 ## <a name="version-180"></a>版本1.8。0
 2019/5/1
@@ -443,7 +443,7 @@ ms.locfileid: "87828773"
 ### <a name="known-issues"></a>已知問題
 
 * 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所致。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 嘗試在 proxy 後方存取 ADLS Gen2 Blob 可能會失敗。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
@@ -465,7 +465,7 @@ ms.locfileid: "87828773"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) 。
+* 在 Linux 上執行儲存體總管需要先安裝特定的相依性。 如需詳細資訊，請參閱儲存體總管 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) 。
 
 ## <a name="version-170"></a>1.7.0 版
 3/5/2019
@@ -499,7 +499,7 @@ ms.locfileid: "87828773"
 
 ### <a name="known-issues"></a>已知問題
 
-* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) 。
+* 使用 RBAC 時，儲存體總管需要某些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱 [疑難排解指南](./storage/common/storage-explorer-troubleshooting.md) 。
 * 嘗試在 proxy 後方存取 ADLS Gen2 Blob 可能會失敗。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
@@ -559,7 +559,7 @@ ms.locfileid: "87828773"
         
 ### <a name="new"></a>新增
 
-* 您現在可以使用儲存體總管，透過 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
+* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
   * 建立和刪除容器
   * 管理容器屬性和權限 (左側)
@@ -628,7 +628,7 @@ ms.locfileid: "87828773"
         
 ### <a name="new"></a>新增
 
-* 您現在可以使用儲存體總管，透過 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
+* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
   * 建立和刪除容器
   * 管理容器屬性和權限 (左側)
@@ -683,7 +683,7 @@ ms.locfileid: "87828773"
 
 ### <a name="new"></a>新增
 
-* 您現在可以使用儲存體總管，透過 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
+* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
   * 建立和刪除容器
   * 管理容器屬性和權限 (左側)
@@ -1144,7 +1144,7 @@ ms.locfileid: "87828773"
 
 ### <a name="new"></a>新增
 * 儲存體總管現在支援使用 Azurite。 注意：Azurite 的連線是硬式編碼至預設開發端點。
-* 儲存體總管現在支援僅限 Blob 和 GPV2 儲存體帳戶的存取層。 在[此處](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)深入了解存取層。
+* 儲存體總管現在支援僅限 Blob 和 GPV2 儲存體帳戶的存取層。 在[此處](./storage/blobs/storage-blob-storage-tiers.md)深入了解存取層。
 * 產生 SAS 時，不再需要開始時間。
 
 ### <a name="fixes"></a>修正
@@ -1204,7 +1204,7 @@ ms.locfileid: "87828773"
 * GitHub 上現在提供儲存體總管意見反應。 您可以按一下左下方的 [意見反應] 按鈕或移至，以連線到 [問題] 頁面 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 。 請隨意提出建議、回報問題、詢問問題，或留下任何其他形式的意見反應。
 * 如果您遇到 TLS/SSL 憑證問題，且找不到有問題的憑證，您現在可以從命令列使用旗標啟動儲存體總管 `--ignore-certificate-errors` 。 使用這個旗標啟動時，儲存體總管將會忽略 TLS/SSL 憑證錯誤。
 * Blob 和檔案項目的內容功能表中現在有 [下載] 選項。
-* 已改善協助工具和畫面讀取器支援。 如果您需依賴協助工具功能，請參閱[協助工具文件](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)以取得詳細資訊。
+* 已改善協助工具和畫面讀取器支援。 如果您需依賴協助工具功能，請參閱[協助工具文件](./vs-azure-tools-storage-explorer-accessibility.md)以取得詳細資訊。
 * 儲存體總管現在使用 Electron 1.8.3
 
 ### <a name="breaking-changes"></a>重大變更

@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecb3a150de8c19d390cafbd163f287520c3a91d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196078"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519027"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL 資料庫搭配 Azure App Service 的常見問題集
 此常見問題集可回答為 Azure Web Apps 使用及購買 ClearDB MySQL 資料庫的常見問題。
@@ -33,7 +33,7 @@ ms.locfileid: "84196078"
 您有其他數個選項可以在 Azure 中裝載 MySQL：
 * [適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)
 * [Azure VM 上執行的 MySQL 叢集](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Azure VM 上執行的 MySQL 單一執行個體](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure VM 上執行的 MySQL 單一執行個體](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)
 
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>要取得 Azure Marketplace 中的 Web 應用程式與 MySQL 範本需要使用信用卡嗎？
@@ -45,10 +45,10 @@ ms.locfileid: "84196078"
 * [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：我們會每季以單一彙總的發票就 EA 向 EA 客戶的所有 Azure Marketplace (第三方) 購買項目收費。 對於任何 Marketplace 購買項目，將向您就財務承諾以外收費。 請注意，目前 Azure 市集無法供在亞塞拜然、克羅埃西亞、挪威和波多黎各註冊的客戶使用。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>為什麼透過 Azure Marketplace 向我收取 Web 應用程式 + MySQL 3.50 元美金的費用？
-預設資料庫選項是 Titan，也就是 3.50 元美金。 建立資料庫時我們不會顯示成本，您可能會錯誤地購買您不想要的資料庫。 我們正在設法改善此情況，但在那之前，您必須檢查對 Web 應用程式和資料庫所選取的定價層，之後才按一下 [建立] **** 並開始部署資源。
+預設資料庫選項是 Titan，也就是 3.50 元美金。 建立資料庫時我們不會顯示成本，您可能會錯誤地購買您不想要的資料庫。 我們正在設法改善此情況，但在那之前，您必須檢查對 Web 應用程式和資料庫所選取的定價層，之後才按一下 [建立]  並開始部署資源。
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虛擬機器上執行 MySQL。 可以將我的 Azure Web 應用程式連接到我的資料庫嗎？
-是。 只要您的 Azure VM 已將遠端存取權提供給 Web 應用程式，Web 應用程式就能連線到您的資料庫。 如需詳細資訊，請參閱 [在虛擬機器上安裝 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+可以。 只要您的 Azure VM 已將遠端存取權提供給 Web 應用程式，Web 應用程式就能連線到您的資料庫。 如需詳細資訊，請參閱 [在虛擬機器上安裝 MySQL](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)。
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>支援 ClearDB Premium MySQL 叢集的國家/地區有哪些？
 ClearDB Premium MySQL 叢集適用於下列區域以外的全球所有 Azure 區域：印度、澳洲、巴西南部及中國。
@@ -99,13 +99,12 @@ Azure Marketplace 無法供在亞塞拜然、克羅埃西亞、挪威或波多�
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>在哪裡可以查看 EA 訂用帳戶中 ClearDB 資源的費用？
 針對直接 EA 客戶，可以在企業入口網站上看見 Azure Marketplace 費用。 請注意，所有 Marketplace 購買項目和使用均會每季並以後付方式就財務承諾以外收費。 EA 客戶需要直接付費給第三方服務提供者，並且能夠藉由啟用其 EA 帳戶的付款方式 (例如：信用卡) 來完成。
 
-間接的 EA 客戶可以在企業版入口網站的 [管理訂用帳戶] **** 頁面上找到自己的 Azure Marketplace 訂用帳戶，但價格是隱藏的。 客戶應該連絡其 LSP 以了解相關的 Marketplace 費用資訊。
+間接的 EA 客戶可以在企業版入口網站的 [管理訂用帳戶]  頁面上找到自己的 Azure Marketplace 訂用帳戶，但價格是隱藏的。 客戶應該連絡其 LSP 以了解相關的 Marketplace 費用資訊。
 
 您的 EA Azure 註冊管理員可以管理對 Azure Marketplace 第三方服務的存取權。 他們可以透過市集的 [管理帳戶] 和企業入口網站中 [帳戶] 區段下的訂用帳戶，來停用或重新啟用對第三方購買項目的存取。
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>若對我的 EA 訂用帳戶中 ClearDB 服務的帳單有問題，應該連絡誰？
 如有任何關於自己 EA 註冊的計費問題，請連絡 [企業版客戶支援](https://aka.ms/AzureEntSupport) 。 EA 入口網站支援小組會回答您的問題或協助解決您的問題。
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>其他資訊
 [Azure Marketplace 常見問題集](https://azure.microsoft.com/marketplace/faq/)
-

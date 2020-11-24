@@ -8,17 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74210475cc8c0efd274d6e80c3f1c89b5206a97d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322540"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509495"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統) 中解譯模型結果
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**適用于：** ![這是一個核取記號，這表示本文適用于 Machine Learning Studio (傳統) 。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) ![ 這是 X，這表示本文適用于 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 本主題說明如何在 Azure Machine Learning Studio (傳統) 中視覺化及解讀預測結果。 在您訓練好模型並完成其預測 (「模型評分」) 之後，您必須了解和解譯預測結果。
 
@@ -80,7 +79,7 @@ Azure Machine Learning Studio (傳統) 有不同的模組可以處理這些類�
 
 圖 3. 鳶尾花雙類別分類問題實驗評分
 
-您現在必須設定 Web 服務的輸入和輸出。 輸入是[評分模型][score-model]的右側輸入連接埠，這是鳶尾花的特徵輸入。 輸出的選擇取決於您是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 此範例假設您對兩者都感到興趣。 若要選取想要的輸出資料行，請使用[選取資料集中的資料行][select-columns]模組。 依序按一下 [選取資料集中的資料行][select-columns] 和 **啟動資料行選取器** ，然後選取 [評分標籤] 和 [評分機率]。 設定 [選取資料集中的資料行][select-columns] 的輸出連接埠並再次執行之後，您應該就可以按一下 [發佈 WEB 服務]，將評分實驗發佈為 Web 服務。 最終實驗如「圖 4」所示。
+您現在必須設定 Web 服務的輸入和輸出。 輸入是[評分模型][score-model]的右側輸入連接埠，這是鳶尾花的特徵輸入。 輸出的選擇取決於您是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 此範例假設您對兩者都感到興趣。 若要選取想要的輸出資料行，請使用[選取資料集中的資料行][select-columns]模組。 依序按一下 [選取資料集中的資料行][select-columns] 和 **啟動資料行選取器**，然後選取 [評分標籤] 和 [評分機率]。 設定 [選取資料集中的資料行][select-columns] 的輸出連接埠並再次執行之後，您應該就可以按一下 [發佈 WEB 服務]，將評分實驗發佈為 Web 服務。 最終實驗如「圖 4」所示。
 
 ![鳶尾花雙類別分類實驗](./media/interpret-model-results/4.png)
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bda92667cfc3afb44a55adf3f3c12798a734ddc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612756"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522714"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活動記錄事件結構描述
 [Azure 活動記錄](platform-logs-overview.md)可讓您深入瞭解在 Azure 中發生的任何訂用帳戶層級事件。 本文說明活動記錄類別和每個類別的架構。 
@@ -40,8 +40,8 @@ ms.locfileid: "91612756"
 
 | 類別 | 描述 |
 |:---|:---|
-| [管理](#administrative-category) | 包含透過 Resource Manager 執行的所有建立、更新、刪除和動作作業記錄。 系統管理事件的範例包括「建立虛擬機器」和「刪除網路安全性群組」。<br><br>使用 Resource Manager 的使用者或應用程式所採取的每個動作，都會在特定資源類型上模型化為作業。 如果作業類型為「寫入」、「刪除」或「動作」，則該作業的啟動及成功或失敗記錄皆會記錄在「系統管理」類別。 系統管理事件也包含訂用帳戶中角色型存取控制的所有變更。 |
-| [服務健康狀態](#service-health-category) | 包含所有在 Azure 中發生的服務健康情況事件記錄。 「位於美國東部的 SQL Azure 面臨停機」服務健康狀態事件範例。 <br><br>服務健康情況事件有六個種類：需要採取動作、輔助復原、事件、維護、資訊或_安全性_。 只有訂用帳戶中有會受到事件影響的資源時，才會建立這些事件。
+| [管理](#administrative-category) | 包含透過 Resource Manager 執行的所有建立、更新、刪除和動作作業記錄。 系統管理事件的範例包括「建立虛擬機器」和「刪除網路安全性群組」。<br><br>使用 Resource Manager 的使用者或應用程式所採取的每個動作，都會在特定資源類型上模型化為作業。 如果作業類型為「寫入」、「刪除」或「動作」，則該作業的啟動及成功或失敗記錄皆會記錄在「系統管理」類別。 系統管理事件也包含訂用帳戶中 Azure 角色型存取控制的任何變更。 |
+| [服務健康狀態](#service-health-category) | 包含所有在 Azure 中發生的服務健康情況事件記錄。 「位於美國東部的 SQL Azure 面臨停機」服務健康狀態事件範例。 <br><br>服務健康情況事件有六個種類：需要採取動作、輔助復原、事件、維護、資訊或 _安全性_。 只有訂用帳戶中有會受到事件影響的資源時，才會建立這些事件。
 | [資源健全狀況](#resource-health-category) | 包含 Azure 資源已發生的任何資源健康情況事件記錄。 「虛擬機器健全狀態已變成無法使用」是資源健康情況事件的範例之一。<br><br>資源健康情況事件可以代表下列四種健全狀態之一：「可用」、「無法使用」、「已降級」與「未知」。 此外，資源健康情況事件可分類為「平台起始」或「使用者起始」。 |
 | [警示](#alert-category) | 包含 Azure 警示的啟用記錄。 「myVM 上的 CPU% 在過去 5 分鐘內已超過 80」是警示事件的範例之一。|
 | [Autoscale](#autoscale-category) | 包含所有與自動調整引擎 (以訂用帳戶中定義的自動調整設定為基礎) 作業相關的所有事件記錄。 「自動調整擴大動作失敗」是自動調整事件的範例之一。 |
@@ -50,7 +50,7 @@ ms.locfileid: "91612756"
 | [原則](#policy-category) | 包含 Azure 原則所執行的所有效果動作作業記錄。 原則事件的範例包括「稽核」和「拒絕」。 原則所採取的每個動作會模型化為資源上的作業。 |
 
 ## <a name="administrative-category"></a>系統管理類別
-透過 Resource Manager 執行的所有建立、更新、刪除和動作作業皆記錄在此類別中。 您可能會在此類別中看到的事件類型範例包括「建立虛擬機器」和「刪除網路安全性群組」。使用者或應用程式使用 Resource Manager 所執行的每個動作，都會成為特定資源類型上的作業模型。 如果作業類型為「寫入」、「刪除」或「動作」，則該作業的啟動及成功或失敗記錄皆會記錄在「系統管理」類別。 「系統管理」類別也包含訂用帳戶中角色型存取控制的所有變更。
+透過 Resource Manager 執行的所有建立、更新、刪除和動作作業皆記錄在此類別中。 您可能會在此類別中看到的事件類型範例包括「建立虛擬機器」和「刪除網路安全性群組」。使用者或應用程式使用 Resource Manager 所執行的每個動作，都會成為特定資源類型上的作業模型。 如果作業類型為「寫入」、「刪除」或「動作」，則該作業的啟動及成功或失敗記錄皆會記錄在「系統管理」類別。 系統管理類別也包含訂用帳戶中 Azure 角色型存取控制的任何變更。
 
 ### <a name="sample-event"></a>範例事件
 ```json
@@ -143,7 +143,7 @@ ms.locfileid: "91612756"
 ### <a name="property-descriptions"></a>屬性描述
 | 元素名稱 | 描述 |
 | --- | --- |
-| 授權 |事件的 RBAC 屬性的 blob。 通常包括 action、role 和 scope 屬性。 |
+| 授權 |事件的 Azure RBAC 屬性 Blob。 通常包括 action、role 和 scope 屬性。 |
 | 呼叫者 |已執行作業的使用者的電子郵件地址，根據可用性的 UPN 宣告或 SPN 宣告。 |
 | 通道 |為下列其中一個值：Admin、Operation |
 | claims |Active Directory 用來驗證使用者或應用程式，以便在 Resource Manager 中執行此作業的 JWT 權杖。 |
@@ -774,7 +774,7 @@ ms.locfileid: "91612756"
 
 | 元素名稱 | 描述 |
 | --- | --- |
-| 授權 | 事件的 RBAC 屬性陣列。 針對新資源，這是觸發評估的要求其動作和範圍。 針對現有的資源，此動作為「Microsoft.Resources/checkPolicyCompliance/read」。 |
+| 授權 | 事件的 Azure RBAC 屬性陣列。 針對新資源，這是觸發評估的要求其動作和範圍。 針對現有的資源，此動作為「Microsoft.Resources/checkPolicyCompliance/read」。 |
 | 呼叫者 | 針對新資源，則為啟動部署的身分識別。 針對現有的資源，則為 Microsoft Azure Policy Insights RP 的 GUID。 |
 | 通道 | 原則事件僅使用「作業」通道。 |
 | claims | Active Directory 用來驗證使用者或應用程式，以便在 Resource Manager 中執行此作業的 JWT 權杖。 |
@@ -810,7 +810,7 @@ ms.locfileid: "91612756"
 > 寫入儲存體帳戶的活動記錄資料格式，在2018年11月1日變更為 JSON 行。 如需此格式變更的詳細資訊，請參閱為封存 [至儲存體帳戶 Azure 監視器資源記錄的格式變更做好準備](./resource-logs-blob-format.md) 。
 
 
-| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 注意 |
+| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 備註 |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId、resourceType、resourceGroupName 全都推斷自 resourceId。 |

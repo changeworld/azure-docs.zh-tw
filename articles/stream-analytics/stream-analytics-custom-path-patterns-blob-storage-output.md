@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317849"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531350"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 串流分析自訂 Blob 輸出資料分割
 
@@ -25,7 +25,7 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 ### <a name="partition-key-options"></a>分割區索引鍵選項
 
-用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。 分割區索引鍵必須為 NVARCHAR(MAX)。
+用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。 分割區索引鍵必須是 NVARCHAR (MAX) 、BIGINT、FLOAT 或 BIT (1.2 相容性層級或更高的) 。 如需詳細資訊，請參閱 [Azure 串流分析資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ### <a name="example"></a>範例
 
@@ -62,6 +62,8 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 2. 分割區索引鍵不區分大小寫，因此 "John" 和 "john" 之類的分割區索引鍵是相等的。 此外，運算式不能作為分割區索引鍵。 例如， **{columnA + columnB}** 無法運作。  
 
 3. 當輸入資料流由分割區索引鍵基數低於 8000 的記錄組成時，記錄將附加至現有的 Blob，並且僅在必要時建立新的 Blob。 如果基數超過 8000，則不保證會寫入至現有的 Blob，並且不會為具有相同分割區索引鍵的任意數目的記錄建立新的 Blob。
+
+4. 如果 blob 輸出 [設定為不可變](../storage/blobs/storage-blob-immutable-storage.md)，則串流分析會在每次傳送資料時建立新的 blob。
 
 ## <a name="custom-datetime-path-patterns"></a>自訂日期時間路徑模式
 
