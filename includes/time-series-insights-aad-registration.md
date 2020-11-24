@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665801"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563607"
 ---
 1. 在 [Azure 入口網站](https://ms.portal.azure.com/)中，選取 [Azure Active Directory] > [應用程式註冊] > [新增註冊]。
 
@@ -22,7 +22,7 @@ ms.locfileid: "91665801"
 
     應用程式在註冊後便會在此列出。
 
-1. 請為應用程式提供名稱，然後選取 [僅此組織目錄中的帳戶] 來指定可存取 API 的 [支援的帳戶類型]。 如果您要建立 [公用用戶端應用程式](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)，請新增有效的重新導向 URI，然後 **註冊**。
+1. 請為應用程式提供名稱，然後選取 [僅此組織目錄中的帳戶] 來指定可存取 API 的 [支援的帳戶類型]。 如果您要建立 [公用用戶端應用程式](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri)，請新增有效的重新導向 URI，然後 **註冊**。
 
    [![在 Azure Active Directory 中建立應用程式](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 

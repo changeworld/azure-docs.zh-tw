@@ -4,20 +4,20 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 651027ffd63a376ff0b8595636ece4c8f39c86e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9c830025b9ce6c93bf106a8348b0f9dc6521582
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82615980"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563827"
 ---
 | 資源 | 限制 |
 | --- | --- |
-| 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md) VM |每個區域 25,000 個<sup>1</sup>。 |
-| 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 總計核心 |每個區域 20 個<sup>1</sup>。 請連絡支援人員以提高限制。 |
-| 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md)的 Azure 現成 VM 總核心 |每個區域 20 個<sup>1</sup>。 請連絡支援人員以提高限制。 |
-| 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md)的每個系列 (例如 Dv2 和 F) VM 核心 |每個區域 20 個<sup>1</sup>。 請連絡支援人員以提高限制。 |
-| 每一訂用帳戶的[可用性設定組](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每個區域 2,500 個。 |
+| 每一[訂用帳戶](https://azure.microsoft.com/pricing/) VM |每個區域 25,000 個<sup>1</sup>。 |
+| 每一[訂用帳戶](https://azure.microsoft.com/pricing/)的 VM 總計核心 |每個區域 20 個<sup>1</sup>。 請連絡支援人員以提高限制。 |
+| 每一[訂用帳戶](https://azure.microsoft.com/pricing/)的 Azure 現成 VM 總核心 |每個區域 20 個<sup>1</sup>。 請連絡支援人員以提高限制。 |
+| 每一[訂用帳戶](https://azure.microsoft.com/pricing/)的每個系列 (例如 Dv2 和 F) VM 核心 |每個區域 20 個<sup>1</sup>。 請連絡支援人員以提高限制。 |
+| 每一訂用帳戶的[可用性設定組](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每個區域 2,500 個。 |
 | 每一可用性設定組的虛擬機器 | 200 |
 | 每一訂用帳戶的憑證 |無限制<sup>2</sup> |
 
@@ -28,4 +28,4 @@ ms.locfileid: "82615980"
 > [!NOTE]
 > 虛擬機器核心具有區域總限制。 其也有每一大小系列 (例如 Dv2 和 F) 的區域性限制。系統會分別強制執行這些限制。 例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶可以部署 30 個 A1 VM、30 個 D1 VM，或是兩個的組合，總計不超過 30 個核心。 組合的範例為 10 個 A1 VM 和 20 個 D1 VM。  
 > <!-- -->
-> 
+>

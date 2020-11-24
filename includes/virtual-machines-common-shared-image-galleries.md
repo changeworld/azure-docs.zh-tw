@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897732"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563709"
 ---
 共用映像庫服務可協助您圍繞映像來建置結構和組織。 共用映像資源庫提供：
 
@@ -32,8 +32,8 @@ ms.locfileid: "92897732"
 
 | 資源 | 描述|
 |----------|------------|
-| **映像來源** | 這是資源，可用來在映像庫中建立 **映像版本** 。 映像來源可以是現有的 Azure VM，其為[一般化或特殊化](#generalized-and-specialized-images)、受控映像、快照集、VHD 或另一個映像庫中的映像版本。 |
-| **映像庫** | 和 Azure Marketplace 一樣， **映像庫** 是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
+| **映像來源** | 這是資源，可用來在映像庫中建立 **映像版本**。 映像來源可以是現有的 Azure VM，其為[一般化或特殊化](#generalized-and-specialized-images)、受控映像、快照集、VHD 或另一個映像庫中的映像版本。 |
+| **映像庫** | 和 Azure Marketplace 一樣，**映像庫** 是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像定義會在資源庫內建立，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本** 是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用 **映像版本** 來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
@@ -45,7 +45,7 @@ ms.locfileid: "92897732"
 
 映像定義是映像版本的邏輯群組。 映像定義包含建立映像的原因、目標作業系統，以及使用映像的其他相關資訊。 映像定義就像是關於建立特定映像的所有詳細資料計劃。 您不會從映像定義部署 VM，而是從定義所建立的映像版本。
 
-每個映像定義都有三個參數，組合使用： **發行者** 、 **供應項目** 和 **SKU** 。 這些項目是用來尋找特定的映像定義。 不同的映像版本之間可以擁有一或兩個相同的值，但不能三個值都相同。  例如，以下是三個映像定義和其值：
+每個映像定義都有三個參數，組合使用：**發行者**、**供應項目** 和 **SKU**。 這些項目是用來尋找特定的映像定義。 不同的映像版本之間可以擁有一或兩個相同的值，但不能三個值都相同。  例如，以下是三個映像定義和其值：
 
 |映像定義|發行者|供應項目|SKU|
 |---|---|---|---|
@@ -71,7 +71,7 @@ ms.locfileid: "92897732"
 - 標記 - 您可以在建立映像定義時新增標記。 如需標記的詳細資訊，請參閱[使用標記來組織您的資源](../articles/azure-resource-manager/management/tag-resources.md)
 - vCPU 和記憶體最小值和最大值建議 - 如果您的映像有 vCPU 和記憶體建議，您可以將該資訊附加至映像定義。
 - 不允許的磁碟類型 - 您可以提供 VM 儲存體需求的相關資訊。 例如，如果映像不適合標準 HDD 磁碟，您可以將其新增至不允許清單。
-- Marketplace 映像的購買方案資訊 - `-PurchasePlanPublisher`、`-PurchasePlanName`和 `-PurchasePlanProduct`。 如需購買方案資訊的詳細資訊，請參閱[在 Azure Marketplace 中尋找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在建立映像時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
+- Marketplace 映像的購買方案資訊 - `-PurchasePlanPublisher`、`-PurchasePlanName`和 `-PurchasePlanProduct`。 如需購買方案資訊的詳細資訊，請參閱[在 Azure Marketplace 中尋找映像](../articles/virtual-machines/windows/cli-ps-findimage.md)和[在建立映像時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
 
 
 ## <a name="image-versions"></a>映像版本
@@ -80,7 +80,7 @@ ms.locfileid: "92897732"
 
 映像版本的屬性如下：
 
-- 版本號碼。 這會用作映像版本的名稱。 其格式一律如下：MajorVersion.MinorVersion.Patch。 若您指定在建立 VM 時使用 **最新** ，系統會依序根據最高的 MajorVersion、MinorVersion、Patch 來選擇最新的映像。 
+- 版本號碼。 這會用作映像版本的名稱。 其格式一律如下：MajorVersion.MinorVersion.Patch。 若您指定在建立 VM 時使用 **最新**，系統會依序根據最高的 MajorVersion、MinorVersion、Patch 來選擇最新的映像。 
 - 來源。 來源可以是 VM、受控磁碟、快照集、受控映像或其他映像版本。 
 - 從最新中排除。 您可以保留某個版本，以免用作最新的映像版本。 
 - 生命週期結束日期。 在此日期之後，就無法從這個映像建立 VM。
@@ -94,7 +94,7 @@ ms.locfileid: "92897732"
 
 - 從特殊化映像建立的 VM 和擴展集，可以更快速地啟動並執行。 因為是從已通過第一次開機的來源所建立，所以從這些映像建立的 VM 開機更快速。
 - 可以用來登入 VM 的帳戶也可用於使用從該 VM 建立特殊化映像所建立的任何 VM。
-- VM 將會擁有從中取得映像的 VM **電腦名稱** 。 您應該變更電腦名稱以避免發生衝突。
+- VM 將會擁有從中取得映像的 VM **電腦名稱**。 您應該變更電腦名稱以避免發生衝突。
 - `osProfile` 是使用 `secrets` 將一些敏感性資訊傳遞至 VM 的方式。 這可能會導致使用 KeyVault、WinRM 和其他使用 `osProfile`中 `secrets` 功能的問題。 在某些情況下，您可以使用受管理的服務識別 (MSI) 來解決這些限制。
 
 ## <a name="regional-support"></a>區域支援
@@ -110,7 +110,7 @@ ms.locfileid: "92897732"
 - 每個區域中每個訂用帳戶 10 個映像版本複本
 - 連結至映像的任何磁碟大小都必須小於或等於 1TB
 
-如需詳細資訊，請參閱[根據限制檢查資源使用量](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，取得如何檢查目前使用量的範例。
+如需詳細資訊，請參閱[根據限制檢查資源使用量](../articles/networking/check-usage-against-limits.md)，取得如何檢查目前使用量的範例。
  
 ## <a name="scaling"></a>調整大小
 共用映像庫可讓您指定要讓 Azure 保留的映像複本數目。 這對於有多個 VM 的部署案例很有幫助，因為 VM 部署可以分散到不同複本，減少執行個體建立程序由於單一複本多載而遭到節流的機會。
@@ -128,7 +128,7 @@ ms.locfileid: "92897732"
 
 [Azure 區域備援儲存體 (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) 可針對區域中的可用性區域失敗提供復原能力。 透過共用映像庫的正式發行，您可以選擇將映像儲存在區域 (具有可用性區域) 中的 ZRS 帳戶。 
 
-您也可以針對每個目標區域選擇帳戶類型。 預設儲存體帳戶類型為 Standard_LRS，但是您可以為具有可用性區域的區域選擇 Standard_ZRS。 請在[這裡](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)檢查 ZRS 的區域可用性。
+您也可以針對每個目標區域選擇帳戶類型。 預設儲存體帳戶類型為 Standard_LRS，但是您可以為具有可用性區域的區域選擇 Standard_ZRS。 請在[這裡](../articles/storage/common/storage-redundancy.md)檢查 ZRS 的區域可用性。
 
 ![顯示 ZRS 的圖形](./media/shared-image-galleries/zrs.png)
 
@@ -183,11 +183,11 @@ ms.locfileid: "92897732"
 
 下列 SDK 支援建立共用映像資源庫：
 
-- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
-- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/azure/go/)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](/java/azure/?view=azure-java-stable)
+- [Node.js](/javascript/api/@azure/arm-compute)
+- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](/azure/go/)
 
 ## <a name="templates"></a>範本
 
@@ -232,20 +232,20 @@ ms.locfileid: "92897732"
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 ```
 
-如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) 或 [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md) **管理資源庫資源** 。
+如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) 或 [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md) **管理資源庫資源**。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可以將現有映像移至共用映像庫？
  
 是。 根據您可能擁有的映像類型，案例共有 3 種。
 
- 案例 1：如果您擁有受控映像，則可以透過該映像建立映像定義和映像版本。 如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) 或 [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md) **從受控映像遷移至映像版本** 。
+ 案例 1：如果您擁有受控映像，則可以透過該映像建立映像定義和映像版本。 如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) 或 [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md) **從受控映像遷移至映像版本**。
 
  案例 2：如果您擁有非受控映像，則可以透過該映像建立受控映像，繼而建立映像定義和映像版本。 
 
  案例 3：如果您在本機檔案系統擁有 VHD，則需要上傳 VHD 至受控映像，然後就可以從中建立映像定義和映像版本。
 
-- 如果是 Windows VM 的 VHD，請參閱[上傳 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
-- 如果是 Linux VM 的 VHD，請參閱[上傳 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+- 如果是 Windows VM 的 VHD，請參閱[上傳 VHD](../articles/virtual-machines/windows/upload-generalized-managed.md)。
+- 如果是 Linux VM 的 VHD，請參閱[上傳 VHD](../articles/virtual-machines/linux/upload-vhd.md#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以從特製化磁碟建立映像版本？
 
@@ -310,4 +310,4 @@ ms.locfileid: "92897732"
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>是否可以使用受控映像將建立的虛擬機器擴展集更新為使用共用映像庫映像？
 
-是，您可以將擴展集映像參考從受控映像更新為共用映像庫映像，只要映像之間的 OS 類型、Hyper-V 產生和資料磁碟版面配置相符即可。 
+是，您可以將擴展集映像參考從受控映像更新為共用映像庫映像，只要映像之間的 OS 類型、Hyper-V 產生和資料磁碟版面配置相符即可。

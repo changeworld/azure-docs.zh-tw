@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4abbeadb0d30911d99fff57c0e99a3e427a6d8d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85838694"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563486"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>金鑰交易 (每個區域中的每個保存庫在 10 秒內允許的交易上限<sup>1</sup>)：
 
@@ -40,7 +40,7 @@ ms.locfileid: "85838694"
 | --- | --- |
 | 所有交易 |2,000 |
 
-如需有關如何在超過這些限制時處理節流的相關資訊，請參閱 [Azure Key Vault 節流指引](../articles/key-vault/key-vault-ovw-throttling.md)。
+如需有關如何在超過這些限制時處理節流的相關資訊，請參閱 [Azure Key Vault 節流指引](../articles/key-vault/general/overview-throttling.md)。
 
 <sup>1</sup> 適用於所有交易類型的全訂用帳戶限制，是每個金鑰保存庫限制的五倍。 例如，每個訂用帳戶的 HSM - 其他交易受限於每個訂閱 10 秒內 5,000 筆交易。
 

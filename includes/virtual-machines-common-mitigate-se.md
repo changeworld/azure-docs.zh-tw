@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8594ce713a8675505e0ee3051018b05992b160a9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73935899"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564182"
 ---
 **上次檔更新**： 10:00 2019 年11月12日上午12： PST。
 
@@ -21,16 +21,16 @@ ms.locfileid: "73935899"
 
 Microsoft 已在我們所有的雲端服務上部署防護功能。 執行 Azure 的基礎結構，以及將客戶的工作負載互相隔離這方面已受到保護。 這表示，使用相同基礎結構的潛在攻擊者不能利用這些漏洞來攻擊您的應用程式。
 
-Azure 會盡可能使用[記憶體保留維護](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot)，將客戶的影響降到最低，以及避免重新開機。 Azure 會在對主機進行全系統更新時，繼續使用這些方法，並且保護我們的客戶。
+Azure 會盡可能使用[記憶體保留維護](../articles/virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#maintenance-that-doesnt-require-a-reboot)，將客戶的影響降到最低，以及避免重新開機。 Azure 會在對主機進行全系統更新時，繼續使用這些方法，並且保護我們的客戶。
 
-如何將安全性整合至 Azure 各個層面的詳細資訊位於 [Azure 安全性文件](https://docs.microsoft.com/azure/security/)網站。 
+如何將安全性整合至 Azure 各個層面的詳細資訊位於 [Azure 安全性文件](../articles/security/index.yml)網站。 
 
 > [!NOTE] 
 > 自從這份文件首次發行以來，已揭露此弱點類別的多個變體。 Microsoft 持續致力於保護客戶和提供指引。 我們會持續發行進一步的修正，而此頁面也會隨之更新。 
 > 
 > 自2019年11月12日起， [intel 發行](https://software.intel.com/security-software-guidance/insights/deep-dive-intel-transactional-synchronization-extensions-intel-tsx-asynchronous-abort) 有關 intel®交易式同步處理延伸模組的技術諮詢 (INTEL® TSX) 交易非同步中止 (TAA) 已指派 [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135)的弱點。 此弱點會影響 Intel® Core® 處理器和 Intel® Xeon® 處理器。  Microsoft Azure 已發行作業系統更新，並且正在部署新的微碼，因為它是由 Intel 提供，因此我們的整個車隊都能保護客戶免于這些新的弱點。   Azure 與 Intel 密切合作，在平臺正式發行之前測試及驗證新的微碼。 
 >
-> 如果**客戶在其 VM 內執行不受信任的程式碼，則**需要採取動作來防範這些弱點，方法是閱讀下列內容，以取得所有 (MICROSOFT 建議進階[180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)、 [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)和[190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)) 的推測性執行端通道弱點的額外指引。
+> 如果 **客戶在其 VM 內執行不受信任的程式碼，則** 需要採取動作來防範這些弱點，方法是閱讀下列內容，以取得所有 (MICROSOFT 建議進階 [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)、 [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)和 [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)) 的推測性執行端通道弱點的額外指引。
 >
 > 其他客戶應該從深層防禦的觀點來評估這些弱點，並考慮其所選設定的安全性和效能含意。
 > 
@@ -43,7 +43,7 @@ Azure 會盡可能使用[記憶體保留維護](https://docs.microsoft.com/azure
 
 | 供應項目 | 建議的動作  |
 |----------|---------------------|
-| Azure 雲端服務  | 啟用 [自動更新](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) ，或確定您正在執行最新的來賓 OS。 |
+| Azure 雲端服務  | 啟用 [自動更新](../articles/cloud-services/cloud-services-how-to-configure-portal.md) ，或確定您正在執行最新的來賓 OS。 |
 | Azure Linux 虛擬機器 | 安裝來自作業系統提供者的更新。 如需詳細資訊，請參閱本文後面的 [Linux](#linux)。 |
 | Azure Windows 虛擬機器  | 安裝最新的安全性彙總套件。
 | 其他 Azure PaaS 服務 | 使用這些服務的客戶無需採取任何行動。 Azure 會自動將您的作業系統版本保持在最新狀態。 |
@@ -55,11 +55,11 @@ Azure 會盡可能使用[記憶體保留維護](https://docs.microsoft.com/azure
 建議使用額外安全性功能的案例：
 
 - 您允許不受信任的程式碼在 VM 內執行。  
-    - 例如，您允許其中一個客戶上傳二進位檔或指令碼，然後在您的應用程式內執行。** 
+    - 例如，您允許其中一個客戶上傳二進位檔或指令碼，然後在您的應用程式內執行。 
 - 您允許不受信任的使用者以低權限帳戶登入 VM。   
-    - 例如，您允許低權限的使用者透過遠端桌面或 SSH 登入您其中一個 VM。**  
+    - 例如，您允許低權限的使用者透過遠端桌面或 SSH 登入您其中一個 VM。  
 - 允許不受信任的使用者存取透過巢狀虛擬化實作的虛擬機器。  
-    - 例如，您控制 HYPER-V 主機，但將 VM 配置給不受信任的使用者。** 
+    - 例如，您控制 HYPER-V 主機，但將 VM 配置給不受信任的使用者。 
 
 如果客戶實作的案例並未包含不受信任的程式碼，則無須啟用這些額外的安全性功能。 
 
@@ -72,7 +72,7 @@ Azure 會盡可能使用[記憶體保留維護](https://docs.microsoft.com/azure
 目標作業系統必須是最新版本，才能啟用這些額外的安全性功能。 雖然許多推測性執行旁路攻擊的防護功能會預設為啟用，但此處描述的其他功能必須手動啟用，並可能會對效能造成影響。 
 
 
-**步驟1：停用 vm 上的超執行緒** -在超執行緒 vm 上執行未受信任程式碼的客戶必須停用超執行緒，或移至非超執行緒的 vm 大小。 請參考 [這](https://docs.microsoft.com/azure/virtual-machines/windows/acu) 份檔以取得超執行緒 VM 大小的清單， (VCPU 至核心的比率為 2:1) 。 若要檢查您的 VM 是否已啟用超執行緒，請使用 VM 中的 Windows 命令列參考下列腳本。
+**步驟1：停用 vm 上的超執行緒** -在超執行緒 vm 上執行未受信任程式碼的客戶必須停用超執行緒，或移至非超執行緒的 vm 大小。 請參考 [這](../articles/virtual-machines/acu.md) 份檔以取得超執行緒 VM 大小的清單， (VCPU 至核心的比率為 2:1) 。 若要檢查您的 VM 是否已啟用超執行緒，請使用 VM 中的 Windows 命令列參考下列腳本。
 
 鍵入 `wmic` 以進入互動式介面。 然後輸入下列資訊，以查看 VM 上的實體和邏輯處理器數量。
 
@@ -108,10 +108,10 @@ Windows OS support for TAA mitigation is enabled: True
 **步驟 3**：若要啟用核心虛擬位址遮蔽 (KVAS) 和分支目標插入 (BTI) OS 支援，請遵循 [>kb4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的指示，使用登錄機碼來啟用保護 `Session Manager` 。 需要重新開機。
 
 
-**步驟 4**：適用于使用 [Nested virtualization](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 和 E3 僅) 的部署：這些指示適用于您用來作為 hyper-v 主機的 VM 內。
+**步驟 4**：適用于使用 [Nested virtualization](../articles/virtual-machines/windows/nested-virtualization.md) (D3 和 E3 僅) 的部署：這些指示適用于您用來作為 hyper-v 主機的 VM 內。
 
 1.  遵循 [>kb4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的指示，使用登錄機碼來啟用保護 `MinVmVersionForCpuBasedMitigations` 。
-2.  `Core`遵循[此處](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)的指示，將 [虛擬程式排程器] 類型設定為。
+2.  `Core`遵循[此處](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)的指示，將 [虛擬程式排程器] 類型設定為。
 
 
 ### <a name="linux"></a>Linux
@@ -119,7 +119,7 @@ Windows OS support for TAA mitigation is enabled: True
 <a name="linux"></a>若要在內部啟用一組額外安全性功能，目標作業系統必須完全是最新版本。 有些防護功能會預設為啟用。 下節會描述預設為關閉的功能，以及 (或) 相依於硬體支援 (微碼) 的功能。 啟用這些功能可能會對效能造成影響。 請參閱作業系統提供者的文件，以取得進一步的指示
 
 
-**步驟1：停用 vm 上的超執行緒** -在超執行緒 vm 上執行未受信任程式碼的客戶必須停用超執行緒，或移至非超執行緒的 vm。  請參考 [這](https://docs.microsoft.com/azure/virtual-machines/linux/acu) 份檔以取得超執行緒 VM 大小的清單， (VCPU 至核心的比率為 2:1) 。 若要檢查您是否正在執行超執行緒 VM，請 `lscpu` 在 LINUX VM 中執行命令。 
+**步驟1：停用 vm 上的超執行緒** -在超執行緒 vm 上執行未受信任程式碼的客戶必須停用超執行緒，或移至非超執行緒的 vm。  請參考 [這](../articles/virtual-machines/acu.md) 份檔以取得超執行緒 VM 大小的清單， (VCPU 至核心的比率為 2:1) 。 若要檢查您是否正在執行超執行緒 VM，請 `lscpu` 在 LINUX VM 中執行命令。 
 
 如果 `Thread(s) per core = 2` 為，則表示已啟用超執行緒。 
 
@@ -156,7 +156,7 @@ NUMA node(s):          1
 
 建立超執行緒 VM 時，Azure 會為每個核心配置2個執行緒-這些是稱為個 vcpu。 停用超執行緒時，Azure 會移除執行緒，並將單一執行緒核心 (實體核心) 。 VCPU 與 CPU 的比率為2:1，因此在停用超執行緒之後，VM 中的 CPU 計數會顯示為減少一半。 例如，D8_v3 VM 是在8個個 vcpu 上執行的超執行緒 VM，每個核心 x 4 核心)  (2 個執行緒。  停用超執行緒時，Cpu 會下降到4個實體核心，每個核心1個執行緒。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文提供下列會影響許多新式處理器之推測性執行端通道攻擊的指引：
 
@@ -179,11 +179,3 @@ NUMA node(s):          1
 
 交易式同步處理延伸模組 (Intel® TSX) 交易非同步中止：  
 - [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) -TSX Transaction 非同步中止 (TAA) 
-
-
-
-
-
-
-
-
